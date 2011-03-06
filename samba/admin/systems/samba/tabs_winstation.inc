@@ -1,0 +1,65 @@
+<?php
+
+/*
+  This code is part of FusionDirectory (http://www.fusiondirectory.org/)
+  Copyright (C) 2003-2010  Cajus Pollmeier
+  Copyright (C) 2011  FusionDirectory
+
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program; if not, write to the Free Software
+  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+*/
+
+class wintabs extends tabs
+{
+
+  function wintabs($config, $data, $dn,$category,$hide_refs = FALSE, $hide_acls = FALSE)
+  {
+    tabs::tabs($config, $data, $dn,$category,$hide_refs , $hide_acls);
+
+    /* Add references/acls/snapshots */
+    $this->addSpecialTabs();
+  }
+
+  function save_object($save_current= FALSE)
+  {
+    tabs::save_object($save_current);
+  }
+
+
+  function save($ignore_account= FALSE)
+  {
+    /* Check for new 'dn', in order to propagate the
+       'dn' to all plugins */
+
+    /* add $ to end of name if mising */
+    $baseobject= $this->by_object['wingeneric'];
+    if(!preg_match("/\\\$\$/",$baseobject->cn)){
+      $baseobject->cn .= "$";
+    }
+
+    /* Save this system with uid and NOT cn */
+    $this->dn= "uid=$baseobject->uid,".get_winstations_ou().$baseobject->base;
+    $baseobject->dn= $this->dn;
+
+    foreach ($this->by_object as $key => $obj){
+      $this->by_object[$key]->dn= $this->dn;
+    }
+
+    tabs::save();
+  }
+
+}
+
+// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
+?>

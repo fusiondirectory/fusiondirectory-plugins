@@ -1,0 +1,157 @@
+# translation of messages.po to Italian
+# Copyright (c) 2005 B-Open Solutions srl - http://www.bopen.it/
+# Copyright (c) 2005 Alessandro Amici <a.amici@bopen.it>
+# Alessandro Amici <a.amici@bopen.it>, 2005.
+msgid ""
+msgstr ""
+"Project-Id-Version: messages\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-10-29 19:33+0200\n"
+"PO-Revision-Date: 2005-11-18 15:26+0100\n"
+"Last-Translator: Alessandro Amici <a.amici@bopen.it>\n"
+"Language-Team: Italian\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.9.1\n"
+
+#: admin/systems/services/apache2/servApacheVhost.tpl:1
+#, fuzzy
+msgid "Apache VHosts"
+msgstr "Annulla"
+
+#: admin/systems/services/apache2/servApacheVhost.tpl:8
+#: admin/systems/services/apache2/servApacheVhostEdit.tpl:54
+#: admin/systems/services/apache2/servApacheVhostEdit.tpl:98
+msgid "Add"
+msgstr "Aggiungi"
+
+#: admin/systems/services/apache2/class_servApacheEditVhost.inc:298
+#: admin/systems/services/apache2/class_servApacheEditVhost.inc:317
+msgid "Up"
+msgstr ""
+
+#: admin/systems/services/apache2/class_servApacheEditVhost.inc:299
+#: admin/systems/services/apache2/class_servApacheEditVhost.inc:318
+#, fuzzy
+msgid "Down"
+msgstr "Dominio"
+
+#: admin/systems/services/apache2/class_servApacheEditVhost.inc:300
+#: admin/systems/services/apache2/class_servApacheEditVhost.inc:319
+msgid "Delete"
+msgstr "Rimuovi"
+
+#: admin/systems/services/apache2/class_servApacheEditVhost.inc:358
+msgid "Name"
+msgstr "Cognome"
+
+#: admin/systems/services/apache2/class_servApacheEditVhost.inc:365
+#: admin/systems/services/apache2/servApacheVhostEdit.tpl:7
+#, fuzzy
+msgid "Virtual host name"
+msgstr "Liste di blocco"
+
+#: admin/systems/services/apache2/class_servApacheEditVhost.inc:366
+msgid "Only lowercase strings are allowed as Virtual Host Name."
+msgstr ""
+
+#: admin/systems/services/apache2/class_servApacheEditVhost.inc:366
+msgid "e.g. example.com"
+msgstr ""
+
+#: admin/systems/services/apache2/class_servApacheEditVhost.inc:372
+#: admin/systems/services/apache2/servApacheVhostEdit.tpl:13
+msgid "Document root"
+msgstr ""
+
+#: admin/systems/services/apache2/class_servApacheEditVhost.inc:378
+#: admin/systems/services/apache2/servApacheVhostEdit.tpl:19
+#, fuzzy
+msgid "Admin mail address"
+msgstr "Indirizzo principale"
+
+#: admin/systems/services/apache2/class_servApacheEditVhost.inc:387
+#, fuzzy
+msgid "Server alias"
+msgstr "Server"
+
+#: admin/systems/services/apache2/class_servApacheEditVhost.inc:397
+#, fuzzy
+msgid "Script alias"
+msgstr "Script"
+
+#: admin/systems/services/apache2/class_servApacheVhost.inc:61
+#: admin/systems/services/apache2/class_servApacheVhost.inc:284
+#: admin/systems/services/apache2/class_servApacheVhost.inc:297
+#, fuzzy
+msgid "Apache service"
+msgstr "Annulla"
+
+#: admin/systems/services/apache2/class_servApacheVhost.inc:237
+#: admin/systems/services/apache2/class_servApacheVhost.inc:248
+#: admin/systems/services/apache2/class_servApacheVhost.inc:271
+#, fuzzy
+msgid "LDAP error"
+msgstr "Errore LDAP"
+
+#: admin/systems/services/apache2/class_servApacheVhost.inc:298
+msgid "Apache virtual host service"
+msgstr ""
+
+#: admin/systems/services/apache2/class_servApacheVhost.inc:298
+msgid "Services"
+msgstr "Servizi"
+
+#: admin/systems/services/apache2/class_servApacheVhost.inc:306
+msgid "Virtual hosts"
+msgstr ""
+
+#: admin/systems/services/apache2/servApacheVhostEdit.tpl:1
+msgid "Generic"
+msgstr "Generale"
+
+#: admin/systems/services/apache2/servApacheVhostEdit.tpl:30
+#, fuzzy
+msgid "Server Alias"
+msgstr "Server"
+
+#: admin/systems/services/apache2/servApacheVhostEdit.tpl:42
+msgid "URL Alias"
+msgstr ""
+
+#: admin/systems/services/apache2/servApacheVhostEdit.tpl:45
+#, fuzzy
+msgid "Directory Path"
+msgstr "Directory"
+
+#: admin/systems/services/apache2/servApacheVhostEdit.tpl:74
+#, fuzzy
+msgid "Script Alias"
+msgstr "Script"
+
+#: admin/systems/services/apache2/servApacheVhostEdit.tpl:86
+#, fuzzy
+msgid "Alias Directory"
+msgstr "Directory"
+
+#: admin/systems/services/apache2/servApacheVhostEdit.tpl:89
+#, fuzzy
+msgid "Script Directory"
+msgstr "Directory"
+
+#: admin/systems/services/apache2/servApacheVhostEdit.tpl:112
+msgid "Save"
+msgstr "Salva"
+
+#: admin/systems/services/apache2/servApacheVhostEdit.tpl:113
+msgid "Cancel"
+msgstr "Annulla"
+
+#: admin/systems/services/apache2/class_apacheUtils.inc:194
+#, php-format
+msgid ""
+"Undefined vhost name '%s'. Vhost name must look like this 'www.example.com "
+"or example.com'."
+msgstr ""

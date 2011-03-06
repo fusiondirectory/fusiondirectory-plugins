@@ -1,0 +1,481 @@
+# translation of messages.po to Italian
+# Copyright (c) 2005 B-Open Solutions srl - http://www.bopen.it/
+# Copyright (c) 2005 Alessandro Amici <a.amici@bopen.it>
+# Alessandro Amici <a.amici@bopen.it>, 2005.
+msgid ""
+msgstr ""
+"Project-Id-Version: messages\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-10-29 19:37+0200\n"
+"PO-Revision-Date: 2005-11-18 15:26+0100\n"
+"Last-Translator: Alessandro Amici <a.amici@bopen.it>\n"
+"Language-Team: Italian\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.9.1\n"
+
+#: admin/systems/services/kolab/class_servKolab.inc:107
+#, php-format
+msgid "Include data from %s days in the past when creating free/busy lists"
+msgstr ""
+
+#: admin/systems/services/kolab/class_servKolab.inc:112
+#, php-format
+msgid "Warn users when using more than %s%% of their mail quota"
+msgstr ""
+
+#: admin/systems/services/kolab/class_servKolab.inc:154
+msgid "Remove"
+msgstr "Rimuovi"
+
+#: admin/systems/services/kolab/class_servKolab.inc:203
+#, fuzzy
+msgid "Internal error"
+msgstr "Terminal Server"
+
+#: admin/systems/services/kolab/class_servKolab.inc:203
+#, fuzzy
+msgid "Kolab account does not exist!"
+msgstr "Account Kolab"
+
+#: admin/systems/services/kolab/class_servKolab.inc:207
+#: personal/connectivity/kolab/class_kolabAccount.inc:178
+msgid "Error"
+msgstr ""
+
+#: admin/systems/services/kolab/class_servKolab.inc:207
+#, fuzzy
+msgid "hostname"
+msgstr "Scegli il tuo numero di telefono personale"
+
+#: admin/systems/services/kolab/class_servKolab.inc:217
+#: admin/systems/services/kolab/class_servKolab.inc:233
+#: admin/systems/services/kolab/class_servKolab.inc:402
+#: personal/connectivity/kolab/class_kolabAccount.inc:346
+#: personal/connectivity/kolab/class_kolabAccount.inc:483
+#, fuzzy
+msgid "LDAP error"
+msgstr "Errore LDAP"
+
+#: admin/systems/services/kolab/class_servKolab.inc:309
+#: admin/systems/services/kolab/class_servKolab.inc:311
+#, fuzzy
+msgid "Future days"
+msgstr "Futuro"
+
+#: admin/systems/services/kolab/class_servKolab.inc:315
+#: admin/systems/services/kolab/class_servKolab.inc:319
+msgid "Quota"
+msgstr ""
+
+#: admin/systems/services/kolab/class_servKolab.inc:317
+msgid "Please choose a value between 1 and 100 for Quota settings."
+msgstr ""
+
+#: admin/systems/services/kolab/class_servKolab.inc:323
+msgid "Privileged networks"
+msgstr ""
+
+#: admin/systems/services/kolab/class_servKolab.inc:327
+#: admin/systems/services/kolab/servkolab.tpl:27
+#, fuzzy
+msgid "Mail domains"
+msgstr "nel dominio"
+
+#: admin/systems/services/kolab/class_servKolab.inc:419
+#: admin/systems/services/kolab/class_servKolab.inc:430
+#, fuzzy
+msgid "Kolab mail service"
+msgstr "Utenti di Dominio"
+
+#: admin/systems/services/kolab/class_servKolab.inc:429
+#: personal/connectivity/kolab/class_kolabAccount.inc:5
+#: personal/connectivity/kolab/class_kolabAccount.inc:519
+msgid "Kolab"
+msgstr ""
+
+#: admin/systems/services/kolab/class_servKolab.inc:430
+#: admin/systems/services/kolab/servkolab.tpl:43
+msgid "Services"
+msgstr "Servizi"
+
+#: admin/systems/services/kolab/class_servKolab.inc:438
+#: admin/systems/services/kolab/servkolab.tpl:9
+#, fuzzy
+msgid "Postfix mydomain"
+msgstr "nel dominio"
+
+#: admin/systems/services/kolab/class_servKolab.inc:439
+#, fuzzy
+msgid "My destination"
+msgstr "Destinazione"
+
+#: admin/systems/services/kolab/class_servKolab.inc:440
+#: admin/systems/services/kolab/servkolab.tpl:18
+msgid "Cyrus admins"
+msgstr ""
+
+#: admin/systems/services/kolab/class_servKolab.inc:442
+#: admin/systems/services/kolab/servkolab.tpl:52
+#, fuzzy
+msgid "POP3 service"
+msgstr "Servizi"
+
+#: admin/systems/services/kolab/class_servKolab.inc:443
+#: admin/systems/services/kolab/servkolab.tpl:62
+msgid "POP3/SSL service"
+msgstr ""
+
+#: admin/systems/services/kolab/class_servKolab.inc:445
+#: admin/systems/services/kolab/servkolab.tpl:72
+#, fuzzy
+msgid "IMAP service"
+msgstr "Servizi"
+
+#: admin/systems/services/kolab/class_servKolab.inc:446
+#: admin/systems/services/kolab/servkolab.tpl:82
+msgid "IMAP/SSL service"
+msgstr ""
+
+#: admin/systems/services/kolab/class_servKolab.inc:448
+#: admin/systems/services/kolab/servkolab.tpl:92
+#, fuzzy
+msgid "Sieve service"
+msgstr "Servizi"
+
+#: admin/systems/services/kolab/class_servKolab.inc:449
+#, fuzzy
+msgid "FTP FreeBusy service"
+msgstr "Server"
+
+#: admin/systems/services/kolab/class_servKolab.inc:450
+#, fuzzy
+msgid "HTTP FreeBusy service"
+msgstr "Server"
+
+#: admin/systems/services/kolab/class_servKolab.inc:451
+msgid "Enable virus scan"
+msgstr ""
+
+#: admin/systems/services/kolab/class_servKolab.inc:453
+#: admin/systems/services/kolab/servkolab.tpl:133
+#, fuzzy
+msgid "Quota settings"
+msgstr "Opzioni di posta dell'identità"
+
+#: admin/systems/services/kolab/class_servKolab.inc:455
+msgid "Allow unauthenticated free busy"
+msgstr ""
+
+#: admin/systems/services/kolab/class_servKolab.inc:456
+msgid "kolabFreeBusyFuture"
+msgstr ""
+
+#: admin/systems/services/kolab/class_servKolab.inc:458
+#: admin/systems/services/kolab/servkolab.tpl:175
+msgid "SMTP privileged networks"
+msgstr ""
+
+#: admin/systems/services/kolab/class_servKolab.inc:459
+#: admin/systems/services/kolab/servkolab.tpl:206
+msgid "Enable MX lookup for relayhost"
+msgstr ""
+
+#: admin/systems/services/kolab/class_servKolab.inc:460
+#, fuzzy
+msgid "Relayhost"
+msgstr "Rimuovi"
+
+#: admin/systems/services/kolab/class_servKolab.inc:461
+#: admin/systems/services/kolab/servkolab.tpl:227
+msgid "Accept Internet Mail"
+msgstr ""
+
+#: admin/systems/services/kolab/servkolab.tpl:6
+msgid "Generic"
+msgstr "Generale"
+
+#: admin/systems/services/kolab/servkolab.tpl:27
+#, fuzzy
+msgid "Postfix mydestination"
+msgstr "Impostazioni Unix"
+
+#: admin/systems/services/kolab/servkolab.tpl:102
+msgid "FTP FreeBusy service (legacy, not interoperable with Kolab2 FreeBusy)"
+msgstr ""
+
+#: admin/systems/services/kolab/servkolab.tpl:112
+msgid "HTTP FreeBusy service (legacy)"
+msgstr ""
+
+#: admin/systems/services/kolab/servkolab.tpl:122
+msgid "Amavis email scanning (virus/spam)"
+msgstr ""
+
+#: admin/systems/services/kolab/servkolab.tpl:151
+#, fuzzy
+msgid "Free/Busy settings"
+msgstr "Impostazioni FAX"
+
+#: admin/systems/services/kolab/servkolab.tpl:157
+msgid "Allow unauthenticated downloading of Free/Busy information"
+msgstr ""
+
+#: admin/systems/services/kolab/servkolab.tpl:180
+msgid "Hosts/networks allowed to relay"
+msgstr ""
+
+#: admin/systems/services/kolab/servkolab.tpl:185
+msgid "Enter multiple values, seperated with"
+msgstr ""
+
+#: admin/systems/services/kolab/servkolab.tpl:198
+msgid "SMTP smarthost/relayhost"
+msgstr ""
+
+#: admin/systems/services/kolab/servkolab.tpl:211
+msgid "Host used to relay mails"
+msgstr ""
+
+#: admin/systems/services/kolab/servkolab.tpl:235
+msgid "Accept mail from other domains over non-authenticated SMTP"
+msgstr ""
+
+#: personal/mail/kolab/class_mail-methods-kolab.inc:130
+#: personal/mail/kolab/class_mail-methods-kolab.inc:138
+#: personal/mail/kolab/class_mail-methods-kolab.inc:139
+msgid "Unspecified"
+msgstr ""
+
+#: personal/mail/kolab/class_mail-methods-kolab.inc:131
+#, fuzzy
+msgid "Mails"
+msgstr "Posta"
+
+#: personal/mail/kolab/class_mail-methods-kolab.inc:132
+#, fuzzy
+msgid "Tasks"
+msgstr "classe"
+
+#: personal/mail/kolab/class_mail-methods-kolab.inc:133
+msgid "Journals"
+msgstr ""
+
+#: personal/mail/kolab/class_mail-methods-kolab.inc:134
+msgid "Calendar"
+msgstr ""
+
+#: personal/mail/kolab/class_mail-methods-kolab.inc:135
+#, fuzzy
+msgid "Contacts"
+msgstr "Contenuti"
+
+#: personal/mail/kolab/class_mail-methods-kolab.inc:136
+#, fuzzy
+msgid "Notes"
+msgstr "Contenuti"
+
+#: personal/mail/kolab/class_mail-methods-kolab.inc:140
+msgid "Inbox"
+msgstr ""
+
+#: personal/mail/kolab/class_mail-methods-kolab.inc:141
+msgid "Drafts"
+msgstr ""
+
+#: personal/mail/kolab/class_mail-methods-kolab.inc:142
+#, fuzzy
+msgid "Sent"
+msgstr "Imposta"
+
+#: personal/mail/kolab/class_mail-methods-kolab.inc:143
+msgid "SPAM"
+msgstr ""
+
+#: personal/mail/kolab/class_mail-methods-kolab.inc:145
+#: personal/mail/kolab/class_mail-methods-kolab.inc:146
+#: personal/mail/kolab/class_mail-methods-kolab.inc:147
+#: personal/mail/kolab/class_mail-methods-kolab.inc:148
+#: personal/mail/kolab/class_mail-methods-kolab.inc:149
+#, fuzzy
+msgid "Default"
+msgstr "Rimuovi"
+
+#: personal/mail/kolab/class_mail-methods-kolab.inc:164
+msgid "Mail settings cannot be removed while there are delegations configured!"
+msgstr ""
+
+#: personal/mail/kolab/class_mail-methods-kolab.inc:262
+msgid "Waiting for kolab to remove mail properties..."
+msgstr ""
+
+#: personal/mail/kolab/class_mail-methods-kolab.inc:265
+#, fuzzy
+msgid "Please remove the mail settings first!"
+msgstr "Seleziona per mostrare i gruppi che hanno configurata la posta"
+
+#: personal/connectivity/kolab/kolab.tpl:3
+#: personal/connectivity/kolab/kolab.tpl:43
+msgid "Kolab account"
+msgstr "Account Kolab"
+
+#: personal/connectivity/kolab/kolab.tpl:4
+msgid ""
+"The kolab account is currently disabled. It's features can be adjusted if "
+"you add a mail account."
+msgstr ""
+
+#: personal/connectivity/kolab/kolab.tpl:51
+#: personal/connectivity/kolab/kolab.tpl:63
+#: personal/connectivity/kolab/class_kolabAccount.inc:532
+#, fuzzy
+msgid "Delegations"
+msgstr "Applicazioni"
+
+#: personal/connectivity/kolab/kolab.tpl:83
+#, fuzzy
+msgid "Mail size"
+msgstr "Opzioni di posta dell'identità"
+
+#: personal/connectivity/kolab/kolab.tpl:87
+msgid "No mail size restriction for this account"
+msgstr ""
+
+#: personal/connectivity/kolab/kolab.tpl:95
+#, fuzzy
+msgid "Free Busy information"
+msgstr "Informazioni generali"
+
+#: personal/connectivity/kolab/kolab.tpl:98
+msgid "URL"
+msgstr "URL"
+
+#: personal/connectivity/kolab/kolab.tpl:107
+msgid "Future"
+msgstr "Futuro"
+
+#: personal/connectivity/kolab/kolab.tpl:112
+msgid "days"
+msgstr "giorni"
+
+#: personal/connectivity/kolab/kolab.tpl:119
+#: personal/connectivity/kolab/class_kolabAccount.inc:533
+msgid "Invitation policy"
+msgstr ""
+
+#: personal/connectivity/kolab/class_kolabAccount.inc:6
+msgid "This does something"
+msgstr "Questo fa qualcosa"
+
+#: personal/connectivity/kolab/class_kolabAccount.inc:178
+msgid "Mail address"
+msgstr "Indirizzo principale"
+
+#: personal/connectivity/kolab/class_kolabAccount.inc:211
+msgid "Always accept"
+msgstr ""
+
+#: personal/connectivity/kolab/class_kolabAccount.inc:212
+msgid "Always reject"
+msgstr ""
+
+#: personal/connectivity/kolab/class_kolabAccount.inc:213
+msgid "Reject if conflicts"
+msgstr ""
+
+#: personal/connectivity/kolab/class_kolabAccount.inc:214
+msgid "Manual if conflicts"
+msgstr ""
+
+#: personal/connectivity/kolab/class_kolabAccount.inc:215
+msgid "Manual"
+msgstr "Manuale"
+
+#: personal/connectivity/kolab/class_kolabAccount.inc:263
+msgid "Anonymous"
+msgstr "Anonimo"
+
+#: personal/connectivity/kolab/class_kolabAccount.inc:358
+#: personal/connectivity/kolab/class_kolabAccount.inc:361
+#, fuzzy
+msgid "Free Busy future"
+msgstr "Server"
+
+#: personal/connectivity/kolab/class_kolabAccount.inc:366
+#: personal/connectivity/kolab/class_kolabAccount.inc:369
+#, fuzzy
+msgid "Free Busy url"
+msgstr "Server"
+
+#: personal/connectivity/kolab/class_kolabAccount.inc:383
+#, php-format
+msgid "The invitation policy entry for address '%s' is not valid."
+msgstr ""
+
+#: personal/connectivity/kolab/class_kolabAccount.inc:391
+#, php-format
+msgid "There's no mail user with address '%s' for your invitation policy!"
+msgstr ""
+
+#: personal/connectivity/kolab/class_kolabAccount.inc:520
+#, fuzzy
+msgid "Kolab account settings"
+msgstr "Account Kolab"
+
+#: personal/connectivity/kolab/class_kolabAccount.inc:520
+#, fuzzy
+msgid "Connectivity addon"
+msgstr "Connettività"
+
+#: personal/connectivity/kolab/class_kolabAccount.inc:524
+msgid "My account"
+msgstr "Identità"
+
+#: personal/connectivity/kolab/class_kolabAccount.inc:529
+msgid "Free busy future"
+msgstr ""
+
+#: personal/connectivity/kolab/class_kolabAccount.inc:530
+#, fuzzy
+msgid "Mail size restriction"
+msgstr "Opzioni di posta dell'identità"
+
+#: personal/connectivity/kolab/class_kolabAccount.inc:531
+#, fuzzy
+msgid "Free busy information"
+msgstr "Informazioni generali"
+
+#, fuzzy
+#~ msgid "Junk mail"
+#~ msgstr "maschio"
+
+#~ msgid "Add"
+#~ msgstr "Aggiungi"
+
+#~ msgid "Save"
+#~ msgstr "Salva"
+
+#~ msgid "Cancel"
+#~ msgstr "Annulla"
+
+#, fuzzy
+#~ msgid "Removing of user/kolab account with dn '%s' failed."
+#~ msgstr "Elimina estensioni Samba"
+
+#, fuzzy
+#~ msgid "Saving of user/kolab account with dn '%s' failed."
+#~ msgstr "Account Kolab"
+
+#, fuzzy
+#~ msgid "Removing host entry from system server/kolab with dn '%s' failed."
+#~ msgstr "Elimina estensioni telefoniche"
+
+#, fuzzy
+#~ msgid "Saving system server/kolab with dn '%s' failed."
+#~ msgstr "Account Kolab"
+
+#, fuzzy
+#~ msgid "Cannot add invalid mail address!"
+#~ msgstr "Stai cercando di aggungere un indirizzo di posta non valido"

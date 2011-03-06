@@ -1,0 +1,185 @@
+# translation of messages.po to
+# Benoit Mortier <benoit.mortier@opensides.be>, 2005, 2006, 2007, 2008, 2009, 2010.
+msgid ""
+msgstr ""
+"Project-Id-Version: messages\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-10-29 19:38+0200\n"
+"PO-Revision-Date: 2010-01-22 21:13+0100\n"
+"Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>\n"
+"Language-Team:  <fr@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms:  nplurals=2; plural=(n > 1);\n"
+
+#: admin/roleManagement/class_roleManagement.inc:25
+#: admin/roleManagement/class_roleGeneric.inc:427
+msgid "Roles"
+msgstr "Rôles"
+
+#: admin/roleManagement/class_roleManagement.inc:26
+msgid "Role management"
+msgstr "Gestion des rôles"
+
+#: admin/roleManagement/remove.tpl:2
+msgid "Warning"
+msgstr "Avertissement"
+
+#: admin/roleManagement/remove.tpl:6
+msgid ""
+"Please double check if you really want to do this since there is no way for "
+"GOsa to get your data back."
+msgstr ""
+"Veuillez vérifier que vous voulez effectuer cette action. Toutes les données "
+"seront perdues étant donné qu'il est impossible pour GOsa de récupérer vos "
+"données."
+
+#: admin/roleManagement/remove.tpl:10
+msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
+msgstr ""
+"D'accord - si vous êtes sur - cliquez sur 'Supprimer' pour continuer ou sur "
+"'Annuler' pour abandonner."
+
+#: admin/roleManagement/class_roleGeneric.inc:238
+#: admin/roleManagement/class_roleGeneric.inc:247
+#: admin/roleManagement/class_roleGeneric.inc:430
+#: admin/roleManagement/role-list.xml:41
+#: admin/roleManagement/role-filter.tpl:17
+#: admin/roleManagement/roleGeneric.tpl:11
+msgid "Name"
+msgstr "Nom"
+
+#: admin/roleManagement/class_roleGeneric.inc:268
+msgid "Unknown"
+msgstr "Inconnu"
+
+#: admin/roleManagement/class_roleGeneric.inc:286
+#: admin/roleManagement/class_roleGeneric.inc:328
+msgid "LDAP error"
+msgstr "Erreur LDAP"
+
+#: admin/roleManagement/class_roleGeneric.inc:371
+msgid "Error"
+msgstr "Erreur"
+
+#: admin/roleManagement/class_roleGeneric.inc:421
+#: admin/roleManagement/roleGeneric.tpl:6
+msgid "Generic"
+msgstr "Informations"
+
+#: admin/roleManagement/class_roleGeneric.inc:422
+msgid "Role generic"
+msgstr "Rôle par défaut"
+
+#: admin/roleManagement/class_roleGeneric.inc:431
+#: admin/roleManagement/role-list.xml:49
+#: admin/roleManagement/roleGeneric.tpl:19
+msgid "Description"
+msgstr ""
+
+#: admin/roleManagement/class_roleGeneric.inc:432
+#: admin/roleManagement/role-list.tpl:13
+#: admin/roleManagement/roleGeneric.tpl:29
+msgid "Base"
+msgstr ""
+
+#: admin/roleManagement/class_roleGeneric.inc:433
+msgid "Telefon number"
+msgstr "Numéro de téléphone"
+
+#: admin/roleManagement/class_roleGeneric.inc:434
+#: admin/roleManagement/roleGeneric.tpl:50
+msgid "Fax number"
+msgstr "Numéro de fax"
+
+#: admin/roleManagement/class_roleGeneric.inc:435
+#: admin/roleManagement/roleGeneric.tpl:62
+msgid "Occupants"
+msgstr "Membres"
+
+#: admin/roleManagement/role-list.xml:11
+msgid "List of roles"
+msgstr "Liste des rôles"
+
+#: admin/roleManagement/role-list.xml:15 admin/roleManagement/role-list.xml:74
+msgid "Role"
+msgstr "Rôle"
+
+#: admin/roleManagement/role-list.xml:57
+msgid "Actions"
+msgstr ""
+
+#: admin/roleManagement/role-list.xml:68
+msgid "Create"
+msgstr "Créer"
+
+#: admin/roleManagement/role-list.xml:86
+msgid "Edit"
+msgstr "Editer"
+
+#: admin/roleManagement/role-list.xml:93
+msgid "Remove"
+msgstr "Supprimer"
+
+#: admin/roleManagement/role-list.xml:125
+msgid "Edit role"
+msgstr "Editer le rôle"
+
+#: admin/roleManagement/role-list.xml:138
+msgid "Remove role"
+msgstr "Suppression du rôle"
+
+#: admin/roleManagement/paste_generic.tpl:4
+msgid "Role name"
+msgstr "Nom du rôle"
+
+#: admin/roleManagement/paste_generic.tpl:7
+msgid "Please enter the new object role name"
+msgstr "Veuillez entrer un nouveau nom pour le rôle"
+
+#: admin/roleManagement/role-filter.tpl:3
+msgid "Filter"
+msgstr "Filtre"
+
+#: admin/roleManagement/roleGeneric.tpl:42
+msgid "Phone number"
+msgstr "Numéro de téléphone"
+
+#~ msgid "Choose subtree to place user in"
+#~ msgstr "Sélectionnez la branche où sera enregistrée l'utilisateur"
+
+#~ msgid "Select a base"
+#~ msgstr "Sélectionnez une base"
+
+#~ msgid "Update"
+#~ msgstr "Mise à jour"
+
+#~ msgid "Submit"
+#~ msgstr "Soumettre"
+
+#~ msgid "Select objects to add"
+#~ msgstr "Sélectionnez les objets à ajouter"
+
+#~ msgid "Filters"
+#~ msgstr "Filtres"
+
+#~ msgid "Select to search within subtrees"
+#~ msgstr "Sélectionner pour chercher dans le sous arbre"
+
+#~ msgid "Search in subtrees"
+#~ msgstr "Chercher dans les sous arbre"
+
+#~ msgid "Display objects of department"
+#~ msgstr "Afficher les objets du département"
+
+#~ msgid "Choose the department the search will be based on"
+#~ msgstr "Sélectionner le département où sera effectuée la recherche"
+
+#~ msgid "Display objects matching"
+#~ msgstr "Afficher les objets correspondants"
+
+#~ msgid "Regular expression for matching object names"
+#~ msgstr "Expression régulière pour trouver les objets correspondants"

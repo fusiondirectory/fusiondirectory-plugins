@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<filterdef>
+  <definition>
+    <category>fai</category>
+    <template>fai-filter.tpl</template>
+    <initial>true</initial>
+  </definition>
+
+  <search>
+    <query>
+      <backend>FAI</backend>
+      <filter>(&amp;(|$PROFILE$HOOK$TEMPLATE$SCRIPT$VARIABLE$PACKAGE$PARTITION$NETBOOT$LOCALBOOT)$NAME)</filter>
+      <attribute>dn</attribute>
+      <attribute>objectClass</attribute>
+      <attribute>cn</attribute>
+      <attribute>description</attribute>
+    </query>
+    <scope>auto</scope>
+  </search>
+
+  <element>
+    <tag>RELEASE</tag>
+    <type>combobox</type>
+    <value>Loading.</value>
+    <value>Loading..</value>
+    <value>Loading...</value>
+  </element>
+
+  <element>
+    <type>checkbox</type>
+    <tag>NETBOOT</tag>
+    <default>true</default>
+    <unset></unset>
+    <set>(&amp;(objectClass=FAIclass)(FAIstate=__NETBOOT__))</set>
+  </element>
+
+  <element>
+    <type>checkbox</type>
+    <tag>LOCALBOOT</tag>
+    <default>true</default>
+    <unset></unset>
+    <set>(&amp;(objectClass=FAIclass)(FAIstate=__LOCALBOOT__))</set>
+  </element>
+
+  <element>
+    <type>checkbox</type>
+    <tag>PROFILE</tag>
+    <default>true</default>
+    <unset></unset>
+    <set>(objectClass=FAIprofile)</set>
+  </element>
+
+  <element>
+    <type>checkbox</type>
+    <tag>TEMPLATE</tag>
+    <default>true</default>
+    <unset></unset>
+    <set>(objectClass=FAItemplate)</set>
+  </element>
+
+  <element>
+    <type>checkbox</type>
+    <tag>SCRIPT</tag>
+    <default>true</default>
+    <unset></unset>
+    <set>(objectClass=FAIscript)</set>
+  </element>
+
+  <element>
+    <type>checkbox</type>
+    <tag>HOOK</tag>
+    <default>true</default>
+    <unset></unset>
+    <set>(objectClass=FAIhook)</set>
+  </element>
+
+  <element>
+    <type>checkbox</type>
+    <tag>VARIABLE</tag>
+    <default>true</default>
+    <unset></unset>
+    <set>(objectClass=FAIvariable)</set>
+  </element>
+
+  <element>
+    <type>checkbox</type>
+    <tag>PACKAGE</tag>
+    <default>true</default>
+    <unset></unset>
+    <set>(objectClass=FAIpackageList)</set>
+  </element>
+
+  <element>
+    <type>checkbox</type>
+    <tag>PARTITION</tag>
+    <default>true</default>
+    <unset></unset>
+    <set>(objectClass=FAIpartitionTable)</set>
+  </element>
+
+  <element>
+    <type>textfield</type>
+    <tag>NAME</tag>
+    <size>20</size>
+    <maxlength>60</maxlength>
+    <default></default>
+    <unset></unset>
+    <set>(cn=*$*)</set>
+    <alphabet>false</alphabet>
+    <autocomplete>
+      <backend>FAI</backend>
+      <filter>(|(&amp;(objectClass=FAIclass)(cn=*$NAME*))(&amp;(objectClass=FAIclass)(|(FAIstate=__NETBOOT__)(FAIstate=__LOCALBOOT__))))</filter>
+      <attribute>cn</attribute>
+      <frequency>0.5</frequency>
+      <characters>3</characters>
+    </autocomplete>
+  </element>
+
+</filterdef>

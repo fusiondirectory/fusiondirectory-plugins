@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<filterdef>
+  <definition>
+    <category>groups</category>
+    <template>../plugins/admin/fai/packageSelect/selectPackage-filter.tpl</template>
+    <initial>true</initial>
+  </definition>
+
+  <search>
+    <query>
+      <backend>FAIPackages</backend>
+      <filter>$NAME</filter>
+      <attribute>SECTION</attribute>
+      <attribute>VERSION</attribute>
+      <attribute>PACKAGE</attribute>
+    </query>
+    <scope>auto</scope>
+  </search>
+
+  <element>
+    <type>textfield</type>
+    <tag>NAME</tag>
+    <size>20</size>
+    <maxlength>60</maxlength>
+    <default></default>
+    <unset></unset>
+    <set>*$</set>
+    <alphabet>true</alphabet>
+    <autocomplete>
+      <backend>FAIPackages</backend>
+      <filter>$NAME</filter>
+      <attribute>PACKAGE</attribute>
+      <frequency>0.5</frequency>
+      <characters>3</characters>
+    </autocomplete>
+  </element>
+
+</filterdef>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<filterdef>
+  <definition>
+    <category>server</category>
+    <template>services/repository/repository-filter.tpl</template>
+    <initial>true</initial>
+  </definition>
+
+  <search>
+    <query>
+      <backend>Repository</backend>
+      <filter>...</filter>
+      <attribute>dn</attribute>
+      <attribute>objectClass</attribute>
+      <attribute>name</attribute>
+      <attribute>Message</attribute>
+    </query>
+    <scope>auto</scope>
+  </search>
+
+</filterdef>

@@ -1,0 +1,383 @@
+# translation of messages.po to Italian
+# Copyright (c) 2005 B-Open Solutions srl - http://www.bopen.it/
+# Copyright (c) 2005 Alessandro Amici <a.amici@bopen.it>
+# Alessandro Amici <a.amici@bopen.it>, 2005.
+msgid ""
+msgstr ""
+"Project-Id-Version: messages\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-10-29 19:39+0200\n"
+"PO-Revision-Date: 2005-11-18 15:26+0100\n"
+"Last-Translator: Alessandro Amici <a.amici@bopen.it>\n"
+"Language-Team: Italian\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.9.1\n"
+
+#: admin/sudo/sudo-filter.tpl:3
+#, fuzzy
+msgid "Filter"
+msgstr "Filtri"
+
+#: admin/sudo/sudo-filter.tpl:13 admin/sudo/class_sudoGeneric.inc:582
+#: admin/sudo/class_sudoGeneric.inc:587 admin/sudo/class_sudoGeneric.inc:592
+#: admin/sudo/class_sudoGeneric.inc:601 admin/sudo/class_sudoGeneric.inc:640
+#: admin/sudo/generic.tpl:7 admin/sudo/generic.tpl:34
+#: admin/sudo/sudo-list.xml:32 admin/sudo/paste_generic.tpl:5
+msgid "Name"
+msgstr "Cognome"
+
+#: admin/sudo/sudo-filter.tpl:23 admin/sudo/class_sudoGeneric.inc:423
+msgid "User"
+msgstr ""
+
+#: admin/sudo/remove.tpl:2
+msgid "Warning"
+msgstr "Attenzione"
+
+#: admin/sudo/remove.tpl:6
+msgid ""
+"Please double check if you really want to do this since there is no way for "
+"GOsa to get your data back."
+msgstr ""
+
+#: admin/sudo/remove.tpl:10
+#, fuzzy
+msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
+msgstr ""
+"Quindi - Se sei sicuro - premi <i>Rimuovi</i> per continuare o <i>Annulla</"
+"i> per abortire."
+
+#: admin/sudo/class_sudoGeneric.inc:334
+msgid "Error"
+msgstr ""
+
+#: admin/sudo/class_sudoGeneric.inc:376
+msgid "disabled"
+msgstr "disabilitato"
+
+#: admin/sudo/class_sudoGeneric.inc:377
+msgid "full access"
+msgstr "accesso completo"
+
+#: admin/sudo/class_sudoGeneric.inc:378
+msgid "allow access to these hosts"
+msgstr "accesso limitato ai seguenti host"
+
+#: admin/sudo/class_sudoGeneric.inc:424
+msgid "Group"
+msgstr "Gruppo"
+
+#: admin/sudo/class_sudoGeneric.inc:568
+#, fuzzy
+msgid "LDAP error"
+msgstr "Errore LDAP"
+
+#: admin/sudo/class_sudoGeneric.inc:631 admin/sudo/class_sudoManagement.inc:25
+#, fuzzy
+msgid "Sudo"
+msgstr "Cognome"
+
+#: admin/sudo/class_sudoGeneric.inc:632 admin/sudo/class_sudoGeneric.inc:637
+#, fuzzy
+msgid "Sudo role"
+msgstr "Cognome"
+
+#: admin/sudo/class_sudoGeneric.inc:641 admin/sudo/generic.tpl:15
+#: admin/sudo/generic.tpl:44 admin/sudo/sudo-list.xml:40
+msgid "Description"
+msgstr "Descrizione"
+
+#: admin/sudo/class_sudoGeneric.inc:642
+msgid "Users"
+msgstr "Utenti"
+
+#: admin/sudo/class_sudoGeneric.inc:643
+msgid "Host"
+msgstr ""
+
+#: admin/sudo/class_sudoGeneric.inc:644
+#, fuzzy
+msgid "Command"
+msgstr "e"
+
+#: admin/sudo/class_sudoGeneric.inc:645
+#, fuzzy
+msgid "Run as user"
+msgstr "Utenti di Dominio"
+
+#: admin/sudo/class_sudoGeneric.inc:646
+#, fuzzy
+msgid "Access control list"
+msgstr "Opzioni di accesso"
+
+#: admin/sudo/options.tpl:5
+#, fuzzy
+msgid "Option name"
+msgstr "Nome locazione"
+
+#: admin/sudo/options.tpl:7
+#, fuzzy
+msgid "Value"
+msgstr "maschio"
+
+#: admin/sudo/options.tpl:8 admin/sudo/class_sudoOption.inc:536
+msgid "Options"
+msgstr "Opzioni"
+
+#: admin/sudo/options.tpl:86
+#, fuzzy
+msgid "Available options"
+msgstr "Applicazioni disponibili"
+
+#: admin/sudo/generic.tpl:3 admin/sudo/generic.tpl:30
+#: admin/sudo/paste_generic.tpl:1
+msgid "Generic"
+msgstr "Generale"
+
+#: admin/sudo/generic.tpl:3 admin/sudo/paste_generic.tpl:1
+msgid "global defaults"
+msgstr ""
+
+#: admin/sudo/generic.tpl:55
+msgid "System trust"
+msgstr "Accesso ai sistemi"
+
+#: admin/sudo/generic.tpl:56
+msgid "Trust mode"
+msgstr ""
+
+#: admin/sudo/generic.tpl:87
+#, fuzzy
+msgid "Users and groups"
+msgstr "gruppi"
+
+#: admin/sudo/generic.tpl:98 admin/sudo/generic.tpl:113
+msgid "Add from list"
+msgstr ""
+
+#: admin/sudo/generic.tpl:102
+#, fuzzy
+msgid "Systems"
+msgstr "Sistemi"
+
+#: admin/sudo/generic.tpl:120
+#, fuzzy
+msgid "Commands"
+msgstr "e"
+
+#: admin/sudo/generic.tpl:132
+#, fuzzy
+msgid "Run as"
+msgstr "Utenti di Dominio"
+
+#: admin/sudo/sudo-list.xml:11
+#, fuzzy
+msgid "List of sudo roles"
+msgstr "Lista degli utenti"
+
+#: admin/sudo/sudo-list.xml:15 admin/sudo/sudo-list.xml:65
+msgid "Role"
+msgstr "Ruolo"
+
+#: admin/sudo/sudo-list.xml:48
+msgid "Actions"
+msgstr "Azioni"
+
+#: admin/sudo/sudo-list.xml:59
+msgid "Create"
+msgstr "Creare"
+
+#: admin/sudo/sudo-list.xml:72
+#, fuzzy
+msgid "Default"
+msgstr "Rimuovi"
+
+#: admin/sudo/sudo-list.xml:85
+msgid "Remove"
+msgstr "Rimuovi"
+
+#: admin/sudo/sudo-list.xml:117
+#, fuzzy
+msgid "Edit sudo role"
+msgstr "Lista degli utenti"
+
+#: admin/sudo/sudo-list.xml:130
+#, fuzzy
+msgid "Remove sudo role"
+msgstr "Utenti di Dominio"
+
+#: admin/sudo/class_sudoOption.inc:154
+#, fuzzy
+msgid "Unknown option"
+msgstr "Utenti di Dominio"
+
+#: admin/sudo/class_sudoOption.inc:155
+#, fuzzy, php-format
+msgid "The sudo option '%s' is invalid!"
+msgstr "Il valore specificato per l'UID non è valido."
+
+#: admin/sudo/class_sudoOption.inc:282 admin/sudo/class_sudoOption.inc:284
+#, fuzzy
+msgid "string"
+msgstr "Attenzione"
+
+#: admin/sudo/class_sudoOption.inc:282 admin/sudo/class_sudoOption.inc:283
+#: admin/sudo/class_sudoOption.inc:284
+msgid "bool"
+msgstr ""
+
+#: admin/sudo/class_sudoOption.inc:283
+#, fuzzy
+msgid "integer"
+msgstr "stampanti"
+
+#: admin/sudo/class_sudoOption.inc:284
+#, fuzzy
+msgid "list"
+msgstr "classe"
+
+#: admin/sudo/class_sudoOption.inc:537
+#, fuzzy
+msgid "Sudo options"
+msgstr "Utenti di Dominio"
+
+#: admin/sudo/class_sudoManagement.inc:26
+#, fuzzy
+msgid "Sudo management"
+msgstr "Dirigenza"
+
+#, fuzzy
+#~ msgid "List of users and groups"
+#~ msgstr "gruppi"
+
+#, fuzzy
+#~ msgid "Description name"
+#~ msgstr "Descrizione"
+
+#~ msgid "Add"
+#~ msgstr "Aggiungi"
+
+#~ msgid "Base"
+#~ msgstr "Base"
+
+#~ msgid "Select systems to add"
+#~ msgstr "Seleziona un sistema da aggiungere"
+
+#~ msgid "Display systems of department"
+#~ msgstr "Mostra i sistemi del dipartimento"
+
+#~ msgid "Choose the department the search will be based on"
+#~ msgstr "Scegli il dipartimento di base per la ricerca"
+
+#~ msgid "Display systems matching"
+#~ msgstr "Mostra i sistemi che corrispondono a:"
+
+#~ msgid "Regular expression for matching addresses"
+#~ msgstr "Espressione regolare per selezionare l'indirizzo"
+
+#, fuzzy
+#~ msgid "List of systems"
+#~ msgstr "Lista degli utenti"
+
+#~ msgid "Server"
+#~ msgstr "Server"
+
+#, fuzzy
+#~ msgid "Terminal"
+#~ msgstr "Terminali"
+
+#, fuzzy
+#~ msgid "Show users"
+#~ msgstr "Mostra utenti Samba"
+
+#, fuzzy
+#~ msgid "Show groups"
+#~ msgstr "Mostra gruppi samba"
+
+#~ msgid "Show servers"
+#~ msgstr "Mostra server"
+
+#~ msgid "Show workstations"
+#~ msgstr "Mostra workstation"
+
+#~ msgid "Show terminals"
+#~ msgstr "Mostra terminali"
+
+#, fuzzy
+#~ msgid "Available systems"
+#~ msgstr "Applicazioni disponibili"
+
+#~ msgid "Object name"
+#~ msgstr "Nome dell'oggetto"
+
+#, fuzzy
+#~ msgid "Select to see terminals"
+#~ msgstr "Seleziona per mostrare le applicazioni"
+
+#, fuzzy
+#~ msgid "Select to see workstations"
+#~ msgstr "Seleziona per mostrare le applicazioni"
+
+#~ msgid "Regular expression for matching group names"
+#~ msgstr "Espressioni regolare per selezionare il nome del gruppo"
+
+#, fuzzy
+#~ msgid "Select to see users"
+#~ msgstr "Rimuovi"
+
+#, fuzzy
+#~ msgid "Select to see groups"
+#~ msgstr "Mostra gruppi che contengono utenti"
+
+#~ msgid "Apply"
+#~ msgstr "Applica"
+
+#, fuzzy
+#~ msgid "If you're sure, press 'Delete' to continue or 'Cancel' to abort."
+#~ msgstr ""
+#~ "Quindi - Se sei sicuro - premi <i>Rimuovi</i> per continuare o "
+#~ "<i>Annulla</i> per abortire."
+
+#, fuzzy
+#~ msgid "Sudo role administration"
+#~ msgstr "Amministrazione dei gruppi di utenti"
+
+#, fuzzy
+#~ msgid "Select all"
+#~ msgstr "Rimuovi"
+
+#~ msgid "Department"
+#~ msgstr "Dipartimento"
+
+#, fuzzy
+#~ msgid "Regular expression for matching role names"
+#~ msgstr "Espressioni regolare per selezionare il nome del gruppo"
+
+#, fuzzy
+#~ msgid "Regular expression for matching role member names"
+#~ msgstr "Espressioni regolare per selezionare il nome del gruppo"
+
+#~ msgid "Edit this entry"
+#~ msgstr "Modifica questo record"
+
+#~ msgid "Delete this entry"
+#~ msgstr "Elimina questo record"
+
+#, fuzzy
+#~ msgid "Number of listed roles"
+#~ msgstr "Nome del gruppo"
+
+#, fuzzy
+#~ msgid "Sudo roles"
+#~ msgstr "Utenti di Dominio"
+
+#, fuzzy
+#~ msgid "Permission"
+#~ msgstr "Permessi"
+
+#, fuzzy
+#~ msgid "Permission error"
+#~ msgstr "Permessi"

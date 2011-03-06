@@ -1,0 +1,39 @@
+dn: cn={21}rfc2739
+objectClass: olcSchemaConfig
+cn: {21}rfc2739
+olcAttributeTypes: {0}( 1.2.840.113556.1.4.478 NAME 'calCalURI' DESC 'RFC2739:
+  URI of entire default calendar' EQUALITY caseIgnoreIA5Match SUBSTR caseIgnor
+ eIA5SubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 )
+olcAttributeTypes: {1}( 1.2.840.113556.1.4.479 NAME 'calFBURL' DESC 'RFC2739: 
+ URI to the users default freebusy data' EQUALITY caseIgnoreIA5Match SUBSTR ca
+ seIgnoreIA5SubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 )
+olcAttributeTypes: {2}( 1.2.840.113556.1.4.480 NAME 'calCAPURI' DESC 'RFC2739:
+  URI used to communicate with the users calendar' EQUALITY caseIgnoreIA5Match
+  SUBSTR caseIgnoreIA5SubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 )
+olcAttributeTypes: {3}( 1.2.840.113556.1.4.481 NAME 'calCalAdrURI' DESC 'RFC27
+ 39: URI for event equests destination' EQUALITY caseIgnoreIA5Match SUBSTR cas
+ eIgnoreIA5SubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 )
+olcAttributeTypes: {4}( 1.2.840.113556.1.4.482 NAME 'calOtherCalURIs' DESC 'RF
+ C2739: multi-value URI for snapshots of other calendars' EQUALITY caseIgnoreI
+ A5Match SUBSTR caseIgnoreIA5SubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1
+ .26 )
+olcAttributeTypes: {5}( 1.2.840.113556.1.4.483 NAME 'calOtherFBURLs' DESC 'RFC
+ 2739: multi-value URI for other free/busy data' EQUALITY caseIgnoreIA5Match S
+ UBSTR caseIgnoreIA5SubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 )
+olcAttributeTypes: {6}( 1.2.840.113556.1.4.484 NAME 'calOtherCAPURIs' DESC 'RF
+ C2739: multi-value URI to other calendars' EQUALITY caseIgnoreIA5Match SUBSTR
+  caseIgnoreIA5SubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 )
+olcAttributeTypes: {7}( 1.2.840.113556.1.4.485 NAME 'calOtherCalAdrURIs' DESC 
+ 'RFC2739: multi-value URI to other request destinations' EQUALITY caseIgnoreI
+ A5Match SUBSTR caseIgnoreIA5SubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1
+ .26 )
+olcObjectClasses: {0}( 1.2.840.113556.1.5.87 NAME 'calEntry' DESC 'RFC2739: Ca
+ lendar Entry' SUP top AUXILIARY MAY ( calCalURI $ calFBURL $ calOtherCalURIs 
+ $ calOtherFBURLs $ calCAPURI $ calOtherCAPURIs ) )
+structuralObjectClass: olcSchemaConfig
+entryUUID: 930d9442-f06e-102e-8dfa-8fb5433f09ac
+creatorsName: cn=config
+createTimestamp: 20100510105730Z
+entryCSN: 20100510105730.779465Z#000000#000#000000
+modifiersName: cn=config
+modifyTimestamp: 20100510105730Z

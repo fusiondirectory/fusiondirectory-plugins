@@ -1,0 +1,771 @@
+# Translation of messages.po to Russian
+# Valia V. Vaneeva <fattie@altlinux.ru>, 2004.
+# $Id: messages.po,v 1.61 2005/04/18 10:37:13 migor-guest Exp $
+msgid ""
+msgstr ""
+"Project-Id-Version: messages\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-10-29 19:38+0200\n"
+"PO-Revision-Date: 2005-04-18 14:35+0300\n"
+"Last-Translator: Igor Muratov <migor@altlinux.org>\n"
+"Language-Team: ALT Linux Team\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: poEdit 1.3.1\n"
+
+#: admin/systems/samba/wingeneric.tpl:6
+#, fuzzy
+msgid "Machine name"
+msgstr "Название"
+
+#: admin/systems/samba/wingeneric.tpl:17
+#: admin/systems/samba/class_winGeneric.inc:322
+msgid "Base"
+msgstr "Ветка"
+
+#: admin/systems/samba/wingeneric.tpl:29
+#: admin/systems/samba/class_winGeneric.inc:323
+msgid "Description"
+msgstr "Описание"
+
+#: admin/systems/samba/class_winGeneric.inc:112
+#, fuzzy
+msgid "network"
+msgstr "Добавить объект"
+
+#: admin/systems/samba/class_winGeneric.inc:148
+#: admin/systems/samba/class_winGeneric.inc:296
+#: personal/samba/class_sambaAccount.inc:841
+#: personal/samba/class_sambaAccount.inc:1089
+#, fuzzy
+msgid "LDAP error"
+msgstr "Ошибка LDAP:"
+
+#: admin/systems/samba/class_winGeneric.inc:178
+msgid "Error"
+msgstr ""
+
+#: admin/systems/samba/class_winGeneric.inc:211
+#: admin/systems/samba/class_winGeneric.inc:321
+msgid "Name"
+msgstr "Фамилия"
+
+#: admin/systems/samba/class_winGeneric.inc:312
+#, fuzzy
+msgid "Win generic"
+msgstr "Служба печати"
+
+#: admin/systems/samba/class_winGeneric.inc:313
+#, fuzzy
+msgid "Windows workstation generic"
+msgstr "Имя рабочий станции"
+
+#: admin/systems/samba/class_winGeneric.inc:318
+#, fuzzy
+msgid "Win workstation"
+msgstr "Рабочая станция Windows"
+
+#: personal/samba/samba3.tpl:6
+msgid "Generic"
+msgstr "Общее"
+
+#: personal/samba/samba3.tpl:13 personal/samba/samba3.tpl:109
+#: personal/samba/class_sambaAccount.inc:864
+#: personal/samba/class_sambaAccount.inc:1216
+msgid "Home directory"
+msgstr "Домашний каталог"
+
+#: personal/samba/samba3.tpl:26 personal/samba/class_sambaAccount.inc:1166
+msgid "Domain"
+msgstr "Домен"
+
+#: personal/samba/samba3.tpl:35
+#, fuzzy
+msgid "Show information"
+msgstr "Личная информация"
+
+#: personal/samba/samba3.tpl:47
+msgid "Script path"
+msgstr "Путь к сценариям"
+
+#: personal/samba/samba3.tpl:55 personal/samba/samba3.tpl:122
+#: personal/samba/class_sambaAccount.inc:865
+#: personal/samba/class_sambaAccount.inc:1217
+msgid "Profile path"
+msgstr "Путь к профилю"
+
+#: personal/samba/samba3.tpl:69
+msgid "Terminal Server"
+msgstr "Терминальный сервер"
+
+#: personal/samba/samba3.tpl:106 personal/samba/class_sambaAccount.inc:1169
+msgid "Allow login on terminal server"
+msgstr "Разрешить вход на терминальный сервер"
+
+#: personal/samba/samba3.tpl:143 personal/samba/class_sambaAccount.inc:1170
+msgid "Inherit client config"
+msgstr "Унаследовать конфигурацию клиента"
+
+#: personal/samba/samba3.tpl:146
+msgid "Initial program"
+msgstr "Начальная программа"
+
+#: personal/samba/samba3.tpl:154
+msgid "Working directory"
+msgstr "Рабочий каталог"
+
+#: personal/samba/samba3.tpl:171
+msgid "Timeout settings (in minutes)"
+msgstr "Настройки таймаута (в минутах)"
+
+#: personal/samba/samba3.tpl:187 personal/samba/class_sambaAccount.inc:872
+#: personal/samba/class_sambaAccount.inc:1224
+msgid "Connection"
+msgstr "Подключение"
+
+#: personal/samba/samba3.tpl:201 personal/samba/class_sambaAccount.inc:873
+#: personal/samba/class_sambaAccount.inc:1225
+msgid "Disconnection"
+msgstr "Отключение"
+
+#: personal/samba/samba3.tpl:215 personal/samba/class_sambaAccount.inc:874
+#: personal/samba/class_sambaAccount.inc:1226
+msgid "IDLE"
+msgstr "Простой"
+
+#: personal/samba/samba3.tpl:231
+msgid "Client devices"
+msgstr "Клиентские устройства"
+
+#: personal/samba/samba3.tpl:238
+msgid "Connect client drives at logon"
+msgstr "Подключить клиентские устройства при входе"
+
+#: personal/samba/samba3.tpl:246
+msgid "Connect client printers at logon"
+msgstr "Подключить клиентские принтеры при входе"
+
+#: personal/samba/samba3.tpl:254
+msgid "Default to main client printer"
+msgstr "Указать принтер по умолчанию"
+
+#: personal/samba/samba3.tpl:264
+msgid "Miscellaneous"
+msgstr "Разное"
+
+#: personal/samba/samba3.tpl:268
+msgid "Shadowing"
+msgstr "Затенение"
+
+#: personal/samba/samba3.tpl:279
+msgid "On broken or timed out"
+msgstr "При обрыве или таймауте"
+
+#: personal/samba/samba3.tpl:289
+msgid "Reconnect if disconnected"
+msgstr "В"
+
+#: personal/samba/samba3.tpl:306
+msgid "Access options"
+msgstr "Параметры доступа"
+
+#: personal/samba/samba3.tpl:325 personal/samba/class_sambaAccount.inc:1172
+#, fuzzy
+msgid "Enforce password change"
+msgstr "Сменить пароль"
+
+#: personal/samba/samba3.tpl:336
+#, fuzzy
+msgid "The password never expires"
+msgstr "Срок действия пароля истекает"
+
+#: personal/samba/samba3.tpl:347 personal/samba/class_sambaAccount.inc:1174
+msgid "Login from windows client requires no password"
+msgstr "Не спрашивать пароль при входе в систему из Windows"
+
+#: personal/samba/samba3.tpl:358 personal/samba/class_sambaAccount.inc:1176
+#, fuzzy
+msgid "Lock samba account"
+msgstr "Удалить учетную запись Samba"
+
+#: personal/samba/samba3.tpl:369
+#, fuzzy
+msgid "Cannot change password"
+msgstr "Сменить пароль"
+
+#: personal/samba/samba3.tpl:386
+#, fuzzy
+msgid "Samba logon times"
+msgstr "Группа Samba"
+
+#: personal/samba/samba3.tpl:386
+#, fuzzy
+msgid "Edit settings..."
+msgstr "Почтовые настройки пользователя"
+
+#: personal/samba/samba3.tpl:395
+msgid "Allow connection from these workstations only"
+msgstr "Разрешить подключения только от этой рабочей станции"
+
+#: personal/samba/samba3.tpl:406
+#, fuzzy
+msgid "Used by all users"
+msgstr "Пользователи домена"
+
+#: personal/samba/samba3.tpl:409
+msgid "Used by some users"
+msgstr ""
+
+#: personal/samba/sambaLogonHours.tpl:22
+#, fuzzy
+msgid "Specify the hours this user is allowed to log in"
+msgstr "Выберите почтовый сервер для учетной записи пользователя"
+
+#: personal/samba/sambaLogonHours.tpl:28
+#, fuzzy
+msgid "Hour"
+msgstr "час"
+
+#: personal/samba/class_sambaAccount.inc:24
+#: personal/samba/class_sambaAccount.inc:235
+#: personal/samba/class_sambaAccount.inc:247
+#: personal/samba/class_sambaAccount.inc:248
+#: personal/samba/class_sambaAccount.inc:255
+#: personal/samba/class_sambaAccount.inc:256
+#: personal/samba/class_sambaAccount.inc:258
+#: personal/samba/class_sambaAccount.inc:259
+#: personal/samba/class_sambaAccount.inc:1153
+msgid "Samba"
+msgstr "Samba"
+
+#: personal/samba/class_sambaAccount.inc:25
+msgid "This does something"
+msgstr "Что-то будет"
+
+#: personal/samba/class_sambaAccount.inc:259
+msgid "POSIX"
+msgstr ""
+
+#: personal/samba/class_sambaAccount.inc:406
+#: personal/samba/class_sambaAccount.inc:651
+#: personal/samba/class_sambaAccount.inc:659
+#: personal/samba/class_sambaAccount.inc:677
+msgid "disabled"
+msgstr "отключен"
+
+#: personal/samba/class_sambaAccount.inc:407
+msgid "input on, notify on"
+msgstr "входящие вкл, оповещение вкл"
+
+#: personal/samba/class_sambaAccount.inc:408
+msgid "input on, notify off"
+msgstr "входящие вкл, оповещение выкл"
+
+#: personal/samba/class_sambaAccount.inc:409
+msgid "input off, notify on"
+msgstr "входящие выкл, оповещение вкл"
+
+#: personal/samba/class_sambaAccount.inc:410
+msgid "input off, nofify off"
+msgstr "входящие выкл, оповещение выкл"
+
+#: personal/samba/class_sambaAccount.inc:412
+msgid "disconnect"
+msgstr "отключиться"
+
+#: personal/samba/class_sambaAccount.inc:413
+msgid "reset"
+msgstr "сброс"
+
+#: personal/samba/class_sambaAccount.inc:414
+msgid "from any client"
+msgstr "от любого клиента"
+
+#: personal/samba/class_sambaAccount.inc:415
+msgid "from previous client only"
+msgstr "только от предыдущего клиента"
+
+#: personal/samba/class_sambaAccount.inc:515
+#, fuzzy, php-format
+msgid "The password is outdated since %s, by domain policy."
+msgstr "Новый пароль слишком короткий."
+
+#: personal/samba/class_sambaAccount.inc:518
+#, fuzzy, php-format
+msgid "The password is valid till %s."
+msgstr "Значение поля \"Квота\" некорректно."
+
+#: personal/samba/class_sambaAccount.inc:631
+#: personal/samba/class_sambaAccount.inc:637
+#: personal/samba/class_sambaAccount.inc:643
+#: personal/samba/class_sambaAccount.inc:651
+#: personal/samba/class_sambaAccount.inc:659
+#: personal/samba/class_sambaAccount.inc:667
+#: personal/samba/class_sambaAccount.inc:677
+#: personal/samba/class_sambaAccount.inc:683
+#: personal/samba/class_sambaAccount.inc:691
+#, fuzzy
+msgid "default"
+msgstr "Удалить"
+
+#: personal/samba/class_sambaAccount.inc:637
+#: personal/samba/class_sambaAccount.inc:643
+#, fuzzy
+msgid "Off"
+msgstr "не в сети"
+
+#: personal/samba/class_sambaAccount.inc:645
+#, fuzzy
+msgid "On"
+msgstr "Параметры"
+
+#: personal/samba/class_sambaAccount.inc:653
+#: personal/samba/class_sambaAccount.inc:661
+msgid "seconds"
+msgstr ""
+
+#: personal/samba/class_sambaAccount.inc:667
+#: personal/samba/class_sambaAccount.inc:671
+#: personal/samba/class_sambaAccount.inc:763
+#, fuzzy
+msgid "minutes"
+msgstr "Принтер"
+
+#: personal/samba/class_sambaAccount.inc:669
+#, fuzzy
+msgid "forever"
+msgstr "Сервер"
+
+#: personal/samba/class_sambaAccount.inc:683
+#: personal/samba/class_sambaAccount.inc:691
+#, fuzzy
+msgid "off"
+msgstr "не в сети"
+
+#: personal/samba/class_sambaAccount.inc:685
+#: personal/samba/class_sambaAccount.inc:693
+#, fuzzy
+msgid "on"
+msgstr "Домен"
+
+#: personal/samba/class_sambaAccount.inc:701
+#: personal/samba/class_sambaAccount.inc:709
+#: personal/samba/class_sambaAccount.inc:717
+#: personal/samba/class_sambaAccount.inc:725
+#: personal/samba/class_sambaAccount.inc:733
+#: personal/samba/class_sambaAccount.inc:741
+#: personal/samba/class_sambaAccount.inc:747
+#: personal/samba/class_sambaAccount.inc:753
+#, fuzzy
+msgid "unset"
+msgstr "Июнь"
+
+#: personal/samba/class_sambaAccount.inc:755
+msgid "immediately"
+msgstr ""
+
+#: personal/samba/class_sambaAccount.inc:761
+#, fuzzy
+msgid "days"
+msgstr "день"
+
+#: personal/samba/class_sambaAccount.inc:762
+#, fuzzy
+msgid "hours"
+msgstr "час"
+
+#: personal/samba/class_sambaAccount.inc:769
+#, fuzzy
+msgid "Domain attributes"
+msgstr "Атрибут DN пользователей"
+
+#: personal/samba/class_sambaAccount.inc:770
+#: personal/samba/class_sambaAccount.inc:771
+#, fuzzy
+msgid "Min password length"
+msgstr "Хэширование паролей"
+
+#: personal/samba/class_sambaAccount.inc:772
+#, fuzzy
+msgid "Password history"
+msgstr "Хэширование паролей"
+
+#: personal/samba/class_sambaAccount.inc:773
+#, fuzzy
+msgid "Force password change"
+msgstr "Сменить пароль"
+
+#: personal/samba/class_sambaAccount.inc:774
+#, fuzzy
+msgid "Maximum password age"
+msgstr "Сменить пароль"
+
+#: personal/samba/class_sambaAccount.inc:775
+#, fuzzy
+msgid "Minimum password age"
+msgstr "Пароль администратора"
+
+#: personal/samba/class_sambaAccount.inc:776
+#, fuzzy
+msgid "Lockout duration"
+msgstr "Местоположение"
+
+#: personal/samba/class_sambaAccount.inc:777
+msgid "Bad lockout attempt"
+msgstr ""
+
+#: personal/samba/class_sambaAccount.inc:778
+#, fuzzy
+msgid "Disconnect time"
+msgstr "Отключение"
+
+#: personal/samba/class_sambaAccount.inc:779
+#, fuzzy
+msgid "Refuse machine password change"
+msgstr "Сменить пароль"
+
+#: personal/samba/class_sambaAccount.inc:781
+#, fuzzy
+msgid "User attributes"
+msgstr "Атрибут DN пользователей"
+
+#: personal/samba/class_sambaAccount.inc:782
+#, fuzzy
+msgid "SID"
+msgstr "GID"
+
+#: personal/samba/class_sambaAccount.inc:783
+#, fuzzy
+msgid "Last failed login"
+msgstr "Список"
+
+#: personal/samba/class_sambaAccount.inc:784
+#, fuzzy
+msgid "Logon attempts"
+msgstr "Атрибут DN пользователей"
+
+#: personal/samba/class_sambaAccount.inc:785
+#, fuzzy
+msgid "Last password update"
+msgstr "Новый пароль"
+
+#: personal/samba/class_sambaAccount.inc:786
+#, fuzzy
+msgid "Last logon"
+msgstr "Список"
+
+#: personal/samba/class_sambaAccount.inc:787
+#, fuzzy
+msgid "Last logoff"
+msgstr "Список"
+
+#: personal/samba/class_sambaAccount.inc:788
+#, fuzzy
+msgid "Automatic logoff"
+msgstr "автоматически"
+
+#: personal/samba/class_sambaAccount.inc:791
+#: personal/samba/class_sambaAccount.inc:796
+#, fuzzy
+msgid "Password expires"
+msgstr "Срок действия пароля истекает"
+
+#: personal/samba/class_sambaAccount.inc:791
+#, fuzzy
+msgid "No"
+msgstr "нет"
+
+#: personal/samba/class_sambaAccount.inc:793
+#, fuzzy, php-format
+msgid "The password would expire on %s, but the password expiry is disabled."
+msgstr "Вы не указали новый пароль."
+
+#: personal/samba/class_sambaAccount.inc:799
+#, fuzzy
+msgid "Password change available"
+msgstr "Сменить пароль"
+
+#: personal/samba/class_sambaAccount.inc:857
+#, fuzzy
+msgid "Home drive"
+msgstr "Домашний каталог"
+
+#: personal/samba/class_sambaAccount.inc:860
+#, fuzzy
+msgid "Home path"
+msgstr "Домашний телефон"
+
+#: personal/samba/class_sambaAccount.inc:883
+#, fuzzy
+msgid "The windows usermanager allows eight clients at maximum!"
+msgstr ""
+"Менеджер пользователей Windows допускает подключение только восми клиентов. "
+"Вы указали больше чем восем."
+
+#: personal/samba/class_sambaAccount.inc:902
+msgid "Information"
+msgstr "Информация"
+
+#: personal/samba/class_sambaAccount.inc:1030
+#: personal/samba/class_sambaAccount.inc:1054
+msgid "Warning"
+msgstr "Предупреждение"
+
+#: personal/samba/class_sambaAccount.inc:1030
+msgid "Undefined Samba SID detected. Please fix this problem manually!"
+msgstr ""
+
+#: personal/samba/class_sambaAccount.inc:1055
+msgid ""
+"Cannot convert primary group to samba group: group cannot be identified!"
+msgstr ""
+
+#: personal/samba/class_sambaAccount.inc:1154 personal/samba/main.inc:136
+msgid "Samba settings"
+msgstr "Настройки Samba"
+
+#: personal/samba/class_sambaAccount.inc:1158
+msgid "My account"
+msgstr "Моя учетная запись"
+
+#: personal/samba/class_sambaAccount.inc:1164
+#, fuzzy
+msgid "Generic home directory"
+msgstr "Домашний каталог"
+
+#: personal/samba/class_sambaAccount.inc:1165
+msgid "Generic samba home drive"
+msgstr ""
+
+#: personal/samba/class_sambaAccount.inc:1167
+#, fuzzy
+msgid "Generic script path"
+msgstr "Путь к сценариям"
+
+#: personal/samba/class_sambaAccount.inc:1168
+#, fuzzy
+msgid "Generic profile path"
+msgstr "Путь к профилю"
+
+#: personal/samba/class_sambaAccount.inc:1173
+#, fuzzy
+msgid "Disallow password change"
+msgstr "Сменить пароль"
+
+#: personal/samba/class_sambaAccount.inc:1175
+#, fuzzy
+msgid "Password never expires"
+msgstr "Срок действия пароля истекает"
+
+#: personal/samba/class_sambaAccount.inc:1178
+#, fuzzy
+msgid "Logon hours"
+msgstr "один час"
+
+#: personal/samba/class_sambaAccount.inc:1179
+#, fuzzy
+msgid "Allow connection from"
+msgstr "Разрешить подключения только от этой рабочей станции"
+
+#: personal/samba/class_sambaAccount.inc:1236
+msgid ""
+"The windows user manager only allows eight clients. You've specified more "
+"than eight."
+msgstr ""
+"Менеджер пользователей Windows допускает подключение только восми клиентов. "
+"Вы указали больше чем восем."
+
+#: personal/samba/samba3_workstations.tpl:6
+msgid "Select workstations to add"
+msgstr "Выберите рабочие станции для добавления"
+
+#: personal/samba/samba3_workstations.tpl:20
+msgid "Filters"
+msgstr "Фильтры"
+
+#: personal/samba/samba3_workstations.tpl:26
+msgid "Display workstations of department"
+msgstr "Показать рабочие станции подразделения"
+
+#: personal/samba/samba3_workstations.tpl:27
+msgid "Choose the department the search will be based on"
+msgstr "Выбрать раздел, для которого будет осуществлен поиск"
+
+#: personal/samba/samba3_workstations.tpl:31
+msgid "Regular expression for matching addresses"
+msgstr "Регулярное выражение для поиска адреса"
+
+#, fuzzy
+#~ msgid "Account expires after"
+#~ msgstr "Учетная запись"
+
+#~ msgid "Password expires on"
+#~ msgstr "Срок действия пароля истекает"
+
+#, fuzzy
+#~ msgid "Allow user to change password"
+#~ msgstr "Разрешить пользователям менять пароль с клиента"
+
+#~ msgid "Choose subtree to place group in"
+#~ msgstr "Выберите ветку для группы"
+
+#, fuzzy
+#~ msgid "Select a base"
+#~ msgstr "Выберите, чтобы просмотреть серверы"
+
+#~ msgid "Allow user to change password from client"
+#~ msgstr "Разрешить пользователям менять пароль с клиента"
+
+#, fuzzy
+#~ msgid "Account expires"
+#~ msgstr "Учетная запись"
+
+#, fuzzy
+#~ msgid "Please select an entry!"
+#~ msgstr "Введите корректный серийный номер"
+
+#~ msgid "Samba home"
+#~ msgstr "Домашний каталог Samba"
+
+#~ msgid "Temporary disable samba account"
+#~ msgstr "Временно отключить учетную запись Samba"
+
+#, fuzzy
+#~ msgid "Show"
+#~ msgstr "Показать группы"
+
+#~ msgid "Choose subtree to place terminal in"
+#~ msgstr "Выберите ветку терминала"
+
+#~ msgid "Workstation name"
+#~ msgstr "Имя рабочий станции"
+
+#~ msgid "Add"
+#~ msgstr "Добавить"
+
+#~ msgid "Delete"
+#~ msgstr "Удалить"
+
+#~ msgid "Cancel"
+#~ msgstr "Отмена"
+
+#~ msgid "Apply"
+#~ msgstr "Применить"
+
+#, fuzzy
+#~ msgid "This 'dn' has no network features."
+#~ msgstr "Этот DN не имеет свойств принтера."
+
+#, fuzzy
+#~ msgid "You have no permissions to create a component on this 'Base'."
+#~ msgstr "У вас недостаточно прав для создания телефонов в этой ветке."
+
+#~ msgid "There is already an entry '%s' in the base choosen by you"
+#~ msgstr "В выбранной вами ветке уже есть запись \"%s\""
+
+#, fuzzy
+#~ msgid "Monday"
+#~ msgstr "день"
+
+#, fuzzy
+#~ msgid "Tuesday"
+#~ msgstr "день"
+
+#, fuzzy
+#~ msgid "Thursday"
+#~ msgstr "час"
+
+#, fuzzy
+#~ msgid "Friday"
+#~ msgstr "день"
+
+#, fuzzy
+#~ msgid "Saturday"
+#~ msgstr "Адм. единица"
+
+#~ msgid "This account has no samba extensions."
+#~ msgstr "В этой учетной записи нет расширений Samba."
+
+#~ msgid "Remove samba account"
+#~ msgstr "Удалить учетную запись Samba"
+
+#~ msgid ""
+#~ "This account has samba features enabled. You can disable them by clicking "
+#~ "below."
+#~ msgstr ""
+#~ "В этой учетной записи есть настройки Samba. Вы можете отключить их, "
+#~ "щелкнув ниже."
+
+#~ msgid "Create samba account"
+#~ msgstr "Создать учетную запись Samba"
+
+#~ msgid ""
+#~ "This account has samba features disabled. You can enable them by clicking "
+#~ "below."
+#~ msgstr ""
+#~ "В этой учетной записи нет настроек Samba. Вы можете включить их, щелкнув "
+#~ "ниже."
+
+#~ msgid ""
+#~ "This account has samba features disabled. Posix features are needed for "
+#~ "samba accounts, enable them first."
+#~ msgstr ""
+#~ "В этой учетной записи нет настроек Samba. Для учетных записей Samba нужны "
+#~ "атрибуты POSIX, включите сначала их использование."
+
+#~ msgid "January"
+#~ msgstr "Январь"
+
+#~ msgid "February"
+#~ msgstr "Февраль"
+
+#~ msgid "March"
+#~ msgstr "Март"
+
+#~ msgid "April"
+#~ msgstr "Апрель"
+
+#~ msgid "May"
+#~ msgstr "Май"
+
+#~ msgid "July"
+#~ msgstr "Июль"
+
+#~ msgid "August"
+#~ msgstr "Август"
+
+#~ msgid "September"
+#~ msgstr "Сентябрь"
+
+#~ msgid "October"
+#~ msgstr "Октябрь"
+
+#~ msgid "November"
+#~ msgstr "Ноябрь"
+
+#~ msgid "December"
+#~ msgstr "Декабрь"
+
+#, fuzzy
+#~ msgid "Removing of user/samba account with dn '%s' failed."
+#~ msgstr "Удалить учетную запись Samba"
+
+#~ msgid "The value specified as '%s' contains invalid characters!"
+#~ msgstr "Значение '%s' содержит недопустимые символы."
+
+#~ msgid ""
+#~ "The timeout property '%s' is checked and contains invalid or no "
+#~ "characters!"
+#~ msgstr "Значение таймаута '%s' пустое или содержит недопустимые символы."
+
+#, fuzzy
+#~ msgid "Saving of user/samba account with dn '%s' failed."
+#~ msgstr "Моя учетная запись"
+
+#~ msgid "Click the 'Edit' button below to change informations in this dialog"
+#~ msgstr "Нажмите 'Изменить' чтобы отредактировать данные в этой форме."
+
+#~ msgid "Edit"
+#~ msgstr "Изменить"

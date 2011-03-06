@@ -1,0 +1,61 @@
+<?php
+
+/*
+  This code is part of FusionDirectory (http://www.fusiondirectory.org/)
+  Copyright (C) 2003-2010  Cajus Pollmeier
+  Copyright (C) 2011  FusionDirectory
+
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program; if not, write to the Free Software
+  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+*/
+
+class phonetabs extends tabs
+{
+
+  function phonetabs($config, $data, $dn,$category)
+  {
+    tabs::tabs($config, $data, $dn,$category);
+
+    /* Add references/acls/snapshots */
+    $this->addSpecialTabs();
+  }
+
+  function save_object($save_current= FALSE)
+  {
+    tabs::save_object($save_current);
+
+    $baseobject = $this->by_object['phoneGeneric'];
+    $baseobject->netConfigDNS->cn= $baseobject->cn;
+  }
+
+
+  function save($ignore_account= FALSE)
+  {
+    /* Check for new 'dn', in order to propagate the
+       'dn' to all plugins */
+    $baseobject= $this->by_object['phoneGeneric'];
+    $this->dn= "cn=$baseobject->cn,".get_ou('phoneRDN').$baseobject->base;
+    $baseobject->dn= $this->dn;
+
+    foreach ($this->by_object as $key => $obj){
+      $this->by_object[$key]->dn= $this->dn;
+    }
+
+    tabs::save(TRUE);
+  }
+
+}
+
+// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
+?>
