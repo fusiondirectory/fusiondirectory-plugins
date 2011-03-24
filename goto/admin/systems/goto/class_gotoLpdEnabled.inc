@@ -50,7 +50,7 @@ class gotoLpdEnable extends plugin
       "s_Speed","s_FlowControl","s_Parity","i_Bit");
 
   /*! \brief  Create gotoLpdEnable dialog, allows to edit printer settings.
-      @param  Object  $config  The GOsa configuration object.
+      @param  Object  $config  The FusionDirectory configuration object.
       @param  Array   $data    The values for attribute 'gotoLpdEnable'
                       e.g.     array("U:/dev/usb/lp0:9100:9600:S:E:0:Y:options",
                                "U:/dev/usb/lp1:9101:9600:S:E:5:Y:", ...)

@@ -1,7 +1,8 @@
 <?php
 /*
-  This code is part of GOsa (https://gosa.gonicus.de)
-  Copyright (C) 2003  Cajus Pollmeier
+  This code is part of FusionDirectory (http://www.fusiondirectory.org/)
+  Copyright (C) 2003-2010  Cajus Pollmeier
+  Copyright (C) 2011  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -16,10 +17,10 @@
   You should have received a copy of the GNU General Public License
   along with this program; if not, write to the Free Software
   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-*/
+ */
 
-/* Remove locks created by this plugin
-*/
+/* Remove locks created by this plugin */
+
 if ($remove_lock){
   if(session::is_set('mailqueue')){
     // Nothing to unlock here

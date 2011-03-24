@@ -7,78 +7,86 @@ msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-29 19:38+0200\n"
+"POT-Creation-Date: 2011-03-24 23:38+0100\n"
 "PO-Revision-Date: 2007-06-03 12:27+0800\n"
 "Last-Translator: Jiang Xin <worldhello.net@gmail.com>\n"
 "Language-Team: Chinese Simplified <zh@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "X-Generator: KBabel 1.11.4\n"
+
+#: admin/systems/samba/class_winGeneric.inc:132
+#, fuzzy
+msgid "network"
+msgstr "添加清单(inventory)"
+
+#: admin/systems/samba/class_winGeneric.inc:168
+#: admin/systems/samba/class_winGeneric.inc:316
+#: personal/samba/class_sambaAccount.inc:850
+#: personal/samba/class_sambaAccount.inc:1112
+#, fuzzy
+msgid "LDAP error"
+msgstr "LDAP 错误:"
+
+#: admin/systems/samba/class_winGeneric.inc:198
+msgid "Error"
+msgstr "错误"
+
+#: admin/systems/samba/class_winGeneric.inc:231
+#: admin/systems/samba/class_winGeneric.inc:341
+msgid "Name"
+msgstr "名称"
+
+#: admin/systems/samba/class_winGeneric.inc:332
+#, fuzzy
+msgid "Win generic"
+msgstr "通用配置"
+
+#: admin/systems/samba/class_winGeneric.inc:333
+#, fuzzy
+msgid "Windows workstation generic"
+msgstr "Windows 工作站"
+
+#: admin/systems/samba/class_winGeneric.inc:338
+#, fuzzy
+msgid "Win workstation"
+msgstr "Windows 工作站"
+
+#: admin/systems/samba/class_winGeneric.inc:342
+#: admin/systems/samba/wingeneric.tpl:17
+msgid "Base"
+msgstr "位置"
+
+#: admin/systems/samba/class_winGeneric.inc:343
+#: admin/systems/samba/wingeneric.tpl:29
+msgid "Description"
+msgstr "描述"
 
 #: admin/systems/samba/wingeneric.tpl:6
 msgid "Machine name"
 msgstr "机器名称"
 
-#: admin/systems/samba/wingeneric.tpl:17
-#: admin/systems/samba/class_winGeneric.inc:322
-msgid "Base"
-msgstr "位置"
+#: personal/samba/sambaLogonHours.tpl:22
+msgid "Specify the hours this user is allowed to log in"
+msgstr "指定用户允许登录几个小时"
 
-#: admin/systems/samba/wingeneric.tpl:29
-#: admin/systems/samba/class_winGeneric.inc:323
-msgid "Description"
-msgstr "描述"
-
-#: admin/systems/samba/class_winGeneric.inc:112
-#, fuzzy
-msgid "network"
-msgstr "添加清单(inventory)"
-
-#: admin/systems/samba/class_winGeneric.inc:148
-#: admin/systems/samba/class_winGeneric.inc:296
-#: personal/samba/class_sambaAccount.inc:841
-#: personal/samba/class_sambaAccount.inc:1089
-#, fuzzy
-msgid "LDAP error"
-msgstr "LDAP 错误:"
-
-#: admin/systems/samba/class_winGeneric.inc:178
-msgid "Error"
-msgstr "错误"
-
-#: admin/systems/samba/class_winGeneric.inc:211
-#: admin/systems/samba/class_winGeneric.inc:321
-msgid "Name"
-msgstr "名称"
-
-#: admin/systems/samba/class_winGeneric.inc:312
-#, fuzzy
-msgid "Win generic"
-msgstr "通用配置"
-
-#: admin/systems/samba/class_winGeneric.inc:313
-#, fuzzy
-msgid "Windows workstation generic"
-msgstr "Windows 工作站"
-
-#: admin/systems/samba/class_winGeneric.inc:318
-#, fuzzy
-msgid "Win workstation"
-msgstr "Windows 工作站"
+#: personal/samba/sambaLogonHours.tpl:28
+msgid "Hour"
+msgstr "小时"
 
 #: personal/samba/samba3.tpl:6
 msgid "Generic"
 msgstr "通用配置"
 
 #: personal/samba/samba3.tpl:13 personal/samba/samba3.tpl:109
-#: personal/samba/class_sambaAccount.inc:864
-#: personal/samba/class_sambaAccount.inc:1216
+#: personal/samba/class_sambaAccount.inc:881
+#: personal/samba/class_sambaAccount.inc:1239
 msgid "Home directory"
 msgstr "用户主目录"
 
-#: personal/samba/samba3.tpl:26 personal/samba/class_sambaAccount.inc:1166
+#: personal/samba/samba3.tpl:26 personal/samba/class_sambaAccount.inc:1189
 msgid "Domain"
 msgstr "域"
 
@@ -92,8 +100,8 @@ msgid "Script path"
 msgstr "脚本路径"
 
 #: personal/samba/samba3.tpl:55 personal/samba/samba3.tpl:122
-#: personal/samba/class_sambaAccount.inc:865
-#: personal/samba/class_sambaAccount.inc:1217
+#: personal/samba/class_sambaAccount.inc:882
+#: personal/samba/class_sambaAccount.inc:1240
 msgid "Profile path"
 msgstr "Profile path"
 
@@ -101,11 +109,11 @@ msgstr "Profile path"
 msgid "Terminal Server"
 msgstr "终端服务器"
 
-#: personal/samba/samba3.tpl:106 personal/samba/class_sambaAccount.inc:1169
+#: personal/samba/samba3.tpl:106 personal/samba/class_sambaAccount.inc:1192
 msgid "Allow login on terminal server"
 msgstr "允许登录到终端服务器"
 
-#: personal/samba/samba3.tpl:143 personal/samba/class_sambaAccount.inc:1170
+#: personal/samba/samba3.tpl:143 personal/samba/class_sambaAccount.inc:1193
 msgid "Inherit client config"
 msgstr "继承客户配置"
 
@@ -121,18 +129,18 @@ msgstr "工作目录"
 msgid "Timeout settings (in minutes)"
 msgstr "超时设置（分钟）"
 
-#: personal/samba/samba3.tpl:187 personal/samba/class_sambaAccount.inc:872
-#: personal/samba/class_sambaAccount.inc:1224
+#: personal/samba/samba3.tpl:187 personal/samba/class_sambaAccount.inc:889
+#: personal/samba/class_sambaAccount.inc:1247
 msgid "Connection"
 msgstr "连接"
 
-#: personal/samba/samba3.tpl:201 personal/samba/class_sambaAccount.inc:873
-#: personal/samba/class_sambaAccount.inc:1225
+#: personal/samba/samba3.tpl:201 personal/samba/class_sambaAccount.inc:890
+#: personal/samba/class_sambaAccount.inc:1248
 msgid "Disconnection"
 msgstr "断开"
 
-#: personal/samba/samba3.tpl:215 personal/samba/class_sambaAccount.inc:874
-#: personal/samba/class_sambaAccount.inc:1226
+#: personal/samba/samba3.tpl:215 personal/samba/class_sambaAccount.inc:891
+#: personal/samba/class_sambaAccount.inc:1249
 msgid "IDLE"
 msgstr "闲"
 
@@ -173,7 +181,7 @@ msgstr "断线重连"
 msgid "Access options"
 msgstr "访问选项"
 
-#: personal/samba/samba3.tpl:325 personal/samba/class_sambaAccount.inc:1172
+#: personal/samba/samba3.tpl:325 personal/samba/class_sambaAccount.inc:1195
 #, fuzzy
 msgid "Enforce password change"
 msgstr "不允许修改口令"
@@ -183,11 +191,11 @@ msgstr "不允许修改口令"
 msgid "The password never expires"
 msgstr "口令过期截止日"
 
-#: personal/samba/samba3.tpl:347 personal/samba/class_sambaAccount.inc:1174
+#: personal/samba/samba3.tpl:347 personal/samba/class_sambaAccount.inc:1197
 msgid "Login from windows client requires no password"
 msgstr "从 Windows 客户端登录不需要口令"
 
-#: personal/samba/samba3.tpl:358 personal/samba/class_sambaAccount.inc:1176
+#: personal/samba/samba3.tpl:358 personal/samba/class_sambaAccount.inc:1199
 msgid "Lock samba account"
 msgstr "锁定 samba 账号"
 
@@ -196,373 +204,377 @@ msgstr "锁定 samba 账号"
 msgid "Cannot change password"
 msgstr "修改口令"
 
-#: personal/samba/samba3.tpl:386
+#: personal/samba/samba3.tpl:388 personal/samba/class_sambaAccount.inc:866
+#: personal/samba/class_sambaAccount.inc:868
+#: personal/samba/class_sambaAccount.inc:1265
+#: personal/samba/class_sambaAccount.inc:1267
+msgid "Account expires after"
+msgstr "账号过期于"
+
+#: personal/samba/samba3.tpl:414
 msgid "Samba logon times"
 msgstr "Samba 登录次数"
 
-#: personal/samba/samba3.tpl:386
+#: personal/samba/samba3.tpl:414
 msgid "Edit settings..."
 msgstr "编辑设置..."
 
-#: personal/samba/samba3.tpl:395
+#: personal/samba/samba3.tpl:423
 msgid "Allow connection from these workstations only"
 msgstr "只允许从这些工作站建立连接"
 
-#: personal/samba/samba3.tpl:406
+#: personal/samba/samba3.tpl:434
 #, fuzzy
 msgid "Used by all users"
 msgstr "域用户"
 
-#: personal/samba/samba3.tpl:409
+#: personal/samba/samba3.tpl:437
 msgid "Used by some users"
 msgstr ""
 
-#: personal/samba/sambaLogonHours.tpl:22
-msgid "Specify the hours this user is allowed to log in"
-msgstr "指定用户允许登录几个小时"
-
-#: personal/samba/sambaLogonHours.tpl:28
-msgid "Hour"
-msgstr "小时"
-
-#: personal/samba/class_sambaAccount.inc:24
-#: personal/samba/class_sambaAccount.inc:235
-#: personal/samba/class_sambaAccount.inc:247
-#: personal/samba/class_sambaAccount.inc:248
-#: personal/samba/class_sambaAccount.inc:255
+#: personal/samba/class_sambaAccount.inc:26
+#: personal/samba/class_sambaAccount.inc:244
 #: personal/samba/class_sambaAccount.inc:256
-#: personal/samba/class_sambaAccount.inc:258
-#: personal/samba/class_sambaAccount.inc:259
-#: personal/samba/class_sambaAccount.inc:1153
+#: personal/samba/class_sambaAccount.inc:257
+#: personal/samba/class_sambaAccount.inc:264
+#: personal/samba/class_sambaAccount.inc:265
+#: personal/samba/class_sambaAccount.inc:267
+#: personal/samba/class_sambaAccount.inc:268
+#: personal/samba/class_sambaAccount.inc:1176
 msgid "Samba"
 msgstr "Samba"
 
-#: personal/samba/class_sambaAccount.inc:25
+#: personal/samba/class_sambaAccount.inc:27
 #, fuzzy
 msgid "This does something"
 msgstr "******"
 
-#: personal/samba/class_sambaAccount.inc:259
+#: personal/samba/class_sambaAccount.inc:268
 msgid "POSIX"
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:406
-#: personal/samba/class_sambaAccount.inc:651
-#: personal/samba/class_sambaAccount.inc:659
-#: personal/samba/class_sambaAccount.inc:677
+#: personal/samba/class_sambaAccount.inc:415
+#: personal/samba/class_sambaAccount.inc:660
+#: personal/samba/class_sambaAccount.inc:668
+#: personal/samba/class_sambaAccount.inc:686
 msgid "disabled"
 msgstr "禁用"
 
-#: personal/samba/class_sambaAccount.inc:407
+#: personal/samba/class_sambaAccount.inc:416
 msgid "input on, notify on"
 msgstr "输入打开，通知打开"
 
-#: personal/samba/class_sambaAccount.inc:408
+#: personal/samba/class_sambaAccount.inc:417
 msgid "input on, notify off"
 msgstr "输入打开，通知关闭"
 
-#: personal/samba/class_sambaAccount.inc:409
+#: personal/samba/class_sambaAccount.inc:418
 msgid "input off, notify on"
 msgstr "输入关闭，通知打开"
 
-#: personal/samba/class_sambaAccount.inc:410
+#: personal/samba/class_sambaAccount.inc:419
 msgid "input off, nofify off"
 msgstr "输入关闭，通知关闭"
 
-#: personal/samba/class_sambaAccount.inc:412
+#: personal/samba/class_sambaAccount.inc:421
 msgid "disconnect"
 msgstr "断开"
 
-#: personal/samba/class_sambaAccount.inc:413
+#: personal/samba/class_sambaAccount.inc:422
 msgid "reset"
 msgstr "重置"
 
-#: personal/samba/class_sambaAccount.inc:414
+#: personal/samba/class_sambaAccount.inc:423
 msgid "from any client"
 msgstr "从任意客户"
 
-#: personal/samba/class_sambaAccount.inc:415
+#: personal/samba/class_sambaAccount.inc:424
 msgid "from previous client only"
 msgstr "只从上一个客户"
 
-#: personal/samba/class_sambaAccount.inc:515
+#: personal/samba/class_sambaAccount.inc:524
 #, fuzzy, php-format
 msgid "The password is outdated since %s, by domain policy."
 msgstr "输入的新口令太短了。"
 
-#: personal/samba/class_sambaAccount.inc:518
+#: personal/samba/class_sambaAccount.inc:527
 #, fuzzy, php-format
 msgid "The password is valid till %s."
 msgstr "Sieve 端口应为数字。"
 
-#: personal/samba/class_sambaAccount.inc:631
-#: personal/samba/class_sambaAccount.inc:637
-#: personal/samba/class_sambaAccount.inc:643
-#: personal/samba/class_sambaAccount.inc:651
-#: personal/samba/class_sambaAccount.inc:659
-#: personal/samba/class_sambaAccount.inc:667
-#: personal/samba/class_sambaAccount.inc:677
-#: personal/samba/class_sambaAccount.inc:683
-#: personal/samba/class_sambaAccount.inc:691
+#: personal/samba/class_sambaAccount.inc:640
+#: personal/samba/class_sambaAccount.inc:646
+#: personal/samba/class_sambaAccount.inc:652
+#: personal/samba/class_sambaAccount.inc:660
+#: personal/samba/class_sambaAccount.inc:668
+#: personal/samba/class_sambaAccount.inc:676
+#: personal/samba/class_sambaAccount.inc:686
+#: personal/samba/class_sambaAccount.inc:692
+#: personal/samba/class_sambaAccount.inc:700
 #, fuzzy
 msgid "default"
 msgstr "删除"
 
-#: personal/samba/class_sambaAccount.inc:637
-#: personal/samba/class_sambaAccount.inc:643
+#: personal/samba/class_sambaAccount.inc:646
+#: personal/samba/class_sambaAccount.inc:652
 msgid "Off"
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:645
+#: personal/samba/class_sambaAccount.inc:654
 #, fuzzy
 msgid "On"
 msgstr "打开"
 
-#: personal/samba/class_sambaAccount.inc:653
-#: personal/samba/class_sambaAccount.inc:661
+#: personal/samba/class_sambaAccount.inc:662
+#: personal/samba/class_sambaAccount.inc:670
 msgid "seconds"
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:667
-#: personal/samba/class_sambaAccount.inc:671
-#: personal/samba/class_sambaAccount.inc:763
+#: personal/samba/class_sambaAccount.inc:676
+#: personal/samba/class_sambaAccount.inc:680
+#: personal/samba/class_sambaAccount.inc:772
 #, fuzzy
 msgid "minutes"
 msgstr "打印机"
 
-#: personal/samba/class_sambaAccount.inc:669
+#: personal/samba/class_sambaAccount.inc:678
 #, fuzzy
 msgid "forever"
 msgstr "服务器"
 
-#: personal/samba/class_sambaAccount.inc:683
-#: personal/samba/class_sambaAccount.inc:691
+#: personal/samba/class_sambaAccount.inc:692
+#: personal/samba/class_sambaAccount.inc:700
 msgid "off"
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:685
-#: personal/samba/class_sambaAccount.inc:693
+#: personal/samba/class_sambaAccount.inc:694
+#: personal/samba/class_sambaAccount.inc:702
 #, fuzzy
 msgid "on"
 msgstr "关闭"
 
-#: personal/samba/class_sambaAccount.inc:701
-#: personal/samba/class_sambaAccount.inc:709
-#: personal/samba/class_sambaAccount.inc:717
-#: personal/samba/class_sambaAccount.inc:725
-#: personal/samba/class_sambaAccount.inc:733
-#: personal/samba/class_sambaAccount.inc:741
-#: personal/samba/class_sambaAccount.inc:747
-#: personal/samba/class_sambaAccount.inc:753
+#: personal/samba/class_sambaAccount.inc:710
+#: personal/samba/class_sambaAccount.inc:718
+#: personal/samba/class_sambaAccount.inc:726
+#: personal/samba/class_sambaAccount.inc:734
+#: personal/samba/class_sambaAccount.inc:742
+#: personal/samba/class_sambaAccount.inc:750
+#: personal/samba/class_sambaAccount.inc:756
+#: personal/samba/class_sambaAccount.inc:762
 #, fuzzy
 msgid "unset"
 msgstr "六月"
 
-#: personal/samba/class_sambaAccount.inc:755
+#: personal/samba/class_sambaAccount.inc:764
 msgid "immediately"
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:761
+#: personal/samba/class_sambaAccount.inc:770
 #, fuzzy
 msgid "days"
 msgstr "星期日"
 
-#: personal/samba/class_sambaAccount.inc:762
+#: personal/samba/class_sambaAccount.inc:771
 #, fuzzy
 msgid "hours"
 msgstr "小时"
 
-#: personal/samba/class_sambaAccount.inc:769
+#: personal/samba/class_sambaAccount.inc:778
 #, fuzzy
 msgid "Domain attributes"
 msgstr "电话属性"
 
-#: personal/samba/class_sambaAccount.inc:770
-#: personal/samba/class_sambaAccount.inc:771
+#: personal/samba/class_sambaAccount.inc:779
+#: personal/samba/class_sambaAccount.inc:780
 #, fuzzy
 msgid "Min password length"
 msgstr "口令存储"
 
-#: personal/samba/class_sambaAccount.inc:772
+#: personal/samba/class_sambaAccount.inc:781
 #, fuzzy
 msgid "Password history"
 msgstr "口令存储"
 
-#: personal/samba/class_sambaAccount.inc:773
+#: personal/samba/class_sambaAccount.inc:782
 #, fuzzy
 msgid "Force password change"
 msgstr "不允许修改口令"
 
-#: personal/samba/class_sambaAccount.inc:774
+#: personal/samba/class_sambaAccount.inc:783
 #, fuzzy
 msgid "Maximum password age"
 msgstr "不允许修改口令"
 
-#: personal/samba/class_sambaAccount.inc:775
+#: personal/samba/class_sambaAccount.inc:784
 #, fuzzy
 msgid "Minimum password age"
 msgstr "管理员口令"
 
-#: personal/samba/class_sambaAccount.inc:776
+#: personal/samba/class_sambaAccount.inc:785
 #, fuzzy
 msgid "Lockout duration"
 msgstr "位置"
 
-#: personal/samba/class_sambaAccount.inc:777
+#: personal/samba/class_sambaAccount.inc:786
 msgid "Bad lockout attempt"
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:778
+#: personal/samba/class_sambaAccount.inc:787
 #, fuzzy
 msgid "Disconnect time"
 msgstr "断开"
 
-#: personal/samba/class_sambaAccount.inc:779
+#: personal/samba/class_sambaAccount.inc:788
 #, fuzzy
 msgid "Refuse machine password change"
 msgstr "不允许修改口令"
 
-#: personal/samba/class_sambaAccount.inc:781
+#: personal/samba/class_sambaAccount.inc:790
 #, fuzzy
 msgid "User attributes"
 msgstr "电话属性"
 
-#: personal/samba/class_sambaAccount.inc:782
+#: personal/samba/class_sambaAccount.inc:791
 #, fuzzy
 msgid "SID"
 msgstr "GID"
 
-#: personal/samba/class_sambaAccount.inc:783
+#: personal/samba/class_sambaAccount.inc:792
 #, fuzzy
 msgid "Last failed login"
 msgstr "姓"
 
-#: personal/samba/class_sambaAccount.inc:784
+#: personal/samba/class_sambaAccount.inc:793
 #, fuzzy
 msgid "Logon attempts"
 msgstr "电话属性"
 
-#: personal/samba/class_sambaAccount.inc:785
+#: personal/samba/class_sambaAccount.inc:794
 #, fuzzy
 msgid "Last password update"
 msgstr "新口令"
 
-#: personal/samba/class_sambaAccount.inc:786
+#: personal/samba/class_sambaAccount.inc:795
 #, fuzzy
 msgid "Last logon"
 msgstr "姓"
 
-#: personal/samba/class_sambaAccount.inc:787
+#: personal/samba/class_sambaAccount.inc:796
 #, fuzzy
 msgid "Last logoff"
 msgstr "姓"
 
-#: personal/samba/class_sambaAccount.inc:788
+#: personal/samba/class_sambaAccount.inc:797
 #, fuzzy
 msgid "Automatic logoff"
 msgstr "自动"
 
-#: personal/samba/class_sambaAccount.inc:791
-#: personal/samba/class_sambaAccount.inc:796
+#: personal/samba/class_sambaAccount.inc:800
+#: personal/samba/class_sambaAccount.inc:805
 #, fuzzy
 msgid "Password expires"
 msgstr "口令过期截止日"
 
-#: personal/samba/class_sambaAccount.inc:791
+#: personal/samba/class_sambaAccount.inc:800
 msgid "No"
 msgstr "否"
 
-#: personal/samba/class_sambaAccount.inc:793
+#: personal/samba/class_sambaAccount.inc:802
 #, fuzzy, php-format
 msgid "The password would expire on %s, but the password expiry is disabled."
 msgstr "输入的“新口令”为空。"
 
-#: personal/samba/class_sambaAccount.inc:799
+#: personal/samba/class_sambaAccount.inc:808
 #, fuzzy
 msgid "Password change available"
 msgstr "不允许修改口令"
 
-#: personal/samba/class_sambaAccount.inc:857
+#: personal/samba/class_sambaAccount.inc:874
 #, fuzzy
 msgid "Home drive"
 msgstr "用户主目录"
 
-#: personal/samba/class_sambaAccount.inc:860
+#: personal/samba/class_sambaAccount.inc:877
 #, fuzzy
 msgid "Home path"
 msgstr "住宅电话"
 
-#: personal/samba/class_sambaAccount.inc:883
+#: personal/samba/class_sambaAccount.inc:900
 #, fuzzy
 msgid "The windows usermanager allows eight clients at maximum!"
 msgstr "Windows 用户管理员只允许八个客户。您指定的超过八个。"
 
-#: personal/samba/class_sambaAccount.inc:902
+#: personal/samba/class_sambaAccount.inc:919
 msgid "Information"
 msgstr "提示信息"
 
-#: personal/samba/class_sambaAccount.inc:1030
-#: personal/samba/class_sambaAccount.inc:1054
+#: personal/samba/class_sambaAccount.inc:1053
+#: personal/samba/class_sambaAccount.inc:1077
 msgid "Warning"
 msgstr "警告"
 
-#: personal/samba/class_sambaAccount.inc:1030
+#: personal/samba/class_sambaAccount.inc:1053
 msgid "Undefined Samba SID detected. Please fix this problem manually!"
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:1055
+#: personal/samba/class_sambaAccount.inc:1078
 msgid ""
 "Cannot convert primary group to samba group: group cannot be identified!"
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:1154 personal/samba/main.inc:136
+#: personal/samba/class_sambaAccount.inc:1177 personal/samba/main.inc:135
 msgid "Samba settings"
 msgstr "Samba 设置"
 
-#: personal/samba/class_sambaAccount.inc:1158
+#: personal/samba/class_sambaAccount.inc:1181
 msgid "My account"
 msgstr "我的账号"
 
-#: personal/samba/class_sambaAccount.inc:1164
+#: personal/samba/class_sambaAccount.inc:1187
 #, fuzzy
 msgid "Generic home directory"
 msgstr "用户主目录"
 
-#: personal/samba/class_sambaAccount.inc:1165
+#: personal/samba/class_sambaAccount.inc:1188
 msgid "Generic samba home drive"
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:1167
+#: personal/samba/class_sambaAccount.inc:1190
 #, fuzzy
 msgid "Generic script path"
 msgstr "脚本路径"
 
-#: personal/samba/class_sambaAccount.inc:1168
+#: personal/samba/class_sambaAccount.inc:1191
 #, fuzzy
 msgid "Generic profile path"
 msgstr "Profile path"
 
-#: personal/samba/class_sambaAccount.inc:1173
+#: personal/samba/class_sambaAccount.inc:1194
+#, fuzzy
+msgid "Account expires"
+msgstr "账号过期于"
+
+#: personal/samba/class_sambaAccount.inc:1196
 #, fuzzy
 msgid "Disallow password change"
 msgstr "不允许修改口令"
 
-#: personal/samba/class_sambaAccount.inc:1175
+#: personal/samba/class_sambaAccount.inc:1198
 #, fuzzy
 msgid "Password never expires"
 msgstr "口令过期截止日"
 
-#: personal/samba/class_sambaAccount.inc:1178
+#: personal/samba/class_sambaAccount.inc:1201
 #, fuzzy
 msgid "Logon hours"
 msgstr "1 小时"
 
-#: personal/samba/class_sambaAccount.inc:1179
+#: personal/samba/class_sambaAccount.inc:1202
 #, fuzzy
 msgid "Allow connection from"
 msgstr "只允许从这些工作站建立连接"
 
-#: personal/samba/class_sambaAccount.inc:1236
+#: personal/samba/class_sambaAccount.inc:1259
 msgid ""
 "The windows user manager only allows eight clients. You've specified more "
 "than eight."
@@ -588,9 +600,6 @@ msgstr "选择一个部门来做查询"
 msgid "Regular expression for matching addresses"
 msgstr "匹配地址的正则表达式"
 
-#~ msgid "Account expires after"
-#~ msgstr "账号过期于"
-
 #~ msgid "Password expires on"
 #~ msgstr "口令过期截止日"
 
@@ -606,10 +615,6 @@ msgstr "匹配地址的正则表达式"
 
 #~ msgid "Allow user to change password from client"
 #~ msgstr "允许用户从客户端修改口令"
-
-#, fuzzy
-#~ msgid "Account expires"
-#~ msgstr "账号过期于"
 
 #~ msgid "Limit Logon Time"
 #~ msgstr "限制登录时间"

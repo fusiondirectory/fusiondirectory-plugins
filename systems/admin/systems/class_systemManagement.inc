@@ -134,13 +134,13 @@ class systemManagement extends management
       $this->snapHandler = new SnapshotHandler($this->config);
     }
 
-    // Check if we are able to communicate with the GOsa supprot daemon
+    // Check if we are able to communicate with GOto-si daemon
     if(class_available("gosaSupportDaemon")){
       $o = new gosaSupportDaemon();
       $this->si_active = $o->connect() && class_available("DaemonEvent");
     }
 
-    // Check if we are able to communicate with the GOsa supprot daemon
+    // Check if we are able to communicate with GOto-si daemon
     if(class_available("opsi")){
       $this->opsi = new opsi($this->config);
     }
@@ -421,7 +421,7 @@ class systemManagement extends management
   }
 
 
-  /*! \brief    Handle GOsa-si events
+  /*! \brief    Handle GOto-si events
    *            All schedules and triggered events are handled here.
    */
   function handleEvent($action="",$target=array(),$all=array())
@@ -452,7 +452,7 @@ class systemManagement extends management
       }
     } 
 
-    // Now send remaining FAI/GOsa-si events here.
+    // Now send remaining FAI/GOto-si events here.
     if(count($target) && $this->si_active){
       $mac= array();
 
@@ -522,7 +522,7 @@ class systemManagement extends management
   
  
   /*! \brief  Save event dialogs. 
-   *          And append the new GOsa-si event.
+   *          And append the new GOto-si event.
    */ 
   function saveEventDialog()
   {

@@ -160,7 +160,7 @@ class gofaxAccount extends plugin
     /* Check if mail account is active. We'll display an additional
        mail address field if this is not the case. Some people may
        want goFax, but have a mailserver which is not managed with
-       GOsa */
+       FusionDirectory */
     if (!@isset($this->parent->by_object['mailAccount'])) {
       $smarty->assign("has_mailaccount", $this->has_mailAccount?"true":"false");
     } elseif ( !$this->parent->by_object['mailAccount']->is_account){

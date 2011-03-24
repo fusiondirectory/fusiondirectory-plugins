@@ -2,104 +2,24 @@ msgid ""
 msgstr ""
 "Project-Id-Version: polski\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-29 19:38+0200\n"
+"POT-Creation-Date: 2011-03-24 23:38+0100\n"
 "PO-Revision-Date: 2007-07-14 21:45+0100\n"
 "Last-Translator: Piotr Rybicki <meritus@innervision.pl>\n"
 "Language-Team: Piotr Rybicki <meritus@innervision.pl>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "X-Poedit-Language: Polish\n"
 "X-Poedit-Country: POLAND\n"
 "X-Poedit-SourceCharset: iso-8859-2\n"
 "X-Poedit-Basepath: tedst\n"
 
-#: admin/roleManagement/class_roleManagement.inc:25
-#: admin/roleManagement/class_roleGeneric.inc:427
-#, fuzzy
-msgid "Roles"
-msgstr "Pełniona funkcja"
-
-#: admin/roleManagement/class_roleManagement.inc:26
-#, fuzzy
-msgid "Role management"
-msgstr "Zarządzanie ACL"
-
-#: admin/roleManagement/remove.tpl:2
-msgid "Warning"
-msgstr "Ostrzeżenie"
-
-#: admin/roleManagement/remove.tpl:6
-msgid ""
-"Please double check if you really want to do this since there is no way for "
-"GOsa to get your data back."
-msgstr "Proszę upewnić się czy kontynuować, gdyż nie ma możliwości powrotu."
-
-#: admin/roleManagement/remove.tpl:10
-msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr ""
-"Jeśli jesteś pewien - naciśnij 'Usuń' aby kontynuować lub 'Anuluj' aby "
-"anulować."
-
-#: admin/roleManagement/class_roleGeneric.inc:238
-#: admin/roleManagement/class_roleGeneric.inc:247
-#: admin/roleManagement/class_roleGeneric.inc:430
-#: admin/roleManagement/role-list.xml:41
-#: admin/roleManagement/role-filter.tpl:17
-#: admin/roleManagement/roleGeneric.tpl:11
-msgid "Name"
-msgstr "Imię"
-
-#: admin/roleManagement/class_roleGeneric.inc:268
-msgid "Unknown"
-msgstr "Nieznane"
-
-#: admin/roleManagement/class_roleGeneric.inc:286
-#: admin/roleManagement/class_roleGeneric.inc:328
-#, fuzzy
-msgid "LDAP error"
-msgstr "błąd LDAP:"
-
-#: admin/roleManagement/class_roleGeneric.inc:371
-msgid "Error"
-msgstr "Błąd"
-
-#: admin/roleManagement/class_roleGeneric.inc:421
-#: admin/roleManagement/roleGeneric.tpl:6
-msgid "Generic"
-msgstr "Ogólne"
-
-#: admin/roleManagement/class_roleGeneric.inc:422
-#, fuzzy
-msgid "Role generic"
-msgstr "Zmień nazwę"
-
-#: admin/roleManagement/class_roleGeneric.inc:431
-#: admin/roleManagement/role-list.xml:49
-#: admin/roleManagement/roleGeneric.tpl:19
-msgid "Description"
-msgstr "Opis"
-
-#: admin/roleManagement/class_roleGeneric.inc:432
 #: admin/roleManagement/role-list.tpl:13
 #: admin/roleManagement/roleGeneric.tpl:29
+#: admin/roleManagement/class_roleGeneric.inc:431
 msgid "Base"
 msgstr "Kontener"
-
-#: admin/roleManagement/class_roleGeneric.inc:433
-msgid "Telefon number"
-msgstr "Numer telefonu"
-
-#: admin/roleManagement/class_roleGeneric.inc:434
-#: admin/roleManagement/roleGeneric.tpl:50
-msgid "Fax number"
-msgstr "Numer fax"
-
-#: admin/roleManagement/class_roleGeneric.inc:435
-#: admin/roleManagement/roleGeneric.tpl:62
-msgid "Occupants"
-msgstr ""
 
 #: admin/roleManagement/role-list.xml:11
 #, fuzzy
@@ -109,6 +29,21 @@ msgstr "Lista użytkowników"
 #: admin/roleManagement/role-list.xml:15 admin/roleManagement/role-list.xml:74
 msgid "Role"
 msgstr "Pełniona funkcja"
+
+#: admin/roleManagement/role-list.xml:41
+#: admin/roleManagement/role-filter.tpl:17
+#: admin/roleManagement/roleGeneric.tpl:11
+#: admin/roleManagement/class_roleGeneric.inc:237
+#: admin/roleManagement/class_roleGeneric.inc:246
+#: admin/roleManagement/class_roleGeneric.inc:429
+msgid "Name"
+msgstr "Imię"
+
+#: admin/roleManagement/role-list.xml:49
+#: admin/roleManagement/roleGeneric.tpl:19
+#: admin/roleManagement/class_roleGeneric.inc:430
+msgid "Description"
+msgstr "Opis"
 
 #: admin/roleManagement/role-list.xml:57
 msgid "Actions"
@@ -136,6 +71,23 @@ msgstr "Edytuj makro"
 msgid "Remove role"
 msgstr "Usuń obiekt"
 
+#: admin/roleManagement/remove.tpl:2
+msgid "Warning"
+msgstr "Ostrzeżenie"
+
+#: admin/roleManagement/remove.tpl:6
+#, fuzzy
+msgid ""
+"Please double check if you really want to do this since there is no way for "
+"FusionDirectory to get your data back."
+msgstr "Proszę upewnić się czy kontynuować, gdyż nie ma możliwości powrotu."
+
+#: admin/roleManagement/remove.tpl:10
+msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
+msgstr ""
+"Jeśli jesteś pewien - naciśnij 'Usuń' aby kontynuować lub 'Anuluj' aby "
+"anulować."
+
 #: admin/roleManagement/paste_generic.tpl:4
 #, fuzzy
 msgid "Role name"
@@ -151,8 +103,57 @@ msgstr "Proszę podać nową nazwę."
 msgid "Filter"
 msgstr "Filtry"
 
+#: admin/roleManagement/roleGeneric.tpl:6
+#: admin/roleManagement/class_roleGeneric.inc:420
+msgid "Generic"
+msgstr "Ogólne"
+
 #: admin/roleManagement/roleGeneric.tpl:42
 msgid "Phone number"
+msgstr "Numer telefonu"
+
+#: admin/roleManagement/roleGeneric.tpl:50
+#: admin/roleManagement/class_roleGeneric.inc:433
+msgid "Fax number"
+msgstr "Numer fax"
+
+#: admin/roleManagement/roleGeneric.tpl:62
+#: admin/roleManagement/class_roleGeneric.inc:434
+msgid "Occupants"
+msgstr ""
+
+#: admin/roleManagement/class_roleManagement.inc:25
+#: admin/roleManagement/class_roleGeneric.inc:426
+#, fuzzy
+msgid "Roles"
+msgstr "Pełniona funkcja"
+
+#: admin/roleManagement/class_roleManagement.inc:26
+#, fuzzy
+msgid "Role management"
+msgstr "Zarządzanie ACL"
+
+#: admin/roleManagement/class_roleGeneric.inc:267
+msgid "Unknown"
+msgstr "Nieznane"
+
+#: admin/roleManagement/class_roleGeneric.inc:285
+#: admin/roleManagement/class_roleGeneric.inc:327
+#, fuzzy
+msgid "LDAP error"
+msgstr "błąd LDAP:"
+
+#: admin/roleManagement/class_roleGeneric.inc:370
+msgid "Error"
+msgstr "Błąd"
+
+#: admin/roleManagement/class_roleGeneric.inc:421
+#, fuzzy
+msgid "Role generic"
+msgstr "Zmień nazwę"
+
+#: admin/roleManagement/class_roleGeneric.inc:432
+msgid "Telefon number"
 msgstr "Numer telefonu"
 
 #~ msgid "Choose subtree to place user in"

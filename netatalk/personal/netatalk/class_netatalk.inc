@@ -385,7 +385,7 @@ class netatalk extends plugin {
   function adapt_from_template($dn, $skip= array())
   {
     /* As the 'apple-user-homeDirectory' LDAP attribute is stored as
-     * 'apple_user_homeDirectory' internally by GOsa (to avoid problem with
+     * 'apple_user_homeDirectory' internally by FusionDirectory (to avoid problem with
      * dashes as variable names), we need to add the dashed version to
      * $this->attributes so that the adapt_from_template function in the plugin
      * class will find the dashed LDAP attribute and substitute possibly

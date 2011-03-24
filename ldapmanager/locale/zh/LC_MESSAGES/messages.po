@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-29 19:38+0200\n"
+"POT-Creation-Date: 2011-03-24 23:38+0100\n"
 "PO-Revision-Date: 2007-06-03 12:27+0800\n"
 "Last-Translator: Jiang Xin <worldhello.net@gmail.com>\n"
 "Language-Team: Chinese Simplified <zh@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "X-Generator: KBabel 1.11.4\n"
 
 #: html/getxls.php:88
@@ -216,10 +216,10 @@ msgstr "全部"
 msgid "Computers of %s on %s"
 msgstr "%s计算机于%s"
 
-#: html/getxls.php:478 addons/ldapmanager/class_import.inc:52
-#: addons/ldapmanager/class_exportxls.inc:106
-#: addons/ldapmanager/class_csvimport.inc:105
-#: addons/ldapmanager/class_export.inc:86
+#: html/getxls.php:478 addons/ldapmanager/class_import.inc:72
+#: addons/ldapmanager/class_exportxls.inc:126
+#: addons/ldapmanager/class_export.inc:106
+#: addons/ldapmanager/class_csvimport.inc:125
 #, fuzzy
 msgid "Permission error"
 msgstr "允许"
@@ -229,127 +229,35 @@ msgstr "允许"
 msgid "You have no permission to do LDAP exports!"
 msgstr "您无权查看和编辑 ACL。"
 
-#: addons/ldapmanager/class_import.inc:6
-#: addons/ldapmanager/class_csvimport.inc:6
-msgid "LDIF export"
-msgstr "LDIF 导出"
-
-#: addons/ldapmanager/class_import.inc:7 addons/ldapmanager/class_ldif.inc:7
-#: addons/ldapmanager/class_exportxls.inc:7
-#: addons/ldapmanager/class_csvimport.inc:7
-#: addons/ldapmanager/class_export.inc:7
-#, fuzzy
-msgid "This does something"
-msgstr "******"
-
-#: addons/ldapmanager/class_import.inc:52
-#, fuzzy
-msgid "You need full write access to the LDAP tree to import data!"
-msgstr "您无权执行这个方法！"
-
-#: addons/ldapmanager/class_import.inc:61
-#: addons/ldapmanager/class_import.inc:68
-#: addons/ldapmanager/class_import.inc:76
-#: addons/ldapmanager/class_exportxls.inc:93
-#: addons/ldapmanager/class_csvimport.inc:165
-#: addons/ldapmanager/class_csvimport.inc:282
-#: addons/ldapmanager/class_csvimport.inc:332
-#: addons/ldapmanager/class_csvimport.inc:337
-#: addons/ldapmanager/class_csvimport.inc:343
-#: addons/ldapmanager/class_csvimport.inc:348
-#: addons/ldapmanager/class_csvimport.inc:491
-#: addons/ldapmanager/class_export.inc:42
-#: addons/ldapmanager/class_export.inc:92
-msgid "Error"
-msgstr "错误"
-
-#: addons/ldapmanager/class_import.inc:61
-#: addons/ldapmanager/class_import.inc:68
-#: addons/ldapmanager/class_import.inc:76
-#: addons/ldapmanager/class_csvimport.inc:332
-#: addons/ldapmanager/class_csvimport.inc:337
-#: addons/ldapmanager/class_csvimport.inc:343
-#: addons/ldapmanager/class_csvimport.inc:348
-#, fuzzy, php-format
-msgid "Cannot read uploaded file: %s"
-msgstr "无法创建文件 '%s'。"
-
-#: addons/ldapmanager/class_import.inc:61
-#: addons/ldapmanager/class_csvimport.inc:337
-#, fuzzy
-msgid "file is empty"
-msgstr "选择的文件为空。"
-
-#: addons/ldapmanager/class_import.inc:68
-#: addons/ldapmanager/class_csvimport.inc:332
-#: addons/ldapmanager/class_csvimport.inc:343
-#, fuzzy
-msgid "file not found"
-msgstr "文件"
-
-#: addons/ldapmanager/class_import.inc:76
-#: addons/ldapmanager/class_csvimport.inc:348
-msgid "file not readable"
-msgstr ""
-
-#: addons/ldapmanager/class_import.inc:110
-#: addons/ldapmanager/class_import.inc:114
-#: addons/ldapmanager/class_export.inc:69
-#, fuzzy
-msgid "LDAP error"
-msgstr "LDAP 错误:"
-
-#: addons/ldapmanager/class_import.inc:118
-#, fuzzy
-msgid "Internal error"
-msgstr "终端服务器"
-
-#: addons/ldapmanager/class_import.inc:118
-#, php-format
-msgid "Undefined flag '%s'!"
-msgstr ""
-
-#: addons/ldapmanager/contentimport.tpl:3
+#: addons/ldapmanager/contentexport.tpl:2
 msgid ""
-"The LDIF import plugin provides methods to upload a set of entries to your "
-"running LDAP directory as ldif. You may use this to add new or modify "
-"existing entries. Remember that GOsa will not check your ldifs for GOsa "
-"conformance."
+"The LDIF export plugin provides methods to download a complete snapshot of "
+"the running LDAP directory as ldif. You may save these files for backup "
+"purpose or when initializing a new server."
 msgstr ""
-"该 LDIF 导入插件提供上传一个 ldif 格式的数据集到正在运行的 LDAP 目录中的方"
-"法。您可以用这个功能添加或更改记录。注意 GOsa 将不会检查您的 ldif 文档格式。"
+"该 LDIF 导出插件提供将运行中的 LDAP 目录整体导出为 ldif 的功能。您可以保存这"
+"些文件用于备份或者初始化一个新服务器。"
 
-#: addons/ldapmanager/contentimport.tpl:10
-msgid "Import LDIF File"
-msgstr "导入 LDIF 文件"
+#: addons/ldapmanager/contentexport.tpl:9
+#: addons/ldapmanager/contentexportxls.tpl:10
+msgid "Export single entry"
+msgstr "导出单条记录"
 
-#: addons/ldapmanager/contentimport.tpl:15
-#: addons/ldapmanager/contentcsv.tpl:14
-msgid "Browse"
-msgstr "浏览"
+#: addons/ldapmanager/contentexport.tpl:15
+#: addons/ldapmanager/contentexport.tpl:27
+#: addons/ldapmanager/contentexportxls.tpl:19
+#: addons/ldapmanager/contentexportxls.tpl:32
+#: addons/ldapmanager/contentexportxls.tpl:47
+msgid "Export"
+msgstr "导出"
 
-#: addons/ldapmanager/contentimport.tpl:24
-#, fuzzy
-msgid "Modify existing objects, keep untouched attributes"
-msgstr "修改已经存在的属性"
+#: addons/ldapmanager/contentexport.tpl:21
+msgid "Export complete LDIF for"
+msgstr "导出整个 LDIF "
 
-#: addons/ldapmanager/contentimport.tpl:25
-msgid "Overwrite existing objects, all not listed attributes will be removed"
-msgstr ""
-
-#: addons/ldapmanager/contentimport.tpl:34
-#, fuzzy
-msgid "Remove existing entries first"
-msgstr "删除 DNS 记录失败"
-
-#: addons/ldapmanager/contentimport.tpl:41
-msgid "Import successful"
-msgstr "导入成功"
-
-#: addons/ldapmanager/contentimport.tpl:50
-#: addons/ldapmanager/contentcsv.tpl:109 addons/ldapmanager/contentcsv.tpl:112
-msgid "Import"
-msgstr "导入"
+#: addons/ldapmanager/main.inc:48 addons/ldapmanager/class_ldif.inc:26
+msgid "LDAP manager"
+msgstr "LDAP 管理"
 
 #: addons/ldapmanager/contentexportxls.tpl:3
 msgid ""
@@ -360,22 +268,9 @@ msgstr ""
 "该 XLS 导出插件提供将运行中的 LDAP 目录整体导出为 xls 的功能。您可以保存这些"
 "文件用于文档。"
 
-#: addons/ldapmanager/contentexportxls.tpl:10
-#: addons/ldapmanager/contentexport.tpl:9
-msgid "Export single entry"
-msgstr "导出单条记录"
-
 #: addons/ldapmanager/contentexportxls.tpl:14
 msgid "Choose the data you want to Export"
 msgstr "选择您要导出的数据"
-
-#: addons/ldapmanager/contentexportxls.tpl:19
-#: addons/ldapmanager/contentexportxls.tpl:32
-#: addons/ldapmanager/contentexportxls.tpl:47
-#: addons/ldapmanager/contentexport.tpl:15
-#: addons/ldapmanager/contentexport.tpl:27
-msgid "Export"
-msgstr "导出"
 
 #: addons/ldapmanager/contentexportxls.tpl:24
 msgid "Export complete XLS for"
@@ -402,49 +297,96 @@ msgstr "点击这里保存整个 LDAP 数据库为一个 xls 文件"
 msgid "Click here to save the LDAP Export to a xls file"
 msgstr "点击这里保存 LDAP 导出为一个 xls 文件"
 
-#: addons/ldapmanager/class_ldif.inc:6 addons/ldapmanager/main.inc:49
-msgid "LDAP manager"
-msgstr "LDAP 管理"
+#: addons/ldapmanager/class_import.inc:26
+#: addons/ldapmanager/class_csvimport.inc:26
+msgid "LDIF export"
+msgstr "LDIF 导出"
 
-#: addons/ldapmanager/class_ldif.inc:35 addons/ldapmanager/class_ldif.inc:36
-#: addons/ldapmanager/class_ldif.inc:41
+#: addons/ldapmanager/class_import.inc:27
+#: addons/ldapmanager/class_exportxls.inc:27
+#: addons/ldapmanager/class_export.inc:27 addons/ldapmanager/class_ldif.inc:27
+#: addons/ldapmanager/class_csvimport.inc:27
 #, fuzzy
-msgid "Ldap manager"
-msgstr "LDAP 管理"
+msgid "This does something"
+msgstr "******"
 
-#: addons/ldapmanager/class_ldif.inc:36
+#: addons/ldapmanager/class_import.inc:72
 #, fuzzy
-msgid "import"
-msgstr "导入"
+msgid "You need full write access to the LDAP tree to import data!"
+msgstr "您无权执行这个方法！"
 
-#: addons/ldapmanager/class_ldif.inc:36
+#: addons/ldapmanager/class_import.inc:81
+#: addons/ldapmanager/class_import.inc:88
+#: addons/ldapmanager/class_import.inc:96
+#: addons/ldapmanager/class_exportxls.inc:113
+#: addons/ldapmanager/class_export.inc:62
+#: addons/ldapmanager/class_export.inc:112
+#: addons/ldapmanager/class_csvimport.inc:185
+#: addons/ldapmanager/class_csvimport.inc:302
+#: addons/ldapmanager/class_csvimport.inc:352
+#: addons/ldapmanager/class_csvimport.inc:357
+#: addons/ldapmanager/class_csvimport.inc:363
+#: addons/ldapmanager/class_csvimport.inc:368
+#: addons/ldapmanager/class_csvimport.inc:511
+msgid "Error"
+msgstr "错误"
+
+#: addons/ldapmanager/class_import.inc:81
+#: addons/ldapmanager/class_import.inc:88
+#: addons/ldapmanager/class_import.inc:96
+#: addons/ldapmanager/class_csvimport.inc:352
+#: addons/ldapmanager/class_csvimport.inc:357
+#: addons/ldapmanager/class_csvimport.inc:363
+#: addons/ldapmanager/class_csvimport.inc:368
+#, fuzzy, php-format
+msgid "Cannot read uploaded file: %s"
+msgstr "无法创建文件 '%s'。"
+
+#: addons/ldapmanager/class_import.inc:81
+#: addons/ldapmanager/class_csvimport.inc:357
 #, fuzzy
-msgid "export"
-msgstr "导出"
+msgid "file is empty"
+msgstr "选择的文件为空。"
 
-#: addons/ldapmanager/contentexport.tpl:2
-msgid ""
-"The LDIF export plugin provides methods to download a complete snapshot of "
-"the running LDAP directory as ldif. You may save these files for backup "
-"purpose or when initializing a new server."
+#: addons/ldapmanager/class_import.inc:88
+#: addons/ldapmanager/class_csvimport.inc:352
+#: addons/ldapmanager/class_csvimport.inc:363
+#, fuzzy
+msgid "file not found"
+msgstr "文件"
+
+#: addons/ldapmanager/class_import.inc:96
+#: addons/ldapmanager/class_csvimport.inc:368
+msgid "file not readable"
 msgstr ""
-"该 LDIF 导出插件提供将运行中的 LDAP 目录整体导出为 ldif 的功能。您可以保存这"
-"些文件用于备份或者初始化一个新服务器。"
 
-#: addons/ldapmanager/contentexport.tpl:21
-msgid "Export complete LDIF for"
-msgstr "导出整个 LDIF "
+#: addons/ldapmanager/class_import.inc:130
+#: addons/ldapmanager/class_import.inc:134
+#: addons/ldapmanager/class_export.inc:89
+#, fuzzy
+msgid "LDAP error"
+msgstr "LDAP 错误:"
 
-#: addons/ldapmanager/class_exportxls.inc:6
+#: addons/ldapmanager/class_import.inc:138
+#, fuzzy
+msgid "Internal error"
+msgstr "终端服务器"
+
+#: addons/ldapmanager/class_import.inc:138
+#, php-format
+msgid "Undefined flag '%s'!"
+msgstr ""
+
+#: addons/ldapmanager/class_exportxls.inc:26
 msgid "XLS import"
 msgstr "导入 XLS"
 
-#: addons/ldapmanager/class_exportxls.inc:93
+#: addons/ldapmanager/class_exportxls.inc:113
 #, fuzzy
 msgid "Cannot export selected entries!"
 msgstr "选择要添加的对象"
 
-#: addons/ldapmanager/class_exportxls.inc:106
+#: addons/ldapmanager/class_exportxls.inc:126
 #, fuzzy, php-format
 msgid "You have no permission to export '%s'!"
 msgstr "您无权进行 LDAP 导出。"
@@ -463,6 +405,11 @@ msgstr ""
 #: addons/ldapmanager/contentcsv.tpl:10
 msgid "Select CSV file to import"
 msgstr "选择要导入的 CSV 文件"
+
+#: addons/ldapmanager/contentcsv.tpl:14
+#: addons/ldapmanager/contentimport.tpl:15
+msgid "Browse"
+msgstr "浏览"
 
 #: addons/ldapmanager/contentcsv.tpl:19
 msgid "Select template"
@@ -484,64 +431,118 @@ msgstr "这里是导入过程的状态报告："
 msgid "Selected Template"
 msgstr "所选模板"
 
-#: addons/ldapmanager/class_csvimport.inc:105
-#, fuzzy
-msgid "You've no permission to import CSV files."
-msgstr "您无权执行 CSV 导入。"
+#: addons/ldapmanager/contentcsv.tpl:109 addons/ldapmanager/contentcsv.tpl:112
+#: addons/ldapmanager/contentimport.tpl:50
+msgid "Import"
+msgstr "导入"
 
-#: addons/ldapmanager/class_csvimport.inc:165
-#, fuzzy
-msgid "Need at least 'sn', 'givenName' and 'uid' to create users."
-msgstr "需要 'sn', 'givenName' 和 'uid' 来创建用户。"
-
-#: addons/ldapmanager/class_csvimport.inc:210
-msgid "failed"
-msgstr "失败"
-
-#: addons/ldapmanager/class_csvimport.inc:214
-msgid "ok"
-msgstr "ok"
-
-#: addons/ldapmanager/class_csvimport.inc:278
-msgid "status"
-msgstr "状态"
-
-#: addons/ldapmanager/class_csvimport.inc:282
-#, fuzzy, php-format
-msgid "Cannot insert entry '%s'!"
-msgstr "未知 FAIstate %s"
-
-#: addons/ldapmanager/class_csvimport.inc:320
-msgid "Information"
-msgstr "提示信息"
-
-#: addons/ldapmanager/class_csvimport.inc:320
-msgid "Nothing to import!"
-msgstr "没有数据导入！"
-
-#: addons/ldapmanager/class_csvimport.inc:491
-#, fuzzy
-msgid "Cannot find CSV data in the selected file!"
-msgstr "无法创建文件 '%s'。"
-
-#: addons/ldapmanager/class_export.inc:6
+#: addons/ldapmanager/class_export.inc:26
 msgid "CSV import"
 msgstr "CSV 导入"
 
-#: addons/ldapmanager/class_export.inc:70
+#: addons/ldapmanager/class_export.inc:90
 #, fuzzy, php-format
 msgid "No such object %s!"
 msgstr "成员对象"
 
-#: addons/ldapmanager/class_export.inc:87
+#: addons/ldapmanager/class_export.inc:107
 #, fuzzy, php-format
 msgid "You have no permission to export %s!"
 msgstr "您无权进行 LDAP 导出。"
 
-#: addons/ldapmanager/class_export.inc:93
+#: addons/ldapmanager/class_export.inc:113
 #, php-format
 msgid "Failed to generate ldap export, error was '%s'!"
 msgstr ""
+
+#: addons/ldapmanager/class_ldif.inc:55 addons/ldapmanager/class_ldif.inc:56
+#: addons/ldapmanager/class_ldif.inc:61
+#, fuzzy
+msgid "Ldap manager"
+msgstr "LDAP 管理"
+
+#: addons/ldapmanager/class_ldif.inc:56
+#, fuzzy
+msgid "import"
+msgstr "导入"
+
+#: addons/ldapmanager/class_ldif.inc:56
+#, fuzzy
+msgid "export"
+msgstr "导出"
+
+#: addons/ldapmanager/contentimport.tpl:3
+#, fuzzy
+msgid ""
+"The LDIF import plugin provides methods to upload a set of entries to your "
+"running LDAP directory as ldif. You may use this to add new or modify "
+"existing entries. Remember that FusionDirectory will not check your ldifs "
+"for FusionDirectory conformance."
+msgstr ""
+"该 LDIF 导入插件提供上传一个 ldif 格式的数据集到正在运行的 LDAP 目录中的方"
+"法。您可以用这个功能添加或更改记录。注意 GOsa 将不会检查您的 ldif 文档格式。"
+
+#: addons/ldapmanager/contentimport.tpl:10
+msgid "Import LDIF File"
+msgstr "导入 LDIF 文件"
+
+#: addons/ldapmanager/contentimport.tpl:24
+#, fuzzy
+msgid "Modify existing objects, keep untouched attributes"
+msgstr "修改已经存在的属性"
+
+#: addons/ldapmanager/contentimport.tpl:25
+msgid "Overwrite existing objects, all not listed attributes will be removed"
+msgstr ""
+
+#: addons/ldapmanager/contentimport.tpl:34
+#, fuzzy
+msgid "Remove existing entries first"
+msgstr "删除 DNS 记录失败"
+
+#: addons/ldapmanager/contentimport.tpl:41
+msgid "Import successful"
+msgstr "导入成功"
+
+#: addons/ldapmanager/class_csvimport.inc:125
+#, fuzzy
+msgid "You've no permission to import CSV files."
+msgstr "您无权执行 CSV 导入。"
+
+#: addons/ldapmanager/class_csvimport.inc:185
+#, fuzzy
+msgid "Need at least 'sn', 'givenName' and 'uid' to create users."
+msgstr "需要 'sn', 'givenName' 和 'uid' 来创建用户。"
+
+#: addons/ldapmanager/class_csvimport.inc:230
+msgid "failed"
+msgstr "失败"
+
+#: addons/ldapmanager/class_csvimport.inc:234
+msgid "ok"
+msgstr "ok"
+
+#: addons/ldapmanager/class_csvimport.inc:298
+msgid "status"
+msgstr "状态"
+
+#: addons/ldapmanager/class_csvimport.inc:302
+#, fuzzy, php-format
+msgid "Cannot insert entry '%s'!"
+msgstr "未知 FAIstate %s"
+
+#: addons/ldapmanager/class_csvimport.inc:340
+msgid "Information"
+msgstr "提示信息"
+
+#: addons/ldapmanager/class_csvimport.inc:340
+msgid "Nothing to import!"
+msgstr "没有数据导入！"
+
+#: addons/ldapmanager/class_csvimport.inc:511
+#, fuzzy
+msgid "Cannot find CSV data in the selected file!"
+msgstr "无法创建文件 '%s'。"
 
 #, fuzzy
 #~ msgid "You have no permission to create LDAP dumps!"

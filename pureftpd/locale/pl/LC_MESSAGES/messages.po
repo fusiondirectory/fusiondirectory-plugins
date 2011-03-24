@@ -2,99 +2,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: polski\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-29 19:38+0200\n"
+"POT-Creation-Date: 2011-03-24 23:38+0100\n"
 "PO-Revision-Date: 2007-07-14 21:45+0100\n"
 "Last-Translator: Piotr Rybicki <meritus@innervision.pl>\n"
 "Language-Team: Piotr Rybicki <meritus@innervision.pl>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "X-Poedit-Language: Polish\n"
 "X-Poedit-Country: POLAND\n"
 "X-Poedit-SourceCharset: iso-8859-2\n"
 "X-Poedit-Basepath: tedst\n"
-
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:6
-msgid "FTP"
-msgstr "FTP"
-
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:7
-msgid "This does something"
-msgstr "To robi coś"
-
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:139
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:235
-#, fuzzy
-msgid "LDAP error"
-msgstr "błąd LDAP:"
-
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:191
-#: personal/connectivity/pureftpd/pureftpd.tpl:21
-msgid "Upload bandwidth"
-msgstr "Przepustowość wysyłania"
-
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:194
-#: personal/connectivity/pureftpd/pureftpd.tpl:29
-msgid "Download bandwidth"
-msgstr "Przepustowość ściągania"
-
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:198
-#, fuzzy
-msgid "Quota file"
-msgstr " Quota pliki"
-
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:201
-#, fuzzy
-msgid "Quota size"
-msgstr " Quota pliki"
-
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:204
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:266
-msgid "Upload ratio"
-msgstr "Przepustowość wysyłania"
-
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:207
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:268
-msgid "Download ratio"
-msgstr "Skala ściągania"
-
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:255
-msgid "Ftp"
-msgstr "FTP"
-
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:256
-msgid "Pure ftp account"
-msgstr "Konto Pure-ftp"
-
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:256
-#, fuzzy
-msgid "Connectivity addon"
-msgstr "Konto połączeń"
-
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:260
-msgid "My account"
-msgstr "Moje konto "
-
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:265
-msgid "Quota files"
-msgstr " Quota pliki"
-
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:267
-msgid "Quota MBytes"
-msgstr "Quota rozmiaru (MB)"
-
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:269
-msgid "Upload bandwith"
-msgstr "Przepustowość wysyłania"
-
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:270
-msgid "Download bandwith"
-msgstr "Przepustowość ściągania"
-
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:271
-msgid "Status"
-msgstr "Status"
 
 #: personal/connectivity/pureftpd/pureftpd.tpl:6
 msgid "FTP account"
@@ -104,10 +23,20 @@ msgstr "Konto FTP"
 msgid "Bandwidth"
 msgstr "Przepustowość"
 
+#: personal/connectivity/pureftpd/pureftpd.tpl:21
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:211
+msgid "Upload bandwidth"
+msgstr "Przepustowość wysyłania"
+
 #: personal/connectivity/pureftpd/pureftpd.tpl:26
 #: personal/connectivity/pureftpd/pureftpd.tpl:34
 msgid "kb/s"
 msgstr "kb/s"
+
+#: personal/connectivity/pureftpd/pureftpd.tpl:29
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:214
+msgid "Download bandwidth"
+msgstr "Przepustowość ściągania"
 
 #: personal/connectivity/pureftpd/pureftpd.tpl:45
 msgid "Quota"
@@ -144,6 +73,77 @@ msgstr "Zaznacz aby wyłączyć dostęp do FTP"
 #: personal/connectivity/pureftpd/pureftpd.tpl:102
 msgid "Temporary disable FTP access"
 msgstr "Tymczasowo wyłącz dostęp do FTP"
+
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:26
+msgid "FTP"
+msgstr "FTP"
+
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:27
+msgid "This does something"
+msgstr "To robi coś"
+
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:159
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:255
+#, fuzzy
+msgid "LDAP error"
+msgstr "błąd LDAP:"
+
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:218
+#, fuzzy
+msgid "Quota file"
+msgstr " Quota pliki"
+
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:221
+#, fuzzy
+msgid "Quota size"
+msgstr " Quota pliki"
+
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:224
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:286
+msgid "Upload ratio"
+msgstr "Przepustowość wysyłania"
+
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:227
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:288
+msgid "Download ratio"
+msgstr "Skala ściągania"
+
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:275
+msgid "Ftp"
+msgstr "FTP"
+
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:276
+msgid "Pure ftp account"
+msgstr "Konto Pure-ftp"
+
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:276
+#, fuzzy
+msgid "Connectivity addon"
+msgstr "Konto połączeń"
+
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:280
+msgid "My account"
+msgstr "Moje konto "
+
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:285
+msgid "Quota files"
+msgstr " Quota pliki"
+
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:287
+msgid "Quota MBytes"
+msgstr "Quota rozmiaru (MB)"
+
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:289
+msgid "Upload bandwith"
+msgstr "Przepustowość wysyłania"
+
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:290
+msgid "Download bandwith"
+msgstr "Przepustowość ściągania"
+
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:291
+msgid "Status"
+msgstr "Status"
 
 #~ msgid "Removing of user/pureftpd account with dn '%s' failed."
 #~ msgstr "Usuwanie konta pureftpd z dn '%s' nieudane."

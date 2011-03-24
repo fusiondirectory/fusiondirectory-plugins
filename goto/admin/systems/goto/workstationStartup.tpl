@@ -63,11 +63,11 @@
 	{if !$fai_activated}
 			<h2>{t}FAI Object assignment disabled. You can't use this feature until FAI is activated.{/t}</h2>			
 	{elseif !$si_active}
-		<b>{t}GOsa support daemon not configured{/t}</b><br>
+		<b>{t}GOto-si daemon not configured{/t}</b><br>
 		{t}FAI settings cannot be modified{/t}
 	{elseif $si_fai_action_failed}
 		<b>{msgPool type=siError}</b><br>
-		{t}Check if the GOsa support daemon (gosa-si) is running.{/t}
+		{t}Check if the GOto-si daemon is running.{/t}
 		<input type='submit' name='fai_si_retry' value="{t}retry{/t}">
 	{elseif $fai_activated}
 

@@ -33,7 +33,7 @@ class sudoOption extends plugin
   public $ignore_account = TRUE;
 
   /*! \brief  Initializes this class
-        @param  Object $config  The GOsa configuration object.
+        @param  Object $config  The FusionDirectory configuration object.
         @param  String $dn      The object dn.
    */
   function sudoOption(&$config, $dn= NULL)

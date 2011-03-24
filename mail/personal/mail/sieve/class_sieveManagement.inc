@@ -1,21 +1,23 @@
 <?php
+
 /*
-   This code is part of GOsa (https://gosa.gonicus.de)
-   Copyright (C) 2003-2007 - Fabian Hickert <hickert@gonicus.de>
+  This code is part of FusionDirectory (http://www.fusiondirectory.org/)
+  Copyright (C) 2003-2007 - Fabian Hickert <hickert@gonicus.de>
+  Copyright (C) 2011  FusionDirectory
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
 
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY; without even the implied warranty of
-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-   GNU General Public License for more details.
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
 
-   You should have received a copy of the GNU General Public License
-   along with this program; if not, write to the Free Software
-   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+  You should have received a copy of the GNU General Public License
+  along with this program; if not, write to the Free Software
+  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
 
@@ -153,7 +155,7 @@ class sieveManagement extends plugin
       }
       return($this->sieve_handle);
     }else{
-      $this->Sieve_Error = sprintf(_("The specified mail server '%s' does not exist within the GOsa configuration."),
+      $this->Sieve_Error = sprintf(_("The specified mail server '%s' does not exist within the FusionDirectory configuration."),
         $this->parent->gosaMailServer);
       return(FALSE);
     }

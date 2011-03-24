@@ -723,7 +723,7 @@ class environment extends plugin
       }
     }  
 
-    /* if the Post  gotoShareDel is set, someone asked GOsa to delete the selected entry (if there is one selected)
+    /* if the Post  gotoShareDel is set, someone asked FusionDirectory to delete the selected entry (if there is one selected)
      * If there is no defined share selected, we will abort the deletion without any message 
      */
     $once = true;

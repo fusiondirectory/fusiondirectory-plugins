@@ -45,7 +45,7 @@ class proxyAccount extends plugin
   var $multiple_support = TRUE;
 
   /*! \brief Initialize proxy acoount 
-      @param $config GOsa configuration object 
+      @param $config FusionDirectory configuration object
       @param $dn     Object dn
    */
   public function proxyAccount (&$config, $dn= NULL)

@@ -251,7 +251,7 @@ class termstartup extends plugin
       }
     }
 
-    /* if the Post  gotoShareDel is set, someone asked GOsa to delete the selected entry (if there is one selected)
+    /* if the Post  gotoShareDel is set, someone asked FusionDirectory to delete the selected entry (if there is one selected)
      * If there is no defined share selected, we will abort the deletion without any message
      */
     if((isset($_POST['gotoShareDel']))&&(isset($_POST['gotoShare'])) && $this->acl_is_writeable("gotoShare")){
@@ -391,7 +391,7 @@ class termstartup extends plugin
       $this->objectclasses = array("GOhard");
     }else{
       msg_dialog::display(_("Fatal error"),
-          "Object Type Configuration is unknown. Please contact the GOsa developers.",
+          "Object Type Configuration is unknown. Please contact the FusionDirectory developers.",
           FATAL_ERROR_DIALOG);
       exit();
     }

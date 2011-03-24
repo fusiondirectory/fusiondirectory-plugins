@@ -1,6 +1,6 @@
 <h2><img class="center" alt="" src="images/rightarrow.png"> {t}Integrating unknown devices{/t}</h2>
 <p>
- {t}The current device has been detected by the ARP monitor used by GOsa. You can integrate this device into your running DHCP/DNS infrastructure by submitting this form. The device entry will disappear from the list of the systems and move to the DNS/DHCP configuration.{/t}
+ {t}The current device has been detected by the ARP monitor used by FusionDirectory. You can integrate this device into your running DHCP/DNS infrastructure by submitting this form. The device entry will disappear from the list of the systems and move to the DNS/DHCP configuration.{/t}
 </p>
 <table summary="" style="width:100%">
 <tr>

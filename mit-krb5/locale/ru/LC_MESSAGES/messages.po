@@ -5,123 +5,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-29 19:38+0200\n"
+"POT-Creation-Date: 2011-03-24 23:38+0100\n"
 "PO-Revision-Date: 2005-04-18 14:35+0300\n"
 "Last-Translator: Igor Muratov <migor@altlinux.org>\n"
 "Language-Team: ALT Linux Team\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "X-Generator: poEdit 1.3.1\n"
-
-#: admin/systems/services/kerberos/class_goKrbServer.inc:58
-#, fuzzy
-msgid "Kerberos service"
-msgstr "Kerberos"
-
-#: admin/systems/services/kerberos/class_goKrbServer.inc:74
-#: admin/systems/services/kerberos/class_goKrbServer.inc:359
-#: admin/systems/services/kerberos/class_goKrbServer.inc:368
-#: admin/systems/services/kerberos/class_goKrbServer.inc:372
-#: admin/systems/services/kerberos/class_password-methods-MIT.inc:236
-#: admin/systems/services/kerberos/class_password-methods-MIT.inc:292
-#: admin/systems/services/kerberos/class_password-methods-MIT.inc:320
-#: admin/systems/services/kerberos/class_password-methods-MIT.inc:395
-#: admin/systems/services/kerberos/class_password-methods-MIT.inc:410
-#: admin/systems/services/kerberos/class_password-methods-MIT.inc:690
-#: admin/systems/services/kerberos/class_krb_host_keys.inc:363
-#: admin/systems/services/kerberos/class_krb_host_keys.inc:396
-#, fuzzy
-msgid "Service infrastructure"
-msgstr "Искать в поддеревьях"
-
-#: admin/systems/services/kerberos/class_goKrbServer.inc:166
-#, fuzzy
-msgid "Kerberos service (kadmin access informations)"
-msgstr "Личная информация"
-
-#: admin/systems/services/kerberos/class_goKrbServer.inc:179
-#: admin/systems/services/kerberos/class_goKrbServer.inc:395
-#: admin/systems/services/kerberos/pwd_kerberos_mit.tpl:25
-#, fuzzy
-msgid "Realm"
-msgstr "Имя сервера"
-
-#: admin/systems/services/kerberos/class_goKrbServer.inc:182
-msgid ""
-"Cannot apply policy changes! The defined kerberos server has no mac address."
-msgstr ""
-
-#: admin/systems/services/kerberos/class_goKrbServer.inc:266
-msgid "Remove"
-msgstr "Удалить"
-
-#: admin/systems/services/kerberos/class_goKrbServer.inc:266
-#: admin/systems/services/kerberos/pwd_kerberos_mit.tpl:41
-#, fuzzy
-msgid "Policy"
-msgstr "Английский"
-
-#: admin/systems/services/kerberos/class_goKrbServer.inc:385
-#: admin/systems/services/kerberos/class_password-methods-MIT.inc:494
-#: admin/systems/services/kerberos/class_krb_host_keys.inc:242
-msgid "Kerberos"
-msgstr "Kerberos"
-
-#: admin/systems/services/kerberos/class_goKrbServer.inc:386
-#, fuzzy
-msgid "Kerberos access information"
-msgstr "Личная информация"
-
-#: admin/systems/services/kerberos/class_goKrbServer.inc:386
-msgid "Services"
-msgstr "Сервисы"
-
-#: admin/systems/services/kerberos/class_goKrbServer.inc:394
-#: admin/systems/services/kerberos/goKrbServer.tpl:19
-#, fuzzy
-msgid "Policies"
-msgstr "Английский"
-
-#: admin/systems/services/kerberos/class_password-methods-MIT.inc:235
-#, fuzzy, php-format
-msgid "Cannot load principal '%s', from server '%s'!"
-msgstr "Невозможно выбрать базу данных!"
-
-#: admin/systems/services/kerberos/class_password-methods-MIT.inc:291
-#, fuzzy, php-format
-msgid "Cannot load principals from server '%s'!"
-msgstr "Невозможно подключиться к серверу базы данных!"
-
-#: admin/systems/services/kerberos/class_password-methods-MIT.inc:319
-#, fuzzy, php-format
-msgid "Cannot load policies from server '%s'!"
-msgstr "Удалить"
-
-#: admin/systems/services/kerberos/class_password-methods-MIT.inc:324
-#: admin/systems/services/kerberos/pwd_kerberos_mit.tpl:177
-#: admin/systems/services/kerberos/pwd_kerberos_mit.tpl:185
-#: admin/systems/services/kerberos/pwd_kerberos_mit.tpl:189
-#: admin/systems/services/kerberos/pwd_kerberos_mit.tpl:193
-#: admin/systems/services/kerberos/pwd_kerberos_mit.tpl:197
-msgid "none"
-msgstr "нет"
-
-#: admin/systems/services/kerberos/class_password-methods-MIT.inc:449
-#, fuzzy
-msgid "Daemon based"
-msgstr "Домен"
-
-#: admin/systems/services/kerberos/class_password-methods-MIT.inc:608
-#: admin/systems/services/kerberos/pwd_kerberos_mit.tpl:57
-msgid "Ticket max life"
-msgstr ""
-
-#: admin/systems/services/kerberos/class_password-methods-MIT.inc:611
-#: admin/systems/services/kerberos/pwd_kerberos_mit.tpl:65
-msgid "Ticket max renew"
-msgstr ""
 
 #: admin/systems/services/kerberos/krb5_policy.tpl:1
 #, fuzzy
@@ -129,39 +21,39 @@ msgid "Policy settings"
 msgstr "Атрибуты UNIX"
 
 #: admin/systems/services/kerberos/krb5_policy.tpl:7
-#: admin/systems/services/kerberos/class_krb5_policy.inc:103
-#: admin/systems/services/kerberos/class_krb5_policy.inc:106
-#: admin/systems/services/kerberos/class_krb5_policy.inc:110
+#: admin/systems/services/kerberos/class_krb5_policy.inc:105
+#: admin/systems/services/kerberos/class_krb5_policy.inc:108
+#: admin/systems/services/kerberos/class_krb5_policy.inc:112
 #, fuzzy
 msgid "Policy name"
 msgstr "Местоположение"
 
 #: admin/systems/services/kerberos/krb5_policy.tpl:11
-#: admin/systems/services/kerberos/class_krb5_policy.inc:122
 #: admin/systems/services/kerberos/class_krb5_policy.inc:124
-#: admin/systems/services/kerberos/class_krb5_policy.inc:134
+#: admin/systems/services/kerberos/class_krb5_policy.inc:126
+#: admin/systems/services/kerberos/class_krb5_policy.inc:136
 #, fuzzy
 msgid "Minimum password length"
 msgstr "Хэширование паролей"
 
 #: admin/systems/services/kerberos/krb5_policy.tpl:15
-#: admin/systems/services/kerberos/class_krb5_policy.inc:129
 #: admin/systems/services/kerberos/class_krb5_policy.inc:131
-#: admin/systems/services/kerberos/class_krb5_policy.inc:134
+#: admin/systems/services/kerberos/class_krb5_policy.inc:133
+#: admin/systems/services/kerberos/class_krb5_policy.inc:136
 msgid "Required different characters"
 msgstr ""
 
 #: admin/systems/services/kerberos/krb5_policy.tpl:19
-#: admin/systems/services/kerberos/class_krb5_policy.inc:115
 #: admin/systems/services/kerberos/class_krb5_policy.inc:117
+#: admin/systems/services/kerberos/class_krb5_policy.inc:119
 #, fuzzy
 msgid "Password history size"
 msgstr "Хэширование паролей"
 
 #: admin/systems/services/kerberos/krb5_policy.tpl:28
-#: admin/systems/services/kerberos/class_krb5_policy.inc:139
 #: admin/systems/services/kerberos/class_krb5_policy.inc:141
-#: admin/systems/services/kerberos/class_krb5_policy.inc:151
+#: admin/systems/services/kerberos/class_krb5_policy.inc:143
+#: admin/systems/services/kerberos/class_krb5_policy.inc:153
 msgid "Minimum password lifetime"
 msgstr ""
 
@@ -171,73 +63,12 @@ msgid "seconds"
 msgstr ""
 
 #: admin/systems/services/kerberos/krb5_policy.tpl:32
-#: admin/systems/services/kerberos/class_krb5_policy.inc:146
 #: admin/systems/services/kerberos/class_krb5_policy.inc:148
-#: admin/systems/services/kerberos/class_krb5_policy.inc:151
+#: admin/systems/services/kerberos/class_krb5_policy.inc:150
+#: admin/systems/services/kerberos/class_krb5_policy.inc:153
 #, fuzzy
 msgid "Password lifetime"
 msgstr "Пароль"
-
-#: admin/systems/services/kerberos/class_krb5_policy.inc:73
-#, php-format
-msgid "This policy is referenced %d times."
-msgstr ""
-
-#: admin/systems/services/kerberos/class_krb5_policy.inc:133
-#: admin/systems/services/kerberos/class_krb5_policy.inc:150
-#, php-format
-msgid ""
-"The value specified for '%s' must be smaller than the value specified for "
-"'%s'!"
-msgstr ""
-
-#: admin/systems/services/kerberos/class_krb_host_keys.inc:233
-msgid "updated to"
-msgstr ""
-
-#: admin/systems/services/kerberos/class_krb_host_keys.inc:242
-#, php-format
-msgid ""
-"The principal name of this system has changed. Do you want to update your "
-"principals? The affected principals are listed below: %s"
-msgstr ""
-
-#: admin/systems/services/kerberos/class_krb_host_keys.inc:259
-#: admin/systems/services/kerberos/class_krb_host_keys.inc:260
-#, fuzzy
-msgid "Create key"
-msgstr "Создать"
-
-#: admin/systems/services/kerberos/class_krb_host_keys.inc:266
-#, fuzzy
-msgid "Recreate key"
-msgstr "Создать"
-
-#: admin/systems/services/kerberos/class_krb_host_keys.inc:268
-#, fuzzy
-msgid "Remove key"
-msgstr "Удалить"
-
-#: admin/systems/services/kerberos/class_krb_host_keys.inc:307
-#: admin/systems/services/kerberos/class_krb_host_keys.inc:337
-#, fuzzy
-msgid "installed"
-msgstr "отключен"
-
-#: admin/systems/services/kerberos/class_krb_host_keys.inc:477
-#, fuzzy
-msgid "Kerberos key"
-msgstr "Kerberos"
-
-#: admin/systems/services/kerberos/class_krb_host_keys.inc:478
-#, fuzzy
-msgid "Kerberos host key"
-msgstr "Kerberos"
-
-#: admin/systems/services/kerberos/krb_host_keys.tpl:4
-#, fuzzy
-msgid "Kerberos keys"
-msgstr "Kerberos"
 
 #: admin/systems/services/kerberos/goKrbServer.tpl:1
 msgid "Kerberos kadmin access"
@@ -247,6 +78,132 @@ msgstr ""
 #, fuzzy
 msgid "Kerberos Realm"
 msgstr "Kerberos"
+
+#: admin/systems/services/kerberos/goKrbServer.tpl:19
+#: admin/systems/services/kerberos/class_goKrbServer.inc:395
+#, fuzzy
+msgid "Policies"
+msgstr "Английский"
+
+#: admin/systems/services/kerberos/krb_host_keys.tpl:4
+#, fuzzy
+msgid "Kerberos keys"
+msgstr "Kerberos"
+
+#: admin/systems/services/kerberos/class_krb5_policy.inc:75
+#, php-format
+msgid "This policy is referenced %d times."
+msgstr ""
+
+#: admin/systems/services/kerberos/class_krb5_policy.inc:135
+#: admin/systems/services/kerberos/class_krb5_policy.inc:152
+#, php-format
+msgid ""
+"The value specified for '%s' must be smaller than the value specified for '%"
+"s'!"
+msgstr ""
+
+#: admin/systems/services/kerberos/class_password-methods-MIT.inc:237
+#, fuzzy, php-format
+msgid "Cannot load principal '%s', from server '%s'!"
+msgstr "Невозможно выбрать базу данных!"
+
+#: admin/systems/services/kerberos/class_password-methods-MIT.inc:238
+#: admin/systems/services/kerberos/class_password-methods-MIT.inc:294
+#: admin/systems/services/kerberos/class_password-methods-MIT.inc:322
+#: admin/systems/services/kerberos/class_password-methods-MIT.inc:397
+#: admin/systems/services/kerberos/class_password-methods-MIT.inc:412
+#: admin/systems/services/kerberos/class_password-methods-MIT.inc:692
+#: admin/systems/services/kerberos/class_goKrbServer.inc:75
+#: admin/systems/services/kerberos/class_goKrbServer.inc:360
+#: admin/systems/services/kerberos/class_goKrbServer.inc:369
+#: admin/systems/services/kerberos/class_goKrbServer.inc:373
+#: admin/systems/services/kerberos/class_krb_host_keys.inc:362
+#: admin/systems/services/kerberos/class_krb_host_keys.inc:395
+#, fuzzy
+msgid "Service infrastructure"
+msgstr "Искать в поддеревьях"
+
+#: admin/systems/services/kerberos/class_password-methods-MIT.inc:293
+#, fuzzy, php-format
+msgid "Cannot load principals from server '%s'!"
+msgstr "Невозможно подключиться к серверу базы данных!"
+
+#: admin/systems/services/kerberos/class_password-methods-MIT.inc:321
+#, fuzzy, php-format
+msgid "Cannot load policies from server '%s'!"
+msgstr "Удалить"
+
+#: admin/systems/services/kerberos/class_password-methods-MIT.inc:326
+#: admin/systems/services/kerberos/pwd_kerberos_mit.tpl:177
+#: admin/systems/services/kerberos/pwd_kerberos_mit.tpl:185
+#: admin/systems/services/kerberos/pwd_kerberos_mit.tpl:189
+#: admin/systems/services/kerberos/pwd_kerberos_mit.tpl:193
+#: admin/systems/services/kerberos/pwd_kerberos_mit.tpl:197
+msgid "none"
+msgstr "нет"
+
+#: admin/systems/services/kerberos/class_password-methods-MIT.inc:451
+#, fuzzy
+msgid "Daemon based"
+msgstr "Домен"
+
+#: admin/systems/services/kerberos/class_password-methods-MIT.inc:496
+#: admin/systems/services/kerberos/class_goKrbServer.inc:386
+#: admin/systems/services/kerberos/class_krb_host_keys.inc:241
+msgid "Kerberos"
+msgstr "Kerberos"
+
+#: admin/systems/services/kerberos/class_password-methods-MIT.inc:610
+#: admin/systems/services/kerberos/pwd_kerberos_mit.tpl:57
+msgid "Ticket max life"
+msgstr ""
+
+#: admin/systems/services/kerberos/class_password-methods-MIT.inc:613
+#: admin/systems/services/kerberos/pwd_kerberos_mit.tpl:65
+msgid "Ticket max renew"
+msgstr ""
+
+#: admin/systems/services/kerberos/class_goKrbServer.inc:59
+#, fuzzy
+msgid "Kerberos service"
+msgstr "Kerberos"
+
+#: admin/systems/services/kerberos/class_goKrbServer.inc:167
+#, fuzzy
+msgid "Kerberos service (kadmin access informations)"
+msgstr "Личная информация"
+
+#: admin/systems/services/kerberos/class_goKrbServer.inc:180
+#: admin/systems/services/kerberos/class_goKrbServer.inc:396
+#: admin/systems/services/kerberos/pwd_kerberos_mit.tpl:25
+#, fuzzy
+msgid "Realm"
+msgstr "Имя сервера"
+
+#: admin/systems/services/kerberos/class_goKrbServer.inc:183
+msgid ""
+"Cannot apply policy changes! The defined kerberos server has no mac address."
+msgstr ""
+
+#: admin/systems/services/kerberos/class_goKrbServer.inc:267
+msgid "Remove"
+msgstr "Удалить"
+
+#: admin/systems/services/kerberos/class_goKrbServer.inc:267
+#: admin/systems/services/kerberos/pwd_kerberos_mit.tpl:41
+#, fuzzy
+msgid "Policy"
+msgstr "Английский"
+
+#: admin/systems/services/kerberos/class_goKrbServer.inc:387
+#, fuzzy
+msgid "Kerberos access information"
+msgstr "Личная информация"
+
+#: admin/systems/services/kerberos/class_goKrbServer.inc:387
+msgid "Services"
+msgstr "Сервисы"
 
 #: admin/systems/services/kerberos/pwd_kerberos_mit.tpl:4
 #: admin/systems/services/kerberos/pwd_kerberos_mit.tpl:21
@@ -390,6 +347,49 @@ msgstr ""
 #: admin/systems/services/kerberos/pwd_kerberos_mit.tpl:241
 msgid "Save"
 msgstr "Сохранить"
+
+#: admin/systems/services/kerberos/class_krb_host_keys.inc:232
+msgid "updated to"
+msgstr ""
+
+#: admin/systems/services/kerberos/class_krb_host_keys.inc:241
+#, php-format
+msgid ""
+"The principal name of this system has changed. Do you want to update your "
+"principals? The affected principals are listed below: %s"
+msgstr ""
+
+#: admin/systems/services/kerberos/class_krb_host_keys.inc:258
+#: admin/systems/services/kerberos/class_krb_host_keys.inc:259
+#, fuzzy
+msgid "Create key"
+msgstr "Создать"
+
+#: admin/systems/services/kerberos/class_krb_host_keys.inc:265
+#, fuzzy
+msgid "Recreate key"
+msgstr "Создать"
+
+#: admin/systems/services/kerberos/class_krb_host_keys.inc:267
+#, fuzzy
+msgid "Remove key"
+msgstr "Удалить"
+
+#: admin/systems/services/kerberos/class_krb_host_keys.inc:306
+#: admin/systems/services/kerberos/class_krb_host_keys.inc:336
+#, fuzzy
+msgid "installed"
+msgstr "отключен"
+
+#: admin/systems/services/kerberos/class_krb_host_keys.inc:476
+#, fuzzy
+msgid "Kerberos key"
+msgstr "Kerberos"
+
+#: admin/systems/services/kerberos/class_krb_host_keys.inc:477
+#, fuzzy
+msgid "Kerberos host key"
+msgstr "Kerberos"
 
 #, fuzzy
 #~ msgid "Heimdal"

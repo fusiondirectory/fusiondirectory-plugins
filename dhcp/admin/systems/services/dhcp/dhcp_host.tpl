@@ -1,4 +1,4 @@
-{* GOsa dhcp host - smarty template *}
+{* FusionDirectory dhcp host - smarty template *}
 <p><b>{t}Generic{/t}</b></p>
 <table width="100%">
  <tr>

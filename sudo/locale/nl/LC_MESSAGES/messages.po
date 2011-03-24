@@ -11,113 +11,31 @@ msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-29 19:39+0200\n"
+"POT-Creation-Date: 2011-03-24 23:38+0100\n"
 "PO-Revision-Date: 2006-06-02 16:58+0100\n"
 "Last-Translator: Niels Klomp (CareWorks ICT Services) <nk@careworks.nl>\n"
 "Language-Team: CareWorks ICT Services <info@careworks.nl>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 
 #: admin/sudo/sudo-filter.tpl:3
 #, fuzzy
 msgid "Filter"
 msgstr "Filters"
 
-#: admin/sudo/sudo-filter.tpl:13 admin/sudo/class_sudoGeneric.inc:582
-#: admin/sudo/class_sudoGeneric.inc:587 admin/sudo/class_sudoGeneric.inc:592
-#: admin/sudo/class_sudoGeneric.inc:601 admin/sudo/class_sudoGeneric.inc:640
+#: admin/sudo/sudo-filter.tpl:13 admin/sudo/sudo-list.xml:32
+#: admin/sudo/class_sudoGeneric.inc:581 admin/sudo/class_sudoGeneric.inc:586
+#: admin/sudo/class_sudoGeneric.inc:591 admin/sudo/class_sudoGeneric.inc:600
+#: admin/sudo/class_sudoGeneric.inc:639 admin/sudo/paste_generic.tpl:5
 #: admin/sudo/generic.tpl:7 admin/sudo/generic.tpl:34
-#: admin/sudo/sudo-list.xml:32 admin/sudo/paste_generic.tpl:5
 msgid "Name"
 msgstr "Naam"
 
-#: admin/sudo/sudo-filter.tpl:23 admin/sudo/class_sudoGeneric.inc:423
+#: admin/sudo/sudo-filter.tpl:23 admin/sudo/class_sudoGeneric.inc:422
 msgid "User"
 msgstr "Gebruiker"
-
-#: admin/sudo/remove.tpl:2
-msgid "Warning"
-msgstr "Waarschuwing"
-
-#: admin/sudo/remove.tpl:6
-msgid ""
-"Please double check if you really want to do this since there is no way for "
-"GOsa to get your data back."
-msgstr ""
-"Controleer a.u.b. of u dit daadwerkelijk wil doen, aangezien er geen "
-"mogelijkheid voor GOsa is om uw data terug te krijgen."
-
-#: admin/sudo/remove.tpl:10
-msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr ""
-"Indien u zeker bent drukt u dan 'Verwijderen' om door te gaan of 'Annuleren' "
-"om te annuleren."
-
-#: admin/sudo/class_sudoGeneric.inc:334
-msgid "Error"
-msgstr "Fout"
-
-#: admin/sudo/class_sudoGeneric.inc:376
-msgid "disabled"
-msgstr "gedeactiveerd"
-
-#: admin/sudo/class_sudoGeneric.inc:377
-msgid "full access"
-msgstr "volledige toegang"
-
-#: admin/sudo/class_sudoGeneric.inc:378
-msgid "allow access to these hosts"
-msgstr "sta toegang op deze computers toe"
-
-#: admin/sudo/class_sudoGeneric.inc:424
-msgid "Group"
-msgstr "Groep"
-
-#: admin/sudo/class_sudoGeneric.inc:568
-#, fuzzy
-msgid "LDAP error"
-msgstr "LDAP fout:"
-
-#: admin/sudo/class_sudoGeneric.inc:631 admin/sudo/class_sudoManagement.inc:25
-#, fuzzy
-msgid "Sudo"
-msgstr "Achternaam"
-
-#: admin/sudo/class_sudoGeneric.inc:632 admin/sudo/class_sudoGeneric.inc:637
-#, fuzzy
-msgid "Sudo role"
-msgstr "! onbekend id"
-
-#: admin/sudo/class_sudoGeneric.inc:641 admin/sudo/generic.tpl:15
-#: admin/sudo/generic.tpl:44 admin/sudo/sudo-list.xml:40
-msgid "Description"
-msgstr "Omschrijving"
-
-#: admin/sudo/class_sudoGeneric.inc:642
-msgid "Users"
-msgstr "Gebruikers"
-
-#: admin/sudo/class_sudoGeneric.inc:643
-#, fuzzy
-msgid "Host"
-msgstr "Inhakers"
-
-#: admin/sudo/class_sudoGeneric.inc:644
-#, fuzzy
-msgid "Command"
-msgstr "en"
-
-#: admin/sudo/class_sudoGeneric.inc:645
-#, fuzzy
-msgid "Run as user"
-msgstr "Windows gebruikers"
-
-#: admin/sudo/class_sudoGeneric.inc:646
-#, fuzzy
-msgid "Access control list"
-msgstr "Toegangsopties"
 
 #: admin/sudo/options.tpl:5
 #, fuzzy
@@ -138,47 +56,6 @@ msgstr "Opties"
 msgid "Available options"
 msgstr "Beschikbare programma's"
 
-#: admin/sudo/generic.tpl:3 admin/sudo/generic.tpl:30
-#: admin/sudo/paste_generic.tpl:1
-msgid "Generic"
-msgstr "Algemeen"
-
-#: admin/sudo/generic.tpl:3 admin/sudo/paste_generic.tpl:1
-msgid "global defaults"
-msgstr ""
-
-#: admin/sudo/generic.tpl:55
-msgid "System trust"
-msgstr "Systeem vertrouwen"
-
-#: admin/sudo/generic.tpl:56
-msgid "Trust mode"
-msgstr "Vertrouwensmodus"
-
-#: admin/sudo/generic.tpl:87
-#, fuzzy
-msgid "Users and groups"
-msgstr "groepen"
-
-#: admin/sudo/generic.tpl:98 admin/sudo/generic.tpl:113
-msgid "Add from list"
-msgstr ""
-
-#: admin/sudo/generic.tpl:102
-#, fuzzy
-msgid "Systems"
-msgstr "Systeem"
-
-#: admin/sudo/generic.tpl:120
-#, fuzzy
-msgid "Commands"
-msgstr "en"
-
-#: admin/sudo/generic.tpl:132
-#, fuzzy
-msgid "Run as"
-msgstr "Windows gebruikers"
-
 #: admin/sudo/sudo-list.xml:11
 #, fuzzy
 msgid "List of sudo roles"
@@ -187,6 +64,11 @@ msgstr "Lijst met gebruikers"
 #: admin/sudo/sudo-list.xml:15 admin/sudo/sudo-list.xml:65
 msgid "Role"
 msgstr "Funktie"
+
+#: admin/sudo/sudo-list.xml:40 admin/sudo/class_sudoGeneric.inc:640
+#: admin/sudo/generic.tpl:15 admin/sudo/generic.tpl:44
+msgid "Description"
+msgstr "Omschrijving"
 
 #: admin/sudo/sudo-list.xml:48
 msgid "Actions"
@@ -214,6 +96,98 @@ msgstr "! onbekend id"
 #, fuzzy
 msgid "Remove sudo role"
 msgstr "! onbekend id"
+
+#: admin/sudo/class_sudoGeneric.inc:333
+msgid "Error"
+msgstr "Fout"
+
+#: admin/sudo/class_sudoGeneric.inc:375
+msgid "disabled"
+msgstr "gedeactiveerd"
+
+#: admin/sudo/class_sudoGeneric.inc:376
+msgid "full access"
+msgstr "volledige toegang"
+
+#: admin/sudo/class_sudoGeneric.inc:377
+msgid "allow access to these hosts"
+msgstr "sta toegang op deze computers toe"
+
+#: admin/sudo/class_sudoGeneric.inc:423
+msgid "Group"
+msgstr "Groep"
+
+#: admin/sudo/class_sudoGeneric.inc:567
+#, fuzzy
+msgid "LDAP error"
+msgstr "LDAP fout:"
+
+#: admin/sudo/class_sudoGeneric.inc:630 admin/sudo/class_sudoManagement.inc:25
+#, fuzzy
+msgid "Sudo"
+msgstr "Achternaam"
+
+#: admin/sudo/class_sudoGeneric.inc:631 admin/sudo/class_sudoGeneric.inc:636
+#, fuzzy
+msgid "Sudo role"
+msgstr "! onbekend id"
+
+#: admin/sudo/class_sudoGeneric.inc:641
+msgid "Users"
+msgstr "Gebruikers"
+
+#: admin/sudo/class_sudoGeneric.inc:642
+#, fuzzy
+msgid "Host"
+msgstr "Inhakers"
+
+#: admin/sudo/class_sudoGeneric.inc:643
+#, fuzzy
+msgid "Command"
+msgstr "en"
+
+#: admin/sudo/class_sudoGeneric.inc:644
+#, fuzzy
+msgid "Run as user"
+msgstr "Windows gebruikers"
+
+#: admin/sudo/class_sudoGeneric.inc:645
+#, fuzzy
+msgid "Access control list"
+msgstr "Toegangsopties"
+
+#: admin/sudo/remove.tpl:2
+msgid "Warning"
+msgstr "Waarschuwing"
+
+#: admin/sudo/remove.tpl:6
+#, fuzzy
+msgid ""
+"Please double check if you really want to do this since there is no way for "
+"FusionDirectory to get your data back."
+msgstr ""
+"Controleer a.u.b. of u dit daadwerkelijk wil doen, aangezien er geen "
+"mogelijkheid voor GOsa is om uw data terug te krijgen."
+
+#: admin/sudo/remove.tpl:10
+msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
+msgstr ""
+"Indien u zeker bent drukt u dan 'Verwijderen' om door te gaan of 'Annuleren' "
+"om te annuleren."
+
+#: admin/sudo/paste_generic.tpl:1 admin/sudo/generic.tpl:3
+#: admin/sudo/generic.tpl:30
+msgid "Generic"
+msgstr "Algemeen"
+
+#: admin/sudo/paste_generic.tpl:1 admin/sudo/generic.tpl:3
+msgid "global defaults"
+msgstr ""
+
+#: admin/sudo/class_sudoManagement.inc:26
+#, fuzzy
+msgid "Sudo management"
+msgstr "Systeembeheer"
 
 #: admin/sudo/class_sudoOption.inc:154
 #, fuzzy
@@ -250,10 +224,37 @@ msgstr "klasse"
 msgid "Sudo options"
 msgstr "Onbekend"
 
-#: admin/sudo/class_sudoManagement.inc:26
+#: admin/sudo/generic.tpl:55
+msgid "System trust"
+msgstr "Systeem vertrouwen"
+
+#: admin/sudo/generic.tpl:56
+msgid "Trust mode"
+msgstr "Vertrouwensmodus"
+
+#: admin/sudo/generic.tpl:87
 #, fuzzy
-msgid "Sudo management"
-msgstr "Systeembeheer"
+msgid "Users and groups"
+msgstr "groepen"
+
+#: admin/sudo/generic.tpl:98 admin/sudo/generic.tpl:113
+msgid "Add from list"
+msgstr ""
+
+#: admin/sudo/generic.tpl:102
+#, fuzzy
+msgid "Systems"
+msgstr "Systeem"
+
+#: admin/sudo/generic.tpl:120
+#, fuzzy
+msgid "Commands"
+msgstr "en"
+
+#: admin/sudo/generic.tpl:132
+#, fuzzy
+msgid "Run as"
+msgstr "Windows gebruikers"
 
 #, fuzzy
 #~ msgid "List of users and groups"

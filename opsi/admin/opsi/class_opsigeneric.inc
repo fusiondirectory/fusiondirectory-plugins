@@ -67,7 +67,7 @@ class opsiGeneric extends plugin
   public $netConfigDNS = NULL;
 
   /*! \brief  Initialize this class 
-      @param  Object    The GOsa base config.
+      @param  Object    The FusionDirectory base config.
       @param  String    The Id of the host that we want to edit.
       @param  Object    The parent object. (in case of samba)
    */
@@ -735,7 +735,7 @@ class opsiGeneric extends plugin
    */
   function wake_client()
   {
-    /* Check if we are able to communicate with the GOsa supprot daemon
+    /* Check if we are able to communicate with the GOto-si daemon
      */
     if(class_available("gosaSupportDaemon")){
       $o = new gosaSupportDaemon();

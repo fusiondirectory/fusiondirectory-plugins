@@ -400,7 +400,7 @@ class servdnseditZone extends plugin
     }
 
     // Ensure that we do not use reverse zones twice. 
-    //  this currently not supported by GOsa.
+    //  this currently not supported by FusionDirectory.
     $zones = DNS::getDNSZoneEntries($this->config,$this->dn);
     switch($this->NetworkClass){
       case 'C' : $test = preg_replace("/\.[0-9]*$/","",$this->ReverseZone);break;

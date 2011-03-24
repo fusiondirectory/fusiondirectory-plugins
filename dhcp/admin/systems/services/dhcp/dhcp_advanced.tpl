@@ -1,4 +1,4 @@
-{* GOsa dhcp sharedNetwork - smarty template *}
+{* FusionDirectory dhcp sharedNetwork - smarty template *}
 
 <p class='seperator'></p>
 <br>

@@ -6,104 +6,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-29 19:38+0200\n"
+"POT-Creation-Date: 2011-03-24 23:38+0100\n"
 "PO-Revision-Date: 2005-11-18 15:26+0100\n"
 "Last-Translator: Alessandro Amici <a.amici@bopen.it>\n"
 "Language-Team: Italian\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "X-Generator: KBabel 1.9.1\n"
-
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:6
-msgid "FTP"
-msgstr "FTP"
-
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:7
-msgid "This does something"
-msgstr "Questo fa qualcosa"
-
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:139
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:235
-#, fuzzy
-msgid "LDAP error"
-msgstr "Errore LDAP"
-
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:191
-#: personal/connectivity/pureftpd/pureftpd.tpl:21
-msgid "Upload bandwidth"
-msgstr "Banda di upload"
-
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:194
-#: personal/connectivity/pureftpd/pureftpd.tpl:29
-msgid "Download bandwidth"
-msgstr "Banda di download"
-
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:198
-#, fuzzy
-msgid "Quota file"
-msgstr "Dimensione quota"
-
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:201
-#, fuzzy
-msgid "Quota size"
-msgstr "Dimensione quota"
-
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:204
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:266
-#, fuzzy
-msgid "Upload ratio"
-msgstr "Banda di upload"
-
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:207
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:268
-#, fuzzy
-msgid "Download ratio"
-msgstr "Scarica il file di  configurazione"
-
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:255
-#, fuzzy
-msgid "Ftp"
-msgstr "Tipo"
-
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:256
-#, fuzzy
-msgid "Pure ftp account"
-msgstr "Crea estensioni FAX"
-
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:256
-#, fuzzy
-msgid "Connectivity addon"
-msgstr "Connettività"
-
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:260
-msgid "My account"
-msgstr "Identità"
-
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:265
-#, fuzzy
-msgid "Quota files"
-msgstr "Dimensione quota"
-
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:267
-#, fuzzy
-msgid "Quota MBytes"
-msgstr "Dimensione quota"
-
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:269
-#, fuzzy
-msgid "Upload bandwith"
-msgstr "Banda di upload"
-
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:270
-#, fuzzy
-msgid "Download bandwith"
-msgstr "Banda di download"
-
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:271
-msgid "Status"
-msgstr "Stato"
 
 #: personal/connectivity/pureftpd/pureftpd.tpl:6
 msgid "FTP account"
@@ -113,10 +24,20 @@ msgstr "Estenzioni FTP"
 msgid "Bandwidth"
 msgstr "Banda"
 
+#: personal/connectivity/pureftpd/pureftpd.tpl:21
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:211
+msgid "Upload bandwidth"
+msgstr "Banda di upload"
+
 #: personal/connectivity/pureftpd/pureftpd.tpl:26
 #: personal/connectivity/pureftpd/pureftpd.tpl:34
 msgid "kb/s"
 msgstr "kb/s"
+
+#: personal/connectivity/pureftpd/pureftpd.tpl:29
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:214
+msgid "Download bandwidth"
+msgstr "Banda di download"
 
 #: personal/connectivity/pureftpd/pureftpd.tpl:45
 msgid "Quota"
@@ -153,6 +74,85 @@ msgstr "Seleziona per disabilitale l'accesso FTP"
 #: personal/connectivity/pureftpd/pureftpd.tpl:102
 msgid "Temporary disable FTP access"
 msgstr "Disabilita temporaneamente l'accesso FTP"
+
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:26
+msgid "FTP"
+msgstr "FTP"
+
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:27
+msgid "This does something"
+msgstr "Questo fa qualcosa"
+
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:159
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:255
+#, fuzzy
+msgid "LDAP error"
+msgstr "Errore LDAP"
+
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:218
+#, fuzzy
+msgid "Quota file"
+msgstr "Dimensione quota"
+
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:221
+#, fuzzy
+msgid "Quota size"
+msgstr "Dimensione quota"
+
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:224
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:286
+#, fuzzy
+msgid "Upload ratio"
+msgstr "Banda di upload"
+
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:227
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:288
+#, fuzzy
+msgid "Download ratio"
+msgstr "Scarica il file di  configurazione"
+
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:275
+#, fuzzy
+msgid "Ftp"
+msgstr "Tipo"
+
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:276
+#, fuzzy
+msgid "Pure ftp account"
+msgstr "Crea estensioni FAX"
+
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:276
+#, fuzzy
+msgid "Connectivity addon"
+msgstr "Connettività"
+
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:280
+msgid "My account"
+msgstr "Identità"
+
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:285
+#, fuzzy
+msgid "Quota files"
+msgstr "Dimensione quota"
+
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:287
+#, fuzzy
+msgid "Quota MBytes"
+msgstr "Dimensione quota"
+
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:289
+#, fuzzy
+msgid "Upload bandwith"
+msgstr "Banda di upload"
+
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:290
+#, fuzzy
+msgid "Download bandwith"
+msgstr "Banda di download"
+
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:291
+msgid "Status"
+msgstr "Stato"
 
 #, fuzzy
 #~ msgid "Removing of user/pureftpd account with dn '%s' failed."

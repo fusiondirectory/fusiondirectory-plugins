@@ -578,7 +578,7 @@ class FAI
       }
     }
 
-    /* Reload GOsa si FAI DB/cache
+    /* Reload FusionDirectory si FAI DB/cache
      */
     if($reload_fai_classes){
       if( class_available("DaemonEvent") && class_available("gosaSupportDaemon")){

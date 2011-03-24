@@ -1,6 +1,6 @@
 <h2>{t}Import jobs{/t}</h2>
 <p>
-{t}You can import a list of jobs into the GOsa job queue. This should be a semicolon seperated list of items in the following format:{/t}
+{t}You can import a list of jobs into the FusionDirectory job queue. This should be a semicolon seperated list of items in the following format:{/t}
 </p>
 <i>{t}timestamp{/t} ; {t}MAC-address{/t} ; {t}job type{/t} ; {t}object group{/t} [ ; {t}import base{/t} ; {t}full hostname{/t} ; {t}IP-address{/t} ; {t}DHCP group{/t} ]</i>
 <br>

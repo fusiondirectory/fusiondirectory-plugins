@@ -108,7 +108,7 @@ class mailMethod{
 
 
   /*! \brief  Constructs the mail class 
-      @param  Object  Config  The GOsa configuration object
+      @param  Object  Config  The FusionDirectory configuration object
       @param  Object  Plugin  The initator
       @param  String          Open "user" or "group" account.
    */
@@ -672,7 +672,7 @@ class mailMethod{
   } 
 
 
-  /*! \brief  Checks dependencies to other GOsa plugins.
+  /*! \brief  Checks dependencies to other FusionDirectory plugins.
    */
   public function accountCreateable(&$reason = ""){
     return(TRUE);
@@ -687,7 +687,7 @@ class mailMethod{
   }
 
   
-  /*! \brief  Returns all mail servers configured in GOsa 
+  /*! \brief  Returns all mail servers configured in FusionDirectory 
                that are useable with this mailMethod.
       @return Array  All useable mail servers.
   */

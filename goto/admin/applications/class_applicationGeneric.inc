@@ -89,7 +89,7 @@ class application extends plugin
 
   function generateTemplate()
   {
-    $str= "# This code is part of GOsa (https://gosa.gonicus.de)\n#\n";
+    $str= "# This code is part of FusionDirectory http://www.fusiondirectory.org/\n#\n";
 
     $values = array();
     $names 	= array();
@@ -331,7 +331,7 @@ class application extends plugin
 
         if (!function_exists("imagick_blob2image")){
           /* Get temporary file name for conversation */
-          $fname = tempnam (TEMP_DIR, "GOsa");
+          $fname = tempnam (TEMP_DIR, "FusionDirectory");
 
           /* Open file and write out photoData */
           $fp = fopen ($fname, "w");

@@ -1,81 +1,7 @@
-#: admin/roleManagement/class_roleManagement.inc:25
-#: admin/roleManagement/class_roleGeneric.inc:427
-msgid "Roles"
-msgstr ""
-
-#: admin/roleManagement/class_roleManagement.inc:26
-msgid "Role management"
-msgstr ""
-
-#: admin/roleManagement/remove.tpl:2
-msgid "Warning"
-msgstr ""
-
-#: admin/roleManagement/remove.tpl:6
-msgid ""
-"Please double check if you really want to do this since there is no way for "
-"GOsa to get your data back."
-msgstr ""
-
-#: admin/roleManagement/remove.tpl:10
-msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr ""
-
-#: admin/roleManagement/class_roleGeneric.inc:238
-#: admin/roleManagement/class_roleGeneric.inc:247
-#: admin/roleManagement/class_roleGeneric.inc:430
-#: admin/roleManagement/role-list.xml:41
-#: admin/roleManagement/role-filter.tpl:17
-#: admin/roleManagement/roleGeneric.tpl:11
-msgid "Name"
-msgstr ""
-
-#: admin/roleManagement/class_roleGeneric.inc:268
-msgid "Unknown"
-msgstr ""
-
-#: admin/roleManagement/class_roleGeneric.inc:286
-#: admin/roleManagement/class_roleGeneric.inc:328
-msgid "LDAP error"
-msgstr ""
-
-#: admin/roleManagement/class_roleGeneric.inc:371
-msgid "Error"
-msgstr ""
-
-#: admin/roleManagement/class_roleGeneric.inc:421
-#: admin/roleManagement/roleGeneric.tpl:6
-msgid "Generic"
-msgstr ""
-
-#: admin/roleManagement/class_roleGeneric.inc:422
-msgid "Role generic"
-msgstr ""
-
-#: admin/roleManagement/class_roleGeneric.inc:431
-#: admin/roleManagement/role-list.xml:49
-#: admin/roleManagement/roleGeneric.tpl:19
-msgid "Description"
-msgstr ""
-
-#: admin/roleManagement/class_roleGeneric.inc:432
 #: admin/roleManagement/role-list.tpl:13
 #: admin/roleManagement/roleGeneric.tpl:29
+#: admin/roleManagement/class_roleGeneric.inc:431
 msgid "Base"
-msgstr ""
-
-#: admin/roleManagement/class_roleGeneric.inc:433
-msgid "Telefon number"
-msgstr ""
-
-#: admin/roleManagement/class_roleGeneric.inc:434
-#: admin/roleManagement/roleGeneric.tpl:50
-msgid "Fax number"
-msgstr ""
-
-#: admin/roleManagement/class_roleGeneric.inc:435
-#: admin/roleManagement/roleGeneric.tpl:62
-msgid "Occupants"
 msgstr ""
 
 #: admin/roleManagement/role-list.xml:11
@@ -84,6 +10,21 @@ msgstr ""
 
 #: admin/roleManagement/role-list.xml:15 admin/roleManagement/role-list.xml:74
 msgid "Role"
+msgstr ""
+
+#: admin/roleManagement/role-list.xml:41
+#: admin/roleManagement/role-filter.tpl:17
+#: admin/roleManagement/roleGeneric.tpl:11
+#: admin/roleManagement/class_roleGeneric.inc:237
+#: admin/roleManagement/class_roleGeneric.inc:246
+#: admin/roleManagement/class_roleGeneric.inc:429
+msgid "Name"
+msgstr ""
+
+#: admin/roleManagement/role-list.xml:49
+#: admin/roleManagement/roleGeneric.tpl:19
+#: admin/roleManagement/class_roleGeneric.inc:430
+msgid "Description"
 msgstr ""
 
 #: admin/roleManagement/role-list.xml:57
@@ -110,6 +51,20 @@ msgstr ""
 msgid "Remove role"
 msgstr ""
 
+#: admin/roleManagement/remove.tpl:2
+msgid "Warning"
+msgstr ""
+
+#: admin/roleManagement/remove.tpl:6
+msgid ""
+"Please double check if you really want to do this since there is no way for "
+"FusionDirectory to get your data back."
+msgstr ""
+
+#: admin/roleManagement/remove.tpl:10
+msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
+msgstr ""
+
 #: admin/roleManagement/paste_generic.tpl:4
 msgid "Role name"
 msgstr ""
@@ -122,6 +77,51 @@ msgstr ""
 msgid "Filter"
 msgstr ""
 
+#: admin/roleManagement/roleGeneric.tpl:6
+#: admin/roleManagement/class_roleGeneric.inc:420
+msgid "Generic"
+msgstr ""
+
 #: admin/roleManagement/roleGeneric.tpl:42
 msgid "Phone number"
+msgstr ""
+
+#: admin/roleManagement/roleGeneric.tpl:50
+#: admin/roleManagement/class_roleGeneric.inc:433
+msgid "Fax number"
+msgstr ""
+
+#: admin/roleManagement/roleGeneric.tpl:62
+#: admin/roleManagement/class_roleGeneric.inc:434
+msgid "Occupants"
+msgstr ""
+
+#: admin/roleManagement/class_roleManagement.inc:25
+#: admin/roleManagement/class_roleGeneric.inc:426
+msgid "Roles"
+msgstr ""
+
+#: admin/roleManagement/class_roleManagement.inc:26
+msgid "Role management"
+msgstr ""
+
+#: admin/roleManagement/class_roleGeneric.inc:267
+msgid "Unknown"
+msgstr ""
+
+#: admin/roleManagement/class_roleGeneric.inc:285
+#: admin/roleManagement/class_roleGeneric.inc:327
+msgid "LDAP error"
+msgstr ""
+
+#: admin/roleManagement/class_roleGeneric.inc:370
+msgid "Error"
+msgstr ""
+
+#: admin/roleManagement/class_roleGeneric.inc:421
+msgid "Role generic"
+msgstr ""
+
+#: admin/roleManagement/class_roleGeneric.inc:432
+msgid "Telefon number"
 msgstr ""

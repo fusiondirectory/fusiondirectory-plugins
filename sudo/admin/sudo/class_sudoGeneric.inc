@@ -50,7 +50,7 @@ class sudo extends plugin
 
   /*! \brief  Returns to the base department for sudo roles.
               This department is then used to store new roles.
-      @param  Object  GOsa configuration object.
+      @param  Object  FusionDirectory configuration object.
       @return String sudo store department
    */
   public static function get_sudoers_ou($config)
@@ -59,7 +59,7 @@ class sudo extends plugin
   }
 
   /*! \brief  Initializes this sudo class, with all required attributes.
-      @param  Object $config  GOsa configuration object.
+      @param  Object $config  FusionDirectory configuration object.
       @param  String $db      "new" or the sudo role dn.
       @return .
    */

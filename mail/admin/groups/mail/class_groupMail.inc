@@ -556,7 +556,7 @@ class mailgroup extends plugin
       $this->mail = $this->mail."@".$this->mailDomainPart;
     }
 
-    /* Remove GOsa attributes */
+    /* Remove FusionDirectory attributes */
     plugin::remove_from_parent();
 
     /* Zero arrays */
@@ -692,7 +692,7 @@ class mailgroup extends plugin
         $this->folder_acls = $new_acls;
       }
 
-      /* Handle GOsa mail delivery flags.
+      /* Handle FusionDirectory mail delivery flags.
        */
 
     /* Assemble mail delivery mode

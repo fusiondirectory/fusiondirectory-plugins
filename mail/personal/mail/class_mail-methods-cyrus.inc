@@ -74,7 +74,7 @@ class mailMethodCyrus extends mailMethod{
     if(!isset($cfg['password']))  $cfg['password']="";
 
     /* Setting connect timeout to 10 seconds,
-        else the GOsa UI may freeze for 60 seconds.
+        else the FusionDirectory UI may freeze for 60 seconds.
        (PHP default is 'default_socket_timeout = 60') */
     $timeout = $this->config->get_cfg_value("imapTimeout",10);
     @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,$timeout,
@@ -547,12 +547,12 @@ class mailMethodCyrus extends mailMethod{
 
         if($is_valid_script || strlen($script) == 0 || empty($script)){
           @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,"" ,
-              "<b>SIEVE</b>: Sieve script 'gosa' was a valid GOsa script and will be replaced.");
+              "<b>SIEVE</b>: Sieve script 'gosa' was a valid FusionDirectory script and will be replaced.");
         }else{
           $new_name = "non_gosa_".date("Ymd_H-i-s");
           $sieve->sieve_sendscript($new_name, $script);
           @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,$this->sieve->error_raw ,
-              "<b>SIEVE</b>: Non GOsa sieve script. <b>Creating backup of the current sieve script '".$new_name."'.</b>");
+              "<b>SIEVE</b>: Non FusionDirectory sieve script. <b>Creating backup of the current sieve script '".$new_name."'.</b>");
         }
       }
     }
@@ -583,7 +583,7 @@ class mailMethodCyrus extends mailMethod{
     }
 
     /* Add "reject due to mailsize" code, message is currently not
-       adjustable through GOsa. */
+       adjustable through FusionDirectory. */
     if (is_integer(strpos($gosaMailDeliveryMode, "R"))){
       $maxsize= $gosaMailMaxSize;
       $text= preg_replace('/"/', '\\"', implode ("", file(CONFIG_DIR."/sieve-mailsize.txt")));

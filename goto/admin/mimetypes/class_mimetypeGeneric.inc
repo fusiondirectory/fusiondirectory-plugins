@@ -92,7 +92,7 @@ class mimetype extends plugin
       }
     }
 
-    /* Create list of defined applications in GOsa */
+    /* Create list of defined applications in FusionDirectory */
     $ldap = $this->config->get_ldap_link();
     $ldap->cd($this->config->current['BASE']);
     $ldap->search("(&(objectClass=gosaApplication)(cn=*))",array('cn'));

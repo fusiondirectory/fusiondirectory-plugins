@@ -74,7 +74,7 @@ class mailAccount extends plugin
   var $is_account     = FALSE;
   var $initially_was_account = FALSE;
 
-  /* GOsa mail attributes */
+  /* FusionDirectory mail attributes */
   var $mail                               = "";
   var $gosaVacationStart                  = "";
   var $gosaVacationStop                   = "";
@@ -831,7 +831,7 @@ class mailAccount extends plugin
         }
     }
 
-    /* Remove GOsa attributes */
+    /* Remove FusionDirectory attributes */
     plugin::remove_from_parent();
 
     /* Zero arrays */

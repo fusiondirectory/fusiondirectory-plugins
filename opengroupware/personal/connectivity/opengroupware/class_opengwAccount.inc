@@ -111,7 +111,7 @@ class opengwAccount extends plugin
 					$this->initialy_was_account = false;
 					$this->is_account= false;
 
-					/* Selectable in GOsa */
+					/* Selectable in FusionDirectory */
 					$this->info['template_user_id']   = 0;
 					$this->info['is_locked']          = 0;
 					$this->info['LocationTeamID']     = 0;

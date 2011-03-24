@@ -83,7 +83,7 @@ if (!isset($_GET['download'])){
   if (!function_exists("imagick_blob2image")){
 
     /* Write to temporary file and call convert, because TIFF sucks */
-    $tmpfname = tempnam ("/tmp", "GOsa");
+    $tmpfname = tempnam ("/tmp", "FusionDirectory");
     $temp= fopen($tmpfname, "w");
     fwrite($temp, $data);
     fclose($temp);

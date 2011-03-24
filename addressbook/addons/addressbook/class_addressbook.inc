@@ -839,10 +839,10 @@ class addressbook extends plugin
 
     /* If combineACLs is set to false:
        Differentiate between user and addressbook acls, thus leads into two object categories.
-        - real GOsa users
+        - real FusionDirectory users
         - and addressbook entries
        To view addressbook entries (e.g. ou=addressbook,) you just require permissions on the ldap base for 'addressbook'.
-       To view real GOsa users you have to additionally add user permissions.
+       To view real FusionDirectory users you have to additionally add user permissions.
 
        You can enable this option, to use only addressbook acls.
      */

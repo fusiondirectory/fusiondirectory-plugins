@@ -1,4 +1,4 @@
-{* GOsa dhcp sharedNetwork - smarty template *}
+{* FusionDirectory dhcp sharedNetwork - smarty template *}
 <table width="100%">
  <tr>
   <td width="50%" style="vertical-align:top">

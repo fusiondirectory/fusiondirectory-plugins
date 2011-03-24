@@ -13,14 +13,95 @@ msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-29 19:33+0200\n"
+"POT-Creation-Date: 2011-03-24 23:37+0100\n"
 "PO-Revision-Date: 2009-03-11 11:42+0100\n"
 "Last-Translator: Cajus Pollmeier <pollmeier@gonicus.de>\n"
 "Language-Team: deutsch <de@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
+
+#: admin/systems/services/apache2/class_servApacheEditVhost.inc:296
+#: admin/systems/services/apache2/class_servApacheEditVhost.inc:315
+msgid "Up"
+msgstr "Auf"
+
+#: admin/systems/services/apache2/class_servApacheEditVhost.inc:297
+#: admin/systems/services/apache2/class_servApacheEditVhost.inc:316
+msgid "Down"
+msgstr "Ab"
+
+#: admin/systems/services/apache2/class_servApacheEditVhost.inc:298
+#: admin/systems/services/apache2/class_servApacheEditVhost.inc:317
+msgid "Delete"
+msgstr "Entfernen"
+
+#: admin/systems/services/apache2/class_servApacheEditVhost.inc:356
+msgid "Name"
+msgstr "Name"
+
+#: admin/systems/services/apache2/class_servApacheEditVhost.inc:363
+#: admin/systems/services/apache2/servApacheVhostEdit.tpl:7
+msgid "Virtual host name"
+msgstr "Vorname"
+
+#: admin/systems/services/apache2/class_servApacheEditVhost.inc:364
+msgid "Only lowercase strings are allowed as Virtual Host Name."
+msgstr "Es sind nur Kleinbuchstaben für virtuelle Hostname erlaubt."
+
+#: admin/systems/services/apache2/class_servApacheEditVhost.inc:364
+msgid "e.g. example.com"
+msgstr "z.B. beispiel.com"
+
+#: admin/systems/services/apache2/class_servApacheEditVhost.inc:370
+#: admin/systems/services/apache2/servApacheVhostEdit.tpl:13
+msgid "Document root"
+msgstr "Document-Root"
+
+#: admin/systems/services/apache2/class_servApacheEditVhost.inc:376
+#: admin/systems/services/apache2/servApacheVhostEdit.tpl:19
+msgid "Admin mail address"
+msgstr "Administrator Mail-Adresse"
+
+#: admin/systems/services/apache2/class_servApacheEditVhost.inc:385
+msgid "Server alias"
+msgstr "Server-Alias"
+
+#: admin/systems/services/apache2/class_servApacheEditVhost.inc:395
+msgid "Script alias"
+msgstr "Skript-Alias"
+
+#: admin/systems/services/apache2/class_apacheUtils.inc:213
+#, php-format
+msgid ""
+"Undefined vhost name '%s'. Vhost name must look like this 'www.example.com "
+"or example.com'."
+msgstr "Der vhost-Name '%s' ist nicht definiert."
+
+#: admin/systems/services/apache2/class_servApacheVhost.inc:60
+#: admin/systems/services/apache2/class_servApacheVhost.inc:283
+#: admin/systems/services/apache2/class_servApacheVhost.inc:296
+msgid "Apache service"
+msgstr "Apache Dienst"
+
+#: admin/systems/services/apache2/class_servApacheVhost.inc:236
+#: admin/systems/services/apache2/class_servApacheVhost.inc:247
+#: admin/systems/services/apache2/class_servApacheVhost.inc:270
+msgid "LDAP error"
+msgstr "LDAP-Fehler"
+
+#: admin/systems/services/apache2/class_servApacheVhost.inc:297
+msgid "Apache virtual host service"
+msgstr "Apache Virtual Host Dienst"
+
+#: admin/systems/services/apache2/class_servApacheVhost.inc:297
+msgid "Services"
+msgstr "Dienste"
+
+#: admin/systems/services/apache2/class_servApacheVhost.inc:305
+msgid "Virtual hosts"
+msgstr "Virtuelle Hosts"
 
 #: admin/systems/services/apache2/servApacheVhost.tpl:1
 msgid "Apache VHosts"
@@ -31,80 +112,6 @@ msgstr "Apache"
 #: admin/systems/services/apache2/servApacheVhostEdit.tpl:98
 msgid "Add"
 msgstr "Hinzufügen"
-
-#: admin/systems/services/apache2/class_servApacheEditVhost.inc:298
-#: admin/systems/services/apache2/class_servApacheEditVhost.inc:317
-msgid "Up"
-msgstr "Auf"
-
-#: admin/systems/services/apache2/class_servApacheEditVhost.inc:299
-#: admin/systems/services/apache2/class_servApacheEditVhost.inc:318
-msgid "Down"
-msgstr "Ab"
-
-#: admin/systems/services/apache2/class_servApacheEditVhost.inc:300
-#: admin/systems/services/apache2/class_servApacheEditVhost.inc:319
-msgid "Delete"
-msgstr "Entfernen"
-
-#: admin/systems/services/apache2/class_servApacheEditVhost.inc:358
-msgid "Name"
-msgstr "Name"
-
-#: admin/systems/services/apache2/class_servApacheEditVhost.inc:365
-#: admin/systems/services/apache2/servApacheVhostEdit.tpl:7
-msgid "Virtual host name"
-msgstr "Vorname"
-
-#: admin/systems/services/apache2/class_servApacheEditVhost.inc:366
-msgid "Only lowercase strings are allowed as Virtual Host Name."
-msgstr "Es sind nur Kleinbuchstaben für virtuelle Hostname erlaubt."
-
-#: admin/systems/services/apache2/class_servApacheEditVhost.inc:366
-msgid "e.g. example.com"
-msgstr "z.B. beispiel.com"
-
-#: admin/systems/services/apache2/class_servApacheEditVhost.inc:372
-#: admin/systems/services/apache2/servApacheVhostEdit.tpl:13
-msgid "Document root"
-msgstr "Document-Root"
-
-#: admin/systems/services/apache2/class_servApacheEditVhost.inc:378
-#: admin/systems/services/apache2/servApacheVhostEdit.tpl:19
-msgid "Admin mail address"
-msgstr "Administrator Mail-Adresse"
-
-#: admin/systems/services/apache2/class_servApacheEditVhost.inc:387
-msgid "Server alias"
-msgstr "Server-Alias"
-
-#: admin/systems/services/apache2/class_servApacheEditVhost.inc:397
-msgid "Script alias"
-msgstr "Skript-Alias"
-
-#: admin/systems/services/apache2/class_servApacheVhost.inc:61
-#: admin/systems/services/apache2/class_servApacheVhost.inc:284
-#: admin/systems/services/apache2/class_servApacheVhost.inc:297
-msgid "Apache service"
-msgstr "Apache Dienst"
-
-#: admin/systems/services/apache2/class_servApacheVhost.inc:237
-#: admin/systems/services/apache2/class_servApacheVhost.inc:248
-#: admin/systems/services/apache2/class_servApacheVhost.inc:271
-msgid "LDAP error"
-msgstr "LDAP-Fehler"
-
-#: admin/systems/services/apache2/class_servApacheVhost.inc:298
-msgid "Apache virtual host service"
-msgstr "Apache Virtual Host Dienst"
-
-#: admin/systems/services/apache2/class_servApacheVhost.inc:298
-msgid "Services"
-msgstr "Dienste"
-
-#: admin/systems/services/apache2/class_servApacheVhost.inc:306
-msgid "Virtual hosts"
-msgstr "Virtuelle Hosts"
 
 #: admin/systems/services/apache2/servApacheVhostEdit.tpl:1
 msgid "Generic"
@@ -141,10 +148,3 @@ msgstr "Speichern"
 #: admin/systems/services/apache2/servApacheVhostEdit.tpl:113
 msgid "Cancel"
 msgstr "Abbrechen"
-
-#: admin/systems/services/apache2/class_apacheUtils.inc:194
-#, php-format
-msgid ""
-"Undefined vhost name '%s'. Vhost name must look like this 'www.example.com "
-"or example.com'."
-msgstr "Der vhost-Name '%s' ist nicht definiert."

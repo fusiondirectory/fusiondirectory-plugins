@@ -300,7 +300,7 @@ class sambaAccount extends plugin
         $smarty= get_smarty();
         $smarty->assign("usePrototype", "true");
 
-        // Assign GOsa ACLs 
+        // Assign FusionDirectory ACLs 
         $tmp = $this->plInfo();
         foreach($tmp['plProvidedAcls'] as $var => $rest){
             $smarty->assign($var."ACL",$this->getacl($var,$SkipWrite));

@@ -7,105 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-29 19:38+0200\n"
+"POT-Creation-Date: 2011-03-24 23:38+0100\n"
 "PO-Revision-Date: 2007-06-03 12:27+0800\n"
 "Last-Translator: Jiang Xin <worldhello.net@gmail.com>\n"
 "Language-Team: Chinese Simplified <zh@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "X-Generator: KBabel 1.11.4\n"
-
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:6
-msgid "FTP"
-msgstr "FTP"
-
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:7
-#, fuzzy
-msgid "This does something"
-msgstr "******"
-
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:139
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:235
-#, fuzzy
-msgid "LDAP error"
-msgstr "LDAP 错误:"
-
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:191
-#: personal/connectivity/pureftpd/pureftpd.tpl:21
-msgid "Upload bandwidth"
-msgstr "上传带宽"
-
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:194
-#: personal/connectivity/pureftpd/pureftpd.tpl:29
-msgid "Download bandwidth"
-msgstr "下载带宽"
-
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:198
-#, fuzzy
-msgid "Quota file"
-msgstr "Quota 大小"
-
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:201
-#, fuzzy
-msgid "Quota size"
-msgstr "Quota 大小"
-
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:204
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:266
-#, fuzzy
-msgid "Upload ratio"
-msgstr "上传"
-
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:207
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:268
-#, fuzzy
-msgid "Download ratio"
-msgstr "下载配置"
-
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:255
-#, fuzzy
-msgid "Ftp"
-msgstr "文件系统类型"
-
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:256
-#, fuzzy
-msgid "Pure ftp account"
-msgstr "创建传真账号"
-
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:256
-#, fuzzy
-msgid "Connectivity addon"
-msgstr "互联"
-
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:260
-msgid "My account"
-msgstr "我的账号"
-
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:265
-#, fuzzy
-msgid "Quota files"
-msgstr "Quota 大小"
-
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:267
-#, fuzzy
-msgid "Quota MBytes"
-msgstr "Quota 大小"
-
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:269
-#, fuzzy
-msgid "Upload bandwith"
-msgstr "上传带宽"
-
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:270
-#, fuzzy
-msgid "Download bandwith"
-msgstr "下载带宽"
-
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:271
-msgid "Status"
-msgstr "状态"
 
 #: personal/connectivity/pureftpd/pureftpd.tpl:6
 msgid "FTP account"
@@ -115,10 +25,20 @@ msgstr "FTP 账号"
 msgid "Bandwidth"
 msgstr "带宽"
 
+#: personal/connectivity/pureftpd/pureftpd.tpl:21
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:211
+msgid "Upload bandwidth"
+msgstr "上传带宽"
+
 #: personal/connectivity/pureftpd/pureftpd.tpl:26
 #: personal/connectivity/pureftpd/pureftpd.tpl:34
 msgid "kb/s"
 msgstr "kb/s"
+
+#: personal/connectivity/pureftpd/pureftpd.tpl:29
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:214
+msgid "Download bandwidth"
+msgstr "下载带宽"
 
 #: personal/connectivity/pureftpd/pureftpd.tpl:45
 msgid "Quota"
@@ -155,6 +75,86 @@ msgstr "检查禁用 FTP 访问"
 #: personal/connectivity/pureftpd/pureftpd.tpl:102
 msgid "Temporary disable FTP access"
 msgstr "临时禁用 FTP 访问"
+
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:26
+msgid "FTP"
+msgstr "FTP"
+
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:27
+#, fuzzy
+msgid "This does something"
+msgstr "******"
+
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:159
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:255
+#, fuzzy
+msgid "LDAP error"
+msgstr "LDAP 错误:"
+
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:218
+#, fuzzy
+msgid "Quota file"
+msgstr "Quota 大小"
+
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:221
+#, fuzzy
+msgid "Quota size"
+msgstr "Quota 大小"
+
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:224
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:286
+#, fuzzy
+msgid "Upload ratio"
+msgstr "上传"
+
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:227
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:288
+#, fuzzy
+msgid "Download ratio"
+msgstr "下载配置"
+
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:275
+#, fuzzy
+msgid "Ftp"
+msgstr "文件系统类型"
+
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:276
+#, fuzzy
+msgid "Pure ftp account"
+msgstr "创建传真账号"
+
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:276
+#, fuzzy
+msgid "Connectivity addon"
+msgstr "互联"
+
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:280
+msgid "My account"
+msgstr "我的账号"
+
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:285
+#, fuzzy
+msgid "Quota files"
+msgstr "Quota 大小"
+
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:287
+#, fuzzy
+msgid "Quota MBytes"
+msgstr "Quota 大小"
+
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:289
+#, fuzzy
+msgid "Upload bandwith"
+msgstr "上传带宽"
+
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:290
+#, fuzzy
+msgid "Download bandwith"
+msgstr "下载带宽"
+
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:291
+msgid "Status"
+msgstr "状态"
 
 #, fuzzy
 #~ msgid "Removing of user/pureftpd account with dn '%s' failed."

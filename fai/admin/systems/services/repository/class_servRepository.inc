@@ -362,7 +362,7 @@ class servrepository extends goService
 
   function trigger_si_fai_server_reload()
   {
-    /* Reload GOsa si FAI DB/cache
+    /* Reload FusionDirectory si FAI DB/cache
      */
     if(class_available("DaemonEvent") && class_available("gosaSupportDaemon")){
       $events = DaemonEvent::get_event_types(SYSTEM_EVENT | HIDDEN_EVENT);        

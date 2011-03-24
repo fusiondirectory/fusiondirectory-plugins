@@ -48,7 +48,7 @@ class kolabAccount extends plugin
 
 
   /*! \brief Initialize Plugin 
-      @param  $config   GOsa configuration object
+      @param  $config   FusionDirectory configuration object
       @param  $dn       DN of the currently edited object
       @param  $parent   The parent object, used to fetch Attributes.
    */

@@ -7,119 +7,123 @@ msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-29 19:38+0200\n"
+"POT-Creation-Date: 2011-03-24 23:38+0100\n"
 "PO-Revision-Date: 2007-06-03 12:27+0800\n"
 "Last-Translator: Jiang Xin <worldhello.net@gmail.com>\n"
 "Language-Team: Chinese Simplified <zh@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: personal/nagios/class_nagiosAccount.inc:18
-#: personal/nagios/class_nagiosAccount.inc:105
-#: personal/nagios/class_nagiosAccount.inc:114
-#: personal/nagios/class_nagiosAccount.inc:116
-#: personal/nagios/class_nagiosAccount.inc:273
+#: personal/nagios/main.inc:135
+msgid "Nagios settings"
+msgstr "Nagios 设置"
+
+#: personal/nagios/class_nagiosAccount.inc:40
+#: personal/nagios/class_nagiosAccount.inc:127
+#: personal/nagios/class_nagiosAccount.inc:136
+#: personal/nagios/class_nagiosAccount.inc:138
+#: personal/nagios/class_nagiosAccount.inc:295
 msgid "Nagios"
 msgstr "Nagios"
 
-#: personal/nagios/class_nagiosAccount.inc:19
+#: personal/nagios/class_nagiosAccount.inc:41
 #, fuzzy
 msgid "This does something"
 msgstr "******"
 
-#: personal/nagios/class_nagiosAccount.inc:173
-#: personal/nagios/class_nagiosAccount.inc:258
+#: personal/nagios/class_nagiosAccount.inc:195
+#: personal/nagios/class_nagiosAccount.inc:280
 #, fuzzy
 msgid "LDAP error"
 msgstr "LDAP 错误:"
 
-#: personal/nagios/class_nagiosAccount.inc:194
-#: personal/nagios/class_nagiosAccount.inc:284 personal/nagios/nagios.tpl:8
+#: personal/nagios/class_nagiosAccount.inc:216
+#: personal/nagios/class_nagiosAccount.inc:306 personal/nagios/nagios.tpl:8
 msgid "Alias"
 msgstr "别名"
 
-#: personal/nagios/class_nagiosAccount.inc:197
-#: personal/nagios/class_nagiosAccount.inc:201
-#: personal/nagios/class_nagiosAccount.inc:205
+#: personal/nagios/class_nagiosAccount.inc:219
+#: personal/nagios/class_nagiosAccount.inc:223
+#: personal/nagios/class_nagiosAccount.inc:227
 msgid "Mail"
 msgstr "邮件"
 
-#: personal/nagios/class_nagiosAccount.inc:274
+#: personal/nagios/class_nagiosAccount.inc:296
 #, fuzzy
 msgid "Nagios account settings"
 msgstr "Nagios 设置"
 
-#: personal/nagios/class_nagiosAccount.inc:278
+#: personal/nagios/class_nagiosAccount.inc:300
 msgid "My account"
 msgstr "我的账号"
 
-#: personal/nagios/class_nagiosAccount.inc:285 personal/nagios/nagios.tpl:17
+#: personal/nagios/class_nagiosAccount.inc:307 personal/nagios/nagios.tpl:17
 msgid "Mail address"
 msgstr "邮件地址"
 
-#: personal/nagios/class_nagiosAccount.inc:286 personal/nagios/nagios.tpl:27
+#: personal/nagios/class_nagiosAccount.inc:308 personal/nagios/nagios.tpl:27
 msgid "Host notification period"
 msgstr "主机通知周期"
 
-#: personal/nagios/class_nagiosAccount.inc:287 personal/nagios/nagios.tpl:40
+#: personal/nagios/class_nagiosAccount.inc:309 personal/nagios/nagios.tpl:40
 msgid "Service notification period"
 msgstr "服务通知周期"
 
-#: personal/nagios/class_nagiosAccount.inc:288 personal/nagios/nagios.tpl:66
+#: personal/nagios/class_nagiosAccount.inc:310 personal/nagios/nagios.tpl:66
 msgid "Host notification options"
 msgstr "主机通知选项"
 
-#: personal/nagios/class_nagiosAccount.inc:289 personal/nagios/nagios.tpl:53
+#: personal/nagios/class_nagiosAccount.inc:311 personal/nagios/nagios.tpl:53
 msgid "Service notification options"
 msgstr "服务通知选项"
 
-#: personal/nagios/class_nagiosAccount.inc:290
+#: personal/nagios/class_nagiosAccount.inc:312
 #, fuzzy
 msgid "Pager number"
 msgstr "电话号码"
 
-#: personal/nagios/class_nagiosAccount.inc:292 personal/nagios/nagios.tpl:90
+#: personal/nagios/class_nagiosAccount.inc:314 personal/nagios/nagios.tpl:90
 msgid "Service notification commands"
 msgstr "服务通知命令"
 
-#: personal/nagios/class_nagiosAccount.inc:293 personal/nagios/nagios.tpl:100
+#: personal/nagios/class_nagiosAccount.inc:315 personal/nagios/nagios.tpl:100
 msgid "Host notification commands"
 msgstr "主机通知命令"
 
-#: personal/nagios/class_nagiosAccount.inc:294
+#: personal/nagios/class_nagiosAccount.inc:316
 #, fuzzy
 msgid "View system informations"
 msgstr "查看系统信息"
 
-#: personal/nagios/class_nagiosAccount.inc:295
+#: personal/nagios/class_nagiosAccount.inc:317
 #, fuzzy
 msgid "View configuration information"
 msgstr "查看配置信息"
 
-#: personal/nagios/class_nagiosAccount.inc:296
+#: personal/nagios/class_nagiosAccount.inc:318
 #, fuzzy
 msgid "Trigger system commands"
 msgstr "触发系统命令"
 
-#: personal/nagios/class_nagiosAccount.inc:297
+#: personal/nagios/class_nagiosAccount.inc:319
 #, fuzzy
 msgid "View all services"
 msgstr "查看所有服务"
 
-#: personal/nagios/class_nagiosAccount.inc:298
+#: personal/nagios/class_nagiosAccount.inc:320
 #, fuzzy
 msgid "View all hosts"
 msgstr "查看所有主机"
 
-#: personal/nagios/class_nagiosAccount.inc:299
+#: personal/nagios/class_nagiosAccount.inc:321
 #, fuzzy
 msgid "Trigger all service commands"
 msgstr "触发所有服务命令"
 
-#: personal/nagios/class_nagiosAccount.inc:300
+#: personal/nagios/class_nagiosAccount.inc:322
 #, fuzzy
 msgid "Trigger all host commands"
 msgstr "触发所有主机命令"
@@ -163,10 +167,6 @@ msgstr "触发所有服务命令"
 #: personal/nagios/nagios.tpl:175
 msgid "trigger all host commands"
 msgstr "触发所有主机命令"
-
-#: personal/nagios/main.inc:136
-msgid "Nagios settings"
-msgstr "Nagios 设置"
 
 #~ msgid "This account has no nagios extensions."
 #~ msgstr "这个账户尚未包含 nagios 扩展。 "
