@@ -26,8 +26,8 @@ class addressbookgosa extends plugin{
     /* Adapt addressbook settings and mofiy required settings. 
      */
     $attrs = addressbook::plInfo(); 
-    $attrs['plShortName']   = _("Addressbook")." - "._("GOsa");
-    $attrs['plDescription'] = _("Addressbook")." - "._("GOsa related objects");
+    $attrs['plShortName']   = _("Addressbook")." - "._("FusionDirectory");
+    $attrs['plDescription'] = _("Addressbook")." - "._("FusionDirectory related objects");
     $attrs['plSelfModify']  = TRUE;
     $attrs['plPriority']    = 2;
     $attrs['plCategory']    = array("addressbook");
