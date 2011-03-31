@@ -1,6 +1,6 @@
 # translation of messages.po to deutsch
 # Copyright (C) 2003 GONICUS GmbH, Germany
-# This file is distributed under the same license as the GOsa2 package.
+# This file is distributed under the same license as the FusionDirectory package.
 #
 # Alfred Schroeder <schroeder@GONICUS.de>, 2004.
 # Cajus Pollmeier <pollmeier@gonicus.de>, 2004, 2005, 2006, 2008, 2009.
@@ -349,7 +349,7 @@ msgid ""
 "Please double check if you really want to do this since there is no way for "
 "FusionDirectory to get your data back."
 msgstr ""
-"Bitte überprüfen Sie genau was Sie tun, weil GOsa keine Möglichkeit hat, die "
+"Bitte überprüfen Sie genau was Sie tun, weil FusionDirectory keine Möglichkeit hat, die "
 "Daten wiederherzustellen."
 
 #: admin/devices/remove.tpl:10 admin/mimetypes/remove.tpl:10
@@ -1366,7 +1366,7 @@ msgstr ""
 "Linux Terminals und Arbeitsstationen werden beim Systemstart automatisch "
 "hinzugefügt. Aus diesem Grund können Sie für diese Systemtypen nur Vorlagen "
 "für einen Teilbaum anlegen. Server werden ebenfalls automatisch hinzugefügt, "
-"in einigen Fällen benötigen Sie Pseudo-Einträge um GOsa mit benötigten "
+"in einigen Fällen benötigen Sie Pseudo-Einträge um FusionDirectory mit benötigten "
 "Informationen zu versorgen. Weitere Netzwerk-Komponenten können z.B. für "
 "Nagios Umgebungen genutzt werden um die Abhängigkeiten aufzulösen."
 
@@ -1858,7 +1858,7 @@ msgid ""
 "infrastructure by submitting this form. The device entry will disappear from "
 "the list of the systems and move to the DNS/DHCP configuration."
 msgstr ""
-"Das gewählte Gerät wurde vom ARP-Monitor erkannt, der von GOsa verwendet "
+"Das gewählte Gerät wurde vom ARP-Monitor erkannt, der von FusionDirectory verwendet "
 "wird. Sie können dieses Gerät in Ihre DHCP/DNS-Infrastruktur integrieren, "
 "wenn Sie dieses Formular absenden. Das Gerät wird aus der Liste der Systeme "
 "verschwinden und in die DHCP/DNS-Konfiguration verschoben werden."
@@ -1990,7 +1990,7 @@ msgstr ""
 #: admin/systems/goto/workstationStartup.tpl:66
 #, fuzzy
 msgid "GOto-si daemon not configured"
-msgstr "GOsa Unterstützungs-Daemon nicht konfiguriert"
+msgstr "FusionDirectory Unterstützungs-Daemon nicht konfiguriert"
 
 #: admin/systems/goto/workstationStartup.tpl:67
 msgid "FAI settings cannot be modified"
@@ -1999,7 +1999,7 @@ msgstr "FAI-Einstellungen können nicht verändert werden"
 #: admin/systems/goto/workstationStartup.tpl:70
 #, fuzzy
 msgid "Check if the GOto-si daemon is running."
-msgstr "Prüfen Sie, ob der GOsa Unterstützungs-Daemon (gosa-si) läuft."
+msgstr "Prüfen Sie, ob der FusionDirectory Unterstützungs-Daemon (GOto-si) läuft."
 
 #: admin/systems/goto/workstationStartup.tpl:71
 msgid "retry"
@@ -2869,7 +2869,7 @@ msgid ""
 "You can import a list of jobs into the FusionDirectory job queue. This "
 "should be a semicolon seperated list of items in the following format:"
 msgstr ""
-"Sie können eine Liste von Aufträgen in die GOsa Auftragsliste importieren. "
+"Sie können eine Liste von Aufträgen in die FusionDirectory Auftragsliste importieren. "
 "Die Liste sollte aus Einträgen im folgenden Format bestehen, die jeweils "
 "durch ein Semikolon getrennt werden:"
 

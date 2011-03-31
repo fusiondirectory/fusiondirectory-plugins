@@ -348,7 +348,7 @@ msgid ""
 "FusionDirectory to get your data back."
 msgstr ""
 "Si está seguro de lo que quiere hacer pulse dos veces, ya que no hay forma "
-"de que GOsa pueda recuperar posteriormente esa información"
+"de que FusionDirectory pueda recuperar posteriormente esa información"
 
 #: admin/devices/remove.tpl:10 admin/mimetypes/remove.tpl:10
 #: admin/applications/remove.tpl:10 addons/goto/remove.tpl:9
@@ -1361,7 +1361,7 @@ msgstr ""
 "iniciar. Por esta razón solo se pueden crear plantillas para un árbol "
 "específico. Normalmente los servidores son añadidos también automáticamente, "
 "pero en algunos casos especiales, puede necesitar crear un servidor virtual "
-"para dar cierta información a GOsa. Otros componentes de red pueden ser "
+"para dar cierta información a FusionDirectory. Otros componentes de red pueden ser "
 "usados para que la configuración de 'Nagios' cree las dependencias de "
 "componentes."
 
@@ -1850,7 +1850,7 @@ msgid ""
 "infrastructure by submitting this form. The device entry will disappear from "
 "the list of the systems and move to the DNS/DHCP configuration."
 msgstr ""
-"Este dispositivo ha sido detectado por el monitor ARP usado por GOsa. Debe "
+"Este dispositivo ha sido detectado por el monitor ARP usado por FusionDirectory. Debe "
 "integrar este dispositivo en su infraestructura DHCP/DNS usando este "
 "formulario. La entrada del dispositivo desaparecerá de la lista de sistemas "
 "y sera llevada a la configuración DNS/DHCP."
@@ -1981,7 +1981,7 @@ msgstr ""
 #: admin/systems/goto/workstationStartup.tpl:66
 #, fuzzy
 msgid "GOto-si daemon not configured"
-msgstr "Demonio de soporte GOsa no configurado"
+msgstr "Demonio de soporte FusionDirectory no configurado"
 
 #: admin/systems/goto/workstationStartup.tpl:67
 msgid "FAI settings cannot be modified"
@@ -1990,7 +1990,7 @@ msgstr "Los parámetros de FAI no pueden ser modificados"
 #: admin/systems/goto/workstationStartup.tpl:70
 #, fuzzy
 msgid "Check if the GOto-si daemon is running."
-msgstr "Comprobando si el demonio de soporte GOsa (gosa-si) esta ejecutándose."
+msgstr "Comprobando si el demonio de soporte FusionDirectory (GOto-si) esta ejecutándose."
 
 #: admin/systems/goto/workstationStartup.tpl:71
 msgid "retry"
@@ -2860,7 +2860,7 @@ msgid ""
 "You can import a list of jobs into the FusionDirectory job queue. This "
 "should be a semicolon seperated list of items in the following format:"
 msgstr ""
-"Puede importar unas lista de tareas en la cola de tareas de GOsa. Esto "
+"Puede importar unas lista de tareas en la cola de tareas de FusionDirectory. Esto "
 "debería ser a lista separada por puntos y comas en el siguiente formato:"
 
 #: addons/goto/goto_import_file.tpl:5

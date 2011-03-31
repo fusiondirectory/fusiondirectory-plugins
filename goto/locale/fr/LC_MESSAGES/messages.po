@@ -344,7 +344,7 @@ msgid ""
 "FusionDirectory to get your data back."
 msgstr ""
 "Veuillez vérifier que vous voulez effectuer cette action. Toutes les données "
-"seront perdues étant donné qu'il est impossible pour GOsa de récupérer vos "
+"seront perdues étant donné qu'il est impossible pour FusionDirectory de récupérer vos "
 "données."
 
 #: admin/devices/remove.tpl:10 admin/mimetypes/remove.tpl:10
@@ -1358,7 +1358,7 @@ msgstr ""
 "démarrage. Pour cette raison vous pouvez créer un modèle uniquement pour une "
 "branche spécifique. Les serveurs sont également ajoutés automatiquement, "
 "mais dans certains cas vous pouvez avoir besoin de créer une pseudo entrée "
-"serveur afin de fournir à GOsa diverses informations. Les autres composants "
+"serveur afin de fournir à FusionDirectory diverses informations. Les autres composants "
 "réseaux peuvent être utilisés lors la configuration de Nagios afin de créer "
 "les dépendances des composants."
 
@@ -1844,7 +1844,7 @@ msgid ""
 "infrastructure by submitting this form. The device entry will disappear from "
 "the list of the systems and move to the DNS/DHCP configuration."
 msgstr ""
-"Le périphérique actuel à été détecté par le moniteur ARP utilisé par GOsa. "
+"Le périphérique actuel à été détecté par le moniteur ARP utilisé par FusionDirectory. "
 "Vous pouvez intégrer ce périphérique dans votre infrastructure DNS/DHCP en "
 "soumettant ce formulaire. Ce périphérique vas disparaître de la liste des "
 "systèmes et apparaître dans la configuration DNS/DHCP."
@@ -1975,7 +1975,7 @@ msgstr ""
 #: admin/systems/goto/workstationStartup.tpl:66
 #, fuzzy
 msgid "GOto-si daemon not configured"
-msgstr "Le service GOsa n'est pas configuré"
+msgstr "Le service FusionDirectory n'est pas configuré"
 
 #: admin/systems/goto/workstationStartup.tpl:67
 msgid "FAI settings cannot be modified"
@@ -1984,7 +1984,7 @@ msgstr "Les paramètres FAI ne peuvent pas être modifiés"
 #: admin/systems/goto/workstationStartup.tpl:70
 #, fuzzy
 msgid "Check if the GOto-si daemon is running."
-msgstr "Vérifiez si le service GOsa (gosa-si) fonctionne."
+msgstr "Vérifiez si le service FusionDirectory (GOto-si) fonctionne."
 
 #: admin/systems/goto/workstationStartup.tpl:71
 msgid "retry"
@@ -2854,7 +2854,7 @@ msgid ""
 "You can import a list of jobs into the FusionDirectory job queue. This "
 "should be a semicolon seperated list of items in the following format:"
 msgstr ""
-"Vous pouvez importer une liste de jobs dans la queue des jobs GOsa. Cela "
+"Vous pouvez importer une liste de jobs dans la queue des jobs FusionDirectory. Cela "
 "doit être un liste séparée par un point virgule dans le format suivant :"
 
 #: addons/goto/goto_import_file.tpl:5
