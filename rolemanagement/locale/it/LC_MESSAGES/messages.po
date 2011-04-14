@@ -1,32 +1,109 @@
 # translation of messages.po to Italian
-#
-# Copyright (C) 2003 GONICUS GmbH, Germany
-# Copyright (C) 2011 FusionDirectory Project
-# This file is distributed under the same license as the FusionDirectory package.
-#
-#
-#  Copyright (c) 2005 Alessandro Amici <a.amici@bopen.it> 
-#  Alessandro Amici <a.amici@bopen.it>, 2005.
- 
+# Copyright (c) 2005 B-Open Solutions srl - http://www.bopen.it/
+# Copyright (c) 2005 Alessandro Amici <a.amici@bopen.it>
+# Alessandro Amici <a.amici@bopen.it>, 2005.
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-24 23:38+0100\n"
+"POT-Creation-Date: 2010-10-29 19:38+0200\n"
 "PO-Revision-Date: 2005-11-18 15:26+0100\n"
 "Last-Translator: Alessandro Amici <a.amici@bopen.it>\n"
 "Language-Team: Italian\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "X-Generator: KBabel 1.9.1\n"
 
+#: admin/roleManagement/class_roleManagement.inc:25
+#: admin/roleManagement/class_roleGeneric.inc:427
+#, fuzzy
+msgid "Roles"
+msgstr "Ruolo"
+
+#: admin/roleManagement/class_roleManagement.inc:26
+#, fuzzy
+msgid "Role management"
+msgstr "Riferimenti"
+
+#: admin/roleManagement/remove.tpl:2
+msgid "Warning"
+msgstr "Attenzione"
+
+#: admin/roleManagement/remove.tpl:6
+msgid ""
+"Please double check if you really want to do this since there is no way for "
+"GOsa to get your data back."
+msgstr ""
+
+#: admin/roleManagement/remove.tpl:10
+#, fuzzy
+msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
+msgstr ""
+"Quindi - Se sei sicuro - premi <i>Rimuovi</i> per continuare o <i>Annulla</"
+"i> per abortire."
+
+#: admin/roleManagement/class_roleGeneric.inc:238
+#: admin/roleManagement/class_roleGeneric.inc:247
+#: admin/roleManagement/class_roleGeneric.inc:430
+#: admin/roleManagement/role-list.xml:41
+#: admin/roleManagement/role-filter.tpl:17
+#: admin/roleManagement/roleGeneric.tpl:11
+msgid "Name"
+msgstr "Cognome"
+
+#: admin/roleManagement/class_roleGeneric.inc:268
+msgid "Unknown"
+msgstr ""
+
+#: admin/roleManagement/class_roleGeneric.inc:286
+#: admin/roleManagement/class_roleGeneric.inc:328
+#, fuzzy
+msgid "LDAP error"
+msgstr "Errore LDAP"
+
+#: admin/roleManagement/class_roleGeneric.inc:371
+msgid "Error"
+msgstr ""
+
+#: admin/roleManagement/class_roleGeneric.inc:421
+#: admin/roleManagement/roleGeneric.tpl:6
+msgid "Generic"
+msgstr "Generale"
+
+#: admin/roleManagement/class_roleGeneric.inc:422
+#, fuzzy
+msgid "Role generic"
+msgstr "Cognome"
+
+#: admin/roleManagement/class_roleGeneric.inc:431
+#: admin/roleManagement/role-list.xml:49
+#: admin/roleManagement/roleGeneric.tpl:19
+msgid "Description"
+msgstr "Descrizione"
+
+#: admin/roleManagement/class_roleGeneric.inc:432
 #: admin/roleManagement/role-list.tpl:13
 #: admin/roleManagement/roleGeneric.tpl:29
-#: admin/roleManagement/class_roleGeneric.inc:431
 msgid "Base"
 msgstr "Base"
+
+#: admin/roleManagement/class_roleGeneric.inc:433
+#, fuzzy
+msgid "Telefon number"
+msgstr "Numero di telefono"
+
+#: admin/roleManagement/class_roleGeneric.inc:434
+#: admin/roleManagement/roleGeneric.tpl:50
+#, fuzzy
+msgid "Fax number"
+msgstr "Numero di telefono"
+
+#: admin/roleManagement/class_roleGeneric.inc:435
+#: admin/roleManagement/roleGeneric.tpl:62
+msgid "Occupants"
+msgstr ""
 
 #: admin/roleManagement/role-list.xml:11
 #, fuzzy
@@ -36,21 +113,6 @@ msgstr "Lista degli utenti"
 #: admin/roleManagement/role-list.xml:15 admin/roleManagement/role-list.xml:74
 msgid "Role"
 msgstr "Ruolo"
-
-#: admin/roleManagement/role-list.xml:41
-#: admin/roleManagement/role-filter.tpl:17
-#: admin/roleManagement/roleGeneric.tpl:11
-#: admin/roleManagement/class_roleGeneric.inc:237
-#: admin/roleManagement/class_roleGeneric.inc:246
-#: admin/roleManagement/class_roleGeneric.inc:429
-msgid "Name"
-msgstr "Cognome"
-
-#: admin/roleManagement/role-list.xml:49
-#: admin/roleManagement/roleGeneric.tpl:19
-#: admin/roleManagement/class_roleGeneric.inc:430
-msgid "Description"
-msgstr "Descrizione"
 
 #: admin/roleManagement/role-list.xml:57
 msgid "Actions"
@@ -78,23 +140,6 @@ msgstr "Modifica contatto"
 msgid "Remove role"
 msgstr "Oggetti membri"
 
-#: admin/roleManagement/remove.tpl:2
-msgid "Warning"
-msgstr "Attenzione"
-
-#: admin/roleManagement/remove.tpl:6
-msgid ""
-"Please double check if you really want to do this since there is no way for "
-"FusionDirectory to get your data back."
-msgstr ""
-
-#: admin/roleManagement/remove.tpl:10
-#, fuzzy
-msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr ""
-"Quindi - Se sei sicuro - premi <i>Rimuovi</i> per continuare o <i>Annulla</"
-"i> per abortire."
-
 #: admin/roleManagement/paste_generic.tpl:4
 #, fuzzy
 msgid "Role name"
@@ -110,59 +155,8 @@ msgstr "Inserisci la URI del server LDAP"
 msgid "Filter"
 msgstr "Filtri"
 
-#: admin/roleManagement/roleGeneric.tpl:6
-#: admin/roleManagement/class_roleGeneric.inc:420
-msgid "Generic"
-msgstr "Generale"
-
 #: admin/roleManagement/roleGeneric.tpl:42
 msgid "Phone number"
-msgstr "Numero di telefono"
-
-#: admin/roleManagement/roleGeneric.tpl:50
-#: admin/roleManagement/class_roleGeneric.inc:433
-#, fuzzy
-msgid "Fax number"
-msgstr "Numero di telefono"
-
-#: admin/roleManagement/roleGeneric.tpl:62
-#: admin/roleManagement/class_roleGeneric.inc:434
-msgid "Occupants"
-msgstr ""
-
-#: admin/roleManagement/class_roleManagement.inc:25
-#: admin/roleManagement/class_roleGeneric.inc:426
-#, fuzzy
-msgid "Roles"
-msgstr "Ruolo"
-
-#: admin/roleManagement/class_roleManagement.inc:26
-#, fuzzy
-msgid "Role management"
-msgstr "Riferimenti"
-
-#: admin/roleManagement/class_roleGeneric.inc:267
-msgid "Unknown"
-msgstr ""
-
-#: admin/roleManagement/class_roleGeneric.inc:285
-#: admin/roleManagement/class_roleGeneric.inc:327
-#, fuzzy
-msgid "LDAP error"
-msgstr "Errore LDAP"
-
-#: admin/roleManagement/class_roleGeneric.inc:370
-msgid "Error"
-msgstr ""
-
-#: admin/roleManagement/class_roleGeneric.inc:421
-#, fuzzy
-msgid "Role generic"
-msgstr "Cognome"
-
-#: admin/roleManagement/class_roleGeneric.inc:432
-#, fuzzy
-msgid "Telefon number"
 msgstr "Numero di telefono"
 
 #~ msgid "Choose subtree to place user in"
