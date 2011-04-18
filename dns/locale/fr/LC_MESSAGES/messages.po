@@ -5,14 +5,13 @@
 # This file is distributed under the same license as the FusionDirectory package.
 #
 #
-#  Benoit Mortier <benoit.mortier@opensides.be>, 2005, 2006, 2007, 2008, 2010.
- 
+#  Benoit Mortier <benoit.mortier@opensides.be>, 2005, 2006, 2007, 2008, 2010, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-03-24 23:37+0100\n"
-"PO-Revision-Date: 2010-01-30 11:40+0100\n"
+"PO-Revision-Date: 2011-04-18 22:32+0200\n"
 "Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>\n"
 "Language-Team:  <fr@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -69,14 +68,12 @@ msgstr "Les enregistrements '%s' ne peuvent pas être utilisés plus d'une fois.
 #: admin/systems/services/dns/class_servDNSeditZoneEntries.inc:329
 #, php-format
 msgid "Please fix the empty %s record for entry '%s'."
-msgstr ""
-"Veuillez corriger l'enregistrement vide '%s' pour l'enregistrement '%s'."
+msgstr "Veuillez corriger l'enregistrement vide '%s' pour l'enregistrement '%s'."
 
 #: admin/systems/services/dns/class_servDNSeditZoneEntries.inc:337
 #, php-format
 msgid "Please fix the duplicate %s record for entry '%s'."
-msgstr ""
-"Veuillez corriger l'enregistrement double '%s' pour l'enregistrement '%s'."
+msgstr "Veuillez corriger l'enregistrement double '%s' pour l'enregistrement '%s'."
 
 #: admin/systems/services/dns/class_servDNSeditZoneEntries.inc:475
 #: admin/systems/services/dns/class_servDNSeditZone.inc:531
@@ -161,8 +158,7 @@ msgstr "Service DNS"
 #: admin/systems/services/dns/class_servDNS.inc:171
 #, php-format
 msgid "You are going to migrate the DNS setup from server '%s'."
-msgstr ""
-"Vous êtes sur le point de migrer le serveur DNS depuis le serveur '%s'."
+msgstr "Vous êtes sur le point de migrer le serveur DNS depuis le serveur '%s'."
 
 #: admin/systems/services/dns/class_servDNS.inc:172
 msgid ""
@@ -191,8 +187,7 @@ msgstr "Classe"
 #: admin/systems/services/dns/class_servDNS.inc:355
 #, php-format
 msgid "Cannot delete the selected zone. It is still in use by '%s'"
-msgstr ""
-"Vous ne pouvez pas effacer cette zone car elle est encore utilisée par '%s'"
+msgstr "Vous ne pouvez pas effacer cette zone car elle est encore utilisée par '%s'"
 
 #: admin/systems/services/dns/class_servDNS.inc:465
 #: admin/systems/services/dns/class_servDNS.inc:481
@@ -329,7 +324,6 @@ msgid "Warning"
 msgstr "Avertissement"
 
 #: admin/systems/services/dns/class_servDNSeditZone.inc:258
-#, fuzzy
 msgid "MxRecord"
 msgstr "Enregistrements mx"
 
@@ -357,10 +351,8 @@ msgstr "Adresse réseau"
 #: admin/systems/services/dns/class_servDNSeditZone.inc:427
 #: admin/systems/services/dns/class_servDNSeditZone.inc:433
 #, php-format
-msgid ""
-"The specified network address and the network class (%s/%s) do not match!"
-msgstr ""
-"L'adresse réseau spécifiée et la classe réseau (%s/%s) ne concordent pas !"
+msgid "The specified network address and the network class (%s/%s) do not match!"
+msgstr "L'adresse réseau spécifiée et la classe réseau (%s/%s) ne concordent pas !"
 
 #: admin/systems/services/dns/servdnseditzone.tpl:1
 msgid "Generic"
@@ -372,8 +364,7 @@ msgstr "Masque réseau"
 
 #: admin/systems/services/dns/servdnseditzone.tpl:38
 msgid "Zone is in use, network settings can't be modified."
-msgstr ""
-"La zone est utilisée, les paramètres réseau ne peuvent pas être modifiés."
+msgstr "La zone est utilisée, les paramètres réseau ne peuvent pas être modifiés."
 
 #: admin/systems/services/dns/servdnseditzone.tpl:51
 msgid "Can't be edited because the zone wasn't saved right now."
@@ -423,8 +414,3 @@ msgstr ""
 msgid "Create a new DNS zone entry"
 msgstr "Créer une nouvelle zone DNS"
 
-#~ msgid "Up"
-#~ msgstr "Au dessus"
-
-#~ msgid "Down"
-#~ msgstr "En bas"

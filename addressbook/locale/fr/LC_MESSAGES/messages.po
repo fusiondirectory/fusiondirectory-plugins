@@ -5,14 +5,13 @@
 # This file is distributed under the same license as the FusionDirectory package.
 #
 #
-#  Benoit Mortier <benoit.mortier@opensides.be>, 2005, 2006, 2007, 2008, 2009.
- 
+#  Benoit Mortier <benoit.mortier@opensides.be>, 2005, 2006, 2007, 2008, 2009, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-03-24 23:37+0100\n"
-"PO-Revision-Date: 2009-02-28 13:55+0100\n"
+"PO-Revision-Date: 2011-04-18 22:30+0200\n"
 "Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>\n"
 "Language-Team:  <fr@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -175,8 +174,7 @@ msgid "Error"
 msgstr "Erreur"
 
 #: addons/addressbook/class_addressbook.inc:219
-msgid ""
-"You need to set your personal phone number in order to perform direct dials."
+msgid "You need to set your personal phone number in order to perform direct dials."
 msgstr ""
 "Vous n'avez pas de numéro de téléphone personnel indiqué. Veuillez rectifier "
 "cela afin de pouvoir faire des appels directs."
@@ -264,8 +262,7 @@ msgid "Fax"
 msgstr "Fax"
 
 #: addons/addressbook/class_addressbook.inc:771
-msgid ""
-"Cannot create a unique DN for your entry. Please fill more formular fields."
+msgid "Cannot create a unique DN for your entry. Please fill more formular fields."
 msgstr ""
 "Impossible de créer un DN unique pour cette entrée. Veuillez remplir plus de "
 "champs."
@@ -344,13 +341,12 @@ msgid "Warning"
 msgstr "Avertissement"
 
 #: addons/addressbook/remove.tpl:6
-#, fuzzy
 msgid ""
 "This includes all addressbook data in this entry. Please double check if "
 "your really want to do this since there is no way for FusionDirectory to get "
 "your data back."
 msgstr ""
-"Ceci inclut toutes les données du carnet d'adresse situées dans cette "
+"Ceci inclut toutes les données du carnet d'adresses situées dans cette "
 "entrée. Veuillez vérifier si vous voulez réaliser cette opération, toutes "
 "les données seront définitivement perdues, il n'y a pas de moyen pour FusionDirectory "
 "de les récupérer."
@@ -370,7 +366,6 @@ msgid "Information"
 msgstr "Information"
 
 #: addons/addressbook/contents.tpl:37
-#, fuzzy
 msgid ""
 "The telephone list plugin provides list and search facilities for the people "
 "in your site. You may want to specify the asterisk [*] like in \n"
@@ -379,7 +374,7 @@ msgid ""
 msgstr ""
 "L'extension gérant les listes de numéros de téléphone permet de les mettre à "
 "disposition de vos utilisateurs. Vous pouvez utiliser les [*] dans vos "
-"recherches, comme dans 'Go*us' pour trouver 'Gonicus'. Utilisez les filtres "
+"recherches, comme dans 'Fu*ry' pour trouver 'FusionDirectory'. Utilisez les filtres "
 "ci dessous pour réduire l'étendue de votre recherche."
 
 #: addons/addressbook/contents.tpl:43
@@ -412,8 +407,7 @@ msgstr "Afficher les entrées de l'organisation"
 
 #: addons/addressbook/contents.tpl:77
 msgid "Select to see users in addressbook"
-msgstr ""
-"Sélectionner pour afficher les utilisateurs présent dans le carnet d'adresse"
+msgstr "Sélectionner pour afficher les utilisateurs présent dans le carnet d'adresse"
 
 #: addons/addressbook/contents.tpl:77
 msgid "Show addressbook entries"
@@ -443,5 +437,3 @@ msgstr "Recherche de"
 msgid "Search string"
 msgstr "Phrase de recherche"
 
-#~ msgid "Surename"
-#~ msgstr "Nom de famille"

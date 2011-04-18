@@ -5,18 +5,17 @@
 # This file is distributed under the same license as the FusionDirectory package.
 #
 #
-#  Alfred Schroeder <schroeder@GONICUS.de>, 2004. 
-#  Cajus Pollmeier <pollmeier@gonicus.de>, 2004, 2005, 2006, 2008. 
-#  Jan Wenzel <jan.wenzel@gonicus.de>, 2004,2005, 2008. 
-#  Stefan Koehler <stefan.koehler@GONICUS.de>, 2005. 
-#  Benoit Mortier <benoit.mortier@opensides.be>, 2008, 2009, 2010.
- 
+#  Alfred Schroeder <schroeder@GONICUS.de>, 2004.
+#  Cajus Pollmeier <pollmeier@gonicus.de>, 2004, 2005, 2006, 2008.
+#  Jan Wenzel <jan.wenzel@gonicus.de>, 2004,2005, 2008.
+#  Stefan Koehler <stefan.koehler@GONICUS.de>, 2005.
+#  Benoit Mortier <benoit.mortier@opensides.be>, 2008, 2009, 2010, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-03-24 23:38+0100\n"
-"PO-Revision-Date: 2010-01-18 23:05+0100\n"
+"PO-Revision-Date: 2011-04-18 22:46+0200\n"
 "Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>\n"
 "Language-Team:  <fr@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -253,9 +252,8 @@ msgstr "Licences logicielles"
 #: admin/opsiLicenses/licenseGeneric.tpl:4
 #: admin/opsiLicenses/licensePoolGeneric.tpl:4
 #: admin/opsiLicenses/licenseUsageByHost.tpl:4
-#, fuzzy
 msgid "Check if GOto-si is running."
-msgstr "Veuillez vérifier si le service Gosa (GOto-si) fonctionne."
+msgstr "Veuillez vérifier si le service GOto-si fonctionne."
 
 #: admin/opsiLicenses/class_licenseByProduct.inc:135
 msgid "Usage by product"
@@ -266,9 +264,8 @@ msgid "License usage by product"
 msgstr "Utilisation des licences par produit"
 
 #: admin/opsiLicenses/licenseByProduct.tpl:4
-#, fuzzy
 msgid "Check if the GOto-si is running."
-msgstr "Veuillez vérifier si le service Gosa (GOto-si) fonctionne."
+msgstr "Veuillez vérifier si le service GOto-si fonctionne."
 
 #: admin/opsiLicenses/opsiLicense-filter.tpl:3
 msgid "Filter"
@@ -309,7 +306,6 @@ msgid "Warning"
 msgstr "Avertissement"
 
 #: admin/opsiLicenses/remove.tpl:6
-#, fuzzy
 msgid ""
 "Please double check if you really want to do this since there is no way for "
 "FusionDirectory to get your data back."
@@ -413,3 +409,4 @@ msgstr "Réservation de licence"
 #: admin/opsiLicenses/licenseUsageByHost.tpl:28
 msgid "Licenses used"
 msgstr "Licences utilisées"
+

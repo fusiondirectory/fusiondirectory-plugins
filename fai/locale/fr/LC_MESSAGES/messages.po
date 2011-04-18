@@ -5,14 +5,13 @@
 # This file is distributed under the same license as the FusionDirectory package.
 #
 #
-#  Benoit Mortier <benoit.mortier@opensides.be>, 2005, 2006, 2007, 2008, 2009, 2010.
- 
+#  Benoit Mortier <benoit.mortier@opensides.be>, 2005, 2006, 2007, 2008, 2009, 2010, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-03-24 23:37+0100\n"
-"PO-Revision-Date: 2010-01-28 22:23+0100\n"
+"PO-Revision-Date: 2011-04-18 22:33+0200\n"
 "Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>\n"
 "Language-Team:  <fr@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -653,8 +652,7 @@ msgstr "Traitement en cours"
 
 #: admin/fai/class_FAI.inc:1103
 msgid "Could not create new release, the destination dn is already in use."
-msgstr ""
-"Impossible de créer une nouvelle version, le dn de destination existe déjà."
+msgstr "Impossible de créer une nouvelle version, le dn de destination existe déjà."
 
 #: admin/fai/class_FAI.inc:1116
 msgid "Error while fetching source dn - aborted!"
@@ -666,8 +664,7 @@ msgstr "Erreur Fatale"
 
 #: admin/fai/class_FAI.inc:1198
 #, php-format
-msgid ""
-"Release creation failed due to ldap errors. Additional informations '%s'."
+msgid "Release creation failed due to ldap errors. Additional informations '%s'."
 msgstr ""
 "La création de la version à échoué du à des erreurs ldap. Information "
 "additionnelles '%s'."
@@ -780,7 +777,6 @@ msgid "Software deployment"
 msgstr "Déploiement de logiciels"
 
 #: admin/fai/class_faiManagement.inc:26
-#, fuzzy
 msgid "Manage software packages and deployment recipes"
 msgstr "Gestion des paquets logiciels et des recettes de déploiement"
 
@@ -831,8 +827,7 @@ msgstr "Branche verrouillée"
 #: admin/fai/class_faiManagement.inc:393
 #, php-format
 msgid "The following entries are locked, you can't remove them %s."
-msgstr ""
-"Les entrées suivantes %s sont vérouillées, vous ne pouvez pas les effacer."
+msgstr "Les entrées suivantes %s sont vérouillées, vous ne pouvez pas les effacer."
 
 #: admin/fai/class_faiManagement.inc:411
 msgid "FAI object"
@@ -909,8 +904,7 @@ msgstr "Taille"
 #: admin/fai/class_faiDiskEntry.inc:448
 #: admin/fai/class_faiPartitionTable.inc:265
 #, php-format
-msgid ""
-"The disk cannot be deleted while it is used in the '%s' disk definition!"
+msgid "The disk cannot be deleted while it is used in the '%s' disk definition!"
 msgstr ""
 "Ce disque ne peut pas être supprimé car il est utilisé par la définition de "
 "disque '%s' !"
@@ -1178,7 +1172,6 @@ msgid "Add from list"
 msgstr "Ajouter depuis la liste"
 
 #: admin/fai/remove.tpl:6
-#, fuzzy
 msgid ""
 "This includes all account data, system access rules, imap settings, etc. for "
 "this user. Please double check if your really want to do this since there is "
@@ -1201,8 +1194,7 @@ msgstr "Paramètres FAI"
 
 #: admin/fai/class_faiTemplateEdit.inc:80
 #, php-format
-msgid ""
-"The file encodig has changed from '%s' to '%s'. Do you really want to save?"
+msgid "The file encodig has changed from '%s' to '%s'. Do you really want to save?"
 msgstr ""
 "L'encodage du fichier à changé de '%s' vers '%s', voulez vous réellement le "
 "sauver ?"
@@ -1251,8 +1243,7 @@ msgid "Please select a least one package!"
 msgstr "Veuillez sélectionner au moins un paquet !"
 
 #: admin/fai/class_faiPackage.inc:554
-msgid ""
-"Please choose a valid release/section combination for your repository setup!"
+msgid "Please choose a valid release/section combination for your repository setup!"
 msgstr ""
 "Veuillez choisir une combinaison valable version/section pour la création de "
 "votre dépôt de paquets !"
@@ -1418,8 +1409,7 @@ msgid "Raid arrays must contain at least two partitions!"
 msgstr "Les ensembles RAID doit contenir au moins 2 partitions !"
 
 #: admin/fai/class_faiPartition.inc:426
-msgid ""
-"Raid 0 arrays can only be realized with a combination of two partitions!"
+msgid "Raid 0 arrays can only be realized with a combination of two partitions!"
 msgstr "Les ensembles RAID 0 ne peuvent être réalisé qu'avec deux partitions !"
 
 #: admin/fai/classSelect/selectClass-list.tpl:13
@@ -1520,8 +1510,7 @@ msgstr "Source d'information FAI inconnue !"
 #: admin/fai/class_faiSummaryTab.inc:185
 #: admin/systems/services/repository/class_servRepository.inc:220
 msgid "You can't use this plugin until FAI is activated."
-msgstr ""
-"Vous ne pouvez pas utiliser cette extension tant que FAI n'est pas activé."
+msgstr "Vous ne pouvez pas utiliser cette extension tant que FAI n'est pas activé."
 
 #: admin/fai/class_faiSummaryTab.inc:227
 msgid "This object has no FAI classes assigned."
@@ -1626,7 +1615,6 @@ msgid "Add volume group"
 msgstr "Ajouter un groupe de volume"
 
 #: admin/fai/remove_branch.tpl:6
-#, fuzzy
 msgid ""
 "This includes all account data, system access, etc. for this branch. Please "
 "double check if your really want to do this since there is no way for "
@@ -1684,3 +1672,4 @@ msgstr "Liste des dépôts"
 #: admin/systems/services/repository/repository-list.xml:14
 msgid "Service"
 msgstr "Services"
+

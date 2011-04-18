@@ -5,14 +5,13 @@
 # This file is distributed under the same license as the FusionDirectory package.
 #
 #
-#  Benoit Mortier <benoit.mortier@opensides.be>, 2005, 2006, 2007, 2008, 2009, 2010.
- 
+#  Benoit Mortier <benoit.mortier@opensides.be>, 2005, 2006, 2007, 2008, 2009, 2010, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-03-24 23:37+0100\n"
-"PO-Revision-Date: 2010-11-19 17:46+0100\n"
+"PO-Revision-Date: 2011-04-18 22:41+0200\n"
 "Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>\n"
 "Language-Team:  <fr@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -345,7 +344,6 @@ msgstr "Avertissement"
 
 #: admin/devices/remove.tpl:6 admin/mimetypes/remove.tpl:6
 #: admin/applications/remove.tpl:6
-#, fuzzy
 msgid ""
 "Please double check if you really want to do this since there is no way for "
 "FusionDirectory to get your data back."
@@ -864,8 +862,7 @@ msgstr "Impossible d'obtenir des informations sur les ppd."
 #: admin/systems/ppd/class_printerPPDDialog.inc:141
 #, php-format
 msgid "Cannot open PPD path '%s' for reading and writing!"
-msgstr ""
-"Impossible de lire et d'écrire dans le chemin spécifié pour le PPD '%s' !"
+msgstr "Impossible de lire et d'écrire dans le chemin spécifié pour le PPD '%s' !"
 
 #: admin/systems/ppd/class_printerPPDDialog.inc:160
 #: admin/systems/ppd/class_printerPPDDialog.inc:359
@@ -886,8 +883,7 @@ msgstr "Ecrasement du PPD existant"
 msgid ""
 "There is already a ppd file for this kind of printer. Do you want to "
 "overwrite it?"
-msgstr ""
-"Il y a déjà un fichier ppd pour ce type d'imprimante. Voulez vous l'écraser ?"
+msgstr "Il y a déjà un fichier ppd pour ce type d'imprimante. Voulez vous l'écraser ?"
 
 #: admin/systems/ppd/class_printerPPDDialog.inc:483
 msgid "Section"
@@ -1352,7 +1348,6 @@ msgid "Choose the kind of system component you want to create"
 msgstr "Choisissez le type de composant système que vous souhaitez créer"
 
 #: admin/systems/goto/chooser.tpl:4
-#, fuzzy
 msgid ""
 "Linux terminals and workstations are autocreated on bootup. For this reason "
 "you're only be able to create templates for a specific tree. Servers are "
@@ -1844,7 +1839,6 @@ msgid "Integrating unknown devices"
 msgstr "Intégration des périphériques inconnus"
 
 #: admin/systems/goto/ArpNewDevice.tpl:3
-#, fuzzy
 msgid ""
 "The current device has been detected by the ARP monitor used by "
 "FusionDirectory. You can integrate this device into your running DHCP/DNS "
@@ -1896,13 +1890,11 @@ msgstr "aucun"
 #: admin/systems/goto/class_workstationStartup.inc:255
 #, php-format
 msgid "FAI mirror '%s' is not available - setting to mirror 'auto'!"
-msgstr ""
-"Le miroir FAI '%s' n'est pas disponible - miroir mis sur 'automatique' !"
+msgstr "Le miroir FAI '%s' n'est pas disponible - miroir mis sur 'automatique' !"
 
 #: admin/systems/goto/class_workstationStartup.inc:268
 #, php-format
-msgid ""
-"FAI release '%s' is not available on mirror '%s' - setting to release '%s'!"
+msgid "FAI release '%s' is not available on mirror '%s' - setting to release '%s'!"
 msgstr ""
 "La version FAI '%s' n'est pas disponible sur le miroir '%s' - la version "
 "sera '%s' !"
@@ -1976,22 +1968,19 @@ msgstr ""
 msgid ""
 "FAI Object assignment disabled. You can't use this feature until FAI is "
 "activated."
-msgstr ""
-"Vous ne pouvez pas utiliser cette option tant que FAI n'est pas activé."
+msgstr "Vous ne pouvez pas utiliser cette option tant que FAI n'est pas activé."
 
 #: admin/systems/goto/workstationStartup.tpl:66
-#, fuzzy
 msgid "GOto-si daemon not configured"
-msgstr "Le service FusionDirectory n'est pas configuré"
+msgstr "Le service GOto-si n'est pas configuré"
 
 #: admin/systems/goto/workstationStartup.tpl:67
 msgid "FAI settings cannot be modified"
 msgstr "Les paramètres FAI ne peuvent pas être modifiés"
 
 #: admin/systems/goto/workstationStartup.tpl:70
-#, fuzzy
 msgid "Check if the GOto-si daemon is running."
-msgstr "Vérifiez si le service FusionDirectory (GOto-si) fonctionne."
+msgstr "Vérifiez si le service GOto-si fonctionne."
 
 #: admin/systems/goto/workstationStartup.tpl:71
 msgid "retry"
@@ -2113,8 +2102,7 @@ msgstr "Erreur interne"
 
 #: admin/systems/goto/class_printGeneric.inc:134
 #, php-format
-msgid ""
-"Cannot determine a valid department for this object. Setting base to '%s'!"
+msgid "Cannot determine a valid department for this object. Setting base to '%s'!"
 msgstr ""
 "Impossible d'obtenir un département valide pour cet objet. Je met la base à "
 "'%s' ! "
@@ -2138,8 +2126,7 @@ msgstr ""
 
 #: admin/systems/goto/class_printGeneric.inc:326
 msgid "This is a workstation template, printer tab is disabled."
-msgstr ""
-"Ceci est un modèle de station de travail, l'onglet imprimante est désactivé."
+msgstr "Ceci est un modèle de station de travail, l'onglet imprimante est désactivé."
 
 #: admin/systems/goto/class_printGeneric.inc:331
 msgid "This is a terminal template, printer tab is disabled."
@@ -2829,8 +2816,7 @@ msgid "Application management"
 msgstr "Gestion des applications"
 
 #: addons/goto/class_goto_import_file.inc:110
-msgid ""
-"Selected entries will be skipped because of errors. Do you want to proceed?"
+msgid "Selected entries will be skipped because of errors. Do you want to proceed?"
 msgstr ""
 "Les entrées sélectionnées seront ignorées à cause des erreurs qu'elle "
 "contiennent. Voulez vous continuer ?"
@@ -2838,8 +2824,7 @@ msgstr ""
 #: addons/goto/class_goto_import_file.inc:151
 #, php-format
 msgid "Import complete: %s events successfully send, %s failed"
-msgstr ""
-"L'importation est finie : %s évènements ont été envoyés, %s ont échoués"
+msgstr "L'importation est finie : %s évènements ont été envoyés, %s ont échoués"
 
 #: addons/goto/class_goto_import_file.inc:188
 #: addons/goto/goto_import_file.tpl:38
@@ -2856,7 +2841,6 @@ msgid "Import jobs"
 msgstr "Importer de tâches"
 
 #: addons/goto/goto_import_file.tpl:3
-#, fuzzy
 msgid ""
 "You can import a list of jobs into the FusionDirectory job queue. This "
 "should be a semicolon seperated list of items in the following format:"
@@ -3322,8 +3306,7 @@ msgstr "Permissions"
 #: addons/goto/class_gotomasses.inc:260
 #, php-format
 msgid "The following jobs couldn't be deleted, they have to be aborted: %s"
-msgstr ""
-"Les jobs suivants ne peuvent pas être effacés, il doivent être annulés: %s"
+msgstr "Les jobs suivants ne peuvent pas être effacés, il doivent être annulés: %s"
 
 #: addons/goto/class_gotomasses.inc:325 addons/goto/class_gotomasses.inc:479
 #: addons/goto/class_gotomasses.inc:550
@@ -3347,8 +3330,7 @@ msgstr "Déploiement de système"
 
 #: addons/goto/class_gotomasses.inc:565
 msgid "Provide a mechanism to automatically activate systems"
-msgstr ""
-"Procure un mécanisme pour activer un ensemble de systèmes automatiquement"
+msgstr "Procure un mécanisme pour activer un ensemble de systèmes automatiquement"
 
 #: addons/goto/deploy-list.xml:10
 msgid "List of queued jobs"
@@ -3590,8 +3572,7 @@ msgstr ""
 
 #: personal/environment/class_environment.inc:385
 #, php-format
-msgid ""
-"Profile server '%s' is not available anymore. Kiosk profile will be disabled."
+msgid "Profile server '%s' is not available anymore. Kiosk profile will be disabled."
 msgstr ""
 "Le serveur de profil sélectionné '%s' n'est plus disponible. Le profil Kiosk "
 "sera désactivé."
@@ -3685,3 +3666,4 @@ msgstr "Dernier script"
 #: personal/environment/logonManagement.tpl:44
 msgid "Script can be replaced by user"
 msgstr "Le script peut être remplacé par l'utilisateur"
+

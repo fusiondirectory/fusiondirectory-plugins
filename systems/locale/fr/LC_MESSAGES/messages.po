@@ -5,14 +5,13 @@
 # This file is distributed under the same license as the FusionDirectory package.
 #
 #
-#  Benoit Mortier <benoit.mortier@opensides.be>, 2005, 2006, 2007, 2008, 2009, 2010.
- 
+#  Benoit Mortier <benoit.mortier@opensides.be>, 2005, 2006, 2007, 2008, 2009, 2010, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-03-24 23:38+0100\n"
-"PO-Revision-Date: 2010-01-28 22:31+0100\n"
+"PO-Revision-Date: 2011-04-18 22:52+0200\n"
 "Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>\n"
 "Language-Team:  <fr@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -403,8 +402,7 @@ msgstr ""
 #: admin/systems/class_termDNS.inc:690
 #, php-format
 msgid "Only lowercase records are allowed, please check your '%ss'."
-msgstr ""
-"Seulement les minuscules sont autorisée, veuillez vérifier votre '%ss'."
+msgstr "Seulement les minuscules sont autorisée, veuillez vérifier votre '%ss'."
 
 #: admin/systems/class_termDNS.inc:958
 msgid "Delete"
@@ -502,8 +500,7 @@ msgid "Software deployment"
 msgstr "Déploiement de logiciel"
 
 #: admin/systems/class_servGeneric.inc:358
-msgid ""
-"This host is currently installing, if you really want to save it, press 'OK'."
+msgid "This host is currently installing, if you really want to save it, press 'OK'."
 msgstr ""
 "Cet hôte est actuellement en cours d'installation, si vous voulez vraiment "
 "le sauver, cliquez sur 'OK'."
@@ -535,7 +532,6 @@ msgid "Warning"
 msgstr "Avertissement"
 
 #: admin/systems/remove.tpl:6
-#, fuzzy
 msgid ""
 "This includes all account data, system access rules, imap settings, etc. for "
 "this user. Please double check if your really want to do this since there is "
@@ -659,8 +655,7 @@ msgid "Action"
 msgstr "Action"
 
 #: admin/systems/server.tpl:63
-msgid ""
-"System installation in progress, the FAI state cannot be changed right now."
+msgid "System installation in progress, the FAI state cannot be changed right now."
 msgstr ""
 "Le système est en cours d'installation, l'état FAI ne peut pas être changé "
 "maintenant."
@@ -717,8 +712,7 @@ msgstr "La création de l'image à échoué. veuillez lire le rapport ci dessous
 #: admin/systems/class_systemManagement.inc:411
 #, php-format
 msgid "Command '%s', specified for ISO creation doesn't seem to exist."
-msgstr ""
-"La commande '%s', utilisée dans la création de l'image ISO n'existe pas."
+msgstr "La commande '%s', utilisée dans la création de l'image ISO n'existe pas."
 
 #: admin/systems/class_systemManagement.inc:580
 #: admin/systems/class_systemManagement.inc:656
@@ -739,8 +733,7 @@ msgstr "Impossible de mettre le mode comme 'actif' !"
 #: admin/systems/class_systemManagement.inc:1100
 #, php-format
 msgid "You are not allowed to create a snapshot for %s."
-msgstr ""
-"Vous n'êtes pas autorisé à créer une nouvelle copie instantanée pour %s."
+msgstr "Vous n'êtes pas autorisé à créer une nouvelle copie instantanée pour %s."
 
 #: admin/systems/class_systemManagement.inc:1147
 #: admin/systems/class_systemManagement.inc:1168
@@ -749,9 +742,9 @@ msgid "You are not allowed to restore a snapshot for %s."
 msgstr "Vous n'êtes pas autorisé à restaurer un copie instantanée de %s."
 
 #: admin/systems/class_systemManagement.inc:1376
-#, fuzzy, php-format
+#, php-format
 msgid "Inherited from %s"
-msgstr "groupes imbriqués"
+msgstr "Hérité de %s"
 
 #: admin/systems/class_systemManagement.inc:1392
 #: admin/systems/class_systemManagement.inc:1393
@@ -816,60 +809,3 @@ msgstr "Impossible de mettre à jour le statut avant que cela soit sauvé !"
 msgid "Cannot update service status!"
 msgstr "Impossible de mettre à jour le statut du service!"
 
-#~ msgid "Editing this type of object is not supported yet!"
-#~ msgstr "L'édition de ce type d'objet n'est pas encore supporté !"
-
-#~ msgid ""
-#~ "The passwords you've entered as 'New password' and 'Repeated password' do "
-#~ "not match!"
-#~ msgstr ""
-#~ "Le mot de passe entré dans le champ 'Nouveau mot de passe' et celui dans "
-#~ "le champ 'Vérification du mot de passe' ne concordent pas !"
-
-#~ msgid "Cannot determine object to change password!"
-#~ msgstr "Impossible de déterminer l'objet pour changer son mot de passe !"
-
-#~ msgid "Unknown device"
-#~ msgstr "Périphérique Inconnu"
-
-#~ msgid "New Device"
-#~ msgstr "Nouveau périphérique"
-
-#~ msgid "Terminal template for"
-#~ msgstr "Modèle de terminal pour "
-
-#~ msgid "Workstation template for"
-#~ msgstr "Modèle de station de travail pour"
-
-#~ msgid "Template"
-#~ msgstr "Modèle"
-
-#~ msgid "Windows workstation"
-#~ msgstr "Ordinateur Windows"
-
-#~ msgid "Workstation error"
-#~ msgstr "Erreur d'ordinateur"
-
-#~ msgid "Server error"
-#~ msgstr "Erreur du serveur"
-
-#~ msgid "Terminal error"
-#~ msgstr "Erreur du terminal"
-
-#~ msgid "Workstation busy"
-#~ msgstr "Ordinateur occupé"
-
-#~ msgid "Server busy"
-#~ msgstr "Serveur occupé"
-
-#~ msgid "New system from incoming"
-#~ msgstr "Nouveau système depuis incoming"
-
-#~ msgid "Choose subtree to place server in"
-#~ msgstr "Sélectionnez la branche où sera enregistrée le serveur"
-
-#~ msgid "Select a base"
-#~ msgstr "Sélectionnez une base"
-
-#~ msgid "Choose subtree to place component in"
-#~ msgstr "Sélectionnez la branche où sera placée le composant"

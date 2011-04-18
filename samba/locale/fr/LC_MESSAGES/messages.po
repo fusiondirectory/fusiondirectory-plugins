@@ -5,14 +5,13 @@
 # This file is distributed under the same license as the FusionDirectory package.
 #
 #
-#  Benoit Mortier <benoit.mortier@opensides.be>, 2005, 2006, 2007, 2008, 2009, 2010.
- 
+#  Benoit Mortier <benoit.mortier@opensides.be>, 2005, 2006, 2007, 2008, 2009, 2010, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-03-24 23:38+0100\n"
-"PO-Revision-Date: 2010-08-06 11:40+0200\n"
+"PO-Revision-Date: 2011-04-18 22:50+0200\n"
 "Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>\n"
 "Language-Team:  <fr@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -189,8 +188,7 @@ msgstr "Le mot de passe n'expire jamais"
 
 #: personal/samba/samba3.tpl:347 personal/samba/class_sambaAccount.inc:1197
 msgid "Login from windows client requires no password"
-msgstr ""
-"L'identification sur une station windows ne nécessite pas de mot de passe"
+msgstr "L'identification sur une station windows ne nécessite pas de mot de passe"
 
 #: personal/samba/samba3.tpl:358 personal/samba/class_sambaAccount.inc:1199
 msgid "Lock samba account"
@@ -289,14 +287,12 @@ msgstr "du client précédent seulement"
 #: personal/samba/class_sambaAccount.inc:524
 #, php-format
 msgid "The password is outdated since %s, by domain policy."
-msgstr ""
-"Le mot de passe est trop vieux depuis %s selon à la politique du domaine."
+msgstr "Le mot de passe est trop vieux depuis %s selon à la politique du domaine."
 
 #: personal/samba/class_sambaAccount.inc:527
-#, fuzzy, php-format
+#, php-format
 msgid "The password is valid till %s."
-msgstr ""
-"Le mot de passe est valide jusqu'au %s, suivant la politique utilisateur."
+msgstr "Le mot de passe est valide jusqu'au %s."
 
 #: personal/samba/class_sambaAccount.inc:640
 #: personal/samba/class_sambaAccount.inc:646
@@ -452,8 +448,7 @@ msgstr "Non"
 #: personal/samba/class_sambaAccount.inc:802
 #, php-format
 msgid "The password would expire on %s, but the password expiry is disabled."
-msgstr ""
-"Le mot de passe devrait expirer le %s, mais l'expiration est désactivée."
+msgstr "Le mot de passe devrait expirer le %s, mais l'expiration est désactivée."
 
 #: personal/samba/class_sambaAccount.inc:808
 msgid "Password change available"
@@ -484,12 +479,10 @@ msgstr "Avertissement"
 
 #: personal/samba/class_sambaAccount.inc:1053
 msgid "Undefined Samba SID detected. Please fix this problem manually!"
-msgstr ""
-"Détection d'un SID Samba non défini. Veuillez fixer ceci manuellement !"
+msgstr "Détection d'un SID Samba non défini. Veuillez fixer ceci manuellement !"
 
 #: personal/samba/class_sambaAccount.inc:1078
-msgid ""
-"Cannot convert primary group to samba group: group cannot be identified!"
+msgid "Cannot convert primary group to samba group: group cannot be identified!"
 msgstr ""
 "Impossible de convertir le groupe primaire en un groupe primaire samba : le "
 "groupe ne peut être identifié !"
@@ -519,12 +512,10 @@ msgid "Generic profile path"
 msgstr "Chemin par défaut du profil"
 
 #: personal/samba/class_sambaAccount.inc:1194
-#, fuzzy
 msgid "Account expires"
 msgstr "Le compte expire après"
 
 #: personal/samba/class_sambaAccount.inc:1196
-#, fuzzy
 msgid "Disallow password change"
 msgstr "Forcer le changement de mot de passe"
 
@@ -568,12 +559,3 @@ msgstr "Sélectionner le département où sera effectuée la recherche"
 msgid "Regular expression for matching addresses"
 msgstr "Expression régulière pour sélectionner les adresses correspondantes"
 
-#~ msgid "The password is valid till %s, by domain policy."
-#~ msgstr ""
-#~ "Le mot de passe est valide jusqu'au %s, selon la politique du domaine."
-
-#~ msgid "Password expires on"
-#~ msgstr "Le mot de passe expirera le"
-
-#~ msgid "Allow user to change password"
-#~ msgstr "Autoriser les utilisateurs à changer de mot de passe"

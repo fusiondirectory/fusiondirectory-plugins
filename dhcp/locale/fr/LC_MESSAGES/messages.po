@@ -5,14 +5,13 @@
 # This file is distributed under the same license as the FusionDirectory package.
 #
 #
-#  Benoit Mortier <benoit.mortier@opensides.be>, 2005, 2006, 2007, 2008, 2009.
- 
+#  Benoit Mortier <benoit.mortier@opensides.be>, 2005, 2006, 2007, 2008, 2009, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-03-24 23:37+0100\n"
-"PO-Revision-Date: 2009-02-28 13:57+0100\n"
+"PO-Revision-Date: 2011-04-18 22:32+0200\n"
 "Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>\n"
 "Language-Team:  <fr@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -64,7 +63,7 @@ msgstr "L'étendue réseau n'est pas comprise dans le réseau configuré."
 #: admin/systems/services/dhcp/class_dhcpDnsZone.inc:150
 #: admin/systems/services/dhcp/dhcp_dnszone.tpl:6
 msgid "DNS zone"
-msgstr ""
+msgstr "Zone DNS"
 
 #: admin/systems/services/dhcp/class_dhcpDnsZone.inc:154
 #: admin/systems/services/dhcp/dhcp_network.tpl:73
@@ -242,15 +241,13 @@ msgstr "Réseaux partagés"
 #: admin/systems/services/dhcp/class_dhcpNewSectionDialog.inc:56
 #: admin/systems/services/dhcp/dhcp_tsigkey.tpl:2
 #: admin/systems/services/dhcp/class_servDHCP.inc:69
-#, fuzzy
 msgid "DNS update key"
-msgstr "Style de mise à jour dynamique du DNS"
+msgstr "Clef de mise à jour du DNS"
 
 #: admin/systems/services/dhcp/class_dhcpNewSectionDialog.inc:57
 #: admin/systems/services/dhcp/class_servDHCP.inc:70
-#, fuzzy
 msgid "DNS update zones"
-msgstr "Style de mise à jour dynamique du DNS"
+msgstr ""
 
 #: admin/systems/services/dhcp/dhcp_network.tpl:5
 msgid "Network configuration"
@@ -288,8 +285,7 @@ msgid "Filename"
 msgstr "Nom du fichier"
 
 #: admin/systems/services/dhcp/dhcp_network.tpl:42
-msgid ""
-"Enter name of file that will be loaded via tftp after client has started"
+msgid "Enter name of file that will be loaded via tftp after client has started"
 msgstr ""
 "Entrez le nom du fichier qui doit être chargé via tftp après que le client "
 "aie démarré"
@@ -348,9 +344,8 @@ msgid "Error in definition of '%s'!"
 msgstr "Erreur lors de la définition de '%s' !"
 
 #: admin/systems/services/dhcp/dhcp_dnszone.tpl:2
-#, fuzzy
 msgid "DNS update zone"
-msgstr "Style de mise à jour dynamique du DNS"
+msgstr ""
 
 #: admin/systems/services/dhcp/dhcp_host.tpl:12
 msgid "Name of host"
@@ -362,8 +357,7 @@ msgstr "Adresse fixe"
 
 #: admin/systems/services/dhcp/dhcp_host.tpl:22
 msgid "Use hostname or IP-address to assign fixed address"
-msgstr ""
-"Utiliser le nom de l'hôte ou de l'adresse ip pour assigner une adresse fixe"
+msgstr "Utiliser le nom de l'hôte ou de l'adresse ip pour assigner une adresse fixe"
 
 #: admin/systems/services/dhcp/dhcp_host.tpl:31
 msgid "Hardware type"
@@ -429,8 +423,7 @@ msgstr "Accepter les clients inconnus"
 
 #: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl:100
 msgid "Select if bootp clients should get dynamic IP addresses"
-msgstr ""
-"Sélectionner si les clients bootp doivent recevoir une adresse ip dynamique"
+msgstr "Sélectionner si les clients bootp doivent recevoir une adresse ip dynamique"
 
 #: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl:100
 msgid "Allow bootp clients"
@@ -463,23 +456,21 @@ msgstr "Sections DHCP"
 #: admin/systems/services/dhcp/dhcp_tsigkey.tpl:6
 #: admin/systems/services/dhcp/class_dhcpTSigKey.inc:114
 #: admin/systems/services/dhcp/class_dhcpTSigKey.inc:127
-#, fuzzy
 msgid "Key name"
-msgstr "Prénom"
+msgstr "Nom de la clef"
 
 #: admin/systems/services/dhcp/dhcp_tsigkey.tpl:9
-#, fuzzy
 msgid "Name of Key"
-msgstr "Nom de l'hôte"
+msgstr "Nom de la clef"
 
 #: admin/systems/services/dhcp/dhcp_tsigkey.tpl:13
 msgid "Encryption method"
-msgstr ""
+msgstr "Méthode de cryptage"
 
 #: admin/systems/services/dhcp/dhcp_tsigkey.tpl:21
 #: admin/systems/services/dhcp/class_dhcpTSigKey.inc:118
 msgid "Key"
-msgstr ""
+msgstr "Clef"
 
 #: admin/systems/services/dhcp/dhcp_group.tpl:11
 msgid "Name of group"
@@ -639,3 +630,4 @@ msgstr "Options dhcp"
 #: admin/systems/services/dhcp/dhcp_advanced.tpl:59
 msgid "Show advanced settings"
 msgstr "Afficher la configuration avancée"
+

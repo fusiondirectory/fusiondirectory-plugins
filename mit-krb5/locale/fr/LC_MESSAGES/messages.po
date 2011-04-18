@@ -5,14 +5,13 @@
 # This file is distributed under the same license as the FusionDirectory package.
 #
 #
-#  Benoit Mortier <benoit.mortier@opensides.be>, 2005, 2006, 2007, 2008, 2009, 2010.
- 
+#  Benoit Mortier <benoit.mortier@opensides.be>, 2005, 2006, 2007, 2008, 2009, 2010, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-03-24 23:38+0100\n"
-"PO-Revision-Date: 2010-01-30 11:35+0100\n"
+"PO-Revision-Date: 2011-04-18 22:44+0200\n"
 "Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>\n"
 "Language-Team:  <fr@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -178,8 +177,7 @@ msgid "Realm"
 msgstr "Domaine"
 
 #: admin/systems/services/kerberos/class_goKrbServer.inc:183
-msgid ""
-"Cannot apply policy changes! The defined kerberos server has no mac address."
+msgid "Cannot apply policy changes! The defined kerberos server has no mac address."
 msgstr ""
 "Impossible d'appliquer les changement de polices de sécurité ! Le serveur "
 "Kerberos défini n'a pas d'adresse MAC."
@@ -292,7 +290,6 @@ msgid "Prohibit renewable tickets"
 msgstr "Interdire les tickets renouvelables"
 
 #: admin/systems/services/kerberos/pwd_kerberos_mit.tpl:217
-#, fuzzy
 msgid "Pohibit postdated tickets"
 msgstr "Interdire les tickets ayant une date dans le futur"
 
@@ -366,3 +363,4 @@ msgstr "Clé Kerberos"
 #: admin/systems/services/kerberos/class_krb_host_keys.inc:477
 msgid "Kerberos host key"
 msgstr "Clé Kerberos de l'hôte"
+

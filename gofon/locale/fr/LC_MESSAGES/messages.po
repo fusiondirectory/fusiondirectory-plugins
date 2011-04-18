@@ -5,14 +5,13 @@
 # This file is distributed under the same license as the FusionDirectory package.
 #
 #
-#  Benoit Mortier <benoit.mortier@opensides.be>, 2005, 2006, 2007, 2008, 2009, 2010.
- 
+#  Benoit Mortier <benoit.mortier@opensides.be>, 2005, 2006, 2007, 2008, 2009, 2010, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-03-24 23:37+0100\n"
-"PO-Revision-Date: 2010-01-18 22:54+0100\n"
+"PO-Revision-Date: 2011-04-18 22:37+0200\n"
 "Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>\n"
 "Language-Team:  <fr@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -94,8 +93,7 @@ msgstr "Erreur"
 #: gofon/macro/class_gofonMacro.inc:492
 #, php-format
 msgid "Cannot delete entry because it is still in use by '%s'!"
-msgstr ""
-"Impossible d'éffacer l'entrée parcequ'elle est encore utilisée par '%s' !"
+msgstr "Impossible d'éffacer l'entrée parcequ'elle est encore utilisée par '%s' !"
 
 #: admin/systems/gofon/class_phoneGeneric.inc:277
 #: admin/systems/gofon/class_phoneGeneric.inc:432
@@ -615,8 +613,7 @@ msgid "Announce"
 msgstr "Annonce"
 
 #: admin/ogroups/gofon/phonequeue.tpl:2
-msgid ""
-"Only users with the same asterisk home server will be included to this queue."
+msgid "Only users with the same asterisk home server will be included to this queue."
 msgstr ""
 "Seulement les utilisateurs du même serveur asterisk seront inclus dans cette "
 "queue."
@@ -744,7 +741,7 @@ msgstr "Filtre"
 msgid ""
 "Macro could not be removed from server '%s', please check database "
 "consistency!"
-msgstr ""
+msgstr "La macro ne peut pas être enlevée du serveur '%s', veuillez vérifier la validité des données de la base de données !"
 
 #: gofon/macro/class_gofonMacro.inc:307
 #, php-format
@@ -752,9 +749,9 @@ msgid "Application missing in line %s!"
 msgstr "Il y a pas d'application indiquée à la ligne '%s' !"
 
 #: gofon/macro/class_gofonMacro.inc:310
-#, fuzzy, php-format
+#, php-format
 msgid "Priority missing in line %s!"
-msgstr "Extension manquante à la ligne %s !"
+msgstr "Priorité manquante à la ligne %s !"
 
 #: gofon/macro/class_gofonMacro.inc:314
 #, php-format
@@ -764,13 +761,12 @@ msgstr "Extension manquante à la ligne %s !"
 #: gofon/macro/class_gofonMacro.inc:324
 #, php-format
 msgid "Duplicate combination of 'extension' and 'priority' in line %s!"
-msgstr ""
+msgstr "Combinaison de 'extension' et 'priorité' à la ligne %s !"
 
 #: gofon/macro/class_gofonMacro.inc:357
 #, php-format
-msgid ""
-"Macro could not be added to server '%s', please check database consistency!"
-msgstr ""
+msgid "Macro could not be added to server '%s', please check database consistency!"
+msgstr "la macro ne peut être ajouté au serveur '%s', s'il vous plaît vérifier la cohérence de base de données !"
 
 #: gofon/macro/class_gofonMacro.inc:450
 msgid "Name can be 20 characters at maximum!"
@@ -848,7 +844,6 @@ msgid "Warning"
 msgstr "Avertissement"
 
 #: gofon/macro/remove.tpl:6 gofon/conference/remove.tpl:6
-#, fuzzy
 msgid ""
 "Please double check if you really want to do this since there is no way for "
 "FusionDirectory to get your data back."
@@ -948,8 +943,7 @@ msgstr "non défini"
 
 #: gofon/phoneaccount/class_phoneAccount.inc:388
 #, php-format
-msgid ""
-"Cannot identify telephone extension in database, please try to save again."
+msgid "Cannot identify telephone extension in database, please try to save again."
 msgstr ""
 "Impossible d'identifier l'extension téléphonique dans la base de données, "
 "veuillez essayer de sauver à nouveau."
@@ -966,10 +960,9 @@ msgstr ""
 #: gofon/phoneaccount/class_phoneAccount.inc:672
 #: gofon/phoneaccount/class_phoneAccount.inc:738
 #: gofon/phoneaccount/class_phoneAccount.inc:1646
-#, fuzzy, php-format
+#, php-format
 msgid "FusionDirectory identified problems with your MySQL table definition!"
-msgstr ""
-"FusionDirectory à identifié des problèmes dans les définitions de vos tables MySQL !"
+msgstr "FusionDirectory à identifié des problèmes dans les définitions de vos tables MySQL !"
 
 #: gofon/phoneaccount/class_phoneAccount.inc:711
 #: gofon/phoneaccount/class_phoneAccount.inc:1033
@@ -1172,8 +1165,7 @@ msgstr ""
 
 #: gofon/conference/class_phoneConferenceGeneric.inc:352
 #, php-format
-msgid ""
-"The previously selected asterisk home server '%s' is no longer available!"
+msgid "The previously selected asterisk home server '%s' is no longer available!"
 msgstr ""
 "Le serveur asterisk primaire (%s) précédemment sélectionné n'est plus "
 "disponible !"
@@ -1189,7 +1181,7 @@ msgid "Lifetime"
 msgstr "Durée"
 
 #: gofon/conference/class_phoneConferenceGeneric.inc:442
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "FusionDirectory identified problems with your MySQL table definition, please "
 "activate debugging for details."
@@ -1410,14 +1402,3 @@ msgstr "Statut"
 msgid "Search returned no results..."
 msgstr "La recherche n'a renvoyé aucun résultat..."
 
-#~ msgid "Choose subtree to place group in"
-#~ msgstr "Sélectionnez la branche où sera placée le groupe"
-
-#~ msgid "Select a base"
-#~ msgstr "Sélectionnez une base"
-
-#~ msgid "Update"
-#~ msgstr "Mise à jour"
-
-#~ msgid "Submit"
-#~ msgstr "Soumettre"
