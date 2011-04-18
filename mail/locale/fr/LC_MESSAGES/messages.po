@@ -5,14 +5,13 @@
 # This file is distributed under the same license as the FusionDirectory package.
 #
 #
-#  Benoit Mortier <benoit.mortier@opensides.be>, 2005, 2006, 2007, 2008, 2009, 2010.
- 
+#  Benoit Mortier <benoit.mortier@opensides.be>, 2005, 2006, 2007, 2008, 2009, 2010, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-03-24 23:38+0100\n"
-"PO-Revision-Date: 2010-01-28 22:26+0100\n"
+"PO-Revision-Date: 2011-04-18 22:13+0200\n"
 "Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>\n"
 "Language-Team:  <fr@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -95,8 +94,7 @@ msgstr "Le méthode mail ne peut pas se connecter : %s"
 #: personal/mail/class_mailAccount.inc:183
 #, php-format
 msgid "Mailbox '%s' doesn't exists on mail server: %s"
-msgstr ""
-"Le compte de messagerie '%s' n'existe pas sur le serveur de messagerie : %s"
+msgstr "Le compte de messagerie '%s' n'existe pas sur le serveur de messagerie : %s"
 
 #: admin/groups/mail/class_groupMail.inc:304
 #: admin/groups/mail/class_groupMail.inc:306
@@ -406,7 +404,7 @@ msgstr ""
 
 #: admin/groups/mail/mail.tpl:213
 msgid "Used in all groups"
-msgstr "Utiliser dans tout les groupes."
+msgstr "Utiliser dans tout les groupes"
 
 #: admin/groups/mail/mail.tpl:216
 msgid "Not used in all groups"
@@ -705,7 +703,7 @@ msgstr ""
 
 #: admin/systems/services/mail/goMailServer.tpl:123
 msgid "Select a transport protocol."
-msgstr "Sélectionner un protocole de transport"
+msgstr "Sélectionner un protocole de transport."
 
 #: admin/systems/services/mail/goMailServer.tpl:141
 msgid "Restrictions"
@@ -790,8 +788,7 @@ msgstr "Activer l'utilisation de Pyzor"
 
 #: admin/systems/services/spam/goSpamServer.tpl:22
 msgid "Select required score to tag mail as spam"
-msgstr ""
-"Sélectionner le score requis pour marquer ce message comme étant un spam"
+msgstr "Sélectionner le score requis pour marquer ce message comme étant un spam"
 
 #: admin/systems/services/spam/goSpamServer.tpl:72
 msgid "Enable bayes auto learning"
@@ -1153,14 +1150,14 @@ msgstr "Le serveur de messagerie pour ce compte est non valide !"
 
 #: personal/mail/class_mail-methods-cyrus.inc:241
 msgid "IMAP error"
-msgstr "Erreur IMAP :"
+msgstr "Erreur IMAP"
 
 #: personal/mail/class_mail-methods-cyrus.inc:241
 #, php-format
 msgid "Cannot modify IMAP mailbox quota: %s"
 msgstr ""
 "Impossible de modifier le quota de la boite de messagerie IMAP. Le serveur "
-"répond %s."
+"répond : %s"
 
 #: personal/mail/class_mail-methods-cyrus.inc:317
 msgid "Mail info"
@@ -1174,7 +1171,7 @@ msgid ""
 msgstr ""
 "L'entrée LDAP à été supprimée mais le compte de messagerie (%s) est toujours "
 "présent dans cyrus.\n"
-"Veuillez l'effacer manuellement ! "
+"Veuillez l'effacer manuellement !"
 
 #: personal/mail/class_mail-methods-cyrus.inc:402
 #: personal/mail/class_mail-methods-cyrus.inc:439
@@ -1252,7 +1249,7 @@ msgid "Parse successful"
 msgstr "L'analyse à réussi"
 
 #: personal/mail/sieve/class_sieveManagement.inc:158
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "The specified mail server '%s' does not exist within the FusionDirectory "
 "configuration."
@@ -1270,8 +1267,7 @@ msgstr "Veuillez seulement utiliser des nom de script en miniscules !"
 
 #: personal/mail/sieve/class_sieveManagement.inc:214
 msgid "Please use only alphabetical characters in script names!"
-msgstr ""
-"Seul des caractères alphabétiques sont permis dans le nom des scripts !"
+msgstr "Seul des caractères alphabétiques sont permis dans le nom des scripts !"
 
 #: personal/mail/sieve/class_sieveManagement.inc:220
 msgid "Script name already in use!"
@@ -1296,7 +1292,7 @@ msgstr "Erreur Sieve"
 #: personal/mail/sieve/class_sieveManagement.inc:1032
 #, php-format
 msgid "Cannot log into SIEVE server: %s"
-msgstr "Impossible de se connecter au serveur SIEVE. Le serveur répond '%s'."
+msgstr "Impossible de se connecter au serveur SIEVE. Le serveur répond : '%s'"
 
 #: personal/mail/sieve/class_sieveManagement.inc:351
 #, php-format
@@ -1391,7 +1387,7 @@ msgstr "si"
 
 #: personal/mail/sieve/class_sieveManagement.inc:521
 msgid "Cannot add new element!"
-msgstr "L'ajout d'un nouvel élément à échoué."
+msgstr "L'ajout d'un nouvel élément à échoué !"
 
 #: personal/mail/sieve/class_sieveManagement.inc:564
 #: personal/mail/sieve/class_sieveManagement.inc:758
@@ -1599,7 +1595,7 @@ msgstr "Type non valide dans la partie adresse."
 
 #: personal/mail/sieve/class_sieveElement_If.inc:605
 msgid "Invalid match type given."
-msgstr "Type non valide pour la recherche"
+msgstr "Type non valide pour la recherche."
 
 #: personal/mail/sieve/class_sieveElement_If.inc:621
 msgid "Invalid operator given."
@@ -1610,14 +1606,11 @@ msgid "Please specify a valid operator."
 msgstr "Veuillez spécifier un opérateur valide."
 
 #: personal/mail/sieve/class_sieveElement_If.inc:654
-msgid ""
-"Invalid character found in address attribute. Quotes are not allowed here."
-msgstr ""
-"Caractère non valide dans l'adresse. Les guillemets sont interdits ici."
+msgid "Invalid character found in address attribute. Quotes are not allowed here."
+msgstr "Caractère non valide dans l'adresse. Les guillemets sont interdits ici."
 
 #: personal/mail/sieve/class_sieveElement_If.inc:669
-msgid ""
-"Invalid character found in value attribute. Quotes are not allowed here."
+msgid "Invalid character found in value attribute. Quotes are not allowed here."
 msgstr ""
 "Caractère non valide trouvé dans l'attribut. Les guillemets ne sont pas "
 "permis ici."
@@ -1798,8 +1791,7 @@ msgstr ""
 "d'authentification est vide."
 
 #: personal/mail/sieve/templates/management.tpl:6
-msgid ""
-"Please verify that the attributes uid and mail are not empty and try again."
+msgid "Please verify that the attributes uid and mail are not empty and try again."
 msgstr ""
 "Veuillez vérifier que les attributs uid et mail ne sont pas vide et "
 "réessayer."
@@ -1818,7 +1810,7 @@ msgid ""
 "save button below."
 msgstr ""
 "Faites attention. Tout les changement seront sauvés immédiatement lorsque "
-"vous cliquerez sur le bouton sauver."
+"vous cliquez sur le bouton sauver."
 
 #: personal/mail/sieve/templates/management.tpl:22
 msgid "Create new script"
@@ -1953,7 +1945,6 @@ msgid "Edit"
 msgstr "Editer"
 
 #: personal/mail/sieve/templates/remove_script.tpl:6
-#, fuzzy
 msgid ""
 "Please double check if your really want to do this since there is no way for "
 "FusionDirectory to get your data back."
@@ -1970,7 +1961,7 @@ msgid ""
 msgstr ""
 "La meilleure chose à faire avant de réaliser cette action serait de sauver "
 "le script dans un fichier. Donc - si vous avez fait cela - appuyez sur "
-"'Delete' pour continuer ou 'Annuler' pour abandonner."
+"'Effacer' pour continuer ou 'Annuler' pour abandonner."
 
 #: personal/mail/sieve/templates/element_redirect.tpl:18
 msgid "Redirect mail to following recipients"
@@ -2276,8 +2267,7 @@ msgid "No delivery to own mailbox"
 msgstr "Aucune distribution des messages dans la boite de l'utilisateur"
 
 #: personal/mail/generic.tpl:151
-msgid ""
-"Select to automatically response with the vacation message defined below"
+msgid "Select to automatically response with the vacation message defined below"
 msgstr ""
 "Indiquez la réponse automatique en remplissant le message d'absence ci-"
 "dessous"
@@ -2319,3 +2309,4 @@ msgstr "MB"
 #: personal/mail/mail_locals.tpl:35
 msgid "Select department"
 msgstr "Sélectionner un département"
+
