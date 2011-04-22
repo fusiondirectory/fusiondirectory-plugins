@@ -33,7 +33,7 @@ use vars qw/ %opt /;
 #
 # Definitions
 #
-my $gosa_config = "/etc/gosa/gosa.conf";
+my $gosa_config = "/etc/fusiondirectory/fusiondirectory.conf";
 my $opt_string = 'l:hs';
 my $location = "";
 my $today_gmt = time ();
@@ -497,7 +497,7 @@ foreach $entry ( @entries ) {
 						}
 					}
 					if ( $gosa_sieve_script_status eq "TRUE" ) {
-						print "retrieving and modifying gosa sieve script for user $uid_v\n";
+						print "retrieving and modifying fusiondirectory sieve script for user $uid_v\n";
 						# requirements
 						$sieve_script = getscript( $sieve, $gosa_sieve_script_name );
 						#print "$sieve_script\n";
@@ -539,7 +539,7 @@ foreach $entry ( @entries ) {
 						# activating new sieve script
 						setactive( $sieve, $gosa_sieve_script_name );
 					} else {
-						print "no gosa script available for user $uid_v, creating new one";
+						print "no fusiondirectory script available for user $uid_v, creating new one";
 						$sieve_script = $gosa_sieve_header . "\n\n" . $sieve_vacation;
 						# uploading new sieve script
 						putscript( $sieve, $gosa_sieve_script_name, $sieve_script );
