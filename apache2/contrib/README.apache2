@@ -1,0 +1,13 @@
+To use the Apache2 extension
+
+1) Add the mod_vhost_ldap.schema to your schema directory or in the cn=config backend
+
+2) Remove the comments in fusiondirectory.conf
+
+    <!-- <tab class="servapache" /> -->
+
+Benoit Mortier
+FusionDirectory Project 2011
+
+
+
