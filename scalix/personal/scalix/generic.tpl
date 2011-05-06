@@ -14,7 +14,7 @@
     </tr>
 {if !$scalixGroup}
     <tr>
-     <td><label for="scalixMailboxClass">{t}Salix mailbox class{/t}</label></td>
+     <td><label for="scalixMailboxClass">{t}Scalix mailbox class{/t}</label></td>
      <td>
 {render acl=$scalixMailboxClassACL}
       <select size="1" id="scalixMailboxClass" name="scalixMailboxClass"  
