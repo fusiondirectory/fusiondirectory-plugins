@@ -1,0 +1,241 @@
+# Copyright (C) 2011 FusionDirectory Project
+# This file is distributed under the same license as the FusionDirectory package.
+#
+# Giuliano Di Vito <giuliano@opensides.be>, 2011.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-03-24 23:38+0100\n"
+"PO-Revision-Date: 2011-05-06 17:24+0200\n"
+"Last-Translator: Giuliano Di Vito <giuliano@opensides.be>\n"
+"Language-Team: Italian <kde-i18n-doc@kde.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: admin/systems/services/rsyslog/rSyslogServer.tpl:1
+msgid "Syslog logging"
+msgstr "Giornale di sistema Syslog"
+
+#: admin/systems/services/rsyslog/rSyslogServer.tpl:7
+msgid "Server provides a syslog mysql database"
+msgstr "Il server fornisce un database Mysql per syslog"
+
+#: admin/systems/services/rsyslog/rSyslogServer.tpl:10
+#: admin/systems/services/rsyslog/class_rSyslogServer.inc:104
+#: admin/systems/services/rsyslog/class_rSyslogServer.inc:203
+msgid "Database"
+msgstr "Database"
+
+#: admin/systems/services/rsyslog/rSyslogServer.tpl:19
+msgid "Database user"
+msgstr "Utente del database"
+
+#: admin/systems/services/rsyslog/rSyslogServer.tpl:28
+#: admin/systems/services/rsyslog/class_rSyslogServer.inc:107
+#: admin/systems/services/rsyslog/class_rSyslogServer.inc:205
+msgid "Password"
+msgstr "Password"
+
+#: admin/systems/services/rsyslog/class_rSyslogServer.inc:49
+msgid "Logging"
+msgstr "Giornale di sistema"
+
+#: admin/systems/services/rsyslog/class_rSyslogServer.inc:87
+#: admin/systems/services/rsyslog/class_rSyslogServer.inc:194
+#: admin/systems/services/rsyslog/class_rSyslogServer.inc:195
+msgid "Logging service"
+msgstr "Servizio del giornale di sistema"
+
+#: admin/systems/services/rsyslog/class_rSyslogServer.inc:101
+#: admin/systems/services/rsyslog/class_rSyslogServer.inc:204
+msgid "User"
+msgstr "Utente"
+
+#: admin/systems/services/rsyslog/class_rSyslogServer.inc:169
+msgid "LDAP error"
+msgstr "Errore LDAP"
+
+#: admin/systems/services/rsyslog/class_rSyslogServer.inc:195
+msgid "Services"
+msgstr "Servizi"
+
+#: admin/systems/services/rsyslog/class_rSyslogServer.inc:206
+msgid "Allow view of entries on this server"
+msgstr "Autorizza la visione delle entries di questo server"
+
+#: addons/rsyslog/rSyslog.tpl:2
+msgid "Filter"
+msgstr "Filtro"
+
+#: addons/rsyslog/rSyslog.tpl:7
+msgid "Server"
+msgstr "Server"
+
+#: addons/rsyslog/rSyslog.tpl:15
+msgid "Host"
+msgstr "Host"
+
+#: addons/rsyslog/rSyslog.tpl:23 addons/rsyslog/rSyslog.tpl:90
+msgid "Severity"
+msgstr "Gravità"
+
+#: addons/rsyslog/rSyslog.tpl:32
+msgid "From"
+msgstr "da"
+
+#: addons/rsyslog/rSyslog.tpl:42
+msgid "till"
+msgstr "fino a"
+
+#: addons/rsyslog/rSyslog.tpl:52 addons/rsyslog/rSyslog.tpl:56
+msgid "Search"
+msgstr "Ricerca"
+
+#: addons/rsyslog/rSyslog.tpl:62 addons/rsyslog/class_rsyslog.inc:337
+msgid "Error"
+msgstr "Errore"
+
+#: addons/rsyslog/rSyslog.tpl:70
+msgid "Date"
+msgstr "Data"
+
+#: addons/rsyslog/rSyslog.tpl:75
+msgid "Source"
+msgstr "Origine"
+
+#: addons/rsyslog/rSyslog.tpl:80
+msgid "Header"
+msgstr "Intestazione"
+
+#: addons/rsyslog/rSyslog.tpl:85
+#, fuzzy
+msgid "Facility"
+msgstr "Servizi"
+
+#: addons/rsyslog/rSyslog.tpl:95
+msgid "Message"
+msgstr "Messaggio"
+
+#: addons/rsyslog/main.inc:48 addons/rsyslog/class_rsyslog.inc:25
+msgid "System logs"
+msgstr "Giornale di sistema"
+
+#: addons/rsyslog/class_rsyslog.inc:26
+msgid "View system logs"
+msgstr "Consulta i giornali di sistema"
+
+#: addons/rsyslog/class_rsyslog.inc:128 addons/rsyslog/class_rsyslog.inc:134
+msgid "-"
+msgstr "-"
+
+#: addons/rsyslog/class_rsyslog.inc:130 addons/rsyslog/class_rsyslog.inc:136
+msgid "All"
+msgstr "Tutto"
+
+#: addons/rsyslog/class_rsyslog.inc:162
+#, php-format
+msgid "%s entries match the filter"
+msgstr "%s entries hanno corrispondenze con il filtro"
+
+#: addons/rsyslog/class_rsyslog.inc:182
+#, php-format
+msgid "The selected server '%s' does not exists!"
+msgstr "Il server '%s' selezionato non esiste !"
+
+#: addons/rsyslog/class_rsyslog.inc:334
+msgid "Emergency"
+msgstr "Urgenza"
+
+#: addons/rsyslog/class_rsyslog.inc:335
+msgid "Alert"
+msgstr "Allarme"
+
+#: addons/rsyslog/class_rsyslog.inc:336
+msgid "Critical"
+msgstr "Critico"
+
+#: addons/rsyslog/class_rsyslog.inc:338
+msgid "Warning"
+msgstr "Avvertimento"
+
+#: addons/rsyslog/class_rsyslog.inc:339
+msgid "Notice"
+msgstr "Avviso"
+
+#: addons/rsyslog/class_rsyslog.inc:340
+msgid "Informational"
+msgstr "Informativa"
+
+#: addons/rsyslog/class_rsyslog.inc:341
+msgid "Debug"
+msgstr "Debug"
+
+#: addons/rsyslog/class_rsyslog.inc:347 addons/rsyslog/class_rsyslog.inc:382
+#, php-format
+msgid "Unknown (%s)"
+msgstr "Sconosciuto (%s)"
+
+#: addons/rsyslog/class_rsyslog.inc:353
+msgid "Kernel"
+msgstr "Kernel"
+
+#: addons/rsyslog/class_rsyslog.inc:354
+msgid "User level"
+msgstr "Livello utente"
+
+#: addons/rsyslog/class_rsyslog.inc:355
+msgid "Mail system"
+msgstr "Sistema di posta elettronica"
+
+#: addons/rsyslog/class_rsyslog.inc:356
+msgid "System daemon"
+msgstr "Servizio di sistema"
+
+#: addons/rsyslog/class_rsyslog.inc:357 addons/rsyslog/class_rsyslog.inc:363
+msgid "Security"
+msgstr "Sicurezza"
+
+#: addons/rsyslog/class_rsyslog.inc:358
+msgid "Internal"
+msgstr "Interno"
+
+#: addons/rsyslog/class_rsyslog.inc:359
+msgid "Printing"
+msgstr "Stampa"
+
+#: addons/rsyslog/class_rsyslog.inc:360
+msgid "News"
+msgstr "Notizia"
+
+#: addons/rsyslog/class_rsyslog.inc:361
+msgid "UUCP"
+msgstr "UUCP"
+
+#: addons/rsyslog/class_rsyslog.inc:362
+msgid "Cron"
+msgstr "Cron"
+
+#: addons/rsyslog/class_rsyslog.inc:364
+msgid "FTP"
+msgstr "FTP"
+
+#: addons/rsyslog/class_rsyslog.inc:365
+msgid "NTP"
+msgstr "NTP"
+
+#: addons/rsyslog/class_rsyslog.inc:366
+msgid "Log audit"
+msgstr "Registro di controllo"
+
+#: addons/rsyslog/class_rsyslog.inc:367
+msgid "Log alert"
+msgstr "Registro degli avvisi"
+
+#: addons/rsyslog/class_rsyslog.inc:368
+msgid "Clock"
+msgstr "Ora"
+

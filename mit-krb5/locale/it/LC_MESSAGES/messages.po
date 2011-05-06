@@ -2,99 +2,93 @@
 # Copyright (c) 2005 B-Open Solutions srl - http://www.bopen.it/
 # Copyright (c) 2005 Alessandro Amici <a.amici@bopen.it>
 # Alessandro Amici <a.amici@bopen.it>, 2005.
+# Giuliano Di Vito <giuliano@opensides.be>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-04-14 18:18+0200\n"
-"PO-Revision-Date: 2005-11-18 15:26+0100\n"
-"Last-Translator: Alessandro Amici <a.amici@bopen.it>\n"
-"Language-Team: Italian\n"
+"PO-Revision-Date: 2011-04-25 08:56+0200\n"
+"Last-Translator: Giuliano Di Vito <giuliano@opensides.be>\n"
+"Language-Team: Italian <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: \n"
-"X-Generator: KBabel 1.9.1\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: admin/systems/services/kerberos/krb5_policy.tpl:1
-#, fuzzy
 msgid "Policy settings"
-msgstr "Impostazioni Unix"
+msgstr "Impostazioni della politica di sicurezza"
 
 #: admin/systems/services/kerberos/krb5_policy.tpl:7
 #: admin/systems/services/kerberos/class_krb5_policy.inc:105
 #: admin/systems/services/kerberos/class_krb5_policy.inc:108
 #: admin/systems/services/kerberos/class_krb5_policy.inc:112
-#, fuzzy
 msgid "Policy name"
-msgstr "Nome locazione"
+msgstr "Nome della regola"
 
 #: admin/systems/services/kerberos/krb5_policy.tpl:11
 #: admin/systems/services/kerberos/class_krb5_policy.inc:124
 #: admin/systems/services/kerberos/class_krb5_policy.inc:126
 #: admin/systems/services/kerberos/class_krb5_policy.inc:136
-#, fuzzy
 msgid "Minimum password length"
-msgstr "Algorimo password"
+msgstr "Lunghezza minima per la password"
 
 #: admin/systems/services/kerberos/krb5_policy.tpl:15
 #: admin/systems/services/kerberos/class_krb5_policy.inc:131
 #: admin/systems/services/kerberos/class_krb5_policy.inc:133
 #: admin/systems/services/kerberos/class_krb5_policy.inc:136
 msgid "Required different characters"
-msgstr ""
+msgstr "Richiede dei caratteri diversi"
 
 #: admin/systems/services/kerberos/krb5_policy.tpl:19
 #: admin/systems/services/kerberos/class_krb5_policy.inc:117
 #: admin/systems/services/kerberos/class_krb5_policy.inc:119
-#, fuzzy
 msgid "Password history size"
-msgstr "Algorimo password"
+msgstr ""
 
 #: admin/systems/services/kerberos/krb5_policy.tpl:28
 #: admin/systems/services/kerberos/class_krb5_policy.inc:141
 #: admin/systems/services/kerberos/class_krb5_policy.inc:143
 #: admin/systems/services/kerberos/class_krb5_policy.inc:153
 msgid "Minimum password lifetime"
-msgstr ""
+msgstr "Durata di vita minima della password"
 
 #: admin/systems/services/kerberos/krb5_policy.tpl:29
 #: admin/systems/services/kerberos/krb5_policy.tpl:33
 msgid "seconds"
-msgstr ""
+msgstr "secondi"
 
 #: admin/systems/services/kerberos/krb5_policy.tpl:32
 #: admin/systems/services/kerberos/class_krb5_policy.inc:148
 #: admin/systems/services/kerberos/class_krb5_policy.inc:150
 #: admin/systems/services/kerberos/class_krb5_policy.inc:153
-#, fuzzy
 msgid "Password lifetime"
-msgstr "Password"
+msgstr "Durata di vita della password"
 
 #: admin/systems/services/kerberos/goKrbServer.tpl:1
 msgid "Kerberos kadmin access"
-msgstr ""
+msgstr "Accesso kadmin kerberos"
 
 #: admin/systems/services/kerberos/goKrbServer.tpl:8
-#, fuzzy
 msgid "Kerberos Realm"
-msgstr "Kerberos"
+msgstr "Realm Kerberos"
 
 #: admin/systems/services/kerberos/goKrbServer.tpl:19
 #: admin/systems/services/kerberos/class_goKrbServer.inc:395
-#, fuzzy
 msgid "Policies"
-msgstr "Inglese"
+msgstr "Regole"
 
 #: admin/systems/services/kerberos/krb_host_keys.tpl:4
-#, fuzzy
 msgid "Kerberos keys"
-msgstr "Kerberos"
+msgstr "Chiavi Kerberos"
 
 #: admin/systems/services/kerberos/class_krb5_policy.inc:75
-#, php-format
+#, fuzzy, php-format
 msgid "This policy is referenced %d times."
-msgstr ""
+msgstr "Questa regola è referenziata %d volte."
 
 #: admin/systems/services/kerberos/class_krb5_policy.inc:135
 #: admin/systems/services/kerberos/class_krb5_policy.inc:152
@@ -103,11 +97,13 @@ msgid ""
 "The value specified for '%s' must be smaller than the value specified for '%"
 "s'!"
 msgstr ""
+"Il valore specificato per '%s' dev'essere più piccolo del valore introdotto "
+"per '%s' !"
 
 #: admin/systems/services/kerberos/class_password-methods-MIT.inc:237
-#, fuzzy, php-format
+#, php-format
 msgid "Cannot load principal '%s', from server '%s'!"
-msgstr "Impossibile selezionare il database!"
+msgstr "Impossibile caricare il principale a  partire dal server '%s' !"
 
 #: admin/systems/services/kerberos/class_password-methods-MIT.inc:238
 #: admin/systems/services/kerberos/class_password-methods-MIT.inc:294
@@ -121,19 +117,18 @@ msgstr "Impossibile selezionare il database!"
 #: admin/systems/services/kerberos/class_goKrbServer.inc:373
 #: admin/systems/services/kerberos/class_krb_host_keys.inc:362
 #: admin/systems/services/kerberos/class_krb_host_keys.inc:395
-#, fuzzy
 msgid "Service infrastructure"
-msgstr "Seleziona per mostrare le applicazioni"
+msgstr "Servizio d'infrastruttura"
 
 #: admin/systems/services/kerberos/class_password-methods-MIT.inc:293
-#, fuzzy, php-format
+#, php-format
 msgid "Cannot load principals from server '%s'!"
-msgstr "Impossibile connettersi al server del database!"
+msgstr "Impossibile caricare i principali a  partire dal server '%s' !"
 
 #: admin/systems/services/kerberos/class_password-methods-MIT.inc:321
-#, fuzzy, php-format
+#, php-format
 msgid "Cannot load policies from server '%s'!"
-msgstr "Rimuovi"
+msgstr "Impossibile caricare le regole a partire dal server 's' !"
 
 #: admin/systems/services/kerberos/class_password-methods-MIT.inc:326
 #: admin/systems/services/kerberos/pwd_kerberos_mit.tpl:177
@@ -147,7 +142,7 @@ msgstr "nessuno"
 #: admin/systems/services/kerberos/class_password-methods-MIT.inc:451
 #, fuzzy
 msgid "Daemon based"
-msgstr "Dominio"
+msgstr "Basato su un servizio"
 
 #: admin/systems/services/kerberos/class_password-methods-MIT.inc:496
 #: admin/systems/services/kerberos/class_goKrbServer.inc:386
@@ -158,49 +153,46 @@ msgstr "Kerberos"
 #: admin/systems/services/kerberos/class_password-methods-MIT.inc:610
 #: admin/systems/services/kerberos/pwd_kerberos_mit.tpl:57
 msgid "Ticket max life"
-msgstr ""
+msgstr "Durata massima di vita del ticket"
 
 #: admin/systems/services/kerberos/class_password-methods-MIT.inc:613
 #: admin/systems/services/kerberos/pwd_kerberos_mit.tpl:65
 msgid "Ticket max renew"
-msgstr ""
+msgstr "Durata massima di vita per il rinnovo del ticket"
 
 #: admin/systems/services/kerberos/class_goKrbServer.inc:59
-#, fuzzy
 msgid "Kerberos service"
-msgstr "Kerberos"
+msgstr "Servizio Kerberos"
 
 #: admin/systems/services/kerberos/class_goKrbServer.inc:167
-#, fuzzy
 msgid "Kerberos service (kadmin access informations)"
-msgstr "Informazioni personali"
+msgstr "Servizio Kerberos (informazioni di accesso kadmin)"
 
 #: admin/systems/services/kerberos/class_goKrbServer.inc:180
 #: admin/systems/services/kerberos/class_goKrbServer.inc:396
 #: admin/systems/services/kerberos/pwd_kerberos_mit.tpl:25
-#, fuzzy
 msgid "Realm"
-msgstr "Cognome"
+msgstr "Dominio"
 
 #: admin/systems/services/kerberos/class_goKrbServer.inc:183
 msgid ""
 "Cannot apply policy changes! The defined kerberos server has no mac address."
 msgstr ""
+"Impossibile applicare le modifiche alla regola ! Il server kerberos "
+"definito non ha nessun indirizzo mac."
 
 #: admin/systems/services/kerberos/class_goKrbServer.inc:267
 msgid "Remove"
-msgstr "Rimuovi"
+msgstr "Elimina"
 
 #: admin/systems/services/kerberos/class_goKrbServer.inc:267
 #: admin/systems/services/kerberos/pwd_kerberos_mit.tpl:41
-#, fuzzy
 msgid "Policy"
-msgstr "Inglese"
+msgstr "Regola"
 
 #: admin/systems/services/kerberos/class_goKrbServer.inc:387
-#, fuzzy
 msgid "Kerberos access information"
-msgstr "Informazioni personali"
+msgstr "Informazioni di accesso per Kerberos"
 
 #: admin/systems/services/kerberos/class_goKrbServer.inc:387
 msgid "Services"
@@ -208,12 +200,10 @@ msgstr "Servizi"
 
 #: admin/systems/services/kerberos/pwd_kerberos_mit.tpl:4
 #: admin/systems/services/kerberos/pwd_kerberos_mit.tpl:21
-#, fuzzy
 msgid "Kerberos options"
-msgstr "Kerberos"
+msgstr "Opzioni di Kerberos"
 
 #: admin/systems/services/kerberos/pwd_kerberos_mit.tpl:8
-#, fuzzy
 msgid "Retry"
 msgstr "Riprova"
 
@@ -224,134 +214,123 @@ msgstr "Annulla"
 
 #: admin/systems/services/kerberos/pwd_kerberos_mit.tpl:77
 msgid "infinite"
-msgstr ""
+msgstr "infinito"
 
 #: admin/systems/services/kerberos/pwd_kerberos_mit.tpl:79
-#, fuzzy
 msgid "Hour"
-msgstr "ora"
+msgstr "Ora"
 
 #: admin/systems/services/kerberos/pwd_kerberos_mit.tpl:81
-#, fuzzy
 msgid "Minute"
-msgstr "Stampante"
+msgstr "Minuti"
 
 #: admin/systems/services/kerberos/pwd_kerberos_mit.tpl:83
-#, fuzzy
 msgid "Day"
-msgstr "giorno"
+msgstr "Giorno"
 
 #: admin/systems/services/kerberos/pwd_kerberos_mit.tpl:85
-#, fuzzy
 msgid "Month"
-msgstr "mese"
+msgstr "Mese"
 
 #: admin/systems/services/kerberos/pwd_kerberos_mit.tpl:87
-#, fuzzy
 msgid "Year"
-msgstr "Cerca"
+msgstr "Anno"
 
 #: admin/systems/services/kerberos/pwd_kerberos_mit.tpl:92
 msgid "Valid ticket end time"
-msgstr ""
+msgstr "Data di fine della validità del ticket"
 
 #: admin/systems/services/kerberos/pwd_kerberos_mit.tpl:132
-#, fuzzy
 msgid "Password expires"
-msgstr "Password"
+msgstr "Scadenza della password"
 
 #: admin/systems/services/kerberos/pwd_kerberos_mit.tpl:173
 msgid "Status"
 msgstr "Stato"
 
 #: admin/systems/services/kerberos/pwd_kerberos_mit.tpl:176
-#, fuzzy
 msgid "Failed logins"
-msgstr "Fallito"
+msgstr "Errore alla connessione"
 
 #: admin/systems/services/kerberos/pwd_kerberos_mit.tpl:180
-#, fuzzy
 msgid "Key version number"
-msgstr "Numero di telefono"
+msgstr "Numero di versione della chiave"
 
 #: admin/systems/services/kerberos/pwd_kerberos_mit.tpl:184
-#, fuzzy
 msgid "Last failed login"
-msgstr "Scegli il tuo numero di telefono personale"
+msgstr "Ultima connessione non riuscita"
 
 #: admin/systems/services/kerberos/pwd_kerberos_mit.tpl:188
-#, fuzzy
 msgid "Last password change"
-msgstr "Cambia la password"
+msgstr "Ultimo cambiamento della password"
 
 #: admin/systems/services/kerberos/pwd_kerberos_mit.tpl:192
 msgid "Last successful login"
-msgstr ""
+msgstr "Ultima connessione riuscita"
 
 #: admin/systems/services/kerberos/pwd_kerberos_mit.tpl:196
-#, fuzzy
 msgid "Last modification date"
-msgstr "Non ci sono certificati installati"
+msgstr "Ultima data delle modifiche"
 
 #: admin/systems/services/kerberos/pwd_kerberos_mit.tpl:209
 msgid "Prohibit issuance of service tickets"
-msgstr ""
+msgstr "Interdire l'emissione dei ticket per i servizi"
 
 #: admin/systems/services/kerberos/pwd_kerberos_mit.tpl:211
 msgid "Prohibit forwardable tickets"
-msgstr ""
+msgstr "Interdire i ticket trasferibili"
 
 #: admin/systems/services/kerberos/pwd_kerberos_mit.tpl:213
 msgid "Disallow proxiable tickets"
-msgstr ""
+msgstr "Interdire i ticket proxi..."
 
 #: admin/systems/services/kerberos/pwd_kerberos_mit.tpl:215
 msgid "Prohibit renewable tickets"
-msgstr ""
+msgstr "Interdire i ticket rinnovabili"
 
 #: admin/systems/services/kerberos/pwd_kerberos_mit.tpl:217
+#, fuzzy
 msgid "Pohibit postdated tickets"
-msgstr ""
+msgstr "Interdire i ticket che hanno una data nel futuro"
 
 #: admin/systems/services/kerberos/pwd_kerberos_mit.tpl:219
 msgid "Disallow Ticket-Granting Service"
-msgstr ""
+msgstr "Servizio d'interdizione dell'emissione di ticket"
 
 #: admin/systems/services/kerberos/pwd_kerberos_mit.tpl:221
-#, fuzzy
 msgid "Password change service"
-msgstr "Cambia la password"
+msgstr "Servizio di modeifica della password"
 
 #: admin/systems/services/kerberos/pwd_kerberos_mit.tpl:223
 #, fuzzy
 msgid "Preauthentication required"
-msgstr "Destinazione"
+msgstr "Pre autentificazione richiesta"
 
 #: admin/systems/services/kerberos/pwd_kerberos_mit.tpl:225
-#, fuzzy
 msgid "Force a password change"
-msgstr "Cambia la password"
+msgstr "Forza la modifica della password"
 
 #: admin/systems/services/kerberos/pwd_kerberos_mit.tpl:227
 #, fuzzy
 msgid "Hardware preauthentication"
-msgstr "Destinazione"
+msgstr "Pre autentificazione hardware"
 
 #: admin/systems/services/kerberos/pwd_kerberos_mit.tpl:229
+#, fuzzy
 msgid "Disallow user to user authentification"
-msgstr ""
+msgstr "Interdire l'autentificazione dell'utente verso l'utente"
 
 #: admin/systems/services/kerberos/pwd_kerberos_mit.tpl:231
 msgid "Forbid ticket issuance"
-msgstr ""
+msgstr "Interdire l'emissione dei ticket"
 
 #: admin/systems/services/kerberos/pwd_kerberos_mit.tpl:241
 msgid "Save"
-msgstr "Salva"
+msgstr "Registra"
 
 #: admin/systems/services/kerberos/class_krb_host_keys.inc:232
 msgid "updated to"
-msgstr ""
+msgstr "aggiornamento per"
 
 #: admin/systems/services/kerberos/class_krb_host_keys.inc:241
 #, php-format
@@ -359,38 +338,34 @@ msgid ""
 "The principal name of this system has changed. Do you want to update your "
 "principals? The affected principals are listed below: %s"
 msgstr ""
+"Il nome principale di questo sistema è cambiato. Vuoi aggiornare i tuoi "
+"principali ? I principali che saranno affetti sono elencati di seguito : %s"
 
 #: admin/systems/services/kerberos/class_krb_host_keys.inc:258
 #: admin/systems/services/kerberos/class_krb_host_keys.inc:259
-#, fuzzy
 msgid "Create key"
-msgstr "Creare"
+msgstr "Crea una chiave"
 
 #: admin/systems/services/kerberos/class_krb_host_keys.inc:265
-#, fuzzy
 msgid "Recreate key"
-msgstr "Creare"
+msgstr "Ricrea una chiave"
 
 #: admin/systems/services/kerberos/class_krb_host_keys.inc:267
-#, fuzzy
 msgid "Remove key"
-msgstr "Rimuovi"
+msgstr "Elimina una chiave"
 
 #: admin/systems/services/kerberos/class_krb_host_keys.inc:306
 #: admin/systems/services/kerberos/class_krb_host_keys.inc:336
-#, fuzzy
 msgid "installed"
-msgstr "disabilitato"
+msgstr "installato"
 
 #: admin/systems/services/kerberos/class_krb_host_keys.inc:476
-#, fuzzy
 msgid "Kerberos key"
-msgstr "Kerberos"
+msgstr "Chiave Kerberos"
 
 #: admin/systems/services/kerberos/class_krb_host_keys.inc:477
-#, fuzzy
 msgid "Kerberos host key"
-msgstr "Kerberos"
+msgstr "Chiave Kerberos dell'host"
 
 #, fuzzy
 #~ msgid "Heimdal"

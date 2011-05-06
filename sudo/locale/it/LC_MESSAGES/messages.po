@@ -1,25 +1,29 @@
 # translation of messages.po to Italian
+# Copyright (C) 2011 FusionDirectory Project
+# This file is distributed under the same license as the FusionDirectory package.
+#
 # Copyright (c) 2005 B-Open Solutions srl - http://www.bopen.it/
 # Copyright (c) 2005 Alessandro Amici <a.amici@bopen.it>
 # Alessandro Amici <a.amici@bopen.it>, 2005.
+# Giuliano Di Vito <giuliano@opensides.be>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-04-14 18:18+0200\n"
-"PO-Revision-Date: 2005-11-18 15:26+0100\n"
-"Last-Translator: Alessandro Amici <a.amici@bopen.it>\n"
-"Language-Team: Italian\n"
+"PO-Revision-Date: 2011-04-26 19:48+0200\n"
+"Last-Translator: Giuliano Di Vito <giuliano@opensides.be>\n"
+"Language-Team: Italian <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: \n"
-"X-Generator: KBabel 1.9.1\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: admin/sudo/sudo-filter.tpl:3
-#, fuzzy
 msgid "Filter"
-msgstr "Filtri"
+msgstr "Filtro"
 
 #: admin/sudo/sudo-filter.tpl:13 admin/sudo/sudo-list.xml:32
 #: admin/sudo/class_sudoGeneric.inc:581 admin/sudo/class_sudoGeneric.inc:586
@@ -27,35 +31,32 @@ msgstr "Filtri"
 #: admin/sudo/class_sudoGeneric.inc:639 admin/sudo/paste_generic.tpl:5
 #: admin/sudo/generic.tpl:7 admin/sudo/generic.tpl:34
 msgid "Name"
-msgstr "Cognome"
+msgstr "Nome"
 
 #: admin/sudo/sudo-filter.tpl:23 admin/sudo/class_sudoGeneric.inc:422
 msgid "User"
-msgstr ""
+msgstr "Utente"
 
 #: admin/sudo/options.tpl:5
-#, fuzzy
 msgid "Option name"
-msgstr "Nome locazione"
+msgstr "Nome dell'opzione"
 
 #: admin/sudo/options.tpl:7
-#, fuzzy
 msgid "Value"
-msgstr "maschio"
+msgstr "Valore"
 
 #: admin/sudo/options.tpl:8 admin/sudo/class_sudoOption.inc:536
 msgid "Options"
 msgstr "Opzioni"
 
 #: admin/sudo/options.tpl:86
-#, fuzzy
 msgid "Available options"
-msgstr "Applicazioni disponibili"
+msgstr "Opzioni disponibili"
 
 #: admin/sudo/sudo-list.xml:11
 #, fuzzy
 msgid "List of sudo roles"
-msgstr "Lista degli utenti"
+msgstr "Elenco dei ruoli sudo"
 
 #: admin/sudo/sudo-list.xml:15 admin/sudo/sudo-list.xml:65
 msgid "Role"
@@ -72,34 +73,31 @@ msgstr "Azioni"
 
 #: admin/sudo/sudo-list.xml:59
 msgid "Create"
-msgstr "Creare"
+msgstr "Crea"
 
 #: admin/sudo/sudo-list.xml:72
-#, fuzzy
 msgid "Default"
-msgstr "Rimuovi"
+msgstr "Default"
 
 #: admin/sudo/sudo-list.xml:85
 msgid "Remove"
-msgstr "Rimuovi"
+msgstr "Elimina"
 
 #: admin/sudo/sudo-list.xml:117
-#, fuzzy
 msgid "Edit sudo role"
-msgstr "Lista degli utenti"
+msgstr "Modifica il ruolo sudo"
 
 #: admin/sudo/sudo-list.xml:130
-#, fuzzy
 msgid "Remove sudo role"
-msgstr "Utenti di Dominio"
+msgstr "Elimina il ruolo sudo"
 
 #: admin/sudo/class_sudoGeneric.inc:333
 msgid "Error"
-msgstr ""
+msgstr "Errore"
 
 #: admin/sudo/class_sudoGeneric.inc:375
 msgid "disabled"
-msgstr "disabilitato"
+msgstr "disattivato"
 
 #: admin/sudo/class_sudoGeneric.inc:376
 msgid "full access"
@@ -107,26 +105,23 @@ msgstr "accesso completo"
 
 #: admin/sudo/class_sudoGeneric.inc:377
 msgid "allow access to these hosts"
-msgstr "accesso limitato ai seguenti host"
+msgstr "autorizza l'accesso a questi host"
 
 #: admin/sudo/class_sudoGeneric.inc:423
 msgid "Group"
 msgstr "Gruppo"
 
 #: admin/sudo/class_sudoGeneric.inc:567
-#, fuzzy
 msgid "LDAP error"
 msgstr "Errore LDAP"
 
 #: admin/sudo/class_sudoGeneric.inc:630 admin/sudo/class_sudoManagement.inc:25
-#, fuzzy
 msgid "Sudo"
-msgstr "Cognome"
+msgstr "Sudo"
 
 #: admin/sudo/class_sudoGeneric.inc:631 admin/sudo/class_sudoGeneric.inc:636
-#, fuzzy
 msgid "Sudo role"
-msgstr "Cognome"
+msgstr "Ruolo Sudo"
 
 #: admin/sudo/class_sudoGeneric.inc:641
 msgid "Users"
@@ -134,120 +129,113 @@ msgstr "Utenti"
 
 #: admin/sudo/class_sudoGeneric.inc:642
 msgid "Host"
-msgstr ""
+msgstr "Host"
 
 #: admin/sudo/class_sudoGeneric.inc:643
-#, fuzzy
 msgid "Command"
-msgstr "e"
+msgstr "Comando"
 
 #: admin/sudo/class_sudoGeneric.inc:644
-#, fuzzy
 msgid "Run as user"
-msgstr "Utenti di Dominio"
+msgstr "Esegui come utente"
 
 #: admin/sudo/class_sudoGeneric.inc:645
-#, fuzzy
 msgid "Access control list"
-msgstr "Opzioni di accesso"
+msgstr "Lista di controllo degli accessi"
 
 #: admin/sudo/remove.tpl:2
 msgid "Warning"
-msgstr "Attenzione"
+msgstr "Avvertimento"
 
 #: admin/sudo/remove.tpl:6
 msgid ""
 "Please double check if you really want to do this since there is no way for "
 "FusionDirectory to get your data back."
 msgstr ""
+"Assicurati che vuoi davvero eseguire l'azione visto che poi sarà "
+"impossibile "
+"per FusionDirectory recuperare i tuoi dati."
 
 #: admin/sudo/remove.tpl:10
-#, fuzzy
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
 msgstr ""
-"Quindi - Se sei sicuro - premi <i>Rimuovi</i> per continuare o <i>Annulla</"
-"i> per abortire."
+"Quindi - se sei sicuro - premi 'Rimuovi' per continuare oppure 'Annulla' "
+"per "
+"interrompere."
 
 #: admin/sudo/paste_generic.tpl:1 admin/sudo/generic.tpl:3
 #: admin/sudo/generic.tpl:30
 msgid "Generic"
-msgstr "Generale"
+msgstr "Informazioni"
 
 #: admin/sudo/paste_generic.tpl:1 admin/sudo/generic.tpl:3
 msgid "global defaults"
-msgstr ""
+msgstr "Parametri globali di default"
 
 #: admin/sudo/class_sudoManagement.inc:26
-#, fuzzy
 msgid "Sudo management"
-msgstr "Dirigenza"
+msgstr "Gestione di Sudo"
 
 #: admin/sudo/class_sudoOption.inc:154
-#, fuzzy
 msgid "Unknown option"
-msgstr "Utenti di Dominio"
+msgstr "Opzione sconosciuta"
 
 #: admin/sudo/class_sudoOption.inc:155
-#, fuzzy, php-format
+#, php-format
 msgid "The sudo option '%s' is invalid!"
-msgstr "Il valore specificato per l'UID non è valido."
+msgstr "L'opzione di sudo '%s' non è valida !"
 
 #: admin/sudo/class_sudoOption.inc:282 admin/sudo/class_sudoOption.inc:284
 #, fuzzy
 msgid "string"
-msgstr "Attenzione"
+msgstr "Frase"
 
 #: admin/sudo/class_sudoOption.inc:282 admin/sudo/class_sudoOption.inc:283
 #: admin/sudo/class_sudoOption.inc:284
 msgid "bool"
-msgstr ""
+msgstr "Booleano"
 
 #: admin/sudo/class_sudoOption.inc:283
-#, fuzzy
 msgid "integer"
-msgstr "stampanti"
+msgstr "intero"
 
 #: admin/sudo/class_sudoOption.inc:284
-#, fuzzy
 msgid "list"
-msgstr "classe"
+msgstr "elenco"
 
 #: admin/sudo/class_sudoOption.inc:537
-#, fuzzy
 msgid "Sudo options"
-msgstr "Utenti di Dominio"
+msgstr "Opzioni di Sudo"
 
 #: admin/sudo/generic.tpl:55
+#, fuzzy
 msgid "System trust"
-msgstr "Accesso ai sistemi"
+msgstr "Sistema di fiducia"
 
 #: admin/sudo/generic.tpl:56
+#, fuzzy
 msgid "Trust mode"
-msgstr ""
+msgstr "Modalità di fiducia"
 
 #: admin/sudo/generic.tpl:87
-#, fuzzy
 msgid "Users and groups"
-msgstr "gruppi"
+msgstr "Utenti e gruppi"
 
 #: admin/sudo/generic.tpl:98 admin/sudo/generic.tpl:113
 msgid "Add from list"
-msgstr ""
+msgstr "Aggiungi dalla lista"
 
 #: admin/sudo/generic.tpl:102
-#, fuzzy
 msgid "Systems"
 msgstr "Sistemi"
 
 #: admin/sudo/generic.tpl:120
-#, fuzzy
 msgid "Commands"
-msgstr "e"
+msgstr "comandi"
 
 #: admin/sudo/generic.tpl:132
-#, fuzzy
 msgid "Run as"
-msgstr "Utenti di Dominio"
+msgstr "Esegui come"
 
 #, fuzzy
 #~ msgid "List of users and groups"

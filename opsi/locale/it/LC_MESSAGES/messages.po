@@ -1,0 +1,405 @@
+# Copyright (C) 2011 FusionDirectory Project
+# This file is distributed under the same license as the FusionDirectory package.
+#
+# Giuliano Di Vito <giuliano@opensides.be>, 2011.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-03-24 23:38+0100\n"
+"PO-Revision-Date: 2011-05-06 16:50+0200\n"
+"Last-Translator: Giuliano Di Vito <giuliano@opensides.be>\n"
+"Language-Team: Italian <kde-i18n-doc@kde.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: admin/opsi/class_opsi.inc:77 admin/opsi/class_opsigeneric.inc:761
+msgid "Opsi"
+msgstr "Opsi"
+
+#: admin/opsi/class_opsi.inc:77
+#, php-format
+msgid "More than one Opsi server were found, using the first result '%s'."
+msgstr "Molteplici server Opsi sono stati trovati, sarà ustao il primo '%s'."
+
+#: admin/opsi/class_opsi.inc:157
+msgid "Service infrastructure"
+msgstr "Servizio d'infrastruttura"
+
+#: admin/opsi/class_opsiProperties.inc:126
+msgid "Products"
+msgstr "Prodotti"
+
+#: admin/opsi/class_opsiProperties.inc:127
+msgid "Product properties"
+msgstr "Proprietà dei prodotti"
+
+#: admin/opsi/class_opsigeneric.inc:243 admin/opsi/class_opsigeneric.inc:248
+#: admin/opsi/class_opsigeneric.inc:251 admin/opsi/class_opsigeneric.inc:765
+#: admin/opsi/generic.tpl:18 admin/opsi/generic.tpl:37
+#: admin/opsiLicenses/opsiLicense-list.xml:41
+#: admin/opsiLicenses/opsiLicense-filter.tpl:13
+#: admin/opsiLicenses/class_licenseGeneric.inc:231
+#: admin/opsiLicenses/class_licenseGeneric.inc:277
+#: admin/opsiLicenses/licenseGeneric.tpl:19
+#: admin/opsiLicenses/class_licensePoolGeneric.inc:526
+#: admin/opsiLicenses/licensePoolGeneric.tpl:18
+msgid "Name"
+msgstr "Nome"
+
+#: admin/opsi/class_opsigeneric.inc:249
+msgid "The field 'Name' must contain a domain part!"
+msgstr "Il campo 'Nome' deve contenere una parte del dominio !"
+
+#: admin/opsi/class_opsigeneric.inc:257 admin/opsi/class_opsigeneric.inc:766
+#: admin/opsi/generic.tpl:27 admin/opsi/generic.tpl:46
+msgid "MAC address"
+msgstr "Indirizzo MAC"
+
+#: admin/opsi/class_opsigeneric.inc:297 admin/opsi/class_opsigeneric.inc:298
+#: admin/opsi/class_opsigeneric.inc:300 admin/opsi/class_opsigeneric.inc:301
+msgid "OPSI"
+msgstr "OPSI"
+
+#: admin/opsi/class_opsigeneric.inc:418 admin/opsi/class_opsigeneric.inc:431
+#: admin/opsi/class_opsigeneric.inc:455 admin/opsi/class_opsigeneric.inc:466
+#: admin/opsi/class_opsigeneric.inc:472 admin/opsi/class_opsigeneric.inc:489
+#: admin/opsi/class_opsigeneric.inc:507 admin/opsi/class_opsigeneric.inc:513
+#: admin/opsi/class_opsigeneric.inc:542 admin/opsi/class_opsigeneric.inc:582
+#: admin/opsi/class_opsigeneric.inc:729
+#: admin/opsiLicenses/class_licenseUsage.inc:60
+#: admin/opsiLicenses/class_licenseByProduct.inc:63
+#: admin/opsiLicenses/class_filterOpsiLicense.inc:58
+#: admin/opsiLicenses/class_licensePoolGeneric.inc:91
+#: admin/opsiLicenses/class_licensePoolGeneric.inc:101
+#: admin/opsiLicenses/class_licensePoolGeneric.inc:114
+#: admin/opsiLicenses/class_licensePoolGeneric.inc:413
+#: admin/opsiLicenses/class_licensePoolGeneric.inc:439
+#: admin/opsiLicenses/class_licensePoolGeneric.inc:453
+#: admin/opsiLicenses/class_licensePoolGeneric.inc:474
+#: admin/opsiLicenses/class_licensePoolGeneric.inc:501
+#: admin/opsiLicenses/class_licenseUsageByHost.inc:64
+#: admin/opsiLicenses/class_licenseUsageByHost.inc:73
+#: admin/opsiLicenses/class_licenseUsageByHost.inc:86
+#: admin/opsiLicenses/class_licenseUsageByHost.inc:224
+#: admin/opsiLicenses/class_licenseUsageByHost.inc:231
+msgid "Error"
+msgstr "Errore"
+
+#: admin/opsi/class_opsigeneric.inc:755
+#: admin/opsiLicenses/class_licenseGeneric.inc:269
+#: admin/opsiLicenses/licensePoolGeneric.tpl:15
+msgid "Generic"
+msgstr "Informazioni"
+
+#: admin/opsi/class_opsigeneric.inc:756
+msgid "OPSI generic"
+msgstr "Informazioni su OPSI"
+
+#: admin/opsi/class_opsigeneric.inc:767 admin/opsi/generic.tpl:80
+#: admin/opsiLicenses/opsiLicense-list.xml:49
+#: admin/opsiLicenses/class_licenseGeneric.inc:278
+#: admin/opsiLicenses/licenseGeneric.tpl:49
+#: admin/opsiLicenses/class_licensePoolGeneric.inc:527
+#: admin/opsiLicenses/licensePoolGeneric.tpl:30
+msgid "Description"
+msgstr "Descrizione"
+
+#: admin/opsi/class_opsigeneric.inc:768
+msgid "Note"
+msgstr "Nota"
+
+#: admin/opsi/class_opsigeneric.inc:769 admin/opsi/generic.tpl:56
+msgid "Netboot product"
+msgstr "Prodotto Netboot"
+
+#: admin/opsi/class_opsigeneric.inc:770
+msgid "Local product"
+msgstr "Prodotto locale"
+
+#: admin/opsi/class_opsigeneric.inc:771 admin/opsi/generic.tpl:120
+msgid "Action"
+msgstr "Azione"
+
+#: admin/opsi/opsiware.tpl:2
+msgid "Information"
+msgstr "Informazione"
+
+#: admin/opsi/opsiware.tpl:4 admin/opsi/generic.tpl:8
+#: admin/opsiLicenses/licenseUsage.tpl:5
+#: admin/opsiLicenses/licenseByProduct.tpl:5
+#: admin/opsiLicenses/licenseGeneric.tpl:5
+#: admin/opsiLicenses/licensePoolGeneric.tpl:5
+#: admin/opsiLicenses/licenseUsageByHost.tpl:5
+msgid "Retry"
+msgstr "Riprova"
+
+#: admin/opsi/opsiware.tpl:7
+msgid "Hardware information"
+msgstr "Informazione Hardware"
+
+#: admin/opsi/opsiware.tpl:9
+msgid "Software information"
+msgstr "Informazione Software"
+
+#: admin/opsi/opsiware.tpl:14
+msgid "Device"
+msgstr "Periferica"
+
+#: admin/opsi/generic.tpl:2
+msgid "OPSI host"
+msgstr "Cliente OPSI"
+
+#: admin/opsi/generic.tpl:68 admin/opsi/generic.tpl:71
+msgid "Configure product"
+msgstr "Configura il prodotto"
+
+#: admin/opsi/generic.tpl:88
+msgid "Notes"
+msgstr "Note"
+
+#: admin/opsi/generic.tpl:105
+msgid "Installed products"
+msgstr "Prodotti installati"
+
+#: admin/opsi/generic.tpl:110
+msgid "Available products"
+msgstr "Prodotti disponibili"
+
+#: admin/opsi/generic.tpl:124
+msgid "Reinstall"
+msgstr "Installa di nuovo"
+
+#: admin/opsi/generic.tpl:126
+msgid "Install"
+msgstr "Installa"
+
+#: admin/opsi/generic.tpl:128
+msgid "Wake"
+msgstr "Risveglia"
+
+#: admin/opsi/generic.tpl:131
+msgid "Execute"
+msgstr "Esecuzione"
+
+#: admin/opsi/properties.tpl:1
+msgid "OPSI product properties"
+msgstr "Proprietà dei prodotti OPSI"
+
+#: admin/opsi/properties.tpl:6
+msgid "This OPSI product has no options."
+msgstr "Questo prodotto OPSI non ha opzioni."
+
+#: admin/opsiLicenses/class_licenseUsage.inc:141
+#: admin/opsiLicenses/class_licenseUsage.inc:142
+#: admin/opsiLicenses/licenseUsage.tpl:11
+#: admin/opsiLicenses/licenseByProduct.tpl:11
+msgid "License usage"
+msgstr "Licenza d'uso"
+
+#: admin/opsiLicenses/opsiLicense-list.xml:11
+msgid "List of license pools"
+msgstr "Elenco dei pool di licenza"
+
+#: admin/opsiLicenses/opsiLicense-list.xml:15
+#: admin/opsiLicenses/opsiLicense-list.xml:74
+#: admin/opsiLicenses/licenseGeneric.tpl:10
+msgid "License"
+msgstr "Licenza"
+
+#: admin/opsiLicenses/opsiLicense-list.xml:57
+msgid "Actions"
+msgstr "Azioni"
+
+#: admin/opsiLicenses/opsiLicense-list.xml:68
+msgid "Create"
+msgstr "Crea"
+
+#: admin/opsiLicenses/opsiLicense-list.xml:86
+msgid "Edit"
+msgstr "Modifica"
+
+#: admin/opsiLicenses/opsiLicense-list.xml:93
+msgid "Remove"
+msgstr "Elimina"
+
+#: admin/opsiLicenses/opsiLicense-list.xml:108
+msgid "Edit license"
+msgstr "Modifica la licenza"
+
+#: admin/opsiLicenses/opsiLicense-list.xml:116
+msgid "Remove license"
+msgstr "Elimina la licenza"
+
+#: admin/opsiLicenses/class_opsiLicenses.inc:25
+#: admin/opsiLicenses/class_opsiLicenses.inc:26
+msgid "Software licenses"
+msgstr "Licenze dei software"
+
+#: admin/opsiLicenses/licenseUsage.tpl:4
+#: admin/opsiLicenses/licenseGeneric.tpl:4
+#: admin/opsiLicenses/licensePoolGeneric.tpl:4
+#: admin/opsiLicenses/licenseUsageByHost.tpl:4
+msgid "Check if GOto-si is running."
+msgstr "Verifica se il servizio GOto-si è in funzione."
+
+#: admin/opsiLicenses/class_licenseByProduct.inc:135
+#, fuzzy
+msgid "Usage by product"
+msgstr "Uso per prodotto"
+
+#: admin/opsiLicenses/class_licenseByProduct.inc:136
+msgid "License usage by product"
+msgstr "Licenza d'uso per prodotto"
+
+#: admin/opsiLicenses/licenseByProduct.tpl:4
+msgid "Check if the GOto-si is running."
+msgstr "Verifica se il servizio GOto-si è in funzione."
+
+#: admin/opsiLicenses/opsiLicense-filter.tpl:3
+msgid "Filter"
+msgstr "Filtro"
+
+#: admin/opsiLicenses/class_licenseGeneric.inc:126
+#: admin/opsiLicenses/class_licensePoolGeneric.inc:270
+msgid "Retail"
+msgstr "Dettaglio"
+
+#: admin/opsiLicenses/class_licenseGeneric.inc:127
+#: admin/opsiLicenses/class_licensePoolGeneric.inc:269
+msgid "OEM"
+msgstr "OEM"
+
+#: admin/opsiLicenses/class_licenseGeneric.inc:128
+msgid "Volume"
+msgstr "Volume"
+
+#: admin/opsiLicenses/class_licenseGeneric.inc:219
+#: admin/opsiLicenses/class_licenseGeneric.inc:223
+#: admin/opsiLicenses/class_licenseGeneric.inc:227
+#: admin/opsiLicenses/licenseGeneric.tpl:95
+msgid "Expiration date"
+msgstr "Data di scadenza"
+
+#: admin/opsiLicenses/class_licenseGeneric.inc:235
+#: admin/opsiLicenses/licenseGeneric.tpl:194
+msgid "License key"
+msgstr "Chiave della licenza"
+
+#: admin/opsiLicenses/class_licenseGeneric.inc:270
+msgid "License generic"
+msgstr "Informazioni sulla licenza"
+
+#: admin/opsiLicenses/remove.tpl:2
+msgid "Warning"
+msgstr "Avvertimento"
+
+#: admin/opsiLicenses/remove.tpl:6
+msgid ""
+"Please double check if you really want to do this since there is no way for "
+"FusionDirectory to get your data back."
+msgstr ""
+"Assicurati che vuoi davvero eseguire l'azione visto che poi sarà "
+"impossibile "
+"per FusionDirectory recuperare i tuoi dati."
+
+#: admin/opsiLicenses/remove.tpl:10
+msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
+msgstr ""
+"Quindi - se sei sicuro - premi 'Rimuovi' per continuare oppure 'Annulla' "
+"per "
+"interrompere."
+
+#: admin/opsiLicenses/licenseGeneric.tpl:33
+msgid "Partner"
+msgstr "Partner"
+
+#: admin/opsiLicenses/licenseGeneric.tpl:70
+msgid "Conclusion date"
+msgstr "Data di conclusione"
+
+#: admin/opsiLicenses/licenseGeneric.tpl:126
+msgid "Notification date"
+msgstr "Data di notifica"
+
+#: admin/opsiLicenses/licenseGeneric.tpl:156
+msgid "License model"
+msgstr "Modello di licenza"
+
+#: admin/opsiLicenses/licenseGeneric.tpl:165
+msgid "Model"
+msgstr "Modello"
+
+#: admin/opsiLicenses/licenseGeneric.tpl:205
+msgid "Maximum installations"
+msgstr "Numero massimo delle installazioni"
+
+#: admin/opsiLicenses/licenseGeneric.tpl:217
+#: admin/opsiLicenses/licenseUsageByHost.tpl:14
+msgid "Reserved for"
+msgstr "Riservato per"
+
+#: admin/opsiLicenses/licenseGeneric.tpl:222
+msgid "none"
+msgstr "nessuno"
+
+#: admin/opsiLicenses/licenseGeneric.tpl:237
+#: admin/opsiLicenses/class_licenseUsageByHost.inc:251
+msgid "Used by"
+msgstr "Usato per"
+
+#: admin/opsiLicenses/class_licensePoolGeneric.inc:261
+msgid "unlimited"
+msgstr "Illimitato"
+
+#: admin/opsiLicenses/class_licensePoolGeneric.inc:268
+#, php-format
+msgid "Volume license (#%s)"
+msgstr "Licenze in volume (#%s)"
+
+#: admin/opsiLicenses/class_licensePoolGeneric.inc:271
+msgid "Concurrent"
+msgstr "Concorrente"
+
+#: admin/opsiLicenses/class_licensePoolGeneric.inc:518
+msgid "Pool generic"
+msgstr "Informazioni sul pool"
+
+#: admin/opsiLicenses/class_licensePoolGeneric.inc:519
+msgid "License pool generic"
+msgstr "Informazioni sul pool di licenze"
+
+#: admin/opsiLicenses/class_licensePoolGeneric.inc:528
+#: admin/opsiLicenses/licensePoolGeneric.tpl:64
+msgid "Applications"
+msgstr "Applicazioni"
+
+#: admin/opsiLicenses/class_licensePoolGeneric.inc:529
+#: admin/opsiLicenses/licensePoolGeneric.tpl:91
+msgid "Windows software IDs"
+msgstr "ID del software Windows"
+
+#: admin/opsiLicenses/class_licensePoolGeneric.inc:530
+#: admin/opsiLicenses/licensePoolGeneric.tpl:42
+msgid "Licenses"
+msgstr "Licenze"
+
+#: admin/opsiLicenses/class_licenseUsageByHost.inc:243
+msgid "Usage by host"
+msgstr "Uso per host"
+
+#: admin/opsiLicenses/class_licenseUsageByHost.inc:244
+msgid "License usage by host"
+msgstr "Licenza d'uso per host"
+
+#: admin/opsiLicenses/class_licenseUsageByHost.inc:252
+msgid "License reservation"
+msgstr "Prenotazione per la licenza"
+
+#: admin/opsiLicenses/licenseUsageByHost.tpl:28
+msgid "Licenses used"
+msgstr "Licenze utilizzate"
+

@@ -1,104 +1,98 @@
 # translation of messages.po to Italian
+# Copyright (C) 2011 FusionDirectory Project
+# This file is distributed under the same license as the FusionDirectory package.
+#
 # Copyright (c) 2005 B-Open Solutions srl - http://www.bopen.it/
 # Copyright (c) 2005 Alessandro Amici <a.amici@bopen.it>
 # Alessandro Amici <a.amici@bopen.it>, 2005.
+# Giuliano Di Vito <giuliano@opensides.be>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-04-14 18:18+0200\n"
-"PO-Revision-Date: 2005-11-18 15:26+0100\n"
-"Last-Translator: Alessandro Amici <a.amici@bopen.it>\n"
-"Language-Team: Italian\n"
+"PO-Revision-Date: 2011-05-03 08:43+0200\n"
+"Last-Translator: Giuliano Di Vito <giuliano@opensides.be>\n"
+"Language-Team: Italian <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: \n"
-"X-Generator: KBabel 1.9.1\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: admin/systems/network.tpl:1
-#, fuzzy
 msgid "Network\tsettings"
-msgstr "Mostra workstation"
+msgstr "Impostazioni\tRete"
 
 #: admin/systems/network.tpl:9
-#, fuzzy
 msgid "IP-address"
-msgstr "Indirizzo"
+msgstr "Indirizzo IP"
 
 #: admin/systems/network.tpl:30 admin/systems/network.tpl:32
 msgid "Propose ip"
-msgstr ""
+msgstr "Proponi un indirizzo IP"
 
 #: admin/systems/network.tpl:38
-#, fuzzy
 msgid "MAC-address"
-msgstr "Indirizzo"
+msgstr "Indirizzo MAC"
 
 #: admin/systems/network.tpl:45
 #, fuzzy
 msgid "Autodetect"
-msgstr "automatico"
+msgstr "riconoscimento automatico"
 
 #: admin/systems/network.tpl:62 admin/systems/network.tpl:72
-#, fuzzy
 msgid "Enable DHCP for this device"
-msgstr "Elimina foto"
+msgstr "Attiva il DHCP per questa periferica"
 
 #: admin/systems/network.tpl:72 admin/systems/network.tpl:167
-#, fuzzy
 msgid "not configured"
-msgstr "non configurata"
+msgstr "non configurato"
 
 #: admin/systems/network.tpl:80
-#, fuzzy
 msgid "Parent node"
-msgstr "server"
+msgstr "Nodo genitore"
 
 #: admin/systems/network.tpl:93
-#, fuzzy
 msgid "Edit settings"
-msgstr "Opzioni di posta dell'identità"
+msgstr "Modifica le impostazioni"
 
 #: admin/systems/network.tpl:129 admin/systems/network.tpl:167
-#, fuzzy
 msgid "Enable DNS for this device"
-msgstr "Elimina foto"
+msgstr "Attiva il DNS per questa periferica"
 
 #: admin/systems/network.tpl:138
-#, fuzzy
 msgid "Zone"
-msgstr "telefoni"
+msgstr "Zona"
 
 #: admin/systems/network.tpl:148
 msgid "TTL"
-msgstr ""
+msgstr "TTL"
 
 #: admin/systems/network.tpl:156
-#, fuzzy
 msgid "Dns records"
-msgstr "Directory"
+msgstr "Record Dns"
 
 #: admin/systems/systemSelect/selectSystem-filter.tpl:3
 #: admin/systems/serverService-filter.tpl:3 admin/systems/system-filter.tpl:3
-#, fuzzy
 msgid "Filter"
-msgstr "Filtri"
+msgstr "Filtro"
 
 #: admin/systems/systemSelect/selectSystem-filter.tpl:11
 #: admin/systems/system-filter.tpl:11
 msgid "Show servers"
-msgstr "Mostra server"
+msgstr "Mostra i server"
 
 #: admin/systems/systemSelect/selectSystem-filter.tpl:12
 #: admin/systems/system-filter.tpl:14
 msgid "Show workstations"
-msgstr "Mostra workstation"
+msgstr "Mostra le workstations"
 
 #: admin/systems/systemSelect/selectSystem-filter.tpl:13
 #: admin/systems/system-filter.tpl:17
 msgid "Show terminals"
-msgstr "Mostra terminali"
+msgstr "Mostra i terminali"
 
 #: admin/systems/systemSelect/selectSystem-filter.tpl:22
 #: admin/systems/systemSelect/selectSystem-list.xml:57
@@ -106,7 +100,7 @@ msgstr "Mostra terminali"
 #: admin/systems/class_componentGeneric.inc:301
 #: admin/systems/system-filter.tpl:46
 msgid "Name"
-msgstr "Cognome"
+msgstr "Nome"
 
 #: admin/systems/systemSelect/selectSystem-list.tpl:13
 #: admin/systems/system-list.tpl:13 admin/systems/class_servGeneric.inc:502
@@ -116,9 +110,8 @@ msgid "Base"
 msgstr "Base"
 
 #: admin/systems/systemSelect/selectSystem-list.xml:11
-#, fuzzy
 msgid "Please select the desired entries"
-msgstr "Lingua preferita"
+msgstr "Seleziona le entries desiderate"
 
 #: admin/systems/systemSelect/selectSystem-list.xml:15
 #: admin/systems/system-list.xml:103 admin/systems/system-list.xml:210
@@ -129,13 +122,12 @@ msgstr "Server"
 #: admin/systems/systemSelect/selectSystem-list.xml:23
 #: admin/systems/system-list.xml:111 admin/systems/system-list.xml:218
 msgid "Workstation"
-msgstr ""
+msgstr "Workstation"
 
 #: admin/systems/systemSelect/selectSystem-list.xml:31
 #: admin/systems/system-list.xml:119 admin/systems/system-list.xml:226
-#, fuzzy
 msgid "Terminal"
-msgstr "Terminali"
+msgstr "Terminale"
 
 #: admin/systems/systemSelect/selectSystem-list.xml:65
 #: admin/systems/system-list.xml:177 admin/systems/class_servGeneric.inc:501
@@ -146,61 +138,51 @@ msgstr "Descrizione"
 
 #: admin/systems/system-list.xml:10
 msgid "List of systems"
-msgstr "Lista dei sistemi"
+msgstr "Elenco dei sistemi"
 
 #: admin/systems/system-list.xml:14
 msgid "Opsi host"
-msgstr ""
+msgstr "Clienti OPSI"
 
 #: admin/systems/system-list.xml:22 admin/systems/class_filterSYSTEMS.inc:44
-#, fuzzy
 msgid "New workstation"
-msgstr "Mostra workstation"
+msgstr "Nuova workstation"
 
 #: admin/systems/system-list.xml:30
-#, fuzzy
 msgid "Locked server"
-msgstr "Server"
+msgstr "Server bloccato"
 
 #: admin/systems/system-list.xml:38
-#, fuzzy
 msgid "Locked workstation"
-msgstr "Mostra workstation"
+msgstr "Workstation bloccata"
 
 #: admin/systems/system-list.xml:46
-#, fuzzy
 msgid "Locked terminal"
-msgstr "Mostra terminali"
+msgstr "Terminale bloccato"
 
 #: admin/systems/system-list.xml:55 admin/systems/class_filterSYSTEMS.inc:47
-#, fuzzy
 msgid "New terminal"
-msgstr "Mostra terminali"
+msgstr "Nuovo terminale"
 
 #: admin/systems/system-list.xml:63 admin/systems/class_filterSYSTEMS.inc:52
-#, fuzzy
 msgid "New unknown device"
-msgstr "Mostra dispositiva di rete"
+msgstr "Nuova periferica sconosciuta"
 
 #: admin/systems/system-list.xml:71 admin/systems/class_filterSYSTEMS.inc:55
-#, fuzzy
 msgid "New device"
-msgstr "Mostra dispositiva di rete"
+msgstr "Nuova periferica"
 
 #: admin/systems/system-list.xml:79
-#, fuzzy
 msgid "Workstation template"
-msgstr "Mostra workstation"
+msgstr "Modello della Workstation"
 
 #: admin/systems/system-list.xml:87
-#, fuzzy
 msgid "Terminal template"
-msgstr "Terminal Server"
+msgstr "Modello di terminale"
 
 #: admin/systems/system-list.xml:95
-#, fuzzy
 msgid "Winstation"
-msgstr "Amministrazione"
+msgstr "PC Windows"
 
 #: admin/systems/system-list.xml:127
 msgid "Printer"
@@ -213,12 +195,11 @@ msgstr "Telefono"
 #: admin/systems/system-list.xml:143
 #, fuzzy
 msgid "Component"
-msgstr "Nome comune"
+msgstr "Componente"
 
 #: admin/systems/system-list.xml:185
-#, fuzzy
 msgid "Release"
-msgstr "Rimuovi"
+msgstr "Versione"
 
 #: admin/systems/system-list.xml:193 admin/systems/serverService-list.xml:43
 msgid "Actions"
@@ -226,136 +207,122 @@ msgstr "Azioni"
 
 #: admin/systems/system-list.xml:204 admin/systems/serverService-list.xml:54
 msgid "Create"
-msgstr "Creare"
+msgstr "Crea"
 
 #: admin/systems/system-list.xml:234
-#, fuzzy
 msgid "Network printer"
-msgstr "Mostra stampanti di rete"
+msgstr "Stampante di rete"
 
 #: admin/systems/system-list.xml:250
 #: admin/systems/class_componentGeneric.inc:298
-#, fuzzy
 msgid "Network device"
-msgstr "Mostra dispositiva di rete"
+msgstr "Periferica di rete"
 
 #: admin/systems/system-list.xml:258
 msgid "Opsi client"
-msgstr ""
+msgstr "Clienti OPSI"
 
 #: admin/systems/system-list.xml:270
 #, fuzzy
 msgid "Trigger action"
-msgstr "Amministrazione utenti"
+msgstr "Attiva un'azione"
 
 #: admin/systems/system-list.xml:277
 msgid "Halt "
-msgstr ""
+msgstr "Arresta"
 
 #: admin/systems/system-list.xml:285 admin/systems/system-list.xml:351
 #: admin/systems/class_servGeneric.inc:206
-#, fuzzy
 msgid "Reboot"
-msgstr "Root"
+msgstr "Riavvia"
 
 #: admin/systems/system-list.xml:293 admin/systems/system-list.xml:359
 msgid "Wakeup"
-msgstr ""
+msgstr "Risveglia"
 
 #: admin/systems/system-list.xml:301 admin/systems/system-list.xml:367
 msgid "Update"
-msgstr ""
+msgstr "Aggiornamento"
 
 #: admin/systems/system-list.xml:309 admin/systems/system-list.xml:375
 msgid "Lock"
-msgstr ""
+msgstr "Bloccato"
 
 #: admin/systems/system-list.xml:317 admin/systems/system-list.xml:383
-#, fuzzy
 msgid "Activate"
-msgstr "Privato"
+msgstr "Attivato"
 
 #: admin/systems/system-list.xml:325 admin/systems/system-list.xml:391
 #: admin/systems/class_servGeneric.inc:208
 #: admin/systems/class_servGeneric.inc:215
 msgid "Reinstall"
-msgstr ""
+msgstr "Installa di nuovo"
 
 #: admin/systems/system-list.xml:336
-#, fuzzy
 msgid "Schedule action"
-msgstr "Estenzioni PHPGroupware"
+msgstr "Pianifica un'azione"
 
 #: admin/systems/system-list.xml:343
 msgid "Halt"
-msgstr ""
+msgstr "Arresta"
 
 #: admin/systems/system-list.xml:405
-#, fuzzy
 msgid "Activate systems"
-msgstr "Lista dei sistemi"
+msgstr "Attiva un sistema"
 
 #: admin/systems/system-list.xml:412 admin/systems/serverService-list.xml:72
 msgid "Remove"
-msgstr "Rimuovi"
+msgstr "Elimina"
 
 #: admin/systems/system-list.xml:440
 msgid "Change password"
 msgstr "Cambia la password"
 
 #: admin/systems/system-list.xml:451
-#, fuzzy
 msgid "Create ISO"
-msgstr "Creare"
+msgstr "Crea un'immagine ISO"
 
 #: admin/systems/system-list.xml:463
-#, fuzzy
 msgid "Edit role"
-msgstr "Modifica contatto"
+msgstr "Modifica il ruolo"
 
 #: admin/systems/system-list.xml:476
-#, fuzzy
 msgid "Remove system"
-msgstr "Elimina foto"
+msgstr "Elimina il sistema"
 
 #: admin/systems/password.tpl:3
-#, fuzzy
 msgid ""
 "To change the terminal root password use the fields below. The changes take "
 "effect during the next reboot. Please memorize the new password, because you "
 "wouldn't be able to log in."
 msgstr ""
-"Per cambiare la tua password usa i campi qui sotto. I cambiamenti avrenno "
-"effetto immediatamente. Memorizza la nuova password perché non sarai in "
-"grado di connetterti senza di essa."
+"Per cambiare la password di root del terminale usa i campi qui sotto. La "
+"modifica avrà un effetto immediatamente. Memorizza la nuova password perché "
+"non sarai più in grado di connetterti senza di essa."
 
 #: admin/systems/password.tpl:6
 msgid "Leave fields blank for password inheritance from default entries."
-msgstr ""
+msgstr "Lascia il campo vuoto per poter ereditare la password di default."
 
 #: admin/systems/password.tpl:10
-#, fuzzy
 msgid "Changing the password impinges on authentification only."
-msgstr ""
-"Cambiare la passord influisce sull'autenticazione su posta, proxu Internet, "
-"Samba e Unix."
+msgstr "La modifica della password influisce solo sull'autentificazione."
 
 #: admin/systems/password.tpl:15
 msgid "New password"
-msgstr "Nuova password"
+msgstr "Imposta la nuova password"
 
 #: admin/systems/password.tpl:21
 msgid "Repeat new password"
-msgstr "Ripeti la password"
+msgstr "Ripeti la nuova password"
 
 #: admin/systems/password.tpl:26
-#, fuzzy
 msgid "Password strength"
-msgstr "Algorimo password"
+msgstr "Livello di sicurezza della password"
 
 #: admin/systems/password.tpl:38
 msgid "Set password"
-msgstr "Cambia password"
+msgstr "Imposta la password"
 
 #: admin/systems/class_termDNS.inc:345 admin/systems/class_servGeneric.inc:296
 #: admin/systems/class_componentGeneric.inc:166
@@ -369,11 +336,11 @@ msgstr "Cambia password"
 #: admin/systems/class_serverService.inc:238
 #: admin/systems/class_serverService.inc:450
 msgid "Error"
-msgstr ""
+msgstr "Errore"
 
 #: admin/systems/class_termDNS.inc:450
 msgid "Not matching"
-msgstr ""
+msgstr "Nessuna corrispondenza"
 
 #: admin/systems/class_termDNS.inc:488 admin/systems/class_termDNS.inc:794
 #: admin/systems/class_termDNS.inc:813 admin/systems/class_termDNS.inc:834
@@ -387,43 +354,42 @@ msgstr ""
 #: admin/systems/services/class_goService.inc:122
 #: admin/systems/services/class_goService.inc:150
 #: admin/systems/services/class_goService.inc:183
-#, fuzzy
 msgid "LDAP error"
 msgstr "Errore LDAP"
 
 #: admin/systems/class_termDNS.inc:602
-#, fuzzy, php-format
+#, php-format
 msgid "IP address %s"
-msgstr "Indirizzo principale"
+msgstr "Indirizzo IP %s"
 
 #: admin/systems/class_termDNS.inc:611 admin/systems/class_termDNS.inc:623
 #: admin/systems/class_termDNS.inc:625 admin/systems/class_termDNS.inc:1004
 #: admin/systems/class_componentGeneric.inc:197
 #: admin/systems/class_componentGeneric.inc:200
-#, fuzzy
 msgid "IP address"
-msgstr "Indirizzo principale"
+msgstr "Indirizzo IP"
 
 #: admin/systems/class_termDNS.inc:616 admin/systems/class_termDNS.inc:633
 #: admin/systems/class_termDNS.inc:635 admin/systems/class_termDNS.inc:1005
-#, fuzzy
 msgid "MAC address"
-msgstr "Indirizzo principale"
+msgstr "Indirizzo MAC"
 
 #: admin/systems/class_termDNS.inc:650
 #, php-format
 msgid "The IP address '%s' is not part of the selected reverse zone '%s'!"
 msgstr ""
+"L'indirizzo IP specificato '%s' non ha corrispondenze nella zona inversa "
+"selezionata '%s' !"
 
 #: admin/systems/class_termDNS.inc:662
 #, php-format
 msgid "Record type '%s' is duplicated!"
-msgstr ""
+msgstr "Il record di tipo '%s' è un duplicato !"
 
 #: admin/systems/class_termDNS.inc:670
 #, php-format
 msgid "Uniq record type '%s' is duplicated!"
-msgstr ""
+msgstr "Il record di tipo '%s' è un duplicato !"
 
 #: admin/systems/class_termDNS.inc:682
 #, php-format
@@ -431,15 +397,17 @@ msgid ""
 "The IP address '%s' will be added as 'A Record', this will be done "
 "automatically, please remove the record."
 msgstr ""
+"L'indirizzo IP '%s' sarà aggiunto come 'A' record, l'operazione sarà "
+"automatica quindi elimina il record."
 
 #: admin/systems/class_termDNS.inc:690
 #, php-format
 msgid "Only lowercase records are allowed, please check your '%ss'."
-msgstr ""
+msgstr "Solo i caratteri minuscoli sono autorizzati, verifica il tuo '%ss'."
 
 #: admin/systems/class_termDNS.inc:958
 msgid "Delete"
-msgstr "Rimuovi"
+msgstr "Elimina"
 
 #: admin/systems/class_termDNS.inc:964
 msgid "Add"
@@ -447,137 +415,124 @@ msgstr "Aggiungi"
 
 #: admin/systems/class_termDNS.inc:995
 msgid "DNS"
-msgstr ""
+msgstr "DNS"
 
 #: admin/systems/class_termDNS.inc:996
-#, fuzzy
 msgid "DNS settings"
-msgstr "Impostazioni Samba"
+msgstr "Impostazioni del DNS"
 
 #: admin/systems/class_termDNS.inc:1011
-#, fuzzy
 msgid "DNS configuration"
-msgstr "Scarica il file di  configurazione"
+msgstr "Configurazione del DNS"
 
 #: admin/systems/class_termDNS.inc:1014
-#, fuzzy
 msgid "DHCP configuration"
-msgstr "Scarica il file di  configurazione"
+msgstr "Configurazione del DHCP"
 
 #: admin/systems/class_servGeneric.inc:83
-#, fuzzy
 msgid "Activated"
-msgstr "Privato"
+msgstr "Attivato"
 
 #: admin/systems/class_servGeneric.inc:84
 msgid "Locked"
-msgstr ""
+msgstr "Bloccato"
 
 #: admin/systems/class_servGeneric.inc:159
-#, fuzzy
 msgid "server"
-msgstr "Server"
+msgstr "server"
 
 #: admin/systems/class_servGeneric.inc:176
 #: admin/systems/class_servGeneric.inc:441
 #: admin/systems/class_systemManagement.inc:503
 #: admin/systems/class_systemManagement.inc:533
-#, fuzzy
 msgid "Service infrastructure"
-msgstr "Cognome"
+msgstr "Servizio d'infrastruttura"
 
 #: admin/systems/class_servGeneric.inc:180
 #, fuzzy
 msgid "Event error"
-msgstr "Stato"
+msgstr "Errore ..."
 
 #: admin/systems/class_servGeneric.inc:181
 #, fuzzy, php-format
 msgid "Event '%s' is not available!"
-msgstr "Cambia la password"
+msgstr "L'evento '%s' non è disponibile !"
 
 #: admin/systems/class_servGeneric.inc:206
 msgid "Switch off"
-msgstr ""
+msgstr "Spegni"
 
 #: admin/systems/class_servGeneric.inc:207
 #: admin/systems/class_servGeneric.inc:216
-#, fuzzy
 msgid "System update"
-msgstr "Dipartimento"
+msgstr "Aggiornamento del sistema"
 
 #: admin/systems/class_servGeneric.inc:209
-#, fuzzy
 msgid "Rescan hardware"
-msgstr "Dispositivo telefonico"
+msgstr "Ricerca del materiale"
 
 #: admin/systems/class_servGeneric.inc:210
 #: admin/systems/class_servGeneric.inc:217
 msgid "Memory test"
-msgstr ""
+msgstr "Test della memoria"
 
 #: admin/systems/class_servGeneric.inc:211
 #: admin/systems/class_servGeneric.inc:218
 msgid "Force localboot"
-msgstr ""
+msgstr "Forza l'avvio locale"
 
 #: admin/systems/class_servGeneric.inc:212
 #: admin/systems/class_servGeneric.inc:219
-#, fuzzy
 msgid "System analysis"
-msgstr "Log di sitema"
+msgstr "Analisi del sistema"
 
 #: admin/systems/class_servGeneric.inc:214
 msgid "Wake up"
-msgstr ""
+msgstr "Risvegliare"
 
 #: admin/systems/class_servGeneric.inc:322
 #: admin/systems/class_servGeneric.inc:327
 #: admin/systems/class_servGeneric.inc:343 admin/systems/paste_generic.tpl:4
 #: admin/systems/server.tpl:6
-#, fuzzy
 msgid "Server name"
-msgstr "Cognome"
+msgstr "Nome del server"
 
 #: admin/systems/class_servGeneric.inc:357
-#, fuzzy
 msgid "Software deployment"
-msgstr "Dipartimento"
+msgstr "Distribuzione di programmi"
 
 #: admin/systems/class_servGeneric.inc:358
 msgid ""
 "This host is currently installing, if you really want to save it, press 'OK'."
 msgstr ""
+"Questo host è in corso d'installazione, se lo vuoi veramente registrare "
+"premi 'OK'"
 
 #: admin/systems/class_servGeneric.inc:491
 #: admin/systems/class_componentGeneric.inc:292
 msgid "Generic"
-msgstr "Generale"
+msgstr "Informazioni"
 
 #: admin/systems/class_servGeneric.inc:492
-#, fuzzy
 msgid "Server generic"
-msgstr "Cognome"
+msgstr "Informazioni sul server"
 
 #: admin/systems/class_servGeneric.inc:504
-#, fuzzy
 msgid "Goto mode"
-msgstr "nella cartella"
+msgstr "Modalità Goto"
 
 #: admin/systems/class_servGeneric.inc:505
 #: admin/systems/class_componentGeneric.inc:304
-#, fuzzy
 msgid "Root password"
-msgstr "Cambia password"
+msgstr "Password di root"
 
 #: admin/systems/class_servGeneric.inc:506
-#, fuzzy
 msgid "Action flag"
-msgstr "Azione"
+msgstr "Indicatore d'azione"
 
 #: admin/systems/remove.tpl:2
 msgid "Warning"
-msgstr "Attenzione"
+msgstr "Avvertimento"
 
 #: admin/systems/remove.tpl:6
 msgid ""
@@ -585,23 +540,24 @@ msgid ""
 "this user. Please double check if your really want to do this since there is "
 "no way for FusionDirectory to get your data back."
 msgstr ""
+"Questo include tutti i dati degli account, i permessi di accesso al sistema, "
+"la configurazione imap, etc. di questo utente. Accertati che vuoi davvero "
+"eseguire questa azione visto che poi sarà impossibile per FusionDirectory "
+"recuperare i tuoi dati."
 
 #: admin/systems/remove.tpl:10
-#, fuzzy
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
 msgstr ""
-"Quindi - Se sei sicuro - premi <i>Rimuovi</i> per continuare o <i>Annulla</"
-"i> per abortire."
+"Quindi - se sei sicuro - premi 'Rimuovi' per continuare oppure 'Annulla' per "
+"interrompere."
 
 #: admin/systems/paste_generic.tpl:14
-#, fuzzy
 msgid "workstation name"
-msgstr "Nome locazione"
+msgstr "Nome della  workstation"
 
 #: admin/systems/paste_generic.tpl:24
-#, fuzzy
 msgid "Terminal name"
-msgstr "Terminali"
+msgstr "Nome del terminale"
 
 #: admin/systems/paste_generic.tpl:34
 msgid "Printer name"
@@ -611,106 +567,91 @@ msgstr "Nome della stampante"
 #: admin/systems/class_componentGeneric.inc:187
 #: admin/systems/class_componentGeneric.inc:192
 #: admin/systems/class_componentGeneric.inc:214
-#, fuzzy
 msgid "Component name"
-msgstr "Nome comune"
+msgstr "Nome del componente"
 
 #: admin/systems/class_componentGeneric.inc:84
-#, fuzzy
 msgid "component"
-msgstr "Nome comune"
+msgstr "componente"
 
 #: admin/systems/class_componentGeneric.inc:293
 msgid "Component generic"
-msgstr ""
+msgstr "Informazioni sul componente"
 
 #: admin/systems/component.tpl:6
-#, fuzzy
 msgid "Device name"
-msgstr "Nome"
+msgstr "Nome della periferica"
 
 #: admin/systems/system-filter.tpl:20
-#, fuzzy
 msgid "Show network printer"
-msgstr "Mostra stampanti di rete"
+msgstr "Mostra le stampanti di rete"
 
 #: admin/systems/system-filter.tpl:23
 msgid "Show phones"
-msgstr "Mostra telefoni"
+msgstr "Mostra i telefoni"
 
 #: admin/systems/system-filter.tpl:26
-#, fuzzy
 msgid "Show windows based workstations"
-msgstr "Mostra workstation Windows"
+msgstr "Mostra le workstation Windows"
 
 #: admin/systems/system-filter.tpl:29
 msgid "Show network devices"
-msgstr "Mostra dispositiva di rete"
+msgstr "Mostra le periferiche di rete"
 
 #: admin/systems/system-filter.tpl:32
-#, fuzzy
 msgid "Show incoming devices"
-msgstr "Mostra dispositiva di rete"
+msgstr "Mostra le nuove periferiche di rete"
 
 #: admin/systems/system-filter.tpl:35
 msgid "Show OPSI based clients"
-msgstr ""
+msgstr "Mostra i clienti OPSI"
 
 #: admin/systems/serverService-list.xml:10
-#, fuzzy
 msgid "List of services"
-msgstr "Lista degli utenti"
+msgstr "Elenco dei servizi"
 
 #: admin/systems/serverService-list.xml:14
 #: admin/systems/serverService-list.xml:60
-#, fuzzy
 msgid "Service"
 msgstr "Servizi"
 
 #: admin/systems/serverService-list.xml:27
 msgid "!"
-msgstr ""
+msgstr "!"
 
 #: admin/systems/serverService-list.xml:83
 #: admin/systems/serverService-list.xml:117
 #: admin/systems/class_serverService.inc:28
-#, fuzzy
 msgid "Start"
 msgstr "Avvio"
 
 #: admin/systems/serverService-list.xml:90
 #: admin/systems/serverService-list.xml:125
 #: admin/systems/class_serverService.inc:27
-#, fuzzy
 msgid "Stop"
-msgstr "Rapporto"
+msgstr "Arresto"
 
 #: admin/systems/serverService-list.xml:97
 #: admin/systems/serverService-list.xml:133
 #: admin/systems/class_serverService.inc:29
-#, fuzzy
 msgid "Restart"
-msgstr "Riprova"
+msgstr "Riavvia"
 
 #: admin/systems/serverService-list.xml:141
-#, fuzzy
 msgid "Edit service"
-msgstr "Modifica contatto"
+msgstr "Modifica i servizi"
 
 #: admin/systems/serverService-list.xml:149
-#, fuzzy
 msgid "Remove service"
-msgstr "Elimina contatto"
+msgstr "Elimina il servizio"
 
 #: admin/systems/server.tpl:36
-#, fuzzy
 msgid "Mode"
-msgstr "Dominio"
+msgstr "Modalità"
 
 #: admin/systems/server.tpl:39
-#, fuzzy
 msgid "Select terminal mode"
-msgstr "Seleziona un sistema da aggiungere"
+msgstr "Seleziona la modalità del terminale"
 
 #: admin/systems/server.tpl:57
 msgid "Action"
@@ -720,11 +661,12 @@ msgstr "Azione"
 msgid ""
 "System installation in progress, the FAI state cannot be changed right now."
 msgstr ""
+"Il sistema è in corso d'installazione, lo stato di FAI non puó essere "
+"modificato adesso."
 
 #: admin/systems/server.tpl:66
-#, fuzzy
 msgid "Select action to execute for this server"
-msgstr "Mostra gruppi che contengono server"
+msgstr "Scegli le azioni da eseguire su questo server"
 
 #: admin/systems/server.tpl:74
 msgid "Execute"
@@ -737,31 +679,31 @@ msgstr "Sistemi"
 
 #: admin/systems/class_systemManagement.inc:171
 #: admin/systems/class_systemManagement.inc:267
-#, fuzzy
 msgid "Permission error"
-msgstr "Permessi"
+msgstr "Errore d'autorizzazione"
 
 #: admin/systems/class_systemManagement.inc:171
 #: admin/systems/class_systemManagement.inc:267
-#, fuzzy
 msgid "You have no permission to change this password!"
-msgstr "Non hai il permesso di cambiare la tua password."
+msgstr "Non hai il permesso di cambiare questa password !"
 
 #: admin/systems/class_systemManagement.inc:259
-#, fuzzy
 msgid ""
 "The passwords you've entered as 'New password' and 'Repeated password' do "
 "not   match!"
-msgstr "Le password nuova e ripetuta non corrispondono"
+msgstr ""
+"Le password che hai definito come 'Nuova password' e 'Ripeti nuova password' "
+"non corrispondono !"
 
 #: admin/systems/class_systemManagement.inc:305
-#, fuzzy
 msgid "Password method"
-msgstr "Algorimo password"
+msgstr "Algoritmo di memorizzazione delle password"
 
 #: admin/systems/class_systemManagement.inc:305
 msgid "Password method crypt is missing. Cannot set system password."
 msgstr ""
+"L'algoritmo di criptaggio delle password non è disponibile. Impossibile "
+"impostare la password."
 
 #: admin/systems/class_systemManagement.inc:360
 msgid "Back"
@@ -769,78 +711,78 @@ msgstr "Indietro"
 
 #: admin/systems/class_systemManagement.inc:406
 msgid "Creating the image failed. Please see the report below."
-msgstr ""
+msgstr "La creazione del'immagine non è riuscita. Leggi il rapporto che segue."
 
 #: admin/systems/class_systemManagement.inc:411
 #, php-format
 msgid "Command '%s', specified for ISO creation doesn't seem to exist."
 msgstr ""
+"Il comando '%s', specificato nella creazione dell'immagine ISO, non sembra "
+"esistere."
 
 #: admin/systems/class_systemManagement.inc:580
 #: admin/systems/class_systemManagement.inc:656
 #: admin/systems/class_systemManagement.inc:1100
 #: admin/systems/class_systemManagement.inc:1147
 #: admin/systems/class_systemManagement.inc:1168
-#, fuzzy
 msgid "Permission"
-msgstr "Permessi"
+msgstr "Autorizzazioni"
 
 #: admin/systems/class_systemManagement.inc:871
-#, fuzzy
 msgid "Internal error"
-msgstr "Terminal Server"
+msgstr "Errore interno"
 
 #: admin/systems/class_systemManagement.inc:871
-#, fuzzy
 msgid "Cannot set mode to 'active'!"
-msgstr "Vai al dipartimento base"
+msgstr "Impossibile impostare la modalità su 'Attiva' !"
 
 #: admin/systems/class_systemManagement.inc:1100
-#, fuzzy, php-format
+#, php-format
 msgid "You are not allowed to create a snapshot for %s."
-msgstr "Non hai il permesso di cambiare la tua password."
+msgstr "Non sei autorizzato a creare una 'copia instantanea' di %s."
 
 #: admin/systems/class_systemManagement.inc:1147
 #: admin/systems/class_systemManagement.inc:1168
-#, fuzzy, php-format
+#, php-format
 msgid "You are not allowed to restore a snapshot for %s."
-msgstr "Non hai il permesso di cambiare la tua password."
+msgstr "Non sei autorizzato a restaurare una 'copia instantanea' di %s."
 
 #: admin/systems/class_systemManagement.inc:1376
-#, fuzzy, php-format
+#, php-format
 msgid "Inherited from %s"
-msgstr "Gruppi di oggetti"
+msgstr "Ereditato da %s"
 
 #: admin/systems/class_systemManagement.inc:1392
-#: admin/systems/class_systemManagement.inc:1393
 #, fuzzy
+#: admin/systems/class_systemManagement.inc:1393
 msgid "Incoming objects"
-msgstr "Oggetti membri"
+msgstr "Oggetti in entrata"
 
 #: admin/systems/class_systemManagement.inc:1398
 #, fuzzy
 msgid "Incoming"
-msgstr "Icna"
+msgstr "In entrata"
 
 #: admin/systems/services/ServiceAddDialog.tpl:3
 msgid "Adding a new service to the current server"
-msgstr ""
+msgstr "Aggiungi un nuovo servizio al server selezionato"
 
 #: admin/systems/services/ServiceAddDialog.tpl:7
 msgid ""
 "This dialog allows you to add new services to the currenty edited server "
 "object. The box below shows all available but not already used services."
 msgstr ""
+"Questa finestra ti permette di aggiungere dei nuovi servizi al server che "
+"stai modificando. Il riquadro qui sotto mostra tutti i servizi che sono "
+"disponibili, ma che non sono ancora usati."
 
 #: admin/systems/services/ServiceAddDialog.tpl:13
-#, fuzzy
 msgid "Service to add"
-msgstr "Seleziona il numero da aggiungere"
+msgstr "Servizio da aggiungere"
 
 #: admin/systems/services/ServiceAddDialog.tpl:20
-#, fuzzy
 msgid "All available services are already in use."
-msgstr "L'indirizzo principale inserito è già in uso."
+msgstr "Tutti i servizi disponibili sono già in uso."
 
 #: admin/systems/services/ServiceAddDialog.tpl:28
 msgid "Continue"
@@ -848,37 +790,34 @@ msgstr "Continua"
 
 #: admin/systems/services/class_goService.inc:44
 #: admin/systems/services/class_goService.inc:79
-#, fuzzy
 msgid "Empty service"
-msgstr "Modifica contatto"
+msgstr "Servizio vuoto"
 
 #: admin/systems/services/class_goService.inc:237
-#, fuzzy
 msgid "Configuration error"
-msgstr "File di configurazione"
+msgstr "Errore di configurazione"
 
 #: admin/systems/class_serverService.inc:297
-#, fuzzy
 msgid "Filter error"
-msgstr "Terminal Server"
+msgstr "Errore di filtro"
 
 #: admin/systems/class_serverService.inc:297
 msgid "The filter is incomplete!"
-msgstr ""
+msgstr "Il filtro non è completo!"
 
 #: admin/systems/class_serverService.inc:438
-#, fuzzy
 msgid "Information"
-msgstr "Icna"
+msgstr "Informazione"
 
 #: admin/systems/class_serverService.inc:438
 msgid "Cannot update service status until it has been saved!"
 msgstr ""
+"Impossibile aggiornare lo stato del servizio prima che questo venga "
+"registrato !"
 
 #: admin/systems/class_serverService.inc:450
-#, fuzzy
 msgid "Cannot update service status!"
-msgstr "Impossibile aprite il certificato selezionato!"
+msgstr "Impossibile aggiornare lo stato del servizio !"
 
 #, fuzzy
 #~ msgid ""
