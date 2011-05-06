@@ -897,7 +897,7 @@ class sambaAccount extends plugin
 
         /* Too many workstations? Windows usrmgr only supports eight */
         if (substr_count($this->sambaUserWorkstations, ",") >= 8){
-            $message[]= _("The windows usermanager allows eight clients at maximum!");
+            $message[]= _("The windows user manager allows eight clients at maximum!");
         }
 
         return ($message);
