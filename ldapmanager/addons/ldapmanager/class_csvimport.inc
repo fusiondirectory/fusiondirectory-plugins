@@ -24,7 +24,7 @@ class csvimport extends plugin
 {
     /* Definitions */
     var $plHeadline= "LDIF export";
-    var $plDescription= "This does something";
+    var $plDescription= "This plugin allow to export the ldap three to csv format";
     var $access= "";
 
     /* Array with csv informations*/
@@ -85,7 +85,7 @@ class csvimport extends plugin
             $attrs = @get_class_vars("user");
             $this->csvinfo['attr']  = $attrs['attributes'];
 
-            /* Attach the choise none to discard a csv col */
+            /* Attach the choice none to discard a csv column */
             $new = array();
             $new[0]="none";
             $new[1]="userPassword";
@@ -127,7 +127,7 @@ class csvimport extends plugin
             return ($smarty->fetch (get_template_path('contentcsv.tpl', TRUE)));
         }
 
-        /* If the given dat from the csv File are sorted by the attributes */
+        /* If the given data from the csv file are sorted by the attributes */
         if(isset($_POST['sorted'])) {
 
             /* Template Handling */
@@ -138,7 +138,7 @@ class csvimport extends plugin
                 /* Preparing given Data */
                 $this->csvinfo['sorteddata'][$i]=array(); 
 
-                /* Go through every col */
+                /* Go through every column */
                 for($a = 0; $a <= ($this->csvinfo['cols']); $a ++) {
                     /* Append a status col at last, to show possibly errors */
                     if($a==($this->csvinfo['cols'])){
@@ -159,10 +159,10 @@ class csvimport extends plugin
             if(isset($this->csvinfo['sorteddata'])){
                 $rowcnt ++;
 
-                /* Set the col count */
+                /* Set the column count */
                 $tblcolcount= count ($this->csvinfo['cols']);
 
-                /* entrie count */
+                /* entries count */
                 $tbl_entries= count ($this->csvinfo['count']);
 
                 /* row count */
@@ -174,7 +174,7 @@ class csvimport extends plugin
                 /* For every row */
                 for($i = 0; $i < $this->csvinfo['rows']; $i++){
 
-                    /* Get elemenet */
+                    /* Get element */
                     $dat = $this->csvinfo['sorteddata'][$i];
 
                     /* If not all needed vars set .... */
@@ -340,9 +340,9 @@ class csvimport extends plugin
                 msg_dialog::display(_("Information"), _("Nothing to import!"), INFO_DIALOG);
             }
 
-            /* If theres a File uploaded */
+            /* If there is a file uploaded */
         } else {
-            /* Check if theres a file uploaded */
+            /* Check if there is a file uploaded */
             if(!empty($_FILES['userfile']['name'])){
 
                 $handle = NULL;
@@ -357,7 +357,7 @@ class csvimport extends plugin
                     msg_dialog::display(_("Error"), sprintf(_("Cannot read uploaded file: %s"), _("file is empty")), ERROR_DIALOG);
                     $smarty->assign("LDIFError",TRUE);
                 }
-                /* Is there a tmp file, which we can use ? */
+                /* Is there is a tmp file, which we can use ? */
                 elseif(!file_exists($_FILES['userfile']['tmp_name']))
                 {
                     msg_dialog::display(_("Error"), sprintf(_("Cannot read uploaded file: %s"), _("file not found")), ERROR_DIALOG);
@@ -384,7 +384,7 @@ class csvimport extends plugin
                     $rest = 0;
                     $data = array();
 
-                    /* check colum count */
+                    /* check column count */
                     if(is_array($lines))
                         foreach($lines as $line) {
                             /* continue if theres a comment */
@@ -403,7 +403,7 @@ class csvimport extends plugin
                     /* At least one entry */
                     if($anz >1) {
 
-                        /* Generate array with outpu info  */
+                        /* Generate array with output info  */
                         if(is_array($lines))
                             foreach($lines as $line) {
                                 $rest = 0;

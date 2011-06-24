@@ -194,9 +194,9 @@ class conference extends plugin
     $smarty->assign("language",$this->language);
     $smarty->assign("languages",$this->languages);
     $smarty->assign("goFonHomeServers",$tmp);
-    $smarty->assign("goFonConferenceOptions",		    array("D"=>"Conference ","d"=>"Conference without PIN"));
-    $smarty->assign("goFonConferenceOptionFormats",	array("WAV"=>"Wave","GSM"=>"GSM","WAV49"=>"Wave49"));
-    $smarty->assign("goFonConferenceOption",        $this->goFonConferenceOption_D);
+    $smarty->assign("goFonConferenceOptions", array("D"=>"Conference ","d"=>"Conference without PIN"));
+    $smarty->assign("goFonConferenceOptionFormats", array("WAV"=>"Wave","GSM"=>"GSM","WAV49"=>"Wave49"));
+    $smarty->assign("goFonConferenceOption", $this->goFonConferenceOption_D);
 
     $tmp = $this->plInfo();
     foreach($tmp['plProvidedAcls'] as $name => $translation){
@@ -220,7 +220,7 @@ class conference extends plugin
 
   function remove_from_parent()
   {
-    /* Check if 'old' home server is available in FusionDirectory FON server configuration 
+    /* Check if 'old' home server is available in FusionDirectory server configuration 
      * Try to remove this entry from database and display errors.  
      */
     if(isset($this->goFonHomeServers[$this->goFonHomeServer])){

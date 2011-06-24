@@ -28,7 +28,7 @@ class rSyslogServer extends goService{
   var $db_attributes    = array("gosaLogDB","goLogAdmin","goLogPassword");
   var $StatusFlag       = "";
 
-  /* This class can't be assigned twice so it conflicts with itsself */
+  /* This class can't be assigned twice so it conflicts with itself */
   var $conflicts        = array("goSyslogServer");
 
   var $DisplayName      = "";

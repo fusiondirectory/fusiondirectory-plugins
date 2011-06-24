@@ -24,7 +24,7 @@ class ldif extends plugin
 {
   /* Definitions */
   var $plHeadline= "LDAP manager";
-  var $plDescription= "This does something";
+  var $plDescription= "This plugin allows the management of the ldap tree";
   var $plIcon = "plugins/ldapmanager/images/ldif.png";
 
   /* attribute list for save action */
@@ -48,7 +48,7 @@ class ldif extends plugin
   }
 
   /* Return plugin informations for acl handling
-     #FIXME You can only read attributes within this report plugin */
+     #FIXME You can only read attributes within this ldif import plugin */
   static function plInfo()
   {
     return (array(

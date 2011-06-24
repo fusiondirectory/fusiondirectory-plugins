@@ -77,7 +77,7 @@ class phonequeue extends plugin
 
 
 
-  /* Pluigin initialization 
+  /* Plugin initialization 
    * - Check currently selected and available home server.
    * - Set default home server if necessary
    * - Parse phone options flags
@@ -117,7 +117,7 @@ class phonequeue extends plugin
 
 
     /* Variable init  
-     *  Load phone nubmers and parse dial options 
+     *  Load phone numbers and parse dial options 
      */
     if($this->is_account){
       if(isset($this->attrs['telephoneNumber'])){
@@ -280,7 +280,7 @@ class phonequeue extends plugin
     }  
     $this->telephoneNumber=$tmp;
 
-    /* Assign samrty variables */
+    /* Assign smarty variables */
     $smarty= get_smarty();
     $smarty->assign("goFonQueueLanguageOptions",get_languages(FALSE,TRUE));
     $smarty->assign("goFonQueueStrategyOptions", $this->goFonQueueStrategyOptions);

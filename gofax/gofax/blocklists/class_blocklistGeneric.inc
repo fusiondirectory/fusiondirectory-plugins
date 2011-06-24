@@ -27,7 +27,7 @@ class blocklistGeneric extends plugin
 {
   /* Definitions */
   var $plHeadline= "Fax blocklists";
-  var $plDescription= "This does something";
+  var $plDescription= "This is the part of the fax plugin managing blacklist";
 
   var $cn ="";
   var $description = "";
@@ -259,7 +259,7 @@ class blocklistGeneric extends plugin
 
     plugin::save();
 
-    /* Let clenaup() know what attributes to handle 
+    /* Lets cleanup() know what attributes to handle 
      */ 
     $this->attrs[$type] = $this->goFaxBlocklist;
     $this->attributes [] = $type;

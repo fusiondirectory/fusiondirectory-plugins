@@ -24,7 +24,7 @@ class faxreport extends plugin
 {
   /* Definitions */
   var $plHeadline     = "FAX Reports";
-  var $plDescription  = "This does something";
+  var $plDescription  = "This plugin show the fax reports";
   var $plIcon         = "plugins/gofax/images/reports.png";
 
   /* For internal use */
@@ -115,16 +115,16 @@ class faxreport extends plugin
      ************/
 
     $smarty= get_smarty();
-    $smarty->assign("launchimage"		, get_template_path('images/launch.png'));
-    $smarty->assign("search_image"  , get_template_path('images/lists/search.png'));
-    $smarty->assign("search_for"		, $this->search_for);
-    $smarty->assign("bases"				  , $this->config->idepartments);
-    $smarty->assign("base_select"		, $this->search_base);
-    $smarty->assign("months"			  , $months);
-    $smarty->assign("month_select"	, $this->month);
-    $smarty->assign("years"				  , $years);
-    $smarty->assign("year_select"		, $this->year);
-    $smarty->assign("search_result"	, "");
+    $smarty->assign("launchimage", get_template_path('images/launch.png'));
+    $smarty->assign("search_image", get_template_path('images/lists/search.png'));
+    $smarty->assign("search_for", $this->search_for);
+    $smarty->assign("bases", $this->config->idepartments);
+    $smarty->assign("base_select", $this->search_base);
+    $smarty->assign("months", $months);
+    $smarty->assign("month_select", $this->month);
+    $smarty->assign("years", $years);
+    $smarty->assign("year_select", $this->year);
+    $smarty->assign("search_result", "");
 
     
     /************ 

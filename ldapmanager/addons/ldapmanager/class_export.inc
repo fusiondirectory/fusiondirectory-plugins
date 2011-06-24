@@ -23,8 +23,8 @@
 class ldifexport extends plugin
 {
     /* Definitions */
-    var $plHeadline= "CSV import";
-    var $plDescription= "This does something";
+    var $plHeadline= "LDIF export";
+    var $plDescription= "This plugin allow the export of the ldap tree in ldif format";
 
     /* attribute list for save action */
     var $attributes= array();

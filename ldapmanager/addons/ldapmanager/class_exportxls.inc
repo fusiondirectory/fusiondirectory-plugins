@@ -23,8 +23,8 @@
 class xlsexport extends plugin
 {
   /* Definitions */
-  var $plHeadline= "XLS import";
-  var $plDescription= "This does something";
+  var $plHeadline= "XLS export";
+  var $plDescription= "This plugin allow the export of the ldap tree in xls format";
   var $access= "";
 
   /* attribute list for save action */

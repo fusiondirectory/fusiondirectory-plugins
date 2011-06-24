@@ -39,7 +39,7 @@ class addressbook extends plugin
 {
 	/* Definitions */
 	var $plHeadline   = "Addressbook";
-	var $plDescription= "This does something";
+	var $plDescription= "The addressbook plugin show internal users and external ones";
 
   /* Generic */
   var $ui;  

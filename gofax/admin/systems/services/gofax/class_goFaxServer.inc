@@ -22,16 +22,16 @@
 
 class goFaxServer extends goService {
 	
-  var $cli_summary      = "This pluign is used within the ServerService Pluign \nand indicates that this server supports fax informations.";
+  var $cli_summary      = "This plugin is used within the ServerService Plugin \nand indicates that this server supports fax informations.";
   var $cli_description  = "Some longer text\nfor help";
-  var $cli_parameters   = array("eins" => "Eins ist toll", "zwei" => "Zwei ist noch besser");
+  var $cli_parameters   = array("one" => "one is nice", "two" => "two is even better");
 
   /* This plugin only writes its objectClass */
   var $objectclasses    = array("goFaxServer");
   var $attributes       = array("goFaxAdmin", "goFaxPassword");
   var $StatusFlag       = "goFaxServerStatus";
  
-  /* This class can't be assigned twice so it conflicts with itsself */
+  /* This class can't be assigned twice so it conflicts with itself */
   var $conflicts        = array("goFaxServer");
 
   var $DisplayName      = "";

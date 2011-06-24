@@ -23,8 +23,8 @@
 class ldifimport extends plugin
 {
     /* Definitions */
-    var $plHeadline= "LDIF export";
-    var $plDescription= "This does something";
+    var $plHeadline= "LDIF import";
+    var $plDescription= "This plugin allow the import of ldif data into the ldap tree";
     var $access= "";
 
     /* attribute list for save action */

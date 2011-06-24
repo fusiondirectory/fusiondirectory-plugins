@@ -33,7 +33,7 @@ class connectivity extends plugin
 {
   /* Definitions */
   var $plHeadline= "Connectivity";
-  var $plDescription= "This does something";
+  var $plDescription= "This plugin manage settings to services who don't have their own page";
   var $plIcon = "plugins/connectivity/images/plugin.png";
 
   /* attribute list for save action */

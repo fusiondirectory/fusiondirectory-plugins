@@ -90,7 +90,7 @@ if ( $cleanup ){
                 }
         }
 
-	/* Execute formular */
+	/* Execute form */
 	if(isset($lock_msg)){
 		$display.= $lock_msg;
 	}else{

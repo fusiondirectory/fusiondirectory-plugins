@@ -50,7 +50,7 @@ class askClassName extends plugin
     $display= "";
 
     /* First search for every ou, in given fai base
-     * With a second search detect all object that belong to the different ous. 
+     * With a second search detect all object that belong to the differents ou. 
      */
 
     $base = $this->parent->fai_release;

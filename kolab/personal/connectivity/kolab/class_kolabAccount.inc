@@ -24,7 +24,7 @@ class kolabAccount extends plugin
 {
   /* Definitions */
   var $plHeadline       = "Kolab";
-  var $plDescription    = "This does something";
+  var $plDescription    = "This plugin manage the user settings for a kolab server";
 
   /* Kolab attributes */
   var $kolabInvitationPolicy  = array();
@@ -107,7 +107,7 @@ class kolabAccount extends plugin
   }
 
     
-  /*! \brief Create thml output 
+  /*! \brief Create html output 
    */
   function execute()
   {

@@ -23,7 +23,7 @@
 class rsyslog extends plugin
 {
   var $plHeadline= "System logs";
-  var $plDescription= "View system logs";
+  var $plDescription= "This plugin allow to View system logs";
 
   var $servers = array();
   var $selected_server = "";
@@ -69,7 +69,7 @@ class rsyslog extends plugin
     $this->mysql_extension_installed = is_callable("mysql_connect");
     if(!$this->mysql_extension_installed) return;
 
-    // Test server connetivity 
+    // Test server connectivity 
     $ui = get_userinfo();
     foreach($this->servers as $name => $server)  
     {
