@@ -24,7 +24,7 @@ class webdavAccount extends plugin
 {
   /* Definitions */
   var $plHeadline= "WebDAV";
-  var $plDescription= "This does something";
+  var $plDescription= "This allow to save the information for giving access to a webdav server or not";
 
   /* attribute list for save action */
   var $attributes= array();

@@ -23,7 +23,7 @@ class addressbookgosa extends plugin{
 
   static function plInfo()
   {
-    /* Adapt addressbook settings and mofiy required settings. 
+    /* Adapt addressbook settings and modify required settings. 
      */
     $attrs = addressbook::plInfo(); 
     $attrs['plShortName']   = _("Addressbook")." - "._("FusionDirectory");

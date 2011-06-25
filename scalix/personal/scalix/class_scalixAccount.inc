@@ -36,7 +36,7 @@ class scalixAccount extends plugin
 {
   /* Definitions */
   var $plHeadline   = "Scalix";
-  var $plDescription= "This does something";
+  var $plDescription= "This save and read the scalix account data from ldap";
 
   /* plugin specific values - scalixUserClass */
   /* MUST */

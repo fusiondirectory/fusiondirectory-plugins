@@ -32,13 +32,9 @@ class systemSelect extends management
     $this->ui = $ui;
     $this->storagePoints = array(get_ou("serverRDN"), get_ou("workstationRDN"), get_ou('terminalRDN'));
 
-#    // Build filter
-#    if (session::global_is_set(get_class($this)."_filter")){
-#      $filter= session::global_get(get_class($this)."_filter");
-#    } else {
-      $filter = new filter(get_template_path("selectSystem-filter.xml", true, dirname(__FILE__)));
-      $filter->setObjectStorage($this->storagePoints);
-#    }
+    // Build Filter
+    $filter = new filter(get_template_path("selectSystem-filter.xml", true, dirname(__FILE__)));
+    $filter->setObjectStorage($this->storagePoints);
     $this->setFilter($filter);
 
     // Build headpage

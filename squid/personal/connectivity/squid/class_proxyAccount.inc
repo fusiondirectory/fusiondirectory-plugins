@@ -24,7 +24,7 @@ class proxyAccount extends plugin
 {
   /* Definitions */
   var $plHeadline   = "Proxy";
-  var $plDescription= "This does something";
+  var $plDescription= "This allow to store basic squid settings in ldap for each user";
 
   /* Proxy attributes */
   var $gosaProxyAcctFlags   = "[N    ]";

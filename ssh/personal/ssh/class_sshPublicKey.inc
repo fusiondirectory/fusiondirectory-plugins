@@ -34,7 +34,7 @@ class sshPublicKey
 
   function sshPublicKey(&$config, $dn, $acl)
   {
-    /* Configuration is fine, allways */
+    /* Configuration is fine, always */
     $this->config= &$config;
     $this->dn= $dn;
     $this->acl= $acl;

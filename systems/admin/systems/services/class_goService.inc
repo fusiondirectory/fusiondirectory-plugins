@@ -37,7 +37,7 @@ class goService extends plugin{
   var $krb_service_prefix   = "";
   var $krb_host_key         = NULL; 
    
-  /* Construcktion */ 
+  /* Construction */ 
   function goService(&$config,$dn,$parent = NULL)
   {
     plugin::plugin($config,$dn);

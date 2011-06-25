@@ -24,7 +24,7 @@ class sambaAccount extends plugin
 {
     /* Definitions */
     var $plHeadline= "Samba";
-    var $plDescription= "This does something";
+    var $plDescription= "This store the sambaAccount into the ldap tree";
     var $view_logged = FALSE;
 
     // Domaind information, gid, sid, rid
