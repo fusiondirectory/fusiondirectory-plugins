@@ -1,6 +1,6 @@
 [fusiondirectory-plugin]
 name = rsyslog
-description = "Syslog and FusionDirectory logging plugin"
+description = "Rsyslog logging plugin"
 version = 1.0
 depends = systems
 author = "FusionDirectory project <contact@fusiondirectory.org>"

@@ -41,14 +41,14 @@ class goLogDBServer extends goService{
   var $goLogDBServerStatus  = "";
   var $goLogAdmin           = "";
   var $goLogPassword        = "";  
-  var $gosaLogDB            = "gomon";  
+  var $gosaLogDB            = "";  
   var $view_logged  =FALSE;
 
 
   function goLogDBServer(&$config,$dn)
   {
     goService::goService($config,$dn);
-    $this->DisplayName = _("Syslog service database");
+    $this->DisplayName = _("FusionDirectory audit database");
   }
 
 
@@ -76,7 +76,7 @@ class goLogDBServer extends goService{
   function getListEntry()
   {
     $fields = goService::getListEntry();
-    $fields['Message']      = _("Syslog service database");
+    $fields['Message']      = _("FusionDirectory audit database");
     #$fields['AllowEdit']    = true;
     return($fields);
   }
@@ -109,8 +109,8 @@ class goLogDBServer extends goService{
   static function plInfo()
   {
     return (array(
-          "plShortName"   => _("Logging database"),
-          "plDescription" => _("Logging database")." ("._("Services").")",
+          "plShortName"   => _("Audit database"),
+          "plDescription" => _("Audit database")." ("._("Services").")",
           "plSelfModify"  => FALSE,
           "plDepends"     => array(),
           "plPriority"    => 97,

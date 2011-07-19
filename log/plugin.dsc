@@ -1,6 +1,6 @@
 [fusiondirectory-plugin]
 name = log
-description = "Syslog and FusionDirectory logging plugin"
+description = "FusionDirectory audit plugin"
 version = 1.0
 depends = systems
 author = "FusionDirectory project <contact@fusiondirectory.org>"
