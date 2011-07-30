@@ -14,9 +14,6 @@ libtimedate-perl
 goSquid.pl - connect this script to squid
              redirect_program /usr/local/sbin/goSquid
 
-goAgent.pl - one script to create home directories and mailboxes on
-             filesystem. run it via cron
-  
 mkHash.pl  - create hash file for black list
 
 At this time all scripts have no config file. Please, edit source to configure.
