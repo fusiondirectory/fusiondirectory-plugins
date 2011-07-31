@@ -89,24 +89,28 @@ sub read_config {
 
 #
 # XML parser
+      my $tls;
 #
 sub parseconfig {
 	my $c_location = shift;
 	my $xmldata = shift;
 	chomp $c_location;
 	chomp $xmldata;
+              $tls = $c_data->{main}->{location}->{tls};
 	my $data = $xmldata;
 	my $xml = new XML::Simple ();
 	my $c_data = $xml -> XMLin( $xmldata);
 	my $config = {};
 	my $config_base;
 	my $ldap_admin;
+              $tls = $c_data->{main}->{location}->{$c_location}->{tls};
 	my $ldap_admin_pwd;
 	my $url;
 	my $mailMethod;
 	#print Dumper ($c_data->{main}->{location}->{config});
 	if ( $c_data->{main}->{location}->{config} ) {
 		#print "IF\n";
+      $config->{tls} = $tls;
 		$config_base = $c_data->{main}->{location}->{config};
 		$url = $c_data->{main}->{location}->{referral}->{url};
 		$ldap_admin = $c_data->{main}->{location}->{referral}->{admin};
@@ -147,6 +151,7 @@ sub get_default_location {
 #
 sub list_locations {
 	my $xmldata = shift;
+      my $tls = shift;
 	my $xml = new XML::Simple ( RootName=>'conf' );
 	my $c_data = $xml -> XMLin( $xmldata );
 	my $default = get_default_location ( $xmldata );
@@ -157,6 +162,9 @@ sub list_locations {
 	@locations = (@locations, @keys);
 
 	return @locations;
+      if ( $tls ) {
+              $ldap->start_tls();
+      }
 }
 
 #
@@ -180,6 +188,7 @@ sub ldap_search {
 	my $searchString = shift;
 	my $scope = shift;
 	my $base = shift;
+      my $tls = shift;
 	my $attrs = shift;
 	my $bind_dn = shift;
 	my $bind_dn_pwd = shift;
@@ -243,7 +252,7 @@ sub get_ldap_base {
 	$config_base =~ s/\,\ +/\,/g;
 	#print $url."\n";
 	#print $config_base."\n";
-	my $result = ldap_search ( $url, $filter, $scope, $init_base, $attributes, $bind_dn, $bind_dn_pwd );
+	my $result = ldap_search ( $url, $filter, $scope, $init_base, $attributes, $bind_dn, $bind_dn_pwd, $tls );
 	my @entries = $result->entries;
 	my $noe = @entries;
 	#print $noe."\n";
@@ -297,6 +306,7 @@ sub getscript {
 	chomp $script;
 	#print "$sieve\n";
 	#print "$script\n";
+my $tls = $config->{tls};
 
 	$scriptfile = $sieve->getscript($script);
 	return $scriptfile;
@@ -378,13 +388,13 @@ if ( $mailMethod =~ m/kolab/i ) {
 }
 
 # determine LDAP base
-my $ldap_base = get_ldap_base ( $ldap_url, $gosa_config_base, $simple_bind_dn, $simple_bind_dn_pwd );
+my $ldap_base = get_ldap_base ( $ldap_url, $gosa_config_base, $simple_bind_dn, $simple_bind_dn_pwd, $tls );
 
 # retrieve user informations with activated vacation feature
 my $filter = "(&(objectClass=gosaMailAccount)(gosaMailDeliveryMode=*V*)(!(gosaMailDeliveryMode=*C*)))";
 my $list_of_attributes = [ 'uid', 'mail', $alternate_address_attribute, 'gosaVacationMessage', 'gosaVacationStart', 'gosaVacationStop', $server_attribute ];
 my $search_scope = "sub";
-my $result = ldap_search ( $ldap_url, $filter, $search_scope, $ldap_base, $list_of_attributes, $simple_bind_dn, $simple_bind_dn_pwd );
+my $result = ldap_search ( $ldap_url, $filter, $search_scope, $ldap_base, $list_of_attributes, $simple_bind_dn, $simple_bind_dn_pwd, $tls );
 
 my @entries = $result->entries;
 my $noe = @entries;
