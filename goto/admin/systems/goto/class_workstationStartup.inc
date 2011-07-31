@@ -915,48 +915,51 @@ class workstartup extends plugin
     if ((isset($this->attrs['gotoLdapServer']) && class_available("DaemonEvent")) || $this->gotoLdap_inherit){
       $events = DaemonEvent::get_event_types(SYSTEM_EVENT | HIDDEN_EVENT);
       $o_queue = new gosaSupportDaemon();
-      if(isset($events['TRIGGERED']['DaemonEvent_reload_ldap_config'])){
-        $evt = $events['TRIGGERED']['DaemonEvent_reload_ldap_config'];
-        $macs = array();
-    
-        /* Get list of macAddresses 
-         */
-        if(isset($this->parent->by_object['ogroup'])){
+      if($o_queue->is_configured()){
+
+        if(isset($events['TRIGGERED']['DaemonEvent_reload_ldap_config'])){
+          $evt = $events['TRIGGERED']['DaemonEvent_reload_ldap_config'];
+          $macs = array();
         
-          /* If we are an object group, add all member macs 
+          /* Get list of macAddresses 
            */
-          $p = $this->parent->by_object['ogroup'];
-          foreach($p->memberList as $dn => $obj){
-            if(isset($p->objcache[$dn]['macAddress']) && !empty($p->objcache[$dn]['macAddress'])){
-              $macs[] = $p->objcache[$dn]['macAddress'];
+          if(isset($this->parent->by_object['ogroup'])){
+          
+            /* If we are an object group, add all member macs 
+             */
+            $p = $this->parent->by_object['ogroup'];
+            foreach($p->memberList as $dn => $obj){
+              if(isset($p->objcache[$dn]['macAddress']) && !empty($p->objcache[$dn]['macAddress'])){
+                $macs[] = $p->objcache[$dn]['macAddress'];
+              }
             }
+          }elseif(isset($this->parent->by_object['workgeneric']->netConfigDNS->macAddress)){
+
+            /* We are a workstation. Add current mac.
+             */
+            $mac = $this->parent->by_object['workgeneric']->netConfigDNS->macAddress;
+            if(!empty($mac)){
+              $macs[] = $mac;
+            }          
+          }elseif(isset($this->parent->by_object['servgeneric']->netConfigDNS->macAddress)){
+
+            /* We are a server. Add current mac.
+             */
+            $mac = $this->parent->by_object['servgeneric']->netConfigDNS->macAddress;
+            if(!empty($mac)){
+              $macs[] = $mac;
+            }          
           }
-        }elseif(isset($this->parent->by_object['workgeneric']->netConfigDNS->macAddress)){
 
-          /* We are a workstation. Add current mac.
+          /* Trigger event for all member objects 
            */
-          $mac = $this->parent->by_object['workgeneric']->netConfigDNS->macAddress;
-          if(!empty($mac)){
-            $macs[] = $mac;
-          }          
-        }elseif(isset($this->parent->by_object['servgeneric']->netConfigDNS->macAddress)){
-
-          /* We are a server. Add current mac.
-           */
-          $mac = $this->parent->by_object['servgeneric']->netConfigDNS->macAddress;
-          if(!empty($mac)){
-            $macs[] = $mac;
-          }          
-        }
-
-        /* Trigger event for all member objects 
-         */
-        foreach($macs as $mac){
-          $tmp = new $evt['CLASS_NAME']($this->config);
-          $tmp->set_type(TRIGGERED_EVENT);
-          $tmp->add_targets(array($mac));
-          if(!$o_queue->append($tmp)){
-            msg_dialog::display(_("Service infrastructure"),msgPool::siError($o_queue->get_error()),ERROR_DIALOG);
+          foreach($macs as $mac){
+            $tmp = new $evt['CLASS_NAME']($this->config);
+            $tmp->set_type(TRIGGERED_EVENT);
+            $tmp->add_targets(array($mac));
+            if(!$o_queue->append($tmp)){
+              msg_dialog::display(_("Service infrastructure"),msgPool::siError($o_queue->get_error()),ERROR_DIALOG);
+            }
           }
         }
       }
