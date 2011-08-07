@@ -1,4 +1,4 @@
-{* GOsa dhcp host - smarty template *}
+{* FusionDirectory dhcp host - smarty template *}
 <h3>{t}DNS update key{/t}</h3>
 
 <table width="100%">

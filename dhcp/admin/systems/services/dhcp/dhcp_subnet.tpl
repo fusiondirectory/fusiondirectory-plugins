@@ -1,4 +1,4 @@
-{* GOsa dhcp subnet - smarty template *}
+{* FusionDirectory dhcp subnet - smarty template *}
 <p><b>{t}Generic{/t}</b></p>
 <table width="100%">
  <tr>
