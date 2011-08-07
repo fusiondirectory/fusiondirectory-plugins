@@ -34,7 +34,7 @@ class faiPackageConfiguration extends plugin
 
 
   /*! \brief  Configure a FAI package entry.
-      @param  Object  $config GOsa configuration object;
+      @param  Object  $config FusionDirectory configuration object;
       @param  String  The DN of the current package.
       @param  String  The package name (e.g. apache)
       @param  String  The release name (e.g. edge)
