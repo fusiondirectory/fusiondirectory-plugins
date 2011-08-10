@@ -178,63 +178,82 @@ class csvimport extends plugin
                     $dat = $this->csvinfo['sorteddata'][$i];
 
                     /* If not all needed vars set .... */
-                    if(( empty($dat['sn']))||( empty($dat['givenName']))||( empty($dat['uid']))||
-                            (!isset($dat['sn']))||(!isset($dat['givenName']))||(!isset($dat['uid']))){
+                    if(!isset($dat['givenName']) || empty($dat['givenName']) || !isset($dat['sn']) || empty($dat['sn'])){
 
                         /* Output Error */
-                        msg_dialog::display(_("Error"), _("Need at least 'sn', 'givenName' and 'uid' to create users."), ERROR_DIALOG);
-                    } else {
+                        msg_dialog::display(_("Error"), _("Need at least 'sn' and 'givenName' to create users!"), ERROR_DIALOG);
+                        $this->csvinfo['sorteddata'][$i]['status']="<b>"._("failed")."</b>";
+                        $failing = $i+1;
+                        continue;
+                    } 
 
-                        /* Register usertab to trigger edit dialog */
-                        $this->usertab= new usertabs($this->config, $this->config->data['TABS']['USERTABS'], 'new');
-                        $keys = array_keys($dat);
+                    /* Automatically generate 'uid' while it wasn't given yet. 
+                     */
+                    if(!isset($dat['uid']) || empty($dat['uid'])){
 
-                        /* Set all submitted vars  */
-                        if(is_array($keys)){
-                            foreach($keys as $key) {
-                                if($key != "status"){
-                                    $this->usertab->$key = $dat[$key];
-                                    foreach($this->usertab->by_object as $pname => $plugin){
-                                        if(isset($this->usertab->by_object[$pname]->$key)){
-                                            $this->usertab->by_object[$pname]->$key = $dat[$key];
-                                        }
+                        // Generate uids and take the first result.
+                        $attributes= array('sn' => $dat['sn'], 'givenName' => $dat['givenName']);
+                        $uids = gen_uids ($this->config->get_cfg_value("idGenerator"), $attributes);
+                        if (!count($uids) || empty($uids[0])){
+                            $msgs = sprintf(_("Failed to generate 'uid' for entry '%s'!"), ($i+1));
+                            $this->csvinfo['sorteddata'][$i]['status']="<b>"._("failed")."</b>&nbsp;". $msgs;
+                            $failing = $i+1;
+                            continue;
+                        }else{
+                            $this->csvinfo['sorteddata'][$i]['uid'] = array_pop($uids);
+                            $dat['uid'] = $this->csvinfo['sorteddata'][$i]['uid'];
+                        }
+                    }
+
+                    /* Register usertab to trigger edit dialog */
+                    $this->usertab= new usertabs($this->config, $this->config->data['TABS']['USERTABS'], 'new');
+                    $keys = array_keys($dat);
+
+                    /* Set all submitted vars  */
+                    if(is_array($keys)){
+                        foreach($keys as $key) {
+                            if($key != "status"){
+                                $this->usertab->$key = $dat[$key];
+                                foreach($this->usertab->by_object as $pname => $plugin){
+                                    if(isset($this->usertab->by_object[$pname]->$key)){
+                                        $this->usertab->by_object[$pname]->$key = $dat[$key];
                                     }
                                 }
                             }
                         }
+                    }
 
-                        // Adapt template values.
-                        if($this->csvinfo['tplid']!=0){
-                            $tpl_dn = $this->csvinfo['arrtempls'][$this->csvinfo['tplid']]['dn'];
-                            $this->usertab->adapt_from_template($tpl_dn,array("uid","cn","givenName","sn"));
-                            $tpl_base  = preg_replace("/^[^,]+,".preg_quote(get_people_ou(), '/i')."/", '', $tpl_dn);
-                            $this->usertab->by_object['user']->base= $tpl_base;
-                        } 
+                    // Adapt template values.
+                    if($this->csvinfo['tplid']!=0){
+                        $tpl_dn = $this->csvinfo['arrtempls'][$this->csvinfo['tplid']]['dn'];
+                        $this->usertab->adapt_from_template($tpl_dn,array("uid","cn","givenName","sn"));
+                        $tpl_base  = preg_replace("/^[^,]+,".preg_quote(get_people_ou(), '/i')."/", '', $tpl_dn);
+                        $this->usertab->by_object['user']->base= $tpl_base;
+                    } 
 
-                        // Setting user Password 
-                        if((isset($dat['userPassword']))&&(!empty($dat['userPassword']))){
-                            $password = $dat['userPassword']; 
-                        }else{
-                            $rand_str="";
-                            $feed = "0123456789abcdefghijklmnopqrstuvwxyz";
-                            for ($e=0; $e < 8; $e++)
-                            {
-                                $rand_str .= substr($feed, rand(0, strlen($feed)-1), 1);
-                            }
-                            $password = $rand_str;
+                    // Setting user Password 
+                    if((isset($dat['userPassword']))&&(!empty($dat['userPassword']))){
+                        $password = $dat['userPassword']; 
+                    }else{
+                        $rand_str="";
+                        $feed = "0123456789abcdefghijklmnopqrstuvwxyz";
+                        for ($e=0; $e < 8; $e++)
+                        {
+                            $rand_str .= substr($feed, rand(0, strlen($feed)-1), 1);
                         }
+                        $password = $rand_str;
+                    }
 
-                        /* Insert in the LDAP tree */
-                        if(count($this->usertab->check())) {
-                            msg_dialog::displayChecks($this->usertab->check());
-                            $this->csvinfo['sorteddata'][$i]['status']="<b>"._("failed")."</b>";
-                            $failing = $i+1;
-                            break;
-                        } else {
-                            $this->csvinfo['sorteddata'][$i]['status']=_("ok");
-                            $this->usertab->save();
-                            change_password($this->usertab->dn,$password); 
-                        }
+                    /* Insert in the LDAP tree */
+                    if(count($this->usertab->check())) {
+                        msg_dialog::displayChecks($this->usertab->check());
+                        $this->csvinfo['sorteddata'][$i]['status']="<b>"._("failed")."</b>";
+                        $failing = $i+1;
+                        break;
+                    } else {
+                        $this->csvinfo['sorteddata'][$i]['status']=_("ok");
+                        $this->usertab->save();
+                        change_password($this->usertab->dn,$password); 
                     }
                 }
 
@@ -286,7 +305,7 @@ class csvimport extends plugin
                     if($this->csvinfo['shownrowscount']> $this->csvinfo['rows'])$this->csvinfo['shownrowscount']=$this->csvinfo['rows'];
 
                     $dataouts = array(); 
-                    for($i =$begin; $i <= $end; $i++) {
+                    for($i =$begin; ($i <= $end) && (isset($this->csvinfo['sorteddata'][($i)])); $i++) {
                         if(is_array($this->csvinfo['sorteddata'][($i)])){
                             foreach($this->csvinfo['sorteddata'][($i)] as $dat){
                                 $dataouts[]=$dat;

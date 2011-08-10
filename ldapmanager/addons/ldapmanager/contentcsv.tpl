@@ -1,5 +1,5 @@
 <p>
-  {t}The CSV import plugin provides methods to generate user accounts from a file containing Comma Seperated Values. The administrator can decide which columns should be transfered to which attribute. Note that you must have at least the UID, GIVENNAME and SURNAME set.{/t}
+{t}The CSV import plugin provides methods to generate user accounts from a file containing Comma Seperated Values. The administrator can decide which columns should be transfered to which attribute. Note that you must have at least the GIVENNAME and SURNAME set.{/t}
 </p>
 <p class="seperator">&nbsp;</p>
 
