@@ -2,13 +2,13 @@
 <p>
 {t}You can import a list of jobs into the FusionDirectory job queue. This should be a semicolon seperated list of items in the following format:{/t}
 </p>
-<i>{t}timestamp{/t} ; {t}MAC-address{/t} ; {t}job type{/t} ; {t}object group{/t} [ ; {t}import base{/t} ; {t}full hostname{/t} ; {t}IP-address{/t} ; {t}DHCP group{/t} ]</i>
+<i>{t}timestamp{/t};{t}MAC-address{/t};{t}job type{/t};{t}object group{/t}[;{t}import base{/t};{t}full hostname{/t};{t}IP-address{/t};{t}DHCP group{/t} ]</i>
 <br>
 <br>
 {if !$count}
 {t}Example{/t}:
 <br>
-20080626162556 <b>;</b> 00:0C:29:99:1E:37 <b>;</b> job_trigger_activate_new <b>;</b> goto-client <b>;</b> dc=test,dc=gonicus,dc=de
+20080626162556<b>;</b>00:0C:29:99:1E:37<b>;</b>job_trigger_activate_new<b>;</b>goto-client<b>;</b>dc=test,dc=fusiondirectory,dc=org
 <br>
 <br>
 {/if}
