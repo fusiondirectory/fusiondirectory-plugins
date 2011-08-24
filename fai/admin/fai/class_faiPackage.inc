@@ -255,7 +255,7 @@ class faiPackage extends plugin
           }
 
           // Query SI-Deamon for additional package information
-          $daemon       = new gosaSupportDaemon();
+          $daemon       = new supportDaemon();
           $query_attrs  = array("distribution", "package","version", "section", "description", "timestamp");
           $do_si_query  = true;
 
@@ -576,7 +576,7 @@ class faiPackage extends plugin
     if(empty($this->FAIdebianRelease)) return;
 
     if(!count($this->buffer) || $force){
-      $q = new gosaSupportDaemon();
+      $q = new supportDaemon();
       $attrs = array("distribution", "package","version", "section", "description", "timestamp","template");
 
       $packages = array_keys($this->usedPackages);

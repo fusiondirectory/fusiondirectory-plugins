@@ -47,9 +47,9 @@ class faiPackageConfiguration extends plugin
     $this->release = $release;
     $this->pkg_config = $pkg_config;
 
-    /* Read pkg debconf info from gosaSupportDaemon
+    /* Read pkg debconf info from supportDaemon
      */
-    $q = new gosaSupportDaemon();
+    $q = new supportDaemon();
     $ret = $q->FAI_get_packages($this->release,array("package","template"),array($this->obj));
     if($q->is_error()){
       msg_dialog::display(_("Service infrastructure"),msgPool::siError($q->get_error()),ERROR_DIALOG);

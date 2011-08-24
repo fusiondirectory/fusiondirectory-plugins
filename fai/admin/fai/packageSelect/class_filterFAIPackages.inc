@@ -26,7 +26,7 @@ class filterFAIPackages {
   {
     $filter= preg_replace('/\*/', '', $filter);
     $pkgs = array();
-    $q          = new gosaSupportDaemon();
+    $q          = new supportDaemon();
     $filter     = array("%$filter%");
     $attrs      = array("distribution", "package","version", "section", "description", "timestamp");
     $release = session::get('packageSelect_Release');
