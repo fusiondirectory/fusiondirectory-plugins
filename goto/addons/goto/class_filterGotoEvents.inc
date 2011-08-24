@@ -25,7 +25,7 @@ class filterGotoEvents extends  filterLDAP {
   {
     global $config;
 
-    $o_queue = new gosaSupportDaemon(TRUE,5);
+    $o_queue = new supportDaemon();
     $events  = DaemonEvent::get_event_types( SYSTEM_EVENT);
 
     /* Get tags that will be used in queue searches */

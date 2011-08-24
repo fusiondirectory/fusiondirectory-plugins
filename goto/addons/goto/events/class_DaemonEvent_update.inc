@@ -28,9 +28,7 @@ class DaemonEvent_update extends DaemonEvent
     DaemonEvent::__construct($config,$data);
     $this->s_Menu_Name  = _("Software update");
     $this->s_Event_Name = _("Software update");
-    $this->s_Schedule_Action = "job_trigger_action_update";
-    $this->s_Trigger_Action= "job_trigger_action_update";
-    $this->s_Queued_Action= "trigger_action_update";
+    $this->s_Action= "trigger_action_update";
     $this->s_Menu_Image = "plugins/goto/images/update.png";
     $this->s_List_Image = "plugins/goto/images/update.png";
   }

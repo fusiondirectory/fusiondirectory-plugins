@@ -27,9 +27,7 @@ class DaemonEvent_installation_activation extends DaemonEvent
     DaemonEvent::__construct($config,$data);
     $this->s_Menu_Name  = _("Installation activation");
     $this->s_Event_Name = _("Installation activation");
-    $this->s_Schedule_Action  = "job_set_activated_for_installation";
-    $this->s_Trigger_Action   = "gosa_set_activated_for_installation";
-    $this->s_Queued_Action    = "set_activated_for_installation";
+    $this->s_Action    = "set_activated_for_installation";
     $this->s_Menu_Image = "images/true.png";
     $this->s_List_Image = "images/true.png";
   }

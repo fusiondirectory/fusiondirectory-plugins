@@ -48,9 +48,11 @@ class DaemonEvent
   protected $data;            // The event data, when edited
 
   protected $a_targets    = array();  // The list of assigned Targets (When newly created)
-  protected $s_Schedule_Action = "";       // The deamon command name when newly created. (e.g. job_trigger_action_halt)
-  protected $s_Trigger_Action= "";       // The deamon command name when edited. (e.g. trigger_action_halt)
-  protected $s_Queued_Action= "";       // The deamon command name when edited. (e.g. trigger_action_halt)
+/*
+  protected $s_Action = "";       // The deamon command name when newly created. (e.g. job_trigger_action_halt)
+  protected $s_Action= "";       // The deamon command name when edited. (e.g. trigger_action_halt)
+*/
+  protected $s_Action= "";       // The deamon command name when edited. (e.g. trigger_action_halt)
   protected $timestamp    = 0;        // Event execution time; 
   protected $id           = -1;       // The Table ID
   protected $status       = "unknown";// The current event status
@@ -371,7 +373,7 @@ class DaemonEvent
     $data['CLASS_NAME']   = get_class($this);
     $data['s_Menu_Name']  = $this->s_Menu_Name;
     $data['s_Event_Name'] = $this->s_Event_Name;
-    foreach(array("s_Queued_Action","s_Schedule_Action","s_Trigger_Action") as $attr){
+    foreach(array("s_Action","s_Action","s_Action") as $attr){
       if(!empty($this->$attr)){
         $data[$attr]  = $this->$attr;
       }
@@ -430,16 +432,22 @@ class DaemonEvent
         if($tmp->visible_for & $type){
           $evt  = $tmp->get_event_info();
           $list['BY_CLASS'][$name]                      = $evt;
-          if(isset($evt['s_Trigger_Action'])){
+          if(isset($evt['s_Action'])){
+/*
+          if(isset($evt['s_Action'])){
+*/
             $list['TRIGGERED'][$name] = $evt;
-            $list['QUEUED'][$evt['s_Trigger_Action']] = $name;
+/*
+            $list['QUEUED'][$evt['s_Action']] = $name;
           }
-          if(isset($evt['s_Schedule_Action'])){
+          if(isset($evt['s_Action'])){
+*/
             $list['SCHEDULED'][$name] = $evt;
-            $list['QUEUED'][$evt['s_Schedule_Action']] = $name;
+/*
+            $list['QUEUED'][$evt['s_Action']] = $name;
           }
-          if(isset($evt['s_Queued_Action'])){
-            $list['QUEUED'][$evt['s_Queued_Action']] = $name;
+*/
+            $list['QUEUED'][$evt['s_Action']] = $name;
           }
         }
       }
@@ -462,7 +470,7 @@ class DaemonEvent
    */
   public function get_schedule_action()
   {
-    return($this->s_Schedule_Action);
+    return($this->s_Action);
   }
 
 
@@ -471,7 +479,7 @@ class DaemonEvent
    */
   public function get_trigger_action()
   {
-    return($this->s_Trigger_Action);
+    return($this->s_Action);
   }
 
 

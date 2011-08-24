@@ -31,6 +31,16 @@
       <export>true</export>
     </column>
 
+<!--
+    <column>
+      <label>Name</label>
+      <sortAttribute>cn</sortAttribute>
+      <sortType>string</sortType>
+      <value>%{filter:link(row,dn_target,"%s (%s)",cn,MACADDRESS)}</value>
+      <export>true</export>
+    </column>
+-->
+    
     <column>
       <label>Task</label>
       <sortAttribute>givenName</sortAttribute>
@@ -59,7 +69,7 @@
       <label>Status</label>
       <sortAttribute>uid</sortAttribute>
       <sortType>string</sortType>
-      <value>%{filter:filterStatus(STATUS,MACADDRESS,HEADERTAG,PROGRESS)}</value>
+      <value>%{filter:filterStatus(row,STATUS,MACADDRESS,HEADERTAG,ERROR,PROGRESS)}</value>
       <export>true</export>
     </column>
 
@@ -185,6 +195,7 @@
 
   <actiontriggers snapshot="true" copypaste="true">
 
+<!--
     <action>
       <name>prioUp</name>
       <type>entry</type>
@@ -216,6 +227,7 @@
       <image>images/status_start.png</image>
       <label>Resume</label>
     </action>
+-->
 
     <action>
       <name>processNow</name>
@@ -233,6 +245,7 @@
       <label>View logs</label>
     </action>
 
+<!--
     <action>
       <name>edit</name>
       <type>entry</type>
@@ -240,6 +253,7 @@
       <image>images/lists/edit.png</image>
       <label>Edit</label>
     </action>
+-->
 
     <action>
       <name>remove</name>

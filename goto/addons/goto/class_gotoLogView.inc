@@ -50,7 +50,7 @@ class gotoLogView extends plugin
 
     /* Try to fetch logs for the given event (mac)
      */
-    $this->o_queue = new gosaSupportDaemon();
+    $this->o_queue = new supportDaemon();
 
     /* Load ldap object if given 
         and use this macAddress.
@@ -73,8 +73,8 @@ class gotoLogView extends plugin
     /* Query for log files
      */
     $res = $this->o_queue->get_log_info_for_mac($this->mac);
-    if($this->o_queue->is_configured() && $this->o_queue->is_error()){
-      msg_dialog::display(_("Error"), $this->o_queue->get_error(), ERROR_DIALOG);
+    if($this->o_queue->is_error()) {
+        msg_dialog::display(_("Error"), $this->o_queue->get_error(), ERROR_DIALOG);
     }
 
     /* Check if there is at least one log file 

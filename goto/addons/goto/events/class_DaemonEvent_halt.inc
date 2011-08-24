@@ -30,9 +30,7 @@ class DaemonEvent_halt extends DaemonEvent
     DaemonEvent::__construct($config,$data);
     $this->s_Menu_Name  = _("Switch off");
     $this->s_Event_Name = _("Switch off");
-    $this->s_Schedule_Action = "job_trigger_action_halt";
-    $this->s_Trigger_Action= "gosa_trigger_action_halt";
-    $this->s_Queued_Action= "trigger_action_halt";
+    $this->s_Action= "trigger_action_halt";
     $this->s_Menu_Image = "images/lists/off.png";
     $this->s_List_Image = "images/lists/off.png";
   }

@@ -43,7 +43,7 @@ class gotomasses extends management
   {
     /* Include config object */
     $this->config= &$config;
-    $this->o_queue = new gosaSupportDaemon(TRUE,5);
+    $this->o_queue = new supportDaemon();//supportDaemon(TRUE,5);
     $this->events  = DaemonEvent::get_event_types( SYSTEM_EVENT);
     $this->acl_base = $config->current['BASE'];
     $this->acl_category = "gotomasses/";
@@ -90,6 +90,8 @@ class gotomasses extends management
     $this->registerAction('activate', 'newEntry');
     $this->registerAction('reinstall', 'newEntry');
     $this->registerAction('import', 'importEvents');
+    
+    $this->registerAction('showError', 'showErrorEntry');
   }
 
   function newEntry($action="",$target=array(),$all=array(), $altTabClass ="", $altTabType = "", $altAclCategory="")
@@ -110,8 +112,9 @@ class gotomasses extends management
 
   static function filterHostName($mac, $name ="")
   {
-    if(isset($name[0]) && $name[0] != "none"){
-      return($name[0]);
+    if(isset($name[0]) && $name[0] != "none") {
+        // TODO ajouter lien machine.
+      return($name[0]." (".$mac[0].")");
     }
     return($mac[0]);
   }
@@ -163,19 +166,21 @@ class gotomasses extends management
   }
 
 
-  static function filterStatus($status, $mac,$headertag, $progress)
+  static function filterStatus($row,$status, $mac, $headertag, $error, $progress)
   {
 
+    $status     = $status[0];
     $mac = $mac[0];
-    $status = $status[0];
-    $progress = $progress[0];
-    $headertag = $headertag[0];
+    $headertag  = $headertag[0];
+    $error      = $error[0];
+    $progress   = $progress[0];
 
     if($status == "waiting"){
       $status = "<img class='center' src='plugins/goto/images/clock.png' alt=''>&nbsp;"._("Waiting");
     }
     if($status == "error"){
-      $status = "<img class='center' src='images/false.png' alt=''>&nbsp;"._("Error");
+        $status="<input class='center' type='image' src='images/false.png' title='"._("Show error")."' ".
+                 "name='listing_showError_$row' style='padding:1px'>"._("Error");
     }
     if($status == "processed"){
       $status = "<img class='center' src='images/true.png' alt=''>&nbsp;"._("Processed");
@@ -231,7 +236,9 @@ class gotomasses extends management
       $deleteable_jobs = array();
       $not_deleteable_jobs = array();
       $headpage = $this->getHeadpage();
-
+        echo "TARGET---";
+        print_r ($target);
+        echo "---<br/>!!!";
       foreach($target as $dn){
 
         $tmp = $headpage->getEntry($dn);
@@ -373,6 +380,18 @@ class gotomasses extends management
       $this->dialogObject = new gotoLogView($this->config,"",$entry,$this);
     }
   }
+  
+    function showErrorEntry($action="",$target=array(),$all=array())
+    {
+        if(count($target) == 1){
+            $id =  $target[0];
+            $type = FALSE;
+            $headpage = $this->getHeadpage();
+            $tmp = $headpage->getEntry($id);
+            $entry = $tmp['EVENT'];
+            msg_dialog::display(_("Error"),$entry['ERROR']);
+        }
+    }
 
   function saveEventDialog()
   {
@@ -489,12 +508,6 @@ class gotomasses extends management
    */
   private function execute_queue_entries($ids)
   {
-    /* Execution is forced by updating the status to 
-     *  waiting and setting the timestamp to current time.
-     */
-    $data = array(  "timestamp" => date("YmdHis",time()), 
-        "status"    => "waiting");
-
     /* Only allow execution of paused or waiting entries 
      */
     $update_ids = array();
@@ -510,7 +523,7 @@ class gotomasses extends management
     /* Tell the daemon that we want to update some entries
      */
     if(count($update_ids)){
-      if(!$this->o_queue->update_entries($update_ids,$data)){
+      if(!$this->o_queue->process_entries_now($update_ids)){
         msg_dialog::display(_("Error"), sprintf(_("Cannot update queue entries.")) , ERROR_DIALOG);
         return(FALSE);
       }

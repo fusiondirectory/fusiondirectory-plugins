@@ -27,9 +27,7 @@ class DaemonEvent_sysinfo extends DaemonEvent
     DaemonEvent::__construct($config,$data);
     $this->s_Menu_Name  = _("System analysis"); 
     $this->s_Event_Name = _("System analysis"); 
-    $this->s_Schedule_Action= "job_trigger_action_sysinfo";
-    $this->s_Trigger_Action = "gosa_trigger_action_sysinfo";
-    $this->s_Queued_Action  = "trigger_action_sysinfo";
+    $this->s_Action  = "trigger_action_sysinfo";
     $this->s_Menu_Image = "plugins/goto/images/sysinfo.png";
     $this->s_List_Image = "plugins/goto/images/sysinfo.png";
   }
