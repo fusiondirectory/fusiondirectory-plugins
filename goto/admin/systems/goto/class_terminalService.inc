@@ -618,7 +618,7 @@ class termservice extends plugin
     }
     $this->handle_post_events("modify");
 
-    /* Send goto reload event to gosaSupportDaemon */
+    /* Send goto reload event to supportDaemon */
     if(count($this->attrs)){
 	    $this->send_goto_reload();
     }
@@ -658,7 +658,7 @@ class termservice extends plugin
   {
     if(count($this->attrs) && class_available("DaemonEvent")){
       $events = DaemonEvent::get_event_types(SYSTEM_EVENT | HIDDEN_EVENT);
-      $o_queue = new gosaSupportDaemon();
+      $o_queue = new supportDaemon();
       if(isset($events['TRIGGERED']['DaemonEvent_goto_reload'])){
         $evt = $events['TRIGGERED']['DaemonEvent_goto_reload'];
         $macs = array();

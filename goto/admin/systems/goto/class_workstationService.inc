@@ -481,7 +481,7 @@ class workservice extends plugin
     }
     $this->handle_post_events("modify");
 
-    /* Send goto reload event to gosaSupportDaemon */
+    /* Send goto reload event to supportDaemon */
     if(count($this->attrs)){
       $this->send_goto_reload(); 
     }
@@ -550,9 +550,9 @@ class workservice extends plugin
    */
   function send_goto_reload()
   {
-    if(count($this->attrs) && class_available("gosaSupportDaemon") && class_available("DaemonEvent")){
+    if(count($this->attrs) && class_available("supportDaemon") && class_available("DaemonEvent")){
       $events = DaemonEvent::get_event_types(SYSTEM_EVENT | HIDDEN_EVENT);
-      $o_queue = new gosaSupportDaemon();
+      $o_queue = new supportDaemon();
       if(isset($events['TRIGGERED']['DaemonEvent_goto_reload'])){
         $evt = $events['TRIGGERED']['DaemonEvent_goto_reload'];
         $macs = array();

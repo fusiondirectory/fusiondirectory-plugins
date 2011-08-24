@@ -914,52 +914,49 @@ class workstartup extends plugin
     /* Check if LDAP server has changed */
     if ((isset($this->attrs['gotoLdapServer']) && class_available("DaemonEvent")) || $this->gotoLdap_inherit){
       $events = DaemonEvent::get_event_types(SYSTEM_EVENT | HIDDEN_EVENT);
-      $o_queue = new gosaSupportDaemon();
-      if($o_queue->is_configured()){
-
-        if(isset($events['TRIGGERED']['DaemonEvent_reload_ldap_config'])){
-          $evt = $events['TRIGGERED']['DaemonEvent_reload_ldap_config'];
-          $macs = array();
+      $o_queue = new supportDaemon();
+      if(isset($events['TRIGGERED']['DaemonEvent_reload_ldap_config'])){
+        $evt = $events['TRIGGERED']['DaemonEvent_reload_ldap_config'];
+        $macs = array();
+    
+        /* Get list of macAddresses 
+         */
+        if(isset($this->parent->by_object['ogroup'])){
         
-          /* Get list of macAddresses 
+          /* If we are an object group, add all member macs 
            */
-          if(isset($this->parent->by_object['ogroup'])){
-          
-            /* If we are an object group, add all member macs 
-             */
-            $p = $this->parent->by_object['ogroup'];
-            foreach($p->memberList as $dn => $obj){
-              if(isset($p->objcache[$dn]['macAddress']) && !empty($p->objcache[$dn]['macAddress'])){
-                $macs[] = $p->objcache[$dn]['macAddress'];
-              }
+          $p = $this->parent->by_object['ogroup'];
+          foreach($p->memberList as $dn => $obj){
+            if(isset($p->objcache[$dn]['macAddress']) && !empty($p->objcache[$dn]['macAddress'])){
+              $macs[] = $p->objcache[$dn]['macAddress'];
             }
-          }elseif(isset($this->parent->by_object['workgeneric']->netConfigDNS->macAddress)){
-
-            /* We are a workstation. Add current mac.
-             */
-            $mac = $this->parent->by_object['workgeneric']->netConfigDNS->macAddress;
-            if(!empty($mac)){
-              $macs[] = $mac;
-            }          
-          }elseif(isset($this->parent->by_object['servgeneric']->netConfigDNS->macAddress)){
-
-            /* We are a server. Add current mac.
-             */
-            $mac = $this->parent->by_object['servgeneric']->netConfigDNS->macAddress;
-            if(!empty($mac)){
-              $macs[] = $mac;
-            }          
           }
+        }elseif(isset($this->parent->by_object['workgeneric']->netConfigDNS->macAddress)){
 
-          /* Trigger event for all member objects 
+          /* We are a workstation. Add current mac.
            */
-          foreach($macs as $mac){
-            $tmp = new $evt['CLASS_NAME']($this->config);
-            $tmp->set_type(TRIGGERED_EVENT);
-            $tmp->add_targets(array($mac));
-            if(!$o_queue->append($tmp)){
-              msg_dialog::display(_("Service infrastructure"),msgPool::siError($o_queue->get_error()),ERROR_DIALOG);
-            }
+          $mac = $this->parent->by_object['workgeneric']->netConfigDNS->macAddress;
+          if(!empty($mac)){
+            $macs[] = $mac;
+          }          
+        }elseif(isset($this->parent->by_object['servgeneric']->netConfigDNS->macAddress)){
+
+          /* We are a server. Add current mac.
+           */
+          $mac = $this->parent->by_object['servgeneric']->netConfigDNS->macAddress;
+          if(!empty($mac)){
+            $macs[] = $mac;
+          }          
+        }
+
+        /* Trigger event for all member objects 
+         */
+        foreach($macs as $mac){
+          $tmp = new $evt['CLASS_NAME']($this->config);
+          $tmp->set_type(TRIGGERED_EVENT);
+          $tmp->add_targets(array($mac));
+          if(!$o_queue->append($tmp)){
+            msg_dialog::display(_("Service infrastructure"),msgPool::siError($o_queue->get_error()),ERROR_DIALOG);
           }
         }
       }
@@ -1084,7 +1081,7 @@ class workstartup extends plugin
      */
     if($force || !isset($this->cache['SERVERS'])){
 
-      $o_queue = new gosaSupportDaemon();
+      $o_queue = new supportDaemon();
       $tmp = $o_queue->FAI_get_server();
       if($o_queue->is_error()){
         msg_dialog::display(_("Service infrastructure"),msgPool::siError($o_queue->get_error()),ERROR_DIALOG);
@@ -1143,7 +1140,7 @@ class workstartup extends plugin
 
       /* Get the list of available servers and their releases.
        */
-      $o_queue = new gosaSupportDaemon();
+      $o_queue = new supportDaemon();
       $tmp = $o_queue->FAI_get_classes($release);
 
       $this->cache['CLASSES'][$release] = array();
@@ -1204,7 +1201,7 @@ class workstartup extends plugin
     if(!isset($this->cache['KERNELS'])) $this->cache['KERNELS'] = array();
 
     if($force || !isset($this->cache['KERNELS'][$release])){
-      $o_queue = new gosaSupportDaemon();
+      $o_queue = new supportDaemon();
       $tmp = $o_queue->FAI_get_kernels($release);
       $this->cache['KERNELS'][$release] = array();
       foreach($this->gotoBootKernels as $name => $default){

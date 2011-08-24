@@ -206,14 +206,14 @@ class termgeneric extends plugin
       $action = $_POST['saction'];
 
       /* Check if we have an DaemonEvent for this action */
-      if(class_available("gosaSupportDaemon") && class_available("DaemonEvent_".$action)){
+      if(class_available("supportDaemon") && class_available("DaemonEvent_".$action)){
         $events = DaemonEvent::get_event_types(SYSTEM_EVENT | HIDDEN_EVENT);
         if(isset($events['TRIGGERED']["DaemonEvent_".$action])){
           $evt = $events['TRIGGERED']["DaemonEvent_".$action];
           $tmp = new $evt['CLASS_NAME']($this->config);
           $tmp->add_targets(array($this->netConfigDNS->macAddress));
           $tmp->set_type(TRIGGERED_EVENT);
-          $o_queue = new gosaSupportDaemon();
+          $o_queue = new supportDaemon();
           if(!$o_queue->append($tmp)){
             msg_dialog::display(_("Service infrastructure"),msgPool::siError($o_queue->get_error()),ERROR_DIALOG);
           }
@@ -261,7 +261,7 @@ class termgeneric extends plugin
     $smarty->assign("inheritTimeServer",$this->inheritTimeServer);
 
     /* Check if terminal is online */
-    if (class_available("gosaSupportDaemon") && gosaSupportDaemon::ping($this->netConfigDNS->macAddress)){
+    if (class_available("supportDaemon") && supportDaemon::ping($this->netConfigDNS->macAddress)){
       $smarty->assign("actions", array( "halt" => _("Switch off"), 
                                         "reboot" => _("Reboot"),
                                         #"memcheck" => _("Memory test"),
@@ -377,8 +377,8 @@ class termgeneric extends plugin
 
       /* Clean queue form entries with this mac 
        */
-      if(class_available("gosaSupportDaemon") && tests::is_mac($this->netConfigDNS->orig_macAddress)){
-        $q = new gosaSupportDaemon();
+      if(class_available("supportDaemon") && tests::is_mac($this->netConfigDNS->orig_macAddress)){
+        $q = new supportDaemon();
         $q->clean_queue_from_mac($this->netConfigDNS->orig_macAddress);
       }
     }
@@ -624,7 +624,7 @@ class termgeneric extends plugin
      */
     if ($activate && class_available("DaemonEvent")){
       $events = DaemonEvent::get_event_types(SYSTEM_EVENT | HIDDEN_EVENT);
-      $o_queue = new gosaSupportDaemon();
+      $o_queue = new supportDaemon();
       if(isset($events['TRIGGERED']['DaemonEvent_installation_activation'])){
         $evt = $events['TRIGGERED']['DaemonEvent_installation_activation'];
         $tmp = new $evt['CLASS_NAME']($this->config);
