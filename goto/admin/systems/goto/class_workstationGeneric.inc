@@ -70,8 +70,8 @@ class workgeneric extends plugin
       "ghGfxAdapter", "ghSoundAdapter", "gotoLastUser", "l","FAIscript");
   var $objectclasses= array("top", "gotoWorkstation", "GOhard");
 
-  var $validActions   = array("reboot" => "", "localboot" => "", "halt" => "", "update" => "", "reinstall" => "",
-                            "rescan" => "", "wakeup" => "", "memcheck" => "", "sysinfo" => "");
+  var $validActions   = array("reboot" => 1, "localboot" => 1, "halt" => 1, "update" => 1, "reinstall" => 1,
+                            "rescan" => 1, "wakeup" => 1, "memcheck" => 1, "sysinfo" => 1);
   
   var $fai_activated = FALSE;
 
@@ -219,7 +219,7 @@ class workgeneric extends plugin
       }
     }
 
-    if ((isset($_POST['action'])) && ($this->acl_is_writeable("FAIstate")) && isset($this->validActions[$_POST['saction']]) ){
+    if ((isset($_POST['saction'])) && ($this->acl_is_writeable("FAIstate")) && isset($this->validActions[$_POST['saction']]) ){
       $action= $_POST['saction'];
 
       /* Check if we have an DaemonEvent for this action */ 

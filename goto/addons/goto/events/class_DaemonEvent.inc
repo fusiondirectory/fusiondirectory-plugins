@@ -97,7 +97,7 @@ class DaemonEvent
     $this->data   = $data;
     $this->config = $config;
     timezone::get_default_timezone();
-    $this->timestamp = time();
+    $this->timestamp = 0;
 
     /* Load values from given data */
     if(count($data)){
@@ -174,6 +174,7 @@ class DaemonEvent
    */
   public function get_time_select()
   {
+    timezone::get_default_timezone();
     $this->time_select_used = TRUE;
 
     $smarty = get_smarty();
@@ -285,6 +286,7 @@ class DaemonEvent
    */
   public function save_object()
   {
+    timezone::get_default_timezone();
     if(isset($_POST['open_target_list'])){
       $this->target_add_list_used =TRUE;
     }
@@ -349,6 +351,7 @@ class DaemonEvent
    */
   public function _event_to_timestamp($str)
   {
+    timezone::get_default_timezone();
     return(strtotime($str));
   }
 
@@ -360,6 +363,7 @@ class DaemonEvent
    */
   public function _timestamp_to_event($stamp)
   {
+    timezone::get_default_timezone();
     return(date("YmdHis",$stamp));
   }
 
@@ -551,6 +555,15 @@ class DaemonEvent
   public function set_timestamp($stamp) 
   {
     $this->timestamp = $stamp;
+  }
+  
+  /*! \brief set timestamp to actual time
+      @param Array A List of all target that should be added.
+   */
+  public function set_timestamp_now() 
+  {
+    timezone::get_default_timezone();
+    $this->timestamp = time();
   }
 
 

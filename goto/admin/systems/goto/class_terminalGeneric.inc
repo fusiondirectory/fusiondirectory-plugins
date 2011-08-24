@@ -68,7 +68,7 @@ class termgeneric extends plugin
       "ghGfxAdapter", "ghSoundAdapter", "gotoLastUser");
   var $objectclasses= array("top", "gotoTerminal", "GOhard");
 
-  var $validActions   = array("reboot" => "", "rescan" => "", "wake" => "", "memcheck" => "", "sysinfo" => "");
+  var $validActions   = array("reboot" => 1, "rescan" => 1, "wake" => 1, "memcheck" => 1, "sysinfo" => 1);
 
   var $fai_activated = FALSE;
   var $view_logged = FALSE;
@@ -202,7 +202,7 @@ class termgeneric extends plugin
       $this->is_account= !$this->is_account;
     }
 
-    if (isset($_POST['action']) && $this->acl_is_writeable("FAIstate") && isset($this->validActions[$_POST['saction']])){
+    if (isset($_POST['saction']) && $this->acl_is_writeable("FAIstate") && isset($this->validActions[$_POST['saction']])){
       $action = $_POST['saction'];
 
       /* Check if we have an DaemonEvent for this action */

@@ -44,8 +44,10 @@ class servgeneric extends plugin
   var $netConfigDNS;
   var $modes = array();
   var $ui   ;
+/*
   var $validActions   = array("reboot" => "", "update" => "", "localboot" => "", "reinstall" => "", "rescan" => "",
                             "wakeup" => "", "memcheck" => "", "sysinfo" => "");
+*/
 
   var $fai_activated  =FALSE;
   var $view_logged = FALSE;
@@ -154,7 +156,7 @@ class servgeneric extends plugin
       return($display);
     }
 
-    if ((isset($_POST['action'])) && ($this->acl_is_writeable("FAIstate")) && isset($this->mapActions[$_POST['saction']]) ){
+    if ((isset($_POST['saction'])) && ($this->acl_is_writeable("FAIstate")) && isset($this->mapActions[$_POST['saction']]) ){
       $action = $_POST['saction'];
       
       /* Check if we have an DaemonEvent for this action */
@@ -196,23 +198,20 @@ class servgeneric extends plugin
     $smarty->assign("staticAddress", "");
 
     /* Assign status */
-    if (supportDaemon::ping($this->netConfigDNS->macAddress)){
-      $smarty->assign("actions", array("halt" => _("Switch off"), 
-                                       "reboot" => _("Reboot"),
-                                       "reinstall" => _("Reinstall"),
-                                       "update" => _("System update"),
-                                       "rescan" => _("Rescan hardware"),
-                                       "memcheck" => _("Memory test"),
-                                       "localboot" => _("Force localboot"),
-                                       "sysinfo"  => _("System analysis")));
+    $o_queue = new supportDaemon();
+    $actions = array(
+                    "reinstall"    => _("Reinstall"),
+                    "update"       => _("Software update"),
+                    "memcheck"     => _("Memory test")
+                    );
+    if ($o_queue->ping($this->netConfigDNS->macAddress)){
+        $actions["halt"]    = _("Switch off");
+        $actions["reboot"]  = _("Reboot");
+        $actions["rescan"]  = _("Rescan hardware");
     } else {
-      $smarty->assign("actions", array("wakeup" => _("Wake up"),
-                                       "reinstall" => _("Reinstall"),
-                                       "update" => _("System update"),
-                                       "memcheck" => _("Memory test"),
-                                       "localboot" => _("Force localboot"),
-                                       "sysinfo"  => _("System analysis")));
+        $actions["wakeup"]  = _("Wake up");
     }
+    $smarty->assign("actions", $actions);
 
     /* Show main page */
     $smarty->assign("fai_activated",$this->fai_activated);

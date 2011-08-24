@@ -51,7 +51,7 @@ class gotomasses extends management
     /* Get tags that will be used in queue searches */
     $this->event_tags = array("none");
     foreach($this->events['SCHEDULED'] as $evt){
-      $this->event_tags[] = $evt['s_Queued_Action'];
+      $this->event_tags[] = $evt['s_Action'];
     }
 
     // Build filter
@@ -101,10 +101,11 @@ class gotomasses extends management
       if(isset($this->events['BY_CLASS'][$type])){
         $e_data = $this->events['BY_CLASS'][$type];
         $this->dialogObject = new $e_data['CLASS_NAME']($this->config);
+        $this->dialogObject->set_timestamp_now();
       }
     }
   }
-
+  
   function importEvents()
   {
     $this->dialogObject = new goto_import_file($this->config,$this);
@@ -170,7 +171,7 @@ class gotomasses extends management
   {
 
     $status     = $status[0];
-    $mac = $mac[0];
+    $mac        = $mac[0];
     $headertag  = $headertag[0];
     $error      = $error[0];
     $progress   = $progress[0];
@@ -281,6 +282,7 @@ class gotomasses extends management
   {
     if($this->acl_is_removeable("")){
       timezone::get_default_timezone();
+/*
       foreach($this->ids_to_remove as $id){
         $entry = $this->o_queue->get_entries_by_id(array($id));
         if(isset($entry['ANSWER1'])){
@@ -297,6 +299,7 @@ class gotomasses extends management
           }
         }
       }
+*/
       $this->o_queue->remove_entries($this->ids_to_remove);
       $this->save();
     }
@@ -389,7 +392,7 @@ class gotomasses extends management
             $headpage = $this->getHeadpage();
             $tmp = $headpage->getEntry($id);
             $entry = $tmp['EVENT'];
-            msg_dialog::display(_("Error"),$entry['ERROR']);
+            msg_dialog::display(_("Error detail"),$entry['ERROR']);
         }
     }
 
