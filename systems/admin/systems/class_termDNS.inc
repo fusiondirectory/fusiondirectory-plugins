@@ -301,8 +301,8 @@ class termDNS extends plugin
  
     /* Check for autonet button */
     if (isset($_POST['autonet']) && ($this->acl_is_writeable("ipHostNumber") || $this->acl_is_writeable("macAddress"))){
-        if(class_available("gosaSupportDaemon")){
-            $d= new gosaSupportDaemon(TRUE, 0.5);
+        if(class_available("supportDaemon")){
+            $d= new supportDaemon(TRUE, 0.5);
             $res= $d->_send("<xml><header>gosa_network_completition</header>".
                     "<source>GOSA</source><target>GOSA</target><hostname>".$this->cn."</hostname></xml>", TRUE);
             if (isset($res['XML']['IP']) && $this->acl_is_writeable("ipHostNumber")){

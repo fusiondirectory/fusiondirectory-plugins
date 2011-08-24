@@ -104,16 +104,10 @@ class servgeneric extends plugin
     }
 
     /* Check if this host is currently in installation process*/
-    if($this->dn != "new" && class_available("gosaSupportDaemon") && class_available("DaemonEvent")){
-      $o = new gosaSupportDaemon();
+    if($this->dn != "new" && class_available("supportDaemon") && class_available("DaemonEvent")){
+      $o = new supportDaemon();
       $e_types = DaemonEvent::get_event_types(USER_EVENT | SYSTEM_EVENT | HIDDEN_EVENT);
-      $evts = $o->get_entries_by_mac(array($this->netConfigDNS->macAddress));
-      foreach($evts as $evt){
-        if(isset($e_types['QUEUED'][$evt['HEADERTAG']]) && $evt['STATUS'] == "processing" && 
-            $e_types['QUEUED'][$evt['HEADERTAG']] == "DaemonEvent_reinstall"){
-          $this->currently_installing =TRUE;
-        }
-      }
+      $this->currently_installing = $o->is_currently_installing($this->netConfigDNS->macAddress);
     }
        
     /* Save dn for later references */
@@ -164,14 +158,14 @@ class servgeneric extends plugin
       $action = $_POST['saction'];
       
       /* Check if we have an DaemonEvent for this action */
-      if(class_available("gosaSupportDaemon") && class_available("DaemonEvent")){
+      if(class_available("supportDaemon") && class_available("DaemonEvent")){
         $events = DaemonEvent::get_event_types(SYSTEM_EVENT | HIDDEN_EVENT);
         if(isset($events['TRIGGERED']["DaemonEvent_".$action])){
           $evt = $events['TRIGGERED']["DaemonEvent_".$action];
           $tmp = new $evt['CLASS_NAME']($this->config);
           $tmp->add_targets(array($this->netConfigDNS->macAddress));
           $tmp->set_type(TRIGGERED_EVENT);
-          $o_queue = new gosaSupportDaemon();
+          $o_queue = new supportDaemon();
           if(!$o_queue->append($tmp)){
             msg_dialog::display(_("Service infrastructure"),msgPool::siError($o_queue->get_error()),ERROR_DIALOG);
           }
@@ -202,10 +196,11 @@ class servgeneric extends plugin
     $smarty->assign("staticAddress", "");
 
     /* Assign status */
-    if (gosaSupportDaemon::ping($this->netConfigDNS->macAddress)){
-      $smarty->assign("actions", array("halt" => _("Switch off"), "reboot" => _("Reboot"),
-                                       "update" => _("System update"),
+    if (supportDaemon::ping($this->netConfigDNS->macAddress)){
+      $smarty->assign("actions", array("halt" => _("Switch off"), 
+                                       "reboot" => _("Reboot"),
                                        "reinstall" => _("Reinstall"),
+                                       "update" => _("System update"),
                                        "rescan" => _("Rescan hardware"),
                                        "memcheck" => _("Memory test"),
                                        "localboot" => _("Force localboot"),
@@ -273,8 +268,8 @@ class servgeneric extends plugin
 
     /* Clean queue form entries with this mac 
      */
-    if(class_available("gosaSupportDaemon") && tests::is_mac($this->netConfigDNS->orig_macAddress)){
-      $q = new gosaSupportDaemon();
+    if(class_available("supportDaemon") && tests::is_mac($this->netConfigDNS->orig_macAddress)){
+      $q = new supportDaemon();
       $q->clean_queue_from_mac($this->netConfigDNS->orig_macAddress);
     }
     $this->handle_post_events("remove",array("macAddress" => $this->netConfigDNS->macAddress,"ipHostNumber" => $this->netConfigDNS->ipHostNumber));
@@ -426,12 +421,12 @@ class servgeneric extends plugin
     /* Optionally execute a command after we're done */
     $this->handle_post_events($mode,array("macAddress" => $this->netConfigDNS->macAddress,"ipHostNumber" => $this->netConfigDNS->ipHostNumber));
 
-    if($activate && class_available("gosaSupportDaemon") && class_available("DaemonEvent")){
+    if($activate && class_available("supportDaemon") && class_available("DaemonEvent")){
 
       /* Send installation activation 
        */
       $events = DaemonEvent::get_event_types(SYSTEM_EVENT | HIDDEN_EVENT);
-      $o_queue = new gosaSupportDaemon();
+      $o_queue = new supportDaemon();
       if(isset($events['TRIGGERED']['DaemonEvent_installation_activation'])){
         $evt = $events['TRIGGERED']['DaemonEvent_installation_activation'];
         $tmp = new $evt['CLASS_NAME']($this->config);

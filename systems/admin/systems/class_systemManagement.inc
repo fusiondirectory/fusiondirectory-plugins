@@ -100,7 +100,7 @@ class systemManagement extends management
     $filter->setConverter('INCOMING', 'systemManagement::incomingFilterConverter');
 
     // Register Daemon Events
-    if(class_available("DaemonEvent") && class_available("gosaSupportDaemon")){
+    if(class_available("DaemonEvent") && class_available("supportDaemon")){
       $events = DaemonEvent::get_event_types(SYSTEM_EVENT | HIDDEN_EVENT);
       foreach($events['TRIGGERED'] as $name => $data){
         $this->registerAction("T_".$name,"handleEvent");
@@ -135,9 +135,9 @@ class systemManagement extends management
     }
 
     // Check if we are able to communicate with GOto-si daemon
-    if(class_available("gosaSupportDaemon")){
-      $o = new gosaSupportDaemon();
-      $this->si_active = $o->connect() && class_available("DaemonEvent");
+    if(class_available("supportDaemon")){
+      $o = new supportDaemon();
+      $this->si_active = $o->is_available() && class_available("DaemonEvent");
     }
 
     // Check if we are able to communicate with GOto-si daemon
@@ -460,7 +460,7 @@ class systemManagement extends management
       $ldap = $this->config->get_ldap_link();
       $tD = $this->getObjectDefinitions();
       $events = DaemonEvent::get_event_types(SYSTEM_EVENT);
-      $o_queue = new gosaSupportDaemon();
+      $o_queue = new supportDaemon();
       foreach($target as $dn){
         $type = $headpage->getType($dn);
         if($tD[$type]['sendEvents']){
@@ -476,17 +476,11 @@ class systemManagement extends management
        */
       if($triggered && in_array($event,array("DaemonEvent_reinstall","DaemonEvent_update"))){
         foreach($mac as $key => $mac_address){
-          foreach($o_queue->get_entries_by_mac(array($mac_address)) as $entry){
-            $entry['STATUS'] = strtoupper($entry['STATUS']);
-            if($entry['STATUS'] == "PROCESSING" &&
-                isset($events['QUEUED'][$entry['HEADERTAG']]) &&
-                in_array($events['QUEUED'][$entry['HEADERTAG']],array("DaemonEvent_reinstall","DaemonEvent_update"))){
-              unset($mac[$key]);
+            if($o_queue->is_currently_installing($mac_address)) {
+                unset($mac[$key]);
 
-              new log("security","systems/".get_class($this),"",array(),"Skip adding 'DaemonEvent::".$type."' for mac '".$mac_address."', there is already a job in progress.");
-              break;
+                new log("security","systems/".get_class($this),"",array(),"Skip adding 'DaemonEvent::".$type."' for mac '".$mac_address."', there is already a job in progress.");
             }
-          }
         }
       }
 
@@ -527,7 +521,7 @@ class systemManagement extends management
   function saveEventDialog()
   {
       if($this->si_active){
-          $o_queue = new gosaSupportDaemon();
+          $o_queue = new supportDaemon();
           $o_queue->append($this->dialogObject);
           if($o_queue->is_error()){
               msg_dialog::display(_("Service infrastructure"),msgPool::siError($o_queue->get_error()),ERROR_DIALOG);

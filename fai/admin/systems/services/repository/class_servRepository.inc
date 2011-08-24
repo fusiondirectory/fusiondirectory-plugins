@@ -364,14 +364,14 @@ class servrepository extends goService
   {
     /* Reload FusionDirectory si FAI DB/cache
      */
-    if(class_available("DaemonEvent") && class_available("gosaSupportDaemon")){
+    if(class_available("DaemonEvent") && class_available("supportDaemon")){
       $events = DaemonEvent::get_event_types(SYSTEM_EVENT | HIDDEN_EVENT);        
       if(isset($events['TRIGGERED']['DaemonEvent_recreate_fai_server_db'])){
         $evt = $events['TRIGGERED']['DaemonEvent_recreate_fai_server_db']; 
         $tmp = new $evt['CLASS_NAME']($this->config);
         $tmp->set_type(TRIGGERED_EVENT);
         $tmp->add_targets(array("GOSA"));
-        $o_queue = new gosaSupportDaemon();
+        $o_queue = new supportDaemon();
         if(!$o_queue->append($tmp)){
           msg_dialog::display(_("Service infrastructure"),msgPool::siError($o_queue->get_error()),ERROR_DIALOG);
         }
