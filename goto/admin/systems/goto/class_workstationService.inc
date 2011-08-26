@@ -582,6 +582,7 @@ class workservice extends plugin
 
         /* Trigger event for all member objects 
          */
+/*
         if(count($macs)){
           $tmp = new $evt['CLASS_NAME']($this->config);
           $tmp->set_type(TRIGGERED_EVENT);
@@ -592,6 +593,7 @@ class workservice extends plugin
             msg_dialog::display(_("Service infrastructure"),msgPool::siError($o_queue->get_error()),ERROR_DIALOG);
           }
         }
+*/
       }
     }
   }
