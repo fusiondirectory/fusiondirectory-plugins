@@ -120,9 +120,10 @@ class gotomasses extends management
     return($mac[0]);
   }
 
-  static function filterTask($tag)
+  static function filterTask($tag,$progress)
   {
     $tag = $tag[0];
+    $progress = $progress[0];
     $str = $tag;
 
     /* Check if this event exists as Daemon class
@@ -141,6 +142,9 @@ class gotomasses extends management
       if(isset($event_type['ListImage']) && !empty($event_type['ListImage'])){
         $str = $event_type['ListImage']."&nbsp;".$str;
       }
+    }
+    if($progress) {
+        $str .= "&nbsp;(".$progress."%)";
     }
     return($str);
   }
@@ -167,14 +171,14 @@ class gotomasses extends management
   }
 
 
-  static function filterStatus($row,$status, $mac, $headertag, $error, $progress)
+  static function filterStatus($row,$status, $mac, $headertag, $error, $substatus)
   {
 
     $status     = $status[0];
     $mac        = $mac[0];
     $headertag  = $headertag[0];
     $error      = $error[0];
-    $progress   = $progress[0];
+    $substatus = $substatus[0];
 
     if($status == "waiting"){
       $status = "<img class='center' src='plugins/goto/images/clock.png' alt=''>&nbsp;"._("Waiting");
@@ -190,26 +194,10 @@ class gotomasses extends management
     /* Special handling for all entries that have
        STATUS == "processing" && PROGRESS == NUMERIC
      */
-    if($status == "processing" && $progress){
-      $percent = $progress;
-
-      /* Show activation? */
-      if ($percent == "goto-activation"){
-        $status = "<img class='center' src='images/lists/off.png' alt=''>&nbsp;"._("Locked");
-
-        /* Show hardware detect? */
-      } elseif ($percent == "goto-hardware-detection") {
-        $status = "<img class='center' src='plugins/goto/images/hardware.png' alt=''>&nbsp;"._("Detection");
-
-        /* Real percent */
-      } else {
-        if (preg_match('/install/', $headertag)){
-          $status = "<img src='progress.php?x=80&y=13&p=".$progress."' alt=''
-            id='progress_".preg_replace("/:/","_",$mac)."'>";
-        } else {
-          $status = preg_replace('/ /', '&nbsp;', _("in progress"));
-        }
-      }
+    if($status == "processing" && $substatus){
+        $status = $substatus;
+    } else if ($status == "processing") {
+        $status = preg_replace('/ /', '&nbsp;', _("in progress"));
     }
     return($status);
   }

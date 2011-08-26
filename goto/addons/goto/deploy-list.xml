@@ -45,7 +45,7 @@
       <label>Task</label>
       <sortAttribute>givenName</sortAttribute>
       <sortType>string</sortType>
-      <value>%{filter:filterTask(HEADERTAG)}</value>
+      <value>%{filter:filterTask(HEADERTAG,PROGRESS)}</value>
       <export>true</export>
     </column>
 
@@ -69,7 +69,7 @@
       <label>Status</label>
       <sortAttribute>uid</sortAttribute>
       <sortType>string</sortType>
-      <value>%{filter:filterStatus(row,STATUS,MACADDRESS,HEADERTAG,ERROR,PROGRESS)}</value>
+      <value>%{filter:filterStatus(row,STATUS,MACADDRESS,HEADERTAG,ERROR,SUBSTATUS)}</value>
       <export>true</export>
     </column>
 
