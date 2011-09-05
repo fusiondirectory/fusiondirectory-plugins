@@ -27,7 +27,7 @@ class filterFAIPackages {
     $filter= preg_replace('/\*/', '', $filter);
     $pkgs = array();
     $q          = new supportDaemon();
-    $filter     = array("%$filter%");
+    $filter     = array("$filter");
     $attrs      = array("distribution", "package","version", "section", "description", "timestamp");
     $release = session::get('packageSelect_Release');
     $ret        = $q->FAI_get_packages($release,$attrs,$filter,0,200);

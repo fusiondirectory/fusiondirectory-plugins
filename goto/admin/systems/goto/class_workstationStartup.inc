@@ -93,7 +93,7 @@ class workstartup extends plugin
     plugin::plugin ($config, $dn, $parent);
 
     /* Check for si daemon */
-    $this->si_active = $this->config->get_cfg_value("gosaSupportURI") != "";
+    $this->si_active = $this->config->get_cfg_value("argonautServer") != "";
 
     /* Check object group membership */
     if(!isset($this->parent->by_object['ogroup'])){

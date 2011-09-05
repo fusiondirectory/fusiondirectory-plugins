@@ -49,7 +49,7 @@ class faiPackageConfiguration extends plugin
 
     /* Read pkg debconf info from supportDaemon
      */
-    $q = new supportDaemon();
+    $q = new supportDaemon(); // it should not ask again for the templates, it was already asked by previous dialog (or previous dialog should only ask for an "has_template" info)
     $ret = $q->FAI_get_packages($this->release,array("package","template"),array($this->obj));
     if($q->is_error()){
       msg_dialog::display(_("Service infrastructure"),msgPool::siError($q->get_error()),ERROR_DIALOG);
