@@ -69,6 +69,11 @@ class faiManagement extends management
     }
 
     $releases = $this->getReleaseList();
+    foreach ($releases as $key => $value) { // FIXME : find the good php syntax for this.
+        $this->fai_release = $key;
+        break;
+    }
+    print_r($releases);
     if(!isset($releases[$this->fai_release])){
       $this->fai_release = $this->fai_base;
     }
@@ -898,7 +903,9 @@ class faiManagement extends management
     $list = array();
     if(empty($base)){
       $base = $this->fai_base;
-      $list[$base] = "/";
+/*
+      $list[$base] = "/"; // USELESS FIXME : find where checkbox switch does something
+*/
     }
 
     $ldap = $this->config->get_ldap_link();
@@ -919,7 +926,10 @@ class faiManagement extends management
    */
   function getBranches($base = false,$prefix = "")
   {
+/*
     $ret = array("/"=>$this->fai_base);
+*/
+    $ret = array();
     $ldap = $this->config->get_ldap_link();
     if(!$base){
       $base = $this->fai_base;

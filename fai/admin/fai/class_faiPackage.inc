@@ -462,7 +462,7 @@ class faiPackage extends plugin
             src='plugins/fai/images/removal_mark.png' name='removal_package_".base64_encode($usedName)."' >";
         }
 
-        if(isset($this->list[$usedName]['TEMPLATE']) && 
+        if(isset($this->list[$usedName]['HASTEMPLATE']) && 
            !preg_match('/^freeze/', $this->FAIstate) && $this->acl_is_writeable("FAIdebconfInfo")){
           $actions.= "&nbsp;<input type='image' class='center' title='"._("Configure this package")."' 
             src='plugins/fai/images/package_configure.png' name='configure_package_".base64_encode($usedName)."' >";
@@ -577,7 +577,7 @@ class faiPackage extends plugin
 
     if(!count($this->buffer) || $force){
       $q = new supportDaemon();
-      $attrs = array("distribution", "package","version", "section", "description", "timestamp","template");
+      $attrs = array("distribution", "package","version", "section", "description", "timestamp","hastemplate");
 
       $packages = array_keys($this->usedPackages);
 

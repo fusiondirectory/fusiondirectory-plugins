@@ -155,21 +155,23 @@
 				</tr>
 			</table>
 			<h2>
-				<img class="center" alt="" align="middle" src="plugins/goto/images/fai_settings.png">&nbsp;{t}Assigned FAI classes{/t}
+				<img class="center" alt="" align="middle" src="plugins/goto/images/fai_settings.png">&nbsp;{t}Assigned FAI profile{/t}
 			</h2>
+    {if 0}
 	{render acl=$FAIclassACL}
 			{$FAIScriptlist}	
 	{/render}
-
-	{render acl=$FAIclassACL}
-			<select name="FAIclassesSel">
-				{foreach from=$FAIclasses item=val key=key}
-					<option value="{$key}">{$key}&nbsp;[{$val}]</option>
-				{/foreach}
-			</select>	
-	{/render}
 	{render acl=$FAIclassACL}
 			<input name="AddClass" value="{msgPool type=addButton}" type="submit"> 
+	{/render}
+    {/if}
+
+	{render acl=$FAIclassACL}
+			<select name="FAIclass"  onchange='document.mainform.submit()'>
+				{foreach from=$FAIprofiles item=val key=key}
+					<option value="{$val}" {if $FAIclass == $val} selected {/if}>{$val}</option>
+				{/foreach}
+			</select>	
 	{/render}
 	<!--		<input name="DelClass" value="{msgPool type=delButton}" type="submit"> -->
 			{/if}

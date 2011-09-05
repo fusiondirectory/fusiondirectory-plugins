@@ -55,8 +55,8 @@ class workstartup extends plugin
   var $orig_dn            = "";
   var $ignore_account     = TRUE;
  
-  /* FAI class selection */ 
-  var $FAIclass           = array();  // The currently selected classes 
+  /* FAI profile selection */ 
+  var $FAIclass;  // The currently selected profil
   var $FAIrelease           = "";
   var $FAIdebianMirror      = "auto";
   var $si_active            = FALSE;
@@ -65,12 +65,12 @@ class workstartup extends plugin
   var $cache              = array(); // Used as cache in fai mehtods
 
   var $FAIstatus          = "";
-  var $FAIclasses         = array();
+  var $FAIprofiles         = array();
 
   var $view_logged        = FALSE;
   
-  /* FAI class selection */
-  var $InheritedFAIclass       = array();
+  /* FAI profile selection */
+  var $InheritedFAIprofile;
   var $InheritedFAIrelease     = "";
   var $InheritedFAIdebianMirror= "auto";
 
@@ -147,19 +147,20 @@ class workstartup extends plugin
        * There is also the release type given, after first
        *  occurrence of ':'.
        */
+/*
       $this->FAIclass =array();
+*/
       if(isset($this->attrs['FAIclass'][0])){
         $tmp = explode(" ",$this->attrs['FAIclass'][0]);
         $tmp2 =array();  
 
-        foreach($tmp as $class){
-          if( ":" == $class[0] ) {
-            $this->FAIrelease = trim(substr($class, 1));
+        foreach($tmp as $profile){
+          if( ":" == $profile[0] ) {
+            $this->FAIrelease = trim(substr($profile, 1));
           }else{
-            $tmp2[$class] = $class;
+            $this->FAIclass = $profile; // FIXME
           }
         }
-        $this->FAIclass = $tmp2;
       }
     }
 
@@ -207,7 +208,7 @@ class workstartup extends plugin
      */
     if ($this->member_of_ogroup){
 
-      if(count($this->FAIclass)==0 && $this->FAIrelease == ""){
+      if(!isset($this->FAIclass) && $this->FAIrelease == ""){
         $this->FAIdebianMirror = "inherited";
       }
 
@@ -233,7 +234,7 @@ class workstartup extends plugin
 
           case 'FAIclass':
             $str = explode(":",$attrs[$name][0]);
-            $this->InheritedFAIclass    = explode(" ",trim($str[0]));
+            $this->InheritedFAIprofile  = explode(" ",trim($str[0]));
             $this->InheritedFAIrelease  = trim($str[1]);
             break;
 
@@ -251,12 +252,12 @@ class workstartup extends plugin
       /* Check if the current mirror is available 
        */
       if(!isset($this->cache['SERVERS'][$this->FAIdebianMirror])){
-        if(count($this->FAIclass)){
+        if(isset($this->FAIclass)){
           msg_dialog::display(_("Error"), sprintf(_("FAI mirror '%s' is not available - setting to mirror 'auto'!"), $this->FAIdebianMirror), ERROR_DIALOG);
         }
         $this->FAIdebianMirror = "auto";
         $this->FAIrelease = key($this->cache['SERVERS'][$this->FAIdebianMirror]);
-        $this->cache['CLASSES'] = array();
+        $this->cache['PROFILES'] = array();
         $this->update_fai_cache();
       }
   
@@ -264,11 +265,11 @@ class workstartup extends plugin
        */
       if(!isset($this->cache['SERVERS'][$this->FAIdebianMirror][$this->FAIrelease])){
         $new_release = key($this->cache['SERVERS'][$this->FAIdebianMirror]); 
-        if(count($this->FAIclass)){
+        if(isset($this->FAIclass)){
           msg_dialog::display(_("Error"), sprintf(_("FAI release '%s' is not available on mirror '%s' - setting to release '%s'!"), $this->FAIrelease, $this->FAIdebianMirror,$new_release), ERROR_DIALOG);
         }
         $this->FAIrelease = $new_release;
-        $this->cache['CLASSES'] = array();
+        $this->cache['PROFILES'] = array();
         $this->update_fai_cache();
       }
     }
@@ -283,8 +284,8 @@ class workstartup extends plugin
     $messages= plugin::check();
 
     /* If there are packages selected, but no mirror show error */   
-    if(($this->FAIdebianMirror == "none")&&(count($this->FAIclass)>0)){
-      $messages[]=_("Please select a 'FAI server' or remove the 'FAI classes'.");
+    if(($this->FAIdebianMirror == "none")&&(isset($this->FAIclass))){
+      $messages[]=_("Please select a 'FAI server' or remove the 'FAI profile'.");
     }
 
     return($messages);
@@ -321,112 +322,6 @@ class workstartup extends plugin
       }
     }
 
-    /* FAI class management */
-    if($this->fai_activated){
-      if(((isset($_POST['AddClass']))&&(isset($_POST['FAIclassesSel']))) && ($this->acl_is_writeable("FAIclass"))){
-        $found = 0 ; 
-
-        /* If this new class/profile will attach a second partition table
-         * to our list of classes, abort and show a message.
-         */
-        foreach($this->FAIclass as $name){
-          if(isset($this->FAIclassInfo[$name])){
-            foreach($this->FAIclassInfo[$name] as $atr){
-              if(isset($atr['obj'])){
-                if($atr['obj'] == "FAIpartitionTable"){
-                  $found ++ ; 
-                }
-              }
-            }
-          }
-        }
-
-        if((isset($this->FAIclassInfo[$_POST['FAIclassesSel']]['FAIpartitionTable']))&&($found>0)){
-          msg_dialog::display(_("Error"), _("There is already a profile containing a partition table in your configuration!") , ERROR_DIALOG);
-        }else{
-          $this->FAIclass[$_POST['FAIclassesSel']]=$_POST['FAIclassesSel'];
-        }
-      }
-
-      $sort = false;
-
-      /* Move one used class class one position up or down */
-      if($this->acl_is_writeable("FAIclass")){
-        foreach($_POST as $name => $val){
-
-          $sort_type = false;
-          if((preg_match("/sort_up/",$name))&&(!$sort)){
-            $sort_type = "sort_up_";
-          }
-          if((preg_match("/sort_down/",$name))&&(!$sort)){
-            $sort_type = "sort_down_";
-          }
-
-          if(($sort_type)&&(!$sort)){
-            $value = base64_decode(preg_replace("/_.*$/i","",preg_replace("/".$sort_type."/i","",$name)));
-            $sort = true;
-
-            $last = -1;
-            $change_down  = -1;
-
-            /* Create array with numeric index */ 
-            $tmp = array();
-            foreach($this->FAIclass as $class){
-              $tmp [] = $class;
-            }
-
-            /* Walk trough array */
-            foreach($tmp as $key => $faiName){
-              if($faiName == $value){
-                if($sort_type == "sort_up_"){
-                  if($last != -1){
-                    $change_down= $last;
-                  }
-                }else{
-                  if(isset($tmp[$key+1])){
-                    $change_down = $key;
-                  }
-                }
-              }
-              $last = $key;
-            }
-
-            $tmp2 = array();
-            $skip = false;    
-
-            foreach($tmp as $ky => $vl){
-
-              if($ky == $change_down){
-                $skip = $vl;
-              }else{
-                $tmp2[$vl] = $vl;
-              }
-              if(($skip != false)&&($ky != $change_down)){
-                $tmp2[$skip]  = $skip;
-                $skip =false;
-              }
-            }   
-            $this->FAIclass = $tmp2; 
-          }
-
-          if(preg_match("/fai_remove/i",$name)){
-            $value = base64_decode(preg_replace("/_.*$/i","",preg_replace("/fai_remove_/i","",$name)));
-            unset($this->FAIclass[$value]);
-          }
-        }
-      }
-
-      /* Delete selected class from our list */
-      if($this->acl_is_writeable("FAIclass")){
-        if((isset($_POST['DelClass']))&&(isset($_POST['FAIclassSel']))){
-          if(isset($this->FAIclass[$_POST['FAIclassSel']])){
-            unset($this->FAIclass[$_POST['FAIclassSel']]);
-          }
-        }
-      }
-    }// END fai handling
-
-    /* Show main page */
     $smarty= get_smarty();
 
     /* Assign ACLs to smarty */
@@ -586,7 +481,7 @@ class workstartup extends plugin
     }
 
     /* Values */
-    foreach(array("gotoBootKernel","gotoShare","FAIclasses","FAIclass","FAIdebianMirror","FAIrelease") as $val){
+    foreach(array("gotoBootKernel","gotoShare","FAIprofiles","FAIclass","FAIdebianMirror","FAIrelease") as $val){
       $smarty->assign($val, $this->$val);
     }
 
@@ -605,7 +500,7 @@ class workstartup extends plugin
       $smarty->assign("FAIservers"  , $this->cache['SERVERS']);
       $smarty->assign("FAIdebianMirror",$this->FAIdebianMirror);
       $smarty->assign("FAIrelease"  , $this->FAIrelease);
-      $smarty->assign("FAIclasses"  , $this->selectable_classes());
+      $smarty->assign("FAIprofiles"  , $this->selectable_profiles());
 
       /* Get classes for release from cache.
        * Or build cache
@@ -628,81 +523,15 @@ class workstartup extends plugin
         $str_up=$str_down=$str_remove=$str_empty;
       }
 
-      /* Get classes */
+      /* Get profile */
       if($this->FAIdebianMirror == "inherited"){
-        $tmp = $this->InheritedFAIclass;
+        $tmp = $this->InheritedFAIprofile;
       }else{
         $tmp = $this->FAIclass;
       }
 
-      /* Get invalid classes */
-      $invalid = $this->get_invalid_classes($tmp);
+      // rFIXME : remplir le menu déroulant
 
-      /* Draw every single entry */
-      $i = 1;
-      if($this->acl_is_readable("FAIclass")){
-        foreach($tmp as $class){
-
-          /* Mark invalid classes. (Not in selected release)
-           */
-          $marker = "";
-          if(in_array_ics($class,$invalid)){
-            $marker = "&nbsp;<font color='red'>("._("Not available in current setup").")</font>";
-          }
-
-          /* Create up/down priority icons  
-           * Skip this, if we have inherited the FAI classes.
-           */
-          if($this->FAIdebianMirror == "inherited"){
-            $str = "";
-          }else{
-            if($i==1){
-              $str = $str_empty.$str_down.$str_remove;
-            }elseif($i == count($this->FAIclass)){
-              $str = $str_up.$str_empty.$str_remove;
-            }else{
-              $str = $str_up.$str_down.$str_remove;
-            }
-          }
-          $i ++ ; 
-
-          /* Get Description tag 
-           *  There may be several FAI objects with the same class name, 
-           *   use the description from FAIprofile, if possible.
-           */  
-          $desc = ""; 
-
-          $objects = array(
-              "Pl"  => array("IMG"=> "plugins/fai/images/fai_partitionTable.png"),
-              "Pt"     => array("IMG"=> "plugins/fai/images/fai_packages.png"),
-              "S"          => array("IMG"=> "plugins/fai/images/fai_script.png"),
-              "V"        => array("IMG"=> "plugins/fai/images/fai_variable.png"),
-              "H"            => array("IMG"=> "plugins/fai/images/fai_hook.png"),
-              "P"         => array("IMG"=> "plugins/fai/images/fai_profile.png"),
-              "T"        => array("IMG"=> "plugins/fai/images/fai_template.png"));
-
-          if(isset($this->cache['CLASSES'][$this->FAIrelease][$class])){
-            $desc ="";
-            foreach($this->cache['CLASSES'][$this->FAIrelease][$class] as $types ){
-              if(isset($types['Abbr'])){
-                $desc.= "<img src='".$objects[$types['Abbr']]['IMG']."' class='center'> ";
-                if($types['Type'] == "FAIprofile"){
-                  break;
-                }
-              }
-            }
-          }
-          if(!empty($desc)){
-            $desc = "&nbsp;".trim($desc)."";
-          }        
-
-          $div->AddEntry(array(
-                array("string"=>$class.$marker),
-                array("string"=>$desc),
-                array("string"=>preg_replace("/\%s/",base64_encode($class),$str),"attach"=>"style='width:50px;border-right:none;'")
-                ));
-        }  
-      }// END FAI output generation 
     }// END FAI output generation 
     $smarty->assign("FAIScriptlist",$div->DrawList()); 
 
@@ -829,16 +658,11 @@ class workstartup extends plugin
     /* Skip FAI attribute handling if not necessary */
     if($this->fai_activated && !$this->si_fai_action_failed){
       if($this->FAIdebianMirror == "inherited"){
-        $this->attrs['FAIclass'] = $this->attrs['FAIrelease'] =  $this->attrs['FAIdebianMirror'] = array();
+        unset($this->attrs['FAIclass']);
+        $this->attrs['FAIrelease'] =  $this->attrs['FAIdebianMirror'] = array();
       }else{
-        foreach($this->FAIclass as $class){
-          $str .= $class." ";
-        }
-        $str = trim($str);
-        if(empty($this->attrs['FAIclass'])){
-          $this->attrs['FAIclass'] = array();
-        }else{
-          $this->attrs['FAIclass']= $str." :".$this->FAIrelease;
+        if(isset($this->attrs['FAIclass'])) {
+          $this->attrs['FAIclass']= $this->FAIclass." :".$this->FAIrelease;
         }
       }
     }
@@ -881,9 +705,9 @@ class workstartup extends plugin
       $ldap->cat($this->dn,array("FAIstate"));
       $checkFAIstate = $ldap->fetch();
 
-      /* Remove FAI objects if no FAI class is selected */ 
-      if((count($this->FAIclass)==0) && (!isset($checkFAIstate['FAIstate']))){
-        $this->attrs['FAIclass']        = array();
+      /* Remove FAI objects if no FAI profile is selected */ 
+      if((isset($this->FAIclass)) && (!isset($checkFAIstate['FAIstate']))){
+        unset($this->attrs['FAIclass']);
         $this->attrs['FAIdebianMirror'] = array();
       }
     }else{
@@ -1089,13 +913,16 @@ class workstartup extends plugin
         $this->cache = array();
         return;
       }else{
-
+        $this->cache['SERVERS'] = array();
+        echo "ENTRIES : ";
+            print_r($tmp);
+            echo "<br/>";
         foreach($tmp as $entry){
           $rel = $entry['FAI_RELEASE'];
           $this->cache['SERVERS']['auto'][$rel] = $rel;
-          $this->cache['SERVERS'][$entry['SERVER']][$rel] = $rel;
+          $this->cache['SERVERS'][$entry['URL']][$rel] = $rel;
           uksort($this->cache['SERVERS']['auto'], 'strnatcasecmp');
-          uksort($this->cache['SERVERS'][$entry['SERVER']], 'strnatcasecmp');
+          uksort($this->cache['SERVERS'][$entry['URL']], 'strnatcasecmp');
         }
       }
     }
@@ -1136,24 +963,21 @@ class workstartup extends plugin
       $release = $this->FAIrelease;
     }
 
-    if($force || !isset($this->cache['CLASSES'][$release]) && $release != ""){
+    if($force || !isset($this->cache['PROFILES'][$release]) && $release != ""){
 
       /* Get the list of available servers and their releases.
        */
       $o_queue = new supportDaemon();
-      $tmp = $o_queue->FAI_get_classes($release);
+      $tmp = $o_queue->FAI_get_profiles($release);
 
-      $this->cache['CLASSES'][$release] = array();
+      $this->cache['PROFILES'][$release] = array();
       if($o_queue->is_error()){
         msg_dialog::display(_("Service infrastructure"),msgPool::siError($o_queue->get_error()),ERROR_DIALOG);
         $this->si_fai_action_failed = TRUE;
         $this->cache=array();
         return;
       }else{
-        foreach($tmp as $entry){
-          $class = $entry['CLASS'];
-          $this->cache['CLASSES'][$release][$class][] = $this->analyse_fai_object($entry); 
-        }
+        $this->cache['PROFILES'][$release] = $tmp; 
       }
 
       /* Add object caught from external hook
@@ -1177,11 +1001,7 @@ class workstartup extends plugin
               if($release_c == $release){
                 $this->cache['SERVERS'][$url][$release_c]=$release_c;
                 $this->cache['SERVERS']['auto'][$release_c]=$release_c; 
-                foreach ($classes_c as $class){
-                  if ($class != ""){
-                    $this->cache['CLASSES'][$release_c][$class]= array();
-                  }
-                }
+                $this->cache['PROFILES'] = array(); // FIXME : might not do what we want
               }
             }
           }
@@ -1219,21 +1039,21 @@ class workstartup extends plugin
   /* This function return an array containing all 
    *  invalid classes for the selected server/release
    */
+/*
   function get_invalid_classes($classes)
   {
     $this->update_fai_cache();
     if($this->FAIdebianMirror == "inherited" && isset($this->cache['CLASSES'][$this->InheritedFAIrelease])){
-      $release_classes = $this->cache['CLASSES'][$this->InheritedFAIrelease];
-    }elseif(isset($this->cache['CLASSES'][$this->FAIrelease])){
-      $release_classes = $this->cache['CLASSES'][$this->FAIrelease];
+      $release_profiles = $this->cache['PROFILES'][$this->InheritedFAIrelease];
+    }elseif(isset($this->cache['PROFILES'][$this->FAIrelease])){
+      $release_profiles = $this->cache['PROFILES'][$this->FAIrelease];
     }else{
-      $release_classes = array();
+      $release_profiles = array();
     }
 
 
-    /* Detect all classes that are not valid 
-     *  for the selected release 
-     */
+    // Detect all classes that are not valid 
+    //for the selected release 
     $NA = array();
     foreach($classes as $class){
       if(!isset($release_classes[$class])){
@@ -1242,22 +1062,25 @@ class workstartup extends plugin
     }
     return($NA);
   }  
+*/
 
   
-  /* Get all selectable classes for the ui select box
+  /* Get all selectable profiles for the ui select box
    */
-  function selectable_classes()
+  function selectable_profiles()
   {
     $this->update_fai_cache();
 
-    if($this->FAIdebianMirror == "inherited" && isset($this->cache['CLASSES'][$this->InheritedFAIrelease])){
-      $classes = $this->cache['CLASSES'][$this->InheritedFAIrelease];
-    }elseif(isset($this->cache['CLASSES'][$this->FAIrelease])){
-      $classes = $this->cache['CLASSES'][$this->FAIrelease];
-    }else{
-      $classes = array();
+    if($this->FAIdebianMirror == "inherited" && isset($this->cache['PROFILES'][$this->InheritedFAIrelease])){
+      $profiles = $this->cache['PROFILES'][$this->InheritedFAIrelease];
+    } elseif(isset($this->cache['PROFILES'][$this->FAIrelease])) {
+        print_r($this->cache['PROFILES']);
+      $profiles = $this->cache['PROFILES'][$this->FAIrelease];
+    } else {
+      $profiles = array();
     }
 
+/*
     $Abbr ="";
     $ret= array();
     foreach($classes as $class_name => $class_types){
@@ -1272,13 +1095,15 @@ class workstartup extends plugin
       }
     }
     uksort($ret, 'strnatcasecmp');
-    return($ret);
+*/
+    return($profiles);
   }
 
 
   /* Analyse FAI object and return an array with usefull informations like 
    *  FAIobject type.
    */
+/*
   function analyse_fai_object($attr)
   {
     $tmp = array();
@@ -1308,14 +1133,15 @@ class workstartup extends plugin
         $tmp["Type"]= 'FAIpartitionTable'; 
         $tmp["Abbr"]= 'Pt'; 
         break;
-      case 'FAIprofile':
-        $tmp["Type"]= 'FAIprofile'; 
+      case 'FAIclass':
+        $tmp["Type"]= 'FAIclass'; 
         $tmp["Abbr"]= 'P'; 
         break;
       default: trigger_error("Unknown FAI object type!");;
     }
     return($tmp);
   }
+*/
 
 
   /* Return repository hook output, if possible.
