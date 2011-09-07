@@ -16,20 +16,38 @@
 					</td>
 				</tr>
 				<tr>
-					<td>{t}Release{/t}
+					<td><label for="Release">{t}Release{/t}</label>
 					</td>
 					<td>
 {render acl=$ReleaseACL}
-						<input type="text" value="{$Release}" name="Release">
+						<input type="text" value="{$Release}" name="Release" id="Release">
 {/render}
 					</td>
 				</tr>
 				<tr>
-					<td>{t}URL{/t}
+					<td><label for="Url">{t}URL{/t}</label>
 					</td>
 					<td>
 {render acl=$UrlACL}
-						<input type="text" size="40" value="{$Url}" name="Url">
+						<input type="text" size="40" value="{$Url}" name="Url" id="Url">
+{/render}
+					</td>
+				</tr>
+				<tr>
+					<td><label for="Install">{t}Installation mirror{/t}</label>
+					</td>
+					<td>
+{render acl=$UrlACL}
+						<input type="checkbox" {if $Install=="install"}checked{/if} name="Install" id="Install">
+{/render}
+					</td>
+				</tr>
+				<tr>
+					<td><label for="Local">{t}Local mirror{/t}</label>
+					</td>
+					<td>
+{render acl=$UrlACL}
+						<input type="checkbox" {if $Local=="local"}checked{/if} name="Local" id="Local">
 {/render}
 					</td>
 				</tr>

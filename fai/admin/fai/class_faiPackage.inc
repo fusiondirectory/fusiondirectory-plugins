@@ -206,7 +206,7 @@ class faiPackage extends plugin
 
       /* Assemble sections */
       $repos= $this->getServerInfos();
-      if(isset($repos[$this->FAIdebianRelease])){
+      if(isset($repos[$this->FAIdebianRelease])) {
         $this->FAIdebianSection= $repos[$this->FAIdebianRelease];
         $this->FAIdebianSection= array_unique($this->FAIdebianSection);
       }
@@ -777,23 +777,10 @@ class faiPackage extends plugin
   function getServerInfos()
   {
     $ret = array();
-    $ldap = $this->config->get_ldap_link();
-    $ldap->cd($this->config->current['BASE']);
-    $ldap->search("(objectClass=FAIrepositoryServer)",array("*"));
-    while($attrs = $ldap->fetch()){
-      if(isset($attrs['FAIrepository'])){
-        for($i =0 ; $i < $attrs['FAIrepository']['count']; $i++){
-          $obj = $attrs['FAIrepository'][$i];
-          $tmp = explode("|",$obj);
-          if(count($tmp)==4){
-            foreach(explode(",",$tmp[3]) as $sec){
-              if(!empty($sec)){
-                $ret[$tmp[2]][] =  $sec;
-              }
-            }
-          }
-        }
-      }
+    $o_queue = new supportDaemon();
+    $servs = $o_queue->FAI_get_server();
+    foreach ($servs as $serv) {
+        $ret[$serv["FAI_RELEASE"]] = $serv["SECTIONS"];
     }
     return($ret);
   }

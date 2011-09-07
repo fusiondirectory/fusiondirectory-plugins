@@ -12,18 +12,38 @@
     <defaultSortColumn>0</defaultSortColumn>
 
     <objectType>
-      <label>FAI</label>
-      <objectClass>FAIclass</objectClass>
+      <label>profile</label>
+      <objectClass>FAIprofile</objectClass>
       <category>fai</category>
-      <class>fai</class>
-      <image>plugins/fai/images/script.png</image>
+      <class>profile</class>
+      <image>plugins/fai/images/fai_profile.png</image>
+    </objectType>
+    
+    <objectType>
+      <label>packagelist</label>
+      <objectClass>FAIpackageList</objectClass>
+      <category>fai</category>
+      <class>packageList</class>
+      <image>plugins/fai/images/fai_packages.png</image>
+    </objectType>
+    
+    <objectType>
+      <label>variable</label>
+      <objectClass>FAIvariable</objectClass>
+      <category>fai</category>
+      <class>variable</class>
+      <image>plugins/fai/images/fai_variable.png</image>
     </objectType>
 
   </definition>
 
   <table>
-    <layout>||250px|170px;r|</layout>
+    <layout>|0px||250px|170px;r|</layout>
 
+    <column>
+      <value>%{filter:objectTypes(dn,TYPES)}</value>
+    </column>
+    
     <column>
       <label>Name</label>
       <sortAttribute>cn</sortAttribute>

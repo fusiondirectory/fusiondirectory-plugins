@@ -7,6 +7,11 @@
 <div class="contentboxb">
   <div style="border-top:1px solid #AAAAAA"></div>
 
+  {if 0}
+  <input class="filter_checkbox" id="filter_check_all" name="filter_check_all" onclick="chk_set_all_by_class('filter_checkbox',document.getElementById('filter_check_all').checked);document.mainform.submit();" type="checkbox">
+  <hr/>
+  {/if}
+
   {if $USE_goServer}
   {$SERVER}&nbsp;{t}Show servers{/t}<br>
   {/if}

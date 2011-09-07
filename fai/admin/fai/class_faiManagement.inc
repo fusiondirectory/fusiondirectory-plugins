@@ -104,6 +104,7 @@ class faiManagement extends management
     $headpage->setFilter($filter);
     $headpage->setBase($this->fai_release);
     $headpage->registerElementFilter("filterProperties", "faiManagement::filterProperties");
+    $headpage->registerElementFilter("objectTypes", "listing::filterObjectTypes");
 
     // Add copy&paste and snapshot handler.
     if ($this->config->boolValueIsTrue("main", "copyPaste")){
@@ -1049,7 +1050,7 @@ class faiManagement extends management
       if(in_array($type, $classes)){
         $icon_list .= "<input type='image' src='".$type_data['IMG']."' title='".$type_data['NAME']."'
           alt='".$type_data['KZL']."' class='center' name='edit_".$row."_".$type."'>\n";
-      }else{
+      } else {
         $icon_list .= "<img src='images/empty.png' alt=' ' class='center'>\n";
       }
     }

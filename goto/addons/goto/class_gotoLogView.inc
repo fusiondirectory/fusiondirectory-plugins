@@ -191,7 +191,7 @@ class gotoLogView extends plugin
   function get_log($mac,$date,$file)
   {
     $res = $this->o_queue->get_log_file($mac,$date,$file);
-    if($this->o_queue->is_configured() && $this->o_queue->is_error()){
+    if($this->o_queue->is_error()) {
       msg_dialog::display(_("Error"), $this->o_queue->get_error(), ERROR_DIALOG);
     }
     $res = nl2br(htmlentities($res));

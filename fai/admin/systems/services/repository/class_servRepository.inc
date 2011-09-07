@@ -60,40 +60,51 @@ class servrepository extends goService
     if(isset($this->attrs['FAIrepository'])){
       for($i = 0; $i < $this->attrs['FAIrepository']['count']; $i++){
         $tmp = explode("|",$this->attrs['FAIrepository'][$i]);
-        $tmp2 = array();  
-        $tmp3 = array();   
+        $repository = array();  
 
-        if(isset($tmp[1])){
-          $tmp2['ParentServer'] = $tmp[1];
-          if(empty($tmp[1])){
-            $tmp2['ParentServer'] = "none";
+        if(isset($tmp[1])) {
+          $repository['ParentServer'] = $tmp[1];
+          if(empty($tmp[1])) {
+            $repository['ParentServer'] = "none";
           }
-        }else{
-          $tmp2['ParentServer'] = "none";
+        } else {
+          $repository['ParentServer'] = "none";
         }
 
-        if(isset($tmp[0])){
-          $tmp2['Url']          = $tmp[0];
-        }else{
-          $tmp2['Url']          = "";
+        if(isset($tmp[0])) {
+          $repository['Url']          = $tmp[0];
+        } else {
+          $repository['Url']          = "";
         }
   
-        if(isset($tmp[2])){
-          $tmp2['Release']      = $tmp[2];
-        }else{
-          $tmp2['Release']      = "";
+        if(isset($tmp[2])) {
+          $repository['Release']      = $tmp[2];
+        } else {
+          $repository['Release']      = "";
         }
 
-        if(isset($tmp[3])){
-          $tmp3 = explode(",",$tmp[3]);
-          foreach($tmp3 as $sec){
-            $tmp2['Sections'][$sec]=$sec;
+        if(isset($tmp[3])) {
+          $tmp2 = explode(",",$tmp[3]);
+          foreach($tmp2 as $sec) {
+            $repository['Sections'][$sec]=$sec;
           }    
-        }else{
-          $tmp['Section']=array();
+        } else {
+          $repository['Section']=array();
         }
 
-        $this->repositories[$tmp[2]]=$tmp2;      
+        if(isset($tmp[4])) {
+          $repository['Install']=$tmp[4];
+        } else {
+          $repository['Install']="install";
+        }
+
+        if(isset($tmp[5])) {
+          $repository['Local']=$tmp[5];
+        } else {
+          $repository['Local']="local";
+        }
+
+        $this->repositories[$repository['Release']]=$repository;      
       }
     }
     session::set('RepositoryList', $this->repositories);
@@ -317,7 +328,7 @@ class servrepository extends goService
         $conf['ParentServer'] ="";
       }    
     
-      $arr[]=$conf['Url']."|".$conf['ParentServer']."|".$conf['Release']."|".$str;
+      $arr[]=$conf['Url']."|".$conf['ParentServer']."|".$conf['Release']."|".$str."|".$conf['Install']."|".$conf['Local'];
     }
     $this->attrs['FAIrepository'] = $arr;
 
@@ -331,7 +342,8 @@ class servrepository extends goService
       $this->cleanup();
       $ldap->modify ($this->attrs);       
       $this->handle_post_events("modify");
-    }else{
+    } else {
+        // FIXME : add special entry here if missing
       $ldap->cd ($this->config->current['BASE']);
       $ldap->create_missing_trees($this->dn);
       $ldap->cd($this->dn);

@@ -31,7 +31,7 @@ class workservice extends plugin
   var $gotoXColordepth= "";
   var $gotoXHsync= "";
   var $gotoXVsync= "";
-  var $AutoSync = false;
+  var $AutoSync = true;
   var $gotoXKbModel= "";
   var $gotoXKbLayout= "";
   var $gotoXKbVariant= "";

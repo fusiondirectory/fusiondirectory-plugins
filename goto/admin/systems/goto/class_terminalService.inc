@@ -45,7 +45,7 @@ class termservice extends plugin
 
   var $gotoLpdEnable = array();
 
-  var $AutoSync = false;
+  var $AutoSync = true;
   var $view_logged = FALSE;
 
   /* Needed values and lists */

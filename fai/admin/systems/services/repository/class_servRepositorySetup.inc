@@ -32,6 +32,8 @@ class servRepositorySetup  extends plugin
   var $ParentServer     = "";
   var $Url              = "";   
   var $Sections         = array();
+  var $Install          = "install";
+  var $Local            = "local";
   var $ParentServers    = "";
   var $initialy_was     = false;
   var $cn               = "";
@@ -41,7 +43,7 @@ class servRepositorySetup  extends plugin
   {
     plugin::plugin ($config, $dn);
     if($data != false){
-      foreach(array("Sections","Release","Url","ParentServer","initialy_was") as $atr){
+      foreach(array("Sections","Release","Url","ParentServer","Install","Local","initialy_was") as $atr){
         if(isset($data[$atr])){
           $this->$atr = $data[$atr];
         }
@@ -141,6 +143,9 @@ class servRepositorySetup  extends plugin
     foreach($this->attributes as $attr){
       $smarty->assign($attr       ,$this->$attr);
     }
+    $smarty->assign("Install", $this->Install);
+    $smarty->assign("Local", $this->Local);
+    $smarty->assign("FUNNY_TITLE", "COUCOU :-)");
   
     $tmp = $this->getParentServers();
     $smarty->assign("ParentServers"   ,$tmp);
@@ -153,7 +158,16 @@ class servRepositorySetup  extends plugin
   function save_object()
   {
     if(isset($_POST['servRepositorySetup_Posted'])) {
-  
+      if(isset($_POST['Install'])){
+        $this->Install = "install";
+      }else{
+        $this->Install = "update";
+      }
+      if(isset($_POST['Local'])){
+        $this->Local = "local";
+      }else{
+        $this->Local = "network";
+      }
       foreach($this->attributes as $attr){
         if(($this->parent->acl_is_writeable($attr)) && (isset($_POST[$attr]))){
           $this->$attr = $_POST[$attr];      
@@ -189,6 +203,8 @@ class servRepositorySetup  extends plugin
     $tmp['Url']           = $this->Url;
     $tmp['Release']       = $this->Release;
     $tmp['Sections']      = $this->Sections;
+    $tmp['Install']      = $this->Install;
+    $tmp['Local']      = $this->Local;
     return($tmp);
   }
 
