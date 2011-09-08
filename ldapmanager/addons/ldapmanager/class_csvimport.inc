@@ -35,6 +35,8 @@ class csvimport extends plugin
     var $objectclasses= array();
     var $view_logged = FALSE;
 
+    var $separator = ";";
+
     function csvimport (&$config, $dn= NULL)
     {
         /* Include config object */
@@ -82,18 +84,19 @@ class csvimport extends plugin
         if(!isset($this->csvinfo['arrtempls'])){
 
             /* Generating attributes */
-            $attrs = @get_class_vars("user");
-            $this->csvinfo['attr']  = $attrs['attributes'];
-
-            /* Attach the choice none to discard a csv column */
-            $new = array();
-            $new[0]="none";
-            $new[1]="userPassword";
-            for($c = 0; $c < count($this->csvinfo['attr']);$c++){
-                $new[$c+2]=$this->csvinfo['attr'][$c];
+            $this->csvinfo['attr'] = array();
+            $this->usertab= new usertabs($this->config, $this->config->data['TABS']['USERTABS'], 'new');
+            foreach($this->usertab->by_object as $pname => $plugin) { // for each user tab
+                $attrs = @get_class_vars($pname);
+                $attrs = $attrs['attributes'];                        // get saved attributes
+                foreach ($attrs as &$attr) {
+                    $attr = $pname.":".$attr;
+                }
+                $this->csvinfo['attr']  = array_merge($this->csvinfo['attr'],$attrs);
             }
 
-            $this->csvinfo['attr'] = $new;
+            /* Attach the choice none to discard a csv column */
+            $this->csvinfo['attr'] = array_merge(array("none","userPassword"),$this->csvinfo['attr']);
 
             /* Search all Templates    */
             $this->csvinfo['templates'] = $ldap->search("(objectClass=gosaUserTemplate)",array("*"));
@@ -113,7 +116,7 @@ class csvimport extends plugin
         }
 
         $arr_temp  = array_flip($this->csvinfo['attr']);
-        $this->csvinfo['arr_selected']= array($arr_temp['uid'],$arr_temp['sn'],$arr_temp['givenName'],$arr_temp['userPassword']);
+        $this->csvinfo['arr_selected']= array($arr_temp['user:uid'],$arr_temp['user:sn'],$arr_temp['user:givenName'],$arr_temp['userPassword']);
 
         $smarty->assign("templates",$this->csvinfo['arrtemplates']);
         $smarty->assign("attrs",$this->csvinfo['attr']);
@@ -159,14 +162,8 @@ class csvimport extends plugin
             if(isset($this->csvinfo['sorteddata'])){
                 $rowcnt ++;
 
-                /* Set the column count */
-                $tblcolcount= count ($this->csvinfo['cols']);
-
-                /* entries count */
-                $tbl_entries= count ($this->csvinfo['count']);
-
                 /* row count */
-                $tbl_rows   = $tbl_entries / $tblcolcount;
+                $tbl_rows   = $this->csvinfo['count'] / $this->csvinfo['cols'];
 
                 /* No error occurred */
                 $failing = FALSE;
@@ -178,7 +175,8 @@ class csvimport extends plugin
                     $dat = $this->csvinfo['sorteddata'][$i];
 
                     /* If not all needed vars set .... */
-                    if(!isset($dat['givenName']) || empty($dat['givenName']) || !isset($dat['sn']) || empty($dat['sn'])){
+                    /* givenName is used as first name and sn as second name */
+                    if(!isset($dat['user:givenName']) || empty($dat['user:givenName']) || !isset($dat['user:sn']) || empty($dat['user:sn'])){
 
                         /* Output Error */
                         msg_dialog::display(_("Error"), _("Need at least 'sn' and 'givenName' to create users!"), ERROR_DIALOG);
@@ -189,19 +187,28 @@ class csvimport extends plugin
 
                     /* Automatically generate 'uid' while it wasn't given yet. 
                      */
-                    if(!isset($dat['uid']) || empty($dat['uid'])){
+                    if(!isset($dat['user:uid']) || empty($dat['user:uid'])){
 
                         // Generate uids and take the first result.
-                        $attributes= array('sn' => $dat['sn'], 'givenName' => $dat['givenName']);
+                        $attributes = array();
+                        foreach ($dat as $key => $val) {
+                            $key_exp = explode(":",$key);
+                            if($key_exp[0]=="user") {
+                                $attributes[$key_exp[1]] = $val;
+                            }
+                        }
+                        print_r($attributes);
                         $uids = gen_uids ($this->config->get_cfg_value("idGenerator"), $attributes);
                         if (!count($uids) || empty($uids[0])){
                             $msgs = sprintf(_("Failed to generate 'uid' for entry '%s'!"), ($i+1));
                             $this->csvinfo['sorteddata'][$i]['status']="<b>"._("failed")."</b>&nbsp;". $msgs;
                             $failing = $i+1;
+                            $this->csvinfo['sorteddata'][$i]['user:uid'] = "";
+                            $dat['user:uid'] = $this->csvinfo['sorteddata'][$i]['user:uid'];
                             continue;
                         }else{
-                            $this->csvinfo['sorteddata'][$i]['uid'] = array_pop($uids);
-                            $dat['uid'] = $this->csvinfo['sorteddata'][$i]['uid'];
+                            $this->csvinfo['sorteddata'][$i]['user:uid'] = array_pop($uids);
+                            $dat['user:uid'] = $this->csvinfo['sorteddata'][$i]['user:uid'];
                         }
                     }
 
@@ -213,16 +220,22 @@ class csvimport extends plugin
                     if(is_array($keys)){
                         foreach($keys as $key) {
                             if($key != "status"){
-                                $this->usertab->$key = $dat[$key];
-                                foreach($this->usertab->by_object as $pname => $plugin){
-                                    if(isset($this->usertab->by_object[$pname]->$key)){
-                                        $this->usertab->by_object[$pname]->$key = $dat[$key];
-                                    }
+                                $key_exp = explode(":",$key);
+                                $plugin = $key_exp[0];
+                                $var = $key_exp[1];
+                                if(!isset($plugin) || !isset($var)) {
+                                    continue;
+                                }
+                                if(in_array($var,$this->usertab->by_object[$plugin]->attributes)){
+                                    $this->usertab->by_object[$plugin]->$var = $dat[$key]; // set the variable
+                                    $this->usertab->by_object[$plugin]->is_account = TRUE; // activate the plugin
+                                } else {
+                                    echo $var." n'est pas dans ";
+                                    print_r($this->usertab->by_object[$attributes]->attributes);
                                 }
                             }
                         }
                     }
-
                     // Adapt template values.
                     if($this->csvinfo['tplid']!=0){
                         $tpl_dn = $this->csvinfo['arrtempls'][$this->csvinfo['tplid']]['dn'];
@@ -261,12 +274,7 @@ class csvimport extends plugin
                 $pointsafter  = FALSE;
 
                 /* Get Attributs for Tableheadline  */
-                $this->csvinfo['colsstr'] = array();
-                for($i =0; $i <= $this->csvinfo['cols']; $i++) {
-                    if(!empty($_POST[('row'.$i)])){
-                        $this->csvinfo['colsstr'][$i] = $this->csvinfo['attr'][$_POST[('row'.$i)]];
-                    }
-                }
+                $this->csvinfo['colsstr'] = array_keys($this->csvinfo['sorteddata'][0]);
 
                 /*Create array with data for the template */
                 if($failing == FALSE){
@@ -274,9 +282,7 @@ class csvimport extends plugin
                     $dataouts= array();
                     for($i =1; $i <= $this->csvinfo['shownrowscount']; $i++) {
                         if(is_array($this->csvinfo['sorteddata'][($i-1)])){
-                            foreach($this->csvinfo['sorteddata'][($i-1)] as $dat){
-                                $dataouts[]=$dat;
-                            }
+                            $dataouts[]=$this->csvinfo['sorteddata'][($i-1)];
                         }
                     }
 
@@ -307,14 +313,11 @@ class csvimport extends plugin
                     $dataouts = array(); 
                     for($i =$begin; ($i <= $end) && (isset($this->csvinfo['sorteddata'][($i)])); $i++) {
                         if(is_array($this->csvinfo['sorteddata'][($i)])){
-                            foreach($this->csvinfo['sorteddata'][($i)] as $dat){
-                                $dataouts[]=$dat;
-                            }
+                                $dataouts[]=$this->csvinfo['sorteddata'][($i)];
                         }
                     }
                 }
                 $tmparr2  = $this->csvinfo['colsstr'];
-                $tmparr2[]=_("status");
 
                 /* Error? */
                 if ($failing){
@@ -328,20 +331,8 @@ class csvimport extends plugin
                 $smarty->assign("rows",$this->csvinfo['shownrowscount']);
 
 
-                $cnt = 0 ;
-                $tmp2 = $tmp3 = array();
-                if(is_array($dataouts))
-                    foreach($dataouts as $tmp){
-                        $tmp2[] = $tmp;
-                        $cnt ++ ;
-                        if($cnt >= count($tmparr2)){
-                            $tmp3[] = $tmp2;
-                            $tmp2= array();
-                            $cnt = 0; 
-                        }
-                    }  
                 $smarty->assign("head",$tmparr2);
-                $smarty->assign("data",$tmp3);
+                $smarty->assign("data",$dataouts);
 
                 /* Set other vars  */
                 $smarty->assign("i",1);
@@ -436,8 +427,11 @@ class csvimport extends plugin
                                 /* replace \t to , */
                                 $line= str_replace ("\t"  ,"" ,$line);
 
+                                /* remove " */
+                                $line= str_replace ("\""  ,"" ,$line);
+
                                 /* get all elements  */
-                                $cells  = explode(",",$line )  ;
+                                $cells  = explode($this->separator,$line )  ;
 
                                 /* attach all elements to data array */
                                 if(is_array($cells))

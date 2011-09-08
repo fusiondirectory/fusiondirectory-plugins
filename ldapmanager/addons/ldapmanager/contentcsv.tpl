@@ -1,5 +1,5 @@
 <p>
-{t}The CSV import plugin provides methods to generate user accounts from a file containing Comma Seperated Values. The administrator can decide which columns should be transfered to which attribute. Note that you must have at least the GIVENNAME and SURNAME set.{/t}
+{t}The CSV import plugin provides methods to generate user accounts from a file containing Semi-Colon Seperated Values. The administrator can decide which columns should be transfered to which attribute. Note that you must have at least the GIVENNAME and SURNAME set.{/t}
 </p>
 <p class="seperator">&nbsp;</p>
 
@@ -81,20 +81,16 @@
 <br>
 <br>
 	<table summary="" cellspacing="1" border=0 cellpadding="4" bgcolor="#FEFEFE">
+		{foreach from=$data[0] item=val key=key}
 		<tr>
-			{foreach from=$data[0] item=item key=key}
 			<td bgcolor="#BBBBBB">
 				<select name="row{$key}" size="1" title="">
 		    		 {html_options options=$attrs selected=$selectedattrs[$key]}
 				</select>
 			</td>
-			{/foreach}
-		</tr>
-		{foreach from=$data item=val key=key}
-		<tr>
-			{foreach from=$data[$key] item=val2 key=key2}
+			{foreach from=$data item=val2 key=key2}
 			<td bgcolor="#EEEEEE">
-				{$data[$key][$key2]}&nbsp;
+				{$data[$key2][$key]}&nbsp;
 			</td>
 			{/foreach}
 		</tr>

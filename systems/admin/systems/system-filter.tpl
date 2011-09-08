@@ -13,31 +13,31 @@
   {/if}
 
   {if $USE_goServer}
-  {$SERVER}&nbsp;{t}Show servers{/t}<br>
+  {$SERVER}<label for="SERVER">&nbsp;{t}Show servers{/t}</label><br>
   {/if}
   {if $USE_gotoWorkstation}
-  {$WORKSTATION}&nbsp;{t}Show workstations{/t}<br>
+  {$WORKSTATION}<label for="WORKSTATION">&nbsp;{t}Show workstations{/t}</label><br>
   {/if}
   {if $USE_gotoTerminal}
-  {$TERMINAL}&nbsp;{t}Show terminals{/t}<br>
+  {$TERMINAL}<label for="TERMINAL">&nbsp;{t}Show terminals{/t}</label><br>
   {/if}
   {if $USE_gotoPrinter}
-  {$PRINTER}&nbsp;{t}Show network printer{/t}<br>
+  {$PRINTER}<label for="PRINTER">&nbsp;{t}Show network printer{/t}</label><br>
   {/if}
   {if $USE_goFonHardware}
-  {$PHONE}&nbsp;{t}Show phones{/t}<br>
+  {$PHONE}<label for="PHONE">&nbsp;{t}Show phones{/t}</label><br>
   {/if}
   {if $USE_sambaSamAccount}
-  {$WINSTATION}&nbsp;{t}Show windows based workstations{/t}<br>
+  {$WINSTATION}<label for="WINSTATION">&nbsp;{t}Show windows based workstations{/t}</label><br>
   {/if}
   {if $USE_ieee802Device}
-  {$COMPONENT}&nbsp;{t}Show network devices{/t}<br>
+  {$COMPONENT}<label for="COMPONENT">&nbsp;{t}Show network devices{/t}</label><br>
   {/if}
   {if $USE_FAKE_OC_NewWorkstation || $USE_FAKE_OC_NewTerminal || $USE_FAKE_OC_NewServer || $USE_FAKE_OC_NewDevice || $USE_FAKE_OC_ArpNewDevice}
-  {$INCOMING}&nbsp;{t}Show incoming devices{/t}<br>
+  {$INCOMING}<label for="INCOMING">&nbsp;{t}Show incoming devices{/t}</label><br>
   {/if}
   {if $USE_FAKE_OC_OpsiHost}
-  {$OPSI}&nbsp;{t}Show OPSI based clients{/t}<br>
+  {$OPSI}<label for="OPSI">&nbsp;{t}Show OPSI based clients{/t}</label><br>
   {/if}
 
   <div style="border-top:1px solid #AAAAAA"></div>

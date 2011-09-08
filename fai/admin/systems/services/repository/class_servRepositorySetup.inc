@@ -145,7 +145,6 @@ class servRepositorySetup  extends plugin
     }
     $smarty->assign("Install", $this->Install);
     $smarty->assign("Local", $this->Local);
-    $smarty->assign("FUNNY_TITLE", "COUCOU :-)");
   
     $tmp = $this->getParentServers();
     $smarty->assign("ParentServers"   ,$tmp);
