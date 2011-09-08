@@ -42,16 +42,16 @@
 
 <div style="border-top:1px solid #AAAAAA"></div>
 
-{$PROFILE}   {t}Show profiles{/t}
-<br>{$TEMPLATE}  {t}Show templates{/t}
-<br>{$SCRIPT}    {t}Show scripts{/t}
-<br>{$HOOK}      {t}Show hooks{/t}
-<br>{$VARIABLE}  {t}Show variables{/t}
-<br>{$PACKAGE}   {t}Show packages{/t}
-<br>{$PARTITION} {t}Show partitions{/t}
+{$PROFILE}<label for="PROFILE">   {t}Show profiles{/t}</label>
+<br>{$TEMPLATE}<label for="TEMPLATE">  {t}Show templates{/t}</label>
+<br>{$SCRIPT}<label for="SCRIPT">    {t}Show scripts{/t}</label>
+<br>{$HOOK}<label for="HOOK">      {t}Show hooks{/t}</label>
+<br>{$VARIABLE}<label for="VARIABLE">  {t}Show variables{/t}</label>
+<br>{$PACKAGE}<label for="PACKAGE">   {t}Show packages{/t}</label>
+<br>{$PARTITION}<label for="PARTITION"> {t}Show partitions{/t}</label>
 {if $opsi_available}
-<br>{$NETBOOT} {t}Show netboot products{/t}
-<br>{$LOCALBOOT} {t}Show localboot products{/t}
+<br>{$NETBOOT}<label for="NETBOOT"> {t}Show netboot products{/t}</label>
+<br>{$LOCALBOOT}<label for="LOCALBOOT"> {t}Show localboot products{/t}</label>
 {/if}
 
  <table summary="" style="width:100%;border-top:1px solid #B0B0B0;">
