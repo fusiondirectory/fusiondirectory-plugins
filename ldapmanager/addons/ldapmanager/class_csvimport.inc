@@ -34,7 +34,7 @@ class csvimport extends plugin
     var $attributes= array();
     var $objectclasses= array();
     var $view_logged = FALSE;
-
+    
     var $separator = ";";
 
     function csvimport (&$config, $dn= NULL)
@@ -426,7 +426,7 @@ class csvimport extends plugin
 
                                 /* replace \t to , */
                                 $line= str_replace ("\t"  ,"" ,$line);
-
+                                
                                 /* remove " */
                                 $line= str_replace ("\""  ,"" ,$line);
 
