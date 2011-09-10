@@ -1,6 +1,6 @@
-dn: cn={15}dnszone
+dn: cn=dnszone,cn=schema,cn=config
 objectClass: olcSchemaConfig
-cn: {15}dnszone
+cn: dnszone
 olcAttributeTypes: {0}( 1.3.6.1.4.1.2428.20.0.0 NAME 'dNSTTL' DESC 'An integer
   denoting time to live' EQUALITY integerMatch SYNTAX 1.3.6.1.4.1.1466.115.121
  .1.27 )
@@ -81,10 +81,3 @@ olcObjectClasses: {0}( 1.3.6.1.4.1.2428.20.3 NAME 'dNSZone' SUP top STRUCTURAL
  cord $ LOCRecord $ NXTRecord $ SRVRecord $ NAPTRRecord $ KXRecord $ CERTRecor
  d $ A6Record $ DNAMERecord $ DSRecord $ SSHFPRecord $ RRSIGRecord $ NSECRecor
  d ) )
-structuralObjectClass: olcSchemaConfig
-entryUUID: fbb01690-f065-102e-960f-79233977c302
-creatorsName: cn=config
-createTimestamp: 20100510095600Z
-entryCSN: 20100510095600.855485Z#000000#000#000000
-modifiersName: cn=config
-modifyTimestamp: 20100510095600Z
