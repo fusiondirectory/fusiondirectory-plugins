@@ -96,6 +96,8 @@ class systemManagement extends management
     // Build headpage
     $headpage = new listing(get_template_path("system-list.xml", true));
     $headpage->registerElementFilter("systemRelease", "systemManagement::systemRelease");
+    $headpage->registerElementFilter("ipOf", "systemManagement::ipOf");
+    $headpage->registerElementFilter("listServices", "systemManagement::listServices");
     $headpage->setFilter($filter);
     $filter->setConverter('INCOMING', 'systemManagement::incomingFilterConverter');
 
@@ -1375,6 +1377,57 @@ class systemManagement extends management
     }
     
     return("&nbsp;");
+  }
+
+  static function listServices($dn)
+  {
+    global $config;
+
+    // Load information if needed
+    $ldap = $config->get_ldap_link();
+    $ldap->cd($dn);
+    $ldap->search("(objectClass=*)",array('objectClass'));
+    $str = "&nbsp;";
+    $services = array();
+    $services_class = array (
+        "FAIrepositoryServer" => "repository", 
+        "goLdapServer" => "ldap", 
+        "dNSZone" => "dns", 
+        "goNtpServer" => "ntp", 
+        "dhcpServer" => "dhcp", 
+        "goVirusServer" => "antivirus", 
+        "goSpamServer" => "spamassassin", 
+        "goShareServer" => "file",
+        "goCupsServer" => "print", 
+        "goImapServer" => "imap", 
+        "goTerminalServer" => "terminal", 
+        "goMailServer" => "smtp" 
+        );
+    while($attrs = $ldap->fetch()){
+        unset($attrs['objectClass']['count']);
+        foreach($attrs['objectClass'] as $class) {
+            if(isset($services_class[$class])) {
+              $services[$services_class[$class]] =" <img class='center' src='plugins/systems/images/service_".$services_class[$class].".png' alt='".$services_class[$class]."' title ='".$services_class[$class]."'/>";
+            }
+        }
+    }
+    $str = implode("",$services);
+    return($str);
+  }
+
+  static function ipOf($dn)
+  {
+    global $config;
+
+    // Load information if needed
+    $ldap = $config->get_ldap_link();
+    $ldap->cd($dn);
+    $ldap->search("(ipHostNumber=*)",array('ipHostNumber'));
+    $str = "&nbsp;";
+    if($attrs = $ldap->fetch()){
+        $str = $attrs['ipHostNumber'][0];
+    }
+    return($str);
   }
 
 

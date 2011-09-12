@@ -190,20 +190,12 @@ class termDNS extends plugin
      */
     $deps  = array();
     $ou = preg_replace("/,.*$/","",get_ou("systemRDN"));
-    $a_ous = array(get_ou("serverRDN"),
-                  get_ou("terminalRDN"),
-                  get_ou("workstationRDN"),
-                  get_ou("printerRDN"),
-                  get_ou("phoneRDN"),
-                  get_ou("componentRDN"));
   
     $ldap = $this->config->get_ldap_link();
     $ldap->cd($this->config->current['BASE']);
     $ldap->search("(&(objectClass=organizationalUnit)(".$ou."))",array("dn"));
     while($attrs = $ldap->fetch()){
-      foreach($a_ous as $allowed){
-        $deps[] = $allowed.$attrs['dn'];
-      }
+        $deps[] = $attrs['dn'];
     }
 
     foreach($deps as $dep){
@@ -302,6 +294,7 @@ class termDNS extends plugin
     /* Check for autonet button */
     if (isset($_POST['autonet']) && ($this->acl_is_writeable("ipHostNumber") || $this->acl_is_writeable("macAddress"))){
         if(class_available("supportDaemon")){
+/*
             $d= new supportDaemon(TRUE, 0.5);
             $res= $d->_send("<xml><header>gosa_network_completition</header>".
                     "<source>GOSA</source><target>GOSA</target><hostname>".$this->cn."</hostname></xml>", TRUE);
@@ -311,6 +304,9 @@ class termDNS extends plugin
             if (isset($res['XML']['MAC']) && $this->acl_is_writeable("macAddress")){
                 $this->macAddress= $res['XML']['MAC'];
             }
+*/
+          msg_dialog::display(_("Error"), _("NOT IMPLEMENTED"), ERROR_DIALOG);
+            
         }
     }
 
@@ -1147,19 +1143,19 @@ class termDNS extends plugin
     // Search the next free and valid ip.
     while(in_array(implode(".",$ip_data),$list) || $ip_data[3] <= 1){
       $ip_data[3] ++ ;
-      if($ip_data[3] > 255){
+      if($ip_data[3] >= 255){
         $ip_data[3] = 1 ;
         $ip_data[2] ++ ;
       }
-      if($ip_data[2] > 255){
+      if($ip_data[2] >= 255){
         $ip_data[2] = 1 ;
         $ip_data[1] ++ ;
       }
-      if($ip_data[1] > 255){
+      if($ip_data[1] >= 255){
         $ip_data[1] = 1 ;
         $ip_data[0] ++ ;
       }
-      if($ip_data[0] > 255) break;
+      if($ip_data[0] >= 255) break;
     }
 
     return(implode(".",$ip_data));

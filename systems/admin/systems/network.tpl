@@ -106,27 +106,23 @@
     {if $ZoneCnt}
 
         {render acl=$dnsSetupACL}
-              {if $DNS_is_account == true}
+            {if $DNS_is_account == true}
 
-              {if $hide_dns_check_box}
-                <input type="hidden" name="DNS_is_account" value="1">
-                <input type="checkbox" name="dummy" value="1" disabled
-                    checked="checked" />
-              {else}
-                <input type="checkbox" name="DNS_is_account" value="1"
-                    checked="checked" onclick="$('test2').toggle(); $('propose_ip').toggle();"/>
-              {/if}
+                <input type="checkbox" name="DNS_is_account" id="DNS_is_account" value="1" checked="checked" 
+                    {if $hide_dns_check_box}disabled
+                    {else}onclick="$('test2').toggle(); $('propose_ip').toggle();"{/if}
+                />
 
-                {else}
-              <input type="checkbox" name="DNS_is_account" value="1"
-                onclick="
-                  $('test2').toggle();
-                  $('propose_ip').toggle();
-                  "/>
-                {/if}
+            {else}
+                <input type="checkbox" name="DNS_is_account" id="DNS_is_account" value="1"
+                    onclick="
+                    $('test2').toggle();
+                    $('propose_ip').toggle();
+                "/>
+            {/if}
         {/render}
 
-      {t}Enable DNS for this device{/t}
+      <label for="DNS_is_account">{t}Enable DNS for this device{/t}</label>
       <input type='image' src='images/lists/reload.png' class='center' name="reloadThisDNSStuff" >
       {if $DNS_is_account == true}
       <div style="padding-left:20px" id="test2">
@@ -137,34 +133,34 @@
 				<tr>
 					<td><LABEL	for="zoneName">{t}Zone{/t}</LABEL></td>
 					<td>
-{render acl=$dnsSetupACL}
+            {render acl=$dnsSetupACL}
               <select name="zoneName" id="zoneName">
                 {html_options values=$ZoneKeys output=$Zones selected=$zoneName}
               </select>
-{/render}
+            {/render}
           </td>
         </tr>
         <tr>
-          <td>{t}TTL{/t}</td>
+          <td><label for ="dNSTTL">{t}TTL{/t}</label></td>
           <td>
-{render acl=$dnsSetupACL}
-            <input type="text" name="dNSTTL" value="{$dNSTTL}" id="dNSTTL" >
-{/render}
+            {render acl=$dnsSetupACL}
+                        <input type="text" name="dNSTTL" value="{$dNSTTL}" id="dNSTTL" >
+            {/render}
           </td>
         </tr>
         <tr>
           <td valign="top">{t}Dns records{/t}</td>
           <td>
-{render acl=$dnsSetupACL}
-              {$records}
-{/render}
+            {render acl=$dnsSetupACL}
+                          {$records}
+            {/render}
           </td>
 				</tr>
 			</table>
       </div>
     {else}        
-      <input type="checkbox" name="dummy" value="1" disabled class='center' {if $DNS_is_account} checked {/if}>
-      {t}Enable DNS for this device{/t} ({t}not configured{/t})
+      <input type="checkbox" name="dummy" id="DNS_is_account" value="1" disabled class='center' {if $DNS_is_account} checked {/if}>
+      <label for="DNS_is_account">{t}Enable DNS for this device{/t} ({t}not configured{/t})</label>
       <input type='image' src='images/lists/reload.png' class='center'>
     {/if}
 
