@@ -1412,6 +1412,9 @@ class systemManagement extends management
         }
     }
     $str = implode("",$services);
+    if($str=="") {
+        $str="&nbsp;";
+    }
     return($str);
   }
 

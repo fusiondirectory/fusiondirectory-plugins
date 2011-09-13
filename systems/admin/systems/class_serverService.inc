@@ -358,11 +358,9 @@ class ServerService extends management
         "start"    =>  START_SERVICE ,
         "stop"     =>  STOP_SERVICE ,
         "restart"  =>  RESTART_SERVICE );
-    foreach($target as $s_entry){
-      if(isset($map[$action])){
-        $type     = $map[$action];
-        $service  = $s_entry;
-        $this->ServiceStatusUpdate($type,$service);
+    if(isset($map[$action])){
+        foreach($target as $s_entry){
+            $this->ServiceStatusUpdate($map[$action],$s_entry);
       }
     }
   }
@@ -440,12 +438,16 @@ class ServerService extends management
     }
 
     $action = "";
+    $status = "";
     if($method == START_SERVICE){
-      $action = SERVICE_STARTED;
+      $action = "start";
+      $status = SERVICE_STARTED;
     }elseif($method== STOP_SERVICE){
-      $action = SERVICE_STOPPED;
+      $action = "stop";
+      $status = SERVICE_STOPPED;
     }elseif($method == RESTART_SERVICE){
-      $action = SERVICE_RESTARTED;
+      $action = "restart";
+      $status = SERVICE_RESTARTED;
     }else{
       msg_dialog::display(_("Error"), _("Cannot update service status!"), ERROR_DIALOG);
       return;
@@ -482,7 +484,18 @@ class ServerService extends management
         }
       }
       if($this->plugins[$service]->is_account){
-        $this->plugins[$service]->setStatus($action);
+        $o_queue = new supportDaemon();
+        if($o_queue->is_error()) {
+            msg_dialog::display(_("Could not get services status"),msgPool::siError($o_queue->get_error()),ERROR_DIALOG);
+        } else {
+            $res = $o_queue->manage_service($this->parent->by_object['servgeneric']->netConfigDNS->macAddress,$service,$action);
+            
+            if($o_queue->is_error()) {
+                msg_dialog::display(_("Could not get services status"),msgPool::siError($o_queue->get_error()),ERROR_DIALOG);
+            } else if($res) {
+                $this->plugins[$service]->setStatus($status);
+            }
+        }
       }
     }
   }
