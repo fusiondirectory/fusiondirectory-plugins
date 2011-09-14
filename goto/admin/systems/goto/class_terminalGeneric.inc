@@ -261,17 +261,20 @@ class termgeneric extends plugin
     $smarty->assign("inheritTimeServer",$this->inheritTimeServer);
 
     /* Check if terminal is online */
-    if (class_available("supportDaemon") && supportDaemon::ping($this->netConfigDNS->macAddress)){
-      $smarty->assign("actions", array( "halt" => _("Switch off"), 
-                                        "reboot" => _("Reboot"),
-                                        #"memcheck" => _("Memory test"),
-                                        #"sysinfo"  => _("System analysis")
-					));
-    } else {
-      $smarty->assign("actions", array("wake" => _("Wake up"),
-                                       #"memcheck" => _("Memory test"),
-                                       #"sysinfo"  => _("System analysis")
-					));
+    if (class_available("supportDaemon")) {
+        $o_queue = new supportDaemon();
+        if($o_queue->ping($this->netConfigDNS->macAddress)) {
+          $smarty->assign("actions", array( "halt" => _("Switch off"), 
+                                            "reboot" => _("Reboot"),
+                                            #"memcheck" => _("Memory test"),
+                                            #"sysinfo"  => _("System analysis")
+                        ));
+        } else {
+          $smarty->assign("actions", array("wake" => _("Wake up"),
+                                           #"memcheck" => _("Memory test"),
+                                           #"sysinfo"  => _("System analysis")
+                        ));
+        }
     }
 
     /* Arrays */

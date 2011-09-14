@@ -601,12 +601,12 @@ class termDNS extends plugin
 
 
     /* Check if mac and ip are already used */
-    if(!empty($this->ipHostNumber) && $this->DNS_is_account && 
+    if(!empty($this->ipHostNumber) && 
         $this->ipHostNumber != $this->orig_ipHostNumber && 
         in_array("ip:".$this->ipHostNumber,$this->used_ip_mac)){
       $message[]= msgPool::duplicated(_("IP address"));
     }
-    if(!empty($this->macAddress) && $this->dhcp_is_Account && 
+    if(!empty($this->macAddress) && 
         $this->macAddress != $this->orig_macAddress && 
         in_array("mac:".$this->macAddress,$this->used_ip_mac)){
       $message[]= msgPool::duplicated(_("MAC address"));

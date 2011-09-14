@@ -351,11 +351,6 @@ class servrepository extends goService
       $this->handle_post_events("add");
     }
 
-    # If there were changes, just tell the server to reload information
-    if(count($this->attrs)){
-	    $this->trigger_si_fai_server_reload();
-    }
-
     if($this->initially_was_account){
       new log("modify","server/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
     }else{
@@ -370,27 +365,6 @@ class servrepository extends goService
     $fields['Message']    = _("Repository service");
     return($fields);
   }
-
-
-  function trigger_si_fai_server_reload()
-  {
-    /* Reload FusionDirectory si FAI DB/cache
-     */
-    if(class_available("DaemonEvent") && class_available("supportDaemon")){
-      $events = DaemonEvent::get_event_types(SYSTEM_EVENT | HIDDEN_EVENT);        
-      if(isset($events['TRIGGERED']['DaemonEvent_recreate_fai_server_db'])){
-        $evt = $events['TRIGGERED']['DaemonEvent_recreate_fai_server_db']; 
-        $tmp = new $evt['CLASS_NAME']($this->config);
-        $tmp->set_type(TRIGGERED_EVENT);
-        $tmp->add_targets(array("GOSA"));
-        $o_queue = new supportDaemon();
-        if(!$o_queue->append($tmp)){
-          msg_dialog::display(_("Service infrastructure"),msgPool::siError($o_queue->get_error()),ERROR_DIALOG);
-        }
-      }
-    }
-  }
-
 
   function allow_remove()
   {
@@ -423,7 +397,6 @@ class servrepository extends goService
   function remove_from_parent()
   {
     goService::remove_from_parent();
-    $this->trigger_si_fai_server_reload();
   }
 
   /* Return plugin informations for acl handling */

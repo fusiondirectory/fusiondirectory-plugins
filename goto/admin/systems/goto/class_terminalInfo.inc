@@ -121,7 +121,8 @@ class terminfo extends plugin
         $smarty->assign("swap", progressbar(0,100,15,true));
 
         /* Check if terminal is online */
-        if (class_available("supportDaemon") && supportDaemon::ping($this->macAddress)){
+        $o_queue = new supportDaemon();
+        if (class_available("supportDaemon") && $o_queue->ping($this->macAddress)){
           $smarty->assign("status", _("online"));
           $smarty->assign("active", "true");
 
