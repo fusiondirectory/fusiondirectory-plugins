@@ -63,11 +63,11 @@
 	{if !$fai_activated}
 			<h2>{t}FAI Object assignment disabled. You can't use this feature until FAI is activated.{/t}</h2>			
 	{elseif !$si_active}
-		<b>{t}GOto-si daemon not configured{/t}</b><br>
+		<b>{t}Argonaut server not present{/t}</b><br>
 		{t}FAI settings cannot be modified{/t}
 	{elseif $si_fai_action_failed}
 		<b>{msgPool type=siError}</b><br>
-		{t}Check if the GOto-si daemon is running.{/t}
+		{t}Verify if Argonaut Server is running correctly.{/t}
 		<input type='submit' name='fai_si_retry' value="{t}retry{/t}">
 	{elseif $fai_activated}
 
