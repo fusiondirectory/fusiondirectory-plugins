@@ -44,10 +44,10 @@
 				
 		 	<table summary="">
 				<tr>
-				 <td>{t}Mode{/t}</td>
+				 <td><label for="gotoMode">{t}Mode{/t}</label></td>
 				 <td>
 {render acl=$gotoModeACL}
-				  <select name="gotoMode" title="{t}Select terminal mode{/t}">
+				  <select name="gotoMode" id="gotoMode" title="{t}Select terminal mode{/t}">
 				   {html_options options=$modes selected=$gotoMode_select}
 				  </select>
 {/render}

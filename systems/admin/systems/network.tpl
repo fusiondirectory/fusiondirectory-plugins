@@ -55,11 +55,11 @@
                 <td>
 {render acl=$dhcpSetupACL}
                   <input onClick='document.mainform.submit();'
-                    {if $dhcp_is_Account} checked {/if} type='checkbox' name='dhcp_is_Account' class='center'>
+                    {if $dhcp_is_Account} checked {/if} type='checkbox' name='dhcp_is_Account' id='dhcp_is_Account' class='center'>
 {/render}
                 </td>
                 <td colspan="2">
-                  {t}Enable DHCP for this device{/t}
+                  <label for="dhcp_is_Account">{t}Enable DHCP for this device{/t}</label>
 {render acl=$dhcpSetupACL}
                   <input type='image' src='images/lists/reload.png' class='center'>
 {/render}
@@ -68,8 +68,8 @@
               {else}
               <tr>
                 <td>
-                  <input type='checkbox' name='dummy' class='center' disabled>
-                  {t}Enable DHCP for this device{/t} ({t}not configured{/t})
+                  <input type='checkbox' name='dummy' id='dhcp_is_Account' class='center' disabled>
+                  <label for="dhcp_is_Account">{t}Enable DHCP for this device{/t} ({t}not configured{/t})</label>
                   <input type='image' src='images/lists/reload.png' class='center'>
                 </td>
               </tr>

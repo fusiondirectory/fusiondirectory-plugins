@@ -263,7 +263,7 @@ class faiPackage extends plugin
           foreach ($valid_packages as $value) {
             
             if( $do_si_query == true ) {
-              $res = $daemon->FAI_get_packages($this->FAIdebianRelease,$query_attrs,array($value),0,1);
+              $res = $daemon->FAI_get_packages($this->FAIdebianRelease,$query_attrs,array("^".$value."$"),0,1);
               if( ! $daemon->is_error()){
                 
                 if(count($res)){
@@ -579,7 +579,10 @@ class faiPackage extends plugin
       $q = new supportDaemon();
       $attrs = array("distribution", "package","version", "section", "description", "timestamp","hastemplate");
 
-      $packages = array_keys($this->usedPackages);
+      $packages = array();
+      foreach (array_keys($this->usedPackages) as $packagename) {
+        $packages[] = "^".$packagename."$";
+      }
 
       $ret = $q->FAI_get_packages($this->FAIdebianRelease,$attrs,$packages);
       if($q->is_error()){

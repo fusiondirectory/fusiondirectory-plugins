@@ -270,24 +270,6 @@ class gotomasses extends management
   {
     if($this->acl_is_removeable("")){
       timezone::get_default_timezone();
-/*
-      foreach($this->ids_to_remove as $id){
-        $entry = $this->o_queue->get_entries_by_id(array($id));
-        if(isset($entry['ANSWER1'])){
-          $entry = $entry['ANSWER1'];
-          if( $entry['STATUS'] == "waiting" && 
-              $entry['HEADERTAG'] == "trigger_action_reinstall"){
-            $evt = new DaemonEvent_reinstall($this->config,$entry);
-            if($evt->get_timestamp(FALSE)  < time()){
-              $r_evt = new DaemonEvent_localboot($this->config);
-              $r_evt->add_targets(array($entry['MACADDRESS']));
-              $r_evt->set_type(TRIGGERED_EVENT);
-              $this->o_queue->append($r_evt);
-            }
-          }
-        }
-      }
-*/
       $this->o_queue->remove_entries($this->ids_to_remove);
       $this->save();
     }
@@ -298,36 +280,33 @@ class gotomasses extends management
    */
   function abortEvent($action="",$target=array(),$all=array())
   {
-    /* Entries are paused by setting the status to
-     *  something different from 'waiting'.
-     * We simply use 'paused'.
-     */
-    $data = array("status"    => "paused");
-
     /* Detect if the ids we got are valid and
      *  check if the status allows pausing.
      */
-    $update_ids = array();
+    $macs = array();
+    $taskids = array();
     $headpage = $this->getHeadpage();
     foreach($target as $id){
       $tmp = $headpage->getEntry($id);
-      $update_ids[] = $tmp['MACADDRESS'][0];
+      $macs[] = $tmp['MACADDRESS'][0];
+      $taskids[] = $tmp['EVENT']['ID'];
     }
 
-    if(class_available("DaemonEvent_faireboot")){
-      $tmp = new DaemonEvent_faireboot($this->config);
-      $tmp->add_targets($update_ids);
+    if(class_available("DaemonEvent_wakeup")) { // Sending a wakeup in order to flag it as localboot
+      $tmp = new DaemonEvent_wakeup($this->config);
+      $tmp->add_targets($macs);
       $tmp->set_type(TRIGGERED_EVENT);
-      $this->recently_removed = $update_ids;
+      $this->recently_removed = $macs;
       if(!$this->o_queue->append($tmp)){
-        msg_dialog::display(_("Error"), sprintf(_("Cannot update queue entry: %s"),$id) , ERROR_DIALOG);
-        return(FALSE);
+        msg_dialog::display(_("Info"), sprintf(_("%s"),$this->o_queue->get_error()) , INFO_DIALOG);
       }
-    }else{
+    } else {
       msg_dialog::display(_("Error"),
           sprintf(_("Required class '%s' cannot be found: job not aborted!"),
-            "DaemonEvent_faireboot") , ERROR_DIALOG);
+            "DaemonEvent_wakeup") , ERROR_DIALOG);
     }
+    
+    $this->o_queue->remove_entries($taskids); // Removing the task.
   }
 
 
