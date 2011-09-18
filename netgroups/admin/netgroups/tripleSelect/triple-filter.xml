@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<filterdef>
+  <definition>
+    <category>netgroups</category>
+    <template>../plugins/admin/netgroups/tripleSelect/triple-filter.tpl</template>
+    <initial>true</initial>
+  </definition>
+
+  <search>
+    <query>
+      <backend>TriplesLDAP</backend>
+      <filter>(&amp;(|$HARDWARE$COMPONENT$NISNETGROUP$USERS)$NAME)</filter>
+      <attribute>dn</attribute>
+      <attribute>objectClass</attribute>
+      <attribute>cn</attribute>
+      <attribute>uid</attribute>
+      <attribute>description</attribute>
+    </query>
+    <scope>auto</scope>
+  </search>
+
+  <element>
+    <type>textfield</type>
+    <tag>NAME</tag>
+    <size>20</size>
+    <maxlength>60</maxlength>
+    <set>(|(cn=*$*)(uid=*$*))</set>
+    <unset>(|(cn=*)(uid=*))</unset>
+    <default></default>
+    <alphabet>true</alphabet>
+  </element>
+
+  <element>
+    <type>checkbox</type>
+    <tag>USERS</tag>
+    <unset></unset>
+    <default>true</default>
+    <set>(objectClass=posixAccount)</set>
+  </element>
+
+   <element>
+    <type>checkbox</type>
+    <tag>HARDWARE</tag>
+    <unset></unset>
+    <default>true</default>
+    <set>(objectClass=GOhard)</set>
+  </element>
+
+  <element>
+    <type>checkbox</type>
+    <tag>NISNETGROUP</tag>
+    <unset></unset>
+    <default>true</default>
+    <set>(objectClass=nisNetgroup)</set>
+  </element>
+
+  <element>
+    <type>checkbox</type>
+    <tag>COMPONENT</tag>
+    <default>true</default>
+    <unset></unset>
+    <set>(objectClass=ieee802Device)</set>
+  </element>
+
+</filterdef>

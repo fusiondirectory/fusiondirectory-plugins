@@ -1,0 +1,266 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Marcel Sandow <MarcelSandow@gmx.de>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gosa-netgroups-plugin\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-06-19 21:41+0200\n"
+"PO-Revision-Date: 2011-06-03 23:28+0100\n"
+"Last-Translator: Marcel Sandow <MarcelSandow@gmx.de>\n"
+"Language-Team: German <>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de\n"
+"X-Poedit-Language: German\n"
+"X-Poedit-Country: GERMANY\n"
+
+#: personal/netgroups/netgroupAccount.tpl:17
+#: admin/systems/netgroups/netgroupSystem.tpl:17
+msgid "Member of the following NIS Netgroups"
+msgstr "Mitglied der folgenden NIS Netgroups"
+
+#: personal/netgroups/netgroupAccount.tpl:24
+#: admin/systems/netgroups/netgroupSystem.tpl:24
+#: admin/netgroups/generic.tpl:79
+msgid "In all NIS Netgroups"
+msgstr "In allen NIS Netgroups"
+
+#: personal/netgroups/netgroupAccount.tpl:27
+#: admin/systems/netgroups/netgroupSystem.tpl:27
+#: admin/netgroups/generic.tpl:82
+msgid "Not in all NIS Netgroups"
+msgstr "Nicht in allen NIS Netgroups"
+
+#: personal/netgroups/class_netgroupAccount.inc:28
+#: admin/systems/netgroups/class_netgroupSystem.inc:28
+#: admin/netgroups/class_netgroup.inc:605 admin/netgroups/netgroup-list.xml:15
+#: admin/netgroups/netgroup-list.xml:79
+#: admin/netgroups/tripleSelect/triple-list.xml:14
+#: admin/netgroups/memberNisnetgroupSelect/memberNisnetgroup-list.xml:14
+msgid "NIS Netgroup"
+msgstr "NIS Netgroup"
+
+#: personal/netgroups/class_netgroupAccount.inc:29
+msgid "Choose NIS Netgroups for the user"
+msgstr "NIS Netgroups für den Benutzer auswählen"
+
+#: personal/netgroups/class_netgroupAccount.inc:303
+#: admin/systems/netgroups/class_netgroupSystem.inc:274
+#: admin/netgroups/class_netgroup.inc:616
+#: admin/netgroups/class_netgroup.inc:761
+msgid "LDAP error"
+msgstr "LDAP Fehler"
+
+#: personal/netgroups/class_netgroupAccount.inc:374
+#: admin/systems/netgroups/class_netgroupSystem.inc:302
+msgid "NIS Netgroup member"
+msgstr "NIS Netgroup Mitglied"
+
+#: personal/netgroups/class_netgroupAccount.inc:382
+#: admin/systems/netgroups/class_netgroupSystem.inc:310
+#: admin/netgroups/class_netgroup.inc:910 admin/netgroups/generic.tpl:72
+msgid "NIS Netgroup members"
+msgstr "NIS Netgroup Mitglieder"
+
+#: admin/systems/netgroups/class_netgroupSystem.inc:29
+msgid "Choose NIS Netgroups for the host"
+msgstr "NIS Netgroups für den Host auswählen"
+
+#: admin/netgroups/class_netgroupManagement.inc:25
+#: admin/netgroups/class_netgroup.inc:905
+msgid "NIS Netgroups"
+msgstr "NIS Netgroups"
+
+#: admin/netgroups/class_netgroupManagement.inc:26
+msgid "NIS Netgroups management"
+msgstr "NIS Netgroups Verwaltung"
+
+#: admin/netgroups/class_netgroup.inc:347
+#: admin/netgroups/class_netgroup.inc:671
+#: admin/netgroups/class_netgroup.inc:934
+msgid "Error"
+msgstr "Fehler"
+
+#: admin/netgroups/class_netgroup.inc:348
+#, fuzzy, php-format
+msgid "Add CN/UID '%s' to NIS netgroup '%s' failed: cannot find object!"
+msgstr ""
+"CN/UID '%s' hinzufügen zur NIS Netgroup '%s' fehlgeschlagen: Objekt nicht "
+"auffindbar!"
+
+#: admin/netgroups/class_netgroup.inc:572
+msgid "! unknown UID/CN"
+msgstr "! UID/CN unbekannt"
+
+#: admin/netgroups/class_netgroup.inc:593
+#: admin/netgroups/class_netgroup.inc:595
+#: admin/netgroups/tripleSelect/triple-list.xml:22
+msgid "User"
+msgstr "Benutzer"
+
+#: admin/netgroups/class_netgroup.inc:597
+msgid "Server"
+msgstr "Server"
+
+#: admin/netgroups/class_netgroup.inc:599
+msgid "Workstation"
+msgstr "Arbeitsplatzrechner"
+
+#: admin/netgroups/class_netgroup.inc:601
+#: admin/netgroups/tripleSelect/triple-list.xml:30
+msgid "Host"
+msgstr "Host"
+
+#: admin/netgroups/class_netgroup.inc:603
+#: admin/netgroups/tripleSelect/triple-list.xml:38
+msgid "Network Device"
+msgstr "Netzwerk Gerät"
+
+#: admin/netgroups/class_netgroup.inc:784
+#: admin/netgroups/class_netgroup.inc:796
+#: admin/netgroups/class_netgroup.inc:798
+#: admin/netgroups/class_netgroup.inc:907 admin/netgroups/netgroup-list.xml:41
+#: admin/netgroups/netgroup-filter.tpl:19
+#: admin/netgroups/tripleSelect/triple-filter.tpl:21
+#: admin/netgroups/memberNisnetgroupSelect/memberNisnetgroup-filter.tpl:17
+msgid "Name"
+msgstr "Name"
+
+#: admin/netgroups/class_netgroup.inc:867
+msgid "NIS Netgroup Error"
+msgstr "NIS Netgroup Fehler"
+
+#: admin/netgroups/class_netgroup.inc:867
+msgid "Error: There are a loop with NIS Netgroups"
+msgstr "Fehler: Es gibt eine Schleife mit NIS Netgroups"
+
+#: admin/netgroups/class_netgroup.inc:869
+msgid "IMPORTANT: Check the members of NIS Netgroup"
+msgstr "WICHTIG: Überprüfen Sie die NIS Netgroup Mitglieder"
+
+#: admin/netgroups/class_netgroup.inc:899
+msgid "Generic"
+msgstr "Allgemein"
+
+#: admin/netgroups/class_netgroup.inc:900
+msgid "Generic NIS Netgroup settings"
+msgstr "Allgemeine NIS Netgroup Einstellungen"
+
+#: admin/netgroups/class_netgroup.inc:908 admin/netgroups/netgroup-list.xml:49
+#: admin/netgroups/generic.tpl:24
+#: admin/netgroups/tripleSelect/triple-list.xml:89
+#: admin/netgroups/memberNisnetgroupSelect/memberNisnetgroup-list.xml:48
+msgid "Description"
+msgstr "Beschreibung"
+
+#: admin/netgroups/class_netgroup.inc:909 admin/netgroups/generic.tpl:39
+#: admin/netgroups/tripleSelect/triple-list.tpl:13
+#: admin/netgroups/netgroup-list.tpl:13
+#: admin/netgroups/memberNisnetgroupSelect/memberNisnetgroup-list.tpl:13
+msgid "Base"
+msgstr "Basis"
+
+#: admin/netgroups/netgroup-list.xml:11
+msgid "List of NIS Netgroups"
+msgstr "NIS Netgroups Liste"
+
+#: admin/netgroups/netgroup-list.xml:57
+msgid "Properties"
+msgstr "Eigenschaften"
+
+#: admin/netgroups/netgroup-list.xml:62
+msgid "Actions"
+msgstr "Aktionen"
+
+#: admin/netgroups/netgroup-list.xml:73
+msgid "Create"
+msgstr "Anlegen"
+
+#: admin/netgroups/netgroup-list.xml:91
+msgid "Edit"
+msgstr "Bearbeiten"
+
+#: admin/netgroups/netgroup-list.xml:98
+msgid "Remove"
+msgstr "Löschen"
+
+#: admin/netgroups/netgroup-list.xml:130
+msgid "Edit NIS Netgroup"
+msgstr "NIS Netgroup bearbeiten"
+
+#: admin/netgroups/netgroup-list.xml:143
+msgid "Remove NIS Netgroup"
+msgstr "NIS Netgroup löschen"
+
+#: admin/netgroups/netgroup-filter.tpl:3
+#: admin/netgroups/tripleSelect/triple-filter.tpl:3
+#: admin/netgroups/memberNisnetgroupSelect/memberNisnetgroup-filter.tpl:3
+msgid "Filter"
+msgstr "Filter"
+
+#: admin/netgroups/netgroup-filter.tpl:11
+msgid "Show NIS Netgroups"
+msgstr "NIS Netgroups anzeigen"
+
+#: admin/netgroups/generic.tpl:11
+msgid "NIS Netgroup name"
+msgstr "NIS Netgroup Name"
+
+#: admin/netgroups/generic.tpl:14
+msgid "Multiple edit"
+msgstr "Mehrere bearbeiten"
+
+#: admin/netgroups/generic.tpl:17
+msgid "Name of the NIS Netgroup"
+msgstr "NIS Netgroup Name"
+
+#: admin/netgroups/generic.tpl:28
+msgid "Descriptive text for this NIS Netgroup"
+msgstr "NIS Netgroup Beschreibung"
+
+#: admin/netgroups/tripleSelect/triple-list.xml:10
+msgid "Please select the desired entries"
+msgstr "Bitte wählen Sie die gewünschten Einträge"
+
+#: admin/netgroups/tripleSelect/triple-list.xml:65
+#: admin/netgroups/memberNisnetgroupSelect/memberNisnetgroup-list.xml:40
+msgid "Common name"
+msgstr "Gewöhnlicher Name"
+
+#: admin/netgroups/tripleSelect/triple-list.xml:73
+msgid "Login"
+msgstr "Login"
+
+#: admin/netgroups/tripleSelect/triple-list.xml:81
+msgid "Surname"
+msgstr "Nachname"
+
+#: admin/netgroups/tripleSelect/triple-filter.tpl:11
+msgid "Show Users"
+msgstr "Benutzer anzeigen"
+
+#: admin/netgroups/tripleSelect/triple-filter.tpl:12
+msgid "Show Hosts"
+msgstr "Hosts anzeigen"
+
+#: admin/netgroups/tripleSelect/triple-filter.tpl:13
+msgid "Show NIS Netgroup"
+msgstr "NIS Netgroup anzeigen"
+
+#: admin/netgroups/memberNisnetgroupSelect/memberNisnetgroup-list.xml:10
+msgid "Please select the desired NIS Netgroups"
+msgstr "Bitte wählen Sie die gewünschten NIS Netgroups"
+
+#~ msgid ""
+#~ "Add CN/UID '%s' to NIS netgroup '%s' failed: CN/UID is used more than "
+#~ "once!"
+#~ msgstr ""
+#~ "CN/UID '%s' hinzufügen zur NIS Netgroup '%s' fehlgeschlagen: CN/UID wurde "
+#~ "mehrfach verwendet!"
+
+#~ msgid "Component"
+#~ msgstr "Komponente"
