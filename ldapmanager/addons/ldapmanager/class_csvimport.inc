@@ -197,7 +197,6 @@ class csvimport extends plugin
                                 $attributes[$key_exp[1]] = $val;
                             }
                         }
-                        print_r($attributes);
                         $uids = gen_uids ($this->config->get_cfg_value("idGenerator"), $attributes);
                         if (!count($uids) || empty($uids[0])){
                             $msgs = sprintf(_("Failed to generate 'uid' for entry '%s'!"), ($i+1));
@@ -229,9 +228,6 @@ class csvimport extends plugin
                                 if(in_array($var,$this->usertab->by_object[$plugin]->attributes)){
                                     $this->usertab->by_object[$plugin]->$var = $dat[$key]; // set the variable
                                     $this->usertab->by_object[$plugin]->is_account = TRUE; // activate the plugin
-                                } else {
-                                    echo $var." n'est pas dans ";
-                                    print_r($this->usertab->by_object[$attributes]->attributes);
                                 }
                             }
                         }

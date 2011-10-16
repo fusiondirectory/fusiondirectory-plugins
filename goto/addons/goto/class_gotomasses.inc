@@ -225,9 +225,7 @@ class gotomasses extends management
       $deleteable_jobs = array();
       $not_deleteable_jobs = array();
       $headpage = $this->getHeadpage();
-        echo "TARGET---";
-        print_r ($target);
-        echo "---<br/>!!!";
+
       foreach($target as $dn){
 
         $tmp = $headpage->getEntry($dn);

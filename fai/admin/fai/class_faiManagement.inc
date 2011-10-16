@@ -71,7 +71,6 @@ class faiManagement extends management
     $releases = $this->getReleaseList();
     $this->fai_release = key($releases);
     
-    print_r($releases);
     if(!isset($releases[$this->fai_release])){
       $this->fai_release = $this->fai_base;
     }
