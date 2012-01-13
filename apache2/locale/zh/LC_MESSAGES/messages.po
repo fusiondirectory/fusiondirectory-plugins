@@ -1,4 +1,4 @@
-# translation of messages.po to Chinese Simplified
+# translation of messages.po to
 #
 # Copyright (C) 2003 GONICUS GmbH, Germany
 # Copyright (C) 2011 FusionDirectory Project
@@ -6,20 +6,21 @@
 #
 #
 #  Jiang Xin <worldhello.net@gmail.com>, 2007.
- 
+# Benoit Mortier <benoit.mortier@opensides.be>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-03-24 23:37+0100\n"
-"PO-Revision-Date: 2007-06-03 12:27+0800\n"
-"Last-Translator: Jiang Xin <worldhello.net@gmail.com>\n"
-"Language-Team: Chinese Simplified <zh@li.org>\n"
+"PO-Revision-Date: 2012-01-13 12:03+0100\n"
+"Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>\n"
+"Language-Team:  <fr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: \n"
 "X-Generator: KBabel 1.11.4\n"
+"Plural-Forms:  nplurals=2; plural=(n > 1);\n"
 
 #: admin/systems/services/apache2/class_servApacheEditVhost.inc:296
 #: admin/systems/services/apache2/class_servApacheEditVhost.inc:315
@@ -92,9 +93,8 @@ msgstr "缓存"
 #: admin/systems/services/apache2/class_servApacheVhost.inc:236
 #: admin/systems/services/apache2/class_servApacheVhost.inc:247
 #: admin/systems/services/apache2/class_servApacheVhost.inc:270
-#, fuzzy
 msgid "LDAP error"
-msgstr "LDAP 错误:"
+msgstr "LDAP 错误"
 
 #: admin/systems/services/apache2/class_servApacheVhost.inc:297
 msgid "Apache virtual host service"
@@ -159,3 +159,4 @@ msgstr "保存"
 #: admin/systems/services/apache2/servApacheVhostEdit.tpl:113
 msgid "Cancel"
 msgstr "取消"
+
