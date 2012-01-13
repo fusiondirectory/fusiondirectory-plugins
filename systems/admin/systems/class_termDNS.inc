@@ -467,9 +467,15 @@ class termDNS extends plugin
 
   function remove_from_parent()
   {
+
+    $ldap = $this->config->get_ldap_link();
+
+    /************
+     * DNS Handling
+     ************/
+
     if($this->DNS_is_account){
 
-      $ldap = $this->config->get_ldap_link();
 
       $tmp = array();
       $this->dnsEntry['exists'] = false;
@@ -483,6 +489,19 @@ class termDNS extends plugin
         if (!$ldap->success()){
           msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_DEL, get_class()));
         }
+      }
+    }
+
+
+    /************
+     * DHCP Handling 
+     ************/
+
+    /* DHCP removed */
+    if($this->dhcp_is_Account){
+      $ldap->rmdir_recursive($this->dhcpHostEntry['dn']);
+      if (!$ldap->success()){
+        msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dhcpHostEntry['dn'], LDAP_DEL, get_class()));
       }
     }
   }
@@ -782,7 +801,7 @@ class termDNS extends plugin
           ($this->dhcpHostEntry['dhcpStatements'] == "" || count($this->dhcpHostEntry['dhcpStatements']) == 0) ){
         unset($this->dhcpHostEntry['dhcpStatements']);
       }
-  
+
       /* DHCP removed */
       if($this->initial_dhcp_is_Account && !$this->dhcp_is_Account){
         $ldap->rmdir_recursive($this->dhcpHostEntry['dn']);
