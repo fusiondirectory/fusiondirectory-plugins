@@ -5,21 +5,21 @@
 # This file is distributed under the same license as the FusionDirectory package.
 #
 #
+# Benoit Mortier <benoit.mortier@opensides.be>, 2012.
 msgid ""
 msgstr ""
-"Project-Id-Version: admin\n"
+"Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: \n"
- 
 "POT-Creation-Date: 2011-03-24 23:37+0100\n"
-"PO-Revision-Date: 2010-01-28 23:27+0100\n"
-"Last-Translator: \n"
-"Language-Team: Spanish <>\n"
+"PO-Revision-Date: 2012-01-13 12:18+0100\n"
+"Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>\n"
+"Language-Team:  <fr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: es\n"
-"X-Generator: Lokalize 1.0\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms:  nplurals=2; plural=(n > 1);\n"
 
 #: admin/systems/services/dns/class_servDNSeditZoneEntries.inc:126
 #: admin/systems/services/dns/servDNSeditZoneEntries.tpl:13
@@ -34,7 +34,7 @@ msgstr "Nueva entrada"
 #: admin/systems/services/dns/class_DNS.inc:650
 #: admin/systems/services/dns/class_servDNSeditZone.inc:204
 msgid "Error"
-msgstr "Error"
+msgstr ""
 
 #: admin/systems/services/dns/class_servDNSeditZoneEntries.inc:240
 #, php-format
@@ -87,8 +87,7 @@ msgstr "Eliminar"
 #: admin/systems/services/dns/class_servDNSeditZoneEntries.inc:529
 #, php-format
 msgid "The syntax of entry %s (record type %s, value %s) is invalid!"
-msgstr ""
-"¡El formato de la entrada %s (registro tipo %s, valor %s) no es válido!"
+msgstr "¡El formato de la entrada %s (registro tipo %s, valor %s) no es válido!"
 
 #: admin/systems/services/dns/class_servDNSeditZoneEntries.inc:529
 msgid "Example"
@@ -177,7 +176,7 @@ msgstr "Zona Inversa"
 #: admin/systems/services/dns/class_servDNS.inc:612
 #: admin/systems/services/dns/servdnseditzone.tpl:129
 msgid "TTL"
-msgstr "TTL"
+msgstr ""
 
 #: admin/systems/services/dns/class_servDNS.inc:291
 msgid "Class"
@@ -186,8 +185,7 @@ msgstr "Clase"
 #: admin/systems/services/dns/class_servDNS.inc:355
 #, php-format
 msgid "Cannot delete the selected zone. It is still in use by '%s'"
-msgstr ""
-"No se puede eliminar la zona seleccionada, porque está siendo usada por '%s'"
+msgstr "No se puede eliminar la zona seleccionada, porque está siendo usada por '%s'"
 
 #: admin/systems/services/dns/class_servDNS.inc:465
 #: admin/systems/services/dns/class_servDNS.inc:481
@@ -283,7 +281,7 @@ msgstr ""
 #, php-format
 msgid "Found more than one reverse zone for '%s'. Parsing zone aborted."
 msgstr ""
-"Se ha encontrado mas de una zona inversa para la zona 's'. Se cancela el "
+"Se ha encontrado mas de una zona inversa para la zona '%s'. Se cancela el "
 "análisis de la zona."
 
 #: admin/systems/services/dns/class_DNS.inc:650
@@ -352,10 +350,8 @@ msgstr "Dirección de red"
 #: admin/systems/services/dns/class_servDNSeditZone.inc:427
 #: admin/systems/services/dns/class_servDNSeditZone.inc:433
 #, php-format
-msgid ""
-"The specified network address and the network class (%s/%s) do not match!"
-msgstr ""
-"¡La dirección de red indicada y la mascara de red (%s/%s) no corresponden!"
+msgid "The specified network address and the network class (%s/%s) do not match!"
+msgstr "¡La dirección de red indicada y la mascara de red (%s/%s) no corresponden!"
 
 #: admin/systems/services/dns/servdnseditzone.tpl:1
 msgid "Generic"
@@ -417,150 +413,3 @@ msgstr ""
 msgid "Create a new DNS zone entry"
 msgstr "Crear una nueva entrada de zona DNS"
 
-#~ msgid "Up"
-#~ msgstr "Arriba"
-
-#~ msgid "Down"
-#~ msgstr "Abajo"
-
-#~ msgid "Remove DNS service"
-#~ msgstr "Eliminar servicio DNS"
-
-#~ msgid ""
-#~ "This server has DNS features enabled. You can disable them by clicking "
-#~ "below."
-#~ msgstr ""
-#~ "Esta servidor tiene la extensión DNS activada. Puede desactivarla "
-#~ "pulsando aquí."
-
-#~ msgid "Add DNS service"
-#~ msgstr "Añadir servicio DNS"
-
-#~ msgid ""
-#~ "This server has DNS features disabled. You can enable them by clicking "
-#~ "below."
-#~ msgstr ""
-#~ "Este servidor tiene la extensión DNS desactivada. Puede activarla "
-#~ "pulsando aquí."
-
-#, fuzzy
-#~ msgid "Service start"
-#~ msgstr "Servicios"
-
-#, fuzzy
-#~ msgid "Service stop"
-#~ msgstr "Servicios"
-
-#, fuzzy
-#~ msgid "Service restart"
-#~ msgstr "Servicios"
-
-#, fuzzy
-#~ msgid "The zone name is not valid!"
-#~ msgstr "La clase de red introducida '%s' no es válida."
-
-#, fuzzy
-#~ msgid "The reverse zone is not valid!"
-#~ msgstr "La clase de red introducida '%s' no es válida."
-
-#, fuzzy
-#~ msgid "Only lowercase characters are allowed in zone names!"
-#~ msgstr "Solo están permitidas minúsculas en el nombre de zona."
-
-#, fuzzy
-#~ msgid "Network address is not valid!"
-#~ msgstr "La clase de red introducida '%s' no es válida."
-
-#, fuzzy
-#~ msgid "The network class '%s' is not valid!"
-#~ msgstr "La clase de red introducida '%s' no es válida."
-
-#~ msgid "Cancel"
-#~ msgstr "Cancelar"
-
-#~ msgid "Save"
-#~ msgstr "Guardar"
-
-#, fuzzy
-#~ msgid "Entry name contains invalid characters."
-#~ msgstr "El nombre de la entrada '%s' tiene caracteres no validos"
-
-#~ msgid "Updating of system server/dns with dn '%s' failed."
-#~ msgstr "Ha fallado la actualización del servidor DNS con dn '%s'."
-
-#~ msgid "Removing of system server/dns with dn '%s' failed."
-#~ msgstr "Ha fallado la eliminación del servidor dns con dn '%s'."
-
-#~ msgid "Saving of system server/dns with dn '%s' failed."
-#~ msgstr "Ha fallado la grabación de servidor dns con dn '%s'."
-
-#~ msgid "Set status flag for system server/dns with dn '%s' failed."
-#~ msgstr ""
-#~ "Ha fallado activar la marca de estado para el servidor dns con dn '%s'."
-
-#~ msgid "Please choose a valid zone name."
-#~ msgstr "Por favor seleccione un nombre de zona válido."
-
-#~ msgid "Please choose a valid reverse zone name."
-#~ msgstr "Por favor seleccione un nombre de zona inversa válido."
-
-#~ msgid "Please specify a numeric value for serial number."
-#~ msgstr "Por favor introduzca un valor numérico para el número de serie."
-
-#~ msgid "Please specify a numeric value for refresh."
-#~ msgstr "Por favor introduzca un valor numérico para el refresco."
-
-#~ msgid "Please specify a numeric value for ttl."
-#~ msgstr "Por favor introduzca un valor numérico para TTL."
-
-#~ msgid "Please specify a numeric value for expire."
-#~ msgstr "Por favor introduzca un valor numérico para expiración."
-
-#~ msgid "Please specify a numeric value for retry."
-#~ msgstr "Por favor introduzca un valor numérico para reintento."
-
-#~ msgid "Only lowercase is allowed, please check your '%ss'."
-#~ msgstr "Solo están permitidas minúsculas, por favor compruebe su '%ss'."
-
-#~ msgid ""
-#~ "The given network address is not a valid, please specify a valid IP "
-#~ "address."
-#~ msgstr ""
-#~ "La dirección de red introducida no es válida, porfavor introduzca una "
-#~ "dirección IP valida."
-
-#~ msgid ""
-#~ "The specified network address is not matching with the specified zone "
-#~ "class, try it this way x.0.0.0"
-#~ msgstr ""
-#~ "La dirección de red introducida no coincide con la clase de zona "
-#~ "indicada, debe ser de la forma x.0.0.0"
-
-#~ msgid ""
-#~ "The specified network address is not matching with the specified zone "
-#~ "class, try it this way x.x.0.0"
-#~ msgstr ""
-#~ "La dirección de red introducida no coincide con la clase de zona "
-#~ "indicada, debe ser de la forma x.x.0.0"
-
-#~ msgid ""
-#~ "The specified network address is not matching with the specified zone "
-#~ "class, try it this way x.x.x.0"
-#~ msgstr ""
-#~ "La dirección de red introducida no coincide con la clase de zona "
-#~ "indicada, debe ser de la forma x.x.x.0"
-
-#~ msgid ""
-#~ "Can't rename '%s' to '%s' there is already an entry with the same name in "
-#~ "our zone editing dialog."
-#~ msgstr ""
-#~ "No puedo renombrar '%s' en '%s', ya existe una entrada con el mismo "
-#~ "nombre en el dialogo de editar zonas."
-
-#~ msgid "The record type '%s' is a unique type and can't be defined twice."
-#~ msgstr ""
-#~ "El tipo de registro '%s' es un tipo único y no puede ser definido dos "
-#~ "veces."
-
-#~ msgid "There is a duplicate entry in '%s' for '%s'."
-#~ msgstr "Hay una entrada duplicada en '%s' para '%s'."
