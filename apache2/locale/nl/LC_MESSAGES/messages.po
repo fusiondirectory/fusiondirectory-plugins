@@ -1,26 +1,28 @@
-# translation of messages.po to Dutch
+# translation of messages.po to
 #
 # Copyright (C) 2003 GONICUS GmbH, Germany
 # Copyright (C) 2011 FusionDirectory Project
 # This file is distributed under the same license as the FusionDirectory package.
 #
 #
-#  Alfred Schroeder <schroeder@GONICUS.de>, 2004. 
-#  Cajus Pollmeier <pollmeier@gonicus.de>, 2004. 
+#  Alfred Schroeder <schroeder@GONICUS.de>, 2004.
+#  Cajus Pollmeier <pollmeier@gonicus.de>, 2004.
 #  Niels Klomp (CareWorks ICT Services) <nk@careworks.nl>, 2005.
- 
+# Benoit Mortier <benoit.mortier@opensides.be>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-03-24 23:37+0100\n"
-"PO-Revision-Date: 2006-06-02 16:58+0100\n"
-"Last-Translator: Niels Klomp (CareWorks ICT Services) <nk@careworks.nl>\n"
-"Language-Team: CareWorks ICT Services <info@careworks.nl>\n"
+"PO-Revision-Date: 2012-01-13 11:59+0100\n"
+"Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>\n"
+"Language-Team:  <fr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: \n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms:  nplurals=2; plural=(n > 1);\n"
 
 #: admin/systems/services/apache2/class_servApacheEditVhost.inc:296
 #: admin/systems/services/apache2/class_servApacheEditVhost.inc:315
@@ -93,9 +95,8 @@ msgstr "Cache"
 #: admin/systems/services/apache2/class_servApacheVhost.inc:236
 #: admin/systems/services/apache2/class_servApacheVhost.inc:247
 #: admin/systems/services/apache2/class_servApacheVhost.inc:270
-#, fuzzy
 msgid "LDAP error"
-msgstr "LDAP fout:"
+msgstr "LDAP fout"
 
 #: admin/systems/services/apache2/class_servApacheVhost.inc:297
 msgid "Apache virtual host service"
@@ -103,7 +104,7 @@ msgstr ""
 
 #: admin/systems/services/apache2/class_servApacheVhost.inc:297
 msgid "Services"
-msgstr "Services"
+msgstr ""
 
 #: admin/systems/services/apache2/class_servApacheVhost.inc:305
 msgid "Virtual hosts"
@@ -160,3 +161,4 @@ msgstr "Opslaan"
 #: admin/systems/services/apache2/servApacheVhostEdit.tpl:113
 msgid "Cancel"
 msgstr "Annuleren"
+
