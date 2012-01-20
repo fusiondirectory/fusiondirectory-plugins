@@ -481,11 +481,6 @@ class workgeneric extends plugin
       }
     }
 
-    /* Check for valid ntpServer selection */
-    if((!$this->inheritTimeServer) && (!count($this->gotoNtpServer))){
-      $message[]= msgPool::required(_("NTP server"));
-    }
-
     /* Only systems with a valid ldap handle can be activated 
      */
     if($this->gotoMode == "active" && $this->initial_gotoMode != "active"){
