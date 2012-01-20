@@ -62,7 +62,7 @@ class wingeneric extends plugin
                             "shadowInactive","uid","cn","sn","givenName","homeDirectory","sambaSID",
                             "sambaPrimaryGroupSID","displayName", "sambaPwdMustChange",
                             "sambaNTPassword","sambaPwdLastSet","sambaAcctFlags");
-  var $objectclasses= array("posixAccount","person","organizationalPerson","inetOrgPerson","gosaAccount","shadowAccount","sambaSamAccount","top");
+  var $objectclasses= array("posixAccount","account","sambaSamAccount","top");
 
   var $view_logged = FALSE;
 
