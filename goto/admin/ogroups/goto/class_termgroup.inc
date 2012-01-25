@@ -28,26 +28,26 @@ class termgroup extends plugin
   /* Stores a list of the member dn's */
   var $member_dn = array();
 
-  var $gotoMode			= "locked";
-  var $gotoSyslogServer		= "";
-  var $gotoNtpServer		= array();
-  var $gotoTerminalPath 	= array();
-  var $gotoSwapServer		= array();
-  var $modes			= array();
-  var $inheritTimeServer	= true;
-  var $is_account		= true; 
-  var $orig_dn			= "";
-  var $didAction		= FALSE;
-  var $mapActions		= array("halt"            => "halt",
-                            		"reboot"          => "reboot",
-                            		"update"          => "update",
-                            		"reinstall"       => "reinstall",
-                            		"rescan"          => "rescan",
-                            		"wake"            => "wakeup",
-			   # These are currently not supported by the tftp daemon
+  var $gotoMode     = "locked";
+  var $gotoSyslogServer   = "";
+  var $gotoNtpServer    = array();
+  var $gotoTerminalPath   = array();
+  var $gotoSwapServer   = array();
+  var $modes      = array();
+  var $inheritTimeServer  = true;
+  var $is_account   = true; 
+  var $orig_dn      = "";
+  var $didAction    = FALSE;
+  var $mapActions   = array("halt"            => "halt",
+                                "reboot"          => "reboot",
+                                "update"          => "update",
+                                "reinstall"       => "reinstall",
+                                "rescan"          => "rescan",
+                                "wake"            => "wakeup",
+         # These are currently not supported by the tftp daemon
                            # "memcheck"        => "memcheck",
                            # "sysinfo"         => "sysinfo"
-			   );
+         );
 
   var $attributes     = array("gotoMode","gotoSyslogServer", "gotoNtpServer", "gotoTerminalPath", "gotoSwapServer");
   var $objectclasses  = array("gotoWorkstationTemplate");
@@ -73,7 +73,7 @@ class termgroup extends plugin
 //    $this->modes["memcheck"]= _("Memory test");
 //    $this->modes["sysinfo"]= _("System analysis");
 
-    $this->orig_dn =	$this->dn;
+    $this->orig_dn =  $this->dn;
 
     /*************** 
       Get mac addresses from member objects  
@@ -164,13 +164,6 @@ class termgroup extends plugin
       $message[]= msgPool::permCreate();
     }
 
-    /* Check for valid ntpServer selection */
-    if((!$this->inheritTimeServer) && (!count($this->gotoNtpServer))){
-      $message[]= msgPool::required(_("NTP server"));
-    }
-    return($message);
-  }
-
   function remove_from_parent()
   {
     /* Workstation startup is using gotoWorkstationTemplate too,
@@ -259,9 +252,9 @@ class termgroup extends plugin
     $smarty= get_smarty();
 
     if (isset($this->parent->by_name['termstartup'])){
-    	$smarty->assign("is_termgroup", "1");
+      $smarty->assign("is_termgroup", "1");
     } else {
-    	$smarty->assign("is_termgroup", "0");
+      $smarty->assign("is_termgroup", "0");
     }
 
     $tmp = $this->plInfo();
@@ -307,7 +300,7 @@ class termgroup extends plugin
 
     /* Variables */
     foreach(array("gotoTerminalPath", "gotoSwapServer") as $val){
-	    $smarty->assign($val."_select", $this->$val);
+      $smarty->assign($val."_select", $this->$val);
     }
 
 
@@ -338,9 +331,9 @@ class termgroup extends plugin
   function save()
   {
     if (isset($this->parent->by_name['termstartup'])){
-    	$this->objectclasses= array("gotoTerminalTemplate");
+      $this->objectclasses= array("gotoTerminalTemplate");
     } else {
-    	$this->objectclasses= array("gotoWorkstationTemplate");
+      $this->objectclasses= array("gotoWorkstationTemplate");
     }
 
     plugin::save();

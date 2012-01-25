@@ -487,11 +487,6 @@ class termgeneric extends plugin
       }
     }
 
-    /* Check for valid ntpServer selection */
-    if((!$this->inheritTimeServer) && (!count($this->gotoNtpServer))){
-      $message[]= msgPool::required(_("NTP server"));
-    }
-
     /* Check if we are allowed to create or move this object
      */
     if($this->orig_dn == "new" && !$this->acl_is_createable($this->base)){
