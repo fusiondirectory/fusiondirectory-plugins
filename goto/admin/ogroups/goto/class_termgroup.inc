@@ -163,6 +163,7 @@ class termgroup extends plugin
     if (!$this->acl_is_createable() && $this->dn == "new"){
       $message[]= msgPool::permCreate();
     }
+  }
 
   function remove_from_parent()
   {
