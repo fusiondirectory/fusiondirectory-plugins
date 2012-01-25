@@ -67,7 +67,7 @@ class servDNSeditZoneEntries extends plugin
     $ldap->ls("(&(objectClass=dNSZone)(!(relativeDomainName=@)))",$this->dn,array("relativeDomainName"));
     
     while($attrs = $ldap->fetch()){
-      $this->Devices[$attrs['relativeDomainName'][0]] = DNS::getDNSHostEntries($config,$attrs['relativeDomainName'][0],true);
+      $this->Devices[$attrs['relativeDomainName'][0]] = DNS::getDNSHostEntries($config,$attrs['relativeDomainName'][0],$this->zoneName,true);
       $this->Devices[$attrs['relativeDomainName'][0]]['OrigCn'] = $attrs['relativeDomainName'][0];
     }
 
@@ -119,7 +119,7 @@ class servDNSeditZoneEntries extends plugin
        */
       if((preg_match("/^UserRecord_?/",$name)) && ($once)){
         $once = false;
-        $entry = DNS::getDNSHostEntries($this->config,"",true);     
+        $entry = DNS::getDNSHostEntries($this->config,"",$this->zoneName,true);
         $entry['exists']    = true;
         $entry['zoneName']  = strtoupper($this->attrs['cn'][0])."/".$this->zoneName; 
         $entry['RECORDS'][] = array("type" => "aRecord" , "value"=>"");
@@ -275,13 +275,13 @@ class servDNSeditZoneEntries extends plugin
       /* Renaming check for existing devices 
        */
       if(isset($device['OrigCn'])  && ($DevName != $device['OrigCn'] )){
-        $ldap->cd($this->config->current['BASE']);
+        $ldap->cd("zoneName=".$this->zoneName.",".$this->attrs['dn']);
         $ldap->search("(relativeDomainName=".$DevName.")",array("relativeDomainName"));
         if($ldap->count()){
           $message[] = sprintf(_("Cannot rename '%s' to '%s'. Entry is already in use."),$device['OrigCn'],$DevName);
         }
       }elseif(!isset($device['OrigCn'])){
-        $ldap->cd($this->config->current['BASE']);
+        $ldap->cd("zoneName=".$this->zoneName.",".$this->attrs['dn']);
         $ldap->search("(relativeDomainName=".$DevName.")",array("relativeDomainName"));
         if($ldap->count()){
           $message[] = sprintf(_("Cannot create '%s'. Entry is already in use."),$DevName);
@@ -354,19 +354,15 @@ class servDNSeditZoneEntries extends plugin
      */
     foreach($this->Devices as $name => $dev){
       if(isset($dev['OrigCn'])){
-        if(count($dev['RECORDS'])){
-          $todo[] = DNS::getDNSHostEntriesDiff($this->config,$dev['OrigCn'],$dev,$name);
-        }else{
+        if(count($dev['RECORDS'])==0){
           $dev['exists'] = false;
-          $todo[] = DNS::getDNSHostEntriesDiff($this->config,$dev['OrigCn'],$dev,$name);
         }
+        $todo[] = DNS::getDNSHostEntriesDiff($this->config,$dev['OrigCn'],$this->zoneName,$dev,$name);
       }else{
-        if(count($dev['RECORDS'])){
-          $todo[] = DNS::getDNSHostEntriesDiff($this->config,"",$dev,$name);
-        }else{
+        if(count($dev['RECORDS'])==0){
           $dev['exists'] = false;
-          $todo[] = DNS::getDNSHostEntriesDiff($this->config,"",$dev,$name);
         }
+        $todo[] = DNS::getDNSHostEntriesDiff($this->config,"",$this->zoneName,$dev,$name);
       }
     }
 

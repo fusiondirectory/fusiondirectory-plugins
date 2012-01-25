@@ -346,9 +346,9 @@ class DNS
 
 
   /* This static function returns the dns-host eintries for given 
-   *  name.
+   *  name in the givenZone.
    */
-  static function getDNSHostEntries($config,$name,$silent = false)
+  static function getDNSHostEntries($config,$name,$zoneName,$silent = false)
   {
     $types = array();
     $ret = array();
@@ -361,8 +361,8 @@ class DNS
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
 
-    /* First check all zones for an entry with the given name.
-     * If the name occurs in more than one entry alert the user ...
+    /* First get all zones, and serach the entry in the given zone.
+     * if zonename empty, all entries in all zone are searched.
      */
     $foundIn = array();
     $zones = DNS::getAvailableZones($config);
@@ -378,22 +378,23 @@ class DNS
     foreach($zonesArr as $nameServer => $nameServerArr){
       $foundInTmp = array();
       foreach($nameServerArr as $zoneArr => $zone){
-
-        /* Strip eventually domain part from hostname 
-         */
-        $zN = trim($zone,".");
-        $nN = trim($name,".");  
-        if(preg_match("/".preg_quote($zN, '/')."$/",$nN)){
-          $nN = preg_replace("/[\.]*".preg_quote($zN, '/')."[\.]*$/","",$nN);
-        }else{
-          $nN = $name;
-        }
-        $zoneMix = $nameServer."/".$zone;
-        $zoneDn = DNS::getDNSZoneDN($config,$zoneMix);
-        $ldap->ls("(&(objectClass=dNSZone)(zoneName=*)(relativeDomainName=".$nN.")(!(relativeDomainName=@)))", $zoneDn,$attrs = array("*"));
-        while($attrs = $ldap->fetch()){
-          $foundInTmp [$zoneMix] = $attrs['dn'];
-          $foundIn [$zoneMix] = $attrs['dn'];
+        if ($zoneName == "" || $zoneName == $zone){
+          /* Strip eventually domain part from hostname 
+           */
+          $zN = trim($zone,".");
+          $nN = trim($name,".");  
+          if(preg_match("/".preg_quote($zN, '/')."$/",$nN)){
+            $nN = preg_replace("/[\.]*".preg_quote($zN, '/')."[\.]*$/","",$nN);
+          }else{
+            $nN = $name;
+          }
+          $zoneMix = $nameServer."/".$zone;
+          $zoneDn = DNS::getDNSZoneDN($config,$zoneMix);
+          $ldap->ls("(&(objectClass=dNSZone)(zoneName=*)(relativeDomainName=".$nN.")(!(relativeDomainName=@)))", $zoneDn,$attrs = array("*"));
+          while($attrs = $ldap->fetch()){
+            $foundInTmp [$zoneMix] = $attrs['dn'];
+            $foundIn [$zoneMix] = $attrs['dn'];
+          }
         }
       }
     }
@@ -404,7 +405,7 @@ class DNS
       return($ret);
     }
 
-    /* Get host informations from zone
+    /* Get host informations from the first zone in the foundIn array
      */ 
     $id_tmp = key($foundIn);
     $ldap->cd($foundIn[$id_tmp]);
@@ -455,9 +456,9 @@ class DNS
    *   - rename, if a dn must be renamed, for example, the relativeDomainName has changed
    *   - add,    if there is a new dns account created    
    */
-  static function getDNSHostEntriesDiff($config,$oldName,$newEntry,$newName)
+  static function getDNSHostEntriesDiff($config,$oldName,$oldZoneName,$newEntry,$newName)
   {
-    $oldEntry = DNS::getDNSHostEntries($config,$oldName);
+    $oldEntry = DNS::getDNSHostEntries($config,$oldName,$oldZoneName);
 
     $add    = array();
     $del    = array();
