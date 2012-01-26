@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<filterdef>
+  <definition>
+    <category>application</category>
+    <template>application-filter-release.tpl</template>
+    <initial>true</initial>
+  </definition>
+
+  <search>
+    <query>
+      <backend>LDAP</backend>
+      <filter>(&amp;(objectClass=gosaApplication)$NAME)</filter>
+      <attribute>dn</attribute>
+      <attribute>objectClass</attribute>
+      <attribute>cn</attribute>
+      <attribute>description</attribute>
+    </query>
+    <scope>auto</scope>
+  </search>
+
+  <element>
+    <tag>RELEASE</tag>
+    <type>combobox</type>
+    <value>Loading.</value>
+    <value>Loading..</value>
+    <value>Loading...</value>
+  </element>
+
+  <element>
+    <type>textfield</type>
+    <tag>NAME</tag>
+    <size>20</size>
+    <maxlength>60</maxlength>
+    <default></default>
+    <unset></unset>
+    <set>(|(cn=*$*)(description=*$*))</set>
+    <alphabet>true</alphabet>
+    <autocomplete>
+      <backend>LDAP</backend>
+      <filter>(&amp;(objectClass=gosaApplication)(|(cn=*$NAME*)(description=*$NAME*)))</filter>
+      <attribute>cn</attribute>
+      <frequency>0.5</frequency>
+      <characters>3</characters>
+    </autocomplete>
+  </element>
+
+</filterdef>

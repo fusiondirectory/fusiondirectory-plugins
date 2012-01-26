@@ -1,0 +1,54 @@
+diff -ur gosa.orig/plugins/admin/systems/class_termDNS.inc gosa/plugins/admin/systems/class_termDNS.inc
+--- gosa.orig/plugins/admin/systems/class_termDNS.inc 2010-02-17 22:56:18.000000000 +0100
++++ gosa/plugins/admin/systems/class_termDNS.inc  2010-02-18 09:33:15.000000000 +0100
+@@ -154,7 +154,7 @@
+ 
+       /* Get Entry 
+        */
+-      $this->dnsEntry     = DNS::getDNSHostEntries($config,$this->OrigCn);
++      $this->dnsEntry     = DNS::getDNSHostEntries($config,$this->OrigCn, $this->getZoneNameFromIp($this->ipHostNumber));
+ 
+       $ptr = DNS::FlipIp($this->get_pTRRecord());
+ 
+@@ -233,6 +233,10 @@
+     }
+   }
+ 
++  function getZoneNameFromIp($ipHostNumber){
++    $idZone = strtoupper($this->cn)."/".substr(strstr(DNS::FlipIp($this->ipHostNumber),"."),1).".in-addr.arpa.";
++    return (DNS::getNameFromMix($this->Zones[$idZone]));
++  }
+ 
+   function netmaskIsCoherent($idZone) 
+   {
+@@ -477,7 +481,7 @@
+ 
+       $tmp = array();
+       $this->dnsEntry['exists'] = false;
+-      $tmp = DNS::getDNSHostEntriesDiff($this->config,$this->OrigCn,$this->dnsEntry,$this->cn);
++      $tmp = DNS::getDNSHostEntriesDiff($this->config,$this->OrigCn,$this->getZoneNameFromIp($this->ipHostNumber), $this->dnsEntry,$this->cn);
+   
+       /* Delete dns */
+       foreach($tmp['del'] as $dn => $del){
+@@ -888,11 +892,10 @@
+        */
+       if((!$this->DNS_is_account)&&($this->initially_was_account)){  
+         $this->dnsEntry['exists'] = false;
+-        $tmp = DNS::getDNSHostEntriesDiff($this->config,$this->OrigCn,$this->dnsEntry,$this->cn);
+       }else{
+         $this->dnsEntry['exists'] = $this->DNS_is_account;
+-        $tmp = DNS::getDNSHostEntriesDiff($this->config,$this->OrigCn,$this->dnsEntry,$this->cn);
+       }   
++      $tmp = DNS::getDNSHostEntriesDiff($this->config,$this->OrigCn,$this->getZoneNameFromIp($this->ipHostNumber),$this->dnsEntry,$this->cn);
+     
+       /* Update SOA record if needed
+        */
+@@ -1202,7 +1205,7 @@
+ 
+   function updateSOARecord()
+   {
+-    $oldEntries = DNS::getDNSHostEntries($this->config,$this->OrigCn);
++    $oldEntries = DNS::getDNSHostEntries($this->config,$this->OrigCn, $this->getZoneNameFromIp($this->ipHostNumber));
+     $newEntries = $this->dnsEntry;
+     if(array_differs($newEntries['RECORDS'],$oldEntries['RECORDS'])){
+       DNS::touchDNSZone($this->config,$this->dnsEntry['zoneName']);

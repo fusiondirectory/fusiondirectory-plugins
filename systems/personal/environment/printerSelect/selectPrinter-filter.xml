@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<filterdef>
+  <definition>
+    <category>printer</category>
+    <template>../plugins/personal/environment/printerSelect/selectPrinter-filter.tpl</template>
+    <initial>true</initial>
+  </definition>
+
+  <search>
+    <query>
+      <backend>LDAPBlacklist</backend>
+      <filter>(&amp;(objectClass=gotoPrinter)$NAME)</filter>
+      <attribute>dn</attribute>
+      <attribute>objectClass</attribute>
+      <attribute>cn</attribute>
+      <attribute>description</attribute>
+    </query>
+    <scope>auto</scope>
+  </search>
+
+  <element>
+    <type>textfield</type>
+    <tag>NAME</tag>
+    <size>20</size>
+    <maxlength>60</maxlength>
+    <default></default>
+    <unset></unset>
+    <set>(|(cn=*$*)(description=*$*))</set>
+    <alphabet>true</alphabet>
+    <autocomplete>
+      <backend>LDAPBlacklist</backend>
+      <filter>(&amp;(objectClass=gotoPrinter)(|(cn=*$NAME*)(description=*$NAME*)))</filter>
+      <attribute>cn</attribute>
+      <frequency>0.5</frequency>
+      <characters>3</characters>
+    </autocomplete>
+  </element>
+
+</filterdef>
