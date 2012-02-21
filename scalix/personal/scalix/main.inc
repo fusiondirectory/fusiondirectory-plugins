@@ -84,7 +84,7 @@ if ( $cleanup ){
     /* No errors, save object */
     if (count ($message) == 0){
       $scalixAccount->save ();
-      gosa_log ("User/scalix object'".$ui->dn."' has been saved");
+      fusiondirectory_log("User/scalix object'".$ui->dn."' has been saved");
       $scalixAccount->acl= "#none#";
       del_lock ($ui->dn);
       session::un_set ('edit');

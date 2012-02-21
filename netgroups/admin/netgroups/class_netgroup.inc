@@ -638,7 +638,7 @@ class netgroup extends plugin {
                 foreach ($entry['members'] as $m_id => $member) {
                     if ($m_id == "G:" . $this->dn || $m_id == "U:" . $this->dn) {
                         unset($acl->gosaAclEntry[$id]['members'][$m_id]);
-                        gosa_log("modify", "netgroups/acl", $attrs['dn'], array(), sprintf("Removed acl for %s on object %s.", $this->dn, $attrs['dn']));
+                        fusiondirectory_log("modify", "netgroups/acl", $attrs['dn'], array(), sprintf("Removed acl for %s on object %s.", $this->dn, $attrs['dn']));
                     }
                 }
             }

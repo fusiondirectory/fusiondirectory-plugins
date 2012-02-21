@@ -665,7 +665,7 @@ class faiPackage extends plugin
         if(in_array($pkgattrs['FAIvariableType'],array("boolean","multiselect","password","select","string","text"))){
 
           if($pkgattrs['FAIvariableType'] == "text" && $pkgattrs['FAIvariableContent'] == ""){
-            gosa_log("Skipped saving FAIvariable '$name' empty string can't be saved.");
+            fusiondirectory_log("Skipped saving FAIvariable '$name' empty string can't be saved.");
           }else{
             FAI::prepare_to_save_FAI_object($pkgdn,$pkgattrs);
           }
