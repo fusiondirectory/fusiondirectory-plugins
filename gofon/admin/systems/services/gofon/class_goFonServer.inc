@@ -21,7 +21,7 @@
 */
 
 class goFonServer extends goService{
-	
+
   var $cli_summary      = "This plugin is used within the ServerService Plugin \nand indicates that this server supports asterisk management.";
   var $cli_description  = "Some longer text\nfor help";
   var $cli_parameters   = array("one" => "One is great", "two" => "Two is better");

@@ -1,8 +1,8 @@
 <input type="hidden" name="TableEntryFrameSubmitted" value="1">
 <h2><img class="center" alt="" src="plugins/fai/images/fai_partitionTable.png" align="middle" title="{t}Generic{/t}">&nbsp;{t}Device{/t}</h2>
 <table style='width:100%' summary="">
-	<tr>
-		<td style='width:50%;border-right:1px solid #909090;'>
+  <tr>
+    <td style='width:50%;border-right:1px solid #909090;'>
 
       <table>
         <tr>
@@ -11,12 +11,12 @@
           </td>
           <td>
 {render acl=$DISKcnACL}
-			      <input type='text' value="{$DISKcn}" size="45" maxlength="80" name="DISKcn" id="DISKcn">
+            <input type='text' value="{$DISKcn}" size="45" maxlength="80" name="DISKcn" id="DISKcn">
 {/render}
-      		</td>
+          </td>
         </tr>
         <tr>
-		      <td>
+          <td>
             <LABEL for="fstabkey">{t}fstab key{/t}</LABEL>
           </td>
           <td>
@@ -25,12 +25,12 @@
                {html_options options=$fstabkeys selected=$fstabkey}
             </select>
 {/render}
-		      </td>
+          </td>
         </tr>
       </table>
 
     </td>
-		<td>
+    <td>
 
       <table>
         <tr>
@@ -39,13 +39,13 @@
           </td>
           <td>
 {render acl=$DISKdescriptionACL}
-			      <input value="{$DISKdescription}" size="45" maxlength="80" 
+            <input value="{$DISKdescription}" size="45" maxlength="80" 
               name="DISKdescription" id="DISKdescription">
 {/render}
-		      </td>
+          </td>
         </tr>
         <tr>
-		      <td>
+          <td>
             <LABEL for="disklabel">{t}Disk label{/t}</LABEL>
           </td>
           <td>
@@ -54,12 +54,12 @@
                {html_options options=$disklabels selected=$disklabel}
             </select>
 {/render}
-		      </td>
+          </td>
         </tr>
       </table>
 
     </td>
-	</tr>
+  </tr>
 </table>
 
 {if $FAIdiskType == "lvm"}
@@ -91,26 +91,26 @@
 {$setup}
 <br>
 {if !$freeze}
-	{if $sub_object_is_createable}
-		<input type="submit" name="AddPartition" value="{t}Add partition{/t}">
-	{else}
-		<input type="submit" name="restricted" value="{t}Add partition{/t}" disabled>
-	{/if}
+  {if $sub_object_is_createable}
+    <input type="submit" name="AddPartition" value="{t}Add partition{/t}">
+  {else}
+    <input type="submit" name="restricted" value="{t}Add partition{/t}" disabled>
+  {/if}
 {/if}
-<br>	
+<br>  
 <br>
 <p class="seperator">&nbsp;</p>
 <br>
 <div style="align:right;" align="right">
 {if !$freeze}
-	<input type="submit" name="SaveDisk" value="{msgPool type=saveButton}">
+  <input type="submit" name="SaveDisk" value="{msgPool type=saveButton}">
 {/if}
 <input type="submit" name="CancelDisk" value="{msgPool type=cancelButton}" >
 </div>
 <!-- Place cursor -->
 <script language="JavaScript" type="text/javascript">
   <!-- // First input field on page
-	focus_field('DISK_cn');
+  focus_field('DISK_cn');
   -->
 </script>
 

@@ -21,7 +21,7 @@
 */
 
 class goImapServer extends goService {
-	
+
   var $cli_summary      = "";
   var $cli_description  = "Some longer text\nfor help";
   var $cli_parameters   = array("one" => "one is nice", "two" => "two is better");

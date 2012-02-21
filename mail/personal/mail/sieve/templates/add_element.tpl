@@ -2,7 +2,7 @@
 {t}Please select the type of element you want to add{/t}
 <br>
 <select name='element_type'>
-	{html_options options=$element_types selected=$element_type}
+  {html_options options=$element_types selected=$element_type}
 </select>
 
 <p class='seperator'>&nbsp;</p>

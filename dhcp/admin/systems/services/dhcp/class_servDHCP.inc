@@ -39,7 +39,7 @@ class servdhcp extends goService
   var $types= array();
   var $serviceDN= "";
 
-	var $quote_option = array("domain-name");
+  var $quote_option = array("domain-name");
 
   var $orig_dn = "";
 
@@ -72,7 +72,7 @@ class servdhcp extends goService
 
     /* Backport: PHP4 compatibility  */
     foreach($this->types as $type => $translation){
-	    $this->types[strtolower($type)] = $translation;
+      $this->types[strtolower($type)] = $translation;
     }
 
     /* Load information about available services */
@@ -170,13 +170,13 @@ class servdhcp extends goService
         $dn= $this->dialog->dn;
         $class= get_class($this->dialog);
         $type= $this->types[$class];
-		if(empty($this->serviceDN)){
-			$indent= substr_count(preg_replace("/".$this->dn."/", '', $dn), ",") -1;
-		}else{
-			$indent= substr_count(preg_replace("/".$this->serviceDN."/", '', $dn), ",");
-		}
-		$spaces= "";
-		for ($i= 0; $i<$indent; $i++){
+    if(empty($this->serviceDN)){
+      $indent= substr_count(preg_replace("/".$this->dn."/", '', $dn), ",") -1;
+    }else{
+      $indent= substr_count(preg_replace("/".$this->serviceDN."/", '', $dn), ",");
+    }
+    $spaces= "";
+    for ($i= 0; $i<$indent; $i++){
           $spaces.= "&nbsp;&nbsp;&nbsp;&nbsp;";
         }
         $data= $this->dialog->save();
@@ -361,7 +361,7 @@ class servdhcp extends goService
       "<input type='image' src='images/lists/edit.png' name='editDhcp_%s' title='"._("Edit DHCP section")."'>";
     $editImg = "<input type='image' src='images/lists/edit.png' name='editDhcp_%s' title='"._("Edit DHCP section")."'>".
       "<input type='image' src='images/lists/trash.png' name='delDhcp_%s' title='"._("Remove DHCP section")."'>";
-      	
+        
     $tmp = new dhcpNewSectionDialog(NULL);
     foreach($this->dhcpSections as $section => $values ){
 
@@ -374,7 +374,7 @@ class servdhcp extends goService
       $id = array_search($section,$this->dhcpDNtoID);
    
       $values = "<a href='?plug=".$_GET['plug']."&act=edit&id=".$id."'>".$values."</a>";
-	
+  
       $objtype = $this->objectType($section);
       $dhcpObject = new $objtype($this,$this->dhcpObjectCache[$section]);
       if (count($tmp->sectionMap[$objtype])){

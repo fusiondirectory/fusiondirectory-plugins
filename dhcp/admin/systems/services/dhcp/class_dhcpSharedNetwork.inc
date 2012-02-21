@@ -104,11 +104,10 @@ class dhcpSharedNetwork extends dhcpPlugin
   /* Save data to object */
   function save_object()
   {
-	/* Check permissions, don't touch anything if we do not have write permissions 
-     */
+    /* Check permissions, don't touch anything if we do not have write permissions */
     if (!preg_match("/w/",$this->parent->getacl(""))){
       dhcpPlugin::save_object();
-	}elseif(isset($_POST['cn'])){
+  }elseif(isset($_POST['cn'])){
 
       $this->cn= validate(get_post('cn'));
       dhcpPlugin::save_object();
@@ -146,7 +145,7 @@ class dhcpSharedNetwork extends dhcpPlugin
   {
     $message= array();
 
-	$cache = $this->parent->dhcpObjectCache;
+  $cache = $this->parent->dhcpObjectCache;
 
     /* All required fields are set? */
     if ($this->cn == ""){

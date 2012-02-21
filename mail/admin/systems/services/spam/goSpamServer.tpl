@@ -39,7 +39,7 @@
       </select><br>
 {/render}
 {render acl=$saTrustedNetworksACL}
-      <input type='text'	name='NewTrustName' value=''>&nbsp;
+      <input type='text'  name='NewTrustName' value=''>&nbsp;
 {/render}
 {render acl=$saTrustedNetworksACL}
       <input type='submit'      name='AddNewTrust'  value='{msgPool type=addButton}'>
@@ -60,8 +60,8 @@
  </tr>
  <tr>
   <td>
-	<h2>Flags</h2>
-	
+  <h2>Flags</h2>
+
    <table>
     <tr>
      <td>

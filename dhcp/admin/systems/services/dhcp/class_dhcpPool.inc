@@ -97,7 +97,7 @@ class dhcpPool extends dhcpPlugin
   {
     $message= array();
 
-	$cache = $this->parent->dhcpObjectCache;
+    $cache = $this->parent->dhcpObjectCache;
 
     /* All required fields are set? */
     if ($this->cn == ""){

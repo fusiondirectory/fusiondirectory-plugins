@@ -26,7 +26,7 @@ class faiSummaryTab extends plugin{
   var $Release        = "";
   var $Releases       = array();
   var $Result         = array();
-  var $objs	          = array();
+  var $objs           = array();
   var $ObjectList     = "";
   var $is_dialog      = false;
   var $InitCalled     = false;
@@ -42,14 +42,14 @@ class faiSummaryTab extends plugin{
     $this->ui = get_userinfo();
 
     /* Base object configuration */
-    $this->objs = array(	
-        "FAIscript" 		    => array(	"Image"	=>"plugins/fai/images/fai_script.png",        "Name"=>_("Scripts")      ,"Tree"	=>get_ou('faiScriptRDN')) ,
-        "FAIhook" 			    => array(	"Image"	=>"plugins/fai/images/fai_hook.png" ,         "Name"=>_("Hooks")        ,"Tree"	=>get_ou('faiHookRDN')),
-        "FAIvariable" 		  => array(	"Image"	=>"plugins/fai/images/fai_variable.png",      "Name"=>_("Variables")    ,"Tree"	=>get_ou('faiVariableRDN')) ,
-        "FAItemplate" 		  => array(	"Image"	=>"plugins/fai/images/fai_template.png",      "Name"=>_("Templates")    ,"Tree"	=>get_ou('faiTemplateRDN')) ,
-        "FAIpartitionTable" => array(	"Image"	=>"plugins/fai/images/fai_partitionTable.png","Name"=>_("Partition table")  ,"Tree"	=>get_ou('faiPartitionRDN')) ,
-        "FAIpackageList" 	  => array(	"Image" =>"plugins/fai/images/fai_packages.png",      "Name"=>_("Package list") ,"Tree"	=>get_ou('faiPackageRDN')) ,
-        "FAIprofile" 		    => array(	"Image"	=>"plugins/fai/images/fai_profile.png",       "Name"=>_("Profiles")     ,"Tree"	=>get_ou('faiProfileRDN')));
+    $this->objs = array(  
+        "FAIscript"         => array( "Image" =>"plugins/fai/images/fai_script.png",        "Name"=>_("Scripts")      ,"Tree" =>get_ou('faiScriptRDN')) ,
+        "FAIhook"           => array( "Image" =>"plugins/fai/images/fai_hook.png" ,         "Name"=>_("Hooks")        ,"Tree" =>get_ou('faiHookRDN')),
+        "FAIvariable"       => array( "Image" =>"plugins/fai/images/fai_variable.png",      "Name"=>_("Variables")    ,"Tree" =>get_ou('faiVariableRDN')) ,
+        "FAItemplate"       => array( "Image" =>"plugins/fai/images/fai_template.png",      "Name"=>_("Templates")    ,"Tree" =>get_ou('faiTemplateRDN')) ,
+        "FAIpartitionTable" => array( "Image" =>"plugins/fai/images/fai_partitionTable.png","Name"=>_("Partition table")  ,"Tree" =>get_ou('faiPartitionRDN')) ,
+        "FAIpackageList"    => array( "Image" =>"plugins/fai/images/fai_packages.png",      "Name"=>_("Package list") ,"Tree" =>get_ou('faiPackageRDN')) ,
+        "FAIprofile"        => array( "Image" =>"plugins/fai/images/fai_profile.png",       "Name"=>_("Profiles")     ,"Tree" =>get_ou('faiProfileRDN')));
   }
 
 
@@ -229,7 +229,7 @@ class faiSummaryTab extends plugin{
       return($str);
     }
 
-    /* walk through all classes */	
+    /* walk through all classes */  
     foreach($data as $key => $entry){
       
       $image = "<img src='".$this->objs[$key]['Image']."' class='center' alt='".$this->objs[$key]['Name']."' border=0>";
@@ -382,7 +382,7 @@ class faiSummaryTab extends plugin{
         }
       }
     }
-    $str .="</table>";	
+    $str .="</table>";  
     return($str);
   }
 
@@ -390,9 +390,9 @@ class faiSummaryTab extends plugin{
   /* resolve specified object to append it to our object tree */
   function resolveObject($class)
   {
-    $ldap 	          = $this->config->get_ldap_link();
+    $ldap             = $this->config->get_ldap_link();
     if(isset($this->Releases[$this->Release])){
-      $dn 	            = $this->Releases[$this->Release];
+      $dn               = $this->Releases[$this->Release];
     }else{
       return(FALSE);
     }
@@ -413,13 +413,13 @@ class faiSummaryTab extends plugin{
             if(!isset($this->usedClasses[$key][$class])){
               $this->usedClasses[$key][$class] = true;
               switch($key){
-                case "FAIprofile": 		        $this->prepare_FAIprofile($attrs);break;
-                case "FAIscript": 		        $this->prepare_FAIscript($attrs);break;
-                case "FAIhook": 		          $this->prepare_FAIhook($attrs);break;
-                case "FAIvariable":		        $this->prepare_FAIvariable($attrs);break;
-                case "FAItemplate":		        $this->prepare_FAItemplate($attrs);break;
-                case "FAIpackageList":	      $this->prepare_FAIpackageList($attrs);break;
-                case "FAIpartitionTable":	    $this->prepare_FAIpartitionTable($attrs);break;
+                case "FAIprofile":            $this->prepare_FAIprofile($attrs);break;
+                case "FAIscript":             $this->prepare_FAIscript($attrs);break;
+                case "FAIhook":               $this->prepare_FAIhook($attrs);break;
+                case "FAIvariable":           $this->prepare_FAIvariable($attrs);break;
+                case "FAItemplate":           $this->prepare_FAItemplate($attrs);break;
+                case "FAIpackageList":        $this->prepare_FAIpackageList($attrs);break;
+                case "FAIpartitionTable":     $this->prepare_FAIpartitionTable($attrs);break;
               }
             }
 
@@ -492,7 +492,7 @@ class faiSummaryTab extends plugin{
   }
 
 
-  /* Create template entry */	
+  /* Create template entry */ 
   function prepare_FAItemplate($data)
   {
     $current = array();
@@ -511,7 +511,7 @@ class faiSummaryTab extends plugin{
   }
 
 
-  /* Create a package list  */	
+  /* Create a package list  */  
   function prepare_FAIpackageList($data)
   {
     $current = array();
@@ -530,7 +530,7 @@ class faiSummaryTab extends plugin{
   }
 
 
-  /* Create a variable entry */	
+  /* Create a variable entry */ 
   function prepare_FAIvariable($data)
   {
     $current = array();
@@ -547,7 +547,7 @@ class faiSummaryTab extends plugin{
     $this->Result['FAIvariable']['Entries'] = $current ;
   }
 
-  /* Create a hook entry */	
+  /* Create a hook entry */ 
   function prepare_FAIhook($data)
   {
     $current = array();

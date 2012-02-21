@@ -21,7 +21,7 @@
 */
 
 class govirusserver extends goService{
-	
+
   /* This plugin only writes its objectClass */
   var $objectclasses    = array("goVirusServer");
   var $attributes       = array("avMaxThreads","avMaxDirectoryRecursions","avUser","avFlags","avArchiveMaxFileSize","avArchiveMaxRecursion",

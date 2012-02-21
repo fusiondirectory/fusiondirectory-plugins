@@ -37,59 +37,59 @@ class addressbookgosa extends plugin{
 
 class addressbook extends plugin
 {
-	/* Definitions */
-	var $plHeadline   = "Addressbook";
-	var $plDescription= "The addressbook plugin show internal users and external ones";
+  /* Definitions */
+  var $plHeadline   = "Addressbook";
+  var $plDescription= "The addressbook plugin show internal users and external ones";
 
   /* Generic */
   var $ui;  
 
-	/* Phonelist attributes */
-	var $telephone_list   = array();
-	var $new_dn           = "";
-	var $orig_cn          = "";
-	var $storage_base     = "";
-	var $orig_storage_base= "";
+  /* Phonelist attributes */
+  var $telephone_list   = array();
+  var $new_dn           = "";
+  var $orig_cn          = "";
+  var $storage_base     = "";
+  var $orig_storage_base= "";
 
   /* Filter attributes */
-	var $start            = 0;
-	var $search_for       = "*";
-	var $search_base      = "";
-	var $search_type      = "";
-	var $range            = 20;
+  var $start            = 0;
+  var $search_for       = "*";
+  var $search_base      = "";
+  var $search_type      = "";
+  var $range            = 20;
 
   /* Currently edited/added entry attributes */
-	var $sn                       = "";
-	var $cn                       = "";
-	var $givenName                = "";
-	var $mail                     = "";
-	var $title                    = "";
-	var $personalTitle            = "";
-	var $initials                 = "";
-	var $homePostalAddress        = "";
-	var $homePhone                = "";
-	var $mobile                   = "";
-	var $o                        = "";
-	var $postalAddress            = "";
-	var $l                        = "";
-	var $postalCode               = "";
-	var $st                       = "";
-	var $ou                       = "";
-	var $telephoneNumber          = "";
-	var $facsimileTelephoneNumber = "";
-	var $pager                    = "";
+  var $sn                       = "";
+  var $cn                       = "";
+  var $givenName                = "";
+  var $mail                     = "";
+  var $title                    = "";
+  var $personalTitle            = "";
+  var $initials                 = "";
+  var $homePostalAddress        = "";
+  var $homePhone                = "";
+  var $mobile                   = "";
+  var $o                        = "";
+  var $postalAddress            = "";
+  var $l                        = "";
+  var $postalCode               = "";
+  var $st                       = "";
+  var $ou                       = "";
+  var $telephoneNumber          = "";
+  var $facsimileTelephoneNumber = "";
+  var $pager                    = "";
   var $view_logged              = FALSE;
 
-	/* attribute list for save action */
-	var $attributes= array("sn", "givenName", "mail", "title",
-			"initials", "homePostalAddress", "displayName",
-			"homePhone", "mobile", "o", "postalAddress", "l",
-			"postalCode", "st", "ou", "telephoneNumber",
-			"facsimileTelephoneNumber", "pager");
+  /* attribute list for save action */
+  var $attributes= array("sn", "givenName", "mail", "title",
+      "initials", "homePostalAddress", "displayName",
+      "homePhone", "mobile", "o", "postalAddress", "l",
+      "postalCode", "st", "ou", "telephoneNumber",
+      "facsimileTelephoneNumber", "pager");
 
-	var $objectclasses= array("top", "person", "organizationalPerson", "inetOrgPerson");
+  var $objectclasses= array("top", "person", "organizationalPerson", "inetOrgPerson");
 
-	var $abobjectclass= "dc=addressbook";
+  var $abobjectclass= "dc=addressbook";
   var $acl_targets_objects = array();
 
   function addressbook (&$config, $dn= NULL)
@@ -216,7 +216,7 @@ class addressbook extends plugin
           return($smarty->fetch(get_template_path('dial.tpl', TRUE)));
           return;
         } else {
-      	  msg_dialog::display(_("Error"), _("You need to set your personal phone number in order to perform direct dials."), ERROR_DIALOG);
+          msg_dialog::display(_("Error"), _("You need to set your personal phone number in order to perform direct dials."), ERROR_DIALOG);
         }
       }
 
@@ -253,7 +253,7 @@ class addressbook extends plugin
 
         /* Normally this shouldn't be reached, send some extra
            logs to notify the administrator */
-	      msg_dialog::display(_("Permission"),permDelete($this->dn),ERROR_DIALOG);
+        msg_dialog::display(_("Permission"),permDelete($this->dn),ERROR_DIALOG);
         new log("remove","addressbook/".get_class($this),$this->dn,array(),"Warning: '".$this->ui->uid."' tried to trick address book deletion.");
       }
 
@@ -361,7 +361,7 @@ class addressbook extends plugin
 
           /* Obviously the user isn't allowed to delete. Show message and
              clean session. */
-	        msg_dialog::display(_("Permission"),permDelete($this->dn),ERROR_DIALOG);
+          msg_dialog::display(_("Permission"),permDelete($this->dn),ERROR_DIALOG);
         }
       }
       session::set('show_info',"ADD");
@@ -647,7 +647,7 @@ class addressbook extends plugin
       if(isset($_POST['EntryPerPage'])){
         $this->range = $_POST['EntryPerPage'];
       }
-      $range = $this->range;	
+      $range = $this->range;  
       $smarty->assign("internal", 1);
     }
     if (isset($_GET['start'])){

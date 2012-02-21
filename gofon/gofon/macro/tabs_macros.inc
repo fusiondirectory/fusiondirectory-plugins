@@ -25,19 +25,19 @@ class macrotabs extends tabs
 
   function macrotabs($config, $data, $dn,$category)
   {
-	  tabs::tabs($config, $data, $dn,$category);
+    tabs::tabs($config, $data, $dn,$category);
 
-	  /* Add references/acls/snapshots */
-	  $this->addSpecialTabs();
+    /* Add references/acls/snapshots */
+    $this->addSpecialTabs();
   }
 
   function save($ignore_account= FALSE)
   {
-	$baseobject= $this->by_object['macro'];
+  $baseobject= $this->by_object['macro'];
 
-	/* Check for new 'dn', in order to propagate the
-	   'dn' to all plugins */
-	$new_dn= "cn=".$baseobject->cn.",".get_ou('phoneMacroRDN').$baseobject->base;
+  /* Check for new 'dn', in order to propagate the
+     'dn' to all plugins */
+  $new_dn= "cn=".$baseobject->cn.",".get_ou('phoneMacroRDN').$baseobject->base;
 
         /* Move group? */
         if ($this->dn != $new_dn){
@@ -51,8 +51,8 @@ class macrotabs extends tabs
                 /* Happen to use the new one */
                 $this->dn= $new_dn;
         }
-		
-	tabs::save();
+    
+  tabs::save();
   }
 
 }

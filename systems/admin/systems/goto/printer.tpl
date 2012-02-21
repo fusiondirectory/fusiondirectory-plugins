@@ -39,12 +39,12 @@
    <table summary="">
 {if !$StandAlone}
       <tr> 
-	 <td><LABEL for="description">{t}Description{/t}</LABEL></td> 
-	 <td> 
-	{render acl=$descriptionACL} 
-	   <input type='text' id="description" name="description" size=25 maxlength=80 value="{$description}"> 
-	{/render} 
-	 </td> 
+  <td><LABEL for="description">{t}Description{/t}</LABEL></td> 
+  <td> 
+  {render acl=$descriptionACL} 
+     <input type='text' id="description" name="description" size=25 maxlength=80 value="{$description}"> 
+  {/render} 
+   </td> 
       </tr> 
 {/if} 
      <tr>
@@ -153,6 +153,6 @@
 
   <!-- // First input field on page
   if(document.mainform.cn)
-	focus_field('cn');
+  focus_field('cn');
   -->
 </script>

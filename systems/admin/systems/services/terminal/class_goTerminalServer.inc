@@ -21,7 +21,7 @@
 */
 
 class goTerminalServer extends goService{
-	
+
   /* This plugin only writes its objectClass */
   var $objectclasses    = array("goTerminalServer");
   var $attributes       = array("goXdmcpIsEnabled","gotoSessionType");
@@ -30,15 +30,15 @@ class goTerminalServer extends goService{
   /* This class can't be assigned twice so it conflicts with itsself */
   var $conflicts        = array("goTerminalServer");
 
-  var $DisplayName		= "";
-  var $dn			= NULL;
+  var $DisplayName    = "";
+  var $dn     = NULL;
   var $acl;
-  var $cn			= "";
-  var $goTerminalServerStatus	= "";
-  var $goXdmcpIsEnabled		= false;  
-  var $view_logged		= FALSE;
+  var $cn     = "";
+  var $goTerminalServerStatus = "";
+  var $goXdmcpIsEnabled   = false;  
+  var $view_logged    = FALSE;
 
-  var $gotoSessionType		= array();
+  var $gotoSessionType    = array();
 
   function goTerminalServer(&$config,$dn)
   {

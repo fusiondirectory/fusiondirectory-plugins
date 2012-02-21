@@ -1,5 +1,5 @@
 <div style="font-size: 18px;">
-	{t}Create new DHCP section{/t}
+  {t}Create new DHCP section{/t}
 </div>
 <br>
 <p class="seperator">
@@ -16,10 +16,10 @@
   &nbsp;
   <input type=submit name="cancel_section" value="{msgPool type=cancelButton}">
 </p>
-	
+
 <!-- Place cursor -->
 <script language="JavaScript" type="text/javascript">
-	<!--
-	focus_field('section');
-	-->
+  <!--
+  focus_field('section');
+  -->
 </script>

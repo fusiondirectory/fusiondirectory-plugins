@@ -35,12 +35,12 @@
 <tr>
     <td style="width:100%;vertical-align:top;">
 <h2>{t}Zones{/t}</h2>
-		  {$ZoneList}
-		  {if $is_createable}
-		  <input type="submit" name="AddZone" value="{msgPool type=addButton}">
-		  {else}
-		  <input type="button" value="{msgPool type=addButton}" disabled>
-		  {/if}
+      {$ZoneList}
+      {if $is_createable}
+      <input type="submit" name="AddZone" value="{msgPool type=addButton}">
+      {else}
+      <input type="button" value="{msgPool type=addButton}" disabled>
+      {/if}
     </td>
 </tr>
 </table>
@@ -48,7 +48,7 @@
 
 <script language="JavaScript" type="text/javascript">
   <!-- // First input field on page
-	focus_field('AddZone');
+  focus_field('AddZone');
   -->
 </script>
 

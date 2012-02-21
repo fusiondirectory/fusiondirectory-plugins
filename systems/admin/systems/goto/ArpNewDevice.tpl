@@ -41,10 +41,10 @@
     <tr>
      <td> 
       {t}System type{/t}&nbsp;
-	  <select {if !$gotoIntegration} disabled {/if}
+      <select {if !$gotoIntegration} disabled {/if}
       id="SystemType"
       name="SystemType" title="{t}System type{/t}" style="width:120px;"
-			onChange="document.mainform.submit();">
+      onChange="document.mainform.submit();">
        {html_options values=$SystemTypeKeys output=$SystemTypes selected=$SystemType}
       </select>
      </td>
@@ -56,10 +56,10 @@
     <tr>
      <td> 
       {t}Choose an object group as template{/t}&nbsp;
-	    <select {if !$gotoIntegration} disabled {/if}
+      <select {if !$gotoIntegration} disabled {/if}
         id="ObjectGroup"
         name="ObjectGroup" title="{t}Object group{/t}" style="width:120px;">
-		  <option value='none'>{t}none{/t}</option>	
+      <option value='none'>{t}none{/t}</option> 
        {html_options options=$ogroups selected=$ObjectGroup}
       </select>
      </td>

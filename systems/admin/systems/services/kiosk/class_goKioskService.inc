@@ -21,7 +21,7 @@
 */
 
 class goKioskService extends goService{
-	
+
   /* This plugin only writes its objectClass */
   var $objectclasses    = array("goEnvironmentServer");
   var $attributes       = array("gotoKioskProfile");

@@ -21,7 +21,7 @@
 */
 
 class goCupsServer extends goService{
-	
+
   var $cli_summary      = "This plugin is used within the ServerService Pluign \nand indicates that this server supports cups management.";
   var $cli_description  = "Some longer text\nfor help";
   var $cli_parameters   = array("eins" => "Eins ist toll", "zwei" => "Zwei ist noch besser");

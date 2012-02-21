@@ -28,21 +28,21 @@ class fonreport extends plugin
   var $plIcon       = "plugins/gofon/images/phonereport.png";
 
   /* For internal use */
-  var $start		= 0;
-  var $search_for	= "*";
-  var $search_base	= "";
-  var $fields		= array("calldate", "src", "dst", "channel", "lastapp", "disposition", "duration");
-  var $year		= "";
-  var $month		= "";
-  var $sort		= 0;
-  var $sort_direction	= "down";
-  var $report_list	= array();
-  var $userfilter	= "";
-  var $ui		= NULL;
-  var $range 		= 20;
-  var $EntryPerPage	= 20;
+  var $start    = 0;
+  var $search_for = "*";
+  var $search_base  = "";
+  var $fields   = array("calldate", "src", "dst", "channel", "lastapp", "disposition", "duration");
+  var $year   = "";
+  var $month    = "";
+  var $sort   = 0;
+  var $sort_direction = "down";
+  var $report_list  = array();
+  var $userfilter = "";
+  var $ui   = NULL;
+  var $range    = 20;
+  var $EntryPerPage = 20;
 
-  var $selected_server	= "";
+  var $selected_server  = "";
 
   /* attribute list for save action */
   var $attributes_SO  = array("start","search_for","search_base","range","month","sort_direction","sort","year");
@@ -53,8 +53,8 @@ class fonreport extends plugin
   function fonreport (&$config, $ui)
   {
     /* Include config object */
-    $this->config			= $config;
-    $this->ui				  = $ui;
+    $this->config     = $config;
+    $this->ui         = $ui;
     $this->search_base= get_base_from_people($ui->dn);
   
     $this->month      = date("m");
@@ -275,18 +275,18 @@ class fonreport extends plugin
       }
   
       $append_str = "";
-      $append_str .= 	"<td>".$date_str."</td>";
+      $append_str .=  "<td>".$date_str."</td>";
 
       foreach(array("src","dst","channel","lastapp","disposition") as $atr){
         if(isset($line[$atr])){
-          $append_str .= 	"<td>".$line[$atr]."</td>";
+          $append_str .=  "<td>".$line[$atr]."</td>";
         }
       }
 
       if($this->ui->get_permissions($this->search_base,"fonreport/fonreport","duration")){
-        $append_str .= 	"<td>".$this->gen_duration($line["duration"])."</td>";
+        $append_str .=  "<td>".$this->gen_duration($line["duration"])."</td>";
       }else{
-        $append_str .= 	"<td>".$no_acl."</td>";
+        $append_str .=  "<td>".$no_acl."</td>";
       }
       $report_list[] = $append_str;
     }
@@ -401,7 +401,7 @@ class fonreport extends plugin
     $fields_str ="";
     foreach($this->fields as $field){
       if($field == "calldate") {
-        continue;	
+        continue; 
       }
       $fields_str .= $field.", ";
     }

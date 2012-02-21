@@ -29,37 +29,37 @@ define("SIEVE_INDENT_TAB","  ");
  */
 class My_Parser extends Parser 
 {
-	var $parent = NULL;
-	var $registeredExtensions_ =array();
+  var $parent = NULL;
+  var $registeredExtensions_ =array();
 
-	function My_Parser($parent)
-	{
-		$this->registeredExtensions_ = array();		
-		$this->parent = $parent;
-	}
+  function My_Parser($parent)
+  {
+    $this->registeredExtensions_ = array();   
+    $this->parent = $parent;
+  }
 
-	function execute()
-	{
-		$ret = $this->dumpParseTree();
-		return($ret);
-	}
-	
+  function execute()
+  {
+    $ret = $this->dumpParseTree();
+    return($ret);
+  }
+  
 
-	/* Check if there are errors, collect them and return them */
-	function check()
-	{
-		return($this->tree_->check());
-	}
-	
+  /* Check if there are errors, collect them and return them */
+  function check()
+  {
+    return($this->tree_->check());
+  }
+  
 
-	/* Initiate parser, but use some other 
+  /* Initiate parser, but use some other 
      *  classes, that are rewritten.
      */
-	function parse($script) 
-	{
-		$script = preg_replace("/^###GOSA/","",$script);
+  function parse($script) 
+  {
+    $script = preg_replace("/^###GOSA/","",$script);
 
-		$this->registeredExtensions_ = array();
+    $this->registeredExtensions_ = array();
         $this->status_text = "incomplete";
         $this->script_ = $script;
         $this->tree_ = new My_Tree(@Scanner::scriptStart(),$this);
@@ -70,29 +70,31 @@ class My_Parser extends Parser
         if ($this->commands_($this->tree_->getRoot()) &&
             $this->scanner_->nextTokenIs('script-end'))
         {
-   			$this->scanner_->nextToken(); 
+        $this->scanner_->nextToken(); 
             return $this->success_('success');
         }
 
         return $this->status_;
-	}
+  }
 
-	
-	function get_sieve_script()
-	{
-		return("###GOSA\n".$this->tree_->get_sieve_script());
-	}		
+  
+  function get_sieve_script()
+  {
+    return("###GOSA\n".$this->tree_->get_sieve_script());
+  }   
 
-	
-	function save_object()
-	{
-		$this->tree_->save_object();
-	}
+  
+  function save_object()
+  {
+    $this->tree_->save_object();
+  }
 
 
-	function dumpParseTree()
-	{
-		return $this->tree_->execute();
-	}
+  function dumpParseTree()
+  {
+    return $this->tree_->execute();
+  }
 }
+// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
+
 ?>

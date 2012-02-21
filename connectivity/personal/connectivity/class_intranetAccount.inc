@@ -48,8 +48,8 @@ class intranetAccount extends plugin
 
   /*! \brief Konstructor  
 
-    \param $config 	The Config Object used to initialise plugin
-    \param $dn 		The DN of the currently edited entry	
+    \param $config  The Config Object used to initialise plugin
+    \param $dn    The DN of the currently edited entry  
     \author  Harald Falk <hf@doellken-weimar.de>
     \version 1.00
     \date    1.07.2005
@@ -77,7 +77,7 @@ class intranetAccount extends plugin
   function execute()
   {
     /* Call parent execute */
-    //	plugin::execute();
+    //  plugin::execute();
 
     /* Log view */
     if($this->is_account && !$this->view_logged){
@@ -101,7 +101,7 @@ class intranetAccount extends plugin
     if ($this->parent !== NULL){
       $smarty->assign("tabbed", 1);
     }else{
-      $smarty->assign("tabbed", 0);	
+      $smarty->assign("tabbed", 0); 
     }
 
     /* check if we are allowed to switch the checkbox.
@@ -219,7 +219,7 @@ class intranetAccount extends plugin
   /* Return plugin informations for acl handling */ 
   static function plInfo()
   {
-    return (array(	
+    return (array(  
           "plShortName"     => _("Intranet"),
           "plDepends"       => array("user"),
           "plPriority"      => 25,                                 // Position in tabs

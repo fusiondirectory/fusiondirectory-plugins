@@ -73,34 +73,34 @@
   <td style="vertical-align:top;width:50%">
 
 {if $multiple_support}
-   	<input class="center" type=checkbox name="use_tslogin" id="use_tslogin" value="1" 
-		{if $use_tslogin} checked {/if}
-		onClick="changeState('tslogin')">
-	<input class="center" type=checkbox name="tslogin" id="tslogin" value="1" {$tslogin}
-		{if !$use_tslogin} disabled {/if}>
+    <input class="center" type=checkbox name="use_tslogin" id="use_tslogin" value="1" 
+    {if $use_tslogin} checked {/if}
+    onClick="changeState('tslogin')">
+  <input class="center" type=checkbox name="tslogin" id="tslogin" value="1" {$tslogin}
+    {if !$use_tslogin} disabled {/if}>
 {else}
 {render acl=$AllowLoginOnTerminalServerACL}
    <input class="center" type=checkbox name="tslogin" id="tslogin" value="1" {$tslogin}
-   	onclick="
-		changeState('CtxWFHomeDir');
-		changeState('CtxWFHomeDirDrive');
-		changeState('CtxWFProfilePath');
-		changeState('inherit');			
-		changeTripleSelectState_2nd_neg('tslogin','inherit','CtxInitialProgram');
-		changeTripleSelectState_2nd_neg('tslogin','inherit','CtxWorkDirectory');
-		changeState('CtxMaxConnectionTimeF');
-		changeState('CtxMaxDisconnectionTimeF');
-		changeState('CtxMaxIdleTimeF');
-		changeTripleSelectState('tslogin','CtxMaxConnectionTimeF','CtxMaxConnectionTime');
-		changeTripleSelectState('tslogin','CtxMaxDisconnectionTimeF','CtxMaxDisconnectionTime');
-		changeTripleSelectState('tslogin','CtxMaxIdleTimeF','CtxMaxIdleTime');
-		changeState('connectclientdrives');
-		changeState('connectclientprinters');
-		changeState('defaultprinter');
-		changeState('shadow');
-		changeState('brokenconn');
-		changeState('reconn');
-	">
+    onclick="
+    changeState('CtxWFHomeDir');
+    changeState('CtxWFHomeDirDrive');
+    changeState('CtxWFProfilePath');
+    changeState('inherit');     
+    changeTripleSelectState_2nd_neg('tslogin','inherit','CtxInitialProgram');
+    changeTripleSelectState_2nd_neg('tslogin','inherit','CtxWorkDirectory');
+    changeState('CtxMaxConnectionTimeF');
+    changeState('CtxMaxDisconnectionTimeF');
+    changeState('CtxMaxIdleTimeF');
+    changeTripleSelectState('tslogin','CtxMaxConnectionTimeF','CtxMaxConnectionTime');
+    changeTripleSelectState('tslogin','CtxMaxDisconnectionTimeF','CtxMaxDisconnectionTime');
+    changeTripleSelectState('tslogin','CtxMaxIdleTimeF','CtxMaxIdleTime');
+    changeState('connectclientdrives');
+    changeState('connectclientprinters');
+    changeState('defaultprinter');
+    changeState('shadow');
+    changeState('brokenconn');
+    changeState('reconn');
+  ">
 {/render}
 {/if}
    <i>{t}Allow login on terminal server{/t}</i>
@@ -135,10 +135,10 @@
 {render acl=$AllowLoginOnTerminalServerACL  checkbox=$multiple_support checked=$use_inherit}
    <input class="center" type=checkbox id="inherit" name="inherit" {if $inheritstate} checked {/if}
     {$tsloginstate}
-	onClick="changeState('CtxInitialProgram');
- 		 changeState('CtxWorkDirectory');"
-	
-	> 
+  onClick="changeState('CtxInitialProgram');
+     changeState('CtxWorkDirectory');"
+  
+  > 
 {/render}
    <i>{t}Inherit client config{/t}</i>
    <table summary="">
@@ -154,7 +154,7 @@
      <td><label for="CtxWorkDirectory">{t}Working directory{/t}</label></td>
      <td>
 {render acl=$AllowLoginOnTerminalServerACL  checkbox=$multiple_support checked=$use_CtxWorkDirectory}
-      <input type='text' id="CtxWorkDirectory" name="CtxWorkDirectory" size=35 maxlength=60	value='{$CtxWorkDirectory}' {$inheritstate} {$tsloginstate}>
+      <input type='text' id="CtxWorkDirectory" name="CtxWorkDirectory" size=35 maxlength=60 value='{$CtxWorkDirectory}' {$inheritstate} {$tsloginstate}>
 {/render}
      </td>
     </tr>
@@ -174,14 +174,14 @@
      <td>
 {if $multiple_support}
 <input type="checkbox" name="use_CtxMaxConnectionTimeF" {if $use_CtxMaxConnectionTimeF} checked {/if}
-	onClick="changeState('CtxMaxConnectionTimeF');" class="center"
-	>
+  onClick="changeState('CtxMaxConnectionTimeF');" class="center"
+  >
 {/if}
 {render acl=$AllowLoginOnTerminalServerACL}
-      <input 		id="CtxMaxConnectionTimeF" 	type="checkbox" class="center" name="CtxMaxConnectionTimeF" 
-			{if !$use_CtxMaxConnectionTimeF && $multiple_support} disabled {/if}
-			value="1" 			{$CtxMaxConnectionTimeF} 	
-			onclick="changeState('CtxMaxConnectionTime')" {$tsloginstate}>
+      <input    id="CtxMaxConnectionTimeF"  type="checkbox" class="center" name="CtxMaxConnectionTimeF" 
+      {if !$use_CtxMaxConnectionTimeF && $multiple_support} disabled {/if}
+      value="1"       {$CtxMaxConnectionTimeF}  
+      onclick="changeState('CtxMaxConnectionTime')" {$tsloginstate}>
 {/render}
 
       <label for="CtxMaxConnectionTimeF">{t}Connection{/t}</label>
@@ -189,7 +189,7 @@
      <td>
 {render acl=$AllowLoginOnTerminalServerACL}
       <input name="CtxMaxConnectionTime" id="CtxMaxConnectionTime" size=5 maxlength=5 value="{$CtxMaxConnectionTime}" {$tsloginstate}
-			{if !$CtxMaxConnectionTimeF} disabled  {/if}>
+      {if !$CtxMaxConnectionTimeF} disabled  {/if}>
 {/render}
      </td>
     </tr>
@@ -203,7 +203,7 @@
      <td>
 {render acl=$AllowLoginOnTerminalServerACL}
       <input name="CtxMaxDisconnectionTime" id="CtxMaxDisconnectionTime" size=5 maxlength=5 value="{$CtxMaxDisconnectionTime}" {$tsloginstate}
-			{if !$CtxMaxDisconnectionTimeF} disabled  {/if}>
+      {if !$CtxMaxDisconnectionTimeF} disabled  {/if}>
 {/render}
      </td>
     </tr>
@@ -217,7 +217,7 @@
      <td>
 {render acl=$AllowLoginOnTerminalServerACL}
       <input name="CtxMaxIdleTime" id="CtxMaxIdleTime" size=5 maxlength=5 value="{$CtxMaxIdleTime}" {$tsloginstate}
-			{if !$CtxMaxIdleTimeF} disabled  {/if}>
+      {if !$CtxMaxIdleTimeF} disabled  {/if}>
 {/render}
      </td>
     </tr>
@@ -370,10 +370,10 @@
             </td>
         </tr>
 
-	    {if $additional_info_PwdMustChange}
+      {if $additional_info_PwdMustChange}
         <tr>
             <td colspan=2 style='padding-left: 10px;'>
-	            <i>({$additional_info_PwdMustChange})</i>
+              <i>({$additional_info_PwdMustChange})</i>
             </td>
         </tr>
         {/if}
@@ -424,36 +424,36 @@
    <br>
 
 {if $multiple_support}
-	<input type="checkbox" name="use_workstation_list" {if $use_workstation_list} checked {/if} class="center"
-		onClick="changeState('workstation_list');">
+  <input type="checkbox" name="use_workstation_list" {if $use_workstation_list} checked {/if} class="center"
+    onClick="changeState('workstation_list');">
    <select {if $multiple_support && !$use_workstation_list} disabled {/if} 
-	id="workstation_list" style="width:100%;" name="workstation_list[]" size=10 multiple>
-	
-	{foreach from=$multiple_workstations item=item key=key}
-		{if $item.UsedByAllUsers}
-			<option value="{$key}">{$item.Name} ({t}Used by all users{/t})</option>
-		{else}
-			<option style='color: #888888; background: #DDDDDD;background-color: #DDDDDD;'
-				value="{$key}">{$item.Name} ({t}Used by some users{/t})</option>
-		{/if}
-	{/foreach}
+  id="workstation_list" style="width:100%;" name="workstation_list[]" size=10 multiple>
+  
+  {foreach from=$multiple_workstations item=item key=key}
+    {if $item.UsedByAllUsers}
+      <option value="{$key}">{$item.Name} ({t}Used by all users{/t})</option>
+    {else}
+      <option style='color: #888888; background: #DDDDDD;background-color: #DDDDDD;'
+        value="{$key}">{$item.Name} ({t}Used by some users{/t})</option>
+    {/if}
+  {/foreach}
    </select>
    <br>
    <input type="submit" value="{msgPool type=addButton}" name="add_ws">
    <input type="submit" value="{msgPool type=delButton}" name="delete_ws">
 {else}
-	{render acl=$sambaUserWorkstationsACL}
-	   <select id="workstation_list" style="width:100%;" name="workstation_list[]" size=10 multiple>
-		{html_options values=$workstations output=$workstations}
-	   </select>
-	{/render}
-	   <br>
-	{render acl=$sambaUserWorkstationsACL}
-	   <input type="submit" value="{msgPool type=addButton}" name="add_ws">
-	{/render}
-	{render acl=$sambaUserWorkstationsACL}
-	   <input type="submit" value="{msgPool type=delButton}" name="delete_ws">
-	{/render}
+  {render acl=$sambaUserWorkstationsACL}
+     <select id="workstation_list" style="width:100%;" name="workstation_list[]" size=10 multiple>
+    {html_options values=$workstations output=$workstations}
+     </select>
+  {/render}
+     <br>
+  {render acl=$sambaUserWorkstationsACL}
+     <input type="submit" value="{msgPool type=addButton}" name="add_ws">
+  {/render}
+  {render acl=$sambaUserWorkstationsACL}
+     <input type="submit" value="{msgPool type=delButton}" name="delete_ws">
+  {/render}
 {/if}
   </td>
  </tr>

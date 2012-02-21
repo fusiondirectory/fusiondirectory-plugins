@@ -9,7 +9,7 @@
    <div class="contentboxb">
     <p class="contentboxb" style="border-top:1px solid #B0B0B0;background-color:#F8F8F8">
      <select id="wslist" style="width:100%; margin-top:4px; height:450px;" name="wslist[]" size="15" multiple>
-	{html_options values=$wslist output=$wslist}
+      {html_options values=$wslist output=$wslist}
      </select>
     </p>
    </div>
@@ -17,7 +17,7 @@
   <td style="vertical-align:top;width:350px">
    <div class="contentboxh" style="height:20px;">
     <p class="contentboxh" style="font-size:12px"><img src="{$launchimage}" align="right" alt="[F]">
-	<b>{t}Filters{/t}</b></p>
+  <b>{t}Filters{/t}</b></p>
    </div>
    <div class="contentboxb">
      <table summary="" style="width:100%;border-top:1px solid #B0B0B0;background-color:#F8F8F8">

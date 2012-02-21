@@ -11,7 +11,7 @@
      <td><LABEL for="cn">{t}NIS Netgroup name{/t}</LABEL>{$must}</td>
      <td>
 {if $multiple_support}
-	<input type='text' id="dummy1" name="dummy1" size=25 maxlength=60 value="{t}Multiple edit{/t}" disabled>
+  <input type='text' id="dummy1" name="dummy1" size=25 maxlength=60 value="{t}Multiple edit{/t}" disabled>
 {else}
 {render acl=$cnACL}
        <input type='text' id="cn" name="cn" size=25 maxlength=60 value="{$cn}" title="{t}Name of the NIS Netgroup{/t}">
@@ -73,21 +73,21 @@
       <br>
 {render acl=$memberCnACL}
 
-	{if $multiple_support}
-	  <select style="width:100%; height:380px;" id="members" name="members[]" size=15 multiple>
-		{foreach from=$memberCn_All item=name key=key}
-			<option value="{$key}">{$name}&nbsp;({t}In all NIS Netgroups{/t})</option>
-		{/foreach}
-		{foreach from=$memberCn_Some item=name key=key}
+  {if $multiple_support}
+    <select style="width:100%; height:380px;" id="members" name="members[]" size=15 multiple>
+    {foreach from=$memberCn_All item=name key=key}
+      <option value="{$key}">{$name}&nbsp;({t}In all NIS Netgroups{/t})</option>
+    {/foreach}
+    {foreach from=$memberCn_Some item=name key=key}
         <option value="{$key}" style='color: #888888; background: #DDDDDD;background-color: #DDDDDD;'>{$name}&nbsp;({t}Not in all NIS Netgroups{/t})</option>
-		{/foreach}
-	  </select>
-	{else}
+    {/foreach}
+    </select>
+  {else}
       <select style="width:100%; height:380px;" id="members" name="members[]" size=15 multiple>
        {html_options options=$members}
-		<option disabled>&nbsp;</option>
+    <option disabled>&nbsp;</option>
       </select>
-	{/if}
+  {/if}
 {/render}
       <br>
 {render acl=$memberCnACL}
@@ -110,6 +110,6 @@
 <!-- Place cursor -->
 <script language="JavaScript" type="text/javascript">
   <!-- // First input field on page
-	focus_field('cn');
+  focus_field('cn');
   -->
 </script>

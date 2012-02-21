@@ -1,38 +1,38 @@
 <table summary="" width="100%">
  <tr>
   <td style="vertical-align:top; width:50%;">
-	<table summary="">
-	 <tr>
-	  <td><LABEL for="cn">{t}Server name{/t}</LABEL>{$must}</td>
-	  <td>
+  <table summary="">
+   <tr>
+    <td><LABEL for="cn">{t}Server name{/t}</LABEL>{$must}</td>
+    <td>
 {render acl=$cnACL}
-	   <input type='text' name="cn" id="cn" size=20 maxlength=60 value="{$cn}">
+     <input type='text' name="cn" id="cn" size=20 maxlength=60 value="{$cn}">
 {/render}
-	  </td>
-	 </tr>
-	 <tr>
-	  <td><LABEL for="description">{t}Description{/t}</LABEL></td>
-	  <td>
+    </td>
+   </tr>
+   <tr>
+    <td><LABEL for="description">{t}Description{/t}</LABEL></td>
+    <td>
 {render acl=$descriptionACL}
            <input type='text' name="description" id="description" size=25 maxlength=80 value="{$description}">
 {/render}
           </td>
-	 </tr>
- 	 <tr>
-	  <td><br><LABEL for="base">{t}Base{/t}</LABEL>{$must}</td>
-	  <td>
-	   <br>
+   </tr>
+   <tr>
+    <td><br><LABEL for="base">{t}Base{/t}</LABEL>{$must}</td>
+    <td>
+     <br>
 {render acl=$baseACL}
            {$base}
 {/render}
-	   </td>
-	  </tr>
-	</table>
-	{$host_key}
+     </td>
+    </tr>
+  </table>
+  {$host_key}
   </td>
   <td  style="vertical-align:top;border-left:1px solid #A0A0A0;">
-	<table summary="">
-   	<tr>
+  <table summary="">
+    <tr>
      <td><label for="gotoMode">{t}Mode{/t}</label></td>
      <td>
 {render acl=$gotoModeACL}
@@ -42,7 +42,7 @@
 {/render}
      </td>
     </tr>
-	</table>
+  </table>
   </td>
  </tr>
 </table>
@@ -60,7 +60,7 @@
   <td>
 
 {if $currently_installing}
-	<i>{t}System installation in progress, the FAI state cannot be changed right now.{/t}</i>
+  <i>{t}System installation in progress, the FAI state cannot be changed right now.{/t}</i>
 {else}
 {render acl=$FAIstateACL}
    <select size="1" name="saction" title="{t}Select action to execute for this server{/t}">
@@ -82,6 +82,6 @@
 <!-- Place cursor -->
 <script language="JavaScript" type="text/javascript">
   <!-- // First input field on page
-	focus_field('cn');
+  focus_field('cn');
   -->
 </script>

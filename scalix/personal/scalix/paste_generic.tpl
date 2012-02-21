@@ -1,11 +1,11 @@
 <table>
-	<tr>
+  <tr>
   <td style="vertical-align:top;">
    <h2><img class="center" alt="" align="middle" src="plugins/scalix/images/envelope.png" /><label for="emails_list"> {t}Scalix email addresses{/t}</label></h2>
    <select id="emails_list" style="width:100%;height:100px;" name="emails_list[]" size="15"
-		 multiple title="{t}List of scalix email addresses{/t}" >
+     multiple title="{t}List of scalix email addresses{/t}" >
             {html_options values=$scalixEmailAddress output=$scalixEmailAddress}
-			<option disabled>&nbsp;</option>
+      <option disabled>&nbsp;</option>
    </select>
    <br />
    <input type='text' name="email_address" size="30" align="middle" maxlength="65" value="">

@@ -18,7 +18,7 @@
      <td>
 {render acl=$acl}
       <input {if $realGosaHost} disabled {/if} 
-			type='text' name='fixedaddr' size='25' maxlength='80' value='{$fixedaddr}'
+      type='text' name='fixedaddr' size='25' maxlength='80' value='{$fixedaddr}'
              title='{t}Use hostname or IP-address to assign fixed address{/t}'>
 {/render}
      </td>
@@ -55,6 +55,6 @@
 <!-- Place cursor in correct field -->
 <script language="JavaScript" type="text/javascript">
   <!-- // First input field on page
-	 focus_field('cn');
+   focus_field('cn');
   -->
 </script>

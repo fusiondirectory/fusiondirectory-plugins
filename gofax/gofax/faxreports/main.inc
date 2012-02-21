@@ -26,19 +26,19 @@ if ( $cleanup ){
   session::un_set('faxreport');
 }else{
 
-	/* Create faxreport object on demand */
-	if (!session::is_set('faxreport')){
-		session::set('faxreport',new faxreport ($config, $ui));
-	}
-	$faxreport = session::get('faxreport');
+  /* Create faxreport object on demand */
+  if (!session::is_set('faxreport')){
+    session::set('faxreport',new faxreport ($config, $ui));
+  }
+  $faxreport = session::get('faxreport');
 
-	/* Execute formular */
-	$faxreport->save_object();
-	$display= $faxreport->execute ();
-	$display.= "<input type=\"hidden\" name=\"ignore\">\n";
-	$display= print_header(get_template_path($faxreport->plIcon), _("FAX reports")).$display;
+  /* Execute formular */
+  $faxreport->save_object();
+  $display= $faxreport->execute ();
+  $display.= "<input type=\"hidden\" name=\"ignore\">\n";
+  $display= print_header(get_template_path($faxreport->plIcon), _("FAX reports")).$display;
 
-	/* Store changes  in session */
-	session::set('faxreport',$faxreport);
+  /* Store changes  in session */
+  session::set('faxreport',$faxreport);
 }
 ?>

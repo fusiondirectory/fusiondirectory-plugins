@@ -213,12 +213,12 @@ class servdns extends goService
 
     /* Add empty new zone 
      */
-	if(isset($_POST['AddZone'])){
-		$this->dialog = new servdnseditZone($this->config,$this->dn);
-		if($this->is_new){
-			$this->dialog->acl_base = $this->acl_base;
-		}
-	}
+  if(isset($_POST['AddZone'])){
+    $this->dialog = new servdnseditZone($this->config,$this->dn);
+    if($this->is_new){
+      $this->dialog->acl_base = $this->acl_base;
+    }
+  }
 
     /* Check for edit zone request 
      */

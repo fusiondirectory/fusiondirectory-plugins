@@ -1,5 +1,5 @@
 <div style="font-size: 18px;">
-	{$headline}
+  {$headline}
 </div>
 <br>
 <p class="seperator">
@@ -29,7 +29,7 @@
    <tr>
      <td>&nbsp;</td>
      <td>
-      <label for="UseTextInputName">{t}Class name{/t}&nbsp;</label><input type="text"	 name="UseTextInputName" id="UseTextInputName" value="{$ClassName}" style="width:120px;">
+      <label for="UseTextInputName">{t}Class name{/t}&nbsp;</label><input type="text"  name="UseTextInputName" id="UseTextInputName" value="{$ClassName}" style="width:120px;">
      </td>
     </tr>
    </table>
@@ -71,7 +71,7 @@
 
 <!-- Place cursor -->
 <script language="JavaScript" type="text/javascript">
-	<!--
-	focus_field('UseTextInputName');
-	-->
+  <!--
+  focus_field('UseTextInputName');
+  -->
 </script>

@@ -26,7 +26,7 @@ class dhcpTSigKey extends dhcpPlugin
   /* Used attributes */
   var $dhcpKeyAlgorithm="";
   var $dhcpKeySecret="";
-	
+
   /* attribute list for save action */
   var $objectclasses= array("top", "dhcpTSigKey");
 
@@ -92,7 +92,7 @@ class dhcpTSigKey extends dhcpPlugin
       if (isset($_POST['cn'])){
         $this->cn=get_post('cn');
       }
-		
+    
     }
 
     dhcpPlugin::save_object();

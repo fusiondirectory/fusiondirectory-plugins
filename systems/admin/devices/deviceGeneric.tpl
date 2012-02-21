@@ -37,9 +37,9 @@
             </td>
             <td>
 {render acl=$typeACL}
-				<select id="type" size="1" name="type" title="{t}Choose the device type{/t}">
-					{html_options options=$types selected=$type}
-				</select>
+        <select id="type" size="1" name="type" title="{t}Choose the device type{/t}">
+          {html_options options=$types selected=$type}
+        </select>
 {/render}
             </td>
         </tr>

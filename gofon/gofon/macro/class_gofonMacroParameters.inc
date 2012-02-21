@@ -96,7 +96,7 @@ class macroParameter extends plugin
     /* Create an array for parameters if not given yet */
     if(!is_array($this->goFonMacroParameter)){
       $tmp3 = $this->goFonMacroParameter;
-      $this->goFonMacroParameter =array();	
+      $this->goFonMacroParameter =array();  
       if(!empty($tmp3)) {
         $this->goFonMacroParameter[]  = $tmp3;
       }
@@ -194,8 +194,8 @@ class macroParameter extends plugin
     plugin::execute();
 
     /* Variables */
-    $vars 	= "";
-    $tmp  	= array();
+    $vars   = "";
+    $tmp    = array();
     $number = 0; 
  
     /* Get acls for this tab, 
@@ -249,7 +249,7 @@ class macroParameter extends plugin
       $smarty->assign("readable",false);      
     }else{
       $smarty->assign("readable",true);      
-      foreach($FonParas as $key=>$para)	{
+      foreach($FonParas as $key=>$para) {
 
         /* Select correct item of combobox */
         if(isset($para['type'])){
@@ -411,7 +411,7 @@ class macroParameter extends plugin
     } else {
       if(count($this->attrs['goFonMacroParameter']==0)){
         unset($this->attrs['goFonMacroParameter']);
-      }		
+      }
       $ldap->cd($this->dn);
       $ldap->create_missing_trees( $this->dn);
       $ldap->cd($this->dn);

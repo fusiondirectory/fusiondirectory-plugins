@@ -1,38 +1,38 @@
 <h2>
 
 {if $multiple_support}
-	
+
  <input type="checkbox" name="use_proxy" value="1" onClick="changeState('proxy')" class="center" 
-	{if $use_proxy} checked {/if}> 	
+  {if $use_proxy} checked {/if}>  
  <input type="checkbox" id="proxy" name="proxy" value="B" {$proxyState} class="center"
-	{if !$use_proxy} disabled {/if}>
+  {if !$use_proxy} disabled {/if}>
 
 {else}
 
-	{render acl=$proxyAccountACL}
-	<input type="checkbox" id="proxy" name="proxy" value="B" {$proxyState}
-	class="center" 
-	onClick="
+  {render acl=$proxyAccountACL}
+  <input type="checkbox" id="proxy" name="proxy" value="B" {$proxyState}
+  class="center" 
+  onClick="
 
-	{if $gosaProxyFlagF_W}
-	changeState('filterF');
-	{/if}
+  {if $gosaProxyFlagF_W}
+  changeState('filterF');
+  {/if}
 
-	{if $gosaProxyFlagT_W}
-	changeState('filterT'); 
-	changeTripleSelectState('proxy', 'filterT', 'startHour'); 
-	changeTripleSelectState('proxy', 'filterT', 'startMinute'); 
-	changeTripleSelectState('proxy', 'filterT', 'stopMinute'); 
-	changeTripleSelectState('proxy', 'filterT', 'stopHour'); 
-	{/if}
-	{if $gosaProxyFlagB_W}
-	changeState('filterB'); 
-	changeTripleSelectState('proxy', 'filterB', 'quota_unit'); 
-	changeTripleSelectState('proxy', 'filterB', 'quota_size');
-	changeTripleSelectState('proxy', 'filterB', 'gosaProxyQuotaPeriod');
-	{/if}
-	">
-	{/render}
+  {if $gosaProxyFlagT_W}
+  changeState('filterT'); 
+  changeTripleSelectState('proxy', 'filterT', 'startHour'); 
+  changeTripleSelectState('proxy', 'filterT', 'startMinute'); 
+  changeTripleSelectState('proxy', 'filterT', 'stopMinute'); 
+  changeTripleSelectState('proxy', 'filterT', 'stopHour'); 
+  {/if}
+  {if $gosaProxyFlagB_W}
+  changeState('filterB'); 
+  changeTripleSelectState('proxy', 'filterB', 'quota_unit'); 
+  changeTripleSelectState('proxy', 'filterB', 'quota_size');
+  changeTripleSelectState('proxy', 'filterB', 'gosaProxyQuotaPeriod');
+  {/if}
+  ">
+  {/render}
 {/if}
  {t}Proxy account{/t}</h2>
 
@@ -94,8 +94,8 @@
       <td>
 {render acl=$gosaProxyFlagBACL checkbox=$multiple_support checked=$use_filterB}
     <input type="checkbox" id="filterB" name="filterB" value="B" {$filterB} {if $pstate=="disabled"} disabled {/if} onClick="{$changeB}"
-		class="center"
-	>
+    class="center"
+  >
 {/render}
     <LABEL for="quota_size">{t}Restrict proxy usage by quota{/t}</LABEL>
     <br>
@@ -108,7 +108,7 @@
        &nbsp;
 {render acl=$gosaProxyFlagBACL}
        <select size="1" name="quota_unit" id="quota_unit" {if $Bstate!=""} disabled {/if} >
-	{html_options options=$quota_unit selected=$quota_u}
+  {html_options options=$quota_unit selected=$quota_u}
        </select>
 {/render}
     
@@ -127,4 +127,5 @@
   </td>
  </tr>
 </table>
+
 

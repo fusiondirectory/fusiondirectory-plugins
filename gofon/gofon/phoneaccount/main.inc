@@ -36,102 +36,102 @@ if ( $cleanup ){
 
 }else{
 
-	/* Reset requested? */
-	if (isset($_POST['edit_cancel'])){
-		session::un_set ('edit');
-		session::un_set ('phoneAccount');
-	}
+  /* Reset requested? */
+  if (isset($_POST['edit_cancel'])){
+    session::un_set ('edit');
+    session::un_set ('phoneAccount');
+  }
 
-	/* Create phoneAccount object on demand */
-	if (!session::is_set('phoneAccount') || (isset($_GET['reset']) && $_GET['reset'] == 1)){
-		$phoneAccount= new phoneAccount ($config, $ui->dn);
-		$phoneAccount->set_acl_base($ui->dn);
-		$phoneAccount->set_acl_category("users");
-		session::set('phoneAccount',$phoneAccount);
-	}
-	$phoneAccount = session::get('phoneAccount');
+  /* Create phoneAccount object on demand */
+  if (!session::is_set('phoneAccount') || (isset($_GET['reset']) && $_GET['reset'] == 1)){
+    $phoneAccount= new phoneAccount ($config, $ui->dn);
+    $phoneAccount->set_acl_base($ui->dn);
+    $phoneAccount->set_acl_category("users");
+    session::set('phoneAccount',$phoneAccount);
+  }
+  $phoneAccount = session::get('phoneAccount');
 
-	/* save changes back to object */
-	if (session::is_set('edit')){
-		$phoneAccount->save_object ();
-	}
+  /* save changes back to object */
+  if (session::is_set('edit')){
+    $phoneAccount->save_object ();
+  }
 
-	/* Enter edit mode? */
-	if (isset($_POST['edit']) && !session::is_set('edit')){
+  /* Enter edit mode? */
+  if (isset($_POST['edit']) && !session::is_set('edit')){
 
-		/* Check locking */
-		if (($username= get_lock($ui->dn)) != ""){
-			session::set('back_plugin',$plug);
-			session::set('LOCK_VARS_TO_USE',array("/^edit$/","/^plug$/"));
-			$lock_msg =  gen_locked_message ($username, $ui->dn);
+    /* Check locking */
+    if (($username= get_lock($ui->dn)) != ""){
+      session::set('back_plugin',$plug);
+      session::set('LOCK_VARS_TO_USE',array("/^edit$/","/^plug$/"));
+      $lock_msg =  gen_locked_message ($username, $ui->dn);
 
-		}else{
+    }else{
 
-			/* Lock the current entry */
-			add_lock ($ui->dn, $ui->dn);
-			session::set('edit',TRUE);
-		}
+      /* Lock the current entry */
+      add_lock ($ui->dn, $ui->dn);
+      session::set('edit',TRUE);
+    }
 
-	}
+  }
 
-	/* save changes to LDAP and disable edit mode */
-	if (isset($_POST['edit_finish'])){
+  /* save changes to LDAP and disable edit mode */
+  if (isset($_POST['edit_finish'])){
 
-		/* Perform checks */
-		$message= $phoneAccount->check ();
+    /* Perform checks */
+    $message= $phoneAccount->check ();
 
-		/* No errors, save object */
-		if (count ($message) == 0){
-			$phoneAccount->save ();
+    /* No errors, save object */
+    if (count ($message) == 0){
+      $phoneAccount->save ();
 
-			del_lock ($ui->dn);
-			session::un_set ('edit');
+      del_lock ($ui->dn);
+      session::un_set ('edit');
 
-			/* Write back to session */
-			session::set('phoneAccount',$phoneAccount);
-		} else {
-			/* Errors found, show message */
-			msg_dialog::displayChecks($message);
-		}
-	}
+      /* Write back to session */
+      session::set('phoneAccount',$phoneAccount);
+    } else {
+      /* Errors found, show message */
+      msg_dialog::displayChecks($message);
+    }
+  }
 
-	/* Execute formular */
-	if($lock_msg){
-		$display.= $lock_msg;
-	}else{
-		$display.= $phoneAccount->execute ();
-	}
+  /* Execute formular */
+  if($lock_msg){
+    $display.= $lock_msg;
+  }else{
+    $display.= $phoneAccount->execute ();
+  }
 
-	/* Store changes  in session */
-	if (session::is_set('edit')){
-		session::set('phoneAccount',$phoneAccount);
-	}
+  /* Store changes  in session */
+  if (session::is_set('edit')){
+    session::set('phoneAccount',$phoneAccount);
+  }
 
-	$info= "";
-	if ($phoneAccount->is_account && empty($lock_msg)){
-		$display.= "<p class=\"plugbottom\">";
+  $info= "";
+  if ($phoneAccount->is_account && empty($lock_msg)){
+    $display.= "<p class=\"plugbottom\">";
 
-		/* Are we in edit mode? */
-		if (session::is_set('edit')){
-			$display.= "<input type=submit name=\"edit_finish\" style=\"width:80px\" value=\"".msgPool::okButton()."\">\n";
-			$display.= "&nbsp;";
-			$display.= "<input type=submit name=\"edit_cancel\" value=\"".msgPool::cancelButton()."\">\n";
-			$info= "<img alt=\"\" align=\"middle\" src=\"".get_template_path('images/lists/locked.png')."\"> ".$ui->dn."&nbsp;";
-		} else {
-			$info= "<img alt=\"\" align=\"middle\" src=\"".get_template_path('images/lists/unlocked.png')."\"> ".$ui->dn."&nbsp;";
+    /* Are we in edit mode? */
+    if (session::is_set('edit')){
+      $display.= "<input type=submit name=\"edit_finish\" style=\"width:80px\" value=\"".msgPool::okButton()."\">\n";
+      $display.= "&nbsp;";
+      $display.= "<input type=submit name=\"edit_cancel\" value=\"".msgPool::cancelButton()."\">\n";
+      $info= "<img alt=\"\" align=\"middle\" src=\"".get_template_path('images/lists/locked.png')."\"> ".$ui->dn."&nbsp;";
+    } else {
+      $info= "<img alt=\"\" align=\"middle\" src=\"".get_template_path('images/lists/unlocked.png')."\"> ".$ui->dn."&nbsp;";
 
-			if(preg_match("/r/",$ui->get_permissions($ui->dn,"users/phoneAccount"))){
-				$info.= "<img alt=\"\" align=\"middle\" src=\"".get_template_path('images/lists/on.png')."\">"._("Click the 'Edit' button below to change informations in this dialog");
-				$display.= "<input type=submit name=\"edit\" value=\"".msgPool::editButton()."\">\n";
-			}
-			$display.= "<input type=\"hidden\" name=\"ignore\">\n";
-		}
-		$display.= "</p>\n";
-		$display.= "<input type=\"hidden\" name=\"ignore\">\n";
-	}
+      if(preg_match("/r/",$ui->get_permissions($ui->dn,"users/phoneAccount"))){
+        $info.= "<img alt=\"\" align=\"middle\" src=\"".get_template_path('images/lists/on.png')."\">"._("Click the 'Edit' button below to change informations in this dialog");
+        $display.= "<input type=submit name=\"edit\" value=\"".msgPool::editButton()."\">\n";
+      }
+      $display.= "<input type=\"hidden\" name=\"ignore\">\n";
+    }
+    $display.= "</p>\n";
+    $display.= "<input type=\"hidden\" name=\"ignore\">\n";
+  }
 
-	/* Page header*/
-	$display= print_header(get_template_path('plugins/gofon/images/phoneAccount.png'), _("Phone settings"), $info).$display;
+  /* Page header*/
+  $display= print_header(get_template_path('plugins/gofon/images/phoneAccount.png'), _("Phone settings"), $info).$display;
 
 }
 ?>

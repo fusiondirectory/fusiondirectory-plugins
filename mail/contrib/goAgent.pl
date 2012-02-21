@@ -41,159 +41,159 @@ my $virtuals = 0;
 # Anonymous bind to LDAP
 sub anonBind
 {
-	my $ldap = Net::LDAP->new( $LDAP_HOST, port => $LDAP_PORT );
-	my $mesg = $ldap->bind();
-	$mesg->code && die $mesg->error;
-	return $ldap;
+  my $ldap = Net::LDAP->new( $LDAP_HOST, port => $LDAP_PORT );
+  my $mesg = $ldap->bind();
+  $mesg->code && die $mesg->error;
+  return $ldap;
 }
 
 # Bind as LDAP user
 #sub userBind
 #{
-#	my $ldap = Net::LDAP->new( $LDAP_HOST, port => $LDAP_PORT );
-#	my $mesg = $ldap->bind($LDAP_USER, password=>$LDAP_PASS);
-#	$mesg->code && die $mesg->error;
-#	return $ldap;
+# my $ldap = Net::LDAP->new( $LDAP_HOST, port => $LDAP_PORT );
+# my $mesg = $ldap->bind($LDAP_USER, password=>$LDAP_PASS);
+# $mesg->code && die $mesg->error;
+# return $ldap;
 #}
 
 # Read timestamp
 sub getTS
 {
-	open(F, "< $TS_FILE");
-	my $ts = <F>;
-	chop $ts;
-	$ts ||= "19700101000000Z";
-	return $ts;
+  open(F, "< $TS_FILE");
+  my $ts = <F>;
+  chop $ts;
+  $ts ||= "19700101000000Z";
+  return $ts;
 }
 
 # save timestamp
 sub putTS
 {
-	my $ts = `date -u '+%Y%m%d%H%M%SZ'`;
-	open(F, "> $TS_FILE");
-	print F $ts;
+  my $ts = `date -u '+%Y%m%d%H%M%SZ'`;
+  open(F, "> $TS_FILE");
+  print F $ts;
 }
 
 sub rebuildVirtuals
 {
-	print "Rebuild virtuals table for postfix\n";
-	$mesg = $ldap->search(
-		base => $LDAP_BASE,
-		filter => "(&(objectClass=gosaMailAccount)(gosaMailDeliveryMode=[*L*])(|(mail=*)(gosaMailAlternateAddress=*)))",
-		attrs =>  [
-			'mail',
-			'uid',
-			'gosaMailForwardingAddress',
-			'memberUid'
-		],
-	);
+  print "Rebuild virtuals table for postfix\n";
+  $mesg = $ldap->search(
+    base => $LDAP_BASE,
+    filter => "(&(objectClass=gosaMailAccount)(gosaMailDeliveryMode=[*L*])(|(mail=*)(gosaMailAlternateAddress=*)))",
+    attrs =>  [
+      'mail',
+      'uid',
+      'gosaMailForwardingAddress',
+      'memberUid'
+    ],
+  );
 
-	# Work if changes is present
-	open(VIRT, "> $VLOCAL");
-	foreach my $entry ($mesg->all_entries)
-	{
-		foreach my $addr ($entry->get_value('mail'))
-		{
-			print VIRT "$addr\t";
-			print VIRT join(",", (
-				$entry->get_value("uid"),
-				$entry->get_value("gosaMailForwardingAddress"),
-				$entry->get_value("memberUid"),
-			));
-			print VIRT "\n";
-		}
-	}
-	close(VIRT);
-	`postmap $VLOCAL`;
+  # Work if changes is present
+  open(VIRT, "> $VLOCAL");
+  foreach my $entry ($mesg->all_entries)
+  {
+    foreach my $addr ($entry->get_value('mail'))
+    {
+      print VIRT "$addr\t";
+      print VIRT join(",", (
+        $entry->get_value("uid"),
+        $entry->get_value("gosaMailForwardingAddress"),
+        $entry->get_value("memberUid"),
+      ));
+      print VIRT "\n";
+    }
+  }
+  close(VIRT);
+  `postmap $VLOCAL`;
 
-	$mesg = $ldap->search(
-		base => $LDAP_BASE,
-		filter => "(&(objectClass=gosaMailAccount)(!(gosaMailDeliveryMode=[*L*]))(|(mail=*)(gosaMailAlternateAddress=*)))",
-		attrs =>  [
-			'gosaMailForwardingAddress',
-		],
-	);
+  $mesg = $ldap->search(
+    base => $LDAP_BASE,
+    filter => "(&(objectClass=gosaMailAccount)(!(gosaMailDeliveryMode=[*L*]))(|(mail=*)(gosaMailAlternateAddress=*)))",
+    attrs =>  [
+      'gosaMailForwardingAddress',
+    ],
+  );
 
-	# Work if changes is present
-	open(VIRT, "> $VFORWARD");
-	foreach my $entry ($mesg->all_entries)
-	{
-		foreach my $addr ($entry->get_value('mail'))
-		{
-			print VIRT "$addr\t";
-			print VIRT join(",", (
-				$entry->get_value("gosaMailForwardingAddress"),
-			));
-			print VIRT "\n";
-		}
-	}
-	close(VIRT);
-	`postmap $VFORWARD`;
+  # Work if changes is present
+  open(VIRT, "> $VFORWARD");
+  foreach my $entry ($mesg->all_entries)
+  {
+    foreach my $addr ($entry->get_value('mail'))
+    {
+      print VIRT "$addr\t";
+      print VIRT join(",", (
+        $entry->get_value("gosaMailForwardingAddress"),
+      ));
+      print VIRT "\n";
+    }
+  }
+  close(VIRT);
+  `postmap $VFORWARD`;
 }
 
 sub posixAccount
 {
-	my $entry = shift;
-	my $uid = ($entry->get_value('uid'))[0];
-	my $home = ($entry->get_value('homeDirectory'))[0];
-	my $uidNumber = ($entry->get_value('uidNumber'))[0];
-	my $gidNumber = ($entry->get_value('gidNumber'))[0];
+  my $entry = shift;
+  my $uid = ($entry->get_value('uid'))[0];
+  my $home = ($entry->get_value('homeDirectory'))[0];
+  my $uidNumber = ($entry->get_value('uidNumber'))[0];
+  my $gidNumber = ($entry->get_value('gidNumber'))[0];
 
-	print "Update posixAccount: $uid\n";
-	`install -dD -m0701 -o$uidNumber:$gidNumber $home`;
-	#`install -d -m0700 -o$uidNumber:$gidNumber $home/.ssh`;
-	#`install -d -m0751 -o$uidNumber:$gidNumber $home/.public_html`;
-	print "\tEntry ".$entry->dn()." updated\n";
+  print "Update posixAccount: $uid\n";
+  `install -dD -m0701 -o$uidNumber:$gidNumber $home`;
+  #`install -d -m0700 -o$uidNumber:$gidNumber $home/.ssh`;
+  #`install -d -m0751 -o$uidNumber:$gidNumber $home/.public_html`;
+  print "\tEntry ".$entry->dn()." updated\n";
 }
 
 # Get ssh keys and place to system directory
 sub strongAuthenticationUser
 {
-	my $entry = shift;
-	my $uid = ($entry->get_value('uid'))[0];
-	open(KEYS, "> $KEYS_DIR/$uid");
-	print KEYS $_ foreach ($entry->get_value('userCertificate;binary'));
+  my $entry = shift;
+  my $uid = ($entry->get_value('uid'))[0];
+  open(KEYS, "> $KEYS_DIR/$uid");
+  print KEYS $_ foreach ($entry->get_value('userCertificate;binary'));
 }
 
 # Create mailbox if need
 sub inetLocalMailRecipient
 {
-	my $entry = shift;
-	my $uid = ($entry->get_value('uid'))[0];
-	my $mail = ($entry->get_value('mailLocalAddress'))[0];
-	my $addr = ($entry->get_value('mailRoutingAddress'))[0];
-	my $uidNumber = ($entry->get_value('uidNumber'))[0];
-	my $mailbox = "$MAIL_DIR/$uid";
+  my $entry = shift;
+  my $uid = ($entry->get_value('uid'))[0];
+  my $mail = ($entry->get_value('mailLocalAddress'))[0];
+  my $addr = ($entry->get_value('mailRoutingAddress'))[0];
+  my $uidNumber = ($entry->get_value('uidNumber'))[0];
+  my $mailbox = "$MAIL_DIR/$uid";
 
-	print "Update inetLocalMailRecipient: $mail\n";
-	if( $uid eq $addr )
-	{
-		if( -f "$mailbox" )
-		{
-			print "Warning: mailbox $mailbox alredy exists. No changes.\n";
-		} else {
-			`install -m660 -o$uidNumber -gmail /dev/null $mailbox`;
-		}
-	}
-	print "\tEntry ".$entry->dn()." updated\n";
+  print "Update inetLocalMailRecipient: $mail\n";
+  if( $uid eq $addr )
+  {
+    if( -f "$mailbox" )
+    {
+      print "Warning: mailbox $mailbox alredy exists. No changes.\n";
+    } else {
+      `install -m660 -o$uidNumber -gmail /dev/null $mailbox`;
+    }
+  }
+  print "\tEntry ".$entry->dn()." updated\n";
 }
 
 sub disassemble
 {
-	my $entry = shift;
+  my $entry = shift;
 
-	foreach my $attr ($entry->get_value('objectClass'))
-	{
-		if( $attr eq "posixAccount" ) {
-			posixAccount($entry);
-		} elsif( $attr eq "inetLocalMailRecipient" ) {
-			inetLocalMailRecipient($entry);
-		} elsif( $attr eq "strongAuthenticationUser" ) {
-			strongAuthenticationUser($entry);
-		} elsif( $attr eq "gosaMailAccount" ) {
-			$virtuals++;
-		}
-	}
+  foreach my $attr ($entry->get_value('objectClass'))
+  {
+    if( $attr eq "posixAccount" ) {
+      posixAccount($entry);
+    } elsif( $attr eq "inetLocalMailRecipient" ) {
+      inetLocalMailRecipient($entry);
+    } elsif( $attr eq "strongAuthenticationUser" ) {
+      strongAuthenticationUser($entry);
+    } elsif( $attr eq "gosaMailAccount" ) {
+      $virtuals++;
+    }
+  }
 }
 
 #
@@ -205,8 +205,8 @@ my $ts = getTS;
 
 $ldap = anonBind;
 $mesg = $ldap->search(
-	base => $LDAP_BASE,
-	filter => "(&(modifyTimestamp>=$ts)(!(objectClass=gosaUserTemplate)))"
+  base => $LDAP_BASE,
+  filter => "(&(modifyTimestamp>=$ts)(!(objectClass=gosaUserTemplate)))"
 );
 
 # Put timestamp to file
@@ -215,11 +215,11 @@ putTS;
 # Work if changes is present
 if($mesg->count > 0)
 {
-	print "Processing records modified after $ts\n\n";
+  print "Processing records modified after $ts\n\n";
 
-	foreach my $entry ($mesg->all_entries)
-	{
-		disassemble($entry);
-	}
-	rebuildVirtuals if $virtuals;
+  foreach my $entry ($mesg->all_entries)
+  {
+    disassemble($entry);
+  }
+  rebuildVirtuals if $virtuals;
 }

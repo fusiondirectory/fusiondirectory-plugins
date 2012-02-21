@@ -10,11 +10,11 @@ tie(%db, 'DB_File', $db);
 
 while(<>)
 {
-	chomp;
-	unless(exists($db{$_}))
-	{
-		$db{$_} = 1;
-	}
+  chomp;
+  unless(exists($db{$_}))
+  {
+    $db{$_} = 1;
+  }
 }
 
 untie %db;

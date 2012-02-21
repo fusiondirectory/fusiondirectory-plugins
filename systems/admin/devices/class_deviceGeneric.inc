@@ -31,7 +31,7 @@ class deviceGeneric extends plugin
   public $vendor        = "";
   public $devID        = "";
   public $serial        = "";
-  public $base          = "";	
+  public $base          = ""; 
   public $types;
   public $type;
   public $baseSelector;
@@ -304,7 +304,7 @@ class deviceGeneric extends plugin
           ));
 
   }
-	
+
 }
 // vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

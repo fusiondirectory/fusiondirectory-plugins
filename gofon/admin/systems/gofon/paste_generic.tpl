@@ -5,4 +5,4 @@
        <input type='text' name="cn" id="cn" size=20 maxlength=60 value="{$cn}">
       </td>
      </tr>
-	</table>
+  </table>

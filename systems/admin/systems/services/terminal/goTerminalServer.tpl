@@ -1,20 +1,20 @@
 <table summary="">
     <tr>
      <td colspan=2>
-		<h2><img class="center" alt="" align="middle" src="images/rightarrow.png" /> {t}Terminal service{/t}</h2>
+    <h2><img class="center" alt="" align="middle" src="images/rightarrow.png" /> {t}Terminal service{/t}</h2>
 {render acl=$goXdmcpIsEnabledACL}
       <input type="checkbox" value="true" name="goXdmcpIsEnabled" id="Temporariid" {if $goXdmcpIsEnabled} checked {/if}>
 {/render}
-	{t}Temporary disable login{/t}
+  {t}Temporary disable login{/t}
      </td>
     </tr>
     <tr>
      <td colspan=2>
-		<h2>{t}Supported session types{/t}</h2>
-			{foreach from=$gotoSessionTypes item=item key=key}
-				<input class="center" type="checkbox" name="gotoSessionType_{$key}" 
-					{if $item} checked {/if}>&nbsp;{$key} <br>
-			{/foreach}
+    <h2>{t}Supported session types{/t}</h2>
+      {foreach from=$gotoSessionTypes item=item key=key}
+        <input class="center" type="checkbox" name="gotoSessionType_{$key}" 
+          {if $item} checked {/if}>&nbsp;{$key} <br>
+      {/foreach}
      </td>
     </tr>
    </table>

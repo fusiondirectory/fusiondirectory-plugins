@@ -9,21 +9,21 @@
      <td><label for="mail">{t}Primary address{/t}</label>{$must}</td>
      <td>
      {if !$isModifyableMail && $initially_was_account}
-		<input type='text' disabled size=30 value="{$mail}">
+        <input type='text' disabled size=30 value="{$mail}">
      {else}
-	 {if $domainSelectionEnabled}
-		{render acl=$mailACL}
-			<input type='text' id="mail" name="mail" size=20 maxlength=65 value="{$mail}">
-		{/render}
-		@<select name='MailDomain'>
-			{html_options values=$MailDomains output=$MailDomains selected=$MailDomain}
-		</select>
-	{else}
-		{render acl=$mailACL}
+   {if $domainSelectionEnabled}
+    {render acl=$mailACL}
+      <input type='text' id="mail" name="mail" size=20 maxlength=65 value="{$mail}">
+    {/render}
+    @<select name='MailDomain'>
+      {html_options values=$MailDomains output=$MailDomains selected=$MailDomain}
+    </select>
+  {else}
+    {render acl=$mailACL}
             <input type='text' id="mail" name="mail" size=35 maxlength=65 value="{$mail}">
         {/render}
-	{/if}
-	{/if}
+  {/if}
+  {/if}
      </td>
     </tr>
     <tr>
@@ -35,8 +35,8 @@
 
 {render acl=$gosaMailServerACL}
       <select size="1" id="gosaMailServer" name="gosaMailServer" title="{t}Specify the mail server where the user will be hosted on{/t}">
-		{html_options values=$MailServers output=$MailServers selected=$gosaMailServer}
-		<option disabled>&nbsp;</option>
+    {html_options values=$MailServers output=$MailServers selected=$gosaMailServer}
+    <option disabled>&nbsp;</option>
       </select>
 {/render}
      {/if}
@@ -44,24 +44,24 @@
     </tr>
 {/if}
 
-	<tr>
- 	 <td>&nbsp;
+  <tr>
+   <td>&nbsp;
      </td>
     </tr>
 {if $quotaEnabled}
-	<tr>
-	 <td>{t}Quota usage{/t}</td>
+  <tr>
+   <td>{t}Quota usage{/t}</td>
      <td>{$quotaUsage}</td>
-	</tr>
-	<tr>
-	 <td><label for="gosaMailQuota">{t}Quota size{/t}</label></td>
-	 <td>
+  </tr>
+  <tr>
+   <td><label for="gosaMailQuota">{t}Quota size{/t}</label></td>
+   <td>
 {render acl=$gosaMailQuotaACL checkbox=$multiple_support checked=$use_gosaMailQuota}
-	  <input id="gosaMailQuota" name="gosaMailQuota" size="6" align="middle" maxlength="60"
-		value="{$gosaMailQuota}"> MB
-			{/render}
-	 </td>
-	</tr>
+    <input id="gosaMailQuota" name="gosaMailQuota" size="6" align="middle" maxlength="60"
+    value="{$gosaMailQuota}"> MB
+      {/render}
+   </td>
+  </tr>
 {/if}
    </table>
   </td>
@@ -294,32 +294,32 @@
 <!-- Place cursor -->
 <script language="JavaScript" type="text/javascript">
 
-	{literal}
+  {literal}
         function validateClick()
         {
 alert("yes");
-	  if(!document.getElementById('use_vacation').checked){
+    if(!document.getElementById('use_vacation').checked){
             return;
           }
         }
 
-	function changeStates()
-	{
-	  if($('own_script').checked) {
-		$("gosaVacationStart", "gosaVacationStop","gosaVacationMessage").invoke("disable");
-		$("datepicker-gosaVacationStop_image", "datepicker-gosaVacationStart_image").invoke("hide");
+  function changeStates()
+  {
+    if($('own_script').checked) {
+    $("gosaVacationStart", "gosaVacationStop","gosaVacationMessage").invoke("disable");
+    $("datepicker-gosaVacationStop_image", "datepicker-gosaVacationStart_image").invoke("hide");
           } else {
-		if($('use_vacation').checked) {
-			$("gosaVacationStart", "gosaVacationStop","gosaVacationMessage").invoke("enable");
-			$("datepicker-gosaVacationStop_image", "datepicker-gosaVacationStart_image").invoke("show");
-		}else{
-			$("gosaVacationStart", "gosaVacationStop","gosaVacationMessage").invoke("disable");
-			$("datepicker-gosaVacationStop_image", "datepicker-gosaVacationStart_image").invoke("hide");
-		}
+    if($('use_vacation').checked) {
+      $("gosaVacationStart", "gosaVacationStop","gosaVacationMessage").invoke("enable");
+      $("datepicker-gosaVacationStop_image", "datepicker-gosaVacationStart_image").invoke("show");
+    }else{
+      $("gosaVacationStart", "gosaVacationStop","gosaVacationMessage").invoke("disable");
+      $("datepicker-gosaVacationStop_image", "datepicker-gosaVacationStart_image").invoke("hide");
+    }
            }
-	}
+  }
 
-	changeStates();
-	focus_field('mail');
-	{/literal}
+  changeStates();
+  focus_field('mail');
+  {/literal}
 </script>

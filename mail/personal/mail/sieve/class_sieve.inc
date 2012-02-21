@@ -9,10 +9,10 @@
  * did not receive this file, see http://www.fsf.org/copyleft/gpl.html.
  */
 
-// TODO before next release:	remove ::status() and dependencies
+// TODO before next release:  remove ::status() and dependencies
 
 
-define ("F_NO", 0);		
+define ("F_NO", 0);   
 define ("F_OK", 1);
 define ("F_DATA", 2);
 define ("F_HEAD", 3);
@@ -33,15 +33,15 @@ define ("EC_UNKNOWN", 255);
 
 Notes:
 This program/libary has bugs.
-.	This was quickly hacked out, so please let me know what is wrong and if you feel ambitious submit
+. This was quickly hacked out, so please let me know what is wrong and if you feel ambitious submit
 a patch :).
 
 Todo:
-.	Provide better error diagnostics.  			(mostly done with ver 0.0.5)
-.	Allow other auth mechanisms besides plain		(in progress)
-.	Have timing mechanism when port problems arise.		(not done yet)
-.	Maybe add the NOOP function.				(not done yet)
-.	Other top secret stuff....				(some done, believe me?)
+. Provide better error diagnostics.       (mostly done with ver 0.0.5)
+. Allow other auth mechanisms besides plain   (in progress)
+. Have timing mechanism when port problems arise.   (not done yet)
+. Maybe add the NOOP function.        (not done yet)
+. Other top secret stuff....        (some done, believe me?)
 
 Dan Ellis (danellis@rushmore.com)
 
@@ -66,8 +66,8 @@ class sieve
   var $port;
   var $user;
   var $pass;
-  var $auth_types;		/* a comma seperated list of allowed auth types, in order of preference */
-  var $auth_in_use;		/* type of authentication attempted */
+  var $auth_types;    /* a comma seperated list of allowed auth types, in order of preference */
+  var $auth_in_use;   /* type of authentication attempted */
 
   var $line;
   var $fp;
@@ -127,7 +127,7 @@ class sieve
         while($this->err_recv < ($this->err_len) && ($cur < $max)){
 
           $cur ++;
-          $this->line 	 = fgets($this->fp,4096);
+          $this->line    = fgets($this->fp,4096);
           $this->err_recv += strlen($this->line);
           $this->error_raw[]=preg_replace("/\r\n/","",$this->line);    //we want to be nice and strip crlf'
         } 
@@ -206,11 +206,11 @@ class sieve
     $this->port=$port;
     $this->user=$user;
     $this->pass=$pass;
-    if(!strcmp($auth, ""))		/* If there is no auth user, we deem the user itself to be the auth'd user */
+    if(!strcmp($auth, ""))    /* If there is no auth user, we deem the user itself to be the auth'd user */
       $this->auth = $this->user;
     else
       $this->auth = $auth;
-    $this->auth_types=$auth_types;	/* Allowed authentication types */
+    $this->auth_types=$auth_types;  /* Allowed authentication types */
     $this->fp=0;
     $this->line="";
     $this->retval="";
@@ -263,7 +263,7 @@ class sieve
 
     switch (substr($string, 0,2)){
       case "NO":
-        return F_NO;		//there should be some function to extract the error code from this line
+        return F_NO;    //there should be some function to extract the error code from this line
       //NO ("quota") "You are oly allowed x number of scripts"
       break;
       case "OK":
@@ -363,7 +363,7 @@ class sieve
 
 
 
-    if(sieve::status($this->line) == F_NO){		//here we should do some returning of error codes?
+    if(sieve::status($this->line) == F_NO){   //here we should do some returning of error codes?
       $this->error=EC_UNKNOWN;
 
       @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,$this->error_raw,
@@ -519,13 +519,13 @@ class sieve
   function sieve_listscripts() 
   { 
     fputs($this->fp, "LISTSCRIPTS\r\n"); 
-    sieve::get_response();		//should always return true, even if there are no scripts...
+    sieve::get_response();    //should always return true, even if there are no scripts...
     if(isset($this->found_script) and $this->found_script){
       @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, implode($this->response,", "),
           "<b>SIEVE: List scripts was successful!</b>");
       return true;
     }else{
-      $this->error=EC_NOSCRIPTS;	//sieve::getresponse has no way of telling wether a script was found...
+      $this->error=EC_NOSCRIPTS;  //sieve::getresponse has no way of telling wether a script was found...
       $this->error_raw="No scripts found for this account.";
       @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $this->error_raw,
           "<b>SIEVE: List scripts returned no scripts</b>");
@@ -539,7 +539,7 @@ class sieve
       $this->error = EC_NOT_LOGGED_IN;
       return false;
     }
-    elseif(feof($this->fp)){			
+    elseif(feof($this->fp)){      
       $this->error = EC_NOT_LOGGED_IN;
       return false;
     }
@@ -597,11 +597,11 @@ class sieve
       {
         $auth=base64_encode("$this->user\0$this->auth\0$this->pass");
 
-        $this->len=strlen($auth);			
+        $this->len=strlen($auth);     
         fputs($this->fp, "AUTHENTICATE \"PLAIN\" {".$this->len."+}\r\n");
         fputs($this->fp, "$auth\r\n");
 
-        $this->line=fgets($this->fp,1024);		
+        $this->line=fgets($this->fp,1024);    
         while(sieve::status($this->line) == F_DATA)
           $this->line=fgets($this->fp,1024);
 

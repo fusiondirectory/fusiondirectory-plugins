@@ -42,7 +42,7 @@ my $ok = getopts('?', \%Options);
 
 #Verifying if help is needed
 if ( (!$ok) || (@ARGV < 1) || ($Options{'?'}) ) {
-	&help();
+  &help();
 }
 
 print "We backup the whole tree before every operation\n";
@@ -52,47 +52,47 @@ $comm=$ARGV[0];
 
 if($comm eq "del" && @ARGV >1 )
 {
-	print "You asked to delete attributes : ";
-	$i=1;
-	while($ARGV[$i] ne "")
-	{	
-			print $ARGV[$i]." ";
-			$i++;
-	}
-	print "\n";
-	$ldap = Net::LDAP->new($server);
-	$ldap->bind($admin,password=>$password);
+  print "You asked to delete attributes : ";
+  $i=1;
+  while($ARGV[$i] ne "")
+  { 
+      print $ARGV[$i]." ";
+      $i++;
+  }
+  print "\n";
+  $ldap = Net::LDAP->new($server);
+  $ldap->bind($admin,password=>$password);
 
 
-	print "ldap connection " .$ldap;
+  print "ldap connection " .$ldap;
 
-	$mesg = $ldap->search(filter=>"(objectClass=*)",base=>$peopleou,scope=>$scope);
-	@entries = $mesg->entries;
+  $mesg = $ldap->search(filter=>"(objectClass=*)",base=>$peopleou,scope=>$scope);
+  @entries = $mesg->entries;
 
-	foreach $entry (@entries) {
-		$i=1;
-		print $entry->dn()."\n";
-		while($ARGV[$i] ne "")
-		{	
-			if($ARGV[$i] eq "obj"){$obj=1;$i++;next}
-			if($obj==1)
-			{
-				$mesg = $ldap->modify($entry->dn(), delete => {"ObjectClass"=>"$ARGV[$i]"});
-				print "\t objectClass: ".$ARGV[$i];
-			}
-			else
-			{
-				$mesg = $ldap->modify($entry->dn(), delete => [$ARGV[$i]]);
-				print "\t attribut: ".$ARGV[$i];
-			}
-			$obj=0;
-			$i++;
-		}
-		
-		print "\n";
-	}
-	$ldap->unbind;
-	exit(0);
+  foreach $entry (@entries) {
+    $i=1;
+    print $entry->dn()."\n";
+    while($ARGV[$i] ne "")
+    { 
+      if($ARGV[$i] eq "obj"){$obj=1;$i++;next}
+      if($obj==1)
+      {
+        $mesg = $ldap->modify($entry->dn(), delete => {"ObjectClass"=>"$ARGV[$i]"});
+        print "\t objectClass: ".$ARGV[$i];
+      }
+      else
+      {
+        $mesg = $ldap->modify($entry->dn(), delete => [$ARGV[$i]]);
+        print "\t attribut: ".$ARGV[$i];
+      }
+      $obj=0;
+      $i++;
+    }
+    
+    print "\n";
+  }
+  $ldap->unbind;
+  exit(0);
 }
 elsif($comm eq "add" && @ARGV >1)
 {
@@ -113,53 +113,53 @@ elsif($comm eq "add" && @ARGV >1)
 }
 elsif($comm eq "fusiondirectory" && @ARGV ==1)
 {
-	print "Add FusionDirectory attributes for the following users\n";
-	print "---------------------------------------------\n";
-	$ldap = Net::LDAP->new($server);
-	$ldap->bind($admin,password=>$password);
-	$mesg = $ldap->search(filter=>"&(!(objectClass~=gosaAccount))", base=>$peopleou,scope=>$scope);
-	@entries = $mesg->entries;
+  print "Add FusionDirectory attributes for the following users\n";
+  print "---------------------------------------------\n";
+  $ldap = Net::LDAP->new($server);
+  $ldap->bind($admin,password=>$password);
+  $mesg = $ldap->search(filter=>"&(!(objectClass~=gosaAccount))", base=>$peopleou,scope=>$scope);
+  @entries = $mesg->entries;
 
-	foreach $entry (@entries) {
-		$mesg = $ldap->modify($entry->dn(), add => { "ObjectClass" => "gosaAccount"});
-		$mesg = $ldap->modify($entry->dn(), add => { "ObjectClass" => "organizationalPerson"});
-		$mesg = $ldap->modify($entry->dn(), add => { "ObjectClass" => "Person"});
-		print $entry->dn();
-		print "\n";
-	}
-	$ldap->unbind;
-	exit(0);
+  foreach $entry (@entries) {
+    $mesg = $ldap->modify($entry->dn(), add => { "ObjectClass" => "gosaAccount"});
+    $mesg = $ldap->modify($entry->dn(), add => { "ObjectClass" => "organizationalPerson"});
+    $mesg = $ldap->modify($entry->dn(), add => { "ObjectClass" => "Person"});
+    print $entry->dn();
+    print "\n";
+  }
+  $ldap->unbind;
+  exit(0);
 }
 elsif($comm eq "modif" && @ARGV >1)
 {
-	print "Modifications asked\n";
-	print "------------------------\n";
-	$ldap = Net::LDAP->new($server);
-	$ldap->bind($admin,password=>$password);
+  print "Modifications asked\n";
+  print "------------------------\n";
+  $ldap = Net::LDAP->new($server);
+  $ldap->bind($admin,password=>$password);
 
-	$mesg = $ldap->search(filter=>"(objectClass=*)",base=>$peopleou,scope=>$scope);
-	@entries = $mesg->entries;
-	foreach $entry (@entries) {
-	$mesg = $ldap->modify($entry->dn(), replace => { "$ARGV[1]" => "$ARGV[2]" } );
-	print $entry->dn()."\n\tattribut $ARGV[1] modified with the value $ARGV[2]\n";
-	}
-	$ldap->unbind;
-	exit(0);
+  $mesg = $ldap->search(filter=>"(objectClass=*)",base=>$peopleou,scope=>$scope);
+  @entries = $mesg->entries;
+  foreach $entry (@entries) {
+  $mesg = $ldap->modify($entry->dn(), replace => { "$ARGV[1]" => "$ARGV[2]" } );
+  print $entry->dn()."\n\tattribut $ARGV[1] modified with the value $ARGV[2]\n";
+  }
+  $ldap->unbind;
+  exit(0);
 }
 elsif($comm eq "dump" && @ARGV ==1)
 {
-	&dump();
+  &dump();
 }
 else
 {
-	&help();
+  &help();
 }
 
 sub help()
 {
     print_banner;
     print "Usage: $0 [-?] command\n";
-    print "\t-?	show this help message\n";
+    print "\t-? show this help message\n";
     print "\tfusiondirectory -> add FusionDirectory attributes to the people branch !\n";
     print "\tadd <attribute> -> add an attribute to the people branch !\n"; 
     print "\tdel <attribute>  -> Remove an attribute from the people branch !\n";
@@ -174,9 +174,9 @@ sub dump()
     $ldap->bind($admin,password=>$password);
     my $ldif = Net::LDAP::LDIF->new($dump_file,'w') ;
     $mesg = $ldap->search ( 
-				base   => "$base",
-				filter => "(objectclass=*)"
-			);
+        base   => "$base",
+        filter => "(objectclass=*)"
+      );
     $ldif->write_entry($mesg->entries) ;
     $ldap->unbind;
 }

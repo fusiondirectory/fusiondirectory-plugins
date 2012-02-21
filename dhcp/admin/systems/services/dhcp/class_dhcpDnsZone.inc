@@ -32,7 +32,7 @@ class dhcpDnsZone extends dhcpPlugin
   var $drop_down_domain= array();
   var $drop_down_nameserver= array();
   var $drop_down_tsigkey= array();
-       	
+        
   /* attribute list for save action */
   var $objectclasses= array("top", "dhcpDnsZone");
 
@@ -128,7 +128,7 @@ class dhcpDnsZone extends dhcpPlugin
       if (isset($_POST['cn'])){
         $this->cn= get_post('cn');
       }
-		
+
     }
 
     dhcpPlugin::save_object();

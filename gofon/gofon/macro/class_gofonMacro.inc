@@ -127,8 +127,8 @@ class macro extends plugin
     }
 
     /* Variables */
-    $vars 	= "";
-    $tmp  	= array();
+    $vars   = "";
+    $tmp    = array();
     $number = 0; 
 
     /* Fill templating stuff */

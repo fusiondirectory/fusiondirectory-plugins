@@ -20,19 +20,19 @@
         <a href="?plug={$plug_id}&act=branch_branch">{t}Create release{/t}</a>
         <br>
         <input class="center" type="image" name="freeze_branch" src="plugins/fai/images/freeze.png">
-		<a href="?plug={$plug_id}&act=freeze_branch">{t}Create read-only release{/t}</a>
+    <a href="?plug={$plug_id}&act=freeze_branch">{t}Create read-only release{/t}</a>
     {else}
         <img src="plugins/fai/images/branch_small_grey.png" alt='{t}Release{/t}' class='center'>
         {t}Create release{/t}
         <br>
         <img src="plugins/fai/images/freeze_grey.png" alt='{t}Freeze{/t}' class='center'>
-		{t}Create read-only release{/t}
+    {t}Create read-only release{/t}
     {/if}
 
     {if $fai_release != $fai_base && $allow_remove}
     <br>
         <input class="center" type="image" name="remove_branch" src="images/lists/trash.png">
-	    <a href="?plug={$plug_id}&act=remove_branch">{t}Delete current release{/t}</a>
+      <a href="?plug={$plug_id}&act=remove_branch">{t}Delete current release{/t}</a>
     {/if}
       </td>
      </tr>

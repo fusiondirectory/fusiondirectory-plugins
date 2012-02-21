@@ -32,22 +32,22 @@ if ( $cleanup ){
   session::un_set('ldif');
 }else{
 
-	/* Create phonelist object on demand */
-	if (!session::is_set('ldif')){
-		$ldif= new ldif ($config);
-		$ldif->set_acl_category("logview");
-		session::set('ldif',$ldif);
-	}
-	$ldif = session::get('ldif');
+  /* Create phonelist object on demand */
+  if (!session::is_set('ldif')){
+    $ldif= new ldif ($config);
+    $ldif->set_acl_category("logview");
+    session::set('ldif',$ldif);
+  }
+  $ldif = session::get('ldif');
 
-	/* Execute formular */
-	$display= $ldif->execute ();
-	$display.= "<input type=\"hidden\" name=\"ignore\">\n";
+  /* Execute formular */
+  $display= $ldif->execute ();
+  $display.= "<input type=\"hidden\" name=\"ignore\">\n";
 
-	/* Page header*/
-	$display= print_header(get_template_path('plugins/ldapmanager/images/ldif.png'), _("LDAP manager")).$display;
+  /* Page header*/
+  $display= print_header(get_template_path('plugins/ldapmanager/images/ldif.png'), _("LDAP manager")).$display;
 
-	/* Store changes  in session */
-	session::set('ldif',$ldif);
+  /* Store changes  in session */
+  session::set('ldif',$ldif);
 }
 ?>

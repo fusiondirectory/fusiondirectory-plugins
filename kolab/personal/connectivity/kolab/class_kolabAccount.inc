@@ -536,7 +536,7 @@ class kolabAccount extends plugin
   /* Return plugin informations for acl handling  */
   static function plInfo()
   {
-    return (array(	
+    return (array(
           "plShortName"     => _("Kolab"),
           "plDescription"   => _("Kolab account settings")."&nbsp;("._("Connectivity addon").")",
           "plSelfModify"    => TRUE,

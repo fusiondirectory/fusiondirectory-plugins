@@ -45,7 +45,7 @@ class scalixAccount extends plugin
 
   /* Indicates whether we have a scalix group or a sclix user account 
    */
-	var $scalixGroup = FALSE;
+  var $scalixGroup = FALSE;
   
   /* INDIRECT MUST, scalix will complain if no email was specified */
   /* MAY */
@@ -99,7 +99,7 @@ class scalixAccount extends plugin
       if(isset($this->attrs['uid'][0])){
         $this->uid = $this->attrs['uid'][0];
       }
-	
+  
       foreach ($this->fakeBooleanAttributes as $val){
         if (isset($this->attrs["$val"][0])&&$this->attrs["$val"][0]=="TRUE"){
           $this->$val = TRUE;
@@ -388,7 +388,7 @@ class scalixAccount extends plugin
     }
 
     $ldap->cd($this->config->current['BASE']);
-    foreach($this->scalixEmailAddress as $k => $mail) {    	
+    foreach($this->scalixEmailAddress as $k => $mail) {     
       $ldap->search ("(&(!(objectClass=gosaUserTemplate))(objectClass=scalixUserClass)(scalixEmailAddress=".
         $mail.")(!(uid=".$this->uid."))(!(cn=".$this->uid.")))", array("uid"));
   

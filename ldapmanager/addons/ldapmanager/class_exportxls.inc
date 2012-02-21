@@ -43,8 +43,8 @@ class xlsexport extends plugin
 
   function execute()
   {
-	/* Call parent execute */
-	plugin::execute();
+  /* Call parent execute */
+  plugin::execute();
 
     /* Log view */
     if(!$this->view_logged){
@@ -110,7 +110,7 @@ class xlsexport extends plugin
     {
       if(!($ldap->dn_exists($dn) && $dn != "")){
         $smarty->assign("LDIFError",TRUE);
-	msg_dialog::display(_("Error"), _("Cannot export selected entries!"), ERROR_DIALOG);
+  msg_dialog::display(_("Error"), _("Cannot export selected entries!"), ERROR_DIALOG);
       }
     }
    
@@ -133,7 +133,7 @@ class xlsexport extends plugin
       // Export a single LDAP entry
       if(isset($_POST['sfrmgetsingle']))
       {
-        $smarty->assign("para","?ivbb=2&amp;d=".base64_encode($_POST['single'])."&n=".base64_encode($_POST['selfull']));	
+        $smarty->assign("para","?ivbb=2&amp;d=".base64_encode($_POST['single'])."&n=".base64_encode($_POST['selfull']));  
       }
       elseif(isset($_POST['sfrmgetfull']))
       {

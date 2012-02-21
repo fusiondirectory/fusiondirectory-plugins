@@ -1,13 +1,13 @@
 <h2>{t}Apache VHosts{/t}</h2>
 <table summary="" width="100%">
 <tr>
-	<td style="width:100%;vertical-align:top;">
-		{$VhostList}
+  <td style="width:100%;vertical-align:top;">
+    {$VhostList}
 
-		{render acl=$VirtualHostACL}
-		<input type="submit" name="AddVhost" value="{t}Add{/t}">
-		{/render}
-	</td>
+    {render acl=$VirtualHostACL}
+    <input type="submit" name="AddVhost" value="{t}Add{/t}">
+    {/render}
+  </td>
 </tr>
 </table>
 <script language="JavaScript" type="text/javascript">

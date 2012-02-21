@@ -23,33 +23,33 @@
 class conference extends plugin
 {
   /* department attributes */
-  var $cn			= "";
-  var $description		= "";
-  var $base 			= "";
-  var $old_base			= "";
-  var $ou 			= "";
-  var $goFonPIN			= "";
-  var $old_cn			= "";
+  var $cn     = "";
+  var $description  = "";
+  var $base       = "";
+  var $old_base     = "";
+  var $ou       = "";
+  var $goFonPIN     = "";
+  var $old_cn     = "";
 
-  var $goFonConferenceOption   	= "";
-  var $goFonConferenceOption_P 	= "";   // Set PIN 
-  var $goFonConferenceOption_r 	= "";   // record Conference
-  var $goFonConferenceOption_M 	= "";   // Play Music opn hold
-  var $goFonConferenceOption_s 	= "";   // activate menu
-  var $goFonConferenceOption_i 	= "";   // announce new and leaving user
-  var $goFonConferenceOption_c 	= "";   // Count User
-  var $goFonConferenceOption_D 	= "";   // Conference Type, no PIN/PIN
+  var $goFonConferenceOption    = "";
+  var $goFonConferenceOption_P  = "";   // Set PIN 
+  var $goFonConferenceOption_r  = "";   // record Conference
+  var $goFonConferenceOption_M  = "";   // Play Music opn hold
+  var $goFonConferenceOption_s  = "";   // activate menu
+  var $goFonConferenceOption_i  = "";   // announce new and leaving user
+  var $goFonConferenceOption_c  = "";   // Count User
+  var $goFonConferenceOption_D  = "";   // Conference Type, no PIN/PIN
 
   var $goFonConferenceOwner     = "";
   var $goFonHomeServer          = "0";      // Home server of the conference
   var $init_HomeServer          = "0";      // Initial home server of the conference
   var $goFonHomeServers         = array();  // All available home servers
 
-  var $goFonConferenceOptionFormat 	= "";
-  var $goFonConferenceOptionLifetime 	= "";
-  var $telephoneNumber 			= "";
+  var $goFonConferenceOptionFormat  = "";
+  var $goFonConferenceOptionLifetime  = "";
+  var $telephoneNumber      = "";
 
-  var $old_tele_number	        = false;
+  var $old_tele_number          = false;
   var $old_dn;
   var $baseSelector;
 
@@ -73,9 +73,9 @@ class conference extends plugin
   function conference (&$config, $dn, $plugin= NULL)
   {
     plugin::plugin($config, $dn, $plugin);
-    $this->is_account	= TRUE;
-    $this->ui			    = get_userinfo();
-    $this->orig_dn		= $dn;
+    $this->is_account = TRUE;
+    $this->ui         = get_userinfo();
+    $this->orig_dn    = $dn;
 
     $this->languages= get_languages(TRUE,TRUE);
 

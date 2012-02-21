@@ -8,7 +8,7 @@
   </tr>
   <tr>
     <td style="vertical-align:top">
-    	<table summary="">
+      <table summary="">
         <tr>
           <td>
             <LABEL for="cn">
@@ -139,58 +139,58 @@
   <tr>
     <td>
 
-	    <table summary="">
+      <table summary="">
         <tr>
-	        <td>
-{render acl=$goFonConferenceOptionPACL}
-		        <input type="checkbox" onclick="changeState('goFonPIN');" name="goFonConferenceOption_P" 
-					    value="P" {$goFonConferenceOption_PCHK}> 
-{/render} 
-        	</td>
           <td>
-		        {t}Preset PIN{/t}
-	        </td>
-	      </tr>
-	      <tr>
-	        <td>
-	          &nbsp;
-	        </td>
-	        <td>
-		        {t}PIN{/t} 
+{render acl=$goFonConferenceOptionPACL}
+            <input type="checkbox" onclick="changeState('goFonPIN');" name="goFonConferenceOption_P" 
+              value="P" {$goFonConferenceOption_PCHK}> 
+{/render} 
+          </td>
+          <td>
+            {t}Preset PIN{/t}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            &nbsp;
+          </td>
+          <td>
+            {t}PIN{/t} 
 {render acl=$goFonPINACL}
             <input type='password' name="goFonPIN" id="goFonPIN" value="{$goFonPIN}" title="{$goFonPIN}">
 {/render} 
-        	</td>
-	      </tr>
+          </td>
+        </tr>
         <tr>
-	        <td colspan=2>
+          <td colspan=2>
 {render acl=$goFonConferenceOptionrACL}
-		        <input type="checkbox" onclick="changeState('goFonConferenceOptionFormat');" name="goFonConferenceOption_r" 
+            <input type="checkbox" onclick="changeState('goFonConferenceOptionFormat');" name="goFonConferenceOption_r" 
               value="r" {$goFonConferenceOption_rCHK}> 
 {/render} 
-    	      {t}Record conference{/t}
-	        </td>
-	      </tr>
-	      <tr>
-	        <td>
-	          &nbsp;
-	        </td>
-	        <td>
-	          {t}Sound file format{/t}&nbsp;
+            {t}Record conference{/t}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            &nbsp;
+          </td>
+          <td>
+            {t}Sound file format{/t}&nbsp;
 {render acl=$goFonConferenceOptionFormatACL}
-	          <select id="goFonConferenceOptionFormat" size="1" name="goFonConferenceOptionFormat" 
+            <select id="goFonConferenceOptionFormat" size="1" name="goFonConferenceOptionFormat" 
               title="{t}Choose subtree to place department in{/t}"> 
-	            {html_options options=$goFonConferenceOptionFormats selected=$goFonConferenceOptionFormat}
-          	</select>
+              {html_options options=$goFonConferenceOptionFormats selected=$goFonConferenceOptionFormat}
+            </select>
 {/render} 
-        	</td>
-	      </tr>
-	    </table>
+          </td>
+        </tr>
+      </table>
 
     </td>
     <td style="border-left:1px solid #A0A0A0">
       &nbsp;
-	  </td>
+    </td>
     <td>
 
       <table summary="">
@@ -237,7 +237,7 @@
 <!-- Place cursor -->
 <script language="JavaScript" type="text/javascript">
   <!-- // First input field on page
-	focus_field('cn');
+  focus_field('cn');
   -->
 </script>
 <!-- 

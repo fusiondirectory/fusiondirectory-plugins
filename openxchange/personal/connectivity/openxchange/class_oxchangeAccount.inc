@@ -122,21 +122,21 @@ class oxchangeAccount extends plugin
       $smarty->assign("tabbed", 1);
     }else{
       $smarty->assign("tabbed", 0);
-	}
+  }
 
-	/* Trying to open a Postgresql Database Server */
-	if (function_exists("pg_connect")){
-		if(isset($this->oxconf["PGUSER"]) and isset($this->oxconf["PGHOST"]) and isset($this->oxconf["PGDBNAME"]) and isset($this->oxconf["PGPASSWD"])){
-			$pgcon =  @pg_connect("host=".$this->oxconf["PGHOST"]." user=".$this->oxconf["PGUSER"]." password=".$this->oxconf["PGPASSWD"]." dbname=".$this->oxconf["PGDBNAME"]);
-			if (! $pgcon){
-				$smarty->assign("pg", false);
-			}
-		}else{
-			$smarty->assign("pg", false);
-		}
-	}else{
-		$smarty->assign("pg", false);
-	}
+  /* Trying to open a Postgresql Database Server */
+  if (function_exists("pg_connect")){
+    if(isset($this->oxconf["PGUSER"]) and isset($this->oxconf["PGHOST"]) and isset($this->oxconf["PGDBNAME"]) and isset($this->oxconf["PGPASSWD"])){
+      $pgcon =  @pg_connect("host=".$this->oxconf["PGHOST"]." user=".$this->oxconf["PGUSER"]." password=".$this->oxconf["PGPASSWD"]." dbname=".$this->oxconf["PGDBNAME"]);
+      if (! $pgcon){
+        $smarty->assign("pg", false);
+      }
+    }else{
+      $smarty->assign("pg", false);
+    }
+  }else{
+    $smarty->assign("pg", false);
+  }
 
     $display.= $smarty->fetch (get_template_path('oxchange.tpl', TRUE, dirname(__FILE__)));
     return ($display);
@@ -170,7 +170,7 @@ class oxchangeAccount extends plugin
         "delete from prg_tasks_members where (member_uid like '".$this->attrs[$this->dnmode][0]."')",
         "delete from prg_projects_rights where (user_right like '".$this->attrs[$this->dnmode][0]."')",
         "delete from prg_projects_notification where (member_uid like '".$this->attrs[$this->dnmode][0]."')",
-        "delete	from prg_projects_members where (member_uid like '".$this->attrs[$this->dnmode][0]."')",
+        "delete from prg_projects_members where (member_uid like '".$this->attrs[$this->dnmode][0]."')",
         "delete from oxfolder_permissions where (entity like '".$this->attrs[$this->dnmode][0]."') AND ((role = 256) OR (role = 1024))",
         "delete from oxfolder_standardfolders where owner like '".$this->attrs[$this->dnmode][0]."'",
         "delete from prg_forum_read where user_right = '".$this->attrs[$this->dnmode][0]."'",
@@ -183,8 +183,8 @@ class oxchangeAccount extends plugin
     /* Trying to open a Postgresql Database Server */
     if (function_exists("pg_connect")){
       if(isset($this->oxconf["PGUSER"]) and 
-		 isset($this->oxconf["PGHOST"]) and 
-	     isset($this->oxconf["PGDBNAME"]) and 
+     isset($this->oxconf["PGHOST"]) and 
+       isset($this->oxconf["PGDBNAME"]) and 
          isset($this->oxconf["PGPASSWD"])){
         $pgcon = @pg_connect("host=".$this->oxconf["PGHOST"]." user=".$this->oxconf["PGUSER"]." password=".$this->oxconf["PGPASSWD"]." dbname=".$this->oxconf["PGDBNAME"]);
         if (! $pgcon){
@@ -204,7 +204,7 @@ class oxchangeAccount extends plugin
     $ldap= $this->config->get_ldap_link();
 
     if($ldap->dn_exists("ou=addr,".$this->dn)){
-    	$ldap->rmdir_recursive("ou=addr,".$this->dn);
+      $ldap->rmdir_recursive("ou=addr,".$this->dn);
       if (!$ldap->success()){
         msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_DEL, get_class()));
       }
@@ -276,7 +276,7 @@ class oxchangeAccount extends plugin
     if (isset($this->attrs['objectClass'])){
       foreach ($this->attrs['objectClass'] as $object){
         if($object=="OXUserObject") $needupdate=FALSE;
-	if($object=="gosaUserTemplate") $istemplate=TRUE;
+  if($object=="gosaUserTemplate") $istemplate=TRUE;
       }
     }
   
@@ -292,7 +292,7 @@ class oxchangeAccount extends plugin
       msg_dialog::display(_("Error"), msgPool::invalid(_("Open-Xchange account name")), ERROR_DIALOG);
       return;
     }
-	
+  
     if ($istemplate) $needupdate=TRUE;
 
     if($needupdate){
@@ -448,8 +448,8 @@ class oxchangeAccount extends plugin
 
           "plProvidedAcls"  => array(
             "OXAppointmentDays" => _("OXAppointmentDays"),
-            "OXTaskDays"   	    => _("OXTaskDays"),
-            "OXTimeZone"   	    => _("OXTimeZone"))
+            "OXTaskDays"        => _("OXTaskDays"),
+            "OXTimeZone"        => _("OXTimeZone"))
           ));
   }
 }

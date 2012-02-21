@@ -26,7 +26,7 @@ class dhcpHost extends dhcpPlugin
   /* Used attributes */
   var $dhcpHWAddress= "";
   var $realGosaHost = FALSE;
-	
+
   /* attribute list for save action */
   var $objectclasses= array("top", "dhcpHost");
 
@@ -97,7 +97,7 @@ class dhcpHost extends dhcpPlugin
       if (isset($_POST['dhcpHWAddress'])){
         $this->dhcpHWAddress= get_post('hwtype')." ".get_post('dhcpHWAddress');
       }
-		
+    
       if(!$this->realGosaHost){
         $this->cn= validate(get_post('cn'));
       }

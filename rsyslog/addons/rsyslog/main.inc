@@ -23,7 +23,7 @@
 /* Remove locks created by this plugin */
 if ($remove_lock){
   if(session::is_set('rsyslogObject')){
-	// Nothing to unlock here
+  // Nothing to unlock here
   }
 }
 
@@ -33,21 +33,23 @@ if ( $cleanup ){
 }else{
 
 
-	/* Create logview object on demand */
-	if (!session::is_set('rsyslogObject')){
-		session::set('rsyslogObject',new rsyslog($config));
-	}
-	$rsyslogObject = session::get('rsyslogObject');
+  /* Create logview object on demand */
+  if (!session::is_set('rsyslogObject')){
+    session::set('rsyslogObject',new rsyslog($config));
+  }
+  $rsyslogObject = session::get('rsyslogObject');
 
-	/* Execute formular */
-	$display= $rsyslogObject->save_object();
-	$display= $rsyslogObject->execute ();
-	$display.= "<input type=\"hidden\" name=\"ignore\">\n";
+  /* Execute formular */
+  $display= $rsyslogObject->save_object();
+  $display= $rsyslogObject->execute ();
+  $display.= "<input type=\"hidden\" name=\"ignore\">\n";
 
-	/* Page header*/
-	$display= print_header(get_template_path('plugins/rsyslog/images/plugin.png'), _("System logs")).$display;
+  /* Page header*/
+  $display= print_header(get_template_path('plugins/rsyslog/images/plugin.png'), _("System logs")).$display;
 
-	/* Store changes  in session */
-	session::set('rsyslogObject',$rsyslogObject);
+  /* Store changes  in session */
+  session::set('rsyslogObject',$rsyslogObject);
 }
+// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
+
 ?>

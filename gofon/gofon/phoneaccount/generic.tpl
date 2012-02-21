@@ -42,18 +42,18 @@
    <h2><img class="center" alt="" align="middle" src="plugins/gofon/images/hardware.png" />&nbsp;{t}Telephone hardware{/t}</h2>
 
       <table summary="{t}Telephone{/t}" border=0>
-	   {if !$multiple_support}
+     {if !$multiple_support}
        <tr>
         <td>
-			{t}Telephone{/t}
-		</td>
+      {t}Telephone{/t}
+    </td>
         <td>
-		{render acl=$goFonHardwareACL checkbox=$multiple_support checked=$use_goFonHardware}
-			{$hardware_list}
-		{/render}
-		</td>
+    {render acl=$goFonHardwareACL checkbox=$multiple_support checked=$use_goFonHardware}
+      {$hardware_list}
+    {/render}
+    </td>
        </tr>
-	   {/if}
+     {/if}
        <tr>
         <td>{t}Home server{/t}{$must}
         </td>
@@ -151,6 +151,6 @@
 
 <script language="JavaScript" type="text/javascript">
   <!-- // First input field on page
-	focus_field('phonenumber');
+  focus_field('phonenumber');
   -->
 </script>

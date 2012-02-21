@@ -4,7 +4,7 @@
      <td>{t}FAX DB user{/t}{$must}</td>
      <td>
 {render acl=$goFaxAdminACL}
-	<input type='text' name="goFaxAdmin" size=30 maxlength=60 id="goFaxAdmin" value="{$goFaxAdmin}" >
+  <input type='text' name="goFaxAdmin" size=30 maxlength=60 id="goFaxAdmin" value="{$goFaxAdmin}" >
 {/render}
      </td>
     </tr>
@@ -12,7 +12,7 @@
      <td>{t}Password{/t}{$must}</td>
      <td>
 {render acl=$goFaxPasswordACL}
-	<input type=password name="goFaxPassword" id="goFaxPassword" size=30 maxlength=60 value="{$goFaxPassword}" >
+  <input type=password name="goFaxPassword" id="goFaxPassword" size=30 maxlength=60 value="{$goFaxPassword}" >
 {/render}
      </td>
     </tr>

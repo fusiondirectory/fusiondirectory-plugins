@@ -25,112 +25,112 @@ my %blacklist;
 
 sub timestamp
 {
-	return strftime("%a %b %X goSquid[$$]: ", localtime);
+  return strftime("%a %b %X goSquid[$$]: ", localtime);
 }
 
 # Check url in our blacklist
 sub unwanted_content
 {
-	my $url = shift;
-	my $host = (split(/\//, $url))[2];
+  my $url = shift;
+  my $host = (split(/\//, $url))[2];
 
-	return 1 if exists($blacklist{$host}) and $blacklist{$host} > 0;
-	return undef;
+  return 1 if exists($blacklist{$host}) and $blacklist{$host} > 0;
+  return undef;
 }
 
 # Check work time limit
 sub work_time
 {
-	my $user = shift;
-	my ($min,$hour) = (localtime)[1,2];
-	my $time = $hour * 60 + $min;
+  my $user = shift;
+  my ($min,$hour) = (localtime)[1,2];
+  my $time = $hour * 60 + $min;
 
-	return 1 if $user->{gosaProxyWorkingStart} < $time and $user->{gosaProxyWorkingStop} > $time;
-	return undef;
+  return 1 if $user->{gosaProxyWorkingStart} < $time and $user->{gosaProxyWorkingStop} > $time;
+  return undef;
 }
 
 sub quota_exceed
 {
-	my $user = shift;
+  my $user = shift;
 
-	return 1 if $user->{trafficUsage} > $user->{gosaProxyQuota};
-	return undef;
+  return 1 if $user->{trafficUsage} > $user->{gosaProxyQuota};
+  return undef;
 }
 
 sub check_access
 {
-	my ($user, $url) = @_;
+  my ($user, $url) = @_;
 
-	$user->{timed} = 0;
-	$user->{quoted} = 0;
-	$user->{filtered} = 0;
+  $user->{timed} = 0;
+  $user->{quoted} = 0;
+  $user->{filtered} = 0;
 
-	if($user->{gosaProxyAcctFlags} =~ m/[F]/)
-	{
-		# Filter unwanted content
-		$user->{filtered} = 1 if unwanted_content($url);
-	}
-	if($user->{gosaProxyAcctFlags} =~ m/[T]/)
-	{
-		# Filter unwanted content during working hours only
-		$user->{timed} = 1 if work_time($user);
-	}
-	if($user->{gosaProxyAcctFlags} =~ m/B/)
-	{
-		$user->{quoted} = 1 if quota_exceed($user);
-	}
+  if($user->{gosaProxyAcctFlags} =~ m/[F]/)
+  {
+    # Filter unwanted content
+    $user->{filtered} = 1 if unwanted_content($url);
+  }
+  if($user->{gosaProxyAcctFlags} =~ m/[T]/)
+  {
+    # Filter unwanted content during working hours only
+    $user->{timed} = 1 if work_time($user);
+  }
+  if($user->{gosaProxyAcctFlags} =~ m/B/)
+  {
+    $user->{quoted} = 1 if quota_exceed($user);
+  }
 }
 
 #--------------------------------------
 while (<>) {
-	my ($url, $addr, $uid, $method) = split;
-	my $time = timelocal(localtime);
-	tie(%blacklist, 'DB_File', $black_list, O_RDONLY);
-	tie(%cache, 'DB_File', $cache_file, O_RDONLY);
+  my ($url, $addr, $uid, $method) = split;
+  my $time = timelocal(localtime);
+  tie(%blacklist, 'DB_File', $black_list, O_RDONLY);
+  tie(%cache, 'DB_File', $cache_file, O_RDONLY);
 
-	if( exists($cache{$uid}) )
-	{
-		my $user;
-		$user->{uid} = $uid;
-		(
-			$user->{modifyTimestamp},
-			$user->{gosaProxyAcctFlags},
-			$user->{gosaProxyWorkingStart},
-			$user->{gosaProxyWorkingStop},
-			$user->{gosaProxyQuota},
-			$user->{gosaProxyQuotaPeriod},
-			$user->{trafficUsage},
-			$user->{firstRequest},
-			$user->{lastRequest}
-		) = unpack($format, $cache{$uid});
+  if( exists($cache{$uid}) )
+  {
+    my $user;
+    $user->{uid} = $uid;
+    (
+      $user->{modifyTimestamp},
+      $user->{gosaProxyAcctFlags},
+      $user->{gosaProxyWorkingStart},
+      $user->{gosaProxyWorkingStop},
+      $user->{gosaProxyQuota},
+      $user->{gosaProxyQuotaPeriod},
+      $user->{trafficUsage},
+      $user->{firstRequest},
+      $user->{lastRequest}
+    ) = unpack($format, $cache{$uid});
 
-		check_access($user, $url);
+    check_access($user, $url);
 
-		if($user->{'disabled'})
-		{
-			warn timestamp, "Access denied for unknown user $uid\n";
-		}
-		elsif($user->{'timed'})
-		{
-			warn timestamp, "Access denied by worktime for $uid\n";
-		}
-		elsif($user->{'quoted'})
-		{
-			warn timestamp, "Access denied by quota for $uid\n";
-		}
-		elsif($user->{'filtered'})
-		{
-			warn timestamp, "Content $url filtered for $uid\n";
-		}
-		else
-		{
-			print "$url\n";
-			next;
-		}
-	}
+    if($user->{'disabled'})
+    {
+      warn timestamp, "Access denied for unknown user $uid\n";
+    }
+    elsif($user->{'timed'})
+    {
+      warn timestamp, "Access denied by worktime for $uid\n";
+    }
+    elsif($user->{'quoted'})
+    {
+      warn timestamp, "Access denied by quota for $uid\n";
+    }
+    elsif($user->{'filtered'})
+    {
+      warn timestamp, "Content $url filtered for $uid\n";
+    }
+    else
+    {
+      print "$url\n";
+      next;
+    }
+  }
 
-	untie %blacklist;
-	untie %cache;
+  untie %blacklist;
+  untie %cache;
 
-	print "$DEFAULT_URL\n";
+  print "$DEFAULT_URL\n";
 }

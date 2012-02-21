@@ -1,20 +1,20 @@
 
     {if $Expert}
         {if $LastError != ""}
-		<table class='sieve_test_case'>
+    <table class='sieve_test_case'>
             <tr>
                 <td colspan=2>
                     <font color='red'><b>{$LastError}</b></font>
                 </td>
             </tr>
-		</table>
+    </table>
         {/if}
 
 <table class='sieve_test_case'>
     <tr>
-		<td style='width:50%;'>
-			<b>{t}Envelope{/t}</b>
-		</td>
+    <td style='width:50%;'>
+      <b>{t}Envelope{/t}</b>
+    </td>
         <td style='text-align:right; vertical-align:top;'>
             <input type='submit' name='Toggle_Expert_{$ID}' value='{t}Normal view{/t}'>
         </td>
@@ -32,7 +32,7 @@
 
         </td>
     </tr>
-	    <tr>
+      <tr>
         <td>
             {t}Invert test{/t}?
         </td>
@@ -83,52 +83,52 @@
     </tr>
 </table>
 
-	{else}
-    	{if $LastError != ""}
-		<table class='sieve_test_case'>
-        	<tr>
-				<td colspan=4>
-		            <font color='red'><b>{$LastError}</b></font>
-				</td>
-			</tr>
-		</table>
+  {else}
+      {if $LastError != ""}
+    <table class='sieve_test_case'>
+          <tr>
+        <td colspan=4>
+                <font color='red'><b>{$LastError}</b></font>
+        </td>
+      </tr>
+    </table>
         {/if}
 <table class='sieve_test_case'>
-	<tr>
-		{if $match_type == ":count" || $match_type == ":value"}
-		<td style='vertical-align:top; width:350px;'>
-		{else}
-		<td style='vertical-align:top; width:200px;'>
-		{/if}
+  <tr>
+    {if $match_type == ":count" || $match_type == ":value"}
+    <td style='vertical-align:top; width:350px;'>
+    {else}
+    <td style='vertical-align:top; width:200px;'>
+    {/if}
 
-			
-			<b>{t}Envelope{/t}</b>
-		
-			{if $Inverse}
-				<input type='submit' name='toggle_inverse_{$ID}' value='{t}Not{/t}'>
-			{else}
-				<input type='submit' name='toggle_inverse_{$ID}' value='{t}-{/t}'>
-			{/if}
-			&nbsp;
-			<select onChange='document.mainform.submit();' name='matchtype_{$ID}' title='{t}Boolean value{/t}'> 
-				{html_options options=$match_types selected=$match_type}
-			</select>
+      
+      <b>{t}Envelope{/t}</b>
+    
+      {if $Inverse}
+        <input type='submit' name='toggle_inverse_{$ID}' value='{t}Not{/t}'>
+      {else}
+        <input type='submit' name='toggle_inverse_{$ID}' value='{t}-{/t}'>
+      {/if}
+      &nbsp;
+      <select onChange='document.mainform.submit();' name='matchtype_{$ID}' title='{t}Boolean value{/t}'> 
+        {html_options options=$match_types selected=$match_type}
+      </select>
 
-			{if $match_type == ":count" || $match_type == ":value"}
-			<select name='operator_{$ID}' title='{t}Boolean value{/t}' onChange='document.mainform.submit();'>
-				{html_options options=$operators selected=$operator}
-			</select>
-			{/if}
-		</td>
-		<td>
-			<textarea style='width:100%;height:40px;' name='keys_{$ID}'>{$keys}</textarea>
-		</td>
-		<td>
-			<textarea style='width:100%;height:40px;' name='values_{$ID}'>{$values}</textarea>
-		</td>
-		<td style='text-align:right; vertical-align:top; width:120px;'>
-			<input type='submit' name='Toggle_Expert_{$ID}' value='{t}Expert view{/t}'>
-		</td>
-	</tr>
+      {if $match_type == ":count" || $match_type == ":value"}
+      <select name='operator_{$ID}' title='{t}Boolean value{/t}' onChange='document.mainform.submit();'>
+        {html_options options=$operators selected=$operator}
+      </select>
+      {/if}
+    </td>
+    <td>
+      <textarea style='width:100%;height:40px;' name='keys_{$ID}'>{$keys}</textarea>
+    </td>
+    <td>
+      <textarea style='width:100%;height:40px;' name='values_{$ID}'>{$values}</textarea>
+    </td>
+    <td style='text-align:right; vertical-align:top; width:120px;'>
+      <input type='submit' name='Toggle_Expert_{$ID}' value='{t}Expert view{/t}'>
+    </td>
+  </tr>
 </table>
-	{/if}
+  {/if}

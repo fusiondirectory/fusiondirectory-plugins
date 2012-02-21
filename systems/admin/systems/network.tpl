@@ -1,15 +1,15 @@
-<h2><img	class="center"	alt=""	align="middle"	src="plugins/systems/images/network.png">	{t}Network	settings{/t}</h2>
+<h2><img  class="center"  alt=""  align="middle"  src="plugins/systems/images/network.png"> {t}Network  settings{/t}</h2>
 
 
-<table	summary=""	width="100%" cellspacing=0 cellpadding=0>
-	<tr>
-		<td	style="width:50%; vertical-align: top;">
-			<table	summary="">
-				<tr>
-					<td style='vertical-align:top;'><LABEL	for="ipHostNumber">{t}IP-address{/t}{if $IPisMust}{$must}{/if}</LABEL></td>
-					<td>
+<table  summary=""  width="100%" cellspacing=0 cellpadding=0>
+  <tr>
+    <td style="width:50%; vertical-align: top;">
+      <table  summary="">
+        <tr>
+          <td style='vertical-align:top;'><LABEL  for="ipHostNumber">{t}IP-address{/t}{if $IPisMust}{$must}{/if}</LABEL></td>
+          <td>
 {render acl=$ipHostNumberACL}
-            <input	type='text' id="ipHostNumber"	name="ipHostNumber"	size=25	maxlength=80	value="{$ipHostNumber}">
+            <input  type='text' id="ipHostNumber" name="ipHostNumber" size=25 maxlength=80  value="{$ipHostNumber}">
 {/render}
           {foreach from=$additionalHostNumbers item=item key=key}
             <br>
@@ -33,19 +33,19 @@
       {/if}
 {/render}
           </td>
-				</tr>
-				<tr>
-					<td><LABEL	for="macAddress">{t}MAC-address{/t}</LABEL>{if $MACisMust}{$must}{/if}</td>
-					<td>
+        </tr>
+        <tr>
+          <td><LABEL  for="macAddress">{t}MAC-address{/t}</LABEL>{if $MACisMust}{$must}{/if}</td>
+          <td>
 {render acl=$macAddressACL}
-            <input	type='text' name="macAddress"	id="macAddress"	size=25	maxlength=80	value="{$macAddress}">
+            <input  type='text' name="macAddress" id="macAddress" size=25 maxlength=80  value="{$macAddress}">
 {/render}
 
 {render acl=$autonetACL}
-      	    <input type="submit" name="autonet" value="{t}Autodetect{/t}">
+            <input type="submit" name="autonet" value="{t}Autodetect{/t}">
 {/render}
           </td>
-				</tr>
+        </tr>
         {if $dhcpEnabled}
         <tr>
           <td colspan=2 style='padding-top:12px;'>
@@ -101,7 +101,7 @@
       </table> 
     </td>
     {if $DNSenabled==true}
-		<td	style="width:50%;vertical-align:top;border-left:1px solid #b0b0b0;" valign="top">
+    <td style="width:50%;vertical-align:top;border-left:1px solid #b0b0b0;" valign="top">
 
     {if $ZoneCnt}
 
@@ -129,10 +129,10 @@
       {else}
       <div style="padding-left:20px;display: none;" id="test2">
       {/if}
-			<table summary="">
-				<tr>
-					<td><LABEL	for="zoneName">{t}Zone{/t}</LABEL></td>
-					<td>
+      <table summary="">
+        <tr>
+          <td><LABEL  for="zoneName">{t}Zone{/t}</LABEL></td>
+          <td>
             {render acl=$dnsSetupACL}
               <select name="zoneName" id="zoneName">
                 {html_options values=$ZoneKeys output=$Zones selected=$zoneName}
@@ -155,8 +155,8 @@
                           {$records}
             {/render}
           </td>
-				</tr>
-			</table>
+        </tr>
+      </table>
       </div>
     {else}        
       <input type="checkbox" name="dummy" id="DNS_is_account" value="1" disabled class='center' {if $DNS_is_account} checked {/if}>
@@ -164,10 +164,10 @@
       <input type='image' src='images/lists/reload.png' class='center'>
     {/if}
 
-		</td>
+    </td>
     {/if}
     
-	</tr>
+  </tr>
 </table>
 <input type="hidden" name="network_tpl_posted" value="1">
 

@@ -5,28 +5,28 @@
 
 <table summary="" style="width:100%;">
 <tr>
-	<td width="30%">
-		<LABEL for="text" >{t}Export single entry{/t}</LABEL>
-	</td>
-	<td>
-		<input id="text" type="text" value="{$single}" name="single">
-	</td>
-	<td>
-		<button type='submit' name='sfrmgetsingle'>{t}Export{/t}</button>
+  <td width="30%">
+    <LABEL for="text" >{t}Export single entry{/t}</LABEL>
+  </td>
+  <td>
+    <input id="text" type="text" value="{$single}" name="single">
+  </td>
+  <td>
+    <button type='submit' name='sfrmgetsingle'>{t}Export{/t}</button>
 
-	</td>
+  </td>
 </tr>
 <tr>
-	<td width="30%">
-		<LABEL for="selfull">{t}Export complete LDIF for{/t}</LABEL>
-	</td>
-	<td>
+  <td width="30%">
+    <LABEL for="selfull">{t}Export complete LDIF for{/t}</LABEL>
+  </td>
+  <td>
         {$base}
-	</td>
-	<td>
-		<button type='submit' name='sfrmgetfull'>{t}Export{/t}</button>
+  </td>
+  <td>
+    <button type='submit' name='sfrmgetfull'>{t}Export{/t}</button>
 
-	</td>
+  </td>
 </tr>
 </table> 
 

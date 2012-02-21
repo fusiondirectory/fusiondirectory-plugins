@@ -33,30 +33,30 @@ if ( $cleanup ){
   session::un_set('mailqueue');
 }else{
 
-	/* Create mailqueue object on demand */
-	if (!session::is_set('mailqueue')){
-		$ui = get_userinfo();
-		$mailqueue= new mailqueue ($config);
-		$mailqueue->set_acl_category("mailqueue");
-		
-		/* Check root dn and user dn for acl informations */
-		$mailqueue->set_acl_base($config->current['BASE']);
-		if($mailqueue->getacl("") == ""){
-			$mailqueue->set_acl_base($ui->dn);
-		}
-		session::set('mailqueue',$mailqueue);
-	}
-	$mailqueue = session::get('mailqueue');
+  /* Create mailqueue object on demand */
+  if (!session::is_set('mailqueue')){
+    $ui = get_userinfo();
+    $mailqueue= new mailqueue ($config);
+    $mailqueue->set_acl_category("mailqueue");
+    
+    /* Check root dn and user dn for acl informations */
+    $mailqueue->set_acl_base($config->current['BASE']);
+    if($mailqueue->getacl("") == ""){
+      $mailqueue->set_acl_base($ui->dn);
+    }
+    session::set('mailqueue',$mailqueue);
+  }
+  $mailqueue = session::get('mailqueue');
 
-	/* Execute formular */
-	$mailqueue->save_object();
-	$display= $mailqueue->execute ();
-	$display.= "<input type=\"hidden\" name=\"ignore\">\n";
+  /* Execute formular */
+  $mailqueue->save_object();
+  $display= $mailqueue->execute ();
+  $display.= "<input type=\"hidden\" name=\"ignore\">\n";
 
-	/* Page header*/
-	$display= print_header(get_template_path('plugins/mail/images/mailqueue.png'), _("Mail queue")).$display;
+  /* Page header*/
+  $display= print_header(get_template_path('plugins/mail/images/mailqueue.png'), _("Mail queue")).$display;
 
-	/* Store changes  in session */
-	session::set('mailqueue',$mailqueue);
+  /* Store changes  in session */
+  session::set('mailqueue',$mailqueue);
 }
 ?>

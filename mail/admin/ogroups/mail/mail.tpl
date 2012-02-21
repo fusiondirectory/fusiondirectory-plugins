@@ -10,7 +10,7 @@
      <td><LABEL for="mail">{t}Primary address{/t}</LABEL>{$must}</td>
      <td>
 {render acl=$mailACL}
-	<input type='text' id="mail" name="mail" size=50 maxlength=65 value="{$mail}" title="{t}Primary mail address for this distribution list{/t}">
+  <input type='text' id="mail" name="mail" size=50 maxlength=65 value="{$mail}" title="{t}Primary mail address for this distribution list{/t}">
 {/render}
      </td>
     </tr>
@@ -22,6 +22,6 @@
 <!-- Place cursor -->
 <script language="JavaScript" type="text/javascript">
   <!-- // First input field on page
-	focus_field('mail');
+  focus_field('mail');
   -->
 </script>

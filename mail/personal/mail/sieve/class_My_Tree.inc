@@ -33,7 +33,7 @@ class My_Tree extends Tree
   var $dump_;
 
   var $mode_stack = array();
-  var $pap		= array();
+  var $pap    = array();
   var $parent = NULL;
 
   function My_Tree(&$root,$parent)
@@ -202,7 +202,7 @@ class My_Tree extends Tree
       $this->handle_elements($tmp,$node_id);
     }
 
-    /* If this is a sub element, just call this for all childs */	
+    /* If this is a sub element, just call this for all childs */ 
     if(isset($this->childs_[$node_id])){
       $childs = $this->childs_[$node_id];
       for ($i=0; $i<count($childs); ++$i)

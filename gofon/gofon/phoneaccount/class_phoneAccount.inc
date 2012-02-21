@@ -67,11 +67,11 @@ class phoneAccount extends plugin
   var $uid;
   var $cn;
 
-  var $view_logged	= FALSE;
+  var $view_logged      = FALSE;
   var $multiple_support = TRUE;
   var $mailAddress      = "";
   var $has_mailAccount  = FALSE;
-  var $pager      	= "";
+  var $pager            = "";
 
   function phoneAccount (&$config, $dn= NULL, $parent= NULL)
   {

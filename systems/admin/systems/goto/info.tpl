@@ -1,6 +1,6 @@
 
 {if !$ACL}
-	<h2>{msgPool type=permView}</h2>
+  <h2>{msgPool type=permView}</h2>
 {else}
 
 <h2><img class="center" alt="" align="middle" src="images/info_small.png"> {t}System information{/t}</h2>

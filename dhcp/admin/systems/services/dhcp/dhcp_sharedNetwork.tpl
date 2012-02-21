@@ -18,8 +18,8 @@
      <td>{t}Server identifier{/t}</td>
      <td>
 {render acl=$acl}
-      <input type='text' name='server-identifier' size='25' maxlength='80' value='{$server_identifier}'
-	title='{t}Propagated server identifier for this shared network{/t}'>
+  <input type='text' name='server-identifier' size='25' maxlength='80' value='{$server_identifier}'
+  title='{t}Propagated server identifier for this shared network{/t}'>
 {/render}
      </td>
     </tr>

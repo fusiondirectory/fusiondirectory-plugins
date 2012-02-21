@@ -1,20 +1,20 @@
-	{if $Expert}
-    	{if $LastError != ""}
-		<table class='sieve_test_case'>
-        	<tr>
-				<td colspan=4>
-		            <font color='red'><b>{$LastError}</b></font>
-				</td>
-			</tr>
-		</table>
+  {if $Expert}
+      {if $LastError != ""}
+    <table class='sieve_test_case'>
+          <tr>
+        <td colspan=4>
+                <font color='red'><b>{$LastError}</b></font>
+        </td>
+      </tr>
+    </table>
         {/if}
 
 
 <table class='sieve_test_case'>
-	<tr>
-		<td>
-			<b>{t}Header{/t}</b>
-		</td>
+  <tr>
+    <td>
+      <b>{t}Header{/t}</b>
+    </td>
         <td style='text-align:right; vertical-align:top;'>
             <input type='submit' name='Toggle_Expert_{$ID}' value='{t}Normal view{/t}'>
         </td>
@@ -22,7 +22,7 @@
 </table>
 <table>
     <tr>
-		<td>
+    <td>
             {t}Match type{/t}
         </td>
         <td>
@@ -67,7 +67,7 @@
     </tr>
         {/if}
 
-	 <tr>
+   <tr>
         <td colspan=2>&nbsp;</td>
     </tr>
    </table>
@@ -82,27 +82,27 @@
             <textarea style='width:100%;height:70px;' name='values_{$ID}'>{$values}</textarea>
         </td>
     </tr>
-	</table>
+  </table>
 
-	{else}
-    	{if $LastError != ""}
-		<table class='sieve_test_case'>
-        	<tr>
-				<td colspan=4>
-		            <font color='red'><b>{$LastError}</b></font>
-				</td>
-			</tr>
-		</table>
+  {else}
+      {if $LastError != ""}
+    <table class='sieve_test_case'>
+          <tr>
+        <td colspan=4>
+                <font color='red'><b>{$LastError}</b></font>
+        </td>
+      </tr>
+    </table>
         {/if}
 
-		
+    
 <table class='sieve_test_case'>
     <tr>
-		{if $match_type == ":count" || $match_type == ":value"}
-		<td style='vertical-align:top; width:350px;'>
-		{else}
-		<td style='vertical-align:top; width:200px;'>
-		{/if}
+    {if $match_type == ":count" || $match_type == ":value"}
+    <td style='vertical-align:top; width:350px;'>
+    {else}
+    <td style='vertical-align:top; width:200px;'>
+    {/if}
             <b>{t}Header{/t}</b>
 
             {if $Inverse}
@@ -133,4 +133,4 @@
     </tr>
 
 </table>
-	{/if}
+  {/if}

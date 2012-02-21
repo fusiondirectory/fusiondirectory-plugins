@@ -477,7 +477,7 @@ class DNS
     $zoneNameMix           = $newEntry['zoneName'];
     $zoneDn             = DNS::getDNSZoneDN($config,$zoneNameMix);
     $tmp                = array_flip($zones);
-    $zoneName 					= DNS::getNameFromMix($zoneNameMix);
+    $zoneName           = DNS::getNameFromMix($zoneNameMix);
 
     /* Strip domain part out of dns host entry 
      */
@@ -637,8 +637,8 @@ class DNS
 
   static function getNameFromMix($zoneMix){
     $ret = "";
-    if(!strstr($zoneMix, '/')) return($ret);	
-    $zoneIndex 	  	= explode("/",$zoneMix);
+    if(!strstr($zoneMix, '/')) return($ret);  
+    $zoneIndex      = explode("/",$zoneMix);
     return($zoneIndex[1]);
   }
 
@@ -652,9 +652,9 @@ class DNS
       return($ret);
     }
 
-    $zoneNameIndex 	  	= explode("/",$zoneNameMix); 
+    $zoneNameIndex      = explode("/",$zoneNameMix); 
     $zoneName           = $zoneNameIndex[1];
-    $nameServer		  		= strtolower($zoneNameIndex[0]);
+    $nameServer         = strtolower($zoneNameIndex[0]);
     $ldap               = $config->get_ldap_link();
 
     /* search for the nameserver */

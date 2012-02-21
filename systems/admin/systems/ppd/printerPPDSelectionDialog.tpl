@@ -1,19 +1,19 @@
 <table summary="" style="width:100%; vertical-align:top; text-align:left;" cellpadding=4>
-	<tr>
-		<td style="vertical-align:top;width=50%;width:600px">
-			<div class="contentboxh" style="height:20px;">
-				<p class="contentboxh" style="font-size:12px">
-					<b>{t}Select objects to add{/t}</b>
-				</p>
-			</div>
-			<div class="contentboxb">
+  <tr>
+    <td style="vertical-align:top;width=50%;width:600px">
+      <div class="contentboxh" style="height:20px;">
+        <p class="contentboxh" style="font-size:12px">
+          <b>{t}Select objects to add{/t}</b>
+        </p>
+      </div>
+      <div class="contentboxb">
           {$List}
-					<input type=hidden name="edit_helper">
-			</div>
-		</td>
-		<td style="vertical-align:top;">
-			<div class="contentboxh" style="height:20px;">
-				<p class="contentboxh" style="font-size:12px">
+          <input type=hidden name="edit_helper">
+      </div>
+    </td>
+    <td style="vertical-align:top;">
+      <div class="contentboxh" style="height:20px;">
+        <p class="contentboxh" style="font-size:12px">
           <img src="{$launchimage}" align="right" alt="[F]">
           <b>{t}Filters{/t}</b>
         </p>

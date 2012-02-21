@@ -58,7 +58,7 @@ class connectivity extends plugin
     /* Load accounts */
     foreach ($config->data['TABS']['CONNECTIVITY'] as $plug){
       if (!plugin_available($plug['CLASS'])) {
-      	continue;
+        continue;
       }
       $name= $plug['CLASS'];
       $this->plugin_name[]= $name;
@@ -74,8 +74,8 @@ class connectivity extends plugin
 
   function execute()
   {
-	/* Call parent execute */
-	plugin::execute();
+  /* Call parent execute */
+  plugin::execute();
 
     $display= "";
 

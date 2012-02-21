@@ -54,6 +54,6 @@
 <!-- Place cursor -->
 <script language="JavaScript" type="text/javascript">
   <!-- // First input field on page
-	focus_field('search_for');
+  focus_field('search_for');
   -->
 </script>

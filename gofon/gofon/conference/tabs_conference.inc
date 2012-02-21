@@ -26,8 +26,8 @@ class conferencetabs extends tabs
 
   function conferencetabs($config, $data, $dn, $category)
   {
-	  tabs::tabs($config, $data, $dn,$category);
-	  $this->base= $this->by_object['conference']->base; 
+    tabs::tabs($config, $data, $dn,$category);
+    $this->base= $this->by_object['conference']->base; 
 
     /* Add references/acls/snapshots */
     $this->addSpecialTabs();
@@ -35,25 +35,25 @@ class conferencetabs extends tabs
 
   function check($ignore_account= FALSE)
   {
-	return (tabs::check(TRUE));
+  return (tabs::check(TRUE));
   }
   
 
   function save($ignore_account= FALSE)
   {
-  	$baseobject= $this->by_object['conference'];
-	$new_dn= 'cn='.$baseobject->cn.','.get_ou('phoneConferenceRDN').$baseobject->base;
+    $baseobject= $this->by_object['conference'];
+  $new_dn= 'cn='.$baseobject->cn.','.get_ou('phoneConferenceRDN').$baseobject->base;
 
-	if(strtolower($this->dn)==strtolower($new_dn)){
-		$this->dn=$new_dn;
-	}
+  if(strtolower($this->dn)==strtolower($new_dn)){
+    $this->dn=$new_dn;
+  }
 
-	if($this->dn != $new_dn && $this->dn != "new"){
-		$baseobject->recursive_move($this->dn, $new_dn);
-	}
-	$this->dn= $new_dn;
+  if($this->dn != $new_dn && $this->dn != "new"){
+    $baseobject->recursive_move($this->dn, $new_dn);
+  }
+  $this->dn= $new_dn;
 
-	tabs::save(TRUE);
+  tabs::save(TRUE);
   }
 
 }

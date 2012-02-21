@@ -6,7 +6,7 @@
        <input type='text' name="cn" id="cn" size=20 maxlength=60 value="{$cn}">
       </td>
      </tr>
-	</table>
+  </table>
 {/if}
 {if $object == "workstation"}
     <table summary="">
@@ -16,7 +16,7 @@
        <input type='text' name="cn" id="cn" size=20 maxlength=60 value="{$cn}">
       </td>
      </tr>
-	</table>
+  </table>
 {/if}
 {if $object == "terminal"}
     <table summary="">
@@ -26,7 +26,7 @@
        <input type='text' name="cn" id="cn" size=20 maxlength=60 value="{$cn}">
       </td>
      </tr>
-	</table>
+  </table>
 {/if}
 {if $object == "printer"}
     <table summary="">
@@ -36,7 +36,7 @@
        <input type='text' name="cn" id="cn" size=20 maxlength=60 value="{$cn}">
       </td>
      </tr>
-	</table>
+  </table>
 {/if}
 {if $object == "component"}
     <table summary="">
@@ -46,5 +46,5 @@
        <input type='text' name="cn" id="cn" size=20 maxlength=60 value="{$cn}">
       </td>
      </tr>
-	</table>
+  </table>
 {/if}

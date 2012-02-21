@@ -41,7 +41,7 @@
     </tr>
    </table>
 
-	{$host_key}
+  {$host_key}
 
   </td>
   <td  style="vertical-align:top;border-left:1px solid #A0A0A0;">
@@ -82,7 +82,7 @@
                     changeState('delNtpServer');">{t}Inherit time server attributes{/t}
 {/render}
 {else}
-	<input disabled type='checkbox' name='option_disabled'>{t}Inherit time server attributes{/t}
+  <input disabled type='checkbox' name='option_disabled'>{t}Inherit time server attributes{/t}
 {/if}
      </td>
     </tr>
@@ -159,16 +159,16 @@
 <input type="hidden" name="workgeneric_posted" value="1">
  {if $cn eq 'wdefault'}
 <!-- Place cursor -->
-		<script language="JavaScript" type="text/javascript">
-		  <!-- // First input field on page
-			focus_field('l');
-		  -->
-		</script>
+    <script language="JavaScript" type="text/javascript">
+      <!-- // First input field on page
+      focus_field('l');
+      -->
+    </script>
      {else}
-		<script language="JavaScript" type="text/javascript">
-		  <!-- // First input field on page
-			focus_field('cn');
-		  -->
-		</script>
+    <script language="JavaScript" type="text/javascript">
+      <!-- // First input field on page
+      focus_field('cn');
+      -->
+    </script>
      {/if}
 

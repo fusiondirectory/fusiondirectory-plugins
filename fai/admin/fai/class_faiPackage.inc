@@ -36,7 +36,7 @@ class faiPackage extends plugin
   var $subClasses       = array("top","FAIclass","FAIscriptEntry");
 
   /* Class name of the php class which allows us to edit a Sub Object */
-  var $subClassName     = "";      
+  var $subClassName     = "";
 
   /* Attributes to initialise for each subObject */
   var $subAttributes    = array("cn","description"); 

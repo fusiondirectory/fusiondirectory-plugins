@@ -1,6 +1,6 @@
 <div style="height:5px">&nbsp;</div>
 <div style="font-size:18px;">
-	{t}Adding a new service to the current server{/t}
+  {t}Adding a new service to the current server{/t}
 </div>
 <br>
 <p class="seperator">
@@ -11,14 +11,14 @@
 {if $Services} 
 <br>
 <br>{t}Service to add{/t} &nbsp;
-	<select name="ServiceName" >
-		<option value="" >&nbsp;</option>
-		{html_options options=$Services}
-	</select>
+  <select name="ServiceName" >
+    <option value="" >&nbsp;</option>
+    {html_options options=$Services}
+  </select>
 {else}
-	<br>
-	{t}All available services are already in use.{/t}
-	<br>
+  <br>
+  {t}All available services are already in use.{/t}
+  <br>
 {/if}
 <br>
 <br>

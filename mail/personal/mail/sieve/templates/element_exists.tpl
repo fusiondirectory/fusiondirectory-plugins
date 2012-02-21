@@ -12,9 +12,9 @@
                 <input type='submit' name='toggle_inverse_{$ID}' value='{t}-{/t}' title='{t}Inverse match{/t}'>
             {/if}
 
-		</td>
-		<td>
+    </td>
+    <td>
             <textarea style='width:99%;height:20px;' name='Values_{$ID}'>{$Values}</textarea>
-		</td>
+    </td>
     </tr>
 </table>

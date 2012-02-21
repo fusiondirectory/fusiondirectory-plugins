@@ -22,7 +22,7 @@
 
 class gotoLpdEnable extends plugin
 {
-	public $parent;
+  public $parent;
 
   protected $DevID = 0;
   private $data = array();
@@ -57,10 +57,10 @@ class gotoLpdEnable extends plugin
       @param  Object  $parent  A reference to the parent plugin-object. 
       @return Object  gotoLpdEnable (plugin) 
   */
-	public function __construct($config,$data,&$parent)
-	{
-		plugin::plugin($config,NULL);
-		$this->parent = $parent;
+  public function __construct($config,$data,&$parent)
+  {
+    plugin::plugin($config,NULL);
+    $this->parent = $parent;
     $this->DevID = 0;
 
     /* Predefine selectable values 
@@ -134,13 +134,13 @@ class gotoLpdEnable extends plugin
       @param  .
       @return String  HTML content
   */
-	public function execute()
-	{
+  public function execute()
+  {
     $display = "";
 
     /* Set smarty variables 
      */
-		$smarty = get_smarty();
+    $smarty = get_smarty();
     $smarty->assign("acl",$this->parent->getacl("gotoLpdEnable"));
     foreach($this->attributes as $attr){
       $smarty->assign($attr,$this->$attr);
@@ -153,8 +153,8 @@ class gotoLpdEnable extends plugin
     $smarty->assign("data",$this->data);
     $smarty->assign("a_DevIDs",array_keys($this->data));
     $smarty->assign("is_account",$this->is_account);
-		return($display.$smarty->fetch(get_template_path("gotoLpdEnable.tpl",TRUE,dirname(__FILE__))));
-	}
+    return($display.$smarty->fetch(get_template_path("gotoLpdEnable.tpl",TRUE,dirname(__FILE__))));
+  }
 
 
   /*! \brief  Checks the given informations and returns an array 

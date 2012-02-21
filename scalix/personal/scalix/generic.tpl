@@ -8,9 +8,9 @@
      <td><label for="scalixMailnode">{t}Scalix mailnode{/t}</label>{$must}</td>
      <td>
 {render acl=$scalixMailnodeACL}
-		<input type='text' id="scalixMailnode" name="scalixMailnode" size=35 maxlength=65 value="{$scalixMailnode}">
+    <input type='text' id="scalixMailnode" name="scalixMailnode" size=35 maxlength=65 value="{$scalixMailnode}">
 {/render}
-	 </td>
+    </td>
     </tr>
 {if !$scalixGroup}
     <tr>
@@ -18,8 +18,8 @@
      <td>
 {render acl=$scalixMailboxClassACL}
       <select size="1" id="scalixMailboxClass" name="scalixMailboxClass"  
-			title="{t}Limited users can not make use of the group calendar functionality in Scalix{/t}">
-		    {html_options values=$mailboxClasses output=$mailboxClasses selected=$scalixMailboxClass}
+      title="{t}Limited users can not make use of the group calendar functionality in Scalix{/t}">
+        {html_options values=$mailboxClasses output=$mailboxClasses selected=$scalixMailboxClass}
       </select>
 {/render}
      </td>
@@ -31,8 +31,8 @@
      <td>
 {render acl=$scalixServerLanguageACL}
       <select size="1" id="scalixServerLanguage" name="scalixServerLanguage" 
-			title="{t}Message catalog language for client.{/t}">
-		    {html_options values=$serverLanguages output=$serverLanguages selected=$scalixServerLanguage}
+      title="{t}Message catalog language for client.{/t}">
+        {html_options values=$serverLanguages output=$serverLanguages selected=$scalixServerLanguage}
       </select>
 {/render}
      </td>
@@ -47,20 +47,20 @@
     <tr>
      <td>
 {render acl=$scalixAdministratorACL}
-	  <input type=checkbox name="scalixAdministrator" value="1" {$scalixAdministrator}
-	   title="{t}Select for admin capability.{/t}"> {t}Scalix Administrator{/t}
+    <input type=checkbox name="scalixAdministrator" value="1" {$scalixAdministrator}
+     title="{t}Select for admin capability.{/t}"> {t}Scalix Administrator{/t}
 {/render}
-	  <br>
+    <br>
 {render acl=$scalixMailboxAdministratorACL}
-	  <input type=checkbox name="scalixMailboxAdministrator" value="1" {$scalixMailboxAdministrator}
-	   title="{t}Select for mailbox admin capability.{/t}"> {t}Scalix Mailbox Administrator{/t}
+    <input type=checkbox name="scalixMailboxAdministrator" value="1" {$scalixMailboxAdministrator}
+     title="{t}Select for mailbox admin capability.{/t}"> {t}Scalix Mailbox Administrator{/t}
 {/render}
-	  <br>
+    <br>
 {render acl=$scalixHideUserEntryACL}
-	  <input type=checkbox name="scalixHideUserEntry" value="1" {$scalixHideUserEntry}
-	   title="{t}Hide user entry from addressbook.{/t}"> {t}Hide this user entry in Scalix{/t}
+    <input type=checkbox name="scalixHideUserEntry" value="1" {$scalixHideUserEntry}
+     title="{t}Hide user entry from addressbook.{/t}"> {t}Hide this user entry in Scalix{/t}
 {/render}
-	  <br>
+    <br>
    </table>
    
    <p class="seperator">&nbsp;</p>
@@ -70,27 +70,27 @@
      <td><label for="scalixLimitMailboxSize">{t}Limit mailbox size{/t}</label></td>
      <td>
 {render acl=$scalixLimitMailboxSizeACL}
-		<input type='text' id="scalixLimitMailboxSize" name="scalixLimitMailboxSize" size=5 maxlength=10 value="{$scalixLimitMailboxSize}">&nbsp;{t}MB{/t}
+    <input type='text' id="scalixLimitMailboxSize" name="scalixLimitMailboxSize" size=5 maxlength=10 value="{$scalixLimitMailboxSize}">&nbsp;{t}MB{/t}
 {/render}
-	 </td>
+   </td>
     </tr>
     <tr>
      <td >
 {render acl=$scalixLimitOutboundMailACL}
-	  <input type=checkbox name="scalixLimitOutboundMail" value="1" {$scalixLimitOutboundMail}
-	   title="{t}As sanction on mailbox quota overuse, stop user from sending mail.{/t}"> {t}Limit Outbound Mail{/t}
+    <input type=checkbox name="scalixLimitOutboundMail" value="1" {$scalixLimitOutboundMail}
+     title="{t}As sanction on mailbox quota overuse, stop user from sending mail.{/t}"> {t}Limit Outbound Mail{/t}
 {/render}
-	  <br>
+    <br>
 {render acl=$scalixLimitInboundMailACL}
-	  <input type=checkbox name="scalixLimitInboundMail" value="1" {$scalixLimitInboundMail}
-	   title="{t}As sanction on mailbox quota overuse, stop user from receiving mail.{/t}"> {t}Limit Inbound Mail{/t}
+    <input type=checkbox name="scalixLimitInboundMail" value="1" {$scalixLimitInboundMail}
+     title="{t}As sanction on mailbox quota overuse, stop user from receiving mail.{/t}"> {t}Limit Inbound Mail{/t}
 {/render}
-	  <br>
+    <br>
 {render acl=$scalixLimitNotifyUserACL}
-	  <input type=checkbox name="scalixLimitNotifyUser" value="1" {$scalixLimitNotifyUser}
-	   title="{t}As sanction on mailbox quota overuse, notify the user by eMail.{/t}"> {t}Notify User{/t}
+    <input type=checkbox name="scalixLimitNotifyUser" value="1" {$scalixLimitNotifyUser}
+     title="{t}As sanction on mailbox quota overuse, notify the user by eMail.{/t}"> {t}Notify User{/t}
 {/render}
-	  <br>
+    <br>
      </td>
     </tr>
    </table>
@@ -105,9 +105,9 @@
    <h2><img class="center" alt="" align="middle" src="plugins/scalix/images/envelope.png" /><label for="emails_list"> {t}Scalix email addresses{/t}</label></h2>
 {render acl=$scalixEmailAddressACL}
    <select id="emails_list" style="width:100%;height:100px;" name="emails_list[]" size="15"
-		 multiple title="{t}List of scalix email addresses{/t}" >
+     multiple title="{t}List of scalix email addresses{/t}" >
             {html_options values=$scalixEmailAddress output=$scalixEmailAddress}
-			<option disabled>&nbsp;</option>
+      <option disabled>&nbsp;</option>
    </select>
 {/render}
    <br />
@@ -128,6 +128,6 @@
 <!-- Place cursor -->
 <script language="JavaScript" type="text/javascript">
   <!-- // First input field on page
-	focus_field('scalixMailnode');
+  focus_field('scalixMailnode');
   -->
 </script>

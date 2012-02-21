@@ -35,8 +35,8 @@
        <td>
 {render acl=$typeACL}
         <select size="1" id="type" name="type" title="{t}Select wether to filter incoming or outgoing calls{/t}">
-	        {html_options options=$types selected=$type}
-		<option disabled>&nbsp;</option>
+        {html_options options=$types selected=$type}
+        <option disabled>&nbsp;</option>
         </select>
 {/render}
         </td>
@@ -63,7 +63,7 @@
 {render acl=$goFaxBlocklistACL}
      <select style="width:100%; height:200px;" name="numbers[]" size=15 multiple>
       {html_options values=$goFaxBlocklist output=$goFaxBlocklist}
-	  <option disabled>&nbsp;</option>
+    <option disabled>&nbsp;</option>
      </select>
 {/render}
      <br>
@@ -93,6 +93,6 @@
 <!-- Place cursor -->
 <script language="JavaScript" type="text/javascript">
   <!-- // First input field on page
-	focus_field('n');
+  focus_field('n');
   -->
 </script>

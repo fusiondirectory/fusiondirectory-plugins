@@ -21,7 +21,7 @@
 */
 
 class goFaxServer extends goService {
-	
+
   var $cli_summary      = "This plugin is used within the ServerService Plugin \nand indicates that this server supports fax informations.";
   var $cli_description  = "Some longer text\nfor help";
   var $cli_parameters   = array("one" => "one is nice", "two" => "two is even better");

@@ -21,7 +21,7 @@
 */
 
 class goService extends plugin{
-	
+
   /* This plugin only writes its objectClass */
   var $objectclasses    = array();
   var $attributes       = array();

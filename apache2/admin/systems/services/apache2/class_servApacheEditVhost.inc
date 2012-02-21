@@ -24,16 +24,16 @@ class servapacheVhostEdit extends plugin
   /* attribute list for save action */
   var $ignore_account= TRUE;
   
-  var $attributes	= array("apacheServerName","apacheDocumentRoot","apacheServerAlias",
-	  	"apacheServerAdmin","apacheScriptAlias","apacheSuexecUid","apacheSuexecGid");
-      
+  var $attributes = array("apacheServerName","apacheDocumentRoot","apacheServerAlias",
+      "apacheServerAdmin","apacheScriptAlias","apacheSuexecUid","apacheSuexecGid");
+
   var $objectclasses  = array("whatever");
 
-  var $apacheServerName		= "";
-  var $apacheDocumentRoot	= "";
-  var $apacheServerAdmin	= "";
-  var $apacheSuexecUid		= "";
-  var $apacheSuexecGid		= "";
+  var $apacheServerName   = "";
+  var $apacheDocumentRoot = "";
+  var $apacheServerAdmin  = "";
+  var $apacheSuexecUid    = "";
+  var $apacheSuexecGid    = "";
     
   var $apacheServerAlias                = array();
   var $apacheScriptAlias                = array();
@@ -273,7 +273,7 @@ class servapacheVhostEdit extends plugin
     
     /* Add a new "Script Alias" 
      */
-  	if((isset($_POST['AddSCRecord'])) && (!empty($_POST['StrSCAlias'])) && (!empty($_POST['StrSCDir']))){
+    if((isset($_POST['AddSCRecord'])) && (!empty($_POST['StrSCAlias'])) && (!empty($_POST['StrSCDir']))){
       $this->apacheScriptAlias[] = trim($_POST['StrSCAlias']." ".$_POST['StrSCDir']);      
     }
 
@@ -372,7 +372,7 @@ class servapacheVhostEdit extends plugin
    
     /* Check given mail address 
      */ 
-  	if(!tests::is_email($this->apacheServerAdmin) || empty($this->apacheServerAdmin)){
+    if(!tests::is_email($this->apacheServerAdmin) || empty($this->apacheServerAdmin)){
       $message[] = msgPool::invalid(_("Admin mail address"),$this->apacheServerAdmin);
     }
 

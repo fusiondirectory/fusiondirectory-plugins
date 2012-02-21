@@ -402,8 +402,8 @@ class netatalk extends plugin {
      * default in the netatalk tab. */
     foreach($this->shares as $share) {
       $apple_user_homepath = $this->mountDirectory."/".
-			$this->shares_settings[$share]["host"].
-			$this->shares_settings[$share]["dir"]."/";
+      $this->shares_settings[$share]["host"].
+      $this->shares_settings[$share]["dir"]."/";
       if (preg_match("#$apple_user_homepath#", $this->{'apple-user-homeDirectory'})) {
         $this->apple_user_homepath_raw =  preg_replace("#$apple_user_homepath#", "", $this->{'apple-user-homeDirectory'});
         $this->selectedshare = $share;

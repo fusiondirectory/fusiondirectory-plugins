@@ -61,7 +61,7 @@
                       changeSelectState('trustmode', 'del_ws');">
           {html_options options=$trustmodes selected=$trustmode}
         </select>
-		<br>
+    <br>
     {/render}
     {render acl=$trustModelACL}
        <select style="width:100%" id="wslist" name="workstation_list[]" size=5 multiple {$trusthide}>

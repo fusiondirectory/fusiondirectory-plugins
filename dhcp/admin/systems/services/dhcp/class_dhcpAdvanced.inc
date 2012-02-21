@@ -44,8 +44,8 @@ class dhcpAdvanced extends plugin
 
   function execute()
   {
-	$acl_writeable = preg_match("/w/",$this->parent->getacl(""));
-
+  $acl_writeable = preg_match("/w/",$this->parent->getacl(""));
+  
     /* Check for interaction */
     if ($acl_writeable && isset($_POST['add_statement']) && $_POST['addstatement'] != ""){
       $key= preg_replace('/^([a-z0-9-]+)\s(.*)$/', '\\1', get_post('addstatement'));
@@ -58,7 +58,7 @@ class dhcpAdvanced extends plugin
       if (in_array($name, $this->autoStatements)){
         msg_dialog::display(_("Error"), _("Cannot delete automatic statements!"), ERROR_DIALOG);
       } else {
-        $this->statements->remove($name,$key);	
+        $this->statements->remove($name,$key);  
       }
     }
     if ($acl_writeable && isset($_POST['add_option']) && $_POST['addoption'] != ""){
@@ -72,7 +72,7 @@ class dhcpAdvanced extends plugin
       if (in_array($name, $this->autoOptions)){
         msg_dialog::display(_("Error"), _("Cannot delete automatic statements!"), ERROR_DIALOG);
       } else {
-        $this->options->remove($name,$key);	
+        $this->options->remove($name,$key); 
       }
     }
 

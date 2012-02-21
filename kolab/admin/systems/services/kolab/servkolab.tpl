@@ -3,63 +3,63 @@
   <td style="vertical-align:top; border-right:1px solid #A0A0A0; padding-right:5px;" width="50%">
    <table summary="" width="100%">
     <tr>
-	 <td colspan="2"><b>{t}Generic{/t}</b></td>
-	</tr>
-	<tr>
-		<td>{t}Postfix mydomain{/t}
-		</td>
-		<td>
+   <td colspan="2"><b>{t}Generic{/t}</b></td>
+  </tr>
+  <tr>
+    <td>{t}Postfix mydomain{/t}
+    </td>
+    <td>
 {render acl=$postfixmydomainACL}
-			<input type="text" name="postfix_mydomain" value="{$postfix_mydomain}">
+      <input type="text" name="postfix_mydomain" value="{$postfix_mydomain}">
 {/render}
-		</td>
-	</tr>
-	<tr>
-		<td>{t}Cyrus admins{/t}
-		</td>
-		<td>
+    </td>
+  </tr>
+  <tr>
+    <td>{t}Cyrus admins{/t}
+    </td>
+    <td>
 {render acl=$cyrusadminsACL}
-			<input type="text" name="cyrus_admins" value="{$cyrus_admins}">
+      <input type="text" name="cyrus_admins" value="{$cyrus_admins}">
 {/render}
-		</td>
-	</tr>
-	<tr>
-		<td colspan="2">{t}Mail domains{/t}&nbsp;({t}Postfix mydestination{/t})<br>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">{t}Mail domains{/t}&nbsp;({t}Postfix mydestination{/t})<br>
 {render acl=$postfixmydestinationACL}
-		{$mdDiv}
-{/render}
-{render acl=$postfixmydestinationACL}
-		<input size="30" type='text' name='new_domain_name' value=''>
+    {$mdDiv}
 {/render}
 {render acl=$postfixmydestinationACL}
-		<input type='submit' name='add_domain_name' value='{msgPool type=addButton}'>
+    <input size="30" type='text' name='new_domain_name' value=''>
 {/render}
-		</td>
-	</tr>
-   </table>	
+{render acl=$postfixmydestinationACL}
+    <input type='submit' name='add_domain_name' value='{msgPool type=addButton}'>
+{/render}
+    </td>
+  </tr>
+   </table> 
    <p class="seperator" >&nbsp;</p>
    <table summary="">
     <tr>
-	 <td colspan="2"><b>{t}Services{/t}</b></td>
-	</tr>
-	<tr>
-		<td>
+   <td colspan="2"><b>{t}Services{/t}</b></td>
+  </tr>
+  <tr>
+    <td>
 {render acl=$cyruspop3ACL}
-			<input id="cyrus_pop3" name="cyrus_pop3" value="1" type="checkbox" {$cyrus_pop3Check}>
+      <input id="cyrus_pop3" name="cyrus_pop3" value="1" type="checkbox" {$cyrus_pop3Check}>
 {/render}
-		</td>
-		<td>
-			<LABEL for="cyrus_pop3">{t}POP3 service{/t}</LABEL>
-		</td>
-	</tr>
-	<tr>
+    </td>
+    <td>
+      <LABEL for="cyrus_pop3">{t}POP3 service{/t}</LABEL>
+    </td>
+  </tr>
+  <tr>
         <td>
 {render acl=$cyruspop3sACL}
             <input id="cyrus_pop3s" name="cyrus_pop3s" value="1" type="checkbox" {$cyrus_pop3sCheck}>
 {/render}
         </td>
-		<td>
-			<LABEL for="cyrus_pop3s">{t}POP3/SSL service{/t}</LABEL>
+    <td>
+      <LABEL for="cyrus_pop3s">{t}POP3/SSL service{/t}</LABEL>
         </td>
     </tr>
     <tr>
@@ -69,7 +69,7 @@
 {/render}
         </td>
         <td>
-			<LABEL for="cyrus_imap">{t}IMAP service{/t}</LABEL>
+      <LABEL for="cyrus_imap">{t}IMAP service{/t}</LABEL>
         </td>
     </tr>
     <tr>
@@ -79,7 +79,7 @@
 {/render}
         </td>
         <td>
-			<LABEL for="cyrus_imaps">{t}IMAP/SSL service{/t}</LABEL>
+      <LABEL for="cyrus_imaps">{t}IMAP/SSL service{/t}</LABEL>
         </td>
     </tr>
     <tr>
@@ -89,7 +89,7 @@
 {/render}
         </td>
         <td>
-			<LABEL for="cyrus_sieve">{t}Sieve service{/t}</LABEL>
+      <LABEL for="cyrus_sieve">{t}Sieve service{/t}</LABEL>
         </td>
     </tr>
     <tr>
@@ -97,9 +97,9 @@
 {render acl=$proftpdftpACL}
             <input id="proftpd_ftp" name="proftpd_ftp" value="1" type="checkbox" {$proftpd_ftpCheck}>
 {/render}
-        </td>	
+        </td> 
         <td>
-			<LABEL for="proftpd_ftp">{t}FTP FreeBusy service (legacy, not interoperable with Kolab2 FreeBusy){/t}</LABEL>
+      <LABEL for="proftpd_ftp">{t}FTP FreeBusy service (legacy, not interoperable with Kolab2 FreeBusy){/t}</LABEL>
         </td>
     </tr>
     <tr>
@@ -109,19 +109,19 @@
 {/render}
         </td>
         <td>
-			<LABEL for="apache_http">{t}HTTP FreeBusy service (legacy){/t}</LABEL>
+      <LABEL for="apache_http">{t}HTTP FreeBusy service (legacy){/t}</LABEL>
         </td>
     </tr>
     <tr>
         <td>
 {render acl=$postfixenablevirusscanACL}
-			<input id="postfix_enable_virus_scan" name="postfix_enable_virus_scan" value="1" type="checkbox" {$postfix_enable_virus_scanCheck}>
+      <input id="postfix_enable_virus_scan" name="postfix_enable_virus_scan" value="1" type="checkbox" {$postfix_enable_virus_scanCheck}>
 {/render}
         </td>
         <td>
-			<LABEL for="postfix_enable_virus_scan">{t}Amavis email scanning (virus/spam){/t}</LABEL>
-		</td>
-	</tr>
+      <LABEL for="postfix_enable_virus_scan">{t}Amavis email scanning (virus/spam){/t}</LABEL>
+    </td>
+  </tr>
    </table>
 
    <p class="seperator">&nbsp;</p>
@@ -129,17 +129,17 @@
 
    <table summary="">
     <tr>
-		<td> 
-			<b>{t}Quota settings{/t}</b>
-		</td>
-	</tr>
-	<tr>
-		<td>
+    <td> 
+      <b>{t}Quota settings{/t}</b>
+    </td>
+  </tr>
+  <tr>
+    <td>
 {render acl=$cyrusquotawarnACL}
-			{$quotastr}
+      {$quotastr}
 {/render}
-		</td>
-	</tr>
+    </td>
+  </tr>
    </table>
   
   </td>
@@ -157,13 +157,13 @@
             <input name="apache_allow_unauthenticated_fb" value="1" type="checkbox" {$apache_allow_unauthenticated_fbCheck}> {t}Allow unauthenticated downloading of Free/Busy information{/t}
 {/render}
         </td>
-	 </tr>
-	 <tr>
+   </tr>
+   <tr>
         <td>
 {render acl=$kolabFreeBusyFutureACL}
-		{$fbfuture}
+    {$fbfuture}
 {/render}
-	</td>
+  </td>
      </tr>
    </table>
 
@@ -172,18 +172,18 @@
    <table summary="">
     <tr>
         <td>
-        	<b>{t}SMTP privileged networks{/t}</b>
-		</td>
+          <b>{t}SMTP privileged networks{/t}</b>
+    </td>
     </tr>
     <tr>
-	  <td>
-	    <LABEL for="postfix_mynetworks">{t}Hosts/networks allowed to relay{/t}</LABEL><br>
+    <td>
+      <LABEL for="postfix_mynetworks">{t}Hosts/networks allowed to relay{/t}</LABEL><br>
 {render acl=$postfixmynetworksACL}
         <input id="postfix_mynetworks" name="postfix_mynetworks" size="60" maxlength="220" value="{$postfix_mynetworks}" type="text">
 {/render}
-		<br>
-		( {t}Enter multiple values, seperated with{/t} , )
-	</td>
+    <br>
+    ( {t}Enter multiple values, seperated with{/t} , )
+  </td>
      </tr>
    </table>
 
@@ -195,25 +195,25 @@
    <table summary="">
     <tr>
         <td>
-        	<b>{t}SMTP smarthost/relayhost{/t}</b>
-		</td>
+          <b>{t}SMTP smarthost/relayhost{/t}</b>
+    </td>
     </tr>
     <tr>
         <td>
 {render acl=$postfixrelayhostACL}
             <input id="RelayMxSupport" name="RelayMxSupport" value="1" type="checkbox" {$RelayMxSupportCheck}>
 {/render}
-			<LABEL for="RelayMxSupport">{t}Enable MX lookup for relayhost{/t}</LABEL>
-		</td>
+      <LABEL for="RelayMxSupport">{t}Enable MX lookup for relayhost{/t}</LABEL>
+    </td>
      </tr>
-	<tr>	
-		<td>
-		    <LABEL for="postfix_relayhost">{t}Host used to relay mails{/t}</LABEL>&nbsp;
+  <tr>  
+    <td>
+        <LABEL for="postfix_relayhost">{t}Host used to relay mails{/t}</LABEL>&nbsp;
 {render acl=$postfixrelayhostACL}
-			<input id="postfix_relayhost" name="postfix_relayhost" size="35" maxlength="120" value="{$postfix_relayhost}" type="text">
+      <input id="postfix_relayhost" name="postfix_relayhost" size="35" maxlength="120" value="{$postfix_relayhost}" type="text">
 {/render}
-		</td>
-	</tr>
+    </td>
+  </tr>
    </table>
 
 
@@ -224,16 +224,16 @@
    <table summary="">
     <tr>
         <td>
-        	<b>{t}Accept Internet Mail{/t}</b>
-		</td>
+          <b>{t}Accept Internet Mail{/t}</b>
+    </td>
     </tr>
     <tr>
         <td>
 {render acl=$postfixallowunauthenticatedACL}
             <input id="postfix_allow_unauthenticated" name="postfix_allow_unauthenticated" value="1" type="checkbox" {$postfix_allow_unauthenticatedCheck}>
 {/render}
-        	<LABEL for="postfix_allow_unauthenticated">{t}Accept mail from other domains over non-authenticated SMTP{/t}</LABEL>
-		</td>
+          <LABEL for="postfix_allow_unauthenticated">{t}Accept mail from other domains over non-authenticated SMTP{/t}</LABEL>
+    </td>
      </tr>
    </table>
 

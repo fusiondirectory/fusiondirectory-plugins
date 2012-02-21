@@ -21,7 +21,7 @@
     {html_options options=$mailusers}
    </select>
    <br>
-	<LABEL for="department">{t}Select a specific department{/t}</LABEL>:
+  <LABEL for="department">{t}Select a specific department{/t}</LABEL>:
    <select id="department" name="department" size=1 onChange="mainform.submit()">
     {html_options options=$departments selected=$department}
    </select>
