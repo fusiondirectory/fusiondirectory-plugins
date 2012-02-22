@@ -1,24 +1,27 @@
-create database gophone;
-use gophone;
+create database asteriskcdrdb;
+use asteriskcdrdb;
 
-create table cdr (
-  calldate datetime NOT NULL default '0000-00-00 00:00:00',
-  clid varchar(80) NOT NULL default '',
-  src varchar(80) NOT NULL default '',
-  dst varchar(80) NOT NULL default '',
-  dcontext varchar(80) NOT NULL default '',
-  channel varchar(80) NOT NULL default '',
-  dstchannel varchar(80) NOT NULL default '',
-  lastapp varchar(80) NOT NULL default '',
-  lastdata varchar(80) NOT NULL default '',
-  duration integer NOT NULL default '0',
-  billsec integer NOT NULL default '0',
-  disposition varchar(45) NOT NULL default '',
-  amaflags integer NOT NULL default '0',
-  accountcode varchar(20) NOT NULL default '',
-  uniqueid varchar(32) NOT NULL default '',
-  userfield varchar(255) NOT NULL default ''
-);
+  CREATE TABLE cdr(
+        acctid integer NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        src varchar(80) NOT NULL,
+        dst varchar(80) NOT NULL,
+        calldate datetime NOT NULL,
+        clid varchar(80) NOT NULL,
+        dcontext varchar(80) NOT NULL,
+        channel varchar(80) NOT NULL,
+        dstchannel varchar(80) NOT NULL,
+        lastapp varchar(80) NOT NULL,
+        lastdata varchar(80) NOT NULL,
+        duration integer unsigned NOT NULL,
+        billsec integer unsigned NOT NULL,
+        disposition integer unsigned NOT NULL,
+        amaflags integer unsigned NOT NULL,
+        accountcode integer unsigned NOT NULL,
+        uniqueid varchar(32) NOT NULL,
+        userfield varchar(80) NOT NULL
+  );
 
-GRANT INSERT,SELECT ON gophone.cdr TO asterisk@localhost IDENTIFIED BY 'somemysqlpass';
+  ALTER TABLE cdr ADD INDEX (calldate);
+  ALTER TABLE cdr ADD INDEX (dst);
+  ALTER TABLE cdr ADD INDEX (accountcode);
 
