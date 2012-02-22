@@ -34,7 +34,7 @@ class EventAddSystemDialog extends management
         get_ou("serverRDN"), 
         get_ou("workstationRDN"), 
         get_ou("ogroupRDN"), 
-        get_ou('terminalRDN'));
+        get_ou("terminalRDN"));
 
     // Build filter
 #    if (session::global_is_set(get_class($this)."_filter")){
