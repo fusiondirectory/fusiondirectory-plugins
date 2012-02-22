@@ -216,7 +216,7 @@ class fonreport extends plugin
         msg_dialog::display(_("Error"), msgPool::dbconnect(_("GOfon"),@mysql_error(),$cfg['SERVER']),ERROR_DIALOG);
         return($smarty->fetch(get_template_path('contents.tpl', TRUE)));
       }
-      if (! @mysql_select_db("gophone")){
+      if (! @mysql_select_db("asteriskcdrdb")){
         msg_dialog::display(_("Error"), msgPool::dbselect(_("GOfon"),@mysql_error(),$cfg['DB']),ERROR_DIALOG);
         return($smarty->fetch(get_template_path('contents.tpl', TRUE)));
       }

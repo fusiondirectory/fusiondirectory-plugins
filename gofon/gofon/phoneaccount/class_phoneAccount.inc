@@ -368,7 +368,7 @@ class phoneAccount extends plugin
       $r_con =  @mysql_pconnect($cur_cfg['SERVER'],$cur_cfg['LOGIN'],$cur_cfg['PASSWORD']);
       if($r_con){
 
-        // Try to select the gophone database
+        // Try to select the asteriskcdrdb database
         $r_db  =  @mysql_select_db($cur_cfg['DB'],$r_con);
         if(!$r_db){
           msg_dialog::display(_("Warning"), msgPool::dbselect($cur_cfg['DB'],mysql_error()), WARNING_DIALOG);
