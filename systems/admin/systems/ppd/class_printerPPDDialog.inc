@@ -35,7 +35,7 @@ class printerPPDDialog extends plugin
   var $ppdListHeader        = array();      // Contains all printer vendors
 
   /* Paths */
-  var $pathToPPD            = "";           // Base path, defined in gosa.conf e.g. "/var/spool/ppd/"
+  var $pathToPPD            = "";           // Base path, defined in fusiondirectory.conf e.g. "/var/spool/ppd/"
   var $pathToModified       = "modified/";  // used to store the modified ppds  
       
   /* Object Info */
@@ -68,7 +68,7 @@ class printerPPDDialog extends plugin
       $this->pathToPPD = "";
     }
 
-    /* Check if ppdPath is set in gosa.conf. 
+    /* Check if ppdPath is set in fusiondirectory.conf. 
      */
     if(empty($this->pathToPPD)){
       msg_dialog::display(_("Configuration error"), msgPool::invalidConfigurationAttribute("ppdPath"), ERROR_DIALOG);

@@ -427,7 +427,7 @@ class ServerService extends management
 
 
   /*! \brief    Updates the status of a service and 
-   *             calls an external hook if specified in gosa.conf
+   *             calls an external hook if specified in fusiondirectory.conf
    */
   function ServiceStatusUpdate($method , $service)
   {

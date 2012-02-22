@@ -43,14 +43,14 @@ class mailMethod{
       !!Depends on the attributes 'user_prefix'/'share_prefix' and the option 'cyrusUseSlashes'
 
       Examples - based on defaults : 
-        %PREFIX%    => "user." or "user/" (Depending on cyrusUseSlashes=FALSE/TRUE) 
-        %CN%        => "technik"          (The groups cn)
-        %UID%       => "herbert"          (The users uid)
-        %MAIL%      => "herbert@domain.de"(The mail address)
-        %DOMAIN%    => "domain.de"        (The domain part of the specified mail)
-        %MAILPART%  => "herbert"          (The mail address without domain)
-        %UATTRIB%   => "herbert"/"herbert@domains.de"
-                                            (Configured in gosa.conf mailAttribute="mail"/"uid")
+        %PREFIX%    => "user." or "user/"           (Depending on cyrusUseSlashes=FALSE/TRUE) 
+        %CN%        => "technical"                  (The groups cn)
+        %UID%       => "john"                       (The users uid)
+        %MAIL%      => "john@fusiondirectory.org"   (The mail address)
+        %DOMAIN%    => "fusiondirectory.org"        (The domain part of the specified mail)
+        %MAILPART%  => "john"                       (The mail address without domain)
+        %UATTRIB%   => "john"/"john@fusiondirectory.org"
+                                            (Configured in fusiondirectory.conf mailAttribute="mail"/"uid")
    */
   protected $user_id    = "%PREFIX%%UATTRIB%";  
   protected $share_id   = "%PREFIX%%UATTRIB%";
@@ -60,8 +60,8 @@ class mailMethod{
 
   /* gosaSharedFolderTarget settings, 
    *  E.g. 
-   *    For an accountID like: 'share/herberts.folder@gonicus.de' the value 'dummy+' 
-   *    will result in gosaSharedFolderTarget: dummy+share/herberts.folder@gonicus.de
+   *    For an accountID like: 'share/john.folder@fusiondirectory.org' the value 'dummy+' 
+   *    will result in gosaSharedFolderTarget: dummy+share/john.folder@fusiondirectory.org
    */
   protected $gosaSharedPrefix = '';  
 
@@ -156,7 +156,7 @@ class mailMethod{
         $this->uattrib = $new_uattrib;
       }else{
         @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>".$new_uattrib."</b>",
-          "<b>MAIL:</b> Unsupported 'mailAttribute' in gosa configuration specified");
+          "<b>MAIL:</b> Unsupported 'mailAttribute' in FusionDirectory configuration specified");
         msg_dialog::display(_("Configuration error"), 
             sprintf(_("The configured mail attribute '%s' is unsupported!"), $new_uattrib), ERROR_DIALOG);
       }
@@ -411,8 +411,8 @@ class mailMethod{
 
 
   /*! \brief  Creates a valid folder id for a given folder name.
-               e.g. $folder_id = "INBOX/test"  &&  $this->account_id = "share/mailbox@domain.de"
-               will result in "share/mailbox/test@domain.de"
+               e.g. $folder_id = "INBOX/test"  &&  $this->account_id = "share/mailbox@fusiondirectory.org"
+               will result in "share/mailbox/test@fusiondirectory.org"
               This function is mainly used to read and write folder permissions.
       @return String A valid folder id
    */
@@ -760,7 +760,7 @@ class mailMethod{
   public function  getFolderACLs($folder_acls)
   {
     /* Merge given ACL with acl mapping 
-       This ensures that no ACL will accidentally overwritten by gosa.
+       This ensures that no ACL will accidentally overwritten by fusiondirectory.
      */
     foreach($folder_acls as $user => $acl){
       if(!isset($this->acl_mapping[$acl])){

@@ -50,10 +50,10 @@ class mailMethodKolab extends mailMethodCyrus
 
   /* gosaSharedFolderTarget settings, 
    *   E.g. 
-   *     AccountID = 'shared/herberts.folder@gonicus.de' 
-   *     'kolab+' will result in gosaSharedFolderTarget: kolab+shared/herberts.folder@gonicus.de
+   *     AccountID = 'shared/john.folder@fusiondirectory.org' 
+   *     'kolab+' will result in gosaSharedFolderTarget: kolab+shared/john@fusiondirectory.org
    *
-   * May be overridden in the gosa.conf.
+   * May be overridden in the fusiondirectory.conf.
    */
   protected $gosaSharedPrefix = 'kolab+';  
 
