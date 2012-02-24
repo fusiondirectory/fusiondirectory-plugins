@@ -285,25 +285,6 @@ class componentGeneric extends plugin
     }
   }
 
-  /* Return plugin informations for acl handling */
-  static function plInfo()
-  {
-    return (array(
-          "plShortName"   => _("Generic"),
-          "plDescription" => _("Component generic"),
-          "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
-          "plPriority"    => 1,
-          "plSection"     => array("administration"),
-          "plCategory"    => array("component" => array("description"  => _("Network device"),
-                                                        "objectClass"  => array("device", "ipHost", "ieee802Device"))),
-          "plProvidedAcls"=> array(
-            "cn"                  => _("Name"),
-            "base"                => _("Base"),
-            "description"         => _("Description"),
-            "userPassword"      => _("Root password"))
-          ));
-  }
 
   /* Display generic part for server copy & paste */
   function getCopyDialog()
@@ -343,6 +324,26 @@ class componentGeneric extends plugin
   function is_modal_dialog()
   {
     return((isset($this->dialog) && $this->dialog) || (isset($this->netConfigDNS->dialog) && $this->netConfigDNS->dialog));
+  }
+
+  /* Return plugin informations for acl handling */
+  static function plInfo()
+  {
+    return (array(
+          "plShortName"   => _("Generic"),
+          "plDescription" => _("Component generic"),
+          "plSelfModify"  => FALSE,
+          "plDepends"     => array(),
+          "plPriority"    => 1,
+          "plSection"     => array("administration"),
+          "plCategory"    => array("component" => array("description"  => _("Network device"),
+                                                        "objectClass"  => array("device", "ipHost", "ieee802Device"))),
+          "plProvidedAcls"=> array(
+            "cn"                  => _("Name"),
+            "base"                => _("Base"),
+            "description"         => _("Description"),
+            "userPassword"      => _("Root password"))
+          ));
   }
 
 }

@@ -399,6 +399,15 @@ class servrepository extends goService
     goService::remove_from_parent();
   }
 
+  /*! \brief    Returns the list of of services, active services.
+   *            Used in the filter class for services.
+   *             class_filterServerService.inc
+   */
+  static function getRepositoryList()
+  {
+    return(session::get('RepositoryList'));
+  }
+  
   /* Return plugin informations for acl handling */
   static function plInfo()
   {
@@ -424,14 +433,6 @@ class servrepository extends goService
           ));
   }
 
-  /*! \brief    Returns the list of of services, active services.
-   *            Used in the filter class for services.
-   *             class_filterServerService.inc
-   */
-  static function getRepositoryList()
-  {
-    return(session::get('RepositoryList'));
-  }
 }
 // vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

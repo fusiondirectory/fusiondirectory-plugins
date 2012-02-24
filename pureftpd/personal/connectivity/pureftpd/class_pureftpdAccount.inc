@@ -267,31 +267,6 @@ class pureftpdAccount extends plugin
   }
 
 
-  /* Return plugin informations for acl handling
-  #FIME There possibly some attributes that can be combined to one acl. */
-  static function plInfo()
-  {
-    return (array(
-          "plShortName"     => _("Ftp"),
-          "plDescription"   => _("Pure ftp account")."&nbsp;("._("Connectivity addon").")",
-          "plSelfModify"    => TRUE,
-          "plDepends"       => array("user"),
-          "plPriority"      => 22,                                 // Position in tabs
-          "plSection"     => array("personal" => _("My account")),
-          "plCategory"    => array("users"),
-          "plOptions"       => array(),
-
-          "plProvidedAcls"  => array(
-            "FTPQuotaFiles"         => _("Quota files"),
-            "FTPUploadRatio"        => _("Upload ratio"),
-            "FTPQuotaMBytes"        => _("Quota MBytes"),
-            "FTPDownloadRatio"      => _("Download ratio"),
-            "FTPUploadBandwidth"    => _("Upload bandwith"),
-            "FTPDownloadBandwidth"  => _("Download bandwith"),
-            "FTPStatus"             => _("Status"))
-          ));
-  }
-
   function multiple_save_object()
   {
     if (isset($_POST['connectivityTab'])){
@@ -334,6 +309,31 @@ class pureftpdAccount extends plugin
     if(isset($values['is_account'])){
       $this->is_account = $values['is_account'];
     }
+  }
+  
+  /* Return plugin informations for acl handling
+  #FIME There possibly some attributes that can be combined to one acl. */
+  static function plInfo()
+  {
+    return (array(
+          "plShortName"     => _("Ftp"),
+          "plDescription"   => _("Pure ftp account")."&nbsp;("._("Connectivity addon").")",
+          "plSelfModify"    => TRUE,
+          "plDepends"       => array("user"),
+          "plPriority"      => 22,                                 // Position in tabs
+          "plSection"       => array("personal" => _("My account")),
+          "plCategory"      => array("users"),
+          "plOptions"       => array(),
+
+          "plProvidedAcls"  => array(
+            "FTPQuotaFiles"         => _("Quota files"),
+            "FTPUploadRatio"        => _("Upload ratio"),
+            "FTPQuotaMBytes"        => _("Quota MBytes"),
+            "FTPDownloadRatio"      => _("Download ratio"),
+            "FTPUploadBandwidth"    => _("Upload bandwith"),
+            "FTPDownloadBandwidth"  => _("Download bandwith"),
+            "FTPStatus"             => _("Status"))
+          ));
   }
 
 }

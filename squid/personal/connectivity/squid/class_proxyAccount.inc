@@ -341,29 +341,6 @@ class proxyAccount extends plugin
 
   }
 
-    
-  /*! \brief  Static  Function returning an ACL information array.
-      @return Array   Returns an ACL array 
-   */
-  static function plInfo()
-  {
-    return (array(
-          "plShortName"     => _("Proxy"),
-          "plDescription"   => _("Proxy account")."&nbsp;("._("Connectivity addon").")",
-          "plSelfModify"    => TRUE,
-          "plDepends"       => array("user"),
-          "plPriority"      => 21,                                 // Position in tabs
-          "plSection"     => array("personal" => _("My account")),
-          "plCategory"    => array("users"),
-          "plOptions"       => array(),
-
-          "plProvidedAcls"  => array(
-            "gosaProxyFlagF"       => _("Filter unwanted content"), 
-            "gosaProxyFlagT"       => _("Limit proxy access"),
-            "gosaProxyFlagB"       => _("Restrict proxy usage by quota"))
-          ));
-  }
-
 
   /*! \brief  Save html POSTs in multiple edit.
    */
@@ -451,6 +428,29 @@ class proxyAccount extends plugin
     if(isset($attrs['objectClass']) && in_array("gosaProxyAccount",$attrs['objectClass'])){
       $this->is_account = TRUE;
     }
+  }
+  
+  /*! \brief  Static  Function returning an ACL information array.
+   * 
+   * \return Array   Returns an ACL array 
+   */
+  static function plInfo()
+  {
+    return (array(
+          "plShortName"     => _("Proxy"),
+          "plDescription"   => _("Proxy account")."&nbsp;("._("Connectivity addon").")",
+          "plSelfModify"    => TRUE,
+          "plDepends"       => array("user"),
+          "plPriority"      => 21,                                 // Position in tabs
+          "plSection"       => array("personal" => _("My account")),
+          "plCategory"      => array("users"),
+          "plOptions"       => array(),
+
+          "plProvidedAcls"  => array(
+            "gosaProxyFlagF"       => _("Filter unwanted content"), 
+            "gosaProxyFlagT"       => _("Limit proxy access"),
+            "gosaProxyFlagB"       => _("Restrict proxy usage by quota"))
+          ));
   }
 }
 

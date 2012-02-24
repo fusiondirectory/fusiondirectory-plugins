@@ -621,32 +621,6 @@ class sudo extends plugin
   }
 
 
-  /*! \brief  Add ACL object
-      @return Returns the ACL object.
-   */
-  static function plInfo()
-  {
-    return (array(  
-          "plShortName" => _("Sudo"),
-          "plDescription" => _("Sudo role"),
-          "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
-          "plPriority"    => 0,
-          "plSection"     => array("administration"),
-          "plCategory"    => array("sudo" => array("objectClass" => "sudoRole", "description" => _("Sudo role"))),
-
-          "plProvidedAcls"    => array(
-            "cn"                => _("Name"),
-            "description"       => _("Description"),
-            "sudoUser"          => _("Users"),
-            "sudoHost"          => _("Host"),
-            "sudoCommand"       => _("Command"),
-            "sudoRunAs"         => _("Run as user"),
-            "trustModel"        => _("Access control list"))
-        ));
-  }
-
-
   /*! \brief  This function will be called if an object gets copied.
               This function adapts attributes from the source object.
       @param  Array The source object.
@@ -716,6 +690,34 @@ class sudo extends plugin
       $this->cn = get_post('cn');
     }
   }
+  
+  /*! \brief  Add ACL object
+   * 
+   * \return Returns the ACL object.
+   */
+  static function plInfo()
+  {
+    return (array(  
+          "plShortName"   => _("Sudo"),
+          "plDescription" => _("Sudo role"),
+          "plSelfModify"  => FALSE,
+          "plDepends"     => array(),
+          "plPriority"    => 0,
+          "plSection"     => array("administration"),
+          "plCategory"    => array("sudo" => array("objectClass" => "sudoRole", "description" => _("Sudo role"))),
+
+          "plProvidedAcls"    => array(
+            "cn"                => _("Name"),
+            "description"       => _("Description"),
+            "sudoUser"          => _("Users"),
+            "sudoHost"          => _("Host"),
+            "sudoCommand"       => _("Command"),
+            "sudoRunAs"         => _("Run as user"),
+            "trustModel"        => _("Access control list"))
+        ));
+  }
+
+  
 }
 // vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

@@ -539,20 +539,6 @@ class gotomasses extends management
 
   function save(){}
 
-  static function plInfo()
-  {
-    return (array(
-          "plShortName"   => _("System deployment"),
-          "plDescription" => _("Provide a mechanism to automatically activate systems"),
-          "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
-          "plPriority"    => 0,
-          "plSection"     => array("addon"),
-          "plCategory"    => array("gotomasses" => array("objectClass" => "none", "description" => _("System deployment"))),
-          "plProvidedAcls" => array("Comment"   => _("Description")) 
-          ));
-  }
-
 
   function set_acl_base($base)
   {
@@ -614,6 +600,20 @@ class gotomasses extends management
     return  $ui->get_permissions($this->acl_base, $this->acl_category.get_class($this), $attribute,$skip_write);
   }
 
+  static function plInfo()
+  {
+    return (array(
+          "plShortName"   => _("System deployment"),
+          "plDescription" => _("Provide a mechanism to automatically activate systems"),
+          "plSelfModify"  => FALSE,
+          "plDepends"     => array(),
+          "plPriority"    => 0,
+          "plSection"     => array("addon"),
+          "plCategory"    => array("gotomasses" => array("objectClass" => "none", "description" => _("System deployment"))),
+          "plProvidedAcls" => array("Comment"   => _("Description")) 
+          ));
+  }
+  
 }
 // vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

@@ -682,33 +682,6 @@ class workgeneric extends plugin
   }
 
 
-  /* Return plugin informations for acl handling 
-      #FIXME FAIscript seams to ununsed within this class... */ 
-  static function plInfo()
-  {
-    return (array(  
-          "plShortName"   => _("Generic"),
-          "plDescription" => _("Workstation generic"),
-          "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
-          "plPriority"    => 0,
-          "plSection"     => array("administration"),
-          "plCategory"    => array("workstation" => array("description"  => _("Workstation"),
-                                                          "objectClass"  => "gotoWorkstation")),
-          "plProvidedAcls"=> array(
-            "cn"                  => _("Workstation name"),
-            "description"         => _("Description") ,
-            "l"                   => _("Location") ,
-            "base"                => _("Base") ,
-            "gotoMode"            => _("Goto mode"), 
-            "gotoSyslogServer"    => _("Syslog server"), 
-            "gotoNtpServer"       => _("Ntp server"), 
-            "userPassword"      => _("Root password"),
-            "createFAICD"         => _("Create FAI CD"),
-            "FAIstate"            => _("Action flag"))
-          ));
-  }
-
   function set_everything_to_inherited()
   {
     $this->gotoSyslogServer  = "default";
@@ -747,7 +720,32 @@ class workgeneric extends plugin
     return((isset($this->dialog) && $this->dialog) || (isset($this->netConfigDNS->dialog) && $this->netConfigDNS->dialog));
   }
 
-
+  /* Return plugin informations for acl handling 
+      #FIXME FAIscript seems to ununsed within this class... */ 
+  static function plInfo()
+  {
+    return (array(  
+          "plShortName"   => _("Generic"),
+          "plDescription" => _("Workstation generic"),
+          "plSelfModify"  => FALSE,
+          "plDepends"     => array(),
+          "plPriority"    => 0,
+          "plSection"     => array("administration"),
+          "plCategory"    => array("workstation" => array("description"  => _("Workstation"),
+                                                          "objectClass"  => "gotoWorkstation")),
+          "plProvidedAcls"=> array(
+            "cn"                  => _("Workstation name"),
+            "description"         => _("Description") ,
+            "l"                   => _("Location") ,
+            "base"                => _("Base") ,
+            "gotoMode"            => _("Goto mode"), 
+            "gotoSyslogServer"    => _("Syslog server"), 
+            "gotoNtpServer"       => _("Ntp server"), 
+            "userPassword"        => _("Root password"),
+            "createFAICD"         => _("Create FAI CD"),
+            "FAIstate"            => _("Action flag"))
+          ));
+  }
 }
   // vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

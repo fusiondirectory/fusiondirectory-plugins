@@ -126,24 +126,6 @@ class goNtpServer extends goService{
     }
   }
 
-
-  /* Return plugin informations for acl handling */
-  static function plInfo()
-  {
-    return (array(
-          "plShortName"   => _("Time service"),
-          "plDescription" => _("Time service - NTP")." ("._("Services").")",
-          "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
-          "plPriority"    => 91,
-          "plSection"     => array("administration"),
-          "plCategory"    => array("server"),
-
-          "plProvidedAcls"=> array(
-            "goTimeSource"        =>_("Ntp source"))
-          ));
-  }
-
   
   function PrepareForCopyPaste($source)
   {
@@ -164,6 +146,23 @@ class goNtpServer extends goService{
   function check(){ return array();}
 
   function save_object(){;}
+  
+  /* Return plugin informations for acl handling */
+  static function plInfo()
+  {
+    return (array(
+          "plShortName"   => _("Time service"),
+          "plDescription" => _("Time service - NTP")." ("._("Services").")",
+          "plSelfModify"  => FALSE,
+          "plDepends"     => array(),
+          "plPriority"    => 91,
+          "plSection"     => array("administration"),
+          "plCategory"    => array("server"),
+
+          "plProvidedAcls"=> array(
+            "goTimeSource"        =>_("Ntp source"))
+          ));
+  }
 }
 // vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

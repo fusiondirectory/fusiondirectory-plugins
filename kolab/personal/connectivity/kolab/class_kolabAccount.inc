@@ -533,29 +533,6 @@ class kolabAccount extends plugin
   }
 
 
-  /* Return plugin informations for acl handling  */
-  static function plInfo()
-  {
-    return (array(
-          "plShortName"     => _("Kolab"),
-          "plDescription"   => _("Kolab account settings")."&nbsp;("._("Connectivity addon").")",
-          "plSelfModify"    => TRUE,
-          "plDepends"       => array("user"),
-          "plPriority"      => 20,                                 // Position in tabs
-          "plSection"     => array("personal" => _("My account")),
-          "plCategory"    => array("users"),
-          "plOptions"       => array(),
-
-          "plProvidedAcls"  => array(
-            "kolabFreeBusyFuture"   => _("Free busy future"),
-            "unrestrictedMailSize"  => _("Mail size restriction"),
-            "calFBURL"              => _("Free busy information"),
-            "kolabDelegate"         => _("Delegations"),
-            "kolabInvitationPolicy" => _("Invitation policy"))
-          ));
-  }
-
-
   /*! \brief  Enable multiple edit support. \
               Also sets $this->mail_account to TRUE, which simulates \
               a valid mail extension.
@@ -697,6 +674,30 @@ class kolabAccount extends plugin
       $this->is_account = TRUE;
     }
   }
+
+  
+  /* Return plugin informations for acl handling  */
+  static function plInfo()
+  {
+    return (array(
+          "plShortName"     => _("Kolab"),
+          "plDescription"   => _("Kolab account settings")."&nbsp;("._("Connectivity addon").")",
+          "plSelfModify"    => TRUE,
+          "plDepends"       => array("user"),
+          "plPriority"      => 20,                                 // Position in tabs
+          "plSection"     => array("personal" => _("My account")),
+          "plCategory"    => array("users"),
+          "plOptions"       => array(),
+
+          "plProvidedAcls"  => array(
+            "kolabFreeBusyFuture"   => _("Free busy future"),
+            "unrestrictedMailSize"  => _("Mail size restriction"),
+            "calFBURL"              => _("Free busy information"),
+            "kolabDelegate"         => _("Delegations"),
+            "kolabInvitationPolicy" => _("Invitation policy"))
+          ));
+  }
+
 }
 
 // vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:

@@ -333,6 +333,15 @@ class gospamserver extends goService{
   }  
 
   
+  /* For newer service management dialogs */
+  function getListEntry()
+  {
+    $fields                 = goService::getListEntry();
+    $fields['Message']      = _("Spamassassin");
+    #$fields['AllowEdit']    = true;
+    return($fields);
+  }
+  
   /* Return plugin informations for acl handling  */
   static function plInfo()
   {
@@ -358,15 +367,6 @@ class gospamserver extends goService{
             "saFlagD"           => _("Enable use of DDC"),
             "saFlagP"           => _("Enable use of Pyzor"))
           ));
-  }
-
-  /* For newer service management dialogs */
-  function getListEntry()
-  {
-    $fields                 = goService::getListEntry();
-    $fields['Message']      = _("Spamassassin");
-    #$fields['AllowEdit']    = true;
-    return($fields);
   }
 }
 // vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:

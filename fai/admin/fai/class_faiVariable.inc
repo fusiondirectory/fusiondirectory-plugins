@@ -401,24 +401,6 @@ class faiVariable extends plugin
     }
   } 
 
- 
-  /* Return plugin informations for acl handling */ 
-  static function plInfo()
-  {
-    return (array( 
-          "plShortName" => _("Variable"),
-          "plDescription" => _("FAI variable"),
-          "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
-          "plPriority"    => 22,
-          "plSection"     => array("administration"),
-          "plCategory"    => array("fai"),
-          "plProvidedAcls" => array(
-            "cn"                => _("Name")." ("._("Read only").")",
-            "description"       => _("Description"))
-          ));
-  }
-
 
   /*! \brief  Used for copy & paste.
     Returns a HTML input mask, which allows to change the cn of this entry.
@@ -475,6 +457,23 @@ class faiVariable extends plugin
       }
     }
     return($object);
+  }
+
+  /* Return plugin informations for acl handling */ 
+  static function plInfo()
+  {
+    return (array( 
+          "plShortName" => _("Variable"),
+          "plDescription" => _("FAI variable"),
+          "plSelfModify"  => FALSE,
+          "plDepends"     => array(),
+          "plPriority"    => 22,
+          "plSection"     => array("administration"),
+          "plCategory"    => array("fai"),
+          "plProvidedAcls" => array(
+            "cn"                => _("Name")." ("._("Read only").")",
+            "description"       => _("Description"))
+          ));
   }
 
 }

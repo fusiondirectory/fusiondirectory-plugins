@@ -177,24 +177,6 @@ class webdavAccount extends plugin
   }
 
 
-  /* Return plugin informations for acl handling
-      #FIXME This is only an enable/disable checkbox for this account, there is possibly a better solution available later */
-  static function plInfo()
-  {
-    return (array(  
-          "plShortName"     => _("WebDAV"),
-          "plDescription"   => _("WebDAV account")."&nbsp;("._("Connectivity addon").")",
-          "plSelfModify"    => TRUE,
-          "plDepends"       => array("user"),
-          "plPriority"      => 23,                                 // Position in tabs
-          "plSection"     => array("personal" => _("My account")),
-          "plCategory"    => array("users"),
-          "plOptions"       => array(),
-
-          "plProvidedAcls"  => array()
-          ));
-  }
-
   function multiple_save_object()
   {
     if (isset($_POST['connectivityTab'])){
@@ -240,6 +222,24 @@ class webdavAccount extends plugin
     if(isset($attrs['objectClass']) && in_array("gosaWebdavAccount",$attrs['objectClass'])){
       $this->is_account = TRUE;
     }
+  }
+  
+  /* Return plugin informations for acl handling
+    #FIXME This is only an enable/disable checkbox for this account, there is possibly a better solution available later */
+  static function plInfo()
+  {
+    return (array(  
+          "plShortName"     => _("WebDAV"),
+          "plDescription"   => _("WebDAV account")."&nbsp;("._("Connectivity addon").")",
+          "plSelfModify"    => TRUE,
+          "plDepends"       => array("user"),
+          "plPriority"      => 23,                                 // Position in tabs
+          "plSection"       => array("personal" => _("My account")),
+          "plCategory"      => array("users"),
+          "plOptions"       => array(),
+
+          "plProvidedAcls"  => array()
+          ));
   }
 }
 

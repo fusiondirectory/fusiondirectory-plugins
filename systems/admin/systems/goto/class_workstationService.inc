@@ -515,37 +515,6 @@ class workservice extends plugin
   }
 
 
-  /* Return plugin informations for acl handling */
-  static function plInfo()
-  {
-    return (array(
-          "plShortName"   => _("Service"),
-          "plDescription" => _("Workstation service"),
-          "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
-          "plPriority"    => 10,
-          "plSection"     => array("administration"),
-          "plCategory"    => array("workstation","ogroups"), 
-
-          "plProvidedAcls"=> array(
-            "gotoXMonitor"          => _("Monitor"),
-            "gotoXDriver"           => _("Gfx driver"),
-            "gotoXResolution"       => _("Gfx resolution"),
-            "gotoXColordepth"       => _("Gfx color depth"),
-            "gotoXHsync"            => _("HSync"),
-            "gotoXVsync"            => _("VSync"),
-            "AutoSync"              => _("Use DDC"),
-            "gotoScannerEnable"     => _("Scanner enabled"),
-            "gotoXKbModel"          => _("Keyboard model"),
-            "gotoXKbLayout"         => _("Keyboard layout"),
-            "gotoXKbVariant"        => _("Keyboard variant"),
-            "gotoXMouseType"        => _("Mouse type"),
-            "gotoXMouseport"        => _("Mouse port"),
-            "goFonHardware"         => _("Telephone hardware")) 
-            ));
-  }
-
-
   /*! \brief  Send goto_reload event to support daemon
    */
   function send_goto_reload()
@@ -608,6 +577,36 @@ class workservice extends plugin
       $this->gotoXHsync = preg_replace("/\+/","-",$this->gotoXHsync);
       $this->gotoXVsync = preg_replace("/\+/","-",$this->gotoXVsync);
     }
+  }
+  
+  /* Return plugin informations for acl handling */
+  static function plInfo()
+  {
+    return (array(
+          "plShortName"   => _("Service"),
+          "plDescription" => _("Workstation service"),
+          "plSelfModify"  => FALSE,
+          "plDepends"     => array(),
+          "plPriority"    => 10,
+          "plSection"     => array("administration"),
+          "plCategory"    => array("workstation","ogroups"), 
+
+          "plProvidedAcls"=> array(
+            "gotoXMonitor"          => _("Monitor"),
+            "gotoXDriver"           => _("Gfx driver"),
+            "gotoXResolution"       => _("Gfx resolution"),
+            "gotoXColordepth"       => _("Gfx color depth"),
+            "gotoXHsync"            => _("HSync"),
+            "gotoXVsync"            => _("VSync"),
+            "AutoSync"              => _("Use DDC"),
+            "gotoScannerEnable"     => _("Scanner enabled"),
+            "gotoXKbModel"          => _("Keyboard model"),
+            "gotoXKbLayout"         => _("Keyboard layout"),
+            "gotoXKbVariant"        => _("Keyboard variant"),
+            "gotoXMouseType"        => _("Mouse type"),
+            "gotoXMouseport"        => _("Mouse port"),
+            "goFonHardware"         => _("Telephone hardware")) 
+            ));
   }
 }
 

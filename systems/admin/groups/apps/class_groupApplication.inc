@@ -1385,27 +1385,6 @@ class appgroup extends plugin
   }
 
 
-  /*! \brief  Return plugin informations for acl handling  
-      @return Array containing all plugin ACL informations
-   */ 
-  static function plInfo()
-  {
-    return (array(
-          "plShortName"   => _("Applications"),
-          "plDescription" => _("Group applications"),
-          "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
-          "plPriority"    => 7,
-          "plSection"     => array("administration"),
-          "plCategory"    => array("groups"),
-          "plProvidedAcls"=> array(
-            "gosaMemberApplication"     => _("Application"),
-            "FAIrelease"                => _("Release"),
-            "gosaApplicationParameter"  => _("Application parameter"))
-          ));
-  }
-
-
   /* \brief   Prepare this plugin to be copied.
               Adapt all required attributes from the source object.
               In this case, update the menu structure too, mark all elements
@@ -1462,6 +1441,28 @@ class appgroup extends plugin
       $ret['appoption']                = $this->appoption;
     }
     return($ret);
+  }
+  
+  /*! \brief  Return plugin informations for acl handling  
+   * 
+   * \return Array containing all plugin ACL informations
+   */ 
+  static function plInfo()
+  {
+    return (array(
+          "plShortName"   => _("Applications"),
+          "plDescription" => _("Group applications"),
+          "plSelfModify"  => FALSE,
+          "plDepends"     => array(),
+          "plPriority"    => 7,
+          "plSection"     => array("administration"),
+          "plCategory"    => array("groups"),
+          
+          "plProvidedAcls"=> array(
+            "gosaMemberApplication"     => _("Application"),
+            "FAIrelease"                => _("Release"),
+            "gosaApplicationParameter"  => _("Application parameter"))
+          ));
   }
 }
 // vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:

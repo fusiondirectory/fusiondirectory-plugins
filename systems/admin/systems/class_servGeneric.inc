@@ -477,7 +477,11 @@ class servgeneric extends plugin
   }
   
 
-
+  function is_modal_dialog()
+  {
+    return((isset($this->dialog) && $this->dialog) || (isset($this->netConfigDNS->dialog) && $this->netConfigDNS->dialog));
+  }
+  
   /* Return plugin informations for acl handling */ 
   static function plInfo()
   {
@@ -499,12 +503,6 @@ class servgeneric extends plugin
             "userPassword"=> _("Root password"),
             "FAIstate"      => _("Action flag"))
           ));
-  }
-
-
-  function is_modal_dialog()
-  {
-    return((isset($this->dialog) && $this->dialog) || (isset($this->netConfigDNS->dialog) && $this->netConfigDNS->dialog));
   }
 
 }

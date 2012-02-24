@@ -549,24 +549,6 @@ class faiTemplate extends plugin
   }
   
 
-  /* Return plugin informations for acl handling */ 
-  static function plInfo()
-  {
-    return (array( 
-          "plShortName" => _("Template"),
-          "plDescription" => _("FAI template"),
-          "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
-          "plPriority"    => 24,
-          "plSection"     => array("administration"),
-          "plCategory"    => array("fai"),
-          "plProvidedAcls" => array(
-            "cn"                => _("Name")." ("._("Readonly").")",
-            "description"       => _("Description"))
-          ));
-  }
-
-
   /*! \brief  Used for copy & paste.
     Returns a HTML input mask, which allows to change the cn of this entry.
     @param  Array   Array containing current status && a HTML template.
@@ -593,6 +575,24 @@ class faiTemplate extends plugin
       $this->cn = get_post('cn');
     }
   }
+  
+  /* Return plugin informations for acl handling */ 
+  static function plInfo()
+  {
+    return (array( 
+          "plShortName" => _("Template"),
+          "plDescription" => _("FAI template"),
+          "plSelfModify"  => FALSE,
+          "plDepends"     => array(),
+          "plPriority"    => 24,
+          "plSection"     => array("administration"),
+          "plCategory"    => array("fai"),
+          "plProvidedAcls" => array(
+            "cn"                => _("Name")." ("._("Readonly").")",
+            "description"       => _("Description"))
+          ));
+  }
+  
 }
 
 // vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:

@@ -28,7 +28,7 @@ class workstartup extends plugin
   var $gotoLdap_inherit   = FALSE;
 
   /* Generic terminal attributes */
-	# This is disabled as long there is no possiblilty to set these parameters
+  # This is disabled as long there is no possiblilty to set these parameters
   #var $bootmode             = "G";
   var $bootmode             = "";
   var $gotoBootKernel       = "default-inherited";
@@ -293,8 +293,8 @@ class workstartup extends plugin
 
   function execute()
   {
-  	/* Call parent execute */
-  	plugin::execute();
+    /* Call parent execute */
+    plugin::execute();
 
     if($this->is_account && !$this->view_logged){
       $this->view_logged = TRUE;
@@ -797,35 +797,6 @@ class workstartup extends plugin
   }
 
 
-  /* Return plugin informations for acl handling */ 
-  static function plInfo()
-  {
-    return (array( 
-          "plShortName"   => _("Startup"),
-          "plDescription" => _("System startup"),
-          "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
-          "plPriority"    => 9,
-          "plSection"     => array("administration"),           
-          "plCategory"    => array("workstation","server","ogroups"),
-
-          "plProvidedAcls"=> array(
-            "gotoLdapServer"        => _("Ldap server"),
-            "gotoBootKernel"        => _("Boot kernel"),
-            "gotoKernelParameters"  => _("Kernel parameter"),
-
-            "gotoModules"           => _("Kernel modules"),
-            "gotoShare"             => _("Shares"),
-
-            "FAIclass"              => _("FAI classes"),
-            "FAIdebianMirror"       => _("Debian mirror"),
-            "FAIrelease"            => _("Debian release"),
-
-            "FAIstatus"             => _("FAI status flag")) // #FIXME is this acl realy necessary ?
-          ));
-  }
-
-
   /* Updates release dns 
    *  and reads all classes for the current release, 
    *  if not already done ($this->cache).
@@ -1028,6 +999,34 @@ class workstartup extends plugin
       $str .= preg_replace("/^ou=/","",$part)."/";
     }
     return(preg_replace("/\/$/","",$str)); 
+  }
+  
+  /* Return plugin informations for acl handling */ 
+  static function plInfo()
+  {
+    return (array( 
+          "plShortName"   => _("Startup"),
+          "plDescription" => _("System startup"),
+          "plSelfModify"  => FALSE,
+          "plDepends"     => array(),
+          "plPriority"    => 9,
+          "plSection"     => array("administration"),           
+          "plCategory"    => array("workstation","server","ogroups"),
+
+          "plProvidedAcls"=> array(
+            "gotoLdapServer"        => _("Ldap server"),
+            "gotoBootKernel"        => _("Boot kernel"),
+            "gotoKernelParameters"  => _("Kernel parameter"),
+
+            "gotoModules"           => _("Kernel modules"),
+            "gotoShare"             => _("Shares"),
+
+            "FAIclass"              => _("FAI classes"),
+            "FAIdebianMirror"       => _("Debian mirror"),
+            "FAIrelease"            => _("Debian release"),
+
+            "FAIstatus"             => _("FAI status flag")) // #FIXME is this acl realy necessary ?
+          ));
   }
 }
 

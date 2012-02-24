@@ -364,24 +364,6 @@ class netatalk extends plugin {
   }
 
 
-  /* Return plugin informations for acl handling*/
-  static function plInfo()
-  {
-    return (array(
-          "plDescription"     => _("Netatalk"),
-          "plSelfModify"      => TRUE,
-          "plDepends"         => array("user"),
-          "plPriority"        => 6,
-          "plSection"     => array("personal" => _("My account")),
-          "plCategory"    => array("users"),
-          "plOptions"         => array(),
-
-          "plProvidedAcls"  => array(
-            "netatalkUserHomepath"   =>  _("User home path"),
-            "netatalkShare"          =>  _("Share"))
-          ));
-  }
-
   function adapt_from_template($dn, $skip= array())
   {
     /* As the 'apple-user-homeDirectory' LDAP attribute is stored as
@@ -409,7 +391,26 @@ class netatalk extends plugin {
         $this->selectedshare = $share;
       }
     }
+  }
+  
+  /* Return plugin informations for acl handling*/
+  static function plInfo()
+  {
+    return (array(
+          "plDescription"     => _("Netatalk"),
+          "plSelfModify"      => TRUE,
+          "plDepends"         => array("user"),
+          "plPriority"        => 6,
+          "plSection"         => array("personal" => _("My account")),
+          "plCategory"        => array("users"),
+          "plOptions"         => array(),
+
+          "plProvidedAcls"  => array(
+            "netatalkUserHomepath"   =>  _("User home path"),
+            "netatalkShare"          =>  _("Share"))
+          ));
   }   
+  
 }
 
 // vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
