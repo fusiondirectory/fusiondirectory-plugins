@@ -253,7 +253,7 @@ class termDNS extends plugin
 
   function execute()
   {
-	  /* Call parent execute */
+    /* Call parent execute */
     $smarty= get_smarty();
     $smarty->assign("autonetACL",$this->acl_is_writeable("macAddress") && $this->acl_is_writeable("ipHostNumber")?"rw":"");
     $smarty->assign("MACisMust",$this->MACisMust);
@@ -298,19 +298,7 @@ class termDNS extends plugin
     /* Check for autonet button */
     if (isset($_POST['autonet']) && ($this->acl_is_writeable("ipHostNumber") || $this->acl_is_writeable("macAddress"))){
         if(class_available("supportDaemon")){
-/*
-            $d= new supportDaemon(TRUE, 0.5);
-            $res= $d->_send("<xml><header>gosa_network_completition</header>".
-                    "<source>GOSA</source><target>GOSA</target><hostname>".$this->cn."</hostname></xml>", TRUE);
-            if (isset($res['XML']['IP']) && $this->acl_is_writeable("ipHostNumber")){
-                $this->ipHostNumber= $res['XML']['IP'];
-            }
-            if (isset($res['XML']['MAC']) && $this->acl_is_writeable("macAddress")){
-                $this->macAddress= $res['XML']['MAC'];
-            }
-*/
-          msg_dialog::display(_("Error"), _("NOT IMPLEMENTED"), ERROR_DIALOG);
-            
+          msg_dialog::display(_("Error"), _("NOT IMPLEMENTED"), ERROR_DIALOG);            
         }
     }
 
