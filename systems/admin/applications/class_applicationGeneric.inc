@@ -400,10 +400,6 @@ class application extends plugin
     /* Call common method to give check the hook */
     $message= plugin::check();
 
-    if(!preg_match("#^/#",$this->gosaApplicationExecute)){
-      $message[]=msgPool::invalid(_("Execute path"),"","","/some/path");
-    }
-
     /* Permissions for that base? */
     if ($this->base != ""){
       $new_dn= "cn=".$this->cn.",".get_ou('applicationRDN').$this->base;
