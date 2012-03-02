@@ -148,45 +148,6 @@ class servapacheVhostEdit extends plugin
     $smarty= get_smarty();
     $display= "";
 
-// Outdated?
-
-#   /* Open Vhost Entry Edit Dialog
-#    */
-#   if(!count($this->VhostObject)){
-#     $smarty->assign("AllowVhostEdit" , false);
-#   }else{
-#     $smarty->assign("AllowVhostEdit" , true);
-#     if(isset($_POST['EditVhostEntries'])){
-#       $this->dialog= new apacheVhostEditEntries($this->config,$this->dn,$this->VhostObject);
-#     }
-#   }
-#
-#   /* Save Vhost Entry Edit Dialog
-#    */
-#   if(isset($_POST['SaveVhostEntryChanges'])){
-#     $this->dialog->save_object();
-#     if(count($this->dialog->check())){
-#        msg_dialog::displayChecks($this->dialog->check());
-#     }else{
-#       $this->dialog->save();
-#       $this->dialog = false;
-#     }
-#   }
-#
-#   /* Cancel Vhost Entrie Edit Dialog
-#   */
-#   if(isset($_POST['CancelVhostEntryChanges'])){
-#     $this->dialog = false;
-#   }
-#
-#   /* Display any type of open dialogs 
-#    */
-#   if($this->dialog){
-#     $this->dialog->save_object();
-#     return($this->dialog->execute());
-#   }
-#
-
     /* Check posts 
      */
     $once =true;
