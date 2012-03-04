@@ -146,15 +146,8 @@ class faiTemplateEntry extends plugin
     $smarty->assign("status",$status);
     $smarty->assign("bStatus",$bStatus);
 
-    /* Magic quotes GPC, escapes every ' " \, to solve some security risks 
-     * If we post the escaped strings they will be escaped again
-     */
     foreach($this->attributes as $attrs){
-      if(get_magic_quotes_gpc()){
-        $smarty->assign($attrs,stripslashes($this->$attrs));
-      }else{
-        $smarty->assign($attrs,($this->$attrs));
-      }
+      $smarty->assign($attrs,($this->$attrs));
     }
 
     /* Assign file modes */
