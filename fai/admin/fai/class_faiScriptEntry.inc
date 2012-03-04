@@ -115,11 +115,7 @@ class faiScriptEntry extends plugin
       $smarty->assign($name."ACL",$acl);
     }
 
-    if(get_magic_quotes_gpc()){
-      $smarty->assign("FAIscript" , htmlentities(stripslashes($this->FAIscript)));
-    }else{
-      $smarty->assign("FAIscript" , htmlentities($this->FAIscript));
-    }
+    $smarty->assign("FAIscript" , htmlentities($this->FAIscript));
     $smarty->assign("FAIprioritys",$FAIprioritys);
     $display.= $smarty->fetch(get_template_path('faiScriptEntry.tpl', TRUE));
     return($display);
