@@ -162,15 +162,8 @@ class faiProfileEntry extends plugin
     $objTypes['FAIpackageList']     = "<img src='plugins/fai/images/fai_packages.png' title='"._("Package bundle")."' alt=''>&nbsp;";
     $objTypes['FAIpartitionTable']  = "<img src='plugins/fai/images/fai_partitionTable.png' title='"._("Partition table")."' alt=''>&nbsp;";
 
-    /* Magic quotes GPC, escapes every ' " \, to solve some security risks
-     * If we post the escaped strings they will be escaped again
-     */
     foreach($this->attributes as $attrs){
-      if(get_magic_quotes_gpc()){
-        $smarty->assign($attrs,stripslashes($this->$attrs));
-      }else{
         $smarty->assign($attrs,($this->$attrs));
-      }
     }
 
     /* Assign all filter attributes to smarty */
