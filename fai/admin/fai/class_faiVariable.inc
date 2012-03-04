@@ -218,16 +218,8 @@ class faiVariable extends plugin
     }
     $smarty->assign("SubObjects",$tmp);
 
-
-    /* Magic quotes GPC, escapes every ' " \, to solve some security risks
-     * If we post the escaped strings they will be escaped again
-     */
     foreach($this->attributes as $attrs){
-      if(get_magic_quotes_gpc()){
-        $smarty->assign($attrs,htmlentities (stripslashes(utf8_decode($this->$attrs))));
-      }else{
-        $smarty->assign($attrs,htmlentities (utf8_decode($this->$attrs)));
-      }
+      $smarty->assign($attrs,htmlentities (utf8_decode($this->$attrs)));
     }
 
     $c_dn = $this->acl_base_for_current_object($this->dn);
