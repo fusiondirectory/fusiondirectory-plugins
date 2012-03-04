@@ -352,11 +352,7 @@ class faiProfile extends plugin
      * If we post the escaped strings they will be escaped again
      */
     foreach($this->attributes as $attrs){
-      if(get_magic_quotes_gpc()){
-        $smarty->assign($attrs,stripslashes($this->$attrs));
-      }else{
-        $smarty->assign($attrs,($this->$attrs));
-      }
+      $smarty->assign($attrs,($this->$attrs));
     }
 
     
