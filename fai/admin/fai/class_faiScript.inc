@@ -391,15 +391,8 @@ class faiScript extends plugin
     }
     $smarty->assign("Entry_divlist",$divlist->DrawList());
 
-    /* Magic quotes GPC, escapes every ' " \, to solve some security risks
-     * If we post the escaped strings they will be escaped again
-     */
     foreach($this->attributes as $attrs){
-      if(get_magic_quotes_gpc()){
-        $smarty->assign($attrs,stripslashes($this->$attrs));
-      }else{
-        $smarty->assign($attrs,($this->$attrs));
-      }
+      $smarty->assign($attrs,($this->$attrs));
     }
 
     $dn = $this->acl_base_for_current_object($this->dn);
