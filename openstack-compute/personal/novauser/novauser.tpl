@@ -3,7 +3,6 @@
  <tr>
   <td style='width:50%; '>
 
-
    <h3>Nova Account</h3>
    <table summary="Account settings">
     <tr>
@@ -25,7 +24,6 @@
   </td>
   <td style='width:100%; '>
 
-
   </td>
  </tr>
 </table>
@@ -35,7 +33,6 @@
 <!-- Place cursor -->
 <script language="JavaScript" type="text/javascript">
   <!-- // First input field on page
-	focus_field('isNovaAdmin');
+  focus_field('isNovaAdmin');
   -->
 </script>
-
