@@ -133,7 +133,7 @@
     <tag>OPSI</tag>
     <default>true</default>
     <unset></unset>
-    <set>(&amp;(objectClass=FAIclass)(FAIstate=__NETBOOT__))</set>
+    <set>(objectClass=opsiHost)</set>
   </element>
 
 </filterdef>
