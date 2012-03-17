@@ -154,7 +154,7 @@ class termDNS extends plugin
 
       /* Get Entry 
        */
-      $this->dnsEntry     = DNS::getDNSHostEntries($config,$this->OrigCn, $this->getZoneNameFromIp($this->ipHostNumber));
+      $this->dnsEntry     = DNS::getDNSHostEntries($config,$this->OrigCn);
 
       $ptr = DNS::FlipIp($this->get_pTRRecord());
 
@@ -225,10 +225,6 @@ class termDNS extends plugin
     }
   }
 
-  function getZoneNameFromIp($ipHostNumber){
-    $idZone = strtoupper($this->cn)."/".substr(strstr(DNS::FlipIp($this->ipHostNumber),"."),1).".in-addr.arpa.";
-    return (DNS::getNameFromMix($this->Zones[$idZone]));
-  }
 
   function netmaskIsCoherent($idZone) 
   {
@@ -471,7 +467,7 @@ class termDNS extends plugin
 
       $tmp = array();
       $this->dnsEntry['exists'] = false;
-      $tmp = DNS::getDNSHostEntriesDiff($this->config,$this->OrigCn,$this->getZoneNameFromIp($this->ipHostNumber), $this->dnsEntry,$this->cn);
+      $tmp = DNS::getDNSHostEntriesDiff($this->config,$this->OrigCn,$this->dnsEntry,$this->cn);
   
       /* Delete dns */
       foreach($tmp['del'] as $dn => $del){
@@ -895,10 +891,11 @@ class termDNS extends plugin
        */
       if((!$this->DNS_is_account)&&($this->initially_was_account)){  
         $this->dnsEntry['exists'] = false;
+        $tmp = DNS::getDNSHostEntriesDiff($this->config,$this->OrigCn,$this->dnsEntry,$this->cn);
       }else{
         $this->dnsEntry['exists'] = $this->DNS_is_account;
+        $tmp = DNS::getDNSHostEntriesDiff($this->config,$this->OrigCn,$this->dnsEntry,$this->cn);
       }   
-      $tmp = DNS::getDNSHostEntriesDiff($this->config,$this->OrigCn,$this->getZoneNameFromIp($this->ipHostNumber),$this->dnsEntry,$this->cn);
     
       /* Update SOA record if needed
        */
@@ -1202,7 +1199,7 @@ class termDNS extends plugin
 
   function updateSOARecord()
   {
-    $oldEntries = DNS::getDNSHostEntries($this->config,$this->OrigCn, $this->getZoneNameFromIp($this->ipHostNumber));
+    $oldEntries = DNS::getDNSHostEntries($this->config,$this->OrigCn);
     $newEntries = $this->dnsEntry;
     if(array_differs($newEntries['RECORDS'],$oldEntries['RECORDS'])){
       DNS::touchDNSZone($this->config,$this->dnsEntry['zoneName']);
