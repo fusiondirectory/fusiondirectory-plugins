@@ -29,14 +29,13 @@ class argonautServer extends goService{
   /* This plugin only writes its objectClass */
   var $objectclasses    = array("argonautServer");
   var $attributes       = array("argonautDeleteFinished","argonautPort");
-  var $StatusFlag       = "argonautServerStatus";
+  var $StatusFlag       = "";
 
   /* This class can't be assigned twice so it conflicts with itsself */
   var $conflicts        = array("argonautServer");
 
   var $DisplayName      = "";
   var $dn               = NULL;
-  var $argonautServerStatus= "";
   var $acl;
   var $cn               = "";
   var $view_logged  =FALSE;
@@ -80,7 +79,7 @@ class argonautServer extends goService{
   function save()
   {
     plugin::save();
-    $this->attrs['argonautDeleteFinished'] = (argonautDeleteFinished?"TRUE":"FALSE"); // conversion from PHP format to LDAP boolean
+    $this->attrs['argonautDeleteFinished'] = ($this->argonautDeleteFinished?"TRUE":"FALSE"); // conversion from PHP format to LDAP boolean
     /* Check if this is a new entry ... add/modify */
     $ldap = $this->config->get_ldap_link();
     $ldap->cat($this->dn,array("objectClass"));
