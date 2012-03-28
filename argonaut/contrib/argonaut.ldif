@@ -7,5 +7,6 @@ cn: cn=argonaut
 # Attributes
 olcAttributeTypes: ( 1.3.6.1.4.1.38414.2.3.107NAME 'argonautDeleteFinished' DESC 'Fusion Directory - Argonaut, delete finished tasks.' EQUALITY booleanMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.7 SINGLE-VALUE )
 olcAttributeTypes: ( 1.3.6.1.4.1.38414.2.3.108NAME 'argonautPort' DESC 'Fusion Directory - Argonaut, port.' EQUALITY integerMatch ORDERING integerOrderingMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE )
+olcAttributeTypes: ( 1.3.6.1.4.1.38414.2.3.109NAME 'argonautServerStatus' DESC 'Fusion Directory - Argonaut, server status container - on / off / fail' EQUALITY caseExactIA5Match SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 SINGLE-VALUE)
 # Object Class
-olcObjectClasses: ( 1.3.6.1.4.1.38414.2.4.57NAME 'argonautServer' DESC 'An argonaut server' SUP top AUXILIARY MUST ( argonautPort ) MAY argonautDeleteFinished )
+olcObjectClasses: ( 1.3.6.1.4.1.38414.2.4.57NAME 'argonautServer' DESC 'An argonaut server' SUP top AUXILIARY MUST ( argonautPort ) MAY ( argonautDeleteFinished $ argonautServerStatus ) )

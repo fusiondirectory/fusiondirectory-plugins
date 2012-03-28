@@ -29,7 +29,7 @@ class argonautServer extends goService{
   /* This plugin only writes its objectClass */
   var $objectclasses    = array("argonautServer");
   var $attributes       = array("argonautDeleteFinished","argonautPort");
-  var $StatusFlag       = "";
+  var $StatusFlag       = "argonautServerStatus";
 
   /* This class can't be assigned twice so it conflicts with itsself */
   var $conflicts        = array("argonautServer");
@@ -42,6 +42,8 @@ class argonautServer extends goService{
   
   var $argonautDeleteFinished     = true;
   var $argonautPort     = 8080;
+  
+  var $argonautServerStatus = "";
 
   function argonautServer(&$config,$dn)
   {
