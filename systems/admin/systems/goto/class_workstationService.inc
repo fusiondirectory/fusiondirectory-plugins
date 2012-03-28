@@ -457,9 +457,10 @@ class workservice extends plugin
           "gotoXDriver", "gotoXResolution", "gotoXColordepth",
           "gotoXKbModel", "gotoXKbLayout",
           "gotoXKbVariant", "gotoXMouseType", "gotoXMouseport") as $val){
-
-      if ($this->attrs[$val] == "default"){
-        $this->attrs[$val]= array();
+      if (isset($this->attrs[$val])) {
+        if ($this->attrs[$val] == "default"){
+          $this->attrs[$val]= array();
+        }
       }
     }
 
