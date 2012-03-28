@@ -7,6 +7,10 @@ cn: cn=argonaut
 # Attributes
 olcAttributeTypes: ( 1.3.6.1.4.1.38414.2.3.107NAME 'argonautDeleteFinished' DESC 'Fusion Directory - Argonaut, delete finished tasks.' EQUALITY booleanMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.7 SINGLE-VALUE )
 olcAttributeTypes: ( 1.3.6.1.4.1.38414.2.3.108NAME 'argonautPort' DESC 'Fusion Directory - Argonaut, port.' EQUALITY integerMatch ORDERING integerOrderingMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE )
+olcAttributeTypes: ( 1.3.6.1.4.1.38414.2.3.110NAME 'argonautClientPort' DESC 'Fusion Directory - Argonaut, client port.' EQUALITY integerMatch ORDERING integerOrderingMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE )
+olcAttributeTypes: ( 1.3.6.1.4.1.38414.2.3.111NAME 'argonautWakeOnLanInterface' DESC 'Fusion Directory - Argonaut, wakeonlan interface.' EQUALITY caseExactIA5Match SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 SINGLE-VALUE )
+olcAttributeTypes: ( 1.3.6.1.4.1.38414.2.3.112NAME 'argonautIpTool' DESC 'Fusion Directory - Argonaut, iptool path (usually /sbin/ifconfig).' EQUALITY caseExactIA5Match SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 SINGLE-VALUE )
+olcAttributeTypes: ( 1.3.6.1.4.1.38414.2.3.113NAME 'argonautLogDir' DESC 'Fusion Directory - Argonaut, log directory.' EQUALITY caseExactIA5Match SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 SINGLE-VALUE )
 olcAttributeTypes: ( 1.3.6.1.4.1.38414.2.3.109NAME 'argonautServerStatus' DESC 'Fusion Directory - Argonaut, server status container - on / off / fail' EQUALITY caseExactIA5Match SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 SINGLE-VALUE)
 # Object Class
-olcObjectClasses: ( 1.3.6.1.4.1.38414.2.4.57NAME 'argonautServer' DESC 'An argonaut server' SUP top AUXILIARY MUST ( argonautPort ) MAY ( argonautDeleteFinished $ argonautServerStatus ) )
+olcObjectClasses: ( 1.3.6.1.4.1.38414.2.4.57NAME 'argonautServer' DESC 'An argonaut server' SUP top AUXILIARY MUST ( argonautPort $ argonautClientPort $ argonautLogDir ) MAY ( argonautDeleteFinished $ argonautWakeOnLanInterface $ argonautIpTool $ argonautServerStatus ) )

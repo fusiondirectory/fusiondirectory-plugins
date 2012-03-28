@@ -28,7 +28,8 @@ class argonautServer extends goService{
 
   /* This plugin only writes its objectClass */
   var $objectclasses    = array("argonautServer");
-  var $attributes       = array("argonautDeleteFinished","argonautPort");
+  var $attributes       = array("argonautDeleteFinished","argonautPort","argonautClientPort",
+                                "argonautWakeOnLanInterface","argonautIpTool","argonautLogDir");
   var $StatusFlag       = "argonautServerStatus";
 
   /* This class can't be assigned twice so it conflicts with itsself */
@@ -41,7 +42,11 @@ class argonautServer extends goService{
   var $view_logged  =FALSE;
   
   var $argonautDeleteFinished     = true;
-  var $argonautPort     = 8080;
+  var $argonautPort               = 8080;
+  var $argonautClientPort         = 8081;
+  var $argonautWakeOnLanInterface = "eth0";
+  var $argonautIpTool             = "/sbin/ifconfig";
+  var $argonautLogDir             = "/var/log/argonaut";
   
   var $argonautServerStatus = "";
 
@@ -63,8 +68,9 @@ class argonautServer extends goService{
     }
 
     $smarty->assign("argonautACL", $this->getacl("argonaut")) ;
-    $smarty->assign("argonautDeleteFinished" , $this->argonautDeleteFinished); 
-    $smarty->assign("argonautPort" , $this->argonautPort); 
+    foreach ($this->attributes as $attribute) {
+      $smarty->assign("$attribute" , $this->$attribute);
+    }
     return($smarty->fetch(get_template_path("argonautServer.tpl",TRUE,dirname(__FILE__))));
   }
 
@@ -126,8 +132,13 @@ class argonautServer extends goService{
         } else {
           $this->argonautDeleteFinished = false;
         }
-        if(isset($_POST['argonautPort'])) {
-          $this->argonautPort = $_POST['argonautPort'];
+        foreach ($this->attributes as $attribute) {
+          if($attribute=="argonautDeleteFinished") {
+            continue;
+          }
+          if(isset($_POST[$attribute])) {
+            $this->$attribute = $_POST[$attribute];
+          }
         }
       }
     }
