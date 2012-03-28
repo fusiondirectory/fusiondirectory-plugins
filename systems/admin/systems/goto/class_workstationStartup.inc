@@ -92,8 +92,9 @@ class workstartup extends plugin
     plugin::plugin ($config, $dn, $parent);
 
     /* Check for si daemon */
-    $this->si_active = $this->config->get_cfg_value("argonautServer") != "";
-
+    $o_queue = new supportDaemon();
+    $this->si_active = ($o_queue->get_argonaut_host() != "");
+    
     /* Check object group membership */
     if(!isset($this->parent->by_object['ogroup'])){
       $ldap = $this->config->get_ldap_link();
