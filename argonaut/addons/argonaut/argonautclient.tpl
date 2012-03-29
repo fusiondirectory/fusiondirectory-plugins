@@ -2,7 +2,9 @@
 <tr><td>
     <input type="checkbox" name="activateArgonaut" id="activateArgonaut" {if $activateArgonaut} checked="checked" {/if}
             onClick="javascript:
+{if $member_of_ogroup}
                     changeState('inheritArgonaut');
+{/if}
                     changeState('argonautClientPort');
                     changeState('argonautWakeOnLanInterface');
                     changeState('argonautTaskIdFile');"/>

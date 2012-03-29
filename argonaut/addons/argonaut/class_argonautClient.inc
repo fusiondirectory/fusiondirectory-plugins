@@ -35,6 +35,8 @@ class argonautClient extends plugin
   var $member_of_ogroup = FALSE;
   
   var $activateArgonaut = FALSE;
+  
+  var $ignore_account     = TRUE;
  
   function __construct(&$config,$dn,$parent)
   {
@@ -43,7 +45,9 @@ class argonautClient extends plugin
 
     if(is_object($parent) && $dn != "" && $dn != "new"){
       plugin::plugin($config,$dn,$parent);
-      $this->activateArgonaut = in_array("argonautClient",$this->attrs['objectClass']);
+      if(isset($this->attrs['objectClass'])) {
+        $this->activateArgonaut = in_array("argonautClient",$this->attrs['objectClass']);
+      }
     }
     
     if(!isset($this->parent->by_object['ogroup'])){
