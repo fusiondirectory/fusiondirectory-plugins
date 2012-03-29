@@ -11,9 +11,6 @@
   <td><label for="argonautPort">{t}Port :{/t}</label></td>
   <td><input id="argonautPort" name = "argonautPort" type="number" value="{$argonautPort}" /></td>
 </tr><tr>
-  <td><label for="argonautClientPort">{t}Client port :{/t}</label></td>
-  <td><input id="argonautClientPort" name = "argonautClientPort" type="number" value="{$argonautClientPort}" /></td>
-</tr><tr>
   <td><label for="argonautWakeOnLanInterface">{t}Interface for WakeOnLan :{/t}</label></td>
   <td><input id="argonautWakeOnLanInterface" name = "argonautWakeOnLanInterface" type="text" value="{$argonautWakeOnLanInterface}" /></td>
 </tr><tr>

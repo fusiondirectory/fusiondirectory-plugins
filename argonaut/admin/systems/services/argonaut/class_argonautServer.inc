@@ -28,7 +28,7 @@ class argonautServer extends goService{
 
   /* This plugin only writes its objectClass */
   var $objectclasses    = array("argonautServer");
-  var $attributes       = array("argonautDeleteFinished","argonautPort","argonautClientPort",
+  var $attributes       = array("argonautDeleteFinished","argonautPort",
                                 "argonautWakeOnLanInterface","argonautIpTool","argonautLogDir");
   var $StatusFlag       = "argonautServerStatus";
 
@@ -43,7 +43,6 @@ class argonautServer extends goService{
   
   var $argonautDeleteFinished     = true;
   var $argonautPort               = 8080;
-  var $argonautClientPort         = 8081;
   var $argonautWakeOnLanInterface = "eth0";
   var $argonautIpTool             = "/sbin/ifconfig";
   var $argonautLogDir             = "/var/log/argonaut";
@@ -86,7 +85,7 @@ class argonautServer extends goService{
 
   function save()
   {
-    plugin::save();
+    goService::save();
     $this->attrs['argonautDeleteFinished'] = ($this->argonautDeleteFinished?"TRUE":"FALSE"); // conversion from PHP format to LDAP boolean
     /* Check if this is a new entry ... add/modify */
     $ldap = $this->config->get_ldap_link();
