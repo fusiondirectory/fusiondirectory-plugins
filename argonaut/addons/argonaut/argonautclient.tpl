@@ -3,10 +3,11 @@
     <input type="checkbox" name="activateArgonaut" id="activateArgonaut" {if $activateArgonaut} checked="checked" {/if}
             onClick="javascript:
                     changeState('argonautClientPort');
-                    changeState('argonautWakeOnLanInterface');
+                    changeState('argonautClientWakeOnLanInterface');
+                    changeState('argonautClientLogDir');
                     changeState('argonautTaskIdFile');"/>
 {if $member_of_ogroup}
-    <label for="inheritArgonaut">{t}Inherit group informations{/t}</label>
+    <label for="activateArgonaut">{t}Inherit group informations{/t}</label>
 {else}
     <label for="activateArgonaut">{t}Activate argonaut on this workstation{/t}</label>
 {/if}
@@ -25,10 +26,10 @@
 </tr>
 <tr>
   <td>
-    <label for="argonautWakeOnLanInterface">{t}WakeOnLan interface:{/t}</label>
+    <label for="argonautClientWakeOnLanInterface">{t}WakeOnLan interface:{/t}</label>
   </td><td>
-    <input  type="text" name="argonautWakeOnLanInterface" id="argonautWakeOnLanInterface"
-            value="{$argonautWakeOnLanInterface}"
+    <input  type="text" name="argonautClientWakeOnLanInterface" id="argonautClientWakeOnLanInterface"
+            value="{$argonautClientWakeOnLanInterface}"
             {if !$activateArgonaut } disabled="disabled" {/if} />
   </td>
 </tr>
@@ -43,10 +44,10 @@
 </tr>
 <tr>
   <td>
-    <label for="argonautLogDir">{t}Log directory:{/t}</label>
+    <label for="argonautClientLogDir">{t}Log directory:{/t}</label>
   </td><td>
-    <input  type="text" name="argonautLogDir" id="argonautLogDir"
-            value="{$argonautLogDir}"
+    <input  type="text" name="argonautClientLogDir" id="argonautClientLogDir"
+            value="{$argonautClientLogDir}"
             {if !$activateArgonaut } disabled="disabled" {/if} />
   </td>
 </tr>

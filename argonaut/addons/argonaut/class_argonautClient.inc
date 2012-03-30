@@ -26,11 +26,11 @@ class argonautClient extends plugin
   var $config;
   
   var $objectclasses    = array("argonautClient");
-  var $attributes = array("argonautClientPort","argonautWakeOnLanInterface","argonautTaskIdFile","argonautLogDir");
-  var $argonautClientPort         = 8081;
-  var $argonautWakeOnLanInterface = "eth0";
-  var $argonautTaskIdFile         = "/tmp/argonaut";
-  var $argonautLogDir             = "/var/log/argonaut";
+  var $attributes = array("argonautClientPort","argonautClientWakeOnLanInterface","argonautTaskIdFile","argonautClientLogDir");
+  var $argonautClientPort               = 8081;
+  var $argonautClientWakeOnLanInterface = "eth0";
+  var $argonautTaskIdFile               = "/tmp/argonaut";
+  var $argonautClientLogDir             = "/var/log/argonaut";
 
   var $member_of_ogroup = FALSE;
   
