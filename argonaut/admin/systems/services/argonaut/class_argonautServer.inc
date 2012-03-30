@@ -85,7 +85,7 @@ class argonautServer extends goService{
 
   function save()
   {
-    goService::save();
+    plugin::save();
     $this->attrs['argonautDeleteFinished'] = ($this->argonautDeleteFinished?"TRUE":"FALSE"); // conversion from PHP format to LDAP boolean
     /* Check if this is a new entry ... add/modify */
     $ldap = $this->config->get_ldap_link();
