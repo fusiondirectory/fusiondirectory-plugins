@@ -579,6 +579,9 @@ class workgeneric extends plugin
     /* Write back to ldap */
     $ldap= $this->config->get_ldap_link();
     if ($this->orig_dn == 'new'){
+      if(empty($this->attrs['gotoNtpServer'])) {
+        unset($this->attrs['gotoNtpServer']);
+      }
       $ldap->cd($this->config->current['BASE']);
       $ldap->create_missing_trees(preg_replace('/^[^,]+,/', '', $this->dn));
       $ldap->cd($this->dn);
