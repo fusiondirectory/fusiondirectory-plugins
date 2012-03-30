@@ -43,7 +43,7 @@
 </tr>
 <tr>
   <td>
-    <label for="argonautLogDir">{t}TaskId file:{/t}</label>
+    <label for="argonautLogDir">{t}Log directory:{/t}</label>
   </td><td>
     <input  type="text" name="argonautLogDir" id="argonautLogDir"
             value="{$argonautLogDir}"
