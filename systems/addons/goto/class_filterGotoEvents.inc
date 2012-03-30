@@ -31,7 +31,7 @@ class filterGotoEvents extends  filterLDAP {
     /* Get tags that will be used in queue searches */
     $event_tags = array("none");
     foreach($events['SCHEDULED'] as $evt){
-      $event_tags[] = $evt['s_Queued_Action'];
+      $event_tags[] = $evt['s_Action'];
     }
 
     $entries = $o_queue->get_queued_entries($event_tags,0,9999999,"id");
