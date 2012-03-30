@@ -26,12 +26,11 @@ class argonautClient extends plugin
   var $config;
   
   var $objectclasses    = array("argonautClient");
-  var $attributes = array("argonautClientPort","argonautWakeOnLanInterface","argonautTaskIdFile","argonautLogDir","argonautClientInherit");
+  var $attributes = array("argonautClientPort","argonautWakeOnLanInterface","argonautTaskIdFile","argonautLogDir");
   var $argonautClientPort         = 8081;
   var $argonautWakeOnLanInterface = "eth0";
   var $argonautTaskIdFile         = "/tmp/argonaut";
   var $argonautLogDir             = "/var/log/argonaut";
-  var $argonautClientInherit      = FALSE;
 
   var $member_of_ogroup = FALSE;
   
@@ -58,12 +57,6 @@ class argonautClient extends plugin
       $this->member_of_ogroup = $ldap->count() >= 1;
     }
     
-    $this->argonautClientInherit = ($this->argonautClientInherit == "TRUE"); // conversion from LDAP format to PHP boolean
-    
-    if(!$this->member_of_ogroup) {
-      $this->argonautClientInherit = FALSE;
-    }
-
   }
 
 
@@ -75,7 +68,6 @@ class argonautClient extends plugin
     }
     $smarty->assign("member_of_ogroup", $this->member_of_ogroup) ;
     $smarty->assign("activateArgonaut", $this->activateArgonaut) ;
-    $smarty->assign("inheritArgonaut", $this->argonautClientInherit) ;
 
     $smarty->assign("argonautACL", $this->getacl("argonaut")) ;
     
@@ -91,13 +83,6 @@ class argonautClient extends plugin
       foreach ($this->attributes as $attribute) {
         $this->attrs[$attribute] = array();
       }
-    } else if($this->argonautClientInherit) {
-      foreach ($this->attributes as $attribute) {
-        $this->attrs[$attribute] = array();
-      }
-      $this->attrs['argonautClientInherit'] = "TRUE";
-    } else {
-      $this->attrs['argonautClientInherit'] = "FALSE";
     }
 
     /* Check if this is a new entry ... add/modify */
@@ -132,13 +117,8 @@ class argonautClient extends plugin
         } else {
           $this->activateArgonaut = false;
         }
-        if(isset($_POST['inheritArgonaut'])) {
-          $this->argonautClientInherit = true;
-        } else {
-          $this->argonautClientInherit = false;
-        }
         foreach ($this->attributes as $attribute) {
-          if(($attribute=="activateArgonaut")||($attribute=="inheritArgonaut")) {
+          if($attribute=="activateArgonaut") {
             continue;
           }
           if(isset($_POST[$attribute])) {

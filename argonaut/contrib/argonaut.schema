@@ -47,12 +47,6 @@ attributetype ( 1.3.6.1.4.1.38414.2.3.114 NAME 'argonautTaskIdFile'
 	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SINGLE-VALUE )
   
-attributetype ( 1.3.6.1.4.1.38414.2.3.115 NAME 'argonautClientInherit'
-	DESC 'Fusion Directory - Argonaut, inherit from group.'
-  EQUALITY booleanMatch
-  SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
-  SINGLE-VALUE )
-  
 attributetype ( 1.3.6.1.4.1.38414.2.3.109 NAME 'argonautServerStatus'
 	DESC 'Fusion Directory - Argonaut, server status container - on / off / fail'
 	EQUALITY caseExactIA5Match
@@ -63,11 +57,9 @@ attributetype ( 1.3.6.1.4.1.38414.2.3.109 NAME 'argonautServerStatus'
 objectclass ( 1.3.6.1.4.1.38414.2.4.57 NAME 'argonautServer'
   DESC 'An argonaut server'
   SUP top AUXILIARY 
-  MUST ( argonautPort $ argonautLogDir )
-  MAY ( argonautDeleteFinished $ argonautWakeOnLanInterface $ argonautIpTool $ argonautServerStatus ) )
+  MUST ( argonautPort $ argonautLogDir $ argonautDeleteFinished $ argonautWakeOnLanInterface $ argonautIpTool $ argonautServerStatus ) )
   
 objectclass ( 1.3.6.1.4.1.38414.2.4.58 NAME 'argonautClient'
   DESC 'An argonaut server'
   SUP top AUXILIARY 
-  MUST ( argonautClientInherit )
-  MAY ( argonautClientPort $ argonautTaskIdFile $ argonautWakeOnLanInterface $ argonautLogDir ) )
+  MUST ( argonautClientPort $ argonautTaskIdFile $ argonautWakeOnLanInterface $ argonautLogDir ) )
