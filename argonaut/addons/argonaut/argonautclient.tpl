@@ -49,5 +49,14 @@
             {if !$activateArgonaut or $inheritArgonaut} disabled="disabled" {/if} />
   </td>
 </tr>
+<tr>
+  <td>
+    <label for="argonautLogDir">{t}TaskId file:{/t}</label>
+  </td><td>
+    <input  type="text" name="argonautLogDir" id="argonautLogDir"
+            value="{$argonautLogDir}"
+            {if !$activateArgonaut or $inheritArgonaut} disabled="disabled" {/if} />
+  </td>
+</tr>
 </table>
 <input type="hidden" name="argonautClientPosted" value="1">
