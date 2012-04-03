@@ -64,7 +64,77 @@ attributetype ( 1.3.6.1.4.1.38414.2.3.109 NAME 'argonautServerStatus'
 	EQUALITY caseExactIA5Match
 	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
 	SINGLE-VALUE)
-
+  
+attributetype ( 1.3.6.1.4.1.38414.2.3.118 NAME 'argonautCrawlerMirrorDir'
+	DESC 'Fusion Directory - Argonaut, crawler mirror directory.'
+	EQUALITY caseExactIA5Match
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE )
+  
+attributetype ( 1.3.6.1.4.1.38414.2.3.119 NAME 'argonautCrawlerArch'
+	DESC 'Fusion Directory - Argonaut, crawler arch.'
+	EQUALITY caseExactIA5Match
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 )
+  
+attributetype ( 1.3.6.1.4.1.38414.2.3.120 NAME 'argonautCrawlerPackagesFolder'
+	DESC 'Fusion Directory - Argonaut, crawler packages folder.'
+	EQUALITY caseExactIA5Match
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE )
+  
+attributetype ( 1.3.6.1.4.1.38414.2.3.122 NAME 'argonautLdap2repMirrorDir'
+	DESC 'Fusion Directory - Argonaut, ldap2rep mirror directory.'
+	EQUALITY caseExactIA5Match
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE )
+  
+attributetype ( 1.3.6.1.4.1.38414.2.3.123 NAME 'argonautLdap2repArch'
+	DESC 'Fusion Directory - Argonaut, ldap2rep arch.'
+	EQUALITY caseExactIA5Match
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 )
+  
+attributetype ( 1.3.6.1.4.1.38414.2.3.124 NAME 'argonautLdap2repProxy'
+	DESC 'Fusion Directory - Argonaut, ldap2rep proxy.'
+	EQUALITY caseExactIA5Match
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE )
+  
+attributetype ( 1.3.6.1.4.1.38414.2.3.125 NAME 'argonautLdap2repCleanup'
+	DESC 'Fusion Directory - Argonaut, ldap2rep cleanup.'
+  EQUALITY booleanMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
+  SINGLE-VALUE )
+  
+attributetype ( 1.3.6.1.4.1.38414.2.3.126 NAME 'argonautLdap2repErrors'
+	DESC 'Fusion Directory - Argonaut, ldap2rep errors.'
+  EQUALITY booleanMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
+  SINGLE-VALUE )
+  
+attributetype ( 1.3.6.1.4.1.38414.2.3.127 NAME 'argonautLdap2repSource'
+	DESC 'Fusion Directory - Argonaut, ldap2rep source.'
+  EQUALITY booleanMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
+  SINGLE-VALUE )
+  
+attributetype ( 1.3.6.1.4.1.38414.2.3.128 NAME 'argonautLdap2repGPGCheck'
+	DESC 'Fusion Directory - Argonaut, ldap2rep GPG check.'
+  EQUALITY booleanMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
+  SINGLE-VALUE )
+  
+attributetype ( 1.3.6.1.4.1.38414.2.3.129 NAME 'argonautLdap2repContents'
+	DESC 'Fusion Directory - Argonaut, ldap2rep contents.'
+  EQUALITY booleanMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
+  SINGLE-VALUE )
+  
+attributetype ( 1.3.6.1.4.1.38414.2.3.130 NAME 'argonautLdap2repVerbose'
+	DESC 'Fusion Directory - Argonaut, ldap2rep verbose.'
+  EQUALITY booleanMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
+  SINGLE-VALUE )
+  
 # Object Class
 objectclass ( 1.3.6.1.4.1.38414.2.4.57 NAME 'argonautServer'
   DESC 'An argonaut server'
@@ -76,3 +146,12 @@ objectclass ( 1.3.6.1.4.1.38414.2.4.58 NAME 'argonautClient'
   DESC 'An argonaut client'
   SUP top AUXILIARY 
   MUST ( argonautClientPort $ argonautTaskIdFile $ argonautClientWakeOnLanInterface $ argonautClientLogDir ) )
+  
+objectclass ( 1.3.6.1.4.1.38414.2.4.59 NAME 'argonautConfig'
+  DESC 'An argonaut config for debconf-crawler and ldap2repositry'
+  SUP top AUXILIARY 
+  MUST (  argonautCrawlerMirrorDir $ argonautCrawlerArch $ argonautCrawlerPackagesFolder $ 
+          argonautLdap2repArch $ argonautLdap2repMirrorDir $ 
+          argonautLdap2repCleanup $ argonautLdap2repErrors $ argonautLdap2repSource $ argonautLdap2repGPGCheck $ 
+          argonautLdap2repContents $ argonautLdap2repVerbose ) 
+  MAY ( argonautLdap2repProxy ) )
