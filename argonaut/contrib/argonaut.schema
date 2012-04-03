@@ -65,14 +65,14 @@ attributetype ( 1.3.6.1.4.1.38414.2.3.109 NAME 'argonautServerStatus'
 	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
 	SINGLE-VALUE)
   
-attributetype ( 1.3.6.1.4.1.38414.2.3.118 NAME 'argonautCrawlerMirrorDir'
-	DESC 'Fusion Directory - Argonaut, crawler mirror directory.'
+attributetype ( 1.3.6.1.4.1.38414.2.3.118 NAME 'argonautMirrorDir'
+	DESC 'Fusion Directory - Argonaut, mirror directory.'
 	EQUALITY caseExactIA5Match
 	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SINGLE-VALUE )
   
-attributetype ( 1.3.6.1.4.1.38414.2.3.119 NAME 'argonautCrawlerArch'
-	DESC 'Fusion Directory - Argonaut, crawler arch.'
+attributetype ( 1.3.6.1.4.1.38414.2.3.119 NAME 'argonautMirrorArch'
+	DESC 'Fusion Directory - Argonaut, mirror archs.'
 	EQUALITY caseExactIA5Match
 	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 )
   
@@ -81,17 +81,6 @@ attributetype ( 1.3.6.1.4.1.38414.2.3.120 NAME 'argonautCrawlerPackagesFolder'
 	EQUALITY caseExactIA5Match
 	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SINGLE-VALUE )
-  
-attributetype ( 1.3.6.1.4.1.38414.2.3.122 NAME 'argonautLdap2repMirrorDir'
-	DESC 'Fusion Directory - Argonaut, ldap2rep mirror directory.'
-	EQUALITY caseExactIA5Match
-	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
-  SINGLE-VALUE )
-  
-attributetype ( 1.3.6.1.4.1.38414.2.3.123 NAME 'argonautLdap2repArch'
-	DESC 'Fusion Directory - Argonaut, ldap2rep arch.'
-	EQUALITY caseExactIA5Match
-	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 )
   
 attributetype ( 1.3.6.1.4.1.38414.2.3.124 NAME 'argonautLdap2repProxy'
 	DESC 'Fusion Directory - Argonaut, ldap2rep proxy.'
@@ -150,8 +139,7 @@ objectclass ( 1.3.6.1.4.1.38414.2.4.58 NAME 'argonautClient'
 objectclass ( 1.3.6.1.4.1.38414.2.4.59 NAME 'argonautConfig'
   DESC 'An argonaut config for debconf-crawler and ldap2repositry'
   SUP top AUXILIARY 
-  MUST (  argonautCrawlerMirrorDir $ argonautCrawlerArch $ argonautCrawlerPackagesFolder $ 
-          argonautLdap2repArch $ argonautLdap2repMirrorDir $ 
+  MUST (  argonautMirrorDir $ argonautMirrorArch $ argonautCrawlerPackagesFolder $ 
           argonautLdap2repCleanup $ argonautLdap2repErrors $ argonautLdap2repSource $ argonautLdap2repGPGCheck $ 
           argonautLdap2repContents $ argonautLdap2repVerbose ) 
   MAY ( argonautLdap2repProxy ) )

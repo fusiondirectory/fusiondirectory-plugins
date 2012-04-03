@@ -28,9 +28,8 @@ class argonautConfig extends goService{
 
   /* This plugin only writes its objectClass */
   var $objectclasses    = array("argonautConfig");
-  var $attributes       = array("argonautCrawlerMirrorDir","argonautCrawlerArch",
+  var $attributes       = array("argonautMirrorDir","argonautMirrorArch",
                                 "argonautCrawlerPackagesFolder",
-                                "argonautLdap2repMirrorDir","argonautLdap2repArch",
                                 "argonautLdap2repProxy",
                                 "argonautLdap2repCleanup","argonautLdap2repErrors",
                                 "argonautLdap2repSource","argonautLdap2repGPGCheck",
@@ -46,9 +45,9 @@ class argonautConfig extends goService{
   var $cn               = "";
   var $view_logged      = FALSE;
   
-  var $argonautCrawlerMirrorDir       = "/srv/www/debian";              // Where is you local debian mirror 
+  var $argonautMirrorDir              = "/srv/www/debian";              // Where is you local debian mirror 
+  var $argonautMirrorArch             = array("i386");                  // What is the architecture needed (can be multivaluated)
   var $argonautCrawlerInterface       = "eth0";                         // The network interface where the crawler is listening
-  var $argonautCrawlerArch            = array("i386");                  // What is the architecture needed (can be multivaluated)
   var $argonautCrawlerPackagesFolder  = "/var/cache/argonaut/packages"; // Where is stored the result produced by the crawler
   
   var $argonautLdap2repInterface      = "eth0";
@@ -74,13 +73,9 @@ class argonautConfig extends goService{
       $this->$ldapBoolean = ($this->$ldapBoolean == "TRUE"); // conversion from LDAP format to PHP boolean
     }
     /* Load arrays */
-    if (isset($this->attrs['argonautCrawlerArch'])){
-      unset($this->attrs['argonautCrawlerArch']['count']);
-      $this->argonautCrawlerArch = $this->attrs['argonautCrawlerArch'];
-    }
-    if (isset($this->attrs['argonautLdap2repArch'])){
-      unset($this->attrs['argonautLdap2repArch']['count']);
-      $this->argonautLdap2repArch = $this->attrs['argonautLdap2repArch'];
+    if (isset($this->attrs['argonautMirrorArch'])){
+      unset($this->attrs['argonautMirrorArch']['count']);
+      $this->argonautMirrorArch = $this->attrs['argonautMirrorArch'];
     }
   }
 
@@ -100,9 +95,9 @@ class argonautConfig extends goService{
       $smarty->assign("$attribute" , $this->$attribute);
       $attributes[$attribute] = $this->$attribute;
     }
-    $attributes['argonautCrawlerArch'] = implode($this->argonautCrawlerArch,",");
-    $attributes['argonautLdap2repArch'] = implode($this->argonautLdap2repArch,",");
+    $attributes['argonautMirrorArch'] = implode($this->argonautMirrorArch,",");
     $smarty->assign("attributes" , $attributes);
+    $smarty->assign("crawlerIndice" , 2);
     $smarty->assign("ldapIndice" , 3);
     $smarty->assign("booleans" , $this->ldapBooleans);
     return($smarty->fetch(get_template_path("argonautConfig.tpl",TRUE,dirname(__FILE__))));
@@ -170,7 +165,7 @@ class argonautConfig extends goService{
           if(in_array($attribute,$this->ldapBooleans)) {
             continue;
           } else if(isset($_POST[$attribute])) {
-            if( $attribute=="argonautCrawlerArch" || $attribute=="argonautLdap2repArch" ) {
+            if( $attribute=="argonautMirrorArch" ) {
               $this->$attribute = preg_split("/[\s,;]+/", $_POST[$attribute]);
             } else {
               $this->$attribute = $_POST[$attribute];

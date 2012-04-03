@@ -1,23 +1,21 @@
 <br/>
 {render acl=$argonautConfigACL}
 <table>
-<tr><td colspan="2"><h3>Argonaut Debconf Crawler config:</h3></td></tr>
+<tr><td colspan="2"><h3>Argonaut config:</h3></td></tr>
 {foreach from=$attributes key=key item=value name=loop}
-{if $smarty.foreach.loop.index == $ldapIndice}
+{if $smarty.foreach.loop.index == $crawlerIndice}
+<tr><td colspan="2"><br/><h3>Argonaut Debconf Crawler config:</h3></td></tr>
+{elseif $smarty.foreach.loop.index == $ldapIndice}
 <tr><td colspan="2"><br/><h3>Argonaut Ldap2repository config:</h3></td></tr>
 {/if}
 <tr>
   <td><label for="{$key}">
-  {if $key=='argonautCrawlerMirrorDir'}
+  {if $key=='argonautMirrorDir'}
     {t}Local debian mirror directory{/t}
-  {elseif $key=='argonautCrawlerArch'}
+  {elseif $key=='argonautMirrorArch'}
     {t}Architectures needed{/t}
   {elseif $key=='argonautCrawlerPackagesFolder'}
-    {t}Packages folder{/t}
-  {elseif $key=='argonautLdap2repMirrorDir'}
-    {t}Mirror directory{/t}
-  {elseif $key=='argonautLdap2repArch'}
-    {t}Architectures{/t}
+    {t}Local packages folder{/t}
   {elseif $key=='argonautLdap2repProxy'}
     {t}Proxy{/t}
   {elseif $key=='argonautLdap2repCleanup'}
