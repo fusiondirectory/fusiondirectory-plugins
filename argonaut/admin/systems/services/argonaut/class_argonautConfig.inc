@@ -33,7 +33,10 @@ class argonautConfig extends goService{
                                 "argonautLdap2repProxy",
                                 "argonautLdap2repCleanup","argonautLdap2repErrors",
                                 "argonautLdap2repSource","argonautLdap2repGPGCheck",
-                                "argonautLdap2repContents","argonautLdap2repVerbose");
+                                "argonautLdap2repContents","argonautLdap2repVerbose",
+                                "argonautLdap2zoneBindDir","argonautLdap2zoneAllowNotify",
+                                "argonautLdap2zoneAllowUpdate","argonautLdap2zoneAllowTransfer",
+                                "argonautLdap2zoneTTL");
   var $StatusFlag       = "";
 
   /* This class can't be assigned twice so it conflicts with itsself */
@@ -47,12 +50,9 @@ class argonautConfig extends goService{
   
   var $argonautMirrorDir              = "/srv/www/debian";              // Where is you local debian mirror 
   var $argonautMirrorArch             = array("i386");                  // What is the architecture needed (can be multivaluated)
-  var $argonautCrawlerInterface       = "eth0";                         // The network interface where the crawler is listening
+
   var $argonautCrawlerPackagesFolder  = "/var/cache/argonaut/packages"; // Where is stored the result produced by the crawler
   
-  var $argonautLdap2repInterface      = "eth0";
-  var $argonautLdap2repArch           = "i386";
-  var $argonautLdap2repMirrorDir      = "/srv/www/debian";
   var $argonautLdap2repProxy          = "";
   var $argonautLdap2repCleanup        = FALSE;
   var $argonautLdap2repErrors         = TRUE;
@@ -61,9 +61,16 @@ class argonautConfig extends goService{
   var $argonautLdap2repContents       = FALSE;
   var $argonautLdap2repVerbose        = FALSE;
   
-  var $ldapBooleans     = array("argonautLdap2repCleanup","argonautLdap2repErrors",
-                                "argonautLdap2repSource","argonautLdap2repGPGCheck",
-                                "argonautLdap2repContents","argonautLdap2repVerbose");
+  var $argonautLdap2zoneBindDir       = "/etc/bind";
+  var $argonautLdap2zoneAllowNotify   = FALSE;
+  var $argonautLdap2zoneAllowUpdate   = "";
+  var $argonautLdap2zoneAllowTransfer = "";
+  var $argonautLdap2zoneTTL           = 500;
+  
+  var $ldapBooleans     = array("argonautLdap2repCleanup",  "argonautLdap2repErrors",
+                                "argonautLdap2repSource",   "argonautLdap2repGPGCheck",
+                                "argonautLdap2repContents", "argonautLdap2repVerbose",
+                                "argonautLdap2zoneAllowNotify");
   
   function argonautConfig(&$config,$dn)
   {
@@ -98,7 +105,8 @@ class argonautConfig extends goService{
     $attributes['argonautMirrorArch'] = implode($this->argonautMirrorArch,",");
     $smarty->assign("attributes" , $attributes);
     $smarty->assign("crawlerIndice" , 2);
-    $smarty->assign("ldapIndice" , 3);
+    $smarty->assign("ldap2repIndice" , 3);
+    $smarty->assign("ldap2zoneIndice" , 10);
     $smarty->assign("booleans" , $this->ldapBooleans);
     return($smarty->fetch(get_template_path("argonautConfig.tpl",TRUE,dirname(__FILE__))));
   }

@@ -5,15 +5,17 @@
 {foreach from=$attributes key=key item=value name=loop}
 {if $smarty.foreach.loop.index == $crawlerIndice}
 <tr><td colspan="2"><br/><h3>Argonaut Debconf Crawler config:</h3></td></tr>
-{elseif $smarty.foreach.loop.index == $ldapIndice}
+{elseif $smarty.foreach.loop.index == $ldap2repIndice}
 <tr><td colspan="2"><br/><h3>Argonaut Ldap2repository config:</h3></td></tr>
+{elseif $smarty.foreach.loop.index == $ldap2zoneIndice}
+<tr><td colspan="2"><br/><h3>Argonaut Ldap2zone config:</h3></td></tr>
 {/if}
 <tr>
   <td><label for="{$key}">
   {if $key=='argonautMirrorDir'}
     {t}Local debian mirror directory{/t}
   {elseif $key=='argonautMirrorArch'}
-    {t}Architectures needed{/t}
+    {t}Architectures needed (comma or semicolon separated){/t}
   {elseif $key=='argonautCrawlerPackagesFolder'}
     {t}Local packages folder{/t}
   {elseif $key=='argonautLdap2repProxy'}
@@ -30,6 +32,16 @@
     {t}Contents{/t}
   {elseif $key=='argonautLdap2repVerbose'}
     {t}Verbose{/t}
+  {elseif $key=='argonautLdap2zoneBindDir'}
+    {t}Bind directory{/t}
+  {elseif $key=='argonautLdap2zoneAllowNotify'}
+    {t}Allow notify{/t}
+  {elseif $key=='argonautLdap2zoneAllowUpdate'}
+    {t}Allow update (semicolon separated and ended){/t}
+  {elseif $key=='argonautLdap2zoneAllowTransfer'}
+    {t}Allow transfer (semicolon separated and ended){/t}
+  {elseif $key=='argonautLdap2zoneTTL'}
+    {t}TTL{/t}
   {/if}
   </label></td>
   <td><input id="{$key}" name="{$key}" 
