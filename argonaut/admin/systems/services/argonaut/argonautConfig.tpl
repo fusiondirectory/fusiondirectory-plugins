@@ -42,6 +42,8 @@
     {t}Allow transfer (semicolon separated and ended){/t}
   {elseif $key=='argonautLdap2zoneTTL'}
     {t}TTL{/t}
+  {elseif $key=='argonautLdap2zoneRndc'}
+    {t}rndc path{/t}
   {/if}
   </label></td>
   <td><input id="{$key}" name="{$key}" 

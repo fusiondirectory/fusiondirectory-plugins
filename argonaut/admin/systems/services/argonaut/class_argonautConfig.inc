@@ -36,7 +36,7 @@ class argonautConfig extends goService{
                                 "argonautLdap2repContents","argonautLdap2repVerbose",
                                 "argonautLdap2zoneBindDir","argonautLdap2zoneAllowNotify",
                                 "argonautLdap2zoneAllowUpdate","argonautLdap2zoneAllowTransfer",
-                                "argonautLdap2zoneTTL");
+                                "argonautLdap2zoneTTL","argonautLdap2zoneRndc");
   var $StatusFlag       = "";
 
   /* This class can't be assigned twice so it conflicts with itsself */
@@ -66,6 +66,7 @@ class argonautConfig extends goService{
   var $argonautLdap2zoneAllowUpdate   = "";
   var $argonautLdap2zoneAllowTransfer = "";
   var $argonautLdap2zoneTTL           = 500;
+  var $argonautLdap2zoneRndc          = "/usr/sbin/rndc";
   
   var $ldapBooleans     = array("argonautLdap2repCleanup",  "argonautLdap2repErrors",
                                 "argonautLdap2repSource",   "argonautLdap2repGPGCheck",
