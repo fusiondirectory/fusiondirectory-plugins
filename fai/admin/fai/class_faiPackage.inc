@@ -263,7 +263,7 @@ class faiPackage extends plugin
           foreach ($valid_packages as $value) {
             
             if( $do_si_query == true ) {
-              $res = $daemon->FAI_get_packages($this->FAIdebianRelease,$query_attrs,array("^".$value."$"),0,1);
+              $res = $daemon->FAI_get_packages($this->FAIdebianRelease,$query_attrs,array($value),0,1,true);
               if( ! $daemon->is_error()){
                 
                 if(count($res)){
@@ -581,10 +581,10 @@ class faiPackage extends plugin
 
       $packages = array();
       foreach (array_keys($this->usedPackages) as $packagename) {
-        $packages[] = "^".$packagename."$";
+        $packages[] = $packagename;
       }
 
-      $ret = $q->FAI_get_packages($this->FAIdebianRelease,$attrs,$packages);
+      $ret = $q->FAI_get_packages($this->FAIdebianRelease,$attrs,$packages,-1,-1,true);
       if($q->is_error()){
         msg_dialog::display(_("Service infrastructure"),msgPool::siError($q->get_error()),ERROR_DIALOG);
       }else{
