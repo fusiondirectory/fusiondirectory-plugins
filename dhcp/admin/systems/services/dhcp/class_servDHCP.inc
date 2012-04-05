@@ -583,7 +583,7 @@ class servdhcp extends goService
           }
 
           /* Optionally execute a command after we're done */
-          $this->handle_post_events("create");
+          $this->handle_post_events("add");
         }
       }
     }
