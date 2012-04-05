@@ -107,9 +107,13 @@ class novaUser extends plugin
     }
 
     /* Show tab dialog headers */
-    if ($this->parent !== NULL && !$this->is_account){
+    if ($this->parent !== NULL) {
+      if (!$this->is_account) {
         $display= $this->show_enable_header(msgPool::addFeaturesButton(_("novaUser")), msgPool::featuresDisabled(_("novaUser")));
         return($display);
+      } else {
+        $display= $this->show_disable_header(msgPool::removeFeaturesButton(_("novaUser")), msgPool::featuresEnabled(_("novaUser")));
+      }
     }
 
     /* Assign acls */
@@ -214,6 +218,34 @@ class novaUser extends plugin
   /* hook for working synchronization */
   function remove_from_parent()
   {
+    /* Cancel if there's nothing to do here */
+    if ((!$this->initially_was_account) || (!$this->acl_is_removeable())){
+      return;
+    }
+
+    /* Remove and write to LDAP */
+    plugin::remove_from_parent();
+
+    $this->attrs['isNovaAdmin'] = array();
+    $this->attrs['accessKey'] = array();
+    $this->attrs['secretKey'] = array();
+
+    @DEBUG (DEBUG_LDAP, __LINE__, __FUNCTION__, __FILE__,
+    /* include global link_info */
+     $this->attributes, "Save");
+    $ldap= $this->config->get_ldap_link();
+    $ldap->cd($this->dn);
+    $this->cleanup();
+    $ldap->modify ($this->attrs); 
+
+    new log("remove","users/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
+
+    if (!$ldap->success()){
+      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_DEL, get_class()));
+    }
+    
+    /* Optionally execute a command after we're done */
+    $this->handle_post_events("remove",array("uid" => $this->uid));
     return;
   }
 
