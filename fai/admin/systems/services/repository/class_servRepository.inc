@@ -317,6 +317,7 @@ class servrepository extends goService
     plugin::save();
 
     $arr = array();
+    $releases = array();
     foreach($this->repositories as $servername => $conf){
       $str = "";
       foreach($conf['Sections'] as $sec){
@@ -329,6 +330,7 @@ class servrepository extends goService
       }    
     
       $arr[]=$conf['Url']."|".$conf['ParentServer']."|".$conf['Release']."|".$str."|".$conf['Install']."|".$conf['Local'];
+      $releases[] = $conf['Release'];
     }
     $this->attrs['FAIrepository'] = $arr;
 
@@ -349,6 +351,30 @@ class servrepository extends goService
       $ldap->cd($this->dn);
       $ldap->add($this->attrs);
       $this->handle_post_events("add");
+    }
+    $ldap->cd ($this->config->current['BASE']);
+    
+    // Check if FAI branch is here
+    $fai = get_ou("faiBaseRDN").$this->config->current['BASE'];
+    $ldap->cat($fai, array('dn'));
+    if(!$ldap->count()){
+      $ldap->cd ($this->config->current['BASE']);
+      $ldap->create_missing_trees($fai);
+      if (!$ldap->success()){
+        msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_MOD, get_class()));
+      }
+    }
+    
+    foreach ($releases as $release) {
+      $dn = "ou=$release,$fai";
+      $ldap->cat($dn, array('dn'));
+      if(!$ldap->count()){
+        $ldap->cd ($fai);
+        $ldap->add(array('objectClass' => array('organizationalUnit','FAIbranch'), 'ou' => $release));
+        if (!$ldap->success()){
+          msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_MOD, get_class()));
+        }
+      }
     }
 
     if($this->initially_was_account){
