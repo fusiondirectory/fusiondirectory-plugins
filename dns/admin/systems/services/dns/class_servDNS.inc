@@ -246,6 +246,19 @@ class servdns extends goService
          */ 
         $this->RemoveZone($tmp); 
       }
+
+      /* check posts for ldap2zone 
+       */
+      if(preg_match("/^ldap2Zone_/",$name)&&!$once){
+
+        $once =true;
+        $tmp = preg_replace("/^ldap2Zone_/","",$name);
+        $tmp = base64_decode(preg_replace("/_.*$/","",$tmp));
+     
+        /* Initiate deletion
+         */ 
+        $this->Ldap2Zone($tmp); 
+      }
     }
 
     if(isset($_GET['act']) && $_GET['act'] == "edit" && isset($_GET['id'])){
@@ -277,10 +290,11 @@ class servdns extends goService
 
     /* Add entries to divlist
      */
-    $editImg = "<input type='image' src='images/lists/edit.png' name='editZone_%s'>";
+    $editImg = "<input type='image' src='images/lists/edit.png' name='editZone_%s' alt='edit' title='edit'>";
     if($this->acl_is_removeable()){
-      $editImg.= "<input type='image' src='images/lists/trash.png' name='delZone_%s'>";
+      $editImg.= "<input type='image' src='images/lists/trash.png' name='delZone_%s' alt='delete' title='delete'>";
     }
+    $editImg.= "<input type='image' src='images/lists/reload.png' name='ldap2Zone_%s' alt='ldap2zone' title='ldap2zone'>";
 
     $link = "<a href='?plug=".$_GET['plug']."&act=edit&id=%s'>%s</a>";
     foreach($this->Zones as $zone => $values ){
@@ -359,6 +373,23 @@ class servdns extends goService
       return(true);
     }
   } 
+  
+  /* This funtion calls ldap2zone
+   */
+  function Ldap2Zone($zone)
+  {
+    $o_queue = new supportDaemon();
+    if ($o_queue->is_error()) {
+      msg_dialog::display(_("Error"), sprintf(_("Was not able to contact argonaut server: %s"), "<br/><br/>".$o_queue->get_error()), ERROR_DIALOG);
+    } else {
+      $o_queue->append_call("ldap2zone",
+                            array($this->attrs['macAddress'][0]),
+                            array("args"=>array($zone)));
+      if ($o_queue->is_error()) {
+        msg_dialog::display(_("Error"), sprintf(_("Was not able to launch ldap2zone: %s"), "<br/><br/>".$o_queue->get_error()), ERROR_DIALOG);
+      }
+    }
+  }
 
 
   /* This funtion returns all used Zonenames 
