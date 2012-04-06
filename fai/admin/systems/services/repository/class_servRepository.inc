@@ -361,7 +361,7 @@ class servrepository extends goService
       $ldap->cd ($this->config->current['BASE']);
       $ldap->create_missing_trees($fai);
       if (!$ldap->success()){
-        msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_MOD, get_class()));
+        msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $fai, LDAP_ADD, get_class()));
       }
     }
     
@@ -369,10 +369,10 @@ class servrepository extends goService
       $dn = "ou=$release,$fai";
       $ldap->cat($dn, array('dn'));
       if(!$ldap->count()){
-        $ldap->cd ($fai);
+        $ldap->cd ($dn);
         $ldap->add(array('objectClass' => array('organizationalUnit','FAIbranch'), 'ou' => $release));
         if (!$ldap->success()){
-          msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_MOD, get_class()));
+          msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_ADD, get_class()));
         }
       }
     }
