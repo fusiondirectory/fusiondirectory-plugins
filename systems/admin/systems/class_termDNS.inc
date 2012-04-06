@@ -824,18 +824,18 @@ class termDNS extends plugin
         if(($this->initial_dhcpParentNode != $this->dhcpParentNode) || 
            ($this->cn != $this->OrigCn)){
           $attrs = $this->dhcpHostEntry;
-          $attrs[$this->namingAttr] = $this->cn;
+          $attrs['cn'] = $this->cn;
           unset($attrs['dn']);
           unset($attrs['MODIFIED']);
           $ldap->cd("cn=".$this->cn.",".$this->dhcpParentNode);
           $res = $ldap->add($attrs);
-
-          $tmp = new servdhcp($this->config,$this->dhcpParentNode);
-          $tmp->handle_post_events("modify");
-
           if (!$ldap->success()){
             msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), "cn=".$this->cn.",".$this->dhcpParentNode, LDAP_ADD, get_class()));
           }
+
+          $tmp = new servdhcp($this->config,$this->dhcpParentNode);
+          $tmp->handle_post_events("modify");
+          
           if($res){
             $ldap->rmdir_recursive($this->dhcpHostEntry['dn']);
             if (!$ldap->success()){
