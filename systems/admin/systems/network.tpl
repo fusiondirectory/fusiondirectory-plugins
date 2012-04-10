@@ -110,12 +110,13 @@
 
                 <input type="checkbox" name="DNS_is_account" id="DNS_is_account" value="1" checked="checked" 
                     {if $hide_dns_check_box}disabled
-                    {else}onclick="$('test2').toggle(); $('propose_ip').toggle();"{/if}
+                    {else}onclick="$('reloadThisDNSStuff').toggle();$('test2').toggle(); $('propose_ip').toggle();"{/if}
                 />
 
             {else}
                 <input type="checkbox" name="DNS_is_account" id="DNS_is_account" value="1"
                     onclick="
+                    $('reloadThisDNSStuff').toggle();
                     $('test2').toggle();
                     $('propose_ip').toggle();
                 "/>
@@ -123,7 +124,11 @@
         {/render}
 
       <label for="DNS_is_account">{t}Enable DNS for this device{/t}</label>
-      <input type='image' src='images/lists/reload.png' class='center' name="reloadThisDNSStuff" >
+      <input type='image' src='images/lists/reload.png' class='center' name="reloadThisDNSStuff" id="reloadThisDNSStuff" value="reload"
+      {if $DNS_is_account != true}
+       style="display: none;"
+      {/if}
+       />
       {if $DNS_is_account == true}
       <div style="padding-left:20px" id="test2">
       {else}

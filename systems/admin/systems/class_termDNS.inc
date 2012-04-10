@@ -582,6 +582,20 @@ class termDNS extends plugin
             $this->dnsEntry[$attr] = get_post($attr);
           }
         }
+        if(isset($_POST['reloadThisDNSStuff'])) {
+          $o_queue = new supportDaemon();
+          if ($o_queue->is_error()) {
+            msg_dialog::display(_("Error"), sprintf(_("Was not able to contact argonaut server: %s"), "<br/><br/>".$o_queue->get_error()), ERROR_DIALOG);
+          } else {
+            $zone = substr(strrchr($this->dnsEntry['zoneName'], "/"), 1);
+            $o_queue->append_call("ldap2zone",
+                                  array($this->attrs['macAddress'][0]),
+                                  array("args"=>array($zone)));
+            if ($o_queue->is_error()) {
+              msg_dialog::display(_("Error"), sprintf(_("Was not able to launch ldap2zone: %s"), "<br/><br/>".$o_queue->get_error()), ERROR_DIALOG);
+            }
+          }
+        }
       }
       if($this->hide_dns_check_box){
         $this->DNS_is_account = true;
