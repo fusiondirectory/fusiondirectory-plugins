@@ -21,27 +21,26 @@
 
 /* Remove classes and variables from session
  */
-if ( $cleanup ){
+if ($cleanup) {
   session::un_set('addressbook');
-
-}else{
-
+} else {
   /* Create phonelist object on demand */
-  if (!session::is_set('addressbook')){
+  if (!session::is_set('addressbook')) {
     $addressbook = new addressbook ($config);
-    $addressbook -> set_acl_base($ui->dn);
-    $addressbook -> set_acl_category("addressbook");
+    $addressbook->set_acl_base($ui->dn);
+    $addressbook->set_acl_category("addressbook");
     session::set('addressbook',$addressbook);
     session::un_set('show_info');
   }
   $addressbook= session::get('addressbook');
 
   /* Execute formular */
-  $display= $addressbook->execute ();
-  $display.= "<input type=\"hidden\" name=\"ignore\">\n";
+  $display = $addressbook->execute();
+  $display .= "<input type=\"hidden\" name=\"ignore\">\n";
 
   /* Page header*/
-  $display= print_header(get_template_path('plugins/addressbook/images/plugin.png'), _("Addressbook")).$display;
+  $display = print_header(get_template_path('plugins/addressbook/images/plugin.png'),
+                          _("Addressbook")).$display;
 
   /* Store changes  in session */
   session::set('addressbook',$addressbook);
