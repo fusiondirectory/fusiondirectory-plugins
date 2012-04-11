@@ -32,7 +32,7 @@ class conference extends plugin
   var $old_cn     = "";
 
   var $goFonConferenceOption    = "";
-  var $goFonConferenceOption_P  = "";   // Set PIN 
+  var $goFonConferenceOption_P  = "";   // Set PIN
   var $goFonConferenceOption_r  = "";   // record Conference
   var $goFonConferenceOption_M  = "";   // Play Music opn hold
   var $goFonConferenceOption_s  = "";   // activate menu
@@ -86,7 +86,7 @@ class conference extends plugin
      */
     $a_SETUP= array();
     $config = session::get('config');
-    if(isset($config->data['SERVERS']['FON']) && is_callable("mysql_connect")) {
+    if(isset($config->data['SERVERS']['FON'])) {
 
       /* Set available server */
       $this->goFonHomeServers = $config->data['SERVERS']['FON'];
@@ -106,7 +106,7 @@ class conference extends plugin
         $this->goFonHomeServer = $this->goFonHomeServers[0]['DN'];
         $this->init_HomeServer = $this->goFonHomeServers[0]['DN'];
       }
-      $cur_cfg = $this->goFonHomeServers[$this->goFonHomeServer]; 
+      $cur_cfg = $this->goFonHomeServers[$this->goFonHomeServer];
     }
 
     /* Set base */
@@ -119,13 +119,13 @@ class conference extends plugin
       }
     } else {
 
-      /* Get base */ 
+      /* Get base */
       $this->base = preg_replace ("/^[^,]+,".preg_quote(get_ou('phoneConferenceRDN'), '/')."/i","",$this->dn);;
     }
 
     $this->goFonConferenceOwner=$this->ui->dn;
 
-    /* Parse Options ... 
+    /* Parse Options ...
      * Parameter|Lifetime|number
      */
     if($this->dn!="new"){
@@ -134,9 +134,9 @@ class conference extends plugin
       for($i = 0 ; $i < strlen($tmp1[0]);$i++){
         $varname = "goFonConferenceOption_".$tmp1[0][$i];
         if($tmp1[0][$i]=="d"){
-          $this->goFonConferenceOption_D = $tmp1[0][$i];    
+          $this->goFonConferenceOption_D = $tmp1[0][$i];
         }else{
-          $this->$varname = $tmp1[0][$i];    
+          $this->$varname = $tmp1[0][$i];
         }
       }
 
@@ -144,7 +144,7 @@ class conference extends plugin
       if(isset($tmp1[2]) && isset($this->languages[$tmp1[2]])){
         $this->language = $tmp1[2];
       }
-  
+
       $this->old_tele_number                = $this->telephoneNumber;
     }
     $this->old_dn = $this->dn;
@@ -152,7 +152,7 @@ class conference extends plugin
     $this->old_base = $this->base;
     $this->orig_base = $this->base;
     $this->orig_dn = $this->dn;
-  
+
     /* Instanciate base selector */
     $this->baseSelector= new baseSelector($this->get_allowed_bases(), $this->base);
     $this->baseSelector->setSubmitButton(false);
@@ -220,11 +220,11 @@ class conference extends plugin
 
   function remove_from_parent()
   {
-    /* Check if 'old' home server is available in FusionDirectory server configuration 
-     * Try to remove this entry from database and display errors.  
+    /* Check if 'old' home server is available in FusionDirectory server configuration
+     * Try to remove this entry from database and display errors.
      */
     if(isset($this->goFonHomeServers[$this->goFonHomeServer])){
-      $str = $this->SQL_remove_me(true); 
+      $str = $this->SQL_remove_me(true);
       if($str){
         msg_dialog::display(_("Error"), $str, ERROR_DIALOG);
         return false;
@@ -295,44 +295,37 @@ class conference extends plugin
 
   function check_database_accessibility()
   {
-    /* Check if mysql extension is available */
-    if(!is_callable("mysql_pconnect")){
-      return(msgPool::missingext("php-mysql"));
-    }
-
     /********************
-     * Check currently selected home server 
+     * Check currently selected home server
      ********************/
 
     $cfg_Current  = $this->goFonHomeServers[$this->goFonHomeServer];
-    $r_current    =  @mysql_pconnect($cfg_Current['SERVER'],$cfg_Current['LOGIN'],$cfg_Current['PASSWORD']);
-    if(!$r_current){
-      new log("debug","gofonconference/".get_class($this),"",array(),@mysql_error($r_current));
-      return(msgPool::dbconnect("GOfon",@mysql_error($r_current), $cfg_Current['SERVER']));
-    }
-    $db_current  =  @mysql_select_db($cfg_Current['DB'],$r_current);
-    if(!$db_current){
-      new log("debug","gofonconference/".get_class($this),"",array(),@mysql_error($r_current));
-      mysql_close($r_current);
-      return(msgPool::dbselect("GOfon",@mysql_error($r_current), $cfg_Current['DB']));
+    $link =& MDB2::connect(array( 'phptype'=>'mysql',
+                                  'hostspec'=>$cfg_Current['SERVER'],
+                                  'username'=>$cfg_Current['LOGIN'],
+                                  'password'=>$cfg_Current['PASSWORD'],
+                                  'database'=>$cfg_Current['DB'],
+                          ));
+    if(PEAR::isError($link)){
+      new log("debug","gofonconference/".get_class($this),"",array(),$link->getMessage());
+      return(msgPool::dbconnect("GOfon",$link->getMessage(), $cfg_Current['SERVER']));
     }
 
     /********************
-     * Check init home server 
+     * Check init home server
      ********************/
 
     if($this->goFonHomeServers != $this->init_HomeServer){
       $cfg_Init  = $this->goFonHomeServers[$this->init_HomeServer] ;
-      $r_init    =  @mysql_pconnect($cfg_Init['SERVER'],$cfg_Init['LOGIN'],$cfg_Init['PASSWORD']);
-      if(!$r_init){
-        new log("debug","gofonconference/".get_class($this),"",array(),@mysql_error($r_init));
-        return(msgPool::dbconnect("GOfon",@mysql_error($r_current), $cfg_Init['SERVER']));
-      }
-      $db_init  =  @mysql_select_db($cfg_Init['DB'],$r_init);
-      if(!$db_init){
-        new log("debug","gofonconference/".get_class($this),"",array(),@mysql_error($r_init));
-        mysql_close($r_init);
-        return(msgPool::dbselect("GOfon",@mysql_error($r_current), $cfg_Init['DB']));
+      $link =& MDB2::connect(array( 'phptype'=>'mysql',
+                                    'hostspec'=>$cfg_Init['SERVER'],
+                                    'username'=>$cfg_Init['LOGIN'],
+                                    'password'=>$cfg_Init['PASSWORD'],
+                                    'database'=>$cfg_Init['DB'],
+                            ));
+      if(PEAR::isError($link)){
+        new log("debug","gofonconference/".get_class($this),"",array(),$link->getMessage());
+        return(msgPool::dbconnect("GOfon",$link->getMessage(), $cfg_Init['SERVER']));
       }
     }
   }
@@ -374,7 +367,7 @@ class conference extends plugin
       $message[] = msgPool::invalid(_("Lifetime"),$this->goFonConferenceOptionLifetime,"/[0-9]/");
     }
 
-    /* Check if add could be successful */    
+    /* Check if add could be successful */
     $str = $this->SQL_add_me(false);
     if(!empty($str)){
       $message[] = $str;
@@ -407,9 +400,9 @@ class conference extends plugin
     if(!count($this->goFonHomeServers)){
       return(msgPool::noserver(_("GOfon")));
     }
-  
+
     /********************
-     * Get configuration and try to connect 
+     * Get configuration and try to connect
      ********************/
 
     /* Check if databases are reachable, returns an error string if anything fails  */
@@ -427,11 +420,15 @@ class conference extends plugin
     /* Connect to current database to be able to add new entries */
     $SQL=array();
     $cfg_Current  = $this->goFonHomeServers[$this->goFonHomeServer] ;
-    $res_cur      =  @mysql_pconnect($cfg_Current['SERVER'],$cfg_Current['LOGIN'],$cfg_Current['PASSWORD']);
-    $db_cur       =  @mysql_select_db($cfg_Current['DB'],$res_cur);
+    $link =& MDB2::connect(array( 'phptype'=>'mysql',
+                                  'hostspec'=>$cfg_Current['SERVER'],
+                                  'username'=>$cfg_Current['LOGIN'],
+                                  'password'=>$cfg_Current['PASSWORD'],
+                                  'database'=>$cfg_Current['DB'],
+                          ));
 
     /********************
-     * Remove entries that could cause trouble  
+     * Remove entries that could cause trouble
      ********************/
 
 
@@ -450,21 +447,21 @@ class conference extends plugin
      */
     if($this->goFonHomeServer != $this->init_HomeServer){
       $query = "SELECT id FROM ".$cfg_Current['EXT_TABLE']." WHERE exten='".$this->telephoneNumber."' OR exten='".$this->cn."';";
-      $res = @mysql_query($query,$res_cur);
+      $res =& $link->query($query);
       @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,$query, "Database query");
-      if(!$res){
-        new log("debug","gofonconference/".get_class($this),"",array(),@mysql_error($res_cur));
-        return(msgPool::dbquery("GOfon", @mysql_error($res_cur),$cfg_Current['SERVER']));
+      if(PEAR::isError($res)){
+        new log("debug","gofonconference/".get_class($this),"",array(),$res->getMessage());
+        return(msgPool::dbquery("GOfon", $res->getMessage(),$cfg_Current['SERVER']));
       }
-      if($save && mysql_affected_rows($res_cur)) {
-        $SQL[] = "DELETE FROM ".$cfg_Current['EXT_TABLE']." 
-          WHERE   (exten='".$this->telephoneNumber."') 
+      if($save && $res->numRows()) {
+        $SQL[] = "DELETE FROM ".$cfg_Current['EXT_TABLE']."
+          WHERE   (exten='".$this->telephoneNumber."')
           OR    (exten='".$this->cn."')";
       }
     }
 
     /********************
-     * Add new conference entry  
+     * Add new conference entry
      ********************/
     if((!empty($this->telephoneNumber))&&($save==true)){
 
@@ -475,7 +472,7 @@ class conference extends plugin
         $parameter .= $this->$attrs;
       }
 
-      /* 
+      /*
        * ringing
        * set language()=...
        * wait 2
@@ -495,7 +492,7 @@ class conference extends plugin
       $EXT[$i]['priority']=$i;
       $EXT[$i]['app']     ="ringing";
       $EXT[$i]['appdata'] ="";
-      $i++;      
+      $i++;
 
       // Set Language to German
       $EXT[$i]['exten']   =$this->telephoneNumber;
@@ -503,7 +500,7 @@ class conference extends plugin
       $EXT[$i]['priority']= $i;
       $EXT[$i]['app']     ="Set";
       $EXT[$i]['appdata'] ="CHANNEL(language)=".$this->language;
-      $i++;      
+      $i++;
 
       // Recordingformat for conference
       if($this->goFonConferenceOption_r == "r"){
@@ -512,7 +509,7 @@ class conference extends plugin
         $EXT[$i]['priority']= $i;
         $EXT[$i]['app']     ="Set";
         $EXT[$i]['appdata'] ="MEETME_RECORDINGFORMAT=".$this->goFonConferenceOptionFormat;
-        $i++;      
+        $i++;
       }
 
       // Wait for 2 seconds
@@ -521,7 +518,7 @@ class conference extends plugin
       $EXT[$i]['priority']=$i;
       $EXT[$i]['app']     ="wait";
       $EXT[$i]['appdata'] ="2";
-      $i++;      
+      $i++;
 
       // Answer Call
       $EXT[$i]['exten']   =$this->telephoneNumber;
@@ -529,7 +526,7 @@ class conference extends plugin
       $EXT[$i]['priority']=$i;
       $EXT[$i]['app']     ="answer";
       $EXT[$i]['appdata'] ="";
-      $i++;      
+      $i++;
 
       // Wait for 2 seconds
       $EXT[$i]['exten']   =$this->telephoneNumber;
@@ -537,9 +534,9 @@ class conference extends plugin
       $EXT[$i]['priority']=$i;
       $EXT[$i]['app']     ="wait";
       $EXT[$i]['appdata'] ="2";
-      $i++;      
+      $i++;
 
-      // Start Conference 
+      // Start Conference
       $EXT[$i]['exten']   =$this->telephoneNumber;
       $EXT[$i]['context'] =$context;
       $EXT[$i]['priority']=$i;
@@ -549,7 +546,7 @@ class conference extends plugin
       }else{
         $EXT[$i]['appdata'] =$this->telephoneNumber."|".$parameter."|".$this->goFonPIN;
       }
-      $i++; 
+      $i++;
 
       // Hangup command
       $EXT[$i]['exten']   =$this->telephoneNumber;
@@ -557,73 +554,74 @@ class conference extends plugin
       $EXT[$i]['priority']=$i;
       $EXT[$i]['app']     ="hangup";
       $EXT[$i]['appdata'] ="";
-      $i++;      
+      $i++;
 
-      // Map name to number 
+      // Map name to number
       if(!is_numeric($this->cn)){
           $EXT[$i]['exten']   =$this->cn;
           $EXT[$i]['context'] =$context;
           $EXT[$i]['priority']=1;
           $EXT[$i]['app']     ="Goto";
           $EXT[$i]['appdata'] =$this->telephoneNumber."|1";
-      }        
+      }
 
       foreach($EXT as $keytop => $valtop){
         $s_keys = "";
-        $s_values = ""; 
+        $s_values = "";
         foreach($valtop as $key=>$val){
           $s_keys   .="`".$key."`,";
           $s_values .="'".$val."',";
         }
-        $s_keys   =preg_replace("/\,$/","",$s_keys); 
-        $s_values =preg_replace("/\,$/","",$s_values); 
-        $SQL[]="INSERT INTO ".$cfg_Current['EXT_TABLE']." (".$s_keys.") VALUES (".$s_values.");"; 
+        $s_keys   =preg_replace("/\,$/","",$s_keys);
+        $s_values =preg_replace("/\,$/","",$s_values);
+        $SQL[]="INSERT INTO ".$cfg_Current['EXT_TABLE']." (".$s_keys.") VALUES (".$s_values.");";
       }
 
       /* Start transaction, to be able to rollback
        */
       @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"<b>---Updating/Inserting entries---</b>","");
 
-      mysql_query("begin;",$res_cur);
+      $link->beginTransaction();
       @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"<b>begin;</b>","<i>Starting transaction!</i>");
 
       foreach($SQL as $query){
         @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"<b>".$query."</b>", "");
-        if(!mysql_query($query,$res_cur)){
-          $err = mysql_error($res_cur);
+        $res = $link->exec($query);
+        if(PEAR::isError($res)){
+          $err = $res->getMessage();
           @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"\n".$err, "<b>FAILED</b>");
           msg_dialog::display(_("Error"),
               msgPool::mysqlerror($err,__CLASS__)."&nbsp;".
               "\n<p>"._("Please activate debugging for details!")."</p>",
               ERROR_DIALOG);
 
-          mysql_query("rollback;",$res_cur);
+          $link->rollback();
           @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"<b>rollback;</b>", "<b>ERROR</b> Rollback transaction!");
-          @mysql_close($res_cur);
+          $link->disconnect();
           return(false);
         }
       }
 
       /* Let changes get active, everything was fine;
        */
-      mysql_query("commit;",$res_cur);
+      $link->commit();
       @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"<b>commit;</b>", "");
       @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"<b>---Transaction sucessful!---</b>", "");
-    } 
+    }
 
-    @mysql_close($res_cur);
+    $link->disconnect();
   }
 
 
-  /* Remove initial entry from database 
-   * This function checks if there is an entry in the 
+  /* Remove initial entry from database
+   * This function checks if there is an entry in the
    *  initial home server that uses this->old_cn or $this->old_tele_number
-   *  and removes this entries. 
+   *  and removes this entries.
    * This function is called from save and remove_from parent.
-   * 
-   *  The parameter '$save' is false if we just 
-   *   want to check if a remove is possible. 
-   *  And true if we realy want to remove the entries.   
+   *
+   *  The parameter '$save' is false if we just
+   *   want to check if a remove is possible.
+   *  And true if we realy want to remove the entries.
    */
   function SQL_remove_me($save)
   {
@@ -635,34 +633,38 @@ class conference extends plugin
 
     /* Connect to old database */
     $cfg_Init  = $this->goFonHomeServers[$this->init_HomeServer] ;
-    $r_init    =  @mysql_pconnect($cfg_Init['SERVER'],$cfg_Init['LOGIN'],$cfg_Init['PASSWORD']);
-    $db_init   =  @mysql_select_db($cfg_Init['DB'],$r_init);
-   
+    $link =& MDB2::connect(array( 'phptype'=>'mysql',
+                                  'hostspec'=>$cfg_Init['SERVER'],
+                                  'username'=>$cfg_Init['LOGIN'],
+                                  'password'=>$cfg_Init['PASSWORD'],
+                                  'database'=>$cfg_Init['DB'],
+                          ));
+
     /* Check if there is an old entry */
     $query = "SELECT id FROM ".$cfg_Init['EXT_TABLE']." WHERE exten='".$this->old_tele_number."' OR exten='".$this->old_cn."';";
-    $res = @mysql_query($query,$r_init);
+    $res =& $link->query($query);
     @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,$query, "Database query");
-    if(!$res){
-      new log("debug","gofonconference/".get_class($this),"",array(),@mysql_error($r_init));
-      return(msgPool::dbquery("GOfon", @mysql_error($res_cur),$cfg_Init['SERVER']));
+    if(PEAR::isError($res)){
+      new log("debug","gofonconference/".get_class($this),"",array(),$res->getMessage());
+      return(msgPool::dbquery("GOfon", $res->getMessage(),$cfg_Init['SERVER']));
     }
-   
+
     /* There are entries using this cn and/or phone number */
-    if($save && mysql_affected_rows($r_init)) {
-      $SQL = "DELETE FROM ".$cfg_Init['EXT_TABLE']." 
-      WHERE   (exten='".$this->old_tele_number."') 
+    if($save && $res->numRows()) {
+      $SQL = "DELETE FROM ".$cfg_Init['EXT_TABLE']."
+      WHERE   (exten='".$this->old_tele_number."')
         OR    (exten='".$this->old_cn."')";
-  
+
       /* Query and ensure that everything went fine */
-      $res =  @mysql_query($SQL,$r_init);
+      $res = $link->exec($SQL);
       @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,$SQL, "Database query");
-      if(!$res){
-        new log("debug","gofonconference/".get_class($this),"",array(),@mysql_error($r_init));
-        return(msgPool::dbquery("GOfon", @mysql_error($res_cur),$cfg_Init['SERVER']));
+      if(PEAR::isError($res)){
+        new log("debug","gofonconference/".get_class($this),"",array(),$res->getMessage());
+        return(msgPool::dbquery("GOfon", $res->getMessage(),$cfg_Init['SERVER']));
       }
 
     }//ENDE  old num availiable ...
-    @mysql_close($r_init);
+    $link->disconnect();
     return(false);
   }
 
@@ -728,7 +730,7 @@ class conference extends plugin
     foreach(array("goFonConferenceOption_P","goFonConferenceOption_r","goFonConferenceOption_M","goFonConferenceOption_s",
           "goFonConferenceOption_i","goFonConferenceOption_c","goFonConferenceOption_D","goFonConferenceOptionFormat") as $attrs){
       $this->attrs['goFonConferenceOption'] .= $this->$attrs;
-      unset($this->attrs[$attrs]);         
+      unset($this->attrs[$attrs]);
     }
 
     $this->attrs['goFonConferenceOption'].="|".$this->goFonConferenceOptionLifetime;
@@ -746,7 +748,7 @@ class conference extends plugin
     if ($ldap->count()){
       $ldap->cd($this->dn);
       $this->cleanup();
-      $ldap->modify ($this->attrs); 
+      $ldap->modify ($this->attrs);
       $this->handle_post_events('modify');
     } else {
       $ldap->create_missing_trees(preg_replace('/^[^,]+,/', '', $this->dn));
@@ -799,7 +801,7 @@ class conference extends plugin
     plugin::PrepareForCopyPaste($source) ;
 
     $source_o = new conference($this->config,$source['dn']);
-  
+
     foreach($this->attributes as $attr){
       $this->$attr = $source_o->$attr;
     }
@@ -826,7 +828,7 @@ class conference extends plugin
             "goFonPIN"                      => _("Conference PIN"),
 
             "language"                      => _("Language"),
-  
+
             "goFonHomeServer"              => _("Home server"),
             "goFonConferenceOptionP"       => _("Preset PIN"),
             "goFonConferenceOptionr"       => _("Record conference"),

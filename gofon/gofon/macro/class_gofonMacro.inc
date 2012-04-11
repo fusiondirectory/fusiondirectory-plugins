@@ -20,7 +20,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-//!  The Phone Macro Class: Handles Macro Contents, and some attributes. 
+//!  The Phone Macro Class: Handles Macro Contents, and some attributes.
 /*!
      This class handles the basic information about phone macros, like
      cn base description displayName goFonMacroContent goFonMacroVisible
@@ -32,12 +32,12 @@ class macro extends plugin
 {
   /*! Macro attributes,  */
   var $generate_error= "";
-    
+
   /*! The name of the Macro in the openldap drirectory */
-  var $cn               = ""; 
- 
+  var $cn               = "";
+
   /*! Display error once */
-  var $error_shown = false; 
+  var $error_shown = false;
 
   /*! This ist the variable that contains the description of the macro*/
   var $description      = "";
@@ -47,26 +47,26 @@ class macro extends plugin
 
   /*! This is the name of the macro which the enduser will see, instead of the cn */
   var $displayName      = "";
-    
+
   /*! Here is the macro content, the real macroscript */
   var $goFonMacroContent= "";
-  
+
   /*! To allow user to use this macro this var must be true, else false */
   var $goFonMacroVisible= 0;
 
   /*! attribute list for save action */
   var $attributes     = array("cn","base", "description","displayName","goFonMacroContent","goFonMacroVisible");
   var $view_logged = FALSE;
-  var $orig_cn = ""; 
-  var $orig_base = ""; 
-  var $orig_dn = ""; 
+  var $orig_cn = "";
+  var $orig_base = "";
+  var $orig_dn = "";
   /*! Objectclasses that this calls handles */
   var $objectclasses  = array("top", "goFonMacro");
 
-  var $goFonHomeServers = array(); // Contains all available asterisk database server 
+  var $goFonHomeServers = array(); // Contains all available asterisk database server
   var $baseSelector;
 
-  //! The Konstructor   
+  //! The Konstructor
   /*!  Konstructor, load class with  attributes of the given dn*/
   function macro (&$config, $dn= NULL, $parent= NULL)
   {
@@ -96,13 +96,13 @@ class macro extends plugin
 
       /* Set available server */
       $this->goFonHomeServers = $config->data['SERVERS']['FON'];
-  
+
       /* Remove default entry, not necessary here */
       if(isset($this->goFonHomeServers[0])){
-        unset($this->goFonHomeServers[0]);  
+        unset($this->goFonHomeServers[0]);
       }
     }
-    
+
     $this->orig_base = $this->base;
     $this->orig_dn = $this->dn;
 
@@ -129,7 +129,7 @@ class macro extends plugin
     /* Variables */
     $vars   = "";
     $tmp    = array();
-    $number = 0; 
+    $number = 0;
 
     /* Fill templating stuff */
     $smarty= get_smarty();
@@ -174,43 +174,37 @@ class macro extends plugin
   }
 
 
-  /* This method check if all databases are reachable.  
+  /* This method check if all databases are reachable.
    *  Returns with error message or an empty string on success.
-   * 
-   * - Is mysql extension available  
-   * - Is every server reachable 
+   *
+   * - Is mysql extension available
+   * - Is every server reachable
    * - Does the database exists/is accessible
    */
   function check_database_accessibility()
   {
-    /* Check if mysql extension is available */
-    if(!is_callable("mysql_pconnect")){
-      return(msgPool::missingext("php-mysql"));
-    }
-
     /********************
      * Check all home server
      ********************/
     foreach($this->goFonHomeServers as $goFonHomeServer => $cfg_Current){
-      $r_current    =  @mysql_pconnect($cfg_Current['SERVER'],$cfg_Current['LOGIN'],$cfg_Current['PASSWORD']);
-      if(!$r_current){
-        new log("debug","gofonmacro/".get_class($this),"",array(),@mysql_error($r_current));
-        return ( msgPool::dbconnect("GOfon",@mysql_error(),$cfg_Current['SERVER']));
-      }
-      $db_current  =  @mysql_select_db($cfg_Current['DB'],$r_current);
-      if(!$db_current){
-        new log("debug","gofonmacro/".get_class($this),"",array(),@mysql_error($r_current));
-        mysql_close($r_current);
-        return ( msgPool::dbselect("GOfon",@mysql_error(),$cfg_Current['DB']));
+      $link =& MDB2::connect(array( 'phptype'=>'mysql',
+                                  'hostspec'=>$cfg_Current['SERVER'],
+                                  'username'=>$cfg_Current['LOGIN'],
+                                  'password'=>$cfg_Current['PASSWORD'],
+                                  'database'=>$cfg_Current['DB'],
+                          ));
+      if(PEAR::isError($link)){
+        new log("debug","gofonmacro/".get_class($this),"",array(),$link->getMessage());
+        return(msgPool::dbconnect("GOfon",$link->getMessage(), $cfg_Current['SERVER']));
       }
     }
   }
 
 
   /* Remove current macro from all asterisk server.
-   * First of all check if we have access to all databases. 
-   * - Remove old entries 
-   */ 
+   * First of all check if we have access to all databases.
+   * - Remove old entries
+   */
   function remove_from_database($save)
   {
     /* Check if all databases are reachable */
@@ -222,34 +216,38 @@ class macro extends plugin
     /* Create query string */
     $context  = addslashes("macro-".$this->cn);
 
-    /* Remove current macro from each server available */ 
+    /* Remove current macro from each server available */
     if($save){
       foreach($this->goFonHomeServers as $dn => $Server){
         $query      = "DELETE FROM ".$Server['EXT_TABLE']." WHERE context='".$context."';";
-        $r_current  =  @mysql_pconnect($Server['SERVER'],$Server['LOGIN'],$Server['PASSWORD']);
-        $db_current =  @mysql_select_db($Server['DB'],$r_current);
-        $res = @mysql_query($query,$r_current);
+        $link =& MDB2::connect(array( 'phptype'=>'mysql',
+                                  'hostspec'=>$Server['SERVER'],
+                                  'username'=>$Server['LOGIN'],
+                                  'password'=>$Server['PASSWORD'],
+                                  'database'=>$Server['DB'],
+                          ));
+        $res = $link->exec($query);
         @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,$query, "Database query");
-        if(!$res){
-          new log("debug","gofonmacro/".get_class($this),"",array(),@mysql_error($r_current));
+        if(PEAR::isError($res)){
+          new log("debug","gofonmacro/".get_class($this),"",array(),$res->getMessage());
           @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"<b>".$query."</b>", "ERROR");
-          trigger_error(mysql_error($r_current));
+          trigger_error($res->getMessage());
           return(
             sprintf(
-              _("Macro could not be removed from server '%s', please check database consistency!"), 
+              _("Macro could not be removed from server '%s', please check database consistency!"),
               $Server['SERVER']));
         }
-        @mysql_close($r_current);
+        $link->disconnect();
       }
     }
   }
 
- 
+
   /* Add current macro to all asterisk server.
-   * First of all check if we have access to all databases. 
-   * - Remove old entries 
-   * - Add new entries 
-   */ 
+   * First of all check if we have access to all databases.
+   * - Remove old entries
+   * - Add new entries
+   */
   function add_to_database($save)
   {
     /* Check if all databases are reachable */
@@ -270,22 +268,22 @@ class macro extends plugin
     /************
      * Parse Macro content
      ************/
-    $sql = 
+    $sql =
       "INSERT INTO %TABLENAME% ".
       " (context,exten,priority,app,appdata) ".
       " VALUES ";
-      
+
     $a_contentLines = preg_split("/\n/",$this->goFonMacroContent);
 
     // Keep all macro priorities to avoid duplicates!
     $priorities = array();
     foreach($a_contentLines as $i_linenum => $s_linestr){
 
-      /* Remove the 'exten => ' string in front of the macro content line 
+      /* Remove the 'exten => ' string in front of the macro content line
        *  example line  'exten => s,2,GotoIf(${ARG3}?3:5)'
        * Remove comments introduced by ;
-       * Skip empty lines 
-       */ 
+       * Skip empty lines
+       */
       $s_linestr = trim($s_linestr);
       $s_linestr = preg_replace("/;.*$/","",$s_linestr) ;
       $s_linestr = preg_replace ("/^.*=\> /","",$s_linestr);
@@ -294,11 +292,11 @@ class macro extends plugin
         continue;
       }
 
-      /* A line that passes the check above should look like this 
+      /* A line that passes the check above should look like this
        *  s,1,SetLanguage(de)
-       * 3 parts seperated by , 
+       * 3 parts seperated by ,
        * If there are more or less parts, abort.
-       * The preg_replace exclude parameters from split .. 
+       * The preg_replace exclude parameters from split ..
        */
       $tmp  = explode(",", $s_linestr,3);
 
@@ -324,8 +322,8 @@ class macro extends plugin
         return(sprintf(_("Duplicate combination of 'extension' and 'priority' in line %s!"),$i_linenum));
       }
 
-      /* Create extension entry for current line 
-       *  and add this line to an array that will be inserted 
+      /* Create extension entry for current line
+       *  and add this line to an array that will be inserted
        *  to each database.
        */
       $exten  = addslashes($tmp[0]);
@@ -334,30 +332,34 @@ class macro extends plugin
       $para   = addslashes(preg_replace("/^[^(]*\((.*)\)[^)]*$/", "$1", $tmp[2]));
       $sql.= " ('".$context."','".$exten."','".$prio."','".$app."','".$para."'),";
     }
-    
+
     /* Remove last , from query string */
     $sql = preg_replace("/,$/","",$sql);
 
     /* Save current changes to the database */
     if($save){
-    
+
       /* Macro are spread to each asterisk server */
       foreach($this->goFonHomeServers as $dn => $cfg){
-        $r_con  = @mysql_pconnect($cfg['SERVER'],$cfg['LOGIN'],$cfg['PASSWORD']); 
-        $db     = @mysql_select_db($cfg['DB'],$r_con);
+        $link =& MDB2::connect(array( 'phptype'=>'mysql',
+                                      'hostspec'=>$cfg['SERVER'],
+                                      'username'=>$cfg['LOGIN'],
+                                      'password'=>$cfg['PASSWORD'],
+                                      'database'=>$cfg['DB'],
+                              ));
         $query  = preg_replace("/%TABLENAME%/",$cfg['EXT_TABLE'],$sql);
-        $res    = @mysql_query($query,$r_con);
+        $res    = $link->exec($query);
         @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,$query, "Database query");
-        if(!$res){
-          new log("debug","gofonmacro/".get_class($this),"",array(),@mysql_error($r_con));
+        if(PEAR::isError($res)){
+          new log("debug","gofonmacro/".get_class($this),"",array(),$res->getMessage());
           @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"<b>".$query."</b>", "ERROR");
-          trigger_error(mysql_error($r_con));
+          trigger_error($res->getMessage());
           return(
             sprintf(
-              _("Macro could not be added to server '%s', please check database consistency!"), 
+              _("Macro could not be added to server '%s', please check database consistency!"),
               $cfg['SERVER']));
         }
-        @mysql_close($r_con);
+        $link->disconnect();
       }
     }
   }
@@ -440,16 +442,16 @@ class macro extends plugin
     if(!$this->baseSelector->checkLastBaseUpdate()){
       $message[]= msgPool::check_base();;
     }
-  
+
     /* Check if display name is set */
     if($this->displayName == ""){
       $message[] = msgPool::required(_("Name"));
-    }  
+    }
     /* CN is restricted to 20 chars */
     if(strlen("Makro-".$this->cn)>20 ){
       $message[]=_("Name can be 20 characters at maximum!");
     }
-  
+
     /* If this macro is still in use we should not change the visible for user flag to invisible */
     if(!$this->goFonMacroVisible){
       $ldap = $this->config->get_ldap_link();
@@ -478,7 +480,7 @@ class macro extends plugin
   }
 
 
-  /*! Remove makro from all given databases 
+  /*! Remove makro from all given databases
    *   and ldap too.
    */
   function remove_from_parent()
@@ -487,8 +489,8 @@ class macro extends plugin
 
     /* Skip remove if this macro is still in use */
     $res = $ldap->search("(&(objectClass=goFonAccount)(objectClass=gosaAccount)(goFonMacro=*))", array("goFonMacro", "cn"));
-    while ($val = $ldap->fetch()){ 
-      if(strstr($val['goFonMacro'][0],$this->dn)){ 
+    while ($val = $ldap->fetch()){
+      if(strstr($val['goFonMacro'][0],$this->dn)){
         msg_dialog::display(_("Error"), sprintf(_("Cannot delete entry because it is still in use by '%s'!"), $val['cn'][0]), ERROR_DIALOG);
         return false;
       }
@@ -497,7 +499,7 @@ class macro extends plugin
     /* Try to remove from database */
     if(count($this->goFonHomeServers)){
       $str = $this->remove_from_database(true);
-      if($str){ 
+      if($str){
         msg_dialog::display(_("Error"), $str, ERROR_DIALOG);
         return false;
       }
@@ -506,9 +508,9 @@ class macro extends plugin
       return false;
     }
 
-    /* Remove phone macro */ 
+    /* Remove phone macro */
     $ldap->rmDir($this->dn);
-    new log("remove","gofonmacro/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error()); 
+    new log("remove","gofonmacro/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
     if (!$ldap->success()){
       msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_DEL, get_class()));
     }
@@ -547,7 +549,7 @@ class macro extends plugin
     if (count($a)){
         $ldap->cd($this->dn);
         $this->cleanup();
-        $ldap->modify ($this->attrs); 
+        $ldap->modify ($this->attrs);
 
         $this->handle_post_events("modify");
     } else {

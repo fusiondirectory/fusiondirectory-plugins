@@ -47,9 +47,9 @@ class phoneAccount extends plugin
   var $generate_error         = "";
   var $a_old_telenums         = array();
   var $goFonPINVoice          = "";
-  var $goFonHomeServer        = "0";            // Contains the dn of the server that manage this account 
-  var $init_HomeServer        = "0";            // Contains the dn of the server that manage this account 
-  var $goFonHomeServers       = array();        // Contains all available server configurations 
+  var $goFonHomeServer        = "0";            // Contains the dn of the server that manage this account
+  var $init_HomeServer        = "0";            // Contains the dn of the server that manage this account
+  var $goFonHomeServers       = array();        // Contains all available server configurations
 
   var $context                = "default";
   var $sip_contexts           = array();
@@ -93,7 +93,7 @@ class phoneAccount extends plugin
       $this->parent = $parent->parent;
     }
 
-    /* Get current uid and cn 
+    /* Get current uid and cn
      */
     if(isset($this->attrs['uid'][0])){
       $this->uid = $this->attrs['uid'][0];
@@ -109,7 +109,7 @@ class phoneAccount extends plugin
       $this->pager = $this->attrs['pager'][0];
     }
 
-    /* If there is a parent object present, use references 
+    /* If there is a parent object present, use references
      */
     if(isset($this->parent->by_object['user']->uid)){
       $this->uid = &$this->parent->by_object['user']->uid;
@@ -125,13 +125,13 @@ class phoneAccount extends plugin
       $this->has_mailAccount  = &$this->parent->by_object['mailAccount']->is_account;
     }
 
-    /* Check server configurations 
+    /* Check server configurations
      * Load all server configuration in $this->goFonHomeServers if available
      *  and first server as default if necessary.
      * Check if connection is successfull for the selected server $this->goFonHomeServer
      */
 
-  
+
     /* Set available server */
     $config = session::get('config');
     if(isset($config->data['SERVERS']['FON'])){
@@ -140,8 +140,7 @@ class phoneAccount extends plugin
 
     $a_SETUP= array();
     if($this->is_account && isset($config->data['SERVERS']['FON']) &&
-       array_key_exists('FON',$config->data['SERVERS']) &&
-       is_callable("mysql_connect")
+       array_key_exists('FON',$config->data['SERVERS'])
        ) {
 
       /* Servers defined? Watch here... */
@@ -161,19 +160,20 @@ class phoneAccount extends plugin
 
           $this->goFonHomeServer = $this->goFonHomeServers[0]['DN'];
           $this->init_HomeServer = $this->goFonHomeServers[0]['DN'];
-        }    
+        }
         $cur_cfg = $this->goFonHomeServers[$this->goFonHomeServer];
 
-        $r_con =  @mysql_pconnect($cur_cfg['SERVER'],$cur_cfg['LOGIN'],$cur_cfg['PASSWORD']);
-        if(!$r_con){
-          new log("debug","gofonreport/".get_class($this),"",array(),@mysql_error());
-        }
-        $db  =  @mysql_select_db($cur_cfg['DB'],$r_con);
-        if(!$db){
-          new log("debug","gofonreport/".get_class($this),"",array(),@mysql_error());
+        $r_con =& MDB2::connect(array( 'phptype'=>'mysql',
+                                      'hostspec'=>$cur_cfg['SERVER'],
+                                      'username'=>$cur_cfg['LOGIN'],
+                                      'password'=>$cur_cfg['PASSWORD'],
+                                      'database'=>$cur_cfg['DB'],
+                              ));
+        if (PEAR::isError($r_con)) {
+          new log("debug","gofonreport/".get_class($this),"",array(),$r_con->getMessage());
         }
 
-        $first = false; 
+        $first = false;
         foreach($this->phoneNumbers as $key => $val){
           if(!$first){
             $first = $key;
@@ -182,8 +182,8 @@ class phoneAccount extends plugin
       }
     }
 
-    /* Get available phone hardware  
-     * Search for all available phone hardware  
+    /* Get available phone hardware
+     * Search for all available phone hardware
      */
     $tmp = get_sub_list("(objectClass=goFonHardware)","phone",array(get_ou("phoneRDN")),
                   $this->config->current['BASE'],array("cn","description"), GL_SUBSEARCH);
@@ -199,7 +199,7 @@ class phoneAccount extends plugin
     ksort($this->hardware_list);
 
 
-     /* Collect all usd phones 
+     /* Collect all usd phones
         goFonHardware set.
      */
     $deps_a = array(
@@ -222,25 +222,25 @@ class phoneAccount extends plugin
     }
 
 
-    /* Get available Macros  
-     * Search for all Macros that are visible and create 
-     *  an array with name and parameters 
+    /* Get available Macros
+     * Search for all Macros that are visible and create
+     *  an array with name and parameters
      */
     $tmp = get_sub_list("(&(objectClass=goFonMacro)(goFonMacroVisible=1))","gofonmacro",array(get_ou("phoneMacroRDN")),
                   $this->config->current['BASE'],array("displayName","goFonMacroParameter","dn","cn"), GL_NO_ACL_CHECK | GL_SUBSEARCH );
-    
+
 
     /* Add none for no macro*/
-    $this->macros['none']=_("no macro");    
+    $this->macros['none']=_("no macro");
     $this->macro ="none";
 
     /* Fetch all Macros*/
     foreach($tmp as $attrs){
 
-      $ui = get_userinfo(); 
+      $ui = get_userinfo();
       $acl = $ui->get_permissions($attrs['dn'],"gofonmacro/macro","");
 
-      /* Skip all macros we are not able to read 
+      /* Skip all macros we are not able to read
           execpt, the currently selected macro.
        */
       if(!preg_match("/r/",$acl) && !preg_match("/^".preg_quote($attrs['dn'], '/')."/",$this->goFonMacro)){
@@ -311,9 +311,9 @@ class phoneAccount extends plugin
     }//while
 
 
-    /* Parse used Macro  
-     * If we have a macro selected, parse it and set values 
-     *  in $this->macroarray[$this->macro]. 
+    /* Parse used Macro
+     * If we have a macro selected, parse it and set values
+     *  in $this->macroarray[$this->macro].
      */
     $tmp = explode("!",$this->goFonMacro);
     if(is_array($tmp)){
@@ -349,7 +349,7 @@ class phoneAccount extends plugin
     $this->a_old_telenums = $this->phoneNumbers;
 
 
-    /* Get voicemail PIN from MySQL DB 
+    /* Get voicemail PIN from MySQL DB
      * Because every user can change his PIN directly from the phone
      *  without any update to the ldap
      * This means, the PIN in the DB is up to date
@@ -359,35 +359,35 @@ class phoneAccount extends plugin
 
     $num = key($this->phoneNumbers);
 
-    if( (is_callable("mysql_pconnect"))&&
-        (isset($cur_cfg))&&
+    if( ((isset($cur_cfg))&&
         (isset($cur_cfg['SERVER']))&&
         (isset($cur_cfg['LOGIN']))&&
         (isset($cur_cfg['PASSWORD']))){
 
+      $r_con =& MDB2::connect(array(  'phptype'=>'mysql',
+                                      'hostspec'=>$cur_cfg['SERVER'],
+                                      'username'=>$cur_cfg['LOGIN'],
+                                      'password'=>$cur_cfg['PASSWORD'],
+                                      'database'=>$cur_cfg['DB'],
+                              ));
       $r_con =  @mysql_pconnect($cur_cfg['SERVER'],$cur_cfg['LOGIN'],$cur_cfg['PASSWORD']);
-      if($r_con){
-
-        // Try to select the asteriskcdrdb database
-        $r_db  =  @mysql_select_db($cur_cfg['DB'],$r_con);
-        if(!$r_db){
-          msg_dialog::display(_("Warning"), msgPool::dbselect($cur_cfg['DB'],mysql_error()), WARNING_DIALOG);
-        }
-
-        $query_tmp = "SELECT ".$cur_cfg['VOICE_TABLE'].".context as 'v_context', 
-                             ".$cur_cfg['SIP_TABLE'].".context, 
-                             ".$cur_cfg['VOICE_TABLE'].".password 
-                       FROM  ".$cur_cfg['VOICE_TABLE'].", 
-                             ".$cur_cfg['SIP_TABLE']." 
-                       WHERE ".$cur_cfg['VOICE_TABLE'].".mailbox = ".$num." 
+      if (PEAR::isError($r_con)) {
+        msg_dialog::display(_("Warning"), msgPool::dbselect($cur_cfg['DB'],$r_con->getMessage()), WARNING_DIALOG);
+      } else {
+        $query_tmp = "SELECT ".$cur_cfg['VOICE_TABLE'].".context as 'v_context',
+                             ".$cur_cfg['SIP_TABLE'].".context,
+                             ".$cur_cfg['VOICE_TABLE'].".password
+                       FROM  ".$cur_cfg['VOICE_TABLE'].",
+                             ".$cur_cfg['SIP_TABLE']."
+                       WHERE ".$cur_cfg['VOICE_TABLE'].".mailbox = ".$num."
                           AND ".$cur_cfg['SIP_TABLE'].".name='".$this->uid."'";
-        $res = mysql_query($query_tmp);
-        $vp  = mysql_fetch_assoc($res);
+        $res =& $r_con->query($query_tmp);
+        $vp  = $res->fetchRow(MDB2_FETCHMODE_ASSOC);
         if(!isset($vp['context'])){
           $this->is_modified= TRUE;
           msg_dialog::display(_("Warning"), sprintf(_("Cannot identify telephone extension in database, please try to save again.")), WARNING_DIALOG);
-        } 
- 
+        }
+
         @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,$query_tmp, "Database query");
         if((isset($vp['password']))&&(!empty($vp['password']))){
           $this->goFonPINVoice = $vp['password'];
@@ -398,55 +398,54 @@ class phoneAccount extends plugin
         if((isset($vp['v_context']))&&(!empty($vp['v_context']))){
           $this->voice_context = $vp['v_context'];
         }
+        $r_con->disconnect();
       }
     }
     $this->lastmacro=$this->macro;
-
-    if(is_callable("mysql_close")&&(isset($r_con))&&($r_con)){
-      @mysql_close($r_con) ;
-    }
   }
 
 
-  /* Transaction will only work with InnoDB tables 
+  /* Transaction will only work with InnoDB tables
    */
   public static function checkRealtimeTables($config)
   {
     $ret =TRUE;
 
     // Connect to DB server
-    if( (is_callable("mysql_pconnect"))&&
-        (isset($config))&&
+    if( ((isset($config))&&
         (isset($config['SERVER']))&&
         (isset($config['LOGIN']))&&
         (isset($config['PASSWORD']))){
 
-      $r_con =  @mysql_pconnect($config['SERVER'],$config['LOGIN'],$config['PASSWORD']);
-      if($r_con){
-        $r_db  =  @mysql_select_db($config['DB'],$r_con);
-
-        /* Validate Table Type - it must be InnoDB to be able to use transactions 
+      $r_con =& MDB2::connect(array( 'phptype'=>'mysql',
+                                    'hostspec'=>$config['SERVER'],
+                                    'username'=>$config['LOGIN'],
+                                    'password'=>$config['PASSWORD'],
+                                    'database'=>$config['DB'],
+                            ));
+      if (!PEAR::isError($r_con)) {
+        /* Validate Table Type - it must be InnoDB to be able to use transactions
          */
-        $inno_tables = array("SIP_TABLE","EXT_TABLE","VOICE_TABLE","QUEUE_TABLE","QUEUE_MEMBER_TABLE"); 
-        foreach($inno_tables as $inno_table){
+        $inno_tables = array("SIP_TABLE","EXT_TABLE","VOICE_TABLE","QUEUE_TABLE","QUEUE_MEMBER_TABLE");
+        foreach($inno_tables as $inno_table) {
           $sql = "show table status like '".$config[$inno_table]."';";
-          $res = mysql_query($sql);
-          $vp  = mysql_fetch_assoc($res);
-          if(!preg_match("/^InnoDB$/i",$vp['Engine'])){
+          $res =& $r_con->query($sql);
+          $vp  = $res->fetchRow(MDB2_FETCHMODE_ASSOC);
+          if (!preg_match("/^InnoDB$/i",$vp['Engine'])) {
 
-            /* Not an InnoDB Table type, try to modify type. 
+            /* Not an InnoDB Table type, try to modify type.
              */
             $sql = "ALTER TABLE `".$config[$inno_table]."` ENGINE = INNODB; ";
-            $res = mysql_query($sql);
-            if(!$res){
-              @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"<b>".$sql."</b>", 
+            $res = $r_con->exec($sql);
+            if (PEAR::isError($res)) {
+              @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"<b>".$sql."</b>",
                   "<b>FAILED!</b>. Transactions will not work!");
               $ret = FALSE;
-            }else{
-              @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"<b>".$sql."</b>", 
+            } else {
+              @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"<b>".$sql."</b>",
                   "<i>Table '".$config[$inno_table]."' is now of type InnoDB, this enables transactions.</i>");
             }
-          }else{
+          } else {
             @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"",
                 "<i>Table type of '".$config[$inno_table]."' OK, using transactions!</i>");
           }
@@ -464,24 +463,24 @@ class phoneAccount extends plugin
     }
     return($t_tele);
   }
-    
 
 
 
-  /* This function generates the Database entries. 
+
+  /* This function generates the Database entries.
    * The Parameter 'save' could be true or false.
    *  false - means only testing no database transactions.
    *  true  - write database entries.
    *
    * 'sip_users','voice_mail' and 'extensions' table entries will be created.
-   * 
+   *
    * If the phone hardware is 'automatic' the table entries will only be removed
-   *  and not added. 
+   *  and not added.
    */
   function generate_mysql_entension_entries($save = false)
   {
-    /* Check if there is at least one server available 
-     * If not, return and tell the user that saving failed 
+    /* Check if there is at least one server available
+     * If not, return and tell the user that saving failed
      */
     if(!count($this->goFonHomeServers)){
       if($save){
@@ -490,26 +489,18 @@ class phoneAccount extends plugin
       return(true);
     }
 
-    /* Check if Mysql extension is available */
-    if(!is_callable("mysql_pconnect")){
-      if($save){
-        msg_dialog::display(_("Configuration error"), msgPool::missingext("php-mysql"), WARNING_DIALOG);
-      }
-      return(true);
-    }
- 
-    /********************** 
+    /**********************
      * Attribute Initialisation
      **********************/
 
     $old_connection = false;
 
     // Get Configuration for Mysql database Server
-    $s_parameter    = "";                                           // Contains paramter for selected Macro 
+    $s_parameter    = "";                                           // Contains paramter for selected Macro
     $r_con          = false;                                        // DB connection
     $r_db           = false;                                        // Selected DB
     $r_res          = false;                                        // Result resource
-    $a_ldap_attrs   = array();                                      //  
+    $a_ldap_attrs   = array();                                      //
 
     $s_ip           = NULL;                   // Contains ip for Sip entry
     $s_host         = NULL;                   // Contains host for Sip entry
@@ -525,10 +516,10 @@ class phoneAccount extends plugin
     $s_sip_values   = "";     // Contains string with all values for given attributes in SQL syntax
     $s_sip_keys     = "";     // Contains all needed attributes to generate sip entry in DB
 
-    $s_sip_key      = "";     // Key for SIP entry index      
-    $s_sip_val      = "";     // Value for SIP entry index      
+    $s_sip_key      = "";     // Key for SIP entry index
+    $s_sip_val      = "";     // Value for SIP entry index
 
-    $b_first_deleted= false;  // Only delete first entry, 
+    $b_first_deleted= false;  // Only delete first entry,
     $s_telenums     = "";     // for each value variable
 
     $i_is_accounted = false;  // Ensure that extension entry, for name to number is only once in table
@@ -546,7 +537,7 @@ class phoneAccount extends plugin
     if(empty($this->uid)) trigger_error("Uid is empty.");
 
 
-    /* Create voicemail entry 
+    /* Create voicemail entry
      */
     if((!isset($this->cn))||(empty($this->cn))){
       $CNname= $this->uid;
@@ -597,57 +588,54 @@ class phoneAccount extends plugin
 
     /* Check if phone number is used */
     if($this->is_number_used()){
-      $this->generate_error = $this->is_number_used(); 
+      $this->generate_error = $this->is_number_used();
       return false;
     }
 
 
 
-    /********************** 
+    /**********************
      * Check Server Connection Information
      **********************/
- 
-    /* Create Mysql handle for the current goFonHomeServer, if possible  
-     * Get configuration to old asterisk home server 
-     */ 
+
+    /* Create Mysql handle for the current goFonHomeServer, if possible
+     * Get configuration to old asterisk home server
+     */
     $a_New = $this->goFonHomeServers[$this->goFonHomeServer];  // DB Configuration
-    $new_connection =  @mysql_pconnect($a_New['SERVER'],$a_New['LOGIN'],$a_New['PASSWORD']);
-    if(!$new_connection){
-      $this->generate_error =  msgPool::dbconnect($a_New['SERVER'],@mysql_error($new_connection),
+    $new_connection =& MDB2::connect(array( 'phptype'=>'mysql',
+                                            'hostspec'=>$a_New['SERVER'],
+                                            'username'=>$a_New['LOGIN'],
+                                            'password'=>$a_New['PASSWORD'],
+                                            'database'=>$a_New['DB'],
+                                    ));
+    if (PEAR::isError($new_connection)) {
+      $this->generate_error =  msgPool::dbconnect($a_New['SERVER'],$new_connection->getMessage(),
           _("Abort saving entries to keep the database consistent."));
-      new log("debug","gofonreport/".get_class($this),"",array(),@mysql_error($new_connection));
-      return false;
-    }
-    $new_database  =  @mysql_select_db($a_New['DB'],$new_connection);
-    if(!$new_database){
-      $this->generate_error =  msgPool::dbselect($a_New['DB'],@mysql_error($new_connection),
-          _("Abort saving entries to keep the database consistent."));
-      new log("debug","gofonreport/".get_class($this),"",array(),@mysql_error($new_connection));
+      new log("debug","gofonreport/".get_class($this),"",array(),$new_connection->getMessage());
       return false;
     }
 
-    /* If the home server has changed, we must remove entries from old 
-     *  server and add new entries in new server.  
+    /* If the home server has changed, we must remove entries from old
+     *  server and add new entries in new server.
      */
     if($this->init_HomeServer != $this->goFonHomeServer){
-    
-      /* Get configuration to old asterisk home server */ 
+
+      /* Get configuration to old asterisk home server */
       $a_Remove = $this->goFonHomeServers[$this->init_HomeServer];  // DB Configuration
- 
-      /* Create connection to the database that contains the old entry. 
+
+      /* Create connection to the database that contains the old entry.
        */
+      $old_connection =& MDB2::connect(array( 'phptype'=>'mysql',
+                                              'hostspec'=>$a_Remove['SERVER'],
+                                              'username'=>$a_Remove['LOGIN'],
+                                              'password'=>$a_Remove['PASSWORD'],
+                                              'database'=>$a_Remove['DB'],
+                                      ));
       $old_connection =  @mysql_pconnect($a_Remove['SERVER'],$a_Remove['LOGIN'],$a_Remove['PASSWORD']);
-      if(!$old_connection){
-        $this->generate_error =  msgPool::dbconnect($a_Remove['SERVER'],@mysql_error($old_connection),
+      if (PEAR::isError($old_connection)) {
+        $this->generate_error =  msgPool::dbconnect($a_Remove['SERVER'],$old_connection->getMessage(),
             _("Abort saving entries to keep the database consistent."));
-        new log("debug","gofonreport/".get_class($this),"",array(),@mysql_error($old_connection));
-        return false;
-      }
-      $old_database  =  @mysql_select_db($a_Remove['DB'],$old_connection);
-      if(!$old_database){
-        $this->generate_error =  msgPool::dbselect($a_Remove['DB'],@mysql_error($old_connection),
-            _("Abort saving entries to keep the database consistent."));
-        new log("debug","gofonreport/".get_class($this),"",array(),@mysql_error($old_connection));
+        new log("debug","gofonreport/".get_class($this),"",array(),$old_connection->getMessage());
         return false;
       }
     }
@@ -655,33 +643,32 @@ class phoneAccount extends plugin
 
     /* Save means that we must save changes, not only test  */
     if($save == true){
-    
-      /********************** 
-       * Remove entries from old home server 
+
+      /**********************
+       * Remove entries from old home server
        **********************/
 
-      /* Check if there is an old entry 
-       * If there is an old entry, get callerid and remove voicemail and extensions 
+      /* Check if there is an old entry
+       * If there is an old entry, get callerid and remove voicemail and extensions
        */
-      if($old_connection){
+      if ($old_connection) {
 
         /* Check table definitions
          */
-        if(!phoneAccount::checkRealtimeTables($a_Remove)){
+        if (!phoneAccount::checkRealtimeTables($a_Remove)) {
           msg_dialog::display(_("Warning"),
               sprintf(_("FusionDirectory identified problems with your MySQL table definition!")),
               WARNING_DIALOG);
         }
 
         $query  = "SELECT id,name,callerid FROM ".$a_Remove['SIP_TABLE']." WHERE name='".$this->uid."';";
-        $rid    = mysql_query($query,$old_connection);
-        @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,$query, 
+        $rid    =& $old_connection->query($query);
+        @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,$query,
             "<i>Reguest callerid to be able to identify the user.</i>");
 
         /* Old entry found, remove it */
         $query_a = array();
-        if(mysql_affected_rows($old_connection)){
-          $result = mysql_fetch_assoc($rid);
+        if($result = $rid->fetchRow(MDB2_FETCHMODE_ASSOC)){
 
           /* Set mode to strict
              Strict disallows the addition of entries that do not match the targets field length.
@@ -694,41 +681,42 @@ class phoneAccount extends plugin
             $query_a[]= "DELETE FROM ".$a_Remove['EXT_TABLE']." WHERE exten='".$s_telenums."';";
           }
 
-          /* Start transaction, to be able to rollback 
+          /* Start transaction, to be able to rollback
            */
           @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"<b>---Removing entry from old server---</b>","");
 
-          mysql_query("begin;",$old_connection);
+          $old_connection->beginTransaction();
           @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"<b>begin;</b>","<i>Starting transaction!</i>");
 
           foreach($query_a as $query){
             @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"<b>".$query."</b>", "");
-            if(!mysql_query($query,$old_connection)){
-              $err = mysql_error($old_connection);
+            $res = $old_connection->exec($query);
+            if (PEAR::isError($res)) {
+              $err = $res->getMessage();
               @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"\n".$err, "<b>FAILED</b>");
-              msg_dialog::display(_("Error"), 
+              msg_dialog::display(_("Error"),
                   msgPool::mysqlerror($err,__CLASS__)."&nbsp;".
                   "\n<p>"._("Please activate debugging for details!")."</p>",
                   ERROR_DIALOG);
 
-              mysql_query("rollback;",$old_connection);
+              $old_connection->rollback();
               @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"<b>rollback;</b>", "<b>ERROR</b> Rollback transaction!");
-              @mysql_close($old_connection);
+              $old_connection->disconnect();
               return(false);
-            } 
+            }
           }
 
           /* Let changes get active, everything was fine;
-           */ 
-          mysql_query("commit;",$old_connection);
+           */
+          $old_connection->commit();
           @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"<b>commit;</b>", "");
           @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"<b>---Transaction sucessful!---</b>", "");
         }
       }
 
 
-      /********************** 
-       * Update / Insert sip_users entry  
+      /**********************
+       * Update / Insert sip_users entry
        **********************/
 
       /* Check table definitions
@@ -741,7 +729,7 @@ class phoneAccount extends plugin
 
 
       /* Set the first given phone number as callerid */
-      reset($newnums);        
+      reset($newnums);
       $i_new_key = key($newnums);
       $sip_data_array['callerid']  =$newnums[$i_new_key];
       $sip_data_array['mailbox']   =$newnums[$i_new_key]."@".$this->voice_context;
@@ -749,19 +737,18 @@ class phoneAccount extends plugin
       /* Check if there is already an entry in sip_users for this uid */
       $SQL_query_array = array();
 
-      /* Enforce strict mode, ensures inout validation, e.g. target field length 
+      /* Enforce strict mode, ensures inout validation, e.g. target field length
        */
       $SQL_query_array[] = "SET @@sql_mode = STRICT_ALL_TABLES;";
 
-      $query = "SELECT * FROM ".$a_New['SIP_TABLE']." WHERE name='".$this->uid."';\n"; 
-      $rid = mysql_query($query,$new_connection);
+      $query = "SELECT * FROM ".$a_New['SIP_TABLE']." WHERE name='".$this->uid."';\n";
+      $rid =& $new_connection->query($query);
       @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,$query, "Receive current mysql entries.");
-      if(mysql_affected_rows($new_connection)){
+      if ($result = $rid->fetchRow(MDB2_FETCHMODE_ASSOC)) {
 
-        /********************** 
-         * Update sip_users entry 
+        /**********************
+         * Update sip_users entry
          **********************/
-        $result                     = mysql_fetch_assoc($rid);
         $sip_data_array['host']         = $s_host;
         $sip_data_array['qualify']      = $s_qualify;
         $sip_data_array['secret']       = $this->goFonPIN;
@@ -771,29 +758,29 @@ class phoneAccount extends plugin
         $sip_data_array['context']      = $this->context;
 
         /* Remove not changed attributes, to avoid updating table with same values */
-        foreach($sip_data_array as $name => $value){
-          if($result[$name] == $value){
+        foreach($sip_data_array as $name => $value) {
+          if ($result[$name] == $value) {
             unset($sip_data_array[$name]);
           }
         }
         /* Only update entry if there is something to uopdate */
-        if(count($sip_data_array)){
+        if (count($sip_data_array)) {
           $query = "UPDATE ".$a_New['SIP_TABLE']." SET ";
-          foreach($sip_data_array as $key => $val){
-            $query.= "".$key."='".$val."',"; 
-          } 
+          foreach($sip_data_array as $key => $val) {
+            $query.= "".$key."='".$val."',";
+          }
           $query = preg_replace("/,$/","",$query);
           $query.= " WHERE name='".$this->uid."';";
           $SQL_query_array[] = $query;
         }
       } else {
 
-        /********************** 
-         * Insert sip_users entry 
+        /**********************
+         * Insert sip_users entry
          **********************/
         //generate SIP entry
         $sip_data_array['name']         = $this->uid;
-        $sip_data_array['accountcode']  = NULL;          
+        $sip_data_array['accountcode']  = NULL;
         $sip_data_array['amaflags']     = NULL;
         $sip_data_array['callgroup']    = NULL;
         $sip_data_array['canreinvite']  = "no";
@@ -827,10 +814,10 @@ class phoneAccount extends plugin
         $sip_data_array['regexten']     = NULL;
         $sip_data_array['cancallforward']=NULL;
 
-        /* There is currently no entry for this user in the sip_users table. 
+        /* There is currently no entry for this user in the sip_users table.
          * We should create one i
          */
-        foreach($sip_data_array as $s_sip_key=>$s_sip_val){
+        foreach($sip_data_array as $s_sip_key=>$s_sip_val) {
           if($s_sip_val === NULL) continue;
           $s_sip_values.="'".$s_sip_val."',";
           $s_sip_keys  .="`".$s_sip_key."`,";
@@ -843,18 +830,18 @@ class phoneAccount extends plugin
       }
 
 
-      /********************** 
-       * Update / Insert Voice mail entry  
+      /**********************
+       * Update / Insert Voice mail entry
        **********************/
 
       $customer_id = $newnums[$i_new_key];
       $query  = "SELECT id,name,callerid FROM ".$a_New['SIP_TABLE']." WHERE name='".$this->uid."';";
-      $rid    = mysql_query($query,$new_connection);
+      $rid    =& $new_connection->query($query);
 
       @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,$query, "Receive callerid");
-      $result = mysql_fetch_assoc($rid);
+      $result = $rid->fetchRow(MDB2_FETCHMODE_ASSOC);
 
-      $old_customer_id = ""; 
+      $old_customer_id = "";
       if($result){
         $old_customer_id = $result['callerid'];
       }
@@ -871,47 +858,46 @@ class phoneAccount extends plugin
 
       /* Check if there is already an entry in sip_users for this uid */
       $query_tmp = "SELECT * FROM ".$a_New['VOICE_TABLE']." WHERE customer_id='".$old_customer_id."';\n";
-      $rid = mysql_query($query_tmp,$new_connection);
+      $rid =& $new_connection->query($query_tmp);
 
       @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,$query_tmp, "Check if voicemail entry exists");
-      if(mysql_affected_rows($new_connection)){
+      if ($result = $rid->fetchRow(MDB2_FETCHMODE_ASSOC)) {
 
-        /********************** 
-         * Update Voice mail entry  
+        /**********************
+         * Update Voice mail entry
          **********************/
 
         @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"", "<i>Voicemail entry exists, adding updating to queue.</i>");
-        $result = mysql_fetch_assoc($rid)  ;
 
-        foreach($voice_data_array as $name => $value){
-          if($result[$name] == $value){
+        foreach ($voice_data_array as $name => $value) {
+          if ($result[$name] == $value) {
             unset($voice_data_array[$name]);
           }
         }
 
         /* Only update entry if there is something to update */
-        if(count($voice_data_array)){
+        if (count($voice_data_array)) {
           $query = "UPDATE ".$a_New['VOICE_TABLE']." SET ";
-          foreach($voice_data_array as $key => $val){
-            $query.= "".$key."='".$val."',"; 
-          } 
+          foreach ($voice_data_array as $key => $val) {
+            $query.= "".$key."='".$val."',";
+          }
           $query = preg_replace("/,$/","",$query);
           $query.= " WHERE customer_id='".$old_customer_id."';";
           $SQL_query_array[] = $query;
         }
-      }else{
+      } else {
 
-        /********************** 
-         * Insert Voice mail entry  
+        /**********************
+         * Insert Voice mail entry
          **********************/
         @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"", "<i>No voicemail entry found, add 'create' to queue.</i>");
         $voice_data_array['context'] = $this->voice_context;
 
-        /* There is currently no voice mail entry for this user. 
-         * We should create one 
+        /* There is currently no voice mail entry for this user.
+         * We should create one
          */
         $s_voi_values = $s_voi_keys = "";
-        foreach($voice_data_array as $s_voi_key=>$s_voi_val){
+        foreach($voice_data_array as $s_voi_key=>$s_voi_val) {
           if($s_voi_val === NULL) continue;
           $s_voi_values.="'".$s_voi_val."',";
           $s_voi_keys  .="`".$s_voi_key."`,";
@@ -924,36 +910,36 @@ class phoneAccount extends plugin
       }
 
 
-      /********************** 
+      /**********************
        * Remove/Insert extension entries
        **********************/
 
-      /* Initiate transaction 
+      /* Initiate transaction
        */
       $SQL_query_array[]= "DELETE FROM ".$a_New['EXT_TABLE']." WHERE exten=\"".$this->uid."\";";
       $oldnums= array();
-      foreach($oldnums as $s_telenums){
+      foreach($oldnums as $s_telenums) {
         $SQL_query_array[]= "DELETE FROM ".$a_New['EXT_TABLE']." WHERE exten=\"".$s_telenums."\";";
       }
-      foreach($newnums as $s_telenums){
+      foreach($newnums as $s_telenums) {
         $SQL_query_array[]= "DELETE FROM ".$a_New['EXT_TABLE']." WHERE exten=\"".$s_telenums."\";";
       }
 
-      /********************** 
+      /**********************
        * Insert extension entries
        **********************/
 
-      // Get selected Macro Parameter and create parameter entry 
-      if(isset($this->macroarray[$this->macro])){
-        foreach($this->macroarray[$this->macro] as $key => $val ){
+      // Get selected Macro Parameter and create parameter entry
+      if (isset($this->macroarray[$this->macro])) {
+        foreach($this->macroarray[$this->macro] as $key => $val ) {
           $s_parameter .= $val['choosen']."|";
         }
         $s_parameter = preg_replace("/\|$/","",$s_parameter);
       }
 
-      $i = 0; 
+      $i = 0;
       $EXT = array();
-      if(!is_numeric($this->uid)){
+      if (!is_numeric($this->uid)) {
         $EXT[$i]['context'] = 'FusionDirectory';
         $EXT[$i]['exten']   = $this->uid;
         $EXT[$i]['priority']= 1;
@@ -963,29 +949,29 @@ class phoneAccount extends plugin
       }
 
       // Entension entries  Hint / Dial / Goto
-      foreach($newnums as $s_telenums){
+      foreach($newnums as $s_telenums) {
 
         /* Hint Entry */
         $EXT[$i]['context'] = 'FusionDirectory';
         $EXT[$i]['exten']   = $s_telenums;
         $EXT[$i]['priority']= 0;
         $EXT[$i]['app']     = 'SIP/'.$this->uid;
-        $i ++;  
+        $i ++;
         /* SetCID */
         //$EXT[$i]['context'] = 'FusionDirectory';
         //$EXT[$i]['exten']   = $s_telenums;
         //$EXT[$i]['priority']= 1;
         //$EXT[$i]['app']     = "SetCIDName";
         //$EXT[$i]['appdata'] = $CNname;
-        //$i ++;  
+        //$i ++;
 
         // If no macro is selected use Dial
-        if($this->macro!="none"){ 
-          $macroname = preg_replace("/,.*$/","",$this->macro);        
-          $macroname = preg_replace("/^.*=/","",$macroname);        
+        if ($this->macro!="none") {
+          $macroname = preg_replace("/,.*$/","",$this->macro);
+          $macroname = preg_replace("/^.*=/","",$macroname);
           $s_app = "Macro";$macroname;
-          $s_par = $macroname."|".$s_parameter; 
-        }else{
+          $s_par = $macroname."|".$s_parameter;
+        } else {
           $s_app = "Dial";
           $s_par = 'SIP/'.$this->uid."|20|r";
         }
@@ -998,14 +984,14 @@ class phoneAccount extends plugin
         $i ++;
       }
 
-      // Append all these Entries 
-      foreach($EXT as $entr){
+      // Append all these Entries
+      foreach($EXT as $entr) {
         $SQL_syn = "INSERT INTO ".$a_New['EXT_TABLE']." (";
-        foreach($entr as $key2 => $val2){
+        foreach($entr as $key2 => $val2) {
           $SQL_syn.= "`".$key2."`,";
         }
         $SQL_syn = preg_replace("/,$/","",$SQL_syn);
-        $SQL_syn .= ") VALUES ("; 
+        $SQL_syn .= ") VALUES (";
         foreach($entr as $key2 => $val2){
           $SQL_syn .= "'".$val2."',";
         }
@@ -1016,37 +1002,38 @@ class phoneAccount extends plugin
         $SQL_syn ="";
       }
 
-      /* Start transaction, to be able to rollback 
+      /* Start transaction, to be able to rollback
        */
       @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"<b>---Insert/Update new entry---</b>","");
 
-      mysql_query("begin;",$new_connection);
+      $new_connection->beginTransaction();
       @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"<b>begin;</b>","<i>Starting transaction!</i>");
 
       foreach($SQL_query_array as $query){
         @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"<b>".$query."</b>", "");
-        if(!mysql_query($query,$new_connection)){
-          $err = mysql_error($new_connection);
+        $res = $new_connection->exec($query);
+        if(PEAR::isError($res)){
+          $err = $res->getMessage();
           @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"\n".$err, "<b>FAILED</b>");
-          msg_dialog::display(_("Error"), 
+          msg_dialog::display(_("Error"),
               msgPool::mysqlerror($err,__CLASS__)."&nbsp;".
               "\n<p>"._("Please activate debugging for details!")."</p>",
               ERROR_DIALOG);
 
-          mysql_query("rollback;",$new_connection);
+          $new_connection->rollback();
           @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"<b>rollback;</b>", "<b>ERROR</b> Rollback transaction!");
-          @mysql_close($new_connection);
-          return(false);
-        } 
+          $new_connection->disconnect();
+          return false;
+        }
       }
-     
+
       /* Let changes get active, everything was fine;
-       */ 
-      mysql_query("commit;",$new_connection);
+       */
+      $new_connection->commit();
       @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"<b>commit;</b>", "Perform transaction!");
       @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"<b>---Transaction sucessful!---</b>", "");
     }
-    @mysql_close($new_connection);
+    $new_connection->disconnect();
     return true;
   }
 
@@ -1100,7 +1087,7 @@ class phoneAccount extends plugin
         }
       }
     }
-    
+
     /* Do we represent a valid account? */
     if (!$this->is_account && $this->parent === NULL){
       $display= "<img alt=\"\" src=\"images/small-error.png\" align=\"middle\">&nbsp;<b>".
@@ -1125,7 +1112,7 @@ class phoneAccount extends plugin
     $display= "";
 
     /* Show tab dialog headers */
-    
+
     if (!$this->multiple_support_active && $this->parent !== NULL){
       if ($this->is_account){
         $display= $this->show_disable_header(_("Remove phone account"),
@@ -1155,8 +1142,8 @@ class phoneAccount extends plugin
     }
 
     /* Assing macroselectbox values  */
-    $smarty->assign("macros",$this->macros);   
-    $smarty->assign("macro", $this->macro);   
+    $smarty->assign("macros",$this->macros);
+    $smarty->assign("macro", $this->macro);
 
     /* Assign contexts */
     $smarty->assign("voicemail_contexts",$this->voicemail_contexts);
@@ -1169,8 +1156,8 @@ class phoneAccount extends plugin
       msg_dialog::display(_("Configuration error"), msgPool::noserver(_("GOfon")), WARNING_DIALOG);
     }
 
-    /* Create html parameter table for selected macro parameters 
-     *  skip if no parameters given 
+    /* Create html parameter table for selected macro parameters
+     *  skip if no parameters given
      */
     if(!isset($this->macroarray[$this->macro])){
       $macrotab="";
@@ -1182,7 +1169,7 @@ class phoneAccount extends plugin
       foreach($this->phoneNumbers as $phonenum){
         $tmp[] = $phonenum;
       }
-    
+
       if($this->macro != $this->lastmacro){
         /* Go through all params */
         foreach($this->macroarray[$this->macro] as $key => $paras){
@@ -1213,11 +1200,11 @@ class phoneAccount extends plugin
       foreach($this->macroarray[$this->macro] as $paras){
 
         /* get al vars */
-        $var        = $paras['var'];           
-        $name       = $paras['name'];           
+        $var        = $paras['var'];
+        $name       = $paras['name'];
         $default    = $paras['default'];
         $type       = $paras['type'];
-        $choosen    = $paras['choosen'] ; 
+        $choosen    = $paras['choosen'] ;
         $str        = $default;
 
         $dis = "";
@@ -1373,7 +1360,7 @@ class phoneAccount extends plugin
   {
     $SkipWrite = (!isset($this->parent) || !$this->parent) && !session::is_set('edit');
     if (isset($_POST["phoneTab"])){
-    
+
       plugin::save_object();
 
       /* Save checkbox */
@@ -1416,7 +1403,7 @@ class phoneAccount extends plugin
 
       if(is_array($this->phoneNumbers)){
         foreach($this->phoneNumbers as $telenumms) {
-          $nummsinorder[]=$telenumms; 
+          $nummsinorder[]=$telenumms;
         }
       }else{
         $nummsinorder=array("");
@@ -1430,7 +1417,7 @@ class phoneAccount extends plugin
         if($this->acl_is_writeable("goFonMacro",$SkipWrite)){
           foreach($this->macroarray[$this->macro] as $key => $paras){
 
-            $old_macro_settings = $this->macroarray[$this->macro][$key]; 
+            $old_macro_settings = $this->macroarray[$this->macro][$key];
             $backup = $this->macroarray[$this->macro][$key];
 
             if(isset($_POST[$paras['var']])){
@@ -1500,11 +1487,11 @@ class phoneAccount extends plugin
       $message[]= msgPool::required("Phone number");
     }
 
-    /* Do not allow to save duplicate phone numbers 
+    /* Do not allow to save duplicate phone numbers
      *  this may destroy the extensions table.
-     */ 
+     */
     $ldap = $this->config->get_ldap_link();
-    $ldap->cd($this->config->current['BASE']);  
+    $ldap->cd($this->config->current['BASE']);
     $numberFilter = "";
     foreach($this->phoneNumbers as $number){
       $numberFilter .= "(telephoneNumber={$number})";
@@ -1538,8 +1525,8 @@ class phoneAccount extends plugin
   {
     plugin::save();
 
-    /* Force saving macro again 
-     * This ensures that 
+    /* Force saving macro again
+     * This ensures that
      *  - the macro is available on the destiantion server.
      *  - the macro saved is up to date on the destination server.
      */
@@ -1555,7 +1542,7 @@ class phoneAccount extends plugin
     }
 
     /* Save settings, or remove goFonMacro attribute*/
-    if($this->macro!="none"){    
+    if($this->macro!="none"){
       $this->attrs['goFonMacro']=$this->macro;
       if(isset($this->macroarray[$this->macro])){
         foreach($this->macroarray[$this->macro] as $paras)  {
@@ -1586,10 +1573,10 @@ class phoneAccount extends plugin
     $ldap= $this->config->get_ldap_link();
     $ldap->cd($this->dn);
     $this->cleanup();
-    
+
     /* Force saving numbers, else it will be overwriten by user account. */
     $this->attrs['telephoneNumber'] =$tmp_numbers;
-    $ldap->modify ($this->attrs); 
+    $ldap->modify ($this->attrs);
 
     /* Log last action */
     if($this->initially_was_account){
@@ -1633,7 +1620,7 @@ class phoneAccount extends plugin
   {
     if(!$this->initially_was_account) return;
 
-    if(count($this->goFonHomeServers) && !empty($this->init_HomeServer) && is_callable("mysql_pconnect")){
+    if (count($this->goFonHomeServers) && !empty($this->init_HomeServer)) {
 
       // Get Configuration for initial Mysql database Server
       $a_SETUP = $this->goFonHomeServers[$this->init_HomeServer];
@@ -1641,29 +1628,24 @@ class phoneAccount extends plugin
 
       /* Check table definitions
        */
-      if(!phoneAccount::checkRealtimeTables($a_SETUP)){
+      if (!phoneAccount::checkRealtimeTables($a_SETUP)) {
         msg_dialog::display(_("Warning"),
             sprintf(_("FusionDirectory identified problems with your MySQL table definition!")),
             WARNING_DIALOG);
       }
 
       // Connect to DB server
-      $r_con =  @mysql_pconnect($a_SETUP['SERVER'],$a_SETUP['LOGIN'],$a_SETUP['PASSWORD']);
+      $r_con =& MDB2::connect(array( 'phptype'=>'mysql',
+                                    'hostspec'=>$a_SETUP['SERVER'],
+                                    'username'=>$a_SETUP['LOGIN'],
+                                    'password'=>$a_SETUP['PASSWORD'],
+                                    'database'=>$a_SETUP['DB'],
+                            ));
 
       // Check if we are  connected correctly
-      if(!$r_con){
-        msg_dialog::display(_("Error"), msgPool::dbconnect("GOfon",@mysql_error()), ERROR_DIALOG);
-        new log("debug","gofonreport/".get_class($this),"",array(),@mysql_error());
-        return false;
-      }
-
-      // Select database for Extensions
-      $db  =  @mysql_select_db($a_SETUP['DB'],$r_con);
-
-      // Test if we have the database selected correctly
-      if(!$db){
-        msg_dialog::display(_("Error"), msgPool::dbselect("GOfon", @mysql_error()), ERROR_DIALOG);
-        new log("debug","gofonreport/".get_class($this),"",array(),@mysql_error());
+      if (PEAR::isError($r_con)) {
+        msg_dialog::display(_("Error"), msgPool::dbconnect("GOfon",$r_con->getMessage()), ERROR_DIALOG);
+        new log("debug","gofonreport/".get_class($this),"",array(),$r_con->getMessage());
         return false;
       }
 
@@ -1681,11 +1663,11 @@ class phoneAccount extends plugin
 
 
       $query  = "SELECT id,name,callerid FROM ".$a_SETUP['SIP_TABLE']." WHERE name='".$this->uid."';";
-      $rid    = mysql_query($query,$r_con);
+      $rid    =& $r_con->query($query);
       @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,$query, "Database query");
-      $result = mysql_fetch_assoc($rid);
+      $result = $rid->fetchRow(MDB2_FETCHMODE_ASSOC);
       $callerid = $first_num;
-      if($result){
+      if ($result) {
         $callerid = $result['callerid'];
       }
 
@@ -1700,30 +1682,30 @@ class phoneAccount extends plugin
        */
       @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"<b>---Removing entry from server---</b>","");
 
-      mysql_query("begin;",$r_con);
+      $r_con->beginTransaction();
       @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"<b>begin;</b>","<i>Starting transaction!</i>");
 
       foreach($SQL as $query){
         @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"<b>".$query."</b>", "");
-
-        if(!mysql_query($query,$r_con)){
-          $err = mysql_error($r_con);
+        $res = $r_con->exec($query);
+        if(PEAR::isError($res)){
+          $err = $res->getMessage();
           @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"\n".$err, "<b>FAILED</b>");
           msg_dialog::display(_("Error"),
               msgPool::mysqlerror($err,__CLASS__)."&nbsp;".
               "\n<p>"._("Please activate debugging for details!")."</p>",
               ERROR_DIALOG);
 
-          mysql_query("rollback;",$r_con);
+          $r_con->rollback();
           @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"<b>rollback;</b>", "<b>ERROR</b> Rollback transaction!");
-          @mysql_close($r_con);
-          return(false);
+          $r_con->disconnect();
+          return false;
         }
       }
 
       /* Let changes get active, everything was fine;
        */
-      mysql_query("commit;",$r_con);
+      $r_con->commit();
       @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"<b>commit;</b>", "");
       @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"<b>---Transaction sucessful!---</b>", "");
 
@@ -1766,7 +1748,7 @@ class phoneAccount extends plugin
     }
     $ldap->cd($this->dn);
     $this->cleanup();
-    $ldap->modify ($this->attrs); 
+    $ldap->modify ($this->attrs);
 
     new log("remove","users/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
     if (!$ldap->success()){
@@ -1774,7 +1756,7 @@ class phoneAccount extends plugin
     }
 
     /* Optionally execute a command after we're done */
-    @mysql_close($r_con);
+    $r_con->disconnect();
     $this->handle_post_events('remove',array("uid"=> $this->uid));
   }
 
@@ -1809,7 +1791,7 @@ class phoneAccount extends plugin
 
   /* Create phoneAccount part of copy & paste dialog */
   function getCopyDialog()
-  { 
+  {
     if(!$this->is_account) return("");
     $smarty = get_smarty();
     if (!count($this->phoneNumbers)){
@@ -1890,7 +1872,7 @@ class phoneAccount extends plugin
     $ret = plugin::get_multi_init_values();
     $ret['phoneNumbers'] = array();
     foreach($this->phoneNumbers as $number){
-      $ret['phoneNumbers'][] = $number."  [".$this->attrs['cn'][0]."]"; 
+      $ret['phoneNumbers'][] = $number."  [".$this->attrs['cn'][0]."]";
     }
     $ret['phoneNumbers']['count'] = count($ret['phoneNumbers']);
     return($ret);
@@ -1962,7 +1944,7 @@ class phoneAccount extends plugin
       $message[] = _("Asterisk server is invalid!");
     }
 
-    if(in_array("goFonVoicemailPIN",$this->multi_boxes) && 
+    if(in_array("goFonVoicemailPIN",$this->multi_boxes) &&
         ( (strlen($this->goFonVoicemailPIN)==0)||
           (strlen($this->goFonVoicemailPIN)>4))){
       $message[]=(_("Voicemail PIN must be 4 characters long!"));
