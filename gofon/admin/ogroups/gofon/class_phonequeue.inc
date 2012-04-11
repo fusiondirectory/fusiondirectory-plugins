@@ -20,6 +20,8 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
+require_once("MDB2.php")
+
 class phonequeue extends plugin
 {
   /* plugin specific values */
