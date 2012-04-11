@@ -21,21 +21,21 @@
 
 
 /* Basic setup, remove eventually registered sessions */
-@require_once ("../../../include/php_setup.inc");
-@require_once ("functions.inc");
-error_reporting (0);
+require_once ("php_setup.inc");
+require_once ("functions.inc");
+error_reporting(0);
 session::start();
 session::set('errorsAlreadyPosted',array());
 
 /* Logged in? Simple security check */
-if (!session::is_set('ui')){
+if (!session::is_set('ui')) {
   new log("security","all/all","",array(),"Error: getvcard.php called without session") ;
   header ("Location: index.php");
   exit;
 }
 
 /* Uid parameter set? */
-if (!isset($_GET['dn']) || $_GET['dn'] == ""){
+if (!isset($_GET['dn']) || $_GET['dn'] == "") {
   msg_dialog::display(_("Internal error"), _("Missing parameters!"), FATAL_ERROR_DIALOG);
   exit;
 }
@@ -56,14 +56,14 @@ if (preg_match('/MSIE 5.5/', $HTTP_USER_AGENT) ||
 }
 
 /* Get entry */
-$config= session::get('config');
-$ldap= $config->get_ldap_link();
+$config = session::get('config');
+$ldap = $config->get_ldap_link();
 $ldap->cat(base64_decode(validate($_GET['dn'])));
 
-/* 
+/*
  * Generate vcard for specified IDs
  */
-while ($attrs= $ldap->fetch()){
+while ($attrs= $ldap->fetch()) {
   /* Header / Name */
   echo "BEGIN:VCARD\n";
   echo "VERSION:3.0\n";
@@ -71,11 +71,11 @@ while ($attrs= $ldap->fetch()){
 
   /* Assemble titles for N attribute */
   $titles= "";
-  if (isset($attrs['personalTitle'])){
+  if (isset($attrs['personalTitle'])) {
     $titles= $attrs['personalTitle'][0];
   }
-  if (isset($attrs['academicTitle'])){
-    if ($titles != ""){
+  if (isset($attrs['academicTitle'])) {
+    if ($titles != "") {
       $titles.= ",".$attrs['academicTitle'][0];
     } else {
       $titles= $attrs['academicTitle'][0];
@@ -84,19 +84,19 @@ while ($attrs= $ldap->fetch()){
   echo "N:".$attrs['sn'][0].";".$attrs['givenName'][0].";;;$titles\n";
 
   /* Generate random UID */
-  $uid= "";
+  $uid = "";
   srand(make_seed());
-  $chars= '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  for ($i= 0; $i<16; $i++){
+  $chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  for ($i= 0; $i<16; $i++) {
     $uid.= $chars[rand(0, strlen($chars)-1)];
   }
   echo "UID:$uid\n";
 
   /* Mail addresses */
-  if (isset($attrs['mail'][0])){
+  if (isset($attrs['mail'][0])) {
     echo "EMAIL;TYPE=internet,pref:".$attrs['mail'][0]."\n";
-    if (isset($attrs['gosaMailAlternateAddress'])){
-      for ($i= 0; $i<$attrs['gosaMailAlternateAddress']['count']; $i++){
+    if (isset($attrs['gosaMailAlternateAddress'])) {
+      for ($i= 0; $i<$attrs['gosaMailAlternateAddress']['count']; $i++) {
         echo "EMAIL;TYPE=internet:".
           $attrs['gosaMailAlternateAddress'][$i]."\n";
       }
@@ -108,58 +108,58 @@ while ($attrs= $ldap->fetch()){
   echo "CLASS:PUBLIC\n";
 
   /* Fill address */
-  if (isset($attrs['homePostalAddress'])){
+  if (isset($attrs['homePostalAddress'])) {
     @list($street,$town,$country)= preg_split('/\n/', $attrs['homePostalAddress'][0]);
     echo "ADR;TYPE=home:;;".trim($street).";".trim($town).";;;".
       trim($country)."\n";
   }
-  if (isset($attrs['postalAddress'])){
+  if (isset($attrs['postalAddress'])) {
     @list($street,$town,$country)= preg_split('/\n/', $attrs['postalAddress'][0]);
     echo "ADR;TYPE=work,pref:;;".trim($street).";".trim($town).";;;".
       trim($country)."\n";
   }
 
   /* Telephone numbers */
-  if (isset($attrs['homePhone'])){
+  if (isset($attrs['homePhone'])) {
     echo "TEL;TYPE=home:".$attrs['homePhone'][0]."\n";
   }
-  if (isset($attrs['telephoneNumber'])){
+  if (isset($attrs['telephoneNumber'])) {
     echo "TEL;TYPE=work,pref:".$attrs['telephoneNumber'][0]."\n";
   }
-  if (isset($attrs['mobile'])){
+  if (isset($attrs['mobile'])) {
     echo "TEL;TYPE=cell:".$attrs['mobile'][0]."\n";
   }
-  if (isset($attrs['pager'])){
+  if (isset($attrs['pager'])) {
     echo "TEL;TYPE=pager:".$attrs['pager'][0]."\n";
   }
 
   /* Set organization */
-  if (isset($attrs['o'])){
+  if (isset($attrs['o'])) {
     echo "ORG:".$attrs['o'][0]."\n";
   }
 
   echo "NOTE:Exported by FusionDirectory - http://www.fusiondirectory.org\n";
   echo "SORT-STRING:".$attrs['sn'][0]."\n";
-  if (isset($attrs['labeledURI'][0])){
+  if (isset($attrs['labeledURI'][0])) {
     echo "URL:".$attrs['labeledURI'][0]."\n";
   }
 
   /* Add user certificate */
 #if (isset($attrs['userCertificate;binary'])){
-#	$cert= $ldap->get_attribute($ldap->getDN(), "userCertificate;binary");
-#	$cert= preg_replace('/\r\n/', chr(10).' ', chunk_split(base64_encode($cert)));
-#	echo "KEY;ENCODING=b:".preg_replace('/\n $/', '', $cert)."\n";
+# $cert= $ldap->get_attribute($ldap->getDN(), "userCertificate;binary");
+# $cert= preg_replace('/\r\n/', chr(10).' ', chunk_split(base64_encode($cert)));
+# echo "KEY;ENCODING=b:".preg_replace('/\n $/', '', $cert)."\n";
 #}
 
   /* Add picture */
-  if (isset($attrs['jpegPhoto'])){
+  if (isset($attrs['jpegPhoto'])) {
     $photodata= $ldap->get_attribute($ldap->getDN(), "jpegPhoto");
     $photodata= preg_replace('/\r\n/', chr(10).' ', chunk_split(base64_encode($photodata)));
     echo "PHOTO;ENCODING=b;TYPE=JPEG:".preg_replace('/\n $/', '', $photodata)."\n";
-  }	
+  }
 
   /* Day of birth */
-  if (isset($attrs['dayOfBirth'][0])){
+  if (isset($attrs['dayOfBirth'][0])) {
     echo "BDAY:".$attrs['dayOfBirth'][0]."\n";
   }
 
