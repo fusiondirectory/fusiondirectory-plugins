@@ -20,7 +20,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-require_once("MDB2.php")
+require_once("MDB2.php");
 
 class phonequeue extends plugin
 {
@@ -157,7 +157,6 @@ class phonequeue extends plugin
     $this->old_phone_numbers = $this->telephoneNumber;
   }
 
-
   function connect_sql($config)
   {
     $link =& MDB2::connect(array( 'phptype'=>'mysql',
@@ -169,39 +168,21 @@ class phonequeue extends plugin
     return $link;
   }
 
-  /* This function ensures that the selected home server
-   * and the initially selected home server are reachable and accessible
-   */
-  function check_database_accessibility()
-  {
-    /********************
-     * Check currently selected home server
-     ********************/
-
-    $cfg_Current  = $this->goFonHomeServers[$this->goFonHomeServer];
-    $r_current    =  connect_sql($cfg_Current);
-    if (PEAR::isError($r_current)) {
-      new log("debug",("GOfon/".get_class($this),"",array(),$r_current->getMessage());
-      return msgPool::dbconnect("GOfon",$r_current->getMessage(),$cfg_Current['SERVER']);
-    }
-  }
-
-
   /* Display plugin ui */
   function execute()
   {
     /* Call parent execute */
     plugin::execute();
 
-    if($this->is_account && !$this->view_logged){
+    if ($this->is_account && !$this->view_logged) {
       $this->view_logged = TRUE;
       new log("view","ogroups/".get_class($this),$this->dn);
     }
 
-    if(isset($_POST['modify_state'])){
-      if($this->is_account && $this->acl_is_removeable()){
+    if (isset($_POST['modify_state'])) {
+      if ($this->is_account && $this->acl_is_removeable()) {
         $this->is_account= FALSE;
-      }elseif(!$this->is_account && $this->acl_is_createable()){
+      } elseif(!$this->is_account && $this->acl_is_createable()) {
         $this->is_account= TRUE;
       }
     }

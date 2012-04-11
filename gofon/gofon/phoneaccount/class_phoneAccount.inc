@@ -20,7 +20,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-require_once("MDB2.php")
+require_once("MDB2.php");
 
 class phoneAccount extends plugin
 {
@@ -164,17 +164,6 @@ class phoneAccount extends plugin
           $this->init_HomeServer = $this->goFonHomeServers[0]['DN'];
         }
         $cur_cfg = $this->goFonHomeServers[$this->goFonHomeServer];
-
-        $r_con =& MDB2::connect(array( 'phptype'=>'mysql',
-                                      'hostspec'=>$cur_cfg['SERVER'],
-                                      'username'=>$cur_cfg['LOGIN'],
-                                      'password'=>$cur_cfg['PASSWORD'],
-                                      'database'=>$cur_cfg['DB'],
-                              ));
-        if (PEAR::isError($r_con)) {
-          new log("debug","gofonreport/".get_class($this),"",array(),$r_con->getMessage());
-        }
-
         $first = false;
         foreach($this->phoneNumbers as $key => $val){
           if(!$first){
@@ -365,14 +354,7 @@ class phoneAccount extends plugin
         (isset($cur_cfg['SERVER']))&&
         (isset($cur_cfg['LOGIN']))&&
         (isset($cur_cfg['PASSWORD']))){
-
-      $r_con =& MDB2::connect(array(  'phptype'=>'mysql',
-                                      'hostspec'=>$cur_cfg['SERVER'],
-                                      'username'=>$cur_cfg['LOGIN'],
-                                      'password'=>$cur_cfg['PASSWORD'],
-                                      'database'=>$cur_cfg['DB'],
-                              ));
-      $r_con =  @mysql_pconnect($cur_cfg['SERVER'],$cur_cfg['LOGIN'],$cur_cfg['PASSWORD']);
+      $r_con = connect_sql($cur_cfg);
       if (PEAR::isError($r_con)) {
         msg_dialog::display(_("Warning"), msgPool::dbselect($cur_cfg['DB'],$r_con->getMessage()), WARNING_DIALOG);
       } else {
@@ -406,6 +388,17 @@ class phoneAccount extends plugin
     $this->lastmacro=$this->macro;
   }
 
+  function connect_sql($config)
+  {
+    $link =& MDB2::connect(array( 'phptype'=>'mysql',
+                                  'hostspec'=>$config['SERVER'],
+                                  'username'=>$config['LOGIN'],
+                                  'password'=>$config['PASSWORD'],
+                                  'database'=>$config['DB'],
+                        ));
+    return $link;
+  }
+
 
   /* Transaction will only work with InnoDB tables
    */
@@ -419,38 +412,36 @@ class phoneAccount extends plugin
         (isset($config['LOGIN']))&&
         (isset($config['PASSWORD']))){
 
-      $r_con =& MDB2::connect(array( 'phptype'=>'mysql',
-                                    'hostspec'=>$config['SERVER'],
-                                    'username'=>$config['LOGIN'],
-                                    'password'=>$config['PASSWORD'],
-                                    'database'=>$config['DB'],
-                            ));
-      if (!PEAR::isError($r_con)) {
-        /* Validate Table Type - it must be InnoDB to be able to use transactions
-         */
-        $inno_tables = array("SIP_TABLE","EXT_TABLE","VOICE_TABLE","QUEUE_TABLE","QUEUE_MEMBER_TABLE");
-        foreach($inno_tables as $inno_table) {
-          $sql = "show table status like '".$config[$inno_table]."';";
-          $res =& $r_con->query($sql);
-          $vp  = $res->fetchRow(MDB2_FETCHMODE_ASSOC);
-          if (!preg_match("/^InnoDB$/i",$vp['Engine'])) {
+      $r_con = connect_sql($config);
+      if (PEAR::isError($r_con)) {
+        new log("debug",("GOfon/".get_class($this),"",array(),$r_con->getMessage());
+        return FALSE;
+      }
 
-            /* Not an InnoDB Table type, try to modify type.
-             */
-            $sql = "ALTER TABLE `".$config[$inno_table]."` ENGINE = INNODB; ";
-            $res = $r_con->exec($sql);
-            if (PEAR::isError($res)) {
-              @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"<b>".$sql."</b>",
-                  "<b>FAILED!</b>. Transactions will not work!");
-              $ret = FALSE;
-            } else {
-              @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"<b>".$sql."</b>",
-                  "<i>Table '".$config[$inno_table]."' is now of type InnoDB, this enables transactions.</i>");
-            }
+      /* Validate Table Type - it must be InnoDB to be able to use transactions
+       */
+      $inno_tables = array("SIP_TABLE","EXT_TABLE","VOICE_TABLE","QUEUE_TABLE","QUEUE_MEMBER_TABLE");
+      foreach($inno_tables as $inno_table) {
+        $sql = "show table status like '".$config[$inno_table]."';";
+        $res =& $r_con->query($sql);
+        $vp  = $res->fetchRow(MDB2_FETCHMODE_ASSOC);
+        if (!preg_match("/^InnoDB$/i",$vp['Engine'])) {
+
+          /* Not an InnoDB Table type, try to modify type.
+           */
+          $sql = "ALTER TABLE `".$config[$inno_table]."` ENGINE = INNODB; ";
+          $res = $r_con->exec($sql);
+          if (PEAR::isError($res)) {
+            @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"<b>".$sql."</b>",
+                "<b>FAILED!</b>. Transactions will not work!");
+            $ret = FALSE;
           } else {
-            @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"",
-                "<i>Table type of '".$config[$inno_table]."' OK, using transactions!</i>");
+            @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"<b>".$sql."</b>",
+                "<i>Table '".$config[$inno_table]."' is now of type InnoDB, this enables transactions.</i>");
           }
+        } else {
+          @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"",
+              "<i>Table type of '".$config[$inno_table]."' OK, using transactions!</i>");
         }
       }
     }
@@ -604,47 +595,37 @@ class phoneAccount extends plugin
      * Get configuration to old asterisk home server
      */
     $a_New = $this->goFonHomeServers[$this->goFonHomeServer];  // DB Configuration
-    $new_connection =& MDB2::connect(array( 'phptype'=>'mysql',
-                                            'hostspec'=>$a_New['SERVER'],
-                                            'username'=>$a_New['LOGIN'],
-                                            'password'=>$a_New['PASSWORD'],
-                                            'database'=>$a_New['DB'],
-                                    ));
+
+    $new_connection = connect_sql($a_New);
     if (PEAR::isError($new_connection)) {
       $this->generate_error =  msgPool::dbconnect($a_New['SERVER'],$new_connection->getMessage(),
           _("Abort saving entries to keep the database consistent."));
       new log("debug","gofonreport/".get_class($this),"",array(),$new_connection->getMessage());
-      return false;
+      return FALSE;
     }
 
     /* If the home server has changed, we must remove entries from old
      *  server and add new entries in new server.
      */
-    if($this->init_HomeServer != $this->goFonHomeServer){
+    if ($this->init_HomeServer != $this->goFonHomeServer) {
 
       /* Get configuration to old asterisk home server */
       $a_Remove = $this->goFonHomeServers[$this->init_HomeServer];  // DB Configuration
 
       /* Create connection to the database that contains the old entry.
        */
-      $old_connection =& MDB2::connect(array( 'phptype'=>'mysql',
-                                              'hostspec'=>$a_Remove['SERVER'],
-                                              'username'=>$a_Remove['LOGIN'],
-                                              'password'=>$a_Remove['PASSWORD'],
-                                              'database'=>$a_Remove['DB'],
-                                      ));
-      $old_connection =  @mysql_pconnect($a_Remove['SERVER'],$a_Remove['LOGIN'],$a_Remove['PASSWORD']);
+      $old_connection = connect_sql($a_Remove);
       if (PEAR::isError($old_connection)) {
         $this->generate_error =  msgPool::dbconnect($a_Remove['SERVER'],$old_connection->getMessage(),
             _("Abort saving entries to keep the database consistent."));
         new log("debug","gofonreport/".get_class($this),"",array(),$old_connection->getMessage());
-        return false;
+        return FALSE;
       }
     }
 
 
     /* Save means that we must save changes, not only test  */
-    if($save == true){
+    if ($save) {
 
       /**********************
        * Remove entries from old home server
@@ -670,7 +651,7 @@ class phoneAccount extends plugin
 
         /* Old entry found, remove it */
         $query_a = array();
-        if($result = $rid->fetchRow(MDB2_FETCHMODE_ASSOC)){
+        if ($result = $rid->fetchRow(MDB2_FETCHMODE_ASSOC)) {
 
           /* Set mode to strict
              Strict disallows the addition of entries that do not match the targets field length.
@@ -679,7 +660,7 @@ class phoneAccount extends plugin
           $query_a[]= "DELETE FROM ".$a_Remove['SIP_TABLE']." WHERE name='".$this->uid."';";
           $query_a[]= "DELETE FROM ".$a_Remove['VOICE_TABLE']." WHERE customer_id='".$result['callerid']."';";
           $query_a[]= "DELETE FROM ".$a_Remove['EXT_TABLE']." WHERE exten='".$this->uid."';";
-          foreach($oldnums as $s_telenums) {
+          foreach ($oldnums as $s_telenums) {
             $query_a[]= "DELETE FROM ".$a_Remove['EXT_TABLE']." WHERE exten='".$s_telenums."';";
           }
 
@@ -690,7 +671,7 @@ class phoneAccount extends plugin
           $old_connection->beginTransaction();
           @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"<b>begin;</b>","<i>Starting transaction!</i>");
 
-          foreach($query_a as $query){
+          foreach ($query_a as $query) {
             @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"<b>".$query."</b>", "");
             $res = $old_connection->exec($query);
             if (PEAR::isError($res)) {
@@ -1637,13 +1618,7 @@ class phoneAccount extends plugin
       }
 
       // Connect to DB server
-      $r_con =& MDB2::connect(array( 'phptype'=>'mysql',
-                                    'hostspec'=>$a_SETUP['SERVER'],
-                                    'username'=>$a_SETUP['LOGIN'],
-                                    'password'=>$a_SETUP['PASSWORD'],
-                                    'database'=>$a_SETUP['DB'],
-                            ));
-
+      $r_con = $this->connect_sql(a_SETUP);
       // Check if we are  connected correctly
       if (PEAR::isError($r_con)) {
         msg_dialog::display(_("Error"), msgPool::dbconnect("GOfon",$r_con->getMessage()), ERROR_DIALOG);
@@ -1687,10 +1662,10 @@ class phoneAccount extends plugin
       $r_con->beginTransaction();
       @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"<b>begin;</b>","<i>Starting transaction!</i>");
 
-      foreach($SQL as $query){
+      foreach ($SQL as $query) {
         @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"<b>".$query."</b>", "");
         $res = $r_con->exec($query);
-        if(PEAR::isError($res)){
+        if (PEAR::isError($res)) {
           $err = $res->getMessage();
           @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"\n".$err, "<b>FAILED</b>");
           msg_dialog::display(_("Error"),
@@ -1950,20 +1925,20 @@ class phoneAccount extends plugin
         ( (strlen($this->goFonVoicemailPIN)==0)||
           (strlen($this->goFonVoicemailPIN)>4))){
       $message[]=(_("Voicemail PIN must be 4 characters long!"));
-    }else{
-      if(preg_match("/[^0-9]/",$this->goFonVoicemailPIN) && in_array("goFonVoicemailPIN",$this->multi_boxes) ){
+    } else {
+      if (preg_match("/[^0-9]/",$this->goFonVoicemailPIN) && in_array("goFonVoicemailPIN",$this->multi_boxes) ) {
         $message[]=(_("Voicemail PIN contains invalid characters!"));
       }
     }
 
-    if(preg_match("/[^0-9a-z]/i",$this->goFonPIN) && in_array("goFonPIN",$this->multi_boxes)){
+    if (preg_match("/[^0-9a-z]/i",$this->goFonPIN) && in_array("goFonPIN",$this->multi_boxes)) {
       $message[]=(_("Phone pin contains invalid characters!"));
     }
 
     /* check for ! in any parameter setting*/
-    if(isset($this->macroarray[$this->macro]) && in_array("macro",$this->multi_boxes)){
-      foreach($this->macroarray[$this->macro] as $val){
-        if((strstr($val['choosen'],"!"))||(strstr($val['choosen'],"#"))){
+    if (isset($this->macroarray[$this->macro]) && in_array("macro",$this->multi_boxes)) {
+      foreach ($this->macroarray[$this->macro] as $val) {
+        if ((strstr($val['choosen'],"!"))||(strstr($val['choosen'],"#"))) {
           $message[] = sprintf(_("The parameter %s contains invalid char. '!,#' is used as delimiter"),$val['name']);
         }
       }
@@ -1975,7 +1950,7 @@ class phoneAccount extends plugin
   function get_multi_edit_values()
   {
     $ret = plugin::get_multi_edit_values();
-    if(in_array("macro",$this->multi_boxes)){
+    if (in_array("macro",$this->multi_boxes)) {
       $ret['macro'] = $this->macro;
       $ret['macroarray'] = $this->macroarray;
       $ret['macros'] = $this->macros;
@@ -1998,11 +1973,11 @@ class phoneAccount extends plugin
   function get_asterisk_contexts($file)
   {
     $contexts = array();
-    if(file_exists($file) && is_readable($file)){
-      foreach(file($file) as $context){
+    if (file_exists($file) && is_readable($file)) {
+      foreach (file($file) as $context) {
         $contexts[] = trim($context);
       }
-    }else{
+    } else {
       msg_dialog::display(_("Warning"), msgPool::cannotReadFile($file),WARNING_DIALOG);
       $contexts[] = "default";
     }

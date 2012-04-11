@@ -20,7 +20,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-require_once("MDB2.php")
+require_once("MDB2.php");
 
 //!  The Phone Macro Class: Handles Macro Contents, and some attributes.
 /*!
@@ -175,33 +175,16 @@ class macro extends plugin
     return($smarty->fetch (get_template_path('generic.tpl', TRUE)));
   }
 
-
-  /* This method check if all databases are reachable.
-   *  Returns with error message or an empty string on success.
-   *
-   * - Is mysql extension available
-   * - Is every server reachable
-   * - Does the database exists/is accessible
-   */
-  function check_database_accessibility()
+  function connect_sql($config)
   {
-    /********************
-     * Check all home server
-     ********************/
-    foreach($this->goFonHomeServers as $goFonHomeServer => $cfg_Current){
-      $link =& MDB2::connect(array( 'phptype'=>'mysql',
-                                  'hostspec'=>$cfg_Current['SERVER'],
-                                  'username'=>$cfg_Current['LOGIN'],
-                                  'password'=>$cfg_Current['PASSWORD'],
-                                  'database'=>$cfg_Current['DB'],
-                          ));
-      if(PEAR::isError($link)){
-        new log("debug","gofonmacro/".get_class($this),"",array(),$link->getMessage());
-        return(msgPool::dbconnect("GOfon",$link->getMessage(), $cfg_Current['SERVER']));
-      }
-    }
+    $link =& MDB2::connect(array( 'phptype'=>'mysql',
+                                  'hostspec'=>$config['SERVER'],
+                                  'username'=>$config['LOGIN'],
+                                  'password'=>$config['PASSWORD'],
+                                  'database'=>$config['DB'],
+                        ));
+    return $link;
   }
-
 
   /* Remove current macro from all asterisk server.
    * First of all check if we have access to all databases.
@@ -209,25 +192,18 @@ class macro extends plugin
    */
   function remove_from_database($save)
   {
-    /* Check if all databases are reachable */
-    $str = $this->check_database_accessibility();
-    if($str){
-      return($str);
-    }
-
     /* Create query string */
     $context  = addslashes("macro-".$this->cn);
 
     /* Remove current macro from each server available */
-    if($save){
+    if ($save) {
       foreach($this->goFonHomeServers as $dn => $Server){
-        $query      = "DELETE FROM ".$Server['EXT_TABLE']." WHERE context='".$context."';";
-        $link =& MDB2::connect(array( 'phptype'=>'mysql',
-                                  'hostspec'=>$Server['SERVER'],
-                                  'username'=>$Server['LOGIN'],
-                                  'password'=>$Server['PASSWORD'],
-                                  'database'=>$Server['DB'],
-                          ));
+        $query = "DELETE FROM ".$Server['EXT_TABLE']." WHERE context='".$context."';";
+        $link = connect_sql($Server);
+        if (PEAR::isError($link)) {
+          new log("debug",("GOfon/".get_class($this),"",array(),$link->getMessage());
+          return msgPool::dbconnect("GOfon",$link->getMessage(),$Server['SERVER']);
+        }
         $res = $link->exec($query);
         @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,$query, "Database query");
         if(PEAR::isError($res)){
@@ -252,12 +228,6 @@ class macro extends plugin
    */
   function add_to_database($save)
   {
-    /* Check if all databases are reachable */
-    $str = $this->check_database_accessibility();
-    if($str){
-      return($str);
-    }
-
     /* Remove old entries first. Else we got duplicated entries */
     $str = $this->remove_from_database($save);
     if($str){
@@ -265,7 +235,7 @@ class macro extends plugin
     }
 
     /* Create query string */
-    $context      = "macro-".$this->cn;
+    $context = "macro-".$this->cn;
 
     /************
      * Parse Macro content
@@ -343,12 +313,11 @@ class macro extends plugin
 
       /* Macro are spread to each asterisk server */
       foreach($this->goFonHomeServers as $dn => $cfg){
-        $link =& MDB2::connect(array( 'phptype'=>'mysql',
-                                      'hostspec'=>$cfg['SERVER'],
-                                      'username'=>$cfg['LOGIN'],
-                                      'password'=>$cfg['PASSWORD'],
-                                      'database'=>$cfg['DB'],
-                              ));
+        $link = connect_sql($cfg);
+        if (PEAR::isError($link)) {
+          new log("debug",("GOfon/".get_class($this),"",array(),$link->getMessage());
+          return msgPool::dbconnect("GOfon",$link->getMessage(),$cfg['SERVER']);
+        }
         $query  = preg_replace("/%TABLENAME%/",$cfg['EXT_TABLE'],$sql);
         $res    = $link->exec($query);
         @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,$query, "Database query");

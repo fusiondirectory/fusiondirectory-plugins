@@ -20,7 +20,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-require_once("MDB2.php")
+require_once("MDB2.php");
 
 class fonreport extends plugin
 {
@@ -83,29 +83,29 @@ class fonreport extends plugin
   function save_object()
   {
     $fonfilter= session::get("fonfilter");
-    if(isset($_POST['EntryPerPage'])){
+    if (isset($_POST['EntryPerPage'])) {
       $this->range = $_POST['EntryPerPage'];
     }
-    if (isset($_GET['start'])){
+    if (isset($_GET['start'])) {
       $this->start= (int)$_GET['start'];
     }
-    foreach( array("year", "month", "search_for", "search_base","selected_server") as $type){
-      if (isset($_POST[$type])){
+    foreach (array("year", "month", "search_for", "search_base","selected_server") as $type) {
+      if (isset($_POST[$type])) {
         $this->$type= get_post($type);
       }
     }
 
     /* Adapt sorting */
-    if (isset($_GET['sort'])){
-      if ($this->sort == (int)$_GET['sort']){
-        if ($this->sort_direction == "down"){
+    if (isset($_GET['sort'])) {
+      if ($this->sort == (int)$_GET['sort']) {
+        if ($this->sort_direction == "down") {
           $this->sort_direction= "up";
         } else {
           $this->sort_direction= "down";
         }
       }
       $this->sort= (int)$_GET['sort'];
-      if ($this->sort < 0 || $this->sort > 6){
+      if ($this->sort < 0 || $this->sort > 6) {
         $this->sort= 0;
       }
     }
@@ -113,12 +113,22 @@ class fonreport extends plugin
     /* remove unwanted tags */
     $this->search_for = stripslashes(preg_replace("/[^0-9a-z\*\+ \-\/]/i","",$this->search_for));
 
-    foreach($this->attributes_SO as $name){
+    foreach ($this->attributes_SO as $name) {
       $fonfilter[$name] = $this->$name;
     }
     session::set("fonfilter", $fonfilter);
   }
 
+  function connect_sql($config)
+  {
+    $link =& MDB2::connect(array( 'phptype'=>'mysql',
+                                  'hostspec'=>$config['SERVER'],
+                                  'username'=>$config['LOGIN'],
+                                  'password'=>$config['PASSWORD'],
+                                  'database'=>$config['DB'],
+                        ));
+    return $link;
+  }
 
   /* Search & display results */
   function execute()
@@ -130,7 +140,7 @@ class fonreport extends plugin
     $smarty= get_smarty();
 
     /* Log view */
-    if(!$this->view_logged){
+    if (!$this->view_logged) {
       $this->view_logged = TRUE;
       new log("view","fonreport/".get_class($this),$this->dn);
     }
@@ -142,14 +152,14 @@ class fonreport extends plugin
     $fields_str = "";
 
     $months= array();
-    for($i = 1 ; $i <= 12 ; $i ++ ){
+    for ($i = 1 ; $i <= 12 ; $i ++ ) {
       $months[$i] = _(date("F",gmmktime(0,0,0,$i)));
     }
 
     /* Prepare template */
     $current= date("Y");
     $years= array();
-    for ($y= $current - 5; $y<=$current; $y++){
+    for ($y= $current - 5; $y<=$current; $y++) {
       $years[$y]= $y;
     }
 
@@ -158,13 +168,13 @@ class fonreport extends plugin
      *****************/
     $bases      = array();
     $cat_bases  = $this->ui->get_module_departments("fonreport");
-    foreach($this->config->idepartments as $dn => $name){
-      if(in_array_ics($dn,$cat_bases)){
+    foreach ($this->config->idepartments as $dn => $name) {
+      if (in_array_ics($dn,$cat_bases)) {
         $bases[$dn] = $name;
       }
     }
 
-    if(!isset($bases[$this->search_base])){
+    if (!isset($bases[$this->search_base])) {
       $this->search_base = key($bases);
     }
 
@@ -198,28 +208,15 @@ class fonreport extends plugin
       msg_dialog::display(_("Configuration error"), msgPool::noserver(_("GOfon")), WARNING_DIALOG);
       return($smarty->fetch(get_template_path('contents.tpl', TRUE)));
     } else {
-
       // Get CFG for the selected server, if empty use first.
-      if ($this->selected_server == "") {
-        $cfg= $this->config->data['SERVERS']['FON'][0];
-      } else {
-        foreach ($this->config->data['SERVERS']['FON'] as $server) {
-          if($server['SERVER'] == $this->selected_server){
-            $cfg = $server;
-          }
+      $cfg = $this->config->data['SERVERS']['FON'][0];
+      foreach ($this->config->data['SERVERS']['FON'] as $server) {
+        if($server['SERVER'] == $this->selected_server){
+          $cfg = $server;
+          break;
         }
       }
-
-      $link =& MDB2::connect(array( 'phptype'=>'mysql',
-                                  'hostspec'=>$cfg['SERVER'],
-                                  'username'=>$cfg['LOGIN'],
-                                  'password'=>$cfg['PASSWORD'],
-                                  'database'=>"asteriskcdrdb",
-                          ));
-      if (PEAR::isError($link)){
-        msg_dialog::display(_("Error"), msgPool::dbconnect(_("GOfon"),$link->getMessage(),$cfg['SERVER']),ERROR_DIALOG);
-        return($smarty->fetch(get_template_path('contents.tpl', TRUE)));
-      }
+      $cfg['DB'] = "asteriskcdrdb";
     }
 
 
@@ -228,11 +225,11 @@ class fonreport extends plugin
      *****************/
 
     $query  = $this->CreateQuerySyntax();
-    $link =& MDB2::connect(array( 'phptype'=>'mysql',
-                                  'hostspec'=>$cfg['SERVER'],
-                                  'username'=>$cfg['LOGIN'],
-                                  'password'=>$cfg['PASSWORD'],
-                          ));
+    $link = connect_sql($cfg);
+    if (PEAR::isError($link)) {
+      new log("debug",("GOfon/".get_class($this),"",array(),$link->getMessage());
+      return msgPool::dbconnect("GOfon",$link->getMessage(),$cfg['SERVER']);
+    }
 
     @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,$query, "Database query");
 
