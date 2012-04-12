@@ -175,7 +175,7 @@ class faxreport extends plugin
       $result =& $link->query($query);
       if (PEAR::isError($result)) {
         msg_dialog::display(_("Error"), sprintf(_("Cannot query %s database!"), $cfg['DB']), ERROR_DIALOG);
-        @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,$query, "Database query failed");
+        @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,$query, "Database query failed");
         return($smarty->fetch(get_template_path('contents.tpl', TRUE)));
       }
 
@@ -312,7 +312,7 @@ class faxreport extends plugin
       $cfg = $this->config->data['SERVERS']['FAX'];
       $link = $this->connect_sql($cfg);
 
-      @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,$query, "Database query");
+      @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,$query, "Database query");
       $result = $link->query($query);
       if (PEAR::isError($result)) {
         msg_dialog::display(_("Error"), sprintf(_("Cannot query %s database!"), $cfg['DB']), ERROR_DIALOG);

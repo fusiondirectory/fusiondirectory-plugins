@@ -422,7 +422,7 @@ class conference extends plugin
     if ($this->goFonHomeServer != $this->init_HomeServer) {
       $query = "SELECT id FROM ".$cfg_Current['EXT_TABLE']." WHERE exten='".$this->telephoneNumber."' OR exten='".$this->cn."';";
       $res =& $link->query($query);
-      @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,$query, "Database query");
+      @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,$query, "Database query");
       if (PEAR::isError($res)) {
         new log("debug","gofonconference/".get_class($this),"",array(),$res->getMessage());
         return(msgPool::dbquery("GOfon", $res->getMessage(),$cfg_Current['SERVER']));
@@ -552,24 +552,24 @@ class conference extends plugin
       }
 
       /* Start transaction, to be able to rollback */
-      @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"<b>---Updating/Inserting entries---</b>","");
+      @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,"<b>---Updating/Inserting entries---</b>","");
 
       $link->beginTransaction();
-      @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"<b>begin;</b>","<i>Starting transaction!</i>");
+      @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,"<b>begin;</b>","<i>Starting transaction!</i>");
 
       foreach ($SQL as $query) {
-        @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"<b>".$query."</b>", "");
+        @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,"<b>".$query."</b>", "");
         $res = $link->exec($query);
         if (PEAR::isError($res)) {
           $err = $res->getMessage();
-          @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"\n".$err, "<b>FAILED</b>");
+          @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,"\n".$err, "<b>FAILED</b>");
           msg_dialog::display(_("Error"),
-              msgPool::mysqlerror($err,__CLASS__)."&nbsp;".
+              msgPool::dbError($err,__CLASS__)."&nbsp;".
               "\n<p>"._("Please activate debugging for details!")."</p>",
               ERROR_DIALOG);
 
           $link->rollback();
-          @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"<b>rollback;</b>", "<b>ERROR</b> Rollback transaction!");
+          @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,"<b>rollback;</b>", "<b>ERROR</b> Rollback transaction!");
           $link->disconnect();
           return false;
         }
@@ -577,8 +577,8 @@ class conference extends plugin
 
       /* Let changes get active, everything was fine */
       $link->commit();
-      @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"<b>commit;</b>", "");
-      @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"<b>---Transaction sucessful!---</b>", "");
+      @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,"<b>commit;</b>", "");
+      @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,"<b>---Transaction sucessful!---</b>", "");
     }
 
     $link->disconnect();
@@ -612,7 +612,7 @@ class conference extends plugin
 
       /* Query and ensure that everything went fine */
       $res = $link->exec($SQL);
-      @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,$SQL, "Database query");
+      @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,$SQL, "Database query");
       if (PEAR::isError($res)) {
         new log("debug","gofonconference/".get_class($this),"",array(),$res->getMessage());
         return(msgPool::dbquery("GOfon", $res->getMessage(),$cfg_Init['SERVER']));

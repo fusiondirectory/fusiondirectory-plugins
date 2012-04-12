@@ -205,10 +205,10 @@ class macro extends plugin
           return msgPool::dbconnect("GOfon",$link->getMessage(),$Server['SERVER']);
         }
         $res = $link->exec($query);
-        @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,$query, "Database query");
+        @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,$query, "Database query");
         if(PEAR::isError($res)){
           new log("debug","gofonmacro/".get_class($this),"",array(),$res->getMessage());
-          @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"<b>".$query."</b>", "ERROR");
+          @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,"<b>".$query."</b>", "ERROR");
           trigger_error($res->getMessage());
           return(
             sprintf(
@@ -320,10 +320,10 @@ class macro extends plugin
         }
         $query  = preg_replace("/%TABLENAME%/",$cfg['EXT_TABLE'],$sql);
         $res    = $link->exec($query);
-        @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,$query, "Database query");
+        @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,$query, "Database query");
         if(PEAR::isError($res)){
           new log("debug","gofonmacro/".get_class($this),"",array(),$res->getMessage());
-          @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"<b>".$query."</b>", "ERROR");
+          @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,"<b>".$query."</b>", "ERROR");
           trigger_error($res->getMessage());
           return(
             sprintf(

@@ -231,7 +231,7 @@ class fonreport extends plugin
       return msgPool::dbconnect("GOfon",$link->getMessage(),$cfg['SERVER']);
     }
 
-    @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,$query, "Database query");
+    @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,$query, "Database query");
 
     $result = $link->query($query);
     if (PEAR::isError($result)){
@@ -356,7 +356,7 @@ class fonreport extends plugin
   }
 
 
-  /* Create WHERE part for our mysql serach */
+  /* Create WHERE part for our search */
   function GetUidMatchingFilter()
   {
     $ldap       = $this->config->get_ldap_link();

@@ -340,7 +340,7 @@ class phoneAccount extends plugin
     $this->a_old_telenums = $this->phoneNumbers;
 
 
-    /* Get voicemail PIN from MySQL DB
+    /* Get voicemail PIN from DB
      * Because every user can change his PIN directly from the phone
      *  without any update to the ldap
      * This means, the PIN in the DB is up to date
@@ -372,7 +372,7 @@ class phoneAccount extends plugin
           msg_dialog::display(_("Warning"), sprintf(_("Cannot identify telephone extension in database, please try to save again.")), WARNING_DIALOG);
         }
 
-        @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,$query_tmp, "Database query");
+        @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,$query_tmp, "Database query");
         if((isset($vp['password']))&&(!empty($vp['password']))){
           $this->goFonPINVoice = $vp['password'];
         }
@@ -432,15 +432,15 @@ class phoneAccount extends plugin
           $sql = "ALTER TABLE `".$config[$inno_table]."` ENGINE = INNODB; ";
           $res = $r_con->exec($sql);
           if (PEAR::isError($res)) {
-            @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"<b>".$sql."</b>",
+            @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,"<b>".$sql."</b>",
                 "<b>FAILED!</b>. Transactions will not work!");
             $ret = FALSE;
           } else {
-            @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"<b>".$sql."</b>",
+            @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,"<b>".$sql."</b>",
                 "<i>Table '".$config[$inno_table]."' is now of type InnoDB, this enables transactions.</i>");
           }
         } else {
-          @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"",
+          @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,"",
               "<i>Table type of '".$config[$inno_table]."' OK, using transactions!</i>");
         }
       }
@@ -470,7 +470,7 @@ class phoneAccount extends plugin
    * If the phone hardware is 'automatic' the table entries will only be removed
    *  and not added.
    */
-  function generate_mysql_entension_entries($save = false)
+  function generateExtensionEntries($save = false)
   {
     /* Check if there is at least one server available
      * If not, return and tell the user that saving failed
@@ -488,7 +488,7 @@ class phoneAccount extends plugin
 
     $old_connection = false;
 
-    // Get Configuration for Mysql database Server
+    // Get Configuration for database Server
     $s_parameter    = "";                                           // Contains paramter for selected Macro
     $r_con          = false;                                        // DB connection
     $r_db           = false;                                        // Selected DB
@@ -591,7 +591,7 @@ class phoneAccount extends plugin
      * Check Server Connection Information
      **********************/
 
-    /* Create Mysql handle for the current goFonHomeServer, if possible
+    /* Create handle for the current goFonHomeServer, if possible
      * Get configuration to old asterisk home server
      */
     $a_New = $this->goFonHomeServers[$this->goFonHomeServer];  // DB Configuration
@@ -640,13 +640,13 @@ class phoneAccount extends plugin
          */
         if (!phoneAccount::checkRealtimeTables($a_Remove)) {
           msg_dialog::display(_("Warning"),
-              sprintf(_("FusionDirectory identified problems with your MySQL table definition!")),
+              sprintf(_("FusionDirectory identified problems with your database table definition!")),
               WARNING_DIALOG);
         }
 
         $query  = "SELECT id,name,callerid FROM ".$a_Remove['SIP_TABLE']." WHERE name='".$this->uid."';";
         $rid    =& $old_connection->query($query);
-        @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,$query,
+        @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,$query,
             "<i>Reguest callerid to be able to identify the user.</i>");
 
         /* Old entry found, remove it */
@@ -666,24 +666,24 @@ class phoneAccount extends plugin
 
           /* Start transaction, to be able to rollback
            */
-          @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"<b>---Removing entry from old server---</b>","");
+          @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,"<b>---Removing entry from old server---</b>","");
 
           $old_connection->beginTransaction();
-          @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"<b>begin;</b>","<i>Starting transaction!</i>");
+          @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,"<b>begin;</b>","<i>Starting transaction!</i>");
 
           foreach ($query_a as $query) {
-            @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"<b>".$query."</b>", "");
+            @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,"<b>".$query."</b>", "");
             $res = $old_connection->exec($query);
             if (PEAR::isError($res)) {
               $err = $res->getMessage();
-              @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"\n".$err, "<b>FAILED</b>");
+              @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,"\n".$err, "<b>FAILED</b>");
               msg_dialog::display(_("Error"),
-                  msgPool::mysqlerror($err,__CLASS__)."&nbsp;".
+                  msgPool::dbError($err,__CLASS__)."&nbsp;".
                   "\n<p>"._("Please activate debugging for details!")."</p>",
                   ERROR_DIALOG);
 
               $old_connection->rollback();
-              @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"<b>rollback;</b>", "<b>ERROR</b> Rollback transaction!");
+              @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,"<b>rollback;</b>", "<b>ERROR</b> Rollback transaction!");
               $old_connection->disconnect();
               return(false);
             }
@@ -692,8 +692,8 @@ class phoneAccount extends plugin
           /* Let changes get active, everything was fine;
            */
           $old_connection->commit();
-          @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"<b>commit;</b>", "");
-          @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"<b>---Transaction sucessful!---</b>", "");
+          @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,"<b>commit;</b>", "");
+          @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,"<b>---Transaction sucessful!---</b>", "");
         }
       }
 
@@ -706,7 +706,7 @@ class phoneAccount extends plugin
        */
       if(!phoneAccount::checkRealtimeTables($a_New)){
         msg_dialog::display(_("Warning"),
-            sprintf(_("FusionDirectory identified problems with your MySQL table definition!")),
+            sprintf(_("FusionDirectory identified problems with your database table definition!")),
             WARNING_DIALOG);
       }
 
@@ -726,7 +726,7 @@ class phoneAccount extends plugin
 
       $query = "SELECT * FROM ".$a_New['SIP_TABLE']." WHERE name='".$this->uid."';\n";
       $rid =& $new_connection->query($query);
-      @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,$query, "Receive current mysql entries.");
+      @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,$query, "Receive current database entries.");
       if ($result = $rid->fetchRow(MDB2_FETCHMODE_ASSOC)) {
 
         /**********************
@@ -808,7 +808,7 @@ class phoneAccount extends plugin
         $s_sip_values =  preg_replace("/,$/","",$s_sip_values);
         $s_sip_keys   =  preg_replace("/,$/","",$s_sip_keys);
 
-        /* Add sip entries to mysql queries */
+        /* Add sip entries to queries */
         $SQL_query_array[] ="INSERT INTO ".$a_New['SIP_TABLE']." (".$s_sip_keys.") VALUES (".$s_sip_values.");";
       }
 
@@ -821,7 +821,7 @@ class phoneAccount extends plugin
       $query  = "SELECT id,name,callerid FROM ".$a_New['SIP_TABLE']." WHERE name='".$this->uid."';";
       $rid    =& $new_connection->query($query);
 
-      @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,$query, "Receive callerid");
+      @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,$query, "Receive callerid");
       $result = $rid->fetchRow(MDB2_FETCHMODE_ASSOC);
 
       $old_customer_id = "";
@@ -843,14 +843,14 @@ class phoneAccount extends plugin
       $query_tmp = "SELECT * FROM ".$a_New['VOICE_TABLE']." WHERE customer_id='".$old_customer_id."';\n";
       $rid =& $new_connection->query($query_tmp);
 
-      @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,$query_tmp, "Check if voicemail entry exists");
+      @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,$query_tmp, "Check if voicemail entry exists");
       if ($result = $rid->fetchRow(MDB2_FETCHMODE_ASSOC)) {
 
         /**********************
          * Update Voice mail entry
          **********************/
 
-        @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"", "<i>Voicemail entry exists, adding updating to queue.</i>");
+        @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,"", "<i>Voicemail entry exists, adding updating to queue.</i>");
 
         foreach ($voice_data_array as $name => $value) {
           if ($result[$name] == $value) {
@@ -873,7 +873,7 @@ class phoneAccount extends plugin
         /**********************
          * Insert Voice mail entry
          **********************/
-        @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"", "<i>No voicemail entry found, add 'create' to queue.</i>");
+        @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,"", "<i>No voicemail entry found, add 'create' to queue.</i>");
         $voice_data_array['context'] = $this->voice_context;
 
         /* There is currently no voice mail entry for this user.
@@ -888,7 +888,7 @@ class phoneAccount extends plugin
         $s_voi_values =  preg_replace("/,$/","",$s_voi_values);
         $s_voi_keys   =  preg_replace("/,$/","",$s_voi_keys);
 
-        /* Add sip entries to mysql queries */
+        /* Add sip entries to queries */
         $SQL_query_array[] ="INSERT INTO ".$a_New['VOICE_TABLE']." (".$s_voi_keys.") VALUES (".$s_voi_values.");";
       }
 
@@ -987,24 +987,24 @@ class phoneAccount extends plugin
 
       /* Start transaction, to be able to rollback
        */
-      @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"<b>---Insert/Update new entry---</b>","");
+      @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,"<b>---Insert/Update new entry---</b>","");
 
       $new_connection->beginTransaction();
-      @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"<b>begin;</b>","<i>Starting transaction!</i>");
+      @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,"<b>begin;</b>","<i>Starting transaction!</i>");
 
       foreach($SQL_query_array as $query){
-        @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"<b>".$query."</b>", "");
+        @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,"<b>".$query."</b>", "");
         $res = $new_connection->exec($query);
         if(PEAR::isError($res)){
           $err = $res->getMessage();
-          @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"\n".$err, "<b>FAILED</b>");
+          @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,"\n".$err, "<b>FAILED</b>");
           msg_dialog::display(_("Error"),
-              msgPool::mysqlerror($err,__CLASS__)."&nbsp;".
+              msgPool::dbError($err,__CLASS__)."&nbsp;".
               "\n<p>"._("Please activate debugging for details!")."</p>",
               ERROR_DIALOG);
 
           $new_connection->rollback();
-          @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"<b>rollback;</b>", "<b>ERROR</b> Rollback transaction!");
+          @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,"<b>rollback;</b>", "<b>ERROR</b> Rollback transaction!");
           $new_connection->disconnect();
           return false;
         }
@@ -1013,8 +1013,8 @@ class phoneAccount extends plugin
       /* Let changes get active, everything was fine;
        */
       $new_connection->commit();
-      @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"<b>commit;</b>", "Perform transaction!");
-      @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"<b>---Transaction sucessful!---</b>", "");
+      @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,"<b>commit;</b>", "Perform transaction!");
+      @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,"<b>---Transaction sucessful!---</b>", "");
     }
     $new_connection->disconnect();
     return true;
@@ -1459,7 +1459,7 @@ class phoneAccount extends plugin
     }
 
     if ($this->initially_was_account != $this->is_account || $this->is_modified){
-      $str = $this->generate_mysql_entension_entries(false);
+      $str = $this->generateExtensionEntries(false);
       if(empty($str)){
         msg_dialog::display(_("Error"), $str, ERROR_DIALOG);
       }
@@ -1541,7 +1541,7 @@ class phoneAccount extends plugin
 
     /*
      */
-    $str = $this->generate_mysql_entension_entries(true);
+    $str = $this->generateExtensionEntries(true);
     if(!$str){
       msg_dialog::display(_("Error"),_("An error occured while updating the database entries!") , ERROR_DIALOG);
     }
@@ -1605,7 +1605,7 @@ class phoneAccount extends plugin
 
     if (count($this->goFonHomeServers) && !empty($this->init_HomeServer)) {
 
-      // Get Configuration for initial Mysql database Server
+      // Get Configuration for initial database Server
       $a_SETUP = $this->goFonHomeServers[$this->init_HomeServer];
       $s_parameter  ="";
 
@@ -1613,7 +1613,7 @@ class phoneAccount extends plugin
        */
       if (!phoneAccount::checkRealtimeTables($a_SETUP)) {
         msg_dialog::display(_("Warning"),
-            sprintf(_("FusionDirectory identified problems with your MySQL table definition!")),
+            sprintf(_("FusionDirectory identified problems with your database table definition!")),
             WARNING_DIALOG);
       }
 
@@ -1641,7 +1641,7 @@ class phoneAccount extends plugin
 
       $query  = "SELECT id,name,callerid FROM ".$a_SETUP['SIP_TABLE']." WHERE name='".$this->uid."';";
       $rid    =& $r_con->query($query);
-      @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,$query, "Database query");
+      @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,$query, "Database query");
       $result = $rid->fetchRow(MDB2_FETCHMODE_ASSOC);
       $callerid = $first_num;
       if ($result) {
@@ -1657,24 +1657,24 @@ class phoneAccount extends plugin
 
       /* Start transaction, to be able to rollback
        */
-      @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"<b>---Removing entry from server---</b>","");
+      @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,"<b>---Removing entry from server---</b>","");
 
       $r_con->beginTransaction();
-      @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"<b>begin;</b>","<i>Starting transaction!</i>");
+      @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,"<b>begin;</b>","<i>Starting transaction!</i>");
 
       foreach ($SQL as $query) {
-        @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"<b>".$query."</b>", "");
+        @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,"<b>".$query."</b>", "");
         $res = $r_con->exec($query);
         if (PEAR::isError($res)) {
           $err = $res->getMessage();
-          @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"\n".$err, "<b>FAILED</b>");
+          @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,"\n".$err, "<b>FAILED</b>");
           msg_dialog::display(_("Error"),
-              msgPool::mysqlerror($err,__CLASS__)."&nbsp;".
+              msgPool::dbError($err,__CLASS__)."&nbsp;".
               "\n<p>"._("Please activate debugging for details!")."</p>",
               ERROR_DIALOG);
 
           $r_con->rollback();
-          @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"<b>rollback;</b>", "<b>ERROR</b> Rollback transaction!");
+          @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,"<b>rollback;</b>", "<b>ERROR</b> Rollback transaction!");
           $r_con->disconnect();
           return false;
         }
@@ -1683,10 +1683,10 @@ class phoneAccount extends plugin
       /* Let changes get active, everything was fine;
        */
       $r_con->commit();
-      @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"<b>commit;</b>", "");
-      @DEBUG (DEBUG_MYSQL, __LINE__, __FUNCTION__, __FILE__,"<b>---Transaction sucessful!---</b>", "");
+      @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,"<b>commit;</b>", "");
+      @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,"<b>---Transaction sucessful!---</b>", "");
 
-    }else{
+    } else {
       msg_dialog::display(_("Configuration error"), msgPool::missingext("php-mysql"), WARNING_DIALOG);
       return false;
     }

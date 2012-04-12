@@ -700,7 +700,7 @@ class phonequeue extends plugin
         $SQL[]="INSERT INTO ".$cfg_Current['EXT_TABLE']." (".$entries.") VALUES (".$values.")";
       }
 
-      /* Do all collected mysql queries
+      /* Do all collected queries
        */
       foreach($SQL as $query)
       $res   = $res_cur->exec($query);
