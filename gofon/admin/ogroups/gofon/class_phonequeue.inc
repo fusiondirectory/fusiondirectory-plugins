@@ -20,7 +20,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-require_once("MDB2.php");
+require_once("class_databaseManagement.inc");
 
 class phonequeue extends plugin
 {
@@ -155,17 +155,6 @@ class phonequeue extends plugin
     $this->goFonQueueStrategy= $tmp[$this->goFonQueueStrategy];
     $this->old_cn = $this->cn;
     $this->old_phone_numbers = $this->telephoneNumber;
-  }
-
-  function connect_sql($config)
-  {
-    $link =& MDB2::connect(array( 'phptype'=>'mysql',
-                                  'hostspec'=>$config['SERVER'],
-                                  'username'=>$config['LOGIN'],
-                                  'password'=>$config['PASSWORD'],
-                                  'database'=>$config['DB'],
-                        ));
-    return $link;
   }
 
   /* Display plugin ui */
@@ -335,7 +324,7 @@ class phonequeue extends plugin
 
       /* Connect to current database to be able to add new entries */
       $cfg_Current  = $this->goFonHomeServers[$this->init_HomeServer] ;
-      $res_cur      = connect_sql($cfg_Current);
+      $res_cur      = databaseManagement::connectDatabase($cfg_Current);
       if (PEAR::isError($res_cur)) {
         new log("debug",("GOfon/".get_class($this),"",array(),$res_cur->getMessage());
         return msgPool::dbconnect("GOfon",$res_cur->getMessage(),$cfg_Current['SERVER']);
@@ -380,7 +369,7 @@ class phonequeue extends plugin
 
     /* Connect to current database to be able to add new entries */
     $cfg_Current  = $this->goFonHomeServers[$this->goFonHomeServer] ;
-    $res_cur      = connect_sql($cfg_Current);
+    $res_cur      = databaseManagement::connectDatabase($cfg_Current);
     if (PEAR::isError($res_cur)) {
       new log("debug",("GOfon/".get_class($this),"",array(),$res_cur->getMessage());
       return msgPool::dbconnect("GOfon",$res_cur->getMessage(),$cfg_Current['SERVER']);

@@ -20,7 +20,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-require_once("MDB2.php");
+require_once("class_databaseManagement.inc");
 
 class phoneAccount extends plugin
 {
@@ -354,7 +354,7 @@ class phoneAccount extends plugin
         (isset($cur_cfg['SERVER']))&&
         (isset($cur_cfg['LOGIN']))&&
         (isset($cur_cfg['PASSWORD']))){
-      $r_con = connect_sql($cur_cfg);
+      $r_con = databaseManagement::connectDatabase($cur_cfg);
       if (PEAR::isError($r_con)) {
         msg_dialog::display(_("Warning"), msgPool::dbselect($cur_cfg['DB'],$r_con->getMessage()), WARNING_DIALOG);
       } else {
@@ -388,18 +388,6 @@ class phoneAccount extends plugin
     $this->lastmacro=$this->macro;
   }
 
-  function connect_sql($config)
-  {
-    $link =& MDB2::connect(array( 'phptype'=>'mysql',
-                                  'hostspec'=>$config['SERVER'],
-                                  'username'=>$config['LOGIN'],
-                                  'password'=>$config['PASSWORD'],
-                                  'database'=>$config['DB'],
-                        ));
-    return $link;
-  }
-
-
   /* Transaction will only work with InnoDB tables
    */
   public static function checkRealtimeTables($config)
@@ -412,7 +400,7 @@ class phoneAccount extends plugin
         (isset($config['LOGIN']))&&
         (isset($config['PASSWORD']))){
 
-      $r_con = connect_sql($config);
+      $r_con = databaseManagement::connectDatabase($config);
       if (PEAR::isError($r_con)) {
         new log("debug",("GOfon/".get_class($this),"",array(),$r_con->getMessage());
         return FALSE;
@@ -596,7 +584,7 @@ class phoneAccount extends plugin
      */
     $a_New = $this->goFonHomeServers[$this->goFonHomeServer];  // DB Configuration
 
-    $new_connection = connect_sql($a_New);
+    $new_connection = databaseManagement::connectDatabase($a_New);
     if (PEAR::isError($new_connection)) {
       $this->generate_error =  msgPool::dbconnect($a_New['SERVER'],$new_connection->getMessage(),
           _("Abort saving entries to keep the database consistent."));
@@ -614,7 +602,7 @@ class phoneAccount extends plugin
 
       /* Create connection to the database that contains the old entry.
        */
-      $old_connection = connect_sql($a_Remove);
+      $old_connection = databaseManagement::connectDatabase($a_Remove);
       if (PEAR::isError($old_connection)) {
         $this->generate_error =  msgPool::dbconnect($a_Remove['SERVER'],$old_connection->getMessage(),
             _("Abort saving entries to keep the database consistent."));
@@ -664,36 +652,9 @@ class phoneAccount extends plugin
             $query_a[]= "DELETE FROM ".$a_Remove['EXT_TABLE']." WHERE exten='".$s_telenums."';";
           }
 
-          /* Start transaction, to be able to rollback
-           */
-          @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,"<b>---Removing entry from old server---</b>","");
-
-          $old_connection->beginTransaction();
-          @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,"<b>begin;</b>","<i>Starting transaction!</i>");
-
-          foreach ($query_a as $query) {
-            @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,"<b>".$query."</b>", "");
-            $res = $old_connection->exec($query);
-            if (PEAR::isError($res)) {
-              $err = $res->getMessage();
-              @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,"\n".$err, "<b>FAILED</b>");
-              msg_dialog::display(_("Error"),
-                  msgPool::dbError($err,__CLASS__)."&nbsp;".
-                  "\n<p>"._("Please activate debugging for details!")."</p>",
-                  ERROR_DIALOG);
-
-              $old_connection->rollback();
-              @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,"<b>rollback;</b>", "<b>ERROR</b> Rollback transaction!");
-              $old_connection->disconnect();
-              return(false);
-            }
+          if (!databaseManagement::executeQueriesInTransaction($old_connection,$query_a)) {
+            return FALSE;
           }
-
-          /* Let changes get active, everything was fine;
-           */
-          $old_connection->commit();
-          @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,"<b>commit;</b>", "");
-          @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,"<b>---Transaction sucessful!---</b>", "");
         }
       }
 
@@ -985,36 +946,9 @@ class phoneAccount extends plugin
         $SQL_syn ="";
       }
 
-      /* Start transaction, to be able to rollback
-       */
-      @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,"<b>---Insert/Update new entry---</b>","");
-
-      $new_connection->beginTransaction();
-      @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,"<b>begin;</b>","<i>Starting transaction!</i>");
-
-      foreach($SQL_query_array as $query){
-        @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,"<b>".$query."</b>", "");
-        $res = $new_connection->exec($query);
-        if(PEAR::isError($res)){
-          $err = $res->getMessage();
-          @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,"\n".$err, "<b>FAILED</b>");
-          msg_dialog::display(_("Error"),
-              msgPool::dbError($err,__CLASS__)."&nbsp;".
-              "\n<p>"._("Please activate debugging for details!")."</p>",
-              ERROR_DIALOG);
-
-          $new_connection->rollback();
-          @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,"<b>rollback;</b>", "<b>ERROR</b> Rollback transaction!");
-          $new_connection->disconnect();
-          return false;
-        }
+      if (!databaseManagement::executeQueriesInTransaction($new_connection,$SQL_query_array)) {
+        return FALSE;
       }
-
-      /* Let changes get active, everything was fine;
-       */
-      $new_connection->commit();
-      @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,"<b>commit;</b>", "Perform transaction!");
-      @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,"<b>---Transaction sucessful!---</b>", "");
     }
     $new_connection->disconnect();
     return true;
@@ -1618,7 +1552,7 @@ class phoneAccount extends plugin
       }
 
       // Connect to DB server
-      $r_con = $this->connect_sql(a_SETUP);
+      $r_con = $this->databaseManagement::connectDatabase(a_SETUP);
       // Check if we are  connected correctly
       if (PEAR::isError($r_con)) {
         msg_dialog::display(_("Error"), msgPool::dbconnect("GOfon",$r_con->getMessage()), ERROR_DIALOG);
@@ -1655,36 +1589,9 @@ class phoneAccount extends plugin
       $SQL[] = "DELETE FROM ".$a_SETUP['EXT_TABLE']." WHERE exten='".$this->uid."';\n";
       $SQL[] = "DELETE FROM ".$a_SETUP['SIP_TABLE']." WHERE name='".$this->uid."';\n";
 
-      /* Start transaction, to be able to rollback
-       */
-      @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,"<b>---Removing entry from server---</b>","");
-
-      $r_con->beginTransaction();
-      @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,"<b>begin;</b>","<i>Starting transaction!</i>");
-
-      foreach ($SQL as $query) {
-        @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,"<b>".$query."</b>", "");
-        $res = $r_con->exec($query);
-        if (PEAR::isError($res)) {
-          $err = $res->getMessage();
-          @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,"\n".$err, "<b>FAILED</b>");
-          msg_dialog::display(_("Error"),
-              msgPool::dbError($err,__CLASS__)."&nbsp;".
-              "\n<p>"._("Please activate debugging for details!")."</p>",
-              ERROR_DIALOG);
-
-          $r_con->rollback();
-          @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,"<b>rollback;</b>", "<b>ERROR</b> Rollback transaction!");
-          $r_con->disconnect();
-          return false;
-        }
+      if (!databaseManagement::executeQueriesInTransaction($r_con,$SQL)) {
+        return FALSE;
       }
-
-      /* Let changes get active, everything was fine;
-       */
-      $r_con->commit();
-      @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,"<b>commit;</b>", "");
-      @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,"<b>---Transaction sucessful!---</b>", "");
 
     } else {
       msg_dialog::display(_("Configuration error"), msgPool::missingext("php-mysql"), WARNING_DIALOG);

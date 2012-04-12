@@ -20,7 +20,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-require_once("MDB2.php");
+require_once("class_databaseManagement.inc");
 
 //!  The Phone Macro Class: Handles Macro Contents, and some attributes.
 /*!
@@ -175,17 +175,6 @@ class macro extends plugin
     return($smarty->fetch (get_template_path('generic.tpl', TRUE)));
   }
 
-  function connect_sql($config)
-  {
-    $link =& MDB2::connect(array( 'phptype'=>'mysql',
-                                  'hostspec'=>$config['SERVER'],
-                                  'username'=>$config['LOGIN'],
-                                  'password'=>$config['PASSWORD'],
-                                  'database'=>$config['DB'],
-                        ));
-    return $link;
-  }
-
   /* Remove current macro from all asterisk server.
    * First of all check if we have access to all databases.
    * - Remove old entries
@@ -199,7 +188,7 @@ class macro extends plugin
     if ($save) {
       foreach($this->goFonHomeServers as $dn => $Server){
         $query = "DELETE FROM ".$Server['EXT_TABLE']." WHERE context='".$context."';";
-        $link = connect_sql($Server);
+        $link = databaseManagement::connectDatabase($Server);
         if (PEAR::isError($link)) {
           new log("debug",("GOfon/".get_class($this),"",array(),$link->getMessage());
           return msgPool::dbconnect("GOfon",$link->getMessage(),$Server['SERVER']);
@@ -313,7 +302,7 @@ class macro extends plugin
 
       /* Macro are spread to each asterisk server */
       foreach($this->goFonHomeServers as $dn => $cfg){
-        $link = connect_sql($cfg);
+        $link = databaseManagement::connectDatabase($cfg);
         if (PEAR::isError($link)) {
           new log("debug",("GOfon/".get_class($this),"",array(),$link->getMessage());
           return msgPool::dbconnect("GOfon",$link->getMessage(),$cfg['SERVER']);

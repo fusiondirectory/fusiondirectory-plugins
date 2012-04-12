@@ -20,7 +20,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-require_once("MDB2.php");
+require_once("class_databaseManagement.inc");
 
 class faxreport extends plugin
 {
@@ -79,17 +79,6 @@ class faxreport extends plugin
         $this->$name = $faxreportfilter[$name];
       }
     }
-  }
-
-  function connect_sql($config)
-  {
-    $link =& MDB2::connect(array( 'phptype'=>'mysql',
-                                  'hostspec'=>$config['SERVER'],
-                                  'username'=>$config['LOGIN'],
-                                  'password'=>$config['PASSWORD'],
-                                  'database'=>$config['DB'],
-                        ));
-    return $link;
   }
 
   /* Create Filter & Search & Display results */
@@ -152,7 +141,7 @@ class faxreport extends plugin
       $cfg = $this->config->data['SERVERS']['FAX'];
       $cfg['DB'] = "gofax";
 
-      $link = connect_sql($cfg);
+      $link = databaseManagement::connectDatabase($cfg);
       if (PEAR::isError($link)) {
         msg_dialog::display(_("Error"), sprintf(_("Cannot connect to %s database!"), $cfg['DB']), ERROR_DIALOG);
         return($smarty->fetch(get_template_path('contents.tpl', TRUE)));
@@ -310,7 +299,7 @@ class faxreport extends plugin
 
       /* Connecting, selecting database */
       $cfg = $this->config->data['SERVERS']['FAX'];
-      $link = $this->connect_sql($cfg);
+      $link = $this->databaseManagement::connectDatabase($cfg);
 
       @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,$query, "Database query");
       $result = $link->query($query);

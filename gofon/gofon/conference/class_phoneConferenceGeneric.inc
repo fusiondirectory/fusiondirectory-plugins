@@ -20,7 +20,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-require_once("MDB2.php");
+require_once("class_databaseManagement.inc");
 
 class conference extends plugin
 {
@@ -295,17 +295,6 @@ class conference extends plugin
     }
   }
 
-  function connect_sql($config)
-  {
-    $link =& MDB2::connect(array( 'phptype'=>'mysql',
-                                  'hostspec'=>$config['SERVER'],
-                                  'username'=>$config['LOGIN'],
-                                  'password'=>$config['PASSWORD'],
-                                  'database'=>$config['DB'],
-                        ));
-    return $link;
-  }
-
   /* Check values */
   function check()
   {
@@ -395,7 +384,7 @@ class conference extends plugin
     /* Connect to current database to be able to add new entries */
     $SQL = array();
     $cfg_Current  = $this->goFonHomeServers[$this->goFonHomeServer];
-    $link = connect_sql($cfg_Current);
+    $link = databaseManagement::connectDatabase($cfg_Current);
     if (PEAR::isError($link)) {
       new log("debug",("GOfon/".get_class($this),"",array(),$link->getMessage());
       return msgPool::dbconnect("GOfon",$link->getMessage(),$cfg_Current['SERVER']);
@@ -551,34 +540,10 @@ class conference extends plugin
         $SQL[]="INSERT INTO ".$cfg_Current['EXT_TABLE']." (".$s_keys.") VALUES (".$s_values.");";
       }
 
-      /* Start transaction, to be able to rollback */
-      @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,"<b>---Updating/Inserting entries---</b>","");
-
-      $link->beginTransaction();
-      @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,"<b>begin;</b>","<i>Starting transaction!</i>");
-
-      foreach ($SQL as $query) {
-        @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,"<b>".$query."</b>", "");
-        $res = $link->exec($query);
-        if (PEAR::isError($res)) {
-          $err = $res->getMessage();
-          @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,"\n".$err, "<b>FAILED</b>");
-          msg_dialog::display(_("Error"),
-              msgPool::dbError($err,__CLASS__)."&nbsp;".
-              "\n<p>"._("Please activate debugging for details!")."</p>",
-              ERROR_DIALOG);
-
-          $link->rollback();
-          @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,"<b>rollback;</b>", "<b>ERROR</b> Rollback transaction!");
-          $link->disconnect();
-          return false;
-        }
+      if (!databaseManagement::executeQueriesInTransaction($link,$SQL)) {
+        return FALSE;
       }
 
-      /* Let changes get active, everything was fine */
-      $link->commit();
-      @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,"<b>commit;</b>", "");
-      @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,"<b>---Transaction sucessful!---</b>", "");
     }
 
     $link->disconnect();
@@ -598,7 +563,7 @@ class conference extends plugin
   {
     /* Connect to old database */
     $cfg_Init  = $this->goFonHomeServers[$this->init_HomeServer] ;
-    $link = connect_sql($cfg_Init);
+    $link = databaseManagement::connectDatabase($cfg_Init);
     if (PEAR::isError($link)) {
       new log("debug",("GOfon/".get_class($this),"",array(),$link->getMessage());
       return msgPool::dbconnect("GOfon",$link->getMessage(),$cfg_Init['SERVER']);

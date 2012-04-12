@@ -20,7 +20,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-require_once("MDB2.php");
+require_once("class_databaseManagement.inc");
 
 class fonreport extends plugin
 {
@@ -119,7 +119,7 @@ class fonreport extends plugin
     session::set("fonfilter", $fonfilter);
   }
 
-  function connect_sql($config)
+  function databaseManagement::connectDatabase($config)
   {
     $link =& MDB2::connect(array( 'phptype'=>'mysql',
                                   'hostspec'=>$config['SERVER'],
@@ -225,7 +225,7 @@ class fonreport extends plugin
      *****************/
 
     $query  = $this->CreateQuerySyntax();
-    $link = connect_sql($cfg);
+    $link = databaseManagement::connectDatabase($cfg);
     if (PEAR::isError($link)) {
       new log("debug",("GOfon/".get_class($this),"",array(),$link->getMessage());
       return msgPool::dbconnect("GOfon",$link->getMessage(),$cfg['SERVER']);
