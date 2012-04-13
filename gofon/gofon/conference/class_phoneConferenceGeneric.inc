@@ -386,7 +386,7 @@ class conference extends plugin
     $cfg_Current  = $this->goFonHomeServers[$this->goFonHomeServer];
     $link = databaseManagement::connectDatabase($cfg_Current);
     if (PEAR::isError($link)) {
-      new log("debug",("GOfon/".get_class($this),"",array(),$link->getMessage());
+      new log("debug","gofonconference/".get_class($this),"",array(),$link->getMessage());
       return msgPool::dbconnect("GOfon",$link->getMessage(),$cfg_Current['SERVER']);
     }
 
@@ -565,7 +565,7 @@ class conference extends plugin
     $cfg_Init  = $this->goFonHomeServers[$this->init_HomeServer] ;
     $link = databaseManagement::connectDatabase($cfg_Init);
     if (PEAR::isError($link)) {
-      new log("debug",("GOfon/".get_class($this),"",array(),$link->getMessage());
+      new log("debug","gofonconference/".get_class($this),"",array(),$link->getMessage());
       return msgPool::dbconnect("GOfon",$link->getMessage(),$cfg_Init['SERVER']);
     }
 
