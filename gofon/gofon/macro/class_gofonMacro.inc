@@ -302,7 +302,7 @@ class macro extends plugin
       foreach($this->goFonHomeServers as $dn => $cfg){
         $link = databaseManagement::connectDatabase($cfg);
         if (PEAR::isError($link)) {
-          new log("debug",("GOfon/".get_class($this),"",array(),$link->getMessage());
+          new log("debug","GOfon/".get_class($this),"",array(),$link->getMessage());
           return msgPool::dbconnect("GOfon",$link->getMessage(),$cfg['SERVER']);
         }
         $query  = preg_replace("/%TABLENAME%/",$cfg['EXT_TABLE'],$sql);

@@ -400,7 +400,7 @@ class phoneAccount extends plugin
 
       $r_con = databaseManagement::connectDatabase($config);
       if (PEAR::isError($r_con)) {
-        new log("debug",("GOfon/".get_class($this),"",array(),$r_con->getMessage());
+        new log("debug","GOfon/".get_class($this),"",array(),$r_con->getMessage());
         return FALSE;
       }
 
@@ -1550,7 +1550,7 @@ class phoneAccount extends plugin
       }
 
       // Connect to DB server
-      $r_con = $this->databaseManagement::connectDatabase(a_SETUP);
+      $r_con = databaseManagement::connectDatabase($a_SETUP);
       // Check if we are  connected correctly
       if (PEAR::isError($r_con)) {
         msg_dialog::display(_("Error"), msgPool::dbconnect("GOfon",$r_con->getMessage()), ERROR_DIALOG);

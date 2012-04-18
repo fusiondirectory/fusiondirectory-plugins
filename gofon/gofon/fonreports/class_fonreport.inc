@@ -117,17 +117,6 @@ class fonreport extends plugin
     session::set("fonfilter", $fonfilter);
   }
 
-  function databaseManagement::connectDatabase($config)
-  {
-    $link =& MDB2::connect(array( 'phptype'=>'mysql',
-                                  'hostspec'=>$config['SERVER'],
-                                  'username'=>$config['LOGIN'],
-                                  'password'=>$config['PASSWORD'],
-                                  'database'=>$config['DB'],
-                        ));
-    return $link;
-  }
-
   /* Search & display results */
   function execute()
   {
