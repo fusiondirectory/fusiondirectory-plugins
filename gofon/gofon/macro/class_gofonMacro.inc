@@ -20,8 +20,6 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-require_once("class_databaseManagement.inc");
-
 //!  The Phone Macro Class: Handles Macro Contents, and some attributes.
 /*!
      This class handles the basic information about phone macros, like
@@ -190,7 +188,7 @@ class macro extends plugin
         $query = "DELETE FROM ".$Server['EXT_TABLE']." WHERE context='".$context."';";
         $link = databaseManagement::connectDatabase($Server);
         if (PEAR::isError($link)) {
-          new log("debug",("GOfon/".get_class($this),"",array(),$link->getMessage());
+          new log("debug","GOfon/".get_class($this),"",array(),$link->getMessage());
           return msgPool::dbconnect("GOfon",$link->getMessage(),$Server['SERVER']);
         }
         $res = $link->exec($query);

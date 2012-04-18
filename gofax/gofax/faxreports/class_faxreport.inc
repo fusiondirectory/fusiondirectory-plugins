@@ -20,8 +20,6 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-require_once("class_databaseManagement.inc");
-
 class faxreport extends plugin
 {
   /* Definitions */
@@ -299,7 +297,7 @@ class faxreport extends plugin
 
       /* Connecting, selecting database */
       $cfg = $this->config->data['SERVERS']['FAX'];
-      $link = $this->databaseManagement::connectDatabase($cfg);
+      $link = databaseManagement::connectDatabase($cfg);
 
       @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,$query, "Database query");
       $result = $link->query($query);

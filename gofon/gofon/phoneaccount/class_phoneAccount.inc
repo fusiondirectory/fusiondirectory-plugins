@@ -20,8 +20,6 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-require_once("class_databaseManagement.inc");
-
 class phoneAccount extends plugin
 {
   /* Definitions */
@@ -353,7 +351,7 @@ class phoneAccount extends plugin
     if( ((isset($cur_cfg))&&
         (isset($cur_cfg['SERVER']))&&
         (isset($cur_cfg['LOGIN']))&&
-        (isset($cur_cfg['PASSWORD']))){
+        (isset($cur_cfg['PASSWORD'])))){
       $r_con = databaseManagement::connectDatabase($cur_cfg);
       if (PEAR::isError($r_con)) {
         msg_dialog::display(_("Warning"), msgPool::dbselect($cur_cfg['DB'],$r_con->getMessage()), WARNING_DIALOG);
@@ -398,7 +396,7 @@ class phoneAccount extends plugin
     if( ((isset($config))&&
         (isset($config['SERVER']))&&
         (isset($config['LOGIN']))&&
-        (isset($config['PASSWORD']))){
+        (isset($config['PASSWORD'])))){
 
       $r_con = databaseManagement::connectDatabase($config);
       if (PEAR::isError($r_con)) {

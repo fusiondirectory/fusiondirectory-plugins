@@ -20,8 +20,6 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-require_once("class_databaseManagement.inc");
-
 class phonequeue extends plugin
 {
   /* plugin specific values */
@@ -326,7 +324,7 @@ class phonequeue extends plugin
       $cfg_Current  = $this->goFonHomeServers[$this->init_HomeServer] ;
       $res_cur      = databaseManagement::connectDatabase($cfg_Current);
       if (PEAR::isError($res_cur)) {
-        new log("debug",("GOfon/".get_class($this),"",array(),$res_cur->getMessage());
+        new log("debug","GOfon/".get_class($this),"",array(),$res_cur->getMessage());
         return msgPool::dbconnect("GOfon",$res_cur->getMessage(),$cfg_Current['SERVER']);
       }
 
@@ -344,7 +342,7 @@ class phonequeue extends plugin
           $res = $res_cur->exex($sql);
           if (PEAR::isError($res)) {
             new log("debug","ogroups/".get_class($this),"",array(),$res->getMessage());
-            return(msgPool::dbquery(_("GOfon"),$res->getMessage())));
+            return(msgPool::dbquery(_("GOfon"),$res->getMessage()));
           }
         }
       }
@@ -371,7 +369,7 @@ class phonequeue extends plugin
     $cfg_Current  = $this->goFonHomeServers[$this->goFonHomeServer] ;
     $res_cur      = databaseManagement::connectDatabase($cfg_Current);
     if (PEAR::isError($res_cur)) {
-      new log("debug",("GOfon/".get_class($this),"",array(),$res_cur->getMessage());
+      new log("debug","GOfon/".get_class($this),"",array(),$res_cur->getMessage());
       return msgPool::dbconnect("GOfon",$res_cur->getMessage(),$cfg_Current['SERVER']);
     }
 
