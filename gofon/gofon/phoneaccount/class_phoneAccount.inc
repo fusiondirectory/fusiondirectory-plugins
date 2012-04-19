@@ -1869,11 +1869,11 @@ class phoneAccount extends plugin
    */
   function get_asterisk_voicemail_contexts()
   {
-    return($this->get_asterisk_contexts(CONFIG_DIR."/asterisk/voicemail_context.conf"));
+    return($this->get_asterisk_contexts(ASTERISK_DIR."/asterisk/voicemail_context.conf"));
   }
   function get_asterisk_sip_contexts()
   {
-    return($this->get_asterisk_contexts(CONFIG_DIR."/asterisk/sip_context.conf"));
+    return($this->get_asterisk_contexts(ASTERISK_DIR."/asterisk/sip_context.conf"));
   }
   function get_asterisk_contexts($file)
   {
