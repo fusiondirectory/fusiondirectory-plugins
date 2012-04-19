@@ -102,7 +102,7 @@ class mailMethodUwimap extends mailMethod{
         !is_integer(strpos($gosaMailDeliveryMode, "L")) ||
         is_integer(strpos($gosaMailDeliveryMode, "V")) ||
         is_integer(strpos($gosaMailDeliveryMode, "S"))) {
-      $text= implode ("", file(CONFIG_DIR."/procmail-header.txt"));
+      $text= implode ("", file(MAIL_DIR."/procmail-header.txt"));
       $text = preg_replace('/"/', '\\"', $text);
       eval ("\$recipe.=\"$text\";");
     }
@@ -111,7 +111,7 @@ class mailMethodUwimap extends mailMethod{
     if (is_integer(strpos($gosaMailDeliveryMode, "S"))) {
       $spambox = $gosaSpamMailbox;
       $spamlevel = $gosaSpamSortLevel;
-      $text= implode ("", file(CONFIG_DIR."/procmail-spam.txt"));
+      $text= implode ("", file(MAIL_DIR."/procmail-spam.txt"));
       $text = preg_replace('/"/', '\\"', $text);
       eval ("\$recipe.=\"$text\";");
     }
@@ -119,21 +119,21 @@ class mailMethodUwimap extends mailMethod{
     /* Add vacation recipe */
     if (is_integer(strpos($gosaMailDeliveryMode, "V"))) {
       $vacmsg = $gosaVacationMessage;
-      $text= implode ("", file(CONFIG_DIR."/procmail-vacation.txt"));
+      $text= implode ("", file(MAIL_DIR."/procmail-vacation.txt"));
       $text = preg_replace('/"/', '\\"', $text);
       eval ("\$recipe.=\"$text\";");
     }
 
     /* Check if no local delivery is wanted */
     if (!is_integer(strpos($gosaMailDeliveryMode, "L"))) {
-      $text= implode ("", file(CONFIG_DIR."/procmail-discard.txt"));
+      $text= implode ("", file(MAIL_DIR."/procmail-discard.txt"));
       $text = preg_replace('/"/', '\\"', $text);
       eval ("\$recipe.=\"$text\";");
     }
 
     /* Write procmail script */
     if (!empty($recipe)) {
-      $text= implode ("", file(CONFIG_DIR."/procmail-footer.txt"));
+      $text= implode ("", file(MAIL_DIR."/procmail-footer.txt"));
       $text = preg_replace('/"/', '\\"', $text);
       eval ("\$recipe.=\"$text\";");
       $file = $this->procmaildir . "/" . $this->getUAttribValue();
