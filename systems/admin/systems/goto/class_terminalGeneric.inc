@@ -44,7 +44,7 @@ class termgeneric extends plugin
   var $gotoLastUser= "-";
   var $netConfigDNS;
   var $auto_activate= FALSE;
-  
+
   /* Needed values and lists */
   var $base= "";
   var $cn= "";
@@ -61,7 +61,7 @@ class termgeneric extends plugin
 
   /* attribute list for save action */
   var $ignore_account= TRUE;
-  var $attributes= array("gotoMode", "gotoTerminalPath", 
+  var $attributes= array("gotoMode", "gotoTerminalPath",
       "gotoSwapServer", "gotoSyslogServer", "gotoNtpServer",
       "gotoFloppyEnable", "gotoCdromEnable", "cn", "gotoSndModule",
       "ghCpuType", "ghMemSize","ghUsbSupport", "description",
@@ -202,23 +202,26 @@ class termgeneric extends plugin
       $this->is_account= !$this->is_account;
     }
 
-    if (isset($_POST['saction']) && $this->acl_is_writeable("FAIstate") && isset($this->validActions[$_POST['saction']])){
+    if (isset($_POST['saction']) &&
+        isset($_POST['action']) &&
+        $this->acl_is_writeable("FAIstate") &&
+        isset($this->validActions[$_POST['saction']])) {
       $action = $_POST['saction'];
 
       /* Check if we have an DaemonEvent for this action */
-      if(class_available("supportDaemon") && class_available("DaemonEvent_".$action)){
+      if (class_available("supportDaemon") && class_available("DaemonEvent_".$action)) {
         $events = DaemonEvent::get_event_types(SYSTEM_EVENT | HIDDEN_EVENT);
-        if(isset($events['TRIGGERED']["DaemonEvent_".$action])){
+        if (isset($events['TRIGGERED']["DaemonEvent_".$action])) {
           $evt = $events['TRIGGERED']["DaemonEvent_".$action];
           $tmp = new $evt['CLASS_NAME']($this->config);
           $tmp->add_targets(array($this->netConfigDNS->macAddress));
           $tmp->set_type(TRIGGERED_EVENT);
           $o_queue = new supportDaemon();
-          if(!$o_queue->append($tmp)){
+          if (!$o_queue->append($tmp)) {
             msg_dialog::display(_("Service infrastructure"),msgPool::siError($o_queue->get_error()),ERROR_DIALOG);
           }
         }
-      }else{
+      } else {
         msg_dialog::display(_("Event error"),
                     sprintf(_("Event '%s' is not available!"),$action),ERROR_DIALOG);
       }
@@ -226,10 +229,10 @@ class termgeneric extends plugin
     }
 
     /* Do we represent a valid terminal? */
-    if (!$this->is_account && $this->parent === NULL){
-      $display= "<img alt=\"\" src=\"images/small-error.png\" align=middle>&nbsp;<b>".
+    if (!$this->is_account && $this->parent === NULL) {
+      $display = "<img alt=\"\" src=\"images/small-error.png\" align=middle>&nbsp;<b>".
         msgPool::noValidExtension(_("terminal"))."</b>";
-      return($display);
+      return $display;
     }
 
     /* Add new ntp Server to our list */
@@ -241,13 +244,13 @@ class termgeneric extends plugin
     if((isset($_POST['delNtpServer'])) && (isset($_POST['gotoNtpServerSelected'])) && $this->acl_is_writeable("gotoNtpServer")){
       foreach($_POST['gotoNtpServerSelected'] as $name){
         unset($this->gotoNtpServer[$name]);
-      } 
+      }
     }
 
     /* Fill templating stuff */
     $smarty= get_smarty();
     $smarty->assign("usePrototype", "true");
-    
+
     $tmp = $this->plInfo();
     foreach($tmp['plProvidedAcls'] as $name => $translation){
       $smarty->assign($name."ACL",$this->getacl($name));
@@ -264,13 +267,13 @@ class termgeneric extends plugin
     if (class_available("supportDaemon")) {
         $o_queue = new supportDaemon();
         if($o_queue->ping($this->netConfigDNS->macAddress)) {
-          $smarty->assign("actions", array( "halt" => _("Switch off"), 
+          $smarty->assign("actions", array( "halt" => _("Switch off"),
                                             "reboot" => _("Reboot"),
                                             #"memcheck" => _("Memory test"),
                                             #"sysinfo"  => _("System analysis")
                         ));
         } else {
-          $smarty->assign("actions", array("wake" => _("Wake up"),
+          $smarty->assign("actions", array("wakeup" => _("Wake up"),
                                            #"memcheck" => _("Memory test"),
                                            #"sysinfo"  => _("System analysis")
                         ));
@@ -280,7 +283,7 @@ class termgeneric extends plugin
     /* Arrays */
     $smarty->assign("modes", $this->modes);
 
-    $tmp2 = array(); 
+    $tmp2 = array();
     $tmp2['!']= _("Local swap");
     foreach($this->config->data['SERVERS']['NBD'] as $server){
       if($server != "default"){
@@ -291,9 +294,9 @@ class termgeneric extends plugin
         }
       }
     }
-  
+
     $smarty->assign("swapservers",     $tmp2);
-    $tmp2 = array(); 
+    $tmp2 = array();
     foreach($this->config->data['SERVERS']['NFS'] as $server){
       if($server != "default"){
         $tmp2[$server]= $server;
@@ -303,7 +306,7 @@ class termgeneric extends plugin
         }
       }
     }
-  
+
     $smarty->assign("nfsservers",     $tmp2);
     $smarty->assign("syslogservers",  $this->gotoSyslogServers);
 
@@ -313,7 +316,7 @@ class termgeneric extends plugin
         $tmp[$server] = $server;
       }
     }
-    
+
     $smarty->assign("ntpservers",     $tmp);
     $smarty->assign("fai_activated",$this->fai_activated);
 
@@ -332,7 +335,7 @@ class termgeneric extends plugin
     }
     $smarty->assign("netconfig", $str);
 
-    /* Display kerberos host key options */  
+    /* Display kerberos host key options */
     $smarty->assign("host_key","");
     if(is_object($this->kerberos_key_service)){
       $smarty->assign("host_key",$this->kerberos_key_service->execute_by_prefix("host/"));
@@ -343,16 +346,16 @@ class termgeneric extends plugin
 
   function remove_from_parent()
   {
-    if($this->acl_is_removeable()){   
+    if($this->acl_is_removeable()){
       $ldap= $this->config->get_ldap_link();
       $ldap->cd($this->dn);
       $ldap->cat($this->dn, array('dn'));
       if($ldap->count()){
         $this->netConfigDNS->remove_from_parent();
         $ldap->rmDir($this->dn);
-  
+
         new log("remove","terminal/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
-  
+
         if (!$ldap->success()){
           msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_DEL, get_class()));
         }
@@ -378,7 +381,7 @@ class termgeneric extends plugin
         update_accessTo($this->cn,"");
       }
 
-      /* Clean queue form entries with this mac 
+      /* Clean queue form entries with this mac
        */
       if(class_available("supportDaemon") && tests::is_mac($this->netConfigDNS->orig_macAddress)){
         $q = new supportDaemon();
@@ -408,21 +411,21 @@ class termgeneric extends plugin
         $this->is_modified= TRUE;
       }
     }
-    
+
     $this->netConfigDNS->save_object();
 
     /* Save terminal path to parent since it is used by termstartup, too */
     if(isset($this->parent->by_object['termstartup'])){
       $this->parent->by_object['termstartup']->gotoTerminalPath= $this->gotoTerminalPath;
     }
-    
+
     if(isset($_POST['termgeneric_posted'])){
       if(isset($_POST["inheritTimeServer"]) && $this->member_of_ogroup){
         $this->inheritTimeServer = true;
       }else{
         $this->inheritTimeServer = false;
       }
-    }  
+    }
 
     if(isset($_POST["inheritAll"])){
       $this->set_everything_to_inherited();
@@ -600,7 +603,7 @@ class termgeneric extends plugin
     } else {
       $ldap->cd($this->dn);
       $this->cleanup();
-      $ldap->modify ($this->attrs); 
+      $ldap->modify ($this->attrs);
       new log("modify","terminal/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
 
       $this->netConfigDNS->cn = $this->cn;
@@ -613,7 +616,7 @@ class termgeneric extends plugin
         update_accessTo($this->orig_cn,$this->cn);
       }
     }
-    
+
     if (!$ldap->success()){
       msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()));
     }
@@ -729,7 +732,7 @@ class termgeneric extends plugin
           "plSection"     => array("administration"),
           "plCategory"    => array("terminal" => array( "description"  => _("Terminal"),
           "objectClass"   => "gotoTerminal")),
-          
+
           "plProvidedAcls"=> array(
             "cn"                  => _("Name"),
             "description"         => _("Description"),
