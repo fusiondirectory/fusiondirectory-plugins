@@ -73,7 +73,7 @@ class servgeneric extends plugin
   {
     /* Check if FAI is activated */
     $tmp = $config->search("faiManagement", "CLASS",array('menu','tabs'));
-
+    
     if(!empty($tmp)){
       $this->fai_activated = TRUE;
     }
@@ -111,7 +111,7 @@ class servgeneric extends plugin
       $e_types = DaemonEvent::get_event_types(USER_EVENT | SYSTEM_EVENT | HIDDEN_EVENT);
       $this->currently_installing = $o->is_currently_installing($this->netConfigDNS->macAddress);
     }
-
+       
     /* Save dn for later references */
     $this->orig_dn   = $this->dn;
     $this->orig_cn   = $this->cn;
@@ -144,38 +144,35 @@ class servgeneric extends plugin
     /* Call parent execute */
     plugin::execute();
 
-    if ($this->is_account && !$this->view_logged) {
+    if($this->is_account && !$this->view_logged){
       $this->view_logged = TRUE;
       new log("view","server/".get_class($this),$this->dn);
     }
 
     /* Do we represent a valid server? */
-    if (!$this->is_account && $this->parent === NULL) {
+    if (!$this->is_account && $this->parent === NULL){
       $display= "<img alt=\"\" src=\"images/small-error.png\" align=middle>&nbsp;<b>".
-        msgPool::noValidExtension(_("server"))."</b>";
-      return $display;
+        msgPool::noValidExtension(_("server"))."</b>"; 
+      return($display);
     }
 
-    if ((isset($_POST['saction'])) &&
-        (isset($_POST['action'])) &&
-        ($this->acl_is_writeable("FAIstate")) &&
-        isset($this->mapActions[$_POST['saction']])) {
+    if ((isset($_POST['saction'])) && ($this->acl_is_writeable("FAIstate")) && isset($this->mapActions[$_POST['saction']]) ){
       $action = $_POST['saction'];
-
+      
       /* Check if we have an DaemonEvent for this action */
-      if (class_available("supportDaemon") && class_available("DaemonEvent_".$action)) {
+      if(class_available("supportDaemon") && class_available("DaemonEvent")){
         $events = DaemonEvent::get_event_types(SYSTEM_EVENT | HIDDEN_EVENT);
-        if (isset($events['TRIGGERED']["DaemonEvent_".$action])) {
+        if(isset($events['TRIGGERED']["DaemonEvent_".$action])){
           $evt = $events['TRIGGERED']["DaemonEvent_".$action];
           $tmp = new $evt['CLASS_NAME']($this->config);
           $tmp->add_targets(array($this->netConfigDNS->macAddress));
           $tmp->set_type(TRIGGERED_EVENT);
           $o_queue = new supportDaemon();
-          if (!$o_queue->append($tmp)) {
+          if(!$o_queue->append($tmp)){
             msg_dialog::display(_("Service infrastructure"),msgPool::siError($o_queue->get_error()),ERROR_DIALOG);
           }
         }
-      } else {
+      }else{
         msg_dialog::display(_("Event error"),
                     sprintf(_("Event '%s' is not available!"),$action),ERROR_DIALOG);
       }
@@ -186,7 +183,7 @@ class servgeneric extends plugin
     $smarty->assign("usePrototype", "true");
 
     $tmp = $this->plInfo();
-    foreach($tmp['plProvidedAcls'] as $name => $translated) {
+    foreach($tmp['plProvidedAcls'] as $name => $translated){
       $smarty->assign($name."ACL",$this->getacl($name));
     }
 
@@ -268,7 +265,7 @@ class servgeneric extends plugin
       $og->save ();
     }
 
-    /* Clean queue form entries with this mac
+    /* Clean queue form entries with this mac 
      */
     if(class_available("supportDaemon") && tests::is_mac($this->netConfigDNS->orig_macAddress)){
       $q = new supportDaemon();
@@ -281,7 +278,7 @@ class servgeneric extends plugin
   /* Save data to object */
   function save_object()
   {
-    /* Save current base, to be able to revert to last base,
+    /* Save current base, to be able to revert to last base, 
         if new base is invalid or not allowed to be selected */
     $base_tmp = $this->base;
     plugin::save_object();
@@ -318,7 +315,7 @@ class servgeneric extends plugin
     if ($this->cn == ""){
       msgPool::required(_("Server name"));
     }
-
+    
     /* Check if given name is a valid host/dns name */
     if(!tests::is_dns_name($this->cn)){
       $message[]= msgPool::invalid(_("Server name"), $this->cn, "/[a-z0-9\.\-]/i");
@@ -351,7 +348,7 @@ class servgeneric extends plugin
       /* Force aborting without message dialog */
       $message[] = "";
       $this->currently_installing_warned = TRUE;
-      msg_dialog::display(_("Software deployment"),
+      msg_dialog::display(_("Software deployment"), 
           _("This host is currently installing, if you really want to save it, press 'OK'."),
           CONFIRM_DIALOG);
     }
@@ -401,10 +398,10 @@ class servgeneric extends plugin
       new log("create","server/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
       $mode= "add";
     } else {
-
+  
       $ldap->cd($this->dn);
       $this->cleanup();
-      $ldap->modify ($this->attrs);
+      $ldap->modify ($this->attrs); 
       new log("modify","server/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
 
       /* Update all accessTo/trust dependencies */
@@ -425,7 +422,7 @@ class servgeneric extends plugin
 
     if($activate && class_available("supportDaemon") && class_available("DaemonEvent")){
 
-      /* Send installation activation
+      /* Send installation activation 
        */
       $events = DaemonEvent::get_event_types(SYSTEM_EVENT | HIDDEN_EVENT);
       $o_queue = new supportDaemon();
@@ -466,8 +463,8 @@ class servgeneric extends plugin
     }
   }
 
-
-  function PrepareForCopyPaste($source)
+  
+  function PrepareForCopyPaste($source)  
   {
     plugin::PrepareForCopyPaste($source);
     if(isset($source['macAddress'][0])){
@@ -478,23 +475,23 @@ class servgeneric extends plugin
     }
 
   }
-
+  
 
   function is_modal_dialog()
   {
     return((isset($this->dialog) && $this->dialog) || (isset($this->netConfigDNS->dialog) && $this->netConfigDNS->dialog));
   }
-
-  /* Return plugin informations for acl handling */
+  
+  /* Return plugin informations for acl handling */ 
   static function plInfo()
   {
-    return (array(
+    return (array( 
           "plShortName"   => _("Generic"),
           "plDescription" => _("Server generic"),
           "plSelfModify"  => FALSE,
           "plDepends"     => array(),
           "plPriority"    => 1,
-          "plSection"     => array("administration"),
+          "plSection"     => array("administration"),           
           "plCategory"    => array("server" => array("description"  => _("Server"),
                                                      "objectClass"  => "goServer")),
           "plProvidedAcls"=> array(
