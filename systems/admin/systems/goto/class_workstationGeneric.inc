@@ -72,7 +72,7 @@ class workgeneric extends plugin
 
   var $validActions   = array("reboot" => 1, "localboot" => 1, "halt" => 1, "update" => 1, "reinstall" => 1,
                             "rescan" => 1, "wakeup" => 1, "memcheck" => 1, "sysinfo" => 1);
-  
+
   var $fai_activated = FALSE;
 
   var $member_of_ogroup = FALSE;
@@ -219,11 +219,14 @@ class workgeneric extends plugin
       }
     }
 
-    if ((isset($_POST['saction'])) && ($this->acl_is_writeable("FAIstate")) && isset($this->validActions[$_POST['saction']]) ){
+    if ((isset($_POST['saction'])) &&
+        (isset($_POST['action'])) &&
+        ($this->acl_is_writeable("FAIstate")) &&
+        isset($this->validActions[$_POST['saction']])) {
       $action= $_POST['saction'];
 
-      /* Check if we have an DaemonEvent for this action */ 
-      if(class_available("supportDaemon") && class_available("DaemonEvent")){
+      /* Check if we have an DaemonEvent for this action */
+      if (class_available("supportDaemon") && class_available("DaemonEvent_".$action)) {
         $events = DaemonEvent::get_event_types(SYSTEM_EVENT | HIDDEN_EVENT);
         if(isset($events['TRIGGERED']["DaemonEvent_".$action])){
           $evt = $events['TRIGGERED']["DaemonEvent_".$action];
@@ -250,7 +253,7 @@ class workgeneric extends plugin
       return($display);
     }
 
-    /* Add new ntp Server to our list */ 
+    /* Add new ntp Server to our list */
     if((isset($_POST['addNtpServer'])) && (isset($_POST['gotoNtpServers'])) && $this->acl_is_writeable("gotoNtpServer")){
       $this->gotoNtpServer[$_POST['gotoNtpServers']] = $_POST['gotoNtpServers'];
     }
@@ -284,7 +287,7 @@ class workgeneric extends plugin
       }
     }
     $smarty->assign("gotoNtpServers",$tmp);
-        
+
     /* Check if workstation is online */
     $o_queue = new supportDaemon();
     $actions = array(
@@ -374,7 +377,7 @@ class workgeneric extends plugin
       update_accessTo($this->cn,"");
     }
 
-    /* Clean queue form entries with this mac 
+    /* Clean queue form entries with this mac
      */
     if(class_available("supportDaemon") && tests::is_mac($this->netConfigDNS->orig_macAddress)){
       $q = new supportDaemon();
@@ -419,7 +422,7 @@ class workgeneric extends plugin
         $this->inheritTimeServer = false;
       }
     }
-    
+
     if(isset($_POST["inheritAll"])){
       $this->set_everything_to_inherited();
     }
@@ -436,7 +439,7 @@ class workgeneric extends plugin
   {
     /* Call common method to give check the hook */
     $message= plugin::check();
- 
+
     /* Skip IP & Mac checks if this is a template */
     if($this->cn != "wdefault"){
       $message= array_merge($message, $this->netConfigDNS->check());
@@ -481,25 +484,25 @@ class workgeneric extends plugin
       }
     }
 
-    /* Only systems with a valid ldap handle can be activated 
+    /* Only systems with a valid ldap handle can be activated
      */
     if($this->gotoMode == "active" && $this->initial_gotoMode != "active"){
 
       if(isset($this->parent->by_object['workstartup']) &&
-          !count($this->parent->by_object['workstartup']->gotoLdapServers) && 
+          !count($this->parent->by_object['workstartup']->gotoLdapServers) &&
           !$this->parent->by_object['workstartup']->gotoLdap_inherit){
 
         $message[] = _("A valid LDAP server assignement is missing!");
       }
     }else{
       /* Warn the user, that this host is currently installing */
-      if($this->currently_installing && !$this->currently_installing_warned && 
+      if($this->currently_installing && !$this->currently_installing_warned &&
           !preg_match("/".preg_quote(get_ou("systemIncomingRDN"), '/')."/i",$this->orig_dn)){
-      
+
         /* Force aborting without message dialog */
         $message[] = "";
         $this->currently_installing_warned = TRUE;
-        msg_dialog::display(_("Software deployment"), 
+        msg_dialog::display(_("Software deployment"),
             _("This host is currently installing. If you want to save it, press 'OK'."),
             CONFIRM_DIALOG);
       }
@@ -512,7 +515,7 @@ class workgeneric extends plugin
     }elseif($this->orig_dn != "new" && $this->base != $this->orig_base && !$this->acl_is_moveable($this->base)){
       $message[] = msgPool::permMove();
     }
- 
+
     return ($message);
   }
 
@@ -603,7 +606,7 @@ class workgeneric extends plugin
       }
       $ldap->cd($this->dn);
       $this->cleanup();
-      $ldap->modify ($this->attrs); 
+      $ldap->modify ($this->attrs);
       if (!$ldap->success()){
         msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_MOD, get_class()));
       }
@@ -695,7 +698,7 @@ class workgeneric extends plugin
       foreach(array("gotoXKbLayout","gotoXKbModel","gotoXKbVariant","gotoXDriver",
             "gotoXResolution","gotoXColordepth","gotoXMouseType","gotoXMouseport") as $name){
         if($this->parent->by_object['workservice']->acl_is_writeable($name)){
-          $this->parent->by_object['workservice']->$name = "default"; 
+          $this->parent->by_object['workservice']->$name = "default";
         }
       }
     }
@@ -723,11 +726,11 @@ class workgeneric extends plugin
     return((isset($this->dialog) && $this->dialog) || (isset($this->netConfigDNS->dialog) && $this->netConfigDNS->dialog));
   }
 
-  /* Return plugin informations for acl handling 
-      #FIXME FAIscript seems to ununsed within this class... */ 
+  /* Return plugin informations for acl handling
+      #FIXME FAIscript seems to ununsed within this class... */
   static function plInfo()
   {
-    return (array(  
+    return (array(
           "plShortName"   => _("Generic"),
           "plDescription" => _("Workstation generic"),
           "plSelfModify"  => FALSE,
@@ -741,9 +744,9 @@ class workgeneric extends plugin
             "description"         => _("Description") ,
             "l"                   => _("Location") ,
             "base"                => _("Base") ,
-            "gotoMode"            => _("Goto mode"), 
-            "gotoSyslogServer"    => _("Syslog server"), 
-            "gotoNtpServer"       => _("Ntp server"), 
+            "gotoMode"            => _("Goto mode"),
+            "gotoSyslogServer"    => _("Syslog server"),
+            "gotoNtpServer"       => _("Ntp server"),
             "userPassword"        => _("Root password"),
             "createFAICD"         => _("Create FAI CD"),
             "FAIstate"            => _("Action flag"))
