@@ -8,175 +8,249 @@ attributetype ( 1.3.6.1.4.1.38414.2.3.107 NAME 'argonautDeleteFinished'
   EQUALITY booleanMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
   SINGLE-VALUE )
-  
+
 attributetype ( 1.3.6.1.4.1.38414.2.3.108 NAME 'argonautPort'
 	DESC 'Fusion Directory - Argonaut, port.'
   EQUALITY integerMatch
   ORDERING integerOrderingMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
   SINGLE-VALUE )
-  
+
 attributetype ( 1.3.6.1.4.1.38414.2.3.110 NAME 'argonautClientPort'
 	DESC 'Fusion Directory - Argonaut, client port.'
   EQUALITY integerMatch
   ORDERING integerOrderingMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
   SINGLE-VALUE )
-  
+
 attributetype ( 1.3.6.1.4.1.38414.2.3.111 NAME 'argonautWakeOnLanInterface'
 	DESC 'Fusion Directory - Argonaut, wakeonlan interface.'
 	EQUALITY caseExactIA5Match
 	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SINGLE-VALUE )
-  
+
 attributetype ( 1.3.6.1.4.1.38414.2.3.112 NAME 'argonautIpTool'
 	DESC 'Fusion Directory - Argonaut, iptool path (usually /sbin/ifconfig).'
 	EQUALITY caseExactIA5Match
 	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SINGLE-VALUE )
-  
+
 attributetype ( 1.3.6.1.4.1.38414.2.3.113 NAME 'argonautLogDir'
 	DESC 'Fusion Directory - Argonaut, log directory.'
 	EQUALITY caseExactIA5Match
 	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SINGLE-VALUE )
-  
+
 attributetype ( 1.3.6.1.4.1.38414.2.3.114 NAME 'argonautTaskIdFile'
 	DESC 'Fusion Directory - Argonaut, taskid file path.'
 	EQUALITY caseExactIA5Match
 	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SINGLE-VALUE )
-  
+
 attributetype ( 1.3.6.1.4.1.38414.2.3.115 NAME 'argonautClientLogDir'
 	DESC 'Fusion Directory - Argonaut, log directory.'
 	EQUALITY caseExactIA5Match
 	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SINGLE-VALUE )
-  
+
 attributetype ( 1.3.6.1.4.1.38414.2.3.116 NAME 'argonautClientWakeOnLanInterface'
 	DESC 'Fusion Directory - Argonaut, wakeonlan interface.'
 	EQUALITY caseExactIA5Match
 	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SINGLE-VALUE )
-  
+
 attributetype ( 1.3.6.1.4.1.38414.2.3.109 NAME 'argonautServerStatus'
 	DESC 'Fusion Directory - Argonaut, server status container - on / off / fail'
 	EQUALITY caseExactIA5Match
 	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
 	SINGLE-VALUE)
-  
+
 attributetype ( 1.3.6.1.4.1.38414.2.3.118 NAME 'argonautMirrorDir'
 	DESC 'Fusion Directory - Argonaut, mirror directory.'
 	EQUALITY caseExactIA5Match
 	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SINGLE-VALUE )
-  
+
 attributetype ( 1.3.6.1.4.1.38414.2.3.119 NAME 'argonautMirrorArch'
 	DESC 'Fusion Directory - Argonaut, mirror archs.'
 	EQUALITY caseExactIA5Match
 	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 )
-  
+
 attributetype ( 1.3.6.1.4.1.38414.2.3.120 NAME 'argonautCrawlerPackagesFolder'
 	DESC 'Fusion Directory - Argonaut, crawler packages folder.'
 	EQUALITY caseExactIA5Match
 	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SINGLE-VALUE )
-  
+
 attributetype ( 1.3.6.1.4.1.38414.2.3.124 NAME 'argonautLdap2repProxy'
 	DESC 'Fusion Directory - Argonaut, ldap2rep proxy.'
 	EQUALITY caseExactIA5Match
 	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SINGLE-VALUE )
-  
+
 attributetype ( 1.3.6.1.4.1.38414.2.3.125 NAME 'argonautLdap2repCleanup'
 	DESC 'Fusion Directory - Argonaut, ldap2rep cleanup.'
   EQUALITY booleanMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
   SINGLE-VALUE )
-  
+
 attributetype ( 1.3.6.1.4.1.38414.2.3.126 NAME 'argonautLdap2repErrors'
 	DESC 'Fusion Directory - Argonaut, ldap2rep errors.'
   EQUALITY booleanMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
   SINGLE-VALUE )
-  
+
 attributetype ( 1.3.6.1.4.1.38414.2.3.127 NAME 'argonautLdap2repSource'
 	DESC 'Fusion Directory - Argonaut, ldap2rep source.'
   EQUALITY booleanMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
   SINGLE-VALUE )
-  
+
 attributetype ( 1.3.6.1.4.1.38414.2.3.128 NAME 'argonautLdap2repGPGCheck'
 	DESC 'Fusion Directory - Argonaut, ldap2rep GPG check.'
   EQUALITY booleanMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
   SINGLE-VALUE )
-  
+
 attributetype ( 1.3.6.1.4.1.38414.2.3.129 NAME 'argonautLdap2repContents'
 	DESC 'Fusion Directory - Argonaut, ldap2rep contents.'
   EQUALITY booleanMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
   SINGLE-VALUE )
-  
+
 attributetype ( 1.3.6.1.4.1.38414.2.3.130 NAME 'argonautLdap2repVerbose'
 	DESC 'Fusion Directory - Argonaut, ldap2rep verbose.'
   EQUALITY booleanMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
   SINGLE-VALUE )
-  
+
 attributetype ( 1.3.6.1.4.1.38414.2.3.131 NAME 'argonautLdap2zoneBindDir'
 	DESC 'Fusion Directory - Argonaut, bind directory.'
 	EQUALITY caseExactIA5Match
 	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SINGLE-VALUE )
-  
+
 attributetype ( 1.3.6.1.4.1.38414.2.3.132 NAME 'argonautLdap2zoneAllowNotify'
 	DESC 'Fusion Directory - Argonaut, allow notify.'
   EQUALITY booleanMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
   SINGLE-VALUE )
-  
+
 attributetype ( 1.3.6.1.4.1.38414.2.3.133 NAME 'argonautLdap2zoneAllowUpdate'
 	DESC 'Fusion Directory - Argonaut, allow update.'
 	EQUALITY caseExactIA5Match
 	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SINGLE-VALUE )
-  
+
 attributetype ( 1.3.6.1.4.1.38414.2.3.134 NAME 'argonautLdap2zoneAllowTransfer'
 	DESC 'Fusion Directory - Argonaut, allow transfer.'
 	EQUALITY caseExactIA5Match
 	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SINGLE-VALUE )
-  
+
 attributetype ( 1.3.6.1.4.1.38414.2.3.135 NAME 'argonautLdap2zoneTTL'
 	DESC 'Fusion Directory - Argonaut, allow transfer.'
 	EQUALITY caseExactIA5Match
 	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SINGLE-VALUE )
-  
+
 attributetype ( 1.3.6.1.4.1.38414.2.3.136 NAME 'argonautLdap2zoneRndc'
 	DESC 'Fusion Directory - Argonaut, rndc path (usually /usr/sbin/rndc).'
 	EQUALITY caseExactIA5Match
 	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SINGLE-VALUE )
-  
+
+attributetype ( 1.3.6.1.4.1.38414.2.3.137 NAME 'argonautFuseDefaultMode'
+	DESC 'Fusion Directory - Argonaut, fuse default mode.'
+	EQUALITY caseExactIA5Match
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.38414.2.3.138 NAME 'argonautFuseLogDir'
+	DESC 'Fusion Directory - Argonaut, fuse log directory.'
+	EQUALITY caseExactIA5Match
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.38414.2.3.139 NAME 'argonautFusePxelinuxCfg'
+	DESC 'Fusion Directory - Argonaut, fuse pxelinux_cfg.'
+	EQUALITY caseExactIA5Match
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.38414.2.3.140 NAME 'argonautFusePxelinuxCfgStatic'
+	DESC 'Fusion Directory - Argonaut, fuse pxelinux_cfg_static.'
+	EQUALITY caseExactIA5Match
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.38414.2.3.141 NAME 'argonautFuseFaiFlags'
+	DESC 'Fusion Directory - Argonaut, fuse fai flags.'
+	EQUALITY caseExactIA5Match
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.38414.2.3.142 NAME 'argonautFuseNfsRoot'
+	DESC 'Fusion Directory - Argonaut, fuse NFS root.'
+	EQUALITY caseExactIA5Match
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.38414.2.3.143 NAME 'argonautFuseOpsiAdmin'
+	DESC 'Fusion Directory - Argonaut, fuse Opsi admin.'
+	EQUALITY caseExactIA5Match
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.38414.2.3.144 NAME 'argonautFuseOpsiPassword'
+	DESC 'Fusion Directory - Argonaut, fuse Opsi password.'
+	EQUALITY caseExactIA5Match
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.38414.2.3.145 NAME 'argonautFuseOpsiServer'
+	DESC 'Fusion Directory - Argonaut, fuse Opsi server.'
+	EQUALITY caseExactIA5Match
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.38414.2.3.146 NAME 'argonautFuseOpsiLang'
+	DESC 'Fusion Directory - Argonaut, fuse Opsi lang.'
+	EQUALITY caseExactIA5Match
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.38414.2.3.147 NAME 'argonautFuseLtspServer'
+	DESC 'Fusion Directory - Argonaut, fuse LTSP server.'
+	EQUALITY caseExactIA5Match
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE )
+
 # Object Class
 objectclass ( 1.3.6.1.4.1.38414.2.4.57 NAME 'argonautServer'
   DESC 'An argonaut server'
-  SUP top AUXILIARY 
+  SUP top AUXILIARY
   MUST ( argonautPort $ argonautLogDir $ argonautDeleteFinished $ argonautWakeOnLanInterface $ argonautIpTool )
   MAY ( argonautServerStatus ) )
-  
+
 objectclass ( 1.3.6.1.4.1.38414.2.4.58 NAME 'argonautClient'
   DESC 'An argonaut client'
-  SUP top AUXILIARY 
+  SUP top AUXILIARY
   MUST ( argonautClientPort $ argonautTaskIdFile $ argonautClientWakeOnLanInterface $ argonautClientLogDir ) )
-  
+
 objectclass ( 1.3.6.1.4.1.38414.2.4.59 NAME 'argonautConfig'
   DESC 'An argonaut config for debconf-crawler and ldap2repositry'
-  SUP top AUXILIARY 
-  MUST (  argonautMirrorDir $ argonautMirrorArch $ argonautCrawlerPackagesFolder $ 
-          argonautLdap2repCleanup $ argonautLdap2repErrors $ argonautLdap2repSource $ argonautLdap2repGPGCheck $ 
-          argonautLdap2repContents $ argonautLdap2repVerbose $ argonautLdap2zoneBindDir $ 
-          argonautLdap2zoneAllowNotify $ argonautLdap2zoneTTL $ argonautLdap2zoneRndc ) 
+  SUP top AUXILIARY
+  MUST (  argonautMirrorDir $ argonautMirrorArch $ argonautCrawlerPackagesFolder $
+          argonautLdap2repCleanup $ argonautLdap2repErrors $ argonautLdap2repSource $ argonautLdap2repGPGCheck $
+          argonautLdap2repContents $ argonautLdap2repVerbose $ argonautLdap2zoneBindDir $
+          argonautLdap2zoneAllowNotify $ argonautLdap2zoneTTL $ argonautLdap2zoneRndc )
   MAY ( argonautLdap2repProxy $ argonautLdap2zoneAllowUpdate $ argonautLdap2zoneAllowTransfer ) )
+
+objectclass ( 1.3.6.1.4.1.38414.2.4.58 NAME 'argonautFuseConfig'
+  DESC 'An argonaut config for fuse'
+  SUP top AUXILIARY
+  MUST (  argonautFuseDefaultMode $ argonautFuseLogDir $ argonautFusePxelinuxCfg $
+          argonautFusePxelinuxCfgStatic $ argonautFuseFaiFlags $ argonautFuseNfsRoot $
+          argonautFuseOpsiAdmin $ argonautFuseOpsiPassword $ argonautFuseOpsiServer $
+          argonautFuseOpsiLang $ argonautFuseLtspServer ) )
