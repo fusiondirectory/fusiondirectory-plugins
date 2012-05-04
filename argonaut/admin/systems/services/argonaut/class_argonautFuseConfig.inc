@@ -90,7 +90,7 @@ class argonautFuseConfig extends goService {
   function getListEntry()
   {
     $fields               = goService::getListEntry();
-    $fields['Message']    = _("Argonaut config service");
+    $fields['Message']    = _("Argonaut fuse config service");
 
     return $fields;
   }
