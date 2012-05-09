@@ -5,17 +5,17 @@
 <tr>
   <td><label for="{$key}">
   {if $key=='argonautFuseDefaultMode'}
-    {t}Default mode{/t}
+    {t}Default mode{/t}{$must}
   {elseif $key=='argonautFuseLogDir'}
-    {t}Log directory{/t}
+    {t}Log directory{/t}{$must}
   {elseif $key=='argonautFusePxelinuxCfg'}
-    {t}Pxelinux cfg path{/t}
+    {t}Pxelinux cfg path{/t}{$must}
   {elseif $key=='argonautFusePxelinuxCfgStatic'}
-    {t}Pxelinux cfg static path{/t}
+    {t}Pxelinux cfg static path{/t}{$must}
   {elseif $key=='argonautFuseFaiFlags'}
     {t}Fai flags{/t}
   {elseif $key=='argonautFuseNfsRoot'}
-    {t}NFS root{/t}
+    {t}NFS root{/t}{$must}
   {elseif $key=='argonautFuseOpsiAdmin'}
     {t}Opsi admin{/t}
   {elseif $key=='argonautFuseOpsiPassword'}

@@ -227,18 +227,18 @@ attributetype ( 1.3.6.1.4.1.38414.2.3.147 NAME 'argonautFuseLtspServer'
   SINGLE-VALUE )
 
 # Object Class
-objectclass ( 1.3.6.1.4.1.38414.2.4.57 NAME 'argonautServer'
+objectclass ( 1.3.6.1.4.1.38414.2.4.50 NAME 'argonautServer'
   DESC 'An argonaut server'
   SUP top AUXILIARY
   MUST ( argonautPort $ argonautLogDir $ argonautDeleteFinished $ argonautWakeOnLanInterface $ argonautIpTool )
   MAY ( argonautServerStatus ) )
 
-objectclass ( 1.3.6.1.4.1.38414.2.4.58 NAME 'argonautClient'
+objectclass ( 1.3.6.1.4.1.38414.2.4.51 NAME 'argonautClient'
   DESC 'An argonaut client'
   SUP top AUXILIARY
   MUST ( argonautClientPort $ argonautTaskIdFile $ argonautClientWakeOnLanInterface $ argonautClientLogDir ) )
 
-objectclass ( 1.3.6.1.4.1.38414.2.4.59 NAME 'argonautConfig'
+objectclass ( 1.3.6.1.4.1.38414.2.4.52 NAME 'argonautConfig'
   DESC 'An argonaut config for debconf-crawler and ldap2repositry'
   SUP top AUXILIARY
   MUST (  argonautMirrorDir $ argonautMirrorArch $ argonautCrawlerPackagesFolder $
@@ -247,10 +247,12 @@ objectclass ( 1.3.6.1.4.1.38414.2.4.59 NAME 'argonautConfig'
           argonautLdap2zoneAllowNotify $ argonautLdap2zoneTTL $ argonautLdap2zoneRndc )
   MAY ( argonautLdap2repProxy $ argonautLdap2zoneAllowUpdate $ argonautLdap2zoneAllowTransfer ) )
 
-objectclass ( 1.3.6.1.4.1.38414.2.4.58 NAME 'argonautFuseConfig'
+objectclass ( 1.3.6.1.4.1.38414.2.4.53 NAME 'argonautFuseConfig'
   DESC 'An argonaut config for fuse'
   SUP top AUXILIARY
   MUST (  argonautFuseDefaultMode $ argonautFuseLogDir $ argonautFusePxelinuxCfg $
-          argonautFusePxelinuxCfgStatic $ argonautFuseFaiFlags $ argonautFuseNfsRoot $
-          argonautFuseOpsiAdmin $ argonautFuseOpsiPassword $ argonautFuseOpsiServer $
-          argonautFuseOpsiLang $ argonautFuseLtspServer ) )
+          argonautFusePxelinuxCfgStatic $ argonautFuseNfsRoot )
+  MAY ( argonautFuseFaiFlags $
+        argonautFuseOpsiAdmin $ argonautFuseOpsiPassword $ argonautFuseOpsiServer $
+        argonautFuseOpsiLang $
+        argonautFuseLtspServer ) )

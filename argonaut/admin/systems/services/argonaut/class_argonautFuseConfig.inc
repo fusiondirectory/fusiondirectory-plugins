@@ -99,9 +99,11 @@ class argonautFuseConfig extends goService {
   {
     plugin::save();
 
+
     /* Check if this is a new entry ... add/modify */
     $ldap = $this->config->get_ldap_link();
     $ldap->cat($this->dn,array("objectClass"));
+    $this->cleanup();
     if($ldap->count()) {
       $ldap->cd($this->dn);
       $ldap->modify($this->attrs);
@@ -130,7 +132,9 @@ class argonautFuseConfig extends goService {
   function check()
   {
     $message = plugin::check();
-    return($message);
+    // FIXME : Should check for MUST attributes
+    // FIXME : Should check that if one of the Opsi attributes is there, the others are too
+    return $message;
   }
 
   function save_object()
