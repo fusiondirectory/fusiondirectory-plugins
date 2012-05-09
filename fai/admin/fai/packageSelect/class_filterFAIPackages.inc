@@ -28,16 +28,15 @@ class filterFAIPackages {
     $pkgs = array();
     $q          = new supportDaemon();
     $filter     = array("$filter");
-    $attrs      = array("distribution", "package","version", "section", "description", "timestamp");
+    $attrs      = array("distribution", "package","version", "section", "timestamp");
     $release = session::get('packageSelect_Release');
     $ret        = $q->FAI_get_packages($release,$attrs,$filter,0,200);
     if($q->is_error()){
       msg_dialog::display(_("Service infrastructure"),msgPool::siError($q->get_error()),ERROR_DIALOG);
     }else{
       foreach($ret as $attr){
-        
+
         $attr['objectClass'] = "FAKE_OC__FaiPackage";
-        $attr['DESCRIPTION'] = base64_decode($attr['DESCRIPTION']);
 
         $item = array();
         $item['dn']   = "dn=".$attr['PACKAGE'].",".$attr['DISTRIBUTION'].",".$base;
