@@ -20,8 +20,6 @@
     {t}Local packages folder{/t}
   {elseif $key=='argonautLdap2repProxy'}
     {t}Proxy{/t}
-  {elseif $key=='argonautLdap2repCleanup'}
-    {t}Cleanup{/t}
   {elseif $key=='argonautLdap2repErrors'}
     {t}Errors{/t}
   {elseif $key=='argonautLdap2repSource'}
@@ -46,24 +44,24 @@
     {t}rndc path{/t}
   {/if}
   </label></td>
-  <td><input id="{$key}" name="{$key}" 
+  <td><input id="{$key}" name="{$key}"
   {if in_array($key,$booleans)}
-    type="checkbox" 
+    type="checkbox"
     {if $value==1} checked="checked"{/if}
   {else}
-    type="text" 
-    value="{$value}" 
+    type="text"
+    value="{$value}"
   {/if}
   /></td>
 </tr>
 {/foreach}
-</table>  
+</table>
 {/render}
 
 <p class="seperator">&nbsp;</p>
 <div style="width:100%; text-align:right;padding-top:10px;padding-bottom:3px;">
   <input type='submit' name='SaveService' value='{msgPool type=saveButton}'>
-  &nbsp; 
-  <input type='submit' name='CancelService' value='{msgPool type=cancelButton}'> 
+  &nbsp;
+  <input type='submit' name='CancelService' value='{msgPool type=cancelButton}'>
 </div>
 <input type="hidden" name="argonautConfigPosted" value="1">

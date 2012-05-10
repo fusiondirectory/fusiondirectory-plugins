@@ -31,7 +31,7 @@ class argonautConfig extends goService{
   var $attributes       = array("argonautMirrorDir","argonautMirrorArch",
                                 "argonautCrawlerPackagesFolder",
                                 "argonautLdap2repProxy",
-                                "argonautLdap2repCleanup","argonautLdap2repErrors",
+                                "argonautLdap2repErrors",
                                 "argonautLdap2repSource","argonautLdap2repGPGCheck",
                                 "argonautLdap2repContents","argonautLdap2repVerbose",
                                 "argonautLdap2zoneBindDir","argonautLdap2zoneAllowNotify",
@@ -47,32 +47,31 @@ class argonautConfig extends goService{
   var $acl;
   var $cn               = "";
   var $view_logged      = FALSE;
-  
-  var $argonautMirrorDir              = "/srv/www/debian";              // Where is you local debian mirror 
+
+  var $argonautMirrorDir              = "/srv/www/debian";              // Where is you local debian mirror
   var $argonautMirrorArch             = array("i386");                  // What is the architecture needed (can be multivaluated)
 
   var $argonautCrawlerPackagesFolder  = "/var/cache/argonaut/packages"; // Where is stored the result produced by the crawler
-  
+
   var $argonautLdap2repProxy          = "";
-  var $argonautLdap2repCleanup        = FALSE;
   var $argonautLdap2repErrors         = TRUE;
   var $argonautLdap2repSource         = FALSE;
   var $argonautLdap2repGPGCheck       = FALSE;
   var $argonautLdap2repContents       = FALSE;
   var $argonautLdap2repVerbose        = FALSE;
-  
+
   var $argonautLdap2zoneBindDir       = "/etc/bind";
   var $argonautLdap2zoneAllowNotify   = FALSE;
   var $argonautLdap2zoneAllowUpdate   = "";
   var $argonautLdap2zoneAllowTransfer = "";
   var $argonautLdap2zoneTTL           = 500;
   var $argonautLdap2zoneRndc          = "/usr/sbin/rndc";
-  
-  var $ldapBooleans     = array("argonautLdap2repCleanup",  "argonautLdap2repErrors",
+
+  var $ldapBooleans     = array("argonautLdap2repErrors",
                                 "argonautLdap2repSource",   "argonautLdap2repGPGCheck",
                                 "argonautLdap2repContents", "argonautLdap2repVerbose",
                                 "argonautLdap2zoneAllowNotify");
-  
+
   function argonautConfig(&$config,$dn)
   {
     goService::goService($config,$dn);
@@ -89,8 +88,8 @@ class argonautConfig extends goService{
 
 
   function execute()
-  { 
-    $smarty = get_smarty(); 
+  {
+    $smarty = get_smarty();
 
     if($this->is_account && !$this->view_logged){
       $this->view_logged = TRUE;
@@ -150,14 +149,14 @@ class argonautConfig extends goService{
     }
   }
 
-  
+
   function PrepareForCopyPaste($source)
   {
     plugin::PrepareForCopyPaste($source);
   }
 
   function check()
-  { 
+  {
     $message = plugin::check();
     return($message);
   }
@@ -184,7 +183,7 @@ class argonautConfig extends goService{
       }
     }
   }
-  
+
   /* Return plugin informations for acl handling */
   static function plInfo()
   {
