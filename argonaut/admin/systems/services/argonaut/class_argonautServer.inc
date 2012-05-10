@@ -28,7 +28,7 @@ class argonautServer extends goService{
 
   /* This plugin only writes its objectClass */
   var $objectclasses    = array("argonautServer");
-  var $attributes       = array("argonautDeleteFinished","argonautPort",
+  var $attributes       = array("argonautDeleteFinished","argonautProtocol","argonautPort",
                                 "argonautWakeOnLanInterface","argonautIpTool","argonautLogDir");
   var $StatusFlag       = "argonautServerStatus";
 
@@ -40,13 +40,14 @@ class argonautServer extends goService{
   var $acl;
   var $cn               = "";
   var $view_logged  =FALSE;
-  
+
   var $argonautDeleteFinished     = true;
+  var $argonautProtocol           = "http";
   var $argonautPort               = 8080;
   var $argonautWakeOnLanInterface = "eth0";
   var $argonautIpTool             = "/sbin/ifconfig";
   var $argonautLogDir             = "/var/log/argonaut";
-  
+
   var $argonautServerStatus = "";
 
   function argonautServer(&$config,$dn)
@@ -58,8 +59,8 @@ class argonautServer extends goService{
 
 
   function execute()
-  { 
-    $smarty = get_smarty(); 
+  {
+    $smarty = get_smarty();
 
     if($this->is_account && !$this->view_logged){
       $this->view_logged = TRUE;
@@ -70,7 +71,10 @@ class argonautServer extends goService{
     foreach ($this->attributes as $attribute) {
       $smarty->assign("$attribute" , $this->$attribute);
     }
-    return($smarty->fetch(get_template_path("argonautServer.tpl",TRUE,dirname(__FILE__))));
+
+    $smarty->assign("protocols",array("http","https"));
+
+    return $smarty->fetch(get_template_path("argonautServer.tpl",TRUE,dirname(__FILE__)));
   }
 
 
@@ -78,8 +82,7 @@ class argonautServer extends goService{
   {
     $fields               = goService::getListEntry();
     $fields['Message']    = _("Argonaut service");
-    #$fields['AllowEdit']  = true;
-    return($fields);
+    return $fields;
   }
 
 
@@ -109,14 +112,14 @@ class argonautServer extends goService{
     }
   }
 
-  
+
   function PrepareForCopyPaste($source)
   {
     plugin::PrepareForCopyPaste($source);
   }
 
   function check()
-  { 
+  {
     $message = plugin::check();
     return($message);
   }
@@ -142,7 +145,7 @@ class argonautServer extends goService{
       }
     }
   }
-  
+
   /* Return plugin informations for acl handling */
   static function plInfo()
   {
