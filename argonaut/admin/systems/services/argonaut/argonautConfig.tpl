@@ -14,8 +14,6 @@
   <td><label for="{$key}">
   {if $key=='argonautMirrorDir'}
     {t}Local debian mirror directory{/t}
-  {elseif $key=='argonautMirrorArch'}
-    {t}Architectures needed (comma or semicolon separated){/t}
   {elseif $key=='argonautCrawlerPackagesFolder'}
     {t}Local packages folder{/t}
   {elseif $key=='argonautLdap2repProxy'}

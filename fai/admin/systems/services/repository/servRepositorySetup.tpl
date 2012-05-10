@@ -10,7 +10,7 @@
           <td>
 {render acl=$ParentServerACL}
             <select name="ParentServer">
-              {html_options options=$ParentServers values=$ParentServerKeys selected=$ParentServer} 
+              {html_options options=$ParentServers values=$ParentServerKeys selected=$ParentServer}
             </select>
 {/render}
           </td>
@@ -21,6 +21,15 @@
           <td>
 {render acl=$ReleaseACL}
             <input type="text" value="{$Release}" name="Release" id="Release">
+{/render}
+          </td>
+        </tr>
+        <tr>
+          <td><label for="Archs">{t}Architectures needed (comma or semicolon separated){/t}</label>
+          </td>
+          <td>
+{render acl=$ArchsACL}
+            <input type="text" value="{$Archs}" name="Archs" id="Archs">
 {/render}
           </td>
         </tr>

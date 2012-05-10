@@ -28,7 +28,7 @@ class argonautConfig extends goService{
 
   /* This plugin only writes its objectClass */
   var $objectclasses    = array("argonautConfig");
-  var $attributes       = array("argonautMirrorDir","argonautMirrorArch",
+  var $attributes       = array("argonautMirrorDir",
                                 "argonautCrawlerPackagesFolder",
                                 "argonautLdap2repProxy",
                                 "argonautLdap2repErrors",
@@ -49,7 +49,6 @@ class argonautConfig extends goService{
   var $view_logged      = FALSE;
 
   var $argonautMirrorDir              = "/srv/www/debian";              // Where is you local debian mirror
-  var $argonautMirrorArch             = array("i386");                  // What is the architecture needed (can be multivaluated)
 
   var $argonautCrawlerPackagesFolder  = "/var/cache/argonaut/packages"; // Where is stored the result produced by the crawler
 
@@ -79,11 +78,6 @@ class argonautConfig extends goService{
     foreach ($this->ldapBooleans as $ldapBoolean) {
       $this->$ldapBoolean = ($this->$ldapBoolean == "TRUE"); // conversion from LDAP format to PHP boolean
     }
-    /* Load arrays */
-    if (isset($this->attrs['argonautMirrorArch'])){
-      unset($this->attrs['argonautMirrorArch']['count']);
-      $this->argonautMirrorArch = $this->attrs['argonautMirrorArch'];
-    }
   }
 
 
@@ -102,11 +96,10 @@ class argonautConfig extends goService{
       $smarty->assign("$attribute" , $this->$attribute);
       $attributes[$attribute] = $this->$attribute;
     }
-    $attributes['argonautMirrorArch'] = implode($this->argonautMirrorArch,",");
     $smarty->assign("attributes" , $attributes);
-    $smarty->assign("crawlerIndice" , 2);
-    $smarty->assign("ldap2repIndice" , 3);
-    $smarty->assign("ldap2zoneIndice" , 10);
+    $smarty->assign("crawlerIndice" , 1);
+    $smarty->assign("ldap2repIndice" , 2);
+    $smarty->assign("ldap2zoneIndice" , 8);
     $smarty->assign("booleans" , $this->ldapBooleans);
     return($smarty->fetch(get_template_path("argonautConfig.tpl",TRUE,dirname(__FILE__))));
   }
@@ -173,11 +166,7 @@ class argonautConfig extends goService{
           if(in_array($attribute,$this->ldapBooleans)) {
             continue;
           } else if(isset($_POST[$attribute])) {
-            if( $attribute=="argonautMirrorArch" ) {
-              $this->$attribute = preg_split("/[\s,;]+/", $_POST[$attribute]);
-            } else {
-              $this->$attribute = $_POST[$attribute];
-            }
+            $this->$attribute = $_POST[$attribute];
           }
         }
       }
