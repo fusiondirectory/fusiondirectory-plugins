@@ -337,7 +337,7 @@ class servrepository extends goService
                 $conf['Local']."|".
                 join(',',$conf['Archs']);
 
-      $releases[] = $conf['Release'];
+      $releases[$conf['Release']] = $conf;
     }
     $this->attrs['FAIrepository'] = $arr;
 
@@ -372,14 +372,16 @@ class servrepository extends goService
       }
     }
 
-    foreach ($releases as $release) {
-      $dn = "ou=$release,$fai";
-      $ldap->cat($dn, array('dn'));
-      if(!$ldap->count()){
-        $ldap->cd ($dn);
-        $ldap->add(array('objectClass' => array('organizationalUnit','FAIbranch'), 'ou' => $release));
-        if (!$ldap->success()){
-          msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_ADD, get_class()));
+    foreach ($releases as $release => $conf) {
+      if ($conf['Install'] == "install") {
+        $dn = "ou=$release,$fai";
+        $ldap->cat($dn, array('dn'));
+        if(!$ldap->count()){
+          $ldap->cd ($dn);
+          $ldap->add(array('objectClass' => array('organizationalUnit','FAIbranch'), 'ou' => $release));
+          if (!$ldap->success()){
+            msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_ADD, get_class()));
+          }
         }
       }
     }
