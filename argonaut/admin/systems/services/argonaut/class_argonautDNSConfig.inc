@@ -20,27 +20,21 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class argonautConfig extends goService{
+class argonautDNSConfig extends goService{
 
   var $cli_summary      = "This plugin is used within the ServerService Pluign \nand indicates that this server supports Argonaut service.";
   var $cli_description  = "Some longer text\nfor help";
   var $cli_parameters   = array("one" => "one is nice", "two" => "two is better");
 
   /* This plugin only writes its objectClass */
-  var $objectclasses    = array("argonautConfig");
-  var $attributes       = array("argonautMirrorDir",
-                                "argonautCrawlerPackagesFolder",
-                                "argonautLdap2repProxy",
-                                "argonautLdap2repErrors",
-                                "argonautLdap2repSource","argonautLdap2repGPGCheck",
-                                "argonautLdap2repContents","argonautLdap2repVerbose",
-                                "argonautLdap2zoneBindDir","argonautLdap2zoneAllowNotify",
+  var $objectclasses    = array("argonautDNSConfig");
+  var $attributes       = array("argonautLdap2zoneBindDir","argonautLdap2zoneAllowNotify",
                                 "argonautLdap2zoneAllowUpdate","argonautLdap2zoneAllowTransfer",
                                 "argonautLdap2zoneTTL","argonautLdap2zoneRndc");
   var $StatusFlag       = "";
 
   /* This class can't be assigned twice so it conflicts with itsself */
-  var $conflicts        = array("argonautConfig");
+  var $conflicts        = array("argonautDNSConfig");
 
   var $DisplayName      = "";
   var $dn               = NULL;
@@ -52,13 +46,6 @@ class argonautConfig extends goService{
 
   var $argonautCrawlerPackagesFolder  = "/var/cache/argonaut/packages"; // Where is stored the result produced by the crawler
 
-  var $argonautLdap2repProxy          = "";
-  var $argonautLdap2repErrors         = TRUE;
-  var $argonautLdap2repSource         = FALSE;
-  var $argonautLdap2repGPGCheck       = FALSE;
-  var $argonautLdap2repContents       = FALSE;
-  var $argonautLdap2repVerbose        = FALSE;
-
   var $argonautLdap2zoneBindDir       = "/etc/bind";
   var $argonautLdap2zoneAllowNotify   = FALSE;
   var $argonautLdap2zoneAllowUpdate   = "";
@@ -66,15 +53,12 @@ class argonautConfig extends goService{
   var $argonautLdap2zoneTTL           = 500;
   var $argonautLdap2zoneRndc          = "/usr/sbin/rndc";
 
-  var $ldapBooleans     = array("argonautLdap2repErrors",
-                                "argonautLdap2repSource",   "argonautLdap2repGPGCheck",
-                                "argonautLdap2repContents", "argonautLdap2repVerbose",
-                                "argonautLdap2zoneAllowNotify");
+  var $ldapBooleans     = array("argonautLdap2zoneAllowNotify");
 
-  function argonautConfig(&$config,$dn)
+  function argonautDNSConfig(&$config,$dn)
   {
     goService::goService($config,$dn);
-    $this->DisplayName = _("Argonaut config service");
+    $this->DisplayName = _("Argonaut DNS settings");
     foreach ($this->ldapBooleans as $ldapBoolean) {
       $this->$ldapBoolean = ($this->$ldapBoolean == "TRUE"); // conversion from LDAP format to PHP boolean
     }
@@ -90,27 +74,23 @@ class argonautConfig extends goService{
       new log("view","server/".get_class($this),$this->dn);
     }
 
-    $smarty->assign("argonautConfigACL", $this->getacl("argonautConfig")) ;
+    $smarty->assign("argonautDNSConfigACL", $this->getacl("argonautDNSConfig")) ;
     $attributes = array();
     foreach ($this->attributes as $attribute) {
       $smarty->assign("$attribute" , $this->$attribute);
       $attributes[$attribute] = $this->$attribute;
     }
     $smarty->assign("attributes" , $attributes);
-    $smarty->assign("crawlerIndice" , 1);
-    $smarty->assign("ldap2repIndice" , 2);
-    $smarty->assign("ldap2zoneIndice" , 8);
     $smarty->assign("booleans" , $this->ldapBooleans);
-    return($smarty->fetch(get_template_path("argonautConfig.tpl",TRUE,dirname(__FILE__))));
+    return($smarty->fetch(get_template_path("argonautDNSConfig.tpl",TRUE,dirname(__FILE__))));
   }
 
 
   function getListEntry()
   {
     $fields               = goService::getListEntry();
-    $fields['Message']    = _("Argonaut config service");
-    #$fields['AllowEdit']  = true;
-    return($fields);
+    $fields['Message']    = _("Argonaut DNS settings");
+    return $fields;
   }
 
 
@@ -151,14 +131,14 @@ class argonautConfig extends goService{
   function check()
   {
     $message = plugin::check();
-    return($message);
+    return $message;
   }
 
   function save_object()
   {
-    if(isset($_POST['argonautConfigPosted'])) {
+    if(isset($_POST['argonautDNSConfigPosted'])) {
       plugin::save_object();
-      if($this->acl_is_writeable("argonautConfig")) {
+      if($this->acl_is_writeable("argonautDNSConfig")) {
         foreach ($this->ldapBooleans as $ldapBoolean) {
           $this->$ldapBoolean = isset($_POST[$ldapBoolean]);
         }
@@ -177,8 +157,8 @@ class argonautConfig extends goService{
   static function plInfo()
   {
     return (array(
-          "plShortName"   => _("Argonaut config service"),
-          "plDescription" => _("Argonaut config service")." ("._("Services").")",
+          "plShortName"   => _("Argonaut DNS settings"),
+          "plDescription" => _("Argonaut DNS settings")." ("._("Services").")",
           "plSelfModify"  => FALSE,
           "plDepends"     => array(),
           "plPriority"    => 91,
@@ -186,7 +166,7 @@ class argonautConfig extends goService{
           "plCategory"    => array("server"),
 
           "plProvidedAcls"=> array(
-            "argonautConfig"        =>_("Modify argonaut config service"))
+            "argonautDNSConfig"        =>_("Modify argonaut DNS settings"))
           ));
   }
 }
