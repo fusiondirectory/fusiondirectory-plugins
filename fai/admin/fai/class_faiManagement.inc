@@ -26,7 +26,7 @@ class faiManagement extends management
   var $plDescription  = "Manage software packages and deployment recipes";
   var $plIcon  = "plugins/fai/images/plugin.png";
 
-  // Tab definition 
+  // Tab definition
   protected $tabClass = "";
   protected $tabType = "";
   protected $aclCategory = "";
@@ -34,14 +34,14 @@ class faiManagement extends management
   protected $objectName   = "FAI object";
 
   //  Attributes Managed by this plugin can be used in post events
-  public $attributes   = array("lock_type","lock_name","lock_dn");  
+  public $attributes   = array("lock_type","lock_name","lock_dn");
 
   var $dispNewBranch=false;
   var $dispNewFreeze=false;
 
   var $fai_release = ""; // The currently selected release while in release management mode!
-  var $fai_base = ""; 
-  var $acl_base = ""; 
+  var $fai_base = "";
+  var $acl_base = "";
 
   var $lock_type = "";
   var $lock_dn = "";
@@ -70,7 +70,7 @@ class faiManagement extends management
 
     $releases = $this->getReleaseList();
     $this->fai_release = key($releases);
-    
+
     if(!isset($releases[$this->fai_release])){
       $this->fai_release = $this->fai_base;
     }
@@ -150,7 +150,7 @@ class faiManagement extends management
         }else{
           $this->dialogObject = new faiGroupHandle($entry['GROUPS'],"copy");
         }
-        
+
       }else{
 
         // More than one group was selected, expect that the user wants to copy the complete groups.
@@ -192,18 +192,18 @@ class faiManagement extends management
   }
 
 
-  /*! \brief  A new FAI object was requested, let the user specify a name theis object now. 
+  /*! \brief  A new FAI object was requested, let the user specify a name theis object now.
    */
   function newEntry($action="",$target=array(),$all=array(), $altTabClass ="", $altTabType = "", $altAclCategory="")
   {
-    $types = array( 
+    $types = array(
         "new_partition"     =>  "FAIpartitionTable",
         "new_script"        =>  "FAIscript",
         "new_hook"          =>  "FAIhook",
         "new_variable"      =>  "FAIvariable",
         "new_template"      =>  "FAItemplate",
         "new_package"       =>  "FAIpackageList");
-    $types_i18n = array( 
+    $types_i18n = array(
         "new_partition"     =>  _("partition table"),
         "new_script"        =>  _("script"),
         "new_hook"          =>  _("hook"),
@@ -211,7 +211,7 @@ class faiManagement extends management
         "new_template"      =>  _("template"),
         "new_package"       =>  _("package list"));
 
-    if(isset($types[$action])){
+    if (isset($types[$action])) {
       $type_acl_mapping = array(
           "FAIpartitionTable"  => "faiPartitionTable",
           "FAIpackageList"     => "faiPackage",
@@ -222,25 +222,25 @@ class faiManagement extends management
           "FAItemplate"        => "faiTemplate");
 
       $acl = $this->ui->get_permissions($this->acl_base,"fai/".$type_acl_mapping[$types[$action]]);
-      if(preg_match("/c/",$acl)){
+      if (preg_match("/c/",$acl)) {
         $this->dialogObject = new askClassName($this->config,$this->dn,$this->ui,$types[$action]);
         $this->dialogObject->parent = &$this;
-      }else{
-        msg_dialog::display(_("Permission error"), 
+      } else {
+        msg_dialog::display(_("Permission error"),
             sprintf(_("You have no permission to create a new %s!"), $types_i18n[$action]),      ERROR_DIALOG);
       }
     }
-    if($action == "new_profile"){
+    if ($action == "new_profile") {
       $this->dn = "new" ;
 
       $acl = $this->ui->get_permissions($this->acl_base,"fai/faiProfile");
-      if(preg_match("/c/",$acl)){
-        $type= $this->get_type(array("objectClass"=>array("FAIprofile")));
+      if (preg_match("/c/",$acl)) {
+        $type= $this->get_type(array("objectClass" => array("FAIprofile")));
         $str= management::newEntry('newEntry',array(),array(),$type[0],$type[2],$type[1]);
-        if($str) return($str);
+        if ($str) return($str);
         $this->tabObject->set_acl_base($this->acl_base);
         $this->tabObject->by_object[$type[1]]->cn = $name;
-      }else{
+      } else {
         msg_dialog::display(_("Permission error"), sprintf(_("You have no permission to create a new %s!"), _("profile")), ERROR_DIALOG);
       }
     }
@@ -279,37 +279,37 @@ class faiManagement extends management
   function editEntry($action="",$target=array(),$all=array(), $altTabClass ="", $altTabType = "", $altAclCategory="")
   {
     $headpage = $this->getHeadpage();
-    if(count($target) == 1){
+    if (count($target) == 1) {
       $entry = $headpage->getEntry($target[0]);
-      if($entry){
+      if ($entry) {
 
-        // Edit Opsi objects here 
-        if(in_array("opsi_local", $entry['TYPES']) || in_array("opsi_netboot", $entry['TYPES'])){ 
+        // Edit Opsi objects here
+        if (in_array("opsi_local", $entry['TYPES']) || in_array("opsi_netboot", $entry['TYPES'])) {
           $name = $entry['cn'];
           $cfg = $this->opsi->get_product_properties($name);
 
           $str = management::editEntry('editEntry',array($name),array(),'tabs_opsiProdConfig','OPSIPRODCONFIG','opsi');
-          if($str) return($str);
-          if(isset($this->tabObject->by_object['opsiProperties'])){
+          if ($str) return($str);
+          if (isset($this->tabObject->by_object['opsiProperties'])) {
             $this->tabObject->by_object['opsiProperties']->set_cfg($cfg);
             $this->tabObject->by_object['opsiProperties']->set_product($name);
             $this->skipFooter = TRUE;
-          }else{
+          } else {
             trigger_error("Unknown tab, please check config.");
           }
 
-        }else{
+        } else {
 
-          // Edit FAI objects here 
-          if(count($entry['GROUPS']) == 1){
+          // Edit FAI objects here
+          if (count($entry['GROUPS']) == 1) {
             $data = array_pop($entry['GROUPS']);
             $type = $this->get_type($data);
             $str = management::editEntry('editEntry',array($data['dn']),array(),$type[0],$type[2],$type[1]);
-            if($str) return($str);
+            if ($str) return($str);
             $this->tabObject->by_object[$type[1]]->FAIstate = $data['FAIstate'];
             $this->tabObject->read_only = preg_match("/freeze/i", $data['FAIstate']);
 
-          }else{
+          } else {
             $this->dialogObject = new faiGroupHandle($entry['GROUPS'],"edit");
           }
         }
@@ -379,32 +379,32 @@ class faiManagement extends management
   {
     // Do not allow to remove objects with state freeezed
     $errors = $disallowed = array();
-  
-    foreach($to_delete as $obj){
+
+    foreach($to_delete as $obj) {
       $type = $this->get_type($obj);
       $acl  = $this->ui->get_permissions($obj['dn'],"fai/".$type[1]);
-      if(!preg_match("/d/",$acl)){
+      if(!preg_match("/d/",$acl)) {
         $disallowed[] = $obj['dn'];
-      }elseif(isset($obj['FAIstate']) && preg_match('/^freeze/', $obj['FAIstate'])){
+      } elseif(isset($obj['FAIstate']) && preg_match('/^freeze/', $obj['FAIstate'])) {
         $errors[] = $obj['dn'];
-      }else{
+      } else {
         $this->dns[] = $obj['dn'];
       }
     }
-    if(count($errors)){
+    if (count($errors)) {
       msg_dialog::display(_("Branch locked"),
           sprintf(_("The following entries are locked, you can't remove them %s."),msgPool::buildList($errors)),INFO_DIALOG);
     }
-    if(count($disallowed)){ 
+    if (count($disallowed)) {
       msg_dialog::display(_("Permission error"), msgPool::permDelete($disallowed), ERROR_DIALOG);
     }
 
     // Check entry locking
-    if(count($this->dns)){
-      if ($user= get_multiple_locks($this->dns)){
+    if (count($this->dns)) {
+      if ($user= get_multiple_locks($this->dns)) {
         return(gen_locked_message($user,$this->dns));
       }
-      if(count($this->dns)){
+      if (count($this->dns)) {
         $smarty = get_smarty();
         $dns_names = array();
         foreach($this->dns as $dn){
@@ -425,7 +425,7 @@ class faiManagement extends management
       $altTabClass="",$altTabType="",$altAclCategory="")
   {
     $ldap = $this->config->get_ldap_link();
-    $ldap->cd($this->config->current['BASE']); 
+    $ldap->cd($this->config->current['BASE']);
 
     $disallowed = array();
     foreach($this->dns as $key => $dn){
@@ -455,14 +455,14 @@ class faiManagement extends management
 
     /* Normally this shouldn't be reached, send some extra
        logs to notify the administrator */
-    if(count($disallowed)){ 
+    if(count($disallowed)){
       msg_dialog::display(_("Permission error"), msgPool::permDelete($disallowed), ERROR_DIALOG);
     }
   }
 
 
   /*! \brief   Someone clicked on edit/remove for a grouped FAI object.
-   *           We are now going to display a dialog to let the user select the entry 
+   *           We are now going to display a dialog to let the user select the entry
    *            he wants to perform the action on.
    */
   function editByGroup()
@@ -634,11 +634,11 @@ class faiManagement extends management
   }
 
 
-  /*! \brief   Initiates release creation 
+  /*! \brief   Initiates release creation
    */
   function createBranch()
-  { 
-    if($this->config->search("faiManagement", "POSTCREATE",array('menu','tabs')) == ""){ 
+  {
+    if($this->config->search("faiManagement", "POSTCREATE",array('menu','tabs')) == ""){
       msg_dialog::display(_("Configuration"), msgPool::cmdnotfound("POSTCREATE", get_class()), ERROR_DIALOG);
     }elseif(!preg_match("/c/",$this->ui->get_permissions($this->acl_base,"fai/faiManagement"))){
       msg_dialog::display(_("Permission error"), msgPool::permCreate(_("Branch")), ERROR_DIALOG);
@@ -657,11 +657,11 @@ class faiManagement extends management
   }
 
 
-  /*! \brief   Initiates release creation 
+  /*! \brief   Initiates release creation
    */
   function createFreeze()
   {
-    if($this->config->search("faiManagement", "POSTCREATE",array('menu','tabs')) == ""){ 
+    if($this->config->search("faiManagement", "POSTCREATE",array('menu','tabs')) == ""){
       msg_dialog::display(_("Configuration"), msgPool::cmdnotfound("POSTCREATE", get_class()), ERROR_DIALOG);
     }elseif(!preg_match("/c/",$this->ui->get_permissions($this->acl_base,"fai/faiManagement"))){
       msg_dialog::display(_("Permission error"), msgPool::permCreate(_("Branch")), ERROR_DIALOG);
@@ -838,7 +838,7 @@ class faiManagement extends management
       $is_ok = false;
     }
 
-    // Check if this name is already in use 
+    // Check if this name is already in use
     if(!$this->CheckNewBranchName($_POST['BranchName'],$this->fai_release)){
       msg_dialog::display(_("Error"), msgPool::duplicated(_("Name")), ERROR_DIALOG);
       $is_ok = false;
@@ -879,7 +879,7 @@ class faiManagement extends management
   function getReleaseList($base = "", $prefix ="")
   {
     $list = array();
-    if(empty($base)){
+    if (empty($base)) {
       $base = $this->fai_base;
     }
 
@@ -890,7 +890,7 @@ class faiManagement extends management
       $list[$release['dn']] = $prefix.$release['ou'][0];
       $list = array_merge($list,$this->getReleaseList($release['dn'],$prefix."&nbsp; "));
     }
-    return($list);
+    return $list;
   }
 
 
@@ -917,7 +917,7 @@ class faiManagement extends management
   }
 
 
-  /*! \brief   Detects object info like corresponding  tab,class,acl 
+  /*! \brief   Detects object info like corresponding  tab,class,acl
    *    e.g.    [0]   =  tabsPartition
    *            [1]   =  faiPartitionTable
    *            [2]   =  FAIPARTITIONTABS
@@ -991,7 +991,7 @@ class faiManagement extends management
   }
 
 
-  /*! \brief   This filter is used to display small icons for each listed object 
+  /*! \brief   This filter is used to display small icons for each listed object
    *            instead of their typ names
    */
   static function filterProperties($row, $classes)
@@ -1030,7 +1030,7 @@ class faiManagement extends management
   }
 
 
-  /*! \brief   Overridden render method of class mangement. 
+  /*! \brief   Overridden render method of class mangement.
    *            this allows us to add a release selection box.
    */
   function renderList()
@@ -1099,11 +1099,11 @@ class faiManagement extends management
           if(isset($headpage->entries[$id]['GROUPS'][$tab])){
             $data =$headpage->entries[$id]['GROUPS'][$tab];
             $type = $this->get_type($data);
-            $str = management::editEntry('editEntry',array($data['dn']),array(),$type[0],$type[2],$type[1]); 
+            $str = management::editEntry('editEntry',array($data['dn']),array(),$type[0],$type[2],$type[1]);
             if($str) return($str);
-          } 
+          }
         }else{
-          $str = $this->editEntry('editEntry',array($entry['dn'])); 
+          $str = $this->editEntry('editEntry',array($entry['dn']));
           if($str) return($str);
         }
         break;
@@ -1126,6 +1126,6 @@ class faiManagement extends management
               "objectClass" => "FAIclass")),
           "plProvidedAcls"=> array()));
   }
-} 
+}
 // vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

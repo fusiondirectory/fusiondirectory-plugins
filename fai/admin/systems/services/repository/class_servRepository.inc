@@ -465,6 +465,8 @@ class servrepository extends goService
             "Release"       => _("Releases"),
             "Url"           => _("URL"),
             "Section"       => _("Sections"),
+            "Install"       => _("Installation mirror"),
+            "Local"         => _("Local mirror"),
             "Archs"         => _("Architectures"),
           )
         )

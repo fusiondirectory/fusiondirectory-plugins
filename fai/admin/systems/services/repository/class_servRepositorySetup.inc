@@ -143,7 +143,15 @@ class servRepositorySetup  extends plugin
     foreach($this->attributes as $attr) {
       $smarty->assign($attr, $this->$attr);
     }
-    $smarty->assign("Install", $this->Install);
+    $install = split(':',$this->Install);
+    $smarty->assign("Install", $install[0]);
+    $smarty->assign("install_modes",array('install','update','custom'));
+    if ($install[0]=="custom") {
+      $smarty->assign("install_releases",$this->getReleaseList());
+      $smarty->assign("install_release",$install[1]);
+    }
+
+
     $smarty->assign("Local", $this->Local);
     $smarty->assign("Archs", implode($this->Archs,','));
 
@@ -159,9 +167,10 @@ class servRepositorySetup  extends plugin
   {
     if (isset($_POST['servRepositorySetup_Posted'])) {
       if (isset($_POST['Install'])) {
-        $this->Install = "install";
-      } else {
-        $this->Install = "update";
+        $this->Install = get_post('Install');
+        if ($this->Install=="custom") {
+          $this->Install .= ":".get_post('Custom');
+        }
       }
       if (isset($_POST['Local'])) {
         $this->Local = "local";
@@ -173,7 +182,7 @@ class servRepositorySetup  extends plugin
       }
       foreach($this->attributes as $attr) {
         if (($this->parent->acl_is_writeable($attr)) && (isset($_POST[$attr]))) {
-          $this->$attr = $_POST[$attr];
+          $this->$attr = get_post($attr);
         }
       }
     }
@@ -212,6 +221,19 @@ class servRepositorySetup  extends plugin
     return $tmp;
   }
 
+  function getReleaseList ()
+  {
+    $list = array();
+
+    $ldap = $this->config->get_ldap_link();
+    $ldap->ls("(objectClass=FAIbranch)",get_ou("faiBaseRDN").$this->config->current['BASE'],array("ou"));
+
+    while ($release = $ldap->fetch()) {
+      $list[] = $release['ou'][0];
+    }
+    return $list;
+  }
+
   function getParentServers()
   {
     $ret  = array();
@@ -229,7 +251,7 @@ class servRepositorySetup  extends plugin
 
     $ret['none'] = "&nbsp;";
     asort($ret);
-    return($ret);
+    return $ret;
   }
 
   /* this funtions calls a defined hook
