@@ -464,8 +464,11 @@ class servrepository extends goService
             "ParentServer"  => _("Parent server"),
             "Release"       => _("Releases"),
             "Url"           => _("URL"),
-            "Section"       => _("Sections"))
-          ));
+            "Section"       => _("Sections"),
+            "Archs"         => _("Architectures"),
+          )
+        )
+      );
   }
 
 }
