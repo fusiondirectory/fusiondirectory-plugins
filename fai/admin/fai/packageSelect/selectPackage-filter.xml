@@ -19,6 +19,14 @@
   </search>
 
   <element>
+    <type>checkbox</type>
+    <tag>CUSTOMCALIBRE7</tag>
+    <default>false</default>
+    <unset></unset>
+    <set>(&amp;(objectClass=FAIclass)(FAIstate=__NETBOOT__))</set>
+  </element>
+
+  <element>
     <type>textfield</type>
     <tag>NAME</tag>
     <size>20</size>

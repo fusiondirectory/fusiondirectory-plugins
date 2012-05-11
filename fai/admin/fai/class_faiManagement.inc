@@ -56,23 +56,22 @@ class faiManagement extends management
 
     /* Check if the opsi plugin is installed.
      */
-    if(class_available("opsi")){
+    if (class_available("opsi")) {
       $this->opsi = new opsi($this->config);;
     }
 
     $this->fai_base = get_ou("faiBaseRDN").$this->config->current['BASE'];
     $cfg_rel = $this->config->search("faiManagement","DEFAULTFAIRELEASE",array("menu"));
-    if(!empty($cfg_rel)){
+    if (!empty($cfg_rel)) {
       $this->fai_release = $cfg_rel;
-    }else{
+    } else {
       $this->fai_release = $this->fai_base;
     }
 
     $releases = $this->getReleaseList();
-    $this->fai_release = key($releases);
 
-    if(!isset($releases[$this->fai_release])){
-      $this->fai_release = $this->fai_base;
+    if (!isset($releases[$this->fai_release])) {
+      $this->fai_release = key($releases);
     }
 
     $this->acl_base = $this->config->current['BASE'];
@@ -87,7 +86,7 @@ class faiManagement extends management
         get_ou('faiTemplateRDN'));
 
     // Build filter
-    if (session::global_is_set(get_class($this)."_filter")){
+    if (session::global_is_set(get_class($this)."_filter")) {
       $filter= session::global_get(get_class($this)."_filter");
     } else {
       $filter = new filter(get_template_path("fai-filter.xml", true));
@@ -104,7 +103,7 @@ class faiManagement extends management
     $headpage->registerElementFilter("objectTypes", "listing::filterObjectTypes");
 
     // Add copy&paste and snapshot handler.
-    if ($this->config->boolValueIsTrue("main", "copyPaste")){
+    if ($this->config->boolValueIsTrue("main", "copyPaste")) {
       $this->cpHandler = new CopyPasteHandler($this->config);
     }
 
@@ -136,30 +135,30 @@ class faiManagement extends management
   {
     // Collect real dns, the listed objects are grouped by their cn
     $headpage = $this->getHeadpage();
-    if($action == "copy"){
+    if ($action == "copy") {
 
-      if(count($target) == 1){
+      if (count($target) == 1) {
 
         // We just want to copy a single FAI object, let the user choose entries from the FAI-Group
         $entry = $headpage->getEntry($target[0]);
-        if(count($entry['GROUPS']) == 1){
+        if (count($entry['GROUPS']) == 1) {
           $data = array_pop($entry['GROUPS']);
           $type = $this->get_type($data);
           $this->cpHandler->add_to_queue($data['dn'],"copy",$type[0],$type[2],'fai',$this);
           @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,$data['dn'],"Entry copied!");
-        }else{
+        } else {
           $this->dialogObject = new faiGroupHandle($entry['GROUPS'],"copy");
         }
 
-      }else{
+      } else {
 
         // More than one group was selected, expect that the user wants to copy the complete groups.
-        foreach($target as $t){
+        foreach($target as $t) {
           $entry = $headpage->getEntry($t);
 
           // Check for valid FAI objects
-          if(in_array('FAKE_OC_FAI', $entry['objectClass'])){
-            foreach($entry['GROUPS'] as $g){
+          if (in_array('FAKE_OC_FAI', $entry['objectClass'])) {
+            foreach($entry['GROUPS'] as $g) {
               $type = $this->get_type($g);
               $this->cpHandler->add_to_queue($g['dn'],"copy",$type[0],$type[2],'fai',$this);
               @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,$g['dn'],"Entry copied!");
@@ -170,22 +169,22 @@ class faiManagement extends management
     }
 
     // Initiate pasting
-    if($action == "paste"){
+    if ($action == "paste") {
       $this->cpPastingStarted = TRUE;
     }
 
     // Display any c&p dialogs, eg. object modifications required before pasting.
-    if($this->cpPastingStarted && $this->cpHandler->entries_queued()){
+    if ($this->cpPastingStarted && $this->cpHandler->entries_queued()) {
       $this->cpHandler->SetVar("base",$headpage->getBase());
       $data = $this->cpHandler->execute();
       FAI::save_release_changes_now();
-      if(!empty($data)){
+      if (!empty($data)) {
         return($data);
       }
     }
 
     // Automatically disable pasting process since there is no entry left to paste.
-    if(isset($this->cpHandler) && !$this->cpHandler->entries_queued()){
+    if (isset($this->cpHandler) && !$this->cpHandler->entries_queued()) {
       $this->cpPastingStarted = FALSE;
     }
     return("");

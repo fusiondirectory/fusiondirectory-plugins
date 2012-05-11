@@ -8,9 +8,17 @@
 
 <div style="border-top:1px solid #AAAAAA"></div>
 
- <div style='padding: 3px;'>  
+ <div style='padding: 3px;'>
   {t}A maximum of 200 entries will be shown here.{/t}
  </div>
+
+<div style='padding:4px;'>
+{foreach from=$customs key=key item=value}
+  {$value}
+  <label for="{$key}">custom {$key}</label><br/>
+{/foreach}
+</div>
+
  <table summary="" style="width:100%;border-top:1px solid #B0B0B0;">
   <tr>
    <td>

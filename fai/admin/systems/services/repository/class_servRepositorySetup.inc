@@ -169,7 +169,11 @@ class servRepositorySetup  extends plugin
       if (isset($_POST['Install'])) {
         $this->Install = get_post('Install');
         if ($this->Install=="custom") {
-          $this->Install .= ":".get_post('Custom');
+          if (isset($_POST['Custom'])) {
+            $this->Install .= ":".get_post('Custom');
+          } else {
+            $this->Install .= ":".key($this->getReleaseList());
+          }
         }
       }
       if (isset($_POST['Local'])) {

@@ -295,9 +295,9 @@ class faiPackage extends plugin
 
     // Open the packageSelect dialog to allow adding packages out of a list.
     if(isset($_POST['Addpkg']) && $this->acl_is_writeable("FAIpackage") && !preg_match("/freeze/",$this->FAIstate)){
-      $this->packageSelect = new packageSelect($this->config, get_userinfo());
       session::set('packageSelect_Release',$this->FAIdebianRelease);
-      $this->dialog =true;
+      $this->packageSelect = new packageSelect($this->config, get_userinfo());
+      $this->dialog = TRUE;
     }
 
     // Close packageSelect dialog.
