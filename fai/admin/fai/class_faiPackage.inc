@@ -555,7 +555,7 @@ class faiPackage extends plugin
     $release = $this->FAIdebianRelease;
     $customs = $q->FAI_get_customs($release);
     for ($i = -1; (count($packages) > 0) && ($i < count($customs)); $i++) {
-      if ($i>0) { // if release has been handled
+      if ($i>=0) { // if release has been handled
         $release = $customs[$i]; // take the next custom
       }
       $ret = $q->FAI_get_packages($release,$attrs,array_keys($packages),-1,-1,true);
