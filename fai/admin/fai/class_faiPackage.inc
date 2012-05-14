@@ -191,7 +191,7 @@ class faiPackage extends plugin
      * Initialize a new Package List with release and section name
      ******/
 
-    if(!$this->is_account){
+    if (!$this->is_account) {
 
       /* Assemble release name */
       $release = $this->parent->parent->fai_release;
@@ -220,24 +220,24 @@ class faiPackage extends plugin
      * Add
      ******/
 
-    if(isset($_POST['AddManualpkg']) &&
+    if (isset($_POST['AddManualpkg']) &&
         isset($_POST['addPpkgsText']) &&
         strlen($_POST['addPpkgsText']) &&
         $this->acl_is_writeable("FAIpackage") &&
-        !preg_match("/freeze/",$this->FAIstate)){
+        !preg_match("/freeze/",$this->FAIstate)) {
 
       // Check all splitted packages for valid package names
-      $add_packages = preg_split( "/[\s,]+/", get_post('addPpkgsText'), -1, PREG_SPLIT_NO_EMPTY );
-      if( is_array($add_packages) ) {
+      $add_packages = preg_split("/[\s,]+/", get_post('addPpkgsText'), -1, PREG_SPLIT_NO_EMPTY);
+      if (is_array($add_packages)) {
         $invalid_packages = array();
         foreach ($add_packages as $value) {
-          if(!preg_match( "/^[a-z0-9][-0-9a-z+\.]+$/",$value)){
+          if (!preg_match( "/^[a-z0-9][-0-9a-z+\.]+$/",$value)) {
             $invalid_packages[] = trim($value);
-          }else{
+          } else {
             $valid_packages[] = trim($value);
           }
         }
-        if(count($invalid_packages)){
+        if (count($invalid_packages)) {
           $str = implode(", ",$invalid_packages);
           msg_dialog::display(_("Invalid package names"),
               sprintf(_("The following package names don't match the Debian policy: %s"),$str),
@@ -246,10 +246,9 @@ class faiPackage extends plugin
 
 
         // If we have a complete list of valid packages, add them
-        if(count($valid_packages)){
-
-          foreach($valid_packages as $key =>  $value){
-            if(array_key_exists($value,$this->usedPackages)) {
+        if (count($valid_packages)) {
+          foreach($valid_packages as $key => $value) {
+            if (array_key_exists($value,$this->usedPackages)) {
               unset($valid_packages[$key]);
             }
           }
@@ -257,38 +256,30 @@ class faiPackage extends plugin
           // Query SI-Deamon for additional package information
           $daemon       = new supportDaemon();
           $query_attrs  = array("distribution", "package","version", "section", "description", "timestamp");
-          $do_si_query  = true;
-
 
           foreach ($valid_packages as $value) {
-
-            if( $do_si_query == true ) {
-              $res = $daemon->FAI_get_packages($this->FAIdebianRelease,$query_attrs,array($value),0,1,true);
-              if( ! $daemon->is_error()){
-
-                if(count($res)){
-
-                  // We just use the last answer - there shouldn't be multiple
-                  $res_attrs = array_pop( $res );
-                  $this->list[$value] = $res_attrs;
-                  $this->usedPackages[$value] = $res_attrs['PACKAGE'];
-
-                }else{
-                  $this->usedPackages[$value] = $value;
-                }
-              }else{
-                msg_dialog::display(_("Service infrastructure"),
-                    msgPool::siError($daemon->get_error()),
-                    ERROR_DIALOG);
-                $do_si_query = false;
+            $res = $daemon->FAI_get_packages($this->FAIdebianRelease,$query_attrs,array($value),0,1,true);
+            if (!$daemon->is_error()) {
+              if (!empty($res)) {
+                // We just use the last answer - there shouldn't be multiple
+                $res_attrs = array_pop($res);
+                $this->list[$value] = $res_attrs;
+                $this->usedPackages[$value] = $res_attrs['PACKAGE'];
+              } else {
+                $this->usedPackages[$value] = $value;
               }
+            } else {
+              msg_dialog::display(_("Service infrastructure"),
+                  msgPool::siError($daemon->get_error()),
+                  ERROR_DIALOG);
+              break;
             }
           }
 
           ksort($this->usedPackages);
 
           /* Generate package list */
-          $this->list= $this->genPkgs(TRUE);
+          $this->list = $this->genPkgs(TRUE);
         }
       }
     }
@@ -585,15 +576,26 @@ class faiPackage extends plugin
       $q = new supportDaemon();
       $attrs = array("distribution", "package","version", "section", "description", "timestamp","hastemplate");
 
-      $packages = array_keys($this->usedPackages);
-
-      $ret = $q->FAI_get_packages($this->FAIdebianRelease,$attrs,$packages,-1,-1,true);
-      if ($q->is_error()) {
-        msg_dialog::display(_("Service infrastructure"),msgPool::siError($q->get_error()),ERROR_DIALOG);
-      } else {
-        foreach($ret as $attr) {
-          $this->buffer[$attr['PACKAGE']] = $attr;
+      $packages = $this->usedPackages;
+      $release = $this->FAIdebianRelease;
+      $customs = $q->FAI_get_customs($release);
+      for ($i = -1; (count($packages) > 0) && ($i < count($customs)); $i++) {
+        if ($i>0) { // if release has been handled
+          $release = $customs[$i]; // take the next custom
         }
+        $ret = $q->FAI_get_packages($release,$attrs,array_keys($packages),-1,-1,true);
+        if ($q->is_error()) {
+          msg_dialog::display(_("Service infrastructure"),msgPool::siError($q->get_error()),ERROR_DIALOG);
+          break;
+        } else {
+          foreach($ret as $attr) {
+            $this->buffer[$attr['PACKAGE']] = $attr;
+            echo "found ".$attr['PACKAGE']."<br\>\n";
+            unset($packages[$attr['PACKAGE']]); // remove found packages
+          }
+        }
+        @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,count($packages),"$release done, packages left");
+        print_r($packages);
       }
     }
     return $this->buffer;

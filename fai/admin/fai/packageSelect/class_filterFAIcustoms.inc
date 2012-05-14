@@ -64,16 +64,7 @@ class filterFAIcustoms extends filter {
 
   function getCustomList ($release)
   {
-    $list     = array();
-    $q        = new supportDaemon();
-    $servers  = $q->FAI_get_server();
-
-    foreach($servers as $server) {
-      if (strtolower($server['INSTALL']) == strtolower("custom:$release")) {
-        $list[$server['FAI_RELEASE']] = $server['FAI_RELEASE'];
-      }
-    }
-
-    return array_values($list);
+    $q = new supportDaemon();
+    return $q->FAI_get_customs($release);
   }
 }
