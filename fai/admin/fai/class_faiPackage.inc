@@ -59,7 +59,7 @@ class faiPackage extends plugin
   var $list             = NULL;
 
   var $usedPackages     = array();
-  var $buffer           = NULL;
+  var $buffer           = array();
   var $newDialogShown   = false;
 
   var $FAIstate         = "";
@@ -169,7 +169,7 @@ class faiPackage extends plugin
     }
 
     /* Generate package list */
-    $this->list= $this->genPkgs(TRUE);
+    $this->list= $this->genPkgs();
   }
 
 
@@ -244,42 +244,16 @@ class faiPackage extends plugin
               ERROR_DIALOG);
         }
 
-
         // If we have a complete list of valid packages, add them
         if (count($valid_packages)) {
-          foreach($valid_packages as $key => $value) {
-            if (array_key_exists($value,$this->usedPackages)) {
-              unset($valid_packages[$key]);
-            }
-          }
-
-          // Query SI-Deamon for additional package information
-          $daemon       = new supportDaemon();
-          $query_attrs  = array("distribution", "package","version", "section", "description", "timestamp");
-
           foreach ($valid_packages as $value) {
-            $res = $daemon->FAI_get_packages($this->FAIdebianRelease,$query_attrs,array($value),0,1,true);
-            if (!$daemon->is_error()) {
-              if (!empty($res)) {
-                // We just use the last answer - there shouldn't be multiple
-                $res_attrs = array_pop($res);
-                $this->list[$value] = $res_attrs;
-                $this->usedPackages[$value] = $res_attrs['PACKAGE'];
-              } else {
-                $this->usedPackages[$value] = $value;
-              }
-            } else {
-              msg_dialog::display(_("Service infrastructure"),
-                  msgPool::siError($daemon->get_error()),
-                  ERROR_DIALOG);
-              break;
-            }
+            $this->usedPackages[$value] = $value;
           }
 
           ksort($this->usedPackages);
 
           /* Generate package list */
-          $this->list = $this->genPkgs(TRUE);
+          $this->list = $this->genPkgs();
         }
       }
     }
@@ -294,17 +268,17 @@ class faiPackage extends plugin
     // Close packageSelect dialog.
     if(isset($_POST['packageSelect_cancel'])){
       $this->packageSelect = FALSE;
-      $this->dialog =FALSE;
+      $this->dialog = FALSE;
     }
 
     // Close packageSelect dialog and add the selected packages.
     if(isset($_POST['packageSelect_save']) && $this->packageSelect instanceOf packageSelect){
-      if(!preg_match("/freeze/i", $this->FAIstate)){
+      if (!preg_match("/freeze/i", $this->FAIstate)) {
         $use = $this->packageSelect->save();
 
-        foreach($use as $pkg){
+        foreach($use as $pkg) {
           $item = array();
-          for($i =0; $i < $pkg['count']; $i++){
+          for ($i =0; $i < $pkg['count']; $i++) {
             $item[$pkg[$i]] = $pkg[$pkg[$i]][0];
           }
           $this->usedPackages[$item['PACKAGE']] = $item['PACKAGE'];
@@ -313,10 +287,11 @@ class faiPackage extends plugin
         ksort($this->usedPackages);
 
         /* Generate package list */
-        $this->list= $this->genPkgs(TRUE);
+        // We could do a bit more optimised here as the $use array much likely contains the release or customs associated to each package.
+        $this->list = $this->genPkgs();
       }
       $this->packageSelect = FALSE;
-      $this->dialog =FALSE;
+      $this->dialog = FALSE;
     }
 
     // Display package add dialog
@@ -562,7 +537,7 @@ class faiPackage extends plugin
   /*! \brief  Reload the list of cached packages.
       @return Returns the currently cached list of packages.
    */
-  function genPkgs($force = false)
+  function genPkgs()
   {
     if (empty($this->FAIdebianRelease)) {
       return;
@@ -572,32 +547,39 @@ class faiPackage extends plugin
       return; // If there are no packages, no need to do anything
     }
 
-    if (!count($this->buffer) || $force) {
-      $q = new supportDaemon();
-      $attrs = array("distribution", "package","version", "section", "description", "timestamp","hastemplate");
+    $q = new supportDaemon();
+    $attrs = array("distribution", "package","version", "section", "description", "timestamp","hastemplate");
 
-      $packages = $this->usedPackages;
-      $release = $this->FAIdebianRelease;
-      $customs = $q->FAI_get_customs($release);
-      for ($i = -1; (count($packages) > 0) && ($i < count($customs)); $i++) {
-        if ($i>0) { // if release has been handled
-          $release = $customs[$i]; // take the next custom
+    $packages = array_diff_key($this->usedPackages,$this->buffer); // packages names that are not already in the buffer
+
+    $release = $this->FAIdebianRelease;
+    $customs = $q->FAI_get_customs($release);
+    for ($i = -1; (count($packages) > 0) && ($i < count($customs)); $i++) {
+      if ($i>0) { // if release has been handled
+        $release = $customs[$i]; // take the next custom
+      }
+      $ret = $q->FAI_get_packages($release,$attrs,array_keys($packages),-1,-1,true);
+      if ($q->is_error()) {
+        msg_dialog::display(_("Service infrastructure"),msgPool::siError($q->get_error()),ERROR_DIALOG);
+        return $this->buffer;
+      } else {
+        foreach($ret as $attr) {
+          $this->buffer[$attr['PACKAGE']] = $attr;
+          echo "found ".$attr['PACKAGE']."<br\>\n";
+          unset($packages[$attr['PACKAGE']]); // remove found packages
         }
-        $ret = $q->FAI_get_packages($release,$attrs,array_keys($packages),-1,-1,true);
-        if ($q->is_error()) {
-          msg_dialog::display(_("Service infrastructure"),msgPool::siError($q->get_error()),ERROR_DIALOG);
-          break;
-        } else {
-          foreach($ret as $attr) {
-            $this->buffer[$attr['PACKAGE']] = $attr;
-            echo "found ".$attr['PACKAGE']."<br\>\n";
-            unset($packages[$attr['PACKAGE']]); // remove found packages
-          }
-        }
-        @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,count($packages),"$release done, packages left");
-        print_r($packages);
+      }
+      @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,count($packages),"$release done, packages left");
+      print_r($packages);
+    }
+
+    if (count($packages) > 0) {
+      msg_dialog::display(_("Unkown packages"),"The following packages were not found on the repository : ".join(",",$packages),ERROR_DIALOG);
+      foreach($packages as $p=>$pp) {
+        unset($this->usedPackages[$p]);
       }
     }
+
     return $this->buffer;
   }
 
