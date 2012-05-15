@@ -23,20 +23,24 @@ class argonautClient extends plugin
 {
   var $parent;
   var $config;
-  
+
   var $objectclasses    = array("argonautClient");
-  var $attributes = array("argonautClientPort","argonautClientWakeOnLanInterface","argonautTaskIdFile","argonautClientLogDir");
+  var $attributes = array("argonautClientPort","argonautClientWakeOnLanInterface",
+                          "argonautTaskIdFile","argonautClientLogDir",
+                          "argonautServiceName");
   var $argonautClientPort               = 8081;
   var $argonautClientWakeOnLanInterface = "eth0";
   var $argonautTaskIdFile               = "/tmp/argonaut";
   var $argonautClientLogDir             = "/var/log/argonaut";
 
+  var $argonautServiceName = array();
+
   var $member_of_ogroup = FALSE;
-  
+
   var $activateArgonaut = FALSE;
-  
-  var $ignore_account     = TRUE;
- 
+
+  var $ignore_account   = TRUE;
+
   function __construct(&$config,$dn,$parent)
   {
     $this->config = $config;
@@ -48,14 +52,47 @@ class argonautClient extends plugin
         $this->activateArgonaut = in_array("argonautClient",$this->attrs['objectClass']);
       }
     }
-    
+
     if(!isset($this->parent->by_object['ogroup'])){
       $ldap = $this->config->get_ldap_link();
       $ldap->cd ($this->config->current['BASE']);
       $ldap->search("(&(objectClass=gotoWorkstationTemplate)(member=".LDAP::prepare4filter($this->dn)."))",array("cn"));
       $this->member_of_ogroup = $ldap->count() >= 1;
     }
-    
+
+    $argonautService_defaults = array(
+      "folder"              => "/etc/init.d"
+      "goCupsServer"        => "cups"
+      "goMailServer"        => "postfix"
+      "goNtpServer"         => "ntpd"
+      "goImapServer"        => "cyrus-imapd"
+      "goTerminalServer"    => "ssh"
+      "goLdapServer"        => "slapd"
+      "goShareServer"       => "samba"
+      "gospamserver"        => "spamassassin"
+      "govirusserver"       => "clamav-daemon"
+      "servdhcp"            => "isc-dhcp-server"
+      "servdns"             => "bind9"
+      "argonautServer"      => "argonaut-server"
+    );
+
+    $this->argonautServiceName = array();
+    foreach($this->config->data['TABS']['SERVERSERVICE'] as $tab) {
+      $this->argonautServiceName[$tab['CLASS']] = "";
+      if (isset($argonautService_defaults[$tab['CLASS']])) {
+        $this->argonautServiceName[$tab['CLASS']] = $argonautService_defaults[$tab['CLASS']];
+      }
+    }
+    $this->argonautServiceName["folder"] = $argonautService_defaults["folder"];
+    if (isset($this->attrs['argonautServiceName'])) {
+      for($i = 0 ; $i < $this->attrs['argonautServiceName']['count']; $i++) {
+        $serv = split(':',$this->attrs['argonautServiceName'][$i]);
+        if (isset($this->argonautServiceName[$serv[0]])) {
+          $this->argonautServiceName[$serv[0]] = $serv[1];
+        }
+      }
+    }
+
   }
 
 
@@ -69,18 +106,23 @@ class argonautClient extends plugin
     $smarty->assign("activateArgonaut", $this->activateArgonaut) ;
 
     $smarty->assign("argonautACL", $this->getacl("argonaut")) ;
-    
+
     return($smarty->fetch(get_template_path('argonautclient.tpl', TRUE,dirname(__FILE__))));
   }
-  
+
   function save()
   {
     plugin::save();
-  
+
     if(!$this->activateArgonaut) {
       unset($this->attrs['objectClass'][array_search("argonautClient", $this->attrs['objectClass'])]);
       foreach ($this->attributes as $attribute) {
         $this->attrs[$attribute] = array();
+      }
+    } else {
+      $this->attrs['argonautServiceName'] = array();
+      foreach ($this->argonautServiceName as $nameFD => $namePC) {
+        $this->attrs['argonautServiceName'][] = "$nameFD:$namePC";
       }
     }
 
@@ -105,7 +147,7 @@ class argonautClient extends plugin
       new log("create","server/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
     }
   }
-  
+
   function save_object()
   {
     if(isset($_POST['argonautClientPosted'])) {
@@ -122,6 +164,11 @@ class argonautClient extends plugin
           }
           if(isset($_POST[$attribute])) {
             $this->$attribute = $_POST[$attribute];
+          }
+        }
+        foreach ($this->argonautServiceName as $name => $value) {
+          if(isset($_POST["service_$name"])) {
+            $this->argonautServiceName[$name] = $_POST["service_$name"];
           }
         }
       }

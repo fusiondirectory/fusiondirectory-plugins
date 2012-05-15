@@ -51,5 +51,20 @@
             {if !$activateArgonaut } disabled="disabled" {/if} />
   </td>
 </tr>
+<tr>
+  <td colspan="2">
+    {t}Service names:{/t}
+  </td>
+</tr>
+{foreach from=$argonautServiceName key=nameFD item=namePC}
+<tr>
+  <td>
+    <label for="service_{$nameFD}">{$nameFD}</label>
+  </td><td>
+    <input  type="text" name="service_{$nameFD}" id="service_{$nameFD}"
+            value="{$namePC}" />
+  </td>
+</tr>
+{/foreach}
 </table>
 <input type="hidden" name="argonautClientPosted" value="1">
