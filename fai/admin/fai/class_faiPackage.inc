@@ -51,6 +51,7 @@ class faiPackage extends plugin
   var $SubObjects       = array();  // All leafobjects of this object
 
   var $FAIdebianRelease          = ""; // The selected release
+  var $FAIcustomRelease          = array(); // The custom releases in use
   var $FAIdebianSection          = array(); // selected section
   var $FAIinstallMethod          = "aptitude"; // hard coded
 
@@ -567,10 +568,12 @@ class faiPackage extends plugin
           $this->buffer[$attr['PACKAGE']] = $attr;
           echo "found ".$attr['PACKAGE']."<br\>\n";
           unset($packages[$attr['PACKAGE']]); // remove found packages
+          if($i>=0) {
+            $this->FAIcustomRelease[$release] = $release;
+          }
         }
       }
       @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,count($packages),"$release done, packages left");
-      print_r($packages);
     }
 
     if (count($packages) > 0) {
@@ -590,12 +593,12 @@ class faiPackage extends plugin
   {
 
     /* Assemble release name */
-    if($this->FAIdebianRelease == "ClearFromCopyPaste"){
+    if ($this->FAIdebianRelease == "ClearFromCopyPaste") {
 
-      $current_release  = $this->parent->parent->fai_release;
-      $tmp= preg_replace('/,'.preg_quote(get_ou('faiBaseRDN'), '/').'.*$/i', '', $current_release);
-      $tmp= preg_replace('/ou=/', '', $tmp);
-      $rev= array_reverse(explode(',', $tmp));
+      $current_release = $this->parent->parent->fai_release;
+      $tmp = preg_replace('/,'.preg_quote(get_ou('faiBaseRDN'), '/').'.*$/i', '', $current_release);
+      $tmp = preg_replace('/ou=/', '', $tmp);
+      $rev = array_reverse(explode(',', $tmp));
       $this->FAIdebianRelease= "";
       foreach ($rev as $part){
         $this->FAIdebianRelease.= "/$part";
@@ -617,11 +620,16 @@ class faiPackage extends plugin
       $this->attrs['FAIdebianSection'][] = $sec;
     }
 
+    $this->attrs['FAIcustomRelease'] = array();
+    foreach($this->FAIcustomRelease as $rel){
+      $this->attrs['FAIcustomRelease'][] = $rel;
+    }
+
     FAI::prepare_to_save_FAI_object($this->dn,$this->attrs);
 
-    if($this->initially_was_account){
+    if ($this->initially_was_account) {
       new log("modify","fai/".get_class($this),$this->dn,$this->attributes);
-    }else{
+    } else {
       new log("create","fai/".get_class($this),$this->dn,$this->attributes);
     }
 
@@ -649,11 +657,10 @@ class faiPackage extends plugin
         /* Tag object */
         $this->tag_attrs($pkgattrs, $pkgdn, $this->gosaUnitTag);
 
-        if(in_array($pkgattrs['FAIvariableType'],array("boolean","multiselect","password","select","string","text"))){
-
-          if($pkgattrs['FAIvariableType'] == "text" && $pkgattrs['FAIvariableContent'] == ""){
+        if (in_array($pkgattrs['FAIvariableType'],array("boolean","multiselect","password","select","string","text"))) {
+          if ($pkgattrs['FAIvariableType'] == "text" && $pkgattrs['FAIvariableContent'] == "") {
             fusiondirectory_log("Skipped saving FAIvariable '$name' empty string can't be saved.");
-          }else{
+          } else {
             FAI::prepare_to_save_FAI_object($pkgdn,$pkgattrs);
           }
         }
