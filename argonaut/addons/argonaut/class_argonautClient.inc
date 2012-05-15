@@ -61,29 +61,35 @@ class argonautClient extends plugin
     }
 
     $argonautService_defaults = array(
-      "folder"              => "/etc/init.d"
-      "goCupsServer"        => "cups"
-      "goMailServer"        => "postfix"
-      "goNtpServer"         => "ntpd"
-      "goImapServer"        => "cyrus-imapd"
-      "goTerminalServer"    => "ssh"
-      "goLdapServer"        => "slapd"
-      "goShareServer"       => "samba"
-      "gospamserver"        => "spamassassin"
-      "govirusserver"       => "clamav-daemon"
-      "servdhcp"            => "isc-dhcp-server"
-      "servdns"             => "bind9"
+      "folder"              => "/etc/init.d",
+      "goCupsServer"        => "cups",
+      "goMailServer"        => "postfix",
+      "goNtpServer"         => "ntpd",
+      "goImapServer"        => "cyrus-imapd",
+      "goTerminalServer"    => "ssh",
+      "goLdapServer"        => "slapd",
+      "goShareServer"       => "samba",
+      "gospamserver"        => "spamassassin",
+      "govirusserver"       => "clamav-daemon",
+      "servdhcp"            => "isc-dhcp-server",
+      "servdns"             => "bind9",
       "argonautServer"      => "argonaut-server"
+    );
+    $argonautService_blacklist = array(
+      "argonautDNSConfig",
+      "argonautMirrorConfig",
+      "argonautFuseConfig",
+      "quotaService"
     );
 
     $this->argonautServiceName = array();
+    $this->argonautServiceName["folder"] = $argonautService_defaults["folder"];
     foreach($this->config->data['TABS']['SERVERSERVICE'] as $tab) {
       $this->argonautServiceName[$tab['CLASS']] = "";
       if (isset($argonautService_defaults[$tab['CLASS']])) {
         $this->argonautServiceName[$tab['CLASS']] = $argonautService_defaults[$tab['CLASS']];
       }
     }
-    $this->argonautServiceName["folder"] = $argonautService_defaults["folder"];
     if (isset($this->attrs['argonautServiceName'])) {
       for($i = 0 ; $i < $this->attrs['argonautServiceName']['count']; $i++) {
         $serv = split(':',$this->attrs['argonautServiceName'][$i]);
@@ -91,6 +97,9 @@ class argonautClient extends plugin
           $this->argonautServiceName[$serv[0]] = $serv[1];
         }
       }
+    }
+    foreach($argonautService_blacklist as $service) {
+      unset($this->argonautServiceName[$service]);
     }
 
   }
