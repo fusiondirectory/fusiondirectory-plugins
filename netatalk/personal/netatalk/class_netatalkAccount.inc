@@ -32,7 +32,7 @@
   and displays the formulars required.
  */
 
-class netatalk extends plugin {
+class netatalkAccount extends plugin {
 
   /* Definitions */
   var $plHeadline     = "Netatalk";
