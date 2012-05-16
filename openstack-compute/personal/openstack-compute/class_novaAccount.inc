@@ -19,10 +19,10 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class novaUser extends plugin
+class novaAccount extends plugin
 {
   /* Definitions */
-  var $plHeadline= "novaUser";
+  var $plHeadline= "nova";
   var $plDescription= "Edit users Nova settings";
 
   /* plugin specific values */
