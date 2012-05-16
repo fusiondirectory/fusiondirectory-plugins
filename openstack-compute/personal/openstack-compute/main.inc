@@ -2,8 +2,7 @@
 
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2003  Cajus Pollmeier
-  Copyright (C) 2011  FusionDirectory
+  Copyright (C) 2011-2012  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -23,14 +22,14 @@
 /* Remove locks created by this plugin */
 $lock_msg = "";
 if ($remove_lock || isset($_POST['edit_cancel'])) {
-  if(session::is_set('novaUser') && session::is_set('edit')) {
+  if(session::is_set('novaAccount') && session::is_set('edit')) {
     del_lock($ui->dn);
   }
 }
 
 /* Remove this plugin from session */
 if ($cleanup) {
-  session::un_set('novaUser');
+  session::un_set('novaAccount');
   session::un_set('edit');
 
 } else {
@@ -38,22 +37,22 @@ if ($cleanup) {
   /* Reset requested? */
   if (isset($_POST['edit_cancel'])) {
     session::un_set ('edit');
-    session::un_set ('novaUser');
+    session::un_set ('novaAccount');
   }
 
-  /* Create novaUser object on demand */
-  if (!session::is_set('novaUser') || (isset($_GET['reset']) && $_GET['reset'] == 1)) {
-    $novaUser = new novaUser ($config, $ui->dn);
-    $novaUser->enable_CSN_check();
-    $novaUser->set_acl_base($ui->dn);
-    $novaUser->set_acl_category("users");
-    session::set('novaUser', $novaUser);
+  /* Create novaAccount object on demand */
+  if (!session::is_set('novaAccount') || (isset($_GET['reset']) && $_GET['reset'] == 1)) {
+    $novaAccount = new novaAccount ($config, $ui->dn);
+    $novaAccount->enable_CSN_check();
+    $novaAccount->set_acl_base($ui->dn);
+    $novaAccount->set_acl_category("users");
+    session::set('novaAccount', $novaAccount);
   }
-  $novaUser = session::get('novaUser');
+  $novaAccount = session::get('novaAccount');
 
   /* save changes back to object */
   if (session::is_set('edit')) {
-    $novaUser->save_object ();
+    $novaAccount->save_object ();
   }
 
   /* Enter edit mode? */
@@ -78,16 +77,16 @@ if ($cleanup) {
   if (isset($_POST['edit_finish'])) {
 
     /* Perform checks */
-    $message = $novaUser->check ();
+    $message = $novaAccount->check ();
 
     /* No errors, save object */
     if (count ($message) == 0) {
-      $novaUser->save ();
+      $novaAccount->save ();
       del_lock ($ui->dn);
       session::un_set ('edit');
 
       /* Remove from session */
-      session::un_set ('novaUser');
+      session::un_set ('novaAccount');
     } else {
       /* Errors found, show message */
       msg_dialog::displayChecks($message);
@@ -98,16 +97,16 @@ if ($cleanup) {
   if ($lock_msg) {
     $display  = $lock_msg;
   } else {
-    $display .= $novaUser->execute ();
+    $display .= $novaAccount->execute ();
   }
 
   /* Store changes  in session */
   if (session::is_set('edit')){
-    session::set('novaUser', $novaUser);
+    session::set('novaAccount', $novaAccount);
   }
 
   /* Show page footer depending on the mode */
-  if (!$novaUser->groupSelect && !$novaUser->trustSelect && $novaUser->is_account && empty($lock_msg)){
+  if (!$novaAccount->groupSelect && !$novaAccount->trustSelect && $novaAccount->is_account && empty($lock_msg)){
 
     $display .= "<p class=\"plugbottom\">";
 
@@ -123,7 +122,7 @@ if ($cleanup) {
              "\"> ".$ui->dn."&nbsp;";
 
       /* Only display edit button if there is at least one attribute editable */
-      if (preg_match("/r/", $ui->get_permissions($ui->dn, "users/novaUser"))) {
+      if (preg_match("/r/", $ui->get_permissions($ui->dn, "users/novaAccount"))) {
         $info .= "<img alt=\"\" align=\"middle\" src=\"".get_template_path('images/lists/on.png')."\"> ".
           msgPool::clickEditToChange();
 
@@ -135,8 +134,8 @@ if ($cleanup) {
   }
 
   /* Page header*/
-  $display = print_header(get_template_path('plugins/posix/images/plugin.png'),
-                         _("POSIX settings"), $info).$display;
+  $display = print_header(get_template_path('plugins/openstack-compute/images/plugin.png'),
+                         _("openstack nova settings"), $info).$display;
 
 }
 
