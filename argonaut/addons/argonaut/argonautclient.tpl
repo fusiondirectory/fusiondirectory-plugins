@@ -6,7 +6,10 @@
                     changeState('argonautClientPort');
                     changeState('argonautClientWakeOnLanInterface');
                     changeState('argonautClientLogDir');
-                    changeState('argonautTaskIdFile');"/>
+                    changeState('argonautTaskIdFile');
+{foreach from=$argonautServiceName key=nameFD item=namePC}
+                    changeState('service_{$nameFD}');
+{/foreach}"/>
 {if $member_of_ogroup}
     <label for="activateArgonaut">{t}Inherit group informations{/t}</label>
 {else}
@@ -63,7 +66,8 @@
     <label for="service_{$nameFD}">{$nameFD}</label>
   </td><td>
     <input  type="text" name="service_{$nameFD}" id="service_{$nameFD}"
-            value="{$namePC}" />
+            value="{$namePC}"
+            {if !$activateArgonaut } disabled="disabled" {/if} />
   </td>
 </tr>
 {/foreach}
