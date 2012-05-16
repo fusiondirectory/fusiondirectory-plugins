@@ -57,7 +57,7 @@ class argonautClient extends plugin
       $ldap = $this->config->get_ldap_link();
       $ldap->cd ($this->config->current['BASE']);
       $ldap->search("(&(objectClass=gotoWorkstationTemplate)(member=".LDAP::prepare4filter($this->dn)."))",array("cn"));
-      $this->member_of_ogroup = $ldap->count() >= 1;
+      $this->member_of_ogroup = ($ldap->count() >= 1);
     }
 
     $argonautService_defaults = array(
@@ -92,7 +92,7 @@ class argonautClient extends plugin
     }
     if (isset($this->attrs['argonautServiceName'])) {
       for($i = 0 ; $i < $this->attrs['argonautServiceName']['count']; $i++) {
-        $serv = split(':',$this->attrs['argonautServiceName'][$i]);
+        $serv = explode(':',$this->attrs['argonautServiceName'][$i]);
         if (isset($this->argonautServiceName[$serv[0]])) {
           $this->argonautServiceName[$serv[0]] = $serv[1];
         }
@@ -111,10 +111,10 @@ class argonautClient extends plugin
     foreach ($this->attributes as $attribute) {
       $smarty->assign("$attribute" , $this->$attribute);
     }
-    $smarty->assign("member_of_ogroup", $this->member_of_ogroup) ;
-    $smarty->assign("activateArgonaut", $this->activateArgonaut) ;
+    $smarty->assign("member_of_ogroup", $this->member_of_ogroup);
+    $smarty->assign("activateArgonaut", $this->activateArgonaut);
 
-    $smarty->assign("argonautACL", $this->getacl("argonaut")) ;
+    $smarty->assign("argonautACL", $this->getacl("argonaut"));
 
     return($smarty->fetch(get_template_path('argonautclient.tpl', TRUE,dirname(__FILE__))));
   }
@@ -123,7 +123,7 @@ class argonautClient extends plugin
   {
     plugin::save();
 
-    if(!$this->activateArgonaut) {
+    if (!$this->activateArgonaut) {
       unset($this->attrs['objectClass'][array_search("argonautClient", $this->attrs['objectClass'])]);
       foreach ($this->attributes as $attribute) {
         $this->attrs[$attribute] = array();
@@ -167,6 +167,13 @@ class argonautClient extends plugin
         } else {
           $this->activateArgonaut = false;
         }
+
+        if ($this->member_of_ogroup) {
+          $this->activateArgonaut = !$this->activateArgonaut;
+          /* if we're in a group, the checkbox means "inherit",
+           therefore deactivate specific argonaut config for this computer.*/
+        }
+
         foreach ($this->attributes as $attribute) {
           if($attribute=="activateArgonaut") {
             continue;

@@ -1,6 +1,7 @@
 <table summary="">
 <tr><td>
-    <input type="checkbox" name="activateArgonaut" id="activateArgonaut" {if $activateArgonaut} checked="checked" {/if}
+    <input type="checkbox" name="activateArgonaut" id="activateArgonaut"
+    {if (($activateArgonaut && !$member_of_ogroup) || (!$activateArgonaut && $member_of_ogroup))} checked="checked" {/if}
             onClick="javascript:
                     changeState('argonautClientPort');
                     changeState('argonautClientWakeOnLanInterface');
