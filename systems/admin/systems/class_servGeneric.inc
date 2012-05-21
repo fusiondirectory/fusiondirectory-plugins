@@ -320,7 +320,7 @@ class servgeneric extends plugin
     }
 
     /* Check if given name is a valid host/dns name */
-    if(!tests::is_dns_name($this->cn)){
+    if(!tests::is_valid_hostname($this->cn)){
       $message[]= msgPool::invalid(_("Server name"), $this->cn, "/[a-z0-9\.\-]/i");
     }
 

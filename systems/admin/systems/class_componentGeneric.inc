@@ -127,7 +127,7 @@ class componentGeneric extends plugin
     $ldap= $this->config->get_ldap_link();
     $this->netConfigDNS->remove_from_parent();
     $ldap->rmdir($this->dn);
-    
+
     new log("remove","component/".get_class($this),$this->dn,$this->attributes,$ldap->get_error());
 
     if (!$ldap->success()){
@@ -150,7 +150,7 @@ class componentGeneric extends plugin
   /* Save data to object */
   function save_object()
   {
-    
+
     /* Create a base backup and reset the
        base directly after calling plugin::save_object();
        Base will be set seperatly a few lines below */
@@ -188,7 +188,7 @@ class componentGeneric extends plugin
     }
 
     /* Check if given name is a valid host/dns name */
-    if(!tests::is_dns_name($this->cn)){
+    if(!tests::is_valid_hostname($this->cn)){
       $message[]= msgPool::invalid(_("Component name"), $this->cn, "/[a-z0-9\.\-]/i");
     }
 
@@ -268,11 +268,11 @@ class componentGeneric extends plugin
       $ldap->add($this->attrs);
       new log("create","component/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
       $this->handle_post_events("add",array("macAddress" => $this->netConfigDNS->macAddress,"ipHostNumber" => $this->netConfigDNS->ipHostNumber));
-      
+
     } else {
       $ldap->cd($this->dn);
       $this->cleanup();
-      $ldap->modify ($this->attrs); 
+      $ldap->modify ($this->attrs);
       new log("modify","component/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
       $this->handle_post_events("modify",array("macAddress" => $this->netConfigDNS->macAddress,"ipHostNumber" => $this->netConfigDNS->ipHostNumber));
     }

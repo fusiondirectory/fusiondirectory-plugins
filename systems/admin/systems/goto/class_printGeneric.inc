@@ -64,7 +64,7 @@ class printgeneric extends plugin
   var $baseSelector;
 
   /* attribute list for save action */
-  var $attributes     = array("cn", "description", "l", "labeledURI", "gotoPrinterPPD","gotoUserPrinter", "macAddress", 
+  var $attributes     = array("cn", "description", "l", "labeledURI", "gotoPrinterPPD","gotoUserPrinter", "macAddress",
                               "gotoUserAdminPrinter","gotoGroupAdminPrinter","gotoUserPrinter","gotoGroupPrinter","gosaUnitTag");
   var $objectclasses  = array("top", "gotoPrinter");
   var $view_logged    = FALSE;
@@ -78,8 +78,8 @@ class printgeneric extends plugin
   function printgeneric (&$config, $dn,$parent_init,$parent)
   {
     $this->config = &$config;
-    $this->dn = $dn; 
- 
+    $this->dn = $dn;
+
     /* If parent was posted(the tabs object) we can detect the printer type. */
     if($parent){
       $this->parent = $parent;
@@ -112,7 +112,7 @@ class printgeneric extends plugin
     if(!$ldap->count()){
       $this->orig_dn = "new";
     }
-    
+
     /* create dns object */
     $this->netConfigDNS = new termDNS($this->config, $this,$this->objectclasses);
 
@@ -122,7 +122,7 @@ class printgeneric extends plugin
       $this->base= dn2base(session::global_is_set("CurrentMainBase")?"cn=dummy,".session::global_get("CurrentMainBase"):$ui->dn);
       $this->cn= "";
     } else {
-    
+
       /* Set base and check if the extracted base exists */
       if(preg_match("/".preg_quote(get_ou('systemIncomingRDN'), '/')."/i",$this->dn)){
         $this->base= preg_replace("/".preg_quote(get_ou('systemIncomingRDN'), '/')."/i","",dn2base($this->dn));
@@ -147,10 +147,10 @@ class printgeneric extends plugin
       }else{
         $method="http://";
       }
-     
+
       /* Get servername */
       $server = $_SERVER['SERVER_NAME'];
-      if(tests::is_ip($server)){  
+      if(tests::is_ip($server)){
         $server_name = @gethostbyaddr($server);
       }else{
         $server_name = @gethostbyaddr(gethostbyname($server));
@@ -165,7 +165,7 @@ class printgeneric extends plugin
 
     $this->initial_PPD = $this->gotoPrinterPPD;
 
-    /* Prepare different member types */ 
+    /* Prepare different member types */
     foreach(array("AddUser"       =>"gotoUserPrinter",
           "AddGroup"      =>"gotoGroupPrinter",
           "AddAdminUser"  =>"gotoUserAdminPrinter",
@@ -177,7 +177,7 @@ class printgeneric extends plugin
       if(isset($this->attrs[$attr])){
         $ldap->cd($this->config->current['BASE']) ;
         for($i = 0 ;  $i < $this->attrs[$attr]['count']; $i++){
-        
+
           $mem = $this->attrs[$attr][$i];
           if(preg_match("/Group/",$type)){
             $ldap->search("(&(|(objectClass=posixGroup)(objectClass=gosaGroupOfNames))(cn=".$mem."))",array("cn","description"));
@@ -222,13 +222,13 @@ class printgeneric extends plugin
   }
 
   /* Detect type of printer.
-   * Printer can be stand alone, belong to a workstation or belong to a terminal. 
+   * Printer can be stand alone, belong to a workstation or belong to a terminal.
    * We can detect the type printer type when comparing the tabs objects
    */
   function getTypeOfPrinter($UpdateAccountStatus = false)
   {
     /* Disable account as default
-     */  
+     */
     $this->is_account = $this->initially_was_account = false;
 
     /* Detect type of printer via parent tabs.
@@ -237,7 +237,7 @@ class printgeneric extends plugin
     $class = get_class($this->parent);
     if(isset($this->parent->by_object['workgeneric'])){
 
-      /* Exclude templates 
+      /* Exclude templates
        */
       $this->cn = $this->parent->by_object['workgeneric']->cn;
       if($this->parent->by_object['workgeneric']->cn == "wdefault"){
@@ -247,11 +247,11 @@ class printgeneric extends plugin
       }
     }elseif(isset($this->parent->by_object['termgeneric'])){
 
-      /* Exclude templates 
+      /* Exclude templates
        */
       $this->cn = $this->parent->by_object['termgeneric']->cn;
       if($this->parent->by_object['termgeneric']->cn == "default"){
-        $this->BelongsTo = "TerminalTemplate";  
+        $this->BelongsTo = "TerminalTemplate";
       }else{
         $this->BelongsTo = "Terminal";
       }
@@ -261,7 +261,7 @@ class printgeneric extends plugin
 
     if($UpdateAccountStatus){
 
-      /* Set is_account / was account 
+      /* Set is_account / was account
        */
       if($this->dn == "new"){
         $this->initially_was_account = false;
@@ -310,7 +310,7 @@ class printgeneric extends plugin
       new log("view","printer/".get_class($this),$this->dn);
     }
 
-    /* If type of printer couldn't be detected (because of missing parent object in construction) 
+    /* If type of printer couldn't be detected (because of missing parent object in construction)
      * hide this tab.
      */
     if(preg_match("/unknown/i",$this->BelongsTo)){
@@ -319,7 +319,7 @@ class printgeneric extends plugin
       return($display);
     }
 
-    /* Templates can't have printer extensions 
+    /* Templates can't have printer extensions
      */
     if(preg_match("/WorkstationTemplate/i",$this->BelongsTo)){
       $display= $this->show_enable_header(_("Add printer extension"),
@@ -352,7 +352,7 @@ class printgeneric extends plugin
     $display="";
 
     /* Tell smarty if this is a standalone object or a terminal / WS depending printer */
-    if(preg_match("/^Printer$/i",$this->BelongsTo)){    
+    if(preg_match("/^Printer$/i",$this->BelongsTo)){
       $smarty->assign("StandAlone",true);
     }else{
       $smarty->assign("StandAlone",false);
@@ -398,7 +398,7 @@ class printgeneric extends plugin
         }elseif(preg_match("/^Terminal$/i",$this->BelongsTo)){
           $display= $this->show_enable_header(_("Add printer extension"),
               msgPool::featuresDisabled(_("printer")));
-        }  
+        }
         return ($display);
       }
     }
@@ -410,7 +410,7 @@ class printgeneric extends plugin
 
     $smarty->assign("base", $this->baseSelector->render());
 
-    // Act on add user/grouo requests 
+    // Act on add user/grouo requests
     if(isset($_POST['AddUser'])){
       $this->userSelect = new userGroupSelect($this->config, get_userinfo());
       $this->dialog = TRUE;
@@ -425,7 +425,7 @@ class printgeneric extends plugin
       if($this->PPDdialogToSave && is_object($this->PPDdialogToSave)){
         $this->dialog = $this->PPDdialogToSave;
       }else{
- 
+
         if(is_array($this->gotoPrinterPPD)){
           $this->dialog = new printerPPDDialog($this->config, $this->dn,"");
         }else{
@@ -453,10 +453,10 @@ class printgeneric extends plugin
       }else{
         $method="http://";
       }
-     
+
       /* Get servername */
       $server = $_SERVER['SERVER_NAME'];
-      if(tests::is_ip($server)){  
+      if(tests::is_ip($server)){
         $server_name = @gethostbyaddr($server);
       }else{
         $server_name = @gethostbyaddr(gethostbyname($server));
@@ -513,14 +513,14 @@ class printgeneric extends plugin
       }
     }
 
-    // Abort user / group adding dialog 
+    // Abort user / group adding dialog
     if(isset($_POST['userGroupSelect_cancel'])){
       $this->dialog=FALSE;
       $this->userSelect = NULL;
       $this->adminUserSelect = NULL;
     }
 
-    // Save selected users / groups 
+    // Save selected users / groups
     if(isset($_POST['userGroupSelect_save'])){
       $users = array();
       if($this->userSelect instanceOf userGroupSelect){
@@ -532,9 +532,9 @@ class printgeneric extends plugin
       }
       foreach($users as $user){
         if(in_array('gosaAccount', $user['objectClass'])){
-          $type = 'Add'.$add.'User';  
+          $type = 'Add'.$add.'User';
         }else{
-          $type = 'Add'.$add.'Group';  
+          $type = 'Add'.$add.'Group';
         }
         $this->AddMember($type, $user['dn']);
       }
@@ -543,7 +543,7 @@ class printgeneric extends plugin
       $this->adminUserSelect = NULL;
     }
 
-    // Display add user/group dialogs 
+    // Display add user/group dialogs
     if($this->userSelect instanceOf userGroupSelect || $this->adminUserSelect instanceOf userGroupSelect){
 
       // Build up blocklist
@@ -595,7 +595,7 @@ class printgeneric extends plugin
       $smarty->assign("displayServerPath",true);
     }
     $smarty->assign("ppdServerPart",$this->ppdServerPart);
-    
+
 
     /* Create user & admin user list */
     $list=$this->generateList();
@@ -667,12 +667,12 @@ class printgeneric extends plugin
         return;
       }
 
-      /* Remove account & dns extension */ 
+      /* Remove account & dns extension */
       $this->netConfigDNS->remove_from_parent();
       $ldap->rmdir($this->dn);
 
       new log("remove","printer/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
-  
+
       if (!$ldap->success()){
         msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_DEL, get_class()));
       }
@@ -713,7 +713,7 @@ class printgeneric extends plugin
     if(is_object($this->netConfigDNS)){
       $this->netConfigDNS->save_object();
     }
-    
+
     /* Refresh base */
     if ($this->acl_is_moveable($this->base)){
       if (!$this->baseSelector->update()) {
@@ -760,7 +760,7 @@ class printgeneric extends plugin
     }
 
     /* must: cn */
-    if(($this->BelongsTo == "Printer") && !tests::is_dns_name($this->cn)){
+    if(($this->BelongsTo == "Printer") && !tests::is_valid_hostname($this->cn)){
       $message[]= msgPool::invalid(_("Name"));
     }
 
@@ -768,7 +768,7 @@ class printgeneric extends plugin
     if(empty($this->labeledURI)){
       $message[]= msgPool::required(_("Printer URL"));
     }
-    
+
     /* Check if there is already an entry with this cn*/
     if (($this->orig_dn != $dn)&&( preg_match("/printer/i",$this->BelongsTo))){
       $ldap= $this->config->get_ldap_link();
@@ -811,7 +811,7 @@ class printgeneric extends plugin
     if(preg_match("/workstation/i",$this->BelongsTo)){
       $this->dn= preg_replace("/".preg_quote(get_ou('workstationRDN'), '/')."/i",get_ou('printerRDN'),$this->dn);
     }
-    
+
     if(!$this->is_account) return;
     if(isset($this->parent->by_object['workgeneric'])){
       if($this->parent->by_object['workgeneric']->cn == "wdefault"){
@@ -826,7 +826,7 @@ class printgeneric extends plugin
       if($this->parent->by_object['termgeneric']->cn == "default"){
         return;
       }
-    
+
       /* Adapt IP & mac from parent object */
       $this->netConfigDNS->ipHostNumber = $this->parent->by_object['termgeneric']->netConfigDNS->ipHostNumber;
       $this->netConfigDNS->macAddress = $this->parent->by_object['termgeneric']->netConfigDNS->macAddress;
@@ -839,7 +839,7 @@ class printgeneric extends plugin
 
     /* save ppd configuration */
     if($this->PPDdialogToSave && is_object($this->PPDdialogToSave)){
-    
+
       $this->PPDdialogToSave->save_ppd();
 
       /* Rename the generated ppd to match the gzip ending '.gz', if necessary.
@@ -856,7 +856,7 @@ class printgeneric extends plugin
       }elseif(!$ppdManager->useGzip && preg_match('/\.gz$/',$this->gotoPrinterPPD)){
         $new_ppd = preg_replace('/\.gz$/','',$this->gotoPrinterPPD);
         if(rename($path.$this->gotoPrinterPPD,$path.$new_ppd)){
-          $this->gotoPrinterPPD = $new_ppd; 
+          $this->gotoPrinterPPD = $new_ppd;
         }
       }
     }
@@ -904,28 +904,28 @@ class printgeneric extends plugin
       $this->attrs= $attrs;
     }
 
-    /* Append printer user 
+    /* Append printer user
      */
     $this->attrs['gotoUserPrinter']=array();
     foreach($this->member['AddUser'] as $mem){
       $this->attrs['gotoUserPrinter'][]=$mem['uid'][0];
     }
 
-    /* Append printer group 
+    /* Append printer group
      */
     $this->attrs['gotoGroupPrinter'] = array();
     foreach($this->member['AddGroup'] as $mem){
       $this->attrs['gotoGroupPrinter'][]=$mem['cn'][0];
     }
 
-    /* Append printer admin user 
+    /* Append printer admin user
      */
     $this->attrs['gotoUserAdminPrinter'] = array();
     foreach($this->member['AddAdminUser'] as $mem){
       $this->attrs['gotoUserAdminPrinter'][]=$mem['uid'][0];
     }
 
-    /* Append printer admin group 
+    /* Append printer admin group
      */
     $this->attrs['gotoGroupAdminPrinter']= array();
     foreach($this->member['AddAdminGroup'] as $mem){
@@ -958,7 +958,7 @@ class printgeneric extends plugin
       $ldap->create_missing_trees(preg_replace('/^[^,]+,/', '', $this->dn));
       $ldap->cd($this->dn);
 
-      /* Remove empty values */ 
+      /* Remove empty values */
       foreach($this->attrs as $name => $value){
         if(empty($value)){
           unset($this->attrs[$name]);
@@ -971,7 +971,7 @@ class printgeneric extends plugin
     } else {
       $ldap->cd($this->dn);
       $this->cleanup();
-      $ldap->modify ($this->attrs); 
+      $ldap->modify ($this->attrs);
       $this->handle_post_events("modify",array("macAddress" => $this->netConfigDNS->macAddress,"ipHostNumber" => $this->netConfigDNS->ipHostNumber));
       new log("modify","printer/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
     }
@@ -1021,12 +1021,12 @@ class printgeneric extends plugin
                                                     "objectClass"  => "gotoPrinter"),"workstation","terminal"),
           "plProvidedAcls"=> array(
             "cn"                => _("Name"),
-            "base"                => _("Base") ,         
-            "description"       => _("Description"), 
-            "l"                 => _("Location"), 
-            "labeledURI"        => _("LabeledURL"), 
+            "base"                => _("Base") ,
+            "description"       => _("Description"),
+            "l"                 => _("Location"),
+            "labeledURI"        => _("LabeledURL"),
             "gotoPrinterPPD"    => _("Printer PPD"),
-            "gotoUserPrinter"   => _("Permissions")) 
+            "gotoUserPrinter"   => _("Permissions"))
           ));
   }
 
@@ -1040,12 +1040,12 @@ class printgeneric extends plugin
         $id = $key;
       }
     }
-  
+
     if(!$this->acl_is_writeable("gotoUserPrinter")){
       msg_dialog::display(_("Permission error"), msgPool::permDelete(_("printer user"), $id), INFO_DIALOG);
       return(FALSE);
     }
- 
+
     if(isset($this->member[$type][$id])){
       unset($this->member[$type][$id]);
       return(TRUE);
