@@ -28,7 +28,8 @@ class argonautServer extends goService{
   /* This plugin only writes its objectClass */
   var $objectclasses    = array("argonautServer");
   var $attributes       = array("argonautDeleteFinished","argonautProtocol","argonautPort",
-                                "argonautWakeOnLanInterface","argonautIpTool","argonautLogDir");
+                                "argonautWakeOnLanInterface","argonautIpTool","argonautLogDir",
+                                "argonautKeyPath","argonautCertPath");
   var $StatusFlag       = "argonautServerStatus";
 
   /* This class can't be assigned twice so it conflicts with itsself */
@@ -47,10 +48,15 @@ class argonautServer extends goService{
   var $argonautIpTool             = "/sbin/ifconfig";
   var $argonautLogDir             = "/var/log/argonaut";
 
+  var $argonautKeyPath            = "";
+  var $argonautCertPath           = "";
+
   var $argonautServerStatus = "";
 
   function argonautServer(&$config,$dn)
   {
+    $this->argonautKeyPath            = CONFIG_DIR."/cert/server.key";
+    $this->argonautCertPath           = CONFIG_DIR."/cert/server.crt";
     goService::goService($config,$dn);
     $this->DisplayName = _("Argonaut service");
     $this->argonautDeleteFinished = ($this->argonautDeleteFinished == "TRUE"); // conversion from LDAP format to PHP boolean
