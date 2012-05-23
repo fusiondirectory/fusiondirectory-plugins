@@ -1,0 +1,603 @@
+# translation of messages.po to
+# Header entry was created by KBabel!
+#
+#: plugins/admin/supannStructures/class_etablissement.inc:84
+#: plugins/admin/supannStructures/class_etablissement.inc:134
+#: plugins/admin/supannStructures/class_etablissement.inc:152
+#: plugins/admin/supannStructures/class_entite.inc:129
+#: plugins/admin/supannStructures/class_entite.inc:139
+#: plugins/personnal/supann/class_supannAccount.inc:1428
+# Benoit Mortier <benoit.mortier@opensides.be>, 2012.
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Mime-Version: 1.0"
+"Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>\n"
+"PO-Revision-Date: 2012-04-18 18:12+0200\n"
+"Project-Id-Version: messages\n"
+"Language-Team:  <en@li.org>\n"
+"X-Generator: KBabel 1.11.4\n"
+"MIME-Version: 1.0\n"
+"Plural-Forms:  nplurals=2; plural=(n > 1);\n"
+
+#: plugins/admin/supannStructures/class_etablissement.inc:84
+#: plugins/admin/supannStructures/class_etablissement.inc:134
+#: plugins/admin/supannStructures/class_etablissement.inc:152
+#: plugins/admin/supannStructures/class_entite.inc:129
+#: plugins/admin/supannStructures/class_entite.inc:139
+#: plugins/personnal/supann/class_supannAccount.inc:1428
+msgid "LDAP error"
+msgstr "Erreur LDAP"
+
+#: plugins/admin/supannStructures/class_etablissement.inc:169
+#: plugins/admin/supannStructures/class_etablissement.inc:175
+#: plugins/admin/supannStructures/class_etablissement.inc:177
+#: plugins/admin/supannStructures/class_entite.inc:205
+#: plugins/admin/supannStructures/supannStructures-filter.tpl:15
+msgid "Name"
+msgstr "Nom"
+
+#: plugins/admin/supannStructures/class_etablissement.inc:211
+#: plugins/admin/supannStructures/class_etablissement.inc:212
+msgid "supann Etablissement Settings"
+msgstr "Données d'etablissement"
+
+#: plugins/admin/supannStructures/class_etablissement.inc:220
+msgid "o"
+msgstr "Organisation"
+
+#: plugins/admin/supannStructures/class_etablissement.inc:221
+msgid "telephoneNumber"
+msgstr "Numéro de téléphone"
+
+#: plugins/admin/supannStructures/class_etablissement.inc:222
+msgid "facsimileTelephoneNumber"
+msgstr "Numéro de télécopieurs"
+
+#: plugins/admin/supannStructures/class_etablissement.inc:223
+msgid "postalAddress"
+msgstr "Adresse Postale"
+
+#: plugins/admin/supannStructures/class_etablissement.inc:224
+msgid "l"
+msgstr "Ville"
+
+#: plugins/admin/supannStructures/class_etablissement.inc:225
+#: plugins/admin/supannStructures/etablissement.tpl:16
+#: plugins/admin/supannStructures/class_entite.inc:206
+#: plugins/admin/supannStructures/supannStructures-list.xml:65
+#: plugins/admin/supannStructures/entite.tpl:46
+msgid "Description"
+msgstr "Description"
+
+#: plugins/admin/supannStructures/class_etablissement.inc:226
+#: plugins/admin/supannStructures/etablissement.tpl:24
+msgid "eduOrgHomePageURI"
+msgstr "Adresse du site web officiel"
+
+#: plugins/admin/supannStructures/class_etablissement.inc:227
+#: plugins/admin/supannStructures/etablissement.tpl:32
+msgid "eduOrgLegalName"
+msgstr "Nom officiel"
+
+#: plugins/admin/supannStructures/class_etablissement.inc:228
+#: plugins/admin/supannStructures/etablissement.tpl:40
+msgid "eduOrgWhitePagesURI"
+msgstr "Annuaire pages blanches"
+
+#: plugins/admin/supannStructures/class_etablissement.inc:229
+#: plugins/admin/supannStructures/etablissement.tpl:48
+msgid "eduOrgSuperiorURI"
+msgstr "Siet web de l'institution de rattachement"
+
+#: plugins/admin/supannStructures/class_etablissement.inc:230
+#: plugins/admin/supannStructures/etablissement.tpl:56
+#: plugins/personnal/supann/supann.tpl:227
+#: plugins/personnal/supann/supann.tpl:654
+msgid "supannEtablissement"
+msgstr "Etablissement de rattachement"
+
+#: plugins/admin/supannStructures/class_etablissement.inc:231
+#: plugins/admin/supannStructures/supannStructures-list.xml:48
+msgid "supannCodeEntite"
+msgstr "Identifiant de l'entite"
+
+#: plugins/admin/supannStructures/remove.tpl:2
+msgid "Warning"
+msgstr "Avertissement"
+
+#: plugins/admin/supannStructures/remove.tpl:6
+msgid ""
+"This may be a primary user group. Please double check if you really want to "
+"do this since there is no way for FusionDirectory to get your data back."
+msgstr ""
+
+#: plugins/admin/supannStructures/remove.tpl:10
+msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
+msgstr "Si vous êtes sure, appuyer sur 'Supprimer' pour continuer ou 'Annuler' pour interrompre"
+
+#: plugins/admin/supannStructures/class_supannStructuresManagement.inc:23
+msgid "supann Structures"
+msgstr "Structures SUPANN"
+
+#: plugins/admin/supannStructures/class_supannStructuresManagement.inc:24
+msgid "Supann Structures administration"
+msgstr "Administation des Sctructures SUPANN"
+
+#: plugins/admin/supannStructures/class_supannStructuresManagement.inc:152
+msgid "etablissement"
+msgstr "établissement"
+
+#: plugins/admin/supannStructures/class_supannStructuresManagement.inc:162
+msgid "entite"
+msgstr "entité"
+
+#: plugins/admin/supannStructures/etablissement.tpl:4
+msgid "Properties"
+msgstr "Propriétés"
+
+#: plugins/admin/supannStructures/etablissement.tpl:8
+msgid "Name of etablissement"
+msgstr "Nom de l'établissement"
+
+#: plugins/admin/supannStructures/etablissement.tpl:11
+msgid "Name of subtree to create"
+msgstr "Nom de sous branche à créer"
+
+#: plugins/admin/supannStructures/etablissement.tpl:19
+msgid "Descriptive text for   department"
+msgstr "Description du département"
+
+#: plugins/admin/supannStructures/etablissement.tpl:74
+#: plugins/admin/supannStructures/etablissement.tpl:78
+msgid "Location"
+msgstr "Localisation"
+
+#: plugins/admin/supannStructures/etablissement.tpl:81
+msgid "Location of this subtree"
+msgstr "Localisation de la sous branche"
+
+#: plugins/admin/supannStructures/etablissement.tpl:86
+msgid "Address"
+msgstr "Adresse"
+
+#: plugins/admin/supannStructures/etablissement.tpl:89
+msgid "Postal address of this subtree"
+msgstr "Adresse postale de la sous branche"
+
+#: plugins/admin/supannStructures/etablissement.tpl:93
+msgid "Phone"
+msgstr "Téléphone"
+
+#: plugins/admin/supannStructures/etablissement.tpl:96
+msgid "Base telephone number of this subtree"
+msgstr "Numéro de téléphone de la sous branche"
+
+#: plugins/admin/supannStructures/etablissement.tpl:101
+#: plugins/admin/supannStructures/entite.tpl:32
+msgid "Fax"
+msgstr "Fax"
+
+#: plugins/admin/supannStructures/etablissement.tpl:104
+msgid "Base facsimile telephone number of this subtree"
+msgstr "Numéro de télécopie de la sous branche"
+
+#: plugins/admin/supannStructures/class_entite.inc:196
+msgid "Generic"
+msgstr ""
+
+#: plugins/admin/supannStructures/class_entite.inc:197
+msgid "supann Entite Settings"
+msgstr "Paramètre de l'entité"
+
+#: plugins/admin/supannStructures/supannStructures-list.xml:11
+msgid "List of Supann Structures"
+msgstr "Liste des structures SUPANN"
+
+#: plugins/admin/supannStructures/supannStructures-list.xml:16
+#: plugins/admin/supannStructures/supannStructures-list.xml:91
+msgid "Etablissement"
+msgstr "Etablissement"
+
+#: plugins/admin/supannStructures/supannStructures-list.xml:24
+#: plugins/admin/supannStructures/supannStructures-list.xml:98
+#: plugins/personnal/supann/class_supannAccount.inc:854
+#: plugins/personnal/supann/class_supannAccount.inc:1295
+msgid "Entite"
+msgstr "Entité"
+
+#: plugins/admin/supannStructures/supannStructures-list.xml:40
+msgid "Structure"
+msgstr "Structure"
+
+#: plugins/admin/supannStructures/supannStructures-list.xml:57
+msgid "supannCodeEntiteParent"
+msgstr "Code de l'entité parent"
+
+#: plugins/admin/supannStructures/supannStructures-list.xml:75
+msgid "Actions"
+msgstr "Actions"
+
+#: plugins/admin/supannStructures/supannStructures-list.xml:86
+msgid "Create"
+msgstr "Créer"
+
+#: plugins/admin/supannStructures/supannStructures-list.xml:120
+#: plugins/admin/supannStructures/supannStructures-list.xml:141
+msgid "Remove"
+msgstr "Supprimer"
+
+#: plugins/admin/supannStructures/supannStructures-list.xml:132
+msgid "Edit"
+msgstr "Editer"
+
+#: plugins/admin/supannStructures/entite.tpl:8
+msgid "Title"
+msgstr "Titre"
+
+#: plugins/admin/supannStructures/entite.tpl:11
+msgid "OU name"
+msgstr "Nom de l'entité"
+
+#: plugins/admin/supannStructures/entite.tpl:17
+msgid "Administrative Information"
+msgstr "Informations administratives"
+
+#: plugins/admin/supannStructures/entite.tpl:18
+msgid "Supann Informations"
+msgstr "Information SUPANN"
+
+#: plugins/admin/supannStructures/entite.tpl:21
+msgid "Telephone"
+msgstr "Téléphone"
+
+#: plugins/admin/supannStructures/entite.tpl:23
+msgid "Type entite Supann"
+msgstr "Type d'entité"
+
+#: plugins/admin/supannStructures/entite.tpl:34
+msgid "Supann entity code"
+msgstr "Code de l'entité"
+
+#: plugins/admin/supannStructures/entite.tpl:38
+msgid "Postal Address"
+msgstr "Adresse Postale"
+
+#: plugins/admin/supannStructures/entite.tpl:40
+msgid "Supann parent entity code"
+msgstr "Entité parente"
+
+#: plugins/admin/supannStructures/entite.tpl:48
+msgid "Supann Reference ID"
+msgstr "Identifiant de référence de l'entité"
+
+#: plugins/admin/supannStructures/supannStructures-filter.tpl:3
+msgid "Filter"
+msgstr "Filtrer"
+
+#: plugins/personnal/supann/class_supannAccount.inc:119
+msgid "supann"
+msgstr "SUPANN"
+
+#: plugins/personnal/supann/class_supannAccount.inc:120
+msgid "Plugin supann"
+msgstr "Plugin SUPANN"
+
+#: plugins/personnal/supann/class_supannAccount.inc:427
+msgid "unconfigured;unconfigured"
+msgstr "non configuré"
+
+#: plugins/personnal/supann/class_supannAccount.inc:458
+#: plugins/personnal/supann/class_supannAccount.inc:470
+#: plugins/personnal/supann/class_supannAccount.inc:471
+#: plugins/personnal/supann/class_supannAccount.inc:473
+#: plugins/personnal/supann/class_supannAccount.inc:474
+msgid "SUPANN"
+msgstr "SUPANN"
+
+#: plugins/personnal/supann/class_supannAccount.inc:500
+msgid "student"
+msgstr "Etudiant"
+
+#: plugins/personnal/supann/class_supannAccount.inc:500
+msgid "personnal"
+msgstr "Personnel (non étudiant)"
+
+#: plugins/personnal/supann/class_supannAccount.inc:852
+msgid "Role"
+msgstr "Rôle"
+
+#: plugins/personnal/supann/class_supannAccount.inc:853
+msgid "Type"
+msgstr "Type"
+
+#: plugins/personnal/supann/class_supannAccount.inc:1285
+msgid "etab"
+msgstr "Etablissement"
+
+#: plugins/personnal/supann/class_supannAccount.inc:1286
+msgid "anneeinsc"
+msgstr "Année d'inscription"
+
+#: plugins/personnal/supann/class_supannAccount.inc:1287
+msgid "regimeinsc"
+msgstr "Régime d'inscription"
+
+#: plugins/personnal/supann/class_supannAccount.inc:1288
+msgid "sectdisc"
+msgstr "Section de disciplinaire"
+
+#: plugins/personnal/supann/class_supannAccount.inc:1289
+msgid "typedip"
+msgstr "Type de diplôme"
+
+#: plugins/personnal/supann/class_supannAccount.inc:1290
+msgid "cursusann"
+msgstr "Cursus de l'année"
+
+#: plugins/personnal/supann/class_supannAccount.inc:1291
+msgid "affect"
+msgstr "Affectation"
+
+#: plugins/personnal/supann/class_supannAccount.inc:1292
+msgid "diplome"
+msgstr "Diplôme"
+
+#: plugins/personnal/supann/class_supannAccount.inc:1293
+msgid "etape"
+msgstr "Etape"
+
+#: plugins/personnal/supann/class_supannAccount.inc:1294
+msgid "eltpedago"
+msgstr "Elément pédagogique"
+
+#: plugins/personnal/supann/class_supannAccount.inc:1333
+msgid "HELP_eduPersonPrincipalName"
+msgstr "Plus d'informations sur https://www.cru.fr/documentation/supann/2009/documentcomplet#edupersonprincipalname"
+
+#: plugins/personnal/supann/class_supannAccount.inc:1335
+msgid "HELP_supannAutreTelephone"
+msgstr "Plus d'informations sur https://www.cru.fr/documentation/supann/2009/documentcomplet#supannautretelephone"
+
+#: plugins/personnal/supann/class_supannAccount.inc:1336
+msgid "HELP_supannAliasLogin"
+msgstr "Plus d'informations sur https://www.cru.fr/documentation/supann/2009/documentcomplet#supannaliaslogin"
+
+#: plugins/personnal/supann/class_supannAccount.inc:1337
+msgid "HELP_supannCivilite"
+msgstr "Plus d'informations sur https://www.cru.fr/documentation/supann/2009/documentcomplet#supanncivilite"
+
+#: plugins/personnal/supann/class_supannAccount.inc:1338
+msgid "HELP_supannListeRouge"
+msgstr "Plus d'informations sur https://www.cru.fr/documentation/supann/2009/documentcomplet#supannlisterouge"
+
+#: plugins/personnal/supann/class_supannAccount.inc:1339
+msgid "HELP_supannAutreMail"
+msgstr "Plus d'informations sur https://www.cru.fr/documentation/supann/2009/documentcomplet#supannautremail"
+
+#: plugins/personnal/supann/class_supannAccount.inc:1340
+msgid "HELP_supannMailPerso"
+msgstr "Plus d'informations sur https://www.cru.fr/documentation/supann/2009/documentcomplet#supannmailperso"
+
+#: plugins/personnal/supann/class_supannAccount.inc:1341
+msgid "HELP_supannEmpId"
+msgstr "Plus d'informations sur https://www.cru.fr/documentation/supann/2009/documentcomplet#supannempid"
+
+#: plugins/personnal/supann/class_supannAccount.inc:1343
+msgid "HELP_eduPersonAffiliation"
+msgstr "Plus d'informations sur https://www.cru.fr/documentation/supann/2009/documentcomplet#edupersonaffiliation"
+
+#: plugins/personnal/supann/class_supannAccount.inc:1344
+msgid "HELP_supannEmpCorps"
+msgstr "Plus d'informations sur https://www.cru.fr/documentation/supann/2009/documentcomplet#supannempcorps"
+
+#: plugins/personnal/supann/class_supannAccount.inc:1345
+msgid "HELP_supannActivite"
+msgstr "Plus d'informations sur https://www.cru.fr/documentation/supann/2009/documentcomplet#supannactivite"
+
+#: plugins/personnal/supann/class_supannAccount.inc:1347
+msgid "HELP_supannEntiteAffectationPrincipale"
+msgstr "Plus d'informations sur https://www.cru.fr/documentation/supann/2009/documentcomplet#supannentiteaffectationprincipale"
+
+#: plugins/personnal/supann/class_supannAccount.inc:1349
+msgid "HELP_supannEntiteAffectation"
+msgstr "Plus d'informations sur https://www.cru.fr/documentation/supann/2009/documentcomplet#supannentiteaffectation"
+
+#: plugins/personnal/supann/class_supannAccount.inc:1351
+msgid "HELP_supannEtablissement"
+msgstr "Plus d'informations sur https://www.cru.fr/documentation/supann/2009/documentcomplet#supannetablissement"
+
+#: plugins/personnal/supann/class_supannAccount.inc:1353
+msgid "HELP_supannTypeEntiteAffectation"
+msgstr "Plus d'informations sur https://www.cru.fr/documentation/supann/2009/documentcomplet#supanntypeentiteaffectation"
+
+#: plugins/personnal/supann/class_supannAccount.inc:1355
+msgid "HELP_supannRoleGenerique"
+msgstr "Plus d'informations sur https://www.cru.fr/documentation/supann/2009/documentcomplet#supannrolegenerique"
+
+#: plugins/personnal/supann/class_supannAccount.inc:1356
+msgid "HELP_supannRoleEntite"
+msgstr "Plus d'informations sur https://www.cru.fr/documentation/supann/2009/documentcomplet#supannroleentite"
+
+
+#: plugins/personnal/supann/class_supannAccount.inc:1444
+msgid "My account"
+msgstr "Mon compte"
+
+
+#: plugins/personnal/supann/supann.tpl:6
+msgid "Common Profil"
+msgstr "Profil commun"
+
+#: plugins/personnal/supann/supann.tpl:12
+msgid "Additional Profil"
+msgstr "Profil additionnel"
+
+#: plugins/personnal/supann/supann.tpl:24
+msgid "Identity"
+msgstr "Identité"
+
+#: plugins/personnal/supann/supann.tpl:29
+msgid "supannCivilite"
+msgstr "Civilité"
+
+#: plugins/personnal/supann/supann.tpl:42
+msgid "eduPersonPrincipalName"
+msgstr "Identifiant institutionnel unique"
+
+#: plugins/personnal/supann/supann.tpl:50
+msgid "supannAliasLogin"
+msgstr "Login"
+
+#: plugins/personnal/supann/supann.tpl:59
+msgid "eduPersonNickName"
+msgstr "Pseudonyme"
+
+#: plugins/personnal/supann/supann.tpl:68
+msgid "Contact"
+msgstr "Contact"
+
+#: plugins/personnal/supann/supann.tpl:73
+msgid "supannAutreMail"
+msgstr "Autre adresses de courrier"
+
+#: plugins/personnal/supann/supann.tpl:81
+msgid "supannMailPerso"
+msgstr "Adresse électronique privée"
+
+#: plugins/personnal/supann/supann.tpl:112
+msgid "supannAutreTelephone"
+msgstr "Autre numéro de téléphone"
+
+#: plugins/personnal/supann/supann.tpl:115
+msgid "supannListeRouge"
+msgstr "Présence sur liste rouge"
+
+#: plugins/personnal/supann/supann.tpl:152
+#: plugins/personnal/supann/supann.tpl:157
+msgid "Affectation"
+msgstr "Affectation"
+
+#: plugins/personnal/supann/supann.tpl:152
+#: plugins/personnal/supann/supann.tpl:164
+msgid "Affiliation"
+msgstr "Affiliation"
+
+#: plugins/personnal/supann/supann.tpl:169
+msgid "supannEntiteAffectationPrincipale"
+msgstr "Affectations principales de la personne"
+
+#: plugins/personnal/supann/supann.tpl:177
+msgid "eduPersonPrimaryAffiliation"
+msgstr "Statut principal de la personne"
+
+#: plugins/personnal/supann/supann.tpl:187
+#: plugins/personnal/supann/supann.tpl:741
+msgid "supannEntiteAffectation"
+msgstr "Autres affectations de la personne"
+
+#: plugins/personnal/supann/supann.tpl:190
+msgid "eduPersonAffiliation"
+msgstr "Autres status de la personne"
+
+#: plugins/personnal/supann/supann.tpl:224
+msgid "supannTypeEntiteAffectation"
+msgstr "Type de la structure d'affectation"
+
+#: plugins/personnal/supann/supann.tpl:274
+msgid "Personnal Profil"
+msgstr "Profil de l'employé"
+
+#: plugins/personnal/supann/supann.tpl:279
+msgid "supannEmpId"
+msgstr "Identifiant employé"
+
+#: plugins/personnal/supann/supann.tpl:287
+msgid "supannActivite"
+msgstr "Catégorie de métier"
+
+#: plugins/personnal/supann/supann.tpl:317
+msgid "supannEmpCorps"
+msgstr "Corps d'appartenance"
+
+#: plugins/personnal/supann/supann.tpl:320
+msgid "supannRoleGenerique"
+msgstr "Rôle(s) générique(s)"
+
+#: plugins/personnal/supann/supann.tpl:359
+msgid "supannRoleEntite"
+msgstr "Rôle spécifique dans une entité"
+
+#: plugins/personnal/supann/supann.tpl:396
+msgid "Student Profil"
+msgstr "Profil étudiant"
+
+#: plugins/personnal/supann/supann.tpl:401
+msgid "Student ID"
+msgstr "Identifiant de l'étudiant"
+
+#: plugins/personnal/supann/supann.tpl:406
+msgid "supannCodeINE"
+msgstr "Identifiant National Etudiant"
+
+#: plugins/personnal/supann/supann.tpl:413
+msgid "supannEtuId"
+msgstr "Identifiant de scolarité"
+
+#: plugins/personnal/supann/supann.tpl:446
+msgid "Student subscription"
+msgstr "Inscription étudiante"
+
+#: plugins/personnal/supann/supann.tpl:451
+#: plugins/personnal/supann/supann.tpl:708
+msgid "supannEtuAnneeInscription"
+msgstr "Année d'inscription"
+
+#: plugins/personnal/supann/supann.tpl:458
+#: plugins/personnal/supann/supann.tpl:681
+msgid "supannEtuRegimeInscription"
+msgstr "Régime d'inscription"
+
+#: plugins/personnal/supann/supann.tpl:493
+msgid "Student learning path"
+msgstr "Suivi pédagogique"
+
+#: plugins/personnal/supann/supann.tpl:499
+#: plugins/personnal/supann/supann.tpl:694
+msgid "supannEtuSecteurDisciplinaire"
+msgstr "Secteur(s) disciplinaire(s)"
+
+#: plugins/personnal/supann/supann.tpl:505
+#: plugins/personnal/supann/supann.tpl:765
+msgid "supannEtuElementPedagogique"
+msgstr "Eléments(s) pédagogique(s)"
+
+#: plugins/personnal/supann/supann.tpl:546
+#: plugins/personnal/supann/supann.tpl:716
+msgid "supannEtuDiplome"
+msgstr "Diplôme d'étude"
+
+#: plugins/personnal/supann/supann.tpl:549
+#: plugins/personnal/supann/supann.tpl:666
+msgid "supannEtuTypeDiplome"
+msgstr "Type de diplôme"
+
+#: plugins/personnal/supann/supann.tpl:591
+#: plugins/personnal/supann/supann.tpl:730
+msgid "supannEtuCursusAnnee"
+msgstr "Type de cursus et année"
+
+#: plugins/personnal/supann/supann.tpl:594
+#: plugins/personnal/supann/supann.tpl:752
+msgid "supannEtuEtape"
+msgstr "Etape de l'étude"
+
+#: plugins/personnal/supann/supann.tpl:639
+msgid "Student summary"
+msgstr "Résumé de l'étudiant"
+
+#: plugins/personnal/supann/supann.tpl:644
+msgid "supannEtuInscription"
+msgstr "Inscription(s) de l'étudiant"
+
