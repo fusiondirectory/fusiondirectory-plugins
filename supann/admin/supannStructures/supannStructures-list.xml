@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<list>
+  <definition>
+    <departmentBrowser>false</departmentBrowser>
+    <departmentRootVisible>false</departmentRootVisible>
+    <baseMode>true</baseMode>
+    <multiSelect>true</multiSelect>
+    <template>supannStructures-list.tpl</template>
+    <module>supannStructures</module>
+    <label>List of Supann Structures</label>
+    <defaultSortColumn>1</defaultSortColumn>
+
+
+    <objectType>
+      <label>Etablissement</label>
+      <objectClass>organization</objectClass>
+      <category>supannStructures</category>
+      <class>etablissement</class>
+      <image>plugins/supannStructures/images/etablissement.png</image>
+    </objectType>
+
+    <objectType>
+      <label>Entite</label>
+      <objectClass>organizationalUnit</objectClass>
+      <category>supannStructures</category>
+      <class>entite</class>
+      <image>plugins/supannStructures/images/entite.png</image>
+    </objectType>
+  </definition>
+
+  <table>
+    <layout>|20px;c|||||70px;r|</layout>
+
+    <column>
+      <value>%{filter:objectType(dn,objectClass)}</value>
+    </column>
+
+    <column>
+      <label>Structure</label>
+      <sortAttribute>ou</sortAttribute>
+      <sortType>string</sortType>
+<!--
+      <value>%{filter:depLabel(row,dn,"%sa",ou,pid,base)}</value>
+-->
+      <value>%{filter:structureLabel(row,dn,pid,base,ou,o)}</value> <!-- either o or ou will be absent -->
+      <export>true</export>
+    </column>
+
+    <column>
+      <label>supannCodeEntite</label>
+      <sortAttribute>supannCodeEntite</sortAttribute>
+      <sortType>string</sortType>
+      <value>%{filter:structureLabel(row,dn,pid,base,supannCodeEntite)}</value>
+      <export>true</export>
+    </column>
+
+
+    <column>
+      <label>supannCodeEntiteParent</label>
+      <sortAttribute>supannCodeEntiteParent</sortAttribute>
+      <sortType>string</sortType>
+      <value>%{filter:structureLabel(row,dn,pid,base,supannCodeEntiteParent)}</value>
+      <export>true</export>
+    </column>
+
+    <column>
+      <label>Description</label>
+      <sortAttribute>description</sortAttribute>
+      <sortType>string</sortType>
+      <value>%{filter:structureLabel(row,dn,pid,base,description)}</value>
+      <export>true</export>
+    </column>
+
+
+
+    <column>
+      <label>Actions</label>
+      <value>%{filter:actions(dn,row,objectClass)}</value>
+    </column>
+
+  </table>
+
+  <actionmenu>
+
+    <action>
+     <type>sub</type>
+     <image>images/lists/new.png</image>
+     <label>Create</label>
+
+     <action>
+      <name>organization</name>
+      <type>entry</type>
+      <label>Etablissement</label>
+      <image>plugins/supannStructures/images/etablissement.png</image>
+     </action>
+
+     <action>
+      <name>organizationalUnit</name>
+      <type>entry</type>
+      <label>Entite</label>
+      <image>plugins/supannStructures/images/entite.png</image>
+     </action>
+
+    </action>
+
+    <action>
+      <type>separator</type>
+    </action>
+
+    <action>
+      <type>exporter</type>
+    </action>
+
+    <action>
+      <type>separator</type>
+    </action>
+
+    <action>
+      <name>remove</name>
+      <type>entry</type>
+      <image>images/lists/trash.png</image>
+      <label>Remove</label>
+    </action>
+
+  </actionmenu>
+
+  <actiontriggers snapshot="false" copypaste="false">
+
+    <action>
+      <name>edit</name>
+      <type>entry</type>
+      <nospan></nospan>
+      <image>images/lists/edit.png</image>
+      <label>Edit</label>
+    </action>
+
+    <action>
+      <name>remove</name>
+      <type>entry</type>
+      <nospan></nospan>
+      <image>images/lists/trash.png</image>
+      <acl>department[d]</acl>
+      <label>Remove</label>
+    </action>
+
+  </actiontriggers>
+
+</list>
