@@ -349,7 +349,7 @@ class DaemonEvent
     @param  A daemon timestamp  YYYYddmmHHiiss
     @return Integer  A unix timestamp.
    */
-  public function _event_to_timestamp($str)
+  static public function _event_to_timestamp($str)
   {
     timezone::get_default_timezone();
     return(strtotime($str));
@@ -361,7 +361,7 @@ class DaemonEvent
     @param  A unix timestamp (e.g. 1199188799)
     @return Integer  A daemon timestamp (e.g. 20080101125959).
    */
-  public function _timestamp_to_event($stamp)
+  static public function _timestamp_to_event($stamp)
   {
     timezone::get_default_timezone();
     return(date("YmdHis",$stamp));
@@ -377,10 +377,8 @@ class DaemonEvent
     $data['CLASS_NAME']   = get_class($this);
     $data['s_Menu_Name']  = $this->s_Menu_Name;
     $data['s_Event_Name'] = $this->s_Event_Name;
-    foreach(array("s_Action","s_Action","s_Action") as $attr){
-      if(!empty($this->$attr)){
-        $data[$attr]  = $this->$attr;
-      }
+    if(!empty($this->s_Action)){
+      $data['s_Action']  = $this->s_Action;
     }
     $data['MenuImage']    = "<img src='".$this->s_Menu_Image."' alt='".$this->s_Menu_Name."' border='0' class='center'>";
     $data['ListImage']    = "<img src='".$this->s_List_Image."' title='".$this->s_Event_Name."' 

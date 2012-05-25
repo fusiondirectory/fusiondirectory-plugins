@@ -1,0 +1,138 @@
+##############             schema eduPerson  	        ##############
+#             Extrait de http://www.educause.edu/eduperson/
+#                      C. Claveleira - CRU
+#	$Id: internet2.schema,v 1.3 2009/12/14 09:44:14 clavelei Exp $	
+
+# 14 dec.  09 : ajout définitions eduOrg
+# 22 avril 09 : mise a niveau 200806
+
+######## Attributs eduPerson :
+
+attributetype ( 1.3.6.1.4.1.5923.1.1.1.1 
+          NAME 'eduPersonAffiliation' 
+          DESC 'eduPerson per Internet2 and EDUCAUSE' 
+          EQUALITY caseIgnoreMatch 
+          SUBSTR caseIgnoreSubstringsMatch
+          SYNTAX '1.3.6.1.4.1.1466.115.121.1.15' ) 
+
+attributetype ( 1.3.6.1.4.1.5923.1.1.1.7 
+          NAME 'eduPersonEntitlement' 
+          DESC 'eduPerson per Internet2 and EDUCAUSE' 
+          EQUALITY caseExactMatch
+          SYNTAX '1.3.6.1.4.1.1466.115.121.1.15' ) 
+
+
+attributetype ( 1.3.6.1.4.1.5923.1.1.1.2 
+          NAME 'eduPersonNickname' 
+          DESC 'eduPerson per Internet2 and EDUCAUSE' 
+          EQUALITY caseIgnoreMatch 
+          SUBSTR caseIgnoreSubstringsMatch
+          SYNTAX '1.3.6.1.4.1.1466.115.121.1.15' ) 
+
+attributetype ( 1.3.6.1.4.1.5923.1.1.1.3 
+          NAME 'eduPersonOrgDN' 
+          DESC 'eduPerson per Internet2 and EDUCAUSE' 
+          EQUALITY distinguishedNameMatch 
+          SYNTAX '1.3.6.1.4.1.1466.115.121.1.12' SINGLE-VALUE ) 
+
+
+attributetype ( 1.3.6.1.4.1.5923.1.1.1.4 
+          NAME 'eduPersonOrgUnitDN' 
+          DESC 'eduPerson per Internet2 and EDUCAUSE' 
+          EQUALITY distinguishedNameMatch 
+          SYNTAX '1.3.6.1.4.1.1466.115.121.1.12' ) 
+
+attributetype ( 1.3.6.1.4.1.5923.1.1.1.5 
+          NAME 'eduPersonPrimaryAffiliation' 
+          DESC 'eduPerson per Internet2 and EDUCAUSE' 
+          EQUALITY caseIgnoreMatch 
+          SUBSTR caseIgnoreSubstringsMatch
+          SYNTAX '1.3.6.1.4.1.1466.115.121.1.15' SINGLE-VALUE ) 
+
+attributetype ( 1.3.6.1.4.1.5923.1.1.1.8 
+          NAME 'eduPersonPrimaryOrgUnitDN' 
+          DESC 'eduPerson per Internet2 and EDUCAUSE' 
+          EQUALITY distinguishedNameMatch 
+          SYNTAX '1.3.6.1.4.1.1466.115.121.1.12' SINGLE-VALUE ) 
+
+attributetype ( 1.3.6.1.4.1.5923.1.1.1.6 
+          NAME 'eduPersonPrincipalName' 
+          DESC 'eduPerson per Internet2 and EDUCAUSE' 
+          EQUALITY caseIgnoreMatch 
+          SUBSTR caseIgnoreSubstringsMatch
+          SYNTAX '1.3.6.1.4.1.1466.115.121.1.15' SINGLE-VALUE ) 
+
+attributetype ( 1.3.6.1.4.1.5923.1.1.1.9
+          NAME 'eduPersonScopedAffiliation'
+          DESC 'eduPerson per Internet2 and EDUCAUSE'
+          EQUALITY caseIgnoreMatch
+          SYNTAX '1.3.6.1.4.1.1466.115.121.1.15' )
+
+attributetype ( 1.3.6.1.4.1.5923.1.1.1.10
+         NAME 'eduPersonTargetedID'
+         DESC 'eduPerson per Internet2 and EDUCAUSE'
+         EQUALITY caseIgnoreMatch
+         SYNTAX '1.3.6.1.4.1.1466.115.121.1.15' )
+
+attributetype ( 1.3.6.1.4.1.5923.1.1.1.11
+         NAME 'eduPersonAssurance'
+         DESC 'eduPerson per Internet2 and EDUCAUSE'
+         EQUALITY caseIgnoreMatch
+         SYNTAX '1.3.6.1.4.1.1466.115.121.1.15' )
+
+#### Classes :
+
+objectclass ( 1.3.6.1.4.1.5923.1.1.2 
+        NAME 'eduPerson' 
+        AUXILIARY 
+        MAY ( eduPersonAffiliation $ eduPersonNickname $ 
+                    eduPersonOrgDN $ eduPersonOrgUnitDN $ 
+                    eduPersonPrimaryAffiliation $ eduPersonPrincipalName $ 
+                    eduPersonEntitlement $ eduPersonPrimaryOrgUnitDN $ 
+                    eduPersonScopedAffiliation $ eduPersonTargetedID $ eduPersonAssurance ) )
+
+
+# "eduOrg" attributes
+#
+attributetype ( 1.3.6.1.4.1.5923.1.2.1.2 
+ 	NAME 'eduOrgHomePageURI' 
+ 	DESC 'eduOrg per Internet2 and EDUCAUSE' 
+ 	EQUALITY caseExactMatch 
+ 	SYNTAX '1.3.6.1.4.1.1466.115.121.1.15' )
+
+attributetype ( 1.3.6.1.4.1.5923.1.2.1.3 
+ 	NAME 'eduOrgIdentityAuthNPolicyURI' 
+ 	DESC 'eduOrg per Internet2 and EDUCAUSE' 
+ 	EQUALITY caseExactMatch 
+ 	SYNTAX '1.3.6.1.4.1.1466.115.121.1.15' )
+
+attributetype ( 1.3.6.1.4.1.5923.1.2.1.4 
+ 	NAME 'eduOrgLegalName' 
+ 	DESC 'eduOrg per Internet2 and EDUCAUSE' 
+ 	EQUALITY caseIgnoreMatch 
+ 	SYNTAX '1.3.6.1.4.1.1466.115.121.1.15' )
+
+attributetype ( 1.3.6.1.4.1.5923.1.2.1.5 
+ 	NAME 'eduOrgSuperiorURI' 
+ 	DESC 'eduOrg per Internet2 and EDUCAUSE' 
+ 	EQUALITY caseExactMatch 
+ 	SYNTAX '1.3.6.1.4.1.1466.115.121.1.15' )
+
+attributetype ( 1.3.6.1.4.1.5923.1.2.1.6 
+ 	NAME 'eduOrgWhitePagesURI' 
+ 	DESC 'eduOrg per Internet2 and EDUCAUSE' 
+ 	EQUALITY caseExactMatch 
+ 	SYNTAX '1.3.6.1.4.1.1466.115.121.1.15' )
+
+#
+#
+# eduOrg objectclass definition
+#
+
+#
+objectclass ( 1.3.6.1.4.1.5923.1.2.2 
+ 	NAME 'eduOrg' 
+ 	AUXILIARY 
+ 	MAY ( cn $ eduOrgHomePageURI $ 
+ 	eduOrgIdentityAuthNPolicyURI $ eduOrgLegalName $ 
+ 	eduOrgSuperiorURI $ eduOrgWhitePagesURI ))

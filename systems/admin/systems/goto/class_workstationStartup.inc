@@ -56,7 +56,7 @@ class workstartup extends plugin
   var $ignore_account     = TRUE;
  
   /* FAI profile selection */ 
-  var $FAIclass;  // The currently selected profil
+  var $FAIclass;  // The currently selected profile
   var $FAIrelease           = "";
   var $FAIdebianMirror      = "auto";
   var $si_active            = FALSE;
@@ -65,7 +65,6 @@ class workstartup extends plugin
   var $cache              = array(); // Used as cache in fai mehtods
 
   var $FAIstatus          = "";
-  var $FAIprofiles         = array();
 
   var $view_logged        = FALSE;
   
@@ -93,8 +92,9 @@ class workstartup extends plugin
     plugin::plugin ($config, $dn, $parent);
 
     /* Check for si daemon */
-    $this->si_active = $this->config->get_cfg_value("argonautServer") != "";
-
+    $o_queue = new supportDaemon();
+    $this->si_active = ($o_queue->get_argonaut_host() != "");
+    
     /* Check object group membership */
     if(!isset($this->parent->by_object['ogroup'])){
       $ldap = $this->config->get_ldap_link();
@@ -142,14 +142,12 @@ class workstartup extends plugin
      */
     if($this->fai_activated) {
 
-      /* Parse used FAIclasses (stored as string).
-       * The single classes are seperated by ' '.
+      /* Parse FAIclass and FAIrelease (stored as string).
+       * The single classes are seperated by ' ' (There should be only one, we keep the last one).
        * There is also the release type given, after first
        *  occurrence of ':'.
        */
-/*
-      $this->FAIclass = array();
-*/
+       
       if(isset($this->attrs['FAIclass'][0])){
         $tmp = explode(" ",$this->attrs['FAIclass'][0]);
         $tmp2 =array();  
@@ -158,7 +156,7 @@ class workstartup extends plugin
           if( ":" == $profile[0] ) {
             $this->FAIrelease = trim(substr($profile, 1));
           }else{
-            $this->FAIclass = $profile; // FIXME
+            $this->FAIclass = $profile; // We only keep the last assigned profile as there should be only one since FusionDirectory 1.0.2 .
           }
         }
       }
@@ -651,7 +649,7 @@ class workstartup extends plugin
       if($this->FAIdebianMirror == "inherited"){
         $this->attrs['FAIclass'] = $this->attrs['FAIrelease'] =  $this->attrs['FAIdebianMirror'] = array();
       } else {
-        if(isset($this->attrs['FAIclass'])) {
+        if(isset($this->attrs['FAIclass'])) { //FIXME : not sure why this if is here
           $this->attrs['FAIclass']= $this->FAIclass." :".$this->FAIrelease;
         }
       }

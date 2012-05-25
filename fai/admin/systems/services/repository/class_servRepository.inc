@@ -26,14 +26,14 @@ class servrepository extends goService
   //  var $ignore_account         = TRUE;
   var $attributes             = array("FAIrepository");
   var $objectclasses          = array("FAIrepositoryServer");
-  
+
   /* Repositories */
   var $repositories          = array();
   var $FAIrepository         = array();
   var $conflicts             = array("goKioskService");
   var $DisplayName           = "";
   var $StatusFlag            = "";
-  
+
   var $view_logged            = FALSE;
   var $fai_activated          = FALSE;
 
@@ -51,7 +51,7 @@ class servrepository extends goService
     /* Skip this if fai is deactivated */
     $tmp= $this->config->search("faiManagement", "CLASS",array('menu','tabs'));
     if(!empty($tmp)){
-      $this->fai_activated = TRUE;    
+      $this->fai_activated = TRUE;
     }else{
       return;
     }
@@ -60,23 +60,20 @@ class servrepository extends goService
     if(isset($this->attrs['FAIrepository'])){
       for($i = 0; $i < $this->attrs['FAIrepository']['count']; $i++){
         $tmp = explode("|",$this->attrs['FAIrepository'][$i]);
-        $repository = array();  
-
-        if(isset($tmp[1])) {
-          $repository['ParentServer'] = $tmp[1];
-          if(empty($tmp[1])) {
-            $repository['ParentServer'] = "none";
-          }
-        } else {
-          $repository['ParentServer'] = "none";
-        }
+        $repository = array();
 
         if(isset($tmp[0])) {
           $repository['Url']          = $tmp[0];
         } else {
           $repository['Url']          = "";
         }
-  
+
+        if(!empty($tmp[1])) {
+          $repository['ParentServer'] = $tmp[1];
+        } else {
+          $repository['ParentServer'] = "none";
+        }
+
         if(isset($tmp[2])) {
           $repository['Release']      = $tmp[2];
         } else {
@@ -87,7 +84,7 @@ class servrepository extends goService
           $tmp2 = explode(",",$tmp[3]);
           foreach($tmp2 as $sec) {
             $repository['Sections'][$sec]=$sec;
-          }    
+          }
         } else {
           $repository['Section']=array();
         }
@@ -104,7 +101,16 @@ class servrepository extends goService
           $repository['Local']="local";
         }
 
-        $this->repositories[$repository['Release']]=$repository;      
+        if(isset($tmp[6])) {
+          $tmp2 = explode(",", $tmp[6]);
+          foreach($tmp2 as $arch) {
+            $repository['Archs'][$arch] = $arch;
+          }
+        } else {
+          $repository['Archs'] = array();
+        }
+
+        $this->repositories[$repository['Release']]=$repository;
       }
     }
     session::set('RepositoryList', $this->repositories);
@@ -120,7 +126,7 @@ class servrepository extends goService
       $this->dialog->parent = $this;
     }
   }
-  
+
 
   /*! \brief    Act on events frowarded by the repositoryManagement
    */
@@ -129,7 +135,7 @@ class servrepository extends goService
     foreach($target as $value){
 
       if(!isset($this->repositories[$value])) continue;
-      
+
       $url = $this->repositories[$value]['Url'];
       $release = $this->repositories[$value]['Release'];
 
@@ -182,7 +188,7 @@ class servrepository extends goService
             $obj= array_merge($obj, $aobj);
             $found= true;
           }
-        } 
+        }
       }
 
       if ($found){
@@ -252,10 +258,10 @@ class servrepository extends goService
         $obj = $this->dialog->save();
         if($this->dialog->is_new_name()){
           $oldname = $this->dialog->initialy_was;
-          $this->repositories[$obj['Release']]=$obj;        
+          $this->repositories[$obj['Release']]=$obj;
           unset($this->repositories[$oldname]);
-        }else{ 
-          $this->repositories[$obj['Release']]=$obj;        
+        }else{
+          $this->repositories[$obj['Release']]=$obj;
         }
         $this->dialog = FALSE;
         $this->is_dialog= false;
@@ -266,7 +272,7 @@ class servrepository extends goService
       $this->dialog=FALSE;
       $this->is_dialog = false;
     }
-   
+
     if(is_object($this->dialog)){
       $this->dialog->save_object();
       $this->is_dialog = true;
@@ -278,8 +284,8 @@ class servrepository extends goService
     */
     $link   = "<a href='?plug=".$_GET['plug']."&amp;act=open_repository&amp;id=%s'>%s</a>";
     $edit   = "<input type='image' value='%s' name='edit_%s'   src='images/lists/edit.png'>&nbsp;";
-   
-    /* Hide delete icon, if delete is not allowed */ 
+
+    /* Hide delete icon, if delete is not allowed */
     if($this->acl_is_removeable()){
       $delete = "<input type='image' value='%s' name='delete_%s' src='images/lists/trash.png'>";
     }else{
@@ -287,7 +293,7 @@ class servrepository extends goService
     }
 
     session::set('RepositoryList', $this->repositories);
-    $str = $this->repositoryMangement->execute(); 
+    $str = $this->repositoryMangement->execute();
     $display.= $smarty->fetch(get_template_path('servRepository.tpl', TRUE,dirname(__FILE__)));
     return($str.$display);
   }
@@ -317,30 +323,33 @@ class servrepository extends goService
     plugin::save();
 
     $arr = array();
+    $releases = array();
     foreach($this->repositories as $servername => $conf){
-      $str = "";
-      foreach($conf['Sections'] as $sec){
-        $str.=$sec.",";
+      if ($conf['ParentServer']=="none") {
+        $conf['ParentServer'] = "";
       }
-      $str=preg_replace("/,$/","",$str);
-        
-      if($conf['ParentServer']=="none"){
-        $conf['ParentServer'] ="";
-      }    
-    
-      $arr[]=$conf['Url']."|".$conf['ParentServer']."|".$conf['Release']."|".$str."|".$conf['Install']."|".$conf['Local'];
+
+      $arr[] =  $conf['Url']."|".
+                $conf['ParentServer']."|".
+                $conf['Release']."|".
+                join(',',$conf['Sections'])."|".
+                $conf['Install']."|".
+                $conf['Local']."|".
+                join(',',$conf['Archs']);
+
+      $releases[$conf['Release']] = $conf;
     }
     $this->attrs['FAIrepository'] = $arr;
 
-    $ldap= $this->config->get_ldap_link();
-    $ldap->cd ($this->config->current['BASE']);
-    
+    $ldap = $this->config->get_ldap_link();
+    $ldap->cd($this->config->current['BASE']);
+
     $ldap->cat($this->dn, array('dn'));
-    
-    if($ldap->count()){
+
+    if ($ldap->count()) {
       $ldap->cd($this->dn);
       $this->cleanup();
-      $ldap->modify ($this->attrs);       
+      $ldap->modify ($this->attrs);
       $this->handle_post_events("modify");
     } else {
         // FIXME : add special entry here if missing
@@ -349,6 +358,32 @@ class servrepository extends goService
       $ldap->cd($this->dn);
       $ldap->add($this->attrs);
       $this->handle_post_events("add");
+    }
+    $ldap->cd($this->config->current['BASE']);
+
+    // Check if FAI branch is here
+    $fai = get_ou("faiBaseRDN").$this->config->current['BASE'];
+    $ldap->cat($fai, array('dn'));
+    if(!$ldap->count()){
+      $ldap->cd($this->config->current['BASE']);
+      $ldap->create_missing_trees($fai);
+      if (!$ldap->success()){
+        msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $fai, LDAP_ADD, get_class()));
+      }
+    }
+
+    foreach ($releases as $release => $conf) {
+      if ($conf['Install'] == "install") {
+        $dn = "ou=$release,$fai";
+        $ldap->cat($dn, array('dn'));
+        if(!$ldap->count()){
+          $ldap->cd ($dn);
+          $ldap->add(array('objectClass' => array('organizationalUnit','FAIbranch'), 'ou' => $release));
+          if (!$ldap->success()){
+            msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_ADD, get_class()));
+          }
+        }
+      }
     }
 
     if($this->initially_was_account){
@@ -368,7 +403,7 @@ class servrepository extends goService
 
   function allow_remove()
   {
-    /* Check if the service is still in use 
+    /* Check if the service is still in use
      */
     $ldap = $this->config->get_ldap_link();
     $ldap->cd($this->config->current['BASE']);
@@ -407,7 +442,7 @@ class servrepository extends goService
   {
     return(session::get('RepositoryList'));
   }
-  
+
   /* Return plugin informations for acl handling */
   static function plInfo()
   {
@@ -429,8 +464,13 @@ class servrepository extends goService
             "ParentServer"  => _("Parent server"),
             "Release"       => _("Releases"),
             "Url"           => _("URL"),
-            "Section"       => _("Sections"))
-          ));
+            "Section"       => _("Sections"),
+            "Install"       => _("Installation mirror"),
+            "Local"         => _("Local mirror"),
+            "Archs"         => _("Architectures"),
+          )
+        )
+      );
   }
 
 }

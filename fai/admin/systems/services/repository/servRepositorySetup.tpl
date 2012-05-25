@@ -10,7 +10,7 @@
           <td>
 {render acl=$ParentServerACL}
             <select name="ParentServer">
-              {html_options options=$ParentServers values=$ParentServerKeys selected=$ParentServer} 
+              {html_options options=$ParentServers values=$ParentServerKeys selected=$ParentServer}
             </select>
 {/render}
           </td>
@@ -25,6 +25,15 @@
           </td>
         </tr>
         <tr>
+          <td><label for="Archs">{t}Architectures needed (comma or semicolon separated){/t}</label>
+          </td>
+          <td>
+{render acl=$ArchsACL}
+            <input type="text" value="{$Archs}" name="Archs" id="Archs">
+{/render}
+          </td>
+        </tr>
+        <tr>
           <td><label for="Url">{t}URL{/t}</label>
           </td>
           <td>
@@ -34,11 +43,18 @@
           </td>
         </tr>
         <tr>
-          <td><label for="Install">{t}Installation mirror{/t}</label>
+          <td><label for="Install">{t}Installation mirror mode{/t}</label>
           </td>
           <td>
-{render acl=$UrlACL}
-            <input type="checkbox" {if $Install=="install"}checked{/if} name="Install" id="Install">
+{render acl=$InstallACL}
+            <select name="Install" id="Install" onChange="document.mainform.submit();">
+              {html_options values=$install_modes output=$install_modes selected=$Install}
+            </select>
+{if $Install=="custom"}
+            <select name="Custom" id="Custom">
+              {html_options values=$install_releases output=$install_releases selected=$install_release}
+            </select>
+{/if}
 {/render}
           </td>
         </tr>
@@ -46,7 +62,7 @@
           <td><label for="Local">{t}Local mirror{/t}</label>
           </td>
           <td>
-{render acl=$UrlACL}
+{render acl=$LocalACL}
             <input type="checkbox" {if $Local=="local"}checked{/if} name="Local" id="Local">
 {/render}
           </td>

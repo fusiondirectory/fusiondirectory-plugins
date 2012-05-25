@@ -582,6 +582,20 @@ class termDNS extends plugin
             $this->dnsEntry[$attr] = get_post($attr);
           }
         }
+        if(isset($_POST['reloadThisDNSStuff'])) {
+          $o_queue = new supportDaemon();
+          if ($o_queue->is_error()) {
+            msg_dialog::display(_("Error"), sprintf(_("Was not able to contact argonaut server: %s"), "<br/><br/>".$o_queue->get_error()), ERROR_DIALOG);
+          } else {
+            $zone = substr(strrchr($this->dnsEntry['zoneName'], "/"), 1);
+            $o_queue->append_call("ldap2zone",
+                                  array($this->attrs['macAddress'][0]),
+                                  array("args"=>array($zone)));
+            if ($o_queue->is_error()) {
+              msg_dialog::display(_("Error"), sprintf(_("Was not able to launch ldap2zone: %s"), "<br/><br/>".$o_queue->get_error()), ERROR_DIALOG);
+            }
+          }
+        }
       }
       if($this->hide_dns_check_box){
         $this->DNS_is_account = true;
@@ -824,18 +838,18 @@ class termDNS extends plugin
         if(($this->initial_dhcpParentNode != $this->dhcpParentNode) || 
            ($this->cn != $this->OrigCn)){
           $attrs = $this->dhcpHostEntry;
-          $attrs[$this->namingAttr] = $this->cn;
+          $attrs['cn'] = $this->cn;
           unset($attrs['dn']);
           unset($attrs['MODIFIED']);
           $ldap->cd("cn=".$this->cn.",".$this->dhcpParentNode);
           $res = $ldap->add($attrs);
-
-          $tmp = new servdhcp($this->config,$this->dhcpParentNode);
-          $tmp->handle_post_events("modify");
-
           if (!$ldap->success()){
             msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), "cn=".$this->cn.",".$this->dhcpParentNode, LDAP_ADD, get_class()));
           }
+
+          $tmp = new servdhcp($this->config,$this->dhcpParentNode);
+          $tmp->handle_post_events("modify");
+          
           if($res){
             $ldap->rmdir_recursive($this->dhcpHostEntry['dn']);
             if (!$ldap->success()){

@@ -29,22 +29,22 @@ class servRepositorySetup  extends plugin
 
   /* Attributes */
   var $Release          = "";
+  var $Archs            = array();
   var $ParentServer     = "";
-  var $Url              = "";   
+  var $Url              = "";
   var $Sections         = array();
   var $Install          = "install";
   var $Local            = "local";
-  var $ParentServers    = "";
-  var $initialy_was     = false;
+  var $initialy_was     = FALSE;
   var $cn               = "";
   var $parent           = "";
 
-  function servRepositorySetup (&$config, $dn= NULL,$data = false)
+  function servRepositorySetup (&$config, $dn = NULL, $data = FALSE)
   {
     plugin::plugin ($config, $dn);
-    if($data != false){
-      foreach(array("Sections","Release","Url","ParentServer","Install","Local","initialy_was") as $atr){
-        if(isset($data[$atr])){
+    if ($data != FALSE) {
+      foreach(array("Sections","Release","Archs","Url","ParentServer","Install","Local","initialy_was") as $atr) {
+        if (isset($data[$atr])) {
           $this->$atr = $data[$atr];
         }
       }
@@ -53,19 +53,19 @@ class servRepositorySetup  extends plugin
 
   function GetName()
   {
-    return($this->Release);
+    return $this->Release;
   }
-  
+
   function is_new_name()
   {
-    if(!$this->initialy_was){
-      return(true);
-    }else{
-      if($this->Release != $this->initialy_was){
-        return(true);
+    if (!$this->initialy_was) {
+      return TRUE;
+    } else {
+      if ($this->Release != $this->initialy_was) {
+        return TRUE;
       }
     }
-    return(false);
+    return FALSE;
   }
 
 
@@ -76,39 +76,39 @@ class servRepositorySetup  extends plugin
     plugin::execute();
 
     /* Fill templating stuff */
-    $smarty= get_smarty();
+    $smarty = get_smarty();
 
-    if(preg_match("/w/",$this->parent->getacl("Section"))){
-      if((isset($_POST['AddSection']))&&(isset($_POST['SectionName']))&&(!empty($_POST['SectionName']))){
+    if (preg_match("/w/", $this->parent->getacl("Section"))) {
+      if ((isset($_POST['AddSection'])) && (isset($_POST['SectionName'])) && (!empty($_POST['SectionName']))) {
 
         /* Replace multiple spaces with a single, and cut of white spaces (trim)*/
-        $val = preg_replace("/\ \ * /" , " ", trim($_POST['SectionName']));
+        $val = preg_replace("/\ \ * /", " ", trim($_POST['SectionName']));
 
         /* check if there are more than one entry given ( "section1 section2 )*/
-        if(preg_match("/ /",$val)){
+        if (preg_match("/ /", $val)) {
 
           /* Generate list of new section names */
-          $vals = explode(" ",$val);
+          $vals = explode(" ", $val);
 
           /* Add new entries */
-          foreach($vals as $entry){
+          foreach($vals as $entry) {
             $entry = trim($entry);
-            if(!empty($entry)){
-              $this->Sections[$entry]=$entry;
+            if (!empty($entry)) {
+              $this->Sections[$entry] = $entry;
             }
           }
-        }else{
-          $this->Sections[$val]=$val;
+        } else {
+          $this->Sections[$val] = $val;
         }
       }
 
-      foreach($_POST as $name => $value){
-        if(preg_match("/^delete_/",$name)){
+      foreach($_POST as $name => $value) {
+        if (preg_match("/^delete_/", $name)) {
 
-          $val = preg_replace("/^delete_/","",$name);
-          $val = base64_decode(preg_replace("/_.*$/","",$val));
+          $val = preg_replace("/^delete_/", "", $name);
+          $val = base64_decode(preg_replace("/_.*$/", "", $val));
 
-          if(isset($this->Sections[$val])){
+          if (isset($this->Sections[$val])) {
             unset($this->Sections[$val]);
           }
         }
@@ -117,59 +117,76 @@ class servRepositorySetup  extends plugin
 
     $divlist = new divSelectBox("servRepositorySetup");
     $divlist->setHeight("220");
-    if(preg_match("/w/",$this->parent->getacl("Section"))){
+    if (preg_match("/w/", $this->parent->getacl("Section"))) {
       $dellink = "<input type='image' src='images/lists/trash.png' title='delete' alt='delete' name='delete_%s' value='%s'>";
-    }else{
+    } else {
       $dellink = "";
     }
-  
-    foreach($this->Sections as $sec){
+
+    foreach($this->Sections as $sec) {
       $divlist->AddEntry(array(
-            array("string"=>$sec),
-            array("string"=>sprintf($dellink,base64_encode($sec),$sec),
-              "attach"=>"style='border-right:0px;width:20px;'")
+              array("string" => $sec),
+              array("string" => sprintf($dellink, base64_encode($sec), $sec),
+                  "attach" => "style='border-right:0px;width:20px;'")
             ));
     }
-  
-    $smarty->assign("Sections",$divlist->DrawList());
+
+    $smarty->assign("Sections", $divlist->DrawList());
 
     /* Get && assign acls */
     $tmp = $this->parent->plInfo();
-    foreach($tmp['plProvidedAcls'] as $name => $translated){
-      $smarty->assign($name."ACL",$this->parent->getacl($name));
+    foreach ($tmp['plProvidedAcls'] as $name => $translated) {
+      $smarty->assign($name."ACL", $this->parent->getacl($name));
     }
 
     /* Assign values */
-    foreach($this->attributes as $attr){
-      $smarty->assign($attr       ,$this->$attr);
+    foreach($this->attributes as $attr) {
+      $smarty->assign($attr, $this->$attr);
     }
-    $smarty->assign("Install", $this->Install);
-    $smarty->assign("Local", $this->Local);
-  
-    $tmp = $this->getParentServers();
-    $smarty->assign("ParentServers"   ,$tmp);
-    $smarty->assign("ParentServerKeys",array_flip($tmp));
+    $install = split(':',$this->Install);
+    $smarty->assign("Install", $install[0]);
+    $smarty->assign("install_modes",array('install','update','custom'));
+    if ($install[0]=="custom") {
+      $smarty->assign("install_releases",$this->getReleaseList());
+      $smarty->assign("install_release",$install[1]);
+    }
 
-    return($smarty->fetch(get_template_path('servRepositorySetup.tpl', TRUE,dirname(__FILE__))));
+
+    $smarty->assign("Local", $this->Local);
+    $smarty->assign("Archs", implode($this->Archs,','));
+
+    $tmp = $this->getParentServers();
+    $smarty->assign("ParentServers",    $tmp);
+    $smarty->assign("ParentServerKeys", array_flip($tmp));
+
+    return $smarty->fetch(get_template_path('servRepositorySetup.tpl', TRUE, dirname(__FILE__)));
   }
 
   /* Save data to object */
   function save_object()
   {
-    if(isset($_POST['servRepositorySetup_Posted'])) {
-      if(isset($_POST['Install'])){
-        $this->Install = "install";
-      }else{
-        $this->Install = "update";
+    if (isset($_POST['servRepositorySetup_Posted'])) {
+      if (isset($_POST['Install'])) {
+        $this->Install = get_post('Install');
+        if ($this->Install=="custom") {
+          if (isset($_POST['Custom'])) {
+            $this->Install .= ":".get_post('Custom');
+          } else {
+            $this->Install .= ":".key($this->getReleaseList());
+          }
+        }
       }
-      if(isset($_POST['Local'])){
+      if (isset($_POST['Local'])) {
         $this->Local = "local";
-      }else{
+      } else {
         $this->Local = "network";
       }
-      foreach($this->attributes as $attr){
-        if(($this->parent->acl_is_writeable($attr)) && (isset($_POST[$attr]))){
-          $this->$attr = $_POST[$attr];      
+      if (isset($_POST['Archs'])) {
+        $this->Archs = preg_split("/[\s,;]+/", $_POST['Archs']);
+      }
+      foreach($this->attributes as $attr) {
+        if (($this->parent->acl_is_writeable($attr)) && (isset($_POST[$attr]))) {
+          $this->$attr = get_post($attr);
         }
       }
     }
@@ -180,17 +197,17 @@ class servRepositorySetup  extends plugin
   function check()
   {
     /* Call common method to give check the hook */
-    $message= plugin::check();
+    $message = plugin::check();
 
-    if(empty($this->Release)){
-      $message[]= msgPool::required(_("Release"));
+    if (empty($this->Release)) {
+      $message[] = msgPool::required(_("Release"));
     }
 
-    if(empty($this->Url)){
+    if (empty($this->Url)) {
       $message[] = msgPool::required(_("URL"));
     }
 
-    return ($message);
+    return $message;
   }
 
 
@@ -201,58 +218,77 @@ class servRepositorySetup  extends plugin
     $tmp['ParentServer']  = $this->ParentServer;
     $tmp['Url']           = $this->Url;
     $tmp['Release']       = $this->Release;
+    $tmp['Archs']         = $this->Archs;
     $tmp['Sections']      = $this->Sections;
-    $tmp['Install']      = $this->Install;
-    $tmp['Local']      = $this->Local;
-    return($tmp);
+    $tmp['Install']       = $this->Install;
+    $tmp['Local']         = $this->Local;
+    return $tmp;
+  }
+
+  function getReleaseList ()
+  {
+    $list = array();
+
+    $ldap = $this->config->get_ldap_link();
+    $ldap->ls("(objectClass=FAIbranch)",get_ou("faiBaseRDN").$this->config->current['BASE'],array("ou"));
+
+    while ($release = $ldap->fetch()) {
+      $list[] = $release['ou'][0];
+    }
+    return $list;
   }
 
   function getParentServers()
   {
-    $ret = array();
+    $ret  = array();
     $ldap = $this->config->get_ldap_link();
     $ldap->cd($this->config->current['BASE']);
-    $ldap->search("(objectClass=FAIrepositoryServer)",array("*"));
-    while($attr = $ldap->fetch()){
-      if($attr['cn'][0] == $this->cn) continue;
-      $ret[$attr['cn'][0]]= $attr['cn'][0];   
+    $ldap->search("(objectClass=FAIrepositoryServer)", array("*"));
+    while ($attr = $ldap->fetch()) {
+      if ($attr['cn'][0] == $this->cn) {
+        continue;
+      }
+      $ret[$attr['cn'][0]] = $attr['cn'][0];
     }
 
-    $ret = array_merge($ret,$this->GetHookElements());
-    
-    $ret['none']= "&nbsp;";
+    $ret = array_merge($ret, $this->GetHookElements());
+
+    $ret['none'] = "&nbsp;";
     asort($ret);
-    return($ret);
+    return $ret;
   }
 
-  /* this funtions calls a defined hook 
-      and parses all additional serverdata 
+  /* this funtions calls a defined hook
+      and parses all additional serverdata
    */
   function GetHookElements()
   {
     $ret = array();
-    $cmd = $this->config->search("servrepository", "repositoryBranchHook",array('tabs'));
-    if(!empty($cmd)){
-      $res = shell_exec($cmd);
+    $cmd = $this->config->search("servrepository", "repositoryBranchHook", array('tabs'));
+    if (!empty($cmd)) {
+      $res  = shell_exec($cmd);
       $res2 = trim($res);
-      if(!$res || empty($res2)){
-        msg_dialog::display(_("Error"), msgPool::cmdexecfailed("repositoryBranchHook", $cmd, _("Repository service")), ERROR_DIALOG);
-      }else{  
-        $tmp = preg_split("/\n/",$res);
-        foreach($tmp as $hook){
+      if (!$res || empty($res2)) {
+        msg_dialog::display(_("Error"), msgPool::cmdexecfailed( "repositoryBranchHook",
+                                                                $cmd,
+                                                                _("Repository service")),
+                                                                ERROR_DIALOG);
+      } else {
+        $tmp = preg_split("/\n/", $res);
+        foreach($tmp as $hook) {
           /* skip empty */
           if(empty($hook)) continue;
 
-          if(preg_match("/;/",$hook)){ 
-            $hookinfo = explode(";",$hook);
+          if(preg_match("/;/", $hook)) {
+            $hookinfo = explode(";", $hook);
             $ret[$hookinfo[0]] = $hookinfo[0];
-          }else{
+          } else {
             $ret[$hook] = $hook;
           }
         }
       }
     }
-    return($ret);
+    return $ret;
   }
 
 }

@@ -63,7 +63,7 @@
 {if $member_of_ogroup}
 {render acl=$gotoNtpServerACL}
     <input type="checkbox" value="1" name="inheritTimeServer"
-      {if $inheritTimeServer} checked {/if} 
+      {if $inheritTimeServer} checked {/if}
       onClick="javascript:
           changeState('gotoNtpServerSelected');
           changeState('gotoNtpServers');
@@ -94,7 +94,7 @@
      {if $inheritTimeServer} disabled {/if}>
 {/render}
 {render acl=$gotoNtpServerACL}
-    <input type="submit" name="delNtpServer" value="{msgPool type=delButton}" id="delNtpServer" 
+    <input type="submit" name="delNtpServer" value="{msgPool type=delButton}" id="delNtpServer"
      {if $inheritTimeServer} disabled {/if}>
 {/render}
      </td>
@@ -153,7 +153,7 @@
               <td>
               {render acl=$gotoNtpServerACL}
                 <select size="1" name="saction" title="{t}Select action to execute for this terminal{/t}">
-                <option disabled>&nbsp;</option>
+                <option>&nbsp;</option>
                 {html_options options=$actions}
               </select>
               {/render}

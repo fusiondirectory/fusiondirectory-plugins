@@ -131,15 +131,15 @@ class workservice extends plugin
                              "/dev/ttyS0" => "/dev/ttyS0",
                              "/dev/ttyS1" => "/dev/ttyS1");
 
-    /* Additional values will be extracted from CONFIG_DIR./keyboardLayouts */
+    /* Additional values will be extracted from SYSTEMS_DIR./keyboardLayouts */
     $this->XKbLayouts = array("de"=> "de","en" =>"en", "es" => "es", "us" =>"us", "fr" => "fr");
     $this->XKbVariants= array ("nodeadkeys"=>"nodeadkeys", "basic"=>"basic");
 
     /* try to read additional keyboard layouts 
      */
-    if(file_exists(CONFIG_DIR."/keyboardLayouts")){
-      if(is_readable(CONFIG_DIR."/keyboardLayouts")){
-        $str = file_get_contents(CONFIG_DIR."/keyboardLayouts");
+    if(file_exists(SYSTEMS_DIR."/keyboardLayouts")){
+      if(is_readable(SYSTEMS_DIR."/keyboardLayouts")){
+        $str = file_get_contents(SYSTEMS_DIR."/keyboardLayouts");
         $tmp = preg_split("/\n/",$str);
         foreach($tmp as $entry){
           if((!empty($entry)) && (!preg_match("/^#/",$entry))){
@@ -457,9 +457,10 @@ class workservice extends plugin
           "gotoXDriver", "gotoXResolution", "gotoXColordepth",
           "gotoXKbModel", "gotoXKbLayout",
           "gotoXKbVariant", "gotoXMouseType", "gotoXMouseport") as $val){
-
-      if ($this->attrs[$val] == "default"){
-        $this->attrs[$val]= array();
+      if (isset($this->attrs[$val])) {
+        if ($this->attrs[$val] == "default"){
+          $this->attrs[$val]= array();
+        }
       }
     }
 
@@ -491,10 +492,10 @@ class workservice extends plugin
 
   function getListOfXDrivers()
   {
-    /* Generate a list of xdrivers from CONFIG_DIR./xdrivers */
+    /* Generate a list of xdrivers from SYSTEMS_DIR./xdrivers */
     $drivers = array();
-    if (file_exists(CONFIG_DIR.'/xdrivers')){
-      $xdrivers = file (CONFIG_DIR.'/xdrivers');
+    if (file_exists(SYSTEMS_DIR.'/xdrivers')){
+      $xdrivers = file (SYSTEMS_DIR.'/xdrivers');
       foreach ($xdrivers as $line){
         if (!preg_match ("/^#/", $line)){
           $drivers[]= trim($line);

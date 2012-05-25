@@ -78,10 +78,10 @@ class faiSummaryTab extends plugin{
     /* Check if parent tab is work tab */
     }elseif(isset($this->parent->by_name['workstartup'])){
       if($this->parent->by_object['workstartup']->FAIdebianMirror == "inherited"){
-        $this->Classes = $this->parent->by_object['workstartup']->InheritedFAIclass;
+        $this->Classes = array($this->parent->by_object['workstartup']->InheritedFAIprofile);
         $this->Release = $this->parent->by_object['workstartup']->InheritedFAIrelease;
       }else{
-        $this->Classes = $this->parent->by_object['workstartup']->FAIclass;
+        $this->Classes = array($this->parent->by_object['workstartup']->FAIclass);
         $this->Release = $this->parent->by_object['workstartup']->FAIrelease;
       }
 

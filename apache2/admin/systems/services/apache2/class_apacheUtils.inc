@@ -200,7 +200,6 @@ class apacheUtils extends plugin
     }
 
     $ret = array("del" => $del , "move" => $move , "add" => $add,"vhostUpdates"=>$zoneUpdates);
-  //    user_error(print_r($ret,true));
     return($ret);
   }
 

@@ -50,7 +50,7 @@ class faiPackageConfiguration extends plugin
     /* Read pkg debconf info from supportDaemon
      */
     $q = new supportDaemon();
-    $ret = $q->FAI_get_packages($this->release,array("package","template"),array("^".$this->obj."$"));
+    $ret = $q->FAI_get_packages($this->release,array("package","template"),array($this->obj),0,1,true);
     if($q->is_error()){
       msg_dialog::display(_("Service infrastructure"),msgPool::siError($q->get_error()),ERROR_DIALOG);
     }

@@ -56,19 +56,19 @@ class phoneGeneric extends plugin
   var $attributes= array("cn", "description",
                           "goFonType","goFonDmtfMode","goFonHost","goFonDefaultIP",
                           "goFonQualify","goFonAuth","goFonSecret","goFonInkeys","goFonOutkey",
-                          "goFonTrunk","goFonAccountCode","goFonMSN","selected_categorie","goFonPermit","goFonDeny" 
+                          "goFonTrunk","goFonAccountCode","goFonMSN","selected_categorie","goFonPermit","goFonDeny"
                          );
 
-  /* this array defines which attributes are schown / saved for the different type of phones */ 
-  var $usedattrs =    array( "0"=>array("cn", "description", 
+  /* this array defines which attributes are schown / saved for the different type of phones */
+  var $usedattrs =    array( "0"=>array("cn", "description",
                                   "goFonType","goFonDmtfMode","goFonHost","goFonDefaultIP",
                                   "goFonQualify"),
-                             "1"=>array("cn", "description", 
+                             "1"=>array("cn", "description",
                                   "goFonType","goFonHost","goFonDefaultIP",
                                   "goFonQualify","goFonAuth","goFonSecret","goFonInkeys","goFonOutkey",
                                   "goFonTrunk","goFonAccountCode","selected_categorie","goFonPermit","goFonDeny"),
                              "2"=>array("cn", "description", "goFonMSN"));
-  
+
 
   var $objectclasses= array("top", "goFonHardware");
 
@@ -86,21 +86,21 @@ class phoneGeneric extends plugin
     } else {
       $this->base= preg_replace ("/^[^,]+,".preg_quote(get_ou("phoneRDN"), '/')."/i", "", $this->dn);
     }
-  
+
     if($this->goFonMSN != ""){
       $this->selected_categorie = 2;
     }elseif($this->goFonAccountCode != ""){
       $this->selected_categorie = 1 ;
-    
+
       if(isset($this->attrs['goFonPermit']['count'])){
         unset ($this->attrs['goFonPermit']['count']);
         $this->goFonPermit=$this->attrs['goFonPermit'];
-      }  
-     
+      }
+
       if(isset($this->attrs['goFonDeny']['count'])){
         unset ($this->attrs['goFonDeny']['count'])   ;
         $this->goFonDeny=$this->attrs['goFonDeny'];
-      } 
+      }
 
     } else {
       $this->selected_categorie = 0;
@@ -164,7 +164,7 @@ class phoneGeneric extends plugin
         }
       }
     }
-      
+
     /* handle Deny Add*/
     if(isset($_POST['goFonDenyAdd']) && $this->acl_is_writeable("goFonDeny")){
       if(isset($_POST['goFonDenyNew'])){
@@ -210,7 +210,7 @@ class phoneGeneric extends plugin
         }
       }
     }
-  
+
     /* Fill templating stuff */
     $smarty= get_smarty();
     $smarty->assign("usePrototype", "true");
@@ -239,13 +239,13 @@ class phoneGeneric extends plugin
         $smarty->assign($att, $this->$att);
       }
     }
-    
+
     $smarty->assign("selected_categorie",$this->selected_categorie);
 
     /* Assign attributes */
     $smarty->assign("base", $this->baseSelector->render());
     $smarty->assign("goFonDefaultIPs",array("dynamic"=>_("dynamic"),"network"=>_("Networksettings")));
- 
+
     /* Show main page */
     $str = $this->netConfigDNS->execute();
     if(is_object($this->netConfigDNS->dialog)){
@@ -270,7 +270,7 @@ class phoneGeneric extends plugin
 
       $this->netConfigDNS->remove_from_parent();
       $ldap->rmdir($this->dn);
-  
+
       new log("remove","phone/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
 
       if (!$ldap->success()){
@@ -340,14 +340,14 @@ class phoneGeneric extends plugin
     }
 
     /* Check if given name is a valid host/dns name */
-    if(!tests::is_dns_name($this->cn) ){
+    if(!tests::is_valid_hostname($this->cn) ){
       $message[] = msgPool::invalid(_("Name"));
     }
 
     if ($this->cn == ""){
       $message[]= msgPool::required(_("Name"));
     }
-    if ($this->cn == "0"){ 
+    if ($this->cn == "0"){
       $message[]= msgPool::reserved(_("Name"));
     }
 
@@ -361,7 +361,7 @@ class phoneGeneric extends plugin
           if(preg_match("/cn=dhcp,/",$attrs['dn'])){
             continue;
           }
-  
+
           if ($attrs['dn'] != $this->orig_dn){
             $message[]= msgPool::duplicated(_("Name"));
             break;
@@ -386,14 +386,14 @@ class phoneGeneric extends plugin
   function save()
   {
     plugin::save();
-   
-   
-    /* only to define which attrs to save*/ 
+
+
+    /* only to define which attrs to save*/
     $mode = $this->selected_categorie;
 
     /* Remove all unwanted attrs */
     foreach($this->attributes as $att){
-      
+
       /* Check all attributes, if they are needed for this type of phone */
       if(!in_array($att,$this->usedattrs[$mode])){
         $this->attrs[$att] = array();
@@ -402,7 +402,7 @@ class phoneGeneric extends plugin
 
     /* unset the categorie*/
     unset($this->attrs['selected_categorie']);
-    
+
     /* Remove all empty values */
     if ($this->orig_dn == 'new'){
       $attrs= array();
@@ -417,7 +417,7 @@ class phoneGeneric extends plugin
 
     if($this->goFonDefaultIP!="dynamic"){
       $this->attrs['goFonDefaultIP'] = $this->netConfigDNS->ipHostNumber;
-    }    
+    }
 
     $this->attrs = $this->netConfigDNS->getVarsForSaving($this->attrs);
 
@@ -440,14 +440,14 @@ class phoneGeneric extends plugin
 
       $ldap->cd($this->dn);
       $this->cleanup();
-      $ldap->modify ($this->attrs); 
+      $ldap->modify ($this->attrs);
       new log("modify","phone/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
       if (!$ldap->success()){
         msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()));
       }
 
-      // $user_phone_reload   
-      $ldap->cd ($this->config->current['BASE']); 
+      // $user_phone_reload
+      $ldap->cd ($this->config->current['BASE']);
       $user_phone_assignment = $ldap->fetch($ldap->search("(&(objectClass=goFonAccount)(goFonHardware=".$this->cn."))",array("uid")));
       if($user_phone_assignment){
         $usertab= new usertabs($this->config,$this->config->data['TABS']['USERTABS'], $user_phone_assignment['dn']);
@@ -457,7 +457,7 @@ class phoneGeneric extends plugin
       }
       $this->handle_post_events("modify",array("macAddress" => $this->netConfigDNS->macAddress,"ipHostNumber" => $this->netConfigDNS->ipHostNumber));
     }
-    $this->netConfigDNS->cn = $this->cn;    
+    $this->netConfigDNS->cn = $this->cn;
     $this->netConfigDNS->save();
     if (!$ldap->success()){
       msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()));

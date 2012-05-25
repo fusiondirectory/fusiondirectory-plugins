@@ -19,6 +19,7 @@
   along with this program; if not, write to the Free Software
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
+require_once 'MDB2.php';
 
 class rsyslog extends plugin
 {
@@ -65,24 +66,20 @@ class rsyslog extends plugin
       $this->servers[$attrs['cn'][0]] = $s;
     }
 
-    // Check for installed mysql extension, if missing abort
-    $this->mysql_extension_installed = is_callable("mysql_connect");
-    if(!$this->mysql_extension_installed) return;
-
     // Test server connectivity 
     $ui = get_userinfo();
     foreach($this->servers as $name => $server)  
     {
-      $link = @mysql_pconnect($server['cn'], $server['User'], $server['Password']);
-      if ($link === FALSE){
-        new log("debug","gosa_logging","dbconnect",array(),@mysql_error());
+      $link =& MDB2::connect(array( 'phptype'=>'mysql',
+                                    'hostspec' => $server['cn'],
+                                    'username' => $server['User'],
+                                    'password' => $server['Password'],
+                                    'database' => $server['Database'],
+                                  ));
+      if (PEAR::isError($link)){
+        new log("debug","gosa_logging","dbconnect",array(),$link->getMessage());
         $this->servers[$name]['status'] = "connectfailed";
-        $this->servers[$name]['error']  = @mysql_error();
-        continue;
-      }elseif (! @mysql_select_db($server['Database'])){
-        new log("debug","gosa_logging","selectdb",array(),@mysql_error());
-        $this->servers[$name]['status'] = "dbmissing";
-        $this->servers[$name]['error']  = @mysql_error();
+        $this->servers[$name]['error']  = $link->getMessage();
         continue;
       }else{
         $this->servers[$name]['status'] = "ok";
@@ -94,24 +91,24 @@ class rsyslog extends plugin
         // Get list of Hosts using this log server..
         if(preg_match('/r/', $this->servers[$name]['ACL'])){
           $query = "SELECT distinct(FromHost) FROM SystemEvents;";
-          $res = @mysql_query($query, $link);
-          if($res){
-            while($attrs = @mysql_fetch_assoc($res)){
+          $res =& $link->query($query);
+          if(PEAR::isError($res)) {
+            $this->servers[$name]['status'] = "query_failed";
+            $this->servers[$name]['error']  = $res->getMessage();
+          } else {
+            while ($attrs = $res->fetchRow(MDB2_FETCHMODE_ASSOC)) {
               $this->servers[$name]['Hosts'][$attrs['FromHost']] = $attrs['FromHost'];  
             }
-          }else{
-            $this->servers[$name]['status'] = "query_failed";
-            $this->servers[$name]['error']  = @mysql_error();
           }
           $query = "SELECT distinct(Priority) FROM SystemEvents ORDER BY Priority;";
-          $res = @mysql_query($query, $link);
-          if($res){
-            while($attrs = @mysql_fetch_assoc($res)){
+          $res =& $link->query($query);
+          if(PEAR::isError($res)) {
+            $this->servers[$name]['status'] = "query_failed";
+            $this->servers[$name]['error']  = $res->getMessage();
+          }else{
+            while($attrs = $res->fetchRow(MDB2_FETCHMODE_ASSOC)){
               $this->servers[$name]['Priorities'][$attrs['Priority']] = $attrs['Priority'];  
             }
-          }else{
-            $this->servers[$name]['status'] = "query_failed";
-            $this->servers[$name]['error']  = @mysql_error();
           }
         }
       }
@@ -188,17 +185,17 @@ class rsyslog extends plugin
     $name = $this->selected_server;
 
 
-
-    $server = $this->servers[$name];
-    $link = @mysql_pconnect($server['cn'], $server['User'], $server['Password']);
-    if ($link === FALSE){
-      new log("debug","gosa_logging","dbconnect",array(),@mysql_error());
+    $link =& MDB2::connect(array( 'phptype'=>'mysql',
+                                  'hostspec' => $server['cn'],
+                                  'username' => $server['User'],
+                                  'password' => $server['Password'],
+                                  'database' => $server['Database'],
+                                ));
+    if (PEAR::isError($link)){
+      new log("debug","gosa_logging","dbconnect",array(),$link->getMessage());
       $this->servers[$name]['status'] = "connectfailed";
-      $this->servers[$name]['error']  = @mysql_error();
-    }elseif (! @mysql_select_db($server['Database'])){
-      new log("debug","gosa_logging","selectdb",array(),@mysql_error());
-      $this->servers[$name]['status'] = "dbmissing";
-      $this->servers[$name]['error']  = @mysql_error();
+      $this->servers[$name]['error']  = $link->getMessage();
+      continue;
     }else{
       $this->servers[$name]['status'] = "ok";
       $this->servers[$name]['error']  = "";
@@ -228,12 +225,12 @@ class rsyslog extends plugin
 
       // Detect amount of matching entries 
       $query = "SELECT count(ID) as `amount` ".$filter;
-      $res = @mysql_query($query, $link);
-      if($res && $attrs = @mysql_fetch_assoc($res)){ 
-        $result['count'] = $attrs['amount'];
-      }else{
+      $res =& $link->query($query);
+      if(PEAR::isError($res)) {
         $this->servers[$name]['status'] = "query_failed";
-        $this->servers[$name]['error']  = @mysql_error();
+        $this->servers[$name]['error']  = $res->getMessage();
+      }else if($attrs = $res->fetchRow(MDB2_FETCHMODE_ASSOC)){ 
+        $result['count'] = $attrs['amount'];
       }
 
       if($result['count']){
@@ -248,9 +245,12 @@ class rsyslog extends plugin
         }
 
         $query = "SELECT * ".$filter;
-        $res = mysql_query($query, $link);
-        if($res){
-          while($attrs = @mysql_fetch_assoc($res)){
+        $res =& $link->query($query);
+        if(PEAR::isError($res)) {
+          $this->servers[$name]['status'] = "query_failed";
+          $this->servers[$name]['error']  = $res->getMessage();
+        }else{
+          while($attrs = $res->fetchRow(MDB2_FETCHMODE_ASSOC)){
             $attrs['DeviceReportedTime']= $this->time2local($attrs['DeviceReportedTime']);
             $attrs['Facility']= $this->facility2string($attrs['Facility']);
             $attrs['Priority']= $this->severity2string($attrs['Priority']);
@@ -264,9 +264,6 @@ class rsyslog extends plugin
           }
           $this->servers[$name]['status'] = "ok";
           $this->servers[$name]['error']  = "";
-        }else{
-          $this->servers[$name]['status'] = "query_failed";
-          $this->servers[$name]['error']  = @mysql_error();
         }
       }
     }

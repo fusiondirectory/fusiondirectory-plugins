@@ -24,25 +24,37 @@ class filterFAIPackages {
 
   static function query($parent,$base, $scope, $filter, $attributes, $category, $objectStorage= "")
   {
-    $filter= preg_replace('/\*/', '', $filter);
-    $pkgs = array();
+    $customs = array();
+    foreach($parent->customs as $custom) {
+      if ($parent->elementValues[$custom] == 'true') {
+        $customs[] = $custom;
+      }
+    }
+    $filter     = preg_replace('/\*/', '', $filter);
+    $pkgs       = array();
     $q          = new supportDaemon();
     $filter     = array("$filter");
-    $attrs      = array("distribution", "package","version", "section", "description", "timestamp");
-    $release = session::get('packageSelect_Release');
+    $attrs      = array("distribution", "package", "version", "section", "timestamp");
+    $release    = session::get('packageSelect_Release');
     $ret        = $q->FAI_get_packages($release,$attrs,$filter,0,200);
-    if($q->is_error()){
-      msg_dialog::display(_("Service infrastructure"),msgPool::siError($q->get_error()),ERROR_DIALOG);
-    }else{
-      foreach($ret as $attr){
-        
+    if ($q->is_error()) {
+      msg_dialog::display(_("Service infrastructure"), msgPool::siError($q->get_error()), ERROR_DIALOG);
+    } else {
+      for ($i = 0;(count($ret)<200) && ($i<count($customs));$i++) {
+        $ret2 = $q->FAI_get_packages($customs[$i],$attrs,$filter,0,200-count($ret));
+        if ($q->is_error()) {
+          msg_dialog::display(_("Service infrastructure"), msgPool::siError($q->get_error()), ERROR_DIALOG);
+          return array();
+        }
+        $ret = array_merge($ret,$ret2);
+      }
+      foreach($ret as $attr) {
         $attr['objectClass'] = "FAKE_OC__FaiPackage";
-        $attr['DESCRIPTION'] = base64_decode($attr['DESCRIPTION']);
 
         $item = array();
-        $item['dn']   = "dn=".$attr['PACKAGE'].",".$attr['DISTRIBUTION'].",".$base;
-        $item['count']= 0;
-        foreach($attr as $key => $value){
+        $item['dn']     = "dn=".$attr['PACKAGE'].",".$attr['DISTRIBUTION'].",".$base;
+        $item['count']  = 0;
+        foreach($attr as $key => $value) {
           $item['count']++;
           $item[] = $key;
           $item[$key] = array('count' => 1, $value);
@@ -51,38 +63,38 @@ class filterFAIPackages {
       }
     }
 
-    return(filterLDAPBlacklist::filterByBlacklist($pkgs));
+    return filterLDAPBlacklist::filterByBlacklist($pkgs);
   }
 
   static function filterByBlacklist($entries)
   {
-    if(session::is_set('filterBlacklist')){
+    if (session::is_set('filterBlacklist')) {
       $blist = session::get('filterBlacklist');
-      foreach($blist as $attr_name => $attr_values){
-        foreach($attr_values as $match){
-          foreach($entries as $id => $entry){
-            if(isset($entry[$attr_name])){
+      foreach($blist as $attr_name => $attr_values) {
+        foreach($attr_values as $match) {
+          foreach($entries as $id => $entry) {
+            if (isset($entry[$attr_name])) {
               $test = $entry[$attr_name];
-              if(!is_array($test)) $test = array($test);
-              if(in_array($match, $test)) unset($entries[$id]);
+              if (!is_array($test)) $test = array($test);
+              if (in_array($match, $test)) unset($entries[$id]);
             }
           }
         }
       }
     }
-    return(array_values($entries));
+    return array_values($entries);
   }
 
   function save()
   {
     $act = $this->detectPostActions();
     $headpage = $this->getHeadpage();
-    if(!isset($act['targets'])) return(array());
+    if (!isset($act['targets'])) return(array());
     $ret = array();
-    foreach($act['targets'] as $dn){
+    foreach ($act['targets'] as $dn) {
       $ret[] = $headpage->getEntry($dn);
     }
-    return($ret);
+    return $ret;
   }
 
 }

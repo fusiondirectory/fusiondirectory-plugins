@@ -1394,6 +1394,7 @@ class systemManagement extends management
         "goLdapServer" => "ldap", 
         "dNSZone" => "dns", 
         "goNtpServer" => "ntp", 
+        "argonautServer" => "argonaut", 
         "dhcpServer" => "dhcp", 
         "goVirusServer" => "antivirus", 
         "goSpamServer" => "spamassassin", 

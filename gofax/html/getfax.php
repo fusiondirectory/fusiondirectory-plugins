@@ -20,15 +20,16 @@
   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
+require_once("MDB2.php");
 /* Basic setup, remove eventually registered sessions */
-@require_once ("../../../include/php_setup.inc");
-@require_once ("functions.inc");
+require_once ("php_setup.inc");
+require_once ("functions.inc");
 error_reporting (0);
 session::start();
 session::set('errorsAlreadyPosted',array());
 
 /* Logged in? Simple security check */
-if (!session::is_set('ui')){
+if (!session::is_set('ui')) {
   new log("security","faxreport/faxreport","",array(),"Error: getfax.php called without session") ;
   header ("Location: index.php");
   exit;
@@ -36,51 +37,57 @@ if (!session::is_set('ui')){
 $ui= session::is_set("ui");
 
 /* User object present? */
-if (!session::is_set('fuserfilter')){
+if (!session::is_set('fuserfilter')) {
   new log("security","faxreport/faxreport","",array(),"getfax.php called without propper session data") ;
   header ("Location: index.php");
   exit;
 }
 
 /* Get loaded servers */
-foreach (array("FAX_SERVER", "FAX_LOGIN", "FAX_PASSWORD") as $val){
-  if (session::is_set($val)){
+foreach (array("FAX_SERVER", "FAX_LOGIN", "FAX_PASSWORD") as $val) {
+  if (session::is_set($val)) {
     $$val= session::get($val);
   }
 }
 
 /* Load fax entry */
-$config= session::get('config');
-$cfg= $config->data['SERVERS']['FAX'];
-$link = mysql_pconnect($cfg['SERVER'], $cfg['LOGIN'], $cfg['PASSWORD'])
-                  or die(_("Could not connect to database server!"));
-
-mysql_select_db("gofax") or die(_("Could not select database!"));
-
+$config = session::get('config');
+$cfg = $config->data['SERVERS']['FAX'];
+$link =& MDB2::connect(array( 'phptype'=>'mysql',
+                              'hostspec'=>$cfg['SERVER'],
+                              'username'=>$cfg['LOGIN'],
+                              'password'=>$cfg['PASSWORD'],
+                              'database'=>"gofax",
+                      ));
+if (PEAR::isError($link))
+  die(_("Could not connect to database server!")." ".$link->getMessage());
 
 /* Permission to view? */
 $query = "SELECT id,uid FROM faxlog WHERE id = '".validate(stripcslashes($_GET['id']))."'";
-$result = mysql_query($query) or die(_("Database query failed!"));
-$line = mysql_fetch_array($result, MYSQL_ASSOC);
-if (!preg_match ("/'".$line["uid"]."'/", session::get('fuserfilter'))){
+$result = $link->query($query);
+if (PEAR::isError($result))
+  die(_("Database query failed!")." ".$result->getMessage());
+$line = $result->fetchRow(MDB2_FETCHMODE_ASSOC);
+if (!preg_match ("/'".$line["uid"]."'/", session::get('fuserfilter'))) {
   die ("No permissions to view fax!");
 }
 
 $query = "SELECT id,fax_data FROM faxdata WHERE id = '".
          validate(stripcslashes($_GET['id']))."'";
-$result = mysql_query($query) or die(_("Database query failed!"));
+$data = $link->queryOne($query,'string',"fax_data");
+if (PEAR::isError($data))
+  die(_("Database query failed!")." ".$data->getMessage());
 
 /* Load pic */
-$data = mysql_result ($result, 0, "fax_data");
-mysql_close ($link);
+$link->disconnect();
 
-if (!isset($_GET['download'])){
+if (!isset($_GET['download'])) {
 
   /* display picture */
   header("Content-type: image/png");
 
   /* Fallback if there's no image magick support in PHP */
-  if (!function_exists("imagick_blob2image")){
+  if (!function_exists("imagick_blob2image")) {
 
     /* Write to temporary file and call convert, because TIFF sucks */
     $tmpfname = tempnam ("/tmp", "FusionDirectory");
@@ -89,12 +96,12 @@ if (!isset($_GET['download'])){
     fclose($temp);
 
     /* Read data written by convert */
-    $output= "";
-    $query= "convert -size 420x594 $tmpfname -resize 420x594 +profile \"*\" png:- 2> /dev/null";
-    $sh= popen($query, 'r');
-    $data= "";
-    while (!feof($sh)){
-      $data.= fread($sh, 4096);
+    $output = "";
+    $query = "convert -size 420x594 $tmpfname -resize 420x594 +profile \"*\" png:- 2> /dev/null";
+    $sh = popen($query, 'r');
+    $data = "";
+    while (!feof($sh)) {
+      $data .= fread($sh, 4096);
     }
     pclose($sh);
 
@@ -103,24 +110,24 @@ if (!isset($_GET['download'])){
   } else {
 
     /* Loading image */
-    if(!$handle  =  imagick_blob2image($data))	{
+    if (!$handle  =  imagick_blob2image($data)) {
       new log("view","faxreport/faxreport","",array(), "Cannot load fax image") ;
     }
 
     /* Converting image to PNG */
-    if(!imagick_convert($handle,"PNG")) {
+    if (!imagick_convert($handle,"PNG")) {
       new log("view","faxreport/faxreport","",array(),"Cannot convert fax image to png") ;
     }
 
     /* Resizing image to 420x594 and blur */
-    if(!imagick_resize($handle,420,594,IMAGICK_FILTER_GAUSSIAN,1)){
+    if (!imagick_resize($handle,420,594,IMAGICK_FILTER_GAUSSIAN,1)) {
       new log("view","faxreport/faxreport","",array(),"Cannot resize fax image") ;
     }
 
     /* Creating binary Code for the Image */
-    if(!$data = imagick_image2blob($handle)){
+    if (!$data = imagick_image2blob($handle)) {
       new log("view","faxreport/faxreport","",array(),"Reading fax image image failed") ;
-    }	
+    }
   }
 
 } else {

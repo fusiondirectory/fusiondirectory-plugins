@@ -24,14 +24,14 @@
 /* Remove locks created by this plugin */
 $lock_msg="";
 if ($remove_lock || isset ($_POST['edit_cancel'])){
-  if(session::is_set('netatalk') && session::is_set('edit')){
+  if(session::is_set('netatalkAccount') && session::is_set('edit')){
     del_lock($ui->dn);
   }
 }
 
 /* Remove this plugin from session */
 if ( $cleanup ){
-  session::un_set('netatalk');
+  session::un_set('netatalkAccount');
   session::un_set('edit');
 
 }else{
@@ -39,22 +39,22 @@ if ( $cleanup ){
   /* Reset requested? */
   if (isset ($_POST['edit_cancel'])) {
     session::un_set('edit');
-    session::un_set('netatalk');
+    session::un_set('netatalkAccount');
   }
 
-  /* Create netatalk object on demand */
-  if (!session::is_set('netatalk') || (isset ($_GET['reset']) && $_GET['reset'] == 1)) {
-    $netatalk = new netatalk($config, $ui->dn);
-    $netatalk->enable_CSN_check();
-    $netatalk->set_acl_base($ui->dn);
-    $netatalk->set_acl_category("users");
-    session::set('netatalk',$netatalk);
+  /* Create netatalkAccount object on demand */
+  if (!session::is_set('netatalkAccount') || (isset ($_GET['reset']) && $_GET['reset'] == 1)) {
+    $netatalkAccount = new netatalkAccount($config, $ui->dn);
+    $netatalkAccount->enable_CSN_check();
+    $netatalkAccount->set_acl_base($ui->dn);
+    $netatalkAccount->set_acl_category("users");
+    session::set('netatalkAccount',$netatalkAccount);
   }
-  $netatalk  = session::get('netatalk');
+  $netatalkAccount  = session::get('netatalkAccount');
 
   /* save changes back to object */
   if (session::is_set('edit')) {
-    $netatalk->save_object();
+    $netatalkAccount->save_object();
   }
 
   /* Enter edit mode? */
@@ -75,16 +75,16 @@ if ( $cleanup ){
   if (isset ($_POST['edit_finish'])) {
 
     /* Perform checks */
-    $message = $netatalk->check();
+    $message = $netatalkAccount->check();
 
     /* No errors, save object */
     if (count($message) == 0) {
-      $netatalk->save();
+      $netatalkAccount->save();
       del_lock($ui->dn);
       session::un_set('edit');
 
       /* Remove object */
-      session::un_set('netatalk');
+      session::un_set('netatalkAccount');
     } else {
       /* Errors found, show message */
       msg_dialog::displayChecks($message);
@@ -95,18 +95,18 @@ if ( $cleanup ){
   if(!empty($lock_msg)){
     $display = $lock_msg;
   }else{
-    $display.= $netatalk->execute ();
+    $display.= $netatalkAccount->execute ();
   }
 
 
   /* Store changes  in session */
   if (session::is_set('edit')) {
-    session::set('netatalk',$netatalk);
+    session::set('netatalkAccount',$netatalkAccount);
   }
 
   $info = "";
   /* Show page footer depending on the mode */
-  if ($netatalk->is_account) {
+  if ($netatalkAccount->is_account) {
     $display .= "<p class=\"plugbottom\">";
 
     /* Are we in edit mode? */
@@ -117,7 +117,7 @@ if ( $cleanup ){
       $info = "<img alt=\"\" align=\"middle\" src=\"".get_template_path('images/lists/locked.png')."\"> ".$ui->dn."&nbsp;";
     } else {
       $info = "<img alt=\"\" align=\"middle\" src=\"".get_template_path('images/lists/unlocked.png')."\"> ".$ui->dn."&nbsp;";
-      if(preg_match("/r/",$ui->get_permissions($ui->dn,"users/netatalk"))){
+      if(preg_match("/r/",$ui->get_permissions($ui->dn,"users/netatalkAccount"))){
         $info .= "<img alt=\"\" align=\"middle\" src=\"".get_template_path('images/lists/on.png')."\"> ".msgPool::clickEditToChange();
         $display .= "<input type=submit name=\"edit\" value=\"".msgPool::editButton()."\">\n";
       }

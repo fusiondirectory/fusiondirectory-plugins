@@ -162,7 +162,7 @@ class termservice extends plugin
       $this->XKbModels[$type] = $type;
     }
 
-    /* Additional values will be extracted from CONFIG_DIR.keyboardLayouts */
+    /* Additional values will be extracted from SYSTEMS_DIR.keyboardLayouts */
     $this->XKbLayouts = array("de"=> "de","en" =>"en", "es" => "es", "us" =>"us", "fr" => "fr");
     $this->XKbVariants= array("nodeadkeys"=>"nodeadkeys", "basic"=>"basic");
 
@@ -181,9 +181,9 @@ class termservice extends plugin
 
     /* Try to read additional keyboard layouts
      */
-    if(file_exists(CONFIG_DIR."/keyboardLayouts")){
-      if(is_readable(CONFIG_DIR."/keyboardLayouts")){
-        $str = file_get_contents(CONFIG_DIR."/keyboardLayouts");
+    if(file_exists(SYSTEMS_DIR."/keyboardLayouts")){
+      if(is_readable(SYSTEMS_DIR."/keyboardLayouts")){
+        $str = file_get_contents(SYSTEMS_DIR."/keyboardLayouts");
         $tmp = preg_split("/\n/",$str);
         foreach($tmp as $entry){
           if((!empty($entry)) && (!preg_match("/^#/",$entry))){
@@ -578,7 +578,7 @@ class termservice extends plugin
   {
     /* remove objectclass GOhard if this is an ogroup tab */
     if(isset($this->parent->by_object['ogroup'])){
-	    $this->objectclasses = array();
+      $this->objectclasses = array();
     }
 
     plugin::save();
@@ -620,7 +620,7 @@ class termservice extends plugin
 
     /* Send goto reload event to supportDaemon */
     if(count($this->attrs)){
-	    $this->send_goto_reload();
+      $this->send_goto_reload();
     }
   }
 
@@ -629,9 +629,9 @@ class termservice extends plugin
   {
     $drivers = array("default" => "["._("unknown")."]");
 
-    /* Generate a list of xdrivers from CONFIG_DIR/xdrivers */
-    if (file_exists(CONFIG_DIR.'/xdrivers')){
-      $xdrivers = file (CONFIG_DIR.'/xdrivers');
+    /* Generate a list of xdrivers from SYSTEMS_DIR/xdrivers */
+    if (file_exists(SYSTEMS_DIR.'/xdrivers')){
+      $xdrivers = file (SYSTEMS_DIR.'/xdrivers');
       foreach ($xdrivers as $line){
         if (!preg_match ("/^#/", $line)){
           $drivers[]= trim($line);

@@ -59,13 +59,13 @@ class servnfs extends plugin
 
     $this->charsets = array();
 
-    if(!file_exists(CONFIG_DIR."/encodings")){
-      msg_dialog::display(_("Error"), msgPool::fileDoesNotExist(CONFIG_DIR."/encodings"), ERROR_DIALOG);
+    if(!file_exists(SYSTEMS_DIR."/encodings")){
+      msg_dialog::display(_("Error"), msgPool::fileDoesNotExist(SYSTEMS_DIR."/encodings"), ERROR_DIALOG);
     }else{
-      if(!is_readable(CONFIG_DIR."/encodings")){
-        msg_dialog::display(_("Error"), msgPool::cannotReadFile(CONFIG_DIR."/encodings"), ERROR_DIALOG);
+      if(!is_readable(SYSTEMS_DIR."/encodings")){
+        msg_dialog::display(_("Error"), msgPool::cannotReadFile(SYSTEMS_DIR."/encodings"), ERROR_DIALOG);
       }else{
-        $fp = fopen(CONFIG_DIR."/encodings","r");
+        $fp = fopen(SYSTEMS_DIR."/encodings","r");
         $i = 100;
         while(!feof($fp)&&$i){
           $i -- ;

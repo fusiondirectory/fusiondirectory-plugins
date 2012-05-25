@@ -399,7 +399,7 @@ class csvimport extends plugin
                             }
 
                             $line= str_replace ("\t","",$line);
-                            $cells  = explode(",",$line )  ;
+                            $cells  = explode($this->separator,$line )  ;
 
                             if(count($cells)> $anz ){
                                 $anz = count($cells);

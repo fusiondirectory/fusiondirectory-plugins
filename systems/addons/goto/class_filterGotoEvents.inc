@@ -31,12 +31,13 @@ class filterGotoEvents extends  filterLDAP {
     /* Get tags that will be used in queue searches */
     $event_tags = array("none");
     foreach($events['SCHEDULED'] as $evt){
-      $event_tags[] = $evt['s_Queued_Action'];
+      $event_tags[] = $evt['s_Action'];
     }
 
     $entries = $o_queue->get_queued_entries($event_tags,0,9999999,"id");
     if ($o_queue->is_error()){
       msg_dialog::display(_("Error"), sprintf(_("Cannot load queue entries: %s"), "<br><br>".$o_queue->get_error()), ERROR_DIALOG);
+      return array();
     }
 
     /* Assign entries by id.
@@ -45,7 +46,6 @@ class filterGotoEvents extends  filterLDAP {
     $ui = get_userinfo();
 
 
-    $ui= get_userinfo();
     $acl_base = $config->current['BASE'];
     $acl_is_writeable = preg_match('/w/', $ui->get_permissions($acl_base, "gotomasses/gotomasses", "0"));
     $acl_is_removeable = preg_match('/d/', $ui->get_permissions($acl_base, "gotomasses/gotomasses", "0"));

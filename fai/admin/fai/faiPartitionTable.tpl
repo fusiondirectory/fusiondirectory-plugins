@@ -30,7 +30,9 @@
         </table>
                                 <p class="seperator">&nbsp;</p>
                                 <p>
-                                <input type="checkbox" name="mode" value="1" {$mode} {$lockmode} onClick="changeState('AddRaid'); changeState('AddVolgroup');"> {t}Use 'setup-storage' to partition the disk{/t}                                      </p>
+                                  <input type="checkbox" id="mode" name="mode" value="1" {$mode} {$lockmode} onClick="changeState('AddRaid'); changeState('AddVolgroup');">
+                                  <label for="mode">{t}Use 'setup-storage' to partition the disk{/t}</label>
+                                </p>
     </td>
     <td style="border-left: 1px solid rgb(160, 160, 160);">
        &nbsp;
