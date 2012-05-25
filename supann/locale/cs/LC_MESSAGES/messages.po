@@ -1,0 +1,225 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+#   <pavel.borecki@gmail.com>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: FusionDirectory\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
+"POT-Creation-Date: 2011-03-24 23:38+0100\n"
+"PO-Revision-Date: 2012-05-23 11:52+0000\n"
+"Last-Translator: pavelb <pavel.borecki@gmail.com>\n"
+"Language-Team: Czech (Czech Republic) (http://www.transifex.net/projects/p/FusionDirectory/language/cs_CZ/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: cs_CZ\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2\n"
+
+#: admin/sudo/sudo-filter.tpl:3
+msgid "Filter"
+msgstr "filtr"
+
+#: admin/sudo/sudo-filter.tpl:13 admin/sudo/sudo-list.xml:32
+#: admin/sudo/class_sudoGeneric.inc:581 admin/sudo/class_sudoGeneric.inc:586
+#: admin/sudo/class_sudoGeneric.inc:591 admin/sudo/class_sudoGeneric.inc:600
+#: admin/sudo/class_sudoGeneric.inc:639 admin/sudo/paste_generic.tpl:5
+#: admin/sudo/generic.tpl:7 admin/sudo/generic.tpl:34
+msgid "Name"
+msgstr "název"
+
+#: admin/sudo/sudo-filter.tpl:23 admin/sudo/class_sudoGeneric.inc:422
+msgid "User"
+msgstr "uživatel"
+
+#: admin/sudo/options.tpl:5
+msgid "Option name"
+msgstr "název volby"
+
+#: admin/sudo/options.tpl:7
+msgid "Value"
+msgstr "hodnota"
+
+#: admin/sudo/options.tpl:8 admin/sudo/class_sudoOption.inc:536
+msgid "Options"
+msgstr "volby"
+
+#: admin/sudo/options.tpl:86
+msgid "Available options"
+msgstr "dostupné volby"
+
+#: admin/sudo/sudo-list.xml:11
+msgid "List of sudo roles"
+msgstr "seznam rolí v sudo"
+
+#: admin/sudo/sudo-list.xml:15 admin/sudo/sudo-list.xml:65
+msgid "Role"
+msgstr "úloha"
+
+#: admin/sudo/sudo-list.xml:40 admin/sudo/class_sudoGeneric.inc:640
+#: admin/sudo/generic.tpl:15 admin/sudo/generic.tpl:44
+msgid "Description"
+msgstr "popis"
+
+#: admin/sudo/sudo-list.xml:48
+msgid "Actions"
+msgstr "akce"
+
+#: admin/sudo/sudo-list.xml:59
+msgid "Create"
+msgstr "vytvořit"
+
+#: admin/sudo/sudo-list.xml:72
+msgid "Default"
+msgstr "výchozí"
+
+#: admin/sudo/sudo-list.xml:85
+msgid "Remove"
+msgstr "odebrat"
+
+#: admin/sudo/sudo-list.xml:117
+msgid "Edit sudo role"
+msgstr "upravit roli v sudo"
+
+#: admin/sudo/sudo-list.xml:130
+msgid "Remove sudo role"
+msgstr "odebrat roli v sudo"
+
+#: admin/sudo/class_sudoGeneric.inc:333
+msgid "Error"
+msgstr "chyba"
+
+#: admin/sudo/class_sudoGeneric.inc:375
+msgid "disabled"
+msgstr "zakázáno"
+
+#: admin/sudo/class_sudoGeneric.inc:376
+msgid "full access"
+msgstr "plný přístup"
+
+#: admin/sudo/class_sudoGeneric.inc:377
+msgid "allow access to these hosts"
+msgstr "povolit přístup k těmto strojům"
+
+#: admin/sudo/class_sudoGeneric.inc:423
+msgid "Group"
+msgstr "skupina"
+
+#: admin/sudo/class_sudoGeneric.inc:567
+msgid "LDAP error"
+msgstr "chyba LDAPu"
+
+#: admin/sudo/class_sudoGeneric.inc:630 admin/sudo/class_sudoManagement.inc:25
+msgid "Sudo"
+msgstr "sudo"
+
+#: admin/sudo/class_sudoGeneric.inc:631 admin/sudo/class_sudoGeneric.inc:636
+msgid "Sudo role"
+msgstr "role v sudo"
+
+#: admin/sudo/class_sudoGeneric.inc:641
+msgid "Users"
+msgstr "uživatelé"
+
+#: admin/sudo/class_sudoGeneric.inc:642
+msgid "Host"
+msgstr "stroj"
+
+#: admin/sudo/class_sudoGeneric.inc:643
+msgid "Command"
+msgstr "příkaz"
+
+#: admin/sudo/class_sudoGeneric.inc:644
+msgid "Run as user"
+msgstr "spouštět jako uživatel"
+
+#: admin/sudo/class_sudoGeneric.inc:645
+msgid "Access control list"
+msgstr "ACL"
+
+#: admin/sudo/remove.tpl:2
+msgid "Warning"
+msgstr "varování"
+
+#: admin/sudo/remove.tpl:6
+msgid ""
+"Please double check if you really want to do this since there is no way for "
+"FusionDirectory to get your data back."
+msgstr "Týká se veškerých informací o této položce v adresáři. Prosím velmi dobře si rozmyslete, zda to opravdu chcete udělat, protože provedené změny už ve FusionDirectory nepůjde vzít nijak jednoduše zpět (nanejvýš složitě ze záloh, pokud existují a obsahují potřebná data)!"
+
+#: admin/sudo/remove.tpl:10
+msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
+msgstr "Tedy – pokud jste si jist(a), stiskněte 'smazat'. V opačném případě operaci zrušte pomocí 'zrušit'."
+
+#: admin/sudo/paste_generic.tpl:1 admin/sudo/generic.tpl:3
+#: admin/sudo/generic.tpl:30
+msgid "Generic"
+msgstr "obecné"
+
+#: admin/sudo/paste_generic.tpl:1 admin/sudo/generic.tpl:3
+msgid "global defaults"
+msgstr "globální výchozí"
+
+#: admin/sudo/class_sudoManagement.inc:26
+msgid "Sudo management"
+msgstr "správa sudo"
+
+#: admin/sudo/class_sudoOption.inc:154
+msgid "Unknown option"
+msgstr "neznámý parametr"
+
+#: admin/sudo/class_sudoOption.inc:155
+#, php-format
+msgid "The sudo option '%s' is invalid!"
+msgstr "parametr '%s' pro sudo není platný!"
+
+#: admin/sudo/class_sudoOption.inc:282 admin/sudo/class_sudoOption.inc:284
+msgid "string"
+msgstr "textový řetězec"
+
+#: admin/sudo/class_sudoOption.inc:282 admin/sudo/class_sudoOption.inc:283
+#: admin/sudo/class_sudoOption.inc:284
+msgid "bool"
+msgstr ""
+
+#: admin/sudo/class_sudoOption.inc:283
+msgid "integer"
+msgstr "celé číslo"
+
+#: admin/sudo/class_sudoOption.inc:284
+msgid "list"
+msgstr "seznam"
+
+#: admin/sudo/class_sudoOption.inc:537
+msgid "Sudo options"
+msgstr "nastavení sudo"
+
+#: admin/sudo/generic.tpl:55
+msgid "System trust"
+msgstr "důvěryhodnost systémů"
+
+#: admin/sudo/generic.tpl:56
+msgid "Trust mode"
+msgstr "režim důvěryhodnosti"
+
+#: admin/sudo/generic.tpl:87
+msgid "Users and groups"
+msgstr "uživatelé a skupiny"
+
+#: admin/sudo/generic.tpl:98 admin/sudo/generic.tpl:113
+msgid "Add from list"
+msgstr "přidej ze seznamu"
+
+#: admin/sudo/generic.tpl:102
+msgid "Systems"
+msgstr "systémy"
+
+#: admin/sudo/generic.tpl:120
+msgid "Commands"
+msgstr "příkazy"
+
+#: admin/sudo/generic.tpl:132
+msgid "Run as"
+msgstr "spouštět jako"
