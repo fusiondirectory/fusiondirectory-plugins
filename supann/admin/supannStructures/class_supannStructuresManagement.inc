@@ -178,8 +178,8 @@ class supannStructuresManagement extends management
     $types['organization']['TAB']      = "ETABLISSEMENT_TABS";
     $types['organization']['ATTR']     = "o";
     $types['organization']['OC']       = "organization";
-    $types['organization']['IMG']      = "plugins/supannStructures/images/etablissement.png";
-    $types['organization']['IMG_FULL'] = "plugins/supannStructures/images/etablissement.png";
+    $types['organization']['IMG']      = "plugins/supann/images/etablissement.png";
+    $types['organization']['IMG_FULL'] = "plugins/supann/images/etablissement.png";
     $types['organization']['TITLE']    = _("etablissement");
     $types['organization']['TPL']      = "etablissement.tpl";
 
@@ -188,8 +188,8 @@ class supannStructuresManagement extends management
     $types['organizationalUnit']['TAB']       = "ENTITE_TABS";
     $types['organizationalUnit']['ATTR']      = "ou";
     $types['organizationalUnit']['OC']        = "organizationalUnit";
-    $types['organizationalUnit']['IMG']       = "plugins/supannStructures/images/entite.png"; //plugins/departments/images/department.png";
-    $types['organizationalUnit']['IMG_FULL']  = "plugins/supannStructures/images/entite.png";  //:wplugins/departments/images/department.png";
+    $types['organizationalUnit']['IMG']       = "plugins/supann/images/entite.png"; //plugins/departments/images/department.png";
+    $types['organizationalUnit']['IMG_FULL']  = "plugins/supann/images/entite.png";  //:wplugins/departments/images/department.png";
     $types['organizationalUnit']['TITLE']     = _("entite");
     $types['organizationalUnit']['TPL']       = "entite.tpl";
 
