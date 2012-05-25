@@ -22,7 +22,7 @@ class supannStructuresManagement extends management
 {
   var $plHeadline     = "supann Structures";
   var $plDescription  = "Supann Structures administration";
-  var $plIcon         = "plugins/supannStructures/images/plugin.png";
+  var $plIcon         = "plugins/supann/images/plugin.png";
 
   // Tab definition
   protected $tabClass     = "supannStructurestabs";
