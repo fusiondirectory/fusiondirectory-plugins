@@ -6,19 +6,18 @@
 #
 #
 #  Jiang Xin <worldhello.net@gmail.com>, 2007.
- 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-24 23:38+0100\n"
+"POT-Creation-Date: 2012-05-26 17:33+0200\n"
 "PO-Revision-Date: 2007-06-03 12:27+0800\n"
 "Last-Translator: Jiang Xin <worldhello.net@gmail.com>\n"
 "Language-Team: Chinese Simplified <zh@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "X-Generator: KBabel 1.11.4\n"
 
 #: admin/systems/services/kolab/class_servKolab.inc:127
@@ -98,7 +97,7 @@ msgstr "添加 Kolab 服务"
 
 #: admin/systems/services/kolab/class_servKolab.inc:449
 #: personal/connectivity/kolab/class_kolabAccount.inc:26
-#: personal/connectivity/kolab/class_kolabAccount.inc:540
+#: personal/connectivity/kolab/class_kolabAccount.inc:683
 msgid "Kolab"
 msgstr "Kolab"
 
@@ -319,9 +318,8 @@ msgid "Please remove the mail settings first!"
 msgstr "选择查看配置了邮件设置的组"
 
 #: personal/connectivity/kolab/class_kolabAccount.inc:27
-#, fuzzy
-msgid "This does something"
-msgstr "******"
+msgid "This plugin manage the user settings for a kolab server"
+msgstr ""
 
 #: personal/connectivity/kolab/class_kolabAccount.inc:199
 msgid "Mail address"
@@ -373,41 +371,41 @@ msgstr "地址 '%s' 的邀请策略条目无效。"
 msgid "There's no mail user with address '%s' for your invitation policy!"
 msgstr "没有针对您邀请策略的地址为 '%s' 的用户！"
 
-#: personal/connectivity/kolab/class_kolabAccount.inc:541
+#: personal/connectivity/kolab/class_kolabAccount.inc:684
 #, fuzzy
 msgid "Kolab account settings"
 msgstr "Kolab 账号"
 
-#: personal/connectivity/kolab/class_kolabAccount.inc:541
+#: personal/connectivity/kolab/class_kolabAccount.inc:684
 #, fuzzy
 msgid "Connectivity addon"
 msgstr "互联"
 
-#: personal/connectivity/kolab/class_kolabAccount.inc:545
+#: personal/connectivity/kolab/class_kolabAccount.inc:688
 msgid "My account"
 msgstr "我的账号"
 
-#: personal/connectivity/kolab/class_kolabAccount.inc:550
+#: personal/connectivity/kolab/class_kolabAccount.inc:693
 msgid "Free busy future"
 msgstr ""
 
-#: personal/connectivity/kolab/class_kolabAccount.inc:551
+#: personal/connectivity/kolab/class_kolabAccount.inc:694
 #, fuzzy
 msgid "Mail size restriction"
 msgstr "邮件传递列表"
 
-#: personal/connectivity/kolab/class_kolabAccount.inc:552
+#: personal/connectivity/kolab/class_kolabAccount.inc:695
 #, fuzzy
 msgid "Free busy information"
 msgstr "自由使用的信息"
 
-#: personal/connectivity/kolab/class_kolabAccount.inc:553
+#: personal/connectivity/kolab/class_kolabAccount.inc:696
 #: personal/connectivity/kolab/kolab.tpl:51
 #: personal/connectivity/kolab/kolab.tpl:63
 msgid "Delegations"
 msgstr "代理人"
 
-#: personal/connectivity/kolab/class_kolabAccount.inc:554
+#: personal/connectivity/kolab/class_kolabAccount.inc:697
 #: personal/connectivity/kolab/kolab.tpl:119
 msgid "Invitation policy"
 msgstr "邀请策略"
@@ -446,6 +444,10 @@ msgstr "功能"
 #: personal/connectivity/kolab/kolab.tpl:112
 msgid "days"
 msgstr "天"
+
+#, fuzzy
+#~ msgid "This does something"
+#~ msgstr "******"
 
 #, fuzzy
 #~ msgid "Junk mail"

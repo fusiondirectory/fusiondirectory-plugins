@@ -9,75 +9,75 @@ msgid ""
 msgstr ""
 "Project-Id-Version: admin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-08 19:20+0200\n"
+"POT-Creation-Date: 2012-05-26 17:33+0200\n"
 "PO-Revision-Date: 2010-01-20 01:05+0100\n"
 "Last-Translator: \n"
 "Language-Team: Spanish <>\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
 "X-Generator: Lokalize 1.0\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: admin/groups/scalix/class_scalixGroup.inc:35
-#: personal/scalix/class_scalixAccount.inc:478
+#: personal/scalix/class_scalixAccount.inc:552
 msgid "Scalix account"
 msgstr "Cuenta Scalix"
 
 #: admin/groups/scalix/class_scalixGroup.inc:45
-#: personal/scalix/class_scalixAccount.inc:488
+#: personal/scalix/class_scalixAccount.inc:562
 msgid "Scalix Mail node"
 msgstr "Nodo de correo Scalix"
 
 #: admin/groups/scalix/class_scalixGroup.inc:46
-#: personal/scalix/class_scalixAccount.inc:489
+#: personal/scalix/class_scalixAccount.inc:563
 msgid "Mailbox class"
 msgstr "Tipo de buzón de correo"
 
 #: admin/groups/scalix/class_scalixGroup.inc:47
-#: personal/scalix/class_scalixAccount.inc:490
+#: personal/scalix/class_scalixAccount.inc:564
 msgid "Server language"
 msgstr "Idioma del Servidor"
 
 #: admin/groups/scalix/class_scalixGroup.inc:48
-#: personal/scalix/class_scalixAccount.inc:491
+#: personal/scalix/class_scalixAccount.inc:565
 msgid "Administrator"
 msgstr "Administrador"
 
 #: admin/groups/scalix/class_scalixGroup.inc:49
-#: personal/scalix/class_scalixAccount.inc:492
+#: personal/scalix/class_scalixAccount.inc:566
 msgid "Mailbox administrator"
 msgstr "Administrador del buzón de correo"
 
 #: admin/groups/scalix/class_scalixGroup.inc:50
-#: personal/scalix/class_scalixAccount.inc:493
+#: personal/scalix/class_scalixAccount.inc:567
 msgid "Hide user entry in Scalix"
 msgstr "Ocultar las entradas de usuarios en Scalix"
 
 #: admin/groups/scalix/class_scalixGroup.inc:51
-#: personal/scalix/class_scalixAccount.inc:494
+#: personal/scalix/class_scalixAccount.inc:568
 msgid "Mailbox size limitations"
 msgstr "Limitaciones de tamaño de los buzones de correo"
 
 #: admin/groups/scalix/class_scalixGroup.inc:52
-#: personal/scalix/class_scalixAccount.inc:495
+#: personal/scalix/class_scalixAccount.inc:569
 msgid "Limit outbound"
 msgstr "Limitaciones de salida"
 
 #: admin/groups/scalix/class_scalixGroup.inc:53
-#: personal/scalix/class_scalixAccount.inc:496
+#: personal/scalix/class_scalixAccount.inc:570
 msgid "Limit inbound"
 msgstr "Limitaciones de entrada"
 
 #: admin/groups/scalix/class_scalixGroup.inc:54
-#: personal/scalix/class_scalixAccount.inc:497
+#: personal/scalix/class_scalixAccount.inc:571
 msgid "Notify user"
 msgstr "Notificar al usuario"
 
 #: admin/groups/scalix/class_scalixGroup.inc:55
 #: personal/scalix/paste_generic.tpl:4
-#: personal/scalix/class_scalixAccount.inc:498 personal/scalix/generic.tpl:105
+#: personal/scalix/class_scalixAccount.inc:572 personal/scalix/generic.tpl:105
 msgid "Scalix email addresses"
 msgstr "Direcciones de correo electrónico de Scalix"
 
@@ -99,8 +99,8 @@ msgid "Scalix"
 msgstr "Scalix"
 
 #: personal/scalix/class_scalixAccount.inc:39
-msgid "This does something"
-msgstr "Esto hace algo"
+msgid "This save and read the scalix account data from ldap"
+msgstr ""
 
 #: personal/scalix/class_scalixAccount.inc:150
 msgid "This account has no scalix extensions."
@@ -139,13 +139,13 @@ msgstr "Error LDAP"
 #: personal/scalix/class_scalixAccount.inc:286
 #: personal/scalix/class_scalixAccount.inc:293
 #: personal/scalix/class_scalixAccount.inc:303
-#: personal/scalix/class_scalixAccount.inc:518
-#: personal/scalix/class_scalixAccount.inc:527
+#: personal/scalix/class_scalixAccount.inc:489
+#: personal/scalix/class_scalixAccount.inc:498
 msgid "Error"
 msgstr "Error"
 
 #: personal/scalix/class_scalixAccount.inc:279
-#: personal/scalix/class_scalixAccount.inc:518
+#: personal/scalix/class_scalixAccount.inc:489
 msgid "Cannot add invalid mail address!"
 msgstr "¡Esta intentando añadir una dirección de correo no valida!"
 
@@ -155,7 +155,7 @@ msgid "You have no permission to modify these addresses."
 msgstr "No tiene permisos para eliminar esta dirección."
 
 #: personal/scalix/class_scalixAccount.inc:293
-#: personal/scalix/class_scalixAccount.inc:527
+#: personal/scalix/class_scalixAccount.inc:498
 #, php-format
 msgid "Cannot add mail address: it is already used by user '%s'."
 msgstr ""
@@ -178,7 +178,7 @@ msgstr "Dirección de correo"
 msgid "Limit Mailbox"
 msgstr "Tamaño máximo del buzón de correo electrónico"
 
-#: personal/scalix/class_scalixAccount.inc:482
+#: personal/scalix/class_scalixAccount.inc:556
 msgid "My account"
 msgstr "Mi cuenta"
 
@@ -266,6 +266,9 @@ msgstr "Avisar al usuario por correo cuando sobrepase la cuota de correo."
 #: personal/scalix/generic.tpl:91
 msgid "Notify User"
 msgstr "Avisar al usuario"
+
+#~ msgid "This does something"
+#~ msgstr "Esto hace algo"
 
 #~ msgid "Add"
 #~ msgstr "Añadir"

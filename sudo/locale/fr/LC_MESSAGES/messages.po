@@ -10,14 +10,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-24 23:38+0100\n"
+"POT-Creation-Date: 2012-05-26 17:33+0200\n"
 "PO-Revision-Date: 2011-04-18 22:51+0200\n"
 "Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>\n"
 "Language-Team:  <fr@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms:  nplurals=2; plural=(n > 1);\n"
 
@@ -28,7 +28,7 @@ msgstr "Filtre"
 #: admin/sudo/sudo-filter.tpl:13 admin/sudo/sudo-list.xml:32
 #: admin/sudo/class_sudoGeneric.inc:581 admin/sudo/class_sudoGeneric.inc:586
 #: admin/sudo/class_sudoGeneric.inc:591 admin/sudo/class_sudoGeneric.inc:600
-#: admin/sudo/class_sudoGeneric.inc:639 admin/sudo/paste_generic.tpl:5
+#: admin/sudo/class_sudoGeneric.inc:710 admin/sudo/paste_generic.tpl:5
 #: admin/sudo/generic.tpl:7 admin/sudo/generic.tpl:34
 msgid "Name"
 msgstr "Nom"
@@ -61,7 +61,7 @@ msgstr "Liste des rôles sudo"
 msgid "Role"
 msgstr "Rôle"
 
-#: admin/sudo/sudo-list.xml:40 admin/sudo/class_sudoGeneric.inc:640
+#: admin/sudo/sudo-list.xml:40 admin/sudo/class_sudoGeneric.inc:711
 #: admin/sudo/generic.tpl:15 admin/sudo/generic.tpl:44
 msgid "Description"
 msgstr ""
@@ -114,31 +114,31 @@ msgstr "Groupes"
 msgid "LDAP error"
 msgstr "Erreur LDAP"
 
-#: admin/sudo/class_sudoGeneric.inc:630 admin/sudo/class_sudoManagement.inc:25
+#: admin/sudo/class_sudoGeneric.inc:701 admin/sudo/class_sudoManagement.inc:25
 msgid "Sudo"
 msgstr ""
 
-#: admin/sudo/class_sudoGeneric.inc:631 admin/sudo/class_sudoGeneric.inc:636
+#: admin/sudo/class_sudoGeneric.inc:702 admin/sudo/class_sudoGeneric.inc:707
 msgid "Sudo role"
 msgstr "Rôle sudo"
 
-#: admin/sudo/class_sudoGeneric.inc:641
+#: admin/sudo/class_sudoGeneric.inc:712
 msgid "Users"
 msgstr "Utilisateurs"
 
-#: admin/sudo/class_sudoGeneric.inc:642
+#: admin/sudo/class_sudoGeneric.inc:713
 msgid "Host"
 msgstr "Hôte"
 
-#: admin/sudo/class_sudoGeneric.inc:643
+#: admin/sudo/class_sudoGeneric.inc:714
 msgid "Command"
 msgstr "Commande"
 
-#: admin/sudo/class_sudoGeneric.inc:644
+#: admin/sudo/class_sudoGeneric.inc:715
 msgid "Run as user"
 msgstr "Exécuter comme un utilisateur"
 
-#: admin/sudo/class_sudoGeneric.inc:645
+#: admin/sudo/class_sudoGeneric.inc:716
 msgid "Access control list"
 msgstr "Contrôle d'accès (ACL)"
 
@@ -152,8 +152,8 @@ msgid ""
 "FusionDirectory to get your data back."
 msgstr ""
 "Veuillez vérifier que vous voulez effectuer cette action. Toutes les données "
-"seront perdues étant donné qu'il est impossible pour FusionDirectory de récupérer vos "
-"données."
+"seront perdues étant donné qu'il est impossible pour FusionDirectory de "
+"récupérer vos données."
 
 #: admin/sudo/remove.tpl:10
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
@@ -231,4 +231,3 @@ msgstr "Commandes"
 #: admin/sudo/generic.tpl:132
 msgid "Run as"
 msgstr "Exécuter comme"
-

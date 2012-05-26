@@ -6,26 +6,2561 @@
 #
 #
 #  Jiang Xin <worldhello.net@gmail.com>, 2007.
- 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-24 23:38+0100\n"
+"POT-Creation-Date: 2012-05-26 17:33+0200\n"
 "PO-Revision-Date: 2007-06-03 12:27+0800\n"
 "Last-Translator: Jiang Xin <worldhello.net@gmail.com>\n"
 "Language-Team: Chinese Simplified <zh@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "X-Generator: KBabel 1.11.4\n"
 
+#: admin/devices/device-list.tpl:13 admin/devices/class_deviceGeneric.inc:298
+#: admin/devices/deviceGeneric.tpl:9
+#: admin/mimetypes/class_mimetypeGeneric.inc:716
+#: admin/mimetypes/mimetype-list.tpl:13 admin/mimetypes/generic.tpl:44
+#: admin/systems/goto/terminal.tpl:27
+#: admin/systems/goto/class_workstationGeneric.inc:746
+#: admin/systems/goto/printer.tpl:27 admin/systems/goto/workstation.tpl:35
+#: admin/systems/goto/class_printGeneric.inc:1024
+#: admin/systems/goto/class_terminalGeneric.inc:739
+#: admin/systems/systemSelect/selectSystem-list.tpl:13
+#: admin/systems/system-list.tpl:13 admin/systems/class_servGeneric.inc:503
+#: admin/systems/class_componentGeneric.inc:343 admin/systems/component.tpl:17
+#: admin/systems/server.tpl:22
+#: admin/systems/services/ldap/class_goLdapServer.inc:102
+#: admin/applications/class_applicationGeneric.inc:594
+#: admin/applications/application-list.tpl:13
+#: admin/applications/generic.tpl:42 addons/goto/goto_import_file.tpl:41
+#: addons/goto/events/eventTargetSystems-list.tpl:13
+#: addons/goto/events/eventTargetUser-list.tpl:13
+#: addons/goto/deploy-list.tpl:13
+#: personal/environment/hotplugSelect/selectHotplug-list.tpl:13
+#: personal/environment/printerSelect/selectPrinter-list.tpl:13
+msgid "Base"
+msgstr "位置"
+
+#: admin/devices/device-list.xml:11
+#, fuzzy
+msgid "List of devices"
+msgstr "用户列表"
+
+#: admin/devices/device-list.xml:15 admin/devices/device-list.xml:74
+#: admin/devices/class_deviceGeneric.inc:196
+#: admin/systems/goto/gotoLpdEnable.tpl:27
+#: admin/systems/goto/gotoLpdEnable.tpl:63
+#: personal/environment/hotplugSelect/selectHotplug-list.xml:14
+#, fuzzy
+msgid "Device"
+msgstr "服务"
+
+#: admin/devices/device-list.xml:41 admin/devices/class_deviceGeneric.inc:117
+#: admin/devices/class_deviceGeneric.inc:146
+#: admin/devices/class_deviceGeneric.inc:297
+#: admin/devices/device-filter.tpl:17 admin/mimetypes/mimetype-filter.tpl:15
+#: admin/mimetypes/class_mimetypeGeneric.inc:521
+#: admin/mimetypes/class_mimetypeGeneric.inc:713
+#: admin/mimetypes/mimetype-list-release.xml:41
+#: admin/mimetypes/mimetype-list.xml:41
+#: admin/mimetypes/mimetype-filter-release.tpl:23
+#: admin/groups/apps/edit_entry.tpl:43
+#: admin/systems/goto/class_workstationGeneric.inc:451
+#: admin/systems/goto/class_workstationGeneric.inc:456
+#: admin/systems/goto/class_workstationGeneric.inc:479
+#: admin/systems/goto/class_ArpNewDevice.inc:109
+#: admin/systems/goto/class_printGeneric.inc:754
+#: admin/systems/goto/class_printGeneric.inc:764
+#: admin/systems/goto/class_printGeneric.inc:783
+#: admin/systems/goto/class_printGeneric.inc:1023
+#: admin/systems/goto/class_terminalGeneric.inc:456
+#: admin/systems/goto/class_terminalGeneric.inc:466
+#: admin/systems/goto/class_terminalGeneric.inc:485
+#: admin/systems/goto/class_terminalGeneric.inc:737
+#: admin/systems/systemSelect/selectSystem-filter.tpl:22
+#: admin/systems/systemSelect/selectSystem-list.xml:57
+#: admin/systems/system-list.xml:169 admin/systems/class_servGeneric.inc:501
+#: admin/systems/class_componentGeneric.inc:342
+#: admin/systems/system-filter.tpl:48 admin/systems/services/nfs/servnfs.tpl:9
+#: admin/systems/services/nfs/class_servNfs.inc:219
+#: admin/systems/services/nfs/class_servNfs.inc:222
+#: admin/systems/services/nfs/class_servNfs.inc:255
+#: admin/systems/services/shares/class_goShareServer.inc:442
+#: admin/applications/application-filter.tpl:15
+#: admin/applications/class_applicationGeneric.inc:417
+#: admin/applications/class_applicationGeneric.inc:421
+#: admin/applications/class_applicationGeneric.inc:593
+#: admin/applications/class_applicationGeneric.inc:597
+#: admin/applications/application-list-release.xml:41
+#: admin/applications/application-filter-release.tpl:23
+#: admin/applications/application-list.xml:41
+#: admin/applications/class_applicationParameters.inc:211
+#: addons/goto/events/eventTargetUser-filter.tpl:21
+#: addons/goto/events/eventTargetSystems-list.xml:65
+#: addons/goto/events/eventTargetSystems-filter.tpl:23
+#: addons/goto/events/eventTargetUser-list.xml:49
+#: addons/goto/deploy-list.xml:36
+#: personal/environment/hotplugSelect/selectHotplug-list.xml:40
+#: personal/environment/hotplugSelect/selectHotplug-filter.tpl:17
+#: personal/environment/class_logonManagementDialog.inc:124
+#: personal/environment/printerSelect/selectPrinter-filter.tpl:17
+#: personal/environment/printerSelect/selectPrinter-list.xml:40
+msgid "Name"
+msgstr "名称"
+
+#: admin/devices/device-list.xml:49 admin/devices/class_deviceGeneric.inc:120
+#: admin/devices/class_deviceGeneric.inc:299
+#: admin/devices/deviceGeneric.tpl:27
+#: admin/mimetypes/class_mimetypeGeneric.inc:715
+#: admin/mimetypes/paste_generic.tpl:21
+#: admin/mimetypes/mimetype-list-release.xml:49
+#: admin/mimetypes/mimetype-list.xml:49 admin/mimetypes/generic.tpl:34
+#: admin/systems/goto/terminal.tpl:19
+#: admin/systems/goto/class_workstationGeneric.inc:744
+#: admin/systems/goto/printer.tpl:16 admin/systems/goto/printer.tpl:42
+#: admin/systems/goto/workstation.tpl:19
+#: admin/systems/goto/ArpNewDevice.tpl:17
+#: admin/systems/goto/class_printGeneric.inc:1025
+#: admin/systems/goto/class_terminalGeneric.inc:738
+#: admin/systems/systemSelect/selectSystem-list.xml:65
+#: admin/systems/system-list.xml:185 admin/systems/class_servGeneric.inc:502
+#: admin/systems/class_componentGeneric.inc:344 admin/systems/component.tpl:29
+#: admin/systems/serverService-list.xml:35 admin/systems/server.tpl:14
+#: admin/systems/services/nfs/servnfs.tpl:19
+#: admin/systems/services/nfs/class_servNfs.inc:227
+#: admin/systems/services/shares/class_goShareServer.inc:444
+#: admin/applications/class_applicationGeneric.inc:595
+#: admin/applications/application-list-release.xml:49
+#: admin/applications/application-list.xml:49
+#: admin/applications/generic.tpl:33
+#: addons/goto/events/eventTargetSystems-list.xml:73
+#: addons/goto/events/eventTargetUser-list.xml:57
+#: addons/goto/class_gotomasses.inc:613
+#: personal/environment/hotplugSelect/selectHotplug-list.xml:48
+#: personal/environment/class_logonManagementDialog.inc:132
+#: personal/environment/logonManagement.tpl:17
+#: personal/environment/printerSelect/selectPrinter-list.xml:48
+msgid "Description"
+msgstr "描述"
+
+#: admin/devices/device-list.xml:57
+#: admin/mimetypes/mimetype-list-release.xml:57
+#: admin/mimetypes/mimetype-list.xml:57 admin/systems/system-list.xml:209
+#: admin/systems/serverService-list.xml:43
+#: admin/applications/application-list-release.xml:57
+#: admin/applications/application-list.xml:57 addons/goto/deploy-list.xml:77
+msgid "Actions"
+msgstr "动作"
+
+#: admin/devices/device-list.xml:68
+#: admin/mimetypes/mimetype-list-release.xml:68
+#: admin/mimetypes/mimetype-list.xml:68 admin/systems/goto/chooser.tpl:16
+#: admin/systems/system-list.xml:220 admin/systems/serverService-list.xml:54
+#: admin/applications/application-list-release.xml:68
+#: admin/applications/application-list.xml:68 addons/goto/deploy-list.xml:88
+msgid "Create"
+msgstr "创建"
+
+#: admin/devices/device-list.xml:86
+#: admin/mimetypes/mimetype-list-release.xml:86
+#: admin/mimetypes/mimetype-list.xml:86 admin/groups/apps/app_list.tpl:86
+#: admin/groups/apps/app_list.tpl:107 admin/groups/apps/app_list.tpl:132
+#: admin/systems/goto/terminalStartup.tpl:115
+#: admin/systems/goto/printer.tpl:85
+#: admin/systems/goto/workstationStartup.tpl:227
+#: admin/systems/goto/terminalService.tpl:212
+#: admin/systems/system-list.xml:428 admin/systems/serverService-list.xml:72
+#: admin/applications/application-list-release.xml:86
+#: admin/applications/application-list.xml:86
+#: admin/applications/class_applicationParameters.inc:143
+#: addons/goto/events/class_DaemonEvent.inc:259
+#: addons/goto/class_gotomasses.inc:253 addons/goto/deploy-list.xml:155
+#: addons/goto/deploy-list.xml:263 personal/environment/environment.tpl:238
+msgid "Remove"
+msgstr "删除"
+
+#: admin/devices/device-list.xml:118
+#, fuzzy
+msgid "Edit device"
+msgstr "打印服务"
+
+#: admin/devices/device-list.xml:131
+#, fuzzy
+msgid "Remove device"
+msgstr "删除 DNS 服务"
+
+#: admin/devices/class_deviceGeneric.inc:50
+msgid "Digital camera"
+msgstr ""
+
+#: admin/devices/class_deviceGeneric.inc:51
+msgid "USB stick"
+msgstr ""
+
+#: admin/devices/class_deviceGeneric.inc:52
+msgid "CD/DVD drive"
+msgstr ""
+
+#: admin/devices/class_deviceGeneric.inc:125
+#: admin/devices/class_deviceGeneric.inc:127
+msgid "iSerial"
+msgstr ""
+
+#: admin/devices/class_deviceGeneric.inc:130
+#: admin/devices/deviceGeneric.tpl:70
+msgid "Product-ID"
+msgstr ""
+
+#: admin/devices/class_deviceGeneric.inc:133
+#: admin/devices/deviceGeneric.tpl:61
+msgid "Vendor-ID"
+msgstr ""
+
+#: admin/devices/class_deviceGeneric.inc:170
+#: admin/devices/class_deviceGeneric.inc:196
+#: admin/systems/goto/class_workstationGeneric.inc:407
+#: admin/systems/goto/class_terminalStartup.inc:244
+#: admin/systems/goto/class_workstationStartup.inc:254
+#: admin/systems/goto/class_workstationStartup.inc:267
+#: admin/systems/goto/class_workstationStartup.inc:346
+#: admin/systems/goto/class_printGeneric.inc:480
+#: admin/systems/goto/class_printGeneric.inc:659
+#: admin/systems/goto/class_printGeneric.inc:666
+#: admin/systems/goto/class_printGeneric.inc:720
+#: admin/systems/goto/class_printGeneric.inc:1102
+#: admin/systems/goto/class_printGeneric.inc:1113
+#: admin/systems/goto/class_terminalGeneric.inc:407
+#: admin/systems/class_termDNS.inc:297 admin/systems/class_termDNS.inc:329
+#: admin/systems/class_termDNS.inc:588 admin/systems/class_termDNS.inc:595
+#: admin/systems/class_servGeneric.inc:293
+#: admin/systems/class_componentGeneric.inc:166
+#: admin/systems/class_systemManagement.inc:260
+#: admin/systems/class_systemManagement.inc:675
+#: admin/systems/class_systemManagement.inc:681
+#: admin/systems/class_systemManagement.inc:800
+#: admin/systems/class_systemManagement.inc:815
+#: admin/systems/services/nfs/class_servNfs.inc:63
+#: admin/systems/services/nfs/class_servNfs.inc:66
+#: admin/systems/services/kiosk/class_goKioskService.inc:89
+#: admin/systems/services/kiosk/class_goKioskService.inc:174
+#: admin/systems/services/kiosk/class_goKioskService.inc:181
+#: admin/systems/services/kiosk/class_goKioskService.inc:184
+#: admin/systems/services/kiosk/class_goKioskService.inc:254
+#: admin/systems/services/shares/class_goShareServer.inc:118
+#: admin/systems/services/shares/class_goShareServer.inc:277
+#: admin/systems/class_filterSYSTEMS.inc:151
+#: admin/systems/class_serverService.inc:196
+#: admin/systems/class_serverService.inc:238
+#: admin/systems/class_serverService.inc:452
+#: admin/applications/class_applicationGeneric.inc:255
+#: admin/applications/class_applicationGeneric.inc:329
+#: admin/applications/class_applicationGeneric.inc:361
+#: admin/applications/class_applicationGeneric.inc:366
+#: admin/applications/class_applicationGeneric.inc:371
+#: admin/applications/class_applicationGeneric.inc:375
+#: addons/goto/class_gotoLogView.inc:77 addons/goto/class_gotoLogView.inc:195
+#: addons/goto/class_filterGotoEvents.inc:39
+#: addons/goto/class_gotomasses.inc:188 addons/goto/class_gotomasses.inc:302
+#: addons/goto/class_gotomasses.inc:466 addons/goto/class_gotomasses.inc:495
+#: addons/goto/class_gotomasses.inc:531
+#: personal/environment/class_environment.inc:612
+#: personal/environment/class_environment.inc:694
+#: personal/environment/class_environment.inc:696
+#: personal/environment/class_environment.inc:698
+#: personal/environment/class_environment.inc:709
+#: personal/environment/class_environment.inc:1016
+msgid "Error"
+msgstr "错误"
+
+#: admin/devices/class_deviceGeneric.inc:233
+#: admin/mimetypes/class_mimetypeGeneric.inc:483
+#: admin/mimetypes/class_mimetypeGeneric.inc:495
+#: admin/mimetypes/class_mimetypeGeneric.inc:510
+#: admin/groups/apps/class_groupApplication.inc:670
+#: admin/groups/apps/class_groupApplication.inc:1351
+#: admin/groups/apps/class_groupApplication.inc:1365
+#: admin/groups/apps/class_groupApplication.inc:1379
+#: admin/systems/goto/class_workstationService.inc:481
+#: admin/systems/goto/class_workstationGeneric.inc:356
+#: admin/systems/goto/class_workstationGeneric.inc:594
+#: admin/systems/goto/class_workstationGeneric.inc:611
+#: admin/systems/goto/class_terminalStartup.inc:447
+#: admin/systems/goto/class_ArpNewDevice.inc:147
+#: admin/systems/goto/class_workstationStartup.inc:722
+#: admin/systems/goto/class_printGeneric.inc:677
+#: admin/systems/goto/class_printGeneric.inc:979
+#: admin/systems/goto/class_terminalService.inc:617
+#: admin/systems/goto/class_terminalGeneric.inc:360
+#: admin/systems/goto/class_terminalGeneric.inc:621
+#: admin/systems/class_termDNS.inc:478 admin/systems/class_termDNS.inc:492
+#: admin/systems/class_termDNS.inc:811 admin/systems/class_termDNS.inc:830
+#: admin/systems/class_termDNS.inc:847 admin/systems/class_termDNS.inc:856
+#: admin/systems/class_termDNS.inc:874 admin/systems/class_termDNS.inc:950
+#: admin/systems/class_servGeneric.inc:259
+#: admin/systems/class_servGeneric.inc:418
+#: admin/systems/class_componentGeneric.inc:134
+#: admin/systems/class_componentGeneric.inc:284
+#: admin/systems/class_systemManagement.inc:313
+#: admin/systems/class_systemManagement.inc:1051
+#: admin/systems/services/ntp/class_goNtpServer.inc:118
+#: admin/systems/services/ldap/class_goLdapServer.inc:137
+#: admin/systems/services/kiosk/class_goKioskService.inc:269
+#: admin/systems/services/terminal/class_goTerminalServer.inc:123
+#: admin/systems/services/shares/class_goShareServer.inc:212
+#: admin/systems/services/shares/class_goShareServer.inc:305
+#: admin/systems/services/shares/class_goShareServer.inc:321
+#: admin/systems/services/shares/class_goShareServer.inc:334
+#: admin/systems/services/class_goService.inc:122
+#: admin/systems/services/class_goService.inc:150
+#: admin/systems/services/class_goService.inc:183
+#: admin/ogroups/goto/class_termgroup.inc:388
+#: admin/applications/class_applicationGeneric.inc:262
+#: admin/applications/class_applicationGeneric.inc:276
+#: admin/applications/class_applicationGeneric.inc:502
+#: admin/applications/class_applicationParameters.inc:179
+#: admin/applications/class_applicationParameters.inc:242
+#: personal/environment/class_environment.inc:1086
+#: personal/environment/class_environment.inc:1343
+#, fuzzy
+msgid "LDAP error"
+msgstr "LDAP 错误:"
+
+#: admin/devices/class_deviceGeneric.inc:288
+#: admin/mimetypes/class_mimetypeGeneric.inc:704
+#: admin/mimetypes/paste_generic.tpl:4 admin/mimetypes/generic.tpl:4
+#: admin/systems/goto/class_workstationGeneric.inc:734
+#: admin/systems/goto/class_printGeneric.inc:1014
+#: admin/systems/class_servGeneric.inc:492
+#: admin/systems/class_componentGeneric.inc:333
+#: admin/ogroups/goto/termgroup.tpl:6
+#: admin/applications/class_applicationGeneric.inc:584
+msgid "Generic"
+msgstr "通用配置"
+
+#: admin/devices/class_deviceGeneric.inc:289
+#, fuzzy
+msgid "Device generic"
+msgstr "服务器名称"
+
+#: admin/devices/class_deviceGeneric.inc:289
+msgid "Hotplug"
+msgstr ""
+
+#: admin/devices/class_deviceGeneric.inc:294 admin/devices/deviceGeneric.tpl:2
+#: admin/devices/paste_deviceGeneric.tpl:2
+#, fuzzy
+msgid "Devices"
+msgstr "服务"
+
+#: admin/devices/class_deviceGeneric.inc:300
+#: admin/systems/goto/workstationService.tpl:54
+#: admin/systems/goto/workstationService.tpl:156
+#: admin/systems/goto/gotoLpdEnable.tpl:53
+#: admin/systems/goto/terminalService.tpl:48
+#: admin/systems/goto/terminalService.tpl:138
+#: admin/systems/services/nfs/servnfs.tpl:56
+#: admin/systems/services/nfs/class_servNfs.inc:213
+#: admin/systems/services/shares/class_goShareServer.inc:445
+msgid "Type"
+msgstr ""
+
+#: admin/devices/class_deviceGeneric.inc:301
+#: admin/systems/goto/class_gotoLpdEnabled.inc:71
+msgid "Serial"
+msgstr ""
+
+#: admin/devices/class_deviceGeneric.inc:302
+msgid "Vendor"
+msgstr ""
+
+#: admin/devices/class_deviceGeneric.inc:303
+#, fuzzy
+msgid "Device ID"
+msgstr "设备名称"
+
+#: admin/devices/remove.tpl:2 admin/mimetypes/remove.tpl:2
+#: admin/systems/ppd/remove_ppd.tpl:2 admin/systems/remove.tpl:2
+#: admin/ogroups/goto/termgroup.tpl:2 admin/applications/remove.tpl:2
+#: addons/goto/remove.tpl:2 personal/environment/class_environment.inc:160
+#: personal/environment/class_environment.inc:328
+#: personal/environment/class_environment.inc:381
+#: personal/environment/class_environment.inc:385
+msgid "Warning"
+msgstr "警告"
+
+#: admin/devices/remove.tpl:6 admin/mimetypes/remove.tpl:6
+#: admin/applications/remove.tpl:6
+#, fuzzy
+msgid ""
+"Please double check if you really want to do this since there is no way for "
+"FusionDirectory to get your data back."
+msgstr ""
+"这包含该用户所有账号数据，系统访问规则，imap 设置等等。请再次检查您是否要这么"
+"做，因为 FusionDirectory 没有办法将您的数据找回。"
+
+#: admin/devices/remove.tpl:10 admin/mimetypes/remove.tpl:10
+#: admin/systems/remove.tpl:10 admin/applications/remove.tpl:10
+#: addons/goto/remove.tpl:9
+msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
+msgstr "所以，如果您确定，请按“删除”继续，否则按“取消”退出。"
+
+#: admin/devices/device-filter.tpl:3 admin/mimetypes/mimetype-filter.tpl:3
+#: admin/mimetypes/mimetype-filter-release.tpl:3
+#: admin/systems/systemSelect/selectSystem-filter.tpl:3
+#: admin/systems/serverService-filter.tpl:3 admin/systems/system-filter.tpl:3
+#: admin/applications/application-filter.tpl:3
+#: admin/applications/application-filter-release.tpl:3
+#: addons/goto/events/eventTargetUser-filter.tpl:3
+#: addons/goto/events/eventTargetSystems-filter.tpl:3
+#: personal/environment/hotplugSelect/selectHotplug-filter.tpl:3
+#: personal/environment/printerSelect/selectPrinter-filter.tpl:3
+#, fuzzy
+msgid "Filter"
+msgstr "过滤器"
+
+#: admin/devices/deviceGeneric.tpl:18 admin/devices/paste_deviceGeneric.tpl:9
+#: admin/systems/component.tpl:6
+msgid "Device name"
+msgstr "设备名称"
+
+#: admin/devices/deviceGeneric.tpl:36
+#, fuzzy
+msgid "Device type"
+msgstr "设备名称"
+
+#: admin/devices/deviceGeneric.tpl:40
+msgid "Choose the device type"
+msgstr ""
+
+#: admin/devices/deviceGeneric.tpl:51
+#, fuzzy
+msgid "Serial number"
+msgstr "终端名称"
+
+#: admin/devices/deviceGeneric.tpl:51
+msgid "(iSerial)"
+msgstr ""
+
+#: admin/devices/deviceGeneric.tpl:61
+msgid "(idVendor)"
+msgstr ""
+
+#: admin/devices/deviceGeneric.tpl:70
+msgid "(idProduct)"
+msgstr ""
+
+#: admin/devices/class_deviceManagement.inc:25
+#: personal/environment/environment.tpl:293
+#: personal/environment/class_environment.inc:1811
+msgid "Hotplug devices"
+msgstr ""
+
+#: admin/devices/class_deviceManagement.inc:26
+msgid "Hotplug device management"
+msgstr ""
+
+#: admin/mimetypes/class_mimetypeGeneric.inc:524
+msgid "File pattern"
+msgstr ""
+
+#: admin/mimetypes/class_mimetypeGeneric.inc:705
+#, fuzzy
+msgid "Mime type generic"
+msgstr "新组件"
+
+#: admin/mimetypes/class_mimetypeGeneric.inc:710
+#: admin/mimetypes/class_mimetypeManagement.inc:25
+msgid "Mime types"
+msgstr ""
+
+#: admin/mimetypes/class_mimetypeGeneric.inc:714
+#: admin/mimetypes/generic.tpl:22
+msgid "Mime group"
+msgstr ""
+
+#: admin/mimetypes/class_mimetypeGeneric.inc:717
+#: admin/groups/apps/class_groupApplication.inc:1462
+#: admin/applications/class_applicationGeneric.inc:590
+#: admin/applications/application-list-release.xml:15
+#: admin/applications/application-list-release.xml:74
+#: admin/applications/application-list.xml:15
+#: admin/applications/application-list.xml:74
+#, fuzzy
+msgid "Application"
+msgstr "行动"
+
+#: admin/mimetypes/class_mimetypeGeneric.inc:718
+msgid "Left click action"
+msgstr ""
+
+#: admin/mimetypes/class_mimetypeGeneric.inc:719
+#: admin/mimetypes/generic.tpl:67
+#: admin/applications/class_applicationGeneric.inc:598
+#: admin/applications/generic.tpl:66
+msgid "Icon"
+msgstr ""
+
+#: admin/mimetypes/class_mimetypeGeneric.inc:720
+#: admin/mimetypes/generic.tpl:104
+msgid "File patterns"
+msgstr ""
+
+#: admin/mimetypes/class_mimetypeGeneric.inc:721
+msgid "Embedded applications"
+msgstr ""
+
+#: admin/mimetypes/class_mimetypeManagement.inc:26
+msgid "Manage mime types"
+msgstr ""
+
+#: admin/mimetypes/paste_generic.tpl:13
+#: admin/mimetypes/mimetype-list-release.xml:15
+#: admin/mimetypes/mimetype-list-release.xml:74
+#: admin/mimetypes/mimetype-list.xml:15 admin/mimetypes/mimetype-list.xml:74
+#: admin/mimetypes/generic.tpl:12
+msgid "Mime type"
+msgstr ""
+
+#: admin/mimetypes/paste_generic.tpl:16 admin/mimetypes/generic.tpl:16
+msgid "Please enter a name for the mime type here"
+msgstr ""
+
+#: admin/mimetypes/paste_generic.tpl:24
+msgid "Please specify a description for this mime type here"
+msgstr ""
+
+#: admin/mimetypes/mimetype-list-release.xml:11
+#: admin/mimetypes/mimetype-list.xml:11
+#, fuzzy
+msgid "List of mimetypes"
+msgstr "系统列表"
+
+#: admin/mimetypes/mimetype-list-release.xml:118
+#: admin/mimetypes/mimetype-list.xml:118
+msgid "Edit mimetype"
+msgstr ""
+
+#: admin/mimetypes/mimetype-list-release.xml:131
+#: admin/mimetypes/mimetype-list.xml:131
+#, fuzzy
+msgid "Remove mimetype"
+msgstr "删除图片"
+
+#: admin/mimetypes/generic.tpl:26
+msgid "Categorize this mime type"
+msgstr ""
+
+#: admin/mimetypes/generic.tpl:38
+msgid "Please specify a description"
+msgstr ""
+
+#: admin/mimetypes/generic.tpl:47 admin/applications/generic.tpl:45
+msgid "Choose subtree to place application in"
+msgstr ""
+
+#: admin/mimetypes/generic.tpl:53 admin/applications/generic.tpl:52
+#, fuzzy
+msgid "Select a base"
+msgstr "选择终端类型"
+
+#: admin/mimetypes/generic.tpl:69 admin/mimetypes/generic.tpl:72
+msgid "Mime icon"
+msgstr ""
+
+#: admin/mimetypes/generic.tpl:84 admin/systems/system-list.xml:317
+#: admin/systems/system-list.xml:383 admin/applications/generic.tpl:82
+msgid "Update"
+msgstr ""
+
+#: admin/mimetypes/generic.tpl:85
+msgid "Update mime type icon"
+msgstr ""
+
+#: admin/mimetypes/generic.tpl:99
+msgid "Left click"
+msgstr ""
+
+#: admin/mimetypes/generic.tpl:110
+msgid "Please specify a new file pattern"
+msgstr ""
+
+#: admin/mimetypes/generic.tpl:113
+msgid "Add a new file pattern"
+msgstr ""
+
+#: admin/mimetypes/generic.tpl:117 admin/mimetypes/generic.tpl:177
+#: admin/groups/apps/class_groupApplication.inc:1453
+#: admin/applications/class_applicationManagement.inc:25
+#, fuzzy
+msgid "Applications"
+msgstr "动作"
+
+#: admin/mimetypes/generic.tpl:129 admin/mimetypes/generic.tpl:189
+msgid "Enter an application name here"
+msgstr ""
+
+#: admin/mimetypes/generic.tpl:132 admin/mimetypes/generic.tpl:193
+msgid "Add application"
+msgstr ""
+
+#: admin/mimetypes/generic.tpl:143
+msgid "Embedding"
+msgstr ""
+
+#: admin/mimetypes/generic.tpl:156
+msgid "Show file in embedded viewer"
+msgstr ""
+
+#: admin/mimetypes/generic.tpl:163
+msgid "Show file in external viewer"
+msgstr ""
+
+#: admin/mimetypes/generic.tpl:170
+msgid "Ask whether to save to local disk"
+msgstr ""
+
+#: admin/mimetypes/mimetype-filter-release.tpl:14
+#: admin/groups/apps/app_list.tpl:5 admin/groups/apps/app_list.tpl:53
+#: admin/groups/apps/class_groupApplication.inc:1463
+#: admin/systems/goto/workstationStartup.tpl:83
+#: admin/systems/goto/workstationStartup.tpl:123
+#: admin/systems/system-list.xml:201
+#: admin/applications/application-filter-release.tpl:14
+#, fuzzy
+msgid "Release"
+msgstr "删除"
+
+#: admin/mimetypes/release_select.tpl:2
+#: admin/applications/release_select.tpl:2
+msgid "Branches"
+msgstr ""
+
+#: admin/mimetypes/release_select.tpl:8
+#: admin/applications/release_select.tpl:8
+msgid "Current release"
+msgstr ""
+
+#: admin/groups/apps/app_list.tpl:11
+msgid "Copy menu"
+msgstr ""
+
+#: admin/groups/apps/app_list.tpl:13
+msgid "Paste menu from"
+msgstr ""
+
+#: admin/groups/apps/app_list.tpl:17
+#, fuzzy
+msgid "Delete menu"
+msgstr "删除"
+
+#: admin/groups/apps/app_list.tpl:70 admin/groups/apps/app_list.tpl:74
+msgid "Folder"
+msgstr ""
+
+#: admin/groups/apps/app_list.tpl:82 admin/groups/apps/app_list.tpl:103
+#: admin/groups/apps/app_list.tpl:128
+msgid "Move up"
+msgstr ""
+
+#: admin/groups/apps/app_list.tpl:84 admin/groups/apps/app_list.tpl:105
+#: admin/groups/apps/app_list.tpl:130
+msgid "Move down"
+msgstr ""
+
+#: admin/groups/apps/app_list.tpl:88 admin/groups/apps/app_list.tpl:134
+#: admin/systems/goto/printer.tpl:82
+#: admin/systems/services/shares/goShareServer.tpl:17
+#: addons/goto/deploy-list.xml:254 personal/environment/environment.tpl:274
+#, fuzzy
+msgid "Edit"
+msgstr "编辑宏"
+
+#: admin/groups/apps/app_list.tpl:121
+msgid "Entry"
+msgstr ""
+
+#: admin/groups/apps/app_list.tpl:143
+msgid "add to"
+msgstr ""
+
+#: admin/groups/apps/app_list.tpl:149 admin/groups/apps/app_list.tpl:159
+msgid "Add selected applications to this folder."
+msgstr ""
+
+#: admin/groups/apps/app_list.tpl:150
+msgid "Separator"
+msgstr ""
+
+#: admin/groups/apps/app_list.tpl:150
+msgid "Add a separator to this folder."
+msgstr ""
+
+#: admin/groups/apps/class_groupApplication.inc:402
+#: admin/groups/apps/class_groupApplication.inc:406
+msgid "Menu"
+msgstr ""
+
+#: admin/groups/apps/class_groupApplication.inc:460
+#: admin/systems/class_systemManagement.inc:362
+msgid "Back"
+msgstr "返回"
+
+#: admin/groups/apps/class_groupApplication.inc:471
+#: admin/systems/ppd/class_printerPPDSelectionDialog.inc:172
+msgid "back"
+msgstr ""
+
+#: admin/groups/apps/class_groupApplication.inc:479
+msgid "department"
+msgstr ""
+
+#: admin/groups/apps/class_groupApplication.inc:502
+#: admin/applications/class_applicationGeneric.inc:148
+msgid "application"
+msgstr ""
+
+#: admin/groups/apps/class_groupApplication.inc:1167
+#, fuzzy
+msgid "Not available in release."
+msgstr "这个设备名已经被使用。"
+
+#: admin/groups/apps/class_groupApplication.inc:1454
+msgid "Group applications"
+msgstr ""
+
+#: admin/groups/apps/class_groupApplication.inc:1464
+msgid "Application parameter"
+msgstr ""
+
+#: admin/groups/apps/edit_entry.tpl:8
+msgid "Folder image"
+msgstr ""
+
+#: admin/groups/apps/edit_entry.tpl:12
+msgid "Could not load image."
+msgstr ""
+
+#: admin/groups/apps/edit_entry.tpl:14
+#: admin/systems/goto/class_gotoLpdEnabled.inc:78
+msgid "None"
+msgstr ""
+
+#: admin/groups/apps/edit_entry.tpl:24
+msgid "Upload image"
+msgstr ""
+
+#: admin/groups/apps/edit_entry.tpl:28
+#: admin/systems/ppd/printerPPDDialog.tpl:21
+#: admin/applications/generic.tpl:142 addons/goto/goto_import_file.tpl:25
+msgid "Upload"
+msgstr ""
+
+#: admin/groups/apps/edit_entry.tpl:32
+msgid "Reset image"
+msgstr ""
+
+#: admin/groups/apps/edit_entry.tpl:33
+msgid "Reset"
+msgstr ""
+
+#: admin/groups/apps/edit_entry.tpl:40
+#: admin/applications/class_applicationGeneric.inc:544
+#, fuzzy
+msgid "Application settings"
+msgstr "编辑设置..."
+
+#: admin/groups/apps/edit_entry.tpl:53
+msgid "Application options"
+msgstr ""
+
+#: admin/systems/ppd/class_printerPPDSelectionDialog.inc:95
+#: admin/systems/ppd/class_printerPPDSelectionDialog.inc:120
+#: admin/systems/ppd/class_printerPPDSelectionDialog.inc:144
+#: admin/systems/ppd/class_printerPPDDialog.inc:92
+#: admin/systems/ppd/class_printerPPDDialog.inc:160
+#: admin/systems/ppd/class_printerPPDDialog.inc:242
+#: admin/systems/ppd/class_printerPPDDialog.inc:258
+#: admin/systems/ppd/class_printerPPDDialog.inc:266
+#: admin/systems/ppd/class_printerPPDDialog.inc:290
+#: admin/systems/ppd/class_printerPPDDialog.inc:307
+#: admin/systems/ppd/class_printerPPDDialog.inc:331
+#: admin/systems/ppd/class_printerPPDDialog.inc:345
+#: admin/systems/ppd/class_printerPPDDialog.inc:355
+#: admin/systems/ppd/class_printerPPDDialog.inc:359
+#: admin/systems/ppd/class_printerPPDDialog.inc:552
+#: admin/systems/ppd/class_printerPPDDialog.inc:569
+#: admin/systems/ppd/class_printerPPDDialog.inc:572
+#: admin/systems/ppd/class_printerPPDDialog.inc:575
+#, fuzzy
+msgid "PPD error"
+msgstr "LDAP 错误:"
+
+#: admin/systems/ppd/class_printerPPDSelectionDialog.inc:144
+#, fuzzy, php-format
+msgid "Cannot locate vendor '%s' in available PPDs!"
+msgstr "不允许修改口令"
+
+#: admin/systems/ppd/class_printerPPDSelectionDialog.inc:153
+msgid "Printer ppd selection."
+msgstr ""
+
+#: admin/systems/ppd/class_printerPPDSelectionDialog.inc:160
+#, fuzzy
+msgid "delete"
+msgstr "删除"
+
+#: admin/systems/ppd/printerPPDSelectionDialog.tpl:6
+#, fuzzy
+msgid "Select objects to add"
+msgstr "选择要添加的打印机"
+
+#: admin/systems/ppd/printerPPDSelectionDialog.tpl:18
+#: admin/systems/goto/selectUserToPrinterDialog.tpl:22
+#, fuzzy
+msgid "Filters"
+msgstr "过滤器"
+
+#: admin/systems/ppd/printerPPDSelectionDialog.tpl:28
+#, fuzzy
+msgid "Display objects matching"
+msgstr "不匹配"
+
+#: admin/systems/ppd/printerPPDSelectionDialog.tpl:32
+msgid "Regular expression for matching object names"
+msgstr ""
+
+#: admin/systems/ppd/printerPPDSelectionDialog.tpl:44
+msgid "Close"
+msgstr ""
+
+#: admin/systems/ppd/remove_ppd.tpl:9
+msgid "The ppd file will be removed from the server and can not be restored."
+msgstr ""
+
+#: admin/systems/ppd/class_ppdManager.inc:44
+#: admin/systems/ppd/class_ppdManager.inc:192
+#: admin/systems/ppd/class_ppdManager.inc:194
+msgid "PPD manager error"
+msgstr ""
+
+#: admin/systems/ppd/class_ppdManager.inc:44
+#, php-format
+msgid "The specified path '%s' does not exist."
+msgstr ""
+
+#: admin/systems/ppd/class_ppdManager.inc:192
+#, php-format
+msgid "Specified PPD file '%s' cannot be opened for reading."
+msgstr ""
+
+#: admin/systems/ppd/class_ppdManager.inc:194
+#, php-format
+msgid "The temporary file '%s' cannot be opened for writing."
+msgstr ""
+
+#: admin/systems/ppd/class_ppdManager.inc:216
+#: admin/systems/ppd/class_ppdManager.inc:354
+msgid "Parsing PPD file failed - file is empty!"
+msgstr ""
+
+#: admin/systems/ppd/class_ppdManager.inc:226
+#, php-format
+msgid ""
+"Parsing PPD file %s failed - line too long. Trailing characters have been "
+"ignored!"
+msgstr ""
+
+#: admin/systems/ppd/class_ppdManager.inc:234
+msgid "Nested groups are not supported!"
+msgstr ""
+
+#: admin/systems/ppd/class_ppdManager.inc:238
+msgid "Group name not unique!"
+msgstr ""
+
+#: admin/systems/ppd/class_ppdManager.inc:244
+#: admin/systems/ppd/class_ppdManager.inc:274
+msgid "Symbol values are not supported yet!"
+msgstr ""
+
+#: admin/systems/ppd/class_ppdManager.inc:268
+msgid "Nested options are not supported!"
+msgstr ""
+
+#: admin/systems/ppd/class_ppdManager.inc:293
+msgid "PickMany is not supported yet!"
+msgstr ""
+
+#: admin/systems/ppd/class_ppdManager.inc:374
+#, php-format
+msgid ""
+"Parsing PPD file %s failed - line too long. Trailing characters have been "
+"ignored"
+msgstr ""
+
+#: admin/systems/ppd/class_ppdManager.inc:399
+#, php-format
+msgid "Parsing PPD file %s failed - no information found."
+msgstr ""
+
+#: admin/systems/ppd/class_printerPPDDialog.inc:74
+#: admin/systems/ppd/class_printerPPDDialog.inc:140
+#: admin/systems/goto/class_workstationService.inc:98
+#: admin/systems/goto/class_workstationStartup.inc:973
+#: admin/systems/goto/class_workstationStartup.inc:975
+#: admin/systems/goto/class_terminalService.inc:141
+#: admin/systems/services/class_goService.inc:237
+#: personal/environment/class_environment.inc:255
+#, fuzzy
+msgid "Configuration error"
+msgstr "配置文件"
+
+#: admin/systems/ppd/class_printerPPDDialog.inc:92
+#, php-format
+msgid "Cannot open PPD '%s'!"
+msgstr ""
+
+#: admin/systems/ppd/class_printerPPDDialog.inc:116
+#: admin/systems/goto/class_printGeneric.inc:594
+msgid "Can't get ppd informations."
+msgstr ""
+
+#: admin/systems/ppd/class_printerPPDDialog.inc:141
+#, php-format
+msgid "Cannot open PPD path '%s' for reading and writing!"
+msgstr ""
+
+#: admin/systems/ppd/class_printerPPDDialog.inc:160
+#: admin/systems/ppd/class_printerPPDDialog.inc:359
+#: addons/goto/class_goto_import_file.inc:49
+msgid "file is empty"
+msgstr ""
+
+#: admin/systems/ppd/class_printerPPDDialog.inc:307
+#, php-format
+msgid "Cannot parse PPD '%s'!"
+msgstr ""
+
+#: admin/systems/ppd/class_printerPPDDialog.inc:334
+msgid "Overwrite existing PPD"
+msgstr ""
+
+#: admin/systems/ppd/class_printerPPDDialog.inc:335
+msgid ""
+"There is already a ppd file for this kind of printer. Do you want to "
+"overwrite it?"
+msgstr ""
+
+#: admin/systems/ppd/class_printerPPDDialog.inc:483
+#, fuzzy
+msgid "Section"
+msgstr "行动"
+
+#: admin/systems/ppd/class_printerPPDDialog.inc:543
+#: admin/systems/ppd/class_printerPPDDialog.inc:546
+msgid "True"
+msgstr ""
+
+#: admin/systems/ppd/class_printerPPDDialog.inc:544
+#: admin/systems/ppd/class_printerPPDDialog.inc:547
+msgid "False"
+msgstr ""
+
+#: admin/systems/ppd/class_printerPPDDialog.inc:552
+#, php-format
+msgid "PPD type '%s' is not supported!"
+msgstr ""
+
+#: admin/systems/ppd/class_printerPPDDialog.inc:589
+msgid ""
+"Please select a valid ppd file or use 'Cancel' to go back to printer "
+"configuration."
+msgstr ""
+
+#: admin/systems/ppd/printerPPDDialog.tpl:1
+#, fuzzy
+msgid "Printer driver"
+msgstr "打印机名称"
+
+#: admin/systems/ppd/printerPPDDialog.tpl:10
+#: admin/systems/goto/workstationService.tpl:7
+#: admin/systems/goto/terminalService.tpl:7
+#, fuzzy
+msgid "Model"
+msgstr "模式"
+
+#: admin/systems/ppd/printerPPDDialog.tpl:12
+msgid "Select"
+msgstr ""
+
+#: admin/systems/ppd/printerPPDDialog.tpl:16
+#, fuzzy
+msgid "New driver"
+msgstr "新设备"
+
+#: admin/systems/ppd/printerPPDDialog.tpl:28
+#: admin/systems/goto/gotoLpdEnable.tpl:79
+#: admin/systems/goto/class_gotoLpdEnabled.inc:176
+#: admin/applications/generic.tpl:96
+#, fuzzy
+msgid "Options"
+msgstr "动作"
+
+#: admin/systems/goto/terminal.tpl:1 admin/systems/goto/workstation.tpl:1
+#, fuzzy
+msgid "Properties"
+msgstr "属性"
+
+#: admin/systems/goto/terminal.tpl:8 admin/systems/system-list.xml:87
+#, fuzzy
+msgid "Terminal template"
+msgstr "终端模板"
+
+#: admin/systems/goto/terminal.tpl:10 admin/systems/paste_generic.tpl:24
+msgid "Terminal name"
+msgstr "终端名称"
+
+#: admin/systems/goto/terminal.tpl:42 admin/systems/goto/workstation.tpl:50
+#: admin/systems/goto/class_terminalGeneric.inc:740
+#: admin/systems/server.tpl:36 admin/ogroups/goto/termgroup.tpl:47
+#: admin/ogroups/goto/class_termgroup.inc:404
+msgid "Mode"
+msgstr "模式"
+
+#: admin/systems/goto/terminal.tpl:45 admin/systems/goto/workstation.tpl:53
+#: admin/systems/server.tpl:39 admin/ogroups/goto/termgroup.tpl:50
+msgid "Select terminal mode"
+msgstr "选择终端类型"
+
+#: admin/systems/goto/terminal.tpl:52
+#: admin/systems/goto/class_workstationGeneric.inc:748
+#: admin/systems/goto/workstation.tpl:60 admin/ogroups/goto/termgroup.tpl:58
+#: admin/ogroups/goto/class_termgroup.inc:405
+#, fuzzy
+msgid "Syslog server"
+msgstr "显示服务器"
+
+#: admin/systems/goto/terminal.tpl:55 admin/systems/goto/workstation.tpl:63
+#: admin/ogroups/goto/termgroup.tpl:61
+msgid "Choose server to use for logging"
+msgstr ""
+
+#: admin/systems/goto/terminal.tpl:71 admin/systems/goto/terminal.tpl:74
+#: admin/systems/goto/workstation.tpl:82 admin/systems/goto/workstation.tpl:85
+msgid "Inherit time server attributes"
+msgstr ""
+
+#: admin/systems/goto/terminal.tpl:79 admin/systems/goto/workstation.tpl:90
+#: admin/ogroups/goto/termgroup.tpl:14
+#, fuzzy
+msgid "NTP server"
+msgstr "服务器"
+
+#: admin/systems/goto/terminal.tpl:82 admin/systems/goto/workstation.tpl:93
+#: admin/ogroups/goto/termgroup.tpl:17
+msgid "Choose server to use for synchronizing time"
+msgstr ""
+
+#: admin/systems/goto/terminal.tpl:112
+#: admin/systems/goto/class_terminalGeneric.inc:742
+#: admin/ogroups/goto/termgroup.tpl:69
+#: admin/ogroups/goto/class_termgroup.inc:408
+#, fuzzy
+msgid "Root server"
+msgstr "服务器"
+
+#: admin/systems/goto/terminal.tpl:115 admin/ogroups/goto/termgroup.tpl:72
+msgid "Select NFS root filesystem to use"
+msgstr ""
+
+#: admin/systems/goto/terminal.tpl:126
+#: admin/systems/goto/class_terminalGeneric.inc:743
+#: admin/ogroups/goto/termgroup.tpl:79
+#: admin/ogroups/goto/class_termgroup.inc:409
+#, fuzzy
+msgid "Swap server"
+msgstr "显示服务器"
+
+#: admin/systems/goto/terminal.tpl:129 admin/ogroups/goto/termgroup.tpl:82
+msgid "Choose NFS filesystem to place swap files on"
+msgstr ""
+
+#: admin/systems/goto/terminal.tpl:150 admin/systems/goto/workstation.tpl:125
+#: admin/systems/server.tpl:57 admin/ogroups/goto/termgroup.tpl:113
+msgid "Action"
+msgstr "行动"
+
+#: admin/systems/goto/terminal.tpl:155 admin/systems/goto/workstation.tpl:132
+#: admin/ogroups/goto/termgroup.tpl:118
+#, fuzzy
+msgid "Select action to execute for this terminal"
+msgstr "选择为这台服务器要执行的动作"
+
+#: admin/systems/goto/terminal.tpl:163 admin/systems/goto/workstation.tpl:141
+#: admin/systems/goto/workstation.tpl:145 admin/systems/server.tpl:74
+#: admin/ogroups/goto/termgroup.tpl:126
+#: admin/applications/class_applicationGeneric.inc:425
+#: admin/applications/class_applicationGeneric.inc:596
+#: admin/applications/generic.tpl:24 addons/goto/deploy-list.xml:191
+msgid "Execute"
+msgstr "执行"
+
+#: admin/systems/goto/terminal.tpl:172
+msgid "Inherit all"
+msgstr ""
+
+#: admin/systems/goto/class_workstationService.inc:105
+#: admin/systems/goto/workstationService.tpl:157
+#: admin/systems/goto/class_terminalService.inc:630
+msgid "unknown"
+msgstr ""
+
+#: admin/systems/goto/class_workstationService.inc:108
+#: admin/systems/goto/class_workstationService.inc:109
+#: admin/systems/goto/class_workstationService.inc:110
+#: admin/systems/goto/class_workstationService.inc:111
+#: admin/systems/goto/class_terminalService.inc:148
+#: admin/systems/goto/class_terminalService.inc:149
+#: admin/systems/goto/class_terminalService.inc:150
+#: admin/systems/goto/class_terminalService.inc:151
+msgid "bit"
+msgstr ""
+
+#: admin/systems/goto/class_workstationService.inc:170
+#: admin/systems/goto/class_terminalService.inc:231
+msgid "automatic"
+msgstr ""
+
+#: admin/systems/goto/class_workstationService.inc:217
+#: admin/systems/goto/class_workstationService.inc:220
+#: admin/systems/goto/class_workstationService.inc:223
+#: admin/systems/goto/class_workstationService.inc:226
+#: admin/systems/goto/class_workstationService.inc:229
+#: admin/systems/goto/class_workstationService.inc:232
+#: admin/systems/goto/class_workstationService.inc:235
+#: admin/systems/goto/class_workstationService.inc:238
+#: admin/systems/goto/class_workstationService.inc:249
+#: admin/systems/goto/class_workstationService.inc:250
+#: admin/systems/goto/class_workstationService.inc:251
+#: admin/systems/goto/class_workstationService.inc:252
+#: admin/systems/goto/class_workstationService.inc:253
+#: admin/systems/goto/class_workstationService.inc:254
+#: admin/systems/goto/class_workstationService.inc:255
+#: admin/systems/goto/class_workstationGeneric.inc:171
+#: admin/systems/goto/class_terminalStartup.inc:137
+#: admin/systems/goto/class_terminalStartup.inc:141
+#: admin/systems/goto/class_workstationStartup.inc:200
+#: admin/systems/goto/class_workstationStartup.inc:230
+#: admin/systems/goto/class_terminalService.inc:202
+#: admin/systems/goto/class_terminalService.inc:280
+#: admin/systems/goto/class_terminalService.inc:283
+#: admin/systems/goto/class_terminalService.inc:291
+#: admin/systems/goto/class_terminalService.inc:294
+#: admin/systems/goto/class_terminalService.inc:297
+#: admin/systems/goto/class_terminalService.inc:300
+#: admin/systems/goto/class_terminalService.inc:303
+#: admin/systems/goto/class_terminalService.inc:306
+#: admin/systems/goto/class_terminalService.inc:309
+#: admin/systems/goto/class_terminalGeneric.inc:162
+#: admin/systems/goto/class_terminalGeneric.inc:293
+#: admin/systems/goto/class_terminalGeneric.inc:305
+#: admin/ogroups/goto/class_termgroup.inc:125
+#: admin/ogroups/goto/class_termgroup.inc:137
+#, fuzzy
+msgid "inherited"
+msgstr "对象组"
+
+#: admin/systems/goto/class_workstationService.inc:223
+#: admin/systems/goto/class_terminalService.inc:294
+msgid "Bit"
+msgstr ""
+
+#: admin/systems/goto/class_workstationService.inc:338
+#: admin/systems/goto/class_terminalService.inc:441
+msgid "Choose the phone located at the current terminal"
+msgstr ""
+
+#: admin/systems/goto/class_workstationService.inc:405
+#: admin/systems/goto/class_workstationService.inc:407
+#: admin/systems/goto/class_workstationService.inc:413
+#: admin/systems/goto/class_workstationService.inc:601
+#: admin/systems/goto/workstationService.tpl:181
+#: admin/systems/goto/class_terminalService.inc:740
+#: admin/systems/goto/terminalService.tpl:158
+msgid "VSync"
+msgstr ""
+
+#: admin/systems/goto/class_workstationService.inc:424
+#: admin/systems/goto/class_workstationService.inc:426
+#: admin/systems/goto/class_workstationService.inc:432
+#: admin/systems/goto/class_workstationService.inc:600
+#: admin/systems/goto/workstationService.tpl:170
+#: admin/systems/goto/class_terminalService.inc:739
+#: admin/systems/goto/terminalService.tpl:150
+msgid "HSync"
+msgstr ""
+
+#: admin/systems/goto/class_workstationService.inc:587
+#: admin/systems/goto/class_terminalService.inc:723
+#: admin/systems/serverService-list.xml:14
+#: admin/systems/serverService-list.xml:60
+#, fuzzy
+msgid "Service"
+msgstr "服务"
+
+#: admin/systems/goto/class_workstationService.inc:588
+#, fuzzy
+msgid "Workstation service"
+msgstr "工作站"
+
+#: admin/systems/goto/class_workstationService.inc:596
+#: admin/systems/goto/class_terminalService.inc:733
+msgid "Monitor"
+msgstr ""
+
+#: admin/systems/goto/class_workstationService.inc:597
+#: admin/systems/goto/class_terminalService.inc:736
+msgid "Gfx driver"
+msgstr ""
+
+#: admin/systems/goto/class_workstationService.inc:598
+#: admin/systems/goto/class_terminalService.inc:737
+msgid "Gfx resolution"
+msgstr ""
+
+#: admin/systems/goto/class_workstationService.inc:599
+#: admin/systems/goto/class_terminalService.inc:738
+msgid "Gfx color depth"
+msgstr ""
+
+#: admin/systems/goto/class_workstationService.inc:602
+msgid "Use DDC"
+msgstr ""
+
+#: admin/systems/goto/class_workstationService.inc:603
+#: admin/systems/goto/class_terminalService.inc:742
+msgid "Scanner enabled"
+msgstr ""
+
+#: admin/systems/goto/class_workstationService.inc:604
+#: admin/systems/goto/class_terminalService.inc:744
+msgid "Keyboard model"
+msgstr ""
+
+#: admin/systems/goto/class_workstationService.inc:605
+#: admin/systems/goto/class_terminalService.inc:745
+msgid "Keyboard layout"
+msgstr ""
+
+#: admin/systems/goto/class_workstationService.inc:606
+#: admin/systems/goto/class_terminalService.inc:746
+msgid "Keyboard variant"
+msgstr ""
+
+#: admin/systems/goto/class_workstationService.inc:607
+#: admin/systems/goto/class_terminalService.inc:747
+msgid "Mouse type"
+msgstr ""
+
+#: admin/systems/goto/class_workstationService.inc:608
+#: admin/systems/goto/class_terminalService.inc:748
+msgid "Mouse port"
+msgstr ""
+
+#: admin/systems/goto/class_workstationService.inc:609
+#: admin/systems/goto/workstationService.tpl:86
+#: admin/systems/goto/class_terminalService.inc:750
+#: admin/systems/goto/terminalService.tpl:76
+#, fuzzy
+msgid "Telephone hardware"
+msgstr "重新扫描硬件"
+
+#: admin/systems/goto/workstationService.tpl:4
+#: admin/systems/goto/terminalService.tpl:4
+msgid "Keyboard"
+msgstr ""
+
+#: admin/systems/goto/workstationService.tpl:11
+#: admin/systems/goto/terminalService.tpl:10
+msgid "Choose keyboard model"
+msgstr ""
+
+#: admin/systems/goto/workstationService.tpl:19
+#: admin/systems/goto/terminalService.tpl:17
+msgid "Layout"
+msgstr ""
+
+#: admin/systems/goto/workstationService.tpl:23
+#: admin/systems/goto/terminalService.tpl:20
+msgid "Choose keyboard layout"
+msgstr ""
+
+#: admin/systems/goto/workstationService.tpl:31
+#: admin/systems/goto/terminalService.tpl:27
+msgid "Variant"
+msgstr ""
+
+#: admin/systems/goto/workstationService.tpl:35
+#: admin/systems/goto/terminalService.tpl:30
+msgid "Choose keyboard variant"
+msgstr ""
+
+#: admin/systems/goto/workstationService.tpl:51
+#: admin/systems/goto/terminalService.tpl:45
+msgid "Mouse"
+msgstr ""
+
+#: admin/systems/goto/workstationService.tpl:58
+#: admin/systems/goto/terminalService.tpl:51
+msgid "Choose mouse type"
+msgstr ""
+
+#: admin/systems/goto/workstationService.tpl:66
+#: admin/systems/goto/gotoLpdEnable.tpl:71
+#: admin/systems/goto/terminalService.tpl:58
+#: admin/systems/goto/class_gotoLpdEnabled.inc:173
+#: admin/systems/services/ldap/class_goLdapServer.inc:102
+msgid "Port"
+msgstr ""
+
+#: admin/systems/goto/workstationService.tpl:70
+#: admin/systems/goto/terminalService.tpl:61
+msgid "Choose mouse port"
+msgstr ""
+
+#: admin/systems/goto/workstationService.tpl:89
+#: admin/systems/goto/terminalService.tpl:79
+msgid "Telephone"
+msgstr ""
+
+#: admin/systems/goto/workstationService.tpl:107
+#: admin/systems/goto/info.tpl:78 admin/systems/goto/terminalService.tpl:95
+msgid "Graphic device"
+msgstr ""
+
+#: admin/systems/goto/workstationService.tpl:110
+#: admin/systems/goto/printer.tpl:80 admin/systems/goto/terminalService.tpl:98
+msgid "Driver"
+msgstr ""
+
+#: admin/systems/goto/workstationService.tpl:114
+#: admin/systems/goto/terminalService.tpl:101
+msgid "Choose graphic driver that is needed by the installed graphic board"
+msgstr ""
+
+#: admin/systems/goto/workstationService.tpl:122
+#: admin/systems/goto/terminalService.tpl:108
+#: personal/environment/environment.tpl:183
+#: personal/environment/class_environment.inc:1814
+msgid "Resolution"
+msgstr ""
+
+#: admin/systems/goto/workstationService.tpl:126
+#: admin/systems/goto/terminalService.tpl:111
+msgid "Choose screen resolution used in graphic mode"
+msgstr ""
+
+#: admin/systems/goto/workstationService.tpl:134
+#: admin/systems/goto/terminalService.tpl:118
+msgid "Color depth"
+msgstr ""
+
+#: admin/systems/goto/workstationService.tpl:138
+#: admin/systems/goto/terminalService.tpl:121
+msgid "Choose colordepth used in graphic mode"
+msgstr ""
+
+#: admin/systems/goto/workstationService.tpl:153
+#: admin/systems/goto/terminalService.tpl:135
+msgid "Display device"
+msgstr ""
+
+#: admin/systems/goto/workstationService.tpl:167
+#: admin/systems/goto/terminalService.tpl:147
+msgid "Use DDC for automatic detection"
+msgstr ""
+
+#: admin/systems/goto/workstationService.tpl:175
+#: admin/systems/goto/terminalService.tpl:154
+msgid "Horizontal refresh frequency for installed monitor"
+msgstr ""
+
+#: admin/systems/goto/workstationService.tpl:186
+#: admin/systems/goto/terminalService.tpl:162
+msgid "Vertical refresh frequency for installed monitor"
+msgstr ""
+
+#: admin/systems/goto/workstationService.tpl:201
+#: admin/systems/goto/terminalService.tpl:233
+#, fuzzy
+msgid "Scan device"
+msgstr "新设备"
+
+#: admin/systems/goto/workstationService.tpl:204
+#: admin/systems/goto/terminalService.tpl:235
+msgid "Select to start SANE scan service on terminal"
+msgstr ""
+
+#: admin/systems/goto/workstationService.tpl:207
+#: admin/systems/goto/terminalService.tpl:237
+#, fuzzy
+msgid "Provide scan services"
+msgstr "删除 DNS 服务"
+
+#: admin/systems/goto/chooser.tpl:1
+msgid "Choose the kind of system component you want to create"
+msgstr ""
+
+#: admin/systems/goto/chooser.tpl:4
+msgid ""
+"Linux terminals and workstations are autocreated on bootup. For this reason "
+"you're only be able to create templates for a specific tree. Servers are "
+"normally automatically added too, but in some special cases you may need to "
+"create a faked server entry to provide FusionDirectory with some "
+"informations. Other network components may be used for Nagios setups to "
+"create component dependencies."
+msgstr ""
+
+#: admin/systems/goto/chooser.tpl:7
+msgid "Linux thin client template"
+msgstr ""
+
+#: admin/systems/goto/chooser.tpl:8
+#, fuzzy
+msgid "Linux workstation template"
+msgstr "工作站模板"
+
+#: admin/systems/goto/chooser.tpl:9
+#, fuzzy
+msgid "Linux Server"
+msgstr "服务器"
+
+#: admin/systems/goto/chooser.tpl:10
+#: admin/systems/goto/class_ArpNewDevice.inc:61
+#: admin/systems/goto/class_SelectDeviceType.inc:60
+#, fuzzy
+msgid "Windows workstation"
+msgstr "显示工作站"
+
+#: admin/systems/goto/chooser.tpl:11 admin/systems/system-list.xml:250
+#, fuzzy
+msgid "Network printer"
+msgstr "显示网络打印机"
+
+#: admin/systems/goto/chooser.tpl:12 admin/systems/system-list.xml:135
+#: admin/systems/system-list.xml:258
+msgid "Phone"
+msgstr "电话"
+
+#: admin/systems/goto/chooser.tpl:13
+#, fuzzy
+msgid "Other network component"
+msgstr "显示网络打印机"
+
+#: admin/systems/goto/class_workstationGeneric.inc:153
+#: admin/systems/goto/class_terminalGeneric.inc:145
+#: admin/systems/class_servGeneric.inc:85
+#: admin/ogroups/goto/class_termgroup.inc:71
+msgid "Activated"
+msgstr "活动"
+
+#: admin/systems/goto/class_workstationGeneric.inc:154
+#: admin/systems/goto/class_terminalGeneric.inc:144
+#: admin/systems/class_servGeneric.inc:86
+#: admin/ogroups/goto/class_termgroup.inc:72
+msgid "Locked"
+msgstr "锁定"
+
+#: admin/systems/goto/class_workstationGeneric.inc:238
+#: admin/systems/goto/class_workstationGeneric.inc:633
+#: admin/systems/goto/class_workstationStartup.inc:819
+#: admin/systems/goto/class_workstationStartup.inc:883
+#: admin/systems/goto/class_terminalService.inc:698
+#: admin/systems/goto/class_terminalGeneric.inc:221
+#: admin/systems/goto/class_terminalGeneric.inc:635
+#: admin/systems/class_servGeneric.inc:175
+#: admin/systems/class_servGeneric.inc:438
+#: admin/systems/class_systemManagement.inc:499
+#: admin/systems/class_systemManagement.inc:529
+#: admin/ogroups/goto/class_termgroup.inc:221
+#: addons/goto/class_goto_import_file.inc:144
+#: addons/goto/class_gotomasses.inc:369
+#, fuzzy
+msgid "Service infrastructure"
+msgstr "设备名称"
+
+#: admin/systems/goto/class_workstationGeneric.inc:242
+#: admin/systems/goto/class_terminalGeneric.inc:225
+#: admin/systems/class_servGeneric.inc:179
+#: admin/ogroups/goto/class_termgroup.inc:225
+#, fuzzy
+msgid "Event error"
+msgstr "PHP 错误"
+
+#: admin/systems/goto/class_workstationGeneric.inc:243
+#: admin/systems/goto/class_terminalGeneric.inc:226
+#: admin/systems/class_servGeneric.inc:180
+#: admin/ogroups/goto/class_termgroup.inc:226
+#, fuzzy, php-format
+msgid "Event '%s' is not available!"
+msgstr "不允许修改口令"
+
+#: admin/systems/goto/class_workstationGeneric.inc:252
+#: admin/systems/goto/class_workstationStartup.inc:305
+#: admin/systems/goto/class_printGeneric.inc:612
+#, fuzzy
+msgid "workstation"
+msgstr "工作站"
+
+#: admin/systems/goto/class_workstationGeneric.inc:294
+#: admin/systems/system-list.xml:341 admin/systems/system-list.xml:407
+#: admin/systems/class_servGeneric.inc:206
+#: admin/ogroups/goto/class_termgroup.inc:279
+#: addons/goto/events/class_DaemonEvent_reinstall.inc:32
+#: addons/goto/events/class_DaemonEvent_reinstall.inc:33
+#: addons/goto/deploy-list.xml:136
+msgid "Reinstall"
+msgstr "重新安装"
+
+#: admin/systems/goto/class_workstationGeneric.inc:295
+#: admin/systems/class_servGeneric.inc:207
+#: addons/goto/events/class_DaemonEvent_update.inc:29
+#: addons/goto/events/class_DaemonEvent_update.inc:30
+#: addons/goto/deploy-list.xml:115
+#, fuzzy
+msgid "Software update"
+msgstr "系统 / 部门"
+
+#: admin/systems/goto/class_workstationGeneric.inc:296
+#: admin/systems/class_servGeneric.inc:208
+#: admin/ogroups/goto/class_termgroup.inc:281
+#: addons/goto/events/class_DaemonEvent_memcheck.inc:28
+#: addons/goto/events/class_DaemonEvent_memcheck.inc:29
+msgid "Memory test"
+msgstr "内存测试"
+
+#: admin/systems/goto/class_workstationGeneric.inc:299
+#: admin/systems/goto/class_terminalGeneric.inc:270
+#: admin/systems/class_servGeneric.inc:211
+#: admin/ogroups/goto/class_termgroup.inc:275
+#: addons/goto/events/class_DaemonEvent_halt.inc:31
+#: addons/goto/events/class_DaemonEvent_halt.inc:32
+#: addons/goto/deploy-list.xml:94
+msgid "Switch off"
+msgstr "关闭"
+
+#: admin/systems/goto/class_workstationGeneric.inc:300
+#: admin/systems/goto/class_terminalGeneric.inc:271
+#: admin/systems/system-list.xml:301 admin/systems/system-list.xml:367
+#: admin/systems/class_servGeneric.inc:212
+#: admin/ogroups/goto/class_termgroup.inc:275
+#: addons/goto/events/class_DaemonEvent_reboot.inc:29
+#: addons/goto/events/class_DaemonEvent_reboot.inc:30
+#: addons/goto/deploy-list.xml:101
+msgid "Reboot"
+msgstr "重启"
+
+#: admin/systems/goto/class_workstationGeneric.inc:301
+#: admin/systems/class_servGeneric.inc:213
+#: admin/ogroups/goto/class_termgroup.inc:280
+#: addons/goto/events/class_DaemonEvent_rescan.inc:28
+#: addons/goto/events/class_DaemonEvent_rescan.inc:29
+msgid "Rescan hardware"
+msgstr "重新扫描硬件"
+
+#: admin/systems/goto/class_workstationGeneric.inc:303
+#: admin/systems/goto/class_terminalGeneric.inc:276
+#: admin/systems/class_servGeneric.inc:215
+#: addons/goto/events/class_DaemonEvent_wakeup.inc:29
+#: addons/goto/deploy-list.xml:108
+msgid "Wake up"
+msgstr "唤醒"
+
+#: admin/systems/goto/class_workstationGeneric.inc:495
+msgid "A valid LDAP server assignement is missing!"
+msgstr ""
+
+#: admin/systems/goto/class_workstationGeneric.inc:505
+#: admin/systems/class_servGeneric.inc:354
+#, fuzzy
+msgid "Software deployment"
+msgstr "系统管理"
+
+#: admin/systems/goto/class_workstationGeneric.inc:506
+msgid "This host is currently installing. If you want to save it, press 'OK'."
+msgstr ""
+
+#: admin/systems/goto/class_workstationGeneric.inc:735
+#, fuzzy
+msgid "Workstation generic"
+msgstr "工作站名称"
+
+#: admin/systems/goto/class_workstationGeneric.inc:740
+#: admin/systems/goto/class_ArpNewDevice.inc:59
+#: admin/systems/goto/class_SelectDeviceType.inc:58
+#: admin/systems/systemSelect/selectSystem-list.xml:23
+#: admin/systems/system-list.xml:111 admin/systems/system-list.xml:234
+#: addons/goto/events/eventTargetSystems-list.xml:23
+msgid "Workstation"
+msgstr "工作站"
+
+#: admin/systems/goto/class_workstationGeneric.inc:743
+#: admin/systems/goto/workstation.tpl:10
+#, fuzzy
+msgid "Workstation name"
+msgstr "工作站名称"
+
+#: admin/systems/goto/class_workstationGeneric.inc:745
+#: admin/systems/goto/workstation.tpl:27
+#: admin/systems/goto/class_printGeneric.inc:1026
+#, fuzzy
+msgid "Location"
+msgstr "行动"
+
+#: admin/systems/goto/class_workstationGeneric.inc:747
+#: admin/systems/class_servGeneric.inc:505
+#, fuzzy
+msgid "Goto mode"
+msgstr "到目录"
+
+#: admin/systems/goto/class_workstationGeneric.inc:749
+#: admin/ogroups/goto/class_termgroup.inc:407
+#, fuzzy
+msgid "Ntp server"
+msgstr "服务器"
+
+#: admin/systems/goto/class_workstationGeneric.inc:750
+#: admin/systems/goto/class_terminalGeneric.inc:745
+#: admin/systems/class_servGeneric.inc:506
+#: admin/systems/class_componentGeneric.inc:345
+#, fuzzy
+msgid "Root password"
+msgstr "设置口令"
+
+#: admin/systems/goto/class_workstationGeneric.inc:751
+#, fuzzy
+msgid "Create FAI CD"
+msgstr "创建"
+
+#: admin/systems/goto/class_workstationGeneric.inc:752
+#: admin/systems/goto/class_terminalGeneric.inc:746
+#: admin/systems/class_servGeneric.inc:507
+#: admin/ogroups/goto/class_termgroup.inc:406
+#, fuzzy
+msgid "Action flag"
+msgstr "行动"
+
+#: admin/systems/goto/gencd_frame.tpl:2
+msgid "Your browser does not supprt iframes."
+msgstr ""
+
+#: admin/systems/goto/class_terminalInfo.inc:70
+#: admin/systems/goto/class_terminalInfo.inc:224
+msgid "present"
+msgstr ""
+
+#: admin/systems/goto/class_terminalInfo.inc:88
+#: admin/systems/goto/class_terminalStartup.inc:201
+#: admin/systems/goto/class_printGeneric.inc:610
+#: admin/systems/goto/class_terminalGeneric.inc:234
+#, fuzzy
+msgid "terminal"
+msgstr "终端"
+
+#: admin/systems/goto/class_terminalInfo.inc:102
+msgid "unknown status, SNMP support missing"
+msgstr ""
+
+#: admin/systems/goto/class_terminalInfo.inc:111
+msgid "This is a virtual terminal which has no properties to show here."
+msgstr ""
+
+#: admin/systems/goto/class_terminalInfo.inc:126
+msgid "online"
+msgstr ""
+
+#: admin/systems/goto/class_terminalInfo.inc:188
+#, fuzzy
+msgid "running"
+msgstr "警告"
+
+#: admin/systems/goto/class_terminalInfo.inc:191
+msgid "not running"
+msgstr ""
+
+#: admin/systems/goto/class_terminalInfo.inc:194
+#, fuzzy
+msgid "not defined"
+msgstr "未配置"
+
+#: admin/systems/goto/class_terminalInfo.inc:199
+msgid "unknown status"
+msgstr ""
+
+#: admin/systems/goto/class_terminalInfo.inc:216
+msgid "offline"
+msgstr ""
+
+#: admin/systems/goto/class_terminalInfo.inc:271
+#, fuzzy
+msgid "System info"
+msgstr "系统设置"
+
+#: admin/systems/goto/class_terminalInfo.inc:272
+#, fuzzy
+msgid "System informations"
+msgstr "工作站"
+
+#: admin/systems/goto/class_terminalStartup.inc:156
+#, fuzzy, php-format
+msgid ""
+"Command '%s', specified as systemKernelsHook for plugin '%s' doesn't seem to "
+"exist."
+msgstr "命令 '%s'，用于创建 ISO 好像并不存在。"
+
+#: admin/systems/goto/class_terminalStartup.inc:244
+#: admin/systems/goto/class_workstationStartup.inc:346
+#: personal/environment/class_environment.inc:696
+#: personal/environment/class_environment.inc:698
+#: personal/environment/class_environment.inc:709
+msgid "Mount point"
+msgstr ""
+
+#: admin/systems/goto/class_terminalStartup.inc:393
+#: admin/systems/goto/class_workstationStartup.inc:601
+#, fuzzy
+msgid "Fatal error"
+msgstr "终端服务器"
+
+#: admin/systems/goto/class_terminalStartup.inc:530
+#: admin/systems/goto/class_workstationStartup.inc:1006
+#, fuzzy
+msgid "Startup"
+msgstr "启动"
+
+#: admin/systems/goto/class_terminalStartup.inc:531
+#, fuzzy
+msgid "Terminal startup"
+msgstr "终端模板"
+
+#: admin/systems/goto/class_terminalStartup.inc:539
+#: admin/systems/goto/class_workstationStartup.inc:1015
+#, fuzzy
+msgid "Ldap server"
+msgstr "LDAP 服务器"
+
+#: admin/systems/goto/class_terminalStartup.inc:540
+#: admin/systems/goto/terminalStartup.tpl:91
+#: admin/systems/goto/class_workstationStartup.inc:1020
+#: admin/systems/goto/workstationStartup.tpl:203
+#: admin/systems/services/shares/goShareServer.tpl:1
+#: personal/environment/environment.tpl:212
+#: personal/environment/class_environment.inc:1810
+msgid "Shares"
+msgstr ""
+
+#: admin/systems/goto/class_terminalStartup.inc:541
+#: admin/systems/goto/class_workstationStartup.inc:1019
+msgid "Kernel modules"
+msgstr ""
+
+#: admin/systems/goto/class_terminalStartup.inc:542
+#: admin/systems/goto/terminalStartup.tpl:40
+#: admin/systems/goto/class_workstationStartup.inc:1016
+#: admin/systems/goto/workstationStartup.tpl:9
+msgid "Boot kernel"
+msgstr ""
+
+#: admin/systems/goto/class_terminalStartup.inc:543
+#: admin/systems/goto/class_workstationStartup.inc:1017
+msgid "Kernel parameter"
+msgstr ""
+
+#: admin/systems/goto/terminalStartup.tpl:1
+#: admin/systems/goto/workstationStartup.tpl:4
+msgid "Boot parameters"
+msgstr ""
+
+#: admin/systems/goto/terminalStartup.tpl:7
+#: admin/systems/goto/workstationStartup.tpl:29
+#, fuzzy
+msgid "LDAP server"
+msgstr "LDAP 错误:"
+
+#: admin/systems/goto/terminalStartup.tpl:12
+#: admin/systems/goto/workstationStartup.tpl:34
+#, fuzzy
+msgid "inherit from group"
+msgstr "对象组"
+
+#: admin/systems/goto/terminalStartup.tpl:14
+#: admin/systems/goto/workstationStartup.tpl:36
+#: admin/systems/goto/terminalService.tpl:184
+msgid "Reload"
+msgstr ""
+
+#: admin/systems/goto/terminalStartup.tpl:51
+#: admin/systems/goto/workstationStartup.tpl:20
+msgid "Custom options"
+msgstr ""
+
+#: admin/systems/goto/terminalStartup.tpl:55
+#: admin/systems/goto/workstationStartup.tpl:24
+msgid ""
+"Enter any parameters that should be passed to the kernel as append line "
+"during bootup"
+msgstr ""
+
+#: admin/systems/goto/terminalStartup.tpl:70
+#: admin/systems/goto/workstationStartup.tpl:182
+msgid "Kernel modules (format: name parameters)"
+msgstr ""
+
+#: admin/systems/goto/terminalStartup.tpl:73
+#: admin/systems/goto/workstationStartup.tpl:185
+msgid "Add additional modules to load on startup"
+msgstr ""
+
+#: admin/systems/goto/terminalStartup.tpl:109
+#: admin/systems/goto/workstationStartup.tpl:221
+msgid "Mountpoint"
+msgstr ""
+
+#: admin/systems/goto/printer.tpl:5
+#, fuzzy
+msgid "General"
+msgstr "通用配置"
+
+#: admin/systems/goto/printer.tpl:8 admin/systems/paste_generic.tpl:34
+msgid "Printer name"
+msgstr "打印机名称"
+
+#: admin/systems/goto/printer.tpl:38
+msgid "Details"
+msgstr ""
+
+#: admin/systems/goto/printer.tpl:51
+#, fuzzy
+msgid "Printer location"
+msgstr "切换信息"
+
+#: admin/systems/goto/printer.tpl:59
+#: admin/systems/goto/class_printGeneric.inc:769
+#, fuzzy
+msgid "Printer URL"
+msgstr "打印机"
+
+#: admin/systems/goto/printer.tpl:68
+msgid "PPD Provider"
+msgstr ""
+
+#: admin/systems/goto/printer.tpl:96
+#: admin/systems/goto/class_printGeneric.inc:1029
+#, fuzzy
+msgid "Permissions"
+msgstr "允许"
+
+#: admin/systems/goto/printer.tpl:103
+msgid "Users which are allowed to use this printer"
+msgstr ""
+
+#: admin/systems/goto/printer.tpl:105
+msgid "Users"
+msgstr ""
+
+#: admin/systems/goto/printer.tpl:124
+msgid "Users which are allowed to administrate this printer"
+msgstr ""
+
+#: admin/systems/goto/printer.tpl:126
+msgid "Admins"
+msgstr ""
+
+#: admin/systems/goto/gencd.tpl:2
+msgid "CD-Install-Image generation"
+msgstr ""
+
+#: admin/systems/goto/gencd.tpl:5
+msgid ""
+"This option enables you to generate FAI install CD images for the selected "
+"workstation. The procedure may take about 10 minutes to complete, so please "
+"be patient after pressing the 'Create ISO-Image' button."
+msgstr ""
+
+#: admin/systems/goto/gencd.tpl:9
+#, fuzzy
+msgid "Create ISO-Image"
+msgstr "创建"
+
+#: admin/systems/goto/class_selectUserToPrinterDialog.inc:167
+#, fuzzy
+msgid "Please select a printer or press cancel."
+msgstr "请选择一个打印机或者取消。"
+
+#: admin/systems/goto/selectUserToPrinterDialog.tpl:3
+#, fuzzy
+msgid "Select printer to add"
+msgstr "选择要添加的打印机"
+
+#: admin/systems/goto/selectUserToPrinterDialog.tpl:8
+#, fuzzy
+msgid "Select entries to add"
+msgstr "选择要添加的打印机"
+
+#: admin/systems/goto/selectUserToPrinterDialog.tpl:31
+msgid "Select to search within subtrees"
+msgstr ""
+
+#: admin/systems/goto/selectUserToPrinterDialog.tpl:31
+msgid "Search in subtrees"
+msgstr ""
+
+#: admin/systems/goto/selectUserToPrinterDialog.tpl:38
+msgid "Display members of department"
+msgstr ""
+
+#: admin/systems/goto/selectUserToPrinterDialog.tpl:41
+msgid "Choose the department the search will be based on"
+msgstr ""
+
+#: admin/systems/goto/selectUserToPrinterDialog.tpl:50
+msgid "Display members matching"
+msgstr ""
+
+#: admin/systems/goto/selectUserToPrinterDialog.tpl:55
+msgid "Regular expression for matching member names"
+msgstr ""
+
+#: admin/systems/goto/class_ArpNewDevice.inc:59
+#: admin/systems/goto/class_SelectDeviceType.inc:58
+#: admin/systems/goto/class_terminalGeneric.inc:727
+#: admin/systems/goto/class_terminalGeneric.inc:733
+#: admin/systems/systemSelect/selectSystem-list.xml:31
+#: admin/systems/system-list.xml:119 admin/systems/system-list.xml:242
+#: addons/goto/events/eventTargetSystems-list.xml:31
+msgid "Terminal"
+msgstr "终端"
+
+#: admin/systems/goto/class_ArpNewDevice.inc:59
+#: admin/systems/goto/class_SelectDeviceType.inc:58
+#: admin/systems/systemSelect/selectSystem-list.xml:15
+#: admin/systems/system-list.xml:103 admin/systems/system-list.xml:226
+#: admin/systems/class_servGeneric.inc:498
+#: admin/systems/services/nfs/servnfs.tpl:39
+#: admin/systems/services/ldap/class_goLdapServer.inc:102
+#: addons/goto/events/eventTargetSystems-list.xml:15
+#: personal/environment/environment.tpl:135
+msgid "Server"
+msgstr "服务器"
+
+#: admin/systems/goto/workstation.tpl:8 admin/systems/system-list.xml:79
+#, fuzzy
+msgid "Workstation template"
+msgstr "工作站模板"
+
+#: admin/systems/goto/workstation.tpl:155
+#, fuzzy
+msgid "Inherit all values from group"
+msgstr "对象组"
+
+#: admin/systems/goto/ArpNewDevice.tpl:1
+#, fuzzy
+msgid "Integrating unknown devices"
+msgstr "未知"
+
+#: admin/systems/goto/ArpNewDevice.tpl:3
+msgid ""
+"The current device has been detected by the ARP monitor used by "
+"FusionDirectory. You can integrate this device into your running DHCP/DNS "
+"infrastructure by submitting this form. The device entry will disappear from "
+"the list of the systems and move to the DNS/DHCP configuration."
+msgstr ""
+
+#: admin/systems/goto/ArpNewDevice.tpl:9
+#, fuzzy
+msgid "DNS name"
+msgstr "服务器名称"
+
+#: admin/systems/goto/ArpNewDevice.tpl:31
+msgid "GOto"
+msgstr ""
+
+#: admin/systems/goto/ArpNewDevice.tpl:35
+#, fuzzy
+msgid "GOto integration"
+msgstr "Windows 工作站"
+
+#: admin/systems/goto/ArpNewDevice.tpl:43
+#: admin/systems/goto/ArpNewDevice.tpl:46
+#: admin/systems/goto/SelectDeviceType.tpl:23
+#: admin/systems/goto/SelectDeviceType.tpl:24
+#, fuzzy
+msgid "System type"
+msgstr "系统 / 部门"
+
+#: admin/systems/goto/ArpNewDevice.tpl:58
+#: admin/systems/goto/SelectDeviceType.tpl:36
+msgid "Choose an object group as template"
+msgstr ""
+
+#: admin/systems/goto/ArpNewDevice.tpl:61
+#: admin/systems/goto/SelectDeviceType.tpl:37
+#: addons/goto/goto_import_file.tpl:40
+#: addons/goto/events/eventTargetSystems-list.xml:39
+msgid "Object group"
+msgstr ""
+
+#: admin/systems/goto/ArpNewDevice.tpl:62
+#: admin/systems/goto/SelectDeviceType.tpl:39
+#: addons/goto/class_gotoLogView.inc:107
+msgid "none"
+msgstr ""
+
+#: admin/systems/goto/class_workstationStartup.inc:254
+#, php-format
+msgid "FAI mirror '%s' is not available - setting to mirror 'auto'!"
+msgstr ""
+
+#: admin/systems/goto/class_workstationStartup.inc:267
+#, php-format
+msgid ""
+"FAI release '%s' is not available on mirror '%s' - setting to release '%s'!"
+msgstr ""
+
+#: admin/systems/goto/class_workstationStartup.inc:286
+msgid "Please select a 'FAI server' or remove the 'FAI profile'."
+msgstr ""
+
+#: admin/systems/goto/class_workstationStartup.inc:975
+msgid "'repositoryBranchHook' returned no result!"
+msgstr ""
+
+#: admin/systems/goto/class_workstationStartup.inc:1007
+#, fuzzy
+msgid "System startup"
+msgstr "系统 / 部门"
+
+#: admin/systems/goto/class_workstationStartup.inc:1022
+msgid "FAI classes"
+msgstr ""
+
+#: admin/systems/goto/class_workstationStartup.inc:1023
+msgid "Debian mirror"
+msgstr ""
+
+#: admin/systems/goto/class_workstationStartup.inc:1024
+msgid "Debian release"
+msgstr ""
+
+#: admin/systems/goto/class_workstationStartup.inc:1026
+msgid "FAI status flag"
+msgstr ""
+
+#: admin/systems/goto/gotoLpdEnable.tpl:12
+#: admin/systems/goto/gotoLpdEnable.tpl:48
+#, fuzzy
+msgid "Enable printer settings"
+msgstr "编辑设置..."
+
+#: admin/systems/goto/gotoLpdEnable.tpl:87
+msgid "Write only"
+msgstr ""
+
+#: admin/systems/goto/gotoLpdEnable.tpl:100
+msgid "Bit rate"
+msgstr ""
+
+#: admin/systems/goto/gotoLpdEnable.tpl:110
+msgid "Flow control"
+msgstr ""
+
+#: admin/systems/goto/gotoLpdEnable.tpl:120
+msgid "Parity"
+msgstr ""
+
+#: admin/systems/goto/gotoLpdEnable.tpl:130
+msgid "Bits"
+msgstr ""
+
+#: admin/systems/goto/workstationStartup.tpl:64
+msgid ""
+"FAI Object assignment disabled. You can't use this feature until FAI is "
+"activated."
+msgstr ""
+
+#: admin/systems/goto/workstationStartup.tpl:66
+msgid "Argonaut server not present"
+msgstr ""
+
+#: admin/systems/goto/workstationStartup.tpl:67
+msgid "FAI settings cannot be modified"
+msgstr ""
+
+#: admin/systems/goto/workstationStartup.tpl:70
+msgid "Verify if Argonaut Server is running correctly."
+msgstr ""
+
+#: admin/systems/goto/workstationStartup.tpl:71
+msgid "retry"
+msgstr ""
+
+#: admin/systems/goto/workstationStartup.tpl:79
+#: admin/systems/goto/workstationStartup.tpl:119
+#, fuzzy
+msgid "FAI server"
+msgstr "服务器"
+
+#: admin/systems/goto/workstationStartup.tpl:109
+#: admin/systems/goto/workstationStartup.tpl:158
+msgid "Assigned FAI profile"
+msgstr ""
+
+#: admin/systems/goto/workstationStartup.tpl:142
+msgid "set"
+msgstr ""
+
+#: admin/systems/goto/info.tpl:6
+#, fuzzy
+msgid "System information"
+msgstr "工作站"
+
+#: admin/systems/goto/info.tpl:12
+msgid "CPU"
+msgstr ""
+
+#: admin/systems/goto/info.tpl:15
+#, fuzzy
+msgid "Memory"
+msgstr "内存测试"
+
+#: admin/systems/goto/info.tpl:18
+msgid "Boot MAC"
+msgstr ""
+
+#: admin/systems/goto/info.tpl:21
+msgid "USB support"
+msgstr ""
+
+#: admin/systems/goto/info.tpl:24 admin/systems/goto/info.tpl:92
+#, fuzzy
+msgid "System status"
+msgstr "系统设置"
+
+#: admin/systems/goto/info.tpl:28
+msgid "Inventory number"
+msgstr ""
+
+#: admin/systems/goto/info.tpl:32
+msgid "Last login"
+msgstr ""
+
+#: admin/systems/goto/info.tpl:43
+#, fuzzy
+msgid "Network devices"
+msgstr "网络设备"
+
+#: admin/systems/goto/info.tpl:52
+#, fuzzy
+msgid "IDE devices"
+msgstr "新设备"
+
+#: admin/systems/goto/info.tpl:61
+#, fuzzy
+msgid "SCSI devices"
+msgstr "新设备"
+
+#: admin/systems/goto/info.tpl:69
+#, fuzzy
+msgid "Floppy device"
+msgstr "打印服务"
+
+#: admin/systems/goto/info.tpl:73
+#, fuzzy
+msgid "CDROM device"
+msgstr "新设备"
+
+#: admin/systems/goto/info.tpl:82
+#, fuzzy
+msgid "Audio device"
+msgstr "打印服务"
+
+#: admin/systems/goto/info.tpl:98
+msgid "Up since"
+msgstr ""
+
+#: admin/systems/goto/info.tpl:101
+msgid "CPU load"
+msgstr ""
+
+#: admin/systems/goto/info.tpl:104
+#, fuzzy
+msgid "Memory usage"
+msgstr "内存测试"
+
+#: admin/systems/goto/info.tpl:107
+msgid "Swap usage"
+msgstr ""
+
+#: admin/systems/goto/info.tpl:121
+#, fuzzy
+msgid "SSH service"
+msgstr "服务"
+
+#: admin/systems/goto/info.tpl:124
+#: admin/systems/services/cups/class_goCupsServer.inc:47
+#: admin/systems/services/cups/class_goCupsServer.inc:68
+#: admin/systems/services/cups/class_goCupsServer.inc:89
+#, fuzzy
+msgid "Print service"
+msgstr "打印服务"
+
+#: admin/systems/goto/info.tpl:127
+#, fuzzy
+msgid "Scan service"
+msgstr "服务"
+
+#: admin/systems/goto/info.tpl:130
+#, fuzzy
+msgid "Sound service"
+msgstr "打印服务"
+
+#: admin/systems/goto/info.tpl:133
+msgid "GUI"
+msgstr ""
+
+#: admin/systems/goto/class_printGeneric.inc:134
+#: admin/systems/goto/class_printGeneric.inc:1062
+#: admin/systems/class_systemManagement.inc:867
+#, fuzzy
+msgid "Internal error"
+msgstr "终端服务器"
+
+#: admin/systems/goto/class_printGeneric.inc:134
+#, php-format
+msgid ""
+"Cannot determine a valid department for this object. Setting base to '%s'!"
+msgstr ""
+
+#: admin/systems/goto/class_printGeneric.inc:317
+#: admin/systems/goto/class_printGeneric.inc:325
+#: admin/systems/goto/class_printGeneric.inc:330
+#: admin/systems/goto/class_printGeneric.inc:380
+#: admin/systems/goto/class_printGeneric.inc:396
+#: admin/systems/goto/class_printGeneric.inc:399
+msgid "Add printer extension"
+msgstr ""
+
+#: admin/systems/goto/class_printGeneric.inc:318
+msgid ""
+"Could not initialize printer tab, parameter parent was missing while "
+"construction."
+msgstr ""
+
+#: admin/systems/goto/class_printGeneric.inc:326
+msgid "This is a workstation template, printer tab is disabled."
+msgstr ""
+
+#: admin/systems/goto/class_printGeneric.inc:331
+msgid "This is a terminal template, printer tab is disabled."
+msgstr ""
+
+#: admin/systems/goto/class_printGeneric.inc:373
+#: admin/systems/goto/class_printGeneric.inc:381
+#: admin/systems/goto/class_printGeneric.inc:389
+#: admin/systems/goto/class_printGeneric.inc:392
+#: admin/systems/goto/class_printGeneric.inc:397
+#: admin/systems/goto/class_printGeneric.inc:400
+#, fuzzy
+msgid "printer"
+msgstr "打印机"
+
+#: admin/systems/goto/class_printGeneric.inc:381
+msgid ""
+"You can't enable it while 'cn' is not present in entry. Possibly you are "
+"currently creating a new terminal template."
+msgstr ""
+
+#: admin/systems/goto/class_printGeneric.inc:388
+#: admin/systems/goto/class_printGeneric.inc:391
+msgid "Remove printer extension"
+msgstr ""
+
+#: admin/systems/goto/class_printGeneric.inc:584
+#, php-format
+msgid "Your currently selected PPD file '%s' doesn't exist."
+msgstr ""
+
+#: admin/systems/goto/class_printGeneric.inc:590
+msgid "Not defined"
+msgstr ""
+
+#: admin/systems/goto/class_printGeneric.inc:610
+#: admin/systems/goto/class_printGeneric.inc:612
+#, php-format
+msgid "This printer belongs to %s. You can't rename this printer."
+msgstr ""
+
+#: admin/systems/goto/class_printGeneric.inc:659
+#: admin/systems/goto/class_printGeneric.inc:666
+#, fuzzy
+msgid "Object is no printer!"
+msgstr "显示网络打印机"
+
+#: admin/systems/goto/class_printGeneric.inc:997
+#: admin/systems/goto/class_printGeneric.inc:999
+#: addons/goto/events/eventTargetUser-list.xml:23
+msgid "Group"
+msgstr ""
+
+#: admin/systems/goto/class_printGeneric.inc:1002
+#: addons/goto/events/eventTargetUser-list.xml:15
+msgid "User"
+msgstr ""
+
+#: admin/systems/goto/class_printGeneric.inc:1015
+#, fuzzy
+msgid "Print generic"
+msgstr "打印机"
+
+#: admin/systems/goto/class_printGeneric.inc:1020
+#: admin/systems/goto/terminalService.tpl:245
+#: admin/systems/system-list.xml:127 personal/environment/environment.tpl:338
+#: personal/environment/environment.tpl:374
+#: personal/environment/printerSelect/selectPrinter-list.xml:14
+msgid "Printer"
+msgstr "打印机"
+
+#: admin/systems/goto/class_printGeneric.inc:1027
+msgid "LabeledURL"
+msgstr ""
+
+#: admin/systems/goto/class_printGeneric.inc:1028
+#, fuzzy
+msgid "Printer PPD"
+msgstr "打印机"
+
+#: admin/systems/goto/class_printGeneric.inc:1045
+#: admin/systems/goto/class_printGeneric.inc:1067
+#: admin/systems/class_systemManagement.inc:173
+#: admin/systems/class_systemManagement.inc:269
+#: personal/environment/class_environment.inc:604
+#, fuzzy
+msgid "Permission error"
+msgstr "允许"
+
+#: admin/systems/goto/class_printGeneric.inc:1045
+#: admin/systems/goto/class_printGeneric.inc:1067
+#, fuzzy
+msgid "printer user"
+msgstr "打印机名称"
+
+#: admin/systems/goto/class_printGeneric.inc:1062
+#, php-format
+msgid "Illegal member type '%s'!"
+msgstr ""
+
+#: admin/systems/goto/class_printGeneric.inc:1102
+#, php-format
+msgid "'%s' is already used!"
+msgstr ""
+
+#: admin/systems/goto/class_printGeneric.inc:1113
+#, php-format
+msgid "'%s' does not exist!"
+msgstr ""
+
+#: admin/systems/goto/class_terminalService.inc:204
+msgid "XDMCP"
+msgstr ""
+
+#: admin/systems/goto/class_terminalService.inc:205
+msgid "LDM"
+msgstr ""
+
+#: admin/systems/goto/class_terminalService.inc:206
+msgid "Shell"
+msgstr ""
+
+#: admin/systems/goto/class_terminalService.inc:207
+msgid "Telnet"
+msgstr ""
+
+#: admin/systems/goto/class_terminalService.inc:208
+msgid "Windows RDP"
+msgstr ""
+
+#: admin/systems/goto/class_terminalService.inc:341
+msgid "This 'dn' has no terminal features."
+msgstr ""
+
+#: admin/systems/goto/class_terminalService.inc:399
+msgid "Unsupported"
+msgstr ""
+
+#: admin/systems/goto/class_terminalService.inc:522
+#: admin/systems/goto/class_terminalService.inc:527
+msgid "VSync range"
+msgstr ""
+
+#: admin/systems/goto/class_terminalService.inc:535
+#: admin/systems/goto/class_terminalService.inc:540
+msgid "HSync range"
+msgstr ""
+
+#: admin/systems/goto/class_terminalService.inc:566
+msgid ""
+"Remote desktop settings contains servers that do not support the selected "
+"connection method."
+msgstr ""
+
+#: admin/systems/goto/class_terminalService.inc:724
+#: admin/systems/services/terminal/class_goTerminalServer.inc:46
+#: admin/systems/services/terminal/class_goTerminalServer.inc:96
+#: admin/systems/services/terminal/class_goTerminalServer.inc:184
+#: admin/systems/services/terminal/class_goTerminalServer.inc:185
+#: admin/systems/services/terminal/goTerminalServer.tpl:4
+#, fuzzy
+msgid "Terminal service"
+msgstr "终端名称"
+
+#: admin/systems/goto/class_terminalService.inc:734
+msgid "Method"
+msgstr ""
+
+#: admin/systems/goto/class_terminalService.inc:735
+#: admin/systems/goto/terminalService.tpl:173
+msgid "Remote desktop"
+msgstr ""
+
+#: admin/systems/goto/class_terminalService.inc:741
+msgid "Auto-Sync"
+msgstr ""
+
+#: admin/systems/goto/class_terminalService.inc:743
+#: admin/systems/goto/class_terminalService.inc:749
+#, fuzzy
+msgid "Printer enabled"
+msgstr "打印机名称"
+
+#: admin/systems/goto/terminalService.tpl:177
+msgid "Connect method"
+msgstr ""
+
+#: admin/systems/goto/terminalService.tpl:180
+msgid "Choose method to connect to terminal server"
+msgstr ""
+
+#: admin/systems/goto/terminalService.tpl:191
+#, fuzzy
+msgid "Terminal server"
+msgstr "终端名称"
+
+#: admin/systems/goto/terminalService.tpl:202
+#, fuzzy
+msgid "Select specific terminal server to use"
+msgstr "选择终端类型"
+
+#: admin/systems/goto/terminalService.tpl:208
+#, fuzzy
+msgid "Add selected server"
+msgstr "LDAP 服务器"
+
+#: admin/systems/goto/terminalService.tpl:212
+#, fuzzy
+msgid "Remove selected server"
+msgstr "删除 DNS 服务"
+
+#: admin/systems/goto/class_terminalGeneric.inc:287
+#: admin/ogroups/goto/class_termgroup.inc:119
+msgid "Local swap"
+msgstr ""
+
+#: admin/systems/goto/class_terminalGeneric.inc:728
+#, fuzzy
+msgid "Terminal generic"
+msgstr "终端名称"
+
+#: admin/systems/goto/class_terminalGeneric.inc:741
+#, fuzzy
+msgid "Syslog server enabled"
+msgstr "服务器名称"
+
+#: admin/systems/goto/class_terminalGeneric.inc:744
+#, fuzzy
+msgid "Ntp server settings"
+msgstr "Samba 设置"
+
+#: admin/systems/goto/SelectDeviceType.tpl:3
+msgid ""
+"This system has no system type configured. Please choose a system type for "
+"this object and an optional inheritance group. Press the 'continue' button "
+"to proceed."
+msgstr ""
+
+#: admin/systems/goto/SelectDeviceType.tpl:10
+msgid ""
+"Please select a system type and an optional bundle of predefined settings to "
+"be inherited."
+msgstr ""
+
+#: admin/systems/goto/SelectDeviceType.tpl:12
+msgid ""
+"Please select a system type and a bundle of predefined settings to be "
+"inherited."
+msgstr ""
+
+#: admin/systems/goto/SelectDeviceType.tpl:51
+#: admin/systems/services/ServiceAddDialog.tpl:28
+msgid "Continue"
+msgstr "继续"
+
+#: admin/systems/goto/class_gotoLpdEnabled.inc:69
+msgid "USB"
+msgstr ""
+
+#: admin/systems/goto/class_gotoLpdEnabled.inc:70
+msgid "Parallel port"
+msgstr ""
+
+#: admin/systems/goto/class_gotoLpdEnabled.inc:73
+msgid "Software"
+msgstr ""
+
+#: admin/systems/goto/class_gotoLpdEnabled.inc:74
+#, fuzzy
+msgid "Hardware"
+msgstr "重新扫描硬件"
+
+#: admin/systems/goto/class_gotoLpdEnabled.inc:76
+msgid "Even"
+msgstr ""
+
+#: admin/systems/goto/class_gotoLpdEnabled.inc:77
+#, fuzzy
+msgid "Odd"
+msgstr "添加"
+
+#: admin/systems/goto/class_gotoLpdEnabled.inc:80
+#: admin/systems/goto/class_gotoLpdEnabled.inc:81
+#: admin/systems/goto/class_gotoLpdEnabled.inc:82
+#: admin/systems/goto/class_gotoLpdEnabled.inc:83
+#: admin/systems/goto/class_gotoLpdEnabled.inc:84
+#: admin/systems/goto/class_gotoLpdEnabled.inc:85
+#: admin/systems/goto/class_gotoLpdEnabled.inc:86
+#: admin/systems/goto/class_gotoLpdEnabled.inc:87
+msgid "bit/s"
+msgstr ""
+
 #: admin/systems/network.tpl:1
-msgid "Network\tsettings"
+#, fuzzy
+msgid "Network  settings"
 msgstr "网络\t设置"
 
-#: admin/systems/network.tpl:9
+#: admin/systems/network.tpl:9 addons/goto/goto_import_file.tpl:5
 msgid "IP-address"
 msgstr "IP 地址"
 
@@ -34,7 +2569,7 @@ msgstr "IP 地址"
 msgid "Propose ip"
 msgstr "属性"
 
-#: admin/systems/network.tpl:38
+#: admin/systems/network.tpl:38 addons/goto/goto_import_file.tpl:5
 msgid "MAC-address"
 msgstr "MAC 地址"
 
@@ -47,7 +2582,7 @@ msgstr "自动检测"
 msgid "Enable DHCP for this device"
 msgstr "启用该设备 DNS"
 
-#: admin/systems/network.tpl:72 admin/systems/network.tpl:167
+#: admin/systems/network.tpl:72 admin/systems/network.tpl:168
 #, fuzzy
 msgid "not configured"
 msgstr "未配置"
@@ -62,85 +2597,46 @@ msgstr "Parent 服务器"
 msgid "Edit settings"
 msgstr "编辑设置..."
 
-#: admin/systems/network.tpl:129 admin/systems/network.tpl:167
+#: admin/systems/network.tpl:126 admin/systems/network.tpl:168
 msgid "Enable DNS for this device"
 msgstr "启用该设备 DNS"
 
-#: admin/systems/network.tpl:138
+#: admin/systems/network.tpl:139
 msgid "Zone"
 msgstr "Zone"
 
-#: admin/systems/network.tpl:148
+#: admin/systems/network.tpl:149
 msgid "TTL"
 msgstr "TTL"
 
-#: admin/systems/network.tpl:156
+#: admin/systems/network.tpl:157
 msgid "Dns records"
 msgstr "Dns 记录"
 
-#: admin/systems/systemSelect/selectSystem-filter.tpl:3
-#: admin/systems/serverService-filter.tpl:3 admin/systems/system-filter.tpl:3
-#, fuzzy
-msgid "Filter"
-msgstr "过滤器"
-
 #: admin/systems/systemSelect/selectSystem-filter.tpl:11
-#: admin/systems/system-filter.tpl:11
+#: admin/systems/system-filter.tpl:16
+#: addons/goto/events/eventTargetSystems-filter.tpl:11
 msgid "Show servers"
 msgstr "显示服务器"
 
 #: admin/systems/systemSelect/selectSystem-filter.tpl:12
-#: admin/systems/system-filter.tpl:14
+#: admin/systems/system-filter.tpl:19
+#: addons/goto/events/eventTargetSystems-filter.tpl:12
 msgid "Show workstations"
 msgstr "显示工作站"
 
 #: admin/systems/systemSelect/selectSystem-filter.tpl:13
-#: admin/systems/system-filter.tpl:17
+#: admin/systems/system-filter.tpl:22
+#: addons/goto/events/eventTargetSystems-filter.tpl:13
 msgid "Show terminals"
 msgstr "显示终端"
 
-#: admin/systems/systemSelect/selectSystem-filter.tpl:22
-#: admin/systems/systemSelect/selectSystem-list.xml:57
-#: admin/systems/system-list.xml:169 admin/systems/class_servGeneric.inc:500
-#: admin/systems/class_componentGeneric.inc:301
-#: admin/systems/system-filter.tpl:46
-msgid "Name"
-msgstr "名称"
-
-#: admin/systems/systemSelect/selectSystem-list.tpl:13
-#: admin/systems/system-list.tpl:13 admin/systems/class_servGeneric.inc:502
-#: admin/systems/class_componentGeneric.inc:302 admin/systems/component.tpl:17
-#: admin/systems/server.tpl:22
-msgid "Base"
-msgstr "位置"
-
 #: admin/systems/systemSelect/selectSystem-list.xml:11
+#: personal/environment/hotplugSelect/selectHotplug-list.xml:10
+#: personal/environment/printerSelect/selectPrinter-list.xml:10
 #, fuzzy
 msgid "Please select the desired entries"
 msgstr "请选择一个打印机或者取消。"
-
-#: admin/systems/systemSelect/selectSystem-list.xml:15
-#: admin/systems/system-list.xml:103 admin/systems/system-list.xml:210
-#: admin/systems/class_servGeneric.inc:497
-msgid "Server"
-msgstr "服务器"
-
-#: admin/systems/systemSelect/selectSystem-list.xml:23
-#: admin/systems/system-list.xml:111 admin/systems/system-list.xml:218
-msgid "Workstation"
-msgstr "工作站"
-
-#: admin/systems/systemSelect/selectSystem-list.xml:31
-#: admin/systems/system-list.xml:119 admin/systems/system-list.xml:226
-msgid "Terminal"
-msgstr "终端"
-
-#: admin/systems/systemSelect/selectSystem-list.xml:65
-#: admin/systems/system-list.xml:177 admin/systems/class_servGeneric.inc:501
-#: admin/systems/class_componentGeneric.inc:303 admin/systems/component.tpl:29
-#: admin/systems/serverService-list.xml:35 admin/systems/server.tpl:14
-msgid "Description"
-msgstr "描述"
 
 #: admin/systems/system-list.xml:10
 msgid "List of systems"
@@ -184,134 +2680,98 @@ msgstr "未知"
 msgid "New device"
 msgstr "新设备"
 
-#: admin/systems/system-list.xml:79
-#, fuzzy
-msgid "Workstation template"
-msgstr "工作站模板"
-
-#: admin/systems/system-list.xml:87
-#, fuzzy
-msgid "Terminal template"
-msgstr "终端模板"
-
 #: admin/systems/system-list.xml:95
 msgid "Winstation"
 msgstr "Windows 工作站"
-
-#: admin/systems/system-list.xml:127
-msgid "Printer"
-msgstr "打印机"
-
-#: admin/systems/system-list.xml:135 admin/systems/system-list.xml:242
-msgid "Phone"
-msgstr "电话"
 
 #: admin/systems/system-list.xml:143
 #, fuzzy
 msgid "Component"
 msgstr "新组件"
 
-#: admin/systems/system-list.xml:185
+#: admin/systems/system-list.xml:177 addons/goto/goto_import_file.tpl:43
+#: addons/goto/events/eventTargetSystems-list.xml:81
+msgid "IP"
+msgstr ""
+
+#: admin/systems/system-list.xml:193
+#: admin/systems/services/ntp/class_goNtpServer.inc:155
+#: admin/systems/services/cups/class_goCupsServer.inc:89
+#: admin/systems/services/ldap/class_goLdapServer.inc:149
+#: admin/systems/services/kiosk/class_goKioskService.inc:290
+#: admin/systems/services/terminal/class_goTerminalServer.inc:185
+#: admin/systems/services/shares/class_goShareServer.inc:434
 #, fuzzy
-msgid "Release"
-msgstr "删除"
+msgid "Services"
+msgstr "服务"
 
-#: admin/systems/system-list.xml:193 admin/systems/serverService-list.xml:43
-msgid "Actions"
-msgstr "动作"
-
-#: admin/systems/system-list.xml:204 admin/systems/serverService-list.xml:54
-msgid "Create"
-msgstr "创建"
-
-#: admin/systems/system-list.xml:234
-#, fuzzy
-msgid "Network printer"
-msgstr "显示网络打印机"
-
-#: admin/systems/system-list.xml:250
-#: admin/systems/class_componentGeneric.inc:298
+#: admin/systems/system-list.xml:266
+#: admin/systems/class_componentGeneric.inc:339
 #, fuzzy
 msgid "Network device"
 msgstr "网络设备"
 
-#: admin/systems/system-list.xml:258
+#: admin/systems/system-list.xml:274
 #, fuzzy
 msgid "Opsi client"
 msgstr "瘦客户机"
 
-#: admin/systems/system-list.xml:270
+#: admin/systems/system-list.xml:286
 #, fuzzy
 msgid "Trigger action"
 msgstr "切换信息"
 
-#: admin/systems/system-list.xml:277
+#: admin/systems/system-list.xml:293
 msgid "Halt "
-msgstr ""
-
-#: admin/systems/system-list.xml:285 admin/systems/system-list.xml:351
-#: admin/systems/class_servGeneric.inc:206
-msgid "Reboot"
-msgstr "重启"
-
-#: admin/systems/system-list.xml:293 admin/systems/system-list.xml:359
-#, fuzzy
-msgid "Wakeup"
-msgstr "唤醒"
-
-#: admin/systems/system-list.xml:301 admin/systems/system-list.xml:367
-msgid "Update"
 msgstr ""
 
 #: admin/systems/system-list.xml:309 admin/systems/system-list.xml:375
 #, fuzzy
+msgid "Wakeup"
+msgstr "唤醒"
+
+#: admin/systems/system-list.xml:325 admin/systems/system-list.xml:391
+#: addons/goto/events/class_DaemonEvent_lock.inc:29
+#: addons/goto/events/class_DaemonEvent_lock.inc:30
+#: addons/goto/deploy-list.xml:122
+#, fuzzy
 msgid "Lock"
 msgstr "锁定"
 
-#: admin/systems/system-list.xml:317 admin/systems/system-list.xml:383
+#: admin/systems/system-list.xml:333 admin/systems/system-list.xml:399
 #, fuzzy
 msgid "Activate"
 msgstr "活动"
 
-#: admin/systems/system-list.xml:325 admin/systems/system-list.xml:391
-#: admin/systems/class_servGeneric.inc:208
-#: admin/systems/class_servGeneric.inc:215
-msgid "Reinstall"
-msgstr "重新安装"
-
-#: admin/systems/system-list.xml:336
+#: admin/systems/system-list.xml:352
 #, fuzzy
 msgid "Schedule action"
 msgstr "计划更新"
 
-#: admin/systems/system-list.xml:343
+#: admin/systems/system-list.xml:359
 msgid "Halt"
 msgstr ""
 
-#: admin/systems/system-list.xml:405
+#: admin/systems/system-list.xml:421
 #, fuzzy
 msgid "Activate systems"
 msgstr "编辑系统"
 
-#: admin/systems/system-list.xml:412 admin/systems/serverService-list.xml:72
-msgid "Remove"
-msgstr "删除"
-
-#: admin/systems/system-list.xml:440
+#: admin/systems/system-list.xml:456
 msgid "Change password"
 msgstr "修改口令"
 
-#: admin/systems/system-list.xml:451
+#: admin/systems/system-list.xml:467
 #, fuzzy
 msgid "Create ISO"
 msgstr "创建"
 
-#: admin/systems/system-list.xml:463
+#: admin/systems/system-list.xml:479
 #, fuzzy
 msgid "Edit role"
 msgstr "编辑宏"
 
-#: admin/systems/system-list.xml:476
+#: admin/systems/system-list.xml:492
 #, fuzzy
 msgid "Remove system"
 msgstr "删除图片"
@@ -350,222 +2810,118 @@ msgstr "口令存储"
 msgid "Set password"
 msgstr "设置口令"
 
-#: admin/systems/class_termDNS.inc:345 admin/systems/class_servGeneric.inc:296
-#: admin/systems/class_componentGeneric.inc:166
-#: admin/systems/class_systemManagement.inc:258
-#: admin/systems/class_systemManagement.inc:679
-#: admin/systems/class_systemManagement.inc:685
-#: admin/systems/class_systemManagement.inc:804
-#: admin/systems/class_systemManagement.inc:819
-#: admin/systems/class_filterSYSTEMS.inc:151
-#: admin/systems/class_serverService.inc:196
-#: admin/systems/class_serverService.inc:238
-#: admin/systems/class_serverService.inc:450
-msgid "Error"
-msgstr "错误"
+#: admin/systems/class_termDNS.inc:297
+msgid "NOT IMPLEMENTED"
+msgstr ""
 
-#: admin/systems/class_termDNS.inc:450
+#: admin/systems/class_termDNS.inc:434
 msgid "Not matching"
 msgstr "不匹配"
 
-#: admin/systems/class_termDNS.inc:488 admin/systems/class_termDNS.inc:794
-#: admin/systems/class_termDNS.inc:813 admin/systems/class_termDNS.inc:834
-#: admin/systems/class_termDNS.inc:839 admin/systems/class_termDNS.inc:857
-#: admin/systems/class_termDNS.inc:933 admin/systems/class_servGeneric.inc:262
-#: admin/systems/class_servGeneric.inc:421
-#: admin/systems/class_componentGeneric.inc:134
-#: admin/systems/class_componentGeneric.inc:284
-#: admin/systems/class_systemManagement.inc:311
-#: admin/systems/class_systemManagement.inc:1055
-#: admin/systems/services/class_goService.inc:122
-#: admin/systems/services/class_goService.inc:150
-#: admin/systems/services/class_goService.inc:183
-#, fuzzy
-msgid "LDAP error"
-msgstr "LDAP 错误:"
+#: admin/systems/class_termDNS.inc:588
+#, php-format
+msgid "Was not able to contact argonaut server: %s"
+msgstr ""
 
-#: admin/systems/class_termDNS.inc:602
+#: admin/systems/class_termDNS.inc:595
+#, php-format
+msgid "Was not able to launch ldap2zone: %s"
+msgstr ""
+
+#: admin/systems/class_termDNS.inc:619
 #, fuzzy, php-format
 msgid "IP address %s"
 msgstr "IP 地址"
 
-#: admin/systems/class_termDNS.inc:611 admin/systems/class_termDNS.inc:623
-#: admin/systems/class_termDNS.inc:625 admin/systems/class_termDNS.inc:1004
+#: admin/systems/class_termDNS.inc:628 admin/systems/class_termDNS.inc:640
+#: admin/systems/class_termDNS.inc:642 admin/systems/class_termDNS.inc:1021
 #: admin/systems/class_componentGeneric.inc:197
 #: admin/systems/class_componentGeneric.inc:200
 #, fuzzy
 msgid "IP address"
 msgstr "IP 地址"
 
-#: admin/systems/class_termDNS.inc:616 admin/systems/class_termDNS.inc:633
-#: admin/systems/class_termDNS.inc:635 admin/systems/class_termDNS.inc:1005
+#: admin/systems/class_termDNS.inc:633 admin/systems/class_termDNS.inc:650
+#: admin/systems/class_termDNS.inc:652 admin/systems/class_termDNS.inc:1022
 msgid "MAC address"
 msgstr "MAC 地址"
 
-#: admin/systems/class_termDNS.inc:650
+#: admin/systems/class_termDNS.inc:667
 #, fuzzy, php-format
 msgid "The IP address '%s' is not part of the selected reverse zone '%s'!"
 msgstr "提供的 IP 地址 '%s' 和所选的反向解析域条目 '%s' 不匹配。"
 
-#: admin/systems/class_termDNS.inc:662
+#: admin/systems/class_termDNS.inc:679
 #, php-format
 msgid "Record type '%s' is duplicated!"
 msgstr ""
 
-#: admin/systems/class_termDNS.inc:670
+#: admin/systems/class_termDNS.inc:687
 #, php-format
 msgid "Uniq record type '%s' is duplicated!"
 msgstr ""
 
-#: admin/systems/class_termDNS.inc:682
+#: admin/systems/class_termDNS.inc:699
 #, fuzzy, php-format
 msgid ""
 "The IP address '%s' will be added as 'A Record', this will be done "
 "automatically, please remove the record."
 msgstr "设备 IP '%s' 将自动作为'A'记录添加，请删除这条记录。"
 
-#: admin/systems/class_termDNS.inc:690
+#: admin/systems/class_termDNS.inc:707
 #, fuzzy, php-format
 msgid "Only lowercase records are allowed, please check your '%ss'."
 msgstr "只允许小写字母，请检查您的 '%ss'。"
 
-#: admin/systems/class_termDNS.inc:958
+#: admin/systems/class_termDNS.inc:975
 msgid "Delete"
 msgstr "删除"
 
-#: admin/systems/class_termDNS.inc:964
+#: admin/systems/class_termDNS.inc:981
+#: addons/goto/events/class_DaemonEvent.inc:263
 msgid "Add"
 msgstr "添加"
 
-#: admin/systems/class_termDNS.inc:995
+#: admin/systems/class_termDNS.inc:1012
 msgid "DNS"
 msgstr ""
 
-#: admin/systems/class_termDNS.inc:996
+#: admin/systems/class_termDNS.inc:1013
 #, fuzzy
 msgid "DNS settings"
 msgstr "Samba 设置"
 
-#: admin/systems/class_termDNS.inc:1011
+#: admin/systems/class_termDNS.inc:1028
 #, fuzzy
 msgid "DNS configuration"
 msgstr "PHP 安装检查"
 
-#: admin/systems/class_termDNS.inc:1014
+#: admin/systems/class_termDNS.inc:1031
 #, fuzzy
 msgid "DHCP configuration"
 msgstr "PHP 安装检查"
 
-#: admin/systems/class_servGeneric.inc:83
-msgid "Activated"
-msgstr "活动"
-
-#: admin/systems/class_servGeneric.inc:84
-msgid "Locked"
-msgstr "锁定"
-
-#: admin/systems/class_servGeneric.inc:159
+#: admin/systems/class_servGeneric.inc:155
 #, fuzzy
 msgid "server"
 msgstr "服务器"
 
-#: admin/systems/class_servGeneric.inc:176
-#: admin/systems/class_servGeneric.inc:441
-#: admin/systems/class_systemManagement.inc:503
-#: admin/systems/class_systemManagement.inc:533
-#, fuzzy
-msgid "Service infrastructure"
-msgstr "设备名称"
-
-#: admin/systems/class_servGeneric.inc:180
-#, fuzzy
-msgid "Event error"
-msgstr "PHP 错误"
-
-#: admin/systems/class_servGeneric.inc:181
-#, fuzzy, php-format
-msgid "Event '%s' is not available!"
-msgstr "不允许修改口令"
-
-#: admin/systems/class_servGeneric.inc:206
-msgid "Switch off"
-msgstr "关闭"
-
-#: admin/systems/class_servGeneric.inc:207
-#: admin/systems/class_servGeneric.inc:216
-#, fuzzy
-msgid "System update"
-msgstr "系统 / 部门"
-
-#: admin/systems/class_servGeneric.inc:209
-msgid "Rescan hardware"
-msgstr "重新扫描硬件"
-
-#: admin/systems/class_servGeneric.inc:210
-#: admin/systems/class_servGeneric.inc:217
-msgid "Memory test"
-msgstr "内存测试"
-
-#: admin/systems/class_servGeneric.inc:211
-#: admin/systems/class_servGeneric.inc:218
-msgid "Force localboot"
-msgstr "强制本地启动"
-
-#: admin/systems/class_servGeneric.inc:212
-#: admin/systems/class_servGeneric.inc:219
-msgid "System analysis"
-msgstr "系统分析"
-
-#: admin/systems/class_servGeneric.inc:214
-msgid "Wake up"
-msgstr "唤醒"
-
-#: admin/systems/class_servGeneric.inc:322
-#: admin/systems/class_servGeneric.inc:327
-#: admin/systems/class_servGeneric.inc:343 admin/systems/paste_generic.tpl:4
+#: admin/systems/class_servGeneric.inc:319
+#: admin/systems/class_servGeneric.inc:324
+#: admin/systems/class_servGeneric.inc:340 admin/systems/paste_generic.tpl:4
 #: admin/systems/server.tpl:6
 msgid "Server name"
 msgstr "服务器名称"
 
-#: admin/systems/class_servGeneric.inc:357
-#, fuzzy
-msgid "Software deployment"
-msgstr "系统管理"
-
-#: admin/systems/class_servGeneric.inc:358
+#: admin/systems/class_servGeneric.inc:355
 msgid ""
 "This host is currently installing, if you really want to save it, press 'OK'."
 msgstr ""
 
-#: admin/systems/class_servGeneric.inc:491
-#: admin/systems/class_componentGeneric.inc:292
-msgid "Generic"
-msgstr "通用配置"
-
-#: admin/systems/class_servGeneric.inc:492
+#: admin/systems/class_servGeneric.inc:493
 #, fuzzy
 msgid "Server generic"
 msgstr "服务器名称"
-
-#: admin/systems/class_servGeneric.inc:504
-#, fuzzy
-msgid "Goto mode"
-msgstr "到目录"
-
-#: admin/systems/class_servGeneric.inc:505
-#: admin/systems/class_componentGeneric.inc:304
-#, fuzzy
-msgid "Root password"
-msgstr "设置口令"
-
-#: admin/systems/class_servGeneric.inc:506
-#, fuzzy
-msgid "Action flag"
-msgstr "行动"
-
-#: admin/systems/remove.tpl:2
-msgid "Warning"
-msgstr "警告"
 
 #: admin/systems/remove.tpl:6
 #, fuzzy
@@ -577,22 +2933,10 @@ msgstr ""
 "这包含该用户所有账号数据，系统访问规则，imap 设置等等。请再次检查您是否要这么"
 "做，因为 FusionDirectory 没有办法将您的数据找回。"
 
-#: admin/systems/remove.tpl:10
-msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr "所以，如果您确定，请按“删除”继续，否则按“取消”退出。"
-
 #: admin/systems/paste_generic.tpl:14
 #, fuzzy
 msgid "workstation name"
 msgstr "工作站名称"
-
-#: admin/systems/paste_generic.tpl:24
-msgid "Terminal name"
-msgstr "终端名称"
-
-#: admin/systems/paste_generic.tpl:34
-msgid "Printer name"
-msgstr "打印机名称"
 
 #: admin/systems/paste_generic.tpl:44
 #: admin/systems/class_componentGeneric.inc:187
@@ -607,52 +2951,38 @@ msgstr "常用名"
 msgid "component"
 msgstr "新组件"
 
-#: admin/systems/class_componentGeneric.inc:293
+#: admin/systems/class_componentGeneric.inc:334
 #, fuzzy
 msgid "Component generic"
 msgstr "新组件"
 
-#: admin/systems/component.tpl:6
-msgid "Device name"
-msgstr "设备名称"
-
-#: admin/systems/system-filter.tpl:20
+#: admin/systems/system-filter.tpl:25
 #, fuzzy
 msgid "Show network printer"
 msgstr "显示网络打印机"
 
-#: admin/systems/system-filter.tpl:23
+#: admin/systems/system-filter.tpl:28
 msgid "Show phones"
 msgstr "显示电话"
 
-#: admin/systems/system-filter.tpl:26
+#: admin/systems/system-filter.tpl:31
 #, fuzzy
 msgid "Show windows based workstations"
 msgstr "显示 Windows 工作站"
 
-#: admin/systems/system-filter.tpl:29
+#: admin/systems/system-filter.tpl:34
 msgid "Show network devices"
 msgstr "显示网络设备"
 
-#: admin/systems/system-filter.tpl:32
+#: admin/systems/system-filter.tpl:37
 #, fuzzy
 msgid "Show incoming devices"
 msgstr "显示网络设备"
-
-#: admin/systems/system-filter.tpl:35
-msgid "Show OPSI based clients"
-msgstr ""
 
 #: admin/systems/serverService-list.xml:10
 #, fuzzy
 msgid "List of services"
 msgstr "用户列表"
-
-#: admin/systems/serverService-list.xml:14
-#: admin/systems/serverService-list.xml:60
-#, fuzzy
-msgid "Service"
-msgstr "服务"
 
 #: admin/systems/serverService-list.xml:27
 msgid "!"
@@ -660,6 +2990,7 @@ msgstr ""
 
 #: admin/systems/serverService-list.xml:83
 #: admin/systems/serverService-list.xml:117
+#: admin/systems/services/cups/class_goCupsServer.inc:97
 #: admin/systems/class_serverService.inc:28
 #, fuzzy
 msgid "Start"
@@ -667,12 +2998,14 @@ msgstr "启动"
 
 #: admin/systems/serverService-list.xml:90
 #: admin/systems/serverService-list.xml:125
+#: admin/systems/services/cups/class_goCupsServer.inc:98
 #: admin/systems/class_serverService.inc:27
 msgid "Stop"
 msgstr "停止"
 
 #: admin/systems/serverService-list.xml:97
 #: admin/systems/serverService-list.xml:133
+#: admin/systems/services/cups/class_goCupsServer.inc:99
 #: admin/systems/class_serverService.inc:29
 #, fuzzy
 msgid "Restart"
@@ -688,18 +3021,6 @@ msgstr "打印服务"
 msgid "Remove service"
 msgstr "删除 DNS 服务"
 
-#: admin/systems/server.tpl:36
-msgid "Mode"
-msgstr "模式"
-
-#: admin/systems/server.tpl:39
-msgid "Select terminal mode"
-msgstr "选择终端类型"
-
-#: admin/systems/server.tpl:57
-msgid "Action"
-msgstr "行动"
-
 #: admin/systems/server.tpl:63
 msgid ""
 "System installation in progress, the FAI state cannot be changed right now."
@@ -709,101 +3030,264 @@ msgstr ""
 msgid "Select action to execute for this server"
 msgstr "选择为这台服务器要执行的动作"
 
-#: admin/systems/server.tpl:74
-msgid "Execute"
-msgstr "执行"
-
 #: admin/systems/class_systemManagement.inc:59
-#: admin/systems/class_systemManagement.inc:60
 msgid "Systems"
 msgstr "系统设置"
 
-#: admin/systems/class_systemManagement.inc:171
-#: admin/systems/class_systemManagement.inc:267
+#: admin/systems/class_systemManagement.inc:60
 #, fuzzy
-msgid "Permission error"
-msgstr "允许"
+msgid "Systems Management"
+msgstr "系统分析"
 
-#: admin/systems/class_systemManagement.inc:171
-#: admin/systems/class_systemManagement.inc:267
+#: admin/systems/class_systemManagement.inc:173
+#: admin/systems/class_systemManagement.inc:269
 #, fuzzy
 msgid "You have no permission to change this password!"
 msgstr "现在您无权修改您的口令"
 
-#: admin/systems/class_systemManagement.inc:259
+#: admin/systems/class_systemManagement.inc:261
 #, fuzzy
 msgid ""
 "The passwords you've entered as 'New password' and 'Repeated password' do "
 "not   match!"
 msgstr "输入的新口令和重复口令不匹配！"
 
-#: admin/systems/class_systemManagement.inc:305
+#: admin/systems/class_systemManagement.inc:307
 #, fuzzy
 msgid "Password method"
 msgstr "口令存储"
 
-#: admin/systems/class_systemManagement.inc:305
+#: admin/systems/class_systemManagement.inc:307
 msgid "Password method crypt is missing. Cannot set system password."
 msgstr ""
 
-#: admin/systems/class_systemManagement.inc:360
-msgid "Back"
-msgstr "返回"
-
-#: admin/systems/class_systemManagement.inc:406
+#: admin/systems/class_systemManagement.inc:408
 msgid "Creating the image failed. Please see the report below."
 msgstr "创建图片错误。请检查下面的报告。"
 
-#: admin/systems/class_systemManagement.inc:411
+#: admin/systems/class_systemManagement.inc:413
 #, php-format
 msgid "Command '%s', specified for ISO creation doesn't seem to exist."
 msgstr "命令 '%s'，用于创建 ISO 好像并不存在。"
 
-#: admin/systems/class_systemManagement.inc:580
-#: admin/systems/class_systemManagement.inc:656
-#: admin/systems/class_systemManagement.inc:1100
-#: admin/systems/class_systemManagement.inc:1147
-#: admin/systems/class_systemManagement.inc:1168
+#: admin/systems/class_systemManagement.inc:576
+#: admin/systems/class_systemManagement.inc:652
+#: admin/systems/class_systemManagement.inc:1096
+#: admin/systems/class_systemManagement.inc:1143
+#: admin/systems/class_systemManagement.inc:1164
+#: addons/goto/class_gotomasses.inc:222
 #, fuzzy
 msgid "Permission"
 msgstr "允许"
 
-#: admin/systems/class_systemManagement.inc:871
-#, fuzzy
-msgid "Internal error"
-msgstr "终端服务器"
-
-#: admin/systems/class_systemManagement.inc:871
+#: admin/systems/class_systemManagement.inc:867
 #, fuzzy
 msgid "Cannot set mode to 'active'!"
 msgstr "转到根部门"
 
-#: admin/systems/class_systemManagement.inc:1100
+#: admin/systems/class_systemManagement.inc:1096
 #, fuzzy, php-format
 msgid "You are not allowed to create a snapshot for %s."
 msgstr "您无权删除这个用户！"
 
-#: admin/systems/class_systemManagement.inc:1147
-#: admin/systems/class_systemManagement.inc:1168
+#: admin/systems/class_systemManagement.inc:1143
+#: admin/systems/class_systemManagement.inc:1164
 #, fuzzy, php-format
 msgid "You are not allowed to restore a snapshot for %s."
 msgstr "您无权删除这个用户！"
 
-#: admin/systems/class_systemManagement.inc:1376
+#: admin/systems/class_systemManagement.inc:1372
 #, fuzzy, php-format
 msgid "Inherited from %s"
 msgstr "对象组"
 
-#: admin/systems/class_systemManagement.inc:1392
-#: admin/systems/class_systemManagement.inc:1393
+#: admin/systems/class_systemManagement.inc:1443
+#: admin/systems/class_systemManagement.inc:1444
 #, fuzzy
 msgid "Incoming objects"
 msgstr "成员对象"
 
-#: admin/systems/class_systemManagement.inc:1398
+#: admin/systems/class_systemManagement.inc:1449
 #, fuzzy
 msgid "Incoming"
 msgstr "图标"
+
+#: admin/systems/services/nfs/servnfs.tpl:1
+#, fuzzy
+msgid "Edit share"
+msgstr "编辑宏"
+
+#: admin/systems/services/nfs/servnfs.tpl:2
+msgid "NFS setup"
+msgstr ""
+
+#: admin/systems/services/nfs/servnfs.tpl:29
+#: admin/systems/services/nfs/class_servNfs.inc:199
+#: admin/systems/services/shares/class_goShareServer.inc:447
+msgid "Path"
+msgstr ""
+
+#: admin/systems/services/nfs/servnfs.tpl:29
+#: admin/systems/services/nfs/class_servNfs.inc:231
+#: admin/systems/services/shares/class_goShareServer.inc:449
+msgid "Volume"
+msgstr ""
+
+#: admin/systems/services/nfs/servnfs.tpl:69
+msgid "Auto-mount share on Apple systems"
+msgstr ""
+
+#: admin/systems/services/nfs/servnfs.tpl:109
+msgid "Codepage"
+msgstr ""
+
+#: admin/systems/services/nfs/servnfs.tpl:121
+#: admin/systems/services/nfs/class_servNfs.inc:235
+#: admin/systems/services/shares/class_goShareServer.inc:448
+#, fuzzy
+msgid "Option"
+msgstr "行动"
+
+#: admin/systems/services/nfs/class_servNfs.inc:204
+msgid "'Path / Volume' must be of format 'server:port'!"
+msgstr ""
+
+#: admin/systems/services/nfs/class_servNfs.inc:208
+msgid "'Path / Volume' must contain at least one '/'!"
+msgstr ""
+
+#: admin/systems/services/ntp/goNtpServer.tpl:2
+#, fuzzy
+msgid "Time server"
+msgstr "服务器"
+
+#: admin/systems/services/ntp/class_goNtpServer.inc:48
+#: admin/systems/services/ntp/class_goNtpServer.inc:94
+#, fuzzy
+msgid "Time service (NTP)"
+msgstr "删除 DNS 服务"
+
+#: admin/systems/services/ntp/class_goNtpServer.inc:154
+#, fuzzy
+msgid "Time service"
+msgstr "删除 DNS 服务"
+
+#: admin/systems/services/ntp/class_goNtpServer.inc:155
+#, fuzzy
+msgid "Time service - NTP"
+msgstr "删除 DNS 服务"
+
+#: admin/systems/services/ntp/class_goNtpServer.inc:163
+msgid "Ntp source"
+msgstr ""
+
+#: admin/systems/services/cups/class_goCupsServer.inc:88
+msgid "Cups"
+msgstr ""
+
+#: admin/systems/services/cups/goCupsServer.tpl:1
+#, fuzzy
+msgid "Print Service"
+msgstr "打印服务"
+
+#: admin/systems/services/cups/goCupsServer.tpl:1
+msgid "enabled"
+msgstr ""
+
+#: admin/systems/services/ldap/class_goLdapServer.inc:50
+#: admin/systems/services/ldap/class_goLdapServer.inc:88
+#: admin/systems/services/ldap/goLdapServer.tpl:1
+#, fuzzy
+msgid "LDAP service"
+msgstr "打印服务"
+
+#: admin/systems/services/ldap/class_goLdapServer.inc:55
+msgid "fill-in-your-servers-dns-name"
+msgstr ""
+
+#: admin/systems/services/ldap/class_goLdapServer.inc:99
+#: admin/systems/services/ldap/class_goLdapServer.inc:102
+#: admin/systems/services/ldap/goLdapServer.tpl:2
+msgid "LDAP URI"
+msgstr ""
+
+#: admin/systems/services/ldap/class_goLdapServer.inc:148
+#: admin/systems/services/ldap/class_goLdapServer.inc:149
+msgid "Ldap"
+msgstr ""
+
+#: admin/systems/services/ldap/class_goLdapServer.inc:157
+msgid "Ldap base"
+msgstr ""
+
+#: admin/systems/services/kiosk/class_goKioskService.inc:54
+#: admin/systems/services/kiosk/class_goKioskService.inc:89
+#: admin/systems/services/kiosk/class_goKioskService.inc:226
+#, fuzzy
+msgid "Kiosk profile service"
+msgstr "用户列表"
+
+#: admin/systems/services/kiosk/class_goKioskService.inc:174
+#: personal/environment/environment.tpl:124
+#: personal/environment/environment.tpl:160
+#: personal/environment/class_environment.inc:1812
+msgid "Kiosk profile"
+msgstr ""
+
+#: admin/systems/services/kiosk/class_goKioskService.inc:289
+msgid "Kiosk"
+msgstr ""
+
+#: admin/systems/services/kiosk/class_goKioskService.inc:290
+#: admin/systems/services/kiosk/goKioskService.tpl:1
+msgid "Kiosk profile management"
+msgstr ""
+
+#: admin/systems/services/kiosk/goKioskService.tpl:16
+#, fuzzy
+msgid "Server path"
+msgstr "服务器名称"
+
+#: admin/systems/services/kiosk/goKioskService.tpl:23
+#: addons/goto/goto_import_file.tpl:24
+msgid "Browse"
+msgstr ""
+
+#: admin/systems/services/terminal/class_goTerminalServer.inc:193
+#: admin/systems/services/terminal/goTerminalServer.tpl:8
+msgid "Temporary disable login"
+msgstr ""
+
+#: admin/systems/services/terminal/goTerminalServer.tpl:13
+msgid "Supported session types"
+msgstr ""
+
+#: admin/systems/services/shares/class_goShareServer.inc:51
+#: admin/systems/services/shares/class_goShareServer.inc:177
+#: admin/systems/services/shares/class_goShareServer.inc:433
+msgid "File service (Shares)"
+msgstr ""
+
+#: admin/systems/services/shares/class_goShareServer.inc:257
+#, php-format
+msgid "Cannot remove share - it is still in use by these objects: %s"
+msgstr ""
+
+#: admin/systems/services/shares/class_goShareServer.inc:277
+msgid "share"
+msgstr ""
+
+#: admin/systems/services/shares/class_goShareServer.inc:434
+msgid "File service - Shares"
+msgstr ""
+
+#: admin/systems/services/shares/class_goShareServer.inc:443
+msgid "Apple mounts"
+msgstr ""
+
+#: admin/systems/services/shares/class_goShareServer.inc:446
+msgid "Charset"
+msgstr ""
 
 #: admin/systems/services/ServiceAddDialog.tpl:3
 msgid "Adding a new service to the current server"
@@ -825,20 +3309,11 @@ msgstr "选择要添加的打印机"
 msgid "All available services are already in use."
 msgstr "这个设备名已经被使用。"
 
-#: admin/systems/services/ServiceAddDialog.tpl:28
-msgid "Continue"
-msgstr "继续"
-
 #: admin/systems/services/class_goService.inc:44
 #: admin/systems/services/class_goService.inc:79
 #, fuzzy
 msgid "Empty service"
 msgstr "打印服务"
-
-#: admin/systems/services/class_goService.inc:237
-#, fuzzy
-msgid "Configuration error"
-msgstr "配置文件"
 
 #: admin/systems/class_serverService.inc:297
 #, fuzzy
@@ -849,17 +3324,1065 @@ msgstr "终端服务器"
 msgid "The filter is incomplete!"
 msgstr ""
 
-#: admin/systems/class_serverService.inc:438
+#: admin/systems/class_serverService.inc:436
 #, fuzzy
 msgid "Information"
 msgstr "工作站"
 
-#: admin/systems/class_serverService.inc:438
+#: admin/systems/class_serverService.inc:436
 msgid "Cannot update service status until it has been saved!"
 msgstr ""
 
-#: admin/systems/class_serverService.inc:450
+#: admin/systems/class_serverService.inc:452
 #, fuzzy
 msgid "Cannot update service status!"
 msgstr "无法打开指定证书！"
 
+#: admin/systems/class_serverService.inc:489
+#: admin/systems/class_serverService.inc:494
+#, fuzzy
+msgid "Could not get services status"
+msgstr "无法打开指定证书！"
+
+#: admin/ogroups/goto/termgroup.tpl:2
+msgid ""
+"Actions you choose here influence all systems in this object group. "
+"Additionally, all values editable here can be inherited by the clients "
+"assigned to this object group."
+msgstr ""
+
+#: admin/ogroups/goto/termgroup.tpl:106
+msgid "Inherit all values to group members"
+msgstr ""
+
+#: admin/ogroups/goto/class_termgroup.inc:276
+#, fuzzy
+msgid "Instant update"
+msgstr "系统 / 部门"
+
+#: admin/ogroups/goto/class_termgroup.inc:277
+#, fuzzy
+msgid "Scheduled update"
+msgstr "计划更新"
+
+#: admin/ogroups/goto/class_termgroup.inc:278
+#, fuzzy
+msgid "Wake"
+msgstr "唤醒"
+
+#: admin/ogroups/goto/class_termgroup.inc:282
+#: addons/goto/events/class_DaemonEvent_sysinfo.inc:28
+#: addons/goto/events/class_DaemonEvent_sysinfo.inc:29
+msgid "System analysis"
+msgstr "系统分析"
+
+#: admin/ogroups/goto/class_termgroup.inc:396
+#, fuzzy
+msgid "System"
+msgstr "系统设置"
+
+#: admin/ogroups/goto/class_termgroup.inc:397
+#, fuzzy
+msgid "System group"
+msgstr "系统 / 部门"
+
+#: admin/applications/class_applicationGeneric.inc:116
+msgid "no example"
+msgstr ""
+
+#: admin/applications/class_applicationGeneric.inc:255
+#, php-format
+msgid "Cannot remove application - it is still in use by these objects: %s"
+msgstr ""
+
+#: admin/applications/class_applicationGeneric.inc:361
+#, fuzzy
+msgid "no read permission"
+msgstr "允许"
+
+#: admin/applications/class_applicationGeneric.inc:366
+msgid "cannot resize image"
+msgstr ""
+
+#: admin/applications/class_applicationGeneric.inc:371
+msgid "cannot convert image"
+msgstr ""
+
+#: admin/applications/class_applicationGeneric.inc:375
+#, fuzzy, php-format
+msgid "cannot save image to '%s'"
+msgstr "转到根部门"
+
+#: admin/applications/class_applicationGeneric.inc:548
+#: admin/applications/generic.tpl:7 admin/applications/generic.tpl:10
+#, fuzzy
+msgid "Application name"
+msgstr "工作站名称"
+
+#: admin/applications/class_applicationGeneric.inc:553
+#: admin/applications/generic.tpl:19
+msgid "Application name to be displayed (i.e. below icons)"
+msgstr ""
+
+#: admin/applications/class_applicationGeneric.inc:585
+#, fuzzy
+msgid "Application generic"
+msgstr "新组件"
+
+#: admin/applications/class_applicationGeneric.inc:599
+msgid "Script content"
+msgstr ""
+
+#: admin/applications/class_applicationGeneric.inc:601
+#: admin/applications/generic.tpl:103
+msgid "Only executable for members"
+msgstr ""
+
+#: admin/applications/class_applicationGeneric.inc:602
+#: admin/applications/generic.tpl:114
+msgid "Place icon on members desktop"
+msgstr ""
+
+#: admin/applications/class_applicationGeneric.inc:603
+#: admin/applications/generic.tpl:124
+msgid "Place entry in members launch bar"
+msgstr ""
+
+#: admin/applications/class_applicationGeneric.inc:604
+#: admin/applications/generic.tpl:119
+msgid "Place entry in members startmenu"
+msgstr ""
+
+#: admin/applications/class_applicationGeneric.inc:605
+#: admin/applications/generic.tpl:108
+msgid "Replace user configuration on startup"
+msgstr ""
+
+#: admin/applications/application-list-release.xml:11
+#: admin/applications/application-list.xml:11
+#, fuzzy
+msgid "List of applications"
+msgstr "用户列表"
+
+#: admin/applications/application-list-release.xml:118
+#: admin/applications/application-list.xml:118
+msgid "Edit application"
+msgstr ""
+
+#: admin/applications/application-list-release.xml:131
+#: admin/applications/application-list.xml:131
+msgid "Remove application"
+msgstr ""
+
+#: admin/applications/class_applicationParameters.inc:71
+#, fuzzy
+msgid "Remove options"
+msgstr "删除"
+
+#: admin/applications/class_applicationParameters.inc:71
+#: admin/applications/class_applicationParameters.inc:73
+msgid "parameter"
+msgstr ""
+
+#: admin/applications/class_applicationParameters.inc:73
+#, fuzzy
+msgid "Create options"
+msgstr "创建"
+
+#: admin/applications/class_applicationParameters.inc:117
+msgid "Variable"
+msgstr ""
+
+#: admin/applications/class_applicationParameters.inc:117
+msgid "Default value"
+msgstr ""
+
+#: admin/applications/class_applicationParameters.inc:149
+#, fuzzy
+msgid "Add option"
+msgstr "行动"
+
+#: admin/applications/class_applicationParameters.inc:268
+msgid "Parameter"
+msgstr ""
+
+#: admin/applications/class_applicationParameters.inc:269
+#, fuzzy
+msgid "Parameter configuration"
+msgstr "PHP 安装检查"
+
+#: admin/applications/class_applicationParameters.inc:277
+msgid "Application parameter settings"
+msgstr ""
+
+#: admin/applications/generic.tpl:15
+#, fuzzy
+msgid "Display name"
+msgstr "设备名称"
+
+#: admin/applications/generic.tpl:28
+msgid "Path and/or binary name of application"
+msgstr ""
+
+#: admin/applications/generic.tpl:82
+msgid "Reload picture from LDAP"
+msgstr ""
+
+#: admin/applications/generic.tpl:85
+#, fuzzy
+msgid "Remove picture"
+msgstr "删除 DNS 服务"
+
+#: admin/applications/generic.tpl:85
+msgid "Remove picture from LDAP"
+msgstr ""
+
+#: admin/applications/generic.tpl:134
+#: personal/environment/logonManagement.tpl:55
+msgid "Script"
+msgstr ""
+
+#: admin/applications/generic.tpl:139
+#: addons/goto/class_goto_import_file.inc:49
+#: addons/goto/class_goto_import_file.inc:109
+#: addons/goto/class_goto_import_file.inc:151
+#: addons/goto/goto_import_file.tpl:84 addons/goto/deploy-list.xml:148
+#: personal/environment/logonManagement.tpl:65
+msgid "Import"
+msgstr ""
+
+#: admin/applications/generic.tpl:144
+msgid "Download"
+msgstr ""
+
+#: admin/applications/class_applicationManagement.inc:26
+msgid "Application management"
+msgstr ""
+
+#: addons/goto/class_goto_import_file.inc:110
+msgid ""
+"Selected entries will be skipped because of errors. Do you want to proceed?"
+msgstr ""
+
+#: addons/goto/class_goto_import_file.inc:151
+#, php-format
+msgid "Import complete: %s events successfully send, %s failed"
+msgstr ""
+
+#: addons/goto/class_goto_import_file.inc:188
+#: addons/goto/goto_import_file.tpl:38
+msgid "MAC"
+msgstr ""
+
+#: addons/goto/class_goto_import_file.inc:191
+#: addons/goto/goto_import_file.tpl:39 addons/goto/deploy-list.xml:14
+#, fuzzy
+msgid "Event"
+msgstr "PHP 错误"
+
+#: addons/goto/goto_import_file.tpl:1
+msgid "Import jobs"
+msgstr ""
+
+#: addons/goto/goto_import_file.tpl:3
+msgid ""
+"You can import a list of jobs into the FusionDirectory job queue. This "
+"should be a semicolon seperated list of items in the following format:"
+msgstr ""
+
+#: addons/goto/goto_import_file.tpl:5
+msgid "timestamp"
+msgstr ""
+
+#: addons/goto/goto_import_file.tpl:5
+msgid "job type"
+msgstr ""
+
+#: addons/goto/goto_import_file.tpl:5
+msgid "object group"
+msgstr ""
+
+#: addons/goto/goto_import_file.tpl:5
+msgid "import base"
+msgstr ""
+
+#: addons/goto/goto_import_file.tpl:5
+msgid "full hostname"
+msgstr ""
+
+#: addons/goto/goto_import_file.tpl:5
+msgid "DHCP group"
+msgstr ""
+
+#: addons/goto/goto_import_file.tpl:9
+msgid "Example"
+msgstr ""
+
+#: addons/goto/goto_import_file.tpl:21
+msgid "Select list to import"
+msgstr ""
+
+#: addons/goto/goto_import_file.tpl:37
+#: addons/goto/events/DaemonEvent_reload_ldap_config.tpl:51
+#: addons/goto/events/DaemonEvent_update.tpl:51
+#: addons/goto/events/DaemonEvent_rescan.tpl:51
+#: addons/goto/events/DaemonEvent_lock.tpl:51
+#: addons/goto/events/DaemonEvent_faireboot.tpl:51
+#: addons/goto/events/DaemonEvent_notify.tpl:85
+#: addons/goto/events/DaemonEvent_installation_activation.tpl:51
+#: addons/goto/events/DaemonEvent_activate.tpl:51
+#: addons/goto/events/DaemonEvent_reinstall.tpl:55
+#: addons/goto/events/DaemonEvent_localboot.tpl:51
+#: addons/goto/events/DaemonEvent_sysinfo.tpl:51
+#: addons/goto/events/DaemonEvent_wakeup.tpl:51
+#: addons/goto/events/DaemonEvent_goto_reload.tpl:51
+#: addons/goto/events/DaemonEvent_reboot.tpl:51
+#: addons/goto/events/DaemonEvent_memcheck.tpl:51
+#: addons/goto/events/DaemonEvent_halt.tpl:51
+msgid "Timestamp"
+msgstr ""
+
+#: addons/goto/goto_import_file.tpl:42
+msgid "FQDN"
+msgstr ""
+
+#: addons/goto/goto_import_file.tpl:44
+msgid "DHCP"
+msgstr ""
+
+#: addons/goto/class_gotoLogView.inc:133
+msgid "File"
+msgstr ""
+
+#: addons/goto/class_gotoLogView.inc:135
+msgid "Date"
+msgstr ""
+
+#: addons/goto/class_gotoLogView.inc:222
+msgid "Log view"
+msgstr ""
+
+#: addons/goto/class_gotoLogView.inc:223
+msgid "GOto log view"
+msgstr ""
+
+#: addons/goto/log_view.tpl:7
+msgid "Available logs"
+msgstr ""
+
+#: addons/goto/log_view.tpl:12
+msgid "Selected log"
+msgstr ""
+
+#: addons/goto/log_view.tpl:17
+#, fuzzy
+msgid "No logs for this host available!"
+msgstr "不允许修改口令"
+
+#: addons/goto/events/class_DaemonEvent_goto_reload.inc:37
+msgid "GOto reload"
+msgstr ""
+
+#: addons/goto/events/class_DaemonEvent_goto_reload.inc:38
+#, fuzzy
+msgid "Reload GOto settings"
+msgstr "编辑设置..."
+
+#: addons/goto/events/class_DaemonEvent_activate.inc:29
+#: addons/goto/events/class_DaemonEvent_activate.inc:30
+#: addons/goto/deploy-list.xml:129
+msgid "Unlock"
+msgstr ""
+
+#: addons/goto/events/class_DaemonEvent_reload_ldap_config.inc:28
+#: addons/goto/events/class_DaemonEvent_reload_ldap_config.inc:29
+msgid "Reload LDAP config"
+msgstr ""
+
+#: addons/goto/events/target_list.tpl:5
+msgid "Apply"
+msgstr ""
+
+#: addons/goto/events/target_list.tpl:6
+msgid "Cancel"
+msgstr ""
+
+#: addons/goto/events/DaemonEvent_reload_ldap_config.tpl:9
+#: addons/goto/events/DaemonEvent_update.tpl:9
+#: addons/goto/events/DaemonEvent_rescan.tpl:9
+#: addons/goto/events/DaemonEvent_lock.tpl:9
+#: addons/goto/events/DaemonEvent_faireboot.tpl:9
+#: addons/goto/events/DaemonEvent_notify.tpl:28
+#: addons/goto/events/DaemonEvent_installation_activation.tpl:9
+#: addons/goto/events/DaemonEvent_reinstall.tpl:9
+#: addons/goto/events/DaemonEvent_localboot.tpl:9
+#: addons/goto/events/DaemonEvent_sysinfo.tpl:9
+#: addons/goto/events/DaemonEvent_wakeup.tpl:9
+#: addons/goto/events/DaemonEvent_goto_reload.tpl:9
+#: addons/goto/events/DaemonEvent_reboot.tpl:9
+#: addons/goto/events/DaemonEvent_memcheck.tpl:9
+#: addons/goto/events/DaemonEvent_halt.tpl:9 addons/goto/deploy-list.xml:61
+#, fuzzy
+msgid "Schedule"
+msgstr "计划更新"
+
+#: addons/goto/events/DaemonEvent_reload_ldap_config.tpl:18
+#: addons/goto/events/DaemonEvent_update.tpl:18
+#: addons/goto/events/DaemonEvent_rescan.tpl:18
+#: addons/goto/events/DaemonEvent_lock.tpl:18
+#: addons/goto/events/DaemonEvent_faireboot.tpl:18
+#: addons/goto/events/DaemonEvent_installation_activation.tpl:18
+#: addons/goto/events/DaemonEvent_activate.tpl:18
+#: addons/goto/events/DaemonEvent_reinstall.tpl:18
+#: addons/goto/events/DaemonEvent_localboot.tpl:18
+#: addons/goto/events/DaemonEvent_sysinfo.tpl:18
+#: addons/goto/events/DaemonEvent_wakeup.tpl:18
+#: addons/goto/events/DaemonEvent_goto_reload.tpl:18
+#: addons/goto/events/DaemonEvent_reboot.tpl:18
+#: addons/goto/events/DaemonEvent_memcheck.tpl:18
+#: addons/goto/events/DaemonEvent_halt.tpl:18
+#, fuzzy
+msgid "System list"
+msgstr "系统设置"
+
+#: addons/goto/events/DaemonEvent_reload_ldap_config.tpl:35
+#: addons/goto/events/DaemonEvent_update.tpl:35
+#: addons/goto/events/DaemonEvent_rescan.tpl:35
+#: addons/goto/events/DaemonEvent_lock.tpl:35
+#: addons/goto/events/DaemonEvent_faireboot.tpl:35
+#: addons/goto/events/DaemonEvent_notify.tpl:69
+#: addons/goto/events/DaemonEvent_installation_activation.tpl:35
+#: addons/goto/events/DaemonEvent_activate.tpl:35
+#: addons/goto/events/DaemonEvent_reinstall.tpl:35
+#: addons/goto/events/DaemonEvent_localboot.tpl:35
+#: addons/goto/events/DaemonEvent_sysinfo.tpl:35
+#: addons/goto/events/DaemonEvent_wakeup.tpl:35
+#: addons/goto/events/DaemonEvent_goto_reload.tpl:35
+#: addons/goto/events/DaemonEvent_reboot.tpl:35
+#: addons/goto/events/DaemonEvent_memcheck.tpl:35
+#: addons/goto/events/DaemonEvent_halt.tpl:35
+msgid "ID"
+msgstr ""
+
+#: addons/goto/events/DaemonEvent_reload_ldap_config.tpl:39
+#: addons/goto/events/DaemonEvent_update.tpl:39
+#: addons/goto/events/DaemonEvent_rescan.tpl:39
+#: addons/goto/events/DaemonEvent_lock.tpl:39
+#: addons/goto/events/DaemonEvent_faireboot.tpl:39
+#: addons/goto/events/DaemonEvent_notify.tpl:73
+#: addons/goto/events/DaemonEvent_installation_activation.tpl:39
+#: addons/goto/events/DaemonEvent_activate.tpl:39
+#: addons/goto/events/DaemonEvent_reinstall.tpl:43
+#: addons/goto/events/DaemonEvent_localboot.tpl:39
+#: addons/goto/events/DaemonEvent_sysinfo.tpl:39
+#: addons/goto/events/DaemonEvent_wakeup.tpl:39
+#: addons/goto/events/DaemonEvent_goto_reload.tpl:39
+#: addons/goto/events/DaemonEvent_reboot.tpl:39
+#: addons/goto/events/DaemonEvent_memcheck.tpl:39
+#: addons/goto/events/DaemonEvent_halt.tpl:39 addons/goto/deploy-list.xml:69
+msgid "Status"
+msgstr ""
+
+#: addons/goto/events/DaemonEvent_reload_ldap_config.tpl:43
+#: addons/goto/events/DaemonEvent_update.tpl:43
+#: addons/goto/events/DaemonEvent_rescan.tpl:43
+#: addons/goto/events/DaemonEvent_lock.tpl:43
+#: addons/goto/events/DaemonEvent_faireboot.tpl:43
+#: addons/goto/events/DaemonEvent_notify.tpl:77
+#: addons/goto/events/DaemonEvent_installation_activation.tpl:43
+#: addons/goto/events/DaemonEvent_activate.tpl:43
+#: addons/goto/events/DaemonEvent_reinstall.tpl:47
+#: addons/goto/events/DaemonEvent_localboot.tpl:43
+#: addons/goto/events/DaemonEvent_sysinfo.tpl:43
+#: addons/goto/events/DaemonEvent_wakeup.tpl:43
+#: addons/goto/events/DaemonEvent_goto_reload.tpl:43
+#: addons/goto/events/DaemonEvent_reboot.tpl:43
+#: addons/goto/events/DaemonEvent_memcheck.tpl:43
+#: addons/goto/events/DaemonEvent_halt.tpl:43
+msgid "Result"
+msgstr ""
+
+#: addons/goto/events/DaemonEvent_reload_ldap_config.tpl:47
+#: addons/goto/events/DaemonEvent_update.tpl:47
+#: addons/goto/events/DaemonEvent_rescan.tpl:47
+#: addons/goto/events/DaemonEvent_lock.tpl:47
+#: addons/goto/events/DaemonEvent_faireboot.tpl:47
+#: addons/goto/events/class_DaemonEvent_notify.inc:75
+#: addons/goto/events/class_DaemonEvent_notify.inc:76
+#: addons/goto/events/class_DaemonEvent_notify.inc:101
+#: addons/goto/events/DaemonEvent_notify.tpl:81
+#: addons/goto/events/DaemonEvent_installation_activation.tpl:47
+#: addons/goto/events/DaemonEvent_activate.tpl:47
+#: addons/goto/events/DaemonEvent_reinstall.tpl:51
+#: addons/goto/events/DaemonEvent_localboot.tpl:47
+#: addons/goto/events/DaemonEvent_sysinfo.tpl:47
+#: addons/goto/events/DaemonEvent_wakeup.tpl:47
+#: addons/goto/events/DaemonEvent_goto_reload.tpl:47
+#: addons/goto/events/DaemonEvent_reboot.tpl:47
+#: addons/goto/events/DaemonEvent_memcheck.tpl:47
+#: addons/goto/events/DaemonEvent_halt.tpl:47 addons/goto/deploy-list.xml:27
+msgid "Target"
+msgstr ""
+
+#: addons/goto/events/class_DaemonEvent_faireboot.inc:28
+#: addons/goto/events/class_DaemonEvent_faireboot.inc:29
+#, fuzzy
+msgid "Abort installation"
+msgstr "Windows 工作站"
+
+#: addons/goto/events/eventTargetUser-filter.tpl:11
+#, fuzzy
+msgid "Show groups"
+msgstr "显示电话"
+
+#: addons/goto/events/eventTargetUser-filter.tpl:12
+#, fuzzy
+msgid "Show users"
+msgstr "显示服务器"
+
+#: addons/goto/events/eventTargetSystems-list.xml:11
+#, fuzzy
+msgid "List of target systems"
+msgstr "系统列表"
+
+#: addons/goto/events/eventTargetSystems-list.xml:89
+msgid "Mac"
+msgstr ""
+
+#: addons/goto/events/class_DaemonEvent_notify.inc:46
+#: addons/goto/events/class_DaemonEvent_notify.inc:47
+msgid "Send message"
+msgstr ""
+
+#: addons/goto/events/class_DaemonEvent_notify.inc:92
+#: addons/goto/events/DaemonEvent_notify.tpl:14
+msgid "Subject"
+msgstr ""
+
+#: addons/goto/events/class_DaemonEvent_notify.inc:95
+#: addons/goto/events/DaemonEvent_notify.tpl:18
+msgid "Message"
+msgstr ""
+
+#: addons/goto/events/class_DaemonEvent_notify.inc:98
+msgid "From"
+msgstr ""
+
+#: addons/goto/events/class_DaemonEvent.inc:134
+msgid "This job has no template!"
+msgstr ""
+
+#: addons/goto/events/class_DaemonEvent.inc:150
+#, php-format
+msgid "Create '%s' job"
+msgstr ""
+
+#: addons/goto/events/class_DaemonEvent.inc:221
+msgid "Minutes"
+msgstr ""
+
+#: addons/goto/events/class_DaemonEvent.inc:222
+msgid "Hours"
+msgstr ""
+
+#: addons/goto/events/class_DaemonEvent.inc:223
+msgid "Days"
+msgstr ""
+
+#: addons/goto/events/class_DaemonEvent.inc:224
+msgid "Weeks"
+msgstr ""
+
+#: addons/goto/events/class_DaemonEvent.inc:225
+msgid "Months"
+msgstr ""
+
+#: addons/goto/events/DaemonEvent_notify.tpl:7
+#, fuzzy
+msgid "Message settings"
+msgstr "Samba 设置"
+
+#: addons/goto/events/DaemonEvent_notify.tpl:10
+msgid "Sender"
+msgstr ""
+
+#: addons/goto/events/DaemonEvent_notify.tpl:37
+msgid "Target users"
+msgstr ""
+
+#: addons/goto/events/DaemonEvent_notify.tpl:44
+msgid "Target groups"
+msgstr ""
+
+#: addons/goto/events/class_DaemonEvent_activate_new.inc:40
+#: addons/goto/events/class_DaemonEvent_activate_new.inc:41
+#, fuzzy
+msgid "Activate new"
+msgstr "活动"
+
+#: addons/goto/events/DaemonEvent_activate.tpl:9
+msgid "Time schedule"
+msgstr ""
+
+#: addons/goto/events/DaemonEvent_reinstall.tpl:39
+msgid "Progress"
+msgstr ""
+
+#: addons/goto/events/class_DaemonEvent_localboot.inc:28
+#: addons/goto/events/class_DaemonEvent_localboot.inc:29
+msgid "Force localboot"
+msgstr "强制本地启动"
+
+#: addons/goto/events/class_DaemonEvent_installation_activation.inc:28
+#: addons/goto/events/class_DaemonEvent_installation_activation.inc:29
+msgid "Installation activation"
+msgstr ""
+
+#: addons/goto/events/eventTargetSystems-filter.tpl:14
+msgid "Filter by IP address range"
+msgstr ""
+
+#: addons/goto/events/class_DaemonEvent_wakeup.inc:30
+#, fuzzy
+msgid "Wake system"
+msgstr "编辑系统"
+
+#: addons/goto/events/timestamp_select.tpl:3
+msgid "Year"
+msgstr ""
+
+#: addons/goto/events/timestamp_select.tpl:4
+msgid "Month"
+msgstr ""
+
+#: addons/goto/events/timestamp_select.tpl:5
+msgid "Day"
+msgstr ""
+
+#: addons/goto/events/timestamp_select.tpl:7
+msgid "Hour"
+msgstr ""
+
+#: addons/goto/events/timestamp_select.tpl:8
+msgid "Minute"
+msgstr ""
+
+#: addons/goto/events/timestamp_select.tpl:9
+msgid "Second"
+msgstr ""
+
+#: addons/goto/events/timestamp_select.tpl:49
+msgid "Periodical job"
+msgstr ""
+
+#: addons/goto/events/timestamp_select.tpl:55
+msgid "Job intervall"
+msgstr ""
+
+#: addons/goto/events/eventTargetUser-list.xml:11
+#, fuzzy
+msgid "List of users"
+msgstr "用户列表"
+
+#: addons/goto/class_filterGotoEvents.inc:39
+#, php-format
+msgid "Cannot load queue entries: %s"
+msgstr ""
+
+#: addons/goto/class_gotomasses.inc:26 addons/goto/class_gotomasses.inc:27
+#, fuzzy
+msgid "System deployment status"
+msgstr "系统管理"
+
+#: addons/goto/class_gotomasses.inc:167
+msgid "immediately"
+msgstr ""
+
+#: addons/goto/class_gotomasses.inc:184
+msgid "Waiting"
+msgstr ""
+
+#: addons/goto/class_gotomasses.inc:187
+#, fuzzy
+msgid "Show error"
+msgstr "显示服务器"
+
+#: addons/goto/class_gotomasses.inc:191
+msgid "Processed"
+msgstr ""
+
+#: addons/goto/class_gotomasses.inc:200
+msgid "in progress"
+msgstr ""
+
+#: addons/goto/class_gotomasses.inc:254
+#, php-format
+msgid "The following jobs couldn't be deleted, they have to be aborted: %s"
+msgstr ""
+
+#: addons/goto/class_gotomasses.inc:299
+msgid "Info"
+msgstr ""
+
+#: addons/goto/class_gotomasses.inc:299
+#, php-format
+msgid "%s"
+msgstr ""
+
+#: addons/goto/class_gotomasses.inc:303
+#, php-format
+msgid "Required class '%s' cannot be found: job not aborted!"
+msgstr ""
+
+#: addons/goto/class_gotomasses.inc:360
+msgid "Error detail"
+msgstr ""
+
+#: addons/goto/class_gotomasses.inc:466 addons/goto/class_gotomasses.inc:531
+#, fuzzy, php-format
+msgid "Cannot update queue entry: %s"
+msgstr "无法打开指定证书！"
+
+#: addons/goto/class_gotomasses.inc:495
+#, fuzzy, php-format
+msgid "Cannot update queue entries."
+msgstr "无法打开指定证书！"
+
+#: addons/goto/class_gotomasses.inc:606 addons/goto/class_gotomasses.inc:612
+#, fuzzy
+msgid "System deployment"
+msgstr "系统管理"
+
+#: addons/goto/class_gotomasses.inc:607
+msgid "Provide a mechanism to automatically activate systems"
+msgstr ""
+
+#: addons/goto/deploy-list.xml:10
+#, fuzzy
+msgid "List of queued jobs"
+msgstr "用户列表"
+
+#: addons/goto/deploy-list.xml:45
+msgid "Task"
+msgstr ""
+
+#: addons/goto/deploy-list.xml:53
+msgid "Period"
+msgstr ""
+
+#: addons/goto/deploy-list.xml:166 addons/goto/deploy-list.xml:228
+msgid "Resume"
+msgstr ""
+
+#: addons/goto/deploy-list.xml:173 addons/goto/deploy-list.xml:220
+msgid "Pause"
+msgstr ""
+
+#: addons/goto/deploy-list.xml:180 addons/goto/deploy-list.xml:271
+msgid "Abort"
+msgstr ""
+
+#: addons/goto/deploy-list.xml:204
+msgid "Up"
+msgstr ""
+
+#: addons/goto/deploy-list.xml:212
+msgid "Down"
+msgstr ""
+
+#: addons/goto/deploy-list.xml:237
+msgid "Process now"
+msgstr ""
+
+#: addons/goto/deploy-list.xml:245
+msgid "View logs"
+msgstr ""
+
+#: personal/environment/main.inc:134
+msgid "User environment settings"
+msgstr ""
+
+#: personal/environment/class_logonManagementDialog.inc:128
+#: personal/environment/logonManagement.tpl:10
+#, fuzzy
+msgid "Script name"
+msgstr "打印机名称"
+
+#: personal/environment/environment.tpl:3
+msgid "The environment extension is currently disabled."
+msgstr ""
+
+#: personal/environment/environment.tpl:11
+msgid "Profiles"
+msgstr ""
+
+#: personal/environment/environment.tpl:14
+#: personal/environment/environment.tpl:207
+#: personal/environment/environment.tpl:288
+msgid "Environment managment settings"
+msgstr ""
+
+#: personal/environment/environment.tpl:22
+#: personal/environment/environment.tpl:55
+msgid "Use profile managment"
+msgstr ""
+
+#: personal/environment/environment.tpl:26
+#: personal/environment/environment.tpl:65
+msgid "Profil path"
+msgstr ""
+
+#: personal/environment/environment.tpl:36
+#: personal/environment/environment.tpl:95
+msgid "MB"
+msgstr ""
+
+#: personal/environment/environment.tpl:41
+#: personal/environment/environment.tpl:106
+#: personal/environment/class_environment.inc:1809
+msgid "Cache profile localy"
+msgstr ""
+
+#: personal/environment/environment.tpl:47
+msgid "Profile managment"
+msgstr ""
+
+#: personal/environment/environment.tpl:62
+msgid "Profile server managment"
+msgstr ""
+
+#: personal/environment/environment.tpl:89
+msgid "Profil quota"
+msgstr ""
+
+#: personal/environment/environment.tpl:120
+msgid "Kiosk profile settings"
+msgstr ""
+
+#: personal/environment/environment.tpl:145
+msgid "Profile"
+msgstr ""
+
+#: personal/environment/environment.tpl:164
+msgid "Manage"
+msgstr ""
+
+#: personal/environment/environment.tpl:174
+#: personal/environment/class_environment.inc:1813
+msgid "Resolution changeable during session"
+msgstr ""
+
+#: personal/environment/environment.tpl:222
+msgid "User used to connect to the share"
+msgstr ""
+
+#: personal/environment/environment.tpl:225
+msgid "Select a share"
+msgstr ""
+
+#: personal/environment/environment.tpl:233
+msgid "Mount path"
+msgstr ""
+
+#: personal/environment/environment.tpl:246
+#: personal/environment/class_environment.inc:604
+msgid "Logon scripts"
+msgstr ""
+
+#: personal/environment/environment.tpl:248
+#: personal/environment/logonManagement.tpl:1
+#: personal/environment/logonManagement.tpl:5
+msgid "Logon script management"
+msgstr ""
+
+#: personal/environment/environment.tpl:257
+#: personal/environment/environment.tpl:303
+#: personal/environment/class_environment.inc:784
+msgid "Used by all users"
+msgstr ""
+
+#: personal/environment/environment.tpl:259
+#: personal/environment/environment.tpl:305
+#: personal/environment/class_environment.inc:787
+msgid "Used by some users"
+msgstr ""
+
+#: personal/environment/environment.tpl:295
+#, fuzzy
+msgid "Hotplug device settings"
+msgstr "编辑设置..."
+
+#: personal/environment/environment.tpl:342
+msgid ""
+"Using this option will overwrite the complete printer settings for all "
+"currently edited objects!"
+msgstr ""
+
+#: personal/environment/environment.tpl:343
+#: personal/environment/environment.tpl:376
+#, fuzzy
+msgid "Printer settings"
+msgstr "编辑设置..."
+
+#: personal/environment/environment.tpl:360
+#: personal/environment/environment.tpl:393
+msgid "Toggle admin"
+msgstr ""
+
+#: personal/environment/environment.tpl:363
+#: personal/environment/environment.tpl:396
+msgid "Toggle default"
+msgstr ""
+
+#: personal/environment/class_environment.inc:29
+#: personal/environment/class_environment.inc:454
+#: personal/environment/class_environment.inc:455
+#: personal/environment/class_environment.inc:463
+#: personal/environment/class_environment.inc:464
+#: personal/environment/class_environment.inc:467
+#: personal/environment/class_environment.inc:468
+#: personal/environment/class_environment.inc:471
+#: personal/environment/class_environment.inc:472
+#: personal/environment/class_environment.inc:494
+#: personal/environment/class_environment.inc:495
+#: personal/environment/class_environment.inc:499
+#: personal/environment/class_environment.inc:500
+#: personal/environment/class_environment.inc:503
+#: personal/environment/class_environment.inc:504
+#: personal/environment/class_environment.inc:1794
+msgid "Environment"
+msgstr ""
+
+#: personal/environment/class_environment.inc:30
+msgid "This does something"
+msgstr ""
+
+#: personal/environment/class_environment.inc:160
+#, php-format
+msgid "Device '%s' is not available anymore. It will be removed!"
+msgstr ""
+
+#: personal/environment/class_environment.inc:233
+msgid "auto"
+msgstr ""
+
+#: personal/environment/class_environment.inc:255
+#, php-format
+msgid "Cannot open file '%s'!"
+msgstr ""
+
+#: personal/environment/class_environment.inc:292
+#: personal/environment/class_environment.inc:293
+msgid "disabled"
+msgstr ""
+
+#: personal/environment/class_environment.inc:328
+#, php-format
+msgid ""
+"Kiosk profile '%s' located on server '%s' is not available anymore. Kiosk "
+"profile will be disabled!"
+msgstr ""
+
+#: personal/environment/class_environment.inc:381
+#, php-format
+msgid "Profile server '%s' is not available anymore. Switched to server '%s'."
+msgstr ""
+
+#: personal/environment/class_environment.inc:385
+#, php-format
+msgid ""
+"Profile server '%s' is not available anymore. Kiosk profile will be disabled."
+msgstr ""
+
+#: personal/environment/class_environment.inc:472
+#: personal/environment/class_environment.inc:504
+#: personal/environment/class_environment.inc:1176
+msgid "POSIX"
+msgstr ""
+
+#: personal/environment/class_environment.inc:694
+msgid "Share"
+msgstr ""
+
+#: personal/environment/class_environment.inc:800
+#: personal/environment/class_environment.inc:801
+#: personal/environment/class_environment.inc:810
+#: personal/environment/class_environment.inc:811
+#, fuzzy
+msgid "Reset password hash"
+msgstr "设置口令"
+
+#: personal/environment/class_environment.inc:815
+msgid "Delete share entry"
+msgstr ""
+
+#: personal/environment/class_environment.inc:1016
+msgid "Cannot set default printer flag for groups!"
+msgstr ""
+
+#: personal/environment/class_environment.inc:1169
+#: personal/environment/class_environment.inc:1739
+#: personal/environment/class_environment.inc:1808
+msgid "Profile quota"
+msgstr ""
+
+#: personal/environment/class_environment.inc:1176
+msgid "environment"
+msgstr ""
+
+#: personal/environment/class_environment.inc:1357
+msgid "group share"
+msgstr ""
+
+#: personal/environment/class_environment.inc:1391
+msgid "Administrator"
+msgstr ""
+
+#: personal/environment/class_environment.inc:1396
+#, fuzzy
+msgid "Default printer"
+msgstr "显示网络打印机"
+
+#: personal/environment/class_environment.inc:1795
+#, fuzzy
+msgid "Environment settings"
+msgstr "编辑设置..."
+
+#: personal/environment/class_environment.inc:1799
+msgid "My account"
+msgstr ""
+
+#: personal/environment/class_environment.inc:1803
+msgid "Command to extend the list of possible screen resolutions"
+msgstr ""
+
+#: personal/environment/class_environment.inc:1807
+#, fuzzy
+msgid "Profile server"
+msgstr "LDAP 服务器"
+
+#: personal/environment/class_environment.inc:1815
+#: personal/environment/logonManagement.tpl:56
+msgid "Logon script"
+msgstr ""
+
+#: personal/environment/logonManagement.tpl:8
+#, fuzzy
+msgid "Logon script settings"
+msgstr "编辑设置..."
+
+#: personal/environment/logonManagement.tpl:24
+msgid "Priority"
+msgstr ""
+
+#: personal/environment/logonManagement.tpl:34
+msgid "Logon script flags"
+msgstr ""
+
+#: personal/environment/logonManagement.tpl:38
+msgid "Last script"
+msgstr ""
+
+#: personal/environment/logonManagement.tpl:44
+msgid "Script can be replaced by user"
+msgstr ""

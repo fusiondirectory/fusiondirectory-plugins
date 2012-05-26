@@ -8,19 +8,18 @@
 #  Alfred Schroeder <schroeder@GONICUS.de>, 2004. 
 #  Cajus Pollmeier <pollmeier@gonicus.de>, 2004. 
 #  Niels Klomp (CareWorks ICT Services) <nk@careworks.nl>, 2005.
- 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-24 23:38+0100\n"
+"POT-Creation-Date: 2012-05-26 17:33+0200\n"
 "PO-Revision-Date: 2006-06-02 16:58+0100\n"
 "Last-Translator: Niels Klomp (CareWorks ICT Services) <nk@careworks.nl>\n"
 "Language-Team: CareWorks ICT Services <info@careworks.nl>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 
 #: admin/groups/mail/mail_admins.tpl:4
 msgid "Folder administrators"
@@ -107,7 +106,7 @@ msgstr ""
 #: admin/groups/mail/class_groupMail.inc:869
 #: admin/groups/mail/class_groupMail.inc:1014
 #: admin/ogroups/mail/paste_mail.tpl:4
-#: admin/ogroups/mail/class_mailogroup.inc:224
+#: admin/ogroups/mail/class_mailogroup.inc:206
 #: personal/mail/class_mailAccount.inc:71
 #: personal/mail/class_mailAccount.inc:254
 #: personal/mail/class_mailAccount.inc:262
@@ -139,9 +138,6 @@ msgstr ""
 #: admin/groups/mail/class_groupMail.inc:447
 #: admin/systems/services/spam/class_goSpamServer.inc:163
 #: admin/systems/services/spam/class_goSpamServer.inc:236
-#: addons/mailqueue/class_mailqueue.inc:130
-#: addons/mailqueue/class_mailqueue.inc:164
-#: addons/mailqueue/class_mailqueue.inc:170
 #: personal/mail/sieve/class_sieveManagement.inc:203
 #: personal/mail/sieve/class_sieveManagement.inc:208
 #: personal/mail/sieve/class_sieveManagement.inc:214
@@ -170,9 +166,9 @@ msgstr "Selecteer a.u.b. een geldig mailserver"
 #: admin/groups/mail/class_groupMail.inc:881
 #: admin/groups/mail/class_groupMail.inc:901
 #: admin/groups/mail/class_groupMail.inc:1022
-#: admin/ogroups/mail/class_mailogroup.inc:124
-#: admin/ogroups/mail/class_mailogroup.inc:131
-#: admin/ogroups/mail/class_mailogroup.inc:232
+#: admin/ogroups/mail/class_mailogroup.inc:106
+#: admin/ogroups/mail/class_mailogroup.inc:113
+#: admin/ogroups/mail/class_mailogroup.inc:214
 #: personal/mail/mailAddressSelect/selectMailAddress-list.xml:56
 #: personal/mail/class_mailAccount.inc:352
 #: personal/mail/class_mailAccount.inc:388
@@ -214,8 +210,8 @@ msgstr ""
 #: admin/systems/services/mail/class_goMailServer.inc:582
 #: admin/systems/services/spam/class_goSpamServer.inc:297
 #: admin/systems/services/virus/class_goVirusServer.inc:174
-#: admin/ogroups/mail/class_mailogroup.inc:158
-#: admin/ogroups/mail/class_mailogroup.inc:195
+#: admin/ogroups/mail/class_mailogroup.inc:140
+#: admin/ogroups/mail/class_mailogroup.inc:177
 #: personal/mail/class_mailAccount.inc:853
 #: personal/mail/class_mailAccount.inc:926
 #, fuzzy
@@ -357,8 +353,7 @@ msgstr "Lokaal toevoegen"
 msgid "Generic"
 msgstr "Algemeen"
 
-#: admin/groups/mail/mail.tpl:35 addons/mailqueue/contents.tpl:73
-#: personal/mail/generic.tpl:30
+#: admin/groups/mail/mail.tpl:35 personal/mail/generic.tpl:30
 msgid "Server"
 msgstr "Server"
 
@@ -514,7 +509,7 @@ msgstr "IMAP Service"
 
 #: admin/systems/services/imap/class_goImapServer.inc:220
 #: admin/systems/services/mail/class_goMailServer.inc:701
-#: admin/systems/services/spam/class_goSpamServer.inc:341
+#: admin/systems/services/spam/class_goSpamServer.inc:350
 #: admin/systems/services/virus/class_goVirusServer.inc:240
 msgid "Services"
 msgstr "Services"
@@ -761,8 +756,8 @@ msgstr "Funktie"
 
 #: admin/systems/services/spam/class_goSpamServer.inc:62
 #: admin/systems/services/spam/class_goSpamServer.inc:340
-#: admin/systems/services/spam/class_goSpamServer.inc:341
-#: admin/systems/services/spam/class_goSpamServer.inc:367
+#: admin/systems/services/spam/class_goSpamServer.inc:349
+#: admin/systems/services/spam/class_goSpamServer.inc:350
 msgid "Spamassassin"
 msgstr ""
 
@@ -775,52 +770,52 @@ msgstr "Posix instellingen"
 msgid "Score"
 msgstr ""
 
-#: admin/systems/services/spam/class_goSpamServer.inc:349
+#: admin/systems/services/spam/class_goSpamServer.inc:358
 #: admin/systems/services/spam/goSpamServer.tpl:8
 #, fuzzy
 msgid "Rewrite header"
 msgstr "header"
 
-#: admin/systems/services/spam/class_goSpamServer.inc:350
+#: admin/systems/services/spam/class_goSpamServer.inc:359
 #, fuzzy
 msgid "Trusted networks"
 msgstr "Posix instellingen"
 
-#: admin/systems/services/spam/class_goSpamServer.inc:351
+#: admin/systems/services/spam/class_goSpamServer.inc:360
 #: admin/systems/services/spam/goSpamServer.tpl:18
 msgid "Required score"
 msgstr ""
 
-#: admin/systems/services/spam/class_goSpamServer.inc:352
+#: admin/systems/services/spam/class_goSpamServer.inc:361
 #, fuzzy
 msgid "Rules"
 msgstr "Funktie"
 
-#: admin/systems/services/spam/class_goSpamServer.inc:354
+#: admin/systems/services/spam/class_goSpamServer.inc:363
 #: admin/systems/services/spam/goSpamServer.tpl:69
 msgid "Enable use of bayes filtering"
 msgstr ""
 
-#: admin/systems/services/spam/class_goSpamServer.inc:355
+#: admin/systems/services/spam/class_goSpamServer.inc:364
 msgid "Enabled bayes auto learning"
 msgstr ""
 
-#: admin/systems/services/spam/class_goSpamServer.inc:356
+#: admin/systems/services/spam/class_goSpamServer.inc:365
 #: admin/systems/services/spam/goSpamServer.tpl:75
 msgid "Enable RBL checks"
 msgstr ""
 
-#: admin/systems/services/spam/class_goSpamServer.inc:357
+#: admin/systems/services/spam/class_goSpamServer.inc:366
 #: admin/systems/services/spam/goSpamServer.tpl:86
 msgid "Enable use of Razor"
 msgstr ""
 
-#: admin/systems/services/spam/class_goSpamServer.inc:358
+#: admin/systems/services/spam/class_goSpamServer.inc:367
 #: admin/systems/services/spam/goSpamServer.tpl:89
 msgid "Enable use of DDC"
 msgstr ""
 
-#: admin/systems/services/spam/class_goSpamServer.inc:359
+#: admin/systems/services/spam/class_goSpamServer.inc:368
 #: admin/systems/services/spam/goSpamServer.tpl:92
 msgid "Enable use of Pyzor"
 msgstr ""
@@ -957,248 +952,28 @@ msgstr "Mail distributielijst"
 msgid "Primary mail address for this distribution list"
 msgstr "Primair E-mail adres voor deze distributielijst"
 
-#: admin/ogroups/mail/class_mailogroup.inc:88
+#: admin/ogroups/mail/class_mailogroup.inc:70
 msgid "Remove mail account"
 msgstr "E-mail account verwijderen"
 
-#: admin/ogroups/mail/class_mailogroup.inc:89
-#: admin/ogroups/mail/class_mailogroup.inc:92
+#: admin/ogroups/mail/class_mailogroup.inc:71
+#: admin/ogroups/mail/class_mailogroup.inc:74
 #, fuzzy
 msgid "mail group"
 msgstr "Primaire groep"
 
-#: admin/ogroups/mail/class_mailogroup.inc:91
+#: admin/ogroups/mail/class_mailogroup.inc:73
 msgid "Create mail account"
 msgstr "E-mail account aanmaken"
 
-#: admin/ogroups/mail/class_mailogroup.inc:124
+#: admin/ogroups/mail/class_mailogroup.inc:106
 msgid "your-name@your-domain.com"
 msgstr ""
 
-#: admin/ogroups/mail/class_mailogroup.inc:225
+#: admin/ogroups/mail/class_mailogroup.inc:207
 #, fuzzy
 msgid "Mail group"
 msgstr "Primaire groep"
-
-#: addons/mailqueue/class_mailqueue.inc:26
-#: addons/mailqueue/class_mailqueue.inc:351 addons/mailqueue/main.inc:57
-msgid "Mail queue"
-msgstr "Mail wachtrij"
-
-#: addons/mailqueue/class_mailqueue.inc:27
-#: personal/mail/class_mailAccount.inc:72
-msgid "This does something"
-msgstr "Dit doet iets"
-
-#: addons/mailqueue/class_mailqueue.inc:225
-msgid "up"
-msgstr "omhoog"
-
-#: addons/mailqueue/class_mailqueue.inc:227
-msgid "down"
-msgstr "omlaag"
-
-#: addons/mailqueue/class_mailqueue.inc:238
-#: addons/mailqueue/class_mailqueue.inc:338
-msgid "All"
-msgstr "Alle"
-
-#: addons/mailqueue/class_mailqueue.inc:282
-msgid "no limit"
-msgstr "geen limiet"
-
-#: addons/mailqueue/class_mailqueue.inc:285
-msgid "hour"
-msgstr "uur"
-
-#: addons/mailqueue/class_mailqueue.inc:287
-msgid "hours"
-msgstr "uren"
-
-#: addons/mailqueue/class_mailqueue.inc:339
-msgid "Hold"
-msgstr "Wacht"
-
-#: addons/mailqueue/class_mailqueue.inc:340
-msgid "Un hold"
-msgstr "Uit de wacht"
-
-#: addons/mailqueue/class_mailqueue.inc:341 addons/mailqueue/contents.tpl:93
-#: personal/mail/sieve/class_sieveManagement.inc:636
-msgid "Active"
-msgstr "Actief"
-
-#: addons/mailqueue/class_mailqueue.inc:342
-msgid "Not active"
-msgstr "Niet actief"
-
-#: addons/mailqueue/class_mailqueue.inc:352
-#: addons/mailqueue/class_mailqueue.inc:357
-#, fuzzy
-msgid "Mail queue addon"
-msgstr "Mail wachtrij"
-
-#: addons/mailqueue/class_mailqueue.inc:360
-#, fuzzy
-msgid "Unhold all messages"
-msgstr "Plaats alle berichten in wachtstand"
-
-#: addons/mailqueue/class_mailqueue.inc:361 addons/mailqueue/contents.tpl:38
-msgid "Hold all messages"
-msgstr "Plaats alle berichten in wachtstand"
-
-#: addons/mailqueue/class_mailqueue.inc:362
-#, fuzzy
-msgid "Delete all messages"
-msgstr "Geef alle berichten vrij"
-
-#: addons/mailqueue/class_mailqueue.inc:363 addons/mailqueue/contents.tpl:48
-msgid "Requeue all messages"
-msgstr "Plaats alle berichten opnieuw in wachtrij"
-
-#: addons/mailqueue/class_mailqueue.inc:364
-#, fuzzy
-msgid "Unhold message"
-msgstr "Bericht in wachtstand plaatsen"
-
-#: addons/mailqueue/class_mailqueue.inc:365 addons/mailqueue/contents.tpl:120
-msgid "Hold message"
-msgstr "Bericht in wachtstand plaatsen"
-
-#: addons/mailqueue/class_mailqueue.inc:366
-#, fuzzy
-msgid "Delete message"
-msgstr "Verwijder dit bericht"
-
-#: addons/mailqueue/class_mailqueue.inc:367
-#, fuzzy
-msgid "Requeue message"
-msgstr "Herplaats dit bericht"
-
-#: addons/mailqueue/class_mailqueue.inc:368
-msgid "Gathering queue data"
-msgstr ""
-
-#: addons/mailqueue/class_mailqueue.inc:369
-#, fuzzy
-msgid "Get header information"
-msgstr "Algemene gebruikersinformatie"
-
-#: addons/mailqueue/contents.tpl:10 addons/mailqueue/contents.tpl:28
-msgid "Search"
-msgstr "Zoeken"
-
-#: addons/mailqueue/contents.tpl:11
-msgid "Search for"
-msgstr "Zoek naar"
-
-#: addons/mailqueue/contents.tpl:12
-msgid "Please enter a search string here."
-msgstr "Geef hier a.u.b. een zoekwaarde op."
-
-#: addons/mailqueue/contents.tpl:14
-msgid "Select a server"
-msgstr "Selecteer een server"
-
-#: addons/mailqueue/contents.tpl:18
-msgid "with status"
-msgstr "met status"
-
-#: addons/mailqueue/contents.tpl:23
-msgid "within the last"
-msgstr "binnen de laatste"
-
-#: addons/mailqueue/contents.tpl:33
-msgid "Remove all messages"
-msgstr "Verwijder alle berichten"
-
-#: addons/mailqueue/contents.tpl:34
-msgid "Remove all messages from selected servers queue"
-msgstr "Verwijder alle berichten uit de wachtrij van de geselecteerde server"
-
-#: addons/mailqueue/contents.tpl:39
-msgid "Hold all messages in selected servers queue"
-msgstr ""
-"Plaats alle berichten in de geselecteerde server wachtrij in de wachtstand"
-
-#: addons/mailqueue/contents.tpl:43
-msgid "Release all messages"
-msgstr "Geef alle berichten vrij"
-
-#: addons/mailqueue/contents.tpl:44
-msgid "Release all messages in selected servers queue"
-msgstr "Geef alle berichten in de geselecteerde server wachtrij vrij"
-
-#: addons/mailqueue/contents.tpl:49
-msgid "Requeue all messages in selected servers queue"
-msgstr "Plaats alle berichten in de geselecteerde server opnieuw in wachtrij"
-
-#: addons/mailqueue/contents.tpl:63
-msgid "Search returned no results"
-msgstr "De zoekopdracht gaf geen resultaten terug"
-
-#: addons/mailqueue/contents.tpl:72
-msgid "ID"
-msgstr "ID"
-
-#: addons/mailqueue/contents.tpl:74
-#: personal/mail/sieve/class_sieveManagement.inc:594
-#: personal/mail/sieve/templates/element_size.tpl:4
-msgid "Size"
-msgstr "Grootte"
-
-#: addons/mailqueue/contents.tpl:75
-msgid "Arrival"
-msgstr "Aankomst"
-
-#: addons/mailqueue/contents.tpl:76
-msgid "Sender"
-msgstr "Afzender"
-
-#: addons/mailqueue/contents.tpl:77
-msgid "Recipient"
-msgstr "Ontvanger"
-
-#: addons/mailqueue/contents.tpl:78
-msgid "Status"
-msgstr "Status"
-
-#: addons/mailqueue/contents.tpl:105
-msgid "delete"
-msgstr "Verwijder"
-
-#: addons/mailqueue/contents.tpl:105
-msgid "Delete this message"
-msgstr "Verwijder dit bericht"
-
-#: addons/mailqueue/contents.tpl:113
-msgid "unhold"
-msgstr "uit wachtstand"
-
-#: addons/mailqueue/contents.tpl:113
-msgid "Release message"
-msgstr "Bericht vrijgeven"
-
-#: addons/mailqueue/contents.tpl:120
-msgid "hold"
-msgstr "wachtstand"
-
-#: addons/mailqueue/contents.tpl:127
-msgid "requeue"
-msgstr "herplaatsen"
-
-#: addons/mailqueue/contents.tpl:127
-msgid "Requeue this message"
-msgstr "Herplaats dit bericht"
-
-#: addons/mailqueue/contents.tpl:133
-msgid "header"
-msgstr "header"
-
-#: addons/mailqueue/contents.tpl:134
-#, fuzzy
-msgid "Display header of this message"
-msgstr "Toon de header van dit bericht"
 
 #: personal/mail/class_mail-methods-cyrus.inc:58
 msgid "There are no IMAP compatible mail servers defined!"
@@ -1501,6 +1276,11 @@ msgstr "header"
 msgid "Envelope"
 msgstr ""
 
+#: personal/mail/sieve/class_sieveManagement.inc:594
+#: personal/mail/sieve/templates/element_size.tpl:4
+msgid "Size"
+msgstr "Grootte"
+
 #: personal/mail/sieve/class_sieveManagement.inc:595
 #: personal/mail/sieve/templates/element_exists.tpl:8
 #, fuzzy
@@ -1527,6 +1307,10 @@ msgstr "Ja"
 #: personal/mail/sieve/class_sieveElement_If.inc:915
 msgid "False"
 msgstr "Nee"
+
+#: personal/mail/sieve/class_sieveManagement.inc:636
+msgid "Active"
+msgstr "Actief"
 
 #: personal/mail/sieve/class_sieveManagement.inc:637
 msgid "This script is marked as active"
@@ -2257,6 +2041,10 @@ msgstr "Bool"
 msgid "update"
 msgstr "Bijwerken"
 
+#: personal/mail/class_mailAccount.inc:72
+msgid "This does something"
+msgstr "Dit doet iets"
+
 #: personal/mail/class_mailAccount.inc:640
 #: personal/mail/class_mail-methods.inc:160
 #: personal/mail/class_mail-methods.inc:505
@@ -2479,6 +2267,158 @@ msgstr "MB"
 #, fuzzy
 msgid "Select department"
 msgstr "Selecteer om afdelingen te zien"
+
+#~ msgid "Mail queue"
+#~ msgstr "Mail wachtrij"
+
+#~ msgid "up"
+#~ msgstr "omhoog"
+
+#~ msgid "down"
+#~ msgstr "omlaag"
+
+#~ msgid "All"
+#~ msgstr "Alle"
+
+#~ msgid "no limit"
+#~ msgstr "geen limiet"
+
+#~ msgid "hour"
+#~ msgstr "uur"
+
+#~ msgid "hours"
+#~ msgstr "uren"
+
+#~ msgid "Hold"
+#~ msgstr "Wacht"
+
+#~ msgid "Un hold"
+#~ msgstr "Uit de wacht"
+
+#~ msgid "Not active"
+#~ msgstr "Niet actief"
+
+#, fuzzy
+#~ msgid "Mail queue addon"
+#~ msgstr "Mail wachtrij"
+
+#, fuzzy
+#~ msgid "Unhold all messages"
+#~ msgstr "Plaats alle berichten in wachtstand"
+
+#~ msgid "Hold all messages"
+#~ msgstr "Plaats alle berichten in wachtstand"
+
+#, fuzzy
+#~ msgid "Delete all messages"
+#~ msgstr "Geef alle berichten vrij"
+
+#~ msgid "Requeue all messages"
+#~ msgstr "Plaats alle berichten opnieuw in wachtrij"
+
+#, fuzzy
+#~ msgid "Unhold message"
+#~ msgstr "Bericht in wachtstand plaatsen"
+
+#~ msgid "Hold message"
+#~ msgstr "Bericht in wachtstand plaatsen"
+
+#, fuzzy
+#~ msgid "Delete message"
+#~ msgstr "Verwijder dit bericht"
+
+#, fuzzy
+#~ msgid "Requeue message"
+#~ msgstr "Herplaats dit bericht"
+
+#, fuzzy
+#~ msgid "Get header information"
+#~ msgstr "Algemene gebruikersinformatie"
+
+#~ msgid "Search"
+#~ msgstr "Zoeken"
+
+#~ msgid "Search for"
+#~ msgstr "Zoek naar"
+
+#~ msgid "Please enter a search string here."
+#~ msgstr "Geef hier a.u.b. een zoekwaarde op."
+
+#~ msgid "Select a server"
+#~ msgstr "Selecteer een server"
+
+#~ msgid "with status"
+#~ msgstr "met status"
+
+#~ msgid "within the last"
+#~ msgstr "binnen de laatste"
+
+#~ msgid "Remove all messages"
+#~ msgstr "Verwijder alle berichten"
+
+#~ msgid "Remove all messages from selected servers queue"
+#~ msgstr ""
+#~ "Verwijder alle berichten uit de wachtrij van de geselecteerde server"
+
+#~ msgid "Hold all messages in selected servers queue"
+#~ msgstr ""
+#~ "Plaats alle berichten in de geselecteerde server wachtrij in de wachtstand"
+
+#~ msgid "Release all messages"
+#~ msgstr "Geef alle berichten vrij"
+
+#~ msgid "Release all messages in selected servers queue"
+#~ msgstr "Geef alle berichten in de geselecteerde server wachtrij vrij"
+
+#~ msgid "Requeue all messages in selected servers queue"
+#~ msgstr ""
+#~ "Plaats alle berichten in de geselecteerde server opnieuw in wachtrij"
+
+#~ msgid "Search returned no results"
+#~ msgstr "De zoekopdracht gaf geen resultaten terug"
+
+#~ msgid "ID"
+#~ msgstr "ID"
+
+#~ msgid "Arrival"
+#~ msgstr "Aankomst"
+
+#~ msgid "Sender"
+#~ msgstr "Afzender"
+
+#~ msgid "Recipient"
+#~ msgstr "Ontvanger"
+
+#~ msgid "Status"
+#~ msgstr "Status"
+
+#~ msgid "delete"
+#~ msgstr "Verwijder"
+
+#~ msgid "Delete this message"
+#~ msgstr "Verwijder dit bericht"
+
+#~ msgid "unhold"
+#~ msgstr "uit wachtstand"
+
+#~ msgid "Release message"
+#~ msgstr "Bericht vrijgeven"
+
+#~ msgid "hold"
+#~ msgstr "wachtstand"
+
+#~ msgid "requeue"
+#~ msgstr "herplaatsen"
+
+#~ msgid "Requeue this message"
+#~ msgstr "Herplaats dit bericht"
+
+#~ msgid "header"
+#~ msgstr "header"
+
+#, fuzzy
+#~ msgid "Display header of this message"
+#~ msgstr "Toon de header van dit bericht"
 
 #, fuzzy
 #~ msgid "Cannot connect mail method: %s"

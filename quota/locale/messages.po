@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-16 15:23+0200\n"
+"POT-Creation-Date: 2012-05-26 17:33+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,307 +17,300 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: plugins/admin/systems/services/quota/class_quotaService.inc:64
-#: plugins/admin/systems/services/quota/class_quotaService.inc:204
+#: admin/systems/services/quota/class_quotaService.inc:64
+#: admin/systems/services/quota/class_quotaService.inc:204
 msgid "Quota service"
 msgstr ""
 
-#: plugins/admin/systems/services/quota/class_quotaService.inc:128
+#: admin/systems/services/quota/class_quotaService.inc:128
 msgid "There is no ldap server configured"
 msgstr ""
 
-#: plugins/admin/systems/services/quota/class_quotaService.inc:147
-#: plugins/personal/quota/quota.tpl:24
-#: plugins/personal/quota/class_quotaAccount.inc:233
+#: admin/systems/services/quota/class_quotaService.inc:147
+#: personal/quota/quota.tpl:24 personal/quota/class_quotaAccount.inc:232
 msgid "Device"
 msgstr ""
 
-#: plugins/admin/systems/services/quota/class_quotaService.inc:148
+#: admin/systems/services/quota/class_quotaService.inc:148
 msgid "BlockSize"
 msgstr ""
 
-#: plugins/admin/systems/services/quota/class_quotaService.inc:149
-#: plugins/personal/quota/singleSystemSelect/singleSystem-list.xml:49
+#: admin/systems/services/quota/class_quotaService.inc:149
+#: personal/quota/singleSystemSelect/singleSystem-list.xml:49
 msgid "Description"
 msgstr ""
 
-#: plugins/admin/systems/services/quota/class_quotaService.inc:164
+#: admin/systems/services/quota/class_quotaService.inc:164
 msgid "by"
 msgstr ""
 
-#: plugins/admin/systems/services/quota/class_quotaService.inc:171
-#: plugins/admin/systems/services/quota/class_quotaService.inc:174
+#: admin/systems/services/quota/class_quotaService.inc:171
+#: admin/systems/services/quota/class_quotaService.inc:174
 msgid "Error"
 msgstr ""
 
-#: plugins/admin/systems/services/quota/class_quotaService.inc:195
+#: admin/systems/services/quota/class_quotaService.inc:195
 msgid "HELP how to get blocksize"
 msgstr ""
 
-#: plugins/admin/systems/services/quota/class_quotaService.inc:243
-#: plugins/personal/quota/class_quotaAccount.inc:373
+#: admin/systems/services/quota/class_quotaService.inc:243
+#: personal/quota/class_quotaAccount.inc:370
 msgid "LDAP error"
 msgstr ""
 
-#: plugins/admin/systems/services/quota/class_quotaService.inc:252
-#: plugins/admin/systems/services/quota/class_quotaService.inc:253
+#: admin/systems/services/quota/class_quotaService.inc:252
+#: admin/systems/services/quota/class_quotaService.inc:253
 msgid "Quota Service"
 msgstr ""
 
-#: plugins/admin/systems/services/quota/class_quotaService.inc:253
+#: admin/systems/services/quota/class_quotaService.inc:253
 msgid "Services"
 msgstr ""
 
-#: plugins/admin/systems/services/quota/class_quotaService.inc:261
+#: admin/systems/services/quota/class_quotaService.inc:261
 msgid "parameters for devices with quota"
 msgstr ""
 
-#: plugins/admin/systems/services/quota/class_quotaService.inc:262
+#: admin/systems/services/quota/class_quotaService.inc:262
 msgid "id of user in LDAP"
 msgstr ""
 
-#: plugins/admin/systems/services/quota/class_quotaService.inc:263
+#: admin/systems/services/quota/class_quotaService.inc:263
 msgid "charset of Message"
 msgstr ""
 
-#: plugins/admin/systems/services/quota/class_quotaService.inc:264
+#: admin/systems/services/quota/class_quotaService.inc:264
 msgid "signature of warn message"
 msgstr ""
 
-#: plugins/admin/systems/services/quota/class_quotaService.inc:265
+#: admin/systems/services/quota/class_quotaService.inc:265
 msgid "mail of contact for support"
 msgstr ""
 
-#: plugins/admin/systems/services/quota/class_quotaService.inc:266
+#: admin/systems/services/quota/class_quotaService.inc:266
 msgid "subject of mail"
 msgstr ""
 
-#: plugins/admin/systems/services/quota/class_quotaService.inc:267
+#: admin/systems/services/quota/class_quotaService.inc:267
 msgid "subject of support"
 msgstr ""
 
-#: plugins/admin/systems/services/quota/class_quotaService.inc:268
+#: admin/systems/services/quota/class_quotaService.inc:268
 msgid "core of message of Support"
 msgstr ""
 
-#: plugins/admin/systems/services/quota/class_quotaService.inc:269
+#: admin/systems/services/quota/class_quotaService.inc:269
 msgid "Carbon Copy for all mails"
 msgstr ""
 
-#: plugins/admin/systems/services/quota/class_quotaService.inc:270
+#: admin/systems/services/quota/class_quotaService.inc:270
 msgid "Mail method for sending mail"
 msgstr ""
 
-#: plugins/admin/systems/services/quota/class_quotaService.inc:271
+#: admin/systems/services/quota/class_quotaService.inc:271
 msgid "User for ldap connection"
 msgstr ""
 
-#: plugins/admin/systems/services/quota/class_quotaService.inc:272
+#: admin/systems/services/quota/class_quotaService.inc:272
 msgid "Password for ldap connection"
 msgstr ""
 
-#: plugins/admin/systems/services/quota/class_quotaService.inc:273
+#: admin/systems/services/quota/class_quotaService.inc:273
 msgid "URI for LDAP server"
 msgstr ""
 
-#: plugins/admin/systems/services/quota/quotaService.tpl:7
+#: admin/systems/services/quota/quotaService.tpl:7
 msgid "Quota service Properties"
 msgstr ""
 
-#: plugins/admin/systems/services/quota/quotaService.tpl:12
+#: admin/systems/services/quota/quotaService.tpl:12
 msgid "quota device"
 msgstr ""
 
-#: plugins/admin/systems/services/quota/quotaService.tpl:22
+#: admin/systems/services/quota/quotaService.tpl:22
 msgid "device"
 msgstr ""
 
-#: plugins/admin/systems/services/quota/quotaService.tpl:32
+#: admin/systems/services/quota/quotaService.tpl:32
 msgid "blocksize"
 msgstr ""
 
-#: plugins/admin/systems/services/quota/quotaService.tpl:41
+#: admin/systems/services/quota/quotaService.tpl:41
 msgid "description"
 msgstr ""
 
-#: plugins/admin/systems/services/quota/quotaService.tpl:60
+#: admin/systems/services/quota/quotaService.tpl:60
 msgid "Quota Warning Message"
 msgstr ""
 
-#: plugins/admin/systems/services/quota/quotaService.tpl:65
+#: admin/systems/services/quota/quotaService.tpl:65
 msgid "Charset"
 msgstr ""
 
-#: plugins/admin/systems/services/quota/quotaService.tpl:73
+#: admin/systems/services/quota/quotaService.tpl:73
 msgid "Mail Command"
 msgstr ""
 
-#: plugins/admin/systems/services/quota/quotaService.tpl:82
+#: admin/systems/services/quota/quotaService.tpl:82
 msgid "Support Contact"
 msgstr ""
 
-#: plugins/admin/systems/services/quota/quotaService.tpl:88
+#: admin/systems/services/quota/quotaService.tpl:88
 msgid "From"
 msgstr ""
 
-#: plugins/admin/systems/services/quota/quotaService.tpl:94
+#: admin/systems/services/quota/quotaService.tpl:94
 msgid "CC"
 msgstr ""
 
-#: plugins/admin/systems/services/quota/quotaService.tpl:103
+#: admin/systems/services/quota/quotaService.tpl:103
 msgid "Subject"
 msgstr ""
 
-#: plugins/admin/systems/services/quota/quotaService.tpl:112
+#: admin/systems/services/quota/quotaService.tpl:112
 msgid "Content"
 msgstr ""
 
-#: plugins/admin/systems/services/quota/quotaService.tpl:120
+#: admin/systems/services/quota/quotaService.tpl:120
 msgid "Signature"
 msgstr ""
 
-#: plugins/admin/systems/services/quota/quotaService.tpl:128
+#: admin/systems/services/quota/quotaService.tpl:128
 msgid "LDAP Message Support"
 msgstr ""
 
-#: plugins/admin/systems/services/quota/quotaService.tpl:133
+#: admin/systems/services/quota/quotaService.tpl:133
 msgid "Ldap server"
 msgstr ""
 
-#: plugins/admin/systems/services/quota/quotaService.tpl:143
+#: admin/systems/services/quota/quotaService.tpl:143
 msgid "Ldap User DN"
 msgstr ""
 
-#: plugins/admin/systems/services/quota/quotaService.tpl:149
+#: admin/systems/services/quota/quotaService.tpl:149
 msgid "Ldap User Password"
 msgstr ""
 
-#: plugins/personal/quota/quota.tpl:5
+#: personal/quota/quota.tpl:5
 msgid "Quota Informations"
 msgstr ""
 
-#: plugins/personal/quota/quota.tpl:10
-#: plugins/personal/quota/class_quotaAccount.inc:383
+#: personal/quota/quota.tpl:10 personal/quota/class_quotaAccount.inc:380
 msgid "Quota"
 msgstr ""
 
-#: plugins/personal/quota/quota.tpl:16
-#: plugins/personal/quota/class_quotaAccount.inc:232
+#: personal/quota/quota.tpl:16 personal/quota/class_quotaAccount.inc:231
 msgid "Server"
 msgstr ""
 
-#: plugins/personal/quota/quota.tpl:34
-#: plugins/personal/quota/class_quotaAccount.inc:234
+#: personal/quota/quota.tpl:34 personal/quota/class_quotaAccount.inc:233
 msgid "Block soft limit"
 msgstr ""
 
-#: plugins/personal/quota/quota.tpl:43
-#: plugins/personal/quota/class_quotaAccount.inc:235
+#: personal/quota/quota.tpl:43 personal/quota/class_quotaAccount.inc:234
 msgid "Block hard limit"
 msgstr ""
 
-#: plugins/personal/quota/quota.tpl:54
-#: plugins/personal/quota/class_quotaAccount.inc:236
+#: personal/quota/quota.tpl:54 personal/quota/class_quotaAccount.inc:235
 msgid "Inode soft limit"
 msgstr ""
 
-#: plugins/personal/quota/quota.tpl:60
-#: plugins/personal/quota/class_quotaAccount.inc:237
+#: personal/quota/quota.tpl:60 personal/quota/class_quotaAccount.inc:236
 msgid "Inode hard limit"
 msgstr ""
 
-#: plugins/personal/quota/main.inc:141
+#: personal/quota/main.inc:141
 msgid "quota settings"
 msgstr ""
 
-#: plugins/personal/quota/class_quotaAccount.inc:25
-#: plugins/personal/quota/class_quotaAccount.inc:394
+#: personal/quota/class_quotaAccount.inc:25
+#: personal/quota/class_quotaAccount.inc:391
 msgid "quota"
 msgstr ""
 
-#: plugins/personal/quota/class_quotaAccount.inc:26
+#: personal/quota/class_quotaAccount.inc:26
 msgid "Plugin quota"
 msgstr ""
 
-#: plugins/personal/quota/class_quotaAccount.inc:94
-#: plugins/personal/quota/class_quotaAccount.inc:404
+#: personal/quota/class_quotaAccount.inc:93
+#: personal/quota/class_quotaAccount.inc:401
 msgid "KB"
 msgstr ""
 
-#: plugins/personal/quota/class_quotaAccount.inc:94
-#: plugins/personal/quota/class_quotaAccount.inc:404
+#: personal/quota/class_quotaAccount.inc:93
+#: personal/quota/class_quotaAccount.inc:401
 msgid "MB"
 msgstr ""
 
-#: plugins/personal/quota/class_quotaAccount.inc:94
-#: plugins/personal/quota/class_quotaAccount.inc:404
+#: personal/quota/class_quotaAccount.inc:93
+#: personal/quota/class_quotaAccount.inc:401
 msgid "GB"
 msgstr ""
 
-#: plugins/personal/quota/class_quotaAccount.inc:94
-#: plugins/personal/quota/class_quotaAccount.inc:404
+#: personal/quota/class_quotaAccount.inc:93
+#: personal/quota/class_quotaAccount.inc:401
 msgid "TB"
 msgstr ""
 
-#: plugins/personal/quota/class_quotaAccount.inc:154
-#: plugins/personal/quota/class_quotaAccount.inc:173
-#: plugins/personal/quota/class_quotaAccount.inc:175
+#: personal/quota/class_quotaAccount.inc:153
+#: personal/quota/class_quotaAccount.inc:172
+#: personal/quota/class_quotaAccount.inc:174
 msgid "QUOTA"
 msgstr ""
 
-#: plugins/personal/quota/class_quotaAccount.inc:165
+#: personal/quota/class_quotaAccount.inc:164
 msgid "There is no quota server configured"
 msgstr ""
 
-#: plugins/personal/quota/class_quotaAccount.inc:384
+#: personal/quota/class_quotaAccount.inc:381
 msgid "Plugin for quota suport"
 msgstr ""
 
-#: plugins/personal/quota/class_quotaAccount.inc:388
+#: personal/quota/class_quotaAccount.inc:385
 msgid "My account"
 msgstr ""
 
-#: plugins/personal/quota/class_quotaAccount.inc:393
+#: personal/quota/class_quotaAccount.inc:390
 msgid "uid"
 msgstr ""
 
-#: plugins/personal/quota/class_quotaAccount.inc:404
+#: personal/quota/class_quotaAccount.inc:401
 msgid "B"
 msgstr ""
 
-#: plugins/personal/quota/class_quotaAccount.inc:404
+#: personal/quota/class_quotaAccount.inc:401
 msgid "PB"
 msgstr ""
 
-#: plugins/personal/quota/class_quotaAccount.inc:404
+#: personal/quota/class_quotaAccount.inc:401
 msgid "EB"
 msgstr ""
 
-#: plugins/personal/quota/singleSystemSelect/singleSystem-list.tpl:13
+#: personal/quota/singleSystemSelect/singleSystem-list.tpl:13
 msgid "Base"
 msgstr ""
 
-#: plugins/personal/quota/singleSystemSelect/singleSystem-list.xml:10
+#: personal/quota/singleSystemSelect/singleSystem-list.xml:10
 msgid "Please select the desired entries"
 msgstr ""
 
-#: plugins/personal/quota/singleSystemSelect/singleSystem-list.xml:14
+#: personal/quota/singleSystemSelect/singleSystem-list.xml:14
 msgid "Systems"
 msgstr ""
 
-#: plugins/personal/quota/singleSystemSelect/singleSystem-list.xml:41
+#: personal/quota/singleSystemSelect/singleSystem-list.xml:41
 msgid "Computer Name"
 msgstr ""
 
-#: plugins/personal/quota/singleSystemSelect/singleSystem-list.xml:58
+#: personal/quota/singleSystemSelect/singleSystem-list.xml:58
 msgid "Actions"
 msgstr ""
 
-#: plugins/personal/quota/singleSystemSelect/singleSystem-list.xml:72
-#: plugins/personal/quota/singleSystemSelect/singleSystem-list.xml:78
+#: personal/quota/singleSystemSelect/singleSystem-list.xml:72
+#: personal/quota/singleSystemSelect/singleSystem-list.xml:78
 msgid "Select system"
 msgstr ""
 
-#: plugins/personal/quota/singleSystemSelect/singleSystem-filter.tpl:3
+#: personal/quota/singleSystemSelect/singleSystem-filter.tpl:3
 msgid "Filter"
 msgstr ""

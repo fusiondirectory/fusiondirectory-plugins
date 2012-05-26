@@ -8,16 +8,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: polski\n"
- 
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-24 23:38+0100\n"
+"POT-Creation-Date: 2012-05-26 17:33+0200\n"
 "PO-Revision-Date: 2007-07-14 21:45+0100\n"
 "Last-Translator: Piotr Rybicki <meritus@innervision.pl>\n"
 "Language-Team: Piotr Rybicki <meritus@innervision.pl>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "X-Poedit-Language: Polish\n"
 "X-Poedit-Country: POLAND\n"
 "X-Poedit-SourceCharset: iso-8859-2\n"
@@ -99,7 +98,7 @@ msgstr "Usługa poczty Kolab"
 
 #: admin/systems/services/kolab/class_servKolab.inc:449
 #: personal/connectivity/kolab/class_kolabAccount.inc:26
-#: personal/connectivity/kolab/class_kolabAccount.inc:540
+#: personal/connectivity/kolab/class_kolabAccount.inc:683
 msgid "Kolab"
 msgstr "Kolab"
 
@@ -315,8 +314,8 @@ msgid "Please remove the mail settings first!"
 msgstr "Zaznacz aby zobaczyć grupy które zawierają ustawienia poczty"
 
 #: personal/connectivity/kolab/class_kolabAccount.inc:27
-msgid "This does something"
-msgstr "To robi coś"
+msgid "This plugin manage the user settings for a kolab server"
+msgstr ""
 
 #: personal/connectivity/kolab/class_kolabAccount.inc:199
 msgid "Mail address"
@@ -368,38 +367,38 @@ msgstr "Polityka zapraszania dla adresu '%s' jest nieprawidłowa."
 msgid "There's no mail user with address '%s' for your invitation policy!"
 msgstr "Brak użytkownika pocztowego o adresie '%s' dla polityki zapraszania!"
 
-#: personal/connectivity/kolab/class_kolabAccount.inc:541
+#: personal/connectivity/kolab/class_kolabAccount.inc:684
 msgid "Kolab account settings"
 msgstr "Ustawienia konta Kolab"
 
-#: personal/connectivity/kolab/class_kolabAccount.inc:541
+#: personal/connectivity/kolab/class_kolabAccount.inc:684
 #, fuzzy
 msgid "Connectivity addon"
 msgstr "Konto połączeń"
 
-#: personal/connectivity/kolab/class_kolabAccount.inc:545
+#: personal/connectivity/kolab/class_kolabAccount.inc:688
 msgid "My account"
 msgstr "Moje konto "
 
-#: personal/connectivity/kolab/class_kolabAccount.inc:550
+#: personal/connectivity/kolab/class_kolabAccount.inc:693
 msgid "Free busy future"
 msgstr "Free busy przyszłość"
 
-#: personal/connectivity/kolab/class_kolabAccount.inc:551
+#: personal/connectivity/kolab/class_kolabAccount.inc:694
 msgid "Mail size restriction"
 msgstr "Ograniczenia rozmiaru wiadomości"
 
-#: personal/connectivity/kolab/class_kolabAccount.inc:552
+#: personal/connectivity/kolab/class_kolabAccount.inc:695
 msgid "Free busy information"
 msgstr "Informacja FreeBusy"
 
-#: personal/connectivity/kolab/class_kolabAccount.inc:553
+#: personal/connectivity/kolab/class_kolabAccount.inc:696
 #: personal/connectivity/kolab/kolab.tpl:51
 #: personal/connectivity/kolab/kolab.tpl:63
 msgid "Delegations"
 msgstr "Delegacje"
 
-#: personal/connectivity/kolab/class_kolabAccount.inc:554
+#: personal/connectivity/kolab/class_kolabAccount.inc:697
 #: personal/connectivity/kolab/kolab.tpl:119
 msgid "Invitation policy"
 msgstr "Polityka zapraszania"
@@ -440,6 +439,9 @@ msgstr "Przyszłość"
 #: personal/connectivity/kolab/kolab.tpl:112
 msgid "days"
 msgstr "dni"
+
+#~ msgid "This does something"
+#~ msgstr "To robi coś"
 
 #, fuzzy
 #~ msgid "Junk mail"

@@ -8,33 +8,34 @@
 #  Alfred Schroeder <schroeder@GONICUS.de>, 2004. 
 #  Cajus Pollmeier <pollmeier@gonicus.de>, 2004. 
 #  Niels Klomp (CareWorks ICT Services) <nk@careworks.nl>, 2005.
- 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-24 23:38+0100\n"
+"POT-Creation-Date: 2012-05-26 17:33+0200\n"
 "PO-Revision-Date: 2006-06-02 16:58+0100\n"
 "Last-Translator: Niels Klomp (CareWorks ICT Services) <nk@careworks.nl>\n"
 "Language-Team: CareWorks ICT Services <info@careworks.nl>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 
 #: personal/connectivity/webdav/webdav.tpl:5
-#: personal/connectivity/webdav/class_webdavAccount.inc:186
+#: personal/connectivity/webdav/class_webdavAccount.inc:233
 msgid "WebDAV account"
 msgstr "WebDAV Account"
 
 #: personal/connectivity/webdav/class_webdavAccount.inc:26
-#: personal/connectivity/webdav/class_webdavAccount.inc:185
+#: personal/connectivity/webdav/class_webdavAccount.inc:232
 msgid "WebDAV"
 msgstr "WebDAV"
 
 #: personal/connectivity/webdav/class_webdavAccount.inc:27
-msgid "This does something"
-msgstr "Dit doet iets"
+msgid ""
+"This allow to save the information for giving access to a webdav server or "
+"not"
+msgstr ""
 
 #: personal/connectivity/webdav/class_webdavAccount.inc:111
 #: personal/connectivity/webdav/class_webdavAccount.inc:166
@@ -42,14 +43,17 @@ msgstr "Dit doet iets"
 msgid "LDAP error"
 msgstr "LDAP fout:"
 
-#: personal/connectivity/webdav/class_webdavAccount.inc:186
+#: personal/connectivity/webdav/class_webdavAccount.inc:233
 #, fuzzy
 msgid "Connectivity addon"
 msgstr "Verbindingen"
 
-#: personal/connectivity/webdav/class_webdavAccount.inc:190
+#: personal/connectivity/webdav/class_webdavAccount.inc:237
 msgid "My account"
 msgstr "Mijn account"
+
+#~ msgid "This does something"
+#~ msgstr "Dit doet iets"
 
 #, fuzzy
 #~ msgid "Removing of user/webDAV account with dn '%s' failed."

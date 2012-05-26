@@ -6,19 +6,18 @@
 #
 #
 #  Jiang Xin <worldhello.net@gmail.com>, 2007.
- 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-24 23:38+0100\n"
+"POT-Creation-Date: 2012-05-26 17:33+0200\n"
 "PO-Revision-Date: 2007-06-03 12:27+0800\n"
 "Last-Translator: Jiang Xin <worldhello.net@gmail.com>\n"
 "Language-Team: Chinese Simplified <zh@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "X-Generator: KBabel 1.11.4\n"
 
 #: admin/groups/mail/mail_admins.tpl:4
@@ -106,7 +105,7 @@ msgstr ""
 #: admin/groups/mail/class_groupMail.inc:869
 #: admin/groups/mail/class_groupMail.inc:1014
 #: admin/ogroups/mail/paste_mail.tpl:4
-#: admin/ogroups/mail/class_mailogroup.inc:224
+#: admin/ogroups/mail/class_mailogroup.inc:206
 #: personal/mail/class_mailAccount.inc:71
 #: personal/mail/class_mailAccount.inc:254
 #: personal/mail/class_mailAccount.inc:262
@@ -137,9 +136,6 @@ msgstr "在保存完毕该账号后，删除共享目录和其中所有内容"
 #: admin/groups/mail/class_groupMail.inc:447
 #: admin/systems/services/spam/class_goSpamServer.inc:163
 #: admin/systems/services/spam/class_goSpamServer.inc:236
-#: addons/mailqueue/class_mailqueue.inc:130
-#: addons/mailqueue/class_mailqueue.inc:164
-#: addons/mailqueue/class_mailqueue.inc:170
 #: personal/mail/sieve/class_sieveManagement.inc:203
 #: personal/mail/sieve/class_sieveManagement.inc:208
 #: personal/mail/sieve/class_sieveManagement.inc:214
@@ -168,9 +164,9 @@ msgstr "请选择一个有效的邮件服务器。"
 #: admin/groups/mail/class_groupMail.inc:881
 #: admin/groups/mail/class_groupMail.inc:901
 #: admin/groups/mail/class_groupMail.inc:1022
-#: admin/ogroups/mail/class_mailogroup.inc:124
-#: admin/ogroups/mail/class_mailogroup.inc:131
-#: admin/ogroups/mail/class_mailogroup.inc:232
+#: admin/ogroups/mail/class_mailogroup.inc:106
+#: admin/ogroups/mail/class_mailogroup.inc:113
+#: admin/ogroups/mail/class_mailogroup.inc:214
 #: personal/mail/mailAddressSelect/selectMailAddress-list.xml:56
 #: personal/mail/class_mailAccount.inc:352
 #: personal/mail/class_mailAccount.inc:388
@@ -209,8 +205,8 @@ msgstr "您正在添加的地址已经被用户使用"
 #: admin/systems/services/mail/class_goMailServer.inc:582
 #: admin/systems/services/spam/class_goSpamServer.inc:297
 #: admin/systems/services/virus/class_goVirusServer.inc:174
-#: admin/ogroups/mail/class_mailogroup.inc:158
-#: admin/ogroups/mail/class_mailogroup.inc:195
+#: admin/ogroups/mail/class_mailogroup.inc:140
+#: admin/ogroups/mail/class_mailogroup.inc:177
 #: personal/mail/class_mailAccount.inc:853
 #: personal/mail/class_mailAccount.inc:926
 #, fuzzy
@@ -350,8 +346,7 @@ msgstr "添加本地"
 msgid "Generic"
 msgstr "通用配置"
 
-#: admin/groups/mail/mail.tpl:35 addons/mailqueue/contents.tpl:73
-#: personal/mail/generic.tpl:30
+#: admin/groups/mail/mail.tpl:35 personal/mail/generic.tpl:30
 msgid "Server"
 msgstr "服务器"
 
@@ -504,7 +499,7 @@ msgstr ""
 
 #: admin/systems/services/imap/class_goImapServer.inc:220
 #: admin/systems/services/mail/class_goMailServer.inc:701
-#: admin/systems/services/spam/class_goSpamServer.inc:341
+#: admin/systems/services/spam/class_goSpamServer.inc:350
 #: admin/systems/services/virus/class_goVirusServer.inc:240
 msgid "Services"
 msgstr "服务"
@@ -749,8 +744,8 @@ msgstr "规则"
 
 #: admin/systems/services/spam/class_goSpamServer.inc:62
 #: admin/systems/services/spam/class_goSpamServer.inc:340
-#: admin/systems/services/spam/class_goSpamServer.inc:341
-#: admin/systems/services/spam/class_goSpamServer.inc:367
+#: admin/systems/services/spam/class_goSpamServer.inc:349
+#: admin/systems/services/spam/class_goSpamServer.inc:350
 msgid "Spamassassin"
 msgstr "Spamassassin"
 
@@ -763,52 +758,52 @@ msgstr "SMTP 授权网络"
 msgid "Score"
 msgstr ""
 
-#: admin/systems/services/spam/class_goSpamServer.inc:349
+#: admin/systems/services/spam/class_goSpamServer.inc:358
 #: admin/systems/services/spam/goSpamServer.tpl:8
 msgid "Rewrite header"
 msgstr "重写信头"
 
-#: admin/systems/services/spam/class_goSpamServer.inc:350
+#: admin/systems/services/spam/class_goSpamServer.inc:359
 #, fuzzy
 msgid "Trusted networks"
 msgstr "SMTP 授权网络"
 
-#: admin/systems/services/spam/class_goSpamServer.inc:351
+#: admin/systems/services/spam/class_goSpamServer.inc:360
 #: admin/systems/services/spam/goSpamServer.tpl:18
 msgid "Required score"
 msgstr "需要的分数"
 
-#: admin/systems/services/spam/class_goSpamServer.inc:352
+#: admin/systems/services/spam/class_goSpamServer.inc:361
 #, fuzzy
 msgid "Rules"
 msgstr "规则"
 
-#: admin/systems/services/spam/class_goSpamServer.inc:354
+#: admin/systems/services/spam/class_goSpamServer.inc:363
 #: admin/systems/services/spam/goSpamServer.tpl:69
 msgid "Enable use of bayes filtering"
 msgstr "启用 bayes 过滤"
 
-#: admin/systems/services/spam/class_goSpamServer.inc:355
+#: admin/systems/services/spam/class_goSpamServer.inc:364
 #, fuzzy
 msgid "Enabled bayes auto learning"
 msgstr "启用 bayes 自动学习"
 
-#: admin/systems/services/spam/class_goSpamServer.inc:356
+#: admin/systems/services/spam/class_goSpamServer.inc:365
 #: admin/systems/services/spam/goSpamServer.tpl:75
 msgid "Enable RBL checks"
 msgstr "启用 RBL 检查"
 
-#: admin/systems/services/spam/class_goSpamServer.inc:357
+#: admin/systems/services/spam/class_goSpamServer.inc:366
 #: admin/systems/services/spam/goSpamServer.tpl:86
 msgid "Enable use of Razor"
 msgstr "启用 Razor 的使用"
 
-#: admin/systems/services/spam/class_goSpamServer.inc:358
+#: admin/systems/services/spam/class_goSpamServer.inc:367
 #: admin/systems/services/spam/goSpamServer.tpl:89
 msgid "Enable use of DDC"
 msgstr "启用 DDC 的使用"
 
-#: admin/systems/services/spam/class_goSpamServer.inc:359
+#: admin/systems/services/spam/class_goSpamServer.inc:368
 #: admin/systems/services/spam/goSpamServer.tpl:92
 #, fuzzy
 msgid "Enable use of Pyzor"
@@ -937,248 +932,28 @@ msgstr "邮件传递列表"
 msgid "Primary mail address for this distribution list"
 msgstr "此分配列表的主要邮件地址"
 
-#: admin/ogroups/mail/class_mailogroup.inc:88
+#: admin/ogroups/mail/class_mailogroup.inc:70
 msgid "Remove mail account"
 msgstr "删除邮件账号"
 
-#: admin/ogroups/mail/class_mailogroup.inc:89
-#: admin/ogroups/mail/class_mailogroup.inc:92
+#: admin/ogroups/mail/class_mailogroup.inc:71
+#: admin/ogroups/mail/class_mailogroup.inc:74
 #, fuzzy
 msgid "mail group"
 msgstr "显示邮件组"
 
-#: admin/ogroups/mail/class_mailogroup.inc:91
+#: admin/ogroups/mail/class_mailogroup.inc:73
 msgid "Create mail account"
 msgstr "创建邮件账号"
 
-#: admin/ogroups/mail/class_mailogroup.inc:124
+#: admin/ogroups/mail/class_mailogroup.inc:106
 msgid "your-name@your-domain.com"
 msgstr ""
 
-#: admin/ogroups/mail/class_mailogroup.inc:225
+#: admin/ogroups/mail/class_mailogroup.inc:207
 #, fuzzy
 msgid "Mail group"
 msgstr "显示邮件组"
-
-#: addons/mailqueue/class_mailqueue.inc:26
-#: addons/mailqueue/class_mailqueue.inc:351 addons/mailqueue/main.inc:57
-msgid "Mail queue"
-msgstr "邮件队列"
-
-#: addons/mailqueue/class_mailqueue.inc:27
-#: personal/mail/class_mailAccount.inc:72
-#, fuzzy
-msgid "This does something"
-msgstr "******"
-
-#: addons/mailqueue/class_mailqueue.inc:225
-msgid "up"
-msgstr "上"
-
-#: addons/mailqueue/class_mailqueue.inc:227
-msgid "down"
-msgstr "下"
-
-#: addons/mailqueue/class_mailqueue.inc:238
-#: addons/mailqueue/class_mailqueue.inc:338
-msgid "All"
-msgstr "全部"
-
-#: addons/mailqueue/class_mailqueue.inc:282
-msgid "no limit"
-msgstr "无限"
-
-#: addons/mailqueue/class_mailqueue.inc:285
-msgid "hour"
-msgstr "小时"
-
-#: addons/mailqueue/class_mailqueue.inc:287
-msgid "hours"
-msgstr "小时"
-
-#: addons/mailqueue/class_mailqueue.inc:339
-msgid "Hold"
-msgstr "挂起"
-
-#: addons/mailqueue/class_mailqueue.inc:340
-msgid "Un hold"
-msgstr "解除挂起"
-
-#: addons/mailqueue/class_mailqueue.inc:341 addons/mailqueue/contents.tpl:93
-#: personal/mail/sieve/class_sieveManagement.inc:636
-msgid "Active"
-msgstr "活动"
-
-#: addons/mailqueue/class_mailqueue.inc:342
-msgid "Not active"
-msgstr "不活动"
-
-#: addons/mailqueue/class_mailqueue.inc:352
-#: addons/mailqueue/class_mailqueue.inc:357
-#, fuzzy
-msgid "Mail queue addon"
-msgstr "邮件队列"
-
-#: addons/mailqueue/class_mailqueue.inc:360
-#, fuzzy
-msgid "Unhold all messages"
-msgstr "挂起所有邮件"
-
-#: addons/mailqueue/class_mailqueue.inc:361 addons/mailqueue/contents.tpl:38
-msgid "Hold all messages"
-msgstr "挂起所有邮件"
-
-#: addons/mailqueue/class_mailqueue.inc:362
-#, fuzzy
-msgid "Delete all messages"
-msgstr "解除所有邮件"
-
-#: addons/mailqueue/class_mailqueue.inc:363 addons/mailqueue/contents.tpl:48
-msgid "Requeue all messages"
-msgstr "所有邮件重入队列"
-
-#: addons/mailqueue/class_mailqueue.inc:364
-#, fuzzy
-msgid "Unhold message"
-msgstr "挂起邮件"
-
-#: addons/mailqueue/class_mailqueue.inc:365 addons/mailqueue/contents.tpl:120
-msgid "Hold message"
-msgstr "挂起邮件"
-
-#: addons/mailqueue/class_mailqueue.inc:366
-#, fuzzy
-msgid "Delete message"
-msgstr "删除这条信息"
-
-#: addons/mailqueue/class_mailqueue.inc:367
-#, fuzzy
-msgid "Requeue message"
-msgstr "将此邮件重入队列"
-
-#: addons/mailqueue/class_mailqueue.inc:368
-msgid "Gathering queue data"
-msgstr ""
-
-#: addons/mailqueue/class_mailqueue.inc:369
-#, fuzzy
-msgid "Get header information"
-msgstr "用户一般信息"
-
-#: addons/mailqueue/contents.tpl:10 addons/mailqueue/contents.tpl:28
-msgid "Search"
-msgstr "查找"
-
-#: addons/mailqueue/contents.tpl:11
-msgid "Search for"
-msgstr "查询"
-
-#: addons/mailqueue/contents.tpl:12
-msgid "Please enter a search string here."
-msgstr "请在这里输入一个查询字符串。"
-
-#: addons/mailqueue/contents.tpl:14
-msgid "Select a server"
-msgstr "选择一个服务器"
-
-#: addons/mailqueue/contents.tpl:18
-msgid "with status"
-msgstr "具有状态"
-
-#: addons/mailqueue/contents.tpl:23
-msgid "within the last"
-msgstr "在最近的"
-
-#: addons/mailqueue/contents.tpl:33
-msgid "Remove all messages"
-msgstr "删除所有邮件"
-
-#: addons/mailqueue/contents.tpl:34
-msgid "Remove all messages from selected servers queue"
-msgstr "从所选服务器队列中删除所有邮件"
-
-#: addons/mailqueue/contents.tpl:39
-msgid "Hold all messages in selected servers queue"
-msgstr "从所选服务器队列中挂起所有邮件"
-
-#: addons/mailqueue/contents.tpl:43
-msgid "Release all messages"
-msgstr "解除所有邮件"
-
-#: addons/mailqueue/contents.tpl:44
-msgid "Release all messages in selected servers queue"
-msgstr "从所选服务器队列中解除所有邮件"
-
-#: addons/mailqueue/contents.tpl:49
-msgid "Requeue all messages in selected servers queue"
-msgstr "所选服务器队列所有邮件重入队列"
-
-#: addons/mailqueue/contents.tpl:63
-msgid "Search returned no results"
-msgstr "查无结果"
-
-#: addons/mailqueue/contents.tpl:72
-msgid "ID"
-msgstr "ID"
-
-#: addons/mailqueue/contents.tpl:74
-#: personal/mail/sieve/class_sieveManagement.inc:594
-#: personal/mail/sieve/templates/element_size.tpl:4
-msgid "Size"
-msgstr "大小"
-
-#: addons/mailqueue/contents.tpl:75
-msgid "Arrival"
-msgstr "到达"
-
-#: addons/mailqueue/contents.tpl:76
-msgid "Sender"
-msgstr "发送者"
-
-#: addons/mailqueue/contents.tpl:77
-msgid "Recipient"
-msgstr "收件人"
-
-#: addons/mailqueue/contents.tpl:78
-msgid "Status"
-msgstr "状态"
-
-#: addons/mailqueue/contents.tpl:105
-msgid "delete"
-msgstr "删除"
-
-#: addons/mailqueue/contents.tpl:105
-msgid "Delete this message"
-msgstr "删除这条信息"
-
-#: addons/mailqueue/contents.tpl:113
-msgid "unhold"
-msgstr "释放"
-
-#: addons/mailqueue/contents.tpl:113
-msgid "Release message"
-msgstr "解除挂起的邮件"
-
-#: addons/mailqueue/contents.tpl:120
-msgid "hold"
-msgstr "挂起"
-
-#: addons/mailqueue/contents.tpl:127
-msgid "requeue"
-msgstr "重入队列"
-
-#: addons/mailqueue/contents.tpl:127
-msgid "Requeue this message"
-msgstr "将此邮件重入队列"
-
-#: addons/mailqueue/contents.tpl:133
-msgid "header"
-msgstr "邮件头"
-
-#: addons/mailqueue/contents.tpl:134
-#, fuzzy
-msgid "Display header of this message"
-msgstr "显示此邮件邮件头"
 
 #: personal/mail/class_mail-methods-cyrus.inc:58
 msgid "There are no IMAP compatible mail servers defined!"
@@ -1480,6 +1255,11 @@ msgstr "邮件头"
 msgid "Envelope"
 msgstr ""
 
+#: personal/mail/sieve/class_sieveManagement.inc:594
+#: personal/mail/sieve/templates/element_size.tpl:4
+msgid "Size"
+msgstr "大小"
+
 #: personal/mail/sieve/class_sieveManagement.inc:595
 #: personal/mail/sieve/templates/element_exists.tpl:8
 #, fuzzy
@@ -1506,6 +1286,10 @@ msgstr "真"
 #: personal/mail/sieve/class_sieveElement_If.inc:915
 msgid "False"
 msgstr "假"
+
+#: personal/mail/sieve/class_sieveManagement.inc:636
+msgid "Active"
+msgstr "活动"
 
 #: personal/mail/sieve/class_sieveManagement.inc:637
 msgid "This script is marked as active"
@@ -2052,7 +1836,8 @@ msgstr "编辑"
 msgid ""
 "Please double check if your really want to do this since there is no way for "
 "FusionDirectory to get your data back."
-msgstr "请再次检查您是否要这么做，因为 FusionDirectory 将没有办法将您的数据找回。"
+msgstr ""
+"请再次检查您是否要这么做，因为 FusionDirectory 将没有办法将您的数据找回。"
 
 #: personal/mail/sieve/templates/remove_script.tpl:10
 #, fuzzy
@@ -2222,6 +2007,11 @@ msgstr "布尔值"
 #, fuzzy
 msgid "update"
 msgstr "更新"
+
+#: personal/mail/class_mailAccount.inc:72
+#, fuzzy
+msgid "This does something"
+msgstr "******"
 
 #: personal/mail/class_mailAccount.inc:640
 #: personal/mail/class_mail-methods.inc:160
@@ -2440,6 +2230,155 @@ msgstr "MB"
 #: personal/mail/mail_locals.tpl:35
 msgid "Select department"
 msgstr "选择类别"
+
+#~ msgid "Mail queue"
+#~ msgstr "邮件队列"
+
+#~ msgid "up"
+#~ msgstr "上"
+
+#~ msgid "down"
+#~ msgstr "下"
+
+#~ msgid "All"
+#~ msgstr "全部"
+
+#~ msgid "no limit"
+#~ msgstr "无限"
+
+#~ msgid "hour"
+#~ msgstr "小时"
+
+#~ msgid "hours"
+#~ msgstr "小时"
+
+#~ msgid "Hold"
+#~ msgstr "挂起"
+
+#~ msgid "Un hold"
+#~ msgstr "解除挂起"
+
+#~ msgid "Not active"
+#~ msgstr "不活动"
+
+#, fuzzy
+#~ msgid "Mail queue addon"
+#~ msgstr "邮件队列"
+
+#, fuzzy
+#~ msgid "Unhold all messages"
+#~ msgstr "挂起所有邮件"
+
+#~ msgid "Hold all messages"
+#~ msgstr "挂起所有邮件"
+
+#, fuzzy
+#~ msgid "Delete all messages"
+#~ msgstr "解除所有邮件"
+
+#~ msgid "Requeue all messages"
+#~ msgstr "所有邮件重入队列"
+
+#, fuzzy
+#~ msgid "Unhold message"
+#~ msgstr "挂起邮件"
+
+#~ msgid "Hold message"
+#~ msgstr "挂起邮件"
+
+#, fuzzy
+#~ msgid "Delete message"
+#~ msgstr "删除这条信息"
+
+#, fuzzy
+#~ msgid "Requeue message"
+#~ msgstr "将此邮件重入队列"
+
+#, fuzzy
+#~ msgid "Get header information"
+#~ msgstr "用户一般信息"
+
+#~ msgid "Search"
+#~ msgstr "查找"
+
+#~ msgid "Search for"
+#~ msgstr "查询"
+
+#~ msgid "Please enter a search string here."
+#~ msgstr "请在这里输入一个查询字符串。"
+
+#~ msgid "Select a server"
+#~ msgstr "选择一个服务器"
+
+#~ msgid "with status"
+#~ msgstr "具有状态"
+
+#~ msgid "within the last"
+#~ msgstr "在最近的"
+
+#~ msgid "Remove all messages"
+#~ msgstr "删除所有邮件"
+
+#~ msgid "Remove all messages from selected servers queue"
+#~ msgstr "从所选服务器队列中删除所有邮件"
+
+#~ msgid "Hold all messages in selected servers queue"
+#~ msgstr "从所选服务器队列中挂起所有邮件"
+
+#~ msgid "Release all messages"
+#~ msgstr "解除所有邮件"
+
+#~ msgid "Release all messages in selected servers queue"
+#~ msgstr "从所选服务器队列中解除所有邮件"
+
+#~ msgid "Requeue all messages in selected servers queue"
+#~ msgstr "所选服务器队列所有邮件重入队列"
+
+#~ msgid "Search returned no results"
+#~ msgstr "查无结果"
+
+#~ msgid "ID"
+#~ msgstr "ID"
+
+#~ msgid "Arrival"
+#~ msgstr "到达"
+
+#~ msgid "Sender"
+#~ msgstr "发送者"
+
+#~ msgid "Recipient"
+#~ msgstr "收件人"
+
+#~ msgid "Status"
+#~ msgstr "状态"
+
+#~ msgid "delete"
+#~ msgstr "删除"
+
+#~ msgid "Delete this message"
+#~ msgstr "删除这条信息"
+
+#~ msgid "unhold"
+#~ msgstr "释放"
+
+#~ msgid "Release message"
+#~ msgstr "解除挂起的邮件"
+
+#~ msgid "hold"
+#~ msgstr "挂起"
+
+#~ msgid "requeue"
+#~ msgstr "重入队列"
+
+#~ msgid "Requeue this message"
+#~ msgstr "将此邮件重入队列"
+
+#~ msgid "header"
+#~ msgstr "邮件头"
+
+#, fuzzy
+#~ msgid "Display header of this message"
+#~ msgstr "显示此邮件邮件头"
 
 #, fuzzy
 #~ msgid "Cannot connect mail method: %s"

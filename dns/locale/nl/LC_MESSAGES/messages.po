@@ -8,19 +8,18 @@
 #  Alfred Schroeder <schroeder@GONICUS.de>, 2004. 
 #  Cajus Pollmeier <pollmeier@gonicus.de>, 2004. 
 #  Niels Klomp (CareWorks ICT Services) <nk@careworks.nl>, 2005.
- 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-24 23:37+0100\n"
+"POT-Creation-Date: 2012-05-26 17:33+0200\n"
 "PO-Revision-Date: 2006-06-02 16:58+0100\n"
 "Last-Translator: Niels Klomp (CareWorks ICT Services) <nk@careworks.nl>\n"
 "Language-Team: CareWorks ICT Services <info@careworks.nl>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 
 #: admin/systems/services/dns/class_servDNSeditZoneEntries.inc:126
 #: admin/systems/services/dns/servDNSeditZoneEntries.tpl:13
@@ -29,7 +28,9 @@ msgstr "Nieuwe regel"
 
 #: admin/systems/services/dns/class_servDNSeditZoneEntries.inc:240
 #: admin/systems/services/dns/class_servDNS.inc:194
-#: admin/systems/services/dns/class_servDNS.inc:355
+#: admin/systems/services/dns/class_servDNS.inc:369
+#: admin/systems/services/dns/class_servDNS.inc:383
+#: admin/systems/services/dns/class_servDNS.inc:389
 #: admin/systems/services/dns/class_DNS.inc:181
 #: admin/systems/services/dns/class_DNS.inc:186
 #: admin/systems/services/dns/class_DNS.inc:650
@@ -148,9 +149,9 @@ msgid "Value should be composed of 'priority weight port target'."
 msgstr ""
 
 #: admin/systems/services/dns/class_servDNS.inc:51
-#: admin/systems/services/dns/class_servDNS.inc:560
-#: admin/systems/services/dns/class_servDNS.inc:589
-#: admin/systems/services/dns/class_servDNS.inc:590
+#: admin/systems/services/dns/class_servDNS.inc:591
+#: admin/systems/services/dns/class_servDNS.inc:620
+#: admin/systems/services/dns/class_servDNS.inc:621
 #, fuzzy
 msgid "DNS service"
 msgstr "Voeg DNS service toe"
@@ -166,59 +167,69 @@ msgid ""
 "action, use the cancel button below."
 msgstr ""
 
-#: admin/systems/services/dns/class_servDNS.inc:289
-#: admin/systems/services/dns/class_servDNS.inc:603
+#: admin/systems/services/dns/class_servDNS.inc:303
+#: admin/systems/services/dns/class_servDNS.inc:634
 #: admin/systems/services/dns/class_servDNSeditZone.inc:360
 msgid "Reverse zone"
 msgstr "Reverse zone"
 
-#: admin/systems/services/dns/class_servDNS.inc:290
-#: admin/systems/services/dns/class_servDNS.inc:612
+#: admin/systems/services/dns/class_servDNS.inc:304
+#: admin/systems/services/dns/class_servDNS.inc:643
 #: admin/systems/services/dns/servdnseditzone.tpl:129
 msgid "TTL"
 msgstr "TTL"
 
-#: admin/systems/services/dns/class_servDNS.inc:291
+#: admin/systems/services/dns/class_servDNS.inc:305
 msgid "Class"
 msgstr "Klasse"
 
-#: admin/systems/services/dns/class_servDNS.inc:355
+#: admin/systems/services/dns/class_servDNS.inc:369
 #, fuzzy, php-format
 msgid "Cannot delete the selected zone. It is still in use by '%s'"
 msgstr ""
 "Kan de geselecteerde zone niet verwijderen, aangezien deze nog gebruikt "
 "wordt door de volgende regel(s) '%s'"
 
-#: admin/systems/services/dns/class_servDNS.inc:465
-#: admin/systems/services/dns/class_servDNS.inc:481
-#: admin/systems/services/dns/class_servDNS.inc:506
-#: admin/systems/services/dns/class_servDNS.inc:517
-#: admin/systems/services/dns/class_servDNS.inc:550
+#: admin/systems/services/dns/class_servDNS.inc:383
+#, php-format
+msgid "Was not able to contact argonaut server: %s"
+msgstr ""
+
+#: admin/systems/services/dns/class_servDNS.inc:389
+#, php-format
+msgid "Was not able to launch ldap2zone: %s"
+msgstr ""
+
+#: admin/systems/services/dns/class_servDNS.inc:496
+#: admin/systems/services/dns/class_servDNS.inc:512
+#: admin/systems/services/dns/class_servDNS.inc:537
+#: admin/systems/services/dns/class_servDNS.inc:548
+#: admin/systems/services/dns/class_servDNS.inc:581
 #: admin/systems/services/dns/class_DNS.inc:768
 #, fuzzy
 msgid "LDAP error"
 msgstr "LDAP fout:"
 
-#: admin/systems/services/dns/class_servDNS.inc:590
+#: admin/systems/services/dns/class_servDNS.inc:621
 msgid "Services"
 msgstr "Services"
 
-#: admin/systems/services/dns/class_servDNS.inc:598
+#: admin/systems/services/dns/class_servDNS.inc:629
 #, fuzzy
 msgid "Start service"
 msgstr "Voeg DNS service toe"
 
-#: admin/systems/services/dns/class_servDNS.inc:599
+#: admin/systems/services/dns/class_servDNS.inc:630
 #, fuzzy
 msgid "Stop service"
 msgstr "Voeg DNS service toe"
 
-#: admin/systems/services/dns/class_servDNS.inc:600
+#: admin/systems/services/dns/class_servDNS.inc:631
 #, fuzzy
 msgid "Restart service"
 msgstr "Voeg DNS service toe"
 
-#: admin/systems/services/dns/class_servDNS.inc:602
+#: admin/systems/services/dns/class_servDNS.inc:633
 #: admin/systems/services/dns/class_servDNSeditZone.inc:351
 #: admin/systems/services/dns/class_servDNSeditZone.inc:356
 #: admin/systems/services/dns/class_servDNSeditZone.inc:364
@@ -226,56 +237,56 @@ msgstr "Voeg DNS service toe"
 msgid "Zone name"
 msgstr "Zone-naam"
 
-#: admin/systems/services/dns/class_servDNS.inc:604
+#: admin/systems/services/dns/class_servDNS.inc:635
 #: admin/systems/services/dns/class_servDNSeditZone.inc:437
 #, fuzzy
 msgid "Network class"
 msgstr "Netwerkadres"
 
-#: admin/systems/services/dns/class_servDNS.inc:605
+#: admin/systems/services/dns/class_servDNS.inc:636
 #, fuzzy
 msgid "Zone entry editor"
 msgstr "Zone records"
 
-#: admin/systems/services/dns/class_servDNS.inc:606
+#: admin/systems/services/dns/class_servDNS.inc:637
 #, fuzzy
 msgid "Primary dns server"
 msgstr "Primaire DNS server voor deze zone"
 
-#: admin/systems/services/dns/class_servDNS.inc:607
+#: admin/systems/services/dns/class_servDNS.inc:638
 #: admin/systems/services/dns/servdnseditzone.tpl:80
 msgid "Mail address"
 msgstr "E-mail adres"
 
-#: admin/systems/services/dns/class_servDNS.inc:608
+#: admin/systems/services/dns/class_servDNS.inc:639
 #: admin/systems/services/dns/class_servDNSeditZone.inc:368
 msgid "Serial"
 msgstr "Serieel"
 
-#: admin/systems/services/dns/class_servDNS.inc:609
+#: admin/systems/services/dns/class_servDNS.inc:640
 #: admin/systems/services/dns/class_servDNSeditZone.inc:372
 #: admin/systems/services/dns/servdnseditzone.tpl:102
 msgid "Refresh"
 msgstr "Ververs"
 
-#: admin/systems/services/dns/class_servDNS.inc:610
+#: admin/systems/services/dns/class_servDNS.inc:641
 #: admin/systems/services/dns/class_servDNSeditZone.inc:384
 #: admin/systems/services/dns/servdnseditzone.tpl:111
 msgid "Retry"
 msgstr "Opnieuw proberen"
 
-#: admin/systems/services/dns/class_servDNS.inc:611
+#: admin/systems/services/dns/class_servDNS.inc:642
 #: admin/systems/services/dns/class_servDNSeditZone.inc:380
 #: admin/systems/services/dns/servdnseditzone.tpl:120
 msgid "Expire"
 msgstr "Vervaltijd"
 
-#: admin/systems/services/dns/class_servDNS.inc:613
+#: admin/systems/services/dns/class_servDNS.inc:644
 #, fuzzy
 msgid "MX records"
 msgstr "MX records"
 
-#: admin/systems/services/dns/class_servDNS.inc:614
+#: admin/systems/services/dns/class_servDNS.inc:645
 #: admin/systems/services/dns/servdnseditzone.tpl:48
 msgid "Zone records"
 msgstr "Zone records"
@@ -310,8 +321,8 @@ msgid ""
 "double check if your really want to do this."
 msgstr ""
 "Dit omvat 'alle' accounts, systemen etc. in deze subtree. Verzeker uzelf er "
-"van dat dit is wat u wilt, aangezien er geen mogelijkheid voor FusionDirectory is om "
-"deze gegevens terug te halen."
+"van dat dit is wat u wilt, aangezien er geen mogelijkheid voor "
+"FusionDirectory is om deze gegevens terug te halen."
 
 #: admin/systems/services/dns/servdns.tpl:14
 msgid "Following objects will be taken over"

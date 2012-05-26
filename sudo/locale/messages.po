@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-24 23:38+0100\n"
+"POT-Creation-Date: 2012-05-26 17:33+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -23,7 +24,7 @@ msgstr ""
 #: admin/sudo/sudo-filter.tpl:13 admin/sudo/sudo-list.xml:32
 #: admin/sudo/class_sudoGeneric.inc:581 admin/sudo/class_sudoGeneric.inc:586
 #: admin/sudo/class_sudoGeneric.inc:591 admin/sudo/class_sudoGeneric.inc:600
-#: admin/sudo/class_sudoGeneric.inc:639 admin/sudo/paste_generic.tpl:5
+#: admin/sudo/class_sudoGeneric.inc:710 admin/sudo/paste_generic.tpl:5
 #: admin/sudo/generic.tpl:7 admin/sudo/generic.tpl:34
 msgid "Name"
 msgstr ""
@@ -56,7 +57,7 @@ msgstr ""
 msgid "Role"
 msgstr ""
 
-#: admin/sudo/sudo-list.xml:40 admin/sudo/class_sudoGeneric.inc:640
+#: admin/sudo/sudo-list.xml:40 admin/sudo/class_sudoGeneric.inc:711
 #: admin/sudo/generic.tpl:15 admin/sudo/generic.tpl:44
 msgid "Description"
 msgstr ""
@@ -109,31 +110,31 @@ msgstr ""
 msgid "LDAP error"
 msgstr ""
 
-#: admin/sudo/class_sudoGeneric.inc:630 admin/sudo/class_sudoManagement.inc:25
+#: admin/sudo/class_sudoGeneric.inc:701 admin/sudo/class_sudoManagement.inc:25
 msgid "Sudo"
 msgstr ""
 
-#: admin/sudo/class_sudoGeneric.inc:631 admin/sudo/class_sudoGeneric.inc:636
+#: admin/sudo/class_sudoGeneric.inc:702 admin/sudo/class_sudoGeneric.inc:707
 msgid "Sudo role"
 msgstr ""
 
-#: admin/sudo/class_sudoGeneric.inc:641
+#: admin/sudo/class_sudoGeneric.inc:712
 msgid "Users"
 msgstr ""
 
-#: admin/sudo/class_sudoGeneric.inc:642
+#: admin/sudo/class_sudoGeneric.inc:713
 msgid "Host"
 msgstr ""
 
-#: admin/sudo/class_sudoGeneric.inc:643
+#: admin/sudo/class_sudoGeneric.inc:714
 msgid "Command"
 msgstr ""
 
-#: admin/sudo/class_sudoGeneric.inc:644
+#: admin/sudo/class_sudoGeneric.inc:715
 msgid "Run as user"
 msgstr ""
 
-#: admin/sudo/class_sudoGeneric.inc:645
+#: admin/sudo/class_sudoGeneric.inc:716
 msgid "Access control list"
 msgstr ""
 

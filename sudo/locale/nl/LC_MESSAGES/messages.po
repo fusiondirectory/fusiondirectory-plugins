@@ -8,19 +8,18 @@
 #  Alfred Schroeder <schroeder@GONICUS.de>, 2004. 
 #  Cajus Pollmeier <pollmeier@gonicus.de>, 2004. 
 #  Niels Klomp (CareWorks ICT Services) <nk@careworks.nl>, 2005.
- 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-24 23:38+0100\n"
+"POT-Creation-Date: 2012-05-26 17:33+0200\n"
 "PO-Revision-Date: 2006-06-02 16:58+0100\n"
 "Last-Translator: Niels Klomp (CareWorks ICT Services) <nk@careworks.nl>\n"
 "Language-Team: CareWorks ICT Services <info@careworks.nl>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 
 #: admin/sudo/sudo-filter.tpl:3
 #, fuzzy
@@ -30,7 +29,7 @@ msgstr "Filters"
 #: admin/sudo/sudo-filter.tpl:13 admin/sudo/sudo-list.xml:32
 #: admin/sudo/class_sudoGeneric.inc:581 admin/sudo/class_sudoGeneric.inc:586
 #: admin/sudo/class_sudoGeneric.inc:591 admin/sudo/class_sudoGeneric.inc:600
-#: admin/sudo/class_sudoGeneric.inc:639 admin/sudo/paste_generic.tpl:5
+#: admin/sudo/class_sudoGeneric.inc:710 admin/sudo/paste_generic.tpl:5
 #: admin/sudo/generic.tpl:7 admin/sudo/generic.tpl:34
 msgid "Name"
 msgstr "Naam"
@@ -67,7 +66,7 @@ msgstr "Lijst met gebruikers"
 msgid "Role"
 msgstr "Funktie"
 
-#: admin/sudo/sudo-list.xml:40 admin/sudo/class_sudoGeneric.inc:640
+#: admin/sudo/sudo-list.xml:40 admin/sudo/class_sudoGeneric.inc:711
 #: admin/sudo/generic.tpl:15 admin/sudo/generic.tpl:44
 msgid "Description"
 msgstr "Omschrijving"
@@ -124,36 +123,36 @@ msgstr "Groep"
 msgid "LDAP error"
 msgstr "LDAP fout:"
 
-#: admin/sudo/class_sudoGeneric.inc:630 admin/sudo/class_sudoManagement.inc:25
+#: admin/sudo/class_sudoGeneric.inc:701 admin/sudo/class_sudoManagement.inc:25
 #, fuzzy
 msgid "Sudo"
 msgstr "Achternaam"
 
-#: admin/sudo/class_sudoGeneric.inc:631 admin/sudo/class_sudoGeneric.inc:636
+#: admin/sudo/class_sudoGeneric.inc:702 admin/sudo/class_sudoGeneric.inc:707
 #, fuzzy
 msgid "Sudo role"
 msgstr "! onbekend id"
 
-#: admin/sudo/class_sudoGeneric.inc:641
+#: admin/sudo/class_sudoGeneric.inc:712
 msgid "Users"
 msgstr "Gebruikers"
 
-#: admin/sudo/class_sudoGeneric.inc:642
+#: admin/sudo/class_sudoGeneric.inc:713
 #, fuzzy
 msgid "Host"
 msgstr "Inhakers"
 
-#: admin/sudo/class_sudoGeneric.inc:643
+#: admin/sudo/class_sudoGeneric.inc:714
 #, fuzzy
 msgid "Command"
 msgstr "en"
 
-#: admin/sudo/class_sudoGeneric.inc:644
+#: admin/sudo/class_sudoGeneric.inc:715
 #, fuzzy
 msgid "Run as user"
 msgstr "Windows gebruikers"
 
-#: admin/sudo/class_sudoGeneric.inc:645
+#: admin/sudo/class_sudoGeneric.inc:716
 #, fuzzy
 msgid "Access control list"
 msgstr "Toegangsopties"

@@ -6,19 +6,18 @@
 #
 #
 #  Valia V. Vaneeva <fattie@altlinux.ru>, 2004.
- 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-24 23:38+0100\n"
+"POT-Creation-Date: 2012-05-26 17:33+0200\n"
 "PO-Revision-Date: 2005-04-18 14:35+0300\n"
 "Last-Translator: Igor Muratov <migor@altlinux.org>\n"
 "Language-Team: ALT Linux Team\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "X-Generator: poEdit 1.3.1\n"
 
 #: admin/systems/services/kolab/class_servKolab.inc:127
@@ -96,7 +95,7 @@ msgstr "Добавить сервис DNS"
 
 #: admin/systems/services/kolab/class_servKolab.inc:449
 #: personal/connectivity/kolab/class_kolabAccount.inc:26
-#: personal/connectivity/kolab/class_kolabAccount.inc:540
+#: personal/connectivity/kolab/class_kolabAccount.inc:683
 msgid "Kolab"
 msgstr ""
 
@@ -323,8 +322,8 @@ msgstr ""
 "Выберите, чтобы просмотреть список групп, которым доступны функции эл. почты"
 
 #: personal/connectivity/kolab/class_kolabAccount.inc:27
-msgid "This does something"
-msgstr "Что-то будет"
+msgid "This plugin manage the user settings for a kolab server"
+msgstr ""
 
 #: personal/connectivity/kolab/class_kolabAccount.inc:199
 #, fuzzy
@@ -379,42 +378,42 @@ msgstr ""
 msgid "There's no mail user with address '%s' for your invitation policy!"
 msgstr ""
 
-#: personal/connectivity/kolab/class_kolabAccount.inc:541
+#: personal/connectivity/kolab/class_kolabAccount.inc:684
 #, fuzzy
 msgid "Kolab account settings"
 msgstr "Моя учетная запись"
 
-#: personal/connectivity/kolab/class_kolabAccount.inc:541
+#: personal/connectivity/kolab/class_kolabAccount.inc:684
 #, fuzzy
 msgid "Connectivity addon"
 msgstr "Подключение"
 
-#: personal/connectivity/kolab/class_kolabAccount.inc:545
+#: personal/connectivity/kolab/class_kolabAccount.inc:688
 msgid "My account"
 msgstr "Моя учетная запись"
 
-#: personal/connectivity/kolab/class_kolabAccount.inc:550
+#: personal/connectivity/kolab/class_kolabAccount.inc:693
 msgid "Free busy future"
 msgstr ""
 
-#: personal/connectivity/kolab/class_kolabAccount.inc:551
+#: personal/connectivity/kolab/class_kolabAccount.inc:694
 #, fuzzy
 msgid "Mail size restriction"
 msgstr "Почтовые настройки пользователя"
 
-#: personal/connectivity/kolab/class_kolabAccount.inc:552
+#: personal/connectivity/kolab/class_kolabAccount.inc:695
 #, fuzzy
 msgid "Free busy information"
 msgstr "Общая информация о пользователе"
 
-#: personal/connectivity/kolab/class_kolabAccount.inc:553
+#: personal/connectivity/kolab/class_kolabAccount.inc:696
 #: personal/connectivity/kolab/kolab.tpl:51
 #: personal/connectivity/kolab/kolab.tpl:63
 #, fuzzy
 msgid "Delegations"
 msgstr "Назначение"
 
-#: personal/connectivity/kolab/class_kolabAccount.inc:554
+#: personal/connectivity/kolab/class_kolabAccount.inc:697
 #: personal/connectivity/kolab/kolab.tpl:119
 msgid "Invitation policy"
 msgstr ""
@@ -457,6 +456,9 @@ msgstr ""
 #, fuzzy
 msgid "days"
 msgstr "день"
+
+#~ msgid "This does something"
+#~ msgstr "Что-то будет"
 
 #, fuzzy
 #~ msgid "Junk mail"

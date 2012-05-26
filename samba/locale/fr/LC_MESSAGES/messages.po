@@ -10,14 +10,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-08 19:20+0200\n"
+"POT-Creation-Date: 2012-05-26 17:33+0200\n"
 "PO-Revision-Date: 2011-05-08 19:33+0200\n"
 "Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>\n"
 "Language-Team:  <fr@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms:  nplurals=2; plural=(n > 1);\n"
 
@@ -188,7 +188,8 @@ msgstr "Le mot de passe n'expire jamais"
 
 #: personal/samba/samba3.tpl:347 personal/samba/class_sambaAccount.inc:1197
 msgid "Login from windows client requires no password"
-msgstr "L'identification sur une station windows ne nécessite pas de mot de passe"
+msgstr ""
+"L'identification sur une station windows ne nécessite pas de mot de passe"
 
 #: personal/samba/samba3.tpl:358 personal/samba/class_sambaAccount.inc:1199
 msgid "Lock samba account"
@@ -238,8 +239,8 @@ msgid "Samba"
 msgstr ""
 
 #: personal/samba/class_sambaAccount.inc:27
-msgid "This does something"
-msgstr "Ceci fait quelque chose"
+msgid "This store the sambaAccount into the ldap tree"
+msgstr ""
 
 #: personal/samba/class_sambaAccount.inc:268
 msgid "POSIX"
@@ -287,7 +288,8 @@ msgstr "du client précédent seulement"
 #: personal/samba/class_sambaAccount.inc:524
 #, php-format
 msgid "The password is outdated since %s, by domain policy."
-msgstr "Le mot de passe est trop vieux depuis %s selon à la politique du domaine."
+msgstr ""
+"Le mot de passe est trop vieux depuis %s selon à la politique du domaine."
 
 #: personal/samba/class_sambaAccount.inc:527
 #, php-format
@@ -448,7 +450,8 @@ msgstr "Non"
 #: personal/samba/class_sambaAccount.inc:802
 #, php-format
 msgid "The password would expire on %s, but the password expiry is disabled."
-msgstr "Le mot de passe devrait expirer le %s, mais l'expiration est désactivée."
+msgstr ""
+"Le mot de passe devrait expirer le %s, mais l'expiration est désactivée."
 
 #: personal/samba/class_sambaAccount.inc:808
 msgid "Password change available"
@@ -477,10 +480,12 @@ msgstr "Avertissement"
 
 #: personal/samba/class_sambaAccount.inc:1053
 msgid "Undefined Samba SID detected. Please fix this problem manually!"
-msgstr "Détection d'un SID Samba non défini. Veuillez fixer ceci manuellement !"
+msgstr ""
+"Détection d'un SID Samba non défini. Veuillez fixer ceci manuellement !"
 
 #: personal/samba/class_sambaAccount.inc:1078
-msgid "Cannot convert primary group to samba group: group cannot be identified!"
+msgid ""
+"Cannot convert primary group to samba group: group cannot be identified!"
 msgstr ""
 "Impossible de convertir le groupe primaire en un groupe primaire samba : le "
 "groupe ne peut être identifié !"
@@ -557,3 +562,5 @@ msgstr "Sélectionner le département où sera effectuée la recherche"
 msgid "Regular expression for matching addresses"
 msgstr "Expression régulière pour sélectionner les adresses correspondantes"
 
+#~ msgid "This does something"
+#~ msgstr "Ceci fait quelque chose"

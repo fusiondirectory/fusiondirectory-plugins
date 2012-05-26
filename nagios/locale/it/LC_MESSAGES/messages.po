@@ -1,25 +1,25 @@
-# translation of messages.po to Italian
-# Copyright (C) 2011 FusionDirectory Project
-# This file is distributed under the same license as the FusionDirectory package.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
 #
-# Copyright (c) 2005 B-Open Solutions srl - http://www.bopen.it/
-# Copyright (c) 2005 Alessandro Amici <a.amici@bopen.it>
+# Translators:
 # Alessandro Amici <a.amici@bopen.it>, 2005.
 # Giuliano Di Vito <giuliano@opensides.be>, 2011.
+#   <giuliano@opensides.be>, 2012.
 msgid ""
 msgstr ""
-"Project-Id-Version: messages\n"
+"Project-Id-Version: FusionDirectory\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-14 18:18+0200\n"
-"PO-Revision-Date: 2011-04-25 19:22+0200\n"
-"Last-Translator: Giuliano Di Vito <giuliano@opensides.be>\n"
-"Language-Team: Italian <kde-i18n-doc@kde.org>\n"
+"POT-Creation-Date: 2012-05-26 17:33+0200\n"
+"PO-Revision-Date: 2012-05-26 11:11+0000\n"
+"Last-Translator: poterealpopolo <giuliano@opensides.be>\n"
+"Language-Team: Italian (http://www.transifex.net/projects/p/FusionDirectory/"
+"language/it/)\n"
+"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
-"X-Generator: Lokalize 1.0\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: personal/nagios/main.inc:135
 msgid "Nagios settings"
@@ -66,22 +66,18 @@ msgid "Mail address"
 msgstr "Indirizzo di posta elettronica"
 
 #: personal/nagios/class_nagiosAccount.inc:308 personal/nagios/nagios.tpl:27
-#, fuzzy
 msgid "Host notification period"
-msgstr "Periodo di notificazione per i sistemi"
+msgstr "Periodo di notifica dei clienti"
 
 #: personal/nagios/class_nagiosAccount.inc:309 personal/nagios/nagios.tpl:40
-#, fuzzy
 msgid "Service notification period"
-msgstr "Periodo di notificazione per i servizi"
+msgstr "Periodo di notifica dei servizi"
 
 #: personal/nagios/class_nagiosAccount.inc:310 personal/nagios/nagios.tpl:66
-#, fuzzy
 msgid "Host notification options"
-msgstr "Opzioni per la notifica dei sistemi"
+msgstr "Opzioni per la notifica dei clienti"
 
 #: personal/nagios/class_nagiosAccount.inc:311 personal/nagios/nagios.tpl:53
-#, fuzzy
 msgid "Service notification options"
 msgstr "Opzioni per la notifica dei servizi"
 
@@ -90,14 +86,12 @@ msgid "Pager number"
 msgstr "Numero del cercapersone"
 
 #: personal/nagios/class_nagiosAccount.inc:314 personal/nagios/nagios.tpl:90
-#, fuzzy
 msgid "Service notification commands"
 msgstr "Comandi per la notifica dei servizi"
 
 #: personal/nagios/class_nagiosAccount.inc:315 personal/nagios/nagios.tpl:100
-#, fuzzy
 msgid "Host notification commands"
-msgstr "Comandi per la notifica dei sistemi"
+msgstr "Comandi per la notifica dei clienti"
 
 #: personal/nagios/class_nagiosAccount.inc:316
 msgid "View system informations"
@@ -166,59 +160,3 @@ msgstr "Autorizza i comandi su tutti i servizi"
 #: personal/nagios/nagios.tpl:175
 msgid "trigger all host commands"
 msgstr "Autorizza i comandi su tutti gli host"
-
-#, fuzzy
-#~ msgid "This account has no nagios extensions."
-#~ msgstr "Questa identità non ha le estensioni per la posta"
-
-#, fuzzy
-#~ msgid "Remove nagios account"
-#~ msgstr "Rimuovi le estensioni di posta"
-
-#, fuzzy
-#~ msgid ""
-#~ "This account has nagios features enabled. You can disable them by "
-#~ "clicking below."
-#~ msgstr "Questa identià possiede estensioni di posta."
-
-#, fuzzy
-#~ msgid "Create nagios account"
-#~ msgstr "Crea estensioni di posta"
-
-#, fuzzy
-#~ msgid ""
-#~ "This account has nagios features disabled. You can enable them by "
-#~ "clicking below."
-#~ msgstr "Questa identità non possiede estensioni di posta."
-
-#, fuzzy
-#~ msgid "Saving of user/nagios account with dn '%s' failed."
-#~ msgstr "Crea estensioni di posta"
-
-#, fuzzy
-#~ msgid "The required field 'NagiosAlias' is not set."
-#~ msgstr "Il campo 'Indirizzo principale' non è stao inserito"
-
-#, fuzzy
-#~ msgid "The required field 'NagiosMail' is not set."
-#~ msgstr "Il campo 'Indirizzo principale' non è stao inserito"
-
-#, fuzzy
-#~ msgid "Please enter a valid email address in 'NagiosMail' field."
-#~ msgstr ""
-#~ "Inserire un indirizzo di posta valido nel campo 'Indirizzo principale'."
-
-#, fuzzy
-#~ msgid "Removing of user/nagios account with dn '%s' failed."
-#~ msgstr "Rimuovi le estensioni di posta"
-
-#~ msgid "Cancel"
-#~ msgstr "Annulla"
-
-#~ msgid "Click the 'Edit' button below to change informations in this dialog"
-#~ msgstr ""
-#~ "Click sul bottone 'Modifica' qui sotto per cambiare le informazioni in "
-#~ "questo dialogo"
-
-#~ msgid "Edit"
-#~ msgstr "Modifica"

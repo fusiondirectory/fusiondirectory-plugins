@@ -1,22 +1,25 @@
-# translation of messages.po to Italian
-# Copyright (c) 2005 B-Open Solutions srl - http://www.bopen.it/
-# Copyright (c) 2005 Alessandro Amici <a.amici@bopen.it>
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Translators:
 # Alessandro Amici <a.amici@bopen.it>, 2005.
 # Giuliano Di Vito <giuliano@opensides.be>, 2011.
+#   <giuliano@opensides.be>, 2012.
 msgid ""
 msgstr ""
-"Project-Id-Version: messages\n"
+"Project-Id-Version: FusionDirectory\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-14 18:18+0200\n"
-"PO-Revision-Date: 2011-04-12 08:57+0200\n"
-"Last-Translator: Giuliano Di Vito <giuliano@opensides.be>\n"
-"Language-Team: Italian <kde-i18n-doc@kde.org>\n"
+"POT-Creation-Date: 2012-05-26 17:33+0200\n"
+"PO-Revision-Date: 2012-05-26 09:26+0000\n"
+"Last-Translator: poterealpopolo <giuliano@opensides.be>\n"
+"Language-Team: Italian (http://www.transifex.net/projects/p/FusionDirectory/"
+"language/it/)\n"
+"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
-"X-Generator: Lokalize 1.0\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: admin/systems/services/kolab/class_servKolab.inc:127
 #, php-format
@@ -63,13 +66,11 @@ msgstr "Errore LDAP"
 
 #: admin/systems/services/kolab/class_servKolab.inc:329
 #: admin/systems/services/kolab/class_servKolab.inc:331
-#, fuzzy
 msgid "Future days"
 msgstr "Giorni a venire"
 
 #: admin/systems/services/kolab/class_servKolab.inc:335
 #: admin/systems/services/kolab/class_servKolab.inc:339
-#, fuzzy
 msgid "Quota"
 msgstr "Quota"
 
@@ -93,7 +94,7 @@ msgstr "Servizio di posta elettronica Kolab"
 
 #: admin/systems/services/kolab/class_servKolab.inc:449
 #: personal/connectivity/kolab/class_kolabAccount.inc:26
-#: personal/connectivity/kolab/class_kolabAccount.inc:540
+#: personal/connectivity/kolab/class_kolabAccount.inc:683
 msgid "Kolab"
 msgstr "Kolab"
 
@@ -218,23 +219,20 @@ msgstr ""
 "Permetti il download delle informazioni di disponibilità in modo anonimo"
 
 #: admin/systems/services/kolab/servkolab.tpl:180
-#, fuzzy
 msgid "Hosts/networks allowed to relay"
-msgstr "Hosts/reti che possono raccordare la posta"
+msgstr "Hosts/reti abilitate al relay"
 
 #: admin/systems/services/kolab/servkolab.tpl:185
 msgid "Enter multiple values, seperated with"
 msgstr "Inserisci dei valori multipli, separati da"
 
 #: admin/systems/services/kolab/servkolab.tpl:198
-#, fuzzy
 msgid "SMTP smarthost/relayhost"
-msgstr "Raccordo SMTP"
+msgstr ""
 
 #: admin/systems/services/kolab/servkolab.tpl:211
-#, fuzzy
 msgid "Host used to relay mails"
-msgstr "Host usato per raccordare la posta elettronica"
+msgstr "Host usato per il  relay delle mail"
 
 #: admin/systems/services/kolab/servkolab.tpl:235
 msgid "Accept mail from other domains over non-authenticated SMTP"
@@ -273,13 +271,12 @@ msgid "Notes"
 msgstr "Note"
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:159
-#, fuzzy
 msgid "Inbox"
-msgstr "Messaggi in entrata"
+msgstr "Posta in arrivo"
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:160
 msgid "Drafts"
-msgstr ""
+msgstr "Bozze"
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:161
 msgid "Sent"
@@ -298,11 +295,10 @@ msgid "Default"
 msgstr "Default"
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:183
-#, fuzzy
 msgid "Mail settings cannot be removed while there are delegations configured!"
 msgstr ""
-"I parametri di posta elettronica non possono essere rimossi quando le "
-"delegazioni sono attive !"
+"Impostazioni mail non possono essere rimosse mentre ci sono delle deleghe "
+"configurate!"
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:281
 msgid "Waiting for kolab to remove mail properties..."
@@ -313,8 +309,8 @@ msgid "Please remove the mail settings first!"
 msgstr "Rimuovi prima i parametri della posta elettronica !"
 
 #: personal/connectivity/kolab/class_kolabAccount.inc:27
-msgid "This does something"
-msgstr "Questo fa qualcosa"
+msgid "This plugin manage the user settings for a kolab server"
+msgstr ""
 
 #: personal/connectivity/kolab/class_kolabAccount.inc:199
 msgid "Mail address"
@@ -333,12 +329,10 @@ msgid "Reject if conflicts"
 msgstr "Rifiuta se ci sono conflitti"
 
 #: personal/connectivity/kolab/class_kolabAccount.inc:235
-#, fuzzy
 msgid "Manual if conflicts"
-msgstr "Manualmente se ci sono conflitti"
+msgstr "Manualmente se ci sono dei conflitti"
 
 #: personal/connectivity/kolab/class_kolabAccount.inc:236
-#, fuzzy
 msgid "Manual"
 msgstr "Manualmente"
 
@@ -348,9 +342,8 @@ msgstr "Anonimo"
 
 #: personal/connectivity/kolab/class_kolabAccount.inc:379
 #: personal/connectivity/kolab/class_kolabAccount.inc:382
-#, fuzzy
 msgid "Free Busy future"
-msgstr "Numero di giorni avenire per il calcolo dell'opzione di disponibilità"
+msgstr ""
 
 #: personal/connectivity/kolab/class_kolabAccount.inc:387
 #: personal/connectivity/kolab/class_kolabAccount.inc:390
@@ -358,54 +351,49 @@ msgid "Free Busy url"
 msgstr "Url per l'opzione di diponibilità"
 
 #: personal/connectivity/kolab/class_kolabAccount.inc:404
-#, fuzzy, php-format
+#, php-format
 msgid "The invitation policy entry for address '%s' is not valid."
-msgstr "La politica d'invito per l'indirizzo '%s' non è valida."
+msgstr ""
 
 #: personal/connectivity/kolab/class_kolabAccount.inc:412
-#, fuzzy, php-format
+#, php-format
 msgid "There's no mail user with address '%s' for your invitation policy!"
 msgstr ""
-"Non ci sono utenti con l'indirizzo di posta elettronica '%s' per la politica "
-"d'invito da te scelta !"
 
-#: personal/connectivity/kolab/class_kolabAccount.inc:541
+#: personal/connectivity/kolab/class_kolabAccount.inc:684
 msgid "Kolab account settings"
 msgstr "Impostazioni dell'account Kolab"
 
-#: personal/connectivity/kolab/class_kolabAccount.inc:541
+#: personal/connectivity/kolab/class_kolabAccount.inc:684
 msgid "Connectivity addon"
 msgstr "Connettività"
 
-#: personal/connectivity/kolab/class_kolabAccount.inc:545
+#: personal/connectivity/kolab/class_kolabAccount.inc:688
 msgid "My account"
 msgstr "Identità personale"
 
-#: personal/connectivity/kolab/class_kolabAccount.inc:550
+#: personal/connectivity/kolab/class_kolabAccount.inc:693
 msgid "Free busy future"
 msgstr "Numero di giorni a venire per l'opzione di disponibilità"
 
-#: personal/connectivity/kolab/class_kolabAccount.inc:551
-#, fuzzy
+#: personal/connectivity/kolab/class_kolabAccount.inc:694
 msgid "Mail size restriction"
-msgstr "Restrizione del size del messaggio"
+msgstr "Restrizione di dimensione delle mail"
 
-#: personal/connectivity/kolab/class_kolabAccount.inc:552
+#: personal/connectivity/kolab/class_kolabAccount.inc:695
 msgid "Free busy information"
 msgstr "Informazione di disponibilità"
 
-#: personal/connectivity/kolab/class_kolabAccount.inc:553
+#: personal/connectivity/kolab/class_kolabAccount.inc:696
 #: personal/connectivity/kolab/kolab.tpl:51
 #: personal/connectivity/kolab/kolab.tpl:63
-#, fuzzy
 msgid "Delegations"
-msgstr "Delegazioni"
+msgstr "Deleghe"
 
-#: personal/connectivity/kolab/class_kolabAccount.inc:554
+#: personal/connectivity/kolab/class_kolabAccount.inc:697
 #: personal/connectivity/kolab/kolab.tpl:119
-#, fuzzy
 msgid "Invitation policy"
-msgstr "Politica d'invito"
+msgstr ""
 
 #: personal/connectivity/kolab/kolab.tpl:3
 #: personal/connectivity/kolab/kolab.tpl:43
@@ -425,15 +413,12 @@ msgid "Mail size"
 msgstr "Quota della  posta elettronica"
 
 #: personal/connectivity/kolab/kolab.tpl:87
-#, fuzzy
 msgid "No mail size restriction for this account"
-msgstr ""
-"Non ci sono restrizioni di size per questo account di posta elettronica"
+msgstr "Nessuna restrizione di dimensione delle mail per questo account"
 
 #: personal/connectivity/kolab/kolab.tpl:95
-#, fuzzy
 msgid "Free Busy information"
-msgstr "Informazioni di disponibilità"
+msgstr ""
 
 #: personal/connectivity/kolab/kolab.tpl:98
 msgid "URL"
@@ -447,35 +432,5 @@ msgstr "Futuro"
 msgid "days"
 msgstr "giorni"
 
-#, fuzzy
-#~ msgid "Junk mail"
-#~ msgstr "maschio"
-
-#~ msgid "Add"
-#~ msgstr "Aggiungi"
-
-#~ msgid "Save"
-#~ msgstr "Salva"
-
-#~ msgid "Cancel"
-#~ msgstr "Annulla"
-
-#, fuzzy
-#~ msgid "Removing of user/kolab account with dn '%s' failed."
-#~ msgstr "Elimina estensioni Samba"
-
-#, fuzzy
-#~ msgid "Saving of user/kolab account with dn '%s' failed."
-#~ msgstr "Account Kolab"
-
-#, fuzzy
-#~ msgid "Removing host entry from system server/kolab with dn '%s' failed."
-#~ msgstr "Elimina estensioni telefoniche"
-
-#, fuzzy
-#~ msgid "Saving system server/kolab with dn '%s' failed."
-#~ msgstr "Account Kolab"
-
-#, fuzzy
-#~ msgid "Cannot add invalid mail address!"
-#~ msgstr "Stai cercando di aggungere un indirizzo di posta non valido"
+#~ msgid "This does something"
+#~ msgstr "Questo fa qualcosa"

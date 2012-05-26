@@ -12,80 +12,80 @@ msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-08 19:20+0200\n"
+"POT-Creation-Date: 2012-05-26 17:33+0200\n"
 "PO-Revision-Date: 2006-06-02 16:58+0100\n"
 "Last-Translator: Niels Klomp (CareWorks ICT Services) <nk@careworks.nl>\n"
 "Language-Team: CareWorks ICT Services <info@careworks.nl>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 
 #: admin/groups/scalix/class_scalixGroup.inc:35
-#: personal/scalix/class_scalixAccount.inc:478
+#: personal/scalix/class_scalixAccount.inc:552
 #, fuzzy
 msgid "Scalix account"
 msgstr "Mijn account"
 
 #: admin/groups/scalix/class_scalixGroup.inc:45
-#: personal/scalix/class_scalixAccount.inc:488
+#: personal/scalix/class_scalixAccount.inc:562
 msgid "Scalix Mail node"
 msgstr ""
 
 #: admin/groups/scalix/class_scalixGroup.inc:46
-#: personal/scalix/class_scalixAccount.inc:489
+#: personal/scalix/class_scalixAccount.inc:563
 #, fuzzy
 msgid "Mailbox class"
 msgstr "E-mail adres"
 
 #: admin/groups/scalix/class_scalixGroup.inc:47
-#: personal/scalix/class_scalixAccount.inc:490
+#: personal/scalix/class_scalixAccount.inc:564
 #, fuzzy
 msgid "Server language"
 msgstr "Servernaam"
 
 #: admin/groups/scalix/class_scalixGroup.inc:48
-#: personal/scalix/class_scalixAccount.inc:491
+#: personal/scalix/class_scalixAccount.inc:565
 msgid "Administrator"
 msgstr "Beheerder"
 
 #: admin/groups/scalix/class_scalixGroup.inc:49
-#: personal/scalix/class_scalixAccount.inc:492
+#: personal/scalix/class_scalixAccount.inc:566
 #, fuzzy
 msgid "Mailbox administrator"
 msgstr "Map beheerders"
 
 #: admin/groups/scalix/class_scalixGroup.inc:50
-#: personal/scalix/class_scalixAccount.inc:493
+#: personal/scalix/class_scalixAccount.inc:567
 msgid "Hide user entry in Scalix"
 msgstr ""
 
 #: admin/groups/scalix/class_scalixGroup.inc:51
-#: personal/scalix/class_scalixAccount.inc:494
+#: personal/scalix/class_scalixAccount.inc:568
 #, fuzzy
 msgid "Mailbox size limitations"
 msgstr "Mail distributielijst"
 
 #: admin/groups/scalix/class_scalixGroup.inc:52
-#: personal/scalix/class_scalixAccount.inc:495
+#: personal/scalix/class_scalixAccount.inc:569
 #, fuzzy
 msgid "Limit outbound"
 msgstr "Profiel quota"
 
 #: admin/groups/scalix/class_scalixGroup.inc:53
-#: personal/scalix/class_scalixAccount.inc:496
+#: personal/scalix/class_scalixAccount.inc:570
 msgid "Limit inbound"
 msgstr ""
 
 #: admin/groups/scalix/class_scalixGroup.inc:54
-#: personal/scalix/class_scalixAccount.inc:497
+#: personal/scalix/class_scalixAccount.inc:571
 #, fuzzy
 msgid "Notify user"
 msgstr "Tel het aantal gebruikers"
 
 #: admin/groups/scalix/class_scalixGroup.inc:55
 #: personal/scalix/paste_generic.tpl:4
-#: personal/scalix/class_scalixAccount.inc:498 personal/scalix/generic.tpl:105
+#: personal/scalix/class_scalixAccount.inc:572 personal/scalix/generic.tpl:105
 #, fuzzy
 msgid "Scalix email addresses"
 msgstr "E-mail adres"
@@ -112,8 +112,8 @@ msgid "Scalix"
 msgstr "Speciaal"
 
 #: personal/scalix/class_scalixAccount.inc:39
-msgid "This does something"
-msgstr "Dit doet iets"
+msgid "This save and read the scalix account data from ldap"
+msgstr ""
 
 #: personal/scalix/class_scalixAccount.inc:150
 #, fuzzy
@@ -158,13 +158,13 @@ msgstr "LDAP fout:"
 #: personal/scalix/class_scalixAccount.inc:286
 #: personal/scalix/class_scalixAccount.inc:293
 #: personal/scalix/class_scalixAccount.inc:303
-#: personal/scalix/class_scalixAccount.inc:518
-#: personal/scalix/class_scalixAccount.inc:527
+#: personal/scalix/class_scalixAccount.inc:489
+#: personal/scalix/class_scalixAccount.inc:498
 msgid "Error"
 msgstr "Fout"
 
 #: personal/scalix/class_scalixAccount.inc:279
-#: personal/scalix/class_scalixAccount.inc:518
+#: personal/scalix/class_scalixAccount.inc:489
 #, fuzzy
 msgid "Cannot add invalid mail address!"
 msgstr "U probeert een ongeldig E-mail adres toe te voegen"
@@ -176,7 +176,7 @@ msgid "You have no permission to modify these addresses."
 msgstr "U heeft geen toestemming om deze afdeling te verwijderen."
 
 #: personal/scalix/class_scalixAccount.inc:293
-#: personal/scalix/class_scalixAccount.inc:527
+#: personal/scalix/class_scalixAccount.inc:498
 #, fuzzy, php-format
 msgid "Cannot add mail address: it is already used by user '%s'."
 msgstr ""
@@ -202,7 +202,7 @@ msgstr "E-mail adres"
 msgid "Limit Mailbox"
 msgstr "E-mail grootte"
 
-#: personal/scalix/class_scalixAccount.inc:482
+#: personal/scalix/class_scalixAccount.inc:556
 msgid "My account"
 msgstr "Mijn account"
 
@@ -294,6 +294,9 @@ msgstr ""
 #: personal/scalix/generic.tpl:91
 msgid "Notify User"
 msgstr ""
+
+#~ msgid "This does something"
+#~ msgstr "Dit doet iets"
 
 #~ msgid "Add"
 #~ msgstr "Toevoegen"

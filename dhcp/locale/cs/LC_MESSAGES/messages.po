@@ -1,21 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 #   <pavel.borecki@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
-"POT-Creation-Date: 2011-03-24 23:37+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-05-26 17:33+0200\n"
 "PO-Revision-Date: 2012-05-22 14:33+0000\n"
 "Last-Translator: pavelb <pavel.borecki@gmail.com>\n"
-"Language-Team: Czech (Czech Republic) (http://www.transifex.net/projects/p/FusionDirectory/language/cs_CZ/)\n"
+"Language-Team: Czech (Czech Republic) (http://www.transifex.net/projects/p/"
+"FusionDirectory/language/cs_CZ/)\n"
+"Language: cs_CZ\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: cs_CZ\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2\n"
 
 #: admin/systems/services/dhcp/class_dhcpPool.inc:104
@@ -31,8 +32,8 @@ msgstr ""
 #: admin/systems/services/dhcp/class_dhcpSubClass.inc:97
 #: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl:10
 #: admin/systems/services/dhcp/dhcp_group.tpl:6
-#: admin/systems/services/dhcp/class_dhcpSharedNetwork.inc:153
-#: admin/systems/services/dhcp/class_dhcpSharedNetwork.inc:171
+#: admin/systems/services/dhcp/class_dhcpSharedNetwork.inc:152
+#: admin/systems/services/dhcp/class_dhcpSharedNetwork.inc:170
 #: admin/systems/services/dhcp/class_dhcpSubnet.inc:150
 #: admin/systems/services/dhcp/class_dhcpClass.inc:87
 #: admin/systems/services/dhcp/class_dhcpClass.inc:90
@@ -118,16 +119,22 @@ msgstr "varování"
 #: admin/systems/services/dhcp/remove_dhcp.tpl:6
 msgid ""
 "This includes 'all' DHCP subsections that are located within this section. "
-"Please double check if your really want to do this since there is no way for"
-" FusionDirectory to get your data back."
-msgstr "Týká se 'všech' podsekcí této sekce DHCP. Prosím velmi dobře si rozmyslete, zda to skutečně chcete udělat – provedené změny pak FusionDirectory už nemůže vrátit zpět!"
+"Please double check if your really want to do this since there is no way for "
+"FusionDirectory to get your data back."
+msgstr ""
+"Týká se 'všech' podsekcí této sekce DHCP. Prosím velmi dobře si rozmyslete, "
+"zda to skutečně chcete udělat – provedené změny pak FusionDirectory už "
+"nemůže vrátit zpět!"
 
 #: admin/systems/services/dhcp/remove_dhcp.tpl:10
 msgid ""
 "Best thing to do before performing this action would be to save the current "
 "contents of your LDAP tree in a file. So - if you've done so - press "
 "'Delete' to continue or 'Cancel' to abort."
-msgstr "Před provedením této akce by bylo nejlepší uložit obsah Vašeho LDAP stromu do souboru. Tedy – pokud jste tak již učinil(a), stiskněte 'smazat'. V opačném případě operaci zrušte pomocí 'zrušit'."
+msgstr ""
+"Před provedením této akce by bylo nejlepší uložit obsah Vašeho LDAP stromu "
+"do souboru. Tedy – pokud jste tak již učinil(a), stiskněte 'smazat'. V "
+"opačném případě operaci zrušte pomocí 'zrušit'."
 
 #: admin/systems/services/dhcp/class_dhcpService.inc:128
 msgid "Lease time"
@@ -140,7 +147,7 @@ msgstr "nejdelší výpůjční doba"
 #: admin/systems/services/dhcp/class_dhcpService.inc:134
 #: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl:55
 #: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl:59
-#: admin/systems/services/dhcp/class_dhcpSharedNetwork.inc:157
+#: admin/systems/services/dhcp/class_dhcpSharedNetwork.inc:156
 msgid "Default lease time"
 msgstr "výchozí výpůjční doba"
 
@@ -250,7 +257,8 @@ msgstr "směrovač (router)"
 
 #: admin/systems/services/dhcp/dhcp_network.tpl:12
 msgid "Enter name or IP address of router to be used in this section"
-msgstr "zadejte název nebo IP adresu směrovače, který bude použit pro tuto sekci"
+msgstr ""
+"zadejte název nebo IP adresu směrovače, který bude použit pro tuto sekci"
 
 #: admin/systems/services/dhcp/dhcp_network.tpl:17
 #: admin/systems/services/dhcp/class_dhcpNetwork.inc:197
@@ -276,7 +284,9 @@ msgstr "název souboru"
 #: admin/systems/services/dhcp/dhcp_network.tpl:42
 msgid ""
 "Enter name of file that will be loaded via tftp after client has started"
-msgstr "zadejte název souboru, který bude nahrán (přes TFTP prtokol) na klienta poté, co bude zapnut"
+msgstr ""
+"zadejte název souboru, který bude nahrán (přes TFTP prtokol) na klienta "
+"poté, co bude zapnut"
 
 #: admin/systems/services/dhcp/dhcp_network.tpl:47
 msgid "Next server"
@@ -382,12 +392,12 @@ msgid "seconds"
 msgstr "vteřiny"
 
 #: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl:64
-#: admin/systems/services/dhcp/class_dhcpSharedNetwork.inc:158
+#: admin/systems/services/dhcp/class_dhcpSharedNetwork.inc:157
 msgid "Max. lease time"
 msgstr "nejdelší výpůjční doba"
 
 #: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl:73
-#: admin/systems/services/dhcp/class_dhcpSharedNetwork.inc:159
+#: admin/systems/services/dhcp/class_dhcpSharedNetwork.inc:158
 msgid "Min. lease time"
 msgstr "nejkratší výpůjční doba"
 
@@ -409,7 +419,9 @@ msgstr "povolit neznámé stroje"
 
 #: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl:100
 msgid "Select if bootp clients should get dynamic IP addresses"
-msgstr "zadejte, zda budou stroje, startující přes protokol bootp, dostávat dynamickou IP adresu"
+msgstr ""
+"zadejte, zda budou stroje, startující přes protokol bootp, dostávat "
+"dynamickou IP adresu"
 
 #: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl:100
 msgid "Allow bootp clients"
@@ -417,7 +429,9 @@ msgstr "zapnout podporu pro stroje startující s protokolem bootp"
 
 #: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl:108
 msgid "Select if clients are allowed to boot using this DHCP server"
-msgstr "zadejte, zda tento DHCP server bude ostatním strojům poskytovat zavádění jejich systému ze sítě"
+msgstr ""
+"zadejte, zda tento DHCP server bude ostatním strojům poskytovat zavádění "
+"jejich systému ze sítě"
 
 #: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl:108
 msgid "Allow booting"
@@ -427,7 +441,9 @@ msgstr "povolit zavádění systému"
 msgid ""
 "DHCP take over will take place when saving this entry. Choose 'Cancel' to "
 "abort."
-msgstr "Uložení této položky spustí převzetí DHCP. Pro přerušení akce klikněte na 'zrušit'."
+msgstr ""
+"Uložení této položky spustí převzetí DHCP. Pro přerušení akce klikněte na "
+"'zrušit'."
 
 #: admin/systems/services/dhcp/servdhcp.tpl:14
 msgid "Take over dhcp configuration from following server"

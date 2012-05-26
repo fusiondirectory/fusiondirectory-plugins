@@ -8,16 +8,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: polski\n"
- 
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-24 23:38+0100\n"
+"POT-Creation-Date: 2012-05-26 17:33+0200\n"
 "PO-Revision-Date: 2007-07-14 21:45+0100\n"
 "Last-Translator: Piotr Rybicki <meritus@innervision.pl>\n"
 "Language-Team: Piotr Rybicki <meritus@innervision.pl>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "X-Poedit-Language: Polish\n"
 "X-Poedit-Country: POLAND\n"
 "X-Poedit-SourceCharset: iso-8859-2\n"
@@ -108,7 +107,7 @@ msgstr ""
 #: admin/groups/mail/class_groupMail.inc:869
 #: admin/groups/mail/class_groupMail.inc:1014
 #: admin/ogroups/mail/paste_mail.tpl:4
-#: admin/ogroups/mail/class_mailogroup.inc:224
+#: admin/ogroups/mail/class_mailogroup.inc:206
 #: personal/mail/class_mailAccount.inc:71
 #: personal/mail/class_mailAccount.inc:254
 #: personal/mail/class_mailAccount.inc:262
@@ -140,9 +139,6 @@ msgstr ""
 #: admin/groups/mail/class_groupMail.inc:447
 #: admin/systems/services/spam/class_goSpamServer.inc:163
 #: admin/systems/services/spam/class_goSpamServer.inc:236
-#: addons/mailqueue/class_mailqueue.inc:130
-#: addons/mailqueue/class_mailqueue.inc:164
-#: addons/mailqueue/class_mailqueue.inc:170
 #: personal/mail/sieve/class_sieveManagement.inc:203
 #: personal/mail/sieve/class_sieveManagement.inc:208
 #: personal/mail/sieve/class_sieveManagement.inc:214
@@ -171,9 +167,9 @@ msgstr "Proszę wybrać prawidłowy serwer pocztowy."
 #: admin/groups/mail/class_groupMail.inc:881
 #: admin/groups/mail/class_groupMail.inc:901
 #: admin/groups/mail/class_groupMail.inc:1022
-#: admin/ogroups/mail/class_mailogroup.inc:124
-#: admin/ogroups/mail/class_mailogroup.inc:131
-#: admin/ogroups/mail/class_mailogroup.inc:232
+#: admin/ogroups/mail/class_mailogroup.inc:106
+#: admin/ogroups/mail/class_mailogroup.inc:113
+#: admin/ogroups/mail/class_mailogroup.inc:214
 #: personal/mail/mailAddressSelect/selectMailAddress-list.xml:56
 #: personal/mail/class_mailAccount.inc:352
 #: personal/mail/class_mailAccount.inc:388
@@ -212,8 +208,8 @@ msgstr "Adres który próbujesz dodać jest już używany"
 #: admin/systems/services/mail/class_goMailServer.inc:582
 #: admin/systems/services/spam/class_goSpamServer.inc:297
 #: admin/systems/services/virus/class_goVirusServer.inc:174
-#: admin/ogroups/mail/class_mailogroup.inc:158
-#: admin/ogroups/mail/class_mailogroup.inc:195
+#: admin/ogroups/mail/class_mailogroup.inc:140
+#: admin/ogroups/mail/class_mailogroup.inc:177
 #: personal/mail/class_mailAccount.inc:853
 #: personal/mail/class_mailAccount.inc:926
 #, fuzzy
@@ -349,8 +345,7 @@ msgstr "Dodaj lokalne"
 msgid "Generic"
 msgstr "Ogólne"
 
-#: admin/groups/mail/mail.tpl:35 addons/mailqueue/contents.tpl:73
-#: personal/mail/generic.tpl:30
+#: admin/groups/mail/mail.tpl:35 personal/mail/generic.tpl:30
 msgid "Server"
 msgstr "Serwer"
 
@@ -503,7 +498,7 @@ msgstr "Usługa IMAP/POP3"
 
 #: admin/systems/services/imap/class_goImapServer.inc:220
 #: admin/systems/services/mail/class_goMailServer.inc:701
-#: admin/systems/services/spam/class_goSpamServer.inc:341
+#: admin/systems/services/spam/class_goSpamServer.inc:350
 #: admin/systems/services/virus/class_goVirusServer.inc:240
 msgid "Services"
 msgstr "Usługi"
@@ -731,8 +726,8 @@ msgstr "Pełniona funkcja"
 
 #: admin/systems/services/spam/class_goSpamServer.inc:62
 #: admin/systems/services/spam/class_goSpamServer.inc:340
-#: admin/systems/services/spam/class_goSpamServer.inc:341
-#: admin/systems/services/spam/class_goSpamServer.inc:367
+#: admin/systems/services/spam/class_goSpamServer.inc:349
+#: admin/systems/services/spam/class_goSpamServer.inc:350
 msgid "Spamassassin"
 msgstr ""
 
@@ -745,54 +740,54 @@ msgstr "Sieci Postfix"
 msgid "Score"
 msgstr ""
 
-#: admin/systems/services/spam/class_goSpamServer.inc:349
+#: admin/systems/services/spam/class_goSpamServer.inc:358
 #: admin/systems/services/spam/goSpamServer.tpl:8
 #, fuzzy
 msgid "Rewrite header"
 msgstr "nagłówek"
 
-#: admin/systems/services/spam/class_goSpamServer.inc:350
+#: admin/systems/services/spam/class_goSpamServer.inc:359
 #, fuzzy
 msgid "Trusted networks"
 msgstr "Sieci Postfix"
 
-#: admin/systems/services/spam/class_goSpamServer.inc:351
+#: admin/systems/services/spam/class_goSpamServer.inc:360
 #: admin/systems/services/spam/goSpamServer.tpl:18
 msgid "Required score"
 msgstr ""
 
-#: admin/systems/services/spam/class_goSpamServer.inc:352
+#: admin/systems/services/spam/class_goSpamServer.inc:361
 #, fuzzy
 msgid "Rules"
 msgstr "Pełniona funkcja"
 
-#: admin/systems/services/spam/class_goSpamServer.inc:354
+#: admin/systems/services/spam/class_goSpamServer.inc:363
 #: admin/systems/services/spam/goSpamServer.tpl:69
 msgid "Enable use of bayes filtering"
 msgstr ""
 
-#: admin/systems/services/spam/class_goSpamServer.inc:355
+#: admin/systems/services/spam/class_goSpamServer.inc:364
 #, fuzzy
 msgid "Enabled bayes auto learning"
 msgstr "Włącz skanowanie antyfirusowe"
 
-#: admin/systems/services/spam/class_goSpamServer.inc:356
+#: admin/systems/services/spam/class_goSpamServer.inc:365
 #: admin/systems/services/spam/goSpamServer.tpl:75
 msgid "Enable RBL checks"
 msgstr ""
 
-#: admin/systems/services/spam/class_goSpamServer.inc:357
+#: admin/systems/services/spam/class_goSpamServer.inc:366
 #: admin/systems/services/spam/goSpamServer.tpl:86
 #, fuzzy
 msgid "Enable use of Razor"
 msgstr "Włącz skanowanie antyfirusowe"
 
-#: admin/systems/services/spam/class_goSpamServer.inc:358
+#: admin/systems/services/spam/class_goSpamServer.inc:367
 #: admin/systems/services/spam/goSpamServer.tpl:89
 msgid "Enable use of DDC"
 msgstr ""
 
-#: admin/systems/services/spam/class_goSpamServer.inc:359
+#: admin/systems/services/spam/class_goSpamServer.inc:368
 #: admin/systems/services/spam/goSpamServer.tpl:92
 #, fuzzy
 msgid "Enable use of Pyzor"
@@ -931,246 +926,27 @@ msgstr "Pocztowa lista dystrybucyjna"
 msgid "Primary mail address for this distribution list"
 msgstr "Adres podstawowy dla tej listy dystrybucyjnej"
 
-#: admin/ogroups/mail/class_mailogroup.inc:88
+#: admin/ogroups/mail/class_mailogroup.inc:70
 msgid "Remove mail account"
 msgstr "Usuń konto pocztowe"
 
-#: admin/ogroups/mail/class_mailogroup.inc:89
-#: admin/ogroups/mail/class_mailogroup.inc:92
+#: admin/ogroups/mail/class_mailogroup.inc:71
+#: admin/ogroups/mail/class_mailogroup.inc:74
 #, fuzzy
 msgid "mail group"
 msgstr "Grupa pocztowa"
 
-#: admin/ogroups/mail/class_mailogroup.inc:91
+#: admin/ogroups/mail/class_mailogroup.inc:73
 msgid "Create mail account"
 msgstr "Stwórz konto pocztowe"
 
-#: admin/ogroups/mail/class_mailogroup.inc:124
+#: admin/ogroups/mail/class_mailogroup.inc:106
 msgid "your-name@your-domain.com"
 msgstr ""
 
-#: admin/ogroups/mail/class_mailogroup.inc:225
+#: admin/ogroups/mail/class_mailogroup.inc:207
 msgid "Mail group"
 msgstr "Grupa pocztowa"
-
-#: addons/mailqueue/class_mailqueue.inc:26
-#: addons/mailqueue/class_mailqueue.inc:351 addons/mailqueue/main.inc:57
-msgid "Mail queue"
-msgstr "Kolejka pocztowa"
-
-#: addons/mailqueue/class_mailqueue.inc:27
-#: personal/mail/class_mailAccount.inc:72
-msgid "This does something"
-msgstr "To robi coś"
-
-#: addons/mailqueue/class_mailqueue.inc:225
-msgid "up"
-msgstr "góra"
-
-#: addons/mailqueue/class_mailqueue.inc:227
-msgid "down"
-msgstr "dół"
-
-#: addons/mailqueue/class_mailqueue.inc:238
-#: addons/mailqueue/class_mailqueue.inc:338
-msgid "All"
-msgstr "Wszystkie"
-
-#: addons/mailqueue/class_mailqueue.inc:282
-msgid "no limit"
-msgstr "bez limitu"
-
-#: addons/mailqueue/class_mailqueue.inc:285
-msgid "hour"
-msgstr "godzina"
-
-#: addons/mailqueue/class_mailqueue.inc:287
-msgid "hours"
-msgstr "godzin"
-
-#: addons/mailqueue/class_mailqueue.inc:339
-msgid "Hold"
-msgstr "Wstrzymaj"
-
-#: addons/mailqueue/class_mailqueue.inc:340
-msgid "Un hold"
-msgstr "Wznów"
-
-#: addons/mailqueue/class_mailqueue.inc:341 addons/mailqueue/contents.tpl:93
-#: personal/mail/sieve/class_sieveManagement.inc:636
-msgid "Active"
-msgstr "Aktywne"
-
-#: addons/mailqueue/class_mailqueue.inc:342
-msgid "Not active"
-msgstr "Nieaktywne"
-
-#: addons/mailqueue/class_mailqueue.inc:352
-#: addons/mailqueue/class_mailqueue.inc:357
-#, fuzzy
-msgid "Mail queue addon"
-msgstr "Kolejka pocztowa"
-
-#: addons/mailqueue/class_mailqueue.inc:360
-#, fuzzy
-msgid "Unhold all messages"
-msgstr "Wstrzymaj wszystkie wiadomości"
-
-#: addons/mailqueue/class_mailqueue.inc:361 addons/mailqueue/contents.tpl:38
-msgid "Hold all messages"
-msgstr "Wstrzymaj wszystkie wiadomości"
-
-#: addons/mailqueue/class_mailqueue.inc:362
-#, fuzzy
-msgid "Delete all messages"
-msgstr "Wznów wszystkie wiadomości"
-
-#: addons/mailqueue/class_mailqueue.inc:363 addons/mailqueue/contents.tpl:48
-msgid "Requeue all messages"
-msgstr "Przekolejkuj wszystkie wiadomości"
-
-#: addons/mailqueue/class_mailqueue.inc:364
-#, fuzzy
-msgid "Unhold message"
-msgstr "Wstrzymaj wiadomość"
-
-#: addons/mailqueue/class_mailqueue.inc:365 addons/mailqueue/contents.tpl:120
-msgid "Hold message"
-msgstr "Wstrzymaj wiadomość"
-
-#: addons/mailqueue/class_mailqueue.inc:366
-#, fuzzy
-msgid "Delete message"
-msgstr "Usuń tą wiadomosc"
-
-#: addons/mailqueue/class_mailqueue.inc:367
-#, fuzzy
-msgid "Requeue message"
-msgstr "Rekolejkuj tą wiadomość"
-
-#: addons/mailqueue/class_mailqueue.inc:368
-msgid "Gathering queue data"
-msgstr ""
-
-#: addons/mailqueue/class_mailqueue.inc:369
-#, fuzzy
-msgid "Get header information"
-msgstr "Ogólne informacje o użytkowniku"
-
-#: addons/mailqueue/contents.tpl:10 addons/mailqueue/contents.tpl:28
-msgid "Search"
-msgstr "Szukaj"
-
-#: addons/mailqueue/contents.tpl:11
-msgid "Search for"
-msgstr "Szukaj dla"
-
-#: addons/mailqueue/contents.tpl:12
-msgid "Please enter a search string here."
-msgstr "Proszę podać tutaj szukany ciąg znaków."
-
-#: addons/mailqueue/contents.tpl:14
-msgid "Select a server"
-msgstr "Wybierz serwer"
-
-#: addons/mailqueue/contents.tpl:18
-msgid "with status"
-msgstr "ze statusem"
-
-#: addons/mailqueue/contents.tpl:23
-msgid "within the last"
-msgstr "W ciągu ostatnich"
-
-#: addons/mailqueue/contents.tpl:33
-msgid "Remove all messages"
-msgstr "Usuń wszystkie wiadomości"
-
-#: addons/mailqueue/contents.tpl:34
-msgid "Remove all messages from selected servers queue"
-msgstr "Usuń wszystkie wiadomości z wybranej kolejki serwerów"
-
-#: addons/mailqueue/contents.tpl:39
-msgid "Hold all messages in selected servers queue"
-msgstr "Wstrzymaj wszystkie wiadomości w wybranej kolejce serwerów"
-
-#: addons/mailqueue/contents.tpl:43
-msgid "Release all messages"
-msgstr "Wznów wszystkie wiadomości"
-
-#: addons/mailqueue/contents.tpl:44
-msgid "Release all messages in selected servers queue"
-msgstr "Wznów wszystkie wiadomości w wybranej kolejce serwerów"
-
-#: addons/mailqueue/contents.tpl:49
-msgid "Requeue all messages in selected servers queue"
-msgstr "Przekolejkuj wszystkie wiadomości w wybranej kolejce serwera"
-
-#: addons/mailqueue/contents.tpl:63
-msgid "Search returned no results"
-msgstr "Wyszukiwanie nie zwróciło danych"
-
-#: addons/mailqueue/contents.tpl:72
-msgid "ID"
-msgstr "ID"
-
-#: addons/mailqueue/contents.tpl:74
-#: personal/mail/sieve/class_sieveManagement.inc:594
-#: personal/mail/sieve/templates/element_size.tpl:4
-msgid "Size"
-msgstr "Rozmiar"
-
-#: addons/mailqueue/contents.tpl:75
-msgid "Arrival"
-msgstr "Dotarcie"
-
-#: addons/mailqueue/contents.tpl:76
-msgid "Sender"
-msgstr "Nadawca"
-
-#: addons/mailqueue/contents.tpl:77
-msgid "Recipient"
-msgstr "Odbiorca"
-
-#: addons/mailqueue/contents.tpl:78
-msgid "Status"
-msgstr "Status"
-
-#: addons/mailqueue/contents.tpl:105
-msgid "delete"
-msgstr "Usuń"
-
-#: addons/mailqueue/contents.tpl:105
-msgid "Delete this message"
-msgstr "Usuń tą wiadomosc"
-
-#: addons/mailqueue/contents.tpl:113
-msgid "unhold"
-msgstr "wznów"
-
-#: addons/mailqueue/contents.tpl:113
-msgid "Release message"
-msgstr "Wznów wiadomość"
-
-#: addons/mailqueue/contents.tpl:120
-msgid "hold"
-msgstr "wstrzymaj"
-
-#: addons/mailqueue/contents.tpl:127
-msgid "requeue"
-msgstr "rekolejkuj"
-
-#: addons/mailqueue/contents.tpl:127
-msgid "Requeue this message"
-msgstr "Rekolejkuj tą wiadomość"
-
-#: addons/mailqueue/contents.tpl:133
-msgid "header"
-msgstr "nagłówek"
-
-#: addons/mailqueue/contents.tpl:134
-#, fuzzy
-msgid "Display header of this message"
-msgstr "Wyświetl nagłówek tej wiadomości"
 
 #: personal/mail/class_mail-methods-cyrus.inc:58
 msgid "There are no IMAP compatible mail servers defined!"
@@ -1473,6 +1249,11 @@ msgstr "nagłówek"
 msgid "Envelope"
 msgstr ""
 
+#: personal/mail/sieve/class_sieveManagement.inc:594
+#: personal/mail/sieve/templates/element_size.tpl:4
+msgid "Size"
+msgstr "Rozmiar"
+
 #: personal/mail/sieve/class_sieveManagement.inc:595
 #: personal/mail/sieve/templates/element_exists.tpl:8
 #, fuzzy
@@ -1499,6 +1280,10 @@ msgstr "Tak"
 #: personal/mail/sieve/class_sieveElement_If.inc:915
 msgid "False"
 msgstr "Nie"
+
+#: personal/mail/sieve/class_sieveManagement.inc:636
+msgid "Active"
+msgstr "Aktywne"
 
 #: personal/mail/sieve/class_sieveManagement.inc:637
 msgid "This script is marked as active"
@@ -2228,6 +2013,10 @@ msgstr "Bool"
 msgid "update"
 msgstr "Aktualizuj"
 
+#: personal/mail/class_mailAccount.inc:72
+msgid "This does something"
+msgstr "To robi coś"
+
 #: personal/mail/class_mailAccount.inc:640
 #: personal/mail/class_mail-methods.inc:160
 #: personal/mail/class_mail-methods.inc:505
@@ -2441,6 +2230,155 @@ msgstr "MB"
 msgid "Select department"
 msgstr "Wybierz aby zobaczyć departamenty"
 
+#~ msgid "Mail queue"
+#~ msgstr "Kolejka pocztowa"
+
+#~ msgid "up"
+#~ msgstr "góra"
+
+#~ msgid "down"
+#~ msgstr "dół"
+
+#~ msgid "All"
+#~ msgstr "Wszystkie"
+
+#~ msgid "no limit"
+#~ msgstr "bez limitu"
+
+#~ msgid "hour"
+#~ msgstr "godzina"
+
+#~ msgid "hours"
+#~ msgstr "godzin"
+
+#~ msgid "Hold"
+#~ msgstr "Wstrzymaj"
+
+#~ msgid "Un hold"
+#~ msgstr "Wznów"
+
+#~ msgid "Not active"
+#~ msgstr "Nieaktywne"
+
+#, fuzzy
+#~ msgid "Mail queue addon"
+#~ msgstr "Kolejka pocztowa"
+
+#, fuzzy
+#~ msgid "Unhold all messages"
+#~ msgstr "Wstrzymaj wszystkie wiadomości"
+
+#~ msgid "Hold all messages"
+#~ msgstr "Wstrzymaj wszystkie wiadomości"
+
+#, fuzzy
+#~ msgid "Delete all messages"
+#~ msgstr "Wznów wszystkie wiadomości"
+
+#~ msgid "Requeue all messages"
+#~ msgstr "Przekolejkuj wszystkie wiadomości"
+
+#, fuzzy
+#~ msgid "Unhold message"
+#~ msgstr "Wstrzymaj wiadomość"
+
+#~ msgid "Hold message"
+#~ msgstr "Wstrzymaj wiadomość"
+
+#, fuzzy
+#~ msgid "Delete message"
+#~ msgstr "Usuń tą wiadomosc"
+
+#, fuzzy
+#~ msgid "Requeue message"
+#~ msgstr "Rekolejkuj tą wiadomość"
+
+#, fuzzy
+#~ msgid "Get header information"
+#~ msgstr "Ogólne informacje o użytkowniku"
+
+#~ msgid "Search"
+#~ msgstr "Szukaj"
+
+#~ msgid "Search for"
+#~ msgstr "Szukaj dla"
+
+#~ msgid "Please enter a search string here."
+#~ msgstr "Proszę podać tutaj szukany ciąg znaków."
+
+#~ msgid "Select a server"
+#~ msgstr "Wybierz serwer"
+
+#~ msgid "with status"
+#~ msgstr "ze statusem"
+
+#~ msgid "within the last"
+#~ msgstr "W ciągu ostatnich"
+
+#~ msgid "Remove all messages"
+#~ msgstr "Usuń wszystkie wiadomości"
+
+#~ msgid "Remove all messages from selected servers queue"
+#~ msgstr "Usuń wszystkie wiadomości z wybranej kolejki serwerów"
+
+#~ msgid "Hold all messages in selected servers queue"
+#~ msgstr "Wstrzymaj wszystkie wiadomości w wybranej kolejce serwerów"
+
+#~ msgid "Release all messages"
+#~ msgstr "Wznów wszystkie wiadomości"
+
+#~ msgid "Release all messages in selected servers queue"
+#~ msgstr "Wznów wszystkie wiadomości w wybranej kolejce serwerów"
+
+#~ msgid "Requeue all messages in selected servers queue"
+#~ msgstr "Przekolejkuj wszystkie wiadomości w wybranej kolejce serwera"
+
+#~ msgid "Search returned no results"
+#~ msgstr "Wyszukiwanie nie zwróciło danych"
+
+#~ msgid "ID"
+#~ msgstr "ID"
+
+#~ msgid "Arrival"
+#~ msgstr "Dotarcie"
+
+#~ msgid "Sender"
+#~ msgstr "Nadawca"
+
+#~ msgid "Recipient"
+#~ msgstr "Odbiorca"
+
+#~ msgid "Status"
+#~ msgstr "Status"
+
+#~ msgid "delete"
+#~ msgstr "Usuń"
+
+#~ msgid "Delete this message"
+#~ msgstr "Usuń tą wiadomosc"
+
+#~ msgid "unhold"
+#~ msgstr "wznów"
+
+#~ msgid "Release message"
+#~ msgstr "Wznów wiadomość"
+
+#~ msgid "hold"
+#~ msgstr "wstrzymaj"
+
+#~ msgid "requeue"
+#~ msgstr "rekolejkuj"
+
+#~ msgid "Requeue this message"
+#~ msgstr "Rekolejkuj tą wiadomość"
+
+#~ msgid "header"
+#~ msgstr "nagłówek"
+
+#, fuzzy
+#~ msgid "Display header of this message"
+#~ msgstr "Wyświetl nagłówek tej wiadomości"
+
 #, fuzzy
 #~ msgid "Cannot connect mail method: %s"
 #~ msgstr "Nie można otworzyć pliku '%s'."
@@ -2595,7 +2533,9 @@ msgstr "Wybierz aby zobaczyć departamenty"
 #~ msgstr "Port Sieve"
 
 #~ msgid "There is no mail method '%s' specified in your gosa.conf available."
-#~ msgstr "Nie ma takiego trybu poczty '%s' podanego w Twoim pliku FusionDirectory.conf."
+#~ msgstr ""
+#~ "Nie ma takiego trybu poczty '%s' podanego w Twoim pliku FusionDirectory."
+#~ "conf."
 
 #~ msgid ""
 #~ "Adding your one of your own addresses to the forwarders makes no sense."

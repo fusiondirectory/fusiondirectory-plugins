@@ -9,26 +9,25 @@ msgid ""
 msgstr ""
 "Project-Id-Version: admin\n"
 "Report-Msgid-Bugs-To: \n"
- 
-"POT-Creation-Date: 2011-03-24 23:38+0100\n"
+"POT-Creation-Date: 2012-05-26 17:33+0200\n"
 "PO-Revision-Date: 2010-01-20 00:41+0100\n"
 "Last-Translator: \n"
 "Language-Team: Spanish <>\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
 "X-Generator: Lokalize 1.0\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: personal/connectivity/squid/class_proxyAccount.inc:26
-#: personal/connectivity/squid/class_proxyAccount.inc:351
+#: personal/connectivity/squid/class_proxyAccount.inc:440
 msgid "Proxy"
 msgstr "Proxy"
 
 #: personal/connectivity/squid/class_proxyAccount.inc:27
-msgid "This does something"
-msgstr "Esto hace algo"
+msgid "This allow to store basic squid settings in ldap for each user"
+msgstr ""
 
 #: personal/connectivity/squid/class_proxyAccount.inc:113
 msgid "KB"
@@ -68,28 +67,28 @@ msgstr "Error LDAP"
 msgid "Quota Setting"
 msgstr "Tamaño de cuota"
 
-#: personal/connectivity/squid/class_proxyAccount.inc:352
+#: personal/connectivity/squid/class_proxyAccount.inc:441
 #: personal/connectivity/squid/proxy.tpl:37
 msgid "Proxy account"
 msgstr "Cuenta Proxy"
 
-#: personal/connectivity/squid/class_proxyAccount.inc:352
+#: personal/connectivity/squid/class_proxyAccount.inc:441
 msgid "Connectivity addon"
 msgstr "Conectividad adicional"
 
-#: personal/connectivity/squid/class_proxyAccount.inc:356
+#: personal/connectivity/squid/class_proxyAccount.inc:445
 msgid "My account"
 msgstr "Mi cuenta"
 
-#: personal/connectivity/squid/class_proxyAccount.inc:361
+#: personal/connectivity/squid/class_proxyAccount.inc:450
 msgid "Filter unwanted content"
 msgstr "Filtrar contenido no requerido"
 
-#: personal/connectivity/squid/class_proxyAccount.inc:362
+#: personal/connectivity/squid/class_proxyAccount.inc:451
 msgid "Limit proxy access"
 msgstr "Limitar acceso al Proxy"
 
-#: personal/connectivity/squid/class_proxyAccount.inc:363
+#: personal/connectivity/squid/class_proxyAccount.inc:452
 #: personal/connectivity/squid/proxy.tpl:100
 msgid "Restrict proxy usage by quota"
 msgstr "Restringir el uso del proxy con cuotas"
@@ -105,6 +104,9 @@ msgstr "Limitar acceso al proxy al horario laboral"
 #: personal/connectivity/squid/proxy.tpl:115
 msgid "per"
 msgstr "por"
+
+#~ msgid "This does something"
+#~ msgstr "Esto hace algo"
 
 #~ msgid "Removing of user/proxy account with dn '%s' failed."
 #~ msgstr "Se ha fallado al eliminar la cuenta de usuario/Proxy con dn '%s'."

@@ -1,64 +1,85 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Translators:
+#   <giuliano@opensides.be>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: FusionDirectory\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-05-26 17:33+0200\n"
+"PO-Revision-Date: 2012-05-26 10:37+0000\n"
+"Last-Translator: poterealpopolo <giuliano@opensides.be>\n"
+"Language-Team: French (http://www.transifex.net/projects/p/FusionDirectory/"
+"language/fr/)\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+
 #: admin/systems/services/argonaut/argonautServer.tpl:2
 msgid "Argonaut server"
-msgstr ""
+msgstr "Serveur Argonaut"
 
 #: admin/systems/services/argonaut/argonautServer.tpl:7
 msgid "Delete finished tasks"
-msgstr ""
+msgstr "Supprimer les tâches terminées"
 
 #: admin/systems/services/argonaut/argonautServer.tpl:11
 msgid "Protocol :"
-msgstr ""
+msgstr "Protocole :"
 
 #: admin/systems/services/argonaut/argonautServer.tpl:18
 msgid "Port :"
-msgstr ""
+msgstr "Port :"
 
 #: admin/systems/services/argonaut/argonautServer.tpl:21
 msgid "Interface for WakeOnLan :"
-msgstr ""
+msgstr "Interface pour le WakeOnLan :"
 
 #: admin/systems/services/argonaut/argonautServer.tpl:24
 msgid "IP tool :"
-msgstr ""
+msgstr "Outil IP :"
 
 #: admin/systems/services/argonaut/argonautServer.tpl:27
 msgid "Log directory :"
-msgstr ""
+msgstr "Répertoire pour les logs :"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:60
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:91
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:159
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:160
 msgid "Argonaut DNS settings"
-msgstr ""
+msgstr "Paramètres DNS de Argonaut"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:113
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:120
-#: admin/systems/services/argonaut/class_argonautServer.inc:103
+#: admin/systems/services/argonaut/class_argonautServer.inc:109
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:114
 #: addons/argonaut/class_argonautClient.inc:149
 msgid "LDAP error"
-msgstr ""
+msgstr "Erreur LDAP"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:160
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:167
-#: admin/systems/services/argonaut/class_argonautServer.inc:153
+#: admin/systems/services/argonaut/class_argonautServer.inc:159
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:151
 msgid "Services"
-msgstr ""
+msgstr "Services"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:168
 msgid "Modify argonaut DNS settings"
-msgstr ""
+msgstr "Modifier les paramètres DNS de Argonaut"
 
 #: admin/systems/services/argonaut/argonautDNSConfig.tpl:9
 msgid "Bind directory"
-msgstr ""
+msgstr "Répertoire Bind"
 
 #: admin/systems/services/argonaut/argonautDNSConfig.tpl:11
 msgid "Allow notify"
-msgstr ""
+msgstr "Autoriser la notification"
 
 #: admin/systems/services/argonaut/argonautDNSConfig.tpl:13
 msgid "Allow update (semicolon separated and ended)"
@@ -70,7 +91,7 @@ msgstr ""
 
 #: admin/systems/services/argonaut/argonautDNSConfig.tpl:17
 msgid "TTL"
-msgstr ""
+msgstr "TTL"
 
 #: admin/systems/services/argonaut/argonautDNSConfig.tpl:19
 msgid "rndc path"
@@ -87,14 +108,14 @@ msgstr ""
 msgid "Modify argonaut mirror settings"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautServer.inc:55
-#: admin/systems/services/argonaut/class_argonautServer.inc:83
-#: admin/systems/services/argonaut/class_argonautServer.inc:152
-#: admin/systems/services/argonaut/class_argonautServer.inc:153
+#: admin/systems/services/argonaut/class_argonautServer.inc:61
+#: admin/systems/services/argonaut/class_argonautServer.inc:89
+#: admin/systems/services/argonaut/class_argonautServer.inc:158
+#: admin/systems/services/argonaut/class_argonautServer.inc:159
 msgid "Argonaut service"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautServer.inc:161
+#: admin/systems/services/argonaut/class_argonautServer.inc:167
 msgid "Modify argonaut service"
 msgstr ""
 
@@ -116,7 +137,7 @@ msgstr ""
 
 #: admin/systems/services/argonaut/argonautMirrorConfig.tpl:22
 msgid "Source"
-msgstr ""
+msgstr "Emetteur"
 
 #: admin/systems/services/argonaut/argonautMirrorConfig.tpl:24
 msgid "GPG Check"
@@ -124,7 +145,7 @@ msgstr ""
 
 #: admin/systems/services/argonaut/argonautMirrorConfig.tpl:26
 msgid "Contents"
-msgstr ""
+msgstr "Contenu"
 
 #: admin/systems/services/argonaut/argonautMirrorConfig.tpl:28
 msgid "Verbose"

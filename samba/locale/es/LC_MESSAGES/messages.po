@@ -10,14 +10,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-08 19:20+0200\n"
+"POT-Creation-Date: 2012-05-26 17:33+0200\n"
 "PO-Revision-Date: 2010-01-28 23:56+0100\n"
 "Last-Translator: \n"
 "Language-Team: Spanish <>\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
 "X-Generator: Lokalize 1.0\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
@@ -241,8 +241,8 @@ msgid "Samba"
 msgstr "Samba"
 
 #: personal/samba/class_sambaAccount.inc:27
-msgid "This does something"
-msgstr "Esto hace algo"
+msgid "This store the sambaAccount into the ldap tree"
+msgstr ""
 
 #: personal/samba/class_sambaAccount.inc:268
 msgid "POSIX"
@@ -568,6 +568,9 @@ msgstr "Escoja el departamento base de la búsqueda"
 #: personal/samba/samba3_workstations.tpl:31
 msgid "Regular expression for matching addresses"
 msgstr "Expresión regular para buscar direcciones"
+
+#~ msgid "This does something"
+#~ msgstr "Esto hace algo"
 
 #~ msgid "The password is valid till %s, by domain policy."
 #~ msgstr "La contraseña es válida hasta %s, por política de dominio."
