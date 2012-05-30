@@ -106,7 +106,7 @@ if ($cleanup) {
   }
 
   /* Show page footer depending on the mode */
-  if (!$novaAccount->groupSelect && !$novaAccount->trustSelect && $novaAccount->is_account && empty($lock_msg)){
+  if ($novaAccount->is_account && empty($lock_msg)) {
 
     $display .= "<p class=\"plugbottom\">";
 
