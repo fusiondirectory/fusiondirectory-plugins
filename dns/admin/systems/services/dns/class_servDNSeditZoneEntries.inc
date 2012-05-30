@@ -34,7 +34,7 @@ class servDNSeditZoneEntries extends plugin
 
   var $RecordTypes        = array();  // Possible record type.
   var $acl                = "";
-  var $disableDialog      = false; // Dialog will be disabled, if this zone is new 
+  var $disableDialog      = false; // Dialog will be disabled, if this zone is new
 
 
   function servDNSeditZoneEntries (&$config,$dn, &$zoneObject)
@@ -44,7 +44,7 @@ class servDNSeditZoneEntries extends plugin
     /* Initialise class
      */
     $this->RecordTypes  = DNS::getDnsRecordTypes();
-    $this->dn           = "zoneName=".$zoneObject['InitialzoneName'].",".$dn; 
+    $this->dn           = "zoneName=".$zoneObject['InitialzoneName'].",".$dn;
     $this->zoneName     = $zoneObject['InitialzoneName'];
     $this->reverseName  = $zoneObject['InitialReverseZone'];
 
@@ -57,7 +57,7 @@ class servDNSeditZoneEntries extends plugin
       unset($this->RecordTypes['pTRRecord']);
     }
 
-    /* Get ldap connection 
+    /* Get ldap connection
      */
     $ldap = $this->config->get_ldap_link();
     $ldap->cd($this->config->current['BASE']);
@@ -65,7 +65,7 @@ class servDNSeditZoneEntries extends plugin
     /* Get zone content
      */
     $ldap->ls("(&(objectClass=dNSZone)(!(relativeDomainName=@)))",$this->dn,array("relativeDomainName"));
-    
+
     while($attrs = $ldap->fetch()){
       $this->Devices[$attrs['relativeDomainName'][0]] = DNS::getDNSHostEntries($config,$attrs['relativeDomainName'][0],true);
       $this->Devices[$attrs['relativeDomainName'][0]]['OrigCn'] = $attrs['relativeDomainName'][0];
@@ -102,7 +102,7 @@ class servDNSeditZoneEntries extends plugin
 
   function save_object()
   {
-    /* Check posts for operations ...  
+    /* Check posts for operations ...
      */
     $once = true;
     $ptr_updates = array();
@@ -110,7 +110,7 @@ class servDNSeditZoneEntries extends plugin
 
     foreach($_POST as $name => $value){
 
-      /* Add a new Record in given object  
+      /* Add a new Record in given object
        */
       $tmp    = preg_replace("/^.*_(.*)_.*$/","\\1",$name);
       $tmp2   = explode("|",$tmp);
@@ -119,9 +119,9 @@ class servDNSeditZoneEntries extends plugin
        */
       if((preg_match("/^UserRecord_?/",$name)) && ($once)){
         $once = false;
-        $entry = DNS::getDNSHostEntries($this->config,"",true);     
+        $entry = DNS::getDNSHostEntries($this->config,"",true);
         $entry['exists']    = true;
-        $entry['zoneName']  = strtoupper($this->attrs['cn'][0])."/".$this->zoneName; 
+        $entry['zoneName']  = strtoupper($this->attrs['cn'][0])."/".$this->zoneName;
         $entry['RECORDS'][] = array("type" => "aRecord" , "value"=>"");
         $this->Devices[_("New entry")] = $entry;
       }
@@ -150,7 +150,7 @@ class servDNSeditZoneEntries extends plugin
         $visible = false;
         foreach($this->Devices[$Name]['RECORDS'] as $rec){
           if(in_array($rec['type'],$this->RecordTypes)){
-            $visible = true;  
+            $visible = true;
             break;
           }
         }
@@ -160,32 +160,32 @@ class servDNSeditZoneEntries extends plugin
       }
     }
 
-    /* Possible attributes posted 
+    /* Possible attributes posted
      */
     foreach($_POST as $name => $value){
 
-      /* Extract informations out of post name 
+      /* Extract informations out of post name
        */
       $tmp    = preg_replace("/^.*_/","\\1",$name);
-      $tmp2   = explode("|",$tmp);      
- 
+      $tmp2   = explode("|",$tmp);
+
       if(count($tmp2) != 2) continue;
 
       $Name     = base64_decode($tmp2[0]);
       $RecordID = $tmp2[1];
 
-      /* Check for value change 
-       */          
+      /* Check for value change
+       */
       if(preg_match("/ValueSelection_/",$name)){
         if(isset($this->Devices[$Name]['RECORDS'][$RecordID])){
-         
-          /* Update value */ 
+
+          /* Update value */
           $old = $this->Devices[$Name]['RECORDS'][$RecordID]['value'];
           $this->Devices[$Name]['RECORDS'][$RecordID]['value'] = get_post($name);
 
           /* Handle pTRRecord */
           if(!isset($ptr_updates[$Name]) && $this->Devices[$Name]['RECORDS'][$RecordID]['type'] == "aRecord"){
-    
+
             $found = false;
             $ip = $value;
             $match = preg_replace("/^[^\/]*+\//","",$this->reverseName);
@@ -209,23 +209,23 @@ class servDNSeditZoneEntries extends plugin
       }
 
       /* record type changed
-       */        
+       */
       if(preg_match("/^RecordTypeSelection_/",$name)){
         if(isset($this->Devices[$Name]['RECORDS'][$RecordID])){
           $this->Devices[$Name]['RECORDS'][$RecordID]['type'] = $value;
-        }  
-      }   
+        }
+      }
     }
-    
-    /* check for renamed entries 
-     */ 
+
+    /* check for renamed entries
+     */
     foreach($_POST as $name => $value){
 
-      /* Extract informations out of post name 
+      /* Extract informations out of post name
        */
       $tmp    = preg_replace("/^.*_/","\\1",$name);
-      $tmp2   = explode("|",$tmp);      
- 
+      $tmp2   = explode("|",$tmp);
+
       if(count($tmp2) != 2) continue;
 
       $Name     = base64_decode($tmp2[0]);
@@ -235,7 +235,7 @@ class servDNSeditZoneEntries extends plugin
        */
       if(preg_match("/RenameHost_/",$name)){
         if((isset($this->Devices[$Name])) && ($Name != $value)){
-    
+
           if(isset($this->Devices[$value])){
             msg_dialog::display(_("Error"), sprintf(_("Cannot rename '%s' to '%s'. Name is already in use!"), $Name, $value), ERROR_DIALOG);
           }else{
@@ -248,15 +248,15 @@ class servDNSeditZoneEntries extends plugin
   }
 
 
-  /*  check something 
+  /*  check something
    */
   function check()
   {
     /* Call common method to give check the hook */
     $message= plugin::check();
-   
+
     if(!preg_match("/w/",$this->acl)) return($message);
- 
+
     $ldap = $this->config->get_ldap_link();
     $ldap->cd($this->config->current['BASE']);
 
@@ -270,9 +270,9 @@ class servDNSeditZoneEntries extends plugin
        */
       if(!preg_match("/^[a-z0-9_\.-]+$/i", $DevName) || (empty($DevName))){
         $message[] = msgPool::invalid(_("Name"),$DevName,"/[a-z0-9_\.-]/i");
-      }      
+      }
 
-      /* Renaming check for existing devices 
+      /* Renaming check for existing devices
        */
       if(isset($device['OrigCn'])  && ($DevName != $device['OrigCn'] )){
         $ldap->cd($this->config->current['BASE']);
@@ -288,7 +288,7 @@ class servDNSeditZoneEntries extends plugin
         }
       }
 
-      /* Check names 
+      /* Check names
        */
       if(!isset($names[$DevName])){
         $names[$DevName] = "";
@@ -303,7 +303,7 @@ class servDNSeditZoneEntries extends plugin
 #      }
 
       /* Check records
-       */                 
+       */
       $singleEntries = array("pTRRecord");
 
       $tmp  = array();
@@ -323,18 +323,18 @@ class servDNSeditZoneEntries extends plugin
           }
         }
 
-        /* Check for empty / duplicate entries in record array 
+        /* Check for empty / duplicate entries in record array
          */
         if(empty($Rec['value'])){
           $message[] = sprintf(_("Please fix the empty %s record for entry '%s'."),$Rec['type'],$DevName);
         }
 
-        /* Check for duplicate record entries 
+        /* Check for duplicate record entries
          */
         if(!isset($tmp[$Rec['type']][$Rec['value']])){
           $tmp[$Rec['type']][$Rec['value']] = "";
         }else{
-          $message[] = sprintf(_("Please fix the duplicate %s record for entry '%s'."),$Rec['type'],$DevName); 
+          $message[] = sprintf(_("Please fix the duplicate %s record for entry '%s'."),$Rec['type'],$DevName);
         }
       }
     }
@@ -346,7 +346,7 @@ class servDNSeditZoneEntries extends plugin
   {
     if($this->disableDialog || !preg_match("/w/",$this->acl)) return;
 
-    $todo = array(); 
+    $todo = array();
 
 
 
@@ -415,18 +415,18 @@ class servDNSeditZoneEntries extends plugin
         $ldap->cd($dn);
         $ldap->add($attrs);
         if(is_object($this->parent->parent)){
-          $this->parent->parent->handle_post_events("create",array("dn" => $dn));
+          $this->parent->parent->handle_post_events("add",array("dn" => $dn));
         }
       }
     }
   }
 
 
-  /* Create html table out of given entry 
+  /* Create html table out of given entry
    */
   function generateRecordConfigurationRow($objKey){
 
-    /* Get some basic informations 
+    /* Get some basic informations
      */
     $obj        = $this->Devices[$objKey];
     $objectName = $objKey;
@@ -440,13 +440,13 @@ class servDNSeditZoneEntries extends plugin
      */
     if(count($obj['RECORDS']) == 0) return "";
 
-    /* Set title 
+    /* Set title
      */
     $str= "<br>";
 
     $hostNameOnce = true;
 
-    /* Walk through all defined records 
+    /* Walk through all defined records
      */
     $str.= "<table cellspacing='0' cellpadding='0'>";
     foreach($obj['RECORDS'] as $id => $record){
@@ -463,7 +463,7 @@ class servDNSeditZoneEntries extends plugin
       /* Only first host entry name should be editable
        */
       if($hostNameOnce){
-        $hostNameOnce = false;  
+        $hostNameOnce = false;
         $field1 ="<input $dis type='text' style='width:250px;' name='RenameHost_".$name."' value='".$objectName."'>\n";
       }else{
         $field1 = "";
@@ -471,13 +471,13 @@ class servDNSeditZoneEntries extends plugin
       $field2 = $this->createRecordTypeSelection($record['type'],$name);
       $field3 = "<input type='text' $dis value='".$record['value']."' name='ValueSelection_".$name."' style='width:250px;'>";
       if(preg_match("/w/",$this->acl)){
-        $acl =  "<input type='image' name='AddRecord_".$name."'   
+        $acl =  "<input type='image' name='AddRecord_".$name."'
           src='images/lists/new.png' alt='"._("Add")."' title='"._("Add")."'>
-          <input type='image' name='RemoveRecord_".$name."' 
+          <input type='image' name='RemoveRecord_".$name."'
           src='images/lists/trash.png'      alt='"._("Remove")."' title='"._("Remove")."'>";
       }
 
-      /* Display settings backwards for CNAMERecords 
+      /* Display settings backwards for CNAMERecords
        */
       if($record['type'] == "cNAMERecord"){
         $str .= "
@@ -487,7 +487,7 @@ class servDNSeditZoneEntries extends plugin
           <td>".$objectName."</td>
           <td>".$acl."</td>
           </tr>";
-      }else{ 
+      }else{
         $str .= "
           <tr>
           <td style='width:75px;text-align:right;'>".$field1."</td>
@@ -498,11 +498,11 @@ class servDNSeditZoneEntries extends plugin
       }
     }
     $str .="</table>";
-    return($str); 
+    return($str);
   }
 
 
-  /* Create selectbox with all available option types 
+  /* Create selectbox with all available option types
    */
   function createRecordTypeSelection($id,$refID){
 
@@ -527,7 +527,7 @@ class servDNSeditZoneEntries extends plugin
   function checkRecordType($name, $type, $value)
   {
     $template = _("The syntax of entry %s (record type %s, value %s) is invalid!")." %s<br><br><i>"._("Example").":</i> %s";
-    
+
     $message = Array();
     switch($type) {
       case 'aAAARecord': // RFC 3596
