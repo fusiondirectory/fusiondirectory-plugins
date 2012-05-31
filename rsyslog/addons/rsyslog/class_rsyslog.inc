@@ -75,7 +75,7 @@ class rsyslog extends plugin
     $ui = get_userinfo();
     foreach($this->servers as $name => $server)
     {
-      $link =& databaseManagement::connectDatabase($server);
+      $link = databaseManagement::connectDatabase($server);
       if (PEAR::isError($link)) {
         new log("debug","gosa_logging","dbconnect",array(),$link->getMessage());
         $this->servers[$name]['status'] = "connectfailed";
@@ -186,7 +186,7 @@ class rsyslog extends plugin
 
     $server = $this->servers[$name];
 
-    $link =& databaseManagement::connectDatabase($server);
+    $link = databaseManagement::connectDatabase($server);
     if (PEAR::isError($link)) {
       new log("debug","gosa_logging","dbconnect",array(),$link->getMessage());
       $this->servers[$name]['status'] = "connectfailed";

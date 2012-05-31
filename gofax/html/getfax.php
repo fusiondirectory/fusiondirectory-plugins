@@ -54,7 +54,7 @@ foreach (array("FAX_SERVER", "FAX_LOGIN", "FAX_PASSWORD") as $val) {
 $config = session::get('config');
 $cfg = $config->data['SERVERS']['FAX'];
 $cfg['DB'] = 'gofax';
-$link =& databaseManagement::connectDatabase($cfg);
+$link = databaseManagement::connectDatabase($cfg);
 if (PEAR::isError($link)) {
   die(_("Could not connect to database server!")." ".$link->getMessage());
 }
