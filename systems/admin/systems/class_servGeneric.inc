@@ -446,10 +446,10 @@ class servgeneric extends plugin
   /* Display generic part for server copy & paste */
   function getCopyDialog()
   {
-    $vars = array("cn");
-
     $smarty = get_smarty();
     $smarty->assign("cn" ,$this->cn);
+    $smarty->assign("macAddress" ,$this->netConfigDNS->macAddress);
+    $smarty->assign("ipHostNumber" ,$this->netConfigDNS->ipHostNumber);
     $smarty->assign("object","server");
     $str = $smarty->fetch(get_template_path("paste_generic.tpl",TRUE));
     $ret = array();
@@ -463,6 +463,12 @@ class servgeneric extends plugin
   {
     if(isset($_POST['cn'])){
       $this->cn = $_POST['cn'];
+    }
+    if (isset($_POST['macAddress'])) {
+      $this->netConfigDNS->macAddress = $_POST['macAddress'];
+    }
+    if (isset($_POST['ipHostNumber'])) {
+      $this->netConfigDNS->ipHostNumber = $_POST['ipHostNumber'];
     }
   }
 
