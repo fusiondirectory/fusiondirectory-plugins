@@ -21,7 +21,7 @@
 */
 
 class rSyslogServer extends goService{
-	
+
   /* This plugin only writes its objectClass */
   var $objectclasses    = array("goSyslogServer");
   var $attributes       = array();
@@ -39,8 +39,11 @@ class rSyslogServer extends goService{
   var $initial_use_database = FALSE;
   var $gosaLogDB     = "Syslog";
   var $goLogAdmin    = "rsyslog";
-  var $goLogPassword = "";  
+  var $goLogPassword = "";
   var $view_logged   = FALSE;
+
+  var $StatusFlag       = "goServerStatus";
+  var $goServerStatus   = "";
 
 
   function rSyslogServer(&$config,$dn)
@@ -60,8 +63,8 @@ class rSyslogServer extends goService{
 
 
   function execute()
-  { 
-    $smarty = get_smarty(); 
+  {
+    $smarty = get_smarty();
 
     if($this->is_account && !$this->view_logged){
       $this->view_logged = TRUE;
@@ -94,7 +97,7 @@ class rSyslogServer extends goService{
 
 
   function check()
-  { 
+  {
     $message = plugin::check();
     if($this->use_database){
       if (empty($this->goLogAdmin)){
@@ -123,7 +126,7 @@ class rSyslogServer extends goService{
       }
       $this->use_database = isset($_POST['use_database']);
     }
-  }  
+  }
 
 
   function save()
@@ -202,8 +205,8 @@ class rSyslogServer extends goService{
           "plProvidedAcls"=> array(
             "gosaLogDB" => _("Database"),
             "goLogAdmin"     => _("User"),
-            "goLogPassword" => _("Password"), 
-            "viewEntries"     => _("Allow view of entries on this server")) 
+            "goLogPassword" => _("Password"),
+            "viewEntries"     => _("Allow view of entries on this server"))
           ));
   }
 }

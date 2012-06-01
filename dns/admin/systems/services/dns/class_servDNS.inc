@@ -24,7 +24,7 @@ class servdns extends goService
 {
   /* attribute list for save action */
   var $ignore_account   = FALSE;
-  var $attributes       = array(); 
+  var $attributes       = array();
   var $objectclasses    = array("whatever");
 
   var $RecordTypes      = array();
@@ -33,7 +33,7 @@ class servdns extends goService
   var $orig_dn          = "";
 
   var $initially_was_account;
-  
+
   /* ServerService tab vars */
   var $conflicts        = array("servdns");
   var $DisplayName      = "";
@@ -43,6 +43,8 @@ class servdns extends goService
   var $dns_server_list   = array("ENTRIES"=> array(),"FOR_LIST"=> array());
   var $take_over_id       = -1;
 
+  var $StatusFlag       = "goServerStatus";
+  var $goServerStatus   = "";
 
   function servdns (&$config, $dn= NULL, $parent= NULL)
   {
@@ -59,8 +61,8 @@ class servdns extends goService
     /* Get all zone Informations
      */
     $this->Zones = DNS::getDNSZoneEntries($config,$dn);
-    
-    /* If there is at least one entry in this -> types, we have DNS enabled 
+
+    /* If there is at least one entry in this -> types, we have DNS enabled
      */
     if(count($this->Zones) == 0){
       $this->is_account = false;
@@ -100,7 +102,7 @@ class servdns extends goService
       }
     }
     return($ret);
-  }  
+  }
 
 
   function get_dns_info_string($id)
@@ -118,7 +120,7 @@ class servdns extends goService
 
   function execute()
   {
-    /* Call parent execute 
+    /* Call parent execute
      */
     plugin::execute();
 
@@ -127,7 +129,7 @@ class servdns extends goService
       new log("view","server/".get_class($this),$this->dn);
     }
 
-    /* Fill templating stuff 
+    /* Fill templating stuff
      */
     $smarty= get_smarty();
     $smarty->assign("dns_take_over",FALSE);
@@ -176,25 +178,25 @@ class servdns extends goService
     }
 
 
-    /* Do we need to flip is_account state? 
+    /* Do we need to flip is_account state?
      */
     if (isset($_POST['modify_state'])){
       $this->is_account= !$this->is_account;
     }
 
-    /* Edited or Added zone 
+    /* Edited or Added zone
      */
     if(isset($_POST['SaveZoneChanges'])){
       $this->dialog->save_object();
 
-      /* Check for errors  
+      /* Check for errors
        */
       if(count($this->dialog->check())){
         foreach($this->dialog->check() as $msgs){
           msg_dialog::display(_("Error"), $msgs, ERROR_DIALOG);
         }
       }else{
-        /* add new/edited zone 
+        /* add new/edited zone
          */
         $ret = $this->dialog->save();
         if(!$this->dialog->isNew){
@@ -205,13 +207,13 @@ class servdns extends goService
       }
     }
 
-    /* Cancel zone edit / new 
+    /* Cancel zone edit / new
      */
     if(isset($_POST['CancelZoneChanges'])){
       $this->dialog = FALSE;
     }
 
-    /* Add empty new zone 
+    /* Add empty new zone
      */
   if(isset($_POST['AddZone'])){
     $this->dialog = new servdnseditZone($this->config,$this->dn);
@@ -220,12 +222,12 @@ class servdns extends goService
     }
   }
 
-    /* Check for edit zone request 
+    /* Check for edit zone request
      */
     $once = false;
     foreach( $_POST as $name => $value){
-  
-      /* check all post for edit request 
+
+      /* check all post for edit request
        */
       if(preg_match("/^editZone_/",$name)&&!$once){
         $once =true;
@@ -234,30 +236,30 @@ class servdns extends goService
         $this->dialog= new servdnseditZone($this->config,$this->dn,$this->Zones[$tmp]);
       }
 
-      /* check posts for delete zone 
+      /* check posts for delete zone
        */
       if(preg_match("/^delZone_/",$name)&&!$once){
 
         $once =true;
         $tmp = preg_replace("/^delZone_/","",$name);
         $tmp = base64_decode(preg_replace("/_.*$/","",$tmp));
-     
+
         /* Initiate deletion
-         */ 
-        $this->RemoveZone($tmp); 
+         */
+        $this->RemoveZone($tmp);
       }
 
-      /* check posts for ldap2zone 
+      /* check posts for ldap2zone
        */
       if(preg_match("/^ldap2Zone_/",$name)&&!$once){
 
         $once =true;
         $tmp = preg_replace("/^ldap2Zone_/","",$name);
         $tmp = base64_decode(preg_replace("/_.*$/","",$tmp));
-     
+
         /* Initiate deletion
-         */ 
-        $this->Ldap2Zone($tmp); 
+         */
+        $this->Ldap2Zone($tmp);
       }
     }
 
@@ -275,7 +277,7 @@ class servdns extends goService
       }
     }
 
-    /* Show dialog 
+    /* Show dialog
      */
     if(is_object($this->dialog)){
       $this->dialog->save_object();
@@ -283,7 +285,7 @@ class servdns extends goService
       return($this->dialog->execute());
     }
 
-    /* Create Listbox with existing Zones 
+    /* Create Listbox with existing Zones
      */
     $ZoneList = new divSelectBox("dNSZones");
     $ZoneList -> SetHeight(254);
@@ -305,9 +307,9 @@ class servdns extends goService
             array("string" => _("Class")." : ".$values['dNSClass']),
             array("string" =>str_replace("%s",base64_encode($zone),$editImg))
             ));
-    }    
+    }
 
-    /* Display tempalte 
+    /* Display tempalte
      */
     $smarty->assign("ZoneList",$ZoneList->DrawList());
     $display.= $smarty->fetch(get_template_path('servdns.tpl', TRUE, dirname(__FILE__)));
@@ -344,7 +346,7 @@ class servdns extends goService
      */
     if(isset($zones[$rev.".in-addr.arpa."])){
       $used = array_merge($used,$zones[$rev.".in-addr.arpa."]);
-    } 
+    }
 
     /* There are still entries using this configuration
      *  Abort deletion
@@ -361,7 +363,7 @@ class servdns extends goService
         }
       }
 
-      /*  Only show 2 dns in the error message 
+      /*  Only show 2 dns in the error message
        */
       if(count($used)> 2) {
         $str .=" ... ";
@@ -372,8 +374,8 @@ class servdns extends goService
       unset($this->Zones[$id]);
       return(true);
     }
-  } 
-  
+  }
+
   /* This funtion calls ldap2zone
    */
   function Ldap2Zone($zone)
@@ -392,7 +394,7 @@ class servdns extends goService
   }
 
 
-  /* This funtion returns all used Zonenames 
+  /* This funtion returns all used Zonenames
    */
   function getUsedZoneNames()
   {
@@ -407,7 +409,7 @@ class servdns extends goService
   }
 
 
-  /* Remove dns service 
+  /* Remove dns service
    */
   function remove_from_parent()
   {
@@ -430,15 +432,15 @@ class servdns extends goService
   {
 
     /* Take over handling
-     * - Create list of zones managed by source server 
-     * - Copy ldap entries to destination server 
+     * - Create list of zones managed by source server
+     * - Copy ldap entries to destination server
      * - Remove old zone entries from source
      */
     if($this->take_over_id != -1){
       $del = array();
       $id = $this->take_over_id;
       $src = $this->dns_server_list['ENTRIES'][$id]['dn'];
-      $ldap = $this->config->get_ldap_link(); 
+      $ldap = $this->config->get_ldap_link();
       $ldap->ls("(objectClass=dnsZone)",$src,array('cn'));
       while($attrs = $ldap->fetch()){
         $src_zone = $attrs['dn'];
@@ -464,16 +466,16 @@ class servdns extends goService
     }
 
     $ldap = $this->config->get_ldap_link();
-    $ldap->cd($this->config->current['BASE']);  
-  
-    /* Get differences 
+    $ldap->cd($this->config->current['BASE']);
+
+    /* Get differences
      */
     $old_dn = $this->orig_dn;
     if($old_dn == "new"){
       $old_dn = $this->dn;
     }
 
-    /* Update dns to current object dn */ 
+    /* Update dns to current object dn */
     $tmp = DNS::getDNSZoneEntriesDiff($this->config,$this->Zones,$old_dn);
     $tmp2 = array();
     foreach($tmp as $key1 => $data1){
@@ -484,7 +486,7 @@ class servdns extends goService
     }
     $tmp = $tmp2;
 
-    /* Updated zone entries if reverser or forward name has changed  
+    /* Updated zone entries if reverser or forward name has changed
      * Must be done before moving entries, else the given dn is invalid
      */
     if(isset($tmp['zoneUpdates'])){
@@ -498,7 +500,7 @@ class servdns extends goService
       }
     }
 
-    /* Delete dns 
+    /* Delete dns
      */
     foreach($tmp['del'] as $dn => $del){
 
@@ -587,7 +589,7 @@ class servdns extends goService
 
   function getListEntry()
   {
-    $fields               = goService::getListEntry(); 
+    $fields               = goService::getListEntry();
     $fields['Message']    = _("DNS service");
     #$fields['AllowEdit']  = true;
     return($fields);
