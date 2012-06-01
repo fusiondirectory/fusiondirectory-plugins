@@ -47,6 +47,9 @@ class servdhcp extends goService
   var $take_over_id       = -1;
   var $display_warning  = TRUE;
 
+  var $StatusFlag       = "goServerStatus";
+  var $goServerStatus   = "";
+
   function servdhcp (&$config, $dn= NULL, $parent= NULL)
   {
     plugin::plugin ($config, $dn, $parent);
@@ -76,7 +79,7 @@ class servdhcp extends goService
     }
 
     /* Load information about available services */
-    $this->reload(); 
+    $this->reload();
     if (!count($this->dhcpSections)){
       $this->is_account= FALSE;
       $this->dhcp_server_list = $this->get_list_of_dhcp_servers();
@@ -96,29 +99,29 @@ class servdhcp extends goService
 
 
     /*****************/
-    /* Handle Take Over Actions 
+    /* Handle Take Over Actions
     /*****************/
 
     /* Give smarty the required informations */
     $smarty->assign("dhcp_server_list", $this->dhcp_server_list['FOR_LIST']);
     $smarty->assign("dhcp_server_list_cnt", count($this->dhcp_server_list['FOR_LIST']));
-    
+
     /* Take over requested, save id */
     if(isset($_POST['take_over_src']) && isset($_POST['take_over'])){
       $id = $_POST['take_over_src'];
       if(isset($this->dhcp_server_list['ENTRIES'][$id])){
-        $this->take_over_id = $id;      
+        $this->take_over_id = $id;
       }
     }
- 
-    /* Abort take over action */ 
+
+    /* Abort take over action */
     if(isset($_POST['cancel_take_over'])){
       $this->dialog =false;
       $this->take_over_id = -1;
       $this->dhcp_server_list = $this->get_list_of_dhcp_servers();
     }
 
-    /* Display informartion about take over that will be started when saving this server 
+    /* Display informartion about take over that will be started when saving this server
      *  and hide default dhcp output
      */
     if($this->take_over_id != -1){
@@ -137,9 +140,9 @@ class servdhcp extends goService
       return($smarty->fetch(get_template_path('servdhcp.tpl', TRUE, dirname(__FILE__))));
     }
 
-    
+
     /*****************/
-    /* List handling  
+    /* List handling
     /*****************/
 
     /* Section Creation? */
@@ -253,7 +256,7 @@ class servdhcp extends goService
 
     /* Look for post entries */
     foreach($_POST as $name => $value){
-      
+
       /* Insert new section? */
       if (preg_match('/^insertDhcp_.*_x$/', $name)){
         $id= preg_replace('/^insertDhcp_([^_]+)_x$/', '\1', $name);
@@ -291,7 +294,7 @@ class servdhcp extends goService
     }
 
     if(isset($_GET['act']) && $_GET['act']=="edit" && isset($_GET['id'])){
-      $id = $_GET['id'];      
+      $id = $_GET['id'];
       $dn = $this->dhcpDNtoID[$id];
       if (isset($this->dhcpObjectCache[$dn])){
         $section= $this->objectType($dn);
@@ -299,7 +302,7 @@ class servdhcp extends goService
         $this->dialog= new $section($this,$this->dhcpObjectCache[$dn]);
       }
     }
-    
+
 
     if(isset($_GET['act']) && $_GET['act']=="edit" && isset($_GET['id'])){
       $id = $_GET['id'];
@@ -310,7 +313,7 @@ class servdhcp extends goService
         $this->dialog= new $section($this,$this->dhcpObjectCache[$dn]);
       }
     }
-    
+
 
     /* Do we need to flip is_account state? */
     if (isset($_POST['modify_state'])){
@@ -361,7 +364,7 @@ class servdhcp extends goService
       "<input type='image' src='images/lists/edit.png' name='editDhcp_%s' title='"._("Edit DHCP section")."'>";
     $editImg = "<input type='image' src='images/lists/edit.png' name='editDhcp_%s' title='"._("Edit DHCP section")."'>".
       "<input type='image' src='images/lists/trash.png' name='delDhcp_%s' title='"._("Remove DHCP section")."'>";
-        
+
     $tmp = new dhcpNewSectionDialog(NULL);
     foreach($this->dhcpSections as $section => $values ){
 
@@ -370,11 +373,11 @@ class servdhcp extends goService
         $this->dhcpDNtoID[] = $section;
       }
 
-      // Get entry ID  
+      // Get entry ID
       $id = array_search($section,$this->dhcpDNtoID);
-   
+
       $values = "<a href='?plug=".$_GET['plug']."&act=edit&id=".$id."'>".$values."</a>";
-  
+
       $objtype = $this->objectType($section);
       $dhcpObject = new $objtype($this,$this->dhcpObjectCache[$section]);
       if (count($tmp->sectionMap[$objtype])){
@@ -433,7 +436,7 @@ class servdhcp extends goService
 
     /* Remove and write to LDAP */
     plugin::remove_from_parent();
-    
+
     @DEBUG (DEBUG_LDAP, __LINE__, __FUNCTION__, __FILE__, $this->attributes, "Save");
     $ldap->cd($this->dn);
     $this->cleanup();
@@ -460,7 +463,7 @@ class servdhcp extends goService
   {
     /* Call common method to give check the hook */
     $message= plugin::check();
-    
+
     return ($message);
   }
 
@@ -468,9 +471,9 @@ class servdhcp extends goService
   /* Save to LDAP */
   function save()
   {
-    /* Take over handling 
+    /* Take over handling
      * - Load servdhcp class and dhcpObjectCache for the source dhcp setup.
-     * - Assign dhcpObjectCache to this configuration. 
+     * - Assign dhcpObjectCache to this configuration.
      * - Save this setup and remove source setup from ldap.
      */
     if($this->take_over_id != -1){
@@ -509,7 +512,7 @@ class servdhcp extends goService
             foreach($data['dhcpOption'] as $key => $option){
               if(preg_match("/^server-name /",$option)){
                 $data['dhcpOption'][$key] = "server-name ".$this->cn;
-                $data['MODIFIED'] = TRUE; 
+                $data['MODIFIED'] = TRUE;
                 break;
               }
             }
@@ -537,7 +540,7 @@ class servdhcp extends goService
           if ($attribute == "MODIFIED" || $attribute == "dn"){
             continue;
           }
-      
+
           if(in_array($attribute,array("dhcpPrimaryDN","dhcpSecondaryDN","dhcpServerDN","dhcpFailOverPeerDN"))){
             foreach($values as $v_key => $value){
               $values[$v_key] = preg_replace("/".preg_quote($this->orig_dn, '/')."$/i",$this->dn,$value);
@@ -593,13 +596,13 @@ class servdhcp extends goService
       $this->dhcpServiceDN= preg_replace("/".preg_quote($this->orig_dn, '/')."$/i",$this->dn,$this->dhcpServiceDN);
     }
 
-    /* Replace 'new' dn */ 
+    /* Replace 'new' dn */
     if(preg_match("/new$/",$this->dhcpServiceDN)){
       $this->dhcpServiceDN = preg_replace("/new$/",$this->dn,$this->dhcpServiceDN);
     }
 
     plugin::save();
-    
+
     /* Save data to LDAP */
     $ldap->cd($this->dn);
     $this->cleanup();
@@ -619,7 +622,7 @@ class servdhcp extends goService
     }
 
     /* Take over handling
-     * - Remove old dhcp config from source server 
+     * - Remove old dhcp config from source server
      */
     if($this->take_over_id != -1){
       $id = $this->take_over_id;
@@ -731,7 +734,7 @@ class servdhcp extends goService
     if ($type == ""){
       msg_dialog::display(_("Error"), _("The DHCP configuration set is unkown. Please contact your system administrator."), ERROR_DIALOG);
     }
-    
+
     return ($type);
   }
 

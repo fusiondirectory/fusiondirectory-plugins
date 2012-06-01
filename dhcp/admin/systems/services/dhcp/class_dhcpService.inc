@@ -30,9 +30,6 @@ class dhcpService extends dhcpPlugin
   /* attribute list for save action */
   var $objectclasses = array('top', 'dhcpService');
 
-  var $StatusFlag       = "goServerStatus";
-  var $goServerStatus   = "";
-
 
   function dhcpService($parent, $attrs)
   {
