@@ -37,13 +37,12 @@ class servdns extends goService
   /* ServerService tab vars */
   var $conflicts        = array("servdns");
   var $DisplayName      = "";
-  var $StatusFlag       = "";
+  var $StatusFlag       = "goServerStatus";
   var $view_logged      = FALSE;
 
   var $dns_server_list   = array("ENTRIES"=> array(),"FOR_LIST"=> array());
   var $take_over_id       = -1;
 
-  var $StatusFlag       = "goServerStatus";
   var $goServerStatus   = "";
 
   function servdns (&$config, $dn= NULL, $parent= NULL)
