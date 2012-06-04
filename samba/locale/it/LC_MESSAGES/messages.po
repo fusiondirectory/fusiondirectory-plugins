@@ -1,25 +1,24 @@
-# translation of messages.po to Italian
-# Copyright (C) 2011 FusionDirectory Project
-# This file is distributed under the same license as the FusionDirectory package.
-#
-# Copyright (c) 2005 B-Open Solutions srl - http://www.bopen.it/
-# Copyright (c) 2005 Alessandro Amici <a.amici@bopen.it>
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
 # Alessandro Amici <a.amici@bopen.it>, 2005.
 # Giuliano Di Vito <giuliano@opensides.be>, 2011.
+#   <giuliano@opensides.be>, 2012.
 msgid ""
 msgstr ""
-"Project-Id-Version: messages\n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version: FusionDirectory\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
 "POT-Creation-Date: 2012-05-26 17:33+0200\n"
-"PO-Revision-Date: 2011-04-26 09:28+0200\n"
-"Last-Translator: Giuliano Di Vito <giuliano@opensides.be>\n"
-"Language-Team: Italian <kde-i18n-doc@kde.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2012-05-31 14:39+0000\n"
+"Last-Translator: poterealpopolo <giuliano@opensides.be>\n"
+"Language-Team: Italian (http://www.transifex.net/projects/p/FusionDirectory/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.0\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: it\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: admin/systems/samba/class_winGeneric.inc:132
 msgid "network"
@@ -159,7 +158,6 @@ msgid "Default to main client printer"
 msgstr "Stampante di default"
 
 #: personal/samba/samba3.tpl:264
-#, fuzzy
 msgid "Miscellaneous"
 msgstr "Altro"
 
@@ -168,7 +166,6 @@ msgid "Shadowing"
 msgstr "Nascondi"
 
 #: personal/samba/samba3.tpl:279
-#, fuzzy
 msgid "On broken or timed out"
 msgstr "Su interrotto oppure tempo d'attesa superato"
 
@@ -241,7 +238,7 @@ msgstr "Samba"
 
 #: personal/samba/class_sambaAccount.inc:27
 msgid "This store the sambaAccount into the ldap tree"
-msgstr ""
+msgstr "Questo memorizza l'account samba nell'annuario ldap"
 
 #: personal/samba/class_sambaAccount.inc:268
 msgid "POSIX"
@@ -287,10 +284,9 @@ msgid "from previous client only"
 msgstr "solo dal client precedente"
 
 #: personal/samba/class_sambaAccount.inc:524
-#, fuzzy, php-format
+#, php-format
 msgid "The password is outdated since %s, by domain policy."
-msgstr ""
-"La password è scaduta da %s, secondo la politica di sicurezza del dominio."
+msgstr "La password è scaduta da %s, secondo la politica di sicurezza del dominio."
 
 #: personal/samba/class_sambaAccount.inc:527
 #, php-format
@@ -376,9 +372,8 @@ msgid "Min password length"
 msgstr "Lunghezza minima per la password"
 
 #: personal/samba/class_sambaAccount.inc:781
-#, fuzzy
 msgid "Password history"
-msgstr "Storia delle password"
+msgstr "Cronologia delle password"
 
 #: personal/samba/class_sambaAccount.inc:782
 msgid "Force password change"
@@ -401,7 +396,6 @@ msgid "Bad lockout attempt"
 msgstr "Numero di tentativi prima del blocco"
 
 #: personal/samba/class_sambaAccount.inc:787
-#, fuzzy
 msgid "Disconnect time"
 msgstr "Tempo di disconnessione "
 
@@ -453,9 +447,7 @@ msgstr "No"
 #: personal/samba/class_sambaAccount.inc:802
 #, php-format
 msgid "The password would expire on %s, but the password expiry is disabled."
-msgstr ""
-"La password dovrebbe scadere il %s, ma l'opzione per la scadenza della "
-"password è disattivata."
+msgstr "La password dovrebbe scadere il %s, ma l'opzione per la scadenza della password è disattivata."
 
 #: personal/samba/class_sambaAccount.inc:808
 msgid "Password change available"
@@ -470,11 +462,8 @@ msgid "Home path"
 msgstr "Path della cartella personale dell'utente"
 
 #: personal/samba/class_sambaAccount.inc:900
-#, fuzzy
 msgid "The windows user manager allows eight clients at maximum!"
-msgstr ""
-"Il gestore degli utenti di Windows accetta solo 8 clienti alla volta. Tu ne "
-"hai specificati di più !"
+msgstr "Il gestore degli utenti di Windows accetta solo 8 clienti alla volta!"
 
 #: personal/samba/class_sambaAccount.inc:919
 msgid "Information"
@@ -487,15 +476,12 @@ msgstr "Avvertimento"
 
 #: personal/samba/class_sambaAccount.inc:1053
 msgid "Undefined Samba SID detected. Please fix this problem manually!"
-msgstr ""
-"É stato trovato un SID Samba che non è definito. Correggi manualmente !"
+msgstr "É stato trovato un SID Samba che non è definito. Correggi manualmente !"
 
 #: personal/samba/class_sambaAccount.inc:1078
 msgid ""
 "Cannot convert primary group to samba group: group cannot be identified!"
-msgstr ""
-"Impossibile convertire il gruppo primario in un gruppo primario di samba : "
-"il gruppo non puó essere identificato !"
+msgstr "Impossibile convertire il gruppo primario in un gruppo primario di samba : il gruppo non puó essere identificato !"
 
 #: personal/samba/class_sambaAccount.inc:1177 personal/samba/main.inc:135
 msgid "Samba settings"
@@ -510,7 +496,6 @@ msgid "Generic home directory"
 msgstr "Cartella personale di base"
 
 #: personal/samba/class_sambaAccount.inc:1188
-#, fuzzy
 msgid "Generic samba home drive"
 msgstr "Drive di rete di default"
 
@@ -546,9 +531,7 @@ msgstr "Autorizza la connessione da"
 msgid ""
 "The windows user manager only allows eight clients. You've specified more "
 "than eight."
-msgstr ""
-"Il gestore degli utenti di Windows accetta solo 8 clienti alla volta. Tu ne "
-"hai specificati di più ."
+msgstr "Il gestore degli utenti di Windows accetta solo 8 clienti alla volta. Tu ne hai specificati di più ."
 
 #: personal/samba/samba3_workstations.tpl:6
 msgid "Select workstations to add"
@@ -569,156 +552,3 @@ msgstr "Scegli il dipartimento su cui sarà basata la ricerca"
 #: personal/samba/samba3_workstations.tpl:31
 msgid "Regular expression for matching addresses"
 msgstr "Espressione regolare per selezionare gli indirizzi corrispondenti"
-
-#~ msgid "This does something"
-#~ msgstr "Questo fa qualcosa"
-
-#~ msgid "Password expires on"
-#~ msgstr "La password spira il"
-
-#, fuzzy
-#~ msgid "Allow user to change password"
-#~ msgstr "Permetti all'utente di cambiare la propria password da un client"
-
-#~ msgid "Choose subtree to place group in"
-#~ msgstr "Scegli il subtree dove mettere il gruppo"
-
-#, fuzzy
-#~ msgid "Select a base"
-#~ msgstr "Rimuovi"
-
-#~ msgid "Allow user to change password from client"
-#~ msgstr "Permetti all'utente di cambiare la propria password da un client"
-
-#~ msgid "Limit Logon Time"
-#~ msgstr "Limita il tempo per la connessione"
-
-#~ msgid "Limit Logoff Time"
-#~ msgstr "Limita il tempo per la disconnessione"
-
-#, fuzzy
-#~ msgid "Please select an entry!"
-#~ msgstr "Prego inserire un numero di telefono valido!"
-
-#~ msgid "Samba home"
-#~ msgstr "Home di Samba"
-
-#~ msgid "Temporary disable samba account"
-#~ msgstr "Disabilita temporaneamente l'account Samba"
-
-#, fuzzy
-#~ msgid "Show"
-#~ msgstr "Mostra gruppi"
-
-#~ msgid "Choose subtree to place terminal in"
-#~ msgstr "Scegli il subtree dove mettere i terminali"
-
-#~ msgid "Add"
-#~ msgstr "Aggiungi"
-
-#~ msgid "Delete"
-#~ msgstr "Rimuovi"
-
-#~ msgid "Cancel"
-#~ msgstr "Annulla"
-
-#~ msgid "Apply"
-#~ msgstr "Applica"
-
-#, fuzzy
-#~ msgid "Monday"
-#~ msgstr "giorno"
-
-#, fuzzy
-#~ msgid "Tuesday"
-#~ msgstr "giorno"
-
-#, fuzzy
-#~ msgid "Thursday"
-#~ msgstr "ora"
-
-#, fuzzy
-#~ msgid "Friday"
-#~ msgstr "giorno"
-
-#, fuzzy
-#~ msgid "Saturday"
-#~ msgstr "Stato"
-
-#~ msgid "This account has no samba extensions."
-#~ msgstr "Questa identità non possiede estensioni Samba."
-
-#~ msgid "Remove samba account"
-#~ msgstr "Elimina estensioni Samba"
-
-#~ msgid ""
-#~ "This account has samba features enabled. You can disable them by clicking "
-#~ "below."
-#~ msgstr "Questa identià possiede estensioni Samba."
-
-#~ msgid "Create samba account"
-#~ msgstr "Crea estensioni Samba"
-
-#~ msgid ""
-#~ "This account has samba features disabled. You can enable them by clicking "
-#~ "below."
-#~ msgstr "Questa identità non possiede estensioni Samba."
-
-#~ msgid ""
-#~ "This account has samba features disabled. Posix features are needed for "
-#~ "samba accounts, enable them first."
-#~ msgstr ""
-#~ "Questa identità non possiede estensioni Samba. Per poterle creare occorre "
-#~ "creare prima le estensioni Unix."
-
-#~ msgid "January"
-#~ msgstr "Gennaio"
-
-#~ msgid "February"
-#~ msgstr "Febbraio"
-
-#~ msgid "March"
-#~ msgstr "Marzo"
-
-#~ msgid "April"
-#~ msgstr "Aprile"
-
-#~ msgid "May"
-#~ msgstr "Maggio"
-
-#~ msgid "July"
-#~ msgstr "Luglio"
-
-#~ msgid "August"
-#~ msgstr "Agosto"
-
-#~ msgid "September"
-#~ msgstr "Settembre"
-
-#~ msgid "October"
-#~ msgstr "Ottobre"
-
-#~ msgid "November"
-#~ msgstr "Novembre"
-
-#~ msgid "December"
-#~ msgstr "Dicembre"
-
-#, fuzzy
-#~ msgid "Removing of user/samba account with dn '%s' failed."
-#~ msgstr "Elimina estensioni Samba"
-
-#~ msgid "The value specified as '%s' contains invalid characters!"
-#~ msgstr "Il valore specificato come '%s' contiene dei caratteri invalidi!"
-
-#, fuzzy
-#~ msgid "Saving of user/samba account with dn '%s' failed."
-#~ msgstr "Account Kolab"
-
-#~ msgid "Click the 'Edit' button below to change informations in this dialog"
-#~ msgstr ""
-#~ "Click sul bottone 'Modifica' qui sotto per cambiare le informazioni in "
-#~ "questo dialogo"
-
-#~ msgid "Edit"
-#~ msgstr "Modifica"

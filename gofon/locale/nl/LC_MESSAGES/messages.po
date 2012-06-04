@@ -1,25 +1,22 @@
-# translation of messages.po to Dutch
-#
-# Copyright (C) 2003 GONICUS GmbH, Germany
-# Copyright (C) 2011 FusionDirectory Project
-# This file is distributed under the same license as the FusionDirectory package.
-#
-#
-#  Alfred Schroeder <schroeder@GONICUS.de>, 2004. 
-#  Cajus Pollmeier <pollmeier@gonicus.de>, 2004. 
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
 #  Niels Klomp (CareWorks ICT Services) <nk@careworks.nl>, 2005.
 msgid ""
 msgstr ""
-"Project-Id-Version: messages\n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version: FusionDirectory\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
 "POT-Creation-Date: 2012-05-26 17:33+0200\n"
-"PO-Revision-Date: 2006-06-02 16:58+0100\n"
-"Last-Translator: Niels Klomp (CareWorks ICT Services) <nk@careworks.nl>\n"
-"Language-Team: CareWorks ICT Services <info@careworks.nl>\n"
-"Language: \n"
+"PO-Revision-Date: 2012-05-26 16:33+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: Dutch (http://www.transifex.net/projects/p/FusionDirectory/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: admin/macro/macro-list.tpl:13 admin/macro/class_gofonMacro.inc:567
 #: admin/macro/generic.tpl:27 admin/conference/conf-list.tpl:13
@@ -91,14 +88,14 @@ msgid ""
 msgstr ""
 
 #: admin/macro/class_gofonMacro.inc:264
-#, fuzzy, php-format
+#, php-format
 msgid "Application missing in line %s!"
-msgstr "Er is een dubbele invoer in '%s' voor '%s'"
+msgstr ""
 
 #: admin/macro/class_gofonMacro.inc:267
-#, fuzzy, php-format
+#, php-format
 msgid "Priority missing in line %s!"
-msgstr "Er is een dubbele invoer in '%s' voor '%s'"
+msgstr ""
 
 #: admin/macro/class_gofonMacro.inc:271
 #, php-format
@@ -143,23 +140,20 @@ msgstr "Fout"
 #: addons/fonreports/class_fonreport.inc:225
 #: personal/phoneaccount/class_phoneAccount.inc:466
 #: personal/phoneaccount/class_phoneAccount.inc:1071
-#, fuzzy
 msgid "GOfon"
-msgstr "geen macro"
+msgstr ""
 
 #: admin/macro/class_gofonMacro.inc:410
 msgid "Name can be 20 characters at maximum!"
 msgstr ""
 
 #: admin/macro/class_gofonMacro.inc:419
-#, fuzzy
 msgid "Macro is still in use!"
-msgstr "E-mail instellingen"
+msgstr ""
 
 #: admin/macro/class_gofonMacro.inc:426
-#, fuzzy
 msgid "Macro is empty!"
-msgstr "Macro tekst"
+msgstr ""
 
 #: admin/macro/class_gofonMacro.inc:452
 #: admin/systems/gofon/class_phoneGeneric.inc:267
@@ -172,9 +166,8 @@ msgstr ""
 #: personal/phoneaccount/class_phoneAccount.inc:466
 #: personal/phoneaccount/class_phoneAccount.inc:1071
 #: personal/phoneaccount/class_phoneAccount.inc:1595
-#, fuzzy
 msgid "Configuration error"
-msgstr "Configuratie bestand"
+msgstr ""
 
 #: admin/macro/class_gofonMacro.inc:473 admin/macro/class_gofonMacro.inc:484
 #: admin/macro/class_gofonMacro.inc:521
@@ -189,9 +182,8 @@ msgstr "Configuratie bestand"
 #: admin/ogroups/gofon/class_phonequeue.inc:857
 #: personal/phoneaccount/class_phoneAccount.inc:1504
 #: personal/phoneaccount/class_phoneAccount.inc:1637
-#, fuzzy
 msgid "LDAP error"
-msgstr "LDAP fout:"
+msgstr "LDAP fout"
 
 #: admin/macro/class_gofonMacro.inc:556
 #: admin/systems/gofon/class_phoneGeneric.inc:511
@@ -199,14 +191,12 @@ msgid "Generic"
 msgstr "Algemeen"
 
 #: admin/macro/class_gofonMacro.inc:557
-#, fuzzy
 msgid "Asterisk macro management"
-msgstr "Asterisk beheer"
+msgstr ""
 
 #: admin/macro/class_gofonMacro.inc:562
-#, fuzzy
 msgid "GOfon macro"
-msgstr "geen macro"
+msgstr ""
 
 #: admin/macro/class_gofonMacro.inc:566 admin/macro/paste_generic.tpl:4
 #: admin/macro/paste_generic.tpl:6 admin/macro/generic.tpl:6
@@ -219,9 +209,8 @@ msgid "Display name"
 msgstr "Getoonde naam"
 
 #: admin/macro/class_gofonMacro.inc:570
-#, fuzzy
 msgid "Macro content and parameter"
-msgstr "Macro tekst"
+msgstr ""
 
 #: admin/macro/class_gofonMacro.inc:571
 msgid "Visibility flag"
@@ -240,9 +229,8 @@ msgid "Default value"
 msgstr "Standaard waarde"
 
 #: admin/macro/parameter.tpl:19
-#, fuzzy
 msgid "You are not allowed to view the macro parameter settings"
-msgstr "U heeft geen toestemming om deze gebruiker te verwijderen!"
+msgstr ""
 
 #: admin/macro/remove.tpl:2
 #: admin/conference/class_phoneConferenceGeneric.inc:399
@@ -257,19 +245,14 @@ msgid "Warning"
 msgstr "Waarschuwing"
 
 #: admin/macro/remove.tpl:6 admin/conference/remove.tpl:6
-#, fuzzy
 msgid ""
 "Please double check if you really want to do this since there is no way for "
 "FusionDirectory to get your data back."
 msgstr ""
-"Controleer a.u.b. of u dit daadwerkelijk wil doen, aangezien er geen "
-"mogelijkheid voor FusionDirectory is om uw data terug te krijgen."
 
 #: admin/macro/remove.tpl:10 admin/conference/remove.tpl:10
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr ""
-"Indien u zeker bent drukt u dan 'Verwijderen' om door te gaan of 'Annuleren' "
-"om te annuleren."
+msgstr "Indien u zeker bent drukt u dan 'Verwijderen' om door te gaan of 'Annuleren' om te annuleren."
 
 #: admin/macro/class_gofonMacroParameters.inc:221
 #: personal/phoneaccount/generic.tpl:125 personal/phoneaccount/generic.tpl:127
@@ -293,16 +276,14 @@ msgid "Delete unused"
 msgstr "Verwijder ongebruikte"
 
 #: admin/macro/class_gofonMacroParameters.inc:361
-#, fuzzy, php-format
+#, php-format
 msgid "Parameter %s contains invalid character. '!,#' is used as delimiter!"
 msgstr ""
-"De bevat '%s' bevat ongeldige karakters. '!,#' worden gebruikt als "
-"scheidingstekens"
 
 #: admin/macro/class_gofonMacroParameters.inc:366
-#, fuzzy, php-format
+#, php-format
 msgid "Parameter %s is invalid!"
-msgstr "De opgegeven naam is ongeldig."
+msgstr ""
 
 #: admin/macro/class_gofonMacroParameters.inc:395
 #: personal/phoneaccount/class_phoneAccount.inc:1628
@@ -328,9 +309,8 @@ msgid "Macro text"
 msgstr "Macro tekst"
 
 #: admin/macro/class_gofonMacroManagement.inc:25
-#, fuzzy
 msgid "Macros"
-msgstr "Macro"
+msgstr ""
 
 #: admin/macro/class_gofonMacroManagement.inc:26
 msgid "Phone macro management"
@@ -348,9 +328,8 @@ msgstr "Conferentie"
 #: admin/conference/class_phoneConferenceGeneric.inc:104
 #: admin/ogroups/gofon/class_phonequeue.inc:110
 #: personal/phoneaccount/class_phoneAccount.inc:159
-#, fuzzy
 msgid "Obsolete entry"
-msgstr "Verwijder deze invoer"
+msgstr ""
 
 #: admin/conference/class_phoneConferenceGeneric.inc:104
 #: admin/ogroups/gofon/class_phonequeue.inc:110
@@ -367,10 +346,10 @@ msgid "Cannot delete entry from server '%s' because it seems to be removed!"
 msgstr ""
 
 #: admin/conference/class_phoneConferenceGeneric.inc:308
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "The previously selected asterisk home server '%s' is no longer available!"
-msgstr "Dit programma is niet meer beschikbaar."
+msgstr ""
 
 #: admin/conference/class_phoneConferenceGeneric.inc:315
 #: admin/conference/generic.tpl:159
@@ -379,43 +358,38 @@ msgstr "PIN-code"
 
 #: admin/conference/class_phoneConferenceGeneric.inc:328
 #: admin/ogroups/gofon/class_phonequeue.inc:293
-#, fuzzy
 msgid "Number"
-msgstr "Naam - nummer"
+msgstr ""
 
 #: admin/conference/class_phoneConferenceGeneric.inc:333
 #: admin/conference/class_phoneConferenceGeneric.inc:753
-#, fuzzy
 msgid "Lifetime"
-msgstr "Geldigheidsduur (in dagen)"
+msgstr ""
 
 #: admin/conference/class_phoneConferenceGeneric.inc:400
 #, php-format
 msgid ""
-"FusionDirectory identified problems with your MySQL table definition, please "
-"activate debugging for details."
+"FusionDirectory identified problems with your MySQL table definition, please"
+" activate debugging for details."
 msgstr ""
 
 #: admin/conference/class_phoneConferenceGeneric.inc:606
 #: admin/conference/class_phoneConferenceGeneric.inc:608
-#, fuzzy, php-format
+#, php-format
 msgid "'%s' is already assigned to '%s'!"
-msgstr "Het opgegeven telefoonnummer '%s' is al toegekend aan '%s'."
+msgstr ""
 
 #: admin/conference/class_phoneConferenceGeneric.inc:727
-#, fuzzy
 msgid "Phone conference management"
-msgstr "Conferentie beheer"
+msgstr ""
 
 #: admin/conference/class_phoneConferenceGeneric.inc:732
-#, fuzzy
 msgid "GOfon conference"
-msgstr "Tel. conferenties"
+msgstr ""
 
 #: admin/conference/class_phoneConferenceGeneric.inc:739
-#, fuzzy
 msgid "Conference PIN"
-msgstr "Conferentie"
+msgstr ""
 
 #: admin/conference/class_phoneConferenceGeneric.inc:741
 #: admin/conference/generic.tpl:72
@@ -432,9 +406,8 @@ msgstr "Taal"
 #: personal/phoneaccount/class_phoneAccount.inc:1378
 #: personal/phoneaccount/class_phoneAccount.inc:1736
 #: personal/phoneaccount/generic.tpl:58
-#, fuzzy
 msgid "Home server"
-msgstr "Tijd Service"
+msgstr ""
 
 #: admin/conference/class_phoneConferenceGeneric.inc:744
 #: admin/conference/generic.tpl:151
@@ -452,33 +425,27 @@ msgid "Play music on hold"
 msgstr "Muziek afspelen bij wachtstand"
 
 #: admin/conference/class_phoneConferenceGeneric.inc:747
-#, fuzzy
 msgid "Activate menu"
-msgstr "Activeer sessiemenu"
+msgstr ""
 
 #: admin/conference/class_phoneConferenceGeneric.inc:748
-#, fuzzy
 msgid "Announce user activity"
-msgstr "Aankondigingsfrequentie"
+msgstr ""
 
 #: admin/conference/class_phoneConferenceGeneric.inc:749
-#, fuzzy
 msgid "Count user"
-msgstr "Tel het aantal gebruikers"
+msgstr ""
 
 #: admin/conference/class_phoneConferenceGeneric.inc:750
-#, fuzzy
 msgid "Conference type"
-msgstr "Conferentienaam"
+msgstr ""
 
 #: admin/conference/class_phoneConferenceGeneric.inc:752
-#, fuzzy
 msgid "Format"
-msgstr "formaat"
+msgstr ""
 
 #: admin/conference/class_phoneConferenceGeneric.inc:754
 #: personal/phoneaccount/class_phoneAccount.inc:1733
-#, fuzzy
 msgid "Telephone number"
 msgstr "Telefoonnummer"
 
@@ -501,9 +468,8 @@ msgid "Phone number"
 msgstr "Telefoonnummer"
 
 #: admin/conference/class_phoneConferenceManagment.inc:25
-#, fuzzy
 msgid "conferences"
-msgstr "Conferentie"
+msgstr ""
 
 #: admin/conference/class_phoneConferenceManagment.inc:26
 msgid "Conference management"
@@ -522,9 +488,8 @@ msgid "Choose subtree to place conference in"
 msgstr "Kies de subtree waaronder de conferentie geplaatst wordt"
 
 #: admin/conference/generic.tpl:76
-#, fuzzy
 msgid "Select language"
-msgstr "Taal"
+msgstr ""
 
 #: admin/conference/generic.tpl:98
 msgid "Descriptive text for department"
@@ -563,9 +528,8 @@ msgid "Phone name"
 msgstr "Telefoonnaam"
 
 #: admin/systems/gofon/class_phoneGeneric.inc:151
-#, fuzzy
 msgid "phone"
-msgstr "Telefoon"
+msgstr ""
 
 #: admin/systems/gofon/class_phoneGeneric.inc:230
 msgid "yes"
@@ -585,69 +549,57 @@ msgstr "Netwerk instellingen"
 
 #: admin/systems/gofon/class_phoneGeneric.inc:330
 #: admin/systems/gofon/class_phoneGeneric.inc:333
-#, fuzzy
 msgid "IP address"
-msgstr "Adres thuis"
+msgstr ""
 
 #: admin/systems/gofon/class_phoneGeneric.inc:512
-#, fuzzy
 msgid "Phone generic"
-msgstr "Telefoonnummer"
+msgstr ""
 
 #: admin/systems/gofon/class_phoneGeneric.inc:517
 #: personal/phoneaccount/class_phoneAccount.inc:1735
-#, fuzzy
 msgid "Phone hardware"
-msgstr "Telefoon hardware"
+msgstr ""
 
 #: admin/systems/gofon/class_phoneGeneric.inc:523
-#, fuzzy
 msgid "SIP Mode"
-msgstr "Modus"
+msgstr ""
 
 #: admin/systems/gofon/class_phoneGeneric.inc:524
-#, fuzzy
 msgid "SIP DTMF mode"
-msgstr "DTMF modus"
+msgstr ""
 
 #: admin/systems/gofon/class_phoneGeneric.inc:525
-#, fuzzy
 msgid "SIP Default ip"
-msgstr "Standaard IP"
+msgstr ""
 
 #: admin/systems/gofon/class_phoneGeneric.inc:526
 msgid "SIP Qualify"
 msgstr ""
 
 #: admin/systems/gofon/class_phoneGeneric.inc:527
-#, fuzzy
 msgid "IAX authentication type"
-msgstr "Nagios authenticatie"
+msgstr ""
 
 #: admin/systems/gofon/class_phoneGeneric.inc:528
-#, fuzzy
 msgid "IAX secret"
-msgstr "IMAP Service"
+msgstr ""
 
 #: admin/systems/gofon/class_phoneGeneric.inc:529
-#, fuzzy
 msgid "IAX account code"
-msgstr "Account code"
+msgstr ""
 
 #: admin/systems/gofon/class_phoneGeneric.inc:530
-#, fuzzy
 msgid "IAX trunk lines"
-msgstr "Trunk lijnen"
+msgstr ""
 
 #: admin/systems/gofon/class_phoneGeneric.inc:531
-#, fuzzy
 msgid "IAX permit settings"
-msgstr "Fax instellingen"
+msgstr ""
 
 #: admin/systems/gofon/class_phoneGeneric.inc:532
-#, fuzzy
 msgid "IAX deny settings"
-msgstr "Fax instellingen"
+msgstr ""
 
 #: admin/systems/gofon/class_phoneGeneric.inc:533
 msgid "CAPI MSN"
@@ -655,7 +607,7 @@ msgstr ""
 
 #: admin/systems/gofon/class_phoneGeneric.inc:534
 msgid "Hardware type"
-msgstr ""
+msgstr "Hardware type"
 
 #: admin/systems/gofon/phonesettings.tpl:1
 msgid "Advanced phone settings"
@@ -743,9 +695,8 @@ msgid "MSN"
 msgstr "MSN"
 
 #: admin/systems/services/gofon/goFonServer.tpl:1
-#, fuzzy
 msgid "VoIP database information"
-msgstr "Informatie weergeven/verbergen"
+msgstr ""
 
 #: admin/systems/services/gofon/goFonServer.tpl:4
 msgid "Asterisk DB user"
@@ -769,70 +720,59 @@ msgstr "Lokale telefoon prefix"
 #: admin/systems/services/gofon/class_goFonServer.inc:54
 #: admin/systems/services/gofon/class_goFonServer.inc:85
 #: admin/systems/services/gofon/class_goFonServer.inc:185
-#, fuzzy
 msgid "VoIP service"
-msgstr "IMAP Service"
+msgstr ""
 
 #: admin/systems/services/gofon/class_goFonServer.inc:85
-#, fuzzy
 msgid "Asterisk management"
-msgstr "Asterisk beheer"
+msgstr ""
 
 #: admin/systems/services/gofon/class_goFonServer.inc:94
 msgid "User"
 msgstr "Gebruiker"
 
 #: admin/systems/services/gofon/class_goFonServer.inc:103
-#, fuzzy
 msgid "Country prefix"
-msgstr "Internationale telefoon prefix"
+msgstr ""
 
 #: admin/systems/services/gofon/class_goFonServer.inc:140
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "You can't remove the asterisk database extension, it is still in use by "
 "these objects '%s'."
 msgstr ""
-"U kunt deze bijlage niet verwijderen, aangezien deze nog steeds in gebruik "
-"is door deze systemen: '%s'"
 
 #: admin/systems/services/gofon/class_goFonServer.inc:186
-#, fuzzy
 msgid "VoIP - asterisk management"
-msgstr "Asterisk beheer"
+msgstr ""
 
 #: admin/systems/services/gofon/class_goFonServer.inc:186
 msgid "Services"
 msgstr "Services"
 
 #: admin/systems/services/gofon/class_goFonServer.inc:194
-#, fuzzy
 msgid "Start"
-msgstr "Opstarten"
+msgstr ""
 
 #: admin/systems/services/gofon/class_goFonServer.inc:195
 msgid "Stop"
 msgstr "Stop"
 
 #: admin/systems/services/gofon/class_goFonServer.inc:196
-#, fuzzy
 msgid "Restart"
-msgstr "Opnieuw proberen"
+msgstr ""
 
 #: admin/systems/services/gofon/class_goFonServer.inc:198
-#, fuzzy
 msgid "Admin"
-msgstr "Beheerders"
+msgstr ""
 
 #: admin/systems/services/gofon/class_goFonServer.inc:200
-#, fuzzy
 msgid "Area code"
-msgstr "SOA record"
+msgstr ""
 
 #: admin/systems/services/gofon/class_goFonServer.inc:201
-#, fuzzy
 msgid "Country code"
-msgstr "Account code"
+msgstr ""
 
 #: admin/ogroups/gofon/class_phonequeue.inc:140
 msgid "ring all"
@@ -864,20 +804,18 @@ msgstr "Verwijder telefoonwachtrij van dit account"
 
 #: admin/ogroups/gofon/class_phonequeue.inc:181
 #: admin/ogroups/gofon/class_phonequeue.inc:184
-#, fuzzy
 msgid "phone queue"
-msgstr "Telefoonwachtrij aanmaken"
+msgstr ""
 
 #: admin/ogroups/gofon/class_phonequeue.inc:183
 msgid "Create phone queue"
 msgstr "Telefoonwachtrij aanmaken"
 
 #: admin/ogroups/gofon/class_phonequeue.inc:272
-#, fuzzy
 msgid ""
 "There must be at least one server with an asterisk database to create a "
 "phone queue."
-msgstr "Er moet tenminste een NTP server geselecteerd zijn."
+msgstr ""
 
 #: admin/ogroups/gofon/class_phonequeue.inc:281
 #: admin/ogroups/gofon/class_phonequeue.inc:891
@@ -892,9 +830,8 @@ msgid "Retry"
 msgstr "Opnieuw proberen"
 
 #: admin/ogroups/gofon/class_phonequeue.inc:287
-#, fuzzy
 msgid "Queue length"
-msgstr "Maximale wachtrij lengte"
+msgstr ""
 
 #: admin/ogroups/gofon/class_phonequeue.inc:290
 #: admin/ogroups/gofon/class_phonequeue.inc:894
@@ -904,28 +841,24 @@ msgstr "Aankondigingsfrequentie"
 
 #: admin/ogroups/gofon/class_phonequeue.inc:316
 #: admin/ogroups/gofon/class_phonequeue.inc:361
-#, fuzzy
 msgid "asterisk"
-msgstr "Plakken"
+msgstr ""
 
 #: admin/ogroups/gofon/class_phonequeue.inc:401
-#, fuzzy
 msgid "Cannot find old queue entry!"
-msgstr "Kan bestand '%s' niet aanmaken."
+msgstr ""
 
 #: admin/ogroups/gofon/class_phonequeue.inc:487
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "Found more than one entry named '%s' in queue table. Please inform your "
 "system administrator!"
 msgstr ""
-"Account is geblokkeerd. Neem a.u.b. contact op met de systeembeheerder."
 
 #: admin/ogroups/gofon/class_phonequeue.inc:728
 #: admin/ogroups/gofon/class_phonequeue.inc:730
-#, fuzzy
 msgid "telephone number"
-msgstr "Telefoonnummer"
+msgstr ""
 
 #: admin/ogroups/gofon/class_phonequeue.inc:882
 #: personal/phoneaccount/class_phoneAccount.inc:26
@@ -939,9 +872,8 @@ msgid "Phone"
 msgstr "Telefoon"
 
 #: admin/ogroups/gofon/class_phonequeue.inc:883
-#, fuzzy
 msgid "Phone group"
-msgstr "Leden zitten in een telefoon beantwoordgroep"
+msgstr ""
 
 #: admin/ogroups/gofon/class_phonequeue.inc:892
 #: admin/ogroups/gofon/phonequeue.tpl:109
@@ -979,58 +911,48 @@ msgid "Music on hold"
 msgstr "Wachtstand muziek"
 
 #: admin/ogroups/gofon/class_phonequeue.inc:902
-#, fuzzy
 msgid "Welcome music"
-msgstr "Welkom %s!"
+msgstr ""
 
 #: admin/ogroups/gofon/class_phonequeue.inc:903
-#, fuzzy
 msgid "Report hold time"
-msgstr "Aankondigings wachttijd"
+msgstr ""
 
 #: admin/ogroups/gofon/class_phonequeue.inc:904
 msgid "'You are next' sound"
 msgstr ""
 
 #: admin/ogroups/gofon/class_phonequeue.inc:905
-#, fuzzy
 msgid "'There are' sound"
-msgstr "'Er zijn ...'"
+msgstr ""
 
 #: admin/ogroups/gofon/class_phonequeue.inc:906
-#, fuzzy
 msgid "'Call waiting' sound"
-msgstr "'...oproepen wachtend'"
+msgstr ""
 
 #: admin/ogroups/gofon/class_phonequeue.inc:907
-#, fuzzy
 msgid "'Thank you' sound"
-msgstr "'Dank U' bericht"
+msgstr ""
 
 #: admin/ogroups/gofon/class_phonequeue.inc:908
-#, fuzzy
 msgid "'Minutes' sound"
-msgstr "'minuten' geluidsbestand"
+msgstr ""
 
 #: admin/ogroups/gofon/class_phonequeue.inc:909
-#, fuzzy
 msgid "'Seconds' sound"
-msgstr "'seconden' geluidsbestand"
+msgstr ""
 
 #: admin/ogroups/gofon/class_phonequeue.inc:910
-#, fuzzy
 msgid "'Less than' sound"
-msgstr "Minder Dan geluidsbestand"
+msgstr ""
 
 #: admin/ogroups/gofon/class_phonequeue.inc:911
-#, fuzzy
 msgid "Queue phone number"
-msgstr "Telefoonnummer"
+msgstr ""
 
 #: admin/ogroups/gofon/class_phonequeue.inc:913
-#, fuzzy
 msgid "Method"
-msgstr "methode"
+msgstr ""
 
 #: admin/ogroups/gofon/class_phonequeue.inc:914
 #: admin/ogroups/gofon/phonequeue.tpl:277
@@ -1038,13 +960,13 @@ msgid "Announce holdtime"
 msgstr "Aankondigings wachttijd"
 
 #: admin/ogroups/gofon/class_phonequeue.inc:915
-#, fuzzy
 msgid "Announce"
-msgstr "Aankondigings bericht"
+msgstr ""
 
 #: admin/ogroups/gofon/phonequeue.tpl:2
 msgid ""
-"Only users with the same asterisk home server will be included to this queue."
+"Only users with the same asterisk home server will be included to this "
+"queue."
 msgstr ""
 
 #: admin/ogroups/gofon/phonequeue.tpl:5
@@ -1146,18 +1068,16 @@ msgid "This does something"
 msgstr "Dit doet iets"
 
 #: addons/fonreports/class_fonreport.inc:237
-#, fuzzy
 msgid "Insufficient permissions"
-msgstr "Rechten"
+msgstr ""
 
 #: addons/fonreports/class_fonreport.inc:256
 msgid "Y-M-D"
 msgstr "J-M-D"
 
 #: addons/fonreports/class_fonreport.inc:424
-#, fuzzy
 msgid "All entries are readonly"
-msgstr "Alle velden zijn aanpasbaar"
+msgstr ""
 
 #: addons/fonreports/class_fonreport.inc:436 addons/fonreports/contents.tpl:34
 msgid "Date"
@@ -1176,14 +1096,12 @@ msgid "Channel"
 msgstr "Kanaal"
 
 #: addons/fonreports/class_fonreport.inc:440
-#, fuzzy
 msgid "Application called"
-msgstr "Programmanaam"
+msgstr ""
 
 #: addons/fonreports/class_fonreport.inc:441
-#, fuzzy
 msgid "Disposition"
-msgstr "Max. verbrekingsduur"
+msgstr ""
 
 #: addons/fonreports/class_fonreport.inc:442 addons/fonreports/contents.tpl:40
 msgid "Duration"
@@ -1206,14 +1124,12 @@ msgid "Select subtree to base search on"
 msgstr "Selecteer de subtree waarbinnen de zoekopdracht plaatsvindt"
 
 #: addons/fonreports/contents.tpl:12
-#, fuzzy
 msgid "on"
-msgstr "Omlaag"
+msgstr ""
 
 #: addons/fonreports/contents.tpl:13
-#, fuzzy
 msgid "Select server to search on"
-msgstr "Selecteer de subtree waarbinnen de zoekopdracht plaatsvindt"
+msgstr ""
 
 #: addons/fonreports/contents.tpl:16
 msgid "during"
@@ -1280,9 +1196,8 @@ msgid "Create phone account"
 msgstr "Telefoon account aanmaken"
 
 #: personal/phoneaccount/class_phoneAccount.inc:1038
-#, fuzzy
 msgid "User uid"
-msgstr "Gebruikers ID"
+msgstr ""
 
 #: personal/phoneaccount/class_phoneAccount.inc:1056
 msgid "Selected macro is not available anymore!"
@@ -1297,13 +1212,10 @@ msgid "Choose your private phone"
 msgstr "Kies uw privé telefoon"
 
 #: personal/phoneaccount/class_phoneAccount.inc:1374
-#, fuzzy
 msgid ""
 "There must be at least one server with an asterisk database to create a "
 "phone account."
 msgstr ""
-"Er moet tenminste een NTP server geselecteerd zijn of de overervings mode "
-"moet geactiveerd zijn."
 
 #: personal/phoneaccount/class_phoneAccount.inc:1382
 #: personal/phoneaccount/class_phoneAccount.inc:1385
@@ -1313,9 +1225,8 @@ msgid "Voicemail PIN"
 msgstr "Voicemail PIN-code"
 
 #: personal/phoneaccount/class_phoneAccount.inc:1382
-#, fuzzy
 msgid "Between 1-4 charactes"
-msgstr "Voicemail PIN-code moet tussen 1 en 4 karakters zijn"
+msgstr ""
 
 #: personal/phoneaccount/class_phoneAccount.inc:1390
 #: personal/phoneaccount/paste_generic.tpl:40
@@ -1324,18 +1235,18 @@ msgid "Phone PIN"
 msgstr "Telefoon PIN-code"
 
 #: personal/phoneaccount/class_phoneAccount.inc:1430
-#, fuzzy, php-format
+#, php-format
 msgid "macro parameter %s"
-msgstr "Macro tekst"
+msgstr ""
 
 #: personal/phoneaccount/class_phoneAccount.inc:1478
 msgid "An error occured while updating the database entries!"
 msgstr ""
 
 #: personal/phoneaccount/class_phoneAccount.inc:1628
-#, fuzzy, php-format
+#, php-format
 msgid "User '%s' has been removed from phone queue '%s'."
-msgstr "Gebruiker '%s' is van telefoonwachtrij '%s' verwijderd"
+msgstr ""
 
 #: personal/phoneaccount/class_phoneAccount.inc:1665
 #: personal/phoneaccount/class_phoneAccount.inc:1667
@@ -1344,47 +1255,39 @@ msgid "The specified telephonenumber '%s' is already assigned to '%s'."
 msgstr "Het opgegeven telefoonnummer '%s' is al toegekend aan '%s'."
 
 #: personal/phoneaccount/class_phoneAccount.inc:1713
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "The previously selected asterisk home server (%s) is no longer available. "
 "Remove aborted."
 msgstr ""
-"Het geselecteerde kiosk profiel '%s' is niet meer beschikbaar. Het huidige "
-"profiel wordt op 'geen' ingesteld."
 
 #: personal/phoneaccount/class_phoneAccount.inc:1722
-#, fuzzy
 msgid "Phone account settings"
-msgstr "Telefoon instellingen"
+msgstr ""
 
 #: personal/phoneaccount/class_phoneAccount.inc:1726
 msgid "My account"
 msgstr "Mijn account"
 
 #: personal/phoneaccount/class_phoneAccount.inc:1734
-#, fuzzy
 msgid "Macro settings"
-msgstr "E-mail instellingen"
+msgstr ""
 
 #: personal/phoneaccount/class_phoneAccount.inc:1737
-#, fuzzy
 msgid "Phone context"
-msgstr "Telefoonnaam"
+msgstr ""
 
 #: personal/phoneaccount/class_phoneAccount.inc:1738
-#, fuzzy
 msgid "Voice mail context"
-msgstr "Voicemail PIN-code"
+msgstr ""
 
 #: personal/phoneaccount/class_phoneAccount.inc:1739
-#, fuzzy
 msgid "Telephone pin"
-msgstr "Telefoon"
+msgstr ""
 
 #: personal/phoneaccount/class_phoneAccount.inc:1740
-#, fuzzy
 msgid "Voicemail pin"
-msgstr "Voicemail PIN-code"
+msgstr ""
 
 #: personal/phoneaccount/class_phoneAccount.inc:1822
 msgid "There is currently no asterisk server defined!"
@@ -1395,32 +1298,25 @@ msgid "Asterisk server is invalid!"
 msgstr ""
 
 #: personal/phoneaccount/class_phoneAccount.inc:1832
-#, fuzzy
 msgid "Voicemail PIN must be 4 characters long!"
-msgstr "Voicemail PIN-code moet tussen 1 en 4 karakters zijn"
+msgstr ""
 
 #: personal/phoneaccount/class_phoneAccount.inc:1835
-#, fuzzy
 msgid "Voicemail PIN contains invalid characters!"
-msgstr "Voicemail PIN-code moet tussen 1 en 4 karakters zijn"
+msgstr ""
 
 #: personal/phoneaccount/class_phoneAccount.inc:1840
-#, fuzzy
 msgid "Phone pin contains invalid characters!"
-msgstr "Het atribuut '%s' is leeg of bevat ongeldige karakters!"
+msgstr ""
 
 #: personal/phoneaccount/class_phoneAccount.inc:1847
 #, php-format
 msgid "The parameter %s contains invalid char. '!,#' is used as delimiter"
-msgstr ""
-"De bevat '%s' bevat ongeldige karakters. '!,#' worden gebruikt als "
-"scheidingstekens"
+msgstr "De bevat '%s' bevat ongeldige karakters. '!,#' worden gebruikt als scheidingstekens"
 
 #: personal/phoneaccount/main.inc:124
 msgid "Click the 'Edit' button below to change informations in this dialog"
-msgstr ""
-"Gebruik de 'Bewerk' knop hieronder om de informatie in deze dialoog te "
-"veranderen"
+msgstr "Gebruik de 'Bewerk' knop hieronder om de informatie in deze dialoog te veranderen"
 
 #: personal/phoneaccount/main.inc:134
 #: personal/phoneaccount/paste_generic.tpl:1
@@ -1438,24 +1334,20 @@ msgid "Telephone"
 msgstr "Telefoon"
 
 #: personal/phoneaccount/generic.tpl:62
-#, fuzzy
 msgid "Select the accounts home server"
-msgstr "Selecteer om servers te zien"
+msgstr ""
 
 #: personal/phoneaccount/generic.tpl:69
-#, fuzzy
 msgid "Context"
-msgstr "Inhoud"
+msgstr ""
 
 #: personal/phoneaccount/generic.tpl:73 personal/phoneaccount/generic.tpl:84
-#, fuzzy
 msgid "Select the accounts context"
-msgstr "Selecteer om servers te zien"
+msgstr ""
 
 #: personal/phoneaccount/generic.tpl:80
-#, fuzzy
 msgid "Voicemail context"
-msgstr "Voicemail PIN-code"
+msgstr ""
 
 #: personal/phoneaccount/generic.tpl:138
 msgid "Refresh"

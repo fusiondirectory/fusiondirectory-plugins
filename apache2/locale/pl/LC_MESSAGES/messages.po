@@ -1,29 +1,21 @@
-# translation of messages.po to
-#
-# Copyright (C) 2003 GONICUS GmbH, Germany
-# Copyright (C) 2011 FusionDirectory Project
-# This file is distributed under the same license as the FusionDirectory package.
-#
-#
-# Benoit Mortier <benoit.mortier@opensides.be>, 2012.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: messages\n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version: FusionDirectory\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
 "POT-Creation-Date: 2012-05-26 17:33+0200\n"
-"PO-Revision-Date: 2012-01-13 12:01+0100\n"
-"Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>\n"
-"Language-Team:  <fr@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2012-05-26 15:43+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Polish (http://www.transifex.net/projects/p/FusionDirectory/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-Language: Polish\n"
-"X-Poedit-Country: POLAND\n"
-"X-Poedit-SourceCharset: iso-8859-2\n"
-"X-Poedit-Basepath: tedst\n"
-"X-Generator: KBabel 1.11.4\n"
-"Plural-Forms:  nplurals=2; plural=(n > 1);\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
 #: admin/systems/services/apache2/class_servApacheEditVhost.inc:257
 #: admin/systems/services/apache2/class_servApacheEditVhost.inc:276
@@ -46,9 +38,8 @@ msgstr "Imię"
 
 #: admin/systems/services/apache2/class_servApacheEditVhost.inc:324
 #: admin/systems/services/apache2/servApacheVhostEdit.tpl:7
-#, fuzzy
 msgid "Virtual host name"
-msgstr "Imię"
+msgstr ""
 
 #: admin/systems/services/apache2/class_servApacheEditVhost.inc:325
 msgid "Only lowercase strings are allowed as Virtual Host Name."
@@ -65,19 +56,16 @@ msgstr ""
 
 #: admin/systems/services/apache2/class_servApacheEditVhost.inc:337
 #: admin/systems/services/apache2/servApacheVhostEdit.tpl:19
-#, fuzzy
 msgid "Admin mail address"
-msgstr "Adres email"
+msgstr ""
 
 #: admin/systems/services/apache2/class_servApacheEditVhost.inc:346
-#, fuzzy
 msgid "Server alias"
-msgstr "Serwery"
+msgstr ""
 
 #: admin/systems/services/apache2/class_servApacheEditVhost.inc:356
-#, fuzzy
 msgid "Script alias"
-msgstr "Skrypt"
+msgstr ""
 
 #: admin/systems/services/apache2/class_apacheUtils.inc:212
 #, php-format
@@ -89,9 +77,8 @@ msgstr ""
 #: admin/systems/services/apache2/class_servApacheVhost.inc:60
 #: admin/systems/services/apache2/class_servApacheVhost.inc:283
 #: admin/systems/services/apache2/class_servApacheVhost.inc:296
-#, fuzzy
 msgid "Apache service"
-msgstr "Cache"
+msgstr ""
 
 #: admin/systems/services/apache2/class_servApacheVhost.inc:236
 #: admin/systems/services/apache2/class_servApacheVhost.inc:247
@@ -112,9 +99,8 @@ msgid "Virtual hosts"
 msgstr ""
 
 #: admin/systems/services/apache2/servApacheVhost.tpl:1
-#, fuzzy
 msgid "Apache VHosts"
-msgstr "Cache"
+msgstr ""
 
 #: admin/systems/services/apache2/servApacheVhost.tpl:8
 #: admin/systems/services/apache2/servApacheVhostEdit.tpl:54
@@ -127,33 +113,28 @@ msgid "Generic"
 msgstr "Ogólne"
 
 #: admin/systems/services/apache2/servApacheVhostEdit.tpl:30
-#, fuzzy
 msgid "Server Alias"
-msgstr "Serwery"
+msgstr ""
 
 #: admin/systems/services/apache2/servApacheVhostEdit.tpl:42
 msgid "URL Alias"
 msgstr ""
 
 #: admin/systems/services/apache2/servApacheVhostEdit.tpl:45
-#, fuzzy
 msgid "Directory Path"
-msgstr "Katalog"
+msgstr ""
 
 #: admin/systems/services/apache2/servApacheVhostEdit.tpl:74
-#, fuzzy
 msgid "Script Alias"
-msgstr "Skrypt"
+msgstr ""
 
 #: admin/systems/services/apache2/servApacheVhostEdit.tpl:86
-#, fuzzy
 msgid "Alias Directory"
-msgstr "Katalog"
+msgstr ""
 
 #: admin/systems/services/apache2/servApacheVhostEdit.tpl:89
-#, fuzzy
 msgid "Script Directory"
-msgstr "Katalog"
+msgstr ""
 
 #: admin/systems/services/apache2/servApacheVhostEdit.tpl:112
 msgid "Save"

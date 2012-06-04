@@ -1,25 +1,22 @@
-# translation of messages.po to
-#
-# Copyright (C) 2003 GONICUS GmbH, Germany
-# Copyright (C) 2011 FusionDirectory Project
-# This file is distributed under the same license as the FusionDirectory package.
-#
-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
 #  Benoit Mortier <benoit.mortier@opensides.be>, 2005, 2006, 2007, 2008, 2009, 2010, 2011.
 msgid ""
 msgstr ""
-"Project-Id-Version: messages\n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version: FusionDirectory\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
 "POT-Creation-Date: 2012-05-26 17:33+0200\n"
-"PO-Revision-Date: 2011-05-08 19:33+0200\n"
-"Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>\n"
-"Language-Team:  <fr@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2012-05-26 16:52+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: French (http://www.transifex.net/projects/p/FusionDirectory/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
-"Plural-Forms:  nplurals=2; plural=(n > 1);\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
 #: admin/systems/samba/class_winGeneric.inc:132
 msgid "network"
@@ -56,12 +53,12 @@ msgstr "Station de travail Windows"
 #: admin/systems/samba/class_winGeneric.inc:342
 #: admin/systems/samba/wingeneric.tpl:17
 msgid "Base"
-msgstr ""
+msgstr "Base"
 
 #: admin/systems/samba/class_winGeneric.inc:343
 #: admin/systems/samba/wingeneric.tpl:29
 msgid "Description"
-msgstr ""
+msgstr "Description"
 
 #: admin/systems/samba/wingeneric.tpl:6
 msgid "Machine name"
@@ -188,8 +185,7 @@ msgstr "Le mot de passe n'expire jamais"
 
 #: personal/samba/samba3.tpl:347 personal/samba/class_sambaAccount.inc:1197
 msgid "Login from windows client requires no password"
-msgstr ""
-"L'identification sur une station windows ne nécessite pas de mot de passe"
+msgstr "L'identification sur une station windows ne nécessite pas de mot de passe"
 
 #: personal/samba/samba3.tpl:358 personal/samba/class_sambaAccount.inc:1199
 msgid "Lock samba account"
@@ -288,8 +284,7 @@ msgstr "du client précédent seulement"
 #: personal/samba/class_sambaAccount.inc:524
 #, php-format
 msgid "The password is outdated since %s, by domain policy."
-msgstr ""
-"Le mot de passe est trop vieux depuis %s selon à la politique du domaine."
+msgstr "Le mot de passe est trop vieux depuis %s selon à la politique du domaine."
 
 #: personal/samba/class_sambaAccount.inc:527
 #, php-format
@@ -450,8 +445,7 @@ msgstr "Non"
 #: personal/samba/class_sambaAccount.inc:802
 #, php-format
 msgid "The password would expire on %s, but the password expiry is disabled."
-msgstr ""
-"Le mot de passe devrait expirer le %s, mais l'expiration est désactivée."
+msgstr "Le mot de passe devrait expirer le %s, mais l'expiration est désactivée."
 
 #: personal/samba/class_sambaAccount.inc:808
 msgid "Password change available"
@@ -480,15 +474,12 @@ msgstr "Avertissement"
 
 #: personal/samba/class_sambaAccount.inc:1053
 msgid "Undefined Samba SID detected. Please fix this problem manually!"
-msgstr ""
-"Détection d'un SID Samba non défini. Veuillez fixer ceci manuellement !"
+msgstr "Détection d'un SID Samba non défini. Veuillez fixer ceci manuellement !"
 
 #: personal/samba/class_sambaAccount.inc:1078
 msgid ""
 "Cannot convert primary group to samba group: group cannot be identified!"
-msgstr ""
-"Impossible de convertir le groupe primaire en un groupe primaire samba : le "
-"groupe ne peut être identifié !"
+msgstr "Impossible de convertir le groupe primaire en un groupe primaire samba : le groupe ne peut être identifié !"
 
 #: personal/samba/class_sambaAccount.inc:1177 personal/samba/main.inc:135
 msgid "Samba settings"
@@ -538,9 +529,7 @@ msgstr "Permettre la connexion depuis"
 msgid ""
 "The windows user manager only allows eight clients. You've specified more "
 "than eight."
-msgstr ""
-"Le gestionnaire d'utilisateurs windows accepte seulement huit clients. Vous "
-"en avez spécifiés plus de huit."
+msgstr "Le gestionnaire d'utilisateurs windows accepte seulement huit clients. Vous en avez spécifiés plus de huit."
 
 #: personal/samba/samba3_workstations.tpl:6
 msgid "Select workstations to add"
@@ -561,6 +550,3 @@ msgstr "Sélectionner le département où sera effectuée la recherche"
 #: personal/samba/samba3_workstations.tpl:31
 msgid "Regular expression for matching addresses"
 msgstr "Expression régulière pour sélectionner les adresses correspondantes"
-
-#~ msgid "This does something"
-#~ msgstr "Ceci fait quelque chose"

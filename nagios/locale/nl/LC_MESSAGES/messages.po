@@ -1,25 +1,22 @@
-# translation of messages.po to Dutch
-#
-# Copyright (C) 2003 GONICUS GmbH, Germany
-# Copyright (C) 2011 FusionDirectory Project
-# This file is distributed under the same license as the FusionDirectory package.
-#
-#
-#  Alfred Schroeder <schroeder@GONICUS.de>, 2004. 
-#  Cajus Pollmeier <pollmeier@gonicus.de>, 2004. 
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
 #  Niels Klomp (CareWorks ICT Services) <nk@careworks.nl>, 2005.
 msgid ""
 msgstr ""
-"Project-Id-Version: messages\n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version: FusionDirectory\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
 "POT-Creation-Date: 2012-05-26 17:33+0200\n"
-"PO-Revision-Date: 2006-06-02 16:58+0100\n"
-"Last-Translator: Niels Klomp (CareWorks ICT Services) <nk@careworks.nl>\n"
-"Language-Team: CareWorks ICT Services <info@careworks.nl>\n"
-"Language: \n"
+"PO-Revision-Date: 2012-01-13 16:21+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: Dutch (http://www.transifex.net/projects/p/FusionDirectory/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: personal/nagios/main.inc:135
 msgid "Nagios settings"
@@ -39,9 +36,8 @@ msgstr "Dit doet iets"
 
 #: personal/nagios/class_nagiosAccount.inc:195
 #: personal/nagios/class_nagiosAccount.inc:280
-#, fuzzy
 msgid "LDAP error"
-msgstr "LDAP fout:"
+msgstr ""
 
 #: personal/nagios/class_nagiosAccount.inc:216
 #: personal/nagios/class_nagiosAccount.inc:306 personal/nagios/nagios.tpl:8
@@ -55,9 +51,8 @@ msgid "Mail"
 msgstr "E-mail"
 
 #: personal/nagios/class_nagiosAccount.inc:296
-#, fuzzy
 msgid "Nagios account settings"
-msgstr "Nagios instellingen"
+msgstr ""
 
 #: personal/nagios/class_nagiosAccount.inc:300
 msgid "My account"
@@ -84,9 +79,8 @@ msgid "Service notification options"
 msgstr "Service notificatie opties"
 
 #: personal/nagios/class_nagiosAccount.inc:312
-#, fuzzy
 msgid "Pager number"
-msgstr "Telefoonnummer"
+msgstr ""
 
 #: personal/nagios/class_nagiosAccount.inc:314 personal/nagios/nagios.tpl:90
 msgid "Service notification commands"
@@ -97,39 +91,32 @@ msgid "Host notification commands"
 msgstr "Host notificatie commando's"
 
 #: personal/nagios/class_nagiosAccount.inc:316
-#, fuzzy
 msgid "View system informations"
-msgstr "systeem informatie bekijken"
+msgstr ""
 
 #: personal/nagios/class_nagiosAccount.inc:317
-#, fuzzy
 msgid "View configuration information"
-msgstr "configuratie informatie bekijken"
+msgstr ""
 
 #: personal/nagios/class_nagiosAccount.inc:318
-#, fuzzy
 msgid "Trigger system commands"
-msgstr "systeem commando's activeren"
+msgstr ""
 
 #: personal/nagios/class_nagiosAccount.inc:319
-#, fuzzy
 msgid "View all services"
-msgstr "alle services bekijken"
+msgstr ""
 
 #: personal/nagios/class_nagiosAccount.inc:320
-#, fuzzy
 msgid "View all hosts"
-msgstr "alle hosts bekijken"
+msgstr ""
 
 #: personal/nagios/class_nagiosAccount.inc:321
-#, fuzzy
 msgid "Trigger all service commands"
-msgstr "alle service commando's activeren"
+msgstr ""
 
 #: personal/nagios/class_nagiosAccount.inc:322
-#, fuzzy
 msgid "Trigger all host commands"
-msgstr "alle host commando's activeren"
+msgstr ""
 
 #: personal/nagios/nagios.tpl:5
 msgid "Nagios Account"
@@ -170,54 +157,3 @@ msgstr "alle service commando's activeren"
 #: personal/nagios/nagios.tpl:175
 msgid "trigger all host commands"
 msgstr "alle host commando's activeren"
-
-#~ msgid "This account has no nagios extensions."
-#~ msgstr "Dit account heeft nagios mogelijkheden uitgeschakeld."
-
-#~ msgid "Remove nagios account"
-#~ msgstr "Nagios account verwijderen"
-
-#~ msgid ""
-#~ "This account has nagios features enabled. You can disable them by "
-#~ "clicking below."
-#~ msgstr ""
-#~ "Dit account heeft Nagios mogelijkheden ingeschakeld. U kunt deze "
-#~ "uitschakelen door de knop hieronder te gebruiken."
-
-#~ msgid "Create nagios account"
-#~ msgstr "Nagios account aanmaken"
-
-#~ msgid ""
-#~ "This account has nagios features disabled. You can enable them by "
-#~ "clicking below."
-#~ msgstr ""
-#~ "Dit account heeft geen Nagios mogelijkheden. U kunt deze inschakelen door "
-#~ "de knop hieronder te gebruiken."
-
-#, fuzzy
-#~ msgid "Saving of user/nagios account with dn '%s' failed."
-#~ msgstr "Het opslaan van het Nagios account is mislukt"
-
-#~ msgid "The required field 'NagiosAlias' is not set."
-#~ msgstr "Het vereiste veld 'NagiosAlias' is leeg."
-
-#~ msgid "The required field 'NagiosMail' is not set."
-#~ msgstr "Het vereiste veld 'NagiosMail' is leeg."
-
-#~ msgid "Please enter a valid email address in 'NagiosMail' field."
-#~ msgstr "Geef a.u.b. een geldig E-mail adres voor het 'NagiosMail' veld op."
-
-#, fuzzy
-#~ msgid "Removing of user/nagios account with dn '%s' failed."
-#~ msgstr "Het verwijderen van het Nagios account is mislukt"
-
-#~ msgid "Cancel"
-#~ msgstr "Annuleren"
-
-#~ msgid "Click the 'Edit' button below to change informations in this dialog"
-#~ msgstr ""
-#~ "Gebruik de 'Bewerk' knop hieronder om de informatie in deze dialoog te "
-#~ "veranderen"
-
-#~ msgid "Edit"
-#~ msgstr "Bewerken"

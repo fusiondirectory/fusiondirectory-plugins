@@ -1,24 +1,21 @@
-# translation of messages.po to
-#
-# Copyright (C) 2003 GONICUS GmbH, Germany
-# Copyright (C) 2011 FusionDirectory Project
-# This file is distributed under the same license as the FusionDirectory package.
-#
-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: admin\n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version: FusionDirectory\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
 "POT-Creation-Date: 2012-05-26 17:33+0200\n"
-"PO-Revision-Date: 2010-01-20 00:56+0100\n"
-"Last-Translator: \n"
-"Language-Team: Spanish <>\n"
-"Language: es\n"
+"PO-Revision-Date: 2012-01-13 16:35+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/FusionDirectory/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.0\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: personal/connectivity/opengroupware/class_opengwAccount.inc:26
 msgid "Opengroupware account"
@@ -39,9 +36,8 @@ msgid "Open Groupware database"
 msgstr "Base de datos de OpenGroupware"
 
 #: personal/connectivity/opengroupware/class_opengwAccount.inc:200
-#, fuzzy
 msgid "OpenGroupware"
-msgstr "Open Groupware"
+msgstr ""
 
 #: personal/connectivity/opengroupware/class_opengwAccount.inc:358
 #: personal/connectivity/opengroupware/opengw.tpl:1
@@ -79,11 +75,3 @@ msgstr "Bloqueado"
 #: personal/connectivity/opengroupware/opengw.tpl:48
 msgid "Teams"
 msgstr "Equipos"
-
-#, fuzzy
-#~ msgid "%s database configuration is missing!"
-#~ msgstr "Configuración de la base de datos de FAX"
-
-#, fuzzy
-#~ msgid "Cannot connect to %s database!"
-#~ msgstr "¡No puedo conectar al servidor de base de datos postgresql!."

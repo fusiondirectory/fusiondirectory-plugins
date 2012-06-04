@@ -1,35 +1,30 @@
-# translation of messages.po to Dutch
-#
-# Copyright (C) 2003 GONICUS GmbH, Germany
-# Copyright (C) 2011 FusionDirectory Project
-# This file is distributed under the same license as the FusionDirectory package.
-#
-#
-#  Alfred Schroeder <schroeder@GONICUS.de>, 2004. 
-#  Cajus Pollmeier <pollmeier@gonicus.de>, 2004. 
-#  Niels Klomp (CareWorks ICT Services) <nk@careworks.nl>, 2005,2006,2007,2008.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+#  Niels Klomp (CareWorks ICT Services) <nk@careworks.nl>, 2005, 2006, 2007, 2008.
 msgid ""
 msgstr ""
-"Project-Id-Version: messages\n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version: FusionDirectory\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
 "POT-Creation-Date: 2012-05-26 17:33+0200\n"
-"PO-Revision-Date: 2008-06-09 17:54+0100\n"
-"Last-Translator: Niels Klomp (CareWorks ICT Services) <nk@careworks.nl>\n"
-"Language-Team: CareWorks ICT Services <info@careworks.nl>\n"
-"Language: \n"
+"PO-Revision-Date: 2012-05-26 16:51+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: Dutch (http://www.transifex.net/projects/p/FusionDirectory/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: html/getvcard.php:39
-#, fuzzy
 msgid "Internal error"
-msgstr "Terminal server"
+msgstr ""
 
 #: html/getvcard.php:39
-#, fuzzy
 msgid "Missing parameters!"
-msgstr "Programmanaam"
+msgstr ""
 
 #: addons/addressbook/dial.tpl:3
 msgid "Dial connection..."
@@ -178,8 +173,7 @@ msgstr "Fout"
 #: addons/addressbook/class_addressbook.inc:218
 msgid ""
 "You need to set your personal phone number in order to perform direct dials."
-msgstr ""
-"Er moet een privé telefoonnummer opgegeven zijn om direkt te kunnen bellen"
+msgstr "Er moet een privé telefoonnummer opgegeven zijn om direkt te kunnen bellen"
 
 #: addons/addressbook/class_addressbook.inc:247
 #: addons/addressbook/class_addressbook.inc:818
@@ -188,9 +182,8 @@ msgstr "LDAP fout"
 
 #: addons/addressbook/class_addressbook.inc:255
 #: addons/addressbook/class_addressbook.inc:363
-#, fuzzy
 msgid "Permission"
-msgstr "Rechten"
+msgstr ""
 
 #: addons/addressbook/class_addressbook.inc:502
 #, php-format
@@ -267,19 +260,15 @@ msgstr "Fax"
 #: addons/addressbook/class_addressbook.inc:767
 msgid ""
 "Cannot create a unique DN for your entry. Please fill more formular fields."
-msgstr ""
-"Kan geen unieke DN aanmaken voor uw invoer. Vul a.u.b. meer formulier velden "
-"in."
+msgstr "Kan geen unieke DN aanmaken voor uw invoer. Vul a.u.b. meer formulier velden in."
 
 #: addons/addressbook/class_addressbook.inc:871
-#, fuzzy
 msgid "Addressbook entries"
-msgstr "Toon adresboek regels"
+msgstr ""
 
 #: addons/addressbook/class_addressbook.inc:872
-#, fuzzy
 msgid "Addressbook related objects"
-msgstr "Adresboek invoer ACLs"
+msgstr ""
 
 #: addons/addressbook/class_addressbook.inc:876
 msgid "Addons"
@@ -347,21 +336,15 @@ msgid "Warning"
 msgstr "Waarschuwing"
 
 #: addons/addressbook/remove.tpl:6
-#, fuzzy
 msgid ""
 "This includes all addressbook data in this entry. Please double check if "
-"your really want to do this since there is no way for FusionDirectory to get "
-"your data back."
+"your really want to do this since there is no way for FusionDirectory to get"
+" your data back."
 msgstr ""
-"Dit omvat alle adresboek data in dit record. Verzeker uzelf ervan dat dit "
-"hetgeen is dat u wenst, aangezien er geen manier voor FusionDirectory is om "
-"deze data terug te halen."
 
 #: addons/addressbook/remove.tpl:10
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr ""
-"Indien u zeker bent drukt u dan 'Verwijderen' om door te gaan of 'Annuleren' "
-"om te annuleren."
+msgstr "Indien u zeker bent drukt u dan 'Verwijderen' om door te gaan of 'Annuleren' om te annuleren."
 
 #: addons/addressbook/contents.tpl:15
 msgid "Contact"
@@ -372,17 +355,10 @@ msgid "Information"
 msgstr "Informatie"
 
 #: addons/addressbook/contents.tpl:37
-#, fuzzy
 msgid ""
-"The telephone list plugin provides list and search facilities for the people "
-"in your site. You may want to specify the asterisk [*] like in \n"
-"'Fu*ry' to find 'FusionDirectory'. Use the filters below to narrow down your "
-"search."
+"The telephone list plugin provides list and search facilities for the people in your site. You may want to specify the asterisk [*] like in \n"
+"'Fu*ry' to find 'FusionDirectory'. Use the filters below to narrow down your search."
 msgstr ""
-"De telefoonlijst module biedt zoek en weergave mogelijkheden binnen uw "
-"organisatie. U kunt een asterisk (*) gebruiken als wildcard. 'Go*us' zal "
-"bijvoorbeeld 'Gonicus' vinden. Gebruik de selectie mogelijkheden om uw "
-"zoekopdracht verder te verfijnen."
 
 #: addons/addressbook/contents.tpl:43
 msgid "Actions"
@@ -443,9 +419,3 @@ msgstr "Zoek naar"
 #: addons/addressbook/contents.tpl:113
 msgid "Search string"
 msgstr "Zoekstring"
-
-#~ msgid "This does something"
-#~ msgstr "Dit doet iets"
-
-#~ msgid "Surename"
-#~ msgstr "Achternaam"

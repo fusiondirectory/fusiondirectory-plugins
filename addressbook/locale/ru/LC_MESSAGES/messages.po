@@ -1,34 +1,30 @@
-# Translation of messages.po to Russian
-#
-# Copyright (C) 2003 GONICUS GmbH, Germany
-# Copyright (C) 2011 FusionDirectory Project
-# This file is distributed under the same license as the FusionDirectory package.
-#
-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
 #  Valia V. Vaneeva <fattie@altlinux.ru>, 2004.
 msgid ""
 msgstr ""
-"Project-Id-Version: messages\n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version: FusionDirectory\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
 "POT-Creation-Date: 2012-05-26 17:33+0200\n"
-"PO-Revision-Date: 2005-04-18 14:35+0300\n"
-"Last-Translator: Igor Muratov <migor@altlinux.org>\n"
-"Language-Team: ALT Linux Team\n"
-"Language: \n"
+"PO-Revision-Date: 2012-05-26 16:51+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: Russian (http://www.transifex.net/projects/p/FusionDirectory/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: poEdit 1.3.1\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
 #: html/getvcard.php:39
-#, fuzzy
 msgid "Internal error"
-msgstr "Терминал-сервер"
+msgstr ""
 
 #: html/getvcard.php:39
-#, fuzzy
 msgid "Missing parameters!"
-msgstr "Приложение"
+msgstr ""
 
 #: addons/addressbook/dial.tpl:3
 msgid "Dial connection..."
@@ -51,14 +47,12 @@ msgid "Personal"
 msgstr "Контакт"
 
 #: addons/addressbook/address_edit.tpl:30
-#, fuzzy
 msgid "Last name"
-msgstr "Список"
+msgstr ""
 
 #: addons/addressbook/address_edit.tpl:33
-#, fuzzy
 msgid "First name"
-msgstr "Список"
+msgstr ""
 
 #: addons/addressbook/address_edit.tpl:48
 #: addons/addressbook/class_addressbook.inc:895
@@ -160,9 +154,8 @@ msgid "FusionDirectory"
 msgstr ""
 
 #: addons/addressbook/class_addressbook.inc:30
-#, fuzzy
 msgid "FusionDirectory related objects"
-msgstr "Объект группы"
+msgstr ""
 
 #: addons/addressbook/class_addressbook.inc:42
 msgid "The addressbook plugin show internal users and external ones"
@@ -178,23 +171,19 @@ msgid "Error"
 msgstr ""
 
 #: addons/addressbook/class_addressbook.inc:218
-#, fuzzy
 msgid ""
 "You need to set your personal phone number in order to perform direct dials."
 msgstr ""
-"У вас нет персонального набора телефонов. Настройте это прежде чем звонить."
 
 #: addons/addressbook/class_addressbook.inc:247
 #: addons/addressbook/class_addressbook.inc:818
-#, fuzzy
 msgid "LDAP error"
-msgstr "Ошибка LDAP:"
+msgstr "Ошибка LDAP"
 
 #: addons/addressbook/class_addressbook.inc:255
 #: addons/addressbook/class_addressbook.inc:363
-#, fuzzy
 msgid "Permission"
-msgstr "Права для членов группы"
+msgstr ""
 
 #: addons/addressbook/class_addressbook.inc:502
 #, php-format
@@ -211,14 +200,13 @@ msgid "global addressbook"
 msgstr "общая адресная книга"
 
 #: addons/addressbook/class_addressbook.inc:635
-#, fuzzy
 msgid "user database"
-msgstr "Базы данных"
+msgstr ""
 
 #: addons/addressbook/class_addressbook.inc:639
-#, fuzzy, php-format
+#, php-format
 msgid "Contact stored in '%s'"
-msgstr "Контакт сохранен в %s"
+msgstr ""
 
 #: addons/addressbook/class_addressbook.inc:641
 msgid "Creating new entry in"
@@ -261,9 +249,8 @@ msgid "User ID"
 msgstr "Идентификатор пользователя"
 
 #: addons/addressbook/class_addressbook.inc:738
-#, fuzzy
 msgid "Telephone number"
-msgstr "Телефонные номера"
+msgstr ""
 
 #: addons/addressbook/class_addressbook.inc:741
 #: addons/addressbook/contents.tpl:14
@@ -273,57 +260,47 @@ msgstr "Факс"
 #: addons/addressbook/class_addressbook.inc:767
 msgid ""
 "Cannot create a unique DN for your entry. Please fill more formular fields."
-msgstr ""
-"Невозможно создать уникальный DN для объекта. Заполните все поля формы."
+msgstr "Невозможно создать уникальный DN для объекта. Заполните все поля формы."
 
 #: addons/addressbook/class_addressbook.inc:871
-#, fuzzy
 msgid "Addressbook entries"
-msgstr "Показать объекты адресной книги"
+msgstr ""
 
 #: addons/addressbook/class_addressbook.inc:872
-#, fuzzy
 msgid "Addressbook related objects"
-msgstr "Показать объекты адресной книги"
+msgstr ""
 
 #: addons/addressbook/class_addressbook.inc:876
 msgid "Addons"
 msgstr "Дополнительно"
 
 #: addons/addressbook/class_addressbook.inc:880
-#, fuzzy
 msgid "Surname"
-msgstr "Имя сервера"
+msgstr ""
 
 #: addons/addressbook/class_addressbook.inc:882
-#, fuzzy
 msgid "Telefon number"
-msgstr "Телефонные номера"
+msgstr ""
 
 #: addons/addressbook/class_addressbook.inc:883
-#, fuzzy
 msgid "Fax number"
-msgstr "Терминал"
+msgstr ""
 
 #: addons/addressbook/class_addressbook.inc:884
-#, fuzzy
 msgid "Mobile number"
-msgstr "Домашний телефон"
+msgstr ""
 
 #: addons/addressbook/class_addressbook.inc:885
-#, fuzzy
 msgid "Home phone number"
-msgstr "Телефонные номера"
+msgstr ""
 
 #: addons/addressbook/class_addressbook.inc:886
-#, fuzzy
 msgid "User identification"
-msgstr "Информация"
+msgstr ""
 
 #: addons/addressbook/class_addressbook.inc:887
-#, fuzzy
 msgid "Mail address"
-msgstr "MAC-адрес"
+msgstr ""
 
 #: addons/addressbook/class_addressbook.inc:889
 msgid "Organization"
@@ -335,48 +312,39 @@ msgstr "Местоположение"
 
 #: addons/addressbook/class_addressbook.inc:892
 #: addons/addressbook/class_addressbook.inc:893
-#, fuzzy
 msgid "Postal address"
-msgstr "Почтовый индекс"
+msgstr ""
 
 #: addons/addressbook/class_addressbook.inc:894
 msgid "State"
 msgstr "Адм. единица"
 
 #: addons/addressbook/class_addressbook.inc:896
-#, fuzzy
 msgid "Title"
-msgstr "Файлы"
+msgstr ""
 
 #: addons/addressbook/class_addressbook.inc:897
 msgid "Home postal address"
 msgstr ""
 
 #: addons/addressbook/class_addressbook.inc:898
-#, fuzzy
 msgid "Common name"
-msgstr "Местоположение"
+msgstr ""
 
 #: addons/addressbook/remove.tpl:2
 msgid "Warning"
 msgstr "Предупреждение"
 
 #: addons/addressbook/remove.tpl:6
-#, fuzzy
 msgid ""
 "This includes all addressbook data in this entry. Please double check if "
-"your really want to do this since there is no way for FusionDirectory to get "
-"your data back."
+"your really want to do this since there is no way for FusionDirectory to get"
+" your data back."
 msgstr ""
-"Это включает все объекты адресной книги. Проверте действительно ли это так, "
-"поскольку FusionDirectory не сможет отменить результаты этой операции."
 
 #: addons/addressbook/remove.tpl:10
-#, fuzzy
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
 msgstr ""
-"Если вы уверены в своих действиях, нажмите на кнопку <i>Удалить</i>, иначе "
-"нажмите <i>Отмена</i>."
 
 #: addons/addressbook/contents.tpl:15
 msgid "Contact"
@@ -387,17 +355,10 @@ msgid "Information"
 msgstr "Информация"
 
 #: addons/addressbook/contents.tpl:37
-#, fuzzy
 msgid ""
-"The telephone list plugin provides list and search facilities for the people "
-"in your site. You may want to specify the asterisk [*] like in \n"
-"'Fu*ry' to find 'FusionDirectory'. Use the filters below to narrow down your "
-"search."
+"The telephone list plugin provides list and search facilities for the people in your site. You may want to specify the asterisk [*] like in \n"
+"'Fu*ry' to find 'FusionDirectory'. Use the filters below to narrow down your search."
 msgstr ""
-"Этот модуль предоставляет возможности просмотра и поиска информации для "
-"пользователей вашего сайта. В шаблоне вы можете использовать звездочку [*], "
-"например, \"И*н\", чтобы найти имя \"Иван\". Уточнить результаты поиска "
-"можно с помощью фильтров ниже."
 
 #: addons/addressbook/contents.tpl:43
 msgid "Actions"
@@ -458,64 +419,3 @@ msgstr "Поиск"
 #: addons/addressbook/contents.tpl:113
 msgid "Search string"
 msgstr "Строка поиска"
-
-#~ msgid "This does something"
-#~ msgstr "Что-то будет"
-
-#, fuzzy
-#~ msgid "Surename"
-#~ msgstr "Имя сервера"
-
-#~ msgid "You're about to delete the entry %s."
-#~ msgstr "Вы собираетесь удалить объект %s."
-
-#~ msgid "Cancel"
-#~ msgstr "Отмена"
-
-#~ msgid "Save"
-#~ msgstr "Сохранить"
-
-#~ msgid "Delete"
-#~ msgstr "Удалить"
-
-#~ msgid "Address book"
-#~ msgstr "Адресная книга"
-
-#, fuzzy
-#~ msgid "Removing of addressbook entry '%s' failed."
-#~ msgstr "Показать объекты адресной книги"
-
-#, fuzzy
-#~ msgid "Permission error"
-#~ msgstr "Права для членов группы"
-
-#, fuzzy
-#~ msgid "You have no permission to delete this entry!"
-#~ msgstr "У вас недостаточно прав для удаления этого подразделения."
-
-#~ msgid "The required field 'Name' is not set."
-#~ msgstr "Обязательное поле \"Имя\" не заполнено."
-
-#~ msgid "The required field 'Given name' is not set."
-#~ msgstr "Обязательное поле \"Личное имя\" не заполнено."
-
-#~ msgid "The field 'Name' contains invalid characters."
-#~ msgstr "Значение поля \"Имя\" содержит недопустимые символы."
-
-#~ msgid "The field 'Given name' contains invalid characters."
-#~ msgstr "Значение поля \"Личное имя\" содержит недопустимые символы."
-
-#~ msgid "The field 'Phone' contains an invalid phone number."
-#~ msgstr "Значение поля \"Телефон\" содержит недопустимый номер телефона."
-
-#~ msgid "The field 'Fax' contains an invalid phone number."
-#~ msgstr "Значение поля \"Факс\" содержит недопустимый номер телефона."
-
-#~ msgid "The field 'Mobile' contains an invalid phone number."
-#~ msgstr "Значение поля \"Мобильный\" содержит некорректный номер телефона."
-
-#~ msgid "The field 'Pager' contains an invalid phone number."
-#~ msgstr "Значение поля \"Пейджер\" содержит некорректный номер телефона."
-
-#~ msgid "Please enter a valid email address in 'Primary address' field."
-#~ msgstr "Введите корректное значение в поле \"Основной адрес\"."

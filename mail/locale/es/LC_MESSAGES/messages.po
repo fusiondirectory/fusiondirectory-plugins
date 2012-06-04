@@ -1,24 +1,21 @@
-# translation of messages.po to
-#
-# Copyright (C) 2003 GONICUS GmbH, Germany
-# Copyright (C) 2011 FusionDirectory Project
-# This file is distributed under the same license as the FusionDirectory package.
-#
-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: admin\n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version: FusionDirectory\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
 "POT-Creation-Date: 2012-05-26 17:33+0200\n"
-"PO-Revision-Date: 2010-01-28 23:51+0100\n"
-"Last-Translator: \n"
-"Language-Team: Spanish <>\n"
-"Language: es\n"
+"PO-Revision-Date: 2012-05-26 16:37+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/FusionDirectory/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.0\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: admin/groups/mail/mail_admins.tpl:4
 msgid "Folder administrators"
@@ -121,15 +118,12 @@ msgstr "Correo Electrónico"
 msgid ""
 "Remove shared folder from mail server database when entry gets removed in "
 "LDAP"
-msgstr ""
-"Cuando la entrada sea eliminada de LDAP se eliminara la carpeta compartida "
-"del servidor de correo."
+msgstr "Cuando la entrada sea eliminada de LDAP se eliminara la carpeta compartida del servidor de correo."
 
 #: admin/groups/mail/class_groupMail.inc:326
-msgid "Remove the shared folder and all its contents after saving this account"
-msgstr ""
-"Despues de grabar esta cuenta se eliminara la carpeta compartida y todo su "
-"contenido"
+msgid ""
+"Remove the shared folder and all its contents after saving this account"
+msgstr "Despues de grabar esta cuenta se eliminara la carpeta compartida y todo su contenido"
 
 #: admin/groups/mail/class_groupMail.inc:371
 #: admin/groups/mail/class_groupMail.inc:395
@@ -184,8 +178,7 @@ msgstr "Dirección correo electrónico"
 #: admin/groups/mail/class_groupMail.inc:401
 #: personal/mail/class_mailAccount.inc:358
 msgid "Cannot add primary address to the list of forwarders!"
-msgstr ""
-"¡No puede añadir una dirección primaria de correo a la lista de reenviadores!"
+msgstr "¡No puede añadir una dirección primaria de correo a la lista de reenviadores!"
 
 #: admin/groups/mail/class_groupMail.inc:443
 #: personal/mail/class_mailAccount.inc:402
@@ -216,9 +209,9 @@ msgstr "Error LDAP"
 
 #: admin/groups/mail/class_groupMail.inc:588
 #: personal/mail/class_mailAccount.inc:866
-#, fuzzy, php-format
+#, php-format
 msgid "Cannot remove mailbox: %s"
-msgstr "No se puede eliminar el buzón de correo: 's'"
+msgstr ""
 
 #: admin/groups/mail/class_groupMail.inc:592
 #: admin/groups/mail/class_groupMail.inc:831
@@ -247,9 +240,7 @@ msgstr "No puedo guardar el parámetro de cuota: %s"
 msgid ""
 "The group 'cn' has changed. It can't be changed due to the fact that mail "
 "method '%s' relies on it!"
-msgstr ""
-"El grupo 'cn' ha cambiado. ¡No debería ser cambiado debido al hecho de que "
-"el método de correo '%s' se basa en el!"
+msgstr "El grupo 'cn' ha cambiado. ¡No debería ser cambiado debido al hecho de que el método de correo '%s' se basa en el!"
 
 #: admin/groups/mail/class_groupMail.inc:879
 #: admin/groups/mail/paste_mail.tpl:8 admin/groups/mail/mail.tpl:7
@@ -273,9 +264,7 @@ msgstr "Tamaño máximo del mensaje"
 
 #: admin/groups/mail/class_groupMail.inc:915
 msgid "You need to set the maximum mail size in order to reject anything."
-msgstr ""
-"Necesita introducir un valor máximo de tamaño de mensajes para poder "
-"rechazar mensajes."
+msgstr "Necesita introducir un valor máximo de tamaño de mensajes para poder rechazar mensajes."
 
 #: admin/groups/mail/class_groupMail.inc:919
 #: admin/groups/mail/class_groupMail.inc:1024
@@ -386,14 +375,11 @@ msgstr "Opciones de correo avanzadas"
 
 #: admin/groups/mail/mail.tpl:193 personal/mail/generic.tpl:285
 msgid "Select if user can only send and receive inside his own domain"
-msgstr ""
-"Seleccione si el usuario solo puede enviar y recibir dentro de su propio "
-"dominio"
+msgstr "Seleccione si el usuario solo puede enviar y recibir dentro de su propio dominio"
 
 #: admin/groups/mail/mail.tpl:195 personal/mail/generic.tpl:287
 msgid "User is only allowed to send and receive local mails"
-msgstr ""
-"El usuario solo esta permitido a enviar y recibir correo de forma local"
+msgstr "El usuario solo esta permitido a enviar y recibir correo de forma local"
 
 #: admin/groups/mail/mail.tpl:213
 msgid "Used in all groups"
@@ -542,14 +528,12 @@ msgstr "Iniciar servicio POP3/SSL"
 #: admin/systems/services/imap/goImapServer.tpl:99
 #: admin/systems/services/mail/goMailServer.tpl:204
 msgid "The server must be saved before you can use the status flag."
-msgstr ""
-"El servidor debe ser grabado antes de que pueda usar el atributo de estado."
+msgstr "El servidor debe ser grabado antes de que pueda usar el atributo de estado."
 
 #: admin/systems/services/imap/goImapServer.tpl:101
 #: admin/systems/services/mail/goMailServer.tpl:206
 msgid "The service must be saved before you can use the status flag."
-msgstr ""
-"El servicio debe ser grabado antes de que pueda usar el atributo de estado."
+msgstr "El servicio debe ser grabado antes de que pueda usar el atributo de estado."
 
 #: admin/systems/services/imap/goImapServer.tpl:104
 #: admin/systems/services/mail/goMailServer.tpl:209
@@ -946,10 +930,7 @@ msgstr "Información del correo"
 msgid ""
 "LDAP entry has been removed but cyrus mailbox (%s) is kept.\n"
 "Please delete it manually!"
-msgstr ""
-"La entrada en LDAP ha sido eliminada, pero el buzón de correo cyrus (%s) "
-"existe.\n"
-"¡Por favor elimine el buzón manualmente!"
+msgstr "La entrada en LDAP ha sido eliminada, pero el buzón de correo cyrus (%s) existe.\n¡Por favor elimine el buzón manualmente!"
 
 #: personal/mail/class_mail-methods-cyrus.inc:402
 #: personal/mail/class_mail-methods-cyrus.inc:439
@@ -1027,13 +1008,11 @@ msgid "Parse successful"
 msgstr "El análisis ha sido correcto"
 
 #: personal/mail/sieve/class_sieveManagement.inc:158
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "The specified mail server '%s' does not exist within the FusionDirectory "
 "configuration."
 msgstr ""
-"El servidor de correo indicado '%s' no existe en la configuración de "
-"FusionDirectory."
 
 #: personal/mail/sieve/class_sieveManagement.inc:203
 msgid "No script name specified!"
@@ -1045,8 +1024,7 @@ msgstr "¡Por favor introduzca solo minúsculas para el nombre del script!"
 
 #: personal/mail/sieve/class_sieveManagement.inc:214
 msgid "Please use only alphabetical characters in script names!"
-msgstr ""
-"¡Por favor introduzca solo caracteres alfabéticos para el nombre del script!"
+msgstr "¡Por favor introduzca solo caracteres alfabéticos para el nombre del script!"
 
 #: personal/mail/sieve/class_sieveManagement.inc:220
 msgid "Script name already in use!"
@@ -1396,16 +1374,12 @@ msgstr "Por favor introduzca un operador valido."
 #: personal/mail/sieve/class_sieveElement_If.inc:654
 msgid ""
 "Invalid character found in address attribute. Quotes are not allowed here."
-msgstr ""
-"Se han encontrado caracteres no válidos en el atributo dirección. Las "
-"comillas no están permitidas aquí."
+msgstr "Se han encontrado caracteres no válidos en el atributo dirección. Las comillas no están permitidas aquí."
 
 #: personal/mail/sieve/class_sieveElement_If.inc:669
 msgid ""
 "Invalid character found in value attribute. Quotes are not allowed here."
-msgstr ""
-"Se han encontrado caracteres no válidos en el atributo valor. Las comillas "
-"no están permitidas aquí."
+msgstr "Se han encontrado caracteres no válidos en el atributo valor. Las comillas no están permitidas aquí."
 
 #: personal/mail/sieve/class_sieveElement_If.inc:727
 #: personal/mail/sieve/class_sieveElement_If.inc:1060
@@ -1429,8 +1403,7 @@ msgstr "Bytes"
 
 #: personal/mail/sieve/class_sieveElement_If.inc:745
 msgid "Please select a valid match type in the list box below."
-msgstr ""
-"Por favor seleccione un tipo de comparador válido del desplegable siguiente."
+msgstr "Por favor seleccione un tipo de comparador válido del desplegable siguiente."
 
 #: personal/mail/sieve/class_sieveElement_If.inc:759
 msgid "Only numeric values are allowed here."
@@ -1468,9 +1441,7 @@ msgstr "Indique aquí una dirección de correo"
 
 #: personal/mail/sieve/class_sieveElement_Reject.inc:21
 msgid "Invalid character found, quotes are not allowed in a reject message."
-msgstr ""
-"Se han encontrado caracteres no válidos, las comillas no están permitidas en "
-"un mensaje de rechazo."
+msgstr "Se han encontrado caracteres no válidos, las comillas no están permitidas en un mensaje de rechazo."
 
 #: personal/mail/sieve/class_sieveElement_Reject.inc:37
 msgid "Your reject text here"
@@ -1482,8 +1453,7 @@ msgstr "Indique su comentario aquí"
 
 #: personal/mail/sieve/class_sieveElement_Vacation.inc:148
 msgid "Alternative sender address must be a valid email addresses."
-msgstr ""
-"La dirección de envío alternativo debe tener una dirección de correo válida."
+msgstr "La dirección de envío alternativo debe tener una dirección de correo válida."
 
 #: personal/mail/sieve/templates/element_vacation.tpl:13
 msgid "Vacation Message"
@@ -1523,9 +1493,7 @@ msgstr "Importar script sieve"
 msgid ""
 "Please select the sieve script you want to import. Use the import button to "
 "import the script or the cancel button to abort."
-msgstr ""
-"Porfavor seleccione el script sieve que quiere importar. Use el botón "
-"importar para importar el script o el botón cancelar para anular."
+msgstr "Porfavor seleccione el script sieve que quiere importar. Use el botón importar para importar el script o el botón cancelar para anular."
 
 #: personal/mail/sieve/templates/import_script.tpl:5
 msgid "Script to import"
@@ -1577,16 +1545,12 @@ msgstr "Lista de scripts sieve"
 msgid ""
 "Connection to the sieve server could not be established, the "
 "authentification attribute is empty."
-msgstr ""
-"No se puede establecer una conexión al servidor sieve, el atributo "
-"autenticación esta vacío."
+msgstr "No se puede establecer una conexión al servidor sieve, el atributo autenticación esta vacío."
 
 #: personal/mail/sieve/templates/management.tpl:6
 msgid ""
 "Please verify that the attributes uid and mail are not empty and try again."
-msgstr ""
-"Por favor compruebe que los atributos uid y correo no están vacíos y pruebe "
-"de nuevo."
+msgstr "Por favor compruebe que los atributos uid y correo no están vacíos y pruebe de nuevo."
 
 #: personal/mail/sieve/templates/management.tpl:12
 msgid "Connection to the sieve server could not be established."
@@ -1598,11 +1562,9 @@ msgstr "Posiblemente no se han podido crear todavía las cuentas sieve."
 
 #: personal/mail/sieve/templates/management.tpl:19
 msgid ""
-"Be careful. All your changes will be saved directly to sieve, if you use the "
-"save button below."
-msgstr ""
-"Tenga cuidado. Cuando use el botón grabar, todos los cambios se grabarán "
-"directamente a sieve."
+"Be careful. All your changes will be saved directly to sieve, if you use the"
+" save button below."
+msgstr "Tenga cuidado. Cuando use el botón grabar, todos los cambios se grabarán directamente a sieve."
 
 #: personal/mail/sieve/templates/management.tpl:22
 msgid "Create new script"
@@ -1737,23 +1699,17 @@ msgid "Edit"
 msgstr "Editar"
 
 #: personal/mail/sieve/templates/remove_script.tpl:6
-#, fuzzy
 msgid ""
-"Please double check if your really want to do this since there is no way for "
-"FusionDirectory to get your data back."
+"Please double check if your really want to do this since there is no way for"
+" FusionDirectory to get your data back."
 msgstr ""
-"Si está seguro de lo que quiere hacer pulse dos veces, ya que no hay manera "
-"de que FusionDirectory recupere posteriormente la información."
 
 #: personal/mail/sieve/templates/remove_script.tpl:10
 msgid ""
 "Best thing to do before performing this action would be to save the current "
 "script in a file. So - if you've done so - press 'Delete' to continue or "
 "'Cancel' to abort."
-msgstr ""
-"Lo mejor que puede hacer antes de ejecutar esta acción es grabar el script "
-"actual en un archivo. Entonces - y solo entonces - presione 'Eliminar' para "
-"continuar o 'Cancelar' para abortar."
+msgstr "Lo mejor que puede hacer antes de ejecutar esta acción es grabar el script actual en un archivo. Entonces - y solo entonces - presione 'Eliminar' para continuar o 'Cancelar' para abortar."
 
 #: personal/mail/sieve/templates/element_redirect.tpl:18
 msgid "Redirect mail to following recipients"
@@ -1814,11 +1770,9 @@ msgstr "operador"
 
 #: personal/mail/sieve/templates/create_script.tpl:2
 msgid ""
-"Please enter the name for the new script below. Script names must consist of "
-"lower case characters only."
-msgstr ""
-"Porfavor introduzca aquí el nombre del nuevo script. Los nombres de script "
-"deben tener solo minúsculas."
+"Please enter the name for the new script below. Script names must consist of"
+" lower case characters only."
+msgstr "Porfavor introduzca aquí el nombre del nuevo script. Los nombres de script deben tener solo minúsculas."
 
 #: personal/mail/sieve/templates/create_script.tpl:8
 msgid "Script name"
@@ -2063,9 +2017,7 @@ msgstr "No se enviara a su propia carpeta de correo"
 #: personal/mail/generic.tpl:151
 msgid ""
 "Select to automatically response with the vacation message defined below"
-msgstr ""
-"Seleccione para responder automáticamente con el mensaje de ausencia "
-"definido aquí"
+msgstr "Seleccione para responder automáticamente con el mensaje de ausencia definido aquí"
 
 #: personal/mail/generic.tpl:152
 msgid "Activate vacation message"
@@ -2077,8 +2029,7 @@ msgstr "hasta"
 
 #: personal/mail/generic.tpl:193
 msgid "Select if you want to filter this mails through spamassassin"
-msgstr ""
-"Seleccione aquí si quiere que su correo se filtre a través de spamassassin"
+msgstr "Seleccione aquí si quiere que su correo se filtre a través de spamassassin"
 
 #: personal/mail/generic.tpl:195
 msgid "Move mails tagged with spam level greater than"
@@ -2103,478 +2054,3 @@ msgstr "Mb"
 #: personal/mail/mail_locals.tpl:35
 msgid "Select department"
 msgstr "Seleccionar departamentos"
-
-#~ msgid "Mail queue"
-#~ msgstr "Cola de correo"
-
-#~ msgid "up"
-#~ msgstr "arriba"
-
-#~ msgid "down"
-#~ msgstr "abajo"
-
-#~ msgid "All"
-#~ msgstr "Todo"
-
-#~ msgid "no limit"
-#~ msgstr "sin límite"
-
-#~ msgid "hour"
-#~ msgstr "hora"
-
-#~ msgid "hours"
-#~ msgstr "horas"
-
-#~ msgid "Hold"
-#~ msgstr "Bloqueo"
-
-#~ msgid "Un hold"
-#~ msgstr "Liberado"
-
-#~ msgid "Not active"
-#~ msgstr "No activo"
-
-#~ msgid "Mail queue addon"
-#~ msgstr "Extensión a la cola de correo"
-
-#~ msgid "Unhold all messages"
-#~ msgstr "Activar todos los mensajes"
-
-#~ msgid "Hold all messages"
-#~ msgstr "Guardar todos los mensajes"
-
-#~ msgid "Delete all messages"
-#~ msgstr "Eliminar todos los mensajes"
-
-#~ msgid "Requeue all messages"
-#~ msgstr "Encolar todos los mensajes"
-
-#~ msgid "Unhold message"
-#~ msgstr "Liberar mensaje"
-
-#~ msgid "Hold message"
-#~ msgstr "Bloquear mensaje"
-
-#~ msgid "Delete message"
-#~ msgstr "Eliminar mensaje"
-
-#~ msgid "Requeue message"
-#~ msgstr "Reencolar mensaje"
-
-#~ msgid "Gathering queue data"
-#~ msgstr "Adquirir información de la cola"
-
-#~ msgid "Get header information"
-#~ msgstr "Obtener información de cabecera"
-
-#~ msgid "Search"
-#~ msgstr "Buscar"
-
-#~ msgid "Search for"
-#~ msgstr "Buscar por"
-
-#~ msgid "Please enter a search string here."
-#~ msgstr "Por favor introduzca una cadena de búsqueda aqui."
-
-#~ msgid "Select a server"
-#~ msgstr "Seleccione un servidor"
-
-#~ msgid "with status"
-#~ msgstr "con estado"
-
-#~ msgid "within the last"
-#~ msgstr "pendiente de envío"
-
-#~ msgid "Remove all messages"
-#~ msgstr "Eliminar todos los mensajes"
-
-#~ msgid "Remove all messages from selected servers queue"
-#~ msgstr ""
-#~ "Eliminar todos los mensajes de las colas de los servidores seleccionados"
-
-#~ msgid "Hold all messages in selected servers queue"
-#~ msgstr ""
-#~ "Guardar todos los mensajes en las colas de los servidores seleccionados"
-
-#~ msgid "Release all messages"
-#~ msgstr "Lanzar todos los mensajes"
-
-#~ msgid "Release all messages in selected servers queue"
-#~ msgstr "Lanzar los mensajes en las colas de los servidores seleccionados"
-
-#~ msgid "Requeue all messages in selected servers queue"
-#~ msgstr ""
-#~ "Encolar todos los mensajes de las colas de los servidores seleccionados"
-
-#~ msgid "Search returned no results"
-#~ msgstr "La búsqueda no ha devuelto resultados"
-
-#~ msgid "ID"
-#~ msgstr "ID"
-
-#~ msgid "Arrival"
-#~ msgstr "Llegada"
-
-#~ msgid "Sender"
-#~ msgstr "Remitente"
-
-#~ msgid "Recipient"
-#~ msgstr "Recipiente"
-
-#~ msgid "Status"
-#~ msgstr "Estado"
-
-#~ msgid "delete"
-#~ msgstr "eliminar"
-
-#~ msgid "Delete this message"
-#~ msgstr "Eliminar este mensaje"
-
-#~ msgid "unhold"
-#~ msgstr "liberar"
-
-#~ msgid "Release message"
-#~ msgstr "Desbloquear el mensaje"
-
-#~ msgid "hold"
-#~ msgstr "bloquear"
-
-#~ msgid "requeue"
-#~ msgstr "encolar"
-
-#~ msgid "Requeue this message"
-#~ msgstr "Encolar este mensaje"
-
-#~ msgid "header"
-#~ msgstr "cabecera"
-
-#~ msgid "Display header of this message"
-#~ msgstr "Mostrar cabecera de este mensaje"
-
-#, fuzzy
-#~ msgid "Cannot connect mail method: %s"
-#~ msgstr "No puedo crear el fichero '%s'."
-
-#, fuzzy
-#~ msgid "Cannot remove mailbox: %s."
-#~ msgstr "No puedo crear el fichero '%s'."
-
-#, fuzzy
-#~ msgid "Cannot update mailbox: %s."
-#~ msgstr "No puedo crear el fichero '%s'."
-
-#, fuzzy
-#~ msgid "Cannot write quota settings: %s."
-#~ msgstr "¡No se puede escribir en el archivo de revisión!"
-
-#, fuzzy
-#~ msgid "Cannot connect mail method! Error was: %s."
-#~ msgstr "No puedo crear el fichero '%s'."
-
-#, fuzzy
-#~ msgid "Cannot remove mailbox! Error was: %s."
-#~ msgstr "No puedo crear el fichero '%s'."
-
-#, fuzzy
-#~ msgid "Cannot update mailbox! Error was: %s."
-#~ msgstr "No puedo crear el fichero '%s'."
-
-#, fuzzy
-#~ msgid "Specify the mail server where the user will  be hosted on"
-#~ msgstr "Escoja el departamento base de la búsqueda"
-
-#~ msgid "not defined"
-#~ msgstr "sin definirse"
-
-#~ msgid "read"
-#~ msgstr "leer"
-
-#~ msgid "post"
-#~ msgstr "enviar"
-
-#~ msgid "external post"
-#~ msgstr "envío externo"
-
-#~ msgid "append"
-#~ msgstr "añadir"
-
-#~ msgid "write"
-#~ msgstr "escribir"
-
-#~ msgid "admin"
-#~ msgstr "Administrador"
-
-#, fuzzy
-#~ msgid "mail"
-#~ msgstr "Correo Electrónico"
-
-#, fuzzy
-#~ msgid "forward address"
-#~ msgstr "Direcciones de reenvío"
-
-#, fuzzy
-#~ msgid "Cannot forward to users own mail address!"
-#~ msgstr "Esta intentando añadir una dirección de correo no valida"
-
-#, fuzzy
-#~ msgid "Alternate address"
-#~ msgstr "Direcciones alternativas"
-
-#~ msgid "Add"
-#~ msgstr "Añadir"
-
-#, fuzzy
-#~ msgid "Mails"
-#~ msgstr "Correo Electrónico"
-
-#, fuzzy
-#~ msgid "Tasks"
-#~ msgstr "Días para tareas OX"
-
-#, fuzzy
-#~ msgid "Notes"
-#~ msgstr "Ninguno"
-
-#, fuzzy
-#~ msgid "Junk mail"
-#~ msgstr "Grupo de correo"
-
-#~ msgid ""
-#~ "Please choose valid permission settings. Default permission can't be "
-#~ "emtpy."
-#~ msgstr ""
-#~ "Por favor seleccione una configuración valida de permisos. No se puede "
-#~ "dejar en blanco los permisos por defecto."
-
-#, fuzzy
-#~ msgid ""
-#~ "Mail settings cannot be removed while there are delegations configured!"
-#~ msgstr ""
-#~ "Esta cuenta no puede ser eliminada mientras haya delegaciones "
-#~ "configuradas. Elimine primero las delegaciones."
-
-#, fuzzy
-#~ msgid "Waiting for kolab to remove mail properties..."
-#~ msgstr "Esperando que Kolab elimine las características de correo."
-
-#, fuzzy
-#~ msgid ""
-#~ "Please remove the mail settings first to allow kolab to call its remove "
-#~ "methods!"
-#~ msgstr ""
-#~ "Por favor elimine la cuenta de correo primero, para permitir que Kolab "
-#~ "active su sistema de eliminación."
-
-#, fuzzy
-#~ msgid "You have no permission to submit a '%s' command!"
-#~ msgstr "No tiene permisos para cambiar su contraseña."
-
-#~ msgid "Sieve port"
-#~ msgstr "Puerto Sieve"
-
-#~ msgid "There is no mail method '%s' specified in your gosa.conf available."
-#~ msgstr ""
-#~ "No hay método de correo %s configurado en su 'FusionDirectory.conf'."
-
-#~ msgid ""
-#~ "Adding your one of your own addresses to the forwarders makes no sense."
-#~ msgstr ""
-#~ "Añadir una de sus propias cuentas de correo a la lista de reenvío no "
-#~ "tiene sentido."
-
-#, fuzzy
-#~ msgid "alternate address"
-#~ msgstr "Direcciones alternativas"
-
-#~ msgid "Delete"
-#~ msgstr "Eliminar"
-
-#~ msgid "Save"
-#~ msgstr "Guardar"
-
-#~ msgid "Cancel"
-#~ msgstr "Cancelar"
-
-#~ msgid "Apply"
-#~ msgstr "Aplicar"
-
-#~ msgid "This 'dn' has no valid mail extensions."
-#~ msgstr "Esta 'dn' no tiene extensiones validas de correo."
-
-#~ msgid ""
-#~ "This account has mail features enabled. You can disable them by clicking "
-#~ "below."
-#~ msgstr ""
-#~ "Esta cuenta tiene la extensión de de correo activas. Puede desactivarlas "
-#~ "pulsando aquí."
-
-#~ msgid ""
-#~ "This account has mail features disabled. You can enable them by clicking "
-#~ "below."
-#~ msgstr ""
-#~ "Esta cuenta tiene la extensión de correo desactivada.Puede activarla "
-#~ "pulsando aquí."
-
-#, fuzzy
-#~ msgid "You're trying to add an invalid email address "
-#~ msgstr ""
-#~ "Esta intentando añadir una dirección de correo no valida a la lista de "
-#~ "reenvío."
-
-#~ msgid ""
-#~ "You're trying to add an invalid email address to the list of alternate "
-#~ "addresses."
-#~ msgstr ""
-#~ "Esta intentando añadir una dirección de correo no valida a la lista de "
-#~ "direcciones alternativas"
-
-#~ msgid "The address you're trying to add is already used by user"
-#~ msgstr ""
-#~ "La dirección de correo que esta intentando añadir, ya esta usada por otro "
-#~ "usuario"
-
-#~ msgid "The required field 'Primary address' is not set."
-#~ msgstr "No ha introducido el campo obligatorio'Cuenta Principal'."
-
-#~ msgid "Please enter a valid email addres in 'Primary address' field."
-#~ msgstr ""
-#~ "Por favor introduzca una dirección valida de correo electrónico en el "
-#~ "campo 'Cuenta Principal'."
-
-#~ msgid "The primary address you've entered is already in use."
-#~ msgstr "La cuenta principal que ha introducido ya esta en uso."
-
-#~ msgid "Value in 'Quota size' is not valid."
-#~ msgstr "El valor de 'Tamaño de Cuota' no es valido."
-
-#~ msgid "Please specify a vaild mail size for mails to be rejected."
-#~ msgstr ""
-#~ "Por favor introduzca un valor válido de tamaño máximo de mensajes que "
-#~ "serán rechazados."
-
-#~ msgid "Please specify a numeric value for header size limit."
-#~ msgstr ""
-#~ "Por favor introduzca un valor numérico para tamaño máximo de cabecera."
-
-#~ msgid "Please specify a numeric value for mailbox size limit."
-#~ msgstr "Por favor introduzca un valor numérico para tamaño máximo de buzón."
-
-#~ msgid "Please specify a numeric value for message size limit."
-#~ msgstr ""
-#~ "Por favor introduzca un valor numérico para tamaño máximo de mensaje."
-
-#~ msgid "Specified value is not a valid 'trusted network' value."
-#~ msgstr "El valor introducido no es un valor válido de 'red de confianza'."
-
-#~ msgid "Required score must be a numeric value."
-#~ msgstr "Puntuación mínima debe ser un valor numérico."
-
-#~ msgid "Please specify a server identifier."
-#~ msgstr "Por favor introduzca un identificador de servidor."
-
-#~ msgid "Please specify a connect url."
-#~ msgstr "Por favor introduzca una url de conexión."
-
-#~ msgid "Please specify an admin user."
-#~ msgstr "Por favor introduzca un usuario administrador."
-
-#~ msgid "Please specify a password for the admin user."
-#~ msgstr "Por favor introduzca una contraseña de Administrador."
-
-#~ msgid "The imap connect string needs to be in the form '%s'."
-#~ msgstr "La cadena de conexión imap necesita estar en la forma '%s'."
-
-#~ msgid "The sieve port needs to be numeric."
-#~ msgstr "El puerto sieve necesita ser un numero."
-
-#~ msgid "The specified value for '%s' must be a numeric value."
-#~ msgstr "El valor introducido para '%s' debe ser una valor numérico."
-
-#~ msgid "Please specify a valid value for '%s'."
-#~ msgstr "Por favor introduzca un valor para '%s' valido."
-
-#~ msgid "Back"
-#~ msgstr "Atrás"
-
-#~ msgid "This account has no mail extensions."
-#~ msgstr "Esta cuenta no tiene la extensión de correo."
-
-#~ msgid "January"
-#~ msgstr "Enero"
-
-#~ msgid "February"
-#~ msgstr "Febrero"
-
-#~ msgid "March"
-#~ msgstr "Marzo"
-
-#~ msgid "April"
-#~ msgstr "Abril"
-
-#~ msgid "May"
-#~ msgstr "Mayo"
-
-#~ msgid "June"
-#~ msgstr "Junio"
-
-#~ msgid "July"
-#~ msgstr "Julio"
-
-#~ msgid "August"
-#~ msgstr "Agosto"
-
-#~ msgid "September"
-#~ msgstr "Septiembre"
-
-#~ msgid "October"
-#~ msgstr "Octubre"
-
-#~ msgid "November"
-#~ msgstr "Noviembre"
-
-#~ msgid "December"
-#~ msgstr "Diciembre"
-
-#~ msgid "Removing of user/mail account with dn '%s' failed."
-#~ msgstr "No se ha podido borrar la cuenta de usuario/correo con dn '%s'."
-
-#~ msgid "Saving of user/mail account with dn '%s' failed."
-#~ msgstr "No se ha podido guardar la cuenta de usuario/correo con dn '%s'."
-
-#~ msgid ""
-#~ "There is no valid mailserver specified, please add one in the system "
-#~ "setup."
-#~ msgstr ""
-#~ "No se ha configurado ningún servidor de correo válido, por favor añada "
-#~ "uno en la configuración de sistemas."
-
-#~ msgid "You specified Spam settings, but there is no Folder specified."
-#~ msgstr ""
-#~ "Has seleccionado características antispam sin haber seleccionado ninguna "
-#~ "carpeta."
-
-#~ msgid "Time interval to show vacation message is not valid."
-#~ msgstr ""
-#~ "No es válido el intervalo de fechas para mostrar el mensaje de ausencia."
-
-#~ msgid "Ok"
-#~ msgstr "Ok"
-
-#~ msgid "Click the 'Edit' button below to change informations in this dialog"
-#~ msgstr ""
-#~ "Pulse en el botón - Editar - para cambiar la información en esta ventana"
-
-#~ msgid "Saving of server services/anti virus with dn '%s' failed."
-#~ msgstr "Ha fallado la grabación del servicio antivirus con dn '%s'."
-
-#~ msgid "Saving of server services/spamassassin with dn '%s' failed."
-#~ msgstr "Ha fallado la grabación del servicio spamassassin con dn '%s'."
-
-#~ msgid "Saving server services/mail with dn '%s' failed."
-#~ msgstr "Ha fallado la grabación de servicio de correo con dn '%s'"
-
-#~ msgid "Removing of groups/mail with dn '%s' failed."
-#~ msgstr "Ha fallado la eliminación de correo/grupos con dn '%s'."
-
-#~ msgid "Saving of groups/mail with dn '%s' failed."
-#~ msgstr "Ha fallado la grabación de correo/grupos con dn '%s'."

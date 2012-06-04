@@ -1,26 +1,22 @@
-# translation of messages.po to Deutsch
-#
-# Copyright (C) 2003 GONICUS GmbH, Germany
-# Copyright (C) 2011 FusionDirectory Project
-# This file is distributed under the same license as the FusionDirectory package.
-#
-#
-#  Alfred Schroeder <schroeder@GONICUS.de>, 2004. 
-#  Cajus Pollmeier <pollmeier@gonicus.de>, 2004, 2005, 2006. 
-#  Jan Wenzel <jan.wenzel@gonicus.de>, 2004,2005, 2008. 
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
 #  Stefan Koehler <stefan.koehler@GONICUS.de>, 2005.
 msgid ""
 msgstr ""
-"Project-Id-Version: messages\n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version: FusionDirectory\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
 "POT-Creation-Date: 2012-05-26 17:33+0200\n"
-"PO-Revision-Date: 2008-07-28 08:45+0200\n"
-"Last-Translator: Jan Wenzel <jan.wenzel@gonicus.de>\n"
-"Language-Team: German <de@li.org>\n"
-"Language: de\n"
+"PO-Revision-Date: 2012-05-26 16:34+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: German (http://www.transifex.net/projects/p/FusionDirectory/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: html/getfax.php:63
 msgid "Could not connect to database server!"
@@ -76,19 +72,14 @@ msgid "Warning"
 msgstr "Warnung"
 
 #: admin/blocklists/remove.tpl:6
-#, fuzzy
 msgid ""
 "Please double check if you really want to do this since there is no way for "
 "FusionDirectory to get your data back."
 msgstr ""
-"Bitte überprüfen Sie genau was Sie tun, weil FusionDirectory keine "
-"Möglichkeit hat, die Daten wiederherzustellen."
 
 #: admin/blocklists/remove.tpl:10
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr ""
-"Wenn Sie sicher sind, drücken Sie 'Entfernen' um fortzufahren oder "
-"'Abbrechen' zum Abbruch."
+msgstr "Wenn Sie sicher sind, drücken Sie 'Entfernen' um fortzufahren oder 'Abbrechen' zum Abbruch."
 
 #: admin/blocklists/paste_generic.tpl:3 admin/blocklists/generic.tpl:8
 msgid "List name"
@@ -439,9 +430,7 @@ msgstr "Nachname"
 
 #: personal/faxaccount/main.inc:126
 msgid "Click the 'Edit' button below to change informations in this dialog"
-msgstr ""
-"Betätigen sie den 'Bearbeiten'-Schalter unten um Informationen in diesem "
-"Dialog zu ändern"
+msgstr "Betätigen sie den 'Bearbeiten'-Schalter unten um Informationen in diesem Dialog zu ändern"
 
 #: personal/faxaccount/main.inc:135
 msgid "FAX settings"
@@ -619,15 +608,3 @@ msgstr "Sperrlisten für eingehendes Fax"
 #: personal/faxaccount/generic.tpl:133
 msgid "Blocklists for outgoing fax"
 msgstr "Sperrlisten für abgehendes Fax"
-
-#~ msgid "Could not select database!"
-#~ msgstr "Konnte die Datenbank nicht auswählen!"
-
-#~ msgid "Configuration error"
-#~ msgstr "Konfigurationsfehler"
-
-#~ msgid "Missing %s PHP extension!"
-#~ msgstr "Fehlende %s PHP-Erweiterung"
-
-#~ msgid "Cannot select %s database!"
-#~ msgstr "Konnte keine Auswahl auf %s Datenbank durchführen!"

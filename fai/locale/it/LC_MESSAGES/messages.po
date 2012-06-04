@@ -1,44 +1,39 @@
-# translation of messages.po to Italian
-# Copyright (c) 2005 B-Open Solutions srl - http://www.bopen.it/
-# Copyright (c) 2005 Alessandro Amici <a.amici@bopen.it>
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
 # Alessandro Amici <a.amici@bopen.it>, 2005.
 # Giuliano Di Vito <giuliano@opensides.be>, 2011.
+#   <giuliano@opensides.be>, 2012.
 msgid ""
 msgstr ""
-"Project-Id-Version: messages\n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version: FusionDirectory\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
 "POT-Creation-Date: 2012-05-26 17:33+0200\n"
-"PO-Revision-Date: 2011-04-04 09:30+0200\n"
-"Last-Translator: Giuliano Di Vito <giuliano@opensides.be>\n"
-"Language-Team: Italian <kde-i18n-doc@kde.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2012-05-31 14:00+0000\n"
+"Last-Translator: poterealpopolo <giuliano@opensides.be>\n"
+"Language-Team: Italian (http://www.transifex.net/projects/p/FusionDirectory/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.0\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: it\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: admin/fai/askClassName.tpl:6
 msgid ""
-"Adding a new class to the FAI management, requires a class name. You have to "
-"specify a unique class name for unique types of FAI classes, while you can "
+"Adding a new class to the FAI management, requires a class name. You have to"
+" specify a unique class name for unique types of FAI classes, while you can "
 "use the same class name for different types of FAI classes. In the laste "
 "case, FAI will automatically enclose all these different class types to one "
 "unique class name."
-msgstr ""
-"L'aggiunta di una classe alla gestione della FAI necessita un nome di "
-"classe. Devi specificare un nome di classe unico per le classi FAI di tipo "
-"unico, quantunque puoi usare lo stesso nome per delle classi FAI di tipo "
-"diverso. Nell'ultimo caso, FAI includerà automaticamente tutte queste classi "
-"di tipo diverso in un nome di classe unico."
+msgstr "L'aggiunta di una classe alla gestione della FAI necessita un nome di classe. Devi specificare un nome di classe unico per le classi FAI di tipo unico, quantunque puoi usare lo stesso nome per delle classi FAI di tipo diverso. Nell'ultimo caso, FAI includerà automaticamente tutte queste classi di tipo diverso in un nome di classe unico."
 
 #: admin/fai/askClassName.tpl:12
 msgid ""
 "Please use one of the following methods to choose the name for the new FAI "
 "class."
-msgstr ""
-"Utilizza uno dei metodi seguenti per scegliere il nome della nuova classe "
-"FAI."
+msgstr "Utilizza uno dei metodi seguenti per scegliere il nome della nuova classe FAI."
 
 #: admin/fai/askClassName.tpl:26
 msgid "Enter FAI class name manually"
@@ -69,23 +64,14 @@ msgid ""
 "classes are possible. Branch names should be alphanumeric, excluding the "
 "reserved names 'scripts', 'hooks', 'partitions', 'variables', 'templates' "
 "and 'fai'."
-msgstr ""
-"Stai per creare un ramo oppure un ramo bloccato. Questa azione copierà la "
-"versione corrente in un a nuova versione. I rami possono essere modificati "
-"abitualmente. Le classi FAI dei rami bloccati non possono essere modificate, "
-"possono solo essere create delle classi supplementari. I nomi dei rami "
-"devono essere 'alfanumerici' con l'eccezione delle parole riservate "
-"'scripts', 'hooks', 'partitions', 'variables', 'templates', e 'fai'."
+msgstr "Stai per creare un ramo oppure un ramo bloccato. Questa azione copierà la versione corrente in un a nuova versione. I rami possono essere modificati abitualmente. Le classi FAI dei rami bloccati non possono essere modificate, possono solo essere create delle classi supplementari. I nomi dei rami devono essere 'alfanumerici' con l'eccezione delle parole riservate 'scripts', 'hooks', 'partitions', 'variables', 'templates', e 'fai'."
 
 #: admin/fai/faiNewBranch.tpl:7
 msgid ""
 "Branches are created as subreleases of the currently selected branch. "
-"Creating a new branch named 1.0.2 in SARGE for example, will result in a new "
-"release called SARGE/1.0.2."
-msgstr ""
-"I rami sono creati come delle sotto versioni del ramo selezionato. La "
-"creazione di un nuovo ramo chiamato 1.0.2 in SARGE ad esempio, darà come "
-"risultato una nuova versione chiamata SARGE/1.0.2."
+"Creating a new branch named 1.0.2 in SARGE for example, will result in a new"
+" release called SARGE/1.0.2."
+msgstr "I rami sono creati come delle sotto versioni del ramo selezionato. La creazione di un nuovo ramo chiamato 1.0.2 in SARGE ad esempio, darà come risultato una nuova versione chiamata SARGE/1.0.2."
 
 #: admin/fai/faiNewBranch.tpl:13
 msgid "Please enter a name for the branch"
@@ -98,20 +84,15 @@ msgstr "Operazione in corso"
 #: admin/fai/faiNewBranch.tpl:35
 msgid ""
 "As soon as the copy operation has finished, you can scroll down to end of "
-"the page and press the 'Continue' button to continue with the fai management "
-"dialog."
-msgstr ""
-"Appena l'operazione di copia sarà terminata, potrai andare alla fine della "
-"pagina e premere il pulsante 'Continuare' per avanzare nella configurazione "
-"della FAI."
+"the page and press the 'Continue' button to continue with the fai management"
+" dialog."
+msgstr "Appena l'operazione di copia sarà terminata, potrai andare alla fine della pagina e premere il pulsante 'Continuare' per avanzare nella configurazione della FAI."
 
 #: admin/fai/faiNewBranch.tpl:41
 msgid ""
 "Your browser doesn't support iframes, please use this link to perform the "
 "requested operation."
-msgstr ""
-"Il tuo navigatore web non supporta gli iframes, utilizza questo link per "
-"effettuare l'operazione richiesta."
+msgstr "Il tuo navigatore web non supporta gli iframes, utilizza questo link per effettuare l'operazione richiesta."
 
 #: admin/fai/faiNewBranch.tpl:43
 msgid "Perform requested operation."
@@ -146,9 +127,7 @@ msgstr "Errore"
 #: admin/fai/tabsVariable.inc:53 admin/fai/tabsTemplate.inc:53
 #: admin/fai/tabsPartition.inc:54
 msgid "Moving the tree failed. Destination tree is subtree of source tree."
-msgstr ""
-"Impossibile spostare l'albero. L'albero di destinazione è un sotto albero di "
-"quello da spostare."
+msgstr "Impossibile spostare l'albero. L'albero di destinazione è un sotto albero di quello da spostare."
 
 #: admin/fai/fai-filter.tpl:3 admin/fai/classSelect/selectClass-filter.tpl:3
 #: admin/fai/packageSelect/selectPackage-filter.tpl:3
@@ -343,15 +322,11 @@ msgstr "partizione %s punto di montaggio"
 msgid ""
 "File system type 'swap' is already used, change file system type for "
 "partition %s."
-msgstr ""
-"Il file system 'swap' è già utilizzato, cambia il tipo di file system per la "
-"partizione %s."
+msgstr "Il file system 'swap' è già utilizzato, cambia il tipo di file system per la partizione %s."
 
 #: admin/fai/class_faiPartitionTableEntry.inc:393
 msgid "Please use 'swap' as mount point, if 'swap' is used as fs-type."
-msgstr ""
-"Utilizza 'swap' come punto di montaggio, se 'swap' è utilizzato come tipo di "
-"file system."
+msgstr "Utilizza 'swap' come punto di montaggio, se 'swap' è utilizzato come tipo di file system."
 
 #: admin/fai/class_faiPartitionTableEntry.inc:399
 #: admin/fai/class_faiPartitionTableEntry.inc:403
@@ -366,9 +341,7 @@ msgstr "Dimensione della partizione %s"
 msgid ""
 "You have more than 3 primary partition table entries in your configuration, "
 "please check your configuration twice."
-msgstr ""
-"Hai più di tre partizioni primarie nella tua configurazione, verifica la tua "
-"configurazione ! "
+msgstr "Hai più di tre partizioni primarie nella tua configurazione, verifica la tua configurazione ! "
 
 #: admin/fai/class_faiPartitionTableEntry.inc:443
 #: admin/fai/class_faiDiskEntry.inc:750
@@ -425,7 +398,6 @@ msgstr "Opzioni del file system"
 
 #: admin/fai/class_faiPartitionTableEntry.inc:460
 #: admin/fai/class_faiDiskEntry.inc:768
-#, fuzzy
 msgid "Partition flags"
 msgstr "Indicatore delle partizioni"
 
@@ -491,9 +463,7 @@ msgstr "Informazioni"
 msgid ""
 "This menu allows you to select FAI class names and to add them to the "
 "currently edited profile."
-msgstr ""
-"Questo menu ti permette di scegliere delle classi FAI e di aggiungerle al "
-"profilo che stai modificando attualmente."
+msgstr "Questo menu ti permette di scegliere delle classi FAI e di aggiungerle al profilo che stai modificando attualmente."
 
 #: admin/fai/faiProfileEntry.tpl:31
 msgid "Filters"
@@ -578,17 +548,12 @@ msgid "This package has no debconf options."
 msgstr "Questo pacchetto non ha opzioni Debconf."
 
 #: admin/fai/class_debconfTemplate.inc:264
-#, fuzzy
 msgid ""
 "This debconf question is dynamically generated during package installation "
 "and requires choosing between specific options which cannot be presented "
-"here. The entered text needs to be one of the valid choices in order to take "
-"effect."
-msgstr ""
-"Questa domanda Debconf è generata dinamicamente durante l'installazione del "
-"pacchetto e necessita una scelta tra diverse opzioni che non possono essere "
-"mostrate qui. La frase immessa dovrà essere una di queste scelte per poter "
-"essere valida."
+"here. The entered text needs to be one of the valid choices in order to take"
+" effect."
+msgstr "Questa domanda debconf viene generata dinamicamente durante l'installazione del pacchetto e richiede di scegliere tra le opzioni specifiche che non possono essere presentate qui. Al fine di avere effetto il testo inserito deve essere una delle scelte valide."
 
 #: admin/fai/branch_selector.tpl:2
 #: admin/systems/services/repository/class_servRepository.inc:465
@@ -622,14 +587,14 @@ msgid "Object"
 msgstr "Oggetto"
 
 #: admin/fai/class_FAI.inc:966
-#, fuzzy, php-format
+#, php-format
 msgid "Adding missing group application release container %s."
-msgstr "Aggiunta di un gruppo d'applicazione mancante %s."
+msgstr "Aggiunta del gruppo di applicazioni mancanti %s."
 
 #: admin/fai/class_FAI.inc:988
-#, fuzzy, php-format
+#, php-format
 msgid "Adding group application release container %s."
-msgstr "Aggiunta di un gruppo di applicazione %s."
+msgstr "Aggiunta del gruppo di applicazioni %s."
 
 #: admin/fai/class_FAI.inc:1028
 #, php-format
@@ -637,9 +602,9 @@ msgid "Could not create menu entry %s. (Already exists)."
 msgstr "Impossibile creare l'entry di menu %s (esiste già)."
 
 #: admin/fai/class_FAI.inc:1033
-#, fuzzy, php-format
+#, php-format
 msgid "Created group application menu entry for %s."
-msgstr "Menu del gruppo di applicazione per %s creato."
+msgstr "Il menu del gruppo di applicazioni %s è stato creato."
 
 #: admin/fai/class_FAI.inc:1064
 #, php-format
@@ -652,8 +617,7 @@ msgstr "Trattamento in corso"
 
 #: admin/fai/class_FAI.inc:1085
 msgid "Could not create new release, the destination dn is already in use."
-msgstr ""
-"Impossibile creare una nuova versione, il DN di destinazione esiste già."
+msgstr "Impossibile creare una nuova versione, il DN di destinazione esiste già."
 
 #: admin/fai/class_FAI.inc:1098
 msgid "Error while fetching source dn - aborted!"
@@ -667,9 +631,7 @@ msgstr "Errore fatale"
 #, php-format
 msgid ""
 "Release creation failed due to ldap errors. Additional informations '%s'."
-msgstr ""
-"La creazione della versione non è riuscita in seguito a degli errori LDAP. "
-"Informazioni aggiuntive '%s'."
+msgstr "La creazione della versione non è riuscita in seguito a degli errori LDAP. Informazioni aggiuntive '%s'."
 
 #: admin/fai/class_faiHookEntry.inc:85 admin/fai/class_faiScriptEntry.inc:82
 msgid "file is empty"
@@ -696,9 +658,8 @@ msgid "FAI hook entry"
 msgstr "Connessioni FAI"
 
 #: admin/fai/class_faiHookEntry.inc:209 admin/fai/faiHookEntry.tpl:38
-#, fuzzy
 msgid "Task"
-msgstr "Compito"
+msgstr "Attività"
 
 #: admin/fai/class_faiHookEntry.inc:210 admin/fai/class_faiScript.inc:651
 msgid "FAI script"
@@ -738,12 +699,10 @@ msgstr "Modelli"
 
 #: admin/fai/class_faiGroupHandle.inc:134
 #: admin/fai/class_faiManagement.inc:1014
-#, fuzzy
 msgid "OPSI netboot product"
 msgstr "Prodotto netboot OPSI"
 
 #: admin/fai/class_faiGroupHandle.inc:136
-#, fuzzy
 msgid "OPSI local product"
 msgstr "Prodotto locale OPSI"
 
@@ -752,9 +711,8 @@ msgid "Hook attributes"
 msgstr "Attributi delle connessioni"
 
 #: admin/fai/faiHookEntry.tpl:41
-#, fuzzy
 msgid "Choose an existing FAI task"
-msgstr "Scegli un compito FAI esistente"
+msgstr "Scegli un'attività FAI esistente"
 
 #: admin/fai/faiHookEntry.tpl:75 admin/fai/faiScriptEntry.tpl:75
 msgid "Import script"
@@ -854,9 +812,7 @@ msgstr "Avvertimento"
 
 #: admin/fai/class_faiManagement.inc:564
 msgid "Release remove aborted because the release name check failed!"
-msgstr ""
-"La rimozione della versione non è riuscita a causa dui un errore nella "
-"verifica del suo nome !"
+msgstr "La rimozione della versione non è riuscita a causa dui un errore nella verifica del suo nome !"
 
 #: admin/fai/class_faiManagement.inc:641 admin/fai/class_faiManagement.inc:664
 msgid "Configuration"
@@ -868,7 +824,6 @@ msgid "Branch"
 msgstr "Ramo"
 
 #: admin/fai/class_faiManagement.inc:1016
-#, fuzzy
 msgid "OPSI localboot product"
 msgstr "Prodotto localboot OPSI"
 
@@ -913,9 +868,7 @@ msgstr "Dimensione"
 #, php-format
 msgid ""
 "The disk cannot be deleted while it is used in the '%s' disk definition!"
-msgstr ""
-"Il disco non può essere rimosso perchè è utilizzato nella definizione del "
-"disco '%s' !"
+msgstr "Il disco non può essere rimosso perchè è utilizzato nella definizione del disco '%s' !"
 
 #: admin/fai/class_faiDiskEntry.inc:546
 msgid "encrypted"
@@ -933,17 +886,13 @@ msgstr "preserve"
 msgid ""
 "You have more than four primary partition table entries in your "
 "configuration, please check your configuration twice."
-msgstr ""
-"Ci sono più di 4 partizioni primarie nella tua configurazione, verifica di "
-"nuovo la tua configurazione !"
+msgstr "Ci sono più di 4 partizioni primarie nella tua configurazione, verifica di nuovo la tua configurazione !"
 
 #: admin/fai/class_faiDiskEntry.inc:737
 msgid ""
 "You cannot have more than three primary partition while using logical "
 "partitions, please check your configuration twice."
-msgstr ""
-"Non puoi avere più di 3 partizioni primarie quando usi delle partizioni "
-"logiche, verifica di nuovo la tua configurazione."
+msgstr "Non puoi avere più di 3 partizioni primarie quando usi delle partizioni logiche, verifica di nuovo la tua configurazione."
 
 #: admin/fai/class_faiDiskEntry.inc:760
 msgid "Disk options"
@@ -967,14 +916,12 @@ msgid "List of deployment classes and products"
 msgstr "Elenco delle classi e dei pacchetti di distribuzione"
 
 #: admin/fai/fai-list.xml:15
-#, fuzzy
 msgid "partitionTable"
-msgstr "Tavola delle partizioni"
+msgstr "tabella delle partizioni"
 
 #: admin/fai/fai-list.xml:23
-#, fuzzy
 msgid "packagelist"
-msgstr "Elenco dei pacchetti"
+msgstr "lista dei pacchetti"
 
 #: admin/fai/fai-list.xml:88 admin/fai/classSelect/selectClass-list.xml:36
 #: admin/fai/faiScriptEntry.tpl:33
@@ -1112,7 +1059,6 @@ msgid "Full path"
 msgstr "Path completo"
 
 #: admin/fai/faiTemplateEntry.tpl:95
-#, fuzzy
 msgid "Upload"
 msgstr "Caricare"
 
@@ -1191,22 +1137,15 @@ msgid "Add from list"
 msgstr "Aggiungi dalla lista"
 
 #: admin/fai/remove.tpl:6
-#, fuzzy
 msgid ""
-"This includes all account data, system access rules, imap settings, etc. for "
-"this user. Please double check if your really want to do this since there is "
-"no way for FusionDirectory to get your data back."
-msgstr ""
-"Questo include tutti i dati degli account, i permessi di accesso al sistema, "
-"la configurazione imap, etc. di questo utente. Accertati che vuoi davvero "
-"eseguire questa azione visto che poi sarà impossibile per FusionDirectory "
-"recuperare i tuoi dati."
+"This includes all account data, system access rules, imap settings, etc. for"
+" this user. Please double check if your really want to do this since there "
+"is no way for FusionDirectory to get your data back."
+msgstr "Questo include tutti i dati degli account, i permessi di accesso al sistema, la configurazione imap, etc. di questo utente. Accertati che vuoi davvero eseguire questa azione visto che poi sarà impossibile per FusionDirectory recuperare i tuoi dati."
 
 #: admin/fai/remove.tpl:10 admin/fai/remove_branch.tpl:10
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr ""
-"Quindi - Se sei sicuro - premi 'Rimuovi' per continuare altrimenti 'Annulla' "
-"per interrompere."
+msgstr "Quindi - Se sei sicuro - premi 'Rimuovi' per continuare altrimenti 'Annulla' per interrompere."
 
 #: admin/fai/paste_generic.tpl:1
 msgid "FAI settings"
@@ -1216,15 +1155,11 @@ msgstr "Impostazioni FAI"
 #, php-format
 msgid ""
 "The file encodig has changed from '%s' to '%s'. Do you really want to save?"
-msgstr ""
-"La codifica del file è cambiata da '%s' verso '%s', voui davvero registrare "
-"la modifica ?"
+msgstr "La codifica del file è cambiata da '%s' verso '%s', voui davvero registrare la modifica ?"
 
 #: admin/fai/faiTemplateEdit.tpl:16
 msgid "This FAI template is write protected. Editing may break it!"
-msgstr ""
-"Questo modello FAI è protetto contro la scrittura. La modifica potrebbe "
-"danneggiare il file !"
+msgstr "Questo modello FAI è protetto contro la scrittura. La modifica potrebbe danneggiare il file !"
 
 #: admin/fai/faiTemplateEdit.tpl:17
 msgid "Edit anyway"
@@ -1235,7 +1170,7 @@ msgid "Invalid package names"
 msgstr "Nome di pacchetto non valido"
 
 #: admin/fai/class_faiPackage.inc:244
-#, fuzzy, php-format
+#, php-format
 msgid "The following package names don't match the Debian policy: %s"
 msgstr "Il pacchetto seguente non corrisponde alla politica Debian : %s"
 
@@ -1266,14 +1201,11 @@ msgstr "Seleziona almeno un pacchetto !"
 #: admin/fai/class_faiPackage.inc:521
 msgid ""
 "Please choose a valid release/section combination for your repository setup!"
-msgstr ""
-"Scegli una combinazione versione/sessione valida per la creazione del tuo "
-"deposito di pacchetti !"
+msgstr "Scegli una combinazione versione/sessione valida per la creazione del tuo deposito di pacchetti !"
 
 #: admin/fai/class_faiPackage.inc:580
-#, fuzzy
 msgid "Unkown packages"
-msgstr "Mostra i pacchetti"
+msgstr "Pacchetti sconosciuti"
 
 #: admin/fai/class_faiPackage.inc:679
 msgid "FAI Package list"
@@ -1316,9 +1248,8 @@ msgid "FAI template"
 msgstr "Modello FAI"
 
 #: admin/fai/class_faiPartition.inc:176 admin/fai/class_faiPartition.inc:180
-#, fuzzy
 msgid "Logical"
-msgstr "Logica"
+msgstr "Logico"
 
 #: admin/fai/class_faiPartition.inc:179
 msgid "Primary"
@@ -1493,7 +1424,6 @@ msgid "Encrypted"
 msgstr "Criptato"
 
 #: admin/fai/faiPartition.tpl:141
-#, fuzzy
 msgid "Tune options"
 msgstr "Opzioni di tuning"
 
@@ -1555,9 +1485,8 @@ msgid "Close"
 msgstr "Chiuso"
 
 #: admin/fai/class_faiSummaryTab.inc:349
-#, fuzzy
 msgid "No."
-msgstr "Nessuno, "
+msgstr "Numero"
 
 #: admin/fai/class_faiSummaryTab.inc:351
 msgid "FS options"
@@ -1646,16 +1575,11 @@ msgid "Add volume group"
 msgstr "Aggiungi un gruppo di volumi"
 
 #: admin/fai/remove_branch.tpl:6
-#, fuzzy
 msgid ""
 "This includes all account data, system access, etc. for this branch. Please "
 "double check if your really want to do this since there is no way for "
 "FusionDirectory to get your data back."
-msgstr ""
-"Questo include tutti i dati degli account, le autorizzazzioni di accesso al "
-"sistema, la configurazione imap, etc. per questo ramo. Accertati che vuoi "
-"davvero eseguire questa azione visto che poi sarà impossibile per "
-"FusionDirectory recuperare i tuoi dati."
+msgstr "Questo include tutti i dati degli account, le autorizzazzioni di accesso al sistema, la configurazione imap, etc. per questo ramo. Accertati che vuoi davvero eseguire questa azione visto che poi sarà impossibile per FusionDirectory recuperare i tuoi dati."
 
 #: admin/fai/class_askClassName.inc:99 admin/fai/class_askClassName.inc:100
 #: admin/fai/class_askClassName.inc:101 admin/fai/class_askClassName.inc:102
@@ -1682,7 +1606,6 @@ msgstr "Servizi"
 
 #: admin/systems/services/repository/class_servRepository.inc:464
 #: admin/systems/services/repository/servRepositorySetup.tpl:8
-#, fuzzy
 msgid "Parent server"
 msgstr "Server genitore"
 
@@ -1699,28 +1622,25 @@ msgid "Sections"
 msgstr "Sezioni"
 
 #: admin/systems/services/repository/class_servRepository.inc:468
-#, fuzzy
 msgid "Installation mirror"
-msgstr "Amministrazione"
+msgstr "Installazione del mirror"
 
 #: admin/systems/services/repository/class_servRepository.inc:469
 #: admin/systems/services/repository/servRepositorySetup.tpl:62
-#, fuzzy
 msgid "Local mirror"
-msgstr "Errore fatale"
+msgstr "Mirror locale"
 
 #: admin/systems/services/repository/class_servRepository.inc:470
 msgid "Architectures"
-msgstr ""
+msgstr "Architetture"
 
 #: admin/systems/services/repository/servRepositorySetup.tpl:28
 msgid "Architectures needed (comma or semicolon separated)"
-msgstr ""
+msgstr "Architetture necessarie (separate da virgola o punto e virgola)"
 
 #: admin/systems/services/repository/servRepositorySetup.tpl:46
-#, fuzzy
 msgid "Installation mirror mode"
-msgstr "Amministrazione"
+msgstr "Installazione della modalità mirror"
 
 #: admin/systems/services/repository/repository-list.xml:10
 msgid "List of repositories"
@@ -1729,751 +1649,3 @@ msgstr "Elenco dei depositi"
 #: admin/systems/services/repository/repository-list.xml:14
 msgid "Service"
 msgstr "Servizi"
-
-#, fuzzy
-#~ msgid "List of available packages"
-#~ msgstr "Scegli il tuo numero di telefono personale"
-
-#, fuzzy
-#~ msgid "Please enter your search string here"
-#~ msgstr "Prego inserire un numero di telefono valido!"
-
-#, fuzzy
-#~ msgid "Add repository"
-#~ msgstr "Directory"
-
-#, fuzzy
-#~ msgid "Select the object you want to cut:"
-#~ msgstr "Mostra gruppi che contengono gruppi"
-
-#, fuzzy
-#~ msgid "Roles"
-#~ msgstr "Ruolo"
-
-#, fuzzy
-#~ msgid "Role management"
-#~ msgstr "Riferimenti"
-
-#~ msgid "Role"
-#~ msgstr "Ruolo"
-
-#, fuzzy
-#~ msgid "Edit role"
-#~ msgstr "Modifica contatto"
-
-#, fuzzy
-#~ msgid "Remove role"
-#~ msgstr "Oggetti membri"
-
-#, fuzzy
-#~ msgid "Use"
-#~ msgstr "Utenti"
-
-#, fuzzy
-#~ msgid "A new class name."
-#~ msgstr "Applicazioni disponibili"
-
-#, fuzzy
-#~ msgid "List of classes"
-#~ msgstr "Scegli il tuo numero di telefono personale"
-
-#, fuzzy
-#~ msgid "Select all"
-#~ msgstr "Rimuovi"
-
-#, fuzzy
-#~ msgid "Class types"
-#~ msgstr "Scegli il tuo numero di telefono personale"
-
-#, fuzzy
-#~ msgid "Display objects of type '%s'."
-#~ msgstr "Gruppo di oggetti"
-
-#~ msgid "Display users matching"
-#~ msgstr "Mostra utenti che corrispondono a"
-
-#, fuzzy
-#~ msgid "Templates "
-#~ msgstr "Template"
-
-#, fuzzy
-#~ msgid "I"
-#~ msgstr "Unix"
-
-#, fuzzy
-#~ msgid "Number of listed %s"
-#~ msgstr "Nome del gruppo"
-
-#, fuzzy
-#~ msgid "profiles"
-#~ msgstr "Path del profilo"
-
-#, fuzzy
-#~ msgid "partitions"
-#~ msgstr "Mostra workstation"
-
-#, fuzzy
-#~ msgid "scripts"
-#~ msgstr "Script"
-
-#, fuzzy
-#~ msgid "hooks"
-#~ msgstr "Mostra errori PHP"
-
-#, fuzzy
-#~ msgid "variables"
-#~ msgstr "Variabili"
-
-#, fuzzy
-#~ msgid "templates"
-#~ msgstr "Template"
-
-#, fuzzy
-#~ msgid "packages"
-#~ msgstr "Pacchetti"
-
-#, fuzzy
-#~ msgid "departments"
-#~ msgstr "Imposta dipartimento"
-
-#, fuzzy
-#~ msgid "netboot products"
-#~ msgstr "Gruppi di oggetti"
-
-#, fuzzy
-#~ msgid "localboot products"
-#~ msgstr "Gruppi di oggetti"
-
-#, fuzzy
-#~ msgid "Partition start size"
-#~ msgstr "Partizioni"
-
-#, fuzzy
-#~ msgid "Partition stop size"
-#~ msgstr "Partizioni"
-
-#, fuzzy
-#~ msgid "Secondary"
-#~ msgstr "Azione"
-
-#, fuzzy
-#~ msgid "Raid 0"
-#~ msgstr "leggere"
-
-#, fuzzy
-#~ msgid "Raid 1"
-#~ msgstr "leggere"
-
-#, fuzzy
-#~ msgid "Raid 5"
-#~ msgstr "leggere"
-
-#, fuzzy
-#~ msgid "Raid 6"
-#~ msgstr "leggere"
-
-#, fuzzy
-#~ msgid "%s partition"
-#~ msgstr "Mostra workstation"
-
-#, fuzzy
-#~ msgid "%s partition(s)"
-#~ msgstr "Mostra workstation"
-
-#, fuzzy
-#~ msgid "Number of listed '%s'"
-#~ msgstr "Lista degli utenti"
-
-#, fuzzy
-#~ msgid "Deployment status"
-#~ msgstr "Stato"
-
-#, fuzzy
-#~ msgid "System deployment status"
-#~ msgstr "Dipartimento"
-
-#, fuzzy
-#~ msgid "List of queued jobs"
-#~ msgstr "Lista dei dipartimenti"
-
-#~ msgid "Import"
-#~ msgstr "Importa"
-
-#, fuzzy
-#~ msgid "Resume"
-#~ msgstr "Rimuovi"
-
-#, fuzzy
-#~ msgid "Pause"
-#~ msgstr "Data"
-
-#, fuzzy
-#~ msgid "Reload"
-#~ msgstr "leggere"
-
-#, fuzzy
-#~ msgid "Target"
-#~ msgstr "reset"
-
-#, fuzzy
-#~ msgid "Schedule"
-#~ msgstr "Estenzioni PHPGroupware"
-
-#~ msgid "Status"
-#~ msgstr "Stato"
-
-#, fuzzy
-#~ msgid "Move up"
-#~ msgstr "Dominio"
-
-#, fuzzy
-#~ msgid "Move down"
-#~ msgstr "Dominio"
-
-#, fuzzy
-#~ msgid "Execute now"
-#~ msgstr "Esegui"
-
-#, fuzzy
-#~ msgid "Waiting"
-#~ msgstr "Attenzione"
-
-#, fuzzy
-#~ msgid "Detection"
-#~ msgstr "Azione"
-
-#, fuzzy
-#~ msgid "Cannot update queue entry: %s"
-#~ msgstr "Rimuovi"
-
-#, fuzzy
-#~ msgid "Cannot load queue entries: %s"
-#~ msgstr "Rimuovi"
-
-#, fuzzy
-#~ msgid "System deployment"
-#~ msgstr "Dipartimento"
-
-#, fuzzy
-#~ msgid "System list"
-#~ msgstr "Accesso ai sistemi"
-
-#, fuzzy
-#~ msgid "ID"
-#~ msgstr "GID"
-
-#, fuzzy
-#~ msgid "Timestamp"
-#~ msgstr "Timeout"
-
-#, fuzzy
-#~ msgid "Targets"
-#~ msgstr "reset"
-
-#, fuzzy
-#~ msgid "System / Department"
-#~ msgstr "Dipartimento"
-
-#, fuzzy
-#~ msgid "Display users"
-#~ msgstr "Mostra utenti che corrispondono a"
-
-#, fuzzy
-#~ msgid "Display groups"
-#~ msgstr "Mostra gruppi di utenti"
-
-#~ msgid "Submit department"
-#~ msgstr "Imposta dipartimento"
-
-#, fuzzy
-#~ msgid "Abort installation"
-#~ msgstr "Amministrazione"
-
-#, fuzzy
-#~ msgid "Reload GOto settings"
-#~ msgstr "Impostazioni Unix"
-
-#, fuzzy
-#~ msgid "System analysis"
-#~ msgstr "Sistemi"
-
-#, fuzzy
-#~ msgid "Time schedule"
-#~ msgstr "Estenzioni PHPGroupware"
-
-#, fuzzy
-#~ msgid "Year"
-#~ msgstr "Cerca"
-
-#, fuzzy
-#~ msgid "Month"
-#~ msgstr "mese"
-
-#, fuzzy
-#~ msgid "Day"
-#~ msgstr "giorno"
-
-#, fuzzy
-#~ msgid "Hour"
-#~ msgstr "ora"
-
-#, fuzzy
-#~ msgid "Minute"
-#~ msgstr "Stampante"
-
-#, fuzzy
-#~ msgid "Reload fai release db"
-#~ msgstr "Nome applicazione"
-
-#, fuzzy
-#~ msgid "Send message"
-#~ msgstr "Home Page"
-
-#, fuzzy
-#~ msgid "Subject"
-#~ msgstr "Oggetto"
-
-#, fuzzy
-#~ msgid "Message"
-#~ msgstr "Home Page"
-
-#, fuzzy
-#~ msgid "Create '%s' job"
-#~ msgstr "Gruppo di oggetti"
-
-#~ msgid "Add"
-#~ msgstr "Aggiungi"
-
-#~ msgid "Apply"
-#~ msgstr "Applica"
-
-#~ msgid "Cancel"
-#~ msgstr "Annulla"
-
-#, fuzzy
-#~ msgid "Display server"
-#~ msgstr "Mostra il nome"
-
-#, fuzzy
-#~ msgid "Display workstation"
-#~ msgstr "Mostra utenti che corrispondono a"
-
-#, fuzzy
-#~ msgid "Display object groups"
-#~ msgstr "Nome del gruppo"
-
-#~ msgid "Server"
-#~ msgstr "Server"
-
-#~ msgid "Object group"
-#~ msgstr "Gruppo di oggetti"
-
-#, fuzzy
-#~ msgid "Activate new"
-#~ msgstr "Privato"
-
-#, fuzzy
-#~ msgid "Progress"
-#~ msgstr "Profili"
-
-#, fuzzy
-#~ msgid "Message settings"
-#~ msgstr "Opzioni di posta dell'identità"
-
-#, fuzzy
-#~ msgid "Sender"
-#~ msgstr "Generale"
-
-#, fuzzy
-#~ msgid "Target users"
-#~ msgstr "Utenti di Dominio"
-
-#, fuzzy
-#~ msgid "Target groups"
-#~ msgstr "dipartimenti"
-
-#, fuzzy
-#~ msgid "Available targets"
-#~ msgstr "Applicazioni disponibili"
-
-#~ msgid "Object name"
-#~ msgstr "Nome dell'oggetto"
-
-#, fuzzy
-#~ msgid "Select to see object groups"
-#~ msgstr "Mostra gruppi che contengono gruppi"
-
-#, fuzzy
-#~ msgid "Show object groups"
-#~ msgstr "Gruppi di oggetti"
-
-#~ msgid "Show servers"
-#~ msgstr "Mostra server"
-
-#, fuzzy
-#~ msgid "Select to see workstations"
-#~ msgstr "Seleziona per mostrare le applicazioni"
-
-#~ msgid "Show workstations"
-#~ msgstr "Mostra workstation"
-
-#, fuzzy
-#~ msgid "Select to see incoming objects"
-#~ msgstr "Seleziona per mostrare le applicazioni"
-
-#, fuzzy
-#~ msgid "Show new objects"
-#~ msgstr "Oggetti membri"
-
-#~ msgid "Regular expression for matching group names"
-#~ msgstr "Espressioni regolare per selezionare il nome del gruppo"
-
-#, fuzzy
-#~ msgid "Available logs"
-#~ msgstr "Applicazioni disponibili"
-
-#, fuzzy
-#~ msgid "Selected log"
-#~ msgstr "Rimuovi"
-
-#, fuzzy
-#~ msgid "Import jobs"
-#~ msgstr "Importa"
-
-#, fuzzy
-#~ msgid "timestamp"
-#~ msgstr "Timeout"
-
-#, fuzzy
-#~ msgid "MAC-address"
-#~ msgstr "Indirizzo"
-
-#, fuzzy
-#~ msgid "job type"
-#~ msgstr "Tipo"
-
-#, fuzzy
-#~ msgid "object group"
-#~ msgstr "Gruppo di oggetti"
-
-#, fuzzy
-#~ msgid "import base"
-#~ msgstr "Nome applicazione"
-
-#, fuzzy
-#~ msgid "IP-address"
-#~ msgstr "Indirizzo"
-
-#, fuzzy
-#~ msgid "Select list to import"
-#~ msgstr "Seleziona un sistema da aggiungere"
-
-#, fuzzy
-#~ msgid "Browse"
-#~ msgstr "Base"
-
-#, fuzzy
-#~ msgid "MAC"
-#~ msgstr "ACL"
-
-#, fuzzy
-#~ msgid "IP"
-#~ msgstr "Unix"
-
-#~ msgid "none"
-#~ msgstr "nessuno"
-
-#, fuzzy
-#~ msgid "Date"
-#~ msgstr "Data"
-
-#, fuzzy
-#~ msgid "System mass deployment"
-#~ msgstr "Dipartimento"
-
-#, fuzzy
-#~ msgid "Edit product"
-#~ msgstr "classe"
-
-#, fuzzy
-#~ msgid "Edit class"
-#~ msgstr "classe"
-
-#, fuzzy
-#~ msgid "Delete class"
-#~ msgstr "Rimuovi"
-
-#, fuzzy
-#~ msgid "Opsi netboot package"
-#~ msgstr "Mostra telefoni"
-
-#, fuzzy
-#~ msgid "Copy"
-#~ msgstr "Azienda"
-
-#, fuzzy
-#~ msgid "Copy this entry"
-#~ msgstr "Modifica questo record"
-
-#, fuzzy
-#~ msgid "Sudo generic"
-#~ msgstr "Generale"
-
-#, fuzzy
-#~ msgid "package is configured"
-#~ msgstr "non configurata"
-
-#, fuzzy
-#~ msgid "Branches"
-#~ msgstr "Annulla"
-
-#, fuzzy
-#~ msgid "Create new branch"
-#~ msgstr "Crea in"
-
-#, fuzzy
-#~ msgid "Create new locked branch"
-#~ msgstr "Crea nuova conferenza"
-
-#, fuzzy
-#~ msgid "Cut"
-#~ msgstr "Esegui"
-
-#, fuzzy
-#~ msgid "cut"
-#~ msgstr "Esegui"
-
-#, fuzzy
-#~ msgid "Cut this entry"
-#~ msgstr "Modifica questo record"
-
-#, fuzzy
-#~ msgid "Choosen packages"
-#~ msgstr "Mostra telefoni"
-
-#, fuzzy
-#~ msgid "File system encryption"
-#~ msgstr "Informazioni organizzazione"
-
-#, fuzzy
-#~ msgid "Name is already in use!"
-#~ msgstr "L'indirizzo principale inserito è già in uso."
-
-#, fuzzy
-#~ msgid "Please enter a script!"
-#~ msgstr "Prego inserire un numero di telefono valido!"
-
-#, fuzzy
-#~ msgid "You have no permission to delete this entry!"
-#~ msgstr "Non hai il permesso di cambiare la tua password."
-
-#, fuzzy
-#~ msgid "You're about to delete the following entry %s"
-#~ msgstr "Non hai il permesso di cambiare la tua password."
-
-#, fuzzy
-#~ msgid "You're about to delete the following entries %s"
-#~ msgstr "Non hai il permesso di cambiare la tua password."
-
-#, fuzzy
-#~ msgid "Branch name is not valid!"
-#~ msgstr "Il valore specificato per l'UID non è valido."
-
-#, fuzzy
-#~ msgid "Freeze name is not valid!"
-#~ msgstr "Il valore specificato per l'UID non è valido."
-
-#, fuzzy
-#~ msgid "You have no permission to create a new branch!"
-#~ msgstr "Non hai il permesso di cambiare la tua password."
-
-#, fuzzy
-#~ msgid "There is already a template with the given name."
-#~ msgstr "Prego inserire un numero di telefono valido!"
-
-#, fuzzy
-#~ msgid "Please specify a value for attribute 'file'."
-#~ msgstr "Prego inserire un numero di telefono valido!"
-
-#, fuzzy
-#~ msgid "Please specify a valid value for attribute 'Destination path'."
-#~ msgstr "Prego inserire un numero di telefono valido!"
-
-#, fuzzy
-#~ msgid "Please enter a file name."
-#~ msgstr "Inserisci la URI del server LDAP"
-
-#, fuzzy
-#~ msgid "Please enter a user."
-#~ msgstr "Inserisci la URI del server LDAP"
-
-#, fuzzy
-#~ msgid "Please enter a valid user. Only a-z/0-9 are allowed."
-#~ msgstr "Specificare una dimenzione valida per le mail da rigettare."
-
-#, fuzzy
-#~ msgid "Please enter a group."
-#~ msgstr "Inserisci la URI del server LDAP"
-
-#, fuzzy
-#~ msgid "Please enter a valid group. Only a-z/0-9 are allowed."
-#~ msgstr "Specificare una dimenzione valida per le mail da rigettare."
-
-#, fuzzy
-#~ msgid "Create new FAI object - partition table."
-#~ msgstr "Gruppo di oggetti"
-
-#, fuzzy
-#~ msgid "Create new FAI object - package bundle."
-#~ msgstr "Gruppo di oggetti"
-
-#, fuzzy
-#~ msgid "Create new FAI object - script bundle."
-#~ msgstr "Gruppo di oggetti"
-
-#, fuzzy
-#~ msgid "Create new FAI object - variable bundle."
-#~ msgstr "Gruppo di oggetti"
-
-#, fuzzy
-#~ msgid "Create new FAI object - hook bundle."
-#~ msgstr "Gruppo di oggetti"
-
-#, fuzzy
-#~ msgid "Create new FAI object - profile."
-#~ msgstr "Gruppo di oggetti"
-
-#, fuzzy
-#~ msgid "Create new FAI object - template."
-#~ msgstr "Nuovo template"
-
-#, fuzzy
-#~ msgid "Spaces are not allowed within class names."
-#~ msgstr "Non hai il permesso di cambiare la tua password."
-
-#, fuzzy
-#~ msgid "There is already a variable with the given name."
-#~ msgstr "Prego inserire un numero di telefono valido!"
-
-#, fuzzy
-#~ msgid "Please specify a value for the attribute 'content'."
-#~ msgstr "Specificare una dimenzione valida per le mail da rigettare."
-
-#, fuzzy
-#~ msgid "Please enter a name."
-#~ msgstr "Inserisci la URI del server LDAP"
-
-#, fuzzy
-#~ msgid "Display FAI template objects"
-#~ msgstr "Lista dei dipartimenti"
-
-#, fuzzy
-#~ msgid "Display FAI scripts"
-#~ msgstr "Lista degli utenti"
-
-#, fuzzy
-#~ msgid "Display FAI hooks"
-#~ msgstr "Mostra errori PHP"
-
-#, fuzzy
-#~ msgid "Display FAI variables"
-#~ msgstr "Mostra il nome"
-
-#, fuzzy
-#~ msgid "Display FAI packages"
-#~ msgstr "Mostra il nome"
-
-#, fuzzy
-#~ msgid "Display FAI partitions"
-#~ msgstr "Mostra workstation"
-
-#, fuzzy
-#~ msgid "Number of listed variables"
-#~ msgstr "Scegli il tuo numero di telefono personale"
-
-#, fuzzy
-#~ msgid "Number of listed templates"
-#~ msgstr "Opzioni di accesso"
-
-#, fuzzy
-#~ msgid "Number of listed packages"
-#~ msgstr "Mostra telefoni"
-
-#, fuzzy
-#~ msgid "Number of listed departments"
-#~ msgstr "Imposta dipartimento"
-
-#, fuzzy
-#~ msgid "Please specify a valid disc name."
-#~ msgstr "Prego inserire un numero di telefono valido!"
-
-#, fuzzy
-#~ msgid "Please enter a valid mount point for partition %s."
-#~ msgstr "Inserire un nome cartella valido per il campo 'Home directory'."
-
-#, fuzzy
-#~ msgid "Please enter a valid partition size for partition %s."
-#~ msgstr "Inserire un nome cartella valido per il campo 'Home directory'."
-
-#, fuzzy
-#~ msgid "Please enter a valid range for partition %s."
-#~ msgstr "Inserire un nome cartella valido per il campo 'Home directory'."
-
-#, fuzzy
-#~ msgid "Please enter a range for partition size for partition %s."
-#~ msgstr "Inserire un nome cartella valido per il campo 'Home directory'."
-
-#~ msgid "Back"
-#~ msgstr "Indietro"
-
-#, fuzzy
-#~ msgid "Saving of FAI/package list with dn '%s' failed."
-#~ msgstr "Stampante"
-
-#, fuzzy
-#~ msgid "Saving of FAI/hook with dn '%s' failed."
-#~ msgstr "Stampante"
-
-#, fuzzy
-#~ msgid "Saving of FAI/variable with dn '%s' failed."
-#~ msgstr "Stampante"
-
-#, fuzzy
-#~ msgid "Saving of FAI/template with dn '%s' failed."
-#~ msgstr "Lista dei dipartimenti"
-
-#, fuzzy
-#~ msgid "Creating of FAI/script with dn '%s' failed."
-#~ msgstr "Gruppo di oggetti"
-
-#, fuzzy
-#~ msgid "Saving of FAI/partition table with dn '%s' failed."
-#~ msgstr "Stampante"
-
-#, fuzzy
-#~ msgid "Saving of FAI/profile with dn '%s' failed."
-#~ msgstr "Stampante"
-
-#, fuzzy
-#~ msgid "Please select a valid file."
-#~ msgstr "Prego inserire un numero di telefono valido!"
-
-#, fuzzy
-#~ msgid "There is already a hook with the given name."
-#~ msgstr "Prego inserire un numero di telefono valido!"
-
-#, fuzzy
-#~ msgid "Please enter a value for script."
-#~ msgstr "Prego inserire un numero di telefono valido!"
-
-#, fuzzy
-#~ msgid "There is already a script with the given name."
-#~ msgstr "Prego inserire un numero di telefono valido!"
-
-#, fuzzy
-#~ msgid "Please enter a valid name."
-#~ msgstr "Prego inserire un numero di telefono valido!"
-
-#, fuzzy
-#~ msgid "There is already a FAI object with this class name defined."
-#~ msgstr "Prego inserire un numero di telefono valido!"

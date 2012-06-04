@@ -1,25 +1,24 @@
-# translation of messages.po to Italian
-# Copyright (C) 2011 FusionDirectory Project
-# This file is distributed under the same license as the FusionDirectory package.
-#
-# Copyright (c) 2005 B-Open Solutions srl - http://www.bopen.it/
-# Copyright (c) 2005 Alessandro Amici <a.amici@bopen.it>
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
 # Alessandro Amici <a.amici@bopen.it>, 2005.
 # Giuliano Di Vito <giuliano@opensides.be>, 2011.
+#   <giuliano@opensides.be>, 2012.
 msgid ""
 msgstr ""
-"Project-Id-Version: messages\n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version: FusionDirectory\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
 "POT-Creation-Date: 2012-05-26 17:33+0200\n"
-"PO-Revision-Date: 2011-04-26 19:33+0200\n"
-"Last-Translator: Giuliano Di Vito <giuliano@opensides.be>\n"
-"Language-Team: Italian <kde-i18n-doc@kde.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2012-05-31 13:48+0000\n"
+"Last-Translator: poterealpopolo <giuliano@opensides.be>\n"
+"Language-Team: Italian (http://www.transifex.net/projects/p/FusionDirectory/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.0\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: it\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: admin/groups/scalix/class_scalixGroup.inc:35
 #: personal/scalix/class_scalixAccount.inc:552
@@ -28,9 +27,8 @@ msgstr "Account di Scalix"
 
 #: admin/groups/scalix/class_scalixGroup.inc:45
 #: personal/scalix/class_scalixAccount.inc:562
-#, fuzzy
 msgid "Scalix Mail node"
-msgstr "Nodo mail di Scalix"
+msgstr "Nodo mail Scalix"
 
 #: admin/groups/scalix/class_scalixGroup.inc:46
 #: personal/scalix/class_scalixAccount.inc:563
@@ -64,13 +62,11 @@ msgstr "Capacità massima della casella di posta elettronica"
 
 #: admin/groups/scalix/class_scalixGroup.inc:52
 #: personal/scalix/class_scalixAccount.inc:569
-#, fuzzy
 msgid "Limit outbound"
 msgstr "Limite in uscita"
 
 #: admin/groups/scalix/class_scalixGroup.inc:53
 #: personal/scalix/class_scalixAccount.inc:570
-#, fuzzy
 msgid "Limit inbound"
 msgstr "Limite in entrata"
 
@@ -87,9 +83,7 @@ msgstr "Indirizzo di posta elettronica di Scalix"
 
 #: personal/scalix/main.inc:126
 msgid "Click the 'Edit' button below to change informations in this dialog"
-msgstr ""
-"Click sul bottone 'Modifica' qui sotto per cambiare le informazioni di "
-"questa schermata"
+msgstr "Click sul bottone 'Modifica' qui sotto per cambiare le informazioni di questa schermata"
 
 #: personal/scalix/main.inc:139
 msgid "Scalix settings"
@@ -105,7 +99,7 @@ msgstr "Scalix"
 
 #: personal/scalix/class_scalixAccount.inc:39
 msgid "This save and read the scalix account data from ldap"
-msgstr ""
+msgstr "Questo salva e legge i dati dell'account Scalix dall'annuario ldap"
 
 #: personal/scalix/class_scalixAccount.inc:150
 msgid "This account has no scalix extensions."
@@ -119,22 +113,17 @@ msgstr "Elimina l'account Scalix"
 msgid ""
 "This account has scalix synchronization enabled. You can disable it by "
 "clicking below."
-msgstr ""
-"Questo account possiede l'estensione Scalix. La puoi disattivare cliccando "
-"il bottone qui sotto."
+msgstr "Questo account possiede l'estensione Scalix. La puoi disattivare cliccando il bottone qui sotto."
 
 #: personal/scalix/class_scalixAccount.inc:162
-#, fuzzy
 msgid "Create scalix account"
-msgstr "Crea estensioni Unix"
+msgstr "Crea un account Scalix"
 
 #: personal/scalix/class_scalixAccount.inc:162
 msgid ""
 "This account has scalix synchronization disabled. You can enable it by "
 "clicking below."
-msgstr ""
-"Questo account non possiede l'estensione Scalix. La puoi creare cliccando il "
-"bottone qui sotto."
+msgstr "Questo account non possiede l'estensione Scalix. La puoi creare cliccando il bottone qui sotto."
 
 #: personal/scalix/class_scalixAccount.inc:256
 #: personal/scalix/class_scalixAccount.inc:362
@@ -153,8 +142,7 @@ msgstr "Errore"
 #: personal/scalix/class_scalixAccount.inc:279
 #: personal/scalix/class_scalixAccount.inc:489
 msgid "Cannot add invalid mail address!"
-msgstr ""
-"Stai cercando di aggungere un indirizzo di posta elettronica non valido !"
+msgstr "Stai cercando di aggungere un indirizzo di posta elettronica non valido !"
 
 #: personal/scalix/class_scalixAccount.inc:286
 #: personal/scalix/class_scalixAccount.inc:303
@@ -165,9 +153,7 @@ msgstr "Non hai il permesso di modificare questi indirizzi."
 #: personal/scalix/class_scalixAccount.inc:498
 #, php-format
 msgid "Cannot add mail address: it is already used by user '%s'."
-msgstr ""
-"L'indirizzo di posta elettronica che hai immesso è già utilizzato "
-"dall'utente '%s'."
+msgstr "L'indirizzo di posta elettronica che hai immesso è già utilizzato dall'utente '%s'."
 
 #: personal/scalix/class_scalixAccount.inc:384
 msgid "Mailnode"
@@ -198,16 +184,13 @@ msgid "Scalix mailnode"
 msgstr "Nodo per la posta elettronica di scalix"
 
 #: personal/scalix/generic.tpl:17
-#, fuzzy
 msgid "Scalix mailbox class"
-msgstr "Tipo di account di posta elettronica di Scalix"
+msgstr "Classe della mailbox Scalix"
 
 #: personal/scalix/generic.tpl:21
 msgid ""
 "Limited users can not make use of the group calendar functionality in Scalix"
-msgstr ""
-"Gli utenti che possiedono un account limitato non possono accedere alle "
-"funzionalità del calendario di gruppo di Scalix"
+msgstr "Gli utenti che possiedono un account limitato non possono accedere alle funzionalità del calendario di gruppo di Scalix"
 
 #: personal/scalix/generic.tpl:30
 msgid "Scalix server language"
@@ -227,9 +210,7 @@ msgstr "Amministratore di Scalix"
 
 #: personal/scalix/generic.tpl:56
 msgid "Select for mailbox admin capability."
-msgstr ""
-"Seleziona per aggiungere le autorizzazioni d'amministrazione degli account "
-"di Scalix."
+msgstr "Seleziona per aggiungere le autorizzazioni d'amministrazione degli account di Scalix."
 
 #: personal/scalix/generic.tpl:56
 msgid "Scalix Mailbox Administrator"
@@ -253,9 +234,7 @@ msgstr "MB"
 
 #: personal/scalix/generic.tpl:81
 msgid "As sanction on mailbox quota overuse, stop user from sending mail."
-msgstr ""
-"come sanzione per aver oltrepassato la quota dell'account di posta "
-"elettronica, impedisci all'utente di inviare delle mail."
+msgstr "come sanzione per aver oltrepassato la quota dell'account di posta elettronica, impedisci all'utente di inviare delle mail."
 
 #: personal/scalix/generic.tpl:81
 msgid "Limit Outbound Mail"
@@ -263,9 +242,7 @@ msgstr "Limita i messaggi in uscita"
 
 #: personal/scalix/generic.tpl:86
 msgid "As sanction on mailbox quota overuse, stop user from receiving mail."
-msgstr ""
-"come sanzione per aver oltrepassato la quota dell'account di posta "
-"elettronica, impedisci all'utente di ricevere le mail."
+msgstr "come sanzione per aver oltrepassato la quota dell'account di posta elettronica, impedisci all'utente di ricevere le mail."
 
 #: personal/scalix/generic.tpl:86
 msgid "Limit Inbound Mail"
@@ -273,36 +250,8 @@ msgstr "Limita i messaggi in entrata"
 
 #: personal/scalix/generic.tpl:91
 msgid "As sanction on mailbox quota overuse, notify the user by eMail."
-msgstr ""
-"come sanzione per aver oltrepassato la quota dell'account di posta "
-"elettronica, avverti l'utente inviandogli  una mail."
+msgstr "come sanzione per aver oltrepassato la quota dell'account di posta elettronica, avverti l'utente inviandogli  una mail."
 
 #: personal/scalix/generic.tpl:91
 msgid "Notify User"
 msgstr "Avverti l'utente"
-
-#~ msgid "This does something"
-#~ msgstr "Questo fa qualcosa"
-
-#~ msgid "Add"
-#~ msgstr "Aggiungi"
-
-#~ msgid "Delete"
-#~ msgstr "Rimuovi"
-
-#~ msgid "Save"
-#~ msgstr "Salva"
-
-#~ msgid "Cancel"
-#~ msgstr "Annulla"
-
-#~ msgid "Edit"
-#~ msgstr "Modifica"
-
-#, fuzzy
-#~ msgid "There is no scalix mailnode specified."
-#~ msgstr "Prego inserire un numero di telefono valido!"
-
-#, fuzzy
-#~ msgid "Value in 'Limit Mailbox size' is not valid."
-#~ msgstr "Il valore di 'Dimensione quota' non è valido"

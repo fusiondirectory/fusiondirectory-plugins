@@ -1,24 +1,22 @@
-# Translation of messages.po to Russian
-#
-# Copyright (C) 2003 GONICUS GmbH, Germany
-# Copyright (C) 2011 FusionDirectory Project
-# This file is distributed under the same license as the FusionDirectory package.
-#
-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
 #  Valia V. Vaneeva <fattie@altlinux.ru>, 2004.
 msgid ""
 msgstr ""
-"Project-Id-Version: messages\n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version: FusionDirectory\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
 "POT-Creation-Date: 2012-05-26 17:33+0200\n"
-"PO-Revision-Date: 2005-04-18 14:35+0300\n"
-"Last-Translator: Igor Muratov <migor@altlinux.org>\n"
-"Language-Team: ALT Linux Team\n"
-"Language: \n"
+"PO-Revision-Date: 2012-05-26 16:42+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: Russian (http://www.transifex.net/projects/p/FusionDirectory/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: poEdit 1.3.1\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
 #: admin/systems/services/kolab/class_servKolab.inc:127
 #, php-format
@@ -35,14 +33,12 @@ msgid "Remove"
 msgstr "Удалить"
 
 #: admin/systems/services/kolab/class_servKolab.inc:223
-#, fuzzy
 msgid "Internal error"
-msgstr "Терминал-сервер"
+msgstr ""
 
 #: admin/systems/services/kolab/class_servKolab.inc:223
-#, fuzzy
 msgid "Kolab account does not exist!"
-msgstr "Моя учетная запись"
+msgstr ""
 
 #: admin/systems/services/kolab/class_servKolab.inc:227
 #: personal/connectivity/kolab/class_kolabAccount.inc:199
@@ -50,18 +46,16 @@ msgid "Error"
 msgstr ""
 
 #: admin/systems/services/kolab/class_servKolab.inc:227
-#, fuzzy
 msgid "hostname"
-msgstr "Список"
+msgstr ""
 
 #: admin/systems/services/kolab/class_servKolab.inc:237
 #: admin/systems/services/kolab/class_servKolab.inc:253
 #: admin/systems/services/kolab/class_servKolab.inc:422
 #: personal/connectivity/kolab/class_kolabAccount.inc:367
 #: personal/connectivity/kolab/class_kolabAccount.inc:504
-#, fuzzy
 msgid "LDAP error"
-msgstr "Ошибка LDAP:"
+msgstr "Ошибка LDAP"
 
 #: admin/systems/services/kolab/class_servKolab.inc:329
 #: admin/systems/services/kolab/class_servKolab.inc:331
@@ -71,7 +65,7 @@ msgstr ""
 #: admin/systems/services/kolab/class_servKolab.inc:335
 #: admin/systems/services/kolab/class_servKolab.inc:339
 msgid "Quota"
-msgstr ""
+msgstr "Квота"
 
 #: admin/systems/services/kolab/class_servKolab.inc:337
 msgid "Please choose a value between 1 and 100 for Quota settings."
@@ -83,15 +77,13 @@ msgstr ""
 
 #: admin/systems/services/kolab/class_servKolab.inc:347
 #: admin/systems/services/kolab/servkolab.tpl:27
-#, fuzzy
 msgid "Mail domains"
-msgstr "в домене"
+msgstr ""
 
 #: admin/systems/services/kolab/class_servKolab.inc:439
 #: admin/systems/services/kolab/class_servKolab.inc:450
-#, fuzzy
 msgid "Kolab mail service"
-msgstr "Добавить сервис DNS"
+msgstr ""
 
 #: admin/systems/services/kolab/class_servKolab.inc:449
 #: personal/connectivity/kolab/class_kolabAccount.inc:26
@@ -106,14 +98,12 @@ msgstr "Сервисы"
 
 #: admin/systems/services/kolab/class_servKolab.inc:458
 #: admin/systems/services/kolab/servkolab.tpl:9
-#, fuzzy
 msgid "Postfix mydomain"
-msgstr "в домене"
+msgstr ""
 
 #: admin/systems/services/kolab/class_servKolab.inc:459
-#, fuzzy
 msgid "My destination"
-msgstr "Назначение"
+msgstr ""
 
 #: admin/systems/services/kolab/class_servKolab.inc:460
 #: admin/systems/services/kolab/servkolab.tpl:18
@@ -122,43 +112,36 @@ msgstr ""
 
 #: admin/systems/services/kolab/class_servKolab.inc:462
 #: admin/systems/services/kolab/servkolab.tpl:52
-#, fuzzy
 msgid "POP3 service"
-msgstr "Служба печати"
+msgstr ""
 
 #: admin/systems/services/kolab/class_servKolab.inc:463
 #: admin/systems/services/kolab/servkolab.tpl:62
-#, fuzzy
 msgid "POP3/SSL service"
-msgstr "Служба SSH"
+msgstr ""
 
 #: admin/systems/services/kolab/class_servKolab.inc:465
 #: admin/systems/services/kolab/servkolab.tpl:72
-#, fuzzy
 msgid "IMAP service"
-msgstr "LDAP-сервер"
+msgstr ""
 
 #: admin/systems/services/kolab/class_servKolab.inc:466
 #: admin/systems/services/kolab/servkolab.tpl:82
-#, fuzzy
 msgid "IMAP/SSL service"
-msgstr "Служба SSH"
+msgstr ""
 
 #: admin/systems/services/kolab/class_servKolab.inc:468
 #: admin/systems/services/kolab/servkolab.tpl:92
-#, fuzzy
 msgid "Sieve service"
-msgstr "Служба SSH"
+msgstr ""
 
 #: admin/systems/services/kolab/class_servKolab.inc:469
-#, fuzzy
 msgid "FTP FreeBusy service"
-msgstr "Звук"
+msgstr ""
 
 #: admin/systems/services/kolab/class_servKolab.inc:470
-#, fuzzy
 msgid "HTTP FreeBusy service"
-msgstr "Звук"
+msgstr ""
 
 #: admin/systems/services/kolab/class_servKolab.inc:471
 msgid "Enable virus scan"
@@ -166,9 +149,8 @@ msgstr ""
 
 #: admin/systems/services/kolab/class_servKolab.inc:473
 #: admin/systems/services/kolab/servkolab.tpl:133
-#, fuzzy
 msgid "Quota settings"
-msgstr "Настройки Samba"
+msgstr ""
 
 #: admin/systems/services/kolab/class_servKolab.inc:475
 msgid "Allow unauthenticated free busy"
@@ -189,9 +171,8 @@ msgid "Enable MX lookup for relayhost"
 msgstr ""
 
 #: admin/systems/services/kolab/class_servKolab.inc:480
-#, fuzzy
 msgid "Relayhost"
-msgstr "Набор правил"
+msgstr ""
 
 #: admin/systems/services/kolab/class_servKolab.inc:481
 #: admin/systems/services/kolab/servkolab.tpl:227
@@ -203,9 +184,8 @@ msgid "Generic"
 msgstr "Общее"
 
 #: admin/systems/services/kolab/servkolab.tpl:27
-#, fuzzy
 msgid "Postfix mydestination"
-msgstr "Атрибуты UNIX"
+msgstr ""
 
 #: admin/systems/services/kolab/servkolab.tpl:102
 msgid "FTP FreeBusy service (legacy, not interoperable with Kolab2 FreeBusy)"
@@ -220,9 +200,8 @@ msgid "Amavis email scanning (virus/spam)"
 msgstr ""
 
 #: admin/systems/services/kolab/servkolab.tpl:151
-#, fuzzy
 msgid "Free/Busy settings"
-msgstr "Настройки факса"
+msgstr ""
 
 #: admin/systems/services/kolab/servkolab.tpl:157
 msgid "Allow unauthenticated downloading of Free/Busy information"
@@ -255,9 +234,8 @@ msgid "Unspecified"
 msgstr ""
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:150
-#, fuzzy
 msgid "Mails"
-msgstr "Почта"
+msgstr ""
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:151
 msgid "Tasks"
@@ -272,14 +250,12 @@ msgid "Calendar"
 msgstr ""
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:154
-#, fuzzy
 msgid "Contacts"
-msgstr "Контакт"
+msgstr ""
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:155
-#, fuzzy
 msgid "Notes"
-msgstr "Контакт"
+msgstr ""
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:159
 msgid "Inbox"
@@ -290,9 +266,8 @@ msgid "Drafts"
 msgstr ""
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:161
-#, fuzzy
 msgid "Sent"
-msgstr "Установить"
+msgstr ""
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:162
 msgid "SPAM"
@@ -303,12 +278,12 @@ msgstr ""
 #: personal/mail/kolab/class_mail-methods-kolab.inc:166
 #: personal/mail/kolab/class_mail-methods-kolab.inc:167
 #: personal/mail/kolab/class_mail-methods-kolab.inc:168
-#, fuzzy
 msgid "Default"
-msgstr "Удалить"
+msgstr ""
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:183
-msgid "Mail settings cannot be removed while there are delegations configured!"
+msgid ""
+"Mail settings cannot be removed while there are delegations configured!"
 msgstr ""
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:281
@@ -316,19 +291,16 @@ msgid "Waiting for kolab to remove mail properties..."
 msgstr ""
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:284
-#, fuzzy
 msgid "Please remove the mail settings first!"
 msgstr ""
-"Выберите, чтобы просмотреть список групп, которым доступны функции эл. почты"
 
 #: personal/connectivity/kolab/class_kolabAccount.inc:27
 msgid "This plugin manage the user settings for a kolab server"
 msgstr ""
 
 #: personal/connectivity/kolab/class_kolabAccount.inc:199
-#, fuzzy
 msgid "Mail address"
-msgstr "MAC-адрес"
+msgstr ""
 
 #: personal/connectivity/kolab/class_kolabAccount.inc:232
 msgid "Always accept"
@@ -339,18 +311,16 @@ msgid "Always reject"
 msgstr ""
 
 #: personal/connectivity/kolab/class_kolabAccount.inc:234
-#, fuzzy
 msgid "Reject if conflicts"
-msgstr "В"
+msgstr ""
 
 #: personal/connectivity/kolab/class_kolabAccount.inc:235
 msgid "Manual if conflicts"
 msgstr ""
 
 #: personal/connectivity/kolab/class_kolabAccount.inc:236
-#, fuzzy
 msgid "Manual"
-msgstr "Январь"
+msgstr ""
 
 #: personal/connectivity/kolab/class_kolabAccount.inc:284
 msgid "Anonymous"
@@ -358,15 +328,13 @@ msgstr ""
 
 #: personal/connectivity/kolab/class_kolabAccount.inc:379
 #: personal/connectivity/kolab/class_kolabAccount.inc:382
-#, fuzzy
 msgid "Free Busy future"
-msgstr "Общая информация о пользователе"
+msgstr ""
 
 #: personal/connectivity/kolab/class_kolabAccount.inc:387
 #: personal/connectivity/kolab/class_kolabAccount.inc:390
-#, fuzzy
 msgid "Free Busy url"
-msgstr "Общая информация о пользователе"
+msgstr ""
 
 #: personal/connectivity/kolab/class_kolabAccount.inc:404
 #, php-format
@@ -379,14 +347,12 @@ msgid "There's no mail user with address '%s' for your invitation policy!"
 msgstr ""
 
 #: personal/connectivity/kolab/class_kolabAccount.inc:684
-#, fuzzy
 msgid "Kolab account settings"
-msgstr "Моя учетная запись"
+msgstr ""
 
 #: personal/connectivity/kolab/class_kolabAccount.inc:684
-#, fuzzy
 msgid "Connectivity addon"
-msgstr "Подключение"
+msgstr ""
 
 #: personal/connectivity/kolab/class_kolabAccount.inc:688
 msgid "My account"
@@ -397,21 +363,18 @@ msgid "Free busy future"
 msgstr ""
 
 #: personal/connectivity/kolab/class_kolabAccount.inc:694
-#, fuzzy
 msgid "Mail size restriction"
-msgstr "Почтовые настройки пользователя"
+msgstr ""
 
 #: personal/connectivity/kolab/class_kolabAccount.inc:695
-#, fuzzy
 msgid "Free busy information"
-msgstr "Общая информация о пользователе"
+msgstr ""
 
 #: personal/connectivity/kolab/class_kolabAccount.inc:696
 #: personal/connectivity/kolab/kolab.tpl:51
 #: personal/connectivity/kolab/kolab.tpl:63
-#, fuzzy
 msgid "Delegations"
-msgstr "Назначение"
+msgstr ""
 
 #: personal/connectivity/kolab/class_kolabAccount.inc:697
 #: personal/connectivity/kolab/kolab.tpl:119
@@ -420,9 +383,8 @@ msgstr ""
 
 #: personal/connectivity/kolab/kolab.tpl:3
 #: personal/connectivity/kolab/kolab.tpl:43
-#, fuzzy
 msgid "Kolab account"
-msgstr "Моя учетная запись"
+msgstr ""
 
 #: personal/connectivity/kolab/kolab.tpl:4
 msgid ""
@@ -431,18 +393,16 @@ msgid ""
 msgstr ""
 
 #: personal/connectivity/kolab/kolab.tpl:83
-#, fuzzy
 msgid "Mail size"
-msgstr "Размер квоты"
+msgstr ""
 
 #: personal/connectivity/kolab/kolab.tpl:87
 msgid "No mail size restriction for this account"
 msgstr ""
 
 #: personal/connectivity/kolab/kolab.tpl:95
-#, fuzzy
 msgid "Free Busy information"
-msgstr "Общая информация о пользователе"
+msgstr ""
 
 #: personal/connectivity/kolab/kolab.tpl:98
 msgid "URL"
@@ -453,50 +413,5 @@ msgid "Future"
 msgstr ""
 
 #: personal/connectivity/kolab/kolab.tpl:112
-#, fuzzy
 msgid "days"
-msgstr "день"
-
-#~ msgid "This does something"
-#~ msgstr "Что-то будет"
-
-#, fuzzy
-#~ msgid "Junk mail"
-#~ msgstr "мужской"
-
-#~ msgid "Add"
-#~ msgstr "Добавить"
-
-#~ msgid "Save"
-#~ msgstr "Сохранить"
-
-#~ msgid "Cancel"
-#~ msgstr "Отмена"
-
-#, fuzzy
-#~ msgid "Removing of user/kolab account with dn '%s' failed."
-#~ msgstr "Удалить учетную запись Samba"
-
-#, fuzzy
-#~ msgid "Saving of user/kolab account with dn '%s' failed."
-#~ msgstr "Моя учетная запись"
-
-#, fuzzy
-#~ msgid "Removing host entry from system server/kolab with dn '%s' failed."
-#~ msgstr "Удалить телефонный аккаунт"
-
-#, fuzzy
-#~ msgid "Saving system server/kolab with dn '%s' failed."
-#~ msgstr "Моя учетная запись"
-
-#, fuzzy
-#~ msgid "Cannot add invalid mail address!"
-#~ msgstr "Вы пытаетесь добавить некорректный адрес электронной почты "
-
-#, fuzzy
-#~ msgid "Primary mail address already in use by another user!"
-#~ msgstr "Основной адрес эл. почты для этой общей папки"
-
-#, fuzzy
-#~ msgid "The value specified as Free Busy Information URL is invalid."
-#~ msgstr "Значение поля \"Файлы\" некорректно."
+msgstr ""

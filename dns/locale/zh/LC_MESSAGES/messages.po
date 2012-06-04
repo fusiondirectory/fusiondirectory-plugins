@@ -1,24 +1,22 @@
-# translation of messages.po to Chinese Simplified
-#
-# Copyright (C) 2003 GONICUS GmbH, Germany
-# Copyright (C) 2011 FusionDirectory Project
-# This file is distributed under the same license as the FusionDirectory package.
-#
-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
 #  Jiang Xin <worldhello.net@gmail.com>, 2007.
 msgid ""
 msgstr ""
-"Project-Id-Version: messages\n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version: FusionDirectory\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
 "POT-Creation-Date: 2012-05-26 17:33+0200\n"
-"PO-Revision-Date: 2007-06-03 12:27+0800\n"
-"Last-Translator: Jiang Xin <worldhello.net@gmail.com>\n"
-"Language-Team: Chinese Simplified <zh@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2012-05-26 16:32+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: Chinese (http://www.transifex.net/projects/p/FusionDirectory/language/zh/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
+"Language: zh\n"
+"Plural-Forms: nplurals=1; plural=0\n"
 
 #: admin/systems/services/dns/class_servDNSeditZoneEntries.inc:126
 #: admin/systems/services/dns/servDNSeditZoneEntries.tpl:13
@@ -38,38 +36,38 @@ msgid "Error"
 msgstr "错误"
 
 #: admin/systems/services/dns/class_servDNSeditZoneEntries.inc:240
-#, fuzzy, php-format
+#, php-format
 msgid "Cannot rename '%s' to '%s'. Name is already in use!"
-msgstr "无法将 '%s' 重命名为 '%s'，目标名称已经存在。"
+msgstr ""
 
 #: admin/systems/services/dns/class_servDNSeditZoneEntries.inc:272
 msgid "Name"
 msgstr "名称"
 
 #: admin/systems/services/dns/class_servDNSeditZoneEntries.inc:281
-#, fuzzy, php-format
+#, php-format
 msgid "Cannot rename '%s' to '%s'. Entry is already in use."
-msgstr "无法将 '%s' 重命名为 '%s'，目标名称已经存在。"
+msgstr ""
 
 #: admin/systems/services/dns/class_servDNSeditZoneEntries.inc:287
-#, fuzzy, php-format
+#, php-format
 msgid "Cannot create '%s'. Entry is already in use."
-msgstr "无法创建 '%s'，目标名称已经存在。"
+msgstr ""
 
 #: admin/systems/services/dns/class_servDNSeditZoneEntries.inc:296
-#, fuzzy, php-format
+#, php-format
 msgid "Entry '%s' is used more than once."
-msgstr "名称 '%s' 被使用超过了一次。"
+msgstr ""
 
 #: admin/systems/services/dns/class_servDNSeditZoneEntries.inc:322
-#, fuzzy, php-format
+#, php-format
 msgid "%s records cannot be used more than once."
-msgstr "名称 '%s' 被使用超过了一次。"
+msgstr ""
 
 #: admin/systems/services/dns/class_servDNSeditZoneEntries.inc:329
-#, fuzzy, php-format
+#, php-format
 msgid "Please fix the empty %s record for entry '%s'."
-msgstr "有一个空的 '%s'，为主机 '%s'。"
+msgstr ""
 
 #: admin/systems/services/dns/class_servDNSeditZoneEntries.inc:337
 #, php-format
@@ -151,14 +149,13 @@ msgstr ""
 #: admin/systems/services/dns/class_servDNS.inc:591
 #: admin/systems/services/dns/class_servDNS.inc:620
 #: admin/systems/services/dns/class_servDNS.inc:621
-#, fuzzy
 msgid "DNS service"
-msgstr "添加 DNS 服务"
+msgstr ""
 
 #: admin/systems/services/dns/class_servDNS.inc:171
-#, fuzzy, php-format
+#, php-format
 msgid "You are going to migrate the DNS setup from server '%s'."
-msgstr "您将要拷贝条目 '%s'。"
+msgstr ""
 
 #: admin/systems/services/dns/class_servDNS.inc:172
 msgid ""
@@ -183,9 +180,9 @@ msgid "Class"
 msgstr "类"
 
 #: admin/systems/services/dns/class_servDNS.inc:369
-#, fuzzy, php-format
+#, php-format
 msgid "Cannot delete the selected zone. It is still in use by '%s'"
-msgstr "不能删除所选的域，因为它仍然被这些条目使用 '%s'"
+msgstr ""
 
 #: admin/systems/services/dns/class_servDNS.inc:383
 #, php-format
@@ -203,28 +200,24 @@ msgstr ""
 #: admin/systems/services/dns/class_servDNS.inc:548
 #: admin/systems/services/dns/class_servDNS.inc:581
 #: admin/systems/services/dns/class_DNS.inc:768
-#, fuzzy
 msgid "LDAP error"
-msgstr "LDAP 错误:"
+msgstr "LDAP 错误"
 
 #: admin/systems/services/dns/class_servDNS.inc:621
 msgid "Services"
 msgstr "服务"
 
 #: admin/systems/services/dns/class_servDNS.inc:629
-#, fuzzy
 msgid "Start service"
-msgstr "添加 DNS 服务"
+msgstr ""
 
 #: admin/systems/services/dns/class_servDNS.inc:630
-#, fuzzy
 msgid "Stop service"
-msgstr "添加 DNS 服务"
+msgstr ""
 
 #: admin/systems/services/dns/class_servDNS.inc:631
-#, fuzzy
 msgid "Restart service"
-msgstr "添加 DNS 服务"
+msgstr ""
 
 #: admin/systems/services/dns/class_servDNS.inc:633
 #: admin/systems/services/dns/class_servDNSeditZone.inc:351
@@ -236,19 +229,16 @@ msgstr "域名称"
 
 #: admin/systems/services/dns/class_servDNS.inc:635
 #: admin/systems/services/dns/class_servDNSeditZone.inc:437
-#, fuzzy
 msgid "Network class"
-msgstr "网络地址"
+msgstr ""
 
 #: admin/systems/services/dns/class_servDNS.inc:636
-#, fuzzy
 msgid "Zone entry editor"
-msgstr "域记录"
+msgstr ""
 
 #: admin/systems/services/dns/class_servDNS.inc:637
-#, fuzzy
 msgid "Primary dns server"
-msgstr "这个域的主要 dns 服务器"
+msgstr ""
 
 #: admin/systems/services/dns/class_servDNS.inc:638
 #: admin/systems/services/dns/servdnseditzone.tpl:80
@@ -279,9 +269,8 @@ msgid "Expire"
 msgstr "过期"
 
 #: admin/systems/services/dns/class_servDNS.inc:644
-#, fuzzy
 msgid "MX records"
-msgstr "Mx记录"
+msgstr ""
 
 #: admin/systems/services/dns/class_servDNS.inc:645
 #: admin/systems/services/dns/servdnseditzone.tpl:48
@@ -289,14 +278,14 @@ msgid "Zone records"
 msgstr "域记录"
 
 #: admin/systems/services/dns/class_DNS.inc:181
-#, fuzzy, php-format
+#, php-format
 msgid "Cannot find reverse zone for DNS zone '%s'. Parsing zone aborted."
-msgstr "无法找到 dns 域 '%s' 的反向解析。停止解析这个域。"
+msgstr ""
 
 #: admin/systems/services/dns/class_DNS.inc:186
-#, fuzzy, php-format
+#, php-format
 msgid "Found more than one reverse zone for '%s'. Parsing zone aborted."
-msgstr "找到 %s 域的一个以上的反向解析域。退出域解析。"
+msgstr ""
 
 #: admin/systems/services/dns/class_DNS.inc:650
 #, php-format
@@ -308,27 +297,22 @@ msgid "DNS take over initiated"
 msgstr ""
 
 #: admin/systems/services/dns/servdns.tpl:7
-#, fuzzy
 msgid ""
 "This includes 'all' DNS zones that are located within this server. Please "
 "double check if your really want to do this."
 msgstr ""
-"在这个子树中包含了所有账号，系统等等。请再次检查您是否要这么做，因为 "
-"FusionDirectory 没有办法将您的数据找回。"
 
 #: admin/systems/services/dns/servdns.tpl:14
 msgid "Following objects will be taken over"
 msgstr ""
 
 #: admin/systems/services/dns/servdns.tpl:27
-#, fuzzy
 msgid "Take over DNS configuration from"
-msgstr "配置文件"
+msgstr ""
 
 #: admin/systems/services/dns/servdns.tpl:31
-#, fuzzy
 msgid "Take over"
-msgstr "主服务器"
+msgstr ""
 
 #: admin/systems/services/dns/servdns.tpl:37
 msgid "Zones"
@@ -339,9 +323,8 @@ msgid "Warning"
 msgstr "警告"
 
 #: admin/systems/services/dns/class_servDNSeditZone.inc:258
-#, fuzzy
 msgid "MxRecord"
-msgstr "Mx记录"
+msgstr ""
 
 #: admin/systems/services/dns/class_servDNSeditZone.inc:290
 #: admin/systems/services/dns/class_servDNSeditZone.inc:525
@@ -350,14 +333,12 @@ msgstr "删除"
 
 #: admin/systems/services/dns/class_servDNSeditZone.inc:364
 #: admin/systems/services/dns/class_servDNSeditZone.inc:390
-#, fuzzy
 msgid "Only lowercase allowed"
-msgstr "只有小写字符串被允许作为域名。"
+msgstr ""
 
 #: admin/systems/services/dns/class_servDNSeditZone.inc:376
-#, fuzzy
 msgid "Time to life"
-msgstr "用户时区"
+msgstr ""
 
 #: admin/systems/services/dns/class_servDNSeditZone.inc:399
 #: admin/systems/services/dns/class_servDNSeditZone.inc:413
@@ -378,9 +359,8 @@ msgid "Generic"
 msgstr "通用配置"
 
 #: admin/systems/services/dns/servdnseditzone.tpl:25
-#, fuzzy
 msgid "Netmask"
-msgstr "Netatalk"
+msgstr ""
 
 #: admin/systems/services/dns/servdnseditzone.tpl:38
 msgid "Zone is in use, network settings can't be modified."
@@ -424,149 +404,8 @@ msgstr "此对话框允许您修改这个 DNS 区域中所有内容。"
 msgid ""
 "This dialog can't be used until the currently edited zone was saved or the "
 "zone entry exists in the ldap database."
-msgstr ""
-"这个对话框不能使用，除非当前编辑的域被保存或者域中条目已经存在于 ldap 数据库"
-"中。"
+msgstr "这个对话框不能使用，除非当前编辑的域被保存或者域中条目已经存在于 ldap 数据库中。"
 
 #: admin/systems/services/dns/servDNSeditZoneEntries.tpl:13
 msgid "Create a new DNS zone entry"
 msgstr "创建一个新 DNS zone 条目"
-
-#~ msgid "Up"
-#~ msgstr "上"
-
-#~ msgid "Down"
-#~ msgstr "关闭"
-
-#~ msgid "Remove DNS service"
-#~ msgstr "删除 DNS 服务"
-
-#~ msgid ""
-#~ "This server has DNS features enabled. You can disable them by clicking "
-#~ "below."
-#~ msgstr "该账号已经启用 DNS 功能。您可以点击下面按钮禁用。"
-
-#~ msgid "Add DNS service"
-#~ msgstr "添加 DNS 服务"
-
-#~ msgid ""
-#~ "This server has DNS features disabled. You can enable them by clicking "
-#~ "below."
-#~ msgstr "该账号已经禁用 DNS 功能。您可以点击下面按钮启用。"
-
-#, fuzzy
-#~ msgid "Service start"
-#~ msgstr "服务"
-
-#, fuzzy
-#~ msgid "Service stop"
-#~ msgstr "服务"
-
-#, fuzzy
-#~ msgid "Service restart"
-#~ msgstr "在子树中查找"
-
-#, fuzzy
-#~ msgid "The zone name is not valid!"
-#~ msgstr "地址 '%s' 的邀请策略条目无效。"
-
-#, fuzzy
-#~ msgid "The reverse zone is not valid!"
-#~ msgstr "地址 '%s' 的邀请策略条目无效。"
-
-#, fuzzy
-#~ msgid "Only lowercase characters are allowed in zone names!"
-#~ msgstr "只有小写字符串被允许作为域名。"
-
-#, fuzzy
-#~ msgid "Network address is not valid!"
-#~ msgstr "网络地址"
-
-#, fuzzy
-#~ msgid "The network class '%s' is not valid!"
-#~ msgstr "地址 '%s' 的邀请策略条目无效。"
-
-#~ msgid "Cancel"
-#~ msgstr "取消"
-
-#~ msgid "Save"
-#~ msgstr "保存"
-
-#, fuzzy
-#~ msgid "Entry name contains invalid characters."
-#~ msgstr "条目名称 '%s' 包含无效字符。"
-
-#, fuzzy
-#~ msgid "Updating of system server/dns with dn '%s' failed."
-#~ msgstr "保存 dn 为 '%s' 服务器服务/反病毒失败。"
-
-#, fuzzy
-#~ msgid "Removing of system server/dns with dn '%s' failed."
-#~ msgstr "删除 dn 为 '%s' 服务器服务/反病毒失败。"
-
-#, fuzzy
-#~ msgid "Saving of system server/dns with dn '%s' failed."
-#~ msgstr "保存 dn 为 '%s' 服务器服务/反病毒失败。"
-
-#, fuzzy
-#~ msgid "Set status flag for system server/dns with dn '%s' failed."
-#~ msgstr "设置 dn 为 '%s' 服务器服务/反病毒 的状态标记失败。"
-
-#~ msgid "Please choose a valid zone name."
-#~ msgstr "请选择一个有效的时区。"
-
-#~ msgid "Please choose a valid reverse zone name."
-#~ msgstr "请选择一个有效的反向解析域名称。"
-
-#~ msgid "Please specify a numeric value for serial number."
-#~ msgstr "请给出一个数字型数值作为系列号。"
-
-#~ msgid "Please specify a numeric value for refresh."
-#~ msgstr "请为刷新提供一个数值。"
-
-#~ msgid "Please specify a numeric value for ttl."
-#~ msgstr "请为 ttl 提供一个数值。"
-
-#~ msgid "Please specify a numeric value for expire."
-#~ msgstr "请为过期时间提供一个数值。"
-
-#~ msgid "Please specify a numeric value for retry."
-#~ msgstr "请为重试提供一个数值。"
-
-#~ msgid "Only lowercase is allowed, please check your '%ss'."
-#~ msgstr "只允许小写字母，请检查您的 '%ss'。"
-
-#, fuzzy
-#~ msgid ""
-#~ "The given network address is not a valid, please specify a valid IP "
-#~ "address."
-#~ msgstr "IP 地址字段包含无效地址。"
-
-#, fuzzy
-#~ msgid ""
-#~ "The specified network address is not matching with the specified zone "
-#~ "class, try it this way x.0.0.0"
-#~ msgstr "提供的 IP 地址 '%s' 和所选的反向解析域条目 '%s' 不匹配。"
-
-#, fuzzy
-#~ msgid ""
-#~ "The specified network address is not matching with the specified zone "
-#~ "class, try it this way x.x.0.0"
-#~ msgstr "提供的 IP 地址 '%s' 和所选的反向解析域条目 '%s' 不匹配。"
-
-#, fuzzy
-#~ msgid ""
-#~ "The specified network address is not matching with the specified zone "
-#~ "class, try it this way x.x.x.0"
-#~ msgstr "提供的 IP 地址 '%s' 和所选的反向解析域条目 '%s' 不匹配。"
-
-#~ msgid ""
-#~ "Can't rename '%s' to '%s' there is already an entry with the same name in "
-#~ "our zone editing dialog."
-#~ msgstr "无法将 '%s' 重命名为 %s'，因为在域编辑对话框中已经有相同名称存在。"
-
-#~ msgid "The record type '%s' is a unique type and can't be defined twice."
-#~ msgstr "记录类型 '%s' 是一个唯一类型，不能定义两次。"
-
-#~ msgid "There is a duplicate entry in '%s' for '%s'."
-#~ msgstr "在 '%s' 当中有重复条目 '%s'。"

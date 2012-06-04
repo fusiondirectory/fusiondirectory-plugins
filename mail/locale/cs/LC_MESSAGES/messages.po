@@ -1,22 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 #   <pavel.borecki@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
 "POT-Creation-Date: 2012-05-26 17:33+0200\n"
-"PO-Revision-Date: 2012-05-23 11:00+0000\n"
-"Last-Translator: pavelb <pavel.borecki@gmail.com>\n"
-"Language-Team: Czech (Czech Republic) (http://www.transifex.net/projects/p/"
-"FusionDirectory/language/cs_CZ/)\n"
-"Language: cs_CZ\n"
+"PO-Revision-Date: 2012-05-26 16:37+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: Czech (Czech Republic) (http://www.transifex.net/projects/p/FusionDirectory/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: cs_CZ\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2\n"
 
 #: admin/groups/mail/mail_admins.tpl:4
@@ -120,15 +119,12 @@ msgstr "e-mail"
 msgid ""
 "Remove shared folder from mail server database when entry gets removed in "
 "LDAP"
-msgstr ""
-"při odebírání položky z LDAPu odebrat také sdílenou složku z poštovního "
-"serveru"
+msgstr "při odebírání položky z LDAPu odebrat také sdílenou složku z poštovního serveru"
 
 #: admin/groups/mail/class_groupMail.inc:326
-msgid "Remove the shared folder and all its contents after saving this account"
-msgstr ""
-"po uložení tohoto účtu odebrat sdílenou složku (včetně veškerého jejího "
-"obsahu)"
+msgid ""
+"Remove the shared folder and all its contents after saving this account"
+msgstr "po uložení tohoto účtu odebrat sdílenou složku (včetně veškerého jejího obsahu)"
 
 #: admin/groups/mail/class_groupMail.inc:371
 #: admin/groups/mail/class_groupMail.inc:395
@@ -245,9 +241,7 @@ msgstr "Nezdařilo se zapsat nastavení kvóty: %s"
 msgid ""
 "The group 'cn' has changed. It can't be changed due to the fact that mail "
 "method '%s' relies on it!"
-msgstr ""
-"Skupina 'cn' byla změněna. To není dobré, protože na ní závisí způsob "
-"nakládání s e-maily '%s'!"
+msgstr "Skupina 'cn' byla změněna. To není dobré, protože na ní závisí způsob nakládání s e-maily '%s'!"
 
 #: admin/groups/mail/class_groupMail.inc:879
 #: admin/groups/mail/paste_mail.tpl:8 admin/groups/mail/mail.tpl:7
@@ -271,9 +265,7 @@ msgstr "nejvyšší povolený datový objem zprávy"
 
 #: admin/groups/mail/class_groupMail.inc:915
 msgid "You need to set the maximum mail size in order to reject anything."
-msgstr ""
-"Aby odmítání zpráv vůbec fungovalo, musíte nastavit největší povolenou "
-"velikost zpráv."
+msgstr "Aby odmítání zpráv vůbec fungovalo, musíte nastavit největší povolenou velikost zpráv."
 
 #: admin/groups/mail/class_groupMail.inc:919
 #: admin/groups/mail/class_groupMail.inc:1024
@@ -291,7 +283,7 @@ msgstr "typ složky"
 
 #: admin/groups/mail/class_groupMail.inc:1025
 msgid "Kolab"
-msgstr ""
+msgstr "Kolab"
 
 #: admin/groups/mail/class_groupMail.inc:1026
 msgid "Alternate addresses"
@@ -384,9 +376,7 @@ msgstr "pokročilé volby e-mailu"
 
 #: admin/groups/mail/mail.tpl:193 personal/mail/generic.tpl:285
 msgid "Select if user can only send and receive inside his own domain"
-msgstr ""
-"zvolte, zda uživatel bude moci přijímat a odesílat pouze v rámci vlastní "
-"domény"
+msgstr "zvolte, zda uživatel bude moci přijímat a odesílat pouze v rámci vlastní domény"
 
 #: admin/groups/mail/mail.tpl:195 personal/mail/generic.tpl:287
 msgid "User is only allowed to send and receive local mails"
@@ -651,7 +641,7 @@ msgstr "Tato hodnota určuje maximální povolenou velikost hlavičky zprávy."
 #: admin/systems/services/mail/goMailServer.tpl:31
 #: admin/systems/services/mail/goMailServer.tpl:40
 msgid "KB"
-msgstr ""
+msgstr "KB"
 
 #: admin/systems/services/mail/goMailServer.tpl:31
 msgid "Defines the maximal size of mail box."
@@ -774,9 +764,7 @@ msgstr "používat Pyzor"
 
 #: admin/systems/services/spam/goSpamServer.tpl:22
 msgid "Select required score to tag mail as spam"
-msgstr ""
-"zvolte stupeň hodnocení, po jehož dosažení bude zpráva považována za "
-"nevyžádanou (SPAM)"
+msgstr "zvolte stupeň hodnocení, po jehož dosažení bude zpráva považována za nevyžádanou (SPAM)"
 
 #: admin/systems/services/spam/goSpamServer.tpl:72
 msgid "Enable bayes auto learning"
@@ -943,9 +931,7 @@ msgstr "informace o zprávě"
 msgid ""
 "LDAP entry has been removed but cyrus mailbox (%s) is kept.\n"
 "Please delete it manually!"
-msgstr ""
-"Položka v LDAPu byla odebrána, ale schránka (%s) na Cyru zůstala.\n"
-"Smažte ji prosím ručně!"
+msgstr "Položka v LDAPu byla odebrána, ale schránka (%s) na Cyru zůstala.\nSmažte ji prosím ručně!"
 
 #: personal/mail/class_mail-methods-cyrus.inc:402
 #: personal/mail/class_mail-methods-cyrus.inc:439
@@ -1027,8 +1013,7 @@ msgstr "analýza proběhla úspěšně"
 msgid ""
 "The specified mail server '%s' does not exist within the FusionDirectory "
 "configuration."
-msgstr ""
-"Zadaný poštovní server '%s' není definován v nastavení FusionDirectory."
+msgstr "Zadaný poštovní server '%s' není definován v nastavení FusionDirectory."
 
 #: personal/mail/sieve/class_sieveManagement.inc:203
 msgid "No script name specified!"
@@ -1390,16 +1375,12 @@ msgstr "Zadejte prosím platný operátor."
 #: personal/mail/sieve/class_sieveElement_If.inc:654
 msgid ""
 "Invalid character found in address attribute. Quotes are not allowed here."
-msgstr ""
-"V atributu adresa se nachází nepovolený znak – uvozovky zde zkrátka nemohou "
-"být."
+msgstr "V atributu adresa se nachází nepovolený znak – uvozovky zde zkrátka nemohou být."
 
 #: personal/mail/sieve/class_sieveElement_If.inc:669
 msgid ""
 "Invalid character found in value attribute. Quotes are not allowed here."
-msgstr ""
-"V hodnotě atributu se nachází nepovolený znak – uvozovky zde zkrátka nemohou "
-"být."
+msgstr "V hodnotě atributu se nachází nepovolený znak – uvozovky zde zkrátka nemohou být."
 
 #: personal/mail/sieve/class_sieveElement_If.inc:727
 #: personal/mail/sieve/class_sieveElement_If.inc:1060
@@ -1461,8 +1442,7 @@ msgstr "Zadejte sem e-mailovou adresu."
 
 #: personal/mail/sieve/class_sieveElement_Reject.inc:21
 msgid "Invalid character found, quotes are not allowed in a reject message."
-msgstr ""
-"Zjištěny nepovolené znaky – ve zprávě o odmítnutí není možné použít uvozovky."
+msgstr "Zjištěny nepovolené znaky – ve zprávě o odmítnutí není možné použít uvozovky."
 
 #: personal/mail/sieve/class_sieveElement_Reject.inc:37
 msgid "Your reject text here"
@@ -1514,9 +1494,7 @@ msgstr "importovat skript v Sieve"
 msgid ""
 "Please select the sieve script you want to import. Use the import button to "
 "import the script or the cancel button to abort."
-msgstr ""
-"Vyberte prosím skript v Sieve, který chcete importovat. Poté klikněte na "
-"„importovat“ nebo celou akci zrušte kliknutím na “zrušit“."
+msgstr "Vyberte prosím skript v Sieve, který chcete importovat. Poté klikněte na „importovat“ nebo celou akci zrušte kliknutím na “zrušit“."
 
 #: personal/mail/sieve/templates/import_script.tpl:5
 msgid "Script to import"
@@ -1568,15 +1546,12 @@ msgstr "seznam skriptů v Sieve"
 msgid ""
 "Connection to the sieve server could not be established, the "
 "authentification attribute is empty."
-msgstr ""
-"Není možné navázat připojení na Sieve server – atribut pro ověření je "
-"prázdný."
+msgstr "Není možné navázat připojení na Sieve server – atribut pro ověření je prázdný."
 
 #: personal/mail/sieve/templates/management.tpl:6
 msgid ""
 "Please verify that the attributes uid and mail are not empty and try again."
-msgstr ""
-"Ověřte prosím, že atributy „uid“ a „mail“ nejsou prázdné a zkuste to znovu."
+msgstr "Ověřte prosím, že atributy „uid“ a „mail“ nejsou prázdné a zkuste to znovu."
 
 #: personal/mail/sieve/templates/management.tpl:12
 msgid "Connection to the sieve server could not be established."
@@ -1588,11 +1563,9 @@ msgstr "Účet Sieve pravděpodobně ještě nebyl vytvořen."
 
 #: personal/mail/sieve/templates/management.tpl:19
 msgid ""
-"Be careful. All your changes will be saved directly to sieve, if you use the "
-"save button below."
-msgstr ""
-"Buďte opatrní – jakmile kliknete na „uložit“ všechny Vámi provedené změny se "
-"okamžitě promítnou přímo do Sieve."
+"Be careful. All your changes will be saved directly to sieve, if you use the"
+" save button below."
+msgstr "Buďte opatrní – jakmile kliknete na „uložit“ všechny Vámi provedené změny se okamžitě promítnou přímo do Sieve."
 
 #: personal/mail/sieve/templates/management.tpl:22
 msgid "Create new script"
@@ -1728,22 +1701,16 @@ msgstr "upravit"
 
 #: personal/mail/sieve/templates/remove_script.tpl:6
 msgid ""
-"Please double check if your really want to do this since there is no way for "
-"FusionDirectory to get your data back."
-msgstr ""
-"Prosím velmi dobře si rozmyslete, zda to opravdu chcete udělat, protože "
-"provedené změny už ve FusionDirectory nepůjde vzít nijak jednoduše zpět "
-"(nanejvýš složitě ze záloh, pokud existují a obsahují potřebná data)!"
+"Please double check if your really want to do this since there is no way for"
+" FusionDirectory to get your data back."
+msgstr "Prosím velmi dobře si rozmyslete, zda to opravdu chcete udělat, protože provedené změny už ve FusionDirectory nepůjde vzít nijak jednoduše zpět (nanejvýš složitě ze záloh, pokud existují a obsahují potřebná data)!"
 
 #: personal/mail/sieve/templates/remove_script.tpl:10
 msgid ""
 "Best thing to do before performing this action would be to save the current "
 "script in a file. So - if you've done so - press 'Delete' to continue or "
 "'Cancel' to abort."
-msgstr ""
-"Před provedením akce doporučujeme uložit si upravovaný skript do souboru. "
-"Pokud jste tak již učinil(a), klikněte na 'smazat', nebo celou akci zrušte "
-"kliknutím na 'zrušit'."
+msgstr "Před provedením akce doporučujeme uložit si upravovaný skript do souboru. Pokud jste tak již učinil(a), klikněte na 'smazat', nebo celou akci zrušte kliknutím na 'zrušit'."
 
 #: personal/mail/sieve/templates/element_redirect.tpl:18
 msgid "Redirect mail to following recipients"
@@ -1804,11 +1771,9 @@ msgstr "operátor"
 
 #: personal/mail/sieve/templates/create_script.tpl:2
 msgid ""
-"Please enter the name for the new script below. Script names must consist of "
-"lower case characters only."
-msgstr ""
-"Zadejte prosím název skriptu níže. Názvy skriptů mohou být pouze malými "
-"písmeny."
+"Please enter the name for the new script below. Script names must consist of"
+" lower case characters only."
+msgstr "Zadejte prosím název skriptu níže. Názvy skriptů mohou být pouze malými písmeny."
 
 #: personal/mail/sieve/templates/create_script.tpl:8
 msgid "Script name"
@@ -1884,7 +1849,7 @@ msgstr "přidat objekt"
 
 #: personal/mail/sieve/templates/element_boolean.tpl:4
 msgid "Bool"
-msgstr ""
+msgstr "ano/ne (Boolean)"
 
 #: personal/mail/sieve/templates/element_boolean.tpl:8
 msgid "update"
@@ -2044,9 +2009,7 @@ msgstr "správa Sieve"
 
 #: personal/mail/generic.tpl:144
 msgid "Select if you want to forward mails without getting own copies of them"
-msgstr ""
-"Zvolte, zda chcete přeposílat zprávy bez toho, abyste si ponechávali jejich "
-"kopie."
+msgstr "Zvolte, zda chcete přeposílat zprávy bez toho, abyste si ponechávali jejich kopie."
 
 #: personal/mail/generic.tpl:144
 msgid "No delivery to own mailbox"
@@ -2055,9 +2018,7 @@ msgstr "nedoručovat do vlastní schránky"
 #: personal/mail/generic.tpl:151
 msgid ""
 "Select to automatically response with the vacation message defined below"
-msgstr ""
-"zaškrtněte pro automatické odpovídání níže uvedenou zprávou „jsem na "
-"dovolené“"
+msgstr "zaškrtněte pro automatické odpovídání níže uvedenou zprávou „jsem na dovolené“"
 
 #: personal/mail/generic.tpl:152
 msgid "Activate vacation message"
@@ -2089,146 +2050,8 @@ msgstr "odmítat zprávy větší než"
 
 #: personal/mail/generic.tpl:217
 msgid "MB"
-msgstr ""
+msgstr "MB"
 
 #: personal/mail/mail_locals.tpl:35
 msgid "Select department"
 msgstr "zvolte oddělení"
-
-#~ msgid "Mail queue"
-#~ msgstr "e-mailová fronta"
-
-#~ msgid "up"
-#~ msgstr "nahoru"
-
-#~ msgid "down"
-#~ msgstr "dolů"
-
-#~ msgid "All"
-#~ msgstr "vše"
-
-#~ msgid "no limit"
-#~ msgstr "bez omezení"
-
-#~ msgid "hour"
-#~ msgstr "hodina"
-
-#~ msgid "hours"
-#~ msgstr "hodiny"
-
-#~ msgid "Hold"
-#~ msgstr "zadržet"
-
-#~ msgid "Un hold"
-#~ msgstr "uvolnit"
-
-#~ msgid "Not active"
-#~ msgstr "nečinné"
-
-#~ msgid "Mail queue addon"
-#~ msgstr "doplněk „fronta zpráv“"
-
-#~ msgid "Unhold all messages"
-#~ msgstr "uvolnit všechny zprávy"
-
-#~ msgid "Hold all messages"
-#~ msgstr "zadržet všechny zprávy"
-
-#~ msgid "Delete all messages"
-#~ msgstr "smazat všechny zprávy"
-
-#~ msgid "Requeue all messages"
-#~ msgstr "zařadit všechny zprávy znovu do fronty"
-
-#~ msgid "Unhold message"
-#~ msgstr "uvolnit zprávu"
-
-#~ msgid "Hold message"
-#~ msgstr "zadržet zprávu"
-
-#~ msgid "Delete message"
-#~ msgstr "smazat zprávu"
-
-#~ msgid "Requeue message"
-#~ msgstr "zařadit zprávu znovu do fronty"
-
-#~ msgid "Gathering queue data"
-#~ msgstr "získávám data z fronty"
-
-#~ msgid "Get header information"
-#~ msgstr "získat informaci z hlavičky"
-
-#~ msgid "Search"
-#~ msgstr "hledat"
-
-#~ msgid "Search for"
-#~ msgstr "hledat"
-
-#~ msgid "Please enter a search string here."
-#~ msgstr "Hledaný řetězec zadejte sem."
-
-#~ msgid "Select a server"
-#~ msgstr "zvolte server"
-
-#~ msgid "with status"
-#~ msgstr "se stavem"
-
-#~ msgid "within the last"
-#~ msgstr "během posledních"
-
-#~ msgid "Remove all messages"
-#~ msgstr "odebrat všechny zprávy"
-
-#~ msgid "Remove all messages from selected servers queue"
-#~ msgstr "odebrat všechny zprávy z fronty označených serverů"
-
-#~ msgid "Hold all messages in selected servers queue"
-#~ msgstr "zadržet všechny zprávy ve frontách označených serverů"
-
-#~ msgid "Release all messages"
-#~ msgstr "uvolnit všechny zprávy"
-
-#~ msgid "Release all messages in selected servers queue"
-#~ msgstr "uvolnit všechny zprávy ve frontách označených serverů"
-
-#~ msgid "Requeue all messages in selected servers queue"
-#~ msgstr "zařadit všechny zprávy znovu do front zvolených serverů"
-
-#~ msgid "Search returned no results"
-#~ msgstr "nic nebylo nalezeno"
-
-#~ msgid "Sender"
-#~ msgstr "odesilatel"
-
-#~ msgid "Recipient"
-#~ msgstr "příjemce"
-
-#~ msgid "Status"
-#~ msgstr "stav"
-
-#~ msgid "delete"
-#~ msgstr "smazat"
-
-#~ msgid "Delete this message"
-#~ msgstr "smazat tuto zprávu"
-
-#~ msgid "unhold"
-#~ msgstr "uvolnit"
-
-#~ msgid "Release message"
-#~ msgstr "uvolnit zprávu"
-
-#~ msgid "hold"
-#~ msgstr "zadržet"
-
-#~ msgid "requeue"
-#~ msgstr "zařadit znovu do fronty"
-
-#~ msgid "Requeue this message"
-#~ msgstr "tuto zprávu zařadit znovu do fronty"
-
-#~ msgid "header"
-#~ msgstr "hlavička"
-
-#~ msgid "Display header of this message"
-#~ msgstr "zobrazit hlavičku této zprávy"

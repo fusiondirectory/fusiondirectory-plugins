@@ -1,24 +1,22 @@
-# translation of messages.po to Chinese Simplified
-#
-# Copyright (C) 2003 GONICUS GmbH, Germany
-# Copyright (C) 2011 FusionDirectory Project
-# This file is distributed under the same license as the FusionDirectory package.
-#
-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
 #  Jiang Xin <worldhello.net@gmail.com>, 2007.
 msgid ""
 msgstr ""
-"Project-Id-Version: messages\n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version: FusionDirectory\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
 "POT-Creation-Date: 2012-05-26 17:33+0200\n"
-"PO-Revision-Date: 2007-06-03 12:27+0800\n"
-"Last-Translator: Jiang Xin <worldhello.net@gmail.com>\n"
-"Language-Team: Chinese Simplified <zh@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2012-05-26 16:42+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: Chinese (http://www.transifex.net/projects/p/FusionDirectory/language/zh/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
+"Language: zh\n"
+"Plural-Forms: nplurals=1; plural=0\n"
 
 #: admin/systems/services/kolab/class_servKolab.inc:127
 #, php-format
@@ -35,14 +33,12 @@ msgid "Remove"
 msgstr "删除"
 
 #: admin/systems/services/kolab/class_servKolab.inc:223
-#, fuzzy
 msgid "Internal error"
-msgstr "终端服务器"
+msgstr ""
 
 #: admin/systems/services/kolab/class_servKolab.inc:223
-#, fuzzy
 msgid "Kolab account does not exist!"
-msgstr "Kolab 账号"
+msgstr ""
 
 #: admin/systems/services/kolab/class_servKolab.inc:227
 #: personal/connectivity/kolab/class_kolabAccount.inc:199
@@ -50,50 +46,44 @@ msgid "Error"
 msgstr "错误"
 
 #: admin/systems/services/kolab/class_servKolab.inc:227
-#, fuzzy
 msgid "hostname"
-msgstr "姓"
+msgstr ""
 
 #: admin/systems/services/kolab/class_servKolab.inc:237
 #: admin/systems/services/kolab/class_servKolab.inc:253
 #: admin/systems/services/kolab/class_servKolab.inc:422
 #: personal/connectivity/kolab/class_kolabAccount.inc:367
 #: personal/connectivity/kolab/class_kolabAccount.inc:504
-#, fuzzy
 msgid "LDAP error"
-msgstr "LDAP 错误:"
+msgstr "LDAP 错误"
 
 #: admin/systems/services/kolab/class_servKolab.inc:329
 #: admin/systems/services/kolab/class_servKolab.inc:331
-#, fuzzy
 msgid "Future days"
-msgstr "功能"
+msgstr ""
 
 #: admin/systems/services/kolab/class_servKolab.inc:335
 #: admin/systems/services/kolab/class_servKolab.inc:339
 msgid "Quota"
-msgstr ""
+msgstr "Quota"
 
 #: admin/systems/services/kolab/class_servKolab.inc:337
 msgid "Please choose a value between 1 and 100 for Quota settings."
 msgstr "请选择一个介于 1 到 100 的数字作为 Quota 设置。"
 
 #: admin/systems/services/kolab/class_servKolab.inc:343
-#, fuzzy
 msgid "Privileged networks"
-msgstr "SMTP 授权网络"
+msgstr ""
 
 #: admin/systems/services/kolab/class_servKolab.inc:347
 #: admin/systems/services/kolab/servkolab.tpl:27
-#, fuzzy
 msgid "Mail domains"
-msgstr "于域"
+msgstr ""
 
 #: admin/systems/services/kolab/class_servKolab.inc:439
 #: admin/systems/services/kolab/class_servKolab.inc:450
-#, fuzzy
 msgid "Kolab mail service"
-msgstr "添加 Kolab 服务"
+msgstr ""
 
 #: admin/systems/services/kolab/class_servKolab.inc:449
 #: personal/connectivity/kolab/class_kolabAccount.inc:26
@@ -112,9 +102,8 @@ msgid "Postfix mydomain"
 msgstr "Postfix 'mydomain'"
 
 #: admin/systems/services/kolab/class_servKolab.inc:459
-#, fuzzy
 msgid "My destination"
-msgstr "目标"
+msgstr ""
 
 #: admin/systems/services/kolab/class_servKolab.inc:460
 #: admin/systems/services/kolab/servkolab.tpl:18
@@ -147,19 +136,16 @@ msgid "Sieve service"
 msgstr "Sieve 服务"
 
 #: admin/systems/services/kolab/class_servKolab.inc:469
-#, fuzzy
 msgid "FTP FreeBusy service"
-msgstr "HTTP FreeBusy 服务（旧）"
+msgstr ""
 
 #: admin/systems/services/kolab/class_servKolab.inc:470
-#, fuzzy
 msgid "HTTP FreeBusy service"
-msgstr "HTTP FreeBusy 服务（旧）"
+msgstr ""
 
 #: admin/systems/services/kolab/class_servKolab.inc:471
-#, fuzzy
 msgid "Enable virus scan"
-msgstr "启用邮件扫描"
+msgstr ""
 
 #: admin/systems/services/kolab/class_servKolab.inc:473
 #: admin/systems/services/kolab/servkolab.tpl:133
@@ -167,9 +153,8 @@ msgid "Quota settings"
 msgstr "Quota 设置"
 
 #: admin/systems/services/kolab/class_servKolab.inc:475
-#, fuzzy
 msgid "Allow unauthenticated free busy"
-msgstr "允许不登录下载 Free/Busy 信息"
+msgstr ""
 
 #: admin/systems/services/kolab/class_servKolab.inc:476
 msgid "kolabFreeBusyFuture"
@@ -186,9 +171,8 @@ msgid "Enable MX lookup for relayhost"
 msgstr "启用中继主机的 MX 查找"
 
 #: admin/systems/services/kolab/class_servKolab.inc:480
-#, fuzzy
 msgid "Relayhost"
-msgstr "发行"
+msgstr ""
 
 #: admin/systems/services/kolab/class_servKolab.inc:481
 #: admin/systems/services/kolab/servkolab.tpl:227
@@ -250,14 +234,12 @@ msgid "Unspecified"
 msgstr ""
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:150
-#, fuzzy
 msgid "Mails"
-msgstr "邮件"
+msgstr ""
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:151
-#, fuzzy
 msgid "Tasks"
-msgstr "任务"
+msgstr ""
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:152
 msgid "Journals"
@@ -268,28 +250,24 @@ msgid "Calendar"
 msgstr ""
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:154
-#, fuzzy
 msgid "Contacts"
-msgstr "内容"
+msgstr ""
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:155
-#, fuzzy
 msgid "Notes"
-msgstr "内容"
+msgstr ""
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:159
-#, fuzzy
 msgid "Inbox"
-msgstr "索引"
+msgstr ""
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:160
 msgid "Drafts"
 msgstr ""
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:161
-#, fuzzy
 msgid "Sent"
-msgstr "设置"
+msgstr ""
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:162
 msgid "SPAM"
@@ -300,12 +278,12 @@ msgstr ""
 #: personal/mail/kolab/class_mail-methods-kolab.inc:166
 #: personal/mail/kolab/class_mail-methods-kolab.inc:167
 #: personal/mail/kolab/class_mail-methods-kolab.inc:168
-#, fuzzy
 msgid "Default"
-msgstr "删除"
+msgstr ""
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:183
-msgid "Mail settings cannot be removed while there are delegations configured!"
+msgid ""
+"Mail settings cannot be removed while there are delegations configured!"
 msgstr ""
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:281
@@ -313,9 +291,8 @@ msgid "Waiting for kolab to remove mail properties..."
 msgstr ""
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:284
-#, fuzzy
 msgid "Please remove the mail settings first!"
-msgstr "选择查看配置了邮件设置的组"
+msgstr ""
 
 #: personal/connectivity/kolab/class_kolabAccount.inc:27
 msgid "This plugin manage the user settings for a kolab server"
@@ -351,15 +328,13 @@ msgstr "匿名"
 
 #: personal/connectivity/kolab/class_kolabAccount.inc:379
 #: personal/connectivity/kolab/class_kolabAccount.inc:382
-#, fuzzy
 msgid "Free Busy future"
-msgstr "自由使用的信息"
+msgstr ""
 
 #: personal/connectivity/kolab/class_kolabAccount.inc:387
 #: personal/connectivity/kolab/class_kolabAccount.inc:390
-#, fuzzy
 msgid "Free Busy url"
-msgstr "自由使用的信息"
+msgstr ""
 
 #: personal/connectivity/kolab/class_kolabAccount.inc:404
 #, php-format
@@ -372,14 +347,12 @@ msgid "There's no mail user with address '%s' for your invitation policy!"
 msgstr "没有针对您邀请策略的地址为 '%s' 的用户！"
 
 #: personal/connectivity/kolab/class_kolabAccount.inc:684
-#, fuzzy
 msgid "Kolab account settings"
-msgstr "Kolab 账号"
+msgstr ""
 
 #: personal/connectivity/kolab/class_kolabAccount.inc:684
-#, fuzzy
 msgid "Connectivity addon"
-msgstr "互联"
+msgstr ""
 
 #: personal/connectivity/kolab/class_kolabAccount.inc:688
 msgid "My account"
@@ -390,14 +363,12 @@ msgid "Free busy future"
 msgstr ""
 
 #: personal/connectivity/kolab/class_kolabAccount.inc:694
-#, fuzzy
 msgid "Mail size restriction"
-msgstr "邮件传递列表"
+msgstr ""
 
 #: personal/connectivity/kolab/class_kolabAccount.inc:695
-#, fuzzy
 msgid "Free busy information"
-msgstr "自由使用的信息"
+msgstr ""
 
 #: personal/connectivity/kolab/class_kolabAccount.inc:696
 #: personal/connectivity/kolab/kolab.tpl:51
@@ -444,63 +415,3 @@ msgstr "功能"
 #: personal/connectivity/kolab/kolab.tpl:112
 msgid "days"
 msgstr "天"
-
-#, fuzzy
-#~ msgid "This does something"
-#~ msgstr "******"
-
-#, fuzzy
-#~ msgid "Junk mail"
-#~ msgstr "男"
-
-#~ msgid "Add"
-#~ msgstr "添加"
-
-#~ msgid "Save"
-#~ msgstr "保存"
-
-#~ msgid "Cancel"
-#~ msgstr "取消"
-
-#~ msgid "Future days in Free/Busy settings must be set."
-#~ msgstr "Free/Busy 设置中的未来日期必须设置。"
-
-#~ msgid "Future days in Free/Busy settings must be a positive value."
-#~ msgstr "Free/Busy 设置中的未来日子必须是一个正数。"
-
-#~ msgid "The given Quota settings value must be a number."
-#~ msgstr "提供的 Quota 设置必须是一个数字。"
-
-#~ msgid "Future days must be a value."
-#~ msgstr "未来日子必须是一个值。"
-
-#~ msgid "No SMTP privileged networks set."
-#~ msgstr "没有设置 SMTP 授权网络。"
-
-#~ msgid "Removing of user/kolab account with dn '%s' failed."
-#~ msgstr "删除 dn 为 '%s' 的 user/kolab 账号失败。"
-
-#~ msgid "Saving of user/kolab account with dn '%s' failed."
-#~ msgstr "保存 dn 为 '%s' 的 user/kolab 账号为空。"
-
-#, fuzzy
-#~ msgid "Removing host entry from system server/kolab with dn '%s' failed."
-#~ msgstr "删除 dn 为 '%s' 的 user/kolab 账号失败。"
-
-#, fuzzy
-#~ msgid "Saving system server/kolab with dn '%s' failed."
-#~ msgstr "保存 dn 为 '%s' 的 user/kolab 账号为空。"
-
-#, fuzzy
-#~ msgid "Cannot add invalid mail address!"
-#~ msgstr "您正在添加一个无效邮件地址"
-
-#, fuzzy
-#~ msgid "Primary mail address already in use by another user!"
-#~ msgstr "此共享目录的主要邮件地址"
-
-#~ msgid "The value specified as Free Busy future needs to be an integer."
-#~ msgstr "Free Busy 功能设定的值必须是个整数。"
-
-#~ msgid "The value specified as Free Busy Information URL is invalid."
-#~ msgstr "提供的 Free Busy 信息 URL 无效。"

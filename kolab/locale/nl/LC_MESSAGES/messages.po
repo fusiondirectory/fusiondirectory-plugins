@@ -1,52 +1,44 @@
-# translation of messages.po to Dutch
-#
-# Copyright (C) 2003 GONICUS GmbH, Germany
-# Copyright (C) 2011 FusionDirectory Project
-# This file is distributed under the same license as the FusionDirectory package.
-#
-#
-#  Alfred Schroeder <schroeder@GONICUS.de>, 2004. 
-#  Cajus Pollmeier <pollmeier@gonicus.de>, 2004. 
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
 #  Niels Klomp (CareWorks ICT Services) <nk@careworks.nl>, 2005.
 msgid ""
 msgstr ""
-"Project-Id-Version: messages\n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version: FusionDirectory\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
 "POT-Creation-Date: 2012-05-26 17:33+0200\n"
-"PO-Revision-Date: 2006-06-02 16:58+0100\n"
-"Last-Translator: Niels Klomp (CareWorks ICT Services) <nk@careworks.nl>\n"
-"Language-Team: CareWorks ICT Services <info@careworks.nl>\n"
-"Language: \n"
+"PO-Revision-Date: 2012-05-26 16:42+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: Dutch (http://www.transifex.net/projects/p/FusionDirectory/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: admin/systems/services/kolab/class_servKolab.inc:127
 #, php-format
 msgid "Include data from %s days in the past when creating free/busy lists"
-msgstr ""
-"Gebruik data van %s dagen geleden wanneer free/busy lijsten worden aangemaakt"
+msgstr "Gebruik data van %s dagen geleden wanneer free/busy lijsten worden aangemaakt"
 
 #: admin/systems/services/kolab/class_servKolab.inc:132
 #, php-format
 msgid "Warn users when using more than %s%% of their mail quota"
-msgstr ""
-"Waarschuw gebruikers wanneer meer dan %s%% van hun E-mail quota gebruikt "
-"wordt"
+msgstr "Waarschuw gebruikers wanneer meer dan %s%% van hun E-mail quota gebruikt wordt"
 
 #: admin/systems/services/kolab/class_servKolab.inc:174
 msgid "Remove"
 msgstr "Verwijderen"
 
 #: admin/systems/services/kolab/class_servKolab.inc:223
-#, fuzzy
 msgid "Internal error"
-msgstr "Terminal server"
+msgstr ""
 
 #: admin/systems/services/kolab/class_servKolab.inc:223
-#, fuzzy
 msgid "Kolab account does not exist!"
-msgstr "Kolab account"
+msgstr ""
 
 #: admin/systems/services/kolab/class_servKolab.inc:227
 #: personal/connectivity/kolab/class_kolabAccount.inc:199
@@ -54,50 +46,44 @@ msgid "Error"
 msgstr "Fout"
 
 #: admin/systems/services/kolab/class_servKolab.inc:227
-#, fuzzy
 msgid "hostname"
-msgstr "Achternaam"
+msgstr ""
 
 #: admin/systems/services/kolab/class_servKolab.inc:237
 #: admin/systems/services/kolab/class_servKolab.inc:253
 #: admin/systems/services/kolab/class_servKolab.inc:422
 #: personal/connectivity/kolab/class_kolabAccount.inc:367
 #: personal/connectivity/kolab/class_kolabAccount.inc:504
-#, fuzzy
 msgid "LDAP error"
-msgstr "LDAP fout:"
+msgstr "LDAP fout"
 
 #: admin/systems/services/kolab/class_servKolab.inc:329
 #: admin/systems/services/kolab/class_servKolab.inc:331
-#, fuzzy
 msgid "Future days"
-msgstr "Toekomstig"
+msgstr ""
 
 #: admin/systems/services/kolab/class_servKolab.inc:335
 #: admin/systems/services/kolab/class_servKolab.inc:339
 msgid "Quota"
-msgstr ""
+msgstr "Quota"
 
 #: admin/systems/services/kolab/class_servKolab.inc:337
 msgid "Please choose a value between 1 and 100 for Quota settings."
 msgstr "Kies a.u.b. een waarde tussen 1 en 100 voor de Quota instellingen."
 
 #: admin/systems/services/kolab/class_servKolab.inc:343
-#, fuzzy
 msgid "Privileged networks"
-msgstr "SMTP toegestane netwerken"
+msgstr ""
 
 #: admin/systems/services/kolab/class_servKolab.inc:347
 #: admin/systems/services/kolab/servkolab.tpl:27
-#, fuzzy
 msgid "Mail domains"
-msgstr "in domein"
+msgstr ""
 
 #: admin/systems/services/kolab/class_servKolab.inc:439
 #: admin/systems/services/kolab/class_servKolab.inc:450
-#, fuzzy
 msgid "Kolab mail service"
-msgstr "Voeg Kolab service toe"
+msgstr ""
 
 #: admin/systems/services/kolab/class_servKolab.inc:449
 #: personal/connectivity/kolab/class_kolabAccount.inc:26
@@ -116,9 +102,8 @@ msgid "Postfix mydomain"
 msgstr "Postfix mydomain"
 
 #: admin/systems/services/kolab/class_servKolab.inc:459
-#, fuzzy
 msgid "My destination"
-msgstr "Doel"
+msgstr ""
 
 #: admin/systems/services/kolab/class_servKolab.inc:460
 #: admin/systems/services/kolab/servkolab.tpl:18
@@ -151,14 +136,12 @@ msgid "Sieve service"
 msgstr "Sieve service"
 
 #: admin/systems/services/kolab/class_servKolab.inc:469
-#, fuzzy
 msgid "FTP FreeBusy service"
-msgstr "HTTP Free/Busy service (vervallen)"
+msgstr ""
 
 #: admin/systems/services/kolab/class_servKolab.inc:470
-#, fuzzy
 msgid "HTTP FreeBusy service"
-msgstr "HTTP Free/Busy service (vervallen)"
+msgstr ""
 
 #: admin/systems/services/kolab/class_servKolab.inc:471
 msgid "Enable virus scan"
@@ -170,9 +153,8 @@ msgid "Quota settings"
 msgstr "Quota instellingen"
 
 #: admin/systems/services/kolab/class_servKolab.inc:475
-#, fuzzy
 msgid "Allow unauthenticated free busy"
-msgstr "Sta ongeauthoriseerd downloaden van Free/Busy informatie toe"
+msgstr ""
 
 #: admin/systems/services/kolab/class_servKolab.inc:476
 msgid "kolabFreeBusyFuture"
@@ -189,9 +171,8 @@ msgid "Enable MX lookup for relayhost"
 msgstr "Sta MX record opzoeken voor relayhost toe"
 
 #: admin/systems/services/kolab/class_servKolab.inc:480
-#, fuzzy
 msgid "Relayhost"
-msgstr "Lijst herladen"
+msgstr ""
 
 #: admin/systems/services/kolab/class_servKolab.inc:481
 #: admin/systems/services/kolab/servkolab.tpl:227
@@ -208,8 +189,7 @@ msgstr "Postfix mydestination"
 
 #: admin/systems/services/kolab/servkolab.tpl:102
 msgid "FTP FreeBusy service (legacy, not interoperable with Kolab2 FreeBusy)"
-msgstr ""
-"FTP Free/Busy service (vervallen, niet compatibel met Kolab2 Free/Busy)"
+msgstr "FTP Free/Busy service (vervallen, niet compatibel met Kolab2 Free/Busy)"
 
 #: admin/systems/services/kolab/servkolab.tpl:112
 msgid "HTTP FreeBusy service (legacy)"
@@ -254,14 +234,12 @@ msgid "Unspecified"
 msgstr ""
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:150
-#, fuzzy
 msgid "Mails"
-msgstr "E-mail"
+msgstr ""
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:151
-#, fuzzy
 msgid "Tasks"
-msgstr "Taak"
+msgstr ""
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:152
 msgid "Journals"
@@ -272,28 +250,24 @@ msgid "Calendar"
 msgstr ""
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:154
-#, fuzzy
 msgid "Contacts"
-msgstr "Inhoud"
+msgstr ""
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:155
-#, fuzzy
 msgid "Notes"
-msgstr "Inhoud"
+msgstr ""
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:159
-#, fuzzy
 msgid "Inbox"
-msgstr "Index"
+msgstr ""
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:160
 msgid "Drafts"
 msgstr ""
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:161
-#, fuzzy
 msgid "Sent"
-msgstr "Stel in"
+msgstr ""
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:162
 msgid "SPAM"
@@ -304,12 +278,12 @@ msgstr ""
 #: personal/mail/kolab/class_mail-methods-kolab.inc:166
 #: personal/mail/kolab/class_mail-methods-kolab.inc:167
 #: personal/mail/kolab/class_mail-methods-kolab.inc:168
-#, fuzzy
 msgid "Default"
-msgstr "Verwijderen"
+msgstr ""
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:183
-msgid "Mail settings cannot be removed while there are delegations configured!"
+msgid ""
+"Mail settings cannot be removed while there are delegations configured!"
 msgstr ""
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:281
@@ -317,9 +291,8 @@ msgid "Waiting for kolab to remove mail properties..."
 msgstr ""
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:284
-#, fuzzy
 msgid "Please remove the mail settings first!"
-msgstr "Selecteer om groepen te zien die E-mail instellingen hebben"
+msgstr ""
 
 #: personal/connectivity/kolab/class_kolabAccount.inc:27
 msgid "This plugin manage the user settings for a kolab server"
@@ -355,15 +328,13 @@ msgstr "Anoniem"
 
 #: personal/connectivity/kolab/class_kolabAccount.inc:379
 #: personal/connectivity/kolab/class_kolabAccount.inc:382
-#, fuzzy
 msgid "Free Busy future"
-msgstr "Free Busy informatie"
+msgstr ""
 
 #: personal/connectivity/kolab/class_kolabAccount.inc:387
 #: personal/connectivity/kolab/class_kolabAccount.inc:390
-#, fuzzy
 msgid "Free Busy url"
-msgstr "Free Busy informatie"
+msgstr ""
 
 #: personal/connectivity/kolab/class_kolabAccount.inc:404
 #, php-format
@@ -376,14 +347,12 @@ msgid "There's no mail user with address '%s' for your invitation policy!"
 msgstr "Er is geen E-mail gebruiker met adres '%s' voor uw uitwisselingsbeleid"
 
 #: personal/connectivity/kolab/class_kolabAccount.inc:684
-#, fuzzy
 msgid "Kolab account settings"
-msgstr "Kolab account"
+msgstr ""
 
 #: personal/connectivity/kolab/class_kolabAccount.inc:684
-#, fuzzy
 msgid "Connectivity addon"
-msgstr "Verbindingen"
+msgstr "Verbindingen module"
 
 #: personal/connectivity/kolab/class_kolabAccount.inc:688
 msgid "My account"
@@ -394,14 +363,12 @@ msgid "Free busy future"
 msgstr ""
 
 #: personal/connectivity/kolab/class_kolabAccount.inc:694
-#, fuzzy
 msgid "Mail size restriction"
-msgstr "Mail distributielijst"
+msgstr ""
 
 #: personal/connectivity/kolab/class_kolabAccount.inc:695
-#, fuzzy
 msgid "Free busy information"
-msgstr "Free Busy informatie"
+msgstr ""
 
 #: personal/connectivity/kolab/class_kolabAccount.inc:696
 #: personal/connectivity/kolab/kolab.tpl:51
@@ -423,9 +390,7 @@ msgstr "Kolab account"
 msgid ""
 "The kolab account is currently disabled. It's features can be adjusted if "
 "you add a mail account."
-msgstr ""
-"Het kolab account is uitgeschakeld. U kunt opties aanpassen indien u een e-"
-"mail account toevoegd."
+msgstr "Het kolab account is uitgeschakeld. U kunt opties aanpassen indien u een e-mail account toevoegd."
 
 #: personal/connectivity/kolab/kolab.tpl:83
 msgid "Mail size"
@@ -450,68 +415,3 @@ msgstr "Toekomstig"
 #: personal/connectivity/kolab/kolab.tpl:112
 msgid "days"
 msgstr "dagen"
-
-#~ msgid "This does something"
-#~ msgstr "Dit doet iets"
-
-#, fuzzy
-#~ msgid "Junk mail"
-#~ msgstr "man"
-
-#~ msgid "Add"
-#~ msgstr "Toevoegen"
-
-#~ msgid "Save"
-#~ msgstr "Opslaan"
-
-#~ msgid "Cancel"
-#~ msgstr "Annuleren"
-
-#~ msgid "Future days in Free/Busy settings must be set."
-#~ msgstr "Toekomstige dagen moet ingesteld zijn in de Free/Busy instellingen."
-
-#~ msgid "Future days in Free/Busy settings must be a positive value."
-#~ msgstr ""
-#~ "Toekomstige dagen moet een positieve waarde bevatten in de Free/Busy "
-#~ "instellingen."
-
-#~ msgid "The given Quota settings value must be a number."
-#~ msgstr "De opgegeven Quota instellingen moeten nummeriek zijn."
-
-#~ msgid "Future days must be a value."
-#~ msgstr "Toekomstige dagen moet een waarde bevatten."
-
-#~ msgid "No SMTP privileged networks set."
-#~ msgstr "Er zijn geen netwerken met SMTP privileges ingesteld"
-
-#, fuzzy
-#~ msgid "Removing of user/kolab account with dn '%s' failed."
-#~ msgstr "Het verwijderen van het algemene gebruikers account is mislukt"
-
-#, fuzzy
-#~ msgid "Saving of user/kolab account with dn '%s' failed."
-#~ msgstr "Het opslaan van het Kolab account is mislukt"
-
-#, fuzzy
-#~ msgid "Removing host entry from system server/kolab with dn '%s' failed."
-#~ msgstr "Het verwijderen van de server van het Kolab object is mislukt"
-
-#, fuzzy
-#~ msgid "Saving system server/kolab with dn '%s' failed."
-#~ msgstr "Het opslaan van de server in het Kolab object is mislukt"
-
-#, fuzzy
-#~ msgid "Cannot add invalid mail address!"
-#~ msgstr "U probeert een ongeldig E-mail adres toe te voegen"
-
-#, fuzzy
-#~ msgid "Primary mail address already in use by another user!"
-#~ msgstr "Primair E-mail adres voor deze gedeelde map"
-
-#~ msgid "The value specified as Free Busy future needs to be an integer."
-#~ msgstr ""
-#~ "De waarde opgegeven als Free Busy toekomst dient een integer te zijn"
-
-#~ msgid "The value specified as Free Busy Information URL is invalid."
-#~ msgstr ""
-#~ "De opgegeven waarde voor de Free Busy informatie URL is niet geldig."

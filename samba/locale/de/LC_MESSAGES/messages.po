@@ -1,26 +1,22 @@
-# translation of messages.po to deutsch
-#
-# Copyright (C) 2003 GONICUS GmbH, Germany
-# Copyright (C) 2011 FusionDirectory Project
-# This file is distributed under the same license as the FusionDirectory package.
-#
-#
-#  Alfred Schroeder <schroeder@GONICUS.de>, 2004. 
-#  Cajus Pollmeier <pollmeier@gonicus.de>, 2004, 2005, 2006, 2008. 
-#  Jan Wenzel <jan.wenzel@gonicus.de>, 2004,2005, 2008. 
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
 #  Stefan Koehler <stefan.koehler@GONICUS.de>, 2005.
 msgid ""
 msgstr ""
-"Project-Id-Version: messages\n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version: FusionDirectory\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
 "POT-Creation-Date: 2012-05-26 17:33+0200\n"
-"PO-Revision-Date: 2009-06-22 15:55+0200\n"
-"Last-Translator: Cajus Pollmeier <pollmeier@gonicus.de>\n"
-"Language-Team: deutsch <de@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2012-05-26 16:52+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: German (http://www.transifex.net/projects/p/FusionDirectory/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: admin/systems/samba/class_winGeneric.inc:132
 msgid "network"
@@ -449,8 +445,7 @@ msgstr "nein"
 #: personal/samba/class_sambaAccount.inc:802
 #, php-format
 msgid "The password would expire on %s, but the password expiry is disabled."
-msgstr ""
-"Das Passwort läuft am %s ab, aber ablaufende Passwörter sind deaktiviert."
+msgstr "Das Passwort läuft am %s ab, aber ablaufende Passwörter sind deaktiviert."
 
 #: personal/samba/class_sambaAccount.inc:808
 msgid "Password change available"
@@ -465,9 +460,8 @@ msgid "Home path"
 msgstr "Basis-Pfad"
 
 #: personal/samba/class_sambaAccount.inc:900
-#, fuzzy
 msgid "The windows user manager allows eight clients at maximum!"
-msgstr "Die Benutzerverwaltung von Windows erlaubt höchstens acht Clients!"
+msgstr ""
 
 #: personal/samba/class_sambaAccount.inc:919
 msgid "Information"
@@ -480,16 +474,12 @@ msgstr "Warnung"
 
 #: personal/samba/class_sambaAccount.inc:1053
 msgid "Undefined Samba SID detected. Please fix this problem manually!"
-msgstr ""
-"Undefinierte Samba SID festgestellt. Bitte beheben Sie dieses Problem "
-"manuell!"
+msgstr "Undefinierte Samba SID festgestellt. Bitte beheben Sie dieses Problem manuell!"
 
 #: personal/samba/class_sambaAccount.inc:1078
 msgid ""
 "Cannot convert primary group to samba group: group cannot be identified!"
-msgstr ""
-"Kann primäre Gruppe nicht in Samba-Gruppe überführen: die Gruppe kann nicht "
-"identifiziert werden!"
+msgstr "Kann primäre Gruppe nicht in Samba-Gruppe überführen: die Gruppe kann nicht identifiziert werden!"
 
 #: personal/samba/class_sambaAccount.inc:1177 personal/samba/main.inc:135
 msgid "Samba settings"
@@ -539,9 +529,7 @@ msgstr "Erlaube Verbindung von"
 msgid ""
 "The windows user manager only allows eight clients. You've specified more "
 "than eight."
-msgstr ""
-"Die Benutzerverwaltung von Windows erlaubt höchstens acht Clients. Sie haben "
-"mehr als acht angegeben."
+msgstr "Die Benutzerverwaltung von Windows erlaubt höchstens acht Clients. Sie haben mehr als acht angegeben."
 
 #: personal/samba/samba3_workstations.tpl:6
 msgid "Select workstations to add"
@@ -562,33 +550,3 @@ msgstr "Wählen Sie die Abteilung, auf die die Suchfunktion angewandt wird"
 #: personal/samba/samba3_workstations.tpl:31
 msgid "Regular expression for matching addresses"
 msgstr "Regulärer Ausdruck zum Erkennen von Mail-Adressen"
-
-#~ msgid "This does something"
-#~ msgstr "Dies tut etwas"
-
-#~ msgid "The password is valid till %s, by domain policy."
-#~ msgstr "Das Passwort ist aufgrund der Domänen-Richtline bis %s gültig."
-
-#~ msgid "Password expires on"
-#~ msgstr "Passwort läuft ab am"
-
-#~ msgid "Allow user to change password"
-#~ msgstr "Benutzer darf sein Passwort ändern"
-
-#~ msgid "Choose subtree to place group in"
-#~ msgstr "Wählen Sie den Teilbaum, in den die Gruppe eingepflegt werden soll"
-
-#~ msgid "Select a base"
-#~ msgstr "Wählen Sie eine Basis"
-
-#~ msgid "Allow user to change password from client"
-#~ msgstr "Der Benutzer darf das Passwort vom Client aus ändern"
-
-#~ msgid "Limit Logon Time"
-#~ msgstr "Limitiere Logon Zeit"
-
-#~ msgid "Limit Logoff Time"
-#~ msgstr "Limitiere Logoff Zeit"
-
-#~ msgid "Please select an entry!"
-#~ msgstr "Bitte wählen Sie einen Eintrag!"

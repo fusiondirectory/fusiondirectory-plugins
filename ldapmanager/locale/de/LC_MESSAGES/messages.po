@@ -1,37 +1,29 @@
-# translation of messages.po to deutsch
-#
-# Copyright (C) 2003 GONICUS GmbH, Germany
-# Copyright (C) 2011 FusionDirectory Project
-# This file is distributed under the same license as the FusionDirectory package.
-#
-#
-#  Alfred Schroeder <schroeder@GONICUS.de>, 2004. 
-#  Cajus Pollmeier <pollmeier@gonicus.de>, 2004, 2005, 2006, 2008. 
-#  Jan Wenzel <jan.wenzel@gonicus.de>, 2004,2005, 2008. 
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
 #  Stefan Koehler <stefan.koehler@GONICUS.de>, 2005.
 msgid ""
 msgstr ""
-"Project-Id-Version: messages\n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version: FusionDirectory\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
 "POT-Creation-Date: 2012-05-26 17:33+0200\n"
-"PO-Revision-Date: 2008-12-03 15:10+0100\n"
-"Last-Translator: Cajus Pollmeier <pollmeier@gonicus.de>\n"
-"Language-Team: deutsch <de@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2012-05-26 16:37+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: German (http://www.transifex.net/projects/p/FusionDirectory/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
+"Language: de\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: addons/ldapmanager/contentexport.tpl:2
 msgid ""
 "The LDIF export plugin provides methods to download a complete snapshot of "
 "the running LDAP directory as ldif. You may save these files for backup "
 "purpose or when initializing a new server."
-msgstr ""
-"Dieses Modul ermöglicht Ihnen den Download der kompletten momentan "
-"verwendeten LDAP-Datenbank. Die übertragenen Dateien können beispielsweise "
-"zur Datensicherung oder zur Einrichtung eines neuen Servers benutzt werden."
+msgstr "Dieses Modul ermöglicht Ihnen den Download der kompletten momentan verwendeten LDAP-Datenbank. Die übertragenen Dateien können beispielsweise zur Datensicherung oder zur Einrichtung eines neuen Servers benutzt werden."
 
 #: addons/ldapmanager/contentexport.tpl:9
 msgid "Export single entry"
@@ -51,9 +43,8 @@ msgid "LDAP manager"
 msgstr "LDAP-Manager"
 
 #: addons/ldapmanager/class_import.inc:26
-#, fuzzy
 msgid "LDIF import"
-msgstr "LDIF exportieren"
+msgstr ""
 
 #: addons/ldapmanager/class_import.inc:27
 msgid "This plugin allow the import of ldif data into the ldap tree"
@@ -127,17 +118,12 @@ msgid "Undefined flag '%s'!"
 msgstr "Undefiniertes Flag '%s'!"
 
 #: addons/ldapmanager/contentcsv.tpl:2
-#, fuzzy
 msgid ""
-"The CSV import plugin provides methods to generate user accounts from a file "
-"containing Semi-Colon Seperated Values. The administrator can decide which "
+"The CSV import plugin provides methods to generate user accounts from a file"
+" containing Semi-Colon Seperated Values. The administrator can decide which "
 "columns should be transfered to which attribute. Note that you must have at "
 "least the GIVENNAME and SURNAME set."
 msgstr ""
-"Das CSV Import Plugin stellt Methoden bereit, um Benutzerkonten aus einer "
-"CSV Datei zu generieren. Der Administrator kann die Zuordnung zwischen "
-"Spalte und Benutzerattribut frei wählen. Es müssen jedoch mindestens die "
-"Attribute UID, GIVENNAME und SURNAME gesetzt sein."
 
 #: addons/ldapmanager/contentcsv.tpl:10
 msgid "Select CSV file to import"
@@ -215,18 +201,12 @@ msgid "export"
 msgstr "Export"
 
 #: addons/ldapmanager/contentimport.tpl:3
-#, fuzzy
 msgid ""
 "The LDIF import plugin provides methods to upload a set of entries to your "
 "running LDAP directory as ldif. You may use this to add new or modify "
 "existing entries. Remember that FusionDirectory will not check your ldifs "
 "for FusionDirectory conformance."
 msgstr ""
-"Dieses Modul ermöglicht es Ihnen, einen Satz von Einträgen als LDIF in Ihre "
-"laufende LDAP-Datenbank zu importieren. Sie können diese Funktion "
-"beispielsweise zum Hinzufügen oder Aktualisieren existierender Einträge "
-"nutzen. Beachten Sie dabei bitte, dass FusionDirectory die LDIF-Datei nicht "
-"auf Konformität prüft."
 
 #: addons/ldapmanager/contentimport.tpl:10
 msgid "Import LDIF File"
@@ -238,9 +218,7 @@ msgstr "Überschreibe vorhandene Objekte, behalte unbetroffene Attribute"
 
 #: addons/ldapmanager/contentimport.tpl:25
 msgid "Overwrite existing objects, all not listed attributes will be removed"
-msgstr ""
-"Überschreibe vorhandene Objekte, entferne dabei alle nicht aufgeführten "
-"Attribute"
+msgstr "Überschreibe vorhandene Objekte, entferne dabei alle nicht aufgeführten Attribute"
 
 #: addons/ldapmanager/contentimport.tpl:34
 msgid "Remove existing entries first"
@@ -259,9 +237,8 @@ msgid "You've no permission to import CSV files."
 msgstr "Sie haben keine Berechtigung, um CSV Dateien zu importieren."
 
 #: addons/ldapmanager/class_csvimport.inc:182
-#, fuzzy
 msgid "Need at least 'sn' and 'givenName' to create users!"
-msgstr "Benötige mindestens 'sn', 'givenName' und 'uid' um Benutzer anzulegen."
+msgstr ""
 
 #: addons/ldapmanager/class_csvimport.inc:183
 #: addons/ldapmanager/class_csvimport.inc:203
@@ -270,9 +247,9 @@ msgid "failed"
 msgstr "Fehlgeschlagen"
 
 #: addons/ldapmanager/class_csvimport.inc:202
-#, fuzzy, php-format
+#, php-format
 msgid "Failed to generate 'uid' for entry '%s'!"
-msgstr "Konnte keinen LDAP-Export erzeugen: '%s'!"
+msgstr ""
 
 #: addons/ldapmanager/class_csvimport.inc:263
 msgid "ok"
@@ -294,198 +271,3 @@ msgstr "Nichts zu importieren!"
 #: addons/ldapmanager/class_csvimport.inc:520
 msgid "Cannot find CSV data in the selected file!"
 msgstr "Kann keine CSV-Daten in der gewählten Datei finden!"
-
-#~ msgid "Birthday"
-#~ msgstr "Geburtstag"
-
-#~ msgid "Sex"
-#~ msgstr "Geschlecht"
-
-#~ msgid "Surname"
-#~ msgstr "Nachname"
-
-#~ msgid "Given name"
-#~ msgstr "Vorname"
-
-#~ msgid "Language"
-#~ msgstr "Sprache"
-
-#~ msgid "Users"
-#~ msgstr "Benutzer"
-
-#~ msgid "User list of %s on %s"
-#~ msgstr "Benutzerliste von %s auf %s"
-
-#~ msgid "User ID"
-#~ msgstr "Benutzer-ID"
-
-#~ msgid "Members"
-#~ msgstr "Mitglieder"
-
-#~ msgid "Groups"
-#~ msgstr "Gruppen"
-
-#~ msgid "Groups of %s on %s"
-#~ msgstr "Gruppen von %s auf %s"
-
-#~ msgid "Servers"
-#~ msgstr "Server"
-
-#~ msgid "Description"
-#~ msgstr "Beschreibung"
-
-#~ msgid "Computers"
-#~ msgstr "Computer"
-
-#~ msgid "Common name"
-#~ msgstr "Allgemeiner Name"
-
-#~ msgid "Server name"
-#~ msgstr "Servername"
-
-#~ msgid "Servers of %s on %s"
-#~ msgstr "Server von %s auf %s"
-
-#~ msgid "Display name"
-#~ msgstr "Anzeigename"
-
-#~ msgid "Fax"
-#~ msgstr "Fax"
-
-#~ msgid "Name"
-#~ msgstr "Name"
-
-#~ msgid "Home phone"
-#~ msgstr "Telefonnummer (privat)"
-
-#~ msgid "Home postal address"
-#~ msgstr "Private Adresse"
-
-#~ msgid "Initials"
-#~ msgstr "Initialen"
-
-#~ msgid "Location"
-#~ msgstr "Ort"
-
-#~ msgid "Mail address"
-#~ msgstr "Mail-Adresse"
-
-#~ msgid "Mobile phone"
-#~ msgstr "Mobiltelefon"
-
-#~ msgid "City"
-#~ msgstr "Stadt"
-
-#~ msgid "Postal address"
-#~ msgstr "Adresse"
-
-#~ msgid "Pager"
-#~ msgstr "Pager"
-
-#~ msgid "Phone number"
-#~ msgstr "Telefonnummer"
-
-#~ msgid "Address"
-#~ msgstr "Adresse"
-
-#~ msgid "Postal code"
-#~ msgstr "Postleitzahl"
-
-#~ msgid "State"
-#~ msgstr "Land"
-
-#~ msgid "Function"
-#~ msgstr "Funktion"
-
-#~ msgid "Adressbook"
-#~ msgstr "Adressbuch"
-
-#~ msgid "Adressbook of %s on %s"
-#~ msgstr "Adressbuch von %s auf %s"
-
-#~ msgid "Common Name"
-#~ msgstr "Allgemeiner Name"
-
-#~ msgid "Day of birth"
-#~ msgstr "Geburtsdatum"
-
-#~ msgid "UID"
-#~ msgstr "UID"
-
-#~ msgid "Email address"
-#~ msgstr "Email-Adresse"
-
-#~ msgid "Mobile"
-#~ msgstr "Mobiltelefon"
-
-#~ msgid "Organization"
-#~ msgstr "Organisation"
-
-#~ msgid "Organizational unit"
-#~ msgstr "Organisationseinheit"
-
-#~ msgid "Postal Code"
-#~ msgstr "Postleitzahl"
-
-#~ msgid "Title"
-#~ msgstr "Titel"
-
-#~ msgid "Full"
-#~ msgstr "Voll"
-
-#~ msgid "Computers of %s on %s"
-#~ msgstr "Computer von %s auf %s"
-
-#~ msgid "You have no permission to do LDAP exports!"
-#~ msgstr "Sie haben keine Berechtigung, um aus dem LDAP zu exportieren!"
-
-#~ msgid ""
-#~ "The XLS export plugin provides methods to download a complete snapshot of "
-#~ "the running LDAP directory as xls. You may save these files for "
-#~ "documentation."
-#~ msgstr ""
-#~ "Dieses Modul ermöglicht Ihnen den Download der kompletten momentan "
-#~ "verwendeten LDAP-Datenbank als xls-Datei. Die übertragenen Dateien können "
-#~ "beispielsweise zur Dokumentation/Übersicht verwendet werden."
-
-#~ msgid "Choose the data you want to Export"
-#~ msgstr "Wählen Sie die Daten, die exportiert werden sollen"
-
-#~ msgid "Export complete XLS for"
-#~ msgstr "Exportiere vollständige XLS-Datei für"
-
-#~ msgid "Choose the department you want to Export"
-#~ msgstr "Wählen Sie die Abteilung, die exportiert werden soll"
-
-#~ msgid "Export IVBB LDIF for"
-#~ msgstr "Exportiere IVBB LDIF für"
-
-#~ msgid "Export successful"
-#~ msgstr "Export erfolgreich"
-
-#~ msgid "Click here to save the complete LDAP database to a xls file"
-#~ msgstr ""
-#~ "Hier klicken, um die gesamte LDAP-Datenbank in eine xls-Datei zu "
-#~ "exportieren."
-
-#~ msgid "Click here to save the LDAP Export to a xls file"
-#~ msgstr ""
-#~ "Hier klicken, um die exportierten Daten in eine xls-Datei zu speichern"
-
-#~ msgid "This does something"
-#~ msgstr "Dies tut etwas"
-
-#~ msgid "XLS import"
-#~ msgstr "XLS-Import"
-
-#~ msgid "Cannot export selected entries!"
-#~ msgstr "Kann die gewählten Einträge nicht exportieren!"
-
-#~ msgid "You have no permission to export '%s'!"
-#~ msgstr "Sie haben keine Berechtigung, um '%s' zu exportieren!"
-
-#~ msgid "CSV import"
-#~ msgstr "CSV-Import"
-
-#~ msgid "status"
-#~ msgstr "Status"

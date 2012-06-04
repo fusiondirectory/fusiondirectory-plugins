@@ -1,22 +1,22 @@
-# translation of messages.po to
+# SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
+# Translators:
 # Benoit Mortier <benoit.mortier@opensides.be>, 2011.
 msgid ""
 msgstr ""
-"Project-Id-Version: messages\n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version: FusionDirectory\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
 "POT-Creation-Date: 2012-05-26 17:33+0200\n"
-"PO-Revision-Date: 2011-06-26 00:01+0200\n"
-"Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>\n"
-"Language-Team:  <fr@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2012-01-11 16:02+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: French (http://www.transifex.net/projects/p/FusionDirectory/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
-"Plural-Forms:  nplurals=2; plural=(n > 1);\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
 #: admin/netgroups/netgroup-filter.tpl:3
 #: admin/netgroups/memberNisnetgroupSelect/memberNisnetgroup-filter.tpl:3
@@ -43,7 +43,7 @@ msgstr "Nom"
 #: admin/netgroups/class_netgroup.inc:909 admin/netgroups/netgroup-list.tpl:13
 #: admin/netgroups/generic.tpl:39
 msgid "Base"
-msgstr ""
+msgstr "Base"
 
 #: admin/netgroups/memberNisnetgroupSelect/memberNisnetgroup-list.xml:10
 msgid "Please select the desired NIS Netgroups"
@@ -104,7 +104,7 @@ msgstr "Périphérique réseau"
 
 #: admin/netgroups/tripleSelect/triple-list.xml:73
 msgid "Login"
-msgstr ""
+msgstr "Identifiant"
 
 #: admin/netgroups/tripleSelect/triple-list.xml:81
 msgid "Surname"
@@ -119,9 +119,7 @@ msgstr "Erreur"
 #: admin/netgroups/class_netgroup.inc:348
 #, php-format
 msgid "Add CN/UID '%s' to NIS netgroup '%s' failed: cannot find object!"
-msgstr ""
-"L'ajout du CN/UID '%s' au groupe NIS '%s' a échoué: impossible de trouver "
-"l'objet !"
+msgstr "L'ajout du CN/UID '%s' au groupe NIS '%s' a échoué: impossible de trouver l'objet !"
 
 #: admin/netgroups/class_netgroup.inc:572
 msgid "! unknown UID/CN"
@@ -187,7 +185,7 @@ msgstr "Propriétés"
 
 #: admin/netgroups/netgroup-list.xml:62
 msgid "Actions"
-msgstr ""
+msgstr "Actions"
 
 #: admin/netgroups/netgroup-list.xml:73
 msgid "Create"

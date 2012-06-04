@@ -1,25 +1,22 @@
-# translation of messages.po to Dutch
-#
-# Copyright (C) 2003 GONICUS GmbH, Germany
-# Copyright (C) 2011 FusionDirectory Project
-# This file is distributed under the same license as the FusionDirectory package.
-#
-#
-#  Alfred Schroeder <schroeder@GONICUS.de>, 2004. 
-#  Cajus Pollmeier <pollmeier@gonicus.de>, 2004. 
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
 #  Niels Klomp (CareWorks ICT Services) <nk@careworks.nl>, 2005.
 msgid ""
 msgstr ""
-"Project-Id-Version: messages\n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version: FusionDirectory\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
 "POT-Creation-Date: 2012-05-26 17:33+0200\n"
-"PO-Revision-Date: 2006-06-02 16:58+0100\n"
-"Last-Translator: Niels Klomp (CareWorks ICT Services) <nk@careworks.nl>\n"
-"Language-Team: CareWorks ICT Services <info@careworks.nl>\n"
-"Language: \n"
+"PO-Revision-Date: 2012-05-26 16:37+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: Dutch (http://www.transifex.net/projects/p/FusionDirectory/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: admin/groups/mail/mail_admins.tpl:4
 msgid "Folder administrators"
@@ -55,31 +52,30 @@ msgstr "Kies"
 #: personal/mail/class_mailAccount.inc:940
 #: personal/mail/class_mailAccount.inc:944
 #: personal/mail/class_mailAccount.inc:948
-#, fuzzy
 msgid "Mail error"
-msgstr "Mail server"
+msgstr ""
 
 #: admin/groups/mail/class_groupMail.inc:138
 #: personal/mail/class_mailAccount.inc:168
-#, fuzzy, php-format
+#, php-format
 msgid "Cannot read quota settings: %s"
-msgstr "Kan bestand '%s' niet aanmaken."
+msgstr ""
 
 #: admin/groups/mail/class_groupMail.inc:145
 #: personal/mail/class_mailAccount.inc:175
-#, fuzzy, php-format
+#, php-format
 msgid "Cannot get list of mailboxes: %s"
-msgstr "Kan de IMAP mailbox niet verwijderen. De server meldt: '%s'."
+msgstr ""
 
 #: admin/groups/mail/class_groupMail.inc:152
-#, fuzzy, php-format
+#, php-format
 msgid "Cannot receive folder types: %s"
-msgstr "IMAP gedeelde mappen"
+msgstr ""
 
 #: admin/groups/mail/class_groupMail.inc:159
-#, fuzzy, php-format
+#, php-format
 msgid "Cannot receive folder permissions: %s"
-msgstr "IMAP gedeelde mappen"
+msgstr ""
 
 #: admin/groups/mail/class_groupMail.inc:164
 #: admin/groups/mail/class_groupMail.inc:584
@@ -120,14 +116,14 @@ msgid "Mail"
 msgstr "E-mail"
 
 #: admin/groups/mail/class_groupMail.inc:325
-#, fuzzy
 msgid ""
 "Remove shared folder from mail server database when entry gets removed in "
 "LDAP"
-msgstr "Kan de gebruiker niet verwijderen uit de kerberos database."
+msgstr ""
 
 #: admin/groups/mail/class_groupMail.inc:326
-msgid "Remove the shared folder and all its contents after saving this account"
+msgid ""
+"Remove the shared folder and all its contents after saving this account"
 msgstr ""
 
 #: admin/groups/mail/class_groupMail.inc:371
@@ -155,9 +151,8 @@ msgstr "Fout"
 
 #: admin/groups/mail/class_groupMail.inc:371
 #: personal/mail/class_mailAccount.inc:328
-#, fuzzy
 msgid "Please select an entry!"
-msgstr "Selecteer a.u.b. een geldig mailserver"
+msgstr ""
 
 #: admin/groups/mail/class_groupMail.inc:395
 #: admin/groups/mail/class_groupMail.inc:427
@@ -183,26 +178,22 @@ msgstr "E-mail adres"
 
 #: admin/groups/mail/class_groupMail.inc:401
 #: personal/mail/class_mailAccount.inc:358
-#, fuzzy
 msgid "Cannot add primary address to the list of forwarders!"
 msgstr ""
-"U probeert een ongeldig email adres toe te voegen aan de doorstuurlijst."
 
 #: admin/groups/mail/class_groupMail.inc:443
 #: personal/mail/class_mailAccount.inc:402
 #: personal/mail/class_mailAccount.inc:1054
-#, fuzzy, php-format
+#, php-format
 msgid "Address is already in use by group '%s'."
 msgstr ""
-"Het adres dat u probeert toe te voegen wordt al gebruikt door gebruiker"
 
 #: admin/groups/mail/class_groupMail.inc:445
 #: personal/mail/class_mailAccount.inc:404
 #: personal/mail/class_mailAccount.inc:1056
-#, fuzzy, php-format
+#, php-format
 msgid "Address is already in use by user '%s'."
 msgstr ""
-"Het adres dat u probeert toe te voegen wordt al gebruikt door gebruiker"
 
 #: admin/groups/mail/class_groupMail.inc:572
 #: admin/groups/mail/class_groupMail.inc:801
@@ -214,38 +205,36 @@ msgstr ""
 #: admin/ogroups/mail/class_mailogroup.inc:177
 #: personal/mail/class_mailAccount.inc:853
 #: personal/mail/class_mailAccount.inc:926
-#, fuzzy
 msgid "LDAP error"
-msgstr "LDAP fout:"
+msgstr "LDAP fout"
 
 #: admin/groups/mail/class_groupMail.inc:588
 #: personal/mail/class_mailAccount.inc:866
-#, fuzzy, php-format
+#, php-format
 msgid "Cannot remove mailbox: %s"
-msgstr "Kan de IMAP mailbox niet verwijderen. De server meldt: '%s'."
+msgstr ""
 
 #: admin/groups/mail/class_groupMail.inc:592
 #: admin/groups/mail/class_groupMail.inc:831
-#, fuzzy, php-format
+#, php-format
 msgid "Cannot update shared folder permissions: %s"
-msgstr "IMAP gedeelde mappen"
+msgstr ""
 
 #: admin/groups/mail/class_groupMail.inc:690
-#, fuzzy
 msgid "New"
-msgstr "Gebruiker toevoegen"
+msgstr ""
 
 #: admin/groups/mail/class_groupMail.inc:818
 #: personal/mail/class_mailAccount.inc:944
-#, fuzzy, php-format
+#, php-format
 msgid "Cannot update mailbox: %s"
-msgstr "Kan de IMAP mailbox niet aanmaken. De IMAP server meldt: '%s'."
+msgstr ""
 
 #: admin/groups/mail/class_groupMail.inc:822
 #: personal/mail/class_mailAccount.inc:948
-#, fuzzy, php-format
+#, php-format
 msgid "Cannot write quota settings: %s"
-msgstr "Kan bestand '%s' niet aanmaken."
+msgstr ""
 
 #: admin/groups/mail/class_groupMail.inc:863
 #, php-format
@@ -271,15 +260,12 @@ msgstr "Quota grootte"
 
 #: admin/groups/mail/class_groupMail.inc:907
 #: personal/mail/class_mailAccount.inc:1465
-#, fuzzy
 msgid "Mail max size"
-msgstr "E-mail grootte"
+msgstr ""
 
 #: admin/groups/mail/class_groupMail.inc:915
 msgid "You need to set the maximum mail size in order to reject anything."
-msgstr ""
-"U moet de maximale E-mail grootte instellen om uberhaupt iets af te kunnen "
-"afwijzen."
+msgstr "U moet de maximale E-mail grootte instellen om uberhaupt iets af te kunnen afwijzen."
 
 #: admin/groups/mail/class_groupMail.inc:919
 #: admin/groups/mail/class_groupMail.inc:1024
@@ -288,33 +274,28 @@ msgid "Mail server"
 msgstr "Mail server"
 
 #: admin/groups/mail/class_groupMail.inc:1015
-#, fuzzy
 msgid "Group mail"
-msgstr "Groepnaam"
+msgstr ""
 
 #: admin/groups/mail/class_groupMail.inc:1025 admin/groups/mail/mail.tpl:73
-#, fuzzy
 msgid "Folder type"
-msgstr "Filter"
+msgstr ""
 
 #: admin/groups/mail/class_groupMail.inc:1025
 msgid "Kolab"
-msgstr ""
+msgstr "Kolab"
 
 #: admin/groups/mail/class_groupMail.inc:1026
-#, fuzzy
 msgid "Alternate addresses"
-msgstr "Alternatieve adressen"
+msgstr ""
 
 #: admin/groups/mail/class_groupMail.inc:1027
-#, fuzzy
 msgid "Forwarding addresses"
-msgstr "Primair adres"
+msgstr ""
 
 #: admin/groups/mail/class_groupMail.inc:1028
-#, fuzzy
 msgid "Only local"
-msgstr "Lokaal toevoegen"
+msgstr ""
 
 #: admin/groups/mail/class_groupMail.inc:1029
 msgid "Permissions"
@@ -366,9 +347,8 @@ msgid "Quota usage"
 msgstr "Quota gebruik"
 
 #: admin/groups/mail/mail.tpl:91
-#, fuzzy
 msgid "Reload"
-msgstr "Lezen"
+msgstr ""
 
 #: admin/groups/mail/mail.tpl:136
 msgid "IMAP shared folders"
@@ -383,14 +363,12 @@ msgid "Member permission"
 msgstr "Groepslid rechten"
 
 #: admin/groups/mail/mail.tpl:163
-#, fuzzy
 msgid "Hide"
-msgstr "header"
+msgstr ""
 
 #: admin/groups/mail/mail.tpl:165
-#, fuzzy
 msgid "Show"
-msgstr "Toon groepen"
+msgstr ""
 
 #: admin/groups/mail/mail.tpl:187 personal/mail/generic.tpl:279
 msgid "Advanced mail options"
@@ -398,23 +376,19 @@ msgstr "Geavanceerde E-mail opties"
 
 #: admin/groups/mail/mail.tpl:193 personal/mail/generic.tpl:285
 msgid "Select if user can only send and receive inside his own domain"
-msgstr ""
-"Selecteer om alleen binnen het eigen domein E-mail te laten ontvangen en "
-"versturen"
+msgstr "Selecteer om alleen binnen het eigen domein E-mail te laten ontvangen en versturen"
 
 #: admin/groups/mail/mail.tpl:195 personal/mail/generic.tpl:287
 msgid "User is only allowed to send and receive local mails"
 msgstr "De gebruiker mag alleen lokale E-mails versturen en ontvangen"
 
 #: admin/groups/mail/mail.tpl:213
-#, fuzzy
 msgid "Used in all groups"
-msgstr "Geef a.u.b. een groep op."
+msgstr ""
 
 #: admin/groups/mail/mail.tpl:216
-#, fuzzy
 msgid "Not used in all groups"
-msgstr "Toon functionele groepen"
+msgstr ""
 
 #: admin/groups/mail/mail_locals.tpl:6 personal/mail/mail_locals.tpl:7
 msgid "Select addresses to add"
@@ -449,20 +423,17 @@ msgid "User name of which addresses are shown"
 msgstr "Gebruikersnaam van wie de adressen getoond worden"
 
 #: admin/systems/services/imap/class_goImapServer.inc:68
-#, fuzzy
 msgid "IMAP/POP3 service"
-msgstr "IMAP Service"
+msgstr ""
 
 #: admin/systems/services/imap/class_goImapServer.inc:73
 #: admin/systems/services/imap/class_goImapServer.inc:232
-#, fuzzy
 msgid "Repair database"
-msgstr "gebruiker database"
+msgstr ""
 
 #: admin/systems/services/imap/class_goImapServer.inc:120
-#, fuzzy
 msgid "IMAP/POP3 (Cyrus) service"
-msgstr "IMAP Service"
+msgstr ""
 
 #: admin/systems/services/imap/class_goImapServer.inc:130
 #: admin/systems/services/imap/class_goImapServer.inc:234
@@ -481,14 +452,13 @@ msgstr "Verbindingings URL"
 #: admin/systems/services/imap/class_goImapServer.inc:142
 #: admin/systems/services/imap/class_goImapServer.inc:239
 #: admin/systems/services/imap/goImapServer.tpl:43
-#, fuzzy
 msgid "Sieve connect URL"
-msgstr "Verbindingings URL"
+msgstr ""
 
 #: admin/systems/services/imap/class_goImapServer.inc:143
-#, fuzzy, php-format
+#, php-format
 msgid "Valid options are: %s"
-msgstr "E-mail opties"
+msgstr ""
 
 #: admin/systems/services/imap/class_goImapServer.inc:147
 #: admin/systems/services/imap/class_goImapServer.inc:236
@@ -503,9 +473,8 @@ msgstr "Wachtwoord"
 
 #: admin/systems/services/imap/class_goImapServer.inc:219
 #: admin/systems/services/imap/class_goImapServer.inc:220
-#, fuzzy
 msgid "IMAP/POP3"
-msgstr "IMAP Service"
+msgstr ""
 
 #: admin/systems/services/imap/class_goImapServer.inc:220
 #: admin/systems/services/mail/class_goMailServer.inc:701
@@ -516,9 +485,8 @@ msgstr "Services"
 
 #: admin/systems/services/imap/class_goImapServer.inc:229
 #: admin/systems/services/virus/class_goVirusServer.inc:248
-#, fuzzy
 msgid "Start"
-msgstr "Opstarten"
+msgstr ""
 
 #: admin/systems/services/imap/class_goImapServer.inc:230
 #: admin/systems/services/virus/class_goVirusServer.inc:249
@@ -531,9 +499,8 @@ msgstr "Stop"
 
 #: admin/systems/services/imap/class_goImapServer.inc:231
 #: admin/systems/services/virus/class_goVirusServer.inc:250
-#, fuzzy
 msgid "Restart"
-msgstr "Opnieuw proberen"
+msgstr ""
 
 #: admin/systems/services/imap/class_goImapServer.inc:237
 msgid "Admin password"
@@ -541,27 +508,23 @@ msgstr "Beheerders wachtwoord"
 
 #: admin/systems/services/imap/class_goImapServer.inc:240
 #: admin/systems/services/imap/goImapServer.tpl:61
-#, fuzzy
 msgid "Start IMAP service"
-msgstr "IMAP Service"
+msgstr ""
 
 #: admin/systems/services/imap/class_goImapServer.inc:241
 #: admin/systems/services/imap/goImapServer.tpl:70
-#, fuzzy
 msgid "Start IMAP SSL service"
-msgstr "IMAP/SSL service"
+msgstr ""
 
 #: admin/systems/services/imap/class_goImapServer.inc:242
 #: admin/systems/services/imap/goImapServer.tpl:79
-#, fuzzy
 msgid "Start POP3 service"
-msgstr "POP3 service"
+msgstr ""
 
 #: admin/systems/services/imap/class_goImapServer.inc:243
 #: admin/systems/services/imap/goImapServer.tpl:88
-#, fuzzy
 msgid "Start POP3 SSL service"
-msgstr "POP3/SSL service"
+msgstr ""
 
 #: admin/systems/services/imap/goImapServer.tpl:99
 #: admin/systems/services/mail/goMailServer.tpl:204
@@ -575,15 +538,13 @@ msgstr ""
 
 #: admin/systems/services/imap/goImapServer.tpl:104
 #: admin/systems/services/mail/goMailServer.tpl:209
-#, fuzzy
 msgid "Set new status"
-msgstr "Systeem status"
+msgstr ""
 
 #: admin/systems/services/imap/goImapServer.tpl:110
 #: admin/systems/services/mail/goMailServer.tpl:215
-#, fuzzy
 msgid "Set status"
-msgstr "Systeem status"
+msgstr ""
 
 #: admin/systems/services/imap/goImapServer.tpl:110
 #: admin/systems/services/mail/goMailServer.tpl:215
@@ -592,9 +553,8 @@ msgstr "Commando"
 
 #: admin/systems/services/mail/class_goMailServer.inc:45
 #: admin/systems/services/mail/class_goMailServer.inc:512
-#, fuzzy
 msgid "Mail smtp service (Postfix)"
-msgstr "Mail server"
+msgstr ""
 
 #: admin/systems/services/mail/class_goMailServer.inc:600
 #: admin/systems/services/mail/class_goMailServer.inc:711
@@ -602,14 +562,12 @@ msgid "Header size limit"
 msgstr ""
 
 #: admin/systems/services/mail/class_goMailServer.inc:603
-#, fuzzy
 msgid "Mailbox size limit"
-msgstr "E-mail grootte"
+msgstr ""
 
 #: admin/systems/services/mail/class_goMailServer.inc:606
-#, fuzzy
 msgid "Message size limit"
-msgstr "Bericht"
+msgstr ""
 
 #: admin/systems/services/mail/class_goMailServer.inc:700
 msgid "Mail smtp (Postfix)"
@@ -630,15 +588,13 @@ msgstr "Omschrijving"
 
 #: admin/systems/services/mail/class_goMailServer.inc:712
 #: admin/systems/services/mail/goMailServer.tpl:26
-#, fuzzy
 msgid "Max mailbox size"
-msgstr "E-mail grootte"
+msgstr ""
 
 #: admin/systems/services/mail/class_goMailServer.inc:713
 #: admin/systems/services/mail/goMailServer.tpl:35
-#, fuzzy
 msgid "Max message size"
-msgstr "Bericht"
+msgstr ""
 
 #: admin/systems/services/mail/class_goMailServer.inc:714
 #: admin/systems/services/mail/goMailServer.tpl:91
@@ -652,20 +608,17 @@ msgstr ""
 
 #: admin/systems/services/mail/class_goMailServer.inc:716
 #: admin/systems/services/mail/goMailServer.tpl:45
-#, fuzzy
 msgid "Relay host"
-msgstr "Lijst herladen"
+msgstr ""
 
 #: admin/systems/services/mail/class_goMailServer.inc:717
-#, fuzzy
 msgid "Transport table"
-msgstr "Overdrachtstijd"
+msgstr ""
 
 #: admin/systems/services/mail/class_goMailServer.inc:718
 #: admin/systems/services/mail/goMailServer.tpl:149
-#, fuzzy
 msgid "Restrictions for sender"
-msgstr "Secties voor deze versie"
+msgstr ""
 
 #: admin/systems/services/mail/class_goMailServer.inc:719
 #: admin/systems/services/mail/goMailServer.tpl:175
@@ -677,14 +630,12 @@ msgid "The full qualified host name."
 msgstr ""
 
 #: admin/systems/services/mail/goMailServer.tpl:16
-#, fuzzy
 msgid "Max mail header size"
-msgstr "E-mail grootte"
+msgstr ""
 
 #: admin/systems/services/mail/goMailServer.tpl:21
-#, fuzzy
 msgid "This value specifies the maximal header size."
-msgstr "De waarde die opgegeven is voor de naam wordt al gebruikt."
+msgstr ""
 
 #: admin/systems/services/mail/goMailServer.tpl:21
 #: admin/systems/services/mail/goMailServer.tpl:31
@@ -705,9 +656,8 @@ msgid "Relay messages to following host:"
 msgstr ""
 
 #: admin/systems/services/mail/goMailServer.tpl:62
-#, fuzzy
 msgid "Postfix networks"
-msgstr "Posix instellingen"
+msgstr ""
 
 #: admin/systems/services/mail/goMailServer.tpl:73
 #: admin/systems/services/mail/goMailServer.tpl:104
@@ -716,27 +666,24 @@ msgid "Remove"
 msgstr "Verwijderen"
 
 #: admin/systems/services/mail/goMailServer.tpl:83
-#, fuzzy
 msgid "Domains and routing"
-msgstr "Windows beheerders"
+msgstr ""
 
 #: admin/systems/services/mail/goMailServer.tpl:93
 msgid "Postfix is responsible for the following domains:"
 msgstr ""
 
 #: admin/systems/services/mail/goMailServer.tpl:114
-#, fuzzy
 msgid "Transports"
-msgstr "Overdrachtstijd"
+msgstr ""
 
 #: admin/systems/services/mail/goMailServer.tpl:123
 msgid "Select a transport protocol."
 msgstr ""
 
 #: admin/systems/services/mail/goMailServer.tpl:141
-#, fuzzy
 msgid "Restrictions"
-msgstr "Secties"
+msgstr ""
 
 #: admin/systems/services/mail/goMailServer.tpl:157
 #: admin/systems/services/mail/goMailServer.tpl:183
@@ -750,9 +697,8 @@ msgid "Name"
 msgstr "Naam"
 
 #: admin/systems/services/spam/goSpamServerRule.tpl:14
-#, fuzzy
 msgid "Rule"
-msgstr "Funktie"
+msgstr ""
 
 #: admin/systems/services/spam/class_goSpamServer.inc:62
 #: admin/systems/services/spam/class_goSpamServer.inc:340
@@ -762,9 +708,8 @@ msgid "Spamassassin"
 msgstr ""
 
 #: admin/systems/services/spam/class_goSpamServer.inc:236
-#, fuzzy
 msgid "Trusted network"
-msgstr "Posix instellingen"
+msgstr ""
 
 #: admin/systems/services/spam/class_goSpamServer.inc:307
 msgid "Score"
@@ -772,14 +717,12 @@ msgstr ""
 
 #: admin/systems/services/spam/class_goSpamServer.inc:358
 #: admin/systems/services/spam/goSpamServer.tpl:8
-#, fuzzy
 msgid "Rewrite header"
-msgstr "header"
+msgstr ""
 
 #: admin/systems/services/spam/class_goSpamServer.inc:359
-#, fuzzy
 msgid "Trusted networks"
-msgstr "Posix instellingen"
+msgstr ""
 
 #: admin/systems/services/spam/class_goSpamServer.inc:360
 #: admin/systems/services/spam/goSpamServer.tpl:18
@@ -787,9 +730,8 @@ msgid "Required score"
 msgstr ""
 
 #: admin/systems/services/spam/class_goSpamServer.inc:361
-#, fuzzy
 msgid "Rules"
-msgstr "Funktie"
+msgstr ""
 
 #: admin/systems/services/spam/class_goSpamServer.inc:363
 #: admin/systems/services/spam/goSpamServer.tpl:69
@@ -829,22 +771,19 @@ msgid "Enable bayes auto learning"
 msgstr ""
 
 #: admin/systems/services/virus/goVirusServer.tpl:5
-#, fuzzy
 msgid "Generic virus filtering"
-msgstr "Algemene wachtrij instellingen"
+msgstr ""
 
 #: admin/systems/services/virus/goVirusServer.tpl:13
 #: admin/systems/services/virus/class_goVirusServer.inc:196
-#, fuzzy
 msgid "Database user"
-msgstr "Databases"
+msgstr ""
 
 #: admin/systems/services/virus/goVirusServer.tpl:23
 #: admin/systems/services/virus/class_goVirusServer.inc:196
 #: admin/systems/services/virus/class_goVirusServer.inc:263
-#, fuzzy
 msgid "Database mirror"
-msgstr "Database"
+msgstr ""
 
 #: admin/systems/services/virus/goVirusServer.tpl:33
 #: admin/systems/services/virus/class_goVirusServer.inc:196
@@ -859,9 +798,8 @@ msgid "Maximum threads"
 msgstr ""
 
 #: admin/systems/services/virus/goVirusServer.tpl:47
-#, fuzzy
 msgid "Select number of maximal threads"
-msgstr "Selecteer de toe te voegen nummers"
+msgstr ""
 
 #: admin/systems/services/virus/goVirusServer.tpl:61
 msgid "Max directory recursions"
@@ -870,15 +808,13 @@ msgstr ""
 #: admin/systems/services/virus/goVirusServer.tpl:71
 #: admin/systems/services/virus/class_goVirusServer.inc:188
 #: admin/systems/services/virus/class_goVirusServer.inc:264
-#, fuzzy
 msgid "Checks per day"
-msgstr "Controleer parameter"
+msgstr ""
 
 #: admin/systems/services/virus/goVirusServer.tpl:84
 #: admin/systems/services/virus/class_goVirusServer.inc:252
-#, fuzzy
 msgid "Enable debugging"
-msgstr "gedeactiveerd"
+msgstr ""
 
 #: admin/systems/services/virus/goVirusServer.tpl:92
 #: admin/systems/services/virus/class_goVirusServer.inc:253
@@ -902,9 +838,8 @@ msgstr ""
 #: admin/systems/services/virus/goVirusServer.tpl:134
 #: admin/systems/services/virus/class_goVirusServer.inc:185
 #: admin/systems/services/virus/class_goVirusServer.inc:260
-#, fuzzy
 msgid "Maximum file size"
-msgstr "E-mail grootte"
+msgstr ""
 
 #: admin/systems/services/virus/goVirusServer.tpl:143
 msgid "Maximum recursion"
@@ -913,9 +848,8 @@ msgstr ""
 #: admin/systems/services/virus/goVirusServer.tpl:152
 #: admin/systems/services/virus/class_goVirusServer.inc:187
 #: admin/systems/services/virus/class_goVirusServer.inc:262
-#, fuzzy
 msgid "Maximum compression ratio"
-msgstr "Toegangsopties"
+msgstr ""
 
 #: admin/systems/services/virus/class_goVirusServer.inc:65
 #: admin/systems/services/virus/class_goVirusServer.inc:230
@@ -935,14 +869,12 @@ msgid "Maximum recursions"
 msgstr ""
 
 #: admin/systems/services/virus/class_goVirusServer.inc:259
-#, fuzzy
 msgid "Anti virus user"
-msgstr "Voeg DNS service toe"
+msgstr ""
 
 #: admin/ogroups/mail/paste_mail.tpl:7
-#, fuzzy
 msgid "Please enter a mail address"
-msgstr "Geef a.u.b. een geldige naam op"
+msgstr ""
 
 #: admin/ogroups/mail/mail.tpl:7
 msgid "Mail distribution list"
@@ -958,9 +890,8 @@ msgstr "E-mail account verwijderen"
 
 #: admin/ogroups/mail/class_mailogroup.inc:71
 #: admin/ogroups/mail/class_mailogroup.inc:74
-#, fuzzy
 msgid "mail group"
-msgstr "Primaire groep"
+msgstr ""
 
 #: admin/ogroups/mail/class_mailogroup.inc:73
 msgid "Create mail account"
@@ -971,33 +902,29 @@ msgid "your-name@your-domain.com"
 msgstr ""
 
 #: admin/ogroups/mail/class_mailogroup.inc:207
-#, fuzzy
 msgid "Mail group"
-msgstr "Primaire groep"
+msgstr ""
 
 #: personal/mail/class_mail-methods-cyrus.inc:58
 msgid "There are no IMAP compatible mail servers defined!"
 msgstr ""
 
 #: personal/mail/class_mail-methods-cyrus.inc:63
-#, fuzzy
 msgid "Mail server for this account is invalid!"
-msgstr "Geen E-mail grootte restrictie voor dit account"
+msgstr ""
 
 #: personal/mail/class_mail-methods-cyrus.inc:241
-#, fuzzy
 msgid "IMAP error"
-msgstr "LDAP fout:"
+msgstr ""
 
 #: personal/mail/class_mail-methods-cyrus.inc:241
-#, fuzzy, php-format
+#, php-format
 msgid "Cannot modify IMAP mailbox quota: %s"
-msgstr "Kan de IMAP mailbox niet verwijderen. De server meldt: '%s'."
+msgstr ""
 
 #: personal/mail/class_mail-methods-cyrus.inc:317
-#, fuzzy
 msgid "Mail info"
-msgstr "Bestandsnaam"
+msgstr ""
 
 #: personal/mail/class_mail-methods-cyrus.inc:318
 #, php-format
@@ -1044,28 +971,24 @@ msgid "Cannot activate SIEVE script: %s"
 msgstr ""
 
 #: personal/mail/mailAddressSelect/selectMailAddress-filter.tpl:3
-#, fuzzy
 msgid "Filter"
-msgstr "Filters"
+msgstr "Filter"
 
 #: personal/mail/mailAddressSelect/selectMailAddress-filter.tpl:11
-#, fuzzy
 msgid "Show users"
-msgstr "Toon Samba gebruikers"
+msgstr ""
 
 #: personal/mail/mailAddressSelect/selectMailAddress-filter.tpl:12
-#, fuzzy
 msgid "Show groups"
-msgstr "Toon Samba groepen"
+msgstr ""
 
 #: personal/mail/mailAddressSelect/selectMailAddress-list.tpl:13
 msgid "Base"
 msgstr "Basis"
 
 #: personal/mail/mailAddressSelect/selectMailAddress-list.xml:10
-#, fuzzy
 msgid "Please select the desired entries"
-msgstr "Voorkeurstaal"
+msgstr ""
 
 #: personal/mail/mailAddressSelect/selectMailAddress-list.xml:14
 msgid "User"
@@ -1077,15 +1000,13 @@ msgstr "Groep"
 
 #: personal/mail/sieve/class_sieveManagement.inc:116
 #: personal/mail/sieve/class_sieveManagement.inc:244
-#, fuzzy
 msgid "Parse failed"
-msgstr "mislukt"
+msgstr ""
 
 #: personal/mail/sieve/class_sieveManagement.inc:120
 #: personal/mail/sieve/class_sieveManagement.inc:248
-#, fuzzy
 msgid "Parse successful"
-msgstr "Import was succesvol"
+msgstr ""
 
 #: personal/mail/sieve/class_sieveManagement.inc:158
 #, php-format
@@ -1099,19 +1020,16 @@ msgid "No script name specified!"
 msgstr ""
 
 #: personal/mail/sieve/class_sieveManagement.inc:208
-#, fuzzy
 msgid "Please use only lowercase script names!"
-msgstr "Geef a.u.b. een geldige scriptnaam op."
+msgstr ""
 
 #: personal/mail/sieve/class_sieveManagement.inc:214
-#, fuzzy
 msgid "Please use only alphabetical characters in script names!"
-msgstr "Alleen nummerieke waardes zijn toegestaan in geldigheidsduur"
+msgstr ""
 
 #: personal/mail/sieve/class_sieveManagement.inc:220
-#, fuzzy
 msgid "Script name already in use!"
-msgstr "De opgegeven naam wordt al gebruikt."
+msgstr ""
 
 #: personal/mail/sieve/class_sieveManagement.inc:304
 #: personal/mail/sieve/class_sieveManagement.inc:311
@@ -1124,46 +1042,42 @@ msgstr "De opgegeven naam wordt al gebruikt."
 #: personal/mail/sieve/class_sieveManagement.inc:772
 #: personal/mail/sieve/class_sieveManagement.inc:1032
 #: personal/mail/sieve/class_sieveManagement.inc:1045
-#, fuzzy
 msgid "SIEVE error"
-msgstr "Fout"
+msgstr ""
 
 #: personal/mail/sieve/class_sieveManagement.inc:304
 #: personal/mail/sieve/class_sieveManagement.inc:347
 #: personal/mail/sieve/class_sieveManagement.inc:1032
-#, fuzzy, php-format
+#, php-format
 msgid "Cannot log into SIEVE server: %s"
-msgstr "Kan niet op de SIEVE server inloggen. De server meldt: '%s'."
+msgstr ""
 
 #: personal/mail/sieve/class_sieveManagement.inc:351
-#, fuzzy, php-format
+#, php-format
 msgid "Cannot remove SIEVE script: %s"
-msgstr "Onbekende FAI status %s"
+msgstr ""
 
 #: personal/mail/sieve/class_sieveManagement.inc:397
-#, fuzzy
 msgid "Edited"
-msgstr "Bewerken"
+msgstr ""
 
 #: personal/mail/sieve/class_sieveManagement.inc:431
-#, fuzzy
 msgid "Uploaded script is empty!"
-msgstr "Certificaten"
+msgstr ""
 
 #: personal/mail/sieve/class_sieveManagement.inc:433
-#, fuzzy
 msgid "Internal error"
-msgstr "Terminal server"
+msgstr ""
 
 #: personal/mail/sieve/class_sieveManagement.inc:433
-#, fuzzy, php-format
+#, php-format
 msgid "Cannot access temporary file '%s'!"
-msgstr "Kan bestand '%s' niet aanmaken."
+msgstr ""
 
 #: personal/mail/sieve/class_sieveManagement.inc:435
-#, fuzzy, php-format
+#, php-format
 msgid "Cannot open temporary file '%s'!"
-msgstr "Kan bestand '%s' niet openen."
+msgstr ""
 
 #: personal/mail/sieve/class_sieveManagement.inc:495
 #: personal/mail/sieve/class_sieveManagement.inc:498
@@ -1184,32 +1098,28 @@ msgstr "Opmerking"
 
 #: personal/mail/sieve/class_sieveManagement.inc:497
 #: personal/mail/sieve/class_sieveManagement.inc:715
-#, fuzzy
 msgid "File into"
-msgstr "Bestandsnaam"
+msgstr ""
 
 #: personal/mail/sieve/class_sieveManagement.inc:499
 #: personal/mail/sieve/class_sieveManagement.inc:717
 #: personal/mail/sieve/templates/element_discard.tpl:4
 #: personal/mail/sieve/templates/object_container.tpl:26
-#, fuzzy
 msgid "Discard"
-msgstr "Schijven"
+msgstr ""
 
 #: personal/mail/sieve/class_sieveManagement.inc:500
 #: personal/mail/sieve/class_sieveManagement.inc:718
 #: personal/mail/sieve/templates/element_redirect.tpl:13
 #: personal/mail/sieve/templates/object_container.tpl:27
-#, fuzzy
 msgid "Redirect"
-msgstr "direkt"
+msgstr ""
 
 #: personal/mail/sieve/class_sieveManagement.inc:501
 #: personal/mail/sieve/class_sieveManagement.inc:719
 #: personal/mail/sieve/templates/object_container.tpl:28
-#, fuzzy
 msgid "Reject"
-msgstr "Selecteer"
+msgstr ""
 
 #: personal/mail/sieve/class_sieveManagement.inc:502
 #: personal/mail/sieve/class_sieveManagement.inc:720
@@ -1230,23 +1140,20 @@ msgstr "Afwezigheidsbericht"
 #: personal/mail/sieve/class_sieveManagement.inc:723
 #: personal/mail/sieve/class_sieveElement_If.inc:836
 #: personal/mail/sieve/templates/object_container.tpl:32
-#, fuzzy
 msgid "If"
-msgstr "NI"
+msgstr ""
 
 #: personal/mail/sieve/class_sieveManagement.inc:521
-#, fuzzy
 msgid "Cannot add new element!"
-msgstr "Voeg DNS service toe"
+msgstr ""
 
 #: personal/mail/sieve/class_sieveManagement.inc:564
 #: personal/mail/sieve/class_sieveManagement.inc:758
 #: personal/mail/sieve/class_sieveElement_If.inc:840
 #: personal/mail/sieve/templates/element_else.tpl:4
 #: personal/mail/sieve/templates/object_container.tpl:33
-#, fuzzy
 msgid "Else"
-msgstr "nee"
+msgstr ""
 
 #: personal/mail/sieve/class_sieveManagement.inc:566
 #: personal/mail/sieve/class_sieveManagement.inc:760
@@ -1266,9 +1173,8 @@ msgstr "Adres"
 #: personal/mail/sieve/class_sieveManagement.inc:592
 #: personal/mail/sieve/templates/element_header.tpl:16
 #: personal/mail/sieve/templates/element_header.tpl:106
-#, fuzzy
 msgid "Header"
-msgstr "header"
+msgstr ""
 
 #: personal/mail/sieve/class_sieveManagement.inc:593
 #: personal/mail/sieve/templates/element_envelope.tpl:16
@@ -1283,15 +1189,13 @@ msgstr "Grootte"
 
 #: personal/mail/sieve/class_sieveManagement.inc:595
 #: personal/mail/sieve/templates/element_exists.tpl:8
-#, fuzzy
 msgid "Exists"
-msgstr "Bestaande"
+msgstr ""
 
 #: personal/mail/sieve/class_sieveManagement.inc:596
 #: personal/mail/sieve/templates/element_allof.tpl:10
-#, fuzzy
 msgid "All of"
-msgstr "Alle"
+msgstr ""
 
 #: personal/mail/sieve/class_sieveManagement.inc:597
 #: personal/mail/sieve/templates/element_anyof.tpl:10
@@ -1317,24 +1221,20 @@ msgid "This script is marked as active"
 msgstr ""
 
 #: personal/mail/sieve/class_sieveManagement.inc:642
-#, fuzzy
 msgid "Script length"
-msgstr "Variabele inhoud"
+msgstr ""
 
 #: personal/mail/sieve/class_sieveManagement.inc:646
-#, fuzzy
 msgid "Remove script"
-msgstr "Verwijder DNS service"
+msgstr ""
 
 #: personal/mail/sieve/class_sieveManagement.inc:655
-#, fuzzy
 msgid "Activate script"
-msgstr "Laatste script"
+msgstr ""
 
 #: personal/mail/sieve/class_sieveManagement.inc:659
-#, fuzzy
 msgid "Edit script"
-msgstr "Laatste script"
+msgstr ""
 
 #: personal/mail/sieve/class_sieveManagement.inc:674
 #, php-format
@@ -1342,49 +1242,41 @@ msgid "Can't log into SIEVE server. Server says '%s'."
 msgstr "Kan niet op de SIEVE server inloggen. De server meldt: '%s'."
 
 #: personal/mail/sieve/class_sieveManagement.inc:772
-#, fuzzy
 msgid "Cannot insert element at the requested position!"
-msgstr "Ga naar de afdeling van de gebruiker"
+msgstr ""
 
 #: personal/mail/sieve/class_sieveManagement.inc:1047
-#, fuzzy
 msgid "Failed to save sieve script"
-msgstr "Gebruik een eigen sieve script"
+msgstr ""
 
 #: personal/mail/sieve/class_My_Tree.inc:266
-#, fuzzy
 msgid "Cannot remove last element!"
-msgstr "Record verwijderen"
+msgstr ""
 
 #: personal/mail/sieve/class_My_Tree.inc:679
 msgid "Require must be the first command in the script."
 msgstr ""
 
 #: personal/mail/sieve/class_sieveElement_Require.inc:73
-#, fuzzy
 msgid "Please specify at least one valid requirement."
-msgstr "Geef a.u.b. een geldige naam op voor deze bijlage."
+msgstr ""
 
 #: personal/mail/sieve/class_sieveElement_If.inc:27
-#, fuzzy
 msgid "Complete address"
-msgstr "Subonderdelen negeren"
+msgstr ""
 
 #: personal/mail/sieve/class_sieveElement_If.inc:27
 #: personal/mail/sieve/class_sieveElement_If.inc:33
-#, fuzzy
 msgid "Default"
-msgstr "standaard"
+msgstr ""
 
 #: personal/mail/sieve/class_sieveElement_If.inc:28
-#, fuzzy
 msgid "Domain part"
-msgstr "Windows gebruikers"
+msgstr ""
 
 #: personal/mail/sieve/class_sieveElement_If.inc:29
-#, fuzzy
 msgid "Local part"
-msgstr "Plaats"
+msgstr ""
 
 #: personal/mail/sieve/class_sieveElement_If.inc:33
 msgid "Case insensitive"
@@ -1403,43 +1295,36 @@ msgid "is"
 msgstr ""
 
 #: personal/mail/sieve/class_sieveElement_If.inc:40
-#, fuzzy
 msgid "regex"
-msgstr "sluiten"
+msgstr ""
 
 #: personal/mail/sieve/class_sieveElement_If.inc:41
-#, fuzzy
 msgid "contains"
-msgstr "Acties"
+msgstr ""
 
 #: personal/mail/sieve/class_sieveElement_If.inc:42
-#, fuzzy
 msgid "matches"
-msgstr "Cache"
+msgstr ""
 
 #: personal/mail/sieve/class_sieveElement_If.inc:43
-#, fuzzy
 msgid "count"
-msgstr "Account"
+msgstr ""
 
 #: personal/mail/sieve/class_sieveElement_If.inc:44
-#, fuzzy
 msgid "value is"
-msgstr "geldig"
+msgstr ""
 
 #: personal/mail/sieve/class_sieveElement_If.inc:48
-#, fuzzy
 msgid "less than"
-msgstr "Minder Dan geluidsbestand"
+msgstr ""
 
 #: personal/mail/sieve/class_sieveElement_If.inc:49
 msgid "less or equal"
 msgstr ""
 
 #: personal/mail/sieve/class_sieveElement_If.inc:50
-#, fuzzy
 msgid "equals"
-msgstr "Details"
+msgstr ""
 
 #: personal/mail/sieve/class_sieveElement_If.inc:51
 msgid "greater or equal"
@@ -1448,24 +1333,20 @@ msgstr ""
 #: personal/mail/sieve/class_sieveElement_If.inc:52
 #: personal/mail/sieve/class_sieveElement_If.inc:726
 #: personal/mail/sieve/class_sieveElement_If.inc:1059
-#, fuzzy
 msgid "greater than"
-msgstr "Opties aanmaken"
+msgstr ""
 
 #: personal/mail/sieve/class_sieveElement_If.inc:53
-#, fuzzy
 msgid "not equal"
-msgstr "geen voorbeeld"
+msgstr ""
 
 #: personal/mail/sieve/class_sieveElement_If.inc:102
-#, fuzzy
 msgid "Can't save empty tests."
-msgstr "Kan bestand '%s' niet opslaan."
+msgstr ""
 
 #: personal/mail/sieve/class_sieveElement_If.inc:446
-#, fuzzy
 msgid "emtpy"
-msgstr "leeg"
+msgstr ""
 
 #: personal/mail/sieve/class_sieveElement_If.inc:447
 msgid "empty"
@@ -1488,9 +1369,8 @@ msgid "Invalid operator given."
 msgstr ""
 
 #: personal/mail/sieve/class_sieveElement_If.inc:638
-#, fuzzy
 msgid "Please specify a valid operator."
-msgstr "Geef a.u.b. een geldige id op."
+msgstr ""
 
 #: personal/mail/sieve/class_sieveElement_If.inc:654
 msgid ""
@@ -1498,10 +1378,9 @@ msgid ""
 msgstr ""
 
 #: personal/mail/sieve/class_sieveElement_If.inc:669
-#, fuzzy
 msgid ""
 "Invalid character found in value attribute. Quotes are not allowed here."
-msgstr "Ongeldig karakter in programmanaam. Alleen a-Z 0-9 zijn toegestaan."
+msgstr ""
 
 #: personal/mail/sieve/class_sieveElement_If.inc:727
 #: personal/mail/sieve/class_sieveElement_If.inc:1060
@@ -1510,9 +1389,8 @@ msgstr ""
 
 #: personal/mail/sieve/class_sieveElement_If.inc:729
 #: personal/mail/sieve/class_sieveElement_If.inc:1062
-#, fuzzy
 msgid "Megabyte"
-msgstr "Aanmaken"
+msgstr ""
 
 #: personal/mail/sieve/class_sieveElement_If.inc:730
 #: personal/mail/sieve/class_sieveElement_If.inc:1063
@@ -1521,55 +1399,46 @@ msgstr ""
 
 #: personal/mail/sieve/class_sieveElement_If.inc:731
 #: personal/mail/sieve/class_sieveElement_If.inc:1064
-#, fuzzy
 msgid "Bytes"
-msgstr "ja"
+msgstr ""
 
 #: personal/mail/sieve/class_sieveElement_If.inc:745
-#, fuzzy
 msgid "Please select a valid match type in the list box below."
-msgstr "Selecteer a.u.b. een geldig mailserver"
+msgstr ""
 
 #: personal/mail/sieve/class_sieveElement_If.inc:759
-#, fuzzy
 msgid "Only numeric values are allowed here."
-msgstr "Alleen nummerieke karakters zijn toegestaan in het nummer veld."
+msgstr ""
 
 #: personal/mail/sieve/class_sieveElement_If.inc:769
-#, fuzzy
 msgid "No valid unit selected"
-msgstr "Geen geldig certificaat geladen"
+msgstr ""
 
 #: personal/mail/sieve/class_sieveElement_If.inc:834
 #: personal/mail/sieve/templates/element_if.tpl:4
-#, fuzzy
 msgid "Condition"
-msgstr "Max. verbindingsduur"
+msgstr ""
 
 #: personal/mail/sieve/class_sieveElement_If.inc:876
-#, fuzzy
 msgid "Empty"
-msgstr "leeg"
+msgstr ""
 
 #: personal/mail/sieve/class_sieveElement_If.inc:1134
 #: personal/mail/sieve/class_sieveElement_If.inc:1164
-#, fuzzy
 msgid "Click here to add a new test"
-msgstr "Klik hier om in te loggen"
+msgstr ""
 
 #: personal/mail/sieve/class_sieveElement_If.inc:1176
 msgid "Unhandled switch type"
 msgstr ""
 
 #: personal/mail/sieve/class_sieveElement_Redirect.inc:24
-#, fuzzy
 msgid "Please specify a valid email address."
-msgstr "Geef a.u.b. een geldige scriptnaam op."
+msgstr ""
 
 #: personal/mail/sieve/class_sieveElement_Redirect.inc:35
-#, fuzzy
 msgid "Place a mail address here"
-msgstr "Geef a.u.b. een geldige naam op"
+msgstr ""
 
 #: personal/mail/sieve/class_sieveElement_Reject.inc:21
 msgid "Invalid character found, quotes are not allowed in a reject message."
@@ -1584,49 +1453,42 @@ msgid "Your comment here"
 msgstr ""
 
 #: personal/mail/sieve/class_sieveElement_Vacation.inc:148
-#, fuzzy
 msgid "Alternative sender address must be a valid email addresses."
-msgstr "Geef a.u.b. een geldige scriptnaam op."
+msgstr ""
 
 #: personal/mail/sieve/templates/element_vacation.tpl:13
-#, fuzzy
 msgid "Vacation Message"
-msgstr "Afwezigheidsbericht"
+msgstr ""
 
 #: personal/mail/sieve/templates/element_vacation.tpl:16
 #: personal/mail/sieve/templates/element_address.tpl:18
 #: personal/mail/sieve/templates/element_envelope.tpl:19
 #: personal/mail/sieve/templates/element_header.tpl:19
-#, fuzzy
 msgid "Normal view"
-msgstr "Postcode"
+msgstr ""
 
 #: personal/mail/sieve/templates/element_vacation.tpl:21
-#, fuzzy
 msgid "Release interval"
-msgstr "Tijd interval"
+msgstr ""
 
 #: personal/mail/sieve/templates/element_vacation.tpl:25
 msgid "days"
 msgstr "dagen"
 
 #: personal/mail/sieve/templates/element_vacation.tpl:30
-#, fuzzy
 msgid "Alternative sender addresses"
-msgstr "Alternatieve adressen"
+msgstr ""
 
 #: personal/mail/sieve/templates/element_vacation.tpl:47
 #: personal/mail/sieve/templates/element_address.tpl:138
 #: personal/mail/sieve/templates/element_envelope.tpl:130
 #: personal/mail/sieve/templates/element_header.tpl:131
-#, fuzzy
 msgid "Expert view"
-msgstr "Vertrouwensmodus"
+msgstr ""
 
 #: personal/mail/sieve/templates/import_script.tpl:1
-#, fuzzy
 msgid "Import sieve script"
-msgstr "Importeer script"
+msgstr ""
 
 #: personal/mail/sieve/templates/import_script.tpl:2
 msgid ""
@@ -1635,9 +1497,8 @@ msgid ""
 msgstr ""
 
 #: personal/mail/sieve/templates/import_script.tpl:5
-#, fuzzy
 msgid "Script to import"
-msgstr "Inlogscript"
+msgstr ""
 
 #: personal/mail/sieve/templates/import_script.tpl:12
 #: personal/mail/sieve/templates/edit_frame_base.tpl:7
@@ -1652,9 +1513,8 @@ msgstr "Importeren"
 #: personal/mail/sieve/templates/element_allof.tpl:5
 #: personal/mail/sieve/templates/element_anyof.tpl:5
 #: personal/mail/sieve/templates/element_header.tpl:109
-#, fuzzy
 msgid "Not"
-msgstr "Nee"
+msgstr ""
 
 #: personal/mail/sieve/templates/element_exists.tpl:10
 #: personal/mail/sieve/templates/element_exists.tpl:12
@@ -1679,9 +1539,8 @@ msgid "-"
 msgstr ""
 
 #: personal/mail/sieve/templates/management.tpl:1
-#, fuzzy
 msgid "List of sieve scripts"
-msgstr "Lijst met scripts"
+msgstr ""
 
 #: personal/mail/sieve/templates/management.tpl:5
 msgid ""
@@ -1703,25 +1562,20 @@ msgid "Possibly the sieve account has not been created yet."
 msgstr ""
 
 #: personal/mail/sieve/templates/management.tpl:19
-#, fuzzy
 msgid ""
-"Be careful. All your changes will be saved directly to sieve, if you use the "
-"save button below."
+"Be careful. All your changes will be saved directly to sieve, if you use the"
+" save button below."
 msgstr ""
-"Let op bij het bewerken van record types met deze dialoog. Alle "
-"veranderingen worden onmiddelijk opgeslagen zodra u de opslaan knop gebruikt."
 
 #: personal/mail/sieve/templates/management.tpl:22
-#, fuzzy
 msgid "Create new script"
-msgstr "Maak nieuwe gebruiker aan"
+msgstr ""
 
 #: personal/mail/sieve/templates/element_address.tpl:25
 #: personal/mail/sieve/templates/element_envelope.tpl:26
 #: personal/mail/sieve/templates/element_header.tpl:26
-#, fuzzy
 msgid "Match type"
-msgstr "Authorisatietype"
+msgstr ""
 
 #: personal/mail/sieve/templates/element_address.tpl:28
 #: personal/mail/sieve/templates/element_address.tpl:51
@@ -1740,16 +1594,14 @@ msgstr "Authorisatietype"
 #: personal/mail/sieve/templates/element_header.tpl:114
 #: personal/mail/sieve/templates/element_header.tpl:119
 #: personal/mail/sieve/templates/element_boolean.tpl:5
-#, fuzzy
 msgid "Boolean value"
-msgstr "Standaard waarde"
+msgstr ""
 
 #: personal/mail/sieve/templates/element_address.tpl:36
 #: personal/mail/sieve/templates/element_envelope.tpl:37
 #: personal/mail/sieve/templates/element_header.tpl:37
-#, fuzzy
 msgid "Invert test"
-msgstr "Geheugentest"
+msgstr ""
 
 #: personal/mail/sieve/templates/element_address.tpl:40
 #: personal/mail/sieve/templates/element_envelope.tpl:41
@@ -1770,15 +1622,13 @@ msgstr ""
 #: personal/mail/sieve/templates/element_address.tpl:58
 #: personal/mail/sieve/templates/element_envelope.tpl:49
 #: personal/mail/sieve/templates/element_header.tpl:49
-#, fuzzy
 msgid "Comparator"
-msgstr "Computers"
+msgstr ""
 
 #: personal/mail/sieve/templates/element_address.tpl:69
 #: personal/mail/sieve/templates/element_envelope.tpl:60
-#, fuzzy
 msgid "Operator"
-msgstr "Computers"
+msgstr ""
 
 #: personal/mail/sieve/templates/element_address.tpl:85
 #: personal/mail/sieve/templates/element_envelope.tpl:76
@@ -1793,38 +1643,32 @@ msgid "Values to match for"
 msgstr ""
 
 #: personal/mail/sieve/templates/element_size.tpl:16
-#, fuzzy
 msgid "Select match type"
-msgstr "Selecteer een basis"
+msgstr ""
 
 #: personal/mail/sieve/templates/element_size.tpl:20
-#, fuzzy
 msgid "Select value unit"
-msgstr "Selecteer om afdelingen te zien"
+msgstr ""
 
 #: personal/mail/sieve/templates/edit_frame_base.tpl:6
 msgid "Export"
 msgstr "Exporteer"
 
 #: personal/mail/sieve/templates/edit_frame_base.tpl:12
-#, fuzzy
 msgid "View structured"
-msgstr "Zoek binnen subtree"
+msgstr ""
 
 #: personal/mail/sieve/templates/edit_frame_base.tpl:14
-#, fuzzy
 msgid "View source"
-msgstr "Audio service"
+msgstr ""
 
 #: personal/mail/sieve/templates/add_element.tpl:1
-#, fuzzy
 msgid "Add a new element"
-msgstr "Voeg DNS service toe"
+msgstr ""
 
 #: personal/mail/sieve/templates/add_element.tpl:2
-#, fuzzy
 msgid "Please select the type of element you want to add"
-msgstr "Selecteer a.u.b. een geldig bestand."
+msgstr ""
 
 #: personal/mail/sieve/templates/add_element.tpl:11
 #: personal/mail/sieve/templates/select_test_type.tpl:11
@@ -1832,67 +1676,53 @@ msgid "Continue"
 msgstr "Doorgaan"
 
 #: personal/mail/sieve/templates/add_element.tpl:13
-#, fuzzy
 msgid "Abort"
-msgstr "Poort"
+msgstr ""
 
 #: personal/mail/sieve/templates/element_fileinto.tpl:4
-#, fuzzy
 msgid "Move mail into folder"
-msgstr "naar map"
+msgstr ""
 
 #: personal/mail/sieve/templates/element_fileinto.tpl:8
-#, fuzzy
 msgid "Select from list"
-msgstr "Selecteer sjabloon"
+msgstr ""
 
 #: personal/mail/sieve/templates/element_fileinto.tpl:10
-#, fuzzy
 msgid "Manual selection"
-msgstr "Taal"
+msgstr ""
 
 #: personal/mail/sieve/templates/element_fileinto.tpl:18
-#, fuzzy
 msgid "Folder"
-msgstr "Filter"
+msgstr ""
 
 #: personal/mail/sieve/templates/element_comment.tpl:8
 msgid "Edit"
 msgstr "Bewerken"
 
 #: personal/mail/sieve/templates/remove_script.tpl:6
-#, fuzzy
 msgid ""
-"Please double check if your really want to do this since there is no way for "
-"FusionDirectory to get your data back."
+"Please double check if your really want to do this since there is no way for"
+" FusionDirectory to get your data back."
 msgstr ""
-"Verzeker u ervan dat u dit daadwerkelijk wil doorvoeren, aangezien het "
-"onmogelijk is voor FusionDirectory om de data terug te halen."
 
 #: personal/mail/sieve/templates/remove_script.tpl:10
-#, fuzzy
 msgid ""
 "Best thing to do before performing this action would be to save the current "
 "script in a file. So - if you've done so - press 'Delete' to continue or "
 "'Cancel' to abort."
 msgstr ""
-"Het is aan te raden de huidige inhoud van uw LDAP database op te slaan "
-"alvorens u doorgaat. Indien u dat gedaan heeft drukt u op 'Verwijderen' om "
-"door te gaan of op 'Annuleren' om te annuleren."
 
 #: personal/mail/sieve/templates/element_redirect.tpl:18
 msgid "Redirect mail to following recipients"
 msgstr ""
 
 #: personal/mail/sieve/templates/element_keep.tpl:9
-#, fuzzy
 msgid "Keep message"
-msgstr "Verwijder dit bericht"
+msgstr ""
 
 #: personal/mail/sieve/templates/object_container_clear.tpl:8
-#, fuzzy
 msgid "Move this object up one position"
-msgstr "Lidmaatschap objecten"
+msgstr ""
 
 #: personal/mail/sieve/templates/object_container_clear.tpl:8
 #: personal/mail/sieve/templates/object_container.tpl:8
@@ -1919,45 +1749,39 @@ msgid "Move down"
 msgstr "Omlaag verplaatsen"
 
 #: personal/mail/sieve/templates/object_container_clear.tpl:16
-#, fuzzy
 msgid "Remove this object"
-msgstr "Lidmaatschap objecten"
+msgstr ""
 
 #: personal/mail/sieve/templates/object_container_clear.tpl:17
 #: personal/mail/sieve/templates/object_container.tpl:17
-#, fuzzy
 msgid "Remove element"
-msgstr "Record verwijderen"
+msgstr ""
 
 #: personal/mail/sieve/templates/element_discard.tpl:9
-#, fuzzy
 msgid "Discard message"
-msgstr "Verwijder dit bericht"
+msgstr ""
 
 #: personal/mail/sieve/templates/element_stop.tpl:9
 msgid "Stop execution here"
 msgstr ""
 
 #: personal/mail/sieve/templates/element_header.tpl:60
-#, fuzzy
 msgid "operator"
-msgstr "E-mail opties"
+msgstr ""
 
 #: personal/mail/sieve/templates/create_script.tpl:2
 msgid ""
-"Please enter the name for the new script below. Script names must consist of "
-"lower case characters only."
+"Please enter the name for the new script below. Script names must consist of"
+" lower case characters only."
 msgstr ""
 
 #: personal/mail/sieve/templates/create_script.tpl:8
-#, fuzzy
 msgid "Script name"
-msgstr "Scriptnaam"
+msgstr ""
 
 #: personal/mail/sieve/templates/object_container.tpl:8
-#, fuzzy
 msgid "Move object up one position"
-msgstr "Lidmaatschap objecten"
+msgstr ""
 
 #: personal/mail/sieve/templates/object_container.tpl:12
 msgid "Move object down one position"
@@ -1965,25 +1789,21 @@ msgstr ""
 
 #: personal/mail/sieve/templates/object_container.tpl:16
 #: personal/mail/sieve/templates/object_test_container.tpl:10
-#, fuzzy
 msgid "Remove object"
-msgstr "Lidmaatschap objecten"
+msgstr ""
 
 #: personal/mail/sieve/templates/object_container.tpl:21
-#, fuzzy
 msgid "choose element"
-msgstr "Record verwijderen"
+msgstr ""
 
 #: personal/mail/sieve/templates/object_container.tpl:24
-#, fuzzy
 msgid "Fileinto"
-msgstr "Bestand"
+msgstr ""
 
 #: personal/mail/sieve/templates/object_container.tpl:38
 #: personal/mail/sieve/templates/object_container.tpl:42
-#, fuzzy
 msgid "Add new"
-msgstr "Gebruiker toevoegen"
+msgstr ""
 
 #: personal/mail/sieve/templates/object_container.tpl:38
 #: personal/mail/sieve/templates/object_container.tpl:40
@@ -2004,42 +1824,36 @@ msgid "Add element below"
 msgstr ""
 
 #: personal/mail/sieve/templates/element_reject.tpl:14
-#, fuzzy
 msgid "Reject mail"
-msgstr "Wijs E-mail af indien groter dan"
+msgstr ""
 
 #: personal/mail/sieve/templates/element_reject.tpl:17
 msgid "This is a multiline text element"
 msgstr ""
 
 #: personal/mail/sieve/templates/element_reject.tpl:19
-#, fuzzy
 msgid "This is stored as single string"
-msgstr "Dit doet iets"
+msgstr ""
 
 #: personal/mail/sieve/templates/select_test_type.tpl:1
-#, fuzzy
 msgid "Select the type of test you want to add"
-msgstr "Selecteer de toe te voegen regels"
+msgstr ""
 
 #: personal/mail/sieve/templates/select_test_type.tpl:3
-#, fuzzy
 msgid "Available test types"
-msgstr "Beschikbare programma's"
+msgstr ""
 
 #: personal/mail/sieve/templates/object_test_container.tpl:6
-#, fuzzy
 msgid "Add object"
-msgstr "Zoek op"
+msgstr ""
 
 #: personal/mail/sieve/templates/element_boolean.tpl:4
 msgid "Bool"
 msgstr "Bool"
 
 #: personal/mail/sieve/templates/element_boolean.tpl:8
-#, fuzzy
 msgid "update"
-msgstr "Bijwerken"
+msgstr ""
 
 #: personal/mail/class_mailAccount.inc:72
 msgid "This does something"
@@ -2048,126 +1862,107 @@ msgstr "Dit doet iets"
 #: personal/mail/class_mailAccount.inc:640
 #: personal/mail/class_mail-methods.inc:160
 #: personal/mail/class_mail-methods.inc:505
-#, fuzzy
 msgid "Configuration error"
-msgstr "Configuratie bestand"
+msgstr ""
 
 #: personal/mail/class_mailAccount.inc:640
-#, fuzzy, php-format
+#, php-format
 msgid "No DESC tag in vacation template '%s'!"
-msgstr "Er is geen DESC variabele aanwezig in het afwezigheidsbestand:"
+msgstr ""
 
 #: personal/mail/class_mailAccount.inc:669
 #: personal/mail/class_mailAccount.inc:682
 #: personal/mail/class_mailAccount.inc:716
 #: personal/mail/class_mailAccount.inc:729
-#, fuzzy
 msgid "Permission error"
-msgstr "Rechten"
+msgstr "Permissiefout"
 
 #: personal/mail/class_mailAccount.inc:669
 #: personal/mail/class_mailAccount.inc:682
 #: personal/mail/class_mailAccount.inc:716
 #: personal/mail/class_mailAccount.inc:729
-#, fuzzy
 msgid "You have no permission to modify these addresses!"
-msgstr "U heeft geen toestemming om deze afdeling te verwijderen."
+msgstr ""
 
 #: personal/mail/class_mailAccount.inc:763
 #: personal/mail/class_mailAccount.inc:766
-#, fuzzy
 msgid "unknown"
-msgstr "Onbekend"
+msgstr "onbekend"
 
 #: personal/mail/class_mailAccount.inc:962
-#, fuzzy
 msgid "Mail error saving sieve settings"
-msgstr "Gebruik een eigen sieve script"
+msgstr ""
 
 #: personal/mail/class_mailAccount.inc:1075
 #: personal/mail/class_mailAccount.inc:1083
 #: personal/mail/class_mailAccount.inc:1290
-#, fuzzy
 msgid "Mail reject size"
-msgstr "E-mail grootte"
+msgstr ""
 
 #: personal/mail/class_mailAccount.inc:1087
 #: personal/mail/class_mailAccount.inc:1297
-#, fuzzy
 msgid "Spam folder"
-msgstr "naar map"
+msgstr ""
 
 #: personal/mail/class_mailAccount.inc:1095
 #: personal/mail/class_mailAccount.inc:1305 personal/mail/generic.tpl:160
-#, fuzzy
 msgid "from"
-msgstr "willekeurig"
+msgstr ""
 
 #: personal/mail/class_mailAccount.inc:1099
 #: personal/mail/class_mailAccount.inc:1309
-#, fuzzy
 msgid "to"
-msgstr "Stop"
+msgstr ""
 
 #: personal/mail/class_mailAccount.inc:1110
 #: personal/mail/class_mailAccount.inc:1320
-#, fuzzy
 msgid "Vacation interval"
-msgstr "Afwezigheidsbericht"
+msgstr ""
 
 #: personal/mail/class_mailAccount.inc:1446
 msgid "My account"
 msgstr "Mijn account"
 
 #: personal/mail/class_mailAccount.inc:1455
-#, fuzzy
 msgid "Add vacation information"
-msgstr "Organisatie informatie"
+msgstr ""
 
 #: personal/mail/class_mailAccount.inc:1458
 msgid "Use spam filter"
 msgstr ""
 
 #: personal/mail/class_mailAccount.inc:1459
-#, fuzzy
 msgid "Spam level"
-msgstr "Log prioriteit"
+msgstr ""
 
 #: personal/mail/class_mailAccount.inc:1460
-#, fuzzy
 msgid "Spam mail box"
-msgstr "E-mail grootte"
+msgstr ""
 
 #: personal/mail/class_mailAccount.inc:1462
-#, fuzzy
 msgid "Sieve management"
-msgstr "Beheer"
+msgstr ""
 
 #: personal/mail/class_mailAccount.inc:1464
-#, fuzzy
 msgid "Reject due to mailsize"
-msgstr "Wijs E-mail af indien groter dan"
+msgstr ""
 
 #: personal/mail/class_mailAccount.inc:1467
 #: personal/mail/class_mailAccount.inc:1472
-#, fuzzy
 msgid "Forwarding address"
-msgstr "Primair adres"
+msgstr ""
 
 #: personal/mail/class_mailAccount.inc:1468
-#, fuzzy
 msgid "Local delivery"
-msgstr "Laatste levering"
+msgstr ""
 
 #: personal/mail/class_mailAccount.inc:1469
-#, fuzzy
 msgid "No delivery to own mailbox "
-msgstr "Geen aflevering in eigen mailbox"
+msgstr ""
 
 #: personal/mail/class_mailAccount.inc:1470
-#, fuzzy
 msgid "Mail alternative addresses"
-msgstr "Alternatieve adressen"
+msgstr ""
 
 #: personal/mail/class_mailAccount.inc:1473 personal/mail/generic.tpl:115
 msgid "Use custom sieve script"
@@ -2189,18 +1984,16 @@ msgstr ""
 
 #: personal/mail/class_mail-methods.inc:732
 #: personal/mail/class_mail-methods.inc:733
-#, fuzzy
 msgid "None"
-msgstr "geen"
+msgstr ""
 
 #: personal/mail/class_mail-methods.inc:822
 msgid "Unknown"
 msgstr "Onbekend"
 
 #: personal/mail/class_mail-methods.inc:824
-#, fuzzy
 msgid "Unlimited"
-msgstr "geen limiet"
+msgstr ""
 
 #: personal/mail/copypaste.tpl:26 personal/mail/generic.tpl:246
 msgid "Forward messages to"
@@ -2211,14 +2004,12 @@ msgid "disables all Mail options!"
 msgstr "schakelt alle E-mail opties uit!"
 
 #: personal/mail/generic.tpl:123
-#, fuzzy
 msgid "Sieve Management"
-msgstr "Beheer"
+msgstr ""
 
 #: personal/mail/generic.tpl:144
 msgid "Select if you want to forward mails without getting own copies of them"
-msgstr ""
-"Selecteer indien u E-mail door wil sturen zonder zelf kopieën te ontvangen"
+msgstr "Selecteer indien u E-mail door wil sturen zonder zelf kopieën te ontvangen"
 
 #: personal/mail/generic.tpl:144
 msgid "No delivery to own mailbox"
@@ -2227,8 +2018,7 @@ msgstr "Geen aflevering in eigen mailbox"
 #: personal/mail/generic.tpl:151
 msgid ""
 "Select to automatically response with the vacation message defined below"
-msgstr ""
-"Selecteer om automatisch te reageren met het onderstaande afwezigheidsbericht"
+msgstr "Selecteer om automatisch te reageren met het onderstaande afwezigheidsbericht"
 
 #: personal/mail/generic.tpl:152
 msgid "Activate vacation message"
@@ -2247,9 +2037,8 @@ msgid "Move mails tagged with spam level greater than"
 msgstr "Verplaats E-mails met spam nivo groter dan"
 
 #: personal/mail/generic.tpl:198
-#, fuzzy
 msgid "Choose spam level - smaller values are more sensitive"
-msgstr "Selecteer een spam nivo - kleinere waardes zijn gevoeliger"
+msgstr ""
 
 #: personal/mail/generic.tpl:202
 msgid "to folder"
@@ -2264,553 +2053,5 @@ msgid "MB"
 msgstr "MB"
 
 #: personal/mail/mail_locals.tpl:35
-#, fuzzy
 msgid "Select department"
-msgstr "Selecteer om afdelingen te zien"
-
-#~ msgid "Mail queue"
-#~ msgstr "Mail wachtrij"
-
-#~ msgid "up"
-#~ msgstr "omhoog"
-
-#~ msgid "down"
-#~ msgstr "omlaag"
-
-#~ msgid "All"
-#~ msgstr "Alle"
-
-#~ msgid "no limit"
-#~ msgstr "geen limiet"
-
-#~ msgid "hour"
-#~ msgstr "uur"
-
-#~ msgid "hours"
-#~ msgstr "uren"
-
-#~ msgid "Hold"
-#~ msgstr "Wacht"
-
-#~ msgid "Un hold"
-#~ msgstr "Uit de wacht"
-
-#~ msgid "Not active"
-#~ msgstr "Niet actief"
-
-#, fuzzy
-#~ msgid "Mail queue addon"
-#~ msgstr "Mail wachtrij"
-
-#, fuzzy
-#~ msgid "Unhold all messages"
-#~ msgstr "Plaats alle berichten in wachtstand"
-
-#~ msgid "Hold all messages"
-#~ msgstr "Plaats alle berichten in wachtstand"
-
-#, fuzzy
-#~ msgid "Delete all messages"
-#~ msgstr "Geef alle berichten vrij"
-
-#~ msgid "Requeue all messages"
-#~ msgstr "Plaats alle berichten opnieuw in wachtrij"
-
-#, fuzzy
-#~ msgid "Unhold message"
-#~ msgstr "Bericht in wachtstand plaatsen"
-
-#~ msgid "Hold message"
-#~ msgstr "Bericht in wachtstand plaatsen"
-
-#, fuzzy
-#~ msgid "Delete message"
-#~ msgstr "Verwijder dit bericht"
-
-#, fuzzy
-#~ msgid "Requeue message"
-#~ msgstr "Herplaats dit bericht"
-
-#, fuzzy
-#~ msgid "Get header information"
-#~ msgstr "Algemene gebruikersinformatie"
-
-#~ msgid "Search"
-#~ msgstr "Zoeken"
-
-#~ msgid "Search for"
-#~ msgstr "Zoek naar"
-
-#~ msgid "Please enter a search string here."
-#~ msgstr "Geef hier a.u.b. een zoekwaarde op."
-
-#~ msgid "Select a server"
-#~ msgstr "Selecteer een server"
-
-#~ msgid "with status"
-#~ msgstr "met status"
-
-#~ msgid "within the last"
-#~ msgstr "binnen de laatste"
-
-#~ msgid "Remove all messages"
-#~ msgstr "Verwijder alle berichten"
-
-#~ msgid "Remove all messages from selected servers queue"
-#~ msgstr ""
-#~ "Verwijder alle berichten uit de wachtrij van de geselecteerde server"
-
-#~ msgid "Hold all messages in selected servers queue"
-#~ msgstr ""
-#~ "Plaats alle berichten in de geselecteerde server wachtrij in de wachtstand"
-
-#~ msgid "Release all messages"
-#~ msgstr "Geef alle berichten vrij"
-
-#~ msgid "Release all messages in selected servers queue"
-#~ msgstr "Geef alle berichten in de geselecteerde server wachtrij vrij"
-
-#~ msgid "Requeue all messages in selected servers queue"
-#~ msgstr ""
-#~ "Plaats alle berichten in de geselecteerde server opnieuw in wachtrij"
-
-#~ msgid "Search returned no results"
-#~ msgstr "De zoekopdracht gaf geen resultaten terug"
-
-#~ msgid "ID"
-#~ msgstr "ID"
-
-#~ msgid "Arrival"
-#~ msgstr "Aankomst"
-
-#~ msgid "Sender"
-#~ msgstr "Afzender"
-
-#~ msgid "Recipient"
-#~ msgstr "Ontvanger"
-
-#~ msgid "Status"
-#~ msgstr "Status"
-
-#~ msgid "delete"
-#~ msgstr "Verwijder"
-
-#~ msgid "Delete this message"
-#~ msgstr "Verwijder dit bericht"
-
-#~ msgid "unhold"
-#~ msgstr "uit wachtstand"
-
-#~ msgid "Release message"
-#~ msgstr "Bericht vrijgeven"
-
-#~ msgid "hold"
-#~ msgstr "wachtstand"
-
-#~ msgid "requeue"
-#~ msgstr "herplaatsen"
-
-#~ msgid "Requeue this message"
-#~ msgstr "Herplaats dit bericht"
-
-#~ msgid "header"
-#~ msgstr "header"
-
-#, fuzzy
-#~ msgid "Display header of this message"
-#~ msgstr "Toon de header van dit bericht"
-
-#, fuzzy
-#~ msgid "Cannot connect mail method: %s"
-#~ msgstr "Kan bestand '%s' niet openen."
-
-#, fuzzy
-#~ msgid "Cannot remove mailbox: %s."
-#~ msgstr "Kan de IMAP mailbox niet verwijderen. De server meldt: '%s'."
-
-#, fuzzy
-#~ msgid "Cannot update mailbox: %s."
-#~ msgstr "Kan de IMAP mailbox niet aanmaken. De IMAP server meldt: '%s'."
-
-#, fuzzy
-#~ msgid "Cannot write quota settings: %s."
-#~ msgstr "Kan bestand '%s' niet aanmaken."
-
-#, fuzzy
-#~ msgid "Cannot get list of mailboxes! Error was: %s."
-#~ msgstr "Kan de IMAP mailbox niet verwijderen. De server meldt: '%s'."
-
-#, fuzzy
-#~ msgid "Cannot connect mail method! Error was: %s."
-#~ msgstr "Kan bestand '%s' niet openen."
-
-#, fuzzy
-#~ msgid "Cannot remove mailbox! Error was: %s."
-#~ msgstr "Kan de IMAP mailbox niet verwijderen. De server meldt: '%s'."
-
-#, fuzzy
-#~ msgid "Cannot update mailbox! Error was: %s."
-#~ msgstr "Kan de IMAP mailbox niet aanmaken. De IMAP server meldt: '%s'."
-
-#, fuzzy
-#~ msgid "Specify the mail server where the user will  be hosted on"
-#~ msgstr "Specificeer de mailserver waarop het account opgeslagen wordt"
-
-#~ msgid "Select mail server to place user on"
-#~ msgstr "Selecteer de mail server waarop de gebruiker ondergebracht wordt"
-
-#~ msgid "not defined"
-#~ msgstr "niet gedefiniëerd"
-
-#~ msgid "read"
-#~ msgstr "alleen lezen"
-
-#~ msgid "post"
-#~ msgstr "afleveren & lezen"
-
-#~ msgid "external post"
-#~ msgstr "alleen afleveren"
-
-#~ msgid "append"
-#~ msgstr "afleveren, lezen & kopieren"
-
-#~ msgid "write"
-#~ msgstr "afleveren, lezen & schrijven"
-
-#, fuzzy
-#~ msgid "admin"
-#~ msgstr "Beheerders"
-
-#, fuzzy
-#~ msgid "mail"
-#~ msgstr "E-mail"
-
-#, fuzzy
-#~ msgid "forward address"
-#~ msgstr "Primair adres"
-
-#, fuzzy
-#~ msgid "Cannot forward to users own mail address!"
-#~ msgstr "U probeert een ongeldig E-mail adres toe te voegen"
-
-#, fuzzy
-#~ msgid "Alternate address"
-#~ msgstr "Alternatieve adressen"
-
-#~ msgid "Add"
-#~ msgstr "Toevoegen"
-
-#, fuzzy
-#~ msgid "Unspecified"
-#~ msgstr "niet gedefiniëerd"
-
-#, fuzzy
-#~ msgid "Mails"
-#~ msgstr "E-mail"
-
-#, fuzzy
-#~ msgid "Tasks"
-#~ msgstr "Taak"
-
-#, fuzzy
-#~ msgid "Journals"
-#~ msgstr "uren"
-
-#~ msgid "Contacts"
-#~ msgstr "Contacten"
-
-#, fuzzy
-#~ msgid "Notes"
-#~ msgstr "Nee"
-
-#, fuzzy
-#~ msgid "Inbox"
-#~ msgstr "Index"
-
-#, fuzzy
-#~ msgid "Drafts"
-#~ msgstr "Datum"
-
-#, fuzzy
-#~ msgid "Sent items"
-#~ msgstr "Systeem status"
-
-#, fuzzy
-#~ msgid "Junk mail"
-#~ msgstr "Groepnaam"
-
-#~ msgid ""
-#~ "Please choose valid permission settings. Default permission can't be "
-#~ "emtpy."
-#~ msgstr ""
-#~ "Kies a.u.b. geldige permissie instellingen. Standaard permissies kunnen "
-#~ "niet leeg zijn."
-
-#~ msgid "Mail options"
-#~ msgstr "E-mail opties"
-
-#, fuzzy
-#~ msgid "Waiting for kolab to remove mail properties..."
-#~ msgstr ""
-#~ "Bezig met wachten op het verwijderen van alle mail eigenschappen door "
-#~ "Kolab"
-
-#, fuzzy
-#~ msgid ""
-#~ "Please remove the mail settings first to allow kolab to call its remove "
-#~ "methods!"
-#~ msgstr ""
-#~ "Verwijder a.u.b. eerst het mail account, zodat kolab haar verwijder "
-#~ "procedure kan starten."
-
-#, fuzzy
-#~ msgid "You have no permission to submit a '%s' command!"
-#~ msgstr ""
-#~ "U heeft geen toestemming om een gebruiker aan te maken onder deze 'Basis'."
-
-#, fuzzy
-#~ msgid "No mail servers specified!"
-#~ msgstr "Geen LOG servers gedefiniëerd!"
-
-#~ msgid "Sieve port"
-#~ msgstr "Sieve poort"
-
-#~ msgid "There is no mail method '%s' specified in your gosa.conf available."
-#~ msgstr ""
-#~ "De E-mail methode '%s' opgegeven in uw gosa.conf is niet beschikbaar."
-
-#~ msgid ""
-#~ "Adding your one of your own addresses to the forwarders makes no sense."
-#~ msgstr ""
-#~ "Het toevoegen van een van uw eigen adressen aan de lijst met doorstuur "
-#~ "adressen is niet logisch."
-
-#, fuzzy
-#~ msgid "alternate address"
-#~ msgstr "Alternatieve adressen"
-
-#~ msgid "Delete"
-#~ msgstr "Verwijderen"
-
-#~ msgid "Save"
-#~ msgstr "Opslaan"
-
-#~ msgid "Cancel"
-#~ msgstr "Annuleren"
-
-#~ msgid "Apply"
-#~ msgstr "Toepassen"
-
-#~ msgid "This 'dn' has no valid mail extensions."
-#~ msgstr "Deze 'dn' heeft geen geldige E-mail mogelijkheden."
-
-#~ msgid ""
-#~ "This account has mail features enabled. You can disable them by clicking "
-#~ "below."
-#~ msgstr ""
-#~ "Dit account heeft E-mail mogelijkheden ingeschakeld. U kunt deze "
-#~ "uitschakelen door de knop hieronder te gebruiken."
-
-#~ msgid ""
-#~ "This account has mail features disabled. You can enable them by clicking "
-#~ "below."
-#~ msgstr ""
-#~ "Dit account heeft geen E-mail mogelijkheden. U kunt deze inschakelen door "
-#~ "de knop hieronder te gebruiken."
-
-#, fuzzy
-#~ msgid "You're trying to add an invalid email address "
-#~ msgstr ""
-#~ "U probeert een ongeldig email adres toe te voegen aan de doorstuurlijst."
-
-#~ msgid ""
-#~ "You're trying to add an invalid email address to the list of alternate "
-#~ "addresses."
-#~ msgstr ""
-#~ "U probeert een ongeldig E-mail adres toe te voegen aan de lijst met "
-#~ "alternatieve adressen."
-
-#~ msgid "The address you're trying to add is already used by user"
-#~ msgstr ""
-#~ "Het adres dat u probeert toe te voegen wordt al gebruikt door gebruiker"
-
-#~ msgid "The required field 'Primary address' is not set."
-#~ msgstr "Het vereiste veld 'Primair adres' is leeg."
-
-#~ msgid "Please enter a valid email addres in 'Primary address' field."
-#~ msgstr "Geef a.u.b. een geldig email adres op in het 'Primair adres' veld."
-
-#~ msgid "The primary address you've entered is already in use."
-#~ msgstr "Het primaire adres dat u opgegeven heeft wordt al gebruikt."
-
-#~ msgid "Value in 'Quota size' is not valid."
-#~ msgstr "De waarde opgegeven bij 'Quota grootte' is niet geldig."
-
-#~ msgid "Please specify a vaild mail size for mails to be rejected."
-#~ msgstr ""
-#~ "Geef a.u.b. een geldige E-mail grootte op voor af te wijzen E-mails."
-
-#, fuzzy
-#~ msgid "Please specify a numeric value for header size limit."
-#~ msgstr "Geef a.u.b. een nummerieke waarde op voor opnieuw proberen."
-
-#, fuzzy
-#~ msgid "Please specify a numeric value for mailbox size limit."
-#~ msgstr "Geef a.u.b. een nummerieke waarde op voor verval."
-
-#, fuzzy
-#~ msgid "Please specify a numeric value for message size limit."
-#~ msgstr "Geef a.u.b. een nummerieke waarde op voor verval."
-
-#, fuzzy
-#~ msgid "Required score must be a numeric value."
-#~ msgstr "Toekomstige dagen moet een waarde bevatten."
-
-#, fuzzy
-#~ msgid "Please specify a server identifier."
-#~ msgstr "Geef a.u.b. een geldige id op."
-
-#, fuzzy
-#~ msgid "Please specify a connect url."
-#~ msgstr "Geef a.u.b. een naam op."
-
-#, fuzzy
-#~ msgid "Please specify an admin user."
-#~ msgstr "Geef a.u.b. een naam op."
-
-#, fuzzy
-#~ msgid "Please specify a password for the admin user."
-#~ msgstr "Geef a.u.b. een geldig telefoonnummer op."
-
-#~ msgid "The imap connect string needs to be in the form '%s'."
-#~ msgstr "De imap verbindings string dient in eruit te zien als '%s'."
-
-#~ msgid "The sieve port needs to be numeric."
-#~ msgstr "De sieve poort dient nummeriek te zijn."
-
-#, fuzzy
-#~ msgid "The specified value for '%s' must be a numeric value."
-#~ msgstr "De sieve poort dient nummeriek te zijn."
-
-#, fuzzy
-#~ msgid "Please specify a valid value for '%s'."
-#~ msgstr "Geef a.u.b. een geldige waarde op voor 'url'."
-
-#~ msgid ""
-#~ "This group has mail features enabled. You can disable them by clicking "
-#~ "below."
-#~ msgstr ""
-#~ "Deze groep heeft E-mail mogelijkheden ingeschakeld. U kunt deze "
-#~ "uitschakelen door de knop hieronder te gebruiken."
-
-#~ msgid ""
-#~ "This group has mail features disabled. You can enable them by clicking "
-#~ "below."
-#~ msgstr ""
-#~ "Deze groep heeft geen E-mail mogelijkheden. U kunt deze inschakelen door "
-#~ "de knop hieronder te gebruiken."
-
-#~ msgid "Please enter a valid email address in 'Primary address' field."
-#~ msgstr "Geef a.u.b. een geldig E-mail adres voor het 'Primair adres' op."
-
-#~ msgid "Back"
-#~ msgstr "Terug"
-
-#, fuzzy
-#~ msgid "Mailqueue"
-#~ msgstr "Mail wachtrij"
-
-#, fuzzy
-#~ msgid "Mailqueue addon"
-#~ msgstr "Mail wachtrij"
-
-#~ msgid "This account has no mail extensions."
-#~ msgstr "Dit account heeft E-mail mogelijkheden uitgeschakeld."
-
-#~ msgid "January"
-#~ msgstr "Januari"
-
-#~ msgid "February"
-#~ msgstr "Februari"
-
-#~ msgid "March"
-#~ msgstr "Maart"
-
-#~ msgid "April"
-#~ msgstr "April"
-
-#~ msgid "May"
-#~ msgstr "Mei"
-
-#~ msgid "June"
-#~ msgstr "Juni"
-
-#~ msgid "July"
-#~ msgstr "Juli"
-
-#~ msgid "August"
-#~ msgstr "Augustus"
-
-#~ msgid "September"
-#~ msgstr "September"
-
-#~ msgid "October"
-#~ msgstr "Oktober"
-
-#~ msgid "November"
-#~ msgstr "November"
-
-#~ msgid "December"
-#~ msgstr "December"
-
-#, fuzzy
-#~ msgid "Removing of user/mail account with dn '%s' failed."
-#~ msgstr "Het verwijderen van het E-mail account is mislukt"
-
-#, fuzzy
-#~ msgid "Saving of user/mail account with dn '%s' failed."
-#~ msgstr "Het opslaan van het E-mail account is mislukt"
-
-#~ msgid ""
-#~ "There is no valid mailserver specified, please add one in the system "
-#~ "setup."
-#~ msgstr ""
-#~ "Er is geen geldige mailserver gespecificeerd. Voeg er a.u.b. een toe in "
-#~ "de systeem instellingen."
-
-#~ msgid "You specified Spam settings, but there is no Folder specified."
-#~ msgstr ""
-#~ "U heeft Spam instellingen opgegeven, maar geen mailfolder opgegeven."
-
-#~ msgid "Click the 'Edit' button below to change informations in this dialog"
-#~ msgstr ""
-#~ "Gebruik de 'Bewerk' knop hieronder om de informatie in deze dialoog te "
-#~ "veranderen"
-
-#, fuzzy
-#~ msgid "Saving of object group/mail with dn '%s' failed."
-#~ msgstr "Het opslaan van de objectgroep is mislukt"
-
-#, fuzzy
-#~ msgid "Removing of object group/mail with dn '%s' failed."
-#~ msgstr "Het verwijderen van de objectgroep is mislukt"
-
-#, fuzzy
-#~ msgid "Saving of server services/anti virus with dn '%s' failed."
-#~ msgstr "Het opslaan van het server service object is mislukt"
-
-#, fuzzy
-#~ msgid "Saving of server services/spamassassin with dn '%s' failed."
-#~ msgstr "Het opslaan van het server service object is mislukt"
-
-#, fuzzy
-#~ msgid "Saving server services/mail with dn '%s' failed."
-#~ msgstr "Het opslaan van het server service object is mislukt"
-
-#, fuzzy
-#~ msgid "Removing of groups/mail with dn '%s' failed."
-#~ msgstr "Het verwijderen van de groeps E-mail instellingen is mislukt"
-
-#, fuzzy
-#~ msgid "Saving of groups/mail with dn '%s' failed."
-#~ msgstr "Het opslaan van de groep E-mail instellingen is mislukt"
+msgstr ""

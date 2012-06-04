@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Alessandro Amici <a.amici@bopen.it>, 2005.
 # Giuliano Di Vito <giuliano@opensides.be>, 2011.
@@ -9,16 +9,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
 "POT-Creation-Date: 2012-05-26 17:33+0200\n"
-"PO-Revision-Date: 2012-05-26 09:13+0000\n"
+"PO-Revision-Date: 2012-05-31 14:11+0000\n"
 "Last-Translator: poterealpopolo <giuliano@opensides.be>\n"
-"Language-Team: Italian (http://www.transifex.net/projects/p/FusionDirectory/"
-"language/it/)\n"
-"Language: it\n"
+"Language-Team: Italian (http://www.transifex.net/projects/p/FusionDirectory/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: admin/groups/mail/mail_admins.tpl:4
@@ -122,15 +121,12 @@ msgstr "Posta elettronica"
 msgid ""
 "Remove shared folder from mail server database when entry gets removed in "
 "LDAP"
-msgstr ""
-"Rimuovere la cartella condivisadal server di posta elettronica quando "
-"l'entry è rimossa dall'annuario LDAP"
+msgstr "Rimuovere la cartella condivisadal server di posta elettronica quando l'entry è rimossa dall'annuario LDAP"
 
 #: admin/groups/mail/class_groupMail.inc:326
-msgid "Remove the shared folder and all its contents after saving this account"
-msgstr ""
-"Sopprimi la cartella condivisa e tutto il suo contenuto dopo aver salvato "
-"questo account"
+msgid ""
+"Remove the shared folder and all its contents after saving this account"
+msgstr "Sopprimi la cartella condivisa e tutto il suo contenuto dopo aver salvato questo account"
 
 #: admin/groups/mail/class_groupMail.inc:371
 #: admin/groups/mail/class_groupMail.inc:395
@@ -185,9 +181,7 @@ msgstr "Indirizzo di posta elettronica"
 #: admin/groups/mail/class_groupMail.inc:401
 #: personal/mail/class_mailAccount.inc:358
 msgid "Cannot add primary address to the list of forwarders!"
-msgstr ""
-"Impossibile aggiungere l'indirizzo principale alla lista dei trasferimenti "
-"della posta elettronica"
+msgstr "Impossibile aggiungere l'indirizzo principale alla lista dei trasferimenti della posta elettronica"
 
 #: admin/groups/mail/class_groupMail.inc:443
 #: personal/mail/class_mailAccount.inc:402
@@ -226,8 +220,7 @@ msgstr "Impossibile rimuovere l'account : %s"
 #: admin/groups/mail/class_groupMail.inc:831
 #, php-format
 msgid "Cannot update shared folder permissions: %s"
-msgstr ""
-"Impossibile aggiornare le autorizzazioni per la cartella condivisa : %s"
+msgstr "Impossibile aggiornare le autorizzazioni per la cartella condivisa : %s"
 
 #: admin/groups/mail/class_groupMail.inc:690
 msgid "New"
@@ -250,9 +243,7 @@ msgstr "Impossibile impostare le quote : %s"
 msgid ""
 "The group 'cn' has changed. It can't be changed due to the fact that mail "
 "method '%s' relies on it!"
-msgstr ""
-"Il 'cn' del gruppo è stato modificato. Non puó cambiare perché l'algoritmo "
-"di posta elettronica '%s' dipende proprio da questo 'cn' !"
+msgstr "Il 'cn' del gruppo è stato modificato. Non puó cambiare perché l'algoritmo di posta elettronica '%s' dipende proprio da questo 'cn' !"
 
 #: admin/groups/mail/class_groupMail.inc:879
 #: admin/groups/mail/paste_mail.tpl:8 admin/groups/mail/mail.tpl:7
@@ -276,9 +267,7 @@ msgstr "Dimensione massima del messaggio"
 
 #: admin/groups/mail/class_groupMail.inc:915
 msgid "You need to set the maximum mail size in order to reject anything."
-msgstr ""
-"Devi specificare la dimensione massima del messaggio per poterne rifiutare "
-"alcuni."
+msgstr "Devi specificare la dimensione massima del messaggio per poterne rifiutare alcuni."
 
 #: admin/groups/mail/class_groupMail.inc:919
 #: admin/groups/mail/class_groupMail.inc:1024
@@ -353,8 +342,7 @@ msgstr "Server"
 
 #: admin/groups/mail/mail.tpl:42 personal/mail/generic.tpl:37
 msgid "Specify the mail server where the user will be hosted on"
-msgstr ""
-"Specifica il server di posta elettronica che ospiterà l'account dell'utente"
+msgstr "Specifica il server di posta elettronica che ospiterà l'account dell'utente"
 
 #: admin/groups/mail/mail.tpl:56 personal/mail/generic.tpl:53
 msgid "Quota usage"
@@ -390,9 +378,7 @@ msgstr "Opzioni avanzate di posta elettronica"
 
 #: admin/groups/mail/mail.tpl:193 personal/mail/generic.tpl:285
 msgid "Select if user can only send and receive inside his own domain"
-msgstr ""
-"Seleziona se l'utente può inviare e ricevere messaggi solo all'interno del "
-"suo dominio"
+msgstr "Seleziona se l'utente può inviare e ricevere messaggi solo all'interno del suo dominio"
 
 #: admin/groups/mail/mail.tpl:195 personal/mail/generic.tpl:287
 msgid "User is only allowed to send and receive local mails"
@@ -545,14 +531,12 @@ msgstr "Avvia il servizio POP3 SSL"
 #: admin/systems/services/imap/goImapServer.tpl:99
 #: admin/systems/services/mail/goMailServer.tpl:204
 msgid "The server must be saved before you can use the status flag."
-msgstr ""
-"Il server dev'essere registrato prima che tu possa usare il flag di stato."
+msgstr "Il server dev'essere registrato prima che tu possa usare il flag di stato."
 
 #: admin/systems/services/imap/goImapServer.tpl:101
 #: admin/systems/services/mail/goMailServer.tpl:206
 msgid "The service must be saved before you can use the status flag."
-msgstr ""
-"Il server dev'essere registrato prima che tu possa usare il flag di stato."
+msgstr "Il server dev'essere registrato prima che tu possa usare il flag di stato."
 
 #: admin/systems/services/imap/goImapServer.tpl:104
 #: admin/systems/services/mail/goMailServer.tpl:209
@@ -653,8 +637,7 @@ msgstr "Dimensione massima dell'intestazione dei messaggi"
 
 #: admin/systems/services/mail/goMailServer.tpl:21
 msgid "This value specifies the maximal header size."
-msgstr ""
-"Questo valore specifica la dimensione massima dell'intestazione dei messaggi."
+msgstr "Questo valore specifica la dimensione massima dell'intestazione dei messaggi."
 
 #: admin/systems/services/mail/goMailServer.tpl:21
 #: admin/systems/services/mail/goMailServer.tpl:31
@@ -686,7 +669,7 @@ msgstr "Elimina"
 
 #: admin/systems/services/mail/goMailServer.tpl:83
 msgid "Domains and routing"
-msgstr ""
+msgstr "Domini e Routing"
 
 #: admin/systems/services/mail/goMailServer.tpl:93
 msgid "Postfix is responsible for the following domains:"
@@ -694,7 +677,7 @@ msgstr "Postfix è responsabile dei seguenti domini :"
 
 #: admin/systems/services/mail/goMailServer.tpl:114
 msgid "Transports"
-msgstr ""
+msgstr "Trasporti"
 
 #: admin/systems/services/mail/goMailServer.tpl:123
 msgid "Select a transport protocol."
@@ -759,7 +742,7 @@ msgstr "Attiva l'uso del metodo di filtraggio bayesiano"
 
 #: admin/systems/services/spam/class_goSpamServer.inc:364
 msgid "Enabled bayes auto learning"
-msgstr ""
+msgstr "Abilitato auto apprendimento Bayes"
 
 #: admin/systems/services/spam/class_goSpamServer.inc:365
 #: admin/systems/services/spam/goSpamServer.tpl:75
@@ -889,7 +872,7 @@ msgstr "Numero massimo di ricorsioni"
 
 #: admin/systems/services/virus/class_goVirusServer.inc:259
 msgid "Anti virus user"
-msgstr ""
+msgstr "Utente dell'antivirus"
 
 #: admin/ogroups/mail/paste_mail.tpl:7
 msgid "Please enter a mail address"
@@ -939,22 +922,18 @@ msgstr "Errore IMAP"
 #: personal/mail/class_mail-methods-cyrus.inc:241
 #, php-format
 msgid "Cannot modify IMAP mailbox quota: %s"
-msgstr ""
-"Impossibile modificare la quota della casella di posta elettronica IMAP :%s"
+msgstr "Impossibile modificare la quota della casella di posta elettronica IMAP :%s"
 
 #: personal/mail/class_mail-methods-cyrus.inc:317
 msgid "Mail info"
-msgstr ""
+msgstr "informazioni Mail"
 
 #: personal/mail/class_mail-methods-cyrus.inc:318
 #, php-format
 msgid ""
 "LDAP entry has been removed but cyrus mailbox (%s) is kept.\n"
 "Please delete it manually!"
-msgstr ""
-"L'entry LDAP è stata eliminata, ma la casella di posta elettronica (%s) è "
-"ancora presente in cyrus.\n"
-"Elimina manualmente !"
+msgstr "L'entry LDAP è stata eliminata, ma la casella di posta elettronica (%s) è ancora presente in cyrus.\nElimina manualmente !"
 
 #: personal/mail/class_mail-methods-cyrus.inc:402
 #: personal/mail/class_mail-methods-cyrus.inc:439
@@ -1036,9 +1015,7 @@ msgstr "L'analisi è riuscita"
 msgid ""
 "The specified mail server '%s' does not exist within the FusionDirectory "
 "configuration."
-msgstr ""
-"Il server di posta elettronica specificato ('%s') non è presente nella "
-"configurazione di FusionDirectory."
+msgstr "Il server di posta elettronica specificato ('%s') non è presente nella configurazione di FusionDirectory."
 
 #: personal/mail/sieve/class_sieveManagement.inc:203
 msgid "No script name specified!"
@@ -1264,8 +1241,7 @@ msgstr "Modifica lo script"
 #: personal/mail/sieve/class_sieveManagement.inc:674
 #, php-format
 msgid "Can't log into SIEVE server. Server says '%s'."
-msgstr ""
-"Impossibile connettersi al server SIEVE per la seguente ragione : '%s'."
+msgstr "Impossibile connettersi al server SIEVE per la seguente ragione : '%s'."
 
 #: personal/mail/sieve/class_sieveManagement.inc:772
 msgid "Cannot insert element at the requested position!"
@@ -1298,11 +1274,11 @@ msgstr "Default"
 
 #: personal/mail/sieve/class_sieveElement_If.inc:28
 msgid "Domain part"
-msgstr ""
+msgstr "parte Dominio"
 
 #: personal/mail/sieve/class_sieveElement_If.inc:29
 msgid "Local part"
-msgstr ""
+msgstr "parte Locale"
 
 #: personal/mail/sieve/class_sieveElement_If.inc:33
 msgid "Case insensitive"
@@ -1384,7 +1360,7 @@ msgstr "Per il momento non è stato specificato niente"
 
 #: personal/mail/sieve/class_sieveElement_If.inc:595
 msgid "Invalid type of address part."
-msgstr ""
+msgstr "Tipo non valido di parte dell'indirizzo."
 
 #: personal/mail/sieve/class_sieveElement_If.inc:605
 msgid "Invalid match type given."
@@ -1401,16 +1377,12 @@ msgstr "Specifica un operatore valido."
 #: personal/mail/sieve/class_sieveElement_If.inc:654
 msgid ""
 "Invalid character found in address attribute. Quotes are not allowed here."
-msgstr ""
-"C'è un carattere non valido nell'indirizzo. Gli apici e le virgolette non "
-"sono permessi."
+msgstr "C'è un carattere non valido nell'indirizzo. Gli apici e le virgolette non sono permessi."
 
 #: personal/mail/sieve/class_sieveElement_If.inc:669
 msgid ""
 "Invalid character found in value attribute. Quotes are not allowed here."
-msgstr ""
-"C'è un carattere non valido nell'attributo. Gli apici e le virgolette non "
-"sono permessi."
+msgstr "C'è un carattere non valido nell'attributo. Gli apici e le virgolette non sono permessi."
 
 #: personal/mail/sieve/class_sieveElement_If.inc:727
 #: personal/mail/sieve/class_sieveElement_If.inc:1060
@@ -1472,9 +1444,7 @@ msgstr "Inserisci un indirizzo di posta elettronica qui"
 
 #: personal/mail/sieve/class_sieveElement_Reject.inc:21
 msgid "Invalid character found, quotes are not allowed in a reject message."
-msgstr ""
-"Carattere non valido, gli apici e le virgolette non sono permessi in un "
-"messaggio di rifiuto."
+msgstr "Carattere non valido, gli apici e le virgolette non sono permessi in un messaggio di rifiuto."
 
 #: personal/mail/sieve/class_sieveElement_Reject.inc:37
 msgid "Your reject text here"
@@ -1486,9 +1456,7 @@ msgstr "Il tuo commento qui"
 
 #: personal/mail/sieve/class_sieveElement_Vacation.inc:148
 msgid "Alternative sender address must be a valid email addresses."
-msgstr ""
-"L'indirizzo di destinazione alternativo dev'essere un indirizzo di posta "
-"elettronica valido."
+msgstr "L'indirizzo di destinazione alternativo dev'essere un indirizzo di posta elettronica valido."
 
 #: personal/mail/sieve/templates/element_vacation.tpl:13
 msgid "Vacation Message"
@@ -1503,7 +1471,7 @@ msgstr "Vista normale"
 
 #: personal/mail/sieve/templates/element_vacation.tpl:21
 msgid "Release interval"
-msgstr ""
+msgstr "intervallo di rilascio"
 
 #: personal/mail/sieve/templates/element_vacation.tpl:25
 msgid "days"
@@ -1528,10 +1496,7 @@ msgstr "Importa uno script sieve"
 msgid ""
 "Please select the sieve script you want to import. Use the import button to "
 "import the script or the cancel button to abort."
-msgstr ""
-"Scegli lo script sieve che vuoi importare. Usa il pulsante 'importa' per "
-"cominciare l'importazione dello script altrimenti premi 'cancella' per "
-"annullare."
+msgstr "Scegli lo script sieve che vuoi importare. Usa il pulsante 'importa' per cominciare l'importazione dello script altrimenti premi 'cancella' per annullare."
 
 #: personal/mail/sieve/templates/import_script.tpl:5
 msgid "Script to import"
@@ -1583,15 +1548,12 @@ msgstr "Elenco degli script di sieve"
 msgid ""
 "Connection to the sieve server could not be established, the "
 "authentification attribute is empty."
-msgstr ""
-"La connessione verso il server sieve non puó essere stabilita, l'attributo "
-"per l'identificazione è vuoto."
+msgstr "La connessione verso il server sieve non puó essere stabilita, l'attributo per l'identificazione è vuoto."
 
 #: personal/mail/sieve/templates/management.tpl:6
 msgid ""
 "Please verify that the attributes uid and mail are not empty and try again."
-msgstr ""
-"Verifica che gli attributi 'uid' e 'mail' non siano vuoti e poi riprova."
+msgstr "Verifica che gli attributi 'uid' e 'mail' non siano vuoti e poi riprova."
 
 #: personal/mail/sieve/templates/management.tpl:12
 msgid "Connection to the sieve server could not be established."
@@ -1603,11 +1565,9 @@ msgstr "Probabilmente l'account per Sieve non è ancora stato creato."
 
 #: personal/mail/sieve/templates/management.tpl:19
 msgid ""
-"Be careful. All your changes will be saved directly to sieve, if you use the "
-"save button below."
-msgstr ""
-"Fai attenzione. Ogni modifica sarà registrata direttamente in sieve, quando "
-"userai il pulsante qui sotto."
+"Be careful. All your changes will be saved directly to sieve, if you use the"
+" save button below."
+msgstr "Fai attenzione. Ogni modifica sarà registrata direttamente in sieve, quando userai il pulsante qui sotto."
 
 #: personal/mail/sieve/templates/management.tpl:22
 msgid "Create new script"
@@ -1690,7 +1650,7 @@ msgstr "Scegli il tipo di corrispondenza"
 
 #: personal/mail/sieve/templates/element_size.tpl:20
 msgid "Select value unit"
-msgstr ""
+msgstr "Selezionare un'unità di valore"
 
 #: personal/mail/sieve/templates/edit_frame_base.tpl:6
 msgid "Export"
@@ -1743,22 +1703,16 @@ msgstr "Modifica"
 
 #: personal/mail/sieve/templates/remove_script.tpl:6
 msgid ""
-"Please double check if your really want to do this since there is no way for "
-"FusionDirectory to get your data back."
-msgstr ""
-"Assicurati che vuoi davvero eseguire l'azione visto che poi sarà impossibile "
-"per FusionDirectory recuperare i tuoi dati."
+"Please double check if your really want to do this since there is no way for"
+" FusionDirectory to get your data back."
+msgstr "Assicurati che vuoi davvero eseguire l'azione visto che poi sarà impossibile per FusionDirectory recuperare i tuoi dati."
 
 #: personal/mail/sieve/templates/remove_script.tpl:10
 msgid ""
 "Best thing to do before performing this action would be to save the current "
 "script in a file. So - if you've done so - press 'Delete' to continue or "
 "'Cancel' to abort."
-msgstr ""
-"La migliore cosa da fare, prima di eseguire questa azione, potrebbe essere "
-"quella di registrare l'attuale script in un file. Quindi - se lo hai già "
-"fatto - premi'Cancella' per continuare altrimenti  'Annulla' per "
-"interrompere."
+msgstr "La migliore cosa da fare, prima di eseguire questa azione, potrebbe essere quella di registrare l'attuale script in un file. Quindi - se lo hai già fatto - premi'Cancella' per continuare altrimenti  'Annulla' per interrompere."
 
 #: personal/mail/sieve/templates/element_redirect.tpl:18
 msgid "Redirect mail to following recipients"
@@ -1819,11 +1773,9 @@ msgstr "operatore"
 
 #: personal/mail/sieve/templates/create_script.tpl:2
 msgid ""
-"Please enter the name for the new script below. Script names must consist of "
-"lower case characters only."
-msgstr ""
-"Inserisci il nome del nuovo script qui sotto. I nomi degli script devono "
-"essere composti da sole lettere minuscole."
+"Please enter the name for the new script below. Script names must consist of"
+" lower case characters only."
+msgstr "Inserisci il nome del nuovo script qui sotto. I nomi degli script devono essere composti da sole lettere minuscole."
 
 #: personal/mail/sieve/templates/create_script.tpl:8
 msgid "Script name"
@@ -1941,15 +1893,13 @@ msgstr "sconosciuto"
 
 #: personal/mail/class_mailAccount.inc:962
 msgid "Mail error saving sieve settings"
-msgstr ""
-"Errore del server di posta elettronica quando si cercano di salvare le "
-"impostazioni dello script sieve "
+msgstr "Errore del server di posta elettronica quando si cercano di salvare le impostazioni dello script sieve "
 
 #: personal/mail/class_mailAccount.inc:1075
 #: personal/mail/class_mailAccount.inc:1083
 #: personal/mail/class_mailAccount.inc:1290
 msgid "Mail reject size"
-msgstr ""
+msgstr "Dimensioni della posta da respingere"
 
 #: personal/mail/class_mailAccount.inc:1087
 #: personal/mail/class_mailAccount.inc:1297
@@ -1989,7 +1939,7 @@ msgstr "Livello per gli spam"
 
 #: personal/mail/class_mailAccount.inc:1460
 msgid "Spam mail box"
-msgstr ""
+msgstr "Mail box Spam"
 
 #: personal/mail/class_mailAccount.inc:1462
 msgid "Sieve management"
@@ -2061,8 +2011,7 @@ msgstr "Gestione di Sieve"
 
 #: personal/mail/generic.tpl:144
 msgid "Select if you want to forward mails without getting own copies of them"
-msgstr ""
-"Seleziona se intendi inoltrare le mail senza mantenerne una copia locale"
+msgstr "Seleziona se intendi inoltrare le mail senza mantenerne una copia locale"
 
 #: personal/mail/generic.tpl:144
 msgid "No delivery to own mailbox"
@@ -2091,9 +2040,7 @@ msgstr "Muovi le mail marcate con un livello di Spam superiore a"
 
 #: personal/mail/generic.tpl:198
 msgid "Choose spam level - smaller values are more sensitive"
-msgstr ""
-"Scegli il livello di Spam - i valori più bassi indicano una maggiore "
-"sensibilità"
+msgstr "Scegli il livello di Spam - i valori più bassi indicano una maggiore sensibilità"
 
 #: personal/mail/generic.tpl:202
 msgid "to folder"
@@ -2110,141 +2057,3 @@ msgstr "MB"
 #: personal/mail/mail_locals.tpl:35
 msgid "Select department"
 msgstr "Scegli un  dipartimento"
-
-#~ msgid "Mail queue"
-#~ msgstr "Coda della posta"
-
-#~ msgid "up"
-#~ msgstr "sopra"
-
-#~ msgid "down"
-#~ msgstr "sotto"
-
-#~ msgid "All"
-#~ msgstr "Tutto"
-
-#~ msgid "no limit"
-#~ msgstr "senza limite"
-
-#~ msgid "hour"
-#~ msgstr "ora"
-
-#~ msgid "hours"
-#~ msgstr "ore"
-
-#~ msgid "Hold"
-#~ msgstr "Mettere in attesa"
-
-#~ msgid "Un hold"
-#~ msgstr "Togliere dalla fila d'attesa"
-
-#~ msgid "Not active"
-#~ msgstr "Non attivo"
-
-#~ msgid "Mail queue addon"
-#~ msgstr "Estensione per la coda del server di posta elettronica"
-
-#~ msgid "Unhold all messages"
-#~ msgstr "Togli tutti i messaggi dalla lista d'attesa"
-
-#~ msgid "Hold all messages"
-#~ msgstr "Metti tutti i messaggi nella lista d'attesa"
-
-#~ msgid "Delete all messages"
-#~ msgstr "Elimina tutti i messaggi"
-
-#~ msgid "Requeue all messages"
-#~ msgstr "Rimetti tutti i messaggi nella coda"
-
-#~ msgid "Unhold message"
-#~ msgstr "Togli tutti i messaggi dalla lista d'attesa"
-
-#~ msgid "Hold message"
-#~ msgstr "Metti nella lista d'attesa"
-
-#~ msgid "Delete message"
-#~ msgstr "Elimina questo messaggio"
-
-#~ msgid "Requeue message"
-#~ msgstr "Rimetti il messaggio nella fila d'attesa"
-
-#~ msgid "Get header information"
-#~ msgstr "Ottieni le informazioni sulle intestazioni dei messaggi"
-
-#~ msgid "Search"
-#~ msgstr "Cerca"
-
-#~ msgid "Search for"
-#~ msgstr "Cerca"
-
-#~ msgid "Please enter a search string here."
-#~ msgstr "Inserisci una stringa  di caratteri da cercare."
-
-#~ msgid "Select a server"
-#~ msgstr "Scegli un server"
-
-#~ msgid "with status"
-#~ msgstr "con lo stato"
-
-#~ msgid "within the last"
-#~ msgstr "durante l'ultima"
-
-#~ msgid "Remove all messages"
-#~ msgstr "Elimina tutti i messaggi"
-
-#~ msgid "Remove all messages from selected servers queue"
-#~ msgstr "Elimina tutti i messaggi dalle code dei server selezionati"
-
-#~ msgid "Hold all messages in selected servers queue"
-#~ msgstr "Metti in attesa tutti i messaggi nelle code dei server selezionati"
-
-#~ msgid "Release all messages"
-#~ msgstr "Distribuisci tutti i messaggi"
-
-#~ msgid "Release all messages in selected servers queue"
-#~ msgstr "Distribuisci tutti i messaggi nelle code dei server selezionati"
-
-#~ msgid "Requeue all messages in selected servers queue"
-#~ msgstr "Rimetti tutti i messaggi nelle code dei server selezionati"
-
-#~ msgid "Search returned no results"
-#~ msgstr "La ricerca si è conclusa senza risultati "
-
-#~ msgid "ID"
-#~ msgstr "ID"
-
-#~ msgid "Sender"
-#~ msgstr "Mittente"
-
-#~ msgid "Recipient"
-#~ msgstr "Destinatario"
-
-#~ msgid "Status"
-#~ msgstr "Stato"
-
-#~ msgid "delete"
-#~ msgstr "elimina"
-
-#~ msgid "Delete this message"
-#~ msgstr "Elimina questo messaggio"
-
-#~ msgid "unhold"
-#~ msgstr "Togli dalla lista d'attesa"
-
-#~ msgid "Release message"
-#~ msgstr "Distribuisci il messaggio"
-
-#~ msgid "hold"
-#~ msgstr "Metti nella lista d'attesa"
-
-#~ msgid "requeue"
-#~ msgstr "Rimetti nella coda"
-
-#~ msgid "Requeue this message"
-#~ msgstr "Rimetti questo messaggio nella coda"
-
-#~ msgid "header"
-#~ msgstr "intestazione"
-
-#~ msgid "Display header of this message"
-#~ msgstr "Mostra l'intestazione di questo messaggio"

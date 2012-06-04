@@ -1,24 +1,21 @@
-# translation of messages.po to
-#
-# Copyright (C) 2003 GONICUS GmbH, Germany
-# Copyright (C) 2011 FusionDirectory Project
-# This file is distributed under the same license as the FusionDirectory package.
-#
-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: admin\n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version: FusionDirectory\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
 "POT-Creation-Date: 2012-05-26 17:33+0200\n"
-"PO-Revision-Date: 2010-01-28 23:56+0100\n"
-"Last-Translator: \n"
-"Language-Team: Spanish <>\n"
-"Language: es\n"
+"PO-Revision-Date: 2012-01-13 17:40+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/FusionDirectory/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.0\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: admin/sudo/sudo-filter.tpl:3
 msgid "Filter"
@@ -146,19 +143,14 @@ msgid "Warning"
 msgstr "Aviso"
 
 #: admin/sudo/remove.tpl:6
-#, fuzzy
 msgid ""
 "Please double check if you really want to do this since there is no way for "
 "FusionDirectory to get your data back."
 msgstr ""
-"Si está seguro de lo que quiere hacer pulse dos veces, ya que no hay forma "
-"de que FusionDirectory pueda recuperar posteriormente esa información"
 
 #: admin/sudo/remove.tpl:10
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr ""
-"Entonces, si esta seguro, presione <i>Eliminar</i> para continuar o "
-"<i>Cancelar</i> para Abortar."
+msgstr "Entonces, si esta seguro, presione <i>Eliminar</i> para continuar o <i>Cancelar</i> para Abortar."
 
 #: admin/sudo/paste_generic.tpl:1 admin/sudo/generic.tpl:3
 #: admin/sudo/generic.tpl:30
@@ -230,143 +222,3 @@ msgstr "Comandos"
 #: admin/sudo/generic.tpl:132
 msgid "Run as"
 msgstr "Ejecutar como"
-
-#, fuzzy
-#~ msgid "List of users and groups"
-#~ msgstr "Usuarios y grupos"
-
-#, fuzzy
-#~ msgid "Description name"
-#~ msgstr "Descripción"
-
-#~ msgid "Add"
-#~ msgstr "Añadir"
-
-#~ msgid "Base"
-#~ msgstr "Base"
-
-#~ msgid "Update"
-#~ msgstr "Actualizar"
-
-#~ msgid "Submit"
-#~ msgstr "Enviar"
-
-#~ msgid "Select systems to add"
-#~ msgstr "Seleccione los sistemas a añadir"
-
-#~ msgid "Display systems of department"
-#~ msgstr "Mostrar los sistemas del departamento"
-
-#~ msgid "Choose the department the search will be based on"
-#~ msgstr "Escoja el departamento base de la búsqueda"
-
-#~ msgid "Display systems matching"
-#~ msgstr "Mostrar sistemas que coincidan con"
-
-#~ msgid "Regular expression for matching addresses"
-#~ msgstr "Expresiones regulares para buscar direcciones"
-
-#, fuzzy
-#~ msgid "List of systems"
-#~ msgstr "Lista de usuarios"
-
-#~ msgid "Server"
-#~ msgstr "Servidor"
-
-#~ msgid "Workstation"
-#~ msgstr "Estación de trabajo"
-
-#~ msgid "Terminal"
-#~ msgstr "Terminal"
-
-#~ msgid "Show users"
-#~ msgstr "Mostrar usuarios"
-
-#~ msgid "Show groups"
-#~ msgstr "Mostrar grupos"
-
-#~ msgid "Show servers"
-#~ msgstr "Mostrar servidores"
-
-#~ msgid "Show workstations"
-#~ msgstr "Mostrar estaciones de trabajo"
-
-#~ msgid "Show terminals"
-#~ msgstr "Mostrar terminales"
-
-#~ msgid "If you're sure, press 'Delete' to continue or 'Cancel' to abort."
-#~ msgstr ""
-#~ "Entonces, si esta seguro, presione <i>Eliminar</i> para continuar o "
-#~ "<i>Cancelar</i> para Abortar."
-
-#~ msgid "Select the target objects for your scheduled action."
-#~ msgstr "Seleccionar los objetos objetivos para su acción programada."
-
-#~ msgid "Available systems"
-#~ msgstr "Sistemas disponibles"
-
-#~ msgid "Object name"
-#~ msgstr "Nombre de objeto"
-
-#~ msgid "Select to see terminals"
-#~ msgstr "Seleccione para ver los terminales"
-
-#~ msgid "Select to see servers"
-#~ msgstr "Seleccione para mostrar los servidores"
-
-#~ msgid "Select to see workstations"
-#~ msgstr "Seleccione para mostrar las estaciones de trabajo"
-
-#~ msgid "Regular expression for matching group names"
-#~ msgstr "Expresión regular para buscar nombres de grupos"
-
-#~ msgid "Select the target objects"
-#~ msgstr "Seleccione los objetos"
-
-#~ msgid "Available members"
-#~ msgstr "Miembros disponibles"
-
-#~ msgid "Select to see users"
-#~ msgstr "Seleccione para mostrar los usuarios"
-
-#~ msgid "Select to see groups"
-#~ msgstr "Seleccione para mostrar grupos"
-
-#~ msgid "Apply"
-#~ msgstr "Aplicar"
-
-#~ msgid "Sudo role administration"
-#~ msgstr "Administración de rol Sudo"
-
-#~ msgid "Select all"
-#~ msgstr "Seleccione todos"
-
-#~ msgid "Department"
-#~ msgstr "Departamento"
-
-#~ msgid "Regular expression for matching role names"
-#~ msgstr "Expresión regular para buscar nombres de roles"
-
-#~ msgid "Regular expression for matching role member names"
-#~ msgstr "Expresión regular para buscar miembros de roles"
-
-#~ msgid "Edit this entry"
-#~ msgstr "Editar esta entrada"
-
-#~ msgid "Delete this entry"
-#~ msgstr "Eliminar esta entrada"
-
-#~ msgid "Number of listed roles"
-#~ msgstr "Número de roles mostrados"
-
-#~ msgid "Sudo roles"
-#~ msgstr "Roles Sudo"
-
-#~ msgid "Manage sudo roles"
-#~ msgstr "Administrar roles Sudo"
-
-#~ msgid "Permission"
-#~ msgstr "Permiso"
-
-#~ msgid "Permission error"
-#~ msgstr "Error de Permisos"

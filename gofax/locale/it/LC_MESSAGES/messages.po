@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Alessandro Amici <a.amici@bopen.it>, 2005.
 # Giuliano Di Vito <giuliano@opensides.be>, 2011.
@@ -9,16 +9,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
 "POT-Creation-Date: 2012-05-26 17:33+0200\n"
-"PO-Revision-Date: 2012-05-25 15:05+0000\n"
+"PO-Revision-Date: 2012-05-31 14:02+0000\n"
 "Last-Translator: poterealpopolo <giuliano@opensides.be>\n"
-"Language-Team: Italian (http://www.transifex.net/projects/p/FusionDirectory/"
-"language/it/)\n"
-"Language: it\n"
+"Language-Team: Italian (http://www.transifex.net/projects/p/FusionDirectory/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: html/getfax.php:63
@@ -78,15 +77,11 @@ msgstr "Avvertimento"
 msgid ""
 "Please double check if you really want to do this since there is no way for "
 "FusionDirectory to get your data back."
-msgstr ""
-"Assicurati che vuoi davvero eseguire l'azione visto che poi sarà impossibile "
-"per FusionDirectory recuperare i tuoi dati."
+msgstr "Assicurati che vuoi davvero eseguire l'azione visto che poi sarà impossibile per FusionDirectory recuperare i tuoi dati."
 
 #: admin/blocklists/remove.tpl:10
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr ""
-"Quindi - se sei sicuro - premi 'Rimuovi' per continuare oppure 'Annulla' per "
-"interrompere."
+msgstr "Quindi - se sei sicuro - premi 'Rimuovi' per continuare oppure 'Annulla' per interrompere."
 
 #: admin/blocklists/paste_generic.tpl:3 admin/blocklists/generic.tpl:8
 msgid "List name"
@@ -120,7 +115,7 @@ msgstr "Fax blocklists"
 
 #: admin/blocklists/class_blocklistGeneric.inc:30
 msgid "This is the part of the fax plugin managing blacklist"
-msgstr ""
+msgstr "Questa è la parte del plugin fax per la gestione delle blacklist"
 
 #: admin/blocklists/class_blocklistGeneric.inc:124
 #: admin/blocklists/class_blocklistGeneric.inc:174
@@ -261,7 +256,7 @@ msgstr "Rapporti dei FAX"
 
 #: addons/faxreports/class_faxreport.inc:27
 msgid "This plugin show the fax reports"
-msgstr ""
+msgstr "Questo plugin mostra i rapporti fax"
 
 #: addons/faxreports/class_faxreport.inc:135
 msgid "No fax server found!"
@@ -437,9 +432,7 @@ msgstr "Cognome"
 
 #: personal/faxaccount/main.inc:126
 msgid "Click the 'Edit' button below to change informations in this dialog"
-msgstr ""
-"Click sul bottone 'Modifica' qui sotto per cambiare le informazioni in "
-"questa finestra"
+msgstr "Click sul bottone 'Modifica' qui sotto per cambiare le informazioni in questa finestra"
 
 #: personal/faxaccount/main.inc:135
 msgid "FAX settings"
@@ -532,9 +525,7 @@ msgstr "Numero di Fax"
 
 #: personal/faxaccount/class_gofaxAccount.inc:660
 msgid "Mail delivery is requested without target address!"
-msgstr ""
-"Hai chiesto di inviare un messaggio senza aver definito l'indirizzo e-mail "
-"del destinatario !"
+msgstr "Hai chiesto di inviare un messaggio senza aver definito l'indirizzo e-mail del destinatario !"
 
 #: personal/faxaccount/class_gofaxAccount.inc:662
 msgid "Mail address"
@@ -586,12 +577,11 @@ msgstr "Modifica multipla"
 
 #: personal/faxaccount/generic.tpl:29
 msgid "Specify the GOfax communication language for fax to mail gateway"
-msgstr ""
+msgstr "Specificare la lingua di comunicazione dei fax per GOfax al gateway di posta"
 
 #: personal/faxaccount/generic.tpl:41
 msgid "Specify delivery format for fax to mail gateway"
-msgstr ""
-"Indica il formato di recapito dei fax verso la passerella del server mail"
+msgstr "Indica il formato di recapito dei fax verso la passerella del server mail"
 
 #: personal/faxaccount/generic.tpl:54
 msgid "Delivery methods"
@@ -620,15 +610,3 @@ msgstr "Blocklists per i fax in arrivo"
 #: personal/faxaccount/generic.tpl:133
 msgid "Blocklists for outgoing fax"
 msgstr "Blocklists per i fax in partenza"
-
-#~ msgid "Could not select database!"
-#~ msgstr "Impossibile selezionare il database!"
-
-#~ msgid "Configuration error"
-#~ msgstr "Errore di configurazione"
-
-#~ msgid "Missing %s PHP extension!"
-#~ msgstr "Impossibile trovare l'estensione PHP %s !"
-
-#~ msgid "Cannot select %s database!"
-#~ msgstr "Impossibile selezionare il database %s !"

@@ -1,24 +1,21 @@
-# translation of messages.po to
-#
-# Copyright (C) 2003 GONICUS GmbH, Germany
-# Copyright (C) 2011 FusionDirectory Project
-# This file is distributed under the same license as the FusionDirectory package.
-#
-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: admin\n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version: FusionDirectory\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
 "POT-Creation-Date: 2012-05-26 17:33+0200\n"
-"PO-Revision-Date: 2010-01-24 00:19+0100\n"
-"Last-Translator: \n"
-"Language-Team: Spanish <>\n"
-"Language: es\n"
+"PO-Revision-Date: 2012-01-13 11:15+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/FusionDirectory/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.0\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: admin/systems/services/dhcp/class_dhcpPool.inc:104
 #: admin/systems/services/dhcp/class_dhcpPool.inc:112
@@ -120,23 +117,16 @@ msgstr "Aviso"
 #: admin/systems/services/dhcp/remove_dhcp.tpl:6
 msgid ""
 "This includes 'all' DHCP subsections that are located within this section. "
-"Please double check if your really want to do this since there is no way for "
-"FusionDirectory to get your data back."
-msgstr ""
-"Esto incluye 'todas' las subsecciones DHCP que están localizadas dentro de "
-"esta sección. Si está seguro de lo que quiere hacer pulse dos veces, ya que "
-"una vez hecho esto, no hay forma de que FusionDirectory recupere la "
-"información."
+"Please double check if your really want to do this since there is no way for"
+" FusionDirectory to get your data back."
+msgstr "Esto incluye 'todas' las subsecciones DHCP que están localizadas dentro de esta sección. Si está seguro de lo que quiere hacer pulse dos veces, ya que una vez hecho esto, no hay forma de que FusionDirectory recupere la información."
 
 #: admin/systems/services/dhcp/remove_dhcp.tpl:10
 msgid ""
 "Best thing to do before performing this action would be to save the current "
 "contents of your LDAP tree in a file. So - if you've done so - press "
 "'Delete' to continue or 'Cancel' to abort."
-msgstr ""
-"La mejor opción antes de ejecutar esta acción es haber grabado el contenido "
-"actual de su árbol LDAP en un fichero. Entonces - Y solo entonces - presione "
-"'Eliminar' para continuar o 'Cancelar' para abortar."
+msgstr "La mejor opción antes de ejecutar esta acción es haber grabado el contenido actual de su árbol LDAP en un fichero. Entonces - Y solo entonces - presione 'Eliminar' para continuar o 'Cancelar' para abortar."
 
 #: admin/systems/services/dhcp/class_dhcpService.inc:128
 msgid "Lease time"
@@ -241,15 +231,13 @@ msgstr "Red compartida"
 #: admin/systems/services/dhcp/class_dhcpNewSectionDialog.inc:56
 #: admin/systems/services/dhcp/dhcp_tsigkey.tpl:2
 #: admin/systems/services/dhcp/class_servDHCP.inc:69
-#, fuzzy
 msgid "DNS update key"
-msgstr "Estilo de actualización DNS dinámica"
+msgstr ""
 
 #: admin/systems/services/dhcp/class_dhcpNewSectionDialog.inc:57
 #: admin/systems/services/dhcp/class_servDHCP.inc:70
-#, fuzzy
 msgid "DNS update zones"
-msgstr "Estilo de actualización DNS dinámica"
+msgstr ""
 
 #: admin/systems/services/dhcp/dhcp_network.tpl:5
 msgid "Network configuration"
@@ -261,8 +249,7 @@ msgstr "Encaminador"
 
 #: admin/systems/services/dhcp/dhcp_network.tpl:12
 msgid "Enter name or IP address of router to be used in this section"
-msgstr ""
-"Introduzca el nombre o la dirección del router seleccionado en esta sección"
+msgstr "Introduzca el nombre o la dirección del router seleccionado en esta sección"
 
 #: admin/systems/services/dhcp/dhcp_network.tpl:17
 #: admin/systems/services/dhcp/class_dhcpNetwork.inc:197
@@ -288,9 +275,7 @@ msgstr "Nombre del archivo"
 #: admin/systems/services/dhcp/dhcp_network.tpl:42
 msgid ""
 "Enter name of file that will be loaded via tftp after client has started"
-msgstr ""
-"Introduzca el nombre del fichero que será cargado vía tftp despues de que el "
-"cliente haya iniciado"
+msgstr "Introduzca el nombre del fichero que será cargado vía tftp despues de que el cliente haya iniciado"
 
 #: admin/systems/services/dhcp/dhcp_network.tpl:47
 msgid "Next server"
@@ -298,9 +283,7 @@ msgstr "Siguiente Servidor"
 
 #: admin/systems/services/dhcp/dhcp_network.tpl:51
 msgid "Enter name of server to retrieve bootimages from"
-msgstr ""
-"Introduzca el nombre del servidor para recuperar desde el la imágenes de "
-"inicio"
+msgstr "Introduzca el nombre del servidor para recuperar desde el la imágenes de inicio"
 
 #: admin/systems/services/dhcp/dhcp_network.tpl:59
 msgid "Domain Name Service"
@@ -348,9 +331,8 @@ msgid "Error in definition of '%s'!"
 msgstr "¡Error en la definición de '%s'!"
 
 #: admin/systems/services/dhcp/dhcp_dnszone.tpl:2
-#, fuzzy
 msgid "DNS update zone"
-msgstr "Estilo de actualización DNS dinámica"
+msgstr ""
 
 #: admin/systems/services/dhcp/dhcp_host.tpl:12
 msgid "Name of host"
@@ -362,8 +344,7 @@ msgstr "Dirección estática"
 
 #: admin/systems/services/dhcp/dhcp_host.tpl:22
 msgid "Use hostname or IP-address to assign fixed address"
-msgstr ""
-"Usar nombre de máquina o dirección IP para asignar la dirección estática"
+msgstr "Usar nombre de máquina o dirección IP para asignar la dirección estática"
 
 #: admin/systems/services/dhcp/dhcp_host.tpl:31
 msgid "Hardware type"
@@ -435,8 +416,7 @@ msgstr "Permitir clientes BOOTP"
 
 #: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl:108
 msgid "Select if clients are allowed to boot using this DHCP server"
-msgstr ""
-"Seleccione si los clientes van a poder iniciar usando este servidor DHCP"
+msgstr "Seleccione si los clientes van a poder iniciar usando este servidor DHCP"
 
 #: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl:108
 msgid "Allow booting"
@@ -446,9 +426,7 @@ msgstr "Permitir inicialización"
 msgid ""
 "DHCP take over will take place when saving this entry. Choose 'Cancel' to "
 "abort."
-msgstr ""
-"DHCP tomara el control cuando grabe esta entrada. Elija 'Cancelar' para "
-"anular."
+msgstr "DHCP tomara el control cuando grabe esta entrada. Elija 'Cancelar' para anular."
 
 #: admin/systems/services/dhcp/servdhcp.tpl:14
 msgid "Take over dhcp configuration from following server"
@@ -461,14 +439,12 @@ msgstr "Secciones DHCP"
 #: admin/systems/services/dhcp/dhcp_tsigkey.tpl:6
 #: admin/systems/services/dhcp/class_dhcpTSigKey.inc:114
 #: admin/systems/services/dhcp/class_dhcpTSigKey.inc:127
-#, fuzzy
 msgid "Key name"
-msgstr "Nombre del Rol"
+msgstr ""
 
 #: admin/systems/services/dhcp/dhcp_tsigkey.tpl:9
-#, fuzzy
 msgid "Name of Key"
-msgstr "Nombre de la máquina"
+msgstr ""
 
 #: admin/systems/services/dhcp/dhcp_tsigkey.tpl:13
 msgid "Encryption method"
@@ -503,9 +479,7 @@ msgstr "Nodo de recuperación"
 msgid ""
 "You have requested a migration of the DHCP setup from server '%s' to the "
 "current one."
-msgstr ""
-"A solicitado una migración de la configuración DHCP del servidor '%s' al "
-"actual."
+msgstr "A solicitado una migración de la configuración DHCP del servidor '%s' al actual."
 
 #: admin/systems/services/dhcp/class_servDHCP.inc:131
 msgid "The migration will be started when you save this system."
@@ -548,9 +522,7 @@ msgstr "Error LDAP"
 msgid ""
 "The DHCP configuration set is unkown. Please contact your system "
 "administrator."
-msgstr ""
-"La configuración DHCP es desconocida. Contacte con su administrador de "
-"sistemas."
+msgstr "La configuración DHCP es desconocida. Contacte con su administrador de sistemas."
 
 #: admin/systems/services/dhcp/class_servDHCP.inc:744
 msgid "Services"
@@ -637,113 +609,3 @@ msgstr "Opciones DHCP"
 #: admin/systems/services/dhcp/dhcp_advanced.tpl:59
 msgid "Show advanced settings"
 msgstr "Mostrar configuración avanzada"
-
-#, fuzzy
-#~ msgid "Service start"
-#~ msgstr "Servicios"
-
-#, fuzzy
-#~ msgid "Service stop"
-#~ msgstr "Servicios"
-
-#, fuzzy
-#~ msgid "Service restart"
-#~ msgstr "Servicios"
-
-#, fuzzy
-#~ msgid "May lease time"
-#~ msgstr "Máximo tamaño de mensaje"
-
-#~ msgid "Save"
-#~ msgstr "Guardar"
-
-#~ msgid "Cancel"
-#~ msgstr "Cancelar"
-
-#~ msgid "Required field 'Name' is not filled."
-#~ msgstr "No ha introducido el campo obligatorio 'Nombre'."
-
-#, fuzzy
-#~ msgid "The value specified as '%s' is not numeric!"
-#~ msgstr "¡El valor especificado como '%s' contiene caracteres no validos!"
-
-#, fuzzy
-#~ msgid "The name for this host section is already used!"
-#~ msgstr ""
-#~ "El cambio de nombre ha fallado, ha introducido uno que ya está siendo "
-#~ "usado."
-
-#~ msgid "Delete"
-#~ msgstr "Eliminar"
-
-#, fuzzy
-#~ msgid "The name for this section is already used!"
-#~ msgstr ""
-#~ "El cambio de nombre ha fallado, ha introducido uno que ya está siendo "
-#~ "usado."
-
-#, fuzzy
-#~ msgid "Required field 'Range' is not filled."
-#~ msgstr "No ha introducido el campo obligatorio 'Nombre'."
-
-#, fuzzy
-#~ msgid "Field 'Range' contains invalid IP addresses."
-#~ msgstr "El campo 'Nombre' no tiene caracteres validos."
-
-#, fuzzy
-#~ msgid "Field 'Range' contains invalid IP range."
-#~ msgstr "El campo 'Nombre' no tiene caracteres validos."
-
-#~ msgid "Add"
-#~ msgstr "Añadir"
-
-#~ msgid "Apply"
-#~ msgstr "Aplicar"
-
-#, fuzzy
-#~ msgid "Required field 'Network address' is not filled."
-#~ msgstr "No ha introducido el campo obligatorio 'Nombre'."
-
-#, fuzzy
-#~ msgid "Required field 'Netmask' is not filled."
-#~ msgstr "No ha introducido el campo obligatorio 'Nombre'."
-
-#, fuzzy
-#~ msgid "The field '%s' contains an invalid IP address"
-#~ msgstr "El campo 'Dirección IP' tiene una dirección no valida."
-
-#, fuzzy
-#~ msgid "Field 'Name' contains illegal characters."
-#~ msgstr "El campo 'Nombre' no tiene caracteres validos."
-
-#, fuzzy
-#~ msgid "The hardware address specified by you is not valid!"
-#~ msgstr "El valor especificado como 'UID' no es valido."
-
-#, fuzzy
-#~ msgid "Default lease time needs to be numeric."
-#~ msgstr "El puerto sieve necesita ser un numero."
-
-#, fuzzy
-#~ msgid "Maximum lease time needs to be numeric."
-#~ msgstr "El puerto sieve necesita ser un numero."
-
-#, fuzzy
-#~ msgid "You have no permission to remove DHCP sections!"
-#~ msgstr "No le está permitido eliminar este usuario."
-
-#, fuzzy
-#~ msgid "You're about to delete the DHCP section '%s'."
-#~ msgstr "Has decidido eliminar la aplicación '%s'."
-
-#, fuzzy
-#~ msgid "Removing DHCP entries failed"
-#~ msgstr "Ha fallado la eliminación del antiguo archivo ppd'%s'."
-
-#, fuzzy
-#~ msgid "Can't remove DHCP object!"
-#~ msgstr "No puedo encontrar el nombre de objeto "
-
-#, fuzzy
-#~ msgid "Saving DHCP service failed"
-#~ msgstr "Eliminar servicio DHCP"

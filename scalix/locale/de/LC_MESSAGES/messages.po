@@ -1,27 +1,22 @@
-# translation of messages.po to
-#
-# Copyright (C) 2003 GONICUS GmbH, Germany
-# Copyright (C) 2011 FusionDirectory Project
-# This file is distributed under the same license as the FusionDirectory package.
-#
-#
-#  Alfred Schroeder <schroeder@GONICUS.de>, 2004. 
-#  Cajus Pollmeier <pollmeier@gonicus.de>, 2004, 2005, 2006, 2008. 
-#  Jan Wenzel <jan.wenzel@gonicus.de>, 2004,2005, 2008. 
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
 #  Stefan Koehler <stefan.koehler@GONICUS.de>, 2005.
 msgid ""
 msgstr ""
-"Project-Id-Version: messages\n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version: FusionDirectory\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
 "POT-Creation-Date: 2012-05-26 17:33+0200\n"
-"PO-Revision-Date: 2008-04-04 09:28+0200\n"
-"Last-Translator: Cajus Pollmeier <pollmeier@gonicus.de>\n"
-"Language-Team:  <de@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2012-05-26 16:33+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: German (http://www.transifex.net/projects/p/FusionDirectory/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
+"Language: de\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: admin/groups/scalix/class_scalixGroup.inc:35
 #: personal/scalix/class_scalixAccount.inc:552
@@ -86,9 +81,7 @@ msgstr "Scalix Email-Adressen"
 
 #: personal/scalix/main.inc:126
 msgid "Click the 'Edit' button below to change informations in this dialog"
-msgstr ""
-"Betätigen sie den 'Bearbeiten'-Schalter unten um Informationen in diesem "
-"Dialog zu ändern"
+msgstr "Betätigen sie den 'Bearbeiten'-Schalter unten um Informationen in diesem Dialog zu ändern"
 
 #: personal/scalix/main.inc:139
 msgid "Scalix settings"
@@ -118,9 +111,7 @@ msgstr "Scalix-Konto entfernen"
 msgid ""
 "This account has scalix synchronization enabled. You can disable it by "
 "clicking below."
-msgstr ""
-"Dieses Konto besitzt aktivierte Scalix-Erweiterungen. Sie können diese durch "
-"einen Klick auf die untere Schaltfläche deaktivieren."
+msgstr "Dieses Konto besitzt aktivierte Scalix-Erweiterungen. Sie können diese durch einen Klick auf die untere Schaltfläche deaktivieren."
 
 #: personal/scalix/class_scalixAccount.inc:162
 msgid "Create scalix account"
@@ -130,9 +121,7 @@ msgstr "Scalix-Konto erstellen"
 msgid ""
 "This account has scalix synchronization disabled. You can enable it by "
 "clicking below."
-msgstr ""
-"Dieses Konto besitzt keine aktivierten Scalix-Erweiterungen. Sie können "
-"diese durch einen Klick auf die untere Schaltfläche aktivieren."
+msgstr "Dieses Konto besitzt keine aktivierten Scalix-Erweiterungen. Sie können diese durch einen Klick auf die untere Schaltfläche aktivieren."
 
 #: personal/scalix/class_scalixAccount.inc:256
 #: personal/scalix/class_scalixAccount.inc:362
@@ -162,9 +151,7 @@ msgstr "Sie haben keine Berechtigung, um diese Adressen zu bearbeiten."
 #: personal/scalix/class_scalixAccount.inc:498
 #, php-format
 msgid "Cannot add mail address: it is already used by user '%s'."
-msgstr ""
-"Kann Mail-Adresse nicht hinzufügen: sie wird bereits von Benutzer '%s' "
-"verwendet."
+msgstr "Kann Mail-Adresse nicht hinzufügen: sie wird bereits von Benutzer '%s' verwendet."
 
 #: personal/scalix/class_scalixAccount.inc:384
 msgid "Mailnode"
@@ -195,16 +182,13 @@ msgid "Scalix mailnode"
 msgstr "Scalix-Mailknoten"
 
 #: personal/scalix/generic.tpl:17
-#, fuzzy
 msgid "Scalix mailbox class"
-msgstr "Scalix Mailbox-Klasse"
+msgstr ""
 
 #: personal/scalix/generic.tpl:21
 msgid ""
 "Limited users can not make use of the group calendar functionality in Scalix"
-msgstr ""
-"Eingeschränkte Benutzer können die Scalix Gruppenkalender-Funktion nicht "
-"verwenden"
+msgstr "Eingeschränkte Benutzer können die Scalix Gruppenkalender-Funktion nicht verwenden"
 
 #: personal/scalix/generic.tpl:30
 msgid "Scalix server language"
@@ -248,9 +232,7 @@ msgstr "MB"
 
 #: personal/scalix/generic.tpl:81
 msgid "As sanction on mailbox quota overuse, stop user from sending mail."
-msgstr ""
-"Verbiete dem Benutzer das Senden von Mails, wenn er das Kontingent der "
-"Mailbox überschreitet."
+msgstr "Verbiete dem Benutzer das Senden von Mails, wenn er das Kontingent der Mailbox überschreitet."
 
 #: personal/scalix/generic.tpl:81
 msgid "Limit Outbound Mail"
@@ -258,9 +240,7 @@ msgstr "Limitiere ausgehende Mail"
 
 #: personal/scalix/generic.tpl:86
 msgid "As sanction on mailbox quota overuse, stop user from receiving mail."
-msgstr ""
-"Verbiete dem Benutzer das Empfangen von Mails, wenn er das Kontingent der "
-"Mailbox überschreitet."
+msgstr "Verbiete dem Benutzer das Empfangen von Mails, wenn er das Kontingent der Mailbox überschreitet."
 
 #: personal/scalix/generic.tpl:86
 msgid "Limit Inbound Mail"
@@ -268,13 +248,8 @@ msgstr "Limitiere eingehende Mail"
 
 #: personal/scalix/generic.tpl:91
 msgid "As sanction on mailbox quota overuse, notify the user by eMail."
-msgstr ""
-"Benachrichtige den Benutzer, wenn er das Kontingent der Mailbox "
-"überschreitet."
+msgstr "Benachrichtige den Benutzer, wenn er das Kontingent der Mailbox überschreitet."
 
 #: personal/scalix/generic.tpl:91
 msgid "Notify User"
 msgstr "Benutzer benachrichtigen"
-
-#~ msgid "This does something"
-#~ msgstr "Dies tut etwas"

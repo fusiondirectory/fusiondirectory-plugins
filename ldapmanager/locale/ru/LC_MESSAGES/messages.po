@@ -1,35 +1,29 @@
-# Translation of messages.po to Russian
-#
-# Copyright (C) 2003 GONICUS GmbH, Germany
-# Copyright (C) 2011 FusionDirectory Project
-# This file is distributed under the same license as the FusionDirectory package.
-#
-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
 #  Valia V. Vaneeva <fattie@altlinux.ru>, 2004.
 msgid ""
 msgstr ""
-"Project-Id-Version: messages\n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version: FusionDirectory\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
 "POT-Creation-Date: 2012-05-26 17:33+0200\n"
-"PO-Revision-Date: 2005-04-18 14:35+0300\n"
-"Last-Translator: Igor Muratov <migor@altlinux.org>\n"
-"Language-Team: ALT Linux Team\n"
-"Language: \n"
+"PO-Revision-Date: 2012-05-26 16:37+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: Russian (http://www.transifex.net/projects/p/FusionDirectory/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: poEdit 1.3.1\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
 #: addons/ldapmanager/contentexport.tpl:2
-#, fuzzy
 msgid ""
 "The LDIF export plugin provides methods to download a complete snapshot of "
 "the running LDAP directory as ldif. You may save these files for backup "
 "purpose or when initializing a new server."
 msgstr ""
-"Модуль экспорта в LDIF позволяет получать полный образ текущего каталога "
-"LDAPв формате ldif. Эти образы можно сохранять как резервные копии или "
-"использовать при инициализации нового сервера."
 
 #: addons/ldapmanager/contentexport.tpl:9
 msgid "Export single entry"
@@ -45,14 +39,12 @@ msgid "Export complete LDIF for"
 msgstr ""
 
 #: addons/ldapmanager/main.inc:48 addons/ldapmanager/class_ldif.inc:26
-#, fuzzy
 msgid "LDAP manager"
-msgstr "Экспорт в LDIF"
+msgstr ""
 
 #: addons/ldapmanager/class_import.inc:26
-#, fuzzy
 msgid "LDIF import"
-msgstr "Экспорт в LDIF"
+msgstr ""
 
 #: addons/ldapmanager/class_import.inc:27
 msgid "This plugin allow the import of ldif data into the ldap tree"
@@ -61,9 +53,8 @@ msgstr ""
 #: addons/ldapmanager/class_import.inc:72
 #: addons/ldapmanager/class_export.inc:106
 #: addons/ldapmanager/class_csvimport.inc:128
-#, fuzzy
 msgid "Permission error"
-msgstr "Права для членов группы"
+msgstr ""
 
 #: addons/ldapmanager/class_import.inc:72
 msgid "You need full write access to the LDAP tree to import data!"
@@ -91,22 +82,20 @@ msgstr ""
 #: addons/ldapmanager/class_csvimport.inc:363
 #: addons/ldapmanager/class_csvimport.inc:369
 #: addons/ldapmanager/class_csvimport.inc:374
-#, fuzzy, php-format
+#, php-format
 msgid "Cannot read uploaded file: %s"
-msgstr "Удалить"
+msgstr ""
 
 #: addons/ldapmanager/class_import.inc:81
 #: addons/ldapmanager/class_csvimport.inc:363
-#, fuzzy
 msgid "file is empty"
-msgstr "Значение поля \"Файлы\" некорректно."
+msgstr ""
 
 #: addons/ldapmanager/class_import.inc:88
 #: addons/ldapmanager/class_csvimport.inc:358
 #: addons/ldapmanager/class_csvimport.inc:369
-#, fuzzy
 msgid "file not found"
-msgstr "Имя сервера"
+msgstr ""
 
 #: addons/ldapmanager/class_import.inc:96
 #: addons/ldapmanager/class_csvimport.inc:374
@@ -116,24 +105,22 @@ msgstr ""
 #: addons/ldapmanager/class_import.inc:130
 #: addons/ldapmanager/class_import.inc:134
 #: addons/ldapmanager/class_export.inc:89
-#, fuzzy
 msgid "LDAP error"
-msgstr "Ошибка LDAP:"
+msgstr "Ошибка LDAP"
 
 #: addons/ldapmanager/class_import.inc:138
-#, fuzzy
 msgid "Internal error"
-msgstr "Терминал-сервер"
+msgstr ""
 
 #: addons/ldapmanager/class_import.inc:138
-#, fuzzy, php-format
+#, php-format
 msgid "Undefined flag '%s'!"
-msgstr "не определена"
+msgstr ""
 
 #: addons/ldapmanager/contentcsv.tpl:2
 msgid ""
-"The CSV import plugin provides methods to generate user accounts from a file "
-"containing Semi-Colon Seperated Values. The administrator can decide which "
+"The CSV import plugin provides methods to generate user accounts from a file"
+" containing Semi-Colon Seperated Values. The administrator can decide which "
 "columns should be transfered to which attribute. Note that you must have at "
 "least the GIVENNAME and SURNAME set."
 msgstr ""
@@ -148,9 +135,8 @@ msgid "Browse"
 msgstr "Просмотр"
 
 #: addons/ldapmanager/contentcsv.tpl:19
-#, fuzzy
 msgid "Select template"
-msgstr "Создать шаблон"
+msgstr ""
 
 #: addons/ldapmanager/contentcsv.tpl:34
 msgid "All entries have been written to the LDAP database successfully."
@@ -165,9 +151,8 @@ msgid "Here is the status report for the import:"
 msgstr ""
 
 #: addons/ldapmanager/contentcsv.tpl:80
-#, fuzzy
 msgid "Selected Template"
-msgstr "Выберите режим терминала"
+msgstr ""
 
 #: addons/ldapmanager/contentcsv.tpl:105 addons/ldapmanager/contentcsv.tpl:108
 #: addons/ldapmanager/contentimport.tpl:50
@@ -184,14 +169,14 @@ msgid "This plugin allow the export of the ldap tree in ldif format"
 msgstr ""
 
 #: addons/ldapmanager/class_export.inc:90
-#, fuzzy, php-format
+#, php-format
 msgid "No such object %s!"
-msgstr "Включаемые объекты"
+msgstr ""
 
 #: addons/ldapmanager/class_export.inc:107
-#, fuzzy, php-format
+#, php-format
 msgid "You have no permission to export %s!"
-msgstr "У вас недостаточно прав для удаления этого подразделения."
+msgstr ""
 
 #: addons/ldapmanager/class_export.inc:113
 #, php-format
@@ -204,31 +189,24 @@ msgstr ""
 
 #: addons/ldapmanager/class_ldif.inc:55 addons/ldapmanager/class_ldif.inc:56
 #: addons/ldapmanager/class_ldif.inc:61
-#, fuzzy
 msgid "Ldap manager"
-msgstr "Экспорт в LDIF"
+msgstr ""
 
 #: addons/ldapmanager/class_ldif.inc:56
-#, fuzzy
 msgid "import"
-msgstr "Импортировать"
+msgstr ""
 
 #: addons/ldapmanager/class_ldif.inc:56
-#, fuzzy
 msgid "export"
-msgstr "Экспорт"
+msgstr ""
 
 #: addons/ldapmanager/contentimport.tpl:3
-#, fuzzy
 msgid ""
 "The LDIF import plugin provides methods to upload a set of entries to your "
 "running LDAP directory as ldif. You may use this to add new or modify "
 "existing entries. Remember that FusionDirectory will not check your ldifs "
 "for FusionDirectory conformance."
 msgstr ""
-"Модуль экспорта в LDIF позволяет получать полный образ текущего каталога "
-"LDAPв формате ldif. Эти образы можно сохранять как резервные копии или "
-"использовать при инициализации нового сервера."
 
 #: addons/ldapmanager/contentimport.tpl:10
 msgid "Import LDIF File"
@@ -243,23 +221,20 @@ msgid "Overwrite existing objects, all not listed attributes will be removed"
 msgstr ""
 
 #: addons/ldapmanager/contentimport.tpl:34
-#, fuzzy
 msgid "Remove existing entries first"
-msgstr "Удалить сервис DNS"
+msgstr ""
 
 #: addons/ldapmanager/contentimport.tpl:41
-#, fuzzy
 msgid "Import successful"
-msgstr "Импорт успешен."
+msgstr ""
 
 #: addons/ldapmanager/class_csvimport.inc:27
 msgid "This plugin allow to export the ldap three to csv format"
 msgstr ""
 
 #: addons/ldapmanager/class_csvimport.inc:128
-#, fuzzy
 msgid "You've no permission to import CSV files."
-msgstr "У вас недостаточно прав для удаления этого подразделения."
+msgstr ""
 
 #: addons/ldapmanager/class_csvimport.inc:182
 msgid "Need at least 'sn' and 'givenName' to create users!"
@@ -268,9 +243,8 @@ msgstr ""
 #: addons/ldapmanager/class_csvimport.inc:183
 #: addons/ldapmanager/class_csvimport.inc:203
 #: addons/ldapmanager/class_csvimport.inc:259
-#, fuzzy
 msgid "failed"
-msgstr "Ошибка"
+msgstr ""
 
 #: addons/ldapmanager/class_csvimport.inc:202
 #, php-format
@@ -282,9 +256,9 @@ msgid "ok"
 msgstr ""
 
 #: addons/ldapmanager/class_csvimport.inc:320
-#, fuzzy, php-format
+#, php-format
 msgid "Cannot insert entry '%s'!"
-msgstr "состояние неизвестно"
+msgstr ""
 
 #: addons/ldapmanager/class_csvimport.inc:346
 msgid "Information"
@@ -295,244 +269,5 @@ msgid "Nothing to import!"
 msgstr ""
 
 #: addons/ldapmanager/class_csvimport.inc:520
-#, fuzzy
 msgid "Cannot find CSV data in the selected file!"
-msgstr "Удалить"
-
-#~ msgid "Sex"
-#~ msgstr "Пол"
-
-#, fuzzy
-#~ msgid "Surname"
-#~ msgstr "Имя сервера"
-
-#~ msgid "Given name"
-#~ msgstr "Имя"
-
-#~ msgid "Language"
-#~ msgstr "Язык"
-
-#~ msgid "Users"
-#~ msgstr "Пользователи"
-
-#, fuzzy
-#~ msgid "User list of %s on %s"
-#~ msgstr "Список пользователей"
-
-#~ msgid "User ID"
-#~ msgstr "Идентификатор пользователя"
-
-#, fuzzy
-#~ msgid "Members"
-#~ msgstr "Включаемые объекты"
-
-#~ msgid "Groups"
-#~ msgstr "Группы"
-
-#, fuzzy
-#~ msgid "Groups of %s on %s"
-#~ msgstr "Группа пользователя"
-
-#~ msgid "Servers"
-#~ msgstr "Серверы"
-
-#~ msgid "Description"
-#~ msgstr "Описание"
-
-#, fuzzy
-#~ msgid "Computers"
-#~ msgstr "не полный"
-
-#, fuzzy
-#~ msgid "Common name"
-#~ msgstr "Местоположение"
-
-#~ msgid "Server name"
-#~ msgstr "Имя сервера"
-
-#, fuzzy
-#~ msgid "Servers of %s on %s"
-#~ msgstr "Серверы"
-
-#~ msgid "Display name"
-#~ msgstr "Отображаемое имя"
-
-#~ msgid "Fax"
-#~ msgstr "Факс"
-
-#~ msgid "Name"
-#~ msgstr "Фамилия"
-
-#~ msgid "Home phone"
-#~ msgstr "Домашний телефон"
-
-#~ msgid "Initials"
-#~ msgstr "Отчество"
-
-#~ msgid "Location"
-#~ msgstr "Местоположение"
-
-#, fuzzy
-#~ msgid "Mail address"
-#~ msgstr "MAC-адрес"
-
-#, fuzzy
-#~ msgid "Mobile phone"
-#~ msgstr "Домашний телефон"
-
-#~ msgid "City"
-#~ msgstr "Город"
-
-#, fuzzy
-#~ msgid "Postal address"
-#~ msgstr "Почтовый индекс"
-
-#~ msgid "Pager"
-#~ msgstr "Пейджер"
-
-#, fuzzy
-#~ msgid "Phone number"
-#~ msgstr "Телефонные номера"
-
-#~ msgid "Address"
-#~ msgstr "Адрес"
-
-#~ msgid "Postal code"
-#~ msgstr "Почтовый индекс"
-
-#~ msgid "State"
-#~ msgstr "Адм. единица"
-
-#, fuzzy
-#~ msgid "Function"
-#~ msgstr "Действие"
-
-#, fuzzy
-#~ msgid "Adressbook"
-#~ msgstr "Адресная книга"
-
-#, fuzzy
-#~ msgid "Adressbook of %s on %s"
-#~ msgstr "Адресная книга"
-
-#, fuzzy
-#~ msgid "Common Name"
-#~ msgstr "Местоположение"
-
-#, fuzzy
-#~ msgid "Day of birth"
-#~ msgstr "Дата рождения"
-
-#~ msgid "UID"
-#~ msgstr "UID"
-
-#, fuzzy
-#~ msgid "Email address"
-#~ msgstr "Основной адрес"
-
-#~ msgid "Mobile"
-#~ msgstr "Мобильный"
-
-#~ msgid "Organization"
-#~ msgstr "Организация"
-
-#, fuzzy
-#~ msgid "Organizational unit"
-#~ msgstr "Организация"
-
-#, fuzzy
-#~ msgid "Postal Code"
-#~ msgstr "Почтовый индекс"
-
-#, fuzzy
-#~ msgid "Title"
-#~ msgstr "Файлы"
-
-#, fuzzy
-#~ msgid "Computers of %s on %s"
-#~ msgstr "не полный"
-
-#, fuzzy
-#~ msgid "You have no permission to do LDAP exports!"
-#~ msgstr "У вас недостаточно прав для создания пользователя в этой ветке."
-
-#, fuzzy
-#~ msgid ""
-#~ "The XLS export plugin provides methods to download a complete snapshot of "
-#~ "the running LDAP directory as xls. You may save these files for "
-#~ "documentation."
-#~ msgstr ""
-#~ "Модуль экспорта в LDIF позволяет получать полный образ текущего каталога "
-#~ "LDAPв формате ldif. Эти образы можно сохранять как резервные копии или "
-#~ "использовать при инициализации нового сервера."
-
-#, fuzzy
-#~ msgid "Choose the data you want to Export"
-#~ msgstr "Выбрать подразделение для экспорта"
-
-#~ msgid "Choose the department you want to Export"
-#~ msgstr "Выбрать подразделение для экспорта"
-
-#, fuzzy
-#~ msgid "Export successful"
-#~ msgstr "Экспорт успешен."
-
-#, fuzzy
-#~ msgid "Click here to save the complete LDAP database to a xls file"
-#~ msgstr "Щелкните здесь, чтобы сохранить образ базы данных LDAP в файл"
-
-#, fuzzy
-#~ msgid "Click here to save the LDAP Export to a xls file"
-#~ msgstr "Щелкните здесь, чтобы сохранить результаты экспорта"
-
-#~ msgid "This does something"
-#~ msgstr "Что-то будет"
-
-#, fuzzy
-#~ msgid "XLS import"
-#~ msgstr "Импортировать"
-
-#, fuzzy
-#~ msgid "Cannot export selected entries!"
-#~ msgstr "Включаемые объекты"
-
-#, fuzzy
-#~ msgid "You have no permission to export '%s'!"
-#~ msgstr "У вас недостаточно прав для удаления этого подразделения."
-
-#, fuzzy
-#~ msgid "CSV import"
-#~ msgstr "Импортировать"
-
-#, fuzzy
-#~ msgid "status"
-#~ msgstr "Состояние"
-
-#, fuzzy
-#~ msgid "You have no permission to create LDAP dumps!"
-#~ msgstr "У вас недостаточно прав для удаления этого подразделения."
-
-#, fuzzy
-#~ msgid "Error in ivbb parameter!"
-#~ msgstr "Изменить параметры"
-
-#~ msgid "Click here to save the complete LDAP database to a file"
-#~ msgstr "Щелкните здесь, чтобы сохранить образ базы данных LDAP в файл"
-
-#~ msgid "Click here to save the LDAP Export "
-#~ msgstr "Щелкните здесь, чтобы сохранить результаты экспорта"
-
-#, fuzzy
-#~ msgid "Ldap manger"
-#~ msgstr "Экспорт в LDIF"
-
-#, fuzzy
-#~ msgid "Surename"
-#~ msgstr "Имя сервера"
-
-#~ msgid "Back"
-#~ msgstr "Назад"
-
-#, fuzzy
-#~ msgid "Ldap manager addon"
-#~ msgstr "Экспорт в LDIF"
+msgstr ""

@@ -1,24 +1,22 @@
-# translation of messages.po to Chinese Simplified
-#
-# Copyright (C) 2003 GONICUS GmbH, Germany
-# Copyright (C) 2011 FusionDirectory Project
-# This file is distributed under the same license as the FusionDirectory package.
-#
-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
 #  Jiang Xin <worldhello.net@gmail.com>, 2007.
 msgid ""
 msgstr ""
-"Project-Id-Version: messages\n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version: FusionDirectory\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
 "POT-Creation-Date: 2012-05-26 17:33+0200\n"
-"PO-Revision-Date: 2007-06-03 12:27+0800\n"
-"Last-Translator: Jiang Xin <worldhello.net@gmail.com>\n"
-"Language-Team: Chinese Simplified <zh@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2012-05-26 16:34+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: Chinese (http://www.transifex.net/projects/p/FusionDirectory/language/zh/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
+"Language: zh\n"
+"Plural-Forms: nplurals=1; plural=0\n"
 
 #: html/getfax.php:63
 msgid "Could not connect to database server!"
@@ -33,9 +31,8 @@ msgid "FAX database"
 msgstr "传真数据库"
 
 #: admin/systems/services/gofax/class_goFaxServer.inc:79
-#, fuzzy
 msgid "FAX database configuration"
-msgstr "传真数据库"
+msgstr ""
 
 #: admin/systems/services/gofax/class_goFaxServer.inc:88
 #: addons/faxreports/detail.tpl:21 addons/faxreports/contents.tpl:30
@@ -51,23 +48,20 @@ msgstr "口令"
 
 #: admin/systems/services/gofax/class_goFaxServer.inc:108
 #: admin/systems/services/gofax/class_goFaxServer.inc:109
-#, fuzzy
 msgid "Fax database"
-msgstr "传真数据库"
+msgstr ""
 
 #: admin/systems/services/gofax/class_goFaxServer.inc:109
 msgid "Services"
 msgstr "服务"
 
 #: admin/systems/services/gofax/class_goFaxServer.inc:117
-#, fuzzy
 msgid "Login name"
-msgstr "位置名称"
+msgstr ""
 
 #: admin/systems/services/gofax/goFaxServer.tpl:1
-#, fuzzy
 msgid "FAX database information"
-msgstr "系统信息"
+msgstr ""
 
 #: admin/systems/services/gofax/goFaxServer.tpl:4
 msgid "FAX DB user"
@@ -78,12 +72,10 @@ msgid "Warning"
 msgstr "警告"
 
 #: admin/blocklists/remove.tpl:6
-#, fuzzy
 msgid ""
 "Please double check if you really want to do this since there is no way for "
 "FusionDirectory to get your data back."
 msgstr ""
-"请再次检查您是否要这么做，因为 FusionDirectory 没有办法将您的数据找回。"
 
 #: admin/blocklists/remove.tpl:10
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
@@ -116,9 +108,8 @@ msgstr "名称"
 #: admin/blocklists/class_blocklistGeneric.inc:378
 #: admin/blocklists/class_blocklistGeneric.inc:383
 #: admin/blocklists/class_blocklistGeneric.inc:384
-#, fuzzy
 msgid "Fax blocklists"
-msgstr "传真黑名单"
+msgstr ""
 
 #: admin/blocklists/class_blocklistGeneric.inc:30
 msgid "This is the part of the fax plugin managing blacklist"
@@ -136,9 +127,8 @@ msgstr "错误"
 
 #: admin/blocklists/class_blocklistGeneric.inc:124
 #: personal/faxaccount/class_gofaxAccount.inc:278
-#, fuzzy
 msgid "Phone number"
-msgstr "封锁号码"
+msgstr "电话号码"
 
 #: admin/blocklists/class_blocklistGeneric.inc:156
 msgid "send"
@@ -152,9 +142,8 @@ msgstr "接收"
 #: admin/blocklists/class_blocklistGeneric.inc:288
 #: personal/faxaccount/class_gofaxAccount.inc:633
 #: personal/faxaccount/class_gofaxAccount.inc:761
-#, fuzzy
 msgid "LDAP error"
-msgstr "LDAP 错误:"
+msgstr "LDAP 错误"
 
 #: admin/blocklists/class_blocklistGeneric.inc:377
 #: personal/faxaccount/faxNumberSelect/faxNumberSelect-list.xml:56
@@ -177,14 +166,12 @@ msgstr "位置"
 
 #: admin/blocklists/class_blocklistGeneric.inc:390
 #: admin/blocklists/blocklist-list.xml:82
-#, fuzzy
 msgid "Blocklist"
-msgstr "黑名单"
+msgstr ""
 
 #: admin/blocklists/class_blocklistGeneric.inc:391
-#, fuzzy
 msgid "Blocklist type"
-msgstr "黑名单名称"
+msgstr ""
 
 #: admin/blocklists/blocklist-list.xml:11
 msgid "List of blocklists"
@@ -192,15 +179,13 @@ msgstr "黑名单列表"
 
 #: admin/blocklists/blocklist-list.xml:15
 #: personal/faxaccount/class_gofaxAccount.inc:854
-#, fuzzy
 msgid "Send blocklist"
-msgstr "显示发送黑名单"
+msgstr ""
 
 #: admin/blocklists/blocklist-list.xml:23
 #: personal/faxaccount/class_gofaxAccount.inc:853
-#, fuzzy
 msgid "Receive blocklist"
-msgstr "显示接收黑名单"
+msgstr ""
 
 #: admin/blocklists/blocklist-list.xml:65
 msgid "Actions"
@@ -276,27 +261,25 @@ msgid "No fax server found!"
 msgstr ""
 
 #: addons/faxreports/class_faxreport.inc:144
-#, fuzzy, php-format
+#, php-format
 msgid "Cannot connect to %s database!"
-msgstr "不能连接传真数据库，无法显示报告！"
+msgstr ""
 
 #: addons/faxreports/class_faxreport.inc:164
 #: addons/faxreports/class_faxreport.inc:305
-#, fuzzy, php-format
+#, php-format
 msgid "Cannot query %s database!"
-msgstr "无法选择数据库！"
+msgstr ""
 
 #: addons/faxreports/class_faxreport.inc:173
 #: addons/faxreports/class_faxreport.inc:183
-#, fuzzy
 msgid "Permission error"
-msgstr "允许"
+msgstr ""
 
 #: addons/faxreports/class_faxreport.inc:173
 #: addons/faxreports/class_faxreport.inc:183
-#, fuzzy
 msgid "You have no permission to view this fax id!"
-msgstr "您无权删除这个黑名单。"
+msgstr ""
 
 #: addons/faxreports/class_faxreport.inc:214
 #: addons/faxreports/class_faxreport.inc:330
@@ -304,49 +287,41 @@ msgid "Y-M-D"
 msgstr "Y-M-D"
 
 #: addons/faxreports/class_faxreport.inc:324
-#, fuzzy
 msgid "Insufficient permissions to view this attribute"
-msgstr "权限不足，无法在 goFonMacro 中修改属性 '%s'。"
+msgstr ""
 
 #: addons/faxreports/class_faxreport.inc:324
-#, fuzzy
 msgid "Insufficient permissions"
-msgstr "缺省权限"
+msgstr ""
 
 #: addons/faxreports/class_faxreport.inc:488
 #: addons/faxreports/class_faxreport.inc:489
-#, fuzzy
 msgid "Fax report"
-msgstr "传真记录"
+msgstr ""
 
 #: addons/faxreports/class_faxreport.inc:489
-#, fuzzy
 msgid "All entries are readonly"
-msgstr "所有字段均可写"
+msgstr ""
 
 #: addons/faxreports/class_faxreport.inc:494
-#, fuzzy
 msgid "Fax reports"
-msgstr "传真记录"
+msgstr ""
 
 #: addons/faxreports/class_faxreport.inc:499
-#, fuzzy
 msgid "Detailed view"
-msgstr "安装设备"
+msgstr ""
 
 #: addons/faxreports/class_faxreport.inc:500
-#, fuzzy
 msgid "Fax ID"
-msgstr "传真 ID"
+msgstr ""
 
 #: addons/faxreports/class_faxreport.inc:501 addons/faxreports/contents.tpl:31
 msgid "Date"
 msgstr "日期"
 
 #: addons/faxreports/class_faxreport.inc:501
-#, fuzzy
 msgid "Time"
-msgstr "Mime"
+msgstr ""
 
 #: addons/faxreports/class_faxreport.inc:502 addons/faxreports/detail.tpl:45
 #: addons/faxreports/contents.tpl:32
@@ -370,14 +345,12 @@ msgid "Receiver MSN"
 msgstr "接收者 MSN"
 
 #: addons/faxreports/class_faxreport.inc:507
-#, fuzzy
 msgid "Number of pages"
-msgstr "部门名称"
+msgstr ""
 
 #: addons/faxreports/class_faxreport.inc:508
-#, fuzzy
 msgid "Status Message"
-msgstr "状态信息"
+msgstr ""
 
 #: addons/faxreports/class_faxreport.inc:509 addons/faxreports/detail.tpl:53
 msgid "Transfer time"
@@ -444,9 +417,8 @@ msgid "Search returned no results..."
 msgstr "查无结果..."
 
 #: personal/faxaccount/faxNumberSelect/faxNumberSelect-list.xml:10
-#, fuzzy
 msgid "Please select the desired entries"
-msgstr "请选择一个打印机或者取消。"
+msgstr ""
 
 #: personal/faxaccount/faxNumberSelect/faxNumberSelect-list.xml:40
 msgid "Given name"
@@ -521,16 +493,14 @@ msgid "FAX"
 msgstr "传真"
 
 #: personal/faxaccount/class_gofaxAccount.inc:27
-#, fuzzy
 msgid "This does something"
-msgstr "******"
+msgstr ""
 
 #: personal/faxaccount/class_gofaxAccount.inc:185
 #: personal/faxaccount/class_gofaxAccount.inc:195
 #: personal/faxaccount/class_gofaxAccount.inc:198
-#, fuzzy
 msgid "GOfax"
-msgstr "FusionDirectory"
+msgstr ""
 
 #: personal/faxaccount/class_gofaxAccount.inc:194
 msgid "Remove fax account"
@@ -548,18 +518,16 @@ msgstr "返回"
 #: personal/faxaccount/class_gofaxAccount.inc:649
 #: personal/faxaccount/class_gofaxAccount.inc:653
 #: personal/faxaccount/class_gofaxAccount.inc:846
-#, fuzzy
 msgid "Fax number"
-msgstr "系列号"
+msgstr ""
 
 #: personal/faxaccount/class_gofaxAccount.inc:660
 msgid "Mail delivery is requested without target address!"
 msgstr ""
 
 #: personal/faxaccount/class_gofaxAccount.inc:662
-#, fuzzy
 msgid "Mail address"
-msgstr "您输入的邮件地址无效。"
+msgstr "邮件地址"
 
 #: personal/faxaccount/class_gofaxAccount.inc:662
 msgid "your-name@your-domain.com"
@@ -570,9 +538,8 @@ msgid "Printing is requested without a target printer!"
 msgstr ""
 
 #: personal/faxaccount/class_gofaxAccount.inc:837
-#, fuzzy
 msgid "Fax account settings"
-msgstr "Samba 设置"
+msgstr ""
 
 #: personal/faxaccount/class_gofaxAccount.inc:847
 #: personal/faxaccount/generic.tpl:24
@@ -585,9 +552,8 @@ msgid "Delivery format"
 msgstr "传输格式"
 
 #: personal/faxaccount/class_gofaxAccount.inc:849
-#, fuzzy
 msgid "Alternate fax number"
-msgstr "替代传真号码"
+msgstr ""
 
 #: personal/faxaccount/class_gofaxAccount.inc:850
 msgid "Enable/Disable fax"
@@ -642,18 +608,3 @@ msgstr "输入传真黑名单"
 #: personal/faxaccount/generic.tpl:133
 msgid "Blocklists for outgoing fax"
 msgstr "外发传真黑名单"
-
-#~ msgid "Could not select database!"
-#~ msgstr "无法选择数据库！"
-
-#, fuzzy
-#~ msgid "Configuration error"
-#~ msgstr "配置文件"
-
-#, fuzzy
-#~ msgid "Missing %s PHP extension!"
-#~ msgstr "删除打印机扩展"
-
-#, fuzzy
-#~ msgid "Cannot select %s database!"
-#~ msgstr "无法选择数据库！"

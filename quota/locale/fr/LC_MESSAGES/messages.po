@@ -1,21 +1,26 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: messages\n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version: FusionDirectory\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
 "POT-Creation-Date: 2012-05-26 17:33+0200\n"
-"PO-Revision-Date: 2011-04-18 22:49+0200\n"
-"Last-Translator: Antoine Gallavardin <antoine.gallavardin@free.fr>\n"
-"Language-Team:  <fr@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2012-05-16 14:14+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: French (http://www.transifex.net/projects/p/FusionDirectory/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
 #: admin/systems/services/quota/class_quotaService.inc:64
 #: admin/systems/services/quota/class_quotaService.inc:204
-#, fuzzy
 msgid "Quota service"
-msgstr "Périphériques sous quota"
+msgstr ""
 
 #: admin/systems/services/quota/class_quotaService.inc:128
 msgid "There is no ldap server configured"
@@ -27,13 +32,11 @@ msgid "Device"
 msgstr "Partition"
 
 #: admin/systems/services/quota/class_quotaService.inc:148
-#, fuzzy
 msgid "BlockSize"
-msgstr "Taille des blocs"
+msgstr ""
 
 #: admin/systems/services/quota/class_quotaService.inc:149
 #: personal/quota/singleSystemSelect/singleSystem-list.xml:49
-#, fuzzy
 msgid "Description"
 msgstr "Description"
 
@@ -44,7 +47,7 @@ msgstr ""
 #: admin/systems/services/quota/class_quotaService.inc:171
 #: admin/systems/services/quota/class_quotaService.inc:174
 msgid "Error"
-msgstr ""
+msgstr "Erreur"
 
 #: admin/systems/services/quota/class_quotaService.inc:195
 msgid "HELP how to get blocksize"
@@ -53,18 +56,16 @@ msgstr ""
 #: admin/systems/services/quota/class_quotaService.inc:243
 #: personal/quota/class_quotaAccount.inc:370
 msgid "LDAP error"
-msgstr ""
+msgstr "Erreur LDAP"
 
 #: admin/systems/services/quota/class_quotaService.inc:252
 #: admin/systems/services/quota/class_quotaService.inc:253
-#, fuzzy
 msgid "Quota Service"
-msgstr "Périphériques sous quota"
+msgstr ""
 
 #: admin/systems/services/quota/class_quotaService.inc:253
-#, fuzzy
 msgid "Services"
-msgstr "Partition"
+msgstr "Services"
 
 #: admin/systems/services/quota/class_quotaService.inc:261
 msgid "parameters for devices with quota"
@@ -144,7 +145,7 @@ msgstr "Alerte par messagerie"
 
 #: admin/systems/services/quota/quotaService.tpl:65
 msgid "Charset"
-msgstr ""
+msgstr "Jeu de caractères"
 
 #: admin/systems/services/quota/quotaService.tpl:73
 msgid "Mail Command"
@@ -156,7 +157,7 @@ msgstr ""
 
 #: admin/systems/services/quota/quotaService.tpl:88
 msgid "From"
-msgstr ""
+msgstr "Depuis"
 
 #: admin/systems/services/quota/quotaService.tpl:94
 msgid "CC"
@@ -164,11 +165,11 @@ msgstr ""
 
 #: admin/systems/services/quota/quotaService.tpl:103
 msgid "Subject"
-msgstr ""
+msgstr "Sujet"
 
 #: admin/systems/services/quota/quotaService.tpl:112
 msgid "Content"
-msgstr ""
+msgstr "Contenu"
 
 #: admin/systems/services/quota/quotaService.tpl:120
 msgid "Signature"
@@ -180,7 +181,7 @@ msgstr "Support LDAP d'envoi des messages"
 
 #: admin/systems/services/quota/quotaService.tpl:133
 msgid "Ldap server"
-msgstr ""
+msgstr "Serveur ldap"
 
 #: admin/systems/services/quota/quotaService.tpl:143
 msgid "Ldap User DN"
@@ -195,7 +196,6 @@ msgid "Quota Informations"
 msgstr "Informations sur les quotas"
 
 #: personal/quota/quota.tpl:10 personal/quota/class_quotaAccount.inc:380
-#, fuzzy
 msgid "Quota"
 msgstr "Quota"
 
@@ -220,9 +220,8 @@ msgid "Inode hard limit"
 msgstr "Nombre critique de fichier"
 
 #: personal/quota/main.inc:141
-#, fuzzy
 msgid "quota settings"
-msgstr "Périphériques sous quota"
+msgstr ""
 
 #: personal/quota/class_quotaAccount.inc:25
 #: personal/quota/class_quotaAccount.inc:391
@@ -236,12 +235,12 @@ msgstr ""
 #: personal/quota/class_quotaAccount.inc:93
 #: personal/quota/class_quotaAccount.inc:401
 msgid "KB"
-msgstr ""
+msgstr "KB"
 
 #: personal/quota/class_quotaAccount.inc:93
 #: personal/quota/class_quotaAccount.inc:401
 msgid "MB"
-msgstr ""
+msgstr "MB"
 
 #: personal/quota/class_quotaAccount.inc:93
 #: personal/quota/class_quotaAccount.inc:401
@@ -269,7 +268,7 @@ msgstr ""
 
 #: personal/quota/class_quotaAccount.inc:385
 msgid "My account"
-msgstr ""
+msgstr "Mon compte"
 
 #: personal/quota/class_quotaAccount.inc:390
 msgid "uid"
@@ -289,15 +288,15 @@ msgstr ""
 
 #: personal/quota/singleSystemSelect/singleSystem-list.tpl:13
 msgid "Base"
-msgstr ""
+msgstr "Base"
 
 #: personal/quota/singleSystemSelect/singleSystem-list.xml:10
 msgid "Please select the desired entries"
-msgstr ""
+msgstr "Veuillez sélectionner les entrées désirées"
 
 #: personal/quota/singleSystemSelect/singleSystem-list.xml:14
 msgid "Systems"
-msgstr ""
+msgstr "Systèmes"
 
 #: personal/quota/singleSystemSelect/singleSystem-list.xml:41
 msgid "Computer Name"
@@ -305,7 +304,7 @@ msgstr ""
 
 #: personal/quota/singleSystemSelect/singleSystem-list.xml:58
 msgid "Actions"
-msgstr ""
+msgstr "Actions"
 
 #: personal/quota/singleSystemSelect/singleSystem-list.xml:72
 #: personal/quota/singleSystemSelect/singleSystem-list.xml:78
@@ -314,4 +313,4 @@ msgstr ""
 
 #: personal/quota/singleSystemSelect/singleSystem-filter.tpl:3
 msgid "Filter"
-msgstr ""
+msgstr "Filtre"

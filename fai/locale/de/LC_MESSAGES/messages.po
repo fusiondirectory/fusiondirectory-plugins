@@ -1,51 +1,37 @@
-# translation of messages.po to deutsch
-#
-# Copyright (C) 2003 GONICUS GmbH, Germany
-# Copyright (C) 2011 FusionDirectory Project
-# This file is distributed under the same license as the FusionDirectory package.
-#
-#
-#  Alfred Schroeder <schroeder@GONICUS.de>, 2004. 
-#  Cajus Pollmeier <pollmeier@gonicus.de>, 2004, 2005, 2006, 2008, 2009. 
-#  Jan Wenzel <jan.wenzel@gonicus.de>, 2004,2005, 2008. 
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
 #  Stefan Koehler <stefan.koehler@GONICUS.de>, 2005.
 msgid ""
 msgstr ""
-"Project-Id-Version: messages\n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version: FusionDirectory\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
 "POT-Creation-Date: 2012-05-26 17:33+0200\n"
-"PO-Revision-Date: 2009-08-04 13:57+0200\n"
-"Last-Translator: Cajus Pollmeier <pollmeier@gonicus.de>\n"
-"Language-Team: de <kde-i18n-de@kde.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2012-05-26 16:41+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: German (http://www.transifex.net/projects/p/FusionDirectory/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 0.3\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"Language: de\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: admin/fai/askClassName.tpl:6
 msgid ""
-"Adding a new class to the FAI management, requires a class name. You have to "
-"specify a unique class name for unique types of FAI classes, while you can "
+"Adding a new class to the FAI management, requires a class name. You have to"
+" specify a unique class name for unique types of FAI classes, while you can "
 "use the same class name for different types of FAI classes. In the laste "
 "case, FAI will automatically enclose all these different class types to one "
 "unique class name."
-msgstr ""
-"Es wird ein Klassen-Name benötigt, um der FAI-Verwaltung eine neue Klasse "
-"hinzuzufügen. Dieser Klassen-Name muss lediglich für jeden Typ der FAI-"
-"Klasse eindeutig sein, d.h. Sie können den gleichen Klassen-Namen für "
-"verschiedene Typen von FAI-Klassen verwenden. In diesem Fall wird FAI "
-"automatisch all diese verschiedenen Typen mit einem eindeutigen Namen "
-"versehen."
+msgstr "Es wird ein Klassen-Name benötigt, um der FAI-Verwaltung eine neue Klasse hinzuzufügen. Dieser Klassen-Name muss lediglich für jeden Typ der FAI-Klasse eindeutig sein, d.h. Sie können den gleichen Klassen-Namen für verschiedene Typen von FAI-Klassen verwenden. In diesem Fall wird FAI automatisch all diese verschiedenen Typen mit einem eindeutigen Namen versehen."
 
 #: admin/fai/askClassName.tpl:12
 msgid ""
 "Please use one of the following methods to choose the name for the new FAI "
 "class."
-msgstr ""
-"Bitte verwenden Sie eine der folgenden Methoden um den Namen der neuen FAI-"
-"Klasse zu bestimmen."
+msgstr "Bitte verwenden Sie eine der folgenden Methoden um den Namen der neuen FAI-Klasse zu bestimmen."
 
 #: admin/fai/askClassName.tpl:26
 msgid "Enter FAI class name manually"
@@ -76,24 +62,14 @@ msgid ""
 "classes are possible. Branch names should be alphanumeric, excluding the "
 "reserved names 'scripts', 'hooks', 'partitions', 'variables', 'templates' "
 "and 'fai'."
-msgstr ""
-"Sie sind dabei, einen neuen (evtl. gesperrten) Teilbaum zu erstellen. Diese "
-"Aktion klont das existierende Release auf einen anderen Releasenamen. "
-"Teilbäume können wie gewohnt bearbeitet werden. FAI-Klassen von gesperrten "
-"Teilbäumen können nicht bearbeitet werden, lediglich das Hinzufügen von "
-"Klassen ist möglich.Teilbaumnamen sollten alphanumerisch sein, reservierte "
-"Namen sind 'scripts', 'hooks', 'partitions', 'variables', 'templates' und "
-"'fai'. Diese können nicht verwendet werden."
+msgstr "Sie sind dabei, einen neuen (evtl. gesperrten) Teilbaum zu erstellen. Diese Aktion klont das existierende Release auf einen anderen Releasenamen. Teilbäume können wie gewohnt bearbeitet werden. FAI-Klassen von gesperrten Teilbäumen können nicht bearbeitet werden, lediglich das Hinzufügen von Klassen ist möglich.Teilbaumnamen sollten alphanumerisch sein, reservierte Namen sind 'scripts', 'hooks', 'partitions', 'variables', 'templates' und 'fai'. Diese können nicht verwendet werden."
 
 #: admin/fai/faiNewBranch.tpl:7
 msgid ""
 "Branches are created as subreleases of the currently selected branch. "
-"Creating a new branch named 1.0.2 in SARGE for example, will result in a new "
-"release called SARGE/1.0.2."
-msgstr ""
-"Teilbäume werden als Subrelease des momentan gewählten Teilbaums erstellt. "
-"Wenn Sie bspw. einen neuen Teilbaum namens 1.0.2 in SARGE erstellen, wird "
-"dieses Release SARGE/1.0.2 heissen."
+"Creating a new branch named 1.0.2 in SARGE for example, will result in a new"
+" release called SARGE/1.0.2."
+msgstr "Teilbäume werden als Subrelease des momentan gewählten Teilbaums erstellt. Wenn Sie bspw. einen neuen Teilbaum namens 1.0.2 in SARGE erstellen, wird dieses Release SARGE/1.0.2 heissen."
 
 #: admin/fai/faiNewBranch.tpl:13
 msgid "Please enter a name for the branch"
@@ -106,20 +82,15 @@ msgstr "Gewünschte Operation wird durchgeführt"
 #: admin/fai/faiNewBranch.tpl:35
 msgid ""
 "As soon as the copy operation has finished, you can scroll down to end of "
-"the page and press the 'Continue' button to continue with the fai management "
-"dialog."
-msgstr ""
-"Sobald der Vorgang abgeschlossen wurde, können Sie zum unteren Ende der "
-"Seite blättern und auf den 'Weiter'-Knopf drücken, um zum FAI-Verwaltungs-"
-"Dialog zu gelangen."
+"the page and press the 'Continue' button to continue with the fai management"
+" dialog."
+msgstr "Sobald der Vorgang abgeschlossen wurde, können Sie zum unteren Ende der Seite blättern und auf den 'Weiter'-Knopf drücken, um zum FAI-Verwaltungs-Dialog zu gelangen."
 
 #: admin/fai/faiNewBranch.tpl:41
 msgid ""
 "Your browser doesn't support iframes, please use this link to perform the "
 "requested operation."
-msgstr ""
-"Ihr Browser unterstützt keine IFrames - bitte wählen Sie diesen Link, um die "
-"gewünschte Operation durchzuführen."
+msgstr "Ihr Browser unterstützt keine IFrames - bitte wählen Sie diesen Link, um die gewünschte Operation durchzuführen."
 
 #: admin/fai/faiNewBranch.tpl:43
 msgid "Perform requested operation."
@@ -154,9 +125,7 @@ msgstr "Fehler"
 #: admin/fai/tabsVariable.inc:53 admin/fai/tabsTemplate.inc:53
 #: admin/fai/tabsPartition.inc:54
 msgid "Moving the tree failed. Destination tree is subtree of source tree."
-msgstr ""
-"Verschieben des Baums ist fehlgeschlagen: Der Zielbaum ist ein Teilbaum des "
-"Quellbaumes."
+msgstr "Verschieben des Baums ist fehlgeschlagen: Der Zielbaum ist ein Teilbaum des Quellbaumes."
 
 #: admin/fai/fai-filter.tpl:3 admin/fai/classSelect/selectClass-filter.tpl:3
 #: admin/fai/packageSelect/selectPackage-filter.tpl:3
@@ -351,15 +320,11 @@ msgstr "Einhängepfad für Partition %s"
 msgid ""
 "File system type 'swap' is already used, change file system type for "
 "partition %s."
-msgstr ""
-"Dateisystem 'swap' wird bereits benutzt, ändern Sie bitte das Dateisystem "
-"für Partition %s."
+msgstr "Dateisystem 'swap' wird bereits benutzt, ändern Sie bitte das Dateisystem für Partition %s."
 
 #: admin/fai/class_faiPartitionTableEntry.inc:393
 msgid "Please use 'swap' as mount point, if 'swap' is used as fs-type."
-msgstr ""
-"Bitte wählen Sie 'swap' als Mount-Punkt, wenn Dateisystem 'swap' gewählt "
-"wurde."
+msgstr "Bitte wählen Sie 'swap' als Mount-Punkt, wenn Dateisystem 'swap' gewählt wurde."
 
 #: admin/fai/class_faiPartitionTableEntry.inc:399
 #: admin/fai/class_faiPartitionTableEntry.inc:403
@@ -374,9 +339,7 @@ msgstr "Größe der Partition %s"
 msgid ""
 "You have more than 3 primary partition table entries in your configuration, "
 "please check your configuration twice."
-msgstr ""
-"Sie haben mehr als 3 primäre Partitionen in ihrer Konfiguration. Bitte "
-"prüfen Sie die Konfiguration."
+msgstr "Sie haben mehr als 3 primäre Partitionen in ihrer Konfiguration. Bitte prüfen Sie die Konfiguration."
 
 #: admin/fai/class_faiPartitionTableEntry.inc:443
 #: admin/fai/class_faiDiskEntry.inc:750
@@ -498,9 +461,7 @@ msgstr "Information"
 msgid ""
 "This menu allows you to select FAI class names and to add them to the "
 "currently edited profile."
-msgstr ""
-"Dieses Menü erlaubt es Ihnen, FAI Klassen-Namen auszuwählen und zum "
-"gegenwärtig bearbeiteten Profil hinzuzufügen."
+msgstr "Dieses Menü erlaubt es Ihnen, FAI Klassen-Namen auszuwählen und zum gegenwärtig bearbeiteten Profil hinzuzufügen."
 
 #: admin/fai/faiProfileEntry.tpl:31
 msgid "Filters"
@@ -588,13 +549,9 @@ msgstr "Dieses Paket verfügt über keine debconf-Optionen."
 msgid ""
 "This debconf question is dynamically generated during package installation "
 "and requires choosing between specific options which cannot be presented "
-"here. The entered text needs to be one of the valid choices in order to take "
-"effect."
-msgstr ""
-"Diese Debconf-Frage wird während der Paket-Installation automatisch "
-"generiert und erfordert die Auswahl aus Möglichkeiten, die hier nicht "
-"dargestellt werden können. Der angegebene Wert muss einer dieser gültigen "
-"Auswahlmöglichkeiten entsprechen."
+"here. The entered text needs to be one of the valid choices in order to take"
+" effect."
+msgstr "Diese Debconf-Frage wird während der Paket-Installation automatisch generiert und erfordert die Auswahl aus Möglichkeiten, die hier nicht dargestellt werden können. Der angegebene Wert muss einer dieser gültigen Auswahlmöglichkeiten entsprechen."
 
 #: admin/fai/branch_selector.tpl:2
 #: admin/systems/services/repository/class_servRepository.inc:465
@@ -658,8 +615,7 @@ msgstr "Verarbeite"
 
 #: admin/fai/class_FAI.inc:1085
 msgid "Could not create new release, the destination dn is already in use."
-msgstr ""
-"Kann neues Release nicht erstellen, die Ziel-DN wird bereits verwendet."
+msgstr "Kann neues Release nicht erstellen, die Ziel-DN wird bereits verwendet."
 
 #: admin/fai/class_FAI.inc:1098
 msgid "Error while fetching source dn - aborted!"
@@ -820,8 +776,7 @@ msgstr "Berechtigungsfehler"
 #: admin/fai/class_faiManagement.inc:229 admin/fai/class_faiManagement.inc:243
 #, php-format
 msgid "You have no permission to create a new %s!"
-msgstr ""
-"Sie besitzen keine Berechtigung, um ein Objekt des Typs '%s' zu erstellen!"
+msgstr "Sie besitzen keine Berechtigung, um ein Objekt des Typs '%s' zu erstellen!"
 
 #: admin/fai/class_faiManagement.inc:243 admin/fai/fai-list.xml:55
 msgid "profile"
@@ -834,8 +789,7 @@ msgstr "Teilbaum gesperrt"
 #: admin/fai/class_faiManagement.inc:395
 #, php-format
 msgid "The following entries are locked, you can't remove them %s."
-msgstr ""
-"Die folgenden Einträge sind gesperrt, Sie können diese nicht entfernen: %s."
+msgstr "Die folgenden Einträge sind gesperrt, Sie können diese nicht entfernen: %s."
 
 #: admin/fai/class_faiManagement.inc:413
 msgid "FAI object"
@@ -856,9 +810,7 @@ msgstr "Warnung"
 
 #: admin/fai/class_faiManagement.inc:564
 msgid "Release remove aborted because the release name check failed!"
-msgstr ""
-"Das Entfernen der Release ist aufgrund einer fehlgeschlagenen "
-"Namensüberprüfung fehlgeschlagen!"
+msgstr "Das Entfernen der Release ist aufgrund einer fehlgeschlagenen Namensüberprüfung fehlgeschlagen!"
 
 #: admin/fai/class_faiManagement.inc:641 admin/fai/class_faiManagement.inc:664
 msgid "Configuration"
@@ -914,9 +866,7 @@ msgstr "Größe"
 #, php-format
 msgid ""
 "The disk cannot be deleted while it is used in the '%s' disk definition!"
-msgstr ""
-"Diese Festplatte kann nicht gelöscht werden solange sie von '%s' benutzt "
-"wird!"
+msgstr "Diese Festplatte kann nicht gelöscht werden solange sie von '%s' benutzt wird!"
 
 #: admin/fai/class_faiDiskEntry.inc:546
 msgid "encrypted"
@@ -934,18 +884,13 @@ msgstr "bewahren"
 msgid ""
 "You have more than four primary partition table entries in your "
 "configuration, please check your configuration twice."
-msgstr ""
-"Sie haben mehr als 4 primäre Partitionen in ihrer Konfiguration. Bitte "
-"prüfen Sie die Konfiguration."
+msgstr "Sie haben mehr als 4 primäre Partitionen in ihrer Konfiguration. Bitte prüfen Sie die Konfiguration."
 
 #: admin/fai/class_faiDiskEntry.inc:737
 msgid ""
 "You cannot have more than three primary partition while using logical "
 "partitions, please check your configuration twice."
-msgstr ""
-"Sie haben mehr als 3 primäre Partitionen bei gleichzeitiger Nutzung von "
-"logischen Partitionen in ihrer Konfiguration. Bitte prüfen Sie die "
-"Konfiguration."
+msgstr "Sie haben mehr als 3 primäre Partitionen bei gleichzeitiger Nutzung von logischen Partitionen in ihrer Konfiguration. Bitte prüfen Sie die Konfiguration."
 
 #: admin/fai/class_faiDiskEntry.inc:760
 msgid "Disk options"
@@ -969,14 +914,12 @@ msgid "List of deployment classes and products"
 msgstr "Liste von zu verteilenden Klassen und Produkten"
 
 #: admin/fai/fai-list.xml:15
-#, fuzzy
 msgid "partitionTable"
-msgstr "Partitionstabelle"
+msgstr ""
 
 #: admin/fai/fai-list.xml:23
-#, fuzzy
 msgid "packagelist"
-msgstr "Paketliste"
+msgstr ""
 
 #: admin/fai/fai-list.xml:88 admin/fai/classSelect/selectClass-list.xml:36
 #: admin/fai/faiScriptEntry.tpl:33
@@ -1192,21 +1135,15 @@ msgid "Add from list"
 msgstr "Aus Liste hinzufügen"
 
 #: admin/fai/remove.tpl:6
-#, fuzzy
 msgid ""
-"This includes all account data, system access rules, imap settings, etc. for "
-"this user. Please double check if your really want to do this since there is "
-"no way for FusionDirectory to get your data back."
+"This includes all account data, system access rules, imap settings, etc. for"
+" this user. Please double check if your really want to do this since there "
+"is no way for FusionDirectory to get your data back."
 msgstr ""
-"Dies umfasst alle Konto-Informationen, Zugriffsregeln, IMAP-Einstellungen, "
-"etc. dieses Benutzers. Bitte prüfen Sie genau, da es keine Möglichkeit für "
-"FusionDirectory gibt, die Daten wiederherzustellen. "
 
 #: admin/fai/remove.tpl:10 admin/fai/remove_branch.tpl:10
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr ""
-"Wenn Sie sicher sind, drücken Sie 'Entfernen' um fortzufahren oder "
-"'Abbrechen' zum Abbruch."
+msgstr "Wenn Sie sicher sind, drücken Sie 'Entfernen' um fortzufahren oder 'Abbrechen' zum Abbruch."
 
 #: admin/fai/paste_generic.tpl:1
 msgid "FAI settings"
@@ -1216,14 +1153,11 @@ msgstr "FAI-Einstellungen"
 #, php-format
 msgid ""
 "The file encodig has changed from '%s' to '%s'. Do you really want to save?"
-msgstr ""
-"Die Datei-Kodierung hat sich von '%s' nach '%s' geändert. Wollen Sie sie "
-"speichern?"
+msgstr "Die Datei-Kodierung hat sich von '%s' nach '%s' geändert. Wollen Sie sie speichern?"
 
 #: admin/fai/faiTemplateEdit.tpl:16
 msgid "This FAI template is write protected. Editing may break it!"
-msgstr ""
-"Diese Vorlage ist schreibgeschützt. Eine Bearbeitung kann sie zerstören!"
+msgstr "Diese Vorlage ist schreibgeschützt. Eine Bearbeitung kann sie zerstören!"
 
 #: admin/fai/faiTemplateEdit.tpl:17
 msgid "Edit anyway"
@@ -1265,14 +1199,11 @@ msgstr "Bitte wählen Sie mindestens ein Paket!"
 #: admin/fai/class_faiPackage.inc:521
 msgid ""
 "Please choose a valid release/section combination for your repository setup!"
-msgstr ""
-"Bitte wählen Sie eine gültige Kombination aus Release und Sektion für Ihr "
-"gewünschtes Repository!"
+msgstr "Bitte wählen Sie eine gültige Kombination aus Release und Sektion für Ihr gewünschtes Repository!"
 
 #: admin/fai/class_faiPackage.inc:580
-#, fuzzy
 msgid "Unkown packages"
-msgstr "Zeige Pakete"
+msgstr ""
 
 #: admin/fai/class_faiPackage.inc:679
 msgid "FAI Package list"
@@ -1437,9 +1368,7 @@ msgstr "RAID-Arrays müssen mindestens zwei Partitionen enthalten!"
 #: admin/fai/class_faiPartition.inc:426
 msgid ""
 "Raid 0 arrays can only be realized with a combination of two partitions!"
-msgstr ""
-"RAID 0 Arrays können nur in Kombination von zwei Partitionen realisiert "
-"werden!"
+msgstr "RAID 0 Arrays können nur in Kombination von zwei Partitionen realisiert werden!"
 
 #: admin/fai/classSelect/selectClass-list.tpl:13
 msgid "Base"
@@ -1522,8 +1451,7 @@ msgstr "FAI-Objekthierarchie"
 
 #: admin/fai/faiSummary.tpl:11
 msgid "Reload class and release configuration from parent object."
-msgstr ""
-"Klasse aktualisieren und Konfiguration vom übergeordneten Objekt freigeben."
+msgstr "Klasse aktualisieren und Konfiguration vom übergeordneten Objekt freigeben."
 
 #: admin/fai/faiSummary.tpl:22
 msgid "You are not allowed to view the fai summary."
@@ -1582,9 +1510,7 @@ msgstr "Priorität"
 msgid ""
 "Choose a priority. Low values result in an earlier, high values in a later "
 "execution."
-msgstr ""
-"Wählen Sie eine Priorität. Niedrige Werte bedeuten eine frühe, höhere Werte "
-"eine spätere Ausführung."
+msgstr "Wählen Sie eine Priorität. Niedrige Werte bedeuten eine frühe, höhere Werte eine spätere Ausführung."
 
 #: admin/fai/class_faiScript.inc:334 admin/fai/class_faiScript.inc:336
 msgid "Sort direction"
@@ -1647,15 +1573,11 @@ msgid "Add volume group"
 msgstr "Volume-Gruppe hinzufügen"
 
 #: admin/fai/remove_branch.tpl:6
-#, fuzzy
 msgid ""
 "This includes all account data, system access, etc. for this branch. Please "
 "double check if your really want to do this since there is no way for "
 "FusionDirectory to get your data back."
 msgstr ""
-"Dies umfasst alle Kontodaten, Zugriffsregeln etc. für diesen Teilbaum. Bitte "
-"prüfen Sie genau, ob Sie dies wünschen, da es keine Möglichkeit gibt, diese "
-"Aktion rückgängig zu machen."
 
 #: admin/fai/class_askClassName.inc:99 admin/fai/class_askClassName.inc:100
 #: admin/fai/class_askClassName.inc:101 admin/fai/class_askClassName.inc:102
@@ -1698,15 +1620,13 @@ msgid "Sections"
 msgstr "Sektionen"
 
 #: admin/systems/services/repository/class_servRepository.inc:468
-#, fuzzy
 msgid "Installation mirror"
-msgstr "Installations-Methode"
+msgstr ""
 
 #: admin/systems/services/repository/class_servRepository.inc:469
 #: admin/systems/services/repository/servRepositorySetup.tpl:62
-#, fuzzy
 msgid "Local mirror"
-msgstr "Schwerer Fehler"
+msgstr ""
 
 #: admin/systems/services/repository/class_servRepository.inc:470
 msgid "Architectures"
@@ -1727,36 +1647,3 @@ msgstr "Liste der Repositorien"
 #: admin/systems/services/repository/repository-list.xml:14
 msgid "Service"
 msgstr "Dienste"
-
-#~ msgid "List of available packages"
-#~ msgstr "Liste verfügbarer Pakete"
-
-#~ msgid ""
-#~ "The search returned too many results, only the first 200 entries are "
-#~ "shown."
-#~ msgstr ""
-#~ "Die Suche ergab zu viele Treffer. Es werden nicht mehr als 200 Einträge "
-#~ "angezeigt!"
-
-#~ msgid ""
-#~ "This menu allows you to select multiple packages to add them to the "
-#~ "currently edited package list."
-#~ msgstr ""
-#~ "Dieses Menü erlaubt es Ihnen, Pakete auszuwählen und zur gegenwärtig "
-#~ "bearbeiteten Paketliste hinzuzufügen."
-
-#~ msgid "Please enter your search string here"
-#~ msgstr "Bitte geben Sie hier einen Such-Text ein."
-
-#~ msgid ""
-#~ "This list displays all assigned package names for this repository "
-#~ "settings."
-#~ msgstr "Diese Liste zeigt alle diesem Repository zugeordneten Paket-Namen."
-
-#~ msgid "This menu allows you to create, delete and edit repository settings."
-#~ msgstr ""
-#~ "Dieses Menü erlaubt das Erstellen, Löschen und Bearbeiten von "
-#~ "Repositorien-Einstellungen."
-
-#~ msgid "Add repository"
-#~ msgstr "Repository hinzufügen"

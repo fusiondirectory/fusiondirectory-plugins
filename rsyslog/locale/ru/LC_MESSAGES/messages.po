@@ -1,27 +1,21 @@
-# translation of messages.po to
-#
-# Copyright (C) 2003 GONICUS GmbH, Germany
-# Copyright (C) 2011 FusionDirectory Project
-# This file is distributed under the same license as the FusionDirectory package.
-#
-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
 "POT-Creation-Date: 2012-05-26 17:33+0200\n"
-"PO-Revision-Date: 2012-01-06 18:16+0000\n"
-"Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>\n"
-"Language-Team: Russian (http://www.transifex.net/projects/p/FusionDirectory/"
-"language/ru/)\n"
-"Language: ru\n"
+"PO-Revision-Date: 2012-05-26 16:33+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: Russian (http://www.transifex.net/projects/p/FusionDirectory/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
-"X-Generator: KBabel 1.11.4\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
 #: admin/systems/services/rsyslog/rSyslogServer.tpl:1
 msgid "Syslog logging"
@@ -45,7 +39,7 @@ msgstr ""
 #: admin/systems/services/rsyslog/class_rSyslogServer.inc:107
 #: admin/systems/services/rsyslog/class_rSyslogServer.inc:205
 msgid "Password"
-msgstr ""
+msgstr "Пароль"
 
 #: admin/systems/services/rsyslog/class_rSyslogServer.inc:49
 msgid "Logging"
@@ -60,15 +54,15 @@ msgstr ""
 #: admin/systems/services/rsyslog/class_rSyslogServer.inc:101
 #: admin/systems/services/rsyslog/class_rSyslogServer.inc:204
 msgid "User"
-msgstr ""
+msgstr "Пользователь"
 
 #: admin/systems/services/rsyslog/class_rSyslogServer.inc:169
 msgid "LDAP error"
-msgstr ""
+msgstr "Ошибка LDAP"
 
 #: admin/systems/services/rsyslog/class_rSyslogServer.inc:195
 msgid "Services"
-msgstr ""
+msgstr "Сервисы"
 
 #: admin/systems/services/rsyslog/class_rSyslogServer.inc:206
 msgid "Allow view of entries on this server"
@@ -76,11 +70,11 @@ msgstr ""
 
 #: addons/rsyslog/rSyslog.tpl:2
 msgid "Filter"
-msgstr ""
+msgstr "Фильтр"
 
 #: addons/rsyslog/rSyslog.tpl:7
 msgid "Server"
-msgstr ""
+msgstr "Сервер"
 
 #: addons/rsyslog/rSyslog.tpl:15
 msgid "Host"
@@ -100,7 +94,7 @@ msgstr ""
 
 #: addons/rsyslog/rSyslog.tpl:52 addons/rsyslog/rSyslog.tpl:56
 msgid "Search"
-msgstr ""
+msgstr "Поиск"
 
 #: addons/rsyslog/rSyslog.tpl:62 addons/rsyslog/class_rsyslog.inc:334
 msgid "Error"
@@ -108,11 +102,11 @@ msgstr ""
 
 #: addons/rsyslog/rSyslog.tpl:70
 msgid "Date"
-msgstr ""
+msgstr "Дата"
 
 #: addons/rsyslog/rSyslog.tpl:75
 msgid "Source"
-msgstr ""
+msgstr "Источник"
 
 #: addons/rsyslog/rSyslog.tpl:80
 msgid "Header"
@@ -124,7 +118,7 @@ msgstr ""
 
 #: addons/rsyslog/rSyslog.tpl:95
 msgid "Message"
-msgstr ""
+msgstr "Сообщение"
 
 #: addons/rsyslog/main.inc:48 addons/rsyslog/class_rsyslog.inc:26
 msgid "System logs"
@@ -140,7 +134,7 @@ msgstr ""
 
 #: addons/rsyslog/class_rsyslog.inc:127 addons/rsyslog/class_rsyslog.inc:133
 msgid "All"
-msgstr ""
+msgstr "Все"
 
 #: addons/rsyslog/class_rsyslog.inc:159
 #, php-format
@@ -166,7 +160,7 @@ msgstr ""
 
 #: addons/rsyslog/class_rsyslog.inc:335
 msgid "Warning"
-msgstr ""
+msgstr "Предупреждение"
 
 #: addons/rsyslog/class_rsyslog.inc:336
 msgid "Notice"

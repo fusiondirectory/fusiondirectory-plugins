@@ -1,22 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
 # Marcel Sandow <MarcelSandow@gmx.de>, 2011.
-#
 msgid ""
 msgstr ""
-"Project-Id-Version: gosa-netgroups-plugin\n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version: FusionDirectory\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
 "POT-Creation-Date: 2012-05-26 17:33+0200\n"
-"PO-Revision-Date: 2011-06-03 23:28+0100\n"
-"Last-Translator: Marcel Sandow <MarcelSandow@gmx.de>\n"
-"Language-Team: German <>\n"
-"Language: de\n"
+"PO-Revision-Date: 2012-01-13 16:34+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: German (http://www.transifex.net/projects/p/FusionDirectory/language/de/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-Language: German\n"
-"X-Poedit-Country: GERMANY\n"
+"Language: de\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: admin/netgroups/netgroup-filter.tpl:3
 #: admin/netgroups/memberNisnetgroupSelect/memberNisnetgroup-filter.tpl:3
@@ -117,11 +117,9 @@ msgid "Error"
 msgstr "Fehler"
 
 #: admin/netgroups/class_netgroup.inc:348
-#, fuzzy, php-format
+#, php-format
 msgid "Add CN/UID '%s' to NIS netgroup '%s' failed: cannot find object!"
 msgstr ""
-"CN/UID '%s' hinzufügen zur NIS Netgroup '%s' fehlgeschlagen: Objekt nicht "
-"auffindbar!"
 
 #: admin/netgroups/class_netgroup.inc:572
 msgid "! unknown UID/CN"
@@ -254,13 +252,3 @@ msgstr "NIS Netgroup Mitglied"
 #: personal/netgroups/class_netgroupAccount.inc:29
 msgid "Choose NIS Netgroups for the user"
 msgstr "NIS Netgroups für den Benutzer auswählen"
-
-#~ msgid ""
-#~ "Add CN/UID '%s' to NIS netgroup '%s' failed: CN/UID is used more than "
-#~ "once!"
-#~ msgstr ""
-#~ "CN/UID '%s' hinzufügen zur NIS Netgroup '%s' fehlgeschlagen: CN/UID wurde "
-#~ "mehrfach verwendet!"
-
-#~ msgid "Component"
-#~ msgstr "Komponente"

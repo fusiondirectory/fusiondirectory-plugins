@@ -1,20 +1,22 @@
-# Header entry was created by Lokalize.
-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
 # thoth, 2011.
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version: FusionDirectory\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
 "POT-Creation-Date: 2012-05-26 17:33+0200\n"
-"PO-Revision-Date: 2011-05-12 02:26+0200\n"
-"Last-Translator: thoth\n"
-"Language-Team: Spanish <>\n"
-"Language: es\n"
+"PO-Revision-Date: 2012-05-26 15:50+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/FusionDirectory/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.0\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: admin/netgroups/netgroup-filter.tpl:3
 #: admin/netgroups/memberNisnetgroupSelect/memberNisnetgroup-filter.tpl:3
@@ -115,11 +117,9 @@ msgid "Error"
 msgstr "Error"
 
 #: admin/netgroups/class_netgroup.inc:348
-#, fuzzy, php-format
+#, php-format
 msgid "Add CN/UID '%s' to NIS netgroup '%s' failed: cannot find object!"
 msgstr ""
-"¡Añadir CN/UID '%s' al NIS netgroup '%s ha fallado: no podemos encontrar el "
-"objeto!"
 
 #: admin/netgroups/class_netgroup.inc:572
 msgid "! unknown UID/CN"
@@ -252,21 +252,3 @@ msgstr "Miembro del NIS Netgroup"
 #: personal/netgroups/class_netgroupAccount.inc:29
 msgid "Choose NIS Netgroups for the user"
 msgstr "Elija los NIS Netgroups para el usuario"
-
-#~ msgid ""
-#~ "Add CN/UID '%s' to NIS netgroup '%s' failed: CN/UID is used more than "
-#~ "once!"
-#~ msgstr ""
-#~ "¡Añadir CN/UID '%s' al NIS netgroup '%s ha fallado: el CN/UID es usado "
-#~ "mas de una vez!"
-
-#~ msgid "Component"
-#~ msgstr "componente"
-
-#, fuzzy
-#~ msgid "nisNetgroup"
-#~ msgstr "NetGroups"
-
-#, fuzzy
-#~ msgid "nisNetgroup member"
-#~ msgstr "Miembros del NIS Netgroup"

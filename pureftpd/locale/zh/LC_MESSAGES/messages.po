@@ -1,24 +1,22 @@
-# translation of messages.po to Chinese Simplified
-#
-# Copyright (C) 2003 GONICUS GmbH, Germany
-# Copyright (C) 2011 FusionDirectory Project
-# This file is distributed under the same license as the FusionDirectory package.
-#
-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
 #  Jiang Xin <worldhello.net@gmail.com>, 2007.
 msgid ""
 msgstr ""
-"Project-Id-Version: messages\n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version: FusionDirectory\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
 "POT-Creation-Date: 2012-05-26 17:33+0200\n"
-"PO-Revision-Date: 2007-06-03 12:27+0800\n"
-"Last-Translator: Jiang Xin <worldhello.net@gmail.com>\n"
-"Language-Team: Chinese Simplified <zh@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2012-01-13 17:13+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: Chinese (http://www.transifex.net/projects/p/FusionDirectory/language/zh/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
+"Language: zh\n"
+"Plural-Forms: nplurals=1; plural=0\n"
 
 #: personal/connectivity/pureftpd/pureftpd.tpl:6
 msgid "FTP account"
@@ -84,107 +82,64 @@ msgid "FTP"
 msgstr "FTP"
 
 #: personal/connectivity/pureftpd/class_pureftpdAccount.inc:27
-#, fuzzy
 msgid "This does something"
-msgstr "******"
+msgstr ""
 
 #: personal/connectivity/pureftpd/class_pureftpdAccount.inc:159
 #: personal/connectivity/pureftpd/class_pureftpdAccount.inc:255
-#, fuzzy
 msgid "LDAP error"
-msgstr "LDAP 错误:"
+msgstr ""
 
 #: personal/connectivity/pureftpd/class_pureftpdAccount.inc:218
-#, fuzzy
 msgid "Quota file"
-msgstr "Quota 大小"
+msgstr ""
 
 #: personal/connectivity/pureftpd/class_pureftpdAccount.inc:221
-#, fuzzy
 msgid "Quota size"
-msgstr "Quota 大小"
+msgstr ""
 
 #: personal/connectivity/pureftpd/class_pureftpdAccount.inc:224
 #: personal/connectivity/pureftpd/class_pureftpdAccount.inc:330
-#, fuzzy
 msgid "Upload ratio"
-msgstr "上传"
+msgstr ""
 
 #: personal/connectivity/pureftpd/class_pureftpdAccount.inc:227
 #: personal/connectivity/pureftpd/class_pureftpdAccount.inc:332
-#, fuzzy
 msgid "Download ratio"
-msgstr "下载配置"
+msgstr ""
 
 #: personal/connectivity/pureftpd/class_pureftpdAccount.inc:319
-#, fuzzy
 msgid "Ftp"
-msgstr "文件系统类型"
+msgstr ""
 
 #: personal/connectivity/pureftpd/class_pureftpdAccount.inc:320
-#, fuzzy
 msgid "Pure ftp account"
-msgstr "创建传真账号"
+msgstr ""
 
 #: personal/connectivity/pureftpd/class_pureftpdAccount.inc:320
-#, fuzzy
 msgid "Connectivity addon"
-msgstr "互联"
+msgstr ""
 
 #: personal/connectivity/pureftpd/class_pureftpdAccount.inc:324
 msgid "My account"
 msgstr "我的账号"
 
 #: personal/connectivity/pureftpd/class_pureftpdAccount.inc:329
-#, fuzzy
 msgid "Quota files"
-msgstr "Quota 大小"
+msgstr ""
 
 #: personal/connectivity/pureftpd/class_pureftpdAccount.inc:331
-#, fuzzy
 msgid "Quota MBytes"
-msgstr "Quota 大小"
+msgstr ""
 
 #: personal/connectivity/pureftpd/class_pureftpdAccount.inc:333
-#, fuzzy
 msgid "Upload bandwith"
-msgstr "上传带宽"
+msgstr ""
 
 #: personal/connectivity/pureftpd/class_pureftpdAccount.inc:334
-#, fuzzy
 msgid "Download bandwith"
-msgstr "下载带宽"
+msgstr ""
 
 #: personal/connectivity/pureftpd/class_pureftpdAccount.inc:335
 msgid "Status"
 msgstr "状态"
-
-#, fuzzy
-#~ msgid "Removing of user/pureftpd account with dn '%s' failed."
-#~ msgstr "删除 dn 为 '%s' 的 user/kolab 账号失败。"
-
-#, fuzzy
-#~ msgid "Value specified as 'Upload ratio' is not valid."
-#~ msgstr "提供的“上传带宽”值无效。"
-
-#, fuzzy
-#~ msgid "Saving of user/pureftpd account with dn '%s' failed."
-#~ msgstr "保存 dn 为 '%s' 的 user/kolab 账号为空。"
-
-#~ msgid "Value specified as 'Upload bandwidth' is not valid."
-#~ msgstr "提供的“上传带宽”值无效。"
-
-#~ msgid "Value specified as 'Download bandwidth' is not valid."
-#~ msgstr "提供的“下载带宽”值无效。"
-
-#, fuzzy
-#~ msgid "Value specified as 'Quota files' is not valid."
-#~ msgstr "提供的“文件”值无效。"
-
-#, fuzzy
-#~ msgid "Value specified as 'Quota size' is not valid."
-#~ msgstr "提供的“大小”值无效。"
-
-#, fuzzy
-#~ msgid "Value specified as 'Download ratio' is not valid."
-#~ msgstr "提供的“下载带宽”值无效。"

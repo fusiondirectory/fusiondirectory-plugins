@@ -1,26 +1,21 @@
-# translation of messages.po to
-#
-# Copyright (C) 2003 GONICUS GmbH, Germany
-# Copyright (C) 2011 FusionDirectory Project
-# This file is distributed under the same license as the FusionDirectory package.
-#
-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: polski\n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version: FusionDirectory\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
 "POT-Creation-Date: 2012-05-26 17:33+0200\n"
-"PO-Revision-Date: 2007-07-14 21:45+0100\n"
-"Last-Translator: Piotr Rybicki <meritus@innervision.pl>\n"
-"Language-Team: Piotr Rybicki <meritus@innervision.pl>\n"
-"Language: \n"
+"PO-Revision-Date: 2012-05-26 16:42+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: Polish (http://www.transifex.net/projects/p/FusionDirectory/language/pl/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-Language: Polish\n"
-"X-Poedit-Country: POLAND\n"
-"X-Poedit-SourceCharset: iso-8859-2\n"
-"X-Poedit-Basepath: tedst\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
 #: admin/systems/services/kolab/class_servKolab.inc:127
 #, php-format
@@ -37,14 +32,12 @@ msgid "Remove"
 msgstr "Usuń"
 
 #: admin/systems/services/kolab/class_servKolab.inc:223
-#, fuzzy
 msgid "Internal error"
-msgstr "Terminal Server"
+msgstr "Błąd wewnętrzny"
 
 #: admin/systems/services/kolab/class_servKolab.inc:223
-#, fuzzy
 msgid "Kolab account does not exist!"
-msgstr "Ustawienia konta Kolab"
+msgstr ""
 
 #: admin/systems/services/kolab/class_servKolab.inc:227
 #: personal/connectivity/kolab/class_kolabAccount.inc:199
@@ -52,44 +45,39 @@ msgid "Error"
 msgstr "Błąd"
 
 #: admin/systems/services/kolab/class_servKolab.inc:227
-#, fuzzy
 msgid "hostname"
-msgstr "Nazwisko"
+msgstr ""
 
 #: admin/systems/services/kolab/class_servKolab.inc:237
 #: admin/systems/services/kolab/class_servKolab.inc:253
 #: admin/systems/services/kolab/class_servKolab.inc:422
 #: personal/connectivity/kolab/class_kolabAccount.inc:367
 #: personal/connectivity/kolab/class_kolabAccount.inc:504
-#, fuzzy
 msgid "LDAP error"
-msgstr "błąd LDAP:"
+msgstr "błąd LDAP"
 
 #: admin/systems/services/kolab/class_servKolab.inc:329
 #: admin/systems/services/kolab/class_servKolab.inc:331
-#, fuzzy
 msgid "Future days"
-msgstr "Przyszłość"
+msgstr ""
 
 #: admin/systems/services/kolab/class_servKolab.inc:335
 #: admin/systems/services/kolab/class_servKolab.inc:339
 msgid "Quota"
-msgstr ""
+msgstr "Quota"
 
 #: admin/systems/services/kolab/class_servKolab.inc:337
 msgid "Please choose a value between 1 and 100 for Quota settings."
 msgstr "Proszę wybrać wartość pomiędzy 1 a 100 dla ustawień Quota."
 
 #: admin/systems/services/kolab/class_servKolab.inc:343
-#, fuzzy
 msgid "Privileged networks"
-msgstr "uprzywilejowane sieci SMTP"
+msgstr ""
 
 #: admin/systems/services/kolab/class_servKolab.inc:347
 #: admin/systems/services/kolab/servkolab.tpl:27
-#, fuzzy
 msgid "Mail domains"
-msgstr "w domenie"
+msgstr ""
 
 #: admin/systems/services/kolab/class_servKolab.inc:439
 #: admin/systems/services/kolab/class_servKolab.inc:450
@@ -164,9 +152,8 @@ msgid "Quota settings"
 msgstr "Ustawienia Quota"
 
 #: admin/systems/services/kolab/class_servKolab.inc:475
-#, fuzzy
 msgid "Allow unauthenticated free busy"
-msgstr "Zezwól na nieautoryzowane pobieranie informacji Free/Busy"
+msgstr ""
 
 #: admin/systems/services/kolab/class_servKolab.inc:476
 msgid "kolabFreeBusyFuture"
@@ -246,14 +233,12 @@ msgid "Unspecified"
 msgstr ""
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:150
-#, fuzzy
 msgid "Mails"
-msgstr "Poczta"
+msgstr ""
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:151
-#, fuzzy
 msgid "Tasks"
-msgstr "Zadanie"
+msgstr ""
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:152
 msgid "Journals"
@@ -264,28 +249,24 @@ msgid "Calendar"
 msgstr ""
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:154
-#, fuzzy
 msgid "Contacts"
-msgstr "Zawartość"
+msgstr ""
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:155
-#, fuzzy
 msgid "Notes"
-msgstr "Zawartość"
+msgstr ""
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:159
-#, fuzzy
 msgid "Inbox"
-msgstr "Indeks"
+msgstr ""
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:160
 msgid "Drafts"
 msgstr ""
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:161
-#, fuzzy
 msgid "Sent"
-msgstr "Ustaw"
+msgstr ""
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:162
 msgid "SPAM"
@@ -296,12 +277,12 @@ msgstr ""
 #: personal/mail/kolab/class_mail-methods-kolab.inc:166
 #: personal/mail/kolab/class_mail-methods-kolab.inc:167
 #: personal/mail/kolab/class_mail-methods-kolab.inc:168
-#, fuzzy
 msgid "Default"
-msgstr "Usuń"
+msgstr ""
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:183
-msgid "Mail settings cannot be removed while there are delegations configured!"
+msgid ""
+"Mail settings cannot be removed while there are delegations configured!"
 msgstr ""
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:281
@@ -309,9 +290,8 @@ msgid "Waiting for kolab to remove mail properties..."
 msgstr ""
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:284
-#, fuzzy
 msgid "Please remove the mail settings first!"
-msgstr "Zaznacz aby zobaczyć grupy które zawierają ustawienia poczty"
+msgstr ""
 
 #: personal/connectivity/kolab/class_kolabAccount.inc:27
 msgid "This plugin manage the user settings for a kolab server"
@@ -347,15 +327,13 @@ msgstr "Anonimowy"
 
 #: personal/connectivity/kolab/class_kolabAccount.inc:379
 #: personal/connectivity/kolab/class_kolabAccount.inc:382
-#, fuzzy
 msgid "Free Busy future"
-msgstr "Free busy przyszłość"
+msgstr ""
 
 #: personal/connectivity/kolab/class_kolabAccount.inc:387
 #: personal/connectivity/kolab/class_kolabAccount.inc:390
-#, fuzzy
 msgid "Free Busy url"
-msgstr "Free busy przyszłość"
+msgstr ""
 
 #: personal/connectivity/kolab/class_kolabAccount.inc:404
 #, php-format
@@ -372,9 +350,8 @@ msgid "Kolab account settings"
 msgstr "Ustawienia konta Kolab"
 
 #: personal/connectivity/kolab/class_kolabAccount.inc:684
-#, fuzzy
 msgid "Connectivity addon"
-msgstr "Konto połączeń"
+msgstr "dodatek Połączeń"
 
 #: personal/connectivity/kolab/class_kolabAccount.inc:688
 msgid "My account"
@@ -412,9 +389,7 @@ msgstr "Konto Kolab"
 msgid ""
 "The kolab account is currently disabled. It's features can be adjusted if "
 "you add a mail account."
-msgstr ""
-"To konto kolab jest obecnie wyłączone. Parametry konta można zmieniać po "
-"dodaniu konta pocztowego."
+msgstr "To konto kolab jest obecnie wyłączone. Parametry konta można zmieniać po dodaniu konta pocztowego."
 
 #: personal/connectivity/kolab/kolab.tpl:83
 msgid "Mail size"
@@ -439,64 +414,3 @@ msgstr "Przyszłość"
 #: personal/connectivity/kolab/kolab.tpl:112
 msgid "days"
 msgstr "dni"
-
-#~ msgid "This does something"
-#~ msgstr "To robi coś"
-
-#, fuzzy
-#~ msgid "Junk mail"
-#~ msgstr "mężczyzna"
-
-#~ msgid "Add"
-#~ msgstr "Dodaj"
-
-#~ msgid "Save"
-#~ msgstr "Zapisz"
-
-#~ msgid "Cancel"
-#~ msgstr "Anuluj"
-
-#~ msgid "Future days in Free/Busy settings must be set."
-#~ msgstr "Przyszłe dni w ustawieniach Free/Busy muszą być liczbą."
-
-#~ msgid "Future days in Free/Busy settings must be a positive value."
-#~ msgstr "Przyszłe dni w ustawieniach Free/Busy muszą być liczbą dodanią."
-
-#~ msgid "The given Quota settings value must be a number."
-#~ msgstr "Podane parametry Quota muszą być liczbą."
-
-#~ msgid "Future days must be a value."
-#~ msgstr "Przyszłe dni muszą być liczbą."
-
-#~ msgid "No SMTP privileged networks set."
-#~ msgstr "Nie ustawiono uprawnionych sieci SMTP"
-
-#, fuzzy
-#~ msgid "Removing of user/kolab account with dn '%s' failed."
-#~ msgstr "Usuwanie konta ogólnego użytkownika nieudane"
-
-#, fuzzy
-#~ msgid "Saving of user/kolab account with dn '%s' failed."
-#~ msgstr "Zapisywanie konta Kolab nieudane"
-
-#, fuzzy
-#~ msgid "Removing host entry from system server/kolab with dn '%s' failed."
-#~ msgstr "Usuwanie serwera z obiektu Kolab nieudane"
-
-#, fuzzy
-#~ msgid "Saving system server/kolab with dn '%s' failed."
-#~ msgstr "Zapisywanie serwera do obiektu Kolan nieudane"
-
-#, fuzzy
-#~ msgid "Cannot add invalid mail address!"
-#~ msgstr "Próbujesz dodać nieprawidłowy adres email"
-
-#, fuzzy
-#~ msgid "Primary mail address already in use by another user!"
-#~ msgstr "Adres podstawowy dla tego współdzielonego folderu"
-
-#~ msgid "The value specified as Free Busy future needs to be an integer."
-#~ msgstr "Wartość podana jako przyszłość FreeBusy musi być liczbą."
-
-#~ msgid "The value specified as Free Busy Information URL is invalid."
-#~ msgstr "Wartość podana jako informacyjny URL FreeBusy jest nieprawidłowa."

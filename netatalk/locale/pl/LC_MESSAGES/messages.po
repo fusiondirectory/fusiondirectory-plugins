@@ -1,26 +1,21 @@
-# translation of messages.po to
-#
-# Copyright (C) 2003 GONICUS GmbH, Germany
-# Copyright (C) 2011 FusionDirectory Project
-# This file is distributed under the same license as the FusionDirectory package.
-#
-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: polski\n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version: FusionDirectory\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
 "POT-Creation-Date: 2012-05-26 17:33+0200\n"
-"PO-Revision-Date: 2007-07-14 21:45+0100\n"
-"Last-Translator: Piotr Rybicki <meritus@innervision.pl>\n"
-"Language-Team: Piotr Rybicki <meritus@innervision.pl>\n"
-"Language: \n"
+"PO-Revision-Date: 2012-01-13 16:26+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: Polish (http://www.transifex.net/projects/p/FusionDirectory/language/pl/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-Language: Polish\n"
-"X-Poedit-Country: POLAND\n"
-"X-Poedit-SourceCharset: iso-8859-2\n"
-"X-Poedit-Basepath: tedst\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
 #: personal/netatalk/main.inc:131
 msgid "Netatalk settings"
@@ -54,9 +49,8 @@ msgstr "Zarządzaj kontem Netatalk"
 #: personal/netatalk/class_netatalkAccount.inc:193
 #: personal/netatalk/class_netatalkAccount.inc:195
 #: personal/netatalk/class_netatalkAccount.inc:196
-#, fuzzy
 msgid "netatalk"
-msgstr "Netatalk"
+msgstr ""
 
 #: personal/netatalk/class_netatalkAccount.inc:190
 msgid "POSIX"
@@ -68,58 +62,13 @@ msgstr ""
 
 #: personal/netatalk/class_netatalkAccount.inc:291
 #: personal/netatalk/class_netatalkAccount.inc:356
-#, fuzzy
 msgid "LDAP error"
-msgstr "błąd LDAP:"
+msgstr ""
 
 #: personal/netatalk/class_netatalkAccount.inc:404
 msgid "My account"
 msgstr "Moje konto "
 
 #: personal/netatalk/class_netatalkAccount.inc:409
-#, fuzzy
 msgid "User home path"
-msgstr "Ścieżka do profilu"
-
-#~ msgid "This account has no netatalk extensions."
-#~ msgstr "To konto nie posiada rozszerzeń Netatalk"
-
-#~ msgid "Remove netatalk account"
-#~ msgstr "Usuń konto Netatalk"
-
-#~ msgid ""
-#~ "This account has netatalk features enabled. You can disable them by "
-#~ "clicking below."
-#~ msgstr ""
-#~ "To konto ma włączone cechu Netatalk. Można je wyłączyć klikając poniżej."
-
-#~ msgid "Create netatalk account"
-#~ msgstr "Utwórz konto Netatalk"
-
-#~ msgid ""
-#~ "This account has netatalk features disabled. You can enable them by "
-#~ "clicking below."
-#~ msgstr ""
-#~ "To konto ma wyłączone cechy Netatalk. Można je włączyć klikając poniżej."
-
-#~ msgid "You must select a share to use."
-#~ msgstr "Trzeba wybrać udział do użycia."
-
-#~ msgid "Saving of user/netatalk account with dn '%s' failed."
-#~ msgstr "Zapisywanie konta netatalk z dn '%s' nieudane."
-
-#~ msgid "Removing of user/netatalk account with dn '%s' failed."
-#~ msgstr "Usuwanie konta netatalk z dn '%s' nieudane."
-
-#~ msgid "Ok"
-#~ msgstr "Ok"
-
-#~ msgid "Cancel"
-#~ msgstr "Anuluj"
-
-#~ msgid "Click the 'Edit' button below to change informations in this dialog"
-#~ msgstr ""
-#~ "Kliknij przycisk 'Edytuj' poniżej, aby zmienić informacje w tym oknie"
-
-#~ msgid "Edit"
-#~ msgstr "Edytuj"
+msgstr ""

@@ -1,33 +1,31 @@
-# translation of messages.po to Italian
-# Copyright (c) 2005 B-Open Solutions srl - http://www.bopen.it/
-# Copyright (c) 2005 Alessandro Amici <a.amici@bopen.it>
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
 # Alessandro Amici <a.amici@bopen.it>, 2005.
 # Giuliano Di Vito <giuliano@opensides.be>, 2011.
+#   <giuliano@opensides.be>, 2012.
 msgid ""
 msgstr ""
-"Project-Id-Version: messages\n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version: FusionDirectory\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
 "POT-Creation-Date: 2012-05-26 17:33+0200\n"
-"PO-Revision-Date: 2011-04-12 18:13+0200\n"
-"Last-Translator: Giuliano Di Vito <giuliano@opensides.be>\n"
-"Language-Team: Italian <kde-i18n-doc@kde.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2012-05-31 14:31+0000\n"
+"Last-Translator: poterealpopolo <giuliano@opensides.be>\n"
+"Language-Team: Italian (http://www.transifex.net/projects/p/FusionDirectory/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.0\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: it\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: addons/ldapmanager/contentexport.tpl:2
 msgid ""
 "The LDIF export plugin provides methods to download a complete snapshot of "
 "the running LDAP directory as ldif. You may save these files for backup "
 "purpose or when initializing a new server."
-msgstr ""
-"L'estensione di esportazione nel formato LDIF ti permette di scaricare una "
-"copia completa del tuo annuario LDAP nel formato ldif. Questi file possono "
-"essere usati come copie di backup oppure nell'installazione di un nuovo "
-"server."
+msgstr "L'estensione di esportazione nel formato LDIF ti permette di scaricare una copia completa del tuo annuario LDAP nel formato ldif. Questi file possono essere usati come copie di backup oppure nell'installazione di un nuovo server."
 
 #: addons/ldapmanager/contentexport.tpl:9
 msgid "Export single entry"
@@ -47,13 +45,12 @@ msgid "LDAP manager"
 msgstr "Amministrazione LDAP"
 
 #: addons/ldapmanager/class_import.inc:26
-#, fuzzy
 msgid "LDIF import"
-msgstr "Esporta in LDIF"
+msgstr "Importazione LDIF"
 
 #: addons/ldapmanager/class_import.inc:27
 msgid "This plugin allow the import of ldif data into the ldap tree"
-msgstr ""
+msgstr "Questo plugin permette l'importazione di un file dati ldif nell'annuario ldap"
 
 #: addons/ldapmanager/class_import.inc:72
 #: addons/ldapmanager/class_export.inc:106
@@ -63,9 +60,7 @@ msgstr "Errore d'autorizzazione"
 
 #: addons/ldapmanager/class_import.inc:72
 msgid "You need full write access to the LDAP tree to import data!"
-msgstr ""
-"Hai bisogno di un accesso completo a tutti gli oggetti dell'annuario per "
-"poter effettuare un'importazione di dati !"
+msgstr "Hai bisogno di un accesso completo a tutti gli oggetti dell'annuario per poter effettuare un'importazione di dati !"
 
 #: addons/ldapmanager/class_import.inc:81
 #: addons/ldapmanager/class_import.inc:88
@@ -125,18 +120,12 @@ msgid "Undefined flag '%s'!"
 msgstr "Flag '%s' non definito !"
 
 #: addons/ldapmanager/contentcsv.tpl:2
-#, fuzzy
 msgid ""
-"The CSV import plugin provides methods to generate user accounts from a file "
-"containing Semi-Colon Seperated Values. The administrator can decide which "
+"The CSV import plugin provides methods to generate user accounts from a file"
+" containing Semi-Colon Seperated Values. The administrator can decide which "
 "columns should be transfered to which attribute. Note that you must have at "
 "least the GIVENNAME and SURNAME set."
-msgstr ""
-"L'estensione per l'importazione CSV ti permette di generare degli account "
-"utente a partire da un file contenente dei valori separati con delle "
-"virgole. L'amministratore puó scegliere quali colonne saranno trasferite "
-"verso quale attributo. Nota che nel file CSV dovranno essere forniti almeno "
-"l'UID, il GIVENNAME e il SURENAME."
+msgstr "L'estensione per l'importazione CSV ti permette di generare degli account utente a partire da un file contenente dei valori separati con dei punti e virgola. L'amministratore puó scegliere quali colonne saranno trasferite verso quale attributo. Nota che nel file CSV dovranno essere forniti almeno il GIVENNAME e il SURNAME."
 
 #: addons/ldapmanager/contentcsv.tpl:10
 msgid "Select CSV file to import"
@@ -179,7 +168,7 @@ msgstr "Esporta in LDIF"
 
 #: addons/ldapmanager/class_export.inc:27
 msgid "This plugin allow the export of the ldap tree in ldif format"
-msgstr ""
+msgstr "Questo plugin permette l'esportazione dell'annuario ldap in un file dati ldif"
 
 #: addons/ldapmanager/class_export.inc:90
 #, php-format
@@ -198,7 +187,7 @@ msgstr "Impossibile generare l'esportazione LDAP, errore '%s' !"
 
 #: addons/ldapmanager/class_ldif.inc:27
 msgid "This plugin allows the management of the ldap tree"
-msgstr ""
+msgstr "Questo plugin permette la gestione dell'annuario LDAP"
 
 #: addons/ldapmanager/class_ldif.inc:55 addons/ldapmanager/class_ldif.inc:56
 #: addons/ldapmanager/class_ldif.inc:61
@@ -214,18 +203,12 @@ msgid "export"
 msgstr "Esporta"
 
 #: addons/ldapmanager/contentimport.tpl:3
-#, fuzzy
 msgid ""
 "The LDIF import plugin provides methods to upload a set of entries to your "
 "running LDAP directory as ldif. You may use this to add new or modify "
 "existing entries. Remember that FusionDirectory will not check your ldifs "
 "for FusionDirectory conformance."
-msgstr ""
-"L'estensione di importazione nel formato LDIF ti permette di importare una "
-"serie di entries nel tuo annuario LDAP corrente, nel formato ldif. Puoi "
-"usare questa funzionalità per aggiungere delle nuove entries o per "
-"modificarne quelle già esistenti. Ricordati che FusionDirectory non "
-"verificherà i tuoi file ldif rispetto agli schemi utilizzati."
+msgstr "L'estensione di importazione nel formato LDIF ti permette di importare una serie di entries nel tuo annuario LDAP corrente, nel formato ldif. Puoi usare questa funzionalità per aggiungere delle nuove entries o per modificarne quelle già esistenti. Ricordati che FusionDirectory non verificherà i tuoi file ldif rispetto agli schemi utilizzati."
 
 #: addons/ldapmanager/contentimport.tpl:10
 msgid "Import LDIF File"
@@ -237,9 +220,7 @@ msgstr "La modifica degli oggetti esistenti non modificherà i loro attributi"
 
 #: addons/ldapmanager/contentimport.tpl:25
 msgid "Overwrite existing objects, all not listed attributes will be removed"
-msgstr ""
-"La sovrascrittura degli oggetti esistenti rimuoverà tutti gli oggetti non "
-"elencati"
+msgstr "La sovrascrittura degli oggetti esistenti rimuoverà tutti gli oggetti non elencati"
 
 #: addons/ldapmanager/contentimport.tpl:34
 msgid "Remove existing entries first"
@@ -251,18 +232,15 @@ msgstr "Importazione riuscita"
 
 #: addons/ldapmanager/class_csvimport.inc:27
 msgid "This plugin allow to export the ldap three to csv format"
-msgstr ""
+msgstr "Questo plugin permette l'esportazione dell'annuario ldap in un file dati al formato csv"
 
 #: addons/ldapmanager/class_csvimport.inc:128
 msgid "You've no permission to import CSV files."
 msgstr "Non hai il permesso di di importare file CSV."
 
 #: addons/ldapmanager/class_csvimport.inc:182
-#, fuzzy
 msgid "Need at least 'sn' and 'givenName' to create users!"
-msgstr ""
-"Ho bisogno di un 'sn', di un 'givenName' e di un 'uid' per poter creare "
-"degli utenti. "
+msgstr "Hai bisogno almeno di 'sn' e 'givenName' per creare gli utenti!"
 
 #: addons/ldapmanager/class_csvimport.inc:183
 #: addons/ldapmanager/class_csvimport.inc:203
@@ -271,9 +249,9 @@ msgid "failed"
 msgstr "Fallito"
 
 #: addons/ldapmanager/class_csvimport.inc:202
-#, fuzzy, php-format
+#, php-format
 msgid "Failed to generate 'uid' for entry '%s'!"
-msgstr "Impossibile generare l'esportazione LDAP, errore '%s' !"
+msgstr "Impossibile generare 'uid' per l'entry '%s'!"
 
 #: addons/ldapmanager/class_csvimport.inc:263
 msgid "ok"
@@ -295,224 +273,3 @@ msgstr "Niente da importare !"
 #: addons/ldapmanager/class_csvimport.inc:520
 msgid "Cannot find CSV data in the selected file!"
 msgstr "Impossibile trovare dei dati nel file CSV selezionato !"
-
-#~ msgid "Birthday"
-#~ msgstr "Data di nascita"
-
-#~ msgid "Sex"
-#~ msgstr "Sesso"
-
-#~ msgid "Surname"
-#~ msgstr "Cognome"
-
-#~ msgid "Given name"
-#~ msgstr "Nome"
-
-#~ msgid "Language"
-#~ msgstr "Lingua"
-
-#~ msgid "Users"
-#~ msgstr "Utenti"
-
-#~ msgid "User list of %s on %s"
-#~ msgstr "Elenco degli utenti di %s in %s"
-
-#~ msgid "User ID"
-#~ msgstr "ID dell'utente"
-
-#~ msgid "Members"
-#~ msgstr "Membri"
-
-#~ msgid "Groups"
-#~ msgstr "Gruppi"
-
-#~ msgid "Groups of %s on %s"
-#~ msgstr "Gruppi di %s in %s"
-
-#~ msgid "Servers"
-#~ msgstr "Servers"
-
-#~ msgid "Description"
-#~ msgstr "Descrizione"
-
-#~ msgid "Computers"
-#~ msgstr "Computers"
-
-#~ msgid "Common name"
-#~ msgstr "Nome comune"
-
-#~ msgid "Server name"
-#~ msgstr "Nome del server"
-
-#~ msgid "Servers of %s on %s"
-#~ msgstr "Servers di %s in %s"
-
-#, fuzzy
-#~ msgid "Display name"
-#~ msgstr "Nome mostrato"
-
-#~ msgid "Fax"
-#~ msgstr "Fax"
-
-#~ msgid "Name"
-#~ msgstr "Nome"
-
-#~ msgid "Home phone"
-#~ msgstr "Telefono privato"
-
-#~ msgid "Home postal address"
-#~ msgstr "Indirizzo postale personale"
-
-#~ msgid "Initials"
-#~ msgstr "Iniziali"
-
-#~ msgid "Location"
-#~ msgstr "Località"
-
-#~ msgid "Mail address"
-#~ msgstr "Indirizzo di posta elettronica"
-
-#~ msgid "Mobile phone"
-#~ msgstr "Numero di cellulare"
-
-#~ msgid "City"
-#~ msgstr "Città"
-
-#~ msgid "Postal address"
-#~ msgstr "Indirizzo postale"
-
-#~ msgid "Pager"
-#~ msgstr "Cercapersone"
-
-#~ msgid "Phone number"
-#~ msgstr "Numero di telefono"
-
-#~ msgid "Address"
-#~ msgstr "Indirizzo"
-
-#~ msgid "Postal code"
-#~ msgstr "CAP"
-
-#~ msgid "State"
-#~ msgstr "Regione"
-
-#~ msgid "Function"
-#~ msgstr "Funzione"
-
-#~ msgid "Adressbook"
-#~ msgstr "Rubrica telefonica"
-
-#~ msgid "Adressbook of %s on %s"
-#~ msgstr "Rubrica telefonica di %s in %s"
-
-#~ msgid "Common Name"
-#~ msgstr "Nome comune"
-
-#~ msgid "Day of birth"
-#~ msgstr "Data di nascita"
-
-#~ msgid "UID"
-#~ msgstr "UID"
-
-#~ msgid "Email address"
-#~ msgstr "Indirizzo di posta elettronica"
-
-#~ msgid "Mobile"
-#~ msgstr "Cellulare"
-
-#~ msgid "Organization"
-#~ msgstr "Organizzazione"
-
-#, fuzzy
-#~ msgid "Organizational unit"
-#~ msgstr "Unità organizzativa"
-
-#~ msgid "Postal Code"
-#~ msgstr "CAP"
-
-#~ msgid "Title"
-#~ msgstr "Titolo"
-
-#~ msgid "Full"
-#~ msgstr "Completo"
-
-#~ msgid "Computers of %s on %s"
-#~ msgstr "Computers di %s in %s"
-
-#~ msgid "You have no permission to do LDAP exports!"
-#~ msgstr "Non hai il permesso di esportare l'annuario LDAP !"
-
-#~ msgid ""
-#~ "The XLS export plugin provides methods to download a complete snapshot of "
-#~ "the running LDAP directory as xls. You may save these files for "
-#~ "documentation."
-#~ msgstr ""
-#~ "L'estensione di esportazione nel formato XLS ti permette di esportare una "
-#~ "copia completa del tuo annuario LDAP, nel formato XLS. Questi file "
-#~ "potranno essere usati per produrre della documentazione."
-
-#~ msgid "Choose the data you want to Export"
-#~ msgstr "Scegli i dati che vuoi esportare"
-
-#~ msgid "Export complete XLS for"
-#~ msgstr "Esporta un file completo XLS per"
-
-#~ msgid "Choose the department you want to Export"
-#~ msgstr "Scegli il dipartimento che vuoi esportare"
-
-#~ msgid "Export IVBB LDIF for"
-#~ msgstr "Esporta un LDIF IVBB per"
-
-#~ msgid "Export successful"
-#~ msgstr "Esportazione riuscita"
-
-#~ msgid "Click here to save the complete LDAP database to a xls file"
-#~ msgstr "Premi qui per registrare l'annuario LDAP completo in un file xls"
-
-#~ msgid "Click here to save the LDAP Export to a xls file"
-#~ msgstr ""
-#~ "Premi qui per registrare l'esportazione dell'annuario LDAP in un file xls"
-
-#~ msgid "This does something"
-#~ msgstr "Questo fa qualcosa"
-
-#~ msgid "XLS import"
-#~ msgstr "Importa un file XLS"
-
-#~ msgid "Cannot export selected entries!"
-#~ msgstr "Impossibile esportare le entries selezionate !"
-
-#~ msgid "You have no permission to export '%s'!"
-#~ msgstr "Non hai il permesso di esportare '%s' !"
-
-#~ msgid "CSV import"
-#~ msgstr "Importa dal formato CSV"
-
-#~ msgid "status"
-#~ msgstr "Stato"
-
-#, fuzzy
-#~ msgid "You have no permission to create LDAP dumps!"
-#~ msgstr "Non hai il permesso di cambiare la tua password."
-
-#, fuzzy
-#~ msgid "Error in ivbb parameter!"
-#~ msgstr "Parametro"
-
-#, fuzzy
-#~ msgid "Click here to save the LDAP Export "
-#~ msgstr "Non hai il permesso di cambiare la tua password."
-
-#, fuzzy
-#~ msgid "Ldap manger"
-#~ msgstr "Amministrazione LDAP"
-
-#~ msgid "Surename"
-#~ msgstr "Cognome"
-
-#~ msgid "Back"
-#~ msgstr "Indietro"
-
-#, fuzzy
-#~ msgid "Ldap manager addon"
-#~ msgstr "Amministrazione LDAP"

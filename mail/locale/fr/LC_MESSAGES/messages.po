@@ -1,25 +1,22 @@
-# translation of messages.po to
-#
-# Copyright (C) 2003 GONICUS GmbH, Germany
-# Copyright (C) 2011 FusionDirectory Project
-# This file is distributed under the same license as the FusionDirectory package.
-#
-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
 #  Benoit Mortier <benoit.mortier@opensides.be>, 2005, 2006, 2007, 2008, 2009, 2010, 2011.
 msgid ""
 msgstr ""
-"Project-Id-Version: messages\n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version: FusionDirectory\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
 "POT-Creation-Date: 2012-05-26 17:33+0200\n"
-"PO-Revision-Date: 2011-04-18 22:13+0200\n"
-"Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>\n"
-"Language-Team:  <fr@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2012-05-26 16:37+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: French (http://www.transifex.net/projects/p/FusionDirectory/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
-"Plural-Forms:  nplurals=2; plural=(n > 1);\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
 #: admin/groups/mail/mail_admins.tpl:4
 msgid "Folder administrators"
@@ -94,8 +91,7 @@ msgstr "Le méthode mail ne peut pas se connecter : %s"
 #: personal/mail/class_mailAccount.inc:183
 #, php-format
 msgid "Mailbox '%s' doesn't exists on mail server: %s"
-msgstr ""
-"Le compte de messagerie '%s' n'existe pas sur le serveur de messagerie : %s"
+msgstr "Le compte de messagerie '%s' n'existe pas sur le serveur de messagerie : %s"
 
 #: admin/groups/mail/class_groupMail.inc:304
 #: admin/groups/mail/class_groupMail.inc:306
@@ -123,15 +119,12 @@ msgstr "Messagerie"
 msgid ""
 "Remove shared folder from mail server database when entry gets removed in "
 "LDAP"
-msgstr ""
-"Enlever le dossier partagé du serveur de messagerie quand l'entrée est "
-"enlevée de l'annuaire LDAP"
+msgstr "Enlever le dossier partagé du serveur de messagerie quand l'entrée est enlevée de l'annuaire LDAP"
 
 #: admin/groups/mail/class_groupMail.inc:326
-msgid "Remove the shared folder and all its contents after saving this account"
-msgstr ""
-"Effacer le dossier partagé et tout son contenu après avoir sauvegardé ce "
-"compte"
+msgid ""
+"Remove the shared folder and all its contents after saving this account"
+msgstr "Effacer le dossier partagé et tout son contenu après avoir sauvegardé ce compte"
 
 #: admin/groups/mail/class_groupMail.inc:371
 #: admin/groups/mail/class_groupMail.inc:395
@@ -186,9 +179,7 @@ msgstr "Adresse de messagerie"
 #: admin/groups/mail/class_groupMail.inc:401
 #: personal/mail/class_mailAccount.inc:358
 msgid "Cannot add primary address to the list of forwarders!"
-msgstr ""
-"Impossible d'ajouter l'adresse de messagerie principale à la liste des "
-"transfert!"
+msgstr "Impossible d'ajouter l'adresse de messagerie principale à la liste des transfert!"
 
 #: admin/groups/mail/class_groupMail.inc:443
 #: personal/mail/class_mailAccount.inc:402
@@ -250,9 +241,7 @@ msgstr "Impossible d'écrire les quotas : %s"
 msgid ""
 "The group 'cn' has changed. It can't be changed due to the fact that mail "
 "method '%s' relies on it!"
-msgstr ""
-"Le 'cn' du group a été changé. Il ne peut pas changer car la méthode de "
-"messagerie '%s' est dépendante de ce 'cn' !"
+msgstr "Le 'cn' du group a été changé. Il ne peut pas changer car la méthode de messagerie '%s' est dépendante de ce 'cn' !"
 
 #: admin/groups/mail/class_groupMail.inc:879
 #: admin/groups/mail/paste_mail.tpl:8 admin/groups/mail/mail.tpl:7
@@ -276,9 +265,7 @@ msgstr "Taille maximale du message"
 
 #: admin/groups/mail/class_groupMail.inc:915
 msgid "You need to set the maximum mail size in order to reject anything."
-msgstr ""
-"Il est nécessaire d'indiquer une taille maximale des messages afin de "
-"pouvoir en rejeter certains."
+msgstr "Il est nécessaire d'indiquer une taille maximale des messages afin de pouvoir en rejeter certains."
 
 #: admin/groups/mail/class_groupMail.inc:919
 #: admin/groups/mail/class_groupMail.inc:1024
@@ -389,15 +376,11 @@ msgstr "Options de messagerie avancées"
 
 #: admin/groups/mail/mail.tpl:193 personal/mail/generic.tpl:285
 msgid "Select if user can only send and receive inside his own domain"
-msgstr ""
-"Sélectionnez si vous voulez que les utilisateurs puissent envoyer et "
-"recevoir des messages uniquement dans son propre domaine"
+msgstr "Sélectionnez si vous voulez que les utilisateurs puissent envoyer et recevoir des messages uniquement dans son propre domaine"
 
 #: admin/groups/mail/mail.tpl:195 personal/mail/generic.tpl:287
 msgid "User is only allowed to send and receive local mails"
-msgstr ""
-"Les utilisateurs ne sont autorisés qu'à envoyer et recevoir des messages "
-"locaux"
+msgstr "Les utilisateurs ne sont autorisés qu'à envoyer et recevoir des messages locaux"
 
 #: admin/groups/mail/mail.tpl:213
 msgid "Used in all groups"
@@ -546,16 +529,12 @@ msgstr "Démarrer le service POP3/SSL"
 #: admin/systems/services/imap/goImapServer.tpl:99
 #: admin/systems/services/mail/goMailServer.tpl:204
 msgid "The server must be saved before you can use the status flag."
-msgstr ""
-"Le serveur doit être sauvé avant que vous puissiez utiliser le marqueur de "
-"statut."
+msgstr "Le serveur doit être sauvé avant que vous puissiez utiliser le marqueur de statut."
 
 #: admin/systems/services/imap/goImapServer.tpl:101
 #: admin/systems/services/mail/goMailServer.tpl:206
 msgid "The service must be saved before you can use the status flag."
-msgstr ""
-"Le service doit être sauvé avant que vous puissiez utiliser le marqueur de "
-"statut."
+msgstr "Le service doit être sauvé avant que vous puissiez utiliser le marqueur de statut."
 
 #: admin/systems/services/imap/goImapServer.tpl:104
 #: admin/systems/services/mail/goMailServer.tpl:209
@@ -785,8 +764,7 @@ msgstr "Activer l'utilisation de Pyzor"
 
 #: admin/systems/services/spam/goSpamServer.tpl:22
 msgid "Select required score to tag mail as spam"
-msgstr ""
-"Sélectionner le score requis pour marquer ce message comme étant un spam"
+msgstr "Sélectionner le score requis pour marquer ce message comme étant un spam"
 
 #: admin/systems/services/spam/goSpamServer.tpl:72
 msgid "Enable bayes auto learning"
@@ -942,9 +920,7 @@ msgstr "Erreur IMAP"
 #: personal/mail/class_mail-methods-cyrus.inc:241
 #, php-format
 msgid "Cannot modify IMAP mailbox quota: %s"
-msgstr ""
-"Impossible de modifier le quota de la boite de messagerie IMAP. Le serveur "
-"répond : %s"
+msgstr "Impossible de modifier le quota de la boite de messagerie IMAP. Le serveur répond : %s"
 
 #: personal/mail/class_mail-methods-cyrus.inc:317
 msgid "Mail info"
@@ -955,10 +931,7 @@ msgstr ""
 msgid ""
 "LDAP entry has been removed but cyrus mailbox (%s) is kept.\n"
 "Please delete it manually!"
-msgstr ""
-"L'entrée LDAP à été supprimée mais le compte de messagerie (%s) est toujours "
-"présent dans cyrus.\n"
-"Veuillez l'effacer manuellement !"
+msgstr "L'entrée LDAP à été supprimée mais le compte de messagerie (%s) est toujours présent dans cyrus.\nVeuillez l'effacer manuellement !"
 
 #: personal/mail/class_mail-methods-cyrus.inc:402
 #: personal/mail/class_mail-methods-cyrus.inc:439
@@ -1011,7 +984,7 @@ msgstr "Montrer les groupes"
 
 #: personal/mail/mailAddressSelect/selectMailAddress-list.tpl:13
 msgid "Base"
-msgstr ""
+msgstr "Base"
 
 #: personal/mail/mailAddressSelect/selectMailAddress-list.xml:10
 msgid "Please select the desired entries"
@@ -1040,9 +1013,7 @@ msgstr "L'analyse à réussi"
 msgid ""
 "The specified mail server '%s' does not exist within the FusionDirectory "
 "configuration."
-msgstr ""
-"Le serveur de messagerie spécifié '%s' n'existe pas dans la configuration de "
-"FusionDirectory."
+msgstr "Le serveur de messagerie spécifié '%s' n'existe pas dans la configuration de FusionDirectory."
 
 #: personal/mail/sieve/class_sieveManagement.inc:203
 msgid "No script name specified!"
@@ -1054,8 +1025,7 @@ msgstr "Veuillez seulement utiliser des nom de script en miniscules !"
 
 #: personal/mail/sieve/class_sieveManagement.inc:214
 msgid "Please use only alphabetical characters in script names!"
-msgstr ""
-"Seul des caractères alphabétiques sont permis dans le nom des scripts !"
+msgstr "Seul des caractères alphabétiques sont permis dans le nom des scripts !"
 
 #: personal/mail/sieve/class_sieveManagement.inc:220
 msgid "Script name already in use!"
@@ -1405,15 +1375,12 @@ msgstr "Veuillez spécifier un opérateur valide."
 #: personal/mail/sieve/class_sieveElement_If.inc:654
 msgid ""
 "Invalid character found in address attribute. Quotes are not allowed here."
-msgstr ""
-"Caractère non valide dans l'adresse. Les guillemets sont interdits ici."
+msgstr "Caractère non valide dans l'adresse. Les guillemets sont interdits ici."
 
 #: personal/mail/sieve/class_sieveElement_If.inc:669
 msgid ""
 "Invalid character found in value attribute. Quotes are not allowed here."
-msgstr ""
-"Caractère non valide trouvé dans l'attribut. Les guillemets ne sont pas "
-"permis ici."
+msgstr "Caractère non valide trouvé dans l'attribut. Les guillemets ne sont pas permis ici."
 
 #: personal/mail/sieve/class_sieveElement_If.inc:727
 #: personal/mail/sieve/class_sieveElement_If.inc:1060
@@ -1437,9 +1404,7 @@ msgstr ""
 
 #: personal/mail/sieve/class_sieveElement_If.inc:745
 msgid "Please select a valid match type in the list box below."
-msgstr ""
-"Veuillez sélectionner un type de correspondance valide dans la liste ci "
-"dessous."
+msgstr "Veuillez sélectionner un type de correspondance valide dans la liste ci dessous."
 
 #: personal/mail/sieve/class_sieveElement_If.inc:759
 msgid "Only numeric values are allowed here."
@@ -1477,9 +1442,7 @@ msgstr "Veuillez entrer une adresse de messagerie ici"
 
 #: personal/mail/sieve/class_sieveElement_Reject.inc:21
 msgid "Invalid character found, quotes are not allowed in a reject message."
-msgstr ""
-"Caractère non valide trouvé, les guillemets ne sont pas permis dans un "
-"message de rejet."
+msgstr "Caractère non valide trouvé, les guillemets ne sont pas permis dans un message de rejet."
 
 #: personal/mail/sieve/class_sieveElement_Reject.inc:37
 msgid "Your reject text here"
@@ -1531,10 +1494,7 @@ msgstr "Importez un script sieve"
 msgid ""
 "Please select the sieve script you want to import. Use the import button to "
 "import the script or the cancel button to abort."
-msgstr ""
-"Veuillez sélectionner le script sieve que vous voulez importer. Utilisez le "
-"bouton 'importer' pour importer le script et le bouton 'annuler' pour "
-"annuler l'opération."
+msgstr "Veuillez sélectionner le script sieve que vous voulez importer. Utilisez le bouton 'importer' pour importer le script et le bouton 'annuler' pour annuler l'opération."
 
 #: personal/mail/sieve/templates/import_script.tpl:5
 msgid "Script to import"
@@ -1586,16 +1546,12 @@ msgstr "Liste des scripts sieve"
 msgid ""
 "Connection to the sieve server could not be established, the "
 "authentification attribute is empty."
-msgstr ""
-"La connexion au serveur sieve n'a pas pu être établie, l'attribut "
-"d'authentification est vide."
+msgstr "La connexion au serveur sieve n'a pas pu être établie, l'attribut d'authentification est vide."
 
 #: personal/mail/sieve/templates/management.tpl:6
 msgid ""
 "Please verify that the attributes uid and mail are not empty and try again."
-msgstr ""
-"Veuillez vérifier que les attributs uid et mail ne sont pas vide et "
-"réessayer."
+msgstr "Veuillez vérifier que les attributs uid et mail ne sont pas vide et réessayer."
 
 #: personal/mail/sieve/templates/management.tpl:12
 msgid "Connection to the sieve server could not be established."
@@ -1607,11 +1563,9 @@ msgstr "Probablement que le compte sieve n'a pas encore été crée."
 
 #: personal/mail/sieve/templates/management.tpl:19
 msgid ""
-"Be careful. All your changes will be saved directly to sieve, if you use the "
-"save button below."
-msgstr ""
-"Faites attention. Tout les changement seront sauvés immédiatement lorsque "
-"vous cliquez sur le bouton sauver."
+"Be careful. All your changes will be saved directly to sieve, if you use the"
+" save button below."
+msgstr "Faites attention. Tout les changement seront sauvés immédiatement lorsque vous cliquez sur le bouton sauver."
 
 #: personal/mail/sieve/templates/management.tpl:22
 msgid "Create new script"
@@ -1747,22 +1701,16 @@ msgstr "Editer"
 
 #: personal/mail/sieve/templates/remove_script.tpl:6
 msgid ""
-"Please double check if your really want to do this since there is no way for "
-"FusionDirectory to get your data back."
-msgstr ""
-"Veuillez vous assurez que vous voulez effectuer cette opération. Toutes les "
-"données seront perdues étant donné qu'il est impossible pour FusionDirectory "
-"de récupérer vos données."
+"Please double check if your really want to do this since there is no way for"
+" FusionDirectory to get your data back."
+msgstr "Veuillez vous assurez que vous voulez effectuer cette opération. Toutes les données seront perdues étant donné qu'il est impossible pour FusionDirectory de récupérer vos données."
 
 #: personal/mail/sieve/templates/remove_script.tpl:10
 msgid ""
 "Best thing to do before performing this action would be to save the current "
 "script in a file. So - if you've done so - press 'Delete' to continue or "
 "'Cancel' to abort."
-msgstr ""
-"La meilleure chose à faire avant de réaliser cette action serait de sauver "
-"le script dans un fichier. Donc - si vous avez fait cela - appuyez sur "
-"'Effacer' pour continuer ou 'Annuler' pour abandonner."
+msgstr "La meilleure chose à faire avant de réaliser cette action serait de sauver le script dans un fichier. Donc - si vous avez fait cela - appuyez sur 'Effacer' pour continuer ou 'Annuler' pour abandonner."
 
 #: personal/mail/sieve/templates/element_redirect.tpl:18
 msgid "Redirect mail to following recipients"
@@ -1823,11 +1771,9 @@ msgstr "opérateur"
 
 #: personal/mail/sieve/templates/create_script.tpl:2
 msgid ""
-"Please enter the name for the new script below. Script names must consist of "
-"lower case characters only."
-msgstr ""
-"Veuillez entrer le nom du nouveau script ci dessous. Les nom de scripts sont "
-"composé de caractères en minuscule uniquement."
+"Please enter the name for the new script below. Script names must consist of"
+" lower case characters only."
+msgstr "Veuillez entrer le nom du nouveau script ci dessous. Les nom de scripts sont composé de caractères en minuscule uniquement."
 
 #: personal/mail/sieve/templates/create_script.tpl:8
 msgid "Script name"
@@ -2063,9 +2009,7 @@ msgstr "Gestion de Sieve"
 
 #: personal/mail/generic.tpl:144
 msgid "Select if you want to forward mails without getting own copies of them"
-msgstr ""
-"Sélectionnez ceci si vous souhaitez relayer les messages sans garder de "
-"copie de ceux-ci"
+msgstr "Sélectionnez ceci si vous souhaitez relayer les messages sans garder de copie de ceux-ci"
 
 #: personal/mail/generic.tpl:144
 msgid "No delivery to own mailbox"
@@ -2074,9 +2018,7 @@ msgstr "Aucune distribution des messages dans la boite de l'utilisateur"
 #: personal/mail/generic.tpl:151
 msgid ""
 "Select to automatically response with the vacation message defined below"
-msgstr ""
-"Indiquez la réponse automatique en remplissant le message d'absence ci-"
-"dessous"
+msgstr "Indiquez la réponse automatique en remplissant le message d'absence ci-dessous"
 
 #: personal/mail/generic.tpl:152
 msgid "Activate vacation message"
@@ -2096,9 +2038,7 @@ msgstr "Déplacer les messages ayant un niveau de spam supérieur à"
 
 #: personal/mail/generic.tpl:198
 msgid "Choose spam level - smaller values are more sensitive"
-msgstr ""
-"Sélectionnez le niveau de spam - une valeur basse implique une plus grande "
-"sélectivité"
+msgstr "Sélectionnez le niveau de spam - une valeur basse implique une plus grande sélectivité"
 
 #: personal/mail/generic.tpl:202
 msgid "to folder"
@@ -2115,147 +2055,3 @@ msgstr "MB"
 #: personal/mail/mail_locals.tpl:35
 msgid "Select department"
 msgstr "Sélectionner un département"
-
-#~ msgid "Mail queue"
-#~ msgstr "Queue du serveur de messagerie"
-
-#~ msgid "up"
-#~ msgstr "au dessus"
-
-#~ msgid "down"
-#~ msgstr "en dessous"
-
-#~ msgid "All"
-#~ msgstr "Tout"
-
-#~ msgid "no limit"
-#~ msgstr "pas de limites"
-
-#~ msgid "hour"
-#~ msgstr "heure"
-
-#~ msgid "hours"
-#~ msgstr "heures"
-
-#~ msgid "Hold"
-#~ msgstr "Mettre en attente"
-
-#~ msgid "Un hold"
-#~ msgstr "Enlever de la file d'attente"
-
-#~ msgid "Not active"
-#~ msgstr "Pas actif"
-
-#~ msgid "Mail queue addon"
-#~ msgstr "Extension de queue du serveur de messagerie"
-
-#~ msgid "Unhold all messages"
-#~ msgstr "Enlever tout les messages de la file d'attente"
-
-#~ msgid "Hold all messages"
-#~ msgstr "Mettre en attente tout les messages"
-
-#~ msgid "Delete all messages"
-#~ msgstr "Effacer tout les messages"
-
-#~ msgid "Requeue all messages"
-#~ msgstr "Remettre tout les messages dans la queue"
-
-#~ msgid "Unhold message"
-#~ msgstr "Enlever le message de la file d'attente"
-
-#~ msgid "Hold message"
-#~ msgstr "Mettre en attente"
-
-#~ msgid "Delete message"
-#~ msgstr "Supprimer ce message"
-
-#~ msgid "Requeue message"
-#~ msgstr "Remettre tout les messages dans la file d'attente"
-
-#~ msgid "Gathering queue data"
-#~ msgstr "Obtention des données de la file d'attente"
-
-#~ msgid "Get header information"
-#~ msgstr "Obtention des entêtes des messages"
-
-#~ msgid "Search"
-#~ msgstr "Recherche"
-
-#~ msgid "Search for"
-#~ msgstr "Recherche de"
-
-#~ msgid "Please enter a search string here."
-#~ msgstr "Veuillez indiquer une chaîne de caractères a rechercher."
-
-#~ msgid "Select a server"
-#~ msgstr "Sélectionnez un serveur"
-
-#~ msgid "with status"
-#~ msgstr "avec les statuts"
-
-#~ msgid "within the last"
-#~ msgstr "pendant la dernière"
-
-#~ msgid "Remove all messages"
-#~ msgstr "Enlever tout les messages"
-
-#~ msgid "Remove all messages from selected servers queue"
-#~ msgstr "Enlever tout les messages des queues sélectionnées"
-
-#~ msgid "Hold all messages in selected servers queue"
-#~ msgstr "Mettre en attente tout les messages dans les queues sélectionnées"
-
-#~ msgid "Release all messages"
-#~ msgstr "Libérer tout les messages"
-
-#~ msgid "Release all messages in selected servers queue"
-#~ msgstr "Libérer tout les messages dans les queues sélectionnées"
-
-#~ msgid "Requeue all messages in selected servers queue"
-#~ msgstr "Remettre tout les messages dans les queues sélectionnées"
-
-#~ msgid "Search returned no results"
-#~ msgstr "La recherche n'a renvoyé aucun résultat"
-
-#~ msgid "ID"
-#~ msgstr "ID"
-
-#~ msgid "Arrival"
-#~ msgstr "Arrivée"
-
-#~ msgid "Sender"
-#~ msgstr "Expéditeur"
-
-#~ msgid "Recipient"
-#~ msgstr "Destinataire"
-
-#~ msgid "Status"
-#~ msgstr "Statut"
-
-#~ msgid "delete"
-#~ msgstr "supprimer"
-
-#~ msgid "Delete this message"
-#~ msgstr "Supprimer ce message"
-
-#~ msgid "unhold"
-#~ msgstr "enlever de la file d'attente"
-
-#~ msgid "Release message"
-#~ msgstr "Enlever le message de la file d'attente"
-
-#~ msgid "hold"
-#~ msgstr "mettre dans la file d'attente"
-
-#~ msgid "requeue"
-#~ msgstr "remettre dans la queue"
-
-#~ msgid "Requeue this message"
-#~ msgstr "Remettre ce message dans la queue"
-
-#~ msgid "header"
-#~ msgstr "entête"
-
-#~ msgid "Display header of this message"
-#~ msgstr "Afficher l'entête de ce message"

@@ -1,25 +1,22 @@
-# translation of messages.po to spanish
-#
-# Copyright (C) 2003 GONICUS GmbH, Germany
-# Copyright (C) 2011 FusionDirectory Project
-# This file is distributed under the same license as the FusionDirectory package.
-#
-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
 #  Alejandro Escanero Blanco <aescanero@gmail.com>, 2008, 2010.
 msgid ""
 msgstr ""
-"Project-Id-Version: messages\n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version: FusionDirectory\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
 "POT-Creation-Date: 2012-05-26 17:33+0200\n"
-"PO-Revision-Date: 2010-01-28 23:56+0100\n"
-"Last-Translator: \n"
-"Language-Team: Spanish <>\n"
-"Language: es\n"
+"PO-Revision-Date: 2012-05-26 16:52+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/FusionDirectory/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.0\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: admin/systems/samba/class_winGeneric.inc:132
 msgid "network"
@@ -69,8 +66,7 @@ msgstr "Nombre de maquina"
 
 #: personal/samba/sambaLogonHours.tpl:22
 msgid "Specify the hours this user is allowed to log in"
-msgstr ""
-"Introducir las horas en que este usuario tendrá permiso de inicio de sesión"
+msgstr "Introducir las horas en que este usuario tendrá permiso de inicio de sesión"
 
 #: personal/samba/sambaLogonHours.tpl:28
 msgid "Hour"
@@ -180,9 +176,8 @@ msgid "Access options"
 msgstr "Opciones de acceso"
 
 #: personal/samba/samba3.tpl:325 personal/samba/class_sambaAccount.inc:1195
-#, fuzzy
 msgid "Enforce password change"
-msgstr "Forzar el cambio de contraseña"
+msgstr ""
 
 #: personal/samba/samba3.tpl:336
 msgid "The password never expires"
@@ -197,9 +192,8 @@ msgid "Lock samba account"
 msgstr "Bloquear cuenta samba"
 
 #: personal/samba/samba3.tpl:369
-#, fuzzy
 msgid "Cannot change password"
-msgstr "Cambiar contraseña"
+msgstr ""
 
 #: personal/samba/samba3.tpl:388 personal/samba/class_sambaAccount.inc:866
 #: personal/samba/class_sambaAccount.inc:868
@@ -293,9 +287,9 @@ msgid "The password is outdated since %s, by domain policy."
 msgstr "La nueva contraseña está caducada desde %s, por política de dominio."
 
 #: personal/samba/class_sambaAccount.inc:527
-#, fuzzy, php-format
+#, php-format
 msgid "The password is valid till %s."
-msgstr "La contraseña es válida hasta %s, por política de usuario."
+msgstr ""
 
 #: personal/samba/class_sambaAccount.inc:640
 #: personal/samba/class_sambaAccount.inc:646
@@ -451,9 +445,7 @@ msgstr "No"
 #: personal/samba/class_sambaAccount.inc:802
 #, php-format
 msgid "The password would expire on %s, but the password expiry is disabled."
-msgstr ""
-"La contraseña debió caducar en %s, pero caducidad de contraseña esta "
-"desactivada."
+msgstr "La contraseña debió caducar en %s, pero caducidad de contraseña esta desactivada."
 
 #: personal/samba/class_sambaAccount.inc:808
 msgid "Password change available"
@@ -468,11 +460,8 @@ msgid "Home path"
 msgstr "Ruta inicial"
 
 #: personal/samba/class_sambaAccount.inc:900
-#, fuzzy
 msgid "The windows user manager allows eight clients at maximum!"
 msgstr ""
-"¡El administrador de usuarios de windows solo permite ocho clientes como "
-"máximo!"
 
 #: personal/samba/class_sambaAccount.inc:919
 msgid "Information"
@@ -485,16 +474,12 @@ msgstr "Aviso"
 
 #: personal/samba/class_sambaAccount.inc:1053
 msgid "Undefined Samba SID detected. Please fix this problem manually!"
-msgstr ""
-"Se ha detectado un SID Samba sin definir. ¡Por favor solucione este problema "
-"manualmente!"
+msgstr "Se ha detectado un SID Samba sin definir. ¡Por favor solucione este problema manualmente!"
 
 #: personal/samba/class_sambaAccount.inc:1078
 msgid ""
 "Cannot convert primary group to samba group: group cannot be identified!"
-msgstr ""
-"No se puede convertir un grupo primario a grupo samba: ¡El grupo no puede "
-"ser identificado!"
+msgstr "No se puede convertir un grupo primario a grupo samba: ¡El grupo no puede ser identificado!"
 
 #: personal/samba/class_sambaAccount.inc:1177 personal/samba/main.inc:135
 msgid "Samba settings"
@@ -525,9 +510,8 @@ msgid "Account expires"
 msgstr "La cuenta expirará después de"
 
 #: personal/samba/class_sambaAccount.inc:1196
-#, fuzzy
 msgid "Disallow password change"
-msgstr "Forzar el cambio de contraseña"
+msgstr ""
 
 #: personal/samba/class_sambaAccount.inc:1198
 msgid "Password never expires"
@@ -545,9 +529,7 @@ msgstr "Permitir la conexión desde"
 msgid ""
 "The windows user manager only allows eight clients. You've specified more "
 "than eight."
-msgstr ""
-"El administrador de usuarios de windows solo permite ocho clientes. Ha "
-"especificado mas de ocho."
+msgstr "El administrador de usuarios de windows solo permite ocho clientes. Ha especificado mas de ocho."
 
 #: personal/samba/samba3_workstations.tpl:6
 msgid "Select workstations to add"
@@ -568,43 +550,3 @@ msgstr "Escoja el departamento base de la búsqueda"
 #: personal/samba/samba3_workstations.tpl:31
 msgid "Regular expression for matching addresses"
 msgstr "Expresión regular para buscar direcciones"
-
-#~ msgid "This does something"
-#~ msgstr "Esto hace algo"
-
-#~ msgid "The password is valid till %s, by domain policy."
-#~ msgstr "La contraseña es válida hasta %s, por política de dominio."
-
-#~ msgid "Password expires on"
-#~ msgstr "La contraseña caduca en"
-
-#~ msgid "Allow user to change password"
-#~ msgstr "Permitir al usuario cambiar su contraseña"
-
-#~ msgid "Choose subtree to place group in"
-#~ msgstr "Elija lugar del árbol para colocar el grupo"
-
-#~ msgid "Select a base"
-#~ msgstr "Seleccione una base"
-
-#~ msgid "Allow user to change password from client"
-#~ msgstr "Permitir al usuario cambiar contraseñas desde el cliente"
-
-#~ msgid "Limit Logon Time"
-#~ msgstr "Tiempo máximo de inicio de sesión"
-
-#~ msgid "Limit Logoff Time"
-#~ msgstr "Tiempo máximo de cierre de sesión"
-
-#~ msgid "Please select an entry!"
-#~ msgstr "¡Por favor seleccione una entrada!"
-
-#~ msgid "Samba home"
-#~ msgstr "Directorio Samba"
-
-#~ msgid "Temporary disable samba account"
-#~ msgstr "Desactivar temporalmente la cuenta samba"
-
-#, fuzzy
-#~ msgid "Show"
-#~ msgstr "Mostrar %s"

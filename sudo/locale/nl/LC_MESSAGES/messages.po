@@ -1,30 +1,26 @@
-# translation of messages.po to Dutch
-#
-# Copyright (C) 2003 GONICUS GmbH, Germany
-# Copyright (C) 2011 FusionDirectory Project
-# This file is distributed under the same license as the FusionDirectory package.
-#
-#
-#  Alfred Schroeder <schroeder@GONICUS.de>, 2004. 
-#  Cajus Pollmeier <pollmeier@gonicus.de>, 2004. 
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
 #  Niels Klomp (CareWorks ICT Services) <nk@careworks.nl>, 2005.
 msgid ""
 msgstr ""
-"Project-Id-Version: messages\n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version: FusionDirectory\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
 "POT-Creation-Date: 2012-05-26 17:33+0200\n"
-"PO-Revision-Date: 2006-06-02 16:58+0100\n"
-"Last-Translator: Niels Klomp (CareWorks ICT Services) <nk@careworks.nl>\n"
-"Language-Team: CareWorks ICT Services <info@careworks.nl>\n"
-"Language: \n"
+"PO-Revision-Date: 2012-01-13 17:40+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: Dutch (http://www.transifex.net/projects/p/FusionDirectory/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: admin/sudo/sudo-filter.tpl:3
-#, fuzzy
 msgid "Filter"
-msgstr "Filters"
+msgstr ""
 
 #: admin/sudo/sudo-filter.tpl:13 admin/sudo/sudo-list.xml:32
 #: admin/sudo/class_sudoGeneric.inc:581 admin/sudo/class_sudoGeneric.inc:586
@@ -39,28 +35,24 @@ msgid "User"
 msgstr "Gebruiker"
 
 #: admin/sudo/options.tpl:5
-#, fuzzy
 msgid "Option name"
-msgstr "Naam van de locatie"
+msgstr ""
 
 #: admin/sudo/options.tpl:7
-#, fuzzy
 msgid "Value"
-msgstr "man"
+msgstr ""
 
 #: admin/sudo/options.tpl:8 admin/sudo/class_sudoOption.inc:536
 msgid "Options"
 msgstr "Opties"
 
 #: admin/sudo/options.tpl:86
-#, fuzzy
 msgid "Available options"
-msgstr "Beschikbare programma's"
+msgstr ""
 
 #: admin/sudo/sudo-list.xml:11
-#, fuzzy
 msgid "List of sudo roles"
-msgstr "Lijst met gebruikers"
+msgstr ""
 
 #: admin/sudo/sudo-list.xml:15 admin/sudo/sudo-list.xml:65
 msgid "Role"
@@ -80,23 +72,20 @@ msgid "Create"
 msgstr "Aanmaken"
 
 #: admin/sudo/sudo-list.xml:72
-#, fuzzy
 msgid "Default"
-msgstr "Verwijderen"
+msgstr ""
 
 #: admin/sudo/sudo-list.xml:85
 msgid "Remove"
 msgstr "Verwijderen"
 
 #: admin/sudo/sudo-list.xml:117
-#, fuzzy
 msgid "Edit sudo role"
-msgstr "! onbekend id"
+msgstr ""
 
 #: admin/sudo/sudo-list.xml:130
-#, fuzzy
 msgid "Remove sudo role"
-msgstr "! onbekend id"
+msgstr ""
 
 #: admin/sudo/class_sudoGeneric.inc:333
 msgid "Error"
@@ -119,62 +108,50 @@ msgid "Group"
 msgstr "Groep"
 
 #: admin/sudo/class_sudoGeneric.inc:567
-#, fuzzy
 msgid "LDAP error"
-msgstr "LDAP fout:"
+msgstr ""
 
 #: admin/sudo/class_sudoGeneric.inc:701 admin/sudo/class_sudoManagement.inc:25
-#, fuzzy
 msgid "Sudo"
-msgstr "Achternaam"
+msgstr ""
 
 #: admin/sudo/class_sudoGeneric.inc:702 admin/sudo/class_sudoGeneric.inc:707
-#, fuzzy
 msgid "Sudo role"
-msgstr "! onbekend id"
+msgstr ""
 
 #: admin/sudo/class_sudoGeneric.inc:712
 msgid "Users"
 msgstr "Gebruikers"
 
 #: admin/sudo/class_sudoGeneric.inc:713
-#, fuzzy
 msgid "Host"
-msgstr "Inhakers"
+msgstr ""
 
 #: admin/sudo/class_sudoGeneric.inc:714
-#, fuzzy
 msgid "Command"
-msgstr "en"
+msgstr ""
 
 #: admin/sudo/class_sudoGeneric.inc:715
-#, fuzzy
 msgid "Run as user"
-msgstr "Windows gebruikers"
+msgstr ""
 
 #: admin/sudo/class_sudoGeneric.inc:716
-#, fuzzy
 msgid "Access control list"
-msgstr "Toegangsopties"
+msgstr ""
 
 #: admin/sudo/remove.tpl:2
 msgid "Warning"
 msgstr "Waarschuwing"
 
 #: admin/sudo/remove.tpl:6
-#, fuzzy
 msgid ""
 "Please double check if you really want to do this since there is no way for "
 "FusionDirectory to get your data back."
 msgstr ""
-"Controleer a.u.b. of u dit daadwerkelijk wil doen, aangezien er geen "
-"mogelijkheid voor FusionDirectory is om uw data terug te krijgen."
 
 #: admin/sudo/remove.tpl:10
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr ""
-"Indien u zeker bent drukt u dan 'Verwijderen' om door te gaan of 'Annuleren' "
-"om te annuleren."
+msgstr "Indien u zeker bent drukt u dan 'Verwijderen' om door te gaan of 'Annuleren' om te annuleren."
 
 #: admin/sudo/paste_generic.tpl:1 admin/sudo/generic.tpl:3
 #: admin/sudo/generic.tpl:30
@@ -186,24 +163,21 @@ msgid "global defaults"
 msgstr ""
 
 #: admin/sudo/class_sudoManagement.inc:26
-#, fuzzy
 msgid "Sudo management"
-msgstr "Systeembeheer"
+msgstr ""
 
 #: admin/sudo/class_sudoOption.inc:154
-#, fuzzy
 msgid "Unknown option"
-msgstr "Onbekend"
+msgstr ""
 
 #: admin/sudo/class_sudoOption.inc:155
-#, fuzzy, php-format
+#, php-format
 msgid "The sudo option '%s' is invalid!"
-msgstr "De opgegeven naam is ongeldig."
+msgstr ""
 
 #: admin/sudo/class_sudoOption.inc:282 admin/sudo/class_sudoOption.inc:284
-#, fuzzy
 msgid "string"
-msgstr "Waarschuwing"
+msgstr ""
 
 #: admin/sudo/class_sudoOption.inc:282 admin/sudo/class_sudoOption.inc:283
 #: admin/sudo/class_sudoOption.inc:284
@@ -211,19 +185,16 @@ msgid "bool"
 msgstr ""
 
 #: admin/sudo/class_sudoOption.inc:283
-#, fuzzy
 msgid "integer"
-msgstr "printers"
+msgstr ""
 
 #: admin/sudo/class_sudoOption.inc:284
-#, fuzzy
 msgid "list"
-msgstr "klasse"
+msgstr ""
 
 #: admin/sudo/class_sudoOption.inc:537
-#, fuzzy
 msgid "Sudo options"
-msgstr "Onbekend"
+msgstr ""
 
 #: admin/sudo/generic.tpl:55
 msgid "System trust"
@@ -234,172 +205,21 @@ msgid "Trust mode"
 msgstr "Vertrouwensmodus"
 
 #: admin/sudo/generic.tpl:87
-#, fuzzy
 msgid "Users and groups"
-msgstr "groepen"
+msgstr ""
 
 #: admin/sudo/generic.tpl:98 admin/sudo/generic.tpl:113
 msgid "Add from list"
 msgstr ""
 
 #: admin/sudo/generic.tpl:102
-#, fuzzy
 msgid "Systems"
-msgstr "Systeem"
+msgstr ""
 
 #: admin/sudo/generic.tpl:120
-#, fuzzy
 msgid "Commands"
-msgstr "en"
+msgstr ""
 
 #: admin/sudo/generic.tpl:132
-#, fuzzy
 msgid "Run as"
-msgstr "Windows gebruikers"
-
-#, fuzzy
-#~ msgid "List of users and groups"
-#~ msgstr "groepen"
-
-#, fuzzy
-#~ msgid "Description name"
-#~ msgstr "Omschrijving"
-
-#~ msgid "Add"
-#~ msgstr "Toevoegen"
-
-#~ msgid "Base"
-#~ msgstr "Basis"
-
-#~ msgid "Submit"
-#~ msgstr "Verwerk"
-
-#~ msgid "Select systems to add"
-#~ msgstr "Selecteer de toe te voegen systemen"
-
-#~ msgid "Display systems of department"
-#~ msgstr "Toon systemen van afdeling"
-
-#~ msgid "Choose the department the search will be based on"
-#~ msgstr "Selecteer de afdeling waarbinnen gezocht zal worden"
-
-#~ msgid "Display systems matching"
-#~ msgstr "Toon de overeenkomende systemen"
-
-#~ msgid "Regular expression for matching addresses"
-#~ msgstr "Reguliere expresie voor overeenkomende adressen"
-
-#, fuzzy
-#~ msgid "List of systems"
-#~ msgstr "Lijst met gebruikers"
-
-#~ msgid "Server"
-#~ msgstr "Server"
-
-#~ msgid "Workstation"
-#~ msgstr "Werkstation"
-
-#~ msgid "Terminal"
-#~ msgstr "Terminal"
-
-#, fuzzy
-#~ msgid "Show users"
-#~ msgstr "Toon Samba gebruikers"
-
-#, fuzzy
-#~ msgid "Show groups"
-#~ msgstr "Toon Samba groepen"
-
-#~ msgid "Show servers"
-#~ msgstr "Toon servers"
-
-#~ msgid "Show workstations"
-#~ msgstr "Toon werkstations"
-
-#~ msgid "Show terminals"
-#~ msgstr "Toon terminals"
-
-#, fuzzy
-#~ msgid "Available systems"
-#~ msgstr "Beschikbare programma's"
-
-#~ msgid "Object name"
-#~ msgstr "Objectnaam"
-
-#~ msgid "Select to see terminals"
-#~ msgstr "Selecteer om terminals te zien"
-
-#~ msgid "Select to see servers"
-#~ msgstr "Selecteer om servers te zien"
-
-#~ msgid "Select to see workstations"
-#~ msgstr "Selecteer om werkstations te zien"
-
-#~ msgid "Regular expression for matching group names"
-#~ msgstr "Reguliere expressie voor overeenkomende groepnamen"
-
-#, fuzzy
-#~ msgid "Select the target objects"
-#~ msgstr "Selecteer om afdelingen te zien"
-
-#, fuzzy
-#~ msgid "Select to see users"
-#~ msgstr "Selecteer om servers te zien"
-
-#, fuzzy
-#~ msgid "Select to see groups"
-#~ msgstr "Selecteer om FusionDirectory groepen te zien"
-
-#~ msgid "Apply"
-#~ msgstr "Toepassen"
-
-#, fuzzy
-#~ msgid "If you're sure, press 'Delete' to continue or 'Cancel' to abort."
-#~ msgstr ""
-#~ "Indien u zeker bent drukt u dan 'Verwijderen' om door te gaan of "
-#~ "'Annuleren' om te annuleren."
-
-#, fuzzy
-#~ msgid "Sudo role administration"
-#~ msgstr "Groepen beheer"
-
-#, fuzzy
-#~ msgid "Select all"
-#~ msgstr "Selecteer"
-
-#~ msgid "Department"
-#~ msgstr "Afdeling"
-
-#, fuzzy
-#~ msgid "Regular expression for matching role names"
-#~ msgstr "Reguliere expressie voor overeenkomende groepnamen"
-
-#, fuzzy
-#~ msgid "Regular expression for matching role member names"
-#~ msgstr "Reguliere expressie voor overeenkomende objectnamen"
-
-#~ msgid "Edit this entry"
-#~ msgstr "Bewerk deze invoer"
-
-#~ msgid "Delete this entry"
-#~ msgstr "Verwijder deze invoer"
-
-#, fuzzy
-#~ msgid "Number of listed roles"
-#~ msgstr "Naam van de groep"
-
-#, fuzzy
-#~ msgid "Sudo roles"
-#~ msgstr "! onbekend id"
-
-#, fuzzy
-#~ msgid "Manage sudo roles"
-#~ msgstr "Windows gebruikers"
-
-#, fuzzy
-#~ msgid "Permission"
-#~ msgstr "Rechten"
-
-#, fuzzy
-#~ msgid "Permission error"
-#~ msgstr "Rechten"
+msgstr ""
