@@ -50,38 +50,38 @@ class rsyslog extends plugin
     $this->startTime = date("d.m.Y", (time() - 7*24*60*60));
     $this->stopTime  = date("d.m.Y", time());
 
-    // Get list of rsyslog servers 
+    // Get list of rsyslog servers
     $ldap = $this->config->get_ldap_link();
     $ldap->cd($this->config->current['BASE']);
     $ldap->search("objectClass=goLogDBServer",array("cn","goLogAdmin","gosaLogDB","goLogPassword"));
-    while($attrs = $ldap->fetch()){
-      if(empty($this->selected_server)) $this->selected_server = $attrs['cn'][0];
-      $s = array('cn' => $attrs['cn'][0], 'dn' => $attrs['dn'], 'Password' => '', 'status' => 'ok');
-      $s['User'] = $attrs['goLogAdmin'][0]; 
-      $s['Database'] = $attrs['gosaLogDB'][0]; 
-      $s['Hosts'] = array();
-      $s['Priorities'] = array();
-      $s['ACL'] = "";
-      if(isset($attrs['goLogPassword'])) $s['Password'] = $attrs['goLogPassword'][0];
+    while ($attrs = $ldap->fetch()) {
+      if (empty($this->selected_server)) {
+        $this->selected_server = $attrs['cn'][0];
+      }
+      $s = array('cn' => $attrs['cn'][0], 'dn' => $attrs['dn'], 'PASSWORD' => '', 'status' => 'ok');
+      $s['LOGIN']       = $attrs['goLogAdmin'][0];
+      $s['DB']          = $attrs['gosaLogDB'][0];
+      $s['SERVER']      = $s['cn'];
+      $s['Hosts']       = array();
+      $s['Priorities']  = array();
+      $s['ACL']         = "";
+      if(isset($attrs['goLogPassword'])) {
+        $s['PASSWORD'] = $attrs['goLogPassword'][0];
+      }
       $this->servers[$attrs['cn'][0]] = $s;
     }
 
-    // Test server connectivity 
+    // Test server connectivity
     $ui = get_userinfo();
-    foreach($this->servers as $name => $server)  
+    foreach($this->servers as $name => $server)
     {
-      $link =& MDB2::connect(array( 'phptype'=>'mysql',
-                                    'hostspec' => $server['cn'],
-                                    'username' => $server['User'],
-                                    'password' => $server['Password'],
-                                    'database' => $server['Database'],
-                                  ));
-      if (PEAR::isError($link)){
+      $link = databaseManagement::connectDatabase($server);
+      if (PEAR::isError($link)) {
         new log("debug","gosa_logging","dbconnect",array(),$link->getMessage());
         $this->servers[$name]['status'] = "connectfailed";
         $this->servers[$name]['error']  = $link->getMessage();
         continue;
-      }else{
+      } else {
         $this->servers[$name]['status'] = "ok";
         $this->servers[$name]['error']  = "";
 
@@ -89,25 +89,25 @@ class rsyslog extends plugin
         $this->servers[$name]['ACL'] =  $ui->get_permissions($server['dn'], 'server/rsyslog','viewEntries');
 
         // Get list of Hosts using this log server..
-        if(preg_match('/r/', $this->servers[$name]['ACL'])){
+        if (preg_match('/r/', $this->servers[$name]['ACL'])) {
           $query = "SELECT distinct(FromHost) FROM SystemEvents;";
           $res =& $link->query($query);
-          if(PEAR::isError($res)) {
+          if (PEAR::isError($res)) {
             $this->servers[$name]['status'] = "query_failed";
             $this->servers[$name]['error']  = $res->getMessage();
           } else {
             while ($attrs = $res->fetchRow(MDB2_FETCHMODE_ASSOC)) {
-              $this->servers[$name]['Hosts'][$attrs['FromHost']] = $attrs['FromHost'];  
+              $this->servers[$name]['Hosts'][$attrs['FromHost']] = $attrs['FromHost'];
             }
           }
           $query = "SELECT distinct(Priority) FROM SystemEvents ORDER BY Priority;";
           $res =& $link->query($query);
-          if(PEAR::isError($res)) {
+          if (PEAR::isError($res)) {
             $this->servers[$name]['status'] = "query_failed";
             $this->servers[$name]['error']  = $res->getMessage();
-          }else{
-            while($attrs = $res->fetchRow(MDB2_FETCHMODE_ASSOC)){
-              $this->servers[$name]['Priorities'][$attrs['Priority']] = $attrs['Priority'];  
+          } else {
+            while ($attrs = $res->fetchRow(MDB2_FETCHMODE_ASSOC)) {
+              $this->servers[$name]['Priorities'][$attrs['Priority']] = $attrs['Priority'];
             }
           }
         }
@@ -120,16 +120,16 @@ class rsyslog extends plugin
     $smarty = get_smarty();
     $smarty->assign("usePrototype", "true");
     $ui = get_userinfo();
-    
-    if(!isset($this->servers[$this->selected_server]['Hosts']) || !count($this->servers[$this->selected_server]['Hosts'])){
+
+    if (!isset($this->servers[$this->selected_server]['Hosts']) || !count($this->servers[$this->selected_server]['Hosts'])){
       $hosts = array('-' => _("-"));
-    }else{
+    } else {
       $hosts = array('all' => _("All"));
       $hosts = array_merge($hosts,$this->servers[$this->selected_server]['Hosts']);
     }
-    if(!isset($this->servers[$this->selected_server]['Priorities']) || !count($this->servers[$this->selected_server]['Priorities'])){
+    if (!isset($this->servers[$this->selected_server]['Priorities']) || !count($this->servers[$this->selected_server]['Priorities'])){
       $priorities = array('-' => _("-"));
-    }else{
+    } else {
       $priorities = array('all' => _("All"));
       foreach($this->servers[$this->selected_server]['Priorities'] as $id => $name){
         $priorities[$id] = $this->severity2string($name);
@@ -144,14 +144,14 @@ class rsyslog extends plugin
     $smarty->assign("selected_server",$this->selected_server);
     $smarty->assign("selected_host",$this->selected_host);
     $smarty->assign("selected_priority",$this->selected_priority);
-    $smarty->assign("search_for",$this->search_for);
+    $smarty->assign("search_for", $this->search_for);
     $smarty->assign("startTime",  $this->startTime);
-    $smarty->assign("stopTime",    $this->stopTime);
-    $smarty->assign("sort_type",    $this->sort_type);
-    $smarty->assign("sort_value",   $this->sort_value);
-    $smarty->assign("limits",   $this->limits);
-    $smarty->assign("limit",    $this->limit);
-    $smarty->assign("page",    $this->page);
+    $smarty->assign("stopTime",   $this->stopTime);
+    $smarty->assign("sort_type",  $this->sort_type);
+    $smarty->assign("sort_value", $this->sort_value);
+    $smarty->assign("limits",     $this->limits);
+    $smarty->assign("limit",      $this->limit);
+    $smarty->assign("page",       $this->page);
     $smarty->assign("plug_id", $_GET['plug']);
     $smarty->assign("downimg", "<img src='images/lists/sort-down.png' class='center' alt='\\/' border='0'>");
     $smarty->assign("upimg", "<img src='images/lists/sort-up.png' class='center' alt='\\/' border='0'>");
@@ -178,25 +178,20 @@ class rsyslog extends plugin
     if($this->selected_server == "unknown" || !isset($this->servers[$this->selected_server])){
       $this->servers["unknown"]['status'] = sprintf(_("The selected server '%s' does not exists!"),$this->selected_server);
       $this->servers["unknown"]["cn"] = "-";
-      return($result);
+      return $result;
     }
 
-    // Check database connectivity    
+    // Check database connectivity
     $name = $this->selected_server;
 
+    $server = $this->servers[$name];
 
-    $link =& MDB2::connect(array( 'phptype'=>'mysql',
-                                  'hostspec' => $server['cn'],
-                                  'username' => $server['User'],
-                                  'password' => $server['Password'],
-                                  'database' => $server['Database'],
-                                ));
-    if (PEAR::isError($link)){
+    $link = databaseManagement::connectDatabase($server);
+    if (PEAR::isError($link)) {
       new log("debug","gosa_logging","dbconnect",array(),$link->getMessage());
       $this->servers[$name]['status'] = "connectfailed";
       $this->servers[$name]['error']  = $link->getMessage();
-      continue;
-    }else{
+    } else {
       $this->servers[$name]['status'] = "ok";
       $this->servers[$name]['error']  = "";
     }
@@ -216,20 +211,20 @@ class rsyslog extends plugin
       if($prio != "%%"){
         $filter.= "AND Priority like '{$prio}' ";
       }
-      $filter.= "AND DeviceReportedTime >= '".(date("Y.m.d 00:00:00", strtotime($this->startTime)))."' ";     
-      $filter.= "AND DeviceReportedTime <= '".(date("Y.m.d 23:59:59", strtotime($this->stopTime)))."' ";     
+      $filter.= "AND DeviceReportedTime >= '".(date("Y.m.d 00:00:00", strtotime($this->startTime)))."' ";
+      $filter.= "AND DeviceReportedTime <= '".(date("Y.m.d 23:59:59", strtotime($this->stopTime)))."' ";
 
       if(!empty($this->search_for)){
         $filter.= "AND ( ( SysLogTag like '%".$this->search_for."%' ) OR  ( Message like '%".$this->search_for."%' ) ) ";
       }
 
-      // Detect amount of matching entries 
+      // Detect amount of matching entries
       $query = "SELECT count(ID) as `amount` ".$filter;
       $res =& $link->query($query);
       if(PEAR::isError($res)) {
         $this->servers[$name]['status'] = "query_failed";
         $this->servers[$name]['error']  = $res->getMessage();
-      }else if($attrs = $res->fetchRow(MDB2_FETCHMODE_ASSOC)){ 
+      }else if($attrs = $res->fetchRow(MDB2_FETCHMODE_ASSOC)){
         $result['count'] = $attrs['amount'];
       }
 
@@ -279,50 +274,50 @@ class rsyslog extends plugin
     foreach(array("stopTime","startTime") as $attr){
       if(isset($_POST[$attr])) $this->$attr = get_post($attr);
     }
-    
+
     // Get server from post
-    if( isset($_POST['selected_server']) && isset($this->servers[$_POST['selected_server']])){ 
+    if( isset($_POST['selected_server']) && isset($this->servers[$_POST['selected_server']])){
       $this->selected_server = $_POST['selected_server'];
     }
 
     // Get Host
-    if( isset($this->servers[$this->selected_server]['Hosts']) &&  isset($_POST['selected_host']) && 
-        ($_POST['selected_host'] == "all" || 
+    if( isset($this->servers[$this->selected_server]['Hosts']) &&  isset($_POST['selected_host']) &&
+        ($_POST['selected_host'] == "all" ||
          in_array($_POST['selected_host'],$this->servers[$this->selected_server]['Hosts']))){
       $this->selected_host = $_POST['selected_host'];
     }
 
     // Get priority from post
-    if( isset($this->servers[$this->selected_server]['Priorities']) &&  isset($_POST['selected_priority']) && 
-        ($_POST['selected_priority'] == "all" || 
+    if( isset($this->servers[$this->selected_server]['Priorities']) &&  isset($_POST['selected_priority']) &&
+        ($_POST['selected_priority'] == "all" ||
          in_array($_POST['selected_priority'],$this->servers[$this->selected_server]['Priorities']))){
       $this->selected_priority = $_POST['selected_priority'];
     }
-      
+
     // Get serach string
     if(isset($_POST['search_for'])){
       $this->search_for = trim(get_post('search_for'));
-    } 
+    }
 
-    // Get page navigation attributes  
+    // Get page navigation attributes
     if(isset($_GET['start'])) $this->page = $_GET['start'];
     if(isset($_POST['limit']) && isset($this->limits[$_POST['limit']])){
       $this->limit = $_POST['limit'];
     }
 
-    // Get sorting attributes 
-    if(isset($_GET['sort_value']) && in_array($_GET['sort_value'], 
+    // Get sorting attributes
+    if(isset($_GET['sort_value']) && in_array($_GET['sort_value'],
           array("DeviceReportedTime","FromHost","Facility","Priority","Message","SysLogTag"))){
       $sort_value = $_GET['sort_value'];
       if($this->sort_value == $sort_value){
         if($this->sort_type == "ASC"){
-          $this->sort_type="DESC"; 
+          $this->sort_type="DESC";
         }else{
-          $this->sort_type="ASC"; 
+          $this->sort_type="ASC";
         }
-      } 
-      $this->sort_value=$sort_value; 
-    } 
+      }
+      $this->sort_value=$sort_value;
+    }
   }
 
 

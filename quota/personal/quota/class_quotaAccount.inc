@@ -378,7 +378,7 @@ class quotaAccount extends plugin
   {
     $ret = array(
       "plShortName"   => _("Quota"),
-      "plDescription" => _("Plugin for quota suport"),
+      "plDescription" => _("Plugin for quota support"),
       "plSelfModify"  => TRUE,
       "plDepends"     => array("users"),
       "plPriority"    => 5,

@@ -26,19 +26,19 @@ require_once ("php_setup.inc");
 require_once ("functions.inc");
 error_reporting (0);
 session::start();
-session::set('errorsAlreadyPosted',array());
+session::set('errorsAlreadyPosted', array());
 
 /* Logged in? Simple security check */
 if (!session::is_set('ui')) {
-  new log("security","faxreport/faxreport","",array(),"Error: getfax.php called without session") ;
+  new log("security", "faxreport/faxreport", "", array(), "Error: getfax.php called without session");
   header ("Location: index.php");
   exit;
 }
-$ui= session::is_set("ui");
+$ui = session::is_set("ui");
 
 /* User object present? */
 if (!session::is_set('fuserfilter')) {
-  new log("security","faxreport/faxreport","",array(),"getfax.php called without propper session data") ;
+  new log("security", "faxreport/faxreport", "", array(), "getfax.php called without propper session data");
   header ("Location: index.php");
   exit;
 }
@@ -46,37 +46,35 @@ if (!session::is_set('fuserfilter')) {
 /* Get loaded servers */
 foreach (array("FAX_SERVER", "FAX_LOGIN", "FAX_PASSWORD") as $val) {
   if (session::is_set($val)) {
-    $$val= session::get($val);
+    $$val = session::get($val);
   }
 }
 
 /* Load fax entry */
 $config = session::get('config');
 $cfg = $config->data['SERVERS']['FAX'];
-$link =& MDB2::connect(array( 'phptype'=>'mysql',
-                              'hostspec'=>$cfg['SERVER'],
-                              'username'=>$cfg['LOGIN'],
-                              'password'=>$cfg['PASSWORD'],
-                              'database'=>"gofax",
-                      ));
-if (PEAR::isError($link))
+$cfg['DB'] = 'gofax';
+$link = databaseManagement::connectDatabase($cfg);
+if (PEAR::isError($link)) {
   die(_("Could not connect to database server!")." ".$link->getMessage());
+}
 
 /* Permission to view? */
 $query = "SELECT id,uid FROM faxlog WHERE id = '".validate(stripcslashes($_GET['id']))."'";
 $result = $link->query($query);
-if (PEAR::isError($result))
+if (PEAR::isError($result)) {
   die(_("Database query failed!")." ".$result->getMessage());
+}
 $line = $result->fetchRow(MDB2_FETCHMODE_ASSOC);
 if (!preg_match ("/'".$line["uid"]."'/", session::get('fuserfilter'))) {
   die ("No permissions to view fax!");
 }
 
-$query = "SELECT id,fax_data FROM faxdata WHERE id = '".
-         validate(stripcslashes($_GET['id']))."'";
-$data = $link->queryOne($query,'string',"fax_data");
-if (PEAR::isError($data))
+$query  = "SELECT id,fax_data FROM faxdata WHERE id = '".validate(stripcslashes($_GET['id']))."'";
+$data   = $link->queryOne($query, 'string', "fax_data");
+if (PEAR::isError($data)) {
   die(_("Database query failed!")." ".$data->getMessage());
+}
 
 /* Load pic */
 $link->disconnect();
@@ -91,13 +89,13 @@ if (!isset($_GET['download'])) {
 
     /* Write to temporary file and call convert, because TIFF sucks */
     $tmpfname = tempnam ("/tmp", "FusionDirectory");
-    $temp= fopen($tmpfname, "w");
+    $temp     = fopen($tmpfname, "w");
     fwrite($temp, $data);
     fclose($temp);
 
     /* Read data written by convert */
     $output = "";
-    $query = "convert -size 420x594 $tmpfname -resize 420x594 +profile \"*\" png:- 2> /dev/null";
+    $query  = "convert -size 420x594 $tmpfname -resize 420x594 +profile \"*\" png:- 2> /dev/null";
     $sh = popen($query, 'r');
     $data = "";
     while (!feof($sh)) {
@@ -110,23 +108,23 @@ if (!isset($_GET['download'])) {
   } else {
 
     /* Loading image */
-    if (!$handle  =  imagick_blob2image($data)) {
-      new log("view","faxreport/faxreport","",array(), "Cannot load fax image") ;
+    if (!$handle = imagick_blob2image($data)) {
+      new log("view", "faxreport/faxreport", "", array(), "Cannot load fax image");
     }
 
     /* Converting image to PNG */
-    if (!imagick_convert($handle,"PNG")) {
-      new log("view","faxreport/faxreport","",array(),"Cannot convert fax image to png") ;
+    if (!imagick_convert($handle, "PNG")) {
+      new log("view", "faxreport/faxreport", "", array(), "Cannot convert fax image to png");
     }
 
     /* Resizing image to 420x594 and blur */
-    if (!imagick_resize($handle,420,594,IMAGICK_FILTER_GAUSSIAN,1)) {
-      new log("view","faxreport/faxreport","",array(),"Cannot resize fax image") ;
+    if (!imagick_resize($handle, 420, 594, IMAGICK_FILTER_GAUSSIAN, 1)) {
+      new log("view", "faxreport/faxreport", "", array(), "Cannot resize fax image");
     }
 
     /* Creating binary Code for the Image */
     if (!$data = imagick_image2blob($handle)) {
-      new log("view","faxreport/faxreport","",array(),"Reading fax image image failed") ;
+      new log("view", "faxreport/faxreport", "", array(), "Reading fax image image failed");
     }
   }
 
@@ -154,4 +152,3 @@ echo "$data";
 
 // vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>
-
