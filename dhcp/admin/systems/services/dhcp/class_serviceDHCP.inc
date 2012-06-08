@@ -21,12 +21,12 @@
 */
 
 
-class servdhcp extends goService
+class serviceDHCP extends goService
 {
   /* attribute list for save action */
   var $attributes= array("dhcpServiceDN");
   var $objectclasses= array("dhcpServer");
-  var $conflicts        = array("servdhcp");
+  var $conflicts        = array("serviceDHCP");
   var $dhcpServiceDN= "";
 
   /* Section storage */
@@ -47,10 +47,7 @@ class servdhcp extends goService
   var $take_over_id       = -1;
   var $display_warning  = TRUE;
 
-  var $StatusFlag       = "goServerStatus";
-  var $goServerStatus   = "";
-
-  function servdhcp (&$config, $dn= NULL, $parent= NULL)
+  function serviceDHCP (&$config, $dn= NULL, $parent= NULL)
   {
     plugin::plugin ($config, $dn, $parent);
 
@@ -137,7 +134,7 @@ class servdhcp extends goService
         msg_dialog::display(_("Warning"), $warning, WARNING_DIALOG);
         $this->display_warning = FALSE;
       }
-      return($smarty->fetch(get_template_path('servdhcp.tpl', TRUE, dirname(__FILE__))));
+      return($smarty->fetch(get_template_path('serviceDHCP.tpl', TRUE, dirname(__FILE__))));
     }
 
 
@@ -408,7 +405,7 @@ class servdhcp extends goService
 
     /* Display tempalte */
     $smarty->assign("DhcpList",$DhcpList->DrawList());
-    $display.= $smarty->fetch(get_template_path('servdhcp.tpl', TRUE, dirname(__FILE__)));
+    $display.= $smarty->fetch(get_template_path('serviceDHCP.tpl', TRUE, dirname(__FILE__)));
     return($display);
   }
 
@@ -472,14 +469,14 @@ class servdhcp extends goService
   function save()
   {
     /* Take over handling
-     * - Load servdhcp class and dhcpObjectCache for the source dhcp setup.
+     * - Load serviceDHCP class and dhcpObjectCache for the source dhcp setup.
      * - Assign dhcpObjectCache to this configuration.
      * - Save this setup and remove source setup from ldap.
      */
     if($this->take_over_id != -1){
       $id = $this->take_over_id;
       $src = preg_replace("/cn=dhcp,/","",$this->dhcp_server_list['ENTRIES'][$id]['dn']);
-      $tmp = new servdhcp ($this->config, $src);
+      $tmp = new serviceDHCP ($this->config, $src);
       $this->orig_dn = $src;
       $this->dhcpObjectCache =  $tmp->dhcpObjectCache;
     }
@@ -627,7 +624,7 @@ class servdhcp extends goService
     if($this->take_over_id != -1){
       $id = $this->take_over_id;
       $src = $this->dhcp_server_list['ENTRIES'][$id]['dn'];
-      $tmp = new servdhcp ($this->config, $src);
+      $tmp = new serviceDHCP ($this->config, $src);
       $tmp->remove_from_parent();
     }
   }
