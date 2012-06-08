@@ -20,13 +20,13 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class rSyslogServer extends goService{
+class serviceSyslog extends goService{
 
   /* This plugin only writes its objectClass */
   var $objectclasses    = array("goSyslogServer");
   var $attributes       = array();
   var $db_attributes    = array("gosaLogDB","goLogAdmin","goLogPassword");
-  var $StatusFlag       = "goServerStatus";
+  var $StatusFlag       = "";
 
   /* This class can't be assigned twice so it conflicts with itself */
   var $conflicts        = array("goSyslogServer");
@@ -42,10 +42,8 @@ class rSyslogServer extends goService{
   var $goLogPassword = "";
   var $view_logged   = FALSE;
 
-  var $goServerStatus   = "";
 
-
-  function rSyslogServer(&$config,$dn)
+  function serviceSyslog(&$config,$dn)
   {
     goService::goService($config,$dn);
     $this->DisplayName = _("Logging");
@@ -79,7 +77,7 @@ class rSyslogServer extends goService{
       $smarty->assign($attr,$this->$attr);
     }
     $smarty->assign("use_database" , $this->use_database);
-    return($smarty->fetch(get_template_path("rSyslogServer.tpl",TRUE,dirname(__FILE__))));
+    return($smarty->fetch(get_template_path("serviceSyslog.tpl",TRUE,dirname(__FILE__))));
   }
 
 
