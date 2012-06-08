@@ -20,7 +20,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class servdns extends goService
+class serviceDNS extends goService
 {
   /* attribute list for save action */
   var $ignore_account   = FALSE;
@@ -35,17 +35,16 @@ class servdns extends goService
   var $initially_was_account;
 
   /* ServerService tab vars */
-  var $conflicts        = array("servdns");
+  var $conflicts        = array("serviceDNS");
   var $DisplayName      = "";
-  var $StatusFlag       = "goServerStatus";
+  var $StatusFlag       = "";
   var $view_logged      = FALSE;
 
   var $dns_server_list   = array("ENTRIES"=> array(),"FOR_LIST"=> array());
   var $take_over_id       = -1;
 
-  var $goServerStatus   = "";
 
-  function servdns (&$config, $dn= NULL, $parent= NULL)
+  function serviceDNS (&$config, $dn= NULL, $parent= NULL)
   {
     plugin::plugin ($config, $dn, $parent);
 
@@ -173,7 +172,7 @@ class servdns extends goService
       $warning2 = _("The migration will be started when you save this system. To cancel this action, use the cancel button below.");
       $smarty->assign("warning",$warning);
       $smarty->assign("warning2",$warning2);
-      return($smarty->fetch(get_template_path('servdns.tpl', TRUE, dirname(__FILE__))));
+      return($smarty->fetch(get_template_path('serviceDNS.tpl', TRUE, dirname(__FILE__))));
     }
 
 
@@ -256,7 +255,7 @@ class servdns extends goService
         $tmp = preg_replace("/^ldap2Zone_/","",$name);
         $tmp = base64_decode(preg_replace("/_.*$/","",$tmp));
 
-        /* Initiate ldap2zone
+        /* Initiate deletion
          */
         $this->Ldap2Zone($tmp);
       }
@@ -311,7 +310,7 @@ class servdns extends goService
     /* Display tempalte
      */
     $smarty->assign("ZoneList",$ZoneList->DrawList());
-    $display.= $smarty->fetch(get_template_path('servdns.tpl', TRUE, dirname(__FILE__)));
+    $display.= $smarty->fetch(get_template_path('serviceDNS.tpl', TRUE, dirname(__FILE__)));
     return($display);
   }
 
@@ -383,7 +382,7 @@ class servdns extends goService
     if ($o_queue->is_error()) {
       msg_dialog::display(_("Error"), sprintf(_("Was not able to contact argonaut server: %s"), "<br/><br/>".$o_queue->get_error()), ERROR_DIALOG);
     } else {
-      $o_queue->append_call("Ldap2Zone.start",
+      $o_queue->append_call("ldap2zone",
                             array($this->attrs['macAddress'][0]),
                             array("args"=>array($zone)));
       if ($o_queue->is_error()) {

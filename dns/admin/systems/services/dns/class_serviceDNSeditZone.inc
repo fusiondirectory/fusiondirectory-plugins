@@ -25,7 +25,7 @@ class servdnseditZone extends plugin
   /* attribute list for save action */
   var $ignore_account= TRUE;
   var $attributes     = array("zoneName","ReverseZone","dNSClass",
-      "sOAprimary","sOAmail","sOAserial","sOArefresh","sOAretry","sOAexpire","sOAttl"); 
+      "sOAprimary","sOAmail","sOAserial","sOArefresh","sOAretry","sOAexpire","sOAttl");
   var $objectclasses  = array("whatever");
 
   var $RecordTypes              = array();
@@ -66,14 +66,14 @@ class servdnseditZone extends plugin
     plugin::plugin ($config, $dn);
 
     /* All types with required attrs */
-    $this->RecordTypes = DNS::getDnsRecordTypes(true); 
+    $this->RecordTypes = DNS::getDnsRecordTypes(true);
 
     if(!count($attrs)){
       $this->OldZoneName        = "";
       $this->OldReverseZone     = "";
       $this->isNew              = true;
       $this->sOAserial          = date("Ymd")."1";
-      
+
       $this->InitialzoneName    = "";//$attrs['InitialzoneName'];
       $this->InitialReverseZone = "";//$attrs['InitialReverseZone'];
     }else{
@@ -100,7 +100,7 @@ class servdnseditZone extends plugin
       $this->zoneName           = preg_replace("/\.$/","",$this->zoneName);
 
       if(isset($attrs['RECORDS'])){
-        $this->Records = $attrs['RECORDS']; 
+        $this->Records = $attrs['RECORDS'];
 
         $tmp2 = array();
         $usedPrio = array();
@@ -144,14 +144,14 @@ class servdnseditZone extends plugin
 
       $dots = count(explode(".",$this->ReverseZone));
       if($dots == 1){
-        $this->NetworkClass = "A";  
-        $this->ReverseZone .= ".0.0.0"; 
+        $this->NetworkClass = "A";
+        $this->ReverseZone .= ".0.0.0";
       }elseif($dots == 2){
-        $this->NetworkClass = "B";  
-        $this->ReverseZone .= ".0.0"; 
+        $this->NetworkClass = "B";
+        $this->ReverseZone .= ".0.0";
       }else{
-        $this->NetworkClass = "C";  
-        $this->ReverseZone .= ".0"; 
+        $this->NetworkClass = "C";
+        $this->ReverseZone .= ".0";
       }
     }
   }
@@ -167,14 +167,14 @@ class servdnseditZone extends plugin
     $smarty->assign("Zone_is_used",$this->Zone_is_used);
     $ui = get_userinfo();
 
-    /* Assign ACLs 
+    /* Assign ACLs
         All acls are defined in our parent class.
      */
     $tmp = $this->parent->plInfo();
     foreach($tmp['plProvidedAcls'] as $name => $desc){
       $smarty->assign($name."ACL", $this->parent->getacl($name));
     }
-  
+
     $display= "";
 
     /* Open Zone Entry Edit Dialog
@@ -186,7 +186,7 @@ class servdnseditZone extends plugin
 
       if(isset($_POST['EditZoneEntries']) && $this->parent->acl_is_readable("zoneEditor")){
         if($this->zoneEditor == NULL){
-          $this->zoneEditor= new servDNSeditZoneEntries($this->config,$this->dn,$this->ZoneObject); 
+          $this->zoneEditor= new servDNSeditZoneEntries($this->config,$this->dn,$this->ZoneObject);
           $this->zoneEditor->acl = $this->parent->getacl("zoneEditor");
           $this->zoneEditor->parent = $this;
         }
@@ -208,7 +208,7 @@ class servdnseditZone extends plugin
         $this->dialog = FALSE;
 #       $rev = DNS::FlipIp(DNS::getNameFromMix($this->InitialReverseZone)).".in-addr.arpa";
 #       $for = DNS::getNameFromMix($this->InitialzoneName);
-#      
+#
 #       $this->parent->handle_post_events("modify",array("dn" => $this->dn,"zoneName" => $rev));
 #       $this->parent->handle_post_events("modify",array("dn" => $this->dn,"zoneName" => $for));
 #       $this->dialog = false;
@@ -221,7 +221,7 @@ class servdnseditZone extends plugin
       $this->dialog = false;
     }
 
-    /* Display any type of open dialogs 
+    /* Display any type of open dialogs
      */
     if(is_object($this->dialog)){
       $this->dialog->save_object();
@@ -232,31 +232,31 @@ class servdnseditZone extends plugin
     foreach($_POST as $name => $value){
       if((preg_match("/^MXdel_/",$name)) && ($once)){
         $once = false;
-        
+
         $id = preg_replace("/^MXdel_/","",$name);
         $id = preg_replace("/_.*$/","",$id);
         $id = base64_decode($id);
-        
+
         unset($this->mXRecords[$id]);
 
         $tmp  =array();
         foreach($this->mXRecords as $entry){
           $tmp[] = $entry;
         }
- 
-        $this->mXRecords = $tmp; 
+
+        $this->mXRecords = $tmp;
       }
     }
 
     if($this->parent->acl_is_writeable("mXRecord")){
       if((isset($_POST['AddMXRecord'])) && (!empty($_POST['StrMXRecord']))){
-        $rec = get_post('StrMXRecord'); 
-        if(preg_match("/^[0-9]* /", $rec) && count(preg_split("/ /", $rec)) == 2){ 
-            list($prio,$value) = preg_split("/ /", $rec); 
-            $this->mXRecords[$prio] = array("type"=>"mXRecord","value"=>trim($rec)); 
-        }else{ 
-            msg_dialog::display(_("Warning"), msgPool::invalid(_("MxRecord"), "","", "20 mx.record.entry"), WARNING_DIALOG); 
-        } 
+        $rec = get_post('StrMXRecord');
+        if(preg_match("/^[0-9]* /", $rec) && count(preg_split("/ /", $rec)) == 2){
+            list($prio,$value) = preg_split("/ /", $rec);
+            $this->mXRecords[$prio] = array("type"=>"mXRecord","value"=>trim($rec));
+        }else{
+            msg_dialog::display(_("Warning"), msgPool::invalid(_("MxRecord"), "","", "20 mx.record.entry"), WARNING_DIALOG);
+        }
       }
 
       /* Handle Post events */
@@ -287,7 +287,7 @@ class servdnseditZone extends plugin
     $div->setHeight(120);
     $recs = $this->mXRecords;
     ksort($recs);
-    $onedel   = "<input name='MXdel_%s'   type='image' src='images/lists/trash.png'  title='"._("Delete")."'  class='center'>"; 
+    $onedel   = "<input name='MXdel_%s'   type='image' src='images/lists/trash.png'  title='"._("Delete")."'  class='center'>";
     foreach($recs as $key => $rec){
       list($prio,$value) = preg_split("/ /", $rec['value']);
       $div ->AddEntry(array(
@@ -306,7 +306,7 @@ class servdnseditZone extends plugin
     $smarty->assign("NetworkClasses",  array("A"=>"255.0.0.0 (Class A)","B"=>"255.255.0.0 (Class B)","C"=>"255.255.255.0 (Class C)"));
 
     /* Display tempalte */
-    $display.= $smarty->fetch(get_template_path('servdnseditzone.tpl', TRUE, dirname(__FILE__)));
+    $display.= $smarty->fetch(get_template_path('serviceDNSeditZone.tpl', TRUE, dirname(__FILE__)));
     return($display);
   }
 
@@ -322,7 +322,7 @@ class servdnseditZone extends plugin
     if(!is_object($this->parent)) return;
 
     if($this->parent->acl_is_writeable("zoneRecords")){
-      foreach($this->Records as $id => $value){  
+      foreach($this->Records as $id => $value){
         if(isset($_POST['RecordTypeSelectedFor_'.$id])){
           $this->Records[$id]['type'] = $_POST['RecordTypeSelectedFor_'.$id];
         }
@@ -342,7 +342,7 @@ class servdnseditZone extends plugin
   {
     /* Call common method to give check the hook */
     $message= plugin::check();
-    
+
     /* Check if zoneName is already in use */
     $usedZones = $this->getUsedZoneNames();
     if($this->OldZoneName == "" && !empty($this->zoneName)){
@@ -393,13 +393,13 @@ class servdnseditZone extends plugin
 
     /* Check class for given Zone Address */
     $addr = preg_replace("/^[^\/]*+\//","",$this->ReverseZone);
-  
+
     /* Check for valid&complete IP address */
     if(!tests::is_ip($addr)){
       $message[] = msgPool::invalid(_("Network address"));
     }
 
-    // Ensure that we do not use reverse zones twice. 
+    // Ensure that we do not use reverse zones twice.
     //  this currently not supported by FusionDirectory.
     $zones = DNS::getDNSZoneEntries($this->config,$this->dn);
     switch($this->NetworkClass){
@@ -413,10 +413,10 @@ class servdnseditZone extends plugin
         $message[] = msgPool::duplicated(_("Network address"));
       }
     }
- 
+
     /* Check if given address matches selected network class */
     switch($this->NetworkClass){
-      case 'A': { 
+      case 'A': {
                   if(!preg_match("/^[0-9]*\.0\.0\.0$/",$addr)){
                     $message[] = sprintf(_("The specified network address and the network class (%s/%s) do not match!"), $this->NetworkClass, "255.0.0.0");
                   }
@@ -464,14 +464,14 @@ class servdnseditZone extends plugin
       $ret[$name] = $this->$name;
     }
 
-    /* Create mx records 
+    /* Create mx records
      */
     foreach($this->mXRecords as $key => $rec){
       $this->Records[] = $rec;
     }
-  
-    $ret['RECORDS'] = $this->Records; 
- 
+
+    $ret['RECORDS'] = $this->Records;
+
     switch($this->NetworkClass){
       case 'C' : $ret['ReverseZone']= preg_replace("/\.[0-9]*$/","",$this->ReverseZone);break;
       case 'B' : $ret['ReverseZone']= preg_replace("/\.[0-9]*\.[0-9]*$/","",$this->ReverseZone);break;
@@ -500,7 +500,7 @@ class servdnseditZone extends plugin
     return($ret);
   }
 
-  
+
   /* This function generate a table row for each used record.
      This table row displays the recordtype in a select box
       and the specified value for the record, and a remove button.
@@ -514,7 +514,7 @@ class servdnseditZone extends plugin
     foreach($this->Records as $key => $entry){
 
       if($entry['type'] == "mXRecord") continue;
-      
+
       $changeStateForRecords.= "changeState('RecordTypeSelectedFor_".$key."');\n";
       $changeStateForRecords.= "changeState('RecordValue_".$key."');\n";
       $changeStateForRecords.= "changeState('RemoveRecord_".$key."');\n";

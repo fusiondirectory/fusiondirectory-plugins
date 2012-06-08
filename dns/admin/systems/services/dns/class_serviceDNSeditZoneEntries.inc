@@ -95,7 +95,7 @@ class servDNSeditZoneEntries extends plugin
     $smarty->assign("acl",$this->acl);
     $smarty->assign("disableDialog",$this->disableDialog);
     $smarty->assign("table",$table);;
-    $display.= $smarty->fetch(get_template_path('servDNSeditZoneEntries.tpl', TRUE, dirname(__FILE__)));
+    $display.= $smarty->fetch(get_template_path('serviceDNSeditZoneEntries.tpl', TRUE, dirname(__FILE__)));
     return($display);
   }
 
@@ -415,7 +415,7 @@ class servDNSeditZoneEntries extends plugin
         $ldap->cd($dn);
         $ldap->add($attrs);
         if(is_object($this->parent->parent)){
-          $this->parent->parent->handle_post_events("add",array("dn" => $dn));
+          $this->parent->parent->handle_post_events("create",array("dn" => $dn));
         }
       }
     }
