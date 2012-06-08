@@ -20,7 +20,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class servkolab extends goService {
+class serviceKolab extends goService {
   var $postfix_mydomain                 = "";
   var $cyrus_admins                     = "";
   var $postfix_mydestination            = array();
@@ -56,7 +56,7 @@ class servkolab extends goService {
   var $DisplayName  = "Kolab mail service";
   var $StatusFlag   = "";
 
-  function servkolab(&$config, $dn = NULL, $parent= NULL) 
+  function serviceKolab(&$config, $dn = NULL, $parent= NULL)
   {
     /* Setting the hostname and tell this Plugin that we are the kolab extension*/
     $this->hostname = preg_replace('/^cn=([^,]+),.*$/', '\1', $dn);
@@ -77,7 +77,7 @@ class servkolab extends goService {
     $this->postfix_mxrelayenabled = preg_match('/^\[/', $this->postfix_relayhost);
     $this->postfix_relayhost      = preg_replace("/[\[\]]/","",$this->postfix_relayhost);
 
-    /* Is this Server a member of the Kolab extension or not ?*/ 
+    /* Is this Server a member of the Kolab extension or not ?*/
     if(isset($this->attrs['kolabHost'])) {
       $this->kolabHost= $this->attrs['kolabHost'];
       unset($this->kolabHost['count']);
@@ -91,8 +91,8 @@ class servkolab extends goService {
       }
     }
 
-    /* Get list of configured domains 
-     */ 
+    /* Get list of configured domains
+     */
     $this->postfix_mydestination = array();
     if(isset($this->attrs['postfix-mydestination'])){
       for($i=0; $i < $this->attrs['postfix-mydestination']['count']; $i++){
@@ -102,7 +102,7 @@ class servkolab extends goService {
   }
 
 
-  function execute() 
+  function execute()
   {
     /* Call parent execute */
     plugin::execute();
@@ -112,10 +112,10 @@ class servkolab extends goService {
       new log("view","server/".get_class($this),$this->dn);
     }
 
-    /***************  
+    /***************
       Variable initialisation
-     ***************/  
-    
+     ***************/
+
     $smarty     = get_smarty();
     $display    = "";
     $ldap       = $this->config->get_ldap_link();
@@ -132,10 +132,10 @@ class servkolab extends goService {
     $quotastr   = sprintf(_("Warn users when using more than %s%% of their mail quota"), $edit);
 
     /***************
-      Assign informations to smarty 
+      Assign informations to smarty
      ***************/
 
-    /* Set relayhost and if we have MX lookup enabled*/ 
+    /* Set relayhost and if we have MX lookup enabled*/
     if($this->postfix_mxrelayenabled) {
       $smarty->assign("RelayMxSupportCheck"," checked ");
     } else {
@@ -149,7 +149,7 @@ class servkolab extends goService {
     }
 
     /* Initialize all attributes, that were submitted */
-    foreach($this->attributes as $val) 
+    foreach($this->attributes as $val)
     {
       /* Tell smarty which variables we are useing */
       $smarty->assign($val, $this->$val);
@@ -169,20 +169,20 @@ class servkolab extends goService {
     $divlist->setHeight(100);
     foreach($this->postfix_mydestination as $key => $domain){
       $f1 = array("string" => $domain);
-      $f2 = array("string" => "<input type='image' src='images/lists/trash.png' 
+      $f2 = array("string" => "<input type='image' src='images/lists/trash.png'
                                   name='remove_domain_".$key."'
-                                  title='"._("Remove")."' alt='"._("Remove")."'>", 
+                                  title='"._("Remove")."' alt='"._("Remove")."'>",
                   "attach" => "style='border-right:0px; width: 20px;'");
       $divlist->AddEntry(array($f1,$f2));
     }
     $smarty->assign("mdDiv",$divlist->DrawList());
 
     /* Load Template */
-    $display.=$smarty->fetch(get_template_path('servkolab.tpl', TRUE,dirname(__FILE__)));
+    $display.=$smarty->fetch(get_template_path('serviceKolab.tpl', TRUE,dirname(__FILE__)));
     return ($display);
   }
 
-  function remove_from_parent() 
+  function remove_from_parent()
   {
 
      /* Remove status flag, it is not a memeber of
@@ -192,13 +192,13 @@ class servkolab extends goService {
     }
 
 
-    /* Only walk through following code, if this host 
+    /* Only walk through following code, if this host
        was a member of the kolab hosts, else skip this */
     if(!$this->initially_was_account){
       return;
     }
 
-    /* !!! Don't use "cn" in this function 
+    /* !!! Don't use "cn" in this function
        hostname -> the initial name of the host
        cn       -> is the new name of the host, in case that it was renamed.
      */
@@ -206,10 +206,10 @@ class servkolab extends goService {
     $ldap     = $this->config->get_ldap_link();
     $this->dn = "k=kolab,".$this->config->current['BASE'];
 
-    /* We can't simply remove the whole entry, it is possible that there are 
-       some other hosts assigned to this object. 
-       So, first of all check if we are the last host entry within the host 
-       : Remove k=kolab entry 
+    /* We can't simply remove the whole entry, it is possible that there are
+       some other hosts assigned to this object.
+       So, first of all check if we are the last host entry within the host
+       : Remove k=kolab entry
        if we aren't alone, only remove host name from hosts entry and save */
     /* Are we alone? Remove complete entry... */
 
@@ -218,7 +218,7 @@ class servkolab extends goService {
       return;
     }
 
-    /* Integration check, not translated because they can't pop up at all, only for debug */ 
+    /* Integration check, not translated because they can't pop up at all, only for debug */
     if(count($this->kolabHost) == 0){
       msg_dialog::display(_("Internal error"), _("Kolab account does not exist!"), ERROR_DIALOG);
       return;
@@ -227,7 +227,7 @@ class servkolab extends goService {
       msg_dialog::display(_("Error"), msgPool::required(_("hostname")), ERROR_DIALOG);
     }
 
-    /* Our hostname is in kolabHosts and there is a only one entry 
+    /* Our hostname is in kolabHosts and there is a only one entry
        = we are the last host entry, delete k=kolab entry  */
     if (count($this->kolabHost) == 1){
 
@@ -248,7 +248,7 @@ class servkolab extends goService {
       $attrs= array('kolabHost' => $hosts);
       $ldap->cd($this->dn);
       $this->cleanup();
-      $ldap->modify ($attrs); 
+      $ldap->modify ($attrs);
       if (!$ldap->success()){
         msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_MOD, get_class()));
       }
@@ -261,12 +261,12 @@ class servkolab extends goService {
   }
 
 
-  function save_object()    
+  function save_object()
   {
     if (isset($_POST['kolabtab'])){
       plugin::save_object();
 
-      /* Domain name added/removed 
+      /* Domain name added/removed
        */
       foreach($_POST as $name => $value){
         if(preg_match("/^remove_domain_/",$name)){
@@ -284,7 +284,7 @@ class servkolab extends goService {
         }
       }
 
-      /* Map attrinutes 
+      /* Map attrinutes
        */
       foreach($this->attributes as $attr){
         if(($this->acl_is_writeable(preg_replace("/_/","",$attr))) && (isset($_POST[$attr]))){
@@ -316,7 +316,7 @@ class servkolab extends goService {
   }
 
 
-  function check() 
+  function check()
   {
     /* Call common method to give check the hook */
     $message= plugin::check();
@@ -339,7 +339,7 @@ class servkolab extends goService {
       $message[] = msgPool::toosmall(_("Quota"),1);
     }
 
-    if(empty($this->postfix_mynetworks)) { 
+    if(empty($this->postfix_mynetworks)) {
       $message[] = msgPool::required(_("Privileged networks"));
     }
 
@@ -352,7 +352,7 @@ class servkolab extends goService {
 
 
   /* Save to LDAP */
-  function save() 
+  function save()
   {
     /* Set ldap connection */
     $ldap       = $this->config->get_ldap_link();
@@ -390,7 +390,7 @@ class servkolab extends goService {
     /* Save or modify? */
     $ldap->cat($this->dn, array('dn'));
     if (!$ldap->fetch()){
-      $mode= "add"; 
+      $mode= "add";
     } else {
       $mode= "modify";
     }
@@ -470,7 +470,7 @@ class servkolab extends goService {
             "apachehttp"                     => _("HTTP FreeBusy service") ,
             "postfixenablevirusscan"         => _("Enable virus scan") ,
 
-            "cyrusquotawarn"                 => _("Quota settings"), 
+            "cyrusquotawarn"                 => _("Quota settings"),
 
             "apacheallowunauthenticatedfb"   => _("Allow unauthenticated free busy"),
             "kolabFreeBusyFuture"            => _("kolabFreeBusyFuture") ,
