@@ -19,11 +19,11 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class servapacheVhostEdit extends plugin
+class serviceApacheVhostEdit extends plugin
 {
   /* attribute list for save action */
   var $ignore_account= TRUE;
-  
+
   var $attributes = array("apacheServerName","apacheDocumentRoot","apacheServerAlias",
       "apacheServerAdmin","apacheScriptAlias","apacheSuexecUid","apacheSuexecGid");
 
@@ -34,7 +34,7 @@ class servapacheVhostEdit extends plugin
   var $apacheServerAdmin  = "";
   var $apacheSuexecUid    = "";
   var $apacheSuexecGid    = "";
-    
+
   var $apacheServerAlias                = array();
   var $apacheScriptAlias                = array();
 
@@ -42,7 +42,7 @@ class servapacheVhostEdit extends plugin
   var $InitialApacheServerName          = "";
 
   var $Records                  = array();
-  
+
   var $dialog                   = false;
 
   var $isNew                    = true;
@@ -50,7 +50,7 @@ class servapacheVhostEdit extends plugin
   var $VhostObject               = array();
 
 
-  function servapacheVhostEdit ($config, $dn= NULL,$attrs = array())
+  function serviceApacheVhostEdit ($config, $dn= NULL,$attrs = array())
   {
     plugin::plugin ($config, $dn);
     if(!count($attrs)){
@@ -124,7 +124,7 @@ class servapacheVhostEdit extends plugin
     }
     return($ret);
   }
-  
+
   function getpos($atr,$attrs)
   {
     $i = 0;
@@ -148,12 +148,12 @@ class servapacheVhostEdit extends plugin
     $smarty= get_smarty();
     $display= "";
 
-    /* Check posts 
+    /* Check posts
      */
     $once =true;
     foreach($_POST as $name => $value){
 
-      /* Move Server Aliases one position up 
+      /* Move Server Aliases one position up
        */
       if((preg_match("/^SAup_/",$name)) && ($once)){
         $once = false;
@@ -163,19 +163,19 @@ class servapacheVhostEdit extends plugin
         $this->apacheServerAlias = $this->ArrayUp(($id+1),$this->apacheServerAlias);
       }
 
-      /* Move Server Aliases one position down 
+      /* Move Server Aliases one position down
        */
       if((preg_match("/^SAdown_/",$name)) && ($once)){
         $once = false;
-        
+
         $id = preg_replace("/^SAdown_/","",$name);
         $id = preg_replace("/_.*$/","",$id);
         $id = base64_decode($id);
-  
+
         $this->apacheServerAlias = $this->ArrayDown(($id+1),$this->apacheServerAlias);
       }
 
-      /* Delete a "Server Alias"  
+      /* Delete a "Server Alias"
        */
       if((preg_match("/^SAdel_/",$name)) && ($once)){
         $once = false;
@@ -187,10 +187,10 @@ class servapacheVhostEdit extends plugin
         foreach($this->apacheServerAlias as $entry){
           $tmp[] = $entry;
         }
-        $this->apacheServerAlias = $tmp; 
+        $this->apacheServerAlias = $tmp;
       }
 
-      /* Move "Script Alias" one position up 
+      /* Move "Script Alias" one position up
        */
       if((preg_match("/^SCup_/",$name)) && ($once)){
         $once = false;
@@ -222,20 +222,20 @@ class servapacheVhostEdit extends plugin
         foreach($this->apacheScriptAlias as $entry){
           $tmp[] = $entry;
         }
-        $this->apacheScriptAlias = $tmp; 
+        $this->apacheScriptAlias = $tmp;
       }
     }
 
-    /* Add a new "Server Alias" 
+    /* Add a new "Server Alias"
      */
     if((isset($_POST['AddSARecord'])) && (!empty($_POST['StrSAAlias'])) && (!empty($_POST['StrSADir']))){
-      $this->apacheServerAlias[] = trim($_POST['StrSAAlias']." ".$_POST['StrSADir']);      
+      $this->apacheServerAlias[] = trim($_POST['StrSAAlias']." ".$_POST['StrSADir']);
     }
-    
-    /* Add a new "Script Alias" 
+
+    /* Add a new "Script Alias"
      */
     if((isset($_POST['AddSCRecord'])) && (!empty($_POST['StrSCAlias'])) && (!empty($_POST['StrSCDir']))){
-      $this->apacheScriptAlias[] = trim($_POST['StrSCAlias']." ".$_POST['StrSCDir']);      
+      $this->apacheScriptAlias[] = trim($_POST['StrSCAlias']." ".$_POST['StrSCDir']);
     }
 
     /* Fill in values */
@@ -248,14 +248,14 @@ class servapacheVhostEdit extends plugin
     $smarty->assign("NotNew", false);
 
 
-    /* Create Server Aliases divlist 
+    /* Create Server Aliases divlist
      */
     $div = new divSelectBox("apacheServerAlias");
     $div->setHeight(120);
     $recs = $this->apacheServerAlias;
 
-    $oneup    = "<input name='SAup_%s'    type='image' src='images/lists/sort-up.png'    title='"._("Up")."'      class='center'>&nbsp;"; 
-    $onedown  = "<input name='SAdown_%s'  type='image' src='images/lists/sort-down.png'  title='"._("Down")."'    class='center'>&nbsp;"; 
+    $oneup    = "<input name='SAup_%s'    type='image' src='images/lists/sort-up.png'    title='"._("Up")."'      class='center'>&nbsp;";
+    $onedown  = "<input name='SAdown_%s'  type='image' src='images/lists/sort-down.png'  title='"._("Down")."'    class='center'>&nbsp;";
     $onedel   = "<input name='SAdel_%s'   type='image' src='images/lists/trash.png'      title='"._("Delete")."'  class='center'>";
     foreach($recs as $key => $rec){
       $div ->AddEntry(array(
@@ -267,16 +267,16 @@ class servapacheVhostEdit extends plugin
     $smarty->assign("apacheServerAlias",  $div->DrawList());
 
 
-    /* Create Server Aliases divlist 
+    /* Create Server Aliases divlist
      */
     $div = new DivSelectBox("apacheScriptAlias");
     $div->setHeight(120);
     $recs = $this->apacheScriptAlias;
 
-    $oneup    = "<input name='SCup_%s'    type='image' src='images/lists/sort-up.png'    title='"._("Up")."'      class='center'>&nbsp;"; 
-    $onedown  = "<input name='SCdown_%s'  type='image' src='images/lists/sort-down.png'  title='"._("Down")."'    class='center'>&nbsp;"; 
-    $onedel   = "<input name='SCdel_%s'   type='image' src='images/lists/trash.png'      title='"._("Delete")."'  class='center'>"; 
-    
+    $oneup    = "<input name='SCup_%s'    type='image' src='images/lists/sort-up.png'    title='"._("Up")."'      class='center'>&nbsp;";
+    $onedown  = "<input name='SCdown_%s'  type='image' src='images/lists/sort-down.png'  title='"._("Down")."'    class='center'>&nbsp;";
+    $onedel   = "<input name='SCdel_%s'   type='image' src='images/lists/trash.png'      title='"._("Delete")."'  class='center'>";
+
     foreach($recs as $key => $rec){
       $div ->AddEntry(array(
             array("string"=>$rec),
@@ -284,10 +284,10 @@ class servapacheVhostEdit extends plugin
                   "attach"=>"style='width:70px;border-right:0px;'")
             ));
     }
-    $smarty->assign("apacheScriptAlias",  $div->DrawList());    
-    
+    $smarty->assign("apacheScriptAlias",  $div->DrawList());
+
     /* Display template */
-    $display.= $smarty->fetch(get_template_path('servApacheVhostEdit.tpl', TRUE, dirname(__FILE__)));
+    $display.= $smarty->fetch(get_template_path('serviceApacheVhostEdit.tpl', TRUE, dirname(__FILE__)));
     return($display);
   }
 
@@ -309,7 +309,7 @@ class servapacheVhostEdit extends plugin
   {
     /* Call common method to give check the hook */
     $message= plugin::check();
-        
+
     /* Check if apacheServerName is already in use */
     $usedVhosts = $this->getUsedServerNames();
     if(($this->isNew == true)||($this->apacheServerName  != $this->InitialApacheServerName)){
@@ -318,27 +318,27 @@ class servapacheVhostEdit extends plugin
       }
     }
 
-    /* Check given virtual server name 
+    /* Check given virtual server name
      */
     if(!tests::is_domain($this->apacheServerName) || empty($this->apacheServerName)){
       $message[] = msgPool::invalid(_("Virtual host name"),$this->apacheServerName,"",
           _("Only lowercase strings are allowed as Virtual Host Name.")."&nbsp;"._("e.g. example.com"));
     }
 
-    /* check if there is a valid document root given 
+    /* check if there is a valid document root given
      */
     if(!tests::is_path($this->apacheDocumentRoot) || empty($this->apacheDocumentRoot)){
       $message[] = msgPool::invalid(_("Document root"),$this->apacheDocumentRoot);
     }
-   
-    /* Check given mail address 
-     */ 
+
+    /* Check given mail address
+     */
     if(!tests::is_email($this->apacheServerAdmin) || empty($this->apacheServerAdmin)){
       $message[] = msgPool::invalid(_("Admin mail address"),$this->apacheServerAdmin);
     }
 
-    /* Check server aliases 
-     */    
+    /* Check server aliases
+     */
     foreach($this->apacheServerAlias as $key => $line){
       $apacheServerAlias_ar=explode(" ",$line);
       $url=$apacheServerAlias_ar[1];
@@ -346,9 +346,9 @@ class servapacheVhostEdit extends plugin
         $message[] = msgPool::invalid(_("Server alias"));
       }
     }
-   
-    /* Check script aliases 
-     */    
+
+    /* Check script aliases
+     */
     foreach($this->apacheScriptAlias as $key => $line){
       $apacheScriptAlias_ar=explode(" ",$line);
       $url=$apacheScriptAlias_ar[1];
@@ -383,21 +383,21 @@ class servapacheVhostEdit extends plugin
       $ret[$name] = $this->$name;
     }
 
-    /* Create SA records 
+    /* Create SA records
      */
     foreach($this->apacheServerAlias as $key => $rec){
       $rec['value']= $key." ".$rec['value'];
       $this->Records [] = $rec;
     }
 
-    /* Create SC records 
+    /* Create SC records
      */
     foreach($this->apacheScriptAlias as $key => $rec){
       $rec['value']= $key." ".$rec['value'];
       $this->Records [] = $rec;
     }
 
-    $ret['RECORDS'] = $this->Records; 
+    $ret['RECORDS'] = $this->Records;
     $ret['InitialApacheServerName']   =  $this->InitialApacheServerName;
     return($ret);
   }
