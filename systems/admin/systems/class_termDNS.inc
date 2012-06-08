@@ -103,7 +103,7 @@ class termDNS extends plugin
 
     /* Hide all dhcp specific code, if dhcp plugin is not present in config */
     $this->dhcpEnabled = FALSE;
-    if($this->config->search("servdhcp","class",array("tabs"))){
+    if($this->config->search("serviceDHCP","class",array("tabs"))){
       $this->dhcpEnabled = TRUE;
     }
 
@@ -132,7 +132,7 @@ class termDNS extends plugin
      */
     $DNSenabled = false;
     foreach($this->config->data['TABS']['SERVERSERVICE'] as $tab){
-      if(preg_match("/^servdns$/",$tab['CLASS'])){
+      if(preg_match("/^serviceDNS$/",$tab['CLASS'])){
         $this->DNSenabled = true;
       }
     }
@@ -811,7 +811,7 @@ class termDNS extends plugin
           msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dhcpHostEntry['dn'], LDAP_DEL, get_class()));
         }
 
-        $tmp = new servdhcp($this->config,$this->dhcpParentNode);
+        $tmp = new serviceDHCP($this->config,$this->dhcpParentNode);
         $tmp->handle_post_events("remove");
       }
 
@@ -823,7 +823,7 @@ class termDNS extends plugin
         $ldap->cd("cn=".$this->cn.",".$this->dhcpParentNode);
         $res = $ldap->add($attrs);
 
-        $tmp = new servdhcp($this->config,$this->dhcpParentNode);
+        $tmp = new serviceDHCP($this->config,$this->dhcpParentNode);
         $tmp->handle_post_events("add");
 
         if (!$ldap->success()){
@@ -847,7 +847,7 @@ class termDNS extends plugin
             msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), "cn=".$this->cn.",".$this->dhcpParentNode, LDAP_ADD, get_class()));
           }
 
-          $tmp = new servdhcp($this->config,$this->dhcpParentNode);
+          $tmp = new serviceDHCP($this->config,$this->dhcpParentNode);
           $tmp->handle_post_events("modify");
 
           if($res){
@@ -867,7 +867,7 @@ class termDNS extends plugin
           $ldap->cd($this->dhcpHostEntry['dn']);
           $ldap->modify($attrs);
 
-          $tmp = new servdhcp($this->config,$this->dhcpParentNode);
+          $tmp = new serviceDHCP($this->config,$this->dhcpParentNode);
           $tmp->handle_post_events("modify");
 
           if (!$ldap->success()){
@@ -950,7 +950,7 @@ class termDNS extends plugin
         msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $dn, 0, get_class()));
       }
 
-      $tmp2 = new servdns($this->config,$this->dn);
+      $tmp2 = new serviceDNS($this->config,$this->dn);
       $tmp2->handle_post_events("modify");
 
       $this->dnsEntry =  $backup_dnsEntry;
@@ -1024,10 +1024,10 @@ class termDNS extends plugin
 
     /* Hide all dns/dhcp configurations if not available
      */
-    if(class_available("servdns")){
+    if(class_available("serviceDNS")){
       $tmp['plProvidedAcls']["dnsSetup"]    = _("DNS configuration");
     }
-    if(class_available("servdhcp")){
+    if(class_available("serviceDHCP")){
       $tmp['plProvidedAcls']["dhcpSetup"]   = _("DHCP configuration");
     }
     return($tmp);

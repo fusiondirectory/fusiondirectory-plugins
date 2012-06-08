@@ -41,7 +41,7 @@ class workstartup extends plugin
   var $gotoBootKernels      = array();
 
   /* attribute list for save action */
-  var $attributes           = array("gotoLdapServer", "gotoBootKernel", "gotoKernelParameters", 
+  var $attributes           = array("gotoLdapServer", "gotoBootKernel", "gotoKernelParameters",
                                     "FAIclass", "FAIstatus", "gotoShare","FAIdebianMirror", "FAIrelease");
   var $objectclasses        = array("GOhard", "FAIobject");
 
@@ -54,8 +54,8 @@ class workstartup extends plugin
   /* Helper */
   var $orig_dn            = "";
   var $ignore_account     = TRUE;
- 
-  /* FAI profile selection */ 
+
+  /* FAI profile selection */
   var $FAIclass;  // The currently selected profile
   var $FAIrelease           = "";
   var $FAIdebianMirror      = "auto";
@@ -67,7 +67,7 @@ class workstartup extends plugin
   var $FAIstatus          = "";
 
   var $view_logged        = FALSE;
-  
+
   /* FAI profile selection */
   var $InheritedFAIprofile;
   var $InheritedFAIrelease     = "";
@@ -94,7 +94,7 @@ class workstartup extends plugin
     /* Check for si daemon */
     $o_queue = new supportDaemon();
     $this->si_active = ($o_queue->get_argonaut_host() != "");
-    
+
     /* Check object group membership */
     if(!isset($this->parent->by_object['ogroup'])){
       $ldap = $this->config->get_ldap_link();
@@ -107,7 +107,7 @@ class workstartup extends plugin
       }
     }
 
-    /* Creating a list of valid Mirrors 
+    /* Creating a list of valid Mirrors
      * none will not be saved to ldap.
      */
     $ldap   = $this->config->get_ldap_link();
@@ -117,28 +117,28 @@ class workstartup extends plugin
       if($ui->get_category_permissions($data['dn'],"server",TRUE)){
         for($i = 0; $i < $data['goLdapBase']['count']; $i ++){
           $name = $data["cn"][0].":".$data["goLdapBase"][$i];
-          $this->gotoLdapServerList[]= $name; 
+          $this->gotoLdapServerList[]= $name;
         }
       }
     }
 
-    /* Get list of assigned ldap servers 
-     */ 
+    /* Get list of assigned ldap servers
+     */
     if(isset($this->attrs['gotoLdapServer'])){
       unset($this->attrs['gotoLdapServer']['count']);
       sort($this->attrs['gotoLdapServer']);
       foreach($this->attrs['gotoLdapServer'] as $value){
         $this->gotoLdapServers[] = preg_replace("/^[0-9]*:/","",$value);
       }
-    } 
+    }
     natcasesort($this->gotoLdapServerList);
 
-    if(!count($this->gotoLdapServers) && $this->member_of_ogroup){ 
+    if(!count($this->gotoLdapServers) && $this->member_of_ogroup){
       $this->gotoLdap_inherit = TRUE;
     }
 
     /* FAI Initialization
-       Skip this if FAI is not activated 
+       Skip this if FAI is not activated
      */
     if($this->fai_activated) {
 
@@ -147,10 +147,10 @@ class workstartup extends plugin
        * There is also the release type given, after first
        *  occurrence of ':'.
        */
-       
+
       if(isset($this->attrs['FAIclass'][0])){
         $tmp = explode(" ",$this->attrs['FAIclass'][0]);
-        $tmp2 =array();  
+        $tmp2 =array();
 
         foreach($tmp as $profile){
           if( ":" == $profile[0] ) {
@@ -191,13 +191,13 @@ class workstartup extends plugin
     $this->gotoShareSelections= $config->getShareList(true);
     $this->gotoAvailableShares= $config->getShareList(false);
     $tmp2 = array();
-  
+
 
     $this->orig_dn= $this->dn;
 
     /* Handle inheritance value "default" */
     if ($this->member_of_ogroup){
-      $this->gotoBootKernels= array("default-inherited" => '['._("inherited").']'); 
+      $this->gotoBootKernels= array("default-inherited" => '['._("inherited").']');
     }
 
     /* If we are member in an object group,
@@ -247,7 +247,7 @@ class workstartup extends plugin
 
     if($this->fai_activated && !$this->si_fai_action_failed && $this->si_active){
 
-      /* Check if the current mirror is available 
+      /* Check if the current mirror is available
        */
       if(!isset($this->cache['SERVERS'][$this->FAIdebianMirror])){
         if(isset($this->FAIclass)){
@@ -258,11 +258,11 @@ class workstartup extends plugin
         $this->cache['PROFILES'] = array();
         $this->update_fai_cache();
       }
-  
-      /* Check if the current mirror is available 
+
+      /* Check if the current mirror is available
        */
       if(!isset($this->cache['SERVERS'][$this->FAIdebianMirror][$this->FAIrelease])){
-        $new_release = key($this->cache['SERVERS'][$this->FAIdebianMirror]); 
+        $new_release = key($this->cache['SERVERS'][$this->FAIdebianMirror]);
         if(isset($this->FAIclass)){
           msg_dialog::display(_("Error"), sprintf(_("FAI release '%s' is not available on mirror '%s' - setting to release '%s'!"), $this->FAIrelease, $this->FAIdebianMirror,$new_release), ERROR_DIALOG);
         }
@@ -273,15 +273,15 @@ class workstartup extends plugin
     }
   }
 
-  
+
   function check()
   {
     $messages = array();
-    
+
     /* Call common method to give check the hook */
     $messages= plugin::check();
 
-    /* If there are packages selected, but no mirror show error */   
+    /* If there are packages selected, but no mirror show error */
     if(($this->FAIdebianMirror == "none")&&(isset($this->FAIclass))){
       $messages[]=_("Please select a 'FAI server' or remove the 'FAI profile'.");
     }
@@ -326,7 +326,7 @@ class workstartup extends plugin
     $tmp = $this->plInfo();
     foreach($tmp['plProvidedAcls'] as $name => $translation){
       $smarty->assign($name."ACL",$this->getacl($name));
-    } 
+    }
 
     $smarty->assign("member_of_ogroup",$this->member_of_ogroup);
 
@@ -345,7 +345,7 @@ class workstartup extends plugin
       if((!isset($_POST['gotoShareMountPoint']))||(empty($_POST['gotoShareMountPoint']))||(preg_match("/[\|]/i",$_POST['gotoShareMountPoint']))){
         msg_dialog::display(_("Error"), msgPool::required(_("Mount point")), ERROR_DIALOG);
       }else{
-    
+
         if(isset($this->gotoAvailableShares[$_POST['gotoShareSelection']])){
           $a_share = $this->gotoAvailableShares[$_POST['gotoShareSelection']];
           $s_mount = $_POST['gotoShareMountPoint'];
@@ -374,9 +374,9 @@ class workstartup extends plugin
     $SelectBoxLdapServer->SetHeight(130);
 
     /* Add new ldap server to the list */
-    if($this->acl_is_writeable("gotoLdapServer") && 
-        !$this->gotoLdap_inherit && 
-        isset($_POST['add_ldap_server']) && 
+    if($this->acl_is_writeable("gotoLdapServer") &&
+        !$this->gotoLdap_inherit &&
+        isset($_POST['add_ldap_server']) &&
         isset($_POST['ldap_server_to_add'])){
       if(isset($this->gotoLdapServerList[$_POST['ldap_server_to_add']])){
         $to_add = $this->gotoLdapServerList[$_POST['ldap_server_to_add']];
@@ -385,13 +385,13 @@ class workstartup extends plugin
         }
       }
     }
-    
+
     /* Move ldap servers up and down */
     if(!$this->gotoLdap_inherit && $this->acl_is_writeable("gotoLdapServer")){
       foreach($_POST as $name => $value){
         if(preg_match("/sort_ldap_up_/",$name)){
           $id = preg_replace("/^sort_ldap_up_([0-9]*)_(x|y)$/","\\1",$name);
-          $from =  $id;  
+          $from =  $id;
           $to   =  $id -1;
           $tmp = $this->array_switch_item($this->gotoLdapServers,$from,$to);
           if($tmp){
@@ -401,7 +401,7 @@ class workstartup extends plugin
         }
         if(preg_match("/sort_ldap_down_/",$name)){
           $id = preg_replace("/^sort_ldap_down_([0-9]*)_(x|y)$/","\\1",$name);
-          $from =  $id;  
+          $from =  $id;
           $to   =  $id +1;
           $tmp = $this->array_switch_item($this->gotoLdapServers,$from,$to);
           if($tmp){
@@ -415,9 +415,9 @@ class workstartup extends plugin
           $this->gotoLdapServers = array_remove_entries(array($value),$this->gotoLdapServers);
           break;
         }
-      } 
+      }
     }
-  
+
     /* Add Entries */
     if($this->acl_is_readable("gotoLdapServer")){
 
@@ -439,20 +439,20 @@ class workstartup extends plugin
 
       $SelectBoxLdapServer->AddEntry(
           array(array("string" => $server),
-            array("string" => 
+            array("string" =>
               "<input class='center' type='image' src='images/lists/sort-up.png' name='sort_ldap_up_".$key."'>&nbsp;".
               "<input class='center' type='image' src='images/lists/sort-down.png' name='sort_ldap_down_".$key."'>&nbsp;".
               "<input class='center' type='image' src='images/lists/trash.png' name='gotoLdapRemove_".$key."'>",
               "attach" => "style='text-align:right;width:40px;border-right:0px;'")));
-      }    
-    }    
+      }
+    }
 
     if($this->gotoLdap_inherit){
       $smarty->assign("gotoLdapServerACL_inherit", preg_replace("/w/","",$this->getacl("gotoLdapServer")));;
     }else{
       $smarty->assign("gotoLdapServerACL_inherit", $this->getacl("gotoLdapServer"));
     }
-    
+
     $list = array();
     foreach($this->gotoLdapServerList as $key => $entry){
       if(!in_array($entry,$this->gotoLdapServers)){
@@ -492,7 +492,7 @@ class workstartup extends plugin
 
     $div = new divSelectBox("WSFAIscriptClasses");
     $div -> SetHeight("110");
-  
+
     if(!$this->si_fai_action_failed && $this->si_active && $this->fai_activated){
       $smarty->assign("FAIservers"  , $this->cache['SERVERS']);
       $smarty->assign("FAIdebianMirror",$this->FAIdebianMirror);
@@ -513,7 +513,7 @@ class workstartup extends plugin
       $smarty->assign("gotoBootKernels",$this->cache['KERNELS'][$release]);
       $smarty->assign("InheritedFAIrelease",$this->InheritedFAIrelease);
 
-      $str_empty  = " &nbsp;<img src='images/empty.png' alt=\"\" width='7'>"; 
+      $str_empty  = " &nbsp;<img src='images/empty.png' alt=\"\" width='7'>";
       if($this->acl_is_writeable("FAIclass")){
         $str_up     = " &nbsp;<input type='image' src='images/lists/sort-up.png'    name='sort_up_%s'    value='%s'>";
         $str_down   = " &nbsp;<input type='image' src='images/lists/sort-down.png'  name='sort_down_%s'  value='%s'>";
@@ -522,8 +522,8 @@ class workstartup extends plugin
         $str_up=$str_down=$str_remove=$str_empty;
       }
 
-    }// END FAI output generation 
-    $smarty->assign("FAIScriptlist",$div->DrawList()); 
+    }// END FAI output generation
+    $smarty->assign("FAIScriptlist",$div->DrawList());
 
     /* Radio button group */
     if (preg_match("/G/", $this->bootmode)) {
@@ -658,7 +658,7 @@ class workstartup extends plugin
     /* Add missing arrays */
     foreach (array("gotoFilesystem", "gotoAutoFs", "gotoModules") as $val){
       if (isset ($this->$val) && count ($this->$val) != 0){
-    
+
         $this->attrs["$val"]= array_unique($this->$val);
       }
       if(!isset($this->attrs["$val"])) $this->attrs["$val"]=array();
@@ -682,7 +682,7 @@ class workstartup extends plugin
     if($this->FAIdebianMirror == "none"){
       $this->FAIdebianMirror = "";
     }
-   
+
     /* Get FAIstate from object, the generic tab could have changed it during execute */
     $ldap= $this->config->get_ldap_link();
     $ldap->cd($this->dn);
@@ -693,7 +693,7 @@ class workstartup extends plugin
       $ldap->cat($this->dn,array("FAIstate"));
       $checkFAIstate = $ldap->fetch();
 
-      /* Remove FAI objects if no FAI profile is selected */ 
+      /* Remove FAI objects if no FAI profile is selected */
       if((!isset($this->FAIclass)) && (!isset($checkFAIstate['FAIstate']))) {
         $this->attrs['FAIclass'] = array();
         $this->attrs['FAIdebianMirror'] = array();
@@ -715,7 +715,7 @@ class workstartup extends plugin
     }
     $this->attrs['gotoShare']=$tmp;
     $this->cleanup();
-    $ldap->modify ($this->attrs); 
+    $ldap->modify ($this->attrs);
     new log("modify","workstation/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
 
     if (!$ldap->success()){
@@ -766,7 +766,7 @@ class workstartup extends plugin
 
   function PrepareForCopyPaste($source)
   {
-    plugin::PrepareForCopyPaste($source);    
+    plugin::PrepareForCopyPaste($source);
     $source_o = new workstartup ($this->config, $source['dn']);
     foreach(array("FAIclass","gotoModules", "gotoAutoFs", "gotoFilesystem",
           "gotoKernelParameters","gotoShares","gotoLdapServers","gotoLdapServerList",
@@ -775,7 +775,7 @@ class workstartup extends plugin
     }
   }
 
-  
+
   function array_switch_item($ar,$from,$to)
   {
     if(!is_array($ar)){
@@ -789,27 +789,27 @@ class workstartup extends plugin
     }
 
     $tmp = $ar[$from];
-    $ar[$from] = $ar[$to];    
-    $ar[$to] = $tmp;    
+    $ar[$from] = $ar[$to];
+    $ar[$to] = $tmp;
     return($ar);
   }
 
 
-  /* Updates release dns 
-   *  and reads all classes for the current release, 
+  /* Updates release dns
+   *  and reads all classes for the current release,
    *  if not already done ($this->cache).
    */
   function update_fai_cache($first_call = FALSE)
   {
     $force = FALSE;
-    if(!$this->si_active) return; 
-    $start = microtime(TRUE);  
+    if(!$this->si_active) return;
+    $start = microtime(TRUE);
 
     if($this->si_fai_action_failed && !isset($_POST['fai_si_retry'])) return;
 
     $this->si_fai_action_failed = FALSE;
 
-    /* Get the list of available servers and their releases. 
+    /* Get the list of available servers and their releases.
      */
     if($force || !isset($this->cache['SERVERS'])){
 
@@ -835,7 +835,7 @@ class workstartup extends plugin
       }
     }
 
-    /* Ensure that our selection is valid, else we get several PHP warnings 
+    /* Ensure that our selection is valid, else we get several PHP warnings
         if there is no FAI configuration at all.
      */
     if(!isset($this->cache['SERVERS'][$this->FAIdebianMirror])){
@@ -862,7 +862,7 @@ class workstartup extends plugin
       }
     }
 
-    /* Get classes for release from cache. 
+    /* Get classes for release from cache.
      * Or build cache
      */
     if($this->FAIdebianMirror == "inherited"){
@@ -885,7 +885,7 @@ class workstartup extends plugin
         $this->cache=array();
         return;
       }else{
-        $this->cache['PROFILES'][$release] = $tmp; 
+        $this->cache['PROFILES'][$release] = $tmp;
       }
 
       /* Add object caught from external hook
@@ -908,7 +908,7 @@ class workstartup extends plugin
 
               if($release_c == $release){
                 $this->cache['SERVERS'][$url][$release_c]=$release_c;
-                $this->cache['SERVERS']['auto'][$release_c]=$release_c; 
+                $this->cache['SERVERS']['auto'][$release_c]=$release_c;
                 $this->cache['PROFILES'] = array(); // FIXME : might not do what we want
               }
             }
@@ -924,7 +924,7 @@ class workstartup extends plugin
       }
     }
 
-    /* Get list of available kernel for this release 
+    /* Get list of available kernel for this release
      */
     if(!isset($this->cache['KERNELS'])) $this->cache['KERNELS'] = array();
 
@@ -965,7 +965,7 @@ class workstartup extends plugin
   function GetHookElements()
   {
     $ret = array();
-    $cmd= $this->config->search("servrepository", "repositoryBranchHook",array('tabs'));
+    $cmd= $this->config->search("serviceRepository", "repositoryBranchHook",array('tabs'));
     if(!empty($cmd)){
       $res = shell_exec($cmd);
       $res2 = trim($res);
@@ -985,7 +985,7 @@ class workstartup extends plugin
   }
 
 
-  /* This function creates the release name out of a dn 
+  /* This function creates the release name out of a dn
    *  e.g. "ou=1.0rc2,ou=siga,ou=fai,..." => "siga/1.0rc2"
    */
   function dn_to_release_name($dn)
@@ -996,19 +996,19 @@ class workstartup extends plugin
     foreach($parts as $part){
       $str .= preg_replace("/^ou=/","",$part)."/";
     }
-    return(preg_replace("/\/$/","",$str)); 
+    return(preg_replace("/\/$/","",$str));
   }
-  
-  /* Return plugin informations for acl handling */ 
+
+  /* Return plugin informations for acl handling */
   static function plInfo()
   {
-    return (array( 
+    return (array(
           "plShortName"   => _("Startup"),
           "plDescription" => _("System startup"),
           "plSelfModify"  => FALSE,
           "plDepends"     => array(),
           "plPriority"    => 9,
-          "plSection"     => array("administration"),           
+          "plSection"     => array("administration"),
           "plCategory"    => array("workstation","server","ogroups"),
 
           "plProvidedAcls"=> array(

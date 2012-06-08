@@ -71,8 +71,8 @@ class argonautClient extends plugin
       "goShareServer"       => "samba",
       "gospamserver"        => "spamassassin",
       "govirusserver"       => "clamav-daemon",
-      "servdhcp"            => "isc-dhcp-server",
-      "servdns"             => "bind9",
+      "serviceDHCP"            => "isc-dhcp-server",
+      "serviceDNS"             => "bind9",
       "argonautServer"      => "argonaut-server"
     );
     $argonautService_blacklist = array(
