@@ -20,7 +20,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class servRepositorySetup  extends plugin
+class serviceRepositorySetup  extends plugin
 {
   /* attribute list for save action */
   var $ignore_account   = TRUE;
@@ -39,7 +39,7 @@ class servRepositorySetup  extends plugin
   var $cn               = "";
   var $parent           = "";
 
-  function servRepositorySetup (&$config, $dn = NULL, $data = FALSE)
+  function serviceRepositorySetup (&$config, $dn = NULL, $data = FALSE)
   {
     plugin::plugin ($config, $dn);
     if ($data != FALSE) {
@@ -115,7 +115,7 @@ class servRepositorySetup  extends plugin
       }
     }
 
-    $divlist = new divSelectBox("servRepositorySetup");
+    $divlist = new divSelectBox("serviceRepositorySetup");
     $divlist->setHeight("220");
     if (preg_match("/w/", $this->parent->getacl("Section"))) {
       $dellink = "<input type='image' src='images/lists/trash.png' title='delete' alt='delete' name='delete_%s' value='%s'>";
@@ -159,13 +159,13 @@ class servRepositorySetup  extends plugin
     $smarty->assign("ParentServers",    $tmp);
     $smarty->assign("ParentServerKeys", array_flip($tmp));
 
-    return $smarty->fetch(get_template_path('servRepositorySetup.tpl', TRUE, dirname(__FILE__)));
+    return $smarty->fetch(get_template_path('serviceRepositorySetup.tpl', TRUE, dirname(__FILE__)));
   }
 
   /* Save data to object */
   function save_object()
   {
-    if (isset($_POST['servRepositorySetup_Posted'])) {
+    if (isset($_POST['serviceRepositorySetup_Posted'])) {
       if (isset($_POST['Install'])) {
         $this->Install = get_post('Install');
         if ($this->Install=="custom") {
@@ -264,7 +264,7 @@ class servRepositorySetup  extends plugin
   function GetHookElements()
   {
     $ret = array();
-    $cmd = $this->config->search("servrepository", "repositoryBranchHook", array('tabs'));
+    $cmd = $this->config->search("serviceRepository", "repositoryBranchHook", array('tabs'));
     if (!empty($cmd)) {
       $res  = shell_exec($cmd);
       $res2 = trim($res);

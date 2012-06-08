@@ -20,7 +20,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class servrepository extends goService
+class serviceRepository extends goService
 {
   /* attribute list for save action */
   //  var $ignore_account         = TRUE;
@@ -39,7 +39,7 @@ class servrepository extends goService
 
   var $repositoryMangement = NULL;
 
-  function servrepository (&$config, $dn= NULL, $parent= NULL)
+  function serviceRepository (&$config, $dn= NULL, $parent= NULL)
   {
     plugin::plugin ($config, $dn,$parent);
 
@@ -122,7 +122,7 @@ class servrepository extends goService
   function newEntry()
   {
     if(!$this->dialog){
-      $this->dialog = new servRepositorySetup($this->config,$this->dn);
+      $this->dialog = new serviceRepositorySetup($this->config,$this->dn);
       $this->dialog->parent = $this;
     }
   }
@@ -214,7 +214,7 @@ class servrepository extends goService
 
         /* to be able to detect if this was renamed */
         $obj['initialy_was'] = $obj['Release'];
-        $this->dialog = new servRepositorySetup($this->config,$this->dn,$obj);
+        $this->dialog = new serviceRepositorySetup($this->config,$this->dn,$obj);
         $this->dialog->parent = $this;
       }
     }
@@ -235,7 +235,7 @@ class servrepository extends goService
 
     if(!$this->fai_activated){
       $str = "<h2>"._("You can't use this plugin until FAI is activated.")."</h2>";
-      $display = $smarty->fetch(get_template_path('servRepository.tpl', TRUE,dirname(__FILE__)));
+      $display = $smarty->fetch(get_template_path('serviceRepository.tpl', TRUE,dirname(__FILE__)));
       return($str.$display);
     }
 
@@ -294,7 +294,7 @@ class servrepository extends goService
 
     session::set('RepositoryList', $this->repositories);
     $str = $this->repositoryMangement->execute();
-    $display.= $smarty->fetch(get_template_path('servRepository.tpl', TRUE,dirname(__FILE__)));
+    $display.= $smarty->fetch(get_template_path('serviceRepository.tpl', TRUE,dirname(__FILE__)));
     return($str.$display);
   }
 
