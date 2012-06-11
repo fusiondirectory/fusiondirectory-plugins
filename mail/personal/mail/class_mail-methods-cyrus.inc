@@ -25,7 +25,7 @@ class mailMethodCyrus extends mailMethod{
   protected $ServerList = array();
   protected $imap_handle = NULL;
   protected $quota_loaded = FALSE;
-   
+
   /* Allow modification of account_ids for existing mail accounts */
   protected $modifyableMail   = FALSE;
 
@@ -33,7 +33,7 @@ class mailMethodCyrus extends mailMethod{
   protected $modifyableServer = FALSE;
 
   /* Enforces same value for 'mail' as used for 'cn' */
-  protected $mailEqualsCN   = FALSE; 
+  protected $mailEqualsCN   = FALSE;
 
   protected $enableDomainSelection= FALSE;
   protected $enableQuota          = TRUE;
@@ -45,11 +45,11 @@ class mailMethodCyrus extends mailMethod{
   {
     mailMethod::init();
     if(isset($this->config->data['SERVERS']['IMAP'])){
-      $this->ServerList = $this->config->data['SERVERS']['IMAP']; 
+      $this->ServerList = $this->config->data['SERVERS']['IMAP'];
     }
   }
 
-  
+
   public function connect()
   {
     mailMethod::connect();
@@ -62,7 +62,7 @@ class mailMethodCyrus extends mailMethod{
     }elseif (!isset($this->ServerList[$this->MailServer])){
       $this->error = _("Mail server for this account is invalid!");
       @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,
-          "<b>IMAP: The selected mail server '".$this->MailServer."' is invalid.</b>",""); 
+          "<b>IMAP: The selected mail server '".$this->MailServer."' is invalid.</b>","");
       return(FALSE);
     } else {
       $cfg= $this->ServerList[$this->MailServer];
@@ -113,9 +113,9 @@ class mailMethodCyrus extends mailMethod{
     $list = @imap_listmailbox($this->imap_handle, $cfg["connect"], $this->account_id);
     $res = is_array($list) && count($list);
     if($res){
-      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,"","<b>IMAP: Account exists in imap server.</b>"); 
+      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,"","<b>IMAP: Account exists in imap server.</b>");
     }else{
-      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,"","<b>IMAP: Account seems NOT to exists in imap server.</b>"); 
+      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,"","<b>IMAP: Account seems NOT to exists in imap server.</b>");
     }
     return($res);
   }
@@ -186,10 +186,10 @@ class mailMethodCyrus extends mailMethod{
       }else{
         $quota = "(".$this->quotaUsage." / ".$this->quotaValue.")";
       }
-      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $quota , 
+      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $quota ,
           "<b>IMAP: Successfully received account quota</b>");
     }else{
-      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, imap_last_error() , 
+      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, imap_last_error() ,
           "<b>IMAP: Failed to receive account quota</b>");
     }
   }
@@ -216,7 +216,7 @@ class mailMethodCyrus extends mailMethod{
 
   public function setQuota($number)
   {
-    mailMethod::setQuota($number);    
+    mailMethod::setQuota($number);
 
     if(!$this->quotaEnabled()) return(TRUE);
     if(!$this->is_connected() || !$this->imap_handle){
@@ -240,11 +240,11 @@ class mailMethodCyrus extends mailMethod{
     if (!imap_set_quota($this->imap_handle, $this->account_id, $this->quotaValue)){
       msg_dialog::display(_("IMAP error"), sprintf(_("Cannot modify IMAP mailbox quota: %s"),
             '<br><br><i>'.imap_last_error().'</i>'), ERROR_DIALOG);
-      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>".$this->account_id.": (".$debug_number.")</b>" , 
+      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>".$this->account_id.": (".$debug_number.")</b>" ,
           "<b>IMAP: Set account quota</b> on server '".$this->MailServer."' <b>".imap_last_error()."</b>");
       return (FALSE);
     }
-    @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>".$this->account_id.": (".$debug_number.")</b>" , 
+    @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>".$this->account_id.": (".$debug_number.")</b>" ,
         "<b>IMAP: Set account quota</b> on server :".$this->MailServer);
     return (TRUE);
   }
@@ -258,20 +258,20 @@ class mailMethodCyrus extends mailMethod{
       trigger_error("Method not connected, catch error.");
       return(FALSE);
     }
-  
+
     $this->build_account_id ();
     if($this->is_connected()){
       $cfg= $this->ServerList[$this->MailServer];
       $list = imap_listmailbox($this->imap_handle, $cfg["connect"], $this->account_id);
       if ($list === FALSE){
-        @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>".$this->account_id."</b>" , 
+        @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>".$this->account_id."</b>" ,
           "<b>IMAP: Add/Update account</b> on server :".$this->MailServer);
         if (!imap_createmailbox($this->imap_handle, $cfg["connect"].$this->account_id)){
           $this->error = imap_last_error();
           return(FALSE);
         }
 
-        /* Autocreate configured default folders */ 
+        /* Autocreate configured default folders */
         $folders= $this->config->get_cfg_value("cyrusAutocreateFolders", null);
         if ($folders) {
           $foldersToCreate= explode(",", $folders);
@@ -279,7 +279,7 @@ class mailMethodCyrus extends mailMethod{
 
           // Walk thru list of specified folders
           foreach ($foldersToCreate as $folder) {
-            @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>".$this->account_id."</b>" , 
+            @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>".$this->account_id."</b>" ,
               "<b>IMAP: Add/Update account folder ".$folder."</b> on server :".$this->MailServer);
             if(!imap_createmailbox($this->imap_handle, $cfg["connect"].$this->account_id.$cyrus_delim.$folder)) {
               $this->error= imap_last_error();
@@ -313,7 +313,7 @@ class mailMethodCyrus extends mailMethod{
         $this->error = imap_last_error();
         return (FALSE);
       }
-    } else{ 
+    } else{
       msg_dialog::display(_("Mail info"),
         sprintf(_("LDAP entry has been removed but cyrus mailbox (%s) is kept.\nPlease delete it manually!"),
         $this->account_id), INFO_DIALOG);
@@ -321,7 +321,7 @@ class mailMethodCyrus extends mailMethod{
     return (TRUE);
   }
 
-  
+
   public function getMailboxList()
   {
     mailMethod::getMailboxList();
@@ -337,13 +337,20 @@ class mailMethodCyrus extends mailMethod{
     $cfg= $this->ServerList[$this->MailServer];
 
     /* Create search string
-       And prepare replacements 
-     */ 
+       And prepare replacements
+     */
     if(preg_match("/\@/",$this->account_id)){
-      $search = preg_replace("/\@/","/*@",$this->account_id);
-      $with_domain = TRUE;
+      if($this->cyrusUseSlashes){
+        $search = preg_replace("/\@/","/*@",$this->account_id);
+      }else{
+        $search = preg_replace("/\@/",".*@",$this->account_id);
+      }      $with_domain = TRUE;
     }else{
-      $search = $this->account_id."/*";
+      if($this->cyrusUseSlashes){
+        $search = $this->account_id."/*";
+      }else{
+        $search = $this->account_id.".*";
+      }
       $with_domain = FALSE;
     }
     $folder = $this->account_id;
@@ -368,9 +375,9 @@ class mailMethodCyrus extends mailMethod{
         if($with_domain){
           $str = trim(preg_replace("/\@.*$/","",$str));
         }
-        $str = preg_replace ("/^.*".preg_quote($folder, '/')."/","INBOX", 
+        $str = preg_replace ("/^.*".preg_quote($folder, '/')."/","INBOX",
           mb_convert_encoding($str, "UTF-8", "UTF7-IMAP"));
-        $result[] = $str;      
+        $result[] = $str;
       }
       @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,trim(implode($result,", "),", "),
           "<b>IMAP: Received mailbox folders.</b>");
@@ -449,7 +456,7 @@ class mailMethodCyrus extends mailMethod{
 
       /* Remove all acl's for this folder */
       $users= @imap_getacl ($this->imap_handle, $folder_id);
-      
+
       if(is_array($users)){
         foreach ($users as $userid => $perms){
           $userid = strtolower($userid);
@@ -478,7 +485,7 @@ class mailMethodCyrus extends mailMethod{
   {
     mailMethod::saveSieveSettings();
 
-    // Check file integrity 
+    // Check file integrity
     $files = array();
     foreach(array("sieve-header.txt","sieve-spam.txt","sieve-mailsize.txt","sieve-vacation.txt","sieve-discard.txt") as $file){
       if(!file_exists(MAIL_DIR."/".$file) || ! is_readable(MAIL_DIR."/".$file)){
@@ -493,7 +500,7 @@ class mailMethodCyrus extends mailMethod{
       msg_dialog::display(_("Warning"),$msg,WARNING_DIALOG);
     }
 
-    /* Map attribute from parent class 
+    /* Map attribute from parent class
      */
     $mail = $this->parent->mail;
     $gosaMailDeliveryMode = $this->parent->gosaMailDeliveryMode;
@@ -504,7 +511,7 @@ class mailMethodCyrus extends mailMethod{
     $gosaVacationMessage = $this->parent->gosaVacationMessage;
 
     /* Try to login into sieve
-     */ 
+     */
     $cfg = $this->ServerList[$this->MailServer];
     $sieve= new sieve($cfg["sieve_server"], $cfg["sieve_port"], $this->getUAttribValue(),
         $cfg["password"], $cfg["admin"],$cfg["sieve_option"]);
@@ -522,7 +529,7 @@ class mailMethodCyrus extends mailMethod{
     /* Get current sieve script named 'gosa'.
         Check if it valid ("###GOSA" must be the first string).
         If it is valid just replace it, if it is NOT valid
-         create a backup of the old 
+         create a backup of the old
      */
     $script= "";
     if($sieve->sieve_listscripts()){
