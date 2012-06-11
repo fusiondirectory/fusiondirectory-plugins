@@ -40,7 +40,7 @@
       <export>true</export>
     </column>
 -->
-    
+
     <column>
       <label>Task</label>
       <sortAttribute>givenName</sortAttribute>
@@ -136,7 +136,7 @@
       <label>Reinstall</label>
      </action>
     </action>
-  
+
     <action>
       <type>separator</type>
     </action>
@@ -160,20 +160,6 @@
     </action>
 
      <action>
-      <name>prioResume</name>
-      <type>entry</type>
-      <image>images/status_start.png</image>
-      <label>Resume</label>
-     </action>
-
-     <action>
-      <name>prioPause</name>
-      <type>entry</type>
-      <image>images/status_pause.png</image>
-      <label>Pause</label>
-     </action>
-
-     <action>
       <name>abort</name>
       <type>entry</type>
       <image>images/small_error.png</image>
@@ -194,40 +180,6 @@
   </actionmenu>
 
   <actiontriggers snapshot="true" copypaste="true">
-
-<!--
-    <action>
-      <name>prioUp</name>
-      <type>entry</type>
-      <objectclass>FAKE_OC__prioUp</objectclass>
-      <image>plugins/systems/images/prio_increase.png</image>
-      <label>Up</label>
-    </action>
-
-    <action>
-      <name>prioDown</name>
-      <type>entry</type>
-      <objectclass>FAKE_OC__prioDown</objectclass>
-      <image>plugins/systems/images/prio_decrease.png</image>
-      <label>Down</label>
-    </action>
-
-    <action>
-      <name>prioPause</name>
-      <type>entry</type>
-      <objectclass>FAKE_OC__prioPause</objectclass>
-      <image>images/status_pause.png</image>
-      <label>Pause</label>
-    </action>
-
-    <action>
-      <name>prioResume</name>
-      <type>entry</type>
-      <objectclass>FAKE_OC__prioResume</objectclass>
-      <image>images/status_start.png</image>
-      <label>Resume</label>
-    </action>
--->
 
     <action>
       <name>processNow</name>

@@ -74,10 +74,6 @@ class gotomasses extends management
 
     parent::__construct($config, $ui, "Events", $headpage);
 
-    $this->registerAction('prioDown',   "prioDown");
-    $this->registerAction('prioUp',     "prioUp");
-    $this->registerAction('prioPause',  "prioPause");
-    $this->registerAction('prioResume', "prioResume");
     $this->registerAction('processNow', "processNow");
     $this->registerAction('viewLogs',   "viewLogs");
     $this->registerAction('abort',      "abortEvent");
@@ -90,7 +86,7 @@ class gotomasses extends management
     $this->registerAction('activate', 'newEntry');
     $this->registerAction('reinstall', 'newEntry');
     $this->registerAction('import', 'importEvents');
-    
+
     $this->registerAction('showError', 'showErrorEntry');
   }
 
@@ -105,7 +101,7 @@ class gotomasses extends management
       }
     }
   }
-  
+
   function importEvents()
   {
     $this->dialogObject = new goto_import_file($this->config,$this);
@@ -272,8 +268,8 @@ class gotomasses extends management
       $this->save();
     }
   }
- 
- 
+
+
   /*! \brief  Force queue job to be aborted.
    */
   function abortEvent($action="",$target=array(),$all=array())
@@ -303,33 +299,8 @@ class gotomasses extends management
           sprintf(_("Required class '%s' cannot be found: job not aborted!"),
             "DaemonEvent_wakeup") , ERROR_DIALOG);
     }
-    
+
     $this->o_queue->remove_entries($taskids); // Removing the task.
-  }
-
-
-  function prioDown($action="",$target=array(),$all=array())
-  {
-    if(count($target) == 1){
-      $this->update_priority($target[0], 'down');
-    }
-  }
-
-  function prioUp($action="",$target=array(),$all=array())
-  {
-    if(count($target) == 1){
-      $this->update_priority($target[0], 'up');
-    }
-  }
-
-  function prioPause($action="",$target=array(),$all=array())
-  {
-    $this->pause_queue_entries($target);
-  }
-
-  function prioResume($action="",$target=array(),$all=array())
-  {
-    $this->resume_queue_entries($target);
   }
 
   function processNow($action="",$target=array(),$all=array())
@@ -348,7 +319,7 @@ class gotomasses extends management
       $this->dialogObject = new gotoLogView($this->config,"",$entry,$this);
     }
   }
-  
+
     function showErrorEntry($action="",$target=array(),$all=array())
     {
         if(count($target) == 1){
@@ -369,54 +340,10 @@ class gotomasses extends management
         msg_dialog::display(_("Service infrastructure"),msgPool::siError($this->o_queue->get_error()),ERROR_DIALOG);
       }else{
         $this->current = -1;
-      } 
+      }
     }
     $this->closeDialogs();
   }
-
-
-
-
-  /*! \brief  Move an entry up or down in the queue, by updating its execution timestamp                             
-    @param  $id     Integer  The ID of the entry which should be updated.                                            
-    @param  $type   String   "up" / "down"                                                                           
-    @return boolean TRUE in case of success else FALSE                                                               
-   */                                                                                                                
-  public function update_priority($id,$type = "up")                                                                  
-  {                                          
-    $headpage = $this->getHeadpage();
-    $entries = $headpage->getEntries();
-    $entry = $headpage->getEntry($id);
-
-    $map = array();
-    $last = 0;
-    $next = 0;
-    foreach($entries as $pa){
-      $map[$pa['TIMESTAMP'][0]] = $pa['TIMESTAMP'][0];
-    }
-    krsort($map);
-    $found = 0;
-    $cur = 0;
-    foreach($map as $ts){
-      if($found){
-        $next = $ts;
-        break;
-      }
-      if($ts == $entry['TIMESTAMP'][0]){
-        $found = TRUE;  
-        $cur = $ts;
-      }else{
-        $last = $ts;
-      }
-    }
-
-    if($type == "up" && $next != 0){
-      return($this->o_queue->update_entries(array($id),array("timestamp" => $next)));
-    }elseif($type == "down" && $last != 0){
-      return($this->o_queue->update_entries(array($id),array("timestamp" => $last)));
-    }
-  }
-
 
   function detectPostActions()
   {
@@ -436,47 +363,13 @@ class gotomasses extends management
     management::closeDialogs();
   }
 
-  /*! \brief  Resumes to status 'waiting'.
-   *  @return Boolean TRUE in case of success, else FALSE. 
-   */
-  private function resume_queue_entries($ids)
-  {
-    /* Entries are resumed by setting the status to 
-     *  'waiting'
-     */
-    $data = array("status"    => "waiting");
-
-    /* Check if given ids are valid and check if the status
-     *  allows resuming.
-     */
-    $update_ids = array();
-    $headpage = $this->getHeadpage();
-    foreach($ids as $id){
-      $tmp = $headpage->getEntry($id);
-      $entry = $tmp['EVENT'];
-      if(isset($entry['STATUS']) && preg_match("/paused/",$entry['STATUS'])){
-        $update_ids[] = $entry['ID'];
-      }
-    }
-
-    /* Tell the daemon that we have entries to update.
-     */
-    if(count($update_ids)){
-      if(!$this->o_queue->update_entries($update_ids,$data)){
-        msg_dialog::display(_("Error"), sprintf(_("Cannot update queue entry: %s"),$id) , ERROR_DIALOG);
-        return(FALSE);
-      }
-    }
-    return(TRUE);
-  }
-
 
   /*! \brief  Force queue job to be done as far as possible.
    *  @return Boolean TRUE in case of success, else FALSE.
    */
   private function execute_queue_entries($ids)
   {
-    /* Only allow execution of paused or waiting entries 
+    /* Only allow execution of paused or waiting entries
      */
     $update_ids = array();
     $headpage = $this->getHeadpage();
@@ -493,42 +386,6 @@ class gotomasses extends management
     if(count($update_ids)){
       if(!$this->o_queue->process_entries_now($update_ids)){
         msg_dialog::display(_("Error"), sprintf(_("Cannot update queue entries.")) , ERROR_DIALOG);
-        return(FALSE);
-      }
-    }
-    return(TRUE);
-  }
-
-
-  /*! \brief Pauses the specified queue entry from execution.
-   *  @return Boolean TRUE in case of success, else FALSE. 
-   */
-  private function pause_queue_entries($ids)
-  {
-    /* Entries are paused by setting the status to 
-     *  something different from 'waiting'.
-     * We simply use 'paused'.
-     */   
-    $data = array("status"    => "paused");
-
-    /* Detect if the ids we got are valid and
-     *  check if the status allows pausing.
-     */ 
-    $update_ids = array();
-    $headpage = $this->getHeadpage();
-    foreach($ids as $id){
-      $tmp = $headpage->getEntry($id);
-      $entry = $tmp['EVENT']; 
-      if(isset($entry['STATUS']) && preg_match("/waiting/",$entry['STATUS'])){
-        $update_ids[] = $entry['ID'];
-      }
-    }
-
-    /* Tell the daemon that we want to update some entries
-     */
-    if(count($update_ids)){
-      if(!$this->o_queue->update_entries($update_ids,$data)){
-        msg_dialog::display(_("Error"), sprintf(_("Cannot update queue entry: %s"),$id) , ERROR_DIALOG);
         return(FALSE);
       }
     }
@@ -610,10 +467,10 @@ class gotomasses extends management
           "plPriority"    => 0,
           "plSection"     => array("addon"),
           "plCategory"    => array("gotomasses" => array("objectClass" => "none", "description" => _("System deployment"))),
-          "plProvidedAcls" => array("Comment"   => _("Description")) 
+          "plProvidedAcls" => array("Comment"   => _("Description"))
           ));
   }
-  
+
 }
 // vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>
