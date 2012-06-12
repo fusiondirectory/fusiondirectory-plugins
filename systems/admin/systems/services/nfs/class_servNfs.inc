@@ -28,7 +28,7 @@ class servnfs extends plugin
   var $objectclasses    = array("whatever");
   var $is_account       = true;
 
-  var $name          ="";  // Name of  
+  var $name          ="";  // Name of
   var $description   ="";  // description
   var $type          ="";  // Type FS/Samba/NCP
   var $charset       ="";  // charset
@@ -124,7 +124,7 @@ class servnfs extends plugin
     $smarty->assign("name",$this->name);
     if($this->is_edit){
       $smarty->assign("nameACL", preg_replace("/w/","",$this->parent->getacl("name")));
-    } 
+    }
     $smarty->assign("allow_mounts", $this->parent->allow_mounts);
     $smarty->assign("mount_checked", "");
 
@@ -156,7 +156,7 @@ class servnfs extends plugin
         if (count($attrs) > 0) {
           $smarty->assign("mount_checked", "checked");
         }
-      }        
+      }
     }
 
     $display= $smarty->fetch(get_template_path('servnfs.tpl', TRUE, dirname(__FILE__)));
@@ -205,7 +205,7 @@ class servnfs extends plugin
       }
     } else {
       if (!tests::is_path($this->path)){
-        $message[]= _("'Path / Volume' must contain at least one '/'!");
+        $message[]= _("'Path / Volume' must contain at least one '/' and no special characters!");
       }
     }
 
@@ -264,19 +264,19 @@ class servnfs extends plugin
   /* Save to LDAP */
   function save()
   {
-    /* Everything seems perfect, lets 
-       generate an new export Entry 
+    /* Everything seems perfect, lets
+       generate an new export Entry
      */
 
     $s_return = "";
 
-    $s_return.= $this->name."|";     
-    $s_return.= $this->description."|";     
-    $s_return.= $this->type."|";     
-    $s_return.= $this->charset."|";     
-    $s_return.= $this->path."|";     
-    $s_return.= $this->option."|";     
-    $s_return.= $this->volume;     
+    $s_return.= $this->name."|";
+    $s_return.= $this->description."|";
+    $s_return.= $this->type."|";
+    $s_return.= $this->charset."|";
+    $s_return.= $this->path."|";
+    $s_return.= $this->option."|";
+    $s_return.= $this->volume;
 
     return(array($this->name=>$s_return));
   }
