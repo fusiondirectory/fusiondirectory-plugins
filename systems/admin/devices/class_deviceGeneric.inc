@@ -31,7 +31,7 @@ class deviceGeneric extends plugin
   public $vendor        = "";
   public $devID        = "";
   public $serial        = "";
-  public $base          = ""; 
+  public $base          = "";
   public $types;
   public $type;
   public $baseSelector;
@@ -63,7 +63,7 @@ class deviceGeneric extends plugin
       if (isset($tmp[4])){
         $this->type= $tmp[4];
       }
-    }     
+    }
 
     $this->orig_cn = $this->cn;
 
@@ -97,7 +97,7 @@ class deviceGeneric extends plugin
     foreach($this->attributes as $attr){
       $smarty->assign($attr,$this->$attr);
     }
-  
+
     $tmp = $this->plInfo();
     foreach($tmp['plProvidedAcls'] as $attr => $desc){
       $smarty->assign($attr."ACL", $this->getacl($attr));
@@ -108,16 +108,16 @@ class deviceGeneric extends plugin
     return($smarty->fetch(get_template_path("deviceGeneric.tpl",TRUE,dirname(__FILE__))));
   }
 
-  
+
   public function check()
   {
     $message = plugin::check();
 
     if($this->cn == "" ||(preg_match("/[^a-z0-9]/i",$this->cn))){
-      $message[]= msgPool::invalid(_("Name"),$this->cn,"/^[a-z0-9]*$/i");
+      $message[]= msgPool::invalid(_("Device name"),$this->cn,"/^[a-z0-9]*$/i");
     }
     if(preg_match("/[^a-z0-9!\"?.,;:-_\(\) ]/i",$this->description)){
-      $message[]= msgPool::invalid(_("Description"),$this->cn,"/^[a-z0-9!\"?.,;:-_\(\) ]*$/i");
+      $message[]= msgPool::invalid(_("Description"),$this->description,"/^[a-z0-9!\"?.,;:-_\(\) ]*$/i");
     }
 
     /* Skip serial check if vendor and product id are given */
@@ -137,8 +137,8 @@ class deviceGeneric extends plugin
     if(!$this->baseSelector->checkLastBaseUpdate()){
       $message[]= msgPool::check_base();
     }
-  
-    /* Check if entry already exists */ 
+
+    /* Check if entry already exists */
     if($this->cn != $this->orig_cn || $this->dn == "new"){
       $ldap = $this->config->get_ldap_link();
       $ldap->search("(&(objectClass=gotoDevice)(cn=".$this->cn."*))",array("cn"));
@@ -178,7 +178,7 @@ class deviceGeneric extends plugin
     }
   }
 
-  
+
   public function remove_from_parent()
   {
     plugin::remove_from_parent();
@@ -204,7 +204,7 @@ class deviceGeneric extends plugin
   {
     plugin::save();
 
-    /* Unset non ldap attributes 
+    /* Unset non ldap attributes
      */
     foreach(array("devID","serial","vendor", "type", "description") as $name){
       if(isset($this->attrs[$name])){
@@ -214,7 +214,7 @@ class deviceGeneric extends plugin
 
     $this->attrs['gotoHotplugDevice'] = "";
     foreach(array("description","devID","serial","vendor", "type") as $post){
-      $this->attrs['gotoHotplugDevice'] .= $this->$post."|"; 
+      $this->attrs['gotoHotplugDevice'] .= $this->$post."|";
     }
     $this->attrs['gotoHotplugDevice'] = preg_replace("/\|$/","",$this->attrs['gotoHotplugDevice']);
 
@@ -299,7 +299,7 @@ class deviceGeneric extends plugin
             "description"   => _("Description"),
             "type"          => _("Type"),
             "serial"        => _("Serial"),
-            "vendor"        => _("Vendor"), 
+            "vendor"        => _("Vendor"),
             "devID"        => _("Device ID"))
           ));
 
