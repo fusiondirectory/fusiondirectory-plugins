@@ -30,7 +30,7 @@ class serviceRepository extends goService
   /* Repositories */
   var $repositories          = array();
   var $FAIrepository         = array();
-  var $conflicts             = array("goKioskService");
+  var $conflicts             = array("serviceRepository");
   var $DisplayName           = "";
   var $StatusFlag            = "";
 
