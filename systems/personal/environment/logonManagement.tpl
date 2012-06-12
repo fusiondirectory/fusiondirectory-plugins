@@ -17,7 +17,7 @@
               <td><LABEL for="LogonDescription">{t}Description{/t}</LABEL>
               </td>
               <td>
-                <input type="text" size=40 value="{$LogonDescription}" name="LogonDescription" id="LogonDescription"> 
+                <input type="text" size=40 value="{$LogonDescription}" name="LogonDescription" id="LogonDescription">
               </td>
             </tr>
             <tr>
@@ -62,13 +62,13 @@
             <tr>
               <td>
                 <input type="file" name="importFile" id="importFile">
-                <input type="submit" value="{t}Import{/t}" name="StartImport" >
+                <input type="submit" value="{t}Import Script{/t}" name="StartImport" >
               </td>
             </tr>
           </table>
       </td>
     </tr>
-  </table>  
+  </table>
 
   <p class="seperator">&nbsp;</p>
     <p align="right">
