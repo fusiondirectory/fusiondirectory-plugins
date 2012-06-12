@@ -138,6 +138,10 @@ class deviceGeneric extends plugin
       $message[]= msgPool::check_base();
     }
 
+    /* Convert vendorId and productId to lower case */
+    $this->serial = strtolower($this->serial);
+    $this->vendor = strtolower($this->vendor);
+
     /* Check if entry already exists */
     if($this->cn != $this->orig_cn || $this->dn == "new"){
       $ldap = $this->config->get_ldap_link();
