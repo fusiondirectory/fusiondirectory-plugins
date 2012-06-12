@@ -88,7 +88,7 @@ class termservice extends plugin
 
     /* Check if we are a part of an ogroup.
      * In this case, we have to hide all the inherit stuff.
-     */ 
+     */
     if(isset($parent) && get_class($parent) == "ogroup"){
       $this->is_ogroup = TRUE;
     }
@@ -110,13 +110,13 @@ class termservice extends plugin
         $this->gotoLpdEnable[] = $this->attrs['gotoLpdEnable'][$i];
       }
     }
-    $this->gotoLpdEnable_dialog = new gotoLpdEnable($this->config,$this->gotoLpdEnable,$this); 
+    $this->gotoLpdEnable_dialog = new gotoLpdEnable($this->config,$this->gotoLpdEnable,$this);
 
     /* Get list of available xdrivers */
     $this->XDrivers = $this->getListOfXDrivers();
 
     /* Create a list of available resolutions.
-     */     
+     */
     $this->XResolutions= array(
           "640x480"   =>  "640x480",
           "800x600"   =>  "800x600",
@@ -150,7 +150,7 @@ class termservice extends plugin
         "16"       => "16 "._("bit"),
         "24"       => "24 "._("bit"));
 
-    
+
     /* Create a set of selectable keyboard models
      */
     $this->XKbModels = array();
@@ -166,10 +166,10 @@ class termservice extends plugin
     $this->XKbLayouts = array("de"=> "de","en" =>"en", "es" => "es", "us" =>"us", "fr" => "fr");
     $this->XKbVariants= array("nodeadkeys"=>"nodeadkeys", "basic"=>"basic");
 
-    $this->MouseTypes= array("auto" => "auto", 
+    $this->MouseTypes= array("auto" => "auto",
                              "explorerps/2" => "explorerps/2",
                              "ImPS/2" => "ImPS/2",
-                             "PS/2" => "PS/2", 
+                             "PS/2" => "PS/2",
                              "Microsoft" => "Microsoft",
                              "Logitech" => "Logitech",);
 
@@ -216,9 +216,9 @@ class termservice extends plugin
       }
     }
 
-    /* Load phone hardware list 
+    /* Load phone hardware list
      */
-    $tmp = get_sub_list("(objectClass=goFonHardware)","",array(get_ou("phoneRDN")), 
+    $tmp = get_sub_list("(objectClass=goFonHardware)","",array(get_ou("phoneRDN")),
                   $this->config->current['BASE'],array("cn","description"), GL_NO_ACL_CHECK);
     foreach($tmp as $attrs){
       $cn= $attrs['cn'][0];
@@ -231,8 +231,8 @@ class termservice extends plugin
     $this->hardware_list["automatic"]= _("automatic");
     ksort($this->hardware_list);
 
-    /* These departments may contain objects that have 
-        goFonHardware set. 
+    /* These departments may contain objects that have
+        goFonHardware set.
      */
     $deps_a = array(
         get_people_ou(),
@@ -257,14 +257,14 @@ class termservice extends plugin
     $ldap= $this->config->get_ldap_link();
     $ldap->cd($this->config->current['BASE']);
     $map= array(
-        "gotoXResolution", 
-        "gotoXColordepth", 
-        "gotoXKbModel", 
+        "gotoXResolution",
+        "gotoXColordepth",
+        "gotoXKbModel",
         "gotoXKbLayout",
         "gotoXDriver",
         "gotoXdmcpServer",
         "gotoXKbVariant",
-        "gotoXMouseType", 
+        "gotoXMouseType",
         "gotoXMethod",
         "gotoXMouseport");
     $ldap->search("(&(|(objectClass=gotoTerminalTemplate)(objectClass=gotoWorkstationTemplate))(member=".LDAP::prepare4filter($this->dn)."))",$map);
@@ -276,10 +276,10 @@ class termservice extends plugin
         }
 
         switch ($name){
-         case 'gotoXDriver': 
+         case 'gotoXDriver':
            $this->XDrivers = array('default' => _("inherited").' ['.$attrs[$name][0].']' ) + $this->XDrivers;
            break;
-          case 'gotoXMethod': 
+          case 'gotoXMethod':
             $this->XMethods = array('default' => _("inherited").' ['.$attrs[$name][0].']' ) + $this->XMethods;
             if(isset($attrs['gotoXdmcpServer'])){
               for($i = 0 ; $i < $attrs['gotoXdmcpServer']['count'] ; $i++){
@@ -368,7 +368,7 @@ class termservice extends plugin
       $this->selected_xdmcp_servers = $tmp;
     }
 
-    /* Arrays */ 
+    /* Arrays */
     foreach(array("XMethods", "XDrivers", "XResolutions", "XColordepths",
           "XKbModels","XKbVariants","MouseTypes", "MousePorts") as $val){
       $smarty->assign("$val", $this->$val);
@@ -376,11 +376,11 @@ class termservice extends plugin
     $smarty->assign("XKbLayouts",   $this->XKbLayouts);
     $smarty->assign("XKbLayoutKeys",array_flip($this->XKbLayouts));
     $smarty->assign("nfsservers", $this->config->data['SERVERS']['NFS']);
-  
-    
-    /* Create a list of useable servers for the currently selected 
+
+
+    /* Create a list of useable servers for the currently selected
      *  connection type.
-     */ 
+     */
     $xdmcp_types =  $this->config->data['SERVERS']['TERMINAL_SESSION_TYPES'];
     $available_servers = array();
     foreach($xdmcp_types as $servername =>$supported_types){
@@ -400,7 +400,7 @@ class termservice extends plugin
       }
     }
 
-    /* Remove already selected servers from available list. 
+    /* Remove already selected servers from available list.
      */
     foreach($available_servers as $key => $server){
       if(isset($tmp[$server])){
@@ -413,7 +413,7 @@ class termservice extends plugin
     $smarty->assign("available_xdmcp_servers", $available_servers);
 
     /* Variables - select */
-    foreach(array("gotoXMethod","gotoXDriver", "gotoXResolution", "gotoXColordepth", 
+    foreach(array("gotoXMethod","gotoXDriver", "gotoXResolution", "gotoXColordepth",
           "gotoLpdServer", "gotoXKbModel", "gotoXKbLayout",
           "gotoXKbVariant", "gotoXMouseType", "gotoXMouseport") as $val){
 
@@ -500,7 +500,7 @@ class termservice extends plugin
           }
         }
       }
-    } 
+    }
 
     if(isset($_POST['gotoXDriver'])){
       if(isset($_POST['AutoSync'])){
@@ -610,7 +610,7 @@ class termservice extends plugin
     $ldap= $this->config->get_ldap_link();
     $ldap->cd($this->dn);
     $this->cleanup();
-    $ldap->modify ($this->attrs); 
+    $ldap->modify ($this->attrs);
     new log("modify","terminal/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
 
     if (!$ldap->success()){
@@ -642,7 +642,7 @@ class termservice extends plugin
           "ati", "atimisc", "chips", "cirrus", "cyrix", "fbdev", "fglrx",
           "i128", "i740", "i810", "intel", "imstt", "mga", "neomagic", "newport", "nsc",  "nv", "nvidia",
           "r128", "radeon", "rendition", "s3", "s3virge", "savage", "siliconmotion",
-          "sis", "tdfx", "tga", "trident", "tseng", "vesa", "vga", "vmware") as $driver){
+          "sis", "tdfx", "tga", "trident", "tseng", "vboxvideo", "vesa", "vga", "vmware") as $driver){
         $drivers[] = $driver;
       }
     }
@@ -729,7 +729,7 @@ class termservice extends plugin
           "plCategory"    => array("terminal"),
 
           "plProvidedAcls"=> array(
-          
+
             "gotoXMonitor"            => _("Monitor"),
             "gotoXMethod"             => _("Method"),
             "gotoXdmcpServer"         => _("Remote desktop"),

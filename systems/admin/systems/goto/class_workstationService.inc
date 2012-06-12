@@ -72,13 +72,13 @@ class workservice extends plugin
   {
     plugin::plugin ($config, $dn, $parent);
 
-    $this->XResolutions= array( 
+    $this->XResolutions= array(
         "640x480"   =>  "640x480",
         "800x600"   =>  "800x600",
         "1024x768"  =>  "1024x768",
-        "1152x864"  =>  "1152x864", 
+        "1152x864"  =>  "1152x864",
         "1280x1024" =>  "1280x1024",
-        "1400x1050" =>  "1400x1050", 
+        "1400x1050" =>  "1400x1050",
         "1600x1200" =>  "1600x1200");
 
     if($this->config->get_cfg_value("resolutions") != ""){
@@ -103,11 +103,11 @@ class workservice extends plugin
     $this->XDrivers = $this->getListOfXDrivers();
 
     array_unshift($this->XDrivers, "["._("unknown")."]");
- 
-    $this->XColordepths= array( 
-        "8"        => "8 " ._("bit"), 
-        "15"       => "15 "._("bit"),      
-        "16"       => "16 "._("bit"),   
+
+    $this->XColordepths= array(
+        "8"        => "8 " ._("bit"),
+        "15"       => "15 "._("bit"),
+        "16"       => "16 "._("bit"),
         "24"       => "24 "._("bit"));
 
     foreach(array ("btc9000", "chicony", "compaq", "dell", "dell101", "everex",
@@ -135,7 +135,7 @@ class workservice extends plugin
     $this->XKbLayouts = array("de"=> "de","en" =>"en", "es" => "es", "us" =>"us", "fr" => "fr");
     $this->XKbVariants= array ("nodeadkeys"=>"nodeadkeys", "basic"=>"basic");
 
-    /* try to read additional keyboard layouts 
+    /* try to read additional keyboard layouts
      */
     if(file_exists(SYSTEMS_DIR."/keyboardLayouts")){
       if(is_readable(SYSTEMS_DIR."/keyboardLayouts")){
@@ -147,8 +147,8 @@ class workservice extends plugin
             $tmp2 = explode(":",$entry);
             $la =   trim($tmp2[0]);   // What would be saved to ldap
             $da =   trim($tmp2[1]);   // This wis displayed in the listbox
-            $this->XKbLayouts [ $la] = $da;  
-          } 
+            $this->XKbLayouts [ $la] = $da;
+          }
         }
       }
     }
@@ -211,7 +211,7 @@ class workservice extends plugin
         if (!isset($attrs[$name][0])){
           continue;
         }
-        
+
         switch ($name){
           case 'gotoXDriver':
             $this->XDrivers= array('default' => _("inherited").' ['.$attrs[$name][0].']' ) + $this->XDrivers;
@@ -289,7 +289,7 @@ class workservice extends plugin
       $smarty->assign($name."ACL",$this->getacl($name));
     }
 
-    /* Arrays */ 
+    /* Arrays */
     foreach(array("XDrivers", "XResolutions", "XColordepths",
           "XKbModels", "XKbVariants",
           "MouseTypes", "MousePorts") as $val){
@@ -304,7 +304,7 @@ class workservice extends plugin
 
     /* Variables - select */
     foreach(array(
-          "gotoXDriver", "gotoXResolution", "gotoXColordepth", 
+          "gotoXDriver", "gotoXResolution", "gotoXColordepth",
           "gotoXKbModel", "gotoXKbLayout","gotoScannerEnable",
           "gotoXKbVariant", "gotoXMouseType", "gotoXMouseport") as $val){
 
@@ -475,7 +475,7 @@ class workservice extends plugin
     $this->cleanup();
 
 
-    $ldap->modify ($this->attrs); 
+    $ldap->modify ($this->attrs);
     new log("modify","workstation/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
     if (!$ldap->success()){
       msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_MOD, get_class()));
@@ -484,7 +484,7 @@ class workservice extends plugin
 
     /* Send goto reload event to supportDaemon */
     if(count($this->attrs)){
-      $this->send_goto_reload(); 
+      $this->send_goto_reload();
     }
 
   }
@@ -505,8 +505,8 @@ class workservice extends plugin
       $drivers = array("ati", "atimisc", "chips", "cirrus", "cyrix", "fbdev", "fglrx",
           "i128", "i740", "i810", "intel", "imstt", "mga", "neomagic", "newport", "nsc",  "nv", "nvidia",
           "r128", "radeon", "rendition", "s3", "s3virge", "savage", "siliconmotion",
-          "sis", "tdfx", "tga", "trident", "tseng", "vesa", "vga", "vmware");
-    } 
+          "sis", "tdfx", "tga", "trident", "tseng", "vboxvideo", "vesa", "vga", "vmware");
+    }
     $tmp = array();
     foreach($drivers as $name){
       $tmp[$name] = $name;
@@ -527,11 +527,11 @@ class workservice extends plugin
         $evt = $events['TRIGGERED']['DaemonEvent_goto_reload'];
         $macs = array();
 
-        /* Get list of macAddresses 
+        /* Get list of macAddresses
          */
         if(isset($this->parent->by_object['ogroup'])){
 
-          /* If we are an object group, add all member macs 
+          /* If we are an object group, add all member macs
            */
           $p = $this->parent->by_object['ogroup'];
           foreach($p->memberList as $dn => $obj){
@@ -547,10 +547,10 @@ class workservice extends plugin
           $mac = $this->parent->by_object['workgeneric']->netConfigDNS->macAddress;
           if(!empty($mac) && !preg_match("/".preg_quote(get_ou("systemIncomingRDN"), '/')."/",$this->orig_dn)){
             $macs[] = $mac;
-          }          
+          }
         }
 
-        /* Trigger event for all member objects 
+        /* Trigger event for all member objects
          */
 /*
         if(count($macs)){
@@ -579,7 +579,7 @@ class workservice extends plugin
       $this->gotoXVsync = preg_replace("/\+/","-",$this->gotoXVsync);
     }
   }
-  
+
   /* Return plugin informations for acl handling */
   static function plInfo()
   {
@@ -590,7 +590,7 @@ class workservice extends plugin
           "plDepends"     => array(),
           "plPriority"    => 10,
           "plSection"     => array("administration"),
-          "plCategory"    => array("workstation","ogroups"), 
+          "plCategory"    => array("workstation","ogroups"),
 
           "plProvidedAcls"=> array(
             "gotoXMonitor"          => _("Monitor"),
@@ -606,7 +606,7 @@ class workservice extends plugin
             "gotoXKbVariant"        => _("Keyboard variant"),
             "gotoXMouseType"        => _("Mouse type"),
             "gotoXMouseport"        => _("Mouse port"),
-            "goFonHardware"         => _("Telephone hardware")) 
+            "goFonHardware"         => _("Telephone hardware"))
             ));
   }
 }
