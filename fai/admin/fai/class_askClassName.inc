@@ -29,7 +29,7 @@ class askClassName extends plugin
 
   var $objectClass        = false;
   var $forbidden          = array();
-  var $ClassName          = "";  
+  var $ClassName          = "";
   var $ClassAlreadyExists = false;
   var $parent;
 
@@ -50,7 +50,7 @@ class askClassName extends plugin
     $display= "";
 
     /* First search for every ou, in given fai base
-     * With a second search detect all object that belong to the differents ou. 
+     * With a second search detect all object that belong to the differents ou.
      */
 
     $base = $this->parent->fai_release;
@@ -58,7 +58,7 @@ class askClassName extends plugin
 
     $type_acl_mapping = array(
         "FAIpartitionTable"  => "faiPartitionTable",
-        "FAIpackageList"     => "faiPackage",
+        "FAIpackageList"     => "faiPackageList",
         "FAIscript"          => "faiScript",
         "FAIvariable"        => "faiVariable",
         "FAIhook"            => "faiHook",
@@ -76,7 +76,7 @@ class askClassName extends plugin
     $used   = array();
     foreach($res as $object){
 
-      /* skip class names with this name */ 
+      /* skip class names with this name */
       if(in_array($this->objectClass,$object['objectClass']) || in_array("FAIprofile",$object['objectClass'])){
         if(isset($object['FAIstate'][0]) && preg_match("/removed$/",$object['FAIstate'][0])){
           continue;
@@ -94,7 +94,7 @@ class askClassName extends plugin
 
     /* Create headline
      * Depending on the object type we want to create, a different headline will be shown
-     */ 
+     */
     switch($this->objectClass) {
       case "FAIpartitionTable":  $str =_("Create new FAI object")." - "._("Partition table");break;
       case "FAIpackageList"   :  $str =_("Create new FAI object")." - "._("Package bundle");break;
@@ -106,19 +106,19 @@ class askClassName extends plugin
       default                 :  $str =_("Create new FAI object");break;
     }
     $smarty->assign("headline",$str);
-    
+
     /* Save forbidden class names
      */
     $this->forbidden = $delete;
 
-    /* Delete all class names which already have this type of object 
+    /* Delete all class names which already have this type of object
      */
     foreach($delete as $del){
       unset($used[$del]);
     }
-   
-    /* if there is no class name which is missing for this type 
-     *  of objectClass, we only can create a new one, disable selectBox 
+
+    /* if there is no class name which is missing for this type
+     *  of objectClass, we only can create a new one, disable selectBox
      */
     if(count ($used)==0){
       $smarty->assign("ClassNamesAvailable", " disabled ");
@@ -134,33 +134,33 @@ class askClassName extends plugin
     return($display);
   }
 
-  /* Get posts and set class name 
-   */ 
+  /* Get posts and set class name
+   */
   function save_object()
   {
-    if(isset($_POST['classSelector']) && $_POST['classSelector'] == 1 
+    if(isset($_POST['classSelector']) && $_POST['classSelector'] == 1
        && isset($_POST['edit_continue'])){
       $this->ClassName          = $_POST['UseTextInputName'];
       $this->ClassAlreadyExists = true;
     }
-  
-    if(isset($_POST['classSelector']) && $_POST['classSelector'] == 2 
+
+    if(isset($_POST['classSelector']) && $_POST['classSelector'] == 2
        && isset($_POST['edit_continue'])){
       $this->ClassAlreadyExists = false;
       $this->ClassName          = $_POST['SelectedClass'];
     }
   }
 
-  /* Check given class name 
+  /* Check given class name
    */
   function check()
   {
     /* Call common method to give check the hook */
     $message= plugin::check();
 
-    if($this->objectClass == "FAIscript" && preg_match("/^-/", $this->ClassName)) { 
+    if($this->objectClass == "FAIscript" && preg_match("/^-/", $this->ClassName)) {
       $message[] = msgPool::invalid(_("Name"),preg_replace("/ /","_",$this->ClassName),"/[^_]/");
-    }   
+    }
 
     if($this->ClassName != preg_replace("/ /","",trim($this->ClassName))){
       $message[] = msgPool::invalid(_("Name"),preg_replace("/ /","_",$this->ClassName),"/[^_]/");
