@@ -33,6 +33,11 @@ if ( $cleanup ){
   session::un_set('blocklist');
 }else{
 
+  /* Reset requested? */
+  if (isset($_GET['reset']) && $_GET['reset'] == 1){
+    session::un_set ('blocklist');
+  }
+
   /* Create blocklist object on demand */
   if (!session::is_set('blocklist')){
     $blocklist= new blocklist ($config, $ui);
@@ -40,11 +45,6 @@ if ( $cleanup ){
   }
   $blocklist = session::get('blocklist');
   $display= $blocklist->execute();
-
-  /* Reset requested? */
-  if (isset($_GET['reset']) && $_GET['reset'] == 1){
-    session::un_set ('blocklist');
-  }
 
   /* Show and save dialog */
   session::set('blocklist',$blocklist);

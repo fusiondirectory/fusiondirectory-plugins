@@ -33,6 +33,11 @@ if ( $cleanup ){
   session::un_set('phoneConferenceManagment');
 }else{
 
+  /* Reset requested? */
+  if (isset($_GET['reset']) && $_GET['reset'] == 1){
+    session::un_set ('phoneConferenceManagment');
+  }
+
   /* Create phoneConferenceManagment object on demand */
   if (!session::is_set('phoneConferenceManagment')){
     $phoneConferenceManagment= new phoneConferenceManagment ($config, $ui);
@@ -40,11 +45,6 @@ if ( $cleanup ){
   }
   $phoneConferenceManagment = session::get('phoneConferenceManagment');
   $display= $phoneConferenceManagment->execute();
-
-  /* Reset requested? */
-  if (isset($_GET['reset']) && $_GET['reset'] == 1){
-    session::un_set ('phoneConferenceManagment');
-  }
 
   /* Show and save dialog */
   session::set('phoneConferenceManagment',$phoneConferenceManagment);

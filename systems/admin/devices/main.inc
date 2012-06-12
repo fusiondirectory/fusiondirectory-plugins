@@ -33,6 +33,11 @@ if ( $cleanup ){
   session::un_set('deviceManagement');
 }else{
 
+  /* Reset requested? */
+  if (isset($_GET['reset']) && $_GET['reset'] == 1){
+    session::un_set ('deviceManagement');
+  }
+
   /* Create devicemanagement object on demand */
   if (!session::is_set('deviceManagement')){
     $deviceManagement= new deviceManagement ($config, $ui);
@@ -40,11 +45,6 @@ if ( $cleanup ){
   }
   $deviceManagement = session::get('deviceManagement');
   $display= $deviceManagement->execute();
-
-  /* Reset requested? */
-  if (isset($_GET['reset']) && $_GET['reset'] == 1){
-    session::un_set ('deviceManagement');
-  }
 
   /* Show and save dialog */
   session::set('deviceManagement',$deviceManagement);

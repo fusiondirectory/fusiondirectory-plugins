@@ -33,6 +33,11 @@ if ( $cleanup ){
   session::un_set('gotomasses');
 }else{
 
+  /* Reset requested? */
+  if (isset($_GET['reset']) && $_GET['reset'] == 1){
+    session::un_set ('gotomasses');
+  }
+
   /* Create gotomasses object on demand */
   if (!session::is_set('gotomasses')){
     $gotomasses= new gotomasses ($config, $ui);
@@ -40,11 +45,6 @@ if ( $cleanup ){
   }
   $gotomasses = session::get('gotomasses');
   $display= $gotomasses->execute();
-
-  /* Reset requested? */
-  if (isset($_GET['reset']) && $_GET['reset'] == 1){
-    session::un_set ('gotomasses');
-  }
 
   /* Show and save dialog */
   session::set('gotomasses',$gotomasses);
