@@ -142,9 +142,9 @@ class ServerService extends management
     $this->dialog = TRUE;
     $s_entry = array_pop($target);
     if ($this->plugins[$s_entry]->acl_is_readable("")) {
-      $this->backup   = get_object_vars($this->plugins[$s_entry]);
-      $this->dialogObject   = $this->plugins[$s_entry];
-      $this->current  = $s_entry;
+      $this->backup       = get_object_vars($this->plugins[$s_entry]);
+      $this->dialogObject = $this->plugins[$s_entry];
+      $this->current      = $s_entry;
     }
   }
 
@@ -233,7 +233,7 @@ class ServerService extends management
       $new_obj = new $s_entry($this->config,$this->dn, $this);
       $new_obj->set_acl_base($this->acl_base);
       $new_obj->set_acl_category(preg_replace("/\/$/", "", $this->acl_category));
-      $tmp     = $new_obj->getListEntry();
+      $tmp = $new_obj->getListEntry();
 
       /* Check if we are allowed to remove this service
        */
@@ -452,34 +452,29 @@ class ServerService extends management
     $tmp = $this->getAllUsedServices();
     $pool_of_ocs = array();
     foreach ($tmp as $name => $value) {
+      $pool_of_ocs[] = get_class($this->plugins[$name]);
       if (isset($this->plugins[$name]->conflicts)) {
-        $pool_of_ocs[] = get_class($this->plugins[$name]);
+        $pool_of_ocs = array_merge($pool_of_ocs, $this->plugins[$name]->conflicts);
       }
     }
 
     $ret = array();
     foreach ($this->plugins as $name => $obj) {
+      if (!$obj->acl_is_createable()) {
+        continue;
+      }
 
       /* Skip all pluigns that will lead into conflicts */
-      $skip = FALSE;
       if (isset($obj->conflicts)) {
-        foreach ($obj->conflicts as $oc) {
-          if (in_array_ics($oc, $pool_of_ocs)) {
-            $skip = TRUE;
-          }
+        if (count(array_uintersect($obj->conflicts, $pool_of_ocs, "strcasecmp"))) {
+          continue;
         }
       }
 
-      if (!$obj->acl_is_createable()) {
-        $skip = TRUE;
-      }
-
-      if (!$skip) {
-        if (isset($obj->DisplayName)) {
-          $ret[$name] = $obj->DisplayName;
-        } else {
-          $ret[$name] = $name;
-        }
+      if (isset($obj->DisplayName)) {
+        $ret[$name] = $obj->DisplayName;
+      } else {
+        $ret[$name] = $name;
       }
     }
     return $ret;
@@ -526,16 +521,13 @@ class ServerService extends management
    */
   function save()
   {
-    $caseVars = array("cn","dn");
     foreach ($this->plugins as $name => $obj) {
       $this->updateServicesVars($name);
 
       if ($this->plugins[$name]->is_account) {
         $this->plugins[$name]->save();
-      } else {
-        if ($this->plugins[$name]->initially_was_account) {
-          $this->plugins[$name]->remove_from_parent();
-        }
+      } elseif ($this->plugins[$name]->initially_was_account) {
+        $this->plugins[$name]->remove_from_parent();
       }
     }
   }
