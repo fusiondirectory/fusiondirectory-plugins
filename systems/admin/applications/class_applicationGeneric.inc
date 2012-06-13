@@ -141,7 +141,7 @@ class application extends plugin
       $smarty->assign($name."ACL",$this->getacl($name, preg_match("/freeze/i",$this->FAIstate)));
     }
     $smarty->assign("IconReadable", $this->acl_is_readable("gosaApplicationIcon"));
- 
+
     /* Do we represent a valid group? */
     if (!$this->is_account && $this->parent === NULL){
       $display= "<img alt=\"\" src=\"images/small-error.png\" align=\"middle\">&nbsp;<b>".
@@ -163,7 +163,7 @@ class application extends plugin
     /* Reassign picture data, sometimes its corrupt cause we started a download of application scripts */
     session::set('binary',$this->iconData);
     session::set('binarytype',"image/jpeg");
-    
+
     $smarty->assign("rand", rand(0, 10000));
     $head = $this->generateTemplate();
     $this->gotoLogonScript= $this->generateTemplate().preg_replace('/.*### END HEADER ###/s', '', $this->gotoLogonScript);
@@ -187,7 +187,7 @@ class application extends plugin
       $smarty->assign("namemode", "readonly");
       $smarty->assign("selectmode", "disabled");
     }
-    
+
     /* Get random number for pictures */
     srand((double)microtime()*1000000);
     $smarty->assign("rand", rand(0, 10000));
@@ -224,7 +224,7 @@ class application extends plugin
     $release = preg_replace("/".preg_quote(get_ou("applicationRDN").$this->base, '/')."$/i","",$this->dn);
     $release = preg_replace("/^cn=[^,]+,/","",$release);
 
-    /* Get a list of all groups 
+    /* Get a list of all groups
      */
     $groups = array();
     $ldap= $this->config->get_ldap_link();
@@ -233,23 +233,23 @@ class application extends plugin
     while($attrs = $ldap->fetch()){
       $groups[$attrs['dn']] = array();
     }
-    
-    /* Check if there are groups, useing this application 
+
+    /* Check if there are groups, useing this application
      */
     $found = array();
     foreach($groups as $group => $data){
       $ldap->cd($release.$group);
       $ldap->search("(objectClass=gotoMenuEntry)",array("dn"));
       while($attrs = $ldap->fetch()){
-        $info = preg_replace("/".preg_quote($release.$group, '/')."$/","",$attrs['dn']); 
+        $info = preg_replace("/".preg_quote($release.$group, '/')."$/","",$attrs['dn']);
         if(preg_match("/^cn=".$this->cn."/",$info) && !preg_match("/ou=[^,]+,/",$info)){
           $found[] = $attrs['dn'];
         }
       }
     }
 
-    /* Create an error message an skip remove, if 
-        this application is still in use. 
+    /* Create an error message an skip remove, if
+        this application is still in use.
      */
     if(count($found)){
       msg_dialog::display(_("Error"), sprintf(_("Cannot remove application - it is still in use by these objects: %s"), "<br>".msgPool::buildList($found)), ERROR_DIALOG);
@@ -310,11 +310,11 @@ class application extends plugin
         if($this->acl_is_writeable($name)){
           $set = isset($_POST[$name]) && $_POST[$name] == 1;
           if(!$set && strstr($this->gosaApplicationFlags,$flag)){
-            $this->gosaApplicationFlags = str_replace($flag,"",$this->gosaApplicationFlags);  
+            $this->gosaApplicationFlags = str_replace($flag,"",$this->gosaApplicationFlags);
           }elseif($set && !preg_match("/".$flag."/",$this->gosaApplicationFlags)){
             $this->gosaApplicationFlags .= $flag;
           }
-        }  
+        }
       }
 
       /* Remove current picture */
@@ -353,7 +353,7 @@ class application extends plugin
           }
           pclose($sh);
 
-          unlink($fname); 
+          unlink($fname);
         } else {
 
           /* Load the new uploaded Photo */
@@ -380,7 +380,7 @@ class application extends plugin
 
         /* Activate new picture */
         $this->set_picture($_FILES['picture_file']['tmp_name']);
-      } 
+      }
 
       if(!$this->is_release()){
         $tmp = $this->get_allowed_bases();
@@ -445,7 +445,7 @@ class application extends plugin
       }
     }
 
-    /* Check if we are allowed to create or move this object 
+    /* Check if we are allowed to create or move this object
      */
     if($this->orig_dn == "new" && !$this->acl_is_createable($this->base)){
       $message[] = msgPool::permCreate();
@@ -467,6 +467,10 @@ class application extends plugin
     plugin::save();
     $this->attrs["gosaApplicationIcon"]= $this->gosaApplicationIcon;
 
+    /* Fix DOS line breaks in scripts */
+    $this->attrs['gotoLogonScript'] = preg_replace('/\\r\\n/', "\n", $this->attrs['gotoLogonScript']);
+    $this->attrs['gotoLogoffScript'] = preg_replace('/\\r\\n/', "\n", $this->attrs['gotoLogonScript']);
+
     /* Write back to ldap */
     $ldap= $this->config->get_ldap_link();
     $ldap->cat($this->dn, array('dn'));
@@ -481,11 +485,11 @@ class application extends plugin
 
       $ldap->cd($this->dn);
       $this->cleanup();
-      $ldap->modify ($this->attrs); 
+      $ldap->modify ($this->attrs);
       $this->handle_post_events("modify");
       new log("modify","application/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
     } else {
-      
+
       /* Remove gotoLogonScript if it is empty */
       if(empty($script))    {
         unset($this->attrs['gotoLogonScript']);
@@ -503,7 +507,7 @@ class application extends plugin
     }
   }
 
-  
+
   function is_release()
   {
     if(isset($this->parent->parent)){
@@ -545,12 +549,12 @@ class application extends plugin
       <table>
       <tr>
       <td>".
-      _("Application name"). 
-      "</td>  
+      _("Application name").
+      "</td>
       <td>
-      <input id='gosaApplicationName' name='cn' size='35' maxlength='60' 
-      value='".$this->cn."' 
-      title='"._("Application name to be displayed (i.e. below icons)")."'>                     
+      <input id='gosaApplicationName' name='cn' size='35' maxlength='60'
+      value='".$this->cn."'
+      title='"._("Application name to be displayed (i.e. below icons)")."'>
       </td>
       </tr>
       </table>";
@@ -572,7 +576,7 @@ class application extends plugin
   {
     plugin::PrepareForCopyPaste($source);
     $source_o = new application($this->config,$source['dn']);
-    $this->gosaApplicationIcon = $source_o->gosaApplicationIcon;     
+    $this->gosaApplicationIcon = $source_o->gosaApplicationIcon;
   }
 
 
