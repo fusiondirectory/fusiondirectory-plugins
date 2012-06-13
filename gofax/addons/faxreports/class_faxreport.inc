@@ -136,7 +136,7 @@ class faxreport extends plugin
       return($smarty->fetch(get_template_path('contents.tpl', TRUE)));
     } else {
       /* Connecting, selecting database */
-      $cfg = $this->config->data['SERVERS']['FAX'];
+      $cfg = $this->config->data['SERVERS']['FAX'][0];// FIXME : should support multiple FAX servers
       $cfg['DB'] = "gofax";
 
       $link = databaseManagement::connectDatabase($cfg);
@@ -296,7 +296,7 @@ class faxreport extends plugin
      ************/
 
       /* Connecting, selecting database */
-      $cfg = $this->config->data['SERVERS']['FAX'];
+      $cfg = $this->config->data['SERVERS']['FAX'][0];// FIXME : should support multiple FAX servers
       $link = databaseManagement::connectDatabase($cfg);
 
       @DEBUG (DEBUG_DB, __LINE__, __FUNCTION__, __FILE__,$query, "Database query");

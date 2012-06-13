@@ -52,7 +52,7 @@ foreach (array("FAX_SERVER", "FAX_LOGIN", "FAX_PASSWORD") as $val) {
 
 /* Load fax entry */
 $config = session::get('config');
-$cfg = $config->data['SERVERS']['FAX'];
+$cfg = $config->data['SERVERS']['FAX'][0]; // FIXME : should support multiple FAX servers
 $cfg['DB'] = 'gofax';
 $link = databaseManagement::connectDatabase($cfg);
 if (PEAR::isError($link)) {
