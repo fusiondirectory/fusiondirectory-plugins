@@ -34,7 +34,7 @@ class FAI
     $entries = array();
     foreach($res as $entry_dn => $data){
       if(!preg_match("/,".$name.",/",$entry_dn)) continue;
-      $entries[$entry_dn] = $data; 
+      $entries[$entry_dn] = $data;
     }
     return($entries);
   }
@@ -43,7 +43,7 @@ class FAI
 
 
   /* Returns all object for the given release.
-     This function resolves the releases  
+     This function resolves the releases
      from base up to the given dn.
    */
   static function get_all_objects_for_given_base($Current_DN,$filter,$detailed = false)
@@ -58,7 +58,7 @@ class FAI
 #      return($res);
     }
 
-    /* Collect some basic informations and initialize some variables */ 
+    /* Collect some basic informations and initialize some variables */
     $base_release       = FAI::get_release_dn($Current_DN);
     $previous_releases  = array_reverse(FAI::get_previous_releases_of_this_release($base_release,true));
 
@@ -76,7 +76,7 @@ class FAI
     foreach($previous_releases as $release){
 
       /* Get fai departments */
-      $deps_to_search = FAI::get_FAI_departments($release); 
+      $deps_to_search = FAI::get_FAI_departments($release);
 
       /* For every single department  (ou=hoos,ou ..) */
       foreach($deps_to_search as $fai_base){
@@ -100,19 +100,19 @@ class FAI
             }
           }
 
-          /* Seems to be an inherited class, apply current FAIstate to this classes 
+          /* Seems to be an inherited class, apply current FAIstate to this classes
            */
           if(!preg_match("/".preg_quote($base_release, '/')."$/i",$attr['dn'])){
-            $buffer['FAIstate'] = $FAIstate; 
+            $buffer['FAIstate'] = $FAIstate;
           }else{
 
             /* Seems to be created within this release department.
                This indicates - it can't be of state "freeze"
-             */             
+             */
             if(isset($attr['FAIstate'])){
               $buffer['FAIstate'] = $attr['FAIstate'][0];
             }else{
-              $buffer['FAIstate'] = "branch"; 
+              $buffer['FAIstate'] = "branch";
             }
           }
 
@@ -190,7 +190,7 @@ class FAI
     }else{
       $base = $dn;
     }
-    $res = array();  
+    $res = array();
 
     $ldap = $config->get_ldap_link();
     $ldap->cd($base);
@@ -209,7 +209,7 @@ class FAI
   /* Add this object to list of objects, that must be checked for release saving */
   static function prepare_to_save_FAI_object($Current_DN,$objectAttrs,$removed = false)
   {
-    /* Get ldap object */  
+    /* Get ldap object */
     global $config;
     $addObj['Current_DN'] = $Current_DN;
     $addObj['objectAttrs']= $objectAttrs;
@@ -229,7 +229,7 @@ class FAI
         if(!FAI::array_diff_FAI( $attrs,$objectAttrs)){
           $addObj['diff'] = FALSE;
         }
-      } 
+      }
     }else{
 
       /* If this is the last CLASS of a specific name (e.g. DEPOTSERVER)
@@ -239,10 +239,10 @@ class FAI
       $ldap->cd($config->current['BASE']);
       $obj_dn = FAI::get_parent_release_object($Current_DN,TRUE);
 
-      /* Dont't try to modify non FAIclasses  
+      /* Dont't try to modify non FAIclasses
        */
       if(!preg_match("/[^,]+,".preg_quote(get_ou("faiBaseRDN"), '/')."/i",$obj_dn)){
-        trigger_error("PLEASE check fai class handling in ".__LINE__." -> ".__FILE__);        
+        trigger_error("PLEASE check fai class handling in ".__LINE__." -> ".__FILE__);
         echo "<br>-->".$Current_DN."<br>";
         echo "<br>-->".$obj_dn."<br>";
       }else{
@@ -256,19 +256,19 @@ class FAI
           $cn    = $attrs['cn'][0];
 
           /* Check if this is the last with this name in the current release.
-              In this case we have to remove the package name 
+              In this case we have to remove the package name
               from all profiles in this release.
            */
           $classes = FAI::get_all_objects_for_given_base(FAI::get_release_dn($Current_DN),
-              "(&(objectClass=FAIclass)(cn=".$cn."))"); 
+              "(&(objectClass=FAIclass)(cn=".$cn."))");
 
           /* Check if this is the last class with this name */
           if(count($classes) == 1){
 
-            /* Get all FAI Profiles 
+            /* Get all FAI Profiles
              */
             $profiles = FAI::get_all_objects_for_given_base(FAI::get_release_dn($Current_DN),
-                "(&(objectClass=FAIprofile)(FAIclass=*))"); 
+                "(&(objectClass=FAIprofile)(FAIclass=*))");
 
             /* Walk though all profiles and remove the source class name
              */
@@ -346,7 +346,7 @@ class FAI
   {
     foreach($ar1 as $ak1 => $av1){
       if(!isset($ar2[$ak1]) || (!($av1 === $ar2[$ak1]))){
-        return(TRUE);    
+        return(TRUE);
       }elseif(is_array($av1)){
         $ret = (FAI::arr_diff($av1,$ar2[$ak1]));
         if($ret) {
@@ -366,7 +366,7 @@ class FAI
     global $config;
     /* Variable init*/
     $to_save = array();
-    
+
     $reload_fai_classes = FALSE;
 
     /* check which objects must be saved */
@@ -379,12 +379,12 @@ class FAI
       trigger_error("Can't save FAI objects, no array given.");
       return;
     }
-  
+
     foreach($FAI_objects_to_save as $Current_DN => $object){
       if($object['diff']){
         $sub_name = $Current_DN;
         while(isset($FAI_objects_to_save[$sub_name])){
-          $to_save[strlen($sub_name)][$sub_name] = $FAI_objects_to_save[$sub_name]; 
+          $to_save[strlen($sub_name)][$sub_name] = $FAI_objects_to_save[$sub_name];
           unset($FAI_objects_to_save[$sub_name]);
           $sub_name = preg_replace('/^[^,]+,/', '', $sub_name);
         }
@@ -392,7 +392,7 @@ class FAI
     }
     session::set('FAI_objects_to_save',$FAI_objects_to_save);
 
-    /* Sort list of objects that must be saved, and ensure that 
+    /* Sort list of objects that must be saved, and ensure that
        container   objects are safed, before their childs are saved */
     ksort($to_save);
     $tmp = array();
@@ -411,7 +411,7 @@ class FAI
       $removed    = $save['removed'];
       $objectAttrs= $save['objectAttrs'];
 
-      /* Get ldap object */ 
+      /* Get ldap object */
       $ldap = $config->get_ldap_link();
       $ldap->cd($config->current['BASE']);
 
@@ -429,8 +429,8 @@ class FAI
         $is_new = false;
       }
 
-      /* if parameter removed is true, we have to add FAIstate to the current attrs 
-         FAIstate should end with ...|removed after this operation */  
+      /* if parameter removed is true, we have to add FAIstate to the current attrs
+         FAIstate should end with ...|removed after this operation */
       if($removed ){
         $ldap->cat($Current_DN);
 
@@ -439,7 +439,7 @@ class FAI
           $ldap->cat($parent_obj);
         }
 
-        /* Check if we have found a suiteable object */ 
+        /* Check if we have found a suiteable object */
         if(!$ldap->count()){
           echo "Error can't remove this object ".$Current_DN;
           return;
@@ -463,11 +463,11 @@ class FAI
         }
       }
 
-      /* Check if this a leaf release or not */ 
+      /* Check if this a leaf release or not */
       if(count($following_releases) == 0 ){
 
-        /* This is a leaf object. It isn't inherited by any other object */    
-        if(DEBUG_FAI_FUNC) { 
+        /* This is a leaf object. It isn't inherited by any other object */
+        if(DEBUG_FAI_FUNC) {
           echo "<b>Saving directly, is a leaf object</b><br> ".$Current_DN;
           print_a($objectAttrs);
         }
@@ -481,9 +481,9 @@ class FAI
 
       }else{
 
-        /* This object is inherited by some sub releases */  
+        /* This object is inherited by some sub releases */
 
-        /* Get all releases, that inherit this object */ 
+        /* Get all releases, that inherit this object */
         $r = FAI::get_following_releases_that_inherit_this_object($Current_DN);
 
         /* Get parent object */
@@ -502,16 +502,16 @@ class FAI
           /* check if there is already an entry named like this,
              in one of our parent releases */
           if(!empty($parent_obj)){
-            if(DEBUG_FAI_FUNC) { 
+            if(DEBUG_FAI_FUNC) {
               echo "There is already an entry named like this.</b><br>";
 
               echo "<b>Saving main object</b>".$Current_DN;
               print_a($objectAttrs);
-            }    
+            }
             FAI::save_FAI_object($Current_DN,$objectAttrs);
 
             foreach($r as $key){
-              if(DEBUG_FAI_FUNC) { 
+              if(DEBUG_FAI_FUNC) {
                 echo "<b>Saving parent to following release</b> ".$key;
                 print_a($parent_attrs);
               }
@@ -519,21 +519,21 @@ class FAI
             }
           }else{
 
-            if(DEBUG_FAI_FUNC) { 
+            if(DEBUG_FAI_FUNC) {
               echo "<b>Saving main object</b>".$Current_DN;
               print_a($objectAttrs);
             }
             FAI::save_FAI_object($Current_DN,$objectAttrs);
 
             if(isset($objectAttrs['FAIstate'])){
-              $objectAttrs['FAIstate'] .= "|removed"; 
+              $objectAttrs['FAIstate'] .= "|removed";
             }else{
               $objectAttrs['FAIstate'] = "|removed";
             }
 
             foreach($r as $key ){
-              if(DEBUG_FAI_FUNC) { 
-                echo "<b>Create an empty placeholder in follwing release</b> ".$key; 
+              if(DEBUG_FAI_FUNC) {
+                echo "<b>Create an empty placeholder in follwing release</b> ".$key;
                 print_a($objectAttrs);
               }
               FAI::save_FAI_object($key,$objectAttrs);
@@ -545,13 +545,13 @@ class FAI
           if(!empty($r)){
 
             foreach($r as $key ){
-              if(DEBUG_FAI_FUNC) { 
+              if(DEBUG_FAI_FUNC) {
                 echo "<b>Copy current objects original attributes to next release</b> ".$key;
                 print_a($parent_attrs);
               }
-             
+
               /* Append FAIstate tag to ensure that freezed objects stay freezed
-               */ 
+               */
               $rTag = FAI::get_release_tag(FAI::get_release_dn($key));
               $parent_attrs['FAIstate'] = $rTag;
 
@@ -565,7 +565,7 @@ class FAI
             }
           }
 
-          if(DEBUG_FAI_FUNC) { 
+          if(DEBUG_FAI_FUNC) {
             echo "<b>Saving current object</b>".$parent_obj;
             print_a($objectAttrs);
           }
@@ -590,7 +590,7 @@ class FAI
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
 
-    /* Collect some basic informations and initialize some variables */ 
+    /* Collect some basic informations and initialize some variables */
     $base_release       = FAI::get_release_dn($Current_DN);
     $previous_releases  = array_reverse(FAI::             get_previous_releases_of_this_release($base_release,true));
     $Kill = array();
@@ -603,7 +603,7 @@ class FAI
     foreach($previous_releases as $release){
 
       /* Get fai departments */
-      $deps_to_search = FAI::get_FAI_departments($release); 
+      $deps_to_search = FAI::get_FAI_departments($release);
 
       /* For every single department  (ou=hoos,ou ..) */
       foreach($deps_to_search as $fai_base){
@@ -621,13 +621,13 @@ class FAI
 
           if(isset($attr['FAIstate'][0])&&(preg_match("/removed$/",$attr['FAIstate'][0]))){
 
-            /* Check if this object is required somehow */    
+            /* Check if this object is required somehow */
             if(!isset($Skip[$name])){
               $Kill[$attr['dn']] = $attr['dn'];
             }
           }else{
 
-            /* This object is required (not removed), so do not 
+            /* This object is required (not removed), so do not
                delete any following sub releases of this object */
             $Skip[$name] = $attr['dn'];
           }
@@ -676,7 +676,7 @@ class FAI
       /* Unset description if empty  */
       if(empty($attrs['description'])){
         unset($attrs['description']);
-      }    
+      }
 
       $ldap->add($attrs);
     }
@@ -755,7 +755,7 @@ class FAI
     /* Get base release */
     $base_release = FAI::get_release_dn($dn);
     if($include_myself){
-      $previous_releases[] = $base_release;  
+      $previous_releases[] = $base_release;
     }
 
     /* Get previous release dns */
@@ -793,11 +793,11 @@ class FAI
     $dns_to_check = gosa_ldap_explode_dn(preg_replace("/".preg_quote(",".$config->current['BASE'], '/')."/i","",$dn));
 
     if(!is_array($dns_to_check)){
-      return;  
+      return;
     }
 
     /* Unset first entry which represents the given dn */
-    unset($dns_to_check['count']); 
+    unset($dns_to_check['count']);
     unset($dns_to_check[key($dns_to_check)]);
 
     /* Create dns addresses and check if this dn is a release dn */
@@ -814,9 +814,9 @@ class FAI
       /* check if this dn is a release */
       if(FAI::is_release_department($new_dn)){
         if($flat){
-          $ret[$id] = $new_dn; 
+          $ret[$id] = $new_dn;
         }else{
-          $ret = array($new_dn=>$ret); 
+          $ret = array($new_dn=>$ret);
         }
         $id ++;
       }else{
@@ -826,7 +826,7 @@ class FAI
       unset($dns_to_check[key($dns_to_check)]);
     }
     return($ret);
-  } 
+  }
 
 
   /* This function returns all sub release names, recursivly  */
@@ -876,7 +876,7 @@ class FAI
 
       $ou = "";
       if(isset($attrs['ou'][0])){
-        $ou = $attrs['ou'][0];	
+        $ou = $attrs['ou'][0];
       }
 
       if((in_array("FAIbranch",$attrs['objectClass'])) || ($ou == "fai")){
@@ -897,7 +897,7 @@ class FAI
 
     $sub_releases = array();
     $source_dn = "";
-    
+
     $tmp = explode("/",$source_release);
     foreach($tmp as $part){
       if(empty($part)){
@@ -916,7 +916,7 @@ class FAI
       $groups[$attrs['dn']] = $attrs;
     }
 
-    /* Get all FAI releases, to be able to create missing group application releases 
+    /* Get all FAI releases, to be able to create missing group application releases
         with the correct type of release (FAIstate=freeze/branch).
      */
     $f_releases = array();
@@ -941,7 +941,7 @@ class FAI
     }
 
     /* Check if base releases exists.
-       If they do not exist, create them and adapt FAIstate attribute from FAI releases. 
+       If they do not exist, create them and adapt FAIstate attribute from FAI releases.
      */
     foreach($sub_releases as $name => $sub_rel){
 
@@ -959,7 +959,7 @@ class FAI
           if(!empty($FAIstate)) {
             $r_data['FAIstate'] = $FAIstate;
           }
- 
+
           $ldap->cd($sub_rel.$dn) ;
           $ldap->add($r_data);
           echo "&nbsp;<b>"._("Object").":</b> ";
@@ -967,8 +967,8 @@ class FAI
           flush();
         }
       }
-    } 
- 
+    }
+
     /* Create new release container in each group.
      */
     $n_data = array();
@@ -990,10 +990,10 @@ class FAI
       }
     }
 
-    /* If the source release is empty, then create a new release by copying 
+    /* If the source release is empty, then create a new release by copying
         all group application menus into a new ou=$destination_name release container.
-      
-       If the source release is not empty. 
+
+       If the source release is not empty.
          We detect all releases which match the source release dn and copy the contents.
      */
     if(empty($source_release)){
@@ -1002,12 +1002,12 @@ class FAI
       $source_dns = array();
       foreach($g_releases as $dn => $data){
         if(preg_match("/^".preg_quote($source_dn, '/')."/",$dn)){
-          $source_dns[$dn] = $data; 
+          $source_dns[$dn] = $data;
         }
       }
     }
 
-    /* Detect all menu object we have to copy 
+    /* Detect all menu object we have to copy
      */
     $to_copy = array();
     foreach($source_dns as $dn => $attrs){
@@ -1018,7 +1018,7 @@ class FAI
         $to_copy[$attrs['dn']] = $destination;
       }
     }
-   
+
     /* At least create the menu objects object */
     $plug = new plugin($config);
     foreach($to_copy as $source => $destination){
@@ -1141,7 +1141,7 @@ class FAI
          */
         foreach($attr as $key => $value){
 
-          if(in_array($key ,array("gotoLogonScript", "gosaApplicationIcon","gotoMimeIcon"))){
+          if(in_array($key ,array("gotoLogonScript", "gotoLogoffScript", "gosaApplicationIcon","gotoMimeIcon"))){
             $sr= ldap_read($ldap->cid, LDAP::fix($sourcedn), "$key=*", array($key));
             $ei= ldap_first_entry($ldap->cid, $sr);
             if ($tmp= @ldap_get_values_len($ldap->cid, $ei,$key)){
@@ -1221,20 +1221,20 @@ class FAI
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
 
-    /* Split dn into pices */ 
+    /* Split dn into pices */
     $dns_to_check = gosa_ldap_explode_dn(preg_replace("/".preg_quote(",".$config->current['BASE'], '/')."/i","",$Current_DN));
 
     if(!is_array($dns_to_check)){
-      return;  
+      return;
     }
 
-    /* Use dn pieces, to create sub dns like 
+    /* Use dn pieces, to create sub dns like
        ou=test,ou=1,ou=0...
        ou=1,ou=0...
-       ou=0... 
+       ou=0...
        To check which dn is our release container.
      */
-    unset($dns_to_check['count']); 
+    unset($dns_to_check['count']);
     while(count($dns_to_check)){
 
       /* Create dn */

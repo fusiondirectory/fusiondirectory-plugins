@@ -44,7 +44,7 @@ class application extends plugin
 
   /* attribute list for save action */
   var $attributes= array("cn", "description", "gosaApplicationExecute", "gosaApplicationName","gosaApplicationIcon",
-      "gosaApplicationFlags","gotoLogonScript");
+      "gosaApplicationFlags","gotoLogonScript","gotoLogoffScript");
 
   var $objectclasses= array("top", "gosaApplication");
   var $FAIstate ="";
@@ -152,8 +152,12 @@ class application extends plugin
     /* Download requested */
     foreach($_POST as $name => $value){
       if(preg_match("/^downloadScript/",$name)){
-        session::set('binary',$this->gotoLogonScript);
-        session::set('binarytype',"octet-stream");
+        if(preg_match("/^downloadScriptOn/",$name)){
+          session::set('binary',$this->gotoLogonScript);
+        }
+        elseif (preg_match("/^downloadScriptOff/",$name)){
+          session::set('binary',$this->gotoLogoffScript);
+        }        session::set('binarytype',"octet-stream");
         session::set('binaryfile',$this->cn.".gosaApplication");
         header("location: getbin.php ");
         exit();
@@ -167,10 +171,16 @@ class application extends plugin
     $smarty->assign("rand", rand(0, 10000));
     $head = $this->generateTemplate();
     $this->gotoLogonScript= $this->generateTemplate().preg_replace('/.*### END HEADER ###/s', '', $this->gotoLogonScript);
+    $this->gotoLogoffScript= $this->generateTemplate().preg_replace('/.*### END HEADER ###/s', '', $this->gotoLogoffScript);
 
-    if((isset($_POST['upLoad']))&&(isset($_FILES['ScriptFile'])) && !preg_match("/freeze/i",$this->FAIstate)){
-      $str = file_get_contents($_FILES['ScriptFile']['tmp_name']);
+    if((isset($_POST['upLoadOn']))&&(isset($_FILES['ScriptFileOn'])) && !preg_match("/freeze/i",$this->FAIstate)){
+      $str = file_get_contents(gosa_file_name($_FILES['ScriptFileOn']['tmp_name']));
       $this->gotoLogonScript = $str;
+    }
+
+    if((isset($_POST['upLoadOff']))&&(isset($_FILES['ScriptFileOff'])) && !preg_match("/freeze/i",$this->FAIstate)){
+      $str = file_get_contents(gosa_file_name($_FILES['ScriptFileOff']['tmp_name']));
+      $this->gotoLogoffScript = $str;
     }
 
     /* Fill templating stuff */
@@ -210,6 +220,7 @@ class application extends plugin
 
     $smarty->assign("isReleaseApplikation" ,$this->is_release());
     $smarty->assign("gotoLogonScript",htmlentities($this->gotoLogonScript, ENT_COMPAT, 'UTF-8'));
+    $smarty->assign("gotoLogoffScript",htmlentities($this->gotoLogoffScript, ENT_COMPAT, 'UTF-8'));
     $smarty->assign("base_select", $this->base);
     /* Show main page */
     return($smarty->fetch (get_template_path('generic.tpl', TRUE)));
@@ -461,7 +472,8 @@ class application extends plugin
   function save()
   {
     /* Get application script without header part, to check if we must save the script itself */
-    $script = preg_replace('/.*### END HEADER ###/s', '', $this->gotoLogonScript);
+    $scriptOn = preg_replace('/.*### END HEADER ###/s', '', $this->gotoLogonScript);
+    $scriptOff = preg_replace('/.*### END HEADER ###/s', '', $this->gotoLogoffScript);
 
     $this->gosaApplicationFlags ="[{$this->gosaApplicationFlags}]";
     plugin::save();
@@ -479,8 +491,13 @@ class application extends plugin
     if (count($a)){
 
       /* Remove gotoLogonScript if it is empty */
-      if(empty($script))    {
+      if(empty($scriptOn)) {
         $this->attrs['gotoLogonScript'] = array();
+      }
+
+      /* Remove gotoLogoffScript if it is empty */
+      if(empty($scriptOff))    {
+        $this->attrs['gotoLogoffScript'] = array();
       }
 
       $ldap->cd($this->dn);
@@ -491,8 +508,13 @@ class application extends plugin
     } else {
 
       /* Remove gotoLogonScript if it is empty */
-      if(empty($script))    {
+      if(empty($scriptOn)) {
         unset($this->attrs['gotoLogonScript']);
+      }
+
+      /* Remove gotoLogoffScript if it is empty */
+      if(empty($scriptOff))    {
+        unset($this->attrs['gotoLogoffScript']);
       }
 
       $ldap->cd($this->config->current['BASE']);
@@ -601,6 +623,7 @@ class application extends plugin
             "gosaApplicationName"     => _("Name"),
             "gosaApplicationIcon"     => _("Icon"),
             "gotoLogonScript"         => _("Script content"),
+            "gotoLogoffScript"        => _("Script content"),
 
             "execForGroupmembers" => _("Only executable for members"),              // G
             "placeOnDesktop"      => _("Place icon on members desktop"),            // D

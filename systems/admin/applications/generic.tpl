@@ -15,7 +15,7 @@
      <td><LABEL for="gosaApplicationName">{t}Display name{/t}</LABEL></td>
      <td>
 {render acl=$gosaApplicationNameACL}
-        <input id="gosaApplicationName" name="gosaApplicationName" size=35 maxlength=60 
+        <input id="gosaApplicationName" name="gosaApplicationName" size=35 maxlength=60
     value="{$gosaApplicationName}" title="{t}Application name to be displayed (i.e. below icons){/t}">
 {/render}
      </td>
@@ -24,7 +24,7 @@
      <td><LABEL for="gosaApplicationExecute">{t}Execute{/t}{$must}</LABEL></td>
      <td>
 {render acl=$gosaApplicationExecuteACL}
-        <input id="gosaApplicationExecute" name="gosaApplicationExecute" size=35 maxlength=120 
+        <input id="gosaApplicationExecute" name="gosaApplicationExecute" size=35 maxlength=120
     value="{$gosaApplicationExecute}" title="{t}Path and/or binary name of application{/t}">
 {/render}
      </td>
@@ -42,7 +42,7 @@
       <td><LABEL for="base">{t}Base{/t}{$must}</LABEL></td>
       <td>
 {render acl=$baseACL}
-       <select size="1" id="base" name="base" title="{t}Choose subtree to place application in{/t}" 
+       <select size="1" id="base" name="base" title="{t}Choose subtree to place application in{/t}"
         {if $isReleaseApplikation} disabled {/if}>
         {html_options options=$bases selected=$base_select}
        </select>
@@ -131,17 +131,30 @@
 <table width="99%" summary="">
   <tr>
     <td>
-      <h2><img src="plugins/systems/images/logon_script.png" alt="{t}Script{/t}" align="middle">&nbsp;{t}Script{/t}</h2>
+      <h2><img src="plugins/systems/images/logon_script.png" alt="{t}Logon script{/t}" align="middle">&nbsp;{t}Script{/t}</h2>
 {render acl=$gotoLogonScriptACL}
       <textarea name="gotoLogonScript" style='width:99%;height:220px;'>{$gotoLogonScript}</textarea>
 {/render}
 {render acl=$gotoLogonScriptACL}
-      <input type="file" name="ScriptFile" value="{t}Import{/t}">
+      <input type="file" name="ScriptFileOn" value="{t}Import{/t}">
 {/render}
 {render acl=$gotoLogonScriptACL}
-      <input type="submit" name="upLoad" value="{t}Upload{/t}">
+      <input type="submit" name="upLoadOn" value="{t}Upload{/t}">
 {/render}
-      <input type='image' name='downloadScript'  src='images/save.png' title='{t}Download{/t}' class='center'>
+      <input type='image' name='downloadScriptOn'  src='images/save.png' title='{t}Download{/t}' class='center'>
+
+      <h2>{t}Log off script{/t}</h2>
+{render acl=$gotoLogoffScriptACL}
+      <textarea name="gotoLogoffScript" style='width:99%;height:220px;'>{$gotoLogoffScript}</textarea>
+{/render}
+{render acl=$gotoLogoffScriptACL}
+      <input type="file" name="ScriptFileOff" value="{t}Import{/t}">
+{/render}
+{render acl=$gotoLogoffScriptACL}
+      <button type='submit' name='upLoadOff'>{t}Upload{/t}</button>
+
+{/render}
+      {image path="images/save.png" action="downloadScriptOff" title="{t}Download{/t}"}
     </td>
   </tr>
 </table>
