@@ -28,7 +28,7 @@ class printerPPDDialog extends plugin
   var $objectclasses        = array("whatever");
 
   /* PPD Handling */
-  var $selectedPPD          = false;        // e.g. /vendor/device.ppd 
+  var $selectedPPD          = false;        // e.g. /vendor/device.ppd
   var $ppdManager           = false;        // new ppdManager;
   var $ppdConfig            = false;        // $this->ppdManager->loadProperties($this->selectedPPD['link']);
   var $ppdList              = array();      // Contains all Printer models
@@ -36,15 +36,15 @@ class printerPPDDialog extends plugin
 
   /* Paths */
   var $pathToPPD            = "";           // Base path, defined in fusiondirectory.conf e.g. "/var/spool/ppd/"
-  var $pathToModified       = "modified/";  // used to store the modified ppds  
-      
+  var $pathToModified       = "modified/";  // used to store the modified ppds
+
   /* Object Info */
-  var $cn                   = "" ;          // Used to tag the ppds modified by the printer object, 
+  var $cn                   = "" ;          // Used to tag the ppds modified by the printer object,
   var $ui;
 
-  /* If there is already a ppd file for the same type of printer, 
-   *  remember the path to ppd file and display a dialog which allows 
-   *  to overwrite the current ppd file. 
+  /* If there is already a ppd file for the same type of printer,
+   *  remember the path to ppd file and display a dialog which allows
+   *  to overwrite the current ppd file.
    */
   var $add_ppd_later            = "";
   var $add_later_msg_dialog     = NULL;
@@ -68,14 +68,14 @@ class printerPPDDialog extends plugin
       $this->pathToPPD = "";
     }
 
-    /* Check if ppdPath is set in fusiondirectory.conf. 
+    /* Check if ppdPath is set in fusiondirectory.conf.
      */
     if(empty($this->pathToPPD)){
       msg_dialog::display(_("Configuration error"), msgPool::invalidConfigurationAttribute("ppdPath"), ERROR_DIALOG);
     }
 
     /* It seams that we have an existing PPD path, so go on */
-    if(!((!is_dir($this->pathToPPD))||(empty($this->pathToPPD)))){ 
+    if(!((!is_dir($this->pathToPPD))||(empty($this->pathToPPD)))){
 
       /* Load all available PPD files and sort them into an array */
       $this->ppdManager= new ppdManager($this->pathToPPD);
@@ -83,8 +83,8 @@ class printerPPDDialog extends plugin
 
       /* The user has already a valid PPD assigned
        * Get some informations about this PPD
-       * and set it as selected. 
-       * The ppdpath ['link'] should be relative from .../ppd/modified/ 
+       * and set it as selected.
+       * The ppdpath ['link'] should be relative from .../ppd/modified/
        *     e.g. "/Compaq/Compaq-J1200.ppd" */
       if(($ppdfile!== NULL)&&(strlen($ppdfile)>0)){
         $ppdfile = preg_replace("#".$this->pathToModified."#","",$ppdfile);
@@ -92,12 +92,12 @@ class printerPPDDialog extends plugin
           msg_dialog::display(_("PPD error"), sprintf(_("Cannot open PPD '%s'!"), $ppdfile), ERROR_DIALOG);
         }else{
           $ppdDesc = $this->ppdManager->loadDescription($this->pathToPPD.$this->pathToModified.$ppdfile);
-          if($ppdDesc){            
-            $selectedPPD = array(); 
+          if($ppdDesc){
+            $selectedPPD = array();
             $selectedPPD['name']   = $ppdDesc['name'];
             $selectedPPD['link']   = $ppdfile;
             $selectedPPD['ppd']    = $ppdDesc;
-          }    
+          }
           $this->selectedPPD = $selectedPPD;
         }
       }
@@ -135,9 +135,9 @@ class printerPPDDialog extends plugin
     foreach($paths as $path){
 
       /* Check if path is write/readable*/
-      $is_r = @is_readable($path);  
+      $is_r = @is_readable($path);
       if(((!is_dir($path))||(empty($path)) || (!$is_r)) && (!@mkdir($path))){
-        msg_dialog::display(_("Configuration error"), 
+        msg_dialog::display(_("Configuration error"),
             sprintf(_("Cannot open PPD path '%s' for reading and writing!"), $path), ERROR_DIALOG);
 
         /* Print out template */
@@ -146,7 +146,7 @@ class printerPPDDialog extends plugin
       }
     }
 
-    // PPD selection / upload / dialog handling 
+    // PPD selection / upload / dialog handling
 
     /* Is there a new PPD file uploaded ? */
     if(preg_match("/w/",$acl)){
@@ -154,7 +154,7 @@ class printerPPDDialog extends plugin
         $file = ($_FILES['NewPPDFile']);
         if($file['size'] != 0 ){
           if($name = $this->AddPPD($file['tmp_name'])){
-            $this->SelectPPD($name); 
+            $this->SelectPPD($name);
           }
         }else{
           msg_dialog::display(_("PPD error"), msgPool::incorrectUpload(_("file is empty")), ERROR_DIALOG);
@@ -169,7 +169,7 @@ class printerPPDDialog extends plugin
       }
       $this->add_ppd_later = "";
       $this->add_later_msg_dialog = NULL;
-    } 
+    }
 
     /* Open a dialog that allow us to select different PPDs */
     if(preg_match("/w/",$acl)){
@@ -184,7 +184,7 @@ class printerPPDDialog extends plugin
       $this->dialog=FALSE;
     }
 
-    /* Div Selection */ 
+    /* Div Selection */
     if((isset($_GET['act']))&&($_GET['act']=="use")){
       $this->SelectPPD(base64_decode($_GET['id']));
       unset($this->dialog);
@@ -198,7 +198,7 @@ class printerPPDDialog extends plugin
       return($display);
     }
 
-    // ENDE  PPD selection / upload / dialog handling 
+    // ENDE  PPD selection / upload / dialog handling
 
     /* Give smarty the information it needs */
     $smarty->assign("ppdString" ,$this->getPPDInformation());
@@ -219,25 +219,25 @@ class printerPPDDialog extends plugin
   /* Select PPD */
   function SelectPPD($name)
   {
-    /* Replace base path we don't need it here 
-       The path we need looks like this : "/Vendor/ModellName.ppd"; 
+    /* Replace base path we don't need it here
+       The path we need looks like this : "/Vendor/ModellName.ppd";
        thats all */
     $name = preg_replace("#".$this->pathToPPD."#","",$name);
 
     /* Intialise some base vars */
-    $AbsoluteSourceName       = $this->pathToPPD.$name;   
+    $AbsoluteSourceName       = $this->pathToPPD.$name;
     $AbsoluteDestinationPath  = $this->pathToPPD.$this->pathToModified;
-    $Vendor                   = ""; // Vendor 
-    $Name                     = ""; // Name 
+    $Vendor                   = ""; // Vendor
+    $Name                     = ""; // Name
     $Modell                   = ""; // Modell
-    $PrinterName              = ""; // The new name of the printer 
+    $PrinterName              = ""; // The new name of the printer
     $PPDName                  = "";
- 
-    /* Force reload of config dialog */ 
+
+    /* Force reload of config dialog */
     $this->ppdConfig            = false;
     $this->selectedPPD['link']  = false;
 
-    /* Get PPD informations and set vendor / modell / name */ 
+    /* Get PPD informations and set vendor / modell / name */
     if((!file_exists($AbsoluteSourceName)) || (!is_readable($AbsoluteSourceName))){
       msg_dialog::display(_("PPD error"), msgPool::cannotReadFile($AbsoluteSourceName), ERROR_DIALOG);
       return;
@@ -247,11 +247,11 @@ class printerPPDDialog extends plugin
       $Name   = $ppdDesc['name'];
       $Vendor = $ppdDesc['manufacturer'];
       $Model  = $ppdDesc['model'];
-    }    
+    }
 
     $PrinterName  = $this->cn."-".preg_replace("/[^a-z0-9-_\.]/i","_",$Name);
     $PPDName      = $Vendor."/".$PrinterName.".ppd";
-    
+
     /* Create the vendors path, if it doesn't exists already */
     if(!is_dir($AbsoluteDestinationPath.$Vendor)){
       if(!(@mkdir($AbsoluteDestinationPath.$Vendor))){
@@ -260,11 +260,19 @@ class printerPPDDialog extends plugin
       }
     }
 
-    /* Create destination file handle */
-    $fp = @fopen($AbsoluteDestinationPath.$PPDName,"w+");
-    if(!$fp){
-      msg_dialog::display(_("PPD error"), msgPool::cannotWriteFile($AbsoluteDestinationPath.$PPDName), ERROR_DIALOG);
-      return(false);
+    /* Test if destination is different from copy */
+    if ($AbsoluteSourceName != $AbsoluteDestinationPath.$PPDName) {
+
+      /* Create destination file handle */
+      $fp = @fopen($AbsoluteDestinationPath.$PPDName,"w+");
+      if (!$fp) {
+        msg_dialog::display(_("PPD error"), msgPool::cannotWriteFile($AbsoluteDestinationPath.$PPDName), ERROR_DIALOG);
+        return(false);
+      }
+
+      $str = file_get_contents($AbsoluteSourceName);
+      fputs($fp,$str);
+      @fclose($fp);
     }
 
     $str = file_get_contents($AbsoluteSourceName);
@@ -275,13 +283,13 @@ class printerPPDDialog extends plugin
 
     $tmp3['link']   =$PPDName;
     $this->selectedPPD = $tmp3;
-    $this->getPrinterReload(); 
+    $this->getPrinterReload();
     return($PPDName);
   }
 
 
-  /* This function adds a new ppd file to the list of available ppds. 
-     All required paths and files will be created 
+  /* This function adds a new ppd file to the list of available ppds.
+     All required paths and files will be created
       $_PathOnHdd e.g. = /tmp/PHP_tmpfile213452 */
   function AddPPD($_PathOnHdd,$overwrite = FALSE)
   {
@@ -290,17 +298,17 @@ class printerPPDDialog extends plugin
       msg_dialog::display(_("PPD error"), msgPool::cannotReadFile($_PathOnHdd), ERROR_DIALOG);
       return(false);
     }
-    
+
     /* Reload list to detect changes e.g. a file has been deleted */
     $this->getPrinterReload();
 
-    /* Get Description from ppd, & parse out some informations */   
+    /* Get Description from ppd, & parse out some informations */
     $ppdDesc  = @$this->ppdManager->loadDescription($_PathOnHdd);
     if($ppdDesc){
       $name   = preg_replace("/\//","-",$ppdDesc['name']);
       $vendor = $ppdDesc['manufacturer'];
       $model  = $ppdDesc['model'];
-    }    
+    }
 
     /* Check if parse was successfull */
     if(empty($name) || empty($vendor)){
@@ -346,7 +354,7 @@ class printerPPDDialog extends plugin
         return(false);
       }
     }
-  
+
     /* Open file handle */
     $fp           = fopen($filename,"w+");
 
@@ -359,7 +367,7 @@ class printerPPDDialog extends plugin
       msg_dialog::display(_("PPD error"), msgPool::incorrectUpload(_("file is empty")), ERROR_DIALOG);
       return;
     }
-    
+
     /* Fille file with data */
     fputs($fp,$contents);
     @fclose($fp);
@@ -369,13 +377,13 @@ class printerPPDDialog extends plugin
   }
 
 
-  /* This function reloads the list of available printers/vendors 
-     $this->ppdListHeader 
+  /* This function reloads the list of available printers/vendors
+     $this->ppdListHeader
      Compaq        => 1
      $this->ppdList
-     Compaq => Compaq IJ1200 => name => Compaq IJ1200 
+     Compaq => Compaq IJ1200 => name => Compaq IJ1200
      link => /var/spool/ppd/Compaq/Compaq-J1200.ppd
-     ppd  => Compaq - Co    
+     ppd  => Compaq - Co
    */
   function getPrinterReload()
   {
@@ -386,13 +394,13 @@ class printerPPDDialog extends plugin
 
       /* Sort all available files, and create header (Vendor index) */
       foreach($tmp as $file=>$ppd){
-               
+
         if(preg_match("#".preg_quote($this->pathToModified,'#')."#",$file)) continue;
 
         if(!isset($this->ppdListHeader[$ppd['manufacturer']])){
           $this->ppdListHeader[$ppd['manufacturer']]=0;
         }
-       
+
         $tmp3['name']   =$ppd['name'];
         $tmp3['link']   =$file;
         $tmp3['ppd']    =$ppd;
@@ -439,7 +447,7 @@ class printerPPDDialog extends plugin
   }
 
 
-  /* Get Information for a single PPD entry 
+  /* Get Information for a single PPD entry
    * This will be shown on top of template
    */
   function getPPDInformation()
@@ -449,12 +457,12 @@ class printerPPDDialog extends plugin
       $ppdDesc = $this->ppdManager->loadDescription($this->pathToPPD.$this->pathToModified.$this->selectedPPD['link']);
       $str = $ppdDesc['name'];
     }
-    return($str) ; 
+    return($str) ;
   }
 
   /* Display all options from the selected ppd file */
   function generateProperties()
-  { 
+  {
     /* Set Headline */
     $str = "";
     $feed= "";
@@ -481,13 +489,13 @@ class printerPPDDialog extends plugin
           $feed= "<br>";
         }
         $str .= "<b>"._("Section")." '".$cat."'&nbsp;</b><br>";
-        $str .= "</td></tr>";       
+        $str .= "</td></tr>";
 
         /* Add attributes of the current category */
         foreach($obj as $attr => $settings){
 
           /* Skip all entries beginning with _ */
-          if($attr[0] == "_") continue;  
+          if($attr[0] == "_") continue;
 
           /* Prepare data */
           $values   = array();
@@ -501,12 +509,12 @@ class printerPPDDialog extends plugin
 
           $type     = $settings['_type'];
 
-          /* Add name to table */ 
+          /* Add name to table */
           $str .= "<tr><td style='padding-left:40px;'>\n";
           $str .= $name."<br>\n";
           $str .= "</td><td>\n";
 
-          /* Get all values */ 
+          /* Get all values */
           foreach( $settings as $vname => $value){
             if($vname[0] != "_"){
               $values[$vname]= $value;
@@ -545,7 +553,7 @@ class printerPPDDialog extends plugin
             }else{
               $str  .=    "<option value='True' selected>"._("True")."</option>\n";
               $str  .=    "<option value='False' >"._("False")."</option>\n";
-            }          
+            }
             $str  .=  "</select>\n";
 
           }elseif($this->config->get_cfg_value("displayerrors") == "true"){
@@ -581,14 +589,14 @@ class printerPPDDialog extends plugin
     $this->SelectPPD("modified/".$this->selectedPPD['link']);
     return("modified/".$this->selectedPPD['link']);
   }
-  
+
   function check()
-  {  
+  {
     $message = plugin::check();
     if(empty($this->selectedPPD['link'])){
       $message[] = _("Please select a valid ppd file or use 'Cancel' to go back to printer configuration.");
     }
-    return($message); 
+    return($message);
   }
 }
 // vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
