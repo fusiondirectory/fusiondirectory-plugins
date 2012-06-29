@@ -21,13 +21,13 @@
 */
 
 #
-# NewDevices 
+# NewDevices
 # -> Edit
 #     |- SelectDeviceType()        (Allows to select target SystemType and OGroup)
 # -> Save
-#     |-> systemTypeChosen()       (Queue entry to be activated) 
+#     |-> systemTypeChosen()       (Queue entry to be activated)
 #     |-> handleActivationQueue()  (Now acticvate queued objects)
-#       |-> Ogroup selected   
+#       |-> Ogroup selected
 #       | |-> Try to adapt values from ogroup and save directly.
 #       |
 #       |-> NO Ogroup selected
@@ -39,8 +39,8 @@
 # NewArpDevices (NewUnknwonDevices )
 # -> Edit
 #     |-> editEntry - ArpNewDeviceTabs
-# -> Save       
-#     |-> NO gotoIntegeration 
+# -> Save
+#     |-> NO gotoIntegeration
 #     | |-> Save DHCP and DNS entries, then remove the source entry from ldap.
 #     |
 #     |-> gotoIntegration selected (Handle object like a NewDevice now)
@@ -60,14 +60,14 @@ class systemManagement extends management
   var $plDescription  = "Systems Management";
   var $plIcon  = "plugins/systems/images/plugin.png";
 
-  // Tab definition 
-  protected $tabClass = "";
-  protected $tabType = "";
-  protected $aclCategory = "";
-  protected $aclPlugin   = "";
-  protected $objectName   = "system";
-  protected $objectInfo = array();
-  protected $opsi = NULL;
+  // Tab definition
+  protected $tabClass         = "";
+  protected $tabType          = "";
+  protected $aclCategory      = "";
+  protected $aclPlugin        = "";
+  protected $objectName       = "system";
+  protected $objectInfo       = array();
+  protected $opsi             = NULL;
   protected $activationQueue  = array();
 
   function __construct($config,$ui)
@@ -75,8 +75,8 @@ class systemManagement extends management
     $this->config = $config;
     $this->ui = $ui;
 
-    // Set storage points 
-    $tD = $this->getObjectDefinitions(); 
+    // Set storage points
+    $tD = $this->getObjectDefinitions();
     $sP = array();
     foreach($tD as $entry){
       if(!empty($entry['ou']))
@@ -203,7 +203,7 @@ class systemManagement extends management
 
         $type = $headpage->getType($dn);
         $entry = $headpage->getEntry($dn);
-  
+
         $aclCategory = $tDefs[$type]['aclCategory'];
         $aclPlugin = $tDefs[$type]['aclClass'];
         $tabClass = $tDefs[$type]['tabClass'];
@@ -257,7 +257,7 @@ class systemManagement extends management
     if(!in_array('FAKE_OC_PWD_changeAble', $entry['objectClass'])){
       trigger_error("Tried to change pwd, for invalid object!");
     }elseif ($_POST['new_password'] != $_POST['repeated_password']){
-      msg_dialog::display(_("Error"), 
+      msg_dialog::display(_("Error"),
           _("The passwords you've entered as 'New password' and 'Repeated password' do not   match!"), ERROR_DIALOG);
       return($smarty->fetch(get_template_path('password.tpl', TRUE)));
     }else{
@@ -325,8 +325,8 @@ class systemManagement extends management
   }
 
 
-  /*! \brief  The method gets called when somebody clicked the CD icon 
-   *           in the system listing. 
+  /*! \brief  The method gets called when somebody clicked the CD icon
+   *           in the system listing.
    *          A confirmation will be shown to acknowledge the creation.
    */
   function createISO($action,$target)
@@ -339,21 +339,21 @@ class systemManagement extends management
 
     }
   }
- 
+
 
   /*! \brief  Once the user has confirmed the ISO creation in 'createISO',
-   *           this method gets called. 
-   *          An iFrame is shown which then used 'performIsoCreation' as contents. 
+   *           this method gets called.
+   *          An iFrame is shown which then used 'performIsoCreation' as contents.
    */
   function initiateISOcreation()
   {
     $smarty = get_smarty();
     $smarty->assign("src", "?plug=".$_GET['plug']."&amp;PerformIsoCreation");
-    return ($smarty->fetch(get_template_path('goto/gencd_frame.tpl', TRUE)));  
+    return ($smarty->fetch(get_template_path('goto/gencd_frame.tpl', TRUE)));
   }
 
 
-  /*! \brief  ISO creation confirmed and iFrame is visible, now create the ISO 
+  /*! \brief  ISO creation confirmed and iFrame is visible, now create the ISO
    *           and display the status to fill the iFrame.
    */
   function performIsoCreation()
@@ -434,9 +434,9 @@ class systemManagement extends management
       $triggered = FALSE;
     }
 
-    // Detect triggere or scheduled actions 
+    // Detect triggere or scheduled actions
     $headpage = $this->getHeadpage();
-    $event = preg_replace("/^[TS]_/","",$action); 
+    $event = preg_replace("/^[TS]_/","",$action);
     if(preg_match("/^[TS]_/", $action)){
 
       // Send special reinstall action for opsi hosts
@@ -452,7 +452,7 @@ class systemManagement extends management
           }
         }
       }
-    } 
+    }
 
     // Now send remaining FAI/GOto-si events here.
     if(count($target) && $this->si_active){
@@ -509,17 +509,17 @@ class systemManagement extends management
 
 
   /*! \brief  Close all dialogs and reset the activationQueue.
-   */ 
+   */
   function cancelEdit()
   {
     management::cancelEdit();
     $this->activationQueue = array();
   }
-  
- 
-  /*! \brief  Save event dialogs. 
+
+
+  /*! \brief  Save event dialogs.
    *          And append the new GOto-si event.
-   */ 
+   */
   function saveEventDialog()
   {
       if($this->si_active){
@@ -532,7 +532,7 @@ class systemManagement extends management
           }
       }
   }
- 
+
 
   /*! \brief    Update filter part for INCOMING.
    *            Allows us to search for "systemIncomingRDN".
@@ -544,8 +544,8 @@ class systemManagement extends management
     return(preg_replace("/%systemIncomingRDN/", $rdn,$filter));
   }
 
- 
-  /*! \brief    Queue selected objects to be removed. 
+
+  /*! \brief    Queue selected objects to be removed.
    *            Checks ACLs, Locks and ask for confirmation.
    */
   protected function removeEntryRequested($action="",$target=array(),$all=array())
@@ -632,7 +632,7 @@ class systemManagement extends management
              $this->tabObject->set_acl_base($dn);
              $this->tabObject->by_object['phoneGeneric']->remove_from_parent ();
           }else{
-            $this->tabObject= new $info['tabClass']($this->config,$this->config->data['TABS'][$info['tabDesc']], 
+            $this->tabObject= new $info['tabClass']($this->config,$this->config->data['TABS'][$info['tabDesc']],
                 $this->dn, $info['aclCategory'], true, true);
             $this->tabObject->set_acl_base($this->dn);
             $this->tabObject->parent = &$this;
@@ -659,7 +659,7 @@ class systemManagement extends management
 
 
   /*! \brief  Edit the selected system type.
-   *          NewDevice and ArpNewDevice are handled here separately 
+   *          NewDevice and ArpNewDevice are handled here separately
    */
   function editEntry($action="",$target=array(),$all=array(), $altTabClass ="", $altTabType = "", $altAclCategory="")
   {
@@ -706,7 +706,7 @@ class systemManagement extends management
     if(!isset($tInfo[$info])){
       trigger_error("Unknown action type '".$action."' cant create a new system!");
     }else{
-      return(management::newEntry($action,$target,$all, 
+      return(management::newEntry($action,$target,$all,
           $tInfo[$info]['tabClass'],
           $tInfo[$info]['tabDesc'],
           $tInfo[$info]['aclCategory']));
@@ -732,12 +732,12 @@ class systemManagement extends management
   }
 
 
-  /*! \brief  The system selection dialog was closed. 
+  /*! \brief  The system selection dialog was closed.
    *          We will now queue the given entry to be activated.
-   */ 
+   */
   function systemTypeChosen()
   {
-    // Detect the systems target type 
+    // Detect the systems target type
     $tInfo = $this->getObjectDefinitions();
     $selected_group = "none";
     if(isset($_POST['ObjectGroup'])){
@@ -765,15 +765,15 @@ class systemManagement extends management
     if(!count($this->activationQueue)) return("");
 
     $ldap     = $this->config->get_ldap_link();
-    $pInfo    = $this->getObjectDefinitions(); 
+    $pInfo    = $this->getObjectDefinitions();
     $ui       = get_userinfo();
     $headpage = $this->getHeadpage();
     $ldap->cd($this->config->current['BASE']);
 
     // Walk through systems to activate
     while(count($this->activationQueue)){
- 
-      // Get next entry 
+
+      // Get next entry
       reset($this->activationQueue);
       $dn = key($this->activationQueue);
       $data= $this->activationQueue[$dn];
@@ -790,7 +790,7 @@ class systemManagement extends management
       @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,
           $dn, "<b>Try to activate:</b>");
 
-      // Get target type definition 
+      // Get target type definition
       $plugClass    = $type["plugClass"];
       $tabClass     = $type["tabClass"];
       $aclCategory  = $type["aclCategory"];
@@ -805,7 +805,7 @@ class systemManagement extends management
         @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,
             $sysType, "<b>System type:</b>");
 
-        // Load permissions for selected 'dn' and check if we're allowed to create this 'dn' 
+        // Load permissions for selected 'dn' and check if we're allowed to create this 'dn'
         $this->dn = $dn;
         $acls   = $ui->get_permissions($this->dn,$aclCategory."/".$plugClass);
 
@@ -819,7 +819,7 @@ class systemManagement extends management
           continue;
         }else{
 
-          // Open object an preset some values like the objects base 
+          // Open object an preset some values like the objects base
           del_lock($dn);
           management::editEntry('editEntry',array($dn),array(),$tabClass,$tabDesc, $aclCategory);
           $this->displayApplyBtn = FALSE;
@@ -903,7 +903,7 @@ class systemManagement extends management
           }
 
           // Try to inherit everythin from the selected object group and then save
-          //  the entry, normally this should work without any problems. 
+          //  the entry, normally this should work without any problems.
           // But if there is any, then display the dialogs.
           if($data['OG'] != "none"){
             $str = $this->saveChanges();
@@ -935,7 +935,7 @@ class systemManagement extends management
   {
     @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,
         get_class($this->tabObject).": ".$this->tabObject->dn, "<b>Save</b>");
- 
+
     // Handle 'New Unknown Devices' here.
     if($this->tabObject instanceOf ArpNewDeviceTabs){
       $this->tabObject->save_object();
@@ -1019,7 +1019,7 @@ class systemManagement extends management
       $this->activate_new_device($this->tabObject->dn);
     }
   }
-  
+
 
   /*! \brief  Sets FAIstate to "install" for "New Devices".
     This function is some kind of "Post handler" for activated systems,
@@ -1370,12 +1370,12 @@ class systemManagement extends management
     while($attrs = $ldap->fetch()){
       $rel = preg_replace("/^.*:/","",$attrs['FAIclass'][0]);
       $sys = sprintf(_("Inherited from %s"),$attrs['cn'][0]);
-      $str = "&nbsp;<img class='center' src='plugins/ogroups/images/ogroup.png' 
-          title='".$sys."' 
+      $str = "&nbsp;<img class='center' src='plugins/ogroups/images/ogroup.png'
+          title='".$sys."'
           alt='".$sys."' >&nbsp;".$rel;
       return($str);
     }
-    
+
     return("&nbsp;");
   }
 
@@ -1390,19 +1390,19 @@ class systemManagement extends management
     $str = "&nbsp;";
     $services = array();
     $services_class = array (
-        "FAIrepositoryServer" => "repository", 
-        "goLdapServer" => "ldap", 
-        "dNSZone" => "dns", 
-        "goNtpServer" => "ntp", 
-        "argonautServer" => "argonaut", 
-        "dhcpServer" => "dhcp", 
-        "goVirusServer" => "antivirus", 
-        "goSpamServer" => "spamassassin", 
+        "FAIrepositoryServer" => "repository",
+        "goLdapServer" => "ldap",
+        "dNSZone" => "dns",
+        "goNtpServer" => "ntp",
+        "argonautServer" => "argonaut",
+        "dhcpServer" => "dhcp",
+        "goVirusServer" => "antivirus",
+        "goSpamServer" => "spamassassin",
         "goShareServer" => "file",
-        "goCupsServer" => "print", 
-        "goImapServer" => "imap", 
-        "goTerminalServer" => "terminal", 
-        "goMailServer" => "smtp" 
+        "goCupsServer" => "print",
+        "goImapServer" => "imap",
+        "goTerminalServer" => "terminal",
+        "goMailServer" => "smtp"
         );
     while($attrs = $ldap->fetch()){
         unset($attrs['objectClass']['count']);
@@ -1440,17 +1440,18 @@ class systemManagement extends management
   static function plInfo()
   {
     return (array(
-          "plShortName"   => _("Incoming objects"),
-          "plDescription" => _("Incoming objects"),
+          "plShortName"   => _("Systems"),
+          "plDescription" => _("Systems Management"),
+          "plIcon"        => "plugins/systems/images/plugin.png",
           "plSelfModify"  => FALSE,
           "plDepends"     => array(),
           "plPriority"    => 99,
           "plSection"     => array("administration"),
-          "plCategory"    => array("incoming"   => array( "description"  => _("Incoming"),
+          "plCategory"    => array("incoming"   => array( "description"  => _("Systems"),
               "objectClass"  => "")),
           "plProvidedAcls"=> array()
           ));
   }
-} 
+}
 // vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>
