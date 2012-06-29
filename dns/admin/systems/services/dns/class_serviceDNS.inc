@@ -242,7 +242,7 @@ class serviceDNS extends goService
         $tmp = preg_replace("/^delZone_/","",$name);
         $tmp = base64_decode(preg_replace("/_.*$/","",$tmp));
 
-        /* Initiate deletion
+        /* Initiate ldap2zone
          */
         $this->RemoveZone($tmp);
       }
