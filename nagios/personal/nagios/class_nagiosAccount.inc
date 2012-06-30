@@ -25,7 +25,7 @@
 /*! \brief   mail plugin
   \author  Guillame Delecourt <guillaume@opensides.be>
   \author  Benoit Mortier <benoit.mortier@opensides.be>
-  \author  Vincent Seynhaeve <vincent@opensides.be>  
+  \author  Vincent Seynhaeve <vincent@opensides.be>
   \version 1.00
   \date    25.09.2005
 
@@ -34,260 +34,12 @@
   and displays the formulars required.
  */
 
-class nagiosAccount extends plugin
+class nagiosAccount extends simplePlugin
 {
-  /* Definitions */
+  var $displayHeader = TRUE; // If we want the button Add/Delete
+  var $objectclasses = array("nagiosContact","nagiosAuth");
   var $plHeadline= "Nagios";
-  var $plDescription= "This does something";
-
-  /* plugin specific values */
-  var $NagiosAlias  = "";
-  var $NagiosPager  = "";
-  var $NagiosMail   = "";
-
-  var $HostNotificationOptions      = "";
-  var $HostNotificationPeriod       = "";
-  var $ServiceNotificationPeriod    = "";
-  var $ServiceNotitificationPeriod  = "";
-  var $HostNotificationCommands     = "";
-  var $ServiceNotificationCommands  = "";
-  var $HostNotitificationOptions    = "";
-  var $ServiceNotificationOptions   = "";
-
-  var $AuthorizedAllHosts                 = "unchecked";
-  var $AuthorizedAllServices              = "unchecked";
-  var $AuthorizedSystemCommands           = "unchecked";
-  var $AuthorizedAllHostCommands          = "unchecked";
-  var $AuthorizedAllServiceCommands       = "unchecked";
-  var $AuthorizedConfigurationInformation = "unchecked";
-  var $AuthorizedSystemInformation        = "unchecked";
-
-  /* attribute list for save action */
-
-  var $attributes= array("NagiosAlias", "NagiosPager", "NagiosMail", "HostNotificationPeriod",
-      "ServiceNotificationPeriod", "HostNotificationCommands", "ServiceNotificationCommands",
-      "HostNotificationOptions", "ServiceNotificationOptions", "AuthorizedAllHosts", "AuthorizedAllServices",
-      "AuthorizedSystemCommands", "AuthorizedAllHostCommands", "AuthorizedAllServiceCommands",
-      "AuthorizedConfigurationInformation", "AuthorizedSystemInformation");
-
-  var $is_chk_box = array("AuthorizedAllHosts","AuthorizedAllServices","AuthorizedSystemCommands",
-      "AuthorizedAllHostCommands","AuthorizedAllServiceCommands",
-      "AuthorizedConfigurationInformation","AuthorizedSystemInformation");
-
-  var $objectclasses= array("nagiosContact","nagiosAuth");
-
-  var $uid = "";
-  var $view_logged = FALSE;
-
-  /* constructor, if 'dn' is set, the node loads the given
-     'dn' from LDAP */
-  function nagiosAccount (&$config, $dn= NULL)
-  {
-    /* Configuration is fine, allways */
-    $this->config= $config;
-
-    plugin::plugin ($config, $dn);
-
-    /* Setting uid to default */
-    if(isset($this->attrs['uid'][0])){
-      $this->uid = $this->attrs['uid'][0];
-    }
-
-    /* Save initial account state */  
-    $this->initially_was_account= $this->is_account;
-  }
-
-  function execute()
-  {
-    /* Call parent execute */
-    plugin::execute();
-
-    /* Log view */
-    if($this->is_account && !$this->view_logged){
-      $this->view_logged = TRUE;
-      new log("view","users/".get_class($this),$this->dn);
-    }
-
-    /* Load templating engine */
-    $smarty= get_smarty();
-    $display= "";
-
-    /* Do we need to flip is_account state? */
-    if(isset($_POST['modify_state'])){
-      if($this->is_account && $this->acl_is_removeable()){
-        $this->is_account= FALSE;
-      }elseif(!$this->is_account && $this->acl_is_createable()){
-        $this->is_account= TRUE;
-      }
-    }    
-
-    /* Do we represent a valid account? */
-    if (!$this->is_account && $this->parent === NULL){
-      $display= "<img alt=\"\"src=\"images/small-error.png\" align=\"middle\">&nbsp;<b>".
-        msgPool::noValidextension(_("Nagios"))."</b>";
-
-      $display.= back_to_main();
-      return ($display);
-    }
-
-    /* Show tab dialog headers */
-    if ($this->parent !== NULL){
-      if ($this->is_account){
-        $display= $this->show_disable_header(msgPool::removeFeaturesButton(_("Nagios")), msgPool::featuresEnabled(_("Nagios")));
-      } else {
-        $display= $this->show_enable_header(msgPool::addFeaturesButton(_("Nagios")), msgPool::featuresDisabled(_("Nagios")));
-        return($display);
-      }
-    }
-
-    /* Assign acls */
-    $tmp = $this->plInfo();
-    $SkipWrite = (!isset($this->parent) || !$this->parent) && !session::is_set('edit');
-    foreach($tmp['plProvidedAcls'] as $acl => $desc){
-      $smarty->assign($acl."ACL",$this->getacl($acl,$SkipWrite));
-    }
-
-    /* Assign attributes an ACL to smarty */
-    foreach($this->attributes as $val) { 
-      $smarty->assign("$val", $this->$val);
-      if(in_array($val,$this->is_chk_box)){
-        if($this->$val == "checked"){
-          $smarty->assign($val."CHK", " checked ");
-        }else{
-          $smarty->assign($val."CHK", "");
-        }
-      }
-    }
-    $smarty->assign('ServiceNotificationOptionsValues'  ,array("w,u,c,r,f"=>"w,u,c,r,f" ,"w,u,c,r"=>"w,u,c,r" ,"w,u,c"=>"w,u,c" ,"c,w"=>"c,w","n"=>"n"));
-    $smarty->assign('HostNotificationOptionsValues'     ,array("d,u,r,f"=>"d,u,r,f" ,"d,u,r"=>"d,u,r" ,"d,u"=>"d,u","n"=>"n"));
-    $smarty->assign('ServiceNotificationPeriodValues'   ,array("24x7"=>"24x7" ,"24x5"=>"24x5" ,"8x5"=>"8x5"));
-    $smarty->assign('HostNotificationPeriodValues'      ,array("24x7"=>"24x7" ,"24x5"=>"24x5" ,"8x5"=>"8x5"));
-    $display.= $smarty->fetch (get_template_path('nagios.tpl', TRUE, dirname(__FILE__)));
-    return ($display);
-  }
-
-  /* Save to LDAP */
-  function save()
-  {
-    $ldap= $this->config->get_ldap_link();
-
-    /* Call parents save to prepare $this->attrs */
-    plugin::save();
-
-    /* Adapt attributes if needed */
-    //$method= new $this->method($this->config);
-    //$id= $method->uattrib;
-    //$method->fixAttributesOnStore($this);
-
-    /* Write back to ldap */
-    $ldap->cd($this->dn);
-    $this->cleanup();
-    $ldap->modify ($this->attrs); 
-
-    /* Log last action */
-    if($this->initially_was_account){
-      new log("modify","users/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
-    }else{
-      new log("create","users/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
-    }
-
-    if (!$ldap->success()){
-      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()));
-    }
-
-    /* Optionally execute a command after we're done */
-    if ($this->initially_was_account == $this->is_account){
-      if ($this->is_modified){
-        $this->handle_post_events("modify",array("uid" => $this->uid));
-      }
-    } else {
-      $this->handle_post_events("add", array("uid" => $this->uid));
-    }
-  }
-
-  function check()
-  {
-    /* Call common method to give check the hook */
-    $message= plugin::check();
-
-    $ldap= $this->config->get_ldap_link();
-    /* must: mail */
-    if ($this->NagiosAlias == ""){
-      $message[]= msgPool::required(_("Alias"));
-    }
-    if ($this->NagiosMail == ""){
-      $message[]= msgPool::required(_("Mail"));
-    }
-    if ($this->is_template){
-      if (!tests::is_email($this->NagiosMail, TRUE)){
-        $message[]= msgPool::invalid(_("Mail"),"","","%givenName.%dn@your-domain.com");
-      }
-    } else {
-      if (!tests::is_email($this->NagiosMail)){
-        $message[]= msgPool::invalid(_("Mail"),"","","your-domain@your-domain.com");
-      }
-    }
-    return($message);
-  }
-
-
-  /* Use Save_object for every Post handling */
-  function save_object()
-  {
-    if (isset($_POST['nagiosTab'])){
-      /* Save ldap attributes */
-      plugin::save_object();
-
-      /* Specialhandling for checkboxes */
-      foreach($this->is_chk_box as $val){
-        if($this->acl_is_writeable($val)){
-          if(isset($_POST[$val])){
-            $this->$val = "checked";
-          }else{
-            $this->$val = "unchecked";
-          }
-        }
-      }
-    }
-  }
-
-  function remove_from_parent()
-  {
-    /* Cancel if there's nothing to do here */
-    if (!$this->initially_was_account){
-      return;
-    }
-
-    /* include global link_info */
-    $ldap= $this->config->get_ldap_link();
-
-    /* Remove and write to LDAP */
-    plugin::remove_from_parent();
-
-    /* Adapt attributes if needed */
-    //     $method= new $this->method($this->config);
-    //     $method->fixAttributesOnRemove($this);
-
-    @DEBUG (DEBUG_LDAP, __LINE__, __FUNCTION__, __FILE__,
-        $this->attributes, "Save");
-    $ldap->cd($this->dn);
-    $this->cleanup();
-    $ldap->modify ($this->attrs); 
-
-    new log("view","users/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
-
-    if (!$ldap->success()){
-      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_MOD, get_class()));
-    }
-
-    /* remove the entry from LDAP */
-    unset ($this->attrs['uid']);
-
-    /* Optionally execute a command after we're done */
-    $this->handle_post_events('remove',array("uid" => $this->uid));
-  }
-
-
+  var $plDescription= "Nagios account settings";
 
   static function plInfo()
   {
@@ -297,34 +49,150 @@ class nagiosAccount extends plugin
           "plSelfModify"    => TRUE,
           "plDepends"       => array("user"),
           "plPriority"      => 8,                                 // Position in tabs
-          "plSection"     => array("personal" => _("My account")),
-          "plCategory"    => array("users"),
+          "plSection"       => array("personal" => _("My account")),
+          "plCategory"      => array("users"),
           "plOptions"       => array(),
 
-          "plProvidedAcls"  => array(
-
-            "NagiosAlias"                       =>  _("Alias"),
-            "NagiosMail"                        =>  _("Mail address"),
-            "HostNotificationPeriod"            =>  _("Host notification period"),
-            "ServiceNotificationPeriod"         =>  _("Service notification period"),
-            "HostNotificationOptions"           =>  _("Host notification options"),
-            "ServiceNotificationOptions"        =>  _("Service notification options"),
-            "NagiosPager"                       =>  _("Pager number"),
-
-            "ServiceNotificationCommands"       =>  _("Service notification commands"),
-            "HostNotificationCommands"          =>  _("Host notification commands"),
-            "AuthorizedSystemInformation"       =>  _("View system informations"),
-            "AuthorizedConfigurationInformation"=>  _("View configuration information"),
-            "AuthorizedSystemCommands"          =>  _("Trigger system commands"),
-            "AuthorizedAllServices"             =>  _("View all services"),
-            "AuthorizedAllHosts"                =>  _("View all hosts"),
-            "AuthorizedAllServiceCommands"      =>  _("Trigger all service commands"),
-            "AuthorizedAllHostCommands"         =>  _("Trigger all host commands"))
-
+          "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
       ));
   }
+
+  /*!
+   *  \brief The main function : information about attributes
+   */
+  static function getAttributesInfo ()
+  {
+    return array(
+    'section1' => array(
+        'name'  => _('Nagios Account'),
+        'attrs' => array(
+          new StringAttribute(
+            _('Alias'),                       // Label of the attribute
+            _('Name of the nagios alias'),    // Description
+            'NagiosAlias',                    // LDAP name
+            TRUE,                             // Mandatory
+            ''                                // default value
+          ),
+          new StringAttribute(
+            _('Mail address'),                // Label of the attribute
+            _('Email of the nagios alias'),   // Description
+            'NagiosMail',                     // LDAP name
+            TRUE,                             // Mandatory
+            ''                                // default value
+          ),
+          new SelectAttribute (
+            _('Host notification period'),         // Label of the attribute
+            _('Host notification period'),         // Description
+            'HostNotificationPeriod',              // LDAP name
+            TRUE,                                  // Mandatory
+            array('24x7','24x5','8x5'),            // [SelectAttribute] Choices
+            "",                                    // We don't set any default value, it will be the first one
+            array('24x7','24x5','8x5')             // [SelectAttribute] Output choices
+          ),
+          new SelectAttribute (
+            _('Service notification period'),         // Label of the attribute
+            _('Service notification period'),         // Description
+            'ServiceNotificationPeriod',              // LDAP name
+            TRUE,                                     // Mandatory
+            array('24x7','24x5','8x5'),               // [SelectAttribute] Choices
+            "",                                       // We don't set any default value, it will be the first one
+            array('24x7','24x5','8x5')                // [SelectAttribute] Output choices
+          ),
+          new SelectAttribute (
+            _('Service notification options'),                         // Label of the attribute
+            _('Service notification options'),                         // Description
+            'ServiceNotificationOptions',                              // LDAP name
+            TRUE,                                                      // Mandatory
+            array('w,u,c,r,f','w,u,c,r','w,u,c','c,w','n'),            // [SelectAttribute] Choices
+            "",                                                        // We don't set any default value, it will be the first one
+            array('w,u,c,r,f','w,u,c,r','w,u,c','c,w','n')             // [SelectAttribute] Output choices
+          ),
+          new SelectAttribute (
+            _('Host notification options'),                          // Label of the attribute
+            _('Host notification options'),                          // Description
+            'HostNotificationOptions',                               // LDAP name
+            TRUE,                                                    // Mandatory
+            array('d,u,r,f','d,u,r','d,u','n'),                      // [SelectAttribute] Choices
+            "",                                                      // We don't set any default value, it will be the first one
+            array('d,u,r,f','d,u,r','d,u','n')                       // [SelectAttribute] Output choices
+          ),
+          new StringAttribute(
+            _('Pager'),                        // Label of the attribute
+            _('Nagios Pager'),                 // Description
+            'NagiosPager',                     // LDAP name
+            FALSE,                             // Mandatory
+            ''                                 // default value
+          ),
+          new StringAttribute(
+            _('Service notification commands'),                // Label of the attribute
+            _('Service notification commands'),                // Description
+            'ServiceNotificationCommands',                     // LDAP name
+            FALSE,                                             // Mandatory
+            ''                                                 // default value
+          ),
+          new StringAttribute(
+            _('Host notification commands'),   // Label of the attribute
+            _('Host notification commands'),   // Description
+            'HostNotificationCommands',        // LDAP name
+            FALSE,                             // Mandatory
+            ''                                 // default value
+          )
+        )
+      ),
+      'section2' => array(
+        'name'  => _('Nagios authentification'),
+          'attrs' => array(
+            new BooleanAttribute (
+              _('view system informations'),      // Label
+              _('view system informations'),      // Description
+              'AuthorizedSystemInformation',      // LDAP name
+              FALSE,                              // Not mandatory
+              FALSE                               // Default value
+            ),
+            new BooleanAttribute (
+              _('view configuration information'),      // Label
+              _('view configuration information'),      // Description
+              'AuthorizedConfigurationInformation',     // LDAP name
+              FALSE,                                    // Not mandatory
+              FALSE                                     // Default value
+            ),
+            new BooleanAttribute (
+              _('trigger system commands'),       // Label
+              _('trigger system commands'),       // Description
+              'AuthorizedSystemCommands',         // LDAP name
+              FALSE,                              // Not mandatory
+              FALSE                               // Default value
+            ),
+            new BooleanAttribute (
+              _('view all services'),       // Label
+              _('view all services'),       // Description
+              'AuthorizedAllServices',       // LDAP name
+              FALSE,                        // Not mandatory
+              FALSE                         // Default value
+            ),
+            new BooleanAttribute (
+              _('view all hosts'),       // Label
+              _('view all hosts'),       // Description
+              'AuthorizedAllHosts',      // LDAP name
+              FALSE,                     // Not mandatory
+              FALSE                      // Default value
+            ),
+            new BooleanAttribute (
+              _('trigger all service commands'),      // Label
+              _('trigger all service commands'),      // Description
+              'AuthorizedAllServiceCommands',         // LDAP name
+              FALSE,                                  // Not mandatory
+              FALSE                                   // Default value
+            ),
+            new BooleanAttribute (
+              _('trigger all host commands'),       // Label
+              _('trigger all host commands'),       // Description
+              'AuthorizedAllHostCommands',          // LDAP name
+              FALSE,                                // Not mandatory
+              FALSE                                 // Default value
+            ),
+        )
+      )
+    );
+  }
 }
-
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
-
-?>
