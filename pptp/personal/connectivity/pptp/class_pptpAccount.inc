@@ -2,8 +2,8 @@
 
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2011  Guillaume Delecourt
-  Copyright (C) 2005  Benoit Mortier
+  Copyright (C) 2005 Guillaume Delecourt
+  Copuright (C) 2005 Benoit Mortier
   Copyright (C) 2011  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
@@ -21,155 +21,14 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class pptpAccount extends plugin
+class pptpAccount extends simplePlugin
 {
   /* Definitions */
+  var $displayHeader = TRUE;
   var $plHeadline= "PPTP";
   var $plDescription= "This does something";
-
-  /* attribute list for save action */
-  var $attributes= array();
   var $objectclasses= array("pptpServerAccount");
 
-  var $ReadOnly = false;
-  var $view_logged = FALSE;
-  var $uid ="";
-
-  function pptpAccount (&$config, $dn= NULL)
-  {
-    plugin::plugin ($config, $dn);
-    
-    /* Setting uid to default */
-    if(isset($this->attrs['uid'][0])){
-      $this->uid = $this->attrs['uid'][0];
-    }
-  }
-
-  function execute()
-  {
-    /* Call parent execute */
-    //	plugin::execute();
-
-    /* Log view */
-    if($this->is_account && !$this->view_logged){
-      $this->view_logged = TRUE;
-      new log("view","users/".get_class($this),$this->dn);
-    }
-
-    /* Show tab dialog headers */
-    $display= "";
-
-    /* Show main page */
-    $smarty= get_smarty();
-
-    if ($this->is_account){
-      $smarty->assign("pptpState", "checked");
-    } else {
-      $smarty->assign("pptpState", "");
-      $smarty->assign("wstate", "disabled");
-    }
-
-    if((!$this->ReadOnly) && (($this->is_account && $this->acl_is_removeable()) || (!$this->is_account && $this->acl_is_createable()))) {
-      $smarty->assign('gosapptpACL', "");
-    }else{
-      $smarty->assign('gosapptpACL', " disabled ");
-    }
-
-    $display.= $smarty->fetch (get_template_path('pptp.tpl', TRUE, dirname(__FILE__)));
-    return ($display);
-  }
-
-  function remove_from_parent()
-  {
-    if($this->acl_is_removeable()){
-      /* Cancel if there's nothing to do here */
-      if (!$this->initially_was_account){
-        return;
-      }
-
-      plugin::remove_from_parent();
-      $ldap= $this->config->get_ldap_link();
-
-      $ldap->cd($this->dn);
-      @DEBUG (DEBUG_LDAP, __LINE__, __FUNCTION__, __FILE__,
-          $this->attributes, "Save");
-      $this->cleanup();
-      $ldap->modify ($this->attrs); 
-
-      /* Log last action */
-      new log("remove","users/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
-
-      if (!$ldap->success()){
-        msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_MOD, get_class()));
-      }
-
-      /* Optionally execute a command after we're done */
-      $this->handle_post_events('remove',array("uid" => $this->uid));
-    }
-  }
-
-
-  /* Save data to object */
-  function save_object()
-  {
-    /* Do we need to flip is_account state? */
-    if (isset($_POST['connectivityTab'])){
-      if (isset($_POST['pptp'])){
-        if (!$this->is_account && $_POST['pptp'] == "B"){
-          if($this->acl_is_createable()){
-            $this->is_account= TRUE;
-          }
-        }
-      } else {
-        if($this->acl_is_removeable()){
-          $this->is_account= FALSE;
-        }
-      }
-    }
-
-    plugin::save_object();
-    if (isset($_POST["pptpStatus"])){
-      $this->pptpStatus = "disabled";
-    } else {
-      $this->pptpStatus = "enabled";
-    }
-  }
-
-
-  /* Save to LDAP */
-  function save()
-  {
-      plugin::save();
-
-      /* Write back to ldap */
-      $ldap= $this->config->get_ldap_link();
-      $ldap->cd($this->dn);
-      $this->cleanup();
-      $ldap->modify ($this->attrs); 
-
-      /* Log last action */
-      if($this->initially_was_account){
-          new log("modify","users/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
-      }else{
-          new log("create","users/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
-      }
-
-      if (!$ldap->success()){
-          msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()));
-      }
-
-      /* Optionally execute a command after we're done */
-      if ($this->initially_was_account == $this->is_account){
-          if ($this->is_modified){
-              $this->handle_post_events("modify",array("uid" => $this->uid));
-          }
-      } else {
-          $this->handle_post_events("add",array("uid" => $this->uid));
-      }
-  }
-
-
-  /* Return plugin informations for acl handling */ 
   static function plInfo()
   {
     return (array(
@@ -178,14 +37,33 @@ class pptpAccount extends plugin
           "plSelfModify"    => TRUE,
           "plDepends"       => array("user"),
           "plPriority"      => 28,                                 // Position in tabs
-          "plSection"     => array("personal" => _("My account")),
-          "plCategory"    => array("users"),
-          "plOptions"       => array(),
-
-          "plProvidedAcls"  => array()
+          "plSection"       => array("personal" => _("My account")),
+          "plCategory"      => array("users"),
+          "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
           ));
+  }
+
+  /*!
+   *  \brief The main function : information about attributes
+   */
+  static function getAttributesInfo ()
+  {
+    return array(
+    // Attributes are grouped by section
+    'section1' => array(
+        'name'  => _('PPTP account'),
+        'attrs' => array(
+          new BooleanAttribute(
+            _('Activate'),              // Label of the attribute
+            _('Activate pptp account'),              // Description
+            'pptpAccount',                 // LDAP name
+            TRUE,                            // Mandatory
+            FALSE                            // default value
+          )
+        )
+      )
+    );
   }
 }
 
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>
