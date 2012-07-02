@@ -465,10 +465,13 @@ class ServerService extends management
       }
 
       /* Skip all pluigns that will lead into conflicts */
+      $conflicts = array();
       if (isset($obj->conflicts)) {
-        if (count(array_uintersect($obj->conflicts, $pool_of_ocs, "strcasecmp"))) {
-          continue;
-        }
+        $conflicts = $obj->conflicts;
+      }
+      $conflicts[] = get_class($obj);
+      if (count(array_uintersect($conflicts, $pool_of_ocs, "strcasecmp"))) {
+        continue;
       }
 
       if (isset($obj->DisplayName)) {
