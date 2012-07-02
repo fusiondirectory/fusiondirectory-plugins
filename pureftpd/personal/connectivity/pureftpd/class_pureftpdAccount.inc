@@ -53,7 +53,7 @@ class pureftpdAccount extends simplePlugin
         'name'  => _('Bandwidth'),
         'attrs' => array (
           new IntAttribute (
-            _('Upload bandwidth'.'(kb/sec)'),
+            _('Upload bandwidth')._(' (kb/sec)'),
             _('Upload bandwidth'),
             'FTPUploadBandwidth',
             FALSE,
@@ -62,7 +62,7 @@ class pureftpdAccount extends simplePlugin
             ''
           ),
           new IntAttribute (
-            _('Download bandwidth'),
+            _('Download bandwidth')._(' (kb/sec)'),
             _('Download bandwidth in kb/sec'),
             'FTPDownloadBandwidth',
             FALSE,
@@ -76,7 +76,7 @@ class pureftpdAccount extends simplePlugin
         'name'  => _('Ratio'),
         'attrs' => array(
           new IntAttribute (
-            _('Uploaded / downloaded files'),
+            _('Uploaded files'),
             _('Uploaded files'),
             'FTPUploadRatio',
             FALSE,
@@ -85,7 +85,7 @@ class pureftpdAccount extends simplePlugin
             ''
           ),
           new IntAttribute (
-            _('/'),
+            _('Downloaded files'),
             _('Downloaded files'),
             'FTPDownloadRatio',
             FALSE,
@@ -108,7 +108,7 @@ class pureftpdAccount extends simplePlugin
             ''
           ),
           new IntAttribute (
-            _('Size'),
+            _('Size')._(' (MB)'),
             _('Files size'),
             'FTPQuotaMBytes',
             FALSE,
@@ -118,8 +118,8 @@ class pureftpdAccount extends simplePlugin
           )
         )
       ),
-      'section' => array (
-        'name' => ('Miscellaneous'),
+      'section4' => array (
+        'name' => _('Miscellaneous'),
         'attrs' => array (
           new BooleanAttribute (
             _('Temporary disable FTP access'),
