@@ -52,7 +52,7 @@ class serviceKolab extends goService {
   var $objectclasses = array("top", "kolab");
 
   /* Serverservice vars */
-  var $conflicts    = array("goMailServer");
+  var $conflicts    = array("serviceMail");
   var $DisplayName  = "Kolab mail service";
   var $StatusFlag   = "";
 

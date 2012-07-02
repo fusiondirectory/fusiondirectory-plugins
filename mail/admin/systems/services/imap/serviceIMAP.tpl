@@ -55,7 +55,7 @@
         <tr>
           <td>
 {render acl=$cyrusImapACL}
-            <input type='checkbox' name='cyrusImap' value=1 {if $cyrusImap} checked {/if} > 
+            <input type='checkbox' name='cyrusImap' value=1 {if $cyrusImap} checked {/if} >
 {/render}
           </td>
           <td>{t}Start IMAP service{/t}
@@ -64,7 +64,7 @@
         <tr>
           <td>
 {render acl=$cyrusImapSSLACL}
-            <input type='checkbox' name='cyrusImapSSL' value=1 {if $cyrusImapSSL} checked {/if}> 
+            <input type='checkbox' name='cyrusImapSSL' value=1 {if $cyrusImapSSL} checked {/if}>
 {/render}
           </td>
           <td>{t}Start IMAP SSL service{/t}
@@ -73,7 +73,7 @@
         <tr>
           <td>
 {render acl=$cyrusPop3ACL}
-            <input type='checkbox' name='cyrusPop3' value=1 {if $cyrusPop3} checked {/if} > 
+            <input type='checkbox' name='cyrusPop3' value=1 {if $cyrusPop3} checked {/if} >
 {/render}
           </td>
           <td>{t}Start POP3 service{/t}
@@ -82,7 +82,7 @@
         <tr>
           <td>
 {render acl=$cyrusPop3SSLACL}
-            <input type='checkbox' name='cyrusPop3SSL' value=1 {if $cyrusPop3SSL} checked {/if} > 
+            <input type='checkbox' name='cyrusPop3SSL' value=1 {if $cyrusPop3SSL} checked {/if} >
 {/render}
           </td>
           <td>{t}Start POP3 SSL service{/t}
@@ -101,13 +101,13 @@
     {t}The service must be saved before you can use the status flag.{/t}
 {/if}
 <br>
-<select name="action" title='{t}Set new status{/t}' 
+<select name="action" title='{t}Set new status{/t}'
   {if $is_new =="new" || !$is_acc} disabled {/if}
 >
   <option value="none">&nbsp;</option>
     {html_options options=$Actions}
 </select>
-<input type='submit' name='ExecAction' title='{t}Set status{/t}' value='{t}Execute{/t}' 
+<input type='submit' name='ExecAction' title='{t}Set status{/t}' value='{t}Execute{/t}'
   {if $is_new == "new" || !$is_acc} disabled {/if}
 >
 
@@ -117,4 +117,4 @@
     &nbsp;
     <input type='submit' name='CancelService' value='{msgPool type=cancelButton}'>
 </div>
-<input type="hidden" name="goImapServerPosted" value="1">
+<input type="hidden" name="serviceIMAPPosted" value="1">

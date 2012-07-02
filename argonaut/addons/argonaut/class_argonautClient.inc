@@ -63,16 +63,16 @@ class argonautClient extends plugin
     $argonautService_defaults = array(
       "folder"              => "/etc/init.d",
       "goCupsServer"        => "cups",
-      "goMailServer"        => "postfix",
-      "goNtpServer"         => "ntpd",
-      "goImapServer"        => "cyrus-imapd",
+      "serviceMail"         => "postfix",
+      "serviceNTP"          => "ntpd",
+      "serviceIMAP"         => "cyrus-imapd",
       "goTerminalServer"    => "ssh",
       "goLdapServer"        => "slapd",
       "goShareServer"       => "samba",
       "gospamserver"        => "spamassassin",
       "govirusserver"       => "clamav-daemon",
-      "serviceDHCP"            => "isc-dhcp-server",
-      "serviceDNS"             => "bind9",
+      "serviceDHCP"         => "isc-dhcp-server",
+      "serviceDNS"          => "bind9",
       "argonautServer"      => "argonaut-server"
     );
     $argonautService_blacklist = array(

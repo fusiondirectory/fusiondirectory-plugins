@@ -20,7 +20,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class goFaxServer extends goService {
+class serviceFax extends goService {
 
   var $cli_summary      = "This plugin is used within the ServerService Plugin \nand indicates that this server supports fax informations.";
   var $cli_description  = "Some longer text\nfor help";
@@ -30,9 +30,9 @@ class goFaxServer extends goService {
   var $objectclasses    = array("goFaxServer");
   var $attributes       = array("goFaxAdmin", "goFaxPassword");
   var $StatusFlag       = "goFaxServerStatus";
- 
+
   /* This class can't be assigned twice so it conflicts with itself */
-  var $conflicts        = array("goFaxServer");
+  var $conflicts        = array("serviceFax");
 
   var $DisplayName      = "";
   var $dn               = NULL;
@@ -43,8 +43,8 @@ class goFaxServer extends goService {
   var $goFaxServerStatus  = "";
   var $cn                 = "";
   var $view_logged  =FALSE;
- 
-  function goFaxServer(&$config,$dn)
+
+  function serviceFax(&$config,$dn)
   {
     goService::goService($config,$dn);
     $this->DisplayName = _("FAX database");
@@ -52,8 +52,8 @@ class goFaxServer extends goService {
 
 
   function execute()
-  { 
-    $smarty = get_smarty(); 
+  {
+    $smarty = get_smarty();
 
     if($this->is_account && !$this->view_logged){
       $this->view_logged = TRUE;
@@ -69,7 +69,7 @@ class goFaxServer extends goService {
     foreach($this->attributes as $attr){
       $smarty->assign($attr,$this->$attr);
     }
-    return($smarty->fetch(get_template_path("goFaxServer.tpl",TRUE,dirname(__FILE__))));
+    return($smarty->fetch(get_template_path("serviceFax.tpl",TRUE,dirname(__FILE__))));
   }
 
 
@@ -82,7 +82,7 @@ class goFaxServer extends goService {
   }
 
   function check()
-  { 
+  {
     $message = plugin::check();
     if (empty($this->goFaxAdmin)){
       $message[]= msgPool::required(_("User"));
@@ -92,14 +92,14 @@ class goFaxServer extends goService {
     }
     return($message);
   }
-  
+
 
   function save_object()
   {
-    if(isset($_POST['goFaxServerPosted'])){
+    if(isset($_POST['serviceFaxPosted'])){
       plugin::save_object();
     }
-  } 
+  }
 
   /* Return plugin informations for acl handling */
   static function plInfo()

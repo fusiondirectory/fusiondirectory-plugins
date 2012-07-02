@@ -24,4 +24,4 @@
     &nbsp;
     <input type='submit' name='CancelService' value='{msgPool type=cancelButton}'>
 </div>
-<input type="hidden" name="goFaxServerPosted" value="1">
+<input type="hidden" name="serviceFaxPosted" value="1">

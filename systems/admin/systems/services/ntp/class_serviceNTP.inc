@@ -20,7 +20,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class goNtpServer extends goService{
+class serviceNTP extends goService{
 
   var $cli_summary      = "This plugin is used within the ServerService Pluign \nand indicates that this server supports NTP service.";
   var $cli_description  = "Some longer text\nfor help";
@@ -32,7 +32,7 @@ class goNtpServer extends goService{
   var $StatusFlag       = "goNtpServerStatus";
 
   /* This class can't be assigned twice so it conflicts with itsself */
-  var $conflicts        = array("goNtpServer");
+  var $conflicts        = array("serviceNTP");
 
   var $DisplayName      = "";
   var $dn               = NULL;
@@ -42,7 +42,7 @@ class goNtpServer extends goService{
   var $cn               = "";
   var $view_logged  =FALSE;
 
-  function goNtpServer(&$config,$dn)
+  function serviceNTP(&$config,$dn)
   {
     goService::goService($config,$dn);
     $this->DisplayName = _("Time service (NTP)");
@@ -59,8 +59,8 @@ class goNtpServer extends goService{
 
 
   function execute()
-  { 
-    $smarty = get_smarty(); 
+  {
+    $smarty = get_smarty();
 
     if($this->is_account && !$this->view_logged){
       $this->view_logged = TRUE;
@@ -83,8 +83,8 @@ class goNtpServer extends goService{
     }
 
     $smarty->assign("goTimeSourceACL", $this->getacl("goTimeSource")) ;
-    $smarty->assign("goTimeSource" , $this->goTimeSource); 
-    return($smarty->fetch(get_template_path("goNtpServer.tpl",TRUE,dirname(__FILE__))));
+    $smarty->assign("goTimeSource" , $this->goTimeSource);
+    return($smarty->fetch(get_template_path("serviceNTP.tpl",TRUE,dirname(__FILE__))));
   }
 
 
@@ -126,7 +126,7 @@ class goNtpServer extends goService{
     }
   }
 
-  
+
   function PrepareForCopyPaste($source)
   {
     plugin::PrepareForCopyPaste($source);
@@ -146,7 +146,7 @@ class goNtpServer extends goService{
   function check(){ return array();}
 
   function save_object(){;}
-  
+
   /* Return plugin informations for acl handling */
   static function plInfo()
   {

@@ -1,7 +1,7 @@
 <?php
 
-class goMailServer extends goService{
-	
+class serviceMail extends goService{
+
   var $cli_summary      = "This pluign is used within the ServerService Pluign \nand indicates that this server supports mailqueue listings and so on.";
   var $cli_description  = "Some longer text\nfor help";
   var $cli_parameters   = array("one" => "one is nice", "two" => "two is better");
@@ -33,25 +33,25 @@ class goMailServer extends goService{
   var $postfixRecipientRestrictions     = array();
   var $description                      = "";
   var $RestrictionFilters               = array();
-  var $TransportProtocols               = array(); 
+  var $TransportProtocols               = array();
   var $Actions                          = array();
   var $cn                               = "";
-  var $conflicts                        = array("goMailServer","kolab");
+  var $conflicts                        = array("serviceMail","kolab");
   var $view_logged  =FALSE;
 
-  function goMailServer(&$config,$dn)
+  function serviceMail(&$config,$dn)
   {
     goService::goService($config,$dn);
     $this->DisplayName = _("Mail smtp service (Postfix)");
 
     $this->Actions = array( SERVICE_STOPPED=>SERVICE_STOPPED,
                             SERVICE_STARTED => SERVICE_STARTED,
-                            SERVICE_RESTARTED=>SERVICE_RESTARTED); 
+                            SERVICE_RESTARTED=>SERVICE_RESTARTED);
 
     /* Fill  RestrictionFilters   TransportProtocols  from external hooks */
     $str = $this->config->data['TABS']['SERVERSERVICE'];
     $this->TransportProtocols =array("smtp"=>"SMTP");
-    $this->RestrictionFilters = array("FILTER"=>"FILTER"); 
+    $this->RestrictionFilters = array("FILTER"=>"FILTER");
     foreach(array("POSTFIXRESTRICTIONFILTERS"=>"RestrictionFilters",
           "POSTFIXPROTOCOLS"        =>"TransportProtocols") as $file => $var){
       if($this->config->get_cfg_value($file) != ""){
@@ -94,10 +94,10 @@ class goMailServer extends goService{
     if(isset($this->attrs['postfixMyDomain'][0])){
       $this->postfixMyhostname .= ".".$this->attrs['postfixMyDomain'][0];
     }
-  
+
 
     /* Get postfix my domains */
-    $this->postfixMyDestinations = array(); 
+    $this->postfixMyDestinations = array();
     if(isset($this->attrs['postfixMyDestinations'][0])){
       unset($this->attrs['postfixMyDestinations']['count']);
       foreach($this->attrs['postfixMyDestinations'] as $str){
@@ -136,7 +136,7 @@ class goMailServer extends goService{
         $this->postfixTransportTable[] = $entry;
       }
     }
-   
+
 
     /* Get sender restrictions */
     $tmp = array();
@@ -150,7 +150,7 @@ class goMailServer extends goService{
         $rest= preg_replace("/^[^ ]+ /","",$rest);
         $dst = preg_replace("/^.* /","",$rest);
         $prt = preg_replace("/ .*$/","",$rest);
- 
+
         $tmp[$nr]['src'] = $src;
         $tmp[$nr]['dst'] = $dst;
         $tmp[$nr]['filter'] = $prt;
@@ -161,7 +161,7 @@ class goMailServer extends goService{
       }
     }
 
- 
+
     /* Get sender restrictions */
     $tmp = array();
     $this->postfixRecipientRestrictions = array();
@@ -174,7 +174,7 @@ class goMailServer extends goService{
         $rest= preg_replace("/^[^ ]+ /","",$rest);
         $dst = preg_replace("/^.* /","",$rest);
         $prt = preg_replace("/ .*$/","",$rest);
- 
+
         $tmp[$nr]['src'] = $src;
         $tmp[$nr]['dst'] = $dst;
         $tmp[$nr]['filter'] = $prt;
@@ -188,7 +188,7 @@ class goMailServer extends goService{
   }
 
   function execute()
-  { 
+  {
     $smarty   = get_smarty();
 
     if($this->is_account && !$this->view_logged){
@@ -201,26 +201,26 @@ class goMailServer extends goService{
       $smarty->assign($name."ACL",$this->getacl($name));
     }
 
-    $delAr    = array( 
+    $delAr    = array(
                     "TranslationDel_"=>"TranslationDel",
                     "SenderRestrictDel_"=>"SenderRestrictDel",
                     "RecipientRestrictDel_"=>"RecipientRestrictDel");
- 
+
     $once     = true;
     $s_action = "";
     $s_entry  = "";
-  
+
     /* Check posts for some intruductions */
     foreach($_POST as $name => $value){
       foreach($delAr as $preg => $type){
         if((preg_match("/^".$preg."/",$name)) && ($once)){
           $once = false;
-          $s_action = $type; 
+          $s_action = $type;
           $s_entry = preg_replace("/^".$preg."/","",$name);
           $s_entry = preg_replace("/_[xy]$/","",$s_entry);
         }
       }
-  
+
 
       if(preg_match("/^TranslationUp_/",$name) && $once && ($this->acl_is_writeablei("postfixTransportTableACL"))){
         $once = false;
@@ -331,8 +331,8 @@ class goMailServer extends goService{
       }
 
       if(isset($_POST['AddpostfixTransportTable'])){
-        $src = trim($_POST['Source_postfixTransportTable']);  
-        $dst = trim($_POST['Destination_postfixTransportTable']);    
+        $src = trim($_POST['Source_postfixTransportTable']);
+        $dst = trim($_POST['Destination_postfixTransportTable']);
         $prt = trim($_POST['TransportProtocol']);
 
         if((!empty($src)) && (!empty($dst))){
@@ -352,8 +352,8 @@ class goMailServer extends goService{
           $tmp2 ['dst'] = $dst;
           $tmp2 ['prt'] = $prt;
 
-          $this->postfixTransportTable[] = $tmp2;  
-        } 
+          $this->postfixTransportTable[] = $tmp2;
+        }
       }
     }
 
@@ -370,18 +370,18 @@ class goMailServer extends goService{
       $img = "";
 
       if($key != 0 && $this->acl_is_writeable("postfixTransportTable")){
-        $img.= "<input type='image' src='images/lists/sort-up.png' name='TranslationUp_".$key."' class='center'>&nbsp;";      
+        $img.= "<input type='image' src='images/lists/sort-up.png' name='TranslationUp_".$key."' class='center'>&nbsp;";
       }else{
         $img.= "<img src='images/empty.png' style='width:10px;'>";
       }
       if(($key+1) < count($this->postfixTransportTable) && $this->acl_is_writeable("postfixTransportTable")){
-        $img.= "<input type='image' src='images/lists/sort-down.png' name='TranslationDown_".$key."' class='center'>&nbsp;";      
+        $img.= "<input type='image' src='images/lists/sort-down.png' name='TranslationDown_".$key."' class='center'>&nbsp;";
       }else{
         $img.= "<img src='images/empty.png' style='width:10px;'>";
       }
 
       if($this->acl_is_writeable("postfixTransportTable")){
-        $img.= "<input type='image' src='images/lists/trash.png' name='TranslationDel_".$key."' class='center'>&nbsp;";      
+        $img.= "<input type='image' src='images/lists/trash.png' name='TranslationDel_".$key."' class='center'>&nbsp;";
       }
       $field1 = array("string"=> $entry['src']);
       $field2 = array("string"=> $entry['dst']);
@@ -399,20 +399,20 @@ class goMailServer extends goService{
       $img ="";
 
       if($key != 0 && $this->acl_is_writeable("postfixSenderRestrictions")){
-        $img.= "<input type='image' src='images/lists/sort-up.png' name='SenderRestrictUp_".$key."' class='center'>&nbsp;";      
+        $img.= "<input type='image' src='images/lists/sort-up.png' name='SenderRestrictUp_".$key."' class='center'>&nbsp;";
       }else{
         $img.= "<img src='images/empty.png' style='width:10px;'>";
       }
       if(($key+1) < count($this->postfixSenderRestrictions) && $this->acl_is_writeable("postfixSenderRestrictions")){
-        $img.= "<input type='image' src='images/lists/sort-down.png' name='SenderRestrictDown_".$key."' class='center'>&nbsp;";      
+        $img.= "<input type='image' src='images/lists/sort-down.png' name='SenderRestrictDown_".$key."' class='center'>&nbsp;";
       }else{
         $img.= "<img src='images/empty.png' style='width:10px;'>";
       }
 
       if($this->acl_is_writeable("postfixSenderRestrictions")){
-        $img.= "<input type='image' src='images/lists/trash.png' name='SenderRestrictDel_".$key."' class='center'>&nbsp;";     
+        $img.= "<input type='image' src='images/lists/trash.png' name='SenderRestrictDel_".$key."' class='center'>&nbsp;";
       }
- 
+
       $field1 = array("string"=> $entry['src']);
       $field2 = array("string"=> $entry['dst']);
       $field3 = array("string"=> $entry['filter'],"attach"=>"style='width:100px;'");
@@ -429,18 +429,18 @@ class goMailServer extends goService{
     foreach($this->postfixRecipientRestrictions as $key => $entry){
       $img = "";
       if($key != 0 && $this->acl_is_writeable("postfixRecipientRestrictions")){
-        $img.= "<input type='image' src='images/lists/sort-up.png' name='RecipientRestrictUp_".$key."' class='center'>&nbsp;";      
+        $img.= "<input type='image' src='images/lists/sort-up.png' name='RecipientRestrictUp_".$key."' class='center'>&nbsp;";
       }else{
         $img.= "<img src='images/empty.png' style='width:10px;'>";
       }
       if(($key+1) < count($this->postfixRecipientRestrictions) && $this->acl_is_writeable("postfixRecipientRestrictions")){
-        $img.= "<input type='image' src='images/lists/sort-down.png' name='RecipientRestrictDown_".$key."' class='center'>&nbsp;";      
+        $img.= "<input type='image' src='images/lists/sort-down.png' name='RecipientRestrictDown_".$key."' class='center'>&nbsp;";
       }else{
         $img.= "<img src='images/empty.png' style='width:10px;'>";
       }
 
       if($this->acl_is_writeable("postfixRecipientRestrictions")){
-        $img.= "<input type='image' src='images/lists/trash.png' name='RecipientRestrictDel_".$key."' class='center'>&nbsp;";      
+        $img.= "<input type='image' src='images/lists/trash.png' name='RecipientRestrictDel_".$key."' class='center'>&nbsp;";
       }
       $field1 = array("string"=> $entry['src']);
       $field2 = array("string"=> $entry['dst']);
@@ -450,7 +450,7 @@ class goMailServer extends goService{
     }
     $smarty->assign("Div_postfixRecipientRestrictions" ,$DivRecipientRestrict->DrawList());
 
-    
+
     /* set new status */
     if(isset($_POST['ExecAction'])){
       if(isset($this->Actions[$_POST['action']])){
@@ -468,11 +468,11 @@ class goMailServer extends goService{
     $smarty->assign("postfixSenderRestrictions" ,   $this->getSenderRestrictions());
     $smarty->assign("postfixRecipientRestrictions" ,$this->getRecipientRestrictions());
 
-    return($smarty->fetch(get_template_path("goMailServer.tpl",TRUE,dirname(__FILE__))));
+    return($smarty->fetch(get_template_path("serviceMail.tpl",TRUE,dirname(__FILE__))));
   }
 
- 
-  /* return transports formated for select box */ 
+
+  /* return transports formated for select box */
   function getTransports()
   {
     $ret = array();
@@ -483,7 +483,7 @@ class goMailServer extends goService{
   }
 
 
-  /* return sender restriction formated for select box */ 
+  /* return sender restriction formated for select box */
   function getSenderRestrictions()
   {
     $ret = array();
@@ -494,7 +494,7 @@ class goMailServer extends goService{
   }
 
 
-  /* return recipient restriction formated for select box */ 
+  /* return recipient restriction formated for select box */
   function getRecipientRestrictions()
   {
     $ret = array();
@@ -523,7 +523,7 @@ class goMailServer extends goService{
     plugin::save();
 
     /* Fix transport table*/
-    $i = 0 ; 
+    $i = 0 ;
     $this->attrs['postfixTransportTable'] = array();
     foreach($this->postfixTransportTable as $key => $entry){
       $this->attrs['postfixTransportTable'][] = $i.": ".$entry['src']." ".$entry['prt'].":".$entry['dst'];
@@ -535,17 +535,17 @@ class goMailServer extends goService{
     $i = 0;
     $this->attrs['postfixSenderRestrictions'] =array();
     foreach($this->postfixSenderRestrictions as $key => $entry){
-      $this->attrs['postfixSenderRestrictions'][] = $i.": ".$entry['src']." ".$entry['filter']." ".$entry['dst']; 
-      $i ++;  
+      $this->attrs['postfixSenderRestrictions'][] = $i.": ".$entry['src']." ".$entry['filter']." ".$entry['dst'];
+      $i ++;
     }
-  
-  
+
+
     /* Fix recipient restrictions */
     $i = 0;
     $this->attrs['postfixRecipientRestrictions'] =array();
     foreach($this->postfixRecipientRestrictions as $key => $entry){
-      $this->attrs['postfixRecipientRestrictions'][] = $i.": ".$entry['src']." ".$entry['filter']." ".$entry['dst']; 
-      $i ++;  
+      $this->attrs['postfixRecipientRestrictions'][] = $i.": ".$entry['src']." ".$entry['filter']." ".$entry['dst'];
+      $i ++;
     }
 
 
@@ -567,7 +567,7 @@ class goMailServer extends goService{
       $this->attrs['postfixMyNetworks']  = array();
     }
 
- 
+
     /* Check if this is a new entry ... add/modify */
     $ldap = $this->config->get_ldap_link();
     $ldap->cat($this->dn,array("objectClass"));
@@ -584,17 +584,17 @@ class goMailServer extends goService{
 
     if($this->initially_was_account){
       $this->handle_post_events("modify");
-      new log("modify","server/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());  
+      new log("modify","server/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
     }else{
       $this->handle_post_events("add");
-      new log("create","server/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());  
+      new log("create","server/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
     }
 
   }
 
 
   function check()
-  { 
+  {
     $message =plugin::check();
     if(!is_numeric($this->postfixHeaderSizeLimit)){
       $message[] = msgPool::invalid(_("Header size limit",$this->postfixHeaderSizeLimit,"/[0-9]/"));
@@ -678,7 +678,7 @@ class goMailServer extends goService{
 
   function save_object()
   {
-    plugin::save_object();  
+    plugin::save_object();
   }
 
 
@@ -686,7 +686,7 @@ class goMailServer extends goService{
   {
     plugin::PrepareForCopyPaste($source);
 
-    $source_o = new goMailServer($this->config,$source['dn']);
+    $source_o = new serviceMail($this->config,$source['dn']);
     foreach(array("postfixMyDomain","postfixMyhostname","postfixMyNetworks","postfixTransportTable","postfixSenderRestrictions","postfixRecipientRestrictions","postfixMyDestinations") as $attr){
       $this->$attr = $source_o->$attr;
     }
@@ -707,15 +707,15 @@ class goMailServer extends goService{
 
           "plProvidedAcls"=> array(
             "postfixMyhostname"           => _("Visible full qualified hostname"),
-            "description"                 => _("Description"), 
-            "postfixHeaderSizeLimit"      => _("Header size limit"), 
-            "postfixMailboxSizeLimit"     => _("Max mailbox size"), 
-            "postfixMessageSizeLimit"     => _("Max message size"), 
-            "postfixMyDestinations"       => _("Domains to accept mail for"), 
-            "postfixMyNetworks"           => _("Local networks"), 
-            "postfixRelayhost"            => _("Relay host"), 
-            "postfixTransportTable"       => _("Transport table"), 
-            "postfixSenderRestrictions"   => _("Restrictions for sender"), 
+            "description"                 => _("Description"),
+            "postfixHeaderSizeLimit"      => _("Header size limit"),
+            "postfixMailboxSizeLimit"     => _("Max mailbox size"),
+            "postfixMessageSizeLimit"     => _("Max message size"),
+            "postfixMyDestinations"       => _("Domains to accept mail for"),
+            "postfixMyNetworks"           => _("Local networks"),
+            "postfixRelayhost"            => _("Relay host"),
+            "postfixTransportTable"       => _("Transport table"),
+            "postfixSenderRestrictions"   => _("Restrictions for sender"),
             "postfixRecipientRestrictions"=> _("Restrictions for recipient"))
             ));
   }

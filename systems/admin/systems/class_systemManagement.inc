@@ -1393,16 +1393,16 @@ class systemManagement extends management
         "FAIrepositoryServer" => "repository",
         "goLdapServer" => "ldap",
         "dNSZone" => "dns",
-        "goNtpServer" => "ntp",
+        "serviceNTP" => "ntp",
         "argonautServer" => "argonaut",
         "dhcpServer" => "dhcp",
         "goVirusServer" => "antivirus",
         "goSpamServer" => "spamassassin",
         "goShareServer" => "file",
         "goCupsServer" => "print",
-        "goImapServer" => "imap",
+        "serviceIMAP" => "imap",
         "goTerminalServer" => "terminal",
-        "goMailServer" => "smtp"
+        "serviceMail" => "smtp"
         );
     while($attrs = $ldap->fetch()){
         unset($attrs['objectClass']['count']);
