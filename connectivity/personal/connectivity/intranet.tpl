@@ -1,6 +1,2 @@
-<h2>
-  {render acl=$gosaIntranetACL checkbox=$multiple_support checked=$use_intranet}
-  <input type="checkbox" name="intranet" value="B" {$intranetState} class="center"> 
-  {t}Intranet account{/t}
-  {/render}
-</h2>
+<h1>Intranet account is activated</h1>
+<input name="{$hiddenPostedInput}" value="1" type="hidden"/>
