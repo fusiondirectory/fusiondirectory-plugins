@@ -20,7 +20,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class goFonServer extends goService{
+class serviceAsterisk extends goService {
 
   var $cli_summary      = "This plugin is used within the ServerService Plugin \nand indicates that this server supports asterisk management.";
   var $cli_description  = "Some longer text\nfor help";
@@ -30,13 +30,13 @@ class goFonServer extends goService{
   var $objectclasses    = array("goFonServer");
   var $attributes       = array("goFonAdmin", "goFonPassword","goFonAreaCode", "goFonCountryCode");
   var $StatusFlag       = "goFonServerStatus";
- 
+
   /* This class can't be assigned twice so it conflicts with itsself */
-  var $conflicts        = array("goFonServer");
+  var $conflicts        = array("serviceAsterisk");
 
   var $DisplayName      = "";
   var $dn               = NULL;
-  var $cn               ="";
+  var $cn               = "";
   var $acl;
 
   var $goFonServerStatus  = "";
@@ -44,13 +44,13 @@ class goFonServer extends goService{
   var $goFonAdmin         = "";
   var $goFonAreaCode      = "";
   var $goFonCountryCode   = "";
-  var $view_logged  =FALSE;
+  var $view_logged        = FALSE;
 
-  var $orig_dn            = "";   
- 
-  function goFonServer(&$config,$dn)
+  var $orig_dn            = "";
+
+  function __construct(&$config, $dn)
   {
-    goService::goService($config,$dn);
+    goService::goService($config, $dn);
     $this->DisplayName = _("VoIP service");
 
     $this->orig_dn = $dn;
@@ -58,24 +58,24 @@ class goFonServer extends goService{
 
 
   function execute()
-  { 
-    if($this->is_account && !$this->view_logged){
+  {
+    if ($this->is_account && !$this->view_logged) {
       $this->view_logged = TRUE;
-      new log("view","server/".get_class($this),$this->dn);
+      new log("view", "server/".get_class($this), $this->dn);
     }
 
-    $smarty = get_smarty(); 
-    foreach($this->attributes as $attr){
-      $smarty->assign($attr,$this->$attr);
+    $smarty = get_smarty();
+    foreach ($this->attributes as $attr) {
+      $smarty->assign($attr, $this->$attr);
     }
 
     /* Assign acls */
     $tmp = $this->plInfo();
-    foreach($tmp['plProvidedAcls'] as $name => $translation){
-      $smarty->assign($name."ACL",$this->getacl($name));
+    foreach ($tmp['plProvidedAcls'] as $name => $translation) {
+      $smarty->assign($name."ACL", $this->getacl($name));
     }
 
-    return($smarty->fetch(get_template_path("goFonServer.tpl",TRUE,dirname(__FILE__))));
+    return $smarty->fetch(get_template_path("serviceAsterisk.tpl", TRUE, dirname(__FILE__)));
   }
 
 
@@ -88,7 +88,7 @@ class goFonServer extends goService{
   }
 
   function check()
-  { 
+  {
     $message = plugin::check();
     if (empty($this->goFonAdmin)){
       $message[]= msgPool::required(_("User"));
@@ -104,14 +104,14 @@ class goFonServer extends goService{
     }
     return($message);
   }
-  
+
 
   function save_object()
   {
-    if(isset($_POST['goFonServerPosted'])){
+    if(isset($_POST['serviceAsteriskPosted'])){
       plugin::save_object();
     }
-  } 
+  }
 
 
   function allow_remove()
@@ -143,14 +143,14 @@ class goFonServer extends goService{
     }
   }
 
-  
+
   function save()
   {
     goService::save();
     /* Update goFonAccounts if server was is renamed.
        Set attribute goFonHomeServer to current dn
      */
-    if(in_array("goFonServer",$this->objectclasses)){
+    if(in_array("serviceAsterisk",$this->objectclasses)){
       if($this->orig_dn != "new" && $this->orig_dn != $this->dn){
         $ldap = $this->config->get_ldap_link();
         $ldap->cd($this->config->current['BASE']);
@@ -177,7 +177,7 @@ class goFonServer extends goService{
     }
   }
 
- 
+
   /* Return plugin informations for acl handling */
   static function plInfo()
   {
@@ -195,9 +195,9 @@ class goFonServer extends goService{
             "stop"          => _("Stop"),
             "restart"       => _("Restart"),
 
-              "goFonAdmin"      => _("Admin"), 
+              "goFonAdmin"      => _("Admin"),
               "goFonPassword"   => _("Password"),
-              "goFonAreaCode"   => _("Area code"), 
+              "goFonAreaCode"   => _("Area code"),
               "goFonCountryCode"=> _("Country code"))
           ));
   }
