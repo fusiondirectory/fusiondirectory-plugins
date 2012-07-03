@@ -20,128 +20,11 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class serviceSyslog extends goService{
+class rSyslogServer extends simpleService{
 
-  /* This plugin only writes its objectClass */
-  var $objectclasses  = array("goLogDBServer");
-  var $attributes     = array("gosaLogDB","goLogAdmin","goLogPassword");
-  var $StatusFlag     = "";
+  var $displayHeader    = TRUE; // If we want the button Add/Delete
+  var $objectclasses    = array("goSyslogServer");
 
-  /* This class can't be assigned twice so it conflicts with itself */
-  var $conflicts      = array("goLogDBServer");
-
-  var $DisplayName    = "";
-  var $dn             = NULL;
-  var $acl;
-  var $cn             = "";
-  var $gosaLogDB      = "Syslog";
-  var $goLogAdmin     = "rsyslog";
-  var $goLogPassword  = "";
-  var $view_logged    = FALSE;
-
-
-  function serviceSyslog(&$config,$dn)
-  {
-    goService::goService($config,$dn);
-    $this->DisplayName = _("Logs service");
-  }
-
-
-  function execute()
-  {
-    $smarty = get_smarty();
-
-    if($this->is_account && !$this->view_logged){
-      $this->view_logged = TRUE;
-      new log("view","server/".get_class($this),$this->dn);
-    }
-
-    $tmp = $this->plInfo();
-    foreach($tmp['plProvidedAcls'] as $name => $translation){
-      $smarty->assign($name."ACL",$this->getacl($name));
-    }
-
-    foreach($this->attributes as $attr){
-      $smarty->assign($attr,$this->$attr);
-    }
-    return($smarty->fetch(get_template_path("serviceSyslog.tpl",TRUE,dirname(__FILE__))));
-  }
-
-
-  function getListEntry()
-  {
-    $fields = goService::getListEntry();
-    $fields['Message']      = _("Logs service");
-    #$fields['AllowEdit']    = true;
-    #$fields['AllowStart']   = FALSE;
-    #$fields['AllowStop']    = FALSE;
-    #$fields['AllowRestart'] = FALSE;
-    return($fields);
-  }
-
-
-  function check()
-  {
-    $message = plugin::check();
-      if (empty($this->goLogAdmin)){
-        $message[]= msgPool::required(_("User"));
-      }
-      if (empty($this->gosaLogDB)){
-        $message[]= msgPool::required(_("Database"));
-      }
-      if (empty($this->goLogPassword)){
-        $message[]= msgPool::required(_("Password"));
-      }
-    return($message);
-  }
-
-
-  function save_object()
-  {
-    plugin::save_object();
-
-    foreach($this->attributes as $attr){
-      if(isset($_POST[$attr])){
-        $this->$attr = get_post($attr);
-      }
-    }
-  }
-
-
-  function save()
-  {
-    plugin::save();
-
-    /* Check if this is a new entry ... add/modify */
-    $ldap = $this->config->get_ldap_link();
-    $ldap->cat($this->dn,array("objectClass"));
-    if($ldap->count()){
-      $ldap->cd($this->dn);
-      $ldap->modify($this->attrs);
-    }else{
-      $ldap->cd($this->dn);
-      $ldap->add($this->attrs);
-    }
-    if($this->initially_was_account){
-      new log("modify","server/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
-      $this->handle_post_events("modify");
-    }else{
-      $this->handle_post_events("add");
-      new log("create","server/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
-    }
-    if (!$ldap->success()){
-      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()));
-    }
-  }
-
-
-  /* Remove service */
-  function remove_from_parent()
-  {
-    goService::remove_from_parent();
-  }
-
-  /* Return plugin informations for acl handling */
   static function plInfo()
   {
     return (array(
@@ -153,13 +36,69 @@ class serviceSyslog extends goService{
           "plSection"     => array("administration"),
           "plCategory"    => array("server"),
 
-          "plProvidedAcls"=> array(
-            "gosaLogDB" => _("Database"),
-            "goLogAdmin"     => _("User"),
-            "goLogPassword" => _("Password"),
-            "viewEntries"     => _("Allow view of entries on this server"))
+          "plProvidedAcls"=> parent::generatePlProvidedAcls(self::getAttributesInfo())
           ));
   }
+
+  /*!
+   *  \brief The main function : information about attributes
+   */
+  static function getAttributesInfo ()
+  {
+    return array (
+      'section1' => array (
+        'name'  => _("Logging service")." ("._("Services").")",
+        'attrs' => array (
+          new BooleanAttribute (
+            _('Server provides a syslog mysql database'),
+            _('Server provides a syslog mysql database'),
+            'enableSyslog',
+            FALSE,
+            FALSE
+          ),
+          new StringAttribute (
+            _('Database'),
+            _('Database'),
+            'gosaLogDB',
+            TRUE,
+            'Syslog'
+          ),
+          new StringAttribute (
+            _('Database user'),
+            _('Database administrator'),
+            'goLogAdmin',
+            TRUE,
+            'rsyslog'
+          ),
+          new PasswordAttribute (
+            _('Password'),
+            _('Password for the database administrator'),
+            'goLogPassword',
+            TRUE,
+            ''
+          )
+        )
+      )
+    );
+  }
+
+  function __construct(&$config, $dn = NULL, $object = NULL)
+  {
+    parent::__construct($config, $dn, $object);
+    $this->attributesInfo['section1']['attrs']['enableSyslog']->setInLdap(FALSE);
+    $this->attributesInfo['section1']['attrs']['enableSyslog']->setManagedAttributes (
+      array(
+        'erase' => array (
+          FALSE => array (
+            'section1' => array (
+              'gosaLogDB',
+              'goLogAdmin',
+              'goLogPassword',
+            )
+          )
+        )
+      )
+    );
+  }
 }
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>
