@@ -9,7 +9,7 @@
         </select>
 {/render}
     <br>
-	
+
 {render acl=$nameACL}
         <input type="submit"    value="{msgPool type=addButton}"  	name="NewNfsAdd"   id="NewNfsAddId" {if !$createable} disabled {/if}>
 {/render}
@@ -30,4 +30,4 @@
     &nbsp;
     <input type='submit' name='CancelService' value='{msgPool type=cancelButton}'>
 </div>
-<input type="hidden" name="goShareServerPosted" value="1">
+<input type="hidden" name="serviceSharePosted" value="1">

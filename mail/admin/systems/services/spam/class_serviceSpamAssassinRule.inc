@@ -20,16 +20,16 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class goSpamServerRule extends plugin {
+class serviceSpamAssassinRule extends plugin {
 
   var $attributes = array("name","rule");
   var $name = "";
   var $rule = "";
-  
+
   var $orig_name = "";
   var $view_logged  =FALSE;
-  
-  function goSpamServerRule(&$config,$dn,$name = "",$rule ="")
+
+  function serviceSpamAssassinRule(&$config,$dn,$name = "",$rule ="")
   {
     plugin::plugin($config,$dn);
     $this->name = $this->orig_name= $name;
@@ -49,7 +49,7 @@ class goSpamServerRule extends plugin {
     foreach($this->attributes as $attr){
       $smarty->assign($attr,$this->$attr);
     }
-    return($smarty->fetch(get_template_path("goSpamServerRule.tpl",TRUE,dirname(__FILE__))));     
+    return($smarty->fetch(get_template_path("serviceSpamAssassinRule.tpl",TRUE,dirname(__FILE__))));
   }
 
   function save_object()
@@ -71,7 +71,7 @@ class goSpamServerRule extends plugin {
     $ret['rule'] = $this->rule;
     return($ret);
   }
-  
+
   function check()
   {
     $messages = plugin::check();

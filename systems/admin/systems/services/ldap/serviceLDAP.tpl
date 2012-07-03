@@ -1,5 +1,5 @@
 <h2><img class="center" alt="" align="middle" src="images/rightarrow.png" /> {t}LDAP service{/t}</h2>
-{t}LDAP URI{/t}{$must} 
+{t}LDAP URI{/t}{$must}
 {render acl=$goLdapBaseACL}
 <input type="text" size="80" value="{$goLdapBase}"  name="goLdapBase" id="goLdapBaseId">
 {/render}
@@ -10,4 +10,4 @@
     &nbsp;
     <input type='submit' name='CancelService' value='{msgPool type=cancelButton}'>
 </div>
-<input type="hidden" name="goLdapServerPosted" value="1">
+<input type="hidden" name="serviceLDAPPosted" value="1">

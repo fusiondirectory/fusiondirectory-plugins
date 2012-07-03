@@ -20,9 +20,9 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class goLdapServer extends goService{
+class serviceLDAP extends goService{
 
-  var $cli_summary      = "This plugin is used within the ServerService Pluign \nand indicates that this server has goLdapServer defined.";
+  var $cli_summary      = "This plugin is used within the ServerService Pluign \nand indicates that this server has serviceLDAP defined.";
   var $cli_description  = "Some longer text\nfor help";
   var $cli_parameters   = array("eins" => "Eins ist toll", "zwei" => "Zwei ist noch besser");
 
@@ -32,19 +32,19 @@ class goLdapServer extends goService{
   var $StatusFlag       = "goLdapServerStatus";
 
   /* This class can't be assigned twice so it conflicts with itsself */
-  var $conflicts        = array("goLdapServer");
+  var $conflicts        = array();
 
-  var $DisplayName      = "";
-  var $dn               = NULL;
-  var $cn                  = "";
-  var $goLdapServerStatus  = "";
-  var $goLdapBase          = ""; 
-  var $oldBase             = ""; 
-  var $view_logged  =FALSE;
+  var $DisplayName        = "";
+  var $dn                 = NULL;
+  var $cn                 = "";
+  var $goLdapServerStatus = "";
+  var $goLdapBase         = "";
+  var $oldBase            = "";
+  var $view_logged        = FALSE;
 
   var $krb_service_prefix = "ldap/";
 
-  function goLdapServer(&$config,$dn)
+  function serviceLDAP(&$config,$dn)
   {
     goService::goService($config,$dn);
     $this->DisplayName = _("LDAP service");
@@ -63,14 +63,14 @@ class goLdapServer extends goService{
 
 
   function execute()
-  { 
+  {
 
     if($this->is_account && !$this->view_logged){
       $this->view_logged = TRUE;
       new log("view","server/".get_class($this),$this->dn);
     }
 
-    $smarty = get_smarty(); 
+    $smarty = get_smarty();
     foreach($this->attributes as $attr){
       $smarty->assign($attr,$this->$attr);
     }
@@ -78,7 +78,7 @@ class goLdapServer extends goService{
     foreach($tmp['plProvidedAcls'] as $name => $translated){
       $smarty->assign($name."ACL",$this->getacl($name));
     }
-    return($smarty->fetch(get_template_path("goLdapServer.tpl",TRUE,dirname(__FILE__))));
+    return($smarty->fetch(get_template_path("serviceLDAP.tpl",TRUE,dirname(__FILE__))));
   }
 
 
@@ -93,7 +93,7 @@ class goLdapServer extends goService{
 
 
   function check()
-  { 
+  {
     $message = plugin::check();
     if(empty($this->goLdapBase)){
       $message[] = msgPool::required(_("LDAP URI"));
@@ -107,12 +107,12 @@ class goLdapServer extends goService{
 
   function save_object()
   {
-    if(isset($_POST['goLdapServerPosted'])){
+    if(isset($_POST['serviceLDAPPosted'])){
       plugin::save_object();
     }
-  } 
+  }
 
-  
+
   function save()
   {
     goService::save();
@@ -132,7 +132,7 @@ class goLdapServer extends goService{
       }
       foreach($new as $dn => $data){
         $ldap->cd($dn);
-        $ldap->modify($data); 
+        $ldap->modify($data);
         if(!$ldap->success()){
           msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()));
         }

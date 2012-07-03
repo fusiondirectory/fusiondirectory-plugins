@@ -20,29 +20,29 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class goKioskService extends goService{
+class serviceKiosk extends goService{
 
   /* This plugin only writes its objectClass */
   var $objectclasses    = array("goEnvironmentServer");
   var $attributes       = array("gotoKioskProfile");
   var $StatusFlag       = "";
- 
-  /* This class can't be assigned twice so it conflicts with itsself */
-  var $conflicts        = array("goKioskService");
 
-  var $baseDir          = "../kiosk";
-  var $filesToAttach    = array();
-  var $cn               = "unknown";  
-  var $orig_cn          = "unknown";  
-  var $gotoKioskProfiles= array();
-  var $gotoKioskProfile = array();
-  var $server_path      = "http://%cn/kiosk";
- 
-  function goKioskService(&$config, $dn, $parent)
+  /* This class can't be assigned twice so it conflicts with itsself */
+  var $conflicts        = array();
+
+  var $baseDir            = "../kiosk";
+  var $filesToAttach      = array();
+  var $cn                 = "unknown";
+  var $orig_cn            = "unknown";
+  var $gotoKioskProfiles  = array();
+  var $gotoKioskProfile   = array();
+  var $server_path        = "http://%cn/kiosk";
+
+  function __construct(&$config, $dn, $parent)
   {
     goService::goService($config,$dn);
 
-    /* Get the current object name. 
+    /* Get the current object name.
      */
     if(isset($parent->parent->cn)){
       $this->cn = &$parent->parent->cn;
@@ -57,7 +57,7 @@ class goKioskService extends goService{
 
     /* Load list of profiles and check if they still exists */
     if ($this->baseDir == ""){
-#      msg_dialog::display(_("Configuration error"), 
+#      msg_dialog::display(_("Configuration error"),
 #      msgPool::cmdnotfound("KIOSKPATH",_("Kiosk profile service")), ERROR_DIALOG);
     }else{
       $this->gotoKioskProfiles = array();
@@ -66,8 +66,8 @@ class goKioskService extends goService{
           $url = $this->attrs['gotoKioskProfile'][$i];
           $this->server_path = preg_replace("/\/[^\/]*$/","",$url);
           $name= preg_replace("/^.*\//","",$url);
-          $this->gotoKioskProfiles[] = array('url'     => $url , 
-                                            'name'    => $name , 
+          $this->gotoKioskProfiles[] = array('url'     => $url ,
+                                            'name'    => $name ,
                                             'initial' =>TRUE,
                                             'exists'  => file_exists($this->baseDir."/".$name));
         }
@@ -85,16 +85,16 @@ class goKioskService extends goService{
       $obj= array();
       while($attrs = $ldap->fetch()){
         $obj[$ldap->getDN()]= $attrs['cn'][0];
-      }    
+      }
       msg_dialog::display(_("Error"), msgPool::stillInUse(_("Kiosk profile service"), msgPool::buildList($obj)), ERROR_DIALOG);
     }else{
       goService::remove_from_parent();
     }
   }
-  
-  
+
+
   function execute()
-  { 
+  {
     /* log actions */
     if($this->is_account && !$this->view_logged){
       $this->view_logged = TRUE;
@@ -107,7 +107,7 @@ class goKioskService extends goService{
     $smarty->assign("ThisACL",$this->getacl(""));
     $display= "";
 
-    /* Download kiosk profile 
+    /* Download kiosk profile
      */
     if(isset($_GET['getkiosk'])){
       $id = $_GET['getkiosk'];
@@ -116,13 +116,13 @@ class goKioskService extends goService{
         if($profile['name'] == $id){
           $name = $this->baseDir."/".$id;
           if(file_exists($name)){
-            $content = file_get_contents($name);    
+            $content = file_get_contents($name);
             send_binary_content($content,$id);
           }
         }
       }
     }
-    
+
 
     /* Add new kiosk profile
      * in profile directory ($this->baseDir);
@@ -145,7 +145,7 @@ class goKioskService extends goService{
     foreach($_POST as $name => $value){
 
       if((preg_match("/^delkiosk_/",$name))&&($only_once) && $this->acl_is_writeable("")){
-  
+
         /* Get id, name and path */
         $only_once = false;
         $id = preg_replace("/^delkiosk_/","",$name);
@@ -169,7 +169,7 @@ class goKioskService extends goService{
               $found= true;
             }
           }
- 
+
           if ($found){
             msg_dialog::display(_("Error"), msgPool::stillInUse(_("Kiosk profile"), msgPool::buildList($obj)), ERROR_DIALOG);
           }
@@ -210,12 +210,12 @@ class goKioskService extends goService{
 
     /* Assign all existing profiles to smarty */
     $smarty->assign("divlist",$divlist->DrawList());
-    $smarty = get_smarty(); 
+    $smarty = get_smarty();
     foreach($this->attributes as $attr){
       $smarty->assign($attr,$this->$attr);
     }
     $smarty->assign("server_path",$this->server_path);
-    return($smarty->fetch(get_template_path("goKioskService.tpl",TRUE,dirname(__FILE__))));
+    return($smarty->fetch(get_template_path("serviceKiosk.tpl",TRUE,dirname(__FILE__))));
   }
 
 
@@ -232,7 +232,7 @@ class goKioskService extends goService{
   }
 
   function check()
-  { 
+  {
     $message = plugin::check();
     return($message);
   }
@@ -270,16 +270,16 @@ class goKioskService extends goService{
     }
   }
 
-  
+
   function save_object()
   {
-    if(isset($_POST['goKioskPosted'])){
+    if(isset($_POST['serviceKioskPosted'])){
       goService::save_object();
       if(isset($_POST['server_path'])){
         $this->server_path = get_post("server_path");
       }
     }
-  }  
+  }
 
 
   /* Return plugin informations for acl handling */

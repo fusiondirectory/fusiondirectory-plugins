@@ -20,27 +20,27 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class goTerminalServer extends goService{
+class serviceTerminal extends goService{
 
   /* This plugin only writes its objectClass */
   var $objectclasses    = array("goTerminalServer");
   var $attributes       = array("goXdmcpIsEnabled","gotoSessionType");
-  var $StatusFlag       = "goTerminalServerStatus";
+  var $StatusFlag       = "serviceTerminalStatus";
 
   /* This class can't be assigned twice so it conflicts with itsself */
-  var $conflicts        = array("goTerminalServer");
+  var $conflicts        = array();
 
   var $DisplayName    = "";
   var $dn     = NULL;
   var $acl;
   var $cn     = "";
-  var $goTerminalServerStatus = "";
-  var $goXdmcpIsEnabled   = false;  
+  var $serviceTerminalStatus = "";
+  var $goXdmcpIsEnabled   = false;
   var $view_logged    = FALSE;
 
   var $gotoSessionType    = array();
 
-  function goTerminalServer(&$config,$dn)
+  function serviceTerminal(&$config,$dn)
   {
     goService::goService($config,$dn);
     $this->DisplayName = _("Terminal service");
@@ -52,13 +52,13 @@ class goTerminalServer extends goService{
       }
     }
     $this->gotoSessionType = $tmp;
-    #$this->gotoSessionTypes= array("LDM","XDMCP","RDP","CITRIX"); 
-    $this->gotoSessionTypes= array("LDM","XDMCP", "SHELL", "RDP", "TELNET"); 
+    #$this->gotoSessionTypes= array("LDM","XDMCP","RDP","CITRIX");
+    $this->gotoSessionTypes= array("LDM","XDMCP", "SHELL", "RDP", "TELNET");
   }
 
 
   function execute()
-  { 
+  {
     $smarty = get_smarty();
 
     if($this->is_account && !$this->view_logged){
@@ -66,7 +66,7 @@ class goTerminalServer extends goService{
       new log("view","server/".get_class($this),$this->dn);
     }
 
-  
+
     $tmp = $this->plinfo();
     foreach($tmp['plProvidedAcls'] as $name => $translation){
       $smarty->assign($name."ACL",$this->getacl($name));
@@ -86,7 +86,7 @@ class goTerminalServer extends goService{
     }
     $smarty->assign("gotoSessionTypes",$tmp);
 
-    return($smarty->fetch(get_template_path("goTerminalServer.tpl",TRUE,dirname(__FILE__))));
+    return($smarty->fetch(get_template_path("serviceTerminal.tpl",TRUE,dirname(__FILE__))));
   }
 
 
@@ -133,7 +133,7 @@ class goTerminalServer extends goService{
 
 
   function check()
-  { 
+  {
     $message = plugin::check();
     return($message);
   }
@@ -141,7 +141,7 @@ class goTerminalServer extends goService{
 
   function save_object()
   {
-    if(isset($_POST['goTerminalServerPosted'])){
+    if(isset($_POST['serviceTerminalPosted'])){
       plugin::save_object();
 
       $this->gotoSessionType = array();
@@ -159,7 +159,7 @@ class goTerminalServer extends goService{
         }
       }
     }
-  } 
+  }
 
 
   function PrepareForCopyPaste($obj)
@@ -172,8 +172,8 @@ class goTerminalServer extends goService{
       }
     }
     $this->gotoSessionType = $tmp;
-    #$this->gotoSessionTypes= array("LDM","XDMCP","RDP","CITRIX"); 
-    $this->gotoSessionTypes= array("LDM","XDMCP", "SHELL", "TELNET"); 
+    #$this->gotoSessionTypes= array("LDM","XDMCP","RDP","CITRIX");
+    $this->gotoSessionTypes= array("LDM","XDMCP", "SHELL", "TELNET");
   }
 
 

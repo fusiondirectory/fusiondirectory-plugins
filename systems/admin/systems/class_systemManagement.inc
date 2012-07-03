@@ -1389,7 +1389,7 @@ class systemManagement extends management
     $ldap->search("(objectClass=*)",array('objectClass'));
     $str = "&nbsp;";
     $services = array();
-    $services_class = array (
+    $services_class = array ( // FIXME : this should be generated
         "FAIrepositoryServer" => "repository",
         "goLdapServer" => "ldap",
         "dNSZone" => "dns",
@@ -1400,9 +1400,9 @@ class systemManagement extends management
         "goSpamServer" => "spamassassin",
         "goShareServer" => "file",
         "goCupsServer" => "print",
-        "serviceIMAP" => "imap",
+        "goImapServer" => "imap",
         "goTerminalServer" => "terminal",
-        "serviceMail" => "smtp"
+        "goMailServer" => "smtp"
         );
     while($attrs = $ldap->fetch()){
         unset($attrs['objectClass']['count']);

@@ -5,7 +5,7 @@
    <table>
     <tr>
      <td>
-      {t}Rewrite header{/t}      
+      {t}Rewrite header{/t}
      </td>
      <td>
 {render acl=$saRewriteHeaderACL}
@@ -15,7 +15,7 @@
     </tr>
     <tr>
      <td>
-      {t}Required score{/t}      
+      {t}Required score{/t}
      </td>
      <td>
 {render acl=$saRequiredScoreACL}
@@ -110,7 +110,7 @@
      <td>
       {$divRules}<br>
 {render acl=$saTrustedNetworksACL}
-      <input type='submit' name='AddRule' value='{msgPool type=addButton}'> 
+      <input type='submit' name='AddRule' value='{msgPool type=addButton}'>
 {/render}
      </td>
     </tr>
@@ -118,7 +118,7 @@
 
   </td>
 </table>
-<input type='hidden' value='1' name='goSpamServer'>
+<input type='hidden' value='1' name='serviceSpamAssassin'>
 
 <p class='seperator'>&nbsp;</p>
 <div style="width:100%; text-align:right;padding-top:10px;padding-bottom:3px;">

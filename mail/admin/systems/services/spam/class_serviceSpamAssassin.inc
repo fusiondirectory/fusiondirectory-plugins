@@ -20,15 +20,15 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class gospamserver extends goService{
+class serviceSpamAssassin extends goService{
 
   /* This plugin only writes its objectClass */
   var $objectclasses    = array("goSpamServer");
   var $attributes       = array("saRewriteHeader","saTrustedNetworks","saRequiredScore","saFlags","saRule");
   var $StatusFlag       = "saStatus";
- 
+
   /* This class can't be assigned twice so it conflicts with itsself */
-  var $conflicts        = array("goSpamServer");
+  var $conflicts        = array();
   var $Flags            = array("B","b","C","R","D","P");
 
   var $DisplayName      = "";
@@ -36,13 +36,13 @@ class gospamserver extends goService{
   var $cn               = "";
   var $saStatus         = "";
 
-  var $saRewriteHeader  = "";
-  var $saTrustedNetworks= array();
-  var $TrustedNetworks  = array();
-  var $saRequiredScore  = 0;
-  var $saFlags          = "";
-  var $Rules            = array();
-  var $saRule           = array();
+  var $saRewriteHeader    = "";
+  var $saTrustedNetworks  = array();
+  var $TrustedNetworks    = array();
+  var $saRequiredScore    = 0;
+  var $saFlags            = "";
+  var $Rules              = array();
+  var $saRule             = array();
 
   var $saFlagsB         = false;
   var $saFlagsb         = false;
@@ -50,15 +50,15 @@ class gospamserver extends goService{
   var $saFlagsR         = false;
   var $saFlagsD         = false;
   var $saFlagsP         = false;
- 
+
   var $ui               = NULL;
   var $acl              = NULL;
-  var $view_logged  =FALSE;
+  var $view_logged      = FALSE;
 
-  function gospamserver(&$config,$dn, $parent= NULL)
+  function __construct(&$config, $dn, $parent= NULL)
   {
     /* Init class */
-    goService::goService($config,$dn, $parent);
+    goService::goService($config, $dn, $parent);
     $this->DisplayName = _("Spamassassin");
 
     /* Get userinfo & acls */
@@ -71,20 +71,20 @@ class gospamserver extends goService{
         $this->$var = TRUE;
       }
     }
-    
+
     /* Get trusted networks */
     $this->TrustedNetworks = array();
     if(isset($this->attrs['saTrustedNetworks']) && is_array($this->attrs['saTrustedNetworks'])){
       $var = $this->attrs['saTrustedNetworks'];
       for($i = 0 ; $i < $var['count'] ; $i ++ ){
         $var2 = $this->attrs['saTrustedNetworks'][$i];
-        $this->TrustedNetworks[ $var2 ] = $var2; 
+        $this->TrustedNetworks[ $var2 ] = $var2;
       }
     }
 
     /* Get rules */
     $this->Rules = array();
-    if(isset($this->attrs['saRule']) && is_array($this->attrs['saRule'])){  
+    if(isset($this->attrs['saRule']) && is_array($this->attrs['saRule'])){
       $var = $this->attrs['saRule'];
       for($i = 0 ; $i < $var['count'] ; $i ++ ){
         $var2 = $this->attrs['saRule'][$i];
@@ -99,8 +99,8 @@ class gospamserver extends goService{
   function execute()
   {
     $display ="";
-    $smarty = get_smarty(); 
-    
+    $smarty = get_smarty();
+
     if($this->is_account && !$this->view_logged){
       $this->view_logged = TRUE;
       new log("view","server/".get_class($this),$this->dn);
@@ -119,7 +119,7 @@ class gospamserver extends goService{
     if(isset($_POST['AddNewTrust']) && ($this->acl_is_writeable("saTrustedNetworks"))){
       $this->AddTrust($_POST['NewTrustName']);
     }
-  
+
     /* Delete selected trusted network */
     if(isset($_POST['DelTrust']) && ($this->acl_is_writeable("saTrustedNetworks"))){
       $this->DelTrust($_POST['TrustedNetworks']);
@@ -127,9 +127,9 @@ class gospamserver extends goService{
 
     /* Add a new rule */
     if(isset($_POST['AddRule']) && $this->acl_is_writeable("saRule")){
-      $this->dialog = new goSpamServerRule($this->config,$this->dn);
+      $this->dialog = new serviceSpamAssassinRule($this->config,$this->dn);
     }
-  
+
     /* Cancel adding/editing specified rule */
     if(isset($_POST['CancelRule'])){
       $this->dialog = FALSE;
@@ -144,7 +144,7 @@ class gospamserver extends goService{
         $entry = preg_replace("/_(x|y)$/","",$entry);
         $rule = $this->Rules[$entry];
         $name = $entry;
-        $this->dialog = new goSpamServerRule($this->config,$this->dn,$name,$rule);
+        $this->dialog = new serviceSpamAssassinRule($this->config,$this->dn,$name,$rule);
       }
       if(preg_match("/^delRule_/",$name) && $once && $this->acl_is_writeable("saRule")){
         $once = false;
@@ -171,8 +171,8 @@ class gospamserver extends goService{
         $this->dialog = FALSE;
       }
     }
-   
-    /* Display dialog if available */ 
+
+    /* Display dialog if available */
     if($this->dialog && $this->dialog->config){
       $this->dialog->save_object();
       return($this->dialog->execute());
@@ -212,8 +212,8 @@ class gospamserver extends goService{
       $field2 = array("string" => sprintf($actions,$key,$key) , "attach" => "style='border-right:0px;width:36px;'");
       $DivRules->AddEntry(array($field1,$field2));
     }
-    $smarty->assign("divRules",$DivRules->DrawList()); 
-    $smarty->assign("TrustedNetworks",$this->TrustedNetworks); 
+    $smarty->assign("divRules",$DivRules->DrawList());
+    $smarty->assign("TrustedNetworks",$this->TrustedNetworks);
 
     /* Create Spam score select box entries */
     $tmp = array();
@@ -222,7 +222,7 @@ class gospamserver extends goService{
     }
     $smarty->assign("SpamScore",$tmp);
 
-    return($display.$smarty->fetch(get_template_path("goSpamServer.tpl",TRUE,dirname(__FILE__))));
+    return($display.$smarty->fetch(get_template_path("serviceSpamAssassin.tpl",TRUE,dirname(__FILE__))));
   }
 
 
@@ -244,7 +244,7 @@ class gospamserver extends goService{
   {
     foreach($posts as $post){
       if(isset($this->TrustedNetworks[$post])){
-        unset($this->TrustedNetworks[$post]);     
+        unset($this->TrustedNetworks[$post]);
       }
     }
   }
@@ -254,7 +254,7 @@ class gospamserver extends goService{
     if(!$this->is_account) return;
     plugin::save();
 
-    /* Create Flags */     
+    /* Create Flags */
     $this->attrs['saFlags'] = array();
     foreach($this->Flags as $flag){
       $var = "saFlags".$flag;
@@ -266,8 +266,8 @@ class gospamserver extends goService{
     /* Create trusted network entries */
     $this->attrs['saTrustedNetworks'] = array();
     foreach($this->TrustedNetworks as $net){
-      $this->attrs['saTrustedNetworks'][] = $net; 
-    }    
+      $this->attrs['saTrustedNetworks'][] = $net;
+    }
 
     /* Rules */
     $this->attrs['saRule'] = array();
@@ -299,7 +299,7 @@ class gospamserver extends goService{
   }
 
   function check()
-  { 
+  {
     $message = plugin::check();
 
     /* Check if required score is numeric */
@@ -309,11 +309,11 @@ class gospamserver extends goService{
 
     return($message);
   }
-  
+
 
   function save_object()
   {
-    if(isset($_POST['goSpamServer'])){
+    if(isset($_POST['serviceSpamAssassin'])){
 
       plugin::save_object();
 
@@ -329,10 +329,10 @@ class gospamserver extends goService{
           }
         }
       }
-    }    
-  }  
+    }
+  }
 
-  
+
   /* For newer service management dialogs */
   function getListEntry()
   {
@@ -341,7 +341,7 @@ class gospamserver extends goService{
     #$fields['AllowEdit']    = true;
     return($fields);
   }
-  
+
   /* Return plugin informations for acl handling  */
   static function plInfo()
   {

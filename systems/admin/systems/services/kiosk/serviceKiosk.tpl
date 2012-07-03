@@ -32,7 +32,7 @@
     &nbsp;
     <input type='submit' name='CancelService' value='{msgPool type=cancelButton}'>
 </div>
-<input type="hidden" name="goKioskPosted" value="1">
+<input type="hidden" name="serviceKioskPosted" value="1">
 
 <script language="JavaScript" type="text/javascript">
   <!-- // First input field on page

@@ -20,7 +20,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class goShareServer extends goService{
+class serviceShare extends goService{
 
   var $cli_summary      = "This plugin is used within the ServerService Pluign \nand indicates that this server supports shares.";
   var $cli_description  = "Some longer text\nfor help";
@@ -32,19 +32,19 @@ class goShareServer extends goService{
   var $StatusFlag       = "goShareServerStatus";
 
   /* This class can't be assigned twice so it conflicts with itsself */
-  var $conflicts        = array("goShareServer");
+  var $conflicts        = array("serviceShare");
 
-  var $DisplayName      = "";
-  var $dn               = NULL;
+  var $DisplayName          = "";
+  var $dn                   = NULL;
   var $cn                   = "";
   var $goShareServerStatus  = "";
   var $goExportEntry        = array();
   var $allow_mounts         = false;
   var $mounts_to_remove     = array();
   var $mounts_to_add        = array();
-  var $view_logged  =FALSE;
+  var $view_logged          = FALSE;
 
-  function goShareServer(&$config,$dn)
+  function serviceShare(&$config,$dn)
   {
     goService::goService($config,$dn);
 
@@ -58,7 +58,7 @@ class goShareServer extends goService{
           $tmp[preg_replace('/\|.*$/', '', $entry)]= $entry;
         }
       }
-    } 
+    }
     $this->goExportEntryList = $tmp;
 
     $ldap = $this->config->get_ldap_link();
@@ -70,8 +70,8 @@ class goShareServer extends goService{
 
 
   function execute()
-  { 
-    $smarty = get_smarty(); 
+  {
+    $smarty = get_smarty();
 
     if($this->is_account && !$this->view_logged){
       $this->view_logged = TRUE;
@@ -167,7 +167,7 @@ class goShareServer extends goService{
     }
     $smarty->assign("goExportEntry",array_keys($tellSmarty));
     $smarty->assign("goExportEntryKeys",($tellSmarty));
-    return($smarty->fetch(get_template_path("goShareServer.tpl",TRUE,dirname(__FILE__))));
+    return($smarty->fetch(get_template_path("serviceShare.tpl",TRUE,dirname(__FILE__))));
   }
 
 
@@ -222,7 +222,7 @@ class goShareServer extends goService{
 
 
   function check()
-  { 
+  {
     $message = plugin::check();
     return($message);
   }
@@ -230,10 +230,10 @@ class goShareServer extends goService{
 
   function save_object()
   {
-    if(isset($_POST['goShareServerPosted'])){
+    if(isset($_POST['serviceSharePosted'])){
       plugin::save_object();
     }
-  } 
+  }
 
   function allow_remove()
   {
@@ -337,7 +337,7 @@ class goShareServer extends goService{
     }
   }
 
-  function addToMountList($entry) 
+  function addToMountList($entry)
   {
     if($this->acl_is_writeable("name")){
       $key =  key($entry);
@@ -349,7 +349,7 @@ class goShareServer extends goService{
     }
   }
 
-  function deleteFromMountList($entry) 
+  function deleteFromMountList($entry)
   {
     if($this->acl_is_writeable("name")){
       $type = $this->get_share_type($entry);
@@ -360,7 +360,7 @@ class goShareServer extends goService{
     }
   }
 
-  function get_share_type($share) 
+  function get_share_type($share)
   {
     $tmp = explode("|", $share);
     return $tmp[2];

@@ -12,7 +12,7 @@
      <td colspan=2>
     <h2>{t}Supported session types{/t}</h2>
       {foreach from=$gotoSessionTypes item=item key=key}
-        <input class="center" type="checkbox" name="gotoSessionType_{$key}" 
+        <input class="center" type="checkbox" name="gotoSessionType_{$key}"
           {if $item} checked {/if}>&nbsp;{$key} <br>
       {/foreach}
      </td>
@@ -25,4 +25,4 @@
     &nbsp;
     <input type='submit' name='CancelService' value='{msgPool type=cancelButton}'>
 </div>
-<input type="hidden" name="goTerminalServerPosted" value="1">
+<input type="hidden" name="serviceTerminalPosted" value="1">
