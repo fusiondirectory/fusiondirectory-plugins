@@ -155,7 +155,7 @@
   </tbody>
 </table>
 
-<input type="hidden" name="quotaServicePosted" value="1">
+<input type="hidden" name="serviceQuotaPosted" value="1">
 
 <p class="seperator">&nbsp;</p>
 <div style="width: 100%; text-align: right; padding-top: 10px; padding-bottom: 3px;">

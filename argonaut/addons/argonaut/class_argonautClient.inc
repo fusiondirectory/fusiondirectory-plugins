@@ -70,7 +70,7 @@ class argonautClient extends plugin
       "serviceLDAP"         => "slapd",
       "serviceShare"        => "samba",
       "serviceSpamAssassin" => "spamassassin",
-      "govirusserver"       => "clamav-daemon",
+      "serviceAntiVirus"    => "clamav-daemon",
       "serviceDHCP"         => "isc-dhcp-server",
       "serviceDNS"          => "bind9",
       "argonautServer"      => "argonaut-server"
@@ -79,7 +79,7 @@ class argonautClient extends plugin
       "argonautDNSConfig",
       "argonautMirrorConfig",
       "argonautFuseConfig",
-      "quotaService"
+      "serviceQuota"
     );
 
     $this->argonautServiceName = array();

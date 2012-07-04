@@ -51,10 +51,10 @@
 	  </td>
 	 </tr>
 	</table>
- 
+
   </td>
   <td style='border-left:1px solid #A0A0A0;vertical-align:top;'>
-  
+
 	<table>
 	 <tr>
 	  <td>
@@ -72,7 +72,7 @@
 	  </td>
 	  <td>
 {render acl=$avChecksPerDayACL}
-	  	<input type='text' name='avChecksPerDay' value='{$avChecksPerDay}'> 
+	  	<input type='text' name='avChecksPerDay' value='{$avChecksPerDay}'>
 {/render}
 	  </td>
 	 </tr>
@@ -98,7 +98,7 @@
  <tr>
   <td colspan=2>
    <p class='seperator'>&nbsp;</p>
-	<h2>{t}Archive scanning{/t}</h2> 
+	<h2>{t}Archive scanning{/t}</h2>
   </td>
  </tr>
  <tr>
@@ -108,9 +108,9 @@
 	  <td>
 {render acl=$avFlagsAACL}
 	  	<input type='checkbox' name='avFlagsA' {$avFlagsACHK} value='1'
-			onClick=" changeState('avFlagsE') ; 
-				  changeState('avArchiveMaxFileSize') ; 
-				  changeState('avArchiveMaxRecursion') ; 
+			onClick=" changeState('avFlagsE') ;
+				  changeState('avArchiveMaxFileSize') ;
+				  changeState('avArchiveMaxRecursion') ;
 				  changeState('avArchiveMaxCompressionRatio') ; "
 		>
 {/render}
@@ -126,7 +126,7 @@
 	  </td>
 	 </tr>
 	</table>
-  
+
   </td>
   <td  style="vertical-align:top;width:50%;border-left:1px solid #A0A0A0;">
 	<table>
@@ -158,11 +158,11 @@
 	  </td>
 	 </tr>
 	</table>
-  
+
   </td>
  </tr>
 </table>
-<input type='hidden' name='goVirusServer' value='1'>
+<input type='hidden' name='serviceAntiVirus' value='1'>
 <p class='seperator'>&nbsp;</p>
 <div style="width:100%; text-align:right;padding-top:10px;padding-bottom:3px;">
     <input type='submit' name='SaveService' value='{msgPool type=saveButton}'>

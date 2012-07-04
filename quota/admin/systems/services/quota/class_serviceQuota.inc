@@ -20,7 +20,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
  */
 
-class quotaService extends goService {
+class serviceQuota extends goService {
 
   /* This plugin only writes its objectClass */
   var $objectclasses    = array("quotaService");
@@ -56,11 +56,11 @@ class quotaService extends goService {
   var $acl;
   var $cn           = "";
   var $description  = "";
-  var $view_logged  =FALSE;
+  var $view_logged  = FALSE;
 
-  function quotaService(&$config,$dn)
+  function __construct(&$config, $dn)
   {
-    goService::goService($config,$dn);
+    goService::goService($config, $dn);
     $this->DisplayName = _("Quota service");
 
     /* Load arrays */
@@ -194,7 +194,7 @@ class quotaService extends goService {
     /* special Value for adding ballon info */
     $smarty->assign("HELP_get_blocksize",_("HELP how to get blocksize"));
 
-    return($smarty->fetch(get_template_path("quotaService.tpl",TRUE,dirname(__FILE__))));
+    return($smarty->fetch(get_template_path("serviceQuota.tpl",TRUE,dirname(__FILE__))));
   }
 
 
@@ -208,7 +208,7 @@ class quotaService extends goService {
 
   function save_object()
   {
-    if (isset($_POST['quotaServicePosted'])) {
+    if (isset($_POST['serviceQuotaPosted'])) {
       plugin::save_object();
     }
   }

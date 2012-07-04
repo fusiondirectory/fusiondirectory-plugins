@@ -20,14 +20,14 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class govirusserver extends goService{
+class serviceAntiVirus extends goService{
 
   /* This plugin only writes its objectClass */
   var $objectclasses    = array("goVirusServer");
   var $attributes       = array("avMaxThreads","avMaxDirectoryRecursions","avUser","avFlags","avArchiveMaxFileSize","avArchiveMaxRecursion",
                                 "avArchiveMaxCompressionRatio","avDatabaseMirror","avChecksPerDay","avHttpProxyURL");
   var $StatusFlag       = "avStatus";
- 
+
   /* This class can't be assigned twice so it conflicts with itsself */
   var $conflicts        = array("goVirusServer");
 
@@ -39,7 +39,7 @@ class govirusserver extends goService{
   var $ui               = NULL;
 
   var $Flags            = array("D","S","A","E");
-  
+
   var $avFlags          = "DS";
   var $avFlagsD         = TRUE;
   var $avFlagsS         = TRUE;
@@ -47,7 +47,7 @@ class govirusserver extends goService{
   var $avFlagsE         = FALSE;
 
   var $avMaxThreads                 = 5;
-  var $avMaxDirectoryRecursions     = 4;    
+  var $avMaxDirectoryRecursions     = 4;
   var $avArchiveMaxFileSize         = 4000;
   var $avArchiveMaxRecursion        = 5;
   var $avArchiveMaxCompressionRatio = 95;
@@ -56,12 +56,12 @@ class govirusserver extends goService{
   var $avUser                       = "";
   var $avHttpProxyURL               = "";
   var $avDatabaseMirror             = "";
-  var $view_logged  =FALSE;
+  var $view_logged                  = FALSE;
 
-  function govirusserver(&$config,$dn, $parent= NULL)
+  function __construct(&$config, $dn, $parent = NULL)
   {
     /* Init class */
-    goService::goService($config,$dn, $parent);
+    goService::goService($config, $dn, $parent);
     $this->DisplayName = _("Anti virus");
 
     /* Get userinfo & acls */
@@ -79,7 +79,7 @@ class govirusserver extends goService{
 
   function execute()
   {
-    $smarty = get_smarty(); 
+    $smarty = get_smarty();
 
     if($this->is_account && !$this->view_logged){
       $this->view_logged = TRUE;
@@ -89,7 +89,7 @@ class govirusserver extends goService{
 
     /* Set acls */
     $tmp = $this->plInfo();
-    foreach($tmp['plProvidedAcls'] as $name => $translation) { 
+    foreach($tmp['plProvidedAcls'] as $name => $translation) {
       $smarty->assign($name."ACL",$this->getacl($name));
     }
 
@@ -125,7 +125,7 @@ class govirusserver extends goService{
       $smarty->assign("avFlagsAState" , " disabled " );
     }
 
-    return($display.$smarty->fetch(get_template_path("goVirusServer.tpl",TRUE,dirname(__FILE__))));
+    return $display.$smarty->fetch(get_template_path("serviceAntiVirus.tpl", TRUE, dirname(__FILE__)));
   }
 
 
@@ -133,7 +133,7 @@ class govirusserver extends goService{
   {
     if(!$this->is_account) return;
 
-    /* Create Flags */     
+    /* Create Flags */
     $this->avFlags = "";
     foreach($this->Flags as $flag){
       $var = "avFlags".$flag;
@@ -176,7 +176,7 @@ class govirusserver extends goService{
   }
 
   function check()
-  { 
+  {
     $message = plugin::check();
 
     $mustBeNumeric = array(
@@ -198,14 +198,14 @@ class govirusserver extends goService{
         $message[] = msgPool::invalid($name,$this->$attr,"/[a-z0-9:_\-\.\/]/");
       }
     }
-  
+
     return($message);
   }
-  
+
 
   function save_object()
   {
-    if(isset($_POST['goVirusServer'])){
+    if(isset($_POST['serviceAntiVirus'])){
       plugin::save_object();
       foreach($this->Flags as $flag){
 
@@ -218,9 +218,9 @@ class govirusserver extends goService{
           }
         }
       }
-    }    
-  }  
-  
+    }
+  }
+
 
   /* For newer service management dialogs */
   function getListEntry()
@@ -232,7 +232,7 @@ class govirusserver extends goService{
   }
 
 
-  /* Return plugin informations for acl handling */ 
+  /* Return plugin informations for acl handling */
   static function plInfo()
   {
     return (array(
