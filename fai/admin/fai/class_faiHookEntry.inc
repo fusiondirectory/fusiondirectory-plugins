@@ -28,10 +28,11 @@ class faiHookEntry extends plugin
   var $attributes   = array("cn","description","FAIscript","FAItask");
   var $objectclasses= array();
 
-  var $orig_cn              = "";
-  var $tasks                = array("chboot", "configure", "debconf", "extrbase", "faiend", "finish",
-                                    "install", "instsoft", "mirror", "mountdisks", "partition", "prepareapt",
-                                    "savelog", "softupdate", "sysinfo","updatebase", "error");
+  var $orig_cn       = "";
+  var $tasks         = array("chboot","configure","debconf","error","extrbase",
+                             "faiend","finish","install","instsoft","mirror",
+                             "mountdisks","partition","prepareapt","repository",
+                             "savelog","setup","softupdate","sysinfo","updatebase");
   var $dn            = "";
   var $cn            = "";
   var $FAItask       = "chboot";
@@ -40,7 +41,7 @@ class faiHookEntry extends plugin
   var $status        = "new";
   var $parent        = NULL;
   var $FAIstate      = "";
-  
+
   function faiHookEntry (&$config, $dn= NULL,$object=false)
   {
     plugin::plugin ($config, NULL);
@@ -76,7 +77,7 @@ class faiHookEntry extends plugin
     /* Fill templating stuff */
     $smarty     = get_smarty();
     $display = "";
-        
+
     if(isset($_POST['ImportUpload'])){
       if(($_FILES['ImportFile']['error']!=0)){
         msg_dialog::display(_("Error"), msgPool::incorrectUpload(), ERROR_DIALOG);
@@ -101,7 +102,7 @@ class faiHookEntry extends plugin
           <img src='images/save.png' alt='"._("Download")."' title='"._("Download")."' border=0 class='center'>
         </a>");
     }else{
-      $smarty->assign("DownMe","");  
+      $smarty->assign("DownMe","");
     }
 
     $used_tasks = $this->parent->getUsedFAItask($this->cn);
@@ -122,7 +123,7 @@ class faiHookEntry extends plugin
       $acl = $this->getacl($name, preg_match("/freeze/",$this->FAIstate));
       $smarty->assign($name."ACL",$acl);
     }
-   
+
     $smarty->assign("FAIscript" , htmlentities($this->FAIscript));
 
     $smarty->assign("freeze" , preg_match("/freeze/",$this->FAIstate));
@@ -171,11 +172,11 @@ class faiHookEntry extends plugin
 
     return ($message);
   }
- 
+
   function save()
   {
     $tmp=array();
-    foreach($this->attributes as $attrs){ 
+    foreach($this->attributes as $attrs){
       $tmp[$attrs] = $this->$attrs;
     }
 
@@ -186,9 +187,9 @@ class faiHookEntry extends plugin
       $tmp['remove']['from']  = $this->orig_cn;
       $tmp['remove']['to']    = $tmp['cn'];
     }
-  
-    $tmp['dn']      = $this->dn;  
-    $tmp['status']  = $this->status;  
+
+    $tmp['dn']      = $this->dn;
+    $tmp['status']  = $this->status;
     return($tmp);
   }
 
