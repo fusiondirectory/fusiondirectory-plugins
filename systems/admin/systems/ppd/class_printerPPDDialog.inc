@@ -263,16 +263,19 @@ class printerPPDDialog extends plugin
     /* Test if destination is different from copy */
     if ($AbsoluteSourceName != $AbsoluteDestinationPath.$PPDName) {
 
-      /* Create destination file handle */
-      $fp = @fopen($AbsoluteDestinationPath.$PPDName,"w+");
-      if (!$fp) {
-        msg_dialog::display(_("PPD error"), msgPool::cannotWriteFile($AbsoluteDestinationPath.$PPDName), ERROR_DIALOG);
-        return(false);
-      }
+      if ($AbsoluteSourceName != $AbsoluteDestinationPath.$PPDName) {
 
-      $str = file_get_contents($AbsoluteSourceName);
-      fputs($fp,$str);
-      @fclose($fp);
+        /* Create destination file handle */
+        $fp = @fopen($AbsoluteDestinationPath.$PPDName,"w+");
+        if (!$fp){
+            msg_dialog::display(_("PPD error"), msgPool::cannotWriteFile($AbsoluteDestinationPath.$PPDName), ERROR_DIALOG);
+            return(false);
+        }
+
+        $str = file_get_contents($AbsoluteSourceName);
+        fputs($fp,$str);
+        @fclose($fp);
+      }
     }
 
     $str = file_get_contents($AbsoluteSourceName);
