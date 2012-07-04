@@ -1872,6 +1872,11 @@ class environment extends plugin
   }
 
   function adapt_from_template($tmpl_dn, $skip=array()) {
+
+    if (isset($this->uid)) {
+      $this->OrigUID = $this->uid;
+    }
+
     $skip_types = array("gotoLogonScripts", "gotoLogoffScripts",
       "gotoPrinter","gotoShare","gotoShares","gotoHotplugDevices" );
     plugin::adapt_from_template($tmpl_dn, $skip_types);
