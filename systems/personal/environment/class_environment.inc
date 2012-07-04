@@ -127,6 +127,8 @@ class environment extends plugin
   var $objectclasses      = array("gotoEnvironment"); // Specifies the objectClass which contains the attributes edited here
   var $cn;
   var $OrigCn;
+  var $OrigUID; // Store orig UID if in template mode
+  var $suffix;  // Store information weither we are editting an user or a group
   var $add_del_printer_member_was_called = false;
 
   var $multiple_support =TRUE;
@@ -144,140 +146,28 @@ class environment extends plugin
 
     /* Check : Are we currently editing a group or user dialog */
     if((isset($this->attrs['cn'][0]))&&(!isset($this->attrs['uid'][0]))){
-      $suffix="Group";
+      $this->suffix="Group";
       $this->uid          = $this->attrs['cn'][0];
       $this->attrs['uid'] = $this->attrs['cn'][0];
       $this->OrigCn = $this->attrs['cn'][0];
     }else{
-      $suffix="User";
+      $this->suffix="User";
     }
 
     /* Get all Printer assignments */
-    $ldap = $this->config->get_ldap_link();
-    $ldap->cd($this->config->current['BASE']);
-    $ldap->search("(&(objectClass=gotoPrinter)(goto".$suffix."Printer=".$this->uid."))",array("*"));
-    while($printer = $ldap->fetch()){
-      $this->gotoPrinter[$printer['cn'][0]]=$printer;
-      $this->gotoPrinter[$printer['cn'][0]]['mode']="user";
-    }
-    $ldap->search("(&(objectClass=gotoPrinter)(goto".$suffix."AdminPrinter=".$this->uid."))",array("*"));
-    while($printer = $ldap->fetch()){
-      $this->gotoPrinter[$printer['cn'][0]]=$printer;
-      $this->gotoPrinter[$printer['cn'][0]]['mode']="admin";
-    }
-
+    $this->gotoPrinter = $this->get_printers();
 
     /* Prepare hotplugs */
-    if(isset($this->attrs['gotoHotplugDeviceDN']) && is_array($this->attrs['gotoHotplugDeviceDN'])){
-      $ldap = $this->config->get_ldap_link();
-      $ldap->cd($this->config->current['BASE']);
-      for($i = 0 ; $i < $this->attrs['gotoHotplugDeviceDN']['count'] ; $i ++){
-        $ldap->cat($this->attrs['gotoHotplugDeviceDN'][$i]);
-        if($ldap->count()){
-          $attrs = $ldap->fetch();
-
-          if(isset($attrs['gotoHotplugDevice'][0])){
-            $tmp      = preg_split("/\|/",$attrs['gotoHotplugDevice'][0]);
-            $tmp2     = array();
-            $tmp2['name']         = $attrs['cn'][0];
-            $tmp2['description']  = $tmp[0];
-            $tmp2['id']           = $tmp[1];
-            $tmp2['produkt']      = $tmp[2];
-            $tmp2['vendor']       = $tmp[3];
-            $tmp2['dn']           = $attrs['dn'];
-            $this->gotoHotplugDevices[] = $tmp2;
-          }
-        }else{
-          msg_dialog::display(_("Warning"), sprintf(_("Device '%s' is not available anymore. It will be removed!"), $this->attrs['gotoHotplugDeviceDN'][$i]), WARNING_DIALOG);
-        }
-      }
-    }
-
+    $this->gotoHotplugDevices = $this->get_HotplugDevices();
 
     /* prepare LogonScripts */
-    if((isset($this->attrs['gotoLogonScript']))&&(is_array($this->attrs['gotoLogonScript']))){
-      unset($this->attrs['gotoLogonScript']['count']);
-      foreach($this->attrs['gotoLogonScript'] as $device){
-        $tmp = $tmp2 = array();
-        $tmp = explode("|",$device);
-        $tmp2['LogonName']        = $tmp[0];
-        $tmp2['LogonPriority']    = $tmp[2];
-        if(preg_match("/O/i",$tmp[1])){
-          $tmp2['LogonOverload'] = "O";
-        }else{
-          $tmp2['LogonOverload'] = "";
-        }
-        if(preg_match("/L/i",$tmp[1])){
-          $tmp2['LogonLast'] = "L";
-        }else{
-          $tmp2['LogonLast'] = "";
-        }
-        $tmp2['LogonData']        = base64_decode($tmp[3]);
-        $tmp2['LogonDescription'] = $tmp[4];
-        $this->gotoLogonScripts[$tmp[0]]=$tmp2;
-      }
-    }
+    $this->gotoLogonScripts = $this->get_LogonScripts();
 
     /* prepare LogoffScripts */
-    if((isset($this->attrs['gotoLogoffScript']))&&(is_array($this->attrs['gotoLogoffScript']))){
-      unset($this->attrs['gotoLogoffScript']['count']);
-      foreach($this->attrs['gotoLogoffScript'] as $device){
-        $tmp = $tmp2 = array();
-        $tmp = explode("|",$device);
-        $tmp2['LogoffName']        = $tmp[0];
-        $tmp2['LogoffPriority']    = $tmp[2];
-        if(preg_match("/O/i",$tmp[1])){
-          $tmp2['LogoffOverload'] = "O";
-        }else{
-          $tmp2['LogoffOverload'] = "";
-        }
-        if(preg_match("/L/i",$tmp[1])){
-          $tmp2['LogoffLast'] = "L";
-        }else{
-          $tmp2['LogoffLast'] = "";
-        }
-        $tmp2['LogoffData']        = base64_decode($tmp[3]);
-        $tmp2['LogoffDescription'] = $tmp[4];
-        $this->gotoLogoffScripts[$tmp[0]]=$tmp2;
-      }
-    }
-
+    $this->gotoLogoffScripts = $this->get_LogoffScripts();
 
     /* Prepare Shares */
-    if((isset($this->attrs['gotoShare']))&&(is_array($this->attrs['gotoShare']))){
-      unset($this->attrs['gotoShare']['count']);
-      foreach($this->attrs['gotoShare'] as $share){
-        $tmp = $tmp2 = array();
-        $tmp = explode("|",$share);
-        $tmp2['server']      =$tmp[0];
-        $tmp2['name']        =$tmp[1];
-
-        /* Decode base64 if needed */
-        if (!preg_match('%/%', $tmp[2])){
-          $tmp2['mountPoint']  =base64_decode($tmp[2]);
-        } else {
-          $tmp2['mountPoint']  =$tmp[2];
-        }
-
-        if(isset($tmp[3])){
-          $tmp2['PwdHash']  =$tmp[3];
-        }else{
-          $tmp2['PwdHash']  ="";
-        }
-        if(isset($tmp[4])){
-          $tmp2['Username']  =$tmp[4];
-        }else{
-          $tmp2['Username']  ="";
-        }
-        $this->gotoShares[$tmp[1]."|".$tmp[0]]=$tmp2;
-      }
-    }
-
-    for($i = 0 ; $i < strlen($this->gotoProfileFlags) ; $i ++){
-      $chr = $this->gotoProfileFlags[$i];
-      $name = "gotoProfileFlag".$chr;
-      $this->$name=$chr;
-    }
+    $this->gotoShares = $this->get_Shares();
 
     if((!empty($this->gotoProfileServer))||($this->gotoProfileFlagC=="C")){
       $this->useProfile = true;
@@ -337,6 +227,158 @@ class environment extends plugin
       }
     }
     $this->update_kiosk_profiles();
+  }
+
+  function get_LogonScripts($data=NULL) {
+    return $this->get_multi_attrs('gotoLogonScript', 'prep_LogonScript', $data);
+  }
+
+  function get_LogoffScripts($data=NULL) {
+    return $this->get_multi_attrs('gotoLogoffScript', 'prep_LogoffScript', $data);
+  }
+
+  function get_Shares($data=NULL) {
+    return $this->get_multi_attrs('gotoShare', 'prep_share', $data);
+  }
+
+  function get_multi_attrs($attr, $prep_method, $data=NULL) {
+    if (!$data) {
+      $data = $this->attrs;
+    }
+
+    $result = array();
+    if((isset($data[$attr]))&&(is_array($data[$attr]))){
+      unset($data[$attr]['count']);
+      foreach($data[$attr] as $obj){
+        list($name, $obj) = $this->$prep_method($obj);
+        $result[$name]=$obj;
+      }
+    }
+
+    return $result;
+  }
+
+
+  function get_printers($uid=NULL,$suffix=NULL) {
+    if (!$uid) {
+      $uid = $this->uid;
+    }
+    if (!$suffix) {
+      $suffix = $this->suffix;
+    }
+
+    $printers = array();
+
+    $ldap = $this->config->get_ldap_link();
+    $ldap->cd($this->config->current['BASE']);
+    $ldap->search("(&(objectClass=gotoPrinter)(goto".$suffix."Printer=".$this->uid."))",array("*"),TRUE);
+    while($printer = $ldap->fetch()){
+      $printers[$printer['cn'][0]]=$printer;
+      $printers[$printer['cn'][0]]['mode']="user";
+    }
+    $ldap->search("(&(objectClass=gotoPrinter)(goto".$suffix."AdminPrinter=".$this->uid."))",array("*"),TRUE);
+    while($printer = $ldap->fetch()){
+      $printers[$printer['cn'][0]]=$printer;
+      $printers[$printer['cn'][0]]['mode']="admin";
+    }
+
+    return $printers;
+  }
+
+  function get_HotplugDevices($obj_attrs=NULL) {
+    if (!$obj_attrs) {
+      $obj_attrs = $this->attrs;
+    }
+
+    $devs = array();
+    if(isset($obj_attrs['gotoHotplugDeviceDN']) && is_array($obj_attrs['gotoHotplugDeviceDN'])){
+      $ldap = $this->config->get_ldap_link();
+      $ldap->cd($this->config->current['BASE']);
+      for($i = 0 ; $i < $obj_attrs['gotoHotplugDeviceDN']['count'] ; $i ++){
+        $ldap->cat($obj_attrs['gotoHotplugDeviceDN'][$i]);
+        if($ldap->count()){
+          $attrs = $ldap->fetch();
+          if(isset($attrs['gotoHotplugDevice'][0])){
+            list($name, $dev) = $this->prep_hotplug($attrs);
+            $devs[$name] = $dev;
+          }
+        }else{
+          msg_dialog::display(_("Warning"), sprintf(_("Device '%s' is not available anymore. It will be removed!"), $attrs['gotoHotplugDeviceDN'][$i]), WARNING_DIALOG);
+        }
+      }
+    }
+
+    return $devs;
+  }
+
+  function prep_hotplug($attrs) {
+    $tmp      = preg_split("/\|/",$attrs['gotoHotplugDevice'][0]);
+    $dev     = array();
+    $dev['name']         = $name = $attrs['cn'][0];
+    $dev['description']  = $tmp[0];
+    $dev['id']           = $tmp[1];
+    $dev['produkt']      = $tmp[2];
+    $dev['vendor']       = $tmp[3];
+    $dev['dn']           = $attrs['dn'];
+
+    return array($name, $dev);
+  }
+
+  function prep_share($input) {
+    $tmp = $share = array();
+    $tmp = explode("|",$input);
+    $share['server']      =$tmp[0];
+    $share['name']        =$tmp[1];
+    $name = $tmp[1]."|".$tmp[0];
+
+    /* Decode base64 if needed */
+    if (!preg_match('%/%', $tmp[2])){
+      $share['mountPoint']  =base64_decode($tmp[2]);
+    } else {
+      $share['mountPoint']  =$tmp[2];
+    }
+
+    if(isset($tmp[3])){
+      $share['PwdHash']  =$tmp[3];
+    }else{
+      $share['PwdHash']  ="";
+    }
+    if(isset($tmp[4])){
+      $share['Username']  =$tmp[4];
+    }else{
+      $share['Username']  ="";
+    }
+
+    return array($name, $share);
+  }
+
+  function prep_LogonScript($input) {
+    return $this->prep_script($input, "Logon");
+  }
+
+  function prep_LogoffScript($input) {
+    return $this->prep_script($input, "Logoff");
+  }
+
+  function prep_script($input, $type) {
+    $tmp = $script = array();
+    $tmp = explode("|",$input);
+    $script[$type.'Name']        = $name = $tmp[0];
+    $script[$type.'Priority']    = $tmp[2];
+    if(preg_match("/O/i",$tmp[1])){
+      $script[$type.'Overload'] = "O";
+    }else{
+      $script[$type.'Overload'] = "";
+    }
+    if(preg_match("/L/i",$tmp[1])){
+      $script[$type.'Last'] = "L";
+    }else{
+      $script[$type.'Last'] = "";
+    }
+    $script[$type.'Data']        = base64_decode($tmp[3]);
+    $script[$type.'Description'] = $tmp[4];
+
+    return array($name, $script);
   }
 
 
@@ -1355,7 +1397,10 @@ class environment extends plugin
       if($this->is_group){
         $s_suffix = "Group";
         $useVar   = "cn";
-      }else{
+      } elseif (isset($this->OrigUID)) {
+        $useVar   = "OrigUID";
+        $s_suffix = "User";
+      }else {
         $useVar   = "uid";
         $s_suffix = "User";
       }
@@ -1545,7 +1590,6 @@ class environment extends plugin
     return($a_return);
   }
 
-
   function PrepareForCopyPaste($source)
   {
     plugin::PrepareForCopyPaste($source);
@@ -1562,7 +1606,6 @@ class environment extends plugin
 
   }
 
-
   function saveCopyDialog()
   {
     if(isset($_POST['cn'])){
@@ -1570,7 +1613,6 @@ class environment extends plugin
       $this->uid = $_POST['cn'];
     }
   }
-
 
   /* Generates ListBox frienly output of used logonscripts
    */
@@ -1598,8 +1640,6 @@ class environment extends plugin
     return($a_return);
   }
 
-
-
   function multiple_execute()
   {
     /* Reset header toggle */
@@ -1607,8 +1647,7 @@ class environment extends plugin
     return($this->execute());
   }
 
-
-    /* Initialize plugin with given atribute arrays
+  /* Initialize plugin with given atribute arrays
    */
   function init_multiple_support($attrs,$all)
   {
@@ -1618,61 +1657,17 @@ class environment extends plugin
     if((isset($this->multi_attrs_all['gotoShare']))&&(is_array($this->multi_attrs_all['gotoShare']))){
       unset($this->multi_attrs_all['gotoShare']['count']);
       foreach($this->multi_attrs_all['gotoShare'] as $share){
-        $tmp = $tmp2 = array();
-        $tmp = explode("|",$share);
-        $tmp2['server']      =$tmp[0];
-        $tmp2['name']        =$tmp[1];
-
-        /* Decode base64 if needed */
-        if (!preg_match('%/%', $tmp[2])){
-          $tmp2['mountPoint']  =base64_decode($tmp[2]);
-        } else {
-          $tmp2['mountPoint']  =$tmp[2];
-        }
-
-        if(isset($tmp[3])){
-          $tmp2['PwdHash']  =$tmp[3];
-        }else{
-          $tmp2['PwdHash']  ="";
-        }
-        if(isset($tmp[4])){
-          $tmp2['Username']  =$tmp[4];
-        }else{
-          $tmp2['Username']  ="";
-        }
-        $tmp2['UsedByAllUsers'] = FALSE;
-        $this->gotoShares[$tmp[1]."|".$tmp[0]]=$tmp2;
+        list($name, $share) = $this->prep_share($share);
+        $share['UsedByAllUsers'] = FALSE;
+        $this->gotoShares[$name]=$share;
       }
     }
-
-    /* Prepare Shares */
     if((isset($this->multi_attrs['gotoShare']))&&(is_array($this->multi_attrs['gotoShare']))){
       unset($this->multi_attrs['gotoShare']['count']);
       foreach($this->multi_attrs['gotoShare'] as $share){
-        $tmp = $tmp2 = array();
-        $tmp = explode("|",$share);
-        $tmp2['server']      =$tmp[0];
-        $tmp2['name']        =$tmp[1];
-
-        /* Decode base64 if needed */
-        if (!preg_match('%/%', $tmp[2])){
-          $tmp2['mountPoint']  =base64_decode($tmp[2]);
-        } else {
-          $tmp2['mountPoint']  =$tmp[2];
-        }
-
-        if(isset($tmp[3])){
-          $tmp2['PwdHash']  =$tmp[3];
-        }else{
-          $tmp2['PwdHash']  ="";
-        }
-        if(isset($tmp[4])){
-          $tmp2['Username']  =$tmp[4];
-        }else{
-          $tmp2['Username']  ="";
-        }
-        $tmp2['UsedByAllUsers'] = TRUE;
-        $this->gotoShares[$tmp[1]."|".$tmp[0]]=$tmp2;
+        list($name, $share) = $this->prep_share($share);
+        $share['UsedByAllUsers'] = TRUE;
+        $this->gotoShares[$name]=$share;
       }
     }
 
@@ -1681,49 +1676,36 @@ class environment extends plugin
     if((isset($this->multi_attrs_all['gotoLogonScript']))&&(is_array($this->multi_attrs_all['gotoLogonScript']))){
       unset($this->multi_attrs_all['gotoLogonScript']['count']);
       foreach($this->multi_attrs_all['gotoLogonScript'] as $device){
-        $tmp = $tmp2 = array();
-        $tmp = explode("|",$device);
-        $tmp2['LogonName']        = $tmp[0];
-        $tmp2['LogonPriority']    = $tmp[2];
-        if(preg_match("/O/i",$tmp[1])){
-          $tmp2['LogonOverload'] = "O";
-        }else{
-          $tmp2['LogonOverload'] = "";
-        }
-        if(preg_match("/L/i",$tmp[1])){
-          $tmp2['LogonLast'] = "L";
-        }else{
-          $tmp2['LogonLast'] = "";
-        }
-        $tmp2['LogonData']        = base64_decode($tmp[3]);
-        $tmp2['LogonDescription'] = $tmp[4];
-        $tmp2['UsedByAllUsers'] = FALSE;
-        $this->gotoLogonScripts[$tmp[0]]=$tmp2;
+        list($name, $device) = $this->prep_LogonScript($device);
+        $device['UsedByAllUsers'] = FALSE;
+        $this->gotoLogonScripts[$name]=$device;
+      }
+    }
+    if((isset($this->multi_attrs['gotoLogonScript']))&&(is_array($this->multi_attrs['gotoLogonScript']))){
+      unset($this->multi_attrs['gotoLogonScript']['count']);
+      foreach($this->multi_attrs['gotoLogonScript'] as $device){
+        list($name, $device) = $this->prep_LogonScript($device);
+        $device['UsedByAllUsers'] = TRUE;
+        $this->gotoLogonScripts[$name]=$device;
       }
     }
 
+
     /* prepare LogoffScripts */
+    if((isset($this->multi_attrs_all['gotoLogoffScript']))&&(is_array($this->multi_attrs_all['gotoLogoffScript']))){
+      unset($this->multi_attrs_all['gotoLogoffScript']['count']);
+      foreach($this->multi_attrs_all['gotoLogoffScript'] as $device){
+        list($name, $device) = $this->prep_LogoffScript($device);
+        $device['UsedByAllUsers'] = FALSE;
+        $this->gotoLogoffScripts[$name]=$device;
+      }
+    }
     if((isset($this->multi_attrs['gotoLogoffScript']))&&(is_array($this->multi_attrs['gotoLogoffScript']))){
       unset($this->multi_attrs['gotoLogoffScript']['count']);
       foreach($this->multi_attrs['gotoLogoffScript'] as $device){
-        $tmp = $tmp2 = array();
-        $tmp = explode("|",$device);
-        $tmp2['LogoffName']        = $tmp[0];
-        $tmp2['LogoffPriority']    = $tmp[2];
-        if(preg_match("/O/i",$tmp[1])){
-          $tmp2['LogoffOverload'] = "O";
-        }else{
-          $tmp2['LogoffOverload'] = "";
-        }
-        if(preg_match("/L/i",$tmp[1])){
-          $tmp2['LogoffLast'] = "L";
-        }else{
-          $tmp2['LogoffLast'] = "";
-        }
-        $tmp2['LogoffData']        = base64_decode($tmp[3]);
-        $tmp2['LogoffDescription'] = $tmp[4];
-        $tmp2['UsedByAllUsers'] = TRUE;
-        $this->gotoLogoffScripts[$tmp[0]]=$tmp2;
+        list($name, $device) = $this->prep_LogoffScript($device);
+        $device['UsedByAllUsers'] = TRUE;
+        $this->gotoLogoffScripts[$name]=$device;
       }
     }
 
@@ -1737,23 +1719,16 @@ class environment extends plugin
           $multi_attrs_all = $ldap->fetch();
 
           if(isset($multi_attrs_all['gotoHotplugDevice'][0])){
-            $tmp      = preg_split("/\|/",$multi_attrs_all['gotoHotplugDevice'][0]);
-            $tmp2     = array();
-            $tmp2['name']         = $multi_attrs_all['cn'][0];
-            $tmp2['description']  = $tmp[0];
-            $tmp2['id']           = $tmp[1];
-            $tmp2['produkt']      = $tmp[2];
-            $tmp2['vendor']       = $tmp[3];
-            $tmp2['dn']           = $multi_attrs_all['dn'];
-            $tmp2['UsedByAllUsers'] = FALSE;
-            $this->gotoHotplugDevices[$tmp2['dn']] = $tmp2;
-          }
+            list($name, $dev) = $this->prep_hotplug($multi_attrs_all);
+            $dev['UsedByAllUsers'] = FALSE;
+            $this->gotoHotplugDevices[$name] = $dev;
+         }
         }
       }
     }
 
     /* Prepare hotplugs */
-    if(isset($this->multi_attrs['gotoHotplugDeviceDN']) && is_array($this->multi_attrs['gotoHotplugDeviceDN'])){
+    if(isset($this->multi_attrs['gotoHotplugDeviceDN']) && is_array($this->multi_attrs_all['gotoHotplugDeviceDN'])){
       $ldap = $this->config->get_ldap_link();
       $ldap->cd($this->config->current['BASE']);
       for($i = 0 ; $i < $this->multi_attrs['gotoHotplugDeviceDN']['count'] ; $i ++){
@@ -1762,17 +1737,10 @@ class environment extends plugin
           $multi_attrs = $ldap->fetch();
 
           if(isset($multi_attrs['gotoHotplugDevice'][0])){
-            $tmp      = preg_split("/\|/",$multi_attrs['gotoHotplugDevice'][0]);
-            $tmp2     = array();
-            $tmp2['name']         = $multi_attrs['cn'][0];
-            $tmp2['description']  = $tmp[0];
-            $tmp2['id']           = $tmp[1];
-            $tmp2['produkt']      = $tmp[2];
-            $tmp2['vendor']       = $tmp[3];
-            $tmp2['dn']           = $multi_attrs['dn'];
-            $tmp2['UsedByAllUsers'] = TRUE;
-            $this->gotoHotplugDevices[$tmp2['dn']] = $tmp2;
-          }
+            list($name, $dev) = $this->prep_hotplug($multi_attrs);
+            $dev['UsedByAllUsers'] = TRUE;
+            $this->gotoHotplugDevices[$name] = $dev;
+         }
         }
       }
     }
@@ -1792,7 +1760,6 @@ class environment extends plugin
     }
 
   }
-
 
   function set_multi_edit_values($attrs)
   {
@@ -1904,6 +1871,36 @@ class environment extends plugin
     return($ret);
   }
 
+  function adapt_from_template($tmpl_dn, $skip=array()) {
+    $skip_types = array("gotoLogonScripts", "gotoLogoffScripts",
+      "gotoPrinter","gotoShare","gotoShares","gotoHotplugDevices" );
+    plugin::adapt_from_template($tmpl_dn, $skip_types);
+
+    // Handle gotoLogonScripts
+    $tmpl_logon_scripts = $this->get_LogonScripts();
+    $this->gotoLogonScripts = array_merge($this->gotoLogonScripts,
+      $tmpl_logon_scripts);
+
+    // Handle logoff scripts
+    $tmpl_logoff_scripts = $this->get_LogoffScripts();
+    $this->gotoLogoffScripts = array_merge($this->gotoLogoffScripts,
+      $tmpl_logoff_scripts);
+
+    // Handle shares
+    $tmpl_shares = $this->get_Shares();
+    $this->gotoShares = array_merge($this->gotoShares,
+      $tmpl_shares);
+
+    // Handle hotplug devices
+    $tmpl_hotplug_dev = $this->get_HotplugDevices();
+    $this->gotoHotplugDevices = array_merge($this->gotoHotplugDevices,
+      $tmpl_hotplug_dev);
+
+    // Handle printers
+    $tmpl_printers = $this->get_printers();
+    $this->gotoPrinter = array_merge($this->gotoPrinter, $tmpl_printers);
+    $this->add_del_printer_member_was_called = TRUE;
+  }
 
   function multiple_check()
   {
