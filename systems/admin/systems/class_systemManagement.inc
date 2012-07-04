@@ -96,6 +96,7 @@ class systemManagement extends management
     // Build headpage
     $headpage = new listing(get_template_path("system-list.xml", true));
     $headpage->registerElementFilter("systemRelease", "systemManagement::systemRelease");
+    $headpage->registerElementFilter("systemFAIstate", "systemManagement::systemFAIstate");
     $headpage->registerElementFilter("ipOf", "systemManagement::ipOf");
     $headpage->registerElementFilter("listServices", "systemManagement::listServices");
     $headpage->setFilter($filter);
@@ -1432,6 +1433,32 @@ class systemManagement extends management
         $str = $attrs['ipHostNumber'][0];
     }
     return($str);
+  }
+
+  ##FIXME should be documented and var changed a,b,c is stupid
+  static function systemFAIstate($a,$b,$c,$objectclasses= null,$state= null)
+  {
+    global $config;
+
+    // No objectclasses set - go ahead
+    if(!$objectclasses) return("&nbsp;");
+
+    // Skip non fai objects
+    if (!in_array_ics("FAIobject", $objectclasses)) {
+      return "&nbsp;";
+    }
+
+    if ($state) {
+      $elements = explode(':', $state[0], 2);
+      if (count($elements) == 1)
+        return '&nbsp;'.$elements[0].'&nbsp;';
+      else
+        return '&nbsp;<div style="display:inline-block;" title="'.htmlentities($elements[1]).'">'.htmlentities($elements[0]).'</div>&nbsp;';
+      }
+      else
+       return ("&nbsp;(new)&nbsp;");
+
+    return("&nbsp;");
   }
 
 

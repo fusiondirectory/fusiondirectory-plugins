@@ -206,6 +206,14 @@
     </column>
 
     <column>
+      <label>FAI state</label>
+      <sortAttribute>sort,cn</sortAttribute>
+      <sortType>string,string</sortType>
+      <value>%{filter:systemFAIstate(row,dn,"%s",objectClass,FAIstate)}</value>
+      <export>true</export>
+    </column>
+
+    <column>
       <label>Actions</label>
       <value>%{filter:actions(dn,row,objectClass)}</value>
     </column>
