@@ -67,7 +67,7 @@ class workgeneric extends plugin
   var $attributes= array("gotoMode", "gotoSyslogServer", "gotoNtpServer",
       "gotoFloppyEnable", "gotoCdromEnable", "cn", "gotoSndModule",
       "ghCpuType", "ghMemSize", "ghUsbSupport", "description",
-      "ghGfxAdapter", "ghSoundAdapter", "gotoLastUser", "l","FAIscript");
+      "ghGfxAdapter", "ghSoundAdapter", "gotoLastUser", "l","FAIscript", "goComment");
   var $objectclasses= array("top", "gotoWorkstation", "GOhard");
 
   var $validActions   = array("reboot" => 1, "localboot" => 1, "halt" => 1, "update" => 1, "reinstall" => 1,
@@ -277,6 +277,7 @@ class workgeneric extends plugin
 
     $smarty->assign("cn", $this->cn);
     $smarty->assign("description", $this->description);
+    $smarty->assign("goComment", $this->goComment);
     $smarty->assign("l", $this->l);
     $smarty->assign("staticAddress", "");
 
@@ -425,6 +426,11 @@ class workgeneric extends plugin
 
     if(isset($_POST["inheritAll"])){
       $this->set_everything_to_inherited();
+    }
+
+    if (isset($_POST['goComment'])) {
+      print "comments set<br>";
+      $this->goComment = $_POST['goComment'];
     }
 
     /* Hanle kerberos host key plugin */
@@ -754,6 +760,7 @@ class workgeneric extends plugin
             "gotoMode"            => _("Goto mode"),
             "gotoSyslogServer"    => _("Syslog server"),
             "gotoNtpServer"       => _("Ntp server"),
+            "goComment"          => _("Comments"),
             "userPassword"        => _("Root password"),
             "createFAICD"         => _("Create FAI CD"),
             "FAIstate"            => _("Action flag"))

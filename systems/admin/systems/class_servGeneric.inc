@@ -36,7 +36,7 @@ class servgeneric extends plugin
   var $orig_base= "";
 
   /* attribute list for save action */
-  var $attributes= array("cn", "description","gotoMode");
+  var $attributes= array("cn", "description","gotoMode", "goComment");
   var $objectclasses= array("top", "GOhard", "goServer");
 
   var $gotoMode= "locked";
@@ -228,6 +228,8 @@ class servgeneric extends plugin
     $smarty->assign("currently_installing", $this->currently_installing);
 
     $smarty->assign("host_key","");
+    $smarty->assign("goComment", set_post($this->goComment));
+
     if(is_object($this->kerberos_key_service)){
       $smarty->assign("host_key",$this->kerberos_key_service->execute_by_prefix("host/"));
     }
@@ -298,6 +300,9 @@ class servgeneric extends plugin
       }
     }
 
+    if (isset($_POST['goComment'])) {
+      $this->goComment = get_post("goComment");
+    }
 
     /* Hanle kerberos host key plugin */
     if(is_object($this->kerberos_key_service)){
@@ -509,7 +514,8 @@ class servgeneric extends plugin
             "base"          => _("Base"),
 
             "gotoMode"      => _("Goto mode"),
-            "userPassword"=> _("Root password"),
+            "goComment"     => _("Comments"),
+            "userPassword"  => _("Root password"),
             "FAIstate"      => _("Action flag"))
           ));
   }

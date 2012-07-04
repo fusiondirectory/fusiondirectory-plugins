@@ -39,6 +39,15 @@
 {/render}
      </td>
     </tr>
+    <tr>
+    <td><LABEL for="comments">{t}Comment{/t}</LABEL></td>
+    <td>
+{render acl=$goCommentACL}
+    <textarea rows=6 cols=45 id="goComment" name="goComment">{$goComment}</textarea>
+
+{/render}
+    </td>
+    </tr>
    </table>
 
   {$host_key}
@@ -105,7 +114,7 @@
          {if $inheritTimeServer} disabled {/if}>
 {/render}
 {render acl=$gotoNtpServerACL}
-        <input type="submit" name="delNtpServer" value="{msgPool type=delButton}"  id="delNtpServer" 
+        <input type="submit" name="delNtpServer" value="{msgPool type=delButton}"  id="delNtpServer"
          {if $inheritTimeServer} disabled {/if}>
 {/render}
      </td>

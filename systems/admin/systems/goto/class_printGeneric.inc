@@ -33,6 +33,7 @@ class printgeneric extends plugin
   var $description      = "";
   var $labeledURI       = "";
   var $gotoPrinterPPD   = "";
+  var $goComment        = "";
   var $initial_PPD      = "";
   var $orig_dn          = "";
   var $orig_cn          = "";
@@ -65,7 +66,8 @@ class printgeneric extends plugin
 
   /* attribute list for save action */
   var $attributes     = array("cn", "description", "l", "labeledURI", "gotoPrinterPPD","gotoUserPrinter", "macAddress",
-                              "gotoUserAdminPrinter","gotoGroupAdminPrinter","gotoUserPrinter","gotoGroupPrinter","gosaUnitTag");
+                              "gotoUserAdminPrinter","gotoGroupAdminPrinter","gotoUserPrinter","gotoGroupPrinter","gosaUnitTag",
+                              "goComment");
   var $objectclasses  = array("top", "gotoPrinter");
   var $view_logged    = FALSE;
   var $parent;
@@ -622,6 +624,8 @@ class printgeneric extends plugin
     $smarty->assign("AdminMember"    ,$this->AdminMember);
     $smarty->assign("AdminMembers"   ,$adminlist);
     $smarty->assign("AdminMemberKeys",array_flip($adminlist));
+    $smarty->assign("goComment", set_post($this->goComment));
+
     if(preg_match("/Printer/i",$this->BelongsTo)){
 
       /* Show main page */
@@ -717,6 +721,10 @@ class printgeneric extends plugin
 
     if(is_object($this->netConfigDNS)){
       $this->netConfigDNS->save_object();
+    }
+
+    if (isset($_POST['goComment'])) {
+      $this->goComment = get_post('goComment');
     }
 
     /* Refresh base */
@@ -1031,6 +1039,7 @@ class printgeneric extends plugin
             "l"                 => _("Location"),
             "labeledURI"        => _("LabeledURL"),
             "gotoPrinterPPD"    => _("Printer PPD"),
+            "goComment"         => _("Comments"),
             "gotoUserPrinter"   => _("Permissions"))
           ));
   }
