@@ -169,6 +169,9 @@ class environment extends plugin
     /* Prepare Shares */
     $this->gotoShares = $this->get_Shares();
 
+    /* Update gotoProfileFlags */
+    $this->update_gotoProfileFlags();
+
     if((!empty($this->gotoProfileServer))||($this->gotoProfileFlagC=="C")){
       $this->useProfile = true;
     }else{
@@ -228,6 +231,18 @@ class environment extends plugin
     }
     $this->update_kiosk_profiles();
   }
+
+  function update_gotoProfileFlags($flags=NULL) {
+    if(!$flags) {
+      $flags = $this->gotoProfileFlags;
+    }
+    for($i = 0 ; $i < strlen($flags) ; $i ++){
+      $chr = $this->gotoProfileFlags[$i];
+      $name = "gotoProfileFlag".$chr;
+      $this->$name = $chr;;
+    }
+  }
+
 
   function get_LogonScripts($data=NULL) {
     return $this->get_multi_attrs('gotoLogonScript', 'prep_LogonScript', $data);
@@ -1745,11 +1760,8 @@ class environment extends plugin
       }
     }
     $this->gotoHotplugDevices = array_values($this->gotoHotplugDevices);
-    for($i = 0 ; $i < strlen($this->gotoProfileFlags) ; $i ++){
-      $chr = $this->gotoProfileFlags[$i];
-      $name = "gotoProfileFlag".$chr;
-      $this->$name=$chr;
-    }
+
+    $this->update_gotoProfileFlags();
     $this->update_kiosk_profiles();
     $this->gotoKioskProfile= preg_replace("/^.*\//i","",$this->gotoKioskProfile);
 
@@ -1905,6 +1917,15 @@ class environment extends plugin
     $tmpl_printers = $this->get_printers();
     $this->gotoPrinter = array_merge($this->gotoPrinter, $tmpl_printers);
     $this->add_del_printer_member_was_called = TRUE;
+
+    if (isset($this->attrs['gotoProfileServer'])) {
+      $this->useProfile = TRUE;
+      $this->gotoProfileServer = $this->attrs['gotoProfileServer'][0];
+    }
+
+    if (isset($this->attrs['gotoProfileFlags'])) {
+      $this->update_gotoProfileFlags($this->attrs['gotoProfileFlags'][0]);
+    }
   }
 
   function multiple_check()
