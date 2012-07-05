@@ -39,26 +39,6 @@ class roleGeneric extends simplePlugin {
         ));
   }
 
-  /*!
-   * \brief Constructor of the freeradiusAccount
-   *        It will build the select groups choices
-   */
-  function __construct(&$config, $dn = NULL, $object = NULL)
-  {
-    parent::__construct($config, $dn, $object);
-    $ldap = $this->config->get_ldap_link();
-    $ldap->cd($this->config->current['BASE']);
-    $ldap->search("(objectClass=person)", array('cn'));
-    $usersdn = array();
-    $userscn = array();
-    while ($attrs = $ldap->fetch()) {
-        $userscn[] = $attrs['cn'][0];
-        $usersdn[] = $attrs['dn'];
-    }
-    $this->attributesInfo['section1']['attrs']['roleOccupant']->attribute->setChoices($usersdn, $userscn);
-  }
-
-
    /*!
    *  \brief The main function : information about attributes
    */
@@ -74,17 +54,7 @@ class roleGeneric extends simplePlugin {
           new BaseSelectorAttribute (get_ou("roleRDN")),
           new StringAttribute (_('Phone number'), _('Phone number'), 'telephoneNumber'),
           new StringAttribute (_('Fax number'), _('Fax number'), 'facsimileTelephoneNumber'),
-          new SetAttribute(               // This attribute is multi-valuated
-              new SelectAttribute (
-              _('Users'),                   // Label
-              _('Add users for the role'),  // Description
-              'roleOccupant',               // LDAP name
-              FALSE,                        // Mandatory
-              array(""),                    // [SelectAttribute] Choices
-              "",
-              array("")
-            )
-          )
+          new UsersAttribute(_('Users'), _('Add users for the role'), 'roleOccupant', FALSE)
         )
       )
     );
