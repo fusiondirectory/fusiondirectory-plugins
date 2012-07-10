@@ -78,7 +78,9 @@ class nagiosAccount extends simplePlugin
             _('Email of the nagios alias'),   // Description
             'NagiosMail',                     // LDAP name
             TRUE,                             // Mandatory
-            ''                                // default value
+            '',                                // default value
+            '',
+            "/^[^@]*@[^@]*$/"                 // check if it's a valid mail address
           ),
           new SelectAttribute (
             _('Host notification period'),         // Label of the attribute
@@ -190,7 +192,7 @@ class nagiosAccount extends simplePlugin
               'AuthorizedAllHostCommands',          // LDAP name
               FALSE,                                // Not mandatory
               FALSE                                 // Default value
-            ),
+            )
         )
       )
     );
