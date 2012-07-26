@@ -20,217 +20,38 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class serviceAntiVirus extends goService{
+class AvFlagsAttribute extends StringAttribute
+{
+  function __construct ($label, $description, $ldapName, $required = FALSE, $defaultValue = "", $acl = "", $regexp = "")
+  {
+    parent::__construct($label, $description, $ldapName, $required, $defaultValue, $acl);
+    $this->setVisible(FALSE);
+  }
 
-  /* This plugin only writes its objectClass */
+  function setValue ($value)
+  {
+    parent::setValue($value);
+    $this->plugin->attributesInfo['section1']['attrs']['avFlags1']->setValue(preg_match('/D/',$this->value));
+    $this->plugin->attributesInfo['section1']['attrs']['avFlags2']->setValue(preg_match('/S/',$this->value));
+    $this->plugin->attributesInfo['section2']['attrs']['avFlags3']->setValue(preg_match('/A/',$this->value));
+    $this->plugin->attributesInfo['section2']['attrs']['avFlags4']->setValue(preg_match('/E/',$this->value));
+  }
+
+  function getValue()
+  {
+    return $this->plugin->attributesInfo['section1']['attrs']['avFlags1']->computeLdapValue().
+      $this->plugin->attributesInfo['section1']['attrs']['avFlags2']->computeLdapValue().
+      $this->plugin->attributesInfo['section2']['attrs']['avFlags3']->computeLdapValue().
+      $this->plugin->attributesInfo['section2']['attrs']['avFlags4']->computeLdapValue();
+  }
+}
+
+class govirusserver extends simpleService{
+
   var $objectclasses    = array("goVirusServer");
-  var $attributes       = array("avMaxThreads","avMaxDirectoryRecursions","avUser","avFlags","avArchiveMaxFileSize","avArchiveMaxRecursion",
-                                "avArchiveMaxCompressionRatio","avDatabaseMirror","avChecksPerDay","avHttpProxyURL");
   var $StatusFlag       = "avStatus";
-
-  /* This class can't be assigned twice so it conflicts with itsself */
-  var $conflicts        = array("goVirusServer");
-
-  var $DisplayName      = "";
-  var $dn               = NULL;
-  var $cn               = "";
   var $avStatus         = "";
-
-  var $ui               = NULL;
-
-  var $Flags            = array("D","S","A","E");
-
-  var $avFlags          = "DS";
-  var $avFlagsD         = TRUE;
-  var $avFlagsS         = TRUE;
-  var $avFlagsA         = FALSE;
-  var $avFlagsE         = FALSE;
-
-  var $avMaxThreads                 = 5;
-  var $avMaxDirectoryRecursions     = 4;
-  var $avArchiveMaxFileSize         = 4000;
-  var $avArchiveMaxRecursion        = 5;
-  var $avArchiveMaxCompressionRatio = 95;
-  var $avChecksPerDay               = 12;
-
-  var $avUser                       = "";
-  var $avHttpProxyURL               = "";
-  var $avDatabaseMirror             = "";
-  var $view_logged                  = FALSE;
-
-  function __construct(&$config, $dn, $parent = NULL)
-  {
-    /* Init class */
-    goService::goService($config, $dn, $parent);
-    $this->DisplayName = _("Antivirus service");
-
-    /* Get userinfo & acls */
-    $this->ui = get_userinfo();
-
-    /* Get Flags */
-    foreach($this->Flags as $flag){
-      $var = "avFlags".$flag;
-      if(preg_match("/".$flag."/",$this->avFlags)){
-        $this->$var = TRUE;
-      }
-    }
-  }
-
-
-  function execute()
-  {
-    $smarty = get_smarty();
-
-    if($this->is_account && !$this->view_logged){
-      $this->view_logged = TRUE;
-      new log("view","server/".get_class($this),$this->dn);
-    }
-
-
-    /* Set acls */
-    $tmp = $this->plInfo();
-    foreach($tmp['plProvidedAcls'] as $name => $translation) {
-      $smarty->assign($name."ACL",$this->getacl($name));
-    }
-
-    $display = "";
-    $smarty->assign("servtabs",FALSE);
-    $this->is_account = true;
-
-    /* Assign smarty vars */
-    foreach($this->attributes as $attr){
-      $smarty->assign($attr,$this->$attr);
-    }
-
-    /* Assign checkbox states */
-    foreach($this->Flags as $Flag){
-      $var = "avFlags".$Flag;
-      if($this->$var){
-        $smarty->assign("avFlags".$Flag."CHK"," checked " );
-      }else{
-        $smarty->assign("avFlags".$Flag."CHK","");
-      }
-    }
-
-    /* Assign value for max thread select box */
-    $tmp = array();
-    for($i = 1 ; $i <= 20 ; $i ++){
-      $tmp[$i] = $i;
-    }
-    $smarty->assign("ThreadValues",$tmp);
-
-    if($this->avFlagsA){
-      $smarty->assign("avFlagsAState" , "" );
-    }else{
-      $smarty->assign("avFlagsAState" , " disabled " );
-    }
-
-    return $display.$smarty->fetch(get_template_path("serviceAntiVirus.tpl", TRUE, dirname(__FILE__)));
-  }
-
-
-  function save()
-  {
-    if(!$this->is_account) return;
-
-    /* Create Flags */
-    $this->avFlags = "";
-    foreach($this->Flags as $flag){
-      $var = "avFlags".$flag;
-      if($this->$var){
-        $this->avFlags .=$flag;
-      }
-    }
-
-    plugin::save();
-
-    if(!$this->avFlagsA){
-      $arr = array("avArchiveMaxFileSize","avArchiveMaxRecursion","avArchiveMaxCompressionRatio");
-      foreach($arr as $attr){
-        $this->attrs[$attr] =  array();
-      }
-      $this->attrs['avFlags'] = preg_replace("/E/","",$this->attrs['avFlags']);
-    }
-
-    /* Check if this is a new entry ... add/modify */
-    $ldap = $this->config->get_ldap_link();
-    $ldap->cat($this->dn,array("objectClass"));
-    if($ldap->count()){
-      $ldap->cd($this->dn);
-      $ldap->modify($this->attrs);
-    }else{
-      $ldap->cd($this->dn);
-      $ldap->add($this->attrs);
-    }
-    if($this->initially_was_account){
-      $this->handle_post_events("modify");
-      new log("modify","server/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
-    }else{
-      $this->handle_post_events("add");
-      new log("create","server/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
-    }
-
-    if (!$ldap->success()){
-      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()));
-    }
-  }
-
-  function check()
-  {
-    $message = plugin::check();
-
-    $mustBeNumeric = array(
-          "avMaxDirectoryRecursions"     =>_("Maximum directory recursions"),
-          "avMaxThreads"                 =>_("Maximum threads"),
-          "avArchiveMaxFileSize"         =>_("Maximum file size"),
-          "avArchiveMaxRecursion"        =>_("Maximum recursions"),
-          "avArchiveMaxCompressionRatio" =>_("Maximum compression ratio"),
-          "avChecksPerDay"               =>_("Checks per day"));
-
-    foreach($mustBeNumeric as $key => $trans){
-      if(!is_numeric($this->$key)){
-        $message[] = msgPool::invalid($trans,$this->$key,"/[0-9]/");
-      }
-    }
-
-    foreach(array("avUser"=>_("Database user"),"avHttpProxyURL"=>_("Http proxy URL"),"avDatabaseMirror"=>_("Database mirror")) as $attr => $name){
-      if(!preg_match("/^[a-z0-9:_\-\.\/]*$/",$this->$attr)){
-        $message[] = msgPool::invalid($name,$this->$attr,"/[a-z0-9:_\-\.\/]/");
-      }
-    }
-
-    return($message);
-  }
-
-
-  function save_object()
-  {
-    if(isset($_POST['serviceAntiVirus'])){
-      plugin::save_object();
-      foreach($this->Flags as $flag){
-
-        $var = "avFlags".$flag;
-        if($this->acl_is_writeable($var)){
-          if(isset($_POST[$var])){
-            $this->$var = TRUE;
-          }else{
-            $this->$var = FALSE;
-          }
-        }
-      }
-    }
-  }
-
-
-  /* For newer service management dialogs */
-  function getListEntry()
-  {
-    $fields       = goService::getListEntry();
-    #$fields['AllowEdit']    = true;
-    $fields['Message']      = _("Antivirus service");
-    return($fields);
-  }
-
+  var $conflicts        = array("goVirusServer");
 
   /* Return plugin informations for acl handling */
   static function plInfo()
@@ -243,28 +64,125 @@ class serviceAntiVirus extends goService{
           "plPriority"    => 96,
           "plSection"     => array("administration"),
           "plCategory"    => array("server"),
-          "plProvidedAcls"=> array(
-
-          "start"         => _("Start"),
-          "stop"          => _("Stop"),
-          "restart"       => _("Restart"),
-
-          "avFlagsD"         =>_("Enable debugging"),
-          "avFlagsS"         =>_("Enable mail scanning"),
-          "avFlagsA"         =>_("Enable scanning of archives"),
-          "avFlagsE"         =>_("Block encrypted archives"),
-
-          "avMaxThreads"                 =>_("Maximum threads"),
-          "avMaxDirectoryRecursions"     =>_("Maximum directory recursions"),
-          "avUser"                       =>_("Anti virus user"),
-          "avArchiveMaxFileSize"         =>_("Maximum file size"),
-          "avArchiveMaxRecursion"        =>_("Maximum recursions"),
-          "avArchiveMaxCompressionRatio" =>_("Maximum compression ratio"),
-          "avDatabaseMirror"             =>_("Database mirror"),
-          "avChecksPerDay"               =>_("Checks per day"),
-          "avHttpProxyURL"               =>_("Http proxy URL"))
+          "plProvidedAcls"=> parent::generatePlProvidedAcls(self::getAttributesInfo())
           ));
   }
+
+  /*!
+   *  \brief The main function : information about attributes
+   */
+  static function getAttributesInfo ()
+  {
+    return array (
+      'section1' => array (
+        'name'  => _('Generic virus filtering'),
+        'icon' => 'images/rightarrow.png',
+        'attrs' => array (
+          new StringAttribute (
+            _('Database user'),
+            _('User name for the database'),
+            'avUser',
+            TRUE
+          ),
+          new StringAttribute (
+            _('Database mirror'),
+            _('Mirror for the database'),
+            'avDatabaseMirror',
+            FALSE
+          ),
+          new StringAttribute (
+            _('Http proxy URL'),
+            _('URL for the proxy'),
+            'avHttpProxyURL',
+            FALSE
+          ),
+          new SelectAttribute (
+            _('Maximum threads'),
+            _('Maximum number of threads'),
+            'avMaxThreads',
+            FALSE,
+            array (1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20),
+            5
+          ),
+          new IntAttribute (
+            _('Max directory recursions'),
+            _('Max directory recursions'),
+            'avMaxDirectoryRecursions',
+            FALSE,
+            0,
+            FALSE,
+            4
+          ),
+           new IntAttribute (
+            _('Checks per day'),
+            _('Checks per day'),
+            'avChecksPerDay',
+            FALSE,
+            0,
+            FALSE,
+            12
+          ),
+          new BooleanAttribute (_('Enable debugging'),_('Enable debugging for the antivirus'),'avFlags1',FALSE,FALSE,'','D',''),
+          new BooleanAttribute (_('Enable mail scanning'),_('Enable mail scanning for the antivirus'),'avFlags2',FALSE,FALSE,'','S','')
+          )
+        ),
+     'section2' => array (
+      'name' => _('Archive scanning'),
+      'attrs' => array (
+            new BooleanAttribute (_('Enable scanning of archives'),_('Enable scanning of archives'),'avFlags3',FALSE,FALSE,'','A',''),
+            new BooleanAttribute (_('Block encrypted archives'),_('Block encrypted archives'),'avFlags4',FALSE,FALSE,'','E',''),
+            new IntAttribute (
+              _('Maximum file size'),
+              _(' '),
+              'avArchiveMaxFileSize',
+            FALSE,
+            0,
+            FALSE,
+            4000
+          ),
+          new IntAttribute (
+            _('Maximum recursion'),
+            _(' '),
+            'avArchiveMaxRecursion',
+            FALSE,
+            0,
+            FALSE,
+            5
+          ),
+          new IntAttribute (
+            _('Maximum compression ratio'),
+            _(' '),
+            'avArchiveMaxCompressionRatio',
+            FALSE,
+            0,
+            FALSE,
+            95
+          ),
+          new AvFlagsAttribute ("","","avFlags")
+        )
+      )
+    );
+  }
+
+  function __construct(&$config, $dn = NULL, $object = NULL)
+  {
+    parent::__construct($config, $dn, $object);
+    $this->attributesInfo['section1']['attrs']['avFlags1']->setInLdap(FALSE);
+    $this->attributesInfo['section1']['attrs']['avFlags2']->setInLdap(FALSE);
+    $this->attributesInfo['section2']['attrs']['avFlags3']->setInLdap(FALSE);
+    $this->attributesInfo['section2']['attrs']['avFlags4']->setInLdap(FALSE);
+    $this->attributesInfo['section2']['attrs']['avFlags3']->setManagedAttributes(
+      array (
+        'erase' => array (
+          FALSE => array (
+            'section2' => array(
+              'avFlags4','avArchiveMaxFileSize','avArchiveMaxRecursion','avArchiveMaxCompressionRatio',
+            )
+          )
+        )
+      )
+    );
+  }
 }
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
+
 ?>
