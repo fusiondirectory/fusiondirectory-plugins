@@ -22,6 +22,7 @@
 
 /*
  * TODO
+ * Find a way of handling lists with =/+=/-=/!
  * Find a way to translate descriptions
  */
 
@@ -34,11 +35,7 @@ class UsedOptionAttribute extends CompositeAttribute
 
   function addOption ($name, $params, $value = NULL)
   {
-    if ($params['TYPE'] == 'LISTS') {
-      $this->attributes[$name] = new ListSudoOptionAttribute($name, $params['DESC'], $params['DEFAULT'], $this->getAcl());
-    } else {
-      $this->attributes[$name] = new SudoOptionAttribute($name, $params['DESC'], $params['TYPE'], $params['DEFAULT'], $this->getAcl());
-    }
+    $this->attributes[$name] = new SudoOptionAttribute($name, $params['DESC'], $params['TYPE'], $params['DEFAULT'], $this->getAcl());
     if ($value !== NULL) {
       $this->attributes[$name]->setValue($value);
     }
@@ -72,8 +69,6 @@ class UsedOptionAttribute extends CompositeAttribute
             \= => =
          */
         $value = $this->plugin->unescape_command($value);
-
-        $opt = preg_replace(array('/\-$/','/\+$/'),array('_moins','_plus'),$opt);
 
         /* Check if the given value is part of our options list.
            If it is not, add it as type STRING and display a warning.
@@ -235,18 +230,6 @@ class AvailableSudoOptionAttribute extends SelectAttribute
     'env_delete'            => array('TYPE' => 'LISTS',         'DEFAULT' => '',
     'DESC' => 'Environment variables to be removed from the user\'s environment when the env_reset option is not in effect'),
     'env_keep'              => array('TYPE' => 'LISTS',         'DEFAULT' => '',
-    'DESC' => 'Environment variables to be preserved in the user\'s environment when the env_reset option is in effect'),
-    'env_check_moins'       => array('TYPE' => 'LISTS',         'DEFAULT' => '',
-    'DESC' => 'Environment variables to be removed from the user\'s environment if the variable\'s value contains % or / characters'),
-    'env_delete_moins'      => array('TYPE' => 'LISTS',         'DEFAULT' => '',
-    'DESC' => 'Environment variables to be removed from the user\'s environment when the env_reset option is not in effect'),
-    'env_keep_moins'        => array('TYPE' => 'LISTS',         'DEFAULT' => '',
-    'DESC' => 'Environment variables to be preserved in the user\'s environment when the env_reset option is in effect'),
-    'env_check_plus'        => array('TYPE' => 'LISTS',         'DEFAULT' => '',
-    'DESC' => 'Environment variables to be removed from the user\'s environment if the variable\'s value contains % or / characters'),
-    'env_delete_plus'       => array('TYPE' => 'LISTS',         'DEFAULT' => '',
-    'DESC' => 'Environment variables to be removed from the user\'s environment when the env_reset option is not in effect'),
-    'env_keep_plus'         => array('TYPE' => 'LISTS',         'DEFAULT' => '',
     'DESC' => 'Environment variables to be preserved in the user\'s environment when the env_reset option is in effect')
   );
 
@@ -273,8 +256,7 @@ class AvailableSudoOptionAttribute extends SelectAttribute
     $outputs = array_map(
       function ($choice) use ($options)
       {
-        $opt = preg_replace(array('/_moins$/','/_plus$/'),array('-','+'),$choice);
-        return sprintf(_("%s (%s)"), $opt, $options[$choice]['TYPE']);
+        return sprintf(_("%s (%s)"), $choice, $options[$choice]['TYPE']);
       },
       $choices
     );
@@ -296,45 +278,6 @@ class AvailableSudoOptionAttribute extends SelectAttribute
 
 }
 
-class ListSudoOptionAttribute extends SetAttribute
-{
-  function __construct ($name, $desc, $defaultValue, $acl = "")
-  {
-    parent::__construct(new StringAttribute(preg_replace(array('/_moins$/','/_plus$/'),array('-','+'),$name), $desc, $name, FALSE, $defaultValue, $acl));
-  }
-
-  function getValue ()
-  {
-    if (count($this->value) <= 0) {
-      return preg_replace(array('/_moins$/','/_plus$/'),array('-','+'),$this->getLdapName()).'=';
-    } elseif (count($this->value) > 1) {
-      return preg_replace(array('/_moins$/','/_plus$/'),array('-','+'),$this->getLdapName()).'="'.implode(' ',$this->value).'"';
-    } else {
-      return preg_replace(array('/_moins$/','/_plus$/'),array('-','+'),$this->getLdapName()).'='.$this->value[0];
-    }
-  }
-
-  function computeLdapValue ()
-  {
-    return $this->getValue();
-  }
-
-  function setValue ($value)
-  {
-    if (isset($value['value'])) {
-      $value = $value['value'];
-    }
-    if ($value == "") {
-      $value = array();
-    } elseif ($value[0] != '"') {
-      $value = array($value);
-    } else {
-      $value = preg_split('/ /', preg_replace('/"/','',$value));
-    }
-    parent::setValue($value);
-  }
-}
-
 class SudoOptionAttribute extends Attribute
 {
   private $type;
@@ -347,7 +290,7 @@ class SudoOptionAttribute extends Attribute
 
   function loadPostValue ()
   {
-    if (in_array($this->type, array('STRING','INTEGER','BOOLEAN'))) {
+    if (in_array($this->type, array('STRING','INTEGER','BOOLEAN','LISTS'))) {
       if (isset($_POST[$this->getLdapName()])) {
         $this->setPostValue(array('negate' => FALSE, 'value' => $_POST[$this->getLdapName()]));
       }
@@ -398,13 +341,19 @@ class SudoOptionAttribute extends Attribute
       $display = '<select name="'.$id.'" id="'.$id.'">
         {html_options values=$booleanOptions output=$booleanOptions selected="'.$value.'"}
       </select>';
-    } elseif (($this->type == "BOOL_INTEGER") || ($this->type == "STRING_BOOL")) {
+    } elseif ($this->type == "BOOL_INTEGER") { // TODO : merge with STRING_BOOL
       $selected = ($value == "FALSE" || $value == "TRUE" ?$value:"STRING");
       $display = '<select name="'.$id.'_selection" id="'.$id.'_selection"
         onChange="toggle_bool_fields(\''.$id.'_selection\',\''.$id.'_value\');">
-        {html_options values=$boolStringOptions output=$bool'.
-        ($this->type == "BOOL_INTEGER"?'Int':'String').
-        'Options selected="'.$selected.'"}
+        {html_options values=$boolStringOptions output=$boolIntOptions selected="'.$selected.'"}
+      </select>';
+      $display .= '<input type="text" name="'.$id.'_value" id="'.$id.'_value" value="'.$value.'"'.
+          ($selected == "STRING"?'':'disabled="disabled"').'/>';
+    } elseif ($this->type == "STRING_BOOL") {
+      $selected = ($value == "FALSE" || $value == "TRUE" ?$value:"STRING");
+      $display = '<select name="'.$id.'_selection" id="'.$id.'_selection"
+        onChange="toggle_bool_fields(\''.$id.'_selection\',\''.$id.'_value\');">
+        {html_options values=$boolStringOptions output=$boolStringOptions selected="'.$selected.'"}
       </select>';
       $display .= '<input type="text" name="'.$id.'_value" id="'.$id.'_value" value="'.$value.'"'.
           ($selected == "STRING"?'':'disabled="disabled"').'/>';
