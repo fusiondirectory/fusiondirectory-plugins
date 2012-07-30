@@ -20,86 +20,16 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class serviceFax extends goService {
+class goFaxServer extends simpleService {
 
-  var $cli_summary      = "This plugin is used within the ServerService Plugin \nand indicates that this server supports fax informations.";
-  var $cli_description  = "Some longer text\nfor help";
-  var $cli_parameters   = array("one" => "one is nice", "two" => "two is even better");
-
+  var $cli_summary       = "This plugin is used within the ServerService Plugin \nand indicates that this server supports fax informations.";
+  var $cli_description   = "Some longer text\nfor help";
+  var $cli_parameters    = array("one" => "one is nice", "two" => "two is even better");
   /* This plugin only writes its objectClass */
-  var $objectclasses    = array("goFaxServer");
-  var $attributes       = array("goFaxAdmin", "goFaxPassword");
-  var $StatusFlag       = "goFaxServerStatus";
 
-  /* This class can't be assigned twice so it conflicts with itself */
-  var $conflicts        = array("serviceFax");
-
-  var $DisplayName      = "";
-  var $dn               = NULL;
-  var $acl;
-
-  var $goFaxAdmin         = "";
-  var $goFaxPassword      = "";
-  var $goFaxServerStatus  = "";
-  var $cn                 = "";
-  var $view_logged  =FALSE;
-
-  function serviceFax(&$config,$dn)
-  {
-    goService::goService($config,$dn);
-    $this->DisplayName = _("FAX service");
-  }
-
-
-  function execute()
-  {
-    $smarty = get_smarty();
-
-    if($this->is_account && !$this->view_logged){
-      $this->view_logged = TRUE;
-      new log("view","server/".get_class($this),$this->dn);
-    }
-
-    /* Assign acls */
-    $tmp = $this->plInfo();
-    foreach($tmp['plProvidedAcls'] as $name => $translation ){
-      $smarty->assign($name."ACL",$this->getacl($name));
-    }
-
-    foreach($this->attributes as $attr){
-      $smarty->assign($attr,$this->$attr);
-    }
-    return($smarty->fetch(get_template_path("serviceFax.tpl",TRUE,dirname(__FILE__))));
-  }
-
-
-  function getListEntry()
-  {
-    $fields               = goService::getListEntry();
-    $fields['Message']    = _("FAX service");
-    #$fields['AllowEdit']  = true;
-    return($fields);
-  }
-
-  function check()
-  {
-    $message = plugin::check();
-    if (empty($this->goFaxAdmin)){
-      $message[]= msgPool::required(_("User"));
-    }
-    if (empty($this->goFaxPassword)){
-      $message[]= msgPool::required(_("Password"));
-    }
-    return($message);
-  }
-
-
-  function save_object()
-  {
-    if(isset($_POST['serviceFaxPosted'])){
-      plugin::save_object();
-    }
-  }
+  var $objectclasses     =  array("goFaxServer");
+  var $StatusFlag        = "goFaxServerStatus";
+  var $goFaxServerStatus = "";
 
   /* Return plugin informations for acl handling */
   static function plInfo()
@@ -112,12 +42,36 @@ class serviceFax extends goService {
           "plPriority"    => 99,
           "plSection"     => array("administration"),
           "plCategory"    => array("server"),
-
-          "plProvidedAcls"=> array(
-             "goFaxAdmin"     => _("Login name"),
-             "goFaxPassword"  => _("Password"))
+          "plProvidedAcls"=> parent::generatePlProvidedAcls(self::getAttributesInfo())
           ));
   }
+
+    /*!
+   *  \brief The main function : information about attributes
+   */
+  static function getAttributesInfo ()
+  {
+      return array (
+      'section1' => array (
+        'name'  => _('FAX database information'),
+        'icon' => 'images/rightarrow.png',
+        'attrs' => array (
+          new StringAttribute (
+            _('FAX DB user'),
+            '',
+            'goFaxAdmin',
+            TRUE
+          ),
+          new PasswordAttribute (
+            _('Password'),
+            '',
+            'goFaxPassword',
+            TRUE
+          )
+        )
+      )
+    );
+  }
 }
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
+
 ?>
