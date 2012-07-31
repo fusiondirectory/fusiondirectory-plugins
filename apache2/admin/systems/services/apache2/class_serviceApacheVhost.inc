@@ -20,185 +20,55 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class serviceApache extends goService
+class serviceApache extends simpleService
 {
-  /* attribute list for save action */
-  var $ignore_account   = FALSE;
-  var $attributes       = array();
-  var $objectclasses    = array("whatever");
+  var $objectclasses = array("whatever");
 
-  var $RecordTypes      = array();
-  var $Vhosts           = array();
-  var $dialog           = NULL;
-  var $orig_dn          = "";
-
-  var $conflicts        = array("serviceApache");
-
-  var $initially_was_account;
   var $krb_service_prefix = "HTTP/";
 
-  function serviceApache ($config, $dn= NULL, $parent= NULL)
+  function __construct ($config, $dn = NULL, $parent = NULL)
   {
-    plugin::plugin ($config, $dn, $parent);
+    parent::__construct ($config, $dn, $parent, array());
 
-    $this->orig_dn = $dn;
+    $dn_without_base = preg_replace("/,".preg_quote($this->config->current['BASE'], '/')."$/","",$this->dn);
 
-    /* Get all vhost Informations
-     */
-    $this->Vhosts = apacheUtils::getVhostEntries($config,$dn);
+    $this->vhostList = new serviceApacheVhostManagement($this->config, get_userinfo(), $dn_without_base);
 
-    /* If there is at least one entry in this -> types, we have apache vhosts enabled
-     */
-    if(count($this->Vhosts) == 0){
+    /* If there is at least one entry in this -> types, we have apache vhosts enabled */
+
+    if ($this->vhostList->count() == 0) {
       $this->is_account = false;
-    }else{
+    } else {
       $this->is_account = true;
     }
-    $this->initially_was_account = $this->is_account;
 
-    /* Set service name */
-    $this->DisplayName = _("Apache service");
+    $this->initially_was_account = $this->is_account;
   }
 
 
   function execute()
   {
-    /* Call parent execute
-     */
-    plugin::execute();
-
-    /* Fill templating stuff
-     */
-    $smarty= get_smarty();
-    $display= "";
-
-    /* Edited or Added vhost
-     */
-    if((isset($_POST['SaveVhostChanges'])) && is_object($this->dialog)){
-      $this->dialog->save_object();
-
-      /* Check for errors
-       */
-      if(count($this->dialog->check())){
-        msg_dialog::displayChecks($this->dialog->check());
-      }else{
-        /* add new/edited vhost
-         */
-        $ret = $this->dialog->save();
-        if(!$this->dialog->isNew){
-          unset($this->Vhosts[$this->dialog->OldApacheServerName]);
-        }
-        $this->Vhosts[$ret['apacheServerName']] = $ret;
-        $this->dialog = NULL;
-      }
+    if (isset($_POST['SaveVhostChanges'])) {
+      $_POST['edit_finish'] = $_POST['SaveVhostChanges']; // So that the management execute save the entry
     }
-
-    /* Cancel vhost edit / new
-     */
-    if(isset($_POST['CancelVhostChanges'])){
-      $this->dialog = NULL;
+    if (isset($_POST['CancelVhostChanges'])) {
+      $_POST['edit_cancel'] = $_POST['CancelVhostChanges']; // So that the management execute cancel the entry
     }
-
-    /* Add empty new vhost
-     */
-    if(isset($_POST['AddVhost']) && $this->acl_is_writeable("VirtualHosts")){
-      $this->dialog = new serviceApacheVhostEdit($this->config,$this->dn);
+    if (isset($_POST['vhost_delete_confirmed'])) {
+      $_POST['delete_confirmed'] = $_POST['vhost_delete_confirmed']; // So that the management execute delete the entry
     }
-
-    /* Check for edit vhost request
-     */
-    $once = false;
-    foreach( $_POST as $name => $value){
-
-      /* check all post for edit request
-       */
-      if(preg_match("/^editVhost_/",$name)&& !$once && $this->acl_is_writeable("VirtualHosts")){
-        $once =true;
-        $tmp = preg_replace("/^editVhost_/","",$name);
-        $tmp = base64_decode(preg_replace("/_.*$/","",$tmp));
-        $this->dialog= new serviceApacheVhostEdit($this->config,$this->dn,$this->Vhosts[$tmp]);
-      }
-
-      /* check posts for delete vhost
-       */
-      if(preg_match("/^delVhost_/",$name)&&!$once && $this->acl_is_writeable("VirtualHosts")){
-
-        $once =true;
-        $tmp = preg_replace("/^delVhost_/","",$name);
-        $tmp = base64_decode(preg_replace("/_.*$/","",$tmp));
-
-        /* Initiate deletion
-         */
-        $this->RemoveVhost($tmp);
-      }
+    if (isset($_POST['vhost_delete_canceled'])) {
+      $_POST['delete_canceled'] = $_POST['vhost_delete_canceled'];
     }
-
-    /* Show dialog
-     */
-    if($this->dialog!= NULL){
-      $this->dialog->save_object();
-      $this->dialog->parent = $this;
-      return($this->dialog->execute());
-    }
-
-    /* Create Listbox with existing Vhosts
-     */
-    $VhostList = new divSelectBox("apacheConfigs");
-    $VhostList -> SetHeight(254);
-
-    /* Add entries to divlist
-     */
-    $editImg = "<input type='image' src='images/lists/edit.png' name='editVhost_%s'>
-      <input type='image' src='images/lists/trash.png' name='delVhost_%s'>";
-    foreach($this->Vhosts as $vhost => $values ){
-      $VhostList->AddEntry(array(
-            array("string" => $vhost),
-            array("string" => str_replace("%s",base64_encode($vhost),$editImg))
-            ));
-    }
-
-    /* Assign ACL to smarty
-     */
-    $info = $this->plInfo();
-    foreach($info['plProvidedAcls'] as $name => $desc){
-      $smarty->assign($name."ACL",$this->getacl($name));
-    }
-
-
-    /* Display template
-     */
-    $smarty->assign("VhostList",$VhostList->DrawList());
-    $display.= $smarty->fetch(get_template_path('serviceApacheVhost.tpl', TRUE , dirname(__FILE__)));
-    return($display);
+    return $this->vhostList->execute();
   }
 
-
-  /* Delete specified vhost
-   */
-  function RemoveVhost($id)
+  function save()
   {
-      unset($this->Vhosts[$id]);
-      return(true);
-  }
-
-
-  /* This function returns all used Vhostnames
-   */
-  function getUsedServerNames()
-  {
-    $ret = array();
-    $ldap = $this->config->get_ldap_link();
-    $ldap->cd($this->config->current['BASE']);
-    $ldap->search("(&(objectClass=apacheConfig)(apacheServerName=*))",array("apacheServerName"));
-    while($attr = $ldap->fetch()){
-      $ret[$attr['apacheServerName'][0]][] = $attr['dn'];
-    }
-    return($ret);
   }
 
 
   /* Remove apache service
-   */
   function remove_from_parent()
   {
     foreach($this->Vhosts as $key => $vhost){
@@ -206,86 +76,7 @@ class serviceApache extends goService
     }
     $this->save();
   }
-
-
-  /* Save to LDAP */
-  function save()
-  {
-    $ldap = $this->config->get_ldap_link();
-    $ldap->cd($this->config->current['BASE']);
-
-    /* Get differences
-     */
-
-    $old_dn =  $this->orig_dn;
-    if($old_dn == "new"){
-      $old_dn = $this->dn;
-    }
-
-    $tmp = apacheUtils::getVhostEntriesDiff($this->config,$this->Vhosts,$old_dn);
-
-    /* Updated vhost entries if reverser or forward name has changed
-     * Must be done before moving entries, else the given dn is invalid
-     */
-    if(isset($tmp['vhostUpdates'])){
-      foreach($tmp['vhostUpdates'] as $dn => $attrs){
-        $ldap->cd($dn);
-        $ldap->modify($attrs);
-
-        if (!$ldap->success()){
-          msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_MOD, get_class()));
-        }
-      }
-    }
-
-    /* Delete apache vhost
-     */
-    foreach($tmp['del'] as $dn => $del){
-      $ldap->cd($dn);
-      $ldap->rmdir_recursive($dn);
-      if (!$ldap->success()){
-        msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_DEL, get_class()));
-      }
-    }
-
-    /* move follwoing entries
-     */
-    foreach($tmp['move'] as $src => $dst){
-      $this->recursive_move($src,$dst);
-    }
-
-    /* Add || Update new apache entries
-     */
-    foreach($tmp['add'] as $dn => $attrs){
-      $ldap->cd($dn);
-      $ldap->cat($dn, array('dn'));
-      if(count($ldap->fetch())){
-        $ldap->cd($dn);
-        $ldap->modify ($attrs);
-      }else{
-        $ldap->cd($dn);
-        $ldap->add($attrs);
-      }
-      if (!$ldap->success()){
-        msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_ADD, get_class()));
-      }
-    }
-  }
-
-
-  /*! \brief Returns the required information about this plugin for the
-             service list
-      @return Array  With information for the service plugin.
-    */
-  function getListEntry()
-  {
-    $fields = goService::getListEntry();
-    $fields['Message']    = _("Apache service");
-    #$fields['AllowEdit']  = TRUE;
-    #$fields['AllowRemove']= TRUE;
-    return($fields);
-  }
-
+   */
 
   /*  \brief Return plugin information used by the ACL handling.
       @return Array ACL infos.
@@ -296,8 +87,6 @@ class serviceApache extends goService
           "plShortName"   => _("Apache service"),
           "plDescription" => _("Apache virtual host service")." ("._("Services").")",
           "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
-          "plPriority"    => 88,
           "plSection"     => array("administration"),
           "plCategory"    => array("server"),
 
@@ -306,5 +95,4 @@ class serviceApache extends goService
             ));
   }
 }
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>
