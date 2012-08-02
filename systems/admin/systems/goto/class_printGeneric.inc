@@ -39,13 +39,16 @@ class printgeneric extends plugin
   var $orig_cn          = "";
   var $orig_base        = "";
 
-  var $UserMember       ="";
-  var $UserMembers      =array();
-  var $UserMemberKeys   =array();
+  var $printerWindowsInfFile    = "";
+  var $printerWindowsDriverDir  = "";
 
-  var $AdminMember      ="";
-  var $AdminMembers     =array();
-  var $AdminMemberKeys  =array();
+  var $UserMember       = "";
+  var $UserMembers      = array();
+  var $UserMemberKeys   = array();
+
+  var $AdminMember      = "";
+  var $AdminMembers     = array();
+  var $AdminMemberKeys  = array();
 
   var $ppdServerPart   = "";
 
@@ -67,7 +70,7 @@ class printgeneric extends plugin
   /* attribute list for save action */
   var $attributes     = array("cn", "description", "l", "labeledURI", "gotoPrinterPPD","gotoUserPrinter", "macAddress",
                               "gotoUserAdminPrinter","gotoGroupAdminPrinter","gotoUserPrinter","gotoGroupPrinter","gosaUnitTag",
-                              "goComment");
+                              "goComment","printerWindowsInfFile","printerWindowsDriverDir");
   var $objectclasses  = array("top", "gotoPrinter");
   var $view_logged    = FALSE;
   var $parent;
@@ -1034,16 +1037,17 @@ class printgeneric extends plugin
                                                     "objectClass"  => "gotoPrinter"),"workstation","terminal"),
           "plProvidedAcls"=> array(
             "cn"                => _("Name"),
-            "base"                => _("Base") ,
+            "base"              => _("Base") ,
             "description"       => _("Description"),
             "l"                 => _("Location"),
             "labeledURI"        => _("LabeledURL"),
             "gotoPrinterPPD"    => _("Printer PPD"),
+            "gotoUserPrinter"   => _("Permissions"),
             "goComment"         => _("Comments"),
-            "gotoUserPrinter"   => _("Permissions"))
+            "printerWindowsInfFile"   => _("Windows inf file"),
+            "printerWindowsDriverDir" => _("Windows driver dir"))
           ));
   }
-
 
   /* Delete member */
   function DelMember($type,$id)
