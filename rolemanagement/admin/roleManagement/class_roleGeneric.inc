@@ -39,6 +39,16 @@ class roleGeneric extends simplePlugin {
         ));
   }
 
+  /*!
+   * \brief Constructor
+   *        It will build the select groups choices
+   */
+  function __construct(&$config, $dn = NULL, $object = NULL)
+  {
+    parent::__construct($config, $dn, $object);
+    $this->attributesInfo['section1']['attrs']['cn']->setUnique(TRUE);
+  }
+
    /*!
    *  \brief The main function : information about attributes
    */
