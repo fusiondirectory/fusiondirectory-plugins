@@ -24,39 +24,38 @@ class blocklist extends management
 {
   var $plHeadline     = "Blocklists";
   var $plDescription  = "Blocklist management";
-  var $plIcon  = "plugins/gofax/images/blocklists.png";
+  var $plIcon         = "plugins/gofax/images/blocklists.png";
 
-  // Tab definition 
-  protected $tabClass = "faxblocktabs";
-  protected $tabType = "FAXBLOCKTABS";
-  protected $aclCategory = "gofaxlist";
-  protected $aclPlugin   = "blocklistGeneric";
+  // Tab definition
+  protected $tabClass     = "faxblocktabs";
+  protected $tabType      = "FAXBLOCKTABS";
+  protected $aclCategory  = "gofaxlist";
+  protected $aclPlugin    = "blocklistGeneric";
   protected $objectName   = "blocklist";
 
-  function __construct($config,$ui)
+  function __construct($config, $ui)
   {
     $this->config = $config;
-    $this->ui = $ui;
+    $this->ui     = $ui;
 
     $this->storagePoints = array(get_ou("faxBlocklistRDN"));
 
-      $filter = new filter(get_template_path("blocklist-filter.xml", true));
-      $filter->setObjectStorage($this->storagePoints);
+    $filter = new filter(get_template_path("blocklist-filter.xml", TRUE));
+    $filter->setObjectStorage($this->storagePoints);
     $this->setFilter($filter);
 
     // Build headpage
-    $headpage = new listing(get_template_path("blocklist-list.xml", true));
+    $headpage = new listing(get_template_path("blocklist-list.xml", TRUE));
     $headpage->setFilter($filter);
 
     // Add copy&paste and snapshot handler.
-    if ($this->config->boolValueIsTrue("main", "copyPaste")){
+    if ($this->config->boolValueIsTrue("main", "copyPaste")) {
       $this->cpHandler = new CopyPasteHandler($this->config);
     }
-    if($this->config->get_cfg_value("enableSnapshots") == "true"){
+    if ($this->config->get_cfg_value("enableSnapshots") == "true") {
       $this->snapHandler = new SnapshotHandler($this->config);
     }
     parent::__construct($config, $ui, "blocklists", $headpage);
   }
-} 
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
+}
 ?>
