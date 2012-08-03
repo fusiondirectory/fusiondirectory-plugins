@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+#   <lars.gold@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
 "Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
 "POT-Creation-Date: 2012-05-26 17:33+0200\n"
-"PO-Revision-Date: 2012-05-16 12:50+0000\n"
+"PO-Revision-Date: 2012-08-01 20:24+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Spanish (Castilian) (http://www.transifex.net/projects/p/FusionDirectory/language/es/)\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/FusionDirectory/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,38 +20,38 @@ msgstr ""
 
 #: admin/systems/services/argonaut/argonautServer.tpl:2
 msgid "Argonaut server"
-msgstr ""
+msgstr "Servidor Argonaut"
 
 #: admin/systems/services/argonaut/argonautServer.tpl:7
 msgid "Delete finished tasks"
-msgstr ""
+msgstr "Eliminar tareas terminadas"
 
 #: admin/systems/services/argonaut/argonautServer.tpl:11
 msgid "Protocol :"
-msgstr ""
+msgstr "Protocolo:"
 
 #: admin/systems/services/argonaut/argonautServer.tpl:18
 msgid "Port :"
-msgstr ""
+msgstr "Puerto:"
 
 #: admin/systems/services/argonaut/argonautServer.tpl:21
 msgid "Interface for WakeOnLan :"
-msgstr ""
+msgstr "Interfaz para WakeOnLan:"
 
 #: admin/systems/services/argonaut/argonautServer.tpl:24
 msgid "IP tool :"
-msgstr ""
+msgstr "Herramienta IP:"
 
 #: admin/systems/services/argonaut/argonautServer.tpl:27
 msgid "Log directory :"
-msgstr ""
+msgstr "Directorio de registros:"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:60
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:91
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:159
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:160
 msgid "Argonaut DNS settings"
-msgstr ""
+msgstr "Opciones de DNS de Argonaut"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:113
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:120
@@ -69,23 +70,23 @@ msgstr "Servicios"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:168
 msgid "Modify argonaut DNS settings"
-msgstr ""
+msgstr "Modificar opciones DNS de Argonaut"
 
 #: admin/systems/services/argonaut/argonautDNSConfig.tpl:9
 msgid "Bind directory"
-msgstr ""
+msgstr "Directorio de Bind"
 
 #: admin/systems/services/argonaut/argonautDNSConfig.tpl:11
 msgid "Allow notify"
-msgstr ""
+msgstr "Permitir notificación"
 
 #: admin/systems/services/argonaut/argonautDNSConfig.tpl:13
 msgid "Allow update (semicolon separated and ended)"
-msgstr ""
+msgstr "Permitir actualización (separado y terminado con punto y coma)"
 
 #: admin/systems/services/argonaut/argonautDNSConfig.tpl:15
 msgid "Allow transfer (semicolon separated and ended)"
-msgstr ""
+msgstr "Permitir transferencia (separado y terminado con punto y coma)"
 
 #: admin/systems/services/argonaut/argonautDNSConfig.tpl:17
 msgid "TTL"
@@ -93,37 +94,37 @@ msgstr "TTL"
 
 #: admin/systems/services/argonaut/argonautDNSConfig.tpl:19
 msgid "rndc path"
-msgstr ""
+msgstr "ruta de rndc"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:65
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:98
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:166
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:167
 msgid "Argonaut mirror settings"
-msgstr ""
+msgstr "Opciones de espejo de Argonaut"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:175
 msgid "Modify argonaut mirror settings"
-msgstr ""
+msgstr "Modificar opciones de espejo de Argonaut"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:61
 #: admin/systems/services/argonaut/class_argonautServer.inc:89
 #: admin/systems/services/argonaut/class_argonautServer.inc:158
 #: admin/systems/services/argonaut/class_argonautServer.inc:159
 msgid "Argonaut service"
-msgstr ""
+msgstr "Servicio Argonaut"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:167
 msgid "Modify argonaut service"
-msgstr ""
+msgstr "Modificar el servicio Argonaut"
 
 #: admin/systems/services/argonaut/argonautMirrorConfig.tpl:14
 msgid "Local debian mirror directory"
-msgstr ""
+msgstr "Directorio local de repositorio Debian"
 
 #: admin/systems/services/argonaut/argonautMirrorConfig.tpl:16
 msgid "Local packages folder"
-msgstr ""
+msgstr "Directorio local de paquetes"
 
 #: admin/systems/services/argonaut/argonautMirrorConfig.tpl:18
 msgid "Proxy"
@@ -131,7 +132,7 @@ msgstr "Proxy"
 
 #: admin/systems/services/argonaut/argonautMirrorConfig.tpl:20
 msgid "Errors"
-msgstr ""
+msgstr "Errores"
 
 #: admin/systems/services/argonaut/argonautMirrorConfig.tpl:22
 msgid "Source"
@@ -139,7 +140,7 @@ msgstr "Origen"
 
 #: admin/systems/services/argonaut/argonautMirrorConfig.tpl:24
 msgid "GPG Check"
-msgstr ""
+msgstr "Verificación GPG"
 
 #: admin/systems/services/argonaut/argonautMirrorConfig.tpl:26
 msgid "Contents"
@@ -147,91 +148,91 @@ msgstr "Contenidos"
 
 #: admin/systems/services/argonaut/argonautMirrorConfig.tpl:28
 msgid "Verbose"
-msgstr ""
+msgstr "Detallado"
 
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:65
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:92
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:150
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:151
 msgid "Argonaut fuse config service"
-msgstr ""
+msgstr "Servicio de configuración fuse de Argonaut"
 
 #: admin/systems/services/argonaut/argonautFuseConfig.tpl:8
 msgid "Default mode"
-msgstr ""
+msgstr "Modo por defecto"
 
 #: admin/systems/services/argonaut/argonautFuseConfig.tpl:10
 msgid "Log directory"
-msgstr ""
+msgstr "Directorio de rgistros"
 
 #: admin/systems/services/argonaut/argonautFuseConfig.tpl:12
 msgid "Pxelinux cfg path"
-msgstr ""
+msgstr "Ruta de configuración Pxelinux"
 
 #: admin/systems/services/argonaut/argonautFuseConfig.tpl:14
 msgid "Pxelinux cfg static path"
-msgstr ""
+msgstr "Ruta de configuración estática Pxelinux"
 
 #: admin/systems/services/argonaut/argonautFuseConfig.tpl:16
 msgid "Fai flags"
-msgstr ""
+msgstr "Banderas de Fai"
 
 #: admin/systems/services/argonaut/argonautFuseConfig.tpl:18
 msgid "NFS root"
-msgstr ""
+msgstr "Raiz NFS"
 
 #: admin/systems/services/argonaut/argonautFuseConfig.tpl:20
 msgid "Opsi admin"
-msgstr ""
+msgstr "Administrador Opsi"
 
 #: admin/systems/services/argonaut/argonautFuseConfig.tpl:22
 msgid "Opsi password"
-msgstr ""
+msgstr "Clave Opsi"
 
 #: admin/systems/services/argonaut/argonautFuseConfig.tpl:24
 msgid "Opsi server"
-msgstr ""
+msgstr "Servidor Opsi"
 
 #: admin/systems/services/argonaut/argonautFuseConfig.tpl:26
 msgid "Opsi lang"
-msgstr ""
+msgstr "Idioma Opsi"
 
 #: admin/systems/services/argonaut/argonautFuseConfig.tpl:28
 msgid "LTSP server"
-msgstr ""
+msgstr "Servidor LTSP"
 
 #: addons/argonaut/argonautclient.tpl:14
 msgid "Inherit group informations"
-msgstr ""
+msgstr "Heredar informaciones de grupo"
 
 #: addons/argonaut/argonautclient.tpl:16
 msgid "Activate argonaut on this workstation"
-msgstr ""
+msgstr "Activar Argonaut en esta estación de trabajo"
 
 #: addons/argonaut/argonautclient.tpl:24
 msgid "Client port:"
-msgstr ""
+msgstr "Puerto cliente:"
 
 #: addons/argonaut/argonautclient.tpl:33
 msgid "WakeOnLan interface:"
-msgstr ""
+msgstr "Interfaz WakeOnLan:"
 
 #: addons/argonaut/argonautclient.tpl:42
 msgid "TaskId file:"
-msgstr ""
+msgstr "Archivo taskld:"
 
 #: addons/argonaut/argonautclient.tpl:51
 msgid "Log directory:"
-msgstr ""
+msgstr "Directorio de registros:"
 
 #: addons/argonaut/argonautclient.tpl:60
 msgid "Service names:"
-msgstr ""
+msgstr "Nombre de servicios:"
 
 #: addons/argonaut/class_argonautClient.inc:199
 msgid "Argonaut client"
-msgstr ""
+msgstr "Cliente Argonaut"
 
 #: addons/argonaut/class_argonautClient.inc:200
 msgid "Argonaut client settings"
-msgstr ""
+msgstr "Opciones del cliente Argonaut"

@@ -1,0 +1,145 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: FusionDirectory\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
+"POT-Creation-Date: 2012-05-26 17:33+0200\n"
+"PO-Revision-Date: 2012-07-30 21:24+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: Spanish (Venezuela) (http://www.transifex.com/projects/p/FusionDirectory/language/es_VE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: es_VE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+#: admin/systems/services/apache2/class_servApacheEditVhost.inc:257
+#: admin/systems/services/apache2/class_servApacheEditVhost.inc:276
+msgid "Up"
+msgstr "Arriba"
+
+#: admin/systems/services/apache2/class_servApacheEditVhost.inc:258
+#: admin/systems/services/apache2/class_servApacheEditVhost.inc:277
+msgid "Down"
+msgstr "Abajo"
+
+#: admin/systems/services/apache2/class_servApacheEditVhost.inc:259
+#: admin/systems/services/apache2/class_servApacheEditVhost.inc:278
+msgid "Delete"
+msgstr "Eliminar"
+
+#: admin/systems/services/apache2/class_servApacheEditVhost.inc:317
+msgid "Name"
+msgstr "Nombre"
+
+#: admin/systems/services/apache2/class_servApacheEditVhost.inc:324
+#: admin/systems/services/apache2/servApacheVhostEdit.tpl:7
+msgid "Virtual host name"
+msgstr "Nombre Virtual Host"
+
+#: admin/systems/services/apache2/class_servApacheEditVhost.inc:325
+msgid "Only lowercase strings are allowed as Virtual Host Name."
+msgstr "Solo están permitidas minúsculas en el nombre de Virtual Host."
+
+#: admin/systems/services/apache2/class_servApacheEditVhost.inc:325
+msgid "e.g. example.com"
+msgstr "ej: example.com"
+
+#: admin/systems/services/apache2/class_servApacheEditVhost.inc:331
+#: admin/systems/services/apache2/servApacheVhostEdit.tpl:13
+msgid "Document root"
+msgstr "Raíz de documento"
+
+#: admin/systems/services/apache2/class_servApacheEditVhost.inc:337
+#: admin/systems/services/apache2/servApacheVhostEdit.tpl:19
+msgid "Admin mail address"
+msgstr "Dirección correo electrónico del administrador"
+
+#: admin/systems/services/apache2/class_servApacheEditVhost.inc:346
+msgid "Server alias"
+msgstr "Alias de servidor"
+
+#: admin/systems/services/apache2/class_servApacheEditVhost.inc:356
+msgid "Script alias"
+msgstr "Alias de script"
+
+#: admin/systems/services/apache2/class_apacheUtils.inc:212
+#, php-format
+msgid ""
+"Undefined vhost name '%s'. Vhost name must look like this 'www.example.com "
+"or example.com'."
+msgstr "Nombre de Virtual Host sin definir '%s'. El nombre de Virtual Host debe ser como: 'www.example.com o example.com'."
+
+#: admin/systems/services/apache2/class_servApacheVhost.inc:60
+#: admin/systems/services/apache2/class_servApacheVhost.inc:283
+#: admin/systems/services/apache2/class_servApacheVhost.inc:296
+msgid "Apache service"
+msgstr "Servicio apache"
+
+#: admin/systems/services/apache2/class_servApacheVhost.inc:236
+#: admin/systems/services/apache2/class_servApacheVhost.inc:247
+#: admin/systems/services/apache2/class_servApacheVhost.inc:270
+msgid "LDAP error"
+msgstr "Error LDAP"
+
+#: admin/systems/services/apache2/class_servApacheVhost.inc:297
+msgid "Apache virtual host service"
+msgstr "Servicio de Virtual Host de Apache"
+
+#: admin/systems/services/apache2/class_servApacheVhost.inc:297
+msgid "Services"
+msgstr "Servicios"
+
+#: admin/systems/services/apache2/class_servApacheVhost.inc:305
+msgid "Virtual hosts"
+msgstr "Virtual hosts"
+
+#: admin/systems/services/apache2/servApacheVhost.tpl:1
+msgid "Apache VHosts"
+msgstr "Apache VHosts"
+
+#: admin/systems/services/apache2/servApacheVhost.tpl:8
+#: admin/systems/services/apache2/servApacheVhostEdit.tpl:54
+#: admin/systems/services/apache2/servApacheVhostEdit.tpl:98
+msgid "Add"
+msgstr "Añadir"
+
+#: admin/systems/services/apache2/servApacheVhostEdit.tpl:1
+msgid "Generic"
+msgstr "Genérico"
+
+#: admin/systems/services/apache2/servApacheVhostEdit.tpl:30
+msgid "Server Alias"
+msgstr "Alias de servidor"
+
+#: admin/systems/services/apache2/servApacheVhostEdit.tpl:42
+msgid "URL Alias"
+msgstr "Alias de URL"
+
+#: admin/systems/services/apache2/servApacheVhostEdit.tpl:45
+msgid "Directory Path"
+msgstr "Ruta al directorio"
+
+#: admin/systems/services/apache2/servApacheVhostEdit.tpl:74
+msgid "Script Alias"
+msgstr "Alias de script"
+
+#: admin/systems/services/apache2/servApacheVhostEdit.tpl:86
+msgid "Alias Directory"
+msgstr "Alias de directorio"
+
+#: admin/systems/services/apache2/servApacheVhostEdit.tpl:89
+msgid "Script Directory"
+msgstr "Directorio de script"
+
+#: admin/systems/services/apache2/servApacheVhostEdit.tpl:112
+msgid "Save"
+msgstr "Guardar"
+
+#: admin/systems/services/apache2/servApacheVhostEdit.tpl:113
+msgid "Cancel"
+msgstr "Cancelar"

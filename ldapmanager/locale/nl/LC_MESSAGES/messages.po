@@ -3,15 +3,16 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Kenny Tordeurs <tordeurskenny@gmail.com>, 2012.
 #  Niels Klomp (CareWorks ICT Services) <nk@careworks.nl>, 2005.
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
 "Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
 "POT-Creation-Date: 2012-05-26 17:33+0200\n"
-"PO-Revision-Date: 2012-05-26 16:37+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Dutch (http://www.transifex.net/projects/p/FusionDirectory/language/nl/)\n"
+"PO-Revision-Date: 2012-08-02 18:20+0000\n"
+"Last-Translator: Kenny Tordeurs <tordeurskenny@gmail.com>\n"
+"Language-Team: Dutch (http://www.transifex.com/projects/p/FusionDirectory/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -44,11 +45,11 @@ msgstr "LDAP beheer"
 
 #: addons/ldapmanager/class_import.inc:26
 msgid "LDIF import"
-msgstr ""
+msgstr "LDIF import"
 
 #: addons/ldapmanager/class_import.inc:27
 msgid "This plugin allow the import of ldif data into the ldap tree"
-msgstr ""
+msgstr "Deze plugin staat toe om ldif data te importeren in de ldap tree"
 
 #: addons/ldapmanager/class_import.inc:72
 #: addons/ldapmanager/class_export.inc:106
@@ -58,7 +59,7 @@ msgstr "Permissiefout"
 
 #: addons/ldapmanager/class_import.inc:72
 msgid "You need full write access to the LDAP tree to import data!"
-msgstr ""
+msgstr "Je hebt volledige schrijfrechten nodig op de LDAP tree om data te importeren"
 
 #: addons/ldapmanager/class_import.inc:81
 #: addons/ldapmanager/class_import.inc:88
@@ -84,23 +85,23 @@ msgstr "Fout"
 #: addons/ldapmanager/class_csvimport.inc:374
 #, php-format
 msgid "Cannot read uploaded file: %s"
-msgstr ""
+msgstr "Kan geupload bestand niet lezen: %s"
 
 #: addons/ldapmanager/class_import.inc:81
 #: addons/ldapmanager/class_csvimport.inc:363
 msgid "file is empty"
-msgstr ""
+msgstr "bestand is leeg"
 
 #: addons/ldapmanager/class_import.inc:88
 #: addons/ldapmanager/class_csvimport.inc:358
 #: addons/ldapmanager/class_csvimport.inc:369
 msgid "file not found"
-msgstr ""
+msgstr "bestand niet gevonden"
 
 #: addons/ldapmanager/class_import.inc:96
 #: addons/ldapmanager/class_csvimport.inc:374
 msgid "file not readable"
-msgstr ""
+msgstr "bestand onleesbaar"
 
 #: addons/ldapmanager/class_import.inc:130
 #: addons/ldapmanager/class_import.inc:134
@@ -110,12 +111,12 @@ msgstr "LDAP fout"
 
 #: addons/ldapmanager/class_import.inc:138
 msgid "Internal error"
-msgstr ""
+msgstr "Interne error"
 
 #: addons/ldapmanager/class_import.inc:138
 #, php-format
 msgid "Undefined flag '%s'!"
-msgstr ""
+msgstr "Ongedefinieerde flag '%s'!"
 
 #: addons/ldapmanager/contentcsv.tpl:2
 msgid ""
@@ -123,7 +124,7 @@ msgid ""
 " containing Semi-Colon Seperated Values. The administrator can decide which "
 "columns should be transfered to which attribute. Note that you must have at "
 "least the GIVENNAME and SURNAME set."
-msgstr ""
+msgstr "De CSV import plugin geeft methodes aan om gebruikers accounts te genereren van een bestand dat Semi-Colon Seperated waarden bevat. De administrator kan beslissen welke kolommen naar welk attribuut worden getransfereerd. Let op je moet minstens een VOORNAAM en een NAAM hebben."
 
 #: addons/ldapmanager/contentcsv.tpl:10
 msgid "Select CSV file to import"
@@ -166,39 +167,39 @@ msgstr "LDIF export"
 
 #: addons/ldapmanager/class_export.inc:27
 msgid "This plugin allow the export of the ldap tree in ldif format"
-msgstr ""
+msgstr "Deze plugin staat de export van de  ldap tree in ldif formaat toe"
 
 #: addons/ldapmanager/class_export.inc:90
 #, php-format
 msgid "No such object %s!"
-msgstr ""
+msgstr "Zo geen object %s!"
 
 #: addons/ldapmanager/class_export.inc:107
 #, php-format
 msgid "You have no permission to export %s!"
-msgstr ""
+msgstr "Je hebt geen rechten om te exporten %s!"
 
 #: addons/ldapmanager/class_export.inc:113
 #, php-format
 msgid "Failed to generate ldap export, error was '%s'!"
-msgstr ""
+msgstr "Maken van ldap export is mislukt, error was '%s'!"
 
 #: addons/ldapmanager/class_ldif.inc:27
 msgid "This plugin allows the management of the ldap tree"
-msgstr ""
+msgstr "Deze plugin staat het beheer van de ldap tree toe"
 
 #: addons/ldapmanager/class_ldif.inc:55 addons/ldapmanager/class_ldif.inc:56
 #: addons/ldapmanager/class_ldif.inc:61
 msgid "Ldap manager"
-msgstr ""
+msgstr "Ldap beheerder"
 
 #: addons/ldapmanager/class_ldif.inc:56
 msgid "import"
-msgstr ""
+msgstr "Importeer"
 
 #: addons/ldapmanager/class_ldif.inc:56
 msgid "export"
-msgstr ""
+msgstr "exporteer"
 
 #: addons/ldapmanager/contentimport.tpl:3
 msgid ""
@@ -206,7 +207,7 @@ msgid ""
 "running LDAP directory as ldif. You may use this to add new or modify "
 "existing entries. Remember that FusionDirectory will not check your ldifs "
 "for FusionDirectory conformance."
-msgstr ""
+msgstr "De LDIF importeer plugin methode biedt de mogelijkheid om een serie inzendingen in je LDAP directroy te importeren als ldif. Je kan deze gebruiken om nieuw of bestaande inzendingen aan te passen. Onthoud dat FusionDirectory jou ldifs niet zal checken voor FusionDirectory compatibiliteit."
 
 #: addons/ldapmanager/contentimport.tpl:10
 msgid "Import LDIF File"
@@ -214,15 +215,15 @@ msgstr "Importeer LDIF bestand"
 
 #: addons/ldapmanager/contentimport.tpl:24
 msgid "Modify existing objects, keep untouched attributes"
-msgstr ""
+msgstr "Wijzig bestaande objecten, bewaar ongewijzigde attributen"
 
 #: addons/ldapmanager/contentimport.tpl:25
 msgid "Overwrite existing objects, all not listed attributes will be removed"
-msgstr ""
+msgstr "Overschrijf bestaande objecten, alle niet getoonde attributen zullen verwijderd worden"
 
 #: addons/ldapmanager/contentimport.tpl:34
 msgid "Remove existing entries first"
-msgstr ""
+msgstr "Verwijder eerst de bestaande inzendingen"
 
 #: addons/ldapmanager/contentimport.tpl:41
 msgid "Import successful"
@@ -230,15 +231,15 @@ msgstr "Import was succesvol"
 
 #: addons/ldapmanager/class_csvimport.inc:27
 msgid "This plugin allow to export the ldap three to csv format"
-msgstr ""
+msgstr "Deze plugin staat de export van de ldap tree to csv formaat toe"
 
 #: addons/ldapmanager/class_csvimport.inc:128
 msgid "You've no permission to import CSV files."
-msgstr ""
+msgstr "Je hebt geen rechten om CSV bestanden te importeren."
 
 #: addons/ldapmanager/class_csvimport.inc:182
 msgid "Need at least 'sn' and 'givenName' to create users!"
-msgstr ""
+msgstr "Je hebt minstens een 'naam' en 'voornaam' nodig om gebruikers aan te maken!"
 
 #: addons/ldapmanager/class_csvimport.inc:183
 #: addons/ldapmanager/class_csvimport.inc:203
@@ -249,7 +250,7 @@ msgstr "mislukt"
 #: addons/ldapmanager/class_csvimport.inc:202
 #, php-format
 msgid "Failed to generate 'uid' for entry '%s'!"
-msgstr ""
+msgstr "Onmogelijk om 'uid' voor inzending '%s' te genereren!"
 
 #: addons/ldapmanager/class_csvimport.inc:263
 msgid "ok"
@@ -258,7 +259,7 @@ msgstr "okee"
 #: addons/ldapmanager/class_csvimport.inc:320
 #, php-format
 msgid "Cannot insert entry '%s'!"
-msgstr ""
+msgstr "Kan de inzending '%s' niet importeren!"
 
 #: addons/ldapmanager/class_csvimport.inc:346
 msgid "Information"
@@ -270,4 +271,4 @@ msgstr "Er is niets te importeren!"
 
 #: addons/ldapmanager/class_csvimport.inc:520
 msgid "Cannot find CSV data in the selected file!"
-msgstr ""
+msgstr "Kan CSV data niet vinden in geselecteerd bestand!"

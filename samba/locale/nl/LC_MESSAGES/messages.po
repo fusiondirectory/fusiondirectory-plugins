@@ -4,14 +4,15 @@
 # 
 # Translators:
 #  Niels Klomp (CareWorks ICT Services) <nk@careworks.nl>, 2005, 2006, 2007, 2008.
+#   <tordeurskenny@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
 "Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
 "POT-Creation-Date: 2012-05-26 17:33+0200\n"
-"PO-Revision-Date: 2012-05-26 16:52+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Dutch (http://www.transifex.net/projects/p/FusionDirectory/language/nl/)\n"
+"PO-Revision-Date: 2012-08-01 16:18+0000\n"
+"Last-Translator: Kenny Tordeurs <tordeurskenny@gmail.com>\n"
+"Language-Team: Dutch (http://www.transifex.com/projects/p/FusionDirectory/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -88,7 +89,7 @@ msgstr "Domein"
 
 #: personal/samba/samba3.tpl:35
 msgid "Show information"
-msgstr ""
+msgstr "Toon informatie"
 
 #: personal/samba/samba3.tpl:47
 msgid "Script path"
@@ -177,11 +178,11 @@ msgstr "Toegangsopties"
 
 #: personal/samba/samba3.tpl:325 personal/samba/class_sambaAccount.inc:1195
 msgid "Enforce password change"
-msgstr ""
+msgstr "Forceer paswoord wijzigen"
 
 #: personal/samba/samba3.tpl:336
 msgid "The password never expires"
-msgstr ""
+msgstr "Paswoord veranderd nooit"
 
 #: personal/samba/samba3.tpl:347 personal/samba/class_sambaAccount.inc:1197
 msgid "Login from windows client requires no password"
@@ -193,7 +194,7 @@ msgstr "Blokkeer Samba/Windows account"
 
 #: personal/samba/samba3.tpl:369
 msgid "Cannot change password"
-msgstr ""
+msgstr "Kan paswoord niet wijzigen"
 
 #: personal/samba/samba3.tpl:388 personal/samba/class_sambaAccount.inc:866
 #: personal/samba/class_sambaAccount.inc:868
@@ -236,7 +237,7 @@ msgstr "Samba"
 
 #: personal/samba/class_sambaAccount.inc:27
 msgid "This store the sambaAccount into the ldap tree"
-msgstr ""
+msgstr "Dit bewaard de sambaAccount in de ldap tree"
 
 #: personal/samba/class_sambaAccount.inc:268
 msgid "POSIX"
@@ -284,12 +285,12 @@ msgstr "alleen vanaf vorige client"
 #: personal/samba/class_sambaAccount.inc:524
 #, php-format
 msgid "The password is outdated since %s, by domain policy."
-msgstr ""
+msgstr "Het paswoord is ongeldig sinds %s, door de domein policy"
 
 #: personal/samba/class_sambaAccount.inc:527
 #, php-format
 msgid "The password is valid till %s."
-msgstr ""
+msgstr "Het paswoord is geldig tot %s."
 
 #: personal/samba/class_sambaAccount.inc:640
 #: personal/samba/class_sambaAccount.inc:646
@@ -301,16 +302,16 @@ msgstr ""
 #: personal/samba/class_sambaAccount.inc:692
 #: personal/samba/class_sambaAccount.inc:700
 msgid "default"
-msgstr ""
+msgstr "Standaard"
 
 #: personal/samba/class_sambaAccount.inc:646
 #: personal/samba/class_sambaAccount.inc:652
 msgid "Off"
-msgstr ""
+msgstr "Uit"
 
 #: personal/samba/class_sambaAccount.inc:654
 msgid "On"
-msgstr ""
+msgstr "Aan"
 
 #: personal/samba/class_sambaAccount.inc:662
 #: personal/samba/class_sambaAccount.inc:670
@@ -321,21 +322,21 @@ msgstr "seconden"
 #: personal/samba/class_sambaAccount.inc:680
 #: personal/samba/class_sambaAccount.inc:772
 msgid "minutes"
-msgstr ""
+msgstr "minuten"
 
 #: personal/samba/class_sambaAccount.inc:678
 msgid "forever"
-msgstr ""
+msgstr "altijd"
 
 #: personal/samba/class_sambaAccount.inc:692
 #: personal/samba/class_sambaAccount.inc:700
 msgid "off"
-msgstr ""
+msgstr "uit"
 
 #: personal/samba/class_sambaAccount.inc:694
 #: personal/samba/class_sambaAccount.inc:702
 msgid "on"
-msgstr ""
+msgstr "aan"
 
 #: personal/samba/class_sambaAccount.inc:710
 #: personal/samba/class_sambaAccount.inc:718
@@ -346,11 +347,11 @@ msgstr ""
 #: personal/samba/class_sambaAccount.inc:756
 #: personal/samba/class_sambaAccount.inc:762
 msgid "unset"
-msgstr ""
+msgstr "unset"
 
 #: personal/samba/class_sambaAccount.inc:764
 msgid "immediately"
-msgstr ""
+msgstr "onmiddelijk"
 
 #: personal/samba/class_sambaAccount.inc:770
 msgid "days"
@@ -362,76 +363,76 @@ msgstr "uren"
 
 #: personal/samba/class_sambaAccount.inc:778
 msgid "Domain attributes"
-msgstr ""
+msgstr "domein attributen"
 
 #: personal/samba/class_sambaAccount.inc:779
 #: personal/samba/class_sambaAccount.inc:780
 msgid "Min password length"
-msgstr ""
+msgstr "Minimum paswoord lengte "
 
 #: personal/samba/class_sambaAccount.inc:781
 msgid "Password history"
-msgstr ""
+msgstr "Paswoord geschiedenis"
 
 #: personal/samba/class_sambaAccount.inc:782
 msgid "Force password change"
-msgstr ""
+msgstr "Forceer paswoord wijzigen"
 
 #: personal/samba/class_sambaAccount.inc:783
 msgid "Maximum password age"
-msgstr ""
+msgstr "Maximum paswoord leeftijd"
 
 #: personal/samba/class_sambaAccount.inc:784
 msgid "Minimum password age"
-msgstr ""
+msgstr "Minimum paswoord leeftijd"
 
 #: personal/samba/class_sambaAccount.inc:785
 msgid "Lockout duration"
-msgstr ""
+msgstr "Lockout tijd"
 
 #: personal/samba/class_sambaAccount.inc:786
 msgid "Bad lockout attempt"
-msgstr ""
+msgstr "Slechte lockout poging"
 
 #: personal/samba/class_sambaAccount.inc:787
 msgid "Disconnect time"
-msgstr ""
+msgstr "Disconnectie tijd"
 
 #: personal/samba/class_sambaAccount.inc:788
 msgid "Refuse machine password change"
-msgstr ""
+msgstr "Weiger machine paswoord wijziging"
 
 #: personal/samba/class_sambaAccount.inc:790
 msgid "User attributes"
-msgstr ""
+msgstr "Gebruikers attributen"
 
 #: personal/samba/class_sambaAccount.inc:791
 msgid "SID"
-msgstr ""
+msgstr "SID"
 
 #: personal/samba/class_sambaAccount.inc:792
 msgid "Last failed login"
-msgstr ""
+msgstr "Laatste gefaalde login"
 
 #: personal/samba/class_sambaAccount.inc:793
 msgid "Logon attempts"
-msgstr ""
+msgstr "Login pogingen"
 
 #: personal/samba/class_sambaAccount.inc:794
 msgid "Last password update"
-msgstr ""
+msgstr "Laatste paswoord update"
 
 #: personal/samba/class_sambaAccount.inc:795
 msgid "Last logon"
-msgstr ""
+msgstr "Laatste login"
 
 #: personal/samba/class_sambaAccount.inc:796
 msgid "Last logoff"
-msgstr ""
+msgstr "Laatste loguit"
 
 #: personal/samba/class_sambaAccount.inc:797
 msgid "Automatic logoff"
-msgstr ""
+msgstr "Automatische loguit"
 
 #: personal/samba/class_sambaAccount.inc:800
 #: personal/samba/class_sambaAccount.inc:805
@@ -445,23 +446,23 @@ msgstr "Nee"
 #: personal/samba/class_sambaAccount.inc:802
 #, php-format
 msgid "The password would expire on %s, but the password expiry is disabled."
-msgstr ""
+msgstr "Het paswoord zou vervallen op %s, maar paswoord vervallen is gedesactiveerd."
 
 #: personal/samba/class_sambaAccount.inc:808
 msgid "Password change available"
-msgstr ""
+msgstr "Paswoord wijzigen mogelijk"
 
 #: personal/samba/class_sambaAccount.inc:874
 msgid "Home drive"
-msgstr ""
+msgstr "Home drive"
 
 #: personal/samba/class_sambaAccount.inc:877
 msgid "Home path"
-msgstr ""
+msgstr "Home path"
 
 #: personal/samba/class_sambaAccount.inc:900
 msgid "The windows user manager allows eight clients at maximum!"
-msgstr ""
+msgstr "De windows gebruikers manager laat maximum 8 clients toe!"
 
 #: personal/samba/class_sambaAccount.inc:919
 msgid "Information"
@@ -511,11 +512,11 @@ msgstr "Account verloopt op"
 
 #: personal/samba/class_sambaAccount.inc:1196
 msgid "Disallow password change"
-msgstr ""
+msgstr "Sta paswoord wijzigen niet toe"
 
 #: personal/samba/class_sambaAccount.inc:1198
 msgid "Password never expires"
-msgstr ""
+msgstr "Paswoord vervalt nooit"
 
 #: personal/samba/class_sambaAccount.inc:1201
 msgid "Logon hours"
