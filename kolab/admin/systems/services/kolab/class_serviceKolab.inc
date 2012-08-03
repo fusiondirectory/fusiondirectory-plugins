@@ -20,181 +20,234 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class serviceKolab extends goService {
-  var $postfix_mydomain                 = "";
-  var $cyrus_admins                     = "";
-  var $postfix_mydestination            = array();
-  var $postfix_mynetworks               = "127.0.0.1/8";
-  var $postfix_enable_virus_scan        = "TRUE";
-  var $postfix_relayhost                = "";
-  var $postfix_mxrelayenabled           =  true;
-  var $postfix_allow_unauthenticated     = "FALSE";
-  var $cyrus_quotawarn                  = "80";
-  var $kolabFreeBusyFuture              = "1";
-  var $k                                = "kolab";
-  var $cyrus_imap                       = "TRUE";
-  var $cyrus_pop3                       = "FALSE";
-  var $cyrus_imaps                      = "TRUE";
-  var $cyrus_pop3s                      = "TRUE";
-  var $cyrus_sieve                      = "TRUE";
-  var $apache_allow_unauthenticated_fb  = "TRUE";
-  var $proftpd_ftp                      = "FALSE";
-  var $apache_http                      = "TRUE";
-  var $kolabHost                        = array();
-  var $orig_cn                          = "";
-  var $view_logged                      = FALSE;
-
-  var $attributes =  array("postfix_mydomain", "postfix_mydestination", "proftpd_ftp", "k",
-      "postfix_mynetworks", "postfix_enable_virus_scan", "postfix_relayhost", "apache_http",
-      "postfix_allow_unauthenticated", "cyrus_admins", "cyrus_imap","kolabFreeBusyFuture",
-      "cyrus_pop3", "cyrus_imaps", "cyrus_pop3s", "cyrus_sieve", "apache_allow_unauthenticated_fb",
-      "cyrus_quotawarn");
-  var $objectclasses = array("top", "kolab");
-
-  /* Serverservice vars */
-  var $conflicts    = array("serviceMail");
-  var $DisplayName  = "Kolab mail service";
-  var $StatusFlag   = "";
-
-  function serviceKolab(&$config, $dn = NULL, $parent= NULL)
+class RelayHostKolabAttribute extends CompositeAttribute
+{
+  function __construct ($description, $ldapName, $acl = "", $label = "Composite attribute")
   {
-    /* Setting the hostname and tell this Plugin that we are the kolab extension*/
-    $this->hostname = preg_replace('/^cn=([^,]+),.*$/', '\1', $dn);
-    $this->dn       = "k=kolab,".$config->current['BASE'];
+    $attributes = array(
+      new BooleanAttribute (
+        _('Enable MX lookup for relayhost'), '', 'RelayMxSupport', FALSE, FALSE,
+        "", TRUE, FALSE
+      ),
+      new StringAttribute (_('Relay host'), _('Host used to relay mails'), 'relayhost')
+    );
+    parent::__construct ($description, $ldapName, $attributes, "", "", $acl, $label);
+  }
 
-    /* Load variables, if given*/
-    plugin::plugin($config, $this->dn);
+  function readValues($value)
+  {
+    $values = array();
+    $values[0] = preg_match('/^\[/', $value);
+    $values[1] = preg_replace("/[\[\]]/", "", $value);
+    return $values;
+  }
 
-    /* Copy needed attributes */
-    foreach($this->attributes as $val) {
-      $name = preg_replace('/_/', '-', $val);
-      if (isset($this->attrs["$name"][0])) {
-        $this->$val = $this->attrs["$name"][0];
-      }
+  function writeValues($values)
+  {
+    /* Adapt relayhost */
+    $value = preg_replace('/[\[\]]/', '', $values[1]);
+    if ($values[0] && ($value != "")) {
+      $value = "[".$value."]";
     }
+    return $value;
+  }
+}
 
-    /* Toggle relayhost */
-    $this->postfix_mxrelayenabled = preg_match('/^\[/', $this->postfix_relayhost);
-    $this->postfix_relayhost      = preg_replace("/[\[\]]/","",$this->postfix_relayhost);
+class serviceKolab extends simpleService
+{
+  var $objectclasses  = array("top", "kolab");
+  var $displayHeader  = FALSE;
+  var $mainTab        = TRUE;
 
-    /* Is this Server a member of the Kolab extension or not ?*/
-    if(isset($this->attrs['kolabHost'])) {
-      $this->kolabHost= $this->attrs['kolabHost'];
-      unset($this->kolabHost['count']);
-    }
-    $this->is_account            = false;
-    $this->initially_was_account = false;
-    foreach($this->kolabHost as $host){
-      if($this->hostname == $host){
-        $this->is_account            = true;
-        $this->initially_was_account = true;
-      }
-    }
+  var $conflicts    = array("goMailServer","GOhard");
 
-    /* Get list of configured domains
-     */
-    $this->postfix_mydestination = array();
-    if(isset($this->attrs['postfix-mydestination'])){
-      for($i=0; $i < $this->attrs['postfix-mydestination']['count']; $i++){
-        $this->postfix_mydestination[] = $this->attrs['postfix-mydestination'][$i];
-      }
-    }
+  static function plInfo()
+  {
+    return (array(
+      "plShortName"     => _("Kolab mail service"),
+      "plDescription"   => _("Kolab mail service")." ("._("Services").")",
+      "plSelfModify"    => FALSE,
+      "plPriority"      => 85,
+      "plSection"       => array("administration"),
+      "plCategory"      => array("server"),
+      "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+    ));
   }
 
 
-  function execute()
+  /*!
+   *  \brief The main function : information about attributes
+   */
+  static function getAttributesInfo ()
   {
-    /* Call parent execute */
-    plugin::execute();
+    return array (
+      'section1' => array (
+        'name'  => _('Generic'),
+        'icon' => 'images/rightarrow.png',
+        'attrs' => array (
+          new StringAttribute('', '', 'k', FALSE, 'kolab'),
+          new SetAttribute(new StringAttribute('', '', 'kolabHost')),
+          new StringAttribute(
+            _('Postfix mydomain'), _('Postfix domain name'),
+            'postfix-mydomain'
+          ),
+          new StringAttribute(
+            _('Cyrus admins'), _('Cyrus admins for kolab server'),
+            'cyrus-admins'
+          ),
+          new SetAttribute(
+            new StringAttribute(
+              _('Mail domains').', '._('Postfix mydestination'), _('Mail domains'),
+              'postfix-mydestination', FALSE
+            )
+          )
+        )
+      ),
+      'section2' => array (
+        'name'  => _('Services'),
+        'attrs' => array (
+          new BooleanAttribute (
+            _('POP3 service'), _('Enable POP3 service'),
+            'cyrus-pop3', FALSE, FALSE
+          ),
+          new BooleanAttribute (
+            _('POP3/SSL service'), _('Enable POP3/SSL service'),
+            'cyrus-pop3s', FALSE, TRUE
+          ),
+          new BooleanAttribute (
+            _('IMAP service'), _('Enable IMAP service'),
+            'cyrus-imap', FALSE, TRUE
+          ),
+          new BooleanAttribute (
+            _('IMAP/SSL service'), _('Enable IMAP/SSL service'),
+            'cyrus-imaps', FALSE, TRUE
+          ),
+          new BooleanAttribute (
+            _('Sieve service'), _('Enable Sieve service'),
+            'cyrus-sieve', FALSE, TRUE
+          ),
+          new BooleanAttribute (
+            _('FTP FreeBusy service (legacy)'),
+            _('FTP FreeBusy service (legacy, not interoperable with Kolab2 FreeBusy)'),
+            'proftpd-ftp', FALSE, FALSE
+          ),
+          new BooleanAttribute (
+            _('HTTP FreeBusy service (legacy)'), '',
+            'apache-http', FALSE, TRUE
+          ),
+          new BooleanAttribute (
+            _('Amavis email scanning'), _('Amavis email scanning (virus/spam)'),
+            'postfix-enable-virus-scan', FALSE, TRUE
+          ),
+        )
+      ),
+      'section3' => array (
+        'name' => _('Quota settings'),
+        'attrs' => array (
+          new IntAttribute (
+            _('Quota occupation limit before warning users (%)'),
+            _('Warn users when using more than X% of their mail quota'),
+            'cyrus-quotawarn', FALSE,
+            FALSE, FALSE, // min and max
+            80 // default value
+          )
+        )
+      ),
+      'section4' => array (
+        'name' => _('Free/Busy settings'),
+        'attrs' => array (
+          new BooleanAttribute (
+            _('Allow unauthenticated downloading of Free/Busy information'),
+            _('Allow unauthenticated downloading of Free/Busy information'),
+            'apache-allow-unauthenticated-fb', FALSE, TRUE
+          ),
+          new IntAttribute (
+            _('Number of days to include when creating free/busy lists'),
+            _('Include data from X days in the past when creating free/busy lists'),
+            'kolabFreeBusyFuture', FALSE,
+            FALSE, FALSE, // min and max
+            1 // default value
+          )
+        )
+      ),
+      'section5' => array (
+        'name' => _('SMTP privileged networks'),
+        'attrs' => array (
+          new StringAttribute (
+            _('Hosts/networks allowed to relay'),
+            _('Hosts/networks allowed to relay (multiple values comma-seperated)'),
+            'postfix-mynetworks',
+            FALSE,
+            '127.0.0.1/8'
+          )
+        )
+      ),
+      'section6' => array (
+        'name' => _('SMTP smarthost/relayhost'),
+        'attrs' => array (
+          new RelayHostKolabAttribute (
+            _('Host used to relay mails'), 'postfix-relayhost'
+          )
+        )
+      ),
+      'section7' => array (
+        'name' => _('Accept Internet Mail'),
+        'attrs' => array (
+          new BooleanAttribute (
+            _('Accept mail from other domains over non-authenticated SMTP'),
+            _('Accept mail from other domains over non-authenticated SMTP'),
+            'postfix-allow-unauthenticated'
+          )
+        )
+      )
+    );
+  }
 
-    if($this->is_account && !$this->view_logged){
-      $this->view_logged = TRUE;
-      new log("view","server/".get_class($this),$this->dn);
-    }
+  function __construct(&$config, $dn = NULL, $object = NULL)
+  {
+    $this->hostname = preg_replace('/^cn=([^,]+),.*$/', '\1', $dn);
+    $this->dn       = "k=kolab,".$config->current['BASE'];
+    parent::__construct($config, $this->dn);
 
-    /***************
-      Variable initialisation
-     ***************/
+    $this->attributesInfo['section1']['attrs']['k']->setVisible(FALSE);
+    $this->attributesInfo['section1']['attrs']['kolabHost']->setVisible(FALSE);
 
-    $smarty     = get_smarty();
-    $display    = "";
-    $ldap       = $this->config->get_ldap_link();
+    $this->is_account = in_array($this->hostname, $this->attributesInfo['section1']['attrs']['kolabHost']->getValue());
 
+    $this->initially_was_account = $this->is_account;
 
-    /* Assemble free/busy string */
-    $edit       = sprintf('<input name="kolabFreeBusyFuture" value="%s" type="text" maxlength="3" size="4">',
-                    $this->kolabFreeBusyFuture);
-    $fbfuture   = sprintf(_("Include data from %s days in the past when creating free/busy lists"), $edit);
+    $this->updateAttributesValues();
+  }
 
-    /* Assemble quota string */
-    $edit       = sprintf('<input name="cyrus_quotawarn" value="%s" type="text" maxlength="3" size="4">',
-                    $this->cyrus_quotawarn);
-    $quotastr   = sprintf(_("Warn users when using more than %s%% of their mail quota"), $edit);
+  function save ()
+  {
+    $this->dn = "k=kolab,".$this->config->current['BASE'];
 
-    /***************
-      Assign informations to smarty
-     ***************/
-
-    /* Set relayhost and if we have MX lookup enabled*/
-    if($this->postfix_mxrelayenabled) {
-      $smarty->assign("RelayMxSupportCheck"," checked ");
-    } else {
-      $smarty->assign("RelayMxSupportCheck","");
-    }
-
-    /* Set acls */
-    $tmp = $this->plInfo();
-    foreach($tmp['plProvidedAcls'] as $name => $translation){
-      $smarty->assign($name."ACL",$this->getacl($name));
-    }
-
-    /* Initialize all attributes, that were submitted */
-    foreach($this->attributes as $val)
-    {
-      /* Tell smarty which variables we are useing */
-      $smarty->assign($val, $this->$val);
-      if (($this->$val != "FALSE") && !empty($this->$val)){
-        $smarty->assign($val."Check", "checked");
-      } else {
-        $smarty->assign($val."Check", "");
+    /* Check if this server was renamed, in this case we have to remove old cn first*/
+    $kolabHost = $this->attributesInfo['section1']['attrs']['kolabHost']->getValue();
+    if ($this->hostname != $this->cn) {
+      $key = array_search($this->hostname, $kolabHost);
+      if ($key !== FALSE) {
+        unset($kolabHost[$key]);
       }
     }
-
-    $smarty->assign("fbfuture", $fbfuture);
-    $smarty->assign("quotastr", $quotastr);
-
-    /* Create mail domain divlist  (postfix_mydestination)
-     */
-    $divlist = new divSelectBox("fuse");
-    $divlist->setHeight(100);
-    foreach($this->postfix_mydestination as $key => $domain){
-      $f1 = array("string" => $domain);
-      $f2 = array("string" => "<input type='image' src='images/lists/trash.png'
-                                  name='remove_domain_".$key."'
-                                  title='"._("Remove")."' alt='"._("Remove")."'>",
-                  "attach" => "style='border-right:0px; width: 20px;'");
-      $divlist->AddEntry(array($f1,$f2));
+    if (!in_array($this->cn, $kolabHost)) {
+      $kolabHost[] = $this->cn;
     }
-    $smarty->assign("mdDiv",$divlist->DrawList());
+    $this->attributesInfo['section1']['attrs']['kolabHost']->setValue($kolabHost);
 
-    /* Load Template */
-    $display.=$smarty->fetch(get_template_path('serviceKolab.tpl', TRUE,dirname(__FILE__)));
-    return ($display);
+    parent::save();
   }
 
   function remove_from_parent()
   {
-
-     /* Remove status flag, it is not a memeber of
-        this->attributes, so ensure that it is deleted too */
-    if(!empty($this->StatusFlag)){
+     /* Remove status flag, it is not a memeber of this->attributes, so ensure that it is deleted too */
+    if (!empty($this->StatusFlag)) {
       $this->attrs[$this->StatusFlag] = array();
     }
 
-
-    /* Only walk through following code, if this host
-       was a member of the kolab hosts, else skip this */
-    if(!$this->initially_was_account){
+    /* Only walk through following code, if this host was a member of the kolab hosts, else skip this */
+    if (!$this->initially_was_account) {
       return;
     }
 
@@ -202,7 +255,6 @@ class serviceKolab extends goService {
        hostname -> the initial name of the host
        cn       -> is the new name of the host, in case that it was renamed.
      */
-
     $ldap     = $this->config->get_ldap_link();
     $this->dn = "k=kolab,".$this->config->current['BASE'];
 
@@ -213,275 +265,48 @@ class serviceKolab extends goService {
        if we aren't alone, only remove host name from hosts entry and save */
     /* Are we alone? Remove complete entry... */
 
+    $kolabHost = $this->attributesInfo['section1']['attrs']['kolabHost']->getValue();
+
     /* Check if we are definitly in kolabHosts */
-    if(!in_array_ics($this->hostname,$this->kolabHost)) {
+    if (!in_array_ics($this->hostname, $kolabHost)) {
       return;
     }
 
     /* Integration check, not translated because they can't pop up at all, only for debug */
-    if(count($this->kolabHost) == 0){
+    if (count($kolabHost) == 0) {
       msg_dialog::display(_("Internal error"), _("Kolab account does not exist!"), ERROR_DIALOG);
       return;
     }
-    if(!isset($this->hostname) || (empty($this->hostname))){
+    if (!isset($this->hostname) || (empty($this->hostname))) {
       msg_dialog::display(_("Error"), msgPool::required(_("hostname")), ERROR_DIALOG);
     }
 
     /* Our hostname is in kolabHosts and there is a only one entry
        = we are the last host entry, delete k=kolab entry  */
-    if (count($this->kolabHost) == 1){
-
+    if (count($this->kolabHost) == 1) {
       /* Remove complete entry */
       $ldap->rmdir ($this->dn);
-      if (!$ldap->success()){
+      if (!$ldap->success()) {
         msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_DEL, get_class()));
       }
     } else {
-
       /* Only modify kolabHost */
-      $hosts= array();
-      foreach ($this->kolabHost as $host){
-        if($host != $this->hostname){
-          $hosts[]= $host;
-        }
-      }
-      $attrs= array('kolabHost' => $hosts);
+      $key = array_search($this->hostname, $kolabHost);
+      unset($kolabHost[$key]);
+      $attrs = array('kolabHost' => array_values($kolabHost));
       $ldap->cd($this->dn);
       $this->cleanup();
-      $ldap->modify ($attrs);
-      if (!$ldap->success()){
+      $ldap->modify($attrs);
+      if (!$ldap->success()) {
         msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_MOD, get_class()));
       }
     }
 
-    new log("remove","server/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
+    new log("remove", "service/".get_class($this), $this->dn, array_keys($this->attrs), $ldap->get_error());
 
     /* Optionally execute a command after we're done */
     $this->handle_post_events("remove");
   }
 
-
-  function save_object()
-  {
-    if (isset($_POST['kolabtab'])){
-      plugin::save_object();
-
-      /* Domain name added/removed
-       */
-      foreach($_POST as $name => $value){
-        if(preg_match("/^remove_domain_/",$name)){
-          $id = preg_replace("/^remove_domain_([0-9]*)_.*$/","\\1",$name);
-          if(isset($this->postfix_mydestination[$id])){
-            unset($this->postfix_mydestination[$id]);
-          }
-          break;
-        }
-      }
-      if(isset($_POST['add_domain_name']) && isset($_POST['new_domain_name'])){
-        $new_domain = trim(get_post('new_domain_name'));
-        if(!empty($new_domain) && tests::is_domain($new_domain)){
-          $this->postfix_mydestination[] = $new_domain;
-        }
-      }
-
-      /* Map attrinutes
-       */
-      foreach($this->attributes as $attr){
-        if(($this->acl_is_writeable(preg_replace("/_/","",$attr))) && (isset($_POST[$attr]))){
-          $this->$attr = $_POST[$attr];
-        }
-      }
-
-      /* Save checkboxes */
-      foreach (array( "postfix_enable_virus_scan", "postfix_allow_unauthenticated",
-            "cyrus_imap", "cyrus_pop3", "cyrus_imaps",
-            "cyrus_pop3s", "cyrus_sieve", "apache_allow_unauthenticated_fb",
-            "proftpd_ftp", "apache_http") as $cb){
-
-        if($this->acl_is_writeable(preg_replace("/_/","",$cb))){
-          if (isset($_POST[$cb])){
-            $this->$cb= "TRUE";
-          } else {
-            $this->$cb= "FALSE";
-          }
-        }
-      }
-
-      /* Toggell relay check */
-      if($this->acl_is_writeable("postfixmxrelayenabled")){
-        $this->postfix_mxrelayenabled= isset($_POST['RelayMxSupport']);
-      }
-    }
-
-  }
-
-
-  function check()
-  {
-    /* Call common method to give check the hook */
-    $message= plugin::check();
-
-    if(mailMethod::get_current_method($this->config) != "mailMethodKolab22" && count($this->postfix_mydestination) != 1){
-#      $message[] = _("Only kolab version >= 2.2 is able to handle multiple mail domains. Please provide only one mail domain.");
-    }
-
-    if(($this->kolabFreeBusyFuture==""))    {
-      $message[] = msgPool::required(_("Future days"));
-    }elseif(!tests::is_uid($this->kolabFreeBusyFuture) || $this->kolabFreeBusyFuture < 0){
-      $message[] = msgPool::invalid(_("Future days"),$this->kolabFreeBusyFuture,"/[0-9]/");
-    }
-
-    if(!is_int((int)($this->cyrus_quotawarn))) {
-      $message[] = msgPool::required(_("Quota"));
-    }elseif($this->cyrus_quotawarn>100){
-      $message[] = _("Please choose a value between 1 and 100 for Quota settings.");
-    }elseif($this->cyrus_quotawarn < 1){
-      $message[] = msgPool::toosmall(_("Quota"),1);
-    }
-
-    if(empty($this->postfix_mynetworks)) {
-      $message[] = msgPool::required(_("Privileged networks"));
-    }
-
-    if(!count($this->postfix_mydestination)){
-      $message[] = msgPool::required(_("Mail domains")." (postfix-mydestination)" );
-    }
-
-    return ($message);
-  }
-
-
-  /* Save to LDAP */
-  function save()
-  {
-    /* Set ldap connection */
-    $ldap       = $this->config->get_ldap_link();
-
-    /* Open current dn*/
-    $this->dn   = "k=kolab,".$this->config->current['BASE'];
-
-    /* Adapt relayhost */
-    $this->postfix_relayhost= preg_replace('/[\[\]]/', '', $this->postfix_relayhost);
-    if ($this->postfix_mxrelayenabled && $this->postfix_relayhost != ""){
-      $this->postfix_relayhost= "[".$this->postfix_relayhost."]";
-    }
-
-    /* Check if this server was renamed, in this case we have to remove old cn first*/
-    if($this->hostname != $this->cn){
-      $tmp = array();
-      if(in_array_ics($this->hostname,$this->kolabHost)){
-        foreach($this->kolabHost as $host){
-          if($host != $this->hostname){
-            $tmp[] = $host;
-          }
-        }
-        $this->kolabHost = $tmp;
-      }
-    }
-
-    /* Add ourselves to the list of kolabHost's if needed */
-    if (!in_array_ics($this->cn,$this->kolabHost)){
-      $this->kolabHost[]= $this->cn;
-    }
-
-    /* Call parents save to prepare $this->attrs */
-    plugin::save();
-
-    /* Save or modify? */
-    $ldap->cat($this->dn, array('dn'));
-    if (!$ldap->fetch()){
-      $mode= "add";
-    } else {
-      $mode= "modify";
-    }
-
-    /* Do attribute conversion */
-    foreach ($this->attrs as $key => $value){
-      if (preg_match('/_/', $key)){
-        $old_key= $key;
-        $key= preg_replace('/_/', '-', $key);
-        $this->attrs[$key]= $value;
-        unset($this->attrs[$old_key]);
-      }
-    }
-    /* Add kolab hosts */
-    $this->attrs['kolabHost']= $this->kolabHost;
-
-    /* Perform LDAP action */
-    $ldap->cd($this->dn);
-    $this->cleanup();;
-    $ldap->$mode($this->attrs);
-
-    if($mode == "add"){
-      new log("create","server/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
-    }else{
-      new log("modify","server/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
-    }
-
-    if (!$ldap->success()){
-      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()));
-    }
-
-    /* Optionally execute a command after we're done */
-    if ($this->initially_was_account == $this->is_account) {
-      if ($this->is_modified) {
-        $this->handle_post_events("modify");
-      }
-    } else {
-      $this->handle_post_events("add");
-    }
-  }
-
-
-  function getListEntry()
-  {
-    $fields                 = goService::getListEntry();
-    $fields['Message']      = _("Kolab mail service");
-    #$fields['AllowEdit']    = true;
-    return($fields);
-  }
-
-
-  /* Return plugin informations for acl handling */
-  static function plInfo()
-  {
-    return (array(
-          "plShortName"   => _("Kolab"),
-          "plDescription" => _("Kolab mail service")." ("._("Services").")",
-          "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
-          "plPriority"    => 85,
-          "plSection"     => array("administration"),
-          "plCategory"    => array("server"),
-
-          "plProvidedAcls"=> array(
-            "postfixmydomain"                => _("Postfix mydomain") ,
-            "postfixmydestination"           => _("My destination") ,
-            "cyrusadmins"                    => _("Cyrus admins") ,
-
-            "cyruspop3"                      => _("POP3 service") ,
-            "cyruspop3s"                     => _("POP3/SSL service") ,
-
-            "cyrusimap"                      => _("IMAP service") ,
-            "cyrusimaps"                     => _("IMAP/SSL service") ,
-
-            "cyrussieve"                     => _("Sieve service") ,
-            "proftpdftp"                     => _("FTP FreeBusy service") ,
-            "apachehttp"                     => _("HTTP FreeBusy service") ,
-            "postfixenablevirusscan"         => _("Enable virus scan") ,
-
-            "cyrusquotawarn"                 => _("Quota settings"),
-
-            "apacheallowunauthenticatedfb"   => _("Allow unauthenticated free busy"),
-            "kolabFreeBusyFuture"            => _("kolabFreeBusyFuture") ,
-
-            "postfixmynetworks"              => _("SMTP privileged networks") ,
-            "postfixmxrelayenabled"          => _("Enable MX lookup for relayhost"),
-            "postfixrelayhost"               => _("Relayhost") ,
-            "postfixallowunauthenticated"    => _("Accept Internet Mail"))
-              ));
-  }
 }
-
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>
