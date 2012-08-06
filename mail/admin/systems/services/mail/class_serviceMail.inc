@@ -68,12 +68,10 @@ class serviceMail extends simpleService{
             _('Relay messages to following host'),
             'postfixRelayhost'
           ),
-          new SetAttribute (
-            new StringAttribute (
-            _('Local networks'),
-            _('Postfix networks'),
-            'postfixMyNetworks'
-            )
+          new StringAttribute (
+           _('Local networks'),
+           _('Postfix networks'),
+           'postfixMyNetworks'
           )
         )
       ),
@@ -87,16 +85,16 @@ class serviceMail extends simpleService{
             'postfixMyDestinations'
             )
           ),
-          new SetAttribute (
+          new OrderedArrayAttribute (
             new CompositeAttribute (
              _('Transport'),
             'postfixTransportTable',
               array(
                 new StringAttribute ('', '','first'),
-                new SelectAttribute ('', '','filter', FALSE, array('smtp')),
+                new SelectAttribute ('', '','filter', TRUE, array('smtp'),'',array('SMTP')),
                 new StringAttribute ('', '','second'),
               ),
-              '%s %s:%s',
+              '%s %[^:]:%s',
               '%s %s:%s',
               '', _('Transport')
             )
@@ -106,30 +104,30 @@ class serviceMail extends simpleService{
       'section3' => array (
         'name' => _('Restrictions'),
         'attrs' => array (
-          new SetAttribute (
+          new OrderedArrayAttribute (
             new CompositeAttribute (
              _('Restrictions for sender'),
             'postfixSenderRestrictions',
               array(
                 new StringAttribute ('', '','first2'),
-                new SelectAttribute ('', '','filter2', FALSE, array('FILTER')),
+                new SelectAttribute ('', '','filter2', TRUE, array('FILTER'),'FILTER'),
                 new StringAttribute ('', '','second2'),
               ),
-              '%s %s %s',
+              '%s %[^:] %s',
               '%s %s %s',
               '', _('Restrictions for sender')
             )
           ),
-          new SetAttribute (
+          new OrderedArrayAttribute (
             new CompositeAttribute (
              _('Restrictions for recipient'),
             'postfixRecipientRestrictions',
               array(
                 new StringAttribute ('', '','first3'),
-                new SelectAttribute ('', '','filter3', FALSE, array('FILTER')),
+                new SelectAttribute ('', '','filter3', TRUE, array('FILTER'),'FILTER'),
                 new StringAttribute ('', '','second3'),
               ),
-              '%s %s %s',
+              '%s %[^:] %s',
               '%s %s %s',
               '', _('Restrictions for recipient')
             )
@@ -141,7 +139,7 @@ class serviceMail extends simpleService{
         'icon' => 'images/rocket.png',
         'attrs' => array (
           new SelectAttribute (
-            _('Status'), '','flagmail', FALSE, array(SERVICE_STOPPED=>SERVICE_STOPPED,SERVICE_STARTED => SERVICE_STARTED,SERVICE_RESTARTED=>SERVICE_RESTARTED)
+            _('Status'), '','flagmail', FALSE, array('start','stop','restart'), '', array(_('Start'),_('Stop'),_('Restart'))
           )
         )
       )
@@ -157,13 +155,14 @@ class serviceMail extends simpleService{
     parent::__construct($config, $dn, $object);
     $this->attributesInfo['section1']['attrs']['postfixMyDomain']->setDisabled(TRUE);
     $this->attributesInfo['section4']['attrs']['flagmail']->setInLdap(FALSE);
-    $goMailServerStatus = $this->attributesInfo['section4']['attrs']['flagmail']->getValue();
+    $this->goMailServerStatus = $this->attributesInfo['section4']['attrs']['flagmail']->getValue();
+
   }
 
   function save()
   {
+    $this->attributesInfo['section1']['attrs']['postfixMyDomain']->setValue($this->attributesInfo['section1']['attrs']['postfixMyHostname']->getValue());
     $this->prepare_save();
-    $this->attributesInfo['section1']['attrs']['postfixMyDomain']->setValue($this->attributesInfo['section1']['attrs']['postfixMyDomain']->getValue());
     $this->ldap_save();
   }
 
