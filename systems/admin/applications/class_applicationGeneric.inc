@@ -342,54 +342,26 @@ class application extends plugin
           msg_dialog::display(_("Error"), msgPool::incorrectUpload(), ERROR_DIALOG);
         }
 
-        if (!function_exists("imagick_blob2image")){
-          /* Get temporary file name for conversation */
-          $fname = tempnam (TEMP_DIR, "FusionDirectory");
-
-          /* Open file and write out photoData */
-          $fp = fopen ($fname, "w");
-          fwrite ($fp, $_FILES['picture_file']['tmp_name']);
-          fclose ($fp);
-
-          /* Build conversation query. Filename is generated automatically, so
-             we do not need any special security checks. Exec command and save
-             output. For PHP safe mode, you'll need a configuration which respects
-             image magick as executable... */
-          $query= "convert -size 48x48 $fname -resize 48x48 +profile \"*\" -";
-          @DEBUG (DEBUG_SHELL, __LINE__, __FUNCTION__, __FILE__, $query, "Execute");
-
-          /* Read data written by convert */
-          $output= "";
-          $sh= popen($query, 'r');
-          while (!feof($sh)){
-            $output.= fread($sh, 4096);
-          }
-          pclose($sh);
-
-          unlink($fname);
-        } else {
-
-          /* Load the new uploaded Photo */
-          if(!$handle  =  imagick_ReadImage($_FILES['picture_file']['tmp_name'])){
-            msg_dialog::display(_("Error"), msgPool::incorrectUpload(_("no read permission")), ERROR_DIALOG);
-          }
-
-          /* Resizing image to 147x200 and blur */
-          if(!imagick_resize($handle,48,48,IMAGICK_FILTER_GAUSSIAN,0)){
-            msg_dialog::display(_("Error"), msgPool::incorrectUpload(_("cannot resize image")), ERROR_DIALOG);
-          }
-
-          /* Converting image to JPEG */
-          if(!imagick_convert($handle,"PNG")) {
-            msg_dialog::display(_("Error"), msgPool::incorrectUpload(_("cannot convert image")), ERROR_DIALOG);
-          }
-
-          if(!imagick_writeimage($handle,$_FILES['picture_file']['tmp_name'])){
-            msg_dialog::display(_("Error"), msgPool::incorrectUpload(sprintf(_("cannot save image to '%s'"), $_FILES['picture_file']['tmp_name'])), ERROR_DIALOG);
-          }
-
-          imagick_free($handle);
+        /* Load the new uploaded Photo */
+        if(!$handle  =  imagick_ReadImage($_FILES['picture_file']['tmp_name'])){
+          msg_dialog::display(_("Error"), msgPool::incorrectUpload(_("no read permission")), ERROR_DIALOG);
         }
+
+        /* Resizing image to 147x200 and blur */
+        if(!imagick_resize($handle,48,48,IMAGICK_FILTER_GAUSSIAN,0)){
+          msg_dialog::display(_("Error"), msgPool::incorrectUpload(_("cannot resize image")), ERROR_DIALOG);
+        }
+
+        /* Converting image to JPEG */
+        if(!imagick_convert($handle,"PNG")) {
+          msg_dialog::display(_("Error"), msgPool::incorrectUpload(_("cannot convert image")), ERROR_DIALOG);
+        }
+
+        if(!imagick_writeimage($handle,$_FILES['picture_file']['tmp_name'])){
+          msg_dialog::display(_("Error"), msgPool::incorrectUpload(sprintf(_("cannot save image to '%s'"), $_FILES['picture_file']['tmp_name'])), ERROR_DIALOG);
+        }
+
+        imagick_free($handle);
 
         /* Activate new picture */
         $this->set_picture($_FILES['picture_file']['tmp_name']);
