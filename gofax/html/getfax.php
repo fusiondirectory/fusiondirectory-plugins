@@ -84,48 +84,24 @@ if (!isset($_GET['download'])) {
   /* display picture */
   header("Content-type: image/png");
 
-  /* Fallback if there's no image magick support in PHP */
-  if (!function_exists("imagick_blob2image")) {
+  /* Loading image */
+  if (!$handle = imagick_blob2image($data)) {
+    new log("view", "faxreport/faxreport", "", array(), "Cannot load fax image");
+  }
 
-    /* Write to temporary file and call convert, because TIFF sucks */
-    $tmpfname = tempnam ("/tmp", "FusionDirectory");
-    $temp     = fopen($tmpfname, "w");
-    fwrite($temp, $data);
-    fclose($temp);
+  /* Converting image to PNG */
+  if (!imagick_convert($handle, "PNG")) {
+    new log("view", "faxreport/faxreport", "", array(), "Cannot convert fax image to png");
+  }
 
-    /* Read data written by convert */
-    $output = "";
-    $query  = "convert -size 420x594 $tmpfname -resize 420x594 +profile \"*\" png:- 2> /dev/null";
-    $sh = popen($query, 'r');
-    $data = "";
-    while (!feof($sh)) {
-      $data .= fread($sh, 4096);
-    }
-    pclose($sh);
+  /* Resizing image to 420x594 and blur */
+  if (!imagick_resize($handle, 420, 594, IMAGICK_FILTER_GAUSSIAN, 1)) {
+    new log("view", "faxreport/faxreport", "", array(), "Cannot resize fax image");
+  }
 
-    unlink($tmpfname);
-
-  } else {
-
-    /* Loading image */
-    if (!$handle = imagick_blob2image($data)) {
-      new log("view", "faxreport/faxreport", "", array(), "Cannot load fax image");
-    }
-
-    /* Converting image to PNG */
-    if (!imagick_convert($handle, "PNG")) {
-      new log("view", "faxreport/faxreport", "", array(), "Cannot convert fax image to png");
-    }
-
-    /* Resizing image to 420x594 and blur */
-    if (!imagick_resize($handle, 420, 594, IMAGICK_FILTER_GAUSSIAN, 1)) {
-      new log("view", "faxreport/faxreport", "", array(), "Cannot resize fax image");
-    }
-
-    /* Creating binary Code for the Image */
-    if (!$data = imagick_image2blob($handle)) {
-      new log("view", "faxreport/faxreport", "", array(), "Reading fax image image failed");
-    }
+  /* Creating binary Code for the Image */
+  if (!$data = imagick_image2blob($handle)) {
+    new log("view", "faxreport/faxreport", "", array(), "Reading fax image image failed");
   }
 
 } else {
