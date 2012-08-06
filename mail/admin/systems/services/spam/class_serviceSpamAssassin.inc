@@ -20,329 +20,46 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class serviceSpamAssassin extends goService{
+class spamFlagsAttribute extends StringAttribute
+{
+  function __construct ($label, $description, $ldapName, $required = FALSE, $defaultValue = "", $acl = "", $regexp = "")
+  {
+    parent::__construct($label, $description, $ldapName, $required, $defaultValue, $acl);
+    $this->setVisible(FALSE);
+  }
+
+  function setValue ($value)
+  {
+    parent::setValue($value);
+    $this->plugin->attributesInfo['section2']['attrs']['saFlags1']->setValue(preg_match('/B/',$this->value));
+    $this->plugin->attributesInfo['section2']['attrs']['saFlags2']->setValue(preg_match('/b/',$this->value));
+    $this->plugin->attributesInfo['section2']['attrs']['saFlags3']->setValue(preg_match('/C/',$this->value));
+    $this->plugin->attributesInfo['section2']['attrs']['saFlags4']->setValue(preg_match('/R/',$this->value));
+    $this->plugin->attributesInfo['section2']['attrs']['saFlags5']->setValue(preg_match('/D/',$this->value));
+    $this->plugin->attributesInfo['section2']['attrs']['saFlags6']->setValue(preg_match('/P/',$this->value));
+  }
+
+  function getValue()
+  {
+    return 'Array'.$this->plugin->attributesInfo['section2']['attrs']['saFlags1']->computeLdapValue().
+      $this->plugin->attributesInfo['section2']['attrs']['saFlags2']->computeLdapValue().
+      $this->plugin->attributesInfo['section2']['attrs']['saFlags3']->computeLdapValue().
+      $this->plugin->attributesInfo['section2']['attrs']['saFlags4']->computeLdapValue().
+      $this->plugin->attributesInfo['section2']['attrs']['saFlags5']->computeLdapValue().
+      $this->plugin->attributesInfo['section2']['attrs']['saFlags6']->computeLdapValue();
+  }
+}
+
+class gospamserver extends simpleService{
 
   /* This plugin only writes its objectClass */
   var $objectclasses    = array("goSpamServer");
   var $attributes       = array("saRewriteHeader","saTrustedNetworks","saRequiredScore","saFlags","saRule");
   var $StatusFlag       = "saStatus";
-
-  /* This class can't be assigned twice so it conflicts with itsself */
-  var $conflicts        = array();
-  var $Flags            = array("B","b","C","R","D","P");
-
-  var $DisplayName      = "";
-  var $dn               = NULL;
-  var $cn               = "";
   var $saStatus         = "";
 
-  var $saRewriteHeader    = "";
-  var $saTrustedNetworks  = array();
-  var $TrustedNetworks    = array();
-  var $saRequiredScore    = 0;
-  var $saFlags            = "";
-  var $Rules              = array();
-  var $saRule             = array();
+    /* Return plugin informations for acl handling  */
 
-  var $saFlagsB         = false;
-  var $saFlagsb         = false;
-  var $saFlagsC         = false;
-  var $saFlagsR         = false;
-  var $saFlagsD         = false;
-  var $saFlagsP         = false;
-
-  var $ui               = NULL;
-  var $acl              = NULL;
-  var $view_logged      = FALSE;
-
-  function __construct(&$config, $dn, $parent= NULL)
-  {
-    /* Init class */
-    goService::goService($config, $dn, $parent);
-    $this->DisplayName = _("Spamassassin service");
-
-    /* Get userinfo & acls */
-    $this->ui = get_userinfo();
-
-    /* Get Flags */
-    foreach($this->Flags as $flag){
-      $var = "saFlags".$flag;
-      if(preg_match("/".$flag."/",$this->saFlags)){
-        $this->$var = TRUE;
-      }
-    }
-
-    /* Get trusted networks */
-    $this->TrustedNetworks = array();
-    if(isset($this->attrs['saTrustedNetworks']) && is_array($this->attrs['saTrustedNetworks'])){
-      $var = $this->attrs['saTrustedNetworks'];
-      for($i = 0 ; $i < $var['count'] ; $i ++ ){
-        $var2 = $this->attrs['saTrustedNetworks'][$i];
-        $this->TrustedNetworks[ $var2 ] = $var2;
-      }
-    }
-
-    /* Get rules */
-    $this->Rules = array();
-    if(isset($this->attrs['saRule']) && is_array($this->attrs['saRule'])){
-      $var = $this->attrs['saRule'];
-      for($i = 0 ; $i < $var['count'] ; $i ++ ){
-        $var2 = $this->attrs['saRule'][$i];
-        $name = preg_replace("/:.*$/","",$var2);
-        $value= base64_decode(preg_replace("/^.*:/","",$var2));
-        $this->Rules[ $name ] = $value;
-      }
-    }
-  }
-
-
-  function execute()
-  {
-    $display ="";
-    $smarty = get_smarty();
-
-    if($this->is_account && !$this->view_logged){
-      $this->view_logged = TRUE;
-      new log("view","server/".get_class($this),$this->dn);
-    }
-
-    /* If displayed, it is ever true*/
-    $this->is_account =true;
-
-    /* Get acls */
-    $tmp = $this->plinfo();
-    foreach($tmp['plProvidedAcls'] as $name => $translation){
-      $smarty->assign($name."ACL",$this->getacl($name));
-    }
-
-    /* Add new trusted network */
-    if(isset($_POST['AddNewTrust']) && ($this->acl_is_writeable("saTrustedNetworks"))){
-      $this->AddTrust($_POST['NewTrustName']);
-    }
-
-    /* Delete selected trusted network */
-    if(isset($_POST['DelTrust']) && ($this->acl_is_writeable("saTrustedNetworks"))){
-      $this->DelTrust($_POST['TrustedNetworks']);
-    }
-
-    /* Add a new rule */
-    if(isset($_POST['AddRule']) && $this->acl_is_writeable("saRule")){
-      $this->dialog = new serviceSpamAssassinRule($this->config,$this->dn);
-    }
-
-    /* Cancel adding/editing specified rule */
-    if(isset($_POST['CancelRule'])){
-      $this->dialog = FALSE;
-    }
-
-    /* Handle post to delete rules */
-    $once = true;
-    foreach($_POST as $name => $value){
-      if(preg_match("/^editRule_/",$name) && $once && $this->acl_is_readable("saRule")){
-        $once = false;
-        $entry = preg_replace("/^editRule_/","",$name);
-        $entry = preg_replace("/_(x|y)$/","",$entry);
-        $rule = $this->Rules[$entry];
-        $name = $entry;
-        $this->dialog = new serviceSpamAssassinRule($this->config,$this->dn,$name,$rule);
-      }
-      if(preg_match("/^delRule_/",$name) && $once && $this->acl_is_writeable("saRule")){
-        $once = false;
-        $entry = preg_replace("/^delRule_/","",$name);
-        $entry = preg_replace("/_(x|y)$/","",$entry);
-        unset($this->Rules[$entry]);
-      }
-    }
-
-    /* Save rules */
-    if(isset($_POST['SaveRule'])){
-      $this->dialog->save_object();
-      $msgs = $this->dialog->check();
-      if(count($msgs)){
-        foreach($msgs as $msg){
-          msg_dialog::display(_("Error"), $msg, ERROR_DIALOG);
-        }
-      }elseif($this->acl_is_writeable("saRule")){
-        $ret = $this->dialog->save();
-        if((!empty($ret['orig_name'])) && isset($this->Rules[$ret['orig_name']])){
-          unset($this->Rules[$ret['orig_name']]);
-        }
-        $this->Rules[$ret['name']] = $ret['rule'];
-        $this->dialog = FALSE;
-      }
-    }
-
-    /* Display dialog if available */
-    if($this->dialog && $this->dialog->config){
-      $this->dialog->save_object();
-      return($this->dialog->execute());
-    }
-
-    /* Assign smarty vars */
-    foreach($this->attributes as $attr){
-      $smarty->assign($attr,$this->$attr);
-    }
-
-    /* Assign checkbox states */
-    foreach($this->Flags as $Flag){
-      $var = "saFlags".$Flag;
-      $smarty->assign("saFlags".$Flag."ACL", $this->getacl($Flag));
-      if($this->$var){
-        $smarty->assign("saFlags".$Flag."CHK"," checked " );
-      }else{
-        $smarty->assign("saFlags".$Flag."CHK","");
-      }
-    }
-
-    /* Create divlist */
-    $DivRules = new divSelectBox("SpamRules");
-    $DivRules->SetHeight(130);
-
-    if(!$this->acl_is_writeable("saTrustedNetworks")){
-      $actions = "";
-    }else{
-      $actions = "<input type='image' src='images/lists/edit.png'      name='editRule_%s'>";
-      if($this->acl_is_writeable("saRule")){
-        $actions.= "<input type='image' src='images/lists/trash.png' name='delRule_%s'>";
-      }
-    }
-
-    foreach($this->Rules as $key => $net){
-      $field1 = array("string" => $key );
-      $field2 = array("string" => sprintf($actions,$key,$key) , "attach" => "style='border-right:0px;width:36px;'");
-      $DivRules->AddEntry(array($field1,$field2));
-    }
-    $smarty->assign("divRules",$DivRules->DrawList());
-    $smarty->assign("TrustedNetworks",$this->TrustedNetworks);
-
-    /* Create Spam score select box entries */
-    $tmp = array();
-    for($i = 0 ; $i <= 20 ; $i ++ ){
-      $tmp[$i] = $i;
-    }
-    $smarty->assign("SpamScore",$tmp);
-
-    return($display.$smarty->fetch(get_template_path("serviceSpamAssassin.tpl",TRUE,dirname(__FILE__))));
-  }
-
-
-  /* Add $post to list of configured trusted */
-  function AddTrust($post)
-  {
-    if(!empty($post)){
-      if(tests::is_ip($post) || tests::is_domain($post) || (tests::is_ip_with_subnetmask($post))){
-        $this->TrustedNetworks[$post] = $post;
-      }else{
-        msg_dialog::display(_("Error"), msgPool::invalid(_("Trusted network")), ERROR_DIALOG);
-      }
-    }
-  }
-
-
-  /* Delete trusted network */
-  function DelTrust($posts)
-  {
-    foreach($posts as $post){
-      if(isset($this->TrustedNetworks[$post])){
-        unset($this->TrustedNetworks[$post]);
-      }
-    }
-  }
-
-  function save()
-  {
-    if(!$this->is_account) return;
-    plugin::save();
-
-    /* Create Flags */
-    $this->attrs['saFlags'] = array();
-    foreach($this->Flags as $flag){
-      $var = "saFlags".$flag;
-      if($this->$var){
-        $this->attrs['saFlags'].=$flag;
-      }
-    }
-
-    /* Create trusted network entries */
-    $this->attrs['saTrustedNetworks'] = array();
-    foreach($this->TrustedNetworks as $net){
-      $this->attrs['saTrustedNetworks'][] = $net;
-    }
-
-    /* Rules */
-    $this->attrs['saRule'] = array();
-    foreach($this->Rules as $name => $rule){
-      $this->attrs['saRule'][] = $name.":".base64_encode($rule);
-    }
-
-    /* Check if this is a new entry ... add/modify */
-    $ldap = $this->config->get_ldap_link();
-    $ldap->cat($this->dn,array("objectClass"));
-    if($ldap->count()){
-      $ldap->cd($this->dn);
-      $ldap->modify($this->attrs);
-    }else{
-      $ldap->cd($this->dn);
-      $ldap->add($this->attrs);
-    }
-    if($this->initially_was_account){
-      $this->handle_post_events("modify");
-      new log("modify","server/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
-    }else{
-      $this->handle_post_events("add");
-      new log("create","server/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
-    }
-
-    if (!$ldap->success()){
-      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()));
-    }
-  }
-
-  function check()
-  {
-    $message = plugin::check();
-
-    /* Check if required score is numeric */
-    if(!is_numeric($this->saRequiredScore)){
-      $message[] = msgPool::invalid(_("Score"),$this->saRequiredScore,"/[0-9]/");
-    }
-
-    return($message);
-  }
-
-
-  function save_object()
-  {
-    if(isset($_POST['serviceSpamAssassin'])){
-
-      plugin::save_object();
-
-      /* Check flags */
-      foreach($this->Flags as $flag){
-        $var = "saFlags".$flag;
-
-        if($this->acl_is_writeable($var)){
-          if(isset($_POST[$var])){
-            $this->$var = TRUE;
-          }else{
-            $this->$var = FALSE;
-          }
-        }
-      }
-    }
-  }
-
-
-  /* For newer service management dialogs */
-  function getListEntry()
-  {
-    $fields                 = goService::getListEntry();
-    $fields['Message']      = _("Spamassassin service");
-    #$fields['AllowEdit']    = true;
-    return($fields);
-  }
-
-  /* Return plugin informations for acl handling  */
   static function plInfo()
   {
     return (array(
@@ -353,21 +70,118 @@ class serviceSpamAssassin extends goService{
           "plPriority"    => 89,
           "plSection"     => array("administration"),
           "plCategory"    => array("server"),
-          "plProvidedAcls"=> array(
-
-            "saRewriteHeader"   => _("Rewrite header"),
-            "saTrustedNetworks" => _("Trusted networks"),
-            "saRequiredScore"   => _("Required score"),
-            "saRule"            => _("Rules"),
-
-            "saFlagB"           => _("Enable use of bayes filtering"),
-            "saFlagb"           => _("Enabled bayes auto learning"),
-            "saFlagC"           => _("Enable RBL checks"),
-            "saFlagR"           => _("Enable use of Razor"),
-            "saFlagD"           => _("Enable use of DDC"),
-            "saFlagP"           => _("Enable use of Pyzor"))
+          "plProvidedAcls"=> parent::generatePlProvidedAcls(self::getAttributesInfo())
           ));
   }
+
+ /*!
+  *  \brief The main function : information about attributes
+  */
+  static function getAttributesInfo ()
+  {
+    return array (
+      'section1' => array (
+        'name'  => _('Spam tagging'),
+        'icon' => 'images/rightarrow.png',
+        'attrs' => array (
+          new StringAttribute (
+            _('Rewrite header'),
+            '',
+            'saRewriteHeader'
+          ),
+          new SelectAttribute (
+            _('Required score'),
+            _('Select required score to tag mail as spam'),
+            'saRequiredScore',
+            FALSE,
+            array (0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20)
+          ),
+          new SetAttribute (
+            new StringAttribute (
+              _('Trusted networks'),
+              '',
+              'saTrustedNetworks'
+            )
+          )
+        )
+      ),
+      'section2' => array (
+        'name' => _('Flags'),
+        'attrs'=> array (
+          new BooleanAttribute (
+            _('Enable use of bayes filtering'),
+            '',
+            'saFlags1',
+            FALSE,FALSE,'','B',''
+          ),
+          new BooleanAttribute (
+            _('Enable bayes auto learning'),
+            '',
+            'saFlags2',
+            FALSE,FALSE,'','b',''
+          ),
+          new BooleanAttribute (
+            _('Enable RBL checks'),
+            '',
+            'saFlags3',
+            FALSE,FALSE,'','C',''
+          ),
+          new BooleanAttribute (
+            _('Enable use of Razor'),
+            '',
+            'saFlags4',
+            FALSE,FALSE,'','R',''
+          ),
+          new BooleanAttribute (
+            _('Enable use of DDC'),
+            '',
+            'saFlags5',
+            FALSE,FALSE,'','D',''
+          ),
+          new BooleanAttribute (
+            _('Enable use of Pyzor'),
+            '',
+            'saFlags6',
+            FALSE,FALSE,'','P',''
+          ),
+          new spamFlagsAttribute ("", "", "saFlags")
+        )
+      ),
+      'section3' => array (
+        'name' => _('Rules'),
+        'attrs' => array (
+          new SetAttribute (
+            new CompositeAttribute (
+              _('Edit spam ruleEdit spam rule'),
+              'saRule',
+              array (
+                new StringAttribute (_('Name'), '', 'ruleName'),
+                new TextAreaAttribute (_('Rule'), '', 'ruleDesc'),
+              ),
+              '%s:%s',
+              '%s:%s',
+              '', _('Edit spam rule')
+            )
+          )
+        )
+      )
+    );
+  }
+
+  /*!
+   * \brief Constructor of the freeradiusAccount
+   *        It will build the select groups choices
+   */
+  function __construct(&$config, $dn = NULL, $object = NULL)
+  {
+    parent::__construct($config, $dn, $object);
+    $this->attributesInfo['section2']['attrs']['saFlags1']->setInLdap(FALSE);
+    $this->attributesInfo['section2']['attrs']['saFlags2']->setInLdap(FALSE);
+    $this->attributesInfo['section2']['attrs']['saFlags3']->setInLdap(FALSE);
+    $this->attributesInfo['section2']['attrs']['saFlags4']->setInLdap(FALSE);
+    $this->attributesInfo['section2']['attrs']['saFlags5']->setInLdap(FALSE);
+    $this->attributesInfo['section2']['attrs']['saFlags6']->setInLdap(FALSE);
+  }
 }
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
+
 ?>
