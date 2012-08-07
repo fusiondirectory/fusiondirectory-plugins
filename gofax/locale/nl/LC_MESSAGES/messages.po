@@ -4,14 +4,15 @@
 # 
 # Translators:
 #  Niels Klomp (CareWorks ICT Services) <nk@careworks.nl>, 2005.
+#   <tordeurskenny@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
 "Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
 "POT-Creation-Date: 2012-05-26 17:33+0200\n"
-"PO-Revision-Date: 2012-05-26 16:34+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Dutch (http://www.transifex.net/projects/p/FusionDirectory/language/nl/)\n"
+"PO-Revision-Date: 2012-08-01 16:05+0000\n"
+"Last-Translator: Kenny Tordeurs <tordeurskenny@gmail.com>\n"
+"Language-Team: Dutch (http://www.transifex.com/projects/p/FusionDirectory/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -32,7 +33,7 @@ msgstr "FAX database"
 
 #: admin/systems/services/gofax/class_goFaxServer.inc:79
 msgid "FAX database configuration"
-msgstr ""
+msgstr "FAX databank configuratie"
 
 #: admin/systems/services/gofax/class_goFaxServer.inc:88
 #: addons/faxreports/detail.tpl:21 addons/faxreports/contents.tpl:30
@@ -49,7 +50,7 @@ msgstr "Wachtwoord"
 #: admin/systems/services/gofax/class_goFaxServer.inc:108
 #: admin/systems/services/gofax/class_goFaxServer.inc:109
 msgid "Fax database"
-msgstr ""
+msgstr "Fax databank"
 
 #: admin/systems/services/gofax/class_goFaxServer.inc:109
 msgid "Services"
@@ -57,11 +58,11 @@ msgstr "Services"
 
 #: admin/systems/services/gofax/class_goFaxServer.inc:117
 msgid "Login name"
-msgstr ""
+msgstr "Login naam"
 
 #: admin/systems/services/gofax/goFaxServer.tpl:1
 msgid "FAX database information"
-msgstr ""
+msgstr "FAX databank informatie"
 
 #: admin/systems/services/gofax/goFaxServer.tpl:4
 msgid "FAX DB user"
@@ -75,7 +76,7 @@ msgstr "Waarschuwing"
 msgid ""
 "Please double check if you really want to do this since there is no way for "
 "FusionDirectory to get your data back."
-msgstr ""
+msgstr "Klik aub dubbel als je dit echt wenst te doen want er is echter geen manier voor FusionDirectory om je data terug te plaatsen."
 
 #: admin/blocklists/remove.tpl:10
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
@@ -109,11 +110,11 @@ msgstr "Naam"
 #: admin/blocklists/class_blocklistGeneric.inc:383
 #: admin/blocklists/class_blocklistGeneric.inc:384
 msgid "Fax blocklists"
-msgstr ""
+msgstr "Fax blokkeerlijst"
 
 #: admin/blocklists/class_blocklistGeneric.inc:30
 msgid "This is the part of the fax plugin managing blacklist"
-msgstr ""
+msgstr "Dit is het deel van de fax plugin voor het beheren van de blacklist"
 
 #: admin/blocklists/class_blocklistGeneric.inc:124
 #: admin/blocklists/class_blocklistGeneric.inc:174
@@ -167,11 +168,11 @@ msgstr "Basis"
 #: admin/blocklists/class_blocklistGeneric.inc:390
 #: admin/blocklists/blocklist-list.xml:82
 msgid "Blocklist"
-msgstr ""
+msgstr "Blokkeerlijst"
 
 #: admin/blocklists/class_blocklistGeneric.inc:391
 msgid "Blocklist type"
-msgstr ""
+msgstr "Blokkeerlijst type"
 
 #: admin/blocklists/blocklist-list.xml:11
 msgid "List of blocklists"
@@ -180,12 +181,12 @@ msgstr "Lijst met blokkeerlijsten"
 #: admin/blocklists/blocklist-list.xml:15
 #: personal/faxaccount/class_gofaxAccount.inc:854
 msgid "Send blocklist"
-msgstr ""
+msgstr "Zend blokkeerlijst"
 
 #: admin/blocklists/blocklist-list.xml:23
 #: personal/faxaccount/class_gofaxAccount.inc:853
 msgid "Receive blocklist"
-msgstr ""
+msgstr "Ontvang blokkeerlijst"
 
 #: admin/blocklists/blocklist-list.xml:65
 msgid "Actions"
@@ -254,22 +255,22 @@ msgstr "Fax rapporten"
 
 #: addons/faxreports/class_faxreport.inc:27
 msgid "This plugin show the fax reports"
-msgstr ""
+msgstr "Deze plugin toont de fax rapporten"
 
 #: addons/faxreports/class_faxreport.inc:135
 msgid "No fax server found!"
-msgstr ""
+msgstr "Geen fax server gevonden!"
 
 #: addons/faxreports/class_faxreport.inc:144
 #, php-format
 msgid "Cannot connect to %s database!"
-msgstr ""
+msgstr "Kan niet connecteren met %s databank!"
 
 #: addons/faxreports/class_faxreport.inc:164
 #: addons/faxreports/class_faxreport.inc:305
 #, php-format
 msgid "Cannot query %s database!"
-msgstr ""
+msgstr "Kan geen query maken naar %s databank!"
 
 #: addons/faxreports/class_faxreport.inc:173
 #: addons/faxreports/class_faxreport.inc:183
@@ -279,7 +280,7 @@ msgstr "Permissiefout"
 #: addons/faxreports/class_faxreport.inc:173
 #: addons/faxreports/class_faxreport.inc:183
 msgid "You have no permission to view this fax id!"
-msgstr ""
+msgstr "Je hebt geen rechten om dit fax id te bezichtigen!"
 
 #: addons/faxreports/class_faxreport.inc:214
 #: addons/faxreports/class_faxreport.inc:330
@@ -288,32 +289,32 @@ msgstr "J-M-D"
 
 #: addons/faxreports/class_faxreport.inc:324
 msgid "Insufficient permissions to view this attribute"
-msgstr ""
+msgstr "Onvoldoende rechten om dit attribuut te bezichtigen"
 
 #: addons/faxreports/class_faxreport.inc:324
 msgid "Insufficient permissions"
-msgstr ""
+msgstr "Onvoldoende rechten"
 
 #: addons/faxreports/class_faxreport.inc:488
 #: addons/faxreports/class_faxreport.inc:489
 msgid "Fax report"
-msgstr ""
+msgstr "Fax rapport"
 
 #: addons/faxreports/class_faxreport.inc:489
 msgid "All entries are readonly"
-msgstr ""
+msgstr "Alle inzendingen zijn alleen-lezen"
 
 #: addons/faxreports/class_faxreport.inc:494
 msgid "Fax reports"
-msgstr ""
+msgstr "Fax rapporten"
 
 #: addons/faxreports/class_faxreport.inc:499
 msgid "Detailed view"
-msgstr ""
+msgstr "Gedetailleerd overzicht"
 
 #: addons/faxreports/class_faxreport.inc:500
 msgid "Fax ID"
-msgstr ""
+msgstr "Fax ID"
 
 #: addons/faxreports/class_faxreport.inc:501 addons/faxreports/contents.tpl:31
 msgid "Date"
@@ -321,7 +322,7 @@ msgstr "Datum"
 
 #: addons/faxreports/class_faxreport.inc:501
 msgid "Time"
-msgstr ""
+msgstr "Tijd"
 
 #: addons/faxreports/class_faxreport.inc:502 addons/faxreports/detail.tpl:45
 #: addons/faxreports/contents.tpl:32
@@ -346,11 +347,11 @@ msgstr "Ontvanger MSN"
 
 #: addons/faxreports/class_faxreport.inc:507
 msgid "Number of pages"
-msgstr ""
+msgstr "Pagina nummers"
 
 #: addons/faxreports/class_faxreport.inc:508
 msgid "Status Message"
-msgstr ""
+msgstr "Status Bericht"
 
 #: addons/faxreports/class_faxreport.inc:509 addons/faxreports/detail.tpl:53
 msgid "Transfer time"
@@ -418,7 +419,7 @@ msgstr "De zoekopdracht gaf geen resultaten terug..."
 
 #: personal/faxaccount/faxNumberSelect/faxNumberSelect-list.xml:10
 msgid "Please select the desired entries"
-msgstr ""
+msgstr "Selecteer aub de gewenste inzendingen"
 
 #: personal/faxaccount/faxNumberSelect/faxNumberSelect-list.xml:40
 msgid "Given name"
@@ -474,7 +475,7 @@ msgstr "Fax nummer waarop GOfax moet reageren"
 
 #: personal/faxaccount/paste_generic.tpl:18
 msgid "Alternate fax numbers will not be copied"
-msgstr ""
+msgstr "Alternative fax nummers worden niet gekopieerd"
 
 #: personal/faxaccount/lists.tpl:5
 msgid "Blocked numbers/lists"
@@ -500,7 +501,7 @@ msgstr "Dit doet iets"
 #: personal/faxaccount/class_gofaxAccount.inc:195
 #: personal/faxaccount/class_gofaxAccount.inc:198
 msgid "GOfax"
-msgstr ""
+msgstr "GOfax"
 
 #: personal/faxaccount/class_gofaxAccount.inc:194
 msgid "Remove fax account"
@@ -523,7 +524,7 @@ msgstr "FAX nummer"
 
 #: personal/faxaccount/class_gofaxAccount.inc:660
 msgid "Mail delivery is requested without target address!"
-msgstr ""
+msgstr "Mail aflevering is gevraagd zonder doeladres"
 
 #: personal/faxaccount/class_gofaxAccount.inc:662
 msgid "Mail address"
@@ -531,15 +532,15 @@ msgstr "E-mail adres"
 
 #: personal/faxaccount/class_gofaxAccount.inc:662
 msgid "your-name@your-domain.com"
-msgstr ""
+msgstr "your-name@your-domain.com"
 
 #: personal/faxaccount/class_gofaxAccount.inc:668
 msgid "Printing is requested without a target printer!"
-msgstr ""
+msgstr "Printen is gevraagd zonder doelprinter"
 
 #: personal/faxaccount/class_gofaxAccount.inc:837
 msgid "Fax account settings"
-msgstr ""
+msgstr "Fax account opties"
 
 #: personal/faxaccount/class_gofaxAccount.inc:847
 #: personal/faxaccount/generic.tpl:24
@@ -553,11 +554,11 @@ msgstr "Aflever formaat"
 
 #: personal/faxaccount/class_gofaxAccount.inc:849
 msgid "Alternate fax number"
-msgstr ""
+msgstr "Alternatief fax nummer"
 
 #: personal/faxaccount/class_gofaxAccount.inc:850
 msgid "Enable/Disable fax"
-msgstr ""
+msgstr "Inschakelen/Uitschakelen fax"
 
 #: personal/faxaccount/class_gofaxAccount.inc:851
 #: personal/faxaccount/generic.tpl:73
@@ -571,7 +572,7 @@ msgstr "Lever Fax af op printer"
 
 #: personal/faxaccount/generic.tpl:13
 msgid "Multiple edit"
-msgstr ""
+msgstr "Meerdere wijzigingen"
 
 #: personal/faxaccount/generic.tpl:29
 msgid "Specify the GOfax communication language for fax to mail gateway"

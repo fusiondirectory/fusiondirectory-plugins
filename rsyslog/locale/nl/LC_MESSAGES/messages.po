@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Kenny Tordeurs <tordeurskenny@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
 "Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
 "POT-Creation-Date: 2012-05-26 17:33+0200\n"
-"PO-Revision-Date: 2012-05-26 16:33+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Dutch (http://www.transifex.net/projects/p/FusionDirectory/language/nl/)\n"
+"PO-Revision-Date: 2012-08-07 14:45+0000\n"
+"Last-Translator: Kenny Tordeurs <tordeurskenny@gmail.com>\n"
+"Language-Team: Dutch (http://www.transifex.com/projects/p/FusionDirectory/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,21 +20,21 @@ msgstr ""
 
 #: admin/systems/services/rsyslog/rSyslogServer.tpl:1
 msgid "Syslog logging"
-msgstr ""
+msgstr "Syslog logging"
 
 #: admin/systems/services/rsyslog/rSyslogServer.tpl:7
 msgid "Server provides a syslog mysql database"
-msgstr ""
+msgstr "Server bezorgt een syslog mysql databank"
 
 #: admin/systems/services/rsyslog/rSyslogServer.tpl:10
 #: admin/systems/services/rsyslog/class_rSyslogServer.inc:104
 #: admin/systems/services/rsyslog/class_rSyslogServer.inc:203
 msgid "Database"
-msgstr ""
+msgstr "Databank"
 
 #: admin/systems/services/rsyslog/rSyslogServer.tpl:19
 msgid "Database user"
-msgstr ""
+msgstr "Databank gebruiker"
 
 #: admin/systems/services/rsyslog/rSyslogServer.tpl:28
 #: admin/systems/services/rsyslog/class_rSyslogServer.inc:107
@@ -49,7 +50,7 @@ msgstr "Loggen"
 #: admin/systems/services/rsyslog/class_rSyslogServer.inc:194
 #: admin/systems/services/rsyslog/class_rSyslogServer.inc:195
 msgid "Logging service"
-msgstr ""
+msgstr "Logging dienst"
 
 #: admin/systems/services/rsyslog/class_rSyslogServer.inc:101
 #: admin/systems/services/rsyslog/class_rSyslogServer.inc:204
@@ -66,7 +67,7 @@ msgstr "Services"
 
 #: admin/systems/services/rsyslog/class_rSyslogServer.inc:206
 msgid "Allow view of entries on this server"
-msgstr ""
+msgstr "Sta bezichting van inzendingen toe op deze server"
 
 #: addons/rsyslog/rSyslog.tpl:2
 msgid "Filter"
@@ -82,15 +83,15 @@ msgstr "Host"
 
 #: addons/rsyslog/rSyslog.tpl:23 addons/rsyslog/rSyslog.tpl:90
 msgid "Severity"
-msgstr ""
+msgstr "Ernstigheidsgraad"
 
 #: addons/rsyslog/rSyslog.tpl:32
 msgid "From"
-msgstr ""
+msgstr "Van"
 
 #: addons/rsyslog/rSyslog.tpl:42
 msgid "till"
-msgstr ""
+msgstr "tot"
 
 #: addons/rsyslog/rSyslog.tpl:52 addons/rsyslog/rSyslog.tpl:56
 msgid "Search"
@@ -110,11 +111,11 @@ msgstr "Bron"
 
 #: addons/rsyslog/rSyslog.tpl:80
 msgid "Header"
-msgstr ""
+msgstr "Header"
 
 #: addons/rsyslog/rSyslog.tpl:85
 msgid "Facility"
-msgstr ""
+msgstr "Faciliteit"
 
 #: addons/rsyslog/rSyslog.tpl:95
 msgid "Message"
@@ -122,15 +123,15 @@ msgstr "Bericht"
 
 #: addons/rsyslog/main.inc:48 addons/rsyslog/class_rsyslog.inc:26
 msgid "System logs"
-msgstr ""
+msgstr "Systeemlogs"
 
 #: addons/rsyslog/class_rsyslog.inc:27
 msgid "This plugin allow to View system logs"
-msgstr ""
+msgstr "Deze plugin staat toe om systeemlogs te bekijken"
 
 #: addons/rsyslog/class_rsyslog.inc:125 addons/rsyslog/class_rsyslog.inc:131
 msgid "-"
-msgstr ""
+msgstr "-"
 
 #: addons/rsyslog/class_rsyslog.inc:127 addons/rsyslog/class_rsyslog.inc:133
 msgid "All"
@@ -139,24 +140,24 @@ msgstr "Alle"
 #: addons/rsyslog/class_rsyslog.inc:159
 #, php-format
 msgid "%s entries match the filter"
-msgstr ""
+msgstr "%s inzendingen komen overeen met de filter"
 
 #: addons/rsyslog/class_rsyslog.inc:179
 #, php-format
 msgid "The selected server '%s' does not exists!"
-msgstr ""
+msgstr "De geselecteerde server '%s' bestaat niet!"
 
 #: addons/rsyslog/class_rsyslog.inc:331
 msgid "Emergency"
-msgstr ""
+msgstr "Noodgeval"
 
 #: addons/rsyslog/class_rsyslog.inc:332
 msgid "Alert"
-msgstr ""
+msgstr "Alert"
 
 #: addons/rsyslog/class_rsyslog.inc:333
 msgid "Critical"
-msgstr ""
+msgstr "Kritiek"
 
 #: addons/rsyslog/class_rsyslog.inc:335
 msgid "Warning"
@@ -164,60 +165,60 @@ msgstr "Waarschuwing"
 
 #: addons/rsyslog/class_rsyslog.inc:336
 msgid "Notice"
-msgstr ""
+msgstr "Bericht"
 
 #: addons/rsyslog/class_rsyslog.inc:337
 msgid "Informational"
-msgstr ""
+msgstr "Informatief"
 
 #: addons/rsyslog/class_rsyslog.inc:338
 msgid "Debug"
-msgstr ""
+msgstr "Debug"
 
 #: addons/rsyslog/class_rsyslog.inc:344 addons/rsyslog/class_rsyslog.inc:379
 #, php-format
 msgid "Unknown (%s)"
-msgstr ""
+msgstr "Onbekend (%s)"
 
 #: addons/rsyslog/class_rsyslog.inc:350
 msgid "Kernel"
-msgstr ""
+msgstr "Kernel"
 
 #: addons/rsyslog/class_rsyslog.inc:351
 msgid "User level"
-msgstr ""
+msgstr "Gebruikerslevel"
 
 #: addons/rsyslog/class_rsyslog.inc:352
 msgid "Mail system"
-msgstr ""
+msgstr "Mailsysteem"
 
 #: addons/rsyslog/class_rsyslog.inc:353
 msgid "System daemon"
-msgstr ""
+msgstr "Systeemdaemon"
 
 #: addons/rsyslog/class_rsyslog.inc:354 addons/rsyslog/class_rsyslog.inc:360
 msgid "Security"
-msgstr ""
+msgstr "Veiligheid"
 
 #: addons/rsyslog/class_rsyslog.inc:355
 msgid "Internal"
-msgstr ""
+msgstr "Intern"
 
 #: addons/rsyslog/class_rsyslog.inc:356
 msgid "Printing"
-msgstr ""
+msgstr "Printen"
 
 #: addons/rsyslog/class_rsyslog.inc:357
 msgid "News"
-msgstr ""
+msgstr "Nieuws"
 
 #: addons/rsyslog/class_rsyslog.inc:358
 msgid "UUCP"
-msgstr ""
+msgstr "UUCP"
 
 #: addons/rsyslog/class_rsyslog.inc:359
 msgid "Cron"
-msgstr ""
+msgstr "Cron"
 
 #: addons/rsyslog/class_rsyslog.inc:361
 msgid "FTP"
@@ -225,16 +226,16 @@ msgstr "Ftp"
 
 #: addons/rsyslog/class_rsyslog.inc:362
 msgid "NTP"
-msgstr ""
+msgstr "NTP"
 
 #: addons/rsyslog/class_rsyslog.inc:363
 msgid "Log audit"
-msgstr ""
+msgstr "Log audit"
 
 #: addons/rsyslog/class_rsyslog.inc:364
 msgid "Log alert"
-msgstr ""
+msgstr "Log alert"
 
 #: addons/rsyslog/class_rsyslog.inc:365
 msgid "Clock"
-msgstr ""
+msgstr "Klok"
