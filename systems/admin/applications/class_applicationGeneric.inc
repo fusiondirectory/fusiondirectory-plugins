@@ -334,8 +334,6 @@ class application extends plugin
             msg_dialog::display(_("Error"), msgPool::incorrectUpload(_("no read permission")), ERROR_DIALOG);
           }
 
-          $size = $im->getSize();
-
           if (!$im->resizeImage(48, 48, Imagick::FILTER_GAUSSIAN, 0)) {
             msg_dialog::display(_("Error"), msgPool::incorrectUpload(_("cannot resize image")), ERROR_DIALOG);
           }
