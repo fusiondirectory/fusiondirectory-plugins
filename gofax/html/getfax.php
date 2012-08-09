@@ -84,24 +84,26 @@ if (!isset($_GET['download'])) {
   /* display picture */
   header("Content-type: image/png");
 
+  $im = new Imagick();
+
   /* Loading image */
-  if (!$handle = imagick_blob2image($data)) {
+  if (!$im->readImage($data)) {
     new log("view", "faxreport/faxreport", "", array(), "Cannot load fax image");
   }
 
-  /* Converting image to PNG */
-  if (!imagick_convert($handle, "PNG")) {
-    new log("view", "faxreport/faxreport", "", array(), "Cannot convert fax image to png");
+  /* Resizing image to 420x594 and blur */
+  if (!$im->resizeImage(420, 594, Imagick::FILTER_GAUSSIAN, 1)) {
+    msg_dialog::display(_("Error"), _("cannot resize fax image"), ERROR_DIALOG);
   }
 
-  /* Resizing image to 420x594 and blur */
-  if (!imagick_resize($handle, 420, 594, IMAGICK_FILTER_GAUSSIAN, 1)) {
-    new log("view", "faxreport/faxreport", "", array(), "Cannot resize fax image");
+  /* Converting image to PNG */
+  if (!$im->setImageFormat('PNG')) {
+    msg_dialog::display(_("Error"), _("cannot convert fax image to png"), ERROR_DIALOG);
   }
 
   /* Creating binary Code for the Image */
-  if (!$data = imagick_image2blob($handle)) {
-    new log("view", "faxreport/faxreport", "", array(), "Reading fax image image failed");
+  if (!$data = $im->getImageBlob()) {
+    msg_dialog::display(_("Error"), _("Reading fax image image failed"), ERROR_DIALOG);
   }
 
 } else {
