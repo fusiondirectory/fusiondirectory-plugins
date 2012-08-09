@@ -336,35 +336,39 @@ class application extends plugin
       }
 
       /* Check for picture upload */
-      if (isset($_FILES['picture_file']['name']) && $_FILES['picture_file']['name'] != ""){
+      if (isset($_FILES['picture_file']['name']) && $_FILES['picture_file']['name'] != "") {
+
 
         if (!is_uploaded_file($_FILES['picture_file']['tmp_name'])) {
           msg_dialog::display(_("Error"), msgPool::incorrectUpload(), ERROR_DIALOG);
+        } elseif (class_exists('Imagick')) {
+          $im = new Imagick();
+          if (!$im->readImage($_FILES['picture_file']['tmp_name'])) {
+            msg_dialog::display(_("Error"), msgPool::incorrectUpload(_("no read permission")), ERROR_DIALOG);
+          }
+
+          $size = $im->getSize();
+
+          if (!$im->resizeImage(48, 48, Imagick::FILTER_GAUSSIAN, 0)) {
+            msg_dialog::display(_("Error"), msgPool::incorrectUpload(_("cannot resize image")), ERROR_DIALOG);
+          }
+
+          /* Converting image to JPEG */
+          if (!$im->setImageFormat('PNG')) {
+            msg_dialog::display(_("Error"), msgPool::incorrectUpload(_("cannot convert image")), ERROR_DIALOG);
+          }
+
+          if (!$im->writeImage($handle,$_FILES['picture_file']['tmp_name'])) {
+            msg_dialog::display(_("Error"), msgPool::incorrectUpload(sprintf(_("cannot save image to '%s'"), $_FILES['picture_file']['tmp_name'])), ERROR_DIALOG);
+          }
+
+          /* Activate new picture */
+          $this->set_picture($_FILES['picture_file']['tmp_name']);
+        } else {
+            msg_dialog::display(_("Error"),
+                    _("Cannot save user picture, FusionDirectory requires the package 'php5-imagick' to be installed!"),
+                    ERROR_DIALOG);
         }
-
-        /* Load the new uploaded Photo */
-        if(!$handle  =  imagick_ReadImage($_FILES['picture_file']['tmp_name'])){
-          msg_dialog::display(_("Error"), msgPool::incorrectUpload(_("no read permission")), ERROR_DIALOG);
-        }
-
-        /* Resizing image to 147x200 and blur */
-        if(!imagick_resize($handle,48,48,IMAGICK_FILTER_GAUSSIAN,0)){
-          msg_dialog::display(_("Error"), msgPool::incorrectUpload(_("cannot resize image")), ERROR_DIALOG);
-        }
-
-        /* Converting image to JPEG */
-        if(!imagick_convert($handle,"PNG")) {
-          msg_dialog::display(_("Error"), msgPool::incorrectUpload(_("cannot convert image")), ERROR_DIALOG);
-        }
-
-        if(!imagick_writeimage($handle,$_FILES['picture_file']['tmp_name'])){
-          msg_dialog::display(_("Error"), msgPool::incorrectUpload(sprintf(_("cannot save image to '%s'"), $_FILES['picture_file']['tmp_name'])), ERROR_DIALOG);
-        }
-
-        imagick_free($handle);
-
-        /* Activate new picture */
-        $this->set_picture($_FILES['picture_file']['tmp_name']);
       }
 
       if(!$this->is_release()){
