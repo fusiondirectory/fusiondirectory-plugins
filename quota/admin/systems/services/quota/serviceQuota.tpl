@@ -32,7 +32,7 @@
         {t}blocksize{/t}<br>
       </td>
       <td style="vertical-align: top;">
-        <input name="quota_device_blocksize" id="quota_device_blocksize" type="text" {popup text=$HELP_get_blocksize} >
+        <input name="quota_device_blocksize" id="quota_device_blocksize" type="text">
       </td>
 
     </tr>
