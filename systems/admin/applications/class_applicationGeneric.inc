@@ -343,7 +343,7 @@ class application extends plugin
             msg_dialog::display(_("Error"), msgPool::incorrectUpload(_("cannot convert image")), ERROR_DIALOG);
           }
 
-          if (!$im->writeImage($handle,$_FILES['picture_file']['tmp_name'])) {
+          if (!$im->writeImage($_FILES['picture_file']['tmp_name'])) {
             msg_dialog::display(_("Error"), msgPool::incorrectUpload(sprintf(_("cannot save image to '%s'"), $_FILES['picture_file']['tmp_name'])), ERROR_DIALOG);
           }
 
