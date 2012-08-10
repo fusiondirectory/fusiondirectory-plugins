@@ -4,14 +4,15 @@
 # 
 # Translators:
 #  Benoit Mortier <benoit.mortier@opensides.be>, 2005, 2006, 2007, 2008, 2011.
+#   <contact@fusiondirectory.org>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
 "Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
 "POT-Creation-Date: 2012-05-26 17:33+0200\n"
-"PO-Revision-Date: 2012-05-26 16:37+0000\n"
+"PO-Revision-Date: 2012-08-09 18:30+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: French (http://www.transifex.net/projects/p/FusionDirectory/language/fr/)\n"
+"Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -44,11 +45,11 @@ msgstr "Gérer l'annuaire"
 
 #: addons/ldapmanager/class_import.inc:26
 msgid "LDIF import"
-msgstr ""
+msgstr "Import ldif"
 
 #: addons/ldapmanager/class_import.inc:27
 msgid "This plugin allow the import of ldif data into the ldap tree"
-msgstr ""
+msgstr "Cette extension vous permet d'importer des ldif dans votre annuaire ldap"
 
 #: addons/ldapmanager/class_import.inc:72
 #: addons/ldapmanager/class_export.inc:106
@@ -123,7 +124,7 @@ msgid ""
 " containing Semi-Colon Seperated Values. The administrator can decide which "
 "columns should be transfered to which attribute. Note that you must have at "
 "least the GIVENNAME and SURNAME set."
-msgstr ""
+msgstr "L'extension CSV permet de générer des comptes utilisateurs depuis un fichier contenant des valeurs séparées par des points virgules. L'administrateur peut choisir quelle colonnes doivent être transférées vers quel attribut. Notez que vous devez au moins fournir le GIVENNAME et SURENAME."
 
 #: addons/ldapmanager/contentcsv.tpl:10
 msgid "Select CSV file to import"
@@ -166,7 +167,7 @@ msgstr "Exportation LDIF"
 
 #: addons/ldapmanager/class_export.inc:27
 msgid "This plugin allow the export of the ldap tree in ldif format"
-msgstr ""
+msgstr "Cette extension vous permet d'exporter des ldif dans votre annuaire ldap"
 
 #: addons/ldapmanager/class_export.inc:90
 #, php-format
@@ -185,7 +186,7 @@ msgstr "Échec de la création d'une exportation de votre annuaire ldap, l'erreu
 
 #: addons/ldapmanager/class_ldif.inc:27
 msgid "This plugin allows the management of the ldap tree"
-msgstr ""
+msgstr "Cette extension vous permet de gèrer votre annuaire ldap"
 
 #: addons/ldapmanager/class_ldif.inc:55 addons/ldapmanager/class_ldif.inc:56
 #: addons/ldapmanager/class_ldif.inc:61
@@ -230,7 +231,7 @@ msgstr "Importation réussie"
 
 #: addons/ldapmanager/class_csvimport.inc:27
 msgid "This plugin allow to export the ldap three to csv format"
-msgstr ""
+msgstr "Cette extension vous permet d'exporter votre annuaire ldap au format csv"
 
 #: addons/ldapmanager/class_csvimport.inc:128
 msgid "You've no permission to import CSV files."
@@ -238,7 +239,7 @@ msgstr "Vous n'avez pas les droits nécessaires pour effectuer des importations 
 
 #: addons/ldapmanager/class_csvimport.inc:182
 msgid "Need at least 'sn' and 'givenName' to create users!"
-msgstr ""
+msgstr "J'ai besoin d'un 'sn','givenName' pour créer des utilisateurs."
 
 #: addons/ldapmanager/class_csvimport.inc:183
 #: addons/ldapmanager/class_csvimport.inc:203
@@ -249,7 +250,7 @@ msgstr "échec"
 #: addons/ldapmanager/class_csvimport.inc:202
 #, php-format
 msgid "Failed to generate 'uid' for entry '%s'!"
-msgstr ""
+msgstr "La création de l'uid pour l'entrée '%s' à échoué  !"
 
 #: addons/ldapmanager/class_csvimport.inc:263
 msgid "ok"
