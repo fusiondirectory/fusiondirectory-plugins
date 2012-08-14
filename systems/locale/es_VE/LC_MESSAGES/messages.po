@@ -4,13 +4,14 @@
 # 
 # Translators:
 #  Alejandro Escanero Blanco <aescanero@gmail.com>, 2008, 2010.
+#   <lars.gold@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
 "Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
 "POT-Creation-Date: 2012-05-26 17:33+0200\n"
-"PO-Revision-Date: 2012-07-30 21:33+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"PO-Revision-Date: 2012-08-13 20:40+0000\n"
+"Last-Translator: lars_g <lars.gold@gmail.com>\n"
 "Language-Team: Spanish (Venezuela) (http://www.transifex.com/projects/p/FusionDirectory/language/es_VE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -207,12 +208,12 @@ msgstr "¡Serie"
 #: admin/devices/class_deviceGeneric.inc:130
 #: admin/devices/deviceGeneric.tpl:70
 msgid "Product-ID"
-msgstr ""
+msgstr "ID-Producto"
 
 #: admin/devices/class_deviceGeneric.inc:133
 #: admin/devices/deviceGeneric.tpl:61
 msgid "Vendor-ID"
-msgstr ""
+msgstr "ID-Fabricante"
 
 #: admin/devices/class_deviceGeneric.inc:170
 #: admin/devices/class_deviceGeneric.inc:196
@@ -387,7 +388,7 @@ msgstr "Aviso"
 msgid ""
 "Please double check if you really want to do this since there is no way for "
 "FusionDirectory to get your data back."
-msgstr ""
+msgstr "Por favor verifique que realmente desea hacer esto ya que FusionDirectory no tiene forma de recuperar la data"
 
 #: admin/devices/remove.tpl:10 admin/mimetypes/remove.tpl:10
 #: admin/systems/remove.tpl:10 admin/applications/remove.tpl:10
@@ -1372,7 +1373,7 @@ msgid ""
 "create a faked server entry to provide FusionDirectory with some "
 "informations. Other network components may be used for Nagios setups to "
 "create component dependencies."
-msgstr ""
+msgstr "Los terminales y estaciones de trabajo Linux son creadas automáticamente en el arranque. Por esta razón solo puede crear plantillas para un árbol especifico. Los servidores son normalmente agregados automáticamente también, pero en algunos casos especiales podría tener que crear una entrada falsa para el servidor para proveer alguna información a FusionDirectory. Otros componentes de red pueden ser usados para que las instalaciones de Nagios creen dependencias de componentes."
 
 #: admin/systems/goto/chooser.tpl:7
 msgid "Linux thin client template"
@@ -1798,7 +1799,7 @@ msgstr "Administradores"
 
 #: admin/systems/goto/gencd.tpl:2
 msgid "CD-Install-Image generation"
-msgstr ""
+msgstr "Creación de Imagen-CD-Instalación"
 
 #: admin/systems/goto/gencd.tpl:5
 msgid ""
@@ -1809,7 +1810,7 @@ msgstr "Esta opción le permite generar imágenes de instalación de CD FAI para
 
 #: admin/systems/goto/gencd.tpl:9
 msgid "Create ISO-Image"
-msgstr ""
+msgstr "Crear Imagen-ISO"
 
 #: admin/systems/goto/class_selectUserToPrinterDialog.inc:167
 msgid "Please select a printer or press cancel."
@@ -1887,7 +1888,7 @@ msgid ""
 "FusionDirectory. You can integrate this device into your running DHCP/DNS "
 "infrastructure by submitting this form. The device entry will disappear from"
 " the list of the systems and move to the DNS/DHCP configuration."
-msgstr ""
+msgstr "El dispositivo actual fue detectado mediante el monitor ARP utilizado por FusionDirectory. Puede integrar este dispositivo en su infraestructura DNS/DHCP actual enviando este formulario. La entrada del dispositivo desaparecerá de la lista de sistemas y se moverá a la configuración DNS/DHCP."
 
 #: admin/systems/goto/ArpNewDevice.tpl:9
 msgid "DNS name"
@@ -1939,7 +1940,7 @@ msgstr "El repositorio FAI '%s' no es accesible en el espejo '%s' - ¡Configuran
 
 #: admin/systems/goto/class_workstationStartup.inc:286
 msgid "Please select a 'FAI server' or remove the 'FAI profile'."
-msgstr ""
+msgstr "Por favor seleccione un 'Servidor FAI' o elimine el 'perfil FAI'."
 
 #: admin/systems/goto/class_workstationStartup.inc:975
 msgid "'repositoryBranchHook' returned no result!"
@@ -1998,7 +1999,7 @@ msgstr "Asignación de objetos FAI desactivada. No puede usar esta extensión ha
 
 #: admin/systems/goto/workstationStartup.tpl:66
 msgid "Argonaut server not present"
-msgstr ""
+msgstr "Servidor Argonaut no encontrado"
 
 #: admin/systems/goto/workstationStartup.tpl:67
 msgid "FAI settings cannot be modified"
@@ -2006,7 +2007,7 @@ msgstr "Los parámetros de FAI no pueden ser modificados"
 
 #: admin/systems/goto/workstationStartup.tpl:70
 msgid "Verify if Argonaut Server is running correctly."
-msgstr ""
+msgstr "Verifique si el servidor Argonaut está corriendo correctamente."
 
 #: admin/systems/goto/workstationStartup.tpl:71
 msgid "retry"
@@ -2020,7 +2021,7 @@ msgstr "Servidor FAI"
 #: admin/systems/goto/workstationStartup.tpl:109
 #: admin/systems/goto/workstationStartup.tpl:158
 msgid "Assigned FAI profile"
-msgstr ""
+msgstr "Perfil FAI asignado"
 
 #: admin/systems/goto/workstationStartup.tpl:142
 msgid "set"
@@ -2319,7 +2320,7 @@ msgstr "Escritorio remoto"
 
 #: admin/systems/goto/class_terminalService.inc:741
 msgid "Auto-Sync"
-msgstr ""
+msgstr "Auto-Sincronizar"
 
 #: admin/systems/goto/class_terminalService.inc:743
 #: admin/systems/goto/class_terminalService.inc:749
@@ -2428,7 +2429,7 @@ msgstr "bit/s"
 
 #: admin/systems/network.tpl:1
 msgid "Network  settings"
-msgstr ""
+msgstr "Opciones de red"
 
 #: admin/systems/network.tpl:9 addons/goto/goto_import_file.tpl:5
 msgid "IP-address"
@@ -2654,7 +2655,7 @@ msgstr "Introducir contraseña"
 
 #: admin/systems/class_termDNS.inc:297
 msgid "NOT IMPLEMENTED"
-msgstr ""
+msgstr "NO IMPLEMENTADO"
 
 #: admin/systems/class_termDNS.inc:434
 msgid "Not matching"
@@ -2663,12 +2664,12 @@ msgstr "No mostrar los coincidentes"
 #: admin/systems/class_termDNS.inc:588
 #, php-format
 msgid "Was not able to contact argonaut server: %s"
-msgstr ""
+msgstr "No fue posible conectar al servidor Argonaut: %s"
 
 #: admin/systems/class_termDNS.inc:595
 #, php-format
 msgid "Was not able to launch ldap2zone: %s"
-msgstr ""
+msgstr "No fue posible lanzar ldap2zone: %s"
 
 #: admin/systems/class_termDNS.inc:619
 #, php-format
@@ -2765,7 +2766,7 @@ msgid ""
 "This includes all account data, system access rules, imap settings, etc. for"
 " this user. Please double check if your really want to do this since there "
 "is no way for FusionDirectory to get your data back."
-msgstr ""
+msgstr "Esto incluye toda la data de la cuenta, reglas de acceso de sistema, opciones imap, etc. para este usuario. Por favor verifique que realmente desea hacer esto ya que FusionDirectory no tiene forma de recuperar la data"
 
 #: admin/systems/paste_generic.tpl:14
 msgid "workstation name"
@@ -2858,7 +2859,7 @@ msgstr "Sistemas"
 
 #: admin/systems/class_systemManagement.inc:60
 msgid "Systems Management"
-msgstr ""
+msgstr "Administración de Sistemas"
 
 #: admin/systems/class_systemManagement.inc:173
 #: admin/systems/class_systemManagement.inc:269

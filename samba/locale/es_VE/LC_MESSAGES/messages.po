@@ -4,13 +4,14 @@
 # 
 # Translators:
 #  Alejandro Escanero Blanco <aescanero@gmail.com>, 2008, 2010.
+#   <lars.gold@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
 "Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
 "POT-Creation-Date: 2012-05-26 17:33+0200\n"
-"PO-Revision-Date: 2012-07-30 21:23+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"PO-Revision-Date: 2012-08-13 20:21+0000\n"
+"Last-Translator: lars_g <lars.gold@gmail.com>\n"
 "Language-Team: Spanish (Venezuela) (http://www.transifex.com/projects/p/FusionDirectory/language/es_VE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -177,7 +178,7 @@ msgstr "Opciones de acceso"
 
 #: personal/samba/samba3.tpl:325 personal/samba/class_sambaAccount.inc:1195
 msgid "Enforce password change"
-msgstr ""
+msgstr "Forzar cambio de clave"
 
 #: personal/samba/samba3.tpl:336
 msgid "The password never expires"
@@ -193,7 +194,7 @@ msgstr "Bloquear cuenta samba"
 
 #: personal/samba/samba3.tpl:369
 msgid "Cannot change password"
-msgstr ""
+msgstr "No puede cambiar la clave"
 
 #: personal/samba/samba3.tpl:388 personal/samba/class_sambaAccount.inc:866
 #: personal/samba/class_sambaAccount.inc:868
@@ -236,7 +237,7 @@ msgstr "Samba"
 
 #: personal/samba/class_sambaAccount.inc:27
 msgid "This store the sambaAccount into the ldap tree"
-msgstr ""
+msgstr "Almacenar la cuenta Samba en el árbol ldap"
 
 #: personal/samba/class_sambaAccount.inc:268
 msgid "POSIX"
@@ -289,7 +290,7 @@ msgstr "La nueva contraseña está caducada desde %s, por política de dominio."
 #: personal/samba/class_sambaAccount.inc:527
 #, php-format
 msgid "The password is valid till %s."
-msgstr ""
+msgstr "La clave es valida hasta %s."
 
 #: personal/samba/class_sambaAccount.inc:640
 #: personal/samba/class_sambaAccount.inc:646
@@ -461,7 +462,7 @@ msgstr "Ruta inicial"
 
 #: personal/samba/class_sambaAccount.inc:900
 msgid "The windows user manager allows eight clients at maximum!"
-msgstr ""
+msgstr "El manejador de usuarios de Windows permite un máximo de ocho clientes!"
 
 #: personal/samba/class_sambaAccount.inc:919
 msgid "Information"
@@ -511,7 +512,7 @@ msgstr "La cuenta expirará después de"
 
 #: personal/samba/class_sambaAccount.inc:1196
 msgid "Disallow password change"
-msgstr ""
+msgstr "Prohibir el cambio de clave"
 
 #: personal/samba/class_sambaAccount.inc:1198
 msgid "Password never expires"
