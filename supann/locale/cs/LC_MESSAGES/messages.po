@@ -1,23 +1,3 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# 
-# Translators:
-#   <pavel.borecki@gmail.com>, 2012.
-msgid ""
-msgstr ""
-"Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
-"POT-Creation-Date: 2012-05-26 17:33+0200\n"
-"PO-Revision-Date: 2012-06-01 08:55+0000\n"
-"Last-Translator: pavelb <pavel.borecki@gmail.com>\n"
-"Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/FusionDirectory/language/cs_CZ/)\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Language: cs_CZ\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2\n"
-
 #: admin/supannStructures/class_etablissement.inc:97
 #: admin/supannStructures/class_etablissement.inc:111
 #: admin/supannStructures/class_etablissement.inc:166
@@ -29,7 +9,7 @@ msgstr ""
 #: admin/supannStructures/class_entite.inc:211
 #: personal/supann/class_supannAccount.inc:850
 msgid "LDAP error"
-msgstr "chyba LDAPu"
+msgstr ""
 
 #: admin/supannStructures/class_etablissement.inc:234
 #: admin/supannStructures/class_etablissement.inc:236
@@ -40,7 +20,7 @@ msgstr "chyba LDAPu"
 #: admin/supannStructures/class_entite.inc:272
 #: admin/supannStructures/supannStructures-filter.tpl:15
 msgid "Name"
-msgstr "název"
+msgstr ""
 
 #: admin/supannStructures/class_etablissement.inc:318
 #: admin/supannStructures/class_etablissement.inc:319
@@ -73,7 +53,7 @@ msgstr ""
 #: admin/supannStructures/supannStructures-list.xml:68
 #: admin/supannStructures/entite.tpl:42
 msgid "Description"
-msgstr "popis"
+msgstr ""
 
 #: admin/supannStructures/class_etablissement.inc:333
 #: admin/supannStructures/etablissement.tpl:42
@@ -110,17 +90,17 @@ msgstr ""
 
 #: admin/supannStructures/remove.tpl:2
 msgid "Warning"
-msgstr "varování"
+msgstr ""
 
 #: admin/supannStructures/remove.tpl:6
 msgid ""
 "This may be a primary user group. Please double check if you really want to "
 "do this since there is no way for FusionDirectory to get your data back."
-msgstr "Toto může být hlavní skupina pro některé uživatelské účty. Prosím dobře zvažte, zda to opravdu chcete udělat, protože pak už nebude možné vzít provedené změny zpět."
+msgstr ""
 
 #: admin/supannStructures/remove.tpl:10
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr "Tedy – pokud jste si jist(a), stiskněte 'smazat'. V opačném případě operaci zrušte pomocí 'zrušit'."
+msgstr ""
 
 #: admin/supannStructures/class_supannStructuresManagement.inc:23
 msgid "supann Structures"
@@ -140,7 +120,7 @@ msgstr ""
 
 #: admin/supannStructures/etablissement.tpl:4
 msgid "Properties"
-msgstr "vlastnosti"
+msgstr ""
 
 #: admin/supannStructures/etablissement.tpl:9
 msgid "Set this etablissement as root one"
@@ -157,40 +137,40 @@ msgstr ""
 #: admin/supannStructures/etablissement.tpl:96
 #: admin/supannStructures/etablissement.tpl:100
 msgid "Location"
-msgstr "umístění"
+msgstr ""
 
 #: admin/supannStructures/etablissement.tpl:103
 msgid "Location of this subtree"
-msgstr "umístění tohoto podstromu"
+msgstr ""
 
 #: admin/supannStructures/etablissement.tpl:108
 msgid "Address"
-msgstr "adresa"
+msgstr ""
 
 #: admin/supannStructures/etablissement.tpl:111
 msgid "Postal address of this subtree"
-msgstr "poštovní adresa tohoto podstromu"
+msgstr ""
 
 #: admin/supannStructures/etablissement.tpl:115
 msgid "Phone"
-msgstr "telefon"
+msgstr ""
 
 #: admin/supannStructures/etablissement.tpl:118
 msgid "Base telephone number of this subtree"
-msgstr "základ telefonního čísla tohoto podstromu"
+msgstr ""
 
 #: admin/supannStructures/etablissement.tpl:123
 #: admin/supannStructures/entite.tpl:28
 msgid "Fax"
-msgstr "fax"
+msgstr ""
 
 #: admin/supannStructures/etablissement.tpl:126
 msgid "Base facsimile telephone number of this subtree"
-msgstr "základ faxového čísla tohoto podstromu"
+msgstr ""
 
 #: admin/supannStructures/class_entite.inc:263
 msgid "Generic"
-msgstr "obecné"
+msgstr ""
 
 #: admin/supannStructures/class_entite.inc:264
 msgid "supann Entite Settings"
@@ -198,39 +178,39 @@ msgstr ""
 
 #: admin/supannStructures/class_entite.inc:269
 msgid "Groups"
-msgstr "skupiny"
+msgstr ""
 
 #: admin/supannStructures/class_entite.inc:274
 msgid "Base"
-msgstr "základ"
+msgstr ""
 
 #: admin/supannStructures/class_entite.inc:276
 msgid "GID"
-msgstr "GID"
+msgstr ""
 
 #: admin/supannStructures/class_entite.inc:278
 msgid "Samba group type"
-msgstr "typ skupiny Samby"
+msgstr ""
 
 #: admin/supannStructures/class_entite.inc:279
 msgid "Samba domain name"
-msgstr "název domény Samba"
+msgstr ""
 
 #: admin/supannStructures/class_entite.inc:280
 msgid "System trust"
-msgstr "systém důvěryhodnosti"
+msgstr ""
 
 #: admin/supannStructures/class_entite.inc:281
 msgid "Phone pickup group"
-msgstr "skupina zvedající telefony"
+msgstr ""
 
 #: admin/supannStructures/class_entite.inc:282
 msgid "Nagios group"
-msgstr "skupinou pro Nagios"
+msgstr ""
 
 #: admin/supannStructures/class_entite.inc:284
 msgid "Group member"
-msgstr "člen skupiny"
+msgstr ""
 
 #: admin/supannStructures/supannStructures-list.xml:11
 msgid "List of Supann Structures"
@@ -257,20 +237,20 @@ msgstr ""
 
 #: admin/supannStructures/supannStructures-list.xml:78
 msgid "Actions"
-msgstr "akce"
+msgstr ""
 
 #: admin/supannStructures/supannStructures-list.xml:89
 msgid "Create"
-msgstr "vytvořit"
+msgstr ""
 
 #: admin/supannStructures/supannStructures-list.xml:123
 #: admin/supannStructures/supannStructures-list.xml:144
 msgid "Remove"
-msgstr "odebrat"
+msgstr ""
 
 #: admin/supannStructures/supannStructures-list.xml:135
 msgid "Edit"
-msgstr "upravit"
+msgstr ""
 
 #: admin/supannStructures/entite.tpl:7
 msgid "OU name"
@@ -278,7 +258,7 @@ msgstr ""
 
 #: admin/supannStructures/entite.tpl:13
 msgid "Administrative Information"
-msgstr "administrativní informace"
+msgstr ""
 
 #: admin/supannStructures/entite.tpl:14
 msgid "Supann Informations"
@@ -286,7 +266,7 @@ msgstr ""
 
 #: admin/supannStructures/entite.tpl:17
 msgid "Telephone"
-msgstr "telefon"
+msgstr ""
 
 #: admin/supannStructures/entite.tpl:19
 msgid "Type entite Supann"
@@ -298,7 +278,7 @@ msgstr ""
 
 #: admin/supannStructures/entite.tpl:34
 msgid "Postal Address"
-msgstr "poštovní adresa"
+msgstr ""
 
 #: admin/supannStructures/entite.tpl:36
 msgid "Supann parent entity code"
@@ -310,11 +290,11 @@ msgstr ""
 
 #: admin/supannStructures/supannStructures-filter.tpl:3
 msgid "Filter"
-msgstr "filtr"
+msgstr ""
 
 #: personal/supann/main.inc:137
 msgid "SUPANN settings"
-msgstr "nastavení pro SUPANN"
+msgstr ""
 
 #: personal/supann/class_supannAccount.inc:23
 msgid "supann"
@@ -328,7 +308,7 @@ msgstr ""
 #: personal/supann/class_supannAccount.inc:318
 #: personal/supann/class_supannAccount.inc:362
 msgid "None"
-msgstr "žádné"
+msgstr ""
 
 #: personal/supann/class_supannAccount.inc:318
 msgid ";"
@@ -336,39 +316,39 @@ msgstr ""
 
 #: personal/supann/class_supannAccount.inc:363
 msgid "1st year"
-msgstr "1. rok"
+msgstr ""
 
 #: personal/supann/class_supannAccount.inc:364
 msgid "2nd year"
-msgstr "2. rok"
+msgstr ""
 
 #: personal/supann/class_supannAccount.inc:365
 msgid "3rd year"
-msgstr "3. rok"
+msgstr ""
 
 #: personal/supann/class_supannAccount.inc:366
 msgid "4th year"
-msgstr "4. rok"
+msgstr ""
 
 #: personal/supann/class_supannAccount.inc:367
 msgid "5th year"
-msgstr "5. rok"
+msgstr ""
 
 #: personal/supann/class_supannAccount.inc:368
 msgid "6th year"
-msgstr "6. rok"
+msgstr ""
 
 #: personal/supann/class_supannAccount.inc:369
 msgid "7th year"
-msgstr "7. rok"
+msgstr ""
 
 #: personal/supann/class_supannAccount.inc:370
 msgid "8th year"
-msgstr "8. rok"
+msgstr ""
 
 #: personal/supann/class_supannAccount.inc:371
 msgid "9th year"
-msgstr "9. rok"
+msgstr ""
 
 #: personal/supann/class_supannAccount.inc:399
 #: personal/supann/class_supannAccount.inc:411
@@ -384,7 +364,7 @@ msgstr ""
 
 #: personal/supann/class_supannAccount.inc:463
 msgid "personal"
-msgstr "osobní"
+msgstr ""
 
 #: personal/supann/class_supannAccount.inc:604
 msgid "HELP_eduPersonPrincipalName"
@@ -456,15 +436,15 @@ msgstr ""
 
 #: personal/supann/class_supannAccount.inc:861
 msgid "SUPANN Informations"
-msgstr "informace SUPANN"
+msgstr ""
 
 #: personal/supann/class_supannAccount.inc:862
 msgid "SUPANN informatiosn management plugin"
-msgstr "zásuvný modul „správa informací SUPANN“"
+msgstr ""
 
 #: personal/supann/class_supannAccount.inc:866
 msgid "My account"
-msgstr "můj účet"
+msgstr ""
 
 #: personal/supann/class_supannAccount.inc:870 personal/supann/supann.tpl:186
 msgid "eduPersonAffiliation"
@@ -585,7 +565,7 @@ msgstr ""
 
 #: personal/supann/supann.tpl:6
 msgid "Common Profil"
-msgstr "společný profil"
+msgstr ""
 
 #: personal/supann/supann.tpl:12
 msgid "Additional Profil"
@@ -597,7 +577,7 @@ msgstr ""
 
 #: personal/supann/supann.tpl:68
 msgid "Contact"
-msgstr "kontakt"
+msgstr ""
 
 #: personal/supann/supann.tpl:148 personal/supann/supann.tpl:153
 msgid "Affectation"
@@ -609,11 +589,11 @@ msgstr ""
 
 #: personal/supann/supann.tpl:270
 msgid "Personal Profil"
-msgstr "osobní profil"
+msgstr ""
 
 #: personal/supann/supann.tpl:385
 msgid "Student Profil"
-msgstr "profil studenta"
+msgstr ""
 
 #: personal/supann/supann.tpl:428
 msgid "Student subscription"
