@@ -47,7 +47,7 @@ class goFaxServer extends goService {
   function goFaxServer(&$config,$dn)
   {
     goService::goService($config,$dn);
-    $this->DisplayName = _("FAX database");
+    $this->DisplayName = _("FAX service");
   }
 
 
@@ -76,7 +76,7 @@ class goFaxServer extends goService {
   function getListEntry()
   {
     $fields               = goService::getListEntry();
-    $fields['Message']    = _("FAX database configuration");
+    $fields['Message']    = _("FAX service");
     #$fields['AllowEdit']  = true;
     return($fields);
   }
@@ -105,8 +105,8 @@ class goFaxServer extends goService {
   static function plInfo()
   {
     return (array(
-          "plShortName"   => _("Fax database"),
-          "plDescription" => _("Fax database")." ("._("Services").")",
+          "plShortName"   => _("FAX service"),
+          "plDescription" => _("FAX service")." ("._("Services").")",
           "plSelfModify"  => FALSE,
           "plDepends"     => array(),
           "plPriority"    => 99,
