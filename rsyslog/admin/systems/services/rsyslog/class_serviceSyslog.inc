@@ -46,7 +46,7 @@ class serviceSyslog extends goService{
   function serviceSyslog(&$config,$dn)
   {
     goService::goService($config,$dn);
-    $this->DisplayName = _("Logging");
+    $this->DisplayName = _("Logs service");
     $this->initial_use_database = $this->use_database = isset($this->attrs['objectClass']) &&in_array("goLogDBServer", $this->attrs['objectClass']);
 
     if($this->use_database){
@@ -84,7 +84,7 @@ class serviceSyslog extends goService{
   function getListEntry()
   {
     $fields = goService::getListEntry();
-    $fields['Message']      = _("Logging service");
+    $fields['Message']      = _("Logs service");
     #$fields['AllowEdit']    = true;
     #$fields['AllowStart']   = FALSE;
     #$fields['AllowStop']    = FALSE;
@@ -191,8 +191,8 @@ class serviceSyslog extends goService{
   static function plInfo()
   {
     return (array(
-          "plShortName"   => _("Logging service"),
-          "plDescription" => _("Logging service")." ("._("Services").")",
+          "plShortName"   => _("Logs service"),
+          "plDescription" => _("Logs service")." ("._("Services").")",
           "plSelfModify"  => FALSE,
           "plDepends"     => array(),
           "plPriority"    => 99,
