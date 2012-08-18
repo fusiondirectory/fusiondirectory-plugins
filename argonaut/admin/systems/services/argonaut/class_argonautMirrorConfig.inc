@@ -62,7 +62,7 @@ class argonautMirrorConfig extends goService{
   function argonautMirrorConfig(&$config,$dn)
   {
     goService::goService($config,$dn);
-    $this->DisplayName = _("Argonaut mirror settings");
+    $this->DisplayName = _("Argonaut Mirror settings");
     foreach ($this->ldapBooleans as $ldapBoolean) {
       $this->$ldapBoolean = ($this->$ldapBoolean == "TRUE"); // conversion from LDAP format to PHP boolean
     }
@@ -95,7 +95,7 @@ class argonautMirrorConfig extends goService{
   function getListEntry()
   {
     $fields               = goService::getListEntry();
-    $fields['Message']    = _("Argonaut mirror settings");
+    $fields['Message']    = _("Argonaut Mirror settings");
     return $fields;
   }
 
@@ -163,8 +163,8 @@ class argonautMirrorConfig extends goService{
   static function plInfo()
   {
     return (array(
-          "plShortName"   => _("Argonaut mirror settings"),
-          "plDescription" => _("Argonaut mirror settings")." ("._("Services").")",
+          "plShortName"   => _("Argonaut Mirror settings"),
+          "plDescription" => _("Argonaut Mirror settings")." ("._("Services").")",
           "plSelfModify"  => FALSE,
           "plDepends"     => array(),
           "plPriority"    => 91,
