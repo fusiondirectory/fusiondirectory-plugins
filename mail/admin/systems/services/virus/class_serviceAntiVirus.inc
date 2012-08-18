@@ -62,7 +62,7 @@ class serviceAntiVirus extends goService{
   {
     /* Init class */
     goService::goService($config, $dn, $parent);
-    $this->DisplayName = _("Anti virus");
+    $this->DisplayName = _("Antivirus service");
 
     /* Get userinfo & acls */
     $this->ui = get_userinfo();
@@ -227,7 +227,7 @@ class serviceAntiVirus extends goService{
   {
     $fields       = goService::getListEntry();
     #$fields['AllowEdit']    = true;
-    $fields['Message']      = _("Anti virus");
+    $fields['Message']      = _("Antivirus service");
     return($fields);
   }
 
@@ -236,8 +236,8 @@ class serviceAntiVirus extends goService{
   static function plInfo()
   {
     return (array(
-          "plShortName"   => _("Anti virus"),
-          "plDescription" => _("Anti virus")." ("._("Services").")",
+          "plShortName"   => _("Antivirus service"),
+          "plDescription" => _("Antivirus service")." ("._("Services").")",
           "plSelfModify"  => FALSE,
           "plDepends"     => array(),
           "plPriority"    => 96,

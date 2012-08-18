@@ -59,7 +59,7 @@ class serviceSpamAssassin extends goService{
   {
     /* Init class */
     goService::goService($config, $dn, $parent);
-    $this->DisplayName = _("Spamassassin");
+    $this->DisplayName = _("Spamassassin service");
 
     /* Get userinfo & acls */
     $this->ui = get_userinfo();
@@ -337,7 +337,7 @@ class serviceSpamAssassin extends goService{
   function getListEntry()
   {
     $fields                 = goService::getListEntry();
-    $fields['Message']      = _("Spamassassin");
+    $fields['Message']      = _("Spamassassin service");
     #$fields['AllowEdit']    = true;
     return($fields);
   }
@@ -346,8 +346,8 @@ class serviceSpamAssassin extends goService{
   static function plInfo()
   {
     return (array(
-          "plShortName"   => _("Spamassassin"),
-          "plDescription" => _("Spamassassin")." ("._("Services").")",
+          "plShortName"   => _("Spamassassin service"),
+          "plDescription" => _("Spamassassin service")." ("._("Services").")",
           "plSelfModify"  => FALSE,
           "plDepends"     => array(),
           "plPriority"    => 89,
