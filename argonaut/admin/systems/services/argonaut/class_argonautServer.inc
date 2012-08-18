@@ -58,7 +58,7 @@ class argonautServer extends goService{
     $this->argonautKeyPath            = CONFIG_DIR."/cert/server.key";
     $this->argonautCertPath           = CONFIG_DIR."/cert/server.crt";
     goService::goService($config,$dn);
-    $this->DisplayName = _("Argonaut service");
+    $this->DisplayName = _("Argonaut Server");
     $this->argonautDeleteFinished = ($this->argonautDeleteFinished == "TRUE"); // conversion from LDAP format to PHP boolean
   }
 
@@ -86,7 +86,7 @@ class argonautServer extends goService{
   function getListEntry()
   {
     $fields               = goService::getListEntry();
-    $fields['Message']    = _("Argonaut service");
+    $fields['Message']    = _("Argonaut Server");
     return $fields;
   }
 
@@ -155,8 +155,8 @@ class argonautServer extends goService{
   static function plInfo()
   {
     return (array(
-          "plShortName"   => _("Argonaut service"),
-          "plDescription" => _("Argonaut service")." ("._("Services").")",
+          "plShortName"   => _("Argonaut Server"),
+          "plDescription" => _("Argonaut Server")." ("._("Services").")",
           "plSelfModify"  => FALSE,
           "plDepends"     => array(),
           "plPriority"    => 91,
