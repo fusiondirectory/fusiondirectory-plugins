@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
 "Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
-"POT-Creation-Date: 2012-05-26 17:33+0200\n"
-"PO-Revision-Date: 2012-05-26 16:34+0000\n"
+"POT-Creation-Date: 2012-08-22 18:37+0200\n"
+"PO-Revision-Date: 2012-08-22 16:55+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/FusionDirectory/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -18,21 +18,43 @@ msgstr ""
 "Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: html/getfax.php:63
+#: html/getfax.php:59
 msgid "Could not connect to database server!"
 msgstr "Konnte nicht zum Datenbankserver verbinden!"
 
-#: html/getfax.php:69 html/getfax.php:79
+#: html/getfax.php:66 html/getfax.php:76
 msgid "Database query failed!"
 msgstr "Die Datenbank-Abfrage ist fehlgeschlagen!"
 
-#: admin/systems/services/gofax/class_goFaxServer.inc:50
-msgid "FAX database"
-msgstr "Fax-Datenbank"
+#: html/getfax.php:96 html/getfax.php:101 html/getfax.php:106
+#: admin/blocklists/class_blocklistGeneric.inc:124
+#: admin/blocklists/class_blocklistGeneric.inc:174
+#: addons/faxreports/class_faxreport.inc:135
+#: addons/faxreports/class_faxreport.inc:144
+#: addons/faxreports/class_faxreport.inc:164
+#: addons/faxreports/class_faxreport.inc:305
+#: personal/faxaccount/class_gofaxAccount.inc:278
+msgid "Error"
+msgstr "Fehler"
 
+#: html/getfax.php:96
+msgid "cannot resize fax image"
+msgstr ""
+
+#: html/getfax.php:101
+msgid "cannot convert fax image to png"
+msgstr ""
+
+#: html/getfax.php:106
+msgid "Reading fax image image failed"
+msgstr ""
+
+#: admin/systems/services/gofax/class_goFaxServer.inc:50
 #: admin/systems/services/gofax/class_goFaxServer.inc:79
-msgid "FAX database configuration"
-msgstr "Konfiguration der Fax-Datenbank"
+#: admin/systems/services/gofax/class_goFaxServer.inc:108
+#: admin/systems/services/gofax/class_goFaxServer.inc:109
+msgid "FAX service"
+msgstr ""
 
 #: admin/systems/services/gofax/class_goFaxServer.inc:88
 #: addons/faxreports/detail.tpl:21 addons/faxreports/contents.tpl:30
@@ -45,11 +67,6 @@ msgstr "Benutzer"
 #: admin/systems/services/gofax/goFaxServer.tpl:12
 msgid "Password"
 msgstr "Passwort"
-
-#: admin/systems/services/gofax/class_goFaxServer.inc:108
-#: admin/systems/services/gofax/class_goFaxServer.inc:109
-msgid "Fax database"
-msgstr "Fax-Datenbank"
 
 #: admin/systems/services/gofax/class_goFaxServer.inc:109
 msgid "Services"
@@ -114,16 +131,6 @@ msgstr "Fax-Sperrlisten"
 #: admin/blocklists/class_blocklistGeneric.inc:30
 msgid "This is the part of the fax plugin managing blacklist"
 msgstr ""
-
-#: admin/blocklists/class_blocklistGeneric.inc:124
-#: admin/blocklists/class_blocklistGeneric.inc:174
-#: addons/faxreports/class_faxreport.inc:135
-#: addons/faxreports/class_faxreport.inc:144
-#: addons/faxreports/class_faxreport.inc:164
-#: addons/faxreports/class_faxreport.inc:305
-#: personal/faxaccount/class_gofaxAccount.inc:278
-msgid "Error"
-msgstr "Fehler"
 
 #: admin/blocklists/class_blocklistGeneric.inc:124
 #: personal/faxaccount/class_gofaxAccount.inc:278

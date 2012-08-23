@@ -1,3 +1,23 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: FusionDirectory\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-08-22 19:22+0200\n"
+"PO-Revision-Date: 2012-05-26 15:44+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: German (http://www.transifex.com/projects/p/FusionDirectory/"
+"language/de/)\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
 #: admin/supannStructures/class_etablissement.inc:97
 #: admin/supannStructures/class_etablissement.inc:111
 #: admin/supannStructures/class_etablissement.inc:166
@@ -9,7 +29,7 @@
 #: admin/supannStructures/class_entite.inc:211
 #: personal/supann/class_supannAccount.inc:850
 msgid "LDAP error"
-msgstr ""
+msgstr "LDAP-Fehler"
 
 #: admin/supannStructures/class_etablissement.inc:234
 #: admin/supannStructures/class_etablissement.inc:236
@@ -20,7 +40,7 @@ msgstr ""
 #: admin/supannStructures/class_entite.inc:272
 #: admin/supannStructures/supannStructures-filter.tpl:15
 msgid "Name"
-msgstr ""
+msgstr "Name"
 
 #: admin/supannStructures/class_etablissement.inc:318
 #: admin/supannStructures/class_etablissement.inc:319
@@ -53,7 +73,7 @@ msgstr ""
 #: admin/supannStructures/supannStructures-list.xml:68
 #: admin/supannStructures/entite.tpl:42
 msgid "Description"
-msgstr ""
+msgstr "Beschreibung"
 
 #: admin/supannStructures/class_etablissement.inc:333
 #: admin/supannStructures/etablissement.tpl:42
@@ -90,7 +110,7 @@ msgstr ""
 
 #: admin/supannStructures/remove.tpl:2
 msgid "Warning"
-msgstr ""
+msgstr "Warnung"
 
 #: admin/supannStructures/remove.tpl:6
 msgid ""
@@ -101,6 +121,8 @@ msgstr ""
 #: admin/supannStructures/remove.tpl:10
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
 msgstr ""
+"Wenn Sie sicher sind, drücken Sie 'Entfernen' um fortzufahren oder "
+"'Abbrechen' zum Abbruch."
 
 #: admin/supannStructures/class_supannStructuresManagement.inc:23
 msgid "supann Structures"
@@ -120,7 +142,7 @@ msgstr ""
 
 #: admin/supannStructures/etablissement.tpl:4
 msgid "Properties"
-msgstr ""
+msgstr "Eigenschaften"
 
 #: admin/supannStructures/etablissement.tpl:9
 msgid "Set this etablissement as root one"
@@ -137,40 +159,40 @@ msgstr ""
 #: admin/supannStructures/etablissement.tpl:96
 #: admin/supannStructures/etablissement.tpl:100
 msgid "Location"
-msgstr ""
+msgstr "Ort"
 
 #: admin/supannStructures/etablissement.tpl:103
 msgid "Location of this subtree"
-msgstr ""
+msgstr "Ort dieses Teilbaums"
 
 #: admin/supannStructures/etablissement.tpl:108
 msgid "Address"
-msgstr ""
+msgstr "Adresse"
 
 #: admin/supannStructures/etablissement.tpl:111
 msgid "Postal address of this subtree"
-msgstr ""
+msgstr "Postalische Anschrift dieses Teilbaums"
 
 #: admin/supannStructures/etablissement.tpl:115
 msgid "Phone"
-msgstr ""
+msgstr "Telefon"
 
 #: admin/supannStructures/etablissement.tpl:118
 msgid "Base telephone number of this subtree"
-msgstr ""
+msgstr "Einleitende Telefonnummer dieses Teilbaums"
 
 #: admin/supannStructures/etablissement.tpl:123
 #: admin/supannStructures/entite.tpl:28
 msgid "Fax"
-msgstr ""
+msgstr "Fax"
 
 #: admin/supannStructures/etablissement.tpl:126
 msgid "Base facsimile telephone number of this subtree"
-msgstr ""
+msgstr "Einleitende Fax-Nummer dieses Teilbaums"
 
 #: admin/supannStructures/class_entite.inc:263
 msgid "Generic"
-msgstr ""
+msgstr "Allgemein"
 
 #: admin/supannStructures/class_entite.inc:264
 msgid "supann Entite Settings"
@@ -178,39 +200,39 @@ msgstr ""
 
 #: admin/supannStructures/class_entite.inc:269
 msgid "Groups"
-msgstr ""
+msgstr "Gruppen"
 
 #: admin/supannStructures/class_entite.inc:274
 msgid "Base"
-msgstr ""
+msgstr "Basis"
 
 #: admin/supannStructures/class_entite.inc:276
 msgid "GID"
-msgstr ""
+msgstr "GID"
 
 #: admin/supannStructures/class_entite.inc:278
 msgid "Samba group type"
-msgstr ""
+msgstr "Samba-Gruppentyp"
 
 #: admin/supannStructures/class_entite.inc:279
 msgid "Samba domain name"
-msgstr ""
+msgstr "Samba Domänen-Name"
 
 #: admin/supannStructures/class_entite.inc:280
 msgid "System trust"
-msgstr ""
+msgstr "System-Vertrauen"
 
 #: admin/supannStructures/class_entite.inc:281
 msgid "Phone pickup group"
-msgstr ""
+msgstr "Gesprächs-Annahme Gruppe"
 
 #: admin/supannStructures/class_entite.inc:282
 msgid "Nagios group"
-msgstr ""
+msgstr "Nagios-Gruppe"
 
 #: admin/supannStructures/class_entite.inc:284
 msgid "Group member"
-msgstr ""
+msgstr "Gruppenmitglieder"
 
 #: admin/supannStructures/supannStructures-list.xml:11
 msgid "List of Supann Structures"
@@ -237,20 +259,20 @@ msgstr ""
 
 #: admin/supannStructures/supannStructures-list.xml:78
 msgid "Actions"
-msgstr ""
+msgstr "Aktionen"
 
 #: admin/supannStructures/supannStructures-list.xml:89
 msgid "Create"
-msgstr ""
+msgstr "Anlegen"
 
 #: admin/supannStructures/supannStructures-list.xml:123
 #: admin/supannStructures/supannStructures-list.xml:144
 msgid "Remove"
-msgstr ""
+msgstr "Entfernen"
 
 #: admin/supannStructures/supannStructures-list.xml:135
 msgid "Edit"
-msgstr ""
+msgstr "Bearbeiten"
 
 #: admin/supannStructures/entite.tpl:7
 msgid "OU name"
@@ -266,7 +288,7 @@ msgstr ""
 
 #: admin/supannStructures/entite.tpl:17
 msgid "Telephone"
-msgstr ""
+msgstr "Telefon"
 
 #: admin/supannStructures/entite.tpl:19
 msgid "Type entite Supann"
@@ -290,7 +312,7 @@ msgstr ""
 
 #: admin/supannStructures/supannStructures-filter.tpl:3
 msgid "Filter"
-msgstr ""
+msgstr "Filter"
 
 #: personal/supann/main.inc:137
 msgid "SUPANN settings"
@@ -308,7 +330,7 @@ msgstr ""
 #: personal/supann/class_supannAccount.inc:318
 #: personal/supann/class_supannAccount.inc:362
 msgid "None"
-msgstr ""
+msgstr "Keine"
 
 #: personal/supann/class_supannAccount.inc:318
 msgid ";"
@@ -444,7 +466,7 @@ msgstr ""
 
 #: personal/supann/class_supannAccount.inc:866
 msgid "My account"
-msgstr ""
+msgstr "Mein Konto"
 
 #: personal/supann/class_supannAccount.inc:870 personal/supann/supann.tpl:186
 msgid "eduPersonAffiliation"
@@ -577,7 +599,7 @@ msgstr ""
 
 #: personal/supann/supann.tpl:68
 msgid "Contact"
-msgstr ""
+msgstr "Kontakt"
 
 #: personal/supann/supann.tpl:148 personal/supann/supann.tpl:153
 msgid "Affectation"

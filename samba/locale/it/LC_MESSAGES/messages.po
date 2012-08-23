@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Alessandro Amici <a.amici@bopen.it>, 2005.
 # Giuliano Di Vito <giuliano@opensides.be>, 2011.
@@ -9,15 +9,16 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
-"POT-Creation-Date: 2012-05-26 17:33+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-08-22 18:37+0200\n"
 "PO-Revision-Date: 2012-05-31 14:39+0000\n"
 "Last-Translator: poterealpopolo <giuliano@opensides.be>\n"
-"Language-Team: Italian (http://www.transifex.com/projects/p/FusionDirectory/language/it/)\n"
+"Language-Team: Italian (http://www.transifex.com/projects/p/FusionDirectory/"
+"language/it/)\n"
+"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: admin/systems/samba/class_winGeneric.inc:132
@@ -286,7 +287,8 @@ msgstr "solo dal client precedente"
 #: personal/samba/class_sambaAccount.inc:524
 #, php-format
 msgid "The password is outdated since %s, by domain policy."
-msgstr "La password è scaduta da %s, secondo la politica di sicurezza del dominio."
+msgstr ""
+"La password è scaduta da %s, secondo la politica di sicurezza del dominio."
 
 #: personal/samba/class_sambaAccount.inc:527
 #, php-format
@@ -447,7 +449,9 @@ msgstr "No"
 #: personal/samba/class_sambaAccount.inc:802
 #, php-format
 msgid "The password would expire on %s, but the password expiry is disabled."
-msgstr "La password dovrebbe scadere il %s, ma l'opzione per la scadenza della password è disattivata."
+msgstr ""
+"La password dovrebbe scadere il %s, ma l'opzione per la scadenza della "
+"password è disattivata."
 
 #: personal/samba/class_sambaAccount.inc:808
 msgid "Password change available"
@@ -476,12 +480,15 @@ msgstr "Avvertimento"
 
 #: personal/samba/class_sambaAccount.inc:1053
 msgid "Undefined Samba SID detected. Please fix this problem manually!"
-msgstr "É stato trovato un SID Samba che non è definito. Correggi manualmente !"
+msgstr ""
+"É stato trovato un SID Samba che non è definito. Correggi manualmente !"
 
 #: personal/samba/class_sambaAccount.inc:1078
 msgid ""
 "Cannot convert primary group to samba group: group cannot be identified!"
-msgstr "Impossibile convertire il gruppo primario in un gruppo primario di samba : il gruppo non puó essere identificato !"
+msgstr ""
+"Impossibile convertire il gruppo primario in un gruppo primario di samba : "
+"il gruppo non puó essere identificato !"
 
 #: personal/samba/class_sambaAccount.inc:1177 personal/samba/main.inc:135
 msgid "Samba settings"
@@ -531,7 +538,9 @@ msgstr "Autorizza la connessione da"
 msgid ""
 "The windows user manager only allows eight clients. You've specified more "
 "than eight."
-msgstr "Il gestore degli utenti di Windows accetta solo 8 clienti alla volta. Tu ne hai specificati di più ."
+msgstr ""
+"Il gestore degli utenti di Windows accetta solo 8 clienti alla volta. Tu ne "
+"hai specificati di più ."
 
 #: personal/samba/samba3_workstations.tpl:6
 msgid "Select workstations to add"

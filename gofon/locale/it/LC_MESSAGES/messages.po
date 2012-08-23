@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Alessandro Amici <a.amici@bopen.it>, 2005.
 # Giuliano Di Vito <giuliano@opensides.be>, 2011.
@@ -9,15 +9,16 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
-"POT-Creation-Date: 2012-05-26 17:33+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-08-22 18:37+0200\n"
 "PO-Revision-Date: 2012-06-02 09:52+0000\n"
 "Last-Translator: poterealpopolo <giuliano@opensides.be>\n"
-"Language-Team: Italian (http://www.transifex.com/projects/p/FusionDirectory/language/it/)\n"
+"Language-Team: Italian (http://www.transifex.com/projects/p/FusionDirectory/"
+"language/it/)\n"
+"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: admin/macro/macro-list.tpl:13 admin/macro/class_gofonMacro.inc:567
@@ -87,7 +88,9 @@ msgstr "Filtro"
 msgid ""
 "Macro could not be removed from server '%s', please check database "
 "consistency!"
-msgstr "La macro non può essere rimossa dal server '%s', verifica la consistenza del server !"
+msgstr ""
+"La macro non può essere rimossa dal server '%s', verifica la consistenza del "
+"server !"
 
 #: admin/macro/class_gofonMacro.inc:264
 #, php-format
@@ -113,7 +116,9 @@ msgstr "Combinazione di doppioni per 'estensione' e 'priorità' alla linea %s !"
 #, php-format
 msgid ""
 "Macro could not be added to server '%s', please check database consistency!"
-msgstr "La macro non può essere aggiunta al server '%s', verifica la consistenza del database !"
+msgstr ""
+"La macro non può essere aggiunta al server '%s', verifica la consistenza del "
+"database !"
 
 #: admin/macro/class_gofonMacro.inc:343 admin/macro/class_gofonMacro.inc:452
 #: admin/macro/class_gofonMacro.inc:461 admin/macro/class_gofonMacro.inc:499
@@ -250,11 +255,15 @@ msgstr "Avvertimento"
 msgid ""
 "Please double check if you really want to do this since there is no way for "
 "FusionDirectory to get your data back."
-msgstr "Assicurati che vuoi davvero eseguire l'azione visto che poi sarà impossibile per FusionDirectory recuperare i tuoi dati."
+msgstr ""
+"Assicurati che vuoi davvero eseguire l'azione visto che poi sarà impossibile "
+"per FusionDirectory recuperare i tuoi dati."
 
 #: admin/macro/remove.tpl:10 admin/conference/remove.tpl:10
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr "Quindi - se sei sicuro - premi 'Rimuovi' per continuare oppure 'Annulla' per interrompere."
+msgstr ""
+"Quindi - se sei sicuro - premi 'Rimuovi' per continuare oppure 'Annulla' per "
+"interrompere."
 
 #: admin/macro/class_gofonMacroParameters.inc:221
 #: personal/phoneaccount/generic.tpl:125 personal/phoneaccount/generic.tpl:127
@@ -280,7 +289,9 @@ msgstr "Rimuovi i parametri non utilizzati"
 #: admin/macro/class_gofonMacroParameters.inc:361
 #, php-format
 msgid "Parameter %s contains invalid character. '!,#' is used as delimiter!"
-msgstr "Il parametro %s contiene dei caratteri non validi. '!,#' è usato come separatore !"
+msgstr ""
+"Il parametro %s contiene dei caratteri non validi. '!,#' è usato come "
+"separatore !"
 
 #: admin/macro/class_gofonMacroParameters.inc:366
 #, php-format
@@ -296,7 +307,9 @@ msgstr "Informazioni"
 msgid ""
 "Number of parameters for this macro has changed. Please update all users "
 "using it!"
-msgstr "Il numero di parametri per questa macro è cambiato. Aggiorna tutti gli utenti che li utilizzano !"
+msgstr ""
+"Il numero di parametri per questa macro è cambiato. Aggiorna tutti gli "
+"utenti che li utilizzano !"
 
 #: admin/macro/generic.tpl:18
 msgid "Macro name to be displayed"
@@ -340,18 +353,24 @@ msgstr "Entry obsoleta"
 msgid ""
 "The current home server is not available anymore. It will be moved to '%s' "
 "if you save this entry!"
-msgstr "L'attuale server principale non è più disponibile. Verrà spostato verso '%s' se registri."
+msgstr ""
+"L'attuale server principale non è più disponibile. Verrà spostato verso '%s' "
+"se registri."
 
 #: admin/conference/class_phoneConferenceGeneric.inc:233
 #, php-format
 msgid "Cannot delete entry from server '%s' because it seems to be removed!"
-msgstr "Impossibile rimuovere l'entry dal server '%s' in quanto pare sia stata già rimossa in precedenza !"
+msgstr ""
+"Impossibile rimuovere l'entry dal server '%s' in quanto pare sia stata già "
+"rimossa in precedenza !"
 
 #: admin/conference/class_phoneConferenceGeneric.inc:308
 #, php-format
 msgid ""
 "The previously selected asterisk home server '%s' is no longer available!"
-msgstr "Il server principale di asterisk (%s), precedentemente selezionato, non è più disponibile ! "
+msgstr ""
+"Il server principale di asterisk (%s), precedentemente selezionato, non è "
+"più disponibile ! "
 
 #: admin/conference/class_phoneConferenceGeneric.inc:315
 #: admin/conference/generic.tpl:159
@@ -371,9 +390,11 @@ msgstr "Durata"
 #: admin/conference/class_phoneConferenceGeneric.inc:400
 #, php-format
 msgid ""
-"FusionDirectory identified problems with your MySQL table definition, please"
-" activate debugging for details."
-msgstr "FusionDirectory ha identificato dei problemi nelle definizioni della tua tavola MySQL, attiva la modalità di debug per avere più informazioni."
+"FusionDirectory identified problems with your MySQL table definition, please "
+"activate debugging for details."
+msgstr ""
+"FusionDirectory ha identificato dei problemi nelle definizioni della tua "
+"tavola MySQL, attiva la modalità di debug per avere più informazioni."
 
 #: admin/conference/class_phoneConferenceGeneric.inc:606
 #: admin/conference/class_phoneConferenceGeneric.inc:608
@@ -511,7 +532,8 @@ msgstr "Formato del file musicale"
 
 #: admin/conference/generic.tpl:182
 msgid "Choose subtree to place department in"
-msgstr "Seleziona il ramo dell'annuario nel quale sarà piazzato il dipartimento"
+msgstr ""
+"Seleziona il ramo dell'annuario nel quale sarà piazzato il dipartimento"
 
 #: admin/conference/generic.tpl:210
 msgid "Activate session menu"
@@ -742,7 +764,9 @@ msgstr "Prefisso internazionale"
 msgid ""
 "You can't remove the asterisk database extension, it is still in use by "
 "these objects '%s'."
-msgstr "Impossibile rimuovere l'estensione del database asterisk in quanto è ancora utilizzata da questo(i) oggetto(i) '%s'."
+msgstr ""
+"Impossibile rimuovere l'estensione del database asterisk in quanto è ancora "
+"utilizzata da questo(i) oggetto(i) '%s'."
 
 #: admin/systems/services/gofon/class_goFonServer.inc:186
 msgid "VoIP - asterisk management"
@@ -817,7 +841,9 @@ msgstr "Crea una coda telefonica"
 msgid ""
 "There must be at least one server with an asterisk database to create a "
 "phone queue."
-msgstr "Ci deve essere almeno un server con un database asterisk per poter creare una coda telefonica."
+msgstr ""
+"Ci deve essere almeno un server con un database asterisk per poter creare "
+"una coda telefonica."
 
 #: admin/ogroups/gofon/class_phonequeue.inc:281
 #: admin/ogroups/gofon/class_phonequeue.inc:891
@@ -855,7 +881,9 @@ msgstr "Impossibile trovare l'entry nella vecchia coda !"
 msgid ""
 "Found more than one entry named '%s' in queue table. Please inform your "
 "system administrator!"
-msgstr "C'è più di una entry chiamata '%s' nella coda. Informa l'amministratore della rete."
+msgstr ""
+"C'è più di una entry chiamata '%s' nella coda. Informa l'amministratore "
+"della rete."
 
 #: admin/ogroups/gofon/class_phonequeue.inc:728
 #: admin/ogroups/gofon/class_phonequeue.inc:730
@@ -967,9 +995,10 @@ msgstr "Annuncio della posizione in coda"
 
 #: admin/ogroups/gofon/phonequeue.tpl:2
 msgid ""
-"Only users with the same asterisk home server will be included to this "
-"queue."
-msgstr "Soltanto gli utenti dello stesso server asterisk saranno inclusi in questa coda."
+"Only users with the same asterisk home server will be included to this queue."
+msgstr ""
+"Soltanto gli utenti dello stesso server asterisk saranno inclusi in questa "
+"coda."
 
 #: admin/ogroups/gofon/phonequeue.tpl:5
 msgid "Queue Settings"
@@ -1173,12 +1202,15 @@ msgstr "non definito"
 #, php-format
 msgid ""
 "Cannot identify telephone extension in database, please try to save again."
-msgstr "Impossibile identificare l'estensione telefonica nel database, prova a registrare di nuovo."
+msgstr ""
+"Impossibile identificare l'estensione telefonica nel database, prova a "
+"registrare di nuovo."
 
 #: personal/phoneaccount/class_phoneAccount.inc:588
 #: personal/phoneaccount/class_phoneAccount.inc:606
 msgid "Abort saving entries to keep the database consistent."
-msgstr "Abbandono della registrazione per salvaguardare la consistenza del database."
+msgstr ""
+"Abbandono della registrazione per salvaguardare la consistenza del database."
 
 #: personal/phoneaccount/class_phoneAccount.inc:629
 #: personal/phoneaccount/class_phoneAccount.inc:668
@@ -1186,7 +1218,9 @@ msgstr "Abbandono della registrazione per salvaguardare la consistenza del datab
 #, php-format
 msgid ""
 "FusionDirectory identified problems with your database table definition!"
-msgstr "FusionDirectory ha identificato dei problemi nelle definizioni del tuo database"
+msgstr ""
+"FusionDirectory ha identificato dei problemi nelle definizioni del tuo "
+"database"
 
 #: personal/phoneaccount/class_phoneAccount.inc:1033
 msgid "Remove phone account"
@@ -1217,7 +1251,9 @@ msgstr "Scegli il tuo numero di telefono personale"
 msgid ""
 "There must be at least one server with an asterisk database to create a "
 "phone account."
-msgstr "Ci deve essere almeno un server con un database asterisk per poter creare un account telefonico."
+msgstr ""
+"Ci deve essere almeno un server con un database asterisk per poter creare un "
+"account telefonico."
 
 #: personal/phoneaccount/class_phoneAccount.inc:1382
 #: personal/phoneaccount/class_phoneAccount.inc:1385
@@ -1243,7 +1279,8 @@ msgstr "Parametri della macro %s"
 
 #: personal/phoneaccount/class_phoneAccount.inc:1478
 msgid "An error occured while updating the database entries!"
-msgstr "C'è stato un errore durante l'aggiornamento delle entries del database !"
+msgstr ""
+"C'è stato un errore durante l'aggiornamento delle entries del database !"
 
 #: personal/phoneaccount/class_phoneAccount.inc:1628
 #, php-format
@@ -1261,7 +1298,9 @@ msgstr "Il numero di telefono '%s' è già usato da '%s'."
 msgid ""
 "The previously selected asterisk home server (%s) is no longer available. "
 "Remove aborted."
-msgstr "Il server principale asterisk, selezionato precedentemente, non esiste più (%s). Rimozione  cancellata."
+msgstr ""
+"Il server principale asterisk, selezionato precedentemente, non esiste più "
+"(%s). Rimozione  cancellata."
 
 #: personal/phoneaccount/class_phoneAccount.inc:1722
 msgid "Phone account settings"
@@ -1301,7 +1340,8 @@ msgstr "Il server asterisk non è valido !"
 
 #: personal/phoneaccount/class_phoneAccount.inc:1832
 msgid "Voicemail PIN must be 4 characters long!"
-msgstr "Il PIN della segreteria telefonica può essere al massimo di 4 caratteri !"
+msgstr ""
+"Il PIN della segreteria telefonica può essere al massimo di 4 caratteri !"
 
 #: personal/phoneaccount/class_phoneAccount.inc:1835
 msgid "Voicemail PIN contains invalid characters!"
@@ -1309,16 +1349,22 @@ msgstr "Il PIN della segreteria telefonica contiene dei caratteri non validi !"
 
 #: personal/phoneaccount/class_phoneAccount.inc:1840
 msgid "Phone pin contains invalid characters!"
-msgstr "Il valore specificato come pin del telefono contiene dei caratteri non validi!"
+msgstr ""
+"Il valore specificato come pin del telefono contiene dei caratteri non "
+"validi!"
 
 #: personal/phoneaccount/class_phoneAccount.inc:1847
 #, php-format
 msgid "The parameter %s contains invalid char. '!,#' is used as delimiter"
-msgstr "Il parametro %s contiene dei caratteri non validi, '!,#' è usato come separatore"
+msgstr ""
+"Il parametro %s contiene dei caratteri non validi, '!,#' è usato come "
+"separatore"
 
 #: personal/phoneaccount/main.inc:124
 msgid "Click the 'Edit' button below to change informations in this dialog"
-msgstr "Premi il bottone 'Modifica' qui sotto per cambiare le informazioni in questa finestra"
+msgstr ""
+"Premi il bottone 'Modifica' qui sotto per cambiare le informazioni in questa "
+"finestra"
 
 #: personal/phoneaccount/main.inc:134
 #: personal/phoneaccount/paste_generic.tpl:1

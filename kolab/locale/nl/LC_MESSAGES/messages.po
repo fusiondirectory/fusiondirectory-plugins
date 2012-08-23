@@ -1,33 +1,37 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Christophe Augello <christophe@augello.be>, 2012.
 #  Niels Klomp (CareWorks ICT Services) <nk@careworks.nl>, 2005.
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
-"POT-Creation-Date: 2012-05-26 17:33+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-08-22 18:37+0200\n"
 "PO-Revision-Date: 2012-08-02 17:32+0000\n"
 "Last-Translator: Christophe Augello <christophe@augello.be>\n"
-"Language-Team: Dutch (http://www.transifex.com/projects/p/FusionDirectory/language/nl/)\n"
+"Language-Team: Dutch (http://www.transifex.com/projects/p/FusionDirectory/"
+"language/nl/)\n"
+"Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: admin/systems/services/kolab/class_servKolab.inc:127
 #, php-format
 msgid "Include data from %s days in the past when creating free/busy lists"
-msgstr "Gebruik data van %s dagen geleden wanneer free/busy lijsten worden aangemaakt"
+msgstr ""
+"Gebruik data van %s dagen geleden wanneer free/busy lijsten worden aangemaakt"
 
 #: admin/systems/services/kolab/class_servKolab.inc:132
 #, php-format
 msgid "Warn users when using more than %s%% of their mail quota"
-msgstr "Waarschuw gebruikers wanneer meer dan %s%% van hun E-mail quota gebruikt wordt"
+msgstr ""
+"Waarschuw gebruikers wanneer meer dan %s%% van hun E-mail quota gebruikt "
+"wordt"
 
 #: admin/systems/services/kolab/class_servKolab.inc:174
 msgid "Remove"
@@ -190,7 +194,8 @@ msgstr "Postfix mydestination"
 
 #: admin/systems/services/kolab/servkolab.tpl:102
 msgid "FTP FreeBusy service (legacy, not interoperable with Kolab2 FreeBusy)"
-msgstr "FTP Free/Busy service (vervallen, niet compatibel met Kolab2 Free/Busy)"
+msgstr ""
+"FTP Free/Busy service (vervallen, niet compatibel met Kolab2 Free/Busy)"
 
 #: admin/systems/services/kolab/servkolab.tpl:112
 msgid "HTTP FreeBusy service (legacy)"
@@ -283,9 +288,10 @@ msgid "Default"
 msgstr "Default"
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:183
-msgid ""
-"Mail settings cannot be removed while there are delegations configured!"
-msgstr "Mail-instellingen kunnen niet worden verwijderd, terwijl er geconfigureerd delegaties zijn!"
+msgid "Mail settings cannot be removed while there are delegations configured!"
+msgstr ""
+"Mail-instellingen kunnen niet worden verwijderd, terwijl er geconfigureerd "
+"delegaties zijn!"
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:281
 msgid "Waiting for kolab to remove mail properties..."
@@ -391,7 +397,9 @@ msgstr "Kolab account"
 msgid ""
 "The kolab account is currently disabled. It's features can be adjusted if "
 "you add a mail account."
-msgstr "Het kolab account is uitgeschakeld. U kunt opties aanpassen indien u een e-mail account toevoegd."
+msgstr ""
+"Het kolab account is uitgeschakeld. U kunt opties aanpassen indien u een e-"
+"mail account toevoegd."
 
 #: personal/connectivity/kolab/kolab.tpl:83
 msgid "Mail size"

@@ -1,21 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 #   <pavel.borecki@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
-"POT-Creation-Date: 2012-05-26 17:33+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-08-22 18:37+0200\n"
 "PO-Revision-Date: 2012-05-26 16:51+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/FusionDirectory/language/cs_CZ/)\n"
+"Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/"
+"FusionDirectory/language/cs_CZ/)\n"
+"Language: cs_CZ\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: cs_CZ\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2\n"
 
 #: html/getvcard.php:39
@@ -173,7 +174,9 @@ msgstr "chyba"
 #: addons/addressbook/class_addressbook.inc:218
 msgid ""
 "You need to set your personal phone number in order to perform direct dials."
-msgstr "Abyste mohli vytáčet přímo odsud, je třeba mít zadané své vlastní telefonní číslo."
+msgstr ""
+"Abyste mohli vytáčet přímo odsud, je třeba mít zadané své vlastní telefonní "
+"číslo."
 
 #: addons/addressbook/class_addressbook.inc:247
 #: addons/addressbook/class_addressbook.inc:818
@@ -260,7 +263,9 @@ msgstr "fax"
 #: addons/addressbook/class_addressbook.inc:767
 msgid ""
 "Cannot create a unique DN for your entry. Please fill more formular fields."
-msgstr "Nedaří se pro Vás vytvořit jedinečné DN (rozlišené jméno). Vyplňte prosím ještě další políčka formuláře."
+msgstr ""
+"Nedaří se pro Vás vytvořit jedinečné DN (rozlišené jméno). Vyplňte prosím "
+"ještě další políčka formuláře."
 
 #: addons/addressbook/class_addressbook.inc:871
 msgid "Addressbook entries"
@@ -338,13 +343,19 @@ msgstr "varování"
 #: addons/addressbook/remove.tpl:6
 msgid ""
 "This includes all addressbook data in this entry. Please double check if "
-"your really want to do this since there is no way for FusionDirectory to get"
-" your data back."
-msgstr "Týká se veškerých informací o této položce v adresáři. Prosím velmi dobře si rozmyslete, zda to opravdu chcete udělat, protože provedené změny už ve FusionDirectory nepůjde vzít nijak jednoduše zpět (nanejvýš složitě ze záloh, pokud existují a obsahují potřebná data)!"
+"your really want to do this since there is no way for FusionDirectory to get "
+"your data back."
+msgstr ""
+"Týká se veškerých informací o této položce v adresáři. Prosím velmi dobře si "
+"rozmyslete, zda to opravdu chcete udělat, protože provedené změny už ve "
+"FusionDirectory nepůjde vzít nijak jednoduše zpět (nanejvýš složitě ze "
+"záloh, pokud existují a obsahují potřebná data)!"
 
 #: addons/addressbook/remove.tpl:10
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr "Tedy – pokud jste si jist(a), stiskněte 'smazat'. V opačném případě operaci zrušte pomocí 'zrušit'."
+msgstr ""
+"Tedy – pokud jste si jist(a), stiskněte 'smazat'. V opačném případě operaci "
+"zrušte pomocí 'zrušit'."
 
 #: addons/addressbook/contents.tpl:15
 msgid "Contact"
@@ -356,9 +367,17 @@ msgstr "informace"
 
 #: addons/addressbook/contents.tpl:37
 msgid ""
-"The telephone list plugin provides list and search facilities for the people in your site. You may want to specify the asterisk [*] like in \n"
-"'Fu*ry' to find 'FusionDirectory'. Use the filters below to narrow down your search."
-msgstr "Zásuvný modul telefonní seznam umožňuje vyhledávat kontakty na uživatele tohoto systému. Dále zde mohou být vedeny i ostatní osoby, které v systému uživatelský účet nemají. Pro vyhledávání lze používat i zástupné znaky – pokud tedy chcete vyhledat například 'FusionDirectory', použijte zástupný znak * (hvězdička) -> 'Fu*ry'. Pro další upřesnění vyhledávání pak používejte filtry."
+"The telephone list plugin provides list and search facilities for the people "
+"in your site. You may want to specify the asterisk [*] like in \n"
+"'Fu*ry' to find 'FusionDirectory'. Use the filters below to narrow down your "
+"search."
+msgstr ""
+"Zásuvný modul telefonní seznam umožňuje vyhledávat kontakty na uživatele "
+"tohoto systému. Dále zde mohou být vedeny i ostatní osoby, které v systému "
+"uživatelský účet nemají. Pro vyhledávání lze používat i zástupné znaky – "
+"pokud tedy chcete vyhledat například 'FusionDirectory', použijte zástupný "
+"znak * (hvězdička) -> 'Fu*ry'. Pro další upřesnění vyhledávání pak "
+"používejte filtry."
 
 #: addons/addressbook/contents.tpl:43
 msgid "Actions"
