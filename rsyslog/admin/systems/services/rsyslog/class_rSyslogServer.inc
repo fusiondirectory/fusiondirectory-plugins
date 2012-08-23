@@ -23,24 +23,21 @@
 class rSyslogServer extends goService{
 
   /* This plugin only writes its objectClass */
-  var $objectclasses    = array("goSyslogServer");
-  var $attributes       = array();
-  var $db_attributes    = array("gosaLogDB","goLogAdmin","goLogPassword");
-  var $StatusFlag       = "goServerStatus";
+  var $objectclasses  = array("goLogDBServer");
+  var $attributes     = array("gosaLogDB","goLogAdmin","goLogPassword");
+  var $StatusFlag     = "";
 
   /* This class can't be assigned twice so it conflicts with itself */
-  var $conflicts        = array("goSyslogServer");
+  var $conflicts      = array("goLogDBServer");
 
-  var $DisplayName      = "";
-  var $dn               = NULL;
+  var $DisplayName    = "";
+  var $dn             = NULL;
   var $acl;
-  var $cn                 = "";
-  var $use_database = FALSE;
-  var $initial_use_database = FALSE;
-  var $gosaLogDB     = "Syslog";
-  var $goLogAdmin    = "rsyslog";
-  var $goLogPassword = "";
-  var $view_logged   = FALSE;
+  var $cn             = "";
+  var $gosaLogDB      = "Syslog";
+  var $goLogAdmin     = "rsyslog";
+  var $goLogPassword  = "";
+  var $view_logged    = FALSE;
 
   var $goServerStatus   = "";
 
@@ -49,15 +46,6 @@ class rSyslogServer extends goService{
   {
     goService::goService($config,$dn);
     $this->DisplayName = _("Logs service");
-    $this->initial_use_database = $this->use_database = isset($this->attrs['objectClass']) &&in_array("goLogDBServer", $this->attrs['objectClass']);
-
-    if($this->use_database){
-      foreach($this->db_attributes as $attr){
-        if(isset($this->attrs[$attr][0])){
-          $this->$attr = $this->attrs[$attr][0];
-        }
-      }
-    }
   }
 
 
@@ -75,7 +63,7 @@ class rSyslogServer extends goService{
       $smarty->assign($name."ACL",$this->getacl($name));
     }
 
-    foreach($this->db_attributes as $attr){
+    foreach($this->attributes as $attr){
       $smarty->assign($attr,$this->$attr);
     }
     $smarty->assign("use_database" , $this->use_database);
@@ -98,7 +86,6 @@ class rSyslogServer extends goService{
   function check()
   {
     $message = plugin::check();
-    if($this->use_database){
       if (empty($this->goLogAdmin)){
         $message[]= msgPool::required(_("User"));
       }
@@ -108,47 +95,25 @@ class rSyslogServer extends goService{
       if (empty($this->goLogPassword)){
         $message[]= msgPool::required(_("Password"));
       }
-    }
     return($message);
   }
 
 
   function save_object()
   {
-    if(isset($_POST['rSyslogServerPosted'])){
-      plugin::save_object();
+    plugin::save_object();
 
-      foreach($this->db_attributes as $attr){
-        if(isset($_POST[$attr])){
-          $this->$attr = get_post($attr);
-        }
+    foreach($this->attributes as $attr){
+      if(isset($_POST[$attr])){
+        $this->$attr = get_post($attr);
       }
-      $this->use_database = isset($_POST['use_database']);
     }
   }
 
 
   function save()
   {
-    // Store rSyslog database connection info if enabled.
-    if($this->use_database){
-      $this->attributes = array('gosaLogDB','goLogAdmin','goLogPassword');
-      $this->objectclasses = array('goSyslogServer','goLogDBServer');
-    }else{
-      $this->attributes = array();
-      $this->objectclasses = array('goSyslogServer');
-
-    }
-
     plugin::save();
-
-    if(!$this->use_database && $this->initial_use_database){
-      $this->attrs['objectClass'] = array_remove_entries(array('goLogDBServer'),$this->attrs['objectClass']);
-      $this->attrs['objectClass'] = array_values($this->attrs['objectClass']);
-      foreach($this->db_attributes as $attr){
-        $this->attrs[$attr] = array();
-      }
-    }
 
     /* Check if this is a new entry ... add/modify */
     $ldap = $this->config->get_ldap_link();
@@ -176,18 +141,8 @@ class rSyslogServer extends goService{
   /* Remove service */
   function remove_from_parent()
   {
-    // Store rSyslog database connection info if enabled.
-    if($this->initial_use_database){
-      $this->attributes = array('gosaLogDB','goLogAdmin','goLogPassword');
-      $this->objectclasses = array('goSyslogServer','goLogDBServer');
-    }else{
-      $this->attributes = array();
-      $this->objectclasses = array('goSyslogServer');
-    }
-
     goService::remove_from_parent();
   }
-
 
   /* Return plugin informations for acl handling */
   static function plInfo()
