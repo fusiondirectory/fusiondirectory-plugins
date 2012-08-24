@@ -213,7 +213,7 @@ class rsyslog extends plugin
       }
 
       $filter.= "AND DeviceReportedTime >= '".(date("Ymd000000", strtotime($this->startTime)))."' ";
-      $filter.= "AND DeviceReportedTime <= '".(date("Ymd235959", strtotime($this->startTime)))."' ";
+      $filter.= "AND DeviceReportedTime <= '".(date("Ymd235959", strtotime($this->stopTime)))."' ";
 
       if(!empty($this->search_for)){
         $filter.= "AND ( ( SysLogTag like '%".$this->search_for."%' ) OR  ( Message like '%".$this->search_for."%' ) ) ";
