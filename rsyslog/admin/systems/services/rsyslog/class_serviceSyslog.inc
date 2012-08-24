@@ -64,7 +64,6 @@ class serviceSyslog extends goService{
     foreach($this->attributes as $attr){
       $smarty->assign($attr,$this->$attr);
     }
-    $smarty->assign("use_database" , $this->use_database);
     return($smarty->fetch(get_template_path("serviceSyslog.tpl",TRUE,dirname(__FILE__))));
   }
 
