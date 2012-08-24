@@ -211,8 +211,9 @@ class rsyslog extends plugin
       if($prio != "%%"){
         $filter.= "AND Priority like '{$prio}' ";
       }
-      $filter.= "AND DeviceReportedTime >= '".(date("Y.m.d 00:00:00", strtotime($this->startTime)))."' ";
-      $filter.= "AND DeviceReportedTime <= '".(date("Y.m.d 23:59:59", strtotime($this->stopTime)))."' ";
+
+      $filter.= "AND DeviceReportedTime >= '".(date("Ymd000000", strtotime($this->startTime)))."' ";
+      $filter.= "AND DeviceReportedTime <= '".(date("Ymd235959", strtotime($this->startTime)))."' ";
 
       if(!empty($this->search_for)){
         $filter.= "AND ( ( SysLogTag like '%".$this->search_for."%' ) OR  ( Message like '%".$this->search_for."%' ) ) ";
@@ -246,10 +247,9 @@ class rsyslog extends plugin
           $this->servers[$name]['error']  = $res->getMessage();
         }else{
           while($attrs = $res->fetchRow(MDB2_FETCHMODE_ASSOC)){
-            $attrs['DeviceReportedTime']= $this->time2local($attrs['DeviceReportedTime']);
-            $attrs['Facility']= $this->facility2string($attrs['Facility']);
-            $attrs['Priority']= $this->severity2string($attrs['Priority']);
-            $attrs['SysLogTag']= preg_replace("/:$/", "", $attrs['SysLogTag']);
+            $attrs['facility']= $this->facility2string($attrs['facility']);
+            $attrs['priority']= $this->severity2string($attrs['priority']);
+            $attrs['syslogtag']= preg_replace("/:$/", "", $attrs['syslogtag']);
 
             foreach($attrs as $key => $val){
               $attrs[$key] = htmlentities($val, ENT_COMPAT, 'UTF-8');
