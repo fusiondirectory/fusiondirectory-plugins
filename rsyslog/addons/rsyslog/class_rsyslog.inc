@@ -61,13 +61,12 @@ class rsyslog extends plugin
       $s = array('cn' => $attrs['cn'][0], 'dn' => $attrs['dn'], 'PASSWORD' => '', 'status' => 'ok');
       $s['LOGIN']       = $attrs['goLogAdmin'][0];
       $s['DB']          = $attrs['gosaLogDB'][0];
+      $s['PASSWORD'] = $attrs['goLogPassword'][0];
       $s['SERVER']      = $s['cn'];
       $s['Hosts']       = array();
       $s['Priorities']  = array();
       $s['ACL']         = "";
-      if(isset($attrs['goLogPassword'])) {
-        $s['PASSWORD'] = $attrs['goLogPassword'][0];
-      }
+
       $this->servers[$attrs['cn'][0]] = $s;
     }
 
@@ -97,7 +96,7 @@ class rsyslog extends plugin
             $this->servers[$name]['error']  = $res->getMessage();
           } else {
             while ($attrs = $res->fetchRow(MDB2_FETCHMODE_ASSOC)) {
-              $this->servers[$name]['Hosts'][$attrs['FromHost']] = $attrs['FromHost'];
+              $this->servers[$name]['Hosts'][$attrs['fromhost']] = $attrs['fromhost'];
             }
           }
           $query = "SELECT distinct(Priority) FROM SystemEvents ORDER BY Priority;";
@@ -107,7 +106,7 @@ class rsyslog extends plugin
             $this->servers[$name]['error']  = $res->getMessage();
           } else {
             while ($attrs = $res->fetchRow(MDB2_FETCHMODE_ASSOC)) {
-              $this->servers[$name]['Priorities'][$attrs['Priority']] = $attrs['Priority'];
+              $this->servers[$name]['Priorities'][$attrs['priority']] = $attrs['priority'];
             }
           }
         }
