@@ -90,7 +90,7 @@ class rsyslog extends plugin
         // Get list of Hosts using this log server..
         if (preg_match('/r/', $this->servers[$name]['ACL'])) {
           $query = "SELECT distinct(FromHost) FROM SystemEvents;";
-          $res =& $link->query($query);
+          $res = $link->query($query);
           if (PEAR::isError($res)) {
             $this->servers[$name]['status'] = "query_failed";
             $this->servers[$name]['error']  = $res->getMessage();
@@ -100,7 +100,7 @@ class rsyslog extends plugin
             }
           }
           $query = "SELECT distinct(Priority) FROM SystemEvents ORDER BY Priority;";
-          $res =& $link->query($query);
+          $res = $link->query($query);
           if (PEAR::isError($res)) {
             $this->servers[$name]['status'] = "query_failed";
             $this->servers[$name]['error']  = $res->getMessage();
@@ -220,7 +220,7 @@ class rsyslog extends plugin
 
       // Detect amount of matching entries
       $query = "SELECT count(ID) as `amount` ".$filter;
-      $res =& $link->query($query);
+      $res = $link->query($query);
       if(PEAR::isError($res)) {
         $this->servers[$name]['status'] = "query_failed";
         $this->servers[$name]['error']  = $res->getMessage();
@@ -240,7 +240,7 @@ class rsyslog extends plugin
         }
 
         $query = "SELECT * ".$filter;
-        $res =& $link->query($query);
+        $res = $link->query($query);
         if(PEAR::isError($res)) {
           $this->servers[$name]['status'] = "query_failed";
           $this->servers[$name]['error']  = $res->getMessage();
