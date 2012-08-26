@@ -1,23 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 #  Niels Klomp (CareWorks ICT Services) <nk@careworks.nl>, 2005, 2006, 2007, 2008.
 #   <tordeurskenny@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
 "POT-Creation-Date: 2012-08-22 18:37+0200\n"
 "PO-Revision-Date: 2012-08-01 16:18+0000\n"
 "Last-Translator: Kenny Tordeurs <tordeurskenny@gmail.com>\n"
-"Language-Team: Dutch (http://www.transifex.com/projects/p/FusionDirectory/"
-"language/nl/)\n"
-"Language: nl\n"
+"Language-Team: Dutch (http://www.transifex.com/projects/p/FusionDirectory/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: admin/systems/samba/class_winGeneric.inc:132
@@ -447,8 +446,7 @@ msgstr "Nee"
 #: personal/samba/class_sambaAccount.inc:802
 #, php-format
 msgid "The password would expire on %s, but the password expiry is disabled."
-msgstr ""
-"Het paswoord zou vervallen op %s, maar paswoord vervallen is gedesactiveerd."
+msgstr "Het paswoord zou vervallen op %s, maar paswoord vervallen is gedesactiveerd."
 
 #: personal/samba/class_sambaAccount.inc:808
 msgid "Password change available"
@@ -477,16 +475,12 @@ msgstr "Waarschuwing"
 
 #: personal/samba/class_sambaAccount.inc:1053
 msgid "Undefined Samba SID detected. Please fix this problem manually!"
-msgstr ""
-"Er is een ongedefinieerd SambaSID geselecteerd. Repareer dit probleem a.u.b. "
-"handmatig!"
+msgstr "Er is een ongedefinieerd SambaSID geselecteerd. Repareer dit probleem a.u.b. handmatig!"
 
 #: personal/samba/class_sambaAccount.inc:1078
 msgid ""
 "Cannot convert primary group to samba group: group cannot be identified!"
-msgstr ""
-"Kan primaire groep niet in een samba groep omzetten: group kan niet "
-"geidentificeerd worden"
+msgstr "Kan primaire groep niet in een samba groep omzetten: group kan niet geidentificeerd worden"
 
 #: personal/samba/class_sambaAccount.inc:1177 personal/samba/main.inc:135
 msgid "Samba settings"
@@ -536,9 +530,7 @@ msgstr "Sta verbinding toe vanaf"
 msgid ""
 "The windows user manager only allows eight clients. You've specified more "
 "than eight."
-msgstr ""
-"Het Windows gebruikersbeheer programma staat slechts acht clients toe. U "
-"heeft er meer dan acht opgegeven."
+msgstr "Het Windows gebruikersbeheer programma staat slechts acht clients toe. U heeft er meer dan acht opgegeven."
 
 #: personal/samba/samba3_workstations.tpl:6
 msgid "Select workstations to add"

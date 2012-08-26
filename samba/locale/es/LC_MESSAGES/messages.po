@@ -1,22 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 #  Alejandro Escanero Blanco <aescanero@gmail.com>, 2008, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
 "POT-Creation-Date: 2012-08-22 18:37+0200\n"
 "PO-Revision-Date: 2012-05-26 16:52+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Spanish (http://www.transifex.com/projects/p/FusionDirectory/"
-"language/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/FusionDirectory/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: admin/systems/samba/class_winGeneric.inc:132
@@ -67,8 +66,7 @@ msgstr "Nombre de maquina"
 
 #: personal/samba/sambaLogonHours.tpl:22
 msgid "Specify the hours this user is allowed to log in"
-msgstr ""
-"Introducir las horas en que este usuario tendrá permiso de inicio de sesión"
+msgstr "Introducir las horas en que este usuario tendrá permiso de inicio de sesión"
 
 #: personal/samba/sambaLogonHours.tpl:28
 msgid "Hour"
@@ -447,9 +445,7 @@ msgstr "No"
 #: personal/samba/class_sambaAccount.inc:802
 #, php-format
 msgid "The password would expire on %s, but the password expiry is disabled."
-msgstr ""
-"La contraseña debió caducar en %s, pero caducidad de contraseña esta "
-"desactivada."
+msgstr "La contraseña debió caducar en %s, pero caducidad de contraseña esta desactivada."
 
 #: personal/samba/class_sambaAccount.inc:808
 msgid "Password change available"
@@ -478,16 +474,12 @@ msgstr "Aviso"
 
 #: personal/samba/class_sambaAccount.inc:1053
 msgid "Undefined Samba SID detected. Please fix this problem manually!"
-msgstr ""
-"Se ha detectado un SID Samba sin definir. ¡Por favor solucione este problema "
-"manualmente!"
+msgstr "Se ha detectado un SID Samba sin definir. ¡Por favor solucione este problema manualmente!"
 
 #: personal/samba/class_sambaAccount.inc:1078
 msgid ""
 "Cannot convert primary group to samba group: group cannot be identified!"
-msgstr ""
-"No se puede convertir un grupo primario a grupo samba: ¡El grupo no puede "
-"ser identificado!"
+msgstr "No se puede convertir un grupo primario a grupo samba: ¡El grupo no puede ser identificado!"
 
 #: personal/samba/class_sambaAccount.inc:1177 personal/samba/main.inc:135
 msgid "Samba settings"
@@ -537,9 +529,7 @@ msgstr "Permitir la conexión desde"
 msgid ""
 "The windows user manager only allows eight clients. You've specified more "
 "than eight."
-msgstr ""
-"El administrador de usuarios de windows solo permite ocho clientes. Ha "
-"especificado mas de ocho."
+msgstr "El administrador de usuarios de windows solo permite ocho clientes. Ha especificado mas de ocho."
 
 #: personal/samba/samba3_workstations.tpl:6
 msgid "Select workstations to add"

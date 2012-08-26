@@ -1,23 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Kenny Tordeurs <tordeurskenny@gmail.com>, 2012.
 #  Niels Klomp (CareWorks ICT Services) <nk@careworks.nl>, 2005.
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
 "POT-Creation-Date: 2012-08-22 18:37+0200\n"
 "PO-Revision-Date: 2012-08-02 18:01+0000\n"
 "Last-Translator: Kenny Tordeurs <tordeurskenny@gmail.com>\n"
-"Language-Team: Dutch (http://www.transifex.com/projects/p/FusionDirectory/"
-"language/nl/)\n"
-"Language: nl\n"
+"Language-Team: Dutch (http://www.transifex.com/projects/p/FusionDirectory/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: admin/macro/macro-list.tpl:13 admin/macro/class_gofonMacro.inc:567
@@ -87,9 +86,7 @@ msgstr "Filter"
 msgid ""
 "Macro could not be removed from server '%s', please check database "
 "consistency!"
-msgstr ""
-"Macro kon niet worden verwijderd van de server '%s', verifieer aub de "
-"databank consistentie!"
+msgstr "Macro kon niet worden verwijderd van de server '%s', verifieer aub de databank consistentie!"
 
 #: admin/macro/class_gofonMacro.inc:264
 #, php-format
@@ -115,9 +112,7 @@ msgstr "Duplicate combinatie van 'extensie' en 'prioriteit' op lijn %s!"
 #, php-format
 msgid ""
 "Macro could not be added to server '%s', please check database consistency!"
-msgstr ""
-"Macro kon niet worden toegevoegd aan de server '%s', verifieer de databank "
-"consistentie"
+msgstr "Macro kon niet worden toegevoegd aan de server '%s', verifieer de databank consistentie"
 
 #: admin/macro/class_gofonMacro.inc:343 admin/macro/class_gofonMacro.inc:452
 #: admin/macro/class_gofonMacro.inc:461 admin/macro/class_gofonMacro.inc:499
@@ -254,15 +249,11 @@ msgstr "Waarschuwing"
 msgid ""
 "Please double check if you really want to do this since there is no way for "
 "FusionDirectory to get your data back."
-msgstr ""
-"Verifieer aub dubbel of je dit echt wil doen want er is geen manier voor "
-"FusionDirectory om je data terug te plaatsen."
+msgstr "Verifieer aub dubbel of je dit echt wil doen want er is geen manier voor FusionDirectory om je data terug te plaatsen."
 
 #: admin/macro/remove.tpl:10 admin/conference/remove.tpl:10
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr ""
-"Indien u zeker bent drukt u dan 'Verwijderen' om door te gaan of 'Annuleren' "
-"om te annuleren."
+msgstr "Indien u zeker bent drukt u dan 'Verwijderen' om door te gaan of 'Annuleren' om te annuleren."
 
 #: admin/macro/class_gofonMacroParameters.inc:221
 #: personal/phoneaccount/generic.tpl:125 personal/phoneaccount/generic.tpl:127
@@ -288,8 +279,7 @@ msgstr "Verwijder ongebruikte"
 #: admin/macro/class_gofonMacroParameters.inc:361
 #, php-format
 msgid "Parameter %s contains invalid character. '!,#' is used as delimiter!"
-msgstr ""
-"Parameter %s bevat ongeldige karakters. '!,#' word gebruikt als delimeter!"
+msgstr "Parameter %s bevat ongeldige karakters. '!,#' word gebruikt als delimeter!"
 
 #: admin/macro/class_gofonMacroParameters.inc:366
 #, php-format
@@ -305,9 +295,7 @@ msgstr "Informatie"
 msgid ""
 "Number of parameters for this macro has changed. Please update all users "
 "using it!"
-msgstr ""
-"Aantal parameters voor deze macro zijn gewijzigd. Gelieve alle gebruikers "
-"die dit gebruiken up te daten!"
+msgstr "Aantal parameters voor deze macro zijn gewijzigd. Gelieve alle gebruikers die dit gebruiken up te daten!"
 
 #: admin/macro/generic.tpl:18
 msgid "Macro name to be displayed"
@@ -351,9 +339,7 @@ msgstr "Obsolete inzending"
 msgid ""
 "The current home server is not available anymore. It will be moved to '%s' "
 "if you save this entry!"
-msgstr ""
-"De huidige home server is niet meer beschikbaar. Het zal naar '%s' worden "
-"verplaatst als je deze inzending opslaagd!"
+msgstr "De huidige home server is niet meer beschikbaar. Het zal naar '%s' worden verplaatst als je deze inzending opslaagd!"
 
 #: admin/conference/class_phoneConferenceGeneric.inc:233
 #, php-format
@@ -364,8 +350,7 @@ msgstr "Kan inzending niet van server '%s' verwijderen want het bestaat niet!"
 #, php-format
 msgid ""
 "The previously selected asterisk home server '%s' is no longer available!"
-msgstr ""
-"De vorige geselecteerde asterisk home server '%s' is niet langer beschikbaar!"
+msgstr "De vorige geselecteerde asterisk home server '%s' is niet langer beschikbaar!"
 
 #: admin/conference/class_phoneConferenceGeneric.inc:315
 #: admin/conference/generic.tpl:159
@@ -385,11 +370,9 @@ msgstr "Levensduur"
 #: admin/conference/class_phoneConferenceGeneric.inc:400
 #, php-format
 msgid ""
-"FusionDirectory identified problems with your MySQL table definition, please "
-"activate debugging for details."
-msgstr ""
-"FusionDirectory heeft problemen met je MySQL tabel definitie gevonden, "
-"gelieve de debug te activeren voor details"
+"FusionDirectory identified problems with your MySQL table definition, please"
+" activate debugging for details."
+msgstr "FusionDirectory heeft problemen met je MySQL tabel definitie gevonden, gelieve de debug te activeren voor details"
 
 #: admin/conference/class_phoneConferenceGeneric.inc:606
 #: admin/conference/class_phoneConferenceGeneric.inc:608
@@ -758,9 +741,7 @@ msgstr "Land prefix"
 msgid ""
 "You can't remove the asterisk database extension, it is still in use by "
 "these objects '%s'."
-msgstr ""
-"Je kan de asterisk databank niet verwijderen, het is in gebruik door deze "
-"objecten '%s'."
+msgstr "Je kan de asterisk databank niet verwijderen, het is in gebruik door deze objecten '%s'."
 
 #: admin/systems/services/gofon/class_goFonServer.inc:186
 msgid "VoIP - asterisk management"
@@ -835,9 +816,7 @@ msgstr "Telefoonwachtrij aanmaken"
 msgid ""
 "There must be at least one server with an asterisk database to create a "
 "phone queue."
-msgstr ""
-"Er moet minstens 1 server met een asterisk databank bestaan om een telefoon "
-"wachtrij aan te maken"
+msgstr "Er moet minstens 1 server met een asterisk databank bestaan om een telefoon wachtrij aan te maken"
 
 #: admin/ogroups/gofon/class_phonequeue.inc:281
 #: admin/ogroups/gofon/class_phonequeue.inc:891
@@ -875,9 +854,7 @@ msgstr "Kon geen oude wachtrij inzending vinden!"
 msgid ""
 "Found more than one entry named '%s' in queue table. Please inform your "
 "system administrator!"
-msgstr ""
-"Er is meer dan 1 inzending gevonden on de naam '%s' in de wachtrij tabel. "
-"Gelieve je systeem beheerder op de hoogte te brengen!"
+msgstr "Er is meer dan 1 inzending gevonden on de naam '%s' in de wachtrij tabel. Gelieve je systeem beheerder op de hoogte te brengen!"
 
 #: admin/ogroups/gofon/class_phonequeue.inc:728
 #: admin/ogroups/gofon/class_phonequeue.inc:730
@@ -989,10 +966,9 @@ msgstr "Vermelding"
 
 #: admin/ogroups/gofon/phonequeue.tpl:2
 msgid ""
-"Only users with the same asterisk home server will be included to this queue."
-msgstr ""
-"Enkel gebruikers met dezelfde asterisk home server worden toegevoegd aan "
-"deze wachtrij"
+"Only users with the same asterisk home server will be included to this "
+"queue."
+msgstr "Enkel gebruikers met dezelfde asterisk home server worden toegevoegd aan deze wachtrij"
 
 #: admin/ogroups/gofon/phonequeue.tpl:5
 msgid "Queue Settings"
@@ -1196,14 +1172,12 @@ msgstr "niet gedefiniëerd"
 #, php-format
 msgid ""
 "Cannot identify telephone extension in database, please try to save again."
-msgstr ""
-"Kan telefoon extensie niet identificeren in databank, probeer aub opnieuw."
+msgstr "Kan telefoon extensie niet identificeren in databank, probeer aub opnieuw."
 
 #: personal/phoneaccount/class_phoneAccount.inc:588
 #: personal/phoneaccount/class_phoneAccount.inc:606
 msgid "Abort saving entries to keep the database consistent."
-msgstr ""
-"Stop met inzendingen op te slaan om de databank consistentie te behouden"
+msgstr "Stop met inzendingen op te slaan om de databank consistentie te behouden"
 
 #: personal/phoneaccount/class_phoneAccount.inc:629
 #: personal/phoneaccount/class_phoneAccount.inc:668
@@ -1211,8 +1185,7 @@ msgstr ""
 #, php-format
 msgid ""
 "FusionDirectory identified problems with your database table definition!"
-msgstr ""
-"FusionDirectory heeft problemen met je databank tabel definitie gevonden!"
+msgstr "FusionDirectory heeft problemen met je databank tabel definitie gevonden!"
 
 #: personal/phoneaccount/class_phoneAccount.inc:1033
 msgid "Remove phone account"
@@ -1243,9 +1216,7 @@ msgstr "Kies uw privé telefoon"
 msgid ""
 "There must be at least one server with an asterisk database to create a "
 "phone account."
-msgstr ""
-"Er moet minstens 1 server met asterisk databank bestaan om een telefoon "
-"account te maken"
+msgstr "Er moet minstens 1 server met asterisk databank bestaan om een telefoon account te maken"
 
 #: personal/phoneaccount/class_phoneAccount.inc:1382
 #: personal/phoneaccount/class_phoneAccount.inc:1385
@@ -1289,9 +1260,7 @@ msgstr "Het opgegeven telefoonnummer '%s' is al toegekend aan '%s'."
 msgid ""
 "The previously selected asterisk home server (%s) is no longer available. "
 "Remove aborted."
-msgstr ""
-"De vorige geselecteerde asterisk home server (%s) is niet meer beschikbaar. "
-"Verwijdering is geannuleerd."
+msgstr "De vorige geselecteerde asterisk home server (%s) is niet meer beschikbaar. Verwijdering is geannuleerd."
 
 #: personal/phoneaccount/class_phoneAccount.inc:1722
 msgid "Phone account settings"
@@ -1344,15 +1313,11 @@ msgstr "Telefoon pin bevat ongeldige karakters!"
 #: personal/phoneaccount/class_phoneAccount.inc:1847
 #, php-format
 msgid "The parameter %s contains invalid char. '!,#' is used as delimiter"
-msgstr ""
-"De bevat '%s' bevat ongeldige karakters. '!,#' worden gebruikt als "
-"scheidingstekens"
+msgstr "De bevat '%s' bevat ongeldige karakters. '!,#' worden gebruikt als scheidingstekens"
 
 #: personal/phoneaccount/main.inc:124
 msgid "Click the 'Edit' button below to change informations in this dialog"
-msgstr ""
-"Gebruik de 'Bewerk' knop hieronder om de informatie in deze dialoog te "
-"veranderen"
+msgstr "Gebruik de 'Bewerk' knop hieronder om de informatie in deze dialoog te veranderen"
 
 #: personal/phoneaccount/main.inc:134
 #: personal/phoneaccount/paste_generic.tpl:1
