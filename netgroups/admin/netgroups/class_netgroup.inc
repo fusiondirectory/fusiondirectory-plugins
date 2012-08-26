@@ -17,7 +17,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
  */
 
 class netgroup extends plugin {
@@ -32,7 +32,7 @@ class netgroup extends plugin {
     var $triples_used_by_some = array();
     var $allusers = array();
     var $users_used_by_some = array();
-    
+
     var $nisNetgroupTriple = array();
     var $memberNisNetgroup = array();
 
@@ -286,14 +286,14 @@ class netgroup extends plugin {
 
 /*        $tmp_members=array();
         $tmp_members_used_by_some=array();
-        
+
         foreach ($this->triples_used_by_some as $key => $value) {
             $tmp_members_used_by_some[$key]=$value;
         }
         foreach ($this->netgroups_used_by_some as $key => $value) {
             $tmp_members_used_by_some[$key]=$value;
         }
-  */      
+  */
         $smarty->assign("memberCn_All", $this->allusers);
         $smarty->assign("memberCn_Some", $this->users_used_by_some);
 
@@ -412,7 +412,7 @@ class netgroup extends plugin {
             $this->allusers=array();
             $this->users_used_by_some=array();
         }
-  */      
+  */
         /* Prepare ldap link */
         $ldap = $this->config->get_ldap_link();
         $ldap->cd($nngufilter['dselect']);
@@ -533,7 +533,7 @@ class netgroup extends plugin {
                     }
                 }
             }
-            
+
             /* Search in all the tree for the component of this netgroup */
             if (!empty($netgroupfilter_used_by_some)) {
                 $ldap->cd($this->config->current['BASE']);
@@ -546,9 +546,9 @@ class netgroup extends plugin {
                     $this->users_used_by_some[$value] = $this->createResultName($attrs, "nisNetgroup");
                 }
             }
-            
+
         }
-        
+
         /* Search in all the tree for the component of this netgroup */
         if (!empty($netgroupfilter)) {
             $ldap->cd($this->config->current['BASE']);
@@ -962,7 +962,7 @@ class netgroup extends plugin {
     function multiple_execute() {
         return($this->execute());
     }
-    
+
     /* Initialize plugin with given atribute arrays
      */
 
@@ -1022,9 +1022,9 @@ class netgroup extends plugin {
             }
             ksort($this->triples_used_by_some);
         }
-        
+
         $this->reload();
-        
+
     }
 
     function PrepareForCopyPaste($source) {
