@@ -56,9 +56,7 @@ class SelectDeviceType extends plugin
     $this->ObjectGroups= $tmp;
 
     $this->SystemTypes =array("gotoWorkstation"=>_("Workstation"), "gotoTerminal"=>_("Terminal"), "goServer"=>_("Server"));
-    if(class_available("opsi")){
-      $this->SystemTypes["FAKE_OC_OpsiHost"]= _("Windows workstation");
-    }
+
   }
 
   function execute()
@@ -80,11 +78,11 @@ class SelectDeviceType extends plugin
     $smarty= get_smarty();
     $display= "";
 
-    $map = array("gotoWorkstation" => "W","gotoTerminal" => "T","goServer" => "S", "FAKE_OC_OpsiHost" => "O");
+    $map = array("gotoWorkstation" => "W","gotoTerminal" => "T","goServer" => "S");
     $smarty->assign("dns_cnt" , count($this->dns));
     $smarty->assign("ogroups", $tmp[$map[$this->SystemType]]);
     $smarty->assign("SystemTypes"     ,$this->SystemTypes);
-    $smarty->assign("SystemTypeKeys"  ,array_flip($this->SystemTypes)); 
+    $smarty->assign("SystemTypeKeys"  ,array_flip($this->SystemTypes));
     $smarty->assign("ObjectGroup",$this->ObjectGroup);
     $smarty->assign("SystemType",$this->SystemType);
     $display.= $smarty->fetch(get_template_path('SelectDeviceType.tpl', TRUE,dirname(__FILE__)));

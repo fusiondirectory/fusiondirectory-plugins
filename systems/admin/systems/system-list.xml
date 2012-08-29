@@ -11,14 +11,6 @@
     <defaultSortColumn>1</defaultSortColumn>
 
     <objectType>
-      <label>Opsi host</label>
-      <objectClass>FAKE_OC_OpsiHost</objectClass>
-      <category>opsi</category>
-      <class>opsiGeneric</class>
-      <image>plugins/systems/images/select_winstation.png</image>
-    </objectType>
-
-    <objectType>
       <label>New workstation</label>
       <objectClass>FAKE_OC_NewWorkstation</objectClass>
       <category>workstation</category>
@@ -273,14 +265,6 @@
       <image>plugins/systems/images/select_component.png</image>
       <label>Network device</label>
       <depends>componentGeneric</depends>
-     </action>
-
-     <action>
-      <name>new_FAKE_OC_OpsiHost</name>
-      <type>entry</type>
-      <image>plugins/systems/images/select_winstation.png</image>
-      <label>Opsi client</label>
-      <depends>opsi</depends>
      </action>
     </action>
 

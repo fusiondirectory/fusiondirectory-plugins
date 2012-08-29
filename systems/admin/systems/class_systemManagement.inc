@@ -67,7 +67,6 @@ class systemManagement extends management
   protected $aclPlugin        = "";
   protected $objectName       = "system";
   protected $objectInfo       = array();
-  protected $opsi             = NULL;
   protected $activationQueue  = array();
 
   function __construct($config,$ui)
@@ -124,7 +123,6 @@ class systemManagement extends management
     $this->registerAction("new_gotoPrinter",      "newEntry");
     $this->registerAction("new_goFonHardware",    "newEntry");
     $this->registerAction("new_ieee802Device",    "newEntry");
-    $this->registerAction("new_FAKE_OC_OpsiHost", "newEntry");
 
     $this->registerAction("setPassword", "setPassword");
     $this->registerAction("passwordChangeConfirmed", "passwordChangeConfirmed");
@@ -137,16 +135,12 @@ class systemManagement extends management
       $this->snapHandler = new SnapshotHandler($this->config);
     }
 
-    // Check if we are able to communicate with GOto-si daemon
+    // Check if we are able to communicate with Argonaut server
     if(class_available("supportDaemon")){
       $o = new supportDaemon();
       $this->si_active = $o->is_available() && class_available("DaemonEvent");
     }
 
-    // Check if we are able to communicate with GOto-si daemon
-    if(class_available("opsi")){
-      $this->opsi = new opsi($this->config);
-    }
     parent::__construct($config, $ui, "systems", $headpage);
   }
 
@@ -424,7 +418,7 @@ class systemManagement extends management
   }
 
 
-  /*! \brief    Handle GOto-si events
+  /*! \brief    Handle Argonaut events
    *            All schedules and triggered events are handled here.
    */
   function handleEvent($action="",$target=array(),$all=array())
@@ -440,22 +434,9 @@ class systemManagement extends management
     $event = preg_replace("/^[TS]_/","",$action);
     if(preg_match("/^[TS]_/", $action)){
 
-      // Send special reinstall action for opsi hosts
-      if($event == "DaemonEvent_reinstall" && $this->si_active && $this->opsi){
-        foreach($target as $key => $dn){
-          $type = $headpage->getType($dn);
-
-          // Send Reinstall event for opsi hosts
-          if($type == "FAKE_OC_OpsiHost"){
-            $obj = $headpage->getEntry($dn);
-            $this->opsi->job_opsi_install_client($obj['cn'][0],$obj['macAddress'][0]);
-            unset($target[$key]);
-          }
-        }
-      }
     }
 
-    // Now send remaining FAI/GOto-si events here.
+    // Now send remaining FAI/Argonaut events here.
     if(count($target) && $this->si_active){
       $mac= array();
 
@@ -519,7 +500,7 @@ class systemManagement extends management
 
 
   /*! \brief  Save event dialogs.
-   *          And append the new GOto-si event.
+   *          And append the new Argonaut event.
    */
   function saveEventDialog()
   {
@@ -837,20 +818,6 @@ class systemManagement extends management
             $this->tabObject->base = $headpage->getBase();
           }
 
-          // Assign some default values for opsi hosts
-          if($this->tabObject instanceOf opsi_tabs){
-            $ldap = $this->config->get_ldap_link();
-            $ldap->cat($dn);
-            $source_attrs = $ldap->fetch();
-            foreach(array("macAddress" => "mac" ,"cn" => "hostId","description" => "description") as $src => $attr){
-              if(isset($source_attrs[$src][0])){
-                $this->tabObject->by_object['opsiGeneric']->$attr = $source_attrs[$src][0];
-              }
-            }
-            @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,
-                "", "<b>OPSI attributes adapted</b>");
-          }
-
           // Queue entry to be activated, when it is saved.
           if($data['OG'] != "none"){
 
@@ -968,22 +935,7 @@ class systemManagement extends management
       unset($this->activationQueue[$this->last_dn]);
     }
 
-    /* Post handling for activated systems
-       target opsi -> Remove source.
-       target gosa -> Activate system.
-     */
-    if($this->last_tabObject instanceOf opsi_tabs){
-      $ldap = $this->config->get_ldap_link();
-      $ldap->cd($this->config->current['BASE']);
-      $ldap->rmdir ($this->last_tabObject->dn);
-      @DEBUG(DEBUG_LDAP,__LINE__, __FUNCTION__, __FILE__,
-          "Source removed: ".$this->tabObject->dn,"<b>Opsi host activated</b>");
-
-      $hostId =  $this->last_tabObject->by_object['opsiGeneric']->hostId;
-      $mac    =  $this->last_tabObject->by_object['opsiGeneric']->mac;
-      $this->opsi->job_opsi_activate_client($hostId,$mac);
-
-    }elseif(isset($this->last_tabObject->was_activated) && $this->last_tabObject->was_activated){
+    if(isset($this->last_tabObject->was_activated) && $this->last_tabObject->was_activated) {
       $this->activate_new_device($this->last_tabObject->dn);
     }
 
@@ -1001,22 +953,7 @@ class systemManagement extends management
     $str = management::applyChanges();
     if($str) return($str);
 
-    /* Post handling for activated systems
-       target opsi -> Remove source.
-       target gosa -> Activate system.
-     */
-    if($this->tabObject instanceOf opsi_tabs){
-      $ldap = $this->config->get_ldap_link();
-      $ldap->cd($this->config->current['BASE']);
-      $ldap->rmdir ($this->tabObject->dn);
-      @DEBUG(DEBUG_LDAP,__LINE__, __FUNCTION__, __FILE__,
-          "Source removed: ".$this->tabObject->dn,"<b>Opsi host activated</b>");
-
-      $hostId =  $this->tabObject->by_object['opsiGeneric']->hostId;
-      $mac    =  $this->tabObject->by_object['opsiGeneric']->mac;
-      $this->opsi->job_opsi_activate_client($hostId,$mac);
-
-    }elseif(isset($this->tabObject->was_activated) && $this->tabObject->was_activated){
+    if(isset($this->tabObject->was_activated) && $this->tabObject->was_activated) {
       $this->activate_new_device($this->tabObject->dn);
     }
   }
@@ -1205,7 +1142,6 @@ class systemManagement extends management
     if(isset($_POST['new_gotoPrinter']))  $action['action'] = "new_gotoPrinter";
     if(isset($_POST['new_goFonHardware']))  $action['action'] = "new_goFonHardware";
     if(isset($_POST['new_ieee802Device']))  $action['action'] = "new_ieee802Device";
-    if(isset($_POST['new_FAKE_OC_OpsiHost']))  $action['action'] = "new_FAKE_OC_OpsiHost";
 
     if(!is_object($this->tabObject) && !is_object($this->dialogObject)){
       if(count($this->activationQueue)) $action['action'] = "handleActivationQueue";
@@ -1239,15 +1175,6 @@ class systemManagement extends management
   public function getObjectDefinitions()
   {
     $tabs = array(
-        "FAKE_OC_OpsiHost" => array(
-          "ou"          => "",
-          "plugClass"   => "opsiGeneric",
-          "tabClass"    => "opsi_tabs",
-          "tabDesc"     => "OPSITABS",
-          "aclClass"    => "opsiGeneric",
-          "sendEvents"  => TRUE,
-          "aclCategory" => "opsi"),
-
         "goServer" => array(
           "ou"          => get_ou('serverRDN'),
           "plugClass"   => "servgeneric",

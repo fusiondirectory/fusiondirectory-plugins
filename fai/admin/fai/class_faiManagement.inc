@@ -47,18 +47,10 @@ class faiManagement extends management
   var $lock_dn = "";
   var $lock_name = "";
 
-  var $opsi = NULL;
-
 
   function __construct($config,$ui)
   {
     $this->config = $config;
-
-    /* Check if the opsi plugin is installed.
-     */
-    if (class_available("opsi")) {
-      $this->opsi = new opsi($this->config);;
-    }
 
     $this->fai_base = get_ou("faiBaseRDN").$this->config->current['BASE'];
     $cfg_rel = $this->config->search("faiManagement","DEFAULTFAIRELEASE",array("menu"));
@@ -116,7 +108,6 @@ class faiManagement extends management
     $this->registerAction("new_package","newEntry");
     $this->registerAction("new_partition","newEntry");
     $this->registerAction("newClassNameSelected","newClassNameSelected");
-    $this->registerAction("saveOpsiProperties","saveOpsiProperties");
     $this->registerAction("editByGroup","editByGroup");
     $this->registerAction("createBranch","createBranch");
     $this->registerAction("createFreeze","createFreeze");
@@ -282,23 +273,6 @@ class faiManagement extends management
       $entry = $headpage->getEntry($target[0]);
       if ($entry) {
 
-        // Edit Opsi objects here
-        if (in_array("opsi_local", $entry['TYPES']) || in_array("opsi_netboot", $entry['TYPES'])) {
-          $name = $entry['cn'];
-          $cfg = $this->opsi->get_product_properties($name);
-
-          $str = management::editEntry('editEntry',array($name),array(),'tabs_opsiProdConfig','OPSIPRODCONFIG','opsi');
-          if ($str) return($str);
-          if (isset($this->tabObject->by_object['opsiProperties'])) {
-            $this->tabObject->by_object['opsiProperties']->set_cfg($cfg);
-            $this->tabObject->by_object['opsiProperties']->set_product($name);
-            $this->skipFooter = TRUE;
-          } else {
-            trigger_error("Unknown tab, please check config.");
-          }
-
-        } else {
-
           // Edit FAI objects here
           if (count($entry['GROUPS']) == 1) {
             $data = array_pop($entry['GROUPS']);
@@ -314,27 +288,6 @@ class faiManagement extends management
         }
       }
     }
-  }
-
-
-  /*! \brief   Save changes made in opsi dialogs.
-   */
-  function saveOpsiProperties()
-  {
-    if($this->tabObject instanceof tabs_opsiProdConfig && isset($_POST['save_properties'])){
-      $this->tabObject->save_object();
-      $op    = $this->tabObject->by_object['opsiProperties'];
-      $name  = $op->get_product();
-      $cfg   = $op->get_cfg();
-      $this->opsi->set_product_properties($name,$cfg);
-      if($this->opsi->is_error()){
-        msg_dialog::display(_("Error"),msgPool::siError($this->opsi->get_error()),ERROR_DIALOG);
-      }else{
-        $this->remove_lock();
-        $this->closeDialogs();
-      }
-    }
-  }
 
 
   /*! \brief   Someone wants to remove some object(s)
@@ -1009,11 +962,7 @@ class faiManagement extends management
         "FAIprofile"         => array("IMG"=> "plugins/fai/images/fai_profile.png",
           "NAME"=>_("Profile") ,       "KZL"=> "P",  "VAR"=>"ShowProfiles"),
         "FAItemplate"        => array("IMG"=> "plugins/fai/images/fai_template.png",
-          "NAME"=>_("Templates") ,     "KZL"=> "T",  "VAR"=>"ShowTemplates"),
-        "opsi_netboot"       => array("IMG"=> "plugins/opsi/images/netboot_package.png",
-          "NAME"=>_("OPSI netboot product") ,     "KZL"=> "ON",  "VAR"=>"ShowOpsiNetboot"),
-        "opsi_local"         => array("IMG"=> "plugins/opsi/images/local_package.png",
-          "NAME"=>_("OPSI localboot product")   ,     "KZL"=> "OL",  "VAR"=>"ShowOpsiLocal"));
+          "NAME"=>_("Templates") ,     "KZL"=> "T",  "VAR"=>"ShowTemplates"));
 
     $icon_list = "";
     foreach($objects as $type => $type_data){
@@ -1045,7 +994,6 @@ class faiManagement extends management
     $headpage->update();
     $smarty = get_smarty();
     $smarty->assign("fai_release", $this->fai_release);
-    $smarty->assign("opsi_available", (is_object($this->opsi) && $this->opsi->enabled()));
     $smarty->assign("fai_base", $this->fai_base);
     $r = $this->config->search("faiManagement", "POSTREMOVE",array('menu','tabs'));
     $c = $this->config->search("faiManagement", "POSTCREATE",array('menu','tabs'));
