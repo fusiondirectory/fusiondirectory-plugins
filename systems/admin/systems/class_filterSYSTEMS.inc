@@ -45,9 +45,9 @@ class filterSYSTEMS {
         }elseif(in_array('gotoTerminal', $entry['objectClass'])){
           $entries[$key]['objectClass'][] = 'FAKE_OC_NewTerminal';
           $entries[$key]['cn'][0].= " <i>("._("New terminal").")</i>";
-        }elseif($arp_handling_active && 
-            in_array('GOhard', $entry['objectClass']) && 
-            !isset($entry['gotoMode'][0])){ 
+        }elseif($arp_handling_active &&
+            in_array('GOhard', $entry['objectClass']) &&
+            !isset($entry['gotoMode'][0])){
           $entries[$key]['objectClass'][] = 'FAKE_OC_ArpNewDevice';
           $entries[$key]['cn'][0].= " <i>("._("New unknown device").")</i>";
         }elseif(in_array('GOhard', $entry['objectClass'])){
@@ -126,44 +126,6 @@ class filterSYSTEMS {
       }
     }
 
-    // Append opsi stuff ...
-    global $config;
-    $ui = get_userinfo();
-    if(preg_match("/FAIstate=__NETBOOT__/", $filter) && 
-        class_available('opsi') &&
-        $base == $config->current['BASE']){
-
-      // Get filter regex ...
-      $regex = "";
-      if(preg_match("/\(cn=[^\)\$]*\)/", $filter)){
-        $regex = trim(preg_replace("/^.*\(cn=([^\)\$]*)\).*$/","\\1", $filter),"* ");
-      }
-
-      // Check ACLs and opsi handle
-      $opsi_acl = $ui->get_permissions($base,"opsi/opsiProperties");
-      $opsi = new opsi($config);
-      $objects = array();
-      if($opsi instanceof opsi && $opsi->enabled() && preg_match("/r/",$opsi_acl)){
-
-        // Get list of opsi hosts 
-        $opsi_clients = $opsi->get_hosts_for_system_management();
-        if($opsi->is_error()){
-          msg_dialog::display(_("Error"),msgPool::siError($opsi->get_error()),ERROR_DIALOG);
-        }else{
-          foreach($opsi_clients as $entry){
-            if(empty($regex) || preg_match('/'.preg_quote($regex,'/').'/i',$entry['cn'][0])){
-              $entry['objectClass'] = array("FAKE_OC_OpsiHost");
-              $item = array('count' => count($entry));
-              foreach($entry as  $name => $value){
-                $item[] = $name;
-                $item[$name] = $value;
-              }
-              $entries[] = $item;
-            }
-          }
-        }
-      }
-    }
     return($entries);
   }
 
