@@ -119,6 +119,7 @@ class systemManagement extends management
     $this->registerAction("new_goServer",         "newEntry");
     $this->registerAction("new_gotoWorkstation",  "newEntry");
     $this->registerAction("new_gotoTerminal",     "newEntry");
+    $this->registerAction("new_sambaSamAccount",       "newEntry");
     $this->registerAction("new_gotoPrinter",      "newEntry");
     $this->registerAction("new_goFonHardware",    "newEntry");
     $this->registerAction("new_ieee802Device",    "newEntry");
@@ -1137,6 +1138,7 @@ class systemManagement extends management
     if(isset($_POST['new_goServer']))  $action['action'] = "new_goServer";
     if(isset($_POST['new_gotoWorkstation']))  $action['action'] = "new_gotoWorkstation";
     if(isset($_POST['new_gotoTerminal']))  $action['action'] = "new_gotoTerminal";
+    if(isset($_POST['new_sambaSamAccount']))  $action['action'] = "new_sambaSamAccount";
     if(isset($_POST['new_gotoPrinter']))  $action['action'] = "new_gotoPrinter";
     if(isset($_POST['new_goFonHardware']))  $action['action'] = "new_goFonHardware";
     if(isset($_POST['new_ieee802Device']))  $action['action'] = "new_ieee802Device";

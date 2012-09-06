@@ -235,6 +235,14 @@
       <depends>termgeneric</depends>
      </action>
 
+    <action>
+      <name>new_sambaSamAccount</name>
+      <type>entry</type>
+      <image>plugins/systems/images/select_winstation.png</image>
+      <label>winStation</label>
+      <depends>wingeneric</depends>
+    </action>
+
      <action>
       <name>new_gotoPrinter</name>
       <type>entry</type>
