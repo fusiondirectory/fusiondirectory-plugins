@@ -23,33 +23,37 @@
 class wingeneric extends plugin
 {
   /* Generic terminal attributes */
-  var $interfaces = array();
+  var $interfaces= array();
 
   /* Needed values and lists */
-  var $base                 = "";
-  var $cn                   = "";
-  var $description          = "";
-  var $orig_dn              = "";
-  var $shadowLastChange     = "";
-  var $uidNumber            = "";
-  var $gidNumber            = "";
-  var $loginShell           = "";
-  var $gecos                = "";
-  var $shadowMin            = "";
-  var $shadowWarning        = "";
-  var $shadowInactive       = "";
-  var $uid                  = "";
-  var $sn                   = "";
-  var $givenName            = "";
-  var $homeDirectory        = "";
-  var $sambaSID             = "";
-  var $sambaPrimaryGroupSID = "";
-  var $displayName          = "";
-  var $sambaPwdMustChange   = "";
-  var $sambaNTPassword      = "";
-  var $sambaPwdLastSet      = "";
-  var $sambaAcctFlags       = "";
+  var $base= "";
+  var $cn= "";
+  var $description= "";
+  var $orig_dn= "";
+  var $shadowLastChange="";
+  var $uidNumber=1000;
+  var $gidNumber="515";
+  var $loginShell="";
+  var $gecos="";
+  var $shadowMin="";
+  var $shadowWarning="";
+  var $shadowInactive="";
+  var $uid="";
+  var $sn="";
+  var $givenName="";
+  var $homeDirectory="";
+  var $sambaSID="";
+  var $sambaPrimaryGroupSID="";
+  var $displayName="";
+  var $sambaPwdMustChange="";
+  var $sambaNTPassword="";
+  var $sambaPwdLastSet="";
+  var $sambaAcctFlags="";
   var $netConfigDNS;
+
+  var $SID="";
+  var $ridBase= 0;
+  var $sambaDomainName= "";
 
   var $orig_cn;
   var $orig_base;
@@ -66,27 +70,27 @@ class wingeneric extends plugin
 
   var $view_logged = FALSE;
 
-  function wingeneric (&$config, $dn = NULL, $parent = NULL)
+  function wingeneric (&$config, $dn= NULL, $parent= NULL)
   {
     plugin::plugin ($config, $dn, $parent);
-    $this->netConfigDNS = new termDNS($this->config, $this, $this->objectclasses, FALSE, "uid");
-    $this->netConfigDNS->cn = preg_replace("/\\\$\$/", "", $this->uid);
-    $this->netConfigDNS->objectclasses = array("ipHost", "ieee802Device");
+    $this->netConfigDNS = new termDNS($this->config,$this,$this->objectclasses,FALSE,"uid");
+    $this->netConfigDNS->cn =  preg_replace("/\\\$\$/","",$this->uid);
+    $this->netConfigDNS->objectclasses=array("ipHost","ieee802Device");
     $this->netConfigDNS->MACisMust = TRUE;
-    $this->netConfigDNS->IPisMust = FALSE;
+    $this->netConfigDNS->IPisMust = TRUE;
 
     /* Set base */
     if ($this->dn == "new") {
       $ui = get_userinfo();
-      $this->base = dn2base(session::global_is_set("CurrentMainBase")?"cn=dummy,".session::global_get("CurrentMainBase"):$ui->dn);
-      $this->cn = "";
-    } elseif (preg_match("/".preg_quote(get_ou("systemIncomingRDN"), '/')."/i", $this->dn)) {
-      $this->base = preg_replace ("/^[^,]+,".preg_quote(get_ou("systemIncomingRDN"), '/')."/i", "", $this->dn);
+      $this->base= dn2base(session::global_is_set("CurrentMainBase")?"cn=dummy,".session::global_get("CurrentMainBase"):$ui->dn);
+      $this->cn= "";
+    } elseif(preg_match("/".preg_quote(get_ou("systemIncomingRDN"), '/')."/i", $this->dn)){
+      $this->base= preg_replace ("/^[^,]+,".preg_quote(get_ou("systemIncomingRDN"), '/')."/i", "", $this->dn);
     } else {
-      $this->base = preg_replace ("/^[^,]+,".preg_quote(get_winstations_ou(), '/')."/i", "", $this->dn);
+      $this->base= preg_replace ("/^[^,]+,".preg_quote(get_winstations_ou(), '/')."/i", "", $this->dn);
     }
 
-    $this->cn = preg_replace("/\\\$\$/", "", $this->cn);
+    $this->cn = preg_replace("/\\\$\$/","",$this->cn);
 
     /* Save dn for later references */
     $this->orig_dn    = $this->dn;
@@ -95,9 +99,10 @@ class wingeneric extends plugin
 
     /* Instanciate base selector */
     $this->baseSelector = new baseSelector($this->get_allowed_bases(), $this->base);
-    $this->baseSelector->setSubmitButton(FALSE);
+    $this->baseSelector->setSubmitButton(false);
     $this->baseSelector->setHeight(300);
-    $this->baseSelector->update(TRUE);
+    $this->baseSelector->update(true);
+
   }
 
 
@@ -122,15 +127,40 @@ class wingeneric extends plugin
 
     if ($this->is_account && !$this->view_logged) {
       $this->view_logged = TRUE;
-      new log("view", "winworkstation/".get_class($this), $this->dn);
+      new log("view","winworkstation/".get_class($this),$this->dn);
     }
 
-
-    /* Do we represent a valid phone? */
+    /* Do we represent a valid winstations? */
     if (!$this->is_account && $this->parent === NULL) {
       $display = "<img alt=\"\" src=\"images/small-error.png\" align=middle>&nbsp;<b>".
         msgPool::noValidExtension(_("network"))."</b>";
-      return $display;
+      return($display);
+    }
+
+    // Get samba domain and its sid/rid base
+    if ($this->sambaSID != "") {
+      $this->SID = preg_replace ("/-[^-]+$/", "", $this->sambaSID);
+      $ldap = $this->config->get_ldap_link();
+      $ldap->cd($this->config->current['BASE']);
+      $ldap->search ("(&(objectClass=sambaDomain)(sambaSID=$this->SID))",array("sambaAlgorithmicRidBase","sambaDomainName"));
+      if ($ldap->count() != 0) {
+        $attrs= $ldap->fetch();
+        if (isset($attrs['sambaAlgorithmicRidBase'])) {
+          $this->ridBase = $attrs['sambaAlgorithmicRidBase'][0];
+        } else {
+            $this->ridBase = $this->config->get_cfg_value("sambaRidBase");
+          }
+          if ($this->sambaDomainName == ""){
+            $this->sambaDomainName = $attrs['sambaDomainName'][0];
+          }
+      } else {
+          // Fall back to a 'DEFAULT' domain, if none was found in LDAP.
+          if ($this->sambaDomainName == "") $this->sambaDomainName= "DEFAULT";
+
+          // Nothing in ldap, use configured sid and rid values.
+          $this->ridBase = $this->config->get_cfg_value("sambaRidBase");
+          $this->SID = $this->config->get_cfg_value("sambaSid");
+        }
     }
 
     /* Fill templating stuff */
@@ -139,7 +169,7 @@ class wingeneric extends plugin
 
     $tmp = $this->plInfo();
     foreach ($tmp['plProvidedAcls'] as $name => $translated) {
-      $smarty->assign($name."ACL", $this->getacl($name));
+      $smarty->assign($name."ACL",$this->getacl($name));
     }
 
     /* Assign attributes */
@@ -149,13 +179,18 @@ class wingeneric extends plugin
 
     $smarty->assign("base", $this->baseSelector->render());
 
+    // Fill domain selection.
+    $domains = array_keys($this->config->data['SERVERS']['SAMBA']);
+    $smarty->assign("domains", $domains);
+    $smarty->assign("sambaDomainName",$this->sambaDomainName);
+
     /* Show main page */
     $str = $this->netConfigDNS->execute();
     if (is_object($this->netConfigDNS->dialog)) {
-      return $str;
+      return($str);
     }
     $smarty->assign("netconfig", $str);
-    return $smarty->fetch(get_template_path('wingeneric.tpl', TRUE, dirname(__FILE__)));
+    return($smarty->fetch (get_template_path('wingeneric.tpl', TRUE,dirname(__FILE__))));
   }
 
   function remove_from_parent()
@@ -163,7 +198,7 @@ class wingeneric extends plugin
     $this->netConfigDNS->remove_from_parent();
     $ldap = $this->config->get_ldap_link();
     $ldap->rmdir($this->dn);
-    new log("remove", "winworkstation/".get_class($this), $this->dn, array_keys($this->attrs), $ldap->get_error());
+    new log("remove","winworkstation/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
     if (!$ldap->success()) {
       msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_DEL, get_class()));
     }
@@ -172,7 +207,7 @@ class wingeneric extends plugin
     /* Delete references to object groups */
     $ldap->cd ($this->config->current['BASE']);
     $ldap->search ("(&(objectClass=gosaGroupOfNames)(member=".LDAP::prepare4filter($this->dn)."))", array("cn"));
-    while ($ldap->fetch()) {
+    while ($ldap->fetch()){
       $og = new ogroup($this->config, $ldap->getDN());
       unset($og->member[$this->dn]);
       $og->save ();
@@ -203,12 +238,21 @@ class wingeneric extends plugin
       }
     }
 
+    // get sambaDomainName attribute
+    if ($this->acl_is_writeable("sambaDomainName") && isset ($_POST['sambaDomainName'])) {
+      $this->sambaDomainName = validate($_POST['sambaDomainName']);
+    }
   }
 
 
   /* Check supplied data */
   function check()
   {
+
+    if($this->uid == "") {
+      $this->uid = $this->cn."$";
+    }
+
     /* Call common method to give check the hook */
     $message = plugin::check();
     $message = array_merge($message, $this->netConfigDNS->check());
@@ -218,17 +262,13 @@ class wingeneric extends plugin
       $message[] = msgPool::permCreate();
     }
 
-    if ($this->cn == ""){
-      $message[] = msgPool::required(_("Name"));
-    }
-
     if ($this->orig_dn != $this->dn) {
       $ldap = $this->config->get_ldap_link();
-      $ldap->cd($this->base);
-      $ldap->search("(cn=".$this->cn.")", array("cn"));
+      $ldap->cd ($this->base);
+      $ldap->search ("(cn=".$this->cn.")", array("cn"));
       if ($ldap->count() != 0) {
-        while ($attrs = $ldap->fetch()) {
-          if (preg_match("/cn=dhcp,/", $attrs['dn'])) {
+        while ($attrs= $ldap->fetch()) {
+          if(preg_match("/cn=dhcp,/",$attrs['dn'])) {
             continue;
           }
           if ($attrs['dn'] != $this->orig_dn) {
@@ -248,7 +288,7 @@ class wingeneric extends plugin
      */
     if ($this->orig_dn == "new" && !$this->acl_is_createable($this->base)) {
       $message[] = msgPool::permCreate();
-    } elseif ($this->orig_dn != "new" && $this->base != $this->orig_base && !$this->acl_is_moveable($this->base)) {
+    }elseif($this->orig_dn != "new" && $this->base != $this->orig_base && !$this->acl_is_moveable($this->base)){
       $message[] = msgPool::permMove();
     }
 
@@ -263,17 +303,50 @@ class wingeneric extends plugin
 
     /* Remove all empty values */
     if ($this->orig_dn == 'new') {
-      $attrs = array();
+      $attrs= array();
       foreach ($this->attrs as $key => $val) {
         if (is_array($val) && count($val) == 0) {
           continue;
         }
         $attrs[$key] = $val;
       }
+
+      if (!isset($this->attrs['uid'])) {
+          $attrs['uid'] = $this->attrs['cn'];
+      }
+
+      if (!isset($this->attrs['homeDirectory'])) {
+        $attrs['homeDirectory'] = "/dev/null";
+      }
+
       $this->attrs = $attrs;
     }
 
-    if (($this->gosaUnitTag) && (!in_array_ics("gosaAdministrativeUnitTag", $this->attrs['objectClass']))) {
+    //verifier que $this->sambaSID existe
+    //si oui ne rien faire
+    //si non prendr calculer un nouveau sid
+
+    if ($this->sambaSID == "") {
+      $this->SID = $this->config->data['SERVERS']['SAMBA'][$this->sambaDomainName]['SID'];
+      $this->ridBase = $this->config->data['SERVERS']['SAMBA'][$this->sambaDomainName]['RIDBASE'];
+
+      // create sambaSID for workstation
+      $uidNumber = $this->uidNumber;
+      while(TRUE) {
+        $sid = $this->SID."-".($uidNumber*2 + $this->ridBase);
+        $ldap = $this->config->get_ldap_link();
+        $ldap->cd($this->config->current['BASE']);
+        $ldap->search("(sambaSID=$sid)", array("sambaSID"));
+        if ($ldap->count() == 0) {
+          break;
+        }
+        $uidNumber++;
+      }
+      $this->attrs['sambaSID'] = $sid;
+      $this->attrs['uidNumber'] = $uidNumber + $this->ridBase;
+
+    }
+    if (($this->gosaUnitTag) && (!in_array_ics("gosaAdministrativeUnitTag",$this->attrs['objectClass']))) {
       $this->attrs['objectClass'][] = "gosaAdministrativeUnitTag";
     }
 
@@ -304,7 +377,7 @@ class wingeneric extends plugin
       $ldap->create_missing_trees(preg_replace('/^[^,]+,/', '', $this->dn));
       $ldap->cd($this->dn);
       $ldap->add($this->attrs);
-      new log("create", "winworkstation/".get_class($this), $this->dn, array_keys($this->attrs), $ldap->get_error());
+      new log("create","winworkstation/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
       $this->handle_post_events("add");
     } else {
       if ($this->orig_dn != $this->dn) {
@@ -313,14 +386,14 @@ class wingeneric extends plugin
 
       $ldap->cd($this->dn);
       $ldap->modify ($this->attrs);
-      new log("modify", "winworkstation/".get_class($this), $this->dn, array_keys($this->attrs), $ldap->get_error());
+      new log("modify","winworkstation/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
       $this->handle_post_events("modify");
     }
     if (!$ldap->success()) {
       msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()));
     }
 
-    $this->netConfigDNS->cn = preg_replace("/\\\$\$/", "", $this->uid);
+    $this->netConfigDNS->cn =  preg_replace("/\\\$\$/","",$this->uid);
     $this->netConfigDNS->objectclasses = $ocs;
     $this->netConfigDNS->save();
 
@@ -328,27 +401,26 @@ class wingeneric extends plugin
     $this->handle_post_events("add");
   }
 
-  /* Return plugin informations for acl handling
-  #FIXME FAIscript seams to ununsed within this class... */
+  /* Return plugin informations for acl handling */
   static function plInfo()
   {
     return (array(
-          "plShortName"     => _("Win generic"),
-          "plDescription"   => _("Windows workstation generic"),
-          "plSelfModify"    => FALSE,
-          "plDepends"       => array(),
-          "plPriority"      => 0,
-          "plSection"       => array("administration"),
-          "plCategory"      => array("winworkstation" => array("description"  => _("Win workstation"),
-                                                          "objectClass"  => "gotoWorkstation")),
-          "plProvidedAcls"  => array(
+          "plShortName"   => _("Win generic"),
+          "plDescription" => _("Windows workstation generic"),
+          "plSelfModify"  => FALSE,
+          "plDepends"     => array(),
+          "plPriority"    => 0,
+          "plSection"     => array("administration"),
+          "plCategory"    => array("winworkstation" => array("description"  => _("Windows workstation"),
+                                                             "objectClass"  => "gotoWorkstation")),
+          "plProvidedAcls"=> array(
             "cn"                  => _("Name"),
             "base"                => _("Base"),
-            "description"         => _("Description"))
+            "description"         => _("Description"),
+            "sambaDomainName"     => _("Domain"))
           ));
   }
-
-
 }
 
+// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

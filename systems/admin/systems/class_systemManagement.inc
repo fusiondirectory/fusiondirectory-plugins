@@ -95,7 +95,6 @@ class systemManagement extends management
     // Build headpage
     $headpage = new listing(get_template_path("system-list.xml", true));
     $headpage->registerElementFilter("systemRelease", "systemManagement::systemRelease");
-    $headpage->registerElementFilter("systemFAIstate", "systemManagement::systemFAIstate");
     $headpage->registerElementFilter("ipOf", "systemManagement::ipOf");
     $headpage->registerElementFilter("listServices", "systemManagement::listServices");
     $headpage->setFilter($filter);
@@ -120,6 +119,7 @@ class systemManagement extends management
     $this->registerAction("new_goServer",         "newEntry");
     $this->registerAction("new_gotoWorkstation",  "newEntry");
     $this->registerAction("new_gotoTerminal",     "newEntry");
+    $this->registerAction("new_sambaSamAccount",       "newEntry");
     $this->registerAction("new_gotoPrinter",      "newEntry");
     $this->registerAction("new_goFonHardware",    "newEntry");
     $this->registerAction("new_ieee802Device",    "newEntry");
@@ -497,7 +497,6 @@ class systemManagement extends management
     management::cancelEdit();
     $this->activationQueue = array();
   }
-
 
   /*! \brief  Save event dialogs.
    *          And append the new Argonaut event.
@@ -1139,6 +1138,7 @@ class systemManagement extends management
     if(isset($_POST['new_goServer']))  $action['action'] = "new_goServer";
     if(isset($_POST['new_gotoWorkstation']))  $action['action'] = "new_gotoWorkstation";
     if(isset($_POST['new_gotoTerminal']))  $action['action'] = "new_gotoTerminal";
+    if(isset($_POST['new_sambaSamAccount']))  $action['action'] = "new_sambaSamAccount";
     if(isset($_POST['new_gotoPrinter']))  $action['action'] = "new_gotoPrinter";
     if(isset($_POST['new_goFonHardware']))  $action['action'] = "new_goFonHardware";
     if(isset($_POST['new_ieee802Device']))  $action['action'] = "new_ieee802Device";
@@ -1317,11 +1317,11 @@ class systemManagement extends management
     $ldap->search("(objectClass=*)",array('objectClass'));
     $str = "&nbsp;";
     $services = array();
-    $services_class = array ( // FIXME : this should be generated
+    $services_class = array (
         "FAIrepositoryServer" => "repository",
         "goLdapServer" => "ldap",
         "dNSZone" => "dns",
-        "serviceNTP" => "ntp",
+        "goNtpServer" => "ntp",
         "argonautServer" => "argonaut",
         "dhcpServer" => "dhcp",
         "goVirusServer" => "antivirus",
@@ -1362,46 +1362,19 @@ class systemManagement extends management
     return($str);
   }
 
-  ##FIXME should be documented and var changed a,b,c is stupid
-  static function systemFAIstate($a,$b,$c,$objectclasses= null,$state= null)
-  {
-    global $config;
-
-    // No objectclasses set - go ahead
-    if(!$objectclasses) return("&nbsp;");
-
-    // Skip non fai objects
-    if (!in_array_ics("FAIobject", $objectclasses)) {
-      return "&nbsp;";
-    }
-
-    if ($state) {
-      $elements = explode(':', $state[0], 2);
-      if (count($elements) == 1)
-        return '&nbsp;'.$elements[0].'&nbsp;';
-      else
-        return '&nbsp;<div style="display:inline-block;" title="'.htmlentities($elements[1]).'">'.htmlentities($elements[0]).'</div>&nbsp;';
-      }
-      else
-       return ("&nbsp;(new)&nbsp;");
-
-    return("&nbsp;");
-  }
-
 
   /*! \brief  !! Incoming dummy acls, required to defined acls for incoming objects
    */
   static function plInfo()
   {
     return (array(
-          "plShortName"   => _("Systems"),
-          "plDescription" => _("Systems Management"),
-          "plIcon"        => "plugins/systems/images/plugin.png",
+          "plShortName"   => _("Incoming objects"),
+          "plDescription" => _("Incoming objects"),
           "plSelfModify"  => FALSE,
           "plDepends"     => array(),
           "plPriority"    => 99,
           "plSection"     => array("administration"),
-          "plCategory"    => array("incoming"   => array( "description"  => _("Systems"),
+          "plCategory"    => array("incoming"   => array( "description"  => _("Incoming"),
               "objectClass"  => "")),
           "plProvidedAcls"=> array()
           ));

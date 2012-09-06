@@ -198,14 +198,6 @@
     </column>
 
     <column>
-      <label>FAI state</label>
-      <sortAttribute>sort,cn</sortAttribute>
-      <sortType>string,string</sortType>
-      <value>%{filter:systemFAIstate(row,dn,"%s",objectClass,FAIstate)}</value>
-      <export>true</export>
-    </column>
-
-    <column>
       <label>Actions</label>
       <value>%{filter:actions(dn,row,objectClass)}</value>
     </column>
@@ -242,6 +234,14 @@
       <label>Terminal</label>
       <depends>termgeneric</depends>
      </action>
+
+    <action>
+      <name>new_sambaSamAccount</name>
+      <type>entry</type>
+      <image>plugins/systems/images/select_winstation.png</image>
+      <label>winStation</label>
+      <depends>wingeneric</depends>
+    </action>
 
      <action>
       <name>new_gotoPrinter</name>
