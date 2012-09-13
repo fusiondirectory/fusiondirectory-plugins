@@ -103,7 +103,8 @@ class workgeneric extends plugin
     }
 
     $this->netConfigDNS = new termDNS($this->config,$this,$this->objectclasses);
-    $this->netConfigDNS->MACisMust =TRUE;
+    $this->netConfigDNS->IPisMust = TRUE;
+    $this->netConfigDNS->MACisMust = TRUE;
 
     /* Check if this host is currently in installation process*/
     if(class_available("supportDaemon") && class_available("DaemonEvent")){
