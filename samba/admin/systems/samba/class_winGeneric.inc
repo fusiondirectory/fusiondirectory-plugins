@@ -48,7 +48,7 @@ class wingeneric extends plugin
   var $sambaPwdMustChange="";
   var $sambaNTPassword="";
   var $sambaPwdLastSet="";
-  var $sambaAcctFlags="";
+  var $sambaAcctFlags="[W          ]";
   var $netConfigDNS;
 
   var $SID="";
