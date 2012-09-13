@@ -96,6 +96,7 @@ class systemManagement extends management
     $headpage = new listing(get_template_path("system-list.xml", true));
     $headpage->registerElementFilter("systemRelease", "systemManagement::systemRelease");
     $headpage->registerElementFilter("ipOf", "systemManagement::ipOf");
+    $headpage->registerElementFilter("macOf", "systemManagement::macOf");
     $headpage->registerElementFilter("listServices", "systemManagement::listServices");
     $headpage->setFilter($filter);
     $filter->setConverter('INCOMING', 'systemManagement::incomingFilterConverter');
@@ -1362,6 +1363,20 @@ class systemManagement extends management
     return($str);
   }
 
+ static function macOf($dn)
+  {
+    global $config;
+
+    // Load information if needed
+    $ldap = $config->get_ldap_link();
+    $ldap->cd($dn);
+    $ldap->search("(macAddress=*)",array('macAddress'));
+    $str = "&nbsp;";
+    if($attrs = $ldap->fetch()){
+        $str = $attrs['macAddress'][0];
+    }
+    return($str);
+  }
 
   /*! \brief  !! Incoming dummy acls, required to defined acls for incoming objects
    */
