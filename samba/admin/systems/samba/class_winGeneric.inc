@@ -250,6 +250,14 @@ class wingeneric extends plugin
 
     if($this->uid == "") {
       $this->uid = $this->cn."$";
+    } else {
+      $testUid = $this->uid;
+
+      $dollar = substr($testUid, -1, 1);
+
+      if ($dollar != "$") {
+        $this->uid = $this->uid."$";
+      }
     }
 
     /* Call common method to give check the hook */
@@ -321,11 +329,11 @@ class wingeneric extends plugin
       $this->attrs = $attrs;
     }
 
-    //verifier que $this->sambaSID existe
-    //si oui ne rien faire
-    //si non prendr calculer un nouveau sid
+    //verify that the $this->sambaSID exist and that it is correct
+    //yes do nothing
+    //no get it from config and generate a new sid
 
-    if ($this->sambaSID == "") {
+    if (($this->sambaSID == "") || (substr_count ( $this->sambaSID , "-" ) < 7))  {
       $this->SID = $this->config->data['SERVERS']['SAMBA'][$this->sambaDomainName]['SID'];
       $this->ridBase = $this->config->data['SERVERS']['SAMBA'][$this->sambaDomainName]['RIDBASE'];
 
