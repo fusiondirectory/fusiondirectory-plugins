@@ -116,7 +116,7 @@
     <tag>COMPONENT</tag>
     <default>true</default>
     <unset></unset>
-    <set>(objectClass=ieee802Device)</set>
+    <set>(&amp;(objectClass=ieee802Device)(objectClass=device))</set>
   </element>
 
   <element>
