@@ -416,7 +416,7 @@ class application extends plugin
     $ldap= $this->config->get_ldap_link();
     $ldap->cd($this->config->current["BASE"]);
 
-    $tmp = $this->config->search("faiManagement", "CLASS",array('menu','tabs'));
+    //$tmp = $this->config->search("faiManagement", "CLASS",array('menu','tabs'));
 
     if($this->is_release()){
       $base = $this->parent->parent->app_release;
@@ -524,7 +524,7 @@ class application extends plugin
     }else{
       /* Check if we should enable the release selection */
       $tmp = $this->config->search("faiManagement", "CLASS",array('menu','tabs'));
-      if(!empty($tmp)){
+      if(!empty($tmp) && class_available("faiManagement")){
         return(true);
       }
     }

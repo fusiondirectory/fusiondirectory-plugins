@@ -50,7 +50,7 @@ class serviceRepository extends goService
 
     /* Skip this if fai is deactivated */
     $tmp= $this->config->search("faiManagement", "CLASS",array('menu','tabs'));
-    if(!empty($tmp)){
+    if(!empty($tmp) && class_available("faiManagement")){
       $this->fai_activated = TRUE;
     }else{
       return;
