@@ -98,6 +98,7 @@ class servgeneric extends plugin
     $this->netConfigDNS = new termDNS($this->config,$this,$this->objectclasses);
     $this->netConfigDNS->set_acl_category("server");
     $this->netConfigDNS->set_acl_base($this->base);
+    $this->netConfigDNS->IPisMust =TRUE;
     $this->netConfigDNS->MACisMust =TRUE;
 
     /* Initialize kerberos host key plugin */
