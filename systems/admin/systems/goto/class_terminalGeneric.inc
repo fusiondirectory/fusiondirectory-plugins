@@ -102,6 +102,7 @@ class termgeneric extends plugin
     }
 
     $this->netConfigDNS = new termDNS($this->config,$this,$this->objectclasses);
+    $this->netConfigDNS->IPisMust =TRUE;
     $this->netConfigDNS->MACisMust =TRUE;
 
     /* Read arrays */
