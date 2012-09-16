@@ -31,8 +31,8 @@ class faiSummaryTab extends plugin{
   var $is_dialog      = false;
   var $InitCalled     = false;
   var $usedClasses    = array();
-  var $base           = ""; 
-  var $parent         = NULL; 
+  var $base           = "";
+  var $parent         = NULL;
   var $ui             = NULL;
 
   function faiSummaryTab(&$config,$dn)//,$parent)
@@ -42,7 +42,7 @@ class faiSummaryTab extends plugin{
     $this->ui = get_userinfo();
 
     /* Base object configuration */
-    $this->objs = array(  
+    $this->objs = array(
         "FAIscript"         => array( "Image" =>"plugins/fai/images/fai_script.png",        "Name"=>_("Scripts")      ,"Tree" =>get_ou('faiScriptRDN')) ,
         "FAIhook"           => array( "Image" =>"plugins/fai/images/fai_hook.png" ,         "Name"=>_("Hooks")        ,"Tree" =>get_ou('faiHookRDN')),
         "FAIvariable"       => array( "Image" =>"plugins/fai/images/fai_variable.png",      "Name"=>_("Variables")    ,"Tree" =>get_ou('faiVariableRDN')) ,
@@ -54,27 +54,27 @@ class faiSummaryTab extends plugin{
 
 
   /* Init the fai tree with objects.
-     If this method is called, all assigned classes and the release name 
+     If this method is called, all assigned classes and the release name
       will be read from parent object. */
   function init()
   {
     $this->InitCalled = true;
     $this->Result = array();
-  
-    /* Get classes & release name 
+
+    /* Get classes & release name
        There are 2 different tabs which use the summary tab
        faiProfile / Workstations */
-    
+
     /* Check if given parent object is fai profile tabs */
     if(isset($this->parent->by_name['faiProfile'])){
-      
+
       /* Get Classes and release */
       $this->Classes = $this->parent->by_object['faiProfile']->FAIclasses;
       $this->base    = $this->parent->by_object['faiProfile']->parent->parent->fai_release;
       $str = preg_replace("/^.*".preg_quote(get_ou('faiProfileRDN'), '/')."/i","",$this->dn);
       $tmp  = $this->parent->by_object['faiProfile']->parent->parent->getBranches();
       $this->Release = $tmp[$this->base];
-  
+
     /* Check if parent tab is work tab */
     }elseif(isset($this->parent->by_name['workstartup'])){
       if($this->parent->by_object['workstartup']->FAIdebianMirror == "inherited"){
@@ -95,7 +95,7 @@ class faiSummaryTab extends plugin{
       }else{
         msg_dialog::display(_("Error"), _("Unknown FAI information source!"), ERROR_DIALOG);
       }
-      
+
       /* Append workstation class && LAST */
       if(isset($this->parent->by_object['workgeneric']->cn)){
         $this->Classes[] = $this->parent->by_object['workgeneric']->cn;
@@ -148,14 +148,14 @@ class faiSummaryTab extends plugin{
       if(preg_match("/^open_/",$name) && $once){
         $once  = false;
         $value = preg_replace("/^open_/","",$name);
-        $value = preg_replace("/_.*$/","",$value); 
+        $value = preg_replace("/_.*$/","",$value);
         $this->Result[$value]['Open'] =true  ;
       }
       /* Check for close tag request */
       if(preg_match("/^close_/",$name) && $once){
         $once  = false;
         $value = preg_replace("/^close_/","",$name);
-        $value = preg_replace("/_.*$/","",$value); 
+        $value = preg_replace("/_.*$/","",$value);
         unset($this->Result[$value]['Open']);
       }
       if(preg_match("/^reloadList/",$name)){
@@ -176,15 +176,15 @@ class faiSummaryTab extends plugin{
 
 
   /* This function calls all nescessary functions to generate the fai class summary tree */
-  function execute() 
+  function execute()
   {
 
     /* Skip this if fai is deactivated */
     $tmp = $this->config->search("faiManagement", "CLASS",array('menu','tabs'));
-    if(empty($tmp)){
+    if(!empty($tmp) && class_available("faiManagement")){
       $str = "<h2>"._("You can't use this plugin until FAI is activated.")."</h2>";
       return $str;
-    }    
+    }
 
     /* Check if we must (re)init the this tab */
     if(!$this->InitCalled){
@@ -220,18 +220,18 @@ class faiSummaryTab extends plugin{
   /* Create output of from resolved fai objects */
   function createSummary($data)
   {
-    /* Don't generate any output, if there is no result */ 
+    /* Don't generate any output, if there is no result */
     $str ="<table cellspacing=0 cellpadding=2 style='width:100%;background:#F5F5F5;'> ";
     if(!count($this->Result)){
-      $str.="<tr><td>"; 
+      $str.="<tr><td>";
       $str.= (_("This object has no FAI classes assigned."));
       $str.= "</tr></td></table>";
       return($str);
     }
 
-    /* walk through all classes */  
+    /* walk through all classes */
     foreach($data as $key => $entry){
-      
+
       $image = "<img src='".$this->objs[$key]['Image']."' class='center' alt='".$this->objs[$key]['Name']."' border=0>";
       if(!isset($entry['Open'])){
         $str .= "<tr>
@@ -246,11 +246,11 @@ class faiSummaryTab extends plugin{
                    <img border=0 class='center' src='images/lists/sort-down.png' alt='"._("Close")."'>&nbsp;";
         $str .= $image."&nbsp;";
         $str .= "<b>".$this->objs[$key]['Name']."</b></a></td></tr>";
-   
-        /* Display FAItemplate FAIhook FAIscript entries */ 
+
+        /* Display FAItemplate FAIhook FAIscript entries */
         if(in_array($key,array("FAItemplate","FAIhook","FAIscript"))){
 
-          $nums = array();          
+          $nums = array();
           $tmp  = array();
           if($key == "FAIscript"){
             if(is_array($entry['Entries'])){
@@ -259,7 +259,7 @@ class faiSummaryTab extends plugin{
 
                   if(!isset($nums[$script['cn'][0]])){
                     $nums[$script['cn'][0]]= 0;
-                  } 
+                  }
                   $nums[$script['cn'][0]] ++;
 
                   $tmp[$script['FAIpriority'][0].$script['cn'][0].$script['CLASS']] = $script;
@@ -267,7 +267,7 @@ class faiSummaryTab extends plugin{
               }
             }
             krsort($tmp);;
-            
+
             $entry['Entries'] = $tmp;
           }else{
             $tmp = array();
@@ -275,7 +275,7 @@ class faiSummaryTab extends plugin{
               $tmp[$script['cn'][0].$script['CLASS']] = $script;
               if(!isset($nums[$script['cn'][0]])){
                 $nums[$script['cn'][0]]= 0;
-              } 
+              }
               $nums[$script['cn'][0]] ++;
             }
              ksort($tmp);
@@ -314,7 +314,7 @@ class faiSummaryTab extends plugin{
             if(isset($data['description'][0])){
               $str .= " [".$data['description'][0]."] ";
             }
-            /* Only display FAIvariableContent if description dosn't contain [*] */ 
+            /* Only display FAIvariableContent if description dosn't contain [*] */
             if(isset($data['description'][0]) && !preg_match("#\[\*\]#",$data['description'][0])){
               $str .=" = '".$data['FAIvariableContent'][0]."'";
             }
@@ -323,7 +323,7 @@ class faiSummaryTab extends plugin{
           }
         }
 
-        /* Create packagelist entries */ 
+        /* Create packagelist entries */
         if(in_array($key,array("FAIpackageList"))) {
           ksort($entry['Entries']);
           foreach($entry['Entries'] as $data){
@@ -368,13 +368,13 @@ class faiSummaryTab extends plugin{
               }
 
               $str.="<tr $c style='height:10px;'>
-                      <td $d>".$i."</td> 
-                      <td $d>".$part['cn'][0]."</td> 
-                      <td $d>".$part['FAIfsType'][0]."</td> 
-                      <td $d>".$part['FAIfsOptions'][0]."</td> 
-                      <td $d>".$part['FAIpartitionSize'][0]."</td> 
-                      <td $d>".$part['FAImountPoint'][0]."</td> 
-                      <td $d style='border:none'>".$part['FAIpartitionType'][0]."</td> 
+                      <td $d>".$i."</td>
+                      <td $d>".$part['cn'][0]."</td>
+                      <td $d>".$part['FAIfsType'][0]."</td>
+                      <td $d>".$part['FAIfsOptions'][0]."</td>
+                      <td $d>".$part['FAIpartitionSize'][0]."</td>
+                      <td $d>".$part['FAImountPoint'][0]."</td>
+                      <td $d style='border:none'>".$part['FAIpartitionType'][0]."</td>
                     </tr>";
             }
             $str .="</table>";
@@ -382,7 +382,7 @@ class faiSummaryTab extends plugin{
         }
       }
     }
-    $str .="</table>";  
+    $str .="</table>";
     return($str);
   }
 
@@ -396,7 +396,7 @@ class faiSummaryTab extends plugin{
     }else{
       return(FALSE);
     }
-  
+
     $resolvedClasses  = FAI::get_all_objects_for_given_base($dn,"(&(objectClass=FAIclass)(cn=".$class."))");
 
     /* Try to fetch all types of fai objects with the given cn  */
@@ -492,7 +492,7 @@ class faiSummaryTab extends plugin{
   }
 
 
-  /* Create template entry */ 
+  /* Create template entry */
   function prepare_FAItemplate($data)
   {
     $current = array();
@@ -511,7 +511,7 @@ class faiSummaryTab extends plugin{
   }
 
 
-  /* Create a package list  */  
+  /* Create a package list  */
   function prepare_FAIpackageList($data)
   {
     $current = array();
@@ -530,7 +530,7 @@ class faiSummaryTab extends plugin{
   }
 
 
-  /* Create a variable entry */ 
+  /* Create a variable entry */
   function prepare_FAIvariable($data)
   {
     $current = array();
@@ -547,7 +547,7 @@ class faiSummaryTab extends plugin{
     $this->Result['FAIvariable']['Entries'] = $current ;
   }
 
-  /* Create a hook entry */ 
+  /* Create a hook entry */
   function prepare_FAIhook($data)
   {
     $current = array();

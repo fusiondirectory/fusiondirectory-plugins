@@ -82,7 +82,7 @@ class termgeneric extends plugin
   {
     /* Check if FAI is activated */
     $tmp= $config->search("faiManagement", "CLASS",array('menu','tabs'));
-    if(!empty($tmp)){
+    if(!empty($tmp) && class_available("faiManagement")){
       $this->fai_activated = TRUE;
     }
 

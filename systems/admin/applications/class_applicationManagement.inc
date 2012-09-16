@@ -28,7 +28,7 @@ class applicationManagement extends management
 
   var $app_release = ""; // The currently selected release while in release management mode!
 
-  // Tab definition 
+  // Tab definition
   protected $tabClass = "apptabs";
   protected $tabType = "APPSTABS";
   protected $aclCategory = "application";
@@ -83,7 +83,7 @@ class applicationManagement extends management
   {
     $filter = $this->getFilter();
     $headpage = $this->getHeadpage();
-    if($this->IsReleaseManagementActivated()){    
+    if($this->IsReleaseManagementActivated()){
       $filter->setComboBoxOptions("RELEASE",$this->getReleaseList());
 
       if(isset($_POST['RELEASE'])){
@@ -113,18 +113,18 @@ class applicationManagement extends management
     }
     return($list);
   }
-  
+
 
   function IsReleaseManagementActivated()
   {
     /* Check if we should enable the release selection */
     $tmp = $this->config->search("faiManagement", "CLASS",array('menu','tabs'));
-    if(!empty($tmp)){
+    if(!empty($tmp) && class_available("faiManagement")){
       return(true);
     }
     return(false);
   }
 
-} 
+}
 // vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>
