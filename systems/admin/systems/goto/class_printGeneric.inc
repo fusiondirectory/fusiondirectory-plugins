@@ -41,6 +41,7 @@ class printgeneric extends plugin
 
   var $printerWindowsInfFile    = "";
   var $printerWindowsDriverDir  = "";
+  var $printerWindowsDriverName = "";
 
   var $UserMember       = "";
   var $UserMembers      = array();
@@ -70,7 +71,7 @@ class printgeneric extends plugin
   /* attribute list for save action */
   var $attributes     = array("cn", "description", "l", "labeledURI", "gotoPrinterPPD","gotoUserPrinter", "macAddress",
                               "gotoUserAdminPrinter","gotoGroupAdminPrinter","gotoUserPrinter","gotoGroupPrinter","gosaUnitTag",
-                              "goComment","printerWindowsInfFile","printerWindowsDriverDir");
+                              "goComment","printerWindowsInfFile","printerWindowsDriverDir","printerWindowsDriverName");
   var $objectclasses  = array("top", "gotoPrinter");
   var $view_logged    = FALSE;
   var $parent;
@@ -1047,7 +1048,8 @@ class printgeneric extends plugin
             "gotoUserPrinter"   => _("Permissions"),
             "goComment"         => _("Comments"),
             "printerWindowsInfFile"   => _("Windows inf file"),
-            "printerWindowsDriverDir" => _("Windows driver dir"))
+            "printerWindowsDriverDir" => _("Windows driver dir"),
+            "printerWindowsDriverName" => _("Driver printer name"))
           ));
   }
 

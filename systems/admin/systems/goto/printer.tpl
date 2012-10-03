@@ -177,6 +177,14 @@
 {/render}
        </td>
      </tr>
+     <tr>
+       <td><LABEL for="printerWindowsDriverName">{t}Driver printer name{/t}</LABEL></td>
+       <td>
+{render acl=$printerWindowsDriverNameACL}
+        <input type='text' id="printerWindowsDriverName" name="printerWindowsDriverName" value="{$printerWindowsDriverName}">
+{/render}
+       </td>
+     </tr>
 <table>
 {if $netconfig ne ''}
 </td></tr></table>
