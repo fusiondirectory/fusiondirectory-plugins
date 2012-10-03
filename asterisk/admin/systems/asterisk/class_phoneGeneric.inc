@@ -470,20 +470,28 @@ class phoneGeneric extends plugin
   {
     $vars = array("cn");
     $smarty = get_smarty();
-    $smarty->assign("cn" ,$this->cn);
-    $smarty->assign("object","phone");
-    $str = $smarty->fetch(get_template_path("paste_generic.tpl",TRUE,dirname(__FILE__)));
+    $smarty->assign("cn", $this->cn);
+    $smarty->assign("macAddress", $this->netConfigDNS->macAddress);
+    $smarty->assign("ipHostNumber", $this->netConfigDNS->ipHostNumber);
+    $smarty->assign("object", "phone");
+    $str = $smarty->fetch(get_template_path("paste_generic.tpl", TRUE, dirname(__FILE__)));
     $ret = array();
     $ret['string'] = $str;
     $ret['status'] = "";
-    return($ret);
+    return $ret;
   }
 
 
   function saveCopyDialog()
   {
-    if(isset($_POST['cn'])){
+    if (isset($_POST['cn'])) {
       $this->cn = $_POST['cn'];
+    }
+    if (isset($_POST['macAddress'])) {
+      $this->netConfigDNS->macAddress = $_POST['macAddress'];
+    }
+    if (isset($_POST['ipHostNumber'])) {
+      $this->netConfigDNS->ipHostNumber = $_POST['ipHostNumber'];
     }
   }
 
@@ -491,10 +499,10 @@ class phoneGeneric extends plugin
   function PrepareForCopyPaste($source)
   {
     plugin::PrepareForCopyPaste($source);
-    if(isset($source['macAddress'][0])){
+    if (isset($source['macAddress'][0])) {
       $this->netConfigDNS->macAddress = $source['macAddress'][0];
     }
-    if(isset($source['ipHostNumber'][0])){
+    if (isset($source['ipHostNumber'][0])) {
       $this->netConfigDNS->ipHostNumber = $source['ipHostNumber'][0];
     }
 
