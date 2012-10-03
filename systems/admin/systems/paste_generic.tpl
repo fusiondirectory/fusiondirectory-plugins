@@ -28,7 +28,7 @@
       </td>
      </tr>
      <tr>
-      <td><LABEL for="ipHostNumber">{t}IP{/t}</LABEL></td>
+      <td><LABEL for="ipHostNumber">{t}IP{/t}</LABEL>{$must}</td>
       <td>
        <input type='text' name="ipHostNumber" id="ipHostNumber" size=20 maxlength=60 value="{$ipHostNumber}" />
       </td>
