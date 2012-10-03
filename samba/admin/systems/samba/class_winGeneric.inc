@@ -249,22 +249,18 @@ class wingeneric extends plugin
   function check()
   {
 
-    if($this->uid == "") {
+    if ($this->uid == "") {
       $this->uid = $this->cn."$";
     } else {
-      $testUid = $this->uid;
-
-      $dollar = substr($testUid, -1, 1);
-
-      if ($dollar != "$") {
-        $this->uid = $this->uid."$";
+      if (!preg_match('/\$$/',$this->uid)) {
+        $this->uid .= "$";
       }
     }
 
     /* Call common method to give check the hook */
     $message = plugin::check();
     $message = array_merge($message, $this->netConfigDNS->check());
-    $this->dn = "cn=".$this->uid.",".get_ou('sambaMachineAccountRDN').$this->base;
+    $this->dn = "uid=".$this->uid.",".get_ou('sambaMachineAccountRDN').$this->base;
 
     if (!$this->acl_is_createable()) {
       $message[] = msgPool::permCreate();
@@ -273,12 +269,9 @@ class wingeneric extends plugin
     if ($this->orig_dn != $this->dn) {
       $ldap = $this->config->get_ldap_link();
       $ldap->cd ($this->base);
-      $ldap->search ("(cn=".$this->cn.")", array("cn"));
+      $ldap->search ("(uid=".$this->uid.")", array("uid"));
       if ($ldap->count() != 0) {
-        while ($attrs= $ldap->fetch()) {
-          if(preg_match("/cn=dhcp,/",$attrs['dn'])) {
-            continue;
-          }
+        while ($attrs = $ldap->fetch()) {
           if ($attrs['dn'] != $this->orig_dn) {
             $message[] = msgPool::duplicated(_("Name"));
             break;
@@ -289,18 +282,18 @@ class wingeneric extends plugin
 
     // Check if a wrong base was supplied
     if (!$this->baseSelector->checkLastBaseUpdate()) {
-      $message[] = msgPool::check_base();;
+      $message[] = msgPool::check_base();
     }
 
     /* Check if we are allowed to create or move this object
      */
     if ($this->orig_dn == "new" && !$this->acl_is_createable($this->base)) {
       $message[] = msgPool::permCreate();
-    }elseif($this->orig_dn != "new" && $this->base != $this->orig_base && !$this->acl_is_moveable($this->base)){
+    } elseif($this->orig_dn != "new" && $this->base != $this->orig_base && !$this->acl_is_moveable($this->base)) {
       $message[] = msgPool::permMove();
     }
 
-    return ($message);
+    return $message;
   }
 
   /* Display generic part for server copy & paste */
