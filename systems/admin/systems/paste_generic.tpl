@@ -12,6 +12,8 @@
           {t}Printer name{/t}
 {elseif $object == "component"}
           {t}Component name{/t}
+{elseif $object == "phone"}
+          {t}Phone name{/t}
 {/if}
         </LABEL>{$must}
       </td>
@@ -20,7 +22,7 @@
       </td>
      </tr>
      <tr>
-      <td><LABEL for="macAddress">{t}Mac address{/t}</LABEL></td>
+      <td><LABEL for="macAddress">{t}Mac address{/t}</LABEL>{$must}</td>
       <td>
        <input type='text' name="macAddress" id="macAddress" size=20 maxlength=60 value="{$macAddress}" />
       </td>
