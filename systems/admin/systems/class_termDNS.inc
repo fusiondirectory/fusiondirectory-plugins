@@ -588,8 +588,20 @@ class termDNS extends plugin
             msg_dialog::display(_("Error"), sprintf(_("Was not able to contact argonaut server: %s"), "<br/><br/>".$o_queue->get_error()), ERROR_DIALOG);
           } else {
             $zone = substr(strrchr($this->dnsEntry['zoneName'], "/"), 1);
+            $ldap = $this->config->get_ldap_link();
+            $ldap->search("(&(objectClass=dnsZone)(zoneName=$zone)(sOARecord=*))", array("nsRecord"));
+            if ($ldap->count() != 1) {
+              msg_dialog::display(_("Error"), sprintf(_("Was not able to find DNS server for zone %s"), $zone), ERROR_DIALOG);
+            }
+            $attrs  = $ldap->fetch();
+            $ip     = $attrs['nsRecord'][0];
+            $ldap->search("(&(objectClass=goServer)(ipHostNumber=".$ip."))", "macAddress");
+            if ($ldap->count() != 1) {
+              msg_dialog::display(_("Error"), sprintf(_("Was not able to find mac address of DNS server %s"), $ip), ERROR_DIALOG);
+            }
+            $attrs  = $ldap->fetch();
             $o_queue->append_call("Ldap2Zone.start",
-                                  array($this->attrs['macAddress'][0]),
+                                  array($attrs['macAddress'][0]),
                                   array("args"=>array($zone)));
             if ($o_queue->is_error()) {
               msg_dialog::display(_("Error"), sprintf(_("Was not able to launch ldap2zone: %s"), "<br/><br/>".$o_queue->get_error()), ERROR_DIALOG);
