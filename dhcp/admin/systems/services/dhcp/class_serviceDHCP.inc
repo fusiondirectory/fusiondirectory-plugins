@@ -24,30 +24,32 @@
 class serviceDHCP extends goService
 {
   /* attribute list for save action */
-  var $attributes= array("dhcpServiceDN");
-  var $objectclasses= array("dhcpServer");
-  var $conflicts        = array("serviceDHCP");
-  var $dhcpServiceDN= "";
+  var $attributes     = array("dhcpServiceDN");
+  var $objectclasses  = array("dhcpServer");
+  var $conflicts      = array("serviceDHCP");
+  var $dhcpServiceDN  = "";
 
   /* Section storage */
-  var $dhcpSections= array();
-  var $dhcpObjectCache= array();
+  var $dhcpSections     = array();
+  var $dhcpObjectCache  = array();
 
   var $dhcpDNtoID = array();
 
-  var $current_object= "";
-  var $types= array();
-  var $serviceDN= "";
+  var $current_object = "";
+  var $types          = array();
+  var $serviceDN      = "";
 
   var $quote_option = array("domain-name");
 
   var $orig_dn = "";
 
-  var $dhcp_server_list   = array("ENTRIES"=> array(),"FOR_LIST"=> array());
-  var $take_over_id       = -1;
+  var $dhcp_server_list = array("ENTRIES"=> array(),"FOR_LIST"=> array());
+  var $take_over_id     = -1;
   var $display_warning  = TRUE;
 
-  function serviceDHCP (&$config, $dn= NULL, $parent= NULL)
+  var $subnet_expanded = FALSE;
+
+  function serviceDHCP (&$config, $dn = NULL, $parent = NULL)
   {
     plugin::plugin ($config, $dn, $parent);
 
@@ -288,6 +290,16 @@ class serviceDHCP extends goService
         }
       }
 
+      /* Fold subnet? */
+      if (preg_match('/^foldDhcp_.*_x$/', $name)) {
+        $this->subnet_expanded = FALSE;
+        $this->reload(FALSE);
+      } elseif (preg_match('/^expandDhcp_.*_x$/', $name)) { // Expand a subnet?
+        $id = preg_replace('/^expandDhcp_([^_]+)_x$/', '\1', $name);
+        $this->subnet_expanded = $this->dhcpDNtoID[$id];
+        $this->reload(FALSE);
+      }
+
     }
 
     if(isset($_GET['act']) && $_GET['act']=="edit" && isset($_GET['id'])){
@@ -361,31 +373,45 @@ class serviceDHCP extends goService
       "<input type='image' src='images/lists/edit.png' name='editDhcp_%s' title='"._("Edit DHCP section")."'>";
     $editImg = "<input type='image' src='images/lists/edit.png' name='editDhcp_%s' title='"._("Edit DHCP section")."'>".
       "<input type='image' src='images/lists/trash.png' name='delDhcp_%s' title='"._("Remove DHCP section")."'>";
+    $subnetExpandImg = "<input style='padding:5px 6px 4px;vertical-align:middle;' type='image' src='images/lists/expand.png' name='expandDhcp_%s' title='"._("Expand DHCP subnet")."'/>";
+    $subnetExpandedImg = "<input style='padding:6px 5px 6px 4px;vertical-align:middle;' type='image' src='images/lists/sort-down.png' name='foldDhcp_%s' title='"._("Fold DHCP subnet")."'/>";
 
     $tmp = new dhcpNewSectionDialog(NULL);
-    foreach($this->dhcpSections as $section => $values ){
+    foreach ($this->dhcpSections as $section => $values) {
 
       // Ensure that we've a valid id for this section.
-      if(!in_array($section,$this->dhcpDNtoID)){
+      if (!in_array($section,$this->dhcpDNtoID)) {
         $this->dhcpDNtoID[] = $section;
       }
 
       // Get entry ID
-      $id = array_search($section,$this->dhcpDNtoID);
+      $id = array_search($section, $this->dhcpDNtoID);
 
       $values = "<a href='?plug=".$_GET['plug']."&act=edit&id=".$id."'>".$values."</a>";
 
       $objtype = $this->objectType($section);
       $dhcpObject = new $objtype($this,$this->dhcpObjectCache[$section]);
-      if (count($tmp->sectionMap[$objtype])){
-        if ($objtype == "dhcpService"){
+      if (count($tmp->sectionMap[$objtype])) {
+        if ($objtype == "dhcpService") {
+          if ($section === $this->subnet_expanded) {
+            $values = sprintf($subnetExpandedImg,$id).$values;
+          } else {
+            $values = sprintf($subnetExpandImg,$id).$values;
+          }
           $DhcpList->AddEntry(array(
               array("string" => $values),
               array("string" => ''),
               array("string" => ''),
-              array("string" => str_replace("%s",$id,$editImgInsNoDel), "attach" => "style='text-align:right;'")
+              array("string" => str_replace("%s", $id, $editImgInsNoDel), "attach" => "style='text-align:right;'")
               ));
         } else {
+          if ($objtype == "dhcpSubnet") {
+            if ($section === $this->subnet_expanded) {
+              $values = sprintf("&nbsp;&nbsp;".$subnetExpandedImg,$id).$values;
+            } else {
+              $values = sprintf("&nbsp;&nbsp;".$subnetExpandImg,$id).$values;
+            }
+          }
           $DhcpList->AddEntry(array(
               array("string" => $values),
               array("string" => $dhcpObject->options->get('routers')),
@@ -629,75 +655,101 @@ class serviceDHCP extends goService
     }
   }
 
+  /* Subfonction of reload function */
+  function reload_addItemToList(&$ldap, $attrs, &$final, $erase)
+  {
+    $sattrs = array();
+    for ($i = 0; $i < $attrs['count']; $i++) {
+      $sattrs[$attrs[$i]] = $attrs[$attrs[$i]];
+      unset($sattrs[$attrs[$i]]['count']);
+    }
+    $sattrs['dn'] = $ldap->getDN();
 
-  function reload()
+    if (isset($this->dhcpObjectCache[$ldap->getDN()]) && !$erase) {
+      $sattrs = $this->dhcpObjectCache[$ldap->getDN()];
+    }
+
+    if ($sattrs['dn'] === $this->subnet_expanded) {
+      $ldap_subnet = $this->config->get_ldap_link();
+      $ldap_subnet->cd($sattrs['dn']);
+      $ldap_subnet->ls("(objectClass=dhcpHost)");
+      while ($host_attrs = $ldap_subnet->fetch()) {
+        $this->reload_addItemToList($ldap_subnet, $host_attrs, $final, $erase);
+      }
+    }
+
+    foreach ($sattrs as $name => $values) {
+      if ($name == "dhcpOption") {
+        foreach ($values as $key => $value) {
+          $value_name = trim(preg_replace("/[^ ]*$/","",$value));
+          $value_value= trim(preg_replace("/^[^ ]*/","",$value));
+          if(in_array($value_name,$this->quote_option)){
+            $value_value = preg_replace("/^\"/","",$value_value);
+            $value_value = preg_replace("/\"$/","",$value_value);
+            $sattrs[$name][$key] = $value_name." ".$value_value;
+          }
+        }
+      }
+    }
+
+    foreach ($this->types as $key => $val) {
+      if (in_array("$key", $attrs['objectClass'])) {
+        $type = $val;
+        $type_id = $key;
+        break;
+      }
+    }
+
+    $this->dhcpObjectCache[$ldap->getDN()] = $sattrs;
+    $tmp = preg_replace("/".$this->serviceDN."/", "", $ldap->getDN());
+    $indent = substr_count($tmp, ",");
+    if ($type_id == "dhcpSubnet") {
+      $indent--;
+    }
+    if ($indent > 0) {
+      $spaces = "&nbsp;&nbsp;";
+    } else {
+      $spaces = "";
+    }
+    for ($i = 0; $i < $indent; $i++) {
+      $spaces.= "&nbsp;&nbsp;&nbsp;&nbsp;";
+    }
+
+    /* Prepare for sorting... */
+    $sortpart = explode(",", $ldap->getDN());
+    $sortpart = array_reverse($sortpart);
+    $tmp = implode(",", $sortpart);
+    $final[$ldap->getDN()] = $tmp."!".$spaces.$type." '".$attrs['cn'][0]."'";
+  }
+
+  function reload($erase = TRUE)
   {
     /* Init LDAP and load list */
-    $ldap= $this->config->get_ldap_link();
-    $ui= get_userinfo();
-    $me= $this->dn;
+    $ldap = $this->config->get_ldap_link();
+    $ui   = get_userinfo();
+    $me   = $this->dn;
 
     $filter = "(&(objectClass=dhcpService)(|(dhcpPrimaryDN=$me)(dhcpSecondaryDN=$me)(dhcpServerDN=$me)(dhcpFailOverPeerDN=$me)))";
 
-    $list= get_list($filter, array("server"), $this->config->current['BASE'], array("cn"),GL_SIZELIMIT | GL_SUBSEARCH);
-    $final= array();
+    $list   = get_list($filter, array("server"), $this->config->current['BASE'], array("cn"), GL_SIZELIMIT | GL_SUBSEARCH);
+    $final  = array();
 
-    foreach ($list as $value){
+    foreach ($list as $value) {
 
       /* Set header */
-      $sortpart= explode(",", $value['dn']);
-      $sortpart= array_reverse($sortpart);
-      $tmp= implode(",", $sortpart);
+      $sortpart = explode(",", $value['dn']);
+      $sortpart = array_reverse($sortpart);
+      $tmp = implode(",", $sortpart);
 
-      $final[$value['dn']]= $tmp."!"._("Global options");
+      $final[$value['dn']] = $tmp."!"._("Global options");
 
       /* Read all sub entries to place here */
       $ldap->cd($value['dn']);
       $ldap->search("(|(objectClass=dhcpService)(objectClass=dhcpLog)(objectClass=dhcpClass)(objectClass=dhcpSubClass)(objectClass=dhcpGroup)(objectClass=dhcpPool)(objectClass=dhcpSubnet)(objectClass=dhcpSharedNetwork)(objectClass=dhcpOptions)(objectClass=dhcpTSigKey)(objectClass=dhcpDnsZone)(objectClass=dhcpFailOverPeer))", array());
-      $this->serviceDN= $value['dn'];
+      $this->serviceDN = $value['dn'];
 
-      while ($attrs= $ldap->fetch()){
-        $sattrs= array();
-        for ($i= 0; $i<$attrs['count']; $i++){
-          $sattrs[$attrs[$i]]= $attrs[$attrs[$i]];
-          unset($sattrs[$attrs[$i]]['count']);
-        }
-        $sattrs['dn']= $ldap->getDN();
-
-        foreach($sattrs as $name => $values){
-          if($name == "dhcpOption"){
-            foreach($values as $key => $value){
-              $value_name = trim(preg_replace("/[^ ]*$/","",$value));
-              $value_value= trim(preg_replace("/^[^ ]*/","",$value));
-              if(in_array($value_name,$this->quote_option)){
-                $value_value = preg_replace("/^\"/","",$value_value);
-                $value_value = preg_replace("/\"$/","",$value_value);
-                $sattrs[$name][$key] = $value_name." ".$value_value;
-              }
-            }
-          }
-        }
-
-        $this->dhcpObjectCache[$ldap->getDN()]= $sattrs;
-        $tmp= preg_replace("/".$this->serviceDN."/", "", $ldap->getDN());
-        $indent= substr_count($tmp, ",");
-        $spaces= "";
-        for ($i= 0; $i<$indent; $i++){
-          $spaces.= "&nbsp;&nbsp;&nbsp;&nbsp;";
-        }
-
-        foreach ($this->types as $key => $val){
-          if (in_array("$key", $attrs['objectClass'])){
-            $type= $val;
-            break;
-          }
-        }
-
-        /* Prepare for sorting... */
-        $sortpart= explode(",", $ldap->getDN());
-        $sortpart= array_reverse($sortpart);
-        $tmp= implode(",", $sortpart);
-        $final[$ldap->getDN()]= $tmp."!".$spaces.$type." '".$attrs['cn'][0]."'";
+      while ($attrs = $ldap->fetch()) {
+        $this->reload_addItemToList($ldap, $attrs, $final, $erase);
       }
     }
 
