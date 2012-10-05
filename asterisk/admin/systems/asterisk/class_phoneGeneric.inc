@@ -474,7 +474,7 @@ class phoneGeneric extends plugin
     $smarty->assign("macAddress", $this->netConfigDNS->macAddress);
     $smarty->assign("ipHostNumber", $this->netConfigDNS->ipHostNumber);
     $smarty->assign("object", "phone");
-    $str = $smarty->fetch(get_template_path("paste_generic.tpl", TRUE, dirname(__FILE__)));
+    $str = $smarty->fetch(get_template_path("paste_generic.tpl", TRUE));
     $ret = array();
     $ret['string'] = $str;
     $ret['status'] = "";
