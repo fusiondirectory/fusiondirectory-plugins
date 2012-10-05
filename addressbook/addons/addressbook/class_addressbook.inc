@@ -19,37 +19,21 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class addressbookgosa extends plugin{
-
-  static function plInfo()
-  {
-    /* Adapt addressbook settings and modify required settings.
-     */
-    $attrs = addressbook::plInfo();
-    $attrs['plShortName']   = _("Addressbook")." - "._("FusionDirectory");
-    $attrs['plDescription'] = _("Addressbook")." - "._("FusionDirectory related objects");
-    $attrs['plSelfModify']  = TRUE;
-    $attrs['plPriority']    = 2;
-    $attrs['plCategory']    = array("addressbook");
-    return($attrs);
-  }
-}
-
 class addressbook extends plugin
 {
   /* Definitions */
-  var $plHeadline   = "Addressbook";
-  var $plDescription= "The addressbook plugin show internal users and external ones";
+  var $plHeadline     = "Addressbook";
+  var $plDescription  = "The addressbook plugin show internal users and external ones";
 
   /* Generic */
   var $ui;
 
   /* Phonelist attributes */
-  var $telephone_list   = array();
-  var $new_dn           = "";
-  var $orig_cn          = "";
-  var $storage_base     = "";
-  var $orig_storage_base= "";
+  var $telephone_list     = array();
+  var $new_dn             = "";
+  var $orig_cn            = "";
+  var $storage_base       = "";
+  var $orig_storage_base  = "";
 
   /* Filter attributes */
   var $start            = 0;
@@ -863,42 +847,40 @@ class addressbook extends plugin
     return $acls;
   }
 
-
   /* Return plugin informations for acl handling  */
   static function plInfo()
   {
-    return  array(
-              "plShortName" => _("Addressbook")." - "._("Addressbook entries"),
-              "plDescription" => _("Addressbook")." - "._("Addressbook related objects"),
-              "plSelfModify"  => FALSE,
-              "plDepends"     => array(),
-              "plPriority"    => 0,
-              "plSection"     => array("addon" => _("Addons")),
-              "plCategory"    => array("addressbook" => array("objectClass" => "inetOrgPerson", "description" => _("Addressbook"))),
+    return array(
+      "plShortName"   => _("Addressbook"),
+      "plDescription" => _("The addressbook plugin show internal users and external ones"),
+      "plSelfModify"  => FALSE,
+      "plDepends"     => array(),
+      "plPriority"    => 0,
+      "plSection"     => array("addon" => _("Addons")),
+      "plCategory"    => array("addressbook" => array("objectClass" => "inetOrgPerson", "description" => _("Addressbook"))),
 
-              "plProvidedAcls"    => array(
-                "sn"                        => _("Surname"),
-                "givenName"                 => _("Given name"),
-                "telephoneNumber"           => _("Telefon number"),
-                "facsimileTelephoneNumber"  => _("Fax number"),
-                "mobile"                    => _("Mobile number"),
-                "homePhone"                 => _("Home phone number"),
-                "uid"                       => _("User identification"),
-                "mail"                      => _("Mail address"),
-                "pager"                     => _("Pager"),
-                "o"                         => _("Organization"),
-                "ou"                        => _("Department"),
-                "l"                         => _("Location"),
-                "postalAddress"             => _("Postal address"),
-                "postalCode"                => _("Postal address"),
-                "st"                        => _("State"),
-                "initials"                  => _("Initials"),
-                "title"                     => _("Title"),
-                "homePostalAddress"         => _("Home postal address"),
-                "cn"                        => _("Common name")
-              )
-            );
+      "plProvidedAcls"    => array(
+        "sn"                        => _("Surname"),
+        "givenName"                 => _("Given name"),
+        "telephoneNumber"           => _("Telefon number"),
+        "facsimileTelephoneNumber"  => _("Fax number"),
+        "mobile"                    => _("Mobile number"),
+        "homePhone"                 => _("Home phone number"),
+        "uid"                       => _("User identification"),
+        "mail"                      => _("Mail address"),
+        "pager"                     => _("Pager"),
+        "o"                         => _("Organization"),
+        "ou"                        => _("Department"),
+        "l"                         => _("Location"),
+        "postalAddress"             => _("Postal address"),
+        "postalCode"                => _("Postal address"),
+        "st"                        => _("State"),
+        "initials"                  => _("Initials"),
+        "title"                     => _("Title"),
+        "homePostalAddress"         => _("Home postal address"),
+        "cn"                        => _("Common name")
+      )
+    );
   }
 }
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

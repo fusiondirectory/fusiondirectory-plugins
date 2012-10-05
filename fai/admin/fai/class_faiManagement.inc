@@ -22,7 +22,7 @@
 
 class faiManagement extends management
 {
-  var $plHeadline     = "Software deployment";
+  var $plHeadline     = "FAI software deployment";
   var $plDescription  = "Manage software packages and deployment recipes";
   var $plIcon  = "plugins/fai/images/plugin.png";
 
@@ -1062,17 +1062,19 @@ class faiManagement extends management
 
   static function plInfo()
   {
-    return (array(
-          "plShortName"   => _("FAI releases"),
-          "plDescription" => _("FAI release management"),
-          "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
-          "plPriority"    => 0,
-          "plSection"     => array("administration"),
-          "plCategory"    => array("fai"=> array("description" => _("FAI"),
-              "objectClass" => "FAIclass")),
-          "plProvidedAcls"=> array()));
+    return array(
+      "plShortName"   => _("FAI software deployment"),
+      "plDescription" => _("Manage FAI software packages and deployment recipes"),
+      "plIcon"        => "plugins/fai/images/plugin.png",
+      "plSelfModify"  => FALSE,
+      "plDepends"     => array(),
+      "plPriority"    => 0,
+      "plSection"     => array("administration"),
+      "plCategory"    => array(
+        "fai" => array("description" => _("FAI"),"objectClass" => "FAIclass")
+      ),
+      "plProvidedAcls"=> array()
+    );
   }
 }
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>
