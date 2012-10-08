@@ -134,33 +134,7 @@ class wingeneric extends plugin
     if (!$this->is_account && $this->parent === NULL) {
       $display = "<img alt=\"\" src=\"images/small-error.png\" align=middle>&nbsp;<b>".
         msgPool::noValidExtension(_("network"))."</b>";
-      return($display);
-    }
-
-    // Get samba domain and its sid/rid base
-    if ($this->sambaSID != "") {
-      $this->SID = preg_replace ("/-[^-]+$/", "", $this->sambaSID);
-      $ldap = $this->config->get_ldap_link();
-      $ldap->cd($this->config->current['BASE']);
-      $ldap->search ("(&(objectClass=sambaDomain)(sambaSID=$this->SID))",array("sambaAlgorithmicRidBase","sambaDomainName"));
-      if ($ldap->count() != 0) {
-        $attrs= $ldap->fetch();
-        if (isset($attrs['sambaAlgorithmicRidBase'])) {
-          $this->ridBase = $attrs['sambaAlgorithmicRidBase'][0];
-        } else {
-            $this->ridBase = $this->config->get_cfg_value("sambaRidBase");
-          }
-          if ($this->sambaDomainName == ""){
-            $this->sambaDomainName = $attrs['sambaDomainName'][0];
-          }
-      } else {
-          // Fall back to a 'DEFAULT' domain, if none was found in LDAP.
-          if ($this->sambaDomainName == "") $this->sambaDomainName= "DEFAULT";
-
-          // Nothing in ldap, use configured sid and rid values.
-          $this->ridBase = $this->config->get_cfg_value("sambaRidBase");
-          $this->SID = $this->config->get_cfg_value("sambaSid");
-        }
+      return $display;
     }
 
     /* Fill templating stuff */
@@ -248,7 +222,6 @@ class wingeneric extends plugin
   /* Check supplied data */
   function check()
   {
-
     if ($this->uid == "") {
       $this->uid = $this->cn."$";
     } else {
@@ -257,19 +230,41 @@ class wingeneric extends plugin
       }
     }
 
+    // Get samba domain and its sid/rid base
+    if ($this->sambaSID != "") {
+      $this->SID = preg_replace ("/-[^-]+$/", "", $this->sambaSID);
+      $ldap = $this->config->get_ldap_link();
+      $ldap->cd($this->config->current['BASE']);
+      $ldap->search("(&(objectClass=sambaDomain)(sambaSID=$this->SID))",array("sambaAlgorithmicRidBase","sambaDomainName"));
+      if ($ldap->count() != 0) {
+        $attrs= $ldap->fetch();
+        if (isset($attrs['sambaAlgorithmicRidBase'])) {
+          $this->ridBase = $attrs['sambaAlgorithmicRidBase'][0];
+        } else {
+          $this->ridBase = $this->config->get_cfg_value("sambaRidBase");
+        }
+        if ($this->sambaDomainName == "") {
+          $this->sambaDomainName = $attrs['sambaDomainName'][0];
+        }
+      } else {
+        // Fall back to a 'DEFAULT' domain, if none was found in LDAP.
+        if ($this->sambaDomainName == "") $this->sambaDomainName= "DEFAULT";
+
+        // Nothing in ldap, use configured sid and rid values.
+        $this->ridBase  = $this->config->get_cfg_value("sambaRidBase");
+        $this->SID      = $this->config->get_cfg_value("sambaSid");
+      }
+    }
+
     /* Call common method to give check the hook */
     $message = plugin::check();
     $message = array_merge($message, $this->netConfigDNS->check());
     $this->dn = "uid=".$this->uid.",".get_ou('sambaMachineAccountRDN').$this->base;
 
-    if (!$this->acl_is_createable()) {
-      $message[] = msgPool::permCreate();
-    }
-
     if ($this->orig_dn != $this->dn) {
       $ldap = $this->config->get_ldap_link();
-      $ldap->cd ($this->base);
-      $ldap->search ("(uid=".$this->uid.")", array("uid"));
+      $ldap->cd($this->base);
+      $ldap->search("(uid=".$this->uid.")", array("uid"));
       if ($ldap->count() != 0) {
         while ($attrs = $ldap->fetch()) {
           if ($attrs['dn'] != $this->orig_dn) {
@@ -300,7 +295,7 @@ class wingeneric extends plugin
   function getCopyDialog()
   {
     $smarty = get_smarty();
-    $smarty->assign("cn", $this->cn);
+    $smarty->assign("cn", preg_replace("/\\\$\$/", "", $this->uid));
     $smarty->assign("macAddress", $this->netConfigDNS->macAddress);
     $smarty->assign("ipHostNumber", $this->netConfigDNS->ipHostNumber);
     $smarty->assign("object", "winstation");
@@ -315,7 +310,8 @@ class wingeneric extends plugin
   function saveCopyDialog()
   {
     if (isset($_POST['cn'])) {
-      $this->cn = $_POST['cn'];
+      $this->uid = $_POST['cn'];
+      $this->cn = preg_replace("/\\\$\$/", "", $this->uid);
     }
     if (isset($_POST['macAddress'])) {
       $this->netConfigDNS->macAddress = $_POST['macAddress'];
