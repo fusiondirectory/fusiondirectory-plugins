@@ -103,18 +103,18 @@ class termDNS extends plugin
 
     /* Hide all dhcp specific code, if dhcp plugin is not present in config */
     $this->dhcpEnabled = FALSE;
-    if($this->config->search("servdhcp","class",array("tabs"))){
+    if ($this->config->search("servdhcp","class",array("tabs"))) {
       $this->dhcpEnabled = TRUE;
     }
 
-    if(!class_available("dhcpHost")){
+    if (!class_available("dhcpHost")) {
       $this->dhcpEnabled = FALSE;
     }
 
-    if($this->dhcpEnabled){
+    if ($this->dhcpEnabled) {
       $this->dhcpParentNodes = $this->get_dhcp_parent_nodes();
       $this->dhcpParentNode  = $this->get_dhcp_parent_node();
-      if($this->dhcpParentNode){
+      if ($this->dhcpParentNode) {
         $this->dhcp_is_Account = TRUE;
         $this->initial_dhcp_is_Account = TRUE;
         $this->dhcpHostEntry  = $this->get_dhcp_host_entry();
@@ -131,22 +131,22 @@ class termDNS extends plugin
     /* Hide all dns specific code, if dns is not available
      */
     $DNSenabled = false;
-    foreach($this->config->data['TABS']['SERVERSERVICE'] as $tab){
-      if(preg_match("/^servdns$/",$tab['CLASS'])){
+    foreach ($this->config->data['TABS']['SERVERSERVICE'] as $tab) {
+      if(preg_match("/^servdns$/",$tab['CLASS'])) {
         $this->DNSenabled = true;
       }
     }
 
-    if(!class_available("DNS")){
+    if (!class_available("DNS")) {
       $this->DNSenabled = FALSE;
     }
 
-    if(!$this->DNSenabled){
+    if (!$this->DNSenabled) {
       $this->DNS_is_account = false;
       return;
     }
 
-    if($this->DNSenabled){
+    if ($this->DNSenabled) {
 
       /* Get Zones
        */
@@ -588,11 +588,26 @@ class termDNS extends plugin
             msg_dialog::display(_("Error"), sprintf(_("Was not able to contact argonaut server: %s"), "<br/><br/>".$o_queue->get_error()), ERROR_DIALOG);
           } else {
             $zone = substr(strrchr($this->dnsEntry['zoneName'], "/"), 1);
-            $o_queue->append_call("Ldap2Zone.start",
-                                  array($this->attrs['macAddress'][0]),
-                                  array("args"=>array($zone)));
-            if ($o_queue->is_error()) {
-              msg_dialog::display(_("Error"), sprintf(_("Was not able to launch ldap2zone: %s"), "<br/><br/>".$o_queue->get_error()), ERROR_DIALOG);
+            $ldap = $this->config->get_ldap_link();
+            $ldap->cd($this->config->current['BASE']);
+            $ldap->search("(&(objectClass=dnsZone)(zoneName=$zone)(sOARecord=*))", array("nSRecord"));
+            if ($ldap->count() != 1) {
+              msg_dialog::display(_("Error"), sprintf(_("Was not able to find DNS server for zone %s"), $zone), ERROR_DIALOG);
+            } else {
+              $attrs  = $ldap->fetch();
+              $ip     = $attrs['nSRecord'][0];
+              $ldap->search("(&(objectClass=goServer)(ipHostNumber=".$ip."))", array("macAddress"));
+              if ($ldap->count() != 1) {
+                msg_dialog::display(_("Error"), sprintf(_("Was not able to find mac address of DNS server %s"), $ip), ERROR_DIALOG);
+              } else {
+                $attrs  = $ldap->fetch();
+                $o_queue->append_call("Ldap2Zone.start",
+                                      array($attrs['macAddress'][0]),
+                                      array("args"=>array($zone)));
+                if ($o_queue->is_error()) {
+                  msg_dialog::display(_("Error"), sprintf(_("Was not able to launch ldap2zone: %s"), "<br/><br/>".$o_queue->get_error()), ERROR_DIALOG);
+                }
+              }
             }
           }
         }
