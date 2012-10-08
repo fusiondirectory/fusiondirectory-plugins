@@ -330,7 +330,7 @@ class servgeneric extends plugin
       $message[]= msgPool::check_base();;
     }
 
-    if ($this->orig_dn != $this->dn){
+    if ($this->orig_dn != $this->dn) {
       $ldap= $this->config->get_ldap_link();
       $ldap->cd ($this->base);
       $ldap->search ("(cn=".$this->cn.")", array("cn"));

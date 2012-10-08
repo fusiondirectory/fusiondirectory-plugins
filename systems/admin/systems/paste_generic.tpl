@@ -14,6 +14,8 @@
           {t}Component name{/t}
 {elseif $object == "phone"}
           {t}Phone name{/t}
+{elseif $object == "winstation"}
+          {t}Windows workstation name{/t}
 {/if}
         </LABEL>{$must}
       </td>
