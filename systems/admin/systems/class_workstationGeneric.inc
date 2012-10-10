@@ -183,7 +183,21 @@ class workgeneric extends simplePlugin
               'gotoNtpServer',
               FALSE
             )
-          )
+          ),
+          new BooleanAttribute (
+            _('Inherit LDAP servers'),
+            _('Inherit LDAP server attributes from ogroup'),
+            'inheritLDAPServer',
+            FALSE
+          ),
+          new OrderedArrayAttribute (
+            new SelectAttribute (
+              _('LDAP servers'),
+              _('The LDAP servers for the workstation'),
+              'gotoLdapServer',
+              FALSE
+            )
+          ),
         )
       ),
       'network' => array(
@@ -209,15 +223,13 @@ class workgeneric extends simplePlugin
       //~ $this->fai_activated = TRUE;
     //~ }
 //~
-    //~ if (class_available("krbHostKeys")) {
-      //~ $this->kerberos_key_service = new krbHostKeys($this->config,$this);
-    //~ }
 
     if (!isset($this->parent->by_object['ogroup'])) {
       $ldap = $this->config->get_ldap_link();
       $ldap->cd($this->config->current['BASE']);
       $ldap->search("(&(objectClass=gotoWorkstationTemplate)(member=".LDAP::prepare4filter($this->dn)."))", array("cn"));
       $this->member_of_ogroup = ($ldap->count() >= 1);
+    }
 
     /* Check if this host is currently in installation process*/
     //~ if (class_available("supportDaemon") && class_available("DaemonEvent")) {
@@ -237,6 +249,18 @@ class workgeneric extends simplePlugin
         )
       )
     );
+
+    $this->attributesInfo['servers']['attrs']['inheritLDAPServer']->setInLdap(FALSE);
+    $this->attributesInfo['servers']['attrs']['inheritLDAPServer']->setManagedAttributes(
+      array(
+        'erase' => array(
+          TRUE => array(
+            'servers' => array('gotoLdapServer'),
+          )
+        )
+      )
+    );
+
     /* Create used ntp server array */
     $ntpServers = $this->attributesInfo['servers']['attrs']['gotoNtpServer']->getValue();
     /* Set inherit checkbox state */
@@ -246,22 +270,45 @@ class workgeneric extends simplePlugin
     } else {
       $this->attributesInfo['servers']['attrs']['inheritTimeServer']->setValue(FALSE);
     }
+
+    /* Create used ldap server array */
+    $ldapServers = $this->attributesInfo['servers']['attrs']['gotoLdapServer']->getValue();
+    /* Set inherit checkbox state */
+    if ($this->member_of_ogroup && (count($ldapServers) == 0)) {
+      $this->attributesInfo['servers']['attrs']['inheritLDAPServer']->setValue(TRUE);
+    } else {
+      $this->attributesInfo['servers']['attrs']['inheritLDAPServer']->setValue(FALSE);
+    }
+
+    /* Disable inheritance if we're not in a group */
     if (!$this->member_of_ogroup) {
       $this->attributesInfo['servers']['attrs']['inheritTimeServer']->setDisabled(TRUE);
+      $this->attributesInfo['servers']['attrs']['inheritLDAPServer']->setDisabled(TRUE);
     }
 
     /* Create available ntp options */
     $tmp = array();
-    foreach($this->config->data['SERVERS']['NTP'] as $key => $server){
-      if($server == "default") continue;
+    foreach ($this->config->data['SERVERS']['NTP'] as $key => $server) {
+      if($server == "default") {
+        continue;
+      }
       $tmp[] = $server;
     }
     $this->attributesInfo['servers']['attrs']['gotoNtpServer']->attribute->setChoices($tmp);
 
+    /* Create available ldap options */
+    $tmp = array();
+    foreach ($this->config->data['SERVERS']['LDAP'] as $dn => $data) {
+      for ($i = 0; $i < $data['goLdapBase']['count']; $i++) {
+        $tmp[] = $data["cn"][0].":".$data["goLdapBase"][$i];
+      }
+    }
+    $this->attributesInfo['servers']['attrs']['gotoLdapServer']->attribute->setChoices($tmp);
+
     /* Create an array of all Syslog servers */
     $tmp = $this->config->data['SERVERS']['SYSLOG'];
     $tmp_output = $tmp;
-    if(($key = array_search("default", $tmp)) !== FALSE) {
+    if (($key = array_search("default", $tmp)) !== FALSE) {
       $tmp[$key] = "";
       if ($this->member_of_ogroup) {
         $tmp_output[$key] = _('inherited');
@@ -336,131 +383,58 @@ class workgeneric extends simplePlugin
     //~ }
     //~ $smarty->assign("actions", $actions);
     //~ /* Arrays */
-    //~ $smarty->assign("modes", $this->modes);
     //~ $smarty->assign("nfsservers", $this->config->data['SERVERS']['NFS']);
-    //~ $smarty->assign("syslogservers", $this->gotoSyslogServers);
     //~ $smarty->assign("fai_activated",$this->fai_activated);
-//~
-    //~ /* Display kerberos host key options */
-    //~ $smarty->assign("host_key","");
-    //~ if(is_object($this->kerberos_key_service)){
-      //~ $smarty->assign("host_key",$this->kerberos_key_service->execute_by_prefix("host/"));
-    //~ }
 //~
     //~ /* Show main page */
     //~ $smarty->assign("currently_installing", $this->currently_installing);
     //~ return($smarty->fetch (get_template_path('workstation.tpl', TRUE, dirname(__FILE__))));
   //~ }
 
-  //~ function remove_from_parent()
-  //~ {
-    //~ if($this->acl_is_removeable()){
-//~
-      //~ $this->netConfigDNS->remove_from_parent();
-      //~ $ldap= $this->config->get_ldap_link();
-      //~ $ldap->rmdir($this->dn);
-      //~ new log("remove","workstation/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
-      //~ if (!$ldap->success()){
-        //~ msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_DEL, get_class()));
-      //~ }
-//~
-      //~ /* Remove kerberos key dependencies too */
-      //~ if(is_object($this->kerberos_key_service)){
-        //~ $this->kerberos_key_service->remove_from_parent_by_prefix("host/");
-      //~ }
-//~
-      //~ /* Optionally execute a command after we're done */
-      //~ $this->handle_post_events("remove", array("macAddress" => $this->netConfigDNS->macAddress,"ipHostNumber" => $this->netConfigDNS->ipHostNumber));
-//~
-      //~ /* Delete references to object groups */
-      //~ $ldap->cd ($this->config->current['BASE']);
-      //~ $ldap->search ("(&(objectClass=gosaGroupOfNames)(member=".LDAP::prepare4filter($this->dn)."))", array("cn"));
-      //~ while ($ldap->fetch()){
-        //~ $og= new ogroup($this->config, $ldap->getDN());
-        //~ unset($og->member[$this->dn]);
-        //~ $og->save ();
-      //~ }
-//~
-      //~ /* Remove all accessTo/trust dependencies */
-      //~ update_accessTo($this->cn,"");
-    //~ }
-//~
-    //~ /* Clean queue form entries with this mac
-     //~ */
-    //~ if(class_available("supportDaemon") && tests::is_mac($this->netConfigDNS->orig_macAddress)){
-      //~ $q = new supportDaemon();
-      //~ $q->clean_queue_from_mac($this->netConfigDNS->orig_macAddress);
-    //~ }
-//~
-    //~ if(isset($_POST["inheritAll"])){
-      //~ $this->set_everything_to_inherited();
-    //~ }
-  //~ }
+  function remove_from_parent()
+  {
+    if (!$this->initially_was_account) {
+      return;
+    }
 
+    if ($this->acl_is_removeable()) {
+      $this->netConfigDNS->remove_from_parent();
 
-  //~ /* Save data to object */
-  //~ function save_object()
-  //~ {
-//~
-    //~ if(isset($_POST["inheritAll"])){
-      //~ $this->set_everything_to_inherited();
-    //~ }
-//~
-    //~ /* Hanle kerberos host key plugin */
-    //~ if(is_object($this->kerberos_key_service)){
-      //~ $this->kerberos_key_service->save_object_by_prefix("host/");
-    //~ }
-  //~ }
+      parent::remove_from_parent();
 
+      /* Delete references to object groups */
+      $ldap = $this->config->get_ldap_link();
+      $ldap->cd($this->config->current['BASE']);
+      $ldap->search("(&(objectClass=gosaGroupOfNames)(member=".LDAP::prepare4filter($this->dn)."))", array("cn"));
+      while ($ldap->fetch()) {
+        $og = new ogroup($this->config, $ldap->getDN());
+        unset($og->member[$this->dn]);
+        $og->save();
+      }
+
+      /* Remove all accessTo/trust dependencies */
+      update_accessTo($this->cn, "");
+
+      /* Clean queue form entries with this mac
+       */
+      if (class_available("supportDaemon") && tests::is_mac($this->netConfigDNS->orig_macAddress)) {
+        $q = new supportDaemon();
+        $q->clean_queue_from_mac($this->netConfigDNS->orig_macAddress);
+      }
+    }
+  }
 
   //~ /* Check supplied data */
   //~ function check()
   //~ {
-    //~ /* Call common method to give check the hook */
-    //~ $message= plugin::check();
-//~
     //~ /* Skip IP & Mac checks if this is a template */
     //~ if($this->cn != "wdefault"){
       //~ $message= array_merge($message, $this->netConfigDNS->check());
     //~ }
-//~
-    //~ $this->dn= "cn=".$this->cn.",".get_ou('workstationRDN').$this->base;
-//~
-    //~ if ($this->cn == ""){
-      //~ $message[]= msgPool::required(_("Name"));
-    //~ }
-//~
+
     //~ /* Check if given name is a valid host/dns name */
     //~ if(!tests::is_valid_hostname($this->cn)){
       //~ $message[] = msgPool::invalid(_("Name"));
-    //~ }
-//~
-    //~ // Check if a wrong base was supplied
-    //~ if(!$this->baseSelector->checkLastBaseUpdate()){
-      //~ $message[]= msgPool::check_base();
-    //~ }
-//~
-    //~ if ($this->orig_dn != $this->dn){
-      //~ $ldap= $this->config->get_ldap_link();
-      //~ $ldap->cd ($this->base);
-//~
-      //~ if($this->cn == "wdefault"){
-        //~ $ldap->cat($this->dn);
-      //~ }else{
-        //~ $ldap->search ("(&(cn=".$this->cn.")(objectClass=gotoWorkstation))", array("cn"));
-      //~ }
-      //~ if ($ldap->count() != 0){
-        //~ while ($attrs= $ldap->fetch()){
-          //~ if (preg_match("/cn=dhcp,/",$attrs['dn']) || preg_match ("/,".preg_quote(get_ou('systemIncomingRDN'), '/')."/i", $ldap->getDN())){
-            //~ continue;
-          //~ } else {
-            //~ if ($attrs['dn'] != $this->orig_dn){
-              //~ $message[]= msgPool::duplicated(_("Name"));
-              //~ break;
-            //~ }
-          //~ }
-        //~ }
-      //~ }
     //~ }
 //~
     //~ /* Only systems with a valid ldap handle can be activated
@@ -487,14 +461,6 @@ class workgeneric extends simplePlugin
       //~ }
     //~ }
 //~
-    //~ /* Check if we are allowed to create or move this object
-     //~ */
-    //~ if($this->orig_dn == "new" && !$this->acl_is_createable($this->base)){
-      //~ $message[] = msgPool::permCreate();
-    //~ }elseif($this->orig_dn != "new" && $this->base != $this->orig_base && !$this->acl_is_moveable($this->base)){
-      //~ $message[] = msgPool::permMove();
-    //~ }
-//~
     //~ return ($message);
   //~ }
 
@@ -502,13 +468,7 @@ class workgeneric extends simplePlugin
   /* Save to LDAP */
   //~ function save()
   //~ {
-    //~ /* Detect mode changes */
-    //~ $activate= (isset($this->saved_attributes['gotoMode']) &&
-        //~ $this->gotoMode != $this->saved_attributes['gotoMode'] &&
-        //~ $this->gotoMode == "active" &&
-        //~ tests::is_ip($this->netConfigDNS->ipHostNumber)) || $this->auto_activate;
     //~ plugin::save();
-//~
 //~
     //~ /* cn=default and macAddress=- indicates that this is a template */
     //~ if($this->cn == "wdefault"){
@@ -598,39 +558,6 @@ class workgeneric extends simplePlugin
       $this->gotoNtpServer=array();
     }
   }
-
-
-  //~ function set_everything_to_inherited()
-  //~ {
-    //~ $this->gotoSyslogServer  = "default";
-    //~ $this->inheritTimeServer = TRUE;
-//~
-    //~ /* Set workstation service attributes to inherited */
-    //~ if($this->member_of_ogroup && isset($this->parent->by_object['workservice'])){
-      //~ foreach(array("gotoXKbLayout","gotoXKbModel","gotoXKbVariant","gotoXDriver",
-            //~ "gotoXResolution","gotoXColordepth","gotoXMouseType","gotoXMouseport") as $name){
-        //~ if($this->parent->by_object['workservice']->acl_is_writeable($name)){
-          //~ $this->parent->by_object['workservice']->$name = "default";
-        //~ }
-      //~ }
-    //~ }
-//~
-    //~ /* Set workstation startup attributes to inherited */
-    //~ if($this->member_of_ogroup && isset($this->parent->by_object['workstartup'])){
-      //~ $obj = $this->parent->by_object['workstartup'];
-      //~ if($obj->acl_is_writeable("gotoBootKernel")){
-        //~ $this->parent->by_object['workstartup']->gotoBootKernel = "default-inherited";
-      //~ }
-      //~ if($obj->acl_is_writeable("gotoLdapServer")){
-        //~ $this->parent->by_object['workstartup']->gotoLdapServer = "default-inherited";
-        //~ $this->parent->by_object['workstartup']->gotoLdap_inherit = TRUE;
-        //~ $this->parent->by_object['workstartup']->gotoLdapServers = array();
-      //~ }
-      //~ if($obj->acl_is_writeable("FAIdebianMirror")){
-        //~ $this->parent->by_object['workstartup']->FAIdebianMirror= "inherited";
-      //~ }
-    //~ }
-  //~ }
 
 
   function is_modal_dialog()
