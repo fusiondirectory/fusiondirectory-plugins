@@ -20,9 +20,31 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
+class NetworkSettingsDialog
+{
+  private $attribute;
+  private $display;
+
+  function __construct (&$attribute, &$display)
+  {
+    $this->attribute = &$attribute;
+    $this->display = &$display;
+  }
+
+  function execute ()
+  {
+    $this->display = $this->attribute->netConfigDNS->execute();
+    if (is_object($this->attribute->netConfigDNS->dialog)) {
+      return $this->display;
+    }
+    return FALSE;
+  }
+}
+
 class NetworkSettingsAttribute extends Attribute
 {
   public $netConfigDNS;
+  private $display;
 
   function __construct ()
   {
@@ -40,18 +62,15 @@ class NetworkSettingsAttribute extends Attribute
     parent::setParent($plugin);
     if (is_object($this->plugin)) {
       $this->plugin->netConfigDNS =& $this->netConfigDNS;
-      $this->netConfigDNS = new termDNS($this->plugin->config, $this->plugin, $this->plugin->objectclasses);
+      $this->netConfigDNS = new termDNS($this->plugin->config, $this->plugin, $this->plugin->objectclasses, TRUE);
       $this->netConfigDNS->MACisMust = TRUE;
+      $this->display = $this->netConfigDNS->execute();
     }
   }
 
   function renderAttribute(&$attributes)
   {
-    $str = $this->netConfigDNS->execute();
-    if (is_object($this->netConfigDNS->dialog)) {
-      return $str;
-    }
-    $attributes[$this->getLdapName()] = $str;
+    $attributes[$this->getLdapName()] = $this->display;
   }
 
   function loadPostValue ()
@@ -63,6 +82,10 @@ class NetworkSettingsAttribute extends Attribute
     if (!$this->disabled) {
       /* Refresh base */
       $this->netConfigDNS->save_object();
+      $this->display = $this->netConfigDNS->execute();
+      if (is_object($this->netConfigDNS->dialog)) {
+        $this->plugin->openDialog(new NetworkSettingsDialog($this, $this->display));
+      }
     }
   }
 
@@ -133,8 +156,8 @@ class workgeneric extends simplePlugin
             FALSE,
             FALSE,
             '',
-            'active',
-            'locked'
+            'locked',
+            'active'
           ),
         )
       ),
@@ -145,22 +168,20 @@ class workgeneric extends simplePlugin
             _('Syslog server'),
             _('The syslog server the workstation should be using'),
             'gotoSyslogServer',
-            TRUE, // TODO CHECK inherited empty
-            array('')
+            FALSE
           ),
           new BooleanAttribute (
             _('Inherit NTP servers'),
             _('Inherit time server attributes from ogroup'),
             'inheritTimeServer',
-            FALSE //TODO managed attributes, disabled if !ogroup, etc…
+            FALSE
           ),
           new SetAttribute (
             new SelectAttribute (
               _('NTP servers'),
               _('The NTP servers for the workstation'),
               'gotoNtpServer',
-              FALSE,
-              array('')
+              FALSE
             )
           )
         )
@@ -197,10 +218,6 @@ class workgeneric extends simplePlugin
       $ldap->cd($this->config->current['BASE']);
       $ldap->search("(&(objectClass=gotoWorkstationTemplate)(member=".LDAP::prepare4filter($this->dn)."))", array("cn"));
       $this->member_of_ogroup = ($ldap->count() >= 1);
-    }
-
-    //~ $this->netConfigDNS = new termDNS($this->config, $this,$this->objectclasses);
-    //~ $this->netConfigDNS->MACisMust = TRUE;
 
     /* Check if this host is currently in installation process*/
     //~ if (class_available("supportDaemon") && class_available("DaemonEvent")) {
@@ -246,6 +263,9 @@ class workgeneric extends simplePlugin
     $tmp_output = $tmp;
     if(($key = array_search("default", $tmp)) !== FALSE) {
       $tmp[$key] = "";
+      if ($this->member_of_ogroup) {
+        $tmp_output[$key] = _('inherited');
+      }
     }
     $this->attributesInfo['servers']['attrs']['gotoSyslogServer']->setChoices($tmp, $tmp_output);
   }
@@ -267,21 +287,7 @@ class workgeneric extends simplePlugin
   //~ {
     //~ /* Call parent execute */
     //~ plugin::execute();
-//~
-    //~ if($this->is_account && !$this->view_logged){
-      //~ $this->view_logged = TRUE;
-      //~ new log("view","workstation/".get_class($this),$this->dn);
-    //~ }
-//~
-    //~ /* Do we need to flip is_account state? */
-    //~ if(isset($_POST['modify_state'])){
-      //~ if($this->is_account && $this->acl_is_removeable()){
-        //~ $this->is_account= FALSE;
-      //~ }elseif(!$this->is_account && $this->acl_is_createable()){
-        //~ $this->is_account= TRUE;
-      //~ }
-    //~ }
-//~
+
     //~ if ((isset($_POST['saction'])) &&
         //~ (isset($_POST['action'])) &&
         //~ ($this->acl_is_writeable("FAIstate")) &&
@@ -308,48 +314,11 @@ class workgeneric extends simplePlugin
 //~
 //~
     //~ }
-//~
-    //~ /* Do we represent a valid terminal? */
-    //~ if (!$this->is_account && $this->parent === NULL){
-      //~ $display= "<img alt=\"\" src=\"images/small-error.png\" align=middle>&nbsp;<b>".
-        //~ msgPool::noValidExtension(_("workstation"))."</b>";
-      //~ return($display);
-    //~ }
-//~
-    //~ /* Add new ntp Server to our list */
-    //~ if((isset($_POST['addNtpServer'])) && (isset($_POST['gotoNtpServers'])) && $this->acl_is_writeable("gotoNtpServer")){
-      //~ $this->gotoNtpServer[$_POST['gotoNtpServers']] = $_POST['gotoNtpServers'];
-    //~ }
-//~
-    //~ /* Delete selected NtpServer for list of used servers  */
-    //~ if((isset($_POST['delNtpServer'])) && (isset($_POST['gotoNtpServerSelected'])) && $this->acl_is_writeable("gotoNtpServer")){
-      //~ foreach($_POST['gotoNtpServerSelected'] as $name){
-        //~ unset($this->gotoNtpServer[$name]);
-      //~ }
-    //~ }
-//~
+
     //~ /* Fill templating stuff */
     //~ $smarty= get_smarty();
     //~ $smarty->assign("usePrototype", "true");
 //~
-    //~ /* Set acls */
-    //~ $tmp = $this->plInfo();
-    //~ foreach($tmp['plProvidedAcls'] as $name => $translation){
-      //~ $smarty->assign($name."ACL",$this->getacl($name));
-    //~ }
-//~
-    //~ $smarty->assign("cn", $this->cn);
-    //~ $smarty->assign("description", $this->description);
-    //~ $smarty->assign("l", $this->l);
-    //~ $smarty->assign("staticAddress", "");
-//~
-    //~ $tmp = array();
-    //~ foreach($this->gotoNtpServers as $server){
-      //~ if(!in_array($server,$this->gotoNtpServer)){
-        //~ $tmp[$server] = $server;
-      //~ }
-    //~ }
-    //~ $smarty->assign("gotoNtpServers",$tmp);
 //~
     //~ /* Check if workstation is online */
     //~ $o_queue = new supportDaemon();
@@ -371,30 +340,6 @@ class workgeneric extends simplePlugin
     //~ $smarty->assign("nfsservers", $this->config->data['SERVERS']['NFS']);
     //~ $smarty->assign("syslogservers", $this->gotoSyslogServers);
     //~ $smarty->assign("fai_activated",$this->fai_activated);
-//~
-    //~ $ntpser = array();
-    //~ foreach($this->gotoNtpServers as $server){
-      //~ if(!in_array($server,$this->gotoNtpServer)){
-        //~ $ntpser[$server] = $server;
-      //~ }
-    //~ }
-    //~ $smarty->assign("gotoNtpServers", $ntpser);
-//~
-    //~ /* Variables */
-    //~ foreach(array("gotoMode", "gotoSyslogServer", "gotoNtpServer") as $val){
-      //~ $smarty->assign($val."_select", $this->$val);
-    //~ }
-    //~ $smarty->assign("base", $this->baseSelector->render());
-//~
-    //~ /* tell smarty the inherit checkbox state */
-    //~ $smarty->assign("inheritTimeServer",$this->inheritTimeServer);
-    //~ $smarty->assign("member_of_ogroup",$this->member_of_ogroup);
-//~
-    //~ $str = $this->netConfigDNS->execute();
-    //~ if(is_object($this->netConfigDNS->dialog)){
-      //~ return($str);
-    //~ }
-    //~ $smarty->assign("netconfig", $str);
 //~
     //~ /* Display kerberos host key options */
     //~ $smarty->assign("host_key","");
@@ -456,35 +401,6 @@ class workgeneric extends simplePlugin
   //~ /* Save data to object */
   //~ function save_object()
   //~ {
-//~
-    //~ /* Create a base backup and reset the
-       //~ base directly after calling plugin::save_object();
-       //~ Base will be set seperatly a few lines below */
-    //~ $base_tmp = $this->base;
-    //~ plugin::save_object();
-    //~ $this->base = $base_tmp;
-//~
-    //~ /* Refresh base */
-    //~ if ($this->acl_is_moveable($this->base)){
-      //~ if (!$this->baseSelector->update()) {
-        //~ msg_dialog::display(_("Error"), msgPool::permMove(), ERROR_DIALOG);
-      //~ }
-      //~ if ($this->base != $this->baseSelector->getBase()) {
-        //~ $this->base= $this->baseSelector->getBase();
-        //~ $this->is_modified= TRUE;
-      //~ }
-    //~ }
-//~
-    //~ $this->netConfigDNS->save_object();
-//~
-    //~ /* Set inherit mode */
-    //~ if((isset($_POST['workgeneric_posted'])) && ($this->acl_is_writeable("gotoNtpServer"))){
-      //~ if(isset($_POST["inheritTimeServer"]) && $this->member_of_ogroup){
-        //~ $this->inheritTimeServer = true;
-      //~ }else{
-        //~ $this->inheritTimeServer = false;
-      //~ }
-    //~ }
 //~
     //~ if(isset($_POST["inheritAll"])){
       //~ $this->set_everything_to_inherited();
@@ -593,104 +509,37 @@ class workgeneric extends simplePlugin
         //~ tests::is_ip($this->netConfigDNS->ipHostNumber)) || $this->auto_activate;
     //~ plugin::save();
 //~
-    //~ /* Strip out 'default' values */
-    //~ foreach (array("gotoSyslogServer") as $val){
-//~
-      //~ if (isset($this->attrs[$val]) && $this->attrs[$val] == "default"){
-        //~ $this->attrs[$val]= array();
-      //~ }
-    //~ }
-//~
-    //~ /* Remove all empty values */
-    //~ if ($this->orig_dn == 'new'){
-      //~ $attrs= array();
-      //~ foreach ($this->attrs as $key => $val){
-        //~ if (is_array($val) && count($val) == 0){
-          //~ continue;
-        //~ }
-        //~ $attrs[$key]= $val;
-      //~ }
-      //~ $this->attrs= $attrs;
-    //~ }
-//~
-    //~ /* Update ntp server settings */
-    //~ if($this->inheritTimeServer){
-      //~ if($this->is_new){
-        //~ if(isset($this->attrs['gotoNtpServer'])){
-          //~ unset($this->attrs['gotoNtpServer']);
-        //~ }
-      //~ }else{
-        //~ $this->attrs['gotoNtpServer'] = array();
-      //~ }
-    //~ }else{
-      //~ /* Set ntpServers */
-      //~ $this->attrs['gotoNtpServer'] = array();
-      //~ foreach($this->gotoNtpServer as $server){
-        //~ $this->attrs['gotoNtpServer'][] = $server;
-      //~ }
-    //~ }
 //~
     //~ /* cn=default and macAddress=- indicates that this is a template */
     //~ if($this->cn == "wdefault"){
       //~ $this->netConfigDNS->macAddress = "-";
     //~ }
 //~
-    //~ /* Write back to ldap */
-    //~ $ldap= $this->config->get_ldap_link();
-    //~ if ($this->orig_dn == 'new'){
-      //~ if(empty($this->attrs['gotoNtpServer'])) {
-        //~ unset($this->attrs['gotoNtpServer']);
-      //~ }
-      //~ $ldap->cd($this->config->current['BASE']);
-      //~ $ldap->create_missing_trees(preg_replace('/^[^,]+,/', '', $this->dn));
-      //~ $ldap->cd($this->dn);
-      //~ $ldap->add($this->attrs);
-      //~ new log("create","workstation/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
-      //~ if (!$ldap->success()){
-        //~ msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()));
-      //~ }
-//~
-      //~ $this->netConfigDNS->cn = $this->cn;
-      //~ $this->netConfigDNS->save();
-//~
-      //~ $this->handle_post_events("add",array("macAddress" => $this->netConfigDNS->macAddress,"ipHostNumber" => $this->netConfigDNS->ipHostNumber));
-    //~ } else {
-      //~ if ($this->orig_dn != $this->dn){
-//~
-        //~ /* Remove all accessTo/trust dependencies */
-        //~ update_accessTo($this->orig_cn,$this->cn);
-      //~ }
-      //~ $ldap->cd($this->dn);
-      //~ $this->cleanup();
-      //~ $ldap->modify ($this->attrs);
-      //~ if (!$ldap->success()){
-        //~ msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_MOD, get_class()));
-      //~ }
-      //~ new log("modify","workstation/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
-//~
-      //~ $this->netConfigDNS->cn = $this->cn;
-      //~ $this->netConfigDNS->save();
-//~
-      //~ $this->handle_post_events("modify",array("macAddress" => $this->netConfigDNS->macAddress,"ipHostNumber" => $this->netConfigDNS->ipHostNumber));
-    //~ }
-//~
-    //~ if ($activate && class_available("DaemonEvent")){
-//~
-      //~ /* Send installation activation
-       //~ */
-      //~ $events = DaemonEvent::get_event_types(SYSTEM_EVENT | HIDDEN_EVENT);
-      //~ $o_queue = new supportDaemon();
-      //~ if(isset($events['TRIGGERED']['DaemonEvent_installation_activation'])){
-        //~ $evt = $events['TRIGGERED']['DaemonEvent_installation_activation'];
-        //~ $tmp = new $evt['CLASS_NAME']($this->config);
-        //~ $tmp->set_type(TRIGGERED_EVENT);
-        //~ $tmp->add_targets(array($this->netConfigDNS->macAddress));
-        //~ if(!$o_queue->append($tmp)){
-          //~ msg_dialog::display(_("Service infrastructure"),msgPool::siError($o_queue->get_error()),ERROR_DIALOG);
-        //~ }
-      //~ }
-    //~ }
   //~ }
+  protected function ldap_save($cleanup = TRUE)
+  {
+    $activate =  ($this->attributesInfo['main']['attrs']['gotoMode']->hasChanged() &&
+                  $this->attributesInfo['main']['attrs']['gotoMode']->getValue());
+    parent::ldap_save($cleanup);
+    $this->netConfigDNS->cn = $this->cn;
+    $this->netConfigDNS->save();
+
+    if ($activate && class_available("DaemonEvent")) {
+      /* Send installation activation
+       */
+      $events = DaemonEvent::get_event_types(SYSTEM_EVENT | HIDDEN_EVENT);
+      $o_queue = new supportDaemon();
+      if (isset($events['TRIGGERED']['DaemonEvent_installation_activation'])) {
+        $evt = $events['TRIGGERED']['DaemonEvent_installation_activation'];
+        $tmp = new $evt['CLASS_NAME']($this->config);
+        $tmp->set_type(TRIGGERED_EVENT);
+        $tmp->add_targets(array($this->netConfigDNS->macAddress));
+        if (!$o_queue->append($tmp)) {
+          msg_dialog::display(_("Service infrastructure"),msgPool::siError($o_queue->get_error()),ERROR_DIALOG);
+        }
+      }
+    }
+  }
 
 
   /* Display generic part for server copy & paste */
