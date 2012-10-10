@@ -197,6 +197,7 @@ class wingeneric extends plugin
        Base will be set seperatly a few lines below */
     $base_tmp = $this->base;
     plugin::save_object();
+    $this->uid  = $this->cn."$";
     $this->base = $base_tmp;
 
     $this->netConfigDNS->save_object();
@@ -222,12 +223,8 @@ class wingeneric extends plugin
   /* Check supplied data */
   function check()
   {
-    if ($this->uid == "") {
-      $this->uid = $this->cn."$";
-    } else {
-      if (!preg_match('/\$$/',$this->uid)) {
-        $this->uid .= "$";
-      }
+    if (!preg_match('/\$$/',$this->uid)) {
+      $this->uid .= "$";
     }
 
     // Get samba domain and its sid/rid base
@@ -419,12 +416,8 @@ class wingeneric extends plugin
       new log("create","winworkstation/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
       $this->handle_post_events("add");
     } else {
-      if ($this->orig_dn != $this->dn) {
-        $this->move($this->orig_dn, $this->dn);
-      }
-
       $ldap->cd($this->dn);
-      $ldap->modify ($this->attrs);
+      $ldap->modify($this->attrs);
       new log("modify","winworkstation/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
       $this->handle_post_events("modify");
     }

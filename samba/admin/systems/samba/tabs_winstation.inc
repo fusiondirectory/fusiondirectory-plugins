@@ -49,8 +49,15 @@ class wintabs extends tabs
     }
 
     /* Save this system with uid and NOT cn */
-    $this->dn= "uid=$baseobject->uid,".get_winstations_ou().$baseobject->base;
-    $baseobject->dn= $this->dn;
+    $this->dn = "uid=$baseobject->uid,".get_winstations_ou().$baseobject->base;
+    $baseobject->dn = $this->dn;
+
+    if($this->dn != $baseobject->orig_dn && $baseobject->orig_dn != "new"){
+
+      /* Udpate acls */
+      $baseobject->update_acls($baseobject->orig_dn,$this->dn);
+      $baseobject->move($baseobject->orig_dn,$this->dn);
+    }
 
     foreach ($this->by_object as $key => $obj){
       $this->by_object[$key]->dn= $this->dn;
