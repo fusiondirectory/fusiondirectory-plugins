@@ -41,8 +41,8 @@ class goto_import_file extends plugin
 
   private function parse_csv($str)
   {
-    
-    /* Some file checks 
+
+    /* Some file checks
      */
     $lines = preg_split("/\n/",$str);
     if(empty($str) || !count($lines)){
@@ -50,9 +50,9 @@ class goto_import_file extends plugin
       return;
     }
 
-    /* Reset current events 
+    /* Reset current events
      */
-    $this->events = array(); 
+    $this->events = array();
 
     /* Parse each line of the given file
      */
@@ -61,7 +61,7 @@ class goto_import_file extends plugin
       // Skip empty lines.
       if(empty($line)) continue;
 
-      /* Load values from file 
+      /* Load values from file
        */
       $fields = explode(";",$line);
       $event = array();
@@ -79,7 +79,7 @@ class goto_import_file extends plugin
 
   public function execute()
   {
-    /* Import file 
+    /* Import file
      */
     if(isset($_POST['import']) && isset($_FILES['file'])) {
       if(isset($_FILES['file']['tmp_name'])){
@@ -87,11 +87,11 @@ class goto_import_file extends plugin
         $this->parse_csv($str);
       }
     }
-    
-    /* Import started 
+
+    /* Import started
      */
     $confirmed = FALSE;
-    foreach($_POST as $name => $value){ 
+    foreach($_POST as $name => $value){
       if(preg_match("/^MSG_OK/",$name)){
         $confirmed = TRUE;
       }
@@ -103,7 +103,7 @@ class goto_import_file extends plugin
           if(!empty($event['ERROR'])){
             $error = TRUE;
             break;
-          } 
+          }
         }
         if($error){
           msg_dialog::display(_("Import"),
@@ -116,12 +116,12 @@ class goto_import_file extends plugin
         $fail = 0;
 
         foreach($this->events as $key => $event){
-          if(!empty($event['ERROR'])){  
+          if(!empty($event['ERROR'])){
             $fail ++;
             continue;
           }
 
-          /* Create event 
+          /* Create event
            */
           $class= $this->daemon_events['QUEUED'][$event['HEADER']];
           $o_data = $this->daemon_events['BY_CLASS'][$class];
@@ -133,17 +133,18 @@ class goto_import_file extends plugin
             $object->set_type(TRIGGERED_EVENT);
           }
 
-          /* Update values like fqdn a.s.o 
+          /* Update values like fqdn a.s.o
            */
           foreach($this->csv_fields as $name){
             if($name == "TIMESTAMP" && empty($event[$name])) continue;
             $object->set_value($name,$event[$name]);
           }
 
-          if(!$this->parent->o_queue->append($object)){
+          $this->parent->o_queue->append($object);
+          if ($this->parent->o_queue->is_error()) {
             msg_dialog::display(_("Service infrastructure"),msgPool::siError($this->parent->o_queue->get_error()),ERROR_DIALOG);
             $fail ++;
-          }else{
+          } else {
             unset($this->events[$key]);
             $success ++;
           }
@@ -154,17 +155,17 @@ class goto_import_file extends plugin
     }
 
 
-    /* Prepare output 
+    /* Prepare output
      */
     $evts = $this->events;
     foreach($this->events as $id => $evt){
       foreach($evt as $key => $val){
         if(in_array($key,$this->csv_fields)){
-          $evts[$id][$key] = "<span style=\"white-space: nowrap;\">".strip_tags($val)."</span>"; 
+          $evts[$id][$key] = "<span style=\"white-space: nowrap;\">".strip_tags($val)."</span>";
         }
       }
     }
- 
+
     $smarty = get_smarty();
     $smarty->assign("info",$evts);
     $smarty->assign("count",count($evts));
@@ -179,7 +180,7 @@ class goto_import_file extends plugin
     return($message);
   }
 
-  
+
   private function check_fields()
   {
     foreach($this->events as $key => $event){
@@ -192,8 +193,8 @@ class goto_import_file extends plugin
       }
       $this->events[$key]['ERROR'] = trim($this->events[$key]['ERROR'],", ");
     }
-  } 
-} 
+  }
+}
 
 // vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

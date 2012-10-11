@@ -235,7 +235,8 @@ class workgeneric extends plugin
           $tmp->add_targets(array($this->netConfigDNS->macAddress));
           $tmp->set_type(TRIGGERED_EVENT);
           $o_queue = new supportDaemon();
-          if(!$o_queue->append($tmp)){
+          $o_queue->append($tmp);
+          if ($o_queue->is_error()) {
             msg_dialog::display(_("Service infrastructure"),msgPool::siError($o_queue->get_error()),ERROR_DIALOG);
           }
         }
@@ -630,7 +631,8 @@ class workgeneric extends plugin
         $tmp = new $evt['CLASS_NAME']($this->config);
         $tmp->set_type(TRIGGERED_EVENT);
         $tmp->add_targets(array($this->netConfigDNS->macAddress));
-        if(!$o_queue->append($tmp)){
+        $o_queue->append($tmp);
+        if ($o_queue->is_error()) {
           msg_dialog::display(_("Service infrastructure"),msgPool::siError($o_queue->get_error()),ERROR_DIALOG);
         }
       }

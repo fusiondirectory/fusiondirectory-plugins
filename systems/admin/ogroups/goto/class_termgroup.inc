@@ -35,7 +35,7 @@ class termgroup extends plugin
   var $gotoSwapServer   = array();
   var $modes      = array();
   var $inheritTimeServer  = true;
-  var $is_account   = true; 
+  var $is_account   = true;
   var $orig_dn      = "";
   var $didAction    = FALSE;
   var $mapActions   = array("halt"            => "halt",
@@ -75,8 +75,8 @@ class termgroup extends plugin
 
     $this->orig_dn =  $this->dn;
 
-    /*************** 
-      Get mac addresses from member objects  
+    /***************
+      Get mac addresses from member objects
      ***************/
 
     /* We're only interested in the terminal members here, evaluate
@@ -100,8 +100,8 @@ class termgroup extends plugin
       }
     }
 
-    /*************** 
-      Perpare NTP settings 
+    /***************
+      Perpare NTP settings
      ***************/
 
     /* Create used ntp server array */
@@ -195,7 +195,7 @@ class termgroup extends plugin
     }
 
 
-    /*************** 
+    /***************
       Handle requested action
      ***************/
 
@@ -211,13 +211,14 @@ class termgroup extends plugin
           $macaddresses[]= $macAddress;
         }
 
-        if(isset($events['TRIGGERED']["DaemonEvent_".$action])){
+        if (isset($events['TRIGGERED']["DaemonEvent_".$action])) {
           $evt = $events['TRIGGERED']["DaemonEvent_".$action];
           $tmp = new $evt['CLASS_NAME']($this->config);
           $tmp->add_targets($macaddresses);
           $tmp->set_type(TRIGGERED_EVENT);
           $o_queue = new gosaSupportDaemon();
-          if(!$o_queue->append($tmp)){
+          $o_queue->append($tmp)
+          if ($o_queue->is_error()) {
             msg_dialog::display(_("Service infrastructure"),msgPool::siError($o_queue->get_error()),ERROR_DIALOG);
           }
         }
@@ -228,7 +229,7 @@ class termgroup extends plugin
     }
 
 
-    /*************** 
+    /***************
       Add remove NTP server
      ***************/
 
@@ -245,8 +246,8 @@ class termgroup extends plugin
     }
 
 
-    /*************** 
-      Prepare smarty 
+    /***************
+      Prepare smarty
      ***************/
 
     /* Set government mode */
@@ -291,13 +292,13 @@ class termgroup extends plugin
       }
     }
 
-    $smarty->assign("gotoNtpServers",$tmp); 
+    $smarty->assign("gotoNtpServers",$tmp);
 
     $smarty->assign("nfsservers",     $this->nfsservers);
     $smarty->assign("swapservers",    $this->swapservers);
 
-    $smarty->assign("syslogservers", $this->config->data['SERVERS']['SYSLOG']); 
-    $smarty->assign("gotoSyslogServer_select", $this->gotoSyslogServer); 
+    $smarty->assign("syslogservers", $this->config->data['SERVERS']['SYSLOG']);
+    $smarty->assign("gotoSyslogServer_select", $this->gotoSyslogServer);
 
     /* Variables */
     foreach(array("gotoTerminalPath", "gotoSwapServer") as $val){
@@ -313,7 +314,7 @@ class termgroup extends plugin
 
   function save_object()
   {
-    plugin::save_object();  
+    plugin::save_object();
     /* Set inherit mode */
     if(isset($_POST['workgeneric_posted'])){
 
@@ -343,7 +344,7 @@ class termgroup extends plugin
     $this->inherit_attributes_to_members();
 
     /***************
-      Prepare special vars 
+      Prepare special vars
      ***************/
 
     /* Unset some special vars ... */
@@ -366,7 +367,7 @@ class termgroup extends plugin
 
 
     /***************
-      Write to ldap 
+      Write to ldap
      ***************/
 
     /* Write back to ldap */
@@ -389,7 +390,7 @@ class termgroup extends plugin
     }
   }
 
-  
+
   static function plInfo()
   {
     return (array(
@@ -401,9 +402,9 @@ class termgroup extends plugin
           "plSection"     => array("administration"),
           "plCategory"    => array("ogroups"),
           "plProvidedAcls"=> array(
-            "gotoMode"          => _("Mode"),     
-            "gotoSyslogServer"  => _("Syslog server"), 
-            "FAIstate"          => _("Action flag"), 
+            "gotoMode"          => _("Mode"),
+            "gotoSyslogServer"  => _("Syslog server"),
+            "FAIstate"          => _("Action flag"),
             "gotoNtpServer"     => _("Ntp server"),
             "gotoTerminalPath"    => _("Root server"),
             "gotoSwapServer"      => _("Swap server"))

@@ -504,12 +504,12 @@ class systemManagement extends management
    */
   function saveEventDialog()
   {
-      if($this->si_active){
+      if ($this->si_active) {
           $o_queue = new supportDaemon();
           $o_queue->append($this->dialogObject);
-          if($o_queue->is_error()){
-              msg_dialog::display(_("Service infrastructure"),msgPool::siError($o_queue->get_error()),ERROR_DIALOG);
-          }else{
+          if ($o_queue->is_error()) {
+              msg_dialog::display(_("Service infrastructure"), msgPool::siError($o_queue->get_error()), ERROR_DIALOG);
+          } else {
               $this->closeDialogs();
           }
       }

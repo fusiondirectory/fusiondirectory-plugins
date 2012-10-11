@@ -694,7 +694,8 @@ class termservice extends plugin
           $target = $o_queue->get_host().":".$o_queue->get_port();
           $tmp->add_targets(array($target));
           $tmp->set_macs($macs);
-          if(!$o_queue->append($tmp,TRUE)){
+          $o_queue->append($tmp, TRUE);
+          if ($o_queue->is_error()) {
             msg_dialog::display(_("Service infrastructure"),msgPool::siError($o_queue->get_error()),ERROR_DIALOG);
           }
         }
