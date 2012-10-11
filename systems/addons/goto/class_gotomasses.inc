@@ -291,7 +291,8 @@ class gotomasses extends management
       $tmp->add_targets($macs);
       $tmp->set_type(TRIGGERED_EVENT);
       $this->recently_removed = $macs;
-      if(!$this->o_queue->append($tmp)){
+      $o_queue->append($tmp);
+      if ($o_queue->is_error()) {
         msg_dialog::display(_("Info"), sprintf(_("%s"),$this->o_queue->get_error()) , INFO_DIALOG);
       }
     } else {
@@ -336,9 +337,10 @@ class gotomasses extends management
   {
     if(is_object($this->dialogObject)){
       $this->dialogObject->save_object();
-      if(!$this->o_queue->append($this->dialogObject)){
+      $this->o_queue->append($this->dialogObject);
+      if ($this->o_queue->is_error()) {
         msg_dialog::display(_("Service infrastructure"),msgPool::siError($this->o_queue->get_error()),ERROR_DIALOG);
-      }else{
+      } else {
         $this->current = -1;
       }
     }

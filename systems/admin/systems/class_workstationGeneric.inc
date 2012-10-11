@@ -494,7 +494,8 @@ class workgeneric extends simplePlugin
         $tmp = new $evt['CLASS_NAME']($this->config);
         $tmp->set_type(TRIGGERED_EVENT);
         $tmp->add_targets(array($this->netConfigDNS->macAddress));
-        if (!$o_queue->append($tmp)) {
+        $o_queue->append($tmp);
+        if ($o_queue->is_error()) {
           msg_dialog::display(_("Service infrastructure"),msgPool::siError($o_queue->get_error()),ERROR_DIALOG);
         }
       }
