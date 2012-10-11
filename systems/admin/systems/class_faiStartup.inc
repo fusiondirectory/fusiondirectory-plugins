@@ -49,8 +49,15 @@ class FAIreleaseAttribute extends SelectAttribute
     if (isset($this->plugin)) {
       $this->plugin->attributesInfo['main']['attrs']['FAIclass']->attributes[1]->setChoices($this->plugin->cache['PROFILES'][$value]);
       $this->plugin->attributesInfo['main']['attrs']['FAIdebianMirror']->setChoices($this->plugin->cache['SERVERS'][$value]);
-      $this->plugin->update_kernel_cache($value);
-      $this->plugin->attributesInfo['startup']['attrs']['gotoBootKernel']->setChoices($this->plugin->cache['KERNELS'][$value]);
+      if ($this->plugin->update_kernel_cache($value)) {
+        $this->plugin->attributesInfo['startup']['attrs']['gotoBootKernel']->setChoices($this->plugin->cache['KERNELS'][$value]);
+      } else {
+        $this->plugin->attributesInfo['startup']['attrs']['gotoBootKernel']->setChoices(array());
+        $this->plugin->attributesInfo['startup']['attrs']['gotoBootKernel']->setValue(
+          $this->plugin->attributesInfo['startup']['attrs']['gotoBootKernel']->getInitialValue()
+        );
+        $this->plugin->attributesInfo['startup']['attrs']['gotoBootKernel']->setDisabled(TRUE);
+      }
     }
   }
 
@@ -181,20 +188,25 @@ class faiStartup extends simplePlugin
       $this->cache['KERNELS'] = array();
     }
 
-    if ($this->sdaemon_available && !isset($this->cache['KERNELS'][$release])) {
+    if (!$this->sdaemon_available) {
+      return FALSE;
+    }
+
+    if (!isset($this->cache['KERNELS'][$release])) {
       $s_daemon = new supportDaemon();
       if (!$s_daemon->is_available()) {
         $this->sdaemon_available = FALSE;
-        return;
+        return FALSE;
       }
       $tmp = $s_daemon->FAI_get_kernels($release);
       if ($s_daemon->is_error()) {
         $this->sdaemon_available = FALSE;
-        return;
+        return FALSE;
       }
       $this->cache['KERNELS'][$release] = $tmp;
       ksort($this->cache['KERNELS'][$release]);
     }
+    return TRUE;
   }
 
   /*!
