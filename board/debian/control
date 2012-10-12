@@ -1,0 +1,27 @@
+Source: fusiondirectory-plugin-board
+Section: web
+Priority: optional
+Maintainer: FusionDirectory packages maintainers group <fusiondirectory-packages@lists.fusiondirectory.org>
+Uploaders: Benoit Mortier <benoit.mortier@opensides.be>
+Build-Depends: debhelper (>= 7.0.50~)
+Standards-Version: 3.9.1
+Homepage: http://www.fusiondirectory.org/
+Vcs-Browser: http://git.fusiondirectory.org/code/
+DM-Upload-Allowed: yes
+
+Package: fusiondirectory-plugin-board
+Architecture: all
+Depends: ${misc:Depends}, fusiondirectory
+Breaks: fusiondirectory (<<1.0.4)
+Description: board plugin for FusionDirectory
+ This plugin is designed to show stats and other usefull informations. 
+ .
+ Currently it show :
+  Global overview of all different of account type
+  Statistics for user account type
+  Statistics for systems types
+  Expired account and soon to expire account
+  Next unused computer ids for installation
+ .
+ FusionDirectory is a combination of system-administrator and end-user web
+ interface, designed to handle LDAP based setups.
