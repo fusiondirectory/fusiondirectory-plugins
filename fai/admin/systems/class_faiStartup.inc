@@ -20,29 +20,17 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-/* TODO
- * Faire une classe qui hérite de Composite attribute et qui gère à la main FAIclass
- * Il faut dans le loadValue mettre les choix dispo grâce au cache.
- *
- * Valider la page si le menu déroulant release change
- * hériter = on appartient à un groupe qui a la classe FAIdlsmfkj et on a pas la valeur (voir quels champs sont obligatoire et comment c'est contourné)
- * remplir le champ dépôt avec ce qu'il faut
- * ajouter auto aux choix.
- *
- * Ajouter un set value hook aux attributs, et faire avec ça pour la maj des choices possibles
- */
-
 class FAIreleaseAttribute extends SelectAttribute
 {
-  function __construct ($label, $description, $ldapName, $required, $choices, $defaultValue = "", $outputs = NULL, $acl = "")
+  function __construct ($label, $description, $ldapName, $required)
   {
-    parent::__construct($label, $description, $ldapName, $required, $choices, $defaultValue, $outputs, $acl);
+    parent::__construct($label, $description, $ldapName, $required);
     $this->setSubmitForm(TRUE);
   }
 
   function setValue ($value)
   {
-    if (!in_array($value,$this->choices)) {
+    if (!in_array($value, $this->choices)) {
       return;
     }
     parent::setValue($value);
@@ -77,6 +65,53 @@ class faiStartup extends simplePlugin
 
   var $member_of_ogroup = FALSE;
   var $sdaemon_available;
+
+  /*!
+   *  \brief The main function : information about attributes
+   */
+  static function getAttributesInfo ()
+  {
+    return array(
+      'main' => array(
+        'name'  => _('FAI settings'),
+        'attrs' => array(
+          new CompositeAttribute (
+            _('FAI profil and release to be applied to this computer'),
+            'FAIclass',
+            array(
+              new FAIreleaseAttribute (
+                _('Release'), _('FAI debian release to be installed on this computer'),
+                'FAIrelease', TRUE
+              ),
+              new SelectAttribute (
+                _('Profil'), _('FAI profil to be applied to this computer'),
+                'FAIprofile', TRUE
+              ),
+            ),
+            '%2$[^ :] :%1$[^ :]',
+            '%2$s :%1$s'
+          ),
+          new SelectAttribute (
+            _('Repository'), _('FAI Debian repository to be used for installation'),
+            'FAIdebianMirror', TRUE
+          ),
+        )
+      ),
+      'startup' => array (
+        'name' => _('Startup parameters'),
+        'attrs' => array (
+          new SelectAttribute (
+            _('Boot kernel'),  _('Linux kernel to be installed and booted'),
+            'gotoBootKernel', FALSE
+          ),
+          new StringAttribute (
+            _('Boot kernel parameters'), _('Linux kernel parameters to be ran'),
+            'gotoKernelParameters', FALSE
+          )
+        )
+      ),
+    );
+  }
 
   function __construct (&$config, $dn = NULL, $object = NULL)
   {
@@ -121,7 +156,7 @@ class faiStartup extends simplePlugin
       $kernelParams = (isset($this->o_group_attrs['gotoKernelParameters'][0])?$this->o_group_attrs['gotoKernelParameters'][0]:"");
       $smarty->assign("kernelParams", $kernelParams);
 
-      $display .= $smarty->fetch(get_template_path('faistartup-inheritance.tpl', TRUE, dirname(__FILE__)));
+      $display .= $smarty->fetch(get_template_path('faistartup_inheritance.tpl', TRUE, dirname(__FILE__)));
     }
     return $display;
   }
@@ -207,68 +242,6 @@ class faiStartup extends simplePlugin
       ksort($this->cache['KERNELS'][$release]);
     }
     return TRUE;
-  }
-
-  /*!
-   *  \brief The main function : information about attributes
-   */
-  static function getAttributesInfo ()
-  {
-    return array(
-      'main' => array(
-        'name'  => _('FAI settings'),
-        'attrs' => array(
-          new CompositeAttribute (
-            _('FAI profil and release to be applied to this computer'),
-            'FAIclass',
-            array(
-              new FAIreleaseAttribute (
-                _('Release'),
-                _('FAI debian release to be installed on this computer'),
-                'FAIrelease',
-                TRUE,
-                array('')
-              ),
-              new SelectAttribute (
-                _('Profil'),
-                _('FAI profil to be applied to this computer'),
-                'FAIprofile',
-                TRUE,
-                array('')
-              ),
-            ),
-            '%2$[^ :] :%1$[^ :]',
-            '%2$s :%1$s'
-          ),
-          new SelectAttribute (
-            _('Repository'),
-            _('FAI Debian repository to be used for installation'),
-            'FAIdebianMirror',
-            TRUE,
-            array('')
-          ),
-        )
-      ),
-      'startup' => array(
-        'name' => _('Startup parameters'),
-        'attrs' => array (
-          new SelectAttribute (
-            _('Boot kernel'),
-            _('Linux kernel to be installed and booted'),
-            'gotoBootKernel',
-            FALSE,
-            array('')
-          ),
-          new StringAttribute (
-            _('Boot kernel parameters'),
-            _('Linux kernel parameters to be ran'),
-            'gotoKernelParameters',
-            FALSE,
-            ''
-          )
-        )
-      ),
-    );
   }
 
   /* Return plugin informations for acl handling */
