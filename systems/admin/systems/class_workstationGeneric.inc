@@ -27,8 +27,8 @@ class NetworkSettingsDialog
 
   function __construct (&$attribute, &$display)
   {
-    $this->attribute = &$attribute;
-    $this->display = &$display;
+    $this->attribute  = &$attribute;
+    $this->display    = &$display;
   }
 
   function execute ()
@@ -70,7 +70,10 @@ class NetworkSettingsAttribute extends Attribute
 
   function renderAttribute(&$attributes)
   {
-    $attributes[$this->getLdapName()] = $this->display;
+    $attributes[$this->getLdapName()] = array(
+      'DNSenabled'  => $this->netConfigDNS->DNSenabled,
+      'display'     => $this->display
+    );
   }
 
   function loadPostValue ()
@@ -100,26 +103,101 @@ class NetworkSettingsAttribute extends Attribute
   }
 }
 
+class ActionAttribute extends SelectAttribute
+{
+  function __construct ($label, $description, $ldapName, $required = FALSE)
+  {
+    parent::__construct($label, $description, $ldapName, $required);
+    $this->setInLdap(FALSE);
+  }
+
+  function setParent (&$plugin)
+  {
+    parent::setParent($plugin);
+    if (is_object($this->plugin)) {
+      $this->updateChoices();
+    }
+  }
+
+  function loadPostValue ()
+  {
+    $id = $this->getHtmlId();
+    if (isset($_POST[$id.'_action'])) {
+      parent::loadPostValue();
+    }
+  }
+
+  function applyPostValue ()
+  {
+    if (!$this->disabled && $this->postValue != '') {
+      $this->updateChoices();
+      if (in_array($this->postValue, $this->choices)) {
+        $action = $this->postValue;
+
+        /* Check if we have an DaemonEvent for this action */
+        if (class_available("supportDaemon") && class_available("DaemonEvent_".$action)) {
+          $events = DaemonEvent::get_event_types(SYSTEM_EVENT | HIDDEN_EVENT);
+          if (isset($events['TRIGGERED']["DaemonEvent_".$action])) {
+            $evt = $events['TRIGGERED']["DaemonEvent_".$action];
+            $tmp = new $evt['CLASS_NAME']($this->config);
+            $tmp->add_targets(array($this->netConfigDNS->macAddress));
+            $tmp->set_type(TRIGGERED_EVENT);
+            $o_queue = new supportDaemon();
+            if (!$o_queue->append($tmp)) {
+              msg_dialog::display(_("Service infrastructure"), msgPool::siError($o_queue->get_error()), ERROR_DIALOG);
+            }
+          }
+        } else {
+          msg_dialog::display(_("Event error"),
+                      sprintf(_("Event '%s' is not available!"), $action), ERROR_DIALOG);
+        }
+      }
+    }
+  }
+
+  function renderFormInput ()
+  {
+    $id = $this->getHtmlId();
+    $disabled = ($this->plugin->currently_installing?' disabled="disabled"':'');
+    $button = '<input type="submit" name="'.$id.'_action" id="'.$id.'_action" value="{t}Execute{/t}"'.$disabled.'/>';
+    return parent::renderFormInput().$this->renderAcl($button);
+  }
+
+  function updateChoices()
+  {
+    /* Check if workstation is online */
+    $actions = array( // TODO : remove these action if there is no deployment plugin to use them (FAI, OPSI, …)
+      ''          => '',
+      'reinstall' => _('Reinstall'),
+      'update'    => _('Software update'),
+      'memcheck'  => _('Memory test')
+    );
+    if ($this->plugin->ping()) {
+      $actions['halt']    = _('Switch off');
+      $actions['reboot']  = _('Reboot');
+      $actions['rescan']  = _('Rescan hardware');
+    } else {
+      $actions['wakeup']  = _('Wake up');
+    }
+    $this->setChoices(array_keys($actions), array_values($actions));
+  }
+}
+
 class workgeneric extends simplePlugin
 {
   var $mainTab = TRUE;
 
   var $netConfigDNS;
 
-  /* attribute list for save action */
-  //~ var $attributes= array("gotoMode", "gotoSyslogServer", "gotoNtpServer",
-      //~ "gotoFloppyEnable", "gotoCdromEnable", "cn", "gotoSndModule",
-      //~ "ghCpuType", "ghMemSize", "ghUsbSupport", "description",
-      //~ "ghGfxAdapter", "ghSoundAdapter", "gotoLastUser", "l","FAIscript");
-
-  var $objectclasses= array("top", "gotoWorkstation", "GOhard");
-
-  var $validActions   = array("reboot" => 1, "localboot" => 1, "halt" => 1, "update" => 1, "reinstall" => 1,
-                            "rescan" => 1, "wakeup" => 1, "memcheck" => 1, "sysinfo" => 1);
+  var $objectclasses = array("top", "gotoWorkstation", "GOhard");
 
   var $fai_activated = FALSE;
 
-  var $member_of_ogroup = FALSE;
+  var $member_of_ogroup     = FALSE;
+  var $currently_installing = FALSE;
+  var $sdaemon_available    = FALSE;
+
+  var $preInitAttributes = array('network' => array('networkSettings'));
 
   /*!
    *  \brief The main function : information about attributes
@@ -163,6 +241,7 @@ class workgeneric extends simplePlugin
       ),
       'servers' => array(
         'name'  => _('Servers'),
+        'icon'  => get_template_path("plugins/systems/images/select_server.png"),
         'attrs' => array(
           new SelectAttribute (
             _('Syslog server'),
@@ -200,29 +279,32 @@ class workgeneric extends simplePlugin
           ),
         )
       ),
-      'network' => array(
-        'name' => _('Network settings'),
-        'attrs' => array(new NetworkSettingsAttribute()),
-        'template' => get_template_path('network_section.tpl', TRUE, dirname(__FILE__)),
+      'actions' => array(
+        'name' => _('Action'),
+        'icon'  => get_template_path("images/rocket.png"),
+        'attrs' => array(
+          new ActionAttribute(
+            _('Action'),
+            _('Select action to execute for this terminal'),
+            'FAIstate'
+          ),
+        )
       ),
-      //~ 'actions' => array(
-        //~ 'name' => _('Action'),
-        //~ 'attrs' => array(
-          //~ new ActionAttribute (),
-        //~ )
-      //~ ),
+      'network' => array(
+        'name'      => _('Network settings'),
+        'attrs'     => array(new NetworkSettingsAttribute()),
+        'template'  => get_template_path('network_section.tpl', TRUE, dirname(__FILE__)),
+        'icon'      => get_template_path('plugins/systems/images/network.png'),
+      ),
     );
   }
 
   function __construct (&$config, $dn = NULL, $object = NULL)
   {
-    parent::__construct($config, $dn, $object);
+    $s_daemon = new supportDaemon();
+    $this->sdaemon_available = $s_daemon->is_available();
 
-    //~ $tmp = $config->search("faiManagement", "CLASS",array('menu','tabs'));
-    //~ if (!empty($tmp)) {
-      //~ $this->fai_activated = TRUE;
-    //~ }
-//~
+    parent::__construct($config, $dn, $object);
 
     if (!isset($this->parent->by_object['ogroup'])) {
       $ldap = $this->config->get_ldap_link();
@@ -232,10 +314,9 @@ class workgeneric extends simplePlugin
     }
 
     /* Check if this host is currently in installation process*/
-    //~ if (class_available("supportDaemon") && class_available("DaemonEvent")) {
-      //~ $o = new supportDaemon();
-      //~ $this->currently_installing = $o->is_currently_installing($this->netConfigDNS->macAddress);
-    //~ }
+    if ($this->sdaemon_available) {
+      $this->currently_installing = $s_daemon->is_currently_installing($this->netConfigDNS->macAddress);
+    }
 
     $this->attributesInfo['main']['attrs']['cn']->setUnique(TRUE);
 
@@ -264,7 +345,7 @@ class workgeneric extends simplePlugin
     /* Create used ntp server array */
     $ntpServers = $this->attributesInfo['servers']['attrs']['gotoNtpServer']->getValue();
     /* Set inherit checkbox state */
-    if ($this->member_of_ogroup && (in_array("default",$ntpServers) || (count($ntpServers) == 0))) {
+    if ($this->member_of_ogroup && (in_array("default", $ntpServers) || (count($ntpServers) == 0))) {
       $this->attributesInfo['servers']['attrs']['inheritTimeServer']->setValue(TRUE);
       $this->attributesInfo['servers']['attrs']['gotoNtpServer']->setValue(array());
     } else {
@@ -283,18 +364,25 @@ class workgeneric extends simplePlugin
     /* Disable inheritance if we're not in a group */
     if (!$this->member_of_ogroup) {
       $this->attributesInfo['servers']['attrs']['inheritTimeServer']->setDisabled(TRUE);
+      $this->attributesInfo['servers']['attrs']['inheritTimeServer']->setVisible(FALSE);
       $this->attributesInfo['servers']['attrs']['inheritLDAPServer']->setDisabled(TRUE);
+      $this->attributesInfo['servers']['attrs']['inheritLDAPServer']->setVisible(FALSE);
     }
 
     /* Create available ntp options */
     $tmp = array();
     foreach ($this->config->data['SERVERS']['NTP'] as $key => $server) {
-      if($server == "default") {
+      if ($server == "default") {
         continue;
       }
       $tmp[] = $server;
     }
     $this->attributesInfo['servers']['attrs']['gotoNtpServer']->attribute->setChoices($tmp);
+    if (count($tmp) == 0) {
+      $this->attributesInfo['servers']['attrs']['gotoNtpServer']->setDisabled(TRUE);
+      $this->attributesInfo['servers']['attrs']['inheritTimeServer']->setValue(TRUE);
+      $this->attributesInfo['servers']['attrs']['inheritTimeServer']->setDisabled(TRUE);
+    }
 
     /* Create available ldap options */
     $tmp = array();
@@ -304,9 +392,14 @@ class workgeneric extends simplePlugin
       }
     }
     $this->attributesInfo['servers']['attrs']['gotoLdapServer']->attribute->setChoices($tmp);
+    if (count($tmp) == 0) {
+      $this->attributesInfo['servers']['attrs']['gotoLdapServer']->setDisabled(TRUE);
+      $this->attributesInfo['servers']['attrs']['inheritLDAPServer']->setValue(TRUE);
+      $this->attributesInfo['servers']['attrs']['inheritLDAPServer']->setDisabled(TRUE);
+    }
 
     /* Create an array of all Syslog servers */
-    $tmp = $this->config->data['SERVERS']['SYSLOG'];
+    $tmp        = $this->config->data['SERVERS']['SYSLOG'];
     $tmp_output = $tmp;
     if (($key = array_search("default", $tmp)) !== FALSE) {
       $tmp[$key] = "";
@@ -317,11 +410,26 @@ class workgeneric extends simplePlugin
     $this->attributesInfo['servers']['attrs']['gotoSyslogServer']->setChoices($tmp, $tmp_output);
   }
 
+  function ping()
+  {
+    if (!$this->sdaemon_available) {
+      return FALSE;
+    }
+    $sdaemon = new supportDaemon();
+    if (!$sdaemon->is_available()) {
+      $this->sdaemon_available = FALSE;
+      return FALSE;
+    }
+    return $sdaemon->ping($this->netConfigDNS->macAddress);
+  }
+
 
   function set_acl_base($base)
   {
     plugin::set_acl_base($base);
-    $this->netConfigDNS->set_acl_base($base);
+    if (is_object($this->netConfigDNS)) {
+      $this->netConfigDNS->set_acl_base($base);
+    }
   }
 
   function set_acl_category($cat)
@@ -329,67 +437,6 @@ class workgeneric extends simplePlugin
     plugin::set_acl_category($cat);
     $this->netConfigDNS->set_acl_category($cat);
   }
-
-  //~ function execute()
-  //~ {
-    //~ /* Call parent execute */
-    //~ plugin::execute();
-
-    //~ if ((isset($_POST['saction'])) &&
-        //~ (isset($_POST['action'])) &&
-        //~ ($this->acl_is_writeable("FAIstate")) &&
-        //~ isset($this->validActions[$_POST['saction']])) {
-      //~ $action= $_POST['saction'];
-//~
-      //~ /* Check if we have an DaemonEvent for this action */
-      //~ if (class_available("supportDaemon") && class_available("DaemonEvent_".$action)) {
-        //~ $events = DaemonEvent::get_event_types(SYSTEM_EVENT | HIDDEN_EVENT);
-        //~ if(isset($events['TRIGGERED']["DaemonEvent_".$action])){
-          //~ $evt = $events['TRIGGERED']["DaemonEvent_".$action];
-          //~ $tmp = new $evt['CLASS_NAME']($this->config);
-          //~ $tmp->add_targets(array($this->netConfigDNS->macAddress));
-          //~ $tmp->set_type(TRIGGERED_EVENT);
-          //~ $o_queue = new supportDaemon();
-          //~ if(!$o_queue->append($tmp)){
-            //~ msg_dialog::display(_("Service infrastructure"),msgPool::siError($o_queue->get_error()),ERROR_DIALOG);
-          //~ }
-        //~ }
-      //~ } else {
-        //~ msg_dialog::display(_("Event error"),
-                    //~ sprintf(_("Event '%s' is not available!"),$action),ERROR_DIALOG);
-      //~ }
-//~
-//~
-    //~ }
-
-    //~ /* Fill templating stuff */
-    //~ $smarty= get_smarty();
-    //~ $smarty->assign("usePrototype", "true");
-//~
-//~
-    //~ /* Check if workstation is online */
-    //~ $o_queue = new supportDaemon();
-    //~ $actions = array(
-                    //~ "reinstall"    => _("Reinstall"),
-                    //~ "update"       => _("Software update"),
-                    //~ "memcheck"     => _("Memory test")
-                    //~ );
-    //~ if ($o_queue->ping($this->netConfigDNS->macAddress)){
-        //~ $actions["halt"]    = _("Switch off");
-        //~ $actions["reboot"]  = _("Reboot");
-        //~ $actions["rescan"]  = _("Rescan hardware");
-    //~ } else {
-        //~ $actions["wakeup"]  = _("Wake up");
-    //~ }
-    //~ $smarty->assign("actions", $actions);
-    //~ /* Arrays */
-    //~ $smarty->assign("nfsservers", $this->config->data['SERVERS']['NFS']);
-    //~ $smarty->assign("fai_activated",$this->fai_activated);
-//~
-    //~ /* Show main page */
-    //~ $smarty->assign("currently_installing", $this->currently_installing);
-    //~ return($smarty->fetch (get_template_path('workstation.tpl', TRUE, dirname(__FILE__))));
-  //~ }
 
   function remove_from_parent()
   {
@@ -424,67 +471,34 @@ class workgeneric extends simplePlugin
     }
   }
 
-  //~ /* Check supplied data */
-  //~ function check()
-  //~ {
-    //~ /* Skip IP & Mac checks if this is a template */
-    //~ if($this->cn != "wdefault"){
-      //~ $message= array_merge($message, $this->netConfigDNS->check());
-    //~ }
+  /* Check supplied data */
+  function check()
+  {
+    $message = parent::check();
 
-    //~ /* Check if given name is a valid host/dns name */
-    //~ if(!tests::is_valid_hostname($this->cn)){
-      //~ $message[] = msgPool::invalid(_("Name"));
-    //~ }
-//~
-    //~ /* Only systems with a valid ldap handle can be activated
-     //~ */
-    //~ if($this->gotoMode == "active" && $this->initial_gotoMode != "active"){
-//~
-      //~ if(isset($this->parent->by_object['workstartup']) &&
-          //~ !count($this->parent->by_object['workstartup']->gotoLdapServers) &&
-          //~ !$this->parent->by_object['workstartup']->gotoLdap_inherit){
-//~
-        //~ $message[] = _("A valid LDAP server assignement is missing!");
-      //~ }
-    //~ }else{
-      //~ /* Warn the user, that this host is currently installing */
-      //~ if($this->currently_installing && !$this->currently_installing_warned &&
-          //~ !preg_match("/".preg_quote(get_ou("systemIncomingRDN"), '/')."/i",$this->orig_dn)){
-//~
-        //~ /* Force aborting without message dialog */
-        //~ $message[] = "";
-        //~ $this->currently_installing_warned = TRUE;
-        //~ msg_dialog::display(_("Software deployment"),
-            //~ _("This host is currently installing. If you want to save it, press 'OK'."),
-            //~ CONFIRM_DIALOG);
-      //~ }
-    //~ }
-//~
-    //~ return ($message);
-  //~ }
+    $activate = ($this->attributesInfo['main']['attrs']['gotoMode']->hasChanged() &&
+                 $this->attributesInfo['main']['attrs']['gotoMode']->getValue());
+    /* Only systems with a valid ldap handle can be activated
+     */
+    if ($activate) {
+      if ((count($this->attributesInfo['servers']['attrs']['gotoLdapServer']->getValue()) == 0) &&
+          !$this->attributesInfo['servers']['attrs']['inheritLDAPServer']->getValue()) {
+        $message[] = _("A valid LDAP server assignement is missing!");
+      }
+    }
 
+    return $message;
+  }
 
-  /* Save to LDAP */
-  //~ function save()
-  //~ {
-    //~ plugin::save();
-//~
-    //~ /* cn=default and macAddress=- indicates that this is a template */
-    //~ if($this->cn == "wdefault"){
-      //~ $this->netConfigDNS->macAddress = "-";
-    //~ }
-//~
-  //~ }
   protected function ldap_save($cleanup = TRUE)
   {
-    $activate =  ($this->attributesInfo['main']['attrs']['gotoMode']->hasChanged() &&
-                  $this->attributesInfo['main']['attrs']['gotoMode']->getValue());
+    $activate = ($this->attributesInfo['main']['attrs']['gotoMode']->hasChanged() &&
+                 $this->attributesInfo['main']['attrs']['gotoMode']->getValue());
     parent::ldap_save($cleanup);
     $this->netConfigDNS->cn = $this->cn;
     $this->netConfigDNS->save();
 
-    if ($activate && class_available("DaemonEvent")) {
+    if ($activate && $this->sdaemon_available) {
       /* Send installation activation
        */
       $events = DaemonEvent::get_event_types(SYSTEM_EVENT | HIDDEN_EVENT);
@@ -496,70 +510,11 @@ class workgeneric extends simplePlugin
         $tmp->add_targets(array($this->netConfigDNS->macAddress));
         $o_queue->append($tmp);
         if ($o_queue->is_error()) {
-          msg_dialog::display(_("Service infrastructure"),msgPool::siError($o_queue->get_error()),ERROR_DIALOG);
+          msg_dialog::display(_("Service infrastructure"), msgPool::siError($o_queue->get_error()), ERROR_DIALOG);
         }
       }
     }
   }
-
-
-  /* Display generic part for server copy & paste */
-  function getCopyDialog()
-  {
-    $smarty = get_smarty();
-    $smarty->assign("cn" ,$this->cn);
-    $smarty->assign("macAddress" ,$this->netConfigDNS->macAddress);
-    $smarty->assign("ipHostNumber" ,$this->netConfigDNS->ipHostNumber);
-    $smarty->assign("object","workstation");
-    $str = $smarty->fetch(get_template_path("paste_generic.tpl",TRUE));
-    $ret = array();
-    $ret['string'] = $str;
-    $ret['status'] = "";
-    return $ret;
-  }
-
-
-  function saveCopyDialog()
-  {
-    if (isset($_POST['cn'])) {
-      $this->cn = $_POST['cn'];
-    }
-    if (isset($_POST['macAddress'])) {
-      $this->netConfigDNS->macAddress = $_POST['macAddress'];
-    }
-    if (isset($_POST['ipHostNumber'])) {
-      $this->netConfigDNS->ipHostNumber = $_POST['ipHostNumber'];
-    }
-  }
-
-
-  function PrepareForCopyPaste($source)
-  {
-    plugin::PrepareForCopyPaste($source);
-    if(isset($source['macAddress'][0])){
-      $this->netConfigDNS->macAddress = $source['macAddress'][0];
-    }
-    if(isset($source['ipHostNumber'][0])){
-      $this->netConfigDNS->ipHostNumber = $source['ipHostNumber'][0];
-    }
-
-    /* Create used ntp server array */
-    $this->gotoNtpServer= array();
-    if(isset($source['gotoNtpServer'])){
-      $this->inheritTimeServer = false;
-      unset($source['gotoNtpServer']['count']);
-      foreach($source['gotoNtpServer'] as $server){
-        $this->gotoNtpServer[$server] = $server;
-      }
-    }
-
-    /* Set inherit checkbox state */
-    if((in_array("default",$this->gotoNtpServer)) || (count($this->gotoNtpServer)==0)){
-      $this->inheritTimeServer = true;
-      $this->gotoNtpServer=array();
-    }
-  }
-
 
   function is_modal_dialog()
   {
