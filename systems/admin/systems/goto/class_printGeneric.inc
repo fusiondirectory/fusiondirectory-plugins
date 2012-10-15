@@ -120,7 +120,7 @@ class printgeneric extends plugin
     }
 
     /* create dns object */
-    $this->netConfigDNS = new termDNS($this->config, $this,$this->objectclasses);
+    $this->netConfigDNS = new networkSettings($this->config, $this,$this->objectclasses);
     $this->netConfigDNS->IPisMust =TRUE;
     $this->netConfigDNS->MACisMust =TRUE;
 

@@ -75,7 +75,7 @@ class phoneGeneric extends plugin
   function phoneGeneric (&$config, $dn= NULL, $parent= NULL)
   {
     plugin::plugin ($config, $dn, $parent);
-    $this->netConfigDNS = new termDNS($this->config,$this,$this->objectclasses, true);
+    $this->netConfigDNS = new networkSettings($this->config,$this,$this->objectclasses, true);
     $this->netConfigDNS->MACisMust =TRUE;
 
     /* Set base */

@@ -73,7 +73,7 @@ class wingeneric extends plugin
   function wingeneric (&$config, $dn= NULL, $parent= NULL)
   {
     plugin::plugin ($config, $dn, $parent);
-    $this->netConfigDNS = new termDNS($this->config,$this,$this->objectclasses,FALSE,"uid");
+    $this->netConfigDNS = new networkSettings($this->config,$this,$this->objectclasses,FALSE,"uid");
     $this->netConfigDNS->cn =  preg_replace("/\\\$\$/","",$this->uid);
     $this->netConfigDNS->objectclasses=array("ipHost","ieee802Device");
     $this->netConfigDNS->MACisMust = TRUE;

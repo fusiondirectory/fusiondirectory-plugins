@@ -95,7 +95,7 @@ class servgeneric extends plugin
     } else {
       $this->base= preg_replace ("/^[^,]+,".preg_quote(get_ou("serverRDN"), '/')."/i", "", $this->dn);
     }
-    $this->netConfigDNS = new termDNS($this->config,$this,$this->objectclasses);
+    $this->netConfigDNS = new networkSettings($this->config,$this,$this->objectclasses);
     $this->netConfigDNS->set_acl_category("server");
     $this->netConfigDNS->set_acl_base($this->base);
     $this->netConfigDNS->IPisMust =TRUE;
