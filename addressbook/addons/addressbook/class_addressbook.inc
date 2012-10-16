@@ -564,7 +564,7 @@ class addressbook extends plugin
           }
 
           $smarty->assign ('storage_base', $this->storage_base);
-          $smarty->assign ('address_info', get_template_path('address_edit.tpl', TRUE));
+          $smarty->assign ('address_info', get_template_path('address_edit.tpl', TRUE, dirname(__FILE__)));
 
           foreach ($tmp['plProvidedAcls'] as $name => $translated) {
             $smarty->assign($name."ACL",$this->get_entry_acls($this->abobjectclass.",".$base,$name));
@@ -572,7 +572,7 @@ class addressbook extends plugin
         break;
 
         default:
-          $smarty->assign ('address_info', get_template_path('address_info.tpl', TRUE));
+          $smarty->assign ('address_info', get_template_path('address_info.tpl', TRUE, dirname(__FILE__)));
           foreach ($tmp['plProvidedAcls'] as $name => $translated) {
             $smarty->assign($name."ACL",$this->get_entry_acls($this->dn,$name));
           }
