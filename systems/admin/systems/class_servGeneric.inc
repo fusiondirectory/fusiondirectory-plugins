@@ -59,6 +59,7 @@ class servgeneric extends plugin
   var $baseSelector;
 
   var $mapActions   = array("reboot"          => "",
+                            "halt"            => "",
                             "instant_update"  => "softupdate",
                             "localboot"       => "localboot",
                             "update"          => "sceduledupdate",
