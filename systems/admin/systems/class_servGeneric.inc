@@ -231,7 +231,7 @@ class servgeneric extends plugin
     $smarty->assign("currently_installing", $this->currently_installing);
 
     $smarty->assign("host_key","");
-    $smarty->assign("goComment", set_post($this->goComment));
+    $smarty->assign("goComment", htmlencode($this->goComment));
 
     if(is_object($this->kerberos_key_service)){
       $smarty->assign("host_key",$this->kerberos_key_service->execute_by_prefix("host/"));

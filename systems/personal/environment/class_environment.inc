@@ -849,7 +849,7 @@ class environment extends plugin
     if($this->multiple_support_active){
       $smarty->assign("gotoLogonScripts",  $this->gotoLogonScripts);
       $smarty->assign("gotoLogonScriptKeysCnt",count($this->gotoLogonScripts));
-      $smarty->assign("gotoLogoffScripts",       set_post($this->gotoLogoffScripts));
+      $smarty->assign("gotoLogoffScripts",       htmlencode($this->gotoLogoffScripts));
       $smarty->assign("gotoLogoffScriptKeysCnt", count($this->gotoLogoffScripts));
     }else{
       $ls = $this->printOutLogonScripts();
@@ -858,8 +858,8 @@ class environment extends plugin
       $smarty->assign("gotoLogonScriptKeysCnt",count($ls));
 
       $ls = $this->printOutLogoffScripts();
-      $smarty->assign("gotoLogoffScripts",  set_post($ls));
-      $smarty->assign("gotoLogoffScriptKeys",set_post(array_flip($ls)));
+      $smarty->assign("gotoLogoffScripts",  htmlencode($ls));
+      $smarty->assign("gotoLogoffScriptKeys",htmlencode(array_flip($ls)));
       $smarty->assign("gotoLogoffScriptKeysCnt",count($ls));
     }
 

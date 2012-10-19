@@ -630,7 +630,7 @@ class printgeneric extends plugin
     $smarty->assign("AdminMember"    ,$this->AdminMember);
     $smarty->assign("AdminMembers"   ,$adminlist);
     $smarty->assign("AdminMemberKeys",array_flip($adminlist));
-    $smarty->assign("goComment", set_post($this->goComment));
+    $smarty->assign("goComment", htmlencode($this->goComment));
 
     if(preg_match("/Printer/i",$this->BelongsTo)){
 
