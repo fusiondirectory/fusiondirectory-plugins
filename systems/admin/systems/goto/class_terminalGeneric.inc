@@ -625,7 +625,7 @@ class termgeneric extends plugin
 
     /* Send installation activation
      */
-    if ($activate && class_available("DaemonEvent")){
+    if ($activate && class_available("DaemonEvent") && class_available("supportDaemon")) {
       $events = DaemonEvent::get_event_types(SYSTEM_EVENT | HIDDEN_EVENT);
       $o_queue = new supportDaemon();
       if(isset($events['TRIGGERED']['DaemonEvent_installation_activation'])){

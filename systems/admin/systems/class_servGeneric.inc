@@ -204,16 +204,20 @@ class servgeneric extends plugin
     $smarty->assign("staticAddress", "");
 
     /* Assign status */
-    $o_queue = new supportDaemon();
     $actions = array(
                     "reinstall"    => _("Reinstall"),
                     "update"       => _("Software update"),
                     "memcheck"     => _("Memory test")
                     );
-    if ($o_queue->ping($this->netConfigDNS->macAddress)){
-        $actions["halt"]    = _("Switch off");
-        $actions["reboot"]  = _("Reboot");
-        $actions["rescan"]  = _("Rescan hardware");
+    if (class_available("supportDaemon")) {
+      $o_queue = new supportDaemon();
+      if ($o_queue->ping($this->netConfigDNS->macAddress)){
+          $actions["halt"]    = _("Switch off");
+          $actions["reboot"]  = _("Reboot");
+          $actions["rescan"]  = _("Rescan hardware");
+      } else {
+          $actions["wakeup"]  = _("Wake up");
+      }
     } else {
         $actions["wakeup"]  = _("Wake up");
     }

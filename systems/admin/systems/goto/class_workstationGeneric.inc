@@ -291,16 +291,20 @@ class workgeneric extends plugin
     $smarty->assign("gotoNtpServers",$tmp);
 
     /* Check if workstation is online */
-    $o_queue = new supportDaemon();
     $actions = array(
                     "reinstall"    => _("Reinstall"),
                     "update"       => _("Software update"),
                     "memcheck"     => _("Memory test")
                     );
-    if ($o_queue->ping($this->netConfigDNS->macAddress)){
-        $actions["halt"]    = _("Switch off");
-        $actions["reboot"]  = _("Reboot");
-        $actions["rescan"]  = _("Rescan hardware");
+    if (class_available("supportDaemon")) {
+      $o_queue = new supportDaemon();
+      if ($o_queue->ping($this->netConfigDNS->macAddress)) {
+          $actions["halt"]    = _("Switch off");
+          $actions["reboot"]  = _("Reboot");
+          $actions["rescan"]  = _("Rescan hardware");
+      } else {
+          $actions["wakeup"]  = _("Wake up");
+      }
     } else {
         $actions["wakeup"]  = _("Wake up");
     }
@@ -620,7 +624,7 @@ class workgeneric extends plugin
       $this->handle_post_events("modify",array("macAddress" => $this->netConfigDNS->macAddress,"ipHostNumber" => $this->netConfigDNS->ipHostNumber));
     }
 
-    if ($activate && class_available("DaemonEvent")){
+    if ($activate && class_available("DaemonEvent") && class_available("supportDaemon")){
 
       /* Send installation activation
        */

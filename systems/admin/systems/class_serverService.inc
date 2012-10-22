@@ -401,22 +401,29 @@ class ServerService extends management
     if ($this->plugins[$service]->is_account) {
       $this->updateServicesVars($service);
 
-      $s_daemon = new supportDaemon();
-      if ($s_daemon->is_error()) {
+      if (!class_available("supportDaemon")) {
         msg_dialog::display(
           sprintf(_("Could not get execute action %s on service %s."), $action, $service),
-          msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
+          msgPool::siError("supportDaemon is not available"), ERROR_DIALOG
         );
       } else {
-        $res = $s_daemon->manage_service($this->parent->by_object['servgeneric']->netConfigDNS->macAddress, $service, $action);
-
+        $s_daemon = new supportDaemon();
         if ($s_daemon->is_error()) {
           msg_dialog::display(
             sprintf(_("Could not get execute action %s on service %s."), $action, $service),
             msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
           );
-        } elseif ($res) {
-          $this->plugins[$service]->setStatus(self::$actionStatus[$action]);
+        } else {
+          $res = $s_daemon->manage_service($this->parent->by_object['servgeneric']->netConfigDNS->macAddress, $service, $action);
+
+          if ($s_daemon->is_error()) {
+            msg_dialog::display(
+              sprintf(_("Could not get execute action %s on service %s."), $action, $service),
+              msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
+            );
+          } elseif ($res) {
+            $this->plugins[$service]->setStatus(self::$actionStatus[$action]);
+          }
         }
       }
     }
