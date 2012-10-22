@@ -20,30 +20,27 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-
-
-class boardSystems extends plugin
+class boardSystems extends simplePlugin
 {
-  /* Generic */
-  var $ui;
-  var $view_logged    = FALSE;
+  var $stats;
+  var $pc_ids;
 
   /* default values*/
   var $default_start_computer_id        = 0;
 
-  function __construct (&$config, $dn = NULL)
+  function __construct(&$config, $dn = NULL, $object = NULL)
   {
-    $this->config = &$config;
-    $this->ui     = get_userinfo();
+    parent::__construct($config, $dn, $object);
+
+    $this->stats = array(
+      'systems' => $this->systems_stats(),
+      'argonaut' => $this->argonaut_stats(),
+    );
+    $this->pc_ids = $this->computer_ids_rules();
   }
 
-  function execute()
+  function systems_stats ()
   {
-    /* Call parent execute */
-    parent::execute();
-
-    $smarty = get_smarty();
-    // Get list of rsyslog servers
     $ldap = $this->config->get_ldap_link();
     $ldap->cd($this->config->current['BASE']);
 
@@ -63,6 +60,14 @@ class boardSystems extends plugin
       $ldap->search("(objectClass=".$stat['oc'].")", array("cn"));
       $stat['nb'] = $ldap->count();
     }
+
+    return $stats;
+  }
+
+  function argonaut_stats ()
+  {
+    $ldap = $this->config->get_ldap_link();
+    $ldap->cd($this->config->current['BASE']);
     $ldap->search("(objectClass=argonautServer)", array('cn','ipHostNumber','argonautProtocol','argonautPort'));
     $nb_argonaut_server = $ldap->count();
     $argonaut_server = array();
@@ -75,11 +80,19 @@ class boardSystems extends plugin
     $ldap->search("(objectClass=argonautClient)", array('cn'));
     $nb_argonaut_clients = $ldap->count();
 
+    return array(
+      'nb_servers'  => $nb_argonaut_server,
+      'server'      => $argonaut_server,
+      'nb_clients'  => $nb_argonaut_clients,
+    );
+  }
 
-    /*
-    * Begin of code for selecting next computer IDs
-    * Global variable is
-    * board_next_computer_ids_rule
+  function computer_ids_rules ()
+  {
+    $ldap = $this->config->get_ldap_link();
+    $ldap->cd($this->config->current['BASE']);
+    /* Begin of code for selecting next computer IDs
+    * Global variable is board_next_computer_ids_rule
     * syntax is :
     * 7 : nb total of digit
     * LYP3 : prefix to use
@@ -142,13 +155,24 @@ class boardSystems extends plugin
       }
       $output_next_computer_ids .= "</tr>";
     }
-    $smarty->assign("output_next_computer_ids", $output_next_computer_ids);
-    $smarty->assign("stats", $stats);
-    $smarty->assign("argonaut_server", $argonaut_server);
-    $smarty->assign("nb_argonaut_server", $nb_argonaut_server);
-    $smarty->assign("nb_argonaut_clients", $nb_argonaut_clients);
 
-    return $smarty->fetch(get_template_path('contents.tpl', TRUE));
+    return $output_next_computer_ids;
+  }
+
+  static function getAttributesInfo()
+  {
+    return array(
+      'stats' => array(
+        'name'  => _('Statistics'),
+        'attrs' => array(new FakeAttribute('stats')),
+        'template' => get_template_path('systems_stats.tpl', TRUE, dirname(__FILE__)),
+      ),
+      'pc_ids' => array(
+        'name'  => _('Computer name to use by unit'),
+        'attrs' => array(new FakeAttribute('pc_ids')),
+        'template' => get_template_path('systems_pcids.tpl', TRUE, dirname(__FILE__)),
+      ),
+    );
   }
 
   /* Return plugin informations for acl handling  */
@@ -163,7 +187,7 @@ class boardSystems extends plugin
       "plSection"     => array("addon" => _("Addons")),
       "plCategory"    => array("board"),
 
-      "plProvidedAcls"    => array()
+      "plProvidedAcls"  => array()
     );
   }
 }

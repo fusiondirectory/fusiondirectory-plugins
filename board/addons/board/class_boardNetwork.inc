@@ -71,18 +71,18 @@ class boardNetwork extends simplePlugin
     $ldap = $this->config->get_ldap_link();
 
     $ldap->cd(get_ou("systemRDN").$this->config->current['BASE']);
-    $ldap->search("(&(objectClass=dNSZone)(zoneName=*))",array("dn","zoneName"));
+    $ldap->search("(&(objectClass=dNSZone)(zoneName=*))", array("dn","zoneName"));
 
     $servers = array();
-    while($attrs = $ldap->fetch()) {
-      $dn = preg_replace("/^zoneName=[^,]+,/","",$attrs['dn']);
-      if (preg_match("/^cn=/",$dn)) {
-        $cn = preg_replace("/^cn=([^,]+),.*$/","$1", $dn);
+    while ($attrs = $ldap->fetch()) {
+      $dn = preg_replace("/^zoneName=[^,]+,/", "", $attrs['dn']);
+      if (preg_match("/^cn=/", $dn)) {
+        $cn = preg_replace("/^cn=([^,]+),.*$/", "$1", $dn);
         if (!isset($servers[$dn])) {
           $servers[$dn] = array('name' => $cn, 'zones' => array());
         }
         $servers[$dn]['zones'][$attrs['zoneName'][0]] = $attrs['zoneName'][0];
-      } elseif (preg_match("/^zoneName=/",$dn)) {
+      } elseif (preg_match("/^zoneName=/", $dn)) {
         $reverseName  = preg_replace("/^zoneName=([^,]+),.*$/", "$1", $attrs['dn']);
         $zoneName     = preg_replace("/^zoneName=([^,]+),.*$/", "$1", $dn);
         $dn = preg_replace("/^zoneName=[^,]+,/", "", $dn);

@@ -22,29 +22,21 @@
 
 
 
-class boardUserAccounts extends plugin
+class boardUserAccounts extends simplePlugin
 {
-  /* Generic */
-  var $ui;
-  var $view_logged    = FALSE;
+  var $stats;
+  var $expired;
 
-  var $unix_account_expired       = array();
-  var $unix_account_expired_week  = array();
-  /* default values*/
-  var $nb_expired_account               = 0;
-  var $nb_expired_account_in_next_days  = 0;
-
-  function __construct (&$config, $dn = NULL)
+  function __construct(&$config, $dn = NULL, $object = NULL)
   {
-    $this->config = &$config;
-    $this->ui     = get_userinfo();
+    parent::__construct($config, $dn, $object);
+
+    $this->stats = $this->users_stats();
+    $this->expired = $this->expired_accounts_info();
   }
 
-  function execute()
+  function users_stats ()
   {
-    /* Call parent execute */
-    parent::execute();
-
     /* User accounts statistics */
     $ldap = $this->config->get_ldap_link();
     $ldap->cd(get_ou("userRDN").$this->config->current['BASE']);
@@ -65,6 +57,20 @@ class boardUserAccounts extends plugin
     $ldap->search("(&(!(objectClass=gosaUserTemplate))(objectClass=gosaAccount)(objectClass=sambaSamAccount))", array("cn"));
     $nb_samba_accounts = $ldap->count();
 
+    return array(
+      'accounts' => array(
+        array('name' => 'mail',   'nb' => $nb_mail_accounts,  'img' => get_template_path("images/mailto.png")),
+        array('name' => 'posix',  'nb' => $nb_posix_accounts, 'img' => get_template_path("images/penguin.png")),
+        array('name' => 'samba',  'nb' => $nb_samba_accounts, 'img' => get_template_path("plugins/systems/images/select_winstation.png"))
+      ),
+      'nb_accounts' => $nb_accounts,
+      'user_img' => get_template_path("plugins/users/images/select_user.png"),
+      'locked_accounts' => array('nb' => $nb_locked_accounts, 'img' => get_template_path("images/lists/locked.png")),
+    );
+  }
+
+  function expired_accounts_info ()
+  {
     /*
      * Begin of code for selecting expired account
      */
@@ -78,7 +84,7 @@ class boardUserAccounts extends plugin
 
     /* search all account with all date, mail, telephone */
     $ldap = $this->config->get_ldap_link();
-    $ldap->cd($this->config->current['BASE']);
+    $ldap->cd(get_ou("userRDN").$this->config->current['BASE']);
     $ldap->search("(&(|(objectClass=posixAccount)(objectClass=sambaSamAccount))(shadowExpire=*))",
                   array("uid","shadowExpire","mail","telephoneNumber","cn","manager"));
 
@@ -93,23 +99,11 @@ class boardUserAccounts extends plugin
       }
     }
 
-    $smarty = get_smarty();
-    /* assign search result */
-    $smarty->assign("expired_accounts", $expired_accounts);
-    $smarty->assign("expired_accounts_in_next_days", $next_expired_accounts);
-    $smarty->assign("next_expired_days", $next_expired_days);
-
-    $smarty->assign("nb_accounts", $nb_accounts);
-    $smarty->assign("user_img", get_template_path("plugins/users/images/select_user.png"));
-    $smarty->assign("nb_type_accounts", array(
-      array('name' => 'mail',   'nb' => $nb_mail_accounts,  'img' => get_template_path("images/mailto.png")),
-      array('name' => 'posix',  'nb' => $nb_posix_accounts, 'img' => get_template_path("images/penguin.png")),
-      array('name' => 'samba',  'nb' => $nb_samba_accounts, 'img' => get_template_path("plugins/systems/images/select_winstation.png"))
-    ));
-    $smarty->assign("locked_accounts",
-                    array('nb' => $nb_locked_accounts, 'img' => get_template_path("images/lists/locked.png")));
-
-    return $smarty->fetch(get_template_path('user_accounts.tpl', TRUE));
+    return array(
+      'accounts'            => $expired_accounts,
+      'accounts_next_days'  => $next_expired_accounts,
+      'next_days'           => $next_expired_days,
+    );
   }
 
   function get_user_infos($attrs)
@@ -137,6 +131,22 @@ class boardUserAccounts extends plugin
       'manager_mail' => $manager_mail,
       'manager_phone' => $manager_phone,
       'shadowExpire' => $human_shadowExpire,
+    );
+  }
+
+  static function getAttributesInfo()
+  {
+    return array(
+      'stats' => array(
+        'name'  => _('Statistics'),
+        'attrs' => array(new FakeAttribute('stats')),
+        'template' => get_template_path('users_stats.tpl', TRUE, dirname(__FILE__)),
+      ),
+      'expired_accounts' => array(
+        'name'  => _('Expired accounts'),
+        'attrs' => array(new FakeAttribute('expired')),
+        'template' => get_template_path('users_accounts.tpl', TRUE, dirname(__FILE__)),
+      ),
     );
   }
 
