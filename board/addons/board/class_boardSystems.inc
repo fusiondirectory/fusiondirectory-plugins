@@ -55,7 +55,7 @@ class boardSystems extends simplePlugin
       array('name' => _('Components'),   'oc' => 'ieee802Device',    'img' => get_template_path("plugins/systems/images/select_component.png")),
     );
 
-    $ldap->cd(get_ou("systemRDN").$this->config->current['BASE']);
+    $ldap->cd($this->config->current['BASE']);
     foreach ($stats as &$stat) {
       $ldap->search("(objectClass=".$stat['oc'].")", array("cn"));
       $stat['nb'] = $ldap->count();

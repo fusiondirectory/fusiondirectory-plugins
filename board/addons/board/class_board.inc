@@ -62,11 +62,11 @@ class board extends simplePlugin
   {
     $ldap = $this->config->get_ldap_link();
 
-    $ldap->cd(get_ou("userRDN").$this->config->current['BASE']);
+    $ldap->cd($this->config->current['BASE']);
     $ldap->search("(&(!(objectClass=gosaUserTemplate))(objectClass=gosaAccount))", array("cn"));
     $nb_accounts = $ldap->count();
 
-    $ldap->cd(get_ou("groupRDN").$this->config->current['BASE']);
+    $ldap->cd($this->config->current['BASE']);
     $ldap->search("(objectClass=posixGroup)", array("cn"));
     $nb_groups = $ldap->count();
     $ldap->search("(objectClass=gosaGroupOfNames)", array("cn"));
@@ -79,7 +79,7 @@ class board extends simplePlugin
     );
 
     if (class_available("systemManagement")) {
-      $ldap->cd(get_ou("systemRDN").$this->config->current['BASE']);
+      $ldap->cd($this->config->current['BASE']);
       $ldap->search("(|(objectClass=gotoWorkstation)(objectClass=goServer)(objectClass=sambaSamAccount)(objectClass=gotoTerminal)(objectClass=gotoPrinter)(objectClass=goFonHardware)(objectClass=ieee802Device))", array("cn"));
       $nb_systems = $ldap->count();
       array_unshift(
