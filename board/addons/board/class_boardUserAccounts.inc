@@ -39,7 +39,7 @@ class boardUserAccounts extends simplePlugin
   {
     /* User accounts statistics */
     $ldap = $this->config->get_ldap_link();
-    $ldap->cd(get_ou("userRDN").$this->config->current['BASE']);
+    $ldap->cd($this->config->current['BASE']);
     $ldap->search("(&(!(objectClass=gosaUserTemplate))(objectClass=gosaAccount))", array("userPassword"));
     $nb_accounts = $ldap->count();
     $nb_locked_accounts = 0;
@@ -84,7 +84,7 @@ class boardUserAccounts extends simplePlugin
 
     /* search all account with all date, mail, telephone */
     $ldap = $this->config->get_ldap_link();
-    $ldap->cd(get_ou("userRDN").$this->config->current['BASE']);
+    $ldap->cd($this->config->current['BASE']);
     $ldap->search("(&(|(objectClass=posixAccount)(objectClass=sambaSamAccount))(shadowExpire=*))",
                   array("uid","shadowExpire","mail","telephoneNumber","cn","manager"));
 
