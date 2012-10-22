@@ -73,9 +73,9 @@ class board extends simplePlugin
     $nb_ogroups = $ldap->count();
 
     $stats = array(
-      array('name' => 'accounts',      'nb' => $nb_accounts, 'img' => get_template_path("plugins/users/images/select_user.png")),
-      array('name' => 'groups',        'nb' => $nb_groups,   'img' => get_template_path("plugins/groups/images/groups.png")),
-      array('name' => 'object groups', 'nb' => $nb_ogroups,  'img' => get_template_path("plugins/ogroups/images/ogroup.png")),
+      array('name' => 'Accounts',      'nb' => $nb_accounts, 'img' => get_template_path("plugins/users/images/select_user.png")),
+      array('name' => 'Groups',        'nb' => $nb_groups,   'img' => get_template_path("plugins/groups/images/groups.png")),
+      array('name' => 'Object groups', 'nb' => $nb_ogroups,  'img' => get_template_path("plugins/ogroups/images/ogroup.png")),
     );
 
     if (class_available("systemManagement")) {
@@ -84,7 +84,7 @@ class board extends simplePlugin
       $nb_systems = $ldap->count();
       array_unshift(
         $stats,
-        array('name' => 'systems', 'nb' => $nb_systems, 'img' => get_template_path("plugins/systems/images/select_server.png"))
+        array('name' => 'Systems', 'nb' => $nb_systems, 'img' => get_template_path("plugins/systems/images/select_server.png"))
       );
     }
 

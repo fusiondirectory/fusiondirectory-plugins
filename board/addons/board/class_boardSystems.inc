@@ -46,13 +46,13 @@ class boardSystems extends simplePlugin
 
     /* Statistics */
     $stats = array(
-      array('name' => _('workstations'), 'oc' => 'gotoWorkstation',  'img' => get_template_path("plugins/systems/images/select_workstation.png")),
-      array('name' => _('servers'),      'oc' => 'goServer',         'img' => get_template_path("plugins/systems/images/select_server.png")),
-      array('name' => _('winstations'),  'oc' => 'sambaSamAccount',  'img' => get_template_path("plugins/systems/images/select_winstation.png")),
-      array('name' => _('terminals'),    'oc' => 'gotoTerminal',     'img' => get_template_path("plugins/systems/images/select_terminal.png")),
-      array('name' => _('printers'),     'oc' => 'gotoPrinter',      'img' => get_template_path("plugins/systems/images/select_printer.png")),
-      array('name' => _('phones'),       'oc' => 'goFonHardware',    'img' => get_template_path("plugins/systems/images/select_phone.png")),
-      array('name' => _('components'),   'oc' => 'ieee802Device',    'img' => get_template_path("plugins/systems/images/select_component.png")),
+      array('name' => _('Workstations'), 'oc' => 'gotoWorkstation',  'img' => get_template_path("plugins/systems/images/select_workstation.png")),
+      array('name' => _('Servers'),      'oc' => 'goServer',         'img' => get_template_path("plugins/systems/images/select_server.png")),
+      array('name' => _('Windows Workstations'),  'oc' => 'sambaSamAccount',  'img' => get_template_path("plugins/systems/images/select_winstation.png")),
+      array('name' => _('Terminals'),    'oc' => 'gotoTerminal',     'img' => get_template_path("plugins/systems/images/select_terminal.png")),
+      array('name' => _('Printers'),     'oc' => 'gotoPrinter',      'img' => get_template_path("plugins/systems/images/select_printer.png")),
+      array('name' => _('Phones'),       'oc' => 'goFonHardware',    'img' => get_template_path("plugins/systems/images/select_phone.png")),
+      array('name' => _('Components'),   'oc' => 'ieee802Device',    'img' => get_template_path("plugins/systems/images/select_component.png")),
     );
 
     $ldap->cd(get_ou("systemRDN").$this->config->current['BASE']);
