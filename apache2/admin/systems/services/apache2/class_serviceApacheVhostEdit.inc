@@ -19,6 +19,19 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
+/* Composite attributes that returns an empty value when all fields are empty */
+class CompositeScriptAliasAttribute extends CompositeAttribute
+{
+  function writeValues($values)
+  {
+    if (($values[0] == "") && ($values[1] == "")) {
+      return "";
+    } else {
+      return vsprintf($this->writeFormat, $values);
+    }
+  }
+}
+
 class serviceApacheVhostEdit extends simplePlugin
 {
 
@@ -70,19 +83,17 @@ class serviceApacheVhostEdit extends simplePlugin
             'apacheServerAdmin',
             TRUE
           ),
-          new SetAttribute (
-             new CompositeAttribute (
-              _('Script Alias'),
-              'apacheScriptAlias',
-              array(
-                new StringAttribute (_('Alias Directory'),    _('Alias Directory'),     'aliasdir'),
-                new StringAttribute (_('Script Directory'), _('Script Directory'),  'scriptdir'),
-              ),
-              '%s %s',
-              '%s %s',
-              '',
-              _('Script Alias')
-            )
+          new CompositeScriptAliasAttribute (
+            _('Script Alias'),
+            'apacheScriptAlias',
+            array(
+              new StringAttribute (_('Alias'),  _('Alias Directory'),   'aliasdir'),
+              new StringAttribute (_('Script'), _('Script Directory'),  'scriptdir'),
+            ),
+            '%s %s',
+            '%s %s',
+            '',
+            _('Script Alias')
           ),
           new SetAttribute (
             new CompositeAttribute (
@@ -103,18 +114,17 @@ class serviceApacheVhostEdit extends simplePlugin
     );
   }
 
-/*
-  function save ()
-  {
-    echo "JE ME SAUVEGARDE";
-    parent::save();
-  }
-*/
-
   function __construct ($config, $dn = NULL, $object = NULL)
   {
     parent::__construct($config, $dn, $object);
+    $this->attributesInfo['section1']['attrs']['apacheScriptAlias']->setLinearRendering(TRUE);
   }
+
+  //~ function ldap_save ($cleanup = TRUE)
+  //~ {
+    //~ if ($this->attrs['apacheScriptAlias'])
+    //~ parent::ldap_save($cleanup);
+  //~ }
 
   function execute ()
   {
