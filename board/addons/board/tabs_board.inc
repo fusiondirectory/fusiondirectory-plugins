@@ -25,6 +25,16 @@ class boardtabs extends tabs
 
   function __construct($config, $data, $dn = NULL, $category = "board", $hide_refs = FALSE, $hide_acls = FALSE)
   {
+    foreach ($data as $key => $infos) {
+      if (($infos['CLASS'] == 'boardSystems') && (!class_available("systemManagement"))) {
+        unset($data[$key]);
+      }
+      if (($infos['CLASS'] == 'boardNetwork') &&
+          (!class_available("systemManagement") || !(class_available("dhcpService") || class_available("serviceDNS")))) {
+        unset($data[$key]);
+      }
+    }
+    $data = array_values($data);
     parent::tabs($config, $data, $dn, $category, $hide_refs, $hide_acls);
   }
 

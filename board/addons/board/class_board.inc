@@ -62,10 +62,6 @@ class board extends simplePlugin
   {
     $ldap = $this->config->get_ldap_link();
 
-    $ldap->cd(get_ou("systemRDN").$this->config->current['BASE']);
-    $ldap->search("(|(objectClass=gotoWorkstation)(objectClass=goServer)(objectClass=sambaSamAccount)(objectClass=gotoTerminal)(objectClass=gotoPrinter)(objectClass=goFonHardware)(objectClass=ieee802Device))", array("cn"));
-    $nb_systems = $ldap->count();
-
     $ldap->cd(get_ou("userRDN").$this->config->current['BASE']);
     $ldap->search("(&(!(objectClass=gosaUserTemplate))(objectClass=gosaAccount))", array("cn"));
     $nb_accounts = $ldap->count();
@@ -76,12 +72,23 @@ class board extends simplePlugin
     $ldap->search("(objectClass=gosaGroupOfNames)", array("cn"));
     $nb_ogroups = $ldap->count();
 
-    return array(
-      array('name' => 'systems',       'nb' => $nb_systems,  'img' => get_template_path("plugins/systems/images/select_server.png")),
+    $stats = array(
       array('name' => 'accounts',      'nb' => $nb_accounts, 'img' => get_template_path("plugins/users/images/select_user.png")),
       array('name' => 'groups',        'nb' => $nb_groups,   'img' => get_template_path("plugins/groups/images/groups.png")),
       array('name' => 'object groups', 'nb' => $nb_ogroups,  'img' => get_template_path("plugins/ogroups/images/ogroup.png")),
     );
+
+    if (class_available("systemManagement")) {
+      $ldap->cd(get_ou("systemRDN").$this->config->current['BASE']);
+      $ldap->search("(|(objectClass=gotoWorkstation)(objectClass=goServer)(objectClass=sambaSamAccount)(objectClass=gotoTerminal)(objectClass=gotoPrinter)(objectClass=goFonHardware)(objectClass=ieee802Device))", array("cn"));
+      $nb_systems = $ldap->count();
+      array_unshift(
+        $stats,
+        array('name' => 'systems', 'nb' => $nb_systems, 'img' => get_template_path("plugins/systems/images/select_server.png"))
+      );
+    }
+
+    return $stats;
   }
 
   static function getAttributesInfo()
