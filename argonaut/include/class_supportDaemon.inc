@@ -55,14 +55,16 @@ class supportDaemon
     /* This should only be the case if we call this from setup.
     __autoload()
     */
-    if(!is_object($this->config)) { return; }
+    if (!is_object($this->config)) {
+      return;
+    }
     $argonautHost = $this->get_argonaut_host();
 
     if ($argonautHost != "") {
-      # load from config, store statically
+      // load from config, store statically
       $this->s_host = $argonautHost;
       $this->logdir = $this->config->get_cfg_value("faiLogsDir");
-      if($this->logdir == "") {
+      if ($this->logdir == "") {
         $this->logdir = FAI_LOG_DIR;
       }
     }
@@ -71,10 +73,11 @@ class supportDaemon
   /*!
    * \brief Load argonaut server config from argonaut service in ldap
    */
-  public function get_argonaut_host() {
+  public function get_argonaut_host()
+  {
     $ldap = $this->config->get_ldap_link();
     $ldap->cd($this->config->current['BASE']);
-    $ldap->search("(objectClass=argonautServer)",array('cn','ipHostNumber','argonautProtocol','argonautPort'));
+    $ldap->search("(objectClass=argonautServer)", array('cn','ipHostNumber','argonautProtocol','argonautPort'));
     if ($ldap->count() == 1) {
       $ldap_infos = $ldap->fetch();
       return $ldap_infos['argonautProtocol'][0]."://".$ldap_infos['ipHostNumber'][0].":".$ldap_infos['argonautPort'][0];
@@ -91,10 +94,11 @@ class supportDaemon
    *
    * \return boolean TRUE if the server pings, FALSE otherwise
    */
-  public function is_available() {
-    if($this->s_host == "") {
+  public function is_available()
+  {
+    if ($this->s_host == "") {
       $this->set_error($this->host_error);
-      return(FALSE);
+      return FALSE;
     }
     if ((self::$state !== NULL) && (time() - self::$state['date'] < $this->stateReloadDelay)) {
       return self::$state['value'];
@@ -134,21 +138,21 @@ class supportDaemon
    */
   public function append($event)
   {
-    if(!($event instanceof DaemonEvent)) {
-      return(FALSE);
+    if (!($event instanceof DaemonEvent)) {
+      return FALSE;
     }
 
     /* Add to queue if new
      */
-    if($event->is_new()) {
+    if ($event->is_new()) {
       $request_answer = FALSE;
-      if($event->get_type() == SCHEDULED_EVENT) {
+      if ($event->get_type() == SCHEDULED_EVENT) {
         $action = $event->get_schedule_action();
-      } elseif($event->get_type() == TRIGGERED_EVENT) {
+      } elseif ($event->get_type() == TRIGGERED_EVENT) {
         $action = $event->get_trigger_action();
       } else {
         trigger_error("Unknown type of queue event given.");
-        return(FALSE);
+        return FALSE;
       }
 
       /* Get event informations, like targets..
@@ -159,9 +163,9 @@ class supportDaemon
       /* Put timestamp back to UTC time
        */
       timezone::get_default_timezone();
-      if($event->get_timestamp(FALSE) != 0) {
+      if ($event->get_timestamp(FALSE) != 0) {
         $data_json['timestamp'] = $event->get_timestamp(FALSE);
-        if(isset($data['periodic'])) {
+        if (isset($data['periodic'])) {
           $data_json['periodic'] = $data['periodic'];
         }
       }
@@ -191,13 +195,13 @@ class supportDaemon
    *
    * \return TRUE if correctly appended FALSE otherwise
    */
-  public function append_call($action,$targets,$data)
+  public function append_call($action, $targets, $data)
   {
     if ($this->s_host == "") {
       $this->set_error($this->host_error);
       return FALSE;
     }
-    if (preg_match('/^[^.]+\.[^.]+$/',$action)) {
+    if (preg_match('/^[^.]+\.[^.]+$/', $action)) {
       $action = 'Argonaut.ClientDaemon.Modules.'.$action;
     }
     /* Append an entry
@@ -242,7 +246,7 @@ class supportDaemon
    */
   public function is_error()
   {
-    return($this->b_error);
+    return $this->b_error;
   }
 
 
@@ -255,15 +259,15 @@ class supportDaemon
   {
     $str = $this->s_error;
     $ret = "";
-    if(is_string($str)){
+    if (is_string($str)) {
       $ret = $str;
-    }else{
-      foreach($str as $msg){
+    } else {
+      foreach ($str as $msg) {
         $ret .= $msg." ";
       }
     }
-    $ret = str_replace(" ","&nbsp;",$ret);
-    return($ret);
+    $ret = str_replace(" ", "&nbsp;", $ret);
+    return $ret;
   }
 
   /*!
@@ -273,30 +277,32 @@ class supportDaemon
    *
    * \return array The entries formatted
    */
-  private function format_entries($entries) {
+  private function format_entries($entries)
+  {
     timezone::get_default_timezone();
     $entries_r = array();
-    foreach($entries as &$entry) {
+    foreach ($entries as &$entry) {
       $entry_r['TIMESTAMP'] = DaemonEvent::_timestamp_to_event($entry['data']['timestamp']);
       $entry_r['MACADDRESS'] = $entry['target'];
 
       // TODO : do an ldap search only if we haven't done it for the same mac before
       $ldap = $this->config->get_ldap_link();
       $ldap->cd($this->config->current['BASE']);
-      $ldap->search("(macAddress=".$entry_r['MACADDRESS'].")",array('cn'));
+      $ldap->search("(macAddress=".$entry_r['MACADDRESS'].")", array('cn'));
       $ldap_infos = $ldap->fetch();
       $ldap_infos['cn'][0];
       $entry_r['PLAINNAME'] = $ldap_infos['cn'][0];
 
-      $entry_r['ERROR'] = $entry['error'];
-      $entry_r['PROGRESS'] = $entry['progress'];
+      $entry_r['ERROR']     = $entry['error'];
+      $entry_r['PROGRESS']  = $entry['progress'];
 
-      $entry_r['PERIODIC'] = $entry['data']['periodic'];
-      $entry_r['STATUS'] = $entry['status'];
+      $entry_r['PERIODIC']  = $entry['data']['periodic'];
+      $entry_r['STATUS']    = $entry['status'];
       $entry_r['SUBSTATUS'] = $entry['substatus'];
-      $entry_r['ID'] = $entry['id'];
+      $entry_r['ID']        = $entry['id'];
       $entry_r['HEADERTAG'] = $entry['action'];
-      $entries_r[]=$entry_r;
+
+      $entries_r[] = $entry_r;
     }
     return $entries_r;
   }
@@ -319,11 +325,11 @@ class supportDaemon
       $entries = $client->get_entries();
     } catch (Exception $e) {
       $this->set_error(nl2br($e->getMessage()));
-      return(FALSE);
+      return FALSE;
     }
     $entries = $this->format_entries($entries);
     $this->reset_error();
-    return($entries);
+    return $entries;
   }
 
   /*!
@@ -335,7 +341,7 @@ class supportDaemon
   */
   public function get_entries_by_id($ids)
   {
-    return $this->get_entries("get_entries_by_id",$ids);
+    return $this->get_entries("get_entries_by_id", $ids);
   }
 
   /*!
@@ -347,7 +353,7 @@ class supportDaemon
    */
   public function remove_entries($ids)
   {
-    if(!is_array($ids)){
+    if (!is_array($ids)) {
       trigger_error("Requires an array as parameter.");
       return;
     }
@@ -361,10 +367,10 @@ class supportDaemon
       $entries = $client->remove_entries($ids);
     } catch (Exception $e) {
       $this->set_error(nl2br($e->getMessage()));
-      return(FALSE);
+      return FALSE;
     }
     $this->reset_error();
-    return(TRUE);
+    return TRUE;
   }
 
   /*!
@@ -376,7 +382,7 @@ class supportDaemon
   */
   public function remove_entry($id)
   {
-    return($this->remove_entries(array($id)));
+    return $this->remove_entries(array($id));
   }
 
   /*!
@@ -400,7 +406,7 @@ class supportDaemon
   */
   public function process_entries_now($ids)
   {
-    if(!is_array($ids)){
+    if (!is_array($ids)) {
       trigger_error("Requires an array as first parameter.");
       return;
     }
@@ -413,10 +419,10 @@ class supportDaemon
       $client = new jsonRPCClient($this->s_host);
       $entries = $client->process_entries_now($ids);
       $this->reset_error();
-      return(TRUE);
+      return TRUE;
     } catch (Exception $e) {
       $this->set_error(nl2br($e->getMessage()));
-      return(FALSE);
+      return FALSE;
     }
   }
 
@@ -427,20 +433,21 @@ class supportDaemon
    *
    * \return boolean Returns TRUE if currently installing FALSE otherwise.
    */
-  public function is_currently_installing($mac) {
+  public function is_currently_installing($mac)
+  {
     $e_types = DaemonEvent::get_event_types(USER_EVENT | SYSTEM_EVENT | HIDDEN_EVENT);
 
     $evts = $this->get_entries_by_mac(array($mac));
-    if($evts) {
-      foreach($evts as $evt) {
-        if(isset($e_types['QUEUED'][$evt['HEADERTAG']]) && $evt['STATUS'] == "processing" &&
-          in_array($e_types['QUEUED'][$evt['HEADERTAG']],array("DaemonEvent_reinstall","DaemonEvent_update"))) {
+    if ($evts) {
+      foreach ($evts as $evt) {
+        if (isset($e_types['QUEUED'][$evt['HEADERTAG']]) && $evt['STATUS'] == "processing" &&
+            in_array($e_types['QUEUED'][$evt['HEADERTAG']], array("DaemonEvent_reinstall","DaemonEvent_update"))) {
           // Why do we check HEADERTAG? processing status should be sufficient.
-          return(TRUE);
+          return TRUE;
         }
       }
     }
-    return(FALSE);
+    return FALSE;
   }
 
   /*!
@@ -450,8 +457,9 @@ class supportDaemon
    *
    * \return array  The entries for the requested mac addresses.
    */
-  public function get_entries_by_mac($macs) {
-    return $this->get_entries("get_entries_by_mac",$macs);
+  public function get_entries_by_mac($macs)
+  {
+    return $this->get_entries("get_entries_by_mac", $macs);
   }
 
   /*!
@@ -463,8 +471,9 @@ class supportDaemon
    *
    * \return Array   The entries for the requested addresses.
    */
-  private function get_entries($func,$address) {
-    if(!is_array($address)){
+  private function get_entries($func, $address)
+  {
+    if (!is_array($address)) {
       trigger_error("Requires an array as parameter.");
       return;
     }
@@ -481,7 +490,7 @@ class supportDaemon
       return($entries);
     } catch (Exception $e) {
       $this->set_error(nl2br($e->getMessage()));
-      return(FALSE);
+      return FALSE;
     }
   }
 
@@ -515,19 +524,19 @@ class supportDaemon
     }
     $ret = array();
     foreach ($dates as $date) {
-      if ($date == "." || $date =="..") {
+      if ($date == "." || $date == "..") {
           continue;
       }
       $ret[$date]['DATE_STR']  = $date;
-      $ret[$date]['REAL_DATE'] = strtotime(preg_replace("/[^0-9]*/","",$date));
-      foreach(scandir("$logfiledir/$date") as $file) {
-        if ($file == "." || $file =="..") {
+      $ret[$date]['REAL_DATE'] = strtotime(preg_replace("/[^0-9]*/", "", $date));
+      foreach (scandir("$logfiledir/$date") as $file) {
+        if ($file == "." || $file == "..") {
           continue;
         }
         $ret[$date]['FILES'][] = $file;
       }
     }
-    return array($mac=>$ret);
+    return array($mac => $ret);
   }
 
   /*!
@@ -540,10 +549,10 @@ class supportDaemon
    * \param string $file The log filename.
    *
    */
-  public function get_log_file($mac,$date,$file)
+  public function get_log_file($mac, $date, $file)
   {
-    if(is_file("/$mac/$date/$file")) {
-      return implode("",file($this->logdir."/$mac/$date/$file"));
+    if (is_file("/$mac/$date/$file")) {
+      return implode("", file($this->logdir."/$mac/$date/$file"));
     } else {
       return "";
     }
@@ -556,7 +565,8 @@ class supportDaemon
    *
    * \return boolean TRUE if the workstation is running an argonaut daemon
   */
-  public function ping($mac) {
+  public function ping($mac)
+  {
     if ($this->s_host == "") {
       $this->set_error($this->host_error);
       return FALSE;
@@ -564,10 +574,10 @@ class supportDaemon
     try {
       $client = new jsonRPCClient($this->s_host);
       $this->reset_error();
-      return($client->ping($mac));
+      return $client->ping($mac);
     } catch (Exception $e) {
       $this->set_error(nl2br($e->getMessage()));
-      return(FALSE);
+      return FALSE;
     }
   }
 
@@ -589,12 +599,13 @@ class supportDaemon
    *
    * \return Array   List of packages that fit the given parameters.
   */
-  public function FAI_get_packages($release,$attrs,$filters,$from=-1,$to=-1,$package_list=false) {
+  public function FAI_get_packages($release, $attrs, $filters, $from = -1, $to = -1, $package_list = FALSE)
+  {
     if ($this->s_host == "") {
       $this->set_error($this->host_error);
       return array();
     }
-    if($package_list) { // filters is a package name list
+    if ($package_list) { // filters is a package name list
       foreach ($filters as &$filter) {
         $filter = "^".$this->escape_perl_chars($filter)."$";
       }
@@ -602,25 +613,25 @@ class supportDaemon
     try {
       $client = new jsonRPCClient($this->s_host);
       $this->reset_error();
-      $res = $client->get_packages($release,$attrs,$filters,$from,$to);
+      $res = $client->get_packages($release, $attrs, $filters, $from, $to);
       $to_return = array();
       $attrs = array_map('strtoupper', $attrs);
       foreach ($res as $distribution => $packages) {
-        $words = preg_split("/\//",$distribution);
+        $words = preg_split("/\//", $distribution);
         $distribution = $words[0];
         $section = $words[1];
 
-        if(in_array("DISTRIBUTION",$attrs)) {
+        if (in_array("DISTRIBUTION", $attrs)) {
           foreach ($packages as &$package) {
             $package['DISTRIBUTION'] = $distribution;
           }
         }
-        if(in_array("SECTION",$attrs)) {
+        if (in_array("SECTION", $attrs)) {
           foreach ($packages as &$package) {
             $package['SECTION'] = $section; // FIXME : do we want to do this? It will replace "contrib/misc by contrib, for instance
           }
         }
-        $to_return = array_merge($to_return,$packages);
+        $to_return = array_merge($to_return, $packages);
       }
       return $to_return;
     } catch (Exception $e) {
@@ -636,10 +647,11 @@ class supportDaemon
    *
    * \return string Escaped string
   */
-  public function escape_perl_chars($str) {
+  public function escape_perl_chars($str)
+  {
     $patterns = array("/\+/", "/\*/", "/\./");
     $escaped  = array("\+",   "\*",   "\."  );
-    return preg_replace($patterns,$escaped,$str);
+    return preg_replace($patterns, $escaped, $str);
   }
 
   /*!
@@ -647,25 +659,26 @@ class supportDaemon
    *
    * \return array All configured repository servers
   */
-  public function FAI_get_server() {
+  public function FAI_get_server()
+  {
     $ldap = $this->config->get_ldap_link();
     $ldap->cd($this->config->current['BASE']);
-    $ldap->search("(&(FAIrepository=*)(objectClass=FAIrepositoryServer))",array("FAIrepository", "gosaUnitTag"));
+    $ldap->search("(&(FAIrepository=*)(objectClass=FAIrepositoryServer))", array("FAIrepository", "gosaUnitTag"));
 
     $repos = array();
-    while($entry = $ldap->fetch()) {
-      if(isset($entry['FAIrepository'])) {
-        # Add an entry for each Repository configured for server
+    while ($entry = $ldap->fetch()) {
+      if (isset($entry['FAIrepository'])) {
+        // Add an entry for each Repository configured for server
         unset($entry['FAIrepository']['count']);
         foreach ($entry['FAIrepository'] as $repo) {
           $tmp = explode("|", $repo);
           $infos['URL']           = $tmp[0];
           $infos['PARENT_SERVER'] = $tmp[1];
           $infos['FAI_RELEASE']   = $tmp[2];
-          $infos['SECTIONS']      = explode(",",$tmp[3]);
+          $infos['SECTIONS']      = explode(",", $tmp[3]);
           $infos['INSTALL']       = $tmp[4];
           $infos['LOCAL']         = $tmp[5];
-          $infos['ARCHS']         = explode(",",$tmp[6]);
+          $infos['ARCHS']         = explode(",", $tmp[6]);
           $infos['TAG']           = (isset($entry['gosaUnitTag'])?$entry['gosaUnitTag']:'');
           $repos[] = $infos;
         }
@@ -686,7 +699,7 @@ class supportDaemon
     $list     = array();
     $servers  = $this->FAI_get_server();
 
-    foreach($servers as $server) {
+    foreach ($servers as $server) {
       if (strtolower($server['INSTALL']) == strtolower("custom:$release")) {
         $list[$server['FAI_RELEASE']] = $server['FAI_RELEASE'];
       }
@@ -703,7 +716,7 @@ class supportDaemon
   */
   public function FAI_get_kernels($release)
   {
-    $kernels = $this->FAI_get_packages($release,array("package"),array("linux-image"));
+    $kernels = $this->FAI_get_packages($release, array("package"), array("linux-image"));
     foreach ($kernels as &$kernel) {
       $kernel = $kernel['PACKAGE'];
     }
@@ -721,7 +734,7 @@ class supportDaemon
   {
     $ldap = $this->config->get_ldap_link();
     $ldap->cd("ou=$release,".get_ou("faiBaseRDN").$this->config->current['BASE']);
-    $ldap->search("(&(objectClass=FAIprofile)(objectClass=FAIclass))",array('cn'));
+    $ldap->search("(&(objectClass=FAIprofile)(objectClass=FAIclass))", array('cn'));
 
     $res = array();
     while ($entry = $ldap->fetch()) {
@@ -742,9 +755,9 @@ class supportDaemon
    *
    * \return status or FALSE if there is an error
   */
-  public function manage_service($mac,$service,$action)
+  public function manage_service($mac, $service, $action)
   {
-    return $this->append_call("Service.manage",array($mac),array("args"=>array($service,$action)));
+    return $this->append_call("Service.manage", array($mac), array("args" => array($service,$action)));
   }
 
   /*!
@@ -765,14 +778,12 @@ class supportDaemon
       $this->reset_error();
       $taskids = $client->get_entries_by_mac(array($mac));
       $client->remove_entries($taskids);
-      return(TRUE);
+      return TRUE;
     } catch (Exception $e) {
       $this->set_error(nl2br($e->getMessage()));
-      return(FALSE);
+      return FALSE;
     }
   }
 };
 
-
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>
