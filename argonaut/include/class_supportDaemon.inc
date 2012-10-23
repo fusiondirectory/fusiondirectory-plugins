@@ -42,6 +42,10 @@ class supportDaemon
 
   private $logdir       = "";
 
+  private static $state = NULL;
+
+  private $stateReloadDelay = 300; // Don't recheck status if less than 5 minutes have passed.
+
   /*!
    * \brief constructor
    */
@@ -92,21 +96,33 @@ class supportDaemon
       $this->set_error($this->host_error);
       return(FALSE);
     }
+    if ((self::$state !== NULL) && (time() - self::$state['date'] < $this->stateReloadDelay)) {
+      return self::$state['value'];
+    }
     try {
       $client = new jsonRPCClient($this->s_host);
       $ok = "OK";
       $test = $client->echo($ok);
       if ($test == $ok) {
         $this->reset_error();
-        return(TRUE);
+        return $this->new_state(TRUE);
       } else {
         $this->set_error("Received $test, expected $ok");
-        return(FALSE);
+        return $this->new_state(FALSE);
       }
     } catch (Exception $e) {
       $this->set_error(nl2br($e->getMessage()));
-      return(FALSE);
+      return $this->new_state(FALSE);
     }
+  }
+
+  private function new_state($state_value)
+  {
+    self::$state = array(
+      'date'  => time(),
+      'value' => $state_value
+    );
+    return $state_value;
   }
 
   /*!
