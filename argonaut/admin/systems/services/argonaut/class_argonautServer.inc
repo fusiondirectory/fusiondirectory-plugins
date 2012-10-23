@@ -19,137 +19,12 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class argonautServer extends goService{
-
-  var $cli_summary      = "This plugin is used within the ServerService Pluign \nand indicates that this server supports Argonaut service.";
-  var $cli_description  = "Some longer text\nfor help";
-  var $cli_parameters   = array("one" => "one is nice", "two" => "two is better");
+class argonautServer extends simpleService {
 
   /* This plugin only writes its objectClass */
   var $objectclasses    = array("argonautServer");
-  var $attributes       = array("argonautDeleteFinished","argonautProtocol","argonautPort",
-                                "argonautWakeOnLanInterface","argonautIpTool","argonautLogDir",
-                                "argonautKeyPath","argonautCertPath");
   var $StatusFlag       = "argonautServerStatus";
-
-  /* This class can't be assigned twice so it conflicts with itsself */
-  var $conflicts        = array("argonautServer");
-
-  var $DisplayName      = "";
-  var $dn               = NULL;
-  var $acl;
-  var $cn               = "";
-  var $view_logged  =FALSE;
-
-  var $argonautDeleteFinished     = true;
-  var $argonautProtocol           = "http";
-  var $argonautPort               = 8080;
-  var $argonautWakeOnLanInterface = "eth0";
-  var $argonautIpTool             = "/sbin/ifconfig";
-  var $argonautLogDir             = "/var/log/argonaut";
-
-  var $argonautKeyPath            = "";
-  var $argonautCertPath           = "";
-
   var $argonautServerStatus = "";
-
-  function argonautServer(&$config,$dn)
-  {
-    $this->argonautKeyPath            = CONFIG_DIR."/cert/server.key";
-    $this->argonautCertPath           = CONFIG_DIR."/cert/server.crt";
-    goService::goService($config,$dn);
-    $this->DisplayName = _("Argonaut Server");
-    $this->argonautDeleteFinished = ($this->argonautDeleteFinished == "TRUE"); // conversion from LDAP format to PHP boolean
-  }
-
-
-  function execute()
-  {
-    $smarty = get_smarty();
-
-    if($this->is_account && !$this->view_logged){
-      $this->view_logged = TRUE;
-      new log("view","server/".get_class($this),$this->dn);
-    }
-
-    $smarty->assign("argonautACL", $this->getacl("argonaut")) ;
-    foreach ($this->attributes as $attribute) {
-      $smarty->assign("$attribute" , $this->$attribute);
-    }
-
-    $smarty->assign("protocols",array("http","https"));
-
-    return $smarty->fetch(get_template_path("argonautServer.tpl",TRUE,dirname(__FILE__)));
-  }
-
-
-  function getListEntry()
-  {
-    $fields               = goService::getListEntry();
-    $fields['Message']    = _("Argonaut Server");
-    return $fields;
-  }
-
-
-  function save()
-  {
-    plugin::save();
-    $this->attrs['argonautDeleteFinished'] = ($this->argonautDeleteFinished?"TRUE":"FALSE"); // conversion from PHP format to LDAP boolean
-    /* Check if this is a new entry ... add/modify */
-    $ldap = $this->config->get_ldap_link();
-    $ldap->cat($this->dn,array("objectClass"));
-    if($ldap->count()){
-      $ldap->cd($this->dn);
-      $ldap->modify($this->attrs);
-    }else{
-      $ldap->cd($this->dn);
-      $ldap->add($this->attrs);
-    }
-    if (!$ldap->success()){
-      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()));
-    }
-    if($this->initially_was_account){
-      $this->handle_post_events("modify");
-      new log("modify","server/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
-    }else{
-      $this->handle_post_events("add");
-      new log("create","server/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
-    }
-  }
-
-
-  function PrepareForCopyPaste($source)
-  {
-    plugin::PrepareForCopyPaste($source);
-  }
-
-  function check()
-  {
-    $message = plugin::check();
-    return($message);
-  }
-
-  function save_object()
-  {
-    if(isset($_POST['argonautServerPosted'])) {
-      plugin::save_object();
-      if($this->acl_is_writeable("argonaut")) {
-        if(isset($_POST['argonautDeleteFinished'])) {
-          $this->argonautDeleteFinished = true;
-        } else {
-          $this->argonautDeleteFinished = false;
-        }
-        foreach ($this->attributes as $attribute) {
-          if($attribute=="argonautDeleteFinished") {
-            continue;
-          }
-          if(isset($_POST[$attribute])) {
-            $this->$attribute = $_POST[$attribute];
-          }
-        }
-      }
-    }
-  }
 
   /* Return plugin informations for acl handling */
   static function plInfo()
@@ -162,11 +37,89 @@ class argonautServer extends goService{
           "plPriority"    => 91,
           "plSection"     => array("administration"),
           "plCategory"    => array("server"),
-
-          "plProvidedAcls"=> array(
-            "argonaut"        =>_("Modify argonaut service"))
+          "plProvidedAcls"=> parent::generatePlProvidedAcls(self::getAttributesInfo())
           ));
   }
+
+    /*!
+   *  \brief The main function : information about attributes
+   */
+  static function getAttributesInfo ()
+  {
+    return array (
+    'section1' => array (
+        'name'  => _('Argonaut server'),
+        'attrs' => array (
+          new BooleanAttribute (
+            _('Delete finished tasks'),
+            '',
+            'argonautDeleteFinished',
+            FALSE,
+            TRUE
+          ),
+          new IntAttribute (
+            _('Port'),
+            '',
+            'argonautPort',
+            FALSE,
+            FALSE,
+            FALSE,
+            8080
+          ),
+          new StringAttribute (
+            _('Interface for WakeOnLan'),
+            '',
+            'argonautWakeOnLanInterface',
+            FALSE,
+            'eth0'
+          ),
+          new StringAttribute (
+            _('IP tool'),
+            '',
+            'argonautIpTool',
+            FALSE,
+            '/sbin/ifconfig'
+          ),
+          new StringAttribute (
+            _('Log directory'),
+            '',
+            'argonautLogDir',
+            FALSE,
+            '/var/log/argonaut'
+          ),
+          new StringAttribute (
+            _('Key path'),
+            '',
+            'argonautKeyPath',
+            FALSE
+          ),
+          new StringAttribute (
+            _('Cert path'),
+            '',
+            'argonautCertPath',
+            FALSE
+          )
+        )
+      )
+    );
+  }
+
+  function __construct(&$config, $dn = NULL, $object = NULL)
+  {
+    parent::__construct($config, $dn, $object);
+    $this->attributesInfo['section1']['attrs']['argonautKeyPath']->setVisible(FALSE);
+    $this->attributesInfo['section1']['attrs']['argonautCertPath']->setVisible(FALSE);
+    $argonautKeyPath  = CONFIG_DIR."/cert/server.key";
+    $argonautCertPath = CONFIG_DIR."/cert/server.crt";
+    $this->attributesInfo['section1']['attrs']['argonautKeyPath']->setValue($argonautKeyPath);
+    $this->attributesInfo['section1']['attrs']['argonautCertPath']->setValue($argonautCertPath);
+  }
+
+  function save ()
+  {
+    parent::prepare_save();
+    parent::ldap_save();
+  }
+
 }
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>
