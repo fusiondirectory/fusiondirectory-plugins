@@ -19,16 +19,14 @@
   along with this program; if not, write to the Free Software
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
-define("SERVICE_STOPPED",   _("Stop"));
-define("SERVICE_STARTED",   _("Start"));
-define("SERVICE_RESTARTED", _("Restart"));
 
 class ServerService extends management
 {
   static public $actionStatus = array(
-    "start"   => SERVICE_STARTED,
-    "stop"    => SERVICE_STOPPED,
-    "restart" => SERVICE_RESTARTED,
+    "start"   => "running",
+    "stop"    => "stopped",
+    "restart" => "running",
+    "status" => "",
   );
 
   /* attribute list for save action */
@@ -110,6 +108,7 @@ class ServerService extends management
     $this->registerAction("saveService",        "saveService");
     $this->registerAction("cancelService",      "cancelEdit");
     $this->registerAction("newServiceCancel",   "closeDialogs");
+    $this->registerAction("status",             "updateServiceStatus");
     $this->registerAction("restart",            "updateServiceStatus");
     $this->registerAction("stop",               "updateServiceStatus");
     $this->registerAction("start",              "updateServiceStatus");
@@ -268,13 +267,10 @@ class ServerService extends management
     $img = "";
     if (isset($d['0'])) {
       switch ($d[0]) {
-        case 'Restart':
-          $img = ('images/status_restarting.png');
-          break;
-        case 'Stop':
+        case 'stopped':
           $img = ('images/lists/off.png');
           break;
-        case 'Start':
+        case 'running':
           $img = ('images/lists/on.png');
           break;
       }
@@ -411,15 +407,28 @@ class ServerService extends management
           msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
         );
       } else {
-        $res = $s_daemon->manage_service($this->parent->by_object['servgeneric']->netConfigDNS->macAddress, $service, $action);
+        $target = array($this->parent->by_object['servgeneric']->netConfigDNS->macAddress);
+        if ($action == 'status') {
+          $res = $s_daemon->append_call("Service.is_running", $target, array("args" => array($service)));
+          if ($s_daemon->is_error()) {
+            msg_dialog::display(
+              sprintf(_("Could not get execute action %s on service %s."), $action, $service),
+              msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
+            );
+          } else {
+            $this->plugins[$service]->setStatus($res == "yes"?"running":"stopped");
+          }
+        } else {
+          $res = $s_daemon->append_call("Service.manage", $target, array("args" => array($service, $action)));
 
-        if ($s_daemon->is_error()) {
-          msg_dialog::display(
-            sprintf(_("Could not get execute action %s on service %s."), $action, $service),
-            msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
-          );
-        } elseif ($res) {
-          $this->plugins[$service]->setStatus(self::$actionStatus[$action]);
+          if ($s_daemon->is_error()) {
+            msg_dialog::display(
+              sprintf(_("Could not get execute action %s on service %s."), $action, $service),
+              msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
+            );
+          } elseif (preg_match("/^done/", $res)) {
+            $this->plugins[$service]->setStatus(self::$actionStatus[$action]);
+          }
         }
       }
     }

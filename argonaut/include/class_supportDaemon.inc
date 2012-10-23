@@ -751,22 +751,6 @@ class supportDaemon
   }
 
   /*!
-   * \brief Manage services
-   *
-   * \param string $mac The mac correspind to the host action
-   *
-   * \param string $service The service to be managed
-   *
-   * \param string $action The action to be done on the service
-   *
-   * \return status or FALSE if there is an error
-  */
-  public function manage_service($mac, $service, $action)
-  {
-    return $this->append_call("Service.manage", array($mac), array("args" => array($service,$action)));
-  }
-
-  /*!
    * \brief Clean queue
    *
    * \param array $mac The macs that have to be removed from the queue

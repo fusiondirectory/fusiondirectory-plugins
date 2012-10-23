@@ -29,8 +29,9 @@ class filterServerService {
     foreach($plugins as $name => $obj){
       if($obj->is_account){
         $data = $plugins[$name]->getListEntry();
-        $data['objectClass'] = array('FAKE_OC_ServerService'); 
+        $data['objectClass'] = array('FAKE_OC_ServerService');
         $data['name'] = $name;
+        if($data['AllowStatus'])  $data['objectClass'][] = "AllowStatus";
         if($data['AllowStart'])   $data['objectClass'][] = "AllowStart";
         if($data['AllowStop'])    $data['objectClass'][] = "AllowStop";
         if($data['AllowRestart']) $data['objectClass'][] = "AllowRestart";
