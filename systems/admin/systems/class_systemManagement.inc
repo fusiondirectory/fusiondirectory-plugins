@@ -1320,18 +1320,19 @@ class systemManagement extends management
     $services = array();
     $services_class = array (
         "FAIrepositoryServer" => "repository",
-        "goLdapServer" => "ldap",
-        "dNSZone" => "dns",
-        "goNtpServer" => "ntp",
-        "argonautServer" => "argonaut",
-        "dhcpServer" => "dhcp",
-        "goVirusServer" => "antivirus",
-        "goSpamServer" => "spamassassin",
-        "goShareServer" => "file",
-        "goCupsServer" => "print",
-        "goImapServer" => "imap",
-        "goTerminalServer" => "terminal",
-        "goMailServer" => "smtp"
+        "goLdapServer"        => "ldap",
+        "dNSZone"             => "dns",
+        "goNtpServer"         => "ntp",
+        "argonautServer"      => "argonaut",
+        "dhcpServer"          => "dhcp",
+        "goVirusServer"       => "antivirus",
+        "goSpamServer"        => "spamassassin",
+        "goShareServer"       => "file",
+        "goCupsServer"        => "print",
+        "goImapServer"        => "imap",
+        "goTerminalServer"    => "terminal",
+        "apacheConfig"        => "apache",
+        "goMailServer"        => "smtp"
         );
     while($attrs = $ldap->fetch()){
         unset($attrs['objectClass']['count']);
