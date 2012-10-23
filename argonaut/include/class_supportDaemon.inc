@@ -35,6 +35,7 @@ class supportDaemon
 {
   private $s_host       = "";
   private $host_error   = "";
+  private $http_options = array();
   private $config;
 
   private $s_error      = "";
@@ -77,9 +78,14 @@ class supportDaemon
   {
     $ldap = $this->config->get_ldap_link();
     $ldap->cd($this->config->current['BASE']);
-    $ldap->search("(objectClass=argonautServer)", array('cn','ipHostNumber','argonautProtocol','argonautPort'));
+    $ldap->search("(objectClass=argonautServer)", array('cn','ipHostNumber','argonautProtocol','argonautPort','argonautTimeout'));
     if ($ldap->count() == 1) {
       $ldap_infos = $ldap->fetch();
+      if (isset($ldap_infos['argonautTimeout'][0])) {
+        $this->http_options = array(
+          'timeout' => $ldap_infos['argonautTimeout'][0]
+        );
+      }
       return $ldap_infos['argonautProtocol'][0]."://".$ldap_infos['ipHostNumber'][0].":".$ldap_infos['argonautPort'][0];
     } elseif ($ldap->count() > 1) {
       $this->host_error = _("Multiple argonaut server found. Only one is supported");

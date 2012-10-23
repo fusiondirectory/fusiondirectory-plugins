@@ -1,6 +1,6 @@
-dn: cn=argonaut,cn=schema,cn=config
+dn: cn=./argonaut.schema,cn=schema,cn=config
 objectClass: olcSchemaConfig
-cn: cn=argonaut
+cn: cn=./argonaut.schema
 ##
 ## argonaut.schema - Needed by Fusion Directory for managing an Argonaut Server
 ##
@@ -14,6 +14,7 @@ olcAttributeTypes: ( 1.3.6.1.4.1.38414.2.10.6NAME 'argonautWakeOnLanInterface' D
 olcAttributeTypes: ( 1.3.6.1.4.1.38414.2.10.7NAME 'argonautIpTool' DESC 'Fusion Directory - Argonaut, iptool path (usually /sbin/ifconfig).' EQUALITY caseExactIA5Match SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 SINGLE-VALUE )
 olcAttributeTypes: ( 1.3.6.1.4.1.38414.2.10.8NAME 'argonautLogDir' DESC 'Fusion Directory - Argonaut, log directory.' EQUALITY caseExactIA5Match SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 SINGLE-VALUE )
 olcAttributeTypes: ( 1.3.6.1.4.1.38414.2.10.9NAME 'argonautServerStatus' DESC 'Fusion Directory - Argonaut, server status container - on / off / fail' EQUALITY caseExactIA5Match SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 SINGLE-VALUE)
+olcAttributeTypes: ( 1.3.6.1.4.1.38414.2.10.10NAME 'argonautTimeout' DESC 'Fusion Directory - Argonaut, timeout in seconds.' EQUALITY integerMatch ORDERING integerOrderingMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE )
 olcAttributeTypes: ( 1.3.6.1.4.1.38414.2.11.1NAME 'argonautClientPort' DESC 'Fusion Directory - Argonaut, client port.' EQUALITY integerMatch ORDERING integerOrderingMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE )
 olcAttributeTypes: ( 1.3.6.1.4.1.38414.2.11.2NAME 'argonautTaskIdFile' DESC 'Fusion Directory - Argonaut, taskid file path.' EQUALITY caseExactIA5Match SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 SINGLE-VALUE )
 olcAttributeTypes: ( 1.3.6.1.4.1.38414.2.11.3NAME 'argonautClientLogDir' DESC 'Fusion Directory - Argonaut, log directory.' EQUALITY caseExactIA5Match SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 SINGLE-VALUE )
@@ -45,7 +46,7 @@ olcAttributeTypes: ( 1.3.6.1.4.1.38414.2.14.9NAME 'argonautFuseOpsiServer' DESC 
 olcAttributeTypes: ( 1.3.6.1.4.1.38414.2.14.10NAME 'argonautFuseOpsiLang' DESC 'Fusion Directory - Argonaut, fuse Opsi lang.' EQUALITY caseExactIA5Match SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 SINGLE-VALUE )
 olcAttributeTypes: ( 1.3.6.1.4.1.38414.2.14.11NAME 'argonautFuseLtspServer' DESC 'Fusion Directory - Argonaut, fuse LTSP server.' EQUALITY caseExactIA5Match SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 SINGLE-VALUE )
 # Object Class
-olcObjectClasses: ( 1.3.6.1.4.1.38414.2.2.1NAME 'argonautServer' DESC 'An argonaut server' SUP top AUXILIARY MUST ( argonautProtocol $ argonautPort $ argonautLogDir $ argonautDeleteFinished $ argonautWakeOnLanInterface $ argonautIpTool ) MAY ( argonautServerStatus $ argonautKeyPath $ argonautCertPath) )
+olcObjectClasses: ( 1.3.6.1.4.1.38414.2.2.1NAME 'argonautServer' DESC 'An argonaut server' SUP top AUXILIARY MUST ( argonautProtocol $ argonautPort $ argonautLogDir $ argonautDeleteFinished $ argonautWakeOnLanInterface $ argonautIpTool ) MAY ( argonautServerStatus $ argonautKeyPath $ argonautCertPath $ argonautTimeout ) )
 olcObjectClasses: ( 1.3.6.1.4.1.38414.2.2.2NAME 'argonautClient' DESC 'An argonaut client' SUP top AUXILIARY MUST ( argonautClientPort $ argonautTaskIdFile $ argonautClientWakeOnLanInterface $ argonautClientLogDir $ argonautServiceName ) )
 olcObjectClasses: ( 1.3.6.1.4.1.38414.2.2.3NAME 'argonautMirrorConfig' DESC 'An argonaut config for debconf-crawler and ldap2repositry' SUP top AUXILIARY MUST (  argonautMirrorDir $ argonautCrawlerPackagesFolder $ argonautLdap2repErrors $ argonautLdap2repSource $ argonautLdap2repGPGCheck $ argonautLdap2repContents $ argonautLdap2repVerbose ) MAY ( argonautLdap2repProxy ) )
 olcObjectClasses: ( 1.3.6.1.4.1.38414.2.2.4NAME 'argonautDNSConfig' DESC 'An argonaut config for ldap2zone' SUP top AUXILIARY MUST (  argonautLdap2zoneBindDir $ argonautLdap2zoneAllowNotify $ argonautLdap2zoneTTL $ argonautLdap2zoneRndc ) MAY ( argonautLdap2zoneAllowUpdate $ argonautLdap2zoneAllowTransfer ) )
