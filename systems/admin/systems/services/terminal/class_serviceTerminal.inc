@@ -24,22 +24,18 @@ class goTerminalServer extends simpleService{
 
   /* This plugin only writes its objectClass */
   var $objectclasses    = array("goTerminalServer");
-  var $StatusFlag       = "goTerminalServerStatus";
-  var $conflicts        = array("goTerminalServer");
-  var $goTerminalServerStatus = "";
 
   /* Return plugin informations for acl handling */
   static function plInfo()
   {
-    return (array(
-          "plShortName"   => _("Terminal service"),
-          "plDescription" => _("Terminal service")." ("._("Services").")",
-          "plSelfModify"  => FALSE,
-          "plPriority"    => 87,
-          "plSection"     => array("administration"),
-          "plCategory"    => array("server"),
-          "plProvidedAcls"=> parent::generatePlProvidedAcls(self::getAttributesInfo())
-          ));
+    return array(
+      "plShortName"   => _("Terminal service"),
+      "plDescription" => _("Terminal service")." ("._("Services").")",
+      "plSelfModify"  => FALSE,
+      "plSection"     => array("administration"),
+      "plCategory"    => array("server"),
+      "plProvidedAcls"=> parent::generatePlProvidedAcls(self::getAttributesInfo())
+    );
   }
 
   /*!

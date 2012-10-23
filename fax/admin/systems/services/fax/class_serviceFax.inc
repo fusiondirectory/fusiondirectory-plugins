@@ -22,28 +22,20 @@
 
 class goFaxServer extends simpleService {
 
-  var $cli_summary       = "This plugin is used within the ServerService Plugin \nand indicates that this server supports fax informations.";
-  var $cli_description   = "Some longer text\nfor help";
-  var $cli_parameters    = array("one" => "one is nice", "two" => "two is even better");
-  /* This plugin only writes its objectClass */
-
   var $objectclasses     =  array("goFaxServer");
-  var $StatusFlag        = "goFaxServerStatus";
-  var $goFaxServerStatus = "";
 
   /* Return plugin informations for acl handling */
   static function plInfo()
   {
-    return (array(
-          "plShortName"   => _("FAX service"),
-          "plDescription" => _("FAX service")." ("._("Services").")",
-          "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
-          "plPriority"    => 99,
-          "plSection"     => array("administration"),
-          "plCategory"    => array("server"),
-          "plProvidedAcls"=> parent::generatePlProvidedAcls(self::getAttributesInfo())
-          ));
+    return array(
+      "plShortName"     => _("FAX service"),
+      "plDescription"   => _("FAX service")." ("._("Services").")",
+      "plSelfModify"    => FALSE,
+      "plDepends"       => array(),
+      "plSection"       => array("administration"),
+      "plCategory"      => array("server"),
+      "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+    );
   }
 
     /*!

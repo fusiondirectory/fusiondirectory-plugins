@@ -63,15 +63,14 @@ class serviceKolab extends simpleService
 
   static function plInfo()
   {
-    return (array(
+    return array(
       "plShortName"     => _("Kolab mail service"),
       "plDescription"   => _("Kolab mail service")." ("._("Services").")",
       "plSelfModify"    => FALSE,
-      "plPriority"      => 85,
       "plSection"       => array("administration"),
       "plCategory"      => array("server"),
       "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
-    ));
+    );
   }
 
 
@@ -241,11 +240,6 @@ class serviceKolab extends simpleService
 
   function remove_from_parent()
   {
-     /* Remove status flag, it is not a memeber of this->attributes, so ensure that it is deleted too */
-    if (!empty($this->StatusFlag)) {
-      $this->attrs[$this->StatusFlag] = array();
-    }
-
     /* Only walk through following code, if this host was a member of the kolab hosts, else skip this */
     if (!$this->initially_was_account) {
       return;

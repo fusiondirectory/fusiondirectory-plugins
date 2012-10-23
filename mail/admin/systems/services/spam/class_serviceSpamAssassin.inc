@@ -55,8 +55,6 @@ class gospamserver extends simpleService{
   /* This plugin only writes its objectClass */
   var $objectclasses    = array("goSpamServer");
   var $attributes       = array("saRewriteHeader","saTrustedNetworks","saRequiredScore","saFlags","saRule");
-  var $StatusFlag       = "saStatus";
-  var $saStatus         = "";
 
     /* Return plugin informations for acl handling  */
 

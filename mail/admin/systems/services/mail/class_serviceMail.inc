@@ -1,25 +1,22 @@
 <?php
 
-class serviceMail extends simpleService{
+class serviceMail extends simpleService {
 
   /* This plugin only writes its objectClass */
   var $objectclasses    = array("goMailServer");
-  var $StatusFlag       = "goMailServerStatus";
-  var $goMailServerStatus = "";
 
   /* Return plugin informations for acl handling */
   static function plInfo()
   {
-    return (array(
-          "plShortName"    => _("Mail smtp (Postfix)"),
-          "plDescription"  => _("Mail smtp - Postfix")." ("._("Services").")",
-          "plSelfModify"   => FALSE,
-          "plDepends"      => array(),
-          "plPriority"     => 98,
-          "plSection"      => array("administration"),
-          "plCategory"     => array("server"),
-          "plProvidedAcls" => parent::generatePlProvidedAcls(self::getAttributesInfo())
-            ));
+    return array(
+      "plShortName"    => _("Mail smtp (Postfix)"),
+      "plDescription"  => _("Mail smtp - Postfix")." ("._("Services").")",
+      "plSelfModify"   => FALSE,
+      "plDepends"      => array(),
+      "plSection"      => array("administration"),
+      "plCategory"     => array("server"),
+      "plProvidedAcls" => parent::generatePlProvidedAcls(self::getAttributesInfo())
+    );
   }
 
 
@@ -165,6 +162,5 @@ class serviceMail extends simpleService{
     $this->prepare_save();
     $this->ldap_save();
   }
-
 }
 ?>

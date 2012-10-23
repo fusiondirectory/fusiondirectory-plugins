@@ -24,8 +24,6 @@ class goImapServer extends simpleService {
 
   /* This plugin only writes its objectClass */
   var $objectclasses    = array("goImapServer");
-  /* This class can't be assigned twice so it conflicts with itsself */
-  var $StatusFlag       = "goImapServerStatus";
 
   /* Return plugin informations for acl handling */
   static function plInfo()

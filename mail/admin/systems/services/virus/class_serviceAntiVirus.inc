@@ -49,23 +49,19 @@ class AvFlagsAttribute extends StringAttribute
 class govirusserver extends simpleService{
 
   var $objectclasses    = array("goVirusServer");
-  var $StatusFlag       = "avStatus";
-  var $avStatus         = "";
-  var $conflicts        = array("goVirusServer");
 
   /* Return plugin informations for acl handling */
   static function plInfo()
   {
-    return (array(
-          "plShortName"   => _("Antivirus service"),
-          "plDescription" => _("Antivirus service")." ("._("Services").")",
-          "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
-          "plPriority"    => 96,
-          "plSection"     => array("administration"),
-          "plCategory"    => array("server"),
-          "plProvidedAcls"=> parent::generatePlProvidedAcls(self::getAttributesInfo())
-          ));
+    return array(
+      "plShortName"   => _("Antivirus service"),
+      "plDescription" => _("Antivirus service")." ("._("Services").")",
+      "plSelfModify"  => FALSE,
+      "plDepends"     => array(),
+      "plSection"     => array("administration"),
+      "plCategory"    => array("server"),
+      "plProvidedAcls"=> parent::generatePlProvidedAcls(self::getAttributesInfo())
+    );
   }
 
   /*!

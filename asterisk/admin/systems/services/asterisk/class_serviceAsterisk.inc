@@ -24,12 +24,9 @@ class serviceAsterisk extends simpleService {
 
   /* This plugin only writes its objectClass */
   var $objectclasses    = array("goFonServer");
-  var $StatusFlag       = "goFonServerStatus";
 
   /* This class can't be assigned twice so it conflicts with itsself */
   var $conflicts        = array();
-
-  var $goFonServerStatus  = "";
 
   static function getAttributesInfo ()
   {
