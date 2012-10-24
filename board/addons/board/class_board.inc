@@ -80,7 +80,17 @@ class board extends simplePlugin
 
     if (class_available("systemManagement")) {
       $ldap->cd($this->config->current['BASE']);
-      $ldap->search("(|(objectClass=gotoWorkstation)(objectClass=goServer)(objectClass=sambaSamAccount)(objectClass=gotoTerminal)(objectClass=gotoPrinter)(objectClass=goFonHardware)(objectClass=ieee802Device))", array("cn"));
+      $workstations = '(objectClass=gotoWorkstation)';
+      $servers      = '(objectClass=goServer)';
+      $winstations  = '(&(objectClass=sambaSamAccount)(uid=*$))';
+      $terminals    = '(objectClass=gotoTerminal)';
+      $printers     = '(objectClass=gotoPrinter)';
+      $phones       = '(objectClass=goFonHardware)';
+      $devices      = '(objectClass=ieee802Device)';
+      $ldap->search(
+        "(|$workstations$servers$winstations$terminals$printers$phones$devices)",
+        array("cn")
+      );
       $nb_systems = $ldap->count();
       array_unshift(
         $stats,

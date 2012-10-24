@@ -46,18 +46,32 @@ class boardSystems extends simplePlugin
 
     /* Statistics */
     $stats = array(
-      array('name' => _('Workstations'), 'oc' => 'gotoWorkstation',  'img' => get_template_path("plugins/systems/images/select_workstation.png")),
-      array('name' => _('Servers'),      'oc' => 'goServer',         'img' => get_template_path("plugins/systems/images/select_server.png")),
-      array('name' => _('Windows Workstations'),  'oc' => 'sambaSamAccount',  'img' => get_template_path("plugins/systems/images/select_winstation.png")),
-      array('name' => _('Terminals'),    'oc' => 'gotoTerminal',     'img' => get_template_path("plugins/systems/images/select_terminal.png")),
-      array('name' => _('Printers'),     'oc' => 'gotoPrinter',      'img' => get_template_path("plugins/systems/images/select_printer.png")),
-      array('name' => _('Phones'),       'oc' => 'goFonHardware',    'img' => get_template_path("plugins/systems/images/select_phone.png")),
-      array('name' => _('Components'),   'oc' => 'ieee802Device',    'img' => get_template_path("plugins/systems/images/select_component.png")),
+      array('name' => _('Workstations'),
+            'filter' => 'objectClass=gotoWorkstation',
+            'img' => get_template_path("plugins/systems/images/select_workstation.png")),
+      array('name' => _('Servers'),
+            'filter' => 'objectClass=goServer',
+            'img' => get_template_path("plugins/systems/images/select_server.png")),
+      array('name' => _('Windows Workstations'),
+            'filter' => '(&(objectClass=sambaSamAccount)(uid=*$))',
+            'img' => get_template_path("plugins/systems/images/select_winstation.png")),
+      array('name' => _('Terminals'),
+            'filter' => 'objectClass=gotoTerminal',
+            'img' => get_template_path("plugins/systems/images/select_terminal.png")),
+      array('name' => _('Printers'),
+            'filter' => 'objectClass=gotoPrinter',
+            'img' => get_template_path("plugins/systems/images/select_printer.png")),
+      array('name' => _('Phones'),
+            'filter' => 'objectClass=goFonHardware',
+            'img' => get_template_path("plugins/systems/images/select_phone.png")),
+      array('name' => _('Components'),
+            'filter' => 'objectClass=ieee802Device',
+            'img' => get_template_path("plugins/systems/images/select_component.png")),
     );
 
     $ldap->cd($this->config->current['BASE']);
     foreach ($stats as &$stat) {
-      $ldap->search("(objectClass=".$stat['oc'].")", array("cn"));
+      $ldap->search($stat['filter'], array("cn"));
       $stat['nb'] = $ldap->count();
     }
 
