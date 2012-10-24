@@ -19,25 +19,24 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class argonautMirrorConfig extends simpleService{
-
-  /* This plugin only writes its objectClass */
-  var $objectclasses    = array("argonautMirrorConfig");
-  var $StatusFlag       = "";
+class argonautMirrorConfig extends simpleService
+{
+  var $objectclasses  = array("argonautMirrorConfig");
+  var $showActions    = FALSE;
 
   /* Return plugin informations for acl handling */
   static function plInfo()
   {
-    return (array(
-          "plShortName"   => _("Argonaut Mirror settings"),
-          "plDescription" => _("Argonaut Mirror settings")." ("._("Services").")",
-          "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
-          "plPriority"    => 91,
-          "plSection"     => array("administration"),
-          "plCategory"    => array("server"),
+    return array(
+      "plShortName"     => _("Argonaut Mirror settings"),
+      "plDescription"   => _("Argonaut Mirror settings")." ("._("Services").")",
+      "plSelfModify"    => FALSE,
+      "plDepends"       => array(),
+      "plSection"       => array("administration"),
+      "plCategory"      => array("server"),
 
-          "plProvidedAcls"=> parent::generatePlProvidedAcls(self::getAttributesInfo())));
+      "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+    );
   }
 
   /*!
@@ -63,7 +62,7 @@ class argonautMirrorConfig extends simpleService{
         'attrs' => array (
           new StringAttribute (
             _('Local packages folder'),
-            '',
+            _('Folder in which the crawler will store packages during analysis'),
             'argonautCrawlerPackagesFolder',
             FALSE,
             '/var/cache/argonaut/packages'
@@ -109,7 +108,7 @@ class argonautMirrorConfig extends simpleService{
           ),
           new BooleanAttribute (
             _('Verbose'),
-            '',
+            _('Wether to activate verbose mode'),
             'argonautLdap2repVerbose',
             FALSE,
             FALSE

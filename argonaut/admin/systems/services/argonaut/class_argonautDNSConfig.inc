@@ -1,8 +1,7 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2011  FusionDirectory
+  Copyright (C) 2011-2012  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -19,28 +18,27 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class argonautDNSConfig extends simpleService{
-
-  var $objectclasses    = array("argonautDNSConfig");
-  var $StatusFlag       = "";
+class argonautDNSConfig extends simpleService
+{
+  var $objectclasses  = array("argonautDNSConfig");
+  var $showActions    = FALSE;
 
   /* Return plugin informations for acl handling */
   static function plInfo()
   {
-    return (array(
-          "plShortName"   => _("Argonaut DNS settings"),
-          "plDescription" => _("Argonaut DNS settings")." ("._("Services").")",
-          "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
-          "plPriority"    => 91,
-          "plSection"     => array("administration"),
-          "plCategory"    => array("server"),
-          "plProvidedAcls"=> parent::generatePlProvidedAcls(self::getAttributesInfo())
-          ));
+    return array(
+      "plShortName"     => _("Argonaut DNS settings"),
+      "plDescription"   => _("Argonaut DNS settings")." ("._("Services").")",
+      "plSelfModify"    => FALSE,
+      "plDepends"       => array(),
+      "plSection"       => array("administration"),
+      "plCategory"      => array("server"),
+      "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+    );
   }
 
 
- /*!
+  /*!
    *  \brief The main function : information about attributes
    */
   static function getAttributesInfo ()
@@ -51,7 +49,7 @@ class argonautDNSConfig extends simpleService{
         'attrs' => array (
           new StringAttribute (
             _('Bind directory'),
-            '',
+            _('The directory in which zone files must be created'),
             'argonautLdap2zoneBindDir',
             FALSE,
             "/etc/bind"
@@ -76,7 +74,7 @@ class argonautDNSConfig extends simpleService{
           ),
           new IntAttribute (
             _('TTL'),
-            '',
+            _('Time to live'),
             'argonautLdap2zoneTTL',
             FALSE,
             FALSE,
@@ -85,7 +83,7 @@ class argonautDNSConfig extends simpleService{
           ),
           new StringAttribute (
             _('rndc path'),
-            '',
+            _('path to rndc binary'),
             'argonautLdap2zoneRndc',
             FALSE,
             "/usr/sbin/rndc"

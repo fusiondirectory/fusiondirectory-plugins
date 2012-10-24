@@ -19,23 +19,23 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class argonautFuseConfig extends simpleService {
-
-  var $objectclasses    = array("argonautFuseConfig");
-  var $StatusFlag       = "";
+class argonautFuseConfig extends simpleService
+{
+  var $objectclasses  = array("argonautFuseConfig");
+  var $showActions    = FALSE;
 
   /* Return plugin informations for acl handling */
   static function plInfo()
   {
-    return ( array(
-          "plShortName"   => _("Argonaut Fuse settings"),
-          "plDescription" => _("Argonaut Fuse settings")." ("._("Services").")",
-          "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
-          "plPriority"    => 91,
-          "plSection"     => array("admin"),
-          "plCategory"    => array("server"),
-          "plProvidedAcls"=> parent::generatePlProvidedAcls(self::getAttributesInfo())));
+    return array(
+      "plShortName"     => _("Argonaut Fuse settings"),
+      "plDescription"   => _("Argonaut Fuse settings")." ("._("Services").")",
+      "plSelfModify"    => FALSE,
+      "plDepends"       => array(),
+      "plSection"       => array("admin"),
+      "plCategory"      => array("server"),
+      "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+    );
   }
 
   /*!
@@ -44,8 +44,8 @@ class argonautFuseConfig extends simpleService {
   static function getAttributesInfo ()
   {
     return array (
-    'section1' => array (
-        'name'  => _('Argonaut fuse config'),
+      'main' => array (
+        'name'  => _('Basic settings'),
         'attrs' => array (
           new StringAttribute (
             _('Default mode'),
@@ -56,25 +56,35 @@ class argonautFuseConfig extends simpleService {
           ),
           new StringAttribute (
             _('Log directory'),
-            '',
+            _('Directory in which argonaut-fuse will store its log'),
             'argonautFuseLogDir',
             TRUE,
             '/var/log/argonaut'
           ),
+        )
+      ),
+      'tftp' => array (
+        'name'  => _('TFTP'),
+        'attrs' => array (
           new StringAttribute (
             _('Pxelinux cfg path'),
-            '',
+            _('Path where argonaut-fuse should store pxelinux.cfg'),
             'argonautFusePxelinuxCfg',
             TRUE,
             '/srv/tftp/pxelinux.cfg'
           ),
           new StringAttribute (
             _('Pxelinux cfg static path'),
-            '',
+            _('Path where argonaut-fuse should store pxelinux.static'),
             'argonautFusePxelinuxCfgStatic',
             TRUE,
             '/srv/tftp/pxelinux.static'
           ),
+        )
+      ),
+      'fai' => array (
+        'name'  => _('FAI'),
+        'attrs' => array (
           new StringAttribute (
             _('Fai flags'),
             '',
@@ -89,6 +99,11 @@ class argonautFuseConfig extends simpleService {
             TRUE,
             '/srv/fai/nfsroot'
           ),
+        )
+      ),
+      'opsi' => array (
+        'name'  => _('OPSI'),
+        'attrs' => array (
           new StringAttribute (
             _('Opsi admin'),
             '',
@@ -109,6 +124,11 @@ class argonautFuseConfig extends simpleService {
             '',
             'argonautFuseOpsiLang'
           ),
+        )
+      ),
+      'ltsp' => array (
+        'name'  => _('LTSP'),
+        'attrs' => array (
           new StringAttribute (
             _('LTSP server'),
             '',
@@ -119,5 +139,4 @@ class argonautFuseConfig extends simpleService {
     );
   }
 }
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

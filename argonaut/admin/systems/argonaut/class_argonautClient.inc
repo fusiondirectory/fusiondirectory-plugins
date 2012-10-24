@@ -19,45 +19,6 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-/*! brief Specific class for handling of argonaut client activation. Must not be used within attributesInfo!
- *
- */
-class ActivateArgonautAttribute extends ObjectClassBooleanAttribute
-{
-  private $is_in_group;
-
-  function __construct ()
-  {
-    parent::__construct(
-                        "placeholder",
-                        _("Activate argonaut client on this computer"),
-                        "activateArgonaut", // fake ldapName
-                        FALSE,
-                        'argonautClient', // object class
-                        FALSE, "argonautClient" // ACL
-                      );
-  }
-
-  function setIsInGroup ($bool)
-  {
-    $this->is_in_group = ($bool == TRUE); // convert to boolean
-    if ($this->is_in_group) { // Adapt label
-      $this->setLabel(_("Inherit group informations"));
-    } else {
-      $this->setLabel(_("Activate argonaut"));
-    }
-  }
-
-  function loadPostValue ()
-  {
-    $value = isset($_POST[$this->getLdapName()]);
-    if ($this->is_in_group) {
-      $value = !$value;
-    }
-    $this->setPostValue($value);
-  }
-}
-
 class ArgonautServiceNameAttribute extends CompositeAttribute
 {
   static private $argonautService_defaults = array(
@@ -141,7 +102,8 @@ class ArgonautServiceNameAttribute extends CompositeAttribute
 
 class argonautClient extends simplePlugin
 {
-  var $objectclasses    = array("argonautClient");
+  var $objectclasses  = array("argonautClient");
+  var $displayHeader  = TRUE;
 
   var $member_of_ogroup = FALSE;
 
@@ -149,36 +111,28 @@ class argonautClient extends simplePlugin
   static function getAttributesInfo ()
   {
     return array(
-      // Attributes are grouped by section
-      'section0' => array(
-        'name'  => "",
-        'attrs' => array(
-          new ActivateArgonautAttribute()
-        ),
-        'template' => get_template_path('activateArgonaut.tpl', TRUE, dirname(__FILE__))
-      ),
-      'section1' => array(
+      'main' => array(
         'name'  => _("Argonaut client settings"),
         'attrs' => array(
           new IntAttribute (
-            _("Client port"), _("Port used by argonaut client for JSON-RPC"),
-            "argonautClientPort", TRUE,
+            _('Client port'), _('Port used by argonaut client for JSON-RPC'),
+            'argonautClientPort', TRUE,
             0 /*min*/, FALSE /*no max*/, 8081 /*default value*/
           ),
           new StringAttribute (
-            _("WakeOnLan interface"), _("interface used by argonaut for WakeOnLan"),
-            "argonautClientWakeOnLanInterface", TRUE,
-            "eth0"
+            _('WakeOnLan interface'), _('Interface used by argonaut for WakeOnLan'),
+            'argonautClientWakeOnLanInterface', TRUE,
+            'eth0'
           ),
           new StringAttribute (
-            _("TaskId file"), _("File which argonaut will use to store its task id when booting"),
-            "argonautTaskIdFile", TRUE,
-            "/tmp/argonaut"
+            _('TaskId file'), _('File which argonaut will use to store its task id when booting'),
+            'argonautTaskIdFile', TRUE,
+            '/tmp/argonaut'
           ),
           new StringAttribute (
-            _("Log directory"), _("Directory in which argonaut client should write its logs"),
-            "argonautClientLogDir", TRUE,
-            "/var/log/argonaut"
+            _('Log directory'), _('Directory in which argonaut client should write its logs'),
+            'argonautClientLogDir', TRUE,
+            '/var/log/argonaut'
           ),
         )
       ),
@@ -197,52 +151,47 @@ class argonautClient extends simplePlugin
 
     $ldap = $this->config->get_ldap_link();
     $ldap->cd($this->config->current['BASE']);
-    $ldap->search("(&(objectClass=gotoWorkstationTemplate)(member=".LDAP::prepare4filter($this->dn)."))", array("cn"));
-    $this->member_of_ogroup = ($ldap->count() >= 1);
-
-    $this->attributesInfo['section0']['attrs']['activateArgonaut']->setIsInGroup($this->member_of_ogroup);
-    $array = array(
-      'erase' => array(
-        FALSE => array(
-          'section1' => array(
-            'argonautClientPort',
-            'argonautClientWakeOnLanInterface',
-            'argonautClientLogDir',
-            'argonautTaskIdFile',
-          ),
-          'serviceNames' => array(
-            'argonautServiceName'
-          )
-        )
-      )
+    $ldap->search(
+      "(&(objectClass=argonautClient)(objectClass=gotoWorkstationTemplate)(member=".LDAP::prepare4filter($this->dn)."))",
+      array("cn", "argonautClientPort", "argonautClientWakeOnLanInterface", "argonautTaskIdFile", "argonautClientLogDir")
     );
-    $this->attributesInfo['section0']['attrs']['activateArgonaut']->setManagedAttributes($array);
+    if ($ldap->count() == 1) {
+      $this->member_of_ogroup = TRUE;
+      $attrs = $ldap->fetch();
+      $this->o_group_attrs = $attrs;
+    }
   }
 
   function execute()
   {
     $smarty = get_smarty();
-    $smarty->assign('argonautClientACL', $this->getacl('argonautClient'));
-    parent::execute();
-    if ($this->displayPlugin) {
-      return $this->header.$smarty->fetch(get_template_path('argonautclient.tpl', TRUE, dirname(__FILE__)));
-    } else {
-      return $this->header;
+    $display = parent::execute();
+    if (!$this->displayPlugin && $this->member_of_ogroup) {
+      $attrs = array("cn", "argonautClientPort", "argonautClientWakeOnLanInterface", "argonautTaskIdFile", "argonautClientLogDir");
+
+      foreach ($attrs as $attr) {
+        $value = (isset($this->o_group_attrs[$attr][0])?$this->o_group_attrs[$attr][0]:"");
+        $smarty->assign("group_$attr", $value);
+      }
+
+      $display .= $smarty->fetch(get_template_path('argonaut_client_inheritance.tpl', TRUE, dirname(__FILE__)));
     }
+    return $display;
   }
 
   // We also need this function that return some information about the plugin
   static function plInfo ()
   {
     return array(
-      "plShortName"       => _("Argonaut client"),
-      "plDescription"     => _("Edit argonaut client settings"),
-      "plSelfModify"      => FALSE,
-      "plSection"         => array("administration"),
-      "plCategory"        => array("workstation","server","ogroups"),
+      "plShortName"     => _("Argonaut client"),
+      "plDescription"   => _("Edit argonaut client settings"),
+      "plSelfModify"    => FALSE,
+      "plSection"       => array("administration"),
+      "plCategory"      => array("workstation","server","ogroups"),
+      "plObjectType"    => array("work","serv","ogroup"),
 
       // But simplePlugin can generate the ACL list for us
-      "plProvidedAcls"    => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }
 }

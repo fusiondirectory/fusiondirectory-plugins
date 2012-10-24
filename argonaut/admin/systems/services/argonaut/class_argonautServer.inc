@@ -19,26 +19,24 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class argonautServer extends simpleService {
-
+class argonautServer extends simpleService
+{
   /* This plugin only writes its objectClass */
-  var $objectclasses    = array("argonautServer");
-  var $StatusFlag       = "argonautServerStatus";
-  var $argonautServerStatus = "";
+  var $objectclasses  = array("argonautServer");
 
   /* Return plugin informations for acl handling */
   static function plInfo()
   {
-    return (array(
-          "plShortName"   => _("Argonaut Server"),
-          "plDescription" => _("Argonaut Server")." ("._("Services").")",
-          "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
-          "plPriority"    => 91,
-          "plSection"     => array("administration"),
-          "plCategory"    => array("server"),
-          "plProvidedAcls"=> parent::generatePlProvidedAcls(self::getAttributesInfo())
-          ));
+    return array(
+      "plShortName"     => _("Argonaut Server"),
+      "plDescription"   => _("Argonaut Server")." ("._("Services").")",
+      "plSelfModify"    => FALSE,
+      "plDepends"       => array(),
+      "plSection"       => array("administration"),
+      "plCategory"      => array("server"),
+
+      "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+    );
   }
 
     /*!
@@ -47,58 +45,58 @@ class argonautServer extends simpleService {
   static function getAttributesInfo ()
   {
     return array (
-    'section1' => array (
+      'section1' => array (
         'name'  => _('Argonaut server'),
         'attrs' => array (
           new BooleanAttribute (
             _('Delete finished tasks'),
-            '',
-            'argonautDeleteFinished',
-            FALSE,
+            _('Wether or not argonaut server should delete successfully finished tasks'),
+            'argonautDeleteFinished', FALSE,
             TRUE
+          ),
+          new SelectAttribute (
+            _('Protocol'), _('Protocol to use for argonaut'),
+            'argonautProtocol', TRUE,
+            array('http', 'https')
           ),
           new IntAttribute (
             _('Port'),
-            '',
-            'argonautPort',
-            FALSE,
-            FALSE,
-            FALSE,
-            8080
-          ),
-          new StringAttribute (
-            _('Interface for WakeOnLan'),
-            '',
-            'argonautWakeOnLanInterface',
-            FALSE,
-            'eth0'
-          ),
-          new StringAttribute (
-            _('IP tool'),
-            '',
-            'argonautIpTool',
-            FALSE,
-            '/sbin/ifconfig'
+            _('Port on which the argonaut server will be listening'),
+            'argonautPort', TRUE
+            0 /*min*/, FALSE /*no max*/, 8080 /*default value*/
           ),
           new StringAttribute (
             _('Log directory'),
-            '',
-            'argonautLogDir',
-            FALSE,
+            _('Directory in which argonaut will store its log'),
+            'argonautLogDir', FALSE,
             '/var/log/argonaut'
           ),
           new StringAttribute (
-            _('Key path'),
-            '',
-            'argonautKeyPath',
-            FALSE
+            _('Key path'), _('Path to the private key file'),
+            'argonautKeyPath', FALSE,
+            CONFIG_DIR."/cert/server.key"
           ),
           new StringAttribute (
-            _('Cert path'),
-            '',
-            'argonautCertPath',
-            FALSE
+            _('Certificate path'), _('Path to the certificate file'),
+            'argonautCertPath', FALSE,
+            CONFIG_DIR."/cert/server.crt"
           )
+        )
+      ),
+      'wakeonlan' => array (
+        'name'  => _('Wake on lan'),
+        'attrs' => array (
+          new StringAttribute (
+            _('Interface'),
+            _('Interface to use for sending WakeOnLan requests'),
+            'argonautWakeOnLanInterface', FALSE,
+            'eth0'
+          ),
+          new StringAttribute (
+            _('IP tool'), _('IP tool to use'),
+            'argonautIpTool', FALSE,
+            '/sbin/ifconfig'
+          ),
         )
       )
     );
@@ -107,12 +105,9 @@ class argonautServer extends simpleService {
   function __construct(&$config, $dn = NULL, $object = NULL)
   {
     parent::__construct($config, $dn, $object);
+    $this->attributesInfo['section1']['attrs']['argonautProtocol']->setVisible(FALSE);
     $this->attributesInfo['section1']['attrs']['argonautKeyPath']->setVisible(FALSE);
     $this->attributesInfo['section1']['attrs']['argonautCertPath']->setVisible(FALSE);
-    $argonautKeyPath  = CONFIG_DIR."/cert/server.key";
-    $argonautCertPath = CONFIG_DIR."/cert/server.crt";
-    $this->attributesInfo['section1']['attrs']['argonautKeyPath']->setValue($argonautKeyPath);
-    $this->attributesInfo['section1']['attrs']['argonautCertPath']->setValue($argonautCertPath);
   }
 
   function save ()
