@@ -62,8 +62,14 @@ class argonautServer extends simpleService
           new IntAttribute (
             _('Port'),
             _('Port on which the argonaut server will be listening'),
-            'argonautPort', TRUE
+            'argonautPort', TRUE,
             0 /*min*/, FALSE /*no max*/, 8080 /*default value*/
+          ),
+          new IntAttribute (
+            _('Timeout'),
+            _('Time in seconds before to consider an argonaut client or server as down'),
+            'argonautTimeout', FALSE,
+            1 /*min*/, FALSE /*no max*/
           ),
           new StringAttribute (
             _('Log directory'),
