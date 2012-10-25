@@ -44,7 +44,7 @@ class boardNetwork extends simplePlugin
   {
     $ldap = $this->config->get_ldap_link();
 
-    $ldap->cd(get_ou("systemRDN").$this->config->current['BASE']);
+    $ldap->cd($this->config->current['BASE']);
     $ldap->search("(objectClass=dhcpServer)", array("cn","dhcpServiceDN"));
 
     $servers = array();
