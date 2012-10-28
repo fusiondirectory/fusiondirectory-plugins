@@ -1,21 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
-"POT-Creation-Date: 2012-08-22 18:37+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-10-27 13:06+0200\n"
 "PO-Revision-Date: 2012-08-22 16:55+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Spanish (http://www.transifex.com/projects/p/FusionDirectory/language/es/)\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/FusionDirectory/"
+"language/es/)\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: html/getfax.php:59
 msgid "Could not connect to database server!"
@@ -91,11 +92,15 @@ msgstr "Aviso"
 msgid ""
 "Please double check if you really want to do this since there is no way for "
 "FusionDirectory to get your data back."
-msgstr "Por favor verifique si realmente quiere hacer esto ya que no hay forma para que FusionDirectory recupere la data."
+msgstr ""
+"Por favor verifique si realmente quiere hacer esto ya que no hay forma para "
+"que FusionDirectory recupere la data."
 
 #: admin/blocklists/remove.tpl:10
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr "Entonces, si esta seguro, presione <i>Eliminar</i> para continuar o <i>Cancelar</i> para Abortar."
+msgstr ""
+"Entonces, si esta seguro, presione <i>Eliminar</i> para continuar o "
+"<i>Cancelar</i> para Abortar."
 
 #: admin/blocklists/paste_generic.tpl:3 admin/blocklists/generic.tpl:8
 msgid "List name"
@@ -436,7 +441,8 @@ msgstr "Apellido"
 
 #: personal/faxaccount/main.inc:126
 msgid "Click the 'Edit' button below to change informations in this dialog"
-msgstr "Pulse en el botón - Editar - para cambiar la información en esta ventana"
+msgstr ""
+"Pulse en el botón - Editar - para cambiar la información en esta ventana"
 
 #: personal/faxaccount/main.inc:135
 msgid "FAX settings"
@@ -529,7 +535,9 @@ msgstr "Número de Fax"
 
 #: personal/faxaccount/class_gofaxAccount.inc:660
 msgid "Mail delivery is requested without target address!"
-msgstr "¡Ha seleccionado envío de correo, pero no se ha introducido ninguna dirección de correo!"
+msgstr ""
+"¡Ha seleccionado envío de correo, pero no se ha introducido ninguna "
+"dirección de correo!"
 
 #: personal/faxaccount/class_gofaxAccount.inc:662
 msgid "Mail address"
@@ -541,7 +549,8 @@ msgstr "your-name@your-domain.com"
 
 #: personal/faxaccount/class_gofaxAccount.inc:668
 msgid "Printing is requested without a target printer!"
-msgstr "¡Ha seleccionado impresión, pero no se ha introducido ninguna impresora!"
+msgstr ""
+"¡Ha seleccionado impresión, pero no se ha introducido ninguna impresora!"
 
 #: personal/faxaccount/class_gofaxAccount.inc:837
 msgid "Fax account settings"
@@ -581,7 +590,9 @@ msgstr "Edición multiple"
 
 #: personal/faxaccount/generic.tpl:29
 msgid "Specify the GOfax communication language for fax to mail gateway"
-msgstr "Especificar el lenguaje de comunicación de GOfax para la pasarela de fax a correo"
+msgstr ""
+"Especificar el lenguaje de comunicación de GOfax para la pasarela de fax a "
+"correo"
 
 #: personal/faxaccount/generic.tpl:41
 msgid "Specify delivery format for fax to mail gateway"

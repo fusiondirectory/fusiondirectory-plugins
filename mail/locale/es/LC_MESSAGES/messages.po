@@ -1,21 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
-"POT-Creation-Date: 2012-08-22 18:37+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-10-27 13:06+0200\n"
 "PO-Revision-Date: 2012-08-22 16:51+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Spanish (http://www.transifex.com/projects/p/FusionDirectory/language/es/)\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/FusionDirectory/"
+"language/es/)\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: admin/groups/mail/mail_admins.tpl:4
 msgid "Folder administrators"
@@ -118,12 +119,15 @@ msgstr "Correo Electrónico"
 msgid ""
 "Remove shared folder from mail server database when entry gets removed in "
 "LDAP"
-msgstr "Cuando la entrada sea eliminada de LDAP se eliminara la carpeta compartida del servidor de correo."
+msgstr ""
+"Cuando la entrada sea eliminada de LDAP se eliminara la carpeta compartida "
+"del servidor de correo."
 
 #: admin/groups/mail/class_groupMail.inc:326
-msgid ""
-"Remove the shared folder and all its contents after saving this account"
-msgstr "Despues de grabar esta cuenta se eliminara la carpeta compartida y todo su contenido"
+msgid "Remove the shared folder and all its contents after saving this account"
+msgstr ""
+"Despues de grabar esta cuenta se eliminara la carpeta compartida y todo su "
+"contenido"
 
 #: admin/groups/mail/class_groupMail.inc:371
 #: admin/groups/mail/class_groupMail.inc:395
@@ -178,7 +182,8 @@ msgstr "Dirección correo electrónico"
 #: admin/groups/mail/class_groupMail.inc:401
 #: personal/mail/class_mailAccount.inc:358
 msgid "Cannot add primary address to the list of forwarders!"
-msgstr "¡No puede añadir una dirección primaria de correo a la lista de reenviadores!"
+msgstr ""
+"¡No puede añadir una dirección primaria de correo a la lista de reenviadores!"
 
 #: admin/groups/mail/class_groupMail.inc:443
 #: personal/mail/class_mailAccount.inc:402
@@ -240,7 +245,9 @@ msgstr "No puedo guardar el parámetro de cuota: %s"
 msgid ""
 "The group 'cn' has changed. It can't be changed due to the fact that mail "
 "method '%s' relies on it!"
-msgstr "El grupo 'cn' ha cambiado. ¡No debería ser cambiado debido al hecho de que el método de correo '%s' se basa en el!"
+msgstr ""
+"El grupo 'cn' ha cambiado. ¡No debería ser cambiado debido al hecho de que "
+"el método de correo '%s' se basa en el!"
 
 #: admin/groups/mail/class_groupMail.inc:879
 #: admin/groups/mail/paste_mail.tpl:8 admin/groups/mail/mail.tpl:7
@@ -264,7 +271,9 @@ msgstr "Tamaño máximo del mensaje"
 
 #: admin/groups/mail/class_groupMail.inc:915
 msgid "You need to set the maximum mail size in order to reject anything."
-msgstr "Necesita introducir un valor máximo de tamaño de mensajes para poder rechazar mensajes."
+msgstr ""
+"Necesita introducir un valor máximo de tamaño de mensajes para poder "
+"rechazar mensajes."
 
 #: admin/groups/mail/class_groupMail.inc:919
 #: admin/groups/mail/class_groupMail.inc:1024
@@ -375,11 +384,14 @@ msgstr "Opciones de correo avanzadas"
 
 #: admin/groups/mail/mail.tpl:193 personal/mail/generic.tpl:285
 msgid "Select if user can only send and receive inside his own domain"
-msgstr "Seleccione si el usuario solo puede enviar y recibir dentro de su propio dominio"
+msgstr ""
+"Seleccione si el usuario solo puede enviar y recibir dentro de su propio "
+"dominio"
 
 #: admin/groups/mail/mail.tpl:195 personal/mail/generic.tpl:287
 msgid "User is only allowed to send and receive local mails"
-msgstr "El usuario solo esta permitido a enviar y recibir correo de forma local"
+msgstr ""
+"El usuario solo esta permitido a enviar y recibir correo de forma local"
 
 #: admin/groups/mail/mail.tpl:213
 msgid "Used in all groups"
@@ -528,12 +540,14 @@ msgstr "Iniciar servicio POP3/SSL"
 #: admin/systems/services/imap/goImapServer.tpl:99
 #: admin/systems/services/mail/goMailServer.tpl:204
 msgid "The server must be saved before you can use the status flag."
-msgstr "El servidor debe ser grabado antes de que pueda usar el atributo de estado."
+msgstr ""
+"El servidor debe ser grabado antes de que pueda usar el atributo de estado."
 
 #: admin/systems/services/imap/goImapServer.tpl:101
 #: admin/systems/services/mail/goMailServer.tpl:206
 msgid "The service must be saved before you can use the status flag."
-msgstr "El servicio debe ser grabado antes de que pueda usar el atributo de estado."
+msgstr ""
+"El servicio debe ser grabado antes de que pueda usar el atributo de estado."
 
 #: admin/systems/services/imap/goImapServer.tpl:104
 #: admin/systems/services/mail/goMailServer.tpl:209
@@ -930,7 +944,10 @@ msgstr "Información del correo"
 msgid ""
 "LDAP entry has been removed but cyrus mailbox (%s) is kept.\n"
 "Please delete it manually!"
-msgstr "La entrada en LDAP ha sido eliminada, pero el buzón de correo cyrus (%s) existe.\n¡Por favor elimine el buzón manualmente!"
+msgstr ""
+"La entrada en LDAP ha sido eliminada, pero el buzón de correo cyrus (%s) "
+"existe.\n"
+"¡Por favor elimine el buzón manualmente!"
 
 #: personal/mail/class_mail-methods-cyrus.inc:402
 #: personal/mail/class_mail-methods-cyrus.inc:439
@@ -1024,7 +1041,8 @@ msgstr "¡Por favor introduzca solo minúsculas para el nombre del script!"
 
 #: personal/mail/sieve/class_sieveManagement.inc:214
 msgid "Please use only alphabetical characters in script names!"
-msgstr "¡Por favor introduzca solo caracteres alfabéticos para el nombre del script!"
+msgstr ""
+"¡Por favor introduzca solo caracteres alfabéticos para el nombre del script!"
 
 #: personal/mail/sieve/class_sieveManagement.inc:220
 msgid "Script name already in use!"
@@ -1374,12 +1392,16 @@ msgstr "Por favor introduzca un operador valido."
 #: personal/mail/sieve/class_sieveElement_If.inc:654
 msgid ""
 "Invalid character found in address attribute. Quotes are not allowed here."
-msgstr "Se han encontrado caracteres no válidos en el atributo dirección. Las comillas no están permitidas aquí."
+msgstr ""
+"Se han encontrado caracteres no válidos en el atributo dirección. Las "
+"comillas no están permitidas aquí."
 
 #: personal/mail/sieve/class_sieveElement_If.inc:669
 msgid ""
 "Invalid character found in value attribute. Quotes are not allowed here."
-msgstr "Se han encontrado caracteres no válidos en el atributo valor. Las comillas no están permitidas aquí."
+msgstr ""
+"Se han encontrado caracteres no válidos en el atributo valor. Las comillas "
+"no están permitidas aquí."
 
 #: personal/mail/sieve/class_sieveElement_If.inc:727
 #: personal/mail/sieve/class_sieveElement_If.inc:1060
@@ -1403,7 +1425,8 @@ msgstr "Bytes"
 
 #: personal/mail/sieve/class_sieveElement_If.inc:745
 msgid "Please select a valid match type in the list box below."
-msgstr "Por favor seleccione un tipo de comparador válido del desplegable siguiente."
+msgstr ""
+"Por favor seleccione un tipo de comparador válido del desplegable siguiente."
 
 #: personal/mail/sieve/class_sieveElement_If.inc:759
 msgid "Only numeric values are allowed here."
@@ -1441,7 +1464,9 @@ msgstr "Indique aquí una dirección de correo"
 
 #: personal/mail/sieve/class_sieveElement_Reject.inc:21
 msgid "Invalid character found, quotes are not allowed in a reject message."
-msgstr "Se han encontrado caracteres no válidos, las comillas no están permitidas en un mensaje de rechazo."
+msgstr ""
+"Se han encontrado caracteres no válidos, las comillas no están permitidas en "
+"un mensaje de rechazo."
 
 #: personal/mail/sieve/class_sieveElement_Reject.inc:37
 msgid "Your reject text here"
@@ -1453,7 +1478,8 @@ msgstr "Indique su comentario aquí"
 
 #: personal/mail/sieve/class_sieveElement_Vacation.inc:148
 msgid "Alternative sender address must be a valid email addresses."
-msgstr "La dirección de envío alternativo debe tener una dirección de correo válida."
+msgstr ""
+"La dirección de envío alternativo debe tener una dirección de correo válida."
 
 #: personal/mail/sieve/templates/element_vacation.tpl:13
 msgid "Vacation Message"
@@ -1493,7 +1519,9 @@ msgstr "Importar script sieve"
 msgid ""
 "Please select the sieve script you want to import. Use the import button to "
 "import the script or the cancel button to abort."
-msgstr "Porfavor seleccione el script sieve que quiere importar. Use el botón importar para importar el script o el botón cancelar para anular."
+msgstr ""
+"Porfavor seleccione el script sieve que quiere importar. Use el botón "
+"importar para importar el script o el botón cancelar para anular."
 
 #: personal/mail/sieve/templates/import_script.tpl:5
 msgid "Script to import"
@@ -1545,12 +1573,16 @@ msgstr "Lista de scripts sieve"
 msgid ""
 "Connection to the sieve server could not be established, the "
 "authentification attribute is empty."
-msgstr "No se puede establecer una conexión al servidor sieve, el atributo autenticación esta vacío."
+msgstr ""
+"No se puede establecer una conexión al servidor sieve, el atributo "
+"autenticación esta vacío."
 
 #: personal/mail/sieve/templates/management.tpl:6
 msgid ""
 "Please verify that the attributes uid and mail are not empty and try again."
-msgstr "Por favor compruebe que los atributos uid y correo no están vacíos y pruebe de nuevo."
+msgstr ""
+"Por favor compruebe que los atributos uid y correo no están vacíos y pruebe "
+"de nuevo."
 
 #: personal/mail/sieve/templates/management.tpl:12
 msgid "Connection to the sieve server could not be established."
@@ -1562,9 +1594,11 @@ msgstr "Posiblemente no se han podido crear todavía las cuentas sieve."
 
 #: personal/mail/sieve/templates/management.tpl:19
 msgid ""
-"Be careful. All your changes will be saved directly to sieve, if you use the"
-" save button below."
-msgstr "Tenga cuidado. Cuando use el botón grabar, todos los cambios se grabarán directamente a sieve."
+"Be careful. All your changes will be saved directly to sieve, if you use the "
+"save button below."
+msgstr ""
+"Tenga cuidado. Cuando use el botón grabar, todos los cambios se grabarán "
+"directamente a sieve."
 
 #: personal/mail/sieve/templates/management.tpl:22
 msgid "Create new script"
@@ -1700,8 +1734,8 @@ msgstr "Editar"
 
 #: personal/mail/sieve/templates/remove_script.tpl:6
 msgid ""
-"Please double check if your really want to do this since there is no way for"
-" FusionDirectory to get your data back."
+"Please double check if your really want to do this since there is no way for "
+"FusionDirectory to get your data back."
 msgstr ""
 
 #: personal/mail/sieve/templates/remove_script.tpl:10
@@ -1709,7 +1743,10 @@ msgid ""
 "Best thing to do before performing this action would be to save the current "
 "script in a file. So - if you've done so - press 'Delete' to continue or "
 "'Cancel' to abort."
-msgstr "Lo mejor que puede hacer antes de ejecutar esta acción es grabar el script actual en un archivo. Entonces - y solo entonces - presione 'Eliminar' para continuar o 'Cancelar' para abortar."
+msgstr ""
+"Lo mejor que puede hacer antes de ejecutar esta acción es grabar el script "
+"actual en un archivo. Entonces - y solo entonces - presione 'Eliminar' para "
+"continuar o 'Cancelar' para abortar."
 
 #: personal/mail/sieve/templates/element_redirect.tpl:18
 msgid "Redirect mail to following recipients"
@@ -1770,9 +1807,11 @@ msgstr "operador"
 
 #: personal/mail/sieve/templates/create_script.tpl:2
 msgid ""
-"Please enter the name for the new script below. Script names must consist of"
-" lower case characters only."
-msgstr "Porfavor introduzca aquí el nombre del nuevo script. Los nombres de script deben tener solo minúsculas."
+"Please enter the name for the new script below. Script names must consist of "
+"lower case characters only."
+msgstr ""
+"Porfavor introduzca aquí el nombre del nuevo script. Los nombres de script "
+"deben tener solo minúsculas."
 
 #: personal/mail/sieve/templates/create_script.tpl:8
 msgid "Script name"
@@ -2017,7 +2056,9 @@ msgstr "No se enviara a su propia carpeta de correo"
 #: personal/mail/generic.tpl:151
 msgid ""
 "Select to automatically response with the vacation message defined below"
-msgstr "Seleccione para responder automáticamente con el mensaje de ausencia definido aquí"
+msgstr ""
+"Seleccione para responder automáticamente con el mensaje de ausencia "
+"definido aquí"
 
 #: personal/mail/generic.tpl:152
 msgid "Activate vacation message"
@@ -2029,7 +2070,8 @@ msgstr "hasta"
 
 #: personal/mail/generic.tpl:193
 msgid "Select if you want to filter this mails through spamassassin"
-msgstr "Seleccione aquí si quiere que su correo se filtre a través de spamassassin"
+msgstr ""
+"Seleccione aquí si quiere que su correo se filtre a través de spamassassin"
 
 #: personal/mail/generic.tpl:195
 msgid "Move mails tagged with spam level greater than"

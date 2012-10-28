@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-22 18:37+0200\n"
+"POT-Creation-Date: 2012-10-27 13:06+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,17 +22,18 @@ msgid "openstack nova settings"
 msgstr ""
 
 #: personal/openstack-compute/class_novaAccount.inc:25
-msgid "nova"
+#: personal/openstack-compute/class_novaAccount.inc:255
+msgid "Nova"
 msgstr ""
 
 #: personal/openstack-compute/class_novaAccount.inc:26
+#: personal/openstack-compute/class_novaAccount.inc:256
 msgid "Edit users Nova settings"
 msgstr ""
 
 #: personal/openstack-compute/class_novaAccount.inc:103
 #: personal/openstack-compute/class_novaAccount.inc:112
 #: personal/openstack-compute/class_novaAccount.inc:115
-#: personal/openstack-compute/class_novaAccount.inc:256
 msgid "novaUser"
 msgstr ""
 
@@ -41,14 +42,10 @@ msgstr ""
 msgid "LDAP error"
 msgstr ""
 
-#: personal/openstack-compute/class_novaAccount.inc:257
-msgid "novaUser account settings"
-msgstr ""
-
-#: personal/openstack-compute/class_novaAccount.inc:261
+#: personal/openstack-compute/class_novaAccount.inc:260
 msgid "My account"
 msgstr ""
 
-#: personal/openstack-compute/class_novaAccount.inc:270
+#: personal/openstack-compute/class_novaAccount.inc:269
 msgid "Is Nova admin"
 msgstr ""

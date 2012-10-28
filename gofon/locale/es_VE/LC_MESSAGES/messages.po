@@ -1,27 +1,28 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
-"POT-Creation-Date: 2012-08-22 18:37+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-10-27 13:06+0200\n"
 "PO-Revision-Date: 2012-07-30 21:34+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Spanish (Venezuela) (http://www.transifex.com/projects/p/FusionDirectory/language/es_VE/)\n"
+"Language-Team: Spanish (Venezuela) (http://www.transifex.com/projects/p/"
+"FusionDirectory/language/es_VE/)\n"
+"Language: es_VE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es_VE\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: admin/macro/macro-list.tpl:13 admin/macro/class_gofonMacro.inc:567
 #: admin/macro/generic.tpl:27 admin/conference/conf-list.tpl:13
 #: admin/conference/class_phoneConferenceGeneric.inc:737
 #: admin/conference/generic.tpl:49 admin/systems/gofon/phone.tpl:17
-#: admin/systems/gofon/class_phoneGeneric.inc:521
+#: admin/systems/gofon/class_phoneGeneric.inc:529
 msgid "Base"
 msgstr "Base"
 
@@ -44,7 +45,7 @@ msgstr "Macro"
 #: admin/systems/gofon/class_phoneGeneric.inc:348
 #: admin/systems/gofon/class_phoneGeneric.inc:351
 #: admin/systems/gofon/class_phoneGeneric.inc:366
-#: admin/systems/gofon/class_phoneGeneric.inc:520
+#: admin/systems/gofon/class_phoneGeneric.inc:528
 msgid "Name"
 msgstr "Nombre"
 
@@ -52,7 +53,7 @@ msgstr "Nombre"
 #: admin/macro/generic.tpl:42 admin/conference/conf-list.xml:49
 #: admin/conference/class_phoneConferenceGeneric.inc:738
 #: admin/conference/generic.tpl:92 admin/systems/gofon/phone.tpl:29
-#: admin/systems/gofon/class_phoneGeneric.inc:522
+#: admin/systems/gofon/class_phoneGeneric.inc:530
 msgid "Description"
 msgstr "Descripción"
 
@@ -122,12 +123,12 @@ msgstr ""
 #: admin/ogroups/gofon/class_phonequeue.inc:787
 #: admin/ogroups/gofon/class_phonequeue.inc:829
 #: addons/fonreports/class_fonreport.inc:225
-#: personal/phoneaccount/class_phoneAccount.inc:1056
-#: personal/phoneaccount/class_phoneAccount.inc:1176
-#: personal/phoneaccount/class_phoneAccount.inc:1182
-#: personal/phoneaccount/class_phoneAccount.inc:1396
-#: personal/phoneaccount/class_phoneAccount.inc:1478
-#: personal/phoneaccount/class_phoneAccount.inc:1556
+#: personal/phoneaccount/class_phoneAccount.inc:1060
+#: personal/phoneaccount/class_phoneAccount.inc:1180
+#: personal/phoneaccount/class_phoneAccount.inc:1186
+#: personal/phoneaccount/class_phoneAccount.inc:1400
+#: personal/phoneaccount/class_phoneAccount.inc:1482
+#: personal/phoneaccount/class_phoneAccount.inc:1560
 msgid "Error"
 msgstr "Error"
 
@@ -137,8 +138,8 @@ msgstr "Error"
 #: admin/ogroups/gofon/class_phonequeue.inc:696
 #: addons/fonreports/class_fonreport.inc:195
 #: addons/fonreports/class_fonreport.inc:225
-#: personal/phoneaccount/class_phoneAccount.inc:466
-#: personal/phoneaccount/class_phoneAccount.inc:1071
+#: personal/phoneaccount/class_phoneAccount.inc:470
+#: personal/phoneaccount/class_phoneAccount.inc:1075
 msgid "GOfon"
 msgstr "GOfon"
 
@@ -162,9 +163,9 @@ msgstr "¡No se puede eliminar la entrada porque está siendo usada por '%s'!"
 
 #: admin/macro/class_gofonMacro.inc:465
 #: addons/fonreports/class_fonreport.inc:195
-#: personal/phoneaccount/class_phoneAccount.inc:466
-#: personal/phoneaccount/class_phoneAccount.inc:1071
-#: personal/phoneaccount/class_phoneAccount.inc:1595
+#: personal/phoneaccount/class_phoneAccount.inc:470
+#: personal/phoneaccount/class_phoneAccount.inc:1075
+#: personal/phoneaccount/class_phoneAccount.inc:1599
 msgid "Configuration error"
 msgstr "Error en la configuración"
 
@@ -179,13 +180,13 @@ msgstr "Error en la configuración"
 #: admin/systems/services/gofon/class_goFonServer.inc:166
 #: admin/ogroups/gofon/class_phonequeue.inc:802
 #: admin/ogroups/gofon/class_phonequeue.inc:857
-#: personal/phoneaccount/class_phoneAccount.inc:1504
-#: personal/phoneaccount/class_phoneAccount.inc:1637
+#: personal/phoneaccount/class_phoneAccount.inc:1508
+#: personal/phoneaccount/class_phoneAccount.inc:1641
 msgid "LDAP error"
 msgstr "Error LDAP"
 
 #: admin/macro/class_gofonMacro.inc:556
-#: admin/systems/gofon/class_phoneGeneric.inc:511
+#: admin/systems/gofon/class_phoneGeneric.inc:519
 msgid "Generic"
 msgstr "Genérico"
 
@@ -234,12 +235,12 @@ msgstr "No tiene permisos para ver la configuración de parámetros de la macro"
 #: admin/macro/remove.tpl:2
 #: admin/conference/class_phoneConferenceGeneric.inc:399
 #: admin/conference/remove.tpl:2
-#: personal/phoneaccount/class_phoneAccount.inc:357
-#: personal/phoneaccount/class_phoneAccount.inc:370
-#: personal/phoneaccount/class_phoneAccount.inc:628
-#: personal/phoneaccount/class_phoneAccount.inc:667
-#: personal/phoneaccount/class_phoneAccount.inc:1547
-#: personal/phoneaccount/class_phoneAccount.inc:1886
+#: personal/phoneaccount/class_phoneAccount.inc:361
+#: personal/phoneaccount/class_phoneAccount.inc:374
+#: personal/phoneaccount/class_phoneAccount.inc:632
+#: personal/phoneaccount/class_phoneAccount.inc:671
+#: personal/phoneaccount/class_phoneAccount.inc:1551
+#: personal/phoneaccount/class_phoneAccount.inc:1890
 msgid "Warning"
 msgstr "Aviso"
 
@@ -251,7 +252,9 @@ msgstr ""
 
 #: admin/macro/remove.tpl:10 admin/conference/remove.tpl:10
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr "Entonces, si esta seguro, presione <i>Eliminar</i> para continuar o <i>Cancelar</i> para Abortar."
+msgstr ""
+"Entonces, si esta seguro, presione <i>Eliminar</i> para continuar o "
+"<i>Cancelar</i> para Abortar."
 
 #: admin/macro/class_gofonMacroParameters.inc:221
 #: personal/phoneaccount/generic.tpl:125 personal/phoneaccount/generic.tpl:127
@@ -277,7 +280,9 @@ msgstr "Eliminar sin usar"
 #: admin/macro/class_gofonMacroParameters.inc:361
 #, php-format
 msgid "Parameter %s contains invalid character. '!,#' is used as delimiter!"
-msgstr "¡El campo '%s' tiene caracteres no validos, '!,#' son usados como delimitadores!"
+msgstr ""
+"¡El campo '%s' tiene caracteres no validos, '!,#' son usados como "
+"delimitadores!"
 
 #: admin/macro/class_gofonMacroParameters.inc:366
 #, php-format
@@ -285,7 +290,7 @@ msgid "Parameter %s is invalid!"
 msgstr "¡El parámetro '%s' no es válido!"
 
 #: admin/macro/class_gofonMacroParameters.inc:395
-#: personal/phoneaccount/class_phoneAccount.inc:1628
+#: personal/phoneaccount/class_phoneAccount.inc:1632
 msgid "Information"
 msgstr "Información"
 
@@ -293,7 +298,9 @@ msgstr "Información"
 msgid ""
 "Number of parameters for this macro has changed. Please update all users "
 "using it!"
-msgstr "El número de parámetros para esta macro ha cambiado. ¡Por favor actualice todos los usuarios que la usen!"
+msgstr ""
+"El número de parámetros para esta macro ha cambiado. ¡Por favor actualice "
+"todos los usuarios que la usen!"
 
 #: admin/macro/generic.tpl:18
 msgid "Macro name to be displayed"
@@ -326,29 +333,34 @@ msgstr "Conferencia"
 
 #: admin/conference/class_phoneConferenceGeneric.inc:104
 #: admin/ogroups/gofon/class_phonequeue.inc:110
-#: personal/phoneaccount/class_phoneAccount.inc:159
+#: personal/phoneaccount/class_phoneAccount.inc:163
 msgid "Obsolete entry"
 msgstr "Entrada obsoleta"
 
 #: admin/conference/class_phoneConferenceGeneric.inc:104
 #: admin/ogroups/gofon/class_phonequeue.inc:110
-#: personal/phoneaccount/class_phoneAccount.inc:159
+#: personal/phoneaccount/class_phoneAccount.inc:163
 #, php-format
 msgid ""
 "The current home server is not available anymore. It will be moved to '%s' "
 "if you save this entry!"
-msgstr "El servidor actual no está disponible. ¡Será movido a '%s' si usted guarda esta entrada!"
+msgstr ""
+"El servidor actual no está disponible. ¡Será movido a '%s' si usted guarda "
+"esta entrada!"
 
 #: admin/conference/class_phoneConferenceGeneric.inc:233
 #, php-format
 msgid "Cannot delete entry from server '%s' because it seems to be removed!"
-msgstr "¡No se puede eliminar la entrada del servidor '%s' porque ha sido eliminada!"
+msgstr ""
+"¡No se puede eliminar la entrada del servidor '%s' porque ha sido eliminada!"
 
 #: admin/conference/class_phoneConferenceGeneric.inc:308
 #, php-format
 msgid ""
 "The previously selected asterisk home server '%s' is no longer available!"
-msgstr "¡El servidor principal asterisk seleccionado previamente ('%s) no está disponible!"
+msgstr ""
+"¡El servidor principal asterisk seleccionado previamente ('%s) no está "
+"disponible!"
 
 #: admin/conference/class_phoneConferenceGeneric.inc:315
 #: admin/conference/generic.tpl:159
@@ -368,8 +380,8 @@ msgstr "Duración"
 #: admin/conference/class_phoneConferenceGeneric.inc:400
 #, php-format
 msgid ""
-"FusionDirectory identified problems with your MySQL table definition, please"
-" activate debugging for details."
+"FusionDirectory identified problems with your MySQL table definition, please "
+"activate debugging for details."
 msgstr ""
 
 #: admin/conference/class_phoneConferenceGeneric.inc:606
@@ -402,8 +414,8 @@ msgstr "Idioma"
 #: admin/ogroups/gofon/class_phonequeue.inc:275
 #: admin/ogroups/gofon/class_phonequeue.inc:893
 #: admin/ogroups/gofon/phonequeue.tpl:50
-#: personal/phoneaccount/class_phoneAccount.inc:1378
-#: personal/phoneaccount/class_phoneAccount.inc:1736
+#: personal/phoneaccount/class_phoneAccount.inc:1382
+#: personal/phoneaccount/class_phoneAccount.inc:1740
 #: personal/phoneaccount/generic.tpl:58
 msgid "Home server"
 msgstr "Servidor de inicio"
@@ -444,7 +456,7 @@ msgid "Format"
 msgstr "Formato"
 
 #: admin/conference/class_phoneConferenceGeneric.inc:754
-#: personal/phoneaccount/class_phoneAccount.inc:1733
+#: personal/phoneaccount/class_phoneAccount.inc:1737
 msgid "Telephone number"
 msgstr "Número de teléfono"
 
@@ -462,7 +474,7 @@ msgstr "Nombre del Conferencia para crear"
 
 #: admin/conference/paste_generic.tpl:15 admin/conference/generic.tpl:114
 #: admin/ogroups/gofon/class_phonequeue.inc:865
-#: personal/phoneaccount/class_phoneAccount.inc:1422
+#: personal/phoneaccount/class_phoneAccount.inc:1426
 msgid "Phone number"
 msgstr "Número de teléfono"
 
@@ -551,60 +563,60 @@ msgstr "Configuración de red"
 msgid "IP address"
 msgstr "Dirección IP"
 
-#: admin/systems/gofon/class_phoneGeneric.inc:512
+#: admin/systems/gofon/class_phoneGeneric.inc:520
 msgid "Phone generic"
 msgstr "Teléfono genérico"
 
-#: admin/systems/gofon/class_phoneGeneric.inc:517
-#: personal/phoneaccount/class_phoneAccount.inc:1735
+#: admin/systems/gofon/class_phoneGeneric.inc:525
+#: personal/phoneaccount/class_phoneAccount.inc:1739
 msgid "Phone hardware"
 msgstr "Teléfono hardware"
 
-#: admin/systems/gofon/class_phoneGeneric.inc:523
+#: admin/systems/gofon/class_phoneGeneric.inc:531
 msgid "SIP Mode"
 msgstr "Modo SIP"
 
-#: admin/systems/gofon/class_phoneGeneric.inc:524
+#: admin/systems/gofon/class_phoneGeneric.inc:532
 msgid "SIP DTMF mode"
 msgstr "Modo SIP DTMF"
 
-#: admin/systems/gofon/class_phoneGeneric.inc:525
+#: admin/systems/gofon/class_phoneGeneric.inc:533
 msgid "SIP Default ip"
 msgstr "Dirección IP por defecto de SIP"
 
-#: admin/systems/gofon/class_phoneGeneric.inc:526
+#: admin/systems/gofon/class_phoneGeneric.inc:534
 msgid "SIP Qualify"
 msgstr "Capacidad SIP"
 
-#: admin/systems/gofon/class_phoneGeneric.inc:527
+#: admin/systems/gofon/class_phoneGeneric.inc:535
 msgid "IAX authentication type"
 msgstr "Tipo de autentificación IAX"
 
-#: admin/systems/gofon/class_phoneGeneric.inc:528
+#: admin/systems/gofon/class_phoneGeneric.inc:536
 msgid "IAX secret"
 msgstr "contraseña IAX"
 
-#: admin/systems/gofon/class_phoneGeneric.inc:529
+#: admin/systems/gofon/class_phoneGeneric.inc:537
 msgid "IAX account code"
 msgstr "Código de cuenta IAX"
 
-#: admin/systems/gofon/class_phoneGeneric.inc:530
+#: admin/systems/gofon/class_phoneGeneric.inc:538
 msgid "IAX trunk lines"
 msgstr "Lineas troncales IAX"
 
-#: admin/systems/gofon/class_phoneGeneric.inc:531
+#: admin/systems/gofon/class_phoneGeneric.inc:539
 msgid "IAX permit settings"
 msgstr "Configuración permitida IAX"
 
-#: admin/systems/gofon/class_phoneGeneric.inc:532
+#: admin/systems/gofon/class_phoneGeneric.inc:540
 msgid "IAX deny settings"
 msgstr "Configuración denegada IAX"
 
-#: admin/systems/gofon/class_phoneGeneric.inc:533
+#: admin/systems/gofon/class_phoneGeneric.inc:541
 msgid "CAPI MSN"
 msgstr "CAPI MSN"
 
-#: admin/systems/gofon/class_phoneGeneric.inc:534
+#: admin/systems/gofon/class_phoneGeneric.inc:542
 msgid "Hardware type"
 msgstr "Tipo de hardware"
 
@@ -739,7 +751,9 @@ msgstr "Prefijo nacional"
 msgid ""
 "You can't remove the asterisk database extension, it is still in use by "
 "these objects '%s'."
-msgstr "No puede eliminar la extensión de base de datos asterisk, esta todavía en use por los objetos '%s'."
+msgstr ""
+"No puede eliminar la extensión de base de datos asterisk, esta todavía en "
+"use por los objetos '%s'."
 
 #: admin/systems/services/gofon/class_goFonServer.inc:186
 msgid "VoIP - asterisk management"
@@ -814,7 +828,9 @@ msgstr "Crear cola telefónica"
 msgid ""
 "There must be at least one server with an asterisk database to create a "
 "phone queue."
-msgstr "Debe haber al menos una base de datos asterisk para crear una cola telefónica."
+msgstr ""
+"Debe haber al menos una base de datos asterisk para crear una cola "
+"telefónica."
 
 #: admin/ogroups/gofon/class_phonequeue.inc:281
 #: admin/ogroups/gofon/class_phonequeue.inc:891
@@ -852,7 +868,9 @@ msgstr "¡No se puede encontrar la entrada de la cola anterior!"
 msgid ""
 "Found more than one entry named '%s' in queue table. Please inform your "
 "system administrator!"
-msgstr "Se ha encontrado mas de una entrada llamada '%s'. ¡Por favor contacte con su administrador de sistemas!"
+msgstr ""
+"Se ha encontrado mas de una entrada llamada '%s'. ¡Por favor contacte con su "
+"administrador de sistemas!"
 
 #: admin/ogroups/gofon/class_phonequeue.inc:728
 #: admin/ogroups/gofon/class_phonequeue.inc:730
@@ -861,12 +879,12 @@ msgstr "número de teléfono"
 
 #: admin/ogroups/gofon/class_phonequeue.inc:882
 #: personal/phoneaccount/class_phoneAccount.inc:26
-#: personal/phoneaccount/class_phoneAccount.inc:1009
-#: personal/phoneaccount/class_phoneAccount.inc:1022
-#: personal/phoneaccount/class_phoneAccount.inc:1034
+#: personal/phoneaccount/class_phoneAccount.inc:1013
+#: personal/phoneaccount/class_phoneAccount.inc:1026
 #: personal/phoneaccount/class_phoneAccount.inc:1038
-#: personal/phoneaccount/class_phoneAccount.inc:1041
-#: personal/phoneaccount/class_phoneAccount.inc:1721
+#: personal/phoneaccount/class_phoneAccount.inc:1042
+#: personal/phoneaccount/class_phoneAccount.inc:1045
+#: personal/phoneaccount/class_phoneAccount.inc:1725
 msgid "Phone"
 msgstr "Teléfono"
 
@@ -964,9 +982,10 @@ msgstr "Anuncio"
 
 #: admin/ogroups/gofon/phonequeue.tpl:2
 msgid ""
-"Only users with the same asterisk home server will be included to this "
-"queue."
-msgstr "Los usuarios con el mismo servidor principal asterisk serán incluidos en esta cola."
+"Only users with the same asterisk home server will be included to this queue."
+msgstr ""
+"Los usuarios con el mismo servidor principal asterisk serán incluidos en "
+"esta cola."
 
 #: admin/ogroups/gofon/phonequeue.tpl:5
 msgid "Queue Settings"
@@ -1154,168 +1173,180 @@ msgstr "La búsqueda no ha encontrado resultados..."
 msgid "This is user phone account plugin management"
 msgstr ""
 
-#: personal/phoneaccount/class_phoneAccount.inc:187
+#: personal/phoneaccount/class_phoneAccount.inc:191
 msgid "automatic"
 msgstr "automático"
 
-#: personal/phoneaccount/class_phoneAccount.inc:223
+#: personal/phoneaccount/class_phoneAccount.inc:227
 msgid "no macro"
 msgstr "sin macro"
 
-#: personal/phoneaccount/class_phoneAccount.inc:251
+#: personal/phoneaccount/class_phoneAccount.inc:255
 msgid "undefined"
 msgstr "sin definir"
 
-#: personal/phoneaccount/class_phoneAccount.inc:370
+#: personal/phoneaccount/class_phoneAccount.inc:374
 #, php-format
 msgid ""
 "Cannot identify telephone extension in database, please try to save again."
-msgstr "No se puede identificar la extensión telefónica en la base de datos, por favor intente guardarla de nuevo."
+msgstr ""
+"No se puede identificar la extensión telefónica en la base de datos, por "
+"favor intente guardarla de nuevo."
 
-#: personal/phoneaccount/class_phoneAccount.inc:588
-#: personal/phoneaccount/class_phoneAccount.inc:606
+#: personal/phoneaccount/class_phoneAccount.inc:592
+#: personal/phoneaccount/class_phoneAccount.inc:610
 msgid "Abort saving entries to keep the database consistent."
-msgstr "Cancelar la grabación de las entradas para mantener la consistencia de la base de datos."
+msgstr ""
+"Cancelar la grabación de las entradas para mantener la consistencia de la "
+"base de datos."
 
-#: personal/phoneaccount/class_phoneAccount.inc:629
-#: personal/phoneaccount/class_phoneAccount.inc:668
-#: personal/phoneaccount/class_phoneAccount.inc:1548
+#: personal/phoneaccount/class_phoneAccount.inc:633
+#: personal/phoneaccount/class_phoneAccount.inc:672
+#: personal/phoneaccount/class_phoneAccount.inc:1552
 #, php-format
 msgid ""
 "FusionDirectory identified problems with your database table definition!"
 msgstr ""
 
-#: personal/phoneaccount/class_phoneAccount.inc:1033
+#: personal/phoneaccount/class_phoneAccount.inc:1037
 msgid "Remove phone account"
 msgstr "Eliminar cuenta telefónica"
 
-#: personal/phoneaccount/class_phoneAccount.inc:1037
-#: personal/phoneaccount/class_phoneAccount.inc:1040
+#: personal/phoneaccount/class_phoneAccount.inc:1041
+#: personal/phoneaccount/class_phoneAccount.inc:1044
 msgid "Create phone account"
 msgstr "Crear cuenta telefónica"
 
-#: personal/phoneaccount/class_phoneAccount.inc:1038
+#: personal/phoneaccount/class_phoneAccount.inc:1042
 msgid "User uid"
 msgstr "Identificador (UID) de usuario"
 
-#: personal/phoneaccount/class_phoneAccount.inc:1056
+#: personal/phoneaccount/class_phoneAccount.inc:1060
 msgid "Selected macro is not available anymore!"
 msgstr "¡La macro seleccionada no está disponible!"
 
-#: personal/phoneaccount/class_phoneAccount.inc:1081
+#: personal/phoneaccount/class_phoneAccount.inc:1085
 msgid "Parameter"
 msgstr "Parámetro"
 
-#: personal/phoneaccount/class_phoneAccount.inc:1231
+#: personal/phoneaccount/class_phoneAccount.inc:1235
 msgid "Choose your private phone"
 msgstr "Indique su teléfono particular"
 
-#: personal/phoneaccount/class_phoneAccount.inc:1374
+#: personal/phoneaccount/class_phoneAccount.inc:1378
 msgid ""
 "There must be at least one server with an asterisk database to create a "
 "phone account."
-msgstr "Debe existir al menos un servidor con una base de datos asterisk para crear una cuenta telefónica."
+msgstr ""
+"Debe existir al menos un servidor con una base de datos asterisk para crear "
+"una cuenta telefónica."
 
-#: personal/phoneaccount/class_phoneAccount.inc:1382
-#: personal/phoneaccount/class_phoneAccount.inc:1385
+#: personal/phoneaccount/class_phoneAccount.inc:1386
+#: personal/phoneaccount/class_phoneAccount.inc:1389
 #: personal/phoneaccount/paste_generic.tpl:32
 #: personal/phoneaccount/generic.tpl:93
 msgid "Voicemail PIN"
 msgstr "PIN del buzón de correo"
 
-#: personal/phoneaccount/class_phoneAccount.inc:1382
+#: personal/phoneaccount/class_phoneAccount.inc:1386
 msgid "Between 1-4 charactes"
 msgstr "Entre 1 a 4 caracteres"
 
-#: personal/phoneaccount/class_phoneAccount.inc:1390
+#: personal/phoneaccount/class_phoneAccount.inc:1394
 #: personal/phoneaccount/paste_generic.tpl:40
 #: personal/phoneaccount/generic.tpl:103
 msgid "Phone PIN"
 msgstr "PIN del Teléfono"
 
-#: personal/phoneaccount/class_phoneAccount.inc:1430
+#: personal/phoneaccount/class_phoneAccount.inc:1434
 #, php-format
 msgid "macro parameter %s"
 msgstr "parámetro de macro %s"
 
-#: personal/phoneaccount/class_phoneAccount.inc:1478
+#: personal/phoneaccount/class_phoneAccount.inc:1482
 msgid "An error occured while updating the database entries!"
-msgstr "¡Un error ha ocurrido mientras actualizaba las entradas en la base de datos!"
+msgstr ""
+"¡Un error ha ocurrido mientras actualizaba las entradas en la base de datos!"
 
-#: personal/phoneaccount/class_phoneAccount.inc:1628
+#: personal/phoneaccount/class_phoneAccount.inc:1632
 #, php-format
 msgid "User '%s' has been removed from phone queue '%s'."
 msgstr "Eliminado usuario '%s' de la cola de teléfono '%s'."
 
-#: personal/phoneaccount/class_phoneAccount.inc:1665
-#: personal/phoneaccount/class_phoneAccount.inc:1667
+#: personal/phoneaccount/class_phoneAccount.inc:1669
+#: personal/phoneaccount/class_phoneAccount.inc:1671
 #, php-format
 msgid "The specified telephonenumber '%s' is already assigned to '%s'."
 msgstr "El número teléfono introducido '%s' ya está asignado a '%s'."
 
-#: personal/phoneaccount/class_phoneAccount.inc:1713
+#: personal/phoneaccount/class_phoneAccount.inc:1717
 #, php-format
 msgid ""
 "The previously selected asterisk home server (%s) is no longer available. "
 "Remove aborted."
-msgstr "El servidor principal de asterisk seleccionado anteriormente (%s) no está disponible. Eliminación cancelada."
+msgstr ""
+"El servidor principal de asterisk seleccionado anteriormente (%s) no está "
+"disponible. Eliminación cancelada."
 
-#: personal/phoneaccount/class_phoneAccount.inc:1722
+#: personal/phoneaccount/class_phoneAccount.inc:1726
 msgid "Phone account settings"
 msgstr "Configuración cuenta telefónica"
 
-#: personal/phoneaccount/class_phoneAccount.inc:1726
+#: personal/phoneaccount/class_phoneAccount.inc:1730
 msgid "My account"
 msgstr "Mi cuenta"
 
-#: personal/phoneaccount/class_phoneAccount.inc:1734
+#: personal/phoneaccount/class_phoneAccount.inc:1738
 msgid "Macro settings"
 msgstr "Parámetros de macro"
 
-#: personal/phoneaccount/class_phoneAccount.inc:1737
+#: personal/phoneaccount/class_phoneAccount.inc:1741
 msgid "Phone context"
 msgstr "Contexto telefónico"
 
-#: personal/phoneaccount/class_phoneAccount.inc:1738
+#: personal/phoneaccount/class_phoneAccount.inc:1742
 msgid "Voice mail context"
 msgstr "Contexto de buzón de voz"
 
-#: personal/phoneaccount/class_phoneAccount.inc:1739
+#: personal/phoneaccount/class_phoneAccount.inc:1743
 msgid "Telephone pin"
 msgstr "PIN del teléfono"
 
-#: personal/phoneaccount/class_phoneAccount.inc:1740
+#: personal/phoneaccount/class_phoneAccount.inc:1744
 msgid "Voicemail pin"
 msgstr "PIN del buzón de voz"
 
-#: personal/phoneaccount/class_phoneAccount.inc:1822
+#: personal/phoneaccount/class_phoneAccount.inc:1826
 msgid "There is currently no asterisk server defined!"
 msgstr "¡No se ha definido el servidor Asterisk!"
 
-#: personal/phoneaccount/class_phoneAccount.inc:1826
+#: personal/phoneaccount/class_phoneAccount.inc:1830
 msgid "Asterisk server is invalid!"
 msgstr "¡El servidor Asterisk no es válido!"
 
-#: personal/phoneaccount/class_phoneAccount.inc:1832
+#: personal/phoneaccount/class_phoneAccount.inc:1836
 msgid "Voicemail PIN must be 4 characters long!"
 msgstr "¡El PIN del buzón de voz debe de tener 4 caracteres de largo!"
 
-#: personal/phoneaccount/class_phoneAccount.inc:1835
+#: personal/phoneaccount/class_phoneAccount.inc:1839
 msgid "Voicemail PIN contains invalid characters!"
 msgstr "¡El PIN del buzón de voz tiene caracteres no válidos!"
 
-#: personal/phoneaccount/class_phoneAccount.inc:1840
+#: personal/phoneaccount/class_phoneAccount.inc:1844
 msgid "Phone pin contains invalid characters!"
 msgstr "¡El PIN del teléfono tiene caracteres no válidos!"
 
-#: personal/phoneaccount/class_phoneAccount.inc:1847
+#: personal/phoneaccount/class_phoneAccount.inc:1851
 #, php-format
 msgid "The parameter %s contains invalid char. '!,#' is used as delimiter"
-msgstr "El parámetro %s tiene alguno de los caracteres no válidos '!,#' como delimitador"
+msgstr ""
+"El parámetro %s tiene alguno de los caracteres no válidos '!,#' como "
+"delimitador"
 
 #: personal/phoneaccount/main.inc:124
 msgid "Click the 'Edit' button below to change informations in this dialog"
-msgstr "Pulse en el botón - Editar - para cambiar la información en esta ventana"
+msgstr ""
+"Pulse en el botón - Editar - para cambiar la información en esta ventana"
 
 #: personal/phoneaccount/main.inc:134
 #: personal/phoneaccount/paste_generic.tpl:1

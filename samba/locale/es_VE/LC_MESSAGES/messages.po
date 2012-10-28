@@ -1,65 +1,73 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 #  Alejandro Escanero Blanco <aescanero@gmail.com>, 2008, 2010.
 #   <lars.gold@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
-"POT-Creation-Date: 2012-08-22 18:37+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-10-27 13:06+0200\n"
 "PO-Revision-Date: 2012-08-13 20:21+0000\n"
 "Last-Translator: lars_g <lars.gold@gmail.com>\n"
-"Language-Team: Spanish (Venezuela) (http://www.transifex.com/projects/p/FusionDirectory/language/es_VE/)\n"
+"Language-Team: Spanish (Venezuela) (http://www.transifex.com/projects/p/"
+"FusionDirectory/language/es_VE/)\n"
+"Language: es_VE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es_VE\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: admin/systems/samba/class_winGeneric.inc:132
+#: admin/systems/samba/class_winGeneric.inc:135
 msgid "network"
 msgstr "red"
 
-#: admin/systems/samba/class_winGeneric.inc:168
-#: admin/systems/samba/class_winGeneric.inc:316
+#: admin/systems/samba/class_winGeneric.inc:176
+#: admin/systems/samba/class_winGeneric.inc:424
 #: personal/samba/class_sambaAccount.inc:850
 #: personal/samba/class_sambaAccount.inc:1112
 msgid "LDAP error"
 msgstr "Error LDAP"
 
-#: admin/systems/samba/class_winGeneric.inc:198
+#: admin/systems/samba/class_winGeneric.inc:207
 msgid "Error"
 msgstr "Error"
 
-#: admin/systems/samba/class_winGeneric.inc:231
-#: admin/systems/samba/class_winGeneric.inc:341
+#: admin/systems/samba/class_winGeneric.inc:267
+#: admin/systems/samba/class_winGeneric.inc:448
 msgid "Name"
 msgstr "Nombre"
 
-#: admin/systems/samba/class_winGeneric.inc:332
+#: admin/systems/samba/class_winGeneric.inc:439
 msgid "Win generic"
 msgstr "Sistema Windows genérico"
 
-#: admin/systems/samba/class_winGeneric.inc:333
+#: admin/systems/samba/class_winGeneric.inc:440
 msgid "Windows workstation generic"
 msgstr "Estación de trabajo Windows genérica"
 
-#: admin/systems/samba/class_winGeneric.inc:338
-msgid "Win workstation"
+#: admin/systems/samba/class_winGeneric.inc:445
+#, fuzzy
+msgid "Windows workstation"
 msgstr "Estación de trabajo Windows"
 
-#: admin/systems/samba/class_winGeneric.inc:342
+#: admin/systems/samba/class_winGeneric.inc:449
 #: admin/systems/samba/wingeneric.tpl:17
 msgid "Base"
 msgstr "Base"
 
-#: admin/systems/samba/class_winGeneric.inc:343
+#: admin/systems/samba/class_winGeneric.inc:450
 #: admin/systems/samba/wingeneric.tpl:29
 msgid "Description"
 msgstr "Descripción"
+
+#: admin/systems/samba/class_winGeneric.inc:451
+#: admin/systems/samba/wingeneric.tpl:37 personal/samba/samba3.tpl:26
+#: personal/samba/class_sambaAccount.inc:1189
+msgid "Domain"
+msgstr "Dominio"
 
 #: admin/systems/samba/wingeneric.tpl:6
 msgid "Machine name"
@@ -67,7 +75,8 @@ msgstr "Nombre de maquina"
 
 #: personal/samba/sambaLogonHours.tpl:22
 msgid "Specify the hours this user is allowed to log in"
-msgstr "Introducir las horas en que este usuario tendrá permiso de inicio de sesión"
+msgstr ""
+"Introducir las horas en que este usuario tendrá permiso de inicio de sesión"
 
 #: personal/samba/sambaLogonHours.tpl:28
 msgid "Hour"
@@ -82,10 +91,6 @@ msgstr "Genérico"
 #: personal/samba/class_sambaAccount.inc:1239
 msgid "Home directory"
 msgstr "Directorio de usuario"
-
-#: personal/samba/samba3.tpl:26 personal/samba/class_sambaAccount.inc:1189
-msgid "Domain"
-msgstr "Dominio"
 
 #: personal/samba/samba3.tpl:35
 msgid "Show information"
@@ -446,7 +451,9 @@ msgstr "No"
 #: personal/samba/class_sambaAccount.inc:802
 #, php-format
 msgid "The password would expire on %s, but the password expiry is disabled."
-msgstr "La contraseña debió caducar en %s, pero caducidad de contraseña esta desactivada."
+msgstr ""
+"La contraseña debió caducar en %s, pero caducidad de contraseña esta "
+"desactivada."
 
 #: personal/samba/class_sambaAccount.inc:808
 msgid "Password change available"
@@ -462,7 +469,8 @@ msgstr "Ruta inicial"
 
 #: personal/samba/class_sambaAccount.inc:900
 msgid "The windows user manager allows eight clients at maximum!"
-msgstr "El manejador de usuarios de Windows permite un máximo de ocho clientes!"
+msgstr ""
+"El manejador de usuarios de Windows permite un máximo de ocho clientes!"
 
 #: personal/samba/class_sambaAccount.inc:919
 msgid "Information"
@@ -475,12 +483,16 @@ msgstr "Aviso"
 
 #: personal/samba/class_sambaAccount.inc:1053
 msgid "Undefined Samba SID detected. Please fix this problem manually!"
-msgstr "Se ha detectado un SID Samba sin definir. ¡Por favor solucione este problema manualmente!"
+msgstr ""
+"Se ha detectado un SID Samba sin definir. ¡Por favor solucione este problema "
+"manualmente!"
 
 #: personal/samba/class_sambaAccount.inc:1078
 msgid ""
 "Cannot convert primary group to samba group: group cannot be identified!"
-msgstr "No se puede convertir un grupo primario a grupo samba: ¡El grupo no puede ser identificado!"
+msgstr ""
+"No se puede convertir un grupo primario a grupo samba: ¡El grupo no puede "
+"ser identificado!"
 
 #: personal/samba/class_sambaAccount.inc:1177 personal/samba/main.inc:135
 msgid "Samba settings"
@@ -530,7 +542,9 @@ msgstr "Permitir la conexión desde"
 msgid ""
 "The windows user manager only allows eight clients. You've specified more "
 "than eight."
-msgstr "El administrador de usuarios de windows solo permite ocho clientes. Ha especificado mas de ocho."
+msgstr ""
+"El administrador de usuarios de windows solo permite ocho clientes. Ha "
+"especificado mas de ocho."
 
 #: personal/samba/samba3_workstations.tpl:6
 msgid "Select workstations to add"

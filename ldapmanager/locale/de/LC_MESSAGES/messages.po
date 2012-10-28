@@ -1,29 +1,33 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 #  Stefan Koehler <stefan.koehler@GONICUS.de>, 2005.
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
-"POT-Creation-Date: 2012-08-22 18:37+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-10-27 13:06+0200\n"
 "PO-Revision-Date: 2012-05-26 16:37+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: German (http://www.transifex.com/projects/p/FusionDirectory/language/de/)\n"
+"Language-Team: German (http://www.transifex.com/projects/p/FusionDirectory/"
+"language/de/)\n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: addons/ldapmanager/contentexport.tpl:2
 msgid ""
 "The LDIF export plugin provides methods to download a complete snapshot of "
 "the running LDAP directory as ldif. You may save these files for backup "
 "purpose or when initializing a new server."
-msgstr "Dieses Modul ermöglicht Ihnen den Download der kompletten momentan verwendeten LDAP-Datenbank. Die übertragenen Dateien können beispielsweise zur Datensicherung oder zur Einrichtung eines neuen Servers benutzt werden."
+msgstr ""
+"Dieses Modul ermöglicht Ihnen den Download der kompletten momentan "
+"verwendeten LDAP-Datenbank. Die übertragenen Dateien können beispielsweise "
+"zur Datensicherung oder zur Einrichtung eines neuen Servers benutzt werden."
 
 #: addons/ldapmanager/contentexport.tpl:9
 msgid "Export single entry"
@@ -119,8 +123,8 @@ msgstr "Undefiniertes Flag '%s'!"
 
 #: addons/ldapmanager/contentcsv.tpl:2
 msgid ""
-"The CSV import plugin provides methods to generate user accounts from a file"
-" containing Semi-Colon Seperated Values. The administrator can decide which "
+"The CSV import plugin provides methods to generate user accounts from a file "
+"containing Semi-Colon Seperated Values. The administrator can decide which "
 "columns should be transfered to which attribute. Note that you must have at "
 "least the GIVENNAME and SURNAME set."
 msgstr ""
@@ -218,7 +222,9 @@ msgstr "Überschreibe vorhandene Objekte, behalte unbetroffene Attribute"
 
 #: addons/ldapmanager/contentimport.tpl:25
 msgid "Overwrite existing objects, all not listed attributes will be removed"
-msgstr "Überschreibe vorhandene Objekte, entferne dabei alle nicht aufgeführten Attribute"
+msgstr ""
+"Überschreibe vorhandene Objekte, entferne dabei alle nicht aufgeführten "
+"Attribute"
 
 #: addons/ldapmanager/contentimport.tpl:34
 msgid "Remove existing entries first"
