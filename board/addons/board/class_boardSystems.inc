@@ -1,7 +1,6 @@
 <?php
 /*
  * This code is part of FusionDirectory (http://www.fusiondirectory.org)
- * Copyright (C) 2003-2010 GONICUS GmbH
  * Copyright (C) 2010 Antoine Gallavardin
  * Copyright (C) 2011-2012 FusionDirectory project
  *
