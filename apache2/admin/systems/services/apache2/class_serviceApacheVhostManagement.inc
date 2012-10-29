@@ -50,7 +50,6 @@ class serviceApacheVhostManagement extends management
     $filter = new filter(get_template_path("serviceApacheVhostEdit-filter.xml", TRUE, dirname(__FILE__)));
     $filter->setObjectStorage($this->storagePoints);
     $this->setFilter($filter);
-    print_r($filter);
 
     // Build headpage
     $headpage = new listing(get_template_path("serviceApacheVhostEdit-list.xml", TRUE, dirname(__FILE__)));
