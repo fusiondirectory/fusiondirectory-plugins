@@ -3,6 +3,7 @@
           COPYRIGHT
 
 Copyright 2007 Sergio Vaccaro <sergio@inservibile.org>
+Copyright 2012 FusionDirectory
 
 This file is part of JSON-RPC PHP.
 
@@ -24,7 +25,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 /*!
  * \file jsonRPCClient.php
  * Source code for class jsonRPCClient
- */ 
+ */
 
 /*!
  * \brief The object of this class are generic jsonRPC 1.0 clients
@@ -33,53 +34,66 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  * \author sergio <jsonrpcphp@inservibile.org>
  */
 class jsonRPCClient {
-  
+
   /*!
    * \brief Debug state
    *
    * \var boolean $debug
    */
   private $debug;
-  
+
   /*!
    * \brief The server URL
    *
    * !var string $url
    */
   private $url;
-  
+
   /*!
    * \brief The request id
    *
    * \var integer $id
    */
   private $id;
-  
+
   /*!
    * \brief If true, notifications are performed instead of requests
    *
    * \var boolean $notification
    */
   private $notification = false;
-  
+
+  /*!
+   * \brief HTTP options from http://www.php.net/manual/en/context.http.php
+   *
+   * \var array $http_options
+   */
+  private $http_options;
+
   /*!
    * \brief Takes the connection parameters
    *
    * \param string $url
-   * 
+   *
+   * \param array $http_options Additional HTTP options, see http://www.php.net/manual/en/context.http.php
+   *
    * \param boolean $debug false
    */
-  public function __construct($url,$debug = false) {
+  public function __construct($url, $http_options = array(), $debug = false) {
     // server URL
     $this->url = $url;
-    // proxy
-    empty($proxy) ? $this->proxy = '' : $this->proxy = $proxy;
+
+    // HTTP options : method, header and content must not be overridden
+    unset($http_options['method']);
+    unset($http_options['header']);
+    unset($http_options['content']);
+    $this->http_options = $http_options;
     // debug state
     empty($debug) ? $this->debug = false : $this->debug = true;
     // message id
     $this->id = 1;
   }
-  
+
   /*!
    * \brief Sets the notification state of the object.
    *        In this state, notifications are performed, instead of requests.
@@ -92,7 +106,7 @@ class jsonRPCClient {
               :
               $this->notification = true;
   }
-  
+
   /*!
    * \brief Performs a jsonRCP request and gets the results as an array
    *
@@ -103,14 +117,14 @@ class jsonRPCClient {
    * \return array
    */
   public function __call($method,$params) {
-    
+
     $debug="";
-    
+
     // check
     if (!is_scalar($method)) {
       throw new Exception('Method name has no scalar value');
     }
-    
+
     // check
     if (is_array($params)) {
       // no keys
@@ -118,14 +132,14 @@ class jsonRPCClient {
     } else {
       throw new Exception('Params must be given as array');
     }
-    
+
     // sets notification or request task
     if ($this->notification) {
       $currentId = NULL;
     } else {
       $currentId = $this->id;
     }
-    
+
     // prepares the request
     $request = array(
             'method' => $method,
@@ -134,13 +148,18 @@ class jsonRPCClient {
             );
     $request = json_encode($request);
     $this->debug && $debug.='***** Request *****'."\n".$request."\n".'***** End Of request *****'."\n\n";
-    
+
     // performs the HTTP POST
-    $opts = array ('http' => array (
-              'method'  => 'POST',
-              'header'  => 'Content-type: application/json',
-              'content' => $request
-              ));
+    $opts = array (
+      'http' => array_merge(
+        array (
+          'method'  => 'POST',
+          'header'  => 'Content-type: application/json',
+          'content' => $request
+        ),
+        $this->http_options
+      )
+    );
     $context  = stream_context_create($opts);
     if ($fp = @fopen($this->url, 'r', false, $context)) {
       $response = '';
@@ -152,12 +171,12 @@ class jsonRPCClient {
     } else {
       throw new Exception('Unable to connect to '.$this->url);
     }
-    
+
     // debug output
     if ($this->debug) {
       echo nl2br($debug);
     }
-    
+
     // final checks and return
     if (!$this->notification) {
       // check
@@ -167,9 +186,9 @@ class jsonRPCClient {
       if (!is_null($response['error'])) {
         throw new Exception('Request error: '.$response['error']);
       }
-      
+
       return $response['result'];
-      
+
     } else {
       return true;
     }
