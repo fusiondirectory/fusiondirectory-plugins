@@ -708,17 +708,16 @@ class mailMethod{
   /*! \brief  Returns the available mailMethods
       @return Array   A list of all avaialable mailMethods_
    */
-  static protected function get_methods()
+  static public function get_methods()
   {
     global $class_mapping;
     $available = array();
-    foreach($class_mapping as $class => $path){
-      if($class == "mailMethod") continue;
-      if(preg_match("/^mailMethod/",$class)){
+    foreach ($class_mapping as $class => $path) {
+      if (preg_match("/^mailMethod.+/", $class)) {
         $available[$class] = $class;
       }
     }
-    return($available);
+    return $available;
   }
 
 
