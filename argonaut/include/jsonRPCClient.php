@@ -75,6 +75,8 @@ class jsonRPCClient {
    * \var string $cacertfile
    */
   private $cacertfile = "";
+  private $username   = "";
+  private $password   = "";
 
   /*!
    * \brief Takes the connection parameters
@@ -83,7 +85,7 @@ class jsonRPCClient {
    *
    * \param boolean $debug false
    */
-  public function __construct($url, $cacertfile = "", $debug = false) {
+  public function __construct($url, $cacertfile = "", $username = "", $password = "", $debug = false) {
     // server URL
     $this->url = $url;
     // proxy
@@ -93,7 +95,9 @@ class jsonRPCClient {
     // message id
     $this->id = 1;
     $this->use_https  = (preg_match("@^https://@i",$this->url)?TRUE:FALSE);
-    $this->cacertfile   = $cacertfile;
+    $this->cacertfile = $cacertfile;
+    $this->username   = $username;
+    $this->password   = $password;
   }
 
   /*!
@@ -173,7 +177,7 @@ class jsonRPCClient {
       }
     } else {
       // performs the HTTPS POST
-      $res = $this->send_post_ssl_curl($this->url,$request,$this->cacertfile);
+      $res = $this->send_post_ssl_curl($this->url,$request);
       $response = json_decode($res['DATA'],true);
     }
 
@@ -199,7 +203,7 @@ class jsonRPCClient {
     }
   }
 
-  public function send_post_ssl_curl ($url,$request,$cacertfile)
+  public function send_post_ssl_curl ($url,$request)
   {
     // create a new curl resource
     $ch = curl_init();
@@ -209,7 +213,8 @@ class jsonRPCClient {
 
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
     curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
-    curl_setopt($ch, CURLOPT_CAINFO, $cacertfile);
+    curl_setopt($ch, CURLOPT_USERPWD, $this->username.":".$this->password);
+    curl_setopt($ch, CURLOPT_CAINFO, $this->cacertfile);
 
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, $request);
