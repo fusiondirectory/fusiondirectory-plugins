@@ -106,10 +106,13 @@ class supportDaemon
       return FALSE;
     }
     if ((self::$state !== NULL) && (time() - self::$state['date'] < $this->stateReloadDelay)) {
+      if (self::$state['error'] != "") {
+        $this->set_error(self::$state['error']);
+      }
       return self::$state['value'];
     }
     try {
-      $client = new jsonRPCClient($this->s_host);
+      $client = new jsonRPCClient($this->s_host, $this->http_options);
       $ok = "OK";
       $test = $client->echo($ok);
       if ($test == $ok) {
@@ -125,10 +128,21 @@ class supportDaemon
     }
   }
 
+  private function saved_state ()
+  {
+    if ((self::$state !== NULL) && (time() - self::$state['date'] < $this->stateReloadDelay)) {
+      return self::$state['value'];
+    } else {
+      return TRUE;
+    }
+  }
+
   private function new_state($state_value)
   {
+    @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $state_value, date("H.i.s"));
     self::$state = array(
       'date'  => time(),
+      'error' => $this->s_error,
       'value' => $state_value
     );
     return $state_value;
@@ -206,19 +220,24 @@ class supportDaemon
       $this->set_error($this->host_error);
       return FALSE;
     }
+    if ($this->saved_state() == FALSE) {
+      $this->set_error(self::$state['error']);
+      return FALSE;
+    }
     if (preg_match('/^[^.]+\.[^.]+$/', $action)) {
       $action = 'Argonaut.ClientDaemon.Modules.'.$action;
     }
     /* Append an entry
     */
     try {
-      $client = new jsonRPCClient($this->s_host);
+      $client = new jsonRPCClient($this->s_host, $this->http_options);
       $status = $client->action($action, $targets, $data);
       $this->reset_error();
+      $this->new_state(TRUE);
       return $status[0];
     } catch (Exception $e) {
       $this->set_error(nl2br($e->getMessage()));
-      return FALSE;
+      return $this->new_state(FALSE);
     }
   }
 
@@ -324,16 +343,21 @@ class supportDaemon
       $this->set_error($this->host_error);
       return FALSE;
     }
+    if ($this->saved_state() == FALSE) {
+      $this->set_error(self::$state['error']);
+      return FALSE;
+    }
     timezone::get_default_timezone();
     try {
-      $client = new jsonRPCClient($this->s_host);
+      $client = new jsonRPCClient($this->s_host, $this->http_options);
       $entries = $client->get_entries();
     } catch (Exception $e) {
       $this->set_error(nl2br($e->getMessage()));
-      return FALSE;
+      return $this->new_state(FALSE);
     }
     $entries = $this->format_entries($entries);
     $this->reset_error();
+    $this->new_state(TRUE);
     return $entries;
   }
 
@@ -366,16 +390,20 @@ class supportDaemon
       $this->set_error($this->host_error);
       return FALSE;
     }
+    if ($this->saved_state() == FALSE) {
+      $this->set_error(self::$state['error']);
+      return FALSE;
+    }
 
     try {
-      $client = new jsonRPCClient($this->s_host);
+      $client = new jsonRPCClient($this->s_host, $this->http_options);
       $entries = $client->remove_entries($ids);
     } catch (Exception $e) {
       $this->set_error(nl2br($e->getMessage()));
-      return FALSE;
+      return $this->new_state(FALSE);
     }
     $this->reset_error();
-    return TRUE;
+    return $this->new_state(TRUE);
   }
 
   /*!
@@ -419,15 +447,19 @@ class supportDaemon
       $this->set_error($this->host_error);
       return FALSE;
     }
+    if ($this->saved_state() == FALSE) {
+      $this->set_error(self::$state['error']);
+      return FALSE;
+    }
 
     try {
-      $client = new jsonRPCClient($this->s_host);
+      $client = new jsonRPCClient($this->s_host, $this->http_options);
       $entries = $client->process_entries_now($ids);
       $this->reset_error();
-      return TRUE;
+      return $this->new_state(TRUE);
     } catch (Exception $e) {
       $this->set_error(nl2br($e->getMessage()));
-      return FALSE;
+      return $this->new_state(FALSE);
     }
   }
 
@@ -486,16 +518,21 @@ class supportDaemon
       $this->set_error($this->host_error);
       return FALSE;
     }
+    if ($this->saved_state() == FALSE) {
+      $this->set_error(self::$state['error']);
+      return FALSE;
+    }
 
     try {
-      $client = new jsonRPCClient($this->s_host);
+      $client = new jsonRPCClient($this->s_host, $this->http_options);
       $entries = $client->$func($address);
       $entries = $this->format_entries($entries);
       $this->reset_error();
-      return($entries);
+      $this->new_state(TRUE);
+      return $entries;
     } catch (Exception $e) {
       $this->set_error(nl2br($e->getMessage()));
-      return FALSE;
+      return $this->new_state(FALSE);
     }
   }
 
@@ -576,13 +613,18 @@ class supportDaemon
       $this->set_error($this->host_error);
       return FALSE;
     }
+    if ($this->saved_state() == FALSE) {
+      $this->set_error(self::$state['error']);
+      return FALSE;
+    }
     try {
-      $client = new jsonRPCClient($this->s_host);
+      $client = new jsonRPCClient($this->s_host, $this->http_options);
       $this->reset_error();
+      $this->new_state(TRUE);
       return $client->ping($mac);
     } catch (Exception $e) {
       $this->set_error(nl2br($e->getMessage()));
-      return FALSE;
+      return $this->new_state(FALSE);
     }
   }
 
@@ -610,14 +652,17 @@ class supportDaemon
       $this->set_error($this->host_error);
       return array();
     }
+    if ($this->saved_state() == FALSE) {
+      $this->set_error(self::$state['error']);
+      return array();
+    }
     if ($package_list) { // filters is a package name list
       foreach ($filters as &$filter) {
         $filter = "^".$this->escape_perl_chars($filter)."$";
       }
     }
     try {
-      $client = new jsonRPCClient($this->s_host);
-      $this->reset_error();
+      $client = new jsonRPCClient($this->s_host, $this->http_options);
       $res = $client->get_packages($release, $attrs, $filters, $from, $to);
       $to_return = array();
       $attrs = array_map('strtoupper', $attrs);
@@ -638,9 +683,12 @@ class supportDaemon
         }
         $to_return = array_merge($to_return, $packages);
       }
+      $this->reset_error();
+      $this->new_state(TRUE);
       return $to_return;
     } catch (Exception $e) {
       $this->set_error(nl2br($e->getMessage()));
+      $this->new_state(FALSE);
       return array();
     }
   }
@@ -762,15 +810,20 @@ class supportDaemon
       $this->set_error($this->host_error);
       return FALSE;
     }
+    if ($this->saved_state() == FALSE) {
+      $this->set_error(self::$state['error']);
+      return FALSE;
+    }
+
     try {
-      $client = new jsonRPCClient($this->s_host);
+      $client = new jsonRPCClient($this->s_host, $this->http_options);
       $this->reset_error();
       $taskids = $client->get_entries_by_mac(array($mac));
       $client->remove_entries($taskids);
-      return TRUE;
+      return $this->new_state(TRUE);
     } catch (Exception $e) {
       $this->set_error(nl2br($e->getMessage()));
-      return FALSE;
+      return $this->new_state(FALSE);
     }
   }
 };
