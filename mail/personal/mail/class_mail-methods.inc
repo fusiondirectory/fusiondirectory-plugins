@@ -140,7 +140,7 @@ class mailMethod{
   {
     /* Get config value for cyrusUseSlashes
      */
-    if ($this->config->get_cfg_value("cyrusUseSlashes") == "true"){
+    if ($this->config->get_cfg_value("cyrusUseSlashes") == "TRUE"){
       $this->cyrusUseSlashes = TRUE;
       @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "","<b>MAIL:</b> cyrusUseSlashes: <b>Enabled</b>");
     }else{

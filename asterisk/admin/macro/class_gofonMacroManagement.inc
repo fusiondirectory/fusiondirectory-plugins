@@ -26,7 +26,7 @@ class goFonMacro extends management
   var $plDescription  = "Phone macro management";
   var $plIcon  = "plugins/gofon/images/macros.png";
 
-  // Tab definition 
+  // Tab definition
   protected $tabClass = "macrotabs";
   protected $tabType = "MACROTABS";
   protected $aclCategory = "gofonmacro";
@@ -57,11 +57,11 @@ class goFonMacro extends management
     if ($this->config->boolValueIsTrue("main", "copyPaste")){
       $this->cpHandler = new CopyPasteHandler($this->config);
     }
-    if($this->config->get_cfg_value("enableSnapshots") == "true"){
+    if($this->config->get_cfg_value("enableSnapshots") == "TRUE"){
       $this->snapHandler = new SnapshotHandler($this->config);
     }
     parent::__construct($config, $ui, "macros", $headpage);
   }
-} 
+}
 // vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

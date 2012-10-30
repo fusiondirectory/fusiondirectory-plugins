@@ -37,9 +37,9 @@ class sambaAccount extends plugin
     var $orig_sambaDomainName= "";
     var $sambaDomainName= "";
 
-    // Some of these attributes are just used to 
-    //  display the domain information dialog, and 
-    //  thus not writte back to the ldap. 
+    // Some of these attributes are just used to
+    //  display the domain information dialog, and
+    //  thus not writte back to the ldap.
     var $sambaBadPasswordCount= "";
     var $sambaBadPasswordTime= "";
     var $sambaPasswordHistory= "";
@@ -60,7 +60,7 @@ class sambaAccount extends plugin
     var $flag_cannotChangePassword  = FALSE;
     var $flag_sambaKickoffTime      = FALSE;
 
-    // String values 
+    // String values
     var $sambaHomePath= "";
     var $sambaHomeDrive= "";
     var $sambaLogonScript= "";
@@ -156,7 +156,7 @@ class sambaAccount extends plugin
     function loadFlagsFromSource($attrs)
     {
 
-        // Samba flag description 
+        // Samba flag description
         // ----------------------
         //  The Official Samba 3.2.x HOWTO and Reference Guide
         //  Jelmer R. Vernooij, John H. Terpstra, and Gerald (Jerry) Carter
@@ -193,11 +193,11 @@ class sambaAccount extends plugin
         // A password change is enforced by using a timestamp in sambaPwdMustChange.
         //  We simple set it to '0' to enforce a change.
         // --------------------------------
-        // Normally it contains a timestamp, which specifies and expiration date. 
+        // Normally it contains a timestamp, which specifies and expiration date.
         $this->flag_enforcePasswordChange =  (isset($attrs['sambaPwdMustChange']) && $attrs['sambaPwdMustChange'][0] == '0');
 
         // A user cannot change his password until the given timestamp has reached.
-        //  We simply set it to max int to disallow a password change till the timestamp reaches 4294967295, 
+        //  We simply set it to max int to disallow a password change till the timestamp reaches 4294967295,
         //  this is definitly far in the future and thus disallows a password change at all.
         // --------------------------------
         // The user is not able to change his password while sambaPwdCanChange is 4294967295 (Integer 32 Bit max)
@@ -207,11 +207,11 @@ class sambaAccount extends plugin
         if(isset($attrs['sambaAcctFlags'][0])){
             $this->sambaAcctFlags = $attrs['sambaAcctFlags'][0];
 
-            // A password never expires if 'sambaAcctFlags' contains 'X'. 
+            // A password never expires if 'sambaAcctFlags' contains 'X'.
             // (See flags above for details)
             $this->flag_passwordNeverExpires  = preg_match("/X/i", $this->sambaAcctFlags);
 
-            // A password is NOT required if 'sambaAcctFlags' contains 'N'. 
+            // A password is NOT required if 'sambaAcctFlags' contains 'N'.
             // (See flags above for details)
             $this->flag_noPasswordRequired    = preg_match("/N/i", $this->sambaAcctFlags);
 
@@ -258,7 +258,7 @@ class sambaAccount extends plugin
                 } else {
 
                     // Samba3 dependency on posix accounts are enabled in the moment, because I need to rely on unique
-                    // uidNumbers. There'll be a better solution later on. 
+                    // uidNumbers. There'll be a better solution later on.
                     $obj= $this->parent->by_object['posixAccount'];
                     if ($obj->is_account){
                         $display= $this->show_enable_header(msgPool::addFeaturesButton(_("Samba")),
@@ -300,7 +300,7 @@ class sambaAccount extends plugin
         $smarty= get_smarty();
         $smarty->assign("usePrototype", "true");
 
-        // Assign FusionDirectory ACLs 
+        // Assign FusionDirectory ACLs
         $tmp = $this->plInfo();
         foreach($tmp['plProvidedAcls'] as $var => $rest){
             $smarty->assign($var."ACL",$this->getacl($var,$SkipWrite));
@@ -319,7 +319,7 @@ class sambaAccount extends plugin
                         if(isset($this->multiple_sambaUserWorkstations[trim($name)])){
                             unset($this->multiple_sambaUserWorkstations[trim($name)]);
                         }
-                    } 
+                    }
                 }else{
                     $tmp= $this->sambaUserWorkstations;
                     foreach($_POST['workstation_list'] as $name){
@@ -332,7 +332,7 @@ class sambaAccount extends plugin
             }
         }
 
-        // Handle trust maschines/accessTo list 
+        // Handle trust maschines/accessTo list
         if (isset($_POST["add_ws"])){
             if($this->acl_is_writeable("sambaUserWorkstations",$SkipWrite)){
                 $this->trustSelect= new trustSelect($this->config,get_userinfo());
@@ -382,7 +382,7 @@ class sambaAccount extends plugin
         }
 
 
-        // Fill domain selection. 
+        // Fill domain selection.
         $domains= array_keys($this->config->data['SERVERS']['SAMBA']);
         $smarty->assign("domains", $domains);
 
@@ -410,14 +410,14 @@ class sambaAccount extends plugin
             }
         }
 
-        // Assign enum values for preset items. 
-        $shadowModeVals= array( 
+        // Assign enum values for preset items.
+        $shadowModeVals= array(
                 "0" => _("disabled"),
                 "1" => _("input on, notify on"),
                 "2" => _("input on, notify off"),
                 "3" => _("input off, notify on"),
                 "4" => _("input off, nofify off"));
-        $brokenConnModeVals= array( 	
+        $brokenConnModeVals= array(
                 "0" => _("disconnect"),
                 "1" => _("reset"));
         $reConnModeVals= array( "0" => _("from any client"),
@@ -426,20 +426,20 @@ class sambaAccount extends plugin
         $smarty->assign("brokenconn",   $brokenConnModeVals);
         $smarty->assign("reconn",       $reConnModeVals);
 
-        // Fill preset items with values 
+        // Fill preset items with values
         $smarty->assign("shadowmode",       $this->mungedObject->getShadow());
         $smarty->assign("brokenconnmode",   $this->mungedObject->getBrokenConn());
         $smarty->assign("reconnmode",       $this->mungedObject->getReConn());
 
 
-        // Set form elements to disabled/enable state 
+        // Set form elements to disabled/enable state
         $smarty->assign("tsloginstate", $this->mungedObject->getTsLogin()?"":"disabled");
         $smarty->assign("inheritstate", "");
         if($this->acl_is_writeable("AllowLoginOnTerminalServer",$SkipWrite)){
             $smarty->assign("inheritstate", $this->mungedObject->getInheritMode()?"disabled":"");
         }
 
-        // Set checkboxes to checked or unchecked state 
+        // Set checkboxes to checked or unchecked state
         $smarty->assign("tslogin", $this->mungedObject->getTsLogin()?"checked":"");
         $smarty->assign("inherit", $this->mungedObject->getInheritMode()?"checked":"");
         $smarty->assign("connectclientdrives",
@@ -456,7 +456,7 @@ class sambaAccount extends plugin
                 $this->mungedObject->getCtxMaxIdleTimeF()?"checked":"");
 
 
-        // Fill sambaUserWorkstations 
+        // Fill sambaUserWorkstations
         $ws= explode(",", $this->sambaUserWorkstations);
         sort($ws);
 
@@ -464,7 +464,7 @@ class sambaAccount extends plugin
         if(($ws[0]=="")&&(count($ws)==1)) $ws=array();
         if($this->multiple_support_active){
             $smarty->assign("multiple_workstations",$this->multiple_sambaUserWorkstations);
-        }  
+        }
         $smarty->assign("workstations", $ws);
 
 
@@ -507,19 +507,19 @@ class sambaAccount extends plugin
             $smarty->assign("tsloginstate","");
         }
 
-        // Create additional info for sambaKickOffTime and sambaPwdMustChange. 
-        //  e.g. Display effective kickoff time. Domain policy + user settings. 
+        // Create additional info for sambaKickOffTime and sambaPwdMustChange.
+        //  e.g. Display effective kickoff time. Domain policy + user settings.
         $additional_info_PwdMustChange = "";
 
-        // Calculate effective max Password Age 
-        //  This can only be calculated if sambaPwdLastSet ist set. 
+        // Calculate effective max Password Age
+        //  This can only be calculated if sambaPwdLastSet ist set.
         if(isset($this->attrs['sambaPwdLastSet'][0])){
             $last = $this->attrs['sambaPwdLastSet'][0];
             $sid = $this->get_domain_info();
             if(isset($sid['sambaMaxPwdAge'][0]) && $sid['sambaMaxPwdAge'][0] != -1){
                 $d = ($last + $sid['sambaMaxPwdAge'][0]) - time();
 
-                // A negative value means the password is outdated 
+                // A negative value means the password is outdated
                 if($d < 0){
                     $additional_info_PwdMustChange = sprintf(_("The password is outdated since %s, by domain policy."),
                             date("d.m.Y H:i:s",$last + $sid['sambaMaxPwdAge'][0]));
@@ -531,7 +531,7 @@ class sambaAccount extends plugin
         }
 
         // Assign flags
-        foreach(array("flag_enforcePasswordChange", "flag_passwordNeverExpires", "flag_noPasswordRequired", 
+        foreach(array("flag_enforcePasswordChange", "flag_passwordNeverExpires", "flag_noPasswordRequired",
                     "flag_temporaryDisabled","flag_cannotChangePassword","flag_sambaKickoffTime") as $attr){
             $smarty->assign($attr, $this->$attr);
         }
@@ -543,7 +543,7 @@ class sambaAccount extends plugin
     }
 
 
-    /*! \brief  Returns the samba Domain object, selected in the samba tab.   
+    /*! \brief  Returns the samba Domain object, selected in the samba tab.
      */
     function get_domain_info()
     {
@@ -570,7 +570,7 @@ class sambaAccount extends plugin
     {
         $zone = timezone::get_default_timezone();
 
-        /* Defaults 
+        /* Defaults
          */
         $sambaMinPwdLength = "unset";
         $sambaPwdHistoryLength = "unset";
@@ -585,25 +585,25 @@ class sambaAccount extends plugin
         $sambaLogonTime = "unset";
         $sambaLogoffTime = "unset";
 
-        $sambaKickoffTime = "unset"; 
+        $sambaKickoffTime = "unset";
         $sambaPwdCanChange = "unset";
         $sambaPwdMustChange = "unset";
         $sambaBadPasswordCount = "unset";
         $sambaBadPasswordTime = "unset";
 
-        /* Domain attributes 
+        /* Domain attributes
          */
         $domain_attributes = array("sambaMinPwdLength","sambaPwdHistoryLength","sambaMaxPwdAge",
                 "sambaMinPwdAge","sambaLockoutDuration","sambaRefuseMachinePwdChange",
                 "sambaLogonToChgPwd","sambaLockoutThreshold","sambaForceLogoff");
 
-        /* User attributes 
+        /* User attributes
          */
         $user_attributes = array("sambaBadPasswordTime","sambaPwdLastSet","sambaLogonTime","sambaLogoffTime",
                 "sambaKickoffTime","sambaPwdCanChange","sambaPwdMustChange","sambaBadPasswordCount", "sambaSID");
 
         /* Get samba SID object and parse settings.
-         */  
+         */
         $ldap = $this->config->get_ldap_link();
         $ldap->cd($this->config->current['BASE']);
         if(!empty($this->sambaDomainName) && isset($this->config->data['SERVERS']['SAMBA'][$this->sambaDomainName])){
@@ -631,10 +631,10 @@ class sambaAccount extends plugin
         $sambaPwdCanChange = $this->sambaPwdCanChange;
 
 
-        /* DOMAIN Attributes 
+        /* DOMAIN Attributes
          */
 
-        /* sambaMinPwdLength: Password length has a default of 5 
+        /* sambaMinPwdLength: Password length has a default of 5
          */
         if($sambaMinPwdLength == "unset" || $sambaMinPwdLength == 5){
             $sambaMinPwdLength  = "5 <i>("._("default").")</i>";
@@ -646,7 +646,7 @@ class sambaAccount extends plugin
             $sambaPwdHistoryLength = _("Off")." <i>("._("default").")</i>";
         }
 
-        /* sambaLogonToChgPwd: Force Users to logon for password change (default: 0 => off, 2 => on) 
+        /* sambaLogonToChgPwd: Force Users to logon for password change (default: 0 => off, 2 => on)
          */
         if($sambaLogonToChgPwd == "unset" || $sambaLogonToChgPwd == 0){
             $sambaLogonToChgPwd = _("Off")." <i>("._("default").")</i>";
@@ -659,7 +659,7 @@ class sambaAccount extends plugin
         if($sambaMaxPwdAge == "unset" || $sambaMaxPwdAge == "-1"){
             $sambaMaxPwdAge = _("disabled")." <i>("._("default").")</i>";
         }else{
-            $sambaMaxPwdAge .= " "._("seconds"); 
+            $sambaMaxPwdAge .= " "._("seconds");
         }
 
         /* sambaMinPwdAge: Minimum password age, in seconds (default: 0 => allow immediate password change
@@ -667,7 +667,7 @@ class sambaAccount extends plugin
         if($sambaMinPwdAge == "unset" || $sambaMinPwdAge == 0){
             $sambaMinPwdAge = _("disabled")." <i>("._("default").")</i>";
         }else{
-            $sambaMinPwdAge .= " "._("seconds"); 
+            $sambaMinPwdAge .= " "._("seconds");
         }
 
         /* sambaLockoutDuration: Lockout duration in minutes (default: 30, -1 => forever)
@@ -686,7 +686,7 @@ class sambaAccount extends plugin
             $sambaLockoutThreshold = _("disabled")." <i>("._("default").")</i>";
         }
 
-        /* sambaForceLogoff: Disconnect Users outside logon hours (default: -1 => off, 0 => on 
+        /* sambaForceLogoff: Disconnect Users outside logon hours (default: -1 => off, 0 => on
          */
         if($sambaForceLogoff == "unset" || $sambaForceLogoff == -1){
             $sambaForceLogoff = _("off")." <i>("._("default").")</i>";
@@ -702,7 +702,7 @@ class sambaAccount extends plugin
             $sambaRefuseMachinePwdChange = _("on");
         }
 
-        /* USER Attributes 
+        /* USER Attributes
          */
         /* sambaBadPasswordTime: Time of the last bad password attempt
          */
@@ -712,7 +712,7 @@ class sambaAccount extends plugin
             $sambaBadPasswordTime = date("d.m.Y H:i:s",$sambaBadPasswordTime);
         }
 
-        /* sambaBadPasswordCount: Bad password attempt count 
+        /* sambaBadPasswordCount: Bad password attempt count
          */
         if($sambaBadPasswordCount == "unset" || empty($sambaBadPasswordCount)){
             $sambaBadPasswordCount = "<i>("._("unset").")</i>";
@@ -775,9 +775,9 @@ class sambaAccount extends plugin
         $str =
             "\n<div style='height:200px; overflow: auto;'>".
             "\n<table style='width:100%;'>".
-            "\n<tr><td><b>"._("Domain attributes")."</b></td></tr>". 
-            "\n<tr><td>"._("Min password length").":           </td><td>".$sambaMinPwdLength."</td></tr>". 
-            "\n<tr><td>"._("Min password length").":           </td><td>".$sambaMinPwdLength."</td></tr>". 
+            "\n<tr><td><b>"._("Domain attributes")."</b></td></tr>".
+            "\n<tr><td>"._("Min password length").":           </td><td>".$sambaMinPwdLength."</td></tr>".
+            "\n<tr><td>"._("Min password length").":           </td><td>".$sambaMinPwdLength."</td></tr>".
             "\n<tr><td>"._("Password history").":              </td><td>".$sambaPwdHistoryLength."</td></tr>".
             "\n<tr><td>"._("Force password change").":         </td><td>".$sambaLogonToChgPwd."</td></tr>".
             "\n<tr><td>"._("Maximum password age").":          </td><td>".$sambaMaxPwdAge."</td></tr>".
@@ -786,8 +786,8 @@ class sambaAccount extends plugin
             "\n<tr><td>"._("Bad lockout attempt").":           </td><td>".$sambaLockoutThreshold."</td></tr>".
             "\n<tr><td>"._("Disconnect time").":               </td><td>".$sambaForceLogoff."</td></tr>".
             "\n<tr><td>"._("Refuse machine password change").":</td><td>".$sambaRefuseMachinePwdChange."</td></tr>".
-            "\n<tr><td>&nbsp;</td></tr>". 
-            "\n<tr><td><b>"._("User attributes")."</b></td></tr>". 
+            "\n<tr><td>&nbsp;</td></tr>".
+            "\n<tr><td><b>"._("User attributes")."</b></td></tr>".
             "\n<tr><td>"._("SID").":                           </td><td>".$sambaSID."</td></tr>".
             "\n<tr><td>"._("Last failed login").":             </td><td>".$sambaBadPasswordTime."</td></tr>".
             "\n<tr><td>"._("Logon attempts").":                </td><td>".$sambaBadPasswordCount."</td></tr>".
@@ -842,7 +842,7 @@ class sambaAccount extends plugin
                 $this->attributes, "Save");
         $ldap->cd($this->dn);
         $this->cleanup();
-        $ldap->modify ($this->attrs); 
+        $ldap->modify ($this->attrs);
 
         new log("remove","users/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
 
@@ -916,7 +916,7 @@ class sambaAccount extends plugin
 
             // Display domain info dialog
             if(isset($_POST['display_information'])){
-                msg_dialog::display(_("Information"), 
+                msg_dialog::display(_("Information"),
                         $this->get_samba_information(),
                         INFO_DIALOG);
             }
@@ -938,7 +938,7 @@ class sambaAccount extends plugin
                 $this->sambaDomainName= validate($_POST['sambaDomainName']);
             }
 
-            // Save CTX values 
+            // Save CTX values
             $TsAcl = $this->acl_is_writeable("AllowLoginOnTerminalServer",$SkipWrite);
             foreach($this->ctxattributes as $val){
                 if (isset($_POST[$val]) && $TsAcl){
@@ -963,13 +963,13 @@ class sambaAccount extends plugin
             $this->mungedObject->setConnectClientPrinters(isset($_POST['connectclientprinters']) && $TsAcl);
             $this->mungedObject->setDefaultPrinter(isset($_POST['defaultprinter']) && $TsAcl);
 
-            // Save combo boxes. Takes two values 
+            // Save combo boxes. Takes two values
             if(isset($_POST['reconn'])) {
                 $this->mungedObject->setShadow(isset($_POST['shadow']) && $TsAcl,$_POST['shadow']);
             }
 
             // Check for changes
-            $this->is_modified |= ($this->sambaMungedDial != $this->mungedObject->getMunged()); 
+            $this->is_modified |= ($this->sambaMungedDial != $this->mungedObject->getMunged());
         }
     }
 
@@ -1048,7 +1048,7 @@ class sambaAccount extends plugin
         $this->attrs['sambaAcctFlags'] = "[{$tmp}{$fill}]";
 
 
-        // Generate rid / primaryGroupId 
+        // Generate rid / primaryGroupId
         if (!isset($this->config->data['SERVERS']['SAMBA'][$this->sambaDomainName]['SID'])){
             msg_dialog::display(_("Warning"), _("Undefined Samba SID detected. Please fix this problem manually!"), WARNING_DIALOG);
         } else {
@@ -1056,7 +1056,7 @@ class sambaAccount extends plugin
             $this->ridBase= $this->config->data['SERVERS']['SAMBA'][$this->sambaDomainName]['RIDBASE'];
         }
 
-        // Need to generate a new uniqe uid/gid combination? 
+        // Need to generate a new uniqe uid/gid combination?
         if ($this->sambaSID == "" || $this->orig_sambaDomainName != $this->sambaDomainName){
             $uidNumber= $this->uidNumber;
             while(TRUE){
@@ -1070,12 +1070,12 @@ class sambaAccount extends plugin
             }
             $this->attrs['sambaSID']= $sid;
 
-            // Check for users primary group 
+            // Check for users primary group
             $ldap->cd($this->config->current['BASE']);
             $ldap->search("(&(objectClass=posixGroup)(gidNumber=".$this->gidNumber."))", array("cn"));
             if ($ldap->count() != 1){
-                msg_dialog::display(_("Warning"), 
-                        _("Cannot convert primary group to samba group: group cannot be identified!"), 
+                msg_dialog::display(_("Warning"),
+                        _("Cannot convert primary group to samba group: group cannot be identified!"),
                         WARNING_DIALOG);
             } else {
                 $attrs= $ldap->fetch();
@@ -1094,20 +1094,20 @@ class sambaAccount extends plugin
             $this->attrs["sambaHomeDrive"]= array();
         }
 
-        // Generate munged dial value 
+        // Generate munged dial value
         $this->attrs["sambaMungedDial"]= $this->mungedObject->getMunged();
 
         // User wants me to fake the idMappings? This is useful for
         //  making winbind resolve the user names in a reasonable amount
-        //  of time in combination with larger databases. 
-        if ($this->config->get_cfg_value("sambaidmapping") == "true"){
+        //  of time in combination with larger databases.
+        if ($this->config->get_cfg_value("sambaidmapping") == "TRUE"){
             $this->attrs['objectClass'][]= "sambaIdmapEntry";
         }
 
-        // Write back to ldap 
+        // Write back to ldap
         $ldap->cd($this->dn);
         $this->cleanup();
-        $ldap->modify ($this->attrs); 
+        $ldap->modify ($this->attrs);
         if (!$ldap->success()){
             msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()));
         }else{
@@ -1191,7 +1191,7 @@ class sambaAccount extends plugin
                         "sambaProfilePath"            => _("Generic profile path") ,
                         "AllowLoginOnTerminalServer"  => _("Allow login on terminal server"),
                         "InheritClientConfig"         => _("Inherit client config"),
-                        "sambaKickoffTime"            => _("Account expires"), 
+                        "sambaKickoffTime"            => _("Account expires"),
                         "enforcePasswordChange"       => _("Enforce password change"),
                         "cannotChangePassword"        => _("Disallow password change") ,
                         "noPasswordRequired"          => _("Login from windows client requires no password"),
@@ -1201,13 +1201,13 @@ class sambaAccount extends plugin
                         "sambaLogonHours"             => _("Logon hours") ,
                         "sambaUserWorkstations"       => _("Allow connection from"))
                         ));
-    }    
+    }
 
     function enable_multiple_support()
     {
         plugin::enable_multiple_support();
         $this->multiple_support_active = TRUE;
-    } 
+    }
 
     function multiple_save_object()
     {
@@ -1247,8 +1247,8 @@ class sambaAccount extends plugin
         foreach (array( "CtxMaxConnectionTime"    => _("Connection"),
                     "CtxMaxDisconnectionTime" => _("Disconnection"),
                     "CtxMaxIdleTime"          => _("IDLE")) as $key => $val){
-            if (in_array($key,$this->multi_boxes) && 
-                    isset($this->mungedObject->ctx[$key]) && 
+            if (in_array($key,$this->multi_boxes) &&
+                    isset($this->mungedObject->ctx[$key]) &&
                     !tests::is_id($this->mungedObject->ctx[$key]) && $val != 0){
                 $message[]=msgPool::invalid($val);
             }
@@ -1287,7 +1287,7 @@ class sambaAccount extends plugin
                 $tmp2[] = $station;
                 $tmp2['count'] ++;
             }
-        } 
+        }
         $ret['sambaUserWorkstations'] = $tmp2;
         return($ret);
     }
@@ -1322,7 +1322,7 @@ class sambaAccount extends plugin
     function multiple_execute()
     {
         return($this->execute());
-    } 
+    }
 
     function get_multi_edit_values()
     {
@@ -1344,13 +1344,13 @@ class sambaAccount extends plugin
 
         if(in_array("inherit",$this->multi_boxes)){
             $ret['inherit'] = $this->mungedObject->getInheritMode();
-        }       
+        }
         if(in_array("CtxInitialProgram",$this->multi_boxes)){
             $ret['CtxInitialProgram'] = $this->mungedObject->ctx['CtxInitialProgram'];
-        } 
+        }
         if(in_array("CtxWorkDirectory",$this->multi_boxes)){
             $ret['CtxWorkDirectory'] = $this->mungedObject->ctx['CtxWorkDirectory'];
-        } 
+        }
 
         /* Time Limits. Be careful here, there are some negations  */
         if(in_array("CtxMaxConnectionTimeF",$this->multi_boxes)){
@@ -1415,7 +1415,7 @@ class sambaAccount extends plugin
     {
         plugin::set_multi_edit_values($values);
 
-        /* Prepare current workstation settings to be merged 
+        /* Prepare current workstation settings to be merged
          *  with multiple edit settings.
          */
         if(isset($values['multiple_sambaUserWorkstations'])){

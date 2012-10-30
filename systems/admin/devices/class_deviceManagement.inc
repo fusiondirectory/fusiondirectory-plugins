@@ -28,7 +28,7 @@ class deviceManagement extends management
 
   var $app_release = ""; // The currently selected release while in release management mode!
 
-  // Tab definition 
+  // Tab definition
   protected $tabClass = "devicetabs";
   protected $tabType = "DEVICETABS";
   protected $aclCategory = "devices";
@@ -61,11 +61,11 @@ class deviceManagement extends management
     if ($this->config->boolValueIsTrue("main", "copyPaste")){
       $this->cpHandler = new CopyPasteHandler($this->config);
     }
-    if($this->config->get_cfg_value("enableSnapshots") == "true"){
+    if($this->config->get_cfg_value("enableSnapshots") == "TRUE"){
       $this->snapHandler = new SnapshotHandler($this->config);
     }
     parent::__construct($config, $ui, "devices", $headpage);
   }
-} 
+}
 // vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

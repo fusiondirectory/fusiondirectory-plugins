@@ -26,7 +26,7 @@ class phoneConferenceManagment extends management
   var $plDescription  = "Conference management";
   var $plIcon  = "plugins/gofon/images/conference.png";
 
-  // Tab definition 
+  // Tab definition
   protected $tabClass = "conferencetabs";
   protected $tabType = "CONFERENCETABS";
   protected $aclCategory = "gofonconference";
@@ -37,9 +37,9 @@ class phoneConferenceManagment extends management
   {
     $this->config = $config;
     $this->ui = $ui;
-   
+
     $this->storagePoints = array(get_ou("phoneConferenceRDN"));
- 
+
     // Build filter
     if (session::global_is_set(get_class($this)."_filter")){
       $filter= session::global_get(get_class($this)."_filter");
@@ -57,11 +57,11 @@ class phoneConferenceManagment extends management
     if ($this->config->boolValueIsTrue("main", "copyPaste")){
       $this->cpHandler = new CopyPasteHandler($this->config);
     }
-    if($this->config->get_cfg_value("enableSnapshots") == "true"){
+    if($this->config->get_cfg_value("enableSnapshots") == "TRUE"){
       $this->snapHandler = new SnapshotHandler($this->config);
     }
     parent::__construct($config, $ui, "conferences", $headpage);
   }
-} 
+}
 // vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

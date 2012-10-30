@@ -26,7 +26,7 @@ class sudoManagement extends management
   var $plDescription  = "Sudo management";
   var $plIcon  = "plugins/sudo/images/sudo.png";
 
-  // Tab definition 
+  // Tab definition
   protected $tabClass = "sudotabs";
   protected $tabType = "SUDOTABS";
   protected $aclCategory = "sudo";
@@ -37,9 +37,9 @@ class sudoManagement extends management
   {
     $this->config = $config;
     $this->ui = $ui;
-   
+
     $this->storagePoints = array(get_ou("sudoRDN"));
- 
+
     // Build filter
     if (0 && session::global_is_set(get_class($this)."_filter")){
       $filter= session::global_get(get_class($this)."_filter");
@@ -57,7 +57,7 @@ class sudoManagement extends management
     if ($this->config->boolValueIsTrue("main", "copyPaste")){
       $this->cpHandler = new CopyPasteHandler($this->config);
     }
-    if($this->config->get_cfg_value("enableSnapshots") == "true"){
+    if($this->config->get_cfg_value("enableSnapshots") == "TRUE"){
       $this->snapHandler = new SnapshotHandler($this->config);
     }
     $this->registerAction("new_default", "newEntry");
@@ -74,6 +74,6 @@ class sudoManagement extends management
     }
     if(!empty($str)) return($str);
   }
-} 
+}
 // vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>
