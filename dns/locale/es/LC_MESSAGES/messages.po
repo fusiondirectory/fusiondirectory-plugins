@@ -1,22 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Benoit Mortier <benoit.mortier@opensides.be>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-27 13:06+0200\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
+"POT-Creation-Date: 2012-08-22 18:37+0200\n"
 "PO-Revision-Date: 2012-05-26 16:32+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Spanish (http://www.transifex.com/projects/p/FusionDirectory/"
-"language/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/FusionDirectory/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: admin/systems/services/dns/class_servDNSeditZoneEntries.inc:126
@@ -87,8 +86,7 @@ msgstr "Eliminar"
 #: admin/systems/services/dns/class_servDNSeditZoneEntries.inc:529
 #, php-format
 msgid "The syntax of entry %s (record type %s, value %s) is invalid!"
-msgstr ""
-"¡El formato de la entrada %s (registro tipo %s, valor %s) no es válido!"
+msgstr "¡El formato de la entrada %s (registro tipo %s, valor %s) no es válido!"
 
 #: admin/systems/services/dns/class_servDNSeditZoneEntries.inc:529
 msgid "Example"
@@ -163,9 +161,7 @@ msgstr "Ha decidido migrar la configuración DNS desde el servidor '%s'."
 msgid ""
 "The migration will be started when you save this system. To cancel this "
 "action, use the cancel button below."
-msgstr ""
-"La migración comenzara cuando grabe el sistema. Para cancelar esta acción, "
-"use el botón Cancelar."
+msgstr "La migración comenzara cuando grabe el sistema. Para cancelar esta acción, use el botón Cancelar."
 
 #: admin/systems/services/dns/class_servDNS.inc:304
 #: admin/systems/services/dns/class_servDNS.inc:635
@@ -186,8 +182,7 @@ msgstr "Clase"
 #: admin/systems/services/dns/class_servDNS.inc:370
 #, php-format
 msgid "Cannot delete the selected zone. It is still in use by '%s'"
-msgstr ""
-"No se puede eliminar la zona seleccionada, porque está siendo usada por '%s'"
+msgstr "No se puede eliminar la zona seleccionada, porque está siendo usada por '%s'"
 
 #: admin/systems/services/dns/class_servDNS.inc:384
 #, php-format
@@ -285,16 +280,12 @@ msgstr "Registros de zona"
 #: admin/systems/services/dns/class_DNS.inc:181
 #, php-format
 msgid "Cannot find reverse zone for DNS zone '%s'. Parsing zone aborted."
-msgstr ""
-"No se puede encontrar la zona inversa para la zona dns '%s'. Se cancela el "
-"análisis de la zona."
+msgstr "No se puede encontrar la zona inversa para la zona dns '%s'. Se cancela el análisis de la zona."
 
 #: admin/systems/services/dns/class_DNS.inc:186
 #, php-format
 msgid "Found more than one reverse zone for '%s'. Parsing zone aborted."
-msgstr ""
-"Se ha encontrado mas de una zona inversa para la zona '%s'. Se cancela el "
-"análisis de la zona."
+msgstr "Se ha encontrado mas de una zona inversa para la zona '%s'. Se cancela el análisis de la zona."
 
 #: admin/systems/services/dns/class_DNS.inc:650
 #, php-format
@@ -309,9 +300,7 @@ msgstr "Iniciada la gestión DNS"
 msgid ""
 "This includes 'all' DNS zones that are located within this server. Please "
 "double check if your really want to do this."
-msgstr ""
-"Esto incluye 'todas' las zonas DNS que hay localizadas en este servidor. Por "
-"favor pulse dos veces si quiere realmente hacer esto."
+msgstr "Esto incluye 'todas' las zonas DNS que hay localizadas en este servidor. Por favor pulse dos veces si quiere realmente hacer esto."
 
 #: admin/systems/services/dns/servdns.tpl:14
 msgid "Following objects will be taken over"
@@ -363,8 +352,7 @@ msgstr "Dirección de red"
 #, php-format
 msgid ""
 "The specified network address and the network class (%s/%s) do not match!"
-msgstr ""
-"¡La dirección de red indicada y la mascara de red (%s/%s) no corresponden!"
+msgstr "¡La dirección de red indicada y la mascara de red (%s/%s) no corresponden!"
 
 #: admin/systems/services/dns/servdnseditzone.tpl:1
 msgid "Generic"
@@ -410,17 +398,13 @@ msgstr "Registros de zona global"
 msgid ""
 "This dialog allows you to configure all components of this DNS zone on a "
 "single list."
-msgstr ""
-"Este diálogo le permite configurar todos los componente de la zona DNS en "
-"una sola lista."
+msgstr "Este diálogo le permite configurar todos los componente de la zona DNS en una sola lista."
 
 #: admin/systems/services/dns/servDNSeditZoneEntries.tpl:5
 msgid ""
 "This dialog can't be used until the currently edited zone was saved or the "
 "zone entry exists in the ldap database."
-msgstr ""
-"Este diálogo no puede ser ser usado hasta que la zona que actualmente está "
-"editando sea guardada o exista una entrada de zona en la base de datos LDAP."
+msgstr "Este diálogo no puede ser ser usado hasta que la zona que actualmente está editando sea guardada o exista una entrada de zona en la base de datos LDAP."
 
 #: admin/systems/services/dns/servDNSeditZoneEntries.tpl:13
 msgid "Create a new DNS zone entry"

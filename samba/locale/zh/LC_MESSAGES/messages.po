@@ -1,71 +1,64 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 #  Jiang Xin <worldhello.net@gmail.com>, 2007.
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-27 13:06+0200\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
+"POT-Creation-Date: 2012-08-22 18:37+0200\n"
 "PO-Revision-Date: 2012-05-26 16:52+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Chinese (http://www.transifex.com/projects/p/FusionDirectory/"
-"language/zh/)\n"
-"Language: zh\n"
+"Language-Team: Chinese (http://www.transifex.com/projects/p/FusionDirectory/language/zh/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: zh\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: admin/systems/samba/class_winGeneric.inc:135
+#: admin/systems/samba/class_winGeneric.inc:132
 msgid "network"
 msgstr ""
 
-#: admin/systems/samba/class_winGeneric.inc:176
-#: admin/systems/samba/class_winGeneric.inc:424
+#: admin/systems/samba/class_winGeneric.inc:168
+#: admin/systems/samba/class_winGeneric.inc:316
 #: personal/samba/class_sambaAccount.inc:850
 #: personal/samba/class_sambaAccount.inc:1112
 msgid "LDAP error"
 msgstr "LDAP 错误"
 
-#: admin/systems/samba/class_winGeneric.inc:207
+#: admin/systems/samba/class_winGeneric.inc:198
 msgid "Error"
 msgstr "错误"
 
-#: admin/systems/samba/class_winGeneric.inc:267
-#: admin/systems/samba/class_winGeneric.inc:448
+#: admin/systems/samba/class_winGeneric.inc:231
+#: admin/systems/samba/class_winGeneric.inc:341
 msgid "Name"
 msgstr "名称"
 
-#: admin/systems/samba/class_winGeneric.inc:439
+#: admin/systems/samba/class_winGeneric.inc:332
 msgid "Win generic"
 msgstr ""
 
-#: admin/systems/samba/class_winGeneric.inc:440
+#: admin/systems/samba/class_winGeneric.inc:333
 msgid "Windows workstation generic"
 msgstr ""
 
-#: admin/systems/samba/class_winGeneric.inc:445
-msgid "Windows workstation"
+#: admin/systems/samba/class_winGeneric.inc:338
+msgid "Win workstation"
 msgstr ""
 
-#: admin/systems/samba/class_winGeneric.inc:449
+#: admin/systems/samba/class_winGeneric.inc:342
 #: admin/systems/samba/wingeneric.tpl:17
 msgid "Base"
 msgstr "位置"
 
-#: admin/systems/samba/class_winGeneric.inc:450
+#: admin/systems/samba/class_winGeneric.inc:343
 #: admin/systems/samba/wingeneric.tpl:29
 msgid "Description"
 msgstr "描述"
-
-#: admin/systems/samba/class_winGeneric.inc:451
-#: admin/systems/samba/wingeneric.tpl:37 personal/samba/samba3.tpl:26
-#: personal/samba/class_sambaAccount.inc:1189
-msgid "Domain"
-msgstr "域"
 
 #: admin/systems/samba/wingeneric.tpl:6
 msgid "Machine name"
@@ -88,6 +81,10 @@ msgstr "通用配置"
 #: personal/samba/class_sambaAccount.inc:1239
 msgid "Home directory"
 msgstr "用户主目录"
+
+#: personal/samba/samba3.tpl:26 personal/samba/class_sambaAccount.inc:1189
+msgid "Domain"
+msgstr "域"
 
 #: personal/samba/samba3.tpl:35
 msgid "Show information"

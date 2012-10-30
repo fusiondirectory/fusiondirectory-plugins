@@ -1,23 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Christophe Augello <christophe@augello.be>, 2012.
 #  Niels Klomp (CareWorks ICT Services) <nk@careworks.nl>, 2005.
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-27 13:06+0200\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
+"POT-Creation-Date: 2012-08-22 18:37+0200\n"
 "PO-Revision-Date: 2012-08-24 14:41+0000\n"
 "Last-Translator: Christophe Augello <christophe@augello.be>\n"
-"Language-Team: Dutch (http://www.transifex.com/projects/p/FusionDirectory/"
-"language/nl/)\n"
-"Language: nl\n"
+"Language-Team: Dutch (http://www.transifex.com/projects/p/FusionDirectory/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: admin/groups/mail/mail_admins.tpl:4
@@ -121,14 +120,12 @@ msgstr "E-mail"
 msgid ""
 "Remove shared folder from mail server database when entry gets removed in "
 "LDAP"
-msgstr ""
-"Verwijder de gedeelde map van de mail server database als item wordt "
-"verwijderd in LDAP"
+msgstr "Verwijder de gedeelde map van de mail server database als item wordt verwijderd in LDAP"
 
 #: admin/groups/mail/class_groupMail.inc:326
-msgid "Remove the shared folder and all its contents after saving this account"
-msgstr ""
-"Verwijder de gedeelde map en de inhoud na het opslaan van deze account."
+msgid ""
+"Remove the shared folder and all its contents after saving this account"
+msgstr "Verwijder de gedeelde map en de inhoud na het opslaan van deze account."
 
 #: admin/groups/mail/class_groupMail.inc:371
 #: admin/groups/mail/class_groupMail.inc:395
@@ -245,9 +242,7 @@ msgstr "Kan quota instellingen niet schrijven : %s"
 msgid ""
 "The group 'cn' has changed. It can't be changed due to the fact that mail "
 "method '%s' relies on it!"
-msgstr ""
-"De groep 'cn' is veranderd. Het kan niet worden gewijzigd omdat de e-mail "
-"methode '%s' daar op gebaseerd is!"
+msgstr "De groep 'cn' is veranderd. Het kan niet worden gewijzigd omdat de e-mail methode '%s' daar op gebaseerd is!"
 
 #: admin/groups/mail/class_groupMail.inc:879
 #: admin/groups/mail/paste_mail.tpl:8 admin/groups/mail/mail.tpl:7
@@ -271,9 +266,7 @@ msgstr "Mail max grootte"
 
 #: admin/groups/mail/class_groupMail.inc:915
 msgid "You need to set the maximum mail size in order to reject anything."
-msgstr ""
-"U moet de maximale E-mail grootte instellen om uberhaupt iets af te kunnen "
-"afwijzen."
+msgstr "U moet de maximale E-mail grootte instellen om uberhaupt iets af te kunnen afwijzen."
 
 #: admin/groups/mail/class_groupMail.inc:919
 #: admin/groups/mail/class_groupMail.inc:1024
@@ -384,9 +377,7 @@ msgstr "Geavanceerde E-mail opties"
 
 #: admin/groups/mail/mail.tpl:193 personal/mail/generic.tpl:285
 msgid "Select if user can only send and receive inside his own domain"
-msgstr ""
-"Selecteer om alleen binnen het eigen domein E-mail te laten ontvangen en "
-"versturen"
+msgstr "Selecteer om alleen binnen het eigen domein E-mail te laten ontvangen en versturen"
 
 #: admin/groups/mail/mail.tpl:195 personal/mail/generic.tpl:287
 msgid "User is only allowed to send and receive local mails"
@@ -539,14 +530,12 @@ msgstr "Start POP3 SSL service"
 #: admin/systems/services/imap/goImapServer.tpl:99
 #: admin/systems/services/mail/goMailServer.tpl:204
 msgid "The server must be saved before you can use the status flag."
-msgstr ""
-"Deze server moet eerst opgeslagen worden voordat u deze status kan gebruiken."
+msgstr "Deze server moet eerst opgeslagen worden voordat u deze status kan gebruiken."
 
 #: admin/systems/services/imap/goImapServer.tpl:101
 #: admin/systems/services/mail/goMailServer.tpl:206
 msgid "The service must be saved before you can use the status flag."
-msgstr ""
-"De service moet eerst opgeslagen worden voordat u deze status kan gebruiken."
+msgstr "De service moet eerst opgeslagen worden voordat u deze status kan gebruiken."
 
 #: admin/systems/services/imap/goImapServer.tpl:104
 #: admin/systems/services/mail/goMailServer.tpl:209
@@ -943,9 +932,7 @@ msgstr "Mail info"
 msgid ""
 "LDAP entry has been removed but cyrus mailbox (%s) is kept.\n"
 "Please delete it manually!"
-msgstr ""
-"LDAP invoer is verwijderd, maar cyrus mailbox (%s) wordt gehouden.⏎ Gelieve "
-"deze handmatig te verwijderen!"
+msgstr "LDAP invoer is verwijderd, maar cyrus mailbox (%s) wordt gehouden.⏎ Gelieve deze handmatig te verwijderen!"
 
 #: personal/mail/class_mail-methods-cyrus.inc:402
 #: personal/mail/class_mail-methods-cyrus.inc:439
@@ -1027,9 +1014,7 @@ msgstr "Ontleding succesvol"
 msgid ""
 "The specified mail server '%s' does not exist within the FusionDirectory "
 "configuration."
-msgstr ""
-"De gespecifieerde mail server '%s' bestaat niet in de FusionDirectory "
-"configuratie."
+msgstr "De gespecifieerde mail server '%s' bestaat niet in de FusionDirectory configuratie."
 
 #: personal/mail/sieve/class_sieveManagement.inc:203
 msgid "No script name specified!"
@@ -1391,14 +1376,12 @@ msgstr "Kies een geldige operator."
 #: personal/mail/sieve/class_sieveElement_If.inc:654
 msgid ""
 "Invalid character found in address attribute. Quotes are not allowed here."
-msgstr ""
-"Ongeldig teken gevonden in  adres attribuut.  Quotes zijn niet toegestaan."
+msgstr "Ongeldig teken gevonden in  adres attribuut.  Quotes zijn niet toegestaan."
 
 #: personal/mail/sieve/class_sieveElement_If.inc:669
 msgid ""
 "Invalid character found in value attribute. Quotes are not allowed here."
-msgstr ""
-"Ongeldig teken gevonden in attribuut waarde.  Quotes zijn niet toegestaan."
+msgstr "Ongeldig teken gevonden in attribuut waarde.  Quotes zijn niet toegestaan."
 
 #: personal/mail/sieve/class_sieveElement_If.inc:727
 #: personal/mail/sieve/class_sieveElement_If.inc:1060
@@ -1460,8 +1443,7 @@ msgstr "Plaats hier een e-mailadres"
 
 #: personal/mail/sieve/class_sieveElement_Reject.inc:21
 msgid "Invalid character found, quotes are not allowed in a reject message."
-msgstr ""
-"Ongeldig teken gevonden, qoutes zijn niet toegestaan ​​in een afkeur bericht. "
+msgstr "Ongeldig teken gevonden, qoutes zijn niet toegestaan ​​in een afkeur bericht. "
 
 #: personal/mail/sieve/class_sieveElement_Reject.inc:37
 msgid "Your reject text here"
@@ -1513,9 +1495,7 @@ msgstr "Importeer sieve script"
 msgid ""
 "Please select the sieve script you want to import. Use the import button to "
 "import the script or the cancel button to abort."
-msgstr ""
-"Selecteer de sieve script dat u wilt importeren. Gebruik de knop Importeren "
-"om het script of de knop Annuleren om de import stop zetten."
+msgstr "Selecteer de sieve script dat u wilt importeren. Gebruik de knop Importeren om het script of de knop Annuleren om de import stop zetten."
 
 #: personal/mail/sieve/templates/import_script.tpl:5
 msgid "Script to import"
@@ -1567,16 +1547,12 @@ msgstr "Lijst van sieve scripts"
 msgid ""
 "Connection to the sieve server could not be established, the "
 "authentification attribute is empty."
-msgstr ""
-"De verbinding met de sieve server kon niet worden vastgesteld, de "
-"authentificatie attribuut is leeg."
+msgstr "De verbinding met de sieve server kon niet worden vastgesteld, de authentificatie attribuut is leeg."
 
 #: personal/mail/sieve/templates/management.tpl:6
 msgid ""
 "Please verify that the attributes uid and mail are not empty and try again."
-msgstr ""
-"Controleer of de attributen uid en mail niet leeg zijn en probeer het "
-"opnieuw."
+msgstr "Controleer of de attributen uid en mail niet leeg zijn en probeer het opnieuw."
 
 #: personal/mail/sieve/templates/management.tpl:12
 msgid "Connection to the sieve server could not be established."
@@ -1588,11 +1564,9 @@ msgstr "Mogelijk is de sieve account nog niet aangemaakt."
 
 #: personal/mail/sieve/templates/management.tpl:19
 msgid ""
-"Be careful. All your changes will be saved directly to sieve, if you use the "
-"save button below."
-msgstr ""
-"Wees voorzichtig. Al uw wijzigingen worden rechtstreeks opgeslagen op sieve, "
-"als je de bewaar knop hieronder druk."
+"Be careful. All your changes will be saved directly to sieve, if you use the"
+" save button below."
+msgstr "Wees voorzichtig. Al uw wijzigingen worden rechtstreeks opgeslagen op sieve, als je de bewaar knop hieronder druk."
 
 #: personal/mail/sieve/templates/management.tpl:22
 msgid "Create new script"
@@ -1728,21 +1702,16 @@ msgstr "Bewerken"
 
 #: personal/mail/sieve/templates/remove_script.tpl:6
 msgid ""
-"Please double check if your really want to do this since there is no way for "
-"FusionDirectory to get your data back."
-msgstr ""
-"Verzeker u ervan dat u dit daadwerkelijk wil doorvoeren, aangezien het "
-"onmogelijk is voor FusionDirectory om de data terug te halen."
+"Please double check if your really want to do this since there is no way for"
+" FusionDirectory to get your data back."
+msgstr "Verzeker u ervan dat u dit daadwerkelijk wil doorvoeren, aangezien het onmogelijk is voor FusionDirectory om de data terug te halen."
 
 #: personal/mail/sieve/templates/remove_script.tpl:10
 msgid ""
 "Best thing to do before performing this action would be to save the current "
 "script in a file. So - if you've done so - press 'Delete' to continue or "
 "'Cancel' to abort."
-msgstr ""
-"Voordat u deze actie uitvoer, best is het huidige script op te slaan in een "
-"bestand. Eens dit gedaan is druk op 'Verwijderen' om door te gaan of "
-"'Annuleren' om af te breken."
+msgstr "Voordat u deze actie uitvoer, best is het huidige script op te slaan in een bestand. Eens dit gedaan is druk op 'Verwijderen' om door te gaan of 'Annuleren' om af te breken."
 
 #: personal/mail/sieve/templates/element_redirect.tpl:18
 msgid "Redirect mail to following recipients"
@@ -1803,11 +1772,9 @@ msgstr "operator"
 
 #: personal/mail/sieve/templates/create_script.tpl:2
 msgid ""
-"Please enter the name for the new script below. Script names must consist of "
-"lower case characters only."
-msgstr ""
-"Voer hieronder de naam voor het nieuwe script. Script namen moeten enkel "
-"bestaan ​​uit kleine letters."
+"Please enter the name for the new script below. Script names must consist of"
+" lower case characters only."
+msgstr "Voer hieronder de naam voor het nieuwe script. Script namen moeten enkel bestaan ​​uit kleine letters."
 
 #: personal/mail/sieve/templates/create_script.tpl:8
 msgid "Script name"
@@ -2043,8 +2010,7 @@ msgstr "Sieve Management"
 
 #: personal/mail/generic.tpl:144
 msgid "Select if you want to forward mails without getting own copies of them"
-msgstr ""
-"Selecteer indien u E-mail door wil sturen zonder zelf kopieën te ontvangen"
+msgstr "Selecteer indien u E-mail door wil sturen zonder zelf kopieën te ontvangen"
 
 #: personal/mail/generic.tpl:144
 msgid "No delivery to own mailbox"
@@ -2053,8 +2019,7 @@ msgstr "Geen aflevering in eigen mailbox"
 #: personal/mail/generic.tpl:151
 msgid ""
 "Select to automatically response with the vacation message defined below"
-msgstr ""
-"Selecteer om automatisch te reageren met het onderstaande afwezigheidsbericht"
+msgstr "Selecteer om automatisch te reageren met het onderstaande afwezigheidsbericht"
 
 #: personal/mail/generic.tpl:152
 msgid "Activate vacation message"

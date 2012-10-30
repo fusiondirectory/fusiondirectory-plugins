@@ -1,29 +1,28 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 #   <pavel.borecki@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-27 13:06+0200\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
+"POT-Creation-Date: 2012-08-22 18:37+0200\n"
 "PO-Revision-Date: 2012-05-26 16:33+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/"
-"FusionDirectory/language/cs_CZ/)\n"
-"Language: cs_CZ\n"
+"Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/FusionDirectory/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: cs_CZ\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
 #: admin/macro/macro-list.tpl:13 admin/macro/class_gofonMacro.inc:567
 #: admin/macro/generic.tpl:27 admin/conference/conf-list.tpl:13
 #: admin/conference/class_phoneConferenceGeneric.inc:737
 #: admin/conference/generic.tpl:49 admin/systems/gofon/phone.tpl:17
-#: admin/systems/gofon/class_phoneGeneric.inc:529
+#: admin/systems/gofon/class_phoneGeneric.inc:521
 msgid "Base"
 msgstr "základ"
 
@@ -46,7 +45,7 @@ msgstr "makro"
 #: admin/systems/gofon/class_phoneGeneric.inc:348
 #: admin/systems/gofon/class_phoneGeneric.inc:351
 #: admin/systems/gofon/class_phoneGeneric.inc:366
-#: admin/systems/gofon/class_phoneGeneric.inc:528
+#: admin/systems/gofon/class_phoneGeneric.inc:520
 msgid "Name"
 msgstr "jméno"
 
@@ -54,7 +53,7 @@ msgstr "jméno"
 #: admin/macro/generic.tpl:42 admin/conference/conf-list.xml:49
 #: admin/conference/class_phoneConferenceGeneric.inc:738
 #: admin/conference/generic.tpl:92 admin/systems/gofon/phone.tpl:29
-#: admin/systems/gofon/class_phoneGeneric.inc:530
+#: admin/systems/gofon/class_phoneGeneric.inc:522
 msgid "Description"
 msgstr "popis"
 
@@ -86,9 +85,7 @@ msgstr "filtr"
 msgid ""
 "Macro could not be removed from server '%s', please check database "
 "consistency!"
-msgstr ""
-"Makro se nezdařilo odebrat ze serveru '%s', zkontrolujte prosím soudržnost "
-"(konzistenci) databáze!"
+msgstr "Makro se nezdařilo odebrat ze serveru '%s', zkontrolujte prosím soudržnost (konzistenci) databáze!"
 
 #: admin/macro/class_gofonMacro.inc:264
 #, php-format
@@ -108,17 +105,13 @@ msgstr "Chybějící rozšíření na řádku %s!"
 #: admin/macro/class_gofonMacro.inc:281
 #, php-format
 msgid "Duplicate combination of 'extension' and 'priority' in line %s!"
-msgstr ""
-"Zdvojená kombinace „rozšíření (extension)“ a „priorita (priority)“ na řádku "
-"%s!"
+msgstr "Zdvojená kombinace „rozšíření (extension)“ a „priorita (priority)“ na řádku %s!"
 
 #: admin/macro/class_gofonMacro.inc:317
 #, php-format
 msgid ""
 "Macro could not be added to server '%s', please check database consistency!"
-msgstr ""
-"Nezdařilo se přidat makro na server '%s', zkontrolujte prosím neporušenost "
-"databáze!"
+msgstr "Nezdařilo se přidat makro na server '%s', zkontrolujte prosím neporušenost databáze!"
 
 #: admin/macro/class_gofonMacro.inc:343 admin/macro/class_gofonMacro.inc:452
 #: admin/macro/class_gofonMacro.inc:461 admin/macro/class_gofonMacro.inc:499
@@ -130,12 +123,12 @@ msgstr ""
 #: admin/ogroups/gofon/class_phonequeue.inc:787
 #: admin/ogroups/gofon/class_phonequeue.inc:829
 #: addons/fonreports/class_fonreport.inc:225
-#: personal/phoneaccount/class_phoneAccount.inc:1060
-#: personal/phoneaccount/class_phoneAccount.inc:1180
-#: personal/phoneaccount/class_phoneAccount.inc:1186
-#: personal/phoneaccount/class_phoneAccount.inc:1400
-#: personal/phoneaccount/class_phoneAccount.inc:1482
-#: personal/phoneaccount/class_phoneAccount.inc:1560
+#: personal/phoneaccount/class_phoneAccount.inc:1056
+#: personal/phoneaccount/class_phoneAccount.inc:1176
+#: personal/phoneaccount/class_phoneAccount.inc:1182
+#: personal/phoneaccount/class_phoneAccount.inc:1396
+#: personal/phoneaccount/class_phoneAccount.inc:1478
+#: personal/phoneaccount/class_phoneAccount.inc:1556
 msgid "Error"
 msgstr "chyba"
 
@@ -145,8 +138,8 @@ msgstr "chyba"
 #: admin/ogroups/gofon/class_phonequeue.inc:696
 #: addons/fonreports/class_fonreport.inc:195
 #: addons/fonreports/class_fonreport.inc:225
-#: personal/phoneaccount/class_phoneAccount.inc:470
-#: personal/phoneaccount/class_phoneAccount.inc:1075
+#: personal/phoneaccount/class_phoneAccount.inc:466
+#: personal/phoneaccount/class_phoneAccount.inc:1071
 msgid "GOfon"
 msgstr "GOfon"
 
@@ -170,9 +163,9 @@ msgstr "Nemohu odstranit položku, protože ji používá '%s'!"
 
 #: admin/macro/class_gofonMacro.inc:465
 #: addons/fonreports/class_fonreport.inc:195
-#: personal/phoneaccount/class_phoneAccount.inc:470
-#: personal/phoneaccount/class_phoneAccount.inc:1075
-#: personal/phoneaccount/class_phoneAccount.inc:1599
+#: personal/phoneaccount/class_phoneAccount.inc:466
+#: personal/phoneaccount/class_phoneAccount.inc:1071
+#: personal/phoneaccount/class_phoneAccount.inc:1595
 msgid "Configuration error"
 msgstr "chyba nastavení"
 
@@ -187,13 +180,13 @@ msgstr "chyba nastavení"
 #: admin/systems/services/gofon/class_goFonServer.inc:166
 #: admin/ogroups/gofon/class_phonequeue.inc:802
 #: admin/ogroups/gofon/class_phonequeue.inc:857
-#: personal/phoneaccount/class_phoneAccount.inc:1508
-#: personal/phoneaccount/class_phoneAccount.inc:1641
+#: personal/phoneaccount/class_phoneAccount.inc:1504
+#: personal/phoneaccount/class_phoneAccount.inc:1637
 msgid "LDAP error"
 msgstr "chyba LDAPu"
 
 #: admin/macro/class_gofonMacro.inc:556
-#: admin/systems/gofon/class_phoneGeneric.inc:519
+#: admin/systems/gofon/class_phoneGeneric.inc:511
 msgid "Generic"
 msgstr "obecné"
 
@@ -242,12 +235,12 @@ msgstr "nejste oprávněn(a) zobrazit nastavení parametrů makra"
 #: admin/macro/remove.tpl:2
 #: admin/conference/class_phoneConferenceGeneric.inc:399
 #: admin/conference/remove.tpl:2
-#: personal/phoneaccount/class_phoneAccount.inc:361
-#: personal/phoneaccount/class_phoneAccount.inc:374
-#: personal/phoneaccount/class_phoneAccount.inc:632
-#: personal/phoneaccount/class_phoneAccount.inc:671
-#: personal/phoneaccount/class_phoneAccount.inc:1551
-#: personal/phoneaccount/class_phoneAccount.inc:1890
+#: personal/phoneaccount/class_phoneAccount.inc:357
+#: personal/phoneaccount/class_phoneAccount.inc:370
+#: personal/phoneaccount/class_phoneAccount.inc:628
+#: personal/phoneaccount/class_phoneAccount.inc:667
+#: personal/phoneaccount/class_phoneAccount.inc:1547
+#: personal/phoneaccount/class_phoneAccount.inc:1886
 msgid "Warning"
 msgstr "varování"
 
@@ -255,16 +248,11 @@ msgstr "varování"
 msgid ""
 "Please double check if you really want to do this since there is no way for "
 "FusionDirectory to get your data back."
-msgstr ""
-"Prosím velmi dobře si rozmyslete, zda to opravdu chcete udělat, protože "
-"provedené změny už ve FusionDirectory nepůjde vzít nijak jednoduše zpět "
-"(nanejvýš složitě ze záloh, pokud existují a obsahují potřebná data)!"
+msgstr "Prosím velmi dobře si rozmyslete, zda to opravdu chcete udělat, protože provedené změny už ve FusionDirectory nepůjde vzít nijak jednoduše zpět (nanejvýš složitě ze záloh, pokud existují a obsahují potřebná data)!"
 
 #: admin/macro/remove.tpl:10 admin/conference/remove.tpl:10
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr ""
-"Tedy – pokud jste si jist(a), stiskněte 'smazat'. V opačném případě operaci "
-"zrušte pomocí 'zrušit'."
+msgstr "Tedy – pokud jste si jist(a), stiskněte 'smazat'. V opačném případě operaci zrušte pomocí 'zrušit'."
 
 #: admin/macro/class_gofonMacroParameters.inc:221
 #: personal/phoneaccount/generic.tpl:125 personal/phoneaccount/generic.tpl:127
@@ -290,8 +278,7 @@ msgstr "smazat nepoužívané"
 #: admin/macro/class_gofonMacroParameters.inc:361
 #, php-format
 msgid "Parameter %s contains invalid character. '!,#' is used as delimiter!"
-msgstr ""
-"Parametr %s obsahuje neplatné znaky. '!,#' nelze použít jako oddělovač!"
+msgstr "Parametr %s obsahuje neplatné znaky. '!,#' nelze použít jako oddělovač!"
 
 #: admin/macro/class_gofonMacroParameters.inc:366
 #, php-format
@@ -299,7 +286,7 @@ msgid "Parameter %s is invalid!"
 msgstr "Parametr %s je neplatný!"
 
 #: admin/macro/class_gofonMacroParameters.inc:395
-#: personal/phoneaccount/class_phoneAccount.inc:1632
+#: personal/phoneaccount/class_phoneAccount.inc:1628
 msgid "Information"
 msgstr "informace"
 
@@ -307,9 +294,7 @@ msgstr "informace"
 msgid ""
 "Number of parameters for this macro has changed. Please update all users "
 "using it!"
-msgstr ""
-"Počet parametrů tohoto makra se změnil. Prosím aktualizujte nastavení u "
-"všech, kteří jej využívají!"
+msgstr "Počet parametrů tohoto makra se změnil. Prosím aktualizujte nastavení u všech, kteří jej využívají!"
 
 #: admin/macro/generic.tpl:18
 msgid "Macro name to be displayed"
@@ -342,20 +327,18 @@ msgstr "konference"
 
 #: admin/conference/class_phoneConferenceGeneric.inc:104
 #: admin/ogroups/gofon/class_phonequeue.inc:110
-#: personal/phoneaccount/class_phoneAccount.inc:163
+#: personal/phoneaccount/class_phoneAccount.inc:159
 msgid "Obsolete entry"
 msgstr "zastaralá položka"
 
 #: admin/conference/class_phoneConferenceGeneric.inc:104
 #: admin/ogroups/gofon/class_phonequeue.inc:110
-#: personal/phoneaccount/class_phoneAccount.inc:163
+#: personal/phoneaccount/class_phoneAccount.inc:159
 #, php-format
 msgid ""
 "The current home server is not available anymore. It will be moved to '%s' "
 "if you save this entry!"
-msgstr ""
-"Současný domovský server již není k dispozici. Uložením této položky dojde k "
-"přesunutí na '%s'!"
+msgstr "Současný domovský server již není k dispozici. Uložením této položky dojde k přesunutí na '%s'!"
 
 #: admin/conference/class_phoneConferenceGeneric.inc:233
 #, php-format
@@ -386,11 +369,9 @@ msgstr "životnost"
 #: admin/conference/class_phoneConferenceGeneric.inc:400
 #, php-format
 msgid ""
-"FusionDirectory identified problems with your MySQL table definition, please "
-"activate debugging for details."
-msgstr ""
-"FusionDirectory zjistil problém s definicí tabulky ve Vaší databázi MySQL – "
-"pro získání podrobnějších informací zapněte režim ladění."
+"FusionDirectory identified problems with your MySQL table definition, please"
+" activate debugging for details."
+msgstr "FusionDirectory zjistil problém s definicí tabulky ve Vaší databázi MySQL – pro získání podrobnějších informací zapněte režim ladění."
 
 #: admin/conference/class_phoneConferenceGeneric.inc:606
 #: admin/conference/class_phoneConferenceGeneric.inc:608
@@ -422,8 +403,8 @@ msgstr "jazyk"
 #: admin/ogroups/gofon/class_phonequeue.inc:275
 #: admin/ogroups/gofon/class_phonequeue.inc:893
 #: admin/ogroups/gofon/phonequeue.tpl:50
-#: personal/phoneaccount/class_phoneAccount.inc:1382
-#: personal/phoneaccount/class_phoneAccount.inc:1740
+#: personal/phoneaccount/class_phoneAccount.inc:1378
+#: personal/phoneaccount/class_phoneAccount.inc:1736
 #: personal/phoneaccount/generic.tpl:58
 msgid "Home server"
 msgstr "domácí server"
@@ -464,7 +445,7 @@ msgid "Format"
 msgstr "formát"
 
 #: admin/conference/class_phoneConferenceGeneric.inc:754
-#: personal/phoneaccount/class_phoneAccount.inc:1737
+#: personal/phoneaccount/class_phoneAccount.inc:1733
 msgid "Telephone number"
 msgstr "telefonní číslo"
 
@@ -482,7 +463,7 @@ msgstr "název nově vytvářené konference"
 
 #: admin/conference/paste_generic.tpl:15 admin/conference/generic.tpl:114
 #: admin/ogroups/gofon/class_phonequeue.inc:865
-#: personal/phoneaccount/class_phoneAccount.inc:1426
+#: personal/phoneaccount/class_phoneAccount.inc:1422
 msgid "Phone number"
 msgstr "telefonní číslo"
 
@@ -571,60 +552,60 @@ msgstr "nastavení sítě"
 msgid "IP address"
 msgstr "IP addresa"
 
-#: admin/systems/gofon/class_phoneGeneric.inc:520
+#: admin/systems/gofon/class_phoneGeneric.inc:512
 msgid "Phone generic"
 msgstr "telefon – obecné"
 
-#: admin/systems/gofon/class_phoneGeneric.inc:525
-#: personal/phoneaccount/class_phoneAccount.inc:1739
+#: admin/systems/gofon/class_phoneGeneric.inc:517
+#: personal/phoneaccount/class_phoneAccount.inc:1735
 msgid "Phone hardware"
 msgstr "typ telefonního přístroje"
 
-#: admin/systems/gofon/class_phoneGeneric.inc:531
+#: admin/systems/gofon/class_phoneGeneric.inc:523
 msgid "SIP Mode"
 msgstr "režim SIP"
 
-#: admin/systems/gofon/class_phoneGeneric.inc:532
+#: admin/systems/gofon/class_phoneGeneric.inc:524
 msgid "SIP DTMF mode"
 msgstr "režim SIP DTMF"
 
-#: admin/systems/gofon/class_phoneGeneric.inc:533
+#: admin/systems/gofon/class_phoneGeneric.inc:525
 msgid "SIP Default ip"
 msgstr "výchozí IP pro SIP"
 
-#: admin/systems/gofon/class_phoneGeneric.inc:534
+#: admin/systems/gofon/class_phoneGeneric.inc:526
 msgid "SIP Qualify"
 msgstr "kontrolovat dostupnost zařízení (SIP qualify)"
 
-#: admin/systems/gofon/class_phoneGeneric.inc:535
+#: admin/systems/gofon/class_phoneGeneric.inc:527
 msgid "IAX authentication type"
 msgstr "typ ověřování pro IAX"
 
-#: admin/systems/gofon/class_phoneGeneric.inc:536
+#: admin/systems/gofon/class_phoneGeneric.inc:528
 msgid "IAX secret"
 msgstr "heslo do IAX"
 
-#: admin/systems/gofon/class_phoneGeneric.inc:537
+#: admin/systems/gofon/class_phoneGeneric.inc:529
 msgid "IAX account code"
 msgstr "IAX – identifikátor volajícího pro účely vyúčtovávání (account code)"
 
-#: admin/systems/gofon/class_phoneGeneric.inc:538
+#: admin/systems/gofon/class_phoneGeneric.inc:530
 msgid "IAX trunk lines"
 msgstr "linky propojující ústředny (trunk lines) přes IAX protokol"
 
-#: admin/systems/gofon/class_phoneGeneric.inc:539
+#: admin/systems/gofon/class_phoneGeneric.inc:531
 msgid "IAX permit settings"
 msgstr ""
 
-#: admin/systems/gofon/class_phoneGeneric.inc:540
+#: admin/systems/gofon/class_phoneGeneric.inc:532
 msgid "IAX deny settings"
 msgstr ""
 
-#: admin/systems/gofon/class_phoneGeneric.inc:541
+#: admin/systems/gofon/class_phoneGeneric.inc:533
 msgid "CAPI MSN"
 msgstr "CAPI MSN"
 
-#: admin/systems/gofon/class_phoneGeneric.inc:542
+#: admin/systems/gofon/class_phoneGeneric.inc:534
 msgid "Hardware type"
 msgstr "typ přístroje"
 
@@ -834,9 +815,7 @@ msgstr "vytvořit telefonní frontu"
 msgid ""
 "There must be at least one server with an asterisk database to create a "
 "phone queue."
-msgstr ""
-"Aby bylo možné vytvořit frontu pro volající, musí existovat alespoň jeden "
-"server s databází Asterisku."
+msgstr "Aby bylo možné vytvořit frontu pro volající, musí existovat alespoň jeden server s databází Asterisku."
 
 #: admin/ogroups/gofon/class_phonequeue.inc:281
 #: admin/ogroups/gofon/class_phonequeue.inc:891
@@ -874,9 +853,7 @@ msgstr "Nedaří se nalézt položku staré fronty hovorů!"
 msgid ""
 "Found more than one entry named '%s' in queue table. Please inform your "
 "system administrator!"
-msgstr ""
-"V tabulce fronty bylo nalezeno více položek s názvem '%s'. Kontaktujte "
-"prosím Vašeho správce systémů!"
+msgstr "V tabulce fronty bylo nalezeno více položek s názvem '%s'. Kontaktujte prosím Vašeho správce systémů!"
 
 #: admin/ogroups/gofon/class_phonequeue.inc:728
 #: admin/ogroups/gofon/class_phonequeue.inc:730
@@ -885,12 +862,12 @@ msgstr "telefonní číslo"
 
 #: admin/ogroups/gofon/class_phonequeue.inc:882
 #: personal/phoneaccount/class_phoneAccount.inc:26
-#: personal/phoneaccount/class_phoneAccount.inc:1013
-#: personal/phoneaccount/class_phoneAccount.inc:1026
+#: personal/phoneaccount/class_phoneAccount.inc:1009
+#: personal/phoneaccount/class_phoneAccount.inc:1022
+#: personal/phoneaccount/class_phoneAccount.inc:1034
 #: personal/phoneaccount/class_phoneAccount.inc:1038
-#: personal/phoneaccount/class_phoneAccount.inc:1042
-#: personal/phoneaccount/class_phoneAccount.inc:1045
-#: personal/phoneaccount/class_phoneAccount.inc:1725
+#: personal/phoneaccount/class_phoneAccount.inc:1041
+#: personal/phoneaccount/class_phoneAccount.inc:1721
 msgid "Phone"
 msgstr "telefon"
 
@@ -988,10 +965,9 @@ msgstr "oznámení"
 
 #: admin/ogroups/gofon/phonequeue.tpl:2
 msgid ""
-"Only users with the same asterisk home server will be included to this queue."
-msgstr ""
-"Do této fronty budou zařazováni pouze uživatelé se stejným domovským "
-"Asterisk serverem."
+"Only users with the same asterisk home server will be included to this "
+"queue."
+msgstr "Do této fronty budou zařazováni pouze uživatelé se stejným domovským Asterisk serverem."
 
 #: admin/ogroups/gofon/phonequeue.tpl:5
 msgid "Queue Settings"
@@ -1179,166 +1155,161 @@ msgstr "Nic nebylo nalezeno…"
 msgid "This is user phone account plugin management"
 msgstr ""
 
-#: personal/phoneaccount/class_phoneAccount.inc:191
+#: personal/phoneaccount/class_phoneAccount.inc:187
 msgid "automatic"
 msgstr "automatické"
 
-#: personal/phoneaccount/class_phoneAccount.inc:227
+#: personal/phoneaccount/class_phoneAccount.inc:223
 msgid "no macro"
 msgstr "žádné makro"
 
-#: personal/phoneaccount/class_phoneAccount.inc:255
+#: personal/phoneaccount/class_phoneAccount.inc:251
 msgid "undefined"
 msgstr "nedefinované"
 
-#: personal/phoneaccount/class_phoneAccount.inc:374
+#: personal/phoneaccount/class_phoneAccount.inc:370
 #, php-format
 msgid ""
 "Cannot identify telephone extension in database, please try to save again."
-msgstr ""
-"Nedaří se určit telefonní číslo v databázi – zkuste prosím znovu uložit."
+msgstr "Nedaří se určit telefonní číslo v databázi – zkuste prosím znovu uložit."
 
-#: personal/phoneaccount/class_phoneAccount.inc:592
-#: personal/phoneaccount/class_phoneAccount.inc:610
+#: personal/phoneaccount/class_phoneAccount.inc:588
+#: personal/phoneaccount/class_phoneAccount.inc:606
 msgid "Abort saving entries to keep the database consistent."
 msgstr "Zrušte ukládání položek kvůli zachování neporušenosti databáze."
 
-#: personal/phoneaccount/class_phoneAccount.inc:633
-#: personal/phoneaccount/class_phoneAccount.inc:672
-#: personal/phoneaccount/class_phoneAccount.inc:1552
+#: personal/phoneaccount/class_phoneAccount.inc:629
+#: personal/phoneaccount/class_phoneAccount.inc:668
+#: personal/phoneaccount/class_phoneAccount.inc:1548
 #, php-format
 msgid ""
 "FusionDirectory identified problems with your database table definition!"
 msgstr ""
 
-#: personal/phoneaccount/class_phoneAccount.inc:1037
+#: personal/phoneaccount/class_phoneAccount.inc:1033
 msgid "Remove phone account"
 msgstr "odebrat telefonní účet"
 
-#: personal/phoneaccount/class_phoneAccount.inc:1041
-#: personal/phoneaccount/class_phoneAccount.inc:1044
+#: personal/phoneaccount/class_phoneAccount.inc:1037
+#: personal/phoneaccount/class_phoneAccount.inc:1040
 msgid "Create phone account"
 msgstr "vytvořit telefonní účet"
 
-#: personal/phoneaccount/class_phoneAccount.inc:1042
+#: personal/phoneaccount/class_phoneAccount.inc:1038
 msgid "User uid"
 msgstr "UID uživatele"
 
-#: personal/phoneaccount/class_phoneAccount.inc:1060
+#: personal/phoneaccount/class_phoneAccount.inc:1056
 msgid "Selected macro is not available anymore!"
 msgstr "Vybrané makro už neexistuje!"
 
-#: personal/phoneaccount/class_phoneAccount.inc:1085
+#: personal/phoneaccount/class_phoneAccount.inc:1081
 msgid "Parameter"
 msgstr "parametr"
 
-#: personal/phoneaccount/class_phoneAccount.inc:1235
+#: personal/phoneaccount/class_phoneAccount.inc:1231
 msgid "Choose your private phone"
 msgstr "zvolte Váš soukromý telefon"
 
-#: personal/phoneaccount/class_phoneAccount.inc:1378
+#: personal/phoneaccount/class_phoneAccount.inc:1374
 msgid ""
 "There must be at least one server with an asterisk database to create a "
 "phone account."
-msgstr ""
-"Aby bylo možné vytvořit telefonní účet, musí být k dispozici alespoň jeden "
-"server s databází Asterisku."
+msgstr "Aby bylo možné vytvořit telefonní účet, musí být k dispozici alespoň jeden server s databází Asterisku."
 
-#: personal/phoneaccount/class_phoneAccount.inc:1386
-#: personal/phoneaccount/class_phoneAccount.inc:1389
+#: personal/phoneaccount/class_phoneAccount.inc:1382
+#: personal/phoneaccount/class_phoneAccount.inc:1385
 #: personal/phoneaccount/paste_generic.tpl:32
 #: personal/phoneaccount/generic.tpl:93
 msgid "Voicemail PIN"
 msgstr "PIN pro hlasovou schránku"
 
-#: personal/phoneaccount/class_phoneAccount.inc:1386
+#: personal/phoneaccount/class_phoneAccount.inc:1382
 msgid "Between 1-4 charactes"
 msgstr "1-4 znaky"
 
-#: personal/phoneaccount/class_phoneAccount.inc:1394
+#: personal/phoneaccount/class_phoneAccount.inc:1390
 #: personal/phoneaccount/paste_generic.tpl:40
 #: personal/phoneaccount/generic.tpl:103
 msgid "Phone PIN"
 msgstr "PIN telefonu"
 
-#: personal/phoneaccount/class_phoneAccount.inc:1434
+#: personal/phoneaccount/class_phoneAccount.inc:1430
 #, php-format
 msgid "macro parameter %s"
 msgstr "parametr makra %s"
 
-#: personal/phoneaccount/class_phoneAccount.inc:1482
+#: personal/phoneaccount/class_phoneAccount.inc:1478
 msgid "An error occured while updating the database entries!"
 msgstr "Vyskytla se chyba při aktualizaci položek v databázi!"
 
-#: personal/phoneaccount/class_phoneAccount.inc:1632
+#: personal/phoneaccount/class_phoneAccount.inc:1628
 #, php-format
 msgid "User '%s' has been removed from phone queue '%s'."
 msgstr "Uživatel '%s' byl odebrán z fronty hovorů '%s'."
 
-#: personal/phoneaccount/class_phoneAccount.inc:1669
-#: personal/phoneaccount/class_phoneAccount.inc:1671
+#: personal/phoneaccount/class_phoneAccount.inc:1665
+#: personal/phoneaccount/class_phoneAccount.inc:1667
 #, php-format
 msgid "The specified telephonenumber '%s' is already assigned to '%s'."
 msgstr ""
 
-#: personal/phoneaccount/class_phoneAccount.inc:1717
+#: personal/phoneaccount/class_phoneAccount.inc:1713
 #, php-format
 msgid ""
 "The previously selected asterisk home server (%s) is no longer available. "
 "Remove aborted."
-msgstr ""
-"Zvolený domovský Asterisk server (%s) již není k dispozici. Odebírání "
-"přerušeno."
+msgstr "Zvolený domovský Asterisk server (%s) již není k dispozici. Odebírání přerušeno."
 
-#: personal/phoneaccount/class_phoneAccount.inc:1726
+#: personal/phoneaccount/class_phoneAccount.inc:1722
 msgid "Phone account settings"
 msgstr "nastavení telefonního účtu"
 
-#: personal/phoneaccount/class_phoneAccount.inc:1730
+#: personal/phoneaccount/class_phoneAccount.inc:1726
 msgid "My account"
 msgstr "můj účet"
 
-#: personal/phoneaccount/class_phoneAccount.inc:1738
+#: personal/phoneaccount/class_phoneAccount.inc:1734
 msgid "Macro settings"
 msgstr "nastavení makra"
 
-#: personal/phoneaccount/class_phoneAccount.inc:1741
+#: personal/phoneaccount/class_phoneAccount.inc:1737
 msgid "Phone context"
 msgstr ""
 
-#: personal/phoneaccount/class_phoneAccount.inc:1742
+#: personal/phoneaccount/class_phoneAccount.inc:1738
 msgid "Voice mail context"
 msgstr ""
 
-#: personal/phoneaccount/class_phoneAccount.inc:1743
+#: personal/phoneaccount/class_phoneAccount.inc:1739
 msgid "Telephone pin"
 msgstr "PIN telefonu"
 
-#: personal/phoneaccount/class_phoneAccount.inc:1744
+#: personal/phoneaccount/class_phoneAccount.inc:1740
 msgid "Voicemail pin"
 msgstr "PIN hlasové schránky"
 
-#: personal/phoneaccount/class_phoneAccount.inc:1826
+#: personal/phoneaccount/class_phoneAccount.inc:1822
 msgid "There is currently no asterisk server defined!"
 msgstr "V současnosti není určen žádný Asterisk server!"
 
-#: personal/phoneaccount/class_phoneAccount.inc:1830
+#: personal/phoneaccount/class_phoneAccount.inc:1826
 msgid "Asterisk server is invalid!"
 msgstr "Asterisk server není platný!"
 
-#: personal/phoneaccount/class_phoneAccount.inc:1836
+#: personal/phoneaccount/class_phoneAccount.inc:1832
 msgid "Voicemail PIN must be 4 characters long!"
 msgstr "PIN hlasové schránky musí být 4 znaky dlouhý!"
 
-#: personal/phoneaccount/class_phoneAccount.inc:1839
+#: personal/phoneaccount/class_phoneAccount.inc:1835
 msgid "Voicemail PIN contains invalid characters!"
 msgstr "PIN hlasové schránky obsahuje nepovolené znaky!"
 
-#: personal/phoneaccount/class_phoneAccount.inc:1844
+#: personal/phoneaccount/class_phoneAccount.inc:1840
 msgid "Phone pin contains invalid characters!"
 msgstr "PIN telefonu obsahuje neplatné znaky!"
 
-#: personal/phoneaccount/class_phoneAccount.inc:1851
+#: personal/phoneaccount/class_phoneAccount.inc:1847
 #, php-format
 msgid "The parameter %s contains invalid char. '!,#' is used as delimiter"
 msgstr ""

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Alessandro Amici <a.amici@bopen.it>, 2005.
 # Giuliano Di Vito <giuliano@opensides.be>, 2011.
@@ -9,16 +9,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-27 13:06+0200\n"
-"PO-Revision-Date: 2012-05-31 14:31+0000\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
+"POT-Creation-Date: 2012-08-22 18:37+0200\n"
+"PO-Revision-Date: 2012-10-30 11:07+0000\n"
 "Last-Translator: poterealpopolo <giuliano@opensides.be>\n"
-"Language-Team: Italian (http://www.transifex.com/projects/p/FusionDirectory/"
-"language/it/)\n"
-"Language: it\n"
+"Language-Team: Italian (http://www.transifex.com/projects/p/FusionDirectory/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: addons/ldapmanager/contentexport.tpl:2
@@ -26,11 +25,7 @@ msgid ""
 "The LDIF export plugin provides methods to download a complete snapshot of "
 "the running LDAP directory as ldif. You may save these files for backup "
 "purpose or when initializing a new server."
-msgstr ""
-"L'estensione di esportazione nel formato LDIF ti permette di scaricare una "
-"copia completa del tuo annuario LDAP nel formato ldif. Questi file possono "
-"essere usati come copie di backup oppure nell'installazione di un nuovo "
-"server."
+msgstr "L'estensione di esportazione nel formato LDIF ti permette di scaricare una copia completa del tuo annuario LDAP nel formato ldif. Questi file possono essere usati come copie di backup oppure nell'installazione di un nuovo server."
 
 #: addons/ldapmanager/contentexport.tpl:9
 msgid "Export single entry"
@@ -55,8 +50,7 @@ msgstr "Importazione LDIF"
 
 #: addons/ldapmanager/class_import.inc:27
 msgid "This plugin allow the import of ldif data into the ldap tree"
-msgstr ""
-"Questo plugin permette l'importazione di un file dati ldif nell'annuario ldap"
+msgstr "Questo plugin permette l'importazione di un file dati ldif nell'annuario ldap"
 
 #: addons/ldapmanager/class_import.inc:72
 #: addons/ldapmanager/class_export.inc:106
@@ -66,9 +60,7 @@ msgstr "Errore d'autorizzazione"
 
 #: addons/ldapmanager/class_import.inc:72
 msgid "You need full write access to the LDAP tree to import data!"
-msgstr ""
-"Hai bisogno di un accesso completo a tutti gli oggetti dell'annuario per "
-"poter effettuare un'importazione di dati !"
+msgstr "Hai bisogno di un accesso completo a tutti gli oggetti dell'annuario per poter effettuare un'importazione di dati !"
 
 #: addons/ldapmanager/class_import.inc:81
 #: addons/ldapmanager/class_import.inc:88
@@ -129,16 +121,11 @@ msgstr "Flag '%s' non definito !"
 
 #: addons/ldapmanager/contentcsv.tpl:2
 msgid ""
-"The CSV import plugin provides methods to generate user accounts from a file "
-"containing Semi-Colon Seperated Values. The administrator can decide which "
+"The CSV import plugin provides methods to generate user accounts from a file"
+" containing Semi-Colon Seperated Values. The administrator can decide which "
 "columns should be transfered to which attribute. Note that you must have at "
 "least the GIVENNAME and SURNAME set."
-msgstr ""
-"L'estensione per l'importazione CSV ti permette di generare degli account "
-"utente a partire da un file contenente dei valori separati con dei punti e "
-"virgola. L'amministratore puó scegliere quali colonne saranno trasferite "
-"verso quale attributo. Nota che nel file CSV dovranno essere forniti almeno "
-"il GIVENNAME e il SURNAME."
+msgstr "L'estensione per l'importazione CSV ti permette di generare degli account utente a partire da un file contenente dei valori separati con dei punti e virgola. L'amministratore puó scegliere quali colonne saranno trasferite verso quale attributo. Nota che nel file CSV dovranno essere forniti almeno il GIVENNAME e il SURNAME."
 
 #: addons/ldapmanager/contentcsv.tpl:10
 msgid "Select CSV file to import"
@@ -151,7 +138,7 @@ msgstr "Percorri"
 
 #: addons/ldapmanager/contentcsv.tpl:19
 msgid "Select template"
-msgstr "SCegli un modello"
+msgstr "Scegli un modello"
 
 #: addons/ldapmanager/contentcsv.tpl:34
 msgid "All entries have been written to the LDAP database successfully."
@@ -181,8 +168,7 @@ msgstr "Esporta in LDIF"
 
 #: addons/ldapmanager/class_export.inc:27
 msgid "This plugin allow the export of the ldap tree in ldif format"
-msgstr ""
-"Questo plugin permette l'esportazione dell'annuario ldap in un file dati ldif"
+msgstr "Questo plugin permette l'esportazione dell'annuario ldap in un file dati ldif"
 
 #: addons/ldapmanager/class_export.inc:90
 #, php-format
@@ -206,7 +192,7 @@ msgstr "Questo plugin permette la gestione dell'annuario LDAP"
 #: addons/ldapmanager/class_ldif.inc:55 addons/ldapmanager/class_ldif.inc:56
 #: addons/ldapmanager/class_ldif.inc:61
 msgid "Ldap manager"
-msgstr "Amministratore LDAP"
+msgstr "Amministrazione LDAP"
 
 #: addons/ldapmanager/class_ldif.inc:56
 msgid "import"
@@ -222,12 +208,7 @@ msgid ""
 "running LDAP directory as ldif. You may use this to add new or modify "
 "existing entries. Remember that FusionDirectory will not check your ldifs "
 "for FusionDirectory conformance."
-msgstr ""
-"L'estensione di importazione nel formato LDIF ti permette di importare una "
-"serie di entries nel tuo annuario LDAP corrente, nel formato ldif. Puoi "
-"usare questa funzionalità per aggiungere delle nuove entries o per "
-"modificarne quelle già esistenti. Ricordati che FusionDirectory non "
-"verificherà i tuoi file ldif rispetto agli schemi utilizzati."
+msgstr "L'estensione di importazione nel formato LDIF ti permette di importare una serie di entries nel tuo annuario LDAP corrente, nel formato ldif. Puoi usare questa funzionalità per aggiungere delle nuove entries o per modificarne quelle già esistenti. Ricordati che FusionDirectory non verificherà i tuoi file ldif rispetto agli schemi utilizzati."
 
 #: addons/ldapmanager/contentimport.tpl:10
 msgid "Import LDIF File"
@@ -239,9 +220,7 @@ msgstr "La modifica degli oggetti esistenti non modificherà i loro attributi"
 
 #: addons/ldapmanager/contentimport.tpl:25
 msgid "Overwrite existing objects, all not listed attributes will be removed"
-msgstr ""
-"La sovrascrittura degli oggetti esistenti rimuoverà tutti gli oggetti non "
-"elencati"
+msgstr "La sovrascrittura degli oggetti esistenti rimuoverà tutti gli oggetti non elencati"
 
 #: addons/ldapmanager/contentimport.tpl:34
 msgid "Remove existing entries first"
@@ -253,9 +232,7 @@ msgstr "Importazione riuscita"
 
 #: addons/ldapmanager/class_csvimport.inc:27
 msgid "This plugin allow to export the ldap three to csv format"
-msgstr ""
-"Questo plugin permette l'esportazione dell'annuario ldap in un file dati al "
-"formato csv"
+msgstr "Questo plugin permette l'esportazione dell'annuario ldap in un file dati al formato csv"
 
 #: addons/ldapmanager/class_csvimport.inc:128
 msgid "You've no permission to import CSV files."

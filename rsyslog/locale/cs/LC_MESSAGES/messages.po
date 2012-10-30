@@ -1,70 +1,68 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 #   <pavel.borecki@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-27 13:06+0200\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
+"POT-Creation-Date: 2012-08-22 18:37+0200\n"
 "PO-Revision-Date: 2012-08-22 16:41+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/"
-"FusionDirectory/language/cs_CZ/)\n"
-"Language: cs_CZ\n"
+"Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/FusionDirectory/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: cs_CZ\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
 #: admin/systems/services/rsyslog/rSyslogServer.tpl:1
 msgid "Syslog logging"
 msgstr "protokolovací záznam Syslog"
 
-#: admin/systems/services/rsyslog/rSyslogServer.tpl:4
-msgid "Server provides a syslog mysql database"
-msgstr ""
-"server, na kterém běží databáze MySQL uchovávající protokolovací záznamy"
-
 #: admin/systems/services/rsyslog/rSyslogServer.tpl:7
-#: admin/systems/services/rsyslog/class_rSyslogServer.inc:93
-#: admin/systems/services/rsyslog/class_rSyslogServer.inc:160
+msgid "Server provides a syslog mysql database"
+msgstr "server, na kterém běží databáze MySQL uchovávající protokolovací záznamy"
+
+#: admin/systems/services/rsyslog/rSyslogServer.tpl:10
+#: admin/systems/services/rsyslog/class_rSyslogServer.inc:106
+#: admin/systems/services/rsyslog/class_rSyslogServer.inc:205
 msgid "Database"
 msgstr "databáze"
 
-#: admin/systems/services/rsyslog/rSyslogServer.tpl:15
+#: admin/systems/services/rsyslog/rSyslogServer.tpl:19
 msgid "Database user"
 msgstr "uživatel databáze"
 
-#: admin/systems/services/rsyslog/rSyslogServer.tpl:23
-#: admin/systems/services/rsyslog/class_rSyslogServer.inc:96
-#: admin/systems/services/rsyslog/class_rSyslogServer.inc:162
+#: admin/systems/services/rsyslog/rSyslogServer.tpl:28
+#: admin/systems/services/rsyslog/class_rSyslogServer.inc:109
+#: admin/systems/services/rsyslog/class_rSyslogServer.inc:207
 msgid "Password"
 msgstr "heslo"
 
-#: admin/systems/services/rsyslog/class_rSyslogServer.inc:48
-#: admin/systems/services/rsyslog/class_rSyslogServer.inc:77
-#: admin/systems/services/rsyslog/class_rSyslogServer.inc:151
-#: admin/systems/services/rsyslog/class_rSyslogServer.inc:152
+#: admin/systems/services/rsyslog/class_rSyslogServer.inc:51
+#: admin/systems/services/rsyslog/class_rSyslogServer.inc:89
+#: admin/systems/services/rsyslog/class_rSyslogServer.inc:196
+#: admin/systems/services/rsyslog/class_rSyslogServer.inc:197
 msgid "Logs service"
 msgstr ""
 
-#: admin/systems/services/rsyslog/class_rSyslogServer.inc:90
-#: admin/systems/services/rsyslog/class_rSyslogServer.inc:161
+#: admin/systems/services/rsyslog/class_rSyslogServer.inc:103
+#: admin/systems/services/rsyslog/class_rSyslogServer.inc:206
 msgid "User"
 msgstr "uživatel"
 
-#: admin/systems/services/rsyslog/class_rSyslogServer.inc:136
+#: admin/systems/services/rsyslog/class_rSyslogServer.inc:171
 msgid "LDAP error"
 msgstr "chyba LDAPu"
 
-#: admin/systems/services/rsyslog/class_rSyslogServer.inc:152
+#: admin/systems/services/rsyslog/class_rSyslogServer.inc:197
 msgid "Services"
 msgstr "služby"
 
-#: admin/systems/services/rsyslog/class_rSyslogServer.inc:163
+#: admin/systems/services/rsyslog/class_rSyslogServer.inc:208
 msgid "Allow view of entries on this server"
 msgstr "Je vidět, že protokoly serveru"
 
@@ -96,7 +94,7 @@ msgstr "na"
 msgid "Search"
 msgstr "hledat"
 
-#: addons/rsyslog/rSyslog.tpl:62 addons/rsyslog/class_rsyslog.inc:328
+#: addons/rsyslog/rSyslog.tpl:62 addons/rsyslog/class_rsyslog.inc:329
 msgid "Error"
 msgstr "chyba"
 
@@ -128,113 +126,113 @@ msgstr "protokolovací záznamy systémů"
 msgid "This plugin allow to View system logs"
 msgstr ""
 
-#: addons/rsyslog/class_rsyslog.inc:124 addons/rsyslog/class_rsyslog.inc:130
+#: addons/rsyslog/class_rsyslog.inc:125 addons/rsyslog/class_rsyslog.inc:131
 msgid "-"
 msgstr "–"
 
-#: addons/rsyslog/class_rsyslog.inc:126 addons/rsyslog/class_rsyslog.inc:132
+#: addons/rsyslog/class_rsyslog.inc:127 addons/rsyslog/class_rsyslog.inc:133
 msgid "All"
 msgstr "vše"
 
-#: addons/rsyslog/class_rsyslog.inc:158
+#: addons/rsyslog/class_rsyslog.inc:159
 #, php-format
 msgid "%s entries match the filter"
 msgstr "%s záznamů odpovídá filtru"
 
-#: addons/rsyslog/class_rsyslog.inc:178
+#: addons/rsyslog/class_rsyslog.inc:179
 #, php-format
 msgid "The selected server '%s' does not exists!"
 msgstr "Server '%s' neexistuje!"
 
-#: addons/rsyslog/class_rsyslog.inc:325
+#: addons/rsyslog/class_rsyslog.inc:326
 msgid "Emergency"
 msgstr "naléhavost"
 
-#: addons/rsyslog/class_rsyslog.inc:326
+#: addons/rsyslog/class_rsyslog.inc:327
 msgid "Alert"
 msgstr "výstraha"
 
-#: addons/rsyslog/class_rsyslog.inc:327
+#: addons/rsyslog/class_rsyslog.inc:328
 msgid "Critical"
 msgstr "kritické"
 
-#: addons/rsyslog/class_rsyslog.inc:329
+#: addons/rsyslog/class_rsyslog.inc:330
 msgid "Warning"
 msgstr "upozornění"
 
-#: addons/rsyslog/class_rsyslog.inc:330
+#: addons/rsyslog/class_rsyslog.inc:331
 msgid "Notice"
 msgstr "poznámka"
 
-#: addons/rsyslog/class_rsyslog.inc:331
+#: addons/rsyslog/class_rsyslog.inc:332
 msgid "Informational"
 msgstr "informace"
 
-#: addons/rsyslog/class_rsyslog.inc:332
+#: addons/rsyslog/class_rsyslog.inc:333
 msgid "Debug"
 msgstr "ladící"
 
-#: addons/rsyslog/class_rsyslog.inc:338 addons/rsyslog/class_rsyslog.inc:373
+#: addons/rsyslog/class_rsyslog.inc:339 addons/rsyslog/class_rsyslog.inc:374
 #, php-format
 msgid "Unknown (%s)"
 msgstr "neznámá (%s)"
 
-#: addons/rsyslog/class_rsyslog.inc:344
+#: addons/rsyslog/class_rsyslog.inc:345
 msgid "Kernel"
 msgstr "jádro"
 
-#: addons/rsyslog/class_rsyslog.inc:345
+#: addons/rsyslog/class_rsyslog.inc:346
 msgid "User level"
 msgstr "uživatelská úroveň"
 
-#: addons/rsyslog/class_rsyslog.inc:346
+#: addons/rsyslog/class_rsyslog.inc:347
 msgid "Mail system"
 msgstr "systém zpráv"
 
-#: addons/rsyslog/class_rsyslog.inc:347
+#: addons/rsyslog/class_rsyslog.inc:348
 msgid "System daemon"
 msgstr "systémové služby"
 
-#: addons/rsyslog/class_rsyslog.inc:348 addons/rsyslog/class_rsyslog.inc:354
+#: addons/rsyslog/class_rsyslog.inc:349 addons/rsyslog/class_rsyslog.inc:355
 msgid "Security"
 msgstr "zabezpečení"
 
-#: addons/rsyslog/class_rsyslog.inc:349
+#: addons/rsyslog/class_rsyslog.inc:350
 msgid "Internal"
 msgstr "vnitřní"
 
-#: addons/rsyslog/class_rsyslog.inc:350
+#: addons/rsyslog/class_rsyslog.inc:351
 msgid "Printing"
 msgstr "výpis"
 
-#: addons/rsyslog/class_rsyslog.inc:351
+#: addons/rsyslog/class_rsyslog.inc:352
 msgid "News"
 msgstr "zprávy"
 
-#: addons/rsyslog/class_rsyslog.inc:352
+#: addons/rsyslog/class_rsyslog.inc:353
 msgid "UUCP"
 msgstr ""
 
-#: addons/rsyslog/class_rsyslog.inc:353
+#: addons/rsyslog/class_rsyslog.inc:354
 msgid "Cron"
 msgstr ""
 
-#: addons/rsyslog/class_rsyslog.inc:355
+#: addons/rsyslog/class_rsyslog.inc:356
 msgid "FTP"
 msgstr "FTP"
 
-#: addons/rsyslog/class_rsyslog.inc:356
+#: addons/rsyslog/class_rsyslog.inc:357
 msgid "NTP"
 msgstr ""
 
-#: addons/rsyslog/class_rsyslog.inc:357
+#: addons/rsyslog/class_rsyslog.inc:358
 msgid "Log audit"
 msgstr "kontrola záznamu"
 
-#: addons/rsyslog/class_rsyslog.inc:358
+#: addons/rsyslog/class_rsyslog.inc:359
 msgid "Log alert"
 msgstr "výstraha záznamu"
 
-#: addons/rsyslog/class_rsyslog.inc:359
+#: addons/rsyslog/class_rsyslog.inc:360
 msgid "Clock"
 msgstr "čas"

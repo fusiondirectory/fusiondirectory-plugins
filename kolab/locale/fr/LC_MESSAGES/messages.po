@@ -1,38 +1,33 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
-#  Benoit Mortier <benoit.mortier@opensides.be>, 2005, 2006, 2007, 2008, 2009.
+#  Benoit Mortier <benoit.mortier@opensides.be>, 2005-2009.
 #   <contact@fusiondirectory.org>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-27 13:06+0200\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
+"POT-Creation-Date: 2012-08-22 18:37+0200\n"
 "PO-Revision-Date: 2012-08-22 17:45+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory/"
-"language/fr/)\n"
-"Language: fr\n"
+"Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: admin/systems/services/kolab/class_servKolab.inc:127
 #, php-format
 msgid "Include data from %s days in the past when creating free/busy lists"
-msgstr ""
-"Inclure les données des %s jours précédents lors de la création d'une liste "
-"de disponibilités"
+msgstr "Inclure les données des %s jours précédents lors de la création d'une liste de disponibilités"
 
 #: admin/systems/services/kolab/class_servKolab.inc:132
 #, php-format
 msgid "Warn users when using more than %s%% of their mail quota"
-msgstr ""
-"Avertissez les utilisateurs quand ils utilisent plus de %s%% de leur quota "
-"de messagerie"
+msgstr "Avertissez les utilisateurs quand ils utilisent plus de %s%% de leur quota de messagerie"
 
 #: admin/systems/services/kolab/class_servKolab.inc:174
 msgid "Remove"
@@ -160,9 +155,7 @@ msgstr "Préférences des quotas"
 
 #: admin/systems/services/kolab/class_servKolab.inc:475
 msgid "Allow unauthenticated free busy"
-msgstr ""
-"Permettre le téléchargement des informations de disponibilités de manière "
-"anonyme"
+msgstr "Permettre le téléchargement des informations de disponibilités de manière anonyme"
 
 #: admin/systems/services/kolab/class_servKolab.inc:476
 msgid "kolabFreeBusyFuture"
@@ -197,9 +190,7 @@ msgstr "Postfix mydestination"
 
 #: admin/systems/services/kolab/servkolab.tpl:102
 msgid "FTP FreeBusy service (legacy, not interoperable with Kolab2 FreeBusy)"
-msgstr ""
-"Service des options de disponibilités par FTP (ancien, pas compatible avec "
-"les options de disponibilités de Kolab2)"
+msgstr "Service des options de disponibilités par FTP (ancien, pas compatible avec les options de disponibilités de Kolab2)"
 
 #: admin/systems/services/kolab/servkolab.tpl:112
 msgid "HTTP FreeBusy service (legacy)"
@@ -215,9 +206,7 @@ msgstr "Préférences des options de disponibilités"
 
 #: admin/systems/services/kolab/servkolab.tpl:157
 msgid "Allow unauthenticated downloading of Free/Busy information"
-msgstr ""
-"Permettre le téléchargement des informations de disponibilités de manière "
-"anonyme"
+msgstr "Permettre le téléchargement des informations de disponibilités de manière anonyme"
 
 #: admin/systems/services/kolab/servkolab.tpl:180
 msgid "Hosts/networks allowed to relay"
@@ -237,8 +226,7 @@ msgstr "Machine utilisée pour relayer les mails"
 
 #: admin/systems/services/kolab/servkolab.tpl:235
 msgid "Accept mail from other domains over non-authenticated SMTP"
-msgstr ""
-"Accepter les messages sur du SMTP non authentifié venant d'autre domaines"
+msgstr "Accepter les messages sur du SMTP non authentifié venant d'autre domaines"
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:149
 #: personal/mail/kolab/class_mail-methods-kolab.inc:157
@@ -295,15 +283,13 @@ msgid "Default"
 msgstr "Défaut"
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:183
-msgid "Mail settings cannot be removed while there are delegations configured!"
-msgstr ""
-"Les paramètres de la messagerie de peuvent pas être supprimé quand des "
-"délégations sont actives !"
+msgid ""
+"Mail settings cannot be removed while there are delegations configured!"
+msgstr "Les paramètres de la messagerie de peuvent pas être supprimé quand des délégations sont actives !"
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:281
 msgid "Waiting for kolab to remove mail properties..."
-msgstr ""
-"En attente de kolab pour la suppression des paramètres de messagerie..."
+msgstr "En attente de kolab pour la suppression des paramètres de messagerie..."
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:284
 msgid "Please remove the mail settings first!"
@@ -344,8 +330,7 @@ msgstr "Anonyme"
 #: personal/connectivity/kolab/class_kolabAccount.inc:379
 #: personal/connectivity/kolab/class_kolabAccount.inc:382
 msgid "Free Busy future"
-msgstr ""
-"Nombre de jours dans le futur à calculer pour l'option de disponibilité"
+msgstr "Nombre de jours dans le futur à calculer pour l'option de disponibilité"
 
 #: personal/connectivity/kolab/class_kolabAccount.inc:387
 #: personal/connectivity/kolab/class_kolabAccount.inc:390
@@ -360,9 +345,7 @@ msgstr "La politique d'invitation pour l'adresse '%s' n'est pas valide."
 #: personal/connectivity/kolab/class_kolabAccount.inc:412
 #, php-format
 msgid "There's no mail user with address '%s' for your invitation policy!"
-msgstr ""
-"Il n'y a pas d'utilisateur avec l'adresse de messagerie '%s' pour votre "
-"politique d'invitation !"
+msgstr "Il n'y a pas d'utilisateur avec l'adresse de messagerie '%s' pour votre politique d'invitation !"
 
 #: personal/connectivity/kolab/class_kolabAccount.inc:684
 msgid "Kolab account settings"
@@ -408,9 +391,7 @@ msgstr "Compte Kolab"
 msgid ""
 "The kolab account is currently disabled. It's features can be adjusted if "
 "you add a mail account."
-msgstr ""
-"L'extension Kolab est désactivée. Ces paramètres peuvent être ajustés si "
-"vous ajoutez un compte de messagerie."
+msgstr "L'extension Kolab est désactivée. Ces paramètres peuvent être ajustés si vous ajoutez un compte de messagerie."
 
 #: personal/connectivity/kolab/kolab.tpl:83
 msgid "Mail size"

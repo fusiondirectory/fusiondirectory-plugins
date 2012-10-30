@@ -1,28 +1,27 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 #   <pavel.borecki@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-27 13:06+0200\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
+"POT-Creation-Date: 2012-08-22 18:37+0200\n"
 "PO-Revision-Date: 2012-05-26 16:41+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/"
-"FusionDirectory/language/cs_CZ/)\n"
-"Language: cs_CZ\n"
+"Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/FusionDirectory/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: cs_CZ\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
 #: admin/fai/askClassName.tpl:6
 msgid ""
-"Adding a new class to the FAI management, requires a class name. You have to "
-"specify a unique class name for unique types of FAI classes, while you can "
+"Adding a new class to the FAI management, requires a class name. You have to"
+" specify a unique class name for unique types of FAI classes, while you can "
 "use the same class name for different types of FAI classes. In the laste "
 "case, FAI will automatically enclose all these different class types to one "
 "unique class name."
@@ -51,7 +50,7 @@ msgstr "zvolit název třídy FAI ze seznamu již existujících"
 msgid "Choose class name"
 msgstr "zvolte název třídy"
 
-#: admin/fai/askClassName.tpl:68 admin/fai/class_faiManagement.inc:746
+#: admin/fai/askClassName.tpl:68 admin/fai/class_faiManagement.inc:793
 msgid "Continue"
 msgstr "pokračuj"
 
@@ -63,19 +62,13 @@ msgid ""
 "classes are possible. Branch names should be alphanumeric, excluding the "
 "reserved names 'scripts', 'hooks', 'partitions', 'variables', 'templates' "
 "and 'fai'."
-msgstr ""
-"Chystáte se vytvořit větev či uzamčenou větev. Tato akce naklonuje již "
-"existující vydání do jiného, jinak pojmenovaného. Větve pak mohou být "
-"upravovány jako obvykle. Třídy FAI uzamčených větví se nedají upravovat, je "
-"možné jen přidávat další. Názvy větví by měly být tvořeny písmeny a čísly, "
-"vyjma rezervovaných názvů 'scripts', 'hooks', 'partitions', 'variables', "
-"'templates' a 'fai'."
+msgstr "Chystáte se vytvořit větev či uzamčenou větev. Tato akce naklonuje již existující vydání do jiného, jinak pojmenovaného. Větve pak mohou být upravovány jako obvykle. Třídy FAI uzamčených větví se nedají upravovat, je možné jen přidávat další. Názvy větví by měly být tvořeny písmeny a čísly, vyjma rezervovaných názvů 'scripts', 'hooks', 'partitions', 'variables', 'templates' a 'fai'."
 
 #: admin/fai/faiNewBranch.tpl:7
 msgid ""
 "Branches are created as subreleases of the currently selected branch. "
-"Creating a new branch named 1.0.2 in SARGE for example, will result in a new "
-"release called SARGE/1.0.2."
+"Creating a new branch named 1.0.2 in SARGE for example, will result in a new"
+" release called SARGE/1.0.2."
 msgstr ""
 
 #: admin/fai/faiNewBranch.tpl:13
@@ -89,19 +82,15 @@ msgstr "zpracovávám požadovanou operaci"
 #: admin/fai/faiNewBranch.tpl:35
 msgid ""
 "As soon as the copy operation has finished, you can scroll down to end of "
-"the page and press the 'Continue' button to continue with the fai management "
-"dialog."
-msgstr ""
-"Jakmile bude kopírování dokončeno, můžete se přesunout na spodní část "
-"stránky a kliknout na „pokračovat“ a pokračovat tak dialogem správy FAI."
+"the page and press the 'Continue' button to continue with the fai management"
+" dialog."
+msgstr "Jakmile bude kopírování dokončeno, můžete se přesunout na spodní část stránky a kliknout na „pokračovat“ a pokračovat tak dialogem správy FAI."
 
 #: admin/fai/faiNewBranch.tpl:41
 msgid ""
 "Your browser doesn't support iframes, please use this link to perform the "
 "requested operation."
-msgstr ""
-"Váš webový prohlížeč nepodporuje prvek iframes – pro provedení požadované "
-"operace klikněte na tento odkaz."
+msgstr "Váš webový prohlížeč nepodporuje prvek iframes – pro provedení požadované operace klikněte na tento odkaz."
 
 #: admin/fai/faiNewBranch.tpl:43
 msgid "Perform requested operation."
@@ -113,12 +102,13 @@ msgstr "spustit operaci"
 
 #: admin/fai/tabsHook.inc:52 admin/fai/class_FAI.inc:575
 #: admin/fai/class_faiHookEntry.inc:82 admin/fai/class_faiHookEntry.inc:85
-#: admin/fai/class_faiManagement.inc:248 admin/fai/class_faiManagement.inc:789
-#: admin/fai/class_faiManagement.inc:795 admin/fai/class_faiDiskEntry.inc:447
-#: admin/fai/tabsScript.inc:53 admin/fai/class_faiScriptEntry.inc:79
-#: admin/fai/class_faiScriptEntry.inc:82 admin/fai/tabsPackage.inc:53
-#: admin/fai/class_faiHook.inc:259 admin/fai/class_faiVariable.inc:162
-#: admin/fai/class_faiTemplate.inc:232 admin/fai/tabsProfile.inc:53
+#: admin/fai/class_faiManagement.inc:257 admin/fai/class_faiManagement.inc:331
+#: admin/fai/class_faiManagement.inc:836 admin/fai/class_faiManagement.inc:842
+#: admin/fai/class_faiDiskEntry.inc:447 admin/fai/tabsScript.inc:53
+#: admin/fai/class_faiScriptEntry.inc:79 admin/fai/class_faiScriptEntry.inc:82
+#: admin/fai/tabsPackage.inc:53 admin/fai/class_faiHook.inc:259
+#: admin/fai/class_faiVariable.inc:162 admin/fai/class_faiTemplate.inc:232
+#: admin/fai/class_filterFAI.inc:144 admin/fai/tabsProfile.inc:53
 #: admin/fai/tabsVariable.inc:53 admin/fai/tabsTemplate.inc:53
 #: admin/fai/class_faiSummaryTab.inc:96 admin/fai/class_faiScript.inc:249
 #: admin/fai/tabsPartition.inc:54 admin/fai/class_faiPartitionTable.inc:264
@@ -199,7 +189,15 @@ msgstr "zobrazit balíčky"
 msgid "Show partitions"
 msgstr "zobrazit oddíly"
 
-#: admin/fai/fai-filter.tpl:57 admin/fai/class_faiPartitionTableEntry.inc:349
+#: admin/fai/fai-filter.tpl:53
+msgid "Show netboot products"
+msgstr "zobrazit stroje, které startují ze síťového úložiště"
+
+#: admin/fai/fai-filter.tpl:54
+msgid "Show localboot products"
+msgstr "zobrazit stroje, které startují z vlastního úložiště"
+
+#: admin/fai/fai-filter.tpl:61 admin/fai/class_faiPartitionTableEntry.inc:349
 #: admin/fai/class_faiPartitionTableEntry.inc:352
 #: admin/fai/class_faiPartitionTableEntry.inc:356
 #: admin/fai/class_faiPartitionTableEntry.inc:451
@@ -210,8 +208,8 @@ msgstr "zobrazit oddíly"
 #: admin/fai/class_faiHookEntry.inc:156 admin/fai/class_faiHookEntry.inc:161
 #: admin/fai/class_faiHookEntry.inc:164 admin/fai/class_faiHookEntry.inc:207
 #: admin/fai/faiHookEntry.tpl:9 admin/fai/faiVariable.tpl:9
-#: admin/fai/faiTemplate.tpl:9 admin/fai/class_faiManagement.inc:789
-#: admin/fai/class_faiManagement.inc:795 admin/fai/class_faiDiskEntry.inc:700
+#: admin/fai/faiTemplate.tpl:9 admin/fai/class_faiManagement.inc:836
+#: admin/fai/class_faiManagement.inc:842 admin/fai/class_faiDiskEntry.inc:700
 #: admin/fai/class_faiDiskEntry.inc:703 admin/fai/class_faiDiskEntry.inc:758
 #: admin/fai/class_faiScriptEntry.inc:147
 #: admin/fai/class_faiScriptEntry.inc:152
@@ -322,15 +320,11 @@ msgstr "přípojný bod oddílu %s"
 msgid ""
 "File system type 'swap' is already used, change file system type for "
 "partition %s."
-msgstr ""
-"Souborový systém typu „swap“ zde už existuje – změňte typ souborového "
-"systému pro oddíl %s."
+msgstr "Souborový systém typu „swap“ zde už existuje – změňte typ souborového systému pro oddíl %s."
 
 #: admin/fai/class_faiPartitionTableEntry.inc:393
 msgid "Please use 'swap' as mount point, if 'swap' is used as fs-type."
-msgstr ""
-"Pro souborové systémy typu „swap“ prosím použijte jako přípojný bod též "
-"„swap“."
+msgstr "Pro souborové systémy typu „swap“ prosím použijte jako přípojný bod též „swap“."
 
 #: admin/fai/class_faiPartitionTableEntry.inc:399
 #: admin/fai/class_faiPartitionTableEntry.inc:403
@@ -437,7 +431,7 @@ msgstr ""
 
 #: admin/fai/class_faiProfileEntry.inc:163
 #: admin/fai/class_faiGroupHandle.inc:120
-#: admin/fai/class_faiManagement.inc:953 admin/fai/fai-list.xml:146
+#: admin/fai/class_faiManagement.inc:1000 admin/fai/fai-list.xml:146
 #: admin/fai/classSelect/class_classSelect.inc:58
 #: admin/fai/class_faiSummaryTab.inc:50
 #: admin/fai/class_faiPartitionTable.inc:804
@@ -457,9 +451,7 @@ msgstr "objekty"
 
 #: admin/fai/faiProfileEntry.tpl:6
 msgid "List of FAI objects (Fully Automatic Installation)"
-msgstr ""
-"seznam ogjektů FAI (Fully Automatic Installation – zcela automatické "
-"instalace)"
+msgstr "seznam ogjektů FAI (Fully Automatic Installation – zcela automatické instalace)"
 
 #: admin/fai/faiProfileEntry.tpl:21
 msgid "Information"
@@ -469,9 +461,7 @@ msgstr "informace"
 msgid ""
 "This menu allows you to select FAI class names and to add them to the "
 "currently edited profile."
-msgstr ""
-"Tato nabídka Vám umožní vybrat názvy tříd FAI a přidat je k právě "
-"upravovanému profilu."
+msgstr "Tato nabídka Vám umožní vybrat názvy tříd FAI a přidat je k právě upravovanému profilu."
 
 #: admin/fai/faiProfileEntry.tpl:31
 msgid "Filters"
@@ -559,11 +549,9 @@ msgstr "Tento balíček nemá žádné volby pro debconf."
 msgid ""
 "This debconf question is dynamically generated during package installation "
 "and requires choosing between specific options which cannot be presented "
-"here. The entered text needs to be one of the valid choices in order to take "
-"effect."
-msgstr ""
-"Obsah tohoto dotazu je vytvářen v průběhu instalace balíčků a proto je "
-"odpověď na něj třeba specificky vytvořit tak, aby odpovídal."
+"here. The entered text needs to be one of the valid choices in order to take"
+" effect."
+msgstr "Obsah tohoto dotazu je vytvářen v průběhu instalace balíčků a proto je odpověď na něj třeba specificky vytvořit tak, aby odpovídal."
 
 #: admin/fai/branch_selector.tpl:2
 #: admin/systems/services/repository/class_servRepository.inc:465
@@ -641,8 +629,7 @@ msgstr "fatální chyba"
 #, php-format
 msgid ""
 "Release creation failed due to ldap errors. Additional informations '%s'."
-msgstr ""
-"Vytvoření vydání selhalo vinou chyb v LDAPu. Bližší informace viz '%s'."
+msgstr "Vytvoření vydání selhalo vinou chyb v LDAPu. Bližší informace viz '%s'."
 
 #: admin/fai/class_faiHookEntry.inc:85 admin/fai/class_faiScriptEntry.inc:82
 msgid "file is empty"
@@ -677,36 +664,45 @@ msgid "FAI script"
 msgstr "skript FAI"
 
 #: admin/fai/class_faiGroupHandle.inc:122
-#: admin/fai/class_faiManagement.inc:955 admin/fai/fai-list.xml:140
+#: admin/fai/class_faiManagement.inc:1002 admin/fai/fai-list.xml:140
 #: admin/fai/class_faiSummaryTab.inc:51
 msgid "Package list"
 msgstr "seznam balíčků"
 
 #: admin/fai/class_faiGroupHandle.inc:124
-#: admin/fai/class_faiManagement.inc:957 admin/fai/class_faiSummaryTab.inc:46
+#: admin/fai/class_faiManagement.inc:1004 admin/fai/class_faiSummaryTab.inc:46
 msgid "Scripts"
 msgstr "skripty"
 
 #: admin/fai/class_faiGroupHandle.inc:126
-#: admin/fai/class_faiManagement.inc:959 admin/fai/class_faiSummaryTab.inc:48
+#: admin/fai/class_faiManagement.inc:1006 admin/fai/class_faiSummaryTab.inc:48
 msgid "Variables"
 msgstr "proměnné"
 
 #: admin/fai/class_faiGroupHandle.inc:128
-#: admin/fai/class_faiManagement.inc:961 admin/fai/class_faiSummaryTab.inc:47
+#: admin/fai/class_faiManagement.inc:1008 admin/fai/class_faiSummaryTab.inc:47
 msgid "Hooks"
 msgstr "háčky"
 
 #: admin/fai/class_faiGroupHandle.inc:130
-#: admin/fai/class_faiManagement.inc:963 admin/fai/fai-list.xml:110
+#: admin/fai/class_faiManagement.inc:1010 admin/fai/fai-list.xml:110
 #: admin/fai/class_faiProfile.inc:508 admin/fai/class_askClassName.inc:104
 msgid "Profile"
 msgstr "profil"
 
 #: admin/fai/class_faiGroupHandle.inc:132
-#: admin/fai/class_faiManagement.inc:965 admin/fai/class_faiSummaryTab.inc:49
+#: admin/fai/class_faiManagement.inc:1012 admin/fai/class_faiSummaryTab.inc:49
 msgid "Templates"
 msgstr "šablony"
+
+#: admin/fai/class_faiGroupHandle.inc:134
+#: admin/fai/class_faiManagement.inc:1014
+msgid "OPSI netboot product"
+msgstr "produkt OPSI zaváděný ze sítě"
+
+#: admin/fai/class_faiGroupHandle.inc:136
+msgid "OPSI local product"
+msgstr "místní produkt OPSI"
 
 #: admin/fai/faiHookEntry.tpl:33 admin/fai/faiHookEntry.tpl:54
 msgid "Hook attributes"
@@ -738,100 +734,106 @@ msgstr "upravit"
 msgid "List of template files"
 msgstr "seznam souborů šablon"
 
-#: admin/fai/class_faiManagement.inc:25 admin/fai/class_faiManagement.inc:1066
-#, fuzzy
-msgid "FAI software deployment"
+#: admin/fai/class_faiManagement.inc:25
+msgid "Software deployment"
 msgstr "vzdálená instalace softwaru"
 
 #: admin/fai/class_faiManagement.inc:26
 msgid "Manage software packages and deployment recipes"
 msgstr "spravuj balíčky a postupy vzdálené instalace"
 
-#: admin/fai/class_faiManagement.inc:197
+#: admin/fai/class_faiManagement.inc:206
 msgid "partition table"
 msgstr "tabulka rozdělení úložiště"
 
-#: admin/fai/class_faiManagement.inc:198 admin/fai/fai-list.xml:31
+#: admin/fai/class_faiManagement.inc:207 admin/fai/fai-list.xml:31
 msgid "script"
 msgstr "skript"
 
-#: admin/fai/class_faiManagement.inc:199 admin/fai/fai-list.xml:47
+#: admin/fai/class_faiManagement.inc:208 admin/fai/fai-list.xml:47
 msgid "hook"
 msgstr "háček"
 
-#: admin/fai/class_faiManagement.inc:200 admin/fai/fai-list.xml:39
+#: admin/fai/class_faiManagement.inc:209 admin/fai/fai-list.xml:39
 msgid "variable"
 msgstr "proměnná"
 
-#: admin/fai/class_faiManagement.inc:201 admin/fai/fai-list.xml:63
+#: admin/fai/class_faiManagement.inc:210 admin/fai/fai-list.xml:63
 msgid "template"
 msgstr "šablona"
 
-#: admin/fai/class_faiManagement.inc:202
+#: admin/fai/class_faiManagement.inc:211
 msgid "package list"
 msgstr "seznam balíčků"
 
-#: admin/fai/class_faiManagement.inc:219 admin/fai/class_faiManagement.inc:234
-#: admin/fai/class_faiManagement.inc:351 admin/fai/class_faiManagement.inc:411
-#: admin/fai/class_faiManagement.inc:501 admin/fai/class_faiManagement.inc:596
-#: admin/fai/class_faiManagement.inc:619 admin/fai/class_faiManagement.inc:640
+#: admin/fai/class_faiManagement.inc:228 admin/fai/class_faiManagement.inc:243
+#: admin/fai/class_faiManagement.inc:398 admin/fai/class_faiManagement.inc:458
+#: admin/fai/class_faiManagement.inc:548 admin/fai/class_faiManagement.inc:643
+#: admin/fai/class_faiManagement.inc:666 admin/fai/class_faiManagement.inc:687
 msgid "Permission error"
 msgstr "chyba oprávnění"
 
-#: admin/fai/class_faiManagement.inc:220 admin/fai/class_faiManagement.inc:234
+#: admin/fai/class_faiManagement.inc:229 admin/fai/class_faiManagement.inc:243
 #, php-format
 msgid "You have no permission to create a new %s!"
 msgstr "Nejste oprávněn(a) vytvořit nové %s!"
 
-#: admin/fai/class_faiManagement.inc:234 admin/fai/fai-list.xml:55
+#: admin/fai/class_faiManagement.inc:243 admin/fai/fai-list.xml:55
 msgid "profile"
 msgstr "profil"
 
-#: admin/fai/class_faiManagement.inc:347
+#: admin/fai/class_faiManagement.inc:394
 msgid "Branch locked"
 msgstr "větev uzamčena"
 
-#: admin/fai/class_faiManagement.inc:348
+#: admin/fai/class_faiManagement.inc:395
 #, php-format
 msgid "The following entries are locked, you can't remove them %s."
 msgstr "Tyto položky nemůžete odebrat, protože jsou uzamčeny %s."
 
-#: admin/fai/class_faiManagement.inc:366
+#: admin/fai/class_faiManagement.inc:413
 msgid "FAI object"
 msgstr "Objekt FAI"
 
-#: admin/fai/class_faiManagement.inc:498
+#: admin/fai/class_faiManagement.inc:545
 msgid "FAI branch/freeze"
 msgstr "FAI větvení / „zmrazení“"
 
-#: admin/fai/class_faiManagement.inc:501
+#: admin/fai/class_faiManagement.inc:548
 msgid "You have no permission to delete this release!"
 msgstr "Nejste oprávněn(a) smazat toto vydání!"
 
-#: admin/fai/class_faiManagement.inc:517 admin/fai/remove.tpl:2
+#: admin/fai/class_faiManagement.inc:564 admin/fai/remove.tpl:2
 #: admin/fai/remove_branch.tpl:2
 msgid "Warning"
 msgstr "varování"
 
-#: admin/fai/class_faiManagement.inc:517
+#: admin/fai/class_faiManagement.inc:564
 msgid "Release remove aborted because the release name check failed!"
 msgstr "Odebrání vydání bylo přerušeno z důvodu selhání kontroly jeho názvu!"
 
-#: admin/fai/class_faiManagement.inc:594 admin/fai/class_faiManagement.inc:617
+#: admin/fai/class_faiManagement.inc:641 admin/fai/class_faiManagement.inc:664
 msgid "Configuration"
 msgstr "nastavení"
 
-#: admin/fai/class_faiManagement.inc:596 admin/fai/class_faiManagement.inc:619
-#: admin/fai/class_faiManagement.inc:640
+#: admin/fai/class_faiManagement.inc:643 admin/fai/class_faiManagement.inc:666
+#: admin/fai/class_faiManagement.inc:687
 msgid "Branch"
 msgstr "větev"
 
-#: admin/fai/class_faiManagement.inc:1067
-#, fuzzy
-msgid "Manage FAI software packages and deployment recipes"
-msgstr "spravuj balíčky a postupy vzdálené instalace"
+#: admin/fai/class_faiManagement.inc:1016
+msgid "OPSI localboot product"
+msgstr "produkt OPSI zaváděný z jeho vlastního úložiště"
 
-#: admin/fai/class_faiManagement.inc:1074
+#: admin/fai/class_faiManagement.inc:1118
+msgid "FAI releases"
+msgstr "vydání FAI"
+
+#: admin/fai/class_faiManagement.inc:1119
+msgid "FAI release management"
+msgstr "správa vydání FAI"
+
+#: admin/fai/class_faiManagement.inc:1124
 #: admin/fai/classSelect/selectClass-list.xml:15
 #: admin/fai/packageSelect/selectPackage-list.xml:14
 msgid "FAI"
@@ -864,8 +866,7 @@ msgstr "velikost"
 #, php-format
 msgid ""
 "The disk cannot be deleted while it is used in the '%s' disk definition!"
-msgstr ""
-"Úložiště není možné odebrat, protože je použito v definici úložiště '%s'!"
+msgstr "Úložiště není možné odebrat, protože je použito v definici úložiště '%s'!"
 
 #: admin/fai/class_faiDiskEntry.inc:546
 msgid "encrypted"
@@ -883,17 +884,13 @@ msgstr "zachovat"
 msgid ""
 "You have more than four primary partition table entries in your "
 "configuration, please check your configuration twice."
-msgstr ""
-"Ve Vašem nastavení máte definovány více než 4 hlavní oddíly (což je "
-"technicky nerealizovatelné) – překontrolujte prosím nastavení."
+msgstr "Ve Vašem nastavení máte definovány více než 4 hlavní oddíly (což je technicky nerealizovatelné) – překontrolujte prosím nastavení."
 
 #: admin/fai/class_faiDiskEntry.inc:737
 msgid ""
 "You cannot have more than three primary partition while using logical "
 "partitions, please check your configuration twice."
-msgstr ""
-"Pokud chcete použít i logický oddíl, nemůžete mít současně více než 3 hlavní "
-"oddíly – překontrolujte prosím nastavení."
+msgstr "Pokud chcete použít i logický oddíl, nemůžete mít současně více než 3 hlavní oddíly – překontrolujte prosím nastavení."
 
 #: admin/fai/class_faiDiskEntry.inc:760
 msgid "Disk options"
@@ -1139,20 +1136,14 @@ msgstr "přidej ze seznamu"
 
 #: admin/fai/remove.tpl:6
 msgid ""
-"This includes all account data, system access rules, imap settings, etc. for "
-"this user. Please double check if your really want to do this since there is "
-"no way for FusionDirectory to get your data back."
-msgstr ""
-"Týká se veškerých dat účtu, pravidel pro přístup do systému, nastavení IMAPu "
-"a dalšího. Prosím velmi dobře si rozmyslete, zda to opravdu chcete udělat, "
-"protože provedené změny už ve FusionDirectory nepůjde vzít nijak jednoduše "
-"zpět (nanejvýš složitě ze záloh, pokud existují a obsahují potřebná data)!"
+"This includes all account data, system access rules, imap settings, etc. for"
+" this user. Please double check if your really want to do this since there "
+"is no way for FusionDirectory to get your data back."
+msgstr "Týká se veškerých dat účtu, pravidel pro přístup do systému, nastavení IMAPu a dalšího. Prosím velmi dobře si rozmyslete, zda to opravdu chcete udělat, protože provedené změny už ve FusionDirectory nepůjde vzít nijak jednoduše zpět (nanejvýš složitě ze záloh, pokud existují a obsahují potřebná data)!"
 
 #: admin/fai/remove.tpl:10 admin/fai/remove_branch.tpl:10
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr ""
-"Tedy – pokud jste si jist(a) – klikněte na „delete“. V opačném případě celou "
-"akci zrušte pomocí „zrušit“."
+msgstr "Tedy – pokud jste si jist(a) – klikněte na „delete“. V opačném případě celou akci zrušte pomocí „zrušit“."
 
 #: admin/fai/paste_generic.tpl:1
 msgid "FAI settings"
@@ -1162,14 +1153,11 @@ msgstr "nastavení FAI"
 #, php-format
 msgid ""
 "The file encodig has changed from '%s' to '%s'. Do you really want to save?"
-msgstr ""
-"Znaková sada souboru byla změněna z '%s' na '%s'. Opravdu chcete provést "
-"uložení?"
+msgstr "Znaková sada souboru byla změněna z '%s' na '%s'. Opravdu chcete provést uložení?"
 
 #: admin/fai/faiTemplateEdit.tpl:16
 msgid "This FAI template is write protected. Editing may break it!"
-msgstr ""
-"Tato šablona FAI je chráněna proti zápisu. Jakékoli úpravy ji mohou rozbít!"
+msgstr "Tato šablona FAI je chráněna proti zápisu. Jakékoli úpravy ji mohou rozbít!"
 
 #: admin/fai/faiTemplateEdit.tpl:17
 msgid "Edit anyway"
@@ -1522,9 +1510,7 @@ msgstr "priorita"
 msgid ""
 "Choose a priority. Low values result in an earlier, high values in a later "
 "execution."
-msgstr ""
-"Zvolte prioritu – ty nižších číselných hodnot budou spuštěny dříve než těch "
-"vyšších."
+msgstr "Zvolte prioritu – ty nižších číselných hodnot budou spuštěny dříve než těch vyšších."
 
 #: admin/fai/class_faiScript.inc:334 admin/fai/class_faiScript.inc:336
 msgid "Sort direction"
@@ -1591,11 +1577,7 @@ msgid ""
 "This includes all account data, system access, etc. for this branch. Please "
 "double check if your really want to do this since there is no way for "
 "FusionDirectory to get your data back."
-msgstr ""
-"Týká se veškerých dat účtu, přístupu do systému a dalšího pro celou tuto "
-"větev. Prosím velmi dobře si rozmyslete, zda to opravdu chcete udělat, "
-"protože provedené změny už ve FusionDirectory nepůjde vzít nijak jednoduše "
-"zpět (nanejvýš složitě ze záloh, pokud existují a obsahují potřebná data)!"
+msgstr "Týká se veškerých dat účtu, přístupu do systému a dalšího pro celou tuto větev. Prosím velmi dobře si rozmyslete, zda to opravdu chcete udělat, protože provedené změny už ve FusionDirectory nepůjde vzít nijak jednoduše zpět (nanejvýš složitě ze záloh, pokud existují a obsahují potřebná data)!"
 
 #: admin/fai/class_askClassName.inc:99 admin/fai/class_askClassName.inc:100
 #: admin/fai/class_askClassName.inc:101 admin/fai/class_askClassName.inc:102
@@ -1665,24 +1647,3 @@ msgstr "seznam repozitářů"
 #: admin/systems/services/repository/repository-list.xml:14
 msgid "Service"
 msgstr "služby"
-
-#~ msgid "Show netboot products"
-#~ msgstr "zobrazit stroje, které startují ze síťového úložiště"
-
-#~ msgid "Show localboot products"
-#~ msgstr "zobrazit stroje, které startují z vlastního úložiště"
-
-#~ msgid "OPSI netboot product"
-#~ msgstr "produkt OPSI zaváděný ze sítě"
-
-#~ msgid "OPSI local product"
-#~ msgstr "místní produkt OPSI"
-
-#~ msgid "OPSI localboot product"
-#~ msgstr "produkt OPSI zaváděný z jeho vlastního úložiště"
-
-#~ msgid "FAI releases"
-#~ msgstr "vydání FAI"
-
-#~ msgid "FAI release management"
-#~ msgstr "správa vydání FAI"

@@ -1,72 +1,64 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 #   <pavel.borecki@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-27 13:06+0200\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
+"POT-Creation-Date: 2012-08-22 18:37+0200\n"
 "PO-Revision-Date: 2012-05-26 16:52+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/"
-"FusionDirectory/language/cs_CZ/)\n"
-"Language: cs_CZ\n"
+"Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/FusionDirectory/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: cs_CZ\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
-#: admin/systems/samba/class_winGeneric.inc:135
+#: admin/systems/samba/class_winGeneric.inc:132
 msgid "network"
 msgstr "síť"
 
-#: admin/systems/samba/class_winGeneric.inc:176
-#: admin/systems/samba/class_winGeneric.inc:424
+#: admin/systems/samba/class_winGeneric.inc:168
+#: admin/systems/samba/class_winGeneric.inc:316
 #: personal/samba/class_sambaAccount.inc:850
 #: personal/samba/class_sambaAccount.inc:1112
 msgid "LDAP error"
 msgstr "chyba LDAPu"
 
-#: admin/systems/samba/class_winGeneric.inc:207
+#: admin/systems/samba/class_winGeneric.inc:198
 msgid "Error"
 msgstr "chyba"
 
-#: admin/systems/samba/class_winGeneric.inc:267
-#: admin/systems/samba/class_winGeneric.inc:448
+#: admin/systems/samba/class_winGeneric.inc:231
+#: admin/systems/samba/class_winGeneric.inc:341
 msgid "Name"
 msgstr "jméno"
 
-#: admin/systems/samba/class_winGeneric.inc:439
+#: admin/systems/samba/class_winGeneric.inc:332
 msgid "Win generic"
 msgstr "údaje o MS Windows"
 
-#: admin/systems/samba/class_winGeneric.inc:440
+#: admin/systems/samba/class_winGeneric.inc:333
 msgid "Windows workstation generic"
 msgstr "pracovní stanice s OS MS Windows – obecné"
 
-#: admin/systems/samba/class_winGeneric.inc:445
-#, fuzzy
-msgid "Windows workstation"
+#: admin/systems/samba/class_winGeneric.inc:338
+msgid "Win workstation"
 msgstr "pracovní stanice s OS MS Windows"
 
-#: admin/systems/samba/class_winGeneric.inc:449
+#: admin/systems/samba/class_winGeneric.inc:342
 #: admin/systems/samba/wingeneric.tpl:17
 msgid "Base"
 msgstr "základ"
 
-#: admin/systems/samba/class_winGeneric.inc:450
+#: admin/systems/samba/class_winGeneric.inc:343
 #: admin/systems/samba/wingeneric.tpl:29
 msgid "Description"
 msgstr "popis"
-
-#: admin/systems/samba/class_winGeneric.inc:451
-#: admin/systems/samba/wingeneric.tpl:37 personal/samba/samba3.tpl:26
-#: personal/samba/class_sambaAccount.inc:1189
-msgid "Domain"
-msgstr "doména"
 
 #: admin/systems/samba/wingeneric.tpl:6
 msgid "Machine name"
@@ -89,6 +81,10 @@ msgstr "obecné"
 #: personal/samba/class_sambaAccount.inc:1239
 msgid "Home directory"
 msgstr "domovská složka"
+
+#: personal/samba/samba3.tpl:26 personal/samba/class_sambaAccount.inc:1189
+msgid "Domain"
+msgstr "doména"
 
 #: personal/samba/samba3.tpl:35
 msgid "Show information"
@@ -478,16 +474,12 @@ msgstr "varování"
 
 #: personal/samba/class_sambaAccount.inc:1053
 msgid "Undefined Samba SID detected. Please fix this problem manually!"
-msgstr ""
-"Zjištěno nedefinované SID Samby. Prosím opravte tento problém ručním zásahem "
-"do nastavení!"
+msgstr "Zjištěno nedefinované SID Samby. Prosím opravte tento problém ručním zásahem do nastavení!"
 
 #: personal/samba/class_sambaAccount.inc:1078
 msgid ""
 "Cannot convert primary group to samba group: group cannot be identified!"
-msgstr ""
-"Nemohu převést primární skupinu na skupinu Samby: skupinu se nepodařilo "
-"identifikovat!"
+msgstr "Nemohu převést primární skupinu na skupinu Samby: skupinu se nepodařilo identifikovat!"
 
 #: personal/samba/class_sambaAccount.inc:1177 personal/samba/main.inc:135
 msgid "Samba settings"
@@ -537,9 +529,7 @@ msgstr "povolit připojení z"
 msgid ""
 "The windows user manager only allows eight clients. You've specified more "
 "than eight."
-msgstr ""
-"Správce uživatelských účtů v MS Windows povoluje nanejvýš 8 uživatelů. Zadal"
-"(a) jste jich více."
+msgstr "Správce uživatelských účtů v MS Windows povoluje nanejvýš 8 uživatelů. Zadal(a) jste jich více."
 
 #: personal/samba/samba3_workstations.tpl:6
 msgid "Select workstations to add"
