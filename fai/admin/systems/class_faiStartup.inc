@@ -37,15 +37,7 @@ class FAIreleaseAttribute extends SelectAttribute
     if (isset($this->plugin)) {
       $this->plugin->attributesInfo['main']['attrs']['FAIclass']->attributes[1]->setChoices($this->plugin->cache['PROFILES'][$value]);
       $this->plugin->attributesInfo['main']['attrs']['FAIdebianMirror']->setChoices($this->plugin->cache['SERVERS'][$value]);
-      if ($this->plugin->update_kernel_cache($value)) {
-        $this->plugin->attributesInfo['startup']['attrs']['gotoBootKernel']->setChoices($this->plugin->cache['KERNELS'][$value]);
-      } else {
-        $this->plugin->attributesInfo['startup']['attrs']['gotoBootKernel']->setChoices(array());
-        $this->plugin->attributesInfo['startup']['attrs']['gotoBootKernel']->setValue(
-          $this->plugin->attributesInfo['startup']['attrs']['gotoBootKernel']->getInitialValue()
-        );
-        $this->plugin->attributesInfo['startup']['attrs']['gotoBootKernel']->setDisabled(TRUE);
-      }
+      $this->plugin->attributesInfo['startup']['attrs']['gotoBootKernel']->setRelease($value);
     }
   }
 
@@ -53,6 +45,46 @@ class FAIreleaseAttribute extends SelectAttribute
   {
     parent::setParent($plugin);
     $this->setChoices(array_keys($this->plugin->cache['SERVERS']));
+  }
+}
+
+class BootKernelAttribute extends SelectAttribute
+{
+  private $cache = array();
+
+  function setRelease($release)
+  {
+    if ($this->update_kernel_cache($release)) {
+      $this->setChoices($this->cache[$release]);
+      $this->setDisabled(FALSE);
+    } else {
+      $this->setChoices(array());
+      $this->setValue($this->getInitialValue());
+      $this->setDisabled(TRUE);
+    }
+  }
+
+  function update_kernel_cache($release)
+  {
+    /* Get list of available kernel for this release
+     */
+    if (!isset($this->cache)) {
+      $this->cache = array();
+    }
+
+    if (!isset($this->cache[$release])) {
+      $s_daemon = new supportDaemon();
+      if (!$s_daemon->is_available()) {
+        return FALSE;
+      }
+      $tmp = $s_daemon->FAI_get_kernels($release);
+      if ($s_daemon->is_error()) {
+        return FALSE;
+      }
+      $this->cache[$release] = $tmp;
+      ksort($this->cache[$release]);
+    }
+    return TRUE;
   }
 }
 
@@ -100,7 +132,7 @@ class faiStartup extends simplePlugin
       'startup' => array (
         'name' => _('Startup parameters'),
         'attrs' => array (
-          new SelectAttribute (
+          new BootKernelAttribute (
             _('Boot kernel'),  _('Linux kernel to be installed and booted'),
             'gotoBootKernel', FALSE
           ),
@@ -215,35 +247,6 @@ class faiStartup extends simplePlugin
     }
   }
 
-  function update_kernel_cache($release)
-  {
-    /* Get list of available kernel for this release
-     */
-    if (!isset($this->cache['KERNELS'])) {
-      $this->cache['KERNELS'] = array();
-    }
-
-    if (!$this->sdaemon_available) {
-      return FALSE;
-    }
-
-    if (!isset($this->cache['KERNELS'][$release])) {
-      $s_daemon = new supportDaemon();
-      if (!$s_daemon->is_available()) {
-        $this->sdaemon_available = FALSE;
-        return FALSE;
-      }
-      $tmp = $s_daemon->FAI_get_kernels($release);
-      if ($s_daemon->is_error()) {
-        $this->sdaemon_available = FALSE;
-        return FALSE;
-      }
-      $this->cache['KERNELS'][$release] = $tmp;
-      ksort($this->cache['KERNELS'][$release]);
-    }
-    return TRUE;
-  }
-
   /* Return plugin informations for acl handling */
   static function plInfo()
   {
@@ -254,6 +257,7 @@ class faiStartup extends simplePlugin
       "plPriority"      => 9,
       "plSection"       => array("administration"),
       "plCategory"      => array("workstation", "server", "ogroups"),
+      "plObjectType"    => array("workstation", "server", "ogroup"),
 
       "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
