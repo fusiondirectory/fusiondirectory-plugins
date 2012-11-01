@@ -20,8 +20,8 @@
 
 class supannStructuresManagement extends management
 {
-  var $plHeadline     = "supann Structures";
-  var $plDescription  = "Supann Structures administration";
+  var $plHeadline     = "Supann structures";
+  var $plDescription  = "Supann structures administration";
   var $plIcon         = "plugins/supann/images/plugin.png";
 
   // Tab definition
@@ -197,5 +197,4 @@ class supannStructuresManagement extends management
   }
 }
 
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

@@ -11,14 +11,6 @@
     <defaultSortColumn>1</defaultSortColumn>
 
     <objectType>
-      <label>Opsi host</label>
-      <objectClass>FAKE_OC_OpsiHost</objectClass>
-      <category>opsi</category>
-      <class>opsiGeneric</class>
-      <image>plugins/systems/images/select_winstation.png</image>
-    </objectType>
-
-    <objectType>
       <label>New workstation</label>
       <objectClass>FAKE_OC_NewWorkstation</objectClass>
       <category>workstation</category>
@@ -150,7 +142,7 @@
   </definition>
 
   <table>
-    <layout>|20px;c||90px||80px|80px|170px;r|</layout>
+    <layout>|20px;c||90px|110px|100px||60px|170px;r|</layout>
 
     <department>
       <value>%{filter:objectType(dn,objectClass)}</value>
@@ -178,6 +170,14 @@
       <sortAttribute>ip</sortAttribute>
       <sortType>string</sortType>
       <value>%{filter:ipOf(dn)}</value>
+      <export>true</export>
+    </column>
+
+    <column>
+      <label>MAC</label>
+      <sortAttribute>mac</sortAttribute>
+      <sortType>string</sortType>
+      <value>%{filter:macOf(dn)}</value>
       <export>true</export>
     </column>
 
@@ -243,6 +243,14 @@
       <depends>termgeneric</depends>
      </action>
 
+    <action>
+      <name>new_sambaSamAccount</name>
+      <type>entry</type>
+      <image>plugins/systems/images/select_winstation.png</image>
+      <label>winStation</label>
+      <depends>wingeneric</depends>
+    </action>
+
      <action>
       <name>new_gotoPrinter</name>
       <type>entry</type>
@@ -265,14 +273,6 @@
       <image>plugins/systems/images/select_component.png</image>
       <label>Network device</label>
       <depends>componentGeneric</depends>
-     </action>
-
-     <action>
-      <name>new_FAKE_OC_OpsiHost</name>
-      <type>entry</type>
-      <image>plugins/systems/images/select_winstation.png</image>
-      <label>Opsi client</label>
-      <depends>opsi</depends>
      </action>
     </action>
 

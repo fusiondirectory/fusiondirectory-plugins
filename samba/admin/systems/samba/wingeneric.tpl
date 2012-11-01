@@ -33,6 +33,16 @@
 {/render}
     </td>
    </tr>
+   <tr>
+    <td><label for="sambaDomainName">{t}Domain{/t}</label></td>
+    <td>
+{render acl=$sambaDomainNameACL}
+      <select id="sambaDomainName" size="1" name="sambaDomainName">
+       {html_options values=$domains output=$domains selected=$sambaDomainName}
+      </select>
+{/render}
+     </td>
+   </tr>
   </table>
   </td>
  </tr>

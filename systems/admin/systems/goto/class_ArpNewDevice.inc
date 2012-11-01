@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
@@ -57,9 +57,7 @@ class ArpNewDevice extends plugin
     $this->ObjectGroups= $tmp;
 
     $this->SystemTypes =array("gotoWorkstation"=>_("Workstation"), "gotoTermminal"=>_("Terminal"), "goServer"=>_("Server"));
-    if(class_available("opsi")){
-      $this->SystemTypes["FAKE_OC_OpsiHost"]= _("Windows workstation");
-    }
+
   }
 
   function execute()
@@ -79,11 +77,11 @@ class ArpNewDevice extends plugin
     }
     $this->netConfigDNS->cn= $this->cn;
 
-    $map = array("gotoWorkstation" => "W","gotoTerminal" => "T","goServer" => "S", "FAKE_OC_OpsiHost" => "O");
+    $map = array("gotoWorkstation" => "W","gotoTerminal" => "T","goServer" => "S");
     $smarty->assign("netconfig", $this->netConfigDNS->execute());
     $smarty->assign("ogroups", $tmp[$map[$this->SystemType]]);
     $smarty->assign("SystemTypes"     ,$this->SystemTypes);
-    $smarty->assign("SystemTypeKeys"  ,array_flip($this->SystemTypes)); 
+    $smarty->assign("SystemTypeKeys"  ,array_flip($this->SystemTypes));
     $smarty->assign("ObjectGroup",$this->ObjectGroup);
     $smarty->assign("SystemType",$this->SystemType);
 
@@ -116,7 +114,7 @@ class ArpNewDevice extends plugin
     if(isset($_POST['ArpNewDevice_posted'])){
       plugin::save_object();
       $this->netConfigDNS->save_object();
-    
+
       $this->gotoIntegration = isset($_POST['gotoIntegration']);
       if($this->gotoIntegration){
         if(isset($_POST['SystemType'])){
@@ -131,14 +129,14 @@ class ArpNewDevice extends plugin
 
   function save()
   {
-  
+
     $this->netConfigDNS->acl = $this->acl;
     plugin::save();
-    $this->netConfigDNS->cn = $this->cn;    
+    $this->netConfigDNS->cn = $this->cn;
     $this->netConfigDNS->save($this->dn);
 
     // Do not remove this Arp-Device if gotoIntegration was selected.
-    if(!$this->gotoIntegration){ 
+    if(!$this->gotoIntegration){
 
       $ldap = $this->config->get_ldap_link();
       $ldap->cd($this->config->current['BASE']);

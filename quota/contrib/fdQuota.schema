@@ -1,95 +1,95 @@
 # FusionDirectory Quota service LDAP schema
 
-attributetype ( 1.3.6.1.4.1.38414.1.3.4.1 NAME 'quotaDeviceParameters'
+attributetype ( 1.3.6.1.4.1.38414.3.1.1 NAME 'quotaDeviceParameters'
         DESC 'Device where quota will be actived device:blocksize:description'
         EQUALITY caseExactIA5Match
         SYNTAX 1.3.6.1.4.1.1466.115.121.1.26)
 
-attributetype ( 1.3.6.1.4.1.38414.1.3.4.2 NAME 'quotaMsgFromSupport'
+attributetype ( 1.3.6.1.4.1.38414.3.1.2 NAME 'quotaMsgFromSupport'
         DESC 'mail Address of sender in case of quota exceed'
         EQUALITY caseExactIA5Match
         SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
         SINGLE-VALUE )
 
-attributetype ( 1.3.6.1.4.1.38414.1.3.4.3 NAME 'quotaMsgSubjectSupport'
+attributetype ( 1.3.6.1.4.1.38414.3.1.3 NAME 'quotaMsgSubjectSupport'
         DESC 'Subject of message in case of quota exceed'
         EQUALITY caseExactIA5Match
         SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
         SINGLE-VALUE )
 
-attributetype ( 1.3.6.1.4.1.38414.1.3.4.4 NAME 'quotaMsgContactSupport'
+attributetype ( 1.3.6.1.4.1.38414.3.1.4 NAME 'quotaMsgContactSupport'
         DESC 'Contact specified in message in case of quota exceed'
         EQUALITY caseExactIA5Match
         SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
         SINGLE-VALUE )
 
-attributetype ( 1.3.6.1.4.1.38414.1.3.4.5 NAME 'quotaMsgSignatureSupport'
+attributetype ( 1.3.6.1.4.1.38414.3.1.5 NAME 'quotaMsgSignatureSupport'
         DESC 'Signature of message in case of quota exceed'
         EQUALITY caseExactIA5Match
         SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
         SINGLE-VALUE )
 
-attributetype ( 1.3.6.1.4.1.38414.1.3.4.6 NAME 'quotaMsgCharsetSupport'
+attributetype ( 1.3.6.1.4.1.38414.3.1.6 NAME 'quotaMsgCharsetSupport'
         DESC 'Charset of message send in case of quota exceed'
         EQUALITY caseExactIA5Match
         SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
         SINGLE-VALUE )
 
-attributetype ( 1.3.6.1.4.1.38414.1.3.4.7 NAME 'quotaLdapMailActive'
+attributetype ( 1.3.6.1.4.1.38414.3.1.7 NAME 'quotaLdapMailActive'
         DESC 'Activate LDAP request for sending mail'
         EQUALITY caseExactIA5Match
         SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
         SINGLE-VALUE )
 
-attributetype ( 1.3.6.1.4.1.38414.1.3.4.8 NAME 'quotaLdapSearchIdAttribute'
+attributetype ( 1.3.6.1.4.1.38414.3.1.8 NAME 'quotaLdapSearchIdAttribute'
         DESC 'which LDAP field to use for searching mail address'
         EQUALITY caseExactIA5Match
         SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
         SINGLE-VALUE )
 
 
-attributetype ( 1.3.6.1.4.1.38414.1.3.4.9 NAME 'quotaLdapSearchMailAttribute'
+attributetype ( 1.3.6.1.4.1.38414.3.1.9 NAME 'quotaLdapSearchMailAttribute'
         DESC 'Which LDAP field to read for geting email address'
         EQUALITY caseExactIA5Match
         SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
         SINGLE-VALUE )
 
 
-attributetype ( 1.3.6.1.4.1.38414.1.3.4.10 NAME 'quotaMsgContentSupport'
+attributetype ( 1.3.6.1.4.1.38414.3.1.10 NAME 'quotaMsgContentSupport'
         DESC 'Core of message to send to user'
         EQUALITY caseExactIA5Match
         SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
         SINGLE-VALUE )
 
 
-attributetype ( 1.3.6.1.4.1.38414.1.3.4.14 NAME 'quotaCarbonCopyMail'
+attributetype ( 1.3.6.1.4.1.38414.3.1.11 NAME 'quotaCarbonCopyMail'
         DESC 'CC field of message in case of quota exceed'
         EQUALITY caseExactIA5Match
         SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
         SINGLE-VALUE )
 
 
-attributetype ( 1.3.6.1.4.1.38414.1.3.4.15 NAME 'quotaMailCommand'
+attributetype ( 1.3.6.1.4.1.38414.3.1.12 NAME 'quotaMailCommand'
         DESC 'mail command for sending messages'
         EQUALITY caseExactIA5Match
         SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
         SINGLE-VALUE )
 
 
-attributetype ( 1.3.6.1.4.1.38414.1.3.4.11 NAME 'quotaLdapServerURI'
+attributetype ( 1.3.6.1.4.1.38414.3.1.13 NAME 'quotaLdapServerURI'
         DESC 'URI of LDAP Server to Ask'
         EQUALITY caseExactIA5Match
         SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
         SINGLE-VALUE )
 
-attributetype ( 1.3.6.1.4.1.38414.1.3.4.12 NAME 'quotaLdapServerUserDn'
+attributetype ( 1.3.6.1.4.1.38414.3.1.14 NAME 'quotaLdapServerUserDn'
         DESC 'Ldap User to use for asking LDAP data'
         EQUALITY caseExactIA5Match
         SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
         SINGLE-VALUE )
 
 
-attributetype ( 1.3.6.1.4.1.38414.1.3.4.13 NAME 'quotaLdapServerUserPassword'
+attributetype ( 1.3.6.1.4.1.38414.3.1.15 NAME 'quotaLdapServerUserPassword'
         DESC 'Ldap User password '
         EQUALITY caseExactIA5Match
         SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
@@ -100,7 +100,7 @@ attributetype ( 1.3.6.1.4.1.38414.1.3.4.13 NAME 'quotaLdapServerUserPassword'
 ##
 
 # Terminal Server description
-objectclass (1.3.6.1.4.1.38414.1.3.5.1 NAME 'quotaService' SUP top AUXILIARY
+objectclass (1.3.6.1.4.1.38414.3.2.1 NAME 'quotaService' SUP top AUXILIARY
         DESC 'Quota Service'
         MUST ( cn )
         MAY  (quotaDeviceParameters $ quotaLdapServerURI $ quotaLdapServerUserDn $

@@ -256,7 +256,7 @@ class servdns extends goService
         $tmp = preg_replace("/^ldap2Zone_/","",$name);
         $tmp = base64_decode(preg_replace("/_.*$/","",$tmp));
 
-        /* Initiate deletion
+        /* Initiate ldap2zone
          */
         $this->Ldap2Zone($tmp);
       }
@@ -383,7 +383,7 @@ class servdns extends goService
     if ($o_queue->is_error()) {
       msg_dialog::display(_("Error"), sprintf(_("Was not able to contact argonaut server: %s"), "<br/><br/>".$o_queue->get_error()), ERROR_DIALOG);
     } else {
-      $o_queue->append_call("ldap2zone",
+      $o_queue->append_call("Ldap2Zone.start",
                             array($this->attrs['macAddress'][0]),
                             array("args"=>array($zone)));
       if ($o_queue->is_error()) {

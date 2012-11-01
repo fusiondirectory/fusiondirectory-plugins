@@ -26,11 +26,11 @@ class mimetype extends plugin
   var $objectclasses  = array("top","gotoMimeType");
   var $attributes   = array("cn","gotoMimeApplication","gotoMimeLeftClickAction","gotoMimeIcon",
                   "description","gotoMimeFilePattern","gotoMimeEmbeddedApplication",
-                  "gotoMimeGroup"); 
+                  "gotoMimeGroup");
 
   /* Class vars */
   var $ui;
-  var $cn         = "";         
+  var $cn         = "";
   var $gotoMimeLeftClickAction    = "I";
   var $gotoMimeLeftClickAction_I    = true;
   var $gotoMimeLeftClickAction_E    = false;
@@ -41,12 +41,12 @@ class mimetype extends plugin
   var $gotoMimeApplication    = array();
   var $gotoMimeEmbeddedApplication  = array();
   var $gotoMimeGroup      = "";
-  var $iconData       = NULL; 
+  var $iconData       = NULL;
   var $base       = "";
-  var $ApplicationList      = array();  
+  var $ApplicationList      = array();
 
 
-  /* To prevent errors when using the 'apply' button, we use this variables 
+  /* To prevent errors when using the 'apply' button, we use this variables
       to manage array attributes */
   var $use_gotoMimeIcon     = NULL;
   var $use_gotoMimeFilePattern    = array();
@@ -70,7 +70,7 @@ class mimetype extends plugin
   var $MimeGroups           = array("application","audio","chemical","image","inode","message","model",
                                       "multipart","text","video","x-conference","x-world");
 
-  /* Orig_Dn is used to verify if this object is new or only edited */    
+  /* Orig_Dn is used to verify if this object is new or only edited */
   var $orig_dn    = "";
   var $orig_base  = "";
 
@@ -79,7 +79,7 @@ class mimetype extends plugin
     plugin::plugin ($config, $dn);
 
     /* Save original dn */
-    $this->orig_dn = $dn; 
+    $this->orig_dn = $dn;
 
     /* get gotoMimeLeftClickActions I/E/Q */
     if(isset($this->gotoMimeLeftClickAction)){
@@ -141,7 +141,7 @@ class mimetype extends plugin
       }
     }
 
-    /* Set base */  
+    /* Set base */
     if ($this->dn == "new"){
       if(session::is_set('CurrentMainBase')){
         $this->base= session::get('CurrentMainBase');
@@ -184,7 +184,7 @@ class mimetype extends plugin
     $smarty->assign("IconReadable", preg_match("/r/",$this->getacl("gotoMimeIcon",preg_match("/freeze/i",$this->FAIstate))));
 
     /* Check Posts */
-    $posts = array( 
+    $posts = array(
         "/^Pattern_SortUp_/"  => array("Action" => "Pattern_SortUp",  "Func" => "ArrayUp",  "Attr" => "use_gotoMimeFilePattern"),
         "/^Pattern_SortDown_/"  => array("Action" => "Pattern_SortDown","Func" => "ArrayDown",  "Attr" => "use_gotoMimeFilePattern"),
         "/^Pattern_Remove_/"  => array("Action" => "Pattern_Remove",  "Func" => "ArrayRemove","Attr" => "use_gotoMimeFilePattern"),
@@ -193,7 +193,7 @@ class mimetype extends plugin
         "/^Apps_Remove_/"     => array("Action" => "Apps_Remove",   "Func" => "ArrayRemove","Attr" => "use_gotoMimeApplication"),
         "/^EApps_SortUp_/"    => array("Action" => "EApps_SortUp",  "Func" => "ArrayUp",    "Attr" => "use_gotoMimeEmbeddedApplication"),
         "/^EApps_SortDown_/"  => array("Action" => "EApps_SortDown",  "Func" => "ArrayDown",  "Attr" => "use_gotoMimeEmbeddedApplication"),
-        "/^EApps_Remove_/"    => array("Action" => "EApps_Remove",  "Func" => "ArrayRemove","Attr" => "use_gotoMimeEmbeddedApplication"));    
+        "/^EApps_Remove_/"    => array("Action" => "EApps_Remove",  "Func" => "ArrayRemove","Attr" => "use_gotoMimeEmbeddedApplication"));
     $once = true;
 
     /* Walk through posts and try to find some commands for us. */
@@ -208,18 +208,18 @@ class mimetype extends plugin
             $once = false;
 
             /* Get action vars */
-            $func     = $action['Func'];    // Get function name 
+            $func     = $action['Func'];    // Get function name
             $attr     = $action['Attr'];    // Get attribute name
             $acl_a    = preg_replace("/^use_/","",$action['Attr']);   // Get attribute name
 
             /* Get entry id */
             $s_entry    = preg_replace($regex,"",$name);
-            $s_entry  = preg_replace("/_[xy]$/","",$s_entry); 
+            $s_entry  = preg_replace("/_[xy]$/","",$s_entry);
 
-            /* Execute a command with the given attribute and entry 
+            /* Execute a command with the given attribute and entry
                e.g. $this->gotoMimeFilePattern = $this->ArrayUp(3,$this->gotoMimeFilePattern) */
             if($this->acl_is_writeable($acl_a)){
-              $this->$attr= $this->$func($s_entry,$this->$attr,true);          
+              $this->$attr= $this->$func($s_entry,$this->$attr,true);
             }
           }
         }
@@ -227,7 +227,7 @@ class mimetype extends plugin
 
       /* Set a new icon was requested */
       if(isset($_POST['update_icon']) && (isset($_FILES['picture_file']['name']))){
-        $this->set_new_picture($_FILES['picture_file']['tmp_name']);    
+        $this->set_new_picture($_FILES['picture_file']['tmp_name']);
       }
 
       /* Add gotoMimeFilePattern */
@@ -238,10 +238,10 @@ class mimetype extends plugin
             $this->use_gotoMimeFilePattern[] = $str;
           }
         }
-      } 
+      }
 
       /* Add gotoMimeFilePattern */
-      if(isset($_POST['AddNewApplication']) && 
+      if(isset($_POST['AddNewApplication']) &&
           (isset($_POST['NewApplication']) || isset($_POST['NewApplicationSelect']))){
         if($this->acl_is_writeable("gotoMimeApplication")){
           $str = "";
@@ -255,12 +255,12 @@ class mimetype extends plugin
             $this->use_gotoMimeApplication[] = $str;
           }
         }
-      } 
+      }
 
-      /* Add embedded application 
-       *  - From input or from select box 
+      /* Add embedded application
+       *  - From input or from select box
        */
-      if(isset($_POST['AddNewEmbeddedApplication']) && 
+      if(isset($_POST['AddNewEmbeddedApplication']) &&
           (isset($_POST['NewEmbeddedApplication']) || isset($_POST['NewEmbeddedApplicationSelect']))){
         if($this->acl_is_writeable("gotoMimeEmbeddedApplication")){
           $str = "";
@@ -274,8 +274,8 @@ class mimetype extends plugin
             $this->use_gotoMimeEmbeddedApplication[] = $str;
           }
         }
-      } 
-    } 
+      }
+    }
 
     /* Create divlists */
     $DivPatterns  = new divSelectBox("gotoMimePatterns");
@@ -291,7 +291,7 @@ class mimetype extends plugin
       <input type='image' src='images/lists/sort-down.png'  class='center'  name='Pattern_SortDown_%s'>&nbsp;
       <input type='image' src='images/lists/trash.png'  class='center'  name='Pattern_Remove_%s'>";
     }else{
-      $Pattern_Actions= ""; 
+      $Pattern_Actions= "";
     }
 
     if($this->acl_is_writeable("gotoMimeApplication") && !preg_match("/freeze/i",$this->FAIstate)){
@@ -299,7 +299,7 @@ class mimetype extends plugin
       <input type='image' src='images/lists/sort-down.png'  class='center'  name='Apps_SortDown_%s'>&nbsp;
       <input type='image' src='images/lists/trash.png'  class='center'  name='Apps_Remove_%s'>";
     }else{
-      $Apps_Actions= "";  
+      $Apps_Actions= "";
     }
 
     if($this->acl_is_writeable("gotoMimeEmbeddedApplication") && !preg_match("/freeze/i",$this->FAIstate)){
@@ -307,7 +307,7 @@ class mimetype extends plugin
       <input type='image' src='images/lists/sort-down.png'  class='center'  name='EApps_SortDown_%s'>&nbsp;
       <input type='image' src='images/lists/trash.png'  class='center'  name='EApps_Remove_%s'>";
     }else{
-      $EApps_Actions= ""; 
+      $EApps_Actions= "";
     }
 
     /* Before adding some entries check acls */
@@ -317,7 +317,7 @@ class mimetype extends plugin
         $field2 = array("string" => preg_replace("/%s/",$key,$Pattern_Actions),"attach"=>"style='border-right:0px;width:50px;'");
         $fields = array($field1,$field2);
         $DivPatterns -> AddEntry($fields);
-      }     
+      }
     }
 
     if($this->acl_is_readable("gotoMimeApplication")){
@@ -326,8 +326,8 @@ class mimetype extends plugin
         $field2 = array("string" => preg_replace("/%s/",$key,$Apps_Actions),"attach"=>"style='border-right:0px;width:50px;'");
         $fields = array($field1,$field2);
         $DivApps -> AddEntry($fields);
-      }     
-    }     
+      }
+    }
     if($this->acl_is_readable("gotoMimeEmbeddedApplication")){
       foreach($this->use_gotoMimeEmbeddedApplication as $key => $pattern){
         $field1 = array("string" => $pattern);
@@ -335,25 +335,25 @@ class mimetype extends plugin
         $fields = array($field1,$field2);
         $DivEApps -> AddEntry($fields);
       }
-    }     
-    $smarty->assign("bases",            $this->get_allowed_bases());    
-    $smarty->assign("base_select",          $this->base);   
+    }
+    $smarty->assign("bases",            $this->get_allowed_bases());
+    $smarty->assign("base_select",          $this->base);
     $smarty->assign("isReleaseMimeType",      $this->is_release());
     $smarty->assign("gotoMimeFilePatterns",     $DivPatterns->DrawList());
     $smarty->assign("gotoMimeApplications",     $DivApps->DrawList());
     $smarty->assign("gotoMimeEmbeddedApplications", $DivEApps->DrawList());
 
     $smarty->assign("ApplicationList",$this->ApplicationList);
-  
+
     /* Assign class vars to smarty */
     foreach($this->attributes as $attr){
       $smarty->assign($attr,$this->$attr);
-    } 
+    }
 
     /* Assign additional vars that are not included in attributes*/
     foreach(array("gotoMimeLeftClickAction_I","gotoMimeLeftClickAction_E","gotoMimeLeftClickAction_Q") as $attr){
       $smarty->assign($attr,$this->$attr);
-    } 
+    }
 
     /* Assign select box options */
     $smarty->assign("gotoMimeGroups",$this->MimeGroups);
@@ -372,7 +372,7 @@ class mimetype extends plugin
       $base_tmp = $this->base;
       plugin::save_object();
       $this->base = $base_tmp;
-  
+
       /* Only save base if we are not in release mode */
       if(!$this->is_release()){
 
@@ -411,7 +411,7 @@ class mimetype extends plugin
   /* save current changes */
   function save()
   {
-    /* Create gotoMimeLeftClickAction out of checkboxes and radio buttons */  
+    /* Create gotoMimeLeftClickAction out of checkboxes and radio buttons */
     $arr = array ("E","I","Q");
     $str = "";
     foreach ($arr as $Chr){
@@ -455,7 +455,7 @@ class mimetype extends plugin
 
     plugin::save();
 
-    /* If this is a newly created object, skip storing those 
+    /* If this is a newly created object, skip storing those
        attributes that contain an empty array */
     if($this->orig_dn == "new"){
       foreach(array("gotoMimeEmbeddedApplication","gotoMimeApplication","gotoMimeFilePattern") as $attr){
@@ -556,7 +556,7 @@ class mimetype extends plugin
 
   /** Helper functions **/
 
-  /* Set a new picture */ 
+  /* Set a new picture */
   function set_new_picture($filename)
   {
     if (empty($filename)){
@@ -632,7 +632,7 @@ class mimetype extends plugin
 
 
   /* Remove this element from array */
-  function ArrayRemove($key,$array,$reorder = false)  
+  function ArrayRemove($key,$array,$reorder = false)
   {
     if(isset($array[$key])){
       unset($array[$key]);
@@ -643,7 +643,7 @@ class mimetype extends plugin
         }
         $array = $tmp;
       }
-    } 
+    }
     return($array);
   }
 
@@ -668,7 +668,7 @@ class mimetype extends plugin
   }
 
 
-  /* Return a dialog with all fields that must be changed, 
+  /* Return a dialog with all fields that must be changed,
      if we want to copy this entry */
   function getCopyDialog()
   {
@@ -697,7 +697,7 @@ class mimetype extends plugin
     }
   }
 
-  /* Return plugin informations for acl handling  */ 
+  /* Return plugin informations for acl handling  */
   static function plInfo()
   {
     return (array(
@@ -731,7 +731,7 @@ class mimetype extends plugin
     }else{
       /* Check if we should enable the release selection */
       $tmp = $this->config->search("faiManagement", "CLASS",array('menu','tabs'));
-      if(!empty($tmp)){
+      if(!empty($tmp) && class_available("faiManagement")){
         return(true);
       }
     }
@@ -751,7 +751,7 @@ class mimetype extends plugin
         $this->$use_attr= $source_o->$use_attr;
       }
       $this->$name = $source_o->$name;
-    } 
+    }
     foreach($this->attributes as $name){
       $this->$name = $source_o->$name;
     }

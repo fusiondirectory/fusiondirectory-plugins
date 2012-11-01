@@ -25,25 +25,25 @@ class termDNS extends plugin
   /* attribute list for save action */
   var $ignore_account = true;
 
-  /* Basic informations 
+  /* Basic informations
    */
   var $attributes     = array("ipHostNumber","macAddress");
   var $objectclasses  = array("whatever");
 
-  var $ipHostNumber          = "";    // IP address 
+  var $ipHostNumber          = "";    // IP address
   var $additionalHostNumbers = array();
-  var $macAddress            = "";    // Mac address 
+  var $macAddress            = "";    // Mac address
 
-  var $orig_ipHostNumber   = "";    // IP address 
-  var $orig_macAddress     = "";    // Mac address 
+  var $orig_ipHostNumber   = "";    // IP address
+  var $orig_macAddress     = "";    // Mac address
 
-  var $cn             = "";    // CN of currently edited device 
+  var $cn             = "";    // CN of currently edited device
   var $OrigCn         = "";    // Initial cn
   var $IPisMust       = false;
   var $MACisMust      = false;
   var $dialog         = false;
 
-  /* DCHP Attributes 
+  /* DCHP Attributes
    */
   var $dhcpAttributes           = array("dhcpParentNode");
   var $dhcpEnabled              = FALSE;
@@ -55,9 +55,9 @@ class termDNS extends plugin
   var $initial_dhcpHostEntry    = array();
   var $initial_dhcp_is_Account  = FALSE;
 
-  var $used_ip_mac              = array();  
+  var $used_ip_mac              = array();
 
-  /* DNS attributes  
+  /* DNS attributes
    */
   var $DNSattributes            = array("zoneName","dNSTTL");
   var $DNS_is_account           = false;
@@ -67,20 +67,20 @@ class termDNS extends plugin
   var $hide_dns_check_box       = FALSE;
   var $namingAttr               = "cn";
 
-  /*  Terminal dns 
+  /*  Terminal dns
    */
   function termDNS (&$config, $parent,$objectClasses,$IPisMust = false,$namingAttr = "cn")
   {
     /* We need to know which objectClasses are used, to store the ip/mac
-     * Because of different type of devices   
-     */ 
+     * Because of different type of devices
+     */
     $this->parent         = $parent;
     $this->objectclasses  =  $objectClasses;
     $this->IPisMust       = $IPisMust;
     $this->namingAttr     = $namingAttr;
 
     plugin::plugin ($config, $parent->dn, $this->parent);
-  
+
     $this->attrs = &$this->parent->attrs;
 
     if(isset($this->attrs[$namingAttr][0])){
@@ -96,28 +96,28 @@ class termDNS extends plugin
         $this->additionalHostNumbers[] = $this->attrs['ipHostNumber'][$i];
       }
     }
- 
+
     /************
-     * DHCP 
+     * DHCP
      ************/
 
     /* Hide all dhcp specific code, if dhcp plugin is not present in config */
     $this->dhcpEnabled = FALSE;
-    if($this->config->search("servdhcp","class",array("tabs"))){
+    if ($this->config->search("servdhcp","class",array("tabs"))) {
       $this->dhcpEnabled = TRUE;
     }
-    
-    if(!class_available("dhcpHost")){
+
+    if (!class_available("dhcpHost")) {
       $this->dhcpEnabled = FALSE;
     }
 
-    if($this->dhcpEnabled){
+    if ($this->dhcpEnabled) {
       $this->dhcpParentNodes = $this->get_dhcp_parent_nodes();
       $this->dhcpParentNode  = $this->get_dhcp_parent_node();
-      if($this->dhcpParentNode){
+      if ($this->dhcpParentNode) {
         $this->dhcp_is_Account = TRUE;
         $this->initial_dhcp_is_Account = TRUE;
-        $this->dhcpHostEntry  = $this->get_dhcp_host_entry();    
+        $this->dhcpHostEntry  = $this->get_dhcp_host_entry();
       }
       $this->initial_dhcpHostEntry = $this->dhcpHostEntry;
       $this->initial_dhcpParentNode= $this->dhcpParentNode;
@@ -127,32 +127,32 @@ class termDNS extends plugin
     /************
      * DNS
      ************/
- 
-    /* Hide all dns specific code, if dns is not available 
+
+    /* Hide all dns specific code, if dns is not available
      */
     $DNSenabled = false;
-    foreach($this->config->data['TABS']['SERVERSERVICE'] as $tab){
-      if(preg_match("/^servdns$/",$tab['CLASS'])){
+    foreach ($this->config->data['TABS']['SERVERSERVICE'] as $tab) {
+      if(preg_match("/^servdns$/",$tab['CLASS'])) {
         $this->DNSenabled = true;
       }
     }
 
-    if(!class_available("DNS")){
+    if (!class_available("DNS")) {
       $this->DNSenabled = FALSE;
     }
-  
-    if(!$this->DNSenabled){
+
+    if (!$this->DNSenabled) {
       $this->DNS_is_account = false;
       return;
     }
 
-    if($this->DNSenabled){
+    if ($this->DNSenabled) {
 
-      /* Get Zones  
+      /* Get Zones
        */
       $this->Zones        = DNS::getAvailableZones($config);
 
-      /* Get Entry 
+      /* Get Entry
        */
       $this->dnsEntry     = DNS::getDNSHostEntries($config,$this->OrigCn);
 
@@ -169,11 +169,11 @@ class termDNS extends plugin
         }
       }
 
-      /* Get Record types 
+      /* Get Record types
        */
       $this->RecordTypes  = DNS::getDnsRecordTypes();
 
-      /* If there is at least one entry in this -> types, we have DNS enabled 
+      /* If there is at least one entry in this -> types, we have DNS enabled
        */
       if($this->dnsEntry['exists']){
         $this->DNS_is_account = true;
@@ -184,13 +184,13 @@ class termDNS extends plugin
 
     /* Create a list of used mac and ip addresses.
 
-       ! We use this optically huge amount of code to fetch all 
+       ! We use this optically huge amount of code to fetch all
        Mac and IP addresses, because a simple search for mac and IP
        over the whole ldap server was 10 to 20 times slower.
      */
     $deps  = array();
     $ou = preg_replace("/,.*$/","",get_ou("systemRDN"));
-  
+
     $ldap = $this->config->get_ldap_link();
     $ldap->cd($this->config->current['BASE']);
     $ldap->search("(&(objectClass=organizationalUnit)(".$ou."))",array("dn"));
@@ -208,15 +208,15 @@ class termDNS extends plugin
         if(isset($attrs['macAddress'][0])){
           $this->used_ip_mac["mac:".$attrs['macAddress'][0]] = "mac:".$attrs['macAddress'][0];
         }
-      } 
+      }
     }
 
-    /* Save initial ip and mac values, to be able 
-        check if the used values are already in use */ 
-    $this->orig_ipHostNumber   = $this->ipHostNumber;  
+    /* Save initial ip and mac values, to be able
+        check if the used values are already in use */
+    $this->orig_ipHostNumber   = $this->ipHostNumber;
     $this->orig_macAddress     = $this->macAddress;
- 
-    /* Store initally account settings 
+
+    /* Store initally account settings
      */
     $this->initially_was_account = $this->DNS_is_account;
 
@@ -226,7 +226,7 @@ class termDNS extends plugin
   }
 
 
-  function netmaskIsCoherent($idZone) 
+  function netmaskIsCoherent($idZone)
   {
     $netmask = DNS::FlipIp(str_replace(".in-addr.arpa.","",DNS::getNameFromMix($idZone)));
     if(!strstr($this->ipHostNumber, $netmask)){
@@ -237,14 +237,14 @@ class termDNS extends plugin
   }
 
 
-  function getVarsForSaving($attrs) 
+  function getVarsForSaving($attrs)
   {
     foreach($this->attributes as $attr){
       if(!empty($this->$attr)){
         $attrs[$attr] = $this->$attr;
       }
     }
-    return($attrs); 
+    return($attrs);
   }
 
   function execute()
@@ -262,9 +262,9 @@ class termDNS extends plugin
     $display= "";
 
     /**********
-     * Additional ipHostNumber handling 
+     * Additional ipHostNumber handling
      **********/
-      
+
     /* Add a new one */
     if($this->acl_is_writeable("ipHostNumber")){
       foreach($_POST as $name => $value){
@@ -281,28 +281,28 @@ class termDNS extends plugin
             $this->additionalHostNumbers = array_values($this->additionalHostNumbers);
           }
           break;
-        } 
+        }
       }
     }
- 
+
     $smarty->assign("additionalHostNumbers",$this->additionalHostNumbers);
- 
+
     /**********
      * Autonet completion
      **********/
- 
+
     /* Check for autonet button */
     if (isset($_POST['autonet']) && ($this->acl_is_writeable("ipHostNumber") || $this->acl_is_writeable("macAddress"))){
         if(class_available("supportDaemon")){
-          msg_dialog::display(_("Error"), _("NOT IMPLEMENTED"), ERROR_DIALOG);            
+          msg_dialog::display(_("Error"), _("NOT IMPLEMENTED"), ERROR_DIALOG);
         }
     }
 
-  
+
     /**********
      * DHCP Handling
      **********/
- 
+
     if(isset($_POST['dhcpEditOptions']) && $this->acl_is_readable("dhcpSetup")){
       if(count($this->dhcpHostEntry) == 0){
         $this->dialog = new dhcpHost($this->parent,$this->dhcpParentNode,TRUE);
@@ -311,14 +311,14 @@ class termDNS extends plugin
       }
       $this->dialog->cn   = $this->cn;
       $this->dialog->read_only     = !$this->acl_is_writeable("dhcpSetup");
-      $this->dialog->dhcpHWAddress = "ethernet ".$this->macAddress; 
+      $this->dialog->dhcpHWAddress = "ethernet ".$this->macAddress;
       if(!empty($this->ipHostNumber)){
-        $this->dialog->statements->set('fixed-address', $this->ipHostNumber); 
+        $this->dialog->statements->set('fixed-address', $this->ipHostNumber);
       }
     }
 
     if(isset($_POST['cancel_dhcp'])){
-      $this->dialog = FALSE; 
+      $this->dialog = FALSE;
     }
 
     if(isset($_POST['save_dhcp']) && $this->acl_is_writeable("dhcpSetup") && is_object($this->dialog)){
@@ -330,7 +330,7 @@ class termDNS extends plugin
         }
       }else{
         $this->dhcpHostEntry = $this->dialog->save();
-        $this->dialog = FALSE; 
+        $this->dialog = FALSE;
       }
     }
 
@@ -338,7 +338,7 @@ class termDNS extends plugin
       $this->dialog->save_object();
       return($this->dialog->execute());
     }
- 
+
     $smarty->assign("dhcpEnabled",    $this->dhcpEnabled && $this->acl_is_readable("dhcpSetup"));
     $smarty->assign("dhcp_is_Account",$this->dhcp_is_Account);
     $smarty->assign("dhcpParentNode", $this->dhcpParentNode);
@@ -419,7 +419,7 @@ class termDNS extends plugin
       /* Assign all needed vars */
  #     $smarty->assign("DNSAccount",$this->DNS_is_account);
       $smarty->assign("hide_dns_check_box",$this->hide_dns_check_box);
-  
+
       $smarty->assign("Zones",$this->Zones);
       $smarty->assign("ZoneCnt",count($this->Zones));
       $smarty->assign("ZoneKeys",($this->Zones));
@@ -468,7 +468,7 @@ class termDNS extends plugin
       $tmp = array();
       $this->dnsEntry['exists'] = false;
       $tmp = DNS::getDNSHostEntriesDiff($this->config,$this->OrigCn,$this->dnsEntry,$this->cn);
-  
+
       /* Delete dns */
       foreach($tmp['del'] as $dn => $del){
         $ldap->cd($dn);
@@ -482,7 +482,7 @@ class termDNS extends plugin
 
 
     /************
-     * DHCP Handling 
+     * DHCP Handling
      ************/
 
     /* DHCP removed */
@@ -505,7 +505,7 @@ class termDNS extends plugin
       plugin::save_object();
 
       /******
-        Additional IP Host Numbers 
+        Additional IP Host Numbers
        ******/
 
       /* Get posts for all additionally added ipHostNumbers */
@@ -514,8 +514,8 @@ class termDNS extends plugin
           if(isset($_POST['additionalHostNumbers_'.$id])){
             $this->additionalHostNumbers[$id] = get_post('additionalHostNumbers_'.$id);
           }
-        } 
-      } 
+        }
+      }
 
 
       /******
@@ -547,7 +547,7 @@ class termDNS extends plugin
         DNS posts
        ******/
 
-      /* Check if DNS should be enabled / disabled 
+      /* Check if DNS should be enabled / disabled
        *  -skip this, if the dns account is enforced.
        */
       if(!$this->hide_dns_check_box){
@@ -588,11 +588,26 @@ class termDNS extends plugin
             msg_dialog::display(_("Error"), sprintf(_("Was not able to contact argonaut server: %s"), "<br/><br/>".$o_queue->get_error()), ERROR_DIALOG);
           } else {
             $zone = substr(strrchr($this->dnsEntry['zoneName'], "/"), 1);
-            $o_queue->append_call("ldap2zone",
-                                  array($this->attrs['macAddress'][0]),
-                                  array("args"=>array($zone)));
-            if ($o_queue->is_error()) {
-              msg_dialog::display(_("Error"), sprintf(_("Was not able to launch ldap2zone: %s"), "<br/><br/>".$o_queue->get_error()), ERROR_DIALOG);
+            $ldap = $this->config->get_ldap_link();
+            $ldap->cd($this->config->current['BASE']);
+            $ldap->search("(&(objectClass=dnsZone)(zoneName=$zone)(sOARecord=*))", array("nSRecord"));
+            if ($ldap->count() != 1) {
+              msg_dialog::display(_("Error"), sprintf(_("Was not able to find DNS server for zone %s"), $zone), ERROR_DIALOG);
+            } else {
+              $attrs  = $ldap->fetch();
+              $ip     = $attrs['nSRecord'][0];
+              $ldap->search("(&(objectClass=goServer)(ipHostNumber=".$ip."))", array("macAddress"));
+              if ($ldap->count() != 1) {
+                msg_dialog::display(_("Error"), sprintf(_("Was not able to find mac address of DNS server %s"), $ip), ERROR_DIALOG);
+              } else {
+                $attrs  = $ldap->fetch();
+                $o_queue->append_call("Ldap2Zone.start",
+                                      array($attrs['macAddress'][0]),
+                                      array("args"=>array($zone)));
+                if ($o_queue->is_error()) {
+                  msg_dialog::display(_("Error"), sprintf(_("Was not able to launch ldap2zone: %s"), "<br/><br/>".$o_queue->get_error()), ERROR_DIALOG);
+                }
+              }
             }
           }
         }
@@ -611,7 +626,7 @@ class termDNS extends plugin
     $message= plugin::check();
 
     /******
-      check additional IP Host Numbers 
+      check additional IP Host Numbers
      ******/
 
     foreach($this->additionalHostNumbers as $id => $value){
@@ -622,19 +637,19 @@ class termDNS extends plugin
 
 
     /* Check if mac and ip are already used */
-    if(!empty($this->ipHostNumber) && 
-        $this->ipHostNumber != $this->orig_ipHostNumber && 
+    if(!empty($this->ipHostNumber) &&
+        $this->ipHostNumber != $this->orig_ipHostNumber &&
         in_array("ip:".$this->ipHostNumber,$this->used_ip_mac)){
       $message[]= msgPool::duplicated(_("IP address"));
     }
-    if(!empty($this->macAddress) && 
-        $this->macAddress != $this->orig_macAddress && 
+    if(!empty($this->macAddress) &&
+        $this->macAddress != $this->orig_macAddress &&
         in_array("mac:".$this->macAddress,$this->used_ip_mac)){
       $message[]= msgPool::duplicated(_("MAC address"));
     }
 
     /* Check if ip must be given
-     */  
+     */
     if(($this->IPisMust)||($this->DNS_is_account)){
       if (empty($this->ipHostNumber)){
         $message[]= msgPool::required(_("IP address"));
@@ -643,7 +658,7 @@ class termDNS extends plugin
       }
     }
 
-    /* Check if mac is empty 
+    /* Check if mac is empty
      */
     if($this->MACisMust || $this->dhcp_is_Account){
       if ($this->macAddress == "" ){
@@ -668,7 +683,7 @@ class termDNS extends plugin
        }
 
       /* Walk through all entries and detect duplicates or mismatches
-       */  
+       */
       foreach($this->dnsEntry['RECORDS'] as $name => $values){
 
         /* Count record values, to detect duplicate entries for a specific record
@@ -688,19 +703,19 @@ class termDNS extends plugin
           }
         }
 
-        /* Skip txt record ... 
+        /* Skip txt record ...
          */
         if($values['type'] == "tXTRecord") continue;
 
-        /* Check if there is an aRecord defined which uses the same IP as used in IPhostAddress 
+        /* Check if there is an aRecord defined which uses the same IP as used in IPhostAddress
          */
         if(($values['type'] == "aRecord")&&($values['value'] == $this->ipHostNumber)){
           #TODO: Where's the problem here?
-          $message[]=sprintf(_("The IP address '%s' will be added as 'A Record', this will be done automatically, please remove the record."), 
+          $message[]=sprintf(_("The IP address '%s' will be added as 'A Record', this will be done automatically, please remove the record."),
                $this->ipHostNumber);
         }
 
-        /* only lower-case is allowed in record entries ... 
+        /* only lower-case is allowed in record entries ...
          */
         if($values['value'] != strtolower($values['value'])){
           #TODO: What's in values['value']? Something for a propper message?
@@ -716,20 +731,20 @@ class termDNS extends plugin
   function save()
   {
     $ldap= $this->config->get_ldap_link();
-  
+
     $dn = $this->parent->dn;
- 
-    /*******************/ 
+
+    /*******************/
     /* IP-MAC HANDLING */
-    /*******************/ 
+    /*******************/
 
     /* $dn was posted as parameter */
     $this->dn = $dn;
-    
+
     /* Save DNS setting & ip/Mac*/
     plugin::save();
 
-    /* Add all additional ipHostNumbers now 
+    /* Add all additional ipHostNumbers now
      */
     if(!empty($this->ipHostNumber)){
       $this->attrs['ipHostNumber'] = array($this->ipHostNumber);
@@ -746,12 +761,12 @@ class termDNS extends plugin
     /* Write back to ldap */
     $ldap->cd($this->dn);
     $this->cleanup();
-    $ldap->modify ($this->attrs); 
+    $ldap->modify ($this->attrs);
 
-    /****************/ 
+    /****************/
     /* DHCP HANDLING */
-    /****************/ 
-  
+    /****************/
+
     /* New entry */
     if($this->dhcpEnabled && $this->acl_is_writeable("dhcpSetup")) {
 
@@ -763,14 +778,14 @@ class termDNS extends plugin
           $this->dialog->statements->set('fixed-address', $this->ipHostNumber);
         }
         $this->dialog->execute();
-        $this->dialog->save_object(); 
+        $this->dialog->save_object();
         $this->dhcpHostEntry = $this->dialog->save();
         if(count($this->dhcpHostEntry['dhcpOption']) == 0){
           $this->dhcpHostEntry['dhcpOption']= array("host-name ".$this->cn);
         }
       }else{
 
-        // Updated Host-Name entry 
+        // Updated Host-Name entry
         foreach($this->dhcpHostEntry['dhcpOption'] as $key => $entry){
           if(preg_match("/^host-name/", $entry)){
             $this->dhcpHostEntry['dhcpOption'][$key] = "host-name ".$this->cn;
@@ -781,7 +796,7 @@ class termDNS extends plugin
 
       /* Write mac address to dhcp settings */
       if($this->dhcp_is_Account){
-        if(!isset($this->dhcpHostEntry['dhcpHWAddress'][0]) || 
+        if(!isset($this->dhcpHostEntry['dhcpHWAddress'][0]) ||
             !preg_match("/ethernet ".$this->macAddress."/",$this->dhcpHostEntry['dhcpHWAddress'][0])){
           $this->dhcpHostEntry['dhcpHWAddress'] = array("ethernet ".$this->macAddress);
           $this->dhcpHostEntry['MODIFIED'] = TRUE;
@@ -792,14 +807,14 @@ class termDNS extends plugin
       if($this->dhcp_is_Account && $this->dhcpHostEntry['dhcpStatements']){
         foreach($this->dhcpHostEntry['dhcpStatements'] as $id => $value){
           if(preg_match("/^fixed-address/",$value)){
-            $this->dhcpHostEntry['dhcpStatements'][$id] = "fixed-address ".$this->ipHostNumber; 
+            $this->dhcpHostEntry['dhcpStatements'][$id] = "fixed-address ".$this->ipHostNumber;
             $this->dhcpHostEntry['MODIFIED'] = TRUE;
           }
         }
       }
 
       /* Unset dhcpStatements if this attribute is empty  */
-      if(isset($this->dhcpHostEntry['dhcpStatements']) && 
+      if(isset($this->dhcpHostEntry['dhcpStatements']) &&
           ($this->dhcpHostEntry['dhcpStatements'] == "" || count($this->dhcpHostEntry['dhcpStatements']) == 0) ){
         unset($this->dhcpHostEntry['dhcpStatements']);
       }
@@ -835,7 +850,7 @@ class termDNS extends plugin
       if($this->initial_dhcp_is_Account && $this->dhcp_is_Account){
 
         /* DHCP node changed */
-        if(($this->initial_dhcpParentNode != $this->dhcpParentNode) || 
+        if(($this->initial_dhcpParentNode != $this->dhcpParentNode) ||
            ($this->cn != $this->OrigCn)){
           $attrs = $this->dhcpHostEntry;
           $attrs['cn'] = $this->cn;
@@ -849,7 +864,7 @@ class termDNS extends plugin
 
           $tmp = new servdhcp($this->config,$this->dhcpParentNode);
           $tmp->handle_post_events("modify");
-          
+
           if($res){
             $ldap->rmdir_recursive($this->dhcpHostEntry['dn']);
             if (!$ldap->success()){
@@ -857,34 +872,34 @@ class termDNS extends plugin
             }
           }
         }
-         
-        /* SAME node but modified */ 
-        if(isset($this->dhcpHostEntry['MODIFIED']) && $this->dhcpHostEntry['MODIFIED'] == 1  && 
+
+        /* SAME node but modified */
+        if(isset($this->dhcpHostEntry['MODIFIED']) && $this->dhcpHostEntry['MODIFIED'] == 1  &&
             $this->initial_dhcpParentNode == $this->dhcpParentNode){
           $attrs = $this->dhcpHostEntry;
           unset($attrs['dn']);
           unset($attrs['MODIFIED']);
           $ldap->cd($this->dhcpHostEntry['dn']);
           $ldap->modify($attrs);
-          
+
           $tmp = new servdhcp($this->config,$this->dhcpParentNode);
           $tmp->handle_post_events("modify");
 
           if (!$ldap->success()){
             msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dhcpHostEntry['dn'], LDAP_MOD, get_class()));
           }
-        }    
+        }
       }
     }
-    $this->dialog = FALSE; 
+    $this->dialog = FALSE;
 
-    /****************/ 
+    /****************/
     /* DNS HANDLING */
-    /****************/ 
+    /****************/
 
-    /* If isn't DNS account but initially was DNS account 
-       remove all DNS entries 
-     */ 
+    /* If isn't DNS account but initially was DNS account
+       remove all DNS entries
+     */
     if((!$this->DNSenabled) || ((!$this->DNS_is_account)&&(!$this->initially_was_account))){
       return;
     }elseif($this->acl_is_writeable("dnsSetup")){
@@ -897,25 +912,25 @@ class termDNS extends plugin
         $ptr = $this->get_pTRRecord();
         if(!empty($ptr)){
           $this->dnsEntry['RECORDS'][] = array("type"=>"pTRRecord","value"=>$ptr);
-        } 
+        }
       }
 
-      /* Create diff and follow instructions 
+      /* Create diff and follow instructions
        * If Account was disabled, remove account by setting exists to false
        */
-      if((!$this->DNS_is_account)&&($this->initially_was_account)){  
+      if((!$this->DNS_is_account)&&($this->initially_was_account)){
         $this->dnsEntry['exists'] = false;
         $tmp = DNS::getDNSHostEntriesDiff($this->config,$this->OrigCn,$this->dnsEntry,$this->cn);
       }else{
         $this->dnsEntry['exists'] = $this->DNS_is_account;
         $tmp = DNS::getDNSHostEntriesDiff($this->config,$this->OrigCn,$this->dnsEntry,$this->cn);
-      }   
-    
+      }
+
       /* Update SOA record if needed
        */
       $this->updateSOARecord();
 
-      /* move follwoing entries 
+      /* move follwoing entries
        */
       foreach($tmp['move'] as $src => $dst){
         $this->recursive_move($src,$dst);
@@ -928,14 +943,14 @@ class termDNS extends plugin
         new log("modify","unknown/".get_class($this),$dn,array("*"),$ldap->get_error());
       }
 
-      /* Add || Update new DNS entries 
+      /* Add || Update new DNS entries
        */
       foreach($tmp['add'] as $dn => $attrs){
         $ldap->cd($dn);
         $ldap->cat($dn, array('dn'));
         if(count($ldap->fetch())){
           $ldap->cd($dn);
-          $ldap->modify ($attrs); 
+          $ldap->modify ($attrs);
         }else{
           $ldap->cd($dn);
           $ldap->add($attrs);
@@ -944,7 +959,7 @@ class termDNS extends plugin
       }
 
 
-      /* Display errors 
+      /* Display errors
        */
       if (!$ldap->success()){
         msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $dn, 0, get_class()));
@@ -983,12 +998,12 @@ class termDNS extends plugin
            "  </tr>".
            "</table>";
      $ret =  array("str" => $str, "changeStateForRecords" => $changeStateForRecords);
-  
+
     return($ret);
   }
 
 
-  /* Create a html select box which allows us to select different types of records 
+  /* Create a html select box which allows us to select different types of records
    */
   function generateRecordListBox($selected,$name)
   {
@@ -1001,11 +1016,11 @@ class termDNS extends plugin
       $str.="\n <option value='".$type."' ".$use.">".strtoupper(preg_replace("/record/i","",$type))."</option>";
     }
     $str.="</select>";
-    return($str); 
+    return($str);
   }
 
 
-  /* Return plugin informations for acl handling  */ 
+  /* Return plugin informations for acl handling  */
   static function plInfo()
   {
     $tmp =  array(
@@ -1033,7 +1048,7 @@ class termDNS extends plugin
     return($tmp);
   }
 
-  
+
   function get_dhcp_host_entry()
   {
     $attrs = array();
@@ -1070,7 +1085,7 @@ class termDNS extends plugin
     }else{
       return("");
     }
-  }  
+  }
 
 
   function get_dhcp_parent_node()
@@ -1084,12 +1099,12 @@ class termDNS extends plugin
     $ldap = $this->config->get_ldap_link();
     $ldap->cd($this->config->current['BASE']);
     $ldap->search("(objectClass=dhcpService)",array("dhcpPrimaryDN"));
-    
+
     $dhcp_dns = array();
     while($attr = $ldap->fetch()){
       $dhcp_dns[$attr['dn']] = $attr['dhcpPrimaryDN'][0];
     }
- 
+
     foreach($dhcp_dns as $key => $pri_dns){
       $ldap->cat($pri_dns,array("cn"));
       $tmp = $ldap->fetch();
@@ -1113,7 +1128,7 @@ class termDNS extends plugin
     return($tmp2);
   }
 
-  
+
   /* this function returns the default ptr record entry */
   function get_pTRRecord()
   {
@@ -1131,15 +1146,15 @@ class termDNS extends plugin
     }
   }
 
-  
+
   function generateRandomIP($net = "")
   {
     $str = $net;
     $cnt = 4;
 
-    // first gather all IPs 
+    // first gather all IPs
     $ldap = $this->config->get_ldap_link();
-    $ocs = 
+    $ocs =
       "(objectClass=goFonHardware)".
       "(objectClass=goServer)".
       "(objectClass=GOhard)".
@@ -1182,7 +1197,7 @@ class termDNS extends plugin
     return(implode(".",$ip_data));
   }
 
-  
+
   function create_tree($arr,$base,$current = "")
   {
     $ret = array();
@@ -1194,7 +1209,7 @@ class termDNS extends plugin
         foreach($tmp as $sub_key => $sub_name){
           $ret[$sub_key] = $sub_name;
         }
-      } 
+      }
     }
     return($ret);
   }

@@ -61,13 +61,12 @@ class rsyslog extends plugin
       $s = array('cn' => $attrs['cn'][0], 'dn' => $attrs['dn'], 'PASSWORD' => '', 'status' => 'ok');
       $s['LOGIN']       = $attrs['goLogAdmin'][0];
       $s['DB']          = $attrs['gosaLogDB'][0];
+      $s['PASSWORD'] = $attrs['goLogPassword'][0];
       $s['SERVER']      = $s['cn'];
       $s['Hosts']       = array();
       $s['Priorities']  = array();
       $s['ACL']         = "";
-      if(isset($attrs['goLogPassword'])) {
-        $s['PASSWORD'] = $attrs['goLogPassword'][0];
-      }
+
       $this->servers[$attrs['cn'][0]] = $s;
     }
 
@@ -91,23 +90,23 @@ class rsyslog extends plugin
         // Get list of Hosts using this log server..
         if (preg_match('/r/', $this->servers[$name]['ACL'])) {
           $query = "SELECT distinct(FromHost) FROM SystemEvents;";
-          $res =& $link->query($query);
+          $res = $link->query($query);
           if (PEAR::isError($res)) {
             $this->servers[$name]['status'] = "query_failed";
             $this->servers[$name]['error']  = $res->getMessage();
           } else {
             while ($attrs = $res->fetchRow(MDB2_FETCHMODE_ASSOC)) {
-              $this->servers[$name]['Hosts'][$attrs['FromHost']] = $attrs['FromHost'];
+              $this->servers[$name]['Hosts'][$attrs['fromhost']] = $attrs['fromhost'];
             }
           }
           $query = "SELECT distinct(Priority) FROM SystemEvents ORDER BY Priority;";
-          $res =& $link->query($query);
+          $res = $link->query($query);
           if (PEAR::isError($res)) {
             $this->servers[$name]['status'] = "query_failed";
             $this->servers[$name]['error']  = $res->getMessage();
           } else {
             while ($attrs = $res->fetchRow(MDB2_FETCHMODE_ASSOC)) {
-              $this->servers[$name]['Priorities'][$attrs['Priority']] = $attrs['Priority'];
+              $this->servers[$name]['Priorities'][$attrs['priority']] = $attrs['priority'];
             }
           }
         }
@@ -211,8 +210,9 @@ class rsyslog extends plugin
       if($prio != "%%"){
         $filter.= "AND Priority like '{$prio}' ";
       }
-      $filter.= "AND DeviceReportedTime >= '".(date("Y.m.d 00:00:00", strtotime($this->startTime)))."' ";
-      $filter.= "AND DeviceReportedTime <= '".(date("Y.m.d 23:59:59", strtotime($this->stopTime)))."' ";
+
+      $filter.= "AND DeviceReportedTime >= '".(date("Ymd000000", strtotime($this->startTime)))."' ";
+      $filter.= "AND DeviceReportedTime <= '".(date("Ymd235959", strtotime($this->stopTime)))."' ";
 
       if(!empty($this->search_for)){
         $filter.= "AND ( ( SysLogTag like '%".$this->search_for."%' ) OR  ( Message like '%".$this->search_for."%' ) ) ";
@@ -220,7 +220,7 @@ class rsyslog extends plugin
 
       // Detect amount of matching entries
       $query = "SELECT count(ID) as `amount` ".$filter;
-      $res =& $link->query($query);
+      $res = $link->query($query);
       if(PEAR::isError($res)) {
         $this->servers[$name]['status'] = "query_failed";
         $this->servers[$name]['error']  = $res->getMessage();
@@ -240,16 +240,15 @@ class rsyslog extends plugin
         }
 
         $query = "SELECT * ".$filter;
-        $res =& $link->query($query);
+        $res = $link->query($query);
         if(PEAR::isError($res)) {
           $this->servers[$name]['status'] = "query_failed";
           $this->servers[$name]['error']  = $res->getMessage();
         }else{
           while($attrs = $res->fetchRow(MDB2_FETCHMODE_ASSOC)){
-            $attrs['DeviceReportedTime']= $this->time2local($attrs['DeviceReportedTime']);
-            $attrs['Facility']= $this->facility2string($attrs['Facility']);
-            $attrs['Priority']= $this->severity2string($attrs['Priority']);
-            $attrs['SysLogTag']= preg_replace("/:$/", "", $attrs['SysLogTag']);
+            $attrs['facility']= $this->facility2string($attrs['facility']);
+            $attrs['priority']= $this->severity2string($attrs['priority']);
+            $attrs['syslogtag']= preg_replace("/:$/", "", $attrs['syslogtag']);
 
             foreach($attrs as $key => $val){
               $attrs[$key] = htmlentities($val, ENT_COMPAT, 'UTF-8');

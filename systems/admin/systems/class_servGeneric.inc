@@ -59,6 +59,7 @@ class servgeneric extends plugin
   var $baseSelector;
 
   var $mapActions   = array("reboot"          => "",
+                            "halt"            => "",
                             "instant_update"  => "softupdate",
                             "localboot"       => "localboot",
                             "update"          => "sceduledupdate",
@@ -74,7 +75,7 @@ class servgeneric extends plugin
     /* Check if FAI is activated */
     $tmp = $config->search("faiManagement", "CLASS",array('menu','tabs'));
 
-    if(!empty($tmp)){
+    if(!empty($tmp) && class_available("faiManagement")){
       $this->fai_activated = TRUE;
     }
 
@@ -98,6 +99,7 @@ class servgeneric extends plugin
     $this->netConfigDNS = new termDNS($this->config,$this,$this->objectclasses);
     $this->netConfigDNS->set_acl_category("server");
     $this->netConfigDNS->set_acl_base($this->base);
+    $this->netConfigDNS->IPisMust =TRUE;
     $this->netConfigDNS->MACisMust =TRUE;
 
     /* Initialize kerberos host key plugin */
@@ -171,7 +173,8 @@ class servgeneric extends plugin
           $tmp->add_targets(array($this->netConfigDNS->macAddress));
           $tmp->set_type(TRIGGERED_EVENT);
           $o_queue = new supportDaemon();
-          if (!$o_queue->append($tmp)) {
+          $o_queue->append($tmp);
+          if ($o_queue->is_error()) {
             msg_dialog::display(_("Service infrastructure"),msgPool::siError($o_queue->get_error()),ERROR_DIALOG);
           }
         }
@@ -201,16 +204,20 @@ class servgeneric extends plugin
     $smarty->assign("staticAddress", "");
 
     /* Assign status */
-    $o_queue = new supportDaemon();
     $actions = array(
                     "reinstall"    => _("Reinstall"),
                     "update"       => _("Software update"),
                     "memcheck"     => _("Memory test")
                     );
-    if ($o_queue->ping($this->netConfigDNS->macAddress)){
-        $actions["halt"]    = _("Switch off");
-        $actions["reboot"]  = _("Reboot");
-        $actions["rescan"]  = _("Rescan hardware");
+    if (class_available("supportDaemon")) {
+      $o_queue = new supportDaemon();
+      if ($o_queue->ping($this->netConfigDNS->macAddress)){
+          $actions["halt"]    = _("Switch off");
+          $actions["reboot"]  = _("Reboot");
+          $actions["rescan"]  = _("Rescan hardware");
+      } else {
+          $actions["wakeup"]  = _("Wake up");
+      }
     } else {
         $actions["wakeup"]  = _("Wake up");
     }
@@ -329,7 +336,7 @@ class servgeneric extends plugin
       $message[]= msgPool::check_base();;
     }
 
-    if ($this->orig_dn != $this->dn){
+    if ($this->orig_dn != $this->dn) {
       $ldap= $this->config->get_ldap_link();
       $ldap->cd ($this->base);
       $ldap->search ("(cn=".$this->cn.")", array("cn"));
@@ -434,8 +441,9 @@ class servgeneric extends plugin
         $tmp = new $evt['CLASS_NAME']($this->config);
         $tmp->set_type(TRIGGERED_EVENT);
         $tmp->add_targets(array($this->netConfigDNS->macAddress));
-        if(!$o_queue->append($tmp)){
-          msg_dialog::display(_("Service infrastructure"),msgPool::siError($o_queue->get_error()),ERROR_DIALOG);
+        $o_queue->append($tmp);
+        if ($o_queue->is_error()) {
+          msg_dialog::display(_("Service infrastructure"), msgPool::siError($o_queue->get_error()), ERROR_DIALOG);
         }
       }
     }

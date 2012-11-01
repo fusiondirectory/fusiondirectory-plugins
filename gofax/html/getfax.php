@@ -17,7 +17,7 @@
 
   You should have received a copy of the GNU General Public License
   along with this program; if not, write to the Free Software
-  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 */
 
 require_once("MDB2.php");
@@ -84,48 +84,26 @@ if (!isset($_GET['download'])) {
   /* display picture */
   header("Content-type: image/png");
 
-  /* Fallback if there's no image magick support in PHP */
-  if (!function_exists("imagick_blob2image")) {
+  $im = new Imagick();
 
-    /* Write to temporary file and call convert, because TIFF sucks */
-    $tmpfname = tempnam ("/tmp", "FusionDirectory");
-    $temp     = fopen($tmpfname, "w");
-    fwrite($temp, $data);
-    fclose($temp);
+  /* Loading image */
+  if (!$im->readImage($data)) {
+    new log("view", "faxreport/faxreport", "", array(), "Cannot load fax image");
+  }
 
-    /* Read data written by convert */
-    $output = "";
-    $query  = "convert -size 420x594 $tmpfname -resize 420x594 +profile \"*\" png:- 2> /dev/null";
-    $sh = popen($query, 'r');
-    $data = "";
-    while (!feof($sh)) {
-      $data .= fread($sh, 4096);
-    }
-    pclose($sh);
+  /* Resizing image to 420x594 and blur */
+  if (!$im->resizeImage(420, 594, Imagick::FILTER_GAUSSIAN, 1)) {
+    msg_dialog::display(_("Error"), _("cannot resize fax image"), ERROR_DIALOG);
+  }
 
-    unlink($tmpfname);
+  /* Converting image to PNG */
+  if (!$im->setImageFormat('PNG')) {
+    msg_dialog::display(_("Error"), _("cannot convert fax image to png"), ERROR_DIALOG);
+  }
 
-  } else {
-
-    /* Loading image */
-    if (!$handle = imagick_blob2image($data)) {
-      new log("view", "faxreport/faxreport", "", array(), "Cannot load fax image");
-    }
-
-    /* Converting image to PNG */
-    if (!imagick_convert($handle, "PNG")) {
-      new log("view", "faxreport/faxreport", "", array(), "Cannot convert fax image to png");
-    }
-
-    /* Resizing image to 420x594 and blur */
-    if (!imagick_resize($handle, 420, 594, IMAGICK_FILTER_GAUSSIAN, 1)) {
-      new log("view", "faxreport/faxreport", "", array(), "Cannot resize fax image");
-    }
-
-    /* Creating binary Code for the Image */
-    if (!$data = imagick_image2blob($handle)) {
-      new log("view", "faxreport/faxreport", "", array(), "Reading fax image image failed");
-    }
+  /* Creating binary Code for the Image */
+  if (!$data = $im->getImageBlob()) {
+    msg_dialog::display(_("Error"), _("Reading fax image image failed"), ERROR_DIALOG);
   }
 
 } else {

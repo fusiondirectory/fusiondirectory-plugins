@@ -3,24 +3,25 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Christophe Augello <christophe@augello.be>, 2012.
 #  Niels Klomp (CareWorks ICT Services) <nk@careworks.nl>, 2005.
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
 "Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
-"POT-Creation-Date: 2012-05-26 17:33+0200\n"
-"PO-Revision-Date: 2012-01-13 17:40+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Dutch (http://www.transifex.net/projects/p/FusionDirectory/language/nl/)\n"
+"POT-Creation-Date: 2012-08-22 18:38+0200\n"
+"PO-Revision-Date: 2012-08-05 07:06+0000\n"
+"Last-Translator: Christophe Augello <christophe@augello.be>\n"
+"Language-Team: Dutch (http://www.transifex.com/projects/p/FusionDirectory/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: nl\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: admin/sudo/sudo-filter.tpl:3
 msgid "Filter"
-msgstr ""
+msgstr "Filter"
 
 #: admin/sudo/sudo-filter.tpl:13 admin/sudo/sudo-list.xml:32
 #: admin/sudo/class_sudoGeneric.inc:581 admin/sudo/class_sudoGeneric.inc:586
@@ -36,11 +37,11 @@ msgstr "Gebruiker"
 
 #: admin/sudo/options.tpl:5
 msgid "Option name"
-msgstr ""
+msgstr "Optie naam"
 
 #: admin/sudo/options.tpl:7
 msgid "Value"
-msgstr ""
+msgstr "Waarde"
 
 #: admin/sudo/options.tpl:8 admin/sudo/class_sudoOption.inc:536
 msgid "Options"
@@ -48,11 +49,11 @@ msgstr "Opties"
 
 #: admin/sudo/options.tpl:86
 msgid "Available options"
-msgstr ""
+msgstr "Beschikbare opties"
 
 #: admin/sudo/sudo-list.xml:11
 msgid "List of sudo roles"
-msgstr ""
+msgstr "Lijst van sudo rollen"
 
 #: admin/sudo/sudo-list.xml:15 admin/sudo/sudo-list.xml:65
 msgid "Role"
@@ -73,7 +74,7 @@ msgstr "Aanmaken"
 
 #: admin/sudo/sudo-list.xml:72
 msgid "Default"
-msgstr ""
+msgstr "Standaard"
 
 #: admin/sudo/sudo-list.xml:85
 msgid "Remove"
@@ -81,11 +82,11 @@ msgstr "Verwijderen"
 
 #: admin/sudo/sudo-list.xml:117
 msgid "Edit sudo role"
-msgstr ""
+msgstr "Bewerk sudo rol"
 
 #: admin/sudo/sudo-list.xml:130
 msgid "Remove sudo role"
-msgstr ""
+msgstr "Verwijder sudo rol"
 
 #: admin/sudo/class_sudoGeneric.inc:333
 msgid "Error"
@@ -109,15 +110,15 @@ msgstr "Groep"
 
 #: admin/sudo/class_sudoGeneric.inc:567
 msgid "LDAP error"
-msgstr ""
+msgstr "LDAP fout"
 
 #: admin/sudo/class_sudoGeneric.inc:701 admin/sudo/class_sudoManagement.inc:25
 msgid "Sudo"
-msgstr ""
+msgstr "Sudo"
 
 #: admin/sudo/class_sudoGeneric.inc:702 admin/sudo/class_sudoGeneric.inc:707
 msgid "Sudo role"
-msgstr ""
+msgstr "Sudo rol"
 
 #: admin/sudo/class_sudoGeneric.inc:712
 msgid "Users"
@@ -125,19 +126,19 @@ msgstr "Gebruikers"
 
 #: admin/sudo/class_sudoGeneric.inc:713
 msgid "Host"
-msgstr ""
+msgstr "Host"
 
 #: admin/sudo/class_sudoGeneric.inc:714
 msgid "Command"
-msgstr ""
+msgstr "Commando"
 
 #: admin/sudo/class_sudoGeneric.inc:715
 msgid "Run as user"
-msgstr ""
+msgstr "Run als gebruiker"
 
 #: admin/sudo/class_sudoGeneric.inc:716
 msgid "Access control list"
-msgstr ""
+msgstr "Access control list"
 
 #: admin/sudo/remove.tpl:2
 msgid "Warning"
@@ -147,7 +148,7 @@ msgstr "Waarschuwing"
 msgid ""
 "Please double check if you really want to do this since there is no way for "
 "FusionDirectory to get your data back."
-msgstr ""
+msgstr "Controleer a.u.b. of u dit daadwerkelijk wil doen, aangezien er geen mogelijkheid voor FusionDirectory is om uw data terug te krijgen."
 
 #: admin/sudo/remove.tpl:10
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
@@ -160,41 +161,41 @@ msgstr "Algemeen"
 
 #: admin/sudo/paste_generic.tpl:1 admin/sudo/generic.tpl:3
 msgid "global defaults"
-msgstr ""
+msgstr "Algemeene standaarden"
 
 #: admin/sudo/class_sudoManagement.inc:26
 msgid "Sudo management"
-msgstr ""
+msgstr "Sudo beheer"
 
 #: admin/sudo/class_sudoOption.inc:154
 msgid "Unknown option"
-msgstr ""
+msgstr "Onbekende optie"
 
 #: admin/sudo/class_sudoOption.inc:155
 #, php-format
 msgid "The sudo option '%s' is invalid!"
-msgstr ""
+msgstr "Deze sudo optie '%s' is ongeldig!"
 
 #: admin/sudo/class_sudoOption.inc:282 admin/sudo/class_sudoOption.inc:284
 msgid "string"
-msgstr ""
+msgstr "string"
 
 #: admin/sudo/class_sudoOption.inc:282 admin/sudo/class_sudoOption.inc:283
 #: admin/sudo/class_sudoOption.inc:284
 msgid "bool"
-msgstr ""
+msgstr "bool"
 
 #: admin/sudo/class_sudoOption.inc:283
 msgid "integer"
-msgstr ""
+msgstr "integer"
 
 #: admin/sudo/class_sudoOption.inc:284
 msgid "list"
-msgstr ""
+msgstr "lijst"
 
 #: admin/sudo/class_sudoOption.inc:537
 msgid "Sudo options"
-msgstr ""
+msgstr "Sudo opties"
 
 #: admin/sudo/generic.tpl:55
 msgid "System trust"
@@ -206,20 +207,20 @@ msgstr "Vertrouwensmodus"
 
 #: admin/sudo/generic.tpl:87
 msgid "Users and groups"
-msgstr ""
+msgstr "Gebruikers en groepen"
 
 #: admin/sudo/generic.tpl:98 admin/sudo/generic.tpl:113
 msgid "Add from list"
-msgstr ""
+msgstr "Voeg toe van uit lijst"
 
 #: admin/sudo/generic.tpl:102
 msgid "Systems"
-msgstr ""
+msgstr "Systemen"
 
 #: admin/sudo/generic.tpl:120
 msgid "Commands"
-msgstr ""
+msgstr "Commando's"
 
 #: admin/sudo/generic.tpl:132
 msgid "Run as"
-msgstr ""
+msgstr "Run as"

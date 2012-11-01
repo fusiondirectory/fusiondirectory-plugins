@@ -21,7 +21,7 @@
       </select>
     </td>
     <td><img src="images/small_warning.png" alt="" class="center">&nbsp;{t}Severity{/t}:</td>
-    <td>   
+    <td>
       <select name='selected_priority' onChange='document.mainform.submit();'>
         {html_options values=$priorities options=$priorities selected=$selected_priority}
       </select>
@@ -37,7 +37,7 @@
         var datepicker  = new DatePicker({ relative : 'startTime', language : '{/literal}{$lang}{literal}', keepFieldEmpty : true,
            enableCloseEffect : false, enableShowEffect : false });
         {/literal}
-      </script> 
+      </script>
     </td>
     <td>{t}till{/t}:</td>
     <td>
@@ -47,10 +47,10 @@
         var datepicker  = new DatePicker({ relative : 'stopTime', language : '{/literal}{$lang}{literal}', keepFieldEmpty : true,
            enableCloseEffect : false, enableShowEffect : false });
         {/literal}
-      </script> 
+      </script>
     </td>
     <td><img src="images/lists/search.png" alt="" class="center">&nbsp;{t}Search{/t}:</td>
-    <td>   
+    <td>
       <input type='text' name='search_for' value='{$search_for}' style='width:250px;'>
     </td>
     <td><input type='submit' name='search' value="{t}Search{/t}"></td>
@@ -99,28 +99,28 @@
     </tr>
     {foreach from=$result.entries item=item key=key}
 
-    {if ($key%2)} 
+    {if ($key%2)}
     <tr style='background-color: #ECECEC;'>
     {else}
     <tr style='background-color: #F5F5F5;'>
     {/if}
-      <td title='{$item.DeviceReportedTime}' style='width:120px'>
-        {$item.DeviceReportedTime}
+      <td title='{$item.devicereportedtime}' style='width:120px'>
+        {$item.devicereportedtime}
       </td>
-      <td title='{$item.FromHost}'>
-        {$item.FromHost}
+      <td title='{$item.fromhost}'>
+        {$item.fromhost}
       </td>
-      <td title='{$item.SysLogTag}'>
-        {$item.SysLogTag}
+      <td title='{$item.syslogtag}'>
+        {$item.syslogtag}
       </td>
-      <td title='{$item.Facility}'>
-        {$item.Facility}
+      <td title='{$item.facility}'>
+        {$item.facility}
       </td>
-      <td title='{$item.Priority}'>
-        {$item.Priority}
+      <td title='{$item.priority}'>
+        {$item.priority}
       </td>
-      <td title='{$item.Message}' style="width:400px">
-        <div style='overflow:hidden; width:400px'><nobr>{$item.Message}</nobr></div>
+      <td title='{$item.message}' style="width:400px">
+        <div style='overflow:hidden; width:400px'><nobr>{$item.message}</nobr></div>
       </td>
     </tr>
     {/foreach}

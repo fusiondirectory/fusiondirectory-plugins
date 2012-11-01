@@ -50,7 +50,7 @@
         <label for="supannAliasLogin">{t}supannAliasLogin{/t}</label>
       </td>
       <td>
-        <input name="supannAliasLogin" id="supannAliasLogin" value="{$supannAliasLogin}" size="35" {popup text=$HELP_supannListeRouge}>
+        <input name="supannAliasLogin" id="supannAliasLogin" value="{$supannAliasLogin}" size="35">
       </td>
       <!-- vertical separator -->
 

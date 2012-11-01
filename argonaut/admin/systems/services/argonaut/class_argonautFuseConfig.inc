@@ -62,7 +62,7 @@ class argonautFuseConfig extends goService {
   function argonautFuseConfig(&$config,$dn)
   {
     goService::goService($config,$dn);
-    $this->DisplayName = _("Argonaut fuse config service");
+    $this->DisplayName = _("Argonaut Fuse settings");
   }
 
   function execute()
@@ -89,7 +89,7 @@ class argonautFuseConfig extends goService {
   function getListEntry()
   {
     $fields               = goService::getListEntry();
-    $fields['Message']    = _("Argonaut fuse config service");
+    $fields['Message']    = _("Argonaut Fuse settings");
 
     return $fields;
   }
@@ -147,8 +147,8 @@ class argonautFuseConfig extends goService {
   static function plInfo()
   {
     return (array(
-          "plShortName"   => _("Argonaut fuse config service"),
-          "plDescription" => _("Argonaut fuse config service")." ("._("Services").")",
+          "plShortName"   => _("Argonaut Fuse settings"),
+          "plDescription" => _("Argonaut Fuse settings")." ("._("Services").")",
           "plSelfModify"  => FALSE,
           "plDepends"     => array(),
           "plPriority"    => 91,

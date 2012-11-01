@@ -3,19 +3,20 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Kenny Tordeurs <tordeurskenny@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
 "Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
-"POT-Creation-Date: 2012-05-26 17:33+0200\n"
-"PO-Revision-Date: 2012-05-26 15:43+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: Dutch (http://www.transifex.net/projects/p/FusionDirectory/language/nl/)\n"
+"POT-Creation-Date: 2012-08-22 18:37+0200\n"
+"PO-Revision-Date: 2012-08-02 18:25+0000\n"
+"Last-Translator: Kenny Tordeurs <tordeurskenny@gmail.com>\n"
+"Language-Team: Dutch (http://www.transifex.com/projects/p/FusionDirectory/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: nl\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: admin/systems/services/apache2/class_servApacheEditVhost.inc:257
 #: admin/systems/services/apache2/class_servApacheEditVhost.inc:276
@@ -39,46 +40,46 @@ msgstr "Naam"
 #: admin/systems/services/apache2/class_servApacheEditVhost.inc:324
 #: admin/systems/services/apache2/servApacheVhostEdit.tpl:7
 msgid "Virtual host name"
-msgstr ""
+msgstr "Virtuele host naam"
 
 #: admin/systems/services/apache2/class_servApacheEditVhost.inc:325
 msgid "Only lowercase strings are allowed as Virtual Host Name."
-msgstr ""
+msgstr "Enkel lowercase strings zijn toegelaten als virtuele host naam."
 
 #: admin/systems/services/apache2/class_servApacheEditVhost.inc:325
 msgid "e.g. example.com"
-msgstr ""
+msgstr "bv. voorbeeld.be"
 
 #: admin/systems/services/apache2/class_servApacheEditVhost.inc:331
 #: admin/systems/services/apache2/servApacheVhostEdit.tpl:13
 msgid "Document root"
-msgstr ""
+msgstr "Document root"
 
 #: admin/systems/services/apache2/class_servApacheEditVhost.inc:337
 #: admin/systems/services/apache2/servApacheVhostEdit.tpl:19
 msgid "Admin mail address"
-msgstr ""
+msgstr "Admin email adres"
 
 #: admin/systems/services/apache2/class_servApacheEditVhost.inc:346
 msgid "Server alias"
-msgstr ""
+msgstr "Server alias"
 
 #: admin/systems/services/apache2/class_servApacheEditVhost.inc:356
 msgid "Script alias"
-msgstr ""
+msgstr "Script alias"
 
 #: admin/systems/services/apache2/class_apacheUtils.inc:212
 #, php-format
 msgid ""
 "Undefined vhost name '%s'. Vhost name must look like this 'www.example.com "
 "or example.com'."
-msgstr ""
+msgstr "Ongedefinieerde vhost naam '%s'. Vhost naam als 'www.voorbeeld.be of voorbeeld.be'."
 
 #: admin/systems/services/apache2/class_servApacheVhost.inc:60
 #: admin/systems/services/apache2/class_servApacheVhost.inc:283
 #: admin/systems/services/apache2/class_servApacheVhost.inc:296
 msgid "Apache service"
-msgstr ""
+msgstr "Apache dienst"
 
 #: admin/systems/services/apache2/class_servApacheVhost.inc:236
 #: admin/systems/services/apache2/class_servApacheVhost.inc:247
@@ -88,7 +89,7 @@ msgstr "LDAP fout"
 
 #: admin/systems/services/apache2/class_servApacheVhost.inc:297
 msgid "Apache virtual host service"
-msgstr ""
+msgstr "Apache virtuele host dienst"
 
 #: admin/systems/services/apache2/class_servApacheVhost.inc:297
 msgid "Services"
@@ -96,11 +97,11 @@ msgstr "Services"
 
 #: admin/systems/services/apache2/class_servApacheVhost.inc:305
 msgid "Virtual hosts"
-msgstr ""
+msgstr "Virtuele hosts"
 
 #: admin/systems/services/apache2/servApacheVhost.tpl:1
 msgid "Apache VHosts"
-msgstr ""
+msgstr "Apache VHosts"
 
 #: admin/systems/services/apache2/servApacheVhost.tpl:8
 #: admin/systems/services/apache2/servApacheVhostEdit.tpl:54
@@ -114,27 +115,27 @@ msgstr "Algemeen"
 
 #: admin/systems/services/apache2/servApacheVhostEdit.tpl:30
 msgid "Server Alias"
-msgstr ""
+msgstr "Server Alias"
 
 #: admin/systems/services/apache2/servApacheVhostEdit.tpl:42
 msgid "URL Alias"
-msgstr ""
+msgstr "URL Alias"
 
 #: admin/systems/services/apache2/servApacheVhostEdit.tpl:45
 msgid "Directory Path"
-msgstr ""
+msgstr "Directory Path"
 
 #: admin/systems/services/apache2/servApacheVhostEdit.tpl:74
 msgid "Script Alias"
-msgstr ""
+msgstr "Script Alias"
 
 #: admin/systems/services/apache2/servApacheVhostEdit.tpl:86
 msgid "Alias Directory"
-msgstr ""
+msgstr "Alias Directory"
 
 #: admin/systems/services/apache2/servApacheVhostEdit.tpl:89
 msgid "Script Directory"
-msgstr ""
+msgstr "Script Directory"
 
 #: admin/systems/services/apache2/servApacheVhostEdit.tpl:112
 msgid "Save"

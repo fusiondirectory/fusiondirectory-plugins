@@ -1,7 +1,7 @@
 <?php
 
 /*
- * $Id: class_sieve.inc,v 1.1 2005/02/21 09:33:01 cajus Exp $ 
+ * $Id: class_sieve.inc,v 1.1 2005/02/21 09:33:01 cajus Exp $
  *
  * Copyright 2001 Dan Ellis <danellis@rushmore.com>
  *
@@ -12,7 +12,7 @@
 // TODO before next release:  remove ::status() and dependencies
 
 
-define ("F_NO", 0);   
+define ("F_NO", 0);
 define ("F_OK", 1);
 define ("F_DATA", 2);
 define ("F_HEAD", 3);
@@ -49,8 +49,8 @@ This program is released under the GNU Public License.
 
 You should have received a copy of the GNU Public
 License along with this package; if not, write to the
-Free Software Foundation, Inc., 59 Temple Place - Suite 330,
-Boston, MA 02111-1307, USA.        
+Foundation, Inc., 51 Franklin St, Fifth Floor, Boston,
+MA 02110-1301, USA
 
 See CHANGES for updates since last release
 
@@ -113,7 +113,7 @@ class sieve
       if($this->mtoken[0] == "{"){
         while($this->mtoken[$this->x] != "}" or $this->err_len < 1){
           $this->err_len = substr($this->mtoken, 1, $this->x);
-          $this->x++;    
+          $this->x++;
         }
 #print "<br>Trying to receive $this->err_len bytes for result<br>";
         $this->line = fgets($this->fp,$this->err_len);
@@ -130,7 +130,7 @@ class sieve
           $this->line    = fgets($this->fp,4096);
           $this->err_recv += strlen($this->line);
           $this->error_raw[]=preg_replace("/\r\n/","",$this->line);    //we want to be nice and strip crlf'
-        } 
+        }
       } /* end if */
       elseif($this->mtoken[0] == "("){
         switch($this->mtoken){
@@ -147,7 +147,7 @@ class sieve
       else{
         $this->error = EC_UNKNOWN;
         $this->error_raw = $this->line;
-      }     
+      }
       return false;
 
     } /* end if */
@@ -156,7 +156,7 @@ class sieve
     } /* end elseif */
     elseif($this->token[0][0] == "{"){
 
-      /* Unable wild assumption:  that the only function that gets here is the get_script(), doesn't really matter though */       
+      /* Unable wild assumption:  that the only function that gets here is the get_script(), doesn't really matter though */
 
       /* the first line is the len field {xx}, which we don't care about at this point */
       $this->line = fgets($this->fp,1024);
@@ -174,7 +174,7 @@ class sieve
       /* I'm going under the _assumption_ that the only function that will get here is the listscripts().
          I could very well be mistaken here, if I am, this part needs some rework */
 
-      $this->found_script=false;        
+      $this->found_script=false;
 
       while(substr($this->line,0,2) != "OK" and substr($this->line,0,2) != "NO"){
         $this->found_script=true;
@@ -182,7 +182,7 @@ class sieve
         //hmmm, a bug in php, if there is no space on explode line, a warning is generated...
 
         if(strcmp(rtrim($this->rtoken), "ACTIVE")==0){
-          $this->response["ACTIVE"] = substr(rtrim($this->ltoken),1,-1);  
+          $this->response["ACTIVE"] = substr(rtrim($this->ltoken),1,-1);
         }
         else
           $this->response[] = substr(rtrim($this->ltoken),1,-1);
@@ -197,7 +197,7 @@ class sieve
       $this->error_raw = $this->line;
       print "<b><i>UNKNOWN ERROR (Please report this line to danellis@rushmore.com to include in future releases): $this->line</i></b><br>";
       return false;
-    } /* end else */   
+    } /* end else */
   } /* end get_response() */
 
   function sieve($host, $port, $user, $pass, $auth="",$options ="", $auth_types="PLAIN DIGEST-MD5")
@@ -245,7 +245,7 @@ class sieve
           $start = -1;
         } /* end else */
 
-      } /* end if */  
+      } /* end if */
 
     } /* end for */
 
@@ -253,7 +253,7 @@ class sieve
       return $token;
     else
       return false;
-  } /* end function */            
+  } /* end function */
 
   function status($string)
   {
@@ -326,17 +326,17 @@ class sieve
           } /* end if */
           elseif(is_string($this->modules))
             $this->capabilites[$this->cap_type][$this->modules]=true;
-        }    
-        else{ 
+        }
+        else{
           $this->capabilities["unknown"][]=$this->line;
-        }    
+        }
         $this->line=fgets($this->fp,1024);
 
       }// end while
     }
     else
     {
-      //we're on the older Cyrus V1. server  
+      //we're on the older Cyrus V1. server
       //this version does not support module reporting.  We only have auth types.
       $this->cap_type="auth";
 
@@ -400,7 +400,7 @@ class sieve
       return false;
     }
 
-    /* DEBUG */    
+    /* DEBUG */
     $imp = "";
     if(isset($this->capabilities['implementation'])){
       $imp = $this->capabilities['implementation'];
@@ -408,7 +408,7 @@ class sieve
     @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,$imp,
         "<b>SIEVE: Socket connection established. </b>");
 
-    /* call our authentication program */  
+    /* call our authentication program */
     return sieve::authenticate();
 
   }
@@ -446,7 +446,7 @@ class sieve
           "<b>SIEVE: Script couldn't be send!</b>");
       return(FALSE);
     }
-  }  
+  }
 
   //it appears the timsieved does not honor the NUMBER type.  see lex.c in timsieved src.
   //don't expect this function to work yet.  I might have messed something up here, too.
@@ -457,14 +457,14 @@ class sieve
     fputs($this->fp, "HAVESPACE \"$scriptname\" $scriptsize\r\n");
     return sieve::get_response();
 
-  }  
+  }
 
   function sieve_setactivescript($scriptname)
   {
     if($this->loggedin==false)
       return false;
 
-    fputs($this->fp, "SETACTIVE \"$scriptname\"\r\n");  
+    fputs($this->fp, "SETACTIVE \"$scriptname\"\r\n");
 
     if(sieve::get_response()){
       @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,"",
@@ -502,7 +502,7 @@ class sieve
     if($this->loggedin==false)
       return false;
 
-    fputs($this->fp, "DELETESCRIPT \"$scriptname\"\r\n");    
+    fputs($this->fp, "DELETESCRIPT \"$scriptname\"\r\n");
 
     if(sieve::get_response()){
       @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,"",
@@ -516,9 +516,9 @@ class sieve
   }
 
 
-  function sieve_listscripts() 
-  { 
-    fputs($this->fp, "LISTSCRIPTS\r\n"); 
+  function sieve_listscripts()
+  {
+    fputs($this->fp, "LISTSCRIPTS\r\n");
     sieve::get_response();    //should always return true, even if there are no scripts...
     if(isset($this->found_script) and $this->found_script){
       @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, implode($this->response,", "),
@@ -539,7 +539,7 @@ class sieve
       $this->error = EC_NOT_LOGGED_IN;
       return false;
     }
-    elseif(feof($this->fp)){      
+    elseif(feof($this->fp)){
       $this->error = EC_NOT_LOGGED_IN;
       return false;
     }
@@ -551,24 +551,24 @@ class sieve
   function authenticate()
   {
 
-    /* Check if a TLS bases connection is required 
+    /* Check if a TLS bases connection is required
      */
     if($this->options == "tls"){
 
-      /* Check if PHP supports TLS encryption for sockets 
+      /* Check if PHP supports TLS encryption for sockets
        */
       if(function_exists("stream_socket_enable_crypto")){
 
-        /* Initiate TLS and get response 
+        /* Initiate TLS and get response
          */
         if (@ fputs ($this->fp, "STARTTLS\r\n") === false) {
           @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,"couldn't send data to socket.",
               "<b>SIEVE: TLS couldn't be initiated. </b>");
           $this->error_raw = "fputs() returned 'false'"; return (false);
-        } 
-        @ $linha = fgets ($this->fp, 1024); 
+        }
+        @ $linha = fgets ($this->fp, 1024);
         if ($linha === false) {
-          $this->error_raw = "fgets() returned 'false'"; 
+          $this->error_raw = "fgets() returned 'false'";
           @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,"couldn't read data from socket.",
               "<b>SIEVE: TLS couldn't be initiated. </b>");
           return (false);
@@ -576,14 +576,14 @@ class sieve
         if (! preg_match ("/\\s*OK\\s/i", $linha)) {
           @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,"server returned '".trim ($linha)."' instead of 'OK'",
               "<b>SIEVE: TLS couldn't be initiated. </b>");
-          $this->error_raw = "expected an 'OK', but server replied: '" . trim ($linha) . "'"; 
+          $this->error_raw = "expected an 'OK', but server replied: '" . trim ($linha) . "'";
           return (false);
-        } 
+        }
         if (! @ stream_socket_enable_crypto ($this->fp, true, STREAM_CRYPTO_METHOD_TLS_CLIENT)) {
           @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,
               "The socket doesn't seem to support STREAM_CRYPTO_METHOD_TLS_CLIENT",
               "<b>SIEVE: TLS couldn't be initiated. </b>");
-          $this->error_raw = "stream_socket_enable_crypto() returned 'false'"; 
+          $this->error_raw = "stream_socket_enable_crypto() returned 'false'";
           return (false);
         }
         @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,"",
@@ -597,11 +597,11 @@ class sieve
       {
         $auth=base64_encode("$this->user\0$this->auth\0$this->pass");
 
-        $this->len=strlen($auth);     
+        $this->len=strlen($auth);
         fputs($this->fp, "AUTHENTICATE \"PLAIN\" {".$this->len."+}\r\n");
         fputs($this->fp, "$auth\r\n");
 
-        $this->line=fgets($this->fp,1024);    
+        $this->line=fgets($this->fp,1024);
         while(sieve::status($this->line) == F_DATA)
           $this->line=fgets($this->fp,1024);
 
@@ -616,7 +616,7 @@ class sieve
         @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,"",
             "<b>SIEVE: Authentication for '".$this->user."-".$this->auth_in_use."' was successful.</b>");
         $this->loggedin=true;
-        return true;    
+        return true;
       }break;
 
       default:

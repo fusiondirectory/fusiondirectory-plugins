@@ -49,10 +49,6 @@
 <br>{$VARIABLE}<label for="VARIABLE">  {t}Show variables{/t}</label>
 <br>{$PACKAGE}<label for="PACKAGE">   {t}Show packages{/t}</label>
 <br>{$PARTITION}<label for="PARTITION"> {t}Show partitions{/t}</label>
-{if $opsi_available}
-<br>{$NETBOOT}<label for="NETBOOT"> {t}Show netboot products{/t}</label>
-<br>{$LOCALBOOT}<label for="LOCALBOOT"> {t}Show localboot products{/t}</label>
-{/if}
 
  <table summary="" style="width:100%;border-top:1px solid #B0B0B0;">
   <tr>

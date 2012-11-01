@@ -82,7 +82,7 @@ class termgeneric extends plugin
   {
     /* Check if FAI is activated */
     $tmp= $config->search("faiManagement", "CLASS",array('menu','tabs'));
-    if(!empty($tmp)){
+    if(!empty($tmp) && class_available("faiManagement")){
       $this->fai_activated = TRUE;
     }
 
@@ -100,6 +100,7 @@ class termgeneric extends plugin
     }
 
     $this->netConfigDNS = new termDNS($this->config,$this,$this->objectclasses);
+    $this->netConfigDNS->IPisMust =TRUE;
     $this->netConfigDNS->MACisMust =TRUE;
 
     /* Read arrays */
@@ -217,7 +218,8 @@ class termgeneric extends plugin
           $tmp->add_targets(array($this->netConfigDNS->macAddress));
           $tmp->set_type(TRIGGERED_EVENT);
           $o_queue = new supportDaemon();
-          if (!$o_queue->append($tmp)) {
+          $o_queue->append($tmp);
+          if ($o_queue->is_error()) {
             msg_dialog::display(_("Service infrastructure"),msgPool::siError($o_queue->get_error()),ERROR_DIALOG);
           }
         }
@@ -623,7 +625,7 @@ class termgeneric extends plugin
 
     /* Send installation activation
      */
-    if ($activate && class_available("DaemonEvent")){
+    if ($activate && class_available("DaemonEvent") && class_available("supportDaemon")) {
       $events = DaemonEvent::get_event_types(SYSTEM_EVENT | HIDDEN_EVENT);
       $o_queue = new supportDaemon();
       if(isset($events['TRIGGERED']['DaemonEvent_installation_activation'])){
@@ -631,7 +633,8 @@ class termgeneric extends plugin
         $tmp = new $evt['CLASS_NAME']($this->config);
         $tmp->set_type(TRIGGERED_EVENT);
         $tmp->add_targets(array($this->netConfigDNS->macAddress));
-        if(!$o_queue->append($tmp)){
+        $o_queue->append($tmp);
+        if ($o_queue->is_error()) {
           msg_dialog::display(_("Service infrastructure"),msgPool::siError($o_queue->get_error()),ERROR_DIALOG);
         }
       }

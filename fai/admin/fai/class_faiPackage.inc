@@ -50,10 +50,10 @@ class faiPackage extends plugin
   var $is_dialog        = false;    // specifies which buttons will be shown to save or abort
   var $SubObjects       = array();  // All leafobjects of this object
 
-  var $FAIdebianRelease          = ""; // The selected release
-  var $FAIcustomRelease          = array(); // The custom releases in use
-  var $FAIdebianSection          = array(); // selected section
-  var $FAIinstallMethod          = "aptitude"; // hard coded
+  var $FAIdebianRelease = ""; // The selected release
+  var $FAIcustomRelease = array(); // The custom releases in use
+  var $FAIdebianSection = array(); // selected section
+  var $FAIinstallMethod = "aptitude"; // hard coded
 
   var $sections         = array();  // All section types
 
@@ -564,11 +564,11 @@ class faiPackage extends plugin
         msg_dialog::display(_("Service infrastructure"),msgPool::siError($q->get_error()),ERROR_DIALOG);
         return $this->buffer;
       } else {
-        foreach($ret as $attr) {
+        foreach ($ret as $attr) {
           $this->buffer[$attr['PACKAGE']] = $attr;
           echo "found ".$attr['PACKAGE']."<br\>\n";
           unset($packages[$attr['PACKAGE']]); // remove found packages
-          if($i>=0) {
+          if ($i>=0) {
             $this->FAIcustomRelease[$release] = $release;
           }
         }
@@ -620,9 +620,11 @@ class faiPackage extends plugin
       $this->attrs['FAIdebianSection'][] = $sec;
     }
 
-    $this->attrs['FAIcustomRelease'] = array();
-    foreach($this->FAIcustomRelease as $rel){
-      $this->attrs['FAIcustomRelease'][] = $rel;
+    if (!empty($this->FAIcustomRelease)) {
+      $this->attrs['FAIcustomRelease'] = array();
+      foreach ($this->FAIcustomRelease as $rel) {
+        $this->attrs['FAIcustomRelease'][] = $rel;
+      }
     }
 
     FAI::prepare_to_save_FAI_object($this->dn,$this->attrs);

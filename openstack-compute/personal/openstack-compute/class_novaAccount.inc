@@ -22,7 +22,7 @@
 class novaAccount extends plugin
 {
   /* Definitions */
-  var $plHeadline= "nova";
+  var $plHeadline= "Nova";
   var $plDescription= "Edit users Nova settings";
 
   /* plugin specific values */
@@ -69,7 +69,7 @@ class novaAccount extends plugin
       $this->secretKey = $this->getRandStr(36);
     }
 
-    /* Save initial account state */  
+    /* Save initial account state */
     $this->initially_was_account= $this->is_account;
   }
 
@@ -95,7 +95,7 @@ class novaAccount extends plugin
       }elseif(!$this->is_account && $this->acl_is_createable()){
         $this->is_account= TRUE;
       }
-    }    
+    }
 
     /* Do we represent a valid account? */
     if (!$this->is_account && $this->parent === NULL){
@@ -123,7 +123,7 @@ class novaAccount extends plugin
     }
 
     /* Assign attributes an ACL to smarty */
-    foreach($this->attributes as $val) { 
+    foreach($this->attributes as $val) {
       $smarty->assign("$val", $this->$val);
       if(in_array($val,$this->is_chk_box)){
         if($this->$val == "TRUE"){
@@ -162,7 +162,7 @@ class novaAccount extends plugin
     /* Write back to ldap */
     $ldap->cd($this->dn);
     $this->cleanup();
-    $ldap->modify($this->attrs); 
+    $ldap->modify($this->attrs);
 
     /* Log last action */
     if ($this->initially_was_account) {
@@ -236,42 +236,40 @@ class novaAccount extends plugin
     $ldap= $this->config->get_ldap_link();
     $ldap->cd($this->dn);
     $this->cleanup();
-    $ldap->modify ($this->attrs); 
+    $ldap->modify ($this->attrs);
 
     new log("remove","users/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
 
     if (!$ldap->success()){
       msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_DEL, get_class()));
     }
-    
+
     /* Optionally execute a command after we're done */
     $this->handle_post_events("remove",array("uid" => $this->uid));
     return;
   }
 
-
   static function plInfo()
   {
     return (array(
-          "plShortName"     => _("novaUser"),
-          "plDescription"   => _("novaUser account settings"),
-          "plSelfModify"    => TRUE,
-          "plDepends"       => array("user"),
-          "plPriority"      => 3,                                 // Position in tabs
-          "plSection"     => array("personal" => _("My account")),
-          "plCategory"    => array("users"),
-          "plOptions"       => array(),
-          "plRequirements"=> array(
-              'ldapSchema' => array('novaUser' => ''),
-              'onFailureDisablePlugin' => array(get_class())
-              ),
+      "plShortName"     => _("Nova"),
+      "plDescription"   => _("Edit users Nova settings"),
+      "plSelfModify"    => TRUE,
+      "plDepends"       => array("user"),
+      "plPriority"      => 3, // Position in tabs
+      "plSection"       => array("personal" => _("My account")),
+      "plCategory"      => array("users"),
+      "plOptions"       => array(),
+      "plRequirements"  => array(
+        'ldapSchema' => array('novaUser' => ''),
+        'onFailureDisablePlugin' => array(get_class())
+      ),
 
-          "plProvidedAcls"  => array(
-            "isNovaAdmin" => _("Is Nova admin"))
-      ));
+      "plProvidedAcls"  => array(
+        "isNovaAdmin" => _("Is Nova admin")
+      )
+    ));
   }
 }
-
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 
 ?>

@@ -115,14 +115,18 @@ class terminfo extends plugin
         /* Get template object */
         $smarty->assign("staticAddress", "");
 
-        /* Prevent undefined variable .... */ 
+        /* Prevent undefined variable .... */
         $smarty->assign("load", progressbar(0,100,15,true));
         $smarty->assign("mem", progressbar(0,100,15,true));
         $smarty->assign("swap", progressbar(0,100,15,true));
 
         /* Check if terminal is online */
-        $o_queue = new supportDaemon();
-        if (class_available("supportDaemon") && $o_queue->ping($this->macAddress)){
+        $ping = FALSE;
+        if (class_available("supportDaemon")) {
+          $o_queue = new supportDaemon();
+          $ping = $o_queue->ping($this->macAddress);
+        }
+        if ($ping) {
           $smarty->assign("status", _("online"));
           $smarty->assign("active", "true");
 

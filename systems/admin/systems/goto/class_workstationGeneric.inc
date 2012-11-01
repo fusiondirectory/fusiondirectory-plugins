@@ -85,7 +85,7 @@ class workgeneric extends plugin
   function workgeneric (&$config, $dn= NULL, $parent= NULL)
   {
     $tmp= $config->search("faiManagement", "CLASS",array('menu','tabs'));
-    if(!empty($tmp)){
+    if(!empty($tmp) && class_available("faiManagement")){
       $this->fai_activated = TRUE;
     }
 
@@ -103,7 +103,8 @@ class workgeneric extends plugin
     }
 
     $this->netConfigDNS = new termDNS($this->config,$this,$this->objectclasses);
-    $this->netConfigDNS->MACisMust =TRUE;
+    $this->netConfigDNS->IPisMust = TRUE;
+    $this->netConfigDNS->MACisMust = TRUE;
 
     /* Check if this host is currently in installation process*/
     if(class_available("supportDaemon") && class_available("DaemonEvent")){
@@ -234,7 +235,8 @@ class workgeneric extends plugin
           $tmp->add_targets(array($this->netConfigDNS->macAddress));
           $tmp->set_type(TRIGGERED_EVENT);
           $o_queue = new supportDaemon();
-          if(!$o_queue->append($tmp)){
+          $o_queue->append($tmp);
+          if ($o_queue->is_error()) {
             msg_dialog::display(_("Service infrastructure"),msgPool::siError($o_queue->get_error()),ERROR_DIALOG);
           }
         }
@@ -289,16 +291,20 @@ class workgeneric extends plugin
     $smarty->assign("gotoNtpServers",$tmp);
 
     /* Check if workstation is online */
-    $o_queue = new supportDaemon();
     $actions = array(
                     "reinstall"    => _("Reinstall"),
                     "update"       => _("Software update"),
                     "memcheck"     => _("Memory test")
                     );
-    if ($o_queue->ping($this->netConfigDNS->macAddress)){
-        $actions["halt"]    = _("Switch off");
-        $actions["reboot"]  = _("Reboot");
-        $actions["rescan"]  = _("Rescan hardware");
+    if (class_available("supportDaemon")) {
+      $o_queue = new supportDaemon();
+      if ($o_queue->ping($this->netConfigDNS->macAddress)) {
+          $actions["halt"]    = _("Switch off");
+          $actions["reboot"]  = _("Reboot");
+          $actions["rescan"]  = _("Rescan hardware");
+      } else {
+          $actions["wakeup"]  = _("Wake up");
+      }
     } else {
         $actions["wakeup"]  = _("Wake up");
     }
@@ -618,7 +624,7 @@ class workgeneric extends plugin
       $this->handle_post_events("modify",array("macAddress" => $this->netConfigDNS->macAddress,"ipHostNumber" => $this->netConfigDNS->ipHostNumber));
     }
 
-    if ($activate && class_available("DaemonEvent")){
+    if ($activate && class_available("DaemonEvent") && class_available("supportDaemon")){
 
       /* Send installation activation
        */
@@ -629,7 +635,8 @@ class workgeneric extends plugin
         $tmp = new $evt['CLASS_NAME']($this->config);
         $tmp->set_type(TRIGGERED_EVENT);
         $tmp->add_targets(array($this->netConfigDNS->macAddress));
-        if(!$o_queue->append($tmp)){
+        $o_queue->append($tmp);
+        if ($o_queue->is_error()) {
           msg_dialog::display(_("Service infrastructure"),msgPool::siError($o_queue->get_error()),ERROR_DIALOG);
         }
       }

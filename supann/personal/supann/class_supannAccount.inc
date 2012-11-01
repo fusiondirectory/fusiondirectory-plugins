@@ -15,14 +15,13 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
  */
 
 class supannAccount extends plugin
 {
-  var $plHeadline     = "supann";
+  var $plHeadline     = "Supann";
   var $plDescription  = "Plugin supann";
-  var $plIcon  = "plugins/supann/images/plugin.png";
 
   var $view_logged            = FALSE;
   var $is_account             = FALSE;
@@ -858,47 +857,49 @@ class supannAccount extends plugin
 
   static function plInfo()
   {
-    return array("plShortName" => _("SUPANN Informations"),
-                 "plDescription" => _("SUPANN informatiosn management plugin"),
-                 "plSelfModify" => TRUE,
-                 "plDepends" => array("users"),
-                 "plPriority" => 5,
-                 "plSection" => array("personal" => _("My account")),
-                 "plCategory" => array("users"),
-                 "plOptions" => array(),
-                 "plProvidedAcls" => array(
-                    "eduPersonAffiliation" => _("eduPersonAffiliation"),
-                    "eduPersonPrimaryAffiliation" => _("eduPersonPrimaryAffiliation"),
-                    "eduPersonNickName" => _("eduPersonNickName"),
-                    "eduPersonPrincipalName" => _("eduPersonPrincipalName"),
-                    "supannEntiteAffectation" => _("supannEntiteAffectation"),
-                    "supannEntiteAffectationPrincipale" => _("supannEntiteAffectationPrincipale"),
-                    "supannAliasLogin" => _("supannAliasLogin"),
-                    "supannAutreMail" => _("supannAutreMail"),
-                    "supannAutreTelephone" => _("supannAutreTelephone"),
-                    "supannCivilite" => _("supannCivilite"),
-                    "supannEtablissement" => _("supannEtablissement"),
-                    "supannListeRouge" => _("supannListeRouge"),
-                    "supannMailPerso" => _("supannMailPerso"),
-                    "supannTypeEntiteAffectation" => _("supannTypeEntiteAffectation"),
-                    "supannCodeINE" => _("supannCodeINE"),
-                    "supannEtuId" => _("supannEtuId"),
-                    "supannEtuInscription" => _("supannEtuInscription"),
-                    "supannEtuAnneeInscription" => _("supannEtuAnneeInscription"),
-                    "supannEtuRegimeInscription" => _("supannEtuRegimeInscription"),
-                    "supannEtuSecteurDisciplinaire" => _("supannEtuSecteurDisciplinaire"),
-                    "supannEtuTypeDiplome" => _("supannEtuTypeDiplome"),
-                    "supannEtuCursusAnnee" => _("supannEtuCursusAnnee"),
-                    "supannEtuDiplome" => _("supannEtuDiplome"),
-                    "supannEtuEtape" => _("supannEtuEtape"),
-                    "supannEtuElementPedagogique" => _("supannEtuElementPedagogique"),
-                    "supannEmpCorps" => _("supannEmpCorps"),
-                    "supannEmpId" => _("supannEmpId"),
-                    "supannRoleGenerique" => _("supannRoleGenerique"),
-                    "supannRoleEntite" => _("supannRoleEntite"),
-                    "supannActivite" => _("supannActivite"),
-                  )
-                );
+    return array(
+      "plShortName"   => _("Supann"),
+      "plDescription" => _("SUPANN informations management plugin"),
+      "plIcon"        => "plugins/supann/images/plugin.png",
+      "plSelfModify"  => TRUE,
+      "plDepends"     => array("users"),
+      "plPriority"    => 5,
+      "plSection"     => array("personal" => _("My account")),
+      "plCategory"    => array("users"),
+      "plOptions"     => array(),
+      "plProvidedAcls" => array(
+        "eduPersonAffiliation"        => _("eduPersonAffiliation"),
+        "eduPersonPrimaryAffiliation" => _("eduPersonPrimaryAffiliation"),
+        "eduPersonNickName"           => _("eduPersonNickName"),
+        "eduPersonPrincipalName"      => _("eduPersonPrincipalName"),
+        "supannEntiteAffectation"     => _("supannEntiteAffectation"),
+        "supannEntiteAffectationPrincipale" => _("supannEntiteAffectationPrincipale"),
+        "supannAliasLogin"            => _("supannAliasLogin"),
+        "supannAutreMail"             => _("supannAutreMail"),
+        "supannAutreTelephone"        => _("supannAutreTelephone"),
+        "supannCivilite"              => _("supannCivilite"),
+        "supannEtablissement"         => _("supannEtablissement"),
+        "supannListeRouge"            => _("supannListeRouge"),
+        "supannMailPerso"             => _("supannMailPerso"),
+        "supannTypeEntiteAffectation" => _("supannTypeEntiteAffectation"),
+        "supannCodeINE"               => _("supannCodeINE"),
+        "supannEtuId"                 => _("supannEtuId"),
+        "supannEtuInscription"        => _("supannEtuInscription"),
+        "supannEtuAnneeInscription"   => _("supannEtuAnneeInscription"),
+        "supannEtuRegimeInscription"  => _("supannEtuRegimeInscription"),
+        "supannEtuSecteurDisciplinaire" => _("supannEtuSecteurDisciplinaire"),
+        "supannEtuTypeDiplome"        => _("supannEtuTypeDiplome"),
+        "supannEtuCursusAnnee"        => _("supannEtuCursusAnnee"),
+        "supannEtuDiplome"            => _("supannEtuDiplome"),
+        "supannEtuEtape"              => _("supannEtuEtape"),
+        "supannEtuElementPedagogique" => _("supannEtuElementPedagogique"),
+        "supannEmpCorps"              => _("supannEmpCorps"),
+        "supannEmpId"                 => _("supannEmpId"),
+        "supannRoleGenerique"         => _("supannRoleGenerique"),
+        "supannRoleEntite"            => _("supannRoleEntite"),
+        "supannActivite"              => _("supannActivite"),
+      )
+    );
   }
 
   function supannExplodeQualifiedAttribute($val)

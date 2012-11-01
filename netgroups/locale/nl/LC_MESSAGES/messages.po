@@ -3,29 +3,30 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+#   <christophe@augello.be>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
 "Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
-"POT-Creation-Date: 2012-05-26 17:33+0200\n"
-"PO-Revision-Date: 2012-01-06 17:49+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: Dutch (http://www.transifex.net/projects/p/FusionDirectory/language/nl/)\n"
+"POT-Creation-Date: 2012-08-22 18:37+0200\n"
+"PO-Revision-Date: 2012-07-30 14:49+0000\n"
+"Last-Translator: Christophe Augello <christophe@augello.be>\n"
+"Language-Team: Dutch (http://www.transifex.com/projects/p/FusionDirectory/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: nl\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: admin/netgroups/netgroup-filter.tpl:3
 #: admin/netgroups/memberNisnetgroupSelect/memberNisnetgroup-filter.tpl:3
 #: admin/netgroups/tripleSelect/triple-filter.tpl:3
 msgid "Filter"
-msgstr ""
+msgstr "Filter"
 
 #: admin/netgroups/netgroup-filter.tpl:11
 msgid "Show NIS Netgroups"
-msgstr ""
+msgstr "Toon NIS Netgroup"
 
 #: admin/netgroups/netgroup-filter.tpl:19
 #: admin/netgroups/memberNisnetgroupSelect/memberNisnetgroup-filter.tpl:17
@@ -35,18 +36,18 @@ msgstr ""
 #: admin/netgroups/class_netgroup.inc:798
 #: admin/netgroups/class_netgroup.inc:907 admin/netgroups/netgroup-list.xml:41
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 #: admin/netgroups/memberNisnetgroupSelect/memberNisnetgroup-list.tpl:13
 #: admin/netgroups/tripleSelect/triple-list.tpl:13
 #: admin/netgroups/class_netgroup.inc:909 admin/netgroups/netgroup-list.tpl:13
 #: admin/netgroups/generic.tpl:39
 msgid "Base"
-msgstr ""
+msgstr "Basis"
 
 #: admin/netgroups/memberNisnetgroupSelect/memberNisnetgroup-list.xml:10
 msgid "Please select the desired NIS Netgroups"
-msgstr ""
+msgstr "Gelieve de gewenste NIS Netgroup te selecteren"
 
 #: admin/netgroups/memberNisnetgroupSelect/memberNisnetgroup-list.xml:14
 #: admin/netgroups/tripleSelect/triple-list.xml:14
@@ -55,51 +56,51 @@ msgstr ""
 #: admin/systems/netgroups/class_netgroupSystem.inc:28
 #: personal/netgroups/class_netgroupAccount.inc:28
 msgid "NIS Netgroup"
-msgstr ""
+msgstr "NIS netgroup"
 
 #: admin/netgroups/memberNisnetgroupSelect/memberNisnetgroup-list.xml:40
 #: admin/netgroups/tripleSelect/triple-list.xml:65
 msgid "Common name"
-msgstr ""
+msgstr "Naam"
 
 #: admin/netgroups/memberNisnetgroupSelect/memberNisnetgroup-list.xml:48
 #: admin/netgroups/tripleSelect/triple-list.xml:89
 #: admin/netgroups/class_netgroup.inc:908 admin/netgroups/netgroup-list.xml:49
 #: admin/netgroups/generic.tpl:24
 msgid "Description"
-msgstr ""
+msgstr "Beschrijving"
 
 #: admin/netgroups/tripleSelect/triple-filter.tpl:11
 msgid "Show Users"
-msgstr ""
+msgstr "Toon Gebruikers"
 
 #: admin/netgroups/tripleSelect/triple-filter.tpl:12
 msgid "Show Hosts"
-msgstr ""
+msgstr "Toon Hosts"
 
 #: admin/netgroups/tripleSelect/triple-filter.tpl:13
 msgid "Show NIS Netgroup"
-msgstr ""
+msgstr "Toon NIS Netgroup"
 
 #: admin/netgroups/tripleSelect/triple-list.xml:10
 msgid "Please select the desired entries"
-msgstr ""
+msgstr "Gelieve de gegevens te selecteren"
 
 #: admin/netgroups/tripleSelect/triple-list.xml:22
 #: admin/netgroups/class_netgroup.inc:593
 #: admin/netgroups/class_netgroup.inc:595
 msgid "User"
-msgstr ""
+msgstr "Gebruiker"
 
 #: admin/netgroups/tripleSelect/triple-list.xml:30
 #: admin/netgroups/class_netgroup.inc:601
 msgid "Host"
-msgstr ""
+msgstr "Host"
 
 #: admin/netgroups/tripleSelect/triple-list.xml:38
 #: admin/netgroups/class_netgroup.inc:603
 msgid "Network Device"
-msgstr ""
+msgstr "Netwerk apparaat"
 
 #: admin/netgroups/tripleSelect/triple-list.xml:73
 msgid "Login"
@@ -107,147 +108,147 @@ msgstr "Inlognaam"
 
 #: admin/netgroups/tripleSelect/triple-list.xml:81
 msgid "Surname"
-msgstr ""
+msgstr "Achternaam"
 
 #: admin/netgroups/class_netgroup.inc:347
 #: admin/netgroups/class_netgroup.inc:671
 #: admin/netgroups/class_netgroup.inc:934
 msgid "Error"
-msgstr ""
+msgstr "Fout"
 
 #: admin/netgroups/class_netgroup.inc:348
 #, php-format
 msgid "Add CN/UID '%s' to NIS netgroup '%s' failed: cannot find object!"
-msgstr ""
+msgstr "Voeg CN/UID '%s' toe in NIS Netgroup '%s' mislukt : kan object niet vinden!"
 
 #: admin/netgroups/class_netgroup.inc:572
 msgid "! unknown UID/CN"
-msgstr ""
+msgstr "! onbekende UID/CN"
 
 #: admin/netgroups/class_netgroup.inc:597
 msgid "Server"
-msgstr ""
+msgstr "Server"
 
 #: admin/netgroups/class_netgroup.inc:599
 msgid "Workstation"
-msgstr ""
+msgstr "Workstation"
 
 #: admin/netgroups/class_netgroup.inc:616
 #: admin/netgroups/class_netgroup.inc:761
 #: admin/systems/netgroups/class_netgroupSystem.inc:280
 #: personal/netgroups/class_netgroupAccount.inc:303
 msgid "LDAP error"
-msgstr ""
+msgstr "LDAP Fout"
 
 #: admin/netgroups/class_netgroup.inc:867
 msgid "NIS Netgroup Error"
-msgstr ""
+msgstr "NIS Netgroup Fout"
 
 #: admin/netgroups/class_netgroup.inc:867
 msgid "Error: There are a loop with NIS Netgroups"
-msgstr ""
+msgstr "Fout : Er zijn loops in de NIS Netgroups"
 
 #: admin/netgroups/class_netgroup.inc:869
 msgid "IMPORTANT: Check the members of NIS Netgroup"
-msgstr ""
+msgstr "BELANGERIJK: Check de gebruikers van NIS Netgroup"
 
 #: admin/netgroups/class_netgroup.inc:899
 msgid "Generic"
-msgstr ""
+msgstr "Generiek"
 
 #: admin/netgroups/class_netgroup.inc:900
 msgid "Generic NIS Netgroup settings"
-msgstr ""
+msgstr "Generieke NIS Netgroup instellingen"
 
 #: admin/netgroups/class_netgroup.inc:905
 #: admin/netgroups/class_netgroupManagement.inc:25
 msgid "NIS Netgroups"
-msgstr ""
+msgstr "NIS Netgroups"
 
 #: admin/netgroups/class_netgroup.inc:910 admin/netgroups/generic.tpl:72
 #: admin/systems/netgroups/class_netgroupSystem.inc:316
 #: personal/netgroups/class_netgroupAccount.inc:382
 msgid "NIS Netgroup members"
-msgstr ""
+msgstr "NIS Netgroup deelnemers"
 
 #: admin/netgroups/class_netgroupManagement.inc:26
 msgid "NIS Netgroups management"
-msgstr ""
+msgstr "NIS Netgroups management"
 
 #: admin/netgroups/netgroup-list.xml:11
 msgid "List of NIS Netgroups"
-msgstr ""
+msgstr "Lijst van NIS Netgroups"
 
 #: admin/netgroups/netgroup-list.xml:57
 msgid "Properties"
-msgstr ""
+msgstr "Eigenschappen"
 
 #: admin/netgroups/netgroup-list.xml:62
 msgid "Actions"
-msgstr ""
+msgstr "Acties"
 
 #: admin/netgroups/netgroup-list.xml:73
 msgid "Create"
-msgstr ""
+msgstr "Maak"
 
 #: admin/netgroups/netgroup-list.xml:91
 msgid "Edit"
-msgstr ""
+msgstr "Wijzig"
 
 #: admin/netgroups/netgroup-list.xml:98
 msgid "Remove"
-msgstr ""
+msgstr "Verwijder"
 
 #: admin/netgroups/netgroup-list.xml:130
 msgid "Edit NIS Netgroup"
-msgstr ""
+msgstr "Wijzig NIS Netgroup"
 
 #: admin/netgroups/netgroup-list.xml:143
 msgid "Remove NIS Netgroup"
-msgstr ""
+msgstr "Verwijder NIS Netgroup"
 
 #: admin/netgroups/generic.tpl:11
 msgid "NIS Netgroup name"
-msgstr ""
+msgstr "NIS Netgroup naam"
 
 #: admin/netgroups/generic.tpl:14
 msgid "Multiple edit"
-msgstr ""
+msgstr "Meerdere wijzigen"
 
 #: admin/netgroups/generic.tpl:17
 msgid "Name of the NIS Netgroup"
-msgstr ""
+msgstr "Naam van de NIS Netgroup"
 
 #: admin/netgroups/generic.tpl:28
 msgid "Descriptive text for this NIS Netgroup"
-msgstr ""
+msgstr "Beschrijving van deze NIS Netgroup"
 
 #: admin/netgroups/generic.tpl:79
 #: admin/systems/netgroups/netgroupSystem.tpl:24
 #: personal/netgroups/netgroupAccount.tpl:24
 msgid "In all NIS Netgroups"
-msgstr ""
+msgstr "In alle NIS Netgroups"
 
 #: admin/netgroups/generic.tpl:82
 #: admin/systems/netgroups/netgroupSystem.tpl:27
 #: personal/netgroups/netgroupAccount.tpl:27
 msgid "Not in all NIS Netgroups"
-msgstr ""
+msgstr "Niet in alle NIS Netgroups"
 
 #: admin/systems/netgroups/netgroupSystem.tpl:17
 #: personal/netgroups/netgroupAccount.tpl:17
 msgid "Member of the following NIS Netgroups"
-msgstr ""
+msgstr "Deelnemer van volgend NIS netgroups"
 
 #: admin/systems/netgroups/class_netgroupSystem.inc:29
 msgid "Choose NIS Netgroups for the host"
-msgstr ""
+msgstr "Kies NIS Netgroups voor deze host"
 
 #: admin/systems/netgroups/class_netgroupSystem.inc:308
 #: personal/netgroups/class_netgroupAccount.inc:374
 msgid "NIS Netgroup member"
-msgstr ""
+msgstr "NIS Netgroup deelnemer"
 
 #: personal/netgroups/class_netgroupAccount.inc:29
 msgid "Choose NIS Netgroups for the user"
-msgstr ""
+msgstr "Kies NIS Netgroups voor de gebruiker"

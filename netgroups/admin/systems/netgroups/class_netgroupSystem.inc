@@ -17,7 +17,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
  */
 
 
@@ -43,7 +43,7 @@ class netgroupSystem extends plugin {
     var $is_account = TRUE;
     var $dn = "";
     var $attrs = array();
-    
+
     function netgroupSystem(&$config, $dn= NULL) {
         $this->config = $config;
 
@@ -127,7 +127,7 @@ class netgroupSystem extends plugin {
             $this->dialog = FALSE;
         }
 
-        
+
         /* Dialog handling */
         if (is_object($this->dialog)) {
             /* Must be called before save_object */
@@ -224,7 +224,7 @@ class netgroupSystem extends plugin {
                     }
                 }
 
-                
+
                 $attrs['nisNetgroupTriple']=array_values(array_unique($triples));
 
                 if (isset($sattrs['memberNisNetgroup'])) {
@@ -268,7 +268,7 @@ class netgroupSystem extends plugin {
                 $ldap->modify($attrs);
             }
         }
-        
+
         if ($this->initially_was_account) {
             new log("modify", "netgroups/" . get_class($this), $this->dn, array_keys($this->attrs), $ldap->get_error());
         } else {
@@ -280,9 +280,9 @@ class netgroupSystem extends plugin {
             msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()));
             $ret = 1;
         }
-        return ($ret);        
+        return ($ret);
     }
-    
+
     function check() {
         /* Call common method to give check the hook */
         $message = plugin::check();

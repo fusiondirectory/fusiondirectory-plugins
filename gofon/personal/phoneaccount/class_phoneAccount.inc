@@ -27,6 +27,8 @@ class phoneAccount extends plugin
   var $plDescription= "This is user phone account plugin management";
   var $plIcon       = "plugins/gofon/images/phoneAccount.png";
 
+  var $delimiter = "|";
+
   /* Attributes */
   var $telephoneNumber        = array();
   var $goFonHardware          = "automatic";
@@ -77,11 +79,13 @@ class phoneAccount extends plugin
   {
     plugin::plugin ($config, $dn, $parent);
 
+    $this->delimiter = $config->get_cfg_value("asteriskParameterDelimiter","|");
+
     /* Assemble phone numbers */
-    if (isset($this->attrs['telephoneNumber'])){
-      for ($i= 0; $i<$this->attrs['telephoneNumber']['count']; $i++){
+    if (isset($this->attrs['telephoneNumber'])) {
+      for ($i= 0; $i<$this->attrs['telephoneNumber']['count']; $i++) {
         $number= $this->attrs['telephoneNumber'][$i];
-        $this->phoneNumbers[$number]= $number;
+        $this->phoneNumbers[$number] = $number;
       }
     }
 
@@ -89,7 +93,7 @@ class phoneAccount extends plugin
     $this->voicemail_contexts = $this->get_asterisk_voicemail_contexts();
 
     /* Set parent object to tab object */
-    if(is_object($parent)){
+    if (is_object($parent)) {
       $this->parent = $parent->parent;
     }
 
@@ -874,9 +878,9 @@ class phoneAccount extends plugin
       // Get selected Macro Parameter and create parameter entry
       if (isset($this->macroarray[$this->macro])) {
         foreach($this->macroarray[$this->macro] as $key => $val ) {
-          $s_parameter .= $val['choosen']."|";
+          $s_parameter .= $val['choosen'].$this->delimiter;
         }
-        $s_parameter = preg_replace("/\|$/","",$s_parameter);
+        $s_parameter = rtrim($s_parameter, $this->delimiter);
       }
 
       $i = 0;
@@ -886,7 +890,7 @@ class phoneAccount extends plugin
         $EXT[$i]['exten']   = $this->uid;
         $EXT[$i]['priority']= 1;
         $EXT[$i]['app']     = "Goto";
-        $EXT[$i]['appdata'] = $newnums[$i_new_key]."|1";
+        $EXT[$i]['appdata'] = $newnums[$i_new_key].$this->delimiter."1";
         $i ++;
       }
 
@@ -912,10 +916,10 @@ class phoneAccount extends plugin
           $macroname = preg_replace("/,.*$/","",$this->macro);
           $macroname = preg_replace("/^.*=/","",$macroname);
           $s_app = "Macro";$macroname;
-          $s_par = $macroname."|".$s_parameter;
+          $s_par = $macroname.$this->delimiter.$s_parameter;
         } else {
           $s_app = "Dial";
-          $s_par = 'SIP/'.$this->uid."|20|r";
+          $s_par = 'SIP/'.$this->uid.$this->delimiter."20".$this->delimiter."r";
         }
 
         $EXT[$i]['context'] = 'FusionDirectory';

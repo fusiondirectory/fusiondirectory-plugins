@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-26 17:33+0200\n"
+"POT-Creation-Date: 2012-10-27 13:06+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,46 +17,52 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: admin/systems/samba/class_winGeneric.inc:132
+#: admin/systems/samba/class_winGeneric.inc:135
 msgid "network"
 msgstr ""
 
-#: admin/systems/samba/class_winGeneric.inc:168
-#: admin/systems/samba/class_winGeneric.inc:316
+#: admin/systems/samba/class_winGeneric.inc:176
+#: admin/systems/samba/class_winGeneric.inc:424
 #: personal/samba/class_sambaAccount.inc:850
 #: personal/samba/class_sambaAccount.inc:1112
 msgid "LDAP error"
 msgstr ""
 
-#: admin/systems/samba/class_winGeneric.inc:198
+#: admin/systems/samba/class_winGeneric.inc:207
 msgid "Error"
 msgstr ""
 
-#: admin/systems/samba/class_winGeneric.inc:231
-#: admin/systems/samba/class_winGeneric.inc:341
+#: admin/systems/samba/class_winGeneric.inc:267
+#: admin/systems/samba/class_winGeneric.inc:448
 msgid "Name"
 msgstr ""
 
-#: admin/systems/samba/class_winGeneric.inc:332
+#: admin/systems/samba/class_winGeneric.inc:439
 msgid "Win generic"
 msgstr ""
 
-#: admin/systems/samba/class_winGeneric.inc:333
+#: admin/systems/samba/class_winGeneric.inc:440
 msgid "Windows workstation generic"
 msgstr ""
 
-#: admin/systems/samba/class_winGeneric.inc:338
-msgid "Win workstation"
+#: admin/systems/samba/class_winGeneric.inc:445
+msgid "Windows workstation"
 msgstr ""
 
-#: admin/systems/samba/class_winGeneric.inc:342
+#: admin/systems/samba/class_winGeneric.inc:449
 #: admin/systems/samba/wingeneric.tpl:17
 msgid "Base"
 msgstr ""
 
-#: admin/systems/samba/class_winGeneric.inc:343
+#: admin/systems/samba/class_winGeneric.inc:450
 #: admin/systems/samba/wingeneric.tpl:29
 msgid "Description"
+msgstr ""
+
+#: admin/systems/samba/class_winGeneric.inc:451
+#: admin/systems/samba/wingeneric.tpl:37 personal/samba/samba3.tpl:26
+#: personal/samba/class_sambaAccount.inc:1189
+msgid "Domain"
 msgstr ""
 
 #: admin/systems/samba/wingeneric.tpl:6
@@ -79,10 +85,6 @@ msgstr ""
 #: personal/samba/class_sambaAccount.inc:881
 #: personal/samba/class_sambaAccount.inc:1239
 msgid "Home directory"
-msgstr ""
-
-#: personal/samba/samba3.tpl:26 personal/samba/class_sambaAccount.inc:1189
-msgid "Domain"
 msgstr ""
 
 #: personal/samba/samba3.tpl:35

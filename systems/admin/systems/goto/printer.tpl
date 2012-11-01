@@ -38,15 +38,15 @@
    <h2>{t}Details{/t}</h2>
    <table summary="">
 {if !$StandAlone}
-      <tr> 
-  <td><LABEL for="description">{t}Description{/t}</LABEL></td> 
-  <td> 
-  {render acl=$descriptionACL} 
-     <input type='text' id="description" name="description" size=25 maxlength=80 value="{$description}"> 
-  {/render} 
-   </td> 
-      </tr> 
-{/if} 
+      <tr>
+  <td><LABEL for="description">{t}Description{/t}</LABEL></td>
+  <td>
+  {render acl=$descriptionACL}
+     <input type='text' id="description" name="description" size=25 maxlength=80 value="{$description}">
+  {/render}
+   </td>
+      </tr>
+{/if}
      <tr>
        <td><LABEL for="l">{t}Printer location{/t}</LABEL></td>
        <td>
@@ -74,7 +74,7 @@
 {/if}
    </table>
    <table summary="">
-    <tr> 
+    <tr>
      <td>
       <br>
       {t}Driver{/t}: <i>{$driverInfo}</i>&nbsp;
@@ -114,8 +114,8 @@
 {/render}
      </td>
     </tr>
-   </table> 
- 
+   </table>
+
   </td>
   <td>
    <table style="width:100%" summary=''>
@@ -133,20 +133,55 @@
 {render acl=$gotoUserPrinterACL}
        <input type="submit" value="{msgPool type=delButton}" name="DelAdmin">
 {/render}
-  
+
      </td>
     </tr>
    </table>
-   
+
   </td>
  </tr>
 </table>
 
-
-{if $netconfig ne ''}
 <p class="plugbottom" style="margin-bottom:0px; padding:0px;">&nbsp;</p>
+{if $netconfig ne ''}
+<table style="width:100%" summary=''>
+<tr>
+<td style="vertical-align:top; width:50%; border-right:1px solid #B0B0B0">
 {$netconfig}
+</td>
+<td>
 {/if}
+<h2>{t}Windows paths{/t}</h2>
+<table style="width:100%" summary=''>
+     <tr>
+       <td><LABEL for="printerWindowsInfFile">{t}Printer windows inf file{/t}</LABEL></td>
+       <td>
+{render acl=$printerWindowsInfFileACL}
+        <input type='text' id="printerWindowsInfFile" name="printerWindowsInfFile" value="{$printerWindowsInfFile}">
+{/render}
+       </td>
+     </tr>
+     <tr>
+       <td><LABEL for="printerWindowsDriverDir">{t}Printer driver directory{/t}</LABEL></td>
+       <td>
+{render acl=$printerWindowsDriverDirACL}
+        <input type='text' id="printerWindowsDriverDir" name="printerWindowsDriverDir" value="{$printerWindowsDriverDir}">
+{/render}
+       </td>
+     </tr>
+     <tr>
+       <td><LABEL for="printerWindowsDriverName">{t}Driver printer name{/t}</LABEL></td>
+       <td>
+{render acl=$printerWindowsDriverNameACL}
+        <input type='text' id="printerWindowsDriverName" name="printerWindowsDriverName" value="{$printerWindowsDriverName}">
+{/render}
+       </td>
+     </tr>
+<table>
+{if $netconfig ne ''}
+</td></tr></table>
+{/if}
+
 
 <!-- Place cursor -->
 <script language="JavaScript" type="text/javascript">
