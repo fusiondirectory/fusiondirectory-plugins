@@ -270,8 +270,23 @@ objectclass ( 1.3.6.1.4.1.38414.2.2.5 NAME 'argonautFuseConfig'
   DESC 'An argonaut config for fuse'
   SUP top AUXILIARY
   MUST (  argonautFuseDefaultMode $ argonautFuseLogDir $ argonautFusePxelinuxCfg $
-          argonautFusePxelinuxCfgStatic $ argonautFuseNfsRoot )
-  MAY ( argonautFuseFaiFlags $
-        argonautFuseOpsiAdmin $ argonautFuseOpsiPassword $ argonautFuseOpsiServer $
-        argonautFuseOpsiLang $
-        argonautFuseLtspServer ) )
+          argonautFusePxelinuxCfgStatic ) )
+
+objectclass ( 1.3.6.1.4.1.38414.2.2.5 NAME 'argonautFuseOPSIConfig'
+  DESC 'An argonaut config for fuse OPSI module'
+  SUP top AUXILIARY
+  MAY (
+    argonautFuseOpsiAdmin $ argonautFuseOpsiPassword $
+    argonautFuseOpsiServer $ argonautFuseOpsiLang
+  ) )
+
+objectclass ( 1.3.6.1.4.1.38414.2.2.5 NAME 'argonautFuseFAIConfig'
+  DESC 'An argonaut config for fuse FAI module'
+  SUP top AUXILIARY
+  MUST ( argonautFuseNfsRoot )
+  MAY ( argonautFuseFaiFlags ) )
+
+objectclass ( 1.3.6.1.4.1.38414.2.2.5 NAME 'argonautFuseLTSPConfig'
+  DESC 'An argonaut config for fuse LTSP module'
+  SUP top AUXILIARY
+  MUST ( argonautFuseLtspServer ) )

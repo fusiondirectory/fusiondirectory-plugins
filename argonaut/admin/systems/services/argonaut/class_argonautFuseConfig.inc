@@ -30,8 +30,6 @@ class argonautFuseConfig extends simpleService
     return array(
       "plShortName"     => _("Argonaut Fuse settings"),
       "plDescription"   => _("Argonaut Fuse settings")." ("._("Services").")",
-      "plSelfModify"    => FALSE,
-      "plDepends"       => array(),
       "plSection"       => array("admin"),
       "plCategory"      => array("server"),
       "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
@@ -81,62 +79,125 @@ class argonautFuseConfig extends simpleService
             '/srv/tftp/pxelinux.static'
           ),
         )
-      ),
-      'fai' => array (
-        'name'  => _('FAI'),
-        'attrs' => array (
-          new StringAttribute (
-            _('Fai flags'),
-            '',
-            'argonautFuseFaiFlags',
-            FALSE,
-            'verbose,sshd,syslogd,createvt,reboot'
-          ),
-          new StringAttribute (
-            _('NFS root'),
-            '',
-            'argonautFuseNfsRoot',
-            TRUE,
-            '/srv/fai/nfsroot'
-          ),
-        )
-      ),
-      'opsi' => array (
-        'name'  => _('OPSI'),
-        'attrs' => array (
-          new StringAttribute (
-            _('Opsi admin'),
-            '',
-            'argonautFuseOpsiAdmin'
-          ),
-          new PasswordAttribute (
-            _('Opsi password'),
-            '',
-            'argonautFuseOpsiPassword'
-          ),
-          new StringAttribute (
-            _('Opsi server'),
-            '',
-            'argonautFuseOpsiServer'
-          ),
-          new StringAttribute (
-            _('Opsi lang'),
-            '',
-            'argonautFuseOpsiLang'
-          ),
-        )
-      ),
-      'ltsp' => array (
-        'name'  => _('LTSP'),
-        'attrs' => array (
-          new StringAttribute (
-            _('LTSP server'),
-            '',
-            'argonautFuseLtspServer'
-          )
-        )
       )
     );
+  }
+
+  function __construct(&$config, $dn, $object = NULL, $attributesInfo = NULL)
+  {
+    parent::__construct($config, $dn, $object, $attributesInfo);
+
+    /* Load modules */
+    $this->plugin = array();
+    foreach ($config->data['TABS']['FUSEMODULETABS'] as $plug) {
+      @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $plug['CLASS'], "Loading Fuse module");
+      if (!plugin_available($plug['CLASS'])) {
+        @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $plug['CLASS'], "Fuse module not available");
+        continue;
+      }
+      $name = $plug['CLASS'];
+      $this->plugin[$name] = new $name($config, $dn, $object);
+
+      $this->plugin[$name]->set_acl_category($this->acl_category);
+      $this->plugin[$name]->set_acl_base($this->dn);
+    }
+  }
+
+
+  /*! \brief This function display the service and return the html code
+   */
+  function execute ()
+  {
+    if ($this->is_account && !$this->view_logged) {
+      $this->view_logged = TRUE;
+      new log("view", "server/".get_class($this), $this->dn);
+    }
+
+    $str = "<div style='width:100%; text-align:right; clear:both; float:none;'>".
+           "  <input type='submit' name='SaveService' value='".msgPool::saveButton()."'>&nbsp;".
+           "  <input type='submit' name='CancelService' value='".msgPool::cancelButton()."'>".
+           "</div>";
+
+    $display = parent::execute();
+
+    foreach ($this->plugin as &$plugin) {
+      if ($this->parent !== NULL) {
+        $plugin->parent = $this->parent;
+      } else {
+        $plugin->parent = $this;
+      }
+      $display .= '<p class="seperator plugbottom">&nbsp;</p><div></div>';
+      $display .= $plugin->execute();
+    }
+
+    return $display.$str;
+  }
+
+
+  /* Save data to object */
+  function save_object()
+  {
+    parent::save_object();
+    if (isset($_POST[get_class($this)."_posted"])) {
+      foreach ($this->plugin as &$plugin) {
+        $plugin->save_object();
+      }
+    }
+  }
+
+  function check()
+  {
+    $message = parent::check();
+
+    foreach ($this->plugin as &$plugin) {
+      if ($plugin->is_account) {
+        $message = array_merge($message, $plugin->check());
+      }
+    }
+
+    return $message;
+  }
+
+  function set_acl_category($cat)
+  {
+    parent::set_acl_category($cat);
+    foreach ($this->plugin as &$plugin) {
+      $plugin->set_acl_category($cat);
+    }
+  }
+
+  function set_acl_base($base)
+  {
+    parent::set_acl_base($base);
+    foreach ($this->plugin as &$plugin) {
+      $plugin->set_acl_base($base);
+    }
+  }
+
+  /* Save to LDAP */
+  function save()
+  {
+    parent::save();
+    /* Save objects */
+    foreach ($this->plugin as &$plugin) {
+      $plugin->dn = $this->dn;
+
+      if ($plugin->is_account) {
+        $plugin->save();
+      } else {
+        $plugin->remove_from_parent();
+      }
+    }
+  }
+
+  function remove_from_parent()
+  {
+    /* Remove objects */
+    foreach ($this->plugin_name as $name) {
+      $plugin->dn = $this->dn;
+      $plugin->remove_from_parent();
+    }
+    parent::remove_from_parent();
   }
 }
 ?>
