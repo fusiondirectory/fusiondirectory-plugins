@@ -118,7 +118,7 @@ class argonautFuseConfig extends simpleService
            "  <input type='submit' name='CancelService' value='".msgPool::cancelButton()."'>".
            "</div>";
 
-    $display = parent::execute();
+    $display = simplePlugin::execute();
 
     foreach ($this->plugin as &$plugin) {
       if ($this->parent !== NULL) {
