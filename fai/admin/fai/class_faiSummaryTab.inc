@@ -86,19 +86,19 @@ class faiSummaryTab extends plugin{
       }
 
       /* Check if this is a workstation or an object group */
-      if(isset($this->parent->by_object['workgeneric'])){
-        $this->base    = $this->parent->by_object['workgeneric']->base;
+      if(isset($this->parent->by_object['workstationGeneric'])){
+        $this->base    = $this->parent->by_object['workstationGeneric']->base;
       }elseif(isset($this->parent->by_object['ogroup'])){
         $this->base    = $this->parent->by_object['ogroup']->base;
-      }elseif(isset($this->parent->by_object['servgeneric'])){
-        $this->base    = $this->parent->by_object['servgeneric']->base;
+      }elseif(isset($this->parent->by_object['serverGeneric'])){
+        $this->base    = $this->parent->by_object['serverGeneric']->base;
       }else{
         msg_dialog::display(_("Error"), _("Unknown FAI information source!"), ERROR_DIALOG);
       }
 
       /* Append workstation class && LAST */
-      if(isset($this->parent->by_object['workgeneric']->cn)){
-        $this->Classes[] = $this->parent->by_object['workgeneric']->cn;
+      if(isset($this->parent->by_object['workstationGeneric']->cn)){
+        $this->Classes[] = $this->parent->by_object['workstationGeneric']->cn;
       }
     }
 

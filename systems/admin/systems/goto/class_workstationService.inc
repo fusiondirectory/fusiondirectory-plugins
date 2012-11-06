@@ -540,11 +540,11 @@ class workservice extends plugin
               $macs[] = $p->objcache[$dn]['macAddress'];
             }
           }
-        }elseif(isset($this->parent->by_object['workgeneric']->netConfigDNS->macAddress)){
+        }elseif(isset($this->parent->getBaseObject()->netConfigDNS->macAddress)){
 
           /* We are a workstation. Add current mac.
            */
-          $mac = $this->parent->by_object['workgeneric']->netConfigDNS->macAddress;
+          $mac = $this->parent->getBaseObject()->netConfigDNS->macAddress;
           if(!empty($mac) && !preg_match("/".preg_quote(get_ou("systemIncomingRDN"), '/')."/",$this->orig_dn)){
             $macs[] = $mac;
           }

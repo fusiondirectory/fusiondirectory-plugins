@@ -137,7 +137,7 @@ class networkSettings extends plugin
       }
     }
 
-    if (!class_available("DNS")) {
+    if (!class_available("DNS") || !class_available("serviceDNS")) {
       $this->DNSenabled = FALSE;
     }
 
@@ -1015,26 +1015,27 @@ class networkSettings extends plugin
   static function plInfo()
   {
     $tmp = array(
-        "plShortName"   => _("DNS"),
-        "plDescription" => _("DNS settings"),
-        "plSelfModify"  => FALSE,
-        "plDepends"     => array(),
-        "plPriority"    => 5,
-        "plSection"     => array("administration"),
-        "plCategory"    => array("workstation","terminal","phone","server","component","printer","winworkstation"),
+      "plShortName"   => _("Network"),
+      "plDescription" => _("Network settings"),
+      "plSelfModify"  => FALSE,
+      "plDepends"     => array(),
+      "plPriority"    => 5,
+      "plSection"     => array("administration"),
+      "plCategory"    => array("workstation", "terminal", "phone", "server", "component", "printer", "winworkstation"),
 
-        "plProvidedAcls" => array(
-          "ipHostNumber"  => _("IP address"),
-          "macAddress"    => _("MAC address"))
-        );
+      "plProvidedAcls" => array(
+        "ipHostNumber"  => _("IP address"),
+        "macAddress"    => _("MAC address")
+      )
+    );
 
     /* Hide all dns/dhcp configurations if not available
      */
     if (class_available("serviceDNS")) {
-      $tmp['plProvidedAcls']["dnsSetup"]    = _("DNS configuration");
+      $tmp['plProvidedAcls']["dnsSetup"]  = _("DNS configuration");
     }
     if (class_available("serviceDHCP")) {
-      $tmp['plProvidedAcls']["dhcpSetup"]   = _("DHCP configuration");
+      $tmp['plProvidedAcls']["dhcpSetup"] = _("DHCP configuration");
     }
     return $tmp;
   }

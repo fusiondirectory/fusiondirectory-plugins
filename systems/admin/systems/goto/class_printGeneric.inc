@@ -81,19 +81,13 @@ class printgeneric extends plugin
   var $userSelect;
   var $adminUserSelect;
 
-  function printgeneric (&$config, $dn,$parent_init,$parent)
+  function printgeneric (&$config, $dn, $parent_init)
   {
     $this->config = &$config;
     $this->dn = $dn;
 
     /* If parent was posted(the tabs object) we can detect the printer type. */
-    if($parent){
-      $this->parent = $parent;
-      $this->getTypeOfPrinter();
-    }else{
-      $this->BelongsTo = "unknown";
-      return;
-    }
+    $this->getTypeOfPrinter($parent_init);
 
     /* Update dn, to ensure storing as printer instead of WS / terminal */
     if(preg_match("/Terminal/i",$this->BelongsTo) || preg_match("/TerminalTemplate/i",$this->BelongsTo)){
@@ -120,39 +114,39 @@ class printgeneric extends plugin
     }
 
     /* create dns object */
-    $this->netConfigDNS = new networkSettings($this->config, $this,$this->objectclasses);
+    $this->netConfigDNS = new networkSettings($this->config, $this, $this->objectclasses);
     $this->netConfigDNS->IPisMust =TRUE;
     $this->netConfigDNS->MACisMust =TRUE;
 
     /* Set base */
-    if ($this->dn == "new"){
+    if ($this->dn == "new") {
       $ui= get_userinfo();
-      $this->base= dn2base(session::global_is_set("CurrentMainBase")?"cn=dummy,".session::global_get("CurrentMainBase"):$ui->dn);
-      $this->cn= "";
+      $this->base = dn2base(session::global_is_set("CurrentMainBase")?"cn=dummy,".session::global_get("CurrentMainBase"):$ui->dn);
+      $this->cn = "";
     } else {
 
       /* Set base and check if the extracted base exists */
-      if(preg_match("/".preg_quote(get_ou('systemIncomingRDN'), '/')."/i",$this->dn)){
+      if (preg_match("/".preg_quote(get_ou('systemIncomingRDN'), '/')."/i",$this->dn)) {
         $this->base= preg_replace("/".preg_quote(get_ou('systemIncomingRDN'), '/')."/i","",dn2base($this->dn));
-      }else{
+      } else {
         $this->base= preg_replace("/".preg_quote(get_ou('printerRDN'), '/')."/i","",dn2base($this->dn));
       }
 
-      if(!isset($this->config->idepartments[$this->base])){
+      if (!isset($this->config->idepartments[$this->base])) {
         msg_dialog::display(_("Internal error"), sprintf(_("Cannot determine a valid department for this object. Setting base to '%s'!"), session::get('CurrentMainBase')) , WARNING_DIALOG);
         $this->base  = session::get('CurrentMainBase');
       }
     }
 
     /* If no ppd is selected, remove this attribute */
-    if(!empty($this->gotoPrinterPPD) && $this->initially_was_account) {
+    if (!empty($this->gotoPrinterPPD) && $this->initially_was_account) {
       $this->ppdServerPart = preg_replace("/^(http.*ppd)\/.*$/i","\\1",$this->gotoPrinterPPD);
-    }else{
+    } else {
 
       /* Detect PPD server part */
-      if(preg_match("/https/i",$_SERVER['HTTP_REFERER'])){
+      if (preg_match("/https/i",$_SERVER['HTTP_REFERER'])) {
         $method="https://";
-      }else{
+      } else {
         $method="http://";
       }
 
@@ -233,62 +227,64 @@ class printgeneric extends plugin
    * Printer can be stand alone, belong to a workstation or belong to a terminal.
    * We can detect the type printer type when comparing the tabs objects
    */
-  function getTypeOfPrinter($UpdateAccountStatus = false)
+  function getTypeOfPrinter($baseobject = NULL, $UpdateAccountStatus = FALSE)
   {
     /* Disable account as default
      */
-    $this->is_account = $this->initially_was_account = false;
+    $this->is_account = $this->initially_was_account = FALSE;
 
     /* Detect type of printer via parent tabs.
      */
-
+    if ($baseobject === NULL) {
+      $baseobject = $this->parent->getBaseObject();
+    }
     $class = get_class($this->parent);
-    if(isset($this->parent->by_object['workgeneric'])){
+    if (is_a($baseobject, 'termgeneric')) {
 
       /* Exclude templates
        */
-      $this->cn = $this->parent->by_object['workgeneric']->cn;
-      if($this->parent->by_object['workgeneric']->cn == "wdefault"){
-        $this->BelongsTo = "WorkstationTemplate";
-      }else{
-        $this->BelongsTo = "Workstation";
-      }
-    }elseif(isset($this->parent->by_object['termgeneric'])){
-
-      /* Exclude templates
-       */
-      $this->cn = $this->parent->by_object['termgeneric']->cn;
-      if($this->parent->by_object['termgeneric']->cn == "default"){
+      $this->cn = $baseobject->cn;
+      if ($this->cn == "default") {
         $this->BelongsTo = "TerminalTemplate";
-      }else{
+      } else {
         $this->BelongsTo = "Terminal";
       }
-    }elseif(isset($this->parent->by_name['printgeneric'])){
+    } elseif (is_a($baseobject, 'workstationGeneric')) {
+
+      /* Exclude templates
+       */
+      $this->cn = $baseobject->cn;
+      if ($this->cn == "wdefault") {
+        $this->BelongsTo = "WorkstationTemplate";
+      } else {
+        $this->BelongsTo = "Workstation";
+      }
+    } elseif (is_a($baseobject, 'printgeneric')) {
       $this->BelongsTo  = "Printer";
     }
 
-    if($UpdateAccountStatus){
+    if ($UpdateAccountStatus) {
 
       /* Set is_account / was account
        */
-      if($this->dn == "new"){
-        $this->initially_was_account = false;
+      if ($this->dn == "new") {
+        $this->initially_was_account = FALSE;
       }
 
       /* If is printer it must be a true account.
        */
-      if(preg_match("/printer/i",$this->BelongsTo)){
-        $this->is_account = true;
+      if (preg_match("/printer/i", $this->BelongsTo)) {
+        $this->is_account = TRUE;
       }
 
       /* Update dn, to ensure storing as printer instead of WS / terminal
        */
-      if(preg_match("/terminal/i",$this->BelongsTo)){
-        $this->dn= preg_replace("/".preg_quote(get_ou('terminalRDN'), '/')."/i",get_ou('printerRDN'),$this->dn);
+      if (preg_match("/terminal/i", $this->BelongsTo)) {
+        $this->dn = preg_replace("/".preg_quote(get_ou('terminalRDN'), '/')."/i", get_ou('printerRDN'), $this->dn);
       }
 
-      if(preg_match("/workstation/i",$this->BelongsTo)){
-        $this->dn= preg_replace("/".preg_quote(get_ou('workstationRDN'), '/')."/i",get_ou('printerRDN'),$this->dn);
+      if (preg_match("/workstation/i", $this->BelongsTo)) {
+        $this->dn = preg_replace("/".preg_quote(get_ou('workstationRDN'), '/')."/i", get_ou('printerRDN'), $this->dn);
       }
 
       /* Detect if this is a valid printer account;
@@ -296,13 +292,13 @@ class printgeneric extends plugin
       $ldap = $this->config->get_ldap_link();
       $ldap->cat($this->dn, array('objectClass'));
 
-      if($ldap->count()){
+      if ($ldap->count()) {
         $attrs = $ldap->fetch();
-        if(in_array("gotoPrinter",$attrs['objectClass'])){
-          $this->initially_was_account = true;
-          $this->is_account             = true;
-        }else{
-          $this->is_account = false;
+        if (in_array("gotoPrinter", $attrs['objectClass'])) {
+          $this->initially_was_account  = TRUE;
+          $this->is_account             = TRUE;
+        } else {
+          $this->is_account = FALSE;
         }
       }
     }
@@ -342,10 +338,10 @@ class printgeneric extends plugin
 
     /* Get cn from base object */
     if(preg_match("/^Workstation$/i",$this->BelongsTo)){
-      $this->cn = $this->parent->by_object['workgeneric']->cn;
+      $this->cn = $this->parent->getBaseObject()->cn;
     }
     if(preg_match("/^Terminal$/i",$this->BelongsTo)){
-      $this->cn = $this->parent->by_object['termgeneric']->cn;
+      $this->cn = $this->parent->getBaseObject()->cn;
     }
 
     $smarty= get_smarty();
@@ -756,8 +752,8 @@ class printgeneric extends plugin
     }
 
     /* Don't display check messages if this is a template object */
-    if(isset($this->parent->by_object['workgeneric'])){
-      if($this->parent->by_object['workgeneric']->cn == "wdefault"){
+    if(isset($this->parent->by_object['workstationGeneric'])){
+      if($this->parent->by_object['workstationGeneric']->cn == "wdefault"){
         return $message;
       }
     }elseif(isset($this->parent->by_object['termgeneric'])){
@@ -832,14 +828,14 @@ class printgeneric extends plugin
     }
 
     if(!$this->is_account) return;
-    if(isset($this->parent->by_object['workgeneric'])){
-      if($this->parent->by_object['workgeneric']->cn == "wdefault"){
+    if(isset($this->parent->by_object['workstationGeneric'])){
+      if($this->parent->by_object['workstationGeneric']->cn == "wdefault"){
         return;
       }
 
       /* Adapt IP & mac from parent object */
-      $this->netConfigDNS->ipHostNumber = $this->parent->by_object['workgeneric']->netConfigDNS->ipHostNumber;
-      $this->netConfigDNS->macAddress = $this->parent->by_object['workgeneric']->netConfigDNS->macAddress;
+      $this->netConfigDNS->ipHostNumber = $this->parent->by_object['workstationGeneric']->netConfigDNS->ipHostNumber;
+      $this->netConfigDNS->macAddress = $this->parent->by_object['workstationGeneric']->netConfigDNS->macAddress;
 
     }elseif(isset($this->parent->by_object['termgeneric'])){
       if($this->parent->by_object['termgeneric']->cn == "default"){
@@ -1178,9 +1174,12 @@ class printgeneric extends plugin
     if(isset($source['ipHostNumber'][0])){
       $this->netConfigDNS->ipHostNumber = $source['ipHostNumber'][0];
     }
-
-    $source_o = new printgeneric($this->config,$source['dn'],NULL,$this->parent);
-    foreach($this->attributes as $attr){
+    if (is_object($this->parent)) {
+      $source_o = new printgeneric($this->config, $source['dn'], $this->parent->getBaseObject());
+    } else {
+      $source_o = new printgeneric($this->config, $source['dn'], NULL);
+    }
+    foreach ($this->attributes as $attr) {
       $this->$attr = $source_o->$attr;
     }
     $this->member = $source_o -> member;

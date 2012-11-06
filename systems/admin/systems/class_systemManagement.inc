@@ -362,8 +362,8 @@ class systemManagement extends management
     $dsc   = array(0 => array("pipe", "r"), 1 => array("pipe", "w"), 2 => array("pipe", "w"));
 
     /* Get and check command */
-    $command= $this->config->search("workgeneric", "SYSTEMISOHOOK",array('tabs'));
-    if (check_command($command)){
+    $command= $this->config->search("workstationGeneric", "SYSTEMISOHOOK", array('tabs'));
+    if (check_command($command)) {
       @DEBUG (DEBUG_SHELL, __LINE__, __FUNCTION__, __FILE__, $command, "Execute");
 
       /* Print out html introduction */
@@ -823,7 +823,7 @@ class systemManagement extends management
 
             // Set gotoMode to active if there was an ogroup selected.
             $found = false;
-            foreach(array("workgeneric"=>"active","servgeneric"=>"active","termgeneric"=>"active") as $tab => $value){
+            foreach(array("workstationGeneric"=>"active","serverGeneric"=>"active","termgeneric"=>"active") as $tab => $value){
               if(isset($this->tabObject->by_object[$tab]->gotoMode)) {
                 $found = true;
                 $this->tabObject->by_object[$tab]->gotoMode = $value;
@@ -845,7 +845,7 @@ class systemManagement extends management
             }
 
             // Set default system specific attributes
-            foreach (array("workgeneric", "termgeneric") as $cls){
+            foreach (array("workstationGeneric", "termgeneric") as $cls){
               if (isset($this->tabObject->by_object[$cls])){
                 $this->tabObject->by_object[$cls]->set_everything_to_inherited();
                 @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,
@@ -854,7 +854,7 @@ class systemManagement extends management
             }
 
             // Enable activation
-            foreach (array("servgeneric", "workgeneric", "termgeneric") as $cls){
+            foreach (array("serverGeneric", "workstationGeneric", "termgeneric") as $cls){
               if (isset($this->tabObject->by_object[$cls])){
                 $this->tabObject->by_object[$cls]->auto_activate= TRUE;
                 @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,
@@ -1178,19 +1178,19 @@ class systemManagement extends management
     $tabs = array(
         "goServer" => array(
           "ou"          => get_ou('serverRDN'),
-          "plugClass"   => "servgeneric",
+          "plugClass"   => "serverGeneric",
           "tabClass"    => "servtabs",
           "tabDesc"     => "SERVERTABS",
-          "aclClass"    => "servgeneric",
+          "aclClass"    => "serverGeneric",
           "sendEvents"  => TRUE,
           "aclCategory" => "server"),
 
         "gotoWorkstation" => array(
           "ou"          => get_ou('workstationRDN'),
-          "plugClass"   => "workgeneric",
+          "plugClass"   => "workstationGeneric",
           "tabClass"    => "worktabs",
           "tabDesc"     => "WORKSTATIONTABS",
-          "aclClass"    => "workgeneric",
+          "aclClass"    => "workstationGeneric",
           "sendEvents"  => TRUE,
           "aclCategory" => "workstation"),
 

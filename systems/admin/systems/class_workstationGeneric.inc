@@ -183,7 +183,7 @@ class ActionAttribute extends SelectAttribute
   }
 }
 
-class workgeneric extends simplePlugin
+class workstationGeneric extends simplePlugin
 {
   var $mainTab = TRUE;
 
@@ -202,34 +202,40 @@ class workgeneric extends simplePlugin
   /*!
    *  \brief The main function : information about attributes
    */
-  static function getAttributesInfo ()
+  static function getAttributesInfo ($word = NULL, $rdn = NULL)
   {
+    if ($word === NULL) {
+      $word = _('workstation');
+    }
+    if ($rdn === NULL) {
+      $rdn = get_ou("workstationRDN");
+    }
     return array(
       'main' => array(
         'name'  => _('Properties'),
         'attrs' => array(
           new StringAttribute (
-            _('Workstation name'),
-            _('The name of the workstation'),
+            _('Name'),
+            sprintf(_('The name of the %s'), $word),
             'cn',
             TRUE
           ),
           new StringAttribute (
             _('Description'),
-            _('A short description of the workstation'),
+            sprintf(_('A short description of the %s'), $word),
             'description',
             FALSE
           ),
           new StringAttribute (
             _('Location'),
-            _('The location of the workstation'),
+            sprintf(_('The location of the %s'), $word),
             'l',
             FALSE
           ),
-          new BaseSelectorAttribute(get_ou("workstationRDN")),
+          new BaseSelectorAttribute($rdn),
           new BooleanAttribute (
-            _('Lock this workstation'),
-            _('This will prevent the workstation from being reinstalled'),
+            sprintf(_('Lock this %s'), $word),
+            sprintf(_('This will prevent the %s from being reinstalled'), $word),
             'gotoMode',
             FALSE,
             FALSE,
@@ -245,7 +251,7 @@ class workgeneric extends simplePlugin
         'attrs' => array(
           new SelectAttribute (
             _('Syslog server'),
-            _('The syslog server the workstation should be using'),
+            sprintf(_('The syslog server the %s should be using'), $word),
             'gotoSyslogServer',
             FALSE
           ),
@@ -258,7 +264,7 @@ class workgeneric extends simplePlugin
           new SetAttribute (
             new SelectAttribute (
               _('NTP servers'),
-              _('The NTP servers for the workstation'),
+              sprintf(_('The NTP servers for the %s'), $word),
               'gotoNtpServer',
               FALSE
             )
@@ -272,7 +278,7 @@ class workgeneric extends simplePlugin
           new OrderedArrayAttribute (
             new SelectAttribute (
               _('LDAP servers'),
-              _('The LDAP servers for the workstation'),
+              sprintf(_('The LDAP servers for the %s'), $word),
               'gotoLdapServer',
               FALSE
             )
@@ -528,11 +534,11 @@ class workgeneric extends simplePlugin
       "plShortName"     => _("Generic"),
       "plDescription"   => _("Workstation generic"),
       "plSelfModify"    => FALSE,
-      "plDepends"       => array(),
-      "plPriority"      => 0,
       "plSection"       => array("administration"),
       "plCategory"      => array("workstation" => array("description"  => _("Workstation"),
                                                       "objectClass"  => "gotoWorkstation")),
+      "plObjectType"    => array("workstation" => array("name"   => _("Workstation"),
+                                                 "filter" => "objectClass=gotoWorkstation")),
       "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }

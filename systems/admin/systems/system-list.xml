@@ -14,7 +14,7 @@
       <label>New workstation</label>
       <objectClass>FAKE_OC_NewWorkstation</objectClass>
       <category>workstation</category>
-      <class>workgeneric</class>
+      <class>workstationGeneric</class>
       <image>plugins/systems/images/select_new_workstation.png</image>
     </objectType>
 
@@ -22,7 +22,7 @@
       <label>Locked server</label>
       <objectClass>goServer__IS_LOCKED</objectClass>
       <category>server</category>
-      <class>servgeneric</class>
+      <class>serverGeneric</class>
       <image>plugins/systems/images/server_locked.png</image>
     </objectType>
 
@@ -30,7 +30,7 @@
       <label>Locked workstation</label>
       <objectClass>gotoWorkstation__IS_LOCKED</objectClass>
       <category>workstation</category>
-      <class>workgeneric</class>
+      <class>workstationGeneric</class>
       <image>plugins/systems/images/workstation_locked.png</image>
     </objectType>
 
@@ -71,7 +71,7 @@
       <label>Workstation template</label>
       <objectClass>FAKE_OC_WorkstationTemplate</objectClass>
       <category>workstation</category>
-      <class>workgeneric</class>
+      <class>workstationGeneric</class>
       <image>plugins/systems/images/select_default.png</image>
     </objectType>
 
@@ -95,7 +95,7 @@
       <label>Server</label>
       <objectClass>goServer</objectClass>
       <category>server</category>
-      <class>servgeneric</class>
+      <class>serverGeneric</class>
       <image>plugins/systems/images/select_server.png</image>
     </objectType>
 
@@ -103,7 +103,7 @@
       <label>Workstation</label>
       <objectClass>gotoWorkstation</objectClass>
       <category>workstation</category>
-      <class>workgeneric</class>
+      <class>workstationGeneric</class>
       <image>plugins/systems/images/select_workstation.png</image>
     </objectType>
 
@@ -224,7 +224,7 @@
       <type>entry</type>
       <image>plugins/systems/images/select_server.png</image>
       <label>Server</label>
-      <depends>servgeneric</depends>
+      <depends>serverGeneric</depends>
      </action>
 
      <action>
@@ -232,7 +232,7 @@
       <type>entry</type>
       <image>plugins/systems/images/select_workstation.png</image>
       <label>Workstation</label>
-      <depends>workgeneric</depends>
+      <depends>workstationGeneric</depends>
      </action>
 
      <action>
@@ -463,7 +463,7 @@
       <objectclass>gotoWorkstation</objectclass>
       <objectclass>FAIobject</objectclass>
       <image>plugins/systems/images/cdrom.png</image>
-      <acl>workstation/workgeneric[createFAICD:w]</acl>
+      <acl>workstation/workstationGeneric[createFAICD:w]</acl>
       <label>Create ISO</label>
     </action>
 

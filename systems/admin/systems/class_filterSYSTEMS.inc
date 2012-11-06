@@ -65,7 +65,7 @@ class filterSYSTEMS {
           continue; // We do not need templates anymore, we've ogroups now.
           //$entries[$key]['objectClass'][] = 'FAKE_OC_WorkstationTemplate';
         }
-        $pwd_acl = $ui->get_permissions($entry['dn'],'workstation/workgeneric','userPassword');
+        $pwd_acl = $ui->get_permissions($entry['dn'],'workstation/workstationGeneric','userPassword');
         if(preg_match("/w/",$pwd_acl)){
           $entries[$key]['objectClass'][] = 'FAKE_OC_PWD_changeAble';
         }
@@ -87,7 +87,7 @@ class filterSYSTEMS {
           continue; // We do not need templates anymore, we've ogroups now.
           //$entries[$key]['objectClass'][] = 'FAKE_OC_ServerTemplate';
         }
-        $pwd_acl = $ui->get_permissions($entry['dn'],'server/servgeneric','userPassword');
+        $pwd_acl = $ui->get_permissions($entry['dn'],'server/serverGeneric','userPassword');
         if(preg_match("/w/",$pwd_acl)){
           $entries[$key]['objectClass'][] = 'FAKE_OC_PWD_changeAble';
         }

@@ -23,7 +23,7 @@
 {render acl=$ipHostNumberACL}
           <input type='image' class='center' name='additionalHostNumbers_add}' src='images/lists/new.png' alt='{msgPool type=addButton}'>&nbsp;
 {/render}
-<br> 
+<br>
 
 {render acl=$ipHostNumberACL}
 {if $DNS_is_account == true}
@@ -77,10 +77,10 @@
               {if $dhcp_is_Account}
               <tr>
                 <td>&nbsp;</td>
-                <td>{t}Parent node{/t}</td>            
+                <td>{t}Parent node{/t}</td>
                 <td>
 {render acl=$dhcpSetupACL}
-                  <select name='dhcpParentNode'>      
+                  <select name='dhcpParentNode'>
                     {html_options options=$dhcpParentNodes selected=$dhcpParentNode}
                   </select>
 {/render}
@@ -98,9 +98,9 @@
           </td>
         </tr>
         {/if}
-      </table> 
+      </table>
     </td>
-    {if $DNSenabled==true}
+    {if $DNSenabled}
     <td style="width:50%;vertical-align:top;border-left:1px solid #b0b0b0;" valign="top">
 
     {if $ZoneCnt}
@@ -108,7 +108,7 @@
         {render acl=$dnsSetupACL}
             {if $DNS_is_account == true}
 
-                <input type="checkbox" name="DNS_is_account" id="DNS_is_account" value="1" checked="checked" 
+                <input type="checkbox" name="DNS_is_account" id="DNS_is_account" value="1" checked="checked"
                     {if $hide_dns_check_box}disabled
                     {else}onclick="$('reloadThisDNSStuff').toggle();$('test2').toggle(); $('propose_ip').toggle();"{/if}
                 />
@@ -163,7 +163,7 @@
         </tr>
       </table>
       </div>
-    {else}        
+    {else}
       <input type="checkbox" name="dummy" id="DNS_is_account" value="1" disabled class='center' {if $DNS_is_account} checked {/if}>
       <label for="DNS_is_account">{t}Enable DNS for this device{/t} ({t}not configured{/t})</label>
       <input type='image' src='images/lists/reload.png' class='center'>
@@ -171,7 +171,7 @@
 
     </td>
     {/if}
-    
+
   </tr>
 </table>
 <input type="hidden" name="network_tpl_posted" value="1">
