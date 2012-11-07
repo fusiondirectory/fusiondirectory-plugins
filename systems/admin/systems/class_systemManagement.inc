@@ -20,40 +20,6 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-#
-# NewDevices
-# -> Edit
-#     |- SelectDeviceType()        (Allows to select target SystemType and OGroup)
-# -> Save
-#     |-> systemTypeChosen()       (Queue entry to be activated)
-#     |-> handleActivationQueue()  (Now acticvate queued objects)
-#       |-> Ogroup selected
-#       | |-> Try to adapt values from ogroup and save directly.
-#       |
-#       |-> NO Ogroup selected
-#       |  |-> Open dialogs of the target system type and allow modifcations.
-#       |
-#       |->activate_new_device()   (Finally activate the device - FAIsate=..)
-#
-#
-# NewArpDevices (NewUnknwonDevices )
-# -> Edit
-#     |-> editEntry - ArpNewDeviceTabs
-# -> Save
-#     |-> NO gotoIntegeration
-#     | |-> Save DHCP and DNS entries, then remove the source entry from ldap.
-#     |
-#     |-> gotoIntegration selected (Handle object like a NewDevice now)
-#     |-> systemTypeChosen()       (Queue entry to be activated)
-#     |-> handleActivationQueue()  (Now acticvate queued objects)
-#       |-> Ogroup selected
-#       | |-> Try to adapt values from ogroup and save directly.
-#       |
-#       |-> NO Ogroup selected
-#       |  |-> Open dialogs of the target system type and allow modifcations.
-#       |
-#       |->activate_new_device()   (Finally activate the device - FAIsate=..)
-#
 class systemManagement extends management
 {
   var $plHeadline     = "Systems";
@@ -99,7 +65,6 @@ class systemManagement extends management
     $headpage->registerElementFilter("macOf", "systemManagement::macOf");
     $headpage->registerElementFilter("listServices", "systemManagement::listServices");
     $headpage->setFilter($filter);
-    $filter->setConverter('INCOMING', 'systemManagement::incomingFilterConverter');
 
     // Register Daemon Events
     if(class_available("DaemonEvent") && class_available("supportDaemon")){
@@ -516,17 +481,6 @@ class systemManagement extends management
   }
 
 
-  /*! \brief    Update filter part for INCOMING.
-   *            Allows us to search for "systemIncomingRDN".
-   */
-  static function incomingFilterConverter($filter)
-  {
-    $rdn = preg_replace("/^[^=]*=/", "", get_ou('systemIncomingRDN'));
-    $rdn = preg_replace("/,.*$/","",$rdn);
-    return(preg_replace("/%systemIncomingRDN/", $rdn,$filter));
-  }
-
-
   /*! \brief    Queue selected objects to be removed.
    *            Checks ACLs, Locks and ask for confirmation.
    */
@@ -641,36 +595,17 @@ class systemManagement extends management
 
 
   /*! \brief  Edit the selected system type.
-   *          NewDevice and ArpNewDevice are handled here separately
    */
   function editEntry($action="",$target=array(),$all=array(), $altTabClass ="", $altTabType = "", $altAclCategory="")
   {
-    if(count($target) == 1){
+    if (count($target) == 1) {
       $tInfo = $this->getObjectDefinitions();
       $headpage = $this->getHeadpage();
       $dn = $target[0];
       $type =$headpage->getType($dn);
       $tData = $tInfo[$type];
 
-      if($type == "FAKE_OC_ArpNewDevice"){
-        if(!class_available("ArpNewDeviceTabs")){
-          msg_dialog::display(_("Error"), msgPool::class_not_found("ArpNewDevice"), ERROR_DIALOG);
-        }else{
-          return(management::editEntry($action,$target,$all,"ArpNewDeviceTabs","ARPNEWDEVICETABS","incoming"));
-        }
-      }elseif($type == "FAKE_OC_NewDevice"){
-        if(!class_available("SelectDeviceType")){
-          msg_dialog::display(_("Error"), msgPool::class_not_found("SelectDeviceType"), ERROR_DIALOG);
-        }else{
-          $this->activationQueue[$dn] = array();
-          $this->dialogObject = new SelectDeviceType($this->config,$dn);
-          $this->skipFooter = TRUE;
-          $this->displayApplyBtn = FALSE;
-          // see condition  -$s_action == "::systemTypeChosen"-  for further handling
-        }
-      }else{
-         return(management::editEntry($action,$target,$all,$tData['tabClass'],$tData['tabDesc'],$tData['aclCategory']));
-      }
+      return(management::editEntry($action,$target,$all,$tData['tabClass'],$tData['tabDesc'],$tData['aclCategory']));
     }
   }
 
@@ -903,26 +838,6 @@ class systemManagement extends management
   {
     @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,
         get_class($this->tabObject).": ".$this->tabObject->dn, "<b>Save</b>");
-
-    // Handle 'New Unknown Devices' here.
-    if($this->tabObject instanceOf ArpNewDeviceTabs){
-      $this->tabObject->save_object();
-
-      if($this->tabObject->by_object['ArpNewDevice']->gotoIntegration){
-        $message = $this->tabObject->check();
-        if(count($message)){
-          msg_dialog::displayChecks($message);
-        }else{
-          @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,
-              get_class($this->tabObject).": ".$this->tabObject->dn, "<b>Queued for goto activation</b>");
-          $this->tabObject->save();
-          $this->activationQueue[$this->tabObject->dn]=array();
-          $this->closeDialogs();
-          $this->systemTypeChosen();
-        }
-        return;
-      }
-    }
 
     // Try to save changes here.
     $str = management::saveChanges();
@@ -1207,19 +1122,10 @@ class systemManagement extends management
             "ou"          => get_ou('printerRDN'),
             "plugClass"   => "printgeneric",
             "tabClass"    => "printtabs",
-            "tabDesc"     => "PRINTERTABS",
+            "tabDesc"     => "PRINTTABS",
             "aclClass"    => "printgeneric",
             "sendEvents"  => FALSE,
             "aclCategory" => "printer"),
-
-        "FAKE_OC_NewDevice" => array(
-            "ou"          => get_ou('systemIncomingRDN'),
-            "plugClass"   => "termgeneric",
-            "tabClass"    => "termtabs",
-            "sendEvents"  => TRUE,
-            "tabDesc"     => "TERMINALTABS",
-            "aclClass"    => "termgeneric",
-            "aclCategory" => "terminal"),
 
         "goFonHardware" => array(
             "ou"          => get_ou('phoneRDN'),
@@ -1265,9 +1171,7 @@ class systemManagement extends management
     $tabs['goServer__IS_ERROR'] = &$tabs['goServer'];
     $tabs['goServer__IS_LOCKED'] = &$tabs['goServer'];
 
-    $tabs['FAKE_OC_ArpNewDevice'] = &$tabs['FAKE_OC_NewDevice'];
-
-    return($tabs);
+    return $tabs;
   }
 
 
@@ -1383,18 +1287,18 @@ class systemManagement extends management
    */
   static function plInfo()
   {
-    return (array(
-          "plShortName"   => _("Systems"),
-          "plDescription" => _("Systems Management"),
-          "plIcon"        => "plugins/systems/images/plugin.png",
-          "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
-          "plPriority"    => 99,
-          "plSection"     => array("administration"),
-          "plCategory"    => array("incoming"   => array( "description"  => _("Systems"),
-              "objectClass"  => "")),
-          "plProvidedAcls"=> array()
-          ));
+    return array(
+      "plShortName"   => _("Systems"),
+      "plDescription" => _("Systems Management"),
+      "plIcon"        => "plugins/systems/images/plugin.png",
+      "plSelfModify"  => FALSE,
+      "plPriority"    => 99,
+      "plSection"     => array("administration"),
+      "plCategory"    => array("systems"   => array("description"  => _("Systems"),
+                                                      "objectClass"  => "")),
+
+      "plProvidedAcls"=> array()
+    );
   }
 }
 // vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:

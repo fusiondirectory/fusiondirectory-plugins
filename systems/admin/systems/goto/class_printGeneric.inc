@@ -126,11 +126,7 @@ class printgeneric extends plugin
     } else {
 
       /* Set base and check if the extracted base exists */
-      if (preg_match("/".preg_quote(get_ou('systemIncomingRDN'), '/')."/i",$this->dn)) {
-        $this->base= preg_replace("/".preg_quote(get_ou('systemIncomingRDN'), '/')."/i","",dn2base($this->dn));
-      } else {
-        $this->base= preg_replace("/".preg_quote(get_ou('printerRDN'), '/')."/i","",dn2base($this->dn));
-      }
+      $this->base= preg_replace("/".preg_quote(get_ou('printerRDN'), '/')."/i","",dn2base($this->dn));
 
       if (!isset($this->config->idepartments[$this->base])) {
         msg_dialog::display(_("Internal error"), sprintf(_("Cannot determine a valid department for this object. Setting base to '%s'!"), session::get('CurrentMainBase')) , WARNING_DIALOG);
@@ -953,11 +949,6 @@ class printgeneric extends plugin
           unset($this->attrs[$checkVar]);
         }
       }
-    }
-
-    /* Ensure to create a new object */
-    if(preg_match("/".preg_quote(get_ou('systemIncomingRDN'), '/')."/i",$this->orig_dn)){
-      $this->orig_dn = "new";
     }
 
     /* Move object in necessary*/

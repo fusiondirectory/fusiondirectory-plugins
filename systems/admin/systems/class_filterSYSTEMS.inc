@@ -27,52 +27,29 @@ class filterSYSTEMS {
     $ui = get_userinfo();
     global $config;
 
-    // Check whether the arp handling active or not
-    $arp_handling_active = ($config->search("ArpNewDevice","CLASS",array('tabs')) != "");
-
     $config= session::global_get('config');
     $ldap= $config->get_ldap_link(TRUE);
     $flag= ($scope == "sub")?GL_SUBSEARCH:0;
     $entries = filterSYSTEMS::get_list($parent,$base, $filter, $attributes, $category, $objectStorage, $flag | GL_SIZELIMIT);
 
-    foreach($entries as $key => $entry){
-      if(preg_match("/".preg_quote(get_ou('systemIncomingRDN'),'/')."/i", $entry['dn'])){
-
-        // Detect incoming types
-        if(in_array('gotoWorkstation', $entry['objectClass'])){
-          $entries[$key]['objectClass'][] = 'FAKE_OC_NewWorkstation';
-          $entries[$key]['cn'][0].= " <i>("._("New workstation").")</i>";
-        }elseif(in_array('gotoTerminal', $entry['objectClass'])){
-          $entries[$key]['objectClass'][] = 'FAKE_OC_NewTerminal';
-          $entries[$key]['cn'][0].= " <i>("._("New terminal").")</i>";
-        }elseif($arp_handling_active &&
-            in_array('GOhard', $entry['objectClass']) &&
-            !isset($entry['gotoMode'][0])){
-          $entries[$key]['objectClass'][] = 'FAKE_OC_ArpNewDevice';
-          $entries[$key]['cn'][0].= " <i>("._("New unknown device").")</i>";
-        }elseif(in_array('GOhard', $entry['objectClass'])){
-          $entries[$key]['objectClass'][] = 'FAKE_OC_NewDevice';
-          $entries[$key]['cn'][0].= " <i>("._("New device").")</i>";
-        }
-
-        // Detect SAMBA machines
-      }elseif(in_array('sambaSamAccount', $entry['objectClass']) && preg_match("/\$$/", $entry['cn'][0])){
+    foreach ($entries as $key => $entry) {
+      if (in_array('sambaSamAccount', $entry['objectClass']) && preg_match("/\$$/", $entry['cn'][0])) {
         $entries[$key]['objectClass'][] = 'sambaSamAccount';
 
         // Detect Workstation & templates
-      }elseif(in_array('gotoWorkstation', $entry['objectClass'])){
-        if(!isset($entry['macAddress'][0]) || $entry['macAddress'][0] == "-"){
+      } elseif(in_array('gotoWorkstation', $entry['objectClass'])) {
+        if (!isset($entry['macAddress'][0]) || $entry['macAddress'][0] == "-") {
           continue; // We do not need templates anymore, we've ogroups now.
           //$entries[$key]['objectClass'][] = 'FAKE_OC_WorkstationTemplate';
         }
         $pwd_acl = $ui->get_permissions($entry['dn'],'workstation/workstationGeneric','userPassword');
-        if(preg_match("/w/",$pwd_acl)){
+        if (preg_match("/w/",$pwd_acl)) {
           $entries[$key]['objectClass'][] = 'FAKE_OC_PWD_changeAble';
         }
 
         // Detect Terminal & templates
-      }elseif(in_array('gotoTerminal', $entry['objectClass'])){
-        if(!isset($entry['macAddress'][0]) || $entry['macAddress'][0] == "-"){
+      } elseif(in_array('gotoTerminal', $entry['objectClass'])) {
+        if (!isset($entry['macAddress'][0]) || $entry['macAddress'][0] == "-") {
           continue; // We do not need templates anymore, we've ogroups now.
           //$entries[$key]['objectClass'][] = 'FAKE_OC_TerminalTemplate';
         }
@@ -227,9 +204,6 @@ class filterSYSTEMS {
           $result[]= $attrs;
         }else{
 
-          if(preg_match("/".preg_quote(get_ou('systemIncomingRDN'),'/')."/i",$dn)){
-            $attrs['objectClass'][] = "gotoTerminal";
-          }
           $obj = $parent->headpage->getObjectType($parent->headpage->objectTypes, $attrs['objectClass']);
 
           if(isset($obj['category'])){

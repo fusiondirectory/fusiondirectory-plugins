@@ -10,7 +10,7 @@
   <search>
     <query>
       <backend>SYSTEMS</backend>
-      <filter>(&amp;(|$SERVER$WORKSTATION$TERMINAL$PHONE$PRINTER$COMPONENT$WINSTATION$INCOMING)$NAME$USER)</filter>
+      <filter>(&amp;(|$SERVER$WORKSTATION$TERMINAL$PHONE$PRINTER$COMPONENT$WINSTATION)$NAME$USER)</filter>
       <attribute>dn</attribute>
       <attribute>objectClass</attribute>
       <attribute>cn</attribute>
@@ -117,14 +117,6 @@
     <default>true</default>
     <unset></unset>
     <set>(&amp;(objectClass=ieee802Device)(objectClass=device))</set>
-  </element>
-
-  <element>
-    <type>checkbox</type>
-    <tag>INCOMING</tag>
-    <default>true</default>
-    <unset></unset>
-    <set>(&amp;(|(objectClass=goWorkstation)(objectClass=gotoTerminal)(objectClass=goHard))(ou:dn:=%systemIncomingRDN))</set>
   </element>
 
 </filterdef>

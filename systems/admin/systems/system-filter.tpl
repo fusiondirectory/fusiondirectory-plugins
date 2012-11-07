@@ -33,9 +33,6 @@
   {if $USE_ieee802Device}
   {$COMPONENT}<label for="COMPONENT">&nbsp;{t}Show network devices{/t}</label><br>
   {/if}
-  {if $USE_FAKE_OC_NewWorkstation || $USE_FAKE_OC_NewTerminal || $USE_FAKE_OC_NewServer || $USE_FAKE_OC_NewDevice || $USE_FAKE_OC_ArpNewDevice}
-  {$INCOMING}<label for="INCOMING">&nbsp;{t}Show incoming devices{/t}</label><br>
-  {/if}
 
   <div style="border-top:1px solid #AAAAAA"></div>
 

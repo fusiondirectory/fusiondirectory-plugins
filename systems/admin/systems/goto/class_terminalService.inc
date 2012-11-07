@@ -671,7 +671,6 @@ class termservice extends plugin
            */
           $p = $this->parent->by_object['ogroup'];
           foreach($p->memberList as $dn => $obj){
-            if(preg_match("/".preg_quote(get_ou("systemIncomingRDN"), '/')."/",$dn)) continue;
             if(isset($p->objcache[$dn]['macAddress']) && !empty($p->objcache[$dn]['macAddress'])){
               $macs[] = $p->objcache[$dn]['macAddress'];
             }
@@ -681,7 +680,7 @@ class termservice extends plugin
           /* We are a workstation. Add current mac.
            */
           $mac = $this->parent->getBaseObject()->netConfigDNS->macAddress;
-          if(!empty($mac) && !preg_match("/".preg_quote(get_ou("systemIncomingRDN"), '/')."/",$this->orig_dn)){
+          if(!empty($mac)){
             $macs[] = $mac;
           }
         }
