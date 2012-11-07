@@ -48,6 +48,21 @@ class ServerService extends management
 
   var $is_account;
 
+  /* Return plugin informations for acl handling */
+  static function plInfo()
+  {
+    return array(
+      "plShortName"   => _("Services"),
+      "plDescription" => _("Server services"),
+      "plSelfModify"  => FALSE,
+      "plSection"     => array("administration"),
+      "plCategory"    => array("server"),
+      "plObjectType"  => array("server"),
+
+      "plProvidedAcls"  => array()
+    );
+  }
+
   function __construct (&$config, $dn, $parent)
   {
     $this->config = $config;
