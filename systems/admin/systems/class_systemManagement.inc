@@ -1384,13 +1384,14 @@ class systemManagement extends management
   static function plInfo()
   {
     return (array(
-          "plShortName"   => _("Incoming objects"),
-          "plDescription" => _("Incoming objects"),
+          "plShortName"   => _("Systems"),
+          "plDescription" => _("Systems Management"),
+          "plIcon"        => "plugins/systems/images/plugin.png",
           "plSelfModify"  => FALSE,
           "plDepends"     => array(),
           "plPriority"    => 99,
           "plSection"     => array("administration"),
-          "plCategory"    => array("incoming"   => array( "description"  => _("Incoming"),
+          "plCategory"    => array("incoming"   => array( "description"  => _("Systems"),
               "objectClass"  => "")),
           "plProvidedAcls"=> array()
           ));

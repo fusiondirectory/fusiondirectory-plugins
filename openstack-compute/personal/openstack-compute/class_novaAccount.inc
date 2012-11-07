@@ -23,15 +23,15 @@ class novaAccount extends simplePlugin
 {
 
   var $displayHeader = TRUE;
-  var $plHeadline= "nova";
+  var $plHeadline= "Nova";
   var $plDescription= "Edit users Nova settings";
   var $objectclasses= array("novaUser");
 
   static function plInfo()
   {
     return (array(
-          "plShortName"     => _("novaUser"),
-          "plDescription"   => _("novaUser account settings"),
+          "plShortName"     => _("Nova"),
+          "plDescription"   => _("Edit users Nova settings"),
           "plSelfModify"    => TRUE,
           "plDepends"       => array("user"),
           "plPriority"      => 3,                                 // Position in tabs
