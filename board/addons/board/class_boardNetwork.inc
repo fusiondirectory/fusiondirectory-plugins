@@ -119,9 +119,9 @@ class boardNetwork extends simplePlugin
       "plShortName"   => _("Board - Network"),
       "plDescription" => _("Statistics and various informations"),
       "plSelfModify"  => FALSE,
-      "plPriority"    => 0,
-      "plSection"     => array("addon" => _("Addons")),
+      "plSection"     => array("addon"),
       "plCategory"    => array("board"),
+      "plObjectType"  => array("board"),
 
       "plProvidedAcls"    => array()
     );

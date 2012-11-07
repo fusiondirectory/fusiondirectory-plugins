@@ -259,31 +259,28 @@ class entite extends plugin
   /* Return plugin informations for acl handling  */
   static function plInfo()
   {
-    return (array(
-          "plShortName" => _("Generic"),
-          "plDescription" => _("supann Entite Settings"),
-          "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
-          "plPriority"    => 0,
-          "plSection"     => array("administration"),
-          "plCategory"    => array("groups" => array("objectClass" => "posixGroup", "description" => _("Groups"))),
+    return array(
+      "plShortName"   => _("Generic"),
+      "plDescription" => _("SUPANN Entite Settings"),
+      "plSelfModify"  => FALSE,
+      "plSection"     => array("administration"),
+      "plCategory"    => array("supann"),
+      "plObjectType"  => array("entite" => array("name" => _("SUPANN Entite"),
+                                                "filter" => "(&(objectClass=supannEntite)(objectClass=organizationalUnit))")),
 
-          "plProvidedAcls"    => array( // FIXME : this seems wrong
-            "cn"                => _("Name"),
-            "description"       => _("Description"),
-            "base"              => _("Base"),
+      "plProvidedAcls"    => array(
+        "ou"                        =>  _("ou"),
+        "description"               =>  _("Description"),
+        "postalAddress"             =>  _("postalAddress"),
+        "telephoneNumber"           =>  _("telephoneNumber"),
+        "facsimileTelephoneNumber"  =>  _("facsimileTelephoneNumber"),
 
-            "gidNumber"         => _("GID"),
-
-            "sambaGroupType"    => _("Samba group type"),
-            "sambaDomainName"   => _("Samba domain name"),
-            "trustModel"        => _("System trust"),
-            "fonGroup"          => _("Phone pickup group"),
-            "nagiosGroup"       => _("Nagios group"),
-
-            "memberUid"         => _("Group member"))
-        ));
+        "supannTypeEntite"        =>  _("supannTypeEntite"),
+        "supannCodeEntite"        =>  _("supannCodeEntite"),
+        "supannCodeEntiteParent"  =>  _("supannCodeEntiteParent"),
+        "supannRefId"             =>  _("supannRefId"),
+      )
+    );
   }
 }
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

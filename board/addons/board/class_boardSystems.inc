@@ -196,9 +196,9 @@ class boardSystems extends simplePlugin
       "plDescription" => _("Statistics and informations about systems"),
       "plIcon"        => "plugins/board/images/plugin.png",
       "plSelfModify"  => FALSE,
-      "plPriority"    => 0,
-      "plSection"     => array("addon" => _("Addons")),
+      "plSection"     => array("addon"),
       "plCategory"    => array("board"),
+      "plObjectType"  => array("board"),
 
       "plProvidedAcls"  => array()
     );

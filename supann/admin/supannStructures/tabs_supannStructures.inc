@@ -26,12 +26,6 @@ class supannStructurestabs extends tabs
   {
     tabs::tabs($config, $data, $dn, $category, $hide_refs, $hide_acls);
 
-    /* Detect the base class  (The classs which extends from department) */
-    foreach ($this->by_object as $name => $object) {
-      $this->base_name = get_class($object);
-      break;
-    }
-
     /* Add references/acls/snapshots */
     $this->addSpecialTabs();
     if (isset($this->by_object['acl'])) {
@@ -39,23 +33,11 @@ class supannStructurestabs extends tabs
     }
   }
 
-  function save_object($save_current = FALSE)
-  {
-    tabs::save_object($save_current);
-  }
-
-  function delete()
-  {
-    tabs::delete();
-  }
-
   function save($ignore_account = FALSE)
   {
-    $baseobject = $this->by_object[$this->base_name];
-
     /* Check for new 'dn', in order to propagate the
        'dn' to all plugins */
-    $this->dn = $baseobject->compute_dn();
+    $this->dn = $this->getBaseObject()->compute_dn();
 
     return tabs::save();
   }

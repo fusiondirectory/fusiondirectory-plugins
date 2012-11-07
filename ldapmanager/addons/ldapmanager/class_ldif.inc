@@ -22,52 +22,42 @@
 
 class ldif extends plugin
 {
-  /* Definitions */
-  var $plHeadline= "LDAP manager";
-  var $plDescription= "This plugin allows the management of the ldap tree";
-  var $plIcon = "plugins/ldapmanager/images/ldif.png";
-
   /* attribute list for save action */
-  var $attributes= array();
-  var $objectclasses= array();
+  var $attributes     = array();
+  var $objectclasses  = array();
   var $ldif;
 
-  function ldif (&$config)
+  function __construct (&$config)
   {
     /* Include config object */
-    $this->ldif= new ldiftab($config, $config->data['TABS']['LDIFTAB'], "");
+    $this->ldif = new ldiftab($config, $config->data['TABS']['LDAPMANAGERTABS'], "");
   }
 
   function execute()
   {
-	/* Call parent execute */
-	plugin::execute();
+    /* Call parent execute */
+    plugin::execute();
 
     /* Show main page */
-    return ($this->ldif->execute());
+    return $this->ldif->execute();
   }
 
-  /* Return plugin informations for acl handling
-     #FIXME You can only read attributes within this ldif import plugin */
+  /* Return plugin informations for acl handling */
   static function plInfo()
   {
-    return (array(
-        "plShortName"   => _("Ldap manager"),
-        "plDescription" => _("Ldap manager")."&nbsp;("._("import")."/"._("export").")",
-        "plSelfModify"  => FALSE,
-        "plDepends"     => array(),
-        "plPriority"    => 1,
-        "plSection"     => array("addon"),
-        "plCategory"    => array("ldapmanager" => array("objectClass" => "none", "description" => _("Ldap manager"))),
+    return array(
+      "plShortName"   => _("LDAP manager"),
+      "plDescription" => _("Allows the management of the ldap tree"),
+      "plIcon"        => "plugins/ldapmanager/images/ldif.png",
+      "plSelfModify"  => FALSE,
+      "plPriority"    => 1,
+      "plSection"     => array("addon"),
+      "plCategory"    => array("ldapmanager" => array("objectClass" => "none", "description" => _("Ldap manager"))),
 
-        "plProvidedAcls" => array()
-        ));
+      "plProvidedAcls" => array()
+    );
   }
-
-
 
 }
 
-
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

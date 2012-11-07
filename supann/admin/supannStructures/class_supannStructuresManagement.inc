@@ -26,7 +26,6 @@ class supannStructuresManagement extends management
 
   // Tab definition
   protected $tabClass     = "supannStructurestabs";
-  protected $tabType      = "SUPANNSTRUCTURESTABS";
   protected $aclCategory  = "supannStructures";
   protected $aclPlugin    = "supannStructures";
   protected $objectName   = "supannStructures";
@@ -175,7 +174,7 @@ class supannStructuresManagement extends management
      */
     $types['organization']['ACL']      = "etablissement";
     $types['organization']['CLASS']    = "etablissement";
-    $types['organization']['TAB']      = "ETABLISSEMENT_TABS";
+    $types['organization']['TAB']      = "ETABLISSEMENTTABS";
     $types['organization']['ATTR']     = "o";
     $types['organization']['OC']       = "organization";
     $types['organization']['IMG']      = "plugins/supann/images/etablissement.png";
@@ -185,7 +184,7 @@ class supannStructuresManagement extends management
 
     $types['organizationalUnit']['ACL']       = "entite";
     $types['organizationalUnit']['CLASS']     = "entite";
-    $types['organizationalUnit']['TAB']       = "ENTITE_TABS";
+    $types['organizationalUnit']['TAB']       = "ENTITETABS";
     $types['organizationalUnit']['ATTR']      = "ou";
     $types['organizationalUnit']['OC']        = "organizationalUnit";
     $types['organizationalUnit']['IMG']       = "plugins/supann/images/entite.png"; //plugins/departments/images/department.png";

@@ -156,9 +156,9 @@ class boardUserAccounts extends simplePlugin
       "plShortName"   => _("Board - User"),
       "plDescription" => _("Statistics about users"),
       "plSelfModify"  => FALSE,
-      "plPriority"    => 0,
-      "plSection"     => array("addon" => _("Addons")),
+      "plSection"     => array("addon"),
       "plCategory"    => array("board"),
+      "plObjectType"  => array("board"),
 
       "plProvidedAcls"    => array()
     );

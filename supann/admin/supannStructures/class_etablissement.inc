@@ -315,29 +315,29 @@ class etablissement extends plugin
   static function plInfo()
   {
     return array(
-          "plShortName"     => _("supann Etablissement Settings"),
-          "plDescription"   => _("supann Etablissement Settings"),
-          "plSelfModify"    => FALSE,
-          "plDepends"       => array(),
-          "plPriority"      => 0,
-          "plSection"       => array("administration"),
-          "plCategory"      => array("supann"),
+      "plShortName"   => _("Etablissement"),
+      "plDescription" => _("SUPANN Etablissement Settings"),
+      "plSelfModify"  => FALSE,
+      "plSection"     => array("administration"),
+      "plCategory"    => array("supann"),
+      "plObjectType"  => array("etablissement" => array("name" => _("SUPANN Etablissement"),
+                                                        "filter" => "(&(objectClass=supannEntite)(objectClass=organization))")),
 
-          "plProvidedAcls"  => array(
-              "o"                         =>  _("o"),
-              "telephoneNumber"           =>  _("telephoneNumber"),
-              "facsimileTelephoneNumber"  =>  _("facsimileTelephoneNumber"),
-              "postalAddress"             =>  _("postalAddress"),
-              "l"                         =>  _("l"),
-              "description"               =>  _("Description"),
-              "eduOrgHomePageURI"         =>  _("eduOrgHomePageURI"),
-              "eduOrgLegalName"           =>  _("eduOrgLegalName"),
-              "eduOrgWhitePagesURI"       =>  _("eduOrgWhitePagesURI"),
-              "eduOrgSuperiorURI"         =>  _("eduOrgSuperiorURI"),
-              "supannEtablissement"       =>  _("supannEtablissement"),
-              "supannCodeEntite"          =>  _("supannCodeEntite"),
-            )
-        );
+      "plProvidedAcls"  => array(
+        "o"                         =>  _("o"),
+        "telephoneNumber"           =>  _("telephoneNumber"),
+        "facsimileTelephoneNumber"  =>  _("facsimileTelephoneNumber"),
+        "postalAddress"             =>  _("postalAddress"),
+        "l"                         =>  _("l"),
+        "description"               =>  _("Description"),
+        "eduOrgHomePageURI"         =>  _("eduOrgHomePageURI"),
+        "eduOrgLegalName"           =>  _("eduOrgLegalName"),
+        "eduOrgWhitePagesURI"       =>  _("eduOrgWhitePagesURI"),
+        "eduOrgSuperiorURI"         =>  _("eduOrgSuperiorURI"),
+        "supannEtablissement"       =>  _("supannEtablissement"),
+        "supannCodeEntite"          =>  _("supannCodeEntite"),
+      )
+    );
   }
 
 

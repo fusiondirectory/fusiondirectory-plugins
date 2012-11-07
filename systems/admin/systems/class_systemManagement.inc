@@ -1141,7 +1141,7 @@ class systemManagement extends management
             "plugClass"   => "wingeneric",
             "sendEvents"  => TRUE,
             "tabClass"    => "wintabs",
-            "tabDesc"     => "WINTABS",
+            "tabDesc"     => "WINWORKSTATIONTABS",
             "aclClass"    => "wingeneric",
             "aclCategory" => "winworkstation"),
 
