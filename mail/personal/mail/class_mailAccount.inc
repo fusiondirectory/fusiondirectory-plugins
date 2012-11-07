@@ -79,16 +79,17 @@ class mailAccount extends simplePlugin
 
   static function plInfo()
   {
-    return (array(
-          "plShortName"     => _("Mail"),
-          "plDescription"   => _("Mail settings"),
-          "plSelfModify"    => TRUE,
-          "plDepends"       => array("user"),                     // This plugin depends on
-          "plPriority"      => 4,                                 // Position in tabs
-          "plSection"     => array("personal" => _("My account")),
-          "plCategory"    => array("users"),
-          "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
-              ));
+    return array(
+      "plShortName"     => _("Mail"),
+      "plDescription"   => _("Mail settings"),
+      "plSelfModify"    => TRUE,
+      "plDepends"       => array("user"),                     // This plugin depends on
+      "plPriority"      => 4,                                 // Position in tabs
+      "plSection"       => array("personal" => _("My account")),
+      "plCategory"      => array("users"),
+      "plObjectType"    => array("user"),
+      "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+    );
   }
 
   /*!

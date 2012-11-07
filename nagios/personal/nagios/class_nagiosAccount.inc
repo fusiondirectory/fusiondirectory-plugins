@@ -43,18 +43,18 @@ class nagiosAccount extends simplePlugin
 
   static function plInfo()
   {
-    return (array(
-          "plShortName"     => _("Nagios"),
-          "plDescription"   => _("Nagios account settings"),
-          "plSelfModify"    => TRUE,
-          "plDepends"       => array("user"),
-          "plPriority"      => 8,                                 // Position in tabs
-          "plSection"       => array("personal" => _("My account")),
-          "plCategory"      => array("users"),
-          "plOptions"       => array(),
+    return array(
+      "plShortName"   => _("Nagios"),
+      "plDescription" => _("Nagios account settings"),
+      "plSelfModify"  => TRUE,
+      "plDepends"     => array("user"),
+      "plPriority"    => 8,                                 // Position in tabs
+      "plSection"     => array("personal" => _("My account")),
+      "plCategory"    => array("users"),
+      "plObjectType"  => array("user"),
 
-          "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
-      ));
+      "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+    );
   }
 
   /*!

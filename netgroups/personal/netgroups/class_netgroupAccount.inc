@@ -370,17 +370,18 @@ class netgroupAccount extends plugin {
     }
 
     static function plInfo() {
-        return (array(
-    "plDescription" => _("NIS Netgroup member"),
-    "plSelfModify" => FALSE,
-    "plDepends" => array("user"),
-    "plPriority" => 2,
-    "plSection" => array("personal"),
-    "plCategory" => array("users"),
-    "plOptions" => array(),
-    "plProvidedAcls" => array(
-        "memberCn" => _("NIS Netgroup members"))
-        ));
+      return array(
+        "plDescription"   => _("NIS Netgroup member"),
+        "plSelfModify"    => FALSE,
+        "plDepends"       => array("user"),
+        "plPriority"      => 2,
+        "plSection"       => array("personal"),
+        "plCategory"      => array("users"),
+        "plObjectType"    => array("user"),
+        "plProvidedAcls"  => array(
+            "memberCn" => _("NIS Netgroup members")
+        )
+      );
     }
 
 }

@@ -866,8 +866,9 @@ class supannAccount extends plugin
       "plPriority"    => 5,
       "plSection"     => array("personal" => _("My account")),
       "plCategory"    => array("users"),
-      "plOptions"     => array(),
-      "plProvidedAcls" => array(
+      "plObjectType"  => array("user"),
+
+      "plProvidedAcls"  => array(
         "eduPersonAffiliation"        => _("eduPersonAffiliation"),
         "eduPersonPrimaryAffiliation" => _("eduPersonPrimaryAffiliation"),
         "eduPersonNickName"           => _("eduPersonNickName"),

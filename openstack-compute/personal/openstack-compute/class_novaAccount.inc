@@ -29,17 +29,17 @@ class novaAccount extends simplePlugin
 
   static function plInfo()
   {
-    return (array(
-          "plShortName"     => _("Nova"),
-          "plDescription"   => _("Edit users Nova settings"),
-          "plSelfModify"    => TRUE,
-          "plDepends"       => array("user"),
-          "plPriority"      => 3,                                 // Position in tabs
-          "plSection"     => array("personal" => _("My account")),
-          "plCategory"    => array("users"),
-          "plRequirements"=> array('ldapSchema' => array('novaUser' => ''), 'onFailureDisablePlugin' => array(get_class())),
-      "plProvidedAcls"    => parent::generatePlProvidedAcls(self::getAttributesInfo())
-      ));
+    return array(
+      "plShortName"     => _("Nova"),
+      "plDescription"   => _("Nova user account settings"),
+      "plSelfModify"    => TRUE,
+      "plDepends"       => array("user"),
+      "plPriority"      => 3,                                 // Position in tabs
+      "plSection"       => array("personal" => _("My account")),
+      "plCategory"      => array("users"),
+      "plObjectType"    => array("user"),
+      "plRequirements"  => array('ldapSchema' => array('novaUser' => ''), 'onFailureDisablePlugin' => array(get_class())),
+      );
   }
 
 

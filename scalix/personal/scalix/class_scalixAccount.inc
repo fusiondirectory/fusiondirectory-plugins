@@ -35,26 +35,28 @@
 
 class scalixAccount extends simplePlugin
 {
-  var $displayHeader = TRUE;
-  var $objectclasses = array("scalixUserClass");
-  var $plHeadline   = "Scalix";
-  var $plDescription= "This save and read the scalix account data from ldap";
+  var $displayHeader  = TRUE;
+  var $objectclasses  = array("scalixUserClass");
+  var $plHeadline     = "Scalix";
+  var $plDescription  = "This save and read the scalix account data from ldap";
 
   static function plInfo()
   {
-    return (array(
-          "plHeadline"        => _("Scalix"),
-          "plShortName"       => _("Scalix"),
-          "plDescription"     => _("Scalix account"),
-          "plIcon"            => _("plugins/scalix/images/plugin.png"),
-          "plSelfModify"      => TRUE,
-          "plSection"         => array("personal" => _("My account")),
-          "plCategory"        => array("users"),
-          "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
-            ));
+    return array(
+      "plHeadline"    => _("Scalix"),
+      "plShortName"   => _("Scalix"),
+      "plDescription" => _("Scalix account"),
+      "plIcon"        => _("plugins/scalix/images/plugin.png"),
+      "plSelfModify"  => TRUE,
+      "plSection"     => array("personal" => _("My account")),
+      "plCategory"    => array("users"),
+      "plObjectType"  => array("user"),
+
+      "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+    );
   }
 
- /*!
+  /*!
    *  \brief The main function : information about attributes
    */
   static function getAttributesInfo ()

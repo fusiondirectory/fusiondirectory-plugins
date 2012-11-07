@@ -1172,35 +1172,35 @@ class sambaAccount extends plugin
 
     static function plInfo()
     {
-        return (array(
-                    "plShortName"     => _("Samba"),
-                    "plDescription"   => _("Samba settings"),
-                    "plSelfModify"    => TRUE,
-                    "plDepends"       => array("user"),
-                    "plPriority"      => 5,
-                    "plSection"     => array("personal" => _("My account")),
-                    "plCategory"    => array("users"),
-                    "plOptions"       => array(),
+        return array(
+          "plShortName"     => _("Samba"),
+          "plDescription"   => _("Samba settings"),
+          "plSelfModify"    => TRUE,
+          "plDepends"       => array("user"),
+          "plPriority"      => 5,
+          "plSection"       => array("personal" => _("My account")),
+          "plCategory"      => array("users"),
+          "plObjectType"    => array("user"),
 
-                    "plProvidedAcls"  => array(
+          "plProvidedAcls"  => array(
+            "sambaHomePath"               => _("Generic home directory") ,
+            "sambaHomeDrive"              => _("Generic samba home drive") ,
+            "sambaDomainName"             => _("Domain") ,
+            "sambaLogonScript"            => _("Generic script path") ,
+            "sambaProfilePath"            => _("Generic profile path") ,
+            "AllowLoginOnTerminalServer"  => _("Allow login on terminal server"),
+            "InheritClientConfig"         => _("Inherit client config"),
+            "sambaKickoffTime"            => _("Account expires"),
+            "enforcePasswordChange"       => _("Enforce password change"),
+            "cannotChangePassword"        => _("Disallow password change") ,
+            "noPasswordRequired"          => _("Login from windows client requires no password"),
+            "passwordNeverExpires"        => _("Password never expires"),
+            "temporaryDisabled"           => _("Lock samba account"),
 
-                        "sambaHomePath"               => _("Generic home directory") ,
-                        "sambaHomeDrive"              => _("Generic samba home drive") ,
-                        "sambaDomainName"             => _("Domain") ,
-                        "sambaLogonScript"            => _("Generic script path") ,
-                        "sambaProfilePath"            => _("Generic profile path") ,
-                        "AllowLoginOnTerminalServer"  => _("Allow login on terminal server"),
-                        "InheritClientConfig"         => _("Inherit client config"),
-                        "sambaKickoffTime"            => _("Account expires"),
-                        "enforcePasswordChange"       => _("Enforce password change"),
-                        "cannotChangePassword"        => _("Disallow password change") ,
-                        "noPasswordRequired"          => _("Login from windows client requires no password"),
-                        "passwordNeverExpires"        => _("Password never expires"),
-                        "temporaryDisabled"           => _("Lock samba account"),
-
-                        "sambaLogonHours"             => _("Logon hours") ,
-                        "sambaUserWorkstations"       => _("Allow connection from"))
-                        ));
+            "sambaLogonHours"             => _("Logon hours") ,
+            "sambaUserWorkstations"       => _("Allow connection from")
+          )
+        );
     }
 
     function enable_multiple_support()

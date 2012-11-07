@@ -304,17 +304,19 @@ class netgroupSystem extends plugin {
     }
 
     static function plInfo() {
-        return (array(
-    "plDescription" => _("NIS Netgroup member"),
-    "plSelfModify" => FALSE,
-    "plDepends" => array(),
-    "plPriority" => 2,
-    "plSection" => array("administration"),
-    "plCategory" => array("workstation","terminal","phone","server","component","printer"),
-    "plOptions" => array(),
-    "plProvidedAcls" => array(
-        "memberCn" => _("NIS Netgroup members"))
-        ));
+      return array(
+        "plShortName"     => _("NIS Netgroup"),
+        "plDescription"   => _("NIS Netgroup member"),
+        "plSelfModify"    => FALSE,
+        "plDepends"       => array(),
+        "plPriority"      => 2,
+        "plSection"       => array("administration"),
+        "plCategory"      => array("workstation","terminal","phone","server","component","printer"),
+        "plObjectType"    => array("workstation","terminal","phone","server","component","printer"),
+        "plProvidedAcls"  => array(
+          "memberCn" => _("NIS Netgroup members")
+        )
+      );
     }
 
 }

@@ -1721,28 +1721,27 @@ class phoneAccount extends plugin
   /* Return plugin informations for acl handling */
   static function plInfo()
   {
-    return (array(
-          "plShortName"     => _("Phone"),
-          "plDescription"   => _("Phone account settings"),
-          "plSelfModify"    => TRUE,
-          "plDepends"       => array("user"),
-          "plPriority"      => 7,                                 // Position in tabs
-          "plSection"         => array("personal" => _("My account")),
-          "plCategory"        => array("users"),
+    return array(
+      "plShortName"   => _("Phone"),
+      "plDescription" => _("Phone account settings"),
+      "plSelfModify"  => TRUE,
+      "plDepends"     => array("user"),
+      "plPriority"    => 7,                                 // Position in tabs
+      "plSection"     => array("personal" => _("My account")),
+      "plCategory"    => array("users"),
+      "plObjectType"  => array("user"),
 
-
-          "plOptions"       => array(),
-
-          "plProvidedAcls"  => array(
-            "telephoneNumber"     => _("Telephone number"),
-            "goFonMacro"          => _("Macro settings"),
-            "goFonHardware"       => _("Phone hardware"),
-            "goFonHomeServer"     => _("Home server"),
-            "goFonContext"          => _("Phone context"),
-            "goFonVoiceMailContext" => _("Voice mail context"),
-            "goFonPIN"            => _("Telephone pin"),
-            "goFonVoicemailPIN"   => _("Voicemail pin"))
-          ));
+      "plProvidedAcls"  => array(
+        "telephoneNumber"       => _("Telephone number"),
+        "goFonMacro"            => _("Macro settings"),
+        "goFonHardware"         => _("Phone hardware"),
+        "goFonHomeServer"       => _("Home server"),
+        "goFonContext"          => _("Phone context"),
+        "goFonVoiceMailContext" => _("Voice mail context"),
+        "goFonPIN"              => _("Telephone pin"),
+        "goFonVoicemailPIN"     => _("Voicemail pin")
+      )
+    );
   }
 
 

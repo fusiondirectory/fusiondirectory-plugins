@@ -376,7 +376,7 @@ class quotaAccount extends plugin
 
   static function plInfo()
   {
-    $ret = array(
+    return array(
       "plShortName"   => _("Quota"),
       "plDescription" => _("Plugin for quota support"),
       "plSelfModify"  => TRUE,
@@ -384,13 +384,13 @@ class quotaAccount extends plugin
       "plPriority"    => 5,
       "plSection"     => array("personal" => _("My account")),
       "plCategory"    => array("users"),
-      "plOptions"     => array(),
+      "plObjectType"  => array("user"),
 
       "plProvidedAcls" => array(
-            "uid"   =>  _("uid"),
-            "quota" =>  _("quota"),
-    ));
-    return($ret);
+        "uid"   =>  _("uid"),
+        "quota" =>  _("quota"),
+      )
+    );
   }
 
   static function ldap_to_human_size($blocknumber, $blocksize) {

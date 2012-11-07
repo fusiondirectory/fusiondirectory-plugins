@@ -63,22 +63,22 @@ class netatalkAccount extends plugin {
   var $smarty_attributes = array ("apple_user_homepath_raw", "shares", "selectedshare");
 
   /* Attributes to save from $_POST */
-  var $post_attributes = array ("netatalkShare"         => "apple_user_share", 
+  var $post_attributes = array ("netatalkShare"         => "apple_user_share",
                                 "netatalkUserHomepath"  => "apple_user_homepath_raw");
 
   /* Objectclasses */
   var $objectclasses = array ("apple-user");
-  var $uid ="";  
+  var $uid ="";
 
   /* The constructor just saves a copy of the config. You may add what ever you need. */
-  function netatalkAccount(&$config, $dn = NULL) 
+  function netatalkAccount(&$config, $dn = NULL)
   {
 
     /* Include config object */
     $this->config = $config;
     plugin::plugin($config, $dn);
 
-    /* set user id */    
+    /* set user id */
     if(isset($this->attrs['uid'])){
       $this->uid = $this->attrs['uid'][0];
     }
@@ -93,15 +93,15 @@ class netatalkAccount extends plugin {
       }
     }
 
-    /* Extract homepath value 
+    /* Extract homepath value
      */
     if (strlen($this->apple_user_homeDirectory) >0) {
-      $this->apple_user_homepath_raw = 
+      $this->apple_user_homepath_raw =
         substr($this->apple_user_homeDirectory, strrpos($this->apple_user_homeDirectory, '/') + 1 );
     }
 
     /* get share list an set default values */
-    $this->get_netatalk_shares(); 
+    $this->get_netatalk_shares();
     $this->apple_user_share = $this->selectedshare;
 
     if(!$this->is_account){
@@ -132,7 +132,7 @@ class netatalkAccount extends plugin {
         $mountTypeReal = "netatalk";
       } else {
         $mountTypeReal = $mountType;
-      } 
+      }
       $share = $attrs["cn"][0]. " (" . $mountTypeReal . ")";
       $this->shares[$share] = $share;
       $this->shares_settings[$share]["mountType"]=$mountType;
@@ -150,7 +150,7 @@ class netatalkAccount extends plugin {
 
 
   /* Execute the plugin, produce the output. */
-  function execute() 
+  function execute()
   {
     plugin :: execute();
 
@@ -180,32 +180,32 @@ class netatalkAccount extends plugin {
     /* Show tab dialog headers */
     if ($this->parent !== NULL) {
       if ($this->is_account) {
-        $display = $this->show_disable_header(msgPool::removeFeaturesButton(_("netatalk")), 
+        $display = $this->show_disable_header(msgPool::removeFeaturesButton(_("netatalk")),
             msgPool::featuresEnabled(_("netatalk")));
       } else {
         $errmsg="";
         $obj = $this->parent->by_object['posixAccount'];
         if  (!($obj->is_account) ) {
-          $display = $this->show_enable_header(msgPool::addFeaturesButton(_("netatalk")), 
+          $display = $this->show_enable_header(msgPool::addFeaturesButton(_("netatalk")),
               msgPool::featuresDisabled(_("netatalk"), _("POSIX")), TRUE);
         } elseif (count($this->shares)== 0) {
-          $display = $this->show_enable_header(msgPool::addFeaturesButton(_("netatalk")), 
+          $display = $this->show_enable_header(msgPool::addFeaturesButton(_("netatalk")),
               msgPool::featuresDisabled(_("netatalk"), _("netatalk or NFS share")), TRUE);
         } else {
-          $display = $this->show_enable_header(msgPool::addFeaturesButton(_("netatalk")), 
+          $display = $this->show_enable_header(msgPool::addFeaturesButton(_("netatalk")),
               msgPool::featuresDisabled(_("netatalk")));
-        } 
+        }
         return ($display);
       }
     }
 
-    /* Assign attributes 
+    /* Assign attributes
      */
     foreach ($this->smarty_attributes as $val) {
       $smarty->assign("$val", $this-> $val);
     }
 
-    /* Assign ACLs 
+    /* Assign ACLs
      */
     $tmp = $this->plInfo();
     $SkipWrite = (!isset($this->parent) || !$this->parent) && !session::is_set('edit');
@@ -220,7 +220,7 @@ class netatalkAccount extends plugin {
 
 
   /* Check if we have correct data */
-  function check() 
+  function check()
   {
     $message = array ();
     if (strlen($this->apple_user_share) == 0) {
@@ -231,7 +231,7 @@ class netatalkAccount extends plugin {
 
 
   /* Save to LDAP */
-  function save() 
+  function save()
   {
 
     /* remove a / at the end of the homepath, we neither need it there nor
@@ -302,9 +302,9 @@ class netatalkAccount extends plugin {
   }
 
 
-  /* Use Save_object for every Post handling 
+  /* Use Save_object for every Post handling
    */
-  function save_object() 
+  function save_object()
   {
     if (isset ($_POST['netatalkTab'])) {
       /* Save ldap attributes */
@@ -323,7 +323,7 @@ class netatalkAccount extends plugin {
   }
 
 
-  function remove_from_parent() 
+  function remove_from_parent()
   {
 
     /* Cancel if there's nothing to do here */
@@ -376,7 +376,7 @@ class netatalkAccount extends plugin {
     array_push($this->attributes, "apple-user-homeDirectory");
     plugin::adapt_from_template($dn, $skip);
     array_pop($this->attributes);
-  
+
     /* Loop through the available shares and find out which is the share from
      * 'apple-user-homeDirectory'. Remove its host and directory (as well as
      * the default 'mountDirectory' prefix) to get 'apple_user_homepath_raw'
@@ -392,26 +392,27 @@ class netatalkAccount extends plugin {
       }
     }
   }
-  
+
   /* Return plugin informations for acl handling*/
   static function plInfo()
   {
-    return (array(
-          "plDescription"     => _("Netatalk"),
-          "plSelfModify"      => TRUE,
-          "plDepends"         => array("user"),
-          "plPriority"        => 6,
-          "plSection"         => array("personal" => _("My account")),
-          "plCategory"        => array("users"),
-          "plOptions"         => array(),
+    return array(
+      "plShortName"       => _("Netatalk"),
+      "plDescription"     => _("Netatalk"),
+      "plSelfModify"      => TRUE,
+      "plDepends"         => array("user"),
+      "plPriority"        => 6,
+      "plSection"         => array("personal" => _("My account")),
+      "plCategory"        => array("users"),
+      "plObjectType"      => array("user"),
 
-          "plProvidedAcls"  => array(
-            "netatalkUserHomepath"   =>  _("User home path"),
-            "netatalkShare"          =>  _("Share"))
-          ));
-  }   
-  
+      "plProvidedAcls"  => array(
+        "netatalkUserHomepath"  =>  _("User home path"),
+        "netatalkShare"         =>  _("Share")
+      )
+    );
+  }
+
 }
 
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>
