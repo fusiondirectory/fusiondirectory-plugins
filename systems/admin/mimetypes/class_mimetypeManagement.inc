@@ -30,7 +30,7 @@ class mimetypeManagement extends management
 
   // Tab definition
   protected $tabClass = "mimetabs";
-  protected $tabType = "MIMETABS";
+  protected $tabType = "MIMETYPETABS";
   protected $aclCategory = "mimetypes";
   protected $aclPlugin   = "mimetype";
   protected $objectName   = "mimetype";

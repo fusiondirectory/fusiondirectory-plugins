@@ -159,9 +159,9 @@ class termstartup extends plugin
         $fh= popen($command, "r");
         while (!feof($fh)) {
           $buffer= trim(fgets($fh, 256));
-          
+
           if(!empty($buffer)){
-          
+
             $name=$value = $buffer;
 
             if(preg_match("/:/",$buffer)){
@@ -177,7 +177,7 @@ class termstartup extends plugin
       }
 
     }
-    
+
   }
 
   function execute()
@@ -396,13 +396,13 @@ class termstartup extends plugin
       exit();
     }
 
-    
+
     plugin::save();
 
     /* Add missing arrays */
     foreach (array("gotoModules") as $val){
       if (isset ($this->$val) && count ($this->$val) != 0){
-    
+
         $this->attrs["$val"]= array_unique($this->$val);
       }
       if(!isset($this->attrs["$val"])){
@@ -437,9 +437,9 @@ class termstartup extends plugin
     /* Write back to ldap */
     $ldap= $this->config->get_ldap_link();
     $ldap->cd($this->dn);
-    
+
     $this->cleanup();
-    $ldap->modify ($this->attrs); 
+    $ldap->modify ($this->attrs);
 
     new log("modify","terminal/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
 
@@ -526,22 +526,23 @@ class termstartup extends plugin
   /* Return plugin informations for acl handling */
   static function plInfo()
   {
-    return (array(
-          "plShortName"   => _("Startup"),
-          "plDescription" => _("Terminal startup"),
-          "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
-          "plPriority"    => 5,
-          "plSection"     => array("administration"),
-          "plCategory"    => array("terminal"),
+    return array(
+      "plShortName"   => _("Startup"),
+      "plDescription" => _("Terminal startup"),
+      "plSelfModify"  => FALSE,
+      "plPriority"    => 5,
+      "plSection"     => array("administration"),
+      "plCategory"    => array("terminal"),
+      "plObjectType"  => array("terminal"),
 
-          "plProvidedAcls"=> array(
-            "gotoLdapServer"      => _("Ldap server"),
-            "gotoShare"           => _("Shares"),
-            "gotoModules"         => _("Kernel modules"),
-            "gotoBootKernel"      => _("Boot kernel"), 
-            "gotoKernelParameters"=> _("Kernel parameter"))
-          ));
+      "plProvidedAcls"  => array(
+        "gotoLdapServer"        => _("Ldap server"),
+        "gotoShare"             => _("Shares"),
+        "gotoModules"           => _("Kernel modules"),
+        "gotoBootKernel"        => _("Boot kernel"),
+        "gotoKernelParameters"  => _("Kernel parameter")
+      )
+    );
   }
 
 

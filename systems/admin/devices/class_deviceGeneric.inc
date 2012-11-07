@@ -302,25 +302,28 @@ class deviceGeneric extends plugin
   /* Return plugin informations for acl handling  */
   public static function plInfo()
   {
-    return (array(
-          "plShortName"   => _("Generic"),
-          "plDescription" => _("Device generic")." ("._("Hotplug").")",
-          "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
-          "plPriority"    => 0,
-          "plSection"     => array("administration"),
-          "plCategory"    => array("devices" => array("description"  => _("Devices"),
-                                                        "objectClass"  => "gotoHotplugDevice")),
-          "plProvidedAcls"=> array(
-            "cn"            => _("Name"),
-            "base"          => _("Base"),
-            "description"   => _("Description"),
-            "type"          => _("Type"),
-            "serial"        => _("Serial"),
-            "vendor"        => _("Vendor"),
-            "devID"        => _("Device ID"))
-          ));
+    return array(
+      "plShortName"   => _("Generic"),
+      "plDescription" => _("Device generic")." ("._("Hotplug").")",
+      "plSelfModify"  => FALSE,
+      "plDepends"     => array(),
+      "plPriority"    => 0,
+      "plSection"     => array("administration"),
+      "plCategory"    => array("devices" => array("description"  => _("Devices"),
+                                                    "objectClass"  => "gotoHotplugDevice")),
+      "plObjectType"  => array("device" => array("name"  => _("Device"),
+                                                  "filter"  => "objectClass=gotoHotplugDevice")),
 
+      "plProvidedAcls"  => array(
+        "cn"            => _("Name"),
+        "base"          => _("Base"),
+        "description"   => _("Description"),
+        "type"          => _("Type"),
+        "serial"        => _("Serial"),
+        "vendor"        => _("Vendor"),
+        "devID"         => _("Device ID")
+      )
+    );
   }
 
 }

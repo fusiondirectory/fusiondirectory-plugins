@@ -720,36 +720,37 @@ class termservice extends plugin
   /* Return plugin informations for acl handling */
   static function plInfo()
   {
-    return (array(
-          "plShortName"   => _("Service"),
-          "plDescription" => _("Terminal service"),
-          "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
-          "plPriority"    => 3,
-          "plSection"     => array("administration"),
-          "plCategory"    => array("terminal"),
+    return array(
+      "plShortName"   => _("Service"),
+      "plDescription" => _("Terminal service"),
+      "plSelfModify"  => FALSE,
+      "plPriority"    => 3,
+      "plSection"     => array("administration"),
+      "plCategory"    => array("terminal"),
+      "plObjectType"  => array("terminal"),
 
-          "plProvidedAcls"=> array(
+      "plProvidedAcls"  => array(
 
-            "gotoXMonitor"            => _("Monitor"),
-            "gotoXMethod"             => _("Method"),
-            "gotoXdmcpServer"         => _("Remote desktop"),
-            "gotoXDriver"             => _("Gfx driver"),
-            "gotoXResolution"         => _("Gfx resolution"),
-            "gotoXColordepth"         => _("Gfx color depth"),
-            "gotoXHsync"              => _("HSync"),
-            "gotoXVsync"              => _("VSync"),
-            "AutoSync"                => _("Auto-Sync"),
-            "gotoScannerEnable"       => _("Scanner enabled"),
-            "gotoLpdEnable"           => _("Printer enabled"),
-            "gotoXKbModel"            => _("Keyboard model"),
-            "gotoXKbLayout"           => _("Keyboard layout"),
-            "gotoXKbVariant"          => _("Keyboard variant"),
-            "gotoXMouseType"          => _("Mouse type"),
-            "gotoXMouseport"          => _("Mouse port"),
-            "gotoLpdEnable"         => _("Printer enabled"),
-            "goFonHardware"           => _("Telephone hardware"))
-          ));
+        "gotoXMonitor"            => _("Monitor"),
+        "gotoXMethod"             => _("Method"),
+        "gotoXdmcpServer"         => _("Remote desktop"),
+        "gotoXDriver"             => _("Gfx driver"),
+        "gotoXResolution"         => _("Gfx resolution"),
+        "gotoXColordepth"         => _("Gfx color depth"),
+        "gotoXHsync"              => _("HSync"),
+        "gotoXVsync"              => _("VSync"),
+        "AutoSync"                => _("Auto-Sync"),
+        "gotoScannerEnable"       => _("Scanner enabled"),
+        "gotoLpdEnable"           => _("Printer enabled"),
+        "gotoXKbModel"            => _("Keyboard model"),
+        "gotoXKbLayout"           => _("Keyboard layout"),
+        "gotoXKbVariant"          => _("Keyboard variant"),
+        "gotoXMouseType"          => _("Mouse type"),
+        "gotoXMouseport"          => _("Mouse port"),
+        "gotoLpdEnable"         => _("Printer enabled"),
+        "goFonHardware"           => _("Telephone hardware")
+      )
+    );
   }
 }
 

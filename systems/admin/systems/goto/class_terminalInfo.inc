@@ -131,7 +131,7 @@ class terminfo extends plugin
 
           /* Use 'goto' as snmp community or the configured value from the config */
           $community= 'goto';
-	  $str= $this->config->search("terminfo", "SNMPCOMMUNITY", array('tabs'));
+    $str= $this->config->search("terminfo", "SNMPCOMMUNITY", array('tabs'));
           if(!empty($str)){
             $community = $str;
           }
@@ -268,13 +268,15 @@ class terminfo extends plugin
   static function plInfo()
   {
     return array(
-      "plShortName"     => _("System info"),
-      "plDescription"   => _("System informations"),
-      "plSelfModify"    => FALSE,
-      "plPriority"      => 33,
-      "plSection"       => array("administration"),
-      "plCategory"      => array("workstation","server","terminal"),
-      "plObjectType"    => array("workstation","server","terminal"),
+      "plShortName"   => _("System info"),
+      "plDescription" => _("System informations"),
+      "plSelfModify"  => FALSE,
+      "plDepends"     => array(),
+      "plPriority"    => 33,
+      "plSection"     => array("administration"),
+      "plCategory"    => array("workstation","server","terminal"),
+      "plObjectType"  => array("workstation","server","terminal"),
+
       "plProvidedAcls"  => array()
     );
   }

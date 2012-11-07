@@ -1199,7 +1199,7 @@ class systemManagement extends management
             "plugClass"   => "termgeneric",
             "tabClass"    => "termtabs",
             "sendEvents"  => TRUE,
-            "tabDesc"     => "TERMTABS",
+            "tabDesc"     => "TERMINALTABS",
             "aclClass"    => "termgeneric",
             "aclCategory" => "terminal"),
 
@@ -1217,7 +1217,7 @@ class systemManagement extends management
             "plugClass"   => "termgeneric",
             "tabClass"    => "termtabs",
             "sendEvents"  => TRUE,
-            "tabDesc"     => "TERMTABS",
+            "tabDesc"     => "TERMINALTABS",
             "aclClass"    => "termgeneric",
             "aclCategory" => "terminal"),
 

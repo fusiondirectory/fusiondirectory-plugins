@@ -552,24 +552,25 @@ class macro extends plugin
 
   static function plInfo()
   {
-    return (array(
-          "plShortName"   => _("Generic"),
-          "plDescription" => _("Asterisk macro management"),
-          "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
-          "plPriority"    => 0,
-          "plSection"     => array("administration"),
-          "plCategory"    => array("gofonmacro" => array("description" => _("GOfon macro"),
-              "objectClass" => "gofonMacro")),
+    return array(
+      "plShortName"   => _("Generic"),
+      "plDescription" => _("Asterisk macro management"),
+      "plSelfModify"  => FALSE,
+      "plSection"     => array("administration"),
+      "plCategory"    => array("gofonmacro" => array("description" => _("GOfon macro"),
+                                                    "objectClass" => "gofonMacro")),
+      "plObjectType"  => array("macro" => array("name" => _("Asterisk macro"),
+                                                "filter" => "objectClass=gofonMacro")),
 
-          "plProvidedAcls" => array(
-            "cn"                            => _("Macro name"),
-            "base"                          => _("Base"),
-            "description"                   => _("Description"),
-            "displayName"                   => _("Display name"),
-            "goFonMacroContent"             => _("Macro content and parameter"),
-            "goFonMacroVisible"             => _("Visibility flag"))
-          ));
+      "plProvidedAcls" => array(
+        "cn"                            => _("Macro name"),
+        "base"                          => _("Base"),
+        "description"                   => _("Description"),
+        "displayName"                   => _("Display name"),
+        "goFonMacroContent"             => _("Macro content and parameter"),
+        "goFonMacroVisible"             => _("Visibility flag")
+      )
+    );
   }
 
 }

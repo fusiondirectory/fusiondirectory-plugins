@@ -110,7 +110,7 @@ class applicationParameters extends plugin
       $this->option_name[]= "";
       $this->option_value[]= "";
     }
-    
+
 
 
     $acl = $this->getacl("gosaApplicationParameter")	;
@@ -173,7 +173,7 @@ class applicationParameters extends plugin
     @DEBUG (DEBUG_LDAP, __LINE__, __FUNCTION__, __FILE__,
         $this->attributes, "Save");
     $this->cleanup();
-    $ldap->modify ($this->attrs); 
+    $ldap->modify ($this->attrs);
 
     if (!$ldap->success()){
       msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_MOD, get_class()));
@@ -241,7 +241,7 @@ class applicationParameters extends plugin
     @DEBUG (DEBUG_LDAP, __LINE__, __FUNCTION__, __FILE__,
         $this->attributes, "Save");
     $this->cleanup();
-    $ldap->modify ($this->attrs); 
+    $ldap->modify ($this->attrs);
 
     if (!$ldap->success()){
       msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_MOD, get_class()));
@@ -251,7 +251,7 @@ class applicationParameters extends plugin
     $this->handle_post_events('modify');
   }
 
- 
+
   function PrepareForCopyPaste($source)
   {
     plugin::PrepareForCopyPaste($source);
@@ -265,25 +265,23 @@ class applicationParameters extends plugin
   }
 
 
-  /* Return plugin informations for acl handling
-#FIXME FAIscript seams to ununsed within this class... */
+  /* Return plugin informations for acl handling */
   static function plInfo()
   {
-    return (array(
-          "plShortName"   => _("Parameter"),
-          "plDescription" => _("Parameter configuration"),
-          "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
-          "plPriority"    => 0,
-          "plSection"     => array("administration"),
-          "plCategory"    => array("application"),
+    return array(
+      "plShortName"   => _("Parameter"),
+      "plDescription" => _("Parameter configuration"),
+      "plSelfModify"  => FALSE,
+      "plSection"     => array("administration"),
+      "plCategory"    => array("application"),
+      "plObjectType"  => array("application"),
 
-          "plProvidedAcls"=> array(
-            "gosaApplicationParameter"      => _("Application parameter settings"))  
-          ));
+      "plProvidedAcls"=> array(
+        "gosaApplicationParameter"      => _("Application parameter settings")
+      )
+    );
   }
 
 
 }
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

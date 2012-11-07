@@ -25,7 +25,7 @@
     and all (if given) already defined parameters are managed \n
     \n
     Parameters will be saved to openldap like this :\n
-    goFonMacroParameter: ID!NAME:!TYPE(string:combo:bool)!DEFAULT_VALUE\n    
+    goFonMacroParameter: ID!NAME:!TYPE(string:combo:bool)!DEFAULT_VALUE\n
     In Case of type=combo the DEFAULT_VALUE specifies the entries in the listbox, like this\n
     "first:second:third:last" \n
 */
@@ -33,10 +33,10 @@
 class macroParameter extends plugin
 {
   /* Parameter Count*/
-  var $para_count = 0 ; 
+  var $para_count = 0 ;
   /*! macro base  */
   var $base= "";
-  
+
   /*! This array contains all Parameter defined for the macro*/
   var $goFonMacroParameter =array();
 
@@ -47,14 +47,28 @@ class macroParameter extends plugin
 
   /*! attribute list for save action */
   var $attributes= array("base","goFonMacroParameter");
-  
-  /*! Objectclasses needed by the class*/  
+
+  /*! Objectclasses needed by the class*/
   var $objectclasses= array("top", "goFonMacro");
   var $ui;
 
-  //! The konstructor of macroParameter    
+  static function plInfo()
+  {
+    return array(
+      "plShortName"   => _("Parameter"),
+      "plDescription" => _("Asterisk macro parameter"),
+      "plSelfModify"  => FALSE,
+      "plSection"     => array("administration"),
+      "plCategory"    => array("gofonmacro"),
+      "plObjectType"  => array("macro"),
+
+      "plProvidedAcls" => array()
+    );
+  }
+
+  //! The konstructor of macroParameter
   /*! The konstructor of macroParameter...
-     - reads goFonMacroParameter and parses them to an array 
+     - reads goFonMacroParameter and parses them to an array
      - Set attributes from openldap (edit)
      - Set attributes from default (new)
   */
@@ -62,7 +76,7 @@ class macroParameter extends plugin
   {
     plugin::plugin ($config, $dn, $parent);
 
-    $tmp = array();  // temporary Var 
+    $tmp = array();  // temporary Var
     $tmp2 = array(); // temporary Var ...
     $tmp3 = "";
     $ldap= $config->get_ldap_link();
@@ -96,7 +110,7 @@ class macroParameter extends plugin
     /* Create an array for parameters if not given yet */
     if(!is_array($this->goFonMacroParameter)){
       $tmp3 = $this->goFonMacroParameter;
-      $this->goFonMacroParameter =array();  
+      $this->goFonMacroParameter =array();
       if(!empty($tmp3)) {
         $this->goFonMacroParameter[]  = $tmp3;
       }
@@ -112,25 +126,25 @@ class macroParameter extends plugin
       $tmp2[$num]['var']         = "var".$num;
     }
 
-    
+
     /* Assign this array */
     $this->goFonMacroParameter = $tmp2;
 
     $this->para_count = count ($tmp2);
-   
+
     $this->ui= get_userinfo();
   }
 
-  //! Perform Parameter check 
-  /*! 
-      Compares the given parameters (goFonMacroParameters) with the parameters defined in goFonContent\n 
+  //! Perform Parameter check
+  /*!
+      Compares the given parameters (goFonMacroParameters) with the parameters defined in goFonContent\n
       -> Decide which attrs are new and which are unused\n
       -> Sort result array (containing both parameters 'goFonMacroParameters/goFonContent' and new / unused info)\n
       \param $content The given goFonContent for this macro\n
       \param $goFonMacroParameter Array with the already given parameters \n
    */
   function check_paras($content,$goFonMacroParameter)
-  { 
+  {
     /* Check contents for parameters */
     preg_match_all("/[$]\{ARG[0-9]*\}/",$content,$res,PREG_OFFSET_CAPTURE);
 
@@ -138,7 +152,7 @@ class macroParameter extends plugin
 
     /* Detect parameters with positions */
     foreach($res[0] as $val){
-      $num = preg_replace("/[^0-9]/","",$val[0]); 
+      $num = preg_replace("/[^0-9]/","",$val[0]);
       $new[$num]['val'] = $val[0];
       $new[$num]['num'] = $num;
     }
@@ -163,7 +177,7 @@ class macroParameter extends plugin
       if((!isset($goFonMacroParameter[$key]['name']))||(empty($goFonMacroParameter[$key]['name']))){
         $goFonMacroParameter[$key]['name']="\${ARG".$key."}";
       }
-    }  
+    }
 
     foreach($goFonMacroParameter as $key => $val){
       /* All attributes with check == false, are unneeded so mark them with ['check']= false */
@@ -183,10 +197,10 @@ class macroParameter extends plugin
   }
 
   //! Execute this Plugin
-  /*! 
+  /*!
       Perform Parameter check \n
       Draw paramter table\n
-      Show tpl   \n 
+      Show tpl   \n
   */
   function execute()
   {
@@ -196,9 +210,9 @@ class macroParameter extends plugin
     /* Variables */
     $vars   = "";
     $tmp    = array();
-    $number = 0; 
- 
-    /* Get acls for this tab, 
+    $number = 0;
+
+    /* Get acls for this tab,
         there is only one attribute to write,
          so we use the acls from gofon/marco */
     if($this->is_new){
@@ -213,7 +227,7 @@ class macroParameter extends plugin
     if(strstr($content,"ARG")){
       $vorpos = strpos($content,"ARG");
       $rest   = substr($content,$vorpos, strlen($content));
-    }    
+    }
 
     /* Do we represent a valid group? */
     if (!$this->is_account && $this->parent === NULL){
@@ -238,17 +252,17 @@ class macroParameter extends plugin
     }
 
     /*generate Table which shows als parameters */
-    $FonParas = $this->check_paras($content,$this->goFonMacroParameter); 
+    $FonParas = $this->check_paras($content,$this->goFonMacroParameter);
 
-    /* Sort by Parameterid, and keep keys */    
+    /* Sort by Parameterid, and keep keys */
     ksort($FonParas);
 
-    
+
 
     if(!preg_match("/r/",$ACLs)){
-      $smarty->assign("readable",false);      
+      $smarty->assign("readable",false);
     }else{
-      $smarty->assign("readable",true);      
+      $smarty->assign("readable",true);
       foreach($FonParas as $key=>$para) {
 
         /* Select correct item of combobox */
@@ -257,8 +271,8 @@ class macroParameter extends plugin
         }else{
           list($sel1, $sel2, $sel3)= array("", "", "");
         }
-   
-        /* Disable all input fields if we are not allowed to change the parameters */ 
+
+        /* Disable all input fields if we are not allowed to change the parameters */
         $disabled = "";
         if(!preg_match("/w/",$ACLs)){
           $key = "";
@@ -296,17 +310,17 @@ class macroParameter extends plugin
     /* Show main page */
     return($smarty->fetch (get_template_path('parameter.tpl', TRUE)));
   }
-  
-  //! Unused here 
+
+  //! Unused here
   /*!
-      Unused here because goFonMacro will remove this Macro\n 
+      Unused here because goFonMacro will remove this Macro\n
   */
   function remove_from_parent()
   {
   }
 
   //! Save our data
-  /*! 
+  /*!
       Save POST data to object \n
       This gives us the possibility to leave a tab, without losing our typed informations\n
       \n
@@ -334,7 +348,7 @@ class macroParameter extends plugin
 
         /* Set Post vars */
         $key = $_POST[$name];
-    
+
         $this->goFonMacroParameter[$key]['var']   = $_POST["var".$key];
         $this->goFonMacroParameter[$key]['name']   = $_POST["varname".$key];
         $this->goFonMacroParameter[$key]['type']   = $_POST["vartype".$key];
@@ -345,9 +359,9 @@ class macroParameter extends plugin
   }
 
 
-  //! Checks given values 
-  /*! 
-      Check values\n 
+  //! Checks given values
+  /*!
+      Check values\n
       If a user enters an invalid value, then this function will output an error msg\n
       (In better words :prepare the errormessages that will be put out )\n
   */
@@ -366,7 +380,7 @@ class macroParameter extends plugin
                             $message[] = sprintf(_("Parameter %s is invalid!"),$val['name']);
                           };break;
         case 'string' :
-        case 'combo'  : 
+        case 'combo'  :
         default : ;
 
       }
@@ -376,7 +390,7 @@ class macroParameter extends plugin
 
   //! Save changes to openldap
   /*!
-      Save to LDAP 
+      Save to LDAP
       This function saves given attributes to the ldap
   */
   function save()
@@ -405,7 +419,7 @@ class macroParameter extends plugin
     if (count($a)){
       $ldap->cd($this->dn);
       $this->cleanup();
-      $ldap->modify ($this->attrs); 
+      $ldap->modify ($this->attrs);
 
       $this->handle_post_events("modify");
     } else {

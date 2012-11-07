@@ -515,32 +515,34 @@ class phoneGeneric extends plugin
       #FIXME FAIscript seams to ununsed within this class... */
   static function plInfo()
   {
-    return (array(
-          "plShortName"   => _("Generic"),
-          "plDescription" => _("Phone generic"),
-          "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
-          "plPriority"    => 0,
-          "plSection"     => array("administration"),
-          "plCategory"    => array("phone" => array("description"  => _("Phone hardware"),
-                                                    "objectClass"  => "goFonHardware")),
-          "plProvidedAcls"=> array(
-            "cn"                  => _("Name"),
-            "base"                => _("Base"),
-            "description"         => _("Description"),
-            "goFonType"           => _("SIP Mode"),
-            "goFonDmtfMode"       => _("SIP DTMF mode"),
-            "goFonDefaultIP"      => _("SIP Default ip"),
-            "goFonQualify"        => _("SIP Qualify"),
-            "goFonAuth"           => _("IAX authentication type"),
-            "goFonSecret"         => _("IAX secret"),
-            "goFonAccountCode"    => _("IAX account code"),
-            "goFonTrunk"          => _("IAX trunk lines"),
-            "goFonPermit"         => _("IAX permit settings"),
-            "goFonDeny"           => _("IAX deny settings"),
-            "goFonMSN"            => _("CAPI MSN"),
-            "categorie"  => _("Hardware type"))
-          ));
+    return array(
+      "plShortName"   => _("Generic"),
+      "plDescription" => _("Phone generic"),
+      "plSelfModify"  => FALSE,
+      "plSection"     => array("administration"),
+      "plCategory"    => array("phone" => array("description"  => _("Phone hardware"),
+                                                "objectClass"  => "goFonHardware")),
+      "plObjectType"  => array("phone" => array("name" => _("Phone"),
+                                                "filter" => "objectClass=goFonHardware")),
+
+      "plProvidedAcls"=> array(
+        "cn"                  => _("Name"),
+        "base"                => _("Base"),
+        "description"         => _("Description"),
+        "goFonType"           => _("SIP Mode"),
+        "goFonDmtfMode"       => _("SIP DTMF mode"),
+        "goFonDefaultIP"      => _("SIP Default ip"),
+        "goFonQualify"        => _("SIP Qualify"),
+        "goFonAuth"           => _("IAX authentication type"),
+        "goFonSecret"         => _("IAX secret"),
+        "goFonAccountCode"    => _("IAX account code"),
+        "goFonTrunk"          => _("IAX trunk lines"),
+        "goFonPermit"         => _("IAX permit settings"),
+        "goFonDeny"           => _("IAX deny settings"),
+        "goFonMSN"            => _("CAPI MSN"),
+        "categorie"           => _("Hardware type")
+      )
+    );
   }
 
 

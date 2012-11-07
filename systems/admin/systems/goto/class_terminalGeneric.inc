@@ -753,28 +753,29 @@ class termgeneric extends plugin
   /* Return plugin informations for acl handling */
   static function plInfo()
   {
-    return (array(
-          "plShortName"   => _("Terminal"),
-          "plDescription" => _("Terminal generic"),
-          "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
-          "plPriority"    => 1,
-          "plSection"     => array("administration"),
-          "plCategory"    => array("terminal" => array( "description"  => _("Terminal"),
-          "objectClass"   => "gotoTerminal")),
+    return array(
+      "plShortName"   => _("Generic"),
+      "plDescription" => _("Terminal generic"),
+      "plSelfModify"  => FALSE,
+      "plSection"     => array("administration"),
+      "plCategory"    => array("terminal" => array( "description"  => _("Terminal"),
+                                                    "objectClass"   => "gotoTerminal")),
+      "plObjectType"  => array("terminal" => array( "name"  => _("Terminal"),
+                                                    "filter"   => "objectClass=gotoTerminal")),
 
-          "plProvidedAcls"=> array(
-            "cn"                  => _("Name"),
-            "description"         => _("Description"),
-            "base"                => _("Base"),
-            "gotoMode"            => _("Mode"),
-            "gotoSyslogServer"    => _("Syslog server enabled"),
-            "gotoTerminalPath"    => _("Root server"),
-            "gotoSwapServer"      => _("Swap server"),
-            "gotoNtpServer"       => _("Ntp server settings"),
-            "userPassword"        => _("Root password"),
-            "FAIstate"            => _("Action flag"))
-          ));
+      "plProvidedAcls"  => array(
+        "cn"                  => _("Name"),
+        "description"         => _("Description"),
+        "base"                => _("Base"),
+        "gotoMode"            => _("Mode"),
+        "gotoSyslogServer"    => _("Syslog server enabled"),
+        "gotoTerminalPath"    => _("Root server"),
+        "gotoSwapServer"      => _("Swap server"),
+        "gotoNtpServer"       => _("Ntp server settings"),
+        "userPassword"        => _("Root password"),
+        "FAIstate"            => _("Action flag")
+      )
+    );
   }
 
 }

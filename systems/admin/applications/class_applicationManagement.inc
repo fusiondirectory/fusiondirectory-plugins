@@ -30,7 +30,7 @@ class applicationManagement extends management
 
   // Tab definition
   protected $tabClass = "apptabs";
-  protected $tabType = "APPSTABS";
+  protected $tabType = "APPLICATIONTABS";
   protected $aclCategory = "application";
   protected $aclPlugin   = "application";
   protected $objectName   = "application";

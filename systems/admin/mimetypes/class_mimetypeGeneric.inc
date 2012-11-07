@@ -700,26 +700,28 @@ class mimetype extends plugin
   /* Return plugin informations for acl handling  */
   static function plInfo()
   {
-    return (array(
-          "plShortName"   => _("Generic"),
-          "plDescription" => _("Mime type generic"),
-          "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
-          "plPriority"    => 0,
-          "plSection"     => array("administration"),
-          "plCategory"    => array("mimetypes" => array("description"  => _("Mime types"),
-                                                        "objectClass"  => "gotoMimeType")),
-          "plProvidedAcls"=> array(
-            "cn"                          => _("Name"),
-            "gotoMimeGroup"               => _("Mime group"),
-            "description"                 => _("Description"),
-            "base"                        => _("Base"),
-            "gotoMimeApplication"         => _("Application"),
-            "gotoMimeLeftClickAction"     => _("Left click action"),
-            "gotoMimeIcon"                => _("Icon"),
-            "gotoMimeFilePattern"         => _("File patterns"),
-            "gotoMimeEmbeddedApplication" => _("Embedded applications"))
-          ));
+    return array(
+      "plShortName"   => _("Generic"),
+      "plDescription" => _("Mime type generic"),
+      "plSelfModify"  => FALSE,
+      "plSection"     => array("administration"),
+      "plCategory"    => array("mimetypes" => array("description"  => _("Mime types"),
+                                                    "objectClass"  => "gotoMimeType")),
+      "plObjectType"  => array("mimetype" => array("name"  => _("Mime type"),
+                                                  "filter"  => "objectClass=gotoMimeType")),
+
+      "plProvidedAcls"  => array(
+        "cn"                          => _("Name"),
+        "gotoMimeGroup"               => _("Mime group"),
+        "description"                 => _("Description"),
+        "base"                        => _("Base"),
+        "gotoMimeApplication"         => _("Application"),
+        "gotoMimeLeftClickAction"     => _("Left click action"),
+        "gotoMimeIcon"                => _("Icon"),
+        "gotoMimeFilePattern"         => _("File patterns"),
+        "gotoMimeEmbeddedApplication" => _("Embedded applications")
+      )
+    );
 
   }
 
