@@ -86,15 +86,17 @@ class sudo extends simplePlugin
    */
   static function plInfo()
   {
-    return (array(
-          "plShortName"   => _("Sudo"),
-          "plDescription" => _("Sudo role"),
-          "plIcon"        => _("plugins/sudo/images/sudo.png"),
-          "plSelfModify"  => FALSE,
-          "plSection"     => array("administration"),
-          "plCategory"    => array("sudo" => array("objectClass" => "sudoRole", "description" => _("Sudo role"))),
-          "plProvidedAcls" => parent::generatePlProvidedAcls(self::getAttributesInfo())
-        ));
+    return array(
+      "plShortName"   => _("Sudo"),
+      "plDescription" => _("Sudo role"),
+      "plIcon"        => _("plugins/sudo/images/sudo.png"),
+      "plSelfModify"  => FALSE,
+      "plSection"     => array("administration"),
+      "plCategory"    => array("sudo" => array("objectClass" => "sudoRole", "description" => _("Sudo role"))),
+      "plObjectType"  => array("sudo" => array("name" => _("Sudo role"), "filter" => "objectClass=sudoRole")),
+
+      "plProvidedAcls" => parent::generatePlProvidedAcls(self::getAttributesInfo())
+    );
   }
 
 

@@ -693,23 +693,27 @@ class faiPackage extends plugin
    */
   static function plInfo()
   {
-    return (array(
-          "plShortName" => _("Package"),
-          "plDescription" => _("FAI Package list"),
-          "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
-          "plPriority"    => 28,
-          "plSection"     => array("administration"),
-          "plCategory"    => array("fai"),
-          "plProvidedAcls" => array(
-            "cn"                => _("Name"),
-            "description"       => _("Description"),
-            "FAIpackage"        => _("Packages"),
-            "FAIdebianSection"  => _("Section")."&nbsp;("._("Readonly").")",
-            "FAIinstallMethod"  => _("Install Method"),
-            "FAIdebconfInfo"    => _("Package configuration"),
-            "FAIdebianRelease"  => _("Release")."&nbsp;("._("Readonly").")")
-          ));
+    return array(
+      "plShortName"   => _("Package"),
+      "plDescription" => _("FAI Package list"),
+      "plSelfModify"  => FALSE,
+      "plDepends"     => array(),
+      "plPriority"    => 28,
+      "plSection"     => array("administration"),
+      "plCategory"    => array("fai"),
+      "plObjectType"  => array("faiPackage" => array("name" => _("FAI Package"),
+                                                  "filter" => "objectClass=FAIpackageList")),
+
+      "plProvidedAcls" => array(
+        "cn"                => _("Name"),
+        "description"       => _("Description"),
+        "FAIpackage"        => _("Packages"),
+        "FAIdebianSection"  => _("Section")."&nbsp;("._("Readonly").")",
+        "FAIinstallMethod"  => _("Install Method"),
+        "FAIdebconfInfo"    => _("Package configuration"),
+        "FAIdebianRelease"  => _("Release")."&nbsp;("._("Readonly").")"
+      )
+    );
   }
 
 

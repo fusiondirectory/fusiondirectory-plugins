@@ -36,11 +36,11 @@ class faiVariable extends plugin
   var $subClasses       = array("top","FAIclass","FAIvariableEntry");
 
   /* Class name of the php class which allows us to edit a Sub Object */
-  var $subClassName     = "faiVariableEntry";      
+  var $subClassName     = "faiVariableEntry";
 
   /* Attributes to initialise for each subObject */
-  var $subAttributes    = array("cn","description","FAIvariableContent"); 
-  var $sub64coded       = array();  
+  var $subAttributes    = array("cn","description","FAIvariableContent");
+  var $sub64coded       = array();
   var $subBinary        = array();
 
   /* Specific attributes */
@@ -136,7 +136,7 @@ class faiVariable extends plugin
       set_object_info($this->SubObjects[$var]['dn']);
       $this->is_dialog=true;
     }
-    
+
     /* Remove Sub object */
     if((isset($_POST['DelSubObject']))&&(isset($_POST['SubObject'])) && !preg_match("/freeze/i",$this->FAIstate)){
       foreach($_POST['SubObject'] as $var){
@@ -190,12 +190,12 @@ class faiVariable extends plugin
     natcasesort($keys);
     foreach($keys as $key){
       $tmp[$key]=$this->SubObjects[$key];
-    } 
+    }
     $this->SubObjects = $tmp;
 
     /* Cancel Dialog */
     if(isset($_POST['CancelSubObject'])){
-      $this->is_dialog=false; 
+      $this->is_dialog=false;
       unset($this->dialog);
       $this->dialog=FALSE;
     }
@@ -214,7 +214,7 @@ class faiVariable extends plugin
       $acl = $ui->get_permissions($obj['dn'],"fai/faiVariableEntry");
       if((preg_match("/r/",$acl) || $obj['dn'] == "new") && isset($ret[$key])){
         $tmp[$key] = $ret[$key];
-      } 
+      }
     }
     $smarty->assign("SubObjects",$tmp);
 
@@ -230,7 +230,7 @@ class faiVariable extends plugin
     foreach($tmp['plProvidedAcls'] as $name => $translation) {
       $smarty->assign($name."ACL",$this->getacl($name,preg_match("/freeze/i",$this->FAIstate)));
     }
-    
+
 
     $display.= $smarty->fetch(get_template_path('faiVariable.tpl', TRUE));
     return($display);
@@ -282,7 +282,7 @@ class faiVariable extends plugin
   }
 
 
-  /* Save data to object 
+  /* Save data to object
    */
   function save_object()
   {
@@ -298,7 +298,7 @@ class faiVariable extends plugin
     /* Call common method to give check the hook */
     $message= plugin::check();
 
-    /* Ensure that we do not overwrite an allready existing entry 
+    /* Ensure that we do not overwrite an allready existing entry
      */
     if($this->is_new){
       $release = $this->parent->parent->fai_release;
@@ -317,7 +317,7 @@ class faiVariable extends plugin
   function save()
   {
     plugin::save();
- 
+
     $ldap = $this->config->get_ldap_link();
     FAI::prepare_to_save_FAI_object($this->dn,$this->attrs);
 
@@ -326,11 +326,11 @@ class faiVariable extends plugin
     }else{
       new log("create","fai/".get_class($this),$this->dn,$this->attributes);
     }
- 
+
     /* Prepare FAIscriptEntry to write it to ldap
      * First sort array.
      *  Because we must delete old entries first.
-     * After deletion, we perform add and modify 
+     * After deletion, we perform add and modify
      */
     $Objects = $this->SubObjects;
     foreach($Objects as $name => $obj){
@@ -345,8 +345,8 @@ class faiVariable extends plugin
           $obj[$attrs] = array();
         }
         $tmp[$attrs] = $obj[$attrs];
-      }    
-        
+      }
+
       $tmp['objectClass'] = $this->subClasses;
 
       $sub_dn = "cn=".$obj['cn'].",".$this->dn;
@@ -360,7 +360,7 @@ class faiVariable extends plugin
 
       /* Tag object */
       $this->tag_attrs($tmp, $sub_dn, $this->gosaUnitTag);
-      
+
       if($obj['status'] == "delete"){
         FAI::prepare_to_save_FAI_object($sub_dn,array(),true);
         $this->handle_post_events("remove");
@@ -391,7 +391,7 @@ class faiVariable extends plugin
       $objects                = $this->get_object_attributes($objects,$this->subAttributes);
       $this->SubObjects[$objects['cn']] = $objects;
     }
-  } 
+  }
 
 
   /*! \brief  Used for copy & paste.
@@ -451,21 +451,24 @@ class faiVariable extends plugin
     return($object);
   }
 
-  /* Return plugin informations for acl handling */ 
+  /* Return plugin informations for acl handling */
   static function plInfo()
   {
-    return (array( 
-          "plShortName" => _("Variable"),
-          "plDescription" => _("FAI variable"),
-          "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
-          "plPriority"    => 22,
-          "plSection"     => array("administration"),
-          "plCategory"    => array("fai"),
-          "plProvidedAcls" => array(
-            "cn"                => _("Name")." ("._("Read only").")",
-            "description"       => _("Description"))
-          ));
+    return array(
+      "plShortName"   => _("Variable"),
+      "plDescription" => _("FAI variable"),
+      "plSelfModify"  => FALSE,
+      "plPriority"    => 22,
+      "plSection"     => array("administration"),
+      "plCategory"    => array("fai"),
+      "plObjectType"  => array("faiVariable" => array("name" => _("FAI variable"),
+                                                    "filter" => "objectClass=FAIvariable")),
+
+      "plProvidedAcls" => array(
+        "cn"                => _("Name")." ("._("Read only").")",
+        "description"       => _("Description")
+      )
+    );
   }
 
 }

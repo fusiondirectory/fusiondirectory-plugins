@@ -512,19 +512,20 @@ class faiProfile extends plugin
   /* Return plugin informations for acl handling */
   static function plInfo()
   {
-    return (array(
-          "plShortName" => _("Profile"),
-          "plDescription" => _("FAI profile"),
-          "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
-          "plPriority"    => 30,
-          "plSection"     => array("administration"),
-          "plCategory"    => array("fai"),
-          "plProvidedAcls" => array(
-            "cn"                => _("Name"),
-            "description"       => _("Description"),
-            "FAIclass"          => _("FAI classes"))
-          ));
+    return array(
+      "plShortName"   => _("Profile"),
+      "plDescription" => _("FAI profile"),
+      "plSelfModify"  => FALSE,
+      "plSection"     => array("administration"),
+      "plCategory"    => array("fai"),
+      "plObjectType"  => array("faiProfile" => array("name" => _("FAI Profile"),
+                                                    "filter" => "objectClass=FAIprofile")),
+      "plProvidedAcls" => array(
+        "cn"                => _("Name"),
+        "description"       => _("Description"),
+        "FAIclass"          => _("FAI classes")
+      )
+    );
   }
 
 }

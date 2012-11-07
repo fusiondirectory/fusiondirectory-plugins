@@ -1994,30 +1994,32 @@ class environment extends plugin
 #FIXME these ACLs should work for groups too */
   static function plInfo()
   {
-    return (array("plShortName"     => _("Environment"),
-          "plDescription"   => _("Environment settings"),         // Description
-          "plSelfModify"    => TRUE,
-          "plDepends"       => array("user", "posixAccount"),     // This plugin depends on
-          "plPriority"      => 3,                                 // Position in tabs
-          "plSection"     => array("personal" => _("My account")),
-          "plCategory"    => array("users",
-                                   "groups"),
-          "plOptions"       => array("resolution_hook" => array("type" => "string",
-              "description" => _("Command to extend the list of possible screen resolutions"))),
+    return array(
+      "plShortName"     => _("Environment"),
+      "plDescription"   => _("Environment settings"),         // Description
+      "plIcon"          => "plugins/systems/images/plugin.png";
+      "plSelfModify"    => TRUE,
+      "plDepends"       => array("user", "posixAccount"),     // This plugin depends on
+      "plSection"       => array("personal" => _("My account")),
+      "plCategory"      => array("users", "groups"),
+      "plObjectType"    => array("user", "group"),
+      "plOptions"       => array("resolution_hook" => array("type" => "string",
+          "description" => _("Command to extend the list of possible screen resolutions"))),
 
-          "plProvidedAcls"  => array(
+      "plProvidedAcls"  => array(
 
-            "gotoProfileServer"   => _("Profile server") ,
-            "gotoProfileQuota"    => _("Profile quota") ,
-            "gotoProfileFlagC"    => _("Cache profile localy") ,
-            "gotoShare"           => _("Shares"),
-            "gotoHotplugDevice"   => _("Hotplug devices"),
-            "gotoKioskProfile"    => _("Kiosk profile") ,
-            "gotoProfileFlagL"    => _("Resolution changeable during session") ,
-            "gotoXResolution"     => _("Resolution") ,
-            "gotoLogonScript"     => _("Logon script"),
-            "gotoLogoffScript"    => _("Log off script"))
-            ));
+        "gotoProfileServer"   => _("Profile server"),
+        "gotoProfileQuota"    => _("Profile quota"),
+        "gotoProfileFlagC"    => _("Cache profile localy"),
+        "gotoShare"           => _("Shares"),
+        "gotoHotplugDevice"   => _("Hotplug devices"),
+        "gotoKioskProfile"    => _("Kiosk profile"),
+        "gotoProfileFlagL"    => _("Resolution changeable during session"),
+        "gotoXResolution"     => _("Resolution"),
+        "gotoLogonScript"     => _("Logon script"),
+        "gotoLogoffScript"    => _("Log off script")
+      )
+    );
   }
 }
 

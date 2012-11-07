@@ -337,24 +337,26 @@ class componentGeneric extends plugin
   /* Return plugin informations for acl handling */
   static function plInfo()
   {
-    return (array(
-          "plShortName"   => _("Generic"),
-          "plDescription" => _("Component generic"),
-          "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
-          "plPriority"    => 1,
-          "plSection"     => array("administration"),
-          "plCategory"    => array("component" => array("description"  => _("Network device"),
-                                                        "objectClass"  => array("device", "ipHost", "ieee802Device"))),
-          "plProvidedAcls"=> array(
-            "cn"                  => _("Name"),
-            "base"                => _("Base"),
-            "description"         => _("Description"),
-            "userPassword"      => _("Root password"))
-          ));
+    return array(
+      "plShortName"   => _("Generic"),
+      "plDescription" => _("Component generic"),
+      "plSelfModify"  => FALSE,
+      "plPriority"    => 1,
+      "plSection"     => array("administration"),
+      "plCategory"    => array("component" => array("description"  => _("Network device"),
+                                                    "objectClass"  => array("device", "ipHost", "ieee802Device"))),
+      "plObjectType"  => array("component" => array("name"  => _("Network device"),
+                                                    "filter"  => "(&(objectClass=device)(objectClass=ipHost)(objectClass=ieee802Device))")),
+
+      "plProvidedAcls"  => array(
+        "cn"            => _("Name"),
+        "base"          => _("Base"),
+        "description"   => _("Description"),
+        "userPassword"  => _("Root password")
+      )
+    );
   }
 
 }
 
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

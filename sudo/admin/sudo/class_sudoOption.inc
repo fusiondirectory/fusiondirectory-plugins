@@ -558,6 +558,7 @@ SCRIPT;
       "plSelfModify"      => FALSE,
       "plSection"         => array("administration"),
       "plCategory"        => array("sudo"),
+      "plObjectType"      => array("sudo"),
       "plPriority"        => 2,
 
       // But simplePlugin can generate the ACL list for us

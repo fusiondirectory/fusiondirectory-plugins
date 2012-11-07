@@ -42,6 +42,22 @@ class rsyslog extends plugin
   var $limits = array(20,50,100,200,500,1000,'-');
   var $page   = 0;
 
+  /*! \brief  Return plugin informations for acl handling
+      @return Array ACL infos of this plugin.
+   */
+  static function plInfo()
+  {
+    return array(
+      "plShortName"   => _("System logs"),
+      "plDescription" => _("System logs"),
+      "plSelfModify"  => FALSE,
+      "plSection"     => array("administration"),
+      "plObjectType"  => array("rsyslog" => array("name" => _("System logs"))),
+
+      "plProvidedAcls" => array()
+    );
+  }
+
   function rsyslog (&$config, $dn= NULL)
   {
     $this->config= &$config;

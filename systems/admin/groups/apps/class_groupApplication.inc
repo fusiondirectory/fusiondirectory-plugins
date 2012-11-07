@@ -1496,23 +1496,24 @@ class appgroup extends plugin
    */
   static function plInfo()
   {
-    return (array(
-          "plShortName"   => _("Applications"),
-          "plDescription" => _("Group applications"),
-          "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
-          "plPriority"    => 7,
-          "plSection"     => array("administration"),
-          "plCategory"    => array("groups"),
+    return array(
+      "plShortName"   => _("Applications"),
+      "plDescription" => _("Group applications"),
+      "plSelfModify"  => FALSE,
+      "plPriority"    => 7,
+      "plSection"     => array("administration"),
+      "plCategory"    => array("groups"),
+      "plObjectType"  => array("group"),
 
-          "plProvidedAcls"=> array(
-            "gosaMemberApplication"     => _("Application"),
-            "FAIrelease"                => _("Release"),
-            "gosaApplicationParameter"  => _("Application parameter"),
-            "placeOnDesktop"      => _("Place icon on members desktop"),      // D
-            "placeOnMenuBar"      => _("Place entry in members launch bar"),  // L
-            "placeInStartmenu"    => _("Place entry in members startmenu")    // M
-          )));
+      "plProvidedAcls"=> array(
+        "gosaMemberApplication"     => _("Application"),
+        "FAIrelease"                => _("Release"),
+        "gosaApplicationParameter"  => _("Application parameter"),
+        "placeOnDesktop"            => _("Place icon on members desktop"),      // D
+        "placeOnMenuBar"            => _("Place entry in members launch bar"),  // L
+        "placeInStartmenu"          => _("Place entry in members startmenu")    // M
+      )
+    );
   }
 }
 // vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:

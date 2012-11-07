@@ -722,38 +722,39 @@ class conference extends plugin
   /* Return plugin informations for acl handling */
   static function plInfo()
   {
-    return (array(
-          "plShortName"   => _("Conference"),
-          "plDescription" => _("Phone conference management"),
-          "plSelfModify"  => TRUE,
-          "plDepends"     => array(),
-          "plPriority"    => 0,
-          "plSection"     => array("administration"),
-          "plCategory"    => array("gofonconference" => array("description" => _("GOfon conference"),
-              "objectClass" => "gofonConference")),
+    return array(
+      "plShortName"   => _("Conference"),
+      "plDescription" => _("Phone conference management"),
+      "plSelfModify"  => TRUE,
+      "plSection"     => array("administration"),
+      "plCategory"    => array("gofonconference" => array("description" => _("GOfon conference"),
+                                                          "objectClass" => "gofonConference")),
+      "plObjectType"  => array("conference" => array("name" => _("Asterisk conference"),
+                                                      "filter" => "objectClass=gofonConference")),
 
-          "plProvidedAcls" => array(
-            "cn"                            => _("Name"),
-            "base"                          => _("Base"),
-            "description"                   => _("Description"),
-            "goFonPIN"                      => _("Conference PIN"),
+      "plProvidedAcls" => array(
+        "cn"                            => _("Name"),
+        "base"                          => _("Base"),
+        "description"                   => _("Description"),
+        "goFonPIN"                      => _("Conference PIN"),
 
-            "language"                      => _("Language"),
+        "language"                      => _("Language"),
 
-            "goFonHomeServer"              => _("Home server"),
-            "goFonConferenceOptionP"       => _("Preset PIN"),
-            "goFonConferenceOptionr"       => _("Record conference"),
-            "goFonConferenceOptionM"       => _("Play music on hold"),
-            "goFonConferenceOptions"       => _("Activate menu"),
-            "goFonConferenceOptioni"       => _("Announce user activity"),
-            "goFonConferenceOptionc"       => _("Count user"),
-            "goFonConferenceOptionD"       => _("Conference type"),
+        "goFonHomeServer"              => _("Home server"),
+        "goFonConferenceOptionP"       => _("Preset PIN"),
+        "goFonConferenceOptionr"       => _("Record conference"),
+        "goFonConferenceOptionM"       => _("Play music on hold"),
+        "goFonConferenceOptions"       => _("Activate menu"),
+        "goFonConferenceOptioni"       => _("Announce user activity"),
+        "goFonConferenceOptionc"       => _("Count user"),
+        "goFonConferenceOptionD"       => _("Conference type"),
 
-            "goFonConferenceOptionFormat"   => _("Format"),
-            "goFonConferenceOptionLifetime" => _("Lifetime"),
-            "telephoneNumber"               => _("Telephone number"),
-            "goFonConferenceOwner"          => _("Owner"))
-            ));
+        "goFonConferenceOptionFormat"   => _("Format"),
+        "goFonConferenceOptionLifetime" => _("Lifetime"),
+        "telephoneNumber"               => _("Telephone number"),
+        "goFonConferenceOwner"          => _("Owner")
+      )
+    );
   }
 
 }

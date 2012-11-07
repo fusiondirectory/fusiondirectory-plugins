@@ -232,19 +232,19 @@ class blocklistGeneric extends simplePlugin
   /* Return plugin informations for acl handling */
   static function plInfo()
   {
-    return (array(
+    return array(
       "plShortName"     => _("Fax blocklists"),
       "plDescription"   => _("The part of the fax plugin managing blacklist"),
       "plSelfModify"    => FALSE,
       "plSection"       => array("administration" => _("Fax blocklists")),
-      "plCategory"      => array(
-        "gofaxlist" => array(
-          "description" => _("Fax blocklists"),
-          "objectClass" => array("goFaxRBlock","goFaxSBlock")
-        )
-      ),
+      "plCategory"      => array( "gofaxlist" => array(
+                            "description" => _("Fax blocklists"),
+                            "objectClass" => array("goFaxRBlock","goFaxSBlock"))),
+      "plObjectType"    => array("faxBlock" => array(
+                            "name" => _("Fax blocklists"),
+                            "filter" => "(|(goFaxRBlock)(goFaxSBlock))")),
       "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
-    ));
+    );
   }
 
 }

@@ -36,11 +36,11 @@ class faiTemplate extends plugin
   var $subClasses       = array("top","FAIclass","FAItemplateEntry");
 
   /* Class name of the php class which allows us to edit a Sub Object */
-  var $subClassName     = "faiTemplateEntry";      
+  var $subClassName     = "faiTemplateEntry";
 
   /* Attributes to initialise for each subObject */
   var $subAttributes    = array("cn","description","FAItemplatePath","FAIowner","FAImode");
-  var $sub_Load_Later   = array("FAItemplateFile"); 
+  var $sub_Load_Later   = array("FAItemplateFile");
   var $sub64coded       = array();
   var $subBinary        = array("FAItemplateFile");
 
@@ -111,7 +111,7 @@ class faiTemplate extends plugin
         if(in_array_ics($attrs,$this->subBinary)){
           $var = $ldap->get_attribute($object['dn'], $attrs,$r_array=0);
         }
-  
+
         $object[$attrs] = $var;
       }
     }
@@ -272,7 +272,7 @@ class faiTemplate extends plugin
 
     /* Cancel Dialog */
     if(isset($_POST['CancelSubObject'])){
-      $this->is_dialog=false; 
+      $this->is_dialog=false;
       unset($this->dialog);
       $this->dialog=FALSE;
     }
@@ -289,11 +289,11 @@ class faiTemplate extends plugin
     $divlist->setHeight(400);
 
     $tmp = $this->getList(true);
-  
+
     /* Create div list with all sub entries listed */
     foreach($this->SubObjects as $key => $name){
 
-      /* Skip removed entries */ 
+      /* Skip removed entries */
       if($name['status'] == "delete") continue;
 
       /* Get permissions */
@@ -326,7 +326,7 @@ class faiTemplate extends plugin
       if(preg_match("/r/",$s_acl)){
 
         $edit_link = "<a href='?plug=".$_GET['plug']."&amp;act=edit&amp;id=".$key."'>".$tmp[$key]."</a>";
-        $divlist->AddEntry(array( array("string"=> $edit_link), 
+        $divlist->AddEntry(array( array("string"=> $edit_link),
               array("string"=>$down , "attach" => "style='width:20px;'"),
               array("string"=>str_replace("%s",base64_encode($key),$act),
                 "attach"=>"style='border-right: 0px;width:50px;text-align:right;'")));
@@ -341,8 +341,8 @@ class faiTemplate extends plugin
     }
 
     $dn = $this->acl_base_for_current_object($this->dn);
-    $smarty->assign("sub_object_is_addable", 
-            preg_match("/c/",$this->ui->get_permissions($dn,"fai/faiTemplateEntry")) && 
+    $smarty->assign("sub_object_is_addable",
+            preg_match("/c/",$this->ui->get_permissions($dn,"fai/faiTemplateEntry")) &&
             !preg_match("/freeze/",$this->FAIstate));
 
     foreach($this->attributes as $attr){
@@ -373,7 +373,7 @@ class faiTemplate extends plugin
     $a_return=array();
     foreach($this->SubObjects as $obj){
       if($obj['status'] != "delete"){
-      
+
         if((isset($obj['description']))&&(!empty($obj['description']))){
           if(strlen($obj['description']) > 40){
             $obj['description'] = substr($obj['description'],0,40)."...";
@@ -408,7 +408,7 @@ class faiTemplate extends plugin
   }
 
 
-  /* Save data to object 
+  /* Save data to object
    */
   function save_object()
   {
@@ -424,7 +424,7 @@ class faiTemplate extends plugin
     /* Call common method to give check the hook */
     $message= plugin::check();
 
-    /* Ensure that we do not overwrite an allready existing entry 
+    /* Ensure that we do not overwrite an allready existing entry
      */
     if($this->is_new){
       $release = $this->parent->parent->fai_release;
@@ -457,7 +457,7 @@ class faiTemplate extends plugin
     /* Prepare FAIscriptEntry to write it to ldap
      * First sort array.
      *  Because we must delete old entries first.
-     * After deletion, we perform add and modify 
+     * After deletion, we perform add and modify
      */
     $Objects = array();
     $tmp = $this->SubObjects;
@@ -469,12 +469,12 @@ class faiTemplate extends plugin
 
     foreach($tmp as $name => $obj){
       if($obj['status'] == "delete"){
-        $Objects[$name] = $obj; 
+        $Objects[$name] = $obj;
       }
     }
     foreach($tmp as $name => $obj){
       if($obj['status'] != "delete"){
-        $Objects[$name] = $obj; 
+        $Objects[$name] = $obj;
       }
     }
 
@@ -490,8 +490,8 @@ class faiTemplate extends plugin
           $obj[$attrs] = array();
         }
         $tmp[$attrs] =($obj[$attrs]);
-      }    
-        
+      }
+
       $tmp['objectClass'] = $this->subClasses;
 
       $sub_dn = "cn=".$obj['cn'].",".$this->dn;
@@ -540,7 +540,7 @@ class faiTemplate extends plugin
       $this->SubObjects[$objects['cn']] = $objects;
     }
   }
-  
+
 
   /*! \brief  Used for copy & paste.
     Returns a HTML input mask, which allows to change the cn of this entry.
@@ -568,24 +568,28 @@ class faiTemplate extends plugin
       $this->cn = get_post('cn');
     }
   }
-  
-  /* Return plugin informations for acl handling */ 
+
+  /* Return plugin informations for acl handling */
   static function plInfo()
   {
-    return (array( 
-          "plShortName" => _("Template"),
-          "plDescription" => _("FAI template"),
-          "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
-          "plPriority"    => 24,
-          "plSection"     => array("administration"),
-          "plCategory"    => array("fai"),
-          "plProvidedAcls" => array(
-            "cn"                => _("Name")." ("._("Readonly").")",
-            "description"       => _("Description"))
-          ));
+    return array(
+      "plShortName"   => _("Template"),
+      "plDescription" => _("FAI template"),
+      "plSelfModify"  => FALSE,
+      "plDepends"     => array(),
+      "plPriority"    => 24,
+      "plSection"     => array("administration"),
+      "plCategory"    => array("fai"),
+      "plObjectType"  => array("faiTemplate" => array("name" => _("FAI template"),
+                                                    "filter" => "objectClass=FAItemplate")),
+
+      "plProvidedAcls" => array(
+        "cn"                => _("Name")." ("._("Readonly").")",
+        "description"       => _("Description")
+      )
+    );
   }
-  
+
 }
 
 // vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:

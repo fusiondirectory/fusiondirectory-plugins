@@ -895,20 +895,21 @@ class netgroup extends plugin {
 //TODO: check ACL!
     /* Return plugin informations for acl handling  */
     static function plInfo() {
-        return (array(
-    "plShortName" => _("Generic"),
-    "plDescription" => _("Generic NIS Netgroup settings"),
-    "plSelfModify" => FALSE,
-    "plDepends" => array(),
-    "plPriority" => 0,
-    "plSection" => array("administration"),
-    "plCategory" => array("netgroups" => array("objectClass" => "nisNetgroup", "description" => _("NIS Netgroups"))),
-    "plProvidedAcls" => array(
-        "cn" => _("Name"),
-        "description" => _("Description"),
-        "base" => _("Base"),
-        "memberCn" => _("NIS Netgroup members"))
-        ));
+      return array(
+        "plShortName"   => _("Generic"),
+        "plDescription" => _("Generic NIS Netgroup settings"),
+        "plSelfModify"  => FALSE,
+        "plSection"     => array("administration"),
+        "plCategory"    => array("netgroups" => array("objectClass" => "nisNetgroup", "description" => _("NIS Netgroups"))),
+        "plObjectType"  => array("netgroup" => array("name" => _("NIS Netgroup"), "filter" => "objectClass=nisNetgroup")),
+
+        "plProvidedAcls" => array(
+          "cn"          => _("Name"),
+          "description" => _("Description"),
+          "base"        => _("Base"),
+          "memberCn"    => _("NIS Netgroup members")
+        )
+      );
     }
 
     function multiple_save_object() {

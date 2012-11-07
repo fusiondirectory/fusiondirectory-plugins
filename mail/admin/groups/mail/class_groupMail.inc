@@ -23,20 +23,20 @@
 class mailgroup extends plugin
 {
   /* Multiple edit */
-  var $gosaMailForwardingAddress_Some  = array();  // Used in multiple edit 
+  var $gosaMailForwardingAddress_Some  = array();  // Used in multiple edit
 
   /* Default values */
-  var $mail                       = "";           // Default mail address 
+  var $mail                       = "";           // Default mail address
   var $gosaMailAlternateAddress   = array();  // Set default Alternate Mail Adresses to empty array
   var $gosaMailForwardingAddress  = array();  // Forwarding also empty
-  var $gosaMailServer             = "";       // Selected mailserver 
-  var $gosaMailQuota              = "";       // Defined Quota 
-  var $gosaVacationMessage        = "";       // Vocation message 
-  var $gosaSpamSortLevel          = "";     
+  var $gosaMailServer             = "";       // Selected mailserver
+  var $gosaMailQuota              = "";       // Defined Quota
+  var $gosaVacationMessage        = "";       // Vocation message
+  var $gosaSpamSortLevel          = "";
   var $gosaSpamMailbox            = "";
   var $gosaSharedFolderTarget     ;
-  var $gosaMailDeliveryMode       = "[L        ]";   // 
-  var $gosaMailMaxSize            = "";       // 
+  var $gosaMailDeliveryMode       = "[L        ]";   //
+  var $gosaMailMaxSize            = "";       //
   var $FolderType                 = array("CAT" => '', "SUB_CAT" => '');
 
   var $quotaUsage                 = -1;        // -1 Means undefined
@@ -46,8 +46,8 @@ class mailgroup extends plugin
   var $members                    = array();  // Group members
   var $mailusers                  = array();  // Group member with mail account
   var $folder_acls                = array();
-  var $MailMethod = NULL; 
-  var $mailAddressSelect             = FALSE;    
+  var $MailMethod = NULL;
+  var $mailAddressSelect             = FALSE;
   var $remove_folder_from_imap    = true;
   var $view_logged                = FALSE;
   var $mailDomainPart             = "";
@@ -95,9 +95,9 @@ class mailgroup extends plugin
     $this->initially_was_account = $this->is_account;
 
     /* While we are not not allowed to modify the mail address
-     *  and this is a new mail account, preset the user part of the 
+     *  and this is a new mail account, preset the user part of the
      *  mail address with the accounts cn.
-     */ 
+     */
     if(!$this->mailMethod->isModifyableMail() && !$this->initially_was_account){
       $this->mail = $base_object->cn;
     }
@@ -105,12 +105,12 @@ class mailgroup extends plugin
     /* Load folder_acls with defaults.
       anyone -- The default acl, will be written to ldap.
       member -- The ACL used for the members.
-     */ 
+     */
     $this->folder_acls = $this->mailMethod->getDefaultACLs();
 
     /* Load acls
        The most used acl will be used as member acl, this
-        shortens the listed acls.        
+        shortens the listed acls.
        This may be merged/overwritten by the mail methods.
      */
     $ldap = $this->config->get_ldap_link();
@@ -153,7 +153,7 @@ class mailgroup extends plugin
                 $this->mailMethod->get_error()), ERROR_DIALOG);
         }
 
-        /* Receive permissions */  
+        /* Receive permissions */
         $this->folder_acls = $this->mailMethod->getFolderACLs($this->folder_acls);
         if($this->mailMethod->is_error()){
           msg_dialog::display(_("Mail error"), sprintf(_("Cannot receive folder permissions: %s"),
@@ -196,7 +196,7 @@ class mailgroup extends plugin
     $this->mailMethod->disconnect();
     $this->AclTypes = $this->mailMethod->getAclTypes();
 
-    /* Summarize most used ACLs as member acl 
+    /* Summarize most used ACLs as member acl
      */
     if(count($this->folder_acls) > 2){
       $acl_usage = array();
@@ -205,7 +205,7 @@ class mailgroup extends plugin
       $member = $this->get_member();
       foreach($this->folder_acls as $user => $acl){
         if(preg_match("/^__/",$user)) continue;
-        if(!in_array($user,$member['mail'])) continue; 
+        if(!in_array($user,$member['mail'])) continue;
         if(!isset($acl_usage[$acl])) $acl_usage[$acl]=0;
         $acl_usage[$acl] ++;
         if($acl_usage[$acl] > $most_cnt){
@@ -213,7 +213,7 @@ class mailgroup extends plugin
           $most_acl = $acl;
         }
       }
-      $this->folder_acls['__member__'] = $most_acl;  
+      $this->folder_acls['__member__'] = $most_acl;
       foreach($this->folder_acls as $name => $acl){
         if(preg_match("/^__/",$name)) continue;
         if($acl == $most_acl && in_array($name,$member['mail'])){
@@ -233,11 +233,11 @@ class mailgroup extends plugin
     }
   }
 
- 
+
   /*! \brief  Returns all group members once with 'dn' and once with 'mail'.
               This function is used to summarize ACLs by member acls.
       @return Array   Containing all members, with mail and dn
-   */ 
+   */
   function get_member()
   {
     $member = array('all' => array(), 'mail' => array());
@@ -251,7 +251,7 @@ class mailgroup extends plugin
         if($ldap->object_match_filter($dn,"(&(objectClass=gosaMailAccount)(".$this->mailMethod->getUAttrib()."=*))")){
           $ldap->cat($dn);
           $attrs = $ldap->fetch();
-          $member['mail'][$uid] = $attrs[$this->mailMethod->getUAttrib()][0]; 
+          $member['mail'][$uid] = $attrs[$this->mailMethod->getUAttrib()][0];
         }
       }
     }else{
@@ -262,8 +262,8 @@ class mailgroup extends plugin
               array("uid","objectClass",$uattrib),GL_SUBSEARCH | GL_NO_ACL_CHECK);
       foreach($users as $user){
         $member['all'][$user['uid'][0]] = $user['dn'];
-        if(isset($user[$uattrib]) 
-            && in_array("gosaMailAccount",$user['objectClass']) 
+        if(isset($user[$uattrib])
+            && in_array("gosaMailAccount",$user['objectClass'])
             && (in_array($user['uid'][0], $this->attrs['memberUid']))){
           $member['mail'][$user['uid'][0]] = $user[$uattrib][0];
         }
@@ -283,7 +283,7 @@ class mailgroup extends plugin
       $this->view_logged = TRUE;
       new log("view","groups/".get_class($this),$this->dn);
     }
- 
+
     /****************
       Account status
      ****************/
@@ -330,7 +330,7 @@ class mailgroup extends plugin
       }
     }
 
-    
+
     /****************
       Preset mail attribute
      ****************/
@@ -414,7 +414,7 @@ class mailgroup extends plugin
       $this->delForwarder ($_POST['forwarder_list']);
     }
 
- 
+
     /****************
       Alternate addresses
      ****************/
@@ -467,11 +467,11 @@ class mailgroup extends plugin
     $smarty->assign("AclTypes" ,    $this->AclTypes);
     $smarty->assign("Effective",    $this->get_effective_member_acls());
     $smarty->assign("show_effective_memeber",    $this->show_effective_memeber);
-  
+
     $smarty->assign("quotaEnabled", $this->mailMethod->quotaEnabled());
     if($this->mailMethod->quotaEnabled()){
       $smarty->assign("gosaMailQuota",$this->gosaMailQuota);
-      $smarty->assign("quotaUsage",   mailMethod::quota_to_image($this->quotaUsage,$this->gosaMailQuota)); 
+      $smarty->assign("quotaUsage",   mailMethod::quota_to_image($this->quotaUsage,$this->gosaMailQuota));
     }
 
     $smarty->assign("MailDomains", $this->mailDomainParts);
@@ -483,7 +483,7 @@ class mailgroup extends plugin
     $smarty->assign("folderTypesEnabled",$this->mailMethod->folderTypesEnabled());
     $smarty->assign("AvailableFolderTypes", $this->AvailableFolderTypes);
     $smarty->assign("FolderType", $this->FolderType);
- 
+
     if (is_numeric($this->gosaMailQuota) && $this->gosaMailQuota != 0){
       if($this->acl_is_readable("gosaMailQuota")){
         $smarty->assign("quotausage", progressbar(round(($this->quotaUsage * 100)/ $this->gosaMailQuota),100,15,true));
@@ -516,7 +516,7 @@ class mailgroup extends plugin
 
 
     /******
-      Multi edit support 
+      Multi edit support
      ******/
     foreach($this->attributes as $attr){
       if(in_array($attr,$this->multi_boxes)){
@@ -550,7 +550,7 @@ class mailgroup extends plugin
     if(!$this->initially_was_account){
       return;
     }
- 
+
     /* If domain part was selectable, contruct mail address */
     if($this->mailMethod->domainSelectionEnabled() || $this->mailMethod->mailEqualsCN()){
       $this->mail = $this->mail."@".$this->mailDomainPart;
@@ -567,7 +567,7 @@ class mailgroup extends plugin
     $this->cleanup();
     $ldap = $this->config->get_ldap_link();
     $ldap->cd($this->dn);
-    $ldap->modify ($this->attrs); 
+    $ldap->modify ($this->attrs);
     if (!$ldap->success()){
       msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_MOD, get_class()));
     }
@@ -605,7 +605,7 @@ class mailgroup extends plugin
   /* Save data to object */
   function save_object()
   {
-    /* Check if user wants to remove the shared folder from imap too 
+    /* Check if user wants to remove the shared folder from imap too
      */
     if($this->initially_was_account && !$this->is_account){
       if(isset($_POST['remove_folder_from_imap'])){
@@ -647,7 +647,7 @@ class mailgroup extends plugin
       }
     }
 
-      /* Get folder type 
+      /* Get folder type
        */
       if($this->mailMethod->folderTypesEnabled()){
         if(isset($_POST['FolderTypeCAT'])){
@@ -658,14 +658,14 @@ class mailgroup extends plugin
         }
       }
 
-      /* Handle posted ACL changes. 
+      /* Handle posted ACL changes.
          Add/del member acls.
        */
       if(isset($_POST['mail_acls_posted'])){
         $new_acls = array();
         foreach(array("__anyone__","__member__") as $attr){
           $pname = base64_encode($attr);
-          if(get_post('acl_value_'.$pname)){ 
+          if(get_post('acl_value_'.$pname)){
             $new_acls[$attr] = get_post('acl_value_'.$pname);
           }else{
             $new_acls[$attr] = $this->folder_acls[$attr];
@@ -758,9 +758,9 @@ class mailgroup extends plugin
     /* Enforce lowercase mail address and trim whitespaces
      */
     $this->mail = trim(strtolower($this->mail));
-    
 
-    /* Create acls 
+
+    /* Create acls
      */
     $this->acl = array("anyone ".$this->folder_acls['__anyone__']);
     $member = $this->get_member();
@@ -782,7 +782,7 @@ class mailgroup extends plugin
     }
     $this->folder_acls = $new_folder_acls;
     $this->acl = array_unique($this->acl);
-     
+
     /* Call parents save to prepare $this->attrs */
     plugin::save();
 
@@ -796,17 +796,17 @@ class mailgroup extends plugin
     /* Save data to LDAP */
     $ldap->cd($this->dn);
     $this->cleanup();
-    $ldap->modify ($this->attrs); 
+    $ldap->modify ($this->attrs);
     if (!$ldap->success()){
       msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_MOD, get_class()));
     }
-    
+
     if($this->initially_was_account){
       new log("modify","groups/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
     }else{
-      new log("create","groups/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());  
+      new log("create","groups/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
     }
-    
+
     /* Do imap/sieve actions,
      */
     $this->mailMethod->connect();
@@ -822,7 +822,7 @@ class mailgroup extends plugin
         msg_dialog::display(_("Mail error"), sprintf(_("Cannot write quota settings: %s"),
               $this->mailMethod->get_error()), ERROR_DIALOG);
       }
-      /* Save Folder Types, if available 
+      /* Save Folder Types, if available
        */
       if($this->mailMethod->folderTypesEnabled()){
         $this->mailMethod->setFolderType($this->FolderType);
@@ -856,7 +856,7 @@ class mailgroup extends plugin
     /* Call common method to give check the hook */
     $message= plugin::check();
 
-    /* Ensure that this group isn't renamed if the mailMethod enforces cn mailAttributes 
+    /* Ensure that this group isn't renamed if the mailMethod enforces cn mailAttributes
      */
     if($this->mailMethod->mailEqualsCN() && $this->initially_was_account){
       if($this->cn != $this->orig_cn){
@@ -881,7 +881,7 @@ class mailgroup extends plugin
         $message[]= msgPool::invalid(_("Mail address"),"","","your-address@your-domain.com");
       }
     }
-    
+
     /* Check quota */
     if ($this->gosaMailQuota != '' && $this->acl_is_writeable("gosaMailQuota")){
       if (!is_numeric($this->gosaMailQuota)) {
@@ -928,7 +928,7 @@ class mailgroup extends plugin
     plugin::adapt_from_template($dn, $skip);
 
     foreach (array("gosaMailAlternateAddress", "gosaMailForwardingAddress") as $val){
- 
+
       if (in_array($val, $skip)){
         continue;
       }
@@ -989,7 +989,7 @@ class mailgroup extends plugin
   {
     if(!$this->is_account) return;
 
-    /* Perform ADD / REMOVE ... for mail alternate / mail forwarding addresses 
+    /* Perform ADD / REMOVE ... for mail alternate / mail forwarding addresses
     */
     $this->execute();
     if(isset($_POST['mail'])){
@@ -1001,7 +1001,7 @@ class mailgroup extends plugin
   function PrepareForCopyPaste($source)
   {
     plugin::PrepareForCopyPaste($source);
- 
+
     /* Reset alternate mail addresses */
     $this->gosaMailAlternateAddress = array();
   }
@@ -1010,27 +1010,29 @@ class mailgroup extends plugin
   /* Return plugin informations for acl handling  */
   static function plInfo()
   {
-    return (array(
-          "plShortName"   => _("Mail"),
-          "plDescription" => _("Group mail"),
-          "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
-          "plPriority"    => 10,
-          "plSection"     => array("administration"),
-          "plCategory"    => array("groups"), 
-          "plProvidedAcls"=> array(
-            "mail"                      => _("Mail address"),
-            "gosaMailQuota"             => _("Quota size"),
-            "gosaMailServer"            => _("Mail server"),
-            "kolabFolderType"           => _("Folder type")." ("._("Kolab").")",
-            "gosaMailAlternateAddress"  => _("Alternate addresses"),
-            "gosaMailForwardingAddress" => _("Forwarding addresses"),
-            "gosaMailDeliveryModeI"     => _("Only local"),
-            "acl"                       => _("Permissions"))
-          ));
+    return array(
+      "plShortName"   => _("Mail"),
+      "plDescription" => _("Group mail"),
+      "plSelfModify"  => FALSE,
+      "plPriority"    => 10,
+      "plSection"     => array("administration"),
+      "plCategory"    => array("groups"),
+      "plObjectType"  => array("group"),
+
+      "plProvidedAcls"=> array(
+        "mail"                      => _("Mail address"),
+        "gosaMailQuota"             => _("Quota size"),
+        "gosaMailServer"            => _("Mail server"),
+        "kolabFolderType"           => _("Folder type")." ("._("Kolab").")",
+        "gosaMailAlternateAddress"  => _("Alternate addresses"),
+        "gosaMailForwardingAddress" => _("Forwarding addresses"),
+        "gosaMailDeliveryModeI"     => _("Only local"),
+        "acl"                       => _("Permissions")
+      )
+    );
   }
 
-  
+
   /* Remove given ACL for given member (uid,mail) ..
    */
   function removeUserAcl($index )
@@ -1071,7 +1073,7 @@ class mailgroup extends plugin
   {
     if(isset($_POST['multiple_mail_group_posted'])){
       plugin::multiple_save_object();
-      
+
       foreach(array("kolabFolderType") as $attr){
         if(isset($_POST['use_'.$attr])){
           $this->multi_boxes[] = $attr;
@@ -1104,14 +1106,14 @@ class mailgroup extends plugin
       }
     }
   }
-  
-  
+
+
   /* Return selected values for multiple edit */
   function get_multi_edit_values()
   {
     $ret = plugin::get_multi_edit_values();
-    $ret['Forward_some'] = $this->gosaMailForwardingAddress_Some;    
-    $ret['Forward_all'] = $this->gosaMailForwardingAddress;    
+    $ret['Forward_some'] = $this->gosaMailForwardingAddress_Some;
+    $ret['Forward_all'] = $this->gosaMailForwardingAddress;
     if(in_array('kolabFolderType',$this->multi_boxes)){
       $ret['kolabFolderTypeType'] = $this->kolabFolderTypeType;
       $ret['kolabFolderTypeSubType'] = $this->kolabFolderTypeSubType;
@@ -1148,7 +1150,7 @@ class mailgroup extends plugin
 
     /* Update multiple edit values too */
     if($this->multiple_support_active){
-      $this->gosaMailForwardingAddress_Some= 
+      $this->gosaMailForwardingAddress_Some=
         array_remove_entries (array($address),$this->gosaMailForwardingAddress_Some);
     }
 
@@ -1158,7 +1160,7 @@ class mailgroup extends plugin
   }
 
 
-  /*! \brief  Removes the given mail address from the forwarders 
+  /*! \brief  Removes the given mail address from the forwarders
    */
   function delForwarder($addresses)
   {
@@ -1211,7 +1213,7 @@ class mailgroup extends plugin
   }
 
 
-  /*! \brief  Removes the given mail address from the alternate addresses  
+  /*! \brief  Removes the given mail address from the alternate addresses
    */
   function delAlternate($addresses)
   {
@@ -1243,7 +1245,7 @@ class mailgroup extends plugin
         continue;
       }
 
-      
+
       $tmp[$mail]  = $this->folder_acls['__member__'];
     }
     return($tmp);

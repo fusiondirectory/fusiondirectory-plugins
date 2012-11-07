@@ -800,18 +800,21 @@ class faiPartitionTable extends plugin
   /* Return plugin informations for acl handling */
   static function plInfo()
   {
-    return (array(
-          "plShortName" => _("Partition table"),
-          "plDescription" => _("FAI partition table"),
-          "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
-          "plPriority"    => 26,
-          "plSection"     => array("administration"),
-          "plCategory"    => array("fai"),
-          "plProvidedAcls" => array(
-            "cn"                => _("Name")."&nbsp;("._("Read only").")",
-            "description"       => _("Description"))
-          ));
+    return array(
+      "plShortName"   => _("Partition table"),
+      "plDescription" => _("FAI partition table"),
+      "plSelfModify"  => FALSE,
+      "plPriority"    => 26,
+      "plSection"     => array("administration"),
+      "plCategory"    => array("fai"),
+      "plObjectType"  => array("faiPartition" => array("name" => _("FAI partition table"),
+                                                    "filter" => "objectClass=FAIpartitionTable")),
+
+      "plProvidedAcls" => array(
+        "cn"                => _("Name")."&nbsp;("._("Read only").")",
+        "description"       => _("Description")
+      )
+    );
   }
 
 
