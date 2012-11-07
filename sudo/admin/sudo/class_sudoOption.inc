@@ -556,7 +556,6 @@ SCRIPT;
       "plShortName"       => _("Options"),
       "plDescription"     => _("Sudo options"),
       "plSelfModify"      => FALSE,
-      "plSection"         => array("administration"),
       "plCategory"        => array("sudo"),
       "plObjectType"      => array("sudo"),
       "plPriority"        => 2,

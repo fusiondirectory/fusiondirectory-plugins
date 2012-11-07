@@ -2000,7 +2000,6 @@ class environment extends plugin
       "plIcon"          => "plugins/systems/images/plugin.png";
       "plSelfModify"    => TRUE,
       "plDepends"       => array("user", "posixAccount"),     // This plugin depends on
-      "plSection"       => array("personal" => _("My account")),
       "plCategory"      => array("users", "groups"),
       "plObjectType"    => array("user", "group"),
       "plOptions"       => array("resolution_hook" => array("type" => "string",

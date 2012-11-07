@@ -598,7 +598,6 @@ class application extends plugin
       "plShortName"   => _("Generic"),
       "plDescription" => _("Application generic"),
       "plSelfModify"  => FALSE,
-      "plSection"     => array("administration"),
       "plCategory"    => array("application" => array("description"  => _("Application"),
                                                       "objectClass"  => "gosaApplication")),
       "plObjectType"  => array("application" => array("name"  => _("Application"),

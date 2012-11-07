@@ -69,7 +69,6 @@ class proxyAccount extends simplePlugin
           "plSelfModify"    => TRUE,
           "plDepends"       => array("user"),
           "plPriority"      => 21,                                 // Position in tabs
-          "plSection"       => array("personal" => _("My account")),
           "plCategory"      => array("users"),
           "plOptions"       => array(),
           "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())

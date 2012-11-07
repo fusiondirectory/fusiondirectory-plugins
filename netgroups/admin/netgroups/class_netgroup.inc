@@ -899,7 +899,6 @@ class netgroup extends plugin {
         "plShortName"   => _("Generic"),
         "plDescription" => _("Generic NIS Netgroup settings"),
         "plSelfModify"  => FALSE,
-        "plSection"     => array("administration"),
         "plCategory"    => array("netgroups" => array("objectClass" => "nisNetgroup", "description" => _("NIS Netgroups"))),
         "plObjectType"  => array("netgroup" => array("name" => _("NIS Netgroup"), "filter" => "objectClass=nisNetgroup")),
 

@@ -127,7 +127,6 @@ class serviceAsterisk extends simpleService {
       "plDescription"   => _("VoIP - asterisk management")." ("._("Services").")",
       "plSelfModify"    => FALSE,
       "plPriority"      => 92,
-      "plSection"       => array("administration"),
       "plCategory"      => array("server"),
 
       "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())

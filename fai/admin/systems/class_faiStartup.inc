@@ -255,7 +255,6 @@ class faiStartup extends simplePlugin
       "plDescription"   => _("Full automated installation"),
       "plSelfModify"    => FALSE,
       "plPriority"      => 9,
-      "plSection"       => array("administration"),
       "plCategory"      => array("workstation", "server", "ogroups"),
       "plObjectType"    => array("workstation", "server", "ogroup"),
 

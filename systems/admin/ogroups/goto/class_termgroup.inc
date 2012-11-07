@@ -399,7 +399,6 @@ class termgroup extends plugin
           "plSelfModify"  => FALSE,
           "plDepends"     => array(),
           "plPriority"    => 5,
-          "plSection"     => array("administration"),
           "plCategory"    => array("ogroups"),
           "plProvidedAcls"=> array(
             "gotoMode"          => _("Mode"),

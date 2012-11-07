@@ -85,7 +85,6 @@ class mailAccount extends simplePlugin
       "plSelfModify"    => TRUE,
       "plDepends"       => array("user"),                     // This plugin depends on
       "plPriority"      => 4,                                 // Position in tabs
-      "plSection"       => array("personal" => _("My account")),
       "plCategory"      => array("users"),
       "plObjectType"    => array("user"),
       "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())

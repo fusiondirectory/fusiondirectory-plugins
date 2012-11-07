@@ -1015,7 +1015,6 @@ class mailgroup extends plugin
       "plDescription" => _("Group mail"),
       "plSelfModify"  => FALSE,
       "plPriority"    => 10,
-      "plSection"     => array("administration"),
       "plCategory"    => array("groups"),
       "plObjectType"  => array("group"),
 

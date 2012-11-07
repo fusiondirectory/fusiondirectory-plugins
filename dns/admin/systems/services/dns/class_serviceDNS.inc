@@ -622,7 +622,6 @@ class serviceDNS extends goService
           "plSelfModify"  => FALSE,
           "plDepends"     => array(),
           "plPriority"    => 83,
-          "plSection"     => array("administration"),
           "plCategory"    => array("server"),
 
           "plProvidedAcls"=> array(

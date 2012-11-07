@@ -119,7 +119,6 @@ class board extends simplePlugin
       "plDescription" => _("Statistics and various informations"),
       "plIcon"        => "plugins/board/images/plugin.png",
       "plSelfModify"  => FALSE,
-      "plSection"     => array("addon" => _("Addons")),
       "plCategory"    => array("board" => array("objectClass" => "", "description" => _("Board"))),
       "plObjectType"  => array("board" => array("name" => _("Board"), "filter" => "")),
 

@@ -425,7 +425,6 @@ class fonreport extends plugin
         "plSelfModify"  => TRUE,
         "plDepends"     => array(),
         "plPriority"    => 0,
-        "plSection"     => array("administration"),
         "plCategory"    => array(
           "fonreport" => array(
             "description" => _("Phone reports"),

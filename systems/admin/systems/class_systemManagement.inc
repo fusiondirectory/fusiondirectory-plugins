@@ -1293,7 +1293,6 @@ class systemManagement extends management
       "plIcon"        => "plugins/systems/images/plugin.png",
       "plSelfModify"  => FALSE,
       "plPriority"    => 99,
-      "plSection"     => array("administration"),
       "plCategory"    => array("systems"   => array("description"  => _("Systems"),
                                                       "objectClass"  => "")),
 

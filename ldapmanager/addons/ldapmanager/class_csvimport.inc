@@ -39,7 +39,6 @@ class csvimport extends plugin
       "plShortName"   => _("CVS import"),
       "plDescription" => _("Import of cvs data into the ldap tree"),
       "plSelfModify"  => FALSE,
-      "plSection"     => array("addons"),
       "plCategory"    => array("ldapmanager"),
       "plObjectType"  => array("ldapmanager"),
 

@@ -55,7 +55,6 @@ class ServerService extends management
       "plShortName"   => _("Services"),
       "plDescription" => _("Server services"),
       "plSelfModify"  => FALSE,
-      "plSection"     => array("administration"),
       "plCategory"    => array("server"),
       "plObjectType"  => array("server"),
 

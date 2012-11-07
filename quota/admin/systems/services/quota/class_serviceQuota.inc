@@ -254,7 +254,6 @@ class serviceQuota extends goService {
           "plSelfModify"  => FALSE,
           "plDepends"     => array(),
           "plPriority"    => 91,
-          "plSection"     => array("administration"),
           "plCategory"    => array("server"),
 
           "plProvidedAcls"=> array(

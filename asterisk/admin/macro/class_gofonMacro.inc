@@ -556,7 +556,6 @@ class macro extends plugin
       "plShortName"   => _("Generic"),
       "plDescription" => _("Asterisk macro management"),
       "plSelfModify"  => FALSE,
-      "plSection"     => array("administration"),
       "plCategory"    => array("gofonmacro" => array("description" => _("GOfon macro"),
                                                     "objectClass" => "gofonMacro")),
       "plObjectType"  => array("macro" => array("name" => _("Asterisk macro"),

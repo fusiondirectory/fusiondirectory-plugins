@@ -704,7 +704,6 @@ class mimetype extends plugin
       "plShortName"   => _("Generic"),
       "plDescription" => _("Mime type generic"),
       "plSelfModify"  => FALSE,
-      "plSection"     => array("administration"),
       "plCategory"    => array("mimetypes" => array("description"  => _("Mime types"),
                                                     "objectClass"  => "gotoMimeType")),
       "plObjectType"  => array("mimetype" => array("name"  => _("Mime type"),

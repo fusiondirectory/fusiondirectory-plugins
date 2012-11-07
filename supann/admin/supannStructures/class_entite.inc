@@ -263,7 +263,6 @@ class entite extends plugin
       "plShortName"   => _("Generic"),
       "plDescription" => _("SUPANN Entite Settings"),
       "plSelfModify"  => FALSE,
-      "plSection"     => array("administration"),
       "plCategory"    => array("supann"),
       "plObjectType"  => array("entite" => array("name" => _("SUPANN Entite"),
                                                 "filter" => "(&(objectClass=supannEntite)(objectClass=organizationalUnit))")),

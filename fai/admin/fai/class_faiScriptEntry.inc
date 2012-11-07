@@ -192,7 +192,6 @@ class faiScriptEntry extends plugin
           "plSelfModify"  => FALSE,
           "plDepends"     => array(),
           "plPriority"    => 19,
-          "plSection"     => array("administration"),
           "plCategory"    => array("fai"),
           "plProvidedAcls" => array(
             "cn"              => _("Name"),

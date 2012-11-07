@@ -35,7 +35,6 @@ class novaAccount extends simplePlugin
       "plSelfModify"    => TRUE,
       "plDepends"       => array("user"),
       "plPriority"      => 3,                                 // Position in tabs
-      "plSection"       => array("personal" => _("My account")),
       "plCategory"      => array("users"),
       "plObjectType"    => array("user"),
       "plRequirements"  => array('ldapSchema' => array('novaUser' => ''), 'onFailureDisablePlugin' => array(get_class())),

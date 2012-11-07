@@ -382,7 +382,6 @@ class quotaAccount extends plugin
       "plSelfModify"  => TRUE,
       "plDepends"     => array("users"),
       "plPriority"    => 5,
-      "plSection"     => array("personal" => _("My account")),
       "plCategory"    => array("users"),
       "plObjectType"  => array("user"),
 

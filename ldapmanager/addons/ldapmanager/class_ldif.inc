@@ -51,7 +51,6 @@ class ldif extends plugin
       "plIcon"        => "plugins/ldapmanager/images/ldif.png",
       "plSelfModify"  => FALSE,
       "plPriority"    => 1,
-      "plSection"     => array("addon"),
       "plCategory"    => array("ldapmanager" => array("objectClass" => "none", "description" => _("Ldap manager"))),
 
       "plProvidedAcls" => array()

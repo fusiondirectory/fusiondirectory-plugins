@@ -884,7 +884,6 @@ class phonequeue extends plugin
           "plSelfModify"  => FALSE,
           "plDepends"     => array(),
           "plPriority"    => 3,
-          "plSection"     => array("administration"),
           "plCategory"    => array("ogroups"),
           "plProvidedAcls"=> array(
 

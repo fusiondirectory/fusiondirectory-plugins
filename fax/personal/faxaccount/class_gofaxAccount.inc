@@ -838,7 +838,6 @@ class gofaxAccount extends plugin
       "plSelfModify"  => TRUE,
       "plDepends"     => array("user"),
       "plPriority"    => 6,
-      "plSection"     => "personal",
       "plCategory"    => array("users"),
       "plObjectType"  => array("user"),
 

@@ -50,7 +50,6 @@ class serviceApacheVhostEdit extends simplePlugin
     "plShortName"       => _("Apache2"),
     "plDescription"     => _("This Plugin is for Apache serveur"),
     "plSelfModify"      => FALSE,                  // Does this plugin have an owner that might be able to edit its entry
-    "plSection"         => array("administration"),
     "plCategory"        => array("server"),
     "plProvidedAcls"    => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );

@@ -144,7 +144,6 @@ class faiVariableEntry extends plugin
           "plSelfModify"  => FALSE,
           "plDepends"     => array(),
           "plPriority"    => 23,
-          "plSection"     => array("administration"),
           "plCategory"    => array("fai"),
           "plProvidedAcls" => array(
             "cn"                => _("Name"),

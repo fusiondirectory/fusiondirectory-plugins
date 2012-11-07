@@ -490,7 +490,6 @@ class faxreport extends plugin
           "plSelfModify"    => TRUE,
           "plDepends"       => array(),
           "plPriority"      => 1,                                 // Position in tabs
-          "plSection"       => array("administration"),                     // This belongs to personal
           "plCategory"      => array("faxreport" => array("description" => _("Fax reports"),
                                                          "objectClass" => array())),
           "plOptions"       => array(),

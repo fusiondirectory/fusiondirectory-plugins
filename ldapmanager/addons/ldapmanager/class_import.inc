@@ -36,7 +36,6 @@ class ldifimport extends plugin
       "plShortName"   => _("Import"),
       "plDescription" => _("Import of ldif data into the ldap tree"),
       "plSelfModify"  => FALSE,
-      "plSection"     => array("addons"),
       "plCategory"    => array("ldapmanager"),
       "plObjectType"  => array("ldapmanager"),
 

@@ -31,9 +31,7 @@ class rSyslogServer extends simpleService{
           "plShortName"   => _("Logs service"),
           "plDescription" => _("Logs service")." ("._("Services").")",
           "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
           "plPriority"    => 99,
-          "plSection"     => array("administration"),
           "plCategory"    => array("server"),
 
           "plProvidedAcls"=> parent::generatePlProvidedAcls(self::getAttributesInfo())

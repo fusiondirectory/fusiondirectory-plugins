@@ -438,7 +438,6 @@ class wingeneric extends plugin
       "plShortName"   => _("Win generic"),
       "plDescription" => _("Windows workstation generic"),
       "plSelfModify"  => FALSE,
-      "plSection"     => array("administration"),
       "plCategory"    => array("winworkstation" => array("description"  => _("Windows workstation"),
                                                          "objectClass"  => "gotoWorkstation")),
       "plObjectType"  => array("winworkstation" => array("name" => _("Windows workstation"),

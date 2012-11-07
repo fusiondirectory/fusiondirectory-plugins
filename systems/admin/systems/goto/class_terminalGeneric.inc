@@ -755,7 +755,6 @@ class termgeneric extends plugin
       "plShortName"   => _("Generic"),
       "plDescription" => _("Terminal generic"),
       "plSelfModify"  => FALSE,
-      "plSection"     => array("administration"),
       "plCategory"    => array("terminal" => array( "description"  => _("Terminal"),
                                                     "objectClass"   => "gotoTerminal")),
       "plObjectType"  => array("terminal" => array( "name"  => _("Terminal"),

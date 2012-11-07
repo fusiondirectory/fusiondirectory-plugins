@@ -467,7 +467,6 @@ class gotomasses extends management
           "plSelfModify"  => FALSE,
           "plDepends"     => array(),
           "plPriority"    => 0,
-          "plSection"     => array("addon"),
           "plCategory"    => array("gotomasses" => array("objectClass" => "none", "description" => _("System deployment"))),
           "plProvidedAcls" => array("Comment"   => _("Description"))
           ));

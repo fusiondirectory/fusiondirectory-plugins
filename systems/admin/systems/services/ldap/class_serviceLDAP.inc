@@ -150,7 +150,6 @@ class serviceLDAP extends goService{
           "plSelfModify"  => FALSE,
           "plDepends"     => array(),
           "plPriority"    => 96,
-          "plSection"     => array("administration"),
           "plCategory"    => array("server"),
 
           "plProvidedAcls"=> array(

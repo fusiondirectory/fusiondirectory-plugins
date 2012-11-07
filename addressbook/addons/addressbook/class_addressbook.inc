@@ -856,7 +856,6 @@ class addressbook extends plugin
       "plSelfModify"  => FALSE,
       "plDepends"     => array(),
       "plPriority"    => 0,
-      "plSection"     => array("addon" => _("Addons")),
       "plCategory"    => array("addressbook" => array("objectClass" => "inetOrgPerson", "description" => _("Addressbook"))),
 
       "plProvidedAcls"    => array(

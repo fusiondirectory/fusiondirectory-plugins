@@ -91,7 +91,6 @@ class sudo extends simplePlugin
       "plDescription" => _("Sudo role"),
       "plIcon"        => _("plugins/sudo/images/sudo.png"),
       "plSelfModify"  => FALSE,
-      "plSection"     => array("administration"),
       "plCategory"    => array("sudo" => array("objectClass" => "sudoRole", "description" => _("Sudo role"))),
       "plObjectType"  => array("sudo" => array("name" => _("Sudo role"), "filter" => "objectClass=sudoRole")),
 

@@ -48,7 +48,6 @@ class scalixAccount extends simplePlugin
       "plDescription" => _("Scalix account"),
       "plIcon"        => _("plugins/scalix/images/plugin.png"),
       "plSelfModify"  => TRUE,
-      "plSection"     => array("personal" => _("My account")),
       "plCategory"    => array("users"),
       "plObjectType"  => array("user"),
 

@@ -726,7 +726,6 @@ class conference extends plugin
       "plShortName"   => _("Conference"),
       "plDescription" => _("Phone conference management"),
       "plSelfModify"  => TRUE,
-      "plSection"     => array("administration"),
       "plCategory"    => array("gofonconference" => array("description" => _("GOfon conference"),
                                                           "objectClass" => "gofonConference")),
       "plObjectType"  => array("conference" => array("name" => _("Asterisk conference"),

@@ -291,7 +291,6 @@ class serviceKiosk extends goService{
           "plSelfModify"  => FALSE,
           "plDepends"     => array(),
           "plPriority"    => 100,
-          "plSection"     => array("administration"),
           "plCategory"    => array("server"),
 
           "plProvidedAcls"=> array()

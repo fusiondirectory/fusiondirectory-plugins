@@ -66,7 +66,6 @@ class gospamserver extends simpleService{
           "plSelfModify"  => FALSE,
           "plDepends"     => array(),
           "plPriority"    => 89,
-          "plSection"     => array("administration"),
           "plCategory"    => array("server"),
           "plProvidedAcls"=> parent::generatePlProvidedAcls(self::getAttributesInfo())
           ));

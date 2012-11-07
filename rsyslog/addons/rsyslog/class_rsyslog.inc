@@ -51,7 +51,6 @@ class rsyslog extends plugin
       "plShortName"   => _("System logs"),
       "plDescription" => _("System logs"),
       "plSelfModify"  => FALSE,
-      "plSection"     => array("administration"),
       "plObjectType"  => array("rsyslog" => array("name" => _("System logs"))),
 
       "plProvidedAcls" => array()

@@ -84,7 +84,6 @@ class kolabAccount extends simplePlugin
           "plSelfModify"    => TRUE,
           "plDepends"       => array("user"),
           "plPriority"      => 20,
-          "plSection"     => array("personal" => _("My account")),
           "plCategory"    => array("users"),
           "plProvidedAcls"=> parent::generatePlProvidedAcls(self::getAttributesInfo())
           ));

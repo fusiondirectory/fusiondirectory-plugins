@@ -39,7 +39,6 @@ class pureftpdAccount extends simplePlugin
           "plSelfModify"    => TRUE,
           "plDepends"       => array("user"),
           "plPriority"      => 22,                                 // Position in tabs
-          "plSection"       => array("personal" => _("My account")),
           "plCategory"      => array("users"),
           "plProvidedAcls"    => parent::generatePlProvidedAcls(self::getAttributesInfo())
           ));

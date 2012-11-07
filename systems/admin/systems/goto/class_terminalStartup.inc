@@ -531,7 +531,6 @@ class termstartup extends plugin
       "plDescription" => _("Terminal startup"),
       "plSelfModify"  => FALSE,
       "plPriority"    => 5,
-      "plSection"     => array("administration"),
       "plCategory"    => array("terminal"),
       "plObjectType"  => array("terminal"),
 

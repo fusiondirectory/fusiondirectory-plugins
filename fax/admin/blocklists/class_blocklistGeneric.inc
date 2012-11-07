@@ -236,7 +236,6 @@ class blocklistGeneric extends simplePlugin
       "plShortName"     => _("Fax blocklists"),
       "plDescription"   => _("The part of the fax plugin managing blacklist"),
       "plSelfModify"    => FALSE,
-      "plSection"       => array("administration" => _("Fax blocklists")),
       "plCategory"      => array( "gofaxlist" => array(
                             "description" => _("Fax blocklists"),
                             "objectClass" => array("goFaxRBlock","goFaxSBlock"))),

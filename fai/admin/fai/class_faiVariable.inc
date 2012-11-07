@@ -459,7 +459,6 @@ class faiVariable extends plugin
       "plDescription" => _("FAI variable"),
       "plSelfModify"  => FALSE,
       "plPriority"    => 22,
-      "plSection"     => array("administration"),
       "plCategory"    => array("fai"),
       "plObjectType"  => array("faiVariable" => array("name" => _("FAI variable"),
                                                     "filter" => "objectClass=FAIvariable")),

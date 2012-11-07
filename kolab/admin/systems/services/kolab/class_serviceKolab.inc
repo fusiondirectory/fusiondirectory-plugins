@@ -67,7 +67,6 @@ class serviceKolab extends simpleService
       "plShortName"     => _("Kolab mail service"),
       "plDescription"   => _("Kolab mail service")." ("._("Services").")",
       "plSelfModify"    => FALSE,
-      "plSection"       => array("administration"),
       "plCategory"      => array("server"),
       "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );

@@ -752,7 +752,6 @@ class faiDiskEntry extends plugin
           "plSelfModify"  => FALSE,
           "plDepends"     => array(),
           "plPriority"    => 27,
-          "plSection"     => array("administration"),
           "plCategory"    => array("fai"),
           "plProvidedAcls" => array(
             "DISKcn"           => _("Name"),

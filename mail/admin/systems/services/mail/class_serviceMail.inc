@@ -13,7 +13,6 @@ class serviceMail extends simpleService {
       "plDescription"  => _("Mail smtp - Postfix")." ("._("Services").")",
       "plSelfModify"   => FALSE,
       "plDepends"      => array(),
-      "plSection"      => array("administration"),
       "plCategory"     => array("server"),
       "plProvidedAcls" => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );

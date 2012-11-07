@@ -310,7 +310,6 @@ class netgroupSystem extends plugin {
         "plSelfModify"    => FALSE,
         "plDepends"       => array(),
         "plPriority"      => 2,
-        "plSection"       => array("administration"),
         "plCategory"      => array("workstation","terminal","phone","server","component","printer"),
         "plObjectType"    => array("workstation","terminal","phone","server","component","printer"),
         "plProvidedAcls"  => array(

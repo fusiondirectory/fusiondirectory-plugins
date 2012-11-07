@@ -375,7 +375,6 @@ class netgroupAccount extends plugin {
         "plSelfModify"    => FALSE,
         "plDepends"       => array("user"),
         "plPriority"      => 2,
-        "plSection"       => array("personal"),
         "plCategory"      => array("users"),
         "plObjectType"    => array("user"),
         "plProvidedAcls"  => array(

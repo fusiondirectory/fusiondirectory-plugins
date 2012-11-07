@@ -318,7 +318,6 @@ class etablissement extends plugin
       "plShortName"   => _("Etablissement"),
       "plDescription" => _("SUPANN Etablissement Settings"),
       "plSelfModify"  => FALSE,
-      "plSection"     => array("administration"),
       "plCategory"    => array("supann"),
       "plObjectType"  => array("etablissement" => array("name" => _("SUPANN Etablissement"),
                                                         "filter" => "(&(objectClass=supannEntite)(objectClass=organization))")),

@@ -32,7 +32,6 @@ class webdavAccount extends simplePlugin
           "plShortName"     => _("WebDAV"),
           "plDescription"   => _("WebDAV account")."&nbsp;("._("Connectivity addon").")",
           "plSelfModify"    => TRUE,
-          "plSection"       => array("personal" => _("My account")),
           "plCategory"      => array("users"),
           "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
           ));

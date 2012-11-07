@@ -36,7 +36,6 @@ class ldifexport extends plugin
       "plShortName"   => _("Export"),
       "plDescription" => _("Export the ldap three to ldif format"),
       "plSelfModify"  => FALSE,
-      "plSection"     => array("addons"),
       "plCategory"    => array("ldapmanager"),
       "plObjectType"  => array("ldapmanager" => array("name"  => _("LDAP Manager"))),
 

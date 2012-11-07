@@ -30,7 +30,6 @@ class argonautFuseConfig extends simpleService
     return array(
       "plShortName"     => _("Argonaut Fuse settings"),
       "plDescription"   => _("Argonaut Fuse settings")." ("._("Services").")",
-      "plSection"       => array("admin"),
       "plCategory"      => array("server"),
       "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );

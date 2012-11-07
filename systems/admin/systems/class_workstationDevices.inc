@@ -369,7 +369,6 @@ class workstationDevices extends simplePlugin
       "plDescription" => _("Workstation devices"),
       "plSelfModify"  => FALSE,
       "plPriority"    => 10,
-      "plSection"     => array("administration"),
       "plCategory"    => array("workstation", "ogroups"),
       "plObjectType"  => array("workstation", "ogroup"),
 

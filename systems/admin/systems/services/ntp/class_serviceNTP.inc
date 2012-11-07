@@ -32,7 +32,6 @@ class goNtpServer extends simpleService {
       "plDescription"   => _("Time service - NTP")." ("._("Services").")",
       "plSelfModify"    => FALSE,
       "plDepends"       => array(),
-      "plSection"       => array("administration"),
       "plCategory"      => array("server"),
       "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );

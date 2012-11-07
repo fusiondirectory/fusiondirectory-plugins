@@ -435,7 +435,6 @@ class serviceShare extends goService{
           "plSelfModify"  => FALSE,
           "plDepends"     => array(),
           "plPriority"    => 90,
-          "plSection"     => array("administration"),
           "plCategory"    => array("server"),
 
           "plProvidedAcls"=> array(

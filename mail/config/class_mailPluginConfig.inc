@@ -28,7 +28,6 @@ class mailPluginConfig extends simplePlugin
       "plShortName"     => _("Mail"),
       "plDescription"   => _("Mail plugin configuration"),
       "plPriority"      => 3,
-      "plSection"       => array("administration"),
       "plCategory"      => array("configuration"),
       "plObjectType"    => array("configuration"),
 

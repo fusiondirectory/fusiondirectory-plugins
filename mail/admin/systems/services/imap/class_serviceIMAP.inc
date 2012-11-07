@@ -31,7 +31,6 @@ class serviceIMAP extends simpleService {
     return array(
       "plShortName"     => _("IMAP/POP3"),
       "plDescription"   => _("IMAP/POP3")." ("._("Services").")",
-      "plSection"       => array("administration"),
       "plCategory"      => array("server"),
       "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );

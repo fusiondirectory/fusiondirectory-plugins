@@ -37,7 +37,6 @@ class phpscheduleitAccount extends simplePlugin
           "plSelfModify"    => TRUE,
           "plDepends"       => array("user"),
           "plPriority"      => 29,                                 // Position in tabs
-          "plSection"       => array("personal" => _("My account")),
           "plCategory"      => array("users"),
           "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
           ));

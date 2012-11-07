@@ -342,7 +342,6 @@ class componentGeneric extends plugin
       "plDescription" => _("Component generic"),
       "plSelfModify"  => FALSE,
       "plPriority"    => 1,
-      "plSection"     => array("administration"),
       "plCategory"    => array("component" => array("description"  => _("Network device"),
                                                     "objectClass"  => array("device", "ipHost", "ieee802Device"))),
       "plObjectType"  => array("component" => array("name"  => _("Network device"),

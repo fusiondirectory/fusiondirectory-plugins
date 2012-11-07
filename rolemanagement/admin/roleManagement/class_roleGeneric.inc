@@ -33,7 +33,6 @@ class roleGeneric extends simplePlugin {
       "plDescription" => _("Role generic"),
       "plSelfModify"  => FALSE,
       "plPriority"    => 1,
-      "plSection"     => array("administration"),
       "plCategory"    => array("roles" => array("description"  => _("Roles"), "objectClass"  => "organizationalRole")),
       "plObjectType"  => array("role" => array("name"  => _("Role"), "filter"  => "objectClass=organizationalRole")),
 

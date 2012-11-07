@@ -222,7 +222,6 @@ class gotoLogView extends plugin
       "plDescription" => _("Goto log view"),
       "plSelfModify"  => FALSE,
       "plPriority"    => 30,
-      "plSection"     => array("administration"),
       "plCategory"    => array("workstation", "server"),
       "plObjectType"  => array("workstation", "server"),
 

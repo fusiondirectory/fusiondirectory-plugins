@@ -87,7 +87,6 @@ class serviceApache extends simpleService
           "plShortName"   => _("Apache service"),
           "plDescription" => _("Apache virtual host service")." ("._("Services").")",
           "plSelfModify"  => FALSE,
-          "plSection"     => array("administration"),
           "plCategory"    => array("server"),
 
           "plProvidedAcls"=> array(

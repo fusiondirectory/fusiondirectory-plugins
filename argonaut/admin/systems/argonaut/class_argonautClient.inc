@@ -186,7 +186,6 @@ class argonautClient extends simplePlugin
       "plShortName"     => _("Argonaut client"),
       "plDescription"   => _("Edit argonaut client settings"),
       "plSelfModify"    => FALSE,
-      "plSection"       => array("administration"),
       "plCategory"      => array("workstation","server","ogroups"),
       "plObjectType"    => array("workstation","server","ogroup"),
 

@@ -519,7 +519,6 @@ class phoneGeneric extends plugin
       "plShortName"   => _("Generic"),
       "plDescription" => _("Phone generic"),
       "plSelfModify"  => FALSE,
-      "plSection"     => array("administration"),
       "plCategory"    => array("phone" => array("description"  => _("Phone hardware"),
                                                 "objectClass"  => "goFonHardware")),
       "plObjectType"  => array("phone" => array("name" => _("Phone"),

@@ -534,7 +534,6 @@ class workstationGeneric extends simplePlugin
       "plShortName"     => _("Generic"),
       "plDescription"   => _("Workstation generic"),
       "plSelfModify"    => FALSE,
-      "plSection"       => array("administration"),
       "plCategory"      => array("workstation" => array("description"  => _("Workstation"),
                                                       "objectClass"  => "gotoWorkstation")),
       "plObjectType"    => array("workstation" => array("name"   => _("Workstation"),

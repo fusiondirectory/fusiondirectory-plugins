@@ -402,7 +402,6 @@ class netatalkAccount extends plugin {
       "plSelfModify"      => TRUE,
       "plDepends"         => array("user"),
       "plPriority"        => 6,
-      "plSection"         => array("personal" => _("My account")),
       "plCategory"        => array("users"),
       "plObjectType"      => array("user"),
 

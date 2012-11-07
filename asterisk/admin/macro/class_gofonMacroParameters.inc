@@ -58,7 +58,6 @@ class macroParameter extends plugin
       "plShortName"   => _("Parameter"),
       "plDescription" => _("Asterisk macro parameter"),
       "plSelfModify"  => FALSE,
-      "plSection"     => array("administration"),
       "plCategory"    => array("gofonmacro"),
       "plObjectType"  => array("macro"),
 

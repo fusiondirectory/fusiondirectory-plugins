@@ -32,7 +32,6 @@ class goTerminalServer extends simpleService{
       "plShortName"   => _("Terminal service"),
       "plDescription" => _("Terminal service")." ("._("Services").")",
       "plSelfModify"  => FALSE,
-      "plSection"     => array("administration"),
       "plCategory"    => array("server"),
       "plProvidedAcls"=> parent::generatePlProvidedAcls(self::getAttributesInfo())
     );

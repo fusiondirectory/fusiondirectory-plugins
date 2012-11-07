@@ -1020,7 +1020,6 @@ class networkSettings extends plugin
       "plSelfModify"  => FALSE,
       "plDepends"     => array(),
       "plPriority"    => 5,
-      "plSection"     => array("administration"),
       "plCategory"    => array("workstation", "terminal", "phone", "server", "component", "printer", "winworkstation"),
 
       "plProvidedAcls" => array(

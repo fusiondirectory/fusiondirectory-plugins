@@ -516,7 +516,6 @@ class faiProfile extends plugin
       "plShortName"   => _("Profile"),
       "plDescription" => _("FAI profile"),
       "plSelfModify"  => FALSE,
-      "plSection"     => array("administration"),
       "plCategory"    => array("fai"),
       "plObjectType"  => array("faiProfile" => array("name" => _("FAI Profile"),
                                                     "filter" => "objectClass=FAIprofile")),

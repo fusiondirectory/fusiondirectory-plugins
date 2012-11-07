@@ -567,7 +567,6 @@ class faiHook extends plugin
       "plDescription" => _("FAI hook"),
       "plSelfModify"  => FALSE,
       "plPriority"    => 20,
-      "plSection"     => array("administration"),
       "plCategory"    => array("fai"),
       "plObjectType"  => array("faiHook" => array("name" => _("FAI hook"),
                                                     "filter" => "objectClass=FAIhook")),

@@ -1178,7 +1178,6 @@ class sambaAccount extends plugin
           "plSelfModify"    => TRUE,
           "plDepends"       => array("user"),
           "plPriority"      => 5,
-          "plSection"       => array("personal" => _("My account")),
           "plCategory"      => array("users"),
           "plObjectType"    => array("user"),
 

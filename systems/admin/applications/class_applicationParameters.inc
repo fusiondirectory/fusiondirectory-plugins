@@ -272,7 +272,6 @@ class applicationParameters extends plugin
       "plShortName"   => _("Parameter"),
       "plDescription" => _("Parameter configuration"),
       "plSelfModify"  => FALSE,
-      "plSection"     => array("administration"),
       "plCategory"    => array("application"),
       "plObjectType"  => array("application"),
 

@@ -724,7 +724,6 @@ class termservice extends plugin
       "plDescription" => _("Terminal service"),
       "plSelfModify"  => FALSE,
       "plPriority"    => 3,
-      "plSection"     => array("administration"),
       "plCategory"    => array("terminal"),
       "plObjectType"  => array("terminal"),
 

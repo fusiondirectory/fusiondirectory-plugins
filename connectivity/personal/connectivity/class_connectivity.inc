@@ -291,7 +291,6 @@ class connectivity extends plugin
       "plSelfModify"  => TRUE,
       "plDepends"     => array("user"),
       "plPriority"    => 20,                                 // Position in tabs
-      "plSection"     => array("personal" => _("My account")),
       "plCategory"    => array("users"),
       "plObjectType"  => array("user"),
 

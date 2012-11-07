@@ -805,7 +805,6 @@ class faiPartitionTable extends plugin
       "plDescription" => _("FAI partition table"),
       "plSelfModify"  => FALSE,
       "plPriority"    => 26,
-      "plSection"     => array("administration"),
       "plCategory"    => array("fai"),
       "plObjectType"  => array("faiPartition" => array("name" => _("FAI partition table"),
                                                     "filter" => "objectClass=FAIpartitionTable")),
