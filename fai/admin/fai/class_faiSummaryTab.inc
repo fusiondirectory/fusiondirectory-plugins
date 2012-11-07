@@ -575,22 +575,21 @@ class faiSummaryTab extends plugin{
     }
   }
 
-  /* Return plugin informations for acl handling * /
+  /* Return plugin informations for acl handling */
   static function plInfo()
   {
-    return (array(
-          "plShortName"   => _("Summary"),
-          "plDescription" => _("FAI summary"),
-          "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
-          "plPriority"    => 15,
-          "plSection"     => array("administration"),
-          "plCategory"    => array("workstation","server","fai","ogroups") ,
-          "plProvidedAcls"=> array(
-            "readable" => _("Viewable")),
-          ));
+    return array(
+      "plShortName"     => _("FAI summary"),
+      "plDescription"   => _("FAI summary"),
+      "plSelfModify"    => FALSE,
+      "plPriority"      => 15,
+      "plSection"       => array("administration"),
+      "plCategory"      => array("workstation","server","fai","ogroups"),
+      "plObjectType"    => array("workstation","server","ogroup"),
+      "plProvidedAcls"  => array(
+        "readable" => _("Viewable")
+      ),
+    );
   }
-  */
 }
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

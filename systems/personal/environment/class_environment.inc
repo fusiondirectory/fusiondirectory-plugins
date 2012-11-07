@@ -1104,7 +1104,7 @@ class environment extends plugin
         foreach($res as $printer){
 
           $pname = $printer['cn'][0];
-          $printerObj = new printtabs($this->config,$this->config->data['TABS']['PRINTTABS'], $printer['dn'],"printer");
+          $printerObj = new printtabs($this->config,$this->config->data['TABS']['PRINTERTABS'], $printer['dn'],"printer");
           $printerObj->set_acl_base($printer['dn']);
 
           $type = false;
@@ -1160,7 +1160,7 @@ class environment extends plugin
       $printer = $_POST['gotoPrinterSel'];
       foreach($printer as $pname){
 
-        $printerObj = new printtabs($this->config,$this->config->data['TABS']['PRINTTABS'],$this->gotoPrinter[$pname]['dn'],"printer");
+        $printerObj = new printtabs($this->config,$this->config->data['TABS']['PRINTERTABS'],$this->gotoPrinter[$pname]['dn'],"printer");
         $printerObj->set_acl_base($this->gotoPrinter[$pname]['dn']);
 
         $type = false;
@@ -1425,7 +1425,7 @@ class environment extends plugin
       $ldap->search("(&(objectClass=gotoPrinter)(goto".$s_suffix."Printer=".$this->$useVar."))",array("*"));
       while($attr = $ldap->fetch()){
         $printerObj = NULL;
-        $printerObj = new printtabs($this->config,$this->config->data['TABS']['PRINTTABS'],$attr['dn'],"printer");
+        $printerObj = new printtabs($this->config,$this->config->data['TABS']['PRINTERTABS'],$attr['dn'],"printer");
         $printerObj->set_acl_base($attr['dn']);
         $printerObj->by_object['printgeneric']->DelMember($types["goto".$s_suffix."Printer"],$this->$useVar);
         $printerObj->by_object['printgeneric']->save();
@@ -1435,7 +1435,7 @@ class environment extends plugin
       $ldap->search("(&(objectClass=gotoPrinter)(goto".$s_suffix."AdminPrinter=".$this->$useVar."))",array("*"));
       while($attr = $ldap->fetch()){
         $printerObj = NULL;
-        $printerObj = new printtabs($this->config,$this->config->data['TABS']['PRINTTABS'],$attr['dn'],"printer");
+        $printerObj = new printtabs($this->config,$this->config->data['TABS']['PRINTERTABS'],$attr['dn'],"printer");
         $printerObj->set_acl_base($attr['dn']);
         $printerObj->by_object['printgeneric']->DelMember($types["goto".$s_suffix."AdminPrinter"],$this->$useVar);
         $printerObj->by_object['printgeneric']->save();
@@ -1443,7 +1443,7 @@ class environment extends plugin
 
       foreach($this->gotoPrinter as $printer){
         $printerObj = NULL;
-        $printerObj = new printtabs($this->config,$this->config->data['TABS']['PRINTTABS'],$printer['dn'],"printer");
+        $printerObj = new printtabs($this->config,$this->config->data['TABS']['PRINTERTABS'],$printer['dn'],"printer");
         $printerObj->set_acl_base($printer['dn']);
 
 

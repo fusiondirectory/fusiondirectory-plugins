@@ -1207,7 +1207,7 @@ class systemManagement extends management
             "ou"          => get_ou('printerRDN'),
             "plugClass"   => "printgeneric",
             "tabClass"    => "printtabs",
-            "tabDesc"     => "PRINTTABS",
+            "tabDesc"     => "PRINTERTABS",
             "aclClass"    => "printgeneric",
             "sendEvents"  => FALSE,
             "aclCategory" => "printer"),

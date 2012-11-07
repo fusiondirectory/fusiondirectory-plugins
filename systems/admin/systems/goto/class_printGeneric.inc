@@ -1021,32 +1021,35 @@ class printgeneric extends plugin
     return($a_return);
   }
 
-  /* Return plugin informations for acl handling
-      #FIXME FAIscript seams to ununsed within this class... */
+  /* Return plugin informations for acl handling */
   static function plInfo()
   {
-    return (array(
-          "plShortName"   => _("Generic"),
-          "plDescription" => _("Print generic"),
-          "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
-          "plPriority"    => 4,
-          "plSection"     => array("administration"),
-          "plCategory"    => array("printer" => array("description"  => _("Printer"),
-                                                    "objectClass"  => "gotoPrinter"),"workstation","terminal"),
-          "plProvidedAcls"=> array(
-            "cn"                => _("Name"),
-            "base"              => _("Base") ,
-            "description"       => _("Description"),
-            "l"                 => _("Location"),
-            "labeledURI"        => _("LabeledURL"),
-            "gotoPrinterPPD"    => _("Printer PPD"),
-            "gotoUserPrinter"   => _("Permissions"),
-            "goComment"         => _("Comments"),
-            "printerWindowsInfFile"   => _("Windows inf file"),
-            "printerWindowsDriverDir" => _("Windows driver dir"),
-            "printerWindowsDriverName" => _("Driver printer name"))
-          ));
+    return array(
+      "plShortName"   => _("Generic"),
+      "plDescription" => _("Print generic"),
+      "plSelfModify"  => FALSE,
+      "plPriority"    => 4,
+      "plSection"     => array("administration"),
+      "plCategory"    => array("printer" => array("description"  => _("Printer"),
+                                                "objectClass"  => "gotoPrinter"),"workstation","terminal"),
+      "plObjectType"  => array("printer" => array("name"  => _("Printer"),
+                                                  "filter"  => "objectClass=gotoPrinter"),
+                              "workstation", "terminal"),
+      "plProvidedAcls"=> array(
+        "cn"                => _("Name"),
+        "base"              => _("Base") ,
+        "description"       => _("Description"),
+        "l"                 => _("Location"),
+        "labeledURI"        => _("LabeledURL"),
+        "gotoPrinterPPD"    => _("Printer PPD"),
+        "gotoUserPrinter"   => _("Permissions"),
+        "goComment"         => _("Comments"),
+
+        "printerWindowsInfFile"     => _("Windows inf file"),
+        "printerWindowsDriverDir"   => _("Windows driver dir"),
+        "printerWindowsDriverName"  => _("Driver printer name")
+      )
+    );
   }
 
   /* Delete member */

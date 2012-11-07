@@ -22,14 +22,14 @@
 
 class gotoLogView extends plugin
 {
-  
+
   var $mac;
   var $logs;
   var $event;
   var $parent;
   var $config;
-  
-  var $o_queue;  
+
+  var $o_queue;
 
   var $selected_date;
   var $selected_file = 0;
@@ -39,10 +39,10 @@ class gotoLogView extends plugin
 
   var $sort_by  = "time";
   var $sort_dir = 1; // 1 => up, 0 => down
-  
+
   var $ignore_account = TRUE;
   var $standalone = FALSE;
- 
+
   function __construct(&$config,$dn,$parent)
   {
     $this->config = $config;
@@ -52,16 +52,16 @@ class gotoLogView extends plugin
      */
     $this->o_queue = new supportDaemon();
 
-    /* Load ldap object if given 
+    /* Load ldap object if given
         and use this macAddress.
      */
     if(is_object($parent) && $dn != "" && $dn != "new"){
       plugin::plugin($config,$dn,$parent);
-    } 
+    }
 
     /* Get correct macAddress.
         Check if an event is given or a ldap object.
-     */      
+     */
     if(is_array($this->parent) && isset($this->parent['MACADDRESS'])){
       $this->mac = $this->parent['MACADDRESS'];
       $this->standalone = TRUE;
@@ -77,7 +77,7 @@ class gotoLogView extends plugin
         msg_dialog::display(_("Error"), $this->o_queue->get_error(), ERROR_DIALOG);
     }
 
-    /* Check if there is at least one log file 
+    /* Check if there is at least one log file
      */
     if(!isset($res[$this->mac]) || !is_array($res[$this->mac])){
       $this->logs = array();
@@ -92,12 +92,12 @@ class gotoLogView extends plugin
   function execute()
   {
     $smarty = get_smarty();
-    $smarty->assign("logs",$this->logs);   
+    $smarty->assign("logs",$this->logs);
     $smarty->assign("logs_available", isset($this->logs[$this->mac]));
     $smarty->assign("mac",$this->mac);
     $smarty->assign("selected_file",$this->selected_file);
     $smarty->assign("selected_date",$this->selected_date);
-    $smarty->assign("log_file", $this->get_log($this->mac,$this->selected_date,$this->selected_file));        
+    $smarty->assign("log_file", $this->get_log($this->mac,$this->selected_date,$this->selected_file));
     $smarty->assign("standalone",$this->standalone);
 
     if (isset($this->logs[$this->mac][$this->selected_date]['REAL_DATE'])){
@@ -111,7 +111,7 @@ class gotoLogView extends plugin
 
     $divlist = new divlist("log_view");
 
-    /* Create sort direction images 
+    /* Create sort direction images
      */
     if($this->sort_dir){
       $img = "<img src='images/lists/sort-down.png' border='0' alt='\\/'>";
@@ -127,7 +127,7 @@ class gotoLogView extends plugin
     }
 
 
-    /* Create list header 
+    /* Create list header
      */
     $divlist->SetHeader(array(
           array("string"=>"<a href='?plug=".$_GET['plug']."&sort_by=file'>"._("File")." ".$img1."</a>",
@@ -136,13 +136,13 @@ class gotoLogView extends plugin
                 "attach" => "style='border-right:none;'"),
           ));
 
-    /* Create divlist list 
+    /* Create divlist list
      */
     $divlist->SetEntriesPerPage(0);
-    $divlist->SetHeight(150); 
+    $divlist->SetHeight(150);
 
     /* Create sortable array
-     */ 
+     */
     $link = "<a href='?plug=".$_GET['plug']."&time=%time%&file=%file%&mac=%mac%'>%str%</a>";
     $to_add = array();
     $sort_by = $this->sort_by;
@@ -167,7 +167,7 @@ class gotoLogView extends plugin
       }
     }
 
-    /* Sort entries 
+    /* Sort entries
      */
     if(!$this->sort_dir){
       uksort($to_add, "strnatcasecmp");
@@ -176,7 +176,7 @@ class gotoLogView extends plugin
       $to_add = array_reverse($to_add);
     }
 
-    /* Append entries to list 
+    /* Append entries to list
      */
     foreach($to_add as $entry){
       $divlist->AddEntry($entry);
@@ -198,7 +198,7 @@ class gotoLogView extends plugin
     return($res);
   }
 
-  
+
   function save_object()
   {
     foreach(array("time"=>"selected_date","file"=>"selected_file") as $attr => $dest){
@@ -214,22 +214,20 @@ class gotoLogView extends plugin
     }
   }
 
-
   /* Return plugin informations for acl handling */
   static function plInfo()
   {
-    return (array(
-          "plShortName"   => _("Log view"),
-          "plDescription" => _("GOto log view"),
-          "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
-          "plPriority"    => 30,
-          "plSection"     => array("administration"),
-          "plCategory"    => array("workstation","server"),
+    return array(
+      "plShortName"   => _("Log view"),
+      "plDescription" => _("Goto log view"),
+      "plSelfModify"  => FALSE,
+      "plPriority"    => 30,
+      "plSection"     => array("administration"),
+      "plCategory"    => array("workstation", "server"),
+      "plObjectType"  => array("workstation", "server"),
 
-          "plProvidedAcls"=> array()
-            ));
+      "plProvidedAcls"  => array()
+    );
   }
 }
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

@@ -115,7 +115,7 @@ class terminfo extends plugin
         /* Get template object */
         $smarty->assign("staticAddress", "");
 
-        /* Prevent undefined variable .... */ 
+        /* Prevent undefined variable .... */
         $smarty->assign("load", progressbar(0,100,15,true));
         $smarty->assign("mem", progressbar(0,100,15,true));
         $smarty->assign("swap", progressbar(0,100,15,true));
@@ -267,18 +267,17 @@ class terminfo extends plugin
   /* Return plugin informations for acl handling */
   static function plInfo()
   {
-    return (array(
-          "plShortName"   => _("System info"),
-          "plDescription" => _("System informations"),
-          "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
-          "plPriority"    => 33,
-          "plSection"     => array("administration"),
-          "plCategory"    => array("workstation","server","terminal"),
-          "plProvidedAcls"=> array()
-            ));
+    return array(
+      "plShortName"     => _("System info"),
+      "plDescription"   => _("System informations"),
+      "plSelfModify"    => FALSE,
+      "plPriority"      => 33,
+      "plSection"       => array("administration"),
+      "plCategory"      => array("workstation","server","terminal"),
+      "plObjectType"    => array("workstation","server","terminal"),
+      "plProvidedAcls"  => array()
+    );
   }
 }
 
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

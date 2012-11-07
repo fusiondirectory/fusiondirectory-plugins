@@ -20,23 +20,21 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class goImapServer extends simpleService {
+class serviceIMAP extends simpleService {
 
   /* This plugin only writes its objectClass */
-  var $objectclasses    = array("goImapServer");
+  var $objectclasses = array("goImapServer");
 
   /* Return plugin informations for acl handling */
   static function plInfo()
   {
-    return (array(
-          "plShortName"   => _("IMAP/POP3"),
-          "plDescription" => _("IMAP/POP3")." ("._("Services").")",
-          "plSelfModify"  => FALSE,
-          "plPriority"    => 94,
-          "plSection"     => array("administration"),
-          "plCategory"    => array("server"),
-          "plProvidedAcls"=> parent::generatePlProvidedAcls(self::getAttributesInfo())
-          ));
+    return array(
+      "plShortName"     => _("IMAP/POP3"),
+      "plDescription"   => _("IMAP/POP3")." ("._("Services").")",
+      "plSection"       => array("administration"),
+      "plCategory"      => array("server"),
+      "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+    );
   }
 
 
@@ -58,112 +56,75 @@ class goImapServer extends simpleService {
   {
       return array (
       'section1' => array (
-        'name'  => '<img src="images/rightarrow.png" /> '._('Generic'),
+        'name'  => _('Settings'),
         'attrs' => array (
           new StringAttribute (
-            _('Server identifier'),
-            _('Identifier for imap server'),
-            'goImapName',
-            TRUE
+            _('Server identifier'), _('Identifier for imap server'),
+            'goImapName', TRUE
           ),
           new StringAttribute (
-            _('Connect URL'),
-            _('Connect URL for imap server'),
-            'goImapConnect',
-            TRUE,
+            _('Connect URL'), _('Connect URL for imap server'),
+            'goImapConnect', TRUE,
             '',
             '',
             '/^\{[^:]+:[0-9]*\/.*\}$/',
             '{server-name:port/options}'
           ),
           new StringAttribute (
-            _('Admin user'),
-            _('Imap server admin user'),
-            'goImapAdmin',
-            TRUE
+            _('Admin user'), _('Imap server admin user'),
+            'goImapAdmin', TRUE
           ),
           new StringAttribute (
-            _('Password'),
-            _('Admin user password'),
-            'goImapPassword',
-            TRUE
+            _('Password'), _('Admin user password'),
+            'goImapPassword', TRUE
           ),
           new StringAttribute (
-            _('Sieve connect URL'),
-            _('Sieve connect URL for imap server'),
-            'goImapSieveServer',
-            TRUE,
+            _('Sieve connect URL'), _('Sieve connect URL for imap server'),
+            'goImapSieveServer', TRUE,
             '',
             '',
             '/^\{[^:]+:[0-9]*\/(no|)tls\}$/',
             '{server-name:port/options}. Valid options are: tls,notls'
           ),
           new IntAttribute (
-            _('Port'),
-            _('Port for sieve connect url of theimap server'),
-            'goImapSievePort',
-            FALSE,
-            FALSE,
-            FALSE,
-            FALSE
+            _('Port'), _('Port for sieve connect url of the imap server'),
+            'goImapSievePort', FALSE,
+            0 /*min*/, FALSE /*max*/, 0 /*default*/
           ),
           new BooleanAttribute (
-            _('Start IMAP service'),
-            ' ',
-            'cyrusImap',
-            FALSE,
+            _('Start IMAP service'), ' ',
+            'cyrusImap', FALSE,
             FALSE,
             '',
             1,
             0
          ),
          new BooleanAttribute (
-           _('Start IMAP SSL service'),
-           ' ',
-           'cyrusImapSSL',
-           FALSE,
+           _('Start IMAP SSL service'), ' ',
+           'cyrusImapSSL', FALSE,
            FALSE,
            '',
            1,
            0
          ),
          new BooleanAttribute (
-           _('Start POP3 service'),
-           ' ',
-           'cyrusPop3',
-           FALSE,
+           _('Start POP3 service'), ' ',
+           'cyrusPop3', FALSE,
            FALSE,
            '',
            1,
            0
          ),
          new BooleanAttribute (
-           _('Start POP3 SSL service'),
-           ' ',
-           'cyrusPop3SSL',
-           FALSE,
+           _('Start POP3 SSL service'), ' ',
+           'cyrusPop3SSL', FALSE,
            FALSE,
            '',
            1,
            0
          )
         )
-      ),
-      'section2' => array (
-        'name' => _('Action'),
-        'icon' => '',
-          'attrs' => array (
-            new SelectAttribute (
-              _('Set new status'),
-              _('Set new status for the server'),
-              'goImapServerStatus',
-              FALSE,
-              array (SERVICE_STOPPED,SERVICE_STARTED,SERVICE_RESTARTED,'repair_database'),
-              '',
-              array (SERVICE_STOPPED,SERVICE_STARTED,SERVICE_RESTARTED,_('Repair database'))
-            )
-          )
-        )
+      )
     );
   }
 
@@ -174,11 +135,11 @@ class goImapServer extends simpleService {
   {
     $ldap = $this->config->get_ldap_link();
     $ldap->cd($this->config->current['BASE']);
-    $ldap->search("(objectClass=goImapServer)",array('goImapSieveServer'));
+    $ldap->search("(objectClass=goImapServer)", array('goImapSieveServer'));
     /* Search port from the URL */
-    $url = $this->attributesInfo['section1']['attrs']['goImapSieveServer']-> getValue();
-    $port = preg_replace("/^\{[^:]+:([0-9]*)\/.*$/","\\1",$url);
-    $this->attributesInfo['section1']['attrs']['goImapSievePort']-> setValue($port);
+    $url  = $this->attributesInfo['section1']['attrs']['goImapSieveServer']->getValue();
+    $port = preg_replace("/^\{[^:]+:([0-9]*)\/.*$/", "\\1", $url);
+    $this->attributesInfo['section1']['attrs']['goImapSievePort']->setValue($port);
 
     parent::save(); // save
   }
