@@ -188,7 +188,7 @@ class mailAccount extends simplePlugin
             FALSE, FALSE, FALSE,
             50
           ),
-          new MailAttribute2 (
+          new MailAttribute (
               _('Forward messages to'),
               _(''),
               'gosaMailForwardingAddress'
