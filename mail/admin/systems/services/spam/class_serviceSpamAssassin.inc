@@ -50,7 +50,7 @@ class spamFlagsAttribute extends StringAttribute
   }
 }
 
-class gospamserver extends simpleService{
+class gospamserver extends simpleService {
 
   /* This plugin only writes its objectClass */
   var $objectclasses    = array("goSpamServer");
@@ -60,15 +60,14 @@ class gospamserver extends simpleService{
 
   static function plInfo()
   {
-    return (array(
-          "plShortName"   => _("Spamassassin service"),
-          "plDescription" => _("Spamassassin service")." ("._("Services").")",
-          "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
-          "plPriority"    => 89,
-          "plCategory"    => array("server"),
-          "plProvidedAcls"=> parent::generatePlProvidedAcls(self::getAttributesInfo())
-          ));
+    return array(
+      "plShortName"   => _("Spamassassin service"),
+      "plDescription" => _("Spamassassin service")." ("._("Services").")",
+      "plSelfModify"  => FALSE,
+      "plPriority"    => 89,
+      "plCategory"    => array("server"),
+      "plProvidedAcls"=> parent::generatePlProvidedAcls(self::getAttributesInfo())
+    );
   }
 
  /*!

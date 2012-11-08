@@ -46,7 +46,7 @@ class AvFlagsAttribute extends StringAttribute
   }
 }
 
-class govirusserver extends simpleService{
+class govirusserver extends simpleService {
 
   var $objectclasses    = array("goVirusServer");
 
@@ -57,7 +57,6 @@ class govirusserver extends simpleService{
       "plShortName"   => _("Antivirus service"),
       "plDescription" => _("Antivirus service")." ("._("Services").")",
       "plSelfModify"  => FALSE,
-      "plDepends"     => array(),
       "plCategory"    => array("server"),
       "plProvidedAcls"=> parent::generatePlProvidedAcls(self::getAttributesInfo())
     );

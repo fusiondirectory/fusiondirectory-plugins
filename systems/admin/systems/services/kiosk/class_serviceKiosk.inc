@@ -20,7 +20,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class serviceKiosk extends goService{
+class serviceKiosk extends goService {
 
   /* This plugin only writes its objectClass */
   var $objectclasses    = array("goEnvironmentServer");

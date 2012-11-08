@@ -20,12 +20,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class serviceLDAP extends goService{
-
-  var $cli_summary      = "This plugin is used within the ServerService Pluign \nand indicates that this server has serviceLDAP defined.";
-  var $cli_description  = "Some longer text\nfor help";
-  var $cli_parameters   = array("eins" => "Eins ist toll", "zwei" => "Zwei ist noch besser");
-
+class serviceLDAP extends goService {
   /* This plugin only writes its objectClass */
   var $objectclasses    = array("goLdapServer");
   var $attributes       = array("goLdapBase");
