@@ -22,54 +22,49 @@
 
 class fonreport extends plugin
 {
-  /* Definitions */
-  var $plHeadline= "Phone Reports";
-  var $plDescription= "This does something";
-  var $plIcon       = "plugins/gofon/images/phonereport.png";
-
   /* For internal use */
-  var $start    = 0;
-  var $search_for = "*";
-  var $search_base  = "";
-  var $fields   = array("calldate", "src", "dst", "channel", "lastapp", "disposition", "duration");
-  var $year   = "";
-  var $month    = "";
-  var $sort   = 0;
+  var $start          = 0;
+  var $search_for     = "*";
+  var $search_base    = "";
+  var $fields         = array("calldate", "src", "dst", "channel", "lastapp", "disposition", "duration");
+  var $year           = "";
+  var $month          = "";
+  var $sort           = 0;
   var $sort_direction = "down";
-  var $report_list  = array();
-  var $userfilter = "";
-  var $ui   = NULL;
-  var $range    = 20;
-  var $EntryPerPage = 20;
+  var $report_list    = array();
+  var $userfilter     = "";
+  var $ui             = NULL;
+  var $range          = 20;
+  var $EntryPerPage   = 20;
 
   var $selected_server  = "";
 
   /* attribute list for save action */
   var $attributes_SO  = array("start","search_for","search_base","range","month","sort_direction","sort","year");
   var $objectclasses  = array();
-  var $view_logged = FALSE;
+  var $view_logged    = FALSE;
 
   /* Construct class */
   function fonreport (&$config, $ui)
   {
     /* Include config object */
-    $this->config     = $config;
-    $this->ui         = $ui;
-    $this->search_base= get_base_from_people($ui->dn);
+    $this->config       = $config;
+    $this->ui           = $ui;
+    $this->search_base  = get_base_from_people($ui->dn);
 
-    $this->month      = date("m");
-    $this->year       = date("Y");
+    $this->month = date("m");
+    $this->year  = date("Y");
 
     /* Use filter settings if we have already searched */
-    if (!session::is_set("fonfilter")){
+    if (!session::is_set("fonfilter")) {
       $fonfilter = array();
-      foreach($this->attributes_SO as $name){
-        $fonfilter[$name]=$this->$name;
+      foreach ($this->attributes_SO as $name) {
+        $fonfilter[$name] = $this->$name;
       }
       session::set("fonfilter", $fonfilter);
-    }else{
+    } else {
       $fonfilter = session::get("fonfilter");
-      foreach($this->attributes_SO as $name){
+      foreach ($this->attributes_SO as $name) {
         $this->$name = $fonfilter[$name];
       }
     }
@@ -80,16 +75,16 @@ class fonreport extends plugin
       to remember settings */
   function save_object()
   {
-    $fonfilter= session::get("fonfilter");
+    $fonfilter = session::get("fonfilter");
     if (isset($_POST['EntryPerPage'])) {
       $this->range = $_POST['EntryPerPage'];
     }
     if (isset($_GET['start'])) {
-      $this->start= (int)$_GET['start'];
+      $this->start = (int)$_GET['start'];
     }
     foreach (array("year", "month", "search_for", "search_base","selected_server") as $type) {
       if (isset($_POST[$type])) {
-        $this->$type= get_post($type);
+        $this->$type = get_post($type);
       }
     }
 
@@ -97,19 +92,19 @@ class fonreport extends plugin
     if (isset($_GET['sort'])) {
       if ($this->sort == (int)$_GET['sort']) {
         if ($this->sort_direction == "down") {
-          $this->sort_direction= "up";
+          $this->sort_direction = "up";
         } else {
-          $this->sort_direction= "down";
+          $this->sort_direction = "down";
         }
       }
-      $this->sort= (int)$_GET['sort'];
+      $this->sort = (int)$_GET['sort'];
       if ($this->sort < 0 || $this->sort > 6) {
-        $this->sort= 0;
+        $this->sort = 0;
       }
     }
 
     /* remove unwanted tags */
-    $this->search_for = stripslashes(preg_replace("/[^0-9a-z\*\+ \-\/]/i","",$this->search_for));
+    $this->search_for = stripslashes(preg_replace("/[^0-9a-z\*\+ \-\/]/i", "", $this->search_for));
 
     foreach ($this->attributes_SO as $name) {
       $fonfilter[$name] = $this->$name;
@@ -129,7 +124,7 @@ class fonreport extends plugin
     /* Log view */
     if (!$this->view_logged) {
       $this->view_logged = TRUE;
-      new log("view","fonreport/".get_class($this),$this->dn);
+      new log("view", "fonreport/".get_class($this), $this->dn);
     }
 
     /*****************
@@ -419,28 +414,26 @@ class fonreport extends plugin
      #FIXME You can only read attributes within this report plugin */
   static function plInfo()
   {
-    return (array(
-        "plShortName"   => _("Phone reports"),
-        "plDescription" => _("Phone reports")."&nbsp;<i>"._("All entries are readonly")."</i>",
-        "plSelfModify"  => TRUE,
-        "plDepends"     => array(),
-        "plPriority"    => 0,
-        "plCategory"    => array(
-          "fonreport" => array(
-            "description" => _("Phone reports"),
-            "objectClass" => "None")),
+    return array(
+      "plShortName"   => _("Phone reports"),
+      "plDescription" => _("Phone reports")."&nbsp;<i>"._("All entries are readonly")."</i>",
+      "plIcon"        => "plugins/gofon/images/phonereport.png",
+      "plSelfModify"  => TRUE,
+      "plPriority"    => 0,
+      "plCategory"    => array("fonreport" => array( "description" => _("Phone reports"),
+                                                      "objectClass" => "None")),
+      "plSection"     => "addons",
 
-
-        "plProvidedAcls" => array(
-          "calldate"      =>_("Date"),
-          "src"           =>_("Source"),
-          "dst"           =>_("Destination"),
-          "channel"       =>_("Channel"),
-          "lastapp"       =>_("Application called"),
-          "disposition"   =>_("Disposition"),
-          "duration"      =>_("Duration"))
-        ));
+      "plProvidedAcls" => array(
+        "calldate"    => _("Date"),
+        "src"         => _("Source"),
+        "dst"         => _("Destination"),
+        "channel"     => _("Channel"),
+        "lastapp"     => _("Application called"),
+        "disposition" => _("Disposition"),
+        "duration"    => _("Duration")
+      )
+    );
   }
 }
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

@@ -459,7 +459,7 @@ class gotomasses extends management
     return array(
       "plShortName"   => _("System deployment"),
       "plDescription" => _("Provide a mechanism to automatically activate systems"),
-      "plIcon"        => "plugins/systems/images/goto.png";
+      "plIcon"        => "plugins/systems/images/goto.png",
       "plSelfModify"  => FALSE,
       "plPriority"    => 0,
       "plSection"     => "addons",

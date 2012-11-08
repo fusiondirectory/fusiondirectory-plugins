@@ -22,11 +22,6 @@
 
 class faxreport extends plugin
 {
-  /* Definitions */
-  var $plHeadline     = "FAX Reports";
-  var $plDescription  = "This plugin show the fax reports";
-  var $plIcon         = "plugins/gofax/images/reports.png";
-
   /* For internal use */
   var $start          = 0;
   var $search_for     = "*";
@@ -483,32 +478,30 @@ class faxreport extends plugin
     #FIXME You can only read attributes within this report plugin */
   static function plInfo()
   {
+    return array(
+      "plShortName"     => _("Fax reports"),
+      "plDescription"   => _("Fax reports")."&nbsp;<i>"._("All entries are readonly")."</i>",
+      "plIcon"          => "plugins/gofax/images/reports.png",
+      "plSelfModify"    => TRUE,
+      "plPriority"      => 1,                                 // Position in tabs
+      "plCategory"      => array("faxreport" => array("description" => _("Fax reports"),
+                                                     "objectClass" => array())),
+      "plSection"       => "addons",
 
-    return (array(
-          "plShortName"     => _("Fax report"),
-          "plDescription"   => _("Fax report")."&nbsp;<i>"._("All entries are readonly")."</i>",
-          "plSelfModify"    => TRUE,
-          "plDepends"       => array(),
-          "plPriority"      => 1,                                 // Position in tabs
-          "plCategory"      => array("faxreport" => array("description" => _("Fax reports"),
-                                                         "objectClass" => array())),
-          "plOptions"       => array(),
-
-          "plProvidedAcls" => array(
-            "detailedView"   => _("Detailed view"),
-            "id"             => _("Fax ID"),
-            "queuingtime"    => _("Date")."&nbsp;/&nbsp;"._("Time"),
-            "status"         => _("Status"),
-            "senderid"       => _("Sender ID"),
-            "sendermsn"      => _("Sender MSN"),
-            "receiverid"     => _("Receiver ID"),
-            "receivermsn"    => _("Receiver MSN"),
-            "pages"          => _("Number of pages"),
-            "statusmessage"  => _("Status Message"),
-            "transfertime"   => _("Transfer time"))
-        ));
+      "plProvidedAcls" => array(
+        "detailedView"   => _("Detailed view"),
+        "id"             => _("Fax ID"),
+        "queuingtime"    => _("Date")."&nbsp;/&nbsp;"._("Time"),
+        "status"         => _("Status"),
+        "senderid"       => _("Sender ID"),
+        "sendermsn"      => _("Sender MSN"),
+        "receiverid"     => _("Receiver ID"),
+        "receivermsn"    => _("Receiver MSN"),
+        "pages"          => _("Number of pages"),
+        "statusmessage"  => _("Status Message"),
+        "transfertime"   => _("Transfer time")
+      )
+    );
   }
-
 }
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>
