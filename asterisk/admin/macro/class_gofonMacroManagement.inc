@@ -22,46 +22,55 @@
 
 class goFonMacro extends management
 {
-  var $plHeadline     = "Macros";
-  var $plDescription  = "Phone macro management";
-  var $plIcon  = "plugins/gofon/images/macros.png";
-
   // Tab definition
-  protected $tabClass = "macrotabs";
-  protected $tabType = "MACROTABS";
-  protected $aclCategory = "gofonmacro";
-  protected $aclPlugin   = "macro";
+  protected $tabClass     = "macrotabs";
+  protected $tabType      = "MACROTABS";
+  protected $aclCategory  = "gofonmacro";
+  protected $aclPlugin    = "macro";
   protected $objectName   = "macro";
 
-  function __construct($config,$ui)
+  /* Return plugin informations for acl handling */
+  static function plInfo()
+  {
+    return array(
+      "plShortName"   => _("Macros"),
+      "plDescription" => _("Macros management"),
+      "plIcon"        => "plugins/gofon/images/macros.png",
+      "plSection"     => "admin",
+      "plCategory"    => array("gofonmacro"),
+
+      "plProvidedAcls" => array()
+    );
+  }
+
+  function __construct($config, $ui)
   {
     $this->config = $config;
-    $this->ui = $ui;
+    $this->ui     = $ui;
 
     $this->storagePoints = array(get_ou("phoneMacroRDN"));
 
     // Build filter
-    if (session::global_is_set(get_class($this)."_filter")){
-      $filter= session::global_get(get_class($this)."_filter");
+    if (session::global_is_set(get_class($this)."_filter")) {
+      $filter = session::global_get(get_class($this)."_filter");
     } else {
-      $filter = new filter(get_template_path("macro-filter.xml", true));
+      $filter = new filter(get_template_path("macro-filter.xml", TRUE));
       $filter->setObjectStorage($this->storagePoints);
     }
     $this->setFilter($filter);
 
     // Build headpage
-    $headpage = new listing(get_template_path("macro-list.xml", true));
+    $headpage = new listing(get_template_path("macro-list.xml", TRUE));
     $headpage->setFilter($filter);
 
     // Add copy&paste and snapshot handler.
-    if ($this->config->boolValueIsTrue("main", "copyPaste")){
+    if ($this->config->boolValueIsTrue("main", "copyPaste")) {
       $this->cpHandler = new CopyPasteHandler($this->config);
     }
-    if($this->config->get_cfg_value("enableSnapshots") == "TRUE"){
+    if ($this->config->get_cfg_value("enableSnapshots") == "TRUE") {
       $this->snapHandler = new SnapshotHandler($this->config);
     }
     parent::__construct($config, $ui, "macros", $headpage);
   }
 }
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

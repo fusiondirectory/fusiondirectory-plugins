@@ -22,16 +22,26 @@
 
 class blocklist extends management
 {
-  var $plHeadline     = "Blocklists";
-  var $plDescription  = "Blocklist management";
-  var $plIcon         = "plugins/gofax/images/blocklists.png";
-
   // Tab definition
   protected $tabClass     = "faxblocktabs";
   protected $tabType      = "FAXBLOCKTABS";
   protected $aclCategory  = "gofaxlist";
   protected $aclPlugin    = "blocklistGeneric";
   protected $objectName   = "blocklist";
+
+  /* Return plugin informations for acl handling */
+  static function plInfo()
+  {
+    return array(
+      "plShortName"   => _("Blocklists"),
+      "plDescription" => _("Blocklist management"),
+      "plIcon"        => "plugins/gofax/images/blocklists.png",
+      "plSection"     => "admin",
+      "plCategory"    => array("gofaxlist"),
+
+      "plProvidedAcls" => array()
+    );
+  }
 
   function __construct($config, $ui)
   {

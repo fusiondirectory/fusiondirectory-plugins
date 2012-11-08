@@ -22,58 +22,69 @@
 
 class sudoManagement extends management
 {
-  var $plHeadline     = "Sudo";
-  var $plDescription  = "Sudo management";
-  var $plIcon  = "plugins/sudo/images/sudo.png";
-
   // Tab definition
-  protected $tabClass = "sudotabs";
-  protected $tabType = "SUDOTABS";
-  protected $aclCategory = "sudo";
-  protected $aclPlugin   = "sudo";
+  protected $tabClass     = "sudotabs";
+  protected $tabType      = "SUDOTABS";
+  protected $aclCategory  = "sudo";
+  protected $aclPlugin    = "sudo";
   protected $objectName   = "sudo";
 
-  function __construct($config,$ui)
+  /* Return plugin informations for acl handling */
+  static function plInfo()
+  {
+    return array(
+      "plShortName"   => _("Sudo"),
+      "plDescription" => _("Sudo management"),
+      "plIcon"        => "plugins/sudo/images/sudo.png",
+      "plSection"     => "admin",
+      "plCategory"    => array("sudo"),
+
+      "plProvidedAcls" => array()
+    );
+  }
+
+  function __construct($config, $ui)
   {
     $this->config = $config;
-    $this->ui = $ui;
+    $this->ui     = $ui;
 
     $this->storagePoints = array(get_ou("sudoRDN"));
 
     // Build filter
-    if (0 && session::global_is_set(get_class($this)."_filter")){
-      $filter= session::global_get(get_class($this)."_filter");
+    if (0 && session::global_is_set(get_class($this)."_filter")) {
+      $filter = session::global_get(get_class($this)."_filter");
     } else {
-      $filter = new filter(get_template_path("sudo-filter.xml", true));
+      $filter = new filter(get_template_path("sudo-filter.xml", TRUE));
       $filter->setObjectStorage($this->storagePoints);
     }
     $this->setFilter($filter);
 
     // Build headpage
-    $headpage = new listing(get_template_path("sudo-list.xml", true));
+    $headpage = new listing(get_template_path("sudo-list.xml", TRUE));
     $headpage->setFilter($filter);
 
     // Add copy&paste and snapshot handler.
-    if ($this->config->boolValueIsTrue("main", "copyPaste")){
+    if ($this->config->boolValueIsTrue("main", "copyPaste")) {
       $this->cpHandler = new CopyPasteHandler($this->config);
     }
-    if($this->config->get_cfg_value("enableSnapshots") == "TRUE"){
+    if ($this->config->get_cfg_value("enableSnapshots") == "TRUE") {
       $this->snapHandler = new SnapshotHandler($this->config);
     }
     $this->registerAction("new_default", "newEntry");
     parent::__construct($config, $ui, "sudo", $headpage);
   }
 
-  function newEntry($action="",$target=array(),$all=array(), $altTabClass ="", $altTabType = "", $altAclCategory="")
+  function newEntry($action = "", $target = array(), $all = array(), $altTabClass = "", $altTabType = "", $altAclCategory = "")
   {
-    $str = management::newEntry($action,$target,$all,$altTabClass,$altTabType,$altAclCategory);
+    $str = management::newEntry($action, $target, $all, $altTabClass, $altTabType, $altAclCategory);
 
     /* This entry will become the default entry */
-    if($action == "new_default"){
+    if ($action == "new_default") {
       $this->tabObject->set_default(TRUE);
     }
-    if(!empty($str)) return($str);
+    if (!empty($str)) {
+      return $str;
+    }
   }
 }
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

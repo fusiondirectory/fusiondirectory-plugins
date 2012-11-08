@@ -20,75 +20,91 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
  */
 
-class netgroupManagement extends management {
+class netgroupManagement extends management
+{
+  // Tab definition
+  protected $tabClass     = "netgrouptabs";
+  protected $tabType      = "NETGROUPTABS";
+  protected $aclCategory  = "netgroups";
+  protected $aclPlugin    = "netgroup";
+  protected $objectName   = "netgroup";
 
-    var $plHeadline = "NIS Netgroups";
-    var $plDescription = "NIS Netgroups management";
-    var $plIcon = "plugins/netgroups/images/plugin.png";
-    // Tab definition
-    protected $tabClass = "netgrouptabs";
-    protected $tabType = "NETGROUPTABS";
-    protected $aclCategory = "netgroups";
-    protected $aclPlugin = "netgroup";
-    protected $objectName = "netgroup";
+  /* Return plugin informations for acl handling */
+  static function plInfo()
+  {
+    return array(
+      "plShortName"   => _("NIS Netgroups"),
+      "plDescription" => _("NIS Netgroup management"),
+      "plIcon"        => "plugins/netgroups/images/plugin.png",
+      "plSection"     => "admin",
+      "plCategory"    => array("netgroups"),
 
-    function __construct($config, $ui) {
-        $this->config = $config;
-        $this->ui = $ui;
+      "plProvidedAcls" => array()
+    );
+  }
 
-        $this->storagePoints = array(get_ou("netgroupRDN"));
+  function __construct($config, $ui)
+  {
+    $this->config = $config;
+    $this->ui     = $ui;
 
-        // Build filter
-        if (session::global_is_set(get_class($this) . "_filter")) {
-            $filter = session::global_get(get_class($this) . "_filter");
-        } else {
-            $filter = new filter(get_template_path("netgroup-filter.xml", true));
-            $filter->setObjectStorage($this->storagePoints);
-        }
-        $this->setFilter($filter);
+    $this->storagePoints = array(get_ou("netgroupRDN"));
 
-        // Build headpage
-        $headpage = new listing(get_template_path("netgroup-list.xml", true));
-        $headpage->setFilter($filter);
-
-        // Add copy&paste and snapshot handler.
-        if ($this->config->boolValueIsTrue("main", "copyPaste")) {
-            $this->cpHandler = new CopyPasteHandler($this->config);
-        }
-        if ($this->config->get_cfg_value("enableSnapshots") == "TRUE") {
-            $this->snapHandler = new SnapshotHandler($this->config);
-        }
-        parent::__construct($config, $ui, "netgroups", $headpage);
-
-        $this->registerAction("edit_netgroup", "editEntry");
+    // Build filter
+    if (session::global_is_set(get_class($this) . "_filter")) {
+      $filter = session::global_get(get_class($this) . "_filter");
+    } else {
+      $filter = new filter(get_template_path("netgroup-filter.xml", TRUE));
+      $filter->setObjectStorage($this->storagePoints);
     }
+    $this->setFilter($filter);
 
-    // Inject user actions
-    function detectPostActions() {
-        $action = management::detectPostActions();
-        if (isset($_POST['save_event_dialog']))
-            $action['action'] = "saveEventDialog";
-        if (isset($_POST['abort_event_dialog']))
-            $action['action'] = "abortEventDialog";
-        return($action);
+    // Build headpage
+    $headpage = new listing(get_template_path("netgroup-list.xml", TRUE));
+    $headpage->setFilter($filter);
+
+    // Add copy&paste and snapshot handler.
+    if ($this->config->boolValueIsTrue("main", "copyPaste")) {
+      $this->cpHandler = new CopyPasteHandler($this->config);
     }
-
-    function editEntry($action="", $target=array(), $all=array(), $altTabClass ="", $altTabType = "", $altAclCategory="") {
-        $str = management::editEntry($action, $target);
-
-        if (preg_match("/^edit_/", $action)) {
-            $tab = preg_replace("/^edit_/", "", $action);
-            if (isset($this->tabObject->by_object[$tab])) {
-                $this->tabObject->current = $tab;
-            } else {
-                trigger_error("Unknown tab: " . $tab);
-            }
-        }
-        if (!empty($str))
-            return($str);
+    if ($this->config->get_cfg_value("enableSnapshots") == "TRUE") {
+      $this->snapHandler = new SnapshotHandler($this->config);
     }
+    parent::__construct($config, $ui, "netgroups", $headpage);
+
+    $this->registerAction("edit_netgroup", "editEntry");
+  }
+
+  // Inject user actions
+  function detectPostActions()
+  {
+    $action = management::detectPostActions();
+    if (isset($_POST['save_event_dialog'])) {
+      $action['action'] = "saveEventDialog";
+    }
+    if (isset($_POST['abort_event_dialog'])) {
+      $action['action'] = "abortEventDialog";
+    }
+    return $action;
+  }
+
+  function editEntry($action = "", $target = array(), $all = array(), $altTabClass = "", $altTabType = "", $altAclCategory = "")
+  {
+    $str = management::editEntry($action, $target);
+
+    if (preg_match("/^edit_/", $action)) {
+      $tab = preg_replace("/^edit_/", "", $action);
+      if (isset($this->tabObject->by_object[$tab])) {
+        $this->tabObject->current = $tab;
+      } else {
+        trigger_error("Unknown tab: " . $tab);
+      }
+    }
+    if (!empty($str)) {
+      return $str;
+    }
+  }
 
 }
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 
 ?>

@@ -22,16 +22,26 @@
 
 class roleManagement extends management
 {
-  var $plHeadline     = "Roles";
-  var $plDescription  = "Role management";
-  var $plIcon         = "plugins/rolemanagement/images/plugin.png";
-
   // Tab definition
   protected $tabClass     = "roletabs";
   protected $tabType      = "ROLETABS";
   protected $aclCategory  = "roles";
   protected $aclPlugin    = "role";
   protected $objectName   = "role";
+
+  /* Return plugin informations for acl handling */
+  static function plInfo()
+  {
+    return array(
+      "plShortName"   => _("Roles"),
+      "plDescription" => _("Role management"),
+      "plIcon"        => "plugins/rolemanagement/images/plugin.png",
+      "plSection"     => "admin",
+      "plCategory"    => array("roles"),
+
+      "plProvidedAcls" => array()
+    );
+  }
 
   function __construct($config, $ui)
   {

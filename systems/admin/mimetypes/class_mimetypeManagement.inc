@@ -22,18 +22,28 @@
 
 class mimetypeManagement extends management
 {
-  var $plHeadline     = "Mime types";
-  var $plDescription  = "Manage mime types";
-  var $plIcon  = "plugins/systems/images/mimetypes.png";
-
   var $mime_release = ""; // The currently selected release while in release management mode!
 
   // Tab definition
-  protected $tabClass = "mimetabs";
-  protected $tabType = "MIMETYPETABS";
-  protected $aclCategory = "mimetypes";
-  protected $aclPlugin   = "mimetype";
+  protected $tabClass     = "mimetabs";
+  protected $tabType      = "MIMETYPETABS";
+  protected $aclCategory  = "mimetypes";
+  protected $aclPlugin    = "mimetype";
   protected $objectName   = "mimetype";
+
+  /* Return plugin informations for acl handling */
+  static function plInfo()
+  {
+    return array(
+      "plShortName"   => _("Mime types"),
+      "plDescription" => _("Mime type management"),
+      "plIcon"        => "plugins/systems/images/mimetypes.png",
+      "plSection"     => "admin",
+      "plCategory"    => array("mimetypes"),
+
+      "plProvidedAcls" => array()
+    );
+  }
 
   function __construct($config,$ui)
   {

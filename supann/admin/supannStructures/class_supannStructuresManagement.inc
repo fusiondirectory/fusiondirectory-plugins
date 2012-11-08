@@ -20,20 +20,30 @@
 
 class supannStructuresManagement extends management
 {
-  var $plHeadline     = "Supann structures";
-  var $plDescription  = "Supann structures administration";
-  var $plIcon         = "plugins/supann/images/plugin.png";
-
   // Tab definition
   protected $tabClass     = "supannStructurestabs";
   protected $aclCategory  = "supannStructures";
   protected $aclPlugin    = "supannStructures";
   protected $objectName   = "supannStructures";
 
+  /* Return plugin informations for acl handling */
+  static function plInfo()
+  {
+    return array(
+      "plShortName"   => _("Supann structures"),
+      "plDescription" => _("Supann structures management"),
+      "plIcon"        => "plugins/supann/images/plugin.png",
+      "plSection"     => "admin",
+      "plCategory"    => array("supannStructures"),
+
+      "plProvidedAcls" => array()
+    );
+  }
+
   function __construct($config, $ui)
   {
     $this->config = $config;
-    $this->ui = $ui;
+    $this->ui     = $ui;
 
     $this->storagePoints = array(get_ou("supannStructuresRDN"));
 
@@ -41,13 +51,13 @@ class supannStructuresManagement extends management
     if (session::global_is_set(get_class($this)."_filter")) {
       $filter = session::global_get(get_class($this)."_filter");
     } else {
-      $filter = new filter(get_template_path("supannStructures-filter.xml", true));
+      $filter = new filter(get_template_path("supannStructures-filter.xml", TRUE));
       $filter->setObjectStorage($this->storagePoints);
     }
     $this->setFilter($filter);
 
     // Build headpage
-    $headpage = new listing(get_template_path("supannStructures-list.xml", true));
+    $headpage = new listing(get_template_path("supannStructures-list.xml", TRUE));
     $headpage->registerElementFilter("structureLabel",
                                      "supannStructuresManagement::filterStructureLabel");
     $headpage->registerElementFilter("filterProperties",
@@ -66,10 +76,10 @@ class supannStructuresManagement extends management
     $this->registerAction("edit_etablissement", "editEntry");
     $this->registerAction("edit_entite", "editEntry");
 
-/*
+    /*
     $this->registerAction("remove_etablissement", "removeEntry");
     $this->registerAction("remove_entite", "removeEntry");
-*/
+    */
     $this->registerAction("removeConfirmed", "removeEntryConfirmed");
 
     $this->registerAction("organizationalUnit", "newEntry");
@@ -110,7 +120,8 @@ class supannStructuresManagement extends management
 
   // Overridden new handler - We've different types of departments to create!
   function newEntry($action = "", $target = array(), $all = array(), $altTabClass = "",
-                    $altTabType = "", $altAclCategory = "") {
+                    $altTabType = "", $altAclCategory = "")
+  {
     $types = $this->get_support_supannStructures();
     $type = preg_replace("/^new_/", "", $action);
 
@@ -120,7 +131,8 @@ class supannStructuresManagement extends management
 
 
   function editEntry( $action = "", $target = array(), $all = array(), $altTabClass = "",
-                      $altTabType = "", $altAclCategory = "") {
+                      $altTabType = "", $altAclCategory = "")
+  {
     $types = $this->get_support_supannStructures();
     $headpage = $this->getHeadpage();
 
@@ -141,16 +153,16 @@ class supannStructuresManagement extends management
     }
   }
 
-  function removeEntryConfirmed($action="",$target=array(),$all=array(),
-                                $altTabClass="",$altTabType="",$altAclCategory="")
+  function removeEntryConfirmed($action = "", $target = array(), $all = array(),
+                                $altTabClass = "", $altTabType = "", $altAclCategory = "")
   {
-    $types = $this->get_support_supannStructures();
+    $types    = $this->get_support_supannStructures();
     $headpage = $this->getHeadpage();
 
     $targets = array();
     foreach ($this->dns as $dn) {
       $type = $headpage->getType($dn);
-      if(empty($type)) {
+      if (empty($type)) {
         continue;
       }
       $targets[$type][] = $dn;

@@ -22,10 +22,6 @@
 
 class applicationManagement extends management
 {
-  var $plHeadline     = "Applications";
-  var $plDescription  = "Application management";
-  var $plIcon  = "plugins/systems/images/application.png";
-
   var $app_release = ""; // The currently selected release while in release management mode!
 
   // Tab definition
@@ -34,6 +30,20 @@ class applicationManagement extends management
   protected $aclCategory = "application";
   protected $aclPlugin   = "application";
   protected $objectName   = "application";
+
+  /* Return plugin informations for acl handling */
+  static function plInfo()
+  {
+    return array(
+      "plShortName"   => _("Applications"),
+      "plDescription" => _("Application management"),
+      "plIcon"        => "plugins/systems/images/application.png",
+      "plSection"     => "admin",
+      "plCategory"    => array("application"),
+
+      "plProvidedAcls" => array()
+    );
+  }
 
   function __construct($config,$ui)
   {

@@ -22,46 +22,55 @@
 
 class phoneConferenceManagment extends management
 {
-  var $plHeadline     = "conferences";
-  var $plDescription  = "Conference management";
-  var $plIcon  = "plugins/gofon/images/conference.png";
-
   // Tab definition
-  protected $tabClass = "conferencetabs";
-  protected $tabType = "CONFERENCETABS";
-  protected $aclCategory = "gofonconference";
-  protected $aclPlugin   = "conference";
+  protected $tabClass     = "conferencetabs";
+  protected $tabType      = "CONFERENCETABS";
+  protected $aclCategory  = "gofonconference";
+  protected $aclPlugin    = "conference";
   protected $objectName   = "phone conference";
 
-  function __construct($config,$ui)
+  /* Return plugin informations for acl handling */
+  static function plInfo()
+  {
+    return array(
+      "plShortName"   => _("Conferences"),
+      "plDescription" => _("Conference management"),
+      "plIcon"        => "plugins/gofon/images/conference.png",
+      "plSection"     => "admin",
+      "plCategory"    => array("gofonconference"),
+
+      "plProvidedAcls" => array()
+    );
+  }
+
+  function __construct($config, $ui)
   {
     $this->config = $config;
-    $this->ui = $ui;
+    $this->ui     = $ui;
 
     $this->storagePoints = array(get_ou("phoneConferenceRDN"));
 
     // Build filter
-    if (session::global_is_set(get_class($this)."_filter")){
-      $filter= session::global_get(get_class($this)."_filter");
+    if (session::global_is_set(get_class($this)."_filter")) {
+      $filter = session::global_get(get_class($this)."_filter");
     } else {
-      $filter = new filter(get_template_path("conf-filter.xml", true));
+      $filter = new filter(get_template_path("conf-filter.xml", TRUE));
       $filter->setObjectStorage($this->storagePoints);
     }
     $this->setFilter($filter);
 
     // Build headpage
-    $headpage = new listing(get_template_path("conf-list.xml", true));
+    $headpage = new listing(get_template_path("conf-list.xml", TRUE));
     $headpage->setFilter($filter);
 
     // Add copy&paste and snapshot handler.
-    if ($this->config->boolValueIsTrue("main", "copyPaste")){
+    if ($this->config->boolValueIsTrue("main", "copyPaste")) {
       $this->cpHandler = new CopyPasteHandler($this->config);
     }
-    if($this->config->get_cfg_value("enableSnapshots") == "TRUE"){
+    if ($this->config->get_cfg_value("enableSnapshots") == "TRUE") {
       $this->snapHandler = new SnapshotHandler($this->config);
     }
     parent::__construct($config, $ui, "conferences", $headpage);
   }
 }
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

@@ -35,6 +35,20 @@ class deviceManagement extends management
   protected $aclPlugin   = "deviceGeneric";
   protected $objectName   = "device";
 
+  /* Return plugin informations for acl handling */
+  static function plInfo()
+  {
+    return array(
+      "plShortName"   => _("Hotplug devices"),
+      "plDescription" => _("Hotplug device management"),
+      "plIcon"        => "plugins/systems/images/devices.png",
+      "plSection"     => "admin",
+      "plCategory"    => array("devices"),
+
+      "plProvidedAcls" => array()
+    );
+  }
+
   function __construct($config,$ui)
   {
     $this->config = $config;
