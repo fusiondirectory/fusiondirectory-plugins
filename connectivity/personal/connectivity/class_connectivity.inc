@@ -47,28 +47,28 @@ class connectivity extends plugin
 
   var $multiple_support = TRUE;
 
-  function connectivity (&$config, $dn= NULL,$parent =NULL)
+  function connectivity (&$config, $dn = NULL, $parent = NULL)
   {
     /* Preseed permissions */
-    $this->dn= $dn;
-    $ui= get_userinfo();
+    $this->dn = $dn;
+    $ui = get_userinfo();
 
     $this->config = $config;
 
     /* Load accounts */
-    foreach ($config->data['TABS']['CONNECTIVITY'] as $plug){
+    foreach ($config->data['TABS']['CONNECTIVITYTABS'] as $plug) {
       if (!plugin_available($plug['CLASS'])) {
         continue;
       }
-      $name= $plug['CLASS'];
-      $this->plugin_name[]= $name;
-      $this->plugin[$name]= new $name($config, $dn,$parent);
+      $name = $plug['CLASS'];
+      $this->plugin_name[] = $name;
+      $this->plugin[$name] = new $name($config, $dn, $parent);
 
       /* Acl base && category configuration,
           these settings will be overloaded in main.inc,
           if we are editing ourself */
-      $this->plugin[$name]-> set_acl_category("users");
-      $this->plugin[$name]-> set_acl_base($this->dn);
+      $this->plugin[$name]->set_acl_category("users");
+      $this->plugin[$name]->set_acl_base($this->dn);
     }
   }
 

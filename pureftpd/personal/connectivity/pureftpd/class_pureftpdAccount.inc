@@ -23,25 +23,23 @@
 class pureftpdAccount extends simplePlugin
 {
   /* Definitions */
-  var $displayHeader = TRUE;
-  var $plHeadline= "FTP";
-  var $plDescription= "This does something";
-  var $objectclasses= array("PureFTPdUser");
+  var $displayHeader  = TRUE;
+  var $objectclasses  = array("PureFTPdUser");
 
 
-  /* Return plugin informations for acl handling
-  #FIME There possibly some attributes that can be combined to one acl. */
+  /* Return plugin informations for acl handling */
   static function plInfo()
   {
-    return (array(
-          "plShortName"     => _("Ftp"),
-          "plDescription"   => _("Pure ftp account")."&nbsp;("._("Connectivity addon").")",
-          "plSelfModify"    => TRUE,
-          "plDepends"       => array("user"),
-          "plPriority"      => 22,                                 // Position in tabs
-          "plCategory"      => array("users"),
-          "plProvidedAcls"    => parent::generatePlProvidedAcls(self::getAttributesInfo())
-          ));
+    return array(
+      "plShortName"     => _("Ftp"),
+      "plDescription"   => _("Pure ftp account")."&nbsp;("._("Connectivity addon").")",
+      "plSelfModify"    => TRUE,
+      "plDepends"       => array("user"),
+      "plPriority"      => 22,                                 // Position in tabs
+      "plCategory"      => array("users"),
+      "plObjectType"    => array("connectivity"),
+      "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+    );
   }
 
   static function getAttributesInfo ()

@@ -584,7 +584,7 @@ class faiSummaryTab extends plugin{
       "plSelfModify"    => FALSE,
       "plPriority"      => 15,
       "plCategory"      => array("workstation","server","fai","ogroups"),
-      "plObjectType"    => array("workstation","server","ogroup"),
+      "plObjectType"    => array("workstation","server","faiProfile","ogroup"),
       "plProvidedAcls"  => array(
         "readable" => _("Viewable")
       ),

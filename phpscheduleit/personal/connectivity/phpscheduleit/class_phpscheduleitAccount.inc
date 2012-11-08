@@ -24,22 +24,21 @@
 class phpscheduleitAccount extends simplePlugin
 {
   /* Definitions */
-  var $displayHeader = TRUE;
-  var $plHeadline= "PHPscheduleit";
-  var $plDescription= "This does something";
-  var $objectclasses= array("phpscheduleitAccount");
+  var $displayHeader  = TRUE;
+  var $objectclasses  = array("phpscheduleitAccount");
 
   static function plInfo()
   {
-    return (array(
-          "plShortName"     => _("PHP Schedule it"),
-          "plDescription"   => _("PHP Schedule it settings")."&nbsp;("._("Connectivity addon").")",
-          "plSelfModify"    => TRUE,
-          "plDepends"       => array("user"),
-          "plPriority"      => 29,                                 // Position in tabs
-          "plCategory"      => array("users"),
-          "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
-          ));
+    return array(
+      "plShortName"     => _("PHP Schedule it"),
+      "plDescription"   => _("PHP Schedule it settings")."&nbsp;("._("Connectivity addon").")",
+      "plSelfModify"    => TRUE,
+      "plDepends"       => array("user"),
+      "plPriority"      => 29,                                 // Position in tabs
+      "plCategory"      => array("users"),
+      "plObjectType"    => array("connectivity"),
+      "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+    );
   }
 
   /*!

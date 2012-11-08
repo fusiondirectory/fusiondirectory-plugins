@@ -23,21 +23,22 @@
 class intranetAccount extends simplePlugin
 {
   /* Definitions */
-  var $displayHeader = TRUE;
-  var $objectclasses= array("gosaIntranetAccount");
+  var $displayHeader  = TRUE;
+  var $objectclasses  = array("gosaIntranetAccount");
 
   /* Return plugin informations for acl handling */
   static function plInfo()
   {
-    return (array(
-          "plShortName"     => _("Intranet"),
-          "plDepends"       => array("user"),
-          "plPriority"      => 25,                                 // Position in tabs
-          "plCategory"    => array("users"),
-          "plDescription"       => _("Intranet account settings")."&nbsp;("._("Connectivity addon").")",
-          "plSelfModify"        => TRUE,
-          "plProvidedAcls"  => array())
-          );
+    return array(
+      "plShortName"     => _("Intranet"),
+      "plDescription"   => _("Intranet account settings")."&nbsp;("._("Connectivity addon").")",
+      "plSelfModify"    => TRUE,
+      "plDepends"       => array("user"),
+      "plPriority"      => 25,                                 // Position in tabs
+      "plCategory"      => array("users"),
+      "plObjectType"    => array("connectivity"),
+      "plProvidedAcls"  => array()
+    );
   }
 
   function execute()

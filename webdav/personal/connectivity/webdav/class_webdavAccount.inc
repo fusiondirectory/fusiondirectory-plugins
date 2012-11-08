@@ -28,13 +28,14 @@ class webdavAccount extends simplePlugin
 
   static function plInfo()
   {
-    return (array(
-          "plShortName"     => _("WebDAV"),
-          "plDescription"   => _("WebDAV account")."&nbsp;("._("Connectivity addon").")",
-          "plSelfModify"    => TRUE,
-          "plCategory"      => array("users"),
-          "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
-          ));
+    return array(
+      "plShortName"     => _("WebDAV"),
+      "plDescription"   => _("WebDAV account")."&nbsp;("._("Connectivity addon").")",
+      "plSelfModify"    => TRUE,
+      "plCategory"      => array("users"),
+      "plObjectType"    => array("connectivity"),
+      "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+    );
   }
 
   function execute()

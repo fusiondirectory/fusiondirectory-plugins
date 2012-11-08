@@ -24,22 +24,21 @@
 class pptpAccount extends simplePlugin
 {
   /* Definitions */
-  var $displayHeader = TRUE;
-  var $plHeadline= "PPTP";
-  var $plDescription= "This does something";
-  var $objectclasses= array("pptpServerAccount");
+  var $displayHeader  = TRUE;
+  var $objectclasses  = array("pptpServerAccount");
 
   static function plInfo()
   {
-    return (array(
-          "plShortName"     => _("PPTP"),
-          "plDescription"   => _("PPTP account")."&nbsp;("._("Connectivity addon").")",
-          "plSelfModify"    => TRUE,
-          "plDepends"       => array("user"),
-          "plPriority"      => 28,                                 // Position in tabs
-          "plCategory"      => array("users"),
-          "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
-          ));
+    return array(
+      "plShortName"     => _("PPTP"),
+      "plDescription"   => _("PPTP account")."&nbsp;("._("Connectivity addon").")",
+      "plSelfModify"    => TRUE,
+      "plDepends"       => array("user"),
+      "plPriority"      => 28,                                 // Position in tabs
+      "plCategory"      => array("users"),
+      "plObjectType"    => array("connectivity"),
+      "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+    );
   }
 
   /*!

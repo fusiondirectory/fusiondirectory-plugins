@@ -22,34 +22,30 @@
 
 class oxchangeAccount extends plugin
 {
-  /* Definitions */
-  var $plHeadline= "Open-Xchange";
-  var $plDescription= "This does something";
-
   /* GW attributes */
-  var $OXAppointmentDays="500";
-  var $OXTaskDays="5";
-  var $OXTimeZone="GMT";
-  var $mailEnabled="OK";
-  var $dnModeValue = "";
-  var $view_logged = FALSE;
+  var $OXAppointmentDays  = "500";
+  var $OXTaskDays         = "5";
+  var $OXTimeZone         = "GMT";
+  var $mailEnabled        = "OK";
+  var $dnModeValue        = "";
+  var $view_logged        = FALSE;
 
   /* attribute list for save action */
-  var $attributes= array("OXAppointmentDays", "OXTaskDays", "OXTimeZone","mailEnabled");
-  var $objectclasses= array("OXUserObject");
-  var $ReadOnly =false;
-  var $oxconf = array();
-  var $timezones=array();
-  var $dnmode= "";
-  var $uid ="";
-  var $parent = NULL;
+  var $attributes     = array("OXAppointmentDays", "OXTaskDays", "OXTimeZone","mailEnabled");
+  var $objectclasses  = array("OXUserObject");
+  var $ReadOnly       = FALSE;
+  var $oxconf         = array();
+  var $timezones      = array();
+  var $dnmode         = "";
+  var $uid            = "";
+  var $parent         = NULL;
 
-  function oxchangeAccount (&$config, $dn= NULL,&$parent)
+  function oxchangeAccount (&$config, $dn = NULL, &$parent)
   {
-    plugin::plugin ($config, $dn,$parent);
+    plugin::plugin ($config, $dn, $parent);
     $this->parent = &$parent;
-    for ($i=0;$i<count($this->config->data['TABS']['CONNECTIVITY']);$i++){
-      if($this->config->data['TABS']['CONNECTIVITY'][$i]['CLASS']=='oxchangeAccount') {
+    for ($i = 0; $i<count($this->config->data['TABS']['CONNECTIVITY']);$i++) {
+      if ($this->config->data['TABS']['CONNECTIVITY'][$i]['CLASS']=='oxchangeAccount') {
         $this->oxconf=$this->config->data['TABS']['CONNECTIVITY'][$i];
         break;
       }
@@ -59,12 +55,12 @@ class oxchangeAccount extends plugin
     $this->timezones= array_keys($zones['TIMEZONES']);
 
     /* Setting uid to default */
-    if(isset($this->attrs['uid'][0])){
+    if (isset($this->attrs['uid'][0])) {
       $this->uid = $this->attrs['uid'][0];
     }
 
     $this->dnmode= $this->config->get_cfg_value("accountPrimaryAttribute");
-    if(isset($this->attrs[$this->dnmode][0])){
+    if (isset($this->attrs[$this->dnmode][0])) {
       $this->dnModeValue = $this->attrs[$this->dnmode][0];
     }
   }
@@ -182,9 +178,9 @@ class oxchangeAccount extends plugin
 
     /* Trying to open a Postgresql Database Server */
     if (function_exists("pg_connect")){
-      if(isset($this->oxconf["PGUSER"]) and 
-     isset($this->oxconf["PGHOST"]) and 
-       isset($this->oxconf["PGDBNAME"]) and 
+      if(isset($this->oxconf["PGUSER"]) and
+     isset($this->oxconf["PGHOST"]) and
+       isset($this->oxconf["PGDBNAME"]) and
          isset($this->oxconf["PGPASSWD"])){
         $pgcon = @pg_connect("host=".$this->oxconf["PGHOST"]." user=".$this->oxconf["PGUSER"]." password=".$this->oxconf["PGPASSWD"]." dbname=".$this->oxconf["PGDBNAME"]);
         if (! $pgcon){
@@ -214,7 +210,7 @@ class oxchangeAccount extends plugin
     @DEBUG (DEBUG_LDAP, __LINE__, __FUNCTION__, __FILE__,
         $this->attributes, "Save");
     $this->cleanup();
-    $ldap->modify ($this->attrs); 
+    $ldap->modify ($this->attrs);
 
     new log("remove","users/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
 
@@ -254,9 +250,9 @@ class oxchangeAccount extends plugin
     foreach(array("OXTimeZone","OXTaskDays","OXAppointmentDays") as $name) {
       if($this->acl_is_writeable($name) && isset($_POST[$name])){
         $this->$name = $_POST[$name];
-      } 
+      }
     }
-  
+
     if (isset($_POST["oxchangeStatus"])){
       $this->oxchangeStatus = "disabled";
     } else {
@@ -279,8 +275,8 @@ class oxchangeAccount extends plugin
   if($object=="gosaUserTemplate") $istemplate=TRUE;
       }
     }
-  
-    /* Detect accounts uid 
+
+    /* Detect accounts uid
      */
     if(!isset($this->attrs[$this->dnmode][0])){
       $uid = $this->parent->by_object['user']->uid;
@@ -292,7 +288,7 @@ class oxchangeAccount extends plugin
       msg_dialog::display(_("Error"), msgPool::invalid(_("Open-Xchange account name")), ERROR_DIALOG);
       return;
     }
-  
+
     if ($istemplate) $needupdate=TRUE;
 
     if($needupdate){
@@ -320,7 +316,7 @@ class oxchangeAccount extends plugin
     $ldap= $this->config->get_ldap_link();
     $ldap->cd($this->dn);
     $this->cleanup();
-    $ldap->modify ($this->attrs); 
+    $ldap->modify ($this->attrs);
 
     if($this->initially_was_account){
       new log("modify","users/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
@@ -350,80 +346,80 @@ class oxchangeAccount extends plugin
       $ugr= "INSERT INTO usr_general_rights SELECT creating_date, created_from, changing_date, changed_from,text('%s'),  addr_u, addr_r, addr_d, cont_u, cont_r, cont_d, data_u, data_r, data_d, serie_u, serie_r, serie_d, task_u, task_r, task_d,  refer, proj_u, proj_r, proj_d, dfolder_u, dfolder_r, dfolder_d, doc_u, doc_r, doc_d, knowl_u, knowl_r, knowl_d, bfolder_u,  bfolder_r, bfolder_d, bookm_u, bookm_r, bookm_d, pin_u, pin_r, pin_d, forum_n, fentrie_n, setup, pin_public, internal,  int_groups, kfolder_u, kfolder_r, kfolder_d, webmail FROM sys_gen_rights_template WHERE login LIKE 'default_template'";
 
       $error = FALSE;
-      $res=@pg_exec($pgcon,$nv); 
+      $res=@pg_exec($pgcon,$nv);
 
       if(!$res){
         $error = TRUE;
       }else{
-        $calendarid=pg_fetch_row($res); 
+        $calendarid=pg_fetch_row($res);
         pg_freeresult($res);
 
         $q=sprintf($ot,$calendarid[0],'My Appointments','calendar',$uid,$uid);
         @pg_exec($pgcon,$q);
       }
 
-      $res=@pg_exec($pgcon,$nv); 
+      $res=@pg_exec($pgcon,$nv);
 
       if(!$res){
         $error = TRUE;
       }else{
-        $nid=pg_fetch_row($res); 
+        $nid=pg_fetch_row($res);
         pg_freeresult($res);
 
         $q=sprintf($op,$nid[0],$calendarid[0],$uid);
         @pg_exec($pgcon,$q);
       }
 
-      $res=@pg_exec($pgcon,$nv); 
+      $res=@pg_exec($pgcon,$nv);
       if(!$res){
         $error = TRUE;
       }else{
-        $contactsid=pg_fetch_row($res); 
+        $contactsid=pg_fetch_row($res);
         pg_freeresult($res);
 
         $q=sprintf($ot,$contactsid[0],'My Contacts','contact',$uid,$uid);
         @pg_exec($pgcon,$q);
       }
 
-      $res=@pg_exec($pgcon,$nv); 
+      $res=@pg_exec($pgcon,$nv);
       if(!$res){
         $error = TRUE;
       }else{
-        $nid=pg_fetch_row($res); 
+        $nid=pg_fetch_row($res);
         pg_freeresult($res);
 
         $q=sprintf($op,$nid[0],$contactsid[0],$uid);
         @pg_exec($pgcon,$q);
       }
 
-      $res=@pg_exec($pgcon,$nv); 
+      $res=@pg_exec($pgcon,$nv);
       if(!$res){
         $error = TRUE;
       }else{
-        $tasksid=pg_fetch_row($res); 
+        $tasksid=pg_fetch_row($res);
         pg_freeresult($res);
 
         $q=sprintf($ot,$tasksid[0],'My Tasks','task',$uid,$uid);
         @pg_exec($pgcon,$q);
       }
 
-      $res=@pg_exec($pgcon,$nv); 
+      $res=@pg_exec($pgcon,$nv);
       if(!$res){
         $error = TRUE;
       }else{
-        $nid=pg_fetch_row($res); 
+        $nid=pg_fetch_row($res);
         pg_freeresult($res);
 
         $q=sprintf($op,$nid[0],$tasksid[0],$uid);
         @pg_exec($pgcon,$q);
-      
+
         $q=sprintf($os,$uid,$calendarid[0],$contactsid[0],$tasksid[0]);
         @pg_exec($pgcon,$q);
-      
+
         $q=sprintf($ugr,$uid);
         @pg_exec($pgcon,$q);
       }
-    
+
       @pg_close($pgcon);
 
       if($error){
@@ -436,21 +432,21 @@ class oxchangeAccount extends plugin
   /* Return plugin informations for acl handling */
   static function plInfo()
   {
-    return (array(
-          "plShortName"     => _("Open-Xchange"),
-          "plDescription"   => _("Open-Xchange account settings")."&nbsp;("._("Connectivity addon").")",
-          "plSelfModify"    => TRUE,
-          "plDepends"       => array("user"),
-          "plPriority"      => 27,                                 // Position in tabs
-          "plCategory"    => array("users"),
-          "plOptions"       => array(),
+    return array(
+      "plShortName"     => _("Open-Xchange"),
+      "plDescription"   => _("Open-Xchange account settings")."&nbsp;("._("Connectivity addon").")",
+      "plSelfModify"    => TRUE,
+      "plDepends"       => array("user"),
+      "plPriority"      => 27,                                 // Position in tabs
+      "plCategory"      => array("users"),
+      "plObjectType"    => array("connectivity"),
 
-          "plProvidedAcls"  => array(
-            "OXAppointmentDays" => _("OXAppointmentDays"),
-            "OXTaskDays"        => _("OXTaskDays"),
-            "OXTimeZone"        => _("OXTimeZone"))
-          ));
+      "plProvidedAcls"  => array(
+        "OXAppointmentDays" => _("OXAppointmentDays"),
+        "OXTaskDays"        => _("OXTaskDays"),
+        "OXTimeZone"        => _("OXTimeZone")
+      )
+    );
   }
 }
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

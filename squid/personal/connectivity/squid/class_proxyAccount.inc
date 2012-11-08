@@ -63,16 +63,16 @@ class proxyAccount extends simplePlugin
    */
   static function plInfo()
   {
-    return (array(
-          "plShortName"     => _("Proxy"),
-          "plDescription"   => _("Proxy account")."&nbsp;("._("Connectivity addon").")",
-          "plSelfModify"    => TRUE,
-          "plDepends"       => array("user"),
-          "plPriority"      => 21,                                 // Position in tabs
-          "plCategory"      => array("users"),
-          "plOptions"       => array(),
-          "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
-          ));
+    return array(
+      "plShortName"     => _("Proxy"),
+      "plDescription"   => _("Proxy account")."&nbsp;("._("Connectivity addon").")",
+      "plSelfModify"    => TRUE,
+      "plDepends"       => array("user"),
+      "plPriority"      => 21,                                 // Position in tabs
+      "plCategory"      => array("users"),
+      "plObjectType"    => array("connectivity"),
+      "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+    );
   }
 
   /*!
