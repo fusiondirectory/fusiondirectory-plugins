@@ -21,10 +21,6 @@
 
 class addressbook extends plugin
 {
-  /* Definitions */
-  var $plHeadline     = "Addressbook";
-  var $plDescription  = "The addressbook plugin show internal users and external ones";
-
   /* Generic */
   var $ui;
 
@@ -854,8 +850,8 @@ class addressbook extends plugin
       "plShortName"   => _("Addressbook"),
       "plDescription" => _("The addressbook plugin show internal users and external ones"),
       "plSelfModify"  => FALSE,
-      "plDepends"     => array(),
       "plPriority"    => 0,
+      "plSection"     => "addons",
       "plCategory"    => array("addressbook" => array("objectClass" => "inetOrgPerson", "description" => _("Addressbook"))),
 
       "plProvidedAcls"    => array(

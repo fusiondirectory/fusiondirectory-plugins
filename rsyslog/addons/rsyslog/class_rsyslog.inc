@@ -23,24 +23,21 @@ require_once 'MDB2.php';
 
 class rsyslog extends plugin
 {
-  var $plHeadline= "System logs";
-  var $plDescription= "This plugin allow to View system logs";
-
-  var $servers = array();
-  var $selected_server = "";
-  var $selected_host = "all";
-  var $selected_priority = "all";
+  var $servers            = array();
+  var $selected_server    = "";
+  var $selected_host      = "all";
+  var $selected_priority  = "all";
 
   var $startTime = "";
   var $stopTime  = "";
 
   var $search_for ="";
 
-  var $sort_value  = "DeviceReportedTime";
+  var $sort_value = "DeviceReportedTime";
   var $sort_type  = "DESC";
-  var $limit  = "0";
-  var $limits = array(20,50,100,200,500,1000,'-');
-  var $page   = 0;
+  var $limit      = "0";
+  var $limits     = array(20,50,100,200,500,1000,'-');
+  var $page       = 0;
 
   /*! \brief  Return plugin informations for acl handling
       @return Array ACL infos of this plugin.
@@ -49,18 +46,20 @@ class rsyslog extends plugin
   {
     return array(
       "plShortName"   => _("System logs"),
-      "plDescription" => _("System logs"),
+      "plDescription" => _("This plugin allow to View system logs"),
       "plSelfModify"  => FALSE,
+      "plSection"     => "addons",
+      "plCategory"    => array("server/serviceSyslog"),
       "plObjectType"  => array("rsyslog" => array("name" => _("System logs"))),
 
       "plProvidedAcls" => array()
     );
   }
 
-  function rsyslog (&$config, $dn= NULL)
+  function rsyslog (&$config, $dn = NULL)
   {
-    $this->config= &$config;
-    $this->ui = get_userinfo();
+    $this->config = &$config;
+    $this->ui     = get_userinfo();
 
     $this->startTime = date("d.m.Y", (time() - 7*24*60*60));
     $this->stopTime  = date("d.m.Y", time());

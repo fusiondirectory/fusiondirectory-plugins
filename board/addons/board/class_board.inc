@@ -121,6 +121,7 @@ class board extends simplePlugin
       "plSelfModify"  => FALSE,
       "plCategory"    => array("board" => array("objectClass" => "", "description" => _("Board"))),
       "plObjectType"  => array("board" => array("name" => _("Board"), "filter" => "")),
+      "plSection"     => "addons",
 
       "plProvidedAcls"  => array()
     );

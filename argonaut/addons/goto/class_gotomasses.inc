@@ -22,11 +22,6 @@
 
 class gotomasses extends management
 {
-
-  var $plHeadline     = "System deployment status";
-  var $plDescription  = "System deployment status";
-  var $plIcon  = "plugins/systems/images/goto.png";
-
   var $current        = FALSE;
   var $dialog         = FALSE;
   var $ids_to_remove  = array();
@@ -461,15 +456,17 @@ class gotomasses extends management
 
   static function plInfo()
   {
-    return (array(
-          "plShortName"   => _("System deployment"),
-          "plDescription" => _("Provide a mechanism to automatically activate systems"),
-          "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
-          "plPriority"    => 0,
-          "plCategory"    => array("gotomasses" => array("objectClass" => "none", "description" => _("System deployment"))),
-          "plProvidedAcls" => array("Comment"   => _("Description"))
-          ));
+    return array(
+      "plShortName"   => _("System deployment"),
+      "plDescription" => _("Provide a mechanism to automatically activate systems"),
+      "plIcon"        => "plugins/systems/images/goto.png";
+      "plSelfModify"  => FALSE,
+      "plPriority"    => 0,
+      "plSection"     => "addons",
+      "plCategory"    => array("gotomasses" => array("objectClass" => "none", "description" => _("System deployment"))),
+
+      "plProvidedAcls" => array("Comment"   => _("Description"))
+    );
   }
 
 }
