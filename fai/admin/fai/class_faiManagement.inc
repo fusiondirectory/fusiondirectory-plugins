@@ -22,10 +22,6 @@
 
 class faiManagement extends management
 {
-  var $plHeadline     = "FAI software deployment";
-  var $plDescription  = "Manage software packages and deployment recipes";
-  var $plIcon  = "plugins/fai/images/plugin.png";
-
   // Tab definition
   protected $tabClass = "";
   protected $tabType = "";
@@ -1067,12 +1063,11 @@ class faiManagement extends management
       "plDescription" => _("Manage FAI software packages and deployment recipes"),
       "plIcon"        => "plugins/fai/images/plugin.png",
       "plSelfModify"  => FALSE,
-      "plDepends"     => array(),
-      "plPriority"    => 0,
-      "plCategory"    => array(
-        "fai" => array("description" => _("FAI"),"objectClass" => "FAIclass")
-      ),
-      "plProvidedAcls"=> array()
+      "plSection"     => "admin",
+      "plPriority"    => 10,
+      "plCategory"    => array("fai" => array("description" => _("FAI"), "objectClass" => "FAIclass")),
+
+      "plProvidedAcls" => array()
     );
   }
 }

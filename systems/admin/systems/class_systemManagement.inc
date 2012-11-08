@@ -22,10 +22,6 @@
 
 class systemManagement extends management
 {
-  var $plHeadline     = "Systems";
-  var $plDescription  = "Systems Management";
-  var $plIcon  = "plugins/systems/images/plugin.png";
-
   // Tab definition
   protected $tabClass         = "";
   protected $tabType          = "";
@@ -1292,13 +1288,12 @@ class systemManagement extends management
       "plDescription" => _("Systems Management"),
       "plIcon"        => "plugins/systems/images/plugin.png",
       "plSelfModify"  => FALSE,
-      "plPriority"    => 99,
-      "plCategory"    => array("systems"   => array("description"  => _("Systems"),
-                                                      "objectClass"  => "")),
+      "plPriority"    => 3,
+      "plSection"     => "admin"
+      "plCategory"    => array("terminal","workstation","server","phone","printer","component","winworkstation"),
 
-      "plProvidedAcls"=> array()
+      "plProvidedAcls"  => array()
     );
   }
 }
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>
