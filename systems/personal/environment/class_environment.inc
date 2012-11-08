@@ -1997,7 +1997,7 @@ class environment extends plugin
     return array(
       "plShortName"     => _("Environment"),
       "plDescription"   => _("Environment settings"),         // Description
-      "plIcon"          => "plugins/systems/images/plugin.png";
+      "plIcon"          => "plugins/systems/images/plugin.png",
       "plSelfModify"    => TRUE,
       "plDepends"       => array("user", "posixAccount"),     // This plugin depends on
       "plCategory"      => array("users", "groups"),
