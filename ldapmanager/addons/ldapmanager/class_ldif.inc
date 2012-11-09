@@ -50,8 +50,8 @@ class ldif extends plugin
       "plDescription" => _("Allows the management of the ldap tree"),
       "plIcon"        => "plugins/ldapmanager/images/ldif.png",
       "plSelfModify"  => FALSE,
-      "plPriority"    => 1,
       "plSection"     => "addons"
+      "plPriority"    => 20,
       "plCategory"    => array("ldapmanager" => array("objectClass" => "none", "description" => _("Ldap manager"))),
 
       "plProvidedAcls" => array()

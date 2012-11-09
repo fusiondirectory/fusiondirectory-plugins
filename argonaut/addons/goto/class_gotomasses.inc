@@ -461,8 +461,8 @@ class gotomasses extends management
       "plDescription" => _("Provide a mechanism to automatically activate systems"),
       "plIcon"        => "plugins/systems/images/goto.png",
       "plSelfModify"  => FALSE,
-      "plPriority"    => 0,
-      "plSection"     => "addons",
+      "plSection"     => "admin",
+      "plPriority"    => 10,
       "plCategory"    => array("gotomasses" => array("objectClass" => "none", "description" => _("System deployment"))),
 
       "plProvidedAcls" => array("Comment"   => _("Description"))

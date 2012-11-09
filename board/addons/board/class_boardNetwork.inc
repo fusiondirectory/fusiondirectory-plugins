@@ -116,7 +116,7 @@ class boardNetwork extends simplePlugin
   static function plInfo()
   {
     return array(
-      "plShortName"   => _("Board - Network"),
+      "plShortName"   => _("Network"),
       "plDescription" => _("Statistics and various informations"),
       "plSelfModify"  => FALSE,
       "plCategory"    => array("board"),

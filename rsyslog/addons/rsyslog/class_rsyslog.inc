@@ -49,6 +49,7 @@ class rsyslog extends plugin
       "plDescription" => _("This plugin allow to View system logs"),
       "plSelfModify"  => FALSE,
       "plSection"     => "addons",
+      "plPriority"    => 3,
       "plCategory"    => array("server/serviceSyslog"),
       "plObjectType"  => array("rsyslog" => array("name" => _("System logs"))),
 

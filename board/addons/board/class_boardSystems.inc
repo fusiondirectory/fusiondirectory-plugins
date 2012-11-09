@@ -192,7 +192,7 @@ class boardSystems extends simplePlugin
   static function plInfo()
   {
     return array(
-      "plShortName"   => _("Board - Systems"),
+      "plShortName"   => _("Systems"),
       "plDescription" => _("Statistics and informations about systems"),
       "plIcon"        => "plugins/board/images/plugin.png",
       "plSelfModify"  => FALSE,

@@ -419,10 +419,10 @@ class fonreport extends plugin
       "plDescription" => _("Phone reports")."&nbsp;<i>"._("All entries are readonly")."</i>",
       "plIcon"        => "plugins/gofon/images/phonereport.png",
       "plSelfModify"  => TRUE,
-      "plPriority"    => 0,
+      "plSection"     => "addons",
+      "plPriority"    => 5,
       "plCategory"    => array("fonreport" => array( "description" => _("Phone reports"),
                                                       "objectClass" => "None")),
-      "plSection"     => "addons",
 
       "plProvidedAcls" => array(
         "calldate"    => _("Date"),

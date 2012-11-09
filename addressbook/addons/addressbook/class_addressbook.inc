@@ -850,8 +850,8 @@ class addressbook extends plugin
       "plShortName"   => _("Addressbook"),
       "plDescription" => _("The addressbook plugin show internal users and external ones"),
       "plSelfModify"  => FALSE,
-      "plPriority"    => 0,
       "plSection"     => "addons",
+      "plPriority"    => 10,
       "plCategory"    => array("addressbook" => array("objectClass" => "inetOrgPerson", "description" => _("Addressbook"))),
 
       "plProvidedAcls"    => array(

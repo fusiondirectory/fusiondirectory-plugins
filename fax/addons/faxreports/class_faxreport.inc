@@ -483,10 +483,10 @@ class faxreport extends plugin
       "plDescription"   => _("Fax reports")."&nbsp;<i>"._("All entries are readonly")."</i>",
       "plIcon"          => "plugins/gofax/images/reports.png",
       "plSelfModify"    => TRUE,
-      "plPriority"      => 1,                                 // Position in tabs
+      "plSection"       => "addons",
+      "plPriority"      => 5,
       "plCategory"      => array("faxreport" => array("description" => _("Fax reports"),
                                                      "objectClass" => array())),
-      "plSection"       => "addons",
 
       "plProvidedAcls" => array(
         "detailedView"   => _("Detailed view"),
