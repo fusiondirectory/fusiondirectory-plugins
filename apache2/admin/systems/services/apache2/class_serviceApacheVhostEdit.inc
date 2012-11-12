@@ -35,9 +35,9 @@ class CompositeScriptAliasAttribute extends CompositeAttribute
 class serviceApacheVhostEdit extends simplePlugin
 {
 
-  var $displayHeader = FALSE;
-  var $mainTab       = TRUE;
-  var $objectclasses = array("apacheConfig");
+  var $displayHeader  = FALSE;
+  var $mainTab        = TRUE;
+  var $objectclasses  = array("apacheConfig");
   var $cn             = "";
 
   /*!
@@ -46,12 +46,14 @@ class serviceApacheVhostEdit extends simplePlugin
   static function plInfo ()
   {
     return array(
-    "plHeadline"        => _("Apache2"),
-    "plShortName"       => _("Apache2"),
-    "plDescription"     => _("This Plugin is for Apache serveur"),
-    "plSelfModify"      => FALSE,                  // Does this plugin have an owner that might be able to edit its entry
-    "plCategory"        => array("server"),
-    "plProvidedAcls"    => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      "plHeadline"    => _("Apache2"),
+      "plShortName"   => _("Apache2"),
+      "plDescription" => _("This Plugin is for Apache serveur"),
+      "plSelfModify"  => FALSE,                  // Does this plugin have an owner that might be able to edit its entry
+      "plCategory"    => array("server"),
+      "plObjectType"  => array("apacheVhost" => array("name" => _("Apache Vhost"), "filter" => "objectClass=apacheConfig")),
+
+      "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }
 
@@ -63,6 +65,7 @@ class serviceApacheVhostEdit extends simplePlugin
     return array(
       'section1' => array (
         'name'  => _('Generic'),
+        'class' => array('fullwidth'),
         'attrs' => array(
           new StringAttribute (
             _('Virtual host name'),
@@ -118,12 +121,6 @@ class serviceApacheVhostEdit extends simplePlugin
     parent::__construct($config, $dn, $object);
     $this->attributesInfo['section1']['attrs']['apacheScriptAlias']->setLinearRendering(TRUE);
   }
-
-  //~ function ldap_save ($cleanup = TRUE)
-  //~ {
-    //~ if ($this->attrs['apacheScriptAlias'])
-    //~ parent::ldap_save($cleanup);
-  //~ }
 
   function execute ()
   {

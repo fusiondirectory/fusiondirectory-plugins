@@ -67,31 +67,21 @@ class serviceApache extends simpleService
   {
   }
 
-
-  /* Remove apache service
-  function remove_from_parent()
-  {
-    foreach($this->Vhosts as $key => $vhost){
-      $this->RemoveVhost($key);
-    }
-    $this->save();
-  }
-   */
-
   /*  \brief Return plugin information used by the ACL handling.
       @return Array ACL infos.
    */
   static function plInfo()
   {
-    return (array(
-          "plShortName"   => _("Apache service"),
-          "plDescription" => _("Apache virtual host service")." ("._("Services").")",
-          "plSelfModify"  => FALSE,
-          "plCategory"    => array("server"),
+    return array(
+      "plShortName"   => _("Apache service"),
+      "plDescription" => _("Apache virtual host service")." ("._("Services").")",
+      "plSelfModify"  => FALSE,
+      "plCategory"    => array("server"),
 
-          "plProvidedAcls"=> array(
-              "VirtualHost"           => _("Virtual hosts"))
-            ));
+      "plProvidedAcls"=> array(
+        "VirtualHost"           => _("Virtual hosts")
+      )
+    );
   }
 }
 ?>
