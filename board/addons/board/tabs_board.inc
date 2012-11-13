@@ -20,7 +20,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class boardtabs extends tabs
+class tabs_board extends tabs
 {
 
   function __construct($config, $data, $dn = NULL, $category = "board", $hide_refs = FALSE, $hide_acls = FALSE)
@@ -36,10 +36,6 @@ class boardtabs extends tabs
     }
     $data = array_values($data);
     parent::tabs($config, $data, $dn, $category, $hide_refs, $hide_acls);
-  }
-
-  function save_object($save_current = FALSE)
-  {
   }
 
   function save($ignore_account = FALSE)

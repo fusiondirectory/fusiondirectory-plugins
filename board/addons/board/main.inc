@@ -18,38 +18,5 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
  */
 
-
-/* Remove classes and variables from session */
-if ($cleanup) {
-  session::un_set('board');
-} else {
-  $plInfo     = board::plInfo();
-  $plIcon     = (isset($plInfo['plIcon'])?$plInfo['plIcon']:"plugin.png");
-  $plHeadline = $plInfo['plShortName'];
-  $plCategory = (isset($plInfo['plCategory'])?$plInfo['plCategory']:"board");
-  if (is_array($plCategory)) {
-    $c = key($plCategory);
-    if (is_numeric($c)) {
-      $c = $plCategory[0];
-    }
-    $plCategory = $c."/";
-  }
-
-  /* Create board object on demand */
-  if (!session::is_set('board')) {
-    $board = new boardtabs($config, $config->data['TABS']['BOARDTABS'], NULL, $plCategory);
-    session::set('board', $board);
-  }
-  $board = session::get('board');
-
-  /* Execute formular */
-  $display = $board->execute();
-  $display .= "<input type=\"hidden\" name=\"ignore\">\n";
-
-  /* Page header*/
-  $display = print_header(get_template_path($plIcon), $plHeadline).$display;
-
-  /* Store changes  in session */
-  session::set('board', $board);
-}
+board::mainInc('board', '', 'tabs_board', FALSE);
 ?>
