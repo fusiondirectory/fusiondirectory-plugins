@@ -101,7 +101,7 @@ class gotoLogView extends plugin
     $smarty->assign("standalone",$this->standalone);
 
     if (isset($this->logs[$this->mac][$this->selected_date]['REAL_DATE'])){
-	    $date = date("d.m.Y H:i:s",$this->logs[$this->mac][$this->selected_date]['REAL_DATE']);
+      $date = date("d.m.Y H:i:s",$this->logs[$this->mac][$this->selected_date]['REAL_DATE']);
     }
     $file = $this->selected_file;
     $smarty->assign("selected_log",_("none"));
@@ -222,6 +222,7 @@ class gotoLogView extends plugin
       "plDescription" => _("Goto log view"),
       "plSelfModify"  => FALSE,
       "plPriority"    => 30,
+      "plSection"     => array("administration"),
       "plCategory"    => array("workstation", "server"),
       "plObjectType"  => array("workstation", "server"),
 
