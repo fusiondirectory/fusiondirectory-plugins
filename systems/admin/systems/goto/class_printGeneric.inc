@@ -59,13 +59,13 @@ class printgeneric extends plugin
   var $member           = array();
   var $strings          = "";
   var $netConfigDNS;
-  var $baseSelection    = false;
+  var $baseSelection    = FALSE;
   var $macAddress       = "";
 
   var $gotoUserAdminPrinter;
   var $gotoGroupAdminPrinter;
   var $gotoGroupPrinter;
-  var $gotoUserPrinter ;
+  var $gotoUserPrinter;
   var $baseSelector;
 
   /* attribute list for save action */
@@ -81,21 +81,21 @@ class printgeneric extends plugin
   var $userSelect;
   var $adminUserSelect;
 
-  function printgeneric (&$config, $dn, $parent_init)
+  function __construct (&$config, $dn, $baseobject)
   {
     $this->config = &$config;
-    $this->dn = $dn;
+    $this->dn     = $dn;
 
-    /* If parent was posted(the tabs object) we can detect the printer type. */
-    $this->getTypeOfPrinter($parent_init);
+    /* Detect the printer type. */
+    $this->updateAccountStatus();
 
     /* Update dn, to ensure storing as printer instead of WS / terminal */
-    if(preg_match("/Terminal/i",$this->BelongsTo) || preg_match("/TerminalTemplate/i",$this->BelongsTo)){
-      $this->dn= preg_replace("/".preg_quote(get_ou('terminalRDN'), '/')."/i",get_ou('printerRDN'),$this->dn);
+    if (preg_match("/Terminal/i", $this->BelongsTo) || preg_match("/TerminalTemplate/i", $this->BelongsTo)) {
+      $this->dn = preg_replace("/".preg_quote(get_ou('terminalRDN'), '/')."/i", get_ou('printerRDN'), $this->dn);
     }
 
-    if(preg_match("/Workstation/i",$this->BelongsTo) || preg_match("/WorkstationTemplate/i",$this->BelongsTo)){
-      $this->dn= preg_replace("/".preg_quote(get_ou('workstationRDN'), '/')."/i",get_ou('printerRDN'),$this->dn);
+    if (preg_match("/Workstation/i", $this->BelongsTo) || preg_match("/WorkstationTemplate/i", $this->BelongsTo)) {
+      $this->dn = preg_replace("/".preg_quote(get_ou('workstationRDN'), '/')."/i", get_ou('printerRDN'), $this->dn);
     }
 
     $this->orig_dn = $this->dn;
@@ -225,20 +225,10 @@ class printgeneric extends plugin
    * Printer can be stand alone, belong to a workstation or belong to a terminal.
    * We can detect the type printer type when comparing the tabs objects
    */
-  function getTypeOfPrinter($baseobject = NULL, $UpdateAccountStatus = FALSE)
+  function getTypeOfPrinter($baseobject)
   {
-    /* Disable account as default
-     */
-    $this->is_account = $this->initially_was_account = FALSE;
-
-    /* Detect type of printer via parent tabs.
-     */
-    if ($baseobject === NULL) {
-      $baseobject = $this->parent->getBaseObject();
-    }
-    $class = get_class($this->parent);
+    /* Detect type of printer via baseobject */
     if (is_a($baseobject, 'termgeneric')) {
-
       /* Exclude templates
        */
       $this->cn = $baseobject->cn;
@@ -248,7 +238,6 @@ class printgeneric extends plugin
         $this->BelongsTo = "Terminal";
       }
     } elseif (is_a($baseobject, 'workstationGeneric')) {
-
       /* Exclude templates
        */
       $this->cn = $baseobject->cn;
@@ -257,47 +246,51 @@ class printgeneric extends plugin
       } else {
         $this->BelongsTo = "Workstation";
       }
-    } elseif (is_a($baseobject, 'printgeneric')) {
+    } else {
       $this->BelongsTo  = "Printer";
     }
+  }
 
-    if ($UpdateAccountStatus) {
+  function updateAccountStatus ()
+  {
+    /* Disable account as default
+     */
+    $this->is_account = $this->initially_was_account = FALSE;
 
-      /* Set is_account / was account
-       */
-      if ($this->dn == "new") {
-        $this->initially_was_account = FALSE;
-      }
+    /* Set is_account / was account
+     */
+    if ($this->dn == "new") {
+      $this->initially_was_account = FALSE;
+    }
 
-      /* If is printer it must be a true account.
-       */
-      if (preg_match("/printer/i", $this->BelongsTo)) {
-        $this->is_account = TRUE;
-      }
+    /* If is printer it must be a true account.
+     */
+    if (preg_match("/printer/i", $this->BelongsTo)) {
+      $this->is_account = TRUE;
+    }
 
-      /* Update dn, to ensure storing as printer instead of WS / terminal
-       */
-      if (preg_match("/terminal/i", $this->BelongsTo)) {
-        $this->dn = preg_replace("/".preg_quote(get_ou('terminalRDN'), '/')."/i", get_ou('printerRDN'), $this->dn);
-      }
+    /* Update dn, to ensure storing as printer instead of WS / terminal
+     */
+    if (preg_match("/terminal/i", $this->BelongsTo)) {
+      $this->dn = preg_replace("/".preg_quote(get_ou('terminalRDN'), '/')."/i", get_ou('printerRDN'), $this->dn);
+    }
 
-      if (preg_match("/workstation/i", $this->BelongsTo)) {
-        $this->dn = preg_replace("/".preg_quote(get_ou('workstationRDN'), '/')."/i", get_ou('printerRDN'), $this->dn);
-      }
+    if (preg_match("/workstation/i", $this->BelongsTo)) {
+      $this->dn = preg_replace("/".preg_quote(get_ou('workstationRDN'), '/')."/i", get_ou('printerRDN'), $this->dn);
+    }
 
-      /* Detect if this is a valid printer account;
-       */
-      $ldap = $this->config->get_ldap_link();
-      $ldap->cat($this->dn, array('objectClass'));
+    /* Detect if this is a valid printer account;
+     */
+    $ldap = $this->config->get_ldap_link();
+    $ldap->cat($this->dn, array('objectClass'));
 
-      if ($ldap->count()) {
-        $attrs = $ldap->fetch();
-        if (in_array("gotoPrinter", $attrs['objectClass'])) {
-          $this->initially_was_account  = TRUE;
-          $this->is_account             = TRUE;
-        } else {
-          $this->is_account = FALSE;
-        }
+    if ($ldap->count()) {
+      $attrs = $ldap->fetch();
+      if (in_array("gotoPrinter", $attrs['objectClass'])) {
+        $this->initially_was_account  = TRUE;
+        $this->is_account             = TRUE;
+      } else {
+        $this->is_account = FALSE;
       }
     }
   }
