@@ -26,7 +26,7 @@ class ServerService extends management
     "start"   => "running",
     "stop"    => "stopped",
     "restart" => "running",
-    "status" => "",
+    "status"  => "",
   );
 
   /* attribute list for save action */
@@ -57,6 +57,7 @@ class ServerService extends management
       "plSelfModify"  => FALSE,
       "plCategory"    => array("server"),
       "plObjectType"  => array("server"),
+      "plPrority"     => 5,
 
       "plProvidedAcls"  => array()
     );
