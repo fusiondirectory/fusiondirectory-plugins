@@ -1014,8 +1014,7 @@ class printgeneric extends plugin
       "plShortName"   => _("Printer"),
       "plDescription" => _("Print generic"),
       "plSelfModify"  => FALSE,
-      "plPriority"    => 4,
-      "plSection"     => array("administration"),
+      "plPriority"    => 10,
       "plCategory"    => array("printer" => array("description"  => _("Printer"),
                                                 "objectClass"  => "gotoPrinter"),"workstation","terminal"),
       "plObjectType"  => array("printer" => array("name"  => _("Printer"),
@@ -1023,7 +1022,7 @@ class printgeneric extends plugin
                               "workstation", "terminal"),
       "plProvidedAcls"  => array(
         "cn"                => _("Name"),
-        "base"              => _("Base") ,
+        "base"              => _("Base"),
         "description"       => _("Description"),
         "l"                 => _("Location"),
         "labeledURI"        => _("LabeledURL"),
@@ -1039,10 +1038,10 @@ class printgeneric extends plugin
   }
 
   /* Delete member */
-  function DelMember($type,$id)
+  function DelMember($type, $id)
   {
     /* Check if there was a printer "dn" given, or the "cn" */
-    foreach($this->member[$type] as $key => $printer) {
+    foreach ($this->member[$type] as $key => $printer) {
       if ($printer['dn'] == $id) {
         $id = $key;
       }
