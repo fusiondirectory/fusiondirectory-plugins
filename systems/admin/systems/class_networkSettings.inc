@@ -39,8 +39,8 @@ class networkSettings extends plugin
 
   var $cn             = "";    // CN of currently edited device
   var $OrigCn         = "";    // Initial cn
-  var $IPisMust       = FALSE;
-  var $MACisMust      = FALSE;
+  var $IPisMust       = TRUE;
+  var $MACisMust      = TRUE;
   var $dialog         = FALSE;
 
   /* DCHP Attributes

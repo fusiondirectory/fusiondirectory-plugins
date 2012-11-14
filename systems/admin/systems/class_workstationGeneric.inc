@@ -63,7 +63,6 @@ class NetworkSettingsAttribute extends Attribute
     if (is_object($this->plugin)) {
       $this->plugin->netConfigDNS =& $this->netConfigDNS;
       $this->netConfigDNS = new networkSettings($this->plugin->config, $this->plugin, $this->plugin->objectclasses, TRUE);
-      $this->netConfigDNS->MACisMust = TRUE;
       $this->display = $this->netConfigDNS->execute();
     }
   }
