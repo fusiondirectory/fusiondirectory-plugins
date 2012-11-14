@@ -273,7 +273,6 @@ class terminfo extends plugin
       "plSelfModify"  => FALSE,
       "plDepends"     => array(),
       "plPriority"    => 33,
-      "plSection"       => array("administration"),
       "plCategory"    => array("workstation","server","terminal"),
       "plObjectType"  => array("workstation","server","terminal"),
 
