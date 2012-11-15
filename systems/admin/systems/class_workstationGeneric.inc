@@ -306,8 +306,12 @@ class workstationGeneric extends simplePlugin
 
   function __construct (&$config, $dn = NULL, $object = NULL)
   {
-    $s_daemon = new supportDaemon();
-    $this->sdaemon_available = $s_daemon->is_available();
+    if (class_available('supportDaemon')) {
+      $s_daemon = new supportDaemon();
+      $this->sdaemon_available = $s_daemon->is_available();
+    } else {
+      $this->sdaemon_available = FALSE;
+    }
 
     parent::__construct($config, $dn, $object);
 
