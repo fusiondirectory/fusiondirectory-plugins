@@ -25,9 +25,9 @@ class worktabs extends tabs
 
   public $was_activated = FALSE;
 
-  function __construct($config, $data, $dn, $category, $hide_refs = FALSE, $hide_acls = FALSE)
+  function __construct($config, $data, $dn, $category, $copied_object = NULL)
   {
-    tabs::tabs($config, $data, $dn, $category, $hide_refs, $hide_acls);
+    parent::tabs($config, $data, $dn, $category, $copied_object);
 
     /* Add references/acls/snapshots */
     $this->addSpecialTabs();
@@ -47,7 +47,7 @@ class worktabs extends tabs
   }
 
 
-  function save($ignore_account= FALSE)
+  function save($ignore_account = FALSE)
   {
     /* Check for new 'dn', in order to propagate the
        'dn' to all plugins */
@@ -68,7 +68,7 @@ class worktabs extends tabs
       $this->by_object[$key]->cn = $baseobject->cn;
     }
 
-    tabs::save(TRUE);
+    parent::save(TRUE);
 
     if (isset($this->by_object['printgeneric'])) {
       if (($this->by_object['printgeneric']->is_account == FALSE) &&

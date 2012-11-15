@@ -22,43 +22,41 @@
 
 class sudotabs extends tabs
 {
-  function sudotabs($config, $data, $dn)
+  function sudotabs($config, $data, $dn, $cat = '', $copied_object = NULL)
   {
-    tabs::tabs($config, $data, $dn,"sudo");
+    parent::tabs($config, $data, $dn, "sudo", $copied_object);
     $this->addSpecialTabs();
   }
 
   function set_default($state)
   {
-    if(isset($this->by_object['sudo'])){
+    if (isset($this->by_object['sudo'])) {
       $this->by_object['sudo']->set_default($state);
     }
   }
 
-  function save($ignore_account= FALSE)
+  function save($ignore_account = FALSE)
   {
-    $baseobject= $this->by_object['sudo'];
+    $baseobject = $this->getBaseObject();
 
     /* Check for new 'dn', in order to propagate the
        'dn' to all plugins */
-    $new_dn= 'cn='.$baseobject->get_cn().','.sudo::get_sudoers_ou($baseobject->config);
+    $new_dn = 'cn='.$baseobject->get_cn().','.sudo::get_sudoers_ou($baseobject->config);
 
     /* Move group? */
-    if ($this->dn != $new_dn){
+    if ($this->dn != $new_dn) {
 
       /* Write entry on new 'dn' */
-      if ($this->dn != "new"){
-        $baseobject->update_acls($this->dn,$new_dn);
+      if ($this->dn != "new") {
+        $baseobject->update_acls($this->dn, $new_dn);
         $baseobject->move($this->dn, $new_dn);
-        $this->by_object['sudo']= $baseobject;
+        $this->by_object['sudo'] = $baseobject;
       }
 
       /* Happen to use the new one */
-      $this->dn= $new_dn;
+      $this->dn = $new_dn;
     }
-    $ret= tabs::save();
-    return $ret;
+    return parent::save();
   }
 }
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

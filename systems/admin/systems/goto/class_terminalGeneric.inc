@@ -80,15 +80,15 @@ class termgeneric extends plugin
   var $kerberos_key_service = NULL;
 
 
-  function termgeneric (&$config, $dn= NULL, $parent= NULL)
+  function __construct (&$config, $dn = NULL, $object = NULL)
   {
     /* Check if FAI is activated */
-    $tmp= $config->search("faiManagement", "CLASS",array('menu','tabs'));
-    if(!empty($tmp) && class_available("faiManagement")){
+    $tmp = $config->search("faiManagement", "CLASS", array('menu','tabs'));
+    if (!empty($tmp) && class_available("faiManagement")) {
       $this->fai_activated = TRUE;
     }
 
-    plugin::plugin ($config, $dn, $parent);
+    parent::plugin ($config, $dn, $object);
 
     if(class_available("krbHostKeys")){
       $this->kerberos_key_service = new krbHostKeys($this->config,$this);

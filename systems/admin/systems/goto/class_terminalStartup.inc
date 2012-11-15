@@ -54,24 +54,24 @@ class termstartup extends plugin
   var $orig_dn= "";
   var $ignore_account= TRUE;
 
-  function termstartup (&$config, $dn= NULL, $parent= NULL)
+  function __construct (&$config, $dn = NULL, $parent = NULL)
   {
-    plugin::plugin ($config, $dn, $parent);
+    parent::plugin ($config, $dn, $parent);
 
     $this->gotoBootKernels = array("default"=> ("default"));
 
     /* Get arrays */
-    foreach (array("gotoModules") as $val){
+    foreach (array("gotoModules") as $val) {
       $this->$val = array();
-      if (isset($this->attrs["$val"]["count"])){
-        for ($i= 0; $i<$this->attrs["count"]; $i++){
-          if (isset($this->attrs["$val"][$i])){
+      if (isset($this->attrs["$val"]["count"])) {
+        for ($i = 0; $i < $this->attrs["count"]; $i++) {
+          if (isset($this->attrs["$val"][$i])) {
             array_push($this->$val, $this->attrs["$val"][$i]);
           }
         }
       }
       sort ($this->$val);
-      $this->$val= array_unique($this->$val);
+      $this->$val = array_unique($this->$val);
     }
 
     /* Prepare Shares */

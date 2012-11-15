@@ -23,39 +23,36 @@
 class phonetabs extends tabs
 {
 
-  function phonetabs($config, $data, $dn,$category)
+  function phonetabs($config, $data, $dn, $category, $copied_object = NULL)
   {
-    tabs::tabs($config, $data, $dn,$category);
+    parent::tabs($config, $data, $dn, $category, $copied_object);
 
     /* Add references/acls/snapshots */
     $this->addSpecialTabs();
   }
 
-  function save_object($save_current= FALSE)
+  function save_object($save_current = FALSE)
   {
-    tabs::save_object($save_current);
+    parent::save_object($save_current);
 
-    $baseobject = $this->by_object['phoneGeneric'];
-    $baseobject->netConfigDNS->cn= $baseobject->cn;
+    $baseobject = $this->getBaseObject();
+    $baseobject->netConfigDNS->cn = $baseobject->cn;
   }
 
 
-  function save($ignore_account= FALSE)
+  function save($ignore_account = FALSE)
   {
     /* Check for new 'dn', in order to propagate the
        'dn' to all plugins */
-    $baseobject= $this->by_object['phoneGeneric'];
-    $this->dn= "cn=$baseobject->cn,".get_ou('phoneRDN').$baseobject->base;
-    $baseobject->dn= $this->dn;
+    $baseobject = $this->getBaseObject();
+    $this->dn   = "cn=$baseobject->cn,".get_ou('phoneRDN').$baseobject->base;
+    $baseobject->dn = $this->dn;
 
-    foreach ($this->by_object as $key => $obj){
-      $this->by_object[$key]->dn= $this->dn;
+    foreach ($this->by_object as $key => $obj) {
+      $this->by_object[$key]->dn = $this->dn;
     }
 
-    tabs::save(TRUE);
+    parent::save(TRUE);
   }
-
 }
-
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

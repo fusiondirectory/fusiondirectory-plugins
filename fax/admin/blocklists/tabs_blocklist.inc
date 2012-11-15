@@ -22,9 +22,9 @@
 
 class faxblocktabs extends tabs
 {
-  function faxblocktabs($config, $data, $dn)
+  function faxblocktabs($config, $data, $dn, $cat = '', $copied_object = NULL)
   {
-    tabs::tabs($config, $data, $dn, 'gofaxlist');
+    parent::tabs($config, $data, $dn, 'gofaxlist', $copied_object);
 
     /* Add references/acls/snapshots */
     $this->addSpecialTabs();
@@ -50,7 +50,7 @@ class faxblocktabs extends tabs
       $this->dn = $new_dn;
     }
 
-    tabs::save();
+    parent::save();
   }
 
 }

@@ -81,15 +81,15 @@ class termservice extends plugin
   var $selected_xdmcp_servers = array();
   var $inherited_xdmcp_servers = array();
 
-  function termservice (&$config, $dn= NULL, $parent= NULL)
+  function __construct (&$config, $dn = NULL, $parent = NULL)
   {
-    plugin::plugin ($config, $dn, $parent);
-    $this->orig_dn= $this->dn;
+    parent::plugin ($config, $dn, $parent);
+    $this->orig_dn = $this->dn;
 
     /* Check if we are a part of an ogroup.
      * In this case, we have to hide all the inherit stuff.
      */
-    if(isset($parent) && get_class($parent) == "ogroup"){
+    if (isset($parent) && get_class($parent) == "ogroup") {
       $this->is_ogroup = TRUE;
     }
 

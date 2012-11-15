@@ -89,16 +89,8 @@ class systemManagement extends management
     $this->registerAction("setPassword", "setPassword");
     $this->registerAction("passwordChangeConfirmed", "passwordChangeConfirmed");
 
-    // Add copy&paste and snapshot handler.
-    if ($this->config->boolValueIsTrue("main", "copyPaste")){
-      $this->cpHandler = new CopyPasteHandler($this->config);
-    }
-    if($this->config->get_cfg_value("enableSnapshots") == "TRUE"){
-      $this->snapHandler = new SnapshotHandler($this->config);
-    }
-
     // Check if we are able to communicate with Argonaut server
-    if(class_available("supportDaemon")){
+    if (class_available("supportDaemon")) {
       $o = new supportDaemon();
       $this->si_active = $o->is_available() && class_available("DaemonEvent");
     }

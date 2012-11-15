@@ -24,9 +24,9 @@ class servtabs extends tabs
 {
   public $was_activated = FALSE;
 
-  function servtabs($config, $data, $dn, $category, $hide_refs = FALSE, $hide_acls = FALSE)
+  function servtabs($config, $data, $dn, $category, $copied_object = NULL)
   {
-    tabs::tabs($config, $data, $dn, $category, $hide_refs, $hide_acls);
+    parent::tabs($config, $data, $dn, $category, $copied_object);
 
     /* Add references/acls/snapshots */
     $this->addSpecialTabs();
@@ -59,7 +59,7 @@ class servtabs extends tabs
 
   function save_object($save_current = FALSE)
   {
-    tabs::save_object($save_current);
+    parent::save_object($save_current);
 
     $baseobject                   = $this->getBaseObject();
     $baseobject->netConfigDNS->cn = $baseobject->cn;
@@ -71,7 +71,7 @@ class servtabs extends tabs
     /* Check for new 'dn', in order to propagate the
        'dn' to all plugins */
     $baseobject = $this->getBaseObject();
-    $this->dn   = "cn=$baseobject->cn,".get_ou('serverRDN').$baseobject->base;
+    $this->dn   = "cn=".$baseobject->cn.",".get_ou('serverRDN').$baseobject->base;
 
     /* cn is not case sensitive for ldap, but for php it is!! */
     if ($baseobject->orig_dn != "new") {
@@ -93,7 +93,7 @@ class servtabs extends tabs
       $this->by_object[$key]->cn = $baseobject->cn;
     }
 
-    tabs::save(FALSE);
+    parent::save(FALSE);
 
     /* Reload server settings after saving */
     $config = session::get('config');

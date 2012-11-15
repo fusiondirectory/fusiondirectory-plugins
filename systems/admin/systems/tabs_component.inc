@@ -23,47 +23,44 @@
 class componenttabs extends tabs
 {
 
-  function componenttabs($config, $data, $dn,$category,$hide_refs = FALSE, $hide_acls = FALSE)
+  function componenttabs($config, $data, $dn, $category, $copied_object = NULL)
   {
-    tabs::tabs($config, $data, $dn,$category,$hide_refs, $hide_acls);
+    parent::tabs($config, $data, $dn, $category, $copied_object);
 
     /* Add references/acls/snapshots */
     $this->addSpecialTabs();
   }
 
-  function save_object($save_current= FALSE)
+  function save_object($save_current = FALSE)
   {
-    tabs::save_object($save_current);
+    parent::save_object($save_current);
 
-    $baseobject = $this->by_object['componentGeneric'];
-    $baseobject->netConfigDNS->cn= $baseobject->cn;
+    $baseobject = $this->getBaseObject();
+    $baseobject->netConfigDNS->cn = $baseobject->cn;
   }
 
 
-  function save($ignore_account= FALSE)
+  function save($ignore_account = FALSE)
   {
     /* Check for new 'dn', in order to propagate the
        'dn' to all plugins */
-    $baseobject= $this->by_object['componentGeneric'];
-    $this->dn= "cn=$baseobject->cn,".get_ou('componentRDN').$baseobject->base;
+    $baseobject = $this->getBaseObject();
+    $this->dn = "cn=$baseobject->cn,".get_ou('componentRDN').$baseobject->base;
 
-    if($this->dn != $baseobject->orig_dn && $baseobject->orig_dn != "new"){
+    if (($this->dn != $baseobject->orig_dn) && ($baseobject->orig_dn != "new")) {
 
       /* Udpate acls */
-      $baseobject->update_acls($baseobject->orig_dn,$this->dn);
-      $baseobject->move($baseobject->orig_dn,$this->dn);
+      $baseobject->update_acls($baseobject->orig_dn, $this->dn);
+      $baseobject->move($baseobject->orig_dn, $this->dn);
     }
 
-    $baseobject->dn= $this->dn;
+    $baseobject->dn = $this->dn;
 
-    foreach ($this->by_object as $key => $obj){
-      $this->by_object[$key]->dn= $this->dn;
+    foreach ($this->by_object as $key => $obj) {
+      $this->by_object[$key]->dn = $this->dn;
     }
 
-    tabs::save(TRUE);
+    parent::save(TRUE);
   }
-
 }
-
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

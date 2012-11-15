@@ -20,17 +20,12 @@
 
 class supannStructurestabs extends tabs
 {
-
-  function supannStructurestabs($config, $data, $dn, $category,
-                                $hide_refs = FALSE, $hide_acls = FALSE)
+  function supannStructurestabs($config, $data, $dn, $category, $copied_object = NULL)
   {
-    tabs::tabs($config, $data, $dn, $category, $hide_refs, $hide_acls);
+    parent::tabs($config, $data, $dn, $category, $copied_object);
 
     /* Add references/acls/snapshots */
     $this->addSpecialTabs();
-    if (isset($this->by_object['acl'])) {
-      $this->by_object['acl']->skipTagging = TRUE;
-    }
   }
 
   function save($ignore_account = FALSE)
@@ -39,8 +34,7 @@ class supannStructurestabs extends tabs
        'dn' to all plugins */
     $this->dn = $this->getBaseObject()->compute_dn();
 
-    return tabs::save();
+    return parent::save();
   }
 }
-
 ?>

@@ -23,7 +23,7 @@
 class tabs_board extends tabs
 {
 
-  function __construct($config, $data, $dn = NULL, $category = "board", $hide_refs = FALSE, $hide_acls = FALSE)
+  function __construct($config, $data, $dn = NULL, $category = "board", $copied_object = NULL)
   {
     foreach ($data as $key => $infos) {
       if (($infos['CLASS'] == 'boardSystems') && (!class_available("systemManagement"))) {
@@ -35,7 +35,7 @@ class tabs_board extends tabs
       }
     }
     $data = array_values($data);
-    parent::tabs($config, $data, $dn, $category, $hide_refs, $hide_acls);
+    parent::tabs($config, $data, $dn, $category);
   }
 
   function save($ignore_account = FALSE)

@@ -26,7 +26,7 @@ class apachevhosttabs extends tabs
 
   function save($ignore_account = FALSE)
   {
-    $baseobject = $this->by_object['serviceApacheVhostEdit'];
+    $baseobject = $this->getBaseObject();
     $new_dn = "apacheServerName=".$baseobject->apacheServerName.",".session::get('serviceApacheVhostEditDN');
 
     /* Move group? */
@@ -42,9 +42,7 @@ class apachevhosttabs extends tabs
       $this->dn = $new_dn;
     }
 
-    echo ($baseobject->ignore_account?"IGNORE":"PAS IGNORE");
-
-    echo (tabs::save($ignore_account)?"SAVED":"NOT SAVED");
+    return parent::save($ignore_account);
   }
 
 }

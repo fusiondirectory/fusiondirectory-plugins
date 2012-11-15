@@ -90,11 +90,6 @@ class faiManagement extends management
     $headpage->registerElementFilter("filterProperties", "faiManagement::filterProperties");
     $headpage->registerElementFilter("objectTypes", "listing::filterObjectTypes");
 
-    // Add copy&paste and snapshot handler.
-    if ($this->config->boolValueIsTrue("main", "copyPaste")) {
-      $this->cpHandler = new CopyPasteHandler($this->config);
-    }
-
     $this->registerAction("remove_multiple","removeEntryRequested");
     $this->registerAction("new_profile","newEntry");
     $this->registerAction("new_template","newEntry");

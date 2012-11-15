@@ -23,22 +23,14 @@
 class ldiftab extends tabs
 {
 
-  function ldiftab($config, $data, $dn)
+  function ldiftab($config, $data, $dn, $cat = '', $copied_object = NULL)
   {
-    tabs::tabs($config, $data, $dn);
+    parent::tabs($config, $data, $dn, '', $copied_object);
   }
 
-  function save_object($save_current= FALSE)
-  {
-    tabs::save_object($save_current);
-  }
-
-
-  function save($ignore_account= FALSE)
+  function save($ignore_account = FALSE)
   {
   }
 
 }
-
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

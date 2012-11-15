@@ -25,9 +25,9 @@ class tabsVariable extends tabs
   var $base= "";
   var $parent ="";
 
-  function tabsVariable($config, $data, $dn,$category)
+  function tabsVariable($config, $data, $dn, $category, $copied_object = NULL)
   {
-  tabs::tabs($config, $data, $dn, $category);
+  tabs::tabs($config, $data, $dn, $category, $copied_object);
 
   /* Add references/acls/snapshots */
 # $this->addSpecialTabs();
@@ -37,15 +37,15 @@ class tabsVariable extends tabs
   {
   return (tabs::check(TRUE));
   }
-  
+
 
   function save($ignore_account= FALSE)
   {
     $baseobject= $this->by_object['faiVariable'];
   $new_dn ='cn='.$baseobject->cn.",".get_ou('faiVariableRDN').$this->parent->fai_release;
-      
+
   if ($this->dn != $new_dn && $this->dn != "new"){
-    
+
     /* if( new_dn is subtree of this->dn ) */
     $cnt1 = count(explode(",",$this->dn));
     $cnt2 = count(explode(",",$new_dn));

@@ -25,9 +25,9 @@ class tabsHook extends tabs
   var $base= "";
   var $parent ="";
 
-  function tabsHook($config, $data, $dn,$category)
+  function tabsHook($config, $data, $dn, $category, $copied_object = NULL)
   {
-  tabs::tabs($config, $data, $dn,$category);
+  tabs::tabs($config, $data, $dn, $category, $copied_object);
   /* Add references/acls/snapshots */
 # $this->addSpecialTabs();
   }
@@ -36,7 +36,7 @@ class tabsHook extends tabs
   {
   return (tabs::check(TRUE));
   }
-  
+
 
   function save($ignore_account= FALSE)
   {
@@ -44,7 +44,7 @@ class tabsHook extends tabs
   $new_dn ='cn='.$baseobject->cn.",".get_ou('faiHookRDN').$this->parent->fai_release;
 
   if ($this->dn != $new_dn && $this->dn != "new"){
-    
+
     /* if( new_dn is subtree of this->dn ) */
     $cnt1 = count(explode(",",$this->dn));
     $cnt2 = count(explode(",",$new_dn));

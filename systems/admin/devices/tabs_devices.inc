@@ -22,37 +22,35 @@
 
 class devicetabs extends tabs
 {
-  var $Release= "";
+  var $Release = "";
 
-  function devicetabs($config, $data, $dn,$category,$hide_refs = FALSE, $hide_acls = FALSE)
+  function devicetabs($config, $data, $dn, $category, $copied_object = NULL)
   {
-    tabs::tabs($config, $data, $dn,$category,$hide_refs, $hide_acls);
+    tabs::tabs($config, $data, $dn, $category, $copied_object);
 
     /* Add references/acls/snapshots */
     $this->addSpecialTabs();
   }
 
-  function save($ignore_account= FALSE)
+  function save($ignore_account = FALSE)
   {
-    $baseobject= $this->by_object['deviceGeneric'];
-    $new_dn= "cn=".$baseobject->cn.",".get_ou('deviceRDN').$baseobject->base;
+    $baseobject = $this->getBaseObject();
+    $new_dn = "cn=".$baseobject->cn.",".get_ou('deviceRDN').$baseobject->base;
 
     /* Move group? */
-    if ($this->dn != $new_dn){
+    if ($this->dn != $new_dn) {
 
       /* Write entry on new 'dn' */
-      if ($this->dn != "new"){
+      if ($this->dn != "new") {
         $baseobject->move($this->dn, $new_dn);
-        $this->by_object['deviceGeneric']= $baseobject;
+        $this->by_object['deviceGeneric'] = $baseobject;
       }
 
       /* Happen to use the new one */
-      $this->dn= $new_dn;
+      $this->dn = $new_dn;
     }
 
-    tabs::save();
+    parent::save();
   }
-
 }
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>
