@@ -87,7 +87,7 @@ class printgeneric extends plugin
     $this->dn     = $dn;
 
     /* Detect the printer type. */
-    $this->updateAccountStatus();
+    $this->getTypeOfPrinter($baseobject);
 
     /* Update dn, to ensure storing as printer instead of WS / terminal */
     if (preg_match("/Terminal/i", $this->BelongsTo) || preg_match("/TerminalTemplate/i", $this->BelongsTo)) {
@@ -104,7 +104,7 @@ class printgeneric extends plugin
     plugin::plugin ($config, $this->dn);
 
     /* Get is_account initially_was_account status */
-    $this->getTypeOfPrinter(true);
+    $this->updateAccountStatus();
 
     /* set orig dn to new if object is new */
     $ldap = $this->config->get_ldap_link();
