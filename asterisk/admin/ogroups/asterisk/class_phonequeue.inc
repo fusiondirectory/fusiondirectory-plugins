@@ -858,62 +858,45 @@ class phonequeue extends plugin
     }
   }
 
-
-  function getCopyDialog()
-  {
-    $str  = "";
-    $str .= _("Phone number");
-    $str .= "&nbsp;<input type='text' name='telephoneNumber' value='".$this->telephoneNumber."'>";
-    return($str);
-  }
-
-
-  function saveCopyDialog()
-  {
-    if(isset($_POST['telephoneNumber'])){
-      $this->telephoneNumber = $_POST['telephoneNumber'];
-    }
-  }
-
-
   static function plInfo()
   {
-    return (array(
-          "plShortName"   => _("Phone"),
-          "plDescription" => _("Phone group"),
-          "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
-          "plPriority"    => 3,
-          "plCategory"    => array("ogroups"),
-          "plProvidedAcls"=> array(
+    return array(
+      "plShortName"   => _("Phone"),
+      "plDescription" => _("Phone group"),
+      "plSelfModify"  => FALSE,
+      "plDepends"     => array(),
+      "plPriority"    => 3,
+      "plCategory"    => array("ogroups"),
+      "plProvidedAcls"=> array(
 
-            "goFonTimeOut"              => _("Timeout"),
-            "goFonMaxLen"               => _("Max queue length"),
-            "goFonHomeServer"           => _("Home server"),
-            "goFonAnnounceFrequency"    => _("Announce frequency"),
-            "goFonDialOptiont"          => _("Allow the called user to transfer his call"),
-            "goFonDialOptionT"          => _("Allows calling user to transfer call"),
-            "goFonDialOptionh"          => _("Allow the called to hangup by pressing *"),
-            "goFonDialOptionr"          => _("Ring instead of playing background music"),
-            "goFonDialOptionH"          => _("Allows calling to hangup by pressing *"),
+        "goFonTimeOut"              => _("Timeout"),
+        "goFonMaxLen"               => _("Max queue length"),
+        "goFonHomeServer"           => _("Home server"),
+        "goFonAnnounceFrequency"    => _("Announce frequency"),
+        "goFonDialOptiont"          => _("Allow the called user to transfer his call"),
+        "goFonDialOptionT"          => _("Allows calling user to transfer call"),
+        "goFonDialOptionh"          => _("Allow the called to hangup by pressing *"),
+        "goFonDialOptionr"          => _("Ring instead of playing background music"),
+        "goFonDialOptionH"          => _("Allows calling to hangup by pressing *"),
 
-            "goFonMusiconHold"          => _("Music on hold"),
-            "goFonWelcomeMusic"         => _("Welcome music"),
-            "goFonQueueReportHold"      => _("Report hold time"),
-            "goFonQueueYouAreNext"      => _("'You are next' sound"),
-            "goFonQueueThereAre"        => _("'There are' sound"),
-            "goFonQueueCallsWaiting"    => _("'Call waiting' sound"),
-            "goFonQueueThankYou"        => _("'Thank you' sound"),
-            "goFonQueueMinutes"         => _("'Minutes' sound"),
-            "goFonQueueSeconds"         => _("'Seconds' sound"),
-            "goFonQueueLessThan"        => _("'Less than' sound"),
-            "telephoneNumber"           => _("Queue phone number"),
-            "goFonQueueLanguage"        => _("Language"),
-            "goFonQueueStrategy"        => _("Method"),
-            "goFonQueueAnnounceHoldtime"=> _("Announce holdtime"),
-            "goFonQueueAnnounce"        => _("Announce"),
-            "goFonQueueRetry"           => _("Retry"))
-              ));
+        "goFonMusiconHold"          => _("Music on hold"),
+        "goFonWelcomeMusic"         => _("Welcome music"),
+        "goFonQueueReportHold"      => _("Report hold time"),
+        "goFonQueueYouAreNext"      => _("'You are next' sound"),
+        "goFonQueueThereAre"        => _("'There are' sound"),
+        "goFonQueueCallsWaiting"    => _("'Call waiting' sound"),
+        "goFonQueueThankYou"        => _("'Thank you' sound"),
+        "goFonQueueMinutes"         => _("'Minutes' sound"),
+        "goFonQueueSeconds"         => _("'Seconds' sound"),
+        "goFonQueueLessThan"        => _("'Less than' sound"),
+        "telephoneNumber"           => _("Queue phone number"),
+        "goFonQueueLanguage"        => _("Language"),
+        "goFonQueueStrategy"        => _("Method"),
+        "goFonQueueAnnounceHoldtime"=> _("Announce holdtime"),
+        "goFonQueueAnnounce"        => _("Announce"),
+        "goFonQueueRetry"           => _("Retry")
+      )
+    );
   }
 
 }

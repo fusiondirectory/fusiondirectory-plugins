@@ -530,26 +530,6 @@ class macro extends plugin
   }
 
 
-  function getCopyDialog()
-  {
-    $smarty = get_smarty();
-    $smarty->assign("cn" ,$this->cn);
-    $str = $smarty->fetch(get_template_path("paste_generic.tpl",TRUE));
-    $ret = array();
-    $ret['string'] = $str;
-    $ret['status'] = "";
-    return($ret);
-  }
-
-
-  function saveCopyDialog()
-  {
-    if(isset($_POST['cn'])){
-      $this->cn = $_POST['cn'];
-    }
-  }
-
-
   static function plInfo()
   {
     return array(

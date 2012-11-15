@@ -686,39 +686,6 @@ class conference extends plugin
     $this->handle_post_events("add");
   }
 
-  function getCopyDialog()
-  {
-    $smarty = get_smarty();
-    $smarty->assign("cn" ,$this->cn);
-    $smarty->assign("telephoneNumber" ,$this->telephoneNumber);
-    $str = $smarty->fetch(get_template_path("paste_generic.tpl",TRUE));
-    $ret = array();
-    $ret['string'] = $str;
-    $ret['status'] = "";
-    return($ret);
-  }
-
-  function saveCopyDialog()
-  {
-    if(isset($_POST['cn'])){
-      $this->cn = $_POST['cn'];
-    }
-    if(isset($_POST['telephoneNumber'])){
-      $this->telephoneNumber = $_POST['telephoneNumber'];
-    }
-  }
-
-  function PrepareForCopyPaste($source)
-  {
-    plugin::PrepareForCopyPaste($source) ;
-
-    $source_o = new conference($this->config,$source['dn']);
-
-    foreach($this->attributes as $attr){
-      $this->$attr = $source_o->$attr;
-    }
-  }
-
   /* Return plugin informations for acl handling */
   static function plInfo()
   {

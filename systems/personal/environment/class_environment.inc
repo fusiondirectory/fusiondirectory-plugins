@@ -1605,28 +1605,11 @@ class environment extends plugin
     return($a_return);
   }
 
-  function PrepareForCopyPaste($source)
+  function postCopyHook()
   {
-    plugin::PrepareForCopyPaste($source);
-
-    $class= get_class($this);
-    $o_source = new $class($this->config,$source['dn']);
-    foreach($this->CopyPasteVars as $attr){
-      $this->$attr = $o_source->$attr;
-    }
-
     /* Force adding the new object to eventually
      * existing printer objects */
     $this->add_del_printer_member_was_called = TRUE;
-
-  }
-
-  function saveCopyDialog()
-  {
-    if(isset($_POST['cn'])){
-      $this->cn = $_POST['cn'];
-      $this->uid = $_POST['cn'];
-    }
   }
 
   /* Generates ListBox frienly output of used logonscripts

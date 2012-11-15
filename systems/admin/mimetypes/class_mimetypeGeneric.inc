@@ -652,49 +652,22 @@ class mimetype extends plugin
   function combineArrays($ar0,$ar1,$ar2)
   {
     $ret = array();
-    if(is_array($ar0))
-      foreach($ar0 as $ar => $a){
-        $ret[]=$a;
-      }
-    if(is_array($ar1))
-      foreach($ar1 as $ar => $a){
-        $ret[]=$a;
-      }
-    if(is_array($ar2))
-      foreach($ar2 as $ar => $a){
-        $ret[]=$a;
-      }
-    return($ret);
-  }
-
-
-  /* Return a dialog with all fields that must be changed,
-     if we want to copy this entry */
-  function getCopyDialog()
-  {
-    $str = "";
-
-    $smarty = get_smarty();
-    $smarty->assign("cn",         $this->cn);
-    $smarty->assign("description",  $this->description);
-    $str = $smarty->fetch(get_template_path("paste_generic.tpl",TRUE,dirname(__FILE__)));
-
-    $ret = array();
-    $ret['string'] = $str;
-    $ret['status'] = "";
-    return($ret);
-  }
-
-
-  /* Save all */
-  function saveCopyDialog()
-  {
-    $attrs = array("cn","description");
-    foreach($attrs as $attr){
-      if(isset($_POST[$attr])){
-        $this->$attr = $_POST[$attr];
+    if (is_array($ar0)) {
+      foreach ($ar0 as $ar => $a) {
+        $ret[] = $a;
       }
     }
+    if (is_array($ar1)) {
+      foreach ($ar1 as $ar => $a) {
+        $ret[] = $a;
+      }
+    }
+    if (is_array($ar2)) {
+      foreach ($ar2 as $ar => $a) {
+        $ret[] = $a;
+      }
+    }
+    return $ret;
   }
 
   /* Return plugin informations for acl handling  */

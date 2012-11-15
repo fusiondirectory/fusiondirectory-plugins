@@ -174,59 +174,10 @@ class blocklistGeneric extends simplePlugin
     $this->ldap_save();
   }
 
-  function getCopyDialog()
+  function postCopyHook()
   {
-    $smarty = get_smarty();
-    $smarty->assign("cn", $this->attributesInfo['section1']['attrs']['cn']);
-    $str = $smarty->fetch(get_template_path("paste_generic.tpl", TRUE, dirname(__FILE__)));
-    $ret = array();
-    $ret['string'] = $str;
-    $ret['status'] = "";
-    return $ret;
-  }
-
-  function saveCopyDialog()
-  {
-    if (isset($_POST['cn'])) {
-      $this->attributesInfo['section1']['attrs']['cn']->setValue(get_post('cn'));
-    }
-  }
-
-  function PrepareForCopyPaste($source)
-  {
-    parent::PrepareForCopyPaste($source);
-
     /* We will not be able to rename edited blocklists */
     $this->readonly = TRUE;
-
-    /* Get blocklist type and defined numbers */
-    if (in_array("goFaxSBlock", $source['objectClass'])) {
-      if (isset($source["goFaxSBlocklist"])) {
-        for ($i = 0; $i < $source["goFaxSBlocklist"]["count"]; $i++) {
-          $this->goFaxBlocklist[] = $source["goFaxSBlocklist"][$i];
-        }
-      }
-      $this->type = BLOCK_LIST_SEND;
-    } elseif (in_array("goFaxRBlock", $source['objectClass'])) {
-      if (isset($source["goFaxRBlocklist"])) {
-        for ($i = 0; $i < $source["goFaxRBlocklist"]["count"]; $i++) {
-          $this->goFaxBlocklist[] = $source["goFaxRBlocklist"][$i];
-        }
-      }
-      $this->type = BLOCK_LIST_RECEIVE;
-    }
-
-    /* Set base */
-    if ($this->dn == "new") {
-      if (session::is_set('CurrentMainBase')) {
-        $this->base = session::get('CurrentMainBase');
-      } else {
-        $ui = get_userinfo();
-        $this->base = dn2base($ui->dn);
-      }
-    } else {
-      $this->base = preg_replace ("/^[^,]+,[^,]+,[^,]+,/", "", $this->dn);
-    }
   }
 
   /* Return plugin informations for acl handling */

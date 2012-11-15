@@ -459,56 +459,6 @@ class faiProfile extends plugin
     }
   }
 
-
-  function PrepareForCopyPaste($source)
-  {
-    plugin::PrepareForCopyPaste($source);
-
-    /* Parse ldap attribute to get all assigned classes */
-    $tmp = explode(" ",$this->FAIclass);
-    $tmp2 = array();
-    foreach($tmp as $class){
-      if(!empty($class)){
-        $tmp2[trim($class)] = trim($class);
-      }
-    }
-
-    /* Sort assigned classes */
-    if(is_array($tmp2)){
-      foreach($tmp2 as $class){
-        $this->FAIclasses[$class]=$class;
-      }
-    }
-  }
-
-
-  /*! \brief  Used for copy & paste.
-              Returns a HTML input mask, which allows to change the cn of this entry.
-      @param  Array   Array containing current status && a HTML template.
-   */
-  function getCopyDialog()
-  {
-    $vars = array("cn");
-    $smarty = get_smarty();
-    $smarty->assign("cn", htmlentities($this->cn));
-    $str = $smarty->fetch(get_template_path("paste_generic.tpl",TRUE));
-    $ret = array();
-    $ret['string'] = $str;
-    $ret['status'] = "";
-    return($ret);
-  }
-
-
-  /*! \brief  Used for copy & paste.
-              Some entries must be renamed to avaoid duplicate entries.
-   */
-  function saveCopyDialog()
-  {
-    if(isset($_POST['cn'])){
-      $this->cn = get_post('cn');
-    }
-  }
-
   /* Return plugin informations for acl handling */
   static function plInfo()
   {

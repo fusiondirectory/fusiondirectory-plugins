@@ -810,24 +810,6 @@ class gofaxAccount extends plugin
         $this->facsimileAlternateTelephoneNumber);
   }
 
-  function getCopyDialog()
-  {
-    $str    = "";
-    $smarty = get_smarty();
-    $smarty->assign("facsimileTelephoneNumber", $this->facsimileTelephoneNumber);
-    $str['string']   = $smarty->fetch(get_template_path("paste_generic.tpl",TRUE,dirname(__FILE__)));
-    $str['status'] ="";
-    return($str);
-  }
-
-  function SaveCopyDialog()
-  {
-    if(isset($_POST['facsimileTelephoneNumber'])){
-      $this->facsimileTelephoneNumber = $_POST['facsimileTelephoneNumber'];
-    }
-  }
-
-
   /* Return plugin informations for acl handling
       #FIXME some attributes are still missing in this plugin acls */
   static function plInfo()

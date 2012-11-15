@@ -259,46 +259,6 @@ class deviceGeneric extends plugin
     return !strlen($str) || preg_match("/^(0x|x|)[a-f0-9]{4}$/i",$str);
   }
 
-
-  function PrepareForCopyPaste($source)
-  {
-    plugin::PrepareForCopyPaste($source);
-    $source_o = new deviceGeneric($this->config,$source['dn']);
-    foreach($this->CopyPasteVars as $post){
-      $this->$post = $source_o->$post;
-    }
-  }
-
-
-  /* Return a dialog with all fields that must be changed,
-     if we want to copy this entry */
-  function getCopyDialog()
-  {
-    $str = "";
-    $smarty = get_smarty();
-    $smarty->assign("cn",         $this->cn);
-    $str = $smarty->fetch(get_template_path("paste_deviceGeneric.tpl",TRUE,dirname(__FILE__)));
-
-    $ret = array();
-    $ret['string'] = $str;
-    $ret['status'] = "";
-    return($ret);
-  }
-
-
-  /* Save all */
-  function saveCopyDialog()
-  {
-    $attrs = array("cn");
-    foreach($attrs as $attr){
-      if(isset($_POST[$attr])){
-        $this->$attr = $_POST[$attr];
-      }
-    }
-  }
-
-
-
   /* Return plugin informations for acl handling  */
   public static function plInfo()
   {

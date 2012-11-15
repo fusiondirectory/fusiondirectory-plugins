@@ -550,46 +550,6 @@ class application extends plugin
     }
   }
 
-  function getCopyDialog()
-  {
-    $vars = array("cn");
-
-    $str ="<h2>"._("Application settings")."</h2>
-      <table>
-      <tr>
-      <td>".
-      _("Application name").
-      "</td>
-      <td>
-      <input id='gosaApplicationName' name='cn' size='35' maxlength='60'
-      value='".$this->cn."'
-      title='"._("Application name to be displayed (i.e. below icons)")."'>
-      </td>
-      </tr>
-      </table>";
-    $ret = array();
-    $ret['status'] = "";
-    $ret['string'] = $str;
-    return($ret);
-  }
-
-  function saveCopyDialog()
-  {
-    if(isset($_POST['cn'])){
-      $this->cn = $_POST['cn'];
-    }
-  }
-
-
-  function PrepareForCopyPaste($source)
-  {
-    plugin::PrepareForCopyPaste($source);
-    $source_o = new application($this->config,$source['dn']);
-    $this->gosaApplicationIcon = $source_o->gosaApplicationIcon;
-    $this->copy_source_dn = $source['dn'];
-  }
-
-
   /* Return plugin informations for acl handling
       #FIXME FAIscript seams to ununsed within this class... */
   static function plInfo()

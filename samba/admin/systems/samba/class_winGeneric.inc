@@ -286,50 +286,6 @@ class wingeneric extends plugin
     return $message;
   }
 
-  /* Display generic part for server copy & paste */
-  function getCopyDialog()
-  {
-    $smarty = get_smarty();
-    $smarty->assign("cn", preg_replace("/\\\$\$/", "", $this->uid));
-    $smarty->assign("macAddress", $this->netConfigDNS->macAddress);
-    $smarty->assign("ipHostNumber", $this->netConfigDNS->ipHostNumber);
-    $smarty->assign("object", "winstation");
-    $str = $smarty->fetch(get_template_path("paste_generic.tpl", TRUE));
-    $ret = array();
-    $ret['string'] = $str;
-    $ret['status'] = "";
-    return $ret;
-  }
-
-
-  function saveCopyDialog()
-  {
-    if (isset($_POST['cn'])) {
-      $this->uid = $_POST['cn'];
-      $this->cn = preg_replace("/\\\$\$/", "", $this->uid);
-    }
-    if (isset($_POST['macAddress'])) {
-      $this->netConfigDNS->macAddress = $_POST['macAddress'];
-    }
-    if (isset($_POST['ipHostNumber'])) {
-      $this->netConfigDNS->ipHostNumber = $_POST['ipHostNumber'];
-    }
-  }
-
-
-  function PrepareForCopyPaste($source)
-  {
-    plugin::PrepareForCopyPaste($source);
-    if (isset($source['macAddress'][0])) {
-      $this->netConfigDNS->macAddress = $source['macAddress'][0];
-    }
-    if (isset($source['ipHostNumber'][0])) {
-      $this->netConfigDNS->ipHostNumber = $source['ipHostNumber'][0];
-    }
-  }
-
-
-
   /* Save to LDAP */
   function save()
   {

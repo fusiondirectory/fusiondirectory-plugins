@@ -562,10 +562,10 @@ class ServerService extends management
 
   /*! \brief    Prepare active services to be copied.
    */
-  function PrepareForCopyPaste($source)
+  function postCopyHook()
   {
     foreach ($this->plugins as $name => $plugin) {
-      $this->plugins[$name]->PrepareForCopyPaste($source);
+      $this->plugins[$name]->postCopyHook();
     }
   }
 
@@ -604,16 +604,5 @@ class ServerService extends management
       $this->plugins[$name]->set_acl_category($category);
     }
   }
-
-  function saveCopyDialog()
-  {
-  }
-
-
-  function getCopyDialog()
-  {
-    return array("string" => "", "status" => "");
-  }
-
 }
 ?>

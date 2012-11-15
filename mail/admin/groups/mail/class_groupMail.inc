@@ -970,38 +970,8 @@ class mailgroup extends plugin
     return ($name);
   }
 
-  function getCopyDialog()
+  function postCopyHook()
   {
-    if(!$this->is_account) return("");
-
-    $smarty = get_smarty();
-    $smarty->assign("gosaMailAlternateAddress",$this->gosaMailAlternateAddress);
-    $smarty->assign("gosaMailForwardingAddress",$this->gosaMailForwardingAddress);
-    $smarty->assign("mail",$this->mail);
-    $display= $smarty->fetch (get_template_path('paste_mail.tpl', TRUE, dirname(__FILE__)));
-    $ret = array();
-    $ret['string'] = $display;
-    $ret['status'] = "";
-    return($ret);
-  }
-
-  function saveCopyDialog()
-  {
-    if(!$this->is_account) return;
-
-    /* Perform ADD / REMOVE ... for mail alternate / mail forwarding addresses
-    */
-    $this->execute();
-    if(isset($_POST['mail'])){
-      $this->mail = $_POST['mail'];
-    }
-  }
-
-
-  function PrepareForCopyPaste($source)
-  {
-    plugin::PrepareForCopyPaste($source);
-
     /* Reset alternate mail addresses */
     $this->gosaMailAlternateAddress = array();
   }

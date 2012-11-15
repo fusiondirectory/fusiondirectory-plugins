@@ -375,52 +375,6 @@ class faiVariable extends plugin
     }
   }
 
-
-  function PrepareForCopyPaste($source)
-  {
-    plugin::PrepareForCopyPaste($source);
-
-    /* Read all leaf objects of this object (For FAIscript this would be FAIscriptEntry)
-     */
-    $res = FAI::get_all_objects_for_given_object($source['dn'],"(&(objectClass=FAIclass)(objectClass=".$this->subClass."))");
-    foreach($res as $obj){
-
-      $objects = array();
-      $objects['status']      = "edited";
-      $objects['dn']          = $obj['dn'];
-      $objects                = $this->get_object_attributes($objects,$this->subAttributes);
-      $this->SubObjects[$objects['cn']] = $objects;
-    }
-  }
-
-
-  /*! \brief  Used for copy & paste.
-    Returns a HTML input mask, which allows to change the cn of this entry.
-    @param  Array   Array containing current status && a HTML template.
-   */
-  function getCopyDialog()
-  {
-    $vars = array("cn");
-    $smarty = get_smarty();
-    $smarty->assign("cn", htmlentities($this->cn));
-    $str = $smarty->fetch(get_template_path("paste_generic.tpl",TRUE));
-    $ret = array();
-    $ret['string'] = $str;
-    $ret['status'] = "";
-    return($ret);
-  }
-
-
-  /*! \brief  Used for copy & paste.
-    Some entries must be renamed to avaoid duplicate entries.
-   */
-  function saveCopyDialog()
-  {
-    if(isset($_POST['cn'])){
-      $this->cn = get_post('cn');
-    }
-  }
-
   /* Reload some attributes */
   function get_object_attributes($object,$attributes)
   {

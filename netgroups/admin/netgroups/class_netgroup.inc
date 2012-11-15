@@ -879,19 +879,6 @@ class netgroup extends plugin {
         return(array());
     }
 
-//TODO: check
-    function getCopyDialog() {
-        $ret = array();
-        return($ret);
-    }
-
-//TODO: check
-    function saveCopyDialog() {
-        if (isset($_POST['cn'])) {
-            $this->cn = $_POST['cn'];
-        }
-    }
-
 //TODO: check ACL!
     /* Return plugin informations for acl handling  */
     static function plInfo() {
@@ -1025,24 +1012,6 @@ class netgroup extends plugin {
 
         $this->reload();
 
-    }
-
-    function PrepareForCopyPaste($source) {
-        plugin::PrepareForCopyPaste($source);
-
-        $this->memberCn = array();
-        if (isset($source['memberCn'])) {
-            for ($i = 0; $i < $source['memberCn']['count']; $i++) {
-                $this->memberCn[] = $source['memberCn'][$i];
-            }
-        }
-        $this->accessTo = array();
-        if (isset($source['accessTo'])) {
-            for ($i = 0; $i < $source['accessTo']['count']; $i++) {
-                $tmp = $source['accessTo'][$i];
-                $this->accessTo[$tmp] = $tmp;
-            }
-        }
     }
 
     function set_multi_edit_values($attrs) {

@@ -716,40 +716,6 @@ class faiPackage extends plugin
   }
 
 
-  /*! \brief prepares this plugin to be inserted after it was copied or cut.
-      @param Array  All attributes from the source object.
-   */
-  function PrepareForCopyPaste($source)
-  {
-    plugin::PrepareForCopyPaste($source);
-
-    if(isset($source['FAIstate'][0])){
-      $this->FAIstate = $source['FAIstate'][0];
-    }
-
-    $this->FAIdebianRelease = "ClearFromCopyPaste";
-
-    if(isset($source['FAIpackage'])){
-      unset($source['FAIpackage']['count']);
-      foreach($source['FAIpackage'] as $pkg){
-        $this->usedPackages[$pkg] = $pkg;
-      }
-      ksort($this->usedPackages);
-    }else{
-      $this->usedPackages = array();
-    }
-
-    if((isset($source['FAIdebianSection']))&&(is_array($source['FAIdebianSection']))){
-      $this->FAIdebianSection = array();
-      for($i = 0 ; $i < $source['FAIdebianSection']['count'] ; $i ++){
-        $this->FAIdebianSection[$source['FAIdebianSection'][$i]]=$source['FAIdebianSection'][$i];
-      }
-    }
-
-    $this->ConfiguredPackages = $this->get_configured_packages($this->usedPackages, $source['dn']);
-  }
-
-
   /*! \brief  Returns a list of all configured servers with repositories.
       @return Array  All repository server
    */
@@ -761,37 +727,7 @@ class faiPackage extends plugin
     foreach ($servs as $serv) {
         $ret[$serv["FAI_RELEASE"]] = $serv["SECTIONS"];
     }
-    return($ret);
-  }
-
-
-  /*! \brief  Used for copy & paste.
-    Returns a HTML input mask, which allows to change the cn of this entry.
-    @param  Array   Array containing current status && a HTML template.
-   */
-  function getCopyDialog()
-  {
-    $vars = array("cn");
-    $smarty = get_smarty();
-    $smarty->assign("cn", htmlentities($this->cn));
-    $str = $smarty->fetch(get_template_path("paste_generic.tpl",TRUE));
-    $ret = array();
-    $ret['string'] = $str;
-    $ret['status'] = "";
-    return($ret);
-  }
-
-
-  /*! \brief  Used for copy & paste.
-    Some entries must be renamed to avaoid duplicate entries.
-   */
-  function saveCopyDialog()
-  {
-    if(isset($_POST['cn'])){
-      $this->cn = get_post('cn');
-    }
+    return $ret;
   }
 }
-
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

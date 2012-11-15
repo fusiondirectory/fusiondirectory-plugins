@@ -1674,42 +1674,6 @@ class phoneAccount extends plugin
     }
   }
 
-
-  /* Create phoneAccount part of copy & paste dialog */
-  function getCopyDialog()
-  {
-    if(!$this->is_account) return("");
-    $smarty = get_smarty();
-    if (!count($this->phoneNumbers)){
-      $smarty->assign ("phoneNumbers", array(""));
-    } else {
-      $smarty->assign ("phoneNumbers", $this->phoneNumbers);
-    }
-
-    $smarty->assign("goFonVoicemailPIN",$this->goFonVoicemailPIN);
-    $smarty->assign("goFonPIN",$this->goFonPIN);
-
-    $display= $smarty->fetch(get_template_path('paste_generic.tpl', TRUE, dirname(__FILE__)));
-    $ret =array();
-    $ret['string'] = $display;
-    $ret['status'] = "";
-    return($ret);
-  }
-
-  /* Save posts from copy & paste dialog dialog  */
-  function saveCopyDialog()
-  {
-    if(!$this->is_account) return;
-    $this->execute();
-    if(isset($_POST['goFonVoicemailPIN'])) {
-      $this->goFonVoicemailPIN = $_POST['goFonVoicemailPIN'];
-    }
-    if(isset($_POST['goFonPIN'])){
-      $this->goFonPIN = $_POST['goFonPIN'];
-    }
-  }
-
-
   function allow_remove()
   {
     /* Check if previously selected server is still available */

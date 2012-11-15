@@ -537,28 +537,6 @@ class faiHook extends plugin
   }
 
 
-  function PrepareForCopyPaste($source)
-  {
-    plugin::PrepareForCopyPaste($source);
-
-    /* Read all leaf objects of this object (For FAIscript this would be FAIscriptEntry)
-     */
-    $res = FAI::get_all_objects_for_given_base($source['dn'],"(&(objectClass=FAIclass)(objectClass=".$this->subClass."))");
-    foreach($res as $obj){
-
-      /* Skip not relevant objects */
-      if(!preg_match("/".preg_quote($source['dn'], '/')."$/i",$obj['dn'])) continue;
-
-      $objects = array();
-      $objects['status']      = "edited";
-      $objects['dn']          = $obj['dn'];
-      $objects                = $this->get_object_attributes($objects,$this->subAttributes);
-      $objects                = $this->get_object_attributes($objects,$this->sub_Load_Later);
-      $this->SubObjects[$objects['cn']] = $objects;
-    }
-  }
-
-
   /* Return plugin informations for acl handling */
   static function plInfo()
   {
@@ -576,35 +554,5 @@ class faiHook extends plugin
       )
     );
   }
-
-
-  /*! \brief  Used for copy & paste.
-    Returns a HTML input mask, which allows to change the cn of this entry.
-    @param  Array   Array containing current status && a HTML template.
-   */
-  function getCopyDialog()
-  {
-    $vars = array("cn");
-    $smarty = get_smarty();
-    $smarty->assign("cn", htmlentities($this->cn));
-    $str = $smarty->fetch(get_template_path("paste_generic.tpl",TRUE));
-    $ret = array();
-    $ret['string'] = $str;
-    $ret['status'] = "";
-    return($ret);
-  }
-
-
-  /*! \brief  Used for copy & paste.
-    Some entries must be renamed to avaoid duplicate entries.
-   */
-  function saveCopyDialog()
-  {
-    if(isset($_POST['cn'])){
-      $this->cn = get_post('cn');
-    }
-  }
 }
-
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>
