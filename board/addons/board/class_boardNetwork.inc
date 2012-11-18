@@ -41,6 +41,9 @@ class boardNetwork extends simplePlugin
 
   function dhcp_infos()
   {
+    if (!class_available("dhcpService")) {
+      return array();
+    }
     $ldap = $this->config->get_ldap_link();
 
     $ldap->cd(get_ou("systemRDN").$this->config->current['BASE']);
@@ -67,6 +70,9 @@ class boardNetwork extends simplePlugin
 
   function dns_infos()
   {
+    if (!class_available("DNS")) {
+      return array();
+    }
     $ldap = $this->config->get_ldap_link();
 
     $ldap->cd($this->config->current['BASE']);
