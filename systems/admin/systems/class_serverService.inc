@@ -33,6 +33,8 @@ class ServerService extends management
   var $ignore_account   = TRUE;
   var $skipFooter       = TRUE;
   var $skipHeader       = TRUE;
+  var $skipCpHandler    = TRUE;
+  var $skipSnapHandler  = TRUE;
   var $plugins          = array();
   var $pluign_names     = array();
   var $current          = "";
@@ -352,21 +354,6 @@ class ServerService extends management
       $display = $this->tabObject->execute();
       $display .= $this->_getTabFooter();
       return $this->getHeader().$display;
-    }
-
-    // Set current restore base for snapshot handling.
-    if (is_object($this->snapHandler)) {
-      $bases = array();
-      foreach ($this->storagePoints as $sp) {
-        $bases[] = $sp.$this->headpage->getBase();
-      }
-
-      // No bases specified? Try base
-      if (!count($bases)) {
-        $bases[] = $this->headpage->getBase();
-      }
-
-      $this->snapHandler->setSnapshotBases($bases);
     }
 
     // Display list
