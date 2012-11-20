@@ -421,6 +421,12 @@ class workstationGeneric extends simplePlugin
     $this->attributesInfo['servers']['attrs']['gotoSyslogServer']->setChoices($tmp, $tmp_output);
   }
 
+  function resetCopyInfos()
+  {
+    parent::resetCopyInfos();
+    $this->netConfigDNS->resetCopyInfos();
+  }
+
   function ping()
   {
     if (!$this->sdaemon_available) {
