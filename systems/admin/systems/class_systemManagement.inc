@@ -132,63 +132,29 @@ class systemManagement extends management
    *  @param  Array   'target'  A list of object dns, which should be affected by this method.
    *  @param  Array   'all'     A combination of both 'action' and 'target'.
    */
-  function copyPasteHandler($action="",$target=array(),$all=array(),
-      $altTabClass ="", $altTabType = "", $altAclCategory="",$altAclPlugin="")
+  function copyPasteHandler($action = "", $target = array(), $all = array(),
+      $altTabClass = "", $altTabType = "", $altAclCategory = "", $altAclPlugin = "")
   {
-    // Return without any actions while copy&paste handler is disabled.
-    if(!is_object($this->cpHandler))  return("");
+    $tDefs    = $this->getObjectDefinitions();
 
-    // Save user input
-    $this->cpHandler->save_object();
+    $tabClass     = array();
+    $tabType      = array();
+    $aclCategory  = array();
+    $aclPlugin    = array();
 
-    // Add entries to queue
-    if($action == "copy" || $action == "cut"){
+    $headpage = $this->getHeadpage();
 
-      $tDefs= $this->getObjectDefinitions();
-      $headpage = $this->getHeadpage();
-      $ui       = get_userinfo();
-      $this->cpHandler->cleanup_queue();
-      foreach($target as $dn){
+    foreach ($target as $dn) {
+      $type   = $headpage->getType($dn);
+      $entry  = $headpage->getEntry($dn);
 
-        $type = $headpage->getType($dn);
-        $entry = $headpage->getEntry($dn);
-
-        $aclCategory = $tDefs[$type]['aclCategory'];
-        $aclPlugin = $tDefs[$type]['aclClass'];
-        $tabClass = $tDefs[$type]['tabClass'];
-        $tabType = $tDefs[$type]['tabDesc'];
-
-        if($action == "copy" && $this->ui->is_copyable($dn,$aclCategory,$aclPlugin)){
-          $this->cpHandler->add_to_queue($dn,"copy",$tabClass,$tabType,$aclCategory,$this);
-          @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,$dn,"Entry copied!");
-        }
-        if($action == "cut" && $this->ui->is_cutable($dn,$aclCategory,$aclPlugin)){
-          $this->cpHandler->add_to_queue($dn,"cut",$tabClass,$tabType,$aclCategory,$this);
-          @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,$dn,"Entry cutted!");
-        }
-      }
+      $tabClass[$dn]    = $tDefs[$type]['tabClass'];
+      $tabType[$dn]     = $tDefs[$type]['tabDesc'];
+      $aclCategory[$dn] = $tDefs[$type]['aclCategory'];
+      $aclPlugin[$dn]   = $tDefs[$type]['aclClass'];
     }
 
-    // Initiate pasting
-    if($action == "paste"){
-      $this->cpPastingStarted = TRUE;
-    }
-
-    // Display any c&p dialogs, eg. object modifications required before pasting.
-    if($this->cpPastingStarted && $this->cpHandler->entries_queued()){
-      $headpage = $this->getHeadpage();
-      $this->cpHandler->SetVar("base",$headpage->getBase());
-      $data = $this->cpHandler->execute();
-      if(!empty($data)){
-        return($data);
-      }
-    }
-
-    // Automatically disable pasting process since there is no entry left to paste.
-    if(!$this->cpHandler->entries_queued()){
-      $this->cpPastingStarted = FALSE;
-    }
-    return("");
+    return parent::copyPasteHandler($action, $target, $all, $tabClass, $tabType, $aclCategory, $aclPlugin);
   }
 
 
@@ -557,7 +523,7 @@ class systemManagement extends management
              $this->tabObject->by_object['phoneGeneric']->remove_from_parent ();
           }else{
             $this->tabObject= new $info['tabClass']($this->config,$this->config->data['TABS'][$info['tabDesc']],
-                $this->dn, $info['aclCategory'], true, true);
+                $this->dn, $info['aclCategory']);
             $this->tabObject->set_acl_base($this->dn);
             $this->tabObject->parent = &$this;
             $this->tabObject->delete ();

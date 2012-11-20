@@ -546,13 +546,23 @@ class ServerService extends management
     }
   }
 
+  /*! \brief    Prepare active services to be copied.
+   */
+  function resetCopyInfos()
+  {
+    $this->dn = 'new';
+    foreach ($this->plugins as &$plugin) {
+      $plugin->resetCopyInfos();
+    }
+  }
+
 
   /*! \brief    Prepare active services to be copied.
    */
   function postCopyHook()
   {
-    foreach ($this->plugins as $name => $plugin) {
-      $this->plugins[$name]->postCopyHook();
+    foreach ($this->plugins as &$plugin) {
+      $plugin->postCopyHook();
     }
   }
 

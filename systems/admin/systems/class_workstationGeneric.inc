@@ -215,7 +215,7 @@ class workstationGeneric extends simplePlugin
       'main' => array(
         'name'  => _('Properties'),
         'attrs' => array(
-          new StringAttribute (
+          new HostNameAttribute (
             _('Name'),
             sprintf(_('The name of the %s'), $word),
             'cn',
