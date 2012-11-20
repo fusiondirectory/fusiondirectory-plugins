@@ -44,7 +44,7 @@ class NetworkSettingsDialog
 class NetworkSettingsAttribute extends Attribute
 {
   public $netConfigDNS;
-  private $display;
+  private $display = NULL;
 
   function __construct ()
   {
@@ -61,14 +61,16 @@ class NetworkSettingsAttribute extends Attribute
   {
     parent::setParent($plugin);
     if (is_object($this->plugin)) {
-      $this->plugin->netConfigDNS =& $this->netConfigDNS;
       $this->netConfigDNS = new networkSettings($this->plugin->config, $this->plugin, $this->plugin->objectclasses, TRUE);
-      $this->display = $this->netConfigDNS->execute();
+      $this->plugin->netConfigDNS =& $this->netConfigDNS;
     }
   }
 
   function renderAttribute(&$attributes)
   {
+    if ($this->display === NULL) {
+      $this->display = $this->netConfigDNS->execute();
+    }
     $attributes[$this->getLdapName()] = array(
       'DNSenabled'  => $this->netConfigDNS->DNSenabled,
       'display'     => $this->display
@@ -436,9 +438,7 @@ class workstationGeneric extends simplePlugin
   function set_acl_base($base)
   {
     plugin::set_acl_base($base);
-    if (is_object($this->netConfigDNS)) {
-      $this->netConfigDNS->set_acl_base($base);
-    }
+    $this->netConfigDNS->set_acl_base($base);
   }
 
   function set_acl_category($cat)
