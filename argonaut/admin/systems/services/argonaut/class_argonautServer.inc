@@ -30,8 +30,6 @@ class argonautServer extends simpleService
     return array(
       "plShortName"     => _("Argonaut Server"),
       "plDescription"   => _("Argonaut Server")." ("._("Services").")",
-      "plSelfModify"    => FALSE,
-      "plDepends"       => array(),
       "plCategory"      => array("server"),
 
       "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
@@ -115,11 +113,17 @@ class argonautServer extends simpleService
     $this->attributesInfo['section1']['attrs']['argonautCertPath']->setVisible(FALSE);
   }
 
-  function save ()
+  /*! \brief Get service information for serverService plugin */
+  function getListEntry()
   {
-    parent::prepare_save();
-    parent::ldap_save();
-  }
+    $fields = parent::getListEntry();
 
+    /* Disallow some functions */
+    $fields['AllowStart']   = FALSE;
+    $fields['AllowStop']    = FALSE;
+    $fields['AllowRestart'] = FALSE;
+
+    return $fields;
+  }
 }
 ?>
