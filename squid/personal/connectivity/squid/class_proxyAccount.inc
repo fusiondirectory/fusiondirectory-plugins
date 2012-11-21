@@ -161,6 +161,7 @@ class proxyAccount extends simplePlugin
     $this->attributesInfo['section1']['attrs']['gosaProxyWorkingStart']->setLinearRendering(TRUE);
     $this->attributesInfo['section1']['attrs']['gosaProxyWorkingStop']->setLinearRendering(TRUE);
     $this->attributesInfo['section1']['attrs']['gosaProxyQuota']->setLinearRendering(TRUE);
+    $this->attributesInfo['section1']['attrs']['enableWorkingTime']->setValue(isset($this->attrs['gosaProxyWorkingStart']));
     $this->attributesInfo['section1']['attrs']['enableWorkingTime']->setInLdap(FALSE);
     $this->attributesInfo['section1']['attrs']['enableWorkingTime']->setManagedAttributes(
       array(
@@ -174,6 +175,7 @@ class proxyAccount extends simplePlugin
         )
       )
     );
+    $this->attributesInfo['section1']['attrs']['enableQuota']->setValue(isset($this->attrs['gosaProxyQuota']));
     $this->attributesInfo['section1']['attrs']['enableQuota']->setInLdap(FALSE);
     $this->attributesInfo['section1']['attrs']['enableQuota']->setManagedAttributes(
       array(
