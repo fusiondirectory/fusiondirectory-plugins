@@ -21,11 +21,8 @@
 
 class novaAccount extends simplePlugin
 {
-
-  var $displayHeader = TRUE;
-  var $plHeadline= "Nova";
-  var $plDescription= "Edit users Nova settings";
-  var $objectclasses= array("novaUser");
+  var $displayHeader  = TRUE;
+  var $objectclasses  = array("novaUser");
 
   static function plInfo()
   {
@@ -34,19 +31,21 @@ class novaAccount extends simplePlugin
       "plDescription"   => _("Nova user account settings"),
       "plSelfModify"    => TRUE,
       "plDepends"       => array("user"),
-      "plPriority"      => 3,                                 // Position in tabs
+      "plPriority"      => 3,
       "plCategory"      => array("users"),
       "plObjectType"    => array("user"),
       "plRequirements"  => array('ldapSchema' => array('novaUser' => ''), 'onFailureDisablePlugin' => array(get_class())),
-      );
+      "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+    );
   }
 
 
-  function getRandStr($len) {
-    $chars = "abcbefghigklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^[]{}&/-=+_";
-    $res = "";
-    for ($i=0; $i<$len; $i++) {
-      $res .= $chars[rand(0,strlen($chars)-1)];
+  static function getRandStr($len)
+  {
+    $chars  = "abcbefghigklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^[]{}&/-=+_";
+    $res    = "";
+    for ($i = 0; $i < $len; $i++) {
+      $res .= $chars[rand(0, strlen($chars) - 1)];
     }
     return $res;
   }
@@ -58,14 +57,7 @@ class novaAccount extends simplePlugin
   function __construct(&$config, $dn = NULL, $object = NULL)
   {
     parent::__construct($config, $dn, $object);
-    $ldap = $this->config->get_ldap_link();
-    $ldap->cd($this->config->current['BASE']);
-    $ldap->search("(objectClass=novaUser)",array('cn'));
-    $this->attributesInfo['section1']['attrs']['accessKey']->setDefaultValue(novaAccount::getRandStr(36));
-    $this->attributesInfo['section1']['attrs']['accessKey']->resetToDefault();
     $this->attributesInfo['section1']['attrs']['accessKey']->setDisabled(TRUE);
-    $this->attributesInfo['section1']['attrs']['secretKey']->setDefaultValue(novaAccount::getRandStr(36));
-    $this->attributesInfo['section1']['attrs']['secretKey']->resetToDefault();
     $this->attributesInfo['section1']['attrs']['secretKey']->setDisabled(TRUE);
   }
 
@@ -75,30 +67,23 @@ class novaAccount extends simplePlugin
   static function getAttributesInfo ()
   {
     return array(
-    // Attributes are grouped by section
-    'section1' => array (
+      'section1' => array (
         'name'  => _('Nova Account'),
         'attrs' => array (
           new BooleanAttribute (
-            _('Set as Nova Admin'),              // Label of the attribute
-            _('Set as Nova Admin'),              // Description
-            'isNovaAdmin',                 // LDAP name
-            FALSE,                            // Mandatory
-            FALSE                            // default value
+            _('Set as Nova Admin'), _('Set this user as Nova Admin'),
+            'isNovaAdmin', FALSE,
+            FALSE
           ),
           new StringAttribute (
-            _('Access Key'),                     // Label
-            _('Access Key'),      // Description
-            'accessKey',                 // LDAP name
-            TRUE,                           // Mandatory
-            ''             // Default value
+            _('Access Key'), _('Access Key'),
+            'accessKey', TRUE,
+            self::getRandStr(36)
           ),
           new StringAttribute (
-            _('Secret Key'),                     // Label
-            _('Secret Key'),      // Description
-            'secretKey',                 // LDAP name
-            TRUE,                           // Mandatory
-            ''             // Default value
+            _('Secret Key'), _('Secret Key'),
+            'secretKey', TRUE,
+            self::getRandStr(36)
           )
         )
       )
