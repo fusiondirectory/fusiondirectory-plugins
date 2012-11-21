@@ -52,8 +52,6 @@ class proxyAccount extends simplePlugin
 {
   /* Definitions */
   var $displayHeader    = TRUE;
-  var $plHeadline       = "Proxy";
-  var $plDescription    = "This allow to store basic squid settings in ldap for each user";
   var $objectclasses    = array("gosaProxyAccount");
 
   /*!
@@ -65,12 +63,13 @@ class proxyAccount extends simplePlugin
   {
     return array(
       "plShortName"     => _("Proxy"),
-      "plDescription"   => _("Proxy account")."&nbsp;("._("Connectivity addon").")",
+      "plDescription"   => _("This allow to store basic squid settings in ldap for each user"),
       "plSelfModify"    => TRUE,
       "plDepends"       => array("user"),
-      "plPriority"      => 21,                                 // Position in tabs
+      "plPriority"      => 21,
       "plCategory"      => array("users"),
       "plObjectType"    => array("connectivity"),
+
       "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }
@@ -81,8 +80,11 @@ class proxyAccount extends simplePlugin
    static function getAttributesInfo ()
   {
     return array(
-    'section1' => array(
-        'name'  => _('Proxy account'),
+      'section1' => array(
+        'name'      => _('Proxy account'),
+        'template'  => get_template_path('proxyAccount.tpl', TRUE, dirname(__FILE__)),
+        'class'     => array('fullwidth'),
+
         'attrs' => array (
           new BooleanAttribute(
             _('Filter unwanted content (i.e. pornographic or violence related)'),                       // Label of the attribute
@@ -95,7 +97,7 @@ class proxyAccount extends simplePlugin
             _('Working Start'),
             'gosaProxyWorkingStart',
             array (
-              new SelectAttribute ( '',   _('HourStart'),   'hourstart',   TRUE, array(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24), 1, array('01','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24')),
+              new SelectAttribute ( '',  _('HourStart'),   'hourstart',   TRUE, array(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24), 1, array('01','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24')),
               new SelectAttribute ( ':', _('MinuteStart'), 'minutestart', TRUE, array('00','15','30','45'))
             ),
             '', // read format (not used)
@@ -107,7 +109,7 @@ class proxyAccount extends simplePlugin
             _('Working Stop'),
             'gosaProxyWorkingStop',
             array (
-              new SelectAttribute ( _('-'),   _('HourStart'), 'hourstop',   TRUE, array(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24), 1, array('01','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24')),
+              new SelectAttribute ( _('-'), _('HourStart'), 'hourstop',   TRUE, array(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24), 1, array('01','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24')),
               new SelectAttribute ( _(':'), _('MinuteStop'), 'minutestop', TRUE, array('00','15','30','45'))
             ),
             '',
@@ -148,8 +150,7 @@ class proxyAccount extends simplePlugin
             FALSE,  // default value
             'gosaProxyQuota' // acl
           )
-        ),
-        'template' => get_template_path('proxyAccount.tpl', TRUE, dirname(__FILE__))
+        )
       )
     );
   }
