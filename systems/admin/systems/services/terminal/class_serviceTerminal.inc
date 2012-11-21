@@ -20,7 +20,8 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class goTerminalServer extends simpleService{
+class goTerminalServer extends simpleService
+{
 
   /* This plugin only writes its objectClass */
   var $objectclasses    = array("goTerminalServer");
