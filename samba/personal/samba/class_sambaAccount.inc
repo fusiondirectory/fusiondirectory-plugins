@@ -478,35 +478,6 @@ class sambaAccount extends plugin
             $smarty->assign("$key", "$value");
         }
 
-        // Assign selected multi edit checkbox values.
-        foreach($this->attributes as $attr){
-            if(in_array($attr,$this->multi_boxes)){
-                $smarty->assign("use_".$attr,TRUE);
-            }else{
-                $smarty->assign("use_".$attr,FALSE);
-            }
-        }
-        foreach(array("tslogin","CtxWFHomeDir","CtxWFHomeDirDrive","CtxWFProfilePath",
-                    "inherit","CtxWorkDirectory","CtxInitialProgram","CtxMaxConnectionTimeF",
-                    "CtxMaxConnectionTime","CtxMaxDisconnectionTimeF",
-                    "CtxMaxDisconnectionTime","CtxMaxIdleTimeF","CtxMaxIdleTime","connectclientdrives",
-                    "onnectclientprinters","defaultprinter","shadow","brokenconn",
-                    "reconn","connectclientprinters","SetSambaLogonHours",
-                    "workstation_list","sambaKickoffTime",
-                    "enforcePasswordChange", "passwordNeverExpires", "noPasswordRequired",
-                    "temporaryDisabled","cannotChangePassword") as $attr){
-
-            if(in_array($attr,$this->multi_boxes)){
-                $smarty->assign("use_".$attr,TRUE);
-            }else{
-                $smarty->assign("use_".$attr,FALSE);
-            }
-        }
-
-        if($this->multiple_support_active){
-            $smarty->assign("tsloginstate","");
-        }
-
         // Create additional info for sambaKickOffTime and sambaPwdMustChange.
         //  e.g. Display effective kickoff time. Domain policy + user settings.
         $additional_info_PwdMustChange = "";
@@ -1172,333 +1143,35 @@ class sambaAccount extends plugin
 
     static function plInfo()
     {
-        return array(
-          "plShortName"     => _("Samba"),
-          "plDescription"   => _("Samba settings"),
-          "plSelfModify"    => TRUE,
-          "plDepends"       => array("user"),
-          "plPriority"      => 5,
-          "plCategory"      => array("users"),
-          "plObjectType"    => array("user"),
+      return array(
+        "plShortName"     => _("Samba"),
+        "plDescription"   => _("Samba settings"),
+        "plSelfModify"    => TRUE,
+        "plDepends"       => array("user"),
+        "plPriority"      => 5,
+        "plCategory"      => array("users"),
+        "plObjectType"    => array("user"),
 
-          "plProvidedAcls"  => array(
-            "sambaHomePath"               => _("Generic home directory") ,
-            "sambaHomeDrive"              => _("Generic samba home drive") ,
-            "sambaDomainName"             => _("Domain") ,
-            "sambaLogonScript"            => _("Generic script path") ,
-            "sambaProfilePath"            => _("Generic profile path") ,
-            "AllowLoginOnTerminalServer"  => _("Allow login on terminal server"),
-            "InheritClientConfig"         => _("Inherit client config"),
-            "sambaKickoffTime"            => _("Account expires"),
-            "enforcePasswordChange"       => _("Enforce password change"),
-            "cannotChangePassword"        => _("Disallow password change") ,
-            "noPasswordRequired"          => _("Login from windows client requires no password"),
-            "passwordNeverExpires"        => _("Password never expires"),
-            "temporaryDisabled"           => _("Lock samba account"),
+        "plProvidedAcls"  => array(
+          "sambaHomePath"               => _("Generic home directory") ,
+          "sambaHomeDrive"              => _("Generic samba home drive") ,
+          "sambaDomainName"             => _("Domain") ,
+          "sambaLogonScript"            => _("Generic script path") ,
+          "sambaProfilePath"            => _("Generic profile path") ,
+          "AllowLoginOnTerminalServer"  => _("Allow login on terminal server"),
+          "InheritClientConfig"         => _("Inherit client config"),
+          "sambaKickoffTime"            => _("Account expires"),
+          "enforcePasswordChange"       => _("Enforce password change"),
+          "cannotChangePassword"        => _("Disallow password change") ,
+          "noPasswordRequired"          => _("Login from windows client requires no password"),
+          "passwordNeverExpires"        => _("Password never expires"),
+          "temporaryDisabled"           => _("Lock samba account"),
 
-            "sambaLogonHours"             => _("Logon hours") ,
-            "sambaUserWorkstations"       => _("Allow connection from")
-          )
-        );
+          "sambaLogonHours"             => _("Logon hours") ,
+          "sambaUserWorkstations"       => _("Allow connection from")
+        )
+      );
     }
-
-    function enable_multiple_support()
-    {
-        plugin::enable_multiple_support();
-        $this->multiple_support_active = TRUE;
-    }
-
-    function multiple_save_object()
-    {
-        if (isset($_POST['sambaTab'])){
-            $this->save_object();
-            plugin::multiple_save_object();
-            foreach(array("allow_pwchange","tslogin","CtxWFHomeDir","CtxWFHomeDirDrive","CtxWFProfilePath",
-                        "inherit","CtxWorkDirectory","CtxInitialProgram","CtxMaxConnectionTimeF",
-                        "CtxMaxConnectionTime","CtxMaxDisconnectionTimeF",
-                        "CtxMaxDisconnectionTime","CtxMaxIdleTimeF","CtxMaxIdleTime","connectclientdrives",
-                        "onnectclientprinters","defaultprinter","shadow","brokenconn",
-                        "reconn","connectclientprinters","SetSambaLogonHours","workstation_list",
-                        "enforcePasswordChange", "passwordNeverExpires", "noPasswordRequired",
-                        "temporaryDisabled","cannotChangePassword","sambaKickoffTime"
-                        ) as $attr){
-                if(isset($_POST["use_".$attr]) || isset($_POST["use_flag_".$attr]) ){
-                    $this->multi_boxes[] = $attr;
-                }
-            }
-        }
-    }
-
-
-    function multiple_check()
-    {
-        $message = plugin::multiple_check();
-
-        /* Strings */
-        foreach (array( "sambaHomePath" => _("Home directory"),
-                    "sambaProfilePath" => _("Profile path")) as $key => $val){
-            if (in_array($key,$this->multi_boxes) && !$this->mungedObject->is_samba_path($this->$key)){
-                $message[]= msgPool::invalid($val);
-            }
-        }
-
-        /* Numeric values */
-        foreach (array( "CtxMaxConnectionTime"    => _("Connection"),
-                    "CtxMaxDisconnectionTime" => _("Disconnection"),
-                    "CtxMaxIdleTime"          => _("IDLE")) as $key => $val){
-            if (in_array($key,$this->multi_boxes) &&
-                    isset($this->mungedObject->ctx[$key]) &&
-                    !tests::is_id($this->mungedObject->ctx[$key]) && $val != 0){
-                $message[]=msgPool::invalid($val);
-            }
-        }
-
-        /* Too many workstations? Windows usrmgr only supports eight */
-        if (substr_count($this->sambaUserWorkstations, ",") >= 8){
-            $message[]= _("The windows user manager only allows eight clients. You've specified more than eight.");
-        }
-
-
-        if(in_array("sambaKickoffTime", $this->multi_boxes) && $this->flag_sambaKickoffTime){
-            if(!preg_match("/^[0-3][0-9]\.[0-1][0-9]\.([0-9]){4}$/",$this->sambaKickoffTime)){
-                $message[] = msgPool::invalid(_("Account expires after"));
-            }elseif(!strtotime($this->sambaKickoffTime) || strtotime($this->sambaKickoffTime) >= 2147483647){
-                $message[] = msgPool::invalid(_("Account expires after"));
-            }
-        }
-        return($message);
-    }
-
-
-    function get_multi_init_values()
-    {
-        $ret = plugin::get_multi_init_values();
-
-        /* Parse given sambaUserWorkstations into array
-         *  to allow "init_multiple_support()" to detect multiple used workstations.
-         *  Those workstations will be displayed in light grey.
-         */
-        $tmp2 = array("count" => 0);
-        $tmp = explode(",", $this->sambaUserWorkstations);
-        foreach($tmp as $station){
-            $station = trim($station);
-            if(!empty($station)){
-                $tmp2[] = $station;
-                $tmp2['count'] ++;
-            }
-        }
-        $ret['sambaUserWorkstations'] = $tmp2;
-        return($ret);
-    }
-
-
-
-    function init_multiple_support($attrs,$all)
-    {
-        plugin::init_multiple_support($attrs,$all);
-
-        $this->multiple_sambaUserWorkstations = array();
-        if(isset($all['sambaUserWorkstations'])){
-            for($i = 0 ; $i < $all['sambaUserWorkstations']['count'] ; $i++){
-                $station = trim($all['sambaUserWorkstations'][$i]);
-                $this->multiple_sambaUserWorkstations[$station] = array("Name" => $station, "UsedByAllUsers" => FALSE);
-            }
-        }
-        if(isset($attrs['sambaUserWorkstations'])){
-            for($i = 0 ; $i < $attrs['sambaUserWorkstations']['count'] ; $i++){
-                $station = trim($attrs['sambaUserWorkstations'][$i]);
-                $this->multiple_sambaUserWorkstations[$station] = array("Name" => $station, "UsedByAllUsers" => TRUE);
-            }
-        }
-
-        // Set kickOffTime to date
-        if(isset($attrs['sambaKickoffTime'][0])){
-            $this->sambaKickoffTime = date("d.m.Y", $this->sambaKickoffTime);
-            $this->flag_sambaKickoffTime = TRUE;
-        }
-    }
-
-    function multiple_execute()
-    {
-        return($this->execute());
-    }
-
-    function get_multi_edit_values()
-    {
-        $ret = plugin::get_multi_edit_values();
-
-        /* Terminal Server  */
-        if(in_array("tslogin",$this->multi_boxes)){
-            $ret['tslogin'] = $this->mungedObject->getTsLogin();
-        }
-        if(in_array("CtxWFHomeDirDrive",$this->multi_boxes)){
-            $ret['CtxWFHomeDirDrive'] = $this->mungedObject->ctx['CtxWFHomeDirDrive'];
-        }
-        if(in_array("CtxWFHomeDir",$this->multi_boxes)){
-            $ret['CtxWFHomeDir'] = $this->mungedObject->ctx['CtxWFHomeDir'];
-        }
-        if(in_array("CtxWFProfilePath",$this->multi_boxes)){
-            $ret['CtxWFProfilePath'] = $this->mungedObject->ctx['CtxWFProfilePath'];
-        }
-
-        if(in_array("inherit",$this->multi_boxes)){
-            $ret['inherit'] = $this->mungedObject->getInheritMode();
-        }
-        if(in_array("CtxInitialProgram",$this->multi_boxes)){
-            $ret['CtxInitialProgram'] = $this->mungedObject->ctx['CtxInitialProgram'];
-        }
-        if(in_array("CtxWorkDirectory",$this->multi_boxes)){
-            $ret['CtxWorkDirectory'] = $this->mungedObject->ctx['CtxWorkDirectory'];
-        }
-
-        /* Time Limits. Be careful here, there are some negations  */
-        if(in_array("CtxMaxConnectionTimeF",$this->multi_boxes)){
-            $ret["CtxMaxConnectionTimeF"]   =  !$this->mungedObject->getCtxMaxConnectionTimeF();
-            if(!$ret["CtxMaxConnectionTimeF"]){
-                $ret["CtxMaxConnectionTime"]   =  $this->mungedObject->ctx['CtxMaxConnectionTime'];
-            }
-        }
-        if(in_array("CtxMaxDisconnectionTimeF",$this->multi_boxes)){
-            $ret["CtxMaxDisconnectionTimeF"]=  !$this->mungedObject->getCtxMaxDisconnectionTimeF();
-            if(!$ret["CtxMaxDisconnectionTimeF"]){
-                $ret["CtxMaxDisconnectionTime"]=  $this->mungedObject->ctx['CtxMaxDisconnectionTime'];
-            }
-        }
-        if(in_array("CtxMaxIdleTimeF",$this->multi_boxes)){
-            $ret["CtxMaxIdleTimeF"]         =  !$this->mungedObject->getCtxMaxIdleTimeF();
-            if(!$ret["CtxMaxIdleTimeF"]){
-                $ret["CtxMaxIdleTime"]         =  $this->mungedObject->ctx['CtxMaxIdleTime'];
-            }
-        }
-
-        /* Client Devices */
-        if(in_array("connectclientdrives",$this->multi_boxes)){
-            $ret["connectclientdrives"]     =  $this->mungedObject->getConnectClientDrives();
-        }
-        if(in_array("connectclientprinters",$this->multi_boxes)){
-            $ret["connectclientprinters"]   =  $this->mungedObject->getConnectClientPrinters();
-        }
-        if(in_array("defaultprinter",$this->multi_boxes)){
-            $ret["defaultprinter"]          =  $this->mungedObject->getDefaultPrinter();
-        }
-
-        /* Misc */
-        if(in_array("shadow",$this->multi_boxes)){
-            $ret["shadow"]    =$this->mungedObject->getShadow();
-        }
-        if(in_array("brokenconn",$this->multi_boxes)){
-            $ret["brokenconn"]=$this->mungedObject->getBrokenConn();
-        }
-        if(in_array("reconn",$this->multi_boxes)){
-            $ret["reconn"]    =$this->mungedObject->getReConn();
-        }
-
-        // Handle Flags.
-        foreach(array("flag_enforcePasswordChange", "flag_passwordNeverExpires", "flag_noPasswordRequired",
-                    "flag_temporaryDisabled","flag_cannotChangePassword","flag_sambaKickoffTime") as $attr){
-            $ret[$attr] = $this->$attr;
-        }
-
-        if(in_array("SetSambaLogonHours",$this->multi_boxes)){
-            $ret['sambaLogonHours'] = $this->sambaLogonHours;
-        }
-
-        if(in_array("workstation_list",$this->multi_boxes)){
-            $ret['multiple_sambaUserWorkstations'] = $this->multiple_sambaUserWorkstations;
-        }
-
-        return($ret);
-    }
-
-    function set_multi_edit_values($values)
-    {
-        plugin::set_multi_edit_values($values);
-
-        /* Prepare current workstation settings to be merged
-         *  with multiple edit settings.
-         */
-        if(isset($values['multiple_sambaUserWorkstations'])){
-            $cur_ws = array();
-            $m_ws = $values['multiple_sambaUserWorkstations'];
-
-            /* Prepare current settings to be merged */
-            if(isset($this->sambaUserWorkstations)){
-                $ttmp = explode(",",$this->sambaUserWorkstations);
-                foreach($ttmp as $station){
-                    $station = trim($station);
-                    if(!empty($station)){
-                        $cur_ws[$station] = array("Name" => $station, "UsedByAllUsers" => TRUE);
-                    }
-                }
-            }
-
-            /* Unset removed workstations */
-            foreach($cur_ws as $cur_name => $cur_station){
-                if(!isset($m_ws[$cur_name])){
-                    unset($cur_ws[$cur_name]);
-                }
-            }
-
-            /* Add all added workstations */
-            foreach($m_ws as $name => $station){
-                if($station['UsedByAllUsers']){
-                    $cur_ws[$name] = $station;
-                }
-            }
-
-            $this->sambaUserWorkstations = "";
-            foreach($cur_ws as $name => $ws){
-                $this->sambaUserWorkstations .= $name.",";
-            }
-            $this->sambaUserWorkstations=preg_replace("/,$/","",$this->sambaUserWorkstations);
-        }
-
-        /* Enable disabled terminal login, this is inverted somehow */
-        if(isset($values['tslogin']))   $this->mungedObject->setTsLogin(!$values['tslogin']);
-
-        /* Imherit client configuration */
-        if(isset($values['inherit']))   $this->mungedObject->setInheritMode($values['inherit']);
-
-        /* Get all ctx values posted */
-        $ctx = array("CtxWFHomeDirDrive","CtxWFHomeDir","CtxWFProfilePath","CtxInitialProgram","CtxWorkDirectory",
-                "CtxMaxConnectionTime","CtxMaxDisconnectionTime","CtxMaxIdleTime");
-        foreach($ctx as $attr){
-            if(isset($values[$attr])){
-                $this->mungedObject->ctx[$attr] = $values[$attr] ;
-            }
-        }
-
-        if(isset($values['CtxMaxConnectionTimeF']))   $this->mungedObject->setCtxMaxConnectionTimeF($values['CtxMaxConnectionTimeF']);
-        if(isset($values['CtxMaxDisconnectionTimeF']))$this->mungedObject->setCtxMaxDisconnectionTimeF($values['CtxMaxDisconnectionTimeF']);
-        if(isset($values['CtxMaxIdleTimeF']))         $this->mungedObject->setCtxMaxIdleTimeF($values['CtxMaxIdleTimeF']);
-
-        if(isset($values['connectclientdrives']))   $this->mungedObject->setConnectClientDrives($values['connectclientdrives']);
-        if(isset($values['connectclientprinters'])) $this->mungedObject->setConnectClientPrinters($values['connectclientprinters']);
-        if(isset($values['defaultprinter']))        $this->mungedObject->setDefaultPrinter($values['defaultprinter']);
-
-        if(isset($values['shadow']))        $this->mungedObject->setShadow($values['shadow'],$values['shadow']);
-        if(isset($values['brokenconn']))    $this->mungedObject->setBrokenConn($values['brokenconn'],$values['brokenconn']);
-        if(isset($values['reconn']))        $this->mungedObject->setReConn($values['reconn'],$values['reconn']);
-    }
-
-
-    function PrepareForCopyPaste($source)
-    {
-        plugin::PrepareForCopyPaste($source);
-
-        /* Set a new SID */
-        $this->sambaSID = "";
-
-        /* Fill mungedDial field */
-        if (isset($source['sambaMungedDial'])){
-            $this->mungedObject->load($source['sambaMungedDial'][0]);
-        }
-
-        // Load flags from source.
-        $this->loadFlagsFromSource($source);
-    }
-
 }
 
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>
