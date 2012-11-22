@@ -48,10 +48,17 @@ class argonautDNSConfig extends simpleService
         'attrs' => array (
           new StringAttribute (
             _('Bind directory'),
-            _('The directory in which zone files must be created'),
+            _('The directory in which conf file must be created'),
             'argonautLdap2zoneBindDir',
-            FALSE,
-            "/etc/bind"
+            TRUE,
+            '/etc/bind'
+          ),
+          new StringAttribute (
+            _('Bind cache directory'),
+            _('The directory in which zone files must be created'),
+            'argonautLdap2zoneBindCacheDir',
+            TRUE,
+            '/var/cache/bind'
           ),
           new BooleanAttribute (
             _('Allow notify'),
