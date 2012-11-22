@@ -1190,6 +1190,7 @@ class systemManagement extends management
         "goImapServer"        => "imap",
         "goTerminalServer"    => "terminal",
         "apacheConfig"        => "apache",
+        "sympaServer"         => "sympa",
         "goMailServer"        => "smtp"
         );
     while($attrs = $ldap->fetch()){
