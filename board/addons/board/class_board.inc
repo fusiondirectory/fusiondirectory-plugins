@@ -31,7 +31,7 @@ class FakeAttribute extends Attribute
     $this->var_name = $var;
   }
 
-  function renderAttribute(&$attributes)
+  function renderAttribute(&$attributes, $readOnly)
   {
     $var = $this->var_name;
     $attributes[$this->getLdapName()] = $this->plugin->$var;

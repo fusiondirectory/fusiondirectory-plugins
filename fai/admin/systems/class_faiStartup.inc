@@ -95,7 +95,7 @@ class faiStartup extends simplePlugin
   /* attribute list for save action */
   var $objectclasses        = array("FAIobject");
 
-  var $member_of_ogroup = FALSE;
+  var $inheritance = array("gotoWorkstationTemplate" => "member");
   var $sdaemon_available;
 
   /*!
@@ -153,44 +153,6 @@ class faiStartup extends simplePlugin
     $this->update_fai_cache();
 
     parent::__construct($config, $dn, $object);
-
-    /* Check object group membership */
-    if (!isset($this->parent->by_object['ogroup'])) {
-      $ldap = $this->config->get_ldap_link();
-      $ldap->cd($this->config->current['BASE']);
-      $ldap->search(
-        "(&(objectClass=gotoWorkstationTemplate)(objectClass=FAIobject)(FAIclass=*)(FAIdebianMirror=*)(member=".LDAP::prepare4filter($this->dn)."))",
-        array("FAIclass","FAIdebianMirror","gotoBootKernel","gotoKernelParameters")
-      );
-      if ($ldap->count() == 1) {
-        $this->member_of_ogroup = TRUE;
-        $attrs = $ldap->fetch();
-        $this->o_group_attrs = $attrs;
-      }
-    }
-  }
-
-  function execute()
-  {
-    $smarty = get_smarty();
-    $display = parent::execute();
-    if (!$this->displayPlugin && $this->member_of_ogroup) {
-      $FAIprofile = $FAIrelease = NULL;
-      sscanf($this->o_group_attrs['FAIclass'][0], '%[^ :] :%[^ :]', $FAIprofile, $FAIrelease);
-      $smarty->assign("profile", $FAIprofile);
-      $smarty->assign("release", $FAIrelease);
-
-      $smarty->assign("mirror", $this->o_group_attrs['FAIdebianMirror'][0]);
-
-      $kernel = (isset($this->o_group_attrs['gotoBootKernel'][0])?$this->o_group_attrs['gotoBootKernel'][0]:"");
-      $smarty->assign("kernel", $kernel);
-
-      $kernelParams = (isset($this->o_group_attrs['gotoKernelParameters'][0])?$this->o_group_attrs['gotoKernelParameters'][0]:"");
-      $smarty->assign("kernelParams", $kernelParams);
-
-      $display .= $smarty->fetch(get_template_path('faistartup_inheritance.tpl', TRUE, dirname(__FILE__)));
-    }
-    return $display;
   }
 
   /* Updates release dns

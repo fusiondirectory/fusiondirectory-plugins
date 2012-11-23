@@ -66,7 +66,7 @@ class NetworkSettingsAttribute extends Attribute
     }
   }
 
-  function renderAttribute(&$attributes)
+  function renderAttribute(&$attributes, $readOnly)
   {
     if ($this->display === NULL) {
       $this->display = $this->netConfigDNS->execute();
