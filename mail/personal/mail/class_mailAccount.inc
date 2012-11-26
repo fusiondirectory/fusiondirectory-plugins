@@ -46,11 +46,11 @@ class mailFlagsAttribute extends StringAttribute
   function setValue ($value)
   {
     parent::setValue($value);
-    $this->plugin->attributesInfo['section1']['attrs']['Flags1']->setValue(preg_match('/R/',$this->value));
-    $this->plugin->attributesInfo['section1']['attrs']['Flags2']->setValue(preg_match('/S/',$this->value));
-    $this->plugin->attributesInfo['section1']['attrs']['Flags3']->setValue(preg_match('/V/',$this->value));
-    $this->plugin->attributesInfo['section1']['attrs']['Flags4']->setValue(preg_match('/I/',$this->value));
-    $this->plugin->attributesInfo['section2']['attrs']['Flags5']->setValue(preg_match('/L/',$this->value));
+    $this->plugin->attributesInfo['section1']['attrs']['Flags1']->setValue(preg_match('/R/', $this->value));
+    $this->plugin->attributesInfo['section1']['attrs']['Flags2']->setValue(preg_match('/S/', $this->value));
+    $this->plugin->attributesInfo['section1']['attrs']['Flags3']->setValue(preg_match('/V/', $this->value));
+    $this->plugin->attributesInfo['section1']['attrs']['Flags4']->setValue(preg_match('/I/', $this->value));
+    $this->plugin->attributesInfo['section2']['attrs']['Flags5']->setValue(preg_match('/L/', $this->value));
   }
 
   function getValue()
@@ -66,14 +66,6 @@ class mailFlagsAttribute extends StringAttribute
 
 class mailAccount extends simplePlugin
 {
-
-/*
-  var $attributes= array(
-      "mail", "gosaMailServer","gosaMailQuota", "gosaMailMaxSize","gosaMailForwardingAddress",
-      "gosaMailDeliveryMode", "gosaSpamSortLevel", "gosaSpamMailbox","gosaMailAlternateAddress",
-      "gosaVacationStart","gosaVacationStop", "gosaVacationMessage", "gosaMailAlternateAddress",
-      "gosaMailForwardingAddress");
-*/
   var $displayHeader    = TRUE;
   var $objectclasses    = array("gosaMailAccount");
 
@@ -102,23 +94,17 @@ class mailAccount extends simplePlugin
         'icon' => 'images/rightarrow.png',
         'attrs' => array (
           new StringAttribute (
-            _('Primary address'),
-            _('Primary mail address'),
-            'mail',
-            TRUE
+            _('Primary address'), _('Primary mail address'),
+            'mail', TRUE
           ),
           new SelectAttribute (
-            _('Server'),
-            _('Specify the mail server where the user will be hosted on'),
-            'gosaMailServer',
-            FALSE,
+            _('Server'), _('Specify the mail server where the user will be hosted on'),
+            'gosaMailServer', FALSE,
             array()
           ),
           new IntAttribute (
-            _('Quota usage').'<br />'._('Quota size'),
-            '',
-            'gosaMailQuota',
-            FALSE,
+            _('Quota usage').'<br />'._('Quota size'), '',
+            'gosaMailQuota', FALSE,
             FALSE,
             FALSE,
             12
@@ -138,23 +124,24 @@ class mailAccount extends simplePlugin
           new BooleanAttribute (
             _('No delivery to own mailbox'),
             _('Select if you want to forward mails without getting own copies of them'),
-            'Flags1'
+            'Flags1', FALSE, FALSE, '',
+            'R', ''
           ),
           new BooleanAttribute (
             _('Activate vacation message'),
             _('Select to automatically response with the vacation message defined below'),
-            'Flags2'
+            'Flags2', FALSE, FALSE, '',
+            'S', ''
           ),
           new DateAttribute (
-          _('from'),
-          '',
-          'gosaVacationStart',
-          FALSE,
-          'U'
+            _('from'),
+            '',
+            'gosaVacationStart',
+            FALSE,
+            'U'
           ),
           new DateAttribute (
-          _('till'),
-          '',
+          _('till'), '',
           'gosaVacationStop',
           FALSE,
           'U'
@@ -164,36 +151,35 @@ class mailAccount extends simplePlugin
             'gosaVacationMessage'
           ),
           new BooleanAttribute (
-            _('Move mails tagged with spam level greater than'),
-            '',
-            'Flags3'
+            _('Move mails tagged with spam level greater than'), '',
+            'Flags3', FALSE, FALSE, '',
+            'V', ''
           ),
           new SelectAttribute (
-            _('Choose spam level - smaller values are more sensitive'),'','gosaSpamSortLevel',FALSE,
-            array(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20),4
+            _('Choose spam level - smaller values are more sensitive'), '',
+            'gosaSpamSortLevel', FALSE,
+            array(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20), 4
           ),
           new SelectAttribute (
-            _('to folder'),'','gosaSpamMailbox',FALSE,
-            array('INBOX'),'INBOX'
+            _('to folder'), '', 'gosaSpamMailbox', FALSE,
+            array('INBOX'), 'INBOX'
           ),
           new BooleanAttribute (
-            _('Move mails tagged with spam level greater than'),
-            '',
-            'Flags4'
+            _('Move mails tagged with spam level greater than'), '',
+            'Flags4', FALSE, FALSE, '',
+            'I', ''
           ),
           new IntAttribute (
-            _('MB'),
-            '',
+            _('MB'), '',
             'gosaMailMaxSize',
             FALSE, FALSE, FALSE,
             50
           ),
           new MailAttribute (
-              _('Forward messages to'),
-              _(''),
+              _('Forward messages to'), _(''),
               'gosaMailForwardingAddress'
           ),
-          new mailFlagsAttribute ("","","gosaMailDeliveryMode")
+          new mailFlagsAttribute ('', '', 'gosaMailDeliveryMode')
         )
       ),
       'section2' => array (
@@ -203,7 +189,8 @@ class mailAccount extends simplePlugin
             new BooleanAttribute (
             _('User is only allowed to send and receive local mails'),
             _('Select if user can only send and receive inside his own domain'),
-            'Flags5'
+            'Flags5', FALSE, FALSE, '',
+            'L', ''
           )
         )
       )
@@ -277,7 +264,7 @@ class mailAccount extends simplePlugin
 
     $ldap = $this->config->get_ldap_link();
     $ldap->cd($this->config->current['BASE']);
-    $ldap->search("(objectClass=goMailServer)",array('cn'));
+    $ldap->search("(objectClass=goMailServer)", array('cn'));
     $server = array();
     while ($attrs = $ldap->fetch()) {
         $server[] = $attrs['cn'][0];
