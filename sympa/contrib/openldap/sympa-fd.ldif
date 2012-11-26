@@ -1,0 +1,13 @@
+dn: cn=sympa-fd,cn=schema,cn=config
+objectClass: olcSchemaConfig
+cn: cn=sympa-fd
+##
+## sympa-fd.schema - Needed by Fusion Directory for managing sympa aliases
+##
+# Attributes
+olcAttributeTypes: ( 1.3.6.1.4.1.38414.12.1.1NAME 'sympaServerURL' DESC 'FusionDirectory - The sympa server url' EQUALITY caseIgnoreIA5Match SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 SINGLE-VALUE )
+olcAttributeTypes: ( 1.3.6.1.4.1.38414.12.1.2NAME 'sympaServerUser' DESC 'FusionDirectory - The sympa server user' EQUALITY caseIgnoreIA5Match SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 SINGLE-VALUE )
+olcAttributeTypes: ( 1.3.6.1.4.1.38414.12.1.3NAME 'sympaServerPassword' DESC 'FusionDirectory - The sympa server password' EQUALITY caseIgnoreIA5Match SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 SINGLE-VALUE )
+# Object Class
+olcObjectClasses: ( 1.3.6.1.4.1.38414.12.2.1NAME 'sympaAlias' DESC 'FusionDirectory - Mail alias class' MUST ( cn $ mail $ sympaServerURL ) MAY  ( description ) )
+olcObjectClasses: ( 1.3.6.1.4.1.38414.12.2.2NAME 'sympaServer' SUP top AUXILIARY DESC 'FusionDirectory - Mail alias class' MUST ( sympaServerURL ) MAY ( sympaServerUser $ sympaServerPassword ) )
