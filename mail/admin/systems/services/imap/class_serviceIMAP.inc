@@ -89,39 +89,7 @@ class serviceIMAP extends simpleService {
             _('Port'), _('Port for sieve connect url of the imap server'),
             'goImapSievePort', FALSE,
             0 /*min*/, FALSE /*max*/, 0 /*default*/
-          ),
-          new BooleanAttribute (
-            _('Start IMAP service'), ' ',
-            'cyrusImap', FALSE,
-            FALSE,
-            '',
-            1,
-            0
-         ),
-         new BooleanAttribute (
-           _('Start IMAP SSL service'), ' ',
-           'cyrusImapSSL', FALSE,
-           FALSE,
-           '',
-           1,
-           0
-         ),
-         new BooleanAttribute (
-           _('Start POP3 service'), ' ',
-           'cyrusPop3', FALSE,
-           FALSE,
-           '',
-           1,
-           0
-         ),
-         new BooleanAttribute (
-           _('Start POP3 SSL service'), ' ',
-           'cyrusPop3SSL', FALSE,
-           FALSE,
-           '',
-           1,
-           0
-         )
+          )
         )
       )
     );
