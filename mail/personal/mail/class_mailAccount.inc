@@ -46,20 +46,21 @@ class mailFlagsAttribute extends StringAttribute
   function setValue ($value)
   {
     parent::setValue($value);
-    $this->plugin->attributesInfo['section1']['attrs']['Flags1']->setValue(preg_match('/R/', $this->value));
-    $this->plugin->attributesInfo['section1']['attrs']['Flags2']->setValue(preg_match('/S/', $this->value));
-    $this->plugin->attributesInfo['section1']['attrs']['Flags3']->setValue(preg_match('/V/', $this->value));
-    $this->plugin->attributesInfo['section1']['attrs']['Flags4']->setValue(preg_match('/I/', $this->value));
-    $this->plugin->attributesInfo['section2']['attrs']['Flags5']->setValue(preg_match('/L/', $this->value));
+    $this->plugin->attributesInfo['options1']['attrs']['Flags1']->setValue(preg_match('/R/', $this->value));
+    $this->plugin->attributesInfo['options1']['attrs']['Flags2']->setValue(preg_match('/S/', $this->value));
+    $this->plugin->attributesInfo['options2']['attrs']['Flags3']->setValue(preg_match('/V/', $this->value));
+    $this->plugin->attributesInfo['options2']['attrs']['Flags4']->setValue(preg_match('/I/', $this->value));
+    $this->plugin->attributesInfo['advanced']['attrs']['Flags5']->setValue(preg_match('/L/', $this->value));
   }
 
   function getValue()
   {
-    return '['.$this->plugin->attributesInfo['section1']['attrs']['Flags1']->computeLdapValue().
-      $this->plugin->attributesInfo['section1']['attrs']['Flags2']->computeLdapValue().
-      $this->plugin->attributesInfo['section1']['attrs']['Flags3']->computeLdapValue().
-      $this->plugin->attributesInfo['section1']['attrs']['Flags4']->computeLdapValue().
-      $this->plugin->attributesInfo['section2']['attrs']['Flags5']->computeLdapValue().']';
+    return '['.
+      $this->plugin->attributesInfo['options1']['attrs']['Flags1']->computeLdapValue().
+      $this->plugin->attributesInfo['options1']['attrs']['Flags2']->computeLdapValue().
+      $this->plugin->attributesInfo['options2']['attrs']['Flags3']->computeLdapValue().
+      $this->plugin->attributesInfo['options2']['attrs']['Flags4']->computeLdapValue().
+      $this->plugin->attributesInfo['advanced']['attrs']['Flags5']->computeLdapValue().']';
   }
 }
 
@@ -89,7 +90,7 @@ class mailAccount extends simplePlugin
   static function getAttributesInfo ()
   {
     return array (
-      'section1' => array (
+      'main' => array (
         'name'  => _('Generic'),
         'icon' => 'images/rightarrow.png',
         'attrs' => array (
@@ -108,19 +109,25 @@ class mailAccount extends simplePlugin
             FALSE,
             FALSE,
             12
-          ),
+          )
+        )
+      ),
+      'alternative_address' => array(
+        'name'  => _('Alternative addresses'),
+        'icon'  => get_template_path('plugins/mail/images/alternatemail.png'),
+        'attrs' => array(
           new SetAttribute (
             new MailAttribute (
-              '<img src=plugins/mail/images/alternatemail.png /> '._('Alternative addresses'),
+              _('Alternative addresses'),
               _('List of alternative mail addresses'),
               'gosaMailAlternateAddress'
             )
-          ),
-          new BooleanAttribute (
-            _('Use custom sieve script').' <b>('._('disables all Mail options!').')<b>',
-            '',
-            'sieve'
-          ),
+          )
+        )
+      ),
+      'options1' => array(
+        'name' => _('Vacation message'),
+        'attrs' => array(
           new BooleanAttribute (
             _('No delivery to own mailbox'),
             _('Select if you want to forward mails without getting own copies of them'),
@@ -134,58 +141,68 @@ class mailAccount extends simplePlugin
             'S', ''
           ),
           new DateAttribute (
-            _('from'),
-            '',
-            'gosaVacationStart',
-            FALSE,
+            _('from'), '',
+            'gosaVacationStart', FALSE,
             'U'
           ),
           new DateAttribute (
-          _('till'), '',
-          'gosaVacationStop',
-          FALSE,
-          'U'
+            _('till'), '',
+            'gosaVacationStop', FALSE,
+            'U'
           ),
           new TextAreaAttribute (
             _('Vacation message'), '',
             'gosaVacationMessage'
           ),
+        )
+      ),
+      'options2' => array(
+        'name' => _('Spam options'),
+        'attrs' => array(
           new BooleanAttribute (
-            _('Move mails tagged with spam level greater than'), '',
+            _('Move mails depending on spam level'), '',
             'Flags3', FALSE, FALSE, '',
             'V', ''
           ),
           new SelectAttribute (
-            _('Choose spam level - smaller values are more sensitive'), '',
+            _('Minimum spam level'), _('Spam level above which a mail will be moved'),
             'gosaSpamSortLevel', FALSE,
             array(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20), 4
           ),
           new SelectAttribute (
-            _('to folder'), '', 'gosaSpamMailbox', FALSE,
-            array('INBOX'), 'INBOX'
+            _('Move spam to folder'), _('Folder in which spam will be moved'),
+            'gosaSpamMailbox', FALSE,
+            array('INBOX')
           ),
           new BooleanAttribute (
-            _('Move mails tagged with spam level greater than'), '',
+            _('Reject mail depending on their size'), '',
             'Flags4', FALSE, FALSE, '',
             'I', ''
           ),
           new IntAttribute (
-            _('MB'), '',
+            _('Minimum size in MB to reject a mail'), '',
             'gosaMailMaxSize',
             FALSE, FALSE, FALSE,
             50
           ),
-          new MailAttribute (
-              _('Forward messages to'), _(''),
-              'gosaMailForwardingAddress'
+          new SetAttribute(
+            new MailAttribute (
+                _('Forward messages to'), _(''),
+                'gosaMailForwardingAddress'
+            )
           ),
           new mailFlagsAttribute ('', '', 'gosaMailDeliveryMode')
         )
       ),
-      'section2' => array (
+      'advanced' => array (
          'name' => _('Advanced mail options'),
          'icon' => 'images/false.png',
          'attrs' => array (
+          new BooleanAttribute (
+            _('Use custom sieve script').' <b>('._('disables all Mail options!').')<b>',
+            '',
+            'sieve'
+          ),
             new BooleanAttribute (
             _('User is only allowed to send and receive local mails'),
             _('Select if user can only send and receive inside his own domain'),
@@ -206,39 +223,39 @@ class mailAccount extends simplePlugin
   function __construct(&$config, $dn = NULL, $object = NULL)
   {
     parent::__construct($config, $dn, $object);
-    $this->attributesInfo['section1']['attrs']['Flags1']->setInLdap(FALSE);
-    $this->attributesInfo['section1']['attrs']['Flags2']->setInLdap(FALSE);
-    $this->attributesInfo['section1']['attrs']['Flags3']->setInLdap(FALSE);
-    $this->attributesInfo['section1']['attrs']['Flags4']->setInLdap(FALSE);
-    $this->attributesInfo['section2']['attrs']['Flags5']->setInLdap(FALSE);
-    $this->attributesInfo['section1']['attrs']['sieve']->setInLdap(FALSE);
-    $this->attributesInfo['section1']['attrs']['Flags3']->setManagedAttributes (
+    $this->attributesInfo['options1']['attrs']['Flags1']->setInLdap(FALSE);
+    $this->attributesInfo['options1']['attrs']['Flags2']->setInLdap(FALSE);
+    $this->attributesInfo['options2']['attrs']['Flags3']->setInLdap(FALSE);
+    $this->attributesInfo['options2']['attrs']['Flags4']->setInLdap(FALSE);
+    $this->attributesInfo['advanced']['attrs']['Flags5']->setInLdap(FALSE);
+    $this->attributesInfo['advanced']['attrs']['sieve']->setInLdap(FALSE);
+    $this->attributesInfo['options2']['attrs']['Flags3']->setManagedAttributes (
       array (
         'erase' => array (
           FALSE => array (
-            'section1' => array(
+            'options2' => array(
               'gosaSpamMailbox','gosaSpamSortLevel'
             )
           )
         )
       )
     );
-    $this->attributesInfo['section1']['attrs']['Flags4']->setManagedAttributes (
+    $this->attributesInfo['options2']['attrs']['Flags4']->setManagedAttributes (
       array (
         'erase' => array (
           FALSE => array (
-            'section1' => array(
+            'options2' => array(
               'gosaMailMaxSize'
             )
           )
         )
       )
     );
-    $this->attributesInfo['section1']['attrs']['Flags2']->setManagedAttributes (
+    $this->attributesInfo['options1']['attrs']['Flags2']->setManagedAttributes (
       array (
         'erase' => array (
           FALSE => array (
-            'section1' => array(
+            'options1' => array(
               'gosaVacationStart','gosaVacationStop'
             )
           )
@@ -246,15 +263,19 @@ class mailAccount extends simplePlugin
       )
     );
 
-    $this->attributesInfo['section1']['attrs']['sieve']->setManagedAttributes (
+    $this->attributesInfo['advanced']['attrs']['sieve']->setManagedAttributes (
       array (
         'erase' => array (
           TRUE => array (
-            'section1' => array(
-              'gosaVacationStart','gosaVacationStop','gosaMailMaxSize','gosaSpamMailbox','gosaSpamSortLevel','gosaVacationMessage',
-              'Flags1','Flags2','Flags3','Flags4'
+            'options1' => array(
+              'Flags1','Flags2',
+              'gosaVacationStart','gosaVacationStop','gosaVacationMessage'
             ),
-            'section2' => array (
+            'options2' => array(
+              'Flags3','Flags4','gosaMailMaxSize',
+              'gosaSpamMailbox','gosaSpamSortLevel'
+            ),
+            'advanced' => array (
               'Flags5'
             )
           )
@@ -269,7 +290,7 @@ class mailAccount extends simplePlugin
     while ($attrs = $ldap->fetch()) {
         $server[] = $attrs['cn'][0];
     }
-    $this->attributesInfo['section1']['attrs']['gosaMailServer']->setChoices($server);
+    $this->attributesInfo['main']['attrs']['gosaMailServer']->setChoices($server);
   }
 
 }
