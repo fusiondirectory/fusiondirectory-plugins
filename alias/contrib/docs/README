@@ -1,0 +1,29 @@
+What does this plugin ?
+************************
+
+It manage mail alias based on LDAP and used by postfix 
+
+it use a special branch in LDAP : ou=aliases, you could specify it inside fusiondirectory.conf
+
+aliasRDN="ou=aliases"
+
+
+A special LDAP schema has been created. It just add a date when to destroy this alias,
+useful when a lot of peoples go away but need to be joined by officiel email address 
+and a description
+
+
+How to convert existing aliases in LDAP
+
+1/ export LDAP alias branch to alias.ldif file
+2/ run " sed -i s/nisMailAlias/nisMailAlias\\nobjectClass\:\ mailAliases/g /tmp/alias.ldif"
+3/ import LDAP file
+
+Why aliaseExpirationDate attribute ?
+this a features useful if we want to keep some aliases during a fix duration (avoid to have several zombie aliases)
+
+
+Thanks 
+
+Antoine Gallavardin
+antoine.gallavardin@free.fr
