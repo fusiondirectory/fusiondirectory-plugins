@@ -106,9 +106,7 @@ class mailAccount extends simplePlugin
           new IntAttribute (
             _('Quota usage').'<br />'._('Quota size'), '',
             'gosaMailQuota', FALSE,
-            FALSE,
-            FALSE,
-            12
+            0, FALSE
           )
         )
       ),
