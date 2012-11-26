@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<filterdef>
+  <definition>
+    <category>dsa</category>
+    <template>dsa-filter.tpl</template>
+    <initial>true</initial>
+  </definition>
+
+  <search>
+    <query>
+      <backend>LDAP</backend>
+      <filter>(&amp;(objectClass=simpleSecurityObject)$NAME)</filter>
+      <attribute>dn</attribute>
+      <attribute>cn</attribute>
+      <attribute>mail</attribute>
+      <attribute>description</attribute>
+    </query>
+    <scope>auto</scope>
+  </search>
+
+  <element>
+    <type>textfield</type>
+    <tag>NAME</tag>
+    <size>20</size>
+    <maxlength>60</maxlength>
+    <default></default>
+    <unset></unset>
+    <set>(|(cn=*$*)(description=*$*))</set>
+    <alphabet>true</alphabet>
+    <autocomplete>
+      <backend>LDAP</backend>
+      <filter>(&amp;(objectClass=simpleSecurityObject)(|(cn=*$NAME*)(description=*$NAME*)))</filter>
+      <attribute>cn</attribute>
+      <attribute>mail</attribute>
+      <attribute>description</attribute>
+      <frequency>0.5</frequency>
+      <characters>3</characters>
+    </autocomplete>
+  </element>
+
+</filterdef>
