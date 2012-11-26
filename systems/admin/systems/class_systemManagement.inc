@@ -712,7 +712,7 @@ class systemManagement extends management
 
             // Set gotoMode to active if there was an ogroup selected.
             $found = false;
-            foreach(array("workstationGeneric"=>"active","serverGeneric"=>"active","termgeneric"=>"active") as $tab => $value){
+            foreach(array("workstationGeneric"=>"active","serverGeneric"=>"active","terminalGeneric"=>"active") as $tab => $value){
               if(isset($this->tabObject->by_object[$tab]->gotoMode)) {
                 $found = true;
                 $this->tabObject->by_object[$tab]->gotoMode = $value;
@@ -734,7 +734,7 @@ class systemManagement extends management
             }
 
             // Set default system specific attributes
-            foreach (array("workstationGeneric", "termgeneric") as $cls){
+            foreach (array("workstationGeneric", "terminalGeneric") as $cls){
               if (isset($this->tabObject->by_object[$cls])){
                 $this->tabObject->by_object[$cls]->set_everything_to_inherited();
                 @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,
@@ -743,7 +743,7 @@ class systemManagement extends management
             }
 
             // Enable activation
-            foreach (array("serverGeneric", "workstationGeneric", "termgeneric") as $cls){
+            foreach (array("serverGeneric", "workstationGeneric", "terminalGeneric") as $cls){
               if (isset($this->tabObject->by_object[$cls])){
                 $this->tabObject->by_object[$cls]->auto_activate= TRUE;
                 @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,
@@ -1065,11 +1065,11 @@ class systemManagement extends management
 
         "gotoTerminal" => array(
             "ou"          => get_ou('terminalRDN'),
-            "plugClass"   => "termgeneric",
+            "plugClass"   => "terminalGeneric",
             "tabClass"    => "termtabs",
             "sendEvents"  => TRUE,
             "tabDesc"     => "TERMINALTABS",
-            "aclClass"    => "termgeneric",
+            "aclClass"    => "terminalGeneric",
             "aclCategory" => "terminal"),
 
         "gotoPrinter" => array(

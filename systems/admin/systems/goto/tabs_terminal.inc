@@ -39,10 +39,10 @@ class termtabs extends tabs
 
     /* Update reference, transfer variables */
     if (isset($this->by_object['termstartup'])) {
-      $this->by_object['termstartup']->gotoTerminalPath = $this->by_object['termgeneric']->gotoTerminalPath;
+      $this->by_object['termstartup']->gotoTerminalPath = $this->by_object['terminalGeneric']->gotoTerminalPath;
     }
 
-    $baseobject = $this->by_object['termgeneric'];
+    $baseobject = $this->by_object['terminalGeneric'];
     $baseobject->netConfigDNS->cn = $baseobject->cn;
     foreach ($this->by_object as $name => $plug) {
       $this->by_object[$name]->cn = $baseobject->cn;
@@ -54,7 +54,7 @@ class termtabs extends tabs
   {
     /* Check for new 'dn', in order to propagate the
        'dn' to all plugins */
-    $baseobject = $this->by_object['termgeneric'];
+    $baseobject = $this->by_object['terminalGeneric'];
     $this->dn = "cn=".$baseobject->cn.",".get_ou('terminalRDN').$baseobject->base;
     $baseobject->dn = $this->dn;
 

@@ -228,7 +228,7 @@ class printgeneric extends plugin
   function getTypeOfPrinter($baseobject)
   {
     /* Detect type of printer via baseobject */
-    if (is_a($baseobject, 'termgeneric')) {
+    if (is_a($baseobject, 'terminalGeneric')) {
       /* Exclude templates
        */
       $this->cn = $baseobject->cn;
@@ -747,8 +747,8 @@ class printgeneric extends plugin
       if ($this->parent->by_object['workstationGeneric']->cn == "wdefault") {
         return $message;
       }
-    }elseif (isset($this->parent->by_object['termgeneric'])) {
-      if ($this->parent->by_object['termgeneric']->cn == "default") {
+    }elseif (isset($this->parent->by_object['terminalGeneric'])) {
+      if ($this->parent->by_object['terminalGeneric']->cn == "default") {
         return $message;
       }
     }
@@ -828,14 +828,14 @@ class printgeneric extends plugin
       $this->netConfigDNS->ipHostNumber = $this->parent->by_object['workstationGeneric']->netConfigDNS->ipHostNumber;
       $this->netConfigDNS->macAddress = $this->parent->by_object['workstationGeneric']->netConfigDNS->macAddress;
 
-    }elseif (isset($this->parent->by_object['termgeneric'])) {
-      if ($this->parent->by_object['termgeneric']->cn == "default") {
+    }elseif (isset($this->parent->by_object['terminalGeneric'])) {
+      if ($this->parent->by_object['terminalGeneric']->cn == "default") {
         return;
       }
 
       /* Adapt IP & mac from parent object */
-      $this->netConfigDNS->ipHostNumber = $this->parent->by_object['termgeneric']->netConfigDNS->ipHostNumber;
-      $this->netConfigDNS->macAddress = $this->parent->by_object['termgeneric']->netConfigDNS->macAddress;
+      $this->netConfigDNS->ipHostNumber = $this->parent->by_object['terminalGeneric']->netConfigDNS->ipHostNumber;
+      $this->netConfigDNS->macAddress = $this->parent->by_object['terminalGeneric']->netConfigDNS->macAddress;
     }
 
     /* If type is still unknown, the initialisation of this printer failed, abort. */

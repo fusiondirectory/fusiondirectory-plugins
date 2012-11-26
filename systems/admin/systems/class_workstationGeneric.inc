@@ -106,10 +106,18 @@ class NetworkSettingsAttribute extends Attribute
 
 class ActionAttribute extends SelectAttribute
 {
-  function __construct ($label, $description, $ldapName, $required = FALSE)
+  private $isTerminal;
+
+  function __construct ($label, $description, $ldapName, $isTerminal = FALSE)
   {
-    parent::__construct($label, $description, $ldapName, $required);
+    parent::__construct($label, $description, $ldapName, FALSE);
     $this->setInLdap(FALSE);
+    $this->isTerminal = $isTerminal;
+  }
+
+  function setIsTerminal ($bool)
+  {
+    $this->isTerminal = $bool;
   }
 
   function setParent (&$plugin)
@@ -167,16 +175,22 @@ class ActionAttribute extends SelectAttribute
   function updateChoices()
   {
     /* Check if workstation is online */
-    $actions = array( // TODO : remove these action if there is no deployment plugin to use them (FAI, OPSI, …)
-      ''          => '',
-      'reinstall' => _('Reinstall'),
-      'update'    => _('Software update'),
-      'memcheck'  => _('Memory test')
-    );
+    if ($this->isTerminal) {
+      $actions = array('' => '');
+    } else {
+      $actions = array( // TODO : remove these action if there is no deployment plugin to use them (FAI, OPSI, …)
+        ''          => '',
+        'reinstall' => _('Reinstall'),
+        'update'    => _('Software update'),
+        'memcheck'  => _('Memory test')
+      );
+    }
     if ($this->plugin->ping()) {
       $actions['halt']    = _('Switch off');
       $actions['reboot']  = _('Reboot');
-      $actions['rescan']  = _('Rescan hardware');
+      if (!$this->isTerminal) {
+        $actions['rescan']  = _('Rescan hardware');
+      }
     } else {
       $actions['wakeup']  = _('Wake up');
     }
@@ -197,6 +211,8 @@ class workstationGeneric extends simplePlugin
   var $member_of_ogroup     = FALSE;
   var $currently_installing = FALSE;
   var $sdaemon_available    = FALSE;
+
+  var $inheritance = array("gotoWorkstationTemplate" => "member");
 
   var $preInitAttributes = array('network' => array('networkSettings'));
 
@@ -317,12 +333,13 @@ class workstationGeneric extends simplePlugin
 
     parent::__construct($config, $dn, $object);
 
-    if (!isset($this->parent->by_object['ogroup'])) {
-      $ldap = $this->config->get_ldap_link();
-      $ldap->cd($this->config->current['BASE']);
-      $ldap->search("(&(objectClass=gotoWorkstationTemplate)(member=".LDAP::prepare4filter($this->dn)."))", array("cn"));
-      $this->member_of_ogroup = ($ldap->count() >= 1);
-    }
+    //~ if (!isset($this->parent->by_object['ogroup'])) {
+      //~ $ldap = $this->config->get_ldap_link();
+      //~ $ldap->cd($this->config->current['BASE']);
+      //~ $ldap->search("(&(objectClass=gotoWorkstationTemplate)(member=".LDAP::prepare4filter($this->dn)."))", array("cn"));
+      //~ $this->member_of_ogroup = ($ldap->count() >= 1);
+    //~ }
+    $this->member_of_ogroup = $this->member_of_group;
 
     /* Check if this host is currently in installation process*/
     if ($this->sdaemon_available) {

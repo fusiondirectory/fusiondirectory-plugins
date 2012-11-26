@@ -53,7 +53,7 @@ class filterSYSTEMS {
           continue; // We do not need templates anymore, we've ogroups now.
           //$entries[$key]['objectClass'][] = 'FAKE_OC_TerminalTemplate';
         }
-        $pwd_acl = $ui->get_permissions($entry['dn'],'terminal/termgeneric','userPassword');
+        $pwd_acl = $ui->get_permissions($entry['dn'],'terminal/terminalGeneric','userPassword');
         if(preg_match("/w/",$pwd_acl)){
           $entries[$key]['objectClass'][] = 'FAKE_OC_PWD_changeAble';
         }
