@@ -280,6 +280,8 @@ class mailAccount extends simplePlugin
         )
       )
     );
+    /* sieve submit the form so that managed attributes are correctly updated */
+    $this->attributesInfo['advanced']['attrs']['sieve']->setSubmitForm(TRUE);
 
     $ldap = $this->config->get_ldap_link();
     $ldap->cd($this->config->current['BASE']);
