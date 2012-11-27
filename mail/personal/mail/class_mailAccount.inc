@@ -46,21 +46,48 @@ class mailFlagsAttribute extends StringAttribute
   function setValue ($value)
   {
     parent::setValue($value);
-    $this->plugin->attributesInfo['options1']['attrs']['Flags1']->setValue(preg_match('/R/', $this->value));
-    $this->plugin->attributesInfo['options1']['attrs']['Flags2']->setValue(preg_match('/S/', $this->value));
-    $this->plugin->attributesInfo['options2']['attrs']['Flags3']->setValue(preg_match('/V/', $this->value));
-    $this->plugin->attributesInfo['options2']['attrs']['Flags4']->setValue(preg_match('/I/', $this->value));
-    $this->plugin->attributesInfo['advanced']['attrs']['Flags5']->setValue(preg_match('/L/', $this->value));
+    $this->plugin->attributesInfo['options1']['attrs']['flag_ownmailbox']->setValue(preg_match('/R/', $this->value));
+    $this->plugin->attributesInfo['options1']['attrs']['flag_vacation']->setValue(preg_match('/S/', $this->value));
+    $this->plugin->attributesInfo['options2']['attrs']['flag_spamlevel']->setValue(preg_match('/V/', $this->value));
+    $this->plugin->attributesInfo['options2']['attrs']['flag_spamsize']->setValue(preg_match('/I/', $this->value));
+    $this->plugin->attributesInfo['advanced']['attrs']['flag_localonly']->setValue(preg_match('/L/', $this->value));
   }
 
   function getValue()
   {
     return '['.
-      $this->plugin->attributesInfo['options1']['attrs']['Flags1']->computeLdapValue().
-      $this->plugin->attributesInfo['options1']['attrs']['Flags2']->computeLdapValue().
-      $this->plugin->attributesInfo['options2']['attrs']['Flags3']->computeLdapValue().
-      $this->plugin->attributesInfo['options2']['attrs']['Flags4']->computeLdapValue().
-      $this->plugin->attributesInfo['advanced']['attrs']['Flags5']->computeLdapValue().']';
+      $this->plugin->attributesInfo['options1']['attrs']['flag_ownmailbox']->computeLdapValue().
+      $this->plugin->attributesInfo['options1']['attrs']['flag_vacation']->computeLdapValue().
+      $this->plugin->attributesInfo['options2']['attrs']['flag_spamlevel']->computeLdapValue().
+      $this->plugin->attributesInfo['options2']['attrs']['flag_spamsize']->computeLdapValue().
+      $this->plugin->attributesInfo['advanced']['attrs']['flag_localonly']->computeLdapValue().']';
+  }
+}
+
+class MailQuotaAttribute extends IntAttribute
+{
+  private $quotaUsage;
+
+  function setMailMethod($mailMethod)
+  {
+    /* Read quota */
+    $this->value = $mailMethod->getQuota($this->value);
+    $this->quotaUsage = $mailMethod->getQuotaUsage();
+    if ($mailMethod->is_error()) {
+      msg_dialog::display(_("Mail error"), sprintf(_("Cannot read quota settings: %s"),
+            $mailMethod->get_error()), ERROR_DIALOG);
+    }
+  }
+
+  function renderAttribute(&$attributes, $readOnly)
+  {
+    parent::renderAttribute($attributes, $readOnly);
+    $attributes[$this->getLdapName().'_usage'] = array(
+      'htmlid'      => $this->getHtmlId().'_usage',
+      'label'       => '{literal}'._('Quota usage').'{/literal}',
+      'description' => _('Part of the quota which is used'),
+      'input'       => mailMethod::quota_to_image($this->quotaUsage, $this->value),
+    );
   }
 }
 
@@ -103,8 +130,8 @@ class mailAccount extends simplePlugin
             'gosaMailServer', FALSE,
             array()
           ),
-          new IntAttribute (
-            _('Quota usage').'<br />'._('Quota size'), '',
+          new MailQuotaAttribute (
+            _('Quota size'), '',
             'gosaMailQuota', FALSE,
             0, FALSE
           )
@@ -129,13 +156,13 @@ class mailAccount extends simplePlugin
           new BooleanAttribute (
             _('No delivery to own mailbox'),
             _('Select if you want to forward mails without getting own copies of them'),
-            'Flags1', FALSE, FALSE, '',
+            'flag_ownmailbox', FALSE, FALSE, '',
             'R', ''
           ),
           new BooleanAttribute (
             _('Activate vacation message'),
             _('Select to automatically response with the vacation message defined below'),
-            'Flags2', FALSE, FALSE, '',
+            'flag_vacation', FALSE, FALSE, '',
             'S', ''
           ),
           new DateAttribute (
@@ -159,7 +186,7 @@ class mailAccount extends simplePlugin
         'attrs' => array(
           new BooleanAttribute (
             _('Move mails depending on spam level'), '',
-            'Flags3', FALSE, FALSE, '',
+            'flag_spamlevel', FALSE, FALSE, '',
             'V', ''
           ),
           new SelectAttribute (
@@ -174,7 +201,7 @@ class mailAccount extends simplePlugin
           ),
           new BooleanAttribute (
             _('Reject mail depending on their size'), '',
-            'Flags4', FALSE, FALSE, '',
+            'flag_spamsize', FALSE, FALSE, '',
             'I', ''
           ),
           new IntAttribute (
@@ -204,15 +231,13 @@ class mailAccount extends simplePlugin
             new BooleanAttribute (
             _('User is only allowed to send and receive local mails'),
             _('Select if user can only send and receive inside his own domain'),
-            'Flags5', FALSE, FALSE, '',
+            'flag_localonly', FALSE, FALSE, '',
             'L', ''
           )
         )
       )
     );
   }
-
-
 
   /*!
    * \brief Constructor of the freeradiusAccount
@@ -221,13 +246,72 @@ class mailAccount extends simplePlugin
   function __construct(&$config, $dn = NULL, $object = NULL)
   {
     parent::__construct($config, $dn, $object);
-    $this->attributesInfo['options1']['attrs']['Flags1']->setInLdap(FALSE);
-    $this->attributesInfo['options1']['attrs']['Flags2']->setInLdap(FALSE);
-    $this->attributesInfo['options2']['attrs']['Flags3']->setInLdap(FALSE);
-    $this->attributesInfo['options2']['attrs']['Flags4']->setInLdap(FALSE);
-    $this->attributesInfo['advanced']['attrs']['Flags5']->setInLdap(FALSE);
+
+    $this->cn = $object->cn;
+
+    /* Intialize the used mailMethod */
+    $tmp = new mailMethod($config, $this);
+
+    $this->mailMethod = $tmp->get_method();
+    $this->mailMethod->fixAttributesOnLoad();
+
+    $this->attributesInfo['main']['attrs']['gosaMailServer']->setChoices($this->mailMethod->getMailServers());
+    $this->attributesInfo['options2']['attrs']['gosaSpamSortLevel']->setChoices($this->mailMethod->getSpamLevels());
+
+    /* Initialize configured values */
+    if ($this->is_account) {
+      if ($this->mailMethod->connect() && $this->mailMethod->account_exists()) {
+
+        /* Read quota */
+        $this->attributesInfo['main']['attrs']['gosaMailQuota']->setMailMethod($this->mailMethod);
+
+        /* Read mailboxes */
+        $mailBoxes = $this->mailMethod->getMailboxList();
+        $this->attributesInfo['options2']['attrs']['gosaSpamMailbox']->setChoices($mailBoxes);
+        if ($this->mailMethod->is_error()) {
+          msg_dialog::display(_("Mail error"), sprintf(_("Cannot get list of mailboxes: %s"),
+                $this->mailMethod->get_error()), ERROR_DIALOG);
+        }
+
+      } elseif(!$this->mailMethod->is_connected()) {
+        //~ msg_dialog::display(_("Mail error"), sprintf(_("Mail method cannot connect: %s"),
+              //~ $this->mailMethod->get_error()), ERROR_DIALOG);
+      } elseif(!$this->mailMethod->account_exists()) {
+        msg_dialog::display(_("Mail error"), sprintf(_("Mailbox '%s' doesn't exists on mail server: %s"),
+              $this->mailMethod->get_account_id(),$this->gosaMailServer), ERROR_DIALOG);
+      }
+
+      if ($this->initially_was_account) {
+        $this->attributesInfo['main']['attrs']['mail']->setDisabled(!$this->mailMethod->isModifyableMail());
+        $this->attributesInfo['main']['attrs']['gosaMailServer']->setDisabled(!$this->mailMethod->isModifyableServer());
+      }
+    }
+
+    $this->attributesInfo['options1']['attrs']['flag_ownmailbox']->setInLdap(FALSE);
+    $this->attributesInfo['options1']['attrs']['flag_vacation']->setInLdap(FALSE);
+    $this->attributesInfo['options2']['attrs']['flag_spamlevel']->setInLdap(FALSE);
+    $this->attributesInfo['options2']['attrs']['flag_spamsize']->setInLdap(FALSE);
+    $this->attributesInfo['advanced']['attrs']['flag_localonly']->setInLdap(FALSE);
     $this->attributesInfo['advanced']['attrs']['sieve']->setInLdap(FALSE);
-    $this->attributesInfo['options2']['attrs']['Flags3']->setManagedAttributes (
+
+    if (!$this->mailMethod->vacationRangeEnabled()) {
+      unset($this->attributesInfo['options1']['attrs']['gosaVacationStart']);
+      unset($this->attributesInfo['options1']['attrs']['gosaVacationStop']);
+    } else {
+      $this->attributesInfo['options1']['attrs']['flag_vacation']->setManagedAttributes (
+        array (
+          'erase' => array (
+            FALSE => array (
+              'options1' => array(
+                'gosaVacationStart','gosaVacationStop','gosaVacationMessage'
+              )
+            )
+          )
+        )
+      );
+    }
+
+    $this->attributesInfo['options2']['attrs']['flag_spamlevel']->setManagedAttributes (
       array (
         'erase' => array (
           FALSE => array (
@@ -238,23 +322,12 @@ class mailAccount extends simplePlugin
         )
       )
     );
-    $this->attributesInfo['options2']['attrs']['Flags4']->setManagedAttributes (
+    $this->attributesInfo['options2']['attrs']['flag_spamsize']->setManagedAttributes (
       array (
         'erase' => array (
           FALSE => array (
             'options2' => array(
               'gosaMailMaxSize'
-            )
-          )
-        )
-      )
-    );
-    $this->attributesInfo['options1']['attrs']['Flags2']->setManagedAttributes (
-      array (
-        'erase' => array (
-          FALSE => array (
-            'options1' => array(
-              'gosaVacationStart','gosaVacationStop'
             )
           )
         )
@@ -266,15 +339,15 @@ class mailAccount extends simplePlugin
         'erase' => array (
           TRUE => array (
             'options1' => array(
-              'Flags1','Flags2',
+              'flag_ownmailbox','flag_vacation',
               'gosaVacationStart','gosaVacationStop','gosaVacationMessage'
             ),
             'options2' => array(
-              'Flags3','Flags4','gosaMailMaxSize',
+              'flag_spamlevel','flag_spamsize','gosaMailMaxSize',
               'gosaSpamMailbox','gosaSpamSortLevel'
             ),
             'advanced' => array (
-              'Flags5'
+              'flag_localonly'
             )
           )
         )
@@ -282,15 +355,6 @@ class mailAccount extends simplePlugin
     );
     /* sieve submit the form so that managed attributes are correctly updated */
     $this->attributesInfo['advanced']['attrs']['sieve']->setSubmitForm(TRUE);
-
-    $ldap = $this->config->get_ldap_link();
-    $ldap->cd($this->config->current['BASE']);
-    $ldap->search("(objectClass=goMailServer)", array('cn'));
-    $server = array();
-    while ($attrs = $ldap->fetch()) {
-        $server[] = $attrs['cn'][0];
-    }
-    $this->attributesInfo['main']['attrs']['gosaMailServer']->setChoices($server);
   }
 
 }
