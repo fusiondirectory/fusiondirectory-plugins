@@ -7,9 +7,8 @@ cn: cn=fd-samba-conf
 # Attributes
 # Samba settings
 olcAttributeTypes: ( 1.3.6.1.4.1.38414.9.1.1NAME 'fdSambaMachineAccountRDN' DESC 'FusionDirectory - Samba RDN' EQUALITY caseExactIA5Match SUBSTR caseExactIA5SubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 SINGLE-VALUE )
-olcAttributeTypes: ( 1.3.6.1.4.1.38414.9.1.2NAME 'fdSambaHashHook' DESC 'FusionDirectory - Samba hash hook' EQUALITY caseExactIA5Match SUBSTR caseExactIA5SubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 SINGLE-VALUE )
-olcAttributeTypes: ( 1.3.6.1.4.1.38414.9.1.3NAME 'fdSambaIdMapping' DESC 'FusionDirectory - Samba id mapping' EQUALITY booleanMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.7 SINGLE-VALUE )
-olcAttributeTypes: ( 1.3.6.1.4.1.38414.9.1.4NAME 'fdSambaSID' DESC 'FusionDirectory - Samba SID' EQUALITY caseExactIA5Match SUBSTR caseExactIA5SubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 SINGLE-VALUE )
-olcAttributeTypes: ( 1.3.6.1.4.1.38414.9.1.5NAME 'fdSambaRidBase' DESC 'FusionDirectory - Samba rid base' EQUALITY integerMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE )
+olcAttributeTypes: ( 1.3.6.1.4.1.38414.9.1.2NAME 'fdSambaIdMapping' DESC 'FusionDirectory - Samba id mapping' EQUALITY booleanMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.7 SINGLE-VALUE )
+olcAttributeTypes: ( 1.3.6.1.4.1.38414.9.1.3NAME 'fdSambaSID' DESC 'FusionDirectory - Samba SID' EQUALITY caseExactIA5Match SUBSTR caseExactIA5SubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 SINGLE-VALUE )
+olcAttributeTypes: ( 1.3.6.1.4.1.38414.9.1.4NAME 'fdSambaRidBase' DESC 'FusionDirectory - Samba rid base' EQUALITY integerMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE )
 # Object Class
-olcObjectClasses: ( 1.3.6.1.4.1.38414.9.2.1NAME 'sambaPluginConf' DESC 'FusionDirectory samba plugin configuration' SUP top AUXILIARY MUST ( ) MAY ( fdSambaMachineAccountRDN $ fdSambaHashHook $ fdSambaIdMapping $ fdSambaSID $ fdSambaRidBase) )
+olcObjectClasses: ( 1.3.6.1.4.1.38414.9.2.1NAME 'sambaPluginConf' DESC 'FusionDirectory samba plugin configuration' SUP top AUXILIARY MUST ( ) MAY ( fdSambaMachineAccountRDN $ fdSambaIdMapping $ fdSambaSID $ fdSambaRidBase) )

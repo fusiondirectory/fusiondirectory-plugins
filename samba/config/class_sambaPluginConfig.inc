@@ -46,11 +46,6 @@ class sambaPluginConfig extends simplePlugin
             'fdSambaMachineAccountRDN', FALSE,
             'ou=computers,ou=systems'
           ),
-          new StringAttribute (
-            _('Samba hash hook'),
-            _('An executable to generate samba hash values. This is required for password synchronization.'),
-            'fdSambaHashHook'
-          ),
           new BooleanAttribute (
             _('Samba ID mapping'),
             _('Maintain sambaIdmapEntry objects. Depending on your setup this can drastically improve the windows login performance.'),
