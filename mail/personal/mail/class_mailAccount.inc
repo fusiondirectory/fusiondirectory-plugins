@@ -37,6 +37,15 @@
 
 class mailFlagsAttribute extends StringAttribute
 {
+  static private $flags = array(
+    'flag_ownmailbox'     => 'options1',
+    'flag_vacation'       => 'options1',
+    'flag_spamlevel'      => 'options2',
+    'flag_spamsize'       => 'options2',
+    'flag_localonly'      => 'advanced',
+    'flag_sieveownscript' => 'advanced'
+  );
+
   function __construct ($label, $description, $ldapName, $required = FALSE, $defaultValue = "", $acl = "", $regexp = "")
   {
     parent::__construct($label, $description, $ldapName, $required, $defaultValue, $acl);
@@ -46,21 +55,20 @@ class mailFlagsAttribute extends StringAttribute
   function setValue ($value)
   {
     parent::setValue($value);
-    $this->plugin->attributesInfo['options1']['attrs']['flag_ownmailbox']->setValue(preg_match('/R/', $this->value));
-    $this->plugin->attributesInfo['options1']['attrs']['flag_vacation']->setValue(preg_match('/S/', $this->value));
-    $this->plugin->attributesInfo['options2']['attrs']['flag_spamlevel']->setValue(preg_match('/V/', $this->value));
-    $this->plugin->attributesInfo['options2']['attrs']['flag_spamsize']->setValue(preg_match('/I/', $this->value));
-    $this->plugin->attributesInfo['advanced']['attrs']['flag_localonly']->setValue(preg_match('/L/', $this->value));
+    foreach (self::$flags as $attr => $section) {
+      $trueValue = $this->plugin->attributesInfo[$section]['attrs'][$attr]->trueValue;
+      $this->plugin->attributesInfo[$section]['attrs'][$attr]->setValue(preg_match("/$trueValue/", $this->value));
+    }
   }
 
   function getValue()
   {
-    return '['.
-      $this->plugin->attributesInfo['options1']['attrs']['flag_ownmailbox']->computeLdapValue().
-      $this->plugin->attributesInfo['options1']['attrs']['flag_vacation']->computeLdapValue().
-      $this->plugin->attributesInfo['options2']['attrs']['flag_spamlevel']->computeLdapValue().
-      $this->plugin->attributesInfo['options2']['attrs']['flag_spamsize']->computeLdapValue().
-      $this->plugin->attributesInfo['advanced']['attrs']['flag_localonly']->computeLdapValue().']';
+    $value = '[';
+    foreach (self::$flags as $attr => $section) {
+      $value .= $this->plugin->attributesInfo[$section]['attrs'][$attr]->computeLdapValue();
+    }
+    $value .= ']';
+    return $value;
   }
 }
 
@@ -157,13 +165,13 @@ class mailAccount extends simplePlugin
             _('No delivery to own mailbox'),
             _('Select if you want to forward mails without getting own copies of them'),
             'flag_ownmailbox', FALSE, FALSE, '',
-            'R', ''
+            'I', ''
           ),
           new BooleanAttribute (
             _('Activate vacation message'),
             _('Select to automatically response with the vacation message defined below'),
             'flag_vacation', FALSE, FALSE, '',
-            'S', ''
+            'V', ''
           ),
           new DateAttribute (
             _('from'), '',
@@ -187,7 +195,7 @@ class mailAccount extends simplePlugin
           new BooleanAttribute (
             _('Move mails depending on spam level'), '',
             'flag_spamlevel', FALSE, FALSE, '',
-            'V', ''
+            'S', ''
           ),
           new SelectAttribute (
             _('Minimum spam level'), _('Spam level above which a mail will be moved'),
@@ -202,7 +210,7 @@ class mailAccount extends simplePlugin
           new BooleanAttribute (
             _('Reject mail depending on their size'), '',
             'flag_spamsize', FALSE, FALSE, '',
-            'I', ''
+            'R', ''
           ),
           new IntAttribute (
             _('Minimum size in MB to reject a mail'), '',
@@ -226,7 +234,8 @@ class mailAccount extends simplePlugin
           new BooleanAttribute (
             _('Use custom sieve script').' <b>('._('disables all Mail options!').')<b>',
             '',
-            'sieve'
+            'flag_sieveownscript', FALSE, FALSE, '',
+            'C', ''
           ),
             new BooleanAttribute (
             _('User is only allowed to send and receive local mails'),
@@ -292,7 +301,7 @@ class mailAccount extends simplePlugin
     $this->attributesInfo['options2']['attrs']['flag_spamlevel']->setInLdap(FALSE);
     $this->attributesInfo['options2']['attrs']['flag_spamsize']->setInLdap(FALSE);
     $this->attributesInfo['advanced']['attrs']['flag_localonly']->setInLdap(FALSE);
-    $this->attributesInfo['advanced']['attrs']['sieve']->setInLdap(FALSE);
+    $this->attributesInfo['advanced']['attrs']['flag_sieveownscript']->setInLdap(FALSE);
 
     if (!$this->mailMethod->vacationRangeEnabled()) {
       unset($this->attributesInfo['options1']['attrs']['gosaVacationStart']);
@@ -334,7 +343,7 @@ class mailAccount extends simplePlugin
       )
     );
 
-    $this->attributesInfo['advanced']['attrs']['sieve']->setManagedAttributes (
+    $this->attributesInfo['advanced']['attrs']['flag_sieveownscript']->setManagedAttributes (
       array (
         'erase' => array (
           TRUE => array (
@@ -354,7 +363,7 @@ class mailAccount extends simplePlugin
       )
     );
     /* sieve submit the form so that managed attributes are correctly updated */
-    $this->attributesInfo['advanced']['attrs']['sieve']->setSubmitForm(TRUE);
+    $this->attributesInfo['advanced']['attrs']['flag_sieveownscript']->setSubmitForm(TRUE);
   }
 
 }
