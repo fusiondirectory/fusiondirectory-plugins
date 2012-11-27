@@ -38,7 +38,7 @@
 class mailFlagsAttribute extends StringAttribute
 {
   static private $flags = array(
-    'flag_ownmailbox'     => 'options1',
+    'flag_ownmailbox'     => 'advanced',
     'flag_vacation'       => 'options1',
     'flag_spamlevel'      => 'options2',
     'flag_spamsize'       => 'options2',
@@ -145,15 +145,20 @@ class mailAccount extends simplePlugin
           )
         )
       ),
-      'alternative_address' => array(
-        'name'  => _('Alternative addresses'),
+      'other_addresses' => array(
+        'name'  => _('Other addresses and redirections'),
         'icon'  => get_template_path('plugins/mail/images/alternatemail.png'),
         'attrs' => array(
           new SetAttribute (
             new MailAttribute (
-              _('Alternative addresses'),
-              _('List of alternative mail addresses'),
+              _('Alternative addresses'), _('List of alternative mail addresses'),
               'gosaMailAlternateAddress'
+            )
+          ),
+          new SetAttribute(
+            new MailAttribute (
+              _('Forward messages to'), _('Addresses to which messages should be forwarded'),
+              'gosaMailForwardingAddress'
             )
           )
         )
@@ -161,12 +166,6 @@ class mailAccount extends simplePlugin
       'options1' => array(
         'name' => _('Vacation message'),
         'attrs' => array(
-          new BooleanAttribute (
-            _('No delivery to own mailbox'),
-            _('Select if you want to forward mails without getting own copies of them'),
-            'flag_ownmailbox', FALSE, FALSE, '',
-            'I', ''
-          ),
           new BooleanAttribute (
             _('Activate vacation message'),
             _('Select to automatically response with the vacation message defined below'),
@@ -208,21 +207,15 @@ class mailAccount extends simplePlugin
             array('INBOX')
           ),
           new BooleanAttribute (
-            _('Reject mail depending on their size'), '',
+            _('Reject mail depending on their size'), _('Messages bigger than the chosen size will be rejected'),
             'flag_spamsize', FALSE, FALSE, '',
             'R', ''
           ),
           new IntAttribute (
-            _('Minimum size in MB to reject a mail'), '',
+            _('Minimum size to reject a mail (MB)'), _('Minimum size to reject a mail (MB)'),
             'gosaMailMaxSize',
             FALSE, FALSE, FALSE,
             50
-          ),
-          new SetAttribute(
-            new MailAttribute (
-                _('Forward messages to'), _(''),
-                'gosaMailForwardingAddress'
-            )
           ),
           new mailFlagsAttribute ('', '', 'gosaMailDeliveryMode')
         )
@@ -233,7 +226,7 @@ class mailAccount extends simplePlugin
          'attrs' => array (
           new BooleanAttribute (
             _('Use custom sieve script').' <b>('._('disables all Mail options!').')<b>',
-            '',
+            _('Use your sieve script with personnal customization'),
             'flag_sieveownscript', FALSE, FALSE, '',
             'C', ''
           ),
@@ -242,7 +235,13 @@ class mailAccount extends simplePlugin
             _('Select if user can only send and receive inside his own domain'),
             'flag_localonly', FALSE, FALSE, '',
             'L', ''
-          )
+          ),
+          new BooleanAttribute (
+            _('No delivery to own mailbox'),
+            _('Select if you want to forward mails without getting own copies of them'),
+            'flag_ownmailbox', FALSE, FALSE, '',
+            'I', ''
+          ),
         )
       )
     );
@@ -282,21 +281,20 @@ class mailAccount extends simplePlugin
                 $this->mailMethod->get_error()), ERROR_DIALOG);
         }
 
+        if ($this->initially_was_account) {
+          $this->attributesInfo['main']['attrs']['mail']->setDisabled(!$this->mailMethod->isModifyableMail());
+          $this->attributesInfo['main']['attrs']['gosaMailServer']->setDisabled(!$this->mailMethod->isModifyableServer());
+        }
       } elseif(!$this->mailMethod->is_connected()) {
-        //~ msg_dialog::display(_("Mail error"), sprintf(_("Mail method cannot connect: %s"),
-              //~ $this->mailMethod->get_error()), ERROR_DIALOG);
+        msg_dialog::display(_("Mail error"), sprintf(_("Mail method cannot connect: %s"),
+              $this->mailMethod->get_error()), ERROR_DIALOG);
       } elseif(!$this->mailMethod->account_exists()) {
         msg_dialog::display(_("Mail error"), sprintf(_("Mailbox '%s' doesn't exists on mail server: %s"),
               $this->mailMethod->get_account_id(),$this->gosaMailServer), ERROR_DIALOG);
       }
-
-      if ($this->initially_was_account) {
-        $this->attributesInfo['main']['attrs']['mail']->setDisabled(!$this->mailMethod->isModifyableMail());
-        $this->attributesInfo['main']['attrs']['gosaMailServer']->setDisabled(!$this->mailMethod->isModifyableServer());
-      }
     }
 
-    $this->attributesInfo['options1']['attrs']['flag_ownmailbox']->setInLdap(FALSE);
+    $this->attributesInfo['advanced']['attrs']['flag_ownmailbox']->setInLdap(FALSE);
     $this->attributesInfo['options1']['attrs']['flag_vacation']->setInLdap(FALSE);
     $this->attributesInfo['options2']['attrs']['flag_spamlevel']->setInLdap(FALSE);
     $this->attributesInfo['options2']['attrs']['flag_spamsize']->setInLdap(FALSE);
@@ -347,8 +345,7 @@ class mailAccount extends simplePlugin
       array (
         'erase' => array (
           TRUE => array (
-            'options1' => array(
-              'flag_ownmailbox','flag_vacation',
+            'options1' => array('flag_vacation',
               'gosaVacationStart','gosaVacationStop','gosaVacationMessage'
             ),
             'options2' => array(
@@ -356,6 +353,7 @@ class mailAccount extends simplePlugin
               'gosaSpamMailbox','gosaSpamSortLevel'
             ),
             'advanced' => array (
+              'flag_ownmailbox',
               'flag_localonly'
             )
           )
