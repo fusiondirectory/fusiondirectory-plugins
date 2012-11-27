@@ -280,17 +280,17 @@ class mailAccount extends simplePlugin
           msg_dialog::display(_("Mail error"), sprintf(_("Cannot get list of mailboxes: %s"),
                 $this->mailMethod->get_error()), ERROR_DIALOG);
         }
-
-        if ($this->initially_was_account) {
-          $this->attributesInfo['main']['attrs']['mail']->setDisabled(!$this->mailMethod->isModifyableMail());
-          $this->attributesInfo['main']['attrs']['gosaMailServer']->setDisabled(!$this->mailMethod->isModifyableServer());
-        }
       } elseif(!$this->mailMethod->is_connected()) {
         msg_dialog::display(_("Mail error"), sprintf(_("Mail method cannot connect: %s"),
               $this->mailMethod->get_error()), ERROR_DIALOG);
       } elseif(!$this->mailMethod->account_exists()) {
         msg_dialog::display(_("Mail error"), sprintf(_("Mailbox '%s' doesn't exists on mail server: %s"),
               $this->mailMethod->get_account_id(),$this->gosaMailServer), ERROR_DIALOG);
+      }
+
+      if ($this->initially_was_account) {
+        $this->attributesInfo['main']['attrs']['mail']->setDisabled(!$this->mailMethod->isModifyableMail());
+        $this->attributesInfo['main']['attrs']['gosaMailServer']->setDisabled(!$this->mailMethod->isModifyableServer());
       }
     }
 
