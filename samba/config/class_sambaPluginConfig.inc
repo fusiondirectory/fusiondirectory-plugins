@@ -56,17 +56,17 @@ class sambaPluginConfig extends simplePlugin
             _('Maintain sambaIdmapEntry objects. Depending on your setup this can drastically improve the windows login performance.'),
             'fdSambaIdMapping'
           ),
-          //~ new StringAttribute (
-            //~ _('Samba SID'),
-            //~ _('A samba SID if not available inside of the LDAP. You can retrieve the current sid by net getlocalsid.'),
-            //~ 'fdSambaSID', FALSE
-          //~ ),
-          //~ new IntAttribute (
-            //~ _('Samba rid base'),
-            //~ _('The base id to add to ordinary sid calculations - if not available inside of the LDAP.'),
-            //~ 'fdSambaRidBase', FALSE,
-            //~ 0, FALSE
-          //~ ),
+          new StringAttribute (
+            _('Samba SID'),
+            _('A samba SID if not available inside of the LDAP though samba schema. You can retrieve the current sid by net getlocalsid.'),
+            'fdSambaSID', FALSE
+          ),
+          new IntAttribute (
+            _('Samba rid base'),
+            _('The base id to add to ordinary sid calculations - if not available inside of the LDAP though samba schema.'),
+            'fdSambaRidBase', FALSE,
+            0, FALSE
+          ),
         )
       ),
     );
