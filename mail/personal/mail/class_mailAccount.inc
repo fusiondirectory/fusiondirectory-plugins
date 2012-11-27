@@ -155,11 +155,9 @@ class mailAccount extends simplePlugin
               'gosaMailAlternateAddress'
             )
           ),
-          new SetAttribute(
-            new MailAttribute (
-              _('Forward messages to'), _('Addresses to which messages should be forwarded'),
-              'gosaMailForwardingAddress'
-            )
+          new MailsAttribute (
+            _('Forward messages to'), _('Addresses to which messages should be forwarded'),
+            'gosaMailForwardingAddress'
           )
         )
       ),
