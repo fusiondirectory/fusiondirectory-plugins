@@ -20,6 +20,32 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
+class TerminalReleaseAttribute extends SelectAttribute
+{
+  function __construct ($label, $description, $ldapName, $required, $choices = array())
+  {
+    parent::__construct($label, $description, $ldapName, $required, $choices);
+    $this->setSubmitForm(TRUE);
+  }
+
+  function setValue ($value)
+  {
+    if (!in_array($value, $this->choices)) {
+      return;
+    }
+    parent::setValue($value);
+    if (isset($this->plugin)) {
+      $this->plugin->attributesInfo['main']['attrs']['gotoBootKernel']->setRelease($value);
+    }
+  }
+
+  function setParent (&$plugin)
+  {
+    parent::setParent($plugin);
+    $this->setValue('squeeze');
+  }
+}
+
 class terminalStartup extends simplePlugin
 {
   /* attribute list for save action */

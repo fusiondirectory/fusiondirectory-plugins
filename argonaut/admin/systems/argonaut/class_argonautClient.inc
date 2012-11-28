@@ -105,7 +105,7 @@ class argonautClient extends simplePlugin
   var $objectclasses  = array("argonautClient");
   var $displayHeader  = TRUE;
 
-  var $inheritance = array("gotoWorkstationTemplate" => "member");
+  var $inheritance = array("gosaGroupOfNames" => "member");
 
   // The main function : information about attributes
   static function getAttributesInfo ()
