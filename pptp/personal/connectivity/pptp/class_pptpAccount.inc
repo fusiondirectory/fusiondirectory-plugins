@@ -27,6 +27,14 @@ class pptpAccount extends simplePlugin
   var $displayHeader  = TRUE;
   var $objectclasses  = array("pptpServerAccount");
 
+  /*!
+   *  \brief The main function : information about attributes
+   */
+  static function getAttributesInfo ()
+  {
+    return array();
+  }
+
   static function plInfo()
   {
     return array(
@@ -41,26 +49,10 @@ class pptpAccount extends simplePlugin
     );
   }
 
-  /*!
-   *  \brief The main function : information about attributes
-   */
-  static function getAttributesInfo ()
+  function __construct(&$config, $dn = NULL, $object = NULL)
   {
-    return array(
-    // Attributes are grouped by section
-    'section1' => array(
-        'name'  => _('PPTP account'),
-        'attrs' => array(
-          new BooleanAttribute(
-            _('Activate'),              // Label of the attribute
-            _('Activate pptp account'),              // Description
-            'pptpAccount',                 // LDAP name
-            TRUE,                            // Mandatory
-            FALSE                            // default value
-          )
-        )
-      )
-    );
+    parent::__construct($config, $dn, $object);
+    $this->templatePath = get_template_path('pptp.tpl', TRUE, dirname(__FILE__));
   }
 }
 
