@@ -42,8 +42,6 @@ class supportDaemon
 
   private $logdir       = "";
 
-  private static $state = NULL;
-
   private $stateReloadDelay = 300; // Don't recheck status if less than 5 minutes have passed.
 
   /*!
@@ -105,11 +103,14 @@ class supportDaemon
       $this->set_error($this->host_error);
       return FALSE;
     }
-    if ((self::$state !== NULL) && (time() - self::$state['date'] < $this->stateReloadDelay)) {
-      if (self::$state['error'] != "") {
-        $this->set_error(self::$state['error']);
+    if (session::global_is_set('argonaut_state')) {
+      $state = session::global_get('argonaut_state');
+      if (time() - $state['date'] < $this->stateReloadDelay) {
+        if ($state['error'] != "") {
+          $this->set_error($state['error']);
+        }
+        return $state['value'];
       }
-      return self::$state['value'];
     }
     try {
       $client = new jsonRPCClient($this->s_host, $this->http_options);
@@ -130,21 +131,28 @@ class supportDaemon
 
   private function saved_state ()
   {
-    if ((self::$state !== NULL) && (time() - self::$state['date'] < $this->stateReloadDelay)) {
-      return self::$state['value'];
-    } else {
-      return TRUE;
+    if (session::global_is_set('argonaut_state')) {
+      $state = session::global_get('argonaut_state');
+      if (time() - $state['date'] < $this->stateReloadDelay) {
+        if ($state['value'] == FALSE) {
+          $this->set_error($state['error']);
+        }
+        return $state['value'];
+      } else {
+        return TRUE;
+      }
     }
+    return TRUE;
   }
 
   private function new_state($state_value)
   {
     @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $state_value, date("H.i.s"));
-    self::$state = array(
+    session::global_set('argonaut_state', array(
       'date'  => time(),
       'error' => $this->s_error,
       'value' => $state_value
-    );
+    ));
     return $state_value;
   }
 
@@ -221,7 +229,6 @@ class supportDaemon
       return FALSE;
     }
     if ($this->saved_state() == FALSE) {
-      $this->set_error(self::$state['error']);
       return FALSE;
     }
     if (preg_match('/^[^.]+\.[^.]+$/', $action)) {
@@ -344,7 +351,6 @@ class supportDaemon
       return FALSE;
     }
     if ($this->saved_state() == FALSE) {
-      $this->set_error(self::$state['error']);
       return FALSE;
     }
     timezone::get_default_timezone();
@@ -391,7 +397,6 @@ class supportDaemon
       return FALSE;
     }
     if ($this->saved_state() == FALSE) {
-      $this->set_error(self::$state['error']);
       return FALSE;
     }
 
@@ -448,7 +453,6 @@ class supportDaemon
       return FALSE;
     }
     if ($this->saved_state() == FALSE) {
-      $this->set_error(self::$state['error']);
       return FALSE;
     }
 
@@ -519,7 +523,6 @@ class supportDaemon
       return FALSE;
     }
     if ($this->saved_state() == FALSE) {
-      $this->set_error(self::$state['error']);
       return FALSE;
     }
 
@@ -614,7 +617,6 @@ class supportDaemon
       return FALSE;
     }
     if ($this->saved_state() == FALSE) {
-      $this->set_error(self::$state['error']);
       return FALSE;
     }
     try {
@@ -653,7 +655,6 @@ class supportDaemon
       return array();
     }
     if ($this->saved_state() == FALSE) {
-      $this->set_error(self::$state['error']);
       return array();
     }
     if ($package_list) { // filters is a package name list
@@ -811,7 +812,6 @@ class supportDaemon
       return FALSE;
     }
     if ($this->saved_state() == FALSE) {
-      $this->set_error(self::$state['error']);
       return FALSE;
     }
 
