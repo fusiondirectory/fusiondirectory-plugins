@@ -105,7 +105,7 @@ class argonautClient extends simplePlugin
   var $objectclasses  = array("argonautClient");
   var $displayHeader  = TRUE;
 
-  var $member_of_ogroup = FALSE;
+  var $inheritance = array("gotoWorkstationTemplate" => "member");
 
   // The main function : information about attributes
   static function getAttributesInfo ()
@@ -148,35 +148,6 @@ class argonautClient extends simplePlugin
   function __construct(&$config, $dn = NULL, $object = NULL)
   {
     parent::__construct($config, $dn, $object);
-
-    $ldap = $this->config->get_ldap_link();
-    $ldap->cd($this->config->current['BASE']);
-    $ldap->search(
-      "(&(objectClass=argonautClient)(objectClass=gotoWorkstationTemplate)(member=".LDAP::prepare4filter($this->dn)."))",
-      array("cn", "argonautClientPort", "argonautClientWakeOnLanInterface", "argonautTaskIdFile", "argonautClientLogDir")
-    );
-    if ($ldap->count() == 1) {
-      $this->member_of_ogroup = TRUE;
-      $attrs = $ldap->fetch();
-      $this->o_group_attrs = $attrs;
-    }
-  }
-
-  function execute()
-  {
-    $smarty = get_smarty();
-    $display = parent::execute();
-    if (!$this->displayPlugin && $this->member_of_ogroup) {
-      $attrs = array("cn", "argonautClientPort", "argonautClientWakeOnLanInterface", "argonautTaskIdFile", "argonautClientLogDir");
-
-      foreach ($attrs as $attr) {
-        $value = (isset($this->o_group_attrs[$attr][0])?$this->o_group_attrs[$attr][0]:"");
-        $smarty->assign("group_$attr", $value);
-      }
-
-      $display .= $smarty->fetch(get_template_path('argonaut_client_inheritance.tpl', TRUE, dirname(__FILE__)));
-    }
-    return $display;
   }
 
   // We also need this function that return some information about the plugin
