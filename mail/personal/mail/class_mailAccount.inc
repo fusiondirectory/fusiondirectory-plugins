@@ -228,7 +228,7 @@ class mailAccount extends simplePlugin
             'flag_sieveownscript', FALSE, FALSE, '',
             'C', ''
           ),
-            new BooleanAttribute (
+          new BooleanAttribute (
             _('User is only allowed to send and receive local mails'),
             _('Select if user can only send and receive inside his own domain'),
             'flag_localonly', FALSE, FALSE, '',
@@ -360,6 +360,8 @@ class mailAccount extends simplePlugin
     );
     /* sieve submit the form so that managed attributes are correctly updated */
     $this->attributesInfo['advanced']['attrs']['flag_sieveownscript']->setSubmitForm(TRUE);
+
+    $this->updateAttributesValues();
   }
 
 }
