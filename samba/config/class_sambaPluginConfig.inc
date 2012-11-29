@@ -54,13 +54,14 @@ class sambaPluginConfig extends simplePlugin
           new StringAttribute (
             _('Samba SID'),
             _('A samba SID if not available inside of the LDAP though samba schema. You can retrieve the current sid by net getlocalsid.'),
-            'fdSambaSID', FALSE
+            'fdSambaSID', FALSE,
+            '0-815-4711'
           ),
           new IntAttribute (
             _('Samba rid base'),
             _('The base id to add to ordinary sid calculations - if not available inside of the LDAP though samba schema.'),
             'fdSambaRidBase', FALSE,
-            0, FALSE
+            0, FALSE, 1
           ),
         )
       ),
