@@ -20,37 +20,6 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class UsersGroupsAttribute extends DialogAttribute
-{
-  protected $dialogClass = "UserGroupSelectDialog";
-
-  function addValue ($dn, $entry)
-  {
-    if (in_array("posixGroup",$entry['objectClass'])) {
-      $name = trim("%".$entry['cn'][0]);
-    } elseif(isset($entry['uid'][0])) {
-      $name = trim($entry['uid'][0]);
-    }
-    if (!in_array($name,$this->value) && !in_array("!".$name,$this->value)) {
-      $this->value[] = $name;
-    }
-  }
-
-  function getFilterBlackList ()
-  {
-    $used = array();
-    foreach ($this->value as $name) {
-      $str = preg_replace("/^!/","",$name);
-      if (preg_match("/^%/", $str)) {
-        $used['cn'][] = preg_replace("/^%/","",$str);
-      } else {
-        $used['uid'][] = $str;
-      }
-    }
-    return $used;
-  }
-}
-
 class defaultRoleAttribute extends BooleanAttribute
 {
   function __construct ($defaultValue)
@@ -241,16 +210,6 @@ class sudo extends simplePlugin
   public static function get_sudoers_ou($config)
   {
     return get_ou("sudoRDN").$config->current['BASE'];
-  }
-
-  function ldap_save($a=TRUE)
-  {
-    parent::ldap_save($a);
-  }
-
-  function save_object()
-  {
-    parent::save_object();
   }
 }
 
