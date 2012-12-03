@@ -58,6 +58,8 @@ class faiStartup extends simplePlugin
   var $inheritance = array("gosaGroupOfNames" => "member");
   var $sdaemon_available;
 
+  var $cache = array();
+
   /*!
    *  \brief The main function : information about attributes
    */

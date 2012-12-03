@@ -117,11 +117,7 @@ class mailMethod{
     $this->parent = $parent;
     $this->config = $config;
 
-    /* Create a refernce to the mail selected server
-     */
-    if(isset($this->parent->gosaMailServer)){
-      $this->MailServer = &$this->parent->gosaMailServer;
-    }else{
+    if(!isset($this->parent->gosaMailServer)){
       trigger_error("mailMethod with invalid parent object initialized.");
     }
 
@@ -272,7 +268,7 @@ class mailMethod{
   {
     $this->reset_error();
     @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,"","<b>MAIL: Connect method</b>: ".get_class($this));
-    @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,"","<b>MAIL: Current server</b>: ".$this->MailServer);
+    @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,"","<b>MAIL: Current server</b>: ".$this->parent->gosaMailServer);
 
     $this->connected = TRUE;
     return(TRUE);
@@ -549,7 +545,7 @@ class mailMethod{
     $this->reset_error();
 
     @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>".$this->account_id."</b>" ,
-        "<b>MAIL: Remove account</b> from server :".$this->MailServer);
+        "<b>MAIL: Remove account</b> from server :".$this->parent->gosaMailServer);
 
     return(TRUE);
   }
@@ -696,7 +692,7 @@ class mailMethod{
     $mailserver = array();
     $ui = get_userinfo();
     foreach ($this->config->data['SERVERS']['IMAP'] as $key => $val){
-      if( $this->MailServer == $key ||
+      if( $this->parent->gosaMailServer == $key ||
           preg_match("/r/",$ui->get_permissions($val['server_dn'],"server/serviceIMAP",""))){
         $mailserver[]= $key;
       }

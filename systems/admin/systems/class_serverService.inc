@@ -104,11 +104,6 @@ class ServerService extends management
         $this->plugin_names[] = $name;
         $this->plugins[$name] = new $name($config, $dn, $this);
 
-        /* Initialize kerberos key support */
-        if (isset($this->plugins[$name]->krb_service_prefix) && !empty($this->plugins[$name]->krb_service_prefix)) {
-          $this->plugins[$name]->krb_host_key = &$this->parent->kerberos_key_service;
-        }
-
         /* Capture all service objectClases, necessary for acl handling */
         if (isset($this->plugins[$name]->objectclasses)) {
           foreach ($this->plugins[$name]->objectclasses as $oc) {
