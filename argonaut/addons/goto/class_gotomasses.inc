@@ -37,34 +37,34 @@ class gotomasses extends management
   function __construct(&$config, $ui)
   {
     /* Include config object */
-    $this->config= &$config;
-    $this->o_queue = new supportDaemon();//supportDaemon(TRUE,5);
-    $this->events  = DaemonEvent::get_event_types( SYSTEM_EVENT);
+    $this->config   = &$config;
+    $this->o_queue  = new supportDaemon();
+    $this->events   = DaemonEvent::get_event_types( SYSTEM_EVENT);
     $this->acl_base = $config->current['BASE'];
     $this->acl_category = "gotomasses/";
 
     /* Get tags that will be used in queue searches */
     $this->event_tags = array("none");
-    foreach($this->events['SCHEDULED'] as $evt){
+    foreach ($this->events['SCHEDULED'] as $evt) {
       $this->event_tags[] = $evt['s_Action'];
     }
 
     // Build filter
-    if (session::global_is_set(get_class($this)."_filter")){
-      $filter= session::global_get(get_class($this)."_filter");
+    if (session::global_is_set(get_class($this)."_filter")) {
+      $filter = session::global_get(get_class($this)."_filter");
     } else {
-      $filter = new filter(get_template_path("deploy-filter.xml", true));
+      $filter = new filter(get_template_path("deploy-filter.xml", TRUE));
       $filter->setObjectStorage($this->storagePoints);
     }
     $this->setFilter($filter);
 
     // Build headpage
-    $headpage = new listing(get_template_path("deploy-list.xml", true));
-    $headpage->registerElementFilter("hostName",  "gotomasses::filterHostName");
-    $headpage->registerElementFilter("filterTask","gotomasses::filterTask");
-    $headpage->registerElementFilter("filterPeriod","gotomasses::filterPeriod");
-    $headpage->registerElementFilter("filterSchedule","gotomasses::filterSchedule");
-    $headpage->registerElementFilter("filterStatus","gotomasses::filterStatus");
+    $headpage = new listing(get_template_path("deploy-list.xml", TRUE));
+    $headpage->registerElementFilter("hostName", "gotomasses::filterHostName");
+    $headpage->registerElementFilter("filterTask", "gotomasses::filterTask");
+    $headpage->registerElementFilter("filterPeriod", "gotomasses::filterPeriod");
+    $headpage->registerElementFilter("filterSchedule", "gotomasses::filterSchedule");
+    $headpage->registerElementFilter("filterStatus", "gotomasses::filterStatus");
     $headpage->setFilter($filter);
 
     parent::__construct($config, $ui, "Events", $headpage);
@@ -85,11 +85,11 @@ class gotomasses extends management
     $this->registerAction('showError', 'showErrorEntry');
   }
 
-  function newEntry($action="",$target=array(),$all=array(), $altTabClass ="", $altTabType = "", $altAclCategory="")
+  function newEntry($action = "", $target = array(), $all = array(), $altTabClass = "", $altTabType = "", $altAclCategory = "")
   {
-    if($this->acl_is_writeable("")){
+    if ($this->acl_is_writeable("")) {
       $type = "DaemonEvent_".$action;
-      if(isset($this->events['BY_CLASS'][$type])){
+      if (isset($this->events['BY_CLASS'][$type])) {
         $e_data = $this->events['BY_CLASS'][$type];
         $this->dialogObject = new $e_data['CLASS_NAME']($this->config);
         $this->dialogObject->set_timestamp_now();
@@ -99,93 +99,92 @@ class gotomasses extends management
 
   function importEvents()
   {
-    $this->dialogObject = new goto_import_file($this->config,$this);
+    $this->dialogObject = new goto_import_file($this->config, $this);
   }
 
-  static function filterHostName($mac, $name ="")
+  static function filterHostName($mac, $name = "")
   {
-    if(isset($name[0]) && $name[0] != "none") {
+    if (isset($name[0]) && $name[0] != "none") {
         // TODO ajouter lien machine.
-      return($name[0]." (".$mac[0].")");
+      return $name[0]." (".$mac[0].")";
     }
-    return($mac[0]);
+    return $mac[0];
   }
 
-  static function filterTask($tag,$progress)
+  static function filterTask($tag, $progress)
   {
-    $tag = $tag[0];
+    $tag      = $tag[0];
     $progress = $progress[0];
-    $str = $tag;
+    $str      = $tag;
 
     /* Check if this event exists as Daemon class
      * In this case, display a more accurate entry.
      */
     $events  = DaemonEvent::get_event_types( SYSTEM_EVENT);
-    if(isset($events['QUEUED'][$tag])){
+    if (isset($events['QUEUED'][$tag])) {
       $evt_name   = $events['QUEUED'][$tag];
       $event_type = $events['BY_CLASS'][$evt_name];
       $str        = $event_type['s_Menu_Name'];
 
-      if(strlen($str) > 20){
-        $str = substr($str,0,18)."...";
+      if (strlen($str) > 20) {
+        $str = substr($str, 0, 18)."...";
       }
 
-      if(isset($event_type['ListImage']) && !empty($event_type['ListImage'])){
+      if (isset($event_type['ListImage']) && !empty($event_type['ListImage'])) {
         $str = $event_type['ListImage']."&nbsp;".$str;
       }
     }
-    if($progress) {
+    if ($progress) {
         $str .= "&nbsp;(".$progress."%)";
     }
-    return($str);
+    return $str;
   }
 
-  static function filterPeriod($periodic=array())
+  static function filterPeriod($periodic = array())
   {
     $period = "&nbsp;-";
-    if(isset($periodic[0]) && !preg_match("/none/i",$periodic[0])){
+    if (isset($periodic[0]) && !preg_match("/none/i", $periodic[0])) {
       $tmp = explode("_", $periodic[0]);
-      if(count($tmp) == 2){
-        $period= $tmp[0]."&nbsp;"._($tmp[1]);
+      if (count($tmp) == 2) {
+        $period = $tmp[0]."&nbsp;"._($tmp[1]);
       }
     }
-    return($period);
+    return $period;
   }
 
   static function filterSchedule($stamp)
   {
-    if ($stamp['0'] == "19700101000000"){
-      return(_("immediately"));
+    if ($stamp['0'] == "19700101000000") {
+      return _("immediately");
     } else {
-      return(date("d.m.Y H:i:s",strtotime($stamp[0])));
+      return date("d.m.Y H:i:s", strtotime($stamp[0]));
     }
   }
 
 
-  static function filterStatus($row,$status, $mac, $headertag, $error, $substatus)
+  static function filterStatus($row, $status, $mac, $headertag, $error, $substatus)
   {
-
     $status     = $status[0];
     $mac        = $mac[0];
     $headertag  = $headertag[0];
     $error      = $error[0];
-    $substatus = $substatus[0];
+    $substatus  = $substatus[0];
 
-    if($status == "waiting"){
+    if ($status == "waiting") {
       $status = "<img class='center' src='plugins/systems/images/clock.png' alt=''>&nbsp;"._("Waiting");
     }
-    if($status == "error"){
-        $status="<input class='center' type='image' src='images/false.png' title='"._("Show error")."' ".
-                 "name='listing_showError_$row' style='padding:1px'>"._("Error");
+    if ($status == "error") {
+      $status = "<input class='center' type='image' src='images/false.png' title='"._("Show error")."' ".
+               "name='listing_showError_$row' style='padding:1px'>"._("Error");
     }
-    if($status == "processed"){
+    if ($status == "processed") {
       $status = "<img class='center' src='images/true.png' alt=''>&nbsp;"._("Processed");
     }
 
     /* Special handling for all entries that have
        STATUS == "processing" && PROGRESS == NUMERIC
      */
-    if($status == "processing" && $substatus){
+    if ($status == "processing" && $substatus) {
         $status = $substatus;
     } else if ($status == "processing") {
         $status = preg_replace('/ /', '&nbsp;', _("in progress"));
@@ -193,71 +192,73 @@ class gotomasses extends management
     return($status);
   }
 
-  function editEntry($action="",$target=array(),$all=array(), $altTabClass ="", $altTabType = "", $altAclCategory="")
+  function editEntry($action = "", $target = array(), $all = array(), $altTabClass = "",
+                      $altTabType = "", $altAclCategory = "")
   {
-    if(count($target) == 1){
+    if (count($target) == 1) {
       $headpage = $this->getHeadpage();
       $entry = $headpage->getEntry($target[0]);
       $event = $entry['EVENT'];
-      if($event['STATUS'] == "waiting" && isset($this->events['QUEUED'][$event['HEADERTAG']])){
+      if ($event['STATUS'] == "waiting" && isset($this->events['QUEUED'][$event['HEADERTAG']])) {
         $evt_name = $this->events['QUEUED'][$event['HEADERTAG']];
-        $type = $this->events['BY_CLASS'][$evt_name];
-        $this->dialogObject = new $type['CLASS_NAME']($this->config,$event);
+        $type     = $this->events['BY_CLASS'][$evt_name];
+        $this->dialogObject = new $type['CLASS_NAME']($this->config, $event);
       }
     }
   }
 
-  function removeEntryRequested($action="",$target=array(),$all=array())
+  function removeEntryRequested($action = "",$target = array(),$all = array())
   {
-    if(!$this->acl_is_removeable()){
+    if (!$this->acl_is_removeable()) {
       msg_dialog::display(_("Permission"), msgPool::permDelete(), ERROR_DIALOG);
-    }else{
+    } else {
 
       $deleteable_jobs = array();
       $not_deleteable_jobs = array();
       $headpage = $this->getHeadpage();
 
-      foreach($target as $dn){
+      foreach ($target as $dn) {
 
         $tmp = $headpage->getEntry($dn);
         $task = $tmp['EVENT'];
 
         /* Create a printable job name/description */
-        if(isset($this->events['QUEUED'][$task['HEADERTAG']])){
+        if (isset($this->events['QUEUED'][$task['HEADERTAG']])) {
           $evt_name = $this->events['QUEUED'][$task['HEADERTAG']];
-          $evt = $this->events['BY_CLASS'][$evt_name];
-          $j_name = $task['ID']." - ".$evt['s_Menu_Name']."&nbsp;".$task['MACADDRESS'];
-        }else{
+          $evt      = $this->events['BY_CLASS'][$evt_name];
+          $j_name   = $task['ID']." - ".$evt['s_Menu_Name']."&nbsp;".$task['MACADDRESS'];
+        } else {
           $j_name = $task['ID']." - ".$task['HEADERTAG']."&nbsp;".$task['MACADDRESS'];
         }
 
         /* Only remove WAITING or ERROR entries */
-        if(in_array($task['STATUS'],array("waiting","error","processed")) ||
-            ($task['STATUS'] == "processing" && !preg_match("/install/",$task['HEADERTAG'])) ){
-          $this->ids_to_remove[] = $task['ID'];
-          $deleteable_jobs[] = $j_name;
-        }else{
+        if (in_array($task['STATUS'],array("waiting","error","processed")) ||
+            ($task['STATUS'] == "processing" && !preg_match("/install/",$task['HEADERTAG'])) ) {
+          $this->ids_to_remove[]  = $task['ID'];
+          $deleteable_jobs[]      = $j_name;
+        } else {
           $not_deleteable_jobs[] = $j_name;
         }
       }
-      if(count($not_deleteable_jobs)){
+      if (count($not_deleteable_jobs)) {
         msg_dialog::display(_("Remove"),
             sprintf(_("The following jobs couldn't be deleted, they have to be aborted: %s"),
               "<br>".msgPool::buildList($not_deleteable_jobs)),INFO_DIALOG);
       }
 
-      if(count($this->ids_to_remove)){
+      if (count($this->ids_to_remove)) {
         $smarty = get_smarty();
         $smarty->assign("multiple", TRUE);
-        $smarty->assign("info",msgPool::deleteInfo($deleteable_jobs));
-        return($smarty->fetch(get_template_path('remove.tpl', TRUE)));
+        $smarty->assign("info", msgPool::deleteInfo($deleteable_jobs));
+        return $smarty->fetch(get_template_path('remove.tpl', TRUE));
       }
     }
   }
 
-  function removeEntryConfirmed($action="",$target=array(),$all=array(),$altTabClass="",$altTabType="",$altAclCategory="")
+  function removeEntryConfirmed($action = "", $target = array(), $all = array(),
+                                $altTabClass = "", $altTabType = "", $altAclCategory = "")
   {
-    if($this->acl_is_removeable("")){
+    if ($this->acl_is_removeable("")) {
       timezone::get_default_timezone();
       $this->o_queue->remove_entries($this->ids_to_remove);
       $this->save();
@@ -267,7 +268,7 @@ class gotomasses extends management
 
   /*! \brief  Force queue job to be aborted.
    */
-  function abortEvent($action="",$target=array(),$all=array())
+  function abortEvent($action = "", $target = array(), $all = array())
   {
     /* Detect if the ids we got are valid and
      *  check if the status allows pausing.
@@ -457,18 +458,16 @@ class gotomasses extends management
   static function plInfo()
   {
     return array(
-      "plShortName"   => _("System deployment"),
+      "plShortName"   => _("Deployment queue"),
       "plDescription" => _("Provide a mechanism to automatically activate systems"),
       "plIcon"        => "plugins/systems/images/goto.png",
       "plSelfModify"  => FALSE,
       "plSection"     => "admin",
       "plPriority"    => 10,
-      "plCategory"    => array("gotomasses" => array("objectClass" => "none", "description" => _("System deployment"))),
+      "plCategory"    => array("gotomasses" => array("objectClass" => "none", "description" => _("Deployment queue"))),
 
       "plProvidedAcls" => array("Comment"   => _("Description"))
     );
   }
-
 }
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>
