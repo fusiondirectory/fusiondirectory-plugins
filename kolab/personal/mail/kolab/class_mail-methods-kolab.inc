@@ -29,9 +29,9 @@ class mailMethodKolab extends mailMethodCyrus
   protected $modifyableServer = TRUE;
 
   /* Enforces same value for 'mail' as used for 'cn' */
-  protected $mailEqualsCN   = TRUE; 
+  protected $mailEqualsCN   = TRUE;
 
-  /* Enabled mail domain selection. If enabled getMailDomains must the domain parts */ 
+  /* Enabled mail domain selection. If enabled getMailDomains must the domain parts */
   protected $enableDomainSelection= FALSE;
   protected $enableQuota          = TRUE;
   protected $enableSieveManager   = TRUE;
@@ -48,17 +48,17 @@ class mailMethodKolab extends mailMethodCyrus
   protected $user_prefix    = 'user.';
   protected $share_prefix   = 'shared\\.';
 
-  /* gosaSharedFolderTarget settings, 
-   *   E.g. 
-   *     AccountID = 'shared/john.folder@fusiondirectory.org' 
+  /* gosaSharedFolderTarget settings,
+   *   E.g.
+   *     AccountID = 'shared/john.folder@fusiondirectory.org'
    *     'kolab+' will result in gosaSharedFolderTarget: kolab+shared/john@fusiondirectory.org
    *
    * May be overridden in the fusiondirectory.conf.
    */
-  protected $gosaSharedPrefix = 'kolab+';  
+  protected $gosaSharedPrefix = 'kolab+';
 
   /* Account ID creation */
-  protected $user_id    = "%prefix%%uattrib%";  
+  protected $user_id    = "%prefix%%uattrib%";
   protected $share_id   = "%prefix%%cn%@%domain%";
 
   protected $userObjectClasses = array("kolabInetOrgPerson");
@@ -77,7 +77,7 @@ class mailMethodKolab extends mailMethodCyrus
       "lrswipcd" => "write",
       "lrswipcda"=> "admin",
       "lrswipkxtecda"=> "full-admin",
-      " "         => "none"); 
+      " "         => "none");
   public function fixAttributesOnLoad()
   {
     mailMethodCyrus::fixAttributesOnLoad();
@@ -97,8 +97,8 @@ class mailMethodKolab extends mailMethodCyrus
 
     /* The folderType is set by ::setFolderType(...) */
     $this->parent->attrs['kolabFolderType'] = array();
-    if($this->type == "group"){ 
-      $this->parent->attrs['gosaSharedFolderTarget'] = 
+    if($this->type == "group"){
+      $this->parent->attrs['gosaSharedFolderTarget'] =
         $this->gosaSharedPrefix.$this->account_id;
     }
   }
@@ -118,11 +118,11 @@ class mailMethodKolab extends mailMethodCyrus
     $this->parent->attrs['objectClass'] = array_merge( $this->parent->attrs['objectClass'],$ocs);
     $this->parent->attrs['objectClass'] = array_unique($this->parent->attrs['objectClass']);
 
-    if($this->type == "group"){ 
+    if($this->type == "group"){
       $this->parent->attrs['gosaSharedFolderTarget'] =array();
     }
 
-    /* If the mail setup includes Master and Slave Kolab Server, then we have to remove the 
+    /* If the mail setup includes Master and Slave Kolab Server, then we have to remove the
      *  mailAccount from server, by adding a kolabDeleteflag for each server.
      * */
     if($this->masterSlave){
@@ -146,26 +146,26 @@ class mailMethodKolab extends mailMethodCyrus
   public function getAvailableFolderTypes()
   {
     $ret = array();
-    $ret['CAT'][''] = _("Unspecified"); 
-    $ret['CAT']['mail']= _("Mails"); 
-    $ret['CAT']['task']= _("Tasks"); 
-    $ret['CAT']['journal']= _("Journals"); 
-    $ret['CAT']['event']= _("Calendar"); 
-    $ret['CAT']['contact']= _("Contacts"); 
-    $ret['CAT']['note']= _("Notes"); 
+    $ret['CAT'][''] = _("Unspecified");
+    $ret['CAT']['mail']= _("Mails");
+    $ret['CAT']['task']= _("Tasks");
+    $ret['CAT']['journal']= _("Journals");
+    $ret['CAT']['event']= _("Calendar");
+    $ret['CAT']['contact']= _("Contacts");
+    $ret['CAT']['note']= _("Notes");
 
-    $ret['SUB_CAT']['']['']     = _("Unspecified"); 
-    $ret['SUB_CAT']['mail'][''] = _("Unspecified"); 
-    $ret['SUB_CAT']['mail']['inbox']      = _("Inbox"); 
-    $ret['SUB_CAT']['mail']['drafts']     = _("Drafts"); 
-    $ret['SUB_CAT']['mail']['sentitems']  = _("Sent"); 
-    $ret['SUB_CAT']['mail']['junkemail']  = _("SPAM"); 
+    $ret['SUB_CAT']['']['']     = _("Unspecified");
+    $ret['SUB_CAT']['mail'][''] = _("Unspecified");
+    $ret['SUB_CAT']['mail']['inbox']      = _("Inbox");
+    $ret['SUB_CAT']['mail']['drafts']     = _("Drafts");
+    $ret['SUB_CAT']['mail']['sentitems']  = _("Sent");
+    $ret['SUB_CAT']['mail']['junkemail']  = _("SPAM");
 
-    $ret['SUB_CAT']['task']['default']     = _("Default"); 
-    $ret['SUB_CAT']['journal']['default']  = _("Default"); 
-    $ret['SUB_CAT']['event']['default']    = _("Default"); 
-    $ret['SUB_CAT']['contact']['default']  = _("Default"); 
-    $ret['SUB_CAT']['note']['default']     = _("Default"); 
+    $ret['SUB_CAT']['task']['default']     = _("Default");
+    $ret['SUB_CAT']['journal']['default']  = _("Default");
+    $ret['SUB_CAT']['event']['default']    = _("Default");
+    $ret['SUB_CAT']['contact']['default']  = _("Default");
+    $ret['SUB_CAT']['note']['default']     = _("Default");
 
     return($ret);
   }
@@ -190,7 +190,7 @@ class mailMethodKolab extends mailMethodCyrus
 
 
 
-  /* \brief  Returns the selected folder type. 
+  /* \brief  Returns the selected folder type.
       !! Those values are dummy values, the base class doesn't use folder types;
      @return  Array  The folde type.
    */
@@ -211,8 +211,8 @@ class mailMethodKolab extends mailMethodCyrus
     }
   }
 
- 
-  /* \brief  Returns the selected folder type. 
+
+  /* \brief  Returns the selected folder type.
       !! Those values are dummy values, the base class doesn't use folder types;
      @return  Array  The folde type.
    */
@@ -232,10 +232,10 @@ class mailMethodKolab extends mailMethodCyrus
     $ldap->cd ($this->parent->dn);
     $ldap->modify($attrs);
     if($ldap->success()){
-      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>Successful</b>", 
+      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>Successful</b>",
           "<b>MAIL:</b> Set folderType to '".$type_str."'");
     }else{
-      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>Failed: </b>".$ldap->get_error(), 
+      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>Failed: </b>".$ldap->get_error(),
           "<b>MAIL:</b> Set folderType to '".$type_str."'");
     }
   }
@@ -244,15 +244,15 @@ class mailMethodKolab extends mailMethodCyrus
   public function setQuota($number)
   {
     mailMethod::setQuota($number);
-    @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>Skipped, part of kolabd!</b>", 
-        "<b>Set account quota</b> on server '".$this->MailServer);
+    @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>Skipped, part of kolabd!</b>",
+        "<b>Set account quota</b> on server '".$this->parent->gosaMailServer);
     return(TRUE);
   }
 
   public function  setFolderACLs($permissions)
   {
     mailMethod::setFolderACLs($permissions);
-    @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>Skipped, part of kolabd!</b>", 
+    @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>Skipped, part of kolabd!</b>",
         "<b>Setting folder ACLs!</b>","");
     return(TRUE);
   }
@@ -260,15 +260,15 @@ class mailMethodKolab extends mailMethodCyrus
   public function updateMailbox()
   {
     mailMethod::updateMailbox();
-    @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>Skipped, part of kolabd!</b>", 
-        "<b>Add/Update account</b> on server :".$this->MailServer);
+    @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>Skipped, part of kolabd!</b>",
+        "<b>Add/Update account</b> on server :".$this->parent->gosaMailServer);
     return(TRUE);
   }
 
   public function deleteMailbox()
   {
     mailMethod::deleteMailbox();
-    @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "Skipped, part of kolabd!", 
+    @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "Skipped, part of kolabd!",
       "<b>Setting Quota</b>");
     return(TRUE);
   }

@@ -59,13 +59,13 @@ class mailMethodCyrus extends mailMethod{
       @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,
           "<b>IMAP: No mail servers configured, check systems->server->service->imap.</b>","");
       return(FALSE);
-    }elseif (!isset($this->ServerList[$this->MailServer])){
+    }elseif (!isset($this->ServerList[$this->parent->gosaMailServer])){
       $this->error = _("Mail server for this account is invalid!");
       @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,
-          "<b>IMAP: The selected mail server '".$this->MailServer."' is invalid.</b>","");
+          "<b>IMAP: The selected mail server '".$this->parent->gosaMailServer."' is invalid.</b>","");
       return(FALSE);
     } else {
-      $cfg= $this->ServerList[$this->MailServer];
+      $cfg= $this->ServerList[$this->parent->gosaMailServer];
     }
 
     /* For some reason, hiding errors with @ does not wor here... */
@@ -109,7 +109,7 @@ class mailMethodCyrus extends mailMethod{
     }
 
     /* Get server config */
-    $cfg= $this->ServerList[$this->MailServer];
+    $cfg= $this->ServerList[$this->parent->gosaMailServer];
     $list = @imap_listmailbox($this->imap_handle, $cfg["connect"], $this->account_id);
     $res = is_array($list) && count($list);
     if($res){
@@ -241,11 +241,11 @@ class mailMethodCyrus extends mailMethod{
       msg_dialog::display(_("IMAP error"), sprintf(_("Cannot modify IMAP mailbox quota: %s"),
             '<br><br><i>'.imap_last_error().'</i>'), ERROR_DIALOG);
       @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>".$this->account_id.": (".$debug_number.")</b>" ,
-          "<b>IMAP: Set account quota</b> on server '".$this->MailServer."' <b>".imap_last_error()."</b>");
+          "<b>IMAP: Set account quota</b> on server '".$this->parent->gosaMailServer."' <b>".imap_last_error()."</b>");
       return (FALSE);
     }
     @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>".$this->account_id.": (".$debug_number.")</b>" ,
-        "<b>IMAP: Set account quota</b> on server :".$this->MailServer);
+        "<b>IMAP: Set account quota</b> on server :".$this->parent->gosaMailServer);
     return (TRUE);
   }
 
@@ -261,11 +261,11 @@ class mailMethodCyrus extends mailMethod{
 
     $this->build_account_id ();
     if($this->is_connected()){
-      $cfg= $this->ServerList[$this->MailServer];
+      $cfg= $this->ServerList[$this->parent->gosaMailServer];
       $list = imap_listmailbox($this->imap_handle, $cfg["connect"], $this->account_id);
       if ($list === FALSE){
         @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>".$this->account_id."</b>" ,
-          "<b>IMAP: Add/Update account</b> on server :".$this->MailServer);
+          "<b>IMAP: Add/Update account</b> on server :".$this->parent->gosaMailServer);
         if (!imap_createmailbox($this->imap_handle, $cfg["connect"].$this->account_id)){
           $this->error = imap_last_error();
           return(FALSE);
@@ -280,7 +280,7 @@ class mailMethodCyrus extends mailMethod{
           // Walk thru list of specified folders
           foreach ($foldersToCreate as $folder) {
             @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>".$this->account_id."</b>" ,
-              "<b>IMAP: Add/Update account folder ".$folder."</b> on server :".$this->MailServer);
+              "<b>IMAP: Add/Update account folder ".$folder."</b> on server :".$this->parent->gosaMailServer);
             if(!imap_createmailbox($this->imap_handle, $cfg["connect"].$this->account_id.$cyrus_delim.$folder)) {
               $this->error= imap_last_error();
               return(FALSE);
@@ -305,7 +305,7 @@ class mailMethodCyrus extends mailMethod{
 
     $this->build_account_id ();
 
-    $cfg= $this->ServerList[$this->MailServer];
+    $cfg= $this->ServerList[$this->parent->gosaMailServer];
     @imap_setacl ($this->imap_handle, $this->account_id, $cfg["admin"], "lrswipcda");
 
     if ($this->config->get_cfg_value("cyrusDeleteMailbox", "true") == "true"){
@@ -334,7 +334,7 @@ class mailMethodCyrus extends mailMethod{
     $result = array();
 
     /* Get server config */
-    $cfg= $this->ServerList[$this->MailServer];
+    $cfg= $this->ServerList[$this->parent->gosaMailServer];
 
     /* Create search string
        And prepare replacements
@@ -512,7 +512,7 @@ class mailMethodCyrus extends mailMethod{
 
     /* Try to login into sieve
      */
-    $cfg = $this->ServerList[$this->MailServer];
+    $cfg = $this->ServerList[$this->parent->gosaMailServer];
     $sieve= new sieve($cfg["sieve_server"], $cfg["sieve_port"], $this->getUAttribValue(),
         $cfg["password"], $cfg["admin"],$cfg["sieve_option"]);
     if (!$sieve->sieve_login()){

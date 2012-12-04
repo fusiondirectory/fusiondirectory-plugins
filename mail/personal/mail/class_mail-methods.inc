@@ -90,7 +90,6 @@ class mailMethod{
   protected $connected          = FALSE;
   protected $error              = "";
   protected $parent             = NULL;
-  protected $MailServer         = "";
 
   protected $default_acls = array("__anyone__" => "p", "__member__" => "lrswp");
 
