@@ -1032,7 +1032,7 @@ class phoneAccount extends plugin
 
     /* Show tab dialog headers */
 
-    if (!$this->multiple_support_active && $this->parent !== NULL){
+    if ($this->parent !== NULL){
       if ($this->is_account){
         $display= $this->show_disable_header(_("Remove phone account"),
             msgPool::featuresEnabled(_("Phone")));
@@ -1269,7 +1269,6 @@ class phoneAccount extends plugin
 
     /* Show main page */
     $this->lastmacro = $this->macro;
-    $smarty->assign("multiple_support",$this->multiple_support_active);
     $display.= $smarty->fetch(get_template_path('generic.tpl', TRUE, dirname(__FILE__)));
     return($display);
   }

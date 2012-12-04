@@ -172,32 +172,29 @@ class gofaxAccount extends plugin
 
 
     $display = "";
-    if(!$this->multiple_support_active){
+    /* Do we need to flip is_account state? */
+    if (isset($_POST['modify_state'])){
+      $this->is_account= !$this->is_account;
+    }
 
-      /* Do we need to flip is_account state? */
-      if (isset($_POST['modify_state'])){
-        $this->is_account= !$this->is_account;
-      }
+    /* Do we represent a valid account? */
+    if (!$this->is_account && $this->parent === NULL){
+      $display= "<img alt=\"\" src=\"images/small-error.png\" align=\"middle\">&nbsp;<b>".
+        msgPool::noValidExtension(_("GOfax"))."</b>";
+      $display.= back_to_main();
+      return ($display);
+    }
 
-      /* Do we represent a valid account? */
-      if (!$this->is_account && $this->parent === NULL){
-        $display= "<img alt=\"\" src=\"images/small-error.png\" align=\"middle\">&nbsp;<b>".
-          msgPool::noValidExtension(_("GOfax"))."</b>";
-        $display.= back_to_main();
-        return ($display);
-      }
-
-      /* Show tab dialog headers */
-      $display= "";
-      if ($this->parent !== NULL){
-        if ($this->is_account){
-          $display= $this->show_disable_header(_("Remove fax account"),
-              msgPool::featuresEnabled(_("GOfax")));
-        } else {
-          $display= $this->show_enable_header(_("Create fax account"),
-              msgPool::featuresDisabled(_("GOfax")));
-          return ($display);
-        }
+    /* Show tab dialog headers */
+    $display= "";
+    if ($this->parent !== NULL){
+      if ($this->is_account){
+        $display= $this->show_disable_header(_("Remove fax account"),
+            msgPool::featuresEnabled(_("GOfax")));
+      } else {
+        $display = $this->show_enable_header(_("Create fax account"),
+            msgPool::featuresDisabled(_("GOfax")));
+        return $display;
       }
     }
 

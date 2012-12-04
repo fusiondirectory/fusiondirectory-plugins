@@ -246,30 +246,26 @@ class sambaAccount extends plugin
             return ($display);
         }
 
-        $display ="";
-        if(!$this->multiple_support_active){
+        $display = "";
 
-            // Show tab heades to activate and deactivate the samba extension.
-            $display= "";
-            if ($this->parent !== NULL){
-                if ($this->is_account){
-                    $display= $this->show_disable_header(msgPool::removeFeaturesButton(_("Samba")),
-                            msgPool::featuresEnabled(_("Samba")));
-                } else {
-
-                    // Samba3 dependency on posix accounts are enabled in the moment, because I need to rely on unique
-                    // uidNumbers. There'll be a better solution later on.
-                    $obj= $this->parent->by_object['posixAccount'];
-                    if ($obj->is_account){
-                        $display= $this->show_enable_header(msgPool::addFeaturesButton(_("Samba")),
-                                msgPool::featuresDisabled(_("Samba")));
-                    } else {
-                        $display= $this->show_enable_header(msgPool::addFeaturesButton(_("Samba")),
-                                msgPool::featuresDisabled(_("Samba"), _("POSIX")), TRUE);
-                    }
-                    return ($display);
-                }
+        // Show tab heades to activate and deactivate the samba extension.
+        if ($this->parent !== NULL) {
+          if ($this->is_account) {
+            $display = $this->show_disable_header(msgPool::removeFeaturesButton(_("Samba")),
+                    msgPool::featuresEnabled(_("Samba")));
+          } else {
+            // Samba3 dependency on posix accounts are enabled in the moment, because I need to rely on unique
+            // uidNumbers. There'll be a better solution later on.
+            $obj = $this->parent->by_object['posixAccount'];
+            if ($obj->is_account) {
+              $display = $this->show_enable_header(msgPool::addFeaturesButton(_("Samba")),
+                        msgPool::featuresDisabled(_("Samba")));
+            } else {
+              $display = $this->show_enable_header(msgPool::addFeaturesButton(_("Samba")),
+                        msgPool::featuresDisabled(_("Samba"), _("POSIX")), TRUE);
             }
+            return ($display);
+          }
         }
 
         // Editing from the MyAccount/Personal section may be disabled until we've pressed the 'edit' button.
@@ -314,21 +310,13 @@ class sambaAccount extends plugin
         // Handle workstation list - Remove entries.
         if (isset($_POST["delete_ws"]) && isset($_POST['workstation_list'])){
             if($this->acl_is_writeable("sambaUserWorkstations",$SkipWrite)){
-                if($this->multiple_support_active){
-                    foreach($_POST['workstation_list'] as $name){
-                        if(isset($this->multiple_sambaUserWorkstations[trim($name)])){
-                            unset($this->multiple_sambaUserWorkstations[trim($name)]);
-                        }
-                    }
-                }else{
-                    $tmp= $this->sambaUserWorkstations;
-                    foreach($_POST['workstation_list'] as $name){
-                        $tmp= preg_replace("/$name/", '', $tmp);
-                        $this->is_modified= TRUE;
-                    }
-                    $tmp= preg_replace('/,+/', ',', $tmp);
-                    $this->sambaUserWorkstations= trim($tmp, ',');
-                }
+              $tmp= $this->sambaUserWorkstations;
+              foreach($_POST['workstation_list'] as $name){
+                $tmp= preg_replace("/$name/", '', $tmp);
+                $this->is_modified= TRUE;
+              }
+              $tmp= preg_replace('/,+/', ',', $tmp);
+              $this->sambaUserWorkstations= trim($tmp, ',');
             }
         }
 
@@ -351,23 +339,14 @@ class sambaAccount extends plugin
             $trusts = $this->trustSelect->detectPostActions();
             if(isset($trusts['targets'])){
                 $headpage = $this->trustSelect->getHeadpage();
-                if($this->multiple_support_active){
-                    foreach($trusts['targets'] as $id){
-                        $attrs = $headpage->getEntry($id);
-                        $we =$attrs['cn'][0];
-                        $this->multiple_sambaUserWorkstations[trim($we)] = array("Name" => trim($ws), "UsedByAllUsers" => TRUE);
-                    }
-                }else{
-
-                    $tmp= $this->sambaUserWorkstations;
-                    foreach($trusts['targets'] as $id){
-                        $attrs = $headpage->getEntry($id);
-                        $we =$attrs['cn'][0];
-                        $tmp.= ",$we";
-                    }
-                    $tmp= preg_replace('/,+/', ',', $tmp);
-                    $this->sambaUserWorkstations= trim($tmp, ',');
+                $tmp= $this->sambaUserWorkstations;
+                foreach($trusts['targets'] as $id){
+                  $attrs = $headpage->getEntry($id);
+                  $we =$attrs['cn'][0];
+                  $tmp.= ",$we";
                 }
+                $tmp= preg_replace('/,+/', ',', $tmp);
+                $this->sambaUserWorkstations= trim($tmp, ',');
 
                 $this->is_modified= TRUE;
             }
@@ -461,9 +440,8 @@ class sambaAccount extends plugin
         sort($ws);
 
         // Tidy checks for empty option, and smarty will produce one if array[0]=""
-        if(($ws[0]=="")&&(count($ws)==1)) $ws=array();
-        if($this->multiple_support_active){
-            $smarty->assign("multiple_workstations",$this->multiple_sambaUserWorkstations);
+        if (($ws[0] == "") && (count($ws) == 1)) {
+          $ws = array();
         }
         $smarty->assign("workstations", $ws);
 
@@ -508,7 +486,6 @@ class sambaAccount extends plugin
         }
 
         $smarty->assign("additional_info_PwdMustChange",$additional_info_PwdMustChange);
-        $smarty->assign("multiple_support",$this->multiple_support_active);
         $display.= $smarty->fetch (get_template_path('samba3.tpl', TRUE, dirname(__FILE__)));
         return ($display);
     }

@@ -161,10 +161,6 @@ class netgroupSystem extends plugin {
         /* Members and users */
         $smarty->assign("members", $this->members);
 
-        /* Multiple edit handling */
-        $smarty->assign("multiple_support", $this->multiple_support_active);
-
-
         $tmp = $this->plInfo();
         foreach ($tmp['plProvidedAcls'] as $name => $translation) {
             $smarty->assign($name . "ACL", $this->getacl($name));

@@ -122,10 +122,6 @@ class netgroupAccount extends plugin {
         if (isset($_POST['del_users']) && isset($_POST['members']) && preg_match("/w/", $this->getacl("triples"))) {
             foreach ($_POST['members'] as $value) {
                 unset($this->members["$value"]);
-                if ($this->multiple_support_active) {
-                    unset($this->netgroups_all["$value"]);
-                    unset($this->netgroups_some["$value"]);
-                }
             }
         }
 
@@ -152,9 +148,6 @@ class netgroupAccount extends plugin {
                     $attrs = $headpage->getEntry($dn);
                     $desc=""; if(isset($attrs['description'])) $desc=$attrs['description'];
                     $this->members[$attrs['cn'][0]] = $attrs['cn'][0]."[".$desc."]";
-                    if ($this->multiple_support_active) {
-                        $this->netgroups_all[$attrs['cn'][0]] = $attrs['cn'][0]."[".$desc."]";
-                    }
                 }
             }
             $this->userSelect = NULL;
@@ -194,10 +187,6 @@ class netgroupAccount extends plugin {
 
         /* Members and users */
         $smarty->assign("members", $this->members);
-
-        /* Multiple edit handling */
-        $smarty->assign("multiple_support", $this->multiple_support_active);
-
 
         $tmp = $this->plInfo();
         foreach ($tmp['plProvidedAcls'] as $name => $translation) {

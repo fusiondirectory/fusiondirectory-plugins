@@ -288,46 +288,43 @@ class mailgroup extends plugin
       Account status
      ****************/
 
-    if(!$this->multiple_support_active){
-
-      if(isset($_POST['modify_state'])){
-        if($this->is_account && $this->acl_is_removeable() && $this->mailMethod->accountRemoveAble()){
-          $this->is_account= FALSE;
-        }elseif(!$this->is_account && $this->acl_is_createable() && $this->mailMethod->accountCreateable()){
-          $this->is_account= TRUE;
-        }
+    if(isset($_POST['modify_state'])){
+      if($this->is_account && $this->acl_is_removeable() && $this->mailMethod->accountRemoveAble()){
+        $this->is_account= FALSE;
+      }elseif(!$this->is_account && $this->acl_is_createable() && $this->mailMethod->accountCreateable()){
+        $this->is_account= TRUE;
       }
+    }
 
-      if ($this->is_account){
-        $reason = "";
-        if(!$this->mailMethod->accountRemoveable($reason)){
-          $display= $this->show_disable_header(msgPool::removeFeaturesButton(_("Mail")),$reason ,TRUE,TRUE);
-        }else{
-          $display= $this->show_disable_header(msgPool::removeFeaturesButton(_("Mail")),msgPool::
-              featuresEnabled(_("Mail")));
-        }
-      } else {
-        $reason = "";
-        if(!$this->mailMethod->accountCreateable($reason)){
-          $display= $this->show_disable_header(msgPool::addFeaturesButton(_("Mail")),$reason ,TRUE,TRUE);
-        }else{
-          $display= $this->show_disable_header(msgPool::addFeaturesButton(_("Mail")),msgPool::
-              featuresDisabled(_("Mail")));
+    if ($this->is_account){
+      $reason = "";
+      if(!$this->mailMethod->accountRemoveable($reason)){
+        $display= $this->show_disable_header(msgPool::removeFeaturesButton(_("Mail")),$reason ,TRUE,TRUE);
+      }else{
+        $display= $this->show_disable_header(msgPool::removeFeaturesButton(_("Mail")),msgPool::
+            featuresEnabled(_("Mail")));
+      }
+    } else {
+      $reason = "";
+      if(!$this->mailMethod->accountCreateable($reason)){
+        $display= $this->show_disable_header(msgPool::addFeaturesButton(_("Mail")),$reason ,TRUE,TRUE);
+      }else{
+        $display= $this->show_disable_header(msgPool::addFeaturesButton(_("Mail")),msgPool::
+            featuresDisabled(_("Mail")));
 
-          /* Show checkbox that allows us to remove imap entry too*/
-          if($this->initially_was_account){
-            $c = "";
-            if($this->remove_folder_from_imap){
-              $c= " checked ";
-            }
-            $display .= "<h2>Shared folder delete options</h2>
-              <input class='center' type='checkbox' name='remove_folder_from_imap' value='1' ".$c."
-              title='"._("Remove shared folder from mail server database when entry gets removed in LDAP")."'>";
-            $display .= _("Remove the shared folder and all its contents after saving this account");
+        /* Show checkbox that allows us to remove imap entry too*/
+        if($this->initially_was_account){
+          $c = "";
+          if($this->remove_folder_from_imap){
+            $c= " checked ";
           }
+          $display .= "<h2>Shared folder delete options</h2>
+            <input class='center' type='checkbox' name='remove_folder_from_imap' value='1' ".$c."
+            title='"._("Remove shared folder from mail server database when entry gets removed in LDAP")."'>";
+          $display .= _("Remove the shared folder and all its contents after saving this account");
         }
-        return ($display);
       }
+      return ($display);
     }
 
 
@@ -537,7 +534,6 @@ class mailgroup extends plugin
 
     $smarty->assign("Forward_all",$this->gosaMailForwardingAddress);
     $smarty->assign("Forward_some",$this->gosaMailForwardingAddress_Some);
-    $smarty->assign("multiple_support",$this->multiple_support_active);
 
     $display.= $smarty->fetch (get_template_path('mail.tpl', TRUE, dirname(__FILE__)));
     return ($display);
@@ -1117,12 +1113,6 @@ class mailgroup extends plugin
     $this->gosaMailForwardingAddress[]= $address;
     $this->gosaMailForwardingAddress= array_unique($this->gosaMailForwardingAddress);
 
-    /* Update multiple edit values too */
-    if($this->multiple_support_active){
-      $this->gosaMailForwardingAddress_Some=
-        array_remove_entries (array($address),$this->gosaMailForwardingAddress_Some);
-    }
-
     sort ($this->gosaMailForwardingAddress);
     reset ($this->gosaMailForwardingAddress);
     $this->is_modified= TRUE;
@@ -1137,11 +1127,6 @@ class mailgroup extends plugin
     $this->gosaMailForwardingAddress= array_remove_entries ($addresses,
         $this->gosaMailForwardingAddress);
 
-    /* Update multiple edit values too */
-    if($this->multiple_support_active){
-      $this->gosaMailForwardingAddress_Some = array_remove_entries ($addresses,
-          $this->gosaMailForwardingAddress_Some);
-    }
     $this->is_modified= TRUE;
   }
 

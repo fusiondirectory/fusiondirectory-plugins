@@ -27,11 +27,8 @@ class netgroup extends plugin {
     var $description = "";
 
     var $netgroups = array();
-    var $netgroups_used_by_some = array();
     var $triples = array();
-    var $triples_used_by_some = array();
     var $allusers = array();
-    var $users_used_by_some = array();
 
     var $nisNetgroupTriple = array();
     var $memberNisNetgroup = array();
@@ -281,19 +278,6 @@ class netgroup extends plugin {
         $smarty->assign("tree_image", get_template_path('images/lists/search-subtree.png'));
         $smarty->assign("deplist", $this->config->idepartments);
 
-        /* Multiple edit handling */
-        $smarty->assign("multiple_support", $this->multiple_support_active);
-
-/*        $tmp_members=array();
-        $tmp_members_used_by_some=array();
-
-        foreach ($this->triples_used_by_some as $key => $value) {
-            $tmp_members_used_by_some[$key]=$value;
-        }
-        foreach ($this->netgroups_used_by_some as $key => $value) {
-            $tmp_members_used_by_some[$key]=$value;
-        }
-  */
         $smarty->assign("memberCn_All", $this->allusers);
         $smarty->assign("memberCn_Some", $this->users_used_by_some);
 
@@ -316,24 +300,6 @@ class netgroup extends plugin {
     }
 
     function addUser($uid, $objectClass, $dn) {
-        /* In mutliple edit we have to handle two arrays.
-         *  triples               : Containing users used in all netgroups
-         *  triples_used_by_some  : Those which are not used in all netgroups
-         * So we have to remove the given $uid from the ..used_by_some array first.
-         */
-        if ($this->multiple_support_active) {
-            if (isset($this->netgroups_used_by_some[$uid])) {
-                unset($this->netgroups_used_by_some[$uid]);
-                unset($this->dnMapping[$uid]);
-                unset($this->users_used_by_some[$uid]);
-            }
-            if (isset($this->triples_used_by_some[$uid])) {
-                unset($this->triples_used_by_some[$uid]);
-                unset($this->dnMapping[$uid]);
-                unset($this->users_used_by_some[$uid]);
-            }
-        }
-
         /* Ensure that the requested object is known to the netgroup class
          */
         if (!isset($this->dnMapping[$uid])) {
@@ -379,24 +345,6 @@ class netgroup extends plugin {
             unset($this->dnMapping[$uid]);
             unset($this->allusers[$uid]);
         }
-
-        /* We have two array contianing netgroup members in multiple edit.
-         *  this->triples             : Netgroups used by all currently edited netgroups
-         *  this->triples_used_by_some: Used by some
-         * So we have to remove the specified uid from both arrays.
-         */
-        if ($this->multiple_support_active) {
-            if (isset($this->triples_used_by_some[$uid])) {
-                unset($this->triples_used_by_some[$uid]);
-                unset($this->dnMapping[$uid]);
-                unset($this->users_used_by_some[$uid]);
-            }
-            if (isset($this->netgroups_used_by_some[$uid])) {
-                unset($this->netgroups_used_by_some[$uid]);
-                unset($this->dnMapping[$uid]);
-                unset($this->users_used_by_some[$uid]);
-            }
-        }
     }
 
     /* Reload data and put in the list */
@@ -408,11 +356,6 @@ class netgroup extends plugin {
         $regex = normalizeLdap($nngufilter['regex']);
         $MaxUser = $this->OnlyShowFirstEntries;
 
-/*        if ($this->multiple_support_active) {
-            $this->allusers=array();
-            $this->users_used_by_some=array();
-        }
-  */
         /* Prepare ldap link */
         $ldap = $this->config->get_ldap_link();
         $ldap->cd($nngufilter['dselect']);
@@ -473,80 +416,6 @@ class netgroup extends plugin {
                 $this->members[$value] = $this->createResultName($attrs, $objectClass);
                 $this->allusers[$value] = $this->createResultName($attrs, $objectClass);
             }
-        }
-
-        if ($this->multiple_support_active) {
-            $triplesfilter_used_by_some = "";
-            if ($this->config->get_cfg_value("ldapFilterNestingLimit") == "" ||
-                    count($this->triples_used_by_some) < $this->config->get_cfg_value("ldapFilterNestingLimit")) {
-                foreach (array_keys($this->triples_used_by_some) as $value) {
-                    if (!isset($this->members[$value])) {
-                        $triplesfilter_used_by_some .= "(|(cn=" . normalizeLdap($value) . ")(uid=" . normalizeLdap($value) . "))";
-                    }
-                }
-            }
-
-            /* Search in all the tree for the component of this triple */
-            if (!empty($triplesfilter_used_by_some)) {
-                $ldap->cd($this->config->current['BASE']);
-                $ldap->search("(&(|(objectClass=posixAccount)(objectClass=GOhard)(objectClass=ieee802Device))(|" . $triplesfilter_used_by_some . "))", array("dn", "cn", "uid", "sn", "givenName", "description", "objectClass"));
-                while ($attrs = $ldap->fetch()) {
-                    $selector = "uid";
-                    $objectClass = "posixAccount";
-                    for ($i = 0; $i < $attrs['objectClass']['count']; $i++) {
-                        if ($attrs['objectClass'][$i] == "goServer") {
-                            $selector = "cn";
-                            $objectClass = "goServer";
-                            break;
-                        }
-                        if ($attrs['objectClass'][$i] == "gotoWorkstation") {
-                            $selector = "cn";
-                            $objectClass = "gotoWorkstation";
-                            break;
-                        }
-                        if ($attrs['objectClass'][$i] == "GOhard") {
-                            $selector = "cn";
-                            $objectClass = "GOhard";
-                        }
-                        if ($attrs['objectClass'][$i] == "ieee802Device") {
-                            $selector = "cn";
-                            $objectClass = "ieee802Device";
-                            break;
-                        }
-                    }
-
-                    $value = $attrs[$selector][0];
-                    $this->dnMapping[$value] = $attrs['dn'];
-                    $this->members[$value] = $this->createResultName($attrs, $objectClass);
-                    $this->users_used_by_some[$value] = $this->createResultName($attrs, $objectClass);
-                }
-
-            }
-
-            /* Create a filter with all the netgroups that no appear in $this->members */
-            $netgroupfilter_used_by_some = "";
-            if ($this->config->get_cfg_value("ldapFilterNestingLimit") == "" ||
-                    count($this->netgroups_used_by_some) < $this->config->get_cfg_value("ldapFilterNestingLimit")) {
-                foreach (array_keys($this->netgroups_used_by_some) as $value) {
-                    if (!isset($this->members[$value])) {
-                        $netgroupfilter_used_by_some .= "(cn=" . normalizeLdap($value) . ")";
-                    }
-                }
-            }
-
-            /* Search in all the tree for the component of this netgroup */
-            if (!empty($netgroupfilter_used_by_some)) {
-                $ldap->cd($this->config->current['BASE']);
-                $ldap->search("(&(objectClass=nisNetgroup)(|" . $netgroupfilter_used_by_some . "))", array("dn", "cn", "description"));
-                while ($attrs = $ldap->fetch()) {
-                    $selector = "cn";
-                    $value = $attrs[$selector][0];
-                    $this->dnMapping[$value] = $attrs['dn'];
-                    $this->members[$value] = $this->createResultName($attrs, "nisNetgroup");
-                    $this->users_used_by_some[$value] = $this->createResultName($attrs, "nisNetgroup");
-                }
-            }
-
         }
 
         /* Search in all the tree for the component of this netgroup */
@@ -897,153 +766,6 @@ class netgroup extends plugin {
         )
       );
     }
-
-    function multiple_save_object() {
-        if (isset($_POST['group_mulitple_edit'])) {
-
-            /* Create a base backup and reset the
-              base directly after calling plugin::save_object();
-              Base will be set seperatly a few lines below */
-            $base_tmp = $this->base;
-            plugin::multiple_save_object();
-            plugin::save_object();
-            $this->base = $base_tmp;
-
-            foreach (array("base") as $attr) {
-                if (isset($_POST['use_' . $attr])) {
-                    $this->multi_boxes[] = $attr;
-                }
-            }
-
-            /* Refresh base */
-            if ($this->acl_is_moveable($this->base)) {
-                if (!$this->baseSelector->update()) {
-                    msg_dialog::display(_("Error"), msgPool::permMove(), ERROR_DIALOG);
-                }
-                if ($this->base != $this->baseSelector->getBase()) {
-                    $this->base = $this->baseSelector->getBase();
-                    $this->is_modified = TRUE;
-                }
-            }
-        }
-    }
-
-    function get_multi_edit_values() {
-        $ret = plugin::get_multi_edit_values();
-
-        foreach (array("base") as $attr) {
-            if (in_array($attr, $this->multi_boxes)) {
-                $ret[$attr] = $this->$attr;
-            }
-        }
-
-        $ret['memberCn'] = $this->allusers;
-        $ret['memberCn_used_by_some'] = $this->users_used_by_some;
-        $ret['triples'] = $this->triples;
-        $ret['triples_used_by_some'] = $this->triples_used_by_some;
-        $ret['netgroups'] = $this->netgroups;
-        $ret['netgroups_used_by_some'] = $this->netgroups_used_by_some;
-        return($ret);
-    }
-
-    function multiple_execute() {
-        return($this->execute());
-    }
-
-    /* Initialize plugin with given atribute arrays
-     */
-
-    function init_multiple_support($attrs, $all) {
-        plugin::init_multiple_support($attrs, $all);
-        $this->members=array();
-        $this->allusers=array();
-        $this->users_used_by_some=array();
-        $this->netgroups = array();
-        $this->netgroups_used_by_some = array();
-        if (isset($attrs['memberNisNetgroup'])) {
-            for ($i = 0; $i < $attrs['memberNisNetgroup']['count']; $i++) {
-                $this->netgroups[$attrs['memberNisNetgroup'][$i]] = $attrs['memberNisNetgroup'][$i];
-            }
-            ksort($this->netgroups);
-        }
-
-        if (isset($all['memberNisNetgroup'])) {
-            for ($i = 0; $i < $all['memberNisNetgroup']['count']; $i++) {
-                if (!in_array($all['memberNisNetgroup'][$i], $this->netgroups)) {
-                    $this->netgroups_used_by_some[$all['memberNisNetgroup'][$i]] = $all['memberNisNetgroup'][$i];
-                }
-            }
-            ksort($this->netgroups_used_by_some);
-        }
-
-        $this->triples = array();
-        $this->triples_used_by_some = array();
-        if (isset($attrs['nisNetgroupTriple'])) {
-            for ($i = 0; $i < $attrs['nisNetgroupTriple']['count']; $i++) {
-                if (preg_match("/^\((\S+),\-?,(\S*)\)$/", $attrs['nisNetgroupTriple'][$i], $matches)) {
-                    //Removing host.domain entries
-                    if(strpos($matches[1],".")===false){
-                        $this->triples[$matches[1]] = $attrs['nisNetgroupTriple'][$i];
-                    }
-                }
-                if (preg_match("/^\(\-?,(\S+),(\S*)\)$/", $attrs['nisNetgroupTriple'][$i], $matches)) {
-                    $this->triples[$matches[1]] = $attrs['nisNetgroupTriple'][$i];
-                }
-            }
-            ksort($this->triples);
-        }
-
-        if (isset($all['nisNetgroupTriple'])) {
-            for ($i = 0; $i < $all['nisNetgroupTriple']['count']; $i++) {
-                if (!in_array($all['nisNetgroupTriple'][$i], $this->triples)) {
-                    if (preg_match("/^\((\S+),\-?,(\S*)\)$/", $all['nisNetgroupTriple'][$i], $matches)) {
-                        //Removing host.domain entries
-                        if(strpos($matches[1],".")===false){
-                            $this->triples_used_by_some[$matches[1]] = $all['nisNetgroupTriple'][$i];
-                        }
-                    }
-                    if (preg_match("/^\(\-?,(\S+),(\S*)\)$/", $all['nisNetgroupTriple'][$i], $matches)) {
-                        $this->triples_used_by_some[$matches[1]] = $all['nisNetgroupTriple'][$i];
-                    }
-                }
-            }
-            ksort($this->triples_used_by_some);
-        }
-
-        $this->reload();
-
-    }
-
-    function set_multi_edit_values($attrs) {
-        $triples = array();
-        $netgroups = array();
-
-        /* Update netgroupMembership, keep optinal netgroup */
-        foreach ($attrs['triples_used_by_some'] as $uid => $value) {
-            if (in_array($uid, array_keys($this->triples))) {
-                $triples[$uid] = $value;
-            }
-        }
-
-        foreach ($attrs['netgroups_used_by_some'] as $uid => $value) {
-            if (in_array($uid, array_keys($this->netgroups))) {
-                $netgroups[$uid] = $value;
-            }
-        }
-
-        /* Update netgroupMembership, add forced netgroups */
-        foreach ($attrs['triples'] as $uid => $value) {
-            $triples[$uid] = $value;
-        }
-        foreach ($attrs['netgroups'] as $uid => $value) {
-            $netgroups[$uid] = $value;
-        }
-        plugin::set_multi_edit_values($attrs);
-        $this->triples = $triples;
-        $this->netgroups = $netgroups;
-        //$this->memberCn = $users;
-    }
-
 }
 
 ?>

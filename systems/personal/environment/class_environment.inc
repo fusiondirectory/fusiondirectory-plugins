@@ -621,17 +621,12 @@ class environment extends plugin
       }
     }
 
-    /* Reset header toggle */
-    if($this->multiple_support_active){
-      $display = "";
-    }
-
     /* Account is Account : is_accounbt=true.
      * Else we won't reach this.
      */
 
     /* Prepare all variables for smarty */
-    foreach($this->attributes as $s_attr){
+    foreach ($this->attributes as $s_attr) {
       /* Set value*/
       $smarty->assign($s_attr,$this->$s_attr);
 
@@ -658,12 +653,12 @@ class environment extends plugin
 
 
     $smarty->assign("useProfile",$this->useProfile);
-    if(empty($this->useProfile) && !$this->multiple_support_active){
+    if (empty($this->useProfile)) {
       $smarty->assign("useProfileCHK","");
       $smarty->assign("gotoProfileServerACL" , preg_replace("/w/","",$this->getacl("gotoProfileServer",$WriteOnly)));
       $smarty->assign("gotoProfileQuotaACL" , preg_replace("/w/","",$this->getacl("gotoProfileQuota",$WriteOnly)));
       $smarty->assign("gotoProfileFlagCACL" , preg_replace("/w/","",$this->getacl("gotoProfileFlagC",$WriteOnly)));
-    }else{
+    } else {
       $smarty->assign("useProfileCHK"," checked ");
     }
 
@@ -730,9 +725,6 @@ class environment extends plugin
           $this->dialog=FALSE;
           $this->is_dialog=false;
 
-          if($this->multiple_support_active){
-            $tmp['UsedByAllUsers'] = TRUE;
-          }
           $this->gotoLogonScripts[$tmp['LogonName']]=$tmp;
         }
       }
@@ -800,9 +792,6 @@ class environment extends plugin
           $this->dialog=FALSE;
           $this->is_dialog=false;
 
-          if($this->multiple_support_active){
-            $tmp['UsedByAllUsers'] = TRUE;
-          }
           $this->gotoLogoffScripts[$tmp['LogoffName']]=$tmp;
         }
       }
@@ -846,22 +835,15 @@ class environment extends plugin
     }
 
     /* Append List to smarty*/
-    if($this->multiple_support_active){
-      $smarty->assign("gotoLogonScripts",  $this->gotoLogonScripts);
-      $smarty->assign("gotoLogonScriptKeysCnt",count($this->gotoLogonScripts));
-      $smarty->assign("gotoLogoffScripts",       htmlencode($this->gotoLogoffScripts));
-      $smarty->assign("gotoLogoffScriptKeysCnt", count($this->gotoLogoffScripts));
-    }else{
-      $ls = $this->printOutLogonScripts();
-      $smarty->assign("gotoLogonScripts",  $ls);
-      $smarty->assign("gotoLogonScriptKeys",array_flip($ls));
-      $smarty->assign("gotoLogonScriptKeysCnt",count($ls));
+    $ls = $this->printOutLogonScripts();
+    $smarty->assign("gotoLogonScripts",  $ls);
+    $smarty->assign("gotoLogonScriptKeys",array_flip($ls));
+    $smarty->assign("gotoLogonScriptKeysCnt",count($ls));
 
-      $ls = $this->printOutLogoffScripts();
-      $smarty->assign("gotoLogoffScripts",  htmlencode($ls));
-      $smarty->assign("gotoLogoffScriptKeys",htmlencode(array_flip($ls)));
-      $smarty->assign("gotoLogoffScriptKeysCnt",count($ls));
-    }
+    $ls = $this->printOutLogoffScripts();
+    $smarty->assign("gotoLogoffScripts",  htmlencode($ls));
+    $smarty->assign("gotoLogoffScriptKeys",htmlencode(array_flip($ls)));
+    $smarty->assign("gotoLogoffScriptKeysCnt",count($ls));
 
     /* In this section server shares will be defined
      * A user can select one of the given shares and a mount point
@@ -906,10 +888,6 @@ class environment extends plugin
         $this->gotoShares[$a_share['name']."|".$a_share['server']]['Username']=$s_user;
         $this->gotoShares[$a_share['name']."|".$a_share['server']]['PwdHash']="";
         $this->gotoShares[$a_share['name']."|".$a_share['server']]['mountPoint']=$s_mount;
-
-        if($this->multiple_support_active){
-          $this->gotoShares[$a_share['name']."|".$a_share['server']]['UsedByAllUsers']= TRUE;
-        }
       }
     }
 
@@ -969,14 +947,6 @@ class environment extends plugin
       }
 
       $color = "";
-      if($this->multiple_support_active){
-        if($this->gotoShares[$key]['UsedByAllUsers']){
-          $value .= "&nbsp;(<b>"._("Used by all users")."</b>)";
-        }else{
-          $color = "color: #999999;";
-          $value .= "&nbsp;(<b>"._("Used by some users")."</b>)";
-        }
-      }
 
       /* Check if entry starts with an ! */
       if(preg_match("/^!/",$this->gotoShares[$key]['server'])){
@@ -1057,9 +1027,6 @@ class environment extends plugin
         $entry['id']       = $tmp[1];
         $entry['produkt']      = $tmp[2];
         $entry['vendor']     = $tmp[3];
-        if($this->multiple_support_active){
-          $entry['UsedByAllUsers'] = TRUE;
-        }
         $this->gotoHotplugDevices[$name]= $entry;
       }
       $this->dialog= FALSE;
@@ -1073,12 +1040,8 @@ class environment extends plugin
       return($this->dialog->execute());
     }
 
-    if($this->multiple_support_active){
-      $smarty->assign("gotoHotplugDevices",$this->gotoHotplugDevices);
-    }else{
-      $smarty->assign("gotoHotplugDevices",$this->printOutHotPlugDevices());
-      $smarty->assign("gotoHotplugDeviceKeys",array_flip($this->printOutHotPlugDevices()));
-    }
+    $smarty->assign("gotoHotplugDevices",$this->printOutHotPlugDevices());
+    $smarty->assign("gotoHotplugDeviceKeys",array_flip($this->printOutHotPlugDevices()));
 
     /* Printer Assignment will managed below
      * A printer can be assigned in two different ways and two different types
@@ -1119,9 +1082,7 @@ class environment extends plugin
               $type = "AddGroup";
             }
           }else{
-            if($this->multiple_support_active){
-              $type = "AddUser";
-            }elseif(isset($this->NewDeletedPrinters[$pname])){
+            if(isset($this->NewDeletedPrinters[$pname])){
               $type = "AddUser";
             }elseif($this->dn == "new"){
               $type = "AddUser";
