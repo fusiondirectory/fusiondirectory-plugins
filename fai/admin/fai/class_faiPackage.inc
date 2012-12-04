@@ -543,7 +543,7 @@ class faiPackage extends plugin
     if($this->is_new){
       $release = $this->parent->parent->fai_release;
       $new_dn= 'cn='.$this->cn.",".get_ou('faiPackageRDN').get_ou('faiBaseRDN').$release;
-      $res = faiManagement::check_class_name("FAIpackageList",$this->cn,$new_dn);
+      $res = faiManagement::check_class_name("FAIpackageList", $this->cn, $new_dn);
       if(isset($res[$this->cn])){
         $message[] = msgPool::duplicated(_("Name"));
       }

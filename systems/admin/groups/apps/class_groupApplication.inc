@@ -54,16 +54,14 @@ class appgroup extends plugin
     $this->a_Structure_on_load = $this->a_Structure;
 
     /* Check if we have relase mangement enabled and prepare group application for release management */
-    $tmp = $config->search("faiManagement", "CLASS",array('menu','tabs'));
-    if(!empty($tmp)){
-      $this->enableReleaseManagement = true;
-    }
+    $this->enableReleaseManagement = class_available("faiManagement");
 
     $this->Releases   = $this->getReleases();
 
-    /* Set intial release */
-    $this->FAIrelease = $config->search("faiManagement","DEFAULTFAIRELEASE",array("menu"));
-    if(empty($this->FAIrelease) || !isset($this->Releases[$this->FAIrelease])){
+    /* Set intial release
+     * FIXME : we can't use this kind of things anymore with new menu sytem */
+    $this->FAIrelease = $config->search("faiManagement", "DEFAULTFAIRELEASE", array("menu"));
+    if (empty($this->FAIrelease) || !isset($this->Releases[$this->FAIrelease])) {
       $this->FAIrelease = "/";
     }
 

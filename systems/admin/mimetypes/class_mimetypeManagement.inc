@@ -116,13 +116,7 @@ class mimetypeManagement extends management
   function IsReleaseManagementActivated()
   {
     /* Check if we should enable the release selection */
-    $tmp = $this->config->search("faiManagement", "CLASS",array('menu','tabs'));
-    if(!empty($tmp) && class_available("faiManagement")){
-      return(true);
-    }
-    return(false);
+    return class_available("faiManagement");
   }
-
 }
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

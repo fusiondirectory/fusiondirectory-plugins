@@ -49,6 +49,7 @@ class faiManagement extends management
     $this->config = $config;
 
     $this->fai_base = get_ou("faiBaseRDN").$this->config->current['BASE'];
+    /* FIXME */
     $cfg_rel = $this->config->search("faiManagement","DEFAULTFAIRELEASE",array("menu"));
     if (!empty($cfg_rel)) {
       $this->fai_release = $cfg_rel;
@@ -480,14 +481,14 @@ class faiManagement extends management
     /* Check if we have a post remove method configured
      *  else skip this operation. (Skip:Button in the ui should be disabled in this case too)
      */
-    if("" != $this->config->search("faiManagement", "POSTREMOVE",array('menu','tabs'))){
+    if ("" != $this->config->search("faiManagement", "POSTREMOVE", array('menu','tabs','hooks'))) {
       /* Load permissions for selected 'dn' and check if
          we're allowed to remove this 'dn' */
-      if(preg_match("/d/",$this->ui->get_permissions($this->acl_base,"fai/faiManagement"))){
+      if (preg_match("/d/",$this->ui->get_permissions($this->acl_base,"fai/faiManagement"))) {
         $smarty=get_smarty();
         $smarty->assign("release_hidden",base64_encode($this->fai_release));
         $smarty->assign("info", msgPool::deleteInfo(LDAP::fix($this->fai_release),_("FAI branch/freeze")));
-        return($smarty->fetch(get_template_path('remove_branch.tpl',TRUE)));
+        return $smarty->fetch(get_template_path('remove_branch.tpl',TRUE));
       } else {
         msg_dialog::display(_("Permission error"), _("You have no permission to delete this release!"), ERROR_DIALOG);
       }
@@ -502,11 +503,11 @@ class faiManagement extends management
     /* Check if we have a post remove method configured
      *  else skip this operation. (Skip:Button in the ui should be disabled in this case too)
      */
-    if("" != $this->config->search("faiManagement", "POSTREMOVE",array('menu','tabs'))){
+    if ("" != $this->config->search("faiManagement", "POSTREMOVE", array('menu','tabs','hooks'))) {
 
-      if(!isset($_POST['release_hidden']) || base64_decode($_POST['release_hidden']) != $this->fai_release){
+      if (!isset($_POST['release_hidden']) || base64_decode($_POST['release_hidden']) != $this->fai_release) {
         msg_dialog::display(_("Warning"),_("Release remove aborted because the release name check failed!"));
-      }else{
+      } else {
 
         $bb =  $this->fai_release;
         $ldap = $this->config->get_ldap_link();
@@ -581,21 +582,21 @@ class faiManagement extends management
    */
   function createBranch()
   {
-    if($this->config->search("faiManagement", "POSTCREATE",array('menu','tabs')) == ""){
+    if ($this->config->search("faiManagement", "POSTCREATE",array('menu','tabs','hooks')) == "") {
       msg_dialog::display(_("Configuration"), msgPool::cmdnotfound("POSTCREATE", get_class()), ERROR_DIALOG);
-    }elseif(!preg_match("/c/",$this->ui->get_permissions($this->acl_base,"fai/faiManagement"))){
+    } elseif (!preg_match("/c/", $this->ui->get_permissions($this->acl_base, "fai/faiManagement"))) {
       msg_dialog::display(_("Permission error"), msgPool::permCreate(_("Branch")), ERROR_DIALOG);
-    }else{
+    } else {
       $smarty = get_smarty();
-      $this->dispNewBranch=true;
-      $this->dispNewFreeze=false;
-      $smarty->assign("iframe",false);
-      if(isset($_POST['BranchName'])){
+      $this->dispNewBranch  = TRUE;
+      $this->dispNewFreeze  = FALSE;
+      $smarty->assign("iframe", FALSE);
+      if (isset($_POST['BranchName'])) {
         $smarty->assign("BranchName", $_POST['BranchName']);
-      }else{
-        $smarty->assign("BranchName","");
+      } else {
+        $smarty->assign("BranchName", "");
       }
-      return($smarty->fetch(get_template_path('faiNewBranch.tpl', TRUE, dirname(__FILE__))));
+      return $smarty->fetch(get_template_path('faiNewBranch.tpl', TRUE, dirname(__FILE__)));
     }
   }
 
@@ -986,8 +987,8 @@ class faiManagement extends management
     $smarty = get_smarty();
     $smarty->assign("fai_release", $this->fai_release);
     $smarty->assign("fai_base", $this->fai_base);
-    $r = $this->config->search("faiManagement", "POSTREMOVE",array('menu','tabs'));
-    $c = $this->config->search("faiManagement", "POSTCREATE",array('menu','tabs'));
+    $r = $this->config->search("faiManagement", "POSTREMOVE",array('menu','tabs','hooks'));
+    $c = $this->config->search("faiManagement", "POSTCREATE",array('menu','tabs','hooks'));
     $smarty->assign("allow_create", $c);
     $smarty->assign("allow_remove", $r);
     $display = $headpage->render();

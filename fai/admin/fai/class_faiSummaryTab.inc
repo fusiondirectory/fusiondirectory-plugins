@@ -180,18 +180,16 @@ class faiSummaryTab extends plugin{
   {
 
     /* Skip this if fai is deactivated */
-    $tmp = $this->config->search("faiManagement", "CLASS",array('menu','tabs'));
-    if(!empty($tmp) && class_available("faiManagement")){
-      $str = "<h2>"._("You can't use this plugin until FAI is activated.")."</h2>";
-      return $str;
+    if (!class_available("faiManagement")) {
+      return "<h2>"._("You can't use this plugin until FAI is activated.")."</h2>";
     }
 
     /* Check if we must (re)init the this tab */
-    if(!$this->InitCalled){
+    if (!$this->InitCalled) {
       $this->init();
     }
 
-    if(isset($_GET['show'])){
+    if (isset($_GET['show'])) {
       $ldap = $this->config->get_ldap_link();
       $ldap->cat(base64_decode($_GET['id']), array('FAIscript', 'FAIhook', 'FAItemplateFile'));
       $attrs = $ldap->fetch();

@@ -700,16 +700,12 @@ class mimetype extends plugin
 
   function is_release()
   {
-    if(is_object($this->parent->parent)){
-      return($this->parent->parent->IsReleaseManagementActivated());
-    }else{
+    if (is_object($this->parent->parent)) {
+      return $this->parent->parent->IsReleaseManagementActivated();
+    } else {
       /* Check if we should enable the release selection */
-      $tmp = $this->config->search("faiManagement", "CLASS",array('menu','tabs'));
-      if(!empty($tmp) && class_available("faiManagement")){
-        return(true);
-      }
+      return class_available("faiManagement");
     }
-    return(FALSE);
   }
 
 
