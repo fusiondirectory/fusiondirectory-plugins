@@ -66,7 +66,8 @@ class argonautServer extends simpleService
             _('Timeout'),
             _('Time in seconds before to consider an argonaut client or server as down'),
             'argonautTimeout', FALSE,
-            1 /*min*/, FALSE /*no max*/
+            1 /*min*/, FALSE /*no max*/,
+            10
           ),
           new StringAttribute (
             _('Log directory'),
