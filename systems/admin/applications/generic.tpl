@@ -154,7 +154,7 @@
       <button type='submit' name='upLoadOff'>{t}Upload{/t}</button>
 
 {/render}
-      {image path="images/save.png" action="downloadScriptOff" title="{t}Download{/t}"}
+      <img src="images/save.png" name="downloadScriptOff" title="{t}Download{/t}"/>
     </td>
   </tr>
 </table>
