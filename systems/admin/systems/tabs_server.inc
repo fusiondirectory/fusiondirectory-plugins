@@ -66,7 +66,7 @@ class servtabs extends tabs
   }
 
 
-  function save($ignore_account = FALSE)
+  function save()
   {
     /* Check for new 'dn', in order to propagate the
        'dn' to all plugins */
@@ -93,7 +93,7 @@ class servtabs extends tabs
       $this->by_object[$key]->cn = $baseobject->cn;
     }
 
-    parent::save(FALSE);
+    parent::save();
 
     /* Reload server settings after saving */
     $config = session::get('config');

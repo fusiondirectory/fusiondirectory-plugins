@@ -47,7 +47,7 @@ class roletabs extends tabs
     }
   }
 
-  function save($ignore_account = FALSE)
+  function save()
   {
     $baseobject = $this->getBaseObject();
 

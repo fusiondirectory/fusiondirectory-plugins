@@ -32,13 +32,8 @@ class tabsHook extends tabs
 # $this->addSpecialTabs();
   }
 
-  function check($ignore_account= FALSE)
-  {
-  return (tabs::check(TRUE));
-  }
 
-
-  function save($ignore_account= FALSE)
+  function save()
   {
     $baseobject= $this->by_object['faiHook'];
   $new_dn ='cn='.$baseobject->cn.",".get_ou('faiHookRDN').$this->parent->fai_release;
@@ -56,7 +51,7 @@ class tabsHook extends tabs
   }
   $this->dn= $new_dn;
 
-  tabs::save(TRUE);
+  tabs::save();
   }
 
 }

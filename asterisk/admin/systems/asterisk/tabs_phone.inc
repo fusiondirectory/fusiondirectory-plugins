@@ -40,7 +40,7 @@ class phonetabs extends tabs
   }
 
 
-  function save($ignore_account = FALSE)
+  function save()
   {
     /* Check for new 'dn', in order to propagate the
        'dn' to all plugins */
@@ -52,7 +52,7 @@ class phonetabs extends tabs
       $this->by_object[$key]->dn = $this->dn;
     }
 
-    parent::save(TRUE);
+    parent::save();
   }
 }
 ?>

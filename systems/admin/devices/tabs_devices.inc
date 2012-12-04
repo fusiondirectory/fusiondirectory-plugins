@@ -32,7 +32,7 @@ class devicetabs extends tabs
     $this->addSpecialTabs();
   }
 
-  function save($ignore_account = FALSE)
+  function save()
   {
     $baseobject = $this->getBaseObject();
     $new_dn = "cn=".$baseobject->cn.",".get_ou('deviceRDN').$baseobject->base;

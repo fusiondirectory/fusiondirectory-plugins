@@ -24,7 +24,7 @@ class apachevhosttabs extends tabs
 {
   var $Release = "";
 
-  function save($ignore_account = FALSE)
+  function save()
   {
     $baseobject = $this->getBaseObject();
     $new_dn = "apacheServerName=".$baseobject->apacheServerName.",".session::get('serviceApacheVhostEditDN');
@@ -42,7 +42,7 @@ class apachevhosttabs extends tabs
       $this->dn = $new_dn;
     }
 
-    return parent::save($ignore_account);
+    return parent::save();
   }
 
 }

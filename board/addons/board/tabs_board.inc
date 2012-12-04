@@ -38,7 +38,7 @@ class tabs_board extends tabs
     parent::tabs($config, $data, $dn, $category);
   }
 
-  function save($ignore_account = FALSE)
+  function save()
   {
   }
 }

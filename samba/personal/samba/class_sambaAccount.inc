@@ -1019,7 +1019,7 @@ class sambaAccount extends plugin
             // Check for users primary group
             $ldap->cd($this->config->current['BASE']);
             $ldap->search("(&(objectClass=posixGroup)(gidNumber=".$this->gidNumber."))", array("cn"));
-            if ($ldap->count() != 1){
+            if ($ldap->count() != 1) {
                 msg_dialog::display(_("Warning"),
                         _("Cannot convert primary group to samba group: group cannot be identified!"),
                         WARNING_DIALOG);

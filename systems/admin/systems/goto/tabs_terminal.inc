@@ -50,7 +50,7 @@ class termtabs extends tabs
   }
 
 
-  function save($ignore_account = FALSE)
+  function save()
   {
     /* Check for new 'dn', in order to propagate the
        'dn' to all plugins */
@@ -70,7 +70,7 @@ class termtabs extends tabs
       $this->by_object[$key]->cn = $baseobject->cn;
     }
 
-    parent::save(TRUE);
+    parent::save();
     if (isset($this->by_object['printgeneric'])) {
       if (($this->by_object['printgeneric']->is_account == FALSE) &&
           ($this->by_object['printgeneric']->initially_was_account == TRUE)) {

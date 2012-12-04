@@ -33,13 +33,8 @@ class tabsScript extends tabs
     // $this->addSpecialTabs();
   }
 
-  function check($ignore_account = FALSE)
-  {
-    return tabs::check(TRUE);
-  }
 
-
-  function save($ignore_account = FALSE)
+  function save()
   {
     $baseobject = $this->getBaseObject();
     $new_dn = 'cn='.$baseobject->cn.",".get_ou('faiScriptRDN').$this->parent->fai_release;
@@ -57,7 +52,7 @@ class tabsScript extends tabs
     }
     $this->dn = $new_dn;
 
-    parent::save(TRUE);
+    parent::save();
   }
 }
 ?>

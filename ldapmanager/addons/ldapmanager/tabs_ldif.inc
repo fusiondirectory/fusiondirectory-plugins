@@ -28,7 +28,7 @@ class ldiftab extends tabs
     parent::tabs($config, $data, $dn, '', $copied_object);
   }
 
-  function save($ignore_account = FALSE)
+  function save()
   {
   }
 

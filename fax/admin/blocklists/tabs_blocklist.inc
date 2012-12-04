@@ -30,7 +30,7 @@ class faxblocktabs extends tabs
     $this->addSpecialTabs();
   }
 
-  function save($ignore_account = FALSE)
+  function save()
   {
     $baseobject = $this->by_object['blocklistGeneric'];
 

@@ -33,13 +33,8 @@ class tabsVariable extends tabs
 # $this->addSpecialTabs();
   }
 
-  function check($ignore_account= FALSE)
-  {
-  return (tabs::check(TRUE));
-  }
 
-
-  function save($ignore_account= FALSE)
+  function save()
   {
     $baseobject= $this->by_object['faiVariable'];
   $new_dn ='cn='.$baseobject->cn.",".get_ou('faiVariableRDN').$this->parent->fai_release;
@@ -57,7 +52,7 @@ class tabsVariable extends tabs
   }
   $this->dn= $new_dn;
 
-  tabs::save(TRUE);
+  tabs::save();
   }
 
 }
