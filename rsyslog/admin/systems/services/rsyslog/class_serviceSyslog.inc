@@ -88,11 +88,9 @@ class rSyslogServer extends simpleService{
       array(
         'erase' => array (
           FALSE => array (
-            'section1' => array (
-              'gosaLogDB',
-              'goLogAdmin',
-              'goLogPassword',
-            )
+            'gosaLogDB',
+            'goLogAdmin',
+            'goLogPassword',
           )
         )
       )

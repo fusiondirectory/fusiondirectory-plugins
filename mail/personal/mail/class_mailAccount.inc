@@ -307,9 +307,7 @@ class mailAccount extends simplePlugin
         array (
           'erase' => array (
             FALSE => array (
-              'options1' => array(
-                'gosaVacationStart','gosaVacationStop','gosaVacationMessage'
-              )
+              'gosaVacationStart','gosaVacationStop','gosaVacationMessage'
             )
           )
         )
@@ -320,9 +318,7 @@ class mailAccount extends simplePlugin
       array (
         'erase' => array (
           FALSE => array (
-            'options2' => array(
-              'gosaSpamMailbox','gosaSpamSortLevel'
-            )
+            'gosaSpamMailbox','gosaSpamSortLevel'
           )
         )
       )
@@ -330,11 +326,7 @@ class mailAccount extends simplePlugin
     $this->attributesInfo['options2']['attrs']['flag_spamsize']->setManagedAttributes (
       array (
         'erase' => array (
-          FALSE => array (
-            'options2' => array(
-              'gosaMailMaxSize'
-            )
-          )
+          FALSE => array ('gosaMailMaxSize')
         )
       )
     );
@@ -343,17 +335,12 @@ class mailAccount extends simplePlugin
       array (
         'erase' => array (
           TRUE => array (
-            'options1' => array('flag_vacation',
-              'gosaVacationStart','gosaVacationStop','gosaVacationMessage'
-            ),
-            'options2' => array(
-              'flag_spamlevel','flag_spamsize','gosaMailMaxSize',
-              'gosaSpamMailbox','gosaSpamSortLevel'
-            ),
-            'advanced' => array (
-              'flag_ownmailbox',
-              'flag_localonly'
-            )
+            'flag_vacation',
+            'gosaVacationStart','gosaVacationStop','gosaVacationMessage',
+            'flag_spamlevel','flag_spamsize','gosaMailMaxSize',
+            'gosaSpamMailbox','gosaSpamSortLevel',
+            'flag_ownmailbox',
+            'flag_localonly'
           )
         )
       )

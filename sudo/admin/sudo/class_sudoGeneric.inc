@@ -156,23 +156,17 @@ class sudo extends simplePlugin
       array(
         'erase' => array(
           TRUE => array(
-            'section1' => array(
-              'sudoUser',
-              'sudoCommand',
-              'sudoHost',
-              'sudoRunAs',
-            ),
-            'section2' => array (
-              'accessTo',
-              'trustModel'
-            )
+            'sudoUser',
+            'sudoCommand',
+            'sudoHost',
+            'sudoRunAs',
+            'accessTo',
+            'trustModel'
           )
         ),
         'disable' => array(
           TRUE => array(
-            'section1' => array (
-              'cn'
-            )
+            'cn'
           )
         )
       )
@@ -182,9 +176,7 @@ class sudo extends simplePlugin
         'multiplevalues' => array( 'value1' => array('','fullaccess')),
         'erase' => array (
           'value1' => array (
-            'section2' => array(
-              'accessTo'
-            )
+            'accessTo'
           )
         )
       )

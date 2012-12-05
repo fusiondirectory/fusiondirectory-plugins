@@ -169,9 +169,7 @@ class govirusserver extends simpleService {
       array (
         'erase' => array (
           FALSE => array (
-            'section2' => array(
-              'avFlags4','avArchiveMaxFileSize','avArchiveMaxRecursion','avArchiveMaxCompressionRatio',
-            )
+            'avFlags4','avArchiveMaxFileSize','avArchiveMaxRecursion','avArchiveMaxCompressionRatio',
           )
         )
       )

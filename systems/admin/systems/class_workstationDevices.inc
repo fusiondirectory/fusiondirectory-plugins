@@ -164,9 +164,7 @@ class workstationDevices extends simplePlugin
     $this->attributesInfo['display']['attrs']['useDDC']->setManagedAttributes(
       array(
         'disable' => array(
-          TRUE => array(
-            'display' => array('gotoXHsync', 'gotoXVsync'),
-          )
+          TRUE => array('gotoXHsync', 'gotoXVsync'),
         )
       )
     );

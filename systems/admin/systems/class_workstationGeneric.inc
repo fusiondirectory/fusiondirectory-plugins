@@ -214,7 +214,7 @@ class workstationGeneric extends simplePlugin
 
   var $inheritance = array("gotoWorkstationTemplate" => "member");
 
-  var $preInitAttributes = array('network' => array('networkSettings'));
+  var $preInitAttributes = array('networkSettings');
 
   /*!
    *  \brief The main function : information about attributes
@@ -352,9 +352,7 @@ class workstationGeneric extends simplePlugin
     $this->attributesInfo['servers']['attrs']['inheritTimeServer']->setManagedAttributes(
       array(
         'erase' => array(
-          TRUE => array(
-            'servers' => array('gotoNtpServer'),
-          )
+          TRUE => array('gotoNtpServer'),
         )
       )
     );
@@ -363,9 +361,7 @@ class workstationGeneric extends simplePlugin
     $this->attributesInfo['servers']['attrs']['inheritLDAPServer']->setManagedAttributes(
       array(
         'erase' => array(
-          TRUE => array(
-            'servers' => array('gotoLdapServer'),
-          )
+          TRUE => array('gotoLdapServer'),
         )
       )
     );

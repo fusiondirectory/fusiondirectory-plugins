@@ -167,10 +167,8 @@ class proxyAccount extends simplePlugin
       array(
         'erase' => array(
           FALSE => array(
-            'section1' => array(
-              'gosaProxyWorkingStart',
-              'gosaProxyWorkingStop',
-            )
+            'gosaProxyWorkingStart',
+            'gosaProxyWorkingStop',
           )
         )
       )
@@ -181,10 +179,8 @@ class proxyAccount extends simplePlugin
       array(
         'erase' => array(
           FALSE => array(
-            'section1' => array(
-              'gosaProxyQuota',
-              'gosaProxyQuotaPeriod',
-            )
+            'gosaProxyQuota',
+            'gosaProxyQuotaPeriod',
           )
         )
       )
