@@ -134,7 +134,7 @@
       </td>
       <td style="vertical-align: top;">
         <select id="quotaLdapServerURI" size="1" name="quotaLdapServerURI" size="10">
-          {html_options options=$ldapServers selected=$quotaLdapServerURI }
+          {html_options options=$ldapServers selected=$quotaLdapServerURI}
         </select>
        </td>
     </tr>
