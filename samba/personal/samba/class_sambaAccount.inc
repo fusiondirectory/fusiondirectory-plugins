@@ -1051,6 +1051,7 @@ class sambaAccount extends plugin
         }
 
         // Write back to ldap
+        $ldap = $this->config->get_ldap_link();
         $ldap->cd($this->dn);
         $this->cleanup();
         $ldap->modify ($this->attrs);
