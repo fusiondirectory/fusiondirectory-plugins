@@ -46,9 +46,9 @@ class mailgroup extends plugin
   var $members                    = array();  // Group members
   var $mailusers                  = array();  // Group member with mail account
   var $folder_acls                = array();
-  var $MailMethod = NULL;
-  var $mailAddressSelect             = FALSE;
-  var $remove_folder_from_imap    = true;
+  var $MailMethod                 = NULL;
+  var $mailAddressSelect          = FALSE;
+  var $remove_folder_from_imap    = TRUE;
   var $view_logged                = FALSE;
   var $mailDomainPart             = "";
 
@@ -83,7 +83,7 @@ class mailgroup extends plugin
 
     /* Intialize the used mailMethod
      */
-    $tmp = new mailMethod($config,$this,"group");
+    $tmp = new mailMethod($config, $this, "group");
     $this->mailMethod           = $tmp->get_method();
     $this->mailMethod->fixAttributesOnLoad();
     $this->mailDomainParts      = $this->mailMethod->getMailDomains();

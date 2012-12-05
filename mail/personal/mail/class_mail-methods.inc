@@ -20,7 +20,8 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class mailMethod{
+class mailMethod
+{
 
   /* Allow modification of account_ids for existing mail accounts */
   protected $modifyableMail   = TRUE;
@@ -484,14 +485,14 @@ class mailMethod{
   {
     $methods = mailMethod::get_methods();
     if ($this->config->get_cfg_value("mailmethod") != ""){
-      $method= $this->config->get_cfg_value("mailmethod");
+      $method = $this->config->get_cfg_value("mailmethod");
       $cls = get_correct_class_name("mailMethod$method");
-      if(isset($methods[$cls])){
+      if (isset($methods[$cls])) {
         @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,"", "<b>MAIL:</b> Selected mailMethod: <b>".$cls."</b>");
         $tmp = new $cls($this->config,$this->parent,$this->type);
         $tmp->init();
-        return($tmp);
-      }else{
+        return $tmp;
+      } else {
         @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "","<b>MAIL: Invalid mailMethod defined: ".$cls.
             " falling back to ".get_class($this)."</b>");
 
@@ -505,7 +506,7 @@ class mailMethod{
     /* If no valued mailMethod could be detected, return the base class.
      */
     $this->init();
-    return($this);
+    return $this;
   }
 
 
@@ -834,7 +835,4 @@ class mailMethod{
     return($tmp);
   }
 }
-
-
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

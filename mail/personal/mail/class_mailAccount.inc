@@ -38,12 +38,12 @@
 class mailFlagsAttribute extends StringAttribute
 {
   static private $flags = array(
-    'flag_ownmailbox'     => 'advanced',
-    'flag_vacation'       => 'options1',
-    'flag_spamlevel'      => 'options2',
-    'flag_spamsize'       => 'options2',
-    'flag_localonly'      => 'advanced',
-    'flag_sieveownscript' => 'advanced'
+    'flag_ownmailbox',
+    'flag_vacation',
+    'flag_spamlevel',
+    'flag_spamsize',
+    'flag_localonly',
+    'flag_sieveownscript'
   );
 
   function __construct ($label, $description, $ldapName, $required = FALSE, $defaultValue = "", $acl = "", $regexp = "")
@@ -55,17 +55,21 @@ class mailFlagsAttribute extends StringAttribute
   function setValue ($value)
   {
     parent::setValue($value);
-    foreach (self::$flags as $attr => $section) {
-      $trueValue = $this->plugin->attributesInfo[$section]['attrs'][$attr]->trueValue;
-      $this->plugin->attributesInfo[$section]['attrs'][$attr]->setValue(preg_match("/$trueValue/", $this->value));
+    if (is_object($this->plugin)) {
+      foreach (self::$flags as $attr) {
+        $trueValue = $this->plugin->attributesAccess[$attr]->trueValue;
+        $this->plugin->attributesAccess[$attr]->setValue(preg_match("/$trueValue/", $this->value));
+      }
     }
   }
 
   function getValue()
   {
     $value = '[';
-    foreach (self::$flags as $attr => $section) {
-      $value .= $this->plugin->attributesInfo[$section]['attrs'][$attr]->computeLdapValue();
+    if (is_object($this->plugin)) {
+      foreach (self::$flags as $attr) {
+        $value .= $this->plugin->attributesAccess[$attr]->computeLdapValue();
+      }
     }
     $value .= ']';
     return $value;
@@ -135,7 +139,7 @@ class mailAccount extends simplePlugin
           ),
           new SelectAttribute (
             _('Server'), _('Specify the mail server where the user will be hosted on'),
-            'gosaMailServer', FALSE,
+            'gosaMailServer', TRUE,
             array()
           ),
           new MailQuotaAttribute (
