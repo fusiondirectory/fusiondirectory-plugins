@@ -29,8 +29,6 @@ class sambaAccount extends plugin
 
     // Domaind information, gid, sid, rid
     var $uid= "";
-    var $uidNumber= 65535;
-    var $gidNumber= 65535;
     var $SID= "";
     var $ridBase= 0;
     var $sambaSID= "";
@@ -774,8 +772,6 @@ class sambaAccount extends plugin
 
         /* Keep uid attribute for gosaAccount */
         unset($this->attrs['uid']);
-        unset($this->attrs['uidNumber']);
-        unset($this->attrs['gidNumber']);
 
         /* Remove objectClass for sambaIdmapEntry */
         $tmp= array();
@@ -834,7 +830,7 @@ class sambaAccount extends plugin
         }
 
         /* Numeric values */
-        foreach (array(	"CtxMaxConnectionTime" => _("Connection"),
+        foreach (array( "CtxMaxConnectionTime" => _("Connection"),
                     "CtxMaxDisconnectionTime" => _("Disconnection"),
                     "CtxMaxIdleTime" => _("IDLE")) as $key => $val){
 
@@ -926,9 +922,9 @@ class sambaAccount extends plugin
     function save()
     {
         /* Load uid and gid of this 'dn' */
-        $user = $this->parent->getBaseObject();
-        $this->uidNumber = $user->uidNumber;
-        $this->gidNumber = $user->gidNumber;
+        $posixAccount = $this->parent->by_object['posixAccount'];
+        $uidNumber = $posixAccount->uidNumber;
+        $gidNumber = $posixAccount->gidNumber;
 
         $ldap = $this->config->get_ldap_link();
 
@@ -1005,35 +1001,35 @@ class sambaAccount extends plugin
         }
 
         // Need to generate a new uniqe uid/gid combination?
-        if ($this->sambaSID == "" || $this->orig_sambaDomainName != $this->sambaDomainName){
-            $uidNumber= $this->uidNumber;
-            while(TRUE){
-                $sid= $this->SID."-".($uidNumber*2 + $this->ridBase);
+        if ($this->sambaSID == "" || $this->orig_sambaDomainName != $this->sambaDomainName) {
+            $uidNumber_tmp = $uidNumber;
+            while (TRUE) {
+                $sid = $this->SID."-".($uidNumber_tmp*2 + $this->ridBase);
                 $ldap->cd($this->config->current['BASE']);
                 $ldap->search("(sambaSID=$sid)", array("sambaSID"));
                 if ($ldap->count() == 0){
                     break;
                 }
-                $uidNumber++;
+                $uidNumber_tmp++;
             }
             $this->attrs['sambaSID']= $sid;
 
             // Check for users primary group
             $ldap->cd($this->config->current['BASE']);
-            $ldap->search("(&(objectClass=posixGroup)(gidNumber=".$this->gidNumber."))", array("cn"));
+            $ldap->search("(&(objectClass=posixGroup)(gidNumber=".$gidNumber."))", array("cn"));
             if ($ldap->count() != 1) {
                 msg_dialog::display(_("Warning"),
                         _("Cannot convert primary group to samba group: group cannot be identified!"),
                         WARNING_DIALOG);
             } else {
-                $attrs= $ldap->fetch();
-                $g= new group($this->config, $ldap->getDN());
-                if ($g->sambaSID == ""){
-                    $g->sambaDomainName= $this->sambaDomainName;
-                    $g->smbgroup= TRUE;
-                    $g->save ();
+                $attrs = $ldap->fetch();
+                $g = new group($this->config, $ldap->getDN());
+                if ($g->sambaSID == "") {
+                    $g->sambaDomainName = $this->sambaDomainName;
+                    $g->smbgroup = TRUE;
+                    $g->save();
                 }
-                $this->attrs['sambaPrimaryGroupSID']= $g->sambaSID;
+                $this->attrs['sambaPrimaryGroupSID'] = $g->sambaSID;
             }
         }
 
