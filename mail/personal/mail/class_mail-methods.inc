@@ -823,20 +823,22 @@ class mailMethod
     }
   }
 
-  static public function get_server_list()
+  static public function get_server_list($config)
   {
     $serverList = array();
 
-    $ldap->search("(objectClass=goImapServer)", array('cn'));
+    $ldap = $config->get_ldap_link();
+    $ldap->cd($config->current['BASE']);
+    $ldap->search('(objectClass=fdImapServer)', array('cn'));
     while ($attrs = $ldap->fetch()) {
       $serverList[$attrs['cn'][0]] = array(
-        "server_dn"   => $attrs['dn'],
-        "connect"     => '',
-        "admin"       => '',
-        "password"    => '',
-        "sieve_server"=> '',
-        "sieve_option"=> '',
-        "sieve_port"  => ''
+        'server_dn'     => $attrs['dn'],
+        'connect'       => '',
+        'admin'         => '',
+        'password'      => '',
+        'sieve_server'  => '',
+        'sieve_option'  => '',
+        'sieve_port'    => ''
       );
     }
 

@@ -654,10 +654,12 @@ class mailMethodCyrus extends mailMethod
     $sieve->sieve_logout();
   }
 
-  static public function get_server_list()
+  static public function get_server_list($config)
   {
     $serverList = array();
 
+    $ldap = $config->get_ldap_link();
+    $ldap->cd($config->current['BASE']);
     $ldap->search ("(objectClass=fdCyrusServer)",
                   array('cn', 'fdCyrusConnect', 'fdCyrusAdmin', 'fdCyrusPassword', 'fdCyrusSieveServer'));
     while ($attrs = $ldap->fetch()) {
