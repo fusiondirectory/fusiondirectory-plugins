@@ -823,6 +823,25 @@ class mailMethod
     }
   }
 
+  static public function get_server_list()
+  {
+    $serverList = array();
+
+    $ldap->search("(objectClass=goImapServer)", array('cn'));
+    while ($attrs = $ldap->fetch()) {
+      $serverList[$attrs['cn'][0]] = array(
+        "server_dn"   => $attrs['dn'],
+        "connect"     => '',
+        "admin"       => '',
+        "password"    => '',
+        "sieve_server"=> '',
+        "sieve_option"=> '',
+        "sieve_port"  => ''
+      );
+    }
+
+    return $serverList;
+  }
 
   /*! \brief  Returns the default sharedFolder ACLs for this method.
       @return Array Returns an array containg acls for __member__ and __anyone__
