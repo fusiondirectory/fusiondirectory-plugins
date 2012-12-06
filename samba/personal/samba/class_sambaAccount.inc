@@ -107,7 +107,7 @@ class sambaAccount extends plugin
         // Get samba domain and its sid/rid base
         if ($this->sambaSID != ""){
             $this->SID= preg_replace ("/-[^-]+$/", "", $this->sambaSID);
-            $ldap= $this->config->get_ldap_link();
+            $ldap = $this->config->get_ldap_link();
             $ldap->cd($this->config->current['BASE']);
             $ldap->search ("(&(objectClass=sambaDomain)(sambaSID=$this->SID))",array("sambaAlgorithmicRidBase","sambaDomainName"));
             if ($ldap->count() != 0){
@@ -768,7 +768,7 @@ class sambaAccount extends plugin
         }
 
         /* include global link_info */
-        $ldap= $this->config->get_ldap_link();
+        $ldap = $this->config->get_ldap_link();
 
         plugin::remove_from_parent();
 
@@ -930,6 +930,8 @@ class sambaAccount extends plugin
         $this->uidNumber = $user->uidNumber;
         $this->gidNumber = $user->gidNumber;
 
+        $ldap = $this->config->get_ldap_link();
+
         plugin::save();
 
         /* Remove objectClass for sambaIdmapEntry */
@@ -1051,7 +1053,6 @@ class sambaAccount extends plugin
         }
 
         // Write back to ldap
-        $ldap = $this->config->get_ldap_link();
         $ldap->cd($this->dn);
         $this->cleanup();
         $ldap->modify ($this->attrs);
