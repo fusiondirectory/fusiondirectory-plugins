@@ -20,45 +20,18 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class AvFlagsAttribute extends StringAttribute
-{
-  function __construct ($label, $description, $ldapName, $required = FALSE, $defaultValue = "", $acl = "", $regexp = "")
-  {
-    parent::__construct($label, $description, $ldapName, $required, $defaultValue, $acl);
-    $this->setVisible(FALSE);
-  }
-
-  function setValue ($value)
-  {
-    parent::setValue($value);
-    $this->plugin->attributesInfo['section1']['attrs']['avFlags1']->setValue(preg_match('/D/',$this->value));
-    $this->plugin->attributesInfo['section1']['attrs']['avFlags2']->setValue(preg_match('/S/',$this->value));
-    $this->plugin->attributesInfo['section2']['attrs']['avFlags3']->setValue(preg_match('/A/',$this->value));
-    $this->plugin->attributesInfo['section2']['attrs']['avFlags4']->setValue(preg_match('/E/',$this->value));
-  }
-
-  function getValue()
-  {
-    return $this->plugin->attributesInfo['section1']['attrs']['avFlags1']->computeLdapValue().
-      $this->plugin->attributesInfo['section1']['attrs']['avFlags2']->computeLdapValue().
-      $this->plugin->attributesInfo['section2']['attrs']['avFlags3']->computeLdapValue().
-      $this->plugin->attributesInfo['section2']['attrs']['avFlags4']->computeLdapValue();
-  }
-}
-
 class govirusserver extends simpleService {
 
-  var $objectclasses    = array("goVirusServer");
+  var $objectclasses    = array('goVirusServer');
 
   /* Return plugin informations for acl handling */
   static function plInfo()
   {
     return array(
-      "plShortName"   => _("Antivirus service"),
-      "plDescription" => _("Antivirus service")." ("._("Services").")",
-      "plSelfModify"  => FALSE,
-      "plCategory"    => array("server"),
-      "plProvidedAcls"=> parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plShortName'   => _('Antivirus service'),
+      'plDescription' => _('Antivirus service').' ('._('Services').')',
+
+      'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }
 
@@ -70,89 +43,80 @@ class govirusserver extends simpleService {
     return array (
       'section1' => array (
         'name'  => _('Generic virus filtering'),
-        'icon' => 'images/rightarrow.png',
+        'icon'  => 'images/rightarrow.png',
         'attrs' => array (
           new StringAttribute (
-            _('Database user'),
-            _('User name for the database'),
-            'avUser',
-            TRUE
+            _('Database user'), _('User name for the database'),
+            'avUser', TRUE
           ),
           new StringAttribute (
-            _('Database mirror'),
-            _('Mirror for the database'),
-            'avDatabaseMirror',
-            FALSE
+            _('Database mirror'), _('Mirror for the database'),
+            'avDatabaseMirror', FALSE
           ),
           new StringAttribute (
-            _('Http proxy URL'),
-            _('URL for the proxy'),
-            'avHttpProxyURL',
-            FALSE
+            _('Http proxy URL'), _('URL for the proxy'),
+            'avHttpProxyURL', FALSE
           ),
           new SelectAttribute (
-            _('Maximum threads'),
-            _('Maximum number of threads'),
-            'avMaxThreads',
-            FALSE,
+            _('Maximum threads'), _('Maximum number of threads'),
+            'avMaxThreads', FALSE,
             array (1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20),
             5
           ),
           new IntAttribute (
-            _('Max directory recursions'),
-            _('Max directory recursions'),
-            'avMaxDirectoryRecursions',
-            FALSE,
-            0,
-            FALSE,
-            4
+            _('Max directory recursions'), _('Max directory recursions'),
+            'avMaxDirectoryRecursions', FALSE,
+            0, FALSE, 4
           ),
            new IntAttribute (
-            _('Checks per day'),
-            _('Checks per day'),
-            'avChecksPerDay',
-            FALSE,
-            0,
-            FALSE,
-            12
+            _('Checks per day'), _('Checks per day'),
+            'avChecksPerDay', FALSE,
+            0, FALSE, 12
           ),
-          new BooleanAttribute (_('Enable debugging'),_('Enable debugging for the antivirus'),'avFlags1',FALSE,FALSE,'','D',''),
-          new BooleanAttribute (_('Enable mail scanning'),_('Enable mail scanning for the antivirus'),'avFlags2',FALSE,FALSE,'','S','')
+          new BooleanAttribute (
+            _('Enable debugging'), _('Enable debugging for the antivirus'),
+            'flag_enable_debug', FALSE,
+            FALSE, '', 'D', ''
+          ),
+          new BooleanAttribute (
+            _('Enable mail scanning'), _('Enable mail scanning for the antivirus'),
+            'flag_enable_mailscan', FALSE,
+            FALSE, '', 'S', ''
           )
-        ),
-     'section2' => array (
-      'name' => _('Archive scanning'),
-      'attrs' => array (
-            new BooleanAttribute (_('Enable scanning of archives'),_('Enable scanning of archives'),'avFlags3',FALSE,FALSE,'','A',''),
-            new BooleanAttribute (_('Block encrypted archives'),_('Block encrypted archives'),'avFlags4',FALSE,FALSE,'','E',''),
-            new IntAttribute (
-              _('Maximum file size'),
-              _(' '),
-              'avArchiveMaxFileSize',
-            FALSE,
-            0,
-            FALSE,
-            4000
+        )
+      ),
+      'section2' => array (
+        'name' => _('Archive scanning'),
+        'attrs' => array (
+          new BooleanAttribute (
+            _('Enable scanning of archives'), _('Enable scanning of archives'),
+            'flag_enable_archivescan', FALSE,
+            FALSE, '', 'A', ''
+          ),
+          new BooleanAttribute (
+            _('Block encrypted archives'), _('Block encrypted archives'),
+            'flag_block_encrypted', FALSE,
+            FALSE, '', 'E', ''
           ),
           new IntAttribute (
-            _('Maximum recursion'),
-            _(' '),
-            'avArchiveMaxRecursion',
-            FALSE,
-            0,
-            FALSE,
-            5
+            _('Maximum file size'), _('Maximum file size'),
+            'avArchiveMaxFileSize', FALSE,
+            0, FALSE, 4000
           ),
           new IntAttribute (
-            _('Maximum compression ratio'),
-            _(' '),
-            'avArchiveMaxCompressionRatio',
-            FALSE,
-            0,
-            FALSE,
-            95
+            _('Maximum recursion'), _('Maximum recursion'),
+            'avArchiveMaxRecursion', FALSE,
+            0, FALSE, 5
           ),
-          new AvFlagsAttribute ("","","avFlags")
+          new IntAttribute (
+            _('Maximum compression ratio'), _(' '),
+            'avArchiveMaxCompressionRatio', FALSE,
+            0, FALSE, 95
+          ),
+          new FlagsAttribute ('avFlags', array(
+            'flag_enable_debug', 'flag_enable_mailscan',
+            'flag_enable_archivescan', 'flag_block_encrypted'
+          ))
         )
       )
     );
@@ -161,15 +125,11 @@ class govirusserver extends simpleService {
   function __construct(&$config, $dn = NULL, $object = NULL)
   {
     parent::__construct($config, $dn, $object);
-    $this->attributesInfo['section1']['attrs']['avFlags1']->setInLdap(FALSE);
-    $this->attributesInfo['section1']['attrs']['avFlags2']->setInLdap(FALSE);
-    $this->attributesInfo['section2']['attrs']['avFlags3']->setInLdap(FALSE);
-    $this->attributesInfo['section2']['attrs']['avFlags4']->setInLdap(FALSE);
-    $this->attributesInfo['section2']['attrs']['avFlags3']->setManagedAttributes(
+    $this->attributesAccess['flag_enable_archivescan']->setManagedAttributes(
       array (
         'erase' => array (
           FALSE => array (
-            'avFlags4','avArchiveMaxFileSize','avArchiveMaxRecursion','avArchiveMaxCompressionRatio',
+            'flag_block_encrypted','avArchiveMaxFileSize','avArchiveMaxRecursion','avArchiveMaxCompressionRatio',
           )
         )
       )

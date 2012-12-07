@@ -3,18 +3,16 @@
 class serviceMail extends simpleService {
 
   /* This plugin only writes its objectClass */
-  var $objectclasses    = array("goMailServer");
+  var $objectclasses    = array('goMailServer');
 
   /* Return plugin informations for acl handling */
   static function plInfo()
   {
     return array(
-      "plShortName"    => _("Mail smtp (Postfix)"),
-      "plDescription"  => _("Mail smtp - Postfix")." ("._("Services").")",
-      "plSelfModify"   => FALSE,
-      "plDepends"      => array(),
-      "plCategory"     => array("server"),
-      "plProvidedAcls" => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plShortName'    => _('Mail smtp (Postfix)'),
+      'plDescription'  => _('Mail smtp - Postfix').' ('._('Services').')',
+
+      'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }
 
@@ -30,43 +28,34 @@ class serviceMail extends simpleService {
         'icon' => 'images/rightarrow.png',
         'attrs' => array (
           new StringAttribute (
-            _('Visible full qualified hostname'),
-            _('The full qualified host name.'),
-            'postfixMyHostname',
-            TRUE
+            _('Visible full qualified hostname'), _('The full qualified host name.'),
+            'postfixMyHostname', TRUE
           ),
           new StringAttribute (
-            _('Visible full qualified domain'),
-            _('The full qualified domain.'),
-            'postfixMyDomain',
-            TRUE
+            _('Visible full qualified domain'), _('The full qualified domain.'),
+            'postfixMyDomain', TRUE
           ),
           new IntAttribute (
-            _('Max mail header size').' (KB)',
-            _('This value specifies the maximal header size.'),
-            'postfixHeaderSizeLimit',
-            FALSE,FALSE,FALSE,0
+            _('Max mail header size (KB)'), _('This value specifies the maximal header size.'),
+            'postfixHeaderSizeLimit', FALSE,
+            FALSE, FALSE, 0
           ),
           new IntAttribute (
-            _('Max mailbox size').' (KB)',
-            _('Defines the maximal size of mail box.'),
-            'postfixMailboxSizeLimit',
-            FALSE,FALSE,FALSE,0
+            _('Max mailbox size (KB)'), _('Defines the maximal size of mail box.'),
+            'postfixMailboxSizeLimit', FALSE,
+            FALSE, FALSE, 0
           ),
           new IntAttribute (
-            _('Max message size').' (KB)',
-            _('Specify the maximal size of a message.'),
-            'postfixMessageSizeLimit',
-            FALSE,FALSE,FALSE,0
+            _('Max message size (KB)'), _('Specify the maximal size of a message.'),
+            'postfixMessageSizeLimit', FALSE,
+            FALSE, FALSE, 0
           ),
           new StringAttribute (
-            _('Relay host'),
-            _('Relay messages to following host'),
+            _('Relay host'), _('Relay messages to following host'),
             'postfixRelayhost'
           ),
           new StringAttribute (
-           _('Local networks'),
-           _('Postfix networks'),
+           _('Local networks'), _('Postfix networks'),
            'postfixMyNetworks'
           )
         )
@@ -76,8 +65,7 @@ class serviceMail extends simpleService {
         'attrs' => array (
           new SetAttribute (
             new StringAttribute (
-            _('Domains to accept mail for'),
-            _('Postfix networks'),
+            _('Domains to accept mail for'), _('Postfix networks'),
             'postfixMyDestinations'
             )
           ),
@@ -86,9 +74,9 @@ class serviceMail extends simpleService {
              _('Transport'),
             'postfixTransportTable',
               array(
-                new StringAttribute ('', '','first'),
-                new SelectAttribute ('', '','filter', TRUE, array('smtp'),'',array('SMTP')),
-                new StringAttribute ('', '','second'),
+                new StringAttribute ('', '', 'first'),
+                new SelectAttribute ('', '', 'filter', TRUE, array('smtp'), '', array('SMTP')),
+                new StringAttribute ('', '', 'second'),
               ),
               '%s %[^:]:%s',
               '%s %s:%s',
@@ -105,9 +93,9 @@ class serviceMail extends simpleService {
              _('Restrictions for sender'),
             'postfixSenderRestrictions',
               array(
-                new StringAttribute ('', '','first2'),
-                new SelectAttribute ('', '','filter2', TRUE, array('FILTER'),'FILTER'),
-                new StringAttribute ('', '','second2'),
+                new StringAttribute ('', '', 'first2'),
+                new SelectAttribute ('', '', 'filter2', TRUE, array('FILTER'), 'FILTER'),
+                new StringAttribute ('', '', 'second2'),
               ),
               '%s %[^:] %s',
               '%s %s %s',
@@ -119,23 +107,14 @@ class serviceMail extends simpleService {
              _('Restrictions for recipient'),
             'postfixRecipientRestrictions',
               array(
-                new StringAttribute ('', '','first3'),
-                new SelectAttribute ('', '','filter3', TRUE, array('FILTER'),'FILTER'),
-                new StringAttribute ('', '','second3'),
+                new StringAttribute ('', '', 'first3'),
+                new SelectAttribute ('', '', 'filter3', TRUE, array('FILTER'), 'FILTER'),
+                new StringAttribute ('', '', 'second3'),
               ),
               '%s %[^:] %s',
               '%s %s %s',
               '', _('Restrictions for recipient')
             )
-          )
-        )
-      ),
-      'section4' => array (
-        'name' => _('Action'),
-        'icon' => 'images/rocket.png',
-        'attrs' => array (
-          new SelectAttribute (
-            _('Status'), '','flagmail', FALSE, array('start','stop','restart'), '', array(_('Start'),_('Stop'),_('Restart'))
           )
         )
       )
@@ -149,15 +128,12 @@ class serviceMail extends simpleService {
   function __construct(&$config, $dn = NULL, $object = NULL)
   {
     parent::__construct($config, $dn, $object);
-    $this->attributesInfo['section1']['attrs']['postfixMyDomain']->setDisabled(TRUE);
-    $this->attributesInfo['section4']['attrs']['flagmail']->setInLdap(FALSE);
-    $this->goMailServerStatus = $this->attributesInfo['section4']['attrs']['flagmail']->getValue();
-
+    $this->attributesAccess['postfixMyDomain']->setDisabled(TRUE);
   }
 
   function save()
   {
-    $this->attributesInfo['section1']['attrs']['postfixMyDomain']->setValue($this->attributesInfo['section1']['attrs']['postfixMyHostname']->getValue());
+    $this->postfixMyDomain = $this->postfixMyHostname;
     $this->prepare_save();
     $this->ldap_save();
   }

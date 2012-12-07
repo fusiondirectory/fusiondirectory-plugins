@@ -35,47 +35,6 @@
 
  */
 
-class mailFlagsAttribute extends StringAttribute
-{
-  static private $flags = array(
-    'flag_ownmailbox',
-    'flag_vacation',
-    'flag_spamlevel',
-    'flag_spamsize',
-    'flag_localonly',
-    'flag_sieveownscript'
-  );
-
-  function __construct ($label, $description, $ldapName, $required = FALSE, $defaultValue = "", $acl = "", $regexp = "")
-  {
-    parent::__construct($label, $description, $ldapName, $required, $defaultValue, $acl);
-    $this->setVisible(FALSE);
-  }
-
-  function setValue ($value)
-  {
-    parent::setValue($value);
-    if (is_object($this->plugin)) {
-      foreach (self::$flags as $attr) {
-        $trueValue = $this->plugin->attributesAccess[$attr]->trueValue;
-        $this->plugin->attributesAccess[$attr]->setValue(preg_match("/$trueValue/", $this->value));
-      }
-    }
-  }
-
-  function getValue()
-  {
-    $value = '[';
-    if (is_object($this->plugin)) {
-      foreach (self::$flags as $attr) {
-        $value .= $this->plugin->attributesAccess[$attr]->computeLdapValue();
-      }
-    }
-    $value .= ']';
-    return $value;
-  }
-}
-
 class MailQuotaAttribute extends IntAttribute
 {
   private $quotaUsage;
@@ -219,7 +178,14 @@ class mailAccount extends simplePlugin
             FALSE, FALSE, FALSE,
             50
           ),
-          new mailFlagsAttribute ('', '', 'gosaMailDeliveryMode')
+          new mailFlagsAttribute ('gosaMailDeliveryMode', array(
+            'flag_ownmailbox',
+            'flag_vacation',
+            'flag_spamlevel',
+            'flag_spamsize',
+            'flag_localonly',
+            'flag_sieveownscript'
+          ))
         )
       ),
       'advanced' => array (
