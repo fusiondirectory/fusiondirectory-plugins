@@ -1,71 +1,74 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 #   <pavel.borecki@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
-"POT-Creation-Date: 2012-05-26 17:33+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-12-09 16:22+0100\n"
 "PO-Revision-Date: 2012-05-26 16:34+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Czech (Czech Republic) (http://www.transifex.net/projects/p/FusionDirectory/language/cs_CZ/)\n"
+"Language-Team: Czech (Czech Republic) (http://www.transifex.net/projects/p/"
+"FusionDirectory/language/cs_CZ/)\n"
+"Language: cs_CZ\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: cs_CZ\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2\n"
 
-#: html/getfax.php:63
+#: html/getfax.php:59
 msgid "Could not connect to database server!"
 msgstr "Nelze se připojit k databázovému serveru!"
 
-#: html/getfax.php:69 html/getfax.php:79
+#: html/getfax.php:66 html/getfax.php:76
 msgid "Database query failed!"
 msgstr "Dotaz do databáze se nezdařil!"
 
-#: admin/systems/services/gofax/class_goFaxServer.inc:50
-msgid "FAX database"
-msgstr "databáze faxů"
+#: html/getfax.php:96 html/getfax.php:101 html/getfax.php:106
+#: addons/faxreports/class_faxreport.inc:130
+#: addons/faxreports/class_faxreport.inc:139
+#: addons/faxreports/class_faxreport.inc:159
+#: addons/faxreports/class_faxreport.inc:300
+#: personal/faxaccount/class_gofaxAccount.inc:275
+msgid "Error"
+msgstr "chyba"
 
-#: admin/systems/services/gofax/class_goFaxServer.inc:79
-msgid "FAX database configuration"
-msgstr "nastavení databáze faxů"
+#: html/getfax.php:96
+msgid "cannot resize fax image"
+msgstr ""
 
-#: admin/systems/services/gofax/class_goFaxServer.inc:88
-#: addons/faxreports/detail.tpl:21 addons/faxreports/contents.tpl:30
-#: personal/faxaccount/faxNumberSelect/faxNumberSelect-list.xml:14
-msgid "User"
-msgstr "uživatel"
+#: html/getfax.php:101
+msgid "cannot convert fax image to png"
+msgstr ""
 
-#: admin/systems/services/gofax/class_goFaxServer.inc:91
-#: admin/systems/services/gofax/class_goFaxServer.inc:118
-#: admin/systems/services/gofax/goFaxServer.tpl:12
-msgid "Password"
-msgstr "heslo"
+#: html/getfax.php:106
+msgid "Reading fax image image failed"
+msgstr ""
 
-#: admin/systems/services/gofax/class_goFaxServer.inc:108
-#: admin/systems/services/gofax/class_goFaxServer.inc:109
-msgid "Fax database"
-msgstr "databáze faxů"
+#: admin/systems/services/fax/class_serviceFax.inc:31
+#: admin/systems/services/fax/class_serviceFax.inc:32
+#, fuzzy
+msgid "FAX service"
+msgstr "uživatel pro přihlášení do databáze faxů"
 
-#: admin/systems/services/gofax/class_goFaxServer.inc:109
+#: admin/systems/services/fax/class_serviceFax.inc:32
 msgid "Services"
 msgstr "služby"
 
-#: admin/systems/services/gofax/class_goFaxServer.inc:117
-msgid "Login name"
-msgstr "přihlašovací jméno"
-
-#: admin/systems/services/gofax/goFaxServer.tpl:1
+#: admin/systems/services/fax/class_serviceFax.inc:47
 msgid "FAX database information"
 msgstr "informace o databázi faxů"
 
-#: admin/systems/services/gofax/goFaxServer.tpl:4
+#: admin/systems/services/fax/class_serviceFax.inc:51
 msgid "FAX DB user"
 msgstr "uživatel pro přihlášení do databáze faxů"
+
+#: admin/systems/services/fax/class_serviceFax.inc:57
+msgid "Password"
+msgstr "heslo"
 
 #: admin/blocklists/remove.tpl:2
 msgid "Warning"
@@ -75,13 +78,19 @@ msgstr "varování"
 msgid ""
 "Please double check if you really want to do this since there is no way for "
 "FusionDirectory to get your data back."
-msgstr "Prosím dobře si rozmyslete, zda to skutečně chcete udělat – provedené změny pak FusionDirectory už nemůže vrátit zpět!"
+msgstr ""
+"Prosím dobře si rozmyslete, zda to skutečně chcete udělat – provedené změny "
+"pak FusionDirectory už nemůže vrátit zpět!"
 
 #: admin/blocklists/remove.tpl:10
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr "Tedy – pokud jste si jist(a), klikněte na 'smazat'. V opačném případě operaci zrušte pomocí 'zrušit'."
+msgstr ""
+"Tedy – pokud jste si jist(a), klikněte na 'smazat'. V opačném případě "
+"operaci zrušte pomocí 'zrušit'."
 
-#: admin/blocklists/paste_generic.tpl:3 admin/blocklists/generic.tpl:8
+#: admin/blocklists/paste_generic.tpl:3
+#: admin/blocklists/class_blocklistGeneric.inc:144
+#: admin/blocklists/generic.tpl:8
 msgid "List name"
 msgstr "název seznamu"
 
@@ -95,95 +104,88 @@ msgid "Filter"
 msgstr "filtr"
 
 #: admin/blocklists/blocklist-filter.tpl:17
-#: admin/blocklists/class_blocklistGeneric.inc:216
-#: admin/blocklists/class_blocklistGeneric.inc:219
-#: admin/blocklists/class_blocklistGeneric.inc:226
-#: admin/blocklists/class_blocklistGeneric.inc:387
 #: admin/blocklists/blocklist-list.xml:49
 #: personal/faxaccount/faxNumberSelect/faxNumberSelect-filter.tpl:17
 msgid "Name"
 msgstr "název"
 
-#: admin/blocklists/class_blocklistGeneric.inc:29
-#: admin/blocklists/class_blocklistGeneric.inc:378
-#: admin/blocklists/class_blocklistGeneric.inc:383
-#: admin/blocklists/class_blocklistGeneric.inc:384
-msgid "Fax blocklists"
-msgstr "seznam blokovaných faxů"
+#: admin/blocklists/class_blocklistGeneric.inc:32
+#: admin/blocklists/generic.tpl:34
+msgid "Type"
+msgstr "typ"
 
-#: admin/blocklists/class_blocklistGeneric.inc:30
-msgid "This is the part of the fax plugin managing blacklist"
+#: admin/blocklists/class_blocklistGeneric.inc:32
+msgid "Type of this list"
 msgstr ""
 
-#: admin/blocklists/class_blocklistGeneric.inc:124
-#: admin/blocklists/class_blocklistGeneric.inc:174
-#: addons/faxreports/class_faxreport.inc:135
-#: addons/faxreports/class_faxreport.inc:144
-#: addons/faxreports/class_faxreport.inc:164
-#: addons/faxreports/class_faxreport.inc:305
-#: personal/faxaccount/class_gofaxAccount.inc:278
-msgid "Error"
-msgstr "chyba"
-
-#: admin/blocklists/class_blocklistGeneric.inc:124
-#: personal/faxaccount/class_gofaxAccount.inc:278
-msgid "Phone number"
-msgstr "telefonní číslo"
-
-#: admin/blocklists/class_blocklistGeneric.inc:156
+#: admin/blocklists/class_blocklistGeneric.inc:35
 msgid "send"
 msgstr "odeslat"
 
-#: admin/blocklists/class_blocklistGeneric.inc:156
+#: admin/blocklists/class_blocklistGeneric.inc:35
 msgid "receive"
 msgstr "přijmout"
 
-#: admin/blocklists/class_blocklistGeneric.inc:202
-#: admin/blocklists/class_blocklistGeneric.inc:288
-#: personal/faxaccount/class_gofaxAccount.inc:633
-#: personal/faxaccount/class_gofaxAccount.inc:761
-msgid "LDAP error"
-msgstr "chyba LDAPu"
+#: admin/blocklists/class_blocklistGeneric.inc:39
+#: admin/blocklists/generic.tpl:62
+msgid "Blocked numbers"
+msgstr "blokovaná čísla"
 
-#: admin/blocklists/class_blocklistGeneric.inc:377
-#: personal/faxaccount/faxNumberSelect/faxNumberSelect-list.xml:56
-#: personal/faxaccount/paste_generic.tpl:8
-#: personal/faxaccount/class_gofaxAccount.inc:836
-#: personal/faxaccount/generic.tpl:10
-msgid "Fax"
-msgstr "fax"
+#: admin/blocklists/class_blocklistGeneric.inc:40
+#: admin/blocklists/generic.tpl:86
+msgid "Numbers can also contain wild cards."
+msgstr "Čísla mohou obsahovat též zástupné znaky."
 
-#: admin/blocklists/class_blocklistGeneric.inc:388
+#: admin/blocklists/class_blocklistGeneric.inc:141
+#, fuzzy
+msgid "Informations"
+msgstr "informace"
+
+#: admin/blocklists/class_blocklistGeneric.inc:144
+msgid "The name of the list"
+msgstr ""
+
+#: admin/blocklists/class_blocklistGeneric.inc:145
 #: admin/blocklists/blocklist-list.xml:57 admin/blocklists/generic.tpl:45
 msgid "Description"
 msgstr "popis"
 
-#: admin/blocklists/class_blocklistGeneric.inc:389
+#: admin/blocklists/class_blocklistGeneric.inc:145
+#, fuzzy
+msgid "A description for the list"
+msgstr "popis tohoto seznamu blokovaných"
+
+#: admin/blocklists/class_blocklistGeneric.inc:147
+#, fuzzy
+msgid "List of blocked number"
+msgstr "blokovaná čísla"
+
+#: admin/blocklists/class_blocklistGeneric.inc:187
+#: admin/blocklists/class_blocklistGeneric.inc:191
+#: admin/blocklists/class_blocklistGeneric.inc:194
+msgid "Fax blocklists"
+msgstr "seznam blokovaných faxů"
+
+#: admin/blocklists/class_blocklistGeneric.inc:188
+msgid "The part of the fax plugin managing blacklist"
+msgstr ""
+
 #: admin/blocklists/blocklist-list.tpl:13 admin/blocklists/generic.tpl:17
 #: personal/faxaccount/faxNumberSelect/faxNumberSelect-list.tpl:13
 msgid "Base"
 msgstr "základ"
-
-#: admin/blocklists/class_blocklistGeneric.inc:390
-#: admin/blocklists/blocklist-list.xml:82
-msgid "Blocklist"
-msgstr "seznam blokovaných"
-
-#: admin/blocklists/class_blocklistGeneric.inc:391
-msgid "Blocklist type"
-msgstr "typ seznamu blokovaných"
 
 #: admin/blocklists/blocklist-list.xml:11
 msgid "List of blocklists"
 msgstr "seznam seznamů blokovaných"
 
 #: admin/blocklists/blocklist-list.xml:15
-#: personal/faxaccount/class_gofaxAccount.inc:854
+#: personal/faxaccount/class_gofaxAccount.inc:816
 msgid "Send blocklist"
 msgstr "poslat seznam blokovaných"
 
 #: admin/blocklists/blocklist-list.xml:23
-#: personal/faxaccount/class_gofaxAccount.inc:853
+#: personal/faxaccount/class_gofaxAccount.inc:815
 msgid "Receive blocklist"
 msgstr "získat seznamy blokovaných"
 
@@ -194,6 +196,10 @@ msgstr "akce"
 #: admin/blocklists/blocklist-list.xml:76
 msgid "Create"
 msgstr "vytvořit"
+
+#: admin/blocklists/blocklist-list.xml:82
+msgid "Blocklist"
+msgstr "seznam blokovaných"
 
 #: admin/blocklists/blocklist-list.xml:94
 #: admin/blocklists/blocklist-list.xml:133 personal/faxaccount/generic.tpl:128
@@ -206,12 +212,12 @@ msgstr "upravit"
 msgid "Remove"
 msgstr "odebrat"
 
-#: admin/blocklists/class_blocklistManagement.inc:25
+#: admin/blocklists/class_blocklistManagement.inc:36
 #: personal/faxaccount/generic.tpl:122
 msgid "Blocklists"
 msgstr "seznamy blokovaných"
 
-#: admin/blocklists/class_blocklistManagement.inc:26
+#: admin/blocklists/class_blocklistManagement.inc:37
 msgid "Blocklist management"
 msgstr "správa seznamů blokovaných"
 
@@ -219,10 +225,6 @@ msgstr "správa seznamů blokovaných"
 #: personal/faxaccount/generic.tpl:6
 msgid "Generic"
 msgstr "obecné"
-
-#: admin/blocklists/generic.tpl:34
-msgid "Type"
-msgstr "typ"
 
 #: admin/blocklists/generic.tpl:37
 msgid "Select wether to filter incoming or outgoing calls"
@@ -232,127 +234,108 @@ msgstr "zadejte, zda filtrovat příchozí či odchozí volání"
 msgid "Descriptive text for this blocklist"
 msgstr "popis tohoto seznamu blokovaných"
 
-#: admin/blocklists/generic.tpl:62
-msgid "Blocked numbers"
-msgstr "blokovaná čísla"
-
 #: admin/blocklists/generic.tpl:84
 msgid "Information"
 msgstr "informace"
 
-#: admin/blocklists/generic.tpl:86
-msgid "Numbers can also contain wild cards."
-msgstr "Čísla mohou obsahovat též zástupné znaky."
-
-#: addons/faxreports/main.inc:39
+#: addons/faxreports/main.inc:44
 msgid "FAX reports"
 msgstr "statistiky faxů"
 
-#: addons/faxreports/class_faxreport.inc:26
-msgid "FAX Reports"
-msgstr "statistiky faxů"
-
-#: addons/faxreports/class_faxreport.inc:27
-msgid "This plugin show the fax reports"
-msgstr ""
-
-#: addons/faxreports/class_faxreport.inc:135
+#: addons/faxreports/class_faxreport.inc:130
 msgid "No fax server found!"
 msgstr "Nenalezen žádný faxový server!"
 
-#: addons/faxreports/class_faxreport.inc:144
+#: addons/faxreports/class_faxreport.inc:139
 #, php-format
 msgid "Cannot connect to %s database!"
 msgstr "Nelze se připojit k databázi %s!"
 
-#: addons/faxreports/class_faxreport.inc:164
-#: addons/faxreports/class_faxreport.inc:305
+#: addons/faxreports/class_faxreport.inc:159
+#: addons/faxreports/class_faxreport.inc:300
 #, php-format
 msgid "Cannot query %s database!"
 msgstr "Nedaří se dotazovat do databáze %s!"
 
-#: addons/faxreports/class_faxreport.inc:173
-#: addons/faxreports/class_faxreport.inc:183
+#: addons/faxreports/class_faxreport.inc:168
+#: addons/faxreports/class_faxreport.inc:178
 msgid "Permission error"
 msgstr "chyba oprávnění"
 
-#: addons/faxreports/class_faxreport.inc:173
-#: addons/faxreports/class_faxreport.inc:183
+#: addons/faxreports/class_faxreport.inc:168
+#: addons/faxreports/class_faxreport.inc:178
 msgid "You have no permission to view this fax id!"
 msgstr "Nejste oprávněn(a) zobrazit id tohoto faxu!"
 
-#: addons/faxreports/class_faxreport.inc:214
-#: addons/faxreports/class_faxreport.inc:330
+#: addons/faxreports/class_faxreport.inc:209
+#: addons/faxreports/class_faxreport.inc:325
 msgid "Y-M-D"
 msgstr "R-M-D"
 
-#: addons/faxreports/class_faxreport.inc:324
+#: addons/faxreports/class_faxreport.inc:319
 msgid "Insufficient permissions to view this attribute"
 msgstr "nedostačující oprávnění pro zobrazení této vlastnosti"
 
-#: addons/faxreports/class_faxreport.inc:324
+#: addons/faxreports/class_faxreport.inc:319
 msgid "Insufficient permissions"
 msgstr "nedostačující oprávnění"
 
+#: addons/faxreports/class_faxreport.inc:482
+#: addons/faxreports/class_faxreport.inc:483
 #: addons/faxreports/class_faxreport.inc:488
-#: addons/faxreports/class_faxreport.inc:489
-msgid "Fax report"
-msgstr "statistika faxu"
-
-#: addons/faxreports/class_faxreport.inc:489
-msgid "All entries are readonly"
-msgstr "všechny položky jsou přístupné pouze pro čtení"
-
-#: addons/faxreports/class_faxreport.inc:494
 msgid "Fax reports"
 msgstr "statistiky faxu"
 
-#: addons/faxreports/class_faxreport.inc:499
+#: addons/faxreports/class_faxreport.inc:483
+msgid "All entries are readonly"
+msgstr "všechny položky jsou přístupné pouze pro čtení"
+
+#: addons/faxreports/class_faxreport.inc:492
 msgid "Detailed view"
 msgstr "podrobnosti"
 
-#: addons/faxreports/class_faxreport.inc:500
+#: addons/faxreports/class_faxreport.inc:493
 msgid "Fax ID"
 msgstr "ID faxu"
 
-#: addons/faxreports/class_faxreport.inc:501 addons/faxreports/contents.tpl:31
+#: addons/faxreports/class_faxreport.inc:494 addons/faxreports/contents.tpl:31
 msgid "Date"
 msgstr "datum"
 
-#: addons/faxreports/class_faxreport.inc:501
+#: addons/faxreports/class_faxreport.inc:494
 msgid "Time"
 msgstr "čas"
 
-#: addons/faxreports/class_faxreport.inc:502 addons/faxreports/detail.tpl:45
+#: addons/faxreports/class_faxreport.inc:495 addons/faxreports/detail.tpl:45
 #: addons/faxreports/contents.tpl:32
 msgid "Status"
 msgstr "stav"
 
-#: addons/faxreports/class_faxreport.inc:503 addons/faxreports/detail.tpl:33
+#: addons/faxreports/class_faxreport.inc:496 addons/faxreports/detail.tpl:33
 msgid "Sender ID"
 msgstr "ID odesilatele"
 
-#: addons/faxreports/class_faxreport.inc:504 addons/faxreports/detail.tpl:29
+#: addons/faxreports/class_faxreport.inc:497 addons/faxreports/detail.tpl:29
 msgid "Sender MSN"
 msgstr "MSN odesilatele"
 
-#: addons/faxreports/class_faxreport.inc:505 addons/faxreports/detail.tpl:41
+#: addons/faxreports/class_faxreport.inc:498 addons/faxreports/detail.tpl:41
 msgid "Receiver ID"
 msgstr "ID příjemce"
 
-#: addons/faxreports/class_faxreport.inc:506 addons/faxreports/detail.tpl:37
+#: addons/faxreports/class_faxreport.inc:499 addons/faxreports/detail.tpl:37
 msgid "Receiver MSN"
 msgstr "MSN příjemce"
 
-#: addons/faxreports/class_faxreport.inc:507
+#: addons/faxreports/class_faxreport.inc:500
 msgid "Number of pages"
 msgstr "počet stran"
 
-#: addons/faxreports/class_faxreport.inc:508
+#: addons/faxreports/class_faxreport.inc:501
 msgid "Status Message"
 msgstr "stavová zpráva"
 
-#: addons/faxreports/class_faxreport.inc:509 addons/faxreports/detail.tpl:53
+#: addons/faxreports/class_faxreport.inc:502 addons/faxreports/detail.tpl:53
 msgid "Transfer time"
 msgstr "délka trvání přenosu"
 
@@ -367,6 +350,11 @@ msgstr "pro stažení klikněte na fax"
 #: addons/faxreports/detail.tpl:17
 msgid "FAX ID"
 msgstr "ID faxu"
+
+#: addons/faxreports/detail.tpl:21 addons/faxreports/contents.tpl:30
+#: personal/faxaccount/faxNumberSelect/faxNumberSelect-list.xml:14
+msgid "User"
+msgstr "uživatel"
 
 #: addons/faxreports/detail.tpl:25
 msgid "Date / Time"
@@ -427,6 +415,13 @@ msgstr "jméno"
 #: personal/faxaccount/faxNumberSelect/faxNumberSelect-list.xml:48
 msgid "Surname"
 msgstr "příjmení"
+
+#: personal/faxaccount/faxNumberSelect/faxNumberSelect-list.xml:56
+#: personal/faxaccount/paste_generic.tpl:8
+#: personal/faxaccount/class_gofaxAccount.inc:799
+#: personal/faxaccount/generic.tpl:10
+msgid "Fax"
+msgstr "fax"
 
 #: personal/faxaccount/main.inc:126
 msgid "Click the 'Edit' button below to change informations in this dialog"
@@ -496,75 +491,84 @@ msgstr "fax"
 msgid "This does something"
 msgstr "tohle něco dělá"
 
-#: personal/faxaccount/class_gofaxAccount.inc:185
-#: personal/faxaccount/class_gofaxAccount.inc:195
-#: personal/faxaccount/class_gofaxAccount.inc:198
+#: personal/faxaccount/class_gofaxAccount.inc:183
+#: personal/faxaccount/class_gofaxAccount.inc:193
+#: personal/faxaccount/class_gofaxAccount.inc:196
 msgid "GOfax"
 msgstr ""
 
-#: personal/faxaccount/class_gofaxAccount.inc:194
+#: personal/faxaccount/class_gofaxAccount.inc:192
 msgid "Remove fax account"
 msgstr "odebrat faxový účet"
 
-#: personal/faxaccount/class_gofaxAccount.inc:197
+#: personal/faxaccount/class_gofaxAccount.inc:195
 msgid "Create fax account"
 msgstr "vytvořit faxový účet"
 
-#: personal/faxaccount/class_gofaxAccount.inc:427
-#: personal/faxaccount/class_gofaxAccount.inc:509
+#: personal/faxaccount/class_gofaxAccount.inc:275
+msgid "Phone number"
+msgstr "telefonní číslo"
+
+#: personal/faxaccount/class_gofaxAccount.inc:424
+#: personal/faxaccount/class_gofaxAccount.inc:506
 msgid "back"
 msgstr "zpět"
 
-#: personal/faxaccount/class_gofaxAccount.inc:649
-#: personal/faxaccount/class_gofaxAccount.inc:653
-#: personal/faxaccount/class_gofaxAccount.inc:846
+#: personal/faxaccount/class_gofaxAccount.inc:614
+#: personal/faxaccount/class_gofaxAccount.inc:742
+msgid "LDAP error"
+msgstr "chyba LDAPu"
+
+#: personal/faxaccount/class_gofaxAccount.inc:630
+#: personal/faxaccount/class_gofaxAccount.inc:634
+#: personal/faxaccount/class_gofaxAccount.inc:808
 msgid "Fax number"
 msgstr "číslo faxu"
 
-#: personal/faxaccount/class_gofaxAccount.inc:660
+#: personal/faxaccount/class_gofaxAccount.inc:641
 msgid "Mail delivery is requested without target address!"
 msgstr "Je požadováno doručení na e-mail ale není zadána cílová adresa!"
 
-#: personal/faxaccount/class_gofaxAccount.inc:662
+#: personal/faxaccount/class_gofaxAccount.inc:643
 msgid "Mail address"
 msgstr "e-mailová adresa"
 
-#: personal/faxaccount/class_gofaxAccount.inc:662
+#: personal/faxaccount/class_gofaxAccount.inc:643
 msgid "your-name@your-domain.com"
 msgstr "vase-jmeno@vase-domena.cz"
 
-#: personal/faxaccount/class_gofaxAccount.inc:668
+#: personal/faxaccount/class_gofaxAccount.inc:649
 msgid "Printing is requested without a target printer!"
 msgstr "Je požadován tisk, ale není nastavena cílová tiskárna!"
 
-#: personal/faxaccount/class_gofaxAccount.inc:837
+#: personal/faxaccount/class_gofaxAccount.inc:800
 msgid "Fax account settings"
 msgstr "nastavení faxového účtu"
 
-#: personal/faxaccount/class_gofaxAccount.inc:847
+#: personal/faxaccount/class_gofaxAccount.inc:809
 #: personal/faxaccount/generic.tpl:24
 msgid "Language"
 msgstr "jazyk"
 
-#: personal/faxaccount/class_gofaxAccount.inc:848
+#: personal/faxaccount/class_gofaxAccount.inc:810
 #: personal/faxaccount/generic.tpl:37
 msgid "Delivery format"
 msgstr "doručovaný formát"
 
-#: personal/faxaccount/class_gofaxAccount.inc:849
+#: personal/faxaccount/class_gofaxAccount.inc:811
 msgid "Alternate fax number"
 msgstr "alternativní číslo faxu"
 
-#: personal/faxaccount/class_gofaxAccount.inc:850
+#: personal/faxaccount/class_gofaxAccount.inc:812
 msgid "Enable/Disable fax"
 msgstr "povolit/zakázat fax"
 
-#: personal/faxaccount/class_gofaxAccount.inc:851
+#: personal/faxaccount/class_gofaxAccount.inc:813
 #: personal/faxaccount/generic.tpl:73
 msgid "Deliver fax as mail"
 msgstr "doručovat fax jako e-mail"
 
-#: personal/faxaccount/class_gofaxAccount.inc:852
+#: personal/faxaccount/class_gofaxAccount.inc:814
 #: personal/faxaccount/generic.tpl:80
 msgid "Deliver fax to printer"
 msgstr "doručovat fax na tiskárnu"
@@ -608,3 +612,24 @@ msgstr "seznamy blokovaných pro příchozí faxy"
 #: personal/faxaccount/generic.tpl:133
 msgid "Blocklists for outgoing fax"
 msgstr "seznamy blokovaných pro odchozí faxy"
+
+#~ msgid "FAX database"
+#~ msgstr "databáze faxů"
+
+#~ msgid "FAX database configuration"
+#~ msgstr "nastavení databáze faxů"
+
+#~ msgid "Fax database"
+#~ msgstr "databáze faxů"
+
+#~ msgid "Login name"
+#~ msgstr "přihlašovací jméno"
+
+#~ msgid "Blocklist type"
+#~ msgstr "typ seznamu blokovaných"
+
+#~ msgid "FAX Reports"
+#~ msgstr "statistiky faxů"
+
+#~ msgid "Fax report"
+#~ msgstr "statistika faxu"

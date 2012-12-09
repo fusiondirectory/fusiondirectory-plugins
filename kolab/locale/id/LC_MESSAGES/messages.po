@@ -1,229 +1,208 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
-"POT-Creation-Date: 2012-05-26 17:33+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-12-09 16:22+0100\n"
 "PO-Revision-Date: 2012-05-26 16:42+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Indonesian (Indonesia) (http://www.transifex.net/projects/p/FusionDirectory/language/id_ID/)\n"
+"Language-Team: Indonesian (Indonesia) (http://www.transifex.net/projects/p/"
+"FusionDirectory/language/id_ID/)\n"
+"Language: id_ID\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: id_ID\n"
 "Plural-Forms: nplurals=1; plural=0\n"
 
-#: admin/systems/services/kolab/class_servKolab.inc:127
-#, php-format
-msgid "Include data from %s days in the past when creating free/busy lists"
-msgstr ""
-
-#: admin/systems/services/kolab/class_servKolab.inc:132
-#, php-format
-msgid "Warn users when using more than %s%% of their mail quota"
-msgstr ""
-
-#: admin/systems/services/kolab/class_servKolab.inc:174
-msgid "Remove"
-msgstr ""
-
-#: admin/systems/services/kolab/class_servKolab.inc:223
-msgid "Internal error"
-msgstr ""
-
-#: admin/systems/services/kolab/class_servKolab.inc:223
-msgid "Kolab account does not exist!"
-msgstr ""
-
-#: admin/systems/services/kolab/class_servKolab.inc:227
-#: personal/connectivity/kolab/class_kolabAccount.inc:199
-msgid "Error"
-msgstr ""
-
-#: admin/systems/services/kolab/class_servKolab.inc:227
-msgid "hostname"
-msgstr ""
-
-#: admin/systems/services/kolab/class_servKolab.inc:237
-#: admin/systems/services/kolab/class_servKolab.inc:253
-#: admin/systems/services/kolab/class_servKolab.inc:422
-#: personal/connectivity/kolab/class_kolabAccount.inc:367
-#: personal/connectivity/kolab/class_kolabAccount.inc:504
-msgid "LDAP error"
-msgstr ""
-
-#: admin/systems/services/kolab/class_servKolab.inc:329
-#: admin/systems/services/kolab/class_servKolab.inc:331
-msgid "Future days"
-msgstr ""
-
-#: admin/systems/services/kolab/class_servKolab.inc:335
-#: admin/systems/services/kolab/class_servKolab.inc:339
-msgid "Quota"
-msgstr ""
-
-#: admin/systems/services/kolab/class_servKolab.inc:337
-msgid "Please choose a value between 1 and 100 for Quota settings."
-msgstr ""
-
-#: admin/systems/services/kolab/class_servKolab.inc:343
-msgid "Privileged networks"
-msgstr ""
-
-#: admin/systems/services/kolab/class_servKolab.inc:347
-#: admin/systems/services/kolab/servkolab.tpl:27
-msgid "Mail domains"
-msgstr ""
-
-#: admin/systems/services/kolab/class_servKolab.inc:439
-#: admin/systems/services/kolab/class_servKolab.inc:450
-msgid "Kolab mail service"
-msgstr ""
-
-#: admin/systems/services/kolab/class_servKolab.inc:449
-#: personal/connectivity/kolab/class_kolabAccount.inc:26
-#: personal/connectivity/kolab/class_kolabAccount.inc:683
-msgid "Kolab"
-msgstr ""
-
-#: admin/systems/services/kolab/class_servKolab.inc:450
-#: admin/systems/services/kolab/servkolab.tpl:43
-msgid "Services"
-msgstr ""
-
-#: admin/systems/services/kolab/class_servKolab.inc:458
-#: admin/systems/services/kolab/servkolab.tpl:9
-msgid "Postfix mydomain"
-msgstr ""
-
-#: admin/systems/services/kolab/class_servKolab.inc:459
-msgid "My destination"
-msgstr ""
-
-#: admin/systems/services/kolab/class_servKolab.inc:460
-#: admin/systems/services/kolab/servkolab.tpl:18
-msgid "Cyrus admins"
-msgstr ""
-
-#: admin/systems/services/kolab/class_servKolab.inc:462
-#: admin/systems/services/kolab/servkolab.tpl:52
-msgid "POP3 service"
-msgstr ""
-
-#: admin/systems/services/kolab/class_servKolab.inc:463
-#: admin/systems/services/kolab/servkolab.tpl:62
-msgid "POP3/SSL service"
-msgstr ""
-
-#: admin/systems/services/kolab/class_servKolab.inc:465
-#: admin/systems/services/kolab/servkolab.tpl:72
-msgid "IMAP service"
-msgstr ""
-
-#: admin/systems/services/kolab/class_servKolab.inc:466
-#: admin/systems/services/kolab/servkolab.tpl:82
-msgid "IMAP/SSL service"
-msgstr ""
-
-#: admin/systems/services/kolab/class_servKolab.inc:468
-#: admin/systems/services/kolab/servkolab.tpl:92
-msgid "Sieve service"
-msgstr ""
-
-#: admin/systems/services/kolab/class_servKolab.inc:469
-msgid "FTP FreeBusy service"
-msgstr ""
-
-#: admin/systems/services/kolab/class_servKolab.inc:470
-msgid "HTTP FreeBusy service"
-msgstr ""
-
-#: admin/systems/services/kolab/class_servKolab.inc:471
-msgid "Enable virus scan"
-msgstr ""
-
-#: admin/systems/services/kolab/class_servKolab.inc:473
-#: admin/systems/services/kolab/servkolab.tpl:133
-msgid "Quota settings"
-msgstr ""
-
-#: admin/systems/services/kolab/class_servKolab.inc:475
-msgid "Allow unauthenticated free busy"
-msgstr ""
-
-#: admin/systems/services/kolab/class_servKolab.inc:476
-msgid "kolabFreeBusyFuture"
-msgstr ""
-
-#: admin/systems/services/kolab/class_servKolab.inc:478
-#: admin/systems/services/kolab/servkolab.tpl:175
-msgid "SMTP privileged networks"
-msgstr ""
-
-#: admin/systems/services/kolab/class_servKolab.inc:479
-#: admin/systems/services/kolab/servkolab.tpl:206
+#: admin/systems/services/kolab/class_serviceKolab.inc:29
 msgid "Enable MX lookup for relayhost"
 msgstr ""
 
-#: admin/systems/services/kolab/class_servKolab.inc:480
-msgid "Relayhost"
+#: admin/systems/services/kolab/class_serviceKolab.inc:32
+msgid "Relay host"
 msgstr ""
 
-#: admin/systems/services/kolab/class_servKolab.inc:481
-#: admin/systems/services/kolab/servkolab.tpl:227
-msgid "Accept Internet Mail"
-msgstr ""
-
-#: admin/systems/services/kolab/servkolab.tpl:6
-msgid "Generic"
-msgstr ""
-
-#: admin/systems/services/kolab/servkolab.tpl:27
-msgid "Postfix mydestination"
-msgstr ""
-
-#: admin/systems/services/kolab/servkolab.tpl:102
-msgid "FTP FreeBusy service (legacy, not interoperable with Kolab2 FreeBusy)"
-msgstr ""
-
-#: admin/systems/services/kolab/servkolab.tpl:112
-msgid "HTTP FreeBusy service (legacy)"
-msgstr ""
-
-#: admin/systems/services/kolab/servkolab.tpl:122
-msgid "Amavis email scanning (virus/spam)"
-msgstr ""
-
-#: admin/systems/services/kolab/servkolab.tpl:151
-msgid "Free/Busy settings"
-msgstr ""
-
-#: admin/systems/services/kolab/servkolab.tpl:157
-msgid "Allow unauthenticated downloading of Free/Busy information"
-msgstr ""
-
-#: admin/systems/services/kolab/servkolab.tpl:180
-msgid "Hosts/networks allowed to relay"
-msgstr ""
-
-#: admin/systems/services/kolab/servkolab.tpl:185
-msgid "Enter multiple values, seperated with"
-msgstr ""
-
-#: admin/systems/services/kolab/servkolab.tpl:198
-msgid "SMTP smarthost/relayhost"
-msgstr ""
-
-#: admin/systems/services/kolab/servkolab.tpl:211
+#: admin/systems/services/kolab/class_serviceKolab.inc:32
+#: admin/systems/services/kolab/class_serviceKolab.inc:187
 msgid "Host used to relay mails"
 msgstr ""
 
-#: admin/systems/services/kolab/servkolab.tpl:235
+#: admin/systems/services/kolab/class_serviceKolab.inc:67
+#: admin/systems/services/kolab/class_serviceKolab.inc:68
+msgid "Kolab mail service"
+msgstr ""
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:68
+#: admin/systems/services/kolab/class_serviceKolab.inc:105
+msgid "Services"
+msgstr ""
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:83
+msgid "Generic"
+msgstr ""
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:89
+msgid "Postfix mydomain"
+msgstr ""
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:89
+msgid "Postfix domain name"
+msgstr ""
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:93
+msgid "Cyrus admins"
+msgstr ""
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:93
+msgid "Cyrus admins for kolab server"
+msgstr ""
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:98
+msgid "Mail domains"
+msgstr ""
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:98
+msgid "Postfix mydestination"
+msgstr ""
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:108
+msgid "POP3 service"
+msgstr ""
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:108
+msgid "Enable POP3 service"
+msgstr ""
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:112
+msgid "POP3/SSL service"
+msgstr ""
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:112
+msgid "Enable POP3/SSL service"
+msgstr ""
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:116
+msgid "IMAP service"
+msgstr ""
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:116
+msgid "Enable IMAP service"
+msgstr ""
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:120
+msgid "IMAP/SSL service"
+msgstr ""
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:120
+msgid "Enable IMAP/SSL service"
+msgstr ""
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:124
+msgid "Sieve service"
+msgstr ""
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:124
+msgid "Enable Sieve service"
+msgstr ""
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:128
+msgid "FTP FreeBusy service (legacy)"
+msgstr ""
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:129
+msgid "FTP FreeBusy service (legacy, not interoperable with Kolab2 FreeBusy)"
+msgstr ""
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:133
+msgid "HTTP FreeBusy service (legacy)"
+msgstr ""
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:137
+msgid "Amavis email scanning"
+msgstr ""
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:137
+msgid "Amavis email scanning (virus/spam)"
+msgstr ""
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:143
+msgid "Quota settings"
+msgstr ""
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:146
+msgid "Quota occupation limit before warning users (%)"
+msgstr ""
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:147
+#, php-format
+msgid "Warn users when using more than X% of their mail quota"
+msgstr ""
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:155
+msgid "Free/Busy settings"
+msgstr ""
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:158
+#: admin/systems/services/kolab/class_serviceKolab.inc:159
+msgid "Allow unauthenticated downloading of Free/Busy information"
+msgstr ""
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:163
+msgid "Number of days to include when creating free/busy lists"
+msgstr ""
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:164
+msgid "Include data from X days in the past when creating free/busy lists"
+msgstr ""
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:172
+msgid "SMTP privileged networks"
+msgstr ""
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:175
+msgid "Hosts/networks allowed to relay"
+msgstr ""
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:176
+msgid "Hosts/networks allowed to relay (multiple values comma-seperated)"
+msgstr ""
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:184
+msgid "SMTP smarthost/relayhost"
+msgstr ""
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:192
+msgid "Accept Internet Mail"
+msgstr ""
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:195
+#: admin/systems/services/kolab/class_serviceKolab.inc:196
 msgid "Accept mail from other domains over non-authenticated SMTP"
+msgstr ""
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:270
+msgid "Internal error"
+msgstr ""
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:270
+msgid "Kolab account does not exist!"
+msgstr ""
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:274
+msgid "Error"
+msgstr ""
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:274
+msgid "hostname"
+msgstr ""
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:283
+#: admin/systems/services/kolab/class_serviceKolab.inc:294
+msgid "LDAP error"
 msgstr ""
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:149
@@ -281,8 +260,7 @@ msgid "Default"
 msgstr ""
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:183
-msgid ""
-"Mail settings cannot be removed while there are delegations configured!"
+msgid "Mail settings cannot be removed while there are delegations configured!"
 msgstr ""
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:281
@@ -293,124 +271,111 @@ msgstr ""
 msgid "Please remove the mail settings first!"
 msgstr ""
 
-#: personal/connectivity/kolab/class_kolabAccount.inc:27
-msgid "This plugin manage the user settings for a kolab server"
+#: personal/connectivity/kolab/class_kolabAccount.inc:82
+msgid "Kolab"
 msgstr ""
 
-#: personal/connectivity/kolab/class_kolabAccount.inc:199
-msgid "Mail address"
-msgstr ""
-
-#: personal/connectivity/kolab/class_kolabAccount.inc:232
-msgid "Always accept"
-msgstr ""
-
-#: personal/connectivity/kolab/class_kolabAccount.inc:233
-msgid "Always reject"
-msgstr ""
-
-#: personal/connectivity/kolab/class_kolabAccount.inc:234
-msgid "Reject if conflicts"
-msgstr ""
-
-#: personal/connectivity/kolab/class_kolabAccount.inc:235
-msgid "Manual if conflicts"
-msgstr ""
-
-#: personal/connectivity/kolab/class_kolabAccount.inc:236
-msgid "Manual"
-msgstr ""
-
-#: personal/connectivity/kolab/class_kolabAccount.inc:284
-msgid "Anonymous"
-msgstr ""
-
-#: personal/connectivity/kolab/class_kolabAccount.inc:379
-#: personal/connectivity/kolab/class_kolabAccount.inc:382
-msgid "Free Busy future"
-msgstr ""
-
-#: personal/connectivity/kolab/class_kolabAccount.inc:387
-#: personal/connectivity/kolab/class_kolabAccount.inc:390
-msgid "Free Busy url"
-msgstr ""
-
-#: personal/connectivity/kolab/class_kolabAccount.inc:404
-#, php-format
-msgid "The invitation policy entry for address '%s' is not valid."
-msgstr ""
-
-#: personal/connectivity/kolab/class_kolabAccount.inc:412
-#, php-format
-msgid "There's no mail user with address '%s' for your invitation policy!"
-msgstr ""
-
-#: personal/connectivity/kolab/class_kolabAccount.inc:684
+#: personal/connectivity/kolab/class_kolabAccount.inc:83
 msgid "Kolab account settings"
 msgstr ""
 
-#: personal/connectivity/kolab/class_kolabAccount.inc:684
+#: personal/connectivity/kolab/class_kolabAccount.inc:83
 msgid "Connectivity addon"
 msgstr ""
 
-#: personal/connectivity/kolab/class_kolabAccount.inc:688
-msgid "My account"
+#: personal/connectivity/kolab/class_kolabAccount.inc:100
+#: personal/connectivity/kolab/kolab.tpl:3
+#: personal/connectivity/kolab/kolab.tpl:43
+msgid "Kolab account"
 msgstr ""
 
-#: personal/connectivity/kolab/class_kolabAccount.inc:693
-msgid "Free busy future"
-msgstr ""
-
-#: personal/connectivity/kolab/class_kolabAccount.inc:694
-msgid "Mail size restriction"
-msgstr ""
-
-#: personal/connectivity/kolab/class_kolabAccount.inc:695
-msgid "Free busy information"
-msgstr ""
-
-#: personal/connectivity/kolab/class_kolabAccount.inc:696
+#: personal/connectivity/kolab/class_kolabAccount.inc:104
 #: personal/connectivity/kolab/kolab.tpl:51
 #: personal/connectivity/kolab/kolab.tpl:63
 msgid "Delegations"
 msgstr ""
 
-#: personal/connectivity/kolab/class_kolabAccount.inc:697
+#: personal/connectivity/kolab/class_kolabAccount.inc:112
+#: personal/connectivity/kolab/kolab.tpl:83
+msgid "Mail size"
+msgstr ""
+
+#: personal/connectivity/kolab/class_kolabAccount.inc:115
+#: personal/connectivity/kolab/kolab.tpl:87
+msgid "No mail size restriction for this account"
+msgstr ""
+
+#: personal/connectivity/kolab/class_kolabAccount.inc:122
+#: personal/connectivity/kolab/kolab.tpl:95
+msgid "Free Busy information"
+msgstr ""
+
+#: personal/connectivity/kolab/class_kolabAccount.inc:125
+#: personal/connectivity/kolab/kolab.tpl:98
+msgid "URL"
+msgstr ""
+
+#: personal/connectivity/kolab/class_kolabAccount.inc:130
+#: personal/connectivity/kolab/kolab.tpl:107
+msgid "Future"
+msgstr ""
+
+#: personal/connectivity/kolab/class_kolabAccount.inc:130
+#: personal/connectivity/kolab/kolab.tpl:112
+msgid "days"
+msgstr ""
+
+#: personal/connectivity/kolab/class_kolabAccount.inc:138
+#: personal/connectivity/kolab/class_kolabAccount.inc:141
+#: personal/connectivity/kolab/class_kolabAccount.inc:149
+#: personal/connectivity/kolab/class_kolabAccount.inc:159
 #: personal/connectivity/kolab/kolab.tpl:119
 msgid "Invitation policy"
 msgstr ""
 
-#: personal/connectivity/kolab/kolab.tpl:3
-#: personal/connectivity/kolab/kolab.tpl:43
-msgid "Kolab account"
+#: personal/connectivity/kolab/class_kolabAccount.inc:144
+msgid "Default policy"
+msgstr ""
+
+#: personal/connectivity/kolab/class_kolabAccount.inc:144
+msgid "Default invitation policy"
+msgstr ""
+
+#: personal/connectivity/kolab/class_kolabAccount.inc:146
+#: personal/connectivity/kolab/class_kolabAccount.inc:155
+msgid "Manual"
+msgstr ""
+
+#: personal/connectivity/kolab/class_kolabAccount.inc:146
+#: personal/connectivity/kolab/class_kolabAccount.inc:155
+msgid "Always accept"
+msgstr ""
+
+#: personal/connectivity/kolab/class_kolabAccount.inc:146
+#: personal/connectivity/kolab/class_kolabAccount.inc:155
+msgid "Always reject"
+msgstr ""
+
+#: personal/connectivity/kolab/class_kolabAccount.inc:146
+#: personal/connectivity/kolab/class_kolabAccount.inc:155
+msgid "Reject if conflicts"
+msgstr ""
+
+#: personal/connectivity/kolab/class_kolabAccount.inc:146
+#: personal/connectivity/kolab/class_kolabAccount.inc:155
+msgid "Manual if conflicts"
+msgstr ""
+
+#: personal/connectivity/kolab/class_kolabAccount.inc:152
+msgid "mail address"
+msgstr ""
+
+#: personal/connectivity/kolab/class_kolabAccount.inc:153
+msgid "policy for this mail address"
 msgstr ""
 
 #: personal/connectivity/kolab/kolab.tpl:4
 msgid ""
 "The kolab account is currently disabled. It's features can be adjusted if "
 "you add a mail account."
-msgstr ""
-
-#: personal/connectivity/kolab/kolab.tpl:83
-msgid "Mail size"
-msgstr ""
-
-#: personal/connectivity/kolab/kolab.tpl:87
-msgid "No mail size restriction for this account"
-msgstr ""
-
-#: personal/connectivity/kolab/kolab.tpl:95
-msgid "Free Busy information"
-msgstr ""
-
-#: personal/connectivity/kolab/kolab.tpl:98
-msgid "URL"
-msgstr ""
-
-#: personal/connectivity/kolab/kolab.tpl:107
-msgid "Future"
-msgstr ""
-
-#: personal/connectivity/kolab/kolab.tpl:112
-msgid "days"
 msgstr ""

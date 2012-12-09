@@ -7,7 +7,6 @@
 #
 #: admin/roleManagement/role-list.tpl:13
 #: admin/roleManagement/roleGeneric.tpl:29
-#: admin/roleManagement/class_roleGeneric.inc:431
 msgid "Base"
 msgstr ""
 
@@ -16,21 +15,21 @@ msgid "List of roles"
 msgstr ""
 
 #: admin/roleManagement/role-list.xml:15 admin/roleManagement/role-list.xml:74
+#: admin/roleManagement/class_roleGeneric.inc:32
+#: admin/roleManagement/class_roleGeneric.inc:37
 msgid "Role"
 msgstr ""
 
 #: admin/roleManagement/role-list.xml:41
 #: admin/roleManagement/role-filter.tpl:17
 #: admin/roleManagement/roleGeneric.tpl:11
-#: admin/roleManagement/class_roleGeneric.inc:237
-#: admin/roleManagement/class_roleGeneric.inc:246
-#: admin/roleManagement/class_roleGeneric.inc:429
+#: admin/roleManagement/class_roleGeneric.inc:63
 msgid "Name"
 msgstr ""
 
 #: admin/roleManagement/role-list.xml:49
 #: admin/roleManagement/roleGeneric.tpl:19
-#: admin/roleManagement/class_roleGeneric.inc:430
+#: admin/roleManagement/class_roleGeneric.inc:64
 msgid "Description"
 msgstr ""
 
@@ -85,50 +84,49 @@ msgid "Filter"
 msgstr ""
 
 #: admin/roleManagement/roleGeneric.tpl:6
-#: admin/roleManagement/class_roleGeneric.inc:420
+#: admin/roleManagement/class_roleGeneric.inc:61
 msgid "Generic"
 msgstr ""
 
 #: admin/roleManagement/roleGeneric.tpl:42
+#: admin/roleManagement/class_roleGeneric.inc:66
 msgid "Phone number"
 msgstr ""
 
 #: admin/roleManagement/roleGeneric.tpl:50
-#: admin/roleManagement/class_roleGeneric.inc:433
+#: admin/roleManagement/class_roleGeneric.inc:67
 msgid "Fax number"
 msgstr ""
 
 #: admin/roleManagement/roleGeneric.tpl:62
-#: admin/roleManagement/class_roleGeneric.inc:434
 msgid "Occupants"
 msgstr ""
 
-#: admin/roleManagement/class_roleManagement.inc:25
-#: admin/roleManagement/class_roleGeneric.inc:426
+#: admin/roleManagement/class_roleManagement.inc:36
+#: admin/roleManagement/class_roleGeneric.inc:36
 msgid "Roles"
 msgstr ""
 
-#: admin/roleManagement/class_roleManagement.inc:26
+#: admin/roleManagement/class_roleManagement.inc:37
 msgid "Role management"
 msgstr ""
 
-#: admin/roleManagement/class_roleGeneric.inc:267
-msgid "Unknown"
-msgstr ""
-
-#: admin/roleManagement/class_roleGeneric.inc:285
-#: admin/roleManagement/class_roleGeneric.inc:327
-msgid "LDAP error"
-msgstr ""
-
-#: admin/roleManagement/class_roleGeneric.inc:370
-msgid "Error"
-msgstr ""
-
-#: admin/roleManagement/class_roleGeneric.inc:421
+#: admin/roleManagement/class_roleGeneric.inc:33
 msgid "Role generic"
 msgstr ""
 
-#: admin/roleManagement/class_roleGeneric.inc:432
-msgid "Telefon number"
+#: admin/roleManagement/class_roleGeneric.inc:63
+msgid "Name of the role"
+msgstr ""
+
+#: admin/roleManagement/class_roleGeneric.inc:64
+msgid "Description of the role"
+msgstr ""
+
+#: admin/roleManagement/class_roleGeneric.inc:68
+msgid "Users"
+msgstr ""
+
+#: admin/roleManagement/class_roleGeneric.inc:68
+msgid "Add users for the role"
 msgstr ""

@@ -1,81 +1,75 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 #  Jiang Xin <worldhello.net@gmail.com>, 2007.
+#: personal/scalix/class_scalixAccount.inc:69
+#: personal/scalix/class_scalixAccount.inc:76
+#: personal/scalix/class_scalixAccount.inc:115
+#: personal/scalix/class_scalixAccount.inc:146
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
-"POT-Creation-Date: 2012-05-26 17:33+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-12-09 16:23+0100\n"
 "PO-Revision-Date: 2012-05-26 16:33+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Chinese (http://www.transifex.net/projects/p/FusionDirectory/language/zh/)\n"
+"Language-Team: Chinese (http://www.transifex.net/projects/p/FusionDirectory/"
+"language/zh/)\n"
+"Language: zh\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: zh\n"
 "Plural-Forms: nplurals=1; plural=0\n"
 
 #: admin/groups/scalix/class_scalixGroup.inc:35
-#: personal/scalix/class_scalixAccount.inc:552
+#: personal/scalix/class_scalixAccount.inc:48
 msgid "Scalix account"
 msgstr ""
 
-#: admin/groups/scalix/class_scalixGroup.inc:45
-#: personal/scalix/class_scalixAccount.inc:562
+#: admin/groups/scalix/class_scalixGroup.inc:42
 msgid "Scalix Mail node"
 msgstr ""
 
-#: admin/groups/scalix/class_scalixGroup.inc:46
-#: personal/scalix/class_scalixAccount.inc:563
+#: admin/groups/scalix/class_scalixGroup.inc:43
 msgid "Mailbox class"
 msgstr ""
 
-#: admin/groups/scalix/class_scalixGroup.inc:47
-#: personal/scalix/class_scalixAccount.inc:564
+#: admin/groups/scalix/class_scalixGroup.inc:44
 msgid "Server language"
 msgstr ""
 
-#: admin/groups/scalix/class_scalixGroup.inc:48
-#: personal/scalix/class_scalixAccount.inc:565
+#: admin/groups/scalix/class_scalixGroup.inc:45
 msgid "Administrator"
 msgstr "管理员"
 
-#: admin/groups/scalix/class_scalixGroup.inc:49
-#: personal/scalix/class_scalixAccount.inc:566
+#: admin/groups/scalix/class_scalixGroup.inc:46
 msgid "Mailbox administrator"
 msgstr ""
 
-#: admin/groups/scalix/class_scalixGroup.inc:50
-#: personal/scalix/class_scalixAccount.inc:567
+#: admin/groups/scalix/class_scalixGroup.inc:47
 msgid "Hide user entry in Scalix"
 msgstr ""
 
-#: admin/groups/scalix/class_scalixGroup.inc:51
-#: personal/scalix/class_scalixAccount.inc:568
+#: admin/groups/scalix/class_scalixGroup.inc:48
 msgid "Mailbox size limitations"
 msgstr ""
 
-#: admin/groups/scalix/class_scalixGroup.inc:52
-#: personal/scalix/class_scalixAccount.inc:569
+#: admin/groups/scalix/class_scalixGroup.inc:49
 msgid "Limit outbound"
 msgstr ""
 
-#: admin/groups/scalix/class_scalixGroup.inc:53
-#: personal/scalix/class_scalixAccount.inc:570
+#: admin/groups/scalix/class_scalixGroup.inc:50
 msgid "Limit inbound"
 msgstr ""
 
-#: admin/groups/scalix/class_scalixGroup.inc:54
-#: personal/scalix/class_scalixAccount.inc:571
+#: admin/groups/scalix/class_scalixGroup.inc:51
 msgid "Notify user"
 msgstr ""
 
-#: admin/groups/scalix/class_scalixGroup.inc:55
-#: personal/scalix/paste_generic.tpl:4
-#: personal/scalix/class_scalixAccount.inc:572 personal/scalix/generic.tpl:105
+#: admin/groups/scalix/class_scalixGroup.inc:52
+#: personal/scalix/paste_generic.tpl:4 personal/scalix/generic.tpl:105
 msgid "Scalix email addresses"
 msgstr ""
 
@@ -87,111 +81,104 @@ msgstr "点击下面的“编辑”按钮修改该对话框内的信息"
 msgid "Scalix settings"
 msgstr ""
 
-#: personal/scalix/paste_generic.tpl:6 personal/scalix/generic.tpl:108
+#: personal/scalix/paste_generic.tpl:6
+#: personal/scalix/class_scalixAccount.inc:145 personal/scalix/generic.tpl:108
 msgid "List of scalix email addresses"
 msgstr ""
 
-#: personal/scalix/class_scalixAccount.inc:38
+#: personal/scalix/class_scalixAccount.inc:40
+#: personal/scalix/class_scalixAccount.inc:46
+#: personal/scalix/class_scalixAccount.inc:47
 msgid "Scalix"
 msgstr ""
 
-#: personal/scalix/class_scalixAccount.inc:39
+#: personal/scalix/class_scalixAccount.inc:41
 msgid "This save and read the scalix account data from ldap"
 msgstr ""
 
-#: personal/scalix/class_scalixAccount.inc:150
-msgid "This account has no scalix extensions."
+#: personal/scalix/class_scalixAccount.inc:49
+msgid "plugins/scalix/images/plugin.png"
 msgstr ""
 
-#: personal/scalix/class_scalixAccount.inc:159
-msgid "Remove scalix account"
-msgstr ""
-
-#: personal/scalix/class_scalixAccount.inc:160
-msgid ""
-"This account has scalix synchronization enabled. You can disable it by "
-"clicking below."
-msgstr ""
-
-#: personal/scalix/class_scalixAccount.inc:162
-msgid "Create scalix account"
-msgstr ""
-
-#: personal/scalix/class_scalixAccount.inc:162
-msgid ""
-"This account has scalix synchronization disabled. You can enable it by "
-"clicking below."
-msgstr ""
-
-#: personal/scalix/class_scalixAccount.inc:256
-#: personal/scalix/class_scalixAccount.inc:362
-msgid "LDAP error"
-msgstr "LDAP 错误"
-
-#: personal/scalix/class_scalixAccount.inc:279
-#: personal/scalix/class_scalixAccount.inc:286
-#: personal/scalix/class_scalixAccount.inc:293
-#: personal/scalix/class_scalixAccount.inc:303
-#: personal/scalix/class_scalixAccount.inc:489
-#: personal/scalix/class_scalixAccount.inc:498
-msgid "Error"
-msgstr "错误"
-
-#: personal/scalix/class_scalixAccount.inc:279
-#: personal/scalix/class_scalixAccount.inc:489
-msgid "Cannot add invalid mail address!"
-msgstr ""
-
-#: personal/scalix/class_scalixAccount.inc:286
-#: personal/scalix/class_scalixAccount.inc:303
-msgid "You have no permission to modify these addresses."
-msgstr ""
-
-#: personal/scalix/class_scalixAccount.inc:293
-#: personal/scalix/class_scalixAccount.inc:498
-#, php-format
-msgid "Cannot add mail address: it is already used by user '%s'."
-msgstr ""
-
-#: personal/scalix/class_scalixAccount.inc:384
-msgid "Mailnode"
-msgstr ""
-
-#: personal/scalix/class_scalixAccount.inc:387
-msgid "Scalix object"
-msgstr ""
-
-#: personal/scalix/class_scalixAccount.inc:396
-msgid "Email address"
-msgstr "邮件地址"
-
-#: personal/scalix/class_scalixAccount.inc:403
-msgid "Limit Mailbox"
-msgstr ""
-
-#: personal/scalix/class_scalixAccount.inc:556
-msgid "My account"
-msgstr "我的账号"
-
-#: personal/scalix/generic.tpl:4
+#: personal/scalix/class_scalixAccount.inc:65 personal/scalix/generic.tpl:4
 msgid "Generic"
 msgstr "通用配置"
 
-#: personal/scalix/generic.tpl:8
+#: personal/scalix/class_scalixAccount.inc:68 personal/scalix/generic.tpl:8
 msgid "Scalix mailnode"
 msgstr ""
 
-#: personal/scalix/generic.tpl:17
+#: personal/scalix/class_scalixAccount.inc:75 personal/scalix/generic.tpl:17
 msgid "Scalix mailbox class"
+msgstr ""
+
+#: personal/scalix/class_scalixAccount.inc:84 personal/scalix/generic.tpl:30
+msgid "Scalix server language"
+msgstr ""
+
+#: personal/scalix/class_scalixAccount.inc:85
+msgid "Select the language of your scalix server"
+msgstr ""
+
+#: personal/scalix/class_scalixAccount.inc:93 personal/scalix/generic.tpl:51
+msgid "Scalix Administrator"
+msgstr ""
+
+#: personal/scalix/class_scalixAccount.inc:94
+msgid "Select for admin capability"
+msgstr ""
+
+#: personal/scalix/class_scalixAccount.inc:100 personal/scalix/generic.tpl:56
+msgid "Scalix Mailbox Administrator"
+msgstr ""
+
+#: personal/scalix/class_scalixAccount.inc:101
+msgid "Select for mailbox admin capability"
+msgstr ""
+
+#: personal/scalix/class_scalixAccount.inc:107 personal/scalix/generic.tpl:61
+msgid "Hide this user entry in Scalix"
+msgstr ""
+
+#: personal/scalix/class_scalixAccount.inc:108
+msgid "Hide user entry from addressbook"
+msgstr ""
+
+#: personal/scalix/class_scalixAccount.inc:114 personal/scalix/generic.tpl:70
+msgid "Limit mailbox size"
+msgstr ""
+
+#: personal/scalix/class_scalixAccount.inc:114
+msgid " (MB)"
+msgstr ""
+
+#: personal/scalix/class_scalixAccount.inc:123 personal/scalix/generic.tpl:81
+msgid "Limit Outbound Mail"
+msgstr ""
+
+#: personal/scalix/class_scalixAccount.inc:124
+msgid "As sanction on mailbox quota overuse, stop user from sending mail"
+msgstr ""
+
+#: personal/scalix/class_scalixAccount.inc:130 personal/scalix/generic.tpl:86
+msgid "Limit Inbound Mail"
+msgstr ""
+
+#: personal/scalix/class_scalixAccount.inc:131
+msgid "As sanction on mailbox quota overuse, stop user from receiving mail"
+msgstr ""
+
+#: personal/scalix/class_scalixAccount.inc:137 personal/scalix/generic.tpl:91
+msgid "Notify User"
+msgstr ""
+
+#: personal/scalix/class_scalixAccount.inc:138
+msgid "As sanction on mailbox quota overuse, notify the user by eMail"
 msgstr ""
 
 #: personal/scalix/generic.tpl:21
 msgid ""
 "Limited users can not make use of the group calendar functionality in Scalix"
-msgstr ""
-
-#: personal/scalix/generic.tpl:30
-msgid "Scalix server language"
 msgstr ""
 
 #: personal/scalix/generic.tpl:34
@@ -202,28 +189,12 @@ msgstr ""
 msgid "Select for admin capability."
 msgstr ""
 
-#: personal/scalix/generic.tpl:51
-msgid "Scalix Administrator"
-msgstr ""
-
 #: personal/scalix/generic.tpl:56
 msgid "Select for mailbox admin capability."
 msgstr ""
 
-#: personal/scalix/generic.tpl:56
-msgid "Scalix Mailbox Administrator"
-msgstr ""
-
 #: personal/scalix/generic.tpl:61
 msgid "Hide user entry from addressbook."
-msgstr ""
-
-#: personal/scalix/generic.tpl:61
-msgid "Hide this user entry in Scalix"
-msgstr ""
-
-#: personal/scalix/generic.tpl:70
-msgid "Limit mailbox size"
 msgstr ""
 
 #: personal/scalix/generic.tpl:73
@@ -234,22 +205,22 @@ msgstr "MB"
 msgid "As sanction on mailbox quota overuse, stop user from sending mail."
 msgstr ""
 
-#: personal/scalix/generic.tpl:81
-msgid "Limit Outbound Mail"
-msgstr ""
-
 #: personal/scalix/generic.tpl:86
 msgid "As sanction on mailbox quota overuse, stop user from receiving mail."
-msgstr ""
-
-#: personal/scalix/generic.tpl:86
-msgid "Limit Inbound Mail"
 msgstr ""
 
 #: personal/scalix/generic.tpl:91
 msgid "As sanction on mailbox quota overuse, notify the user by eMail."
 msgstr ""
 
-#: personal/scalix/generic.tpl:91
-msgid "Notify User"
-msgstr ""
+#~ msgid "LDAP error"
+#~ msgstr "LDAP 错误"
+
+#~ msgid "Error"
+#~ msgstr "错误"
+
+#~ msgid "Email address"
+#~ msgstr "邮件地址"
+
+#~ msgid "My account"
+#~ msgstr "我的账号"

@@ -1,0 +1,428 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Translators:
+#   <pavel.borecki@gmail.com>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: FusionDirectory\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-12-09 16:21+0100\n"
+"PO-Revision-Date: 2012-05-26 16:51+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/"
+"FusionDirectory/language/cs_CZ/)\n"
+"Language: cs_CZ\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+
+#: html/getvcard.php:39
+msgid "Internal error"
+msgstr "vnitřní chyba"
+
+#: html/getvcard.php:39
+msgid "Missing parameters!"
+msgstr "Chybějící parametry!"
+
+#: addons/addressbook/dial.tpl:3
+msgid "Dial connection..."
+msgstr "probíhá spojení…"
+
+#: addons/addressbook/dial.tpl:10 addons/addressbook/class_addressbook.inc:465
+#: addons/addressbook/class_addressbook.inc:472
+#: addons/addressbook/class_addressbook.inc:476
+#: addons/addressbook/class_addressbook.inc:598
+msgid "Dial"
+msgstr "zavolat"
+
+#: addons/addressbook/address_edit.tpl:7
+msgid "Choose the department to store entry in"
+msgstr "zvolte oddělení ve kterém bude položka umístěna"
+
+#: addons/addressbook/address_edit.tpl:24
+#: addons/addressbook/address_info.tpl:18
+msgid "Personal"
+msgstr "osobní"
+
+#: addons/addressbook/address_edit.tpl:30
+msgid "Last name"
+msgstr "příjmení"
+
+#: addons/addressbook/address_edit.tpl:33
+msgid "First name"
+msgstr "jméno"
+
+#: addons/addressbook/address_edit.tpl:48
+#: addons/addressbook/class_addressbook.inc:873
+#: addons/addressbook/address_info.tpl:32
+msgid "Initials"
+msgstr "iniciály"
+
+#: addons/addressbook/address_edit.tpl:60
+#: addons/addressbook/address_info.tpl:40
+msgid "Personal title"
+msgstr "oslovení"
+
+#: addons/addressbook/address_edit.tpl:74
+#: addons/addressbook/address_info.tpl:53 addons/addressbook/contents.tpl:15
+msgid "Private"
+msgstr "soukromé"
+
+#: addons/addressbook/address_edit.tpl:80
+#: addons/addressbook/address_edit.tpl:207
+#: addons/addressbook/address_info.tpl:59
+#: addons/addressbook/address_info.tpl:155
+msgid "Address"
+msgstr "adresa"
+
+#: addons/addressbook/address_edit.tpl:94
+#: addons/addressbook/address_edit.tpl:221
+#: addons/addressbook/class_addressbook.inc:715
+#: addons/addressbook/address_info.tpl:67
+#: addons/addressbook/address_info.tpl:163 addons/addressbook/contents.tpl:14
+msgid "Phone"
+msgstr "telefon"
+
+#: addons/addressbook/address_edit.tpl:106
+#: addons/addressbook/class_addressbook.inc:724
+#: addons/addressbook/address_info.tpl:75 addons/addressbook/contents.tpl:15
+msgid "Mobile"
+msgstr "mobilní telefon"
+
+#: addons/addressbook/address_edit.tpl:118
+#: addons/addressbook/class_addressbook.inc:739
+#: addons/addressbook/address_info.tpl:83
+msgid "Email"
+msgstr "e-mail"
+
+#: addons/addressbook/address_edit.tpl:134
+#: addons/addressbook/address_info.tpl:99
+msgid "Organizational"
+msgstr "organizační"
+
+#: addons/addressbook/address_edit.tpl:143
+#: addons/addressbook/address_info.tpl:109
+msgid "Company"
+msgstr "společnost"
+
+#: addons/addressbook/address_edit.tpl:155
+#: addons/addressbook/class_addressbook.inc:868
+#: addons/addressbook/address_info.tpl:117
+msgid "Department"
+msgstr "oddělení"
+
+#: addons/addressbook/address_edit.tpl:167
+#: addons/addressbook/address_info.tpl:125
+msgid "City"
+msgstr "město"
+
+#: addons/addressbook/address_edit.tpl:179
+#: addons/addressbook/address_info.tpl:133
+msgid "Postal code"
+msgstr "poštovní směrovací číslo (PSČ)"
+
+#: addons/addressbook/address_edit.tpl:191
+#: addons/addressbook/address_info.tpl:141
+msgid "Country"
+msgstr "země"
+
+#: addons/addressbook/address_edit.tpl:233
+#: addons/addressbook/address_info.tpl:171
+msgid "FAX"
+msgstr "fax"
+
+#: addons/addressbook/address_edit.tpl:246
+#: addons/addressbook/class_addressbook.inc:727
+#: addons/addressbook/class_addressbook.inc:866
+#: addons/addressbook/address_info.tpl:179
+msgid "Pager"
+msgstr "pager"
+
+#: addons/addressbook/class_addressbook.inc:195
+#, php-format
+msgid "Dial from %s to %s now?"
+msgstr "Vytočit spojení z %s na %s?"
+
+#: addons/addressbook/class_addressbook.inc:198
+msgid "Error"
+msgstr "chyba"
+
+#: addons/addressbook/class_addressbook.inc:198
+msgid ""
+"You need to set your personal phone number in order to perform direct dials."
+msgstr ""
+"Abyste mohli vytáčet přímo odsud, je třeba mít zadané své vlastní telefonní "
+"číslo."
+
+#: addons/addressbook/class_addressbook.inc:227
+#: addons/addressbook/class_addressbook.inc:798
+msgid "LDAP error"
+msgstr "chyba LDAPu"
+
+#: addons/addressbook/class_addressbook.inc:235
+#: addons/addressbook/class_addressbook.inc:343
+msgid "Permission"
+msgstr "oprávnění"
+
+#: addons/addressbook/class_addressbook.inc:482
+#, php-format
+msgid "Save contact for %s as vcard"
+msgstr "exportovat kontakt na %s ve formátu vcard"
+
+#: addons/addressbook/class_addressbook.inc:488
+#, php-format
+msgid "Send mail to %s"
+msgstr "poslat %s e-mail"
+
+#: addons/addressbook/class_addressbook.inc:612
+msgid "global addressbook"
+msgstr "globální adresář"
+
+#: addons/addressbook/class_addressbook.inc:615
+msgid "user database"
+msgstr "databáze uživatelů"
+
+#: addons/addressbook/class_addressbook.inc:619
+#, php-format
+msgid "Contact stored in '%s'"
+msgstr "kontakt byl uložen do '%s'"
+
+#: addons/addressbook/class_addressbook.inc:621
+msgid "Creating new entry in"
+msgstr "probíhá vytváření nové položky v"
+
+#: addons/addressbook/class_addressbook.inc:658
+msgid "All"
+msgstr "vše"
+
+#: addons/addressbook/class_addressbook.inc:658
+#: addons/addressbook/class_addressbook.inc:697
+#: addons/addressbook/class_addressbook.inc:707
+#: addons/addressbook/class_addressbook.inc:734
+#: addons/addressbook/address_info.tpl:24 addons/addressbook/contents.tpl:14
+msgid "Name"
+msgstr "jméno"
+
+#: addons/addressbook/class_addressbook.inc:658
+#: addons/addressbook/class_addressbook.inc:701
+#: addons/addressbook/class_addressbook.inc:710
+#: addons/addressbook/class_addressbook.inc:731
+#: addons/addressbook/class_addressbook.inc:859
+msgid "Given name"
+msgstr "jméno"
+
+#: addons/addressbook/class_addressbook.inc:659
+msgid "Work phone"
+msgstr "telefon do práce"
+
+#: addons/addressbook/class_addressbook.inc:659
+msgid "Cell phone"
+msgstr "mobilní telefon"
+
+#: addons/addressbook/class_addressbook.inc:660
+msgid "Home phone"
+msgstr "telefon domů"
+
+#: addons/addressbook/class_addressbook.inc:660
+msgid "User ID"
+msgstr "ID uživatele"
+
+#: addons/addressbook/class_addressbook.inc:718
+msgid "Telephone number"
+msgstr "telefonní číslo"
+
+#: addons/addressbook/class_addressbook.inc:721
+#: addons/addressbook/contents.tpl:14
+msgid "Fax"
+msgstr "fax"
+
+#: addons/addressbook/class_addressbook.inc:747
+msgid ""
+"Cannot create a unique DN for your entry. Please fill more formular fields."
+msgstr ""
+"Nedaří se pro Vás vytvořit jedinečné DN (rozlišené jméno). Vyplňte prosím "
+"ještě další políčka formuláře."
+
+#: addons/addressbook/class_addressbook.inc:850
+#: addons/addressbook/class_addressbook.inc:855 addons/addressbook/main.inc:43
+msgid "Addressbook"
+msgstr "adresář"
+
+#: addons/addressbook/class_addressbook.inc:851
+msgid "The addressbook plugin show internal users and external ones"
+msgstr ""
+
+#: addons/addressbook/class_addressbook.inc:858
+msgid "Surname"
+msgstr "příjmení"
+
+#: addons/addressbook/class_addressbook.inc:860
+msgid "Telefon number"
+msgstr "telefonní číslo"
+
+#: addons/addressbook/class_addressbook.inc:861
+msgid "Fax number"
+msgstr "číslo faxu"
+
+#: addons/addressbook/class_addressbook.inc:862
+msgid "Mobile number"
+msgstr "číslo mobilního telefonu"
+
+#: addons/addressbook/class_addressbook.inc:863
+msgid "Home phone number"
+msgstr "telefonní číslo domů"
+
+#: addons/addressbook/class_addressbook.inc:864
+msgid "User identification"
+msgstr "identifikace uživatele"
+
+#: addons/addressbook/class_addressbook.inc:865
+msgid "Mail address"
+msgstr "e-mailová adresa"
+
+#: addons/addressbook/class_addressbook.inc:867
+msgid "Organization"
+msgstr "organizace"
+
+#: addons/addressbook/class_addressbook.inc:869
+msgid "Location"
+msgstr "umístění"
+
+#: addons/addressbook/class_addressbook.inc:870
+#: addons/addressbook/class_addressbook.inc:871
+msgid "Postal address"
+msgstr "poštovní adresa"
+
+#: addons/addressbook/class_addressbook.inc:872
+msgid "State"
+msgstr "stát"
+
+#: addons/addressbook/class_addressbook.inc:874
+msgid "Title"
+msgstr "titul"
+
+#: addons/addressbook/class_addressbook.inc:875
+msgid "Home postal address"
+msgstr "soukromá poštovní adresa"
+
+#: addons/addressbook/class_addressbook.inc:876
+msgid "Common name"
+msgstr "běžné jméno (Common Name)"
+
+#: addons/addressbook/remove.tpl:2
+msgid "Warning"
+msgstr "varování"
+
+#: addons/addressbook/remove.tpl:6
+msgid ""
+"This includes all addressbook data in this entry. Please double check if "
+"your really want to do this since there is no way for FusionDirectory to get "
+"your data back."
+msgstr ""
+"Týká se veškerých informací o této položce v adresáři. Prosím velmi dobře si "
+"rozmyslete, zda to opravdu chcete udělat, protože provedené změny už ve "
+"FusionDirectory nepůjde vzít nijak jednoduše zpět (nanejvýš složitě ze "
+"záloh, pokud existují a obsahují potřebná data)!"
+
+#: addons/addressbook/remove.tpl:10
+msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
+msgstr ""
+"Tedy – pokud jste si jist(a), stiskněte 'smazat'. V opačném případě operaci "
+"zrušte pomocí 'zrušit'."
+
+#: addons/addressbook/contents.tpl:15
+msgid "Contact"
+msgstr "kontakt"
+
+#: addons/addressbook/contents.tpl:33
+msgid "Information"
+msgstr "informace"
+
+#: addons/addressbook/contents.tpl:37
+msgid ""
+"The telephone list plugin provides list and search facilities for the people "
+"in your site. You may want to specify the asterisk [*] like in \n"
+"'Fu*ry' to find 'FusionDirectory'. Use the filters below to narrow down your "
+"search."
+msgstr ""
+"Zásuvný modul telefonní seznam umožňuje vyhledávat kontakty na uživatele "
+"tohoto systému. Dále zde mohou být vedeny i ostatní osoby, které v systému "
+"uživatelský účet nemají. Pro vyhledávání lze používat i zástupné znaky – "
+"pokud tedy chcete vyhledat například 'FusionDirectory', použijte zástupný "
+"znak * (hvězdička) -> 'Fu*ry'. Pro další upřesnění vyhledávání pak "
+"používejte filtry."
+
+#: addons/addressbook/contents.tpl:43
+msgid "Actions"
+msgstr "akce"
+
+#: addons/addressbook/contents.tpl:49
+msgid "Add entry"
+msgstr "přidat položku"
+
+#: addons/addressbook/contents.tpl:55
+msgid "Edit entry"
+msgstr "upravit položku"
+
+#: addons/addressbook/contents.tpl:59
+msgid "Remove entry"
+msgstr "odebrat položku"
+
+#: addons/addressbook/contents.tpl:66
+msgid "Filters"
+msgstr "filtry"
+
+#: addons/addressbook/contents.tpl:76
+msgid "Select to see regular users"
+msgstr "vyberte pro zobrazení běžných uživatelů"
+
+#: addons/addressbook/contents.tpl:76
+msgid "Show organizational entries"
+msgstr "zobrazovat organizační položky"
+
+#: addons/addressbook/contents.tpl:77
+msgid "Select to see users in addressbook"
+msgstr "vyberte pro zobrazení uživatelů v adresáři"
+
+#: addons/addressbook/contents.tpl:77
+msgid "Show addressbook entries"
+msgstr "zobrazovat položky adresáře"
+
+#: addons/addressbook/contents.tpl:85
+msgid "Display results for department"
+msgstr "zobrazit výsledky pro oddělení"
+
+#: addons/addressbook/contents.tpl:88
+msgid "Choose the department the search will be based on"
+msgstr "zvolte oddělení ve kterém chcete vyhledávat"
+
+#: addons/addressbook/contents.tpl:98
+msgid "Match object"
+msgstr "jaký údaj"
+
+#: addons/addressbook/contents.tpl:101
+msgid "Choose the object that will be searched in"
+msgstr "zvolte objekt ve kterém chcete vyhledávat"
+
+#: addons/addressbook/contents.tpl:110
+msgid "Search for"
+msgstr "hledat"
+
+#: addons/addressbook/contents.tpl:113
+msgid "Search string"
+msgstr "hledaný řetězec znaků"
+
+#~ msgid "FusionDirectory related objects"
+#~ msgstr "objekty týkající se FusionDirectory"
+
+#~ msgid "Addressbook entries"
+#~ msgstr "položky adresáře"
+
+#~ msgid "Addressbook related objects"
+#~ msgstr "objekty týkající se adresáře"
+
+#~ msgid "Addons"
+#~ msgstr "rozšíření"

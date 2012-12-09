@@ -1,194 +1,195 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 #   <pavel.borecki@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
-"POT-Creation-Date: 2012-05-26 17:33+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-12-09 16:22+0100\n"
 "PO-Revision-Date: 2012-05-18 12:31+0000\n"
 "Last-Translator: pavelb <pavel.borecki@gmail.com>\n"
-"Language-Team: Czech (Czech Republic) (http://www.transifex.net/projects/p/FusionDirectory/language/cs_CZ/)\n"
+"Language-Team: Czech (Czech Republic) (http://www.transifex.net/projects/p/"
+"FusionDirectory/language/cs_CZ/)\n"
+"Language: cs_CZ\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: cs_CZ\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2\n"
 
-#: admin/systems/services/quota/class_quotaService.inc:64
-#: admin/systems/services/quota/class_quotaService.inc:204
+#: admin/systems/services/quota/class_serviceQuota.inc:64
+#: admin/systems/services/quota/class_serviceQuota.inc:204
 msgid "Quota service"
 msgstr "služba kvót"
 
-#: admin/systems/services/quota/class_quotaService.inc:128
+#: admin/systems/services/quota/class_serviceQuota.inc:128
 msgid "There is no ldap server configured"
 msgstr "není nastaven žádný LDAP server"
 
-#: admin/systems/services/quota/class_quotaService.inc:147
+#: admin/systems/services/quota/class_serviceQuota.inc:147
 #: personal/quota/quota.tpl:24 personal/quota/class_quotaAccount.inc:232
 msgid "Device"
 msgstr "zařízení"
 
-#: admin/systems/services/quota/class_quotaService.inc:148
+#: admin/systems/services/quota/class_serviceQuota.inc:148
 msgid "BlockSize"
 msgstr "velikost bloku"
 
-#: admin/systems/services/quota/class_quotaService.inc:149
+#: admin/systems/services/quota/class_serviceQuota.inc:149
 #: personal/quota/singleSystemSelect/singleSystem-list.xml:49
 msgid "Description"
 msgstr "popis"
 
-#: admin/systems/services/quota/class_quotaService.inc:164
+#: admin/systems/services/quota/class_serviceQuota.inc:164
 msgid "by"
 msgstr "od"
 
-#: admin/systems/services/quota/class_quotaService.inc:171
-#: admin/systems/services/quota/class_quotaService.inc:174
+#: admin/systems/services/quota/class_serviceQuota.inc:171
+#: admin/systems/services/quota/class_serviceQuota.inc:174
 msgid "Error"
 msgstr "chyba"
 
-#: admin/systems/services/quota/class_quotaService.inc:195
+#: admin/systems/services/quota/class_serviceQuota.inc:195
 msgid "HELP how to get blocksize"
 msgstr "NÁPOVĚDA – jak zjistit velikost bloku"
 
-#: admin/systems/services/quota/class_quotaService.inc:243
+#: admin/systems/services/quota/class_serviceQuota.inc:243
 #: personal/quota/class_quotaAccount.inc:370
 msgid "LDAP error"
 msgstr "chyba LDAPu"
 
-#: admin/systems/services/quota/class_quotaService.inc:252
-#: admin/systems/services/quota/class_quotaService.inc:253
+#: admin/systems/services/quota/class_serviceQuota.inc:252
+#: admin/systems/services/quota/class_serviceQuota.inc:253
 msgid "Quota Service"
 msgstr "služba kvót"
 
-#: admin/systems/services/quota/class_quotaService.inc:253
+#: admin/systems/services/quota/class_serviceQuota.inc:253
 msgid "Services"
 msgstr "služby"
 
-#: admin/systems/services/quota/class_quotaService.inc:261
+#: admin/systems/services/quota/class_serviceQuota.inc:260
 msgid "parameters for devices with quota"
 msgstr "parametry pro zařízení s nastavenými kvótami"
 
-#: admin/systems/services/quota/class_quotaService.inc:262
+#: admin/systems/services/quota/class_serviceQuota.inc:261
 msgid "id of user in LDAP"
 msgstr "identifikátor (id) uživatele v rámci LDAPu"
 
-#: admin/systems/services/quota/class_quotaService.inc:263
+#: admin/systems/services/quota/class_serviceQuota.inc:262
 msgid "charset of Message"
 msgstr "znaková sada zprávy"
 
-#: admin/systems/services/quota/class_quotaService.inc:264
+#: admin/systems/services/quota/class_serviceQuota.inc:263
 msgid "signature of warn message"
 msgstr "podpis varující zprávy"
 
-#: admin/systems/services/quota/class_quotaService.inc:265
+#: admin/systems/services/quota/class_serviceQuota.inc:264
 msgid "mail of contact for support"
 msgstr "kontakt (e-mailová adresa) na který se obrátit pro podporu"
 
-#: admin/systems/services/quota/class_quotaService.inc:266
+#: admin/systems/services/quota/class_serviceQuota.inc:265
 msgid "subject of mail"
 msgstr "předmět zprávy"
 
-#: admin/systems/services/quota/class_quotaService.inc:267
+#: admin/systems/services/quota/class_serviceQuota.inc:266
 msgid "subject of support"
 msgstr "čeho se podpora týká"
 
-#: admin/systems/services/quota/class_quotaService.inc:268
+#: admin/systems/services/quota/class_serviceQuota.inc:267
 msgid "core of message of Support"
 msgstr "základ textu zprávy týkající se podpory"
 
-#: admin/systems/services/quota/class_quotaService.inc:269
+#: admin/systems/services/quota/class_serviceQuota.inc:268
 msgid "Carbon Copy for all mails"
 msgstr "všechny zprávy budou v kopii posíláni i"
 
-#: admin/systems/services/quota/class_quotaService.inc:270
+#: admin/systems/services/quota/class_serviceQuota.inc:269
 msgid "Mail method for sending mail"
 msgstr "způsob odesílání zpráv"
 
-#: admin/systems/services/quota/class_quotaService.inc:271
+#: admin/systems/services/quota/class_serviceQuota.inc:270
 msgid "User for ldap connection"
 msgstr "uživatelský účet, použit pro připojování do LDAPu"
 
-#: admin/systems/services/quota/class_quotaService.inc:272
+#: admin/systems/services/quota/class_serviceQuota.inc:271
 msgid "Password for ldap connection"
 msgstr "heslo pro připojování do LDAPu"
 
-#: admin/systems/services/quota/class_quotaService.inc:273
+#: admin/systems/services/quota/class_serviceQuota.inc:272
 msgid "URI for LDAP server"
 msgstr "adresa (v URI formátu) LDAP serveru"
 
-#: admin/systems/services/quota/quotaService.tpl:7
+#: admin/systems/services/quota/serviceQuota.tpl:7
 msgid "Quota service Properties"
 msgstr "vlastnosti služby kvót"
 
-#: admin/systems/services/quota/quotaService.tpl:12
+#: admin/systems/services/quota/serviceQuota.tpl:12
 msgid "quota device"
 msgstr "aplikovat na zařízení kvóty"
 
-#: admin/systems/services/quota/quotaService.tpl:22
+#: admin/systems/services/quota/serviceQuota.tpl:22
 msgid "device"
 msgstr "zařízení"
 
-#: admin/systems/services/quota/quotaService.tpl:32
+#: admin/systems/services/quota/serviceQuota.tpl:32
 msgid "blocksize"
 msgstr "velikost bloku"
 
-#: admin/systems/services/quota/quotaService.tpl:41
+#: admin/systems/services/quota/serviceQuota.tpl:41
 msgid "description"
 msgstr "popis"
 
-#: admin/systems/services/quota/quotaService.tpl:60
+#: admin/systems/services/quota/serviceQuota.tpl:60
 msgid "Quota Warning Message"
 msgstr "zpráva varující ohledně (vy)čerpání kvót"
 
-#: admin/systems/services/quota/quotaService.tpl:65
+#: admin/systems/services/quota/serviceQuota.tpl:65
 msgid "Charset"
 msgstr "znaková sada"
 
-#: admin/systems/services/quota/quotaService.tpl:73
+#: admin/systems/services/quota/serviceQuota.tpl:73
 msgid "Mail Command"
 msgstr "příkaz provádějící odesílání zpráv"
 
-#: admin/systems/services/quota/quotaService.tpl:82
+#: admin/systems/services/quota/serviceQuota.tpl:82
 msgid "Support Contact"
 msgstr "kontakt na podporu"
 
-#: admin/systems/services/quota/quotaService.tpl:88
+#: admin/systems/services/quota/serviceQuota.tpl:88
 msgid "From"
 msgstr "od"
 
-#: admin/systems/services/quota/quotaService.tpl:94
+#: admin/systems/services/quota/serviceQuota.tpl:94
 msgid "CC"
 msgstr "v kopii poslat i (CC)"
 
-#: admin/systems/services/quota/quotaService.tpl:103
+#: admin/systems/services/quota/serviceQuota.tpl:103
 msgid "Subject"
 msgstr "předmět"
 
-#: admin/systems/services/quota/quotaService.tpl:112
+#: admin/systems/services/quota/serviceQuota.tpl:112
 msgid "Content"
 msgstr "obsah"
 
-#: admin/systems/services/quota/quotaService.tpl:120
+#: admin/systems/services/quota/serviceQuota.tpl:120
 msgid "Signature"
 msgstr "podpis"
 
-#: admin/systems/services/quota/quotaService.tpl:128
+#: admin/systems/services/quota/serviceQuota.tpl:128
 msgid "LDAP Message Support"
 msgstr ""
 
-#: admin/systems/services/quota/quotaService.tpl:133
+#: admin/systems/services/quota/serviceQuota.tpl:133
 msgid "Ldap server"
 msgstr "server LDAPu"
 
-#: admin/systems/services/quota/quotaService.tpl:143
+#: admin/systems/services/quota/serviceQuota.tpl:143
 msgid "Ldap User DN"
 msgstr "DN uživatele LDAPu"
 
-#: admin/systems/services/quota/quotaService.tpl:149
+#: admin/systems/services/quota/serviceQuota.tpl:149
 msgid "Ldap User Password"
 msgstr "heslo uživatele LDAPu"
 
@@ -225,7 +226,7 @@ msgid "quota settings"
 msgstr "nastavení kvót"
 
 #: personal/quota/class_quotaAccount.inc:25
-#: personal/quota/class_quotaAccount.inc:391
+#: personal/quota/class_quotaAccount.inc:390
 msgid "quota"
 msgstr "kvóta"
 
@@ -234,22 +235,22 @@ msgid "Plugin quota"
 msgstr "zásuvný modul kvót"
 
 #: personal/quota/class_quotaAccount.inc:93
-#: personal/quota/class_quotaAccount.inc:401
+#: personal/quota/class_quotaAccount.inc:400
 msgid "KB"
 msgstr ""
 
 #: personal/quota/class_quotaAccount.inc:93
-#: personal/quota/class_quotaAccount.inc:401
+#: personal/quota/class_quotaAccount.inc:400
 msgid "MB"
 msgstr ""
 
 #: personal/quota/class_quotaAccount.inc:93
-#: personal/quota/class_quotaAccount.inc:401
+#: personal/quota/class_quotaAccount.inc:400
 msgid "GB"
 msgstr ""
 
 #: personal/quota/class_quotaAccount.inc:93
-#: personal/quota/class_quotaAccount.inc:401
+#: personal/quota/class_quotaAccount.inc:400
 msgid "TB"
 msgstr ""
 
@@ -264,26 +265,23 @@ msgid "There is no quota server configured"
 msgstr "není nastaven žádný server pro řízení kvót"
 
 #: personal/quota/class_quotaAccount.inc:381
-msgid "Plugin for quota suport"
+#, fuzzy
+msgid "Plugin for quota support"
 msgstr "zásuvný modul přidávající podporu kvót"
 
-#: personal/quota/class_quotaAccount.inc:385
-msgid "My account"
-msgstr "můj účet"
-
-#: personal/quota/class_quotaAccount.inc:390
+#: personal/quota/class_quotaAccount.inc:389
 msgid "uid"
 msgstr ""
 
-#: personal/quota/class_quotaAccount.inc:401
+#: personal/quota/class_quotaAccount.inc:400
 msgid "B"
 msgstr ""
 
-#: personal/quota/class_quotaAccount.inc:401
+#: personal/quota/class_quotaAccount.inc:400
 msgid "PB"
 msgstr ""
 
-#: personal/quota/class_quotaAccount.inc:401
+#: personal/quota/class_quotaAccount.inc:400
 msgid "EB"
 msgstr ""
 
@@ -315,3 +313,6 @@ msgstr "vybrat systém"
 #: personal/quota/singleSystemSelect/singleSystem-filter.tpl:3
 msgid "Filter"
 msgstr "filtr"
+
+#~ msgid "My account"
+#~ msgstr "můj účet"

@@ -1,21 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 #  Niels Klomp (CareWorks ICT Services) <nk@careworks.nl>, 2005.
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
-"POT-Creation-Date: 2012-05-26 17:33+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-12-09 16:22+0100\n"
 "PO-Revision-Date: 2012-01-13 17:12+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Dutch (http://www.transifex.net/projects/p/FusionDirectory/language/nl/)\n"
+"Language-Team: Dutch (http://www.transifex.net/projects/p/FusionDirectory/"
+"language/nl/)\n"
+"Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: personal/connectivity/pureftpd/pureftpd.tpl:6
@@ -23,11 +24,13 @@ msgid "FTP account"
 msgstr "FTP account"
 
 #: personal/connectivity/pureftpd/pureftpd.tpl:17
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:50
 msgid "Bandwidth"
 msgstr "Bandbreedte"
 
 #: personal/connectivity/pureftpd/pureftpd.tpl:21
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:211
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:53
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:54
 msgid "Upload bandwidth"
 msgstr "Verstuur bandbreedte"
 
@@ -37,7 +40,7 @@ msgid "kb/s"
 msgstr "kb/sec"
 
 #: personal/connectivity/pureftpd/pureftpd.tpl:29
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:214
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:62
 msgid "Download bandwidth"
 msgstr "Ontvangst bandbreedte"
 
@@ -46,10 +49,12 @@ msgid "Quota"
 msgstr "Quota"
 
 #: personal/connectivity/pureftpd/pureftpd.tpl:49
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:99
 msgid "Files"
 msgstr "Bestanden"
 
 #: personal/connectivity/pureftpd/pureftpd.tpl:57
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:108
 msgid "Size"
 msgstr "Grootte"
 
@@ -58,6 +63,7 @@ msgid "MB"
 msgstr "MB"
 
 #: personal/connectivity/pureftpd/pureftpd.tpl:73
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:73
 msgid "Ratio"
 msgstr "Verhouding"
 
@@ -66,6 +72,7 @@ msgid "Uploaded / downloaded files"
 msgstr "Verstuurde / Ontvangen bestanden"
 
 #: personal/connectivity/pureftpd/pureftpd.tpl:95
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:119
 msgid "Miscellaneous"
 msgstr "Terminal Service diverse"
 
@@ -74,72 +81,67 @@ msgid "Check to disable FTP Access"
 msgstr "Selecteer om Ftp toegang uit te schakelen"
 
 #: personal/connectivity/pureftpd/pureftpd.tpl:102
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:122
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:123
 msgid "Temporary disable FTP access"
 msgstr "Schakel FTP toegang tijdelijk uit"
 
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:26
-msgid "FTP"
-msgstr "Ftp"
-
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:27
-msgid "This does something"
-msgstr "Dit doet iets"
-
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:159
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:255
-msgid "LDAP error"
-msgstr ""
-
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:218
-msgid "Quota file"
-msgstr ""
-
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:221
-msgid "Quota size"
-msgstr ""
-
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:224
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:330
-msgid "Upload ratio"
-msgstr ""
-
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:227
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:332
-msgid "Download ratio"
-msgstr ""
-
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:319
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:34
 msgid "Ftp"
 msgstr ""
 
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:320
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:35
 msgid "Pure ftp account"
 msgstr ""
 
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:320
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:35
 msgid "Connectivity addon"
 msgstr ""
 
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:324
-msgid "My account"
-msgstr "Mijn account"
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:53
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:62
+#, fuzzy
+msgid " (kb/sec)"
+msgstr "kb/sec"
 
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:329
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:63
+#, fuzzy
+msgid "Download bandwidth in kb/sec"
+msgstr "Ontvangst bandbreedte"
+
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:76
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:77
+#, fuzzy
+msgid "Uploaded files"
+msgstr "Verstuurde / Ontvangen bestanden"
+
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:85
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:86
+#, fuzzy
+msgid "Downloaded files"
+msgstr "Verstuurde / Ontvangen bestanden"
+
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:100
 msgid "Quota files"
 msgstr ""
 
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:331
-msgid "Quota MBytes"
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:108
+msgid " (MB)"
 msgstr ""
 
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:333
-msgid "Upload bandwith"
-msgstr ""
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:109
+#, fuzzy
+msgid "Files size"
+msgstr "Bestanden"
 
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:334
-msgid "Download bandwith"
-msgstr ""
+#~ msgid "FTP"
+#~ msgstr "Ftp"
 
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:335
-msgid "Status"
-msgstr "Status"
+#~ msgid "This does something"
+#~ msgstr "Dit doet iets"
+
+#~ msgid "My account"
+#~ msgstr "Mijn account"
+
+#~ msgid "Status"
+#~ msgstr "Status"

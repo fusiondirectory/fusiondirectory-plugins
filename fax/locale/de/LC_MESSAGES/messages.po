@@ -1,71 +1,74 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 #  Stefan Koehler <stefan.koehler@GONICUS.de>, 2005.
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
-"POT-Creation-Date: 2012-05-26 17:33+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-12-09 16:22+0100\n"
 "PO-Revision-Date: 2012-05-26 16:34+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: German (http://www.transifex.net/projects/p/FusionDirectory/language/de/)\n"
+"Language-Team: German (http://www.transifex.net/projects/p/FusionDirectory/"
+"language/de/)\n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: html/getfax.php:63
+#: html/getfax.php:59
 msgid "Could not connect to database server!"
 msgstr "Konnte nicht zum Datenbankserver verbinden!"
 
-#: html/getfax.php:69 html/getfax.php:79
+#: html/getfax.php:66 html/getfax.php:76
 msgid "Database query failed!"
 msgstr "Die Datenbank-Abfrage ist fehlgeschlagen!"
 
-#: admin/systems/services/gofax/class_goFaxServer.inc:50
-msgid "FAX database"
-msgstr "Fax-Datenbank"
+#: html/getfax.php:96 html/getfax.php:101 html/getfax.php:106
+#: addons/faxreports/class_faxreport.inc:130
+#: addons/faxreports/class_faxreport.inc:139
+#: addons/faxreports/class_faxreport.inc:159
+#: addons/faxreports/class_faxreport.inc:300
+#: personal/faxaccount/class_gofaxAccount.inc:275
+msgid "Error"
+msgstr "Fehler"
 
-#: admin/systems/services/gofax/class_goFaxServer.inc:79
-msgid "FAX database configuration"
-msgstr "Konfiguration der Fax-Datenbank"
+#: html/getfax.php:96
+msgid "cannot resize fax image"
+msgstr ""
 
-#: admin/systems/services/gofax/class_goFaxServer.inc:88
-#: addons/faxreports/detail.tpl:21 addons/faxreports/contents.tpl:30
-#: personal/faxaccount/faxNumberSelect/faxNumberSelect-list.xml:14
-msgid "User"
-msgstr "Benutzer"
+#: html/getfax.php:101
+msgid "cannot convert fax image to png"
+msgstr ""
 
-#: admin/systems/services/gofax/class_goFaxServer.inc:91
-#: admin/systems/services/gofax/class_goFaxServer.inc:118
-#: admin/systems/services/gofax/goFaxServer.tpl:12
-msgid "Password"
-msgstr "Passwort"
+#: html/getfax.php:106
+msgid "Reading fax image image failed"
+msgstr ""
 
-#: admin/systems/services/gofax/class_goFaxServer.inc:108
-#: admin/systems/services/gofax/class_goFaxServer.inc:109
-msgid "Fax database"
-msgstr "Fax-Datenbank"
+#: admin/systems/services/fax/class_serviceFax.inc:31
+#: admin/systems/services/fax/class_serviceFax.inc:32
+#, fuzzy
+msgid "FAX service"
+msgstr "Fax-DB Benutzer"
 
-#: admin/systems/services/gofax/class_goFaxServer.inc:109
+#: admin/systems/services/fax/class_serviceFax.inc:32
 msgid "Services"
 msgstr "Dienste"
 
-#: admin/systems/services/gofax/class_goFaxServer.inc:117
-msgid "Login name"
-msgstr "Anmeldename"
-
-#: admin/systems/services/gofax/goFaxServer.tpl:1
+#: admin/systems/services/fax/class_serviceFax.inc:47
 msgid "FAX database information"
 msgstr "Informationen der Fax-Datenbank"
 
-#: admin/systems/services/gofax/goFaxServer.tpl:4
+#: admin/systems/services/fax/class_serviceFax.inc:51
 msgid "FAX DB user"
 msgstr "Fax-DB Benutzer"
+
+#: admin/systems/services/fax/class_serviceFax.inc:57
+msgid "Password"
+msgstr "Passwort"
 
 #: admin/blocklists/remove.tpl:2
 msgid "Warning"
@@ -79,9 +82,13 @@ msgstr ""
 
 #: admin/blocklists/remove.tpl:10
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr "Wenn Sie sicher sind, drücken Sie 'Entfernen' um fortzufahren oder 'Abbrechen' zum Abbruch."
+msgstr ""
+"Wenn Sie sicher sind, drücken Sie 'Entfernen' um fortzufahren oder "
+"'Abbrechen' zum Abbruch."
 
-#: admin/blocklists/paste_generic.tpl:3 admin/blocklists/generic.tpl:8
+#: admin/blocklists/paste_generic.tpl:3
+#: admin/blocklists/class_blocklistGeneric.inc:144
+#: admin/blocklists/generic.tpl:8
 msgid "List name"
 msgstr "Listenname"
 
@@ -95,95 +102,88 @@ msgid "Filter"
 msgstr "Filter"
 
 #: admin/blocklists/blocklist-filter.tpl:17
-#: admin/blocklists/class_blocklistGeneric.inc:216
-#: admin/blocklists/class_blocklistGeneric.inc:219
-#: admin/blocklists/class_blocklistGeneric.inc:226
-#: admin/blocklists/class_blocklistGeneric.inc:387
 #: admin/blocklists/blocklist-list.xml:49
 #: personal/faxaccount/faxNumberSelect/faxNumberSelect-filter.tpl:17
 msgid "Name"
 msgstr "Name"
 
-#: admin/blocklists/class_blocklistGeneric.inc:29
-#: admin/blocklists/class_blocklistGeneric.inc:378
-#: admin/blocklists/class_blocklistGeneric.inc:383
-#: admin/blocklists/class_blocklistGeneric.inc:384
-msgid "Fax blocklists"
-msgstr "Fax-Sperrlisten"
+#: admin/blocklists/class_blocklistGeneric.inc:32
+#: admin/blocklists/generic.tpl:34
+msgid "Type"
+msgstr "Typ"
 
-#: admin/blocklists/class_blocklistGeneric.inc:30
-msgid "This is the part of the fax plugin managing blacklist"
+#: admin/blocklists/class_blocklistGeneric.inc:32
+msgid "Type of this list"
 msgstr ""
 
-#: admin/blocklists/class_blocklistGeneric.inc:124
-#: admin/blocklists/class_blocklistGeneric.inc:174
-#: addons/faxreports/class_faxreport.inc:135
-#: addons/faxreports/class_faxreport.inc:144
-#: addons/faxreports/class_faxreport.inc:164
-#: addons/faxreports/class_faxreport.inc:305
-#: personal/faxaccount/class_gofaxAccount.inc:278
-msgid "Error"
-msgstr "Fehler"
-
-#: admin/blocklists/class_blocklistGeneric.inc:124
-#: personal/faxaccount/class_gofaxAccount.inc:278
-msgid "Phone number"
-msgstr "Telefonnummer"
-
-#: admin/blocklists/class_blocklistGeneric.inc:156
+#: admin/blocklists/class_blocklistGeneric.inc:35
 msgid "send"
 msgstr "senden"
 
-#: admin/blocklists/class_blocklistGeneric.inc:156
+#: admin/blocklists/class_blocklistGeneric.inc:35
 msgid "receive"
 msgstr "empfangen"
 
-#: admin/blocklists/class_blocklistGeneric.inc:202
-#: admin/blocklists/class_blocklistGeneric.inc:288
-#: personal/faxaccount/class_gofaxAccount.inc:633
-#: personal/faxaccount/class_gofaxAccount.inc:761
-msgid "LDAP error"
-msgstr "LDAP-Fehler"
+#: admin/blocklists/class_blocklistGeneric.inc:39
+#: admin/blocklists/generic.tpl:62
+msgid "Blocked numbers"
+msgstr "Gesperrte Nummern"
 
-#: admin/blocklists/class_blocklistGeneric.inc:377
-#: personal/faxaccount/faxNumberSelect/faxNumberSelect-list.xml:56
-#: personal/faxaccount/paste_generic.tpl:8
-#: personal/faxaccount/class_gofaxAccount.inc:836
-#: personal/faxaccount/generic.tpl:10
-msgid "Fax"
-msgstr "Fax"
+#: admin/blocklists/class_blocklistGeneric.inc:40
+#: admin/blocklists/generic.tpl:86
+msgid "Numbers can also contain wild cards."
+msgstr "Nummern können auch Platzhalter enthalten."
 
-#: admin/blocklists/class_blocklistGeneric.inc:388
+#: admin/blocklists/class_blocklistGeneric.inc:141
+#, fuzzy
+msgid "Informations"
+msgstr "Information"
+
+#: admin/blocklists/class_blocklistGeneric.inc:144
+msgid "The name of the list"
+msgstr ""
+
+#: admin/blocklists/class_blocklistGeneric.inc:145
 #: admin/blocklists/blocklist-list.xml:57 admin/blocklists/generic.tpl:45
 msgid "Description"
 msgstr "Beschreibung"
 
-#: admin/blocklists/class_blocklistGeneric.inc:389
+#: admin/blocklists/class_blocklistGeneric.inc:145
+#, fuzzy
+msgid "A description for the list"
+msgstr "Beschreibender Text zu dieser Sperrliste"
+
+#: admin/blocklists/class_blocklistGeneric.inc:147
+#, fuzzy
+msgid "List of blocked number"
+msgstr "Gesperrte Nummern"
+
+#: admin/blocklists/class_blocklistGeneric.inc:187
+#: admin/blocklists/class_blocklistGeneric.inc:191
+#: admin/blocklists/class_blocklistGeneric.inc:194
+msgid "Fax blocklists"
+msgstr "Fax-Sperrlisten"
+
+#: admin/blocklists/class_blocklistGeneric.inc:188
+msgid "The part of the fax plugin managing blacklist"
+msgstr ""
+
 #: admin/blocklists/blocklist-list.tpl:13 admin/blocklists/generic.tpl:17
 #: personal/faxaccount/faxNumberSelect/faxNumberSelect-list.tpl:13
 msgid "Base"
 msgstr "Basis"
-
-#: admin/blocklists/class_blocklistGeneric.inc:390
-#: admin/blocklists/blocklist-list.xml:82
-msgid "Blocklist"
-msgstr "Sperrliste"
-
-#: admin/blocklists/class_blocklistGeneric.inc:391
-msgid "Blocklist type"
-msgstr "Typ der Sperrliste"
 
 #: admin/blocklists/blocklist-list.xml:11
 msgid "List of blocklists"
 msgstr "Liste der Sperrlisten"
 
 #: admin/blocklists/blocklist-list.xml:15
-#: personal/faxaccount/class_gofaxAccount.inc:854
+#: personal/faxaccount/class_gofaxAccount.inc:816
 msgid "Send blocklist"
 msgstr "Sende-Sperrliste"
 
 #: admin/blocklists/blocklist-list.xml:23
-#: personal/faxaccount/class_gofaxAccount.inc:853
+#: personal/faxaccount/class_gofaxAccount.inc:815
 msgid "Receive blocklist"
 msgstr "Emfangs-Sperrliste"
 
@@ -194,6 +194,10 @@ msgstr "Aktionen"
 #: admin/blocklists/blocklist-list.xml:76
 msgid "Create"
 msgstr "Anlegen"
+
+#: admin/blocklists/blocklist-list.xml:82
+msgid "Blocklist"
+msgstr "Sperrliste"
 
 #: admin/blocklists/blocklist-list.xml:94
 #: admin/blocklists/blocklist-list.xml:133 personal/faxaccount/generic.tpl:128
@@ -206,12 +210,12 @@ msgstr "Bearbeiten"
 msgid "Remove"
 msgstr "Entfernen"
 
-#: admin/blocklists/class_blocklistManagement.inc:25
+#: admin/blocklists/class_blocklistManagement.inc:36
 #: personal/faxaccount/generic.tpl:122
 msgid "Blocklists"
 msgstr "Sperrlisten"
 
-#: admin/blocklists/class_blocklistManagement.inc:26
+#: admin/blocklists/class_blocklistManagement.inc:37
 msgid "Blocklist management"
 msgstr "Sperrlistenverwaltung"
 
@@ -219,10 +223,6 @@ msgstr "Sperrlistenverwaltung"
 #: personal/faxaccount/generic.tpl:6
 msgid "Generic"
 msgstr "Allgemein"
-
-#: admin/blocklists/generic.tpl:34
-msgid "Type"
-msgstr "Typ"
 
 #: admin/blocklists/generic.tpl:37
 msgid "Select wether to filter incoming or outgoing calls"
@@ -232,127 +232,108 @@ msgstr "Wählen Sie, ob ein- oder abgehende Rufe gefiltert werden sollen"
 msgid "Descriptive text for this blocklist"
 msgstr "Beschreibender Text zu dieser Sperrliste"
 
-#: admin/blocklists/generic.tpl:62
-msgid "Blocked numbers"
-msgstr "Gesperrte Nummern"
-
 #: admin/blocklists/generic.tpl:84
 msgid "Information"
 msgstr "Information"
 
-#: admin/blocklists/generic.tpl:86
-msgid "Numbers can also contain wild cards."
-msgstr "Nummern können auch Platzhalter enthalten."
-
-#: addons/faxreports/main.inc:39
+#: addons/faxreports/main.inc:44
 msgid "FAX reports"
 msgstr "Fax-Berichte"
 
-#: addons/faxreports/class_faxreport.inc:26
-msgid "FAX Reports"
-msgstr "Fax-Berichte"
-
-#: addons/faxreports/class_faxreport.inc:27
-msgid "This plugin show the fax reports"
-msgstr ""
-
-#: addons/faxreports/class_faxreport.inc:135
+#: addons/faxreports/class_faxreport.inc:130
 msgid "No fax server found!"
 msgstr "Kein Fax-Server gefunden!"
 
-#: addons/faxreports/class_faxreport.inc:144
+#: addons/faxreports/class_faxreport.inc:139
 #, php-format
 msgid "Cannot connect to %s database!"
 msgstr "Konnte nicht zur %s Datenbank verbinden!"
 
-#: addons/faxreports/class_faxreport.inc:164
-#: addons/faxreports/class_faxreport.inc:305
+#: addons/faxreports/class_faxreport.inc:159
+#: addons/faxreports/class_faxreport.inc:300
 #, php-format
 msgid "Cannot query %s database!"
 msgstr "Konnte %s Datenbank nicht abfragen!"
 
-#: addons/faxreports/class_faxreport.inc:173
-#: addons/faxreports/class_faxreport.inc:183
+#: addons/faxreports/class_faxreport.inc:168
+#: addons/faxreports/class_faxreport.inc:178
 msgid "Permission error"
 msgstr "Berechtigungsfehler"
 
-#: addons/faxreports/class_faxreport.inc:173
-#: addons/faxreports/class_faxreport.inc:183
+#: addons/faxreports/class_faxreport.inc:168
+#: addons/faxreports/class_faxreport.inc:178
 msgid "You have no permission to view this fax id!"
 msgstr "Sie haben keine Berechtigung um diese Fax-ID anzusehen!"
 
-#: addons/faxreports/class_faxreport.inc:214
-#: addons/faxreports/class_faxreport.inc:330
+#: addons/faxreports/class_faxreport.inc:209
+#: addons/faxreports/class_faxreport.inc:325
 msgid "Y-M-D"
 msgstr "D.M.Y"
 
-#: addons/faxreports/class_faxreport.inc:324
+#: addons/faxreports/class_faxreport.inc:319
 msgid "Insufficient permissions to view this attribute"
 msgstr "Zugriffsrechte nicht ausreichend um das Attribut anzuzeigen"
 
-#: addons/faxreports/class_faxreport.inc:324
+#: addons/faxreports/class_faxreport.inc:319
 msgid "Insufficient permissions"
 msgstr "Unzureichende Berechtigungen"
 
+#: addons/faxreports/class_faxreport.inc:482
+#: addons/faxreports/class_faxreport.inc:483
 #: addons/faxreports/class_faxreport.inc:488
-#: addons/faxreports/class_faxreport.inc:489
-msgid "Fax report"
-msgstr "Fax-Bericht"
-
-#: addons/faxreports/class_faxreport.inc:489
-msgid "All entries are readonly"
-msgstr "Alle Einträge sind nur lesbar"
-
-#: addons/faxreports/class_faxreport.inc:494
 msgid "Fax reports"
 msgstr "Fax-Berichte"
 
-#: addons/faxreports/class_faxreport.inc:499
+#: addons/faxreports/class_faxreport.inc:483
+msgid "All entries are readonly"
+msgstr "Alle Einträge sind nur lesbar"
+
+#: addons/faxreports/class_faxreport.inc:492
 msgid "Detailed view"
 msgstr "Detaillierte Ansicht"
 
-#: addons/faxreports/class_faxreport.inc:500
+#: addons/faxreports/class_faxreport.inc:493
 msgid "Fax ID"
 msgstr "Fax-ID"
 
-#: addons/faxreports/class_faxreport.inc:501 addons/faxreports/contents.tpl:31
+#: addons/faxreports/class_faxreport.inc:494 addons/faxreports/contents.tpl:31
 msgid "Date"
 msgstr "Datum"
 
-#: addons/faxreports/class_faxreport.inc:501
+#: addons/faxreports/class_faxreport.inc:494
 msgid "Time"
 msgstr "Zeit"
 
-#: addons/faxreports/class_faxreport.inc:502 addons/faxreports/detail.tpl:45
+#: addons/faxreports/class_faxreport.inc:495 addons/faxreports/detail.tpl:45
 #: addons/faxreports/contents.tpl:32
 msgid "Status"
 msgstr "Status"
 
-#: addons/faxreports/class_faxreport.inc:503 addons/faxreports/detail.tpl:33
+#: addons/faxreports/class_faxreport.inc:496 addons/faxreports/detail.tpl:33
 msgid "Sender ID"
 msgstr "Absender-ID"
 
-#: addons/faxreports/class_faxreport.inc:504 addons/faxreports/detail.tpl:29
+#: addons/faxreports/class_faxreport.inc:497 addons/faxreports/detail.tpl:29
 msgid "Sender MSN"
 msgstr "Absender-MSN"
 
-#: addons/faxreports/class_faxreport.inc:505 addons/faxreports/detail.tpl:41
+#: addons/faxreports/class_faxreport.inc:498 addons/faxreports/detail.tpl:41
 msgid "Receiver ID"
 msgstr "Empfänger-ID"
 
-#: addons/faxreports/class_faxreport.inc:506 addons/faxreports/detail.tpl:37
+#: addons/faxreports/class_faxreport.inc:499 addons/faxreports/detail.tpl:37
 msgid "Receiver MSN"
 msgstr "Empfänger-MSN"
 
-#: addons/faxreports/class_faxreport.inc:507
+#: addons/faxreports/class_faxreport.inc:500
 msgid "Number of pages"
 msgstr "Anzahl der Seiten"
 
-#: addons/faxreports/class_faxreport.inc:508
+#: addons/faxreports/class_faxreport.inc:501
 msgid "Status Message"
 msgstr "Status-Nachricht"
 
-#: addons/faxreports/class_faxreport.inc:509 addons/faxreports/detail.tpl:53
+#: addons/faxreports/class_faxreport.inc:502 addons/faxreports/detail.tpl:53
 msgid "Transfer time"
 msgstr "Übertragungszeit"
 
@@ -367,6 +348,11 @@ msgstr "Klicken Sie auf das Fax, um es herunterzuladen"
 #: addons/faxreports/detail.tpl:17
 msgid "FAX ID"
 msgstr "Fax-ID"
+
+#: addons/faxreports/detail.tpl:21 addons/faxreports/contents.tpl:30
+#: personal/faxaccount/faxNumberSelect/faxNumberSelect-list.xml:14
+msgid "User"
+msgstr "Benutzer"
 
 #: addons/faxreports/detail.tpl:25
 msgid "Date / Time"
@@ -428,9 +414,18 @@ msgstr "Vorname"
 msgid "Surname"
 msgstr "Nachname"
 
+#: personal/faxaccount/faxNumberSelect/faxNumberSelect-list.xml:56
+#: personal/faxaccount/paste_generic.tpl:8
+#: personal/faxaccount/class_gofaxAccount.inc:799
+#: personal/faxaccount/generic.tpl:10
+msgid "Fax"
+msgstr "Fax"
+
 #: personal/faxaccount/main.inc:126
 msgid "Click the 'Edit' button below to change informations in this dialog"
-msgstr "Betätigen sie den 'Bearbeiten'-Schalter unten um Informationen in diesem Dialog zu ändern"
+msgstr ""
+"Betätigen sie den 'Bearbeiten'-Schalter unten um Informationen in diesem "
+"Dialog zu ändern"
 
 #: personal/faxaccount/main.inc:135
 msgid "FAX settings"
@@ -496,75 +491,84 @@ msgstr "Fax"
 msgid "This does something"
 msgstr "Dies tut etwas"
 
-#: personal/faxaccount/class_gofaxAccount.inc:185
-#: personal/faxaccount/class_gofaxAccount.inc:195
-#: personal/faxaccount/class_gofaxAccount.inc:198
+#: personal/faxaccount/class_gofaxAccount.inc:183
+#: personal/faxaccount/class_gofaxAccount.inc:193
+#: personal/faxaccount/class_gofaxAccount.inc:196
 msgid "GOfax"
 msgstr "GOfax"
 
-#: personal/faxaccount/class_gofaxAccount.inc:194
+#: personal/faxaccount/class_gofaxAccount.inc:192
 msgid "Remove fax account"
 msgstr "Fax-Konto entfernen"
 
-#: personal/faxaccount/class_gofaxAccount.inc:197
+#: personal/faxaccount/class_gofaxAccount.inc:195
 msgid "Create fax account"
 msgstr "Fax-Konto erzeugen"
 
-#: personal/faxaccount/class_gofaxAccount.inc:427
-#: personal/faxaccount/class_gofaxAccount.inc:509
+#: personal/faxaccount/class_gofaxAccount.inc:275
+msgid "Phone number"
+msgstr "Telefonnummer"
+
+#: personal/faxaccount/class_gofaxAccount.inc:424
+#: personal/faxaccount/class_gofaxAccount.inc:506
 msgid "back"
 msgstr "zurück"
 
-#: personal/faxaccount/class_gofaxAccount.inc:649
-#: personal/faxaccount/class_gofaxAccount.inc:653
-#: personal/faxaccount/class_gofaxAccount.inc:846
+#: personal/faxaccount/class_gofaxAccount.inc:614
+#: personal/faxaccount/class_gofaxAccount.inc:742
+msgid "LDAP error"
+msgstr "LDAP-Fehler"
+
+#: personal/faxaccount/class_gofaxAccount.inc:630
+#: personal/faxaccount/class_gofaxAccount.inc:634
+#: personal/faxaccount/class_gofaxAccount.inc:808
 msgid "Fax number"
 msgstr "Faxnummer"
 
-#: personal/faxaccount/class_gofaxAccount.inc:660
+#: personal/faxaccount/class_gofaxAccount.inc:641
 msgid "Mail delivery is requested without target address!"
 msgstr "Die Mailzustellung wurde ohne Zieladresse angefordert!"
 
-#: personal/faxaccount/class_gofaxAccount.inc:662
+#: personal/faxaccount/class_gofaxAccount.inc:643
 msgid "Mail address"
 msgstr "Mail-Adresse"
 
-#: personal/faxaccount/class_gofaxAccount.inc:662
+#: personal/faxaccount/class_gofaxAccount.inc:643
 msgid "your-name@your-domain.com"
 msgstr "ihr-name@ihre-domain.com"
 
-#: personal/faxaccount/class_gofaxAccount.inc:668
+#: personal/faxaccount/class_gofaxAccount.inc:649
 msgid "Printing is requested without a target printer!"
 msgstr "Ausdruck wurden ohne Zieldrucker angefordert!"
 
-#: personal/faxaccount/class_gofaxAccount.inc:837
+#: personal/faxaccount/class_gofaxAccount.inc:800
 msgid "Fax account settings"
 msgstr "Fax-Konto-Einstellungen"
 
-#: personal/faxaccount/class_gofaxAccount.inc:847
+#: personal/faxaccount/class_gofaxAccount.inc:809
 #: personal/faxaccount/generic.tpl:24
 msgid "Language"
 msgstr "Sprache"
 
-#: personal/faxaccount/class_gofaxAccount.inc:848
+#: personal/faxaccount/class_gofaxAccount.inc:810
 #: personal/faxaccount/generic.tpl:37
 msgid "Delivery format"
 msgstr "Auslieferungsformat"
 
-#: personal/faxaccount/class_gofaxAccount.inc:849
+#: personal/faxaccount/class_gofaxAccount.inc:811
 msgid "Alternate fax number"
 msgstr "Alternative Fax-Nummer"
 
-#: personal/faxaccount/class_gofaxAccount.inc:850
+#: personal/faxaccount/class_gofaxAccount.inc:812
 msgid "Enable/Disable fax"
 msgstr "FAX aktivieren/deaktivieren"
 
-#: personal/faxaccount/class_gofaxAccount.inc:851
+#: personal/faxaccount/class_gofaxAccount.inc:813
 #: personal/faxaccount/generic.tpl:73
 msgid "Deliver fax as mail"
 msgstr "Als Mail ausliefern"
 
-#: personal/faxaccount/class_gofaxAccount.inc:852
+#: personal/faxaccount/class_gofaxAccount.inc:814
 #: personal/faxaccount/generic.tpl:80
 msgid "Deliver fax to printer"
 msgstr "Fax an Drucker weiterleiten"
@@ -608,3 +612,24 @@ msgstr "Sperrlisten für eingehendes Fax"
 #: personal/faxaccount/generic.tpl:133
 msgid "Blocklists for outgoing fax"
 msgstr "Sperrlisten für abgehendes Fax"
+
+#~ msgid "FAX database"
+#~ msgstr "Fax-Datenbank"
+
+#~ msgid "FAX database configuration"
+#~ msgstr "Konfiguration der Fax-Datenbank"
+
+#~ msgid "Fax database"
+#~ msgstr "Fax-Datenbank"
+
+#~ msgid "Login name"
+#~ msgstr "Anmeldename"
+
+#~ msgid "Blocklist type"
+#~ msgstr "Typ der Sperrliste"
+
+#~ msgid "FAX Reports"
+#~ msgstr "Fax-Berichte"
+
+#~ msgid "Fax report"
+#~ msgstr "Fax-Bericht"

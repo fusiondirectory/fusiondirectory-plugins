@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-26 17:33+0200\n"
+"POT-Creation-Date: 2012-12-09 16:22+0100\n"
 "PO-Revision-Date: 2012-05-15 15:33+0000\n"
 "Last-Translator: pavelb <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.net/projects/p/"
@@ -19,72 +19,63 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2\n"
 
-#: personal/connectivity/openxchange/class_oxchangeAccount.inc:26
+#: personal/connectivity/openxchange/class_oxchangeAccount.inc:187
 #: personal/connectivity/openxchange/class_oxchangeAccount.inc:191
+#: personal/connectivity/openxchange/class_oxchangeAccount.inc:288
+#: personal/connectivity/openxchange/class_oxchangeAccount.inc:300
 #: personal/connectivity/openxchange/class_oxchangeAccount.inc:304
-#: personal/connectivity/openxchange/class_oxchangeAccount.inc:440
-msgid "Open-Xchange"
-msgstr "Open-Xchange"
-
-#: personal/connectivity/openxchange/class_oxchangeAccount.inc:27
-msgid "This does something"
-msgstr "tohle něco dělá"
-
-#: personal/connectivity/openxchange/class_oxchangeAccount.inc:191
-#: personal/connectivity/openxchange/class_oxchangeAccount.inc:195
-#: personal/connectivity/openxchange/class_oxchangeAccount.inc:292
-#: personal/connectivity/openxchange/class_oxchangeAccount.inc:304
-#: personal/connectivity/openxchange/class_oxchangeAccount.inc:308
-#: personal/connectivity/openxchange/class_oxchangeAccount.inc:430
+#: personal/connectivity/openxchange/class_oxchangeAccount.inc:426
 msgid "Error"
 msgstr "chyba"
 
-#: personal/connectivity/openxchange/class_oxchangeAccount.inc:195
-#: personal/connectivity/openxchange/class_oxchangeAccount.inc:308
+#: personal/connectivity/openxchange/class_oxchangeAccount.inc:187
+#: personal/connectivity/openxchange/class_oxchangeAccount.inc:300
+#: personal/connectivity/openxchange/class_oxchangeAccount.inc:436
+msgid "Open-Xchange"
+msgstr "Open-Xchange"
+
+#: personal/connectivity/openxchange/class_oxchangeAccount.inc:191
+#: personal/connectivity/openxchange/class_oxchangeAccount.inc:304
 msgid "Open-Xchange database"
 msgstr "databáze Open-Xchange"
 
-#: personal/connectivity/openxchange/class_oxchangeAccount.inc:199
-#: personal/connectivity/openxchange/class_oxchangeAccount.inc:312
+#: personal/connectivity/openxchange/class_oxchangeAccount.inc:195
+#: personal/connectivity/openxchange/class_oxchangeAccount.inc:308
 msgid "Configuration error"
 msgstr "chyba nastavení"
 
-#: personal/connectivity/openxchange/class_oxchangeAccount.inc:209
-#: personal/connectivity/openxchange/class_oxchangeAccount.inc:222
-#: personal/connectivity/openxchange/class_oxchangeAccount.inc:332
-#: personal/connectivity/openxchange/class_oxchangeAccount.inc:341
+#: personal/connectivity/openxchange/class_oxchangeAccount.inc:205
+#: personal/connectivity/openxchange/class_oxchangeAccount.inc:218
+#: personal/connectivity/openxchange/class_oxchangeAccount.inc:328
+#: personal/connectivity/openxchange/class_oxchangeAccount.inc:337
 msgid "LDAP error"
 msgstr "chyba LDAPu"
 
-#: personal/connectivity/openxchange/class_oxchangeAccount.inc:292
+#: personal/connectivity/openxchange/class_oxchangeAccount.inc:288
 msgid "Open-Xchange account name"
 msgstr "název účtu v Open-Xchange"
 
-#: personal/connectivity/openxchange/class_oxchangeAccount.inc:430
+#: personal/connectivity/openxchange/class_oxchangeAccount.inc:426
 msgid "Cannot save Open-Xchange account!"
 msgstr "Nemohu uložit účet v Open-Xchange!"
 
-#: personal/connectivity/openxchange/class_oxchangeAccount.inc:441
+#: personal/connectivity/openxchange/class_oxchangeAccount.inc:437
 msgid "Open-Xchange account settings"
 msgstr "nastavení účtu v Open-Xchange"
 
-#: personal/connectivity/openxchange/class_oxchangeAccount.inc:441
+#: personal/connectivity/openxchange/class_oxchangeAccount.inc:437
 msgid "Connectivity addon"
 msgstr "doplněk „možnosti připojení“"
 
 #: personal/connectivity/openxchange/class_oxchangeAccount.inc:445
-msgid "My account"
-msgstr "můj účet"
-
-#: personal/connectivity/openxchange/class_oxchangeAccount.inc:450
 msgid "OXAppointmentDays"
 msgstr "OXAppointmentDays (schůzky)"
 
-#: personal/connectivity/openxchange/class_oxchangeAccount.inc:451
+#: personal/connectivity/openxchange/class_oxchangeAccount.inc:446
 msgid "OXTaskDays"
 msgstr "OXTaskDays (úkoly)"
 
-#: personal/connectivity/openxchange/class_oxchangeAccount.inc:452
+#: personal/connectivity/openxchange/class_oxchangeAccount.inc:447
 msgid "OXTimeZone"
 msgstr "OXTimeZone (časová zóna)"
 
@@ -128,3 +119,9 @@ msgstr "informace o uživateli"
 #: personal/connectivity/openxchange/oxchange.tpl:65
 msgid "User Timezone"
 msgstr "časová zóna uživatele"
+
+#~ msgid "This does something"
+#~ msgstr "tohle něco dělá"
+
+#~ msgid "My account"
+#~ msgstr "můj účet"

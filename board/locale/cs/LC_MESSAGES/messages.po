@@ -1,136 +1,138 @@
-#: addons/board/user_accounts.tpl:3 addons/board/class_board.inc:91
-#: addons/board/main_stats.tpl:3 addons/board/contents.tpl:3
-msgid "Statistics"
-msgstr ""
-
-#: addons/board/user_accounts.tpl:22
+#: addons/board/users_stats.tpl:22 addons/board/user_accounts.tpl:22
 msgid "None of them is locked"
 msgstr ""
 
+#: addons/board/user_accounts.tpl:3 addons/board/class_boardSystems.inc:179
+#: addons/board/class_board.inc:107 addons/board/main_stats.tpl:3
+#: addons/board/class_boardUserAccounts.inc:140 addons/board/contents.tpl:3
+msgid "Statistics"
+msgstr ""
+
 #: addons/board/user_accounts.tpl:30 addons/board/user_accounts.tpl:54
+#: addons/board/users_accounts.tpl:27
+#: addons/board/class_boardUserAccounts.inc:145
 msgid "Expired accounts"
 msgstr ""
 
-#: addons/board/user_accounts.tpl:37
+#: addons/board/user_accounts.tpl:37 addons/board/users_accounts.tpl:10
 msgid "There is no expired account"
 msgstr ""
 
 #: addons/board/user_accounts.tpl:57 addons/board/user_accounts.tpl:109
+#: addons/board/users_accounts.tpl:30 addons/board/users_accounts.tpl:82
 msgid "Manager concerned"
 msgstr ""
 
 #: addons/board/user_accounts.tpl:64 addons/board/user_accounts.tpl:114
+#: addons/board/users_accounts.tpl:37 addons/board/users_accounts.tpl:87
 msgid "uid"
 msgstr ""
 
 #: addons/board/user_accounts.tpl:64 addons/board/user_accounts.tpl:114
+#: addons/board/users_accounts.tpl:37 addons/board/users_accounts.tpl:87
 msgid "cn"
 msgstr ""
 
 #: addons/board/user_accounts.tpl:64 addons/board/user_accounts.tpl:65
 #: addons/board/user_accounts.tpl:114 addons/board/user_accounts.tpl:115
+#: addons/board/users_accounts.tpl:37 addons/board/users_accounts.tpl:38
+#: addons/board/users_accounts.tpl:87 addons/board/users_accounts.tpl:88
 msgid "telephoneNumber"
 msgstr ""
 
 #: addons/board/user_accounts.tpl:64 addons/board/user_accounts.tpl:114
+#: addons/board/users_accounts.tpl:37 addons/board/users_accounts.tpl:87
 msgid "shadowExpire"
 msgstr ""
 
 #: addons/board/user_accounts.tpl:65 addons/board/user_accounts.tpl:115
+#: addons/board/users_accounts.tpl:38 addons/board/users_accounts.tpl:88
 msgid "manager"
 msgstr ""
 
 #: addons/board/user_accounts.tpl:65 addons/board/user_accounts.tpl:115
+#: addons/board/users_accounts.tpl:38 addons/board/users_accounts.tpl:88
 msgid "mail"
 msgstr ""
 
-#: addons/board/user_accounts.tpl:106
+#: addons/board/user_accounts.tpl:106 addons/board/users_accounts.tpl:79
 msgid "Next expired accounts"
 msgstr ""
 
-#: addons/board/class_boardSystems.inc:52
-msgid "workstations"
+#: addons/board/class_boardSystems.inc:48
+msgid "Workstations"
 msgstr ""
 
-#: addons/board/class_boardSystems.inc:53
-msgid "servers"
+#: addons/board/class_boardSystems.inc:51
+msgid "Servers"
 msgstr ""
 
 #: addons/board/class_boardSystems.inc:54
-msgid "winstations"
-msgstr ""
-
-#: addons/board/class_boardSystems.inc:55
-msgid "terminals"
-msgstr ""
-
-#: addons/board/class_boardSystems.inc:56
-msgid "printers"
+msgid "Windows Workstations"
 msgstr ""
 
 #: addons/board/class_boardSystems.inc:57
-msgid "phones"
+msgid "Terminals"
 msgstr ""
 
-#: addons/board/class_boardSystems.inc:58
-msgid "components"
+#: addons/board/class_boardSystems.inc:60
+msgid "Printers"
 msgstr ""
 
-#: addons/board/class_boardSystems.inc:158
-msgid "Board - Systems"
+#: addons/board/class_boardSystems.inc:63
+msgid "Phones"
 msgstr ""
 
-#: addons/board/class_boardSystems.inc:159
+#: addons/board/class_boardSystems.inc:66
+msgid "Components"
+msgstr ""
+
+#: addons/board/class_boardSystems.inc:184 addons/board/contents.tpl:30
+msgid "Computer name to use by unit"
+msgstr ""
+
+#: addons/board/class_boardSystems.inc:195
+msgid "Systems"
+msgstr ""
+
+#: addons/board/class_boardSystems.inc:196
 msgid "Statistics and informations about systems"
 msgstr ""
 
-#: addons/board/class_boardSystems.inc:163
-#: addons/board/class_boardNetwork.inc:124 addons/board/class_board.inc:107
-#: addons/board/class_boardUserAccounts.inc:151
-msgid "Addons"
-msgstr ""
-
-#: addons/board/class_boardNetwork.inc:104
+#: addons/board/class_boardNetwork.inc:109
 msgid "DHCP"
 msgstr ""
 
-#: addons/board/class_boardNetwork.inc:109
+#: addons/board/class_boardNetwork.inc:114
 msgid "DNS"
 msgstr ""
 
-#: addons/board/class_boardNetwork.inc:120
-msgid "Board - Network"
+#: addons/board/class_boardNetwork.inc:125
+msgid "Network"
 msgstr ""
 
-#: addons/board/class_boardNetwork.inc:121 addons/board/class_board.inc:46
-#: addons/board/class_board.inc:103
+#: addons/board/class_boardNetwork.inc:126 addons/board/class_board.inc:45
+#: addons/board/class_board.inc:119
 msgid "Statistics and various informations"
 msgstr ""
 
-#: addons/board/class_board.inc:45 addons/board/class_board.inc:102
+#: addons/board/class_board.inc:44 addons/board/class_board.inc:118
+#: addons/board/class_board.inc:122 addons/board/class_board.inc:123
 msgid "Board"
 msgstr ""
 
-#: addons/board/class_board.inc:108
-msgid "board"
-msgstr ""
-
-#: addons/board/class_boardUserAccounts.inc:147
-msgid "Board - User"
-msgstr ""
-
-#: addons/board/class_boardUserAccounts.inc:148
-msgid "Statistics about users"
-msgstr ""
-
-#: addons/board/contents.tpl:14
+#: addons/board/systems_stats.tpl:14 addons/board/contents.tpl:14
 msgid "There are several argonaut servers! (this is not yet supported)"
 msgstr ""
 
-#: addons/board/contents.tpl:20
+#: addons/board/systems_stats.tpl:20 addons/board/contents.tpl:20
 msgid "But no system is configured to run an argonaut client!"
 msgstr ""
 
-#: addons/board/contents.tpl:30
-msgid "Computer name to use by unit"
+#: addons/board/class_boardUserAccounts.inc:156
+msgid "User"
+msgstr ""
+
+#: addons/board/class_boardUserAccounts.inc:157
+msgid "Statistics about users"
 msgstr ""

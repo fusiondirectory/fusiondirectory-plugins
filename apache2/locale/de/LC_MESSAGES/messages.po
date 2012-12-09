@@ -1,145 +1,245 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
-"POT-Creation-Date: 2012-05-26 17:33+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-12-09 16:22+0100\n"
 "PO-Revision-Date: 2012-05-26 15:43+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: German (http://www.transifex.net/projects/p/FusionDirectory/language/de/)\n"
+"Language-Team: German (http://www.transifex.net/projects/p/FusionDirectory/"
+"language/de/)\n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: admin/systems/services/apache2/class_servApacheEditVhost.inc:257
-#: admin/systems/services/apache2/class_servApacheEditVhost.inc:276
-msgid "Up"
-msgstr "Auf"
-
-#: admin/systems/services/apache2/class_servApacheEditVhost.inc:258
-#: admin/systems/services/apache2/class_servApacheEditVhost.inc:277
-msgid "Down"
-msgstr "Ab"
-
-#: admin/systems/services/apache2/class_servApacheEditVhost.inc:259
-#: admin/systems/services/apache2/class_servApacheEditVhost.inc:278
-msgid "Delete"
-msgstr "Entfernen"
-
-#: admin/systems/services/apache2/class_servApacheEditVhost.inc:317
-msgid "Name"
-msgstr "Name"
-
-#: admin/systems/services/apache2/class_servApacheEditVhost.inc:324
-#: admin/systems/services/apache2/servApacheVhostEdit.tpl:7
-msgid "Virtual host name"
-msgstr "Vorname"
-
-#: admin/systems/services/apache2/class_servApacheEditVhost.inc:325
-msgid "Only lowercase strings are allowed as Virtual Host Name."
-msgstr "Es sind nur Kleinbuchstaben für virtuelle Hostname erlaubt."
-
-#: admin/systems/services/apache2/class_servApacheEditVhost.inc:325
-msgid "e.g. example.com"
-msgstr "z.B. beispiel.com"
-
-#: admin/systems/services/apache2/class_servApacheEditVhost.inc:331
-#: admin/systems/services/apache2/servApacheVhostEdit.tpl:13
-msgid "Document root"
-msgstr "Document-Root"
-
-#: admin/systems/services/apache2/class_servApacheEditVhost.inc:337
-#: admin/systems/services/apache2/servApacheVhostEdit.tpl:19
-msgid "Admin mail address"
-msgstr "Administrator Mail-Adresse"
-
-#: admin/systems/services/apache2/class_servApacheEditVhost.inc:346
-msgid "Server alias"
-msgstr "Server-Alias"
-
-#: admin/systems/services/apache2/class_servApacheEditVhost.inc:356
-msgid "Script alias"
-msgstr "Skript-Alias"
-
-#: admin/systems/services/apache2/class_apacheUtils.inc:212
-#, php-format
-msgid ""
-"Undefined vhost name '%s'. Vhost name must look like this 'www.example.com "
-"or example.com'."
-msgstr "Der vhost-Name '%s' ist nicht definiert."
-
-#: admin/systems/services/apache2/class_servApacheVhost.inc:60
-#: admin/systems/services/apache2/class_servApacheVhost.inc:283
-#: admin/systems/services/apache2/class_servApacheVhost.inc:296
-msgid "Apache service"
-msgstr "Apache Dienst"
-
-#: admin/systems/services/apache2/class_servApacheVhost.inc:236
-#: admin/systems/services/apache2/class_servApacheVhost.inc:247
-#: admin/systems/services/apache2/class_servApacheVhost.inc:270
-msgid "LDAP error"
-msgstr "LDAP-Fehler"
-
-#: admin/systems/services/apache2/class_servApacheVhost.inc:297
-msgid "Apache virtual host service"
-msgstr "Apache Virtual Host Dienst"
-
-#: admin/systems/services/apache2/class_servApacheVhost.inc:297
-msgid "Services"
-msgstr "Dienste"
-
-#: admin/systems/services/apache2/class_servApacheVhost.inc:305
-msgid "Virtual hosts"
-msgstr "Virtuelle Hosts"
-
-#: admin/systems/services/apache2/servApacheVhost.tpl:1
-msgid "Apache VHosts"
-msgstr "Apache"
-
-#: admin/systems/services/apache2/servApacheVhost.tpl:8
-#: admin/systems/services/apache2/servApacheVhostEdit.tpl:54
-#: admin/systems/services/apache2/servApacheVhostEdit.tpl:98
-msgid "Add"
-msgstr "Hinzufügen"
-
-#: admin/systems/services/apache2/servApacheVhostEdit.tpl:1
-msgid "Generic"
-msgstr "Allgemein"
-
-#: admin/systems/services/apache2/servApacheVhostEdit.tpl:30
-msgid "Server Alias"
-msgstr "Server-Alias"
-
-#: admin/systems/services/apache2/servApacheVhostEdit.tpl:42
-msgid "URL Alias"
-msgstr "URL-Alias"
-
-#: admin/systems/services/apache2/servApacheVhostEdit.tpl:45
-msgid "Directory Path"
-msgstr "Pfad"
-
-#: admin/systems/services/apache2/servApacheVhostEdit.tpl:74
-msgid "Script Alias"
-msgstr "Skript-Alias"
-
-#: admin/systems/services/apache2/servApacheVhostEdit.tpl:86
-msgid "Alias Directory"
-msgstr "Verzeichnis"
-
-#: admin/systems/services/apache2/servApacheVhostEdit.tpl:89
-msgid "Script Directory"
-msgstr "Verzeichnis"
-
-#: admin/systems/services/apache2/servApacheVhostEdit.tpl:112
+#: admin/systems/services/apache2/serviceApacheVhostEditFooter.tpl:3
+#: admin/systems/services/apache2/serviceApacheVhostEdit.tpl:112
 msgid "Save"
 msgstr "Speichern"
 
-#: admin/systems/services/apache2/servApacheVhostEdit.tpl:113
+#: admin/systems/services/apache2/serviceApacheVhostEditFooter.tpl:4
+#: admin/systems/services/apache2/serviceApacheVhostEdit.tpl:113
 msgid "Cancel"
 msgstr "Abbrechen"
+
+#: admin/systems/services/apache2/class_serviceApacheVhostEdit.inc:49
+#: admin/systems/services/apache2/class_serviceApacheVhostEdit.inc:50
+#, fuzzy
+msgid "Apache2"
+msgstr "Apache"
+
+#: admin/systems/services/apache2/class_serviceApacheVhostEdit.inc:51
+msgid "This Plugin is for Apache serveur"
+msgstr ""
+
+#: admin/systems/services/apache2/class_serviceApacheVhostEdit.inc:54
+#, fuzzy
+msgid "Apache Vhost"
+msgstr "Apache"
+
+#: admin/systems/services/apache2/class_serviceApacheVhostEdit.inc:67
+#: admin/systems/services/apache2/serviceApacheVhostEdit.tpl:1
+msgid "Generic"
+msgstr "Allgemein"
+
+#: admin/systems/services/apache2/class_serviceApacheVhostEdit.inc:71
+#: admin/systems/services/apache2/serviceApacheVhostEdit.tpl:7
+msgid "Virtual host name"
+msgstr "Vorname"
+
+#: admin/systems/services/apache2/class_serviceApacheVhostEdit.inc:72
+#, fuzzy
+msgid "The Virtual host name"
+msgstr "Vorname"
+
+#: admin/systems/services/apache2/class_serviceApacheVhostEdit.inc:77
+#: admin/systems/services/apache2/serviceApacheVhostEdit-list.xml:40
+#: admin/systems/services/apache2/serviceApacheVhostEdit.tpl:13
+msgid "Document root"
+msgstr "Document-Root"
+
+#: admin/systems/services/apache2/class_serviceApacheVhostEdit.inc:78
+msgid "Document root for the apache web server"
+msgstr ""
+
+#: admin/systems/services/apache2/class_serviceApacheVhostEdit.inc:83
+#: admin/systems/services/apache2/serviceApacheVhostEdit.tpl:19
+msgid "Admin mail address"
+msgstr "Administrator Mail-Adresse"
+
+#: admin/systems/services/apache2/class_serviceApacheVhostEdit.inc:84
+#, fuzzy
+msgid "Apache admin mail address"
+msgstr "Administrator Mail-Adresse"
+
+#: admin/systems/services/apache2/class_serviceApacheVhostEdit.inc:89
+#: admin/systems/services/apache2/class_serviceApacheVhostEdit.inc:98
+#: admin/systems/services/apache2/serviceApacheVhostEdit.tpl:74
+msgid "Script Alias"
+msgstr "Skript-Alias"
+
+#: admin/systems/services/apache2/class_serviceApacheVhostEdit.inc:92
+#, fuzzy
+msgid "Alias"
+msgstr "URL-Alias"
+
+#: admin/systems/services/apache2/class_serviceApacheVhostEdit.inc:92
+#: admin/systems/services/apache2/serviceApacheVhostEdit.tpl:86
+msgid "Alias Directory"
+msgstr "Verzeichnis"
+
+#: admin/systems/services/apache2/class_serviceApacheVhostEdit.inc:93
+#, fuzzy
+msgid "Script"
+msgstr "Skript-Alias"
+
+#: admin/systems/services/apache2/class_serviceApacheVhostEdit.inc:93
+#: admin/systems/services/apache2/serviceApacheVhostEdit.tpl:89
+msgid "Script Directory"
+msgstr "Verzeichnis"
+
+#: admin/systems/services/apache2/class_serviceApacheVhostEdit.inc:102
+#: admin/systems/services/apache2/class_serviceApacheVhostEdit.inc:111
+#: admin/systems/services/apache2/serviceApacheVhostEdit.tpl:30
+msgid "Server Alias"
+msgstr "Server-Alias"
+
+#: admin/systems/services/apache2/class_serviceApacheVhostEdit.inc:105
+#: admin/systems/services/apache2/serviceApacheVhostEdit.tpl:42
+msgid "URL Alias"
+msgstr "URL-Alias"
+
+#: admin/systems/services/apache2/class_serviceApacheVhostEdit.inc:106
+#: admin/systems/services/apache2/serviceApacheVhostEdit.tpl:45
+msgid "Directory Path"
+msgstr "Pfad"
+
+#: admin/systems/services/apache2/remove.tpl:2
+msgid "Warning"
+msgstr ""
+
+#: admin/systems/services/apache2/remove.tpl:6
+msgid ""
+"This includes all account data, system access rules, imap settings, etc. for "
+"this user. Please double check if your really want to do this since there is "
+"no way for FusionDirectory to get your data back."
+msgstr ""
+
+#: admin/systems/services/apache2/remove.tpl:10
+msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
+msgstr ""
+
+#: admin/systems/services/apache2/serviceApacheVhostEdit-filter.tpl:3
+msgid "Filter"
+msgstr ""
+
+#: admin/systems/services/apache2/serviceApacheVhostEdit-filter.tpl:17
+msgid "Name"
+msgstr "Name"
+
+#: admin/systems/services/apache2/serviceApacheVhostEdit-list.tpl:13
+msgid "Base"
+msgstr ""
+
+#: admin/systems/services/apache2/serviceApacheVhostEdit-list.xml:11
+#, fuzzy
+msgid "List of Apache Vhost"
+msgstr "Apache"
+
+#: admin/systems/services/apache2/serviceApacheVhostEdit-list.xml:15
+msgid "Template entry"
+msgstr ""
+
+#: admin/systems/services/apache2/serviceApacheVhostEdit-list.xml:32
+#, fuzzy
+msgid "Server name"
+msgstr "Server-Alias"
+
+#: admin/systems/services/apache2/serviceApacheVhostEdit-list.xml:48
+msgid "Actions"
+msgstr ""
+
+#: admin/systems/services/apache2/serviceApacheVhostEdit-list.xml:59
+msgid "Create"
+msgstr ""
+
+#: admin/systems/services/apache2/serviceApacheVhostEdit-list.xml:65
+msgid "serviceApacheVhostEdit"
+msgstr ""
+
+#: admin/systems/services/apache2/serviceApacheVhostEdit-list.xml:77
+msgid "Remove"
+msgstr ""
+
+#: admin/systems/services/apache2/serviceApacheVhostEdit-list.xml:109
+#, fuzzy
+msgid "Edit host"
+msgstr "Virtuelle Hosts"
+
+#: admin/systems/services/apache2/serviceApacheVhostEdit-list.xml:122
+msgid "Remove host"
+msgstr ""
+
+#: admin/systems/services/apache2/class_serviceApacheVhostManagement.inc:25
+#, fuzzy
+msgid "Vhosts"
+msgstr "Virtuelle Hosts"
+
+#: admin/systems/services/apache2/class_serviceApacheVhostManagement.inc:26
+msgid "Apache vhosts management"
+msgstr ""
+
+#: admin/systems/services/apache2/class_serviceApacheVhost.inc:76
+msgid "Apache service"
+msgstr "Apache Dienst"
+
+#: admin/systems/services/apache2/class_serviceApacheVhost.inc:77
+msgid "Apache virtual host service"
+msgstr "Apache Virtual Host Dienst"
+
+#: admin/systems/services/apache2/class_serviceApacheVhost.inc:77
+msgid "Services"
+msgstr "Dienste"
+
+#: admin/systems/services/apache2/class_serviceApacheVhost.inc:82
+msgid "Virtual hosts"
+msgstr "Virtuelle Hosts"
+
+#: admin/systems/services/apache2/serviceApacheVhost.tpl:1
+msgid "Apache VHosts"
+msgstr "Apache"
+
+#: admin/systems/services/apache2/serviceApacheVhost.tpl:8
+#: admin/systems/services/apache2/serviceApacheVhostEdit.tpl:54
+#: admin/systems/services/apache2/serviceApacheVhostEdit.tpl:98
+msgid "Add"
+msgstr "Hinzufügen"
+
+#~ msgid "Up"
+#~ msgstr "Auf"
+
+#~ msgid "Down"
+#~ msgstr "Ab"
+
+#~ msgid "Delete"
+#~ msgstr "Entfernen"
+
+#~ msgid "Only lowercase strings are allowed as Virtual Host Name."
+#~ msgstr "Es sind nur Kleinbuchstaben für virtuelle Hostname erlaubt."
+
+#~ msgid "e.g. example.com"
+#~ msgstr "z.B. beispiel.com"
+
+#~ msgid ""
+#~ "Undefined vhost name '%s'. Vhost name must look like this 'www.example."
+#~ "com or example.com'."
+#~ msgstr "Der vhost-Name '%s' ist nicht definiert."
+
+#~ msgid "LDAP error"
+#~ msgstr "LDAP-Fehler"
