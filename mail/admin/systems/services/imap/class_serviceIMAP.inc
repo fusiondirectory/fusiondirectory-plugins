@@ -29,7 +29,7 @@ class serviceIMAP extends simpleService
   static function plInfo()
   {
     return array(
-      "plShortName"     => _("IMAP/POP3"),
+      "plShortName"     => _("IMAP/POP3 generic service"),
       "plDescription"   => _("IMAP/POP3")." ("._("Services").")",
 
       "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
@@ -46,7 +46,7 @@ class serviceIMAP extends simpleService
 
   function execute()
   {
-    return "<b>This server runs an IMAP server</b>".parent::execute();
+    return "<b>This server runs an IMAP or POP3 server</b>".parent::execute();
   }
 
 }
