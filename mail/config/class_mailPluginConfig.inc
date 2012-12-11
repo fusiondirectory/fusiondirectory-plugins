@@ -101,7 +101,7 @@ class mailPluginConfig extends simplePlugin
     }
     $outputs = $choices;
     array_unshift($choices, '');
-    array_unshift($outputs, _('Undefined'));
+    array_unshift($outputs, _('Generic'));
     $this->attributesInfo['mail']['attrs']['fdMailMethod']->setChoices($choices, $outputs);
   }
 }
