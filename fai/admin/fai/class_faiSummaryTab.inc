@@ -66,7 +66,7 @@ class faiSummaryTab extends plugin{
        faiProfile / Workstations */
 
     /* Check if given parent object is fai profile tabs */
-    if(isset($this->parent->by_name['faiProfile'])){
+    if (isset($this->parent->by_name['faiProfile'])) {
 
       /* Get Classes and release */
       $this->Classes = $this->parent->by_object['faiProfile']->FAIclasses;
@@ -76,28 +76,27 @@ class faiSummaryTab extends plugin{
       $this->Release = $tmp[$this->base];
 
     /* Check if parent tab is work tab */
-    }elseif(isset($this->parent->by_name['workstartup'])){
-      if($this->parent->by_object['workstartup']->FAIdebianMirror == "inherited"){
-        $this->Classes = array($this->parent->by_object['workstartup']->InheritedFAIprofile);
-        $this->Release = $this->parent->by_object['workstartup']->InheritedFAIrelease;
-      }else{
-        $this->Classes = array($this->parent->by_object['workstartup']->FAIclass);
-        $this->Release = $this->parent->by_object['workstartup']->FAIrelease;
+    } else {
+      if (isset($this->parent->by_name['faiStartup'])) {
+        if ($this->parent->by_object['faiStartup']->FAIdebianMirror == "") {
+          $this->Classes = array($this->parent->by_object['faiStartup']->group_attrs['FAIclass']);
+        } else {
+          $this->Classes = array($this->parent->by_object['faiStartup']->FAIclass);
+          $this->Release = $this->parent->by_object['faiStartup']->attributesAccess['FAIclass']->attributes[0]->getValue();
+        }
       }
 
       /* Check if this is a workstation or an object group */
-      if(isset($this->parent->by_object['workstationGeneric'])){
-        $this->base    = $this->parent->by_object['workstationGeneric']->base;
-      }elseif(isset($this->parent->by_object['ogroup'])){
-        $this->base    = $this->parent->by_object['ogroup']->base;
-      }elseif(isset($this->parent->by_object['serverGeneric'])){
-        $this->base    = $this->parent->by_object['serverGeneric']->base;
-      }else{
+      if ((isset($this->parent->by_object['workstationGeneric'])) ||
+          (isset($this->parent->by_object['ogroup'])) ||
+          (isset($this->parent->by_object['serverGeneric']))) {
+        $this->base = $this->parent->getBaseObject()->base;
+      } else {
         msg_dialog::display(_("Error"), _("Unknown FAI information source!"), ERROR_DIALOG);
       }
 
       /* Append workstation class && LAST */
-      if(isset($this->parent->by_object['workstationGeneric']->cn)){
+      if (isset($this->parent->by_object['workstationGeneric']->cn)) {
         $this->Classes[] = $this->parent->by_object['workstationGeneric']->cn;
       }
     }
@@ -211,7 +210,7 @@ class faiSummaryTab extends plugin{
 
     $this->ObjectList = $this->createSummary($this->Result);
     $smarty->assign("objectList",$this->ObjectList);
-    return($smarty->fetch (get_template_path('faiSummary.tpl', TRUE, dirname(__FILE__))));
+    return $smarty->fetch(get_template_path('faiSummary.tpl', TRUE, dirname(__FILE__)));
   }
 
 
