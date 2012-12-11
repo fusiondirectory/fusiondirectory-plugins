@@ -178,7 +178,7 @@ class mailAccount extends simplePlugin
             FALSE, FALSE, FALSE,
             50
           ),
-          new mailFlagsAttribute ('gosaMailDeliveryMode', array(
+          new FlagsAttribute ('gosaMailDeliveryMode', array(
             'flag_ownmailbox',
             'flag_vacation',
             'flag_spamlevel',
