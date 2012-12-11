@@ -1,16 +1,16 @@
 <?php
 
-class serviceMail extends simpleService {
+class servicePostfix extends simpleService {
 
   /* This plugin only writes its objectClass */
-  var $objectclasses    = array('goMailServer');
+  var $objectclasses    = array('fdPostfixServer');
 
   /* Return plugin informations for acl handling */
   static function plInfo()
   {
     return array(
-      'plShortName'    => _('Mail smtp (Postfix)'),
-      'plDescription'  => _('Mail smtp - Postfix').' ('._('Services').')',
+      'plShortName'    => _('Postfix (SMTP)'),
+      'plDescription'  => _('Postfix (SMTP)').' ('._('Services').')',
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
