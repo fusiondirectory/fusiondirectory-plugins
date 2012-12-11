@@ -60,7 +60,7 @@ class serviceCyrus extends simpleService
             'fdCyrusConnect',
             array(
               new StringAttribute(_('URL'), _('URL to contact Cyrus server'), 'cyrusConnectURL'),
-              new IntAttribute(_('Port'), _('Port number on which Cyrus server should be contacted'), 'cyrusConnectPort'),
+              new IntAttribute(_('Port'), _('Port number on which Cyrus server should be contacted'), 'cyrusConnectPort', FALSE, 0 /*min*/, FALSE /*max*/),
               new SelectAttribute(_('Option'), _('Options for contacting Cyrus server'), 'cyrusConnectOptions1', TRUE, array('notls', 'tls', 'ssl'), 'notls'),
               new SelectAttribute(_('Valide certificats'), _('Weither or not to validate server certificate on connexion'), 'cyrusConnectOptions2', FALSE, array('', '/validate-cert', '/no-validate-cert'), '', array('', 'validate', 'no-validate'))
             ),
