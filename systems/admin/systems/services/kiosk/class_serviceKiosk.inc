@@ -31,29 +31,28 @@ class serviceKiosk extends goService {
   var $conflicts        = array();
 
   var $baseDir            = "../kiosk";
+  var $orig_cn            = "";
   var $filesToAttach      = array();
-  var $cn                 = "unknown";
-  var $orig_cn            = "unknown";
   var $gotoKioskProfiles  = array();
   var $gotoKioskProfile   = array();
   var $server_path        = "http://%cn/kiosk";
 
   function __construct(&$config, $dn, $parent)
   {
-    goService::goService($config,$dn);
+    goService::goService($config, $dn);
 
     /* Get the current object name.
      */
-    if(isset($parent->parent->cn)){
-      $this->cn = &$parent->parent->cn;
-    }elseif(isset($this->attrs['cn'][0])){
-      $this->cn = $this->attrs['cn'][0];
+    if (isset($parent->parent->cn)) {
+      $cn = $parent->parent->cn;
+    } elseif(isset($this->attrs['cn'][0])) {
+      $cn = $this->attrs['cn'][0];
     }
-    $this->orig_cn = $this->cn;
+    $this->orig_cn = $cn;
 
     $this->DisplayName = _("Kiosk profile service");
     $this->baseDir = $this->config->search('environment', 'kioskpath',array('menu','tabs'));
-    $this->server_path = preg_replace("/%cn/", $this->cn, $this->server_path);
+    $this->server_path = preg_replace("/%cn/", $cn, $this->server_path);
 
     /* Load list of profiles and check if they still exists */
     if ($this->baseDir == ""){
