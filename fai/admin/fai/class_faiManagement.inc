@@ -176,7 +176,7 @@ class faiManagement extends management
 
   /*! \brief  A new FAI object was requested, let the user specify a name theis object now.
    */
-  function newEntry($action="",$target=array(),$all=array(), $altTabClass ="", $altTabType = "", $altAclCategory="")
+  function newEntry($action = "", $target = array(), $all = array(), $altTabClass = "", $altTabType = "", $altAclCategory = "")
   {
     $types = array(
         "new_partition"     =>  "FAIpartitionTable",
@@ -203,25 +203,26 @@ class faiManagement extends management
           "FAIprofile"         => "faiProfile",
           "FAItemplate"        => "faiTemplate");
 
-      $acl = $this->ui->get_permissions($this->acl_base,"fai/".$type_acl_mapping[$types[$action]]);
-      if (preg_match("/c/",$acl)) {
-        $this->dialogObject = new askClassName($this->config,$this->dn,$this->ui,$types[$action]);
+      $acl = $this->ui->get_permissions($this->acl_base, "fai/".$type_acl_mapping[$types[$action]]);
+      if (preg_match("/c/", $acl)) {
+        $this->dialogObject = new askClassName($this->config, $this->dn, $this->ui, $types[$action]);
         $this->dialogObject->parent = &$this;
       } else {
         msg_dialog::display(_("Permission error"),
-            sprintf(_("You have no permission to create a new %s!"), $types_i18n[$action]),      ERROR_DIALOG);
+            sprintf(_("You have no permission to create a new %s!"), $types_i18n[$action]), ERROR_DIALOG);
       }
     }
     if ($action == "new_profile") {
-      $this->dn = "new" ;
+      $this->dn = "new";
 
-      $acl = $this->ui->get_permissions($this->acl_base,"fai/faiProfile");
-      if (preg_match("/c/",$acl)) {
-        $type= $this->get_type(array("objectClass" => array("FAIprofile")));
-        $str= management::newEntry('newEntry',array(),array(),$type[0],$type[2],$type[1]);
-        if ($str) return($str);
+      $acl = $this->ui->get_permissions($this->acl_base, "fai/faiProfile");
+      if (preg_match("/c/", $acl)) {
+        $type = $this->get_type(array("objectClass" => array("FAIprofile")));
+        $str  = management::newEntry('newEntry', array(), array(), $type[0], $type[2], $type[1]);
+        if ($str) {
+          return $str;
+        }
         $this->tabObject->set_acl_base($this->acl_base);
-        $this->tabObject->by_object[$type[1]]->cn = $name;
       } else {
         msg_dialog::display(_("Permission error"), sprintf(_("You have no permission to create a new %s!"), _("profile")), ERROR_DIALOG);
       }
@@ -235,19 +236,21 @@ class faiManagement extends management
   function newClassNameSelected()
   {
     $this->dialogObject->save_object();
-    if(count($this->dialogObject->check())!=0){
-      foreach($this->dialogObject->check() as $msg){
+    if (count($this->dialogObject->check()) != 0) {
+      foreach ($this->dialogObject->check() as $msg) {
         msg_dialog::display(_("Error"), $msg, ERROR_DIALOG);
       }
-    }elseif(isset($this->dialogObject->objectClass)){
-      $this->dn = "new" ;
-      $type= $this->get_type(array("objectClass"=>array($this->dialogObject->objectClass)));
+    } elseif (isset($this->dialogObject->objectClass)) {
+      $this->dn = "new";
+      $type = $this->get_type(array("objectClass" => array($this->dialogObject->objectClass)));
       $name = $this->dialogObject->save();
 
-      if(class_exists($type[0])){
+      if (class_exists($type[0])) {
         $this->closeDialogs();
-        $str = management::newEntry('newEntry',array(),array(),$type[0],$type[2],$type[1]);
-        if($str) return($str);
+        $str = management::newEntry('newEntry', array(), array(), $type[0], $type[2], $type[1]);
+        if ($str) {
+          return $str;
+        }
         $this->tabObject->set_acl_base($this->acl_base);
         $this->tabObject->by_object[$type[1]]->cn = $name;
       }
