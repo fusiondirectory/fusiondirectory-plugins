@@ -23,9 +23,9 @@
 class sambaAccount extends plugin
 {
     /* Definitions */
-    var $plHeadline= "Samba";
-    var $plDescription= "This store the sambaAccount into the ldap tree";
-    var $view_logged = FALSE;
+    var $plHeadline     = "Samba";
+    var $plDescription  = "This store the sambaAccount into the ldap tree";
+    var $view_logged    = FALSE;
 
     // Domaind information, gid, sid, rid
     var $uid= "";
@@ -38,19 +38,19 @@ class sambaAccount extends plugin
     // Some of these attributes are just used to
     //  display the domain information dialog, and
     //  thus not writte back to the ldap.
-    var $sambaBadPasswordCount= "";
-    var $sambaBadPasswordTime= "";
-    var $sambaPasswordHistory= "";
-    var $sambaLogonHours= "";
-    var $sambaPwdLastSet= "0";
-    var $sambaLogonTime= "0";
-    var $sambaLogoffTime= "2147483647";
-    var $sambaKickoffTime= "";
-    var $sambaPwdCanChange= "0";
-    var $sambaPwdMustChange= "0";
+    var $sambaBadPasswordCount  = "";
+    var $sambaBadPasswordTime   = "";
+    var $sambaPasswordHistory   = "";
+    var $sambaLogonHours        = "";
+    var $sambaPwdLastSet        = "0";
+    var $sambaLogonTime         = "0";
+    var $sambaLogoffTime        = "2147483647";
+    var $sambaKickoffTime       = "";
+    var $sambaPwdCanChange      = "0";
+    var $sambaPwdMustChange     = "0";
 
     // Flags (checkboxes) to restrict account settings.
-    var $sambaAcctFlags= "[UX        ]";
+    var $sambaAcctFlags             = "[UX        ]";
     var $flag_enforcePasswordChange = FALSE;
     var $flag_passwordNeverExpires  = FALSE;
     var $flag_noPasswordRequired    = FALSE;
@@ -94,7 +94,6 @@ class sambaAccount extends plugin
 
     function sambaAccount (&$config, $dn= NULL)
     {
-
         plugin::plugin ($config, $dn);
 
         // Set current uid if possible.
@@ -149,6 +148,14 @@ class sambaAccount extends plugin
             $this->flag_sambaKickoffTime = TRUE;
         }
     }
+
+  function resetCopyInfos()
+  {
+    parent::resetCopyInfos();
+
+    /* Set a new SID */
+    $this->sambaSID = "";
+  }
 
 
     function loadFlagsFromSource($attrs)
