@@ -80,7 +80,8 @@ class sshAccount extends simplePlugin
             new SSHPublicKeyAttribute(
               '', _('SSH public keys for this user'),
               'sshPublicKey'
-            )
+            ),
+            FALSE // no order
           )
         )
       )
