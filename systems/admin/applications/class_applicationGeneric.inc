@@ -23,14 +23,17 @@
 class application extends plugin
 {
   /* application attributes */
-  var $cn= "";
-  var $description= "";
-  var $base= "";
-  var $gosaApplicationExecute= "";
-  var $gosaApplicationName= "";
-  var $gosaApplicationFlags= "";
-  var $gosaApplicationIcon= "";
-  var $gotoLogonScript  ="";
+  var $cn           = "";
+  var $description  = "";
+  var $base         = "";
+
+  var $gosaApplicationExecute = "";
+  var $gosaApplicationName    = "";
+  var $gosaApplicationFlags   = "";
+  var $gosaApplicationIcon    = "";
+  var $gotoLogonScript        = "";
+  var $gotoLogoffScript       = "";
+
   var $iconData;
   var $view_logged = FALSE;
 
@@ -172,8 +175,8 @@ class application extends plugin
 
     $smarty->assign("rand", rand(0, 10000));
     $head = $this->generateTemplate();
-    $this->gotoLogonScript= $this->generateTemplate().preg_replace('/.*### END HEADER ###/s', '', $this->gotoLogonScript);
-    $this->gotoLogoffScript= $this->generateTemplate().preg_replace('/.*### END HEADER ###/s', '', $this->gotoLogoffScript);
+    $this->gotoLogonScript  = $this->generateTemplate().preg_replace('/.*### END HEADER ###/s', '', $this->gotoLogonScript);
+    $this->gotoLogoffScript = $this->generateTemplate().preg_replace('/.*### END HEADER ###/s', '', $this->gotoLogoffScript);
 
     if((isset($_POST['upLoadOn']))&&(isset($_FILES['ScriptFileOn'])) && !preg_match("/freeze/i",$this->FAIstate)){
       $str = file_get_contents(gosa_file_name($_FILES['ScriptFileOn']['tmp_name']));
