@@ -26,7 +26,7 @@
 </table>
 
 <p class="plugbottom">
-  <input type=submit name="SaveService" value="{msgPool type=backButton}">
+  <input type=submit name="SaveService" value="{msgPool type=saveButton}">
 </p>
 
 <input type="hidden" name="ignore">
