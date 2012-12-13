@@ -798,7 +798,6 @@ class serviceDHCP extends goService
       "plShortName"   => _("DHCP service"),
       "plDescription" => _("DHCP service")." ("._("Services").")",
       "plSelfModify"  => FALSE,
-      "plDepends"     => array(),
       "plPriority"    => 84,
       "plCategory"    => array("server"),
 

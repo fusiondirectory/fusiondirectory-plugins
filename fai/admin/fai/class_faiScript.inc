@@ -621,7 +621,6 @@ class faiScript extends plugin
       "plShortName" => _("Script"),
       "plDescription" => _("FAI script"),
       "plSelfModify"  => FALSE,
-      "plDepends"     => array(),
       "plPriority"    => 18,
       "plCategory"    => array("fai"),
       "plObjectType"  => array("faiScript" => array("name" => _("FAI script"),

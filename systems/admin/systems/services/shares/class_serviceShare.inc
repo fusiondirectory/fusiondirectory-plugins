@@ -428,7 +428,6 @@ class serviceShare extends goService {
           "plShortName"   => _("File service (Shares)"),
           "plDescription" => _("File service - Shares")." ("._("Services").")",
           "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
           "plPriority"    => 90,
           "plCategory"    => array("server"),
 

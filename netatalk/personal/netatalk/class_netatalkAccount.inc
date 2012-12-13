@@ -400,7 +400,6 @@ class netatalkAccount extends plugin {
       "plShortName"       => _("Netatalk"),
       "plDescription"     => _("Netatalk"),
       "plSelfModify"      => TRUE,
-      "plDepends"         => array("user"),
       "plPriority"        => 6,
       "plCategory"        => array("users"),
       "plObjectType"      => array("user"),

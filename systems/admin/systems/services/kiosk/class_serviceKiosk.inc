@@ -288,7 +288,6 @@ class serviceKiosk extends goService {
           "plShortName"   => _("Kiosk"),
           "plDescription" => _("Kiosk profile management")." ("._("Services").")",
           "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
           "plPriority"    => 100,
           "plCategory"    => array("server"),
 
@@ -296,5 +295,4 @@ class serviceKiosk extends goService {
           ));
   }
 }
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

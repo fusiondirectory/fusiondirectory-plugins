@@ -35,7 +35,7 @@ class faiDiskEntry extends plugin
   var $DISKcn              = "";
   var $DISKdescription     = "";
   var $DISKFAIdiskOptions  = "";
-  
+
   var $partitions          = array();
   var $is_edit             = false;
   var $old_cn              = "";
@@ -43,19 +43,19 @@ class faiDiskEntry extends plugin
   var $disklabel           = "msdos";
   var $FAIstate            = "";
   var $FAIdiskType         = "disk";
-  
+
   var $lvmDevices          = array();
 
   function faiDiskEntry (&$config, $dn= NULL,$parent,$disk,$type)
   {
     plugin::plugin ($config, $dn);
-  
-    // Set default attributes 
+
+    // Set default attributes
     $this->parent = $parent;
     $this->FAIdiskType = $type;
 
-    // If disk is not empty, then we are going to edit 
-    //  an existing disk, load disk info now. 
+    // If disk is not empty, then we are going to edit
+    //  an existing disk, load disk info now.
     if($disk){
 
       // Get devices used in volume base disks.
@@ -63,28 +63,28 @@ class faiDiskEntry extends plugin
         $this->lvmDevices = $disk['FAIlvmDevice'];
       }
 
-      // Load default attributes 
+      // Load default attributes
       $this->DISKcn          = $disk['cn'];
       $this->DISKdescription = $disk['description'];
       $this->is_edit         = true;
       $this->old_cn          = $disk['cn'];
 
-      // Load partition info 
+      // Load partition info
       foreach($disk['partitions'] as $values){
 
         $name = $values['FAIpartitionNr'];
 
-        // Load partition attributes  
+        // Load partition attributes
         $disk['partitions'][$name]['old_cn']= $disk['partitions'][$name]['cn'];
         $disk['partitions'][$name]['FAIdiskType']= $this->FAIdiskType;
         foreach($this->UsedAttrs as $attr){
           if(!isset($values[$attr])){
-            $disk['partitions'][$name][$attr]="";  
+            $disk['partitions'][$name][$attr]="";
           }
         }
 
         if (preg_match('/^_/', $disk['partitions'][$name]['FAIfsType'])){
-          $disk['partitions'][$name]['FAIfsType']= 
+          $disk['partitions'][$name]['FAIfsType']=
             preg_replace('/^_/', '', $disk['partitions'][$name]['FAIfsType']);
         }
       }
@@ -102,7 +102,7 @@ class faiDiskEntry extends plugin
       if (isset($disk['FAIdiskOption'])){
         foreach($disk['FAIdiskOption'] as $option) {
 
-          // Get fstab key  
+          // Get fstab key
           if (preg_match("/fstabkey:(device|label|uuid)/", $option)){
             $this->fstabkey= preg_replace("/^.*fstabkey:(device|label|uuid).*$/", "$1", $option);
             continue;
@@ -114,48 +114,48 @@ class faiDiskEntry extends plugin
             continue;
           }
 
-          // Load bootable flag for partitions 
+          // Load bootable flag for partitions
           if (preg_match("/^bootable:/", $option)){
             $bootable = explode(",", trim(preg_replace("/^bootable:/","",$option),","));
             foreach($bootable as $bootflag){
               if(isset($this->partitions[$bootflag])){
-                $this->partitions[$bootflag]['bootable'] = TRUE;  
+                $this->partitions[$bootflag]['bootable'] = TRUE;
               }
             }
             continue;
           }
 
-          // Load resize flag for partitions 
+          // Load resize flag for partitions
           if (preg_match("/^resize:/", $option)){
             $resize = explode(",", trim(preg_replace("/^resize:/","",$option),","));
             foreach($resize as $id){
               if(isset($this->partitions[$id])){
-                $this->partitions[$id]['resize'] = TRUE;  
+                $this->partitions[$id]['resize'] = TRUE;
               }
             }
             continue;
           }
 
-          // Load preserve_always flag for partitions 
+          // Load preserve_always flag for partitions
           if (preg_match("/^preserve_always:/", $option)){
             $preserve = explode(",", trim(preg_replace("/^preserve_always:/","",$option),","));
             foreach($preserve as $presflag){
               if(isset($this->partitions[$presflag])){
-                $this->partitions[$presflag]['preserve'] = TRUE;  
-                $this->partitions[$presflag]['preserveType'] = 'always';  
+                $this->partitions[$presflag]['preserve'] = TRUE;
+                $this->partitions[$presflag]['preserveType'] = 'always';
               }
             }
             continue;
           }
 
-          // Load preserve_reinstall flag for partitions 
+          // Load preserve_reinstall flag for partitions
           if (preg_match("/^preserve_reinstall:/", $option)){
             $preserve = explode(",", trim(preg_replace("/^preserve_reinstall:/","",$option),","));
             foreach($preserve as $presflag){
               if(isset($this->partitions[$bootflag])){
-                $this->partitions[$presflag]['preserve'] = TRUE;  
-                $this->partitions[$presflag]['preserveType'] = 'reinstall'; 
-              } 
+                $this->partitions[$presflag]['preserve'] = TRUE;
+                $this->partitions[$presflag]['preserveType'] = 'reinstall';
+              }
             }
             continue;
           }
@@ -195,12 +195,12 @@ class faiDiskEntry extends plugin
     }
 
     /* Check all Posts if there is something usefull for us,
-     * For example : Delete is posted as Delete_1 
+     * For example : Delete is posted as Delete_1
      * The number specifies the index we want to delete
      */
     foreach($_POST as $name => $value){
-      if((preg_match("/RemovePartition_/",$name)) && 
-          $this->acl_is_removeable() && 
+      if((preg_match("/RemovePartition_/",$name)) &&
+          $this->acl_is_removeable() &&
           !preg_match("/freeze/i",$this->FAIstate)){
         $tmp = explode("_",$name);
         $this->removePartition($tmp[1]);
@@ -213,7 +213,7 @@ class faiDiskEntry extends plugin
           $this->dialog = new faiPartition($this->config,$this->partitions[$id], $this,$this->FAIdiskType);
           break;
         }
-      } 
+      }
     }
 
     /* Act on _GET edit request
@@ -240,7 +240,7 @@ class faiDiskEntry extends plugin
       $this->dialog->save_object();
 
       // Validate new partition
-      $new_partition = $this->dialog->save(); 
+      $new_partition = $this->dialog->save();
       $msgs = $this->dialog->check();
       $msgs = array_merge($msgs,$this->check_disks($new_partition));
 
@@ -289,13 +289,13 @@ class faiDiskEntry extends plugin
       $acl = $this->getacl($name, preg_match("/freeze/i",$this->FAIstate));
       $smarty->assign($name."ACL",$acl);
     }
-   
+
     $display.= $smarty->fetch(get_template_path('faiDiskEntry.tpl', TRUE));
     return($display);
   }
 
 
-  /* Creates a human readable list, that contains all physical 
+  /* Creates a human readable list, that contains all physical
    *  devices that are used by the volume group.
    * This list will then be displayed in a html select box.
    * (lvm)
@@ -304,16 +304,16 @@ class faiDiskEntry extends plugin
   {
     $divlist = new divSelectBox("RaidList");
 
-    /* Create a list of all available disks and partitions. 
+    /* Create a list of all available disks and partitions.
      * This list will then be used to display detailed info.
      */
     $disks = $this->parent->disks;
     foreach($disks as $dname => $disk){
 
-      // Skip currently edited disk 
+      // Skip currently edited disk
       if($disk['cn'] == $this->old_cn) continue;
-   
-      // Add disk 
+
+      // Add disk
       $objs[$dname] = $disk;
 
       // Add disk partitions
@@ -331,7 +331,7 @@ class faiDiskEntry extends plugin
       $objs[$part['cn']] = $part;
     }
 
-    // Walk through physical partition combinations and build up 
+    // Walk through physical partition combinations and build up
     //  user friendly list with partition details.
     $list = array();
     foreach($this->lvmDevices as $device){
@@ -349,7 +349,7 @@ class faiDiskEntry extends plugin
           }else{
             $str .= _("Size").":&nbsp;";
             $str .= $objs[$device]['FAIpartitionSize'];
-          } 
+          }
         }
       }
       $list[$device] = $str;
@@ -357,10 +357,10 @@ class faiDiskEntry extends plugin
     return($list);
   }
 
- 
-  /* Returns a list of available partitions that are useable in 
+
+  /* Returns a list of available partitions that are useable in
    *  lvm disk setups.
-   */ 
+   */
   function getAvailablePartitions()
   {
 
@@ -405,7 +405,7 @@ class faiDiskEntry extends plugin
   }
 
 
-  /* Remove the selected partition and shift the following partitions 
+  /* Remove the selected partition and shift the following partitions
    *  to fill the gap.
    * Additionally update the partition numbers correspondingly.
    *  (Checks if the partition is in use, too)
@@ -452,7 +452,7 @@ class faiDiskEntry extends plugin
     }
   }
 
-  
+
   function get_free_partition_number()
   {
     $used = array();
@@ -468,7 +468,7 @@ class faiDiskEntry extends plugin
 
 
 
-  /* Add or update a partition 
+  /* Add or update a partition
    */
   function updatePartition($part)
   {
@@ -476,15 +476,15 @@ class faiDiskEntry extends plugin
       $part['FAIpartitionNr'] = $this->get_free_partition_number();
     }
 
-    /* Update the disk cn -       
-     * Do NOT touch the partition 'cn' in case of lvm or raid devices. 
+    /* Update the disk cn -
+     * Do NOT touch the partition 'cn' in case of lvm or raid devices.
      */
     if($this->FAIdiskType == "disk"){
       $part['cn'] = $this->DISKcn.$part['FAIpartitionNr'];
     }
 
     /* Check if we've to update partition names of lvm compilations.
-     */ 
+     */
     if($this->FAIdiskType == "lvm"){
       if(isset($this->partitions[$part['FAIpartitionNr']])){
         $old_cn = $this->partitions[$part['FAIpartitionNr']]['cn'];
@@ -497,7 +497,7 @@ class faiDiskEntry extends plugin
     }
 
     /* Set raid names to md#
-     */ 
+     */
     if($this->FAIdiskType == "raid"){
       $part['cn'] = 'md'.$part['FAIpartitionNr'];
     }
@@ -512,10 +512,10 @@ class faiDiskEntry extends plugin
    */
   function generateParts()
   {
-    $divlist = new divSelectBox("DiskEntries"); 
+    $divlist = new divSelectBox("DiskEntries");
     foreach($this->partitions as $key => $part){
 
-      // Create default table cols 
+      // Create default table cols
       $cn =array(
           "string" => "<a href='?plug=".$_GET['plug']."&amp;act=editPart&amp;id={$key}'>".$part['cn']."</a>",
           "attach" => "style='width:160px;'");
@@ -544,19 +544,19 @@ class faiDiskEntry extends plugin
       $opt = "";
       if(isset($part['encrypted']) && $part['encrypted']){
         $opt.= "&nbsp;"._("encrypted").", ";
-      }      
+      }
       if(isset($part['bootable']) && $part['bootable']){
         $opt.= "&nbsp;"._("bootable").", ";
-      }      
+      }
       if(isset($part['preserve']) && $part['preserve']){
         $opt.= "&nbsp;"._("preserve").":&nbsp;".$part['preserveType'].", ";
-      }     
+      }
 
-      // Combine options to a single table col. 
+      // Combine options to a single table col.
       $opt    =array(
           "string" => "<i>".preg_replace('/, $/',"",$opt)."</i>");
 
-      // Depending on the FAIstatus (freeze?) we will display different options. 
+      // Depending on the FAIstatus (freeze?) we will display different options.
       // We can't remove freezed branches -> Hide remove button.
       if(!preg_match("/freeze/", $this->FAIstate)){
         $action =array(
@@ -569,8 +569,8 @@ class faiDiskEntry extends plugin
             "attach" => "style='width:40px; border-right: 0px;'");
       }
 
-      // Build up info table, depending on the disk type. 
-      if($this->FAIdiskType == "lvm"){ 
+      // Build up info table, depending on the disk type.
+      if($this->FAIdiskType == "lvm"){
         $fields = array($cn,$desc,$mntp,$opt,$size, $action);
       }elseif($this->FAIdiskType == "raid"){
         $raid_str = $part['FAIpartitionType']." (".$part['FAIpartitionSize'].")";
@@ -581,7 +581,7 @@ class faiDiskEntry extends plugin
       }
       $divlist->AddEntry($fields);
     }
-    return($divlist->DrawList());    
+    return($divlist->DrawList());
   }
 
 
@@ -590,7 +590,7 @@ class faiDiskEntry extends plugin
     $tmp = array();
     $tmp['cn']          = $this->DISKcn;
 
-    /* Attach partitions. 
+    /* Attach partitions.
      * And prepare names and numbers.
      */
     foreach($this->partitions as $key=>$val) {
@@ -610,7 +610,7 @@ class faiDiskEntry extends plugin
     $tmp['FAIlvmDevice'] = array();
     foreach($this->lvmDevices as $dev){
       $tmp['FAIlvmDevice'][] = $dev;
-    } 
+    }
 
     /* Assemble flags */
     $tmp['FAIdiskOption'] = array("fstabkey:".$this->fstabkey, "disklabel:".$this->disklabel);
@@ -621,13 +621,13 @@ class faiDiskEntry extends plugin
       $tmp['rename']['to']    = $this->DISKcn;
     }
 
-    // Build up disk options 
+    // Build up disk options
     $bootable = "";
     $resize = "";
     $preserve_always = "";
     $preserve_reinstall = "";
 
-    /* Assemble boot, resize and preserve flags 
+    /* Assemble boot, resize and preserve flags
      */
     foreach($tmp['partitions'] as $id => $part){
       if(isset($part['bootable']) && $part['bootable']){
@@ -644,13 +644,13 @@ class faiDiskEntry extends plugin
         }
       }
 
-      // Unset non valid attributes 
+      // Unset non valid attributes
       foreach(array("bootable","encrypted","preserve","preserveType","resize","FAIdiskType") as $attr){
         if(isset($tmp['partitions'][$id][$attr])){
           unset($tmp['partitions'][$id][$attr]);
         }
       }
-    }    
+    }
 
     /* Assembe disk flags
      */
@@ -693,7 +693,7 @@ class faiDiskEntry extends plugin
   {
     /* Call common method to give check the hook */
     $message= plugin::check();
-  
+
     /* Check for an empty disk name */
     $d = trim($this->DISKcn);
     if($d == "" ){
@@ -708,19 +708,19 @@ class faiDiskEntry extends plugin
 
 
   /* Checks the disk combinations.
-   * 
-   */  
+   *
+   */
   function check_disks($disk_to_add = array())
   {
     $msgs = array();
 
-    /* Check 'disk' combinations. 
+    /* Check 'disk' combinations.
      *  - There can be four primary partitions.
-     *  - If there is at least one 'logical' partition, then there can be only 
+     *  - If there is at least one 'logical' partition, then there can be only
      *     three 'primary' partitions.
-     */    
+     */
     if($this->FAIdiskType == "disk"){
-     
+
       $types = array('logical' => array(), 'primary' => array());
       $types[$disk_to_add['FAIpartitionType']][$disk_to_add['FAIpartitionNr']] = 1;
       foreach($this->partitions as $key => $part){
@@ -740,7 +740,7 @@ class faiDiskEntry extends plugin
     }
 
     return($msgs);
-  }  
+  }
 
 
   /* Return plugin informations for acl handling */
@@ -750,7 +750,6 @@ class faiDiskEntry extends plugin
           "plShortName" => _("Partition table entry"),
           "plDescription" => _("FAI partition table entry"),
           "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
           "plPriority"    => 27,
           "plCategory"    => array("fai"),
           "plProvidedAcls" => array(
@@ -767,7 +766,7 @@ class faiDiskEntry extends plugin
             "FAIpartitionFlags" => _("Partition flags"))
           ));
   }
- 
+
 }
 
 // vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:

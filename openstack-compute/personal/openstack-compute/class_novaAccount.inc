@@ -30,7 +30,6 @@ class novaAccount extends simplePlugin
       "plShortName"     => _("Nova"),
       "plDescription"   => _("Nova user account settings"),
       "plSelfModify"    => TRUE,
-      "plDepends"       => array("user"),
       "plPriority"      => 3,
       "plCategory"      => array("users"),
       "plObjectType"    => array("user"),

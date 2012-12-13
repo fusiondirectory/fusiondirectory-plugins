@@ -397,7 +397,6 @@ class termgroup extends plugin
           "plShortName"   => _("System"),
           "plDescription" => _("System group"),
           "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
           "plPriority"    => 5,
           "plCategory"    => array("ogroups"),
           "plProvidedAcls"=> array(

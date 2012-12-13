@@ -22,8 +22,6 @@
 
 class environment extends plugin
 {
-  var $plIcon = "plugins/systems/images/plugin.png";
-
   /* attribute list for save action */
   var $ignore_account       = FALSE;
   var $plHeadline           = "Environment";
@@ -1646,7 +1644,7 @@ class environment extends plugin
       "plDescription"   => _("Environment settings"),         // Description
       "plIcon"          => "plugins/systems/images/plugin.png",
       "plSelfModify"    => TRUE,
-      "plDepends"       => array("user", "posixAccount"),     // This plugin depends on
+      "plDepends"       => array("posixAccount"),
       "plCategory"      => array("users", "groups"),
       "plObjectType"    => array("user", "group"),
       "plOptions"       => array("resolution_hook" => array("type" => "string",

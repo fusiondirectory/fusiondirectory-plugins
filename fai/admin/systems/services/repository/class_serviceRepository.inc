@@ -449,7 +449,6 @@ class serviceRepository extends goService
           "plShortName"   => _("Repository"),
           "plDescription" => _("Repository service")." ("._("Services").")",
           "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
           "plPriority"    => 84,
           "plCategory"    => array("server"),
 

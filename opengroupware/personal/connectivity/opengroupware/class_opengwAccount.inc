@@ -52,7 +52,7 @@ class opengwAccount extends plugin
   var $initialy_was_account = false;
   var $OGWPassword          = "";
   var $ReadOnly = false;
-  var $view_logged = FALSE;  
+  var $view_logged = FALSE;
   var $uid = "";
 
   function opengwAccount (&$config, $dn= NULL)
@@ -84,7 +84,7 @@ class opengwAccount extends plugin
       $this->serverCon = array();
     }
 
-    /* check if datebase funktions are available, and if database configurations are available */ 
+    /* check if datebase funktions are available, and if database configurations are available */
     if(is_callable("pg_connect") && count($this->serverCon)){
 
       $this->handle     = new ogw($this->serverCon['LOGIN'],$this->serverCon['PASSWORD'],$this->serverCon['SERVER'],$this->serverCon['DB']);
@@ -96,7 +96,7 @@ class opengwAccount extends plugin
         if(isset($this->attrs['uid'][0])){
           $this->handle->info['login'] = $this->attrs['uid'][0];
         }else{
-          $this->handle->info['login'] = ""; 
+          $this->handle->info['login'] = "";
         }
 
         /* If this is account get data from database first */
@@ -107,7 +107,7 @@ class opengwAccount extends plugin
           $this->initialy_was_account = true;
           $this->is_account= true;
         }else{
-          /* this is no account */ 
+          /* this is no account */
           $this->initialy_was_account = false;
           $this->is_account= false;
 
@@ -125,7 +125,7 @@ class opengwAccount extends plugin
           }else{
             $this->info[$name] = false;
           }
-        } 
+        }
 
         /* Description is displayed as 'Nickname' */
         $this->info['description']          = $this->info['login'];
@@ -167,12 +167,12 @@ class opengwAccount extends plugin
     $smarty->assign("TemplateUser",0);
     $smarty->assign("is_lockedCHK", "  ");
     $smarty->assign("is_locked", "  ");
- 
+
     /* set default values */
     $tmp = $this->plInfo();
     foreach($tmp['plProvidedAcls'] as $acl => $desc){
       $smarty->assign($acl."ACL",$this->getacl($acl,$this->ReadOnly));
-    } 
+    }
 
     if((!$this->ReadOnly)&&(($this->is_account && $this->acl_is_removeable()) || (!$this->is_account && $this->acl_is_createable()))) {
       $smarty->assign('opengwAccountACL', "");
@@ -182,7 +182,7 @@ class opengwAccount extends plugin
 
     if(count($this->serverCon))
 
-    /* Check database extension */    
+    /* Check database extension */
     if(!is_callable("pg_connect") && count($this->serverCon)){
       msg_dialog::display(_("Configuration error"), msgPool::missingext("postgresql"), ERROR_DIALOG);
     }elseif(count($this->serverCon)){
@@ -203,7 +203,7 @@ class opengwAccount extends plugin
           /* Assign LocationTeams */
           $tmp = array(""=>"none");
           foreach($this->handle->validLocationTeam as $id){
-            $tmp[$id['company_id']] = $id['description']; 
+            $tmp[$id['company_id']] = $id['description'];
           }
           $smarty->assign("validLocationTeam",$tmp);
           $smarty->assign("validLocationTeams",array_flip($tmp));
@@ -212,13 +212,13 @@ class opengwAccount extends plugin
           /* Assign TemplateUsers*/
           $tmp = array();
           foreach($this->handle->validTemplateUser as $id){
-            $tmp[$id['company_id']] = $id['name']; 
+            $tmp[$id['company_id']] = $id['name'];
           }
           $smarty->assign("validTemplateUser",$tmp);
           $smarty->assign("validTemplateUsers",array_flip($tmp));
           $smarty->assign("TemplateUser",$this->info['template_user_id']);
 
-          /* Create Team membership */ 
+          /* Create Team membership */
           $str = "";
           if($this->is_account){
             $dis = "";
@@ -229,10 +229,10 @@ class opengwAccount extends plugin
           if($this->acl_is_readable("Teams")){
             foreach($this->handle->validTeams as $id){
               if(in_array($id['company_id'],$this->info['TeamIDis'])){
-                $str .= "<input ".$dis." type='checkbox' value='".$id['company_id']."' 
+                $str .= "<input ".$dis." type='checkbox' value='".$id['company_id']."'
                   checked name='team_".base64_encode($id['description'])."'>".$id['description']."<br>";
               }else{
-                $str .= "<input ".$dis." type='checkbox' value='".$id['company_id']."' 
+                $str .= "<input ".$dis." type='checkbox' value='".$id['company_id']."'
                   name='team_".base64_encode($id['description'])."'>".$id['description']."<br>";
               }
             }
@@ -256,7 +256,7 @@ class opengwAccount extends plugin
           }
           $smarty->assign("is_locked", $this->info['is_locked']);
 
-        } 
+        }
       }
     }
     $display.= $smarty->fetch (get_template_path('opengw.tpl', TRUE, dirname(__FILE__)));
@@ -331,7 +331,7 @@ class opengwAccount extends plugin
   /* Save to LDAP */
   function save()
   {
-    /* Save data */ 
+    /* Save data */
     $this->handle = new ogw($this->serverCon['LOGIN'],$this->serverCon['PASSWORD'],$this->serverCon['SERVER'],$this->serverCon['DB']);
     $this->handle->SetInfos($this->info);
     $this->handle->checkInfos();
@@ -344,21 +344,20 @@ class opengwAccount extends plugin
     }
   }
 
-  
+
   function PrepareForCopyPaste($src){
     // Nothing to do, because this object can't be copied ... yet
   }
 
 
- /* Return plugin informations for acl handling 
-      #FIXME This is only an enable/disable checkbox for this account, there is possibly a better solution available later */ 
+ /* Return plugin informations for acl handling
+      #FIXME This is only an enable/disable checkbox for this account, there is possibly a better solution available later */
   static function plInfo()
   {
     return (array(
           "plShortName"     => _("Opengroupware"),
           "plDescription"   => _("Open groupware account settings")."&nbsp;("._("Connectivity addon").")",
           "plSelfModify"    => TRUE,
-          "plDepends"       => array("user"),
           "plPriority"      => 26,                                 // Position in tabs
           "plCategory"    => array("users"),
           "plOptions"       => array(),

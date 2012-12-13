@@ -29,9 +29,7 @@ class argonautDNSConfig extends simpleService
     return array(
       "plShortName"     => _("Argonaut DNS settings"),
       "plDescription"   => _("Argonaut DNS settings")." ("._("Services").")",
-      "plSelfModify"    => FALSE,
-      "plDepends"       => array(),
-      "plCategory"      => array("server"),
+
       "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }

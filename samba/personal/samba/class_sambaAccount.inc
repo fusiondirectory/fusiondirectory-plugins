@@ -1127,7 +1127,7 @@ class sambaAccount extends plugin
         "plShortName"     => _("Samba"),
         "plDescription"   => _("Samba settings"),
         "plSelfModify"    => TRUE,
-        "plDepends"       => array("user"),
+        "plDepends"       => array("posixAccount"),
         "plPriority"      => 5,
         "plCategory"      => array("users"),
         "plObjectType"    => array("user"),

@@ -30,9 +30,6 @@ class argonautMirrorConfig extends simpleService
     return array(
       "plShortName"     => _("Argonaut Mirror settings"),
       "plDescription"   => _("Argonaut Mirror settings")." ("._("Services").")",
-      "plSelfModify"    => FALSE,
-      "plDepends"       => array(),
-      "plCategory"      => array("server"),
 
       "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );

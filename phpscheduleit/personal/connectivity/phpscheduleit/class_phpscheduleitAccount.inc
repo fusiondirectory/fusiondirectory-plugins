@@ -33,7 +33,6 @@ class phpscheduleitAccount extends simplePlugin
       "plShortName"     => _("PHP Schedule it"),
       "plDescription"   => _("PHP Schedule it settings")."&nbsp;("._("Connectivity addon").")",
       "plSelfModify"    => TRUE,
-      "plDepends"       => array("user"),
       "plPriority"      => 29,                                 // Position in tabs
       "plCategory"      => array("users"),
       "plObjectType"    => array("connectivity"),

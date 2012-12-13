@@ -47,7 +47,6 @@ class nagiosAccount extends simplePlugin
       "plShortName"   => _("Nagios"),
       "plDescription" => _("Nagios account settings"),
       "plSelfModify"  => TRUE,
-      "plDepends"     => array("user"),
       "plPriority"    => 8,                                 // Position in tabs
       "plCategory"    => array("users"),
       "plObjectType"  => array("user"),

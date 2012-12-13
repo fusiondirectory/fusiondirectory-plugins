@@ -526,7 +526,6 @@ class faiTemplate extends plugin
       "plShortName"   => _("Template"),
       "plDescription" => _("FAI template"),
       "plSelfModify"  => FALSE,
-      "plDepends"     => array(),
       "plPriority"    => 24,
       "plCategory"    => array("fai"),
       "plObjectType"  => array("faiTemplate" => array("name" => _("FAI template"),

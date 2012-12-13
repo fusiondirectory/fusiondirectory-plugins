@@ -620,7 +620,6 @@ class serviceDNS extends goService
           "plShortName"   => _("DNS service"),
           "plDescription" => _("DNS service")." ("._("Services").")",
           "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
           "plPriority"    => 83,
           "plCategory"    => array("server"),
 

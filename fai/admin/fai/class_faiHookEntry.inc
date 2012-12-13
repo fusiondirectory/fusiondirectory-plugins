@@ -200,7 +200,6 @@ class faiHookEntry extends plugin
           "plShortName" => _("Hook entry"),
           "plDescription" => _("FAI hook entry"),
           "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
           "plPriority"    => 21,
           "plCategory"    => array("fai"),
           "plProvidedAcls" => array(

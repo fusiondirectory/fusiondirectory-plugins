@@ -34,7 +34,6 @@ class scalixGroup extends scalixAccount
     return array(
       "plDescription"     => _("Scalix account"),
       "plSelfModify"      => TRUE,
-      "plDepends"         => array("group"),
       "plPriority"        => 2,
       "plCategory"        => array("groups"),
 

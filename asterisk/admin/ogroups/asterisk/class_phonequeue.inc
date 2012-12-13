@@ -864,7 +864,6 @@ class phonequeue extends plugin
       "plShortName"   => _("Phone"),
       "plDescription" => _("Phone group"),
       "plSelfModify"  => FALSE,
-      "plDepends"     => array(),
       "plPriority"    => 3,
       "plCategory"    => array("ogroups"),
       "plProvidedAcls"=> array(

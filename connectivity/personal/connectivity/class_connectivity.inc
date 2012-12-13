@@ -41,7 +41,6 @@ class connectivity extends multiPlugin
       "plDescription" => _("This plugin manage settings for plugins which don't have their own page"),
       "plIcon"        => "plugins/connectivity/images/plugin.png",
       "plSelfModify"  => TRUE,
-      "plDepends"     => array("user"),
       "plPriority"    => 20,
       "plCategory"    => array("users"),
       "plObjectType"  => array("user"),

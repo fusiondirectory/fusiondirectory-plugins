@@ -266,8 +266,6 @@ class deviceGeneric extends plugin
       "plShortName"   => _("Generic"),
       "plDescription" => _("Device generic")." ("._("Hotplug").")",
       "plSelfModify"  => FALSE,
-      "plDepends"     => array(),
-      "plPriority"    => 0,
       "plCategory"    => array("devices" => array("description"  => _("Devices"),
                                                     "objectClass"  => "gotoHotplugDevice")),
       "plObjectType"  => array("device" => array("name"  => _("Device"),
@@ -284,7 +282,5 @@ class deviceGeneric extends plugin
       )
     );
   }
-
 }
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

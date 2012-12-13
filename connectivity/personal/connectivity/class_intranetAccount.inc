@@ -33,7 +33,6 @@ class intranetAccount extends simplePlugin
       "plShortName"     => _("Intranet"),
       "plDescription"   => _("Intranet account settings")."&nbsp;("._("Connectivity addon").")",
       "plSelfModify"    => TRUE,
-      "plDepends"       => array("user"),
       "plPriority"      => 25,                                 // Position in tabs
       "plCategory"      => array("users"),
       "plObjectType"    => array("connectivity"),

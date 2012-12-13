@@ -30,9 +30,7 @@ class goFaxServer extends simpleService {
     return array(
       "plShortName"     => _("FAX service"),
       "plDescription"   => _("FAX service")." ("._("Services").")",
-      "plSelfModify"    => FALSE,
-      "plDepends"       => array(),
-      "plCategory"      => array("server"),
+
       "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }

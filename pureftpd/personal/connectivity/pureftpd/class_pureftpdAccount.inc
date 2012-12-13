@@ -34,7 +34,6 @@ class pureftpdAccount extends simplePlugin
       "plShortName"     => _("Ftp"),
       "plDescription"   => _("Pure ftp account")."&nbsp;("._("Connectivity addon").")",
       "plSelfModify"    => TRUE,
-      "plDepends"       => array("user"),
       "plPriority"      => 22,                                 // Position in tabs
       "plCategory"      => array("users"),
       "plObjectType"    => array("connectivity"),

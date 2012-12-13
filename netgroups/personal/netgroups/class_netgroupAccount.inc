@@ -362,7 +362,6 @@ class netgroupAccount extends plugin {
       return array(
         "plDescription"   => _("NIS Netgroup member"),
         "plSelfModify"    => FALSE,
-        "plDepends"       => array("user"),
         "plPriority"      => 2,
         "plCategory"      => array("users"),
         "plObjectType"    => array("user"),

@@ -862,7 +862,6 @@ class supannAccount extends plugin
       "plDescription" => _("SUPANN informations management plugin"),
       "plIcon"        => "plugins/supann/images/plugin.png",
       "plSelfModify"  => TRUE,
-      "plDepends"     => array("users"),
       "plPriority"    => 5,
       "plCategory"    => array("users"),
       "plObjectType"  => array("user"),

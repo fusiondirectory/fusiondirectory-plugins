@@ -1688,7 +1688,6 @@ class phoneAccount extends plugin
       "plShortName"   => _("Phone"),
       "plDescription" => _("Phone account settings"),
       "plSelfModify"  => TRUE,
-      "plDepends"     => array("user"),
       "plPriority"    => 7,                                 // Position in tabs
       "plCategory"    => array("users"),
       "plObjectType"  => array("user"),

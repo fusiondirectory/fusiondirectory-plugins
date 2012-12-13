@@ -799,7 +799,6 @@ class gofaxAccount extends plugin
       "plShortName"   => _("Fax"),
       "plDescription" => _("Fax account settings"),
       "plSelfModify"  => TRUE,
-      "plDepends"     => array("user"),
       "plPriority"    => 6,
       "plCategory"    => array("users"),
       "plObjectType"  => array("user"),

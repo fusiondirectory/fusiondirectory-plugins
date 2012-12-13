@@ -35,7 +35,7 @@ class faiVariableEntry extends plugin
   var $status        = "new";
   var $parent        = NULL;
   var $FAIstate      = "";
-  
+
   function faiVariableEntry (&$config, $dn= NULL,$object=false)
   {
     plugin::plugin ($config, $dn);
@@ -102,11 +102,11 @@ class faiVariableEntry extends plugin
     if(isset($this->parent->SubObjects[$this->cn]) && $this->cn != $this->orig_cn){
       $message[] = msgPool::duplicated(_("Name"));
     }
-    
+
     if($this->FAIvariableContent == "") {
-      $message[]= msgPool::required(_("Content")); 
+      $message[]= msgPool::required(_("Content"));
     }
-  
+
     $c = trim($this->cn);
     if($c == ""){
       $message[] = msgPool::required(_("Name"));
@@ -117,11 +117,11 @@ class faiVariableEntry extends plugin
 
     return ($message);
   }
- 
+
   function save()
   {
     $tmp=array();
-    foreach($this->attributes as $attrs){ 
+    foreach($this->attributes as $attrs){
       $tmp[$attrs] = stripslashes( $this->$attrs);
     }
 
@@ -129,9 +129,9 @@ class faiVariableEntry extends plugin
       $tmp['remove']['from']  = $this->orig_cn;
       $tmp['remove']['to']    = $tmp['cn'];
     }
-  
-    $tmp['dn']      = $this->dn;  
-    $tmp['status']  = $this->status;  
+
+    $tmp['dn']      = $this->dn;
+    $tmp['status']  = $this->status;
     return($tmp);
   }
 
@@ -142,7 +142,6 @@ class faiVariableEntry extends plugin
           "plShortName" => _("Variable entry"),
           "plDescription" => _("FAI variable entry "),
           "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
           "plPriority"    => 23,
           "plCategory"    => array("fai"),
           "plProvidedAcls" => array(

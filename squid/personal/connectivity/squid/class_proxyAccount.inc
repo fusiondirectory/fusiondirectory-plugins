@@ -65,7 +65,6 @@ class proxyAccount extends simplePlugin
       "plShortName"     => _("Proxy"),
       "plDescription"   => _("This allow to store basic squid settings in ldap for each user"),
       "plSelfModify"    => TRUE,
-      "plDepends"       => array("user"),
       "plPriority"      => 21,
       "plCategory"      => array("users"),
       "plObjectType"    => array("connectivity"),

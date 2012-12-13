@@ -82,7 +82,6 @@ class kolabAccount extends simplePlugin
       "plShortName"     => _("Kolab"),
       "plDescription"   => _("Kolab account settings")."&nbsp;("._("Connectivity addon").")",
       "plSelfModify"    => TRUE,
-      "plDepends"       => array("user"),
       "plPriority"      => 20,
       "plCategory"      => array("users"),
       "plObjectType"    => array("connectivity"),

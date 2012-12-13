@@ -304,7 +304,6 @@ class netgroupSystem extends plugin {
         "plShortName"     => _("NIS Netgroup"),
         "plDescription"   => _("NIS Netgroup member"),
         "plSelfModify"    => FALSE,
-        "plDepends"       => array(),
         "plPriority"      => 2,
         "plCategory"      => array("workstation","terminal","phone","server","component","printer"),
         "plObjectType"    => array("workstation","terminal","phone","server","component","printer"),

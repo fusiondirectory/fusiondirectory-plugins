@@ -380,7 +380,6 @@ class quotaAccount extends plugin
       "plShortName"   => _("Quota"),
       "plDescription" => _("Plugin for quota support"),
       "plSelfModify"  => TRUE,
-      "plDepends"     => array("users"),
       "plPriority"    => 5,
       "plCategory"    => array("users"),
       "plObjectType"  => array("user"),

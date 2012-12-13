@@ -252,7 +252,6 @@ class serviceQuota extends goService {
           "plShortName"   => _("Quota Service"),
           "plDescription" => _("Quota Service")." ("._("Services").")",
           "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
           "plPriority"    => 91,
           "plCategory"    => array("server"),
 

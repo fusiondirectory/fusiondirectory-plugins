@@ -41,7 +41,6 @@ class pptpAccount extends simplePlugin
       "plShortName"     => _("PPTP"),
       "plDescription"   => _("PPTP account")."&nbsp;("._("Connectivity addon").")",
       "plSelfModify"    => TRUE,
-      "plDepends"       => array("user"),
       "plPriority"      => 28,                                 // Position in tabs
       "plCategory"      => array("users"),
       "plObjectType"    => array("connectivity"),

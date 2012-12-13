@@ -74,7 +74,6 @@ class mailAccount extends simplePlugin
       "plShortName"     => _("Mail"),
       "plDescription"   => _("Mail settings"),
       "plSelfModify"    => TRUE,
-      "plDepends"       => array("user"),                     // This plugin depends on
       "plPriority"      => 4,                                 // Position in tabs
       "plCategory"      => array("users"),
       "plObjectType"    => array("user"),
