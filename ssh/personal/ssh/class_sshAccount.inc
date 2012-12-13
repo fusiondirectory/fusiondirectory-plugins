@@ -102,5 +102,24 @@ class sshAccount extends simplePlugin
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }
+
+  function check()
+  {
+    $message = parent::check();
+
+    $fingerprints = array();
+    $values = $this->attributesAccess['sshPublicKey']->getValue();
+    foreach ($values as $value) {
+      $this->attributesAccess['sshPublicKey']->attribute->setValue($value);
+      $arrayValue = $this->attributesAccess['sshPublicKey']->attribute->getArrayValue();
+      if (in_array($arrayValue[1],$fingerprints)) {
+        $message[] = sprintf(_('Error : there are several keys with fingerprint %s'),$arrayValue[1]);
+      } else {
+        $fingerprints[] = $arrayValue[1];
+      }
+    }
+
+    return $message;
+  }
 }
 ?>
