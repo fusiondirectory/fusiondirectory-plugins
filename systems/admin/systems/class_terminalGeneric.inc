@@ -96,7 +96,7 @@ class terminalGeneric extends workstationGeneric
     $tmp        = $this->config->data['SERVERS']['NFS'];
     $tmp_output = $tmp;
     if (($key = array_search("default", $tmp)) !== FALSE) {
-      if ($this->member_of_ogroup) {
+      if ($this->member_of_group) {
         $tmp[$key] = "";
         $tmp_output[$key] = _('inherited');
       } else {
@@ -112,7 +112,7 @@ class terminalGeneric extends workstationGeneric
     array_unshift($tmp, '!');
     array_unshift($tmp_output, _('Local swap'));
     if (($key = array_search("default", $tmp)) !== FALSE) {
-      if ($this->member_of_ogroup) {
+      if ($this->member_of_group) {
         $tmp[$key] = "";
         $tmp_output[$key] = _('inherited');
       } else {

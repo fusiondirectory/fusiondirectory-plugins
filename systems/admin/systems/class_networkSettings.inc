@@ -458,8 +458,6 @@ class networkSettings extends plugin
      ************/
 
     if ($this->DNS_is_account) {
-
-
       $tmp = array();
       $this->dnsEntry['exists'] = FALSE;
       $tmp = DNS::getDNSHostEntriesDiff($this->config, $this->OrigCn, $this->dnsEntry, $this->cn);
@@ -760,7 +758,6 @@ class networkSettings extends plugin
 
     /* New entry */
     if ($this->dhcpEnabled && $this->acl_is_writeable("dhcpSetup")) {
-
       if (count($this->dhcpHostEntry) == 0) {
         $this->dialog = new dhcpHost($this->parent, $this->dhcpParentNode, TRUE);
         $this->dialog->cn = $this->cn;
@@ -775,7 +772,6 @@ class networkSettings extends plugin
           $this->dhcpHostEntry['dhcpOption'] = array("host-name ".$this->cn);
         }
       } else {
-
         // Updated Host-Name entry
         foreach ($this->dhcpHostEntry['dhcpOption'] as $key => $entry) {
           if (preg_match("/^host-name/", $entry)) {

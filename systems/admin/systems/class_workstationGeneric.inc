@@ -208,7 +208,6 @@ class workstationGeneric extends simplePlugin
 
   var $fai_activated = FALSE;
 
-  var $member_of_ogroup     = FALSE;
   var $currently_installing = FALSE;
   var $sdaemon_available    = FALSE;
 
@@ -333,14 +332,6 @@ class workstationGeneric extends simplePlugin
 
     parent::__construct($config, $dn, $object);
 
-    //~ if (!isset($this->parent->by_object['ogroup'])) {
-      //~ $ldap = $this->config->get_ldap_link();
-      //~ $ldap->cd($this->config->current['BASE']);
-      //~ $ldap->search("(&(objectClass=gotoWorkstationTemplate)(member=".LDAP::prepare4filter($this->dn)."))", array("cn"));
-      //~ $this->member_of_ogroup = ($ldap->count() >= 1);
-    //~ }
-    $this->member_of_ogroup = $this->member_of_group;
-
     /* Check if this host is currently in installation process*/
     if ($this->sdaemon_available) {
       $this->currently_installing = $s_daemon->is_currently_installing($this->netConfigDNS->macAddress);
@@ -369,7 +360,7 @@ class workstationGeneric extends simplePlugin
     /* Create used ntp server array */
     $ntpServers = $this->attributesInfo['servers']['attrs']['gotoNtpServer']->getValue();
     /* Set inherit checkbox state */
-    if ($this->member_of_ogroup && (in_array("default", $ntpServers) || (count($ntpServers) == 0))) {
+    if ($this->member_of_group && (in_array("default", $ntpServers) || (count($ntpServers) == 0))) {
       $this->attributesInfo['servers']['attrs']['inheritTimeServer']->setValue(TRUE);
       $this->attributesInfo['servers']['attrs']['gotoNtpServer']->setValue(array());
     } else {
@@ -379,14 +370,14 @@ class workstationGeneric extends simplePlugin
     /* Create used ldap server array */
     $ldapServers = $this->attributesInfo['servers']['attrs']['gotoLdapServer']->getValue();
     /* Set inherit checkbox state */
-    if ($this->member_of_ogroup && (count($ldapServers) == 0)) {
+    if ($this->member_of_group && (count($ldapServers) == 0)) {
       $this->attributesInfo['servers']['attrs']['inheritLDAPServer']->setValue(TRUE);
     } else {
       $this->attributesInfo['servers']['attrs']['inheritLDAPServer']->setValue(FALSE);
     }
 
     /* Disable inheritance if we're not in a group */
-    if (!$this->member_of_ogroup) {
+    if (!$this->member_of_group) {
       $this->attributesInfo['servers']['attrs']['inheritTimeServer']->setDisabled(TRUE);
       $this->attributesInfo['servers']['attrs']['inheritTimeServer']->setVisible(FALSE);
       $this->attributesInfo['servers']['attrs']['inheritLDAPServer']->setDisabled(TRUE);
@@ -427,7 +418,7 @@ class workstationGeneric extends simplePlugin
     $tmp_output = $tmp;
     if (($key = array_search("default", $tmp)) !== FALSE) {
       $tmp[$key] = "";
-      if ($this->member_of_ogroup) {
+      if ($this->member_of_group) {
         $tmp_output[$key] = _('inherited');
       }
     }
