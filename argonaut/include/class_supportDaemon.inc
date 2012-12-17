@@ -224,11 +224,8 @@ class supportDaemon
     if ($this->saved_state() == FALSE) {
       return FALSE;
     }
-    if (preg_match('/^[^.]+\.[^.]+$/', $action)) {
-      $action = 'Argonaut.ClientDaemon.Modules.'.$action;
-    }
-    /* Append an entry
-    */
+
+    /* Append an entry */
     try {
       $client = new jsonRPCClient($this->s_host, $this->http_options);
       $status = $client->action($action, $targets, $data);

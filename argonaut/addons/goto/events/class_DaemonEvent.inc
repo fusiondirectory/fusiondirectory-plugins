@@ -404,23 +404,23 @@ class DaemonEvent
   static function get_event_types()
   {
     return array(
-      'halt' => array(
+      'System.halt' => array(
         'name'  => _('Switch off'),
         'img'   => 'images/lists/off.png'
       ),
-      'reboot' => array(
+      'System.reboot' => array(
         'name'  => _('Reboot'),
         'img'   => 'images/lists/reload.png'
       ),
-      'wake' => array(
+      'System.wake' => array(
         'name'  => _('Wake up'),
         'img'   => 'images/lists/on.png'
       ),
-      'update' => array(
+      'System.update' => array(
         'name'  => _('Software update'),
         'img'   => 'plugins/systems/images/update.png'
       ),
-      'reinstall' => array(
+      'System.reinstall' => array(
         'name'  => _('Reinstall'),
         'img'   => 'plugins/systems/images/reinstall.png'
       ),
