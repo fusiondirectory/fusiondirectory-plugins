@@ -278,56 +278,56 @@
      <label>Trigger action</label>
 
       <action>
-        <name>T_DaemonEvent_halt</name>
-        <depends>DaemonEvent_halt</depends>
+        <name>T_halt</name>
+        <depends>DaemonEvent</depends>
         <type>entry</type>
         <image>images/lists/off.png</image>
         <label>Halt </label>
       </action>
 
       <action>
-        <name>T_DaemonEvent_reboot</name>
-        <depends>DaemonEvent_reboot</depends>
+        <name>T_reboot</name>
+        <depends>DaemonEvent</depends>
         <type>entry</type>
         <image>images/lists/reload.png</image>
         <label>Reboot</label>
       </action>
 
       <action>
-        <name>T_DaemonEvent_wakeup</name>
-        <depends>DaemonEvent_wakeup</depends>
+        <name>T_wakeup</name>
+        <depends>DaemonEvent</depends>
         <type>entry</type>
         <image>images/lists/on.png</image>
         <label>Wakeup</label>
       </action>
 
       <action>
-        <name>T_DaemonEvent_update</name>
-        <depends>DaemonEvent_update</depends>
+        <name>T_update</name>
+        <depends>DaemonEvent</depends>
         <type>entry</type>
         <image>plugins/systems/images/update.png</image>
         <label>Update</label>
       </action>
 
       <action>
-        <name>T_DaemonEvent_lock</name>
-        <depends>DaemonEvent_lock</depends>
+        <name>T_lock</name>
+        <depends>DaemonEvent</depends>
         <type>entry</type>
         <image>images/lists/locked.png</image>
         <label>Lock</label>
       </action>
 
       <action>
-        <name>T_DaemonEvent_activate</name>
-        <depends>DaemonEvent_activate</depends>
+        <name>T_activate</name>
+        <depends>DaemonEvent</depends>
         <type>entry</type>
         <image>images/lists/unlocked.png</image>
         <label>Activate</label>
       </action>
 
       <action>
-        <name>T_DaemonEvent_reinstall</name>
-        <depends>DaemonEvent_reinstall</depends>
+        <name>T_reinstall</name>
+        <depends>DaemonEvent</depends>
         <type>entry</type>
         <image>plugins/systems/images/reinstall.png</image>
         <label>Reinstall</label>
@@ -344,56 +344,56 @@
      <label>Schedule action</label>
 
       <action>
-        <name>S_DaemonEvent_halt</name>
-        <depends>DaemonEvent_halt</depends>
+        <name>S_halt</name>
+        <depends>DaemonEvent</depends>
         <type>entry</type>
         <image>images/lists/off.png</image>
         <label>Halt</label>
       </action>
 
       <action>
-        <name>S_DaemonEvent_reboot</name>
-        <depends>DaemonEvent_reboot</depends>
+        <name>S_reboot</name>
+        <depends>DaemonEvent</depends>
         <type>entry</type>
         <image>images/lists/reload.png</image>
         <label>Reboot</label>
       </action>
 
       <action>
-        <name>S_DaemonEvent_wakeup</name>
-        <depends>DaemonEvent_wakeup</depends>
+        <name>S_wakeup</name>
+        <depends>DaemonEvent</depends>
         <type>entry</type>
         <image>images/lists/on.png</image>
         <label>Wakeup</label>
       </action>
 
       <action>
-        <name>S_DaemonEvent_update</name>
-        <depends>DaemonEvent_update</depends>
+        <name>S_update</name>
+        <depends>DaemonEvent</depends>
         <type>entry</type>
         <image>plugins/systems/images/update.png</image>
         <label>Update</label>
       </action>
 
       <action>
-        <name>S_DaemonEvent_lock</name>
-        <depends>DaemonEvent_lock</depends>
+        <name>S_lock</name>
+        <depends>DaemonEvent</depends>
         <type>entry</type>
         <image>images/lists/locked.png</image>
         <label>Lock</label>
       </action>
 
       <action>
-        <name>S_DaemonEvent_activate</name>
-        <depends>DaemonEvent_activate</depends>
+        <name>S_activate</name>
+        <depends>DaemonEvent</depends>
         <type>entry</type>
         <image>images/lists/unlocked.png</image>
         <label>Activate</label>
       </action>
 
       <action>
-        <name>S_DaemonEvent_reinstall</name>
-        <depends>DaemonEvent_reinstall</depends>
+        <name>S_reinstall</name>
+        <depends>DaemonEvent</depends>
         <type>entry</type>
         <image>plugins/systems/images/reinstall.png</image>
         <label>Reinstall</label>
@@ -407,7 +407,7 @@
 
     <action>
       <name>activateMultiple</name>
-      <depends>DaemonEvent_activate</depends>
+      <depends>DaemonEvent</depends>
       <type>entry</type>
       <image>images/lists/unlocked.png</image>
       <label>Activate systems</label>

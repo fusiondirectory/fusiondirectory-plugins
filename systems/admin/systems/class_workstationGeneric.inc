@@ -144,11 +144,10 @@ class ActionAttribute extends SelectAttribute
         $action = $this->postValue;
 
         /* Check if we have an DaemonEvent for this action */
-        if (class_available("supportDaemon") && class_available("DaemonEvent_".$action)) {
-          $events = DaemonEvent::get_event_types(SYSTEM_EVENT | HIDDEN_EVENT);
-          if (isset($events['TRIGGERED']["DaemonEvent_".$action])) {
-            $evt = $events['TRIGGERED']["DaemonEvent_".$action];
-            $tmp = new $evt['CLASS_NAME']($this->config);
+        if (class_available("supportDaemon") && class_available("DaemonEvent")) {
+          $events = DaemonEvent::get_event_types();
+          if (isset($events[$action])) {
+            $tmp = new DaemonEvent($this->config, $action);
             $tmp->add_targets(array($this->netConfigDNS->macAddress));
             $tmp->set_type(TRIGGERED_EVENT);
             $o_queue = new supportDaemon();
@@ -157,8 +156,7 @@ class ActionAttribute extends SelectAttribute
             }
           }
         } else {
-          msg_dialog::display(_("Event error"),
-                      sprintf(_("Event '%s' is not available!"), $action), ERROR_DIALOG);
+          msg_dialog::display(_("Event error"), _("Events are not available!"), ERROR_DIALOG);
         }
       }
     }
@@ -520,11 +518,11 @@ class workstationGeneric extends simplePlugin
     if ($activate && $this->sdaemon_available) {
       /* Send installation activation
        */
-      $events = DaemonEvent::get_event_types(SYSTEM_EVENT | HIDDEN_EVENT);
+      $events = DaemonEvent::get_event_types();
       $o_queue = new supportDaemon();
-      if (isset($events['TRIGGERED']['DaemonEvent_installation_activation'])) {
-        $evt = $events['TRIGGERED']['DaemonEvent_installation_activation'];
-        $tmp = new $evt['CLASS_NAME']($this->config);
+      if (isset($events['installation_activation'])) {
+        $evt = 'installation_activation';
+        $tmp = new DaemonEvent($this->config, $evt);
         $tmp->set_type(TRIGGERED_EVENT);
         $tmp->add_targets(array($this->netConfigDNS->macAddress));
         $o_queue->append($tmp);

@@ -31,10 +31,10 @@ class goto_import_file extends plugin
   {
     plugin::plugin($config,NULL);
     $this->parent = $parent;
-    $this->daemon_events  = DaemonEvent::get_event_types( SYSTEM_EVENT | HIDDEN_EVENT);
+    $this->daemon_events  = DaemonEvent::get_event_types();
 
     $this->csv_fields = array(
-        "0"=>"TIMESTAMP","1" => "MAC",  "2" => "HEADER", "3" => "OGROUP",
+        "0" => "TIMESTAMP","1" => "MAC",  "2" => "HEADER", "3" => "OGROUP",
         "4" => "BASE", "5" => "FQDN",   "6" => "IP",     "7" => "DHCP");
   }
 
@@ -91,53 +91,54 @@ class goto_import_file extends plugin
     /* Import started
      */
     $confirmed = FALSE;
-    foreach($_POST as $name => $value){
-      if(preg_match("/^MSG_OK/",$name)){
+    foreach ($_POST as $name => $value) {
+      if (preg_match("/^MSG_OK/",$name)) {
         $confirmed = TRUE;
       }
     }
-    if(isset($_POST['start_import']) || $confirmed){
+    if (isset($_POST['start_import']) || $confirmed) {
       $error = FALSE;
-      if(!$confirmed){
-        foreach($this->events as $event){
-          if(!empty($event['ERROR'])){
+      if (!$confirmed) {
+        foreach ($this->events as $event) {
+          if (!empty($event['ERROR'])) {
             $error = TRUE;
             break;
           }
         }
-        if($error){
+        if ($error) {
           msg_dialog::display(_("Import"),
               _("Selected entries will be skipped because of errors. Do you want to proceed?"),CONFIRM_DIALOG);
         }
       }
-      if(!$error){
+      if (!$error) {
 
-        $success = 0;
-        $fail = 0;
+        $success  = 0;
+        $fail     = 0;
 
-        foreach($this->events as $key => $event){
-          if(!empty($event['ERROR'])){
-            $fail ++;
+        foreach ($this->events as $key => $event) {
+          if (!empty($event['ERROR'])) {
+            $fail++;
             continue;
           }
 
           /* Create event
            */
-          $class= $this->daemon_events['QUEUED'][$event['HEADER']];
-          $o_data = $this->daemon_events['BY_CLASS'][$class];
-          $object = new $class($this->config);
+          $o_data = $this->daemon_events[$event['HEADER']];
+          $object = new DaemonEvent($this->config, $event['HEADER']);
           $object->add_targets(array($event['MAC']));
-          if($o_data['s_Schedule_Action'] == $event['HEADER']){
-            $object->set_type(SCHEDULED_EVENT);
-          }else{
+          if (empty($event['TIMESTAMP'])) {
             $object->set_type(TRIGGERED_EVENT);
+          } else {
+            $object->set_type(SCHEDULED_EVENT);
           }
 
           /* Update values like fqdn a.s.o
            */
-          foreach($this->csv_fields as $name){
-            if($name == "TIMESTAMP" && empty($event[$name])) continue;
-            $object->set_value($name,$event[$name]);
+          foreach ($this->csv_fields as $name) {
+            if ($name == "TIMESTAMP" && empty($event[$name])) {
+              continue;
+            }
+            $object->set_value($name, $event[$name]);
           }
 
           $this->parent->o_queue->append($object);
@@ -177,24 +178,22 @@ class goto_import_file extends plugin
   {
     $message = plugin::check();
     $this->check_fields();
-    return($message);
+    return $message;
   }
 
 
   private function check_fields()
   {
-    foreach($this->events as $key => $event){
+    foreach ($this->events as $key => $event) {
       $this->events[$key]['ERROR'] = "";
-      if(empty($event['MAC']) || !tests::is_mac($event['MAC'])){
+      if (empty($event['MAC']) || !tests::is_mac($event['MAC'])) {
         $this->events[$key]['ERROR'] .=  msgPool::invalid(_("MAC")).", ";
       }
-      if(empty($event['HEADER']) || !isset($this->daemon_events['QUEUED'][$event['HEADER']])){
+      if (empty($event['HEADER']) || !isset($this->daemon_events[$event['HEADER']])) {
         $this->events[$key]['ERROR'] .=  msgPool::invalid(_("Event")).", ";
       }
       $this->events[$key]['ERROR'] = trim($this->events[$key]['ERROR'],", ");
     }
   }
 }
-
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

@@ -63,13 +63,13 @@ class systemManagement extends management
     $headpage->setFilter($filter);
 
     // Register Daemon Events
-    if(class_available("DaemonEvent") && class_available("supportDaemon")){
-      $events = DaemonEvent::get_event_types(SYSTEM_EVENT | HIDDEN_EVENT);
-      foreach($events['TRIGGERED'] as $name => $data){
-        $this->registerAction("T_".$name,"handleEvent");
-        $this->registerAction("S_".$name,"handleEvent");
+    if (class_available("DaemonEvent") && class_available("supportDaemon")) {
+      $events = DaemonEvent::get_event_types();
+      foreach($events as $name => $data){
+        $this->registerAction("T_".$name, "handleEvent");
+        $this->registerAction("S_".$name, "handleEvent");
       }
-      $this->registerAction("activateMultiple","activateMultiple");
+      $this->registerAction("activateMultiple", "activateMultiple");
     }
     $this->registerAction("saveEvent","saveEventDialog");
     $this->registerAction("createISO","createISO");
@@ -345,31 +345,31 @@ class systemManagement extends management
   {
     // Detect whether this event is scheduled or triggered.
     $triggered = TRUE;
-    if(preg_match("/^S_/",$action)){
+    if (preg_match("/^S_/", $action)) {
       $triggered = FALSE;
     }
 
     // Detect triggere or scheduled actions
     $headpage = $this->getHeadpage();
-    $event = preg_replace("/^[TS]_/","",$action);
-    if(preg_match("/^[TS]_/", $action)){
+    $event = preg_replace("/^[TS]_/", "", $action);
+    if (preg_match("/^[TS]_/", $action)) {
 
     }
 
     // Now send remaining FAI/Argonaut events here.
-    if(count($target) && $this->si_active){
-      $mac= array();
+    if (count($target) && $this->si_active) {
+      $mac = array();
 
       // Collect target mac addresses
-      $ldap = $this->config->get_ldap_link();
-      $tD = $this->getObjectDefinitions();
-      $events = DaemonEvent::get_event_types(SYSTEM_EVENT);
-      $o_queue = new supportDaemon();
-      foreach($target as $dn){
+      $ldap     = $this->config->get_ldap_link();
+      $tD       = $this->getObjectDefinitions();
+      $events   = DaemonEvent::get_event_types();
+      $o_queue  = new supportDaemon();
+      foreach ($target as $dn) {
         $type = $headpage->getType($dn);
-        if($tD[$type]['sendEvents']){
+        if ($tD[$type]['sendEvents']) {
           $obj = $headpage->getEntry($dn);
-          if(isset($obj['macAddress'][0])){
+          if (isset($obj['macAddress'][0])) {
             $mac[] = $obj['macAddress'][0];
           }
         }
@@ -378,31 +378,29 @@ class systemManagement extends management
       /* Skip installation or update trigerred events,
        *  if this entry is currently processing.
        */
-      if($triggered && in_array($event,array("DaemonEvent_reinstall","DaemonEvent_update"))){
-        foreach($mac as $key => $mac_address){
-            if($o_queue->is_currently_installing($mac_address)) {
-                unset($mac[$key]);
-
-                new log("security","systems/".get_class($this),"",array(),"Skip adding 'DaemonEvent::".$type."' for mac '".$mac_address."', there is already a job in progress.");
-            }
+      if ($triggered && in_array($event, array("reinstall","update"))) {
+        foreach ($mac as $key => $mac_address) {
+          if ($o_queue->is_currently_installing($mac_address)) {
+            unset($mac[$key]);
+            new log("security", "systems/".get_class($this), "", array(), "Skip adding 'DaemonEvent::".$type."' for mac '".$mac_address."', there is already a job in progress.");
+          }
         }
       }
 
       // Prepare event to be added
-      if(count($mac) && isset($events['BY_CLASS'][$event]) && $this->si_active){
-        $event = $events['BY_CLASS'][$event];
-        $this->dialogObject = new $event['CLASS_NAME']($this->config);
+      if (count($mac) && isset($events[$event]) && $this->si_active) {
+        $this->dialogObject = new DaemonEvent($this->config, $event);
         $this->dialogObject->add_targets($mac);
 
-        if($triggered){
+        if ($triggered) {
           $this->dialogObject->set_type(TRIGGERED_EVENT);
           $o_queue->append($this->dialogObject);
-          if($o_queue->is_error()){
-            msg_dialog::display(_("Service infrastructure"),msgPool::siError($o_queue->get_error()),ERROR_DIALOG);
-          }else{
+          if ($o_queue->is_error()) {
+            msg_dialog::display(_("Service infrastructure"), msgPool::siError($o_queue->get_error()), ERROR_DIALOG);
+          } else {
             $this->closeDialogs();
           }
-        }else{
+        } else {
           $this->dialogObject->set_type(SCHEDULED_EVENT);
         }
       }

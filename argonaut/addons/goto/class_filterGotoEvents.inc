@@ -26,24 +26,24 @@ class filterGotoEvents extends  filterLDAP {
     global $config;
 
     $o_queue = new supportDaemon();
-    $events  = DaemonEvent::get_event_types( SYSTEM_EVENT);
+    $events  = DaemonEvent::get_event_types();
 
     /* Get tags that will be used in queue searches */
     $event_tags = array("none");
-    foreach($events['SCHEDULED'] as $evt){
-      $event_tags[] = $evt['s_Action'];
+    foreach($events as $action => $evt) {
+      $event_tags[] = $action;
     }
 
-    $entries = $o_queue->get_queued_entries($event_tags,0,9999999,"id");
-    if ($o_queue->is_error()){
+    $entries = $o_queue->get_queued_entries($event_tags, 0, 9999999, "id");
+    if ($o_queue->is_error()) {
       msg_dialog::display(_("Error"), sprintf(_("Cannot load queue entries: %s"), "<br><br>".$o_queue->get_error()), ERROR_DIALOG);
       return array();
     }
 
     /* Assign entries by id.
      */
-    $data= array();
-    $ui = get_userinfo();
+    $data = array();
+    $ui   = get_userinfo();
 
 
     $acl_base = $config->current['BASE'];
@@ -51,14 +51,14 @@ class filterGotoEvents extends  filterLDAP {
     $acl_is_removeable = preg_match('/d/', $ui->get_permissions($acl_base, "gotomasses/gotomasses", "0"));
     $acl_is_readable = preg_match('/r/', $ui->get_permissions($acl_base, "gotomasses/gotomasses", "0"));
 
-    foreach($entries as $entry){
+    foreach($entries as $entry) {
 
-      // Detect entry status 
+      // Detect entry status
       $entry['objectClass'][] = "FAKE_OC__gotoEvent";
 
       /* If WAITING add priority action
        */
-      if(in_array($entry['STATUS'],array("waiting")) && $acl_is_writeable){
+      if (in_array($entry['STATUS'], array("waiting")) && $acl_is_writeable) {
         $entry['objectClass'][] = "FAKE_OC__prioUp";
         $entry['objectClass'][] = "FAKE_OC__prioDown";
         $entry['objectClass'][] = "FAKE_OC__prioPause";
@@ -66,13 +66,13 @@ class filterGotoEvents extends  filterLDAP {
 
       /* If PAUSED add resume action
        */
-      if(in_array($entry['STATUS'],array("paused")) && $acl_is_writeable){
+      if (in_array($entry['STATUS'],array("paused")) && $acl_is_writeable) {
         $entry['objectClass'][] = "FAKE_OC__prioResume";
       }
 
       /* If PAUSED or WAITING add execution action
        */
-      if(in_array($entry['STATUS'],array("paused","waiting")) && $acl_is_writeable){
+      if (in_array($entry['STATUS'],array("paused","waiting")) && $acl_is_writeable) {
         $entry['objectClass'][] = "FAKE_OC__processNow";
       }
 
@@ -119,16 +119,10 @@ class filterGotoEvents extends  filterLDAP {
         }
         $item['count'] ++;
       }
-
-
-#     /* Skip entries which will be removed within the next seconds */
-#     if(isset($entry['MACADDRESS']) && in_array($entry['MACADDRESS'],$recently_removed)){
-#       continue;
-#     }
       $data[] = $item;
     }
 
-    return($data);
+    return $data;
   }
 }
 ?>

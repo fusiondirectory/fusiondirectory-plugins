@@ -39,14 +39,14 @@ class gotomasses extends management
     /* Include config object */
     $this->config   = &$config;
     $this->o_queue  = new supportDaemon();
-    $this->events   = DaemonEvent::get_event_types( SYSTEM_EVENT);
+    $this->events   = DaemonEvent::get_event_types();
     $this->acl_base = $config->current['BASE'];
     $this->acl_category = "gotomasses/";
 
     /* Get tags that will be used in queue searches */
     $this->event_tags = array("none");
-    foreach ($this->events['SCHEDULED'] as $evt) {
-      $this->event_tags[] = $evt['s_Action'];
+    foreach ($this->events as $action => $evt) {
+      $this->event_tags[] = $action;
     }
 
     // Build filter
@@ -88,10 +88,8 @@ class gotomasses extends management
   function newEntry($action = "", $target = array(), $all = array(), $altTabClass = "", $altTabType = "", $altAclCategory = "")
   {
     if ($this->acl_is_writeable("")) {
-      $type = "DaemonEvent_".$action;
-      if (isset($this->events['BY_CLASS'][$type])) {
-        $e_data = $this->events['BY_CLASS'][$type];
-        $this->dialogObject = new $e_data['CLASS_NAME']($this->config);
+      if (isset($this->events[$action])) {
+        $this->dialogObject = new DaemonEvent($this->config, $action);
         $this->dialogObject->set_timestamp_now();
       }
     }
@@ -120,18 +118,16 @@ class gotomasses extends management
     /* Check if this event exists as Daemon class
      * In this case, display a more accurate entry.
      */
-    $events  = DaemonEvent::get_event_types( SYSTEM_EVENT);
-    if (isset($events['QUEUED'][$tag])) {
-      $evt_name   = $events['QUEUED'][$tag];
-      $event_type = $events['BY_CLASS'][$evt_name];
-      $str        = $event_type['s_Menu_Name'];
+    $infos = DaemonEvent::get_event_info($tag);
+    if ($infos) {
+      $str = $infos['name'];
 
       if (strlen($str) > 20) {
         $str = substr($str, 0, 18)."...";
       }
 
-      if (isset($event_type['ListImage']) && !empty($event_type['ListImage'])) {
-        $str = $event_type['ListImage']."&nbsp;".$str;
+      if (isset($infos['listimg']) && !empty($infos['listimg'])) {
+        $str = $infos['listimg']."&nbsp;".$str;
       }
     }
     if ($progress) {
@@ -199,10 +195,8 @@ class gotomasses extends management
       $headpage = $this->getHeadpage();
       $entry = $headpage->getEntry($target[0]);
       $event = $entry['EVENT'];
-      if ($event['STATUS'] == "waiting" && isset($this->events['QUEUED'][$event['HEADERTAG']])) {
-        $evt_name = $this->events['QUEUED'][$event['HEADERTAG']];
-        $type     = $this->events['BY_CLASS'][$evt_name];
-        $this->dialogObject = new $type['CLASS_NAME']($this->config, $event);
+      if ($event['STATUS'] == "waiting" && isset($this->events[$event['HEADERTAG']])) {
+        $this->dialogObject = new DaemonEvent($this->config, $event['HEADERTAG'], $event);
       }
     }
   }
@@ -223,10 +217,9 @@ class gotomasses extends management
         $task = $tmp['EVENT'];
 
         /* Create a printable job name/description */
-        if (isset($this->events['QUEUED'][$task['HEADERTAG']])) {
-          $evt_name = $this->events['QUEUED'][$task['HEADERTAG']];
-          $evt      = $this->events['BY_CLASS'][$evt_name];
-          $j_name   = $task['ID']." - ".$evt['s_Menu_Name']."&nbsp;".$task['MACADDRESS'];
+        $infos = DaemonEvent::get_event_info($task['HEADERTAG']);
+        if ($infos) {
+          $j_name   = $task['ID']." - ".$infos['name']."&nbsp;".$task['MACADDRESS'];
         } else {
           $j_name = $task['ID']." - ".$task['HEADERTAG']."&nbsp;".$task['MACADDRESS'];
         }
@@ -282,19 +275,19 @@ class gotomasses extends management
       $taskids[] = $tmp['EVENT']['ID'];
     }
 
-    if(class_available("DaemonEvent_wakeup")) { // Sending a wakeup in order to flag it as localboot
-      $tmp = new DaemonEvent_wakeup($this->config);
+    if(class_available("DaemonEvent")) { // Sending a wakeup in order to flag it as localboot
+      $tmp = new DaemonEvent($this->config, 'wakeup');
       $tmp->add_targets($macs);
       $tmp->set_type(TRIGGERED_EVENT);
       $this->recently_removed = $macs;
       $o_queue->append($tmp);
       if ($o_queue->is_error()) {
-        msg_dialog::display(_("Info"), sprintf(_("%s"),$this->o_queue->get_error()) , INFO_DIALOG);
+        msg_dialog::display(_("Info"), sprintf(_("%s"), $this->o_queue->get_error()) , INFO_DIALOG);
       }
     } else {
       msg_dialog::display(_("Error"),
           sprintf(_("Required class '%s' cannot be found: job not aborted!"),
-            "DaemonEvent_wakeup") , ERROR_DIALOG);
+            "DaemonEvent") , ERROR_DIALOG);
     }
 
     $this->o_queue->remove_entries($taskids); // Removing the task.
