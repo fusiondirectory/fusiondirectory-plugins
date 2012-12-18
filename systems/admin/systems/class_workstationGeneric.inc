@@ -141,19 +141,21 @@ class ActionAttribute extends SelectAttribute
     if (!$this->disabled && $this->postValue != '') {
       $this->updateChoices();
       if (in_array($this->postValue, $this->choices)) {
-        $action = $this->postValue;
+        $action = 'System.'.$this->postValue;
 
         /* Check if we have an DaemonEvent for this action */
         if (class_available("supportDaemon") && class_available("DaemonEvent")) {
           $events = DaemonEvent::get_event_types();
           if (isset($events[$action])) {
-            $tmp = new DaemonEvent($this->config, $action);
-            $tmp->add_targets(array($this->netConfigDNS->macAddress));
+            $tmp = new DaemonEvent($this->plugin->config, $action);
+            $tmp->add_targets(array($this->plugin->netConfigDNS->macAddress));
             $tmp->set_type(TRIGGERED_EVENT);
             $o_queue = new supportDaemon();
             if (!$o_queue->append($tmp)) {
               msg_dialog::display(_("Service infrastructure"), msgPool::siError($o_queue->get_error()), ERROR_DIALOG);
             }
+          } else {
+            msg_dialog::display(_("Event error"), sprintf(_("Event %s is not available!"), $action), ERROR_DIALOG);
           }
         } else {
           msg_dialog::display(_("Event error"), _("Events are not available!"), ERROR_DIALOG);
