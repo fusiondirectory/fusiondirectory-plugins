@@ -92,7 +92,7 @@ class sambaAccount extends plugin
     var $multiple_sambaUserWorkstations = array();
 
 
-    function sambaAccount (&$config, $dn= NULL)
+    function sambaAccount (&$config, $dn = NULL, $baseobject = NULL)
     {
         plugin::plugin ($config, $dn);
 
@@ -143,8 +143,12 @@ class sambaAccount extends plugin
         $this->loadFlagsFromSource($this->attrs);
 
         // Set kickOffTime to date
-        if(isset($this->attrs['sambaKickoffTime'][0])){
-            $this->sambaKickoffTime = date("d.m.Y", $this->sambaKickoffTime);
+        if (($this->config->get_cfg_value('sambaExpirationSync') == 'posix') &&
+            (isset($this->attrs['shadowExpire'][0]))) {
+            $this->sambaKickoffTime = date('d.m.Y', $this->attrs['shadowExpire'][0] * EpochDaysDateAttribute::$secondsPerDay);
+            $this->flag_sambaKickoffTime = TRUE;
+        } elseif (isset($this->attrs['sambaKickoffTime'][0])) {
+            $this->sambaKickoffTime = date('d.m.Y', $this->sambaKickoffTime);
             $this->flag_sambaKickoffTime = TRUE;
         }
     }
@@ -305,6 +309,9 @@ class sambaAccount extends plugin
         $tmp = $this->plInfo();
         foreach($tmp['plProvidedAcls'] as $var => $rest){
             $smarty->assign($var."ACL",$this->getacl($var,$SkipWrite));
+        }
+        if ($this->config->get_cfg_value('sambaExpirationSync') == 'posix') {
+          $smarty->assign('sambaKickoffTimeACL', $this->getacl('sambaKickoffTime', TRUE));
         }
 
         if(!session::is_set('edit') && !isset($this->parent)){
@@ -947,10 +954,27 @@ class sambaAccount extends plugin
         $this->attrs['objectClass']= $tmp;
 
         // Handle "sambaKickoffTime" flag.
-        if($this->flag_sambaKickoffTime){
-            $this->attrs['sambaKickoffTime'] = strtotime($this->sambaKickoffTime);
-        }else{
-            $this->attrs['sambaKickoffTime']= array();
+        if ($this->config->get_cfg_value('sambaExpirationSync') == 'samba') {
+          if ($this->flag_sambaKickoffTime) {
+            $this->attrs['sambaKickoffTime']  = strtotime($this->sambaKickoffTime);
+            $this->attrs['shadowExpire']      = $this->attrs['sambaKickoffTime'] / EpochDaysDateAttribute::$secondsPerDay;
+          } else {
+            $this->attrs['sambaKickoffTime']  = array();
+            $this->attrs['shadowExpire']      = $this->attrs['sambaKickoffTime'];
+          }
+        } elseif ($this->config->get_cfg_value('sambaExpirationSync') == 'posix') {
+          $this->flag_sambaKickoffTime = ($this->parent->by_object['posixAccount']->shadowExpire != "");
+          if ($this->flag_sambaKickoffTime) {
+            $this->attrs['sambaKickoffTime'] = $this->parent->by_object['posixAccount']->attributesAccess['shadowExpire']->getDateValue()->format('U');
+          } else {
+            $this->attrs['sambaKickoffTime']  = array();
+          }
+        } else {
+          if ($this->flag_sambaKickoffTime) {
+            $this->attrs['sambaKickoffTime']  = strtotime($this->sambaKickoffTime);
+          } else {
+            $this->attrs['sambaKickoffTime']  = array();
+          }
         }
 
         // Handle "enforce password change" flag.

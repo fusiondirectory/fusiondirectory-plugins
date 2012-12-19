@@ -32,6 +32,13 @@ attributetype ( 1.3.6.1.4.1.38414.9.1.4 NAME 'fdSambaRidBase'
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
   SINGLE-VALUE )
 
+attributetype ( 1.3.6.1.4.1.38414.9.1.5 NAME 'fdSambaExpirationSync'
+  DESC 'FusionDirectory - Samba expiration date synchronisation'
+  EQUALITY caseExactIA5Match
+  SUBSTR caseExactIA5SubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE )
+
 
 # Object Class
 objectclass ( 1.3.6.1.4.1.38414.9.2.1 NAME 'sambaPluginConf'
@@ -39,4 +46,4 @@ objectclass ( 1.3.6.1.4.1.38414.9.2.1 NAME 'sambaPluginConf'
   SUP top AUXILIARY
   MUST ( )
   MAY ( fdSambaMachineAccountRDN $ fdSambaIdMapping $
-        fdSambaSID $ fdSambaRidBase) )
+        fdSambaSID $ fdSambaRidBase $ fdSambaExpirationSync) )

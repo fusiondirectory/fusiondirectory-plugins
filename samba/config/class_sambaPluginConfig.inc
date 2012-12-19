@@ -63,6 +63,12 @@ class sambaPluginConfig extends simplePlugin
             'fdSambaRidBase', FALSE,
             0, FALSE, 1
           ),
+          new SelectAttribute (
+            _('Expiration date synchronisaton'), _('Synchronisaton the expiration date with the POSIX one?'),
+            'fdSambaExpirationSync', FALSE,
+            array('', 'posix', 'samba'), '',
+            array('Do not synchronise', 'Synchronise from POSIX', 'Synchronise to POSIX')
+          )
         )
       ),
     );
