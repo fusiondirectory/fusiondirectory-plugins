@@ -368,7 +368,7 @@ class workstationDevices extends simplePlugin
       "plSelfModify"  => FALSE,
       "plPriority"    => 10,
       "plCategory"    => array("workstation", "ogroups"),
-      "plObjectType"  => array("workstation", "ogroup"),
+      "plObjectType"  => array(),
 
       "plProvidedAcls" => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
