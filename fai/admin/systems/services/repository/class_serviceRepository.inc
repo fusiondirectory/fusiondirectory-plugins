@@ -83,33 +83,33 @@ class serviceDebianRepository extends simpleService
               'FAIrepository',
               array(
                 new StringAttribute(
-                  _('URL'), _(''),
+                  _('URL'), _('Repository url'),
                   'mirrorUrl', TRUE
                 ),
                 new SelectAttribute(
-                  _('Parent server'), _(''),
+                  _('Parent server'), _('Parent repository server'),
                   'mirrorParent', FALSE,
                   array(), ''
                 ),
                 new StringAttribute(
-                  _('Release'), _(''), 'mirrorRelease', TRUE
+                  _('Release'), _('Debian release used on this repository'), 'mirrorRelease', TRUE
                 ),
                 new ColonListAttribute(
-                  _('Sections'), '', 'mirrorSections'
+                  _('Sections'), _('Debian sections available on this repository'), 'mirrorSections'
                 ),
                 new SelectAttribute(
-                  _('Mirror mode'), _(''),
+                  _('Mirror mode'), _('Is this mirror an installation repository? Is its release a custom one?'),
                   'mirrorMode', TRUE,
                   array('install','update','custom')
                 ),
                 new BooleanAttribute(
-                  _('Local mirror'), _(''),
+                  _('Local mirror'), _('Is this mirror a local or a network mirror?'),
                   'mirrorLocal', FALSE,
                   FALSE, '',
                   'local', 'network'
                 ),
                 new ColonListAttribute(
-                  _('Architectures needed'), _(''), 'mirrorArchs'
+                  _('Architectures'), _('Processor architectures available on this repository'), 'mirrorArchs'
                 ),
               ),
               '', '' // no formats
