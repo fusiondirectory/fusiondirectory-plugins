@@ -64,7 +64,7 @@ class mailMethod
    *    For an accountID like: 'share/john.folder@fusiondirectory.org' the value 'dummy+'
    *    will result in gosaSharedFolderTarget: dummy+share/john.folder@fusiondirectory.org
    */
-  protected $gosaSharedPrefix = '';
+  protected $mailSharedPrefix = '';
 
   /* The atribute mapping for this class  Source --> Destination */
   protected $attributes     = array();
@@ -177,11 +177,11 @@ class mailMethod
           "<b>MAIL:</b> Shared folder creation set to");
       $this->share_id = $tmp;
     }
-    $tmp = $this->config->get_cfg_value("gosaSharedPrefix");
+    $tmp = $this->config->get_cfg_value("mailSharedPrefix");
     if(!empty($tmp)){
       @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<i>".$tmp."</i>",
           "<b>MAIL:</b> Shared folder prefix set to");
-      $this->gosaSharedPrefix = $tmp;
+      $this->mailSharedPrefix = $tmp;
     }
 
     $this->build_account_id();
@@ -255,7 +255,7 @@ class mailMethod
     $this->build_account_id();
     if($this->type == "group"){
       $this->parent->attrs['gosaSharedFolderTarget'] =
-        $this->gosaSharedPrefix.$this->account_id;
+        $this->mailSharedPrefix.$this->account_id;
     }
   }
 

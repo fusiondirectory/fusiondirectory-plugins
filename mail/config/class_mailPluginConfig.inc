@@ -86,6 +86,16 @@ class mailPluginConfig extends simplePlugin
             'fdImapTimeout', FALSE,
             0, FALSE
           ),
+          new StringAttribute (
+            _('Shared prefix'),
+            _('Prefix to add for mail shared folders.'),
+            'fdMailSharedPrefix'
+          ),
+          new StringAttribute (
+            _('Folder name'),
+            _('Override the methods default account creation syntax'),
+            'fdMailFolderCreation'
+          ),
         )
       ),
     );

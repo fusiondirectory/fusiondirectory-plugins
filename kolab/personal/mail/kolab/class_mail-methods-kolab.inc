@@ -55,7 +55,7 @@ class mailMethodKolab extends mailMethodCyrus
    *
    * May be overridden in the fusiondirectory.conf.
    */
-  protected $gosaSharedPrefix = 'kolab+';
+  protected $mailSharedPrefix = 'kolab+';
 
   /* Account ID creation */
   protected $user_id    = "%prefix%%uattrib%";
@@ -99,7 +99,7 @@ class mailMethodKolab extends mailMethodCyrus
     $this->parent->attrs['kolabFolderType'] = array();
     if($this->type == "group"){
       $this->parent->attrs['gosaSharedFolderTarget'] =
-        $this->gosaSharedPrefix.$this->account_id;
+        $this->mailSharedPrefix.$this->account_id;
     }
   }
 
