@@ -180,19 +180,19 @@ class ActionAttribute extends SelectAttribute
     } else {
       $actions = array( // TODO : remove these action if there is no deployment plugin to use them (FAI, OPSI, …)
         ''          => '',
-        'reinstall' => _('Reinstall'),
-        'update'    => _('Software update'),
-        'memcheck'  => _('Memory test')
+        'Deployment.reinstall' => _('Reinstall'),
+        'Deployment.update'    => _('Software update'),
+        'Deployment.memcheck'  => _('Memory test')
       );
     }
     if ($this->plugin->ping()) {
-      $actions['halt']    = _('Switch off');
-      $actions['reboot']  = _('Reboot');
+      $actions['System.halt']    = _('Switch off');
+      $actions['Deployment.reboot']  = _('Reboot');
       if (!$this->isTerminal) {
-        $actions['rescan']  = _('Rescan hardware');
+        $actions['Deployment.rescan']  = _('Rescan hardware');
       }
     } else {
-      $actions['wakeup']  = _('Wake up');
+      $actions['Deployment.wake']  = _('Wake up');
     }
     $this->setChoices(array_keys($actions), array_values($actions));
   }

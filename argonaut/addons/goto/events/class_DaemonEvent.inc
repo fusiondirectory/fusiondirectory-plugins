@@ -408,19 +408,19 @@ class DaemonEvent
         'name'  => _('Switch off'),
         'img'   => 'images/lists/off.png'
       ),
-      'System.reboot' => array(
+      'Deployment.reboot' => array(
         'name'  => _('Reboot'),
         'img'   => 'images/lists/reload.png'
       ),
-      'System.wake' => array(
+      'Deployment.wake' => array(
         'name'  => _('Wake up'),
         'img'   => 'images/lists/on.png'
       ),
-      'System.update' => array(
+      'Deployment.update' => array(
         'name'  => _('Software update'),
         'img'   => 'plugins/systems/images/update.png'
       ),
-      'System.reinstall' => array(
+      'Deployment.reinstall' => array(
         'name'  => _('Reinstall'),
         'img'   => 'plugins/systems/images/reinstall.png'
       ),
