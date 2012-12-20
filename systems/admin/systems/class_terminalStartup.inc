@@ -51,6 +51,8 @@ class terminalStartup extends simplePlugin
   /* attribute list for save action */
   var $objectclasses = array("GOhard");
 
+  var $inheritance = array("gosaGroupOfNames" => "member");
+
   /*!
    *  \brief The main function : information about attributes
    */
@@ -60,10 +62,9 @@ class terminalStartup extends simplePlugin
       'startup' => array (
         'name' => _('Startup parameters'),
         'attrs' => array (
-          new SelectAttribute (
+          new StringAttribute (
             _('Boot kernel'),  _('Linux kernel to be installed and booted'),
-            'gotoBootKernel', TRUE,
-            array()
+            'gotoBootKernel', FALSE
           ),
           new StringAttribute (
             _('Boot kernel parameters'), _('Linux kernel parameters to be ran'),
