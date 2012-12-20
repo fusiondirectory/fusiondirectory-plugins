@@ -91,11 +91,6 @@ class mailPluginConfig extends simplePlugin
             _('Prefix to add for mail shared folders.'),
             'fdMailSharedPrefix'
           ),
-          new StringAttribute (
-            _('Folder name'),
-            _('Override the methods default account creation syntax'),
-            'fdMailFolderCreation'
-          ),
         )
       ),
     );
