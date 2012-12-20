@@ -20,11 +20,139 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
+class sambaAccount2 extends simplePlugin
+{
+  var $objectclasses= array('sambaSamAccount');
+
+  static function plInfo()
+  {
+    return array(
+      'plShortName'     => _('Samba'),
+      'plDescription'   => _('Samba settings'),
+      'plSelfModify'    => TRUE,
+      'plDepends'       => array('posixAccount'),
+      'plPriority'      => 5,
+      'plCategory'      => array('users'),
+      'plObjectType'    => array('user'),
+
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+    );
+  }
+
+  static function getAttributesInfo ()
+  {
+    static $letters = array("");
+    if (empty($letters)) {
+      for ($i = 68; $i < 91; $i++) {
+        $letters[] = chr($i).":";
+      }
+    }
+    return array(
+      'generic' => array(
+        'name'  => _('Generic'),
+        'attrs' => array(
+          new StringAttribute (
+            _('Home directory path'), _(''),
+            'sambaHomePath'
+          ),
+          new SelectAttribute (
+            _('Home directory drive'), _(''),
+            'sambaHomeDrive', FALSE,
+            $letters
+          ),
+          new SelectAttribute (
+            _('Domain'), _(''),
+            'sambaDomainName', TRUE,
+            array('DEFAULT')
+          ),
+          new StringAttribute (
+            _('Script path'), _(''),
+            'sambaLogonScript'
+          ),
+          new StringAttribute (
+            _('Profile path'), _(''),
+            'sambaProfilePath'
+          ),
+        )
+      ),
+      'terminal' => array(
+        'name'  => _('Terminal server'),
+        'attrs' => array(
+          new BooleanAttribute (
+            _('Allow login on terminal server'), _(''),
+            'tslogin', FALSE, TRUE
+          ),
+          new StringAttribute (
+            _('Home directory path'), _(''),
+            'CtxWFHomeDir'
+          ),
+          new SelectAttribute (
+            _('Home directory drive'), _(''),
+            'CtxWFHomeDirDrive', FALSE,
+            $letters
+          ),
+          new BooleanAttribute (
+            _('Inherit client config'), _(''),
+            'inheritClientConfig', FALSE, TRUE
+          ),
+          new StringAttribute (
+            _('Initial progam'), _(''),
+            'CtxInitialProgram'
+          ),
+          new StringAttribute (
+            _('Working directory'), _(''),
+            'CtxWorkDirectory'
+          ),
+          new IntAttribute (
+            _('Connection timeout'), _(''),
+            'CtxMaxConnectionTime', FALSE,
+            0, FALSE
+          ),
+          new IntAttribute (
+            _('Disconnection timeout'), _(''),
+            'CtxMaxDisconnectionTime', FALSE,
+            0, FALSE
+          ),
+          new IntAttribute (
+            _('Idle timeout'), _(''),
+            'CtxMaxIdleTime', FALSE,
+            0, FALSE
+          ),
+          new BooleanAttribute (
+            _('Connect client drives at logon'), _(''),
+            'connectclientdrives', FALSE, TRUE
+          ),
+          new BooleanAttribute (
+            _('Connect client printers at logon'), _(''),
+            'connectclientprinters', FALSE, TRUE
+          ),
+          new BooleanAttribute (
+            _('Default to main client printer'), _(''),
+            'defaultprinter', FALSE, TRUE
+          ),
+        )
+      )
+    );
+  }
+
+  function __construct (&$config, $dn = NULL, $baseobject = NULL)
+  {
+    $attributesInfo = self::getAttributesInfo();
+    foreach ($attributesInfo as &$section) {
+      foreach ($section['attrs'] as &$attr) {
+        if (preg_match('/^Ctx/', $attr->getLdapName()) {
+          $attr->setInLdap(FALSE);
+        }
+      }
+    }
+    parent::__construct($config, $dn, $baseobject, $attributesInfo);
+  }
+
+}
+
 class sambaAccount extends plugin
 {
     /* Definitions */
-    var $plHeadline     = "Samba";
-    var $plDescription  = "This store the sambaAccount into the ldap tree";
     var $view_logged    = FALSE;
 
     // Domaind information, gid, sid, rid
