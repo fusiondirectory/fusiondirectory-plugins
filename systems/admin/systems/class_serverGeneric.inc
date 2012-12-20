@@ -23,6 +23,8 @@ class serverGeneric extends workstationGeneric
 {
   var $objectclasses = array("top", "goServer", "GOhard");
 
+  var $inheritance = FALSE;
+
   /*!
    *  \brief The main function : information about attributes
    */

@@ -23,6 +23,8 @@ class terminalGeneric extends workstationGeneric
 {
   var $objectclasses = array("top", "gotoTerminal", "GOhard");
 
+  var $inheritance = array("gotoWorkstationTemplate" => "member", "gotoTerminalTemplate" => "member");
+
   /*!
    *  \brief The main function : information about attributes
    */

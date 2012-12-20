@@ -23,7 +23,7 @@
 class gospamserver extends simpleService {
 
   /* This plugin only writes its objectClass */
-  var $objectclasses    = array('goSpamServer');
+  var $objectclasses = array('goSpamServer');
 
     /* Return plugin informations for acl handling  */
 
