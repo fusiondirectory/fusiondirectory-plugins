@@ -24,10 +24,13 @@ class sambaAccount2 extends simplePlugin
 {
   var $objectclasses= array('sambaSamAccount');
 
+  var $SID      = "";
+  var $ridBase  = 0;
+
   static function plInfo()
   {
     return array(
-      'plShortName'     => _('Samba'),
+      'plShortName'     => _('Samba2'),
       'plDescription'   => _('Samba settings'),
       'plSelfModify'    => TRUE,
       'plDepends'       => array('posixAccount'),
@@ -41,29 +44,29 @@ class sambaAccount2 extends simplePlugin
 
   static function getAttributesInfo ()
   {
-    static $letters = array("");
+    static $letters = array('');
     if (empty($letters)) {
       for ($i = 68; $i < 91; $i++) {
-        $letters[] = chr($i).":";
+        $letters[] = chr($i).':';
       }
     }
     return array(
       'generic' => array(
         'name'  => _('Generic'),
         'attrs' => array(
-          new StringAttribute (
-            _('Home directory path'), _(''),
-            'sambaHomePath'
-          ),
+          new HiddenAttribute ('sambaSID', 'sambaSID', 'sambaSID'),
           new SelectAttribute (
             _('Home directory drive'), _(''),
             'sambaHomeDrive', FALSE,
             $letters
           ),
+          new StringAttribute (
+            _('Home directory path'), _(''),
+            'sambaHomePath'
+          ),
           new SelectAttribute (
             _('Domain'), _(''),
-            'sambaDomainName', TRUE,
-            array('DEFAULT')
+            'sambaDomainName', TRUE
           ),
           new StringAttribute (
             _('Script path'), _(''),
@@ -130,6 +133,25 @@ class sambaAccount2 extends simplePlugin
             _('Default to main client printer'), _(''),
             'defaultprinter', FALSE, TRUE
           ),
+          new SelectAttribute (
+            _('Shadowing'), _(''),
+            'shadow', TRUE,
+            array(0,1,2,3,4), 0,
+            array(_('disabled'), _('input on, notify on'), _('input on, notify off'),
+                  _('input off, notify on'), _('input off, nofify off'))
+          ),
+          new SelectAttribute (
+            _('On broken or timed out'), _(''),
+            'brokenconn', TRUE,
+            array(0,1), 0,
+            array(_('disconnect'), _('reset'))
+          ),
+          new SelectAttribute (
+            _('Reconnect if disconnected'), _(''),
+            'reconn', TRUE,
+            array(0,1), 0,
+            array(_('from any client'), _('from previous client only'))
+          ),
         )
       )
     );
@@ -146,8 +168,114 @@ class sambaAccount2 extends simplePlugin
       }
     }
     parent::__construct($config, $dn, $baseobject, $attributesInfo);
+
+    $this->attributesAccess['sambaDomainName']->setChoices(array_keys($this->config->data['SERVERS']['SAMBA']));
+    $this->attributesAccess['sambaDomainName']->setInLdap(FALSE);
+    $this->attributesAccess['tslogin']->setManagedAttributes(
+      array(
+        'erase' => array (
+          FALSE => array (
+            'CtxWFHomeDir', 'CtxWFHomeDirDrive',
+            'inheritClientConfig', 'CtxInitialProgram', 'CtxWorkDirectory',
+            'CtxMaxConnectionTime', 'CtxMaxDisconnectionTime',
+            'CtxMaxIdleTime', 'connectclientdrives', 'connectclientprinters',
+            'defaultprinter', 'shadow',
+          )
+        )
+      )
+    );
+    $this->attributesAccess['inheritClientConfig']->setManagedAttributes(
+      array(
+        'erase' => array (
+          FALSE => array (
+            'CtxInitialProgram', 'CtxWorkDirectory',
+          )
+        )
+      )
+    );
+    $this->attributesAccess['sambaHomeDrive']->setManagedAttributes(
+      array(
+        'erase' => array ('' => array ('sambaHomePath'))
+      )
+    );
+
+    // Get samba domain and its sid/rid base
+    if ($this->sambaSID != "") {
+      $this->SID = preg_replace ("/-[^-]+$/", "", $this->sambaSID);
+      $ldap = $this->config->get_ldap_link();
+      $ldap->cd($this->config->current['BASE']);
+      $ldap->search ("(&(objectClass=sambaDomain)(sambaSID=$this->SID))",array("sambaAlgorithmicRidBase","sambaDomainName"));
+      if ($ldap->count() != 0){
+        $attrs = $ldap->fetch();
+        if (isset($attrs['sambaAlgorithmicRidBase'])) {
+          $this->ridBase = $attrs['sambaAlgorithmicRidBase'][0];
+        } else {
+          $this->ridBase = $this->config->get_cfg_value("sambaRidBase");
+        }
+        if ($this->sambaDomainName == "") {
+          $this->sambaDomainName = $attrs['sambaDomainName'][0];
+        }
+      } else {
+        // Fall back to a 'DEFAULT' domain, if none was found in LDAP.
+        if ($this->sambaDomainName == "") {
+          $this->sambaDomainName = "DEFAULT";
+        }
+
+        // Nothing in ldap, use configured sid and rid values.
+        $this->ridBase  = $this->config->get_cfg_value("sambaRidBase");
+        $this->SID      = $this->config->get_cfg_value("sambaSid");
+      }
+    }
+
+    $this->attributesAccess['sambaDomainName']->setInitialValue($this->sambaDomainName);
   }
 
+  function resetCopyInfos()
+  {
+    parent::resetCopyInfos();
+
+    /* Set a new SID */
+    $this->sambaSID = "";
+  }
+
+  function prepare_save()
+  {
+    parent::prepare_save();
+    /* Load uid and gid of this 'dn' */
+    $posixAccount = $this->parent->by_object['posixAccount'];
+    $uidNumber = $posixAccount->uidNumber;
+    $gidNumber = $posixAccount->gidNumber;
+
+    // Need to generate a new uniqe uid/gid combination?
+    if (($this->sambaSID == "") || $this->attributesAccess['sambaDomainName']->hasChanged()) {
+      $uidNumber_tmp = $uidNumber;
+      do {
+        $sid = $this->SID."-".($uidNumber_tmp*2 + $this->ridBase);
+        $ldap->cd($this->config->current['BASE']);
+        $ldap->search("(sambaSID=$sid)", array("sambaSID"));
+        $uidNumber_tmp++;
+      } while ($ldap->count() > 0);
+      $this->attrs['sambaSID'] = $sid;
+
+      // Check for users primary group
+      $ldap->cd($this->config->current['BASE']);
+      $ldap->search("(&(objectClass=posixGroup)(gidNumber=".$gidNumber."))", array("cn"));
+      if ($ldap->count() != 1) {
+        msg_dialog::display(_("Warning"),
+                  _("Cannot convert primary group to samba group: group cannot be identified!"),
+                  WARNING_DIALOG);
+      } else {
+        $attrs = $ldap->fetch();
+        $g = new group($this->config, $ldap->getDN());
+        if ($g->sambaSID == "") {
+          $g->sambaDomainName = $this->sambaDomainName;
+          $g->smbgroup = TRUE;
+          $g->save();
+        }
+        $this->attrs['sambaPrimaryGroupSID'] = $g->sambaSID;
+      }
+    }
+  }
 }
 
 class sambaAccount extends plugin
