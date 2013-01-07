@@ -297,11 +297,15 @@ class sambaAccount2 extends simplePlugin
           ),
           new DateAttribute (
             _('Account expiration'), _(''),
-            'sambaKickoffTime', FALSE, 'U'
+            'sambaKickoffTime', FALSE, 'U', ''
           ),
           new SambaFlagsAttribute (
             'sambaAcctFlags',
             array('flag_pwdExpire','flag_noPwdRequired','flag_lockSamba')
+          ),
+          new ButtonAttribute (
+            _('Samba logon times'), _(''),
+            'sambaLogonHours', 'SambaLogonHoursDialog', _('Edit settings…')
           )
         )
       )
