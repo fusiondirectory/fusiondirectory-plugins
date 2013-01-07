@@ -30,7 +30,7 @@ define ("FILEHEADER",
         "20002000200020002000200020002000".
         "5000");
 /* This is the old header, it is needed to automatically convert old mungedDials to new ones */
-define ("FILEHEADER_OLD",
+define ("FILEHEADER_OLD",   
         "6d000800200020002000200020002000".
         "20002000200020002000200020002000".
         "20002000200020002000200064000100".
@@ -53,7 +53,7 @@ class sambaMungedDial
     'CtxKeyboardLayout' =>        '',
     'CtxMinEncryptionLevel' =>    '00',
     'CtxWorkDirectory' =>         '',
-    'CtxNWLogonServer' =>         '',
+    'CtxNWLogonServer' =>         '',  
     'CtxWFHomeDir' =>             '',
     'CtxWFHomeDirDrive' =>        '',
     'CtxWFProfilePath' =>         '',
@@ -66,11 +66,11 @@ class sambaMungedDial
         "CtxMaxIdleTime", "CtxKeyboardLayout", "CtxMinEncryptionLevel",
         "CtxWorkDirectory", "CtxNWLogonServer", "CtxWFHomeDir",
         "CtxWFHomeDirDrive", "CtxWFProfilePath", "CtxInitialProgram",
-        "CtxCallbackNumber");
+        "CtxCallbackNumber"); 
 
   /* These parameters are treated as strings and get a trailing zero */
-  var $stringParams= array( "CtxWorkDirectory", "CtxNWLogonServer",
-      "CtxWFHomeDir", "CtxWFHomeDirDrive",
+  var $stringParams= array( "CtxWorkDirectory", "CtxNWLogonServer", 
+      "CtxWFHomeDir", "CtxWFHomeDirDrive", 
       "CtxWFProfilePath", "CtxInitialProgram", "CtxCallbackNumber");
 
   /* These parameters are treated as time values and get converted */
@@ -85,7 +85,7 @@ class sambaMungedDial
     for ($i=0; $i<strlen($string); $i++) {
       $hex.= dechex(ord($string[$i]));
     }
-
+  
     return ($hex);
   }
 
@@ -96,7 +96,7 @@ class sambaMungedDial
     for ($i=0; $i<strlen($hex)-1; $i+=2) {
       $string.= chr(hexdec($hex[$i].$hex[$i+1]));
     }
-
+  
     return ($string);
   }
 
@@ -116,24 +116,24 @@ class sambaMungedDial
   {
     $lo= substr($time, 0, 4);
     $hi= substr($time, 4, 4);
-
+  
     $usecs= (hexdec(substr($lo, 2, 2)) * 256 + hexdec(substr($lo, 0, 2))) +
       (hexdec(substr($hi, 2 ,2)) * 256 + hexdec(substr($hi, 0, 2))) * 256 * 256;
-
+  
     return ((int)($usecs / (60 * 1000)));
   }
 
   function to8bit($string)
   {
     $result= "";
-
+  
     /* Strip zeros */
     for ($i= 0; $i<strlen($string); $i++){
       if ($string[$i] != chr(0)){
         $result.= $string[$i];
       }
     }
-
+  
     return ($result);
   }
 
@@ -146,7 +146,7 @@ class sambaMungedDial
     if (!preg_match('/^[a-z0-9%\\\\_.:+-\\\\$]+$/i', $path)){
       return (FALSE);
     }
-
+  
     return preg_match ("/\\\\.+$/", $path);
   }
 
@@ -155,7 +155,7 @@ class sambaMungedDial
   {
     /* Walk through the parameters and convert them */
     $result= sambaMungedDial::hexstr(FILEHEADER);
-
+  
     // CHANGED: We need to insert the number of attributes right after FILEHEADER.
     $counter= 0;
     $result_tmp= "";
@@ -167,60 +167,60 @@ class sambaMungedDial
       } else {
         $isString= FALSE;
       }
-
+  
       /* Time parameter? */
       if (in_array($paramName, $this->timeParams)){
         $paramValue= sambaMungedDial::genTime($paramValue);
       }
-
+  
       $result_tmp.= sambaMungedDial::munge($paramName, $paramValue, $isString);
       $counter++;
     }
-
+    
     // First add the number of attributes
     $result.= sambaMungedDial::hexstr(sprintf("%02x00", $counter));
-
+  
     // Then the usual stuff
     $result.= $result_tmp;
-
+  
     return ($result);
   }
 
   /* Setup parameter given by paramName to MungedDial-Format */
-  function munge($paramName, $paramValue, $isString)
+  function munge($paramName, $paramValue, $isString) 
   {
     $result= "";
-
+    
     /* Encode paramName to UTF-16 */
           if (function_exists("recode")){
                   $utfName= recode("ISO8859-15..UTF-16", $paramName);
           } else {
                   $utfName= iconv("ISO8859-15", "UTF-16BE", $paramName);
           }
-
+  
     /* Set parameter length, high and low byte */
     $paramLen= strlen($utfName);
     $result.= chr($paramLen & 0x0FF);
     $result.= chr(($paramLen & 0x0FF00) >> 8);
-
+  
     /* String parameters have additional trailing bytes */
     $valueLen= strlen($paramValue);
     $result.= chr($valueLen & 0x0FF);
     $result.= chr(($valueLen & 0x0FF00) >> 8);
-
+    
     /* Length fields have a trailing '01' appended by the UTF-16 converted name */
     $result.= chr(1);
     $result.= $utfName;
-
+  
     /* Parameter is padded with '00' */
     $result.= chr(0);
     $result.= $paramValue;
-
+  
     /* Append a trailing '00' to string parameters */
     if ($isString && (strlen($paramValue) & 1)){
       $result.= chr(0);
     }
-
+    
     return ($result);
   }
 
@@ -228,8 +228,8 @@ class sambaMungedDial
   function decode_munged($munge)
   {
     $result= array();
-
-    /*
+      
+    /* 
      * Remove base64 encoding and skip FILEHEADER.
      * The '4' is added, because the FILEHEADER has been stripped by 4 chars.
      * This is the number of attributes following - we don't need this at read time, only when writing.
@@ -244,22 +244,22 @@ class sambaMungedDial
     } else {
       $ctxField= substr(base64_decode($munge), (strlen(FILEHEADER)+4) / 2);
     }
-
+  
     /* Decode parameters */
     while ($ctxField!=""){
-
+  
       /* Read value lengths */
       $ctxParmNameLength= ord($ctxField[0]) + 16 * ord($ctxField[1]);
       $ctxParmLength= ord($ctxField[2]) + 16 * ord($ctxField[3]);
-
+          
       /* Reposition ctxField on start of parameter name, read parameter name */
       $ctxField= substr($ctxField, 6);
       $ctxParmName= sambaMungedDial::to8bit(substr($ctxField, 0, $ctxParmNameLength));
-
+          
       /* Reposition ctxField on start of parameter */
       $ctxField= substr($ctxField, $ctxParmNameLength);
       $ctxParm= substr($ctxField, 0, $ctxParmLength);
-
+          
       /* If string parameter, convert */
       if (in_array($ctxParmName, $this->stringParams)){
           $ctxParm= sambaMungedDial::hexstr($ctxParm);
@@ -268,14 +268,14 @@ class sambaMungedDial
       if (in_array($ctxParmName, $this->timeParams)){
         $ctxParm= sambaMungedDial::readTime($ctxParm);
       }
-
+  
       /* Assign in result array */
       $result[$ctxParmName]= trim($ctxParm);
-
+          
       /* Reposition ctxField on end of parameter and continue */
       $ctxField= substr($ctxField, $ctxParmLength);
     }
-
+  
     return ($result);
   }
 
@@ -295,7 +295,7 @@ class sambaMungedDial
       }
     }
     $result= base64_encode($this->encode_munged($this->ctx));
-
+    
     return $result;
   }
 
@@ -311,7 +311,7 @@ class sambaMungedDial
           $result[$value."Mode"]= "";
         }
       }
-
+      
       if (substr($this->ctx['CtxCfgFlags1'], 6, 1) == "1") {
         $result['CtxInitialProgramMode'] = "disabled";
       } else {
@@ -321,11 +321,11 @@ class sambaMungedDial
       foreach ($this->timeParams as $value) {
         $result[$value."Mode"]= "";
       }
-
+      
       $result['CtxInitialProgramMode'] = "";
-
+  
     }
-
+  
     return $result;
   }
 
@@ -333,29 +333,27 @@ class sambaMungedDial
   function getTsLogin ()
   {
     $flags= ord(substr($this->ctx['CtxCfgFlags1'], 5, 1));
-
+      
     if ($flags & 1) {
         $result= false;
       } else {
         $result= true;
     }
-
-    echo "<h1>getTsLogin : ".($result?"OUI":"NON")."</h1>\n";
+  
     return $result;
   }
 
   /* Sets Terminal-Server-Login value: enabled/disabled */
   function setTsLogin ($checked)
   {
-    echo "<h1>setTsLogin : ".($checked?"OUI":"NON")."</h1>\n";
     $flag= substr($this->ctx['CtxCfgFlags1'], 5, 1);
-
+    
     if ($checked) {
       $flag|= 1;
     } else {
       $flag&= 0xFE;
     }
-
+    
     $this->ctx['CtxCfgFlags1'][5]= sprintf('%1x', $flag);
   }
 
@@ -368,21 +366,21 @@ class sambaMungedDial
     } else {
       $result= "0";
     }
-
+    
     return $result;
   }
 
   /* sets Broken-Connection value: disconnect/reset */
-  function setBrokenConn ($checked)
+  function setBrokenConn ($checked) 
   {
     $flag= substr($this->ctx['CtxCfgFlags1'], 5, 1);
-
+    
     if ($checked) {
       $flag|= 4;
     } else {
       $flag&= 0xFB;
     }
-
+    
     $this->ctx['CtxCfgFlags1'][5]= sprintf('%1x', $flag);
   }
 
@@ -393,9 +391,9 @@ class sambaMungedDial
     if ($flags & 2) {
       $result= "1";
     } else {
-      $result= "0";
+      $result= "0"; 
     }
-
+    
     return $result;
   }
 
@@ -403,13 +401,13 @@ class sambaMungedDial
   function setReConn ($checked)
   {
     $flag= substr($this->ctx['CtxCfgFlags1'], 5, 1);
-
+    
     if ($checked) {
       $flag|= 2;
     } else {
       $flag&= 0xFD;
     }
-
+    
     $this->ctx['CtxCfgFlags1'][5]= sprintf('%1x', $flag);
   }
 
@@ -421,7 +419,7 @@ class sambaMungedDial
     } else {
       $result= false;
     }
-
+  
     return $result;
   }
 
@@ -440,7 +438,7 @@ class sambaMungedDial
   1: input on, notify on
   2: input on, notify off
   3: input off, notify on
-  4: input off, notify off
+  4: input off, notify off 
   */
   function getShadow ()
   {
@@ -453,13 +451,15 @@ class sambaMungedDial
   }
 
   /* sets shadow value */
-  function setShadow ($value)
+  function setShadow ($checked, $value)
   {
-    if($this->old_behavior==true) {
-      // We need to reset the old setting
-      $this->ctx['CtxCfgFlags1'][1]= sprintf('%1X', $value);
+    if ($checked) {
+      if($this->old_behavior==true) {
+        // We need to reset the old setting
+        $this->ctx['CtxCfgFlags1'][1]= sprintf('%1X', $value);
+      }
+      $this->ctx['CtxShadow'][1]= sprintf('%1x', $value);
     }
-    $this->ctx['CtxShadow'][1]= sprintf('%1x', $value);
   }
 
   /* gets connect-client-drive-at-logon value: enabled/disabled */
@@ -471,7 +471,7 @@ class sambaMungedDial
     } else {
       $result= false;
     }
-
+  
     return $result;
   }
 
@@ -484,7 +484,7 @@ class sambaMungedDial
     } else {
       $flag&= 0xF7;
     }
-
+  
     $this->ctx['CtxCfgFlags1'][2]= sprintf('%1x', $flag);
   }
 
@@ -497,7 +497,7 @@ class sambaMungedDial
     } else {
       $result= false;
     }
-
+    
     return $result;
   }
 
@@ -505,13 +505,13 @@ class sambaMungedDial
   function setConnectClientPrinters ($checked)
   {
     $flag= hexdec(substr($this->ctx['CtxCfgFlags1'], 2, 1));
-
+    
     if ($checked) {
       $flag|= 4;
     } else {
       $flag&= 0xFB;
     }
-
+    
     $this->ctx['CtxCfgFlags1'][2]= sprintf('%1x', $flag);
   }
 
@@ -524,7 +524,7 @@ class sambaMungedDial
     } else {
       $result= false;
     }
-
+  
     return $result;
   }
 
@@ -532,13 +532,13 @@ class sambaMungedDial
   function setDefaultPrinter ($checked)
   {
     $flag= hexdec(substr($this->ctx['CtxCfgFlags1'], 2, 1));
-
+    
     if ($checked) {
       $flag|= 2;
     } else {
       $flag&= 0xFD;
     }
-
+    
     $this->ctx['CtxCfgFlags1'][2]= sprintf('%1x', $flag);
   }
 
@@ -551,7 +551,7 @@ class sambaMungedDial
     } else {
       $result= false;
     }
-
+  
     return $result;
   }
 
@@ -581,7 +581,7 @@ class sambaMungedDial
   {
     if ($checked) {
       unset ($this->ctx['CtxMaxDisconnectionTime']);
-    }
+    } 
   }
 
   /* SMARTY: gets the checkbox state of "Idle" */
@@ -593,7 +593,7 @@ class sambaMungedDial
     } else {
       $result= false;
     }
-
+  
     return $result;
   }
 
