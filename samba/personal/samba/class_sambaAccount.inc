@@ -20,9 +20,79 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
+class MungedAttribute extends Attribute
+{
+  protected $mungedObject;
+  protected $attrList;
+  protected $flagList;
+
+  function __construct ($ldapName, $flagList, $acl = "")
+  {
+    parent::__construct('', _('Samba Munged Dial'), $ldapName, FALSE, '', $acl);
+    $this->setVisible(FALSE);
+    $this->mungedObject = new sambaMungedDial;
+    $this->attrList     = $this->mungedObject->ctxattributes;
+    $this->flagList     = $flagList;
+  }
+
+  function setParent(&$plugin)
+  {
+    $this->plugin = $plugin;
+    if (is_object($this->plugin)) {
+      foreach ($this->attrList as $key => $attr) {
+        if (isset($this->plugin->attributesAccess[$attr])) {
+          $this->plugin->attributesAccess[$attr]->setInLdap(FALSE);
+          $this->plugin->attributesAccess[$attr]->setAcl('sambaMungedDial');
+        } else {
+          unset($this->attrList[$key]);
+        }
+      }
+      foreach ($this->flagList as $attr) {
+        $this->plugin->attributesAccess[$attr]->setInLdap(FALSE);
+        $this->plugin->attributesAccess[$attr]->setAcl('sambaMungedDial');
+      }
+    }
+  }
+
+  function setValue($value)
+  {
+    if (empty($value)) {
+      return;
+    }
+    $this->mungedObject->load($value);
+    if (is_object($this->plugin)) {
+      foreach ($this->attrList as $attr) {
+        if (isset($this->mungedObject->ctx[$attr])) {
+          $this->plugin->attributesAccess[$attr]->setValue($this->mungedObject->ctx[$attr]);
+        }
+      }
+      foreach ($this->flagList as $attr) {
+        $func = "get$attr";
+        $this->plugin->$attr = $this->mungedObject->$func();
+      }
+    }
+  }
+
+  function getValue()
+  {
+    if (is_object($this->plugin)) {
+      foreach ($this->attrList as $attr) {
+        $this->mungedObject->ctx[$attr] = $this->plugin->$attr;
+      }
+      foreach ($this->flagList as $attr) {
+        $func = "set$attr";
+        $this->mungedObject->$func($this->plugin->$attr);
+      }
+    }
+    return $this->mungedObject->getMunged();
+  }
+}
+
 class sambaAccount2 extends simplePlugin
 {
-  var $objectclasses= array('sambaSamAccount');
+  var $objectclasses = array('sambaSamAccount');
+
+  var $displayHeader = TRUE;
 
   var $SID      = "";
   var $ridBase  = 0;
@@ -44,12 +114,14 @@ class sambaAccount2 extends simplePlugin
 
   static function getAttributesInfo ()
   {
-    static $letters = array('');
+    static $letters = array();
     if (empty($letters)) {
+      $letters[] = '';
       for ($i = 68; $i < 91; $i++) {
         $letters[] = chr($i).':';
       }
     }
+    static $sambaRegEx = '/^\\\\\\\\([a-z0-9%_.:$+-\\\\]+\\\\?)+$/i';
     return array(
       'generic' => array(
         'name'  => _('Generic'),
@@ -62,7 +134,8 @@ class sambaAccount2 extends simplePlugin
           ),
           new StringAttribute (
             _('Home directory path'), _(''),
-            'sambaHomePath'
+            'sambaHomePath', FALSE, '', '',
+            $sambaRegEx
           ),
           new SelectAttribute (
             _('Domain'), _(''),
@@ -74,7 +147,8 @@ class sambaAccount2 extends simplePlugin
           ),
           new StringAttribute (
             _('Profile path'), _(''),
-            'sambaProfilePath'
+            'sambaProfilePath', FALSE, '', '',
+            $sambaRegEx
           ),
         )
       ),
@@ -83,20 +157,26 @@ class sambaAccount2 extends simplePlugin
         'attrs' => array(
           new BooleanAttribute (
             _('Allow login on terminal server'), _(''),
-            'tslogin', FALSE, TRUE
-          ),
-          new StringAttribute (
-            _('Home directory path'), _(''),
-            'CtxWFHomeDir'
+            'TsLogin', FALSE, TRUE
           ),
           new SelectAttribute (
             _('Home directory drive'), _(''),
             'CtxWFHomeDirDrive', FALSE,
             $letters
           ),
+          new StringAttribute (
+            _('Home directory path'), _(''),
+            'CtxWFHomeDir', FALSE, '', '',
+            $sambaRegEx
+          ),
+          new StringAttribute (
+            _('Profile path'), _(''),
+            'CtxWFProfilePath', FALSE, '', '',
+            $sambaRegEx
+          ),
           new BooleanAttribute (
             _('Inherit client config'), _(''),
-            'inheritClientConfig', FALSE, TRUE
+            'InheritMode', FALSE, TRUE
           ),
           new StringAttribute (
             _('Initial progam'), _(''),
@@ -123,68 +203,103 @@ class sambaAccount2 extends simplePlugin
           ),
           new BooleanAttribute (
             _('Connect client drives at logon'), _(''),
-            'connectclientdrives', FALSE, TRUE
+            'ConnectClientDrives', FALSE, TRUE
           ),
           new BooleanAttribute (
             _('Connect client printers at logon'), _(''),
-            'connectclientprinters', FALSE, TRUE
+            'ConnectClientPrinters', FALSE, TRUE
           ),
           new BooleanAttribute (
             _('Default to main client printer'), _(''),
-            'defaultprinter', FALSE, TRUE
+            'DefaultPrinter', FALSE, TRUE
           ),
           new SelectAttribute (
             _('Shadowing'), _(''),
-            'shadow', TRUE,
+            'Shadow', TRUE,
             array(0,1,2,3,4), 0,
             array(_('disabled'), _('input on, notify on'), _('input on, notify off'),
                   _('input off, notify on'), _('input off, nofify off'))
           ),
           new SelectAttribute (
             _('On broken or timed out'), _(''),
-            'brokenconn', TRUE,
+            'BrokenConn', TRUE,
             array(0,1), 0,
             array(_('disconnect'), _('reset'))
           ),
           new SelectAttribute (
             _('Reconnect if disconnected'), _(''),
-            'reconn', TRUE,
+            'ReConn', TRUE,
             array(0,1), 0,
             array(_('from any client'), _('from previous client only'))
           ),
+          new MungedAttribute (
+            'sambaMungedDial',
+            array(
+              'ConnectClientDrives','ConnectClientPrinters','DefaultPrinter',
+              'Shadow','ReConn','BrokenConn','TsLogin','InheritMode'
+            )
+          )
         )
-      )
+      ),
+      //~ 'access' => array(
+        //~ 'name'  => _('Access options'),
+        //~ 'attrs' => array(
+          //~ new BooleanAttribute (
+            //~ _(''), _(''),
+            //~ ''
+          //~ ),
+          //~ new BooleanAttribute (
+            //~ _('Enforce password change'), _(''),
+            //~ 'flag_enforcepwd'
+          //~ ),
+          //~ new BooleanAttribute (
+            //~ _('The password never expire'), _(''),
+            //~ 'flag_pwdExpire'
+          //~ ),
+          //~ new BooleanAttribute (
+            //~ _('Login from windows client requires no password'), _(''),
+            //~ 'flag_windowsClient'
+          //~ ),
+          //~ new BooleanAttribute (
+            //~ _('Lock samba account'), _(''),
+            //~ 'flag_lockSamba'
+          //~ ),
+          //~ new BooleanAttribute (
+            //~ _('Cannot change password'), _(''),
+            //~ 'flag_changePwd'
+          //~ ),
+          //~ new DateAttribute (
+            //~ _('Account expiration'), _(''),
+            //~ 'sambaKickoffTime'
+          //~ ),
+          //~ new FlagsAttribute (
+            //~
+          //~ )
+        //~ )
+      //~ )
     );
   }
 
   function __construct (&$config, $dn = NULL, $baseobject = NULL)
   {
-    $attributesInfo = self::getAttributesInfo();
-    foreach ($attributesInfo as &$section) {
-      foreach ($section['attrs'] as &$attr) {
-        if (preg_match('/^Ctx/', $attr->getLdapName()) {
-          $attr->setInLdap(FALSE);
-        }
-      }
-    }
-    parent::__construct($config, $dn, $baseobject, $attributesInfo);
+    parent::__construct($config, $dn, $baseobject);
 
     $this->attributesAccess['sambaDomainName']->setChoices(array_keys($this->config->data['SERVERS']['SAMBA']));
     $this->attributesAccess['sambaDomainName']->setInLdap(FALSE);
-    $this->attributesAccess['tslogin']->setManagedAttributes(
+    $this->attributesAccess['TsLogin']->setManagedAttributes(
       array(
         'erase' => array (
           FALSE => array (
             'CtxWFHomeDir', 'CtxWFHomeDirDrive',
-            'inheritClientConfig', 'CtxInitialProgram', 'CtxWorkDirectory',
+            'InheritMode', 'CtxInitialProgram', 'CtxWorkDirectory',
             'CtxMaxConnectionTime', 'CtxMaxDisconnectionTime',
-            'CtxMaxIdleTime', 'connectclientdrives', 'connectclientprinters',
-            'defaultprinter', 'shadow',
+            'CtxMaxIdleTime', 'ConnectClientDrives', 'ConnectClientPrinters',
+            'DefaultPrinter', 'Shadow','ReConn','BrokenConn'
           )
         )
       )
     );
-    $this->attributesAccess['inheritClientConfig']->setManagedAttributes(
+    $this->attributesAccess['InheritMode']->setManagedAttributes(
       array(
         'erase' => array (
           FALSE => array (
