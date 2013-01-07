@@ -88,6 +88,32 @@ class MungedAttribute extends Attribute
   }
 }
 
+class SambaFlagsAttribute extends FlagsAttribute
+{
+  function getValue()
+  {
+    $value = '[U';
+    if (is_object($this->plugin)) {
+      foreach ($this->flags as $attr) {
+        $ldapValue = $this->plugin->attributesAccess[$attr]->computeLdapValue();
+        if ($ldapValue == '[LD]') {
+          if (preg_match('/L/i', $this->initialValue)) {
+            $ldapValue = 'L';
+          } else {
+            $ldapValue = 'D';
+          }
+        }
+        $value .= $ldapValue;
+      }
+    }
+    while (strlen($value) < 13) {
+      $value .= ' ';
+    }
+    $value .= ']';
+    return $value;
+  }
+}
+
 class sambaAccount2 extends simplePlugin
 {
   var $objectclasses = array('sambaSamAccount');
@@ -241,42 +267,44 @@ class sambaAccount2 extends simplePlugin
           )
         )
       ),
-      //~ 'access' => array(
-        //~ 'name'  => _('Access options'),
-        //~ 'attrs' => array(
-          //~ new BooleanAttribute (
-            //~ _(''), _(''),
-            //~ ''
-          //~ ),
-          //~ new BooleanAttribute (
-            //~ _('Enforce password change'), _(''),
-            //~ 'flag_enforcepwd'
-          //~ ),
-          //~ new BooleanAttribute (
-            //~ _('The password never expire'), _(''),
-            //~ 'flag_pwdExpire'
-          //~ ),
-          //~ new BooleanAttribute (
-            //~ _('Login from windows client requires no password'), _(''),
-            //~ 'flag_windowsClient'
-          //~ ),
-          //~ new BooleanAttribute (
-            //~ _('Lock samba account'), _(''),
-            //~ 'flag_lockSamba'
-          //~ ),
-          //~ new BooleanAttribute (
-            //~ _('Cannot change password'), _(''),
-            //~ 'flag_changePwd'
-          //~ ),
-          //~ new DateAttribute (
-            //~ _('Account expiration'), _(''),
-            //~ 'sambaKickoffTime'
-          //~ ),
-          //~ new FlagsAttribute (
-            //~
-          //~ )
-        //~ )
-      //~ )
+      'access' => array(
+        'name'  => _('Access options'),
+        'attrs' => array(
+          new BooleanAttribute (
+            _('Enforce password change'), _(''),
+            'sambaPwdMustChange', FALSE, FALSE, '',
+            '0', ''
+          ),
+          new BooleanAttribute (
+            _('The password never expire'), _(''),
+            'flag_pwdExpire', FALSE, FALSE, '',
+            'X', ''
+          ),
+          new BooleanAttribute (
+            _('Login from windows client requires no password'), _(''),
+            'flag_noPwdRequired', FALSE, FALSE, '',
+            'N', ''
+          ),
+          new BooleanAttribute (
+            _('Lock samba account'), _(''),
+            'flag_lockSamba', FALSE, FALSE, '',
+            '[LD]', ''
+          ),
+          new BooleanAttribute (
+            _('Cannot change password'), _(''),
+            'sambaPwdCanChange', FALSE, FALSE, '',
+            '4294967295', ''
+          ),
+          new DateAttribute (
+            _('Account expiration'), _(''),
+            'sambaKickoffTime', FALSE, 'U'
+          ),
+          new SambaFlagsAttribute (
+            'sambaAcctFlags',
+            array('flag_pwdExpire','flag_noPwdRequired','flag_lockSamba')
+          )
+        )
+      )
     );
   }
 
@@ -320,7 +348,7 @@ class sambaAccount2 extends simplePlugin
       $ldap = $this->config->get_ldap_link();
       $ldap->cd($this->config->current['BASE']);
       $ldap->search ("(&(objectClass=sambaDomain)(sambaSID=$this->SID))",array("sambaAlgorithmicRidBase","sambaDomainName"));
-      if ($ldap->count() != 0){
+      if ($ldap->count() != 0) {
         $attrs = $ldap->fetch();
         if (isset($attrs['sambaAlgorithmicRidBase'])) {
           $this->ridBase = $attrs['sambaAlgorithmicRidBase'][0];
@@ -343,6 +371,12 @@ class sambaAccount2 extends simplePlugin
     }
 
     $this->attributesAccess['sambaDomainName']->setInitialValue($this->sambaDomainName);
+
+    // Set kickOffTime to date
+    if (($this->config->get_cfg_value('sambaExpirationSync') == 'posix') &&
+      (isset($this->attrs['shadowExpire'][0]))) {
+      $this->sambaKickoffTime = date('d.m.Y', $this->attrs['shadowExpire'][0] * EpochDaysDateAttribute::$secondsPerDay);
+    }
   }
 
   function resetCopyInfos()
@@ -388,6 +422,29 @@ class sambaAccount2 extends simplePlugin
           $g->save();
         }
         $this->attrs['sambaPrimaryGroupSID'] = $g->sambaSID;
+      }
+    }
+
+    /* Do not modify values if not needed */
+    if (!$this->attributesAccess['sambaPwdMustChange']->hasChanged()) {
+      unset($this->attrs['sambaPwdMustChange']);
+    }
+    if (!$this->attributesAccess['sambaPwdCanChange']->hasChanged()) {
+      unset($this->attrs['sambaPwdCanChange']);
+    }
+
+    // Handle "sambaKickoffTime"
+    if ($this->config->get_cfg_value('sambaExpirationSync') == 'samba') {
+      if ($this->sambaKickoffTime != "") {
+        $this->attrs['shadowExpire'] = $this->attrs['sambaKickoffTime'] / EpochDaysDateAttribute::$secondsPerDay;
+      } else {
+        $this->attrs['shadowExpire'] = $this->attrs['sambaKickoffTime'];
+      }
+    } elseif ($this->config->get_cfg_value('sambaExpirationSync') == 'posix') {
+      if ($this->parent->by_object['posixAccount']->shadowExpire != "") {
+        $this->attrs['sambaKickoffTime'] = $this->parent->by_object['posixAccount']->attributesAccess['shadowExpire']->getDateValue()->format('U');
+      } else {
+        $this->attrs['sambaKickoffTime'] = array();
       }
     }
   }
