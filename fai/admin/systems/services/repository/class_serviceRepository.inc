@@ -22,35 +22,6 @@
 
 /* TODO add a select for archs ? */
 
-class ColonListAttribute extends CompositeAttribute
-{
-  function __construct($label, $description, $ldapName, $required = FALSE)
-  {
-    parent::__construct(
-      $description, $ldapName."_composite",
-      array(
-        new SetAttribute(
-          new StringAttribute($label, $description, $ldapName)
-        )
-      ), '', ''
-    );
-  }
-
-  function readValues($value)
-  {
-    if ($value == '') {
-      return array(array());
-    } else {
-      return array(explode(',', $value));
-    }
-  }
-
-  function writeValues($values)
-  {
-    return join(',', $values[0]);
-  }
-}
-
 class FAIrepositoryAttribute extends CompositeAttribute
 {
   function readValues($value)
@@ -94,8 +65,13 @@ class serviceDebianRepository extends simpleService
                 new StringAttribute(
                   _('Release'), _('Debian release used on this repository'), 'mirrorRelease', TRUE
                 ),
-                new ColonListAttribute(
-                  _('Sections'), _('Debian sections available on this repository'), 'mirrorSections'
+                new CommaListAttribute(
+                  'mirrorSections',
+                  new SetAttribute(
+                    new StringAttribute(
+                      _('Sections'), _('Debian sections available on this repository'), 'mirrorSections_cl'
+                    )
+                  )
                 ),
                 new SelectAttribute(
                   _('Mirror mode'), _('Is this mirror an installation repository? Is its release a custom one?'),
@@ -108,8 +84,13 @@ class serviceDebianRepository extends simpleService
                   FALSE, '',
                   'local', 'network'
                 ),
-                new ColonListAttribute(
-                  _('Architectures'), _('Processor architectures available on this repository'), 'mirrorArchs'
+                new CommaListAttribute(
+                  'mirrorArchs',
+                  new SetAttribute(
+                    new StringAttribute(
+                      _('Architectures'), _('Processor architectures available on this repository'), 'mirrorArchs_cl'
+                    )
+                  )
                 ),
               ),
               '', '' // no formats

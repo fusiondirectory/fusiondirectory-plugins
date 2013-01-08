@@ -332,31 +332,29 @@ class sambaMungedDial
   /*Gets Terminal-Server-Login value: enabled/disabled */
   function getTsLogin ()
   {
-    $flags= ord(substr($this->ctx['CtxCfgFlags1'], 5, 1));
+    $flags = ord(substr($this->ctx['CtxCfgFlags1'], 5, 1));
 
     if ($flags & 1) {
-        $result= false;
+        $result = FALSE;
       } else {
-        $result= true;
+        $result = TRUE;
     }
 
-    echo "<h1>getTsLogin : ".($result?"OUI":"NON")."</h1>\n";
     return $result;
   }
 
   /* Sets Terminal-Server-Login value: enabled/disabled */
   function setTsLogin ($checked)
   {
-    echo "<h1>setTsLogin : ".($checked?"OUI":"NON")."</h1>\n";
-    $flag= substr($this->ctx['CtxCfgFlags1'], 5, 1);
+    $flag = substr($this->ctx['CtxCfgFlags1'], 5, 1);
 
-    if ($checked) {
-      $flag|= 1;
+    if (!$checked) {
+      $flag |= 1;
     } else {
-      $flag&= 0xFE;
+      $flag &= 0xFE;
     }
 
-    $this->ctx['CtxCfgFlags1'][5]= sprintf('%1x', $flag);
+    $this->ctx['CtxCfgFlags1'][5] = sprintf('%1x', $flag);
   }
 
   /* gets Broken-Connection value: disconnect/reset */
