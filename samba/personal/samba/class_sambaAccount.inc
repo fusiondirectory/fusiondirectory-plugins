@@ -165,7 +165,7 @@ class sambaAccount extends simplePlugin
             $sambaRegEx
           ),
           new SelectAttribute (
-            _('Domain'), _(''),
+            _('Domain'), _('Samba domain name'),
             'sambaDomainName', TRUE
           ),
           new StringAttribute (

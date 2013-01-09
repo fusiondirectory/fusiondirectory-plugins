@@ -1,5 +1,4 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
@@ -37,16 +36,12 @@ class wintabs extends tabs
 
     /* add $ to end of name if mising */
     $baseobject = $this->getBaseObject();
-    if (!preg_match("/\\\$\$/", $baseobject->cn)) {
-      $baseobject->cn .= "$";
-    }
 
     /* Save this system with uid and NOT cn */
-    $this->dn = "uid=$baseobject->uid,".get_winstations_ou().$baseobject->base;
+    $this->dn = 'uid='.$baseobject->uid.','.get_winstations_ou().$baseobject->base;
     $baseobject->dn = $this->dn;
 
     if ($this->dn != $baseobject->orig_dn && $baseobject->orig_dn != "new") {
-
       /* Udpate acls */
       $baseobject->update_acls($baseobject->orig_dn, $this->dn);
       $baseobject->move($baseobject->orig_dn, $this->dn);
@@ -58,6 +53,5 @@ class wintabs extends tabs
 
     parent::save();
   }
-
 }
 ?>

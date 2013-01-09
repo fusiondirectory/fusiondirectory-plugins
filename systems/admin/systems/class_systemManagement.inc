@@ -1090,12 +1090,12 @@ class systemManagement extends management
 
         "sambaSamAccount" => array(
             "ou"          => get_winstations_ou(),
-            "plugClass"   => "wingeneric",
+            "plugClass"   => "winstationGeneric",
             "sendEvents"  => TRUE,
             "tabClass"    => "wintabs",
-            "tabDesc"     => "WINWORKSTATIONTABS",
-            "aclClass"    => "wingeneric",
-            "aclCategory" => "winworkstation"),
+            "tabDesc"     => "WINSTATIONTABS",
+            "aclClass"    => "winstationGeneric",
+            "aclCategory" => "winstation"),
 
         "ieee802Device" => array(
             "ou"          => get_ou('componentRDN'),
@@ -1247,7 +1247,7 @@ class systemManagement extends management
       "plSelfModify"  => FALSE,
       "plPriority"    => 3,
       "plSection"     => "admin",
-      "plCategory"    => array("terminal","workstation","server","phone","printer","component","winworkstation"),
+      "plCategory"    => array("terminal","workstation","server","phone","printer","component","winstation"),
 
       "plProvidedAcls"  => array()
     );

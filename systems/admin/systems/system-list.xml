@@ -78,8 +78,8 @@
     <objectType>
       <label>Winstation</label>
       <objectClass>sambaSamAccount</objectClass>
-      <category>winworkstation</category>
-      <class>wingeneric</class>
+      <category>winstation</category>
+      <class>winstationGeneric</class>
       <image>plugins/systems/images/select_winstation.png</image>
     </objectType>
 
@@ -240,7 +240,7 @@
       <type>entry</type>
       <image>plugins/systems/images/select_winstation.png</image>
       <label>winStation</label>
-      <depends>wingeneric</depends>
+      <depends>winstationGeneric</depends>
     </action>
 
      <action>

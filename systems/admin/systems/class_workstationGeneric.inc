@@ -45,11 +45,13 @@ class NetworkSettingsAttribute extends Attribute
 {
   public $netConfigDNS;
   private $display = NULL;
+  private $namingAttr;
 
-  function __construct ()
+  function __construct ($namingAttr = "cn")
   {
     parent::__construct("Network Settings", "", "networkSettings", FALSE, "");
     $this->setInLdap(FALSE);
+    $this->namingAttr = $namingAttr;
   }
 
   function setManagedAttributes ($dontcare)
@@ -61,7 +63,7 @@ class NetworkSettingsAttribute extends Attribute
   {
     parent::setParent($plugin);
     if (is_object($this->plugin)) {
-      $this->netConfigDNS = new networkSettings($this->plugin->config, $this->plugin, $this->plugin->objectclasses, TRUE);
+      $this->netConfigDNS = new networkSettings($this->plugin->config, $this->plugin, $this->plugin->objectclasses, TRUE, $this->namingAttr);
       $this->plugin->netConfigDNS =& $this->netConfigDNS;
     }
   }

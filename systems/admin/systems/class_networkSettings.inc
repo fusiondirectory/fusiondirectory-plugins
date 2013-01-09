@@ -1015,7 +1015,7 @@ class networkSettings extends plugin
       "plDescription" => _("Network settings"),
       "plSelfModify"  => FALSE,
       "plPriority"    => 5,
-      "plCategory"    => array("workstation", "terminal", "phone", "server", "component", "printer", "winworkstation"),
+      "plCategory"    => array("workstation", "terminal", "phone", "server", "component", "printer", "winstation"),
 
       "plProvidedAcls" => array(
         "ipHostNumber"  => _("IP address"),
