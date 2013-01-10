@@ -26,7 +26,7 @@ class winstationGeneric extends simplePlugin
 
   var $netConfigDNS;
 
-  var $objectclasses = array("posixAccount","account","sambaSamAccount","top");
+  var $objectclasses = array('posixAccount','account','sambaSamAccount','top');
 
   var $preInitAttributes = array('networkSettings');
 
@@ -90,7 +90,7 @@ class winstationGeneric extends simplePlugin
       ),
       'network' => array(
         'name'      => _('Network settings'),
-        'attrs'     => array(new NetworkSettingsAttribute('uid')),
+        'attrs'     => array(new NetworkSettingsAttribute('uid', array('ipHost', 'ieee802Device'))),
         'template'  => get_template_path('../network_section.tpl', TRUE, dirname(__FILE__)),
         'icon'      => get_template_path('plugins/systems/images/network.png'),
       ),
@@ -216,6 +216,11 @@ class winstationGeneric extends simplePlugin
     parent::ldap_save($cleanup);
     $this->netConfigDNS->cn = preg_replace("/\\\$\$/", "", $this->uid);
     $this->netConfigDNS->save();
+  }
+
+  function is_modal_dialog()
+  {
+    return (isset($this->netConfigDNS->dialog) && $this->netConfigDNS->dialog);
   }
 }
 ?>

@@ -746,13 +746,19 @@ class networkSettings extends plugin
 
     /* Do not add the objectClass ipHost if no ip address is given */
     if (!isset($this->attrs['ipHostNumber'])) {
-      $this->attrs['objectClass'] = array_remove_entries(array("ipHost"), $this->attrs['objectClass']);
+      $this->attrs['objectClass'] = array_remove_entries(array('ipHost'), $this->attrs['objectClass']);
     }
 
     /* Write back to ldap */
     $ldap->cd($this->dn);
     $this->cleanup();
     $ldap->modify ($this->attrs);
+
+    /* Display errors
+     */
+    if (!$ldap->success()) {
+      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()));
+    }
 
     /* DHCP HANDLING */
 
@@ -1222,6 +1228,98 @@ class networkSettings extends plugin
     $newEntries = $this->dnsEntry;
     if (array_differs($newEntries['RECORDS'], $oldEntries['RECORDS'])) {
       DNS::touchDNSZone($this->config, $this->dnsEntry['zoneName']);
+    }
+  }
+}
+
+class NetworkSettingsDialog
+{
+  private $attribute;
+  private $display;
+
+  function __construct (&$attribute, &$display)
+  {
+    $this->attribute  = &$attribute;
+    $this->display    = &$display;
+  }
+
+  function execute ()
+  {
+    $this->display = $this->attribute->netConfigDNS->execute();
+    if (is_object($this->attribute->netConfigDNS->dialog)) {
+      return $this->display;
+    }
+    return FALSE;
+  }
+}
+
+class NetworkSettingsAttribute extends Attribute
+{
+  public $netConfigDNS;
+  protected $display = NULL;
+  protected $namingAttr;
+  protected $ocs;
+
+  function __construct ($namingAttr = "cn", $ocs = array())
+  {
+    parent::__construct("Network Settings", "", "networkSettings", FALSE, "");
+    $this->setInLdap(FALSE);
+    $this->namingAttr = $namingAttr;
+    $this->ocs = $ocs;
+  }
+
+  function setManagedAttributes ($dontcare)
+  {
+    trigger_error('method setManagedAttributes is not supported for BaseSelectorAttribute');
+  }
+
+  function setParent (&$plugin)
+  {
+    parent::setParent($plugin);
+    if (is_object($this->plugin)) {
+      $this->netConfigDNS = new networkSettings(
+        $this->plugin->config, $this->plugin,
+        array_merge($this->plugin->objectclasses, $this->ocs),
+        TRUE, $this->namingAttr
+      );
+      $this->plugin->netConfigDNS =& $this->netConfigDNS;
+    }
+  }
+
+  function renderAttribute(&$attributes, $readOnly)
+  {
+    if ($this->display === NULL) {
+      $this->display = $this->netConfigDNS->execute();
+    }
+    $attributes[$this->getLdapName()] = array(
+      'DNSenabled'  => $this->netConfigDNS->DNSenabled,
+      'display'     => $this->display
+    );
+  }
+
+  function loadPostValue ()
+  {
+  }
+
+  function applyPostValue ()
+  {
+    if (!$this->disabled) {
+      /* Refresh base */
+      $this->netConfigDNS->save_object();
+      $this->display = $this->netConfigDNS->execute();
+      if (is_object($this->netConfigDNS->dialog)) {
+        $this->plugin->openDialog(new NetworkSettingsDialog($this, $this->display));
+      }
+    }
+  }
+
+  function check ()
+  {
+    $error = parent::check();
+    if (!empty($error)) {
+      return $error;
+    } else {
+      return $this->netConfigDNS->check();
     }
   }
 }
