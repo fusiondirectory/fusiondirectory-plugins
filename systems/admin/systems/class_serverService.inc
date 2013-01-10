@@ -115,6 +115,9 @@ class ServerService extends management
 
     parent::__construct($config, $this->ui, "services", $headpage);
     $this->registerAction("new",                "newService");
+    foreach ($this->plugins as $name => $obj) {
+      $this->registerAction("new_$name",        "newService");
+    }
     $this->registerAction("remove",             "removeService");
     $this->registerAction("newServiceSelected", "newServiceSelected");
     $this->registerAction("saveService",        "saveService");
@@ -124,6 +127,21 @@ class ServerService extends management
     $this->registerAction("restart",            "updateServiceStatus");
     $this->registerAction("stop",               "updateServiceStatus");
     $this->registerAction("start",              "updateServiceStatus");
+    $this->updateActionMenu();
+  }
+
+  function updateActionMenu()
+  {
+    $this->headpage->xmlData['actionmenu']['action'][0]['action'] = array();
+    $available_services = $this->getAllUnusedServices();
+    foreach ($available_services as $name => $label) {
+      $this->headpage->xmlData['actionmenu']['action'][0]['action'][] = array(
+        'name' => 'new_'.$name,
+        'type' => 'entry',
+        'image' => 'images/lists/new.png',
+        'label' => $label,
+      );
+    }
   }
 
 
@@ -183,26 +201,15 @@ class ServerService extends management
 
   /*! \brief  Let the user choose the new service to create.
    */
-  function newService()
-  {
-    $this->dialog = TRUE;
-    $this->dialogObject = new ServiceAddDialog($this->config, $this->dn, $this);
-  }
-
-
-  /*! \brief  Create the selected service.
-   */
-  function newServiceSelected()
+  function newService($action = "")
   {
     $this->closeDialogs();
-    $serv = $_POST['ServiceName'];
-
+    $serv = preg_replace('/^new_/', '', $action);
     $this->plugins[$serv]->is_account = TRUE;
     $this->dialogObject               = $this->plugins[$serv];
     $this->current                    = $serv;
     $this->dialog                     = TRUE;
   }
-
 
   /*! \brief  Save the currently edited service.
    */
@@ -222,6 +229,7 @@ class ServerService extends management
       }
       $this->closeDialogs();
       $this->backup = NULL;
+      $this->updateActionMenu();
     }
   }
 
