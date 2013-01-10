@@ -22,19 +22,6 @@
 
 /* TODO add a select for archs ? */
 
-class FAIrepositoryAttribute extends CompositeAttribute
-{
-  function readValues($value)
-  {
-    return explode('|', $value);
-  }
-
-  function writeValues($values)
-  {
-    return join('|', $values);
-  }
-}
-
 class serviceDebianRepository extends simpleService
 {
   var $objectclasses = array("FAIrepositoryServer");
@@ -49,7 +36,7 @@ class serviceDebianRepository extends simpleService
         'class'     => array('fullwidth'),
         'attrs'     => array(
           new OrderedArrayAttribute(
-            new FAIrepositoryAttribute(
+            new PipeSeparatedCompositeAttribute(
               _('Repositories this server hosts'),
               'FAIrepository',
               array(
