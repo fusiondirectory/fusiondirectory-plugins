@@ -1,9 +1,8 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011  FusionDirectory
+  Copyright (C) 2011-2013  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,7 +19,316 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class application extends plugin
+class ScriptAttribute extends FileAttribute
+{
+  /*! \brief Update this attributes postValue depending of the $_POST values
+   */
+  function loadPostValue ()
+  {
+    if ($this->isVisible()) {
+      foreach ($_POST as $name => $value) {
+        if (preg_match('/^download'.$this->getHtmlId().'/',$name)) {
+          session::set('binary', $this->value);
+          session::set('binarytype', 'octet-stream');
+          session::set('binaryfile', $this->plugin->cn.".fdApplication");
+          header('location: getbin.php');
+          exit();
+        }
+      }
+      if (isset($_POST['upload'.$this->getHtmlId()])) {
+        parent::loadPostValue();
+      } else {
+        $id = $this->getHtmlId().'_text';
+        if (isset($_POST[$id])) {
+          $this->setPostValue($_POST[$id]);
+        }
+      }
+    }
+  }
+
+  function applyPostValue ()
+  {
+    if (!$this->disabled && $this->isVisible()) {
+      parent::applyPostValue();
+      if (is_object($this->plugin)) {
+        $this->setValue($this->inputValue($this->getValue()));
+      }
+    }
+  }
+
+  function inputValue ($value)
+  {
+    if (is_object($this->plugin)) {
+      $value = $this->plugin->generateTemplate().preg_replace('/.*### END HEADER ###/s', '', $value);
+    }
+    return $value;
+  }
+
+  function renderFormInput ()
+  {
+    $this->setValue($this->inputValue($this->getValue()));
+    $id = $this->getHtmlId();
+    $display  = '<textarea name="'.$id.'_text" id="'.$id.'_text"'.
+                ($this->disabled? 'disabled="disabled"':'').'>'.
+                '{literal}'.htmlentities($this->getValue(), ENT_COMPAT, 'UTF-8').'{/literal}</textarea>';
+    $display  .= '<input type="file" name="'.$id.'" id="'.$id.'" '.
+                ($this->disabled? 'disabled="disabled"':'').'/>';
+    $display  .= '<input type="submit" name="upload'.$id.'" id="upload'.$id.'"'.
+                ($this->disabled? ' disabled="disabled"':'').
+                ' value="'._('Upload').'"/>';
+    $display  .= '<input type="image" name="download'.$id.'"'.
+                ($this->disabled? ' disabled="disabled"':'').
+                ' src="images/save.png" title="'._('Download').'" class="center"/>';
+    return $this->renderAcl($display);
+  }
+
+  protected function htmlIds()
+  {
+    $id = $this->getHtmlId();
+    return array($id.'_text',$id,'upload'.$id,'download'.$id);
+  }
+
+  function computeLdapValue()
+  {
+    $value = parent::computeLdapValue();
+    if (preg_replace('/.*### END HEADER ###/s', '', $value) == '') {
+      return '';
+    } else {
+      return $value;
+    }
+  }
+}
+
+class application extends simplePlugin
+{
+  var $objectclasses = array("top", "gosaApplication");
+
+  var $mainTab = TRUE;
+
+  /* Return plugin informations for acl handling */
+  static function plInfo()
+  {
+    return array(
+      'plShortName'   => _('Generic'),
+      'plDescription' => _('Application generic'),
+      'plSelfModify'  => FALSE,
+      'plCategory'    => array('application' => array('description'  => _('Application'),
+                                                      'objectClass'  => 'gosaApplication')),
+      'plObjectType'  => array('application' => array('name'  => _('Application'),
+                                                      'filter'  => 'objectClass=gosaApplication')),
+
+      'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
+    );
+  }
+
+  /*!
+   *  \brief The main function : information about attributes
+   */
+  static function getAttributesInfo ()
+  {
+    return array(
+      'main' => array(
+        'name'  => _('Properties'),
+        'attrs' => array(
+          new HostNameAttribute (
+            _('Application name'), _('The name of this application'),
+            'cn', TRUE
+          ),
+          new StringAttribute (
+            _('Display name'), _('The displayed name for this application'),
+            'gosaApplicationName', FALSE
+          ),
+          new StringAttribute (
+            _('Execute'), _(''),
+            'gosaApplicationExecute', TRUE
+          ),
+          new StringAttribute (
+            _('Description'), _('A short description of this application'),
+            'description', FALSE
+          ),
+          new BaseSelectorAttribute(get_ou('applicationRDN')),
+        )
+      ),
+      'options' => array(
+        'name'  => _('Options'),
+        'attrs' => array(
+          new BooleanAttribute(
+            _('Only executable for member'), _(''),
+            'flag_group', FALSE, FALSE, '',
+            'G', ''
+          ),
+          new BooleanAttribute(
+            _('Replace user configuration on startup'), _(''),
+            'flag_overwrite', FALSE, FALSE, '',
+            'O', ''
+          ),
+          new BooleanAttribute(
+            _('Place icon on members desktop'), _(''),
+            'flag_desktop', FALSE, FALSE, '',
+            'D', ''
+          ),
+          new BooleanAttribute(
+            _('Place entry in members startmenu'), _(''),
+            'flag_menu', FALSE, FALSE, '',
+            'M', ''
+          ),
+          new BooleanAttribute(
+            _('Place entry in members launch bar'), _(''),
+            'flag_launchbar', FALSE, FALSE, '',
+            'L', ''
+          ),
+          new FlagsAttribute(
+            'gosaApplicationFlags',
+            array('flag_group','flag_overwrite','flag_desktop','flag_menu','flag_launchbar')
+          ),
+        )
+      ),
+      'scripton' => array(
+        'name'  => _('Script'),
+        'attrs' => array(
+          new ScriptAttribute(
+            '', _(''),
+            'gotoLogonScript'
+          ),
+        )
+      ),
+      'scriptoff' => array(
+        'name'  => _('Log off script'),
+        'attrs' => array(
+          new ScriptAttribute(
+            '', _(''),
+            'gotoLogoffScript'
+          ),
+        )
+      ),
+    );
+  }
+
+  function __construct (&$config, $dn = NULL, $object = NULL)
+  {
+    parent::__construct($config, $dn, $object);
+
+    $this->attributesAccess['cn']->setUnique(TRUE);
+    $this->attributesAccess['base']->setDisabled($this->is_release());
+  }
+
+  function execute()
+  {
+    $this->attributesAccess['base']->setDisabled($this->is_release());
+    return parent::execute();
+  }
+
+  function is_release()
+  {
+    if (isset($this->parent->parent)) {
+      return $this->parent->parent->IsReleaseManagementActivated();
+    } else {
+      /* Check if we should enable the release selection */
+      return class_available("faiManagement");
+    }
+  }
+
+  function generateTemplate()
+  {
+    if (!isset($this->parent->by_object['applicationParameters'])) {
+      return "";
+    }
+    $str = "# This code is part of FusionDirectory http://www.fusiondirectory.org/\n#\n";
+
+    $values = array();
+    $names  = array();
+    if ($this->parent->by_object['applicationParameters']->is_account) {
+      $names  = $this->parent->by_object['applicationParameters']->option_name;
+      $values = $this->parent->by_object['applicationParameters']->option_value;
+    }
+
+    if (count($names)) {
+      $str .= "# This plugin handles these environment variables:\n";
+    } else {
+      $str .= "# This plugin handles no environment variables.\n";
+    }
+
+    foreach($names as $index => $name){
+
+      // Fix length
+      for($i = strlen($name) ; $i < 30 ; $i++){
+        $name= $name." ";
+      }
+      if((isset($values[$index]))&&(!empty($values[$index]))){
+        $str.= "# ".$name."\t(e.g. '".$values[$index]."')\n";
+      }else{
+        $str.= "# ".$name."\t("._("no example").")\n";
+      }
+    }
+    $str .= "#\n".
+      "# Don't remove the following tag, it is used for header update.\n".
+      "### END HEADER ###";
+
+    return($str);
+  }
+
+  function remove_from_parent()
+  {
+    if (!$this->initially_was_account) {
+      return;
+    }
+
+    if ($this->acl_is_removeable()) {
+      /* Parse release out of object dn */
+      $release = preg_replace("/".preg_quote(get_ou('applicationRDN').$this->base, '/')."$/i","",$this->dn);
+      $release = preg_replace("/^cn=[^,]+,/","",$release);
+
+      /* Get a list of all groups
+       */
+      $groups = array();
+      $ldap= $this->config->get_ldap_link();
+      $ldap->cd($this->config->current['BASE']);
+      $ldap->search("(objectClass=posixGroup)",array("dn"));
+      while($attrs = $ldap->fetch()){
+        $groups[$attrs['dn']] = array();
+      }
+
+      /* Check if there are groups, useing this application
+       */
+      $found = array();
+      foreach($groups as $group => $data){
+        $ldap->cd($release.$group);
+        $ldap->search("(objectClass=gotoMenuEntry)",array("dn"));
+        while($attrs = $ldap->fetch()){
+          $info = preg_replace("/".preg_quote($release.$group, '/')."$/","",$attrs['dn']);
+          if(preg_match("/^cn=".$this->cn."/",$info) && !preg_match("/ou=[^,]+,/",$info)){
+            $found[] = $attrs['dn'];
+          }
+        }
+      }
+
+      /* Create an error message an skip remove, if
+          this application is still in use.
+       */
+      if(count($found)){
+        msg_dialog::display(_("Error"), sprintf(_("Cannot remove application - it is still in use by these objects: %s"), "<br>".msgPool::buildList($found)), ERROR_DIALOG);
+        return(FALSE);
+      }
+
+      parent::remove_from_parent();
+
+      /* Delete references to object groups */
+      $ldap->cd ($this->config->current['BASE']);
+      $ldap->search ("(&(objectClass=gosaGroupOfNames)(member=".LDAP::prepare4filter($this->dn)."))", array("cn"));
+      while ($ldap->fetch()){
+        $og= new ogroup($this->config, $ldap->getDN());
+        unset($og->member[$this->dn]);
+        $og->save ();
+        if (!$ldap->success()){
+          msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()), ERROR_DIALOG);
+        }
+      }
+    }
+  }
+
+}
+
+class application_old extends plugin
 {
   /* application attributes */
   var $cn           = "";
@@ -517,18 +825,6 @@ class application extends plugin
     }
   }
 
-
-  function is_release()
-  {
-    if (isset($this->parent->parent)) {
-      return $this->parent->parent->IsReleaseManagementActivated();
-    } else {
-      /* Check if we should enable the release selection */
-      return class_available("faiManagement");
-    }
-  }
-
-
   function set_picture($filename)
   {
     if (!is_file($filename)){
@@ -546,39 +842,5 @@ class application extends plugin
       fclose ($fd);
     }
   }
-
-  /* Return plugin informations for acl handling
-      #FIXME FAIscript seams to ununsed within this class... */
-  static function plInfo()
-  {
-    return array(
-      "plShortName"   => _("Generic"),
-      "plDescription" => _("Application generic"),
-      "plSelfModify"  => FALSE,
-      "plCategory"    => array("application" => array("description"  => _("Application"),
-                                                      "objectClass"  => "gosaApplication")),
-      "plObjectType"  => array("application" => array("name"  => _("Application"),
-                                                      "filter"  => "objectClass=gosaApplication")),
-
-      "plProvidedAcls"=> array(
-        "cn"                => _("Name"),
-        "base"              => _("Base"),
-        "description"       => _("Description"),
-
-        "gosaApplicationExecute"  => _("Execute"),
-        "gosaApplicationName"     => _("Name"),
-        "gosaApplicationIcon"     => _("Icon"),
-        "gotoLogonScript"         => _("Script content"),
-        "gotoLogoffScript"        => _("Script content"),
-
-        "execForGroupmembers" => _("Only executable for members"),              // G
-        "placeOnDesktop"      => _("Place icon on members desktop"),            // D
-        "placeOnKicker"       => _("Place entry in members launch bar"),        // L
-        "placeInStartmenu"    => _("Place entry in members startmenu"),         // M
-        "overwriteConfig"     => _("Replace user configuration on startup")  // O
-      )
-    );
-  }
 }
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>
