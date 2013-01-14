@@ -131,6 +131,14 @@
       <image>plugins/systems/images/select_component.png</image>
     </objectType>
 
+    <objectType>
+      <label>Mobile phone</label>
+      <objectClass>fdMobilePhone</objectClass>
+      <category>mobilePhone</category>
+      <class>mobilePhoneGeneric</class>
+      <image>plugins/systems/images/select_phone.png</image>
+    </objectType>
+
   </definition>
 
   <table>
@@ -265,6 +273,14 @@
       <image>plugins/systems/images/select_component.png</image>
       <label>Network device</label>
       <depends>componentGeneric</depends>
+     </action>
+
+     <action>
+      <name>new_fdMobilePhone</name>
+      <type>entry</type>
+      <image>plugins/systems/images/select_phone.png</image>
+      <label>Mobile Phone</label>
+      <depends>mobilePhoneGeneric</depends>
      </action>
     </action>
 

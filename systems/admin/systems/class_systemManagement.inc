@@ -81,10 +81,11 @@ class systemManagement extends management
     $this->registerAction("new_goServer",         "newEntry");
     $this->registerAction("new_gotoWorkstation",  "newEntry");
     $this->registerAction("new_gotoTerminal",     "newEntry");
-    $this->registerAction("new_sambaSamAccount",       "newEntry");
+    $this->registerAction("new_sambaSamAccount",  "newEntry");
     $this->registerAction("new_gotoPrinter",      "newEntry");
     $this->registerAction("new_goFonHardware",    "newEntry");
     $this->registerAction("new_ieee802Device",    "newEntry");
+    $this->registerAction("new_fdMobilePhone",    "newEntry");
 
     $this->registerAction("setPassword", "setPassword");
     $this->registerAction("passwordChangeConfirmed", "passwordChangeConfirmed");
@@ -1105,6 +1106,15 @@ class systemManagement extends management
             "tabDesc"     => "COMPONENTTABS",
             "aclClass"    => "componentGeneric",
             "aclCategory" => "component"),
+
+        "fdMobilePhone"   => array(
+            "ou"          => get_ou('mobilePhoneRDN'),
+            "plugClass"   => "mobilePhoneGeneric",
+            "tabClass"    => "mobiletabs",
+            "tabDesc"     => "MOBILEPHONETABS",
+            "aclClass"    => "mobilePhoneGeneric",
+            "sendEvents"  => FALSE,
+            "aclCategory" => "mobilePhone"),
         );
 
     // Now map some special types
