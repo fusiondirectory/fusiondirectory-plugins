@@ -616,34 +616,35 @@ class serviceDNS extends goService
   /* Return plugin informations for acl handling */
   static function plInfo()
   {
-    return (array(
-          "plShortName"   => _("DNS service"),
-          "plDescription" => _("DNS service")." ("._("Services").")",
-          "plSelfModify"  => FALSE,
-          "plPriority"    => 83,
-          "plCategory"    => array("server"),
+    return array(
+      'plShortName'   => _('DNS service'),
+      'plDescription' => _('DNS service').' ('._('Services').')',
+      'plIcon'        => 'plugins/systems/images/service_dns.png',
+      'plSelfModify'  => FALSE,
+      'plPriority'    => 83,
+      'plCategory'    => array('server'),
 
-          "plProvidedAcls"=> array(
-            "start"         => _("Start service"),  // Remove this to hide the start button at all.
-            "stop"          => _("Stop service"),   // Remove this to hide the stop button at all.
-            "restart"       => _("Restart service"),// Remove this to hide the restart button at all.
+      'plProvidedAcls'=> array(
+        'start'         => _('Start service'),  // Remove this to hide the start button at all.
+        'stop'          => _('Stop service'),   // Remove this to hide the stop button at all.
+        'restart'       => _('Restart service'),// Remove this to hide the restart button at all.
 
-            "zoneName"      =>_("Zone name"),
-            "ReverseZone"   =>_("Reverse zone"),
-            "NetworkClass"  =>_("Network class"),
-            "zoneEditor"    =>_("Zone entry editor"),
-            "sOAprimary"    =>_("Primary dns server"),
-            "sOAmail"       =>_("Mail address"),
-            "sOAserial"     =>_("Serial"),
-            "sOArefresh"    =>_("Refresh"),
-            "sOAretry"      =>_("Retry"),
-            "sOAexpire"     =>_("Expire"),
-            "sOAttl"        =>_("TTL"),
-            "mXRecord"      =>_("MX records"),
-            "zoneRecords"   =>_("Zone records"))
-    ));
+        'zoneName'      =>_('Zone name'),
+        'ReverseZone'   =>_('Reverse zone'),
+        'NetworkClass'  =>_('Network class'),
+        'zoneEditor'    =>_('Zone entry editor'),
+        'sOAprimary'    =>_('Primary dns server'),
+        'sOAmail'       =>_('Mail address'),
+        'sOAserial'     =>_('Serial'),
+        'sOArefresh'    =>_('Refresh'),
+        'sOAretry'      =>_('Retry'),
+        'sOAexpire'     =>_('Expire'),
+        'sOAttl'        =>_('TTL'),
+        'mXRecord'      =>_('MX records'),
+        'zoneRecords'   =>_('Zone records')
+      )
+    );
   }
 
 }
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

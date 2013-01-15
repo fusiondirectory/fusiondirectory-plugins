@@ -28,11 +28,11 @@ class goNtpServer extends simpleService {
   static function plInfo()
   {
     return array(
-      "plShortName"     => _("Time service"),
-      "plDescription"   => _("Time service - NTP")." ("._("Services").")",
-      "plSelfModify"    => FALSE,
-      "plCategory"      => array("server"),
-      "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plShortName'   => _('Time service'),
+      'plDescription' => _('Time service - NTP').' ('._('Services').')',
+      'plIcon'        => 'plugins/systems/images/service_ntp.png',
+
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }
 

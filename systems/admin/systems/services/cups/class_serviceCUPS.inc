@@ -79,20 +79,20 @@ class serviceCUPS extends goService {
   /* Return plugin informations for acl handling */
   static function plInfo()
   {
-    return (array(
-          "plShortName"   => _("Cups"),
-          "plDescription" => _("Print service")." ("._("Services").")",
-          "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
-          "plPriority"    => 100,
-          "plCategory"    => array("server"),
+    return array(
+      "plShortName"   => _("Cups"),
+      "plDescription" => _("Print service")." ("._("Services").")",
+      "plIcon"        => "plugins/systems/images/service_print.png",
+      "plSelfModify"  => FALSE,
+      "plPriority"    => 100,
+      "plCategory"    => array("server"),
 
-          "plProvidedAcls"=> array(
-            "start"         => _("Start"),
-            "stop"          => _("Stop"),
-            "restart"       => _("Restart"),
-            )
-          ));
+      "plProvidedAcls"=> array(
+        "start"         => _("Start"),
+        "stop"          => _("Stop"),
+        "restart"       => _("Restart"),
+      )
+    );
   }
 }
 // vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:

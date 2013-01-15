@@ -1177,43 +1177,39 @@ class systemManagement extends management
   static function listServices($dn)
   {
     global $config;
+    static $services = array();
+    if (empty($services)) {
+      foreach ($config->data['TABS']['SERVERSERVICE'] as $plug) {
+        if (class_available($plug['CLASS'])) {
+          $name = $plug['CLASS'];
+
+          $services[$name] = new $name($config, $dn);
+        }
+      }
+    }
 
     // Load information if needed
     $ldap = $config->get_ldap_link();
-    $ldap->cd($dn);
-    $ldap->search("(objectClass=*)",array('objectClass'));
-    $str = "&nbsp;";
-    $services = array();
-    $services_class = array (
-        "FAIrepositoryServer" => "repository",
-        "goLdapServer"        => "ldap",
-        "dNSZone"             => "dns",
-        "goNtpServer"         => "ntp",
-        "argonautServer"      => "argonaut",
-        "dhcpServer"          => "dhcp",
-        "goVirusServer"       => "antivirus",
-        "goSpamServer"        => "spamassassin",
-        "goShareServer"       => "file",
-        "goCupsServer"        => "print",
-        "goImapServer"        => "imap",
-        "goTerminalServer"    => "terminal",
-        "apacheConfig"        => "apache",
-        "sympaServer"         => "sympa",
-        "goMailServer"        => "smtp"
-        );
-    while($attrs = $ldap->fetch()){
-        unset($attrs['objectClass']['count']);
-        foreach($attrs['objectClass'] as $class) {
-            if(isset($services_class[$class])) {
-              $services[$services_class[$class]] =" <img class='center' src='plugins/systems/images/service_".$services_class[$class].".png' alt='".$services_class[$class]."' title ='".$services_class[$class]."'/>";
-            }
+    $ldap->cat($dn);
+    $services_imgs = array();
+    if ($attrs = $ldap->fetch()) {
+      foreach ($services as $class => $service) {
+        if ($service->is_this_account($attrs)) {
+          $infos = pluglist::pluginInfos($class);
+          if (isset($infos['plIcon'])) {
+            $services_imgs[] = " <img class='center' src='".$infos['plIcon']."' alt='".$infos['plShortName']."' title ='".$infos['plShortName']."'/>";
+          } else {
+            @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $infos['plShortName']." ($class)", "No icon for");
+          }
         }
+      }
     }
-    $str = implode("",$services);
-    if($str=="") {
-        $str="&nbsp;";
+
+    $str = implode("", $services_imgs);
+    if ($str == "") {
+      $str = "&nbsp;";
     }
-    return($str);
+    return $str;
   }
 
   static function ipOf($dn)

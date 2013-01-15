@@ -29,10 +29,11 @@ class serviceIMAP extends simpleService
   static function plInfo()
   {
     return array(
-      "plShortName"     => _("IMAP/POP3 generic service"),
-      "plDescription"   => _("IMAP/POP3")." ("._("Services").")",
+      'plShortName'   => _('IMAP/POP3 generic service'),
+      'plDescription' => _('IMAP/POP3').' ('._('Services').')',
+      'plIcon'        => 'plugins/systems/images/service_imap.png',
 
-      "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }
 

@@ -28,10 +28,11 @@ class sympaServer extends simpleService
   static function plInfo()
   {
     return array(
-      "plShortName"     => _("Sympa Server"),
-      "plDescription"   => _("Sympa Server")." ("._("Services").")",
+      'plShortName'   => _('Sympa Server'),
+      'plDescription' => _('Sympa Server').' ('._('Services').')',
+      'plIcon'        => 'plugins/sympa/images/sympa_icon.png',
 
-      "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }
 

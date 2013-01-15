@@ -427,6 +427,7 @@ class serviceShare extends goService {
     return (array(
           "plShortName"   => _("File service (Shares)"),
           "plDescription" => _("File service - Shares")." ("._("Services").")",
+          "plIcon"        => "plugins/systems/images/service_file.png",
           "plSelfModify"  => FALSE,
           "plPriority"    => 90,
           "plCategory"    => array("server"),

@@ -30,10 +30,11 @@ class serviceCyrus extends simpleService
   static function plInfo()
   {
     return array(
-      "plShortName"     => _("Cyrus (IMAP/POP3)"),
-      "plDescription"   => _("Cyrus (IMAP/POP3)")." ("._("Services").")",
+      'plShortName'     => _('Cyrus (IMAP/POP3)'),
+      'plDescription'   => _('Cyrus (IMAP/POP3)').' ('._('Services').')',
+      'plIcon'        => 'plugins/systems/images/service_smtp.png',
 
-      "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }
 

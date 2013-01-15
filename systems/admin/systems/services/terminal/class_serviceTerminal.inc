@@ -24,17 +24,17 @@ class goTerminalServer extends simpleService
 {
 
   /* This plugin only writes its objectClass */
-  var $objectclasses    = array("goTerminalServer");
+  var $objectclasses = array("goTerminalServer");
 
   /* Return plugin informations for acl handling */
   static function plInfo()
   {
     return array(
-      "plShortName"   => _("Terminal service"),
-      "plDescription" => _("Terminal service")." ("._("Services").")",
-      "plSelfModify"  => FALSE,
-      "plCategory"    => array("server"),
-      "plProvidedAcls"=> parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plShortName'   => _('Terminal service'),
+      'plDescription' => _('Terminal service').' ('._('Services').')',
+      'plIcon'        => 'plugins/systems/images/service_terminal.png',
+
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }
 

@@ -85,6 +85,7 @@ class serviceLDAP extends simpleService
       "plDescription" => _("LDAP")." ("._("Services").")",
       "plPriority"    => 30,
       "plCategory"    => array("server"),
+      "plIcon"        => 'plugins/systems/images/service_ldap.png',
 
       "plProvidedAcls" => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );

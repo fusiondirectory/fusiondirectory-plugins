@@ -32,6 +32,7 @@ class gospamserver extends simpleService {
     return array(
       'plShortName'   => _('Spamassassin service'),
       'plDescription' => _('Spamassassin service').' ('._('Services').')',
+      'plIcon'        => 'plugins/systems/images/service_spamassassin.png',
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
