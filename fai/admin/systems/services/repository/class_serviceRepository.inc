@@ -69,7 +69,7 @@ class serviceDebianRepository extends simpleService
                   'mirrorSections',
                   new SetAttribute(
                     new StringAttribute(
-                      _('Sections'), _('Debian sections available on this repository'), 'mirrorSections_cl'
+                      _('Sections'), _('Debian sections available on this repository'), 'mirrorSections_inner'
                     )
                   )
                 ),
@@ -88,7 +88,7 @@ class serviceDebianRepository extends simpleService
                   'mirrorArchs',
                   new SetAttribute(
                     new StringAttribute(
-                      _('Architectures'), _('Processor architectures available on this repository'), 'mirrorArchs_cl'
+                      _('Architectures'), _('Processor architectures available on this repository'), 'mirrorArchs_inner'
                     )
                   )
                 ),
