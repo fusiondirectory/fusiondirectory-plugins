@@ -90,6 +90,12 @@ class systemManagement extends management
     $this->registerAction("setPassword", "setPassword");
     $this->registerAction("passwordChangeConfirmed", "passwordChangeConfirmed");
 
+    foreach ($this->config->data['TABS']['SERVERSERVICE'] as $plug) {
+      if (class_available($plug['CLASS'])) {
+        $this->registerAction("edit_".$plug['CLASS'], "editEntry");
+      }
+    }
+
     // Check if we are able to communicate with Argonaut server
     if (class_available("supportDaemon")) {
       $o = new supportDaemon();
@@ -547,18 +553,30 @@ class systemManagement extends management
   }
 
 
-  /*! \brief  Edit the selected system type.
-   */
-  function editEntry($action="",$target=array(),$all=array(), $altTabClass ="", $altTabType = "", $altAclCategory="")
+  /*! \brief  Edit the selected system type. */
+  function editEntry($action = "", $target = array(), $all = array(), $altTabClass = "", $altTabType = "", $altAclCategory = "")
   {
     if (count($target) == 1) {
-      $tInfo = $this->getObjectDefinitions();
+      $tInfo    = $this->getObjectDefinitions();
       $headpage = $this->getHeadpage();
-      $dn = $target[0];
-      $type =$headpage->getType($dn);
-      $tData = $tInfo[$type];
+      $dn       = $target[0];
+      $type     = $headpage->getType($dn);
+      $tData    = $tInfo[$type];
 
-      return(management::editEntry($action,$target,$all,$tData['tabClass'],$tData['tabDesc'],$tData['aclCategory']));
+      $str = management::editEntry($action, $target, $all, $tData['tabClass'], $tData['tabDesc'], $tData['aclCategory']);
+      if ($str) {
+        return $str;
+      }
+      if (preg_match("/^edit_/", $action)) {
+        $service = preg_replace("/^edit_/", "", $action);
+        if (isset($this->tabObject->by_object['ServerService'])) {
+          $this->tabObject->current = 'ServerService';
+          $all = array('action'  => 'edit', 'targets' => array($service));
+          $this->tabObject->by_object['ServerService']->editEntry($all['action'], $all['targets'], $all);
+        } else {
+          trigger_error("Unknown tab: ServerService");
+        }
+      }
     }
   }
 
@@ -1153,7 +1171,7 @@ class systemManagement extends management
     if ($class && is_array($class)) {
       foreach (explode(' ', $class[0]) as $element) {
         if ($element[0] == ":") {
-          return "&nbsp;<img class='center' src='images/empty.png'>&nbsp;".mb_substr($element, 1);
+          return "&nbsp;".mb_substr($element, 1);
         }
       }
     }
@@ -1174,7 +1192,7 @@ class systemManagement extends management
     return("&nbsp;");
   }
 
-  static function listServices($dn)
+  static function listServices($row, $dn)
   {
     global $config;
     static $services = array();
@@ -1197,7 +1215,9 @@ class systemManagement extends management
         if ($service->is_this_account($attrs)) {
           $infos = pluglist::pluginInfos($class);
           if (isset($infos['plIcon'])) {
-            $services_imgs[] = " <img class='center' src='".$infos['plIcon']."' alt='".$infos['plShortName']."' title ='".$infos['plShortName']."'/>";
+            $services_imgs[] = "<input class='center' type='image' src='".$infos['plIcon']."' ".
+                               "alt='".$infos['plShortName']."' title='".$infos['plShortName']."' ".
+                               "name='listing_edit_".$class."_$row' style='padding:1px'/>";
           } else {
             @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $infos['plShortName']." ($class)", "No icon for");
           }
