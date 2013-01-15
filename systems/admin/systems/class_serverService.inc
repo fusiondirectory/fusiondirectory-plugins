@@ -134,11 +134,16 @@ class ServerService extends management
   {
     $this->headpage->xmlData['actionmenu']['action'][0]['action'] = array();
     $available_services = $this->getAllUnusedServices();
-    foreach ($available_services as $name => $label) {
+    foreach ($available_services as $class => $label) {
+      $icon = 'images/lists/new.png';
+      $infos = pluglist::pluginInfos($class);
+      if (isset($infos['plIcon'])) {
+        $icon = $infos['plIcon'];
+      }
       $this->headpage->xmlData['actionmenu']['action'][0]['action'][] = array(
-        'name' => 'new_'.$name,
+        'name' => 'new_'.$class,
         'type' => 'entry',
-        'image' => 'images/lists/new.png',
+        'image' => $icon,
         'label' => $label,
       );
     }
