@@ -284,12 +284,11 @@ class mailMethodCyrus extends mailMethod
 
         /* Autocreate configured default folders */
         $folders = $this->config->get_cfg_value("cyrusAutocreateFolders", NULL);
-        if ($folders) {
-          $foldersToCreate  = explode(",", $folders);
+        if ($folders !== NULL) {
           $cyrus_delim      = ($this->cyrusUseSlashes?"/":".");
 
           // Walk thru list of specified folders
-          foreach ($foldersToCreate as $folder) {
+          foreach ($folders as $folder) {
             @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>".$this->account_id."</b>",
               "<b>IMAP: Add/Update account folder ".$folder."</b> on server :".$this->parent->gosaMailServer);
             if (!imap_createmailbox($this->imap_handle, $cfg["connect"].$this->account_id.$cyrus_delim.$folder)) {
