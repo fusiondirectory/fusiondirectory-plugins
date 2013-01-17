@@ -59,7 +59,7 @@ class serviceKolab extends simpleService
   var $displayHeader  = FALSE;
   var $mainTab        = TRUE;
 
-  var $conflicts    = array("goMailServer","GOhard");
+  var $conflicts    = array("fdPostfixServer","GOhard");
 
   static function plInfo()
   {

@@ -24,7 +24,6 @@ class serviceShare extends goService {
   /* This plugin only writes its objectClass */
   var $objectclasses    = array("goShareServer");
   var $attributes       = array("goExportEntry");
-  var $StatusFlag       = "goShareServerStatus";
 
   /* This class can't be assigned twice so it conflicts with itsself */
   var $conflicts        = array("serviceShare");
@@ -32,7 +31,6 @@ class serviceShare extends goService {
   var $DisplayName          = "";
   var $dn                   = NULL;
   var $cn                   = "";
-  var $goShareServerStatus  = "";
   var $goExportEntry        = array();
   var $allow_mounts         = false;
   var $mounts_to_remove     = array();
