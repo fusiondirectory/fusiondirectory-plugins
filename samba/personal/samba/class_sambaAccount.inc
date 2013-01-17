@@ -456,6 +456,7 @@ class sambaAccount extends simplePlugin
 
     // Need to generate a new uniqe uid/gid combination?
     if (($this->sambaSID == "") || $this->attributesAccess['sambaDomainName']->hasChanged()) {
+      $ldap = $this->config->get_ldap_link();
       $uidNumber_tmp = $uidNumber;
       do {
         $sid = $this->SID."-".($uidNumber_tmp * 2 + $this->ridBase);
