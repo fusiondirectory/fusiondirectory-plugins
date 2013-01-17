@@ -87,7 +87,7 @@ class mobilePhoneGeneric extends simplePlugin
       ),
       'network' => array(
         'name'      => _('Network settings'),
-        'attrs'     => array(new NetworkSettingsAttribute()),
+        'attrs'     => array(new NetworkSettingsAttribute('cn', array('ipHost', 'ieee802Device'))),
         'template'  => get_template_path('network_section.tpl', TRUE, dirname(__FILE__)),
         'icon'      => get_template_path('plugins/systems/images/network.png'),
       ),
@@ -99,6 +99,8 @@ class mobilePhoneGeneric extends simplePlugin
     parent::__construct($config, $dn, $object);
 
     $this->attributesAccess['cn']->setUnique(TRUE);
+    $this->netConfigDNS->IPisMust   = FALSE;
+    $this->netConfigDNS->MACisMust  = FALSE;
   }
 
   function resetCopyInfos()

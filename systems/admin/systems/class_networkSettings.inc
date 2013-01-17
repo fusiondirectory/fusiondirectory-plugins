@@ -745,7 +745,7 @@ class networkSettings extends plugin
     }
 
     /* Do not add the objectClass ipHost if no ip address is given */
-    if (!isset($this->attrs['ipHostNumber'])) {
+    if (!isset($this->attrs['ipHostNumber']) || empty($this->attrs['ipHostNumber'])) {
       $this->attrs['objectClass'] = array_remove_entries(array('ipHost'), $this->attrs['objectClass']);
     }
 

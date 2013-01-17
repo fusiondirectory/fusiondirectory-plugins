@@ -33,7 +33,7 @@
   {if $USE_ieee802Device}
   {$COMPONENT}<label for="COMPONENT">&nbsp;{t}Show network devices{/t}</label><br>
   {/if}
-  {if $USE_mobilePhone}
+  {if $USE_fdMobilePhone}
   {$MOBILEPHONE}<label for="MOBILEPHONE">&nbsp;{t}Show mobile phones{/t}</label><br>
   {/if}
 
