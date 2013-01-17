@@ -6,8 +6,8 @@
 
 <input type="hidden" name="iamposted" value="1">
 
-<h2> 
- <img class="center" alt="" src="plugins/systems/images/fai_settings.png" align="middle" /> 
+<h2>
+ <img class="center" alt="" src="plugins/systems/images/fai_settings.png" align="middle" />
  {t}Profiles{/t}
 </h2>
 
@@ -61,7 +61,7 @@
      <td>
       <table summary="{t}Profile server managment{/t}">
        <tr>
-        <td> 
+        <td>
          <label for="gotoProfileServer">{t}Profil path{/t}</label>
         </td>
         <td>
@@ -78,7 +78,7 @@
          </select>
 {else}
          <select id="dummy_pS" name="dummy_pS" disabled >
-          <option >{$gotoProfileServer}</option> 
+          <option >{$gotoProfileServer}</option>
          </select>
 {/if}
 {/render}
@@ -86,7 +86,7 @@
        </tr>
        <tr>
         <td>
-         <label for="gotoProfileQuota">{t}Profil quota{/t}</label> 
+         <label for="gotoProfileQuota">{t}Profil quota{/t}</label>
          <br>
          <br>
         </td>
@@ -99,7 +99,7 @@
         </td>
        </tr>
        <tr>
-        <td colspan=2> 
+        <td colspan=2>
 {render acl=$gotoProfileFlagCACL}
          <input class="center" type="checkbox" name="gotoProfileFlagC" value="C" {$gotoProfileFlagCCHK} id="gotoProfileFlagC">&nbsp;
 {/render}
@@ -118,53 +118,6 @@
 
 
   <table summary="{t}Kiosk profile settings{/t}">
-{if $kiosk_enabled}
-    <tr>
-     <td colwidth=2>
-      <label for="kiosk_server">{t}Kiosk profile{/t}</label>
-     </td>
-    </tr>
-    <tr>
-     <td> 
-{if $multiple_support}
-    <input type="checkbox" name="use_kiosk_server" value="1" {if $use_kiosk_server} checked {/if} 
-    class="center" 
-      onClick="changeState('kiosk_server');
-           changeState('kiosk_profile');"> 
-{/if}
-    {t}Server{/t}
-{render acl=$gotoKioskProfileACL}
-      <select name='kiosk_server' id="kiosk_server" onChange='document.mainform.submit();'
-    {if !$use_kiosk_server && $multiple_support} disabled {/if}>
-       {html_options options=$kiosk_servers selected=$kiosk_server}
-      </select>
-{/render}
-     </td>
-     <td>
-      {if $kiosk_server != "none"}
-      {t}Profile{/t}
-{render acl=$gotoKioskProfileACL}
-      <select name='kiosk_profile' id="kiosk_profile"
-        {if !$use_kiosk_server && $multiple_support} disabled {/if}>
-       {html_options values=$kiosk_profiles output=$kiosk_profiles selected=$kiosk_profile}
-      </select>
-{/render}
-      {else}
-        &nbsp;
-      {/if}
-     </td>
-    </tr>
- {else}
-  <tr>
-    <td>
-      <label for="dummy1">{t}Kiosk profile{/t}</label>
-    </td>
-    <td>
-      <select name="dummy1" disabled id="dummy1"><option disabled>&nbsp;</option></select>
-      <input type="button" disabled name="dummy2" value="{t}Manage{/t}">
-    </td>
-  </tr>
-{/if}
     <tr>
      <td colspan=2>
       <br>
@@ -191,7 +144,7 @@
 {/render}
      </td>
     </tr>
-   </table> 
+   </table>
 
 
 
@@ -214,7 +167,7 @@
    <table summary="" style="width:100%">
     <tr>
      <td>
-  
+
 {render acl=$gotoShareACL}
       {$divlistShares}
 {/render}
@@ -233,7 +186,7 @@
       title="{t}Mount path{/t}">
 {/render}
 {render acl=$gotoShareACL}
-      <input type="submit" name="gotoShareAdd" value="{msgPool type=addButton}"> 
+      <input type="submit" name="gotoShareAdd" value="{msgPool type=addButton}">
 {/render}
       <!--   <input type="submit" name="gotoShareDel" value="{t}Remove{/t}"> -->
      </td>
@@ -278,15 +231,15 @@
 {/render}
      </td>
     </tr>
-   </table> 
-   
+   </table>
+
    <h3><label for="gotoLogoffScript">{t}Log off scripts{/t}</label></h3>
    <table summary="{t}Log off script management{/t}" style="width:100%">
     <tr>
      <td>
       {render acl=$gotoLogoffScriptACL}
       <select style="width:100%;" name="gotoLogoffScript" multiple size=5 id="gotoLogoffScript">
-       
+
        {if $multiple_support}
        {foreach from=$gotoLogoffScripts item=item key=key}
        {if $item.UsedByAllUsers}
@@ -301,28 +254,28 @@
        {/if}
       </select>
       {/render}
-      
+
       <br>
       {render acl=$gotoLogoffScriptACL}
       <button type='submit' name='gotoLogoffScriptNew'>{msgPool type=addButton}</button>
-      
+
       {/render}
       {render acl=$gotoLogoffScriptACL}
       <button type='submit' name='gotoLogoffScriptEdit' {if $gotoLogoffScriptKeysCnt ==0} disabled {/if}
       >{t}Edit{/t}</button>
-      
+
       {/render}
       {render acl=$gotoLogoffScriptACL}
       <button type='submit' name='gotoLogoffScriptDel' {if $gotoLogoffScriptKeysCnt ==0} disabled {/if}
       >{msgPool type=delButton}</button>
-      
+
       {/render}
      </td>
     </tr>
-   </table> 
-   
-   
-   
+   </table>
+
+
+
   </td>
  </tr>
 </table>
@@ -335,7 +288,7 @@
    <h2>
     <img alt="" src="plugins/systems/images/hotplug.png" align="middle" class="center" />&nbsp;
     <label for="gotoHotplugDevice_post">{t}Hotplug devices{/t}</label>
-   </h2> 
+   </h2>
    <table style="width:100%" summary="{t}Hotplug device settings{/t}">
     <tr>
      <td>

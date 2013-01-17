@@ -68,13 +68,6 @@ class environment extends plugin
   var $gotoShareSelections= array();// Available Shares for this account in Listbox format
   var $gotoAvailableShares= array();// Available Shares for this account
 
-  /* Kiosk profile */
-  var $kiosk_enabled      = FALSE;
-  var $gotoKioskProfile   = "";     // The selected Kiosk Profile
-  var $gotoKioskProfile_Server    = "";     // The selected Kiosk Profile
-  var $gotoKioskProfile_Profile   = "";     // The selected Kiosk Profile
-  var $gotoKioskProfiles  = array();// All available Kiosk profiles
-
   /* Hotplug Devices */
   var $gotoHotplugDevice  = array();     // Selected hotplug
   var $gotoHotplugDevices = array();// Already configured hotplug devices
@@ -107,9 +100,6 @@ class environment extends plugin
                             "gotoShare",
                             "gotoShareSelections",
                             "gotoAvailableShares",
-                            "gotoKioskProfile",
-                            "gotoKioskProfile_Server",
-                            "gotoKioskProfile_Profile",
                             "is_group",
                             "in_dialog",
                             );
@@ -119,8 +109,7 @@ class environment extends plugin
       "gotoLogonScript","gotoLogonScripts",
       "gotoLogoffScript","gotoLogoffScripts","gotoHotplugDevices",
       "gotoPrinter", "gosaDefaultPrinter",
-      "gotoShare",
-      "gotoKioskProfile");
+      "gotoShare");
 
   var $objectclasses      = array("gotoEnvironment"); // Specifies the objectClass which contains the attributes edited here
   var $cn;
@@ -227,7 +216,6 @@ class environment extends plugin
         }
       }
     }
-    $this->update_kiosk_profiles();
   }
 
   function update_gotoProfileFlags($flags=NULL) {
@@ -394,58 +382,6 @@ class environment extends plugin
     return array($name, $script);
   }
 
-
-  function update_kiosk_profiles()
-  {
-    $this->gotoKioskProfile_Server = preg_replace("/^.*:\/\/([^\/]*).*$/","\\1",$this->gotoKioskProfile);
-    $this->gotoKioskProfile_Profile= preg_replace("/^.*\//","",$this->gotoKioskProfile);
-
-    $tmp1  = array("none" => array(_("disabled")));
-    $tmp2  = array("none" => _("disabled"));
-    $tmp3  = array();
-    $ldap = $this->config->get_ldap_link();
-    $ldap->cd($this->config->current['BASE']);
-    $ldap->search("(&(objectClass=goEnvironmentServer)(gotoKioskProfile=*)(cn=*))",array("cn","gotoKioskProfile"));
-    $cnt = 0;
-    $ui = get_userinfo();
-    while($attrs = $ldap->fetch()){
-      $acl = $ui->get_permissions($attrs['dn'],"server/serviceKiosk","");
-      for($i = 0 ; $i < $attrs['gotoKioskProfile']['count'] ; $i ++){
-        if(preg_match("/r/",$acl) || $this->gotoKioskProfile_Server == $attrs['cn'][0]){
-          $name = preg_replace("/^.*\//","",$attrs['gotoKioskProfile'][$i]);
-          $tmp1[$attrs['cn'][0]][] = $name;
-          $tmp3[$attrs['cn'][0]][$name] = $attrs['gotoKioskProfile'][$i];
-          $tmp2[$attrs['cn'][0]]= $attrs['cn'][0];
-          $cnt ++;
-        }
-      }
-    }
-
-    if($cnt && $this->config->search("environment","kioskpath",array('menu','tabs'))){
-      $this->kiosk_enabled = TRUE;
-    }
-
-    $this->gotoKioskProfiles['BY_SERVER'] = $tmp1;
-    $this->gotoKioskProfiles['SERVERS']   = $tmp2;
-    $this->gotoKioskProfiles['MAP']       = $tmp3;
-
-    $error = false;
-    if(!isset($this->gotoKioskProfiles['SERVERS'][$this->gotoKioskProfile_Server])){
-      $error = true;
-    }elseif(!in_array($this->gotoKioskProfile_Profile, $this->gotoKioskProfiles['BY_SERVER'][$this->gotoKioskProfile_Server])){
-      $error = true;
-    }
-    if($error && !empty($this->gotoKioskProfile)){
-      msg_dialog::display(_("Warning"), sprintf(_("Kiosk profile '%s' located on server '%s' is not available anymore. Kiosk profile will be disabled!"), $this->gotoKioskProfile_Profile, $this->gotoKioskProfile_Server), WARNING_DIALOG);
-      $this->gotoKioskProfile_Server ="none";
-      $this->gotoKioskProfile_Profile="";
-    }elseif(empty($this->gotoKioskProfile)){
-      $this->gotoKioskProfile_Server ="none";
-      $this->gotoKioskProfile_Profile="";
-    }
-  }
-
-
   /* Detect type of edited object (user|group)*/
   function detect_grouptype()
   {
@@ -502,9 +438,8 @@ class environment extends plugin
     $this->detect_grouptype();
 
     /* Fill templating stuff */
-    $smarty= get_smarty();
-    $smarty->assign("kiosk_enabled",$this->kiosk_enabled);
-    $display= "";
+    $smarty   = get_smarty();
+    $display  = "";
 
     $smarty->assign("is_group",$this->is_group);
 
@@ -690,13 +625,6 @@ class environment extends plugin
     if(!is_array($this->gotoProfileServers)){
       $this->gotoProfileServers =array();
     }
-
-    /* Handle kiosk profiles*/
-    $smarty->assign("kiosk_servers" , $this->gotoKioskProfiles['SERVERS']);
-    $smarty->assign("kiosk_server" ,  $this->gotoKioskProfile_Server);
-    $smarty->assign("kiosk_profiles" , $this->gotoKioskProfiles['BY_SERVER'][$this->gotoKioskProfile_Server]);
-    $smarty->assign("kiosk_profile" ,  $this->gotoKioskProfile_Profile);
-
 
     /* Logonscript Management
      * Get available LogonScripts (possibly grey out (or mark) these script that are defined for the group)
@@ -1239,19 +1167,6 @@ class environment extends plugin
 
       $PACL =  $this->getacl("gotoProfileServer",$WriteOnly).$this->getacl("gotoProfileQuota",$WriteOnly);
 
-      if(isset($_POST['kiosk_server'])){
-        $tmp = $_POST['kiosk_server'];
-        if(isset($this->gotoKioskProfiles['SERVERS'][$tmp])){
-          $this->gotoKioskProfile_Server = $_POST['kiosk_server'];
-        }
-      }
-      if(isset($_POST['kiosk_profile'])){
-        $tmp = $_POST['kiosk_profile'];
-        if(in_array($tmp,$this->gotoKioskProfiles['BY_SERVER'][$this->gotoKioskProfile_Server])){
-          $this->gotoKioskProfile_Profile = $_POST['kiosk_profile'];
-        }
-      }
-
       if(preg_match("/w/",$PACL)){
         if(isset($_POST['useProfile'])){
           $this->useProfile = true;
@@ -1323,12 +1238,6 @@ class environment extends plugin
     /* If group was renamed, all printer settings get lost
      */
     /* only save changed variables ....*/
-    if ($this->gotoKioskProfile_Server != "none"){
-      $method = $this->gotoKioskProfiles['MAP'][$this->gotoKioskProfile_Server][$this->gotoKioskProfile_Profile];
-      $this->gotoKioskProfile= $method;
-    }else{
-      $this->gotoKioskProfile= array();
-    }
 
     plugin::save();
     $ldap= $this->config->get_ldap_link();
@@ -1444,7 +1353,7 @@ class environment extends plugin
 
 
     if($this->gotoXResolution == "auto") $this->gotoXResolution ="";
-    $saveThis = array("gotoProfileQuota","gotoXResolution","gotoProfileServer","gotoKioskProfile","gosaDefaultPrinter");
+    $saveThis = array("gotoProfileQuota","gotoXResolution","gotoProfileServer","gosaDefaultPrinter");
 
     foreach($saveThis as $tosave){
       if(!empty($this->$tosave)){
@@ -1628,11 +1537,6 @@ class environment extends plugin
     if (isset($this->attrs['gotoProfileFlags'])) {
       $this->update_gotoProfileFlags($this->attrs['gotoProfileFlags'][0]);
     }
-
-    if (isset($this->attrs['gotoKioskProfile'])) {
-      $this->gotoKioskProfile = $this->attrs['gotoKioskProfile'][0];
-      $this->update_kiosk_profiles();
-    }
   }
 
   /* Return plugin informations for acl handling
@@ -1657,7 +1561,6 @@ class environment extends plugin
         "gotoProfileFlagC"    => _("Cache profile localy"),
         "gotoShare"           => _("Shares"),
         "gotoHotplugDevice"   => _("Hotplug devices"),
-        "gotoKioskProfile"    => _("Kiosk profile"),
         "gotoProfileFlagL"    => _("Resolution changeable during session"),
         "gotoXResolution"     => _("Resolution"),
         "gotoLogonScript"     => _("Logon script"),
