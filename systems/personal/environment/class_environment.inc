@@ -44,8 +44,6 @@ class environment extends plugin
   var $gotoProfileFlags   = "";     // Flags enabled  ? only used to set ACL and save
   var $gotoProfileFlagC  = "";     // Flag is set to C if we have the profile caching fucntion enabled
 
-  var $gotoXResolution    = "auto";     // The selected resolution eg: 1024x768
-  var $gotoXResolutions   = array();// Contains all available resolutions for this account
   var $gotoProfileFlagL  = "";     // Flag is set to L to enable runtime resolution change
   var $gotoProfileQuota   = "";     // User Quota Settings
 
@@ -86,7 +84,6 @@ class environment extends plugin
                             "gotoProfileFlagL",
                             "useProfile",
                             "gotoHotplugDeviceDN",
-                            "gotoXResolution",
                             "gotoProfileQuota",
                             "gotoLogonScripts",
                             "gotoLogonScript",
@@ -105,7 +102,7 @@ class environment extends plugin
                             );
 
   var $attributes         = array("uid","gotoProfileServer","gotoProfileFlags","gotoHotplugDeviceDN",
-      "gotoXResolution","gotoProfileQuota",
+      "gotoProfileQuota",
       "gotoLogonScript","gotoLogonScripts",
       "gotoLogoffScript","gotoLogoffScripts","gotoHotplugDevices",
       "gotoPrinter", "gosaDefaultPrinter",
@@ -163,33 +160,6 @@ class environment extends plugin
       $this->useProfile = true;
     }else{
       $this->useProfile = false;
-    }
-
-    /* Set resolutions */
-    $this->gotoXResolutions = array("auto"=>_("auto"),
-                                    "640x480"   =>  "640x480",
-                                    "800x600"   =>  "800x600",
-                                    "1024x768"  =>  "1024x768",
-                                    "1152x864"  =>  "1152x864",
-                                    "1280x768"  =>  "1280x768",
-                                    "1280x1024" =>  "1280x1024");
-
-    if($this->config->get_cfg_value("resolutions") != ""){
-      $file = $this->config->get_cfg_value("resolutions");
-
-      if(is_readable($file)){
-        $str = file_get_contents($file);
-        $lines = preg_split("/\n/",$str);
-        foreach($lines as $line){
-          $line = trim($line);
-          if(!empty($line)){
-            $this->gotoXResolutions[$line]=$line;
-          }
-        }
-        //natcasesort($this->gotoXResolutions);
-      }else{
-        msg_dialog::display(_("Configuration error"), sprintf(_("Cannot open file '%s'!"), $file), WARNING_DIALOG);
-      }
     }
 
     $this->gotoProfileServers= $config->getShareServerList() ;
@@ -599,7 +569,7 @@ class environment extends plugin
     $smarty->assign("gotoProfileACL", $this->getacl("gotoProfileServer",$WriteOnly).$this->getacl("gotoProfileQuota",$WriteOnly));
 
     /* HANDLE Profile Settings here
-     * Assign available Quota and resolution settings
+     * Assign available Quota settings
      * Get all available profile server
      * Get cache checkbox
      * Assign this all to Smarty
@@ -617,9 +587,6 @@ class environment extends plugin
       $smarty->assign("gotoProfileFlagCCHK"," checked ");
     }
 
-
-    $smarty->assign("gotoXResolutions"    , $this->gotoXResolutions);
-    $smarty->assign("gotoXResolutionKeys" , array_flip($this->gotoXResolutions));
 
     $smarty->assign("gotoProfileServers",$this->gotoProfileServers);
     if(!is_array($this->gotoProfileServers)){
@@ -1351,9 +1318,7 @@ class environment extends plugin
       $this->attrs['gotoShare'][] =$share['server']."|".$share['name']."|".$mntp."|".$share['PwdHash']."|".$share['Username'];
     }
 
-
-    if($this->gotoXResolution == "auto") $this->gotoXResolution ="";
-    $saveThis = array("gotoProfileQuota","gotoXResolution","gotoProfileServer","gosaDefaultPrinter");
+    $saveThis = array("gotoProfileQuota","gotoProfileServer","gosaDefaultPrinter");
 
     foreach($saveThis as $tosave){
       if(!empty($this->$tosave)){
@@ -1551,8 +1516,6 @@ class environment extends plugin
       "plDepends"       => array("posixAccount"),
       "plCategory"      => array("users", "groups"),
       "plObjectType"    => array("user", "group"),
-      "plOptions"       => array("resolution_hook" => array("type" => "string",
-          "description" => _("Command to extend the list of possible screen resolutions"))),
 
       "plProvidedAcls"  => array(
 
@@ -1562,7 +1525,6 @@ class environment extends plugin
         "gotoShare"           => _("Shares"),
         "gotoHotplugDevice"   => _("Hotplug devices"),
         "gotoProfileFlagL"    => _("Resolution changeable during session"),
-        "gotoXResolution"     => _("Resolution"),
         "gotoLogonScript"     => _("Logon script"),
         "gotoLogoffScript"    => _("Log off script")
       )

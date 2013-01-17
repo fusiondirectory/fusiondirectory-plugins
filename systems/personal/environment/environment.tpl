@@ -127,29 +127,7 @@
       <label for="gotoProfileFlagL">{t}Resolution changeable during session{/t}</label>
      </td>
     </tr>
-    <tr>
-     <td>
-{if $multiple_support}
-    <input type="checkbox" value="1" class="center" name="use_gotoXResolution"
-    onClick="changeState('gotoXResolution');" {if $use_gotoXResolution} checked {/if}>
-{/if}
-      <label for="gotoXResolution">{t}Resolution{/t}</label>
-     </td>
-     <td>
-{render acl=$gotoXResolutionACL}
-      <select name="gotoXResolution" id="gotoXResolution" {if !$use_gotoXResolution && $multiple_support} disabled {/if}>
-       {html_options values=$gotoXResolutionKeys output=$gotoXResolutions selected=$gotoXResolution}
-      <option disabled>&nbsp;</option>
-      </select>
-{/render}
-     </td>
-    </tr>
    </table>
-
-
-
-
-
 
   </td>
  </tr>
