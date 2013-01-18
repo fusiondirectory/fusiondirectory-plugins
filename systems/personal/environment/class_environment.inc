@@ -50,12 +50,6 @@ class environment extends plugin
   var $gotoPrinterSel     = "";     //  The selected Printer
   var $gosaDefaultPrinter = "";     // Default printer
 
-  /* Share */
-  var $gotoShares         = array();// Current Share Options
-  var $gotoShare          = "";     // currently selected Share Option
-  var $gotoShareSelections= array();// Available Shares for this account in Listbox format
-  var $gotoAvailableShares= array();// Available Shares for this account
-
   /* Hotplug Devices */
   var $gotoHotplugDevice  = array();     // Selected hotplug
   var $gotoHotplugDevices = array();// Already configured hotplug devices
@@ -77,10 +71,6 @@ class environment extends plugin
                             "gotoPrinterSel",
                             "gosaDefaultPrinter",
                             "gotoHotplugDevices",
-                            "gotoShares",
-                            "gotoShare",
-                            "gotoShareSelections",
-                            "gotoAvailableShares",
                             "is_group",
                             "in_dialog",
                             );
@@ -88,8 +78,7 @@ class environment extends plugin
   var $attributes         = array("uid","gotoHotplugDeviceDN",
       "gotoLogonScript","gotoLogonScripts",
       "gotoLogoffScript","gotoLogoffScripts","gotoHotplugDevices",
-      "gotoPrinter", "gosaDefaultPrinter",
-      "gotoShare");
+      "gotoPrinter", "gosaDefaultPrinter");
 
   var $objectclasses      = array("gotoEnvironment"); // Specifies the objectClass which contains the attributes edited here
   var $cn;
@@ -132,12 +121,6 @@ class environment extends plugin
 
     /* prepare LogoffScripts */
     $this->gotoLogoffScripts = $this->get_LogoffScripts();
-
-    /* Prepare Shares */
-    $this->gotoShares = $this->get_Shares();
-
-    $this->gotoShareSelections= $config->getShareList(true);
-    $this->gotoAvailableShares= $config->getShareList(false);
   }
 
   function get_LogonScripts($data=NULL) {
@@ -146,10 +129,6 @@ class environment extends plugin
 
   function get_LogoffScripts($data=NULL) {
     return $this->get_multi_attrs('gotoLogoffScript', 'prep_LogoffScript', $data);
-  }
-
-  function get_Shares($data=NULL) {
-    return $this->get_multi_attrs('gotoShare', 'prep_share', $data);
   }
 
   function get_multi_attrs($attr, $prep_method, $data=NULL) {
@@ -233,34 +212,6 @@ class environment extends plugin
     $dev['dn']           = $attrs['dn'];
 
     return array($name, $dev);
-  }
-
-  function prep_share($input) {
-    $tmp = $share = array();
-    $tmp = explode("|",$input);
-    $share['server']      =$tmp[0];
-    $share['name']        =$tmp[1];
-    $name = $tmp[1]."|".$tmp[0];
-
-    /* Decode base64 if needed */
-    if (!preg_match('%/%', $tmp[2])){
-      $share['mountPoint']  =base64_decode($tmp[2]);
-    } else {
-      $share['mountPoint']  =$tmp[2];
-    }
-
-    if(isset($tmp[3])){
-      $share['PwdHash']  =$tmp[3];
-    }else{
-      $share['PwdHash']  ="";
-    }
-    if(isset($tmp[4])){
-      $share['Username']  =$tmp[4];
-    }else{
-      $share['Username']  ="";
-    }
-
-    return array($name, $share);
   }
 
   function prep_LogonScript($input) {
@@ -624,141 +575,6 @@ class environment extends plugin
     $smarty->assign("gotoLogoffScriptKeys",htmlencode(array_flip($ls)));
     $smarty->assign("gotoLogoffScriptKeysCnt",count($ls));
 
-    /* In this section server shares will be defined
-     * A user can select one of the given shares and a mount point
-     *  and attach this combination to his setup.
-     */
-
-    $smarty->assign("gotoShareSelections",    $this->gotoShareSelections);
-    if(!is_array($this->gotoShareSelections)){
-      $this->gotoShareSelections = array();
-    }
-    $smarty->assign("gotoShareSelectionKeys", array_flip($this->gotoShareSelections));
-
-    /* if $_POST['gotoShareAdd'] is set, we will try to add a new entry
-     * This entry will be, a combination of mountPoint and sharedefinitions
-     */
-    if(isset($_POST['gotoShareAdd']) && $this->acl_is_writeable("gotoShare")){
-
-      /* We assign a share to this user, if we don't know where to mount the share */
-      if(!isset($_POST['gotoShareSelection']) || get_post('gotoShareSelection') == ""){
-        msg_dialog::display(_("Error"), msgPool::invalid(_("Share")), ERROR_DIALOG);
-      }elseif((!isset($_POST['gotoShareMountPoint']))||(empty($_POST['gotoShareMountPoint']))||(preg_match("/[\|]/i",$_POST['gotoShareMountPoint']))){
-        msg_dialog::display(_("Error"), msgPool::invalid(_("Mount point")), ERROR_DIALOG);
-      }elseif(preg_match('/ /', $_POST['gotoShareMountPoint'])){
-        msg_dialog::display(_("Error"), msgPool::invalid(_("Mount point"), "/[^\s]/"), ERROR_DIALOG);
-      }elseif(!(
-            preg_match("/^\//",$_POST['gotoShareMountPoint'])  ||
-            preg_match("/^~/",$_POST['gotoShareMountPoint']) ||
-            preg_match("/^\$HOME/",$_POST['gotoShareMountPoint']) ||
-            preg_match("/^.HOME/",$_POST['gotoShareMountPoint']) ||
-            preg_match("/^\$USER/",$_POST['gotoShareMountPoint']) ||
-            preg_match("/^.USER/",$_POST['gotoShareMountPoint']) ||
-            preg_match("/^%/",$_POST['gotoShareMountPoint'])
-            )
-          ){
-        msg_dialog::display(_("Error"), msgPool::invalid(_("Mount point")), ERROR_DIALOG);
-      }else{
-        $a_share = $this->gotoAvailableShares[$_POST['gotoShareSelection']];
-        $s_mount = $_POST['gotoShareMountPoint'];
-        $s_user  = $_POST['ShareUser'];
-        /* Preparing the new assignment */
-        $this->gotoShares[$a_share['name']."|".$a_share['server']]=$a_share;
-        $this->gotoShares[$a_share['name']."|".$a_share['server']]['Username']=$s_user;
-        $this->gotoShares[$a_share['name']."|".$a_share['server']]['PwdHash']="";
-        $this->gotoShares[$a_share['name']."|".$a_share['server']]['mountPoint']=$s_mount;
-      }
-    }
-
-    /* if the Post  gotoShareDel is set, someone asked FusionDirectory to delete the selected entry (if there is one selected)
-     * If there is no defined share selected, we will abort the deletion without any message
-     */
-    $once = true;
-    if($this->acl_is_writeable("gotoShare")){
-      foreach($_POST as $name => $value){
-        if((preg_match("/^gotoShareDel_/",$name)) && ($once)){
-          $once = false;
-          $key  = preg_replace("/^gotoShareDel_/","",$name);
-          $key  = preg_replace("/_+[xy]$/","",$key);
-          $key  = base64_decode($key);
-          if(isset($this->gotoShares[$key])) {
-            unset($this->gotoShares[$key]);
-          }
-
-          /* Remove corresponding password entry, too. This is a workaround
-             to get rid of old-style entries. */
-          $key= preg_replace("/\|/", "|!", $key);
-          if(isset($this->gotoShares[$key])) {
-            unset($this->gotoShares[$key]);
-          }
-        }
-        if((preg_match("/^gotoShareResetPwd_/",$name)) && ($once)){
-          $once = false;
-          $key  = preg_replace("/^gotoShareResetPwd_/","",$name);
-          $key  = preg_replace("/_+[xy]$/","",$key);
-          $key  = base64_decode($key);
-          $this->gotoShares[$key]['PwdHash'] = "";
-          if(preg_match("/^!/",$this->gotoShares[$key]['server'])){
-            unset($this->gotoShares[$key]);
-          }
-        }
-      }
-    }
-    $divlistShares = new divSelectBox("gotoShares");
-    $divlistShares->SetHeight(100);
-
-
-    $tmp = array();
-    if($this->acl_is_readable("gotoShare")){
-      $tmp = $this->printOutAssignedShares();
-    }
-
-
-    foreach($tmp as $key => $value){
-      $img = "";
-
-      /* Skip apssword only entries */
-      if( empty($this->gotoShares[$key]['server']) &&
-          empty($this->gotoShares[$key]['name']) &&
-          empty($this->gotoShares[$key]['mountPoint']) &&
-          empty($this->gotoShares[$key]['Username'])){
-        continue;
-      }
-
-      $color = "";
-
-      /* Check if entry starts with an ! */
-      if(preg_match("/^!/",$this->gotoShares[$key]['server'])){
-
-        /* If we are currently editing groups environment, skip those ! entries */
-        if($this->is_group) continue;
-
-        /* Create pwd reset images */
-        if($this->gotoShares[$key]['PwdHash'] != ""){
-          $img.= "<input type='image' name='gotoShareResetPwd_".base64_encode($key)."
-            'src='plugins/systems/images/list_reset_password.png' alt='"._("Reset password hash")."'
-            title='"._("Reset password hash")."'>";
-        }
-        $field1 = array("string" => "<font style=\"color:#C0C0C0\">".$value."</font>" , "attach" => "style='".$color."'");
-        $field2 = array("string" => $img   , "attach" => "style='border-right:0px;'");
-      }else{
-
-        /* Create pwd reset img && delete image */
-        if($this->gotoShares[$key]['PwdHash'] != ""){
-          $img.= "<input type='image' name='gotoShareResetPwd_".base64_encode($key)."
-            'src='plugins/systems/images/list_reset_password.png' alt='"._("Reset password hash")."'
-            title='"._("Reset password hash")."'>";
-          $img.= "&nbsp;";
-        }
-        $img.= "<input type='image' name='gotoShareDel_".base64_encode($key)." 'src='images/lists/trash.png' alt='".msgPool::delButton()."'
-          title='"._("Delete share entry")."'>";
-        $field1 = array("string" => $value , "attach" => "style='".$color."'");
-        $field2 = array("string" => $img   , "attach" => "style='border-right:0px;'");
-      }
-      $divlistShares->AddEntry(array($field1,$field2));
-    }
-    $smarty->assign("divlistShares",$divlistShares->DrawList());
-
     /* Hotplug devices will be handled here
      * There are 3 possible methods for this feature
      * Create a new Hotplug, A Dialog will open where you can specify some hotplug information
@@ -981,7 +797,7 @@ class environment extends plugin
     plugin::remove_from_parent();
 
     /* Don't save our template variables */
-    $skip = array("uid","gotoLogonScripts","gotoPrinter","gotoShares","gotoHotplugDevices" );
+    $skip = array("uid","gotoLogonScripts","gotoPrinter","gotoHotplugDevices" );
 
     /* Skip all these attributes */
     foreach($skip as $del){
@@ -1020,7 +836,7 @@ class environment extends plugin
       plugin::save_object();
       foreach($this->attributes as $s_attr){
         if((!isset($_POST[$s_attr])) ||
-            in_array($s_attr,array("gosaDefaultPrinter","gotoShare","gotoHotplugDevices","gotoPrinter","gotoLogonScripts","gotoLogoffScripts","uid"))) continue;
+            in_array($s_attr,array("gosaDefaultPrinter","gotoHotplugDevices","gotoPrinter","gotoLogonScripts","gotoLogoffScripts","uid"))) continue;
         if(!$this->acl_is_writeable($s_attr)){
           continue;
         }else{
@@ -1163,17 +979,6 @@ class environment extends plugin
         $script['LogoffDescription'];
     }
 
-
-    /* Prepare Shares */
-    $this->attrs['gotoShare']=array();
-    foreach($this->gotoShares as $name => $share){
-      $mntp= $share['mountPoint'];
-      if (!preg_match('=^[a-z0-9+\._/%-]+$=i', $mntp)){
-        $mntp= base64_encode($mntp);
-      }
-      $this->attrs['gotoShare'][] =$share['server']."|".$share['name']."|".$mntp."|".$share['PwdHash']."|".$share['Username'];
-    }
-
     $saveThis = array("gosaDefaultPrinter");
 
     foreach($saveThis as $tosave){
@@ -1213,25 +1018,6 @@ class environment extends plugin
       msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()));
     }
     $this->handle_post_events($mode,array("uid"=>$this->uid));
-  }
-
-  /* Generate ListBox frindly output for the defined shares
-   * Possibly Add or remove an attribute here,
-   */
-  function printOutAssignedShares()
-  {
-    $a_return = array();
-    if(is_array($this->gotoShares)){
-      foreach($this->gotoShares as $share){
-        if(preg_match("/^!/",$share['server'])){
-          $a_return[$share['name']."|".$share['server']]= preg_replace("/^!/","",$share['server'])."://".$share['name']." - "._("group share");
-        }else{
-          $a_return[$share['name']."|".$share['server']]= $share['server']."://".$share['name']." on ".$share['mountPoint']." as ".$share['Username'];
-        }
-      }
-      natcasesort($a_return);
-    }
-    return($a_return);
   }
 
   /* Generate ListBox frindly output for the definedhotplugs
@@ -1311,7 +1097,7 @@ class environment extends plugin
     }
 
     $skip_types = array("gotoLogonScripts", "gotoLogoffScripts",
-      "gotoPrinter","gotoShare","gotoShares","gotoHotplugDevices" );
+      "gotoPrinter","gotoHotplugDevices" );
     plugin::adapt_from_template($tmpl_dn, $skip_types);
 
     // Handle gotoLogonScripts
@@ -1323,11 +1109,6 @@ class environment extends plugin
     $tmpl_logoff_scripts = $this->get_LogoffScripts();
     $this->gotoLogoffScripts = array_merge($this->gotoLogoffScripts,
       $tmpl_logoff_scripts);
-
-    // Handle shares
-    $tmpl_shares = $this->get_Shares();
-    $this->gotoShares = array_merge($this->gotoShares,
-      $tmpl_shares);
 
     // Handle hotplug devices
     $tmpl_hotplug_dev = $this->get_HotplugDevices();
@@ -1354,7 +1135,6 @@ class environment extends plugin
       "plObjectType"    => array("user", "group"),
 
       "plProvidedAcls"  => array(
-        "gotoShare"           => _("Shares"),
         "gotoHotplugDevice"   => _("Hotplug devices"),
         "gotoLogonScript"     => _("Logon script"),
         "gotoLogoffScript"    => _("Log off script")

@@ -8,38 +8,6 @@
 <table summary="{t}Environment managment settings{/t}" width="100%">
  <tr>
   <td style="width:50%;border-right:1px solid #B0B0B0">
-   <h2>
-    <img class="center" alt="" src="plugins/systems/images/edit_share.png" align="middle" />&nbsp;
-    <label for="gotoShare">{t}Shares{/t}</label>
-   </h2>
-   <table summary="" style="width:100%">
-    <tr>
-     <td>
-
-{render acl=$gotoShareACL}
-      {$divlistShares}
-{/render}
-{render acl=$gotoShareACL}
-      <input type="text" size=15 name="ShareUser" value="%u" title="{t}User used to connect to the share{/t}">@
-{/render}
-{render acl=$gotoShareACL}
-      <select name="gotoShareSelection" title="{t}Select a share{/t}">
-       {html_options values=$gotoShareSelectionKeys output=$gotoShareSelections}
-       <option disabled>&nbsp;</option>
-      </select>
-{/render}
-      :
-{render acl=$gotoShareACL}
-      <input type="text" size=15 name="gotoShareMountPoint" value="%H/Netzlaufwerke/%L/%S"
-      title="{t}Mount path{/t}">
-{/render}
-{render acl=$gotoShareACL}
-      <input type="submit" name="gotoShareAdd" value="{msgPool type=addButton}">
-{/render}
-      <!--   <input type="submit" name="gotoShareDel" value="{t}Remove{/t}"> -->
-     </td>
-    </tr>
-   </table>
   </td>
   <td style="vertical-align:top">
    <h2>
