@@ -167,25 +167,16 @@ class serviceQuota extends goService {
 
     /* get all encodings types available */
     $this->charsets = array();
-    if (!file_exists(CONFIG_DIR."/encodings")) {
-      msg_dialog::display(_("Error"), msgPool::fileDoesNotExist(CONFIG_DIR."/encodings"), ERROR_DIALOG);
+    $configEncodings = $this->config->get_cfg_value('encodings', NULL);
+    if ($configEncodings === NULL) {
+      msg_dialog::display(_('Error'), _('You need to configure encodings first'), ERROR_DIALOG);
     } else {
-      if (!is_readable(CONFIG_DIR."/encodings")) {
-        msg_dialog::display(_("Error"), msgPool::cannotReadFile(CONFIG_DIR."/encodings"), ERROR_DIALOG);
-      } else {
-        $fp = fopen(CONFIG_DIR."/encodings","r");
-        $i = 100;
-        while (!feof($fp)&&$i) {
-          $i--;
-          $str = trim(fgets($fp,256));
-
-          /* Skip comments */
-          if(!preg_match("/^#/",$str)) {
-            $arr = explode("=",$str);
-            if(count($arr)==2) {
-              $this->charsets[$arr[0]]=$arr[1];
-            }
-          }
+      foreach ($configEncodings as $str) {
+        $arr = explode("=", $str);
+        if (count($arr) == 2) {
+          $this->charsets[$arr[0]] = $arr[1];
+        } else {
+          msg_dialog::display(_('Warning'), sprintf(_('Invalid value in encodings : %s'), $str), WARNING_DIALOG);
         }
       }
     }

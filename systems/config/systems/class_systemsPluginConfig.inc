@@ -37,7 +37,7 @@ class systemsPluginConfig extends simplePlugin
   static function getAttributesInfo ()
   {
     return array(
-      'main' => array(
+      'rdns' => array(
         'name'  => _('LDAP tree'),
         'attrs' => array(
           new StringAttribute (
@@ -77,6 +77,41 @@ class systemsPluginConfig extends simplePlugin
           ),
         )
       ),
+      'config' => array(
+        'name'  => _('Miscellaneous'),
+        'attrs' => array(
+          new OrderedArrayAttribute (
+            new CompositeAttribute(
+              _('Available encodings for share services'),
+              'fdEncodings',
+              array(
+                new StringAttribute (
+                  _('Encoding'), _('The encoding code name'),
+                  'encoding_code', TRUE, '', '',
+                  '/^[^=]+$/'
+                ),
+                new StringAttribute (
+                  _('Label'), _('The encoding displayed name'),
+                  'encoding_label', TRUE, '', '',
+                  '/^[^=]+$/'
+                ),
+              ),
+              '%[^=]=%[^=]',
+              '%s=%s',
+              '',
+              _('Encodings')
+            ),
+            FALSE, /* no order */
+            array(
+              'UTF-8=UTF-8', 'ISO8859-1=ISO8859-1 (Latin 1)',
+              'ISO8859-2=ISO8859-2 (Latin 2)', 'ISO8859-3=ISO8859-3 (Latin 3)',
+              'ISO8859-4=ISO8859-4 (Latin 4)', 'ISO8859-5=ISO8859-5 (Latin 5)',
+              'cp850=CP850 (Europe)'
+            ),
+            TRUE /* edit enabled */
+          ),
+        )
+      )
     );
   }
 }
