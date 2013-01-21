@@ -19,31 +19,12 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class ScriptAttribute extends FileAttribute
+class ScriptAttribute extends FileTextAreaAttribute
 {
-  /*! \brief Update this attributes postValue depending of the $_POST values
-   */
-  function loadPostValue ()
+  function renderFormInput ()
   {
-    if ($this->isVisible()) {
-      foreach ($_POST as $name => $value) {
-        if (preg_match('/^download'.$this->getHtmlId().'/',$name)) {
-          session::set('binary', $this->value);
-          session::set('binarytype', 'octet-stream');
-          session::set('binaryfile', $this->plugin->cn.".fdApplication");
-          header('location: getbin.php');
-          exit();
-        }
-      }
-      if (isset($_POST['upload'.$this->getHtmlId()])) {
-        parent::loadPostValue();
-      } else {
-        $id = $this->getHtmlId().'_text';
-        if (isset($_POST[$id])) {
-          $this->setPostValue($_POST[$id]);
-        }
-      }
-    }
+    $this->setValue($this->inputValue($this->getValue()));
+    return parent::renderFormInput();
   }
 
   function applyPostValue ()
@@ -62,30 +43,6 @@ class ScriptAttribute extends FileAttribute
       $value = $this->plugin->generateTemplate().preg_replace('/.*### END HEADER ###/s', '', $value);
     }
     return $value;
-  }
-
-  function renderFormInput ()
-  {
-    $this->setValue($this->inputValue($this->getValue()));
-    $id = $this->getHtmlId();
-    $display  = '<textarea name="'.$id.'_text" id="'.$id.'_text"'.
-                ($this->disabled? 'disabled="disabled"':'').'>'.
-                '{literal}'.htmlentities($this->getValue(), ENT_COMPAT, 'UTF-8').'{/literal}</textarea>';
-    $display  .= '<input type="file" name="'.$id.'" id="'.$id.'" '.
-                ($this->disabled? 'disabled="disabled"':'').'/>';
-    $display  .= '<input type="submit" name="upload'.$id.'" id="upload'.$id.'"'.
-                ($this->disabled? ' disabled="disabled"':'').
-                ' value="'._('Upload').'"/>';
-    $display  .= '<input type="image" name="download'.$id.'"'.
-                ($this->disabled? ' disabled="disabled"':'').
-                ' src="images/save.png" title="'._('Download').'" class="center"/>';
-    return $this->renderAcl($display);
-  }
-
-  protected function htmlIds()
-  {
-    $id = $this->getHtmlId();
-    return array($id.'_text',$id,'upload'.$id,'download'.$id);
   }
 
   function computeLdapValue()
