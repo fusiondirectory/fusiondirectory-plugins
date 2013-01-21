@@ -19,6 +19,117 @@
   along with this program; if not, write to the Free Software
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
+class LogonScriptAttribute extends FileTextAreaAttribute
+{
+  function inputValue ($value)
+  {
+    return base64_decode($value);
+  }
+
+  function computeLdapValue ()
+  {
+    return base64_encode($this->getValue());
+  }
+
+  function displayValue($value)
+  {
+    return "md5:".md5($value);
+  }
+}
+
+class environment2 extends simplePlugin
+{
+  var $objectclasses = array('gotoEnvironment');
+
+  var $displayHeader = TRUE;
+
+  /* Return plugin informations */
+  static function plInfo()
+  {
+    return array(
+      'plShortName'   => _('Environment'),
+      'plDescription' => _('Environment settings'),         // Description
+      'plIcon'        => 'plugins/systems/images/plugin.png',
+      'plSelfModify'  => TRUE,
+      'plDepends'     => array('posixAccount'),
+      'plCategory'    => array('users', 'groups'),
+      'plObjectType'  => array('user', 'group'),
+
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+    );
+  }
+
+  static function getAttributesInfo ()
+  {
+    return array(
+      'scripts' => array(
+        'template'  => get_template_path('environment_script.tpl', TRUE, dirname(__FILE__)),
+        'name'      => _('Scripts'),
+        'icon'      => 'plugins/systems/images/logon_script.png',
+        'attrs'     => array(
+          new OrderedArrayAttribute (
+            new PipeSeparatedCompositeAttribute (
+              _('Logon script'),
+              'gotoLogonScripts',
+              array(
+                new StringAttribute(
+                  _('Name'), _('Filename for this script'),
+                  'gotoLogonScriptName', TRUE
+                ),
+                new LogonScriptAttribute(
+                  _('Script'), _('The script content'),
+                  'gotoLogonScriptContent', TRUE
+                ),
+                new StringAttribute(
+                  _('Description'), _('Short description for this script'),
+                  'gotoLogonScriptDescription', FALSE
+                ),
+              ),
+              '', '', '',
+              _('Logon script')
+            ),
+            TRUE,
+            array(),
+            TRUE
+          ),
+          new OrderedArrayAttribute (
+            new PipeSeparatedCompositeAttribute (
+              _('Logoff script'),
+              'gotoLogoffScripts',
+              array(
+                new StringAttribute(
+                  _('Name'), _('Filename for this script'),
+                  'gotoLogoffScriptName', TRUE
+                ),
+                new LogonScriptAttribute(
+                  _('Script'), _('The script content'),
+                  'gotoLogoffScriptContent', TRUE
+                ),
+                new StringAttribute(
+                  _('Description'), _('Short description for this script'),
+                  'gotoLogoffScriptDescription', FALSE
+                ),
+              ),
+              '', '', '',
+              _('Logoff script')
+            ),
+            TRUE,
+            array(),
+            TRUE
+          ),
+        )
+      )
+    );
+  }
+
+  function __construct (&$config, $dn = NULL, $parent = NULL)
+  {
+    parent::__construct($config, $dn, $parent);
+
+    $this->attributesAccess['gotoLogonScripts']->setLinearRendering(FALSE);
+    $this->attributesAccess['gotoLogoffScripts']->setLinearRendering(FALSE);
+  }
+}
 
 class environment extends plugin
 {
