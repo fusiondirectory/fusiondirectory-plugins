@@ -1833,27 +1833,22 @@ class phoneAccount extends plugin
    */
   function get_asterisk_voicemail_contexts()
   {
-    return($this->get_asterisk_contexts(ASTERISK_DIR."/voicemail_context.conf"));
+    $contexts = $this->config->get_cfg_value('voicemailContexts', array());
+    if (empty(contexts)) {
+      msg_dialog::display(_('Warning'), _('You need to configure voicemail contexts first'), WARNING_DIALOG);
+      $contexts[] = 'default';
+    }
+    return $contexts;
   }
+
   function get_asterisk_sip_contexts()
   {
-    return($this->get_asterisk_contexts(ASTERISK_DIR."/sip_context.conf"));
-  }
-  function get_asterisk_contexts($file)
-  {
-    $contexts = array();
-    if (file_exists($file) && is_readable($file)) {
-      foreach (file($file) as $context) {
-        $contexts[] = trim($context);
-      }
-    } else {
-      msg_dialog::display(_("Warning"), msgPool::cannotReadFile($file),WARNING_DIALOG);
-      $contexts[] = "default";
+    $contexts = $this->config->get_cfg_value('sipContexts', array());
+    if (empty(contexts)) {
+      msg_dialog::display(_('Warning'), _('You need to configure SIP contexts first'), WARNING_DIALOG);
+      $contexts[] = 'default';
     }
-    array_unique($contexts);
-    return($contexts);
+    return $contexts;
   }
 }
-
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>
