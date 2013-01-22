@@ -147,7 +147,7 @@ class supportDaemon
 
   private function new_state($state_value)
   {
-    @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $state_value, date("H.i.s"));
+    @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $this->s_error, date("H.i.s")." Setting state ($state_value) to ");
     session::global_set('argonaut_state', array(
       'date'  => time(),
       'error' => $this->s_error,
@@ -232,7 +232,11 @@ class supportDaemon
       $this->reset_error();
       $this->new_state(TRUE);
       return $status[0];
-    } catch (Exception $e) {
+    } catch (jsonRPCClient_RequestErrorException $e) {
+      $this->set_error(nl2br($e->getMessage()));
+      $this->new_state(TRUE); // connection is OK
+      return FALSE;
+    } catch (jsonRPCClient_NetworkErrorException $e) {
       $this->set_error(nl2br($e->getMessage()));
       return $this->new_state(FALSE);
     }
@@ -393,7 +397,11 @@ class supportDaemon
     try {
       $client = new jsonRPCClient($this->s_host, $this->http_options);
       $entries = $client->remove_entries($ids);
-    } catch (Exception $e) {
+    } catch (jsonRPCClient_RequestErrorException $e) {
+      $this->set_error(nl2br($e->getMessage()));
+      $this->new_state(TRUE); // connection is OK
+      return FALSE;
+    } catch (jsonRPCClient_NetworkErrorException $e) {
       $this->set_error(nl2br($e->getMessage()));
       return $this->new_state(FALSE);
     }
@@ -451,7 +459,11 @@ class supportDaemon
       $entries = $client->process_entries_now($ids);
       $this->reset_error();
       return $this->new_state(TRUE);
-    } catch (Exception $e) {
+    } catch (jsonRPCClient_RequestErrorException $e) {
+      $this->set_error(nl2br($e->getMessage()));
+      $this->new_state(TRUE); // connection is OK
+      return FALSE;
+    } catch (jsonRPCClient_NetworkErrorException $e) {
       $this->set_error(nl2br($e->getMessage()));
       return $this->new_state(FALSE);
     }
@@ -521,7 +533,11 @@ class supportDaemon
       $this->reset_error();
       $this->new_state(TRUE);
       return $entries;
-    } catch (Exception $e) {
+    } catch (jsonRPCClient_RequestErrorException $e) {
+      $this->set_error(nl2br($e->getMessage()));
+      $this->new_state(TRUE); // connection is OK
+      return FALSE;
+    } catch (jsonRPCClient_NetworkErrorException $e) {
       $this->set_error(nl2br($e->getMessage()));
       return $this->new_state(FALSE);
     }
@@ -612,7 +628,11 @@ class supportDaemon
       $this->reset_error();
       $this->new_state(TRUE);
       return $client->ping($mac);
-    } catch (Exception $e) {
+    } catch (jsonRPCClient_RequestErrorException $e) {
+      $this->set_error(nl2br($e->getMessage()));
+      $this->new_state(TRUE); // connection is OK
+      return FALSE;
+    } catch (jsonRPCClient_NetworkErrorException $e) {
       $this->set_error(nl2br($e->getMessage()));
       return $this->new_state(FALSE);
     }
@@ -675,7 +695,11 @@ class supportDaemon
       $this->reset_error();
       $this->new_state(TRUE);
       return $to_return;
-    } catch (Exception $e) {
+    } catch (jsonRPCClient_RequestErrorException $e) {
+      $this->set_error(nl2br($e->getMessage()));
+      $this->new_state(TRUE); // connection is OK
+      return array();
+    } catch (jsonRPCClient_NetworkErrorException $e) {
       $this->set_error(nl2br($e->getMessage()));
       $this->new_state(FALSE);
       return array();
@@ -809,7 +833,11 @@ class supportDaemon
       $taskids = $client->get_entries_by_mac(array($mac));
       $client->remove_entries($taskids);
       return $this->new_state(TRUE);
-    } catch (Exception $e) {
+    } catch (jsonRPCClient_RequestErrorException $e) {
+      $this->set_error(nl2br($e->getMessage()));
+      $this->new_state(TRUE); // connection is OK
+      return FALSE;
+    } catch (jsonRPCClient_NetworkErrorException $e) {
       $this->set_error(nl2br($e->getMessage()));
       return $this->new_state(FALSE);
     }

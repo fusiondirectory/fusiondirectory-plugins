@@ -27,6 +27,11 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  * Source code for class jsonRPCClient
  */
 
+class jsonRPCClient_RequestErrorException extends Exception {};
+class jsonRPCClient_NetworkErrorException extends Exception {};
+class jsonRPCClient_ProtocolException extends Exception {};
+class jsonRPCClient_BadArgsException extends Exception {};
+
 /*!
  * \brief The object of this class are generic jsonRPC 1.0 clients
  * http://json-rpc.org/wiki/specification
@@ -122,7 +127,7 @@ class jsonRPCClient {
 
     // check
     if (!is_scalar($method)) {
-      throw new Exception('Method name has no scalar value');
+      throw new jsonRPCClient_BadArgsException('Method name has no scalar value');
     }
 
     // check
@@ -130,7 +135,7 @@ class jsonRPCClient {
       // no keys
       $params = array_values($params);
     } else {
-      throw new Exception('Params must be given as array');
+      throw new jsonRPCClient_BadArgsException('Params must be given as array');
     }
 
     // sets notification or request task
@@ -169,7 +174,7 @@ class jsonRPCClient {
       $this->debug && $debug.='***** Server response *****'."\n".$response.'***** End of server response *****'."\n";
       $response = json_decode($response,true);
     } else {
-      throw new Exception('Unable to connect to '.$this->url);
+      throw new jsonRPCClient_NetworkErrorException('Unable to connect to '.$this->url);
     }
 
     // debug output
@@ -181,10 +186,10 @@ class jsonRPCClient {
     if (!$this->notification) {
       // check
       if ($response['id'] != $currentId) {
-        throw new Exception('Incorrect response id (request id: '.$currentId.', response id: '.$response['id'].')');
+        throw new jsonRPCClient_ProtocolException('Incorrect response id (request id: '.$currentId.', response id: '.$response['id'].')');
       }
       if (!is_null($response['error'])) {
-        throw new Exception('Request error: '.$response['error']);
+        throw new jsonRPCClient_RequestErrorException('Request error: '.$response['error']);
       }
 
       return $response['result'];

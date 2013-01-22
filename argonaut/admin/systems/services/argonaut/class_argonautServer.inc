@@ -28,11 +28,12 @@ class argonautServer extends simpleService
   static function plInfo()
   {
     return array(
-      "plShortName"     => _("Argonaut Server"),
-      "plDescription"   => _("Argonaut Server")." ("._("Services").")",
-      "plCategory"      => array("server"),
+      'plShortName'   => _('Argonaut Server'),
+      'plDescription' => _('Argonaut Server').' ('._('Services').')',
+      'plCategory'    => array('server'),
+      'plIcon'        => 'plugins/systems/images/service_argonaut.png',
 
-      "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }
 
