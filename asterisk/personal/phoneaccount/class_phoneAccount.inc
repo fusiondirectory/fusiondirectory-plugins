@@ -1833,19 +1833,19 @@ class phoneAccount extends plugin
    */
   function get_asterisk_voicemail_contexts()
   {
-    $contexts = $this->config->get_cfg_value('voicemailContexts', array());
-    if (empty(contexts)) {
-      msg_dialog::display(_('Warning'), _('You need to configure voicemail contexts first'), WARNING_DIALOG);
-      $contexts[] = 'default';
-    }
-    return $contexts;
+    return $this->get_asterisk_contexts('voicemail');
   }
 
   function get_asterisk_sip_contexts()
   {
-    $contexts = $this->config->get_cfg_value('sipContexts', array());
-    if (empty(contexts)) {
-      msg_dialog::display(_('Warning'), _('You need to configure SIP contexts first'), WARNING_DIALOG);
+    return $this->get_asterisk_contexts('sip');
+  }
+
+  function get_asterisk_contexts($prefix)
+  {
+    $contexts = $this->config->get_cfg_value($prefix.'Contexts', array());
+    if (empty($contexts)) {
+      msg_dialog::display(_('Warning'), sprintf(_('You need to configure %s contexts first'), $prefix), WARNING_DIALOG);
       $contexts[] = 'default';
     }
     return $contexts;
