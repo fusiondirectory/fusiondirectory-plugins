@@ -67,20 +67,34 @@ class mobilePhoneGeneric extends simplePlugin
           new BaseSelectorAttribute(get_ou('mobilePhoneRDN')),
         )
       ),
-      'numbers' => array(
-        'name'  => _('Numbers'),
+      'phone' => array(
+        'name'  => _('Phone'),
         'attrs' => array(
           new StringAttribute (
             _('Serial Number'), _('The serial number of the mobile phone'),
             'serialNumber', FALSE
           ),
           new StringAttribute (
+            _('IMEI Number'), _('The IMEI number of the mobile phone'),
+            'fdMobileIMEI', FALSE, '', '',
+            '/[[:digit:]]+/'
+          ),
+          new StringAttribute (
+            _('OS'), _('The Operating System installed on this phone'),
+            'fdMobileOS', FALSE
+          ),
+        )
+      ),
+      'simcard' => array(
+        'name'  => _('SimCard'),
+        'attrs' => array(
+          new StringAttribute (
             _('Telephone Number'), _('The telephone number of the mobile phone'),
             'telephoneNumber', FALSE
           ),
           new StringAttribute (
-            _('IMEI Number'), _('The IMEI number of the mobile phone'),
-            'fdMobileIMEI', FALSE, '', '',
+            _('PUK Number'), _('The PUK number of the simcard in this mobile phone'),
+            'fdMobilePUK', FALSE, '', '',
             '/[[:digit:]]+/'
           ),
         )
