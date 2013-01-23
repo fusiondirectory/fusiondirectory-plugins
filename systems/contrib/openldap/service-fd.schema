@@ -1,12 +1,9 @@
 ##
-## goserver.schema
-##
-## Version 030403
+## service-fd.schema - Needed by FusionDirectory for systems plugin
 ##
 ## Maintained by the FusionDirectory Project <contact@fusiondirectory.org>
 ##
 
-# Attributes for the Gonicus Terminal Server Class
 attributetype ( 1.3.6.1.4.1.10098.1.1.9.1 NAME 'goXdmcpIsEnabled'
   DESC 'Indicates if the server is enabled for XDMCP queries'
   EQUALITY caseExactIA5Match
@@ -17,7 +14,6 @@ attributetype ( 1.3.6.1.4.1.10098.1.1.9.2 NAME 'goFontPath'
   EQUALITY caseExactIA5Match
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26)
 
-# Attributes for common Gonicus Server Class
 attributetype ( 1.3.6.1.4.1.10098.1.1.9.4 NAME 'goExportEntry'
   DESC 'Provides an export entry'
   EQUALITY caseExactMatch
@@ -75,28 +71,28 @@ attributetype ( 1.3.6.1.4.1.10098.1.1.9.25 NAME 'goLogPassword'
   SINGLE-VALUE)
 
 attributetype ( 1.3.6.1.4.1.10098.1.1.9.26 NAME 'goFonAdmin'
-        DESC 'Admin principal for fon server'
-        EQUALITY caseExactIA5Match
-        SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
-        SINGLE-VALUE)
+  DESC 'Admin principal for fon server'
+  EQUALITY caseExactIA5Match
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE)
 
 attributetype ( 1.3.6.1.4.1.10098.1.1.9.27 NAME 'goFonPassword'
-        DESC 'Admin password for fon server'
-        EQUALITY caseExactIA5Match
-        SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
-        SINGLE-VALUE)
+  DESC 'Admin password for fon server'
+  EQUALITY caseExactIA5Match
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE)
 
 attributetype ( 1.3.6.1.4.1.10098.1.1.9.28 NAME 'goFonAreaCode'
-        DESC 'Store area code'
-        EQUALITY caseExactIA5Match
-        SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
-        SINGLE-VALUE)
+  DESC 'Store area code'
+  EQUALITY caseExactIA5Match
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE)
 
 attributetype ( 1.3.6.1.4.1.10098.1.1.9.29 NAME 'goFonCountryCode'
-        DESC 'Store country code'
-        EQUALITY caseExactIA5Match
-        SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
-        SINGLE-VALUE)
+  DESC 'Store country code'
+  EQUALITY caseExactIA5Match
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE)
 
 attributetype ( 1.3.6.1.4.1.10098.1.1.9.62 NAME 'saRewriteHeader'
   DESC 'Text to place in front of mail subjects'
@@ -112,7 +108,7 @@ attributetype ( 1.3.6.1.4.1.10098.1.1.9.63 NAME 'saTrustedNetworks'
 attributetype ( 1.3.6.1.4.1.10098.1.1.9.64 NAME 'saRequiredScore'
   DESC 'Required score to tag a mail as SPAM'
   EQUALITY integerMatch
-        SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE)
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE)
 
 #saFlags   B:    Enable use of bayes filtering
 #          b:    Enable bayes auto learning
@@ -133,12 +129,12 @@ attributetype ( 1.3.6.1.4.1.10098.1.1.9.66 NAME 'saRule'
 attributetype ( 1.3.6.1.4.1.10098.1.1.9.68 NAME 'avMaxThreads'
   DESC 'Number of AV scanning threads'
   EQUALITY integerMatch
-        SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE)
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE)
 
 attributetype ( 1.3.6.1.4.1.10098.1.1.9.69 NAME 'avMaxDirectoryRecursions'
   DESC 'Number of recursions done with directories'
   EQUALITY integerMatch
-        SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE)
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE)
 
 attributetype ( 1.3.6.1.4.1.10098.1.1.9.70 NAME 'avUser'
   DESC 'Username to run with'
@@ -157,17 +153,17 @@ attributetype ( 1.3.6.1.4.1.10098.1.1.9.71 NAME 'avFlags'
 attributetype ( 1.3.6.1.4.1.10098.1.1.9.72 NAME 'avArchiveMaxFileSize'
   DESC 'Maximum archive file size'
   EQUALITY integerMatch
-        SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE)
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE)
 
 attributetype ( 1.3.6.1.4.1.10098.1.1.9.73 NAME 'avArchiveMaxRecursion'
   DESC 'Maximum number of archive nestings'
   EQUALITY integerMatch
-        SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE)
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE)
 
 attributetype ( 1.3.6.1.4.1.10098.1.1.9.74 NAME 'avArchiveMaxCompressionRatio'
   DESC 'Maximum compression ratio'
   EQUALITY integerMatch
-        SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE)
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE)
 
 attributetype ( 1.3.6.1.4.1.10098.1.1.9.75 NAME 'avDatabaseMirror'
   DESC 'Where to find updates'
@@ -180,9 +176,9 @@ attributetype ( 1.3.6.1.4.1.10098.1.1.9.76 NAME 'avHttpProxyURL'
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 SINGLE-VALUE)
 
 attributetype ( 1.3.6.1.4.1.10098.1.1.9.78 NAME 'avChecksPerDay'
-        DESC 'Update checks per day'
-        EQUALITY integerMatch
-        SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE)
+  DESC 'Update checks per day'
+  EQUALITY integerMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE)
 
 attributetype ( 1.3.6.1.4.1.10098.1.1.9.82 NAME 'gotoSessionType'
   DESC 'Supported type for a terminal server'
@@ -209,7 +205,7 @@ objectclass (1.3.6.1.4.1.10098.1.2.1.19 NAME 'goNfsServer' SUP top AUXILIARY
 objectclass (1.3.6.1.4.1.10098.1.2.1.20 NAME 'goNtpServer' SUP top AUXILIARY
   DESC 'Time server description (v2.6.1)'
   MUST ( cn )
-        MAY  ( goTimeSource $ description ))
+  MAY  ( goTimeSource $ description ))
 
 # Syslog Server description
 objectclass (1.3.6.1.4.1.10098.1.2.1.21 NAME 'goSyslogServer' SUP top AUXILIARY
@@ -248,9 +244,9 @@ objectclass (1.3.6.1.4.1.10098.1.2.1.28 NAME 'goLogDBServer' SUP top AUXILIARY
 
 # Fon Server description
 objectclass (1.3.6.1.4.1.10098.1.2.1.29 NAME 'goFonServer' SUP top AUXILIARY
-        DESC 'Fon server description (v2.6.1)'
-        MUST ( cn $ goFonAdmin $ goFonPassword $ goFonAreaCode $ goFonCountryCode )
-        MAY  ( description ))
+  DESC 'Fon server description (v2.6.1)'
+  MUST ( cn $ goFonAdmin $ goFonPassword $ goFonAreaCode $ goFonCountryCode )
+  MAY  ( description ))
 
 # Share Server description
 objectclass (1.3.6.1.4.1.10098.1.2.1.33 NAME 'goShareServer' SUP top AUXILIARY
@@ -270,5 +266,5 @@ objectclass (1.3.6.1.4.1.10098.1.2.1.39 NAME 'goVirusServer' SUP top AUXILIARY
   DESC 'Virus server definition (v2.6.1)'
   MUST ( cn )
   MAY  ( avMaxThreads $ avMaxDirectoryRecursions $ avUser $ avFlags $
-               avArchiveMaxFileSize $ avArchiveMaxRecursion $ avArchiveMaxCompressionRatio $
-               avDatabaseMirror $ avChecksPerDay $ avHttpProxyURL ) )
+         avArchiveMaxFileSize $ avArchiveMaxRecursion $ avArchiveMaxCompressionRatio $
+         avDatabaseMirror $ avChecksPerDay $ avHttpProxyURL ) )
