@@ -1051,7 +1051,7 @@ class systemManagement extends management
     $tD = $this->getObjectDefinitions();
     $smarty = get_smarty();
     foreach($tD as $name => $obj){
-      $smarty->assign("USE_".$name, (empty($obj['TABNAME']) || class_available($obj['TABNAME'])));
+      $smarty->assign("USE_".$name, (empty($obj['tabClass']) || class_available($obj['tabClass'])));
     }
 
     $display = $headpage->render();
