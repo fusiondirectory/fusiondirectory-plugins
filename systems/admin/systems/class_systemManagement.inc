@@ -87,9 +87,6 @@ class systemManagement extends management
     $this->registerAction("new_ieee802Device",    "newEntry");
     $this->registerAction("new_fdMobilePhone",    "newEntry");
 
-    $this->registerAction("setPassword", "setPassword");
-    $this->registerAction("passwordChangeConfirmed", "passwordChangeConfirmed");
-
     foreach ($this->config->data['TABS']['SERVERSERVICE'] as $plug) {
       if (class_available($plug['CLASS'])) {
         $this->registerAction("edit_".$plug['CLASS'], "editEntry");
@@ -103,33 +100,6 @@ class systemManagement extends management
     }
 
     parent::__construct($config, $ui, "systems", $headpage);
-  }
-
-
-  /*! \brief  Act on password change requests.
-   */
-  function setPassword($action,$target)
-  {
-    if(count($target) == 1){
-      $tDefs= $this->getObjectDefinitions();
-      $headpage = $this->getHeadpage();
-      $dn = array_pop($target);
-      $type = $headpage->getType($dn);
-      $entry = $headpage->getEntry($dn);
-      $ui       = get_userinfo();
-      $smarty = get_smarty();
-      if(in_array("FAKE_OC_PWD_changeAble", $entry['objectClass'])){
-        $acl = $tDefs[$type]['aclCategory'].'/'.$tDefs[$type]['aclClass'];
-        $tabacl   = $ui->get_permissions($dn,$acl,"userPassword");
-        if(preg_match("/w/",$tabacl)){
-          $this->dn= $dn;
-          set_object_info($this->dn);
-          return ($smarty->fetch(get_template_path('password.tpl', TRUE)));
-        }else{
-          msg_dialog::display(_("Permission error"), _("You have no permission to change this password!"), ERROR_DIALOG);
-        }
-      }
-    }
   }
 
 
@@ -162,88 +132,6 @@ class systemManagement extends management
     }
 
     return parent::copyPasteHandler($action, $target, $all, $tabClass, $tabType, $aclCategory, $aclPlugin);
-  }
-
-
-  /*! \brief  Password change confirmed, now try to change the systems pwd.
-   */
-  function passwordChangeConfirmed()
-  {
-    $tDefs= $this->getObjectDefinitions();
-    $headpage = $this->getHeadpage();
-    $type = $headpage->getType($this->dn);
-    $entry = $headpage->getEntry($this->dn);
-    $ui       = get_userinfo();
-    $smarty = get_smarty();
-
-    if(!in_array('FAKE_OC_PWD_changeAble', $entry['objectClass'])){
-      trigger_error("Tried to change pwd, for invalid object!");
-    }elseif ($_POST['new_password'] != $_POST['repeated_password']){
-      msg_dialog::display(_("Error"),
-          _("The passwords you've entered as 'New password' and 'Repeated password' do not   match!"), ERROR_DIALOG);
-      return($smarty->fetch(get_template_path('password.tpl', TRUE)));
-    }else{
-      $acl = $tDefs[$type]['aclCategory'].'/'.$tDefs[$type]['aclClass'];
-      $tabacl   = $ui->get_permissions($this->dn,$acl,"userPassword");
-
-      // Check acls
-      if(!preg_match("/w/",$tabacl)){
-        msg_dialog::display(_("Permission error"), _("You have no permission to change this password!"), ERROR_DIALOG);
-      }else{
-        $ldap = $this->config->get_ldap_link();
-        $ldap->cd($this->dn);
-        $ldap->cat($this->dn);
-        $old_attrs = $ldap->fetch();
-
-        $attrs= array();
-        if ($_POST['new_password'] == ""){
-
-          /* Remove password attribute
-           */
-          if(in_array("simpleSecurityObject",$old_attrs['objectClass'])){
-            $attrs['objectClass'] = array();
-            for($i = 0 ; $i < $old_attrs['objectClass']['count'] ; $i ++){
-              if(!preg_match("/simpleSecurityObject/i",$old_attrs['objectClass'][$i])){
-                $attrs['objectClass'][] = $old_attrs['objectClass'][$i];
-              }
-            }
-          }
-          $attrs['userPassword']= array();
-        } else {
-
-          /* Add/modify password attribute
-           */
-          if(!in_array("simpleSecurityObject",$old_attrs['objectClass'])){
-            $attrs['objectClass'] = array();
-            for($i = 0 ; $i < $old_attrs['objectClass']['count'] ; $i ++){
-              $attrs['objectClass'][] = $old_attrs['objectClass'][$i];
-            }
-            $attrs['objectClass'][] = "simpleSecurityObject";
-          }
-
-          if(class_available("passwordMethodCrypt")){
-            $pwd_m = new passwordMethodCrypt($this->config);
-            $pwd_m->set_hash("crypt/md5");
-            $attrs['userPassword'] = $pwd_m->generate_hash($_POST['new_password']);
-          }else{
-            msg_dialog::display(_("Password method"),_("Password method crypt is missing. Cannot set system password."));
-            $attrs = array();
-          }
-        }
-        $ldap->modify($attrs);
-        if (!$ldap->success()){
-          msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_MOD, $type));
-        }else{
-          if(class_available($tDefs[$type]['plugClass'])){
-            $plug = $tDefs[$type]['plugClass'];
-            $p = new $plug($this->config,$this->dn);
-            $p->handle_post_events("modify");
-          }
-        }
-        new log("security","systems/".get_class($this),$this->dn,array_keys($attrs),$ldap->get_error());
-      }
-      set_object_info();
-    }
   }
 
 
@@ -1019,8 +907,6 @@ class systemManagement extends management
     if(isset($_POST['cd_create']))  $action['action'] = "initiateISOcreation";
     if(isset($_GET['PerformIsoCreation']))  $action['action'] = "performIsoCreation";
     if(isset($_POST['SystemTypeAborted']))  $action['action'] = "cancel";
-    if(isset($_POST['password_cancel']))  $action['action'] = "cancel";
-    if(isset($_POST['password_finish']))  $action['action'] = "passwordChangeConfirmed";
 
     if(isset($_POST['new_goServer']))  $action['action'] = "new_goServer";
     if(isset($_POST['new_gotoWorkstation']))  $action['action'] = "new_gotoWorkstation";

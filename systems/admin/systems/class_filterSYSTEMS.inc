@@ -35,55 +35,19 @@ class filterSYSTEMS {
     foreach ($entries as $key => $entry) {
       if (in_array('sambaSamAccount', $entry['objectClass']) && preg_match("/\$$/", $entry['cn'][0])) {
         $entries[$key]['objectClass'][] = 'sambaSamAccount';
+      }
 
-        // Detect Workstation & templates
-      } elseif(in_array('gotoWorkstation', $entry['objectClass'])) {
-        if (!isset($entry['macAddress'][0]) || $entry['macAddress'][0] == "-") {
-          continue; // We do not need templates anymore, we've ogroups now.
-          //$entries[$key]['objectClass'][] = 'FAKE_OC_WorkstationTemplate';
-        }
-        $pwd_acl = $ui->get_permissions($entry['dn'],'workstation/workstationGeneric','userPassword');
-        if (preg_match("/w/",$pwd_acl)) {
-          $entries[$key]['objectClass'][] = 'FAKE_OC_PWD_changeAble';
-        }
-
-        // Detect Terminal & templates
-      } elseif(in_array('gotoTerminal', $entry['objectClass'])) {
-        if (!isset($entry['macAddress'][0]) || $entry['macAddress'][0] == "-") {
-          continue; // We do not need templates anymore, we've ogroups now.
-          //$entries[$key]['objectClass'][] = 'FAKE_OC_TerminalTemplate';
-        }
-        $pwd_acl = $ui->get_permissions($entry['dn'],'terminal/terminalGeneric','userPassword');
-        if(preg_match("/w/",$pwd_acl)){
-          $entries[$key]['objectClass'][] = 'FAKE_OC_PWD_changeAble';
-        }
-
-        // Detect Server & templates
-      }elseif(in_array('goServer', $entry['objectClass'])){
-        if(!isset($entry['macAddress'][0]) || $entry['macAddress'][0] == "-"){
-          continue; // We do not need templates anymore, we've ogroups now.
-          //$entries[$key]['objectClass'][] = 'FAKE_OC_ServerTemplate';
-        }
-        $pwd_acl = $ui->get_permissions($entry['dn'],'server/serverGeneric','userPassword');
-        if(preg_match("/w/",$pwd_acl)){
-          $entries[$key]['objectClass'][] = 'FAKE_OC_PWD_changeAble';
-        }
-
-        // Detect ieee802Device
-      }elseif(in_array('ieee802Device', $entry['objectClass'])){
-        $pwd_acl = $ui->get_permissions($entry['dn'],'component/componentGeneric','userPassword');
-        if(preg_match("/w/",$pwd_acl)){
-          $entries[$key]['objectClass'][] = 'FAKE_OC_PWD_changeAble';
-        }
+      if (!isset($entry['macAddress'][0]) || ($entry['macAddress'][0] == "-")) {
+        continue;
       }
 
       // Detect object states
-      foreach(array('gotoWorkstation','gotoTerminal','goServer') as $type){
-        if(in_array($type, $entry['objectClass'])){
+      foreach (array('gotoWorkstation','gotoTerminal','goServer') as $type) {
+        if (in_array($type, $entry['objectClass'])) {
 
-          if(isset($entry['gotoMode'][0]) && preg_match("/locked/i", $entry['gotoMode'][0])){
+          if (isset($entry['gotoMode'][0]) && preg_match("/locked/i", $entry['gotoMode'][0])) {
             $entries[$key]['objectClass'][] = $type."__IS_LOCKED";
-          }elseif(isset($entry['FAIstate'][0])){
+          } elseif(isset($entry['FAIstate'][0])) {
             switch (preg_replace('/:.*$/', '', $entry['FAIstate'][0])) {
               case 'error':
                 $state= '__IS_ERROR';
@@ -97,13 +61,15 @@ class filterSYSTEMS {
                 break;
               default: $state ="";
             }
-            if(!empty($state)) $entries[$key]['objectClass'][] = $type.$state;
+            if (!empty($state)) {
+              $entries[$key]['objectClass'][] = $type.$state;
+            }
           }
         }
       }
     }
 
-    return($entries);
+    return $entries;
   }
 
 

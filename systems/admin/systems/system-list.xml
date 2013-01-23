@@ -457,15 +457,6 @@
   <actiontriggers snapshot="true" copypaste="true">
 
     <action>
-      <name>setPassword</name>
-      <type>entry</type>
-      <objectclass>FAKE_OC_PWD_changeAble</objectclass>
-      <image>images/lists/key.png</image>
-      <label>Change password</label>
-    </action>
-
-
-    <action>
       <name>createISO</name>
       <type>entry</type>
       <objectclass>gotoWorkstation</objectclass>
