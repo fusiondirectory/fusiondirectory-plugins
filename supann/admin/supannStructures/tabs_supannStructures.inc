@@ -30,9 +30,18 @@ class supannStructurestabs extends tabs
 
   function save()
   {
-    /* Check for new 'dn', in order to propagate the
-       'dn' to all plugins */
-    $this->dn = $this->getBaseObject()->compute_dn();
+    $baseobject = $this->getBaseObject();
+    $new_dn     = $baseobject->compute_dn();
+
+    /* Move ? */
+    if ($this->dn != $new_dn) {
+      /* Write entry on new 'dn' */
+      if ($this->dn != 'new') {
+        $baseobject->move($this->dn, $new_dn);
+      }
+      /* Happen to use the new one */
+      $this->dn = $new_dn;
+    }
 
     return parent::save();
   }
