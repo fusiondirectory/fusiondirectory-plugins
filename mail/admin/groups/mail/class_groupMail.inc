@@ -925,17 +925,17 @@ class mailgroup extends plugin
 
     foreach (array("gosaMailAlternateAddress", "gosaMailForwardingAddress") as $val){
 
-      if (in_array($val, $skip)){
+      if (in_array($val, $skip)) {
         continue;
       }
 
-      $this->$val= array();
-      if (isset($this->attrs["$val"]["count"])){
-        for ($i= 0; $i<$this->attrs["$val"]["count"]; $i++){
-          $value= $this->attrs["$val"][$i];
-          foreach (array("sn", "givenName", "uid") as $repl){
-            if (preg_match("/%$repl/i", $value)){
-              $value= preg_replace ("/%$repl/i", $this->parent->$repl, $value);
+      $this->$val = array();
+      if (isset($this->attrs["$val"]["count"])) {
+        for ($i = 0; $i<$this->attrs["$val"]["count"]; $i++) {
+          $value = $this->attrs["$val"][$i];
+          foreach (array("sn", "givenName", "uid") as $repl) {
+            if (preg_match("/%$repl%/i", $value)){
+              $value = preg_replace ("/%$repl%/i", $this->parent->$repl, $value);
             }
           }
           array_push($this->$val, $value);
