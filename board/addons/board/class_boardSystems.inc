@@ -66,6 +66,9 @@ class boardSystems extends simplePlugin
       array('name' => _('Components'),
             'filter' => 'objectClass=ieee802Device',
             'img' => get_template_path("plugins/systems/images/select_component.png")),
+      array('name' => _('Mobile phones'),
+            'filter' => 'objectClass=fdMobilePhone',
+            'img' => get_template_path("plugins/systems/images/select_mobilephone.png")),
     );
 
     $ldap->cd($this->config->current['BASE']);
