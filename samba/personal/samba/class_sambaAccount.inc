@@ -406,6 +406,9 @@ class sambaAccount extends simplePlugin
       }
       $this->attributesAccess['sambaKickoffTime']->setDisabled(TRUE);
     }
+
+    $this->updateAttributesValues();
+    $this->prepareSavedAttributes();
   }
 
   function resetCopyInfos()
