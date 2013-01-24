@@ -44,7 +44,7 @@ class serviceDNS extends goService
   var $take_over_id       = -1;
 
 
-  function serviceDNS (&$config, $dn= NULL, $parent= NULL)
+  function serviceDNS (&$config, $dn = NULL, $parent = NULL)
   {
     plugin::plugin ($config, $dn, $parent);
 
@@ -54,23 +54,31 @@ class serviceDNS extends goService
 
     /* Get record types for zones
      */
-    $this->RecordTypes = DNS::getDnsRecordTypes(true);
-
-    /* Get all zone Informations
-     */
-    $this->Zones = DNS::getDNSZoneEntries($config,$dn);
+    $this->RecordTypes = DNS::getDnsRecordTypes(TRUE);
 
     /* If there is at least one entry in this -> types, we have DNS enabled
      */
-    if(count($this->Zones) == 0){
-      $this->is_account = false;
+    if (!$this->is_account) {
       $this->dns_server_list = $this->get_list_of_dns_servers();
-    }else{
-      $this->is_account = true;
     }
+
     $this->initially_was_account = $this->is_account;
   }
 
+  function is_this_account($attrs)
+  {
+    /* Get all zone Informations
+     */
+    $this->Zones = DNS::getDNSZoneEntries($this->config, $attrs['dn']);
+
+    /* If there is at least one entry in this -> types, we have DNS enabled
+     */
+    if (count($this->Zones) == 0) {
+      return FALSE;
+    } else {
+      return TRUE;
+    }
+  }
 
   function get_list_of_dns_servers()
   {
