@@ -146,9 +146,9 @@ class etablissement extends simplePlugin
     }
   }
 
-  function ldap_save()
+  function ldap_save($cleanup = TRUE)
   {
-    parent::ldap_save();
+    parent::ldap_save($cleanup);
 
     $ldap = $this->config->get_ldap_link();
 
