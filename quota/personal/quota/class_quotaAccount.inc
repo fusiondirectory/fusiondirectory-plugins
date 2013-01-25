@@ -1,9 +1,8 @@
 <?php
-
 /*
  * This code is part of FusionDirectory (http://www.fusiondirectory.org)
  * Copyright (C) 2010 Antoine Gallavardin
- * Copyright (C) 2011  FusionDirectory
+ * Copyright (C) 2011-2013 FusionDirectory
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,6 +18,125 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
  */
+
+/*TODO
+ * Add a UnitIntAttribute for the block soft and hard limit
+ * Make everything work with fake device list
+ * Change the server select so that it submits the form, code the glue to fill the device list properly
+ * */
+
+class quotaAccount extends simplePlugin
+{
+  var $objectclasses = array("systemQuotas");
+
+  var $displayHeader = TRUE;
+
+  public static $unit_options = array('K'=>_('KB'),'M'=>_('MB'),'G'=>_('GB'),'T'=>_('TB'));
+
+  static function plInfo()
+  {
+    return array(
+      'plShortName'   => _('Quota'),
+      'plDescription' => _('Plugin for quota support'),
+      'plSelfModify'  => TRUE,
+      'plPriority'    => 11,
+      'plCategory'    => array('users'),
+      'plObjectType'  => array('user'),
+
+      'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
+    );
+  }
+
+  static function getAttributesInfo ()
+  {
+    return array(
+      'main' => array(
+        'template'  => get_template_path('quota.tpl', TRUE, dirname(__FILE__)),
+        'name'      => _('Quota informations'),
+        'icon'      => 'plugins/quota/images/storage.png',
+        'attrs'     => array(
+          new OrderedArrayAttribute(
+            new CharSeparatedCompositeAttribute(
+              _('Quota informations for this user'),
+              'quota',
+              array(
+                new SelectAttribute(
+                  _('Device'), _('Device this quota is for'),
+                  'quotaDevice', TRUE
+                ),
+                new IntAttribute(
+                  _('Block soft limit'), _(''),
+                  'quotaBlockSoftLimit', TRUE,
+                  0 /*min*/, FALSE/*no max*/
+                ),
+                new IntAttribute(
+                  _('Block hard limit'), _(''),
+                  'quotaBlockHardLimit', TRUE,
+                  0 /*min*/, FALSE/*no max*/
+                ),
+                new IntAttribute(
+                  _('Inode soft limit'), _(''),
+                  'quotaInodeSoftLimit', TRUE,
+                  0 /*min*/, FALSE/*no max*/
+                ),
+                new IntAttribute(
+                  _('Inode hard limit'), _(''),
+                  'quotaInodeHardLimit', TRUE,
+                  0 /*min*/, FALSE/*no max*/
+                ),
+                new SelectAttribute(
+                  _('Server'), _('Server hosting the device this quota is for'),
+                  'quotaServer', TRUE
+                ),
+              ),
+              ':'
+            ),
+            FALSE,  // no order
+            array(),
+            TRUE    // edit button
+          )
+        )
+      ),
+    );
+  }
+
+  function __construct (&$config, $dn = NULL, $parent = NULL)
+  {
+    parent::__construct($config, $dn, $parent);
+
+    $this->attrQuotaServer &= $this->attributesAccess['quota']->attribute->attributes[5];
+    $this->attrQuotaDevice &= $this->attributesAccess['quota']->attribute->attributes[0];
+
+    /* Get List of server with Quota service */
+    $ldap = $this->config->get_ldap_link();
+    $ldap->cd($this->config->current['BASE']);
+    $ldap->search('(&(objectClass=goServer)(objectClass=quotaService))', array('cn','description','quotaDeviceParameters'));
+    $this->quotaDeviceParameters = array();
+    $quotaServersList = array();
+    while ($attrs = $ldap->fetch()) {
+      $this->quotaDeviceParameters[$attrs['cn'][0]] = $attrs['quotaDeviceParameters'];
+      unset($this->quotaDeviceParameters[$attrs['cn'][0]]['count']);
+      $display = $attrs['cn'][0];
+      if (isset($attrs['description'][0])) {
+        $display .= ' - '.$attrs['description'][0];
+      }
+      $quotaServersList[$attrs['cn'][0]] = $display;
+    }
+    $this->attrQuotaServer->setChoices(array_keys($quotaServersList), array_values($quotaServersList));
+    $quotaDeviceList = $this->getDeviceList();
+    $this->attrQuotaDevice->setChoices(array_keys($quotaDeviceList), array_values($quotaDeviceList));
+  }
+
+  function getDeviceList()
+  {
+    $quotaDeviceList = array();
+    foreach ($this->quotaDeviceParameters[$this->attrQuotaServer->getValue()] as $infos) {
+      $quotas = explode(":", $infos);
+      $quotaDeviceList[$quotas[0].":".$quotas[1]] = $quotas[0]." - ".$quotas[2];
+    }
+    return $quotaDeviceList;
+  }
+}
 
 class quotaAccount extends plugin
 {
