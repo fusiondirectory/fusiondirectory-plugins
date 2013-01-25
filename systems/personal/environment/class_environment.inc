@@ -85,8 +85,7 @@ class environment2 extends simplePlugin
                   'gotoLogonScriptDescription', FALSE
                 ),
               ),
-              '', '', '',
-              _('Logon script')
+              '', _('Logon script')
             ),
             TRUE,
             array(),
@@ -110,8 +109,7 @@ class environment2 extends simplePlugin
                   'gotoLogoffScriptDescription', FALSE
                 ),
               ),
-              '', '', '',
-              _('Logoff script')
+              '', _('Logoff script')
             ),
             TRUE,
             array(),

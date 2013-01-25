@@ -23,6 +23,18 @@ class serviceShare extends simpleService
 {
   var $objectclasses = array('goShareServer');
 
+  /* Return plugin informations for acl handling */
+  static function plInfo()
+  {
+    return array(
+      'plShortName'   => _('Share service'),
+      'plDescription' => _('Share service').' ('._('Services').')',
+      'plIcon'        => 'plugins/systems/images/service_file.png',
+
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+    );
+  }
+
   static function getAttributesInfo ()
   {
     return array(
@@ -44,10 +56,6 @@ class serviceShare extends simpleService
                   _('Description'), _('Description of this share'),
                   'shareDesc', FALSE
                 ),
-                new StringAttribute(
-                  _('Path / Volume'), _('Path or volume concerned by this share'),
-                  'sharePath', TRUE
-                ),
                 new SelectAttribute(
                   _('Type'), _('Type of share'),
                   'shareType', TRUE,
@@ -58,10 +66,13 @@ class serviceShare extends simpleService
                   'shareCodepage', TRUE, array()
                 ),
                 new StringAttribute(
+                  _('Path / Volume'), _('Path or volume concerned by this share'),
+                  'sharePath', TRUE
+                ),
+                new StringAttribute(
                   _('Option'), _('Special option(s) for this share'), 'shareOption'
                 ),
-              ),
-              '', '' // no formats
+              )
             ),
             FALSE,  // no order
             array(),
@@ -72,24 +83,13 @@ class serviceShare extends simpleService
     );
   }
 
-  /* Return plugin informations for acl handling */
-  static function plInfo()
-  {
-    return array(
-      'plShortName'   => _('Share service'),
-      'plDescription' => _('Share service').' ('._('Services').')',
-
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
-    );
-  }
-
   function __construct (&$config, $dn = NULL, $parent = NULL)
   {
     parent::__construct($config, $dn, $parent);
     $this->attributesAccess['goExportEntry']->setLinearRendering(FALSE);
 
     $charsets = $this->getCharsets();
-    $this->attributesAccess['goExportEntry']->attribute->attributes[4]->setChoices(
+    $this->attributesAccess['goExportEntry']->attribute->attributes[3]->setChoices(
       array_keys($charsets), array_values($charsets)
     );
   }
