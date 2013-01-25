@@ -1,11 +1,10 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003  Cajus Pollmeier
   Copyright (C) 2008  Gero Kuhlmann
   Copyright (C) 2008  Fabian Hickert
-  Copyright (C) 2011  FusionDirectory
+  Copyright (C) 2011-2013  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -22,49 +21,49 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class mailMethodUwimap extends mailMethod{
+class mailMethodUwimap extends mailMethod {
 
-  protected $ServerList = array();
-  protected $imap_handle = NULL;
+  protected $ServerList   = array();
+  protected $imap_handle  = NULL;
   protected $quota_loaded = FALSE;
-   
+
   /* Allow modification of account_ids for existing mail accounts */
-  protected $modifyableMail   = FALSE;
+  protected $modifyableMail = FALSE;
 
   /* Allow modification of the mail server attribute existing mail accounts */
   protected $modifyableServer = FALSE;
 
   /* Enforces same value for 'mail' as used for 'cn' */
-  protected $mailEqualsCN   = FALSE; 
+  protected $mailEqualsCN = FALSE;
 
-  protected $enableDomainSelection= FALSE;
-  protected $enableQuota          = FALSE;
-  protected $enableSieveManager   = FALSE;
-  protected $enableVacationRange  = FALSE;
-  protected $enableFolderTypes    = FALSE;
+  protected $enableDomainSelection  = FALSE;
+  protected $enableQuota            = FALSE;
+  protected $enableSieveManager     = FALSE;
+  protected $enableVacationRange    = FALSE;
+  protected $enableFolderTypes      = FALSE;
 
   /* the attribute used to create accounts */
-  protected $uattrib        = "uid";  // Naming attribute for accounts, e.g. imap.
+  protected $uattrib = "uid";  // Naming attribute for accounts, e.g. imap.
 
   /* The account prefixes, keep the '.' here! See FAQ cyrusUseSlashes */
-  protected $user_prefix    = "~.";
-  protected $share_prefix   = "share.";
+  protected $user_prefix  = "~.";
+  protected $share_prefix = "share.";
 
   protected $procmaildir = "";
 
   protected function init()
   {
     mailMethod::init();
-    if(isset($this->config->data['SERVERS']['IMAP'])){
+    if (isset($this->config->data['SERVERS']['IMAP'])) {
       $this->ServerList = $this->config->data['SERVERS']['IMAP'];
     }
 
-    /* Check for required PROCMAIL_PATH configuration 
+    /* Check for required PROCMAIL_PATH configuration
      */
-    if($this->config->get_cfg_value("procMailPath","") == ""){
-      msg_dialog::display(_("Configuration error"),msgPool::invalidConfigurationAttribute("procMailPath"), ERROR_DIALOG);
+    if ($this->config->get_cfg_value("procMailPath", "") == "") {
+      msg_dialog::display(_("Configuration error"), msgPool::invalidConfigurationAttribute("procMailPath"), ERROR_DIALOG);
       $this->procmaildir = "";
-    }else{
+    } else {
       $this->procmaildir = $this->config->data['MAIN']['PROCMAIL_PATH'];
     }
   }
@@ -72,7 +71,7 @@ class mailMethodUwimap extends mailMethod{
 
   public function saveSieveSettings()
   {
-    if(empty($this->procmaildir)){
+    if (empty($this->procmaildir)) {
       @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "",
           "<b>MAIL</b>: Skippend writting scripts, 'procMailPath' is not configured");
       return;
@@ -81,17 +80,16 @@ class mailMethodUwimap extends mailMethod{
     mailMethod::saveSieveSettings();
     /* Map attribute from parent class
      */
-    $mail = $this->parent->mail;
-    $gosaMailDeliveryMode = $this->parent->gosaMailDeliveryMode;
+    $mail                     = $this->parent->mail;
+    $gosaMailDeliveryMode     = $this->parent->gosaMailDeliveryMode;
     $gosaMailAlternateAddress = $this->parent->gosaMailAlternateAddress;
-    $gosaMailMaxSize = $this->parent->gosaMailMaxSize;
-    $gosaSpamMailbox = $this->parent->gosaSpamMailbox;
-    $gosaSpamSortLevel = $this->parent->gosaSpamSortLevel;
-    $gosaVacationMessage = $this->parent->gosaVacationMessage;
+    $gosaMailMaxSize          = $this->parent->gosaMailMaxSize;
+    $gosaSpamMailbox          = $this->parent->gosaSpamMailbox;
+    $gosaSpamSortLevel        = $this->parent->gosaSpamSortLevel;
+    $gosaVacationMessage      = $this->parent->gosaVacationMessage;
 
-    $recipe = "";
     $addrlist = $mail;
-    foreach ($gosaMailAlternateAddress as $val){
+    foreach ($gosaMailAlternateAddress as $val) {
       $addrlist .= "|$val";
     }
     $user = $this->getUAttribValue();
@@ -99,52 +97,35 @@ class mailMethodUwimap extends mailMethod{
     /* Only create a new one, if it is not empty */
     if (is_integer(strpos($gosaMailDeliveryMode, "R")) ||
         is_integer(strpos($gosaMailDeliveryMode, "C")) ||
-        !is_integer(strpos($gosaMailDeliveryMode, "L")) ||
+        is_integer(strpos($gosaMailDeliveryMode, "I")) ||
         is_integer(strpos($gosaMailDeliveryMode, "V")) ||
         is_integer(strpos($gosaMailDeliveryMode, "S"))) {
-      $text= implode ("", file(MAIL_DIR."/procmail-header.txt"));
-      $text = preg_replace('/"/', '\\"', $text);
-      eval ("\$recipe.=\"$text\";");
-    }
+      $smarty = get_smarty();
+      $smarty->left_delimiter   = '_{';
+      $smarty->right_delimiter  = '}_';
+      $smarty->assign('addrlist', $addrlist);
+      $smarty->assign('mail', $mail);
+      $smarty->assign('user', $user);
 
-    /* Add anti-spam variables */
-    if (is_integer(strpos($gosaMailDeliveryMode, "S"))) {
-      $spambox = $gosaSpamMailbox;
-      $spamlevel = $gosaSpamSortLevel;
-      $text= implode ("", file(MAIL_DIR."/procmail-spam.txt"));
-      $text = preg_replace('/"/', '\\"', $text);
-      eval ("\$recipe.=\"$text\";");
-    }
+      $smarty->assign('spamfilter', is_integer(strpos($gosaMailDeliveryMode, "S")));
+      $smarty->assign('spambox', $gosaSpamMailbox);
+      $smarty->assign('spamlevel', $gosaSpamSortLevel);
 
-    /* Add vacation recipe */
-    if (is_integer(strpos($gosaMailDeliveryMode, "V"))) {
-      $vacmsg = $gosaVacationMessage;
-      $text= implode ("", file(MAIL_DIR."/procmail-vacation.txt"));
-      $text = preg_replace('/"/', '\\"', $text);
-      eval ("\$recipe.=\"$text\";");
-    }
+      $smarty->assign('vacation', is_integer(strpos($gosaMailDeliveryMode, "V")));
+      $smarty->assign('vacmsg', $gosaVacationMessage);
 
-    /* Check if no local delivery is wanted */
-    if (!is_integer(strpos($gosaMailDeliveryMode, "L"))) {
-      $text= implode ("", file(MAIL_DIR."/procmail-discard.txt"));
-      $text = preg_replace('/"/', '\\"', $text);
-      eval ("\$recipe.=\"$text\";");
-    }
+      $smarty->assign('discard', is_integer(strpos($gosaMailDeliveryMode, "I")));
 
-    /* Write procmail script */
-    if (!empty($recipe)) {
-      $text= implode ("", file(MAIL_DIR."/procmail-footer.txt"));
-      $text = preg_replace('/"/', '\\"', $text);
-      eval ("\$recipe.=\"$text\";");
+      /* Write procmail script */
+      $recipe = $smarty->fetch(get_template_path('procmail_script.tpl', TRUE, dirname(__FILE__)));
+      $smarty->left_delimiter   = '{';
+      $smarty->right_delimiter  = '}';
       $file = $this->procmaildir . "/" . $this->getUAttribValue();
 
       if (!file_put_contents($file, $recipe)) {
-        msg_dialog::display(_("Error"),(sprintf(_("Unable to write procmail script to '%s'."), $file)),ERROR_DIALOG);
+        msg_dialog::display(_("Error"), sprintf(_("Unable to write procmail script to '%s'."), $file), ERROR_DIALOG);
       }
     }
   }
-
 }
-
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

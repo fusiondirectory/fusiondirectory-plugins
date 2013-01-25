@@ -27,12 +27,12 @@ class mailMethodSendmailCyrus extends mailMethodCyrus
   {
     /* Remove possible local alias from forwarders */
     mailMethodCyrus::fixAttributesOnLoad();
-    if(isset($this->parent->attrs['gosaMailForwardingAddress'])){
-      $newForwarder= array();
-      for($i = 0; $i < $this->parent->attrs['gosaMailForwardingAddress']['count']; $i++){
+    if (isset($this->parent->attrs['gosaMailForwardingAddress'])) {
+      $newForwarder = array();
+      for ($i = 0; $i < $this->parent->attrs['gosaMailForwardingAddress']['count']; $i++) {
         $addr = $this->parent->attrs['gosaMailForwardingAddress'][$i];
-        if (!preg_match('/^\\\\/', $addr)){
-          $newForwarder[]= $addr;
+        if (!preg_match('/^\\\\/', $addr)) {
+          $newForwarder[] = $addr;
         }
       }
       $newForwarder['count'] = count($newForwarder);
@@ -47,14 +47,11 @@ class mailMethodSendmailCyrus extends mailMethodCyrus
     /* Add local user if checked */
     $uattrib = $this->getUAttrib();
     if (preg_match("/L/", $mailObject->gosaMailDeliveryMode)) {
-      if(!isset($this->parent->attrs['gosaMailForwardingAddress'])){
+      if (!isset($this->parent->attrs['gosaMailForwardingAddress'])) {
         $this->parent->attrs['gosaMailForwardingAddress'] = array();
       }
-      $this->parent->attrs['gosaMailForwardingAddress'][]= "\\".$this->parent->$uattrib;
+      $this->parent->attrs['gosaMailForwardingAddress'][] = "\\".$this->parent->$uattrib;
     }
   }
-
 }
-
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

@@ -435,7 +435,7 @@ class mailMethodCyrus extends mailMethod
     }
 
     /* Merge given ACL with acl mapping
-       This ensures that no ACL will accidentally overwritten by gosa.
+       This ensures that no ACL will accidentally overwritten by fusiondirectory.
      */
     foreach ($folder_acls as $user => $acl) {
       if (!isset($this->acl_mapping[$acl])) {
@@ -443,7 +443,7 @@ class mailMethodCyrus extends mailMethod
       }
     }
 
-    return($folder_acls);
+    return $folder_acls;
   }
 
 
@@ -498,21 +498,6 @@ class mailMethodCyrus extends mailMethod
   {
     mailMethod::saveSieveSettings();
 
-    // Check file integrity
-    $files = array();
-    foreach (array("sieve-header.txt","sieve-spam.txt","sieve-mailsize.txt","sieve-vacation.txt","sieve-discard.txt") as $file) {
-      if (!file_exists(MAIL_DIR."/".$file) || ! is_readable(MAIL_DIR."/".$file)) {
-        $files[] = MAIL_DIR."/".$file;
-        @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, MAIL_DIR."/".$file,
-            "<b>Sieve template missing, please locate and move the template file: </b>");
-      }
-    }
-    if (count($files)) {
-      $msg = sprintf(_("File '%s' does not exist!"), implode($files, ", "));
-      $msg .= "&nbsp;"._("The sieve script may not be written correctly.");
-      msg_dialog::display(_("Warning"), $msg, WARNING_DIALOG);
-    }
-
     /* Map attribute from parent class
      */
     $mail                     = $this->parent->mail;
@@ -539,18 +524,18 @@ class mailMethodCyrus extends mailMethod
        checked easily by spam filters */
     $spamlevel = str_pad("", (int) $gosaSpamSortLevel, "*");
 
-    /* Get current sieve script named 'gosa'.
-        Check if it valid ("###GOSA" must be the first string).
+    /* Get current sieve script named 'fusiondirectory'.
+        Check if it valid ("###FUSIONDIRECTORY" must be the first string).
         If it is valid just replace it, if it is NOT valid
          create a backup of the old
      */
-    $script = "";
     if ($sieve->sieve_listscripts()) {
-      if (in_array("gosa", $sieve->response)) {
-        if (!$sieve->sieve_getscript("gosa")) {
-          $this->error = sprintf(_("Cannot retrieve SIEVE script: %s"), to_string($sieve->error_raw));
+      if (in_array('fusiondirectory', $sieve->response)) {
+        $script = "";
+        if (!$sieve->sieve_getscript('fusiondirectory')) {
+          $this->error = sprintf(_('Cannot retrieve SIEVE script: %s'), to_string($sieve->error_raw));
           @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $sieve->error_raw,
-              "<b>SIEVE: Connot read 'gosa' sieve script.</b>");
+              "<b>SIEVE: Connot read 'fusiondirectory' sieve script.</b>");
           $this->error = $sieve->error_raw;
           return FALSE;
         }
@@ -560,7 +545,7 @@ class mailMethodCyrus extends mailMethod
           if (empty($line)) {
             continue;
           }
-          if (preg_match ("/^###GOSA/", $line) && strlen($script) == 0) {
+          if (preg_match ('/^###FUSIONDIRECTORY/', $line) && strlen($script) == 0) {
             $is_valid_script = TRUE;
           }
           $line   = rtrim($line);
@@ -569,9 +554,9 @@ class mailMethodCyrus extends mailMethod
 
         if ($is_valid_script || strlen($script) == 0 || empty($script)) {
           @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "",
-              "<b>SIEVE</b>: Sieve script 'gosa' was a valid FusionDirectory script and will be replaced.");
+              "<b>SIEVE</b>: Sieve script 'fusiondirectory' was a valid FusionDirectory script and will be replaced.");
         } else {
-          $new_name = "non_gosa_".date("Ymd_H-i-s");
+          $new_name = "non_fusiondirectory_".date("Ymd_H-i-s");
           $sieve->sieve_sendscript($new_name, $script);
           @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, $this->sieve->error_raw,
               "<b>SIEVE</b>: Non FusionDirectory sieve script. <b>Creating backup of the current sieve script '".$new_name."'.</b>");
@@ -584,68 +569,57 @@ class mailMethodCyrus extends mailMethod
       Build up new sieve script here.
      *****/
 
-
     /* Only create a new one, if it is not empty */
-    $script = "";
+    $smarty = get_smarty();
     if (is_integer(strpos($gosaMailDeliveryMode, "R")) ||
         is_integer(strpos($gosaMailDeliveryMode, "C")) ||
         is_integer(strpos($gosaMailDeliveryMode, "I")) ||
         is_integer(strpos($gosaMailDeliveryMode, "V")) ||
         is_integer(strpos($gosaMailDeliveryMode, "S"))) {
+      /* Add anti-spam code */
+      $smarty->assign('spamfilter', is_integer(strpos($gosaMailDeliveryMode, "S")));
+      $smarty->assign('spambox', $gosaSpamMailbox);
+      $smarty->assign('spamlevel', $spamlevel);
 
-      $text = preg_replace('/"/', '\\"', implode ("", file(MAIL_DIR."/sieve-header.txt")));
-      eval ("\$script.=\"$text\";");
-    }
+      /* Add "reject due to mailsize" code, message is currently not
+         adjustable through FusionDirectory. */
+      $smarty->assign('sizefilter', is_integer(strpos($gosaMailDeliveryMode, "R")));
+      $smarty->assign('maxsize', $gosaMailMaxSize);
 
-    /* Add anti-spam code */
-    if (is_integer(strpos($gosaMailDeliveryMode, "S"))) {
-      $spambox  = $gosaSpamMailbox;
-      $text     = preg_replace('/"/', '\\"', implode ("", file(MAIL_DIR."/sieve-spam.txt")));
-      eval ("\$script.=\"$text\";");
-    }
-
-    /* Add "reject due to mailsize" code, message is currently not
-       adjustable through FusionDirectory. */
-    if (is_integer(strpos($gosaMailDeliveryMode, "R"))) {
-      $maxsize  = $gosaMailMaxSize;
-      $text     = preg_replace('/"/', '\\"', implode ("", file(MAIL_DIR."/sieve-mailsize.txt")));
-      eval ("\$script.=\"$text\";");
-    }
-
-    /* Add vacation information */
-    if (is_integer(strpos($gosaMailDeliveryMode, "V"))) {
-
-      /* Sieve wants all destination addresses for the
-         vacation message, so we've to assemble them from
-         mail and mailAlternateAddress */
-      $addrlist = "\"".$mail."\"";
-      foreach ($gosaMailAlternateAddress as $val) {
-        $addrlist .= ", \"$val\"";
+      /* Add vacation information */
+      $smarty->assign('vacation', is_integer(strpos($gosaMailDeliveryMode, "V")));
+      if (is_integer(strpos($gosaMailDeliveryMode, "V"))) {
+        /* Sieve wants all destination addresses for the
+           vacation message, so we've to assemble them from
+           mail and mailAlternateAddress */
+        $addrlist = '"'.$mail.'"';
+        foreach ($gosaMailAlternateAddress as $val) {
+          $addrlist .= ", \"$val\"";
+        }
+        $smarty->assign('addrlist', $addrlist);
+        $smarty->assign('vacmsg', addslashes(addslashes($gosaVacationMessage)));
       }
-      $vacmsg = addslashes(addslashes($gosaVacationMessage));
-      $text   = preg_replace('/"/', '\\"', implode ("", file(MAIL_DIR."/sieve-vacation.txt")));
-      eval ("\$script.=\"$text\";");
-    }
 
-    /* If no local delivery is wanted, tell the script to discard the mail */
-    if (is_integer(strpos($gosaMailDeliveryMode, "I"))) {
-      $text = preg_replace('/"/', '\\"', implode ("", file(MAIL_DIR."/sieve-discard.txt")));
-      eval ("\$script.=\"$text\";");
-    }
+      /* If no local delivery is wanted, tell the script to discard the mail */
+      $smarty->assign('dropownmail', is_integer(strpos($gosaMailDeliveryMode, "I")));
 
+      $script = $smarty->fetch(get_template_path('sieve_script.tpl', TRUE, dirname(__FILE__)));
+    } else {
+      $script = '';
+    }
     /****
       Sieve script build complete
      ****/
 
     /* Upload script and make it the default one */
-    if (!$sieve->sieve_sendscript("gosa", $script)) {
+    if (!$sieve->sieve_sendscript("fusiondirectory", $script)) {
       $this->error = sprintf(_("Cannot store SIEVE script: %s"), to_string($sieve->error_raw));
       @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "Error was: ".to_string($sieve->error_raw),
         "<b>SIEVE: Writing new Sieve script failed!</b>");
       return FALSE;
     }
 
-    if (!$sieve->sieve_setactivescript("gosa")) {
+    if (!$sieve->sieve_setactivescript("fusiondirectory")) {
       $this->error = sprintf(_("Cannot activate SIEVE script: %s"), to_string($sieve->error_raw));
       return FALSE;
     }
