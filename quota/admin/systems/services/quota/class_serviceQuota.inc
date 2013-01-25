@@ -19,7 +19,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
  */
 
-class serviceQuota_new extends simpleService
+class serviceQuota extends simpleService
 {
   var $objectclasses = array('quotaService');
 
@@ -52,7 +52,7 @@ class serviceQuota_new extends simpleService
                   'quotaDevice', TRUE
                 ),
                 new IntAttribute(
-                  _('Block size'), _(''),
+                  _('Block size'), _('Block size of this share (dumpe2fs /dev/sdb3 | grep -i \'Block size\')'),
                   'quotaBlockSize', TRUE,
                   0 /*min*/, FALSE/*no max*/
                 ),
@@ -78,7 +78,7 @@ class serviceQuota_new extends simpleService
           ),
           new StringAttribute(
             _('Mail command'), _('Command allowing the server to send mails'),
-            'quotaMailCommand', TRUE, '/usr/sbin/sendmail -t'
+            'quotaMailCommand', FALSE, '/usr/sbin/sendmail -t'
           ),
           new StringAttribute(
             _('Support contact'), _('Email address to contact the administrator'),
@@ -86,7 +86,7 @@ class serviceQuota_new extends simpleService
           ),
           new StringAttribute(
             _('From'), _('Email from which the email is sent'),
-            'quotaMsgFromSupport', TRUE
+            'quotaMsgFromSupport', FALSE
           ),
           new StringAttribute(
             _('CC'), _('Send a copy of this email to'),
@@ -98,7 +98,7 @@ class serviceQuota_new extends simpleService
           ),
           new TextAreaAttribute(
             _('Content'), _('Content of the sent email'),
-            'quotaMsgContentSupport', TRUE
+            'quotaMsgContentSupport', FALSE
           ),
           new StringAttribute(
             _('Signature'), _('Signature to put at the end of the mail'),
@@ -115,11 +115,11 @@ class serviceQuota_new extends simpleService
           ),
           new StringAttribute(
             _('Bind user dn'), _('The user dn to use for bind'),
-            'quotaLdapServerUserDn', TRUE
+            'quotaLdapServerUserDn', FALSE
           ),
           new StringAttribute(
             _('Bind user password'), _('The password of the user used for bind'),
-            'quotaLdapServerUserPassword', TRUE
+            'quotaLdapServerUserPassword', FALSE
           ),
         )
       )
@@ -136,6 +136,27 @@ class serviceQuota_new extends simpleService
     $this->attributesAccess['quotaDeviceParameters']->attribute->attributes[0]->setChoices(
       array_keys($shares), array_values($shares)
     );
+
+    $ldapServers = $this->getLdapServers();
+    $this->attributesAccess['quotaLdapServerURI']->setChoices(
+      array_keys($ldapServers), array_values($ldapServers)
+    );
+
+    /* get all encodings types available */
+    $charsets = array();
+    $configEncodings = $this->config->get_cfg_value('encodings', array());
+    foreach ($configEncodings as $str) {
+      $arr = explode("=", $str);
+      if (count($arr) == 2) {
+        $charsets[$arr[0]] = $arr[1];
+      } else {
+        msg_dialog::display(_('Warning'), sprintf(_('Invalid value in encodings : %s'), $str), WARNING_DIALOG);
+      }
+    }
+    $this->attributesAccess['quotaMsgCharsetSupport']->setChoices(
+      array_keys($charsets), array_values($charsets)
+    );
+
   }
 
   function getShares()
@@ -152,255 +173,19 @@ class serviceQuota_new extends simpleService
     }
     return $shareInfos;
   }
-}
 
-class serviceQuota extends goService {
-
-  /* This plugin only writes its objectClass */
-  var $objectclasses    = array("quotaService");
-  var $attributes       = array("quotaLdapServerURI","quotaLdapServerUserDn",
-                                "quotaLdapServerUserPassword","quotaDeviceParameters",
-                                "quotaLdapSearchIdAttribute",
-                                "quotaMsgCharsetSupport",
-                                "quotaMsgSignatureSupport","quotaMsgContactSupport",
-                                "quotaMsgFromSupport","quotaMsgSubjectSupport",
-                                "quotaMsgContentSupport","quotaCarbonCopyMail",
-                                "quotaMailCommand");
-
-  var $DisplayName      = "";
-  var $dn               = NULL;
-
-  var $quotaDeviceParameters        = array();
-  var $quotaLdapSearchIdAttribute   = "";
-  var $quotaMsgCharsetSupport       = "UTF-8";
-  var $quotaMsgSignatureSupport     = "";
-  var $quotaMsgContactSupport       = "";
-  var $quotaMsgFromSupport          = "";
-  var $quotaMsgSubjectSupport       = "";
-  var $quotaMsgContentSupport       = "";
-  var $quotaLdapServerURI           = "";
-  var $quotaLdapServerUserDn        = "";
-  var $quotaLdapServerUserPassword  = "";
-  var $quotaCarbonCopyMail          = "";
-  var $quotaMailCommand             = "/usr/sbin/sendmail -t";
-  var $charsets                     = array();
-
-  var $ldapServers = array();
-
-  var $acl;
-  var $cn           = "";
-  var $description  = "";
-  var $view_logged  = FALSE;
-
-  function __construct(&$config, $dn)
+  function getLdapServers()
   {
-    goService::goService($config, $dn);
-    $this->DisplayName = _("Quota service");
-
-    /* Load arrays */
-    /* loading of each array quotaDeviceParameters */
-    $tmp = array();
-    if (isset($this->attrs['quotaDeviceParameters'])) {
-      for ($i= 0; $i<$this->attrs['quotaDeviceParameters']['count']; $i++) {
-        $tmp[$this->attrs['quotaDeviceParameters'][$i]] = $this->attrs['quotaDeviceParameters'][$i];
-      }
-    }
-    $this->quotaDeviceParameters = $tmp;
-
-
-    /* loading of each array of any share delared on this server  */
-    $tmp = array();
-    if (isset($this->attrs['goExportEntry'])) {
-      for ($i= 0; $i<$this->attrs['goExportEntry']['count']; $i++) {
-        $tmp[$this->attrs['goExportEntry'][$i]] = $this->attrs['goExportEntry'][$i];
-      }
-    }
-    $this->goExportEntry = $tmp;
-
-    $this->quotaLdapSearchIdAttribute = $this->config->get_cfg_value("accountPrimaryAttribute");
-
-
-    /********************** LDAP SERVER SELECTION SYSTEM ***********************/
     $ldap = $this->config->get_ldap_link();
 
     /* Get List of server with LDAP service */
-    $this->ldapServers = array();
+    $ldapServers = array();
     $ldap->cd($this->config->current['BASE']);
     $ldap->search("(&(objectClass=goServer)(objectClass=goLdapServer))", array("cn", "goLdapBase"));
     while ($attrs = $ldap->fetch()) {
-      $this->ldapServers[$attrs['goLdapBase'][0]] = $attrs['cn'][0];
+      $ldapServers[$attrs['goLdapBase'][0]] = $attrs['cn'][0];
     }
+    return $ldapServers;
   }
-
-  function execute()
-  {
-    $smarty = get_smarty();
-
-    if ($this->is_account && !$this->view_logged) {
-      $this->view_logged = TRUE;
-      new log("view","server/".get_class($this),$this->dn);
-    }
-
-    /* PART that should go in save_object if it was called only once - see https://forge.fusiondirectory.org/issues/848 */
-    /* Delete Device record */
-    if ((isset($_GET['act']) && ($_GET['act'] == "deleteDevPar"))) {
-      $tmp = base64_decode($_GET['id']);
-      unset($this->quotaDeviceParameters[$tmp]);
-    }
-
-    /* Add device record */
-    if (isset($_POST['addquotadevice'])) {
-      $quota_device_added =  $_POST['quota_device_name'].":"
-                            .$_POST['quota_device_blocksize'].":"
-                            .$_POST['quota_device_description'];
-      $this->quotaDeviceParameters[] = $quota_device_added;
-    }
-    /* END OF PART */
-
-    if (empty($this->ldapServers)) {
-      $display =  "<img alt=\"\"src=\"images/small-error.png\" align=\"middle\">&nbsp;<b>".
-                  _("There is no ldap server configured")."</b>";
-      $display .= back_to_main();
-      return $display;
-    }
-
-    /* assign all $this objects values in variable for pushing in smarty template only this quota object*/
-    foreach($this->attributes as $val) {
-      $smarty->assign($val, $this->$val);
-    }
-
-    /*  prepare device listing */
-    $quotaDevicesList = new divSelectBox("QuotaDeviceslist");
-    $quotaDevicesList->SetHeight(80);
-
-    /* prepare deletion links */
-    $link_delete = "<a href='?plug=".$_GET['plug']."&act=deleteDevPar&id=%s'><img style='border: 0px' src='images/lists/trash.png'></a>";
-    foreach ($this->quotaDeviceParameters as $quotaparameters => $values ) {
-      $quotadevice_exploded=explode(":",$values);
-      $quotaDevicesList->AddEntry(array(
-            array("string" => _("Device")." : " . $quotadevice_exploded[0]),
-            array("string" => _("BlockSize")." : " . $quotadevice_exploded[1]),
-            array("string" => _("Description")." : ".$quotadevice_exploded[2]),
-            array("string" =>str_replace("%s",base64_encode($quotaparameters),$link_delete))
-          ));
-    }
-    $smarty->assign("quotaDevicesList",$quotaDevicesList->DrawList());
-
-    $smarty->assign("ldapServers",$this->ldapServers);
-
-    /* create drop list for all available share */
-    $shareInfos = array();
-    foreach ($this->goExportEntry as $shareEntry => $values) {
-      $shareEntry_exploded=explode("|",$values);
-      $share_name       = $shareEntry_exploded[0];
-      $share_prot       = $shareEntry_exploded[2];
-      $share_device     = $shareEntry_exploded[4];
-      $shareInfos[$share_device] = $share_device."  ( ".$share_name." "._("by")." ".$share_prot." )";
-    }
-    $smarty->assign("shareInfos",$shareInfos);
-
-    /* get all encodings types available */
-    $this->charsets = array();
-    $configEncodings = $this->config->get_cfg_value('encodings', NULL);
-    if ($configEncodings === NULL) {
-      msg_dialog::display(_('Error'), _('You need to configure encodings first'), ERROR_DIALOG);
-    } else {
-      foreach ($configEncodings as $str) {
-        $arr = explode("=", $str);
-        if (count($arr) == 2) {
-          $this->charsets[$arr[0]] = $arr[1];
-        } else {
-          msg_dialog::display(_('Warning'), sprintf(_('Invalid value in encodings : %s'), $str), WARNING_DIALOG);
-        }
-      }
-    }
-    $smarty->assign("charsets" ,$this->charsets);
-
-    /* special Value for adding ballon info */
-    $smarty->assign("HELP_get_blocksize",_("HELP how to get blocksize"));
-
-    return($smarty->fetch(get_template_path("serviceQuota.tpl",TRUE,dirname(__FILE__))));
-  }
-
-
-  function getListEntry()
-  {
-    $fields               = goService::getListEntry();
-    $fields['Message']    = _("Quota service");
-
-    return($fields);
-  }
-
-  function save_object()
-  {
-    if (isset($_POST['serviceQuotaPosted'])) {
-      plugin::save_object();
-    }
-  }
-
-  function save()
-  {
-    plugin::save();
-
-    foreach($this->attributes as $val){
-      if ($this->$val != ""){
-        $this->attrs[$val]= array($this->$val);
-      }
-    }
-
-    $this->attrs['quotaDeviceParameters'] = array();
-
-    foreach($this->quotaDeviceParameters as $entry){
-      $this->attrs['quotaDeviceParameters'][] = $entry;
-    }
-
-    /* Check if this is a new entry ... add/modify */
-    $ldap = $this->config->get_ldap_link();
-    $ldap->cat($this->dn,array("objectClass"));
-    if($ldap->count()) {
-      $ldap->cd($this->dn);
-      $ldap->modify($this->attrs);
-    } else {
-      $ldap->cd($this->dn);
-      $ldap->add($this->attrs);
-    }
-    if (!$ldap->success()) {
-      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()));
-    }
-  }
-
-
-  /* Return plugin informations for acl handling */
-  static function plInfo()
-  {
-    return (array(
-          "plShortName"   => _("Quota Service"),
-          "plDescription" => _("Quota Service")." ("._("Services").")",
-          "plSelfModify"  => FALSE,
-          "plPriority"    => 91,
-          "plCategory"    => array("server"),
-
-          "plProvidedAcls"=> array(
-              "quotaDeviceParameters"         =>_("parameters for devices with quota"),
-              "quotaLdapSearchIdAttribute"    =>_("id of user in LDAP"),
-              "quotaMsgCharsetSupport"        =>_("charset of Message"),
-              "quotaMsgSignatureSupport"      =>_("signature of warn message"),
-              "quotaMsgContactSupport"        =>_("mail of contact for support"),
-              "quotaMsgFromSupport"           =>_("subject of mail"),
-              "quotaMsgSubjectSupport"        =>_("subject of support"),
-              "quotaMsgContentSupport"        => _("core of message of Support"),
-              "quotaCarbonCopyMail"           => _("Carbon Copy for all mails"),
-              "quotaMailCommand"              => _("Mail method for sending mail"),
-              "quotaLdapServerUserDn"         => _("User for ldap connection"),
-              "quotaLdapServerUserPassword"   => _("Password for ldap connection"),
-              "quotaLdapServerURI"            => _("URI for LDAP server"),
-          )
-        ));
-  }
-
-
-  function check(){ return array(); }
-
 }
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>
