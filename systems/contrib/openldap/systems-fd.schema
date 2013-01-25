@@ -191,7 +191,7 @@ objectclass (1.3.6.1.4.1.10098.1.2.1.34 NAME 'gotoWorkstationTemplate'
          gotoFontPath $ gotoFilesystem $ gotoFloppyEnable $ gotoCdromEnable $
          gotoLpdEnable $ gotoScannerEnable $ gotoScannerClients $
          gotoRootPasswd $ gotoXdmcpServer $ gotoXMethod $ gotoSndModule $
-         gotoLastUser $ gotoXMonitor $ gotoXHsync $ gotoXVsync $ gotoXResolution $
+         gotoXMonitor $ gotoXHsync $ gotoXVsync $ gotoXResolution $
          gotoXColordepth $ gotoXMouseport $ gotoXMouseButtons $ gotoMode $ gotoXKbModel $
          gotoXKbLayout $ gotoXKbVariant $ gotoXDriver $ gotoXMouseType $ macAddress $
          gotoAutoFs $ gotoModules $ gotoAdaptPath $ gotoKernelParameters $ gotoBootKernel $
@@ -207,7 +207,7 @@ objectclass (1.3.6.1.4.1.10098.1.2.1.35 NAME 'gotoTerminalTemplate'
          gotoFontPath $ gotoFilesystem $ gotoFloppyEnable $ gotoCdromEnable $
          gotoLpdEnable $ gotoScannerEnable $ gotoScannerClients $
          gotoRootPasswd $ gotoXdmcpServer $ gotoXMethod $ gotoSndModule $
-         gotoLastUser $ gotoXMonitor $ gotoXHsync $ gotoXVsync $ gotoXResolution $
+         gotoXMonitor $ gotoXHsync $ gotoXVsync $ gotoXResolution $
          gotoXColordepth $ gotoXMouseport $ gotoXMouseButtons $ gotoMode $ gotoXKbModel $
          gotoXKbLayout $ gotoXKbVariant $ gotoXDriver $ gotoXMouseType $ macAddress $
          gotoAutoFs $ gotoModules $ gotoAdaptPath $ gotoKernelParameters $ gotoBootKernel $
@@ -452,14 +452,6 @@ attributetype ( 1.3.6.1.4.1.10098.1.1.1.29 NAME 'gotoSndModule'
   SINGLE-VALUE)
 
 ###deprecated
-attributetype ( 1.3.6.1.4.1.10098.1.1.1.30 NAME 'gotoLastUser'
-  DESC 'GOto - Gonicus Terminal Concept, value lastUser.'
-  EQUALITY caseIgnoreIA5Match
-  SUBSTR caseIgnoreIA5SubstringsMatch
-  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
-  SINGLE-VALUE)
-
-###deprecated
 attributetype ( 1.3.6.1.4.1.10098.1.1.1.31 NAME 'gotoAutoFs'
   DESC 'GOto - Gonicus Terminal Concept, value autofs.'
   EQUALITY caseIgnoreIA5Match
@@ -621,7 +613,7 @@ objectclass (1.3.6.1.4.1.10098.1.2.1.3 NAME 'GOhard'
         gotoFontPath $ gotoFilesystem $ gotoFloppyEnable $ gotoCdromEnable $
         gotoLpdEnable $ gotoScannerEnable $ gotoScannerClients $
         gotoRootPasswd $ gotoXdmcpServer $ gotoXMethod $ gotoSndModule $
-        gotoLastUser $ gotoXMonitor $ gotoXHsync $ gotoXVsync $ gotoXResolution $
+        gotoXMonitor $ gotoXHsync $ gotoXVsync $ gotoXResolution $
         gotoXColordepth $ gotoXMouseport $ gotoXMouseButtons $ gotoMode $ gotoXKbModel $
         gotoXKbLayout $ gotoXKbVariant $ gotoXDriver $ gotoXMouseType $ macAddress $
         gotoAutoFs $ gotoModules $ gotoAdaptPath $ gotoKernelParameters $ gotoBootKernel $
