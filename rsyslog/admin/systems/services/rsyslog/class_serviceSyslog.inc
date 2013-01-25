@@ -57,7 +57,7 @@ class rSyslogServer extends simpleService{
           new StringAttribute (
             _('Database'),
             _('Database'),
-            'gosaLogDB',
+            'goLogDB',
             TRUE,
             'Syslog'
           ),
@@ -88,7 +88,7 @@ class rSyslogServer extends simpleService{
       array(
         'erase' => array (
           FALSE => array (
-            'gosaLogDB',
+            'goLogDB',
             'goLogAdmin',
             'goLogPassword',
           )

@@ -52,7 +52,7 @@ attributetype ( 1.3.6.1.4.1.10098.1.1.9.23 NAME 'goFaxPassword'
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SINGLE-VALUE)
 
-attributetype ( 1.3.6.1.4.1.10098.1.1.9.83 NAME 'gosaLogDB'
+attributetype ( 1.3.6.1.4.1.10098.1.1.9.83 NAME 'goLogDB'
   DESC 'GOsa logging DB name'
   EQUALITY caseExactIA5Match
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
@@ -240,7 +240,7 @@ objectclass (1.3.6.1.4.1.10098.1.2.1.27 NAME 'goServer' SUP top AUXILIARY
 # LogDB Server description
 objectclass (1.3.6.1.4.1.10098.1.2.1.28 NAME 'goLogDBServer' SUP top AUXILIARY
   DESC 'Log DB server description (v2.6.1)'
-  MUST ( cn $ gosaLogDB $ goLogAdmin $ goLogPassword ))
+  MUST ( cn $ goLogDB $ goLogAdmin $ goLogPassword ))
 
 # Fon Server description
 objectclass (1.3.6.1.4.1.10098.1.2.1.29 NAME 'goFonServer' SUP top AUXILIARY
