@@ -52,16 +52,6 @@
     {$NAME}
    </td>
   </tr>
-  <tr>
-   <td>
-    <label for="NAME">
-     <img src="plugins/users/images/select_user.png" align=middle>&nbsp;User
-    </label>
-   </td>
-   <td>
-    {$USER}
-   </td>
-  </tr>
  </table>
 
  <table summary=""  width="100%"  style="background:#EEEEEE;border-top:1px solid #B0B0B0;">
