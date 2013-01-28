@@ -40,6 +40,26 @@ attributetype ( 1.3.6.1.4.1.10098.1.1.9.12 NAME 'goLdapBase'
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
   SINGLE-VALUE)
 
+attributetype ( 1.3.6.1.4.1.10098.1.1.9.13 NAME 'goLdapURI'
+  DESC 'URI to use to contact this LDAP server'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE)
+
+attributetype ( 1.3.6.1.4.1.10098.1.1.9.14 NAME 'goLdapSizeLimit'
+  DESC 'SIZELIMIT for this ldap'
+  EQUALITY integerMatch
+  ORDERING integerOrderingMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
+  SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.10098.1.1.9.15 NAME 'goLdapTimeLimit'
+  DESC 'TIMELIMIT for this ldap'
+  EQUALITY integerMatch
+  ORDERING integerOrderingMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
+  SINGLE-VALUE )
+
 attributetype ( 1.3.6.1.4.1.10098.1.1.9.22 NAME 'goFaxAdmin'
   DESC 'Admin principal for fax server'
   EQUALITY caseExactIA5Match
@@ -217,7 +237,7 @@ objectclass (1.3.6.1.4.1.10098.1.2.1.21 NAME 'goSyslogServer' SUP top AUXILIARY
 objectclass (1.3.6.1.4.1.10098.1.2.1.22 NAME 'goLdapServer' SUP top AUXILIARY
   DESC 'LDAP server description (v2.6.1)'
   MUST ( cn )
-  MAY  ( goLdapBase $ description ))
+  MAY  ( goLdapBase $ description $ goLdapURI $ goLdapSizeLimit $ goLdapTimeLimit))
 
 # CUPS Server description
 objectclass (1.3.6.1.4.1.10098.1.2.1.23 NAME 'goCupsServer' SUP top AUXILIARY
