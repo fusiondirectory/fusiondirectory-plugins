@@ -60,6 +60,42 @@ attributetype ( 1.3.6.1.4.1.10098.1.1.9.15 NAME 'goLdapTimeLimit'
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
   SINGLE-VALUE )
 
+attributetype ( 1.3.6.1.4.1.10098.1.1.9.16 NAME 'goLdapDeref'
+  DESC 'DEREF info for this LDAP server'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE)
+
+attributetype ( 1.3.6.1.4.1.10098.1.1.9.17 NAME 'goLdapTlsCert'
+  DESC 'TLS CERT for this LDAP server'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE)
+
+attributetype ( 1.3.6.1.4.1.10098.1.1.9.18 NAME 'goLdapTlsKey'
+  DESC 'TLS KEY for this LDAP server'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE)
+
+attributetype ( 1.3.6.1.4.1.10098.1.1.9.19 NAME 'goLdapTlsCaCert'
+  DESC 'TLS CACERT for this LDAP server'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE)
+
+attributetype ( 1.3.6.1.4.1.10098.1.1.9.20 NAME 'goLdapReqCert'
+  DESC 'TLS REQCERT for this LDAP server'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE)
+
+attributetype ( 1.3.6.1.4.1.10098.1.1.9.21 NAME 'goLdapCrlCheck'
+  DESC 'TLS CRLCHECK for this LDAP server'
+  EQUALITY caseExactMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  SINGLE-VALUE)
+
 attributetype ( 1.3.6.1.4.1.10098.1.1.9.22 NAME 'goFaxAdmin'
   DESC 'Admin principal for fax server'
   EQUALITY caseExactIA5Match
@@ -237,7 +273,9 @@ objectclass (1.3.6.1.4.1.10098.1.2.1.21 NAME 'goSyslogServer' SUP top AUXILIARY
 objectclass (1.3.6.1.4.1.10098.1.2.1.22 NAME 'goLdapServer' SUP top AUXILIARY
   DESC 'LDAP server description (v2.6.1)'
   MUST ( cn )
-  MAY  ( goLdapBase $ description $ goLdapURI $ goLdapSizeLimit $ goLdapTimeLimit))
+  MAY  ( goLdapBase $ description $ goLdapURI $ goLdapSizeLimit $ goLdapTimeLimit
+        $ goLdapDeref $ goLdapTlsCert $ goLdapTlsKey $ goLdapTlsCaCert
+        $ goLdapReqCert $ goLdapCrlCheck))
 
 # CUPS Server description
 objectclass (1.3.6.1.4.1.10098.1.2.1.23 NAME 'goCupsServer' SUP top AUXILIARY
