@@ -19,19 +19,17 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
  */
 
-/*TODO
- * [DONE] Add a UnitIntAttribute for the block soft and hard limit
- * [DONE] Make everything work with fake device list
- * Change the server select so that it submits the form, code the glue to fill the device list properly
- * */
+/* The UnitIntAttribute class handle the unit select box and convert the value to bytes.
+ * The QuotaEntryAttribute takes care of converting that to a number of blocks using the blocksize server information
+ *  it also handle soft and hard limits checking and device select update depending on server select */
 
 class UnitIntAttribute extends CompositeAttribute
 {
-  function __construct ($label, $description, $ldapName, $required, $units, $min = FALSE, $max = FALSE, $acl = "", $label = "Composite attribute")
+  function __construct ($label, $description, $ldapName, $required, $units, $min = FALSE, $max = FALSE, $defaultValue = "", $acl = "")
   {
     parent::__construct($description, $ldapName,
       array(
-        new IntAttribute('', '', $ldapName.'_int', $required, $min, $max),
+        new IntAttribute('', '', $ldapName.'_int', $required, $min, $max, $defaultValue),
         new SelectAttribute('', '', $ldapName.'_select', TRUE, array_keys($units), '', array_values($units)),
       ), '', '',
       $acl, $label
@@ -66,8 +64,10 @@ class QuotaEntryAttribute extends CharSeparatedCompositeAttribute
   {
     $values = parent::readValues($value);
     $blocksize = $this->plugin->getBlockSize($values[5], $values[0]);
-    $values[1] *= $blocksize;
-    $values[2] *= $blocksize;
+    if ($blocksize !== FALSE) {
+      $values[1] *= $blocksize;
+      $values[2] *= $blocksize;
+    }
     return $values;
   }
 
@@ -75,21 +75,60 @@ class QuotaEntryAttribute extends CharSeparatedCompositeAttribute
   {
     if (!empty($values[5])) {
       $blocksize = $this->plugin->getBlockSize($values[5], $values[0]);
-      $values[1] /= $blocksize;
-      $values[2] /= $blocksize;
+      if ($blocksize !== FALSE) {
+        $values[1] = ceil($values[1]/$blocksize);
+        $values[2] = ceil($values[2]/$blocksize);
+      }
     }
     return parent::writeValues($values);
   }
+
+  function updateDeviceList()
+  {
+    $quotaDeviceList = $this->plugin->getDeviceList($this->attributes[5]->getValue());
+    $this->attributes[0]->setChoices(array_keys($quotaDeviceList), array_values($quotaDeviceList));
+  }
+
+  function applyPostValue()
+  {
+    parent::applyPostValue();
+    $this->updateDeviceList();
+    /* Making sure hard limits are >= than soft limits */
+    if ($this->attributes[2]->getValue() < $this->attributes[1]->getValue()) {
+      $this->attributes[2]->setValue($this->attributes[1]->getValue());
+    }
+    if ($this->attributes[4]->getValue() < $this->attributes[3]->getValue()) {
+      $this->attributes[4]->setValue($this->attributes[3]->getValue());
+    }
+  }
+
+  function setValue ($values)
+  {
+    if (!is_array($values)) {
+      $values = $this->inputValue($values);
+    }
+    $this->attributes[5]->setValue($values[5]);
+    $this->updateDeviceList();
+    for ($i = 0; $i < 5; $i++) {
+      $this->attributes[$i]->setValue($values[$i]);
+    }
+  }
+
+  function resetToDefault ()
+  {
+    $this->attributes[5]->resetToDefault();
+    $this->updateDeviceList();
+    for ($i = 0; $i < 5; $i++) {
+      $this->attributes[$i]->resetToDefault();
+    }
+  }
 }
 
-class quotaAccount2 extends simplePlugin
+class quotaAccount extends simplePlugin
 {
-  var $objectclasses = array("systemQuotas");
+  var $objectclasses = array('systemQuotas');
 
   var $displayHeader = TRUE;
-
-  protected $attrQuotaServer = NULL;
-  protected $attrQuotaDevice = NULL;
 
   static function plInfo()
   {
@@ -180,21 +219,21 @@ class quotaAccount2 extends simplePlugin
       $quotaServersList[$attrs['cn'][0]] = $display;
     }
 
-    parent::__construct($config, $dn, $parent);
+    $attributesInfo = $this->getAttributesInfo();
 
-    $this->attributesAccess['quota']->setLinearRendering(FALSE);
-    $this->attrQuotaServer =& $this->attributesAccess['quota']->attribute->attributes[5];
-    $this->attrQuotaDevice =& $this->attributesAccess['quota']->attribute->attributes[0];
+    $attributesInfo['main']['attrs'][0]->setLinearRendering(FALSE);
+    $attributesInfo['main']['attrs'][0]->attribute->attributes[5]->setSubmitForm(TRUE);
+    $attributesInfo['main']['attrs'][0]->attribute->attributes[5]->setChoices(
+      array_keys($quotaServersList), array_values($quotaServersList)
+    );
 
-    $this->attrQuotaServer->setChoices(array_keys($quotaServersList), array_values($quotaServersList));
-    $quotaDeviceList = $this->getDeviceList();
-    $this->attrQuotaDevice->setChoices(array_keys($quotaDeviceList), array_values($quotaDeviceList));
+    parent::__construct($config, $dn, $parent, $attributesInfo);
   }
 
-  function getDeviceList()
+  function getDeviceList($server)
   {
     $quotaDeviceList = array();
-    foreach ($this->quotaDeviceParameters[$this->attrQuotaServer->getValue()] as $infos) {
+    foreach ($this->quotaDeviceParameters[$server] as $infos) {
       $quotas = explode(":", $infos);
       $quotaDeviceList[$quotas[0]] = $quotas[0]." - ".$quotas[2];
     }
@@ -212,292 +251,4 @@ class quotaAccount2 extends simplePlugin
     return FALSE;
   }
 }
-
-class quotaAccount extends plugin
-{
-  var $plHeadline     = "quota";
-  var $plDescription  = "Plugin quota";
-
-  var $quotaDeviceParameters  = array();
-  var $quotaServersList       = array();
-  var $quotaServer            = "";
-
-  var $quotaDevice            = "";
-
-  var $memberList             = array();
-
-  var $quota_blocksoft        = 0;
-  var $quota_blocksoft_unit   = 'K';
-  var $quota_blockhard        = 0;
-  var $quota_blockhard_unit   = 'K';
-  var $quota_inodesoft        = 0;
-  var $quota_inodehard        = 0;
-
-  var $quota_subattributes = array( 'quota_blocksoft','quota_blocksoft_unit',
-                                    'quota_blockhard','quota_blockhard_unit',
-                                    'quota_inodesoft','quota_inodehard',
-                                  );
-
-  var $unit_options;
-
-  var $view_logged            = FALSE;
-  var $is_account             = FALSE;
-  var $initially_was_account  = FALSE;
-
-  var $quota = array();
-
-  var $attributes = array("quota");
-  var $objectclasses = array("systemQuotas");
-
-  /* CLASS CONSTRUCTOR               */
-  function quotaAccount(&$config, $dn= NULL)
-  {
-    global $class_mapping;
-
-    /* loading global configuration of fusiondirectory */
-
-    $this->config= $config;
-
-    plugin::plugin($config,$dn);
-
-    /* create a link for reading in LDAP tree */
-    $ldap= $this->config->get_ldap_link();
-
-    /* Check if DN isn't null */
-    if ($dn !== NULL) {
-      /* if DN exist , we check if quota clas is declared : show or not the quota screen */
-      if (isset($this->attrs['objectClass']) && in_array ('quotaAccount', $this->attrs['objectClass'])) {
-        $this->is_account = TRUE;
-      }
-
-      /* Save initial account state */
-      $this->initially_was_account = $this->is_account;
-
-      #fetch all information
-      $tmp = array();
-      if (isset($this->attrs['quota'])) {
-        for ($i= 0; $i<$this->attrs['quota']['count']; $i++){
-          $tmp[$this->attrs['quota'][$i]] = $this->attrs['quota'][$i];
-        }
-      }
-      $this->quota = $tmp;
-    }
-
-    $this->unit_options = array('K'=>_('KB'),'M'=>_('MB'),'G'=>_('GB'),'T'=>_('TB'));
-
-    /********************** SERVER SELECTION SYSTEM ***********************/
-    $ldap = $this->config->get_ldap_link();
-
-    /* Get List of server with Quota service */
-    $ldap->cd($this->config->current['BASE']);
-    $ldap->search("(&(objectClass=goServer)(objectClass=quotaService))", array("cn", "description","quotaDeviceParameters"));
-    while ($attrs = $ldap->fetch()) {
-      $entry['cn'] = $attrs['cn'][0];
-      if (isset($attrs['description'][0])) {
-        $entry['description'] = $attrs['description'][0];
-      } else {
-        $entry['description'] = "";
-      }
-      $quotaDeviceParameters = array();
-      for ($i= 0; $i<$attrs['quotaDeviceParameters']['count']; $i++) {
-        $quotaDeviceParameters[] = $attrs['quotaDeviceParameters'][$i];
-      }
-      $this->quotaDeviceParameters[$entry['cn']] = $quotaDeviceParameters;
-      $server_display = $entry['cn'];
-      if (!empty($entry['description'])) {
-        $server_display .= " - ".$entry['description'];
-      }
-      $this->quotaServersList[$entry['cn']] = $server_display;
-    }
-    if (!empty($this->quotaServersList)) {
-      $this->quotaServer = key($this->quotaServersList);
-    }
-  }
-
-  function execute()
-  {
-
-    /* Call parent execute */
-    plugin::execute();
-    $display= "";
-
-    /****************
-      Account status
-     ****************/
-
-    if (empty($this->quotaServersList)) {
-      $display = "<img alt=\"\" src=\"images/small-error.png\" align=\"middle\">&nbsp;<b>".
-                _("There is no quota server configured")."</b>";
-      $display .= back_to_main();
-      return $display;
-    }
-
-    /* Templates now! */
-    $smarty = get_smarty();
-
-    $smarty->assign("quotaServersList",$this->quotaServersList);
-    $smarty->assign("quotaServer",$this->quotaServer);
-
-    $quotaDeviceList = array();
-    for ($i=0; $i<count($this->quotaDeviceParameters[$this->quotaServer]); $i++) {
-      $quotas = explode(":",$this->quotaDeviceParameters[$this->quotaServer][$i]);
-      $quotaDeviceList[$quotas[0].":".$quotas[1]] = $quotas[0]." - ".$quotas[2];
-    }
-
-    if (empty($this->quotaDevice)) {
-      $this->quotaDevice = key($quotaDeviceList);
-    }
-
-    /* quotaDeviceList is the list of available value that could be computed */
-    $smarty->assign("quotaDeviceList",$quotaDeviceList);
-    $smarty->assign("quotaDevice",$this->quotaDevice);
-
-    /******************** DISPLAY LIST OF QUOTA WITH EDIT/DELETE ICON *********************/
-    /* create list box */
-    $QuotaList = new divSelectBox("quota");
-    /* set listbox height */
-    $QuotaList->SetHeight(56);
-    /* store in php value html code for editing entries by POST variable */
-    $link_delete = "<a href='?plug=".$_GET['plug']."&act=delete&id=%s'><img style='border: 0px' src='images/lists/trash.png'></a>";
-
-    /* walk all values in quota object */
-    foreach ($this->quota as $quota => $values ) {
-      /* fetch all values for all record in object */
-      $quota_exploded = explode(":",$values);
-      /* fetch the blocksize following the server and device used */
-      for ($i=0; $i<count($this->quotaDeviceParameters[$quota_exploded[5]]); $i++) {
-        $quota_available=explode(":",$this->quotaDeviceParameters[$quota_exploded[5]][$i]);
-        if ($quota_available[0] == $quota_exploded[0]) {
-          $blocksize = $quota_available[1];
-          break;
-        }
-      }
-      /* convert value */
-      $warning_size   = $this->ldap_to_human_size($quota_exploded[1],$blocksize);
-      $critical_size  = $this->ldap_to_human_size($quota_exploded[2],$blocksize);
-
-      /* create entries for list box */
-      $QuotaList->AddEntry(array(
-        array("string" => _("Server")." : " . $quota_exploded[5]),
-        array("string" => _("Device")." : " . $quota_exploded[0]),
-        array("string" => _("Block soft limit")." : ".$warning_size),
-        array("string" => _("Block hard limit")." : ".$critical_size),
-        array("string" => _("Inode soft limit")." : ".$quota_exploded[3]),
-        array("string" => _("Inode hard limit")." : ".$quota_exploded[4]),
-        array("string" => str_replace("%s",base64_encode($quota),$link_delete))
-      ));
-    }
-
-    foreach ($this->quota_subattributes as $attr) {
-      $smarty->assign("$attr",$this->$attr);
-    }
-
-    $smarty->assign("unit_options",$this->unit_options);
-
-    /* Display template */
-    $smarty->assign("QuotaList",$QuotaList->DrawList());
-    $display .= $smarty->fetch(get_template_path('quota.tpl', TRUE, dirname(__FILE__)));
-    return $display;
-  }
-
-  function save_object()
-  {
-    @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,"", "save_object");
-    /******************** PRECISE DELETE QUOTA ACTION *****************************/
-    /* check posts for delete zone */
-    /* the id is the value stored but base64coded */
-    if (isset($_GET['act']) && ($_GET['act'] == "delete")) {
-      $tmp = base64_decode($_GET['id']);
-      unset($this->quota[$tmp]);
-    }
-
-    if (isset($_POST['quotaTab'])) {
-      plugin::save_object();
-
-      foreach ($this->quota_subattributes as $attr) {
-        if (isset($_POST["$attr"])) {
-          if (in_array($attr,array('quota_blocksoft_unit','quota_blockhard_unit'))) {
-            if (isset($this->unit_options[$_POST["$attr"]])) {
-              $this->$attr = $_POST["$attr"];
-            }
-          } else {
-            $this->$attr = intval($_POST["$attr"]);
-          }
-        }
-      }
-
-      if (isset($_POST['quotaServer']) && ($this->quotaServer != $_POST['quotaServer'])) {
-        $this->quotaServer = $_POST['quotaServer'];
-        unset($this->quotaDevice);
-      }
-      /****************** ADD A NEW QUOTA ***************************/
-      elseif ((isset($_POST['addquota'])) &&
-              $this->acl_is_writeable("quota")) {
-        $quotaUsed    = explode(":",$this->quotaDevice);
-        $quota_device = $quotaUsed[0];
-        $blocksize    = $quotaUsed[1];
-
-        $units = array(
-                        'K' => 1024,
-                        'M' => 1024 * 1024,
-                        'G' => 1024 * 1024 * 1024,
-                        'T' => 1024 * 1024 * 1024 * 1024,
-                      );
-
-        # convert human quantity on computer value
-        $quota_blocksoft = ceil($this->quota_blocksoft * $units[$this->quota_blocksoft_unit] / $blocksize);
-
-        $quota_blockhard = ceil($this->quota_blockhard * $units[$this->quota_blockhard_unit] / $blocksize);
-
-        if ($quota_blockhard < $quota_blocksoft) {
-          $quota_blockhard = $quota_blocksoft;
-        }
-        if ($this->quota_inodehard < $this->quota_inodesoft) {
-          $this->quota_inodehard = $this->quota_inodesoft;
-        }
-
-        $quota_added =  $quota_device.":".$quota_blocksoft.":".$quota_blockhard.":".
-                        $this->quota_inodesoft.":".$this->quota_inodehard.":".
-                        $this->quotaServer;
-
-        /* we add value on object */
-        $this->quota[$quota_added] = $quota_added;
-      }
-    }
-  }
-
-  static function plInfo()
-  {
-    return array(
-      "plShortName"   => _("Quota"),
-      "plDescription" => _("Plugin for quota support"),
-      "plSelfModify"  => TRUE,
-      "plPriority"    => 5,
-      "plCategory"    => array("users"),
-      "plObjectType"  => array("user"),
-
-      "plProvidedAcls" => array(
-        "uid"   =>  _("uid"),
-        "quota" =>  _("quota"),
-      )
-    );
-  }
-
-  static function ldap_to_human_size($blocknumber, $blocksize) {
-    $size = $blocknumber * $blocksize;
-
-    $mod = 1024;
-
-    $units = array(_('B'),_('KB'),_('MB'),_('GB'),_('TB'),_('PB'),_('EB'));
-    $i = 0;
-    while ($size >= $mod) {
-        $size /= $mod;
-        $i++;
-    }
-    return round($size, 2).' '.$units[$i];
-  }
-}
-
-
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>
