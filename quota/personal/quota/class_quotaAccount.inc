@@ -20,18 +20,76 @@
  */
 
 /*TODO
- * Add a UnitIntAttribute for the block soft and hard limit
- * Make everything work with fake device list
+ * [DONE] Add a UnitIntAttribute for the block soft and hard limit
+ * [DONE] Make everything work with fake device list
  * Change the server select so that it submits the form, code the glue to fill the device list properly
  * */
 
-class quotaAccount extends simplePlugin
+class UnitIntAttribute extends CompositeAttribute
+{
+  function __construct ($label, $description, $ldapName, $required, $units, $min = FALSE, $max = FALSE, $acl = "", $label = "Composite attribute")
+  {
+    parent::__construct($description, $ldapName,
+      array(
+        new IntAttribute('', '', $ldapName.'_int', $required, $min, $max),
+        new SelectAttribute('', '', $ldapName.'_select', TRUE, array_keys($units), '', array_values($units)),
+      ), '', '',
+      $acl, $label
+    );
+    $this->setLinearRendering(TRUE);
+  }
+
+  function readValues($value)
+  {
+    $mod = 1024;
+    for ($i = 0; $value >= $mod; $i++) {
+      $value /= $mod;
+    }
+    return array($value, $i);
+  }
+
+  function writeValues($values)
+  {
+    return $values[0] * pow(1024, $values[1]);
+  }
+
+  function displayValue($value)
+  {
+    $values = $this->readValues($value);
+    return $values[0].$this->attributes[1]->displayValue($values[1]);
+  }
+}
+
+class QuotaEntryAttribute extends CharSeparatedCompositeAttribute
+{
+  function readValues($value)
+  {
+    $values = parent::readValues($value);
+    $blocksize = $this->plugin->getBlockSize($values[5], $values[0]);
+    $values[1] *= $blocksize;
+    $values[2] *= $blocksize;
+    return $values;
+  }
+
+  function writeValues($values)
+  {
+    if (!empty($values[5])) {
+      $blocksize = $this->plugin->getBlockSize($values[5], $values[0]);
+      $values[1] /= $blocksize;
+      $values[2] /= $blocksize;
+    }
+    return parent::writeValues($values);
+  }
+}
+
+class quotaAccount2 extends simplePlugin
 {
   var $objectclasses = array("systemQuotas");
 
   var $displayHeader = TRUE;
 
-  public static $unit_options = array('K'=>_('KB'),'M'=>_('MB'),'G'=>_('GB'),'T'=>_('TB'));
+  protected $attrQuotaServer = NULL;
+  protected $attrQuotaDevice = NULL;
 
   static function plInfo()
   {
@@ -49,14 +107,16 @@ class quotaAccount extends simplePlugin
 
   static function getAttributesInfo ()
   {
+    $unit_options = array(_('B'),_('KB'),_('MB'),_('GB'),_('TB'));
     return array(
       'main' => array(
-        'template'  => get_template_path('quota.tpl', TRUE, dirname(__FILE__)),
+        'template'  => get_template_path('quota_section.tpl', TRUE, dirname(__FILE__)),
+        'class'     => array('fullwidth'),
         'name'      => _('Quota informations'),
         'icon'      => 'plugins/quota/images/storage.png',
         'attrs'     => array(
           new OrderedArrayAttribute(
-            new CharSeparatedCompositeAttribute(
+            new QuotaEntryAttribute(
               _('Quota informations for this user'),
               'quota',
               array(
@@ -64,14 +124,16 @@ class quotaAccount extends simplePlugin
                   _('Device'), _('Device this quota is for'),
                   'quotaDevice', TRUE
                 ),
-                new IntAttribute(
+                new UnitIntAttribute(
                   _('Block soft limit'), _(''),
                   'quotaBlockSoftLimit', TRUE,
+                  $unit_options,
                   0 /*min*/, FALSE/*no max*/
                 ),
-                new IntAttribute(
+                new UnitIntAttribute(
                   _('Block hard limit'), _(''),
                   'quotaBlockHardLimit', TRUE,
+                  $unit_options,
                   0 /*min*/, FALSE/*no max*/
                 ),
                 new IntAttribute(
@@ -102,14 +164,9 @@ class quotaAccount extends simplePlugin
 
   function __construct (&$config, $dn = NULL, $parent = NULL)
   {
-    parent::__construct($config, $dn, $parent);
-
-    $this->attrQuotaServer &= $this->attributesAccess['quota']->attribute->attributes[5];
-    $this->attrQuotaDevice &= $this->attributesAccess['quota']->attribute->attributes[0];
-
     /* Get List of server with Quota service */
-    $ldap = $this->config->get_ldap_link();
-    $ldap->cd($this->config->current['BASE']);
+    $ldap = $config->get_ldap_link();
+    $ldap->cd($config->current['BASE']);
     $ldap->search('(&(objectClass=goServer)(objectClass=quotaService))', array('cn','description','quotaDeviceParameters'));
     $this->quotaDeviceParameters = array();
     $quotaServersList = array();
@@ -122,6 +179,13 @@ class quotaAccount extends simplePlugin
       }
       $quotaServersList[$attrs['cn'][0]] = $display;
     }
+
+    parent::__construct($config, $dn, $parent);
+
+    $this->attributesAccess['quota']->setLinearRendering(FALSE);
+    $this->attrQuotaServer =& $this->attributesAccess['quota']->attribute->attributes[5];
+    $this->attrQuotaDevice =& $this->attributesAccess['quota']->attribute->attributes[0];
+
     $this->attrQuotaServer->setChoices(array_keys($quotaServersList), array_values($quotaServersList));
     $quotaDeviceList = $this->getDeviceList();
     $this->attrQuotaDevice->setChoices(array_keys($quotaDeviceList), array_values($quotaDeviceList));
@@ -132,9 +196,20 @@ class quotaAccount extends simplePlugin
     $quotaDeviceList = array();
     foreach ($this->quotaDeviceParameters[$this->attrQuotaServer->getValue()] as $infos) {
       $quotas = explode(":", $infos);
-      $quotaDeviceList[$quotas[0].":".$quotas[1]] = $quotas[0]." - ".$quotas[2];
+      $quotaDeviceList[$quotas[0]] = $quotas[0]." - ".$quotas[2];
     }
     return $quotaDeviceList;
+  }
+
+  function getBlockSize($server, $device)
+  {
+    foreach ($this->quotaDeviceParameters[$server] as $infos) {
+      $quotas = explode(":", $infos);
+      if ($quotas[0] == $device) {
+        return $quotas[1];
+      }
+    }
+    return FALSE;
   }
 }
 
@@ -246,33 +321,6 @@ class quotaAccount extends plugin
     plugin::execute();
     $display= "";
 
-    /* log function */
-    if($this->is_account && !$this->view_logged){
-      $this->view_logged = TRUE;
-      new log("view","users/".get_class($this),$this->dn);
-    }
-
-
-    /*************************************************/
-    /* Check if Quota part could modify bor not depend on ACL
-    /*************************************************/
-
-    if(isset($_POST['modify_state'])){
-      if($this->is_account && $this->acl_is_removeable()){
-        $this->is_account= FALSE;
-      }elseif(!$this->is_account && $this->acl_is_createable()){
-        $this->is_account= TRUE;
-      }
-    }
-
-    /* Check if Quota extension is available or not*/
-    if (!$this->is_account && $this->parent === NULL ) {
-      $display = "<img alt=\"\" src=\"images/small-error.png\" align=\"middle\">&nbsp;<b>".
-        msgPool::noValidExtension(_("QUOTA"))."</b>";
-      $display .= back_to_main();
-      return $display;
-    }
-
     /****************
       Account status
      ****************/
@@ -282,16 +330,6 @@ class quotaAccount extends plugin
                 _("There is no quota server configured")."</b>";
       $display .= back_to_main();
       return $display;
-    }
-
-    /* Show tab dialog headers with a toggle button for activate/desactivate */
-    if ($this->parent !== NULL) {
-      if ($this->is_account) {
-        $display= $this->show_disable_header(msgPool::removeFeaturesButton(_("QUOTA")), msgPool::featuresEnabled(_("QUOTA")));
-      } else {
-        $display= $this->show_enable_header(msgPool::addFeaturesButton(_("QUOTA")), msgPool::featuresDisabled(_("QUOTA")));
-        return($display);
-      }
     }
 
     /* Templates now! */
@@ -313,12 +351,6 @@ class quotaAccount extends plugin
     /* quotaDeviceList is the list of available value that could be computed */
     $smarty->assign("quotaDeviceList",$quotaDeviceList);
     $smarty->assign("quotaDevice",$this->quotaDevice);
-
-    /* PuT acl in place : name of acl is <attribute NAME>ACL : eg quotaACL*/
-    $tmp = $this->plInfo();
-    foreach ($tmp['plProvidedAcls'] as $var => $rest) {
-      $smarty->assign($var."ACL",$this->getacl($var));
-    }
 
     /******************** DISPLAY LIST OF QUOTA WITH EDIT/DELETE ICON *********************/
     /* create list box */
@@ -366,38 +398,6 @@ class quotaAccount extends plugin
     $smarty->assign("QuotaList",$QuotaList->DrawList());
     $display .= $smarty->fetch(get_template_path('quota.tpl', TRUE, dirname(__FILE__)));
     return $display;
-  }
-
-  /* Validate user input
-   */
-  function check()
-  {
-    @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,"", "check");
-    $message = plugin::check();
-    return $message;
-  }
-
-  /* Save attribute modifications back to the ldap
-   */
-  function save()
-  {
-    if (isset($_POST['quotaTab'])) {
-      /* Save values to object */
-      plugin::save();
-
-      $this->attrs['quota'] = array();
-      foreach ($this->quota as $quota_id) {
-        $this->attrs['quota'][] = $quota_id;
-      }
-
-      $ldap = $this->config->get_ldap_link();
-      $ldap->cd($this->dn);
-      $ldap->modify($this->attrs);
-
-      if (!$ldap->success()) {
-        msgPool::ldaperror($ldap->get_error(), $this->dn,LDAP_MOD, get_class());
-      }
-    }
   }
 
   function save_object()
@@ -464,32 +464,6 @@ class quotaAccount extends plugin
         $this->quota[$quota_added] = $quota_added;
       }
     }
-  }
-
-  function remove_from_parent()
-  {
-    /* Cancel if there's nothing to do here */
-    if (!$this->initially_was_account){
-      return;
-    }
-
-    /* Remove GOsa attributes */
-    plugin::remove_from_parent();
-
-
-    @DEBUG (DEBUG_LDAP, __LINE__, __FUNCTION__, __FILE__,$this->attributes, "Save");
-    $ldap= $this->config->get_ldap_link();
-    $ldap->cd($this->dn);
-    $ldap->modify ($this->attrs);
-
-    /* Add "view" to logging class */
-    new log("remove","users/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
-    if (!$ldap->success()){
-      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_MOD, get_class()));
-    }
-
-    /* Optionally execute a command after we're done */
-    $this->handle_post_events("remove",array("uid" => $this->uid));
   }
 
   static function plInfo()
