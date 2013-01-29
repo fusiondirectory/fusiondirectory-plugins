@@ -35,7 +35,7 @@ class phoneConferenceManagment extends management
     return array(
       "plShortName"   => _("Conferences"),
       "plDescription" => _("Conference management"),
-      "plIcon"        => "plugins/gofon/images/conference.png",
+      "plIcon"        => "plugins/asterisk/images/conference.png",
       "plSection"     => "admin",
       "plCategory"    => array("gofonconference"),
 

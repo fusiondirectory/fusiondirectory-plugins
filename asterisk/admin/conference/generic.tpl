@@ -1,7 +1,7 @@
 <table summary="" style="width:100%; vertical-align:top; text-align:left;" cellpadding=4>
   <tr>
     <td colspan=3>
-      <h2 style='margin:0px; padding:0px;'><img class="center" alt="" align="middle" src="images/rightarrow.png"> 
+      <h2 style='margin:0px; padding:0px;'><img class="center" alt="" align="middle" src="images/rightarrow.png">
         {t}Properties{/t}
       </h2>
     </td>
@@ -31,11 +31,11 @@
           </td>
           <td>
 {render acl=$goFonConferenceOptionDACL}
-            <select id="goFonConferenceOption_D" size="1" name="goFonConferenceOption_D" 
-              title="{t}Choose subtree to place conference in{/t}"> 
+            <select id="goFonConferenceOption_D" size="1" name="goFonConferenceOption_D"
+              title="{t}Choose subtree to place conference in{/t}">
               {html_options options=$goFonConferenceOptions selected=$goFonConferenceOption_D}
             </select>
-{/render} 
+{/render}
           </td>
         </tr>
         <tr>
@@ -94,9 +94,9 @@
           </td>
           <td>
 {render acl=$descriptionACL}
-            <input id="description" name="description" size=40 maxlength=80  
+            <input id="description" name="description" size=40 maxlength=80
               value="{$description}" title="{t}Descriptive text for department{/t}">
-{/render} 
+{/render}
           </td>
         </tr>
         <tr>
@@ -106,7 +106,7 @@
           <td>
 {render acl=$goFonConferenceOptionLifetimeACL}
             <input type='text' name="goFonConferenceOptionLifetime" size=15 value="{$goFonConferenceOptionLifetime}">
-{/render} 
+{/render}
           </td>
         </tr>
         <tr>
@@ -117,7 +117,7 @@
           <td>
 {render acl=$telephoneNumberACL}
             <input type='text' name="telephoneNumber" value="{$telephoneNumber}" size=15>
-{/render} 
+{/render}
           </td>
         </tr>
       </table>
@@ -131,7 +131,7 @@
   </tr>
   <tr>
     <td colspan=3>
-      <h2 style='margin:0px; padding:0px;'><img class="center" alt="" align="middle" src="plugins/gofon/images/options.png"> 
+      <h2 style='margin:0px; padding:0px;'><img class="center" alt="" align="middle" src="plugins/asterisk/images/options.png">
         {t}Options{/t}
       </h2>
     </td>
@@ -143,9 +143,9 @@
         <tr>
           <td>
 {render acl=$goFonConferenceOptionPACL}
-            <input type="checkbox" onclick="changeState('goFonPIN');" name="goFonConferenceOption_P" 
-              value="P" {$goFonConferenceOption_PCHK}> 
-{/render} 
+            <input type="checkbox" onclick="changeState('goFonPIN');" name="goFonConferenceOption_P"
+              value="P" {$goFonConferenceOption_PCHK}>
+{/render}
           </td>
           <td>
             {t}Preset PIN{/t}
@@ -156,18 +156,18 @@
             &nbsp;
           </td>
           <td>
-            {t}PIN{/t} 
+            {t}PIN{/t}
 {render acl=$goFonPINACL}
             <input type='password' name="goFonPIN" id="goFonPIN" value="{$goFonPIN}" title="{$goFonPIN}">
-{/render} 
+{/render}
           </td>
         </tr>
         <tr>
           <td colspan=2>
 {render acl=$goFonConferenceOptionrACL}
-            <input type="checkbox" onclick="changeState('goFonConferenceOptionFormat');" name="goFonConferenceOption_r" 
-              value="r" {$goFonConferenceOption_rCHK}> 
-{/render} 
+            <input type="checkbox" onclick="changeState('goFonConferenceOptionFormat');" name="goFonConferenceOption_r"
+              value="r" {$goFonConferenceOption_rCHK}>
+{/render}
             {t}Record conference{/t}
           </td>
         </tr>
@@ -178,11 +178,11 @@
           <td>
             {t}Sound file format{/t}&nbsp;
 {render acl=$goFonConferenceOptionFormatACL}
-            <select id="goFonConferenceOptionFormat" size="1" name="goFonConferenceOptionFormat" 
-              title="{t}Choose subtree to place department in{/t}"> 
+            <select id="goFonConferenceOptionFormat" size="1" name="goFonConferenceOptionFormat"
+              title="{t}Choose subtree to place department in{/t}">
               {html_options options=$goFonConferenceOptionFormats selected=$goFonConferenceOptionFormat}
             </select>
-{/render} 
+{/render}
           </td>
         </tr>
       </table>
@@ -197,24 +197,24 @@
         <tr>
           <td>
 {render acl=$goFonConferenceOptionMACL}
-            <input type="checkbox" name="goFonConferenceOption_M" value="M" {$goFonConferenceOption_MCHK}> 
-{/render} 
+            <input type="checkbox" name="goFonConferenceOption_M" value="M" {$goFonConferenceOption_MCHK}>
+{/render}
             {t}Play music on hold{/t}
           </td>
         </tr>
         <tr>
           <td>
 {render acl=$goFonConferenceOptionsACL}
-            <input type="checkbox" name="goFonConferenceOption_s" value="s" {$goFonConferenceOption_sCHK}> 
-{/render} 
+            <input type="checkbox" name="goFonConferenceOption_s" value="s" {$goFonConferenceOption_sCHK}>
+{/render}
             {t}Activate session menu{/t}
           </td>
         </tr>
         <tr>
           <td>
 {render acl=$goFonConferenceOptioniACL}
-            <input type="checkbox" name="goFonConferenceOption_i" value="i" {$goFonConferenceOption_iCHK}> 
-{/render} 
+            <input type="checkbox" name="goFonConferenceOption_i" value="i" {$goFonConferenceOption_iCHK}>
+{/render}
             {t}Announce users joining or leaving the conference{/t}
          </td>
         </tr>
@@ -222,7 +222,7 @@
           <td>
 {render acl=$goFonConferenceOptioncACL}
             <input type="checkbox" name="goFonConferenceOption_c" value="c" {$goFonConferenceOption_cCHK}>
-{/render} 
+{/render}
             {t}Count users{/t}
           </td>
         </tr>
@@ -240,6 +240,6 @@
   focus_field('cn');
   -->
 </script>
-<!-- 
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler: 
+<!--
+// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 -->

@@ -1,4 +1,4 @@
-<h2><img class="center" alt="" align="middle" src="plugins/gofon/images/select_phone.png"> {t}Advanced phone settings{/t}</h2>
+<h2><img class="center" alt="" align="middle" src="plugins/asterisk/images/select_phone.png"> {t}Advanced phone settings{/t}</h2>
 
 <table summary="" style="width:100%" border=0>
   <tr>
@@ -23,7 +23,7 @@
        <tr>
         <td>
           <LABEL for="goFonType">{t}Mode{/t}</LABEL>{$staticAddress}
-          
+
         </td>
         <td>
 {render acl=$goFonTypeACL}
@@ -78,7 +78,7 @@
 {/if}
 
 {if $selected_categorie eq '1'}
-    
+
   <tr>
     <td style="vertical-align:top; width:50%; border-right:1px solid #A0A0A0">
       <table summary="" width="100%">
@@ -116,7 +116,7 @@
       </tr>
       <tr>
         <td colspan=2>
-          &nbsp;          
+          &nbsp;
         </td>
       </tr>
       <tr>
@@ -132,7 +132,7 @@
         </td>
       </tr>
       <tr>
-        <td>  
+        <td>
            <LABEL for="goFonSecret">{t}Secret{/t}</LABEL>
         </td>
         <td>

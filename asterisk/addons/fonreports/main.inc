@@ -43,7 +43,7 @@ if ( $cleanup ){
   $display.= "<input type=\"hidden\" name=\"ignore\">\n";
 
   /* Page header*/
-  $display= print_header(get_template_path('plugins/gofon/images/phonereport.png'), _("Phone reports")).$display;
+  $display= print_header(get_template_path('plugins/asterisk/images/phonereport.png'), _("Phone reports")).$display;
 
   /* Store changes  in session */
   session::set('fonreport',$fonreport);

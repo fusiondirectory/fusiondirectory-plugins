@@ -25,7 +25,7 @@ class phoneAccount extends plugin
   /* Definitions */
   var $plHeadline   = "Phone";
   var $plDescription= "This is user phone account plugin management";
-  var $plIcon       = "plugins/gofon/images/phoneAccount.png";
+  var $plIcon       = "plugins/asterisk/images/phoneAccount.png";
 
   var $delimiter = "|";
 

@@ -3,7 +3,7 @@
  <tr>
   <td style="vertical-align:top; border-right:1px solid #A0A0A0; width:50%">
    <h2>
-    <img class="center" alt="" align="middle" src="plugins/gofon/images/banana.png" />&nbsp;{t}Phone numbers{/t}
+    <img class="center" alt="" align="middle" src="plugins/asterisk/images/banana.png" />&nbsp;{t}Phone numbers{/t}
    </h2>
   </td>
  </tr>
@@ -15,15 +15,15 @@
    </select>
    <br>
    <input type='text' name="phonenumber" size=20 align=middle maxlength=60 value="">
-   <input type="submit" value="{msgPool type=addButton}" name="add_phonenumber"> 
+   <input type="submit" value="{msgPool type=addButton}" name="add_phonenumber">
    <input type="submit" value="{msgPool type=delButton}" name="delete_phonenumber">
   </td>
   <td style="vertical-align:top; width:50%;">
    <table summary="" style="width:100%" border=0>
     <tr>
      <td style="vertical-align:top;">
-      <h2> 
-       <img class="center" alt="" align="middle" src="plugins/gofon/images/hardware.png" />
+      <h2>
+       <img class="center" alt="" align="middle" src="plugins/asterisk/images/hardware.png" />
        &nbsp;{t}Telephone hardware{/t}
       </h2>
       <table summary="{t}Telephone{/t}" border=0>

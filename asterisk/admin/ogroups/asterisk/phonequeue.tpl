@@ -5,7 +5,7 @@
 <table summary="{t}Queue Settings{/t}" style="width: 100%; vertical-align: top; text-align: left;" border="0" cellpadding="4">
 <tr>
 <td valign='top'>
-    <h2><img class="center" alt="" src="plugins/gofon/images/select_phone.png" align="middle">&nbsp;{t}Phone numbers{/t}</h2>
+    <h2><img class="center" alt="" src="plugins/asterisk/images/select_phone.png" align="middle">&nbsp;{t}Phone numbers{/t}</h2>
     <table summary="">
     <tr>
     <td colspan=2>
@@ -44,7 +44,7 @@
     </table>
     </tr>
     <tr>
-      <td colspan=2><h2><img class="center" alt="" src="plugins/gofon/images/options.png" align="middle">&nbsp;{t}Options{/t}</h2></td>
+      <td colspan=2><h2><img class="center" alt="" src="plugins/asterisk/images/options.png" align="middle">&nbsp;{t}Options{/t}</h2></td>
     </tr>
                 <tr>
                 <td><LABEL for="goFonHomeServer">{t}Home server{/t}</LABEL>{$must}</td>
@@ -59,7 +59,7 @@
 
     <tr>
     <td>
-      {t}Language{/t} 
+      {t}Language{/t}
     </td>
     <td>
 {render acl=$goFonQueueLanguageACL}
@@ -92,7 +92,7 @@
     </tr>
     <tr>
     <td>
-      {t}Strategy{/t} 
+      {t}Strategy{/t}
     </td>
     <td>
 {render acl=$goFonQueueStrategyACL}
@@ -101,7 +101,7 @@
             <option disabled>&nbsp;</option>
             </select>
 {/render}
-  
+
     </td>
     </tr>
     <tr>
@@ -110,7 +110,7 @@
     </td>
     <td>
 {render acl=$goFonMaxLenACL}
-      <input type='text' name='goFonMaxLen' value='{$goFonMaxLen}'> 
+      <input type='text' name='goFonMaxLen' value='{$goFonMaxLen}'>
 {/render}
     </td>
     </tr>
@@ -122,14 +122,14 @@
 {render acl=$goFonAnnounceFrequencyACL}
       <input type='text' name='goFonAnnounceFrequency' value='{$goFonAnnounceFrequency}'>
 {/render}
-      {t}(in seconds){/t} 
+      {t}(in seconds){/t}
     </td>
     </tr>
     </table>
 </td>
 <td valign='top' style="border-left: 1px solid rgb(160, 160, 160);">
   <h2>
-    <img class="center" alt="" src="plugins/gofon/images/sound.png" align="middle">
+    <img class="center" alt="" src="plugins/asterisk/images/sound.png" align="middle">
     {t}Queue sound setup{/t}
     </h2>
   <table summary="{t}Generic queue Settings{/t}">
@@ -264,7 +264,7 @@
   </td>
 </tr>
 <tr>
-<td colspan=2><h2 style='margin-bottom:0px;'><img class="center" alt="" src="plugins/gofon/images/options.png" align="middle">&nbsp;{t}Phone attributes {/t}</h2></td>
+<td colspan=2><h2 style='margin-bottom:0px;'><img class="center" alt="" src="plugins/asterisk/images/options.png" align="middle">&nbsp;{t}Phone attributes {/t}</h2></td>
 </tr>
 <tr>
 <td>
