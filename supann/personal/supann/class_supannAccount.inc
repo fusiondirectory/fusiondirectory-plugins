@@ -2,6 +2,7 @@
 /*
  * This code is part of FusionDirectory (http://www.fusiondirectory.org)
  * Copyright (C) 2010-2012 Antoine Gallavardin
+ * Copyright (C) 2013 FusionDirectory
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,6 +18,283 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
  */
+
+class SupannCompositeAttribute extends CompositeAttribute
+{
+  function __construct($description, $ldapName, $attributes, $acl = "", $label = "Composite attribute")
+  {
+    parent::__construct($description, $ldapName, $attributes, '', '', $acl, $label);
+  }
+
+  function readValues($value)
+  {
+    $values = array();
+    $m = array();
+    foreach ($this->attributes as &$attribute) {
+      $shortname = preg_replace('/^[^_]+_/', '', $attribute->getLdapName());
+      if (preg_match("/\\[$shortname=([^\\]]+)\\]/", $value, $m)) {
+        $values[] = $m[1];
+      } else {
+        $values[] = "";
+      }
+    }
+
+    return $values;
+  }
+
+  function writeValues($values)
+  {
+    $str = '';
+    $i = 0;
+    foreach ($this->attributes as &$attribute) {
+      if ($values[$i] != '') {
+        $shortname = preg_replace('/^[^_]_/', '', $attribute->getLdapName());
+        $str .= "[$shortname=".$values[$i]."]"
+      }
+      $i++;
+    }
+    return $value;
+  }
+}
+
+class supannAccount2 extends simplePlugin
+{
+  var $objectclasses = array('eduPerson', 'supannPerson');
+
+  var $displayHeader = TRUE;
+
+  static function plInfo()
+  {
+    return array(
+      'plShortName'   => _('SupAnn'),
+      'plDescription' => _('SupAnn informations management plugin'),
+      'plIcon'        => 'plugins/supann/images/plugin.png',
+      'plSelfModify'  => TRUE,
+      'plPriority'    => 5,
+      'plCategory'    => array('users'),
+      'plObjectType'  => array('user'),
+
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+    );
+  }
+
+  // The main function : information about attributes
+  static function getAttributesInfo ()
+  {
+    return array(
+      'identity' => array(
+        'name'  => _('Identity'),
+        'attrs' => array(
+          new SelectAttribute(
+            _('Civilite'), _('supannCivilite - Civilte for this person'),
+            'supannCivilite', FALSE,
+            array('', 'M.', 'Mme', 'Mlle')
+          ),
+          new StringAttribute(
+            _('Alias login'), _('supannAliasLogin - An alias for the login of this user'),
+            'supannAliasLogin', FALSE
+          ),
+          new StringAttribute(
+            _('eduPersonPrincipalName'), _('eduPersonPrincipalName - A name that look like <id>@<domain> which is unique for this domain, and has not be assigned to anyone else recently'),
+            'eduPersonPrincipalName', TRUE
+          ),
+          new StringAttribute(
+            _('Nick name'), _('eduPersonNickName - Can contain a nick name for this user'),
+            'eduPersonNickName', FALSE
+          ),
+        )
+      ),
+      'contact' => array(
+        'name'  => _('Contact'),
+        'attrs' => array(
+          new SetAttribute(
+            new StringAttribute(
+              _('Other phone numbers'), _('supannAutreTelephone - Other phone numbers for this user'),
+              'supannAutreTelephone', FALSE
+            )
+          ),
+          new SetAttribute(
+            new MailAttribute(
+              _('Other mail addresses'), _('supannAutreMail - Other mail addresses for this user. Each must be unique'),
+              'supannAutreMail', FALSE
+            )
+          ),
+          new SetAttribute(
+            new MailAttribute(
+              _('Personal mail addresses'), _('supannMailPerso - Personal mail addresses for this user'),
+              'supannMailPerso', FALSE
+            )
+          ),
+          new BooleanAttribute(
+            _('Liste rouge'), _('supannListeRouge - Should this person be on the red list'),
+            'supannListeRouge', TRUE
+          )
+        )
+      ),
+      'affectation' => array(
+        'name'  => _('Affectation'),
+        'attrs' => array(
+          new SelectAttribute(
+            _('Entite affectation principale'), _('supannEntiteAffectationPrincipale'),
+            'supannEntiteAffectationPrincipale', FALSE
+          ),
+          new SetAttribute(
+            new SelectAttribute(
+              _('Entite affectation'), _('supannEntiteAffectation'),
+              'supannEntiteAffectation', FALSE
+            )
+          ),
+          new SetAttribute(
+            new SelectAttribute(
+              _('Type entite affectation'), _('supannTypeEntiteAffectation'),
+              'supannTypeEntiteAffectation', FALSE
+            )
+          ),
+        )
+      ),
+      'affiliation' => array(
+        'name'  => _('Affiliation'),
+        'attrs' => array(
+          new SelectAttribute(
+            _('Primary affiliation'), _('eduPersonPrimaryAffiliation'),
+            'eduPersonPrimaryAffiliation', FALSE
+          ),
+          new SetAttribute(
+            new SelectAttribute(
+              _('Affiliations'), _('eduPersonAffiliation'),
+              'eduPersonAffiliation', FALSE
+            )
+          ),
+          new SetAttribute(
+            new SelectAttribute(
+              _('Etablissement'), _('supannEtablissement'),
+              'supannEtablissement', FALSE
+            )
+          ),
+        )
+      ),
+      'student' => array(
+        'name'  => _('Student profile'),
+        'attrs' => array(
+          new StringAttribute(
+            _('INE code'), _('supannCodeINE - INE code of this student'),
+            'supannCodeINE', FALSE
+          ),
+          new StringAttribute(
+            _('Student ID'), _('supannEtuId - scolarity id'),
+            'supannEtuId', FALSE
+          ),
+        )
+      ),
+      'student2' => array(
+        'name'  => _('Student subscriptions'),
+        'attrs' => array(
+          new OrderedArrayAttribute(
+            new SupannCompositeAttribute(
+              _('supannEtuInscription - Subscriptions for this student'),
+              'supannEtuInscription',
+              array(
+                new SelectAttribute(
+                  _('Etablissement'), _('supannEtablissement - Etablissement in which this subscription was done'),
+                  'supannEtablissement_etab', TRUE
+                ),
+                new IntAttribute(
+                  _('Year'), _('supannEtuAnneeInscription - The year this subscription will begin'),
+                  'supannEtuAnneeInscription_anneeinsc', TRUE
+                ),
+                new SelectAttribute(
+                  _('Subscription type'), _('supannEtuRegimeInscription - The type of this subscription'),
+                  'supannEtuRegimeInscription_regimeinsc', TRUE
+                ),
+                new SelectAttribute(
+                  _('Secteur Disciplinaire'), _('supannEtuSecteurDisciplinaire'),
+                  'supannEtuSecteurDisciplinaire_sectdisc', TRUE
+                ),
+                new SelectAttribute(
+                  _('Diploma type'), _('supannEtuTypeDiplome - Type of diploma'),
+                  'supannEtuTypeDiplome_typedip', TRUE
+                ),
+                new SelectAttribute(
+                  _('Cursus annee'), _('supannEtuCursusAnnee'),
+                  'supannEtuCursusAnnee_cursusann', TRUE
+                ),
+                new SelectAttribute(
+                  _('Entite affectation'), _('supannEntiteAffectation_affect'),
+                  'supannEntiteAffectation_affect', FALSE
+                ),
+                new SelectAttribute(
+                  _('Diploma'), _('supannEtuDiplome'),
+                  'supannEtuDiplome_diplome', FALSE
+                ),
+                new SelectAttribute(
+                  _('Step'), _('supannEtuEtape'),
+                  'supannEtuEtape_etape', FALSE
+                ),
+                new SelectAttribute(
+                  _('Element pédagogique'), _('supannEtuElementPedagogique'),
+                  'supannEtuElementPedagogique_eltpedago', FALSE
+                ),
+              )
+            ),
+            FALSE,  // no order
+            array(),
+            FALSE   // no edit button
+          )
+        )
+      ),
+    );
+  }
+
+  function __construct (&$config, $dn = NULL, $object = NULL)
+  {
+    parent::__construct($config, $dn, $object);
+
+    /* list of entity stored in LDAP tree */
+    $ldap = $this->config->get_ldap_link();
+    $ldap->cd($this->config->current['BASE']);
+    $ldap->search('(objectClass=supannEntite)', array('supannCodeEntite', 'ou', 'o','supannEtablissement'));
+
+    $code_entites   = array();
+    $label_entites  = array();
+    $code_etablissements  = array();
+    $label_etablissements = array();
+    while ($attrs = $ldap->fetch()) {
+      if (isset($attrs['supannCodeEntite'][0])) {
+        $code_entites[] = $attrs['supannCodeEntite'][0];
+        if (isset($attrs['ou'][0])) {
+          $label_entites[] = $attrs['ou'][0]." (".$attrs['supannCodeEntite'][0].")";
+        } else {
+          $label_entites[] = $attrs['o'][0]." (".$attrs['supannCodeEntite'][0].")";
+        }
+        if (isset($attrs['supannEtablissement'][0])) {
+          $code_etablissements[]  = $attrs['supannEtablissement'][0];
+          $label_etablissements[] = $attrs['o'][0]." (".$attrs['supannEtablissement'][0].")";
+        }
+      }
+    }
+
+    $this->attributesAccess['supannEntiteAffectation']->attribute->setChoices($code_entites, $label_entites);
+    $this->attributesAccess['supannEtablissement']->attribute->setChoices($code_etablissements, $label_etablissements);
+    list ($codes, $labels) = supann::get_choices_for('entite');
+    $this->attributesAccess['supannTypeEntiteAffectation']->attribute->setChoices($codes, $labels);
+    list ($codes, $labels) = supann::get_choices_for('affiliation');
+    $this->attributesAccess['eduPersonAffiliation']->attribute->setChoices($codes, $labels);
+  }
+
+  function execute()
+  {
+    $this->attributesAccess['supannEntiteAffectationPrincipale']->setChoices(
+      $this->attributesAccess['supannEntiteAffectation']->getValue(),
+      $this->attributesAccess['supannEntiteAffectation']->getDisplayValues()
+    );
+    $this->attributesAccess['eduPersonPrimaryAffiliation']->setChoices(
+      $this->attributesAccess['eduPersonAffiliation']->getValue(),
+      $this->attributesAccess['eduPersonAffiliation']->getDisplayValues()
+    );
+    return parent::execute();
+  }
+}
+
 
 class supannAccount extends plugin
 {

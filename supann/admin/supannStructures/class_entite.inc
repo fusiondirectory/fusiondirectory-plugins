@@ -18,6 +18,37 @@
   Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
+class supann
+{
+  static function get_choices_for($type)
+  {
+    $entity_codes   = array();
+    $entity_labels  = array();
+    if (file_exists(SUPANN_DIR.'/'.$type)) {
+      $entiteList = file(SUPANN_DIR.'/'.$type);
+      foreach ($entiteList as $line) {
+        if (!preg_match ('/^#/', $line)) {
+          $entite_line = preg_split('/;/', trim($line));
+
+          $entity_codes[]   = $entite_line[0];
+          $entity_labels[]  = self::truncate_label($entite_line[1]);
+        }
+      }
+    }
+    return array($entity_codes, $entity_labels);
+  }
+
+  /* return the 64 first chars and "…" after if text is longer */
+  static function truncate_label($str, $len = 64)
+  {
+    if (strlen($str) > $len) {
+      return substr($str, 0, $len).'…';
+    } else {
+      return $str;
+    }
+  }
+}
+
 class entite extends simplePlugin
 {
   var $objectclasses = array('top','supannEntite','organizationalUnit');
@@ -121,33 +152,13 @@ class entite extends simplePlugin
     $this->attributesAccess['supannCodeEntiteParent']->setChoices($entity_codes, $entity_labels);
 
     /* Generate list of entite */
-    $entity_codes   = array('');
-    $entity_labels  = array('');
-    if (file_exists(SUPANN_DIR.'/entite')) {
-      $entiteList = file(SUPANN_DIR.'/entite');
-      foreach ($entiteList as $line) {
-        if (!preg_match ('/^#/', $line)) {
-          $entite_line = preg_split('/;/', trim($line));
-
-          $entity_codes[]   = $entite_line[0];
-          $entity_labels[]  = $this->truncate_label($entite_line[1]);
-        }
-      }
-    }
+    list ($entity_codes, $entity_labels) = supann::get_choices_for('entite');
+    array_unshift($entity_codes, '');
+    array_unshift($entity_labels, '');
     $this->attributesAccess['supannTypeEntite']->setChoices($entity_codes, $entity_labels);
 
     $this->attributesAccess['ou']->setUnique(TRUE);
     $this->attributesAccess['supannCodeEntite']->setUnique(TRUE);
-  }
-
-  /* return the 64 first chars and "…" after if text is longer */
-  function truncate_label($str, $len = 64)
-  {
-    if (strlen($str) > $len) {
-      return substr($str, 0, $len).'…';
-    } else {
-      return $str;
-    }
   }
 
   /* Returns the dn of the entry */
