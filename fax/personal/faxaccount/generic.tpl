@@ -10,11 +10,11 @@
          <td><label for="facsimileTelephoneNumber">{t}Fax{/t}</label>{$must}</td>
          <td>
 {if $multiple_support}
-	<input type='text' name="dummy1" value="{t}Multiple edit{/t}" disabled id="facsimileTelephoneNumber">
+  <input type='text' name="dummy1" value="{t}Multiple edit{/t}" disabled id="facsimileTelephoneNumber">
 {else}
 {render acl=$facsimileTelephoneNumberACL}
            <input name="facsimileTelephoneNumber" id="facsimileTelephoneNumber" size=20 maxlength=65
-		value="{$facsimileTelephoneNumber}" title="{t}Fax number for GOfax to trigger on{/t}">
+    value="{$facsimileTelephoneNumber}" title="{t}Fax number for GOfax to trigger on{/t}">
 {/render}
 {/if}
 
@@ -22,12 +22,12 @@
        </tr>
        <tr>
          <td><label for="goFaxLanguage">{t}Language{/t}</label></td>
-	 <td>
+   <td>
 
 {render acl=$goFaxLanguageACL checkbox=$multiple_support checked=$use_goFaxLanguage}
-           <select size="1" name="goFaxLanguage" id="goFaxLanguage" 
-		title="{t}Specify the GOfax communication language for fax to mail gateway{/t}">
-			{html_options options=$languages selected=$goFaxLanguage}
+           <select size="1" name="goFaxLanguage" id="goFaxLanguage"
+    title="{t}Specify the GOfax communication language for fax to mail gateway{/t}">
+      {html_options options=$languages selected=$goFaxLanguage}
            </select>
 {/render}
 
@@ -39,19 +39,19 @@
 
 {render acl=$goFaxFormatACL checkbox=$multiple_support checked=$use_goFaxFormat}
            <select id="goFaxFormat" size="1" name="goFaxFormat" title="{t}Specify delivery format for fax to mail gateway{/t}">
-	    {html_options values=$formats output=$formats selected=$goFaxFormat}
+      {html_options values=$formats output=$formats selected=$goFaxFormat}
            </select>
 {/render}
          </td>
        </tr>
      </table>
-     
+
    </td>
    <td style="border-left:1px solid #A0A0A0">
     &nbsp;
    </td>
    <td style="vertical-align:top; width:100%">
-     <h2><img class="center" alt="" align="middle" src="plugins/gofax/images/printer.png" />&nbsp;{t}Delivery methods{/t}</h2>
+     <h2><img class="center" alt="" align="middle" src="plugins/fax/images/printer.png" />&nbsp;{t}Delivery methods{/t}</h2>
 
 {render acl=$goFaxIsEnabledACL checkbox=$multiple_support checked=$use_goFaxIsEnabled}
      <input type=checkbox name="goFaxIsEnabled" value="1" {$goFaxIsEnabled} class="center">
@@ -81,7 +81,7 @@
 {render acl=$faxtoprinterACL checkbox=$multiple_support checked=$use_goFaxPrinter}
      <select size="1" name="goFaxPrinter">
       {html_options options=$printers selected=$goFaxPrinter}
-		<option disabled>&nbsp;</option>
+    <option disabled>&nbsp;</option>
      </select>
 {/render}
    </td>
@@ -94,13 +94,13 @@
   <tr>
     <td style="width:50%; border-right:1px solid #A0A0A0">
 
-	{if !$multiple_support}
+  {if !$multiple_support}
 
-    <h2><img class="center" alt="" align="middle" src="plugins/gofax/images/fax_small.png">&nbsp;{t}Alternate fax numbers{/t}</h2>
+    <h2><img class="center" alt="" align="middle" src="plugins/fax/images/fax_small.png">&nbsp;{t}Alternate fax numbers{/t}</h2>
 {render acl=$facsimileAlternateTelephoneNumberACL}
     <select style="width:100%" name="alternate_list[]" size="10" multiple>
-			{html_options values=$facsimileAlternateTelephoneNumber output=$facsimileAlternateTelephoneNumber}
-			<option disabled>&nbsp;</option>
+      {html_options values=$facsimileAlternateTelephoneNumber output=$facsimileAlternateTelephoneNumber}
+      <option disabled>&nbsp;</option>
     </select>
 {/render}
     <br>
@@ -116,7 +116,7 @@
 {render acl=$facsimileAlternateTelephoneNumberACL}
     <input type=submit value="{msgPool type=delButton}" name="delete_alternate">
 {/render}
-	{/if}
+  {/if}
    </td>
    <td style="vertical-align:top; width:50%">
       <h2><img class="center" alt="" align="middle" src="images/false.png" />&nbsp;{t}Blocklists{/t}</h2>
@@ -147,6 +147,6 @@
 <!-- Place cursor -->
 <script language="JavaScript" type="text/javascript">
   <!-- // First input field on page
-	focus_field('facsimileTelephoneNumber');
+  focus_field('facsimileTelephoneNumber');
   -->
 </script>
