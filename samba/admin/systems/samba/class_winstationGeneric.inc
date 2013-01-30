@@ -56,12 +56,12 @@ class winstationGeneric extends simplePlugin
       'main' => array(
         'name'  => _('Properties'),
         'attrs' => array(
-          new HiddenAttribute ('uid', 'uid', 'uid'),
-          new HiddenAttribute ('homeDirectory', 'homeDirectory', 'homeDirectory', TRUE, '/dev/null'),
-          new HiddenAttribute ('sambaSID', 'sambaSID', 'sambaSID'),
-          new HiddenAttribute ('uidNumber', 'uidNumber', 'uidNumber', TRUE, 1000),
-          new HiddenAttribute ('gidNumber', 'gidNumber', 'gidNumber', TRUE, 515),
-          new HiddenAttribute ('sambaAcctFlags', 'sambaAcctFlags', 'sambaAcctFlags', TRUE, "[W          ]"),
+          new HiddenAttribute ('uid'),
+          new HiddenAttribute ('homeDirectory', TRUE, '/dev/null'),
+          new HiddenAttribute ('sambaSID'),
+          new HiddenAttribute ('uidNumber', TRUE, 1000),
+          new HiddenAttribute ('gidNumber', TRUE, 515),
+          new HiddenAttribute ('sambaAcctFlags', TRUE, "[W          ]"),
           new CompositeAttribute (
             _('The name of the winstation'),
             'cn',

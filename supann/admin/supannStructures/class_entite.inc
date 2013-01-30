@@ -20,7 +20,12 @@
 
 class supann
 {
-  static function get_choices_for($type)
+  static function get_all_choices_for($type)
+  {
+    //TODO
+  }
+
+  static function get_choices_for($type, $prefix = '')
   {
     $entity_codes   = array();
     $entity_labels  = array();
@@ -30,7 +35,7 @@ class supann
         if (!preg_match ('/^#/', $line)) {
           $entite_line = preg_split('/;/', trim($line));
 
-          $entity_codes[]   = $entite_line[0];
+          $entity_codes[]   = $prefix.$entite_line[0];
           $entity_labels[]  = self::truncate_label($entite_line[1]);
         }
       }
@@ -167,4 +172,5 @@ class entite extends simplePlugin
     return 'supannCodeEntite='.$this->supannCodeEntite.','.get_ou('supannStructuresRDN').$this->config->current['BASE'];
   }
 }
+
 ?>

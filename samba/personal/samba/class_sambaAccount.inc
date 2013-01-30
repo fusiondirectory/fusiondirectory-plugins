@@ -153,7 +153,7 @@ class sambaAccount extends simplePlugin
         'name'  => _('Generic'),
         'icon'  => 'images/rightarrow.png',
         'attrs' => array(
-          new HiddenAttribute ('sambaSID', 'sambaSID', 'sambaSID'),
+          new HiddenAttribute ('sambaSID'),
           new SelectAttribute (
             _('Home directory drive'), _(''),
             'sambaHomeDrive', FALSE,
