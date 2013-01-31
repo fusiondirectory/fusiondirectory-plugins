@@ -29,11 +29,12 @@ class supann
     while ($file = readdir($dir)) {
       if (preg_match('/^'.$shortname.'_(.+)$/', $file, $m)) {
         $prefix = $m[1];
-        $res[$prefix] = self::get_choices_for($file, $prefix);
+        $res[$prefix] = self::get_choices_for($file);
       }
     }
 
     closedir($dir);
+    return $res;
   }
 
   static function get_choices_for($type, $prefix = '')
@@ -55,7 +56,7 @@ class supann
   }
 
   /* return the 64 first chars and "…" after if text is longer */
-  static function truncate_label($str, $len = 64)
+  static function truncate_label($str, $len = 50)
   {
     if (strlen($str) > $len) {
       return substr($str, 0, $len).'…';
