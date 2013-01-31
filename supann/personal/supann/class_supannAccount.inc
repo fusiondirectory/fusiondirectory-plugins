@@ -183,26 +183,6 @@ class SupannCompositeAttribute extends CompositeAttribute
 
 class SupannOrderedArrayAttribute extends OrderedArrayAttribute
 {
-  static private $skipAttrs = array('supannEtablissement','supannEntiteAffectation');
-
-  function supannUpdate($c_en, $l_en, $c_et, $l_et)
-  {
-    $this->attribute->attributes[0]->setChoices($c_et, $l_et); // supannEtablissement
-    $this->attribute->attributes[6]->setChoices($c_en, $l_en); // supannEntiteAffectation
-  }
-
-  function supannInit()
-  {
-    list ($codes, $labels) = supann::get_choices_for('eturegimeinscription_SISE', '{SISE}');
-    $this->attribute->attributes[2]->setChoices($codes, $labels); // supannEtuRegimeInscription
-
-    list ($codes, $labels) = supann::get_choices_for('discipline_SISE', '{SISE}');
-    $this->attribute->attributes[3]->setChoices($codes, $labels); // supannEtuSecteurDisciplinaire
-
-    list ($codes, $labels) = supann::get_choices_for('typediplome_SISE', '{SISE}');
-    $this->attribute->attributes[4]->setChoices($codes, $labels); // supannEtuTypeDiplome
-  }
-
   function supannPrepareSave()
   {
     $values = array();
@@ -417,6 +397,59 @@ class supannAccount extends simplePlugin
           )
         )
       ),
+      'personnal' => array(
+        'name'  => _('Personnal profile'),
+        'attrs' => array(
+          new StringAttribute(
+            _('Personal ID'), _('supannEmpId'),
+            'supannEmpId', FALSE
+          ),
+          new SelectAttribute(
+            _('Personal corps'), _('supannEmpCorps'),
+            'supannEmpCorps', FALSE
+          ),
+          new SetAttribute(
+            new SupannPrefixedSelectAttribute(
+              _('Activite'), _('supannActivite'),
+              'supannActivite', FALSE, 'activite'
+            )
+          )
+        )
+      ),
+      'personnal2' => array(
+        'name'      => _('Roles'),
+        'class'     => array('fullwidth'),
+        //~ 'template'  => get_template_path('personnal_role.tpl', TRUE, dirname(__FILE__)),
+        'attrs'     => array(
+          /* These attributes are handled by the SupannOrderedArrayAttribute */
+          new HiddenAttribute('supannRoleGenerique'),
+          new SupannOrderedArrayAttribute(
+            new SupannCompositeAttribute(
+              _('supannRoleEntite'),
+              'supannRoleEntite',
+              array(
+                new SelectAttribute(
+                  _('Generic role'), _('supannRoleGenerique'),
+                  'supannRoleGenerique_role', TRUE
+                ),
+                new SelectAttribute(
+                  _('Entite type'), _('supannTypeEntiteAffectation'),
+                  'supannTypeEntiteAffectation_type', TRUE
+                ),
+                new SelectAttribute(
+                  _('Entite'), _('supannEntiteAffectation'),
+                  'supannEntiteAffectation_code', FALSE
+                ),
+              ),
+              '',
+              '' // no label
+            ),
+            FALSE,  // no order
+            array(),
+            FALSE   // no edit button
+          )
+        )
+      ),
     );
   }
 
@@ -455,19 +488,42 @@ class supannAccount extends simplePlugin
     list ($codes, $labels) = supann::get_choices_for('affiliation');
     $this->attributesAccess['eduPersonAffiliation']->attribute->setChoices($codes, $labels);
     $this->attributesAccess['supannEtuInscription']->setLinearRendering(FALSE);
-    $this->attributesAccess['supannEtuInscription']->supannInit();
+    $this->supannInit();
+    list ($codes, $labels) = supann::get_choices_for('corps', 'NCORPS');
+    $this->attributesAccess['supannEmpCorps']->setChoices($codes, $labels);
+  }
+
+  function supannInit()
+  {
+    list ($codes, $labels) = supann::get_choices_for('eturegimeinscription_SISE', '{SISE}');
+    $this->attributesAccess['supannEtuInscription']->attribute->attributes[2]->setChoices($codes, $labels); // supannEtuRegimeInscription
+
+    list ($codes, $labels) = supann::get_choices_for('discipline_SISE', '{SISE}');
+    $this->attributesAccess['supannEtuInscription']->attribute->attributes[3]->setChoices($codes, $labels); // supannEtuSecteurDisciplinaire
+
+    list ($codes, $labels) = supann::get_choices_for('typediplome_SISE', '{SISE}');
+    $this->attributesAccess['supannEtuInscription']->attribute->attributes[4]->setChoices($codes, $labels); // supannEtuTypeDiplome
+
+    list ($codes, $labels) = supann::get_choices_for('role', '{SUPANN}');
+    $this->attributesAccess['supannRoleEntite']->attribute->attributes[0]->setChoices($codes, $labels); // supannRoleGeneric
   }
 
   function execute()
   {
-    $affec_code   = $this->attributesAccess['supannEntiteAffectation']->getValue();
-    $affec_label  = $this->attributesAccess['supannEntiteAffectation']->getDisplayValues();
+    $code_ent   = $this->attributesAccess['supannEntiteAffectation']->getValue();
+    $label_ent  = $this->attributesAccess['supannEntiteAffectation']->getDisplayValues();
     $this->attributesAccess['supannEntiteAffectationPrincipale']->setChoices(
-      $affec_code, $affec_label
+      $code_ent, $label_ent
     );
-    $et_code   = $this->attributesAccess['supannEtablissement']->getValue();
-    $et_label  = $this->attributesAccess['supannEtablissement']->getDisplayValues();
-    $this->attributesAccess['supannEtuInscription']->supannUpdate($affec_code, $affec_label, $et_code, $et_label);
+    $code_etab   = $this->attributesAccess['supannEtablissement']->getValue();
+    $label_etab  = $this->attributesAccess['supannEtablissement']->getDisplayValues();
+    $this->attributesAccess['supannEtuInscription']->attribute->attributes[0]->setChoices($code_etab, $label_etab); // supannEtablissement
+    $this->attributesAccess['supannEtuInscription']->attribute->attributes[6]->setChoices($code_ent, $label_ent); // supannEntiteAffectation
+    $this->attributesAccess['supannRoleEntite']->attribute->attributes[2]->setChoices($code_ent, $label_ent); // supannEntiteAffectation
+    $code_tent   = $this->attributesAccess['supannTypeEntiteAffectation']->getValue();
+    $label_tent  = $this->attributesAccess['supannTypeEntiteAffectation']->getDisplayValues();
+    $this->attributesAccess['supannRoleEntite']->attribute->attributes[1]->setChoices($code_tent, $label_tent); // supannTypeEntiteAffectation
+
     $this->attributesAccess['eduPersonPrimaryAffiliation']->setChoices(
       $this->attributesAccess['eduPersonAffiliation']->getValue(),
       $this->attributesAccess['eduPersonAffiliation']->getDisplayValues()
@@ -477,6 +533,7 @@ class supannAccount extends simplePlugin
 
   protected function prepare_save ()
   {
+    $this->attributesAccess['supannEtuInscription']->supannPrepareSave();
     $this->attributesAccess['supannEtuInscription']->supannPrepareSave();
     parent::prepare_save();
   }
@@ -1329,7 +1386,7 @@ class supannAccount_old extends plugin
       "plSelfModify"  => TRUE,
       "plPriority"    => 5,
       "plCategory"    => array("users"),
-      "plObjectType"  => array(),
+      "plObjectType"  => array('user'),
 
       "plProvidedAcls"  => array(
         "eduPersonAffiliation"        => _("eduPersonAffiliation"),
