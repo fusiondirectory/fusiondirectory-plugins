@@ -153,7 +153,7 @@ class kolabAccount extends simplePlugin
                         array('ACT_MANUAL','ACT_ALWAYS_ACCEPT', 'ACT_ALWAYS_REJECT', 'ACT_REJECT_IF_CONFLICTS', 'ACT_MANUAL_IF_CONFLICTS'),'',
                         array(_("Manual"), _("Always accept"),_("Always reject"),_("Reject if conflicts"),_("Manual if conflicts")))
                     ),
-                    '%[^:]: %s',
+                    '/^([^:]+): (.+)$/',
                     '%s: %s',
                     '', _('Invitation policy')
                 )

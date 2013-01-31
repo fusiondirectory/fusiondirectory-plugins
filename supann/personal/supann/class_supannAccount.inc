@@ -19,9 +19,52 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
  */
 
-class supannTwoSelectAttribute extends CompositeAttribute
+class SupannTwoSelectAttribute extends CompositeAttribute
 {
-  /*TODO*/
+  protected $prefixedChoices;
+
+  function __construct($label, $description, $ldapName, $required = FALSE, $filename, $acl = "")
+  {
+    $attributes = array(
+      new SelectAttribute('', '', $ldapName.'_prefix', $required),
+      new SelectAttribute('', '', $ldapName.'_content', TRUE)
+    );
+    parent::__construct($description, $ldapName, $attributes, '/^{(.*)}(.*)$/', '{%s}%s', $acl, $label);
+    $this->setLinearRendering(TRUE);
+    $this->prefixedChoices = supann::get_prefixed_choices_for($filename);
+    $this->prefixedChoices[''] = array(array(''), array(_('None')));
+    $this->attributes[0]->setChoices(array_keys($this->prefixedChoices));
+    $this->supannUpdateSelect();
+  }
+
+  protected function supannUpdateSelect()
+  {
+    $prefix = $this->attributes[0]->getValue();
+    $this->attributes[1]->setChoices($this->prefixedChoices[$prefix][0], $this->prefixedChoices[$prefix][1]);
+  }
+
+  function applyPostValue()
+  {
+    parent::applyPostValue();
+    $this->supannUpdateSelect();
+  }
+
+  function setValue ($values)
+  {
+    if (!is_array($values)) {
+      $values = $this->inputValue($values);
+    }
+    $this->attributes[0]->setValue($values[0]);
+    $this->supannUpdateSelect();
+    $this->attributes[1]->setValue($values[1]);
+  }
+
+  function resetToDefault ()
+  {
+    $this->attributes[0]->resetToDefault();
+    $this->supannUpdateSelect();
+    $this->attributes[1]->resetToDefault();
+  }
 }
 
 class SupannCompositeAttribute extends CompositeAttribute
@@ -114,16 +157,16 @@ class SupannOrderedArrayAttribute extends OrderedArrayAttribute
       //~ 'supannEntiteAffectation_affect', FALSE
 
     //~ list ($codes, $labels) = supann::get_choices_for('diplome_SISE', '{SIZE}');
-    list ($codes, $labels) = supann::get_choices_for('diplome_EXAMPLE', '{SIZE}');// speed up for debug
-    $this->attribute->attributes[7]->setChoices($codes, $labels);
+    //~ list ($codes, $labels) = supann::get_choices_for('diplome_EXAMPLE', '{SIZE}');// speed up for debug
+    //~ $this->attribute->attributes[7]->setChoices($codes, $labels);
       //~ 'supannEtuDiplome_diplome', FALSE
 
-    list ($codes, $labels) = supann::get_choices_for('etuetape_EXAMPLE');
-    $this->attribute->attributes[8]->setChoices($codes, $labels);
+    //~ list ($codes, $labels) = supann::get_choices_for('etuetape_EXAMPLE');
+    //~ $this->attribute->attributes[8]->setChoices($codes, $labels);
       //~ 'supannEtuEtape_etape', FALSE
 
-    list ($codes, $labels) = supann::get_choices_for('etuelementpedagogique_EXAMPLE');
-    $this->attribute->attributes[9]->setChoices($codes, $labels);
+    //~ list ($codes, $labels) = supann::get_choices_for('etuelementpedagogique_EXAMPLE');
+    //~ $this->attribute->attributes[9]->setChoices($codes, $labels);
       //~ 'supannEtuElementPedagogique_eltpedago', FALSE
   }
 
@@ -319,17 +362,17 @@ class supannAccount extends simplePlugin
                   _('Entite affectation'), _('supannEntiteAffectation_affect'),
                   'supannEntiteAffectation_affect', FALSE
                 ),
-                new SelectAttribute(
+                new SupannTwoSelectAttribute(
                   _('Diploma'), _('supannEtuDiplome'),
-                  'supannEtuDiplome_diplome', FALSE
+                  'supannEtuDiplome_diplome', FALSE, 'diplome'
                 ),
-                new SelectAttribute(
+                new SupannTwoSelectAttribute(
                   _('Step'), _('supannEtuEtape'),
-                  'supannEtuEtape_etape', FALSE
+                  'supannEtuEtape_etape', FALSE, 'etuetape'
                 ),
-                new SelectAttribute(
+                new SupannTwoSelectAttribute(
                   _('Element pédagogique'), _('supannEtuElementPedagogique'),
-                  'supannEtuElementPedagogique_eltpedago', FALSE
+                  'supannEtuElementPedagogique_eltpedago', FALSE, 'etuelementpedagogique'
                 ),
               )
             ),

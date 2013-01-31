@@ -71,7 +71,7 @@ class winstationGeneric extends simplePlugin
                 'cn_field', TRUE
               ),
             ),
-            '%[^$]$', '%s$'
+            '/^([^\\$]+)\\$$/', '%s$'
           ),
           new StringAttribute (
             _('Description'), _('A short description of the winstation'),

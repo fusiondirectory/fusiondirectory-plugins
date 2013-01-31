@@ -20,9 +20,20 @@
 
 class supann
 {
-  static function get_all_choices_for($type)
+  static function get_prefixed_choices_for($shortname)
   {
-    //TODO
+    $dir  = @opendir(SUPANN_DIR);
+    $m    = array();
+    $res  = array();
+
+    while ($file = readdir($dir)) {
+      if (preg_match('/^'.$shortname.'_(.+)$/', $file, $m)) {
+        $prefix = $m[1];
+        $res[$prefix] = self::get_choices_for($file, $prefix);
+      }
+    }
+
+    closedir($dir);
   }
 
   static function get_choices_for($type, $prefix = '')
