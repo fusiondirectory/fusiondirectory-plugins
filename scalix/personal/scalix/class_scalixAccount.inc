@@ -66,14 +66,14 @@ class scalixAccount extends simplePlugin
         'attrs' => array(
           new StringAttribute (
             _('Scalix mailnode'),
-            _(''),
+            _('Scalix mailnode'),
             'scalixMailnode',
             TRUE,
             ''
           ),
           new SelectAttribute (
             _('Scalix mailbox class'),
-            _(''),
+            _('Type of scalix mailbox'),
             'scalixMailboxClass',
             FALSE,
             array('LIMITED','FULL'),
@@ -112,7 +112,7 @@ class scalixAccount extends simplePlugin
           ),
           new IntAttribute (
               _('Limit mailbox size')._(" (MB)"),
-              _(''),
+              _('Maximum size of the mailbox'),
               'scalixLimitMailboxSize',
               FALSE,
               0,
@@ -143,7 +143,7 @@ class scalixAccount extends simplePlugin
           new SetAttribute (
             new StringAttribute (
               _('List of scalix email addresses'),
-              _(''),
+              _('List of scalix email addresses'),
               'scalixEmailAddress',
               FALSE,
               '',

@@ -155,12 +155,12 @@ class sambaAccount extends simplePlugin
         'attrs' => array(
           new HiddenAttribute ('sambaSID'),
           new SelectAttribute (
-            _('Home directory drive'), _(''),
+            _('Home directory drive'), _('Letter for the home drive'),
             'sambaHomeDrive', FALSE,
             $letters
           ),
           new StringAttribute (
-            _('Home directory path'), _(''),
+            _('Home directory path'), _('UNC path for the home drive'),
             'sambaHomePath', FALSE, '', '',
             $sambaRegEx
           ),
@@ -169,11 +169,11 @@ class sambaAccount extends simplePlugin
             'sambaDomainName', TRUE
           ),
           new StringAttribute (
-            _('Script path'), _(''),
+            _('Script path'), _('Login script path'),
             'sambaLogonScript'
           ),
           new StringAttribute (
-            _('Profile path'), _(''),
+            _('Profile path'), _('UNC profile path'),
             'sambaProfilePath', FALSE, '', '',
             $sambaRegEx
           ),
@@ -184,61 +184,61 @@ class sambaAccount extends simplePlugin
         'icon'  => 'plugins/systems/images/select_terminal.png',
         'attrs' => array(
           new BooleanAttribute (
-            _('Allow login on terminal server'), _(''),
+            _('Allow login on terminal server'), _('Allow login on terminal server'),
             'TsLogin', FALSE, TRUE
           ),
           new SelectAttribute (
-            _('Home directory drive'), _(''),
+            _('Home directory drive'), _('Letter for the home drive'),
             'CtxWFHomeDirDrive', FALSE,
             $letters
           ),
           new StringAttribute (
-            _('Home directory path'), _(''),
+            _('Home directory path'), _('UNC path for the home drive'),
             'CtxWFHomeDir', FALSE, '', '',
             $sambaRegEx
           ),
           new StringAttribute (
-            _('Profile path'), _(''),
+            _('Profile path'), _('UNC profile path'),
             'CtxWFProfilePath', FALSE, '', '',
             $sambaRegEx
           ),
           new BooleanAttribute (
-            _('Inherit client config'), _(''),
+            _('Inherit client config'), _('Inherit client configuration'),
             'InheritMode', FALSE, TRUE
           ),
           new StringAttribute (
-            _('Initial progam'), _(''),
+            _('Initial progam'), _('Program to start after connecting'),
             'CtxInitialProgram'
           ),
           new StringAttribute (
-            _('Working directory'), _(''),
+            _('Working directory'), _('Basic working directory'),
             'CtxWorkDirectory'
           ),
           new IntAttribute (
-            _('Connection timeout'), _(''),
+            _('Connection timeout'), _('Timeout when connecting to terminal server'),
             'CtxMaxConnectionTime', FALSE,
             0, FALSE
           ),
           new IntAttribute (
-            _('Disconnection timeout'), _(''),
+            _('Disconnection timeout'), _('Timeout before disconnecting from terminal server'),
             'CtxMaxDisconnectionTime', FALSE,
             0, FALSE
           ),
           new IntAttribute (
-            _('Idle timeout'), _(''),
+            _('Idle timeout'), _('Idle timeout before disconnecting from terminal server'),
             'CtxMaxIdleTime', FALSE,
             0, FALSE
           ),
           new BooleanAttribute (
-            _('Connect client drives at logon'), _(''),
+            _('Connect client drives at logon'), _('Drive to connect after login'),
             'ConnectClientDrives', FALSE, TRUE
           ),
           new BooleanAttribute (
-            _('Connect client printers at logon'), _(''),
+            _('Connect client printers at logon'), _('Printers to connect after login'),
             'ConnectClientPrinters', FALSE, TRUE
           ),
           new BooleanAttribute (
-            _('Default to main client printer'), _(''),
+            _('Default to main client printer'), _('Default printer for this client'),
             'DefaultPrinter', FALSE, TRUE
           ),
           new SelectAttribute (
@@ -249,13 +249,13 @@ class sambaAccount extends simplePlugin
                   _('input off, notify on'), _('input off, nofify off'))
           ),
           new SelectAttribute (
-            _('On broken or timed out'), _(''),
+            _('On broken or timed out'), _('What happen if disconnected or timeout'),
             'BrokenConn', TRUE,
             array(0,1), 0,
             array(_('disconnect'), _('reset'))
           ),
           new SelectAttribute (
-            _('Reconnect if disconnected'), _(''),
+            _('Reconnect if disconnected'), _('Reconnect if disconnected'),
             'ReConn', TRUE,
             array(0,1), 0,
             array(_('from any client'), _('from previous client only'))
@@ -274,32 +274,32 @@ class sambaAccount extends simplePlugin
         'icon'  => 'images/lists/key.png',
         'attrs' => array(
           new BooleanAttribute (
-            _('Enforce password change'), _(''),
+            _('Enforce password change'), _('Force the user to change his password'),
             'sambaPwdMustChange', FALSE, FALSE, '',
             '0', ''
           ),
           new BooleanAttribute (
-            _('The password never expire'), _(''),
+            _('The password never expire'), _('The password will never expire'),
             'flag_pwdExpire', FALSE, FALSE, '',
             'X', ''
           ),
           new BooleanAttribute (
-            _('Login from windows client requires no password'), _(''),
+            _('Login from windows client requires no password'), _('Login from a client without a password'),
             'flag_noPwdRequired', FALSE, FALSE, '',
             'N', ''
           ),
           new BooleanAttribute (
-            _('Lock samba account'), _(''),
+            _('Lock samba account'), _('Lock the account'),
             'flag_lockSamba', FALSE, FALSE, '',
             '[LD]', ''
           ),
           new BooleanAttribute (
-            _('Cannot change password'), _(''),
+            _('Cannot change password'), _('Not allowed to change password'),
             'sambaPwdCanChange', FALSE, FALSE, '',
             '4294967295', ''
           ),
           new DateAttribute (
-            _('Account expiration'), _(''),
+            _('Account expiration'), _('When does the account expire'),
             'sambaKickoffTime', FALSE, 'U', ''
           ),
           new SambaFlagsAttribute (
@@ -307,7 +307,7 @@ class sambaAccount extends simplePlugin
             array('flag_pwdExpire','flag_noPwdRequired','flag_lockSamba')
           ),
           new ButtonAttribute (
-            _('Samba logon times'), _(''),
+            _('Samba logon times'), _('What is the allowed time to connect'),
             'sambaLogonHours', 'SambaLogonHoursDialog', _('Edit settings…')
           )
         )

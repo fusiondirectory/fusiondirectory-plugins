@@ -159,7 +159,7 @@ class application extends simplePlugin
             'gosaApplicationName', FALSE
           ),
           new StringAttribute (
-            _('Execute'), _(''),
+            _('Execute'), _('The application to be executed'),
             'gosaApplicationExecute', TRUE
           ),
           new StringAttribute (
@@ -182,27 +182,27 @@ class application extends simplePlugin
         'name'  => _('Options'),
         'attrs' => array(
           new BooleanAttribute(
-            _('Only executable for member'), _(''),
+            _('Only executable for member'), _('Only executable by the memebers of the group'),
             'flag_group', FALSE, FALSE, '',
             'G', ''
           ),
           new BooleanAttribute(
-            _('Replace user configuration on startup'), _(''),
+            _('Replace user configuration on startup'), _('Replace the user configuration on startup'),
             'flag_overwrite', FALSE, FALSE, '',
             'O', ''
           ),
           new BooleanAttribute(
-            _('Place icon on members desktop'), _(''),
+            _('Place icon on members desktop'), _('Put an icon on the user desktop'),
             'flag_desktop', FALSE, FALSE, '',
             'D', ''
           ),
           new BooleanAttribute(
-            _('Place entry in members startmenu'), _(''),
+            _('Place entry in members startmenu'), _('Put an entry in the startup menu'),
             'flag_menu', FALSE, FALSE, '',
             'M', ''
           ),
           new BooleanAttribute(
-            _('Place entry in members launch bar'), _(''),
+            _('Place entry in members launch bar'), _('Put an entry in the startup menu'),
             'flag_launchbar', FALSE, FALSE, '',
             'L', ''
           ),
@@ -216,7 +216,7 @@ class application extends simplePlugin
         'name'  => _('Script'),
         'attrs' => array(
           new ScriptAttribute(
-            '', _(''),
+            '', _('Script to run at logon'),
             'gotoLogonScript'
           ),
         )
@@ -225,7 +225,7 @@ class application extends simplePlugin
         'name'  => _('Log off script'),
         'attrs' => array(
           new ScriptAttribute(
-            '', _(''),
+            '', _('Script to run at logoff'),
             'gotoLogoffScript'
           ),
         )
