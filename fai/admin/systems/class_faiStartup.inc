@@ -35,7 +35,7 @@ class FAIreleaseAttribute extends SelectAttribute
     }
     parent::setValue($value);
     if (isset($this->plugin)) {
-      $this->plugin->attributesInfo['main']['attrs']['FAIclass']->attributes[1]->setChoices($this->plugin->cache['PROFILES'][$value]);
+      $this->plugin->attributesInfo['main']['attrs']['FAIclass']->attributes['profil']->setChoices($this->plugin->cache['PROFILES'][$value]);
       $this->plugin->attributesInfo['main']['attrs']['FAIdebianMirror']->setChoices($this->plugin->cache['SERVERS'][$value]);
       $this->plugin->attributesInfo['startup']['attrs']['gotoBootKernel']->setRelease($value);
     }
@@ -73,16 +73,16 @@ class faiStartup extends simplePlugin
             _('FAI profil and release to be applied to this computer'),
             'FAIclass',
             array(
-              new FAIreleaseAttribute (
+              'release' => new FAIreleaseAttribute (
                 _('Release'), _('FAI debian release to be installed on this computer'),
                 'FAIrelease', TRUE
               ),
-              new SelectAttribute (
+              'profil' => new SelectAttribute (
                 _('Profil'), _('FAI profil to be applied to this computer'),
                 'FAIprofile', TRUE
               ),
             ),
-            '%2$[^ :] :%1$[^ :]',
+            '/^(?P<profil>.+) :(?P<release>.+)$/',
             '%2$s :%1$s'
           ),
           new SelectAttribute (
