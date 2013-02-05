@@ -1,0 +1,31 @@
+##
+## opsi-fd.schema - Needed by FusionDirectory for opsi plugin
+##
+## Maintained by the FusionDirectory Project <contact@fusiondirectory.org>
+##
+
+# Attributes
+
+attributetype ( 1.3.6.1.4.1.38414.20.1.1 NAME 'fdOpsiServerURI'
+        DESC 'URI of the OPSI server'
+        EQUALITY caseExactIA5Match
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+        SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.38414.20.1.2 NAME 'fdOpsiServerUser'
+        DESC 'OPSI User to use for connection'
+        EQUALITY caseExactIA5Match
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+        SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.38414.20.1.3 NAME 'fdOpsiServerPassword'
+        DESC 'OPSI User password '
+        EQUALITY caseExactIA5Match
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+        SINGLE-VALUE )
+
+# Objectclasses
+
+objectclass ( 1.3.6.1.4.1.38414.20.2.1 NAME 'opsiServer' SUP top AUXILIARY
+        DESC 'OPSI Service'
+        MUST ( cn $ fdOpsiServerURI $ fdOpsiServerUser $ fdOpsiServerPassword ) )
