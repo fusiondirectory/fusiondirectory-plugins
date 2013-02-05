@@ -316,13 +316,9 @@ class workstationGeneric extends simplePlugin
     }
 
     /* Create available ldap options */
-    $tmp = array();
-    foreach ($this->config->data['SERVERS']['LDAP'] as $dn => $data) {
-      for ($i = 0; $i < $data['goLdapBase']['count']; $i++) {
-        $tmp[] = $data["cn"][0].":".$data["goLdapBase"][$i];
-      }
-    }
-    $this->attributesInfo['servers']['attrs']['gotoLdapServer']->attribute->setChoices($tmp);
+    $this->attributesInfo['servers']['attrs']['gotoLdapServer']->attribute->setChoices(
+      array_keys($this->config->data['SERVERS']['LDAP'])
+    );
     if (count($tmp) == 0) {
       $this->attributesInfo['servers']['attrs']['gotoLdapServer']->setDisabled(TRUE);
       $this->attributesInfo['servers']['attrs']['inheritLDAPServer']->setValue(TRUE);

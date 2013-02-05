@@ -111,7 +111,7 @@ class serviceQuota extends simpleService
         'attrs'     => array(
           new SelectAttribute(
             _('LDAP server'), _('The LDAP server to bind to'),
-            'quotaLdapServerURI', TRUE
+            'quotaLdapServer', TRUE
           ),
           new StringAttribute(
             _('Bind user dn'), _('The user dn to use for bind'),
@@ -138,7 +138,7 @@ class serviceQuota extends simpleService
     );
 
     $ldapServers = $this->getLdapServers();
-    $this->attributesAccess['quotaLdapServerURI']->setChoices(
+    $this->attributesAccess['quotaLdapServer']->setChoices(
       array_keys($ldapServers), array_values($ldapServers)
     );
 
@@ -176,14 +176,10 @@ class serviceQuota extends simpleService
 
   function getLdapServers()
   {
-    $ldap = $this->config->get_ldap_link();
-
     /* Get List of server with LDAP service */
     $ldapServers = array();
-    $ldap->cd($this->config->current['BASE']);
-    $ldap->search("(&(objectClass=goServer)(objectClass=goLdapServer))", array("cn", "goLdapBase"));
-    while ($attrs = $ldap->fetch()) {
-      $ldapServers[$attrs['goLdapBase'][0]] = $attrs['cn'][0];
+    foreach ($this->config->data['SERVERS']['LDAP'] as $dn => $attrs) {
+      $ldapServers[$dn] = $attrs['cn'][0];
     }
     return $ldapServers;
   }

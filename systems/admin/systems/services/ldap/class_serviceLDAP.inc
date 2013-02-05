@@ -89,36 +89,6 @@ class serviceLDAP extends simpleService
     );
   }
 
-  protected function ldap_save ($cleanup = TRUE)
-  {
-    parent::ldap_save($cleanup);
-
-    /* Update object relation */
-    if ($this->attributesInfo['main']['attrs']['goLdapBase']->hasChanged()) {
-      $oldValue = $this->attributesInfo['main']['attrs']['goLdapBase']->getInitialValue();
-      $newValue = $this->attributesInfo['main']['attrs']['goLdapBase']->getValue();
-
-      $new = array();
-      $ldap = $this->config->get_ldap_link();
-      $ldap->cd($this->config->current['BASE']);
-      $ldap->search('(&(objectClass=GOhard)(gotoLdapServer=*'.$oldValue.'))', array("cn","gotoLdapServer"));
-      while ($attrs = $ldap->fetch()) {
-        $ldapServer = array();
-        for ($i = 0; $i < $attrs['gotoLdapServer']['count']; $i++) {
-          $ldapServer[] = preg_replace("/".preg_quote($oldValue, '/')."/", $newValue, $attrs['gotoLdapServer'][$i]);
-        }
-        $new[$attrs['dn']]['gotoLdapServer'] = $ldapServer;
-      }
-      foreach ($new as $dn => $data) {
-        $ldap->cd($dn);
-        $ldap->modify($data);
-        if (!$ldap->success()) {
-          msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()));
-        }
-      }
-    }
-  }
-
   /* Return plugin informations for acl handling */
   static function plInfo()
   {
