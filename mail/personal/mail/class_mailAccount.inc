@@ -66,18 +66,18 @@ class MailQuotaAttribute extends IntAttribute
 class mailAccount extends simplePlugin
 {
   var $displayHeader    = TRUE;
-  var $objectclasses    = array("gosaMailAccount");
+  var $objectclasses    = array('gosaMailAccount');
 
   static function plInfo()
   {
     return array(
-      "plShortName"     => _("Mail"),
-      "plDescription"   => _("Mail settings"),
-      "plSelfModify"    => TRUE,
-      "plPriority"      => 4,                                 // Position in tabs
-      "plCategory"      => array("users"),
-      "plObjectType"    => array("user"),
-      "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plShortName'     => _('Mail'),
+      'plDescription'   => _('Mail settings'),
+      'plSelfModify'    => TRUE,
+      'plPriority'      => 4,                                 // Position in tabs
+      'plCategory'      => array('users'),
+      'plObjectType'    => array('user'),
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }
 
@@ -320,6 +320,16 @@ class mailAccount extends simplePlugin
     $this->updateAttributesValues();
   }
 
+  /* We need $mailAccount->uid to return the uid for mailMethod */
+  public function __get($name)
+  {
+    if (($name == 'uid') && isset($this->parent)) {
+      return $this->parent->getBaseObject()->uid;
+    } else {
+      /* Calling default behaviour */
+      return $this->$name;
+    }
+  }
 }
 
 ?>
