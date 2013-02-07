@@ -7,25 +7,25 @@
 # Attributes
 
 attributetype ( 1.3.6.1.4.1.38414.20.10.1 NAME 'fdOpsiServerURI'
-        DESC 'URI of the OPSI server'
+        DESC 'FusionDirectory - URI of the OPSI server'
         EQUALITY caseExactIA5Match
         SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
         SINGLE-VALUE )
 
 attributetype ( 1.3.6.1.4.1.38414.20.10.2 NAME 'fdOpsiServerUser'
-        DESC 'OPSI User to use for connection'
+        DESC 'FusionDirectory - OPSI User to use for connection'
         EQUALITY caseExactIA5Match
         SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
         SINGLE-VALUE )
 
 attributetype ( 1.3.6.1.4.1.38414.20.10.3 NAME 'fdOpsiServerPassword'
-        DESC 'OPSI User password '
+        DESC 'FusionDirectory - OPSI User password '
         EQUALITY caseExactIA5Match
         SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
         SINGLE-VALUE )
 
 attributetype ( 1.3.6.1.4.1.38414.20.11.1 NAME 'fdOpsiServerDn'
-        DESC 'OPSI User password '
+        DESC 'FusionDirectory - OPSI User password '
         EQUALITY caseExactIA5Match
         SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
         SINGLE-VALUE )
@@ -33,9 +33,9 @@ attributetype ( 1.3.6.1.4.1.38414.20.11.1 NAME 'fdOpsiServerDn'
 # Objectclasses
 
 objectclass ( 1.3.6.1.4.1.38414.20.2.1 NAME 'opsiServer' SUP top AUXILIARY
-        DESC 'OPSI Service'
+        DESC 'FusionDirectory - OPSI Service'
         MUST ( cn $ fdOpsiServerURI $ fdOpsiServerUser $ fdOpsiServerPassword ) )
 
 objectclass ( 1.3.6.1.4.1.38414.20.2.2 NAME 'opsiClient' SUP top AUXILIARY
-        DESC 'OPSI client'
+        DESC 'FusionDirectory - OPSI client'
         MUST ( cn $ fdOpsiServerDn ) )

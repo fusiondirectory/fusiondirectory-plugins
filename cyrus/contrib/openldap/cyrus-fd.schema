@@ -5,31 +5,31 @@
 # attributes
 
 attributetype ( 1.3.6.1.4.1.38414.14.1.2 NAME 'fdCyrusConnect'
-  DESC 'PHP connect string for Cyrus server'
+  DESC 'FusionDirectory - PHP connect string for Cyrus server'
   EQUALITY caseExactIA5Match
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SINGLE-VALUE)
 
 attributetype ( 1.3.6.1.4.1.38414.14.1.3 NAME 'fdCyrusAdmin'
-  DESC 'Cyrus admin account'
+  DESC 'FusionDirectory - Cyrus admin account'
   EQUALITY caseExactIA5Match
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SINGLE-VALUE)
 
 attributetype ( 1.3.6.1.4.1.38414.14.1.4 NAME 'fdCyrusPassword'
-  DESC 'Cyrus admin password'
+  DESC 'FusionDirectory - Cyrus admin password'
   EQUALITY caseExactIA5Match
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SINGLE-VALUE)
 
 attributetype ( 1.3.6.1.4.1.38414.14.1.5 NAME 'fdCyrusSieveServer'
-  DESC 'Cyrus sieve server address or name'
+  DESC 'FusionDirectory - Cyrus sieve server address or name'
   EQUALITY caseExactIA5Match
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SINGLE-VALUE)
 
 # Objectclasses
 objectclass (1.3.6.1.4.1.38414.14.2.1 NAME 'fdCyrusServer' SUP top AUXILIARY
-  DESC 'Cyrus server description'
+  DESC 'FusionDirectory - Cyrus server description'
   MUST ( cn $ fdCyrusConnect $ fdCyrusAdmin $ fdCyrusPassword )
   MAY  ( fdCyrusSieveServer ))
