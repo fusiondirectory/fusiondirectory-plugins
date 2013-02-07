@@ -327,7 +327,7 @@ class mailAccount extends simplePlugin
       return $this->parent->getBaseObject()->uid;
     } else {
       /* Calling default behaviour */
-      return $this->$name;
+      return parent::__get($name);
     }
   }
 }
