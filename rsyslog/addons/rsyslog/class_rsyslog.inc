@@ -1,9 +1,8 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011  FusionDirectory
+  Copyright (C) 2011-2013  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -31,7 +30,7 @@ class rsyslog extends plugin
   var $startTime = "";
   var $stopTime  = "";
 
-  var $search_for ="";
+  var $search_for = "";
 
   var $sort_value = "DeviceReportedTime";
   var $sort_type  = "DESC";
@@ -68,19 +67,24 @@ class rsyslog extends plugin
     // Get list of rsyslog servers
     $ldap = $this->config->get_ldap_link();
     $ldap->cd($this->config->current['BASE']);
-    $ldap->search("objectClass=goLogDBServer",array("cn","goLogAdmin","goLogDB","goLogPassword"));
+    $ldap->search('objectClass=goLogDBServer',array('cn','goLogDriver','goLogDB','goLogAdmin','goLogPassword'));
     while ($attrs = $ldap->fetch()) {
       if (empty($this->selected_server)) {
         $this->selected_server = $attrs['cn'][0];
       }
-      $s = array('cn' => $attrs['cn'][0], 'dn' => $attrs['dn'], 'PASSWORD' => '', 'status' => 'ok');
-      $s['LOGIN']       = $attrs['goLogAdmin'][0];
-      $s['DB']          = $attrs['goLogDB'][0];
-      $s['PASSWORD'] = $attrs['goLogPassword'][0];
-      $s['SERVER']      = $s['cn'];
-      $s['Hosts']       = array();
-      $s['Priorities']  = array();
-      $s['ACL']         = "";
+      $s = array(
+        'cn'          => $attrs['cn'][0],
+        'dn'          => $attrs['dn'],
+        'DRIVER'      => $attrs['goLogDriver'][0],
+        'DB'          => $attrs['goLogDB'][0],
+        'LOGIN'       => $attrs['goLogAdmin'][0],
+        'PASSWORD'    => $attrs['goLogPassword'][0],
+        'SERVER'      => $attrs['cn'][0],
+        'Hosts'       => array(),
+        'Priorities'  => array(),
+        'ACL'         => '',
+        'status'      => 'ok'
+      );
 
       $this->servers[$attrs['cn'][0]] = $s;
     }
@@ -388,14 +392,11 @@ class rsyslog extends plugin
     return sprintf(_("Unknown (%s)"), $facility);
   }
 
-
   function time2local($str)
   {
     list($date, $time)= explode(" ", $str);
     list($y, $m, $d)= explode("-", $date);
     return "$d.$m.$y $time";
   }
-
 }
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

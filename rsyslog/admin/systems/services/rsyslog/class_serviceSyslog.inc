@@ -1,9 +1,8 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011  FusionDirectory
+  Copyright (C) 2011-2013  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,59 +19,44 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class rSyslogServer extends simpleService{
+class rSyslogServer extends simpleService {
+  var $objectclasses  = array('goSyslogServer');
 
-  var $displayHeader    = TRUE; // If we want the button Add/Delete
-  var $objectclasses    = array("goSyslogServer");
+  var $displayHeader  = TRUE;
 
   static function plInfo()
   {
-    return (array(
-          "plShortName"   => _("Logs service"),
-          "plDescription" => _("Logs service")." ("._("Services").")",
-          "plSelfModify"  => FALSE,
-          "plPriority"    => 99,
-          "plCategory"    => array("server"),
+    return array(
+      'plShortName'   => _('Logs service'),
+      'plDescription' => _('Logs service').' ('._('Services').')',
 
-          "plProvidedAcls"=> parent::generatePlProvidedAcls(self::getAttributesInfo())
-          ));
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+    );
   }
 
-  /*!
-   *  \brief The main function : information about attributes
-   */
   static function getAttributesInfo ()
   {
     return array (
-      'section1' => array (
-        'name'  => _("Logging service")." ("._("Services").")",
+      'main' => array (
+        'name'  => _('Logging service'),
         'attrs' => array (
-          new BooleanAttribute (
-            _('Server provides a syslog mysql database'),
-            _('Server provides a syslog mysql database'),
-            'enableSyslog',
-            FALSE,
-            FALSE
+          new SelectAttribute (
+            _('Driver'), _('Driver to use to contact this database.'),
+            'goLogDriver', TRUE
           ),
           new StringAttribute (
-            _('Database'),
-            _('Database'),
-            'goLogDB',
-            TRUE,
+            _('Database'), _('Database in which syslog stores its informations'),
+            'goLogDB', TRUE,
             'Syslog'
           ),
           new StringAttribute (
-            _('Database user'),
-            _('Database administrator'),
-            'goLogAdmin',
-            TRUE,
+            _('Database user'), _('Database administrator'),
+            'goLogAdmin', TRUE,
             'rsyslog'
           ),
           new PasswordAttribute (
-            _('Password'),
-            _('Password for the database administrator'),
-            'goLogPassword',
-            TRUE,
+            _('Password'), _('Password for the database administrator'),
+            'goLogPassword', TRUE,
             ''
           )
         )
@@ -83,17 +67,13 @@ class rSyslogServer extends simpleService{
   function __construct(&$config, $dn = NULL, $object = NULL)
   {
     parent::__construct($config, $dn, $object);
-    $this->attributesInfo['section1']['attrs']['enableSyslog']->setInLdap(FALSE);
-    $this->attributesInfo['section1']['attrs']['enableSyslog']->setManagedAttributes (
-      array(
-        'erase' => array (
-          FALSE => array (
-            'goLogDB',
-            'goLogAdmin',
-            'goLogPassword',
-          )
-        )
-      )
+    $drivers = array(
+      'fbsql','ibase','mssql','mysql','mysqli','oci8','odbc','pgsql','querysim','sqlite','sqlsrv'
+    );
+    sort($drivers);
+    $this->attributesAccess['goLogDriver']->setChoices(
+      //~ array_filter($drivers, function ($d) {return class_exists("MDB2_Driver_$d", FALSE);})
+      $drivers
     );
   }
 }
