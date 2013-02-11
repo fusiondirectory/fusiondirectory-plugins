@@ -102,13 +102,13 @@ class ActionAttribute extends SelectAttribute
       );
     }
     if ($this->plugin->ping()) {
-      $actions['System.halt']    = _('Switch off');
-      $actions['Deployment.reboot']  = _('Reboot');
+      $actions['System.halt']         = _('Switch off');
+      $actions['Deployment.reboot']   = _('Reboot');
       if (!$this->isTerminal) {
-        $actions['Deployment.rescan']  = _('Rescan hardware');
+        $actions['Deployment.rescan'] = _('Rescan hardware');
       }
     } else {
-      $actions['Deployment.wake']  = _('Wake up');
+      $actions['Deployment.wake'] = _('Wake up');
     }
     $this->setChoices(array_keys($actions), array_values($actions));
   }

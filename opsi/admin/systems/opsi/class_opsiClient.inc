@@ -18,6 +18,25 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
+/*
+ * TODO
+ * If the PC is not registered in OPSI
+ *  -> How do we know that? Error returned by ping? Specific request?
+ * Then
+ *  -> We create it with
+ *  host_createOpsiClient
+  id:               The FQDN, OPSI.pm can find it on its own
+  *opsiHostKey:     No idea
+  *description:     Taken from LDAP
+  *notes:           Left empty? Set to "Created by FusionDirectory"?
+  *hardwareAddress: macAddress taken from LDAP
+  *ipAddress:       ipHostNumber from LDAP
+  *inventoryNumber: No idea
+  *oneTimePassword: No idea
+  *created:         I guess OPSI can fill that
+  *lastSeen:        Same here
+ * */
+
 class opsiClient extends simplePlugin
 {
   var $objectclasses  = array('opsiClient');
@@ -67,6 +86,25 @@ class opsiClient extends simplePlugin
       $serverslabel[] = $attrs['cn'][0];
     }
     $this->attributesAccess['fdOpsiServerDn']->setChoices($serversdn, $serverslabel);
+  }
+
+  function save()
+  {
+    parent::save();
+
+    if ($this->is_account && class_available('supportDaemon')) {
+      $s_daemon   = new supportDaemon();
+      $macAddress = $this->parent->getBaseObject()->netConfigDNS->macAddress;
+      if ($s_daemon->is_available()) {
+        $res = $s_daemon->append_call("OPSI.update_or_insert", array($macAddress), array());
+        if ($s_daemon->is_error()) {
+          msg_dialog::display(
+            _("Could not update OPSI informations"),
+            msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
+          );
+        }
+      }
+    }
   }
 }
 
