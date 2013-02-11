@@ -31,8 +31,8 @@ class opsiClient extends simplePlugin
       'plShortName'   => _('OPSI client'),
       'plDescription' => _('Edit OPSI client settings'),
       'plSelfModify'  => FALSE,
-      'plCategory'    => array('workstation','server','ogroups'),
-      'plObjectType'  => array('workstation','server','ogroup'),
+      'plCategory'    => array('winstation','ogroups'),
+      'plObjectType'  => array('winstation','ogroup'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );

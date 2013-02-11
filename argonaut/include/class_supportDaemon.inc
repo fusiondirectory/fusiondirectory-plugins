@@ -213,7 +213,7 @@ class supportDaemon
    *
    * \param Array  $data      The data to send (timestamp, periodic and args, see Argonaut protocol)
    *
-   * \return TRUE if correctly appended FALSE otherwise
+   * \return the returned value if correctly executed and FALSE otherwise
    */
   public function append_call($action, $targets, $data)
   {

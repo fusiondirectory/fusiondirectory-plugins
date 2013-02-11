@@ -57,7 +57,7 @@ class ActionAttribute extends SelectAttribute
     if (!$this->disabled && $this->postValue != '') {
       $this->updateChoices();
       if (in_array($this->postValue, $this->choices)) {
-        $action = 'System.'.$this->postValue;
+        $action = $this->postValue;
 
         /* Check if we have an DaemonEvent for this action */
         if (class_available("supportDaemon") && class_available("DaemonEvent")) {
