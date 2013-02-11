@@ -18,25 +18,6 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-/*
- * TODO
- * If the PC is not registered in OPSI
- *  -> How do we know that? Error returned by ping? Specific request?
- * Then
- *  -> We create it with
- *  host_createOpsiClient
-  id:               The FQDN, OPSI.pm can find it on its own
-  *opsiHostKey:     No idea
-  *description:     Taken from LDAP
-  *notes:           Left empty? Set to "Created by FusionDirectory"?
-  *hardwareAddress: macAddress taken from LDAP
-  *ipAddress:       ipHostNumber from LDAP
-  *inventoryNumber: No idea
-  *oneTimePassword: No idea
-  *created:         I guess OPSI can fill that
-  *lastSeen:        Same here
- * */
-
 class opsiClient extends simplePlugin
 {
   var $objectclasses  = array('opsiClient');
