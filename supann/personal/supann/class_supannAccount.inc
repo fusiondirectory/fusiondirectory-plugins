@@ -103,7 +103,7 @@ class SupannCursusAnneeAttribute extends SupannPrefixedSelectAttribute
 
     $this->attributes[0]->setChoices(
       array('L','M','D','X','B'),
-      array(_('Licence'),_('Master'),_('Doctorat'),_('Autre catégorie de diplome'),_('année post-bac'))
+      array(_('Licence'),_('Master'),_('Ph.D.'),_('Another class of degree'),_('post-graduate year'))
     );
     $yearLabels = array(
       _('None'),_('1st year'),_('2nd year'),_('3rd year'),
@@ -386,7 +386,7 @@ class supannAccount extends simplePlugin
                   'supannEtuEtape_etape', FALSE, 'etuetape'
                 ),
                 new SupannPrefixedSelectAttribute(
-                  _('Element pédagogique'), _('supannEtuElementPedagogique'),
+                  _('educational element'), _('supannEtuElementPedagogique'),
                   'supannEtuElementPedagogique_eltpedago', FALSE, 'etuelementpedagogique'
                 ),
               )
