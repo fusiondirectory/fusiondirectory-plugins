@@ -164,24 +164,24 @@ class quotaAccount extends simplePlugin
                   'quotaDevice', TRUE
                 ),
                 new UnitIntAttribute(
-                  _('Block soft limit'), _(''),
+                  _('Block soft limit'), _('Soft limit for the block the user can use'),
                   'quotaBlockSoftLimit', TRUE,
                   $unit_options,
                   0 /*min*/, FALSE/*no max*/
                 ),
                 new UnitIntAttribute(
-                  _('Block hard limit'), _(''),
+                  _('Block hard limit'), _('Hard limit for the block the user can use'),
                   'quotaBlockHardLimit', TRUE,
                   $unit_options,
                   0 /*min*/, FALSE/*no max*/
                 ),
                 new IntAttribute(
-                  _('Inode soft limit'), _(''),
+                  _('Inode soft limit'), _('Soft limit for the inodes the user can use'),
                   'quotaInodeSoftLimit', TRUE,
                   0 /*min*/, FALSE/*no max*/
                 ),
                 new IntAttribute(
-                  _('Inode hard limit'), _(''),
+                  _('Inode hard limit'), _('Hard limit for the inodes the user can use'),
                   'quotaInodeHardLimit', TRUE,
                   0 /*min*/, FALSE/*no max*/
                 ),
