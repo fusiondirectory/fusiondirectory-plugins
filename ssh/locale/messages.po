@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-09 16:24+0100\n"
+"POT-Creation-Date: 2013-02-12 23:43+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,41 +17,31 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: personal/ssh/class_sshPublicKey.inc:118
-#: personal/ssh/class_sshPublicKey.inc:131
-#: personal/ssh/class_sshPublicKey.inc:146
+#: personal/ssh/class_sshAccount.inc:47
 msgid "Upload error"
 msgstr ""
 
-#: personal/ssh/class_sshPublicKey.inc:118
-msgid "Error uploading the key!"
-msgstr ""
-
-#: personal/ssh/class_sshPublicKey.inc:131
-msgid "This key is already used!"
-msgstr ""
-
-#: personal/ssh/class_sshPublicKey.inc:146
+#: personal/ssh/class_sshAccount.inc:47
 msgid "Unknown public key format!"
 msgstr ""
 
-#: personal/ssh/class_sshPublicKey.inc:156
+#: personal/ssh/class_sshAccount.inc:75
+msgid "SSH Keys"
+msgstr ""
+
+#: personal/ssh/class_sshAccount.inc:81
+msgid "SSH public keys for this user"
+msgstr ""
+
+#: personal/ssh/class_sshAccount.inc:94
+msgid "SSH"
+msgstr ""
+
+#: personal/ssh/class_sshAccount.inc:95
+msgid "Edit user's SSH public keys"
+msgstr ""
+
+#: personal/ssh/class_sshAccount.inc:117
 #, php-format
-msgid "SSH %s key, Fingerprint: %s, Comment: %s"
-msgstr ""
-
-#: personal/ssh/class_sshPublicKey.inc:210
-msgid "LDAP error"
-msgstr ""
-
-#: personal/ssh/sshPublicKey.tpl:2
-msgid "List of SSH public keys for this user"
-msgstr ""
-
-#: personal/ssh/sshPublicKey.tpl:12
-msgid "Upload key"
-msgstr ""
-
-#: personal/ssh/sshPublicKey.tpl:14
-msgid "Remove key"
+msgid "Error : there are several keys with fingerprint %s"
 msgstr ""

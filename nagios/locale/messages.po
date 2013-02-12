@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-09 16:22+0100\n"
+"POT-Creation-Date: 2013-02-12 23:57+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,109 +21,94 @@ msgstr ""
 msgid "Nagios settings"
 msgstr ""
 
-#: personal/nagios/class_nagiosAccount.inc:41
-#: personal/nagios/class_nagiosAccount.inc:47
+#: personal/nagios/class_nagiosAccount.inc:45
 msgid "Nagios"
 msgstr ""
 
-#: personal/nagios/class_nagiosAccount.inc:42
-#: personal/nagios/class_nagiosAccount.inc:48
+#: personal/nagios/class_nagiosAccount.inc:46
 msgid "Nagios account settings"
 msgstr ""
 
-#: personal/nagios/class_nagiosAccount.inc:66 personal/nagios/nagios.tpl:5
+#: personal/nagios/class_nagiosAccount.inc:63 personal/nagios/nagios.tpl:5
 msgid "Nagios Account"
 msgstr ""
 
-#: personal/nagios/class_nagiosAccount.inc:69 personal/nagios/nagios.tpl:8
+#: personal/nagios/class_nagiosAccount.inc:66 personal/nagios/nagios.tpl:8
 msgid "Alias"
 msgstr ""
 
-#: personal/nagios/class_nagiosAccount.inc:70
+#: personal/nagios/class_nagiosAccount.inc:66
 msgid "Name of the nagios alias"
 msgstr ""
 
-#: personal/nagios/class_nagiosAccount.inc:76 personal/nagios/nagios.tpl:17
+#: personal/nagios/class_nagiosAccount.inc:70 personal/nagios/nagios.tpl:17
 msgid "Mail address"
 msgstr ""
 
-#: personal/nagios/class_nagiosAccount.inc:77
+#: personal/nagios/class_nagiosAccount.inc:70
 msgid "Email of the nagios alias"
 msgstr ""
 
-#: personal/nagios/class_nagiosAccount.inc:85
-#: personal/nagios/class_nagiosAccount.inc:86 personal/nagios/nagios.tpl:27
+#: personal/nagios/class_nagiosAccount.inc:74 personal/nagios/nagios.tpl:27
 msgid "Host notification period"
 msgstr ""
 
-#: personal/nagios/class_nagiosAccount.inc:94
-#: personal/nagios/class_nagiosAccount.inc:95 personal/nagios/nagios.tpl:40
+#: personal/nagios/class_nagiosAccount.inc:79 personal/nagios/nagios.tpl:40
 msgid "Service notification period"
 msgstr ""
 
-#: personal/nagios/class_nagiosAccount.inc:103
-#: personal/nagios/class_nagiosAccount.inc:104 personal/nagios/nagios.tpl:53
+#: personal/nagios/class_nagiosAccount.inc:84 personal/nagios/nagios.tpl:53
 msgid "Service notification options"
 msgstr ""
 
-#: personal/nagios/class_nagiosAccount.inc:112
-#: personal/nagios/class_nagiosAccount.inc:113 personal/nagios/nagios.tpl:66
+#: personal/nagios/class_nagiosAccount.inc:89 personal/nagios/nagios.tpl:66
 msgid "Host notification options"
 msgstr ""
 
-#: personal/nagios/class_nagiosAccount.inc:121 personal/nagios/nagios.tpl:79
+#: personal/nagios/class_nagiosAccount.inc:94 personal/nagios/nagios.tpl:79
 msgid "Pager"
 msgstr ""
 
-#: personal/nagios/class_nagiosAccount.inc:122
-msgid "Nagios Pager"
+#: personal/nagios/class_nagiosAccount.inc:94
+msgid " Pager"
 msgstr ""
 
-#: personal/nagios/class_nagiosAccount.inc:128
-#: personal/nagios/class_nagiosAccount.inc:129 personal/nagios/nagios.tpl:90
+#: personal/nagios/class_nagiosAccount.inc:98 personal/nagios/nagios.tpl:90
 msgid "Service notification commands"
 msgstr ""
 
-#: personal/nagios/class_nagiosAccount.inc:135
-#: personal/nagios/class_nagiosAccount.inc:136 personal/nagios/nagios.tpl:100
+#: personal/nagios/class_nagiosAccount.inc:102 personal/nagios/nagios.tpl:100
 msgid "Host notification commands"
 msgstr ""
 
-#: personal/nagios/class_nagiosAccount.inc:144 personal/nagios/nagios.tpl:115
+#: personal/nagios/nagios.tpl:115
 msgid "Nagios authentification"
 msgstr ""
 
-#: personal/nagios/class_nagiosAccount.inc:147
-#: personal/nagios/class_nagiosAccount.inc:148 personal/nagios/nagios.tpl:121
+#: personal/nagios/nagios.tpl:121
 msgid "view system informations"
 msgstr ""
 
-#: personal/nagios/class_nagiosAccount.inc:154
-#: personal/nagios/class_nagiosAccount.inc:155 personal/nagios/nagios.tpl:130
+#: personal/nagios/nagios.tpl:130
 msgid "view configuration information"
 msgstr ""
 
-#: personal/nagios/class_nagiosAccount.inc:161
-#: personal/nagios/class_nagiosAccount.inc:162 personal/nagios/nagios.tpl:139
+#: personal/nagios/nagios.tpl:139
 msgid "trigger system commands"
 msgstr ""
 
-#: personal/nagios/class_nagiosAccount.inc:168
-#: personal/nagios/class_nagiosAccount.inc:169 personal/nagios/nagios.tpl:148
+#: personal/nagios/nagios.tpl:148
 msgid "view all services"
 msgstr ""
 
-#: personal/nagios/class_nagiosAccount.inc:175
-#: personal/nagios/class_nagiosAccount.inc:176 personal/nagios/nagios.tpl:157
+#: personal/nagios/nagios.tpl:157
 msgid "view all hosts"
 msgstr ""
 
-#: personal/nagios/class_nagiosAccount.inc:182
-#: personal/nagios/class_nagiosAccount.inc:183 personal/nagios/nagios.tpl:166
+#: personal/nagios/nagios.tpl:166
 msgid "trigger all service commands"
 msgstr ""
 
-#: personal/nagios/class_nagiosAccount.inc:189
-#: personal/nagios/class_nagiosAccount.inc:190 personal/nagios/nagios.tpl:175
+#: personal/nagios/nagios.tpl:175
 msgid "trigger all host commands"
 msgstr ""

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-09 16:22+0100\n"
+"POT-Creation-Date: 2013-02-12 19:01+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -243,7 +243,7 @@ msgstr ""
 #: personal/phoneaccount/class_phoneAccount.inc:632
 #: personal/phoneaccount/class_phoneAccount.inc:671
 #: personal/phoneaccount/class_phoneAccount.inc:1550
-#: personal/phoneaccount/class_phoneAccount.inc:1851
+#: personal/phoneaccount/class_phoneAccount.inc:1848
 msgid "Warning"
 msgstr ""
 
@@ -409,7 +409,7 @@ msgstr ""
 
 #: admin/conference/class_phoneConferenceGeneric.inc:707
 #: admin/conference/generic.tpl:72
-#: admin/ogroups/asterisk/class_phonequeue.inc:893
+#: admin/ogroups/asterisk/class_phonequeue.inc:892
 #: admin/ogroups/asterisk/phonequeue.tpl:62
 msgid "Language"
 msgstr ""
@@ -417,10 +417,10 @@ msgstr ""
 #: admin/conference/class_phoneConferenceGeneric.inc:709
 #: admin/conference/generic.tpl:62
 #: admin/ogroups/asterisk/class_phonequeue.inc:275
-#: admin/ogroups/asterisk/class_phonequeue.inc:874
+#: admin/ogroups/asterisk/class_phonequeue.inc:873
 #: admin/ogroups/asterisk/phonequeue.tpl:50
 #: personal/phoneaccount/class_phoneAccount.inc:1381
-#: personal/phoneaccount/class_phoneAccount.inc:1700
+#: personal/phoneaccount/class_phoneAccount.inc:1699
 #: personal/phoneaccount/generic.tpl:58
 msgid "Home server"
 msgstr ""
@@ -461,7 +461,7 @@ msgid "Format"
 msgstr ""
 
 #: admin/conference/class_phoneConferenceGeneric.inc:720
-#: personal/phoneaccount/class_phoneAccount.inc:1697
+#: personal/phoneaccount/class_phoneAccount.inc:1696
 msgid "Telephone number"
 msgstr ""
 
@@ -619,7 +619,7 @@ msgid "Phone generic"
 msgstr ""
 
 #: admin/systems/asterisk/class_phoneGeneric.inc:475
-#: personal/phoneaccount/class_phoneAccount.inc:1699
+#: personal/phoneaccount/class_phoneAccount.inc:1698
 msgid "Phone hardware"
 msgstr ""
 
@@ -812,13 +812,13 @@ msgid ""
 msgstr ""
 
 #: admin/ogroups/asterisk/class_phonequeue.inc:281
-#: admin/ogroups/asterisk/class_phonequeue.inc:872
+#: admin/ogroups/asterisk/class_phonequeue.inc:871
 #: admin/ogroups/asterisk/phonequeue.tpl:75
 msgid "Timeout"
 msgstr ""
 
 #: admin/ogroups/asterisk/class_phonequeue.inc:284
-#: admin/ogroups/asterisk/class_phonequeue.inc:897
+#: admin/ogroups/asterisk/class_phonequeue.inc:896
 #: admin/ogroups/asterisk/phonequeue.tpl:85
 msgid "Retry"
 msgstr ""
@@ -828,7 +828,7 @@ msgid "Queue length"
 msgstr ""
 
 #: admin/ogroups/asterisk/class_phonequeue.inc:290
-#: admin/ogroups/asterisk/class_phonequeue.inc:875
+#: admin/ogroups/asterisk/class_phonequeue.inc:874
 #: admin/ogroups/asterisk/phonequeue.tpl:119
 msgid "Announce frequency"
 msgstr ""
@@ -858,91 +858,91 @@ msgstr ""
 msgid "Phone group"
 msgstr ""
 
-#: admin/ogroups/asterisk/class_phonequeue.inc:873
+#: admin/ogroups/asterisk/class_phonequeue.inc:872
 #: admin/ogroups/asterisk/phonequeue.tpl:109
 msgid "Max queue length"
 msgstr ""
 
-#: admin/ogroups/asterisk/class_phonequeue.inc:876
+#: admin/ogroups/asterisk/class_phonequeue.inc:875
 #: admin/ogroups/asterisk/phonequeue.tpl:285
 msgid "Allow the called user to transfer his call"
 msgstr ""
 
-#: admin/ogroups/asterisk/class_phonequeue.inc:877
+#: admin/ogroups/asterisk/class_phonequeue.inc:876
 #: admin/ogroups/asterisk/phonequeue.tpl:293
 msgid "Allows calling user to transfer call"
 msgstr ""
 
-#: admin/ogroups/asterisk/class_phonequeue.inc:878
+#: admin/ogroups/asterisk/class_phonequeue.inc:877
 #: admin/ogroups/asterisk/phonequeue.tpl:305
 msgid "Allow the called to hangup by pressing *"
 msgstr ""
 
-#: admin/ogroups/asterisk/class_phonequeue.inc:879
+#: admin/ogroups/asterisk/class_phonequeue.inc:878
 #: admin/ogroups/asterisk/phonequeue.tpl:321
 msgid "Ring instead of playing background music"
 msgstr ""
 
-#: admin/ogroups/asterisk/class_phonequeue.inc:880
+#: admin/ogroups/asterisk/class_phonequeue.inc:879
 #: admin/ogroups/asterisk/phonequeue.tpl:313
 msgid "Allows calling to hangup by pressing *"
 msgstr ""
 
-#: admin/ogroups/asterisk/class_phonequeue.inc:882
+#: admin/ogroups/asterisk/class_phonequeue.inc:881
 #: admin/ogroups/asterisk/phonequeue.tpl:149
 msgid "Music on hold"
 msgstr ""
 
-#: admin/ogroups/asterisk/class_phonequeue.inc:883
+#: admin/ogroups/asterisk/class_phonequeue.inc:882
 msgid "Welcome music"
 msgstr ""
 
-#: admin/ogroups/asterisk/class_phonequeue.inc:884
+#: admin/ogroups/asterisk/class_phonequeue.inc:883
 msgid "Report hold time"
 msgstr ""
 
-#: admin/ogroups/asterisk/class_phonequeue.inc:885
+#: admin/ogroups/asterisk/class_phonequeue.inc:884
 msgid "'You are next' sound"
 msgstr ""
 
-#: admin/ogroups/asterisk/class_phonequeue.inc:886
+#: admin/ogroups/asterisk/class_phonequeue.inc:885
 msgid "'There are' sound"
 msgstr ""
 
-#: admin/ogroups/asterisk/class_phonequeue.inc:887
+#: admin/ogroups/asterisk/class_phonequeue.inc:886
 msgid "'Call waiting' sound"
 msgstr ""
 
-#: admin/ogroups/asterisk/class_phonequeue.inc:888
+#: admin/ogroups/asterisk/class_phonequeue.inc:887
 msgid "'Thank you' sound"
 msgstr ""
 
-#: admin/ogroups/asterisk/class_phonequeue.inc:889
+#: admin/ogroups/asterisk/class_phonequeue.inc:888
 msgid "'Minutes' sound"
 msgstr ""
 
-#: admin/ogroups/asterisk/class_phonequeue.inc:890
+#: admin/ogroups/asterisk/class_phonequeue.inc:889
 msgid "'Seconds' sound"
 msgstr ""
 
-#: admin/ogroups/asterisk/class_phonequeue.inc:891
+#: admin/ogroups/asterisk/class_phonequeue.inc:890
 msgid "'Less than' sound"
 msgstr ""
 
-#: admin/ogroups/asterisk/class_phonequeue.inc:892
+#: admin/ogroups/asterisk/class_phonequeue.inc:891
 msgid "Queue phone number"
 msgstr ""
 
-#: admin/ogroups/asterisk/class_phonequeue.inc:894
+#: admin/ogroups/asterisk/class_phonequeue.inc:893
 msgid "Method"
 msgstr ""
 
-#: admin/ogroups/asterisk/class_phonequeue.inc:895
+#: admin/ogroups/asterisk/class_phonequeue.inc:894
 #: admin/ogroups/asterisk/phonequeue.tpl:277
 msgid "Announce holdtime"
 msgstr ""
 
-#: admin/ogroups/asterisk/class_phonequeue.inc:896
+#: admin/ogroups/asterisk/class_phonequeue.inc:895
 msgid "Announce"
 msgstr ""
 
@@ -1125,6 +1125,62 @@ msgstr ""
 msgid "Search returned no results..."
 msgstr ""
 
+#: config/asterisk/class_asteriskPluginConfig.inc:28
+msgid "Asterisk"
+msgstr ""
+
+#: config/asterisk/class_asteriskPluginConfig.inc:29
+msgid "Asterisk plugin configuration"
+msgstr ""
+
+#: config/asterisk/class_asteriskPluginConfig.inc:41
+msgid "LDAP tree"
+msgstr ""
+
+#: config/asterisk/class_asteriskPluginConfig.inc:44
+msgid "Phone RDN"
+msgstr ""
+
+#: config/asterisk/class_asteriskPluginConfig.inc:44
+msgid "Branch in which phones will be stored"
+msgstr ""
+
+#: config/asterisk/class_asteriskPluginConfig.inc:49
+msgid "Phone Macro RDN"
+msgstr ""
+
+#: config/asterisk/class_asteriskPluginConfig.inc:49
+msgid "Branch in which phone macros will be stored"
+msgstr ""
+
+#: config/asterisk/class_asteriskPluginConfig.inc:54
+msgid "Phone Conference RDN"
+msgstr ""
+
+#: config/asterisk/class_asteriskPluginConfig.inc:54
+msgid "Branch in which phone conferences will be stored"
+msgstr ""
+
+#: config/asterisk/class_asteriskPluginConfig.inc:61
+msgid "Miscellaneous"
+msgstr ""
+
+#: config/asterisk/class_asteriskPluginConfig.inc:65
+msgid "SIP contexts"
+msgstr ""
+
+#: config/asterisk/class_asteriskPluginConfig.inc:65
+msgid "Available SIP contexts"
+msgstr ""
+
+#: config/asterisk/class_asteriskPluginConfig.inc:72
+msgid "Voicemail contexts"
+msgstr ""
+
+#: config/asterisk/class_asteriskPluginConfig.inc:72
+msgid "Available voicemail contexts"
+msgstr ""
+
 #: personal/phoneaccount/class_phoneAccount.inc:27
 msgid "This is user phone account plugin management"
 msgstr ""
@@ -1235,49 +1291,54 @@ msgstr ""
 msgid "Phone account settings"
 msgstr ""
 
-#: personal/phoneaccount/class_phoneAccount.inc:1698
+#: personal/phoneaccount/class_phoneAccount.inc:1697
 msgid "Macro settings"
 msgstr ""
 
-#: personal/phoneaccount/class_phoneAccount.inc:1701
+#: personal/phoneaccount/class_phoneAccount.inc:1700
 msgid "Phone context"
 msgstr ""
 
-#: personal/phoneaccount/class_phoneAccount.inc:1702
+#: personal/phoneaccount/class_phoneAccount.inc:1701
 msgid "Voice mail context"
 msgstr ""
 
-#: personal/phoneaccount/class_phoneAccount.inc:1703
+#: personal/phoneaccount/class_phoneAccount.inc:1702
 msgid "Telephone pin"
 msgstr ""
 
-#: personal/phoneaccount/class_phoneAccount.inc:1704
+#: personal/phoneaccount/class_phoneAccount.inc:1703
 msgid "Voicemail pin"
 msgstr ""
 
-#: personal/phoneaccount/class_phoneAccount.inc:1787
+#: personal/phoneaccount/class_phoneAccount.inc:1786
 msgid "There is currently no asterisk server defined!"
 msgstr ""
 
-#: personal/phoneaccount/class_phoneAccount.inc:1791
+#: personal/phoneaccount/class_phoneAccount.inc:1790
 msgid "Asterisk server is invalid!"
 msgstr ""
 
-#: personal/phoneaccount/class_phoneAccount.inc:1797
+#: personal/phoneaccount/class_phoneAccount.inc:1796
 msgid "Voicemail PIN must be 4 characters long!"
 msgstr ""
 
-#: personal/phoneaccount/class_phoneAccount.inc:1800
+#: personal/phoneaccount/class_phoneAccount.inc:1799
 msgid "Voicemail PIN contains invalid characters!"
 msgstr ""
 
-#: personal/phoneaccount/class_phoneAccount.inc:1805
+#: personal/phoneaccount/class_phoneAccount.inc:1804
 msgid "Phone pin contains invalid characters!"
 msgstr ""
 
-#: personal/phoneaccount/class_phoneAccount.inc:1812
+#: personal/phoneaccount/class_phoneAccount.inc:1811
 #, php-format
 msgid "The parameter %s contains invalid char. '!,#' is used as delimiter"
+msgstr ""
+
+#: personal/phoneaccount/class_phoneAccount.inc:1848
+#, php-format
+msgid "You need to configure %s contexts first"
 msgstr ""
 
 #: personal/phoneaccount/main.inc:124

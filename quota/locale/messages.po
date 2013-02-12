@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-09 16:22+0100\n"
+"POT-Creation-Date: 2013-02-12 23:56+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,106 +17,162 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: admin/systems/services/quota/class_serviceQuota.inc:64
-#: admin/systems/services/quota/class_serviceQuota.inc:204
+#: admin/systems/services/quota/class_serviceQuota.inc:30
+#: admin/systems/services/quota/class_serviceQuota.inc:31
 msgid "Quota service"
 msgstr ""
 
-#: admin/systems/services/quota/class_serviceQuota.inc:128
-msgid "There is no ldap server configured"
-msgstr ""
-
-#: admin/systems/services/quota/class_serviceQuota.inc:147
-#: personal/quota/quota.tpl:24 personal/quota/class_quotaAccount.inc:232
-msgid "Device"
-msgstr ""
-
-#: admin/systems/services/quota/class_serviceQuota.inc:148
-msgid "BlockSize"
-msgstr ""
-
-#: admin/systems/services/quota/class_serviceQuota.inc:149
-#: personal/quota/singleSystemSelect/singleSystem-list.xml:49
-msgid "Description"
-msgstr ""
-
-#: admin/systems/services/quota/class_serviceQuota.inc:164
-msgid "by"
-msgstr ""
-
-#: admin/systems/services/quota/class_serviceQuota.inc:171
-#: admin/systems/services/quota/class_serviceQuota.inc:174
-msgid "Error"
-msgstr ""
-
-#: admin/systems/services/quota/class_serviceQuota.inc:195
-msgid "HELP how to get blocksize"
-msgstr ""
-
-#: admin/systems/services/quota/class_serviceQuota.inc:243
-#: personal/quota/class_quotaAccount.inc:370
-msgid "LDAP error"
-msgstr ""
-
-#: admin/systems/services/quota/class_serviceQuota.inc:252
-#: admin/systems/services/quota/class_serviceQuota.inc:253
-msgid "Quota Service"
-msgstr ""
-
-#: admin/systems/services/quota/class_serviceQuota.inc:253
+#: admin/systems/services/quota/class_serviceQuota.inc:31
 msgid "Services"
 msgstr ""
 
-#: admin/systems/services/quota/class_serviceQuota.inc:260
-msgid "parameters for devices with quota"
+#: admin/systems/services/quota/class_serviceQuota.inc:43
+msgid "Shares"
 msgstr ""
 
-#: admin/systems/services/quota/class_serviceQuota.inc:261
-msgid "id of user in LDAP"
+#: admin/systems/services/quota/class_serviceQuota.inc:47
+msgid "Quotas for the shares this server hosts"
 msgstr ""
 
-#: admin/systems/services/quota/class_serviceQuota.inc:262
-msgid "charset of Message"
+#: admin/systems/services/quota/class_serviceQuota.inc:51
+#: personal/quota/quota.tpl:24 personal/quota/class_quotaAccount.inc:163
+msgid "Device"
 msgstr ""
 
-#: admin/systems/services/quota/class_serviceQuota.inc:263
-msgid "signature of warn message"
+#: admin/systems/services/quota/class_serviceQuota.inc:51
+msgid "Device concerned by this quota"
 msgstr ""
 
-#: admin/systems/services/quota/class_serviceQuota.inc:264
-msgid "mail of contact for support"
+#: admin/systems/services/quota/class_serviceQuota.inc:55
+msgid "Block size"
 msgstr ""
 
-#: admin/systems/services/quota/class_serviceQuota.inc:265
-msgid "subject of mail"
+#: admin/systems/services/quota/class_serviceQuota.inc:55
+msgid "Block size of this share (dumpe2fs /dev/sdb3 | grep -i 'Block size')"
 msgstr ""
 
-#: admin/systems/services/quota/class_serviceQuota.inc:266
-msgid "subject of support"
+#: admin/systems/services/quota/class_serviceQuota.inc:60
+msgid "Comment"
 msgstr ""
 
-#: admin/systems/services/quota/class_serviceQuota.inc:267
-msgid "core of message of Support"
+#: admin/systems/services/quota/class_serviceQuota.inc:60
+msgid "Short comment about this quota"
 msgstr ""
 
-#: admin/systems/services/quota/class_serviceQuota.inc:268
-msgid "Carbon Copy for all mails"
+#: admin/systems/services/quota/class_serviceQuota.inc:73
+msgid "Quota warning message"
 msgstr ""
 
-#: admin/systems/services/quota/class_serviceQuota.inc:269
-msgid "Mail method for sending mail"
+#: admin/systems/services/quota/class_serviceQuota.inc:76
+#: admin/systems/services/quota/serviceQuota.tpl:65
+msgid "Charset"
 msgstr ""
 
-#: admin/systems/services/quota/class_serviceQuota.inc:270
-msgid "User for ldap connection"
+#: admin/systems/services/quota/class_serviceQuota.inc:76
+msgid "Charset use for the message"
 msgstr ""
 
-#: admin/systems/services/quota/class_serviceQuota.inc:271
-msgid "Password for ldap connection"
+#: admin/systems/services/quota/class_serviceQuota.inc:80
+msgid "Mail command"
 msgstr ""
 
-#: admin/systems/services/quota/class_serviceQuota.inc:272
-msgid "URI for LDAP server"
+#: admin/systems/services/quota/class_serviceQuota.inc:80
+msgid "Command allowing the server to send mails"
+msgstr ""
+
+#: admin/systems/services/quota/class_serviceQuota.inc:84
+msgid "Support contact"
+msgstr ""
+
+#: admin/systems/services/quota/class_serviceQuota.inc:84
+msgid "Email address to contact the administrator"
+msgstr ""
+
+#: admin/systems/services/quota/class_serviceQuota.inc:88
+#: admin/systems/services/quota/serviceQuota.tpl:88
+msgid "From"
+msgstr ""
+
+#: admin/systems/services/quota/class_serviceQuota.inc:88
+msgid "Email from which the email is sent"
+msgstr ""
+
+#: admin/systems/services/quota/class_serviceQuota.inc:92
+#: admin/systems/services/quota/serviceQuota.tpl:94
+msgid "CC"
+msgstr ""
+
+#: admin/systems/services/quota/class_serviceQuota.inc:92
+msgid "Send a copy of this email to"
+msgstr ""
+
+#: admin/systems/services/quota/class_serviceQuota.inc:96
+#: admin/systems/services/quota/serviceQuota.tpl:103
+msgid "Subject"
+msgstr ""
+
+#: admin/systems/services/quota/class_serviceQuota.inc:96
+msgid "Subject of the sent warning email"
+msgstr ""
+
+#: admin/systems/services/quota/class_serviceQuota.inc:100
+#: admin/systems/services/quota/serviceQuota.tpl:112
+msgid "Content"
+msgstr ""
+
+#: admin/systems/services/quota/class_serviceQuota.inc:100
+msgid "Content of the sent email"
+msgstr ""
+
+#: admin/systems/services/quota/class_serviceQuota.inc:104
+#: admin/systems/services/quota/serviceQuota.tpl:120
+msgid "Signature"
+msgstr ""
+
+#: admin/systems/services/quota/class_serviceQuota.inc:104
+msgid "Signature to put at the end of the mail"
+msgstr ""
+
+#: admin/systems/services/quota/class_serviceQuota.inc:110
+msgid "LDAP message support"
+msgstr ""
+
+#: admin/systems/services/quota/class_serviceQuota.inc:113
+msgid "LDAP server"
+msgstr ""
+
+#: admin/systems/services/quota/class_serviceQuota.inc:113
+msgid "The LDAP server to bind to"
+msgstr ""
+
+#: admin/systems/services/quota/class_serviceQuota.inc:117
+msgid "Bind user dn"
+msgstr ""
+
+#: admin/systems/services/quota/class_serviceQuota.inc:117
+msgid "The user dn to use for bind"
+msgstr ""
+
+#: admin/systems/services/quota/class_serviceQuota.inc:121
+msgid "Bind user password"
+msgstr ""
+
+#: admin/systems/services/quota/class_serviceQuota.inc:121
+msgid "The password of the user used for bind"
+msgstr ""
+
+#: admin/systems/services/quota/class_serviceQuota.inc:153
+msgid "Warning"
+msgstr ""
+
+#: admin/systems/services/quota/class_serviceQuota.inc:153
+#, php-format
+msgid "Invalid value in encodings : %s"
+msgstr ""
+
+#: admin/systems/services/quota/class_serviceQuota.inc:170
+#, php-format
+msgid "(%s by %s)"
 msgstr ""
 
 #: admin/systems/services/quota/serviceQuota.tpl:7
@@ -143,36 +199,12 @@ msgstr ""
 msgid "Quota Warning Message"
 msgstr ""
 
-#: admin/systems/services/quota/serviceQuota.tpl:65
-msgid "Charset"
-msgstr ""
-
 #: admin/systems/services/quota/serviceQuota.tpl:73
 msgid "Mail Command"
 msgstr ""
 
 #: admin/systems/services/quota/serviceQuota.tpl:82
 msgid "Support Contact"
-msgstr ""
-
-#: admin/systems/services/quota/serviceQuota.tpl:88
-msgid "From"
-msgstr ""
-
-#: admin/systems/services/quota/serviceQuota.tpl:94
-msgid "CC"
-msgstr ""
-
-#: admin/systems/services/quota/serviceQuota.tpl:103
-msgid "Subject"
-msgstr ""
-
-#: admin/systems/services/quota/serviceQuota.tpl:112
-msgid "Content"
-msgstr ""
-
-#: admin/systems/services/quota/serviceQuota.tpl:120
-msgid "Signature"
 msgstr ""
 
 #: admin/systems/services/quota/serviceQuota.tpl:128
@@ -195,27 +227,27 @@ msgstr ""
 msgid "Quota Informations"
 msgstr ""
 
-#: personal/quota/quota.tpl:10 personal/quota/class_quotaAccount.inc:380
+#: personal/quota/quota.tpl:10 personal/quota/class_quotaAccount.inc:136
 msgid "Quota"
 msgstr ""
 
-#: personal/quota/quota.tpl:16 personal/quota/class_quotaAccount.inc:231
+#: personal/quota/quota.tpl:16 personal/quota/class_quotaAccount.inc:189
 msgid "Server"
 msgstr ""
 
-#: personal/quota/quota.tpl:34 personal/quota/class_quotaAccount.inc:233
+#: personal/quota/quota.tpl:34 personal/quota/class_quotaAccount.inc:167
 msgid "Block soft limit"
 msgstr ""
 
-#: personal/quota/quota.tpl:43 personal/quota/class_quotaAccount.inc:234
+#: personal/quota/quota.tpl:43 personal/quota/class_quotaAccount.inc:173
 msgid "Block hard limit"
 msgstr ""
 
-#: personal/quota/quota.tpl:54 personal/quota/class_quotaAccount.inc:235
+#: personal/quota/quota.tpl:54 personal/quota/class_quotaAccount.inc:179
 msgid "Inode soft limit"
 msgstr ""
 
-#: personal/quota/quota.tpl:60 personal/quota/class_quotaAccount.inc:236
+#: personal/quota/quota.tpl:60 personal/quota/class_quotaAccount.inc:184
 msgid "Inode hard limit"
 msgstr ""
 
@@ -223,63 +255,60 @@ msgstr ""
 msgid "quota settings"
 msgstr ""
 
-#: personal/quota/class_quotaAccount.inc:25
-#: personal/quota/class_quotaAccount.inc:390
-msgid "quota"
-msgstr ""
-
-#: personal/quota/class_quotaAccount.inc:26
-msgid "Plugin quota"
-msgstr ""
-
-#: personal/quota/class_quotaAccount.inc:93
-#: personal/quota/class_quotaAccount.inc:400
-msgid "KB"
-msgstr ""
-
-#: personal/quota/class_quotaAccount.inc:93
-#: personal/quota/class_quotaAccount.inc:400
-msgid "MB"
-msgstr ""
-
-#: personal/quota/class_quotaAccount.inc:93
-#: personal/quota/class_quotaAccount.inc:400
-msgid "GB"
-msgstr ""
-
-#: personal/quota/class_quotaAccount.inc:93
-#: personal/quota/class_quotaAccount.inc:400
-msgid "TB"
-msgstr ""
-
-#: personal/quota/class_quotaAccount.inc:153
-#: personal/quota/class_quotaAccount.inc:172
-#: personal/quota/class_quotaAccount.inc:174
-msgid "QUOTA"
-msgstr ""
-
-#: personal/quota/class_quotaAccount.inc:164
-msgid "There is no quota server configured"
-msgstr ""
-
-#: personal/quota/class_quotaAccount.inc:381
+#: personal/quota/class_quotaAccount.inc:137
 msgid "Plugin for quota support"
 msgstr ""
 
-#: personal/quota/class_quotaAccount.inc:389
-msgid "uid"
-msgstr ""
-
-#: personal/quota/class_quotaAccount.inc:400
+#: personal/quota/class_quotaAccount.inc:149
 msgid "B"
 msgstr ""
 
-#: personal/quota/class_quotaAccount.inc:400
-msgid "PB"
+#: personal/quota/class_quotaAccount.inc:149
+msgid "KB"
 msgstr ""
 
-#: personal/quota/class_quotaAccount.inc:400
-msgid "EB"
+#: personal/quota/class_quotaAccount.inc:149
+msgid "MB"
+msgstr ""
+
+#: personal/quota/class_quotaAccount.inc:149
+msgid "GB"
+msgstr ""
+
+#: personal/quota/class_quotaAccount.inc:149
+msgid "TB"
+msgstr ""
+
+#: personal/quota/class_quotaAccount.inc:154
+msgid "Quota informations"
+msgstr ""
+
+#: personal/quota/class_quotaAccount.inc:159
+msgid "Quota informations for this user"
+msgstr ""
+
+#: personal/quota/class_quotaAccount.inc:163
+msgid "Device this quota is for"
+msgstr ""
+
+#: personal/quota/class_quotaAccount.inc:167
+msgid "Soft limit for the block the user can use"
+msgstr ""
+
+#: personal/quota/class_quotaAccount.inc:173
+msgid "Hard limit for the block the user can use"
+msgstr ""
+
+#: personal/quota/class_quotaAccount.inc:179
+msgid "Soft limit for the inodes the user can use"
+msgstr ""
+
+#: personal/quota/class_quotaAccount.inc:184
+msgid "Hard limit for the inodes the user can use"
+msgstr ""
+
+#: personal/quota/class_quotaAccount.inc:189
+msgid "Server hosting the device this quota is for"
 msgstr ""
 
 #: personal/quota/singleSystemSelect/singleSystem-list.tpl:13
@@ -296,6 +325,10 @@ msgstr ""
 
 #: personal/quota/singleSystemSelect/singleSystem-list.xml:41
 msgid "Computer Name"
+msgstr ""
+
+#: personal/quota/singleSystemSelect/singleSystem-list.xml:49
+msgid "Description"
 msgstr ""
 
 #: personal/quota/singleSystemSelect/singleSystem-list.xml:58

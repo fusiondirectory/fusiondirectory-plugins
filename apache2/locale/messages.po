@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-09 16:22+0100\n"
+"POT-Creation-Date: 2013-02-12 23:48+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,12 +18,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: admin/systems/services/apache2/serviceApacheVhostEditFooter.tpl:3
-#: admin/systems/services/apache2/serviceApacheVhostEdit.tpl:112
 msgid "Save"
 msgstr ""
 
 #: admin/systems/services/apache2/serviceApacheVhostEditFooter.tpl:4
-#: admin/systems/services/apache2/serviceApacheVhostEdit.tpl:113
 msgid "Cancel"
 msgstr ""
 
@@ -41,12 +39,10 @@ msgid "Apache Vhost"
 msgstr ""
 
 #: admin/systems/services/apache2/class_serviceApacheVhostEdit.inc:67
-#: admin/systems/services/apache2/serviceApacheVhostEdit.tpl:1
 msgid "Generic"
 msgstr ""
 
 #: admin/systems/services/apache2/class_serviceApacheVhostEdit.inc:71
-#: admin/systems/services/apache2/serviceApacheVhostEdit.tpl:7
 msgid "Virtual host name"
 msgstr ""
 
@@ -56,7 +52,6 @@ msgstr ""
 
 #: admin/systems/services/apache2/class_serviceApacheVhostEdit.inc:77
 #: admin/systems/services/apache2/serviceApacheVhostEdit-list.xml:40
-#: admin/systems/services/apache2/serviceApacheVhostEdit.tpl:13
 msgid "Document root"
 msgstr ""
 
@@ -65,7 +60,6 @@ msgid "Document root for the apache web server"
 msgstr ""
 
 #: admin/systems/services/apache2/class_serviceApacheVhostEdit.inc:83
-#: admin/systems/services/apache2/serviceApacheVhostEdit.tpl:19
 msgid "Admin mail address"
 msgstr ""
 
@@ -75,7 +69,6 @@ msgstr ""
 
 #: admin/systems/services/apache2/class_serviceApacheVhostEdit.inc:89
 #: admin/systems/services/apache2/class_serviceApacheVhostEdit.inc:98
-#: admin/systems/services/apache2/serviceApacheVhostEdit.tpl:74
 msgid "Script Alias"
 msgstr ""
 
@@ -84,7 +77,6 @@ msgid "Alias"
 msgstr ""
 
 #: admin/systems/services/apache2/class_serviceApacheVhostEdit.inc:92
-#: admin/systems/services/apache2/serviceApacheVhostEdit.tpl:86
 msgid "Alias Directory"
 msgstr ""
 
@@ -93,23 +85,19 @@ msgid "Script"
 msgstr ""
 
 #: admin/systems/services/apache2/class_serviceApacheVhostEdit.inc:93
-#: admin/systems/services/apache2/serviceApacheVhostEdit.tpl:89
 msgid "Script Directory"
 msgstr ""
 
 #: admin/systems/services/apache2/class_serviceApacheVhostEdit.inc:102
 #: admin/systems/services/apache2/class_serviceApacheVhostEdit.inc:111
-#: admin/systems/services/apache2/serviceApacheVhostEdit.tpl:30
 msgid "Server Alias"
 msgstr ""
 
 #: admin/systems/services/apache2/class_serviceApacheVhostEdit.inc:105
-#: admin/systems/services/apache2/serviceApacheVhostEdit.tpl:42
 msgid "URL Alias"
 msgstr ""
 
 #: admin/systems/services/apache2/class_serviceApacheVhostEdit.inc:106
-#: admin/systems/services/apache2/serviceApacheVhostEdit.tpl:45
 msgid "Directory Path"
 msgstr ""
 
@@ -198,14 +186,4 @@ msgstr ""
 
 #: admin/systems/services/apache2/class_serviceApacheVhost.inc:82
 msgid "Virtual hosts"
-msgstr ""
-
-#: admin/systems/services/apache2/serviceApacheVhost.tpl:1
-msgid "Apache VHosts"
-msgstr ""
-
-#: admin/systems/services/apache2/serviceApacheVhost.tpl:8
-#: admin/systems/services/apache2/serviceApacheVhostEdit.tpl:54
-#: admin/systems/services/apache2/serviceApacheVhostEdit.tpl:98
-msgid "Add"
 msgstr ""

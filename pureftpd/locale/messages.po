@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-09 16:22+0100\n"
+"POT-Creation-Date: 2013-02-12 23:54+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,13 +22,13 @@ msgid "FTP account"
 msgstr ""
 
 #: personal/connectivity/pureftpd/pureftpd.tpl:17
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:50
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:49
 msgid "Bandwidth"
 msgstr ""
 
 #: personal/connectivity/pureftpd/pureftpd.tpl:21
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:52
 #: personal/connectivity/pureftpd/class_pureftpdAccount.inc:53
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:54
 msgid "Upload bandwidth"
 msgstr ""
 
@@ -38,7 +38,7 @@ msgid "kb/s"
 msgstr ""
 
 #: personal/connectivity/pureftpd/pureftpd.tpl:29
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:62
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:61
 msgid "Download bandwidth"
 msgstr ""
 
@@ -47,12 +47,12 @@ msgid "Quota"
 msgstr ""
 
 #: personal/connectivity/pureftpd/pureftpd.tpl:49
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:99
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:98
 msgid "Files"
 msgstr ""
 
 #: personal/connectivity/pureftpd/pureftpd.tpl:57
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:108
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:107
 msgid "Size"
 msgstr ""
 
@@ -61,7 +61,7 @@ msgid "MB"
 msgstr ""
 
 #: personal/connectivity/pureftpd/pureftpd.tpl:73
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:73
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:72
 msgid "Ratio"
 msgstr ""
 
@@ -70,7 +70,7 @@ msgid "Uploaded / downloaded files"
 msgstr ""
 
 #: personal/connectivity/pureftpd/pureftpd.tpl:95
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:119
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:118
 msgid "Miscellaneous"
 msgstr ""
 
@@ -79,8 +79,8 @@ msgid "Check to disable FTP Access"
 msgstr ""
 
 #: personal/connectivity/pureftpd/pureftpd.tpl:102
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:121
 #: personal/connectivity/pureftpd/class_pureftpdAccount.inc:122
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:123
 msgid "Temporary disable FTP access"
 msgstr ""
 
@@ -96,33 +96,33 @@ msgstr ""
 msgid "Connectivity addon"
 msgstr ""
 
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:53
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:62
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:52
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:61
 msgid " (kb/sec)"
 msgstr ""
 
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:63
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:62
 msgid "Download bandwidth in kb/sec"
 msgstr ""
 
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:75
 #: personal/connectivity/pureftpd/class_pureftpdAccount.inc:76
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:77
 msgid "Uploaded files"
 msgstr ""
 
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:84
 #: personal/connectivity/pureftpd/class_pureftpdAccount.inc:85
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:86
 msgid "Downloaded files"
 msgstr ""
 
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:100
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:99
 msgid "Quota files"
 msgstr ""
 
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:108
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:107
 msgid " (MB)"
 msgstr ""
 
-#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:109
+#: personal/connectivity/pureftpd/class_pureftpdAccount.inc:108
 msgid "Files size"
 msgstr ""

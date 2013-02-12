@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-09 16:22+0100\n"
+"POT-Creation-Date: 2013-02-12 23:58+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,65 +17,8 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: addons/board/users_stats.tpl:22 addons/board/user_accounts.tpl:22
+#: addons/board/users_stats.tpl:22
 msgid "None of them is locked"
-msgstr ""
-
-#: addons/board/user_accounts.tpl:3 addons/board/class_boardSystems.inc:179
-#: addons/board/class_board.inc:107 addons/board/main_stats.tpl:3
-#: addons/board/class_boardUserAccounts.inc:140 addons/board/contents.tpl:3
-msgid "Statistics"
-msgstr ""
-
-#: addons/board/user_accounts.tpl:30 addons/board/user_accounts.tpl:54
-#: addons/board/users_accounts.tpl:27
-#: addons/board/class_boardUserAccounts.inc:145
-msgid "Expired accounts"
-msgstr ""
-
-#: addons/board/user_accounts.tpl:37 addons/board/users_accounts.tpl:10
-msgid "There is no expired account"
-msgstr ""
-
-#: addons/board/user_accounts.tpl:57 addons/board/user_accounts.tpl:109
-#: addons/board/users_accounts.tpl:30 addons/board/users_accounts.tpl:82
-msgid "Manager concerned"
-msgstr ""
-
-#: addons/board/user_accounts.tpl:64 addons/board/user_accounts.tpl:114
-#: addons/board/users_accounts.tpl:37 addons/board/users_accounts.tpl:87
-msgid "uid"
-msgstr ""
-
-#: addons/board/user_accounts.tpl:64 addons/board/user_accounts.tpl:114
-#: addons/board/users_accounts.tpl:37 addons/board/users_accounts.tpl:87
-msgid "cn"
-msgstr ""
-
-#: addons/board/user_accounts.tpl:64 addons/board/user_accounts.tpl:65
-#: addons/board/user_accounts.tpl:114 addons/board/user_accounts.tpl:115
-#: addons/board/users_accounts.tpl:37 addons/board/users_accounts.tpl:38
-#: addons/board/users_accounts.tpl:87 addons/board/users_accounts.tpl:88
-msgid "telephoneNumber"
-msgstr ""
-
-#: addons/board/user_accounts.tpl:64 addons/board/user_accounts.tpl:114
-#: addons/board/users_accounts.tpl:37 addons/board/users_accounts.tpl:87
-msgid "shadowExpire"
-msgstr ""
-
-#: addons/board/user_accounts.tpl:65 addons/board/user_accounts.tpl:115
-#: addons/board/users_accounts.tpl:38 addons/board/users_accounts.tpl:88
-msgid "manager"
-msgstr ""
-
-#: addons/board/user_accounts.tpl:65 addons/board/user_accounts.tpl:115
-#: addons/board/users_accounts.tpl:38 addons/board/users_accounts.tpl:88
-msgid "mail"
-msgstr ""
-
-#: addons/board/user_accounts.tpl:106 addons/board/users_accounts.tpl:79
-msgid "Next expired accounts"
 msgstr ""
 
 #: addons/board/class_boardSystems.inc:48
@@ -106,16 +49,68 @@ msgstr ""
 msgid "Components"
 msgstr ""
 
-#: addons/board/class_boardSystems.inc:184 addons/board/contents.tpl:30
+#: addons/board/class_boardSystems.inc:69
+msgid "Mobile phones"
+msgstr ""
+
+#: addons/board/class_boardSystems.inc:182 addons/board/class_board.inc:107
+#: addons/board/main_stats.tpl:3 addons/board/class_boardUserAccounts.inc:140
+#: addons/board/contents.tpl:3
+msgid "Statistics"
+msgstr ""
+
+#: addons/board/class_boardSystems.inc:187 addons/board/contents.tpl:30
 msgid "Computer name to use by unit"
 msgstr ""
 
-#: addons/board/class_boardSystems.inc:195
+#: addons/board/class_boardSystems.inc:198
 msgid "Systems"
 msgstr ""
 
-#: addons/board/class_boardSystems.inc:196
+#: addons/board/class_boardSystems.inc:199
 msgid "Statistics and informations about systems"
+msgstr ""
+
+#: addons/board/users_accounts.tpl:10
+msgid "There is no expired account"
+msgstr ""
+
+#: addons/board/users_accounts.tpl:26
+#: addons/board/class_boardUserAccounts.inc:145
+msgid "Expired accounts"
+msgstr ""
+
+#: addons/board/users_accounts.tpl:29 addons/board/users_accounts.tpl:79
+msgid "Manager concerned"
+msgstr ""
+
+#: addons/board/users_accounts.tpl:36 addons/board/users_accounts.tpl:84
+msgid "uid"
+msgstr ""
+
+#: addons/board/users_accounts.tpl:36 addons/board/users_accounts.tpl:84
+msgid "cn"
+msgstr ""
+
+#: addons/board/users_accounts.tpl:36 addons/board/users_accounts.tpl:37
+#: addons/board/users_accounts.tpl:84 addons/board/users_accounts.tpl:85
+msgid "telephoneNumber"
+msgstr ""
+
+#: addons/board/users_accounts.tpl:36 addons/board/users_accounts.tpl:84
+msgid "shadowExpire"
+msgstr ""
+
+#: addons/board/users_accounts.tpl:37 addons/board/users_accounts.tpl:85
+msgid "manager"
+msgstr ""
+
+#: addons/board/users_accounts.tpl:37 addons/board/users_accounts.tpl:85
+msgid "mail"
+msgstr ""
+
+#: addons/board/users_accounts.tpl:76
+msgid "Next expired accounts"
 msgstr ""
 
 #: addons/board/class_boardNetwork.inc:109

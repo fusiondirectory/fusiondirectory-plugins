@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-09 16:22+0100\n"
+"POT-Creation-Date: 2013-02-12 19:00+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -46,7 +46,7 @@ msgid "File which argonaut will use to store its task id when booting"
 msgstr ""
 
 #: admin/systems/argonaut/class_argonautClient.inc:133
-#: admin/systems/services/argonaut/class_argonautServer.inc:73
+#: admin/systems/services/argonaut/class_argonautServer.inc:74
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:55
 msgid "Log directory"
 msgstr ""
@@ -86,51 +86,51 @@ msgstr ""
 msgid "Services"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:47
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:45
 msgid "Argonaut Ldap2zone settings:"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:50
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:48
 msgid "Bind directory"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:51
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:49
 msgid "The directory in which conf file must be created"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:57
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:55
 msgid "Bind cache directory"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:58
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:56
 msgid "The directory in which zone files must be created"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:64
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:62
 msgid "Allow notify"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:70
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:68
 msgid "Allow update (semicolon separated and ended)"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:76
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:74
 msgid "Allow transfer (semicolon separated and ended)"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:82
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:80
 msgid "TTL"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:83
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:81
 msgid "Time to live"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:91
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:89
 msgid "rndc path"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:92
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:90
 msgid "path to rndc binary"
 msgstr ""
 
@@ -152,55 +152,55 @@ msgstr ""
 msgid "Argonaut Mirror settings"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:48
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:45
 msgid "Argonaut mirror settings"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:51
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:48
 msgid "Local debian mirror directory"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:60
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:57
 msgid "Argonaut Debconf Crawler config"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:63
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:60
 msgid "Local packages folder"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:64
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:61
 msgid "Folder in which the crawler will store packages during analysis"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:72
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:69
 msgid "Argonaut Ldap2repository config"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:75
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:72
 msgid "Proxy"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:81
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:78
 msgid "Errors"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:88
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:85
 msgid "Source"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:95
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:92
 msgid "GPG Check"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:102
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:99
 msgid "Contents"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:109
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:106
 msgid "Verbose"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:110
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:107
 msgid "Wether to activate verbose mode"
 msgstr ""
 
@@ -234,79 +234,79 @@ msgstr ""
 msgid "Argonaut Server"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautServer.inc:46
+#: admin/systems/services/argonaut/class_argonautServer.inc:47
 msgid "Argonaut server"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautServer.inc:49
+#: admin/systems/services/argonaut/class_argonautServer.inc:50
 msgid "Delete finished tasks"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautServer.inc:50
+#: admin/systems/services/argonaut/class_argonautServer.inc:51
 msgid "Wether or not argonaut server should delete successfully finished tasks"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautServer.inc:55
+#: admin/systems/services/argonaut/class_argonautServer.inc:56
 msgid "Protocol"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautServer.inc:55
+#: admin/systems/services/argonaut/class_argonautServer.inc:56
 msgid "Protocol to use for argonaut"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautServer.inc:60
+#: admin/systems/services/argonaut/class_argonautServer.inc:61
 msgid "Port"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautServer.inc:61
+#: admin/systems/services/argonaut/class_argonautServer.inc:62
 msgid "Port on which the argonaut server will be listening"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautServer.inc:66
+#: admin/systems/services/argonaut/class_argonautServer.inc:67
 msgid "Timeout"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautServer.inc:67
+#: admin/systems/services/argonaut/class_argonautServer.inc:68
 msgid "Time in seconds before to consider an argonaut client or server as down"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautServer.inc:74
+#: admin/systems/services/argonaut/class_argonautServer.inc:75
 msgid "Directory in which argonaut will store its log"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautServer.inc:79
+#: admin/systems/services/argonaut/class_argonautServer.inc:80
 msgid "Key path"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautServer.inc:79
+#: admin/systems/services/argonaut/class_argonautServer.inc:80
 msgid "Path to the private key file"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautServer.inc:84
+#: admin/systems/services/argonaut/class_argonautServer.inc:85
 msgid "Certificate path"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautServer.inc:84
+#: admin/systems/services/argonaut/class_argonautServer.inc:85
 msgid "Path to the certificate file"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautServer.inc:91
+#: admin/systems/services/argonaut/class_argonautServer.inc:92
 msgid "Wake on lan"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautServer.inc:94
+#: admin/systems/services/argonaut/class_argonautServer.inc:95
 msgid "Interface"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautServer.inc:95
+#: admin/systems/services/argonaut/class_argonautServer.inc:96
 msgid "Interface to use for sending WakeOnLan requests"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautServer.inc:100
+#: admin/systems/services/argonaut/class_argonautServer.inc:101
 msgid "IP tool"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautServer.inc:100
+#: admin/systems/services/argonaut/class_argonautServer.inc:101
 msgid "IP tool to use"
 msgstr ""
 
@@ -366,7 +366,7 @@ msgstr ""
 
 #: addons/goto/class_goto_import_file.inc:49
 #: addons/goto/class_goto_import_file.inc:109
-#: addons/goto/class_goto_import_file.inc:152
+#: addons/goto/class_goto_import_file.inc:153
 #: addons/goto/goto_import_file.tpl:84 addons/goto/deploy-list.xml:148
 msgid "Import"
 msgstr ""
@@ -380,22 +380,22 @@ msgid ""
 "Selected entries will be skipped because of errors. Do you want to proceed?"
 msgstr ""
 
-#: addons/goto/class_goto_import_file.inc:145
-#: addons/goto/class_gotomasses.inc:338
+#: addons/goto/class_goto_import_file.inc:146
+#: addons/goto/class_gotomasses.inc:331
 msgid "Service infrastructure"
 msgstr ""
 
-#: addons/goto/class_goto_import_file.inc:152
+#: addons/goto/class_goto_import_file.inc:153
 #, php-format
 msgid "Import complete: %s events successfully send, %s failed"
 msgstr ""
 
-#: addons/goto/class_goto_import_file.inc:189
+#: addons/goto/class_goto_import_file.inc:190
 #: addons/goto/goto_import_file.tpl:38
 msgid "MAC"
 msgstr ""
 
-#: addons/goto/class_goto_import_file.inc:192
+#: addons/goto/class_goto_import_file.inc:193
 #: addons/goto/goto_import_file.tpl:39 addons/goto/deploy-list.xml:14
 msgid "Event"
 msgstr ""
@@ -459,22 +459,6 @@ msgid "Upload"
 msgstr ""
 
 #: addons/goto/goto_import_file.tpl:37
-#: addons/goto/events/DaemonEvent_reload_ldap_config.tpl:51
-#: addons/goto/events/DaemonEvent_update.tpl:51
-#: addons/goto/events/DaemonEvent_rescan.tpl:51
-#: addons/goto/events/DaemonEvent_lock.tpl:51
-#: addons/goto/events/DaemonEvent_faireboot.tpl:51
-#: addons/goto/events/DaemonEvent_notify.tpl:85
-#: addons/goto/events/DaemonEvent_installation_activation.tpl:51
-#: addons/goto/events/DaemonEvent_activate.tpl:51
-#: addons/goto/events/DaemonEvent_reinstall.tpl:55
-#: addons/goto/events/DaemonEvent_localboot.tpl:51
-#: addons/goto/events/DaemonEvent_sysinfo.tpl:51
-#: addons/goto/events/DaemonEvent_wakeup.tpl:51
-#: addons/goto/events/DaemonEvent_goto_reload.tpl:51
-#: addons/goto/events/DaemonEvent_reboot.tpl:51
-#: addons/goto/events/DaemonEvent_memcheck.tpl:51
-#: addons/goto/events/DaemonEvent_halt.tpl:51
 msgid "Timestamp"
 msgstr ""
 
@@ -505,8 +489,8 @@ msgstr ""
 
 #: addons/goto/class_gotoLogView.inc:77 addons/goto/class_gotoLogView.inc:195
 #: addons/goto/class_filterGotoEvents.inc:39
-#: addons/goto/class_gotomasses.inc:178 addons/goto/class_gotomasses.inc:295
-#: addons/goto/class_gotomasses.inc:386
+#: addons/goto/class_gotomasses.inc:174 addons/goto/class_gotomasses.inc:288
+#: addons/goto/class_gotomasses.inc:379
 msgid "Error"
 msgstr ""
 
@@ -550,168 +534,12 @@ msgstr ""
 msgid "No logs for this host available!"
 msgstr ""
 
-#: addons/goto/events/class_DaemonEvent_goto_reload.inc:37
-msgid "GOto reload"
-msgstr ""
-
-#: addons/goto/events/class_DaemonEvent_goto_reload.inc:38
-msgid "Reload GOto settings"
-msgstr ""
-
-#: addons/goto/events/class_DaemonEvent_activate.inc:29
-#: addons/goto/events/class_DaemonEvent_activate.inc:30
-#: addons/goto/deploy-list.xml:129
-msgid "Unlock"
-msgstr ""
-
-#: addons/goto/events/class_DaemonEvent_reload_ldap_config.inc:28
-#: addons/goto/events/class_DaemonEvent_reload_ldap_config.inc:29
-msgid "Reload LDAP config"
-msgstr ""
-
 #: addons/goto/events/target_list.tpl:5
 msgid "Apply"
 msgstr ""
 
 #: addons/goto/events/target_list.tpl:6
 msgid "Cancel"
-msgstr ""
-
-#: addons/goto/events/class_DaemonEvent_update.inc:29
-#: addons/goto/events/class_DaemonEvent_update.inc:30
-#: addons/goto/deploy-list.xml:115
-msgid "Software update"
-msgstr ""
-
-#: addons/goto/events/class_DaemonEvent_rescan.inc:28
-#: addons/goto/events/class_DaemonEvent_rescan.inc:29
-msgid "Rescan hardware"
-msgstr ""
-
-#: addons/goto/events/DaemonEvent_reload_ldap_config.tpl:9
-#: addons/goto/events/DaemonEvent_update.tpl:9
-#: addons/goto/events/DaemonEvent_rescan.tpl:9
-#: addons/goto/events/DaemonEvent_lock.tpl:9
-#: addons/goto/events/DaemonEvent_faireboot.tpl:9
-#: addons/goto/events/DaemonEvent_notify.tpl:28
-#: addons/goto/events/DaemonEvent_installation_activation.tpl:9
-#: addons/goto/events/DaemonEvent_reinstall.tpl:9
-#: addons/goto/events/DaemonEvent_localboot.tpl:9
-#: addons/goto/events/DaemonEvent_sysinfo.tpl:9
-#: addons/goto/events/DaemonEvent_wakeup.tpl:9
-#: addons/goto/events/DaemonEvent_goto_reload.tpl:9
-#: addons/goto/events/DaemonEvent_reboot.tpl:9
-#: addons/goto/events/DaemonEvent_memcheck.tpl:9
-#: addons/goto/events/DaemonEvent_halt.tpl:9 addons/goto/deploy-list.xml:61
-msgid "Schedule"
-msgstr ""
-
-#: addons/goto/events/DaemonEvent_reload_ldap_config.tpl:18
-#: addons/goto/events/DaemonEvent_update.tpl:18
-#: addons/goto/events/DaemonEvent_rescan.tpl:18
-#: addons/goto/events/DaemonEvent_lock.tpl:18
-#: addons/goto/events/DaemonEvent_faireboot.tpl:18
-#: addons/goto/events/DaemonEvent_installation_activation.tpl:18
-#: addons/goto/events/DaemonEvent_activate.tpl:18
-#: addons/goto/events/DaemonEvent_reinstall.tpl:18
-#: addons/goto/events/DaemonEvent_localboot.tpl:18
-#: addons/goto/events/DaemonEvent_sysinfo.tpl:18
-#: addons/goto/events/DaemonEvent_wakeup.tpl:18
-#: addons/goto/events/DaemonEvent_goto_reload.tpl:18
-#: addons/goto/events/DaemonEvent_reboot.tpl:18
-#: addons/goto/events/DaemonEvent_memcheck.tpl:18
-#: addons/goto/events/DaemonEvent_halt.tpl:18
-msgid "System list"
-msgstr ""
-
-#: addons/goto/events/DaemonEvent_reload_ldap_config.tpl:35
-#: addons/goto/events/DaemonEvent_update.tpl:35
-#: addons/goto/events/DaemonEvent_rescan.tpl:35
-#: addons/goto/events/DaemonEvent_lock.tpl:35
-#: addons/goto/events/DaemonEvent_faireboot.tpl:35
-#: addons/goto/events/DaemonEvent_notify.tpl:69
-#: addons/goto/events/DaemonEvent_installation_activation.tpl:35
-#: addons/goto/events/DaemonEvent_activate.tpl:35
-#: addons/goto/events/DaemonEvent_reinstall.tpl:35
-#: addons/goto/events/DaemonEvent_localboot.tpl:35
-#: addons/goto/events/DaemonEvent_sysinfo.tpl:35
-#: addons/goto/events/DaemonEvent_wakeup.tpl:35
-#: addons/goto/events/DaemonEvent_goto_reload.tpl:35
-#: addons/goto/events/DaemonEvent_reboot.tpl:35
-#: addons/goto/events/DaemonEvent_memcheck.tpl:35
-#: addons/goto/events/DaemonEvent_halt.tpl:35
-msgid "ID"
-msgstr ""
-
-#: addons/goto/events/DaemonEvent_reload_ldap_config.tpl:39
-#: addons/goto/events/DaemonEvent_update.tpl:39
-#: addons/goto/events/DaemonEvent_rescan.tpl:39
-#: addons/goto/events/DaemonEvent_lock.tpl:39
-#: addons/goto/events/DaemonEvent_faireboot.tpl:39
-#: addons/goto/events/DaemonEvent_notify.tpl:73
-#: addons/goto/events/DaemonEvent_installation_activation.tpl:39
-#: addons/goto/events/DaemonEvent_activate.tpl:39
-#: addons/goto/events/DaemonEvent_reinstall.tpl:43
-#: addons/goto/events/DaemonEvent_localboot.tpl:39
-#: addons/goto/events/DaemonEvent_sysinfo.tpl:39
-#: addons/goto/events/DaemonEvent_wakeup.tpl:39
-#: addons/goto/events/DaemonEvent_goto_reload.tpl:39
-#: addons/goto/events/DaemonEvent_reboot.tpl:39
-#: addons/goto/events/DaemonEvent_memcheck.tpl:39
-#: addons/goto/events/DaemonEvent_halt.tpl:39 addons/goto/deploy-list.xml:69
-msgid "Status"
-msgstr ""
-
-#: addons/goto/events/DaemonEvent_reload_ldap_config.tpl:43
-#: addons/goto/events/DaemonEvent_update.tpl:43
-#: addons/goto/events/DaemonEvent_rescan.tpl:43
-#: addons/goto/events/DaemonEvent_lock.tpl:43
-#: addons/goto/events/DaemonEvent_faireboot.tpl:43
-#: addons/goto/events/DaemonEvent_notify.tpl:77
-#: addons/goto/events/DaemonEvent_installation_activation.tpl:43
-#: addons/goto/events/DaemonEvent_activate.tpl:43
-#: addons/goto/events/DaemonEvent_reinstall.tpl:47
-#: addons/goto/events/DaemonEvent_localboot.tpl:43
-#: addons/goto/events/DaemonEvent_sysinfo.tpl:43
-#: addons/goto/events/DaemonEvent_wakeup.tpl:43
-#: addons/goto/events/DaemonEvent_goto_reload.tpl:43
-#: addons/goto/events/DaemonEvent_reboot.tpl:43
-#: addons/goto/events/DaemonEvent_memcheck.tpl:43
-#: addons/goto/events/DaemonEvent_halt.tpl:43
-msgid "Result"
-msgstr ""
-
-#: addons/goto/events/DaemonEvent_reload_ldap_config.tpl:47
-#: addons/goto/events/DaemonEvent_update.tpl:47
-#: addons/goto/events/DaemonEvent_rescan.tpl:47
-#: addons/goto/events/DaemonEvent_lock.tpl:47
-#: addons/goto/events/DaemonEvent_faireboot.tpl:47
-#: addons/goto/events/class_DaemonEvent_notify.inc:75
-#: addons/goto/events/class_DaemonEvent_notify.inc:76
-#: addons/goto/events/class_DaemonEvent_notify.inc:101
-#: addons/goto/events/DaemonEvent_notify.tpl:81
-#: addons/goto/events/DaemonEvent_installation_activation.tpl:47
-#: addons/goto/events/DaemonEvent_activate.tpl:47
-#: addons/goto/events/DaemonEvent_reinstall.tpl:51
-#: addons/goto/events/DaemonEvent_localboot.tpl:47
-#: addons/goto/events/DaemonEvent_sysinfo.tpl:47
-#: addons/goto/events/DaemonEvent_wakeup.tpl:47
-#: addons/goto/events/DaemonEvent_goto_reload.tpl:47
-#: addons/goto/events/DaemonEvent_reboot.tpl:47
-#: addons/goto/events/DaemonEvent_memcheck.tpl:47
-#: addons/goto/events/DaemonEvent_halt.tpl:47 addons/goto/deploy-list.xml:27
-msgid "Target"
-msgstr ""
-
-#: addons/goto/events/class_DaemonEvent_faireboot.inc:28
-#: addons/goto/events/class_DaemonEvent_faireboot.inc:29
-msgid "Abort installation"
-msgstr ""
-
-#: addons/goto/events/class_DaemonEvent_lock.inc:29
-#: addons/goto/events/class_DaemonEvent_lock.inc:30
-#: addons/goto/deploy-list.xml:122
-msgid "Lock"
 msgstr ""
 
 #: addons/goto/events/eventTargetUser-filter.tpl:3
@@ -753,7 +581,7 @@ msgstr ""
 
 #: addons/goto/events/eventTargetSystems-list.xml:73
 #: addons/goto/events/eventTargetUser-list.xml:57
-#: addons/goto/class_gotomasses.inc:469
+#: addons/goto/class_gotomasses.inc:462
 msgid "Description"
 msgstr ""
 
@@ -761,117 +589,63 @@ msgstr ""
 msgid "Mac"
 msgstr ""
 
-#: addons/goto/events/class_DaemonEvent_reinstall.inc:32
-#: addons/goto/events/class_DaemonEvent_reinstall.inc:33
-#: addons/goto/deploy-list.xml:136
-msgid "Reinstall"
-msgstr ""
-
-#: addons/goto/events/class_DaemonEvent_notify.inc:46
-#: addons/goto/events/class_DaemonEvent_notify.inc:47
-msgid "Send message"
-msgstr ""
-
-#: addons/goto/events/class_DaemonEvent_notify.inc:92
-#: addons/goto/events/DaemonEvent_notify.tpl:14
-msgid "Subject"
-msgstr ""
-
-#: addons/goto/events/class_DaemonEvent_notify.inc:95
-#: addons/goto/events/DaemonEvent_notify.tpl:18
-msgid "Message"
-msgstr ""
-
-#: addons/goto/events/class_DaemonEvent_notify.inc:98
-msgid "From"
-msgstr ""
-
-#: addons/goto/events/class_DaemonEvent.inc:134
-msgid "This job has no template!"
-msgstr ""
-
-#: addons/goto/events/class_DaemonEvent.inc:150
+#: addons/goto/events/class_DaemonEvent.inc:149
 #, php-format
 msgid "Create '%s' job"
 msgstr ""
 
-#: addons/goto/events/class_DaemonEvent.inc:221
+#: addons/goto/events/class_DaemonEvent.inc:220
 msgid "Minutes"
 msgstr ""
 
-#: addons/goto/events/class_DaemonEvent.inc:222
+#: addons/goto/events/class_DaemonEvent.inc:221
 msgid "Hours"
 msgstr ""
 
-#: addons/goto/events/class_DaemonEvent.inc:223
+#: addons/goto/events/class_DaemonEvent.inc:222
 msgid "Days"
 msgstr ""
 
-#: addons/goto/events/class_DaemonEvent.inc:224
+#: addons/goto/events/class_DaemonEvent.inc:223
 msgid "Weeks"
 msgstr ""
 
-#: addons/goto/events/class_DaemonEvent.inc:225
+#: addons/goto/events/class_DaemonEvent.inc:224
 msgid "Months"
 msgstr ""
 
-#: addons/goto/events/class_DaemonEvent.inc:259
-#: addons/goto/class_gotomasses.inc:244 addons/goto/deploy-list.xml:155
+#: addons/goto/events/class_DaemonEvent.inc:258
+#: addons/goto/class_gotomasses.inc:237 addons/goto/deploy-list.xml:155
 #: addons/goto/deploy-list.xml:215
 msgid "Remove"
 msgstr ""
 
-#: addons/goto/events/class_DaemonEvent.inc:263
+#: addons/goto/events/class_DaemonEvent.inc:262
 msgid "Add"
 msgstr ""
 
-#: addons/goto/events/DaemonEvent_notify.tpl:7
-msgid "Message settings"
+#: addons/goto/events/class_DaemonEvent.inc:408 addons/goto/deploy-list.xml:94
+msgid "Switch off"
 msgstr ""
 
-#: addons/goto/events/DaemonEvent_notify.tpl:10
-msgid "Sender"
+#: addons/goto/events/class_DaemonEvent.inc:412
+#: addons/goto/deploy-list.xml:101
+msgid "Reboot"
 msgstr ""
 
-#: addons/goto/events/DaemonEvent_notify.tpl:37
-msgid "Target users"
+#: addons/goto/events/class_DaemonEvent.inc:416
+#: addons/goto/deploy-list.xml:108
+msgid "Wake up"
 msgstr ""
 
-#: addons/goto/events/DaemonEvent_notify.tpl:44
-msgid "Target groups"
+#: addons/goto/events/class_DaemonEvent.inc:420
+#: addons/goto/deploy-list.xml:115
+msgid "Software update"
 msgstr ""
 
-#: addons/goto/events/class_DaemonEvent_activate_new.inc:40
-#: addons/goto/events/class_DaemonEvent_activate_new.inc:41
-msgid "Activate new"
-msgstr ""
-
-#: addons/goto/events/DaemonEvent_activate.tpl:9
-msgid "Time schedule"
-msgstr ""
-
-#: addons/goto/events/DaemonEvent_reinstall.tpl:39
-msgid "Progress"
-msgstr ""
-
-#: addons/goto/events/class_DaemonEvent_sysinfo.inc:28
-#: addons/goto/events/class_DaemonEvent_sysinfo.inc:29
-msgid "System analysis"
-msgstr ""
-
-#: addons/goto/events/class_DaemonEvent_localboot.inc:28
-#: addons/goto/events/class_DaemonEvent_localboot.inc:29
-msgid "Force localboot"
-msgstr ""
-
-#: addons/goto/events/class_DaemonEvent_memcheck.inc:28
-#: addons/goto/events/class_DaemonEvent_memcheck.inc:29
-msgid "Memory test"
-msgstr ""
-
-#: addons/goto/events/class_DaemonEvent_installation_activation.inc:28
-#: addons/goto/events/class_DaemonEvent_installation_activation.inc:29
-msgid "Installation activation"
+#: addons/goto/events/class_DaemonEvent.inc:424
+#: addons/goto/deploy-list.xml:136
+msgid "Reinstall"
 msgstr ""
 
 #: addons/goto/events/eventTargetSystems-filter.tpl:11
@@ -888,15 +662,6 @@ msgstr ""
 
 #: addons/goto/events/eventTargetSystems-filter.tpl:14
 msgid "Filter by IP address range"
-msgstr ""
-
-#: addons/goto/events/class_DaemonEvent_wakeup.inc:29
-#: addons/goto/deploy-list.xml:108
-msgid "Wake up"
-msgstr ""
-
-#: addons/goto/events/class_DaemonEvent_wakeup.inc:30
-msgid "Wake system"
 msgstr ""
 
 #: addons/goto/events/timestamp_select.tpl:3
@@ -931,12 +696,6 @@ msgstr ""
 msgid "Job intervall"
 msgstr ""
 
-#: addons/goto/events/class_DaemonEvent_reboot.inc:29
-#: addons/goto/events/class_DaemonEvent_reboot.inc:30
-#: addons/goto/deploy-list.xml:101
-msgid "Reboot"
-msgstr ""
-
 #: addons/goto/events/eventTargetUser-list.xml:11
 msgid "List of users"
 msgstr ""
@@ -949,79 +708,77 @@ msgstr ""
 msgid "Group"
 msgstr ""
 
-#: addons/goto/events/class_DaemonEvent_halt.inc:31
-#: addons/goto/events/class_DaemonEvent_halt.inc:32
-#: addons/goto/deploy-list.xml:94
-msgid "Switch off"
-msgstr ""
-
 #: addons/goto/class_filterGotoEvents.inc:39
 #, php-format
 msgid "Cannot load queue entries: %s"
 msgstr ""
 
-#: addons/goto/class_gotomasses.inc:158
+#: addons/goto/class_gotomasses.inc:154
 msgid "immediately"
 msgstr ""
 
-#: addons/goto/class_gotomasses.inc:174
+#: addons/goto/class_gotomasses.inc:170
 msgid "Waiting"
 msgstr ""
 
-#: addons/goto/class_gotomasses.inc:177
+#: addons/goto/class_gotomasses.inc:173
 msgid "Show error"
 msgstr ""
 
-#: addons/goto/class_gotomasses.inc:181
+#: addons/goto/class_gotomasses.inc:177
 msgid "Processed"
 msgstr ""
 
-#: addons/goto/class_gotomasses.inc:190
+#: addons/goto/class_gotomasses.inc:186
 msgid "in progress"
 msgstr ""
 
-#: addons/goto/class_gotomasses.inc:213
+#: addons/goto/class_gotomasses.inc:207
 msgid "Permission"
 msgstr ""
 
-#: addons/goto/class_gotomasses.inc:245
+#: addons/goto/class_gotomasses.inc:238
 #, php-format
 msgid "The following jobs couldn't be deleted, they have to be aborted: %s"
 msgstr ""
 
-#: addons/goto/class_gotomasses.inc:292
+#: addons/goto/class_gotomasses.inc:285
 msgid "Info"
 msgstr ""
 
-#: addons/goto/class_gotomasses.inc:292
+#: addons/goto/class_gotomasses.inc:285
 #, php-format
 msgid "%s"
 msgstr ""
 
-#: addons/goto/class_gotomasses.inc:296
+#: addons/goto/class_gotomasses.inc:289
 #, php-format
 msgid "Required class '%s' cannot be found: job not aborted!"
 msgstr ""
 
-#: addons/goto/class_gotomasses.inc:328
+#: addons/goto/class_gotomasses.inc:321
 msgid "Error detail"
 msgstr ""
 
-#: addons/goto/class_gotomasses.inc:386
+#: addons/goto/class_gotomasses.inc:379
 #, php-format
 msgid "Cannot update queue entries."
 msgstr ""
 
-#: addons/goto/class_gotomasses.inc:461 addons/goto/class_gotomasses.inc:467
+#: addons/goto/class_gotomasses.inc:454 addons/goto/class_gotomasses.inc:460
 msgid "Deployment queue"
 msgstr ""
 
-#: addons/goto/class_gotomasses.inc:462
+#: addons/goto/class_gotomasses.inc:455
 msgid "Provide a mechanism to automatically activate systems"
 msgstr ""
 
 #: addons/goto/deploy-list.xml:10
 msgid "List of queued jobs"
+msgstr ""
+
+#: addons/goto/deploy-list.xml:27
+msgid "Target"
 msgstr ""
 
 #: addons/goto/deploy-list.xml:45
@@ -1032,12 +789,28 @@ msgstr ""
 msgid "Period"
 msgstr ""
 
+#: addons/goto/deploy-list.xml:61
+msgid "Schedule"
+msgstr ""
+
+#: addons/goto/deploy-list.xml:69
+msgid "Status"
+msgstr ""
+
 #: addons/goto/deploy-list.xml:77
 msgid "Actions"
 msgstr ""
 
 #: addons/goto/deploy-list.xml:88
 msgid "Create"
+msgstr ""
+
+#: addons/goto/deploy-list.xml:122
+msgid "Lock"
+msgstr ""
+
+#: addons/goto/deploy-list.xml:129
+msgid "Unlock"
 msgstr ""
 
 #: addons/goto/deploy-list.xml:166 addons/goto/deploy-list.xml:223
