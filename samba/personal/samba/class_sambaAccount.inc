@@ -242,7 +242,7 @@ class sambaAccount extends simplePlugin
             'DefaultPrinter', FALSE, TRUE
           ),
           new SelectAttribute (
-            _('Shadowing'), _(''),
+            _('Shadowing'), _('Shadowing'),
             'Shadow', TRUE,
             array(0,1,2,3,4), 0,
             array(_('disabled'), _('input on, notify on'), _('input on, notify off'),
@@ -308,7 +308,7 @@ class sambaAccount extends simplePlugin
           ),
           new ButtonAttribute (
             _('Samba logon times'), _('What is the allowed time to connect'),
-            'sambaLogonHours', 'SambaLogonHoursDialog', _('Edit settings…')
+            'sambaLogonHours', 'SambaLogonHoursDialog', _('Edit settings')
           )
         )
       ),
