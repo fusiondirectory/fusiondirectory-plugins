@@ -165,6 +165,9 @@ class winstationGeneric extends simplePlugin
     if (!$this->sdaemon_available) {
       return FALSE;
     }
+    if ($this->netConfigDNS->macAddress == "") {
+      return FALSE;
+    }
     $sdaemon = new supportDaemon();
     if (!$sdaemon->is_available()) {
       $this->sdaemon_available = FALSE;
