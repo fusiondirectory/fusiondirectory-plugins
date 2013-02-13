@@ -97,6 +97,23 @@ class opsiAdmin extends simplePlugin
     );
   }
 
+  static function getAttributesInfo()
+  {
+    return array(
+      'import' => array(
+        'template'  => get_template_path('opsiadmin.tpl', TRUE, dirname(__FILE__)),
+        'name'      => _('Import'),
+        'attrs'     => array(
+          new BaseSelectorAttribute(get_ou('sambaMachineAccountRDN')),
+          new ImportOPSIAttribute(
+            _('OPSI Server'), _('The OPSI server you wish to import host from'),
+            'opsiServer', FALSE
+          ),
+        ),
+      ),
+    );
+  }
+
   function __construct(&$config, $dn = NULL, $object = NULL)
   {
     parent::__construct($config, $dn, $object);
@@ -110,6 +127,7 @@ class opsiAdmin extends simplePlugin
       foreach ($this->messages as $id => $message) {
         if (is_array($message)) {
           $infos .= '<tr class="error">';
+          $infos .= '<td><img src="images/false.png"/></td>';
           $infos .= '<td>'.$id.'</td>';
           $infos .= '<td>';
           foreach ($message as $m) {
@@ -117,15 +135,16 @@ class opsiAdmin extends simplePlugin
           }
         } else {
           $infos .= '<tr class="success">';
+          $infos .= '<td><img src="images/true.png"/></td>';
           $infos .= '<td>'.$id.'</td>';
-          $infos .= '<td>No error</td>';
+          $infos .= '<td>saved</td>';
         }
         $infos .= "</td></tr>\n";
       }
     }
     if (!empty($infos)) {
       $infos = '<table class="listingTable"><thead><tr>'.
-                '<th>Host</th><th>Errors</th></tr></thead>'.
+                '<th><img src="images/info_small.png"/></th><th>Host</th><th>Details</th></tr></thead>'.
                 '<tbody>'.$infos.'</tbody></table>';
     }
     $smarty = get_smarty();
@@ -133,21 +152,6 @@ class opsiAdmin extends simplePlugin
     return parent::execute();
   }
 
-  static function getAttributesInfo()
-  {
-    return array(
-      'import' => array(
-        'template'  => get_template_path('opsiadmin.tpl', TRUE, dirname(__FILE__)),
-        'name'      => _('Import'),
-        'attrs'     => array(
-          new ImportOPSIAttribute(
-            _('OPSI Server'), _('The OPSI server you wish to import host from'),
-            'opsiServer', FALSE
-          ),
-        ),
-      ),
-    );
-  }
 
   function save()
   {
@@ -155,6 +159,7 @@ class opsiAdmin extends simplePlugin
 
   function opsiMassImport ($server_dn)
   {
+    session::global_set("CurrentMainBase", $this->base);
     $hosts = self::opsiGetHosts($this->config, $server_dn);
     $plInfo = pluglist::pluginInfos('opsiClient'); // Just to get the objectType dynamically
     $key = key($plInfo['plObjectType']);
@@ -181,6 +186,7 @@ class opsiAdmin extends simplePlugin
       $zone = $m[2].'.';
 
       $w = new wintabs($this->config, $this->config->data['TABS'][$tabclass], "new", $plCategory);
+      $w->set_acl_base($this->base);
       $wingeneric = $w->getBaseObject();
       $wingeneric->cn   = $cn;
       $wingeneric->uid  = $wingeneric->cn;
@@ -239,7 +245,7 @@ class opsiAdmin extends simplePlugin
       if (count($message) == 0) {
         /* No errors, save object */
         $messages[$host['id']] = TRUE;
-        //~ $w->save();
+        $w->save();
       } else {
         /* Errors found */
         $messages[$host['id']] = $message;
