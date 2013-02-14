@@ -73,7 +73,7 @@ class opsiClient extends simplePlugin
   {
     parent::save();
 
-    if ($this->is_account && class_available('supportDaemon')) {
+    if ($this->is_account) {
       $s_daemon   = new supportDaemon();
       $macAddress = $this->parent->getBaseObject()->netConfigDNS->macAddress;
       if ($s_daemon->is_available()) {
@@ -86,6 +86,23 @@ class opsiClient extends simplePlugin
         }
       }
     }
+  }
+
+  function remove_from_parent()
+  {
+    $s_daemon   = new supportDaemon();
+    $macAddress = $this->parent->getBaseObject()->netConfigDNS->macAddress;
+    if ($s_daemon->is_available()) {
+      $res = $s_daemon->append_call("OPSI.delete", array($macAddress), array());
+      if ($s_daemon->is_error()) {
+        msg_dialog::display(
+          _("Could not update OPSI informations"),
+          msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
+        );
+      }
+    }
+
+    parent::remove_from_parent();
   }
 }
 
