@@ -94,7 +94,7 @@ class jsonRPCClient {
     unset($http_options['content']);
     $this->http_options = $http_options;
     // debug state
-    empty($debug) ? $this->debug = false : $this->debug = true;
+    $this->debug = ($debug?true:false);
     // message id
     $this->id = 1;
   }
@@ -180,6 +180,30 @@ class jsonRPCClient {
     // debug output
     if ($this->debug) {
       echo nl2br($debug);
+    }
+
+    if ($response === NULL) {
+      switch (json_last_error()) {
+        case JSON_ERROR_NONE:
+        break;
+        case JSON_ERROR_DEPTH:
+          throw new jsonRPCClient_ProtocolException('Maximum depth in response');
+        break;
+        case JSON_ERROR_STATE_MISMATCH:
+          throw new jsonRPCClient_ProtocolException('Invalid JSON in response');
+        break;
+        case JSON_ERROR_CTRL_CHAR:
+          throw new jsonRPCClient_ProtocolException('Error while checking chars in response');
+        break;
+        case JSON_ERROR_SYNTAX:
+          throw new jsonRPCClient_ProtocolException('Bad JSON syntax in response');
+        break;
+        case JSON_ERROR_UTF8:
+          throw new jsonRPCClient_ProtocolException('Bad UTF-8 in response');
+        break;
+        default:
+        break;
+      }
     }
 
     // final checks and return
