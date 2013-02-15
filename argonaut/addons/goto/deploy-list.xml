@@ -88,21 +88,21 @@
      <label>Create</label>
 
      <action>
-      <name>halt</name>
+      <name>System.halt</name>
       <type>entry</type>
       <image>images/lists/off.png</image>
       <label>Switch off</label>
      </action>
 
      <action>
-      <name>reboot</name>
+      <name>Deployment.reboot</name>
       <type>entry</type>
       <image>images/lists/reload.png</image>
       <label>Reboot</label>
      </action>
 
      <action>
-      <name>wakeup</name>
+      <name>Deployment.wake</name>
       <type>entry</type>
       <image>images/lists/on.png</image>
       <label>Wake up</label>
@@ -130,7 +130,7 @@
      </action>
 
      <action>
-      <name>reinstall</name>
+      <name>Deployment.reinstall</name>
       <type>entry</type>
       <image>plugins/systems/images/reinstall.png</image>
       <label>Reinstall</label>

@@ -73,13 +73,13 @@ class gotomasses extends management
     $this->registerAction('viewLogs',   "viewLogs");
     $this->registerAction('abort',      "abortEvent");
     $this->registerAction('saveEventDialog',   "saveEventDialog");
-    $this->registerAction('halt', 'newEntry');
-    $this->registerAction('reboot', 'newEntry');
-    $this->registerAction('wakeup', 'newEntry');
-    $this->registerAction('update', 'newEntry');
+    $this->registerAction('System.halt', 'newEntry');
+    $this->registerAction('Deployment.reboot', 'newEntry');
+    $this->registerAction('Deployment.wake', 'newEntry');
+    $this->registerAction('Deployment.update', 'newEntry');
     $this->registerAction('lock', 'newEntry');
     $this->registerAction('activate', 'newEntry');
-    $this->registerAction('reinstall', 'newEntry');
+    $this->registerAction('Deployment.reinstall', 'newEntry');
     $this->registerAction('import', 'importEvents');
 
     $this->registerAction('showError', 'showErrorEntry');
