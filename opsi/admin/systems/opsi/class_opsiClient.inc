@@ -44,10 +44,14 @@ class opsiClient extends simplePlugin
       'main' => array(
         'name'  => _('OPSI Client'),
         'attrs' => array(
-          new SelectAttribute(
+          new SubmittingOPSIServerAttribute(
             _('OPSI Server'), _('The OPSI Server this client is connected to'),
             'fdOpsiServerDn', TRUE
-          )
+          ),
+          new SelectAttribute(
+            _('OPSI Profile'), _('The OPSI Profile to apply to this client'),
+            'fdOpsiProfileDn', FALSE
+          ),
         )
       )
     );
@@ -56,17 +60,6 @@ class opsiClient extends simplePlugin
   function __construct(&$config, $dn = NULL, $object = NULL)
   {
     parent::__construct($config, $dn, $object);
-
-    $ldap = $this->config->get_ldap_link();
-    $ldap->cd($this->config->current['BASE']);
-    $ldap->search('(objectClass=opsiServer)', array('cn'));
-    $serversdn    = array();
-    $serverslabel = array();
-    while ($attrs = $ldap->fetch()) {
-      $serversdn[]    = $attrs['dn'];
-      $serverslabel[] = $attrs['cn'][0];
-    }
-    $this->attributesAccess['fdOpsiServerDn']->setChoices($serversdn, $serverslabel);
   }
 
   function save()
@@ -103,6 +96,19 @@ class opsiClient extends simplePlugin
     }
 
     parent::remove_from_parent();
+  }
+
+  public function server_changed ()
+  {
+    $ldap = $this->config->get_ldap_link();
+    $ldap->search('(&(objectClass=opsiProfile)(fdOpsiServerDn='.$this->fdOpsiServerDn.'))', array('cn'));
+    $profilesdn    = array();
+    $profileslabel = array();
+    while ($attrs = $ldap->fetch()) {
+      $profilesdn[]    = $attrs['dn'];
+      $profileslabel[] = $attrs['cn'][0];
+    }
+    $this->attributesAccess['fdOpsiProfileDn']->setChoices($profilesdn, $profileslabel);
   }
 }
 

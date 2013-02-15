@@ -30,6 +30,12 @@ attributetype ( 1.3.6.1.4.1.38414.20.11.1 NAME 'fdOpsiServerDn'
         SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
         SINGLE-VALUE )
 
+attributetype ( 1.3.6.1.4.1.38414.20.11.2 NAME 'fdOpsiProfileDn'
+        DESC 'FusionDirectory - OPSI User password '
+        EQUALITY caseExactIA5Match
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+        SINGLE-VALUE )
+
 attributetype ( 1.3.6.1.4.1.38414.20.12.1 NAME 'fdOpsiNetbootProduct'
         DESC 'FusionDirectory - OPSI netboot product '
         EQUALITY caseExactIA5Match
@@ -50,7 +56,8 @@ objectclass ( 1.3.6.1.4.1.38414.20.2.1 NAME 'opsiServer' SUP top AUXILIARY
 
 objectclass ( 1.3.6.1.4.1.38414.20.2.2 NAME 'opsiClient' SUP top AUXILIARY
         DESC 'FusionDirectory - OPSI client'
-        MUST ( cn $ fdOpsiServerDn ) )
+        MUST ( cn $ fdOpsiServerDn )
+        MAY ( fdOpsiProfileDn ) )
 
 objectclass ( 1.3.6.1.4.1.38414.20.2.3 NAME 'opsiProfile'
         DESC 'FusionDirectory - OPSI profile'

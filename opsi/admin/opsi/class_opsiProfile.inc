@@ -18,7 +18,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class ProfileOPSIServerAttribute extends OPSIServerAttribute
+class SubmittingOPSIServerAttribute extends OPSIServerAttribute
 {
   function __construct ($label, $description, $ldapName, $required = FALSE, $acl = "")
   {
@@ -31,7 +31,7 @@ class ProfileOPSIServerAttribute extends OPSIServerAttribute
     $v = $this->getValue();
     parent::setValue($value);
     if (is_object($this->plugin) && ($v != $this->getValue())) {
-      $this->plugin->update_product_choices();
+      $this->plugin->server_changed();
     }
   }
 }
@@ -63,7 +63,7 @@ class opsiProfile extends simplePlugin
       'main' => array(
         'name'  => _('Name'),
         'attrs' => array(
-          new ProfileOPSIServerAttribute(
+          new SubmittingOPSIServerAttribute(
             _('OPSI server'), _('OPSI server to use for deployment'),
             'fdOpsiServerDN', TRUE
           ),
@@ -98,7 +98,7 @@ class opsiProfile extends simplePlugin
     $this->attributesAccess['cn']->setUnique(TRUE);
   }
 
-  public function update_product_choices ()
+  public function server_changed ()
   {
     $s_daemon = new supportDaemon();
     if (!$s_daemon->is_available()) {
