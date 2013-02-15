@@ -96,7 +96,7 @@ class systemsPluginConfig extends simplePlugin
                   '/^[^=]+$/'
                 ),
               ),
-              '/^([^=]+)=([^=]+)$/',
+              '/^([^=]*)=([^=]*)$/',
               '%s=%s',
               '',
               _('Encodings')
