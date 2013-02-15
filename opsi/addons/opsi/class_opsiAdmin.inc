@@ -19,20 +19,37 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
  */
 
-class ImportOPSIAttribute extends SelectAttribute
+class OPSIServerAttribute extends SelectAttribute
 {
-  function __construct ($label, $description, $ldapName, $required = FALSE, $acl = "")
-  {
-    parent::__construct($label, $description, $ldapName, $required, array(), "", NULL, $acl);
-    $this->setInLdap(FALSE);
-  }
-
   function setParent (&$plugin)
   {
     parent::setParent($plugin);
     if (is_object($this->plugin)) {
       $this->updateChoices();
     }
+  }
+
+  function updateChoices()
+  {
+    $ldap = $this->plugin->config->get_ldap_link();
+    $ldap->cd($this->plugin->config->current['BASE']);
+    $ldap->search('(objectClass=opsiServer)', array('cn'));
+    $serversdn    = array();
+    $serverslabel = array();
+    while ($attrs = $ldap->fetch()) {
+      $serversdn[]    = $attrs['dn'];
+      $serverslabel[] = $attrs['cn'][0];
+    }
+    $this->setChoices($serversdn, $serverslabel);
+  }
+}
+
+class ImportOPSIAttribute extends OPSIServerAttribute
+{
+  function __construct ($label, $description, $ldapName, $required = FALSE, $acl = "")
+  {
+    parent::__construct($label, $description, $ldapName, $required, array(), "", NULL, $acl);
+    $this->setInLdap(FALSE);
   }
 
   function loadPostValue ()
@@ -58,20 +75,6 @@ class ImportOPSIAttribute extends SelectAttribute
     $disabled = ($this->disabled?' disabled="disabled"':'');
     $button = '<input type="submit" name="'.$id.'_action" id="'.$id.'_action" value="{t}Import{/t}"'.$disabled.'/>';
     return parent::renderFormInput().$this->renderAcl($button);
-  }
-
-  function updateChoices()
-  {
-    $ldap = $this->plugin->config->get_ldap_link();
-    $ldap->cd($this->plugin->config->current['BASE']);
-    $ldap->search('(objectClass=opsiServer)', array('cn'));
-    $serversdn    = array('');
-    $serverslabel = array('');
-    while ($attrs = $ldap->fetch()) {
-      $serversdn[]    = $attrs['dn'];
-      $serverslabel[] = $attrs['cn'][0];
-    }
-    $this->setChoices($serversdn, $serverslabel);
   }
 }
 
