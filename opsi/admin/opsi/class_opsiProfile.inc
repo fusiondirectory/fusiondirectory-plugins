@@ -78,7 +78,7 @@ class opsiProfile extends simplePlugin
         'attrs' => array(
           new SelectAttribute(
             _('Netboot product'), _('The netboot product to use for this profile'),
-            'fdOpsiNetbootProduct', TRUE
+            'fdOpsiNetbootProduct', FALSE
           ),
           new SetAttribute(
             new SelectAttribute(
