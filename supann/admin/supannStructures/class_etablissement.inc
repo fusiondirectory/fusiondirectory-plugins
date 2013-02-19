@@ -153,7 +153,7 @@ class etablissement extends simplePlugin
     $ldap = $this->config->get_ldap_link();
 
     $root_mode = FALSE;
-    $root_code = $this->root_code();
+    $root_code = $this->get_root_code();
     if (($root_code === FALSE) && ($this->set_root)) {
       /* Set this etablissement as root one */
       $ldap->cat($this->dn);
