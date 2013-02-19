@@ -376,7 +376,7 @@ class DaemonEvent
    */
   static public function get_event_info($action)
   {
-    $events = $this->get_event_types();
+    $events = self::get_event_types();
     if (isset($events[$action])) {
       $infos = $events[$action];
 

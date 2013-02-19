@@ -321,7 +321,7 @@ class supportDaemon
       $entry_r['ERROR']     = $entry['error'];
       $entry_r['PROGRESS']  = $entry['progress'];
 
-      $entry_r['PERIODIC']  = $entry['data']['periodic'];
+      $entry_r['PERIODIC']  = (isset($entry['data']['periodic'])?$entry['data']['periodic']:NULL);
       $entry_r['STATUS']    = $entry['status'];
       $entry_r['SUBSTATUS'] = $entry['substatus'];
       $entry_r['ID']        = $entry['id'];
