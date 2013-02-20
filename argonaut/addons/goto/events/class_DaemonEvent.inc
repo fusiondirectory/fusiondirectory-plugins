@@ -35,7 +35,7 @@ class DaemonEvent
 {
   /* Menu Strings */
   protected $s_Menu_Name  = "s_Menu_Name not set";  // Diplayed in the ActionsMenu->CreateNew
-  protected $s_Event_Name = "s_Event_Name not set"; // Will be displayed in the Management list.
+  //~ protected $s_Event_Name = "s_Event_Name not set"; // Will be displayed in the Management list.
   protected $s_Menu_Image = "images/empty.png";     // Image displayed in Actions->New
   protected $s_List_Image = "";                     // Image displayed in event listing
 
@@ -146,7 +146,8 @@ class DaemonEvent
     if ($this->target_add_list_used) {
       return "";
     }
-    $str = "<h2>".sprintf(_("Create '%s' job"), $this->s_Event_Name)."</h2>";
+    $events = self::get_event_types();
+    $str = "<h2>".sprintf(_("Create '%s' job"), $events[$this->s_Action]['name'])."</h2>";
     return $str;
   }
 

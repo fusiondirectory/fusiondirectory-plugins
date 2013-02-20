@@ -8,10 +8,11 @@
 
 <div style="border-top:1px solid #AAAAAA"></div>
 
-  {$SERVER}&nbsp;<LABEL for='SERVER'>{t}Show servers{/t}</LABEL><br>
-  {$WORKSTATION}&nbsp;<LABEL for='WORKSTATION'>{t}Show workstations{/t}</LABEL><br>
-  {$TERMINAL}&nbsp;<LABEL for='TERMINAL'>{t}Show terminals{/t}</LABEL><br>
-  {$BYIP}&nbsp;<LABEL for='TERMINAL'>{t}Filter by IP address range{/t}</LABEL><br>
+  {$SERVER}&nbsp;<LABEL for='SERVER'>{t}Show servers{/t}</LABEL><br/>
+  {$WORKSTATION}&nbsp;<LABEL for='WORKSTATION'>{t}Show workstations{/t}</LABEL><br/>
+  {$TERMINAL}&nbsp;<LABEL for='TERMINAL'>{t}Show terminals{/t}</LABEL><br/>
+  {$WINSTATION}&nbsp;<LABEL for='WINSTATION'>{t}Show winstations{/t}</LABEL><br/>
+  {$BYIP}&nbsp;<LABEL for='BYIP'>{t}Filter by IP address range{/t}</LABEL><br/>
 
  <div style="border-top:1px solid #AAAAAA"></div>
  {$SCOPE}

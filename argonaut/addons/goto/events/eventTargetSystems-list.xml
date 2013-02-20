@@ -36,6 +36,14 @@
     </objectType>
 
     <objectType>
+      <label>Winstation</label>
+      <objectClass>sambaSamAccount</objectClass>
+      <category>winstation</category>
+      <class>winstationGeneric</class>
+      <image>plugins/systems/images/select_winstation.png</image>
+    </objectType>
+
+    <objectType>
       <label>Object group</label>
       <objectClass>gosaGroupOfNames</objectClass>
       <category>ogroups</category>

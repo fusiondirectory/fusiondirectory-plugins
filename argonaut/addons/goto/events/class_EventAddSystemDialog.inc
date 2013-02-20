@@ -22,7 +22,7 @@
 
 class EventAddSystemDialog extends management
 {
-  // Tab definition 
+  // Tab definition
   protected $skipFooter = TRUE;
   protected $skipHeader = TRUE;
 
@@ -31,9 +31,10 @@ class EventAddSystemDialog extends management
     $this->config = $config;
     $this->ui = $ui;
     $this->storagePoints = array(
-        get_ou("serverRDN"), 
-        get_ou("workstationRDN"), 
-        get_ou("ogroupRDN"), 
+        get_ou("serverRDN"),
+        get_ou("workstationRDN"),
+        get_ou("sambaMachineAccountRDN"),
+        get_ou("ogroupRDN"),
         get_ou("terminalRDN"));
 
     // Build filter
@@ -67,7 +68,7 @@ class EventAddSystemDialog extends management
 
   function get_selected_targets()
   {
-    // Collect mac addresses 
+    // Collect mac addresses
     $entries = $this->save();
     $macs = array();
     $ldap = $this->config->get_ldap_link();
@@ -90,7 +91,7 @@ class EventAddSystemDialog extends management
       }
     }
     foreach($member_dns as $dn){
-      $ldap->cat($dn, array('macAddress')); 
+      $ldap->cat($dn, array('macAddress'));
       if($ldap->count()){
         $attrs = $ldap->fetch();
         if(isset($attrs['macAddress'])){
