@@ -3,6 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+#  <antoine.gallavardin@free.fr>, 2013.
 #  Benoit Mortier <benoit.mortier@opensides.be>, 2005-2011.
 #   <contact@fusiondirectory.org>, 2012.
 # fusiondirectory  <contact@fusiondirectory.org>, 2012.
@@ -11,8 +12,8 @@ msgstr ""
 "Project-Id-Version: FusionDirectory\n"
 "Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
 "POT-Creation-Date: 2013-02-12 19:05+0100\n"
-"PO-Revision-Date: 2013-02-12 18:40+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"PO-Revision-Date: 2013-02-15 18:30+0000\n"
+"Last-Translator: gallak <antoine.gallavardin@free.fr>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -752,7 +753,7 @@ msgstr "Le nom du groupe n'est pas unique !"
 #: admin/systems/ppd/class_ppdManager.inc:244
 #: admin/systems/ppd/class_ppdManager.inc:274
 msgid "Symbol values are not supported yet!"
-msgstr ""
+msgstr "Les valeurs comme symboles ne sont pas encore supportés"
 
 #: admin/systems/ppd/class_ppdManager.inc:268
 msgid "Nested options are not supported!"
@@ -1261,7 +1262,7 @@ msgstr "Enregistrement dns"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:39
 msgid "Mobile phone generic"
-msgstr ""
+msgstr "Téléphone mobile générique"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:41
 #: admin/systems/class_mobilePhoneGeneric.inc:43
@@ -1279,11 +1280,11 @@ msgstr "Propriétés"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:60
 msgid "The name of the mobile phone"
-msgstr ""
+msgstr "Nom du téléphone mobile"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:64
 msgid "A short description of the mobile phone"
-msgstr ""
+msgstr "Courte description du téléphone"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:71
 #: admin/systems/system-list.xml:119 admin/systems/system-list.xml:266
@@ -1293,47 +1294,47 @@ msgstr "Téléphone"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:74
 msgid "Serial Number"
-msgstr ""
+msgstr "Numéro de série"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:74
 msgid "The serial number of the mobile phone"
-msgstr ""
+msgstr "Numéro de série du téléphone mobile"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:78
 msgid "IMEI Number"
-msgstr ""
+msgstr "Numéro IMEI"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:78
 msgid "The IMEI number of the mobile phone"
-msgstr ""
+msgstr "Numéro IMEI du téléphone mobile"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:83
 msgid "OS"
-msgstr ""
+msgstr "Système d'exploitation"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:83
 msgid "The Operating System installed on this phone"
-msgstr ""
+msgstr "Système d'exploitation installé sur ce téléphone"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:89
 msgid "SimCard"
-msgstr ""
+msgstr "Carte  SIM"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:92
 msgid "Telephone Number"
-msgstr ""
+msgstr "Numéro de téléphone"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:92
 msgid "The telephone number of the mobile phone"
-msgstr ""
+msgstr "Numéro du téléphone mobile"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:96
 msgid "PUK Number"
-msgstr ""
+msgstr "Numéro PUK"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:96
 msgid "The PUK number of the simcard in this mobile phone"
-msgstr ""
+msgstr "Numéro PUK de la carte SIM du téléphone mobile"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:103
 #: admin/systems/class_workstationGeneric.inc:232
@@ -1441,7 +1442,7 @@ msgstr "Périphérique réseau"
 
 #: admin/systems/system-list.xml:282
 msgid "Mobile Phone"
-msgstr ""
+msgstr "Téléphone mobile"
 
 #: admin/systems/system-list.xml:294
 msgid "Trigger action"
@@ -1547,11 +1548,11 @@ msgstr "Erreur d'événement"
 #: admin/systems/class_workstationGeneric.inc:74
 #, php-format
 msgid "Event %s is not available!"
-msgstr ""
+msgstr "L'événement '%s' n'est pas disponible !"
 
 #: admin/systems/class_workstationGeneric.inc:77
 msgid "Events are not available!"
-msgstr ""
+msgstr "Les événements ne sont pas disponibles !"
 
 #: admin/systems/class_workstationGeneric.inc:100
 msgid "Software update"
@@ -1718,11 +1719,11 @@ msgstr "Composant générique"
 
 #: admin/systems/class_componentGeneric.inc:58
 msgid "The name of the component"
-msgstr ""
+msgstr "Nom du composant"
 
 #: admin/systems/class_componentGeneric.inc:62
 msgid "A short description of the component"
-msgstr ""
+msgstr "Description courte du composant"
 
 #: admin/systems/system-filter.tpl:25
 msgid "Show network printer"
@@ -1744,7 +1745,7 @@ msgstr "Périphériques réseau"
 #: admin/systems/system-filter.tpl:37
 #: admin/systems/phoneSelect/phoneSelect-filter.tpl:12
 msgid "Show mobile phones"
-msgstr ""
+msgstr "Montrer les téléphones mobiles"
 
 #: admin/systems/serverService-list.xml:10
 msgid "List of services"
@@ -1868,11 +1869,11 @@ msgstr "Service LDAP"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:39
 msgid "LDAP Base"
-msgstr ""
+msgstr "Base LDAP"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:39
 msgid "The LDAP base to use for this LDAP server"
-msgstr ""
+msgstr "Base LDAP à utiliser pour ce serveur"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:44
 msgid "LDAP URI"
@@ -1884,75 +1885,75 @@ msgstr "l'URI LDAP à utiliser pour communiquer avec le serveur LDAP"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:46
 msgid "fill-in-your-servers-dns-name"
-msgstr ""
+msgstr "Veuillez indiquer vos serveurs dns"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:51
 msgid "Size limit"
-msgstr ""
+msgstr "Taille limite"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:51
 msgid "Limit the number of record returned"
-msgstr ""
+msgstr "Limiter le nombre d'entrées retournés"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:56
 msgid "Time limit"
-msgstr ""
+msgstr "Limite de temps"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:56
 msgid "Time limit for the result to be returned"
-msgstr ""
+msgstr "Limite de temps pour les résultats à retourner"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:61
 msgid "Deref"
-msgstr ""
+msgstr "Deref"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:61
 msgid "Specifies how alias dereferencing is done when performing a search"
-msgstr ""
+msgstr "Spécifie comment les alias de dé-référencement sont fait lors de l’exécution d'une recherche"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:66
 msgid "TLS Cert"
-msgstr ""
+msgstr "Certificat TLS"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:66
 msgid "Filepath to tls certificate"
-msgstr ""
+msgstr "Chemin vers le fichier du certificats TLS"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:70
 msgid "TLS Key"
-msgstr ""
+msgstr "Clé TLS"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:70
 msgid "Filepath to tls key"
-msgstr ""
+msgstr "Chemin vers le fichier de la clé TLS"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:74
 msgid "TLS CaCert"
-msgstr ""
+msgstr "Chemin vers le fichier contenant l'autorité de certification TLS"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:74
 msgid "Filepath to tls ca certificate"
-msgstr ""
+msgstr "Chemin vers le fichier du certificat de l'autorité de certification TLS"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:78
 msgid "TLS ReqCert"
-msgstr ""
+msgstr "Requête de certificats TLS"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:78
 msgid ""
 "Specifies what checks to perform on server certificates in a TLS session, if"
 " any"
-msgstr ""
+msgstr "Indique quels sont les vérifications à faire sur les certificats serveurs en cas d'utilisation de session TLS"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:83
 msgid "TLS CrlCheck"
-msgstr ""
+msgstr "Vérification de la liste de révocation des certificats TLS"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:83
 msgid ""
 "Specifies if the Certificate Revocation List (CRL) of the CA should be used "
 "to verify if the server certificates have  not  been  revoked"
-msgstr ""
+msgstr "Indique si la liste de certificats révoqués (CRL) de l'autorité de certification doit être utilisé pour vérifier si le certificat a été révoqué ou non"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:97
 msgid "LDAP"
@@ -1980,7 +1981,7 @@ msgstr "Type de sessions supportées"
 #: admin/systems/services/shares/class_serviceShare.inc:30
 #: admin/systems/services/shares/class_serviceShare.inc:31
 msgid "Share service"
-msgstr ""
+msgstr "Service de partage"
 
 #: admin/systems/services/shares/class_serviceShare.inc:43
 msgid "Shares"
@@ -1988,19 +1989,19 @@ msgstr "Partages"
 
 #: admin/systems/services/shares/class_serviceShare.inc:48
 msgid "Shares this server hosts"
-msgstr ""
+msgstr "Partages fournis par ce serveur"
 
 #: admin/systems/services/shares/class_serviceShare.inc:52
 msgid "Name of this share"
-msgstr ""
+msgstr "Nom du partage"
 
 #: admin/systems/services/shares/class_serviceShare.inc:56
 msgid "Description of this share"
-msgstr ""
+msgstr "Description du partage"
 
 #: admin/systems/services/shares/class_serviceShare.inc:60
 msgid "Type of share"
-msgstr ""
+msgstr "Type de partage"
 
 #: admin/systems/services/shares/class_serviceShare.inc:65
 msgid "Codepage"
@@ -2008,15 +2009,15 @@ msgstr "Codage des caractères"
 
 #: admin/systems/services/shares/class_serviceShare.inc:65
 msgid "Codepage for this share"
-msgstr ""
+msgstr "Encodage utilisé pour ce partage"
 
 #: admin/systems/services/shares/class_serviceShare.inc:69
 msgid "Path / Volume"
-msgstr ""
+msgstr "Chemin / Volume"
 
 #: admin/systems/services/shares/class_serviceShare.inc:69
 msgid "Path or volume concerned by this share"
-msgstr ""
+msgstr "Chemin ou volume concerné par ce partage"
 
 #: admin/systems/services/shares/class_serviceShare.inc:73
 msgid "Option"
@@ -2024,16 +2025,16 @@ msgstr "Option"
 
 #: admin/systems/services/shares/class_serviceShare.inc:73
 msgid "Special option(s) for this share"
-msgstr ""
+msgstr "Option(s) spéciale(s) pour ce partage"
 
 #: admin/systems/services/shares/class_serviceShare.inc:103
 msgid "You need to configure encodings first"
-msgstr ""
+msgstr "Vous devez configurer en premier l'encodage"
 
 #: admin/systems/services/shares/class_serviceShare.inc:110
 #, php-format
 msgid "Invalid value in encodings : %s"
-msgstr ""
+msgstr "Valeur d'encodage invalide: %s"
 
 #: admin/systems/services/ServiceAddDialog.tpl:3
 msgid "Adding a new service to the current server"
@@ -2157,7 +2158,7 @@ msgstr "Numéro"
 
 #: admin/systems/phoneSelect/phoneSelect-list.xml:83
 msgid "Select this number"
-msgstr ""
+msgstr "Choisir ce nombre"
 
 #: admin/systems/class_serverService.inc:58
 msgid "Server services"
@@ -2363,7 +2364,7 @@ msgstr "Nom de l'application"
 
 #: admin/applications/class_applicationGeneric.inc:154
 msgid "The name of this application"
-msgstr ""
+msgstr "Le nom de cette application"
 
 #: admin/applications/class_applicationGeneric.inc:158
 msgid "Display name"
@@ -2371,27 +2372,27 @@ msgstr "Nom d'affichage"
 
 #: admin/applications/class_applicationGeneric.inc:158
 msgid "The displayed name for this application"
-msgstr ""
+msgstr "Le nom affiché pour cette application"
 
 #: admin/applications/class_applicationGeneric.inc:162
 msgid "The application to be executed"
-msgstr ""
+msgstr "L'application a être exécuté"
 
 #: admin/applications/class_applicationGeneric.inc:166
 msgid "A short description of this application"
-msgstr ""
+msgstr "Une courte description de cette application"
 
 #: admin/applications/class_applicationGeneric.inc:176
 msgid "The icon for this application"
-msgstr ""
+msgstr "L’icône pour cette application"
 
 #: admin/applications/class_applicationGeneric.inc:185
 msgid "Only executable for member"
-msgstr ""
+msgstr "Exécutable uniquement par les membres"
 
 #: admin/applications/class_applicationGeneric.inc:185
 msgid "Only executable by the memebers of the group"
-msgstr ""
+msgstr "Exécutable uniquement par les membres"
 
 #: admin/applications/class_applicationGeneric.inc:190
 msgid "Replace user configuration on startup"
@@ -2399,16 +2400,16 @@ msgstr "Remplacer la configuration de l'utilisateur au démarrage"
 
 #: admin/applications/class_applicationGeneric.inc:190
 msgid "Replace the user configuration on startup"
-msgstr ""
+msgstr "Remplacer la configuration de l'utilisateur au démarrage"
 
 #: admin/applications/class_applicationGeneric.inc:195
 msgid "Put an icon on the user desktop"
-msgstr ""
+msgstr "Placer une icône sur le bureau de l'utilisateur"
 
 #: admin/applications/class_applicationGeneric.inc:200
 #: admin/applications/class_applicationGeneric.inc:205
 msgid "Put an entry in the startup menu"
-msgstr ""
+msgstr "Placer une entrée dans le menu démarrage"
 
 #: admin/applications/class_applicationGeneric.inc:216
 msgid "Script"
@@ -2416,7 +2417,7 @@ msgstr "Script"
 
 #: admin/applications/class_applicationGeneric.inc:219
 msgid "Script to run at logon"
-msgstr ""
+msgstr "Script à exécuter à la connexion"
 
 #: admin/applications/class_applicationGeneric.inc:225
 msgid "Log off script"
@@ -2424,7 +2425,7 @@ msgstr "Script de déconnexion"
 
 #: admin/applications/class_applicationGeneric.inc:228
 msgid "Script to run at logoff"
-msgstr ""
+msgstr "Script à exécuter à la déconnexion"
 
 #: admin/applications/class_applicationGeneric.inc:300
 msgid "no example"
@@ -2493,7 +2494,7 @@ msgstr "Gestion des applications"
 
 #: config/systems/class_systemsPluginConfig.inc:29
 msgid "Systems plugin configuration"
-msgstr ""
+msgstr "Configuration de l'extension Systèmes"
 
 #: config/systems/class_systemsPluginConfig.inc:41
 msgid "LDAP tree"
@@ -2501,59 +2502,59 @@ msgstr "Annuaire LDAP"
 
 #: config/systems/class_systemsPluginConfig.inc:44
 msgid "Systems RDN"
-msgstr ""
+msgstr "Chemin relatif des systèmes"
 
 #: config/systems/class_systemsPluginConfig.inc:44
 msgid "Branch in which systems will be stored"
-msgstr ""
+msgstr "Branche où seront stockés les systèmes"
 
 #: config/systems/class_systemsPluginConfig.inc:49
 msgid "Server RDN"
-msgstr ""
+msgstr "Chemin relatif des serveurs"
 
 #: config/systems/class_systemsPluginConfig.inc:49
 msgid "Branch in which servers will be stored"
-msgstr ""
+msgstr "Branche où seront stockés les serveurs"
 
 #: config/systems/class_systemsPluginConfig.inc:54
 msgid "Workstations RDN"
-msgstr ""
+msgstr "Chemin relatif des stations de travail"
 
 #: config/systems/class_systemsPluginConfig.inc:54
 msgid "Branch in which workstations will be stored"
-msgstr ""
+msgstr "Branches où seront stockés les stations de travail"
 
 #: config/systems/class_systemsPluginConfig.inc:59
 msgid "Terminal RDN"
-msgstr ""
+msgstr "Chemin relatif des terminaux"
 
 #: config/systems/class_systemsPluginConfig.inc:59
 msgid "Branch in which terminals will be stored"
-msgstr ""
+msgstr "Branche où seront stockés les terminaux"
 
 #: config/systems/class_systemsPluginConfig.inc:64
 msgid "Printer RDN"
-msgstr ""
+msgstr "Chemin relatif des imprimantes"
 
 #: config/systems/class_systemsPluginConfig.inc:64
 msgid "Branch in which printers will be stored"
-msgstr ""
+msgstr "Branche où seront stockés les imprimantes"
 
 #: config/systems/class_systemsPluginConfig.inc:69
 msgid "Component RDN"
-msgstr ""
+msgstr "Chemin relatif des composants"
 
 #: config/systems/class_systemsPluginConfig.inc:69
 msgid "Branch in which devices will be stored"
-msgstr ""
+msgstr "Branche où seront stockés les périphériques"
 
 #: config/systems/class_systemsPluginConfig.inc:74
 msgid "Mobile phone RDN"
-msgstr ""
+msgstr "Chemin relatif des téléphones mobiles"
 
 #: config/systems/class_systemsPluginConfig.inc:74
 msgid "Branch in which mobile phones will be stored"
-msgstr ""
+msgstr "Branche où seront stockés les téléphones mobiles"
 
 #: config/systems/class_systemsPluginConfig.inc:81
 msgid "Miscellaneous"
@@ -2561,15 +2562,15 @@ msgstr "Divers"
 
 #: config/systems/class_systemsPluginConfig.inc:85
 msgid "Available encodings for share services"
-msgstr ""
+msgstr "Encodages disponibles pour les services de partage"
 
 #: config/systems/class_systemsPluginConfig.inc:89
 msgid "Encoding"
-msgstr ""
+msgstr "Encodages"
 
 #: config/systems/class_systemsPluginConfig.inc:89
 msgid "The encoding code name"
-msgstr ""
+msgstr "Nom de l'encodage"
 
 #: config/systems/class_systemsPluginConfig.inc:94
 msgid "Label"
@@ -2577,8 +2578,8 @@ msgstr "Etiquette"
 
 #: config/systems/class_systemsPluginConfig.inc:94
 msgid "The encoding displayed name"
-msgstr ""
+msgstr "Nom affiché de l'encodage"
 
 #: config/systems/class_systemsPluginConfig.inc:102
 msgid "Encodings"
-msgstr ""
+msgstr "Encodages"
