@@ -335,6 +335,9 @@ class workstationGeneric extends simplePlugin
       }
     }
     $this->attributesInfo['servers']['attrs']['gotoSyslogServer']->setChoices($tmp, $tmp_output);
+
+    $this->updateAttributesValues();
+    $this->prepareSavedAttributes();
   }
 
   function resetCopyInfos()
