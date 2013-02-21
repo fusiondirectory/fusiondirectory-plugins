@@ -202,12 +202,8 @@ class opsiAdmin extends simplePlugin
         foreach ($dhcps as $dn => $value) {
           $ldap->cat($dn);
           if ($attrs = $ldap->fetch()) {
-            if (isset($attrs['dhcpOption'])) {
-              for ($i=0;$i<$attrs['dhcpOption']['count'];$i++) {
-                if (preg_match('/^subnet-mask ([\d.]+)$/', $attrs['dhcpOption'][$i], $m)) {
-                  $this->dhcps[$dn] = array($attrs['cn'][0],$m[1]);
-                }
-              }
+            if (isset($attrs['dhcpNetMask'])) {
+              $this->dhcps[$dn] = array($attrs['cn'][0],normalize_netmask($attrs['dhcpNetMask'][0]));
             }
           }
         }
