@@ -422,7 +422,7 @@ class DaemonEvent
         'img'   => 'plugins/systems/images/update.png'
       ),
       'Deployment.reinstall' => array(
-        'name'  => _('Reinstall'),
+        'name'  => _('(Re)Install'),
         'img'   => 'plugins/systems/images/reinstall.png'
       ),
     );

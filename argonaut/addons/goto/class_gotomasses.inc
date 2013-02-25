@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011  FusionDirectory
+  Copyright (C) 2011-2013  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -26,13 +26,28 @@ class gotomasses extends management
   var $dialog         = FALSE;
   var $ids_to_remove  = array();
 
-  var $events         = array();
-  var $event_tags     = array();
+  var $events           = array();
+  var $event_tags       = array();
   var $recently_removed = array();
 
   var $read_only = FALSE;
   var $acl_base;
   var $acl_category;
+
+  static function plInfo()
+  {
+    return array(
+      'plShortName'   => _('Deployment queue'),
+      'plDescription' => _('Provide a mechanism to automatically activate systems'),
+      'plIcon'        => 'plugins/systems/images/goto.png',
+      'plSelfModify'  => FALSE,
+      'plSection'     => 'admin',
+      'plPriority'    => 10,
+      'plCategory'    => array('gotomasses' => array('objectClass' => 'none', 'description' => _('Deployment queue'))),
+
+      'plProvidedAcls' => array('Comment' => _('Description'))
+    );
+  }
 
   function __construct(&$config, $ui)
   {
@@ -41,48 +56,51 @@ class gotomasses extends management
     $this->o_queue  = new supportDaemon();
     $this->events   = DaemonEvent::get_event_types();
     $this->acl_base = $config->current['BASE'];
-    $this->acl_category = "gotomasses/";
+    $this->acl_category = 'gotomasses/';
 
     /* Get tags that will be used in queue searches */
-    $this->event_tags = array("none");
+    $this->event_tags = array('none');
     foreach ($this->events as $action => $evt) {
       $this->event_tags[] = $action;
     }
 
     // Build filter
-    if (session::global_is_set(get_class($this)."_filter")) {
-      $filter = session::global_get(get_class($this)."_filter");
+    if (session::global_is_set(get_class($this).'_filter')) {
+      $filter = session::global_get(get_class($this).'_filter');
     } else {
-      $filter = new filter(get_template_path("deploy-filter.xml", TRUE));
+      $filter = new filter(get_template_path('deploy-filter.xml', TRUE));
       $filter->setObjectStorage($this->storagePoints);
     }
     $this->setFilter($filter);
 
     // Build headpage
-    $headpage = new listing(get_template_path("deploy-list.xml", TRUE));
-    $headpage->registerElementFilter("hostName", "gotomasses::filterHostName");
-    $headpage->registerElementFilter("filterTask", "gotomasses::filterTask");
-    $headpage->registerElementFilter("filterPeriod", "gotomasses::filterPeriod");
-    $headpage->registerElementFilter("filterSchedule", "gotomasses::filterSchedule");
-    $headpage->registerElementFilter("filterStatus", "gotomasses::filterStatus");
+    $headpage = new listing(get_template_path('deploy-list.xml', TRUE));
+    $headpage->registerElementFilter('hostName',        'gotomasses::filterHostName');
+    $headpage->registerElementFilter('filterTask',      'gotomasses::filterTask');
+    $headpage->registerElementFilter('filterPeriod',    'gotomasses::filterPeriod');
+    $headpage->registerElementFilter('filterSchedule',  'gotomasses::filterSchedule');
+    $headpage->registerElementFilter('filterStatus',    'gotomasses::filterStatus');
     $headpage->setFilter($filter);
 
-    parent::__construct($config, $ui, "Events", $headpage);
+    parent::__construct($config, $ui, 'Events', $headpage);
 
-    $this->registerAction('processNow', "processNow");
-    $this->registerAction('viewLogs',   "viewLogs");
-    $this->registerAction('abort',      "abortEvent");
-    $this->registerAction('saveEventDialog',   "saveEventDialog");
-    $this->registerAction('System.halt', 'newEntry');
-    $this->registerAction('Deployment.reboot', 'newEntry');
-    $this->registerAction('Deployment.wake', 'newEntry');
-    $this->registerAction('Deployment.update', 'newEntry');
-    $this->registerAction('lock', 'newEntry');
-    $this->registerAction('activate', 'newEntry');
-    $this->registerAction('Deployment.reinstall', 'newEntry');
-    $this->registerAction('import', 'importEvents');
+    $this->registerAction('processNow',       'processNow');
+    $this->registerAction('viewLogs',         'viewLogs');
+    $this->registerAction('abort',            'abortEvent');
+    $this->registerAction('saveEventDialog',  'saveEventDialog');
+    $this->registerAction('import',           'importEvents');
 
     $this->registerAction('showError', 'showErrorEntry');
+
+    foreach ($this->events as $name => $infos) {
+      $this->registerAction($name, 'newEntry');
+      $this->headpage->xmlData['actionmenu']['action'][0]['action'][] = array(
+        'name' => 'new_'.$name,
+        'type' => 'entry',
+        'image' => $infos['img'],
+        'label' => $infos['name'],
+      );
+    }
   }
 
   function newEntry($action = "", $target = array(), $all = array(), $altTabClass = "", $altTabType = "", $altAclCategory = "")
@@ -157,7 +175,6 @@ class gotomasses extends management
     }
   }
 
-
   static function filterStatus($row, $status, $mac, $headertag, $error, $substatus)
   {
     $status     = $status[0];
@@ -185,7 +202,7 @@ class gotomasses extends management
     } else if ($status == "processing") {
         $status = preg_replace('/ /', '&nbsp;', _("in progress"));
     }
-    return($status);
+    return $status;
   }
 
   function editEntry($action = "", $target = array(), $all = array(), $altTabClass = "",
@@ -201,7 +218,7 @@ class gotomasses extends management
     }
   }
 
-  function removeEntryRequested($action = "",$target = array(),$all = array())
+  function removeEntryRequested($action = "", $target = array(), $all = array())
   {
     if (!$this->acl_is_removeable()) {
       msg_dialog::display(_("Permission"), msgPool::permDelete(), ERROR_DIALOG);
@@ -225,8 +242,8 @@ class gotomasses extends management
         }
 
         /* Only remove WAITING or ERROR entries */
-        if (in_array($task['STATUS'],array("waiting","error","processed")) ||
-            ($task['STATUS'] == "processing" && !preg_match("/install/",$task['HEADERTAG'])) ) {
+        if (in_array($task['STATUS'], array("waiting","error","processed")) ||
+            ($task['STATUS'] == "processing" && !preg_match("/install/", $task['HEADERTAG'])) ) {
           $this->ids_to_remove[]  = $task['ID'];
           $deleteable_jobs[]      = $j_name;
         } else {
@@ -236,7 +253,7 @@ class gotomasses extends management
       if (count($not_deleteable_jobs)) {
         msg_dialog::display(_("Remove"),
             sprintf(_("The following jobs couldn't be deleted, they have to be aborted: %s"),
-              "<br>".msgPool::buildList($not_deleteable_jobs)),INFO_DIALOG);
+              "<br>".msgPool::buildList($not_deleteable_jobs)), INFO_DIALOG);
       }
 
       if (count($this->ids_to_remove)) {
@@ -269,66 +286,66 @@ class gotomasses extends management
     $macs = array();
     $taskids = array();
     $headpage = $this->getHeadpage();
-    foreach($target as $id){
+    foreach ($target as $id) {
       $tmp = $headpage->getEntry($id);
       $macs[] = $tmp['MACADDRESS'][0];
       $taskids[] = $tmp['EVENT']['ID'];
     }
 
-    if(class_available("DaemonEvent")) { // Sending a wakeup in order to flag it as localboot
+    if (class_available("DaemonEvent")) { // Sending a wakeup in order to flag it as localboot
       $tmp = new DaemonEvent($this->config, 'wakeup');
       $tmp->add_targets($macs);
       $tmp->set_type(TRIGGERED_EVENT);
       $this->recently_removed = $macs;
       $o_queue->append($tmp);
       if ($o_queue->is_error()) {
-        msg_dialog::display(_("Info"), sprintf(_("%s"), $this->o_queue->get_error()) , INFO_DIALOG);
+        msg_dialog::display(_("Info"), sprintf(_("%s"), $this->o_queue->get_error()), INFO_DIALOG);
       }
     } else {
       msg_dialog::display(_("Error"),
           sprintf(_("Required class '%s' cannot be found: job not aborted!"),
-            "DaemonEvent") , ERROR_DIALOG);
+            "DaemonEvent"), ERROR_DIALOG);
     }
 
     $this->o_queue->remove_entries($taskids); // Removing the task.
   }
 
-  function processNow($action="",$target=array(),$all=array())
+  function processNow($action = "", $target = array(), $all = array())
   {
     $this->execute_queue_entries($target);
   }
 
-  function viewLogs($action="",$target=array(),$all=array())
+  function viewLogs($action = "", $target = array(), $all = array())
   {
-    if(count($target) == 1){
-      $id =  $target[0];
-      $type = FALSE;
+    if (count($target) == 1) {
+      $id       = $target[0];
+      $type     = FALSE;
       $headpage = $this->getHeadpage();
-      $tmp = $headpage->getEntry($id);
-      $entry = $tmp['EVENT'];
-      $this->dialogObject = new gotoLogView($this->config,"",$entry,$this);
+      $tmp      = $headpage->getEntry($id);
+      $entry    = $tmp['EVENT'];
+      $this->dialogObject = new gotoLogView($this->config, "", $entry, $this);
     }
   }
 
-    function showErrorEntry($action="",$target=array(),$all=array())
-    {
-        if(count($target) == 1){
-            $id =  $target[0];
-            $type = FALSE;
-            $headpage = $this->getHeadpage();
-            $tmp = $headpage->getEntry($id);
-            $entry = $tmp['EVENT'];
-            msg_dialog::display(_("Error detail"),$entry['ERROR']);
-        }
+  function showErrorEntry($action = "", $target = array(), $all = array())
+  {
+    if (count($target) == 1) {
+      $id       = $target[0];
+      $type     = FALSE;
+      $headpage = $this->getHeadpage();
+      $tmp      = $headpage->getEntry($id);
+      $entry    = $tmp['EVENT'];
+      msg_dialog::display(_("Error detail"), $entry['ERROR']);
     }
+  }
 
   function saveEventDialog()
   {
-    if(is_object($this->dialogObject)){
+    if (is_object($this->dialogObject)) {
       $this->dialogObject->save_object();
       $this->o_queue->append($this->dialogObject);
       if ($this->o_queue->is_error()) {
-        msg_dialog::display(_("Service infrastructure"),msgPool::siError($this->o_queue->get_error()),ERROR_DIALOG);
+        msg_dialog::display(_("Service infrastructure"), msgPool::siError($this->o_queue->get_error()), ERROR_DIALOG);
       } else {
         $this->current = -1;
       }
@@ -339,12 +356,12 @@ class gotomasses extends management
   function detectPostActions()
   {
     $action = management::detectPostActions();
-    if(isset($_POST['save_event_dialog'])) $action['action'] = "saveEventDialog";
-    if(isset($_POST['abort_event_dialog'])) $action['action'] = "cancel";
-    if(isset($_POST['delete_multiple_confirm'])) $action['action'] = "removeConfirmed";
-    if(isset($_POST['delete_cancel'])) $action['action'] = "cancel";
-    if(isset($_POST['import_abort'])) $action['action'] = "cancel";
-    return($action);
+    if (isset($_POST['save_event_dialog'])) $action['action'] = "saveEventDialog";
+    if (isset($_POST['abort_event_dialog'])) $action['action'] = "cancel";
+    if (isset($_POST['delete_multiple_confirm'])) $action['action'] = "removeConfirmed";
+    if (isset($_POST['delete_cancel'])) $action['action'] = "cancel";
+    if (isset($_POST['import_abort'])) $action['action'] = "cancel";
+    return $action;
   }
 
 
@@ -363,104 +380,96 @@ class gotomasses extends management
     /* Only allow execution of paused or waiting entries
      */
     $update_ids = array();
-    $headpage = $this->getHeadpage();
-    foreach($ids as $id){
-      $tmp = $headpage->getEntry($id);
-      $entry = $tmp['EVENT'];
-      if(in_array($entry['STATUS'],array("paused","waiting"))){
+    $headpage   = $this->getHeadpage();
+    foreach ($ids as $id) {
+      $tmp    = $headpage->getEntry($id);
+      $entry  = $tmp['EVENT'];
+      if (in_array($entry['STATUS'], array("paused","waiting"))) {
         $update_ids[] = $entry['ID'];
       }
     }
 
     /* Tell the daemon that we want to update some entries
      */
-    if(count($update_ids)){
-      if(!$this->o_queue->process_entries_now($update_ids)){
-        msg_dialog::display(_("Error"), sprintf(_("Cannot update queue entries.")) , ERROR_DIALOG);
-        return(FALSE);
+    if (count($update_ids)) {
+      if (!$this->o_queue->process_entries_now($update_ids)) {
+        msg_dialog::display(_("Error"), sprintf(_("Cannot update queue entries.")), ERROR_DIALOG);
+        return FALSE;
       }
     }
-    return(TRUE);
+    return TRUE;
   }
 
-  function save_object(){}
+  function save_object()
+  {
+  }
 
-  function save(){}
+  function save()
+  {
+  }
 
 
   function set_acl_base($base)
   {
-    $this->acl_base= $base;
+    $this->acl_base = $base;
   }
 
 
   function set_acl_category($category)
   {
-    $this->acl_category= "$category/";
+    $this->acl_category = "$category/";
   }
 
 
-  function acl_is_writeable($attribute,$skip_write = FALSE)
+  function acl_is_writeable($attribute, $skip_write = FALSE)
   {
-    if($this->read_only) return(FALSE);
-    $ui= get_userinfo();
+    if ($this->read_only) {
+      return FALSE;
+    }
+    $ui = get_userinfo();
     return preg_match('/w/', $ui->get_permissions($this->acl_base, $this->acl_category.get_class($this), $attribute, $skip_write));
   }
 
 
   function acl_is_readable($attribute)
   {
-    $ui= get_userinfo();
+    $ui = get_userinfo();
     return preg_match('/r/', $ui->get_permissions($this->acl_base, $this->acl_category.get_class($this), $attribute));
   }
 
-
-  function acl_is_createable($base ="")
+  private function _acl_is_ ($mask, $base)
   {
-    if($this->read_only) return(FALSE);
-    $ui= get_userinfo();
-    if($base == "") $base = $this->acl_base;
-    return preg_match('/c/', $ui->get_permissions($base, $this->acl_category.get_class($this), '0'));
+    if ($this->read_only) {
+      return FALSE;
+    }
+    $ui = get_userinfo();
+    if ($base == "") {
+      $base = $this->acl_base;
+    }
+    return preg_match($mask, $ui->get_permissions($base, $this->acl_category.get_class($this), '0'));
   }
 
-
-  function acl_is_removeable($base ="")
+  function acl_is_createable($base = "")
   {
-    if($this->read_only) return(FALSE);
-    $ui= get_userinfo();
-    if($base == "") $base = $this->acl_base;
-    return preg_match('/d/', $ui->get_permissions($base, $this->acl_category.get_class($this), '0'));
+    return $this->_acl_is_('/c/', $base);
+  }
+
+  function acl_is_removeable($base = "")
+  {
+    return $this->_acl_is_('/d/', $base);
   }
 
   function acl_is_moveable($base = "")
   {
-    if($this->read_only) return(FALSE);
-    $ui= get_userinfo();
-    if($base == "") $base = $this->acl_base;
-    return preg_match('/m/', $ui->get_permissions($base, $this->acl_category.get_class($this), '0'));
+    return $this->_acl_is_('/m/', $base);
   }
 
 
-  function getacl($attribute,$skip_write= FALSE)
+  function getacl($attribute, $skip_write = FALSE)
   {
-    $ui= get_userinfo();
+    $ui = get_userinfo();
     $skip_write |= $this->read_only;
-    return  $ui->get_permissions($this->acl_base, $this->acl_category.get_class($this), $attribute,$skip_write);
-  }
-
-  static function plInfo()
-  {
-    return array(
-      "plShortName"   => _("Deployment queue"),
-      "plDescription" => _("Provide a mechanism to automatically activate systems"),
-      "plIcon"        => "plugins/systems/images/goto.png",
-      "plSelfModify"  => FALSE,
-      "plSection"     => "admin",
-      "plPriority"    => 10,
-      "plCategory"    => array("gotomasses" => array("objectClass" => "none", "description" => _("Deployment queue"))),
-
-      "plProvidedAcls" => array("Comment"   => _("Description"))
-    );
+    return $ui->get_permissions($this->acl_base, $this->acl_category.get_class($this), $attribute, $skip_write);
   }
 }
 ?>

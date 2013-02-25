@@ -90,13 +90,14 @@ class ActionAttribute extends SelectAttribute
 
   function updateChoices()
   {
+    //TODO : the list should be based on DaemonEvent::get_event_types
     /* Check if workstation is online */
     if ($this->isTerminal) {
       $actions = array('' => '');
     } else {
       $actions = array( // TODO : remove these action if there is no deployment plugin to use them (FAI, OPSI, …)
         ''          => '',
-        'Deployment.reinstall' => _('Reinstall'),
+        'Deployment.reinstall' => _('(Re)Install'),
         'Deployment.update'    => _('Software update'),
         'Deployment.memcheck'  => _('Memory test')
       );

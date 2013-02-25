@@ -86,55 +86,6 @@
      <type>sub</type>
      <image>images/lists/new.png</image>
      <label>Create</label>
-
-     <action>
-      <name>System.halt</name>
-      <type>entry</type>
-      <image>images/lists/off.png</image>
-      <label>Switch off</label>
-     </action>
-
-     <action>
-      <name>Deployment.reboot</name>
-      <type>entry</type>
-      <image>images/lists/reload.png</image>
-      <label>Reboot</label>
-     </action>
-
-     <action>
-      <name>Deployment.wake</name>
-      <type>entry</type>
-      <image>images/lists/on.png</image>
-      <label>Wake up</label>
-     </action>
-
-     <action>
-      <name>update</name>
-      <type>entry</type>
-      <image>plugins/systems/images/update.png</image>
-      <label>Software update</label>
-     </action>
-
-     <action>
-      <name>lock</name>
-      <type>entry</type>
-      <image>images/lists/locked.png</image>
-      <label>Lock</label>
-     </action>
-
-     <action>
-      <name>activate</name>
-      <type>entry</type>
-      <image>images/lists/unlocked.png</image>
-      <label>Unlock</label>
-     </action>
-
-     <action>
-      <name>Deployment.reinstall</name>
-      <type>entry</type>
-      <image>plugins/systems/images/reinstall.png</image>
-      <label>Reinstall</label>
-     </action>
     </action>
 
     <action>
