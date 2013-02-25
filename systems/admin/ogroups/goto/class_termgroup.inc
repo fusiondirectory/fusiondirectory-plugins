@@ -42,7 +42,6 @@ class termgroup extends plugin
                                 "reboot"          => "reboot",
                                 "update"          => "update",
                                 "reinstall"       => "reinstall",
-                                "rescan"          => "rescan",
                                 "wake"            => "wakeup",
          # These are currently not supported by the tftp daemon
                            # "memcheck"        => "memcheck",
@@ -277,7 +276,6 @@ class termgroup extends plugin
           "update" => _("Scheduled update"),
           "wake" => _("Wake"),
           "reinstall" => _("Reinstall"),
-          "rescan" => _("Rescan hardware"),
           "memcheck" => _("Memory test"),
           "sysinfo"  => _("System analysis")));
 
