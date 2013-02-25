@@ -90,6 +90,11 @@ class ActionAttribute extends SelectAttribute
 
   function updateChoices()
   {
+    if ($this->plugin->gotoMode) {
+      $this->setDisabled(TRUE);
+      return;
+    }
+    $this->setDisabled(FALSE);
     //TODO : the list should be based on DaemonEvent::get_event_types
     /* Check if workstation is online */
     if ($this->isTerminal) {
