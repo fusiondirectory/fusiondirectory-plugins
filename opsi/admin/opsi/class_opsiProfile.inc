@@ -42,6 +42,8 @@ class opsiProfile extends simplePlugin
 
   var $objectclasses   = array('opsiProfile');
 
+  var $macAddress = NULL;
+
   public static function plInfo()
   {
     return array(
@@ -111,7 +113,7 @@ class opsiProfile extends simplePlugin
     $ldap = $this->config->get_ldap_link();
     $ldap->cat($this->fdOpsiServerDN);
     if ($attrs = $ldap->fetch()) {
-      $macAddress = $attrs['macAddress'][0];
+      $this->macAddress = $attrs['macAddress'][0];
     } else {
       msg_dialog::display(
         sprintf_(_("Could not find %s in the LDAP"),$this->fdOpsiServerDN),
@@ -119,7 +121,7 @@ class opsiProfile extends simplePlugin
       );
       return FALSE;
     }
-    $netboots = $s_daemon->append_call('OPSI.get_netboots', array($macAddress), array('args' => array(array('id','name'))));
+    $netboots = $s_daemon->append_call('OPSI.get_netboots', array($this->macAddress), array('args' => array(array('id','name'))));
     if ($s_daemon->is_error()) {
       msg_dialog::display(
         _('Could contact OPSI server'),
@@ -134,7 +136,7 @@ class opsiProfile extends simplePlugin
       $choices_labels[] = $netboot['name'];
     }
     $this->attributesAccess['fdOpsiNetbootProduct']->setChoices($choices_values, $choices_labels);
-    $localboots = $s_daemon->append_call('OPSI.get_localboots', array($macAddress), array('args' => array(array('id','name'))));
+    $localboots = $s_daemon->append_call('OPSI.get_localboots', array($this->macAddress), array('args' => array(array('id','name'))));
     if ($s_daemon->is_error()) {
       msg_dialog::display(
         _('Could contact OPSI server'),

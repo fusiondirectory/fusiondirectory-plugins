@@ -18,9 +18,66 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
+class SubmittingOPSIProductAttribute extends SelectAttribute
+{
+  private $func;
+
+  function __construct ($label, $description, $ldapName, $required = FALSE, $func, $acl = "")
+  {
+    $this->func = $func;
+    parent::__construct($label, $description, $ldapName, $required, array(), "", NULL, $acl);
+    $this->setSubmitForm(TRUE);
+  }
+
+  function check()
+  {
+  }
+
+  function displayValue($value)
+  {
+    return $value;
+  }
+
+  function setValue($value)
+  {
+    $v = $this->getValue();
+    parent::setValue($value);
+    if (is_object($this->plugin) && ($v != $this->getValue())) {
+      $func = $this->func;
+      $this->plugin->$func();
+    }
+  }
+}
+
+class ProductPropertyAttribute extends CompositeAttribute
+{
+  function __construct ($label, $description, $ldapName, $acl = "")
+  {
+    parent::__construct ($description, $ldapName, array(), '/^(.*)$/', '%s', $acl, $label);
+  }
+
+  function check()
+  {
+  }
+
+  function displayValue($value)
+  {
+    return $value;
+  }
+}
+
+/* TODO
+ * Éviter les requêtes pour chaque ligne existante si possible
+ * Éviter le label du troisième argument
+ * Gérer true/false correctement
+ * Retirer des possibilités les proprietés déjà réglées si possible
+ */
+
 class opsiProductProperties extends simplePlugin
 {
-  var $objectclasses   = array('opsiProductProperties');
+  var $objectclasses = array('opsiProductProperties');
+
+  var $properties = array();
 
   public static function plInfo()
   {
@@ -44,34 +101,120 @@ class opsiProductProperties extends simplePlugin
           new OrderedArrayAttribute(
             new CharSeparatedCompositeAttribute(
               _('Repositories this server hosts'),
-              'FAIrepository',
+              'fdOpsiProductProperty',
               array(
-                new SelectAttribute(
+                new SubmittingOPSIProductAttribute(
                   '', '',
                   'productId', TRUE,
-                  array('product1','product2'), '',
-                  array('Product 1', 'Product 2')
+                  'product_changed'
                 ),
-                new SelectAttribute(
+                new SubmittingOPSIProductAttribute(
                   '', '',
                   'propertiesId', TRUE,
-                  array('property1','property2'), '',
-                  array('Property 1', 'Property 2')
+                  'property_changed'
                 ),
-                new StringAttribute(
-                  '', '',
-                  'propertiesValue', TRUE
+                new ProductPropertyAttribute(
+                  '', '', 'propertyValue'
                 ),
               ),
               '|'
             ),
             FALSE,  // no order
-            array('product1|property1|true', 'product2|property1|false'),
+            array(),
             TRUE    // edit button
           )
         )
       )
     );
+  }
+
+  public function __construct(&$config, $dn = NULL, $object = NULL)
+  {
+    parent::__construct($config, $dn, $object);
+  }
+
+  public function execute()
+  {
+    $this->updateProductList();
+    return parent::execute();
+  }
+
+  private function updateProductList()
+  {
+    $localboot_attr = $this->parent->getBaseObject()->attributesAccess['fdOpsiLocalbootProduct'];
+    $netboot_attr   = $this->parent->getBaseObject()->attributesAccess['fdOpsiNetbootProduct'];
+    $products = $localboot_attr->getValue();
+    $labels   =
+      array_map(
+        function ($a) use ($localboot_attr) {
+          return $localboot_attr->displayValue($a);
+        },
+        $products
+      );
+    $netboot = $netboot_attr->getValue();
+    if ($netboot != "") {
+      array_unshift($products, $netboot);
+      array_unshift($labels, $netboot_attr->displayValue($netboot));
+    }
+    $this->attributesAccess['fdOpsiProductProperty']->attribute->attributes[0]->setChoices($products, $labels);
+  }
+
+  public function product_changed()
+  {
+    $s_daemon = new supportDaemon();
+    if (!$s_daemon->is_available()) {
+      msg_dialog::display(
+        _("Could not contact argonaut server"),
+        msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
+      );
+      return;
+    }
+    $productid  = $this->attributesAccess['fdOpsiProductProperty']->attribute->attributes[0]->getValue();
+    $properties = $s_daemon->append_call(
+      'OPSI.get_product_properties',
+      array($this->parent->getBaseObject()->macAddress),
+      array('args' => array(
+        //~ array('propertyId','possibleValues','multiValue','description','defaultValues','editable'),
+        array(),
+        array('productId' => $productid)
+      ))
+    );
+    if ($s_daemon->is_error()) {
+      msg_dialog::display(
+        _('Could contact OPSI server'),
+        msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
+      );
+      return;
+    }
+    $this->properties = array();
+    foreach ($properties as $property) {
+      $choices_values[] = $property['propertyId'];
+      $choices_labels[] = $property['propertyId'].' ('.join(',',$property['defaultValues']).')';
+
+      $this->properties[$property['propertyId']] = $property;
+    }
+    $this->attributesAccess['fdOpsiProductProperty']->attribute->attributes[1]->setChoices($choices_values, $choices_labels);
+  }
+
+  public function property_changed()
+  {
+    $property = $this->properties[$this->attributesAccess['fdOpsiProductProperty']->attribute->attributes[1]->getValue()];
+    if ($property['editable']) {
+      $attr = new StringAttribute(
+        $property['propertyId'], $property['description'],
+        $property['propertyId'], FALSE, $property['defaultValues'][0]
+      );
+    } else {
+      $attr = new SelectAttribute(
+        $property['propertyId'], $property['description'],
+        $property['propertyId'], FALSE,
+        $property['possibleValues'], $property['defaultValues'][0]
+      );
+    }
+    if ($property['multiValue']) {
+      $attr = new SetAttribute($attr, $property['defaultValues']);
+    }
+    $this->attributesAccess['fdOpsiProductProperty']->attribute->attributes[2]->setAttributes(array($attr));
   }
 }
 ?>
