@@ -67,10 +67,8 @@ class ProductPropertyAttribute extends CompositeAttribute
 }
 
 /* TODO
- * Éviter les requêtes pour chaque ligne existante si possible
- * Éviter le label du troisième argument
- * Gérer true/false correctement
- * Retirer des possibilités les proprietés déjà réglées si possible
+ * Try to avoid doing that many requests (maybe use some kind of cache?)
+ * Remove from select the properties already set
  */
 
 class opsiProductProperties extends simplePlugin
@@ -100,7 +98,7 @@ class opsiProductProperties extends simplePlugin
         'attrs' => array(
           new OrderedArrayAttribute(
             new CharSeparatedCompositeAttribute(
-              _('Repositories this server hosts'),
+              _('Properties of the products of this profile'),
               'fdOpsiProductProperty',
               array(
                 new SubmittingOPSIProductAttribute(
@@ -117,7 +115,7 @@ class opsiProductProperties extends simplePlugin
                   '', '', 'propertyValue'
                 ),
               ),
-              '|'
+              '|', '', ''
             ),
             FALSE,  // no order
             array(),
@@ -189,7 +187,16 @@ class opsiProductProperties extends simplePlugin
     $this->properties = array();
     foreach ($properties as $property) {
       $choices_values[] = $property['propertyId'];
-      $choices_labels[] = $property['propertyId'].' ('.join(',',$property['defaultValues']).')';
+      $choices_labels[] = $property['propertyId'].' ('.join(',',
+        array_map(
+          function ($a)
+          {
+            if ($a === TRUE) return "true";
+            if ($a === FALSE) return "false";
+            return $a;
+          },
+          $property['defaultValues']
+        )).')';
 
       $this->properties[$property['propertyId']] = $property;
     }
@@ -201,14 +208,23 @@ class opsiProductProperties extends simplePlugin
     $property = $this->properties[$this->attributesAccess['fdOpsiProductProperty']->attribute->attributes[1]->getValue()];
     if ($property['editable']) {
       $attr = new StringAttribute(
-        $property['propertyId'], $property['description'],
+        '', $property['description'],
         $property['propertyId'], FALSE, $property['defaultValues'][0]
       );
     } else {
       $attr = new SelectAttribute(
-        $property['propertyId'], $property['description'],
+        '', $property['description'],
         $property['propertyId'], FALSE,
-        $property['possibleValues'], $property['defaultValues'][0]
+        $property['possibleValues'], $property['defaultValues'][0],
+        array_map(
+          function ($a)
+          {
+            if ($a === TRUE) return "true";
+            if ($a === FALSE) return "false";
+            return $a;
+          },
+          $property['possibleValues']
+        )
       );
     }
     if ($property['multiValue']) {
