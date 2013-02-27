@@ -82,11 +82,26 @@ class opsiProfile extends simplePlugin
             _('Netboot product'), _('The netboot product to use for this profile'),
             'fdOpsiNetbootProduct', FALSE
           ),
-          new SetAttribute(
-            new SelectAttribute(
-              _('Localboot products'), _('The localboot products to install for this profile'),
-              'fdOpsiLocalbootProduct', FALSE
-            )
+          new OrderedArrayAttribute(
+            new CharSeparatedCompositeAttribute(
+              _('The localboot products to install for this profile'),
+              'fdOpsiLocalbootProduct',
+              array(
+                new SelectAttribute(
+                  _('Localboot products'), _('The localboot products to install for this profile'),
+                  'fdOpsiLocalbootProduct_product', FALSE
+                ),
+                new SelectAttribute(
+                  '', '',
+                  'fdOpsiLocalbootProduct_action', TRUE,
+                  array('setup', 'always', 'once', 'custom', 'userlogin')
+                )
+              ),
+              '|','',_('Localboot products')
+            ),
+            FALSE, // non-ordered
+            array(),
+            TRUE // edition
           ),
         )
       ),
@@ -150,7 +165,7 @@ class opsiProfile extends simplePlugin
       $choices_values[] = $localboot['id'];
       $choices_labels[] = $localboot['name'];
     }
-    $this->attributesAccess['fdOpsiLocalbootProduct']->attribute->setChoices($choices_values, $choices_labels);
+    $this->attributesAccess['fdOpsiLocalbootProduct']->attribute->attributes[0]->setChoices($choices_values, $choices_labels);
   }
 }
 ?>
