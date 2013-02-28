@@ -22,20 +22,20 @@ class mailAliasDistribution extends simplePlugin
 {
   var $mainTab = TRUE;
 
-  var $objectclasses = array("top", "mailAliasDistribution");
+  var $objectclasses = array('top', 'mailAliasDistribution');
 
   /* Return plugin informations for acl handling  */
   public static function plInfo()
   {
     return array(
-      "plShortName"   => _("Temporary mail distribution"),
-      "plDescription" => _("Temporary mail distribution"),
-      "plSelfModify"  => FALSE,
-      "plCategory"    => array("alias"),
-      "plObjectType"  => array("mailAliasDistribution" => array("name"  => _("Temporary mail distribution"),
-                                                              "filter"  => "objectClass=mailAliasDistribution")),
+      'plShortName'   => _('Temporary mail distribution'),
+      'plDescription' => _('Temporary mail distribution'),
+      'plSelfModify'  => FALSE,
+      'plCategory'    => array('alias'),
+      'plObjectType'  => array('mailAliasDistribution' => array('name'  => _('Temporary mail distribution'),
+                                                              'filter'  => 'objectClass=mailAliasDistribution')),
 
-      "plProvidedAcls" => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }
 
@@ -46,34 +46,34 @@ class mailAliasDistribution extends simplePlugin
     return array(
       // Attributes are grouped by section
       'main' => array(
-        'name'  => _("Mail distribution"),
+        'name'  => _('Mail distribution'),
         'attrs' => array(
-          new BaseSelectorAttribute (get_ou("aliasRDN")),
-          new HostNameAttribute (_("Name"), _("Name to identify this alias"), "cn", TRUE),
+          new BaseSelectorAttribute (get_ou('aliasRDN')),
+          new HostNameAttribute (_('Name'), _('Name to identify this alias'), 'cn', TRUE),
           new TextAreaAttribute (
-            _("Description"), _("Description of this alias"),
-            "description", FALSE
+            _('Description'), _('Description of this alias'),
+            'description', FALSE
           ),
           new MailAttribute (
-            _("Email address"), _("Email address"),
-            "mail", TRUE
+            _('Email address'), _('Email address'),
+            'mail', TRUE
           ),
           new SetAttribute(
             new MailAttribute (
-              _("Email aliases"), _("Aliases for this email address"),
-              "gosaMailAlternateAddress", TRUE
+              _('Email aliases'), _('Aliases for this email address'),
+              'gosaMailAlternateAddress', TRUE
             )
           ),
           new SelectAttribute (
-            _("Mail server"), _("Mail server fot this alias"),
-            "gosaMailServer", TRUE,
+            _('Mail server'), _('Mail server fot this alias'),
+            'gosaMailServer', TRUE,
             array_keys($config->data['SERVERS']['IMAP'])
           ),
           new DateAttribute(
-            _("Expiration date"), _("Date after which the alias should be deleted. Leave empty for no deletion."),
-            "aliasExpirationDate", FALSE,
-            "U", // Unix timestamp
-            ""
+            _('Expiration date'), _('Date after which the alias should be deleted. Leave empty for no deletion.'),
+            'aliasExpirationDate', FALSE,
+            'U', // Unix timestamp
+            ''
           )
         )
       ),
@@ -85,6 +85,12 @@ class mailAliasDistribution extends simplePlugin
     parent::__construct($config, $dn, $object);
 
     $this->attributesInfo['main']['attrs']['cn']->setUnique(TRUE);
+  }
+
+  /* Returns the dn of the entry */
+  function compute_dn()
+  {
+    return 'cn='.$this->cn.','.get_ou('aliasRDN').$this->base;
   }
 }
 

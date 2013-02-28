@@ -22,20 +22,20 @@ class mailAliasRedirection extends simplePlugin
 {
   var $mainTab = TRUE;
 
-  var $objectclasses = array("top", "mailAliasRedirection");
+  var $objectclasses = array('top', 'mailAliasRedirection');
 
   /* Return plugin informations for acl handling  */
   public static function plInfo()
   {
     return array(
-      "plShortName"   => _("Temporary mail redirection"),
-      "plDescription" => _("Temporary mail redirection"),
-      "plSelfModify"  => FALSE,
-      "plCategory"    => array("alias"),
-      "plObjectType"  => array("mailAliasRedirection" => array("name"  => _("Temporary mail redirection"),
-                                                              "filter"  => "objectClass=mailAliasRedirection")),
+      'plShortName'   => _('Temporary mail redirection'),
+      'plDescription' => _('Temporary mail redirection'),
+      'plSelfModify'  => FALSE,
+      'plCategory'    => array('alias'),
+      'plObjectType'  => array('mailAliasRedirection' => array('name'  => _('Temporary mail redirection'),
+                                                              'filter'  => 'objectClass=mailAliasRedirection')),
 
-      "plProvidedAcls" => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }
 
@@ -45,31 +45,31 @@ class mailAliasRedirection extends simplePlugin
     return array(
       // Attributes are grouped by section
       'main' => array(
-        'name'  => _("Mail redirection"),
+        'name'  => _('Mail redirection'),
         'attrs' => array(
-          new BaseSelectorAttribute (get_ou("aliasRDN")),
-          new HostNameAttribute (_("Name"), _("Name to identify this redirection"), "cn", TRUE),
+          new BaseSelectorAttribute (get_ou('aliasRDN')),
+          new HostNameAttribute (_('Name'), _('Name to identify this redirection'), 'cn', TRUE),
           new TextAreaAttribute (
-            _("Description"), _("Description of this redirection"),
-            "description", FALSE
+            _('Description'), _('Description of this redirection'),
+            'description', FALSE
           ),
           new SetAttribute(
             new MailAttribute (
-              _("Redirect from"), _("Mail address from which you want to redirect"),
-              "mail", TRUE
+              _('Redirect from'), _('Mail address from which you want to redirect'),
+              'mail', TRUE
             )
           ),
           new SetAttribute(
             new MailAttribute (
-              _("Redirect to"), _("Destination of this redirection"),
-              "gosaMailForwardingAddress", TRUE
+              _('Redirect to'), _('Destination of this redirection'),
+              'gosaMailForwardingAddress', TRUE
             )
           ),
           new DateAttribute(
-            _("Expiration date"), _("Date after which the redirection should be deleted. Leave empty for no deletion."),
-            "aliasExpirationDate", FALSE,
-            "U", // Unix timestamp
-            ""
+            _('Expiration date'), _('Date after which the redirection should be deleted. Leave empty for no deletion.'),
+            'aliasExpirationDate', FALSE,
+            'U', // Unix timestamp
+            ''
           )
         )
       ),
@@ -81,6 +81,12 @@ class mailAliasRedirection extends simplePlugin
     parent::__construct($config, $dn, $object);
 
     $this->attributesInfo['main']['attrs']['cn']->setUnique(TRUE);
+  }
+
+  /* Returns the dn of the entry */
+  function compute_dn()
+  {
+    return 'cn='.$this->cn.','.get_ou('aliasRDN').$this->base;
   }
 }
 

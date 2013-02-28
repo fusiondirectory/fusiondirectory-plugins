@@ -22,7 +22,7 @@
 class aliasManagement extends management
 {
   // Tab definitions
-  protected $tabClass     = "aliastabs";
+  protected $tabClass     = "simpleTabs";
   protected $aclCategory  = "alias";
   protected $aclPlugin    = "alias";
   protected $objectName   = "alias";
