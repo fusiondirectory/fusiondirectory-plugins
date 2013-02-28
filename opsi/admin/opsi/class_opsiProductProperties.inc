@@ -53,7 +53,7 @@ class ProductPropertyAttribute extends CompositeAttribute
 {
   function __construct ($label, $description, $ldapName, $acl = "")
   {
-    parent::__construct ($description, $ldapName, array(new StringAttribute('','','fake')), '/^(.*)$/', '%s', $acl, $label);
+    parent::__construct ($description, $ldapName, array(new StringAttribute('','','fake')), '', '', $acl, $label);
   }
 
   function check()
@@ -62,7 +62,42 @@ class ProductPropertyAttribute extends CompositeAttribute
 
   function displayValue($value)
   {
+    $array = json_decode($value);
+    if (is_array($array) && (count($array) == 1)) {
+      return $array[0];
+    }
     return $value;
+  }
+
+  function readValues($value)
+  {
+    trigger_error('Should never be called');
+  }
+
+  function writeValues($values)
+  {
+    trigger_error('Should never be called');
+  }
+
+  function inputValue ($value)
+  {
+    $values = json_decode($value);
+    if ($this->attributes[0] instanceof ArrayAttribute) {
+      return array($values);
+    } else {
+      return $values;
+    }
+  }
+
+  /* We always return the LDAP value as the composite attribute has nothing else */
+  function getValue ()
+  {
+    $values = $this->attributes[0]->computeLdapValue();
+    if ($this->attributes[0] instanceof ArrayAttribute) {
+      return json_encode($values);
+    } else {
+      return json_encode(array($values));
+    }
   }
 }
 
