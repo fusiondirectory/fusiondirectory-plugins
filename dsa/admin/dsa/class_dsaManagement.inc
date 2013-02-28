@@ -22,7 +22,7 @@
 class dsaManagement extends management
 {
   // Tab definitions
-  protected $tabClass     = "dsatabs";
+  protected $tabClass     = "simpleTabs";
   protected $tabType      = "SIMPLESECURITYOBJECTTABS";
   protected $aclCategory  = "dsa";
   protected $aclPlugin    = "dsa";

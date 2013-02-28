@@ -22,20 +22,20 @@ class simpleSecurityObject extends simplePlugin
 {
   var $mainTab = TRUE;
 
-  var $objectclasses = array("organizationalRole", "top", "simpleSecurityObject");
+  var $objectclasses = array('organizationalRole', 'top', 'simpleSecurityObject');
 
   /* Return plugin informations for acl handling  */
   public static function plInfo()
   {
     return array(
-      "plShortName"   => _("Simple security object"),
-      "plDescription" => _("Simple security object"),
-      "plSelfModify"  => FALSE,
-      "plCategory"    => array("dsa"),
-      "plObjectType"  => array("simpleSecurityObject" => array("name"  => _("Simple security object"),
-                                                              "filter"  => "objectClass=simpleSecurityObject")),
+      'plShortName'   => _('Simple security object'),
+      'plDescription' => _('Simple security object'),
+      'plSelfModify'  => FALSE,
+      'plCategory'    => array('dsa'),
+      'plObjectType'  => array('simpleSecurityObject' => array('name'  => _('Simple security object'),
+                                                              'filter'  => 'objectClass=simpleSecurityObject')),
 
-      "plProvidedAcls" => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }
 
@@ -67,6 +67,12 @@ class simpleSecurityObject extends simplePlugin
     parent::__construct($config, $dn, $object);
 
     $this->attributesInfo['main']['attrs']['cn']->setUnique(TRUE);
+  }
+
+  /* Returns the dn of the entry */
+  function compute_dn()
+  {
+    return 'cn='.$this->cn.','.get_ou('dsaRDN').$this->base;
   }
 }
 
