@@ -117,6 +117,11 @@ class opsiProfile extends simplePlugin
     $this->attributesAccess['cn']->setUnique(TRUE);
   }
 
+  public function compute_dn ()
+  {
+    return 'cn='.$this->cn.','.get_ou('opsiRDN').$this->config->current['BASE'];
+  }
+
   public function server_changed ()
   {
     if (!isset($this->products[$this->fdOpsiServerDN])) {

@@ -21,7 +21,7 @@
 class opsiProfileManagement extends management
 {
   // Tab definition
-  protected $tabClass     = "opsiprofiletabs";
+  protected $tabClass     = "simpleTabs";
   protected $tabType      = "OPSIPROFILETABS";
   protected $aclCategory  = "opsiProfile";
   protected $aclPlugin    = "opsiProfile";
