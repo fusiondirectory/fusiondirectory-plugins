@@ -21,7 +21,7 @@
 class supannStructuresManagement extends management
 {
   // Tab definition
-  protected $tabClass     = "supannStructurestabs";
+  protected $tabClass     = "simpleTabs";
   protected $aclCategory  = "supannStructures";
   protected $aclPlugin    = "supannStructures";
   protected $objectName   = "supannStructures";
