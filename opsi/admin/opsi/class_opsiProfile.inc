@@ -44,6 +44,8 @@ class opsiProfile extends simplePlugin
 
   var $macAddress = NULL;
 
+  var $products;
+
   public static function plInfo()
   {
     return array(
@@ -88,8 +90,8 @@ class opsiProfile extends simplePlugin
               'fdOpsiLocalbootProduct',
               array(
                 new SelectAttribute(
-                  _('Localboot products'), _('The localboot products to install for this profile'),
-                  'fdOpsiLocalbootProduct_product', FALSE
+                  '', '',
+                  'fdOpsiLocalbootProduct_product', TRUE
                 ),
                 new SelectAttribute(
                   '', '',
@@ -117,51 +119,55 @@ class opsiProfile extends simplePlugin
 
   public function server_changed ()
   {
-    $s_daemon = new supportDaemon();
-    if (!$s_daemon->is_available()) {
-      msg_dialog::display(
-        _("Could not contact argonaut server"),
-        msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
-      );
-      return;
-    }
-    $ldap = $this->config->get_ldap_link();
-    $ldap->cat($this->fdOpsiServerDN);
-    if ($attrs = $ldap->fetch()) {
-      $this->macAddress = $attrs['macAddress'][0];
-    } else {
-      msg_dialog::display(
-        sprintf_(_("Could not find %s in the LDAP"),$this->fdOpsiServerDN),
-        msgPool::ldaperror($ldap->get_error()), ERROR_DIALOG
-      );
-      return FALSE;
-    }
-    $netboots = $s_daemon->append_call('OPSI.get_netboots', array($this->macAddress), array('args' => array(array('id','name'))));
-    if ($s_daemon->is_error()) {
-      msg_dialog::display(
-        _('Could contact OPSI server'),
-        msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
-      );
-      return;
+    if (!isset($this->products[$this->fdOpsiServerDN])) {
+      $s_daemon = new supportDaemon();
+      if (!$s_daemon->is_available()) {
+        msg_dialog::display(
+          _("Could not contact argonaut server"),
+          msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
+        );
+        return;
+      }
+      $ldap = $this->config->get_ldap_link();
+      $ldap->cat($this->fdOpsiServerDN);
+      if ($attrs = $ldap->fetch()) {
+        $this->macAddress = $attrs['macAddress'][0];
+      } else {
+        msg_dialog::display(
+          sprintf_(_("Could not find %s in the LDAP"),$this->fdOpsiServerDN),
+          msgPool::ldaperror($ldap->get_error()), ERROR_DIALOG
+        );
+        return FALSE;
+      }
+      $netboots = $s_daemon->append_call('OPSI.get_netboots', array($this->macAddress), array('args' => array(array('id','name'))));
+      if ($s_daemon->is_error()) {
+        msg_dialog::display(
+          _('Could contact OPSI server'),
+          msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
+        );
+        return;
+      }
+      $this->products[$this->fdOpsiServerDN]['netboots'] = $netboots;
+      $localboots = $s_daemon->append_call('OPSI.get_localboots', array($this->macAddress), array('args' => array(array('id','name'))));
+      if ($s_daemon->is_error()) {
+        msg_dialog::display(
+          _('Could contact OPSI server'),
+          msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
+        );
+        return;
+      }
+      $this->products[$this->fdOpsiServerDN]['localboots'] = $localboots;
     }
     $choices_values = array();
     $choices_labels = array();
-    foreach ($netboots as $netboot) {
+    foreach ($this->products[$this->fdOpsiServerDN]['netboots'] as $netboot) {
       $choices_values[] = $netboot['id'];
       $choices_labels[] = $netboot['name'];
     }
     $this->attributesAccess['fdOpsiNetbootProduct']->setChoices($choices_values, $choices_labels);
-    $localboots = $s_daemon->append_call('OPSI.get_localboots', array($this->macAddress), array('args' => array(array('id','name'))));
-    if ($s_daemon->is_error()) {
-      msg_dialog::display(
-        _('Could contact OPSI server'),
-        msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
-      );
-      return;
-    }
     $choices_values = array();
     $choices_labels = array();
-    foreach ($localboots as $localboot) {
+    foreach ($this->products[$this->fdOpsiServerDN]['localboots'] as $localboot) {
       $choices_values[] = $localboot['id'];
       $choices_labels[] = $localboot['name'];
     }

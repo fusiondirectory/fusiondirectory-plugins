@@ -53,7 +53,7 @@ class ProductPropertyAttribute extends CompositeAttribute
 {
   function __construct ($label, $description, $ldapName, $acl = "")
   {
-    parent::__construct ($description, $ldapName, array(), '/^(.*)$/', '%s', $acl, $label);
+    parent::__construct ($description, $ldapName, array(new StringAttribute('','','fake')), '/^(.*)$/', '%s', $acl, $label);
   }
 
   function check()
@@ -67,8 +67,7 @@ class ProductPropertyAttribute extends CompositeAttribute
 }
 
 /* TODO
- * Try to avoid doing that many requests (maybe use some kind of cache?)
- * Remove from select the properties already set
+ * Remove from select the properties already set ?
  */
 
 class opsiProductProperties extends simplePlugin
@@ -141,11 +140,18 @@ class opsiProductProperties extends simplePlugin
   {
     $localboot_attr = $this->parent->getBaseObject()->attributesAccess['fdOpsiLocalbootProduct'];
     $netboot_attr   = $this->parent->getBaseObject()->attributesAccess['fdOpsiNetbootProduct'];
-    $products = $localboot_attr->getValue();
+    $products = array_map(
+      function ($a)
+      {
+        $b = explode('|',$a,2);
+        return $b[0];
+      },
+      $localboot_attr->getValue()
+    );
     $labels   =
       array_map(
         function ($a) use ($localboot_attr) {
-          return $localboot_attr->displayValue($a);
+          return $localboot_attr->attribute->attributes[0]->displayValue($a);
         },
         $products
       );
@@ -159,33 +165,40 @@ class opsiProductProperties extends simplePlugin
 
   public function product_changed()
   {
-    $s_daemon = new supportDaemon();
-    if (!$s_daemon->is_available()) {
-      msg_dialog::display(
-        _("Could not contact argonaut server"),
-        msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
-      );
-      return;
-    }
     $productid  = $this->attributesAccess['fdOpsiProductProperty']->attribute->attributes[0]->getValue();
-    $properties = $s_daemon->append_call(
-      'OPSI.get_product_properties',
-      array($this->parent->getBaseObject()->macAddress),
-      array('args' => array(
-        //~ array('propertyId','possibleValues','multiValue','description','defaultValues','editable'),
-        array(),
-        array('productId' => $productid)
-      ))
-    );
-    if ($s_daemon->is_error()) {
-      msg_dialog::display(
-        _('Could contact OPSI server'),
-        msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
+    if (!isset($this->properties[$productid])) {
+      $s_daemon = new supportDaemon();
+      if (!$s_daemon->is_available()) {
+        msg_dialog::display(
+          _("Could not contact argonaut server"),
+          msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
+        );
+        return;
+      }
+      $properties = $s_daemon->append_call(
+        'OPSI.get_product_properties',
+        array($this->parent->getBaseObject()->macAddress),
+        array('args' => array(
+          //~ array('propertyId','possibleValues','multiValue','description','defaultValues','editable'),
+          array(),
+          array('productId' => $productid)
+        ))
       );
-      return;
+      if ($s_daemon->is_error()) {
+        msg_dialog::display(
+          _('Could contact OPSI server'),
+          msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
+        );
+        return;
+      }
+      $this->properties[$productid] = array();
+      foreach ($properties as $property) {
+        $this->properties[$productid][$property['propertyId']] = $property;
+      }
     }
-    $this->properties = array();
-    foreach ($properties as $property) {
+    $choices_values = array();
+    $choices_labels = array();
+    foreach ($this->properties[$productid] as $property) {
       $choices_values[] = $property['propertyId'];
       $choices_labels[] = $property['propertyId'].' ('.join(',',
         array_map(
@@ -197,15 +210,19 @@ class opsiProductProperties extends simplePlugin
           },
           $property['defaultValues']
         )).')';
-
-      $this->properties[$property['propertyId']] = $property;
     }
     $this->attributesAccess['fdOpsiProductProperty']->attribute->attributes[1]->setChoices($choices_values, $choices_labels);
   }
 
   public function property_changed()
   {
-    $property = $this->properties[$this->attributesAccess['fdOpsiProductProperty']->attribute->attributes[1]->getValue()];
+    $productid  = $this->attributesAccess['fdOpsiProductProperty']->attribute->attributes[0]->getValue();
+    $propertyid = $this->attributesAccess['fdOpsiProductProperty']->attribute->attributes[1]->getValue();
+    if (!isset($this->properties[$productid][$propertyid])) {
+      /* When the product just changed, the property field contains an inconsistent value */
+      return;
+    }
+    $property = $this->properties[$productid][$propertyid];
     if ($property['editable']) {
       $attr = new StringAttribute(
         '', $property['description'],
