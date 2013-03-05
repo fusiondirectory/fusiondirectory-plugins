@@ -25,13 +25,13 @@ attributetype ( 1.3.6.1.4.1.38414.20.10.3 NAME 'fdOpsiServerPassword'
         SINGLE-VALUE )
 
 attributetype ( 1.3.6.1.4.1.38414.20.11.1 NAME 'fdOpsiServerDn'
-        DESC 'FusionDirectory - OPSI User password '
+        DESC 'FusionDirectory - OPSI server DN '
         EQUALITY caseExactIA5Match
         SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
         SINGLE-VALUE )
 
 attributetype ( 1.3.6.1.4.1.38414.20.11.2 NAME 'fdOpsiProfileDn'
-        DESC 'FusionDirectory - OPSI User password '
+        DESC 'FusionDirectory - OPSI Profile DN '
         EQUALITY caseExactIA5Match
         SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
         SINGLE-VALUE )
