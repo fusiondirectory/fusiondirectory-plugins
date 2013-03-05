@@ -34,20 +34,14 @@ class FakeAttribute extends Attribute
   function renderAttribute(&$attributes, $readOnly)
   {
     $var = $this->var_name;
-    $attributes[$this->getLdapName()] = $this->plugin->$var;
+    $attributes[$this->getLdapName()] = $this->getValue();
   }
 }
 
 class board extends simplePlugin
 {
-  /* Definitions */
-  var $plHeadline     = "Board";
-  var $plDescription  = "Statistics and various informations";
-
   /* Generic */
   var $view_logged    = FALSE;
-
-  var $stats  = array();
 
   function __construct(&$config, $dn = NULL, $object = NULL)
   {

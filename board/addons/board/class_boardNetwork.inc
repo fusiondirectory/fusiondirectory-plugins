@@ -21,9 +21,6 @@
 
 class boardNetwork extends simplePlugin
 {
-  var $dhcp_infos = array();
-  var $dns_infos  = array();
-
   function __construct(&$config, $dn = NULL, $object = NULL)
   {
     parent::__construct($config, $dn, $object);

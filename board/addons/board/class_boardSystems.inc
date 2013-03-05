@@ -21,9 +21,6 @@
 
 class boardSystems extends simplePlugin
 {
-  var $stats;
-  var $pc_ids;
-
   /* default values*/
   var $default_start_computer_id        = 0;
 

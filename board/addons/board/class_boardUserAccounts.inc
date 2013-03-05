@@ -23,9 +23,6 @@
 
 class boardUserAccounts extends simplePlugin
 {
-  var $stats;
-  var $expired;
-
   function __construct(&$config, $dn = NULL, $object = NULL)
   {
     parent::__construct($config, $dn, $object);
