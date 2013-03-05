@@ -93,7 +93,7 @@ class gotomasses extends management
     $this->registerAction('showError', 'showErrorEntry');
 
     foreach ($this->events as $name => $infos) {
-      $this->registerAction($name, 'newEntry');
+      $this->registerAction('new_'.$name, 'newEntry');
       $this->headpage->xmlData['actionmenu']['action'][0]['action'][] = array(
         'name' => 'new_'.$name,
         'type' => 'entry',
