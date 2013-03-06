@@ -1,0 +1,336 @@
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# , 2010.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-01-31 04:23+0100\n"
+"PO-Revision-Date: 2010-01-31 23:14+0100\n"
+"Last-Translator: \n"
+"Language-Team: Spanish <>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: personal/freeradius/freeradius.tpl:5
+msgid "Freeradius Account"
+msgstr "Cuenta Freeradius"
+
+#: personal/freeradius/freeradius.tpl:9
+#: admin/groups/freeradius/freeradiusGroup.tpl:14
+msgid "802.1x Support:"
+msgstr "Soporte 802.1x:"
+
+#: personal/freeradius/freeradius.tpl:13
+#: admin/groups/freeradius/freeradiusGroup.tpl:18
+msgid "Select id of VLAN:"
+msgstr "Selección de ID de VLAN:"
+
+#: personal/freeradius/freeradius.tpl:23
+msgid "ServiceType:"
+msgstr "Tipo de Servicio:"
+
+#: personal/freeradius/freeradius.tpl:27
+msgid "Select type of Service:"
+msgstr "Seleccione tipo de servicio:"
+
+#: personal/freeradius/freeradius.tpl:38
+msgid "Session expires on:"
+msgstr "La sesión expira en:"
+
+#: personal/freeradius/freeradius.tpl:71
+msgid "DialUp:"
+msgstr "DialUp:"
+
+#: personal/freeradius/freeradius.tpl:82
+msgid "IP:"
+msgstr "IP:"
+
+#: personal/freeradius/freeradius.tpl:91
+msgid "Network Mask:"
+msgstr "Mascara de red:"
+
+#: personal/freeradius/freeradius.tpl:100
+msgid "Default Gateway:"
+msgstr "Puerta de enlace predeterminada"
+
+#: personal/freeradius/freeradius.tpl:109
+msgid "Session Timeout:"
+msgstr "Desconexión de sesión por tiempo:"
+
+#: personal/freeradius/freeradius.tpl:118
+msgid "Idle Timeout:"
+msgstr "Desconexión de sesión por tiempo sin uso:"
+
+#: personal/freeradius/freeradius.tpl:132
+msgid "Group Information"
+msgstr "Información de Grupo"
+
+#: personal/freeradius/freeradius.tpl:133
+msgid "Radius Groups"
+msgstr "Grupos radius"
+
+#: personal/freeradius/freeradius.tpl:135
+msgid "Groups"
+msgstr "Grupos"
+
+#: personal/freeradius/freeradius.tpl:140
+msgid "Add Group"
+msgstr "Añadir grupo"
+
+#: personal/freeradius/class_freeradiusAccount.inc:39
+#: personal/freeradius/class_freeradiusAccount.inc:246
+#: personal/freeradius/class_freeradiusAccount.inc:255
+#: personal/freeradius/class_freeradiusAccount.inc:257
+#: personal/freeradius/class_freeradiusAccount.inc:649
+#: admin/groups/freeradius/class_freeradiusGroup.inc:39
+#: admin/groups/freeradius/class_freeradiusGroup.inc:218
+#: admin/groups/freeradius/class_freeradiusGroup.inc:227
+#: admin/groups/freeradius/class_freeradiusGroup.inc:229
+#: admin/groups/freeradius/class_freeradiusGroup.inc:425
+#: admin/systems/freeradius/class_accessPointGeneric.inc:32
+#: admin/systems/freeradius/class_accessPointGeneric.inc:220
+#: admin/systems/freeradius/class_accessPointGeneric.inc:229
+#: admin/systems/freeradius/class_accessPointGeneric.inc:231
+msgid "Freeradius"
+msgstr "Freeradius"
+
+#: personal/freeradius/class_freeradiusAccount.inc:40
+#: admin/groups/freeradius/class_freeradiusGroup.inc:40
+msgid "This Plugin is for Radius accounting based in FreeRadius"
+msgstr "Esta extensión es para registro Radius basado en Freeradius"
+
+#: personal/freeradius/class_freeradiusAccount.inc:361
+#: personal/freeradius/class_freeradiusAccount.inc:608
+#: personal/freeradius/class_freeradiusAccount.inc:619
+#: admin/systems/freeradius/class_accessPointGeneric.inc:267
+msgid "Error"
+msgstr "Error"
+
+#: personal/freeradius/class_freeradiusAccount.inc:456
+#: personal/freeradius/class_freeradiusAccount.inc:566
+#: admin/groups/freeradius/class_freeradiusGroup.inc:312
+#: admin/groups/freeradius/class_freeradiusGroup.inc:410
+#: admin/systems/freeradius/class_accessPointGeneric.inc:317
+#: admin/systems/freeradius/class_accessPointGeneric.inc:393
+msgid "LDAP error"
+msgstr "Error LDAP"
+
+#: personal/freeradius/class_freeradiusAccount.inc:478
+msgid "Private Group ID"
+msgstr "Identificador (ID) privado de Grupo"
+
+#: personal/freeradius/class_freeradiusAccount.inc:485
+msgid "IP"
+msgstr "IP"
+
+#: personal/freeradius/class_freeradiusAccount.inc:488
+msgid "Netmask"
+msgstr "Mascara de red"
+
+#: personal/freeradius/class_freeradiusAccount.inc:491
+msgid "Gateway"
+msgstr "Puerta de enlace"
+
+#: personal/freeradius/class_freeradiusAccount.inc:494
+msgid "Radius Session Timeout"
+msgstr "Desconexión sesión Radius por tiempo"
+
+#: personal/freeradius/class_freeradiusAccount.inc:497
+msgid "Radius Idle Timeout"
+msgstr "Desconexión sesión Radius por tiempo sin uso"
+
+#: personal/freeradius/class_freeradiusAccount.inc:584
+#: personal/freeradius/class_freeradiusAccount.inc:586
+msgid "Group"
+msgstr "Grupo"
+
+#: personal/freeradius/class_freeradiusAccount.inc:598
+msgid "Internal error"
+msgstr "Error interno"
+
+#: personal/freeradius/class_freeradiusAccount.inc:598
+#, php-format
+msgid "Illegal member type '%s'!"
+msgstr "¡Tipo de miembro ilegal '%s'!"
+
+#: personal/freeradius/class_freeradiusAccount.inc:603
+#: personal/freeradius/class_freeradiusAccount.inc:636
+msgid "Permission error"
+msgstr "Error de permisos"
+
+#: personal/freeradius/class_freeradiusAccount.inc:603
+msgid "FreeRadius group"
+msgstr "Grupo Freeradius"
+
+#: personal/freeradius/class_freeradiusAccount.inc:608
+#, php-format
+msgid "'%s' is already used!"
+msgstr "¡'%s' ya esta siendo usado!"
+
+#: personal/freeradius/class_freeradiusAccount.inc:619
+#, php-format
+msgid "Radius Group '%s' is not found!"
+msgstr "¡El grupo Radius '%s' no ha sido encontrado!"
+
+#: personal/freeradius/class_freeradiusAccount.inc:636
+msgid "freeradius group of user"
+msgstr "Grupo Freeradius del usuario"
+
+#: personal/freeradius/class_freeradiusAccount.inc:650
+msgid "Freeradius account settings"
+msgstr "Configuración cuenta Freeradius"
+
+#: personal/freeradius/class_freeradiusAccount.inc:654
+#: admin/groups/freeradius/class_freeradiusGroup.inc:430
+msgid "My account"
+msgstr "Mi cuenta"
+
+#: personal/freeradius/class_freeradiusAccount.inc:660
+#: admin/groups/freeradius/class_freeradiusGroup.inc:435
+msgid "802.1x Support"
+msgstr "Soporte 802.1x"
+
+#: personal/freeradius/class_freeradiusAccount.inc:661
+msgid "Wifi Support"
+msgstr "Soporte WIFI"
+
+#: personal/freeradius/class_freeradiusAccount.inc:663
+#: admin/groups/freeradius/class_freeradiusGroup.inc:436
+msgid "Private Group ID - VLAN"
+msgstr "ID de grupo privado - VLAN"
+
+#: personal/freeradius/class_freeradiusAccount.inc:664
+msgid "Service types"
+msgstr "Tipos de servicio"
+
+#: personal/freeradius/class_freeradiusAccount.inc:665
+msgid "DialUp Services"
+msgstr "Servicios DialUp"
+
+#: personal/freeradius/class_freeradiusAccount.inc:666
+msgid "Radius Expire Date"
+msgstr "Fecha expiración cuenta Radius"
+
+#: personal/freeradius/class_freeradiusAccount.inc:667
+msgid "Add to a Radius Group"
+msgstr "Añadir a un grupo Radius"
+
+#: personal/freeradius/class_selectGroupToFreeradiusAccountDialog.inc:118
+msgid "Please select a group or press cancel."
+msgstr "Por favor seleccione un grupo o presione cancelar."
+
+#: personal/freeradius/selectGroupToFreeradiusAccountDialog.tpl:3
+msgid "Select group to add"
+msgstr "Seleccione un grupo a añadir"
+
+#: personal/freeradius/selectGroupToFreeradiusAccountDialog.tpl:8
+msgid "Select entries to add"
+msgstr "Seleccione entradas para añadir"
+
+#: personal/freeradius/selectGroupToFreeradiusAccountDialog.tpl:22
+msgid "Filters"
+msgstr "Filtros"
+
+#: personal/freeradius/selectGroupToFreeradiusAccountDialog.tpl:31
+msgid "Select to search within subtrees"
+msgstr "Seleccione para buscar dentro de los subárboles"
+
+#: personal/freeradius/selectGroupToFreeradiusAccountDialog.tpl:31
+msgid "Search in subtrees"
+msgstr "Buscar en subárboles"
+
+#: personal/freeradius/selectGroupToFreeradiusAccountDialog.tpl:38
+msgid "Display members of department"
+msgstr "Mostrar miembros del departamento"
+
+#: personal/freeradius/selectGroupToFreeradiusAccountDialog.tpl:41
+msgid "Choose the department the search will be based on"
+msgstr "Escoja el departamento base de la búsqueda"
+
+#: personal/freeradius/selectGroupToFreeradiusAccountDialog.tpl:50
+msgid "Display members matching"
+msgstr "Mostrar miembros que coincidan con"
+
+#: personal/freeradius/selectGroupToFreeradiusAccountDialog.tpl:55
+msgid "Regular expression for matching member names"
+msgstr "Expresiones regulares que coincidan con nombres de miembros"
+
+#: admin/groups/freeradius/freeradiusGroup.tpl:5
+msgid "Freeradius Account for Group Management"
+msgstr "Gestión de grupos para cuentas Freeradius"
+
+#: admin/groups/freeradius/class_freeradiusGroup.inc:187
+msgid "This account has Freeradius settings disabled."
+msgstr "Esta cuenta tiene las características Freeradius desactivadas."
+
+#: admin/groups/freeradius/class_freeradiusGroup.inc:187
+msgid "You can enable them when you solve the group conflict"
+msgstr "Puede activarlas cuando solucione el conflicto de grupo"
+
+#: admin/groups/freeradius/class_freeradiusGroup.inc:188
+msgid "RADIUS ERROR: The user"
+msgstr "ERROR RADIUS: El usuario"
+
+#: admin/groups/freeradius/class_freeradiusGroup.inc:188
+#: admin/groups/freeradius/class_freeradiusGroup.inc:346
+msgid "belongs to the Radius Group:"
+msgstr "pertenece al grupo Radius:"
+
+#: admin/groups/freeradius/class_freeradiusGroup.inc:189
+#: admin/groups/freeradius/class_freeradiusGroup.inc:347
+msgid "IMPORTANT: A user can only belong to a Radius Group"
+msgstr "IMPORTANTE: Un usuario solo puede pertenecer a un grupo Radius"
+
+#: admin/groups/freeradius/class_freeradiusGroup.inc:345
+msgid "Radius Error"
+msgstr "Error Radius"
+
+#: admin/groups/freeradius/class_freeradiusGroup.inc:345
+msgid "Error: The user"
+msgstr "Error: El usuario"
+
+#: admin/groups/freeradius/class_freeradiusGroup.inc:426
+msgid "Freeradius group settings"
+msgstr "Características de grupo Freeradius"
+
+#: admin/systems/freeradius/accessPoint.tpl:7
+msgid "Huntgroup Information"
+msgstr "Información grupo de Acceso"
+
+#: admin/systems/freeradius/accessPoint.tpl:8
+msgid "Radius Huntroup"
+msgstr "Grupo de acceso Radius"
+
+#: admin/systems/freeradius/accessPoint.tpl:13
+msgid "Select Huntgroup"
+msgstr "Seleccione un grupo de acceso"
+
+#: admin/systems/freeradius/class_accessPointGeneric.inc:33
+msgid ""
+"This Plugin is for configuration of AccessPoint based in HuntGroups in "
+"freeradius."
+msgstr ""
+"Esta extensión es para la configuración de puntos de acceso basado en "
+"grupo de accesos Freeradius."
+
+#: admin/systems/freeradius/class_accessPointGeneric.inc:400
+msgid "AccessPoint"
+msgstr "Punto de Acceso"
+
+#: admin/systems/freeradius/class_accessPointGeneric.inc:401
+msgid "Generic Access Point"
+msgstr "Punto de acceso genérico"
+
+#: admin/systems/freeradius/class_accessPointGeneric.inc:406
+msgid "Network device"
+msgstr "Dispositivo de Red"
+
+#: admin/systems/freeradius/class_accessPointGeneric.inc:409
+msgid "HuntGroup Name"
+msgstr "Nombre del grupo de acceso"
+
