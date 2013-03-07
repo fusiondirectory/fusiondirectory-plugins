@@ -1,0 +1,72 @@
+# Schema for Debconf config items.
+#
+# Requires: OpenLDAP 2.0.x,2.1.x core.schema (for description attribute)
+#
+# Wichert has allocated 1.3.6.1.4.9586.1.2 to all Debconf stuff
+# (enterprise.Debian.package.debconf) so we use 1.3.6.1.4.9586.1.2.1.x for
+# attributes, and 1.3.6.1.4.9586.1.2.2.x for objectclasses.
+
+attributetype ( 1.3.6.1.4.9586.1.2.1.1
+	NAME 'template'
+	DESC 'The name of the template the entry refers to'
+	EQUALITY caseIgnoreIA5Match
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+	SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.9586.1.2.1.2
+	NAME 'owners'
+	DESC 'A package which wants to use this entry'
+	EQUALITY caseIgnoreIA5Match
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 )
+
+attributetype ( 1.3.6.1.4.9586.1.2.1.3
+	NAME 'flags'
+	DESC 'A status item for this entry'
+	EQUALITY caseIgnoreIA5Match
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 )
+
+attributetype ( 1.3.6.1.4.9586.1.2.1.4
+	NAME 'value'
+	DESC 'The value of this entry'
+	EQUALITY octetStringMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.40
+	SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.9586.1.2.1.5
+	NAME 'variables'
+	DESC 'A variable associated with this entry'
+	EQUALITY caseIgnoreIA5Match
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 )
+
+attributetype ( 1.3.6.1.4.9586.1.2.1.6
+	NAME 'type'
+	DESC 'The type of template defined by this entry'
+	EQUALITY caseIgnoreIA5Match
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+	SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.9586.1.2.1.8
+	NAME 'extendedDescription'
+	DESC 'An extended description for this template'
+	EQUALITY octetStringMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.40 )
+
+attributetype ( 1.3.6.1.4.9586.1.2.1.9
+	NAME 'default'
+	DESC 'Default value'
+	EQUALITY octetStringMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.40 )
+
+attributetype ( 1.3.6.1.4.9586.1.2.1.10
+	NAME 'choices'
+	DESC 'Possible choices'
+	EQUALITY octetStringMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.40 )
+
+objectclass ( 1.3.6.1.4.9586.1.2.2.1
+	NAME 'debConfDbEntry'
+	MUST ( cn )
+	MAY( template $ flags $ variables $ value $ choices
+		$ type $ description $ extendedDescription $ owners $ default
+	) )
