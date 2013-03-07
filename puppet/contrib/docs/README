@@ -1,0 +1,35 @@
+INSTALLING puppet plugin
+
+Files:
+Copy the folder admin/systems/puppet in fusiondirectory/plugins/admin/systems
+Copy the folder admin/systems/services/puppet in fusiondirectory/plugins/admin/systems/services
+
+Schema:
+Add puppet schema to your LDAP:
+# cd contrib/openldap
+# fusiondirectory-schema2ldif puppet.schema > puppet.ldif
+# fusiondirectory-insert-schema -i puppet
+# fusiondirectory-schema2ldif puppet-fd.schema > puppet-fd.ldif
+# fusiondirectory-insert-schema -i puppet-fd
+
+Config file:
+In fusiondirectory.conf, in <serverservice>, add:
+  <tab class="servicePuppet" />
+
+Cache:
+Run:
+# fusiondirectory-setup --update-cache
+
+
+USING puppet plugin
+
+Edit the server object of your puppet master, go in the service tab and add a puppet service.
+Edit the nodes you want to and go in the puppet tab, activate the tab and add the puppet class you want to.
+
+In you puppetmaster puppet.conf, add the following in your [main] section
+node_terminus = ldap
+ldapserver = serverip
+ldapbase = dc=your,dc=base
+ldapuser = cn=user,dc=your,dc=base
+ldappassword = userpass
+ldapnodes = true
