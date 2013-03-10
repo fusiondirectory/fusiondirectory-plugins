@@ -5,14 +5,15 @@
 # Translators:
 # Alessandro Amici <a.amici@bopen.it>, 2005.
 # Giuliano Di Vito <giuliano@opensides.be>, 2011.
+#  <giuliano@opensides.be>, 2013.
 #   <giuliano@opensides.be>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
 "Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
 "POT-Creation-Date: 2013-02-12 19:02+0100\n"
-"PO-Revision-Date: 2013-02-12 18:40+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"PO-Revision-Date: 2013-03-07 23:50+0000\n"
+"Last-Translator: poterealpopolo <giuliano@opensides.be>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/FusionDirectory/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -376,7 +377,7 @@ msgstr "Nome dell'utente del quale vengono mostrati gli indirizzi"
 
 #: admin/systems/services/imap/class_serviceIMAP.inc:32
 msgid "IMAP/POP3 generic service"
-msgstr ""
+msgstr "Servizio generico IMAP/POP3"
 
 #: admin/systems/services/imap/class_serviceIMAP.inc:33
 msgid "IMAP/POP3"
@@ -396,7 +397,7 @@ msgstr "Servizio Spamassassin"
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:48
 msgid "Spam tagging"
-msgstr ""
+msgstr "Etichettatura dello spam"
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:52
 msgid "Rewrite header"
@@ -479,7 +480,7 @@ msgstr "Database utente"
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:50
 msgid "User name for the database"
-msgstr ""
+msgstr "Utente per la base dati"
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:54
 msgid "Database mirror"
@@ -487,7 +488,7 @@ msgstr "Copia del database (mirror)"
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:54
 msgid "Mirror for the database"
-msgstr ""
+msgstr "Mirror della base dati"
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:58
 msgid "Http proxy URL"
@@ -495,7 +496,7 @@ msgstr "URL del proxy http"
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:58
 msgid "URL for the proxy"
-msgstr ""
+msgstr "URL del proxy"
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:62
 msgid "Maximum threads"
@@ -503,7 +504,7 @@ msgstr "Numero massimo di processi"
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:62
 msgid "Maximum number of threads"
-msgstr ""
+msgstr "Numero massimo di thread"
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:68
 msgid "Max directory recursions"
@@ -519,7 +520,7 @@ msgstr "Attiva il debugging"
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:78
 msgid "Enable debugging for the antivirus"
-msgstr ""
+msgstr "Attiva il debug per l'antivirus"
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:83
 msgid "Enable mail scanning"
@@ -527,7 +528,7 @@ msgstr "Attiva la verifica antivirus della posta elettronica"
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:83
 msgid "Enable mail scanning for the antivirus"
-msgstr ""
+msgstr "Attiva la scansione della posta elettronica attraverso l'antivirus"
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:90
 msgid "Archive scanning"
@@ -560,7 +561,7 @@ msgstr ""
 #: admin/systems/services/postfix/class_servicePostfix.inc:12
 #: admin/systems/services/postfix/class_servicePostfix.inc:13
 msgid "Postfix (SMTP)"
-msgstr ""
+msgstr "Postfix (SMTP)"
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:32
 msgid "Visible full qualified hostname"
@@ -572,15 +573,15 @@ msgstr "Nome completo qualificato (Full Qualified Hostname)."
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:36
 msgid "Visible full qualified domain"
-msgstr ""
+msgstr "Dominio completo qualificato visibile"
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:36
 msgid "The full qualified domain."
-msgstr ""
+msgstr "Il dominio completo qualificato ."
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:40
 msgid "Max mail header size (KB)"
-msgstr ""
+msgstr "Dimensione massima dell'intestazione della mail (KB)"
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:40
 msgid "This value specifies the maximal header size."
@@ -588,7 +589,7 @@ msgstr "Questo valore specifica la dimensione massima dell'intestazione dei mess
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:45
 msgid "Max mailbox size (KB)"
-msgstr ""
+msgstr "Dimensione massima della mailbox (KB)"
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:45
 msgid "Defines the maximal size of mail box."
@@ -596,7 +597,7 @@ msgstr "Definisci la capacità massima della casella di posta elettronica."
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:50
 msgid "Max message size (KB)"
-msgstr ""
+msgstr "Dimensione massima del messaggio (KB)"
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:50
 msgid "Specify the maximal size of a message."
@@ -608,7 +609,7 @@ msgstr "Host a cui inviare i messaggi in uscita (Relay host)"
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:55
 msgid "Relay messages to following host"
-msgstr ""
+msgstr "Inoltrare i messaggi ai seguenti host"
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:59
 msgid "Local networks"
@@ -630,7 +631,7 @@ msgstr "Dominio dal quale i messaggi possono essere accettati"
 #: admin/systems/services/postfix/class_servicePostfix.inc:75
 #: admin/systems/services/postfix/class_servicePostfix.inc:84
 msgid "Transport"
-msgstr ""
+msgstr "Transport"
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:90
 msgid "Restrictions"
@@ -681,7 +682,7 @@ msgstr "Gruppo mail"
 
 #: config/class_mailPluginConfig.inc:29
 msgid "Mail plugin configuration"
-msgstr ""
+msgstr "Configurazione de l plugin mail"
 
 #: config/class_mailPluginConfig.inc:45
 msgid "Mail method"
@@ -692,7 +693,7 @@ msgid ""
 "Mail method the setup should use to communicate with a possible mail server."
 " Leave this undefined if your mail method does not match the predefined "
 "ones."
-msgstr ""
+msgstr "Metodo mail che l'impostazione deve usare per comunicare con un possibile server mail."
 
 #: config/class_mailPluginConfig.inc:51
 msgid "Account identification attribute"
@@ -700,67 +701,67 @@ msgstr "Attributo d'identificazione dell'account"
 
 #: config/class_mailPluginConfig.inc:52
 msgid "Which attribute will be used to create accounts."
-msgstr ""
+msgstr "Quale attributo verrà utilizzato per creare degli account."
 
 #: config/class_mailPluginConfig.inc:57
 msgid "Mail user template"
-msgstr ""
+msgstr "Modello per utente mail"
 
 #: config/class_mailPluginConfig.inc:58
 msgid "Override the user account creation syntax."
-msgstr ""
+msgstr "Sovrascrivere la sintassi per la creazione dell'account utente."
 
 #: config/class_mailPluginConfig.inc:62
 msgid "Mail folder template"
-msgstr ""
+msgstr "Modello per la cartella mail"
 
 #: config/class_mailPluginConfig.inc:63
 msgid "Override the methods default account creation syntax."
-msgstr ""
+msgstr "Sovrascrivere i metodi predefiniti per la sintassi della creazione degli account."
 
 #: config/class_mailPluginConfig.inc:67
 msgid "Use cyrus UNIX style"
-msgstr ""
+msgstr "Usa lo stile cyrus UNIX"
 
 #: config/class_mailPluginConfig.inc:68
 msgid "Determines if \"foo/bar\" or \"foo.bar\" should be uses as namespaces in IMAP."
-msgstr ""
+msgstr "Determina se \"foo / bar\" o \"foo.bar\" dovrebbero essere usati come spazi di nomi in IMAP."
 
 #: config/class_mailPluginConfig.inc:72
 msgid "Delete mailbox on account deletion"
-msgstr ""
+msgstr "Rimuovi la mailbox alla rimozione dell'utente"
 
 #: config/class_mailPluginConfig.inc:73
 msgid ""
 "Determines if the mailbox should be removed from your IMAP server after the "
 "account is deleted in LDAP."
-msgstr ""
+msgstr "Determina se la milbox dovrà essere rimossa dal vostro server IMAP in seguito alla rimozione dell'account utente nell'annuario LDAP."
 
 #: config/class_mailPluginConfig.inc:78
 msgid "Cyrus autocreate folders"
-msgstr ""
+msgstr "Creazione automatica delle cartelle da parte di cyrus"
 
 #: config/class_mailPluginConfig.inc:79
 msgid ""
 "List of personal IMAP folders that should be created along initial account "
 "creation."
-msgstr ""
+msgstr "Elenco delle cartelle IMAP personali che dovranno essere create durante la creazione iniziale dell'account."
 
 #: config/class_mailPluginConfig.inc:84
 msgid "IMAP timeout"
-msgstr ""
+msgstr "Timeout IMAP"
 
 #: config/class_mailPluginConfig.inc:85
 msgid "Sets the connection timeout for imap actions."
-msgstr ""
+msgstr "Imposta il timeout di connessione per le azioni imap."
 
 #: config/class_mailPluginConfig.inc:90
 msgid "Shared prefix"
-msgstr ""
+msgstr "Prefisso condiviso"
 
 #: config/class_mailPluginConfig.inc:91
 msgid "Prefix to add for mail shared folders."
-msgstr ""
+msgstr "Prefisso da aggiungere per cartelle mail condivise."
 
 #: personal/mail/mailAddressSelect/selectMailAddress-filter.tpl:3
 msgid "Filter"
@@ -1671,15 +1672,15 @@ msgstr "aggiornamento"
 
 #: personal/mail/class_mailAccount.inc:59
 msgid "Part of the quota which is used"
-msgstr ""
+msgstr "Parte della quota utilizzata"
 
 #: personal/mail/class_mailAccount.inc:95
 msgid "Primary mail address"
-msgstr ""
+msgstr "Indirizzo mail principale"
 
 #: personal/mail/class_mailAccount.inc:111
 msgid "Other addresses and redirections"
-msgstr ""
+msgstr "Altri indirizzi e redirezioni"
 
 #: personal/mail/class_mailAccount.inc:121
 msgid "Forward messages to"
@@ -1687,7 +1688,7 @@ msgstr "Trasferisci i messaggi a"
 
 #: personal/mail/class_mailAccount.inc:121
 msgid "Addresses to which messages should be forwarded"
-msgstr ""
+msgstr "Indirizzi verso iquali i messaggi dovranno essere inoltrati"
 
 #: personal/mail/class_mailAccount.inc:130
 msgid "Activate vacation message"
@@ -1708,39 +1709,39 @@ msgstr "fino a"
 
 #: personal/mail/class_mailAccount.inc:152
 msgid "Spam options"
-msgstr ""
+msgstr "Opzioni spam"
 
 #: personal/mail/class_mailAccount.inc:155
 msgid "Move mails depending on spam level"
-msgstr ""
+msgstr "Sposta le mail in rapporto al livello di spam"
 
 #: personal/mail/class_mailAccount.inc:160
 msgid "Minimum spam level"
-msgstr ""
+msgstr "Livello di spam minimo"
 
 #: personal/mail/class_mailAccount.inc:160
 msgid "Spam level above which a mail will be moved"
-msgstr ""
+msgstr "Livello di spam oltre il quale una mail verrà spostata"
 
 #: personal/mail/class_mailAccount.inc:165
 msgid "Move spam to folder"
-msgstr ""
+msgstr "Sposta la mail nella cartella"
 
 #: personal/mail/class_mailAccount.inc:165
 msgid "Folder in which spam will be moved"
-msgstr ""
+msgstr "Cartella nella quale la mail sarà spostata"
 
 #: personal/mail/class_mailAccount.inc:170
 msgid "Reject mail depending on their size"
-msgstr ""
+msgstr "Rifiuta le mail a seconda della loro dimensione"
 
 #: personal/mail/class_mailAccount.inc:170
 msgid "Messages bigger than the chosen size will be rejected"
-msgstr ""
+msgstr "Le mail più grandi rispetto alla dimensione massima scelta saranno respinte"
 
 #: personal/mail/class_mailAccount.inc:175
 msgid "Minimum size to reject a mail (MB)"
-msgstr ""
+msgstr "Dimensione minima per rifiutare una mail (MB)"
 
 #: personal/mail/class_mailAccount.inc:195
 msgid "Use custom sieve script"
@@ -1752,7 +1753,7 @@ msgstr "disabilita tutte le opzioni di posta elettronica !"
 
 #: personal/mail/class_mailAccount.inc:196
 msgid "Use your sieve script with personnal customization"
-msgstr ""
+msgstr "Usa il tuo script sieve da te personalizzato"
 
 #: personal/mail/class_mailAccount.inc:207
 msgid "No delivery to own mailbox"

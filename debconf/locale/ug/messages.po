@@ -1,0 +1,192 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: FusionDirectory\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
+"POT-Creation-Date: 2012-12-09 15:08+0100\n"
+"PO-Revision-Date: 2012-12-09 14:41+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: Uighur (http://www.transifex.com/projects/p/FusionDirectory/language/ug/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ug\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: admin/debconfProfile/remove.tpl:2
+msgid "Warning"
+msgstr ""
+
+#: admin/debconfProfile/remove.tpl:6
+msgid ""
+"Please double check if you really want to do this since there is no way for "
+"FusionDirectory to get your data back."
+msgstr ""
+
+#: admin/debconfProfile/remove.tpl:10
+msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
+msgstr ""
+
+#: admin/debconfProfile/debconfProfile-list.xml:11
+msgid "List of debconf profiles"
+msgstr ""
+
+#: admin/debconfProfile/debconfProfile-list.xml:15
+msgid "Debconf Profile"
+msgstr ""
+
+#: admin/debconfProfile/debconfProfile-list.xml:32
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:190
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:193
+#: admin/debconfProfile/debconfProfile-filter.tpl:15
+msgid "Name"
+msgstr ""
+
+#: admin/debconfProfile/debconfProfile-list.xml:40
+msgid "Description"
+msgstr ""
+
+#: admin/debconfProfile/debconfProfile-list.xml:48
+msgid "Actions"
+msgstr ""
+
+#: admin/debconfProfile/debconfProfile-list.xml:59
+msgid "Create"
+msgstr ""
+
+#: admin/debconfProfile/debconfProfile-list.xml:65
+msgid "debconfProfil"
+msgstr ""
+
+#: admin/debconfProfile/debconfProfile-list.xml:77
+msgid "Remove"
+msgstr ""
+
+#: admin/debconfProfile/debconfProfile-list.xml:109
+msgid "Edit debconfProfile"
+msgstr ""
+
+#: admin/debconfProfile/debconfProfile-list.xml:122
+msgid "Remove debconfProfile"
+msgstr ""
+
+#: admin/debconfProfile/class_debconfProfileManagement.inc:35
+msgid "Debconf profiles"
+msgstr ""
+
+#: admin/debconfProfile/class_debconfProfileManagement.inc:36
+msgid "Debconf profile management"
+msgstr ""
+
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:72
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:85
+msgid "Error"
+msgstr ""
+
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:72
+msgid "There is no template for this profile"
+msgstr ""
+
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:86
+#, php-format
+msgid "Can't find entry %s in LDAP for profile %s"
+msgstr ""
+
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:135
+msgid "LDAP error"
+msgstr ""
+
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:138
+msgid "LDIF error"
+msgstr ""
+
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:147
+#, php-format
+msgid ""
+"In order to import a debconf file, please run the following command : "
+"<br/><i>debconf2ldif.pl -b ou=<b>name</b>,%s -k <b>filename</b> > "
+"template.ldif </i><br/>With <b>filename</b> the file name, and <b>name</b> "
+"the desired name for the template.<br/>"
+msgstr ""
+
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:169
+msgid "Import"
+msgstr ""
+
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:192
+msgid "Import a debconf file"
+msgstr ""
+
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:193
+msgid "Name of this debconf template"
+msgstr ""
+
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:197
+msgid "Entries"
+msgstr ""
+
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:199
+msgid "Debconf template answers"
+msgstr ""
+
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:209
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:214
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:216
+msgid "Debconf profile"
+msgstr ""
+
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:210
+msgid "Debconf profile generic"
+msgstr ""
+
+#: admin/debconfProfile/debconfProfile-filter.tpl:3
+msgid "Filter"
+msgstr ""
+
+#: admin/systems/debconf/class_debconfStartup.inc:65
+msgid "Debconf settings"
+msgstr ""
+
+#: admin/systems/debconf/class_debconfStartup.inc:68
+msgid "Profile"
+msgstr ""
+
+#: admin/systems/debconf/class_debconfStartup.inc:68
+msgid "Debconf preseed profile to be used for installation"
+msgstr ""
+
+#: admin/systems/debconf/class_debconfStartup.inc:72
+msgid "Release"
+msgstr ""
+
+#: admin/systems/debconf/class_debconfStartup.inc:72
+msgid "Debian release to install"
+msgstr ""
+
+#: admin/systems/debconf/class_debconfStartup.inc:77
+msgid "Boot kernel"
+msgstr ""
+
+#: admin/systems/debconf/class_debconfStartup.inc:77
+msgid "Linux kernel to be installed and booted"
+msgstr ""
+
+#: admin/systems/debconf/class_debconfStartup.inc:81
+msgid "Boot kernel parameters"
+msgstr ""
+
+#: admin/systems/debconf/class_debconfStartup.inc:81
+msgid "Linux kernel parameters to be ran"
+msgstr ""
+
+#: admin/systems/debconf/class_debconfStartup.inc:111
+msgid "Debconf"
+msgstr ""
+
+#: admin/systems/debconf/class_debconfStartup.inc:112
+msgid "Debconf preseed startup"
+msgstr ""

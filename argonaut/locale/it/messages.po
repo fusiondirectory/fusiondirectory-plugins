@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+#  <giuliano@opensides.be>, 2013.
 #   <giuliano@opensides.be>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
 "Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
 "POT-Creation-Date: 2013-02-12 19:00+0100\n"
-"PO-Revision-Date: 2013-02-12 18:41+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"PO-Revision-Date: 2013-03-09 00:40+0000\n"
+"Last-Translator: poterealpopolo <giuliano@opensides.be>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/FusionDirectory/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,19 +25,19 @@ msgstr "Impostazioni del cliente Argonaut"
 
 #: admin/systems/argonaut/class_argonautClient.inc:118
 msgid "Client port"
-msgstr ""
+msgstr "Porta del cliente"
 
 #: admin/systems/argonaut/class_argonautClient.inc:118
 msgid "Port used by argonaut client for JSON-RPC"
-msgstr ""
+msgstr "Porta usata dal cliente argonaut per JSON-RPC"
 
 #: admin/systems/argonaut/class_argonautClient.inc:123
 msgid "WakeOnLan interface"
-msgstr ""
+msgstr "Interfaccia WakeOnLan"
 
 #: admin/systems/argonaut/class_argonautClient.inc:123
 msgid "Interface used by argonaut for WakeOnLan"
-msgstr ""
+msgstr "Interfaccia usata da ragonaut per il WakeOnLan"
 
 #: admin/systems/argonaut/class_argonautClient.inc:128
 msgid "TaskId file"
@@ -54,15 +55,15 @@ msgstr "Cartella degli errori"
 
 #: admin/systems/argonaut/class_argonautClient.inc:133
 msgid "Directory in which argonaut client should write its logs"
-msgstr ""
+msgstr "Cartella nella quale il cliente argonaut scriverà i suoi log"
 
 #: admin/systems/argonaut/class_argonautClient.inc:140
 msgid "Service names"
-msgstr ""
+msgstr "Nomi dei servizi"
 
 #: admin/systems/argonaut/class_argonautClient.inc:142
 msgid "Argonaut service names"
-msgstr ""
+msgstr "Nomi dei servizi argonaut"
 
 #: admin/systems/argonaut/class_argonautClient.inc:157
 msgid "Argonaut client"
@@ -70,7 +71,7 @@ msgstr "Cliente Argonaut"
 
 #: admin/systems/argonaut/class_argonautClient.inc:158
 msgid "Edit argonaut client settings"
-msgstr ""
+msgstr "Modificare le impostazioni del cliente argonaut"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:30
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:31
@@ -89,7 +90,7 @@ msgstr "Servizi"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:45
 msgid "Argonaut Ldap2zone settings:"
-msgstr ""
+msgstr "Impostazioni di Ldap2zone Argonaut"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:48
 msgid "Bind directory"
@@ -97,7 +98,7 @@ msgstr "Cartella per Bind"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:49
 msgid "The directory in which conf file must be created"
-msgstr ""
+msgstr "La cartella nella quale sarà creato il file di configurazione"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:55
 msgid "Bind cache directory"
@@ -105,7 +106,7 @@ msgstr ""
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:56
 msgid "The directory in which zone files must be created"
-msgstr ""
+msgstr "La cartella nella quale le zone DNS saranno create"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:62
 msgid "Allow notify"
@@ -125,7 +126,7 @@ msgstr "TTL"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:81
 msgid "Time to live"
-msgstr ""
+msgstr "Durata"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:89
 msgid "rndc path"
@@ -133,7 +134,7 @@ msgstr "path rndc"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:90
 msgid "path to rndc binary"
-msgstr ""
+msgstr "path verso il file binario di rndc"
 
 #: admin/systems/services/argonaut/class_argonautFuseLTSPConfig.inc:32
 #: admin/systems/services/argonaut/class_argonautFuseLTSPConfig.inc:33
@@ -142,7 +143,7 @@ msgstr ""
 
 #: admin/systems/services/argonaut/class_argonautFuseLTSPConfig.inc:47
 msgid "LTSP"
-msgstr ""
+msgstr "LTSP"
 
 #: admin/systems/services/argonaut/class_argonautFuseLTSPConfig.inc:50
 msgid "LTSP server"
@@ -212,7 +213,7 @@ msgstr ""
 
 #: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:47
 msgid "OPSI"
-msgstr ""
+msgstr "OPSI"
 
 #: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:50
 msgid "Opsi admin"
@@ -250,11 +251,11 @@ msgstr ""
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:56
 msgid "Protocol"
-msgstr ""
+msgstr "Protocollo"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:56
 msgid "Protocol to use for argonaut"
-msgstr ""
+msgstr "Protocollo da usare per argonaut"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:61
 msgid "Port"
@@ -262,7 +263,7 @@ msgstr "Porta"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:62
 msgid "Port on which the argonaut server will be listening"
-msgstr ""
+msgstr "Porta sulla quale il server argonaut è all'ascolto"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:67
 msgid "Timeout"
@@ -295,15 +296,15 @@ msgstr ""
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:92
 msgid "Wake on lan"
-msgstr ""
+msgstr "Wake on lan"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:95
 msgid "Interface"
-msgstr ""
+msgstr "Interfaccia"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:96
 msgid "Interface to use for sending WakeOnLan requests"
-msgstr ""
+msgstr "Interfaccia da usare per l'invio delle richieste  WakeOnLan"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:101
 msgid "IP tool"
@@ -320,7 +321,7 @@ msgstr "Impostazioni Fuse di Argonaut"
 
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:45
 msgid "Basic settings"
-msgstr ""
+msgstr "Impostazioni di base"
 
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:48
 msgid "Default mode"
@@ -332,7 +333,7 @@ msgstr ""
 
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:64
 msgid "TFTP"
-msgstr ""
+msgstr "TFTP"
 
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:67
 msgid "Pxelinux cfg path"
@@ -419,7 +420,7 @@ msgstr "timestamp"
 
 #: addons/goto/goto_import_file.tpl:5
 msgid "MAC-address"
-msgstr ""
+msgstr "Indirizzo MAC"
 
 #: addons/goto/goto_import_file.tpl:5
 msgid "job type"
@@ -439,7 +440,7 @@ msgstr "Nome dell'host completo"
 
 #: addons/goto/goto_import_file.tpl:5
 msgid "IP-address"
-msgstr ""
+msgstr "Indirizzo IP"
 
 #: addons/goto/goto_import_file.tpl:5
 msgid "DHCP group"
@@ -752,7 +753,7 @@ msgstr "Info"
 #: addons/goto/class_gotomasses.inc:285
 #, php-format
 msgid "%s"
-msgstr ""
+msgstr "%s"
 
 #: addons/goto/class_gotomasses.inc:289
 #, php-format
@@ -770,7 +771,7 @@ msgstr "Impossibile aggiornare la coda delle entry."
 
 #: addons/goto/class_gotomasses.inc:454 addons/goto/class_gotomasses.inc:460
 msgid "Deployment queue"
-msgstr ""
+msgstr "Coda della distribuzione"
 
 #: addons/goto/class_gotomasses.inc:455
 msgid "Provide a mechanism to automatically activate systems"
