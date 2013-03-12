@@ -33,7 +33,7 @@ class opsiProfileManagement extends management
     return array(
       'plShortName'   => _('OPSI profiles'),
       'plDescription' => _('OPSI profile management'),
-      'plIcon'        => 'plugins/systems/images/opsi-application.png',
+      'plIcon'        => 'plugins/opsi/images/opsi-application.png',
       'plPriority'    => 10,
       'plSection'     => 'admin',
       'plCategory'    => array('opsiProfile'),
