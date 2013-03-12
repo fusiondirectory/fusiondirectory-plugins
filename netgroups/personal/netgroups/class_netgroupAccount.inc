@@ -23,11 +23,6 @@
 
 
 class netgroupAccount extends plugin {
-    /* Definitions */
-
-    var $plHeadline = "NIS Netgroup";
-    var $plDescription = "Choose NIS Netgroups for the user";
-
     /* Plugin specific values */
     var $view_logged = FALSE;
 
@@ -360,13 +355,14 @@ class netgroupAccount extends plugin {
 
     static function plInfo() {
       return array(
-        "plDescription"   => _("NIS Netgroup member"),
-        "plSelfModify"    => FALSE,
-        "plPriority"      => 2,
-        "plCategory"      => array("users"),
-        "plObjectType"    => array("user"),
-        "plProvidedAcls"  => array(
-            "memberCn" => _("NIS Netgroup members")
+        'plShortName'     => _('NIS Netgroup'),
+        'plDescription'   => _('NIS Netgroup member'),
+        'plSelfModify'    => FALSE,
+        'plPriority'      => 2,
+        'plCategory'      => array('users'),
+        'plObjectType'    => array('user'),
+        'plProvidedAcls'  => array(
+            'memberCn' => _('NIS Netgroup members')
         )
       );
     }
