@@ -31,13 +31,13 @@ class pureftpdAccount extends simplePlugin
   static function plInfo()
   {
     return array(
-      "plShortName"     => _("Ftp"),
-      "plDescription"   => _("Pure ftp account")."&nbsp;("._("Connectivity addon").")",
-      "plSelfModify"    => TRUE,
-      "plPriority"      => 22,                                 // Position in tabs
-      "plCategory"      => array("users"),
-      "plObjectType"    => array("connectivity"),
-      "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plShortName'     => _('Ftp'),
+      'plDescription'   => _('Pure ftp account').'&nbsp;('._('Connectivity addon').')',
+      'plSelfModify'    => TRUE,
+      'plPriority'      => 22,                                 // Position in tabs
+      'plCategory'      => array('users'),
+      'plObjectType'    => array('user'),
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }
 
