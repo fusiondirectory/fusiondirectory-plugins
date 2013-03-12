@@ -159,7 +159,7 @@ class askClassName extends plugin
     $message= plugin::check();
 
     /* Only allow limited set of characters as class name to avoid issues */
-    if (!preg_match('/^[A-Za-z0-9_]*$/', $this->ClassName)) {
+    if (!preg_match('/^[A-Za-z0-9_-]*$/', $this->ClassName)) {
       $message[] = msgPool::invalid(_("Name"), $this->ClassName, "/[A-Za-z0-9_-]/");
     }
 
