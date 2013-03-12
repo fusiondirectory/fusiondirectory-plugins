@@ -62,14 +62,14 @@ class proxyAccount extends simplePlugin
   static function plInfo()
   {
     return array(
-      "plShortName"     => _("Proxy"),
-      "plDescription"   => _("This allow to store basic squid settings in ldap for each user"),
-      "plSelfModify"    => TRUE,
-      "plPriority"      => 21,
-      "plCategory"      => array("users"),
-      "plObjectType"    => array("connectivity"),
+      'plShortName'     => _('Proxy'),
+      'plDescription'   => _('This allow to store basic squid settings in ldap for each user'),
+      'plSelfModify'    => TRUE,
+      'plPriority'      => 21,
+      'plCategory'      => array('users'),
+      'plObjectType'    => array('user'),
 
-      "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }
 
