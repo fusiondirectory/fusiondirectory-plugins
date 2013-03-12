@@ -79,13 +79,13 @@ class kolabAccount extends simplePlugin
   static function plInfo()
   {
     return array(
-      "plShortName"     => _("Kolab"),
-      "plDescription"   => _("Kolab account settings")."&nbsp;("._("Connectivity addon").")",
-      "plSelfModify"    => TRUE,
-      "plPriority"      => 20,
-      "plCategory"      => array("users"),
-      "plObjectType"    => array("connectivity"),
-      "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plShortName'     => _('Kolab'),
+      'plDescription'   => _('Kolab account settings'),
+      'plSelfModify'    => TRUE,
+      'plPriority'      => 20,
+      'plCategory'      => array('users'),
+      'plObjectType'    => array('user'),
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }
 
