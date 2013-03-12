@@ -1,5 +1,5 @@
 <?php
 
-demoPlugin::userMainInc('freeradiusAccount');
+freeradiusAccount::userMainInc('freeradiusAccount');
 
 ?>
