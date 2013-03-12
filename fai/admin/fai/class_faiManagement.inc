@@ -291,31 +291,18 @@ class faiManagement extends management
   function removeEntryRequested($action="",$target=array(),$all=array(), $altTabClass ="", $altTabType = "", $altAclCategory="")
   {
     $this->closeDialogs();
-    if($action == "remove_multiple"){
-
-      // Collect objects to delete
-      $headpage = $this->getHeadpage();
-      $to_delete = array();
-      foreach($target as $id){
-        $object = $headpage->getEntry($id);
-        if(in_array("FAKE_OC_FAI", $object['objectClass'])){
-          foreach($object['GROUPS']  as $entry){
-            array_push($to_delete, $entry);
-          }
-        }
-      }
-      return($this->removeFAIObjects($to_delete));
-    }else{
-
-      // Try to remove a single object, only FAI objects can be removed!
-      $headpage = $this->getHeadpage();
-      if(count($target) == 1){
-        $entry = $headpage->getEntry($target[0]);
-        if($entry && in_array("FAKE_OC_FAI",$entry['objectClass'])){
-          $this->dialogObject = new faiGroupHandle($entry['GROUPS'],"remove");
+    // Collect objects to delete
+    $headpage = $this->getHeadpage();
+    $to_delete = array();
+    foreach ($target as $id) {
+      $object = $headpage->getEntry($id);
+      if (in_array("FAKE_OC_FAI", $object['objectClass'])) {
+        foreach ($object['GROUPS']  as $entry) {
+          array_push($to_delete, $entry);
         }
       }
     }
+    return $this->removeFAIObjects($to_delete);
   }
 
 
@@ -348,20 +335,18 @@ class faiManagement extends management
 
     // Check entry locking
     if (count($this->dns)) {
-      if ($user= get_multiple_locks($this->dns)) {
-        return(gen_locked_message($user,$this->dns));
+      if ($user = get_multiple_locks($this->dns)) {
+        return gen_locked_message($user,$this->dns);
       }
-      if (count($this->dns)) {
-        $smarty = get_smarty();
-        $dns_names = array();
-        foreach($this->dns as $dn){
-          add_lock ($dn, $this->ui->dn);
-          $dns_names[] = LDAP::fix($dn);
-        }
-        $smarty->assign("info",msgPool::deleteInfo($dns_names,_("FAI object")));
-        $smarty->assign("multiple", true);
-        return($smarty->fetch(get_template_path('remove.tpl', TRUE)));
+      $smarty = get_smarty();
+      $dns_names = array();
+      foreach ($this->dns as $dn) {
+        add_lock ($dn, $this->ui->dn);
+        $dns_names[] = LDAP::fix($dn);
       }
+      $smarty->assign("info",msgPool::deleteInfo($dns_names, _("FAI object")));
+      $smarty->assign("multiple", TRUE);
+      return $smarty->fetch(get_template_path('remove.tpl', TRUE));
     }
   }
 
