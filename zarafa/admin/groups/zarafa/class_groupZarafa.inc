@@ -23,21 +23,20 @@
 class zarafagroup extends simplePlugin
 {
   var $displayHeader = TRUE;
-  var $objectclasses = array("zarafa-group");
+  var $objectclasses = array('zarafa-group');
 
   /* Return plugin informations for acl handling */
   static function plInfo()
   {
-    return (array(
-          "plShortName"    => _("Zarafa"),
-          "plDescription"  => _("Zarafa group"),
-          "plSelfModify"   => FALSE,
-          "plDepends"      => array(),
-          "plPriority"     => 10,
-          "plSection"      => array("administration"),
-          "plCategory"     => array("groups"),
-          "plProvidedAcls" => parent::generatePlProvidedAcls(self::getAttributesInfo())
-          ));
+    return array(
+      'plShortName'    => _('Zarafa group'),
+      'plDescription'  => _('Zarafa group'),
+      'plSelfModify'   => FALSE,
+      'plPriority'     => 10,
+      'plCategory'     => array('groups'),
+      'plCategory'     => array('group'),
+      'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
+    );
   }
 
 
@@ -45,13 +44,11 @@ class zarafagroup extends simplePlugin
   {
     parent::__construct($config, $dn, $object);
 
-    $this->attributesInfo['section1']['attrs']['zarafaSecurityGroup']->setManagedAttributes(
+    $this->attributesAccess['zarafaSecurityGroup']->setManagedAttributes(
       array(
         'erase' => array(
           FALSE => array(
-            'section1' => array(
-              'zarafaHidden',
-            )
+            'zarafaHidden',
           )
         )
       )
@@ -66,20 +63,16 @@ class zarafagroup extends simplePlugin
         'name'  => _('Zarafa Settings'),
         'attrs' => array(
           new BooleanAttribute(
-            _('Make this group a Zarafa Securitygroup'),
-            _('Make this group a Zarafa Securitygroup'),
-            'zarafaSecurityGroup',
-            FALSE,
+            _('Make this group a Zarafa Securitygroup'), _('Make this group a Zarafa Securitygroup'),
+            'zarafaSecurityGroup', FALSE,
             FALSE,
             '',
             1,
             0
           ),
           new BooleanAttribute(
-            _('Hide from Zarafa addressbook'),
-            _('Hide from Zarafa addressbook'),
-            'zarafaHidden',
-            FALSE,
+            _('Hide from Zarafa addressbook'), _('Hide from Zarafa addressbook'),
+            'zarafaHidden', FALSE,
             FALSE,
             '',
             1,
