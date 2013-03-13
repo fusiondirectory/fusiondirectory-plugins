@@ -46,14 +46,13 @@ class freeradiusAccount extends simplePlugin {
   static function plInfo ()
   {
     return array(
-    "plHeadline"        => _("Freeradius"),
-    "plShortName"       => _("Freeradius"),
-    "plIcon"            => _("plugins/freeradius/images/plugin.png"),
-    "plDescription"     => _("This Plugin is for Radius accounting based in FreeRadius"),
-    "plSelfModify"      => TRUE,                  // Does this plugin have an owner that might be able to edit its entry
-    "plSection"         => array("personal"),     // Should be either addon, administration or personal
-    "plCategory"        => array("user"),
-    "plProvidedAcls"    => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plShortName'       => _('Freeradius'),
+      'plDescription'     => _('This Plugin is for Radius accounting based in FreeRadius'),
+      'plIcon'            => _('plugins/freeradius/images/plugin.png'),
+      'plSelfModify'      => TRUE,                  // Does this plugin have an owner that might be able to edit its entry
+      'plCategory'        => array('user'),
+      'plObjectType'      => array('user'),
+      'plProvidedAcls'    => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }
 

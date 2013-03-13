@@ -42,12 +42,11 @@ class freeradiusGroup extends simplePlugin {
   static function plInfo ()
   {
     return array(
-    "plShortName"       => _("Freeradius"),
-    "plDescription"     => _("This Plugin is for Radius accounting based in FreeRadius"),
-    "plSelfModify"      => TRUE,                  // Does this plugin have an owner that might be able to edit its entry
-    "plSection"         => array("admin"),     // Should be either addon, administration or personal
-    "plCategory"        => array("group"),
-    "plProvidedAcls"    => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plShortName'       => _('Freeradius'),
+      'plDescription'     => _('This Plugin is for Radius accounting based in FreeRadius'),
+      'plCategory'        => array('group'),
+      'plObjectType'      => array('group'),
+      'plProvidedAcls'    => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }
 
