@@ -1,8 +1,9 @@
 <?php
 
 /*
- * This code is part of GOsa (http://www.gosa-project.org)
+ * This code is part of FusionDirectory (http://www.fusiondirectory.org/)
  * Copyright (C) 2009-2010 Bas Tichelaar
+ * Copyright (C) 2011-2013 FusionDirectory project
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,33 +17,35 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
  */
 
 class zarafaAccount extends simplePlugin
 {
   var $displayHeader = TRUE;
   var $objectclasses = array("gosaMailAccount", "zarafa-user");
+  var $plHeadline    = "Zarafa";
+  var $plDescription = "This Plugin is for Zarafa user management";
+
   /*!
-   * \brief  ACL settings
+   * \brief Plugin information
    */
   static function plInfo()
   {
-    return (array(
-          "plShortName"     => _("Mail"),
-          "plDescription"   => _("Zarafa settings"),
-          "plSelfModify"    => TRUE,
-          "plDepends"       => array("user"),                     // This plugin depends on
-          "plPriority"      => 4,                                 // Position in tabs
-          "plSection"       => array("personal" => _("My account")),
-          "plCategory"      => array("users"),
-          "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
-        ));
+    return array(
+      'plShortName'     => _('Zarafa'),
+      'plDescription'   => _('Zarafa settings'),
+      'plIcon'           => _('plugins/zarafa/images/zarafa.png'),
+      'plSelfModify'    => TRUE,                              // Does this plugin have an owner that might be able to edit its entry
+      'plCategory'      => array('user'),
+      'plObjectType'    => array('user'),
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+    );
   }
 
 
   /*!
-   * \brief Constructor of the freeradiusAccount
+   * \brief Constructor of the ZarafaAccount
    *        It will build the select groups choices
    */
   function __construct(&$config, $dn = NULL, $object = NULL)

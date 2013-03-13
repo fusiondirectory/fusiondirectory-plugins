@@ -1,8 +1,9 @@
 <?php
 
 /*
- * This code is part of GOsa (http://www.gosa-project.org)
+ * This code is part of FusionDirectory (http://www.fusiondirectory.org/)
  * Copyright (C) 2009-2010 Bas Tichelaar
+ * Copyright (C) 2011-2013 FusionDirectory
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,7 +24,7 @@
 class zarafagroup extends simplePlugin
 {
   var $displayHeader = TRUE;
-  var $objectclasses              = array("zarafa-group");
+  var $objectclasses = array("zarafa-group");
 
   /* Return plugin informations for acl handling */
   static function plInfo()

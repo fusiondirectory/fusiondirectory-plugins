@@ -1,6 +1,6 @@
 <?php
 /*
- * This code is part of GOsa (http://www.gosa-project.org)
+ * This code is part of FusionDirectory (http://www.fusiondirectory.org/)
  * Copyright (C) 2009-2010 Bas Tichelaar
  * Copyright (C) 2013 FusionDirectory
  *
