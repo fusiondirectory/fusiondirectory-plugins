@@ -5,8 +5,7 @@
 # Updates by Adrian Pavlykevych <pam@polynet.lviv.ua>
 ##############
 
-attributetype
-   ( 1.3.6.1.4.1.3317.4.3.1.1
+attributetype ( 1.3.6.1.4.1.3317.4.3.1.1
       NAME 'radiusArapFeatures'
       DESC ''
       EQUALITY caseIgnoreIA5Match
@@ -14,8 +13,7 @@ attributetype
       SINGLE-VALUE
    )
 
-attributetype
-   ( 1.3.6.1.4.1.3317.4.3.1.2
+attributetype ( 1.3.6.1.4.1.3317.4.3.1.2
       NAME 'radiusArapSecurity'
       DESC ''
       EQUALITY caseIgnoreIA5Match
@@ -23,8 +21,7 @@ attributetype
       SINGLE-VALUE
    )
 
-attributetype
-   ( 1.3.6.1.4.1.3317.4.3.1.3
+attributetype ( 1.3.6.1.4.1.3317.4.3.1.3
       NAME 'radiusArapZoneAccess'
       DESC ''
       EQUALITY caseIgnoreIA5Match
@@ -32,8 +29,7 @@ attributetype
       SINGLE-VALUE
    )
 
-attributetype
-   ( 1.3.6.1.4.1.3317.4.3.1.44
+attributetype ( 1.3.6.1.4.1.3317.4.3.1.44
      NAME 'radiusAuthType'
      DESC ''
      EQUALITY caseIgnoreIA5Match
@@ -41,8 +37,7 @@ attributetype
      SINGLE-VALUE
    )
 
-attributetype
-   ( 1.3.6.1.4.1.3317.4.3.1.4
+attributetype ( 1.3.6.1.4.1.3317.4.3.1.4
       NAME 'radiusCallbackId'
       DESC ''
       EQUALITY caseIgnoreIA5Match
@@ -50,8 +45,7 @@ attributetype
       SINGLE-VALUE
    )
 
-attributetype
-   ( 1.3.6.1.4.1.3317.4.3.1.5
+attributetype ( 1.3.6.1.4.1.3317.4.3.1.5
       NAME 'radiusCallbackNumber'
       DESC ''
       EQUALITY caseIgnoreIA5Match
@@ -59,8 +53,7 @@ attributetype
       SINGLE-VALUE
    )
 
-attributetype
-   ( 1.3.6.1.4.1.3317.4.3.1.6
+attributetype ( 1.3.6.1.4.1.3317.4.3.1.6
       NAME 'radiusCalledStationId'
       DESC ''
       EQUALITY caseIgnoreIA5Match
@@ -68,8 +61,7 @@ attributetype
       SINGLE-VALUE
    )
 
-attributetype
-   ( 1.3.6.1.4.1.3317.4.3.1.7
+attributetype ( 1.3.6.1.4.1.3317.4.3.1.7
       NAME 'radiusCallingStationId'
       DESC ''
       EQUALITY caseIgnoreIA5Match
@@ -77,16 +69,14 @@ attributetype
       SINGLE-VALUE
    )
 
-attributetype
-   ( 1.3.6.1.4.1.3317.4.3.1.8
+attributetype ( 1.3.6.1.4.1.3317.4.3.1.8
       NAME 'radiusClass'
       DESC ''
       EQUALITY caseIgnoreIA5Match
       SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
    )
 
-attributetype
-   ( 1.3.6.1.4.1.3317.4.3.1.45
+attributetype ( 1.3.6.1.4.1.3317.4.3.1.45
      NAME 'radiusClientIPAddress'
      DESC ''
      EQUALITY caseIgnoreIA5Match
@@ -94,16 +84,14 @@ attributetype
      SINGLE-VALUE
    )
 
-attributetype
-   ( 1.3.6.1.4.1.3317.4.3.1.9
+attributetype ( 1.3.6.1.4.1.3317.4.3.1.9
       NAME 'radiusFilterId'
       DESC ''
       EQUALITY caseIgnoreIA5Match
       SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
    )
 
-attributetype
-   ( 1.3.6.1.4.1.3317.4.3.1.10
+attributetype ( 1.3.6.1.4.1.3317.4.3.1.10
       NAME 'radiusFramedAppleTalkLink'
       DESC ''
       EQUALITY caseIgnoreIA5Match
@@ -111,16 +99,14 @@ attributetype
       SINGLE-VALUE
    )
 
-attributetype
-   ( 1.3.6.1.4.1.3317.4.3.1.11
+attributetype ( 1.3.6.1.4.1.3317.4.3.1.11
       NAME 'radiusFramedAppleTalkNetwork'
       DESC ''
       EQUALITY caseIgnoreIA5Match
       SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
    )
 
-attributetype
-   ( 1.3.6.1.4.1.3317.4.3.1.12
+attributetype ( 1.3.6.1.4.1.3317.4.3.1.12
       NAME 'radiusFramedAppleTalkZone'
       DESC ''
       EQUALITY caseIgnoreIA5Match
@@ -128,16 +114,14 @@ attributetype
       SINGLE-VALUE
    )
 
-attributetype
-   ( 1.3.6.1.4.1.3317.4.3.1.13
+attributetype ( 1.3.6.1.4.1.3317.4.3.1.13
       NAME 'radiusFramedCompression'
       DESC ''
       EQUALITY caseIgnoreIA5Match
       SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
    )
 
-attributetype
-   ( 1.3.6.1.4.1.3317.4.3.1.14
+attributetype ( 1.3.6.1.4.1.3317.4.3.1.14
       NAME 'radiusFramedIPAddress'
       DESC ''
       EQUALITY caseIgnoreIA5Match
@@ -145,8 +129,7 @@ attributetype
       SINGLE-VALUE
    )
 
-attributetype
-   ( 1.3.6.1.4.1.3317.4.3.1.15
+attributetype ( 1.3.6.1.4.1.3317.4.3.1.15
       NAME 'radiusFramedIPNetmask'
       DESC ''
       EQUALITY caseIgnoreIA5Match
@@ -154,8 +137,7 @@ attributetype
       SINGLE-VALUE
    )
 
-attributetype
-   ( 1.3.6.1.4.1.3317.4.3.1.16
+attributetype ( 1.3.6.1.4.1.3317.4.3.1.16
       NAME 'radiusFramedIPXNetwork'
       DESC ''
       EQUALITY caseIgnoreIA5Match
@@ -163,8 +145,7 @@ attributetype
       SINGLE-VALUE
    )
 
-attributetype
-   ( 1.3.6.1.4.1.3317.4.3.1.17
+attributetype ( 1.3.6.1.4.1.3317.4.3.1.17
       NAME 'radiusFramedMTU'
       DESC ''
       EQUALITY caseIgnoreIA5Match
@@ -172,8 +153,7 @@ attributetype
       SINGLE-VALUE
    )
 
-attributetype
-   ( 1.3.6.1.4.1.3317.4.3.1.18
+attributetype ( 1.3.6.1.4.1.3317.4.3.1.18
       NAME 'radiusFramedProtocol'
       DESC ''
       EQUALITY caseIgnoreIA5Match
@@ -181,16 +161,14 @@ attributetype
       SINGLE-VALUE
    )
 
-attributetype
-   ( 1.3.6.1.4.1.3317.4.3.1.19
+attributetype ( 1.3.6.1.4.1.3317.4.3.1.19
       NAME 'radiusFramedRoute'
       DESC ''
       EQUALITY caseIgnoreIA5Match
       SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
    )
 
-attributetype
-   ( 1.3.6.1.4.1.3317.4.3.1.20
+attributetype ( 1.3.6.1.4.1.3317.4.3.1.20
       NAME 'radiusFramedRouting'
       DESC ''
       EQUALITY caseIgnoreIA5Match
@@ -198,16 +176,14 @@ attributetype
       SINGLE-VALUE
    )
 
-attributetype
-   ( 1.3.6.1.4.1.3317.4.3.1.46
+attributetype ( 1.3.6.1.4.1.3317.4.3.1.46
       NAME 'radiusGroupName'
       DESC ''
       EQUALITY caseIgnoreIA5Match
       SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
    )
 
-attributetype
-   ( 1.3.6.1.4.1.3317.4.3.1.47
+attributetype ( 1.3.6.1.4.1.3317.4.3.1.47
       NAME 'radiusHint'
       DESC ''
       EQUALITY caseIgnoreIA5Match
@@ -215,16 +191,14 @@ attributetype
       SINGLE-VALUE
    )
 
-attributetype
-   ( 1.3.6.1.4.1.3317.4.3.1.48
+attributetype ( 1.3.6.1.4.1.3317.4.3.1.48
       NAME 'radiusHuntgroupName'
       DESC ''
       EQUALITY caseIgnoreIA5Match
       SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
    )
 
-attributetype
-   ( 1.3.6.1.4.1.3317.4.3.1.21
+attributetype ( 1.3.6.1.4.1.3317.4.3.1.21
       NAME 'radiusIdleTimeout'
       DESC ''
       EQUALITY caseIgnoreIA5Match
@@ -232,16 +206,14 @@ attributetype
       SINGLE-VALUE
    )
 
-attributetype
-   ( 1.3.6.1.4.1.3317.4.3.1.22
+attributetype ( 1.3.6.1.4.1.3317.4.3.1.22
       NAME 'radiusLoginIPHost'
       DESC ''
       EQUALITY caseIgnoreIA5Match
       SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
    )
 
-attributetype
-   ( 1.3.6.1.4.1.3317.4.3.1.23
+attributetype ( 1.3.6.1.4.1.3317.4.3.1.23
       NAME 'radiusLoginLATGroup'
       DESC ''
       EQUALITY caseIgnoreIA5Match
@@ -249,8 +221,7 @@ attributetype
       SINGLE-VALUE
    )
 
-attributetype
-   ( 1.3.6.1.4.1.3317.4.3.1.24
+attributetype ( 1.3.6.1.4.1.3317.4.3.1.24
       NAME 'radiusLoginLATNode'
       DESC ''
       EQUALITY caseIgnoreIA5Match
@@ -258,8 +229,7 @@ attributetype
       SINGLE-VALUE
    )
 
-attributetype
-   ( 1.3.6.1.4.1.3317.4.3.1.25
+attributetype ( 1.3.6.1.4.1.3317.4.3.1.25
       NAME 'radiusLoginLATPort'
       DESC ''
       EQUALITY caseIgnoreIA5Match
@@ -267,8 +237,7 @@ attributetype
       SINGLE-VALUE
    )
 
-attributetype
-   ( 1.3.6.1.4.1.3317.4.3.1.26
+attributetype ( 1.3.6.1.4.1.3317.4.3.1.26
       NAME 'radiusLoginLATService'
       DESC ''
       EQUALITY caseIgnoreIA5Match
@@ -276,8 +245,7 @@ attributetype
       SINGLE-VALUE
    )
 
-attributetype
-   ( 1.3.6.1.4.1.3317.4.3.1.27
+attributetype ( 1.3.6.1.4.1.3317.4.3.1.27
       NAME 'radiusLoginService'
       DESC ''
       EQUALITY caseIgnoreIA5Match
@@ -285,8 +253,7 @@ attributetype
       SINGLE-VALUE
    )
 
-attributetype
-   ( 1.3.6.1.4.1.3317.4.3.1.28
+attributetype ( 1.3.6.1.4.1.3317.4.3.1.28
       NAME 'radiusLoginTCPPort'
       DESC ''
       EQUALITY caseIgnoreIA5Match
@@ -294,8 +261,7 @@ attributetype
       SINGLE-VALUE
    )
 
-attributetype
-   ( 1.3.6.1.4.1.3317.4.3.1.29
+attributetype ( 1.3.6.1.4.1.3317.4.3.1.29
       NAME 'radiusPasswordRetry'
       DESC ''
       EQUALITY caseIgnoreIA5Match
@@ -303,8 +269,7 @@ attributetype
       SINGLE-VALUE
    )
 
-attributetype
-   ( 1.3.6.1.4.1.3317.4.3.1.30
+attributetype ( 1.3.6.1.4.1.3317.4.3.1.30
       NAME 'radiusPortLimit'
       DESC ''
       EQUALITY caseIgnoreIA5Match
@@ -312,8 +277,7 @@ attributetype
       SINGLE-VALUE
    )
 
-attributetype
-   ( 1.3.6.1.4.1.3317.4.3.1.49
+attributetype ( 1.3.6.1.4.1.3317.4.3.1.49
       NAME 'radiusProfileDn'
       DESC ''
       EQUALITY distinguishedNameMatch
@@ -321,8 +285,7 @@ attributetype
       SINGLE-VALUE
    )
 
-attributetype
-   ( 1.3.6.1.4.1.3317.4.3.1.31
+attributetype ( 1.3.6.1.4.1.3317.4.3.1.31
       NAME 'radiusPrompt'
       DESC ''
       EQUALITY caseIgnoreIA5Match
@@ -330,8 +293,7 @@ attributetype
       SINGLE-VALUE
    )
 
-attributetype
-   ( 1.3.6.1.4.1.3317.4.3.1.50
+attributetype ( 1.3.6.1.4.1.3317.4.3.1.50
       NAME 'radiusProxyToRealm'
       DESC ''
       EQUALITY caseIgnoreIA5Match
@@ -339,8 +301,7 @@ attributetype
       SINGLE-VALUE
    )
 
-attributetype
-   ( 1.3.6.1.4.1.3317.4.3.1.51
+attributetype ( 1.3.6.1.4.1.3317.4.3.1.51
       NAME 'radiusReplicateToRealm'
       DESC ''
       EQUALITY caseIgnoreIA5Match
@@ -348,8 +309,7 @@ attributetype
       SINGLE-VALUE
    )
 
-attributetype
-   ( 1.3.6.1.4.1.3317.4.3.1.52
+attributetype ( 1.3.6.1.4.1.3317.4.3.1.52
       NAME 'radiusRealm'
       DESC ''
       EQUALITY caseIgnoreIA5Match
@@ -357,8 +317,7 @@ attributetype
       SINGLE-VALUE
    )
 
-attributetype
-   ( 1.3.6.1.4.1.3317.4.3.1.32
+attributetype ( 1.3.6.1.4.1.3317.4.3.1.32
       NAME 'radiusServiceType'
       DESC ''
       EQUALITY caseIgnoreIA5Match
@@ -366,8 +325,7 @@ attributetype
       SINGLE-VALUE
    )
 
-attributetype
-   ( 1.3.6.1.4.1.3317.4.3.1.33
+attributetype ( 1.3.6.1.4.1.3317.4.3.1.33
       NAME 'radiusSessionTimeout'
       DESC ''
       EQUALITY caseIgnoreIA5Match
@@ -375,8 +333,7 @@ attributetype
       SINGLE-VALUE
    )
 
-attributetype
-   ( 1.3.6.1.4.1.3317.4.3.1.34
+attributetype ( 1.3.6.1.4.1.3317.4.3.1.34
       NAME 'radiusTerminationAction'
       DESC ''
       EQUALITY caseIgnoreIA5Match
@@ -384,24 +341,21 @@ attributetype
       SINGLE-VALUE
    )
 
-attributetype
-   ( 1.3.6.1.4.1.3317.4.3.1.35
+attributetype ( 1.3.6.1.4.1.3317.4.3.1.35
       NAME 'radiusTunnelAssignmentId'
       DESC ''
       EQUALITY caseIgnoreIA5Match
       SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
    )
 
-attributetype
-   ( 1.3.6.1.4.1.3317.4.3.1.36
+attributetype ( 1.3.6.1.4.1.3317.4.3.1.36
       NAME 'radiusTunnelMediumType'
       DESC ''
       EQUALITY caseIgnoreIA5Match
       SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
    )
 
-attributetype
-   ( 1.3.6.1.4.1.3317.4.3.1.37
+attributetype ( 1.3.6.1.4.1.3317.4.3.1.37
       NAME 'radiusTunnelPassword'
       DESC ''
       EQUALITY caseIgnoreIA5Match
@@ -409,48 +363,42 @@ attributetype
       SINGLE-VALUE
    )
 
-attributetype
-   ( 1.3.6.1.4.1.3317.4.3.1.38
+attributetype ( 1.3.6.1.4.1.3317.4.3.1.38
       NAME 'radiusTunnelPreference'
       DESC ''
       EQUALITY caseIgnoreIA5Match
       SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
    )
 
-attributetype
-   ( 1.3.6.1.4.1.3317.4.3.1.39
+attributetype ( 1.3.6.1.4.1.3317.4.3.1.39
       NAME 'radiusTunnelPrivateGroupId'
       DESC ''
       EQUALITY caseIgnoreIA5Match
       SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
    )
 
-attributetype
-   ( 1.3.6.1.4.1.3317.4.3.1.40
+attributetype ( 1.3.6.1.4.1.3317.4.3.1.40
       NAME 'radiusTunnelServerEndpoint'
       DESC ''
       EQUALITY caseIgnoreIA5Match
       SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
    )
 
-attributetype
-   ( 1.3.6.1.4.1.3317.4.3.1.41
+attributetype ( 1.3.6.1.4.1.3317.4.3.1.41
       NAME 'radiusTunnelType'
       DESC ''
       EQUALITY caseIgnoreIA5Match
       SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
    )
 
-attributetype
-   ( 1.3.6.1.4.1.3317.4.3.1.42
+attributetype ( 1.3.6.1.4.1.3317.4.3.1.42
       NAME 'radiusVSA'
       DESC ''
       EQUALITY caseIgnoreIA5Match
       SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
    )
 
-attributetype
-   ( 1.3.6.1.4.1.3317.4.3.1.43
+attributetype ( 1.3.6.1.4.1.3317.4.3.1.43
       NAME 'radiusTunnelClientEndpoint'
       DESC ''
       EQUALITY caseIgnoreIA5Match
@@ -459,16 +407,14 @@ attributetype
 
 
 #need to change asn1.id
-attributetype
-   ( 1.3.6.1.4.1.3317.4.3.1.53
+attributetype ( 1.3.6.1.4.1.3317.4.3.1.53
       NAME 'radiusSimultaneousUse'
       DESC ''
       SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
       SINGLE-VALUE
    )
 
-attributetype
-   ( 1.3.6.1.4.1.3317.4.3.1.54
+attributetype ( 1.3.6.1.4.1.3317.4.3.1.54
       NAME 'radiusLoginTime'
       DESC ''
       EQUALITY caseIgnoreIA5Match
@@ -476,8 +422,7 @@ attributetype
       SINGLE-VALUE
    )
 
-attributetype
-   ( 1.3.6.1.4.1.3317.4.3.1.55
+attributetype ( 1.3.6.1.4.1.3317.4.3.1.55
       NAME 'radiusUserCategory'
       DESC ''
       EQUALITY caseIgnoreIA5Match
@@ -485,16 +430,14 @@ attributetype
       SINGLE-VALUE
    )
 
-attributetype
-   ( 1.3.6.1.4.1.3317.4.3.1.56
+attributetype ( 1.3.6.1.4.1.3317.4.3.1.56
       NAME 'radiusStripUserName'
       DESC ''
       SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
       SINGLE-VALUE
    )
 
-attributetype
-   ( 1.3.6.1.4.1.3317.4.3.1.57
+attributetype ( 1.3.6.1.4.1.3317.4.3.1.57
       NAME 'dialupAccess'
       DESC ''
       EQUALITY caseIgnoreIA5Match
@@ -502,8 +445,7 @@ attributetype
       SINGLE-VALUE
    )
 
-attributetype
-   ( 1.3.6.1.4.1.3317.4.3.1.58
+attributetype ( 1.3.6.1.4.1.3317.4.3.1.58
       NAME 'radiusExpiration'
       DESC ''
       EQUALITY caseIgnoreIA5Match
@@ -511,24 +453,21 @@ attributetype
       SINGLE-VALUE
    )
 
-attributetype
-   ( 1.3.6.1.4.1.3317.4.3.1.59
+attributetype ( 1.3.6.1.4.1.3317.4.3.1.59
       NAME 'radiusCheckItem'
       DESC ''
       EQUALITY caseIgnoreIA5Match
       SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
    )
 
-attributetype
-   ( 1.3.6.1.4.1.3317.4.3.1.60
+attributetype ( 1.3.6.1.4.1.3317.4.3.1.60
       NAME 'radiusReplyItem'
       DESC ''
       EQUALITY caseIgnoreIA5Match
       SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
    )
 
-attributetype
-   ( 1.3.6.1.4.1.3317.4.3.1.61
+attributetype ( 1.3.6.1.4.1.3317.4.3.1.61
       NAME 'radiusNASIpAddress'
       DESC ''
       EQUALITY caseIgnoreIA5Match
@@ -536,8 +475,7 @@ attributetype
       SINGLE-VALUE
    )
 
-attributetype
-   ( 1.3.6.1.4.1.3317.4.3.1.62
+attributetype ( 1.3.6.1.4.1.3317.4.3.1.62
       NAME 'radiusReplyMessage'
       DESC ''
       EQUALITY caseIgnoreIA5Match
@@ -545,8 +483,7 @@ attributetype
    )
 
 
-objectclass
-   ( 1.3.6.1.4.1.3317.4.3.2.1
+objectclass ( 1.3.6.1.4.1.3317.4.3.2.1
       NAME 'radiusprofile'
       SUP top AUXILIARY
       DESC ''
@@ -577,8 +514,7 @@ objectclass
             radiusReplyMessage )
    )
 
-objectclass
-  ( 1.3.6.1.4.1.3317.4.3.2.2
+objectclass ( 1.3.6.1.4.1.3317.4.3.2.2
 	NAME 'radiusObjectProfile'
 	SUP top STRUCTURAL
 	DESC 'A Container Objectclass to be used for creating radius profile object'
