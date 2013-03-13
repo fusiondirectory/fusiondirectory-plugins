@@ -30,13 +30,13 @@ class phpscheduleitAccount extends simplePlugin
   static function plInfo()
   {
     return array(
-      "plShortName"     => _("PHP Schedule it"),
-      "plDescription"   => _("PHP Schedule it settings")."&nbsp;("._("Connectivity addon").")",
-      "plSelfModify"    => TRUE,
-      "plPriority"      => 29,                                 // Position in tabs
-      "plCategory"      => array("users"),
-      "plObjectType"    => array("connectivity"),
-      "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plShortName'     => _('PHP Schedule it'),
+      'plDescription'   => _('PHP Schedule it settings'),
+      'plSelfModify'    => TRUE,
+      'plPriority'      => 29,                                 // Position in tabs
+      'plCategory'      => array('users'),
+      'plObjectType'    => array('user'),
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }
 
