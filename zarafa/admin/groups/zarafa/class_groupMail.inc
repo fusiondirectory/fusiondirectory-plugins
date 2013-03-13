@@ -43,8 +43,8 @@ class zarafamailgroup extends simplePlugin
   static function plInfo()
   {
     return array(
-      'plShortName'    => _('Mail'),
-      'plDescription'  => _('Group mail'),
+      'plShortName'    => _('Zarafa'),
+      'plDescription'  => _('Zarafa Group mail'),
       'plSelfModify'   => FALSE,
       'plPriority'     => 10,
       'plCategory'     => array('groups'),
