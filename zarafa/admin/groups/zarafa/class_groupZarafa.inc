@@ -34,7 +34,7 @@ class zarafagroup extends simplePlugin
       'plSelfModify'   => FALSE,
       'plPriority'     => 10,
       'plCategory'     => array('groups'),
-      'plCategory'     => array('group'),
+      'plObjectType'   => array('group'),
       'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }
