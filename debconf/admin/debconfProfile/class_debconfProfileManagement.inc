@@ -34,7 +34,7 @@ class debconfProfileManagement extends management
     return array(
       "plShortName"   => _("Debconf profiles"),
       "plDescription" => _("Debconf profile management"),
-      "plIcon"        => "plugins/systems/images/application.png",
+      "plIcon"        => "plugins/debconf/images/debconf.png",
       "plPriority"    => 10,
       "plSection"     => "admin",
       "plCategory"    => array("debconfProfile"),
