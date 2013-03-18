@@ -22,11 +22,6 @@
 
 class phoneAccount extends plugin
 {
-  /* Definitions */
-  var $plHeadline   = "Phone";
-  var $plDescription= "This is user phone account plugin management";
-  var $plIcon       = "plugins/asterisk/images/phoneAccount.png";
-
   var $delimiter = "|";
 
   /* Attributes */
@@ -72,7 +67,6 @@ class phoneAccount extends plugin
   var $view_logged      = FALSE;
   var $multiple_support = TRUE;
   var $mailAddress      = "";
-  var $has_mailAccount  = FALSE;
   var $pager            = "";
 
   function phoneAccount (&$config, $dn= NULL, $parent= NULL)
@@ -105,10 +99,6 @@ class phoneAccount extends plugin
     if(isset($this->attrs['cn'][0])){
       $this->cn = $this->attrs['cn'][0];
     }
-    if(isset($this->attrs['mail'][0])){
-      $this->mailAddress = $this->attrs['mail'][0];
-      $this->has_mailAccount = true;
-    }
     if(isset($this->attrs['pager'][0])){
       $this->pager = $this->attrs['pager'][0];
     }
@@ -119,14 +109,10 @@ class phoneAccount extends plugin
       $this->uid = &$this->parent->by_object['user']->uid;
     }
     if(isset($this->parent->by_object['user']->cn)){
-      $this->cn   =&$this->parent->by_object['user']->cn;
+      $this->cn = &$this->parent->by_object['user']->cn;
     }
     if(isset($this->parent->by_object['user']->pager)){
-      $this->pager   =&$this->parent->by_object['user']->pager;
-    }
-    if(isset($this->parent->by_object['mailAccount']->mail)){
-      $this->mailAddress      = &$this->parent->by_object['mailAccount']->mail;
-      $this->has_mailAccount  = &$this->parent->by_object['mailAccount']->is_account;
+      $this->pager = &$this->parent->by_object['user']->pager;
     }
 
     /* Check server configurations
@@ -522,15 +508,15 @@ class phoneAccount extends plugin
 
     /* Create voicemail entry
      */
-    if((!isset($this->cn))||(empty($this->cn))){
+    if ((!isset($this->cn)) || (empty($this->cn))) {
       $CNname= $this->uid;
-    }else{
+    } else {
       $CNname= $this->cn;
     }
 
     $s_mail = "";
-    if($this->has_mailAccount){
-      $s_mail = $this->mailAddress;;
+    if (isset($this->parent->by_object['mailAccount']->mail)) {
+      $s_mail = $this->parent->by_object['mailAccount']->mail;
     }
 
     /* Get phonehardware to setup sip entry  */
@@ -793,12 +779,13 @@ class phoneAccount extends plugin
       }
 
       $voice_data_array = array(
-          "customer_id" => $customer_id,
-          "mailbox"     => $customer_id,
-          "password"    => $this->goFonVoicemailPIN,
-          "fullname"    => $CNname,
-          "context"     => $this->voice_context,
-          "email"       => $s_mail);
+        "customer_id" => $customer_id,
+        "mailbox"     => $customer_id,
+        "password"    => $this->goFonVoicemailPIN,
+        "fullname"    => $CNname,
+        "context"     => $this->voice_context,
+        "email"       => $s_mail
+      );
 
       $voice_data_array['pager']   = $this->pager;
 
@@ -1676,7 +1663,7 @@ class phoneAccount extends plugin
   function allow_remove()
   {
     /* Check if previously selected server is still available */
-    if($this->initially_was_account && !isset($this->goFonHomeServers[$this->goFonHomeServer])){
+    if ($this->initially_was_account && !isset($this->goFonHomeServers[$this->goFonHomeServer])) {
       return sprintf(_("The previously selected asterisk home server (%s) is no longer available. Remove aborted."),preg_replace("/,/",", ",$this->goFonHomeServer));
     }
   }
@@ -1687,6 +1674,7 @@ class phoneAccount extends plugin
     return array(
       "plShortName"   => _("Phone"),
       "plDescription" => _("Phone account settings"),
+      "plIcon"        => "plugins/asterisk/images/phoneAccount.png",
       "plSelfModify"  => TRUE,
       "plPriority"    => 7,                                 // Position in tabs
       "plCategory"    => array("users"),
@@ -1704,129 +1692,6 @@ class phoneAccount extends plugin
       )
     );
   }
-
-
-
-  function multiple_execute()
-  {
-    plugin::multiple_execute();
-    return($this->execute());
-  }
-
-  function get_multi_init_values()
-  {
-    $ret = plugin::get_multi_init_values();
-    $ret['phoneNumbers'] = array();
-    foreach($this->phoneNumbers as $number){
-      $ret['phoneNumbers'][] = $number."  [".$this->attrs['cn'][0]."]";
-    }
-    $ret['phoneNumbers']['count'] = count($ret['phoneNumbers']);
-    return($ret);
-  }
-
-  function init_multiple_support($attrs,$all)
-  {
-    plugin::init_multiple_support($attrs,$all);
-
-    $this->phoneNumbers = array();
-    if(isset($all['phoneNumbers'])){
-      for($i = 0 ; $i < $all['phoneNumbers']['count'] ; $i++){
-        $this->phoneNumbers[$all['phoneNumbers'][$i]] = $all['phoneNumbers'][$i];
-      }
-    }
-  }
-
-  function multiple_save_object()
-  {
-    /* Simply call parents save_object */
-    if (isset($_POST["phoneTab"])){
-
-      plugin::save_object();
-      plugin::multiple_save_object();
-
-      /* Every macro in the select box are available */
-      if((isset($_POST['macro']))){
-        $this->macrostillavailable=true;
-      }
-
-      if(isset($_POST['macro']) && $_POST['macro'] != $this->macro){
-        $this->macro = $_POST['macro'];
-        $this->is_modified =true;
-      }
-
-      /* get all Postvars */
-      if(isset($this->macroarray[$this->macro])){
-        foreach($this->macroarray[$this->macro] as $key => $paras){
-          $backup = $this->macroarray[$this->macro][$key];
-          if(isset($_POST[$paras['var']])){
-            $this->macroarray[$this->macro][$key]['choosen'] = $_POST[$paras['var']];
-          }
-          if(isset($_POST['post_success'])){
-            if($this->macroarray[$this->macro][$key]['type']=="bool"){
-              if(isset($_POST[$this->macroarray[$this->macro][$key]['var']])) {
-                $this->macroarray[$this->macro][$key]['choosen']=$_POST[$paras['var']];
-              }else{
-                $this->macroarray[$this->macro][$key]['choosen']=false;
-              }
-            }
-          }
-        }
-        if(count(array_diff($this->macroarray[$this->macro][$key],$backup))){
-          $this->is_modified = TRUE;
-        }
-      }
-    }
-  }
-
-  function multiple_check()
-  {
-    $message = plugin::multiple_check();
-
-    if(!count($this->goFonHomeServers) && in_array("goFonHomeServers",$this->multi_boxes)){
-      $message[] = _("There is currently no asterisk server defined!");
-    }
-
-    if(empty($this->goFonHomeServer) && in_array("goFonHomeServers",$this->multi_boxes)){
-      $message[] = _("Asterisk server is invalid!");
-    }
-
-    if(in_array("goFonVoicemailPIN",$this->multi_boxes) &&
-        ( (strlen($this->goFonVoicemailPIN)==0)||
-          (strlen($this->goFonVoicemailPIN)>4))){
-      $message[]=(_("Voicemail PIN must be 4 characters long!"));
-    } else {
-      if (preg_match("/[^0-9]/",$this->goFonVoicemailPIN) && in_array("goFonVoicemailPIN",$this->multi_boxes) ) {
-        $message[]=(_("Voicemail PIN contains invalid characters!"));
-      }
-    }
-
-    if (preg_match("/[^0-9a-z]/i",$this->goFonPIN) && in_array("goFonPIN",$this->multi_boxes)) {
-      $message[]=(_("Phone pin contains invalid characters!"));
-    }
-
-    /* check for ! in any parameter setting*/
-    if (isset($this->macroarray[$this->macro]) && in_array("macro",$this->multi_boxes)) {
-      foreach ($this->macroarray[$this->macro] as $val) {
-        if ((strstr($val['choosen'],"!"))||(strstr($val['choosen'],"#"))) {
-          $message[] = sprintf(_("The parameter %s contains invalid char. '!,#' is used as delimiter"),$val['name']);
-        }
-      }
-    }
-
-    return($message);
-  }
-
-  function get_multi_edit_values()
-  {
-    $ret = plugin::get_multi_edit_values();
-    if (in_array("macro",$this->multi_boxes)) {
-      $ret['macro'] = $this->macro;
-      $ret['macroarray'] = $this->macroarray;
-      $ret['macros'] = $this->macros;
-    }
-    return($ret);
-  }
-
 
   /* Return asterisk contexts
    * Additionaly read contexts from file.
