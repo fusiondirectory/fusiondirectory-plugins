@@ -22,7 +22,6 @@
 
 class ldiftab extends tabs
 {
-
   function ldiftab($config, $data, $dn, $cat = '', $copied_object = NULL)
   {
     parent::tabs($config, $data, $dn, '', $copied_object);
@@ -32,5 +31,19 @@ class ldiftab extends tabs
   {
   }
 
+  /* Return plugin informations for acl handling */
+  static function plInfo()
+  {
+    return array(
+      "plShortName"   => _("LDAP manager"),
+      "plDescription" => _("Allows the management of the ldap tree"),
+      "plIcon"        => "plugins/ldapmanager/images/ldif.png",
+      "plSection"     => "addons",
+      "plPriority"    => 20,
+      "plCategory"    => array("ldapmanager" => array("objectClass" => "none", "description" => _("Ldap manager"))),
+
+      "plProvidedAcls" => array()
+    );
+  }
 }
 ?>

@@ -1,9 +1,7 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011  FusionDirectory
+  Copyright (C) 2013 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,39 +18,5 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-/* Remove locks created by this plugin */
-if ($remove_lock){
-  if(session::is_set('ldif')){
-    // Nothing to unlock here
-  }
-}
-
-/* Remove this plugin from session */
-if ( $cleanup ){
-  session::un_set('ldif');
-}else{
-
-  /* Reset requested? */
-  if (isset($_GET['reset']) && $_GET['reset'] == 1){
-    session::un_set ('ldif');
-  }
-
-  /* Create phonelist object on demand */
-  if (!session::is_set('ldif')){
-    $ldif= new ldif ($config);
-    $ldif->set_acl_category("logview");
-    session::set('ldif',$ldif);
-  }
-  $ldif = session::get('ldif');
-
-  /* Execute formular */
-  $display= $ldif->execute ();
-  $display.= "<input type=\"hidden\" name=\"ignore\">\n";
-
-  /* Page header*/
-  $display= print_header(get_template_path('plugins/ldapmanager/images/ldif.png'), _("LDAP manager")).$display;
-
-  /* Store changes  in session */
-  session::set('ldif',$ldif);
-}
+simplePlugin::mainInc('ldifexport', '', 'ldiftab', FALSE);
 ?>
