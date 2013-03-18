@@ -158,16 +158,17 @@ class aliasManagement extends management
   static function filterDate()
   {
     if (func_num_args() == 0) {
-      return;
+      return '&nbsp;';
     }
     $date = func_get_arg(0);
     if (!is_array($date)) {
-      return;
+      return '&nbsp;';
     }
     $dateObject = DateTime::createFromFormat('U', $date[0], new DateTimeZone('UTC'));
     if (is_object($dateObject)) {
       return $dateObject->format('d.m.Y');
     }
+    return '&nbsp;';
   }
 }
 ?>
