@@ -73,6 +73,7 @@ class boardSystems extends simplePlugin
       $ldap->search($stat['filter'], array("cn"));
       $stat['nb'] = $ldap->count();
     }
+    unset($stat);
 
     return $stats;
   }

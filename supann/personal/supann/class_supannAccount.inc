@@ -147,6 +147,7 @@ class SupannCompositeAttribute extends CompositeAttribute
         $values[] = "";
       }
     }
+    unset($attribute);
 
     return $values;
   }
@@ -162,6 +163,7 @@ class SupannCompositeAttribute extends CompositeAttribute
       }
       $i++;
     }
+    unset($attribute);
     return $value;
   }
 
@@ -178,6 +180,7 @@ class SupannCompositeAttribute extends CompositeAttribute
       }
       $values[$shortname][$value] = $value;
     }
+    unset($attribute);
   }
 }
 

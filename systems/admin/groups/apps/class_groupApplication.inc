@@ -1448,6 +1448,7 @@ class appgroup extends plugin
         $entry['STATUS'] = "ADDED";
       }
     }
+    unset($entry);
   }
 
 

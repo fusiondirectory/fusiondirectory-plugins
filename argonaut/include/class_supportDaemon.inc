@@ -329,6 +329,7 @@ class supportDaemon
 
       $entries_r[] = $entry_r;
     }
+    unset($entries);
     return $entries_r;
   }
 
@@ -669,6 +670,7 @@ class supportDaemon
       foreach ($filters as &$filter) {
         $filter = "^".$this->escape_perl_chars($filter)."$";
       }
+      unset($filter);
     }
     try {
       $client = new jsonRPCClient($this->s_host, $this->http_options);
@@ -684,11 +686,13 @@ class supportDaemon
           foreach ($packages as &$package) {
             $package['DISTRIBUTION'] = $distribution;
           }
+          unset($package);
         }
         if (in_array("SECTION", $attrs)) {
           foreach ($packages as &$package) {
             $package['SECTION'] = $section; // FIXME : do we want to do this? It will replace "contrib/misc by contrib, for instance
           }
+          unset($package);
         }
         $to_return = array_merge($to_return, $packages);
       }
@@ -786,6 +790,7 @@ class supportDaemon
     foreach ($kernels as &$kernel) {
       $kernel = $kernel['PACKAGE'];
     }
+    unset($kernel);
     return $kernels;
   }
 

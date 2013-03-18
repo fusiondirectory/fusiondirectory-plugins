@@ -128,6 +128,7 @@ class argonautFuseConfig extends simpleService
       $display .= '<p class="seperator plugbottom">&nbsp;</p><div></div>';
       $display .= $plugin->execute();
     }
+    unset($plugin);
 
     return $display.$str;
   }
@@ -141,6 +142,7 @@ class argonautFuseConfig extends simpleService
       foreach ($this->plugin as &$plugin) {
         $plugin->save_object();
       }
+      unset($plugin);
     }
   }
 
@@ -153,6 +155,7 @@ class argonautFuseConfig extends simpleService
         $message = array_merge($message, $plugin->check());
       }
     }
+    unset($plugin);
 
     return $message;
   }
@@ -163,6 +166,7 @@ class argonautFuseConfig extends simpleService
     foreach ($this->plugin as &$plugin) {
       $plugin->set_acl_category($cat);
     }
+    unset($plugin);
   }
 
   function set_acl_base($base)
@@ -171,6 +175,7 @@ class argonautFuseConfig extends simpleService
     foreach ($this->plugin as &$plugin) {
       $plugin->set_acl_base($base);
     }
+    unset($plugin);
   }
 
   /* Save to LDAP */
@@ -187,15 +192,17 @@ class argonautFuseConfig extends simpleService
         $plugin->remove_from_parent();
       }
     }
+    unset($plugin);
   }
 
   function remove_from_parent()
   {
     /* Remove objects */
-    foreach ($this->plugin_name as $name) {
+    foreach ($this->plugin as &$plugin) {
       $plugin->dn = $this->dn;
       $plugin->remove_from_parent();
     }
+    unset($plugin);
     parent::remove_from_parent();
   }
 }

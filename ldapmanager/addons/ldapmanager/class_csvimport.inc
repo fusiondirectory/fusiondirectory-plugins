@@ -101,6 +101,7 @@ class csvimport extends plugin
         foreach ($attrs as &$attr) {
           $attr = $pname.":".$attr;
         }
+        unset($attr);
         $this->csvinfo['attr']  = array_merge($this->csvinfo['attr'], $attrs);
       }
 

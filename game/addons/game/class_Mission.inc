@@ -56,6 +56,7 @@ class Mission
         return FALSE;
       }
     }
+    unset($obj);
     return TRUE;
   }
 

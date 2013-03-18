@@ -562,6 +562,7 @@ class ServerService extends management
     foreach ($this->plugins as &$plugin) {
       $plugin->resetCopyInfos();
     }
+    unset($plugin);
   }
 
 
@@ -572,6 +573,7 @@ class ServerService extends management
     foreach ($this->plugins as &$plugin) {
       $plugin->postCopyHook();
     }
+    unset($plugin);
   }
 
 
