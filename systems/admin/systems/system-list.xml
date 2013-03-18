@@ -169,7 +169,7 @@
       <label>IP</label>
       <sortAttribute>ip</sortAttribute>
       <sortType>string</sortType>
-      <value>%{filter:ipOf(dn)}</value>
+      <value>%{ipHostNumber}</value>
       <export>true</export>
     </column>
 
@@ -177,7 +177,7 @@
       <label>MAC</label>
       <sortAttribute>mac</sortAttribute>
       <sortType>string</sortType>
-      <value>%{filter:macOf(dn)}</value>
+      <value>%{macAddress}</value>
       <export>true</export>
     </column>
 

@@ -57,8 +57,6 @@ class systemManagement extends management
     // Build headpage
     $headpage = new listing(get_template_path("system-list.xml", true));
     $headpage->registerElementFilter("systemRelease", "systemManagement::systemRelease");
-    $headpage->registerElementFilter("ipOf", "systemManagement::ipOf");
-    $headpage->registerElementFilter("macOf", "systemManagement::macOf");
     $headpage->registerElementFilter("listServices", "systemManagement::listServices");
     $headpage->setFilter($filter);
 
@@ -1057,7 +1055,7 @@ class systemManagement extends management
     if ($class && is_array($class)) {
       foreach (explode(' ', $class[0]) as $element) {
         if ($element[0] == ":") {
-          return "&nbsp;".mb_substr($element, 1);
+          return "&nbsp;".htmlentities(mb_substr($element, 1), ENT_COMPAT, 'UTF-8');
         }
       }
     }
@@ -1066,16 +1064,16 @@ class systemManagement extends management
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
     $ldap->search("(&(objectClass=gosaGroupOfNames)(FAIclass=*)(member=".$b."))",array('FAIclass','cn'));
-    while($attrs = $ldap->fetch()){
-      $rel = preg_replace("/^.*:/","",$attrs['FAIclass'][0]);
-      $sys = sprintf(_("Inherited from %s"),$attrs['cn'][0]);
+    while ($attrs = $ldap->fetch()) {
+      $rel = htmlentities(preg_replace("/^.*:/", "", $attrs['FAIclass'][0]), ENT_COMPAT, 'UTF-8');
+      $sys = htmlentities(sprintf(_("Inherited from %s"), $attrs['cn'][0]), ENT_COMPAT, 'UTF-8');
       $str = "&nbsp;<img class='center' src='plugins/ogroups/images/ogroup.png'
           title='".$sys."'
           alt='".$sys."' >&nbsp;".$rel;
-      return($str);
+      return $str;
     }
 
-    return("&nbsp;");
+    return "&nbsp;";
   }
 
   static function listServices($row, $dn)
@@ -1116,36 +1114,6 @@ class systemManagement extends management
       $str = "&nbsp;";
     }
     return $str;
-  }
-
-  static function ipOf($dn)
-  {
-    global $config;
-
-    // Load information if needed
-    $ldap = $config->get_ldap_link();
-    $ldap->cd($dn);
-    $ldap->search("(ipHostNumber=*)",array('ipHostNumber'));
-    $str = "&nbsp;";
-    if($attrs = $ldap->fetch()){
-        $str = $attrs['ipHostNumber'][0];
-    }
-    return($str);
-  }
-
- static function macOf($dn)
-  {
-    global $config;
-
-    // Load information if needed
-    $ldap = $config->get_ldap_link();
-    $ldap->cd($dn);
-    $ldap->search("(macAddress=*)",array('macAddress'));
-    $str = "&nbsp;";
-    if($attrs = $ldap->fetch()){
-        $str = $attrs['macAddress'][0];
-    }
-    return($str);
   }
 
   /*! \brief  !! Incoming dummy acls, required to defined acls for incoming objects

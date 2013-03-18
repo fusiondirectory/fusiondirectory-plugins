@@ -123,9 +123,9 @@ class gotomasses extends management
   {
     if (isset($name[0]) && $name[0] != "none") {
         // TODO ajouter lien machine.
-      return $name[0]." (".$mac[0].")";
+      return htmlentities($name[0]." (".$mac[0].")", ENT_COMPAT, 'UTF-8');
     }
-    return $mac[0];
+    return htmlentities($mac[0], ENT_COMPAT, 'UTF-8');
   }
 
   static function filterTask($tag, $progress)
@@ -145,12 +145,14 @@ class gotomasses extends management
         $str = substr($str, 0, 18)."...";
       }
 
+      $str = htmlentities($str, ENT_COMPAT, 'UTF-8');
+
       if (isset($infos['listimg']) && !empty($infos['listimg'])) {
         $str = $infos['listimg']."&nbsp;".$str;
       }
     }
     if ($progress) {
-        $str .= "&nbsp;(".$progress."%)";
+        $str .= "&nbsp;(".htmlentities($progress, ENT_COMPAT, 'UTF-8')."%)";
     }
     return $str;
   }
@@ -161,7 +163,7 @@ class gotomasses extends management
     if (isset($periodic[0]) && !preg_match("/none/i", $periodic[0])) {
       $tmp = explode("_", $periodic[0]);
       if (count($tmp) == 2) {
-        $period = $tmp[0]."&nbsp;"._($tmp[1]);
+        $period = htmlentities($tmp[0], ENT_COMPAT, 'UTF-8')."&nbsp;".htmlentities(_($tmp[1]), ENT_COMPAT, 'UTF-8');
       }
     }
     return $period;
