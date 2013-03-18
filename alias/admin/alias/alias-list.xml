@@ -73,7 +73,7 @@
       <label>aliasExpirationDate</label>
       <sortAttribute>aliasExpirationDate</sortAttribute>
       <sortType>integer</sortType>
-      <value>%{filter:link(row,dn,"%s",aliasExpirationDate)}</value>
+      <value>%{filter:filterDate(aliasExpirationDate)}</value>
       <export>true</export>
     </column>
 

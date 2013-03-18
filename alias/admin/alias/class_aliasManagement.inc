@@ -62,7 +62,7 @@ class aliasManagement extends management
 
     // Build headpage
     $headpage = new listing(get_template_path("alias-list.xml", TRUE));
-    $headpage->registerElementFilter("filterProperties", "aliasManagement::filterProperties");
+    $headpage->registerElementFilter("filterDate", "aliasManagement::filterDate");
     $headpage->setFilter($filter);
 
     parent::__construct($config, $ui, "alias", $headpage);
@@ -152,6 +152,21 @@ class aliasManagement extends management
       }
     } else {
       return management::copyPasteHandler($action, $target, $all);
+    }
+  }
+
+  static function filterDate()
+  {
+    if (func_num_args() == 0) {
+      return;
+    }
+    $date = func_get_arg(0);
+    if (!is_array($date)) {
+      return;
+    }
+    $dateObject = DateTime::createFromFormat('U', $date[0], new DateTimeZone('UTC'));
+    if (is_object($dateObject)) {
+      return $dateObject->format('d.m.Y');
     }
   }
 }

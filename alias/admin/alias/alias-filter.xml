@@ -13,7 +13,7 @@
       <filter>(&amp;(|$MAILREDIRECTION$MAILDISTRIBUTION$SYMPAALIAS)$NAME)</filter>
       <attribute>dn</attribute>
       <attribute>cn</attribute>
-      <attribute>mail</attribute>
+      <attribute>aliasExpirationDate</attribute>
       <attribute>description</attribute>
     </query>
     <scope>auto</scope>
@@ -32,7 +32,7 @@
       <backend>LDAP</backend>
       <filter>(&amp;(|$MAILREDIRECTION$MAILDISTRIBUTION$SYMPAALIAS)(|(mail=*$NAME*)(cn=*$NAME*)(description=*$NAME*)))</filter>
       <attribute>cn</attribute>
-      <attribute>mail</attribute>
+      <attribute>aliasExpirationDate</attribute>
       <attribute>description</attribute>
       <frequency>0.5</frequency>
       <characters>3</characters>
