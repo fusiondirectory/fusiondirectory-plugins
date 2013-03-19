@@ -154,6 +154,7 @@ class sambaAccount extends simplePlugin
         'icon'  => 'images/rightarrow.png',
         'attrs' => array(
           new HiddenAttribute ('sambaSID'),
+          new HiddenAttribute ('sambaPrimaryGroupSID'),
           new SelectAttribute (
             _('Home directory drive'), _('Letter for the home drive'),
             'sambaHomeDrive', FALSE,
