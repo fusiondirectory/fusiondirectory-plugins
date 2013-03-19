@@ -32,7 +32,7 @@ class opsiClient extends simplePlugin
       'plDescription' => _('Edit OPSI client settings'),
       'plSelfModify'  => FALSE,
       'plCategory'    => array('winstation','ogroups'),
-      'plObjectType'  => array('winstation','ogroup'),
+      'plObjectType'  => array('winstation'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
@@ -68,9 +68,16 @@ class opsiClient extends simplePlugin
 
     if ($this->is_account) {
       $s_daemon   = new supportDaemon();
-      $macAddress = $this->parent->getBaseObject()->netConfigDNS->macAddress;
+      if ($this->editing_group()) {
+        $macAddresses = array();
+        foreach ($this->parent->getBaseObject()->member as $member) {
+          $macAddresses[] = $member // TODO : get mac address
+        }
+      } else {
+        $macAddresses = array($this->parent->getBaseObject()->netConfigDNS->macAddress);
+      }
       if ($s_daemon->is_available()) {
-        $res = $s_daemon->append_call("OPSI.update_or_insert", array($macAddress), array());
+        $res = $s_daemon->append_call("OPSI.update_or_insert", $macAddresses, array());
         if ($s_daemon->is_error()) {
           msg_dialog::display(
             _("Could not update OPSI informations"),
@@ -83,15 +90,17 @@ class opsiClient extends simplePlugin
 
   function remove_from_parent()
   {
-    $s_daemon   = new supportDaemon();
-    $macAddress = $this->parent->getBaseObject()->netConfigDNS->macAddress;
-    if ($s_daemon->is_available()) {
-      $res = $s_daemon->append_call("OPSI.delete", array($macAddress), array());
-      if ($s_daemon->is_error()) {
-        msg_dialog::display(
-          _("Could not update OPSI informations"),
-          msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
-        );
+    if (!$this->member_of_group) {
+      $s_daemon   = new supportDaemon();
+      $macAddress = $this->parent->getBaseObject()->netConfigDNS->macAddress;
+      if ($s_daemon->is_available()) {
+        $res = $s_daemon->append_call("OPSI.delete", array($macAddress), array());
+        if ($s_daemon->is_error()) {
+          msg_dialog::display(
+            _("Could not update OPSI informations"),
+            msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
+          );
+        }
       }
     }
 
