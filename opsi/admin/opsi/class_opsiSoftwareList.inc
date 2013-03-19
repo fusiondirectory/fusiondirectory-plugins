@@ -133,13 +133,11 @@ class opsiSoftwareList extends simplePlugin
       }
       $this->products[$this->fdOpsiServerDN]['localboots'] = $localboots;
     }
-    $choices_values = array();
-    $choices_labels = array();
+    $choices = array();
     foreach ($this->products[$this->fdOpsiServerDN]['localboots'] as $localboot) {
-      $choices_values[] = $localboot['id'];
-      $choices_labels[] = $localboot['name'];
+      $choices[] = $localboot['id'];
     }
-    $this->attributesAccess['fdOpsiLocalbootProduct']->attribute->attributes[0]->setChoices($choices_values, $choices_labels);
+    $this->attributesAccess['fdOpsiLocalbootProduct']->attribute->attributes[0]->setChoices($choices);
   }
 }
 ?>
