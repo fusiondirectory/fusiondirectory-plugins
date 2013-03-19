@@ -42,13 +42,19 @@ attributetype ( 1.3.6.1.4.1.38414.20.12.1 NAME 'fdOpsiNetbootProduct'
         SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
         SINGLE-VALUE )
 
-attributetype ( 1.3.6.1.4.1.38414.20.12.2 NAME 'fdOpsiLocalbootProduct'
-        DESC 'FusionDirectory - OPSI localboot product '
+attributetype ( 1.3.6.1.4.1.38414.20.12.2 NAME 'fdOpsiSoftwareList'
+        DESC 'FusionDirectory - OPSI software list DN '
         EQUALITY caseExactIA5Match
-        SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 )
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+        SINGLE-VALUE )
 
 attributetype ( 1.3.6.1.4.1.38414.20.13.1 NAME 'fdOpsiProductProperty'
         DESC 'FusionDirectory - OPSI product property '
+        EQUALITY caseExactIA5Match
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 )
+
+attributetype ( 1.3.6.1.4.1.38414.20.14.1 NAME 'fdOpsiLocalbootProduct'
+        DESC 'FusionDirectory - OPSI localboot product '
         EQUALITY caseExactIA5Match
         SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 )
 
@@ -66,7 +72,12 @@ objectclass ( 1.3.6.1.4.1.38414.20.2.2 NAME 'opsiClient' SUP top AUXILIARY
 objectclass ( 1.3.6.1.4.1.38414.20.2.3 NAME 'opsiProfile'
         DESC 'FusionDirectory - OPSI profile'
         MUST ( cn $ fdOpsiServerDn )
-        MAY ( fdOpsiNetbootProduct $ fdOpsiLocalbootProduct ) )
+        MAY ( fdOpsiNetbootProduct $ fdOpsiSoftwareList ) )
+
+objectclass ( 1.3.6.1.4.1.38414.20.2.5 NAME 'opsiSoftwareList'
+        DESC 'FusionDirectory - OPSI software list'
+        MUST ( cn $ fdOpsiServerDn )
+        MAY ( fdOpsiLocalbootProduct ) )
 
 objectclass ( 1.3.6.1.4.1.38414.20.2.4 NAME 'opsiProductProperties' AUXILIARY
         DESC 'FusionDirectory - OPSI product properties'

@@ -18,34 +18,36 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
+$classname = 'opsiManagement';
+
 /* Remove locks created by this plugin */
 if ($remove_lock) {
-  if (session::is_set('opsiProfileManagement')) {
-    $macl = session::get('opsiProfileManagement');
+  if (session::is_set($classname)) {
+    $macl = session::get($classname);
     $macl->remove_lock();
   }
 }
 
 /* Remove this plugin from session */
 if ($cleanup) {
-  session::un_set('opsiProfileManagement');
+  session::un_set($classname);
 } else {
 
   /* Create devicemanagement object on demand */
-  if (!session::is_set('opsiProfileManagement')) {
-    $opsiProfileManagement = new opsiProfileManagement ($config, $ui);
-    session::set('opsiProfileManagement', $opsiProfileManagement);
+  if (!session::is_set($classname)) {
+    $management = new $classname ($config, $ui);
+    session::set($classname, $management);
   }
-  $opsiProfileManagement = session::get('opsiProfileManagement');
-  $display = $opsiProfileManagement->execute();
+  $management = session::get($classname);
+  $display = $management->execute();
 
   /* Reset requested? */
   if (isset($_GET['reset']) && $_GET['reset'] == 1) {
-    session::un_set('opsiProfileManagement');
+    session::un_set($classname);
   }
 
   /* Show and save dialog */
-  session::set('opsiProfileManagement', $opsiProfileManagement);
+  session::set($classname, $management);
 }
 
 ?>

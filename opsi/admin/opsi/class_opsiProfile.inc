@@ -54,8 +54,11 @@ class opsiProfile extends simplePlugin
       'plSelfModify'  => FALSE,
       'plCategory'    => array('opsiProfile' => array('description'  => _('OPSI profile'),
                                                           'objectClass'  => 'opsiProfile')),
-      'plObjectType'  => array('opsiProfile' => array( 'name'  => _('OPSI profile'),
-                                                          'filter'  => 'objectClass=opsiProfile')),
+      'plObjectType'  => array('opsiProfile' => array(
+        'name'    => _('OPSI profile'),
+        'filter'  => 'objectClass=opsiProfile',
+        'ou'      => get_ou('opsiRDN')
+      )),
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
@@ -84,26 +87,11 @@ class opsiProfile extends simplePlugin
             _('Netboot product'), _('The netboot product to use for this profile'),
             'fdOpsiNetbootProduct', FALSE
           ),
-          new OrderedArrayAttribute(
-            new CharSeparatedCompositeAttribute(
-              _('The localboot products to install for this profile'),
-              'fdOpsiLocalbootProduct',
-              array(
-                new SelectAttribute(
-                  '', '',
-                  'fdOpsiLocalbootProduct_product', TRUE
-                ),
-                new SelectAttribute(
-                  '', '',
-                  'fdOpsiLocalbootProduct_action', TRUE,
-                  array('setup', 'always', 'once', 'custom', 'userlogin')
-                )
-              ),
-              '|','',_('Localboot products')
-            ),
-            FALSE, // non-ordered
-            array(),
-            TRUE // edition
+          new SetAttribute(
+            new SelectAttribute(
+              _('Software lists'), _('Software lists that will be installed with this profile'),
+              'fdOpsiSoftwareList', FALSE
+            )
           ),
         )
       ),
@@ -120,6 +108,34 @@ class opsiProfile extends simplePlugin
   public function compute_dn ()
   {
     return 'cn='.$this->cn.','.get_ou('opsiRDN').$this->config->current['BASE'];
+  }
+
+  /* Returns list of all products installed by this profile */
+  public function getProductList ()
+  {
+    $products = array();
+    $netboot  = $this->fdOpsiNetbootProduct;
+    if ($netboot != '') {
+      $products[] = $netboot;
+    }
+    $lists = $this->fdOpsiSoftwareList;
+    $ldap = $this->config->get_ldap_link();
+    foreach ($lists as $list) {
+      $ldap->cat($list);
+      if ($attrs = $ldap->fetch()) {
+        for ($i = 0;$i < $attrs['fdOpsiLocalbootProduct']['count'];++$i) {
+          $tmp = explode('|', $attrs['fdOpsiLocalbootProduct'][$i], 2);
+          $products[] = $tmp[0];
+        }
+      } else {
+        msg_dialog::display(
+          sprintf_(_("Could not find %s in the LDAP"),$this->fdOpsiServerDN),
+          msgPool::ldaperror($ldap->get_error()), ERROR_DIALOG
+        );
+        return FALSE;
+      }
+    }
+    return $products;
   }
 
   public function server_changed ()
@@ -153,15 +169,14 @@ class opsiProfile extends simplePlugin
         return;
       }
       $this->products[$this->fdOpsiServerDN]['netboots'] = $netboots;
-      $localboots = $s_daemon->append_call('OPSI.get_localboots', array($this->macAddress), array('args' => array(array('id','name'))));
-      if ($s_daemon->is_error()) {
-        msg_dialog::display(
-          _('Could contact OPSI server'),
-          msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
-        );
-        return;
+
+      $ldap->cd($this->config->current['BASE']);
+      $ldap->search('(&(objectClass=opsiSoftwareList)(fdOpsiServerDN='.$this->fdOpsiServerDN.'))', array('cn'));
+      $lists = array();
+      while ($attrs = $ldap->fetch()) {
+        $lists[$attrs['dn']] = $attrs['cn'][0];
       }
-      $this->products[$this->fdOpsiServerDN]['localboots'] = $localboots;
+      $this->products[$this->fdOpsiServerDN]['lists'] = $lists;
     }
     $choices_values = array();
     $choices_labels = array();
@@ -170,13 +185,10 @@ class opsiProfile extends simplePlugin
       $choices_labels[] = $netboot['name'];
     }
     $this->attributesAccess['fdOpsiNetbootProduct']->setChoices($choices_values, $choices_labels);
-    $choices_values = array();
-    $choices_labels = array();
-    foreach ($this->products[$this->fdOpsiServerDN]['localboots'] as $localboot) {
-      $choices_values[] = $localboot['id'];
-      $choices_labels[] = $localboot['name'];
-    }
-    $this->attributesAccess['fdOpsiLocalbootProduct']->attribute->attributes[0]->setChoices($choices_values, $choices_labels);
+    $this->attributesAccess['fdOpsiSoftwareList']->attribute->setChoices(
+      array_keys($this->products[$this->fdOpsiServerDN]['lists']),
+      array_values($this->products[$this->fdOpsiServerDN]['lists'])
+    );
   }
 }
 ?>

@@ -18,15 +18,22 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class opsiProfileManagement extends management
+class opsiManagement extends simpleManagement
 {
   // Tab definition
-  protected $tabClass     = "simpleTabs";
-  protected $tabType      = "OPSIPROFILETABS";
-  protected $aclCategory  = "opsiProfile";
-  protected $aclPlugin    = "opsiProfile";
-  protected $objectName   = "opsiProfile";
+  protected $objectName   = "opsi";
+  protected $objectTypes  = array('opsiProfile', 'opsiSoftwareList');
 
+  protected $departmentBrowser      = FALSE;
+  protected $departmentRootVisible  = FALSE;
+  protected $baseMode               = FALSE;
+
+  function __construct($config, $ui)
+  {
+    $this->acl_base = $config->current['BASE'];
+    parent::__construct($config, $ui);
+    $this->headpage->setBase($this->acl_base); // May be done by simpleManagement when departementBrowser is FALSE?
+  }
   /* Return plugin informations for acl handling */
   static function plInfo()
   {
@@ -40,29 +47,6 @@ class opsiProfileManagement extends management
 
       'plProvidedAcls' => array()
     );
-  }
-
-  function __construct ($config, $ui)
-  {
-    $this->config = $config;
-    $this->ui     = $ui;
-
-    $this->storagePoints = array(get_ou('opsiRDN'));
-
-    // Build filter
-    if (session::global_is_set(get_class($this)."_filter")) {
-      $filter = session::global_get(get_class($this)."_filter");
-    } else {
-      $filter = new filter(get_template_path("opsiProfile-filter.xml", TRUE));
-      $filter->setObjectStorage($this->storagePoints);
-    }
-    $this->setFilter($filter);
-
-    // Build headpage
-    $headpage = new listing(get_template_path("opsiProfile-list.xml", TRUE));
-    $headpage->setFilter($filter);
-
-    parent::__construct($config, $ui, "opsiProfile", $headpage);
   }
 }
 ?>

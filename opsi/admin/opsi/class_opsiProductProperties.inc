@@ -173,29 +173,9 @@ class opsiProductProperties extends simplePlugin
 
   private function updateProductList()
   {
-    $localboot_attr = $this->parent->getBaseObject()->attributesAccess['fdOpsiLocalbootProduct'];
-    $netboot_attr   = $this->parent->getBaseObject()->attributesAccess['fdOpsiNetbootProduct'];
-    $products = array_map(
-      function ($a)
-      {
-        $b = explode('|',$a,2);
-        return $b[0];
-      },
-      $localboot_attr->getValue()
+    $this->attributesAccess['fdOpsiProductProperty']->attribute->attributes[0]->setChoices(
+      $this->parent->getBaseObject()->getProductList()
     );
-    $labels   =
-      array_map(
-        function ($a) use ($localboot_attr) {
-          return $localboot_attr->attribute->attributes[0]->displayValue($a);
-        },
-        $products
-      );
-    $netboot = $netboot_attr->getValue();
-    if ($netboot != "") {
-      array_unshift($products, $netboot);
-      array_unshift($labels, $netboot_attr->displayValue($netboot));
-    }
-    $this->attributesAccess['fdOpsiProductProperty']->attribute->attributes[0]->setChoices($products, $labels);
   }
 
   public function product_changed()
