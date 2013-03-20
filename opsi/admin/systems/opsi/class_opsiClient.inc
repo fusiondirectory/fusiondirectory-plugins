@@ -71,7 +71,7 @@ class opsiClient extends simplePlugin
       if ($this->editing_group()) {
         $macAddresses = array();
         foreach ($this->parent->getBaseObject()->member as $member) {
-          $macAddresses[] = $member // TODO : get mac address
+          $macAddresses[] = $member; // TODO : get mac address
         }
       } else {
         $macAddresses = array($this->parent->getBaseObject()->netConfigDNS->macAddress);
