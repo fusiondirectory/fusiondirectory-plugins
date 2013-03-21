@@ -174,14 +174,36 @@ class askClassName extends plugin
     return ($message);
   }
 
-
   /* Return the class name */
   function save()
   {
-    return($this->ClassName);
+    return $this->ClassName;
   }
-
 }
 
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
+class faiPluginClass extends plugin
+{
+  /* Check supplied data */
+  function check()
+  {
+    /* Call common method to give check the hook */
+    $message = parent::check();
+
+    /* Ensure that we do not overwrite an allready existing entry
+     */
+    $new_dn   = $this->compute_dn();
+    $ldap     = $this->config->get_ldap_link();
+    $ldap->cat($new_dn);
+    if (($ldap->count() != 0) && ($this->dn != $new_dn)) {
+      $message[] = msgPool::duplicated(_("Name"));
+    }
+
+    return $message;
+  }
+
+  function compute_dn()
+  {
+    return 'cn='.$this->cn.','.get_ou(get_class($this).'RDN').$this->parent->parent->fai_release;
+  }
+}
 ?>

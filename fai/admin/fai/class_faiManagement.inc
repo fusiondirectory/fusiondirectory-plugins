@@ -855,29 +855,29 @@ class faiManagement extends management
    */
   function get_type($array)
   {
-    if(!isset($array['objectClass'])) return(array());
-    if(in_array("FAIpartitionTable",$array['objectClass'])){
-      return(array("tabsPartition","faiPartitionTable","FAIPARTITIONTABS"));
+    if (!isset($array['objectClass'])) return array();
+    if (in_array("FAIpartitionTable",$array['objectClass'])) {
+      return array("simpleTabs_noSpecial","faiPartitionTable","FAIPARTITIONTABS");
     }
-    if(in_array("FAIscript",$array['objectClass'])){
-      return(array("tabsScript","faiScript","FAISCRIPTTABS"));
+    if (in_array("FAIscript",$array['objectClass'])) {
+      return array("simpleTabs_noSpecial","faiScript","FAISCRIPTTABS");
     }
-    if(in_array("FAItemplate",$array['objectClass'])){
-      return(array("tabsTemplate","faiTemplate","FAITEMPLATETABS"));
+    if (in_array("FAItemplate",$array['objectClass'])) {
+      return array("simpleTabs_noSpecial","faiTemplate","FAITEMPLATETABS");
     }
-    if(in_array("FAIhook",$array['objectClass'])){
-      return(array("tabsHook","faiHook","FAIHOOKTABS"));
+    if (in_array("FAIhook",$array['objectClass'])) {
+      return array("simpleTabs_noSpecial","faiHook","FAIHOOKTABS");
     }
-    if(in_array("FAIvariable",$array['objectClass'])){
-      return(array("tabsVariable","faiVariable","FAIVARIABLETABS"));
+    if (in_array("FAIvariable",$array['objectClass'])) {
+      return array("simpleTabs_noSpecial","faiVariable","FAIVARIABLETABS");
     }
-    if(in_array("FAIprofile",$array['objectClass'])){
-      return(array("tabsProfile","faiProfile","FAIPROFILETABS"));
+    if (in_array("FAIprofile",$array['objectClass'])) {
+      return array("simpleTabs_noSpecial","faiProfile","FAIPROFILETABS");
     }
-    if(in_array("FAIpackageList",$array['objectClass'])){
-      return(array("tabsPackage","faiPackage","FAIPACKAGETABS"));
+    if (in_array("FAIpackageList",$array['objectClass'])) {
+      return array("simpleTabs_noSpecial","faiPackage","FAIPACKAGETABS");
     }
-    return(array());
+    return array();
   }
 
 

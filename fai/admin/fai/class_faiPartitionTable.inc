@@ -20,7 +20,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class faiPartitionTable extends plugin
+class faiPartitionTable extends faiPluginClass
 {
   /* attribute list for save action */
   var $ignore_account   = TRUE;
@@ -126,6 +126,10 @@ class faiPartitionTable extends plugin
     ksort($this->disks);
   }
 
+  function compute_dn()
+  {
+    return 'cn='.$this->cn.','.get_ou('faiPartitionRDN').$this->parent->parent->fai_release;
+  }
 
   function acl_base_for_current_object($dn)
   {
@@ -492,27 +496,6 @@ class faiPartitionTable extends plugin
       }
     }
   }
-
-
-  /* Check supplied data */
-  function check()
-  {
-    /* Call common method to give check the hook */
-    $message= plugin::check();
-
-    /* Ensure that we do not overwrite an allready existing entry
-     */
-    if($this->is_new){
-      $release = $this->parent->parent->fai_release;
-      $new_dn= 'cn='.$this->cn.",".get_ou('faiPartitionRDN').get_ou('faiBaseRDN').$release;
-      $res = faiManagement::check_class_name("FAIpartitionTable", $this->cn, $new_dn);
-      if(isset($res[$this->cn])){
-        $message[] = msgPool::duplicated(_("Name"));
-      }
-    }
-    return ($message);
-  }
-
 
   /* Save to LDAP */
   function save()

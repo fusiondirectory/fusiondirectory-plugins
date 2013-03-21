@@ -20,7 +20,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class faiPackage extends plugin
+class faiPackage extends faiPluginClass
 {
   /* attribute list for save action */
   var $ignore_account   = TRUE;
@@ -528,27 +528,17 @@ class faiPackage extends plugin
   function check()
   {
     /* Call common method to give check the hook */
-    $message= plugin::check();
+    $message = parent::check();
 
-    if(count($this->usedPackages)==0){
+    if (count($this->usedPackages) == 0) {
       $message[]= _("Please select a least one package!");
     }
 
-    if((empty($this->FAIdebianRelease))||(empty($this->FAIdebianSection))){
-      $message[]=_("Please choose a valid release/section combination for your repository setup!");
+    if ((empty($this->FAIdebianRelease)) || (empty($this->FAIdebianSection))) {
+      $message[] = _("Please choose a valid release/section combination for your repository setup!");
     }
 
-    /* Ensure that we do not overwrite an allready existing entry
-     */
-    if($this->is_new){
-      $release = $this->parent->parent->fai_release;
-      $new_dn= 'cn='.$this->cn.",".get_ou('faiPackageRDN').get_ou('faiBaseRDN').$release;
-      $res = faiManagement::check_class_name("FAIpackageList", $this->cn, $new_dn);
-      if(isset($res[$this->cn])){
-        $message[] = msgPool::duplicated(_("Name"));
-      }
-    }
-    return ($message);
+    return $message;
   }
 
 

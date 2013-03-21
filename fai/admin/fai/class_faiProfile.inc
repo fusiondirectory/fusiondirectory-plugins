@@ -20,7 +20,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class faiProfile extends plugin
+class faiProfile extends faiPluginClass
 {
   /* attribute list for save action */
   var $ignore_account   = TRUE;
@@ -404,7 +404,7 @@ class faiProfile extends plugin
   function check()
   {
     /* Call common method to give check the hook */
-    $message= plugin::check();
+    $message = parent::check();
 
     if(count($this->FAIclasses) == 0){
       $message[]=_("No class specified for this profile!");
@@ -414,18 +414,7 @@ class faiProfile extends plugin
       $message[]= msgPool::required(_("Name"));
     }
 
-    /* Ensure that we do not overwrite an allready existing entry
-     */
-    if($this->dn == "new" || $this->cn != $this->old_cn){
-      $release = $this->parent->parent->fai_release;
-      $new_dn= 'cn='.$this->cn.",".get_ou('faiProfileRDN').get_ou('faiBaseRDN').$release;
-      $res = faiManagement::check_class_name("FAIprofile", $this->cn, $new_dn);
-      if(isset($res[$this->cn])){
-        $message[] = msgPool::duplicated(_("Name"));
-      }
-    }
-
-    return ($message);
+    return $message;
   }
 
 
