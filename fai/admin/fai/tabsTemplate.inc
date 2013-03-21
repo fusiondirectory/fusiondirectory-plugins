@@ -27,7 +27,7 @@ class tabsTemplate extends tabs
 
   function tabsTemplate($config, $data, $dn, $category, $copied_object = NULL)
   {
-  tabs::tabs($config, $data, $dn, $category, $copied_object);
+    parent::tabs($config, $data, $dn, $category, $copied_object);
 
   /* Add references/acls/snapshots */
 # $this->addSpecialTabs();
@@ -37,7 +37,7 @@ class tabsTemplate extends tabs
   function save()
   {
     $baseobject = $this->getBaseObject();
-    $new_dn ='cn='.$baseobject->cn.",".get_ou('faiTemplateRDN').$this->parent->fai_release;
+    $new_dn = 'cn='.$baseobject->cn.",".get_ou('faiTemplateRDN').$this->parent->fai_release;
 
     if ($this->dn != $new_dn && $this->dn != "new") {
 
@@ -46,7 +46,7 @@ class tabsTemplate extends tabs
       $cnt2 = count(explode(",", $new_dn));
       if ((strstr($new_dn, $this->dn)) && ($cnt1 < $cnt2)) {
         msg_dialog::display(_("Error"), _("Moving the tree failed. Destination tree is subtree of source tree."), ERROR_DIALOG);
-      }else{
+      } else {
   //      $baseobject->recursive_move($this->dn, $new_dn);
       }
     }

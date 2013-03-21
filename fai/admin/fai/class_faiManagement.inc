@@ -158,11 +158,10 @@ class faiManagement extends management
 
     // Display any c&p dialogs, eg. object modifications required before pasting.
     if ($this->cpPastingStarted && $this->cpHandler->entries_queued()) {
-      $this->cpHandler->SetVar("base",$headpage->getBase());
-      $data = $this->cpHandler->execute();
+      $data = $this->cpHandler->execute($headpage->getBase());
       FAI::save_release_changes_now();
       if (!empty($data)) {
-        return($data);
+        return $data;
       }
     }
 
@@ -170,7 +169,7 @@ class faiManagement extends management
     if (isset($this->cpHandler) && !$this->cpHandler->entries_queued()) {
       $this->cpPastingStarted = FALSE;
     }
-    return("");
+    return "";
   }
 
 
