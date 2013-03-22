@@ -73,6 +73,7 @@ class mailAccount extends simplePlugin
     return array(
       'plShortName'     => _('Mail'),
       'plDescription'   => _('Mail settings'),
+      'plSmallIcon'     => 'images/mailto.png',
       'plSelfModify'    => TRUE,
       'plPriority'      => 4,                                 // Position in tabs
       'plCategory'      => array('users'),

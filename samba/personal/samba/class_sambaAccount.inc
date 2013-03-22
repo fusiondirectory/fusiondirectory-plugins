@@ -128,6 +128,7 @@ class sambaAccount extends simplePlugin
     return array(
       'plShortName'     => _('Samba'),
       'plDescription'   => _('Samba settings'),
+      'plSmallIcon'     => 'plugins/systems/images/select_winstation.png',
       'plSelfModify'    => TRUE,
       'plDepends'       => array('posixAccount'),
       'plPriority'      => 5,
