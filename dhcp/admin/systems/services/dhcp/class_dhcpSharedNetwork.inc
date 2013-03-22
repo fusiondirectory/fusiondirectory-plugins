@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011  FusionDirectory
+  Copyright (C) 2011-2013  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -56,7 +56,7 @@ class dhcpSharedNetwork extends dhcpPlugin
       $smarty->assign("authoritative", "");
     }
 
-    $allow = $this->statements->get("allow"); 
+    $allow = $this->statements->get("allow");
     if(!is_array($allow)) $allow=array($allow);
     foreach(array(
           "unknown-clients" => "allow_unknown_state",
@@ -68,11 +68,11 @@ class dhcpSharedNetwork extends dhcpPlugin
         $smarty->assign($target,"");
       }
     }
- 
+
     /* Show main page */
     $display= $smarty->fetch(get_template_path('dhcp_sharedNetwork.tpl', TRUE,dirname(__FILE__))).$this->network->execute();
 
-    /* Remove states configured by checkboxes. 
+    /* Remove states configured by checkboxes.
      */
     foreach(array("deny unknown-clients",
           "deny bootp", "deny booting", "allow unknown-clients",
@@ -156,7 +156,7 @@ class dhcpSharedNetwork extends dhcpPlugin
     foreach (array("default-lease-time" => _("Default lease time"),
           "max-lease-time" => _("Max. lease time"),
           "min-lease-time" => _("Min. lease time")) as $key => $val){
-      if ($this->statements->exists($key) && $this->statements->get($key) != "" && 
+      if ($this->statements->exists($key) && $this->statements->get($key) != "" &&
           !tests::is_id($this->statements->get($key))){
         $message[]= msgPool::invalid($val,$this->statements->get($key),"/[0-9]/");
       }

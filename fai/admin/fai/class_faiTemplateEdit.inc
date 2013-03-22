@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011  FusionDirectory
+  Copyright (C) 2011-2013  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -62,7 +62,7 @@ class faiTemplateEdit extends plugin
 
   /* Save data to object */
   function save_object()
-  { 
+  {
     if(!$this->mb_extension) return;
     if(isset($_POST['templateValue']) && !$this->write_protect){
       $this->value = get_post('templateValue');

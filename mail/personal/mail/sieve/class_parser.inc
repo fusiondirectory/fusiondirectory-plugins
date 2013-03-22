@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011  FusionDirectory
+  Copyright (C) 2011-2013  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -369,12 +369,12 @@ class Parser
     if ($this->commands_($parent_id, $semantics))
     {
       $token = $this->scanner_->nextToken();
-  
+
       if ($token['class'] != 'block-end')
       {
         return $this->error_('closing curly brace', $token);
       }
-  
+
       $this->tree_->addChildTo($parent_id, $token);
       return $this->success_();
     }

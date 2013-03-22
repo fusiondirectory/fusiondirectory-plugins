@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011  FusionDirectory
+  Copyright (C) 2011-2013  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -29,9 +29,9 @@ class faxNumberSelect extends management
   {
     $this->config = $config;
     $this->ui = $ui;
-   
+
     $this->storagePoints = array(get_ou("userRDN"));
- 
+
       $filter = new filter(get_template_path("faxNumberSelect-filter.xml", true, dirname(__FILE__)));
       $filter->setObjectStorage($this->storagePoints);
     $this->setFilter($filter);
@@ -54,6 +54,6 @@ class faxNumberSelect extends management
     return($ret);
   }
 
-} 
+}
 // vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011  FusionDirectory
+  Copyright (C) 2011-2013  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -23,31 +23,31 @@
 class DNS
 {
   static $RecordTypes= array('aRecord' => "aRecord",
-                    'mDRecord'      => "mDRecord",         
-                    'mXRecord'      => "mXRecord",         
-                    'nSRecord'      => "nSRecord",          
+                    'mDRecord'      => "mDRecord",
+                    'mXRecord'      => "mXRecord",
+                    'nSRecord'      => "nSRecord",
                     'pTRRecord'     => "relativeDomainName",
-                    'hInfoRecord'   => "hInfoRecord",      
-                    'mInfoRecord'   => "mInfoRecord",       
+                    'hInfoRecord'   => "hInfoRecord",
+                    'mInfoRecord'   => "mInfoRecord",
                     'cNAMERecord'   => "relativeDomainName",
-                    'tXTRecord'     => "tXTRecord",         
-                    'aFSDBRecord'   => "aFSDBRecord",       
-                    'SigRecord'     => "SigRecord",         
-                    'KeyRecord'     => "KeyRecord",         
-                    'aAAARecord'    => "aAAARecord",        
-                    'LocRecord'     => "LocRecord",         
-                    'nXTRecord'     => "nXTRecord",        
-                    'sRVRecord'     => "sRVRecord",         
-                    'nAPTRRecord'   => "nAPTRRecord",       
-                    'kXRecord'      => "kXRecord",          
-                    'certRecord'    => "certRecord",        
-                    'a6Record'      => "a6Record",          
-                    'dSRecord'      => "dSRecord",          
-                    'sSHFPRecord'   => "sSHFPRecord",       
-                    'rRSIGRecord'   => "rRSIGRecord",      
+                    'tXTRecord'     => "tXTRecord",
+                    'aFSDBRecord'   => "aFSDBRecord",
+                    'SigRecord'     => "SigRecord",
+                    'KeyRecord'     => "KeyRecord",
+                    'aAAARecord'    => "aAAARecord",
+                    'LocRecord'     => "LocRecord",
+                    'nXTRecord'     => "nXTRecord",
+                    'sRVRecord'     => "sRVRecord",
+                    'nAPTRRecord'   => "nAPTRRecord",
+                    'kXRecord'      => "kXRecord",
+                    'certRecord'    => "certRecord",
+                    'a6Record'      => "a6Record",
+                    'dSRecord'      => "dSRecord",
+                    'sSHFPRecord'   => "sSHFPRecord",
+                    'rRSIGRecord'   => "rRSIGRecord",
                     'nSECRecord'    => "nSECRecord");
   /* All available record types */
-  /* Return all record types 
+  /* Return all record types
    */
   static function getDnsRecordTypes($ForZones = false)
   {
@@ -84,17 +84,17 @@ class DNS
   static function getDNSZoneEntries($config,$HostDn,$silent = false)
   {
     $ldap = $config->get_ldap_link();
-    $ldap->cd($config->current['BASE']); 
+    $ldap->cd($config->current['BASE']);
 
     /* Not all records are allowed within a zone entry
-     */  
+     */
     $SkipRecords = array("tXTRecord","cNAMERecord","pTRRecord");
 
-    /* Special sOArecords 
+    /* Special sOArecords
      */
     $sOAREcords  = array("0"=>"sOAprimary","1"=>"sOAmail","2"=>"sOAserial","3"=>"sOArefresh","4"=>"sOAretry","5"=>"sOAexpire","6"=>"sOAttl");
 
-    /* Create tempalte for all fetched zone Data 
+    /* Create tempalte for all fetched zone Data
      */
     $ZoneBase = array();
     $ZoneBase['exists']  = false;
@@ -108,7 +108,7 @@ class DNS
 
     $Zones    = array();
 
-    /* Get & Parse all zone entries 
+    /* Get & Parse all zone entries
      */
     $ldap->ls("(&(objectClass=dNSZone)(zoneName=*)(relativeDomainName=@))",$HostDn,array("*"));
     $tmp_res = array();
@@ -116,7 +116,7 @@ class DNS
       $tmp_res[] = $attrs;
     }
 
-    /* Parse fetched zones 
+    /* Parse fetched zones
      */
     foreach($tmp_res as $attrs){
 
@@ -124,7 +124,7 @@ class DNS
       $Zones[$zoneName]           = $ZoneBase;
       $Zones[$zoneName]['exists'] = true;
 
-      /* Set basic attributes 
+      /* Set basic attributes
        */
       foreach(array("zoneName","dNSClass") as $attr){
         if(isset($attrs[$attr][0])){
@@ -132,7 +132,7 @@ class DNS
         }
       }
 
-      /* Set initial zone name, to be able to detect if this entry was renamed 
+      /* Set initial zone name, to be able to detect if this entry was renamed
        */
       $Zones[$zoneName]['InitialzoneName'] = $zoneName;
 
@@ -150,13 +150,13 @@ class DNS
             $Zones[$zoneName][$name] = "";
           }
         }
-      } // ENDE SOA Record 
+      } // ENDE SOA Record
 
-      /* Get record attributes 
+      /* Get record attributes
        */
       foreach(DNS::$RecordTypes as $name => $value){
 
-        /* Skip some attributes 
+        /* Skip some attributes
          */
         if(in_array($name,$SkipRecords)) continue;
 
@@ -196,11 +196,11 @@ class DNS
   }
 
 
-  /* This static function compares two dns zone objects and returns an 
-   *  array with following indexes 
+  /* This static function compares two dns zone objects and returns an
+   *  array with following indexes
    *   - delete, for dns which must be deleted (only if dns zone is removed)
    *   - rename, if a dn must be renamed, for example, the zoneName has changed
-   *   - add,    if there is a new dns account created    
+   *   - add,    if there is a new dns account created
    */
   static function getDNSZoneEntriesDiff($config,$newZones,$HostDn)
   {
@@ -221,25 +221,25 @@ class DNS
     $zoneBase['dNSClass']           = "IN";
     $zoneBase['sOARecord']          = "";
 
-    /* Contains all renamed zoneNames 
+    /* Contains all renamed zoneNames
      * For zone entry udpdates
      */
     $PrePareZoneEntries = array();
 
-    /* Walk through all zones and detect renamed/added/deleted zones ... 
+    /* Walk through all zones and detect renamed/added/deleted zones ...
      */
     foreach($newZones as $name => $zone){
 
-      /* This zone was renamed 
+      /* This zone was renamed
        */
       if((!empty($zone['InitialzoneName'])) && ($zone['InitialzoneName'] != $zone['zoneName'])){
 
-        /* Move old zone to new position 
-         */ 
+        /* Move old zone to new position
+         */
         $oldDn = "zoneName=".$zone['InitialzoneName'].",".$HostDn;
         $newDn = "zoneName=".$zone['zoneName'].",".$HostDn;
         $PrePareZoneEntries[$zone['InitialzoneName']] = $zone['zoneName'];
-        $move [$oldDn] = $newDn;      
+        $move [$oldDn] = $newDn;
       }
 
       /* Get old zone if available
@@ -256,28 +256,28 @@ class DNS
       $obj['zoneName'] = $zone['zoneName'];
 
       /* Create sOARecord & add it to the obj
-       */ 
+       */
       $soa = "";
       foreach($sOAattributes as $attr){
         $soa.=" ".$zone[$attr];
-      }  
+      }
       $obj['sOARecord'] = trim($soa);
       $obj['nSRecord'] = $zone['sOAprimary'];
 
-      /* If reverse zone was renamed, move entry 
+      /* If reverse zone was renamed, move entry
        */
       if(!empty($zone['InitialReverseZone'])){
         if($zone['InitialReverseZone'] != $zone['ReverseZone']){
           $base = "zoneName=".$zone['zoneName'].",".$HostDn;
-          $oldRDn = "zoneName=". DNS::FlipIp($zone['InitialReverseZone']).".in-addr.arpa.,".$base; 
+          $oldRDn = "zoneName=". DNS::FlipIp($zone['InitialReverseZone']).".in-addr.arpa.,".$base;
           $newRDn = "zoneName=". DNS::FlipIp($zone['ReverseZone']).".in-addr.arpa.,".$base;
           $PrePareZoneEntries[DNS::FlipIp($zone['InitialReverseZone']).".in-addr.arpa."] = DNS::FlipIp($zone['ReverseZone']).".in-addr.arpa.";
           $move [$oldRDn] = $newRDn;
         }
       }
 
-      /* Append record entries 
-       *  Set old value to array, to ensure that 
+      /* Append record entries
+       *  Set old value to array, to ensure that
        *  they will be deleted if necessary
        */
       if(isset($oldZone['RECORDS'])){
@@ -286,7 +286,7 @@ class DNS
         }
       }
 
-      /* Add new Records 
+      /* Add new Records
        */
       foreach($zone['RECORDS'] as $rec){
         if(!isset($obj[$rec['type']])||!is_array($obj[$rec['type']])){
@@ -296,10 +296,10 @@ class DNS
       }
 
       /* Append udpated Zone Forward Entry to our add queue
-       */    
-      $add[$newDn] = $obj;   
+       */
+      $add[$newDn] = $obj;
 
-      /* Create Reverse Entry 
+      /* Create Reverse Entry
        * And append it to our add queue
        */
       $zone['ReverseZone'] = DNS::FlipIp($zone['ReverseZone']).".in-addr.arpa.";
@@ -313,7 +313,7 @@ class DNS
        *  this gives us the ability to detect removed zones
        */
       if(isset($oldZones[$zone['InitialzoneName']])){
-        unset($oldZones[$zone['InitialzoneName']]); 
+        unset($oldZones[$zone['InitialzoneName']]);
       }
     }
 
@@ -325,7 +325,7 @@ class DNS
       $del[$oldDn] = $zone;
     }
 
-    /* Check for entries which must be updated 
+    /* Check for entries which must be updated
      */
     $zoneUpdates = array();
     $udpate = array();
@@ -345,7 +345,7 @@ class DNS
   }
 
 
-  /* This static function returns the dns-host eintries for given 
+  /* This static function returns the dns-host eintries for given
    *  name.
    */
   static function getDNSHostEntries($config,$name,$silent = false)
@@ -379,10 +379,10 @@ class DNS
       $foundInTmp = array();
       foreach($nameServerArr as $zoneArr => $zone){
 
-        /* Strip eventually domain part from hostname 
+        /* Strip eventually domain part from hostname
          */
         $zN = trim($zone,".");
-        $nN = trim($name,".");  
+        $nN = trim($name,".");
         if(preg_match("/".preg_quote($zN, '/')."$/",$nN)){
           $nN = preg_replace("/[\.]*".preg_quote($zN, '/')."[\.]*$/","",$nN);
         }else{
@@ -405,20 +405,20 @@ class DNS
     }
 
     /* Get host informations from zone
-     */ 
+     */
     $id_tmp = key($foundIn);
     $ldap->cd($foundIn[$id_tmp]);
     $ldap->search("(&(objectClass=dNSZone)(zoneName=*)(!(relativeDomainName=@)))",array("*"));
     while($attrs = $ldap->fetch()){
 
-      /* Strip eventually domain part from hostname 
+      /* Strip eventually domain part from hostname
        */
       $zN = trim($attrs['zoneName'][0],".");
-      $nN = trim($name,"."); 
+      $nN = trim($name,".");
       $testname = $attrs['relativeDomainName'][0].".".$zN;
 
-      /* Check given host name with zone settings 
-       */ 
+      /* Check given host name with zone settings
+       */
       if(preg_match("/".preg_quote($testname, '/')."[\.]*$/",$nN) || $attrs['relativeDomainName'][0] == $name){
         $ret['exists'] = true;
         $ret['zoneName'] = $id_tmp;
@@ -445,15 +445,15 @@ class DNS
       $ret['RECORDS'] = $types;
     }
     return($ret);
-  }  
+  }
 
 
 
-  /* This static function compares two dns settings and returns an 
-   *  array with following indexes 
+  /* This static function compares two dns settings and returns an
+   *  array with following indexes
    *   - delete, for dns which must be deleted (only if dns account is removed)
    *   - rename, if a dn must be renamed, for example, the relativeDomainName has changed
-   *   - add,    if there is a new dns account created    
+   *   - add,    if there is a new dns account created
    */
   static function getDNSHostEntriesDiff($config,$oldName,$newEntry,$newName)
   {
@@ -472,13 +472,13 @@ class DNS
 
     $zones              = DNS::getAvailableZones($config);
     $specialAttributes  = array("cNAMERecord","pTRRecord");
-    $newRecords         = array();  // Used to remember which records are removed 
+    $newRecords         = array();  // Used to remember which records are removed
     $zoneNameMix           = $newEntry['zoneName'];
     $zoneDn             = DNS::getDNSZoneDN($config,$zoneNameMix);
     $tmp                = array_flip($zones);
     $zoneName           = DNS::getNameFromMix($zoneNameMix);
 
-    /* Strip domain part out of dns host entry 
+    /* Strip domain part out of dns host entry
      */
     $zN = trim($zoneName,".");
     $nN = trim($newName,".");
@@ -486,9 +486,9 @@ class DNS
     $newName = preg_replace("/[\.]*".preg_quote($zN, '/')."$/i","",$nN);
     $oldName = preg_replace("/[\.]*".preg_quote($zN, '/')."$/i","",$oN);
 
-    /* If reverseZone can't be resolved ... this 
+    /* If reverseZone can't be resolved ... this
      *  can't be a valid entry, so remove this account
-     */ 
+     */
     if(isset($tmp[$zoneNameMix])){
       $reverseNameMix  = $tmp[$zoneNameMix];
       $reverseDn    = DNS::getDNSZoneDN($config,$reverseNameMix);
@@ -500,12 +500,12 @@ class DNS
     }
 
     /* If account was edited prepare some
-     *  attributes & arrays ... if required add some 
-     *  dns to $move 
+     *  attributes & arrays ... if required add some
+     *  dns to $move
      */
     if($oldEntry['exists']){
 
-      /* Check if the account was removed 
+      /* Check if the account was removed
        */
       if($newEntry['exists'] == false){
         $dn = "relativeDomainName=".$oldName.",".DNS::getDNSZoneDN($config,$oldEntry['zoneName']);
@@ -513,8 +513,8 @@ class DNS
         return(array("move"=>$move,"add"=>$add,"del"=>$del));
       }
 
-      /* Check if zoneName has changed 
-       */   
+      /* Check if zoneName has changed
+       */
       if(count($newEntry['RECORDS'])){
         if($oldEntry['zoneName'] != $newEntry['zoneName']){
           $oldzoneDn = DNS::getDNSZoneDN($config,$oldEntry['zoneName']);
@@ -523,8 +523,8 @@ class DNS
           $move[$dn]=$dn2;
         }
 
-        /* Check if host name has changed 
-         */ 
+        /* Check if host name has changed
+         */
         if($oldName != $newName){
           $dn = "relativeDomainName=".$oldName.",".$zoneDn;
           $dn2= "relativeDomainName=".$newName.",".$zoneDn;
@@ -544,7 +544,7 @@ class DNS
       }
     }
 
-    /* There must be at least one record in our entry  
+    /* There must be at least one record in our entry
      */
     if((!count($newEntry['RECORDS'])) || (!$newEntry['exists'])){
       $dn = "relativeDomainName=".$newName.",".DNS::getDNSZoneDN($config,$oldEntry['zoneName']);
@@ -561,8 +561,8 @@ class DNS
       $baseObj['dNSTTL']            = $newEntry['dNSTTL'];
     }
     $baseObj['dNSClass']          = $newEntry['dNSClass'];
-    $baseObj['zoneName']          = $zoneName; 
-    $baseObj['relativeDomainName']= $newName; 
+    $baseObj['zoneName']          = $zoneName;
+    $baseObj['relativeDomainName']= $newName;
 
     /* Add Container Object to zone
      *  (this possibly already exists, check this before writing to ldap)
@@ -595,10 +595,10 @@ class DNS
     }
 
 
-    /* Create new record entries 
+    /* Create new record entries
      */
     foreach($newEntry['RECORDS'] as $id => $rec){
-      /* Create object which contains special records 
+      /* Create object which contains special records
        *  like pTRRecord or CNAMERecord
        */
       if($rec['type']  == "pTRRecord"){
@@ -614,7 +614,7 @@ class DNS
         $ptrObj['relativeDomainName'] = DNS::FlipIP($rec['value']);
 
         $add[$PTRdn] = $ptrObj;
-      }else  
+      }else
         if($rec['type']  == "cNAMERecord"){
           $PTRdn= "relativeDomainName=".$rec['value'].",".$baseDn;
           $ptrObj = $baseObj;
@@ -626,17 +626,17 @@ class DNS
         }else{
           /* Append basic attributes
            */
-          $add[$stdDn][$rec['type']][] = $rec['value'];  
+          $add[$stdDn][$rec['type']][] = $rec['value'];
         }
-    } // foreach record 
+    } // foreach record
 
     $ret = array("move"=>$move,"add"=>$add,"del"=>$del);
     return($ret);
-  } 
+  }
 
   static function getNameFromMix($zoneMix){
     $ret = "";
-    if(!strstr($zoneMix, '/')) return($ret);  
+    if(!strstr($zoneMix, '/')) return($ret);
     $zoneIndex      = explode("/",$zoneMix);
     return($zoneIndex[1]);
   }
@@ -651,7 +651,7 @@ class DNS
       return($ret);
     }
 
-    $zoneNameIndex      = explode("/",$zoneNameMix); 
+    $zoneNameIndex      = explode("/",$zoneNameMix);
     $zoneName           = $zoneNameIndex[1];
     $nameServer         = strtolower($zoneNameIndex[0]);
     $ldap               = $config->get_ldap_link();
@@ -676,7 +676,7 @@ class DNS
   }
 
 
-  /* returns all available zones 
+  /* returns all available zones
    *  array[reverseName] = zoneName;
    */
   static function getAvailableZones($config)
@@ -684,7 +684,7 @@ class DNS
     $ReverseZones = $ForwardZones = $zones = array();
     $runtime_cache = session::get("runtime_cache");
     if(!isset($runtime_cache['DNS']['getAvailableZones'])){
-    
+
       $ret = array();
       $ldap = $config->get_ldap_link();
       $tmp = get_sub_list("(&(objectClass=dNSZone)(sOARecord=*))","",get_ou("serverRDN"),
@@ -701,13 +701,13 @@ class DNS
       foreach($ForwardZones as $dn => $obj){
 
         /* try to find reverse
-         */  
+         */
         foreach($ReverseZones as $Rdn => $Robj ){
           if(preg_match("/".$dn."/",$Rdn)){
-            $zones[strtoupper($ldap->getCn($dn))."/".$Robj['zoneName'][0]] =  
+            $zones[strtoupper($ldap->getCn($dn))."/".$Robj['zoneName'][0]] =
               strtoupper($ldap->getCn($dn))."/".$obj['zoneName'][0];
           }
-        }   
+        }
       }
       $runtime_cache['DNS']['getAvailableZones'] = $zones;
       session::set("runtime_cache",$runtime_cache);
@@ -738,7 +738,7 @@ class DNS
       $to_update[$forward['dn']] = $forward;
       $ldap->cd($forward['dn']);
       $ldap->search("(&(objectClass=dNSZone)(relativeDomainName=@)(sOARecord=*))",array("sOARecord"));
-  
+
       // We may have multiple reverse zones later.
       while($attrs = $ldap->fetch()){
         $to_update[$attrs['dn']] = $attrs;

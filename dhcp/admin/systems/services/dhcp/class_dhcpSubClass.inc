@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011  FusionDirectory
+  Copyright (C) 2011-2013  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -40,14 +40,14 @@ class dhcpSubClass extends dhcpPlugin
     $smarty->assign("acl",$this->parent->getacl(""));
 
     /* Show main page */
-    $display= $smarty->fetch (get_template_path('dhcp_group.tpl', TRUE, 
+    $display= $smarty->fetch (get_template_path('dhcp_group.tpl', TRUE,
       dirname(__FILE__))).$this->network->execute();
     $display.= $this->advanced->execute();
 
     /* Add footer */
     $display.= "<div style='width:100%;text-align:right;margin-top:5px;'>";
     if(preg_match("/w/",$this->parent->getacl(""))){
-      $display.= 	 "<input type=submit name='save_dhcp' value='".msgPool::saveButton()."'>&nbsp;";
+      $display.=   "<input type=submit name='save_dhcp' value='".msgPool::saveButton()."'>&nbsp;";
     }
     $display.=   "<input type=submit name='cancel_dhcp' value='".msgPool::cancelButton()."'>";
     $display.= "</div>";

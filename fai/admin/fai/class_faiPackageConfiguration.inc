@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011  FusionDirectory
+  Copyright (C) 2011-2013  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -55,7 +55,7 @@ class faiPackageConfiguration extends plugin
       msg_dialog::display(_("Service infrastructure"),msgPool::siError($q->get_error()),ERROR_DIALOG);
     }
 
-    /* If we do not get a useable answer, use an empty template 
+    /* If we do not get a useable answer, use an empty template
      */
     $tpl = "";
     if(isset($ret[0]) && isset($ret[0]['TEMPLATE'])){
@@ -74,7 +74,7 @@ class faiPackageConfiguration extends plugin
   }
 
 
-  /*! \brief  Returns a html interface, that allow to modify 
+  /*! \brief  Returns a html interface, that allow to modify
                the package attributes.
       @return String  HTML content/ui for this plugin
    */
@@ -106,7 +106,7 @@ class faiPackageConfiguration extends plugin
   }
 
 
-  /*! \brief  Returns an array with all configured attributes 
+  /*! \brief  Returns an array with all configured attributes
       @return Array   All configured attributes.
    */
   function save()

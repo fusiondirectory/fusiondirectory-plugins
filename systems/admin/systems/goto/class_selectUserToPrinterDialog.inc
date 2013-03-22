@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011  FusionDirectory
+  Copyright (C) 2011-2013  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -36,42 +36,42 @@ class selectUserToPrinterDialog extends plugin
   var $searchAppend         = "";
   var $baseAddition         = "";
   var $type                 = "";
-  var $search_cat           = ""; 
+  var $search_cat           = "";
 
   var $dns_used             = array();
- 
+
   function selectUserToPrinterDialog (&$config, $dn= NULL,$type=false,$already_assigned )
   {
     plugin::plugin ($config, $dn);
     $this->depselect = $this->config->current['BASE'];
 
     switch($type){
-      case "AddUser" : 
+      case "AddUser" :
         $this->searchObjects = "(objectClass=gosaAccount)(!(uid=*$))";
         $this->searchAttrs   = array("cn","uid");
-        $this->searchAppend  = "uid"; 
-        $this->baseAddition  = get_people_ou(); 
+        $this->searchAppend  = "uid";
+        $this->baseAddition  = get_people_ou();
         $this->search_cat    = "users";
           ;break;
       case "AddGroup" :
         $this->searchObjects = "(objectClass=posixGroup)";
         $this->searchAttrs   = array("cn","description");
-        $this->searchAppend  = "cn"; 
-        $this->baseAddition  = get_groups_ou(); 
+        $this->searchAppend  = "cn";
+        $this->baseAddition  = get_groups_ou();
         $this->search_cat    = "groups";
           ;break;
-      case "AddAdminUser" : 
+      case "AddAdminUser" :
         $this->searchObjects = "(objectClass=gosaAccount)(!(uid=*$))";
         $this->searchAttrs   = array("cn","uid");
-        $this->searchAppend  = "uid"; 
-        $this->baseAddition  = get_people_ou(); 
+        $this->searchAppend  = "uid";
+        $this->baseAddition  = get_people_ou();
         $this->search_cat    = "users";
           ;break;
       case "AddAdminGroup" :
         $this->searchObjects = "(objectClass=posixGroup)";
         $this->searchAttrs   = array("cn","description");
-        $this->searchAppend  = "cn"; 
-        $this->baseAddition  = get_groups_ou(); 
+        $this->searchAppend  = "cn";
+        $this->baseAddition  = get_groups_ou();
         $this->search_cat    = "groups";
           ;break;
     }
@@ -115,7 +115,7 @@ class selectUserToPrinterDialog extends plugin
 
     /* Load possible departments */
     $ui     = get_userinfo();
-  
+
     /* Allowed user departments */
     $udeps  = $ui->get_module_departments("users");
 
@@ -212,7 +212,7 @@ class selectUserToPrinterDialog extends plugin
       }else{
         if(isset($printer[$this->searchAppend])){
           if(isset($printer['description'][0])){
-            $a_return[$printer[$this->searchAppend][0]] = $printer['cn'][0]." - ".$printer['description'][0]; 
+            $a_return[$printer[$this->searchAppend][0]] = $printer['cn'][0]." - ".$printer['description'][0];
           }else{
             $a_return[$printer[$this->searchAppend][0]] = $printer['cn'][0];
           }

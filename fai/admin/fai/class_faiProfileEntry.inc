@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011  FusionDirectory
+  Copyright (C) 2011-2013  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -65,7 +65,7 @@ class faiProfileEntry extends plugin
         foreach($categories as $cat => $acl){
           if(in_array($cat,$attrs['objectClass'])){
 
-            $acl =  $this->ui->get_permissions($attrs['dn'],"fai/".$acl); 
+            $acl =  $this->ui->get_permissions($attrs['dn'],"fai/".$acl);
 
             /* Append different types of objects */
             $this->FAIAllclasses[$attrs['cn'][0]]['objects'][$cat]=$cat;
@@ -80,7 +80,7 @@ class faiProfileEntry extends plugin
 
             $sort[strtolower($attrs['cn'][0])] = $attrs['cn'][0];
           }
-        } 
+        }
       }
     }
 
@@ -136,7 +136,7 @@ class faiProfileEntry extends plugin
         $SUBfaifilter['Sregex'] = $SUBfaifilter['Sregex']."*";
       }
     }
-  
+
     /* Save current searchfilter in session*/
     session::set('SUBfaifilter',$SUBfaifilter);
 
@@ -146,10 +146,10 @@ class faiProfileEntry extends plugin
         $bclass = base64_encode($class);
         if(isset($_POST["ON_PAGE_".$bclass])){
           if(isset($_POST['USE_'.$bclass])){
-            $this->FAIAllclasses[$class]['status']=true;  
+            $this->FAIAllclasses[$class]['status']=true;
           }else{
-            $this->FAIAllclasses[$class]['status']=false;  
-          }    
+            $this->FAIAllclasses[$class]['status']=false;
+          }
         }
       }
     }
@@ -178,7 +178,7 @@ class faiProfileEntry extends plugin
         $smarty->assign($key,$val);
       }
     }
-  
+
     /* Create a divlist to display all available class names with the depending object types */
     $divlist = new divlist("ProfileEntry");
     $divlist->SetPluginMode();
@@ -199,8 +199,8 @@ class faiProfileEntry extends plugin
         continue;
       }
 
-      $fi = str_replace("*",".*",$SUBfaifilter['Sregex']);  
- 
+      $fi = str_replace("*",".*",$SUBfaifilter['Sregex']);
+
       $abort = true;
       if(!preg_match("/^".$fi."/i",$usedClass)){
         $abort = false;
@@ -231,13 +231,13 @@ class faiProfileEntry extends plugin
           $str.= $objTypes[$obj];
         }
 
-        /* Is this entry selected */ 
+        /* Is this entry selected */
         if($classes['status']==true){
           $action_check = preg_replace("/%CHECK%/"," checked ",$action);
         }else{
           $action_check = preg_replace("/%CHECK%/","",$action);
-        }      
-        
+        }
+
         /* Append to list */
         $field1 = array("string"=> str_replace("%KEY%",base64_encode($usedClass),$action_check).$usedClass,"attach"=>"");
         $field2 = array("string"=> $str,"attach"=>"style='border-right:0px;'");

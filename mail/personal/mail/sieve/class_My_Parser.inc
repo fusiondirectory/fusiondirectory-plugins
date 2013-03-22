@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011  FusionDirectory
+  Copyright (C) 2011-2013  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -27,14 +27,14 @@ define("SIEVE_INDENT_TAB","  ");
 /* This class is inherited from the original 'Parser'
  *  class written by Heiko Hund
  */
-class My_Parser extends Parser 
+class My_Parser extends Parser
 {
   var $parent = NULL;
   var $registeredExtensions_ =array();
 
   function My_Parser($parent)
   {
-    $this->registeredExtensions_ = array();   
+    $this->registeredExtensions_ = array();
     $this->parent = $parent;
   }
 
@@ -43,19 +43,19 @@ class My_Parser extends Parser
     $ret = $this->dumpParseTree();
     return($ret);
   }
-  
+
 
   /* Check if there are errors, collect them and return them */
   function check()
   {
     return($this->tree_->check());
   }
-  
 
-  /* Initiate parser, but use some other 
+
+  /* Initiate parser, but use some other
      *  classes, that are rewritten.
      */
-  function parse($script) 
+  function parse($script)
   {
     $script = preg_replace("/^###GOSA/","",$script);
 
@@ -70,20 +70,20 @@ class My_Parser extends Parser
         if ($this->commands_($this->tree_->getRoot()) &&
             $this->scanner_->nextTokenIs('script-end'))
         {
-        $this->scanner_->nextToken(); 
+        $this->scanner_->nextToken();
             return $this->success_('success');
         }
 
         return $this->status_;
   }
 
-  
+
   function get_sieve_script()
   {
     return("###GOSA\n".$this->tree_->get_sieve_script());
-  }   
+  }
 
-  
+
   function save_object()
   {
     $this->tree_->save_object();

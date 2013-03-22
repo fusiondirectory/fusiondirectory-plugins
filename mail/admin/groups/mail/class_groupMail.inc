@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011  FusionDirectory
+  Copyright (C) 2011-2013  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -890,11 +890,11 @@ class mailgroup extends plugin
     /* Check if this mail address is already in use */
     $ldap->cd($this->config->current['BASE']);
     $filter = "(&(!(objectClass=gosaUserTemplate))(!(cn=".$this->cn."))".
-	    "(objectClass=gosaMailAccount)".
-	    "(|(mail=".$mail.")(alias=".$mail.")(gosaMailAlternateAddress=".$mail.")))";
+      "(objectClass=gosaMailAccount)".
+      "(|(mail=".$mail.")(alias=".$mail.")(gosaMailAlternateAddress=".$mail.")))";
     $ldap->search($filter,array("cn"));
     if ($ldap->count() != 0){
-	    $message[]= msgPool::duplicated(_("Mail address"));
+      $message[]= msgPool::duplicated(_("Mail address"));
     }
 
     /* Check rejectsize for integer */

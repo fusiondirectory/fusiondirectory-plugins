@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011  FusionDirectory
+  Copyright (C) 2011-2013  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -24,8 +24,8 @@ class filterSystemByIp  extends filterLDAP{
 
   static function query($parent,$base, $scope, $filter, $attributes, $category, $objectStorage= "")
   {
-    
-    // IP Range selection 
+
+    // IP Range selection
     $filterByIP = preg_match("/__FilterByIP__/", $filter);
     $filter = preg_replace("/__FilterByIP__/","",$filter);
     $ipstart = "";
@@ -36,16 +36,16 @@ class filterSystemByIp  extends filterLDAP{
     if(preg_match("/__IPSTOP__=/", $filter)){
       $ipstop = trim(preg_replace("/^.*__IPSTOP__=([^_]*)__.*$/","\\1",$filter),"*");
     }
-    
 
-    // Get entries 
+
+    // Get entries
     $filter= preg_replace("/__IPSTART.*$/","",$filter);
     $entries = filterLDAP::query($parent,$base, $scope, $filter, $attributes, $category, $objectStorage);
-    
+
 
     // Filter entries by IP-Address
     if($filterByIP){
-      foreach($entries as $key => $entry){ 
+      foreach($entries as $key => $entry){
         if(!isset($entry['ipHostNumber'])){
           unset($entries[$key]);
           continue;

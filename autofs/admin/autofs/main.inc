@@ -2,7 +2,7 @@
 /*
  * This file is part of the autofs plugin for fusiondirectory
  * Copyright (C) 2011 Gaston TJEBBES - Majerti <g.t at majerti.fr>
- *
+ * Copyright (C) 2013  FusionDirectory
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
