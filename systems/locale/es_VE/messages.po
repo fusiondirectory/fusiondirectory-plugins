@@ -1,22 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 #  Alejandro Escanero Blanco <aescanero@gmail.com>, 2008,2010.
 #   <lars.gold@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
-"POT-Creation-Date: 2013-02-12 19:05+0100\n"
-"PO-Revision-Date: 2013-02-12 18:41+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-03-24 15:13+0100\n"
+"PO-Revision-Date: 2013-03-06 21:41+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Spanish (Venezuela) (http://www.transifex.com/projects/p/FusionDirectory/language/es_VE/)\n"
+"Language-Team: Spanish (Venezuela) (http://www.transifex.com/projects/p/"
+"FusionDirectory/language/es_VE/)\n"
+"Language: es_VE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es_VE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: admin/devices/device-list.tpl:13 admin/devices/class_deviceGeneric.inc:276
@@ -60,7 +61,7 @@ msgstr "Dispositivo"
 #: admin/systems/systemSelect/selectSystem-filter.tpl:22
 #: admin/systems/systemSelect/selectSystem-list.xml:57
 #: admin/systems/system-list.xml:161
-#: admin/systems/class_workstationGeneric.inc:150
+#: admin/systems/class_workstationGeneric.inc:153
 #: admin/systems/class_componentGeneric.inc:58
 #: admin/systems/system-filter.tpl:48
 #: admin/systems/services/shares/class_serviceShare.inc:52
@@ -87,7 +88,7 @@ msgstr "Nombre"
 #: admin/systems/class_mobilePhoneGeneric.inc:64
 #: admin/systems/systemSelect/selectSystem-list.xml:65
 #: admin/systems/system-list.xml:185
-#: admin/systems/class_workstationGeneric.inc:156
+#: admin/systems/class_workstationGeneric.inc:159
 #: admin/systems/class_componentGeneric.inc:62
 #: admin/systems/serverService-list.xml:35
 #: admin/systems/services/shares/class_serviceShare.inc:56
@@ -176,8 +177,8 @@ msgstr "ID-Fabricante"
 #: admin/systems/goto/class_printGeneric.inc:726
 #: admin/systems/goto/class_printGeneric.inc:1108
 #: admin/systems/goto/class_printGeneric.inc:1119
-#: admin/systems/class_systemManagement.inc:576
-#: admin/systems/class_systemManagement.inc:591
+#: admin/systems/class_systemManagement.inc:574
+#: admin/systems/class_systemManagement.inc:589
 #: admin/systems/services/shares/class_serviceShare.inc:103
 #: admin/systems/class_networkSettings.inc:291
 #: admin/systems/class_networkSettings.inc:323
@@ -203,7 +204,7 @@ msgstr "Error"
 #: admin/groups/apps/class_groupApplication.inc:1424
 #: admin/systems/goto/class_printGeneric.inc:674
 #: admin/systems/goto/class_printGeneric.inc:980
-#: admin/systems/class_systemManagement.inc:763
+#: admin/systems/class_systemManagement.inc:761
 #: admin/systems/services/class_goService.inc:123
 #: admin/systems/services/class_goService.inc:151
 #: admin/systems/services/class_goService.inc:188
@@ -216,7 +217,7 @@ msgstr "Error"
 #: admin/systems/class_networkSettings.inc:853
 #: admin/systems/class_networkSettings.inc:871
 #: admin/systems/class_networkSettings.inc:945
-#: admin/ogroups/goto/class_termgroup.inc:388
+#: admin/ogroups/goto/class_termgroup.inc:386
 #: admin/applications/class_applicationGeneric.inc:363
 #: admin/applications/class_applicationParameters.inc:179
 #: admin/applications/class_applicationParameters.inc:247
@@ -227,7 +228,7 @@ msgstr "Error LDAP"
 #: admin/mimetypes/class_mimetypeGeneric.inc:677
 #: admin/mimetypes/paste_generic.tpl:4 admin/mimetypes/generic.tpl:4
 #: admin/systems/class_mobilePhoneGeneric.inc:38
-#: admin/systems/class_workstationGeneric.inc:459
+#: admin/systems/class_workstationGeneric.inc:465
 #: admin/systems/class_componentGeneric.inc:36
 #: admin/systems/services/ntp/class_serviceNTP.inc:44
 #: admin/systems/class_terminalGeneric.inc:81
@@ -278,12 +279,16 @@ msgstr "Aviso"
 msgid ""
 "Please double check if you really want to do this since there is no way for "
 "FusionDirectory to get your data back."
-msgstr "Por favor verifique que realmente desea hacer esto ya que FusionDirectory no tiene forma de recuperar la data"
+msgstr ""
+"Por favor verifique que realmente desea hacer esto ya que FusionDirectory no "
+"tiene forma de recuperar la data"
 
 #: admin/devices/remove.tpl:10 admin/mimetypes/remove.tpl:10
 #: admin/systems/remove.tpl:10 admin/applications/remove.tpl:10
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr "Entonces, si esta seguro, presione <i>Eliminar</i> para continuar o <i>Cancelar</i> para Abortar."
+msgstr ""
+"Entonces, si esta seguro, presione <i>Eliminar</i> para continuar o "
+"<i>Cancelar</i> para Abortar."
 
 #: admin/devices/device-filter.tpl:3 admin/mimetypes/mimetype-filter.tpl:3
 #: admin/mimetypes/mimetype-filter-release.tpl:3
@@ -357,7 +362,7 @@ msgid "Mime group"
 msgstr "Grupo Mime"
 
 #: admin/mimetypes/class_mimetypeGeneric.inc:690
-#: admin/groups/apps/class_groupApplication.inc:1506
+#: admin/groups/apps/class_groupApplication.inc:1507
 #: admin/applications/class_applicationGeneric.inc:135
 #: admin/applications/class_applicationGeneric.inc:137
 #: admin/applications/application-list-release.xml:15
@@ -455,7 +460,7 @@ msgid "Add a new file pattern"
 msgstr "Añadir nuevo patrón de archivo"
 
 #: admin/mimetypes/generic.tpl:117 admin/mimetypes/generic.tpl:177
-#: admin/groups/apps/class_groupApplication.inc:1498
+#: admin/groups/apps/class_groupApplication.inc:1499
 #: admin/applications/class_applicationManagement.inc:38
 msgid "Applications"
 msgstr "Aplicaciones"
@@ -486,7 +491,7 @@ msgstr "Para saber si graba al disco local"
 
 #: admin/mimetypes/mimetype-filter-release.tpl:14
 #: admin/groups/apps/app_list.tpl:5 admin/groups/apps/app_list.tpl:53
-#: admin/groups/apps/class_groupApplication.inc:1507
+#: admin/groups/apps/class_groupApplication.inc:1508
 #: admin/systems/system-list.xml:201
 #: admin/applications/application-filter-release.tpl:14
 msgid "Release"
@@ -563,7 +568,7 @@ msgid "Menu"
 msgstr "Menú"
 
 #: admin/groups/apps/class_groupApplication.inc:482
-#: admin/systems/class_systemManagement.inc:172
+#: admin/systems/class_systemManagement.inc:170
 msgid "Back"
 msgstr "Atrás"
 
@@ -584,27 +589,27 @@ msgstr "aplicación"
 msgid "Not available in release."
 msgstr "No esta disponible en esta versión"
 
-#: admin/groups/apps/class_groupApplication.inc:1499
+#: admin/groups/apps/class_groupApplication.inc:1500
 msgid "Group applications"
 msgstr "Grupo de aplicaciones"
 
-#: admin/groups/apps/class_groupApplication.inc:1508
+#: admin/groups/apps/class_groupApplication.inc:1509
 msgid "Application parameter"
 msgstr "Parámetro de la aplicación"
 
-#: admin/groups/apps/class_groupApplication.inc:1509
+#: admin/groups/apps/class_groupApplication.inc:1510
 #: admin/groups/apps/edit_entry.tpl:69
 #: admin/applications/class_applicationGeneric.inc:195
 msgid "Place icon on members desktop"
 msgstr "Colocar icono en los escritorios de los miembros "
 
-#: admin/groups/apps/class_groupApplication.inc:1510
+#: admin/groups/apps/class_groupApplication.inc:1511
 #: admin/groups/apps/edit_entry.tpl:79
 #: admin/applications/class_applicationGeneric.inc:205
 msgid "Place entry in members launch bar"
 msgstr "Colocar entrada en los barra de inicio de los miembros"
 
-#: admin/groups/apps/class_groupApplication.inc:1511
+#: admin/groups/apps/class_groupApplication.inc:1512
 #: admin/groups/apps/edit_entry.tpl:74
 #: admin/applications/class_applicationGeneric.inc:200
 msgid "Place entry in members startmenu"
@@ -738,7 +743,9 @@ msgstr "El análisis del archivo PPD 's' ha fallado - ¡el archivo está vacío!
 msgid ""
 "Parsing PPD file %s failed - line too long. Trailing characters have been "
 "ignored!"
-msgstr "El análisis del archivo PPD '%s' ha fallado - linea demasiado larga. ¡Los caracteres sobrantes han sido ignorados!"
+msgstr ""
+"El análisis del archivo PPD '%s' ha fallado - linea demasiado larga. ¡Los "
+"caracteres sobrantes han sido ignorados!"
 
 #: admin/systems/ppd/class_ppdManager.inc:234
 msgid "Nested groups are not supported!"
@@ -766,12 +773,16 @@ msgstr "¡No se soporta selección múltiple!"
 msgid ""
 "Parsing PPD file %s failed - line too long. Trailing characters have been "
 "ignored"
-msgstr "El análisis del archivo PPD '%s' ha fallado - linea demasiado larga. Los caracteres sobrantes han sido ignorados"
+msgstr ""
+"El análisis del archivo PPD '%s' ha fallado - linea demasiado larga. Los "
+"caracteres sobrantes han sido ignorados"
 
 #: admin/systems/ppd/class_ppdManager.inc:399
 #, php-format
 msgid "Parsing PPD file %s failed - no information found."
-msgstr "El análisis del archivo PPD '%s' ha fallado - no se ha encontrado información."
+msgstr ""
+"El análisis del archivo PPD '%s' ha fallado - no se ha encontrado "
+"información."
 
 #: admin/systems/ppd/class_printerPPDDialog.inc:74
 #: admin/systems/ppd/class_printerPPDDialog.inc:140
@@ -812,7 +823,8 @@ msgstr "Sobreescribir PPD existente"
 msgid ""
 "There is already a ppd file for this kind of printer. Do you want to "
 "overwrite it?"
-msgstr "Ya existe un archivo PPD para ese tipo de impresora.¿Quiere sobreescribirlo?"
+msgstr ""
+"Ya existe un archivo PPD para ese tipo de impresora.¿Quiere sobreescribirlo?"
 
 #: admin/systems/ppd/class_printerPPDDialog.inc:494
 msgid "Section"
@@ -837,7 +849,9 @@ msgstr "¡El tipo de PPD '%s' no está soportado!"
 msgid ""
 "Please select a valid ppd file or use 'Cancel' to go back to printer "
 "configuration."
-msgstr "Por favor seleccione un archivo ppd válido o use 'Cancelar' para volver a la configuración de impresora."
+msgstr ""
+"Por favor seleccione un archivo ppd válido o use 'Cancelar' para volver a la "
+"configuración de impresora."
 
 #: admin/systems/ppd/printerPPDDialog.tpl:1
 msgid "Printer driver"
@@ -944,7 +958,11 @@ msgid ""
 "This option enables you to generate FAI install CD images for the selected "
 "workstation. The procedure may take about 10 minutes to complete, so please "
 "be patient after pressing the 'Create ISO-Image' button."
-msgstr "Esta opción le permite generar imágenes de instalación de CD FAI para la estación de trabajo seleccionada. El procedimiento puede tardar 10 minutos en completarse, porfavor tenga paciencia despues de presionar el botón 'Crear imagen ISO'."
+msgstr ""
+"Esta opción le permite generar imágenes de instalación de CD FAI para la "
+"estación de trabajo seleccionada. El procedimiento puede tardar 10 minutos "
+"en completarse, porfavor tenga paciencia despues de presionar el botón "
+"'Crear imagen ISO'."
 
 #: admin/systems/goto/gencd.tpl:9
 msgid "Create ISO-Image"
@@ -988,7 +1006,7 @@ msgstr "Expresiones regulares que coincidan con nombres de miembros"
 
 #: admin/systems/goto/class_printGeneric.inc:132
 #: admin/systems/goto/class_printGeneric.inc:1068
-#: admin/systems/class_systemManagement.inc:629
+#: admin/systems/class_systemManagement.inc:627
 msgid "Internal error"
 msgstr "error interno"
 
@@ -996,7 +1014,9 @@ msgstr "error interno"
 #, php-format
 msgid ""
 "Cannot determine a valid department for this object. Setting base to '%s'!"
-msgstr "No puedo determinar un departamento válido para este objeto, ¡le sera puesta la base a '%s'!"
+msgstr ""
+"No puedo determinar un departamento válido para este objeto, ¡le sera puesta "
+"la base a '%s'!"
 
 #: admin/systems/goto/class_printGeneric.inc:312
 #: admin/systems/goto/class_printGeneric.inc:320
@@ -1011,15 +1031,20 @@ msgstr "Añadir extensión de impresora"
 msgid ""
 "Could not initialize printer tab, parameter parent was missing while "
 "construction."
-msgstr "No se puede activar la pestaña de impresora, el origen de los parametros desapareció cuando se estaba construyendo."
+msgstr ""
+"No se puede activar la pestaña de impresora, el origen de los parametros "
+"desapareció cuando se estaba construyendo."
 
 #: admin/systems/goto/class_printGeneric.inc:321
 msgid "This is a workstation template, printer tab is disabled."
-msgstr "Esto es una plantilla de estación de trabajo, la pestaña de impresión está desactivada."
+msgstr ""
+"Esto es una plantilla de estación de trabajo, la pestaña de impresión está "
+"desactivada."
 
 #: admin/systems/goto/class_printGeneric.inc:326
 msgid "This is a terminal template, printer tab is disabled."
-msgstr "Esto es una plantilla de termina, la pestaña de impresión está desactivada."
+msgstr ""
+"Esto es una plantilla de termina, la pestaña de impresión está desactivada."
 
 #: admin/systems/goto/class_printGeneric.inc:368
 #: admin/systems/goto/class_printGeneric.inc:376
@@ -1034,7 +1059,10 @@ msgstr "impresora"
 msgid ""
 "You can't enable it while 'cn' is not present in entry. Possibly you are "
 "currently creating a new terminal template."
-msgstr "No puede activarla mientras un 'cn' no este presente en la entrada. Posiblemente esto ocurra porque actualmente está creando una nueva plantilla de terminal."
+msgstr ""
+"No puede activarla mientras un 'cn' no este presente en la entrada. "
+"Posiblemente esto ocurra porque actualmente está creando una nueva plantilla "
+"de terminal."
 
 #: admin/systems/goto/class_printGeneric.inc:383
 #: admin/systems/goto/class_printGeneric.inc:386
@@ -1062,7 +1090,7 @@ msgid "terminal"
 msgstr "terminal"
 
 #: admin/systems/goto/class_printGeneric.inc:607
-#: admin/systems/class_workstationGeneric.inc:140
+#: admin/systems/class_workstationGeneric.inc:143
 msgid "workstation"
 msgstr "estación de trabajo"
 
@@ -1092,7 +1120,7 @@ msgid "Print generic"
 msgstr "Impresora genérica"
 
 #: admin/systems/goto/class_printGeneric.inc:1027
-#: admin/systems/class_workstationGeneric.inc:162
+#: admin/systems/class_workstationGeneric.inc:165
 msgid "Location"
 msgstr "Localización"
 
@@ -1144,8 +1172,8 @@ msgstr "¡'%s' no existe!"
 #: admin/systems/goto/class_SelectDeviceType.inc:58
 #: admin/systems/systemSelect/selectSystem-list.xml:23
 #: admin/systems/system-list.xml:95 admin/systems/system-list.xml:234
-#: admin/systems/class_workstationGeneric.inc:462
-#: admin/systems/class_workstationGeneric.inc:464
+#: admin/systems/class_workstationGeneric.inc:468
+#: admin/systems/class_workstationGeneric.inc:470
 msgid "Workstation"
 msgstr "Estación de trabajo"
 
@@ -1170,19 +1198,26 @@ msgid ""
 "This system has no system type configured. Please choose a system type for "
 "this object and an optional inheritance group. Press the 'continue' button "
 "to proceed."
-msgstr "El sistema no tiene tipo de sistema configurado. Por favor elija un tipo de sistema para el objeto y un grupo de herencia opcional. Pulse el botón 'continuar' para proceder."
+msgstr ""
+"El sistema no tiene tipo de sistema configurado. Por favor elija un tipo de "
+"sistema para el objeto y un grupo de herencia opcional. Pulse el botón "
+"'continuar' para proceder."
 
 #: admin/systems/goto/SelectDeviceType.tpl:10
 msgid ""
-"Please select a system type and an optional bundle of predefined settings to"
-" be inherited."
-msgstr "Por favor seleccione un tipo de sistema y un paquete opcional de configuraciones predefinidas para ser heredadas."
+"Please select a system type and an optional bundle of predefined settings to "
+"be inherited."
+msgstr ""
+"Por favor seleccione un tipo de sistema y un paquete opcional de "
+"configuraciones predefinidas para ser heredadas."
 
 #: admin/systems/goto/SelectDeviceType.tpl:12
 msgid ""
 "Please select a system type and a bundle of predefined settings to be "
 "inherited."
-msgstr "Por favor seleccione un tipo de sistema y un paquete de configuraciones predefinidas para ser heredadas."
+msgstr ""
+"Por favor seleccione un tipo de sistema y un paquete de configuraciones "
+"predefinidas para ser heredadas."
 
 #: admin/systems/goto/SelectDeviceType.tpl:23
 #: admin/systems/goto/SelectDeviceType.tpl:24
@@ -1270,7 +1305,7 @@ msgid "Mobile phone"
 msgstr ""
 
 #: admin/systems/class_mobilePhoneGeneric.inc:57
-#: admin/systems/class_workstationGeneric.inc:147
+#: admin/systems/class_workstationGeneric.inc:150
 #: admin/systems/class_componentGeneric.inc:55
 #: admin/applications/class_applicationGeneric.inc:151
 msgid "Properties"
@@ -1335,7 +1370,7 @@ msgid "The PUK number of the simcard in this mobile phone"
 msgstr ""
 
 #: admin/systems/class_mobilePhoneGeneric.inc:103
-#: admin/systems/class_workstationGeneric.inc:232
+#: admin/systems/class_workstationGeneric.inc:235
 #: admin/systems/class_componentGeneric.inc:69
 #: admin/systems/class_networkSettings.inc:1010
 msgid "Network settings"
@@ -1451,8 +1486,8 @@ msgid "Halt "
 msgstr "Para sistema "
 
 #: admin/systems/system-list.xml:309 admin/systems/system-list.xml:375
-#: admin/systems/class_workstationGeneric.inc:106
-#: admin/ogroups/goto/class_termgroup.inc:275
+#: admin/systems/class_workstationGeneric.inc:112
+#: admin/ogroups/goto/class_termgroup.inc:274
 msgid "Reboot"
 msgstr "Reiniciar"
 
@@ -1469,9 +1504,9 @@ msgid "Activate"
 msgstr "Activar"
 
 #: admin/systems/system-list.xml:349 admin/systems/system-list.xml:415
-#: admin/systems/class_workstationGeneric.inc:99
-#: admin/ogroups/goto/class_termgroup.inc:279
-msgid "Reinstall"
+#: admin/systems/class_workstationGeneric.inc:105
+#, fuzzy
+msgid "(Re)Install"
 msgstr "Reinstalar"
 
 #: admin/systems/system-list.xml:360
@@ -1501,13 +1536,18 @@ msgstr "Eliminar sistema"
 #: admin/systems/password.tpl:3
 msgid ""
 "To change the terminal root password use the fields below. The changes take "
-"effect during the next reboot. Please memorize the new password, because you"
-" wouldn't be able to log in."
-msgstr "Para cambiar la contraseña del administrador del terminal use los campos a continuación. Los cambios tomarán efecto en el próximo inicio. Por favor, recuerde la nueva contraseña, porque no podrá iniciar sesión sin ella."
+"effect during the next reboot. Please memorize the new password, because you "
+"wouldn't be able to log in."
+msgstr ""
+"Para cambiar la contraseña del administrador del terminal use los campos a "
+"continuación. Los cambios tomarán efecto en el próximo inicio. Por favor, "
+"recuerde la nueva contraseña, porque no podrá iniciar sesión sin ella."
 
 #: admin/systems/password.tpl:6
 msgid "Leave fields blank for password inheritance from default entries."
-msgstr "Si deja los campos en blanco, se heredaran las contraseñas de las entradas predeterminadas."
+msgstr ""
+"Si deja los campos en blanco, se heredaran las contraseñas de las entradas "
+"predeterminadas."
 
 #: admin/systems/password.tpl:10
 msgid "Changing the password impinges on authentification only."
@@ -1530,16 +1570,16 @@ msgid "Set password"
 msgstr "Introducir contraseña"
 
 #: admin/systems/class_workstationGeneric.inc:71
-#: admin/systems/class_workstationGeneric.inc:444
-#: admin/systems/class_systemManagement.inc:294
-#: admin/systems/class_systemManagement.inc:323
-#: admin/ogroups/goto/class_termgroup.inc:221
+#: admin/systems/class_workstationGeneric.inc:450
+#: admin/systems/class_systemManagement.inc:292
+#: admin/systems/class_systemManagement.inc:321
+#: admin/ogroups/goto/class_termgroup.inc:220
 msgid "Service infrastructure"
 msgstr "Infraestructura de servicio"
 
 #: admin/systems/class_workstationGeneric.inc:74
 #: admin/systems/class_workstationGeneric.inc:77
-#: admin/ogroups/goto/class_termgroup.inc:225
+#: admin/ogroups/goto/class_termgroup.inc:224
 msgid "Event error"
 msgstr "Evento de error"
 
@@ -1552,127 +1592,122 @@ msgstr ""
 msgid "Events are not available!"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:100
+#: admin/systems/class_workstationGeneric.inc:106
 msgid "Software update"
 msgstr "Actualización software"
 
-#: admin/systems/class_workstationGeneric.inc:101
-#: admin/ogroups/goto/class_termgroup.inc:281
+#: admin/systems/class_workstationGeneric.inc:107
+#: admin/ogroups/goto/class_termgroup.inc:279
 msgid "Memory test"
 msgstr "Chequeo de memoria"
 
-#: admin/systems/class_workstationGeneric.inc:105
-#: admin/ogroups/goto/class_termgroup.inc:275
+#: admin/systems/class_workstationGeneric.inc:111
+#: admin/ogroups/goto/class_termgroup.inc:274
 msgid "Switch off"
 msgstr "Apagar"
 
-#: admin/systems/class_workstationGeneric.inc:108
-#: admin/ogroups/goto/class_termgroup.inc:280
-msgid "Rescan hardware"
-msgstr "Buscar hardware"
-
-#: admin/systems/class_workstationGeneric.inc:111
+#: admin/systems/class_workstationGeneric.inc:114
 msgid "Wake up"
 msgstr "Despertar"
 
-#: admin/systems/class_workstationGeneric.inc:151
+#: admin/systems/class_workstationGeneric.inc:154
 #, php-format
 msgid "The name of the %s"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:157
+#: admin/systems/class_workstationGeneric.inc:160
 #, php-format
 msgid "A short description of the %s"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:163
+#: admin/systems/class_workstationGeneric.inc:166
 #, php-format
 msgid "The location of the %s"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:169
+#: admin/systems/class_workstationGeneric.inc:172
 #, php-format
 msgid "Lock this %s"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:170
+#: admin/systems/class_workstationGeneric.inc:173
 #, php-format
 msgid "This will prevent the %s from being reinstalled"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:181
+#: admin/systems/class_workstationGeneric.inc:184
 msgid "Servers"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:185
+#: admin/systems/class_workstationGeneric.inc:188
 #: admin/ogroups/goto/termgroup.tpl:58
-#: admin/ogroups/goto/class_termgroup.inc:403
+#: admin/ogroups/goto/class_termgroup.inc:401
 msgid "Syslog server"
 msgstr "Servidor de registro de sistema"
 
-#: admin/systems/class_workstationGeneric.inc:186
+#: admin/systems/class_workstationGeneric.inc:189
 #, php-format
 msgid "The syslog server the %s should be using"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:191
+#: admin/systems/class_workstationGeneric.inc:194
 msgid "Inherit NTP servers"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:192
+#: admin/systems/class_workstationGeneric.inc:195
 msgid "Inherit time server attributes from ogroup"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:198
+#: admin/systems/class_workstationGeneric.inc:201
 msgid "NTP servers"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:199
+#: admin/systems/class_workstationGeneric.inc:202
 #, php-format
 msgid "The NTP servers for the %s"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:205
+#: admin/systems/class_workstationGeneric.inc:208
 msgid "Inherit LDAP servers"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:206
+#: admin/systems/class_workstationGeneric.inc:209
 msgid "Inherit LDAP server attributes from ogroup"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:212
+#: admin/systems/class_workstationGeneric.inc:215
 msgid "LDAP servers"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:213
+#: admin/systems/class_workstationGeneric.inc:216
 #, php-format
 msgid "The LDAP servers for the %s"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:221
-#: admin/systems/class_workstationGeneric.inc:225
+#: admin/systems/class_workstationGeneric.inc:224
+#: admin/systems/class_workstationGeneric.inc:228
 #: admin/ogroups/goto/termgroup.tpl:113
 msgid "Action"
 msgstr "Acción"
 
-#: admin/systems/class_workstationGeneric.inc:226
+#: admin/systems/class_workstationGeneric.inc:229
 #: admin/ogroups/goto/termgroup.tpl:118
 msgid "Select action to execute for this terminal"
 msgstr "Seleccione una acción que se ejecutara en este terminal"
 
-#: admin/systems/class_workstationGeneric.inc:334
+#: admin/systems/class_workstationGeneric.inc:337
 #: admin/systems/class_terminalGeneric.inc:103
 #: admin/systems/class_terminalGeneric.inc:119
-#: admin/ogroups/goto/class_termgroup.inc:125
-#: admin/ogroups/goto/class_termgroup.inc:137
+#: admin/ogroups/goto/class_termgroup.inc:124
+#: admin/ogroups/goto/class_termgroup.inc:136
 msgid "inherited"
 msgstr "heredado"
 
-#: admin/systems/class_workstationGeneric.inc:417
+#: admin/systems/class_workstationGeneric.inc:423
 msgid "A valid LDAP server assignement is missing!"
 msgstr "¡Falta una asignación válida de servidor LDAP!"
 
-#: admin/systems/class_workstationGeneric.inc:460
+#: admin/systems/class_workstationGeneric.inc:466
 msgid "Workstation generic"
 msgstr "Estación de trabajo genérica"
 
@@ -1706,10 +1741,13 @@ msgstr "Inicio de terminal"
 
 #: admin/systems/remove.tpl:6
 msgid ""
-"This includes all account data, system access rules, imap settings, etc. for"
-" this user. Please double check if your really want to do this since there "
-"is no way for FusionDirectory to get your data back."
-msgstr "Esto incluye toda la data de la cuenta, reglas de acceso de sistema, opciones imap, etc. para este usuario. Por favor verifique que realmente desea hacer esto ya que FusionDirectory no tiene forma de recuperar la data"
+"This includes all account data, system access rules, imap settings, etc. for "
+"this user. Please double check if your really want to do this since there is "
+"no way for FusionDirectory to get your data back."
+msgstr ""
+"Esto incluye toda la data de la cuenta, reglas de acceso de sistema, "
+"opciones imap, etc. para este usuario. Por favor verifique que realmente "
+"desea hacer esto ya que FusionDirectory no tiene forma de recuperar la data"
 
 #: admin/systems/class_componentGeneric.inc:37
 msgid "Component generic"
@@ -1784,49 +1822,53 @@ msgstr "Editar servicio"
 msgid "Remove service"
 msgstr "Eliminar servicio"
 
-#: admin/systems/class_systemManagement.inc:218
+#: admin/systems/class_systemManagement.inc:216
 msgid "Creating the image failed. Please see the report below."
-msgstr "Ha fallado la creación de la imagen. Por favor compruebe el problema en el siguiente informe."
+msgstr ""
+"Ha fallado la creación de la imagen. Por favor compruebe el problema en el "
+"siguiente informe."
 
-#: admin/systems/class_systemManagement.inc:223
+#: admin/systems/class_systemManagement.inc:221
 #, php-format
 msgid "Command '%s', specified for ISO creation doesn't seem to exist."
-msgstr "No parece existir el comando '%s', especificado para la creación de imágenes ISO."
+msgstr ""
+"No parece existir el comando '%s', especificado para la creación de imágenes "
+"ISO."
 
-#: admin/systems/class_systemManagement.inc:359
-#: admin/systems/class_systemManagement.inc:435
-#: admin/systems/class_systemManagement.inc:808
-#: admin/systems/class_systemManagement.inc:855
-#: admin/systems/class_systemManagement.inc:876
+#: admin/systems/class_systemManagement.inc:357
+#: admin/systems/class_systemManagement.inc:433
+#: admin/systems/class_systemManagement.inc:806
+#: admin/systems/class_systemManagement.inc:853
+#: admin/systems/class_systemManagement.inc:874
 msgid "Permission"
 msgstr "Permisos"
 
-#: admin/systems/class_systemManagement.inc:629
+#: admin/systems/class_systemManagement.inc:627
 msgid "Cannot set mode to 'active'!"
 msgstr "¡No se puede poner el modo a 'activo'!"
 
-#: admin/systems/class_systemManagement.inc:808
+#: admin/systems/class_systemManagement.inc:806
 #, php-format
 msgid "You are not allowed to create a snapshot for %s."
 msgstr "No tiene permisos para crear una instantanea para %s."
 
-#: admin/systems/class_systemManagement.inc:855
-#: admin/systems/class_systemManagement.inc:876
+#: admin/systems/class_systemManagement.inc:853
+#: admin/systems/class_systemManagement.inc:874
 #, php-format
 msgid "You are not allowed to restore a snapshot for %s."
 msgstr "No tiene permisos para recuperar una instantanea para %s."
 
-#: admin/systems/class_systemManagement.inc:1071
+#: admin/systems/class_systemManagement.inc:1069
 #, php-format
 msgid "Inherited from %s"
 msgstr "Heredado de %s"
 
-#: admin/systems/class_systemManagement.inc:1156
+#: admin/systems/class_systemManagement.inc:1124
 #: config/systems/class_systemsPluginConfig.inc:28
 msgid "Systems"
 msgstr "Sistemas"
 
-#: admin/systems/class_systemManagement.inc:1157
+#: admin/systems/class_systemManagement.inc:1125
 msgid "Systems Management"
 msgstr "Administración de Sistemas"
 
@@ -1939,8 +1981,8 @@ msgstr ""
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:78
 msgid ""
-"Specifies what checks to perform on server certificates in a TLS session, if"
-" any"
+"Specifies what checks to perform on server certificates in a TLS session, if "
+"any"
 msgstr ""
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:83
@@ -2042,7 +2084,10 @@ msgstr "Añadiendo un nuevo servicio al servidor seleccionado"
 msgid ""
 "This dialog allows you to add new services to the currenty edited server "
 "object. The box below shows all available but not already used services."
-msgstr "Este diálogo le permite añadir nuevos servicios al servidor que está configurando. El panel inferior muestra todos los servicios disponibles y que no están siendo usados."
+msgstr ""
+"Este diálogo le permite añadir nuevos servicios al servidor que está "
+"configurando. El panel inferior muestra todos los servicios disponibles y "
+"que no están siendo usados."
 
 #: admin/systems/services/ServiceAddDialog.tpl:13
 msgid "Service to add"
@@ -2106,7 +2151,8 @@ msgstr "Dirección MAC"
 #: admin/systems/class_networkSettings.inc:662
 #, php-format
 msgid "The IP address '%s' is not part of the selected reverse zone '%s'!"
-msgstr "¡La dirección IP '%s' no está dentro de la zona inversa seleccionada '%s'!"
+msgstr ""
+"¡La dirección IP '%s' no está dentro de la zona inversa seleccionada '%s'!"
 
 #: admin/systems/class_networkSettings.inc:674
 #, php-format
@@ -2123,7 +2169,9 @@ msgstr "¡El tipo de registro único '%s' está duplicado!"
 msgid ""
 "The IP address '%s' will be added as 'A Record', this will be done "
 "automatically, please remove the record."
-msgstr "La dirección IP '%s' se añadira como 'Registro A', esto se hará automáticamente, por favor elimine el registro."
+msgstr ""
+"La dirección IP '%s' se añadira como 'Registro A', esto se hará "
+"automáticamente, por favor elimine el registro."
 
 #: admin/systems/class_networkSettings.inc:704
 #, php-format
@@ -2176,7 +2224,8 @@ msgstr "Información"
 
 #: admin/systems/class_serverService.inc:388
 msgid "Cannot update service status until it has been saved!"
-msgstr "¡No puedo actualizar el estado del servicio hasta que no se haya grabado!"
+msgstr ""
+"¡No puedo actualizar el estado del servicio hasta que no se haya grabado!"
 
 #: admin/systems/class_serverService.inc:416
 #: admin/systems/class_serverService.inc:425
@@ -2187,7 +2236,7 @@ msgstr ""
 
 #: admin/systems/class_terminalGeneric.inc:41
 #: admin/ogroups/goto/termgroup.tpl:69
-#: admin/ogroups/goto/class_termgroup.inc:406
+#: admin/ogroups/goto/class_termgroup.inc:404
 msgid "Root server"
 msgstr "Servidor Raíz"
 
@@ -2198,7 +2247,7 @@ msgstr ""
 
 #: admin/systems/class_terminalGeneric.inc:47
 #: admin/ogroups/goto/termgroup.tpl:79
-#: admin/ogroups/goto/class_termgroup.inc:407
+#: admin/ogroups/goto/class_termgroup.inc:405
 msgid "Swap server"
 msgstr "Servidor de Intercambio"
 
@@ -2244,7 +2293,7 @@ msgid "Terminal generic"
 msgstr "Terminal genérico"
 
 #: admin/systems/class_terminalGeneric.inc:115
-#: admin/ogroups/goto/class_termgroup.inc:119
+#: admin/ogroups/goto/class_termgroup.inc:118
 msgid "Local swap"
 msgstr "Memoria de intercambio local"
 
@@ -2261,7 +2310,10 @@ msgid ""
 "Actions you choose here influence all systems in this object group. "
 "Additionally, all values editable here can be inherited by the clients "
 "assigned to this object group."
-msgstr "Las acciones aquí seleccionadas tendrán influencia en todos los sistemas en este grupo de objetos. Además, todos los valores aquí editados pueden ser heredados por los clientes asignados a este grupo de objetos."
+msgstr ""
+"Las acciones aquí seleccionadas tendrán influencia en todos los sistemas en "
+"este grupo de objetos. Además, todos los valores aquí editados pueden ser "
+"heredados por los clientes asignados a este grupo de objetos."
 
 #: admin/ogroups/goto/termgroup.tpl:14
 msgid "NTP server"
@@ -2272,7 +2324,7 @@ msgid "Choose server to use for synchronizing time"
 msgstr "Elija un servidor que será usado para sincronización horaria"
 
 #: admin/ogroups/goto/termgroup.tpl:47
-#: admin/ogroups/goto/class_termgroup.inc:402
+#: admin/ogroups/goto/class_termgroup.inc:400
 msgid "Mode"
 msgstr "Modo"
 
@@ -2290,7 +2342,9 @@ msgstr "Seleccione sistema de archivos raíz 'NFS' que se usará"
 
 #: admin/ogroups/goto/termgroup.tpl:82
 msgid "Choose NFS filesystem to place swap files on"
-msgstr "Seleccione sistema de archivos 'NFS' donde estarán los archivos de intercambio"
+msgstr ""
+"Seleccione sistema de archivos 'NFS' donde estarán los archivos de "
+"intercambio"
 
 #: admin/ogroups/goto/termgroup.tpl:106
 msgid "Inherit all values to group members"
@@ -2301,56 +2355,62 @@ msgstr "Que los miembros del grupo heredaran todos los valores"
 msgid "Execute"
 msgstr "Ejecute"
 
-#: admin/ogroups/goto/class_termgroup.inc:71
+#: admin/ogroups/goto/class_termgroup.inc:70
 msgid "Activated"
 msgstr "Activado"
 
-#: admin/ogroups/goto/class_termgroup.inc:72
+#: admin/ogroups/goto/class_termgroup.inc:71
 msgid "Locked"
 msgstr "Bloqueado"
 
-#: admin/ogroups/goto/class_termgroup.inc:226
+#: admin/ogroups/goto/class_termgroup.inc:225
 #, php-format
 msgid "Event '%s' is not available!"
 msgstr "¡El evento '%s' no está disponible!"
 
-#: admin/ogroups/goto/class_termgroup.inc:276
+#: admin/ogroups/goto/class_termgroup.inc:275
 msgid "Instant update"
 msgstr "Actualización instantánea"
 
-#: admin/ogroups/goto/class_termgroup.inc:277
+#: admin/ogroups/goto/class_termgroup.inc:276
 msgid "Scheduled update"
 msgstr "Actualización programada"
 
-#: admin/ogroups/goto/class_termgroup.inc:278
+#: admin/ogroups/goto/class_termgroup.inc:277
 msgid "Wake"
 msgstr "Despertar"
 
-#: admin/ogroups/goto/class_termgroup.inc:282
+#: admin/ogroups/goto/class_termgroup.inc:278
+msgid "Reinstall"
+msgstr "Reinstalar"
+
+#: admin/ogroups/goto/class_termgroup.inc:280
 msgid "System analysis"
 msgstr "Análisis del sistema"
 
-#: admin/ogroups/goto/class_termgroup.inc:396
+#: admin/ogroups/goto/class_termgroup.inc:394
 msgid "System"
 msgstr "Sistema"
 
-#: admin/ogroups/goto/class_termgroup.inc:397
+#: admin/ogroups/goto/class_termgroup.inc:395
 msgid "System group"
 msgstr "Grupos de sistemas"
 
-#: admin/ogroups/goto/class_termgroup.inc:404
+#: admin/ogroups/goto/class_termgroup.inc:402
 msgid "Action flag"
 msgstr "Marca de acción"
 
-#: admin/ogroups/goto/class_termgroup.inc:405
+#: admin/ogroups/goto/class_termgroup.inc:403
 msgid "Ntp server"
 msgstr "Servidor NTP"
 
 #: admin/applications/class_applicationGeneric.inc:91
 msgid ""
-"Cannot save user picture, FusionDirectory requires the package "
-"'php5-imagick' to be installed!"
-msgstr "No se puede guardar la foto del usuario, FusionDirectory requiere que este instalado el paquete 'php5-imagick'"
+"Cannot save user picture, FusionDirectory requires the package 'php5-"
+"imagick' to be installed!"
+msgstr ""
+"No se puede guardar la foto del usuario, FusionDirectory requiere que este "
+"instalado el paquete 'php5-imagick'"
 
 #: admin/applications/class_applicationGeneric.inc:133
 msgid "Application generic"
@@ -2432,7 +2492,8 @@ msgstr "sin ejemplo"
 #: admin/applications/class_applicationGeneric.inc:349
 #, php-format
 msgid "Cannot remove application - it is still in use by these objects: %s"
-msgstr "No se puede eliminar las aplicación, está todavía en uso por el objeto '%s'."
+msgstr ""
+"No se puede eliminar las aplicación, está todavía en uso por el objeto '%s'."
 
 #: admin/applications/application-list-release.xml:11
 #: admin/applications/application-list.xml:11
@@ -2581,3 +2642,6 @@ msgstr ""
 #: config/systems/class_systemsPluginConfig.inc:102
 msgid "Encodings"
 msgstr ""
+
+#~ msgid "Rescan hardware"
+#~ msgstr "Buscar hardware"

@@ -1,22 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 #  Benoit Mortier <benoit.mortier@opensides.be>, 2005-2008,2010-2011.
 #   <contact@fusiondirectory.org>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
-"POT-Creation-Date: 2013-02-12 19:01+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-03-24 15:10+0100\n"
 "PO-Revision-Date: 2013-03-06 21:40+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory/language/fr/)\n"
+"Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory/"
+"language/fr/)\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:51
@@ -29,13 +30,16 @@ msgstr "Service DNS"
 #: admin/systems/services/dns/class_serviceDNS.inc:179
 #, php-format
 msgid "You are going to migrate the DNS setup from server '%s'."
-msgstr "Vous êtes sur le point de migrer le serveur DNS depuis le serveur '%s'."
+msgstr ""
+"Vous êtes sur le point de migrer le serveur DNS depuis le serveur '%s'."
 
 #: admin/systems/services/dns/class_serviceDNS.inc:180
 msgid ""
 "The migration will be started when you save this system. To cancel this "
 "action, use the cancel button below."
-msgstr "La migration commencera quand vous sauverez ce système. Pour annuler cette action, utilisez le bouton annuler."
+msgstr ""
+"La migration commencera quand vous sauverez ce système. Pour annuler cette "
+"action, utilisez le bouton annuler."
 
 #: admin/systems/services/dns/class_serviceDNS.inc:202
 #: admin/systems/services/dns/class_serviceDNS.inc:377
@@ -68,7 +72,8 @@ msgstr "Classe"
 #: admin/systems/services/dns/class_serviceDNS.inc:377
 #, php-format
 msgid "Cannot delete the selected zone. It is still in use by '%s'"
-msgstr "Vous ne pouvez pas effacer cette zone car elle est encore utilisée par '%s'"
+msgstr ""
+"Vous ne pouvez pas effacer cette zone car elle est encore utilisée par '%s'"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:391
 #, php-format
@@ -166,12 +171,16 @@ msgstr "Enregistrement de zone"
 #: admin/systems/services/dns/class_DNS.inc:181
 #, php-format
 msgid "Cannot find reverse zone for DNS zone '%s'. Parsing zone aborted."
-msgstr "Impossible de trouver la zone inverse pour la zone dns '%s'. Arrêt de la lecture de la zone."
+msgstr ""
+"Impossible de trouver la zone inverse pour la zone dns '%s'. Arrêt de la "
+"lecture de la zone."
 
 #: admin/systems/services/dns/class_DNS.inc:186
 #, php-format
 msgid "Found more than one reverse zone for '%s'. Parsing zone aborted."
-msgstr "Plus d'un zone inverse existe pour la zone dns '%s'. Arrêt de la lecture de la zone."
+msgstr ""
+"Plus d'un zone inverse existe pour la zone dns '%s'. Arrêt de la lecture de "
+"la zone."
 
 #: admin/systems/services/dns/class_DNS.inc:650
 #, php-format
@@ -212,7 +221,8 @@ msgstr "Adresse réseau"
 #, php-format
 msgid ""
 "The specified network address and the network class (%s/%s) do not match!"
-msgstr "L'adresse réseau spécifiée et la classe réseau (%s/%s) ne concordent pas !"
+msgstr ""
+"L'adresse réseau spécifiée et la classe réseau (%s/%s) ne concordent pas !"
 
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:531
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:475
@@ -229,7 +239,8 @@ msgstr "Masque réseau"
 
 #: admin/systems/services/dns/serviceDNSeditZone.tpl:38
 msgid "Zone is in use, network settings can't be modified."
-msgstr "La zone est utilisée, les paramètres réseau ne peuvent pas être modifiés."
+msgstr ""
+"La zone est utilisée, les paramètres réseau ne peuvent pas être modifiés."
 
 #: admin/systems/services/dns/serviceDNSeditZone.tpl:51
 msgid "Can't be edited because the zone wasn't saved right now."
@@ -296,12 +307,14 @@ msgstr "Les enregistrements '%s' ne peuvent pas être utilisés plus d'une fois.
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:329
 #, php-format
 msgid "Please fix the empty %s record for entry '%s'."
-msgstr "Veuillez corriger l'enregistrement vide '%s' pour l'enregistrement '%s'."
+msgstr ""
+"Veuillez corriger l'enregistrement vide '%s' pour l'enregistrement '%s'."
 
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:337
 #, php-format
 msgid "Please fix the duplicate %s record for entry '%s'."
-msgstr "Veuillez corriger l'enregistrement double '%s' pour l'enregistrement '%s'."
+msgstr ""
+"Veuillez corriger l'enregistrement double '%s' pour l'enregistrement '%s'."
 
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:477
 msgid "Remove"
@@ -310,7 +323,9 @@ msgstr "Supprimer"
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:529
 #, php-format
 msgid "The syntax of entry %s (record type %s, value %s) is invalid!"
-msgstr "La syntaxe de l'entrée %s (enregistrement de type %s, valeur %s) est non valide !"
+msgstr ""
+"La syntaxe de l'entrée %s (enregistrement de type %s, valeur %s) est non "
+"valide !"
 
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:529
 msgid "Example"
@@ -373,13 +388,17 @@ msgstr "Les valeurs doivent être composée de 'priorité poids port et cible'."
 msgid ""
 "This dialog allows you to configure all components of this DNS zone on a "
 "single list."
-msgstr "Ce dialogue vous permet de configurer tout les composants d'une zone DNS dans une simple liste."
+msgstr ""
+"Ce dialogue vous permet de configurer tout les composants d'une zone DNS "
+"dans une simple liste."
 
 #: admin/systems/services/dns/serviceDNSeditZoneEntries.tpl:5
 msgid ""
 "This dialog can't be used until the currently edited zone was saved or the "
 "zone entry exists in the ldap database."
-msgstr "Cette boite de dialogue ne peut pas être tant que la zone n'a pas été sauvée ou que l'enregistrement existe dans la base de données ldap."
+msgstr ""
+"Cette boite de dialogue ne peut pas être tant que la zone n'a pas été sauvée "
+"ou que l'enregistrement existe dans la base de données ldap."
 
 #: admin/systems/services/dns/serviceDNSeditZoneEntries.tpl:13
 msgid "Create a new DNS zone entry"
@@ -393,7 +412,9 @@ msgstr "Démarrage de la prise de contrôle du DNS"
 msgid ""
 "This includes 'all' DNS zones that are located within this server. Please "
 "double check if your really want to do this."
-msgstr "Ceci inclus toutes les zones DNS qui sont situées dans ce serveur. Veuillez vérifier que vous voulez réaliser cette opération."
+msgstr ""
+"Ceci inclus toutes les zones DNS qui sont situées dans ce serveur. Veuillez "
+"vérifier que vous voulez réaliser cette opération."
 
 #: admin/systems/services/dns/serviceDNS.tpl:14
 msgid "Following objects will be taken over"

@@ -1,20 +1,20 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
-"POT-Creation-Date: 2013-02-12 19:05+0100\n"
-"PO-Revision-Date: 2013-02-12 18:40+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-03-24 15:13+0100\n"
+"PO-Revision-Date: 2013-03-06 21:41+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: vi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: vi\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: admin/devices/device-list.tpl:13 admin/devices/class_deviceGeneric.inc:276
@@ -58,7 +58,7 @@ msgstr ""
 #: admin/systems/systemSelect/selectSystem-filter.tpl:22
 #: admin/systems/systemSelect/selectSystem-list.xml:57
 #: admin/systems/system-list.xml:161
-#: admin/systems/class_workstationGeneric.inc:150
+#: admin/systems/class_workstationGeneric.inc:153
 #: admin/systems/class_componentGeneric.inc:58
 #: admin/systems/system-filter.tpl:48
 #: admin/systems/services/shares/class_serviceShare.inc:52
@@ -85,7 +85,7 @@ msgstr "Tên"
 #: admin/systems/class_mobilePhoneGeneric.inc:64
 #: admin/systems/systemSelect/selectSystem-list.xml:65
 #: admin/systems/system-list.xml:185
-#: admin/systems/class_workstationGeneric.inc:156
+#: admin/systems/class_workstationGeneric.inc:159
 #: admin/systems/class_componentGeneric.inc:62
 #: admin/systems/serverService-list.xml:35
 #: admin/systems/services/shares/class_serviceShare.inc:56
@@ -174,8 +174,8 @@ msgstr ""
 #: admin/systems/goto/class_printGeneric.inc:726
 #: admin/systems/goto/class_printGeneric.inc:1108
 #: admin/systems/goto/class_printGeneric.inc:1119
-#: admin/systems/class_systemManagement.inc:576
-#: admin/systems/class_systemManagement.inc:591
+#: admin/systems/class_systemManagement.inc:574
+#: admin/systems/class_systemManagement.inc:589
 #: admin/systems/services/shares/class_serviceShare.inc:103
 #: admin/systems/class_networkSettings.inc:291
 #: admin/systems/class_networkSettings.inc:323
@@ -201,7 +201,7 @@ msgstr "Lỗi"
 #: admin/groups/apps/class_groupApplication.inc:1424
 #: admin/systems/goto/class_printGeneric.inc:674
 #: admin/systems/goto/class_printGeneric.inc:980
-#: admin/systems/class_systemManagement.inc:763
+#: admin/systems/class_systemManagement.inc:761
 #: admin/systems/services/class_goService.inc:123
 #: admin/systems/services/class_goService.inc:151
 #: admin/systems/services/class_goService.inc:188
@@ -214,7 +214,7 @@ msgstr "Lỗi"
 #: admin/systems/class_networkSettings.inc:853
 #: admin/systems/class_networkSettings.inc:871
 #: admin/systems/class_networkSettings.inc:945
-#: admin/ogroups/goto/class_termgroup.inc:388
+#: admin/ogroups/goto/class_termgroup.inc:386
 #: admin/applications/class_applicationGeneric.inc:363
 #: admin/applications/class_applicationParameters.inc:179
 #: admin/applications/class_applicationParameters.inc:247
@@ -225,7 +225,7 @@ msgstr "Lỗi LDAP"
 #: admin/mimetypes/class_mimetypeGeneric.inc:677
 #: admin/mimetypes/paste_generic.tpl:4 admin/mimetypes/generic.tpl:4
 #: admin/systems/class_mobilePhoneGeneric.inc:38
-#: admin/systems/class_workstationGeneric.inc:459
+#: admin/systems/class_workstationGeneric.inc:465
 #: admin/systems/class_componentGeneric.inc:36
 #: admin/systems/services/ntp/class_serviceNTP.inc:44
 #: admin/systems/class_terminalGeneric.inc:81
@@ -281,7 +281,9 @@ msgstr ""
 #: admin/devices/remove.tpl:10 admin/mimetypes/remove.tpl:10
 #: admin/systems/remove.tpl:10 admin/applications/remove.tpl:10
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr "Vì thế nếu bạn chắc chắn hãy nhấn \"Xóa bỏ\" để tiếp tục hoặc'Hủy bỏ' để dừng lại."
+msgstr ""
+"Vì thế nếu bạn chắc chắn hãy nhấn \"Xóa bỏ\" để tiếp tục hoặc'Hủy bỏ' để "
+"dừng lại."
 
 #: admin/devices/device-filter.tpl:3 admin/mimetypes/mimetype-filter.tpl:3
 #: admin/mimetypes/mimetype-filter-release.tpl:3
@@ -355,7 +357,7 @@ msgid "Mime group"
 msgstr ""
 
 #: admin/mimetypes/class_mimetypeGeneric.inc:690
-#: admin/groups/apps/class_groupApplication.inc:1506
+#: admin/groups/apps/class_groupApplication.inc:1507
 #: admin/applications/class_applicationGeneric.inc:135
 #: admin/applications/class_applicationGeneric.inc:137
 #: admin/applications/application-list-release.xml:15
@@ -453,7 +455,7 @@ msgid "Add a new file pattern"
 msgstr ""
 
 #: admin/mimetypes/generic.tpl:117 admin/mimetypes/generic.tpl:177
-#: admin/groups/apps/class_groupApplication.inc:1498
+#: admin/groups/apps/class_groupApplication.inc:1499
 #: admin/applications/class_applicationManagement.inc:38
 msgid "Applications"
 msgstr "Các ứng dụng"
@@ -484,7 +486,7 @@ msgstr ""
 
 #: admin/mimetypes/mimetype-filter-release.tpl:14
 #: admin/groups/apps/app_list.tpl:5 admin/groups/apps/app_list.tpl:53
-#: admin/groups/apps/class_groupApplication.inc:1507
+#: admin/groups/apps/class_groupApplication.inc:1508
 #: admin/systems/system-list.xml:201
 #: admin/applications/application-filter-release.tpl:14
 msgid "Release"
@@ -561,7 +563,7 @@ msgid "Menu"
 msgstr ""
 
 #: admin/groups/apps/class_groupApplication.inc:482
-#: admin/systems/class_systemManagement.inc:172
+#: admin/systems/class_systemManagement.inc:170
 msgid "Back"
 msgstr "Quay lại"
 
@@ -582,27 +584,27 @@ msgstr ""
 msgid "Not available in release."
 msgstr ""
 
-#: admin/groups/apps/class_groupApplication.inc:1499
+#: admin/groups/apps/class_groupApplication.inc:1500
 msgid "Group applications"
 msgstr ""
 
-#: admin/groups/apps/class_groupApplication.inc:1508
+#: admin/groups/apps/class_groupApplication.inc:1509
 msgid "Application parameter"
 msgstr ""
 
-#: admin/groups/apps/class_groupApplication.inc:1509
+#: admin/groups/apps/class_groupApplication.inc:1510
 #: admin/groups/apps/edit_entry.tpl:69
 #: admin/applications/class_applicationGeneric.inc:195
 msgid "Place icon on members desktop"
 msgstr ""
 
-#: admin/groups/apps/class_groupApplication.inc:1510
+#: admin/groups/apps/class_groupApplication.inc:1511
 #: admin/groups/apps/edit_entry.tpl:79
 #: admin/applications/class_applicationGeneric.inc:205
 msgid "Place entry in members launch bar"
 msgstr ""
 
-#: admin/groups/apps/class_groupApplication.inc:1511
+#: admin/groups/apps/class_groupApplication.inc:1512
 #: admin/groups/apps/edit_entry.tpl:74
 #: admin/applications/class_applicationGeneric.inc:200
 msgid "Place entry in members startmenu"
@@ -986,7 +988,7 @@ msgstr ""
 
 #: admin/systems/goto/class_printGeneric.inc:132
 #: admin/systems/goto/class_printGeneric.inc:1068
-#: admin/systems/class_systemManagement.inc:629
+#: admin/systems/class_systemManagement.inc:627
 msgid "Internal error"
 msgstr "Lỗi nội bộ"
 
@@ -1060,7 +1062,7 @@ msgid "terminal"
 msgstr ""
 
 #: admin/systems/goto/class_printGeneric.inc:607
-#: admin/systems/class_workstationGeneric.inc:140
+#: admin/systems/class_workstationGeneric.inc:143
 msgid "workstation"
 msgstr ""
 
@@ -1090,7 +1092,7 @@ msgid "Print generic"
 msgstr ""
 
 #: admin/systems/goto/class_printGeneric.inc:1027
-#: admin/systems/class_workstationGeneric.inc:162
+#: admin/systems/class_workstationGeneric.inc:165
 msgid "Location"
 msgstr "Vị trí"
 
@@ -1142,8 +1144,8 @@ msgstr ""
 #: admin/systems/goto/class_SelectDeviceType.inc:58
 #: admin/systems/systemSelect/selectSystem-list.xml:23
 #: admin/systems/system-list.xml:95 admin/systems/system-list.xml:234
-#: admin/systems/class_workstationGeneric.inc:462
-#: admin/systems/class_workstationGeneric.inc:464
+#: admin/systems/class_workstationGeneric.inc:468
+#: admin/systems/class_workstationGeneric.inc:470
 msgid "Workstation"
 msgstr "Máy trạm"
 
@@ -1172,8 +1174,8 @@ msgstr ""
 
 #: admin/systems/goto/SelectDeviceType.tpl:10
 msgid ""
-"Please select a system type and an optional bundle of predefined settings to"
-" be inherited."
+"Please select a system type and an optional bundle of predefined settings to "
+"be inherited."
 msgstr ""
 
 #: admin/systems/goto/SelectDeviceType.tpl:12
@@ -1268,7 +1270,7 @@ msgid "Mobile phone"
 msgstr ""
 
 #: admin/systems/class_mobilePhoneGeneric.inc:57
-#: admin/systems/class_workstationGeneric.inc:147
+#: admin/systems/class_workstationGeneric.inc:150
 #: admin/systems/class_componentGeneric.inc:55
 #: admin/applications/class_applicationGeneric.inc:151
 msgid "Properties"
@@ -1333,7 +1335,7 @@ msgid "The PUK number of the simcard in this mobile phone"
 msgstr ""
 
 #: admin/systems/class_mobilePhoneGeneric.inc:103
-#: admin/systems/class_workstationGeneric.inc:232
+#: admin/systems/class_workstationGeneric.inc:235
 #: admin/systems/class_componentGeneric.inc:69
 #: admin/systems/class_networkSettings.inc:1010
 msgid "Network settings"
@@ -1449,8 +1451,8 @@ msgid "Halt "
 msgstr ""
 
 #: admin/systems/system-list.xml:309 admin/systems/system-list.xml:375
-#: admin/systems/class_workstationGeneric.inc:106
-#: admin/ogroups/goto/class_termgroup.inc:275
+#: admin/systems/class_workstationGeneric.inc:112
+#: admin/ogroups/goto/class_termgroup.inc:274
 msgid "Reboot"
 msgstr ""
 
@@ -1467,9 +1469,8 @@ msgid "Activate"
 msgstr ""
 
 #: admin/systems/system-list.xml:349 admin/systems/system-list.xml:415
-#: admin/systems/class_workstationGeneric.inc:99
-#: admin/ogroups/goto/class_termgroup.inc:279
-msgid "Reinstall"
+#: admin/systems/class_workstationGeneric.inc:105
+msgid "(Re)Install"
 msgstr ""
 
 #: admin/systems/system-list.xml:360
@@ -1499,8 +1500,8 @@ msgstr ""
 #: admin/systems/password.tpl:3
 msgid ""
 "To change the terminal root password use the fields below. The changes take "
-"effect during the next reboot. Please memorize the new password, because you"
-" wouldn't be able to log in."
+"effect during the next reboot. Please memorize the new password, because you "
+"wouldn't be able to log in."
 msgstr ""
 
 #: admin/systems/password.tpl:6
@@ -1528,16 +1529,16 @@ msgid "Set password"
 msgstr "Đặt mật khẩu"
 
 #: admin/systems/class_workstationGeneric.inc:71
-#: admin/systems/class_workstationGeneric.inc:444
-#: admin/systems/class_systemManagement.inc:294
-#: admin/systems/class_systemManagement.inc:323
-#: admin/ogroups/goto/class_termgroup.inc:221
+#: admin/systems/class_workstationGeneric.inc:450
+#: admin/systems/class_systemManagement.inc:292
+#: admin/systems/class_systemManagement.inc:321
+#: admin/ogroups/goto/class_termgroup.inc:220
 msgid "Service infrastructure"
 msgstr ""
 
 #: admin/systems/class_workstationGeneric.inc:74
 #: admin/systems/class_workstationGeneric.inc:77
-#: admin/ogroups/goto/class_termgroup.inc:225
+#: admin/ogroups/goto/class_termgroup.inc:224
 msgid "Event error"
 msgstr ""
 
@@ -1550,127 +1551,122 @@ msgstr ""
 msgid "Events are not available!"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:100
+#: admin/systems/class_workstationGeneric.inc:106
 msgid "Software update"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:101
-#: admin/ogroups/goto/class_termgroup.inc:281
+#: admin/systems/class_workstationGeneric.inc:107
+#: admin/ogroups/goto/class_termgroup.inc:279
 msgid "Memory test"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:105
-#: admin/ogroups/goto/class_termgroup.inc:275
+#: admin/systems/class_workstationGeneric.inc:111
+#: admin/ogroups/goto/class_termgroup.inc:274
 msgid "Switch off"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:108
-#: admin/ogroups/goto/class_termgroup.inc:280
-msgid "Rescan hardware"
-msgstr ""
-
-#: admin/systems/class_workstationGeneric.inc:111
+#: admin/systems/class_workstationGeneric.inc:114
 msgid "Wake up"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:151
+#: admin/systems/class_workstationGeneric.inc:154
 #, php-format
 msgid "The name of the %s"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:157
+#: admin/systems/class_workstationGeneric.inc:160
 #, php-format
 msgid "A short description of the %s"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:163
+#: admin/systems/class_workstationGeneric.inc:166
 #, php-format
 msgid "The location of the %s"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:169
+#: admin/systems/class_workstationGeneric.inc:172
 #, php-format
 msgid "Lock this %s"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:170
+#: admin/systems/class_workstationGeneric.inc:173
 #, php-format
 msgid "This will prevent the %s from being reinstalled"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:181
+#: admin/systems/class_workstationGeneric.inc:184
 msgid "Servers"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:185
+#: admin/systems/class_workstationGeneric.inc:188
 #: admin/ogroups/goto/termgroup.tpl:58
-#: admin/ogroups/goto/class_termgroup.inc:403
+#: admin/ogroups/goto/class_termgroup.inc:401
 msgid "Syslog server"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:186
+#: admin/systems/class_workstationGeneric.inc:189
 #, php-format
 msgid "The syslog server the %s should be using"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:191
+#: admin/systems/class_workstationGeneric.inc:194
 msgid "Inherit NTP servers"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:192
+#: admin/systems/class_workstationGeneric.inc:195
 msgid "Inherit time server attributes from ogroup"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:198
+#: admin/systems/class_workstationGeneric.inc:201
 msgid "NTP servers"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:199
+#: admin/systems/class_workstationGeneric.inc:202
 #, php-format
 msgid "The NTP servers for the %s"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:205
+#: admin/systems/class_workstationGeneric.inc:208
 msgid "Inherit LDAP servers"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:206
+#: admin/systems/class_workstationGeneric.inc:209
 msgid "Inherit LDAP server attributes from ogroup"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:212
+#: admin/systems/class_workstationGeneric.inc:215
 msgid "LDAP servers"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:213
+#: admin/systems/class_workstationGeneric.inc:216
 #, php-format
 msgid "The LDAP servers for the %s"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:221
-#: admin/systems/class_workstationGeneric.inc:225
+#: admin/systems/class_workstationGeneric.inc:224
+#: admin/systems/class_workstationGeneric.inc:228
 #: admin/ogroups/goto/termgroup.tpl:113
 msgid "Action"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:226
+#: admin/systems/class_workstationGeneric.inc:229
 #: admin/ogroups/goto/termgroup.tpl:118
 msgid "Select action to execute for this terminal"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:334
+#: admin/systems/class_workstationGeneric.inc:337
 #: admin/systems/class_terminalGeneric.inc:103
 #: admin/systems/class_terminalGeneric.inc:119
-#: admin/ogroups/goto/class_termgroup.inc:125
-#: admin/ogroups/goto/class_termgroup.inc:137
+#: admin/ogroups/goto/class_termgroup.inc:124
+#: admin/ogroups/goto/class_termgroup.inc:136
 msgid "inherited"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:417
+#: admin/systems/class_workstationGeneric.inc:423
 msgid "A valid LDAP server assignement is missing!"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:460
+#: admin/systems/class_workstationGeneric.inc:466
 msgid "Workstation generic"
 msgstr ""
 
@@ -1704,9 +1700,9 @@ msgstr ""
 
 #: admin/systems/remove.tpl:6
 msgid ""
-"This includes all account data, system access rules, imap settings, etc. for"
-" this user. Please double check if your really want to do this since there "
-"is no way for FusionDirectory to get your data back."
+"This includes all account data, system access rules, imap settings, etc. for "
+"this user. Please double check if your really want to do this since there is "
+"no way for FusionDirectory to get your data back."
 msgstr ""
 
 #: admin/systems/class_componentGeneric.inc:37
@@ -1782,49 +1778,49 @@ msgstr ""
 msgid "Remove service"
 msgstr ""
 
-#: admin/systems/class_systemManagement.inc:218
+#: admin/systems/class_systemManagement.inc:216
 msgid "Creating the image failed. Please see the report below."
 msgstr ""
 
-#: admin/systems/class_systemManagement.inc:223
+#: admin/systems/class_systemManagement.inc:221
 #, php-format
 msgid "Command '%s', specified for ISO creation doesn't seem to exist."
 msgstr ""
 
-#: admin/systems/class_systemManagement.inc:359
-#: admin/systems/class_systemManagement.inc:435
-#: admin/systems/class_systemManagement.inc:808
-#: admin/systems/class_systemManagement.inc:855
-#: admin/systems/class_systemManagement.inc:876
+#: admin/systems/class_systemManagement.inc:357
+#: admin/systems/class_systemManagement.inc:433
+#: admin/systems/class_systemManagement.inc:806
+#: admin/systems/class_systemManagement.inc:853
+#: admin/systems/class_systemManagement.inc:874
 msgid "Permission"
 msgstr "Cho phép"
 
-#: admin/systems/class_systemManagement.inc:629
+#: admin/systems/class_systemManagement.inc:627
 msgid "Cannot set mode to 'active'!"
 msgstr ""
 
-#: admin/systems/class_systemManagement.inc:808
+#: admin/systems/class_systemManagement.inc:806
 #, php-format
 msgid "You are not allowed to create a snapshot for %s."
 msgstr "Bạn không được phép tạo ra snapshot cho %s."
 
-#: admin/systems/class_systemManagement.inc:855
-#: admin/systems/class_systemManagement.inc:876
+#: admin/systems/class_systemManagement.inc:853
+#: admin/systems/class_systemManagement.inc:874
 #, php-format
 msgid "You are not allowed to restore a snapshot for %s."
 msgstr "Bạn không được phép phục hồi một snapshot cho %s."
 
-#: admin/systems/class_systemManagement.inc:1071
+#: admin/systems/class_systemManagement.inc:1069
 #, php-format
 msgid "Inherited from %s"
 msgstr ""
 
-#: admin/systems/class_systemManagement.inc:1156
+#: admin/systems/class_systemManagement.inc:1124
 #: config/systems/class_systemsPluginConfig.inc:28
 msgid "Systems"
 msgstr "Các hệ thống"
 
-#: admin/systems/class_systemManagement.inc:1157
+#: admin/systems/class_systemManagement.inc:1125
 msgid "Systems Management"
 msgstr ""
 
@@ -1937,8 +1933,8 @@ msgstr ""
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:78
 msgid ""
-"Specifies what checks to perform on server certificates in a TLS session, if"
-" any"
+"Specifies what checks to perform on server certificates in a TLS session, if "
+"any"
 msgstr ""
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:83
@@ -2185,7 +2181,7 @@ msgstr ""
 
 #: admin/systems/class_terminalGeneric.inc:41
 #: admin/ogroups/goto/termgroup.tpl:69
-#: admin/ogroups/goto/class_termgroup.inc:406
+#: admin/ogroups/goto/class_termgroup.inc:404
 msgid "Root server"
 msgstr ""
 
@@ -2196,7 +2192,7 @@ msgstr ""
 
 #: admin/systems/class_terminalGeneric.inc:47
 #: admin/ogroups/goto/termgroup.tpl:79
-#: admin/ogroups/goto/class_termgroup.inc:407
+#: admin/ogroups/goto/class_termgroup.inc:405
 msgid "Swap server"
 msgstr ""
 
@@ -2242,7 +2238,7 @@ msgid "Terminal generic"
 msgstr ""
 
 #: admin/systems/class_terminalGeneric.inc:115
-#: admin/ogroups/goto/class_termgroup.inc:119
+#: admin/ogroups/goto/class_termgroup.inc:118
 msgid "Local swap"
 msgstr ""
 
@@ -2270,7 +2266,7 @@ msgid "Choose server to use for synchronizing time"
 msgstr ""
 
 #: admin/ogroups/goto/termgroup.tpl:47
-#: admin/ogroups/goto/class_termgroup.inc:402
+#: admin/ogroups/goto/class_termgroup.inc:400
 msgid "Mode"
 msgstr ""
 
@@ -2299,55 +2295,59 @@ msgstr ""
 msgid "Execute"
 msgstr ""
 
-#: admin/ogroups/goto/class_termgroup.inc:71
+#: admin/ogroups/goto/class_termgroup.inc:70
 msgid "Activated"
 msgstr ""
 
-#: admin/ogroups/goto/class_termgroup.inc:72
+#: admin/ogroups/goto/class_termgroup.inc:71
 msgid "Locked"
 msgstr ""
 
-#: admin/ogroups/goto/class_termgroup.inc:226
+#: admin/ogroups/goto/class_termgroup.inc:225
 #, php-format
 msgid "Event '%s' is not available!"
 msgstr ""
 
-#: admin/ogroups/goto/class_termgroup.inc:276
+#: admin/ogroups/goto/class_termgroup.inc:275
 msgid "Instant update"
 msgstr ""
 
-#: admin/ogroups/goto/class_termgroup.inc:277
+#: admin/ogroups/goto/class_termgroup.inc:276
 msgid "Scheduled update"
 msgstr ""
 
-#: admin/ogroups/goto/class_termgroup.inc:278
+#: admin/ogroups/goto/class_termgroup.inc:277
 msgid "Wake"
 msgstr ""
 
-#: admin/ogroups/goto/class_termgroup.inc:282
+#: admin/ogroups/goto/class_termgroup.inc:278
+msgid "Reinstall"
+msgstr ""
+
+#: admin/ogroups/goto/class_termgroup.inc:280
 msgid "System analysis"
 msgstr ""
 
-#: admin/ogroups/goto/class_termgroup.inc:396
+#: admin/ogroups/goto/class_termgroup.inc:394
 msgid "System"
 msgstr ""
 
-#: admin/ogroups/goto/class_termgroup.inc:397
+#: admin/ogroups/goto/class_termgroup.inc:395
 msgid "System group"
 msgstr ""
 
-#: admin/ogroups/goto/class_termgroup.inc:404
+#: admin/ogroups/goto/class_termgroup.inc:402
 msgid "Action flag"
 msgstr ""
 
-#: admin/ogroups/goto/class_termgroup.inc:405
+#: admin/ogroups/goto/class_termgroup.inc:403
 msgid "Ntp server"
 msgstr ""
 
 #: admin/applications/class_applicationGeneric.inc:91
 msgid ""
-"Cannot save user picture, FusionDirectory requires the package "
-"'php5-imagick' to be installed!"
+"Cannot save user picture, FusionDirectory requires the package 'php5-"
+"imagick' to be installed!"
 msgstr ""
 
 #: admin/applications/class_applicationGeneric.inc:133

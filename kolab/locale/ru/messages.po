@@ -1,22 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 #  Valia V. Vaneeva <fattie@altlinux.ru>, 2004.
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
-"POT-Creation-Date: 2013-02-12 23:56+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-03-24 15:11+0100\n"
 "PO-Revision-Date: 2013-02-12 10:37+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Russian (http://www.transifex.com/projects/p/FusionDirectory/language/ru/)\n"
+"Language-Team: Russian (http://www.transifex.com/projects/p/FusionDirectory/"
+"language/ru/)\n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ru\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:29
 msgid "Enable MX lookup for relayhost"
@@ -260,8 +262,7 @@ msgid "Default"
 msgstr ""
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:183
-msgid ""
-"Mail settings cannot be removed while there are delegations configured!"
+msgid "Mail settings cannot be removed while there are delegations configured!"
 msgstr ""
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:281
@@ -272,110 +273,97 @@ msgstr ""
 msgid "Please remove the mail settings first!"
 msgstr ""
 
-#: personal/connectivity/kolab/class_kolabAccount.inc:82
+#: personal/kolab/class_kolabAccount.inc:82
 msgid "Kolab"
 msgstr ""
 
-#: personal/connectivity/kolab/class_kolabAccount.inc:83
+#: personal/kolab/class_kolabAccount.inc:83
 msgid "Kolab account settings"
 msgstr ""
 
-#: personal/connectivity/kolab/class_kolabAccount.inc:83
-msgid "Connectivity addon"
-msgstr ""
-
-#: personal/connectivity/kolab/class_kolabAccount.inc:99
-#: personal/connectivity/kolab/kolab.tpl:3
-#: personal/connectivity/kolab/kolab.tpl:43
+#: personal/kolab/class_kolabAccount.inc:99 personal/kolab/kolab.tpl:3
+#: personal/kolab/kolab.tpl:43
 msgid "Kolab account"
 msgstr ""
 
-#: personal/connectivity/kolab/class_kolabAccount.inc:103
-#: personal/connectivity/kolab/kolab.tpl:51
-#: personal/connectivity/kolab/kolab.tpl:63
+#: personal/kolab/class_kolabAccount.inc:103 personal/kolab/kolab.tpl:51
+#: personal/kolab/kolab.tpl:63
 msgid "Delegations"
 msgstr ""
 
-#: personal/connectivity/kolab/class_kolabAccount.inc:111
-#: personal/connectivity/kolab/kolab.tpl:83
+#: personal/kolab/class_kolabAccount.inc:111 personal/kolab/kolab.tpl:83
 msgid "Mail size"
 msgstr ""
 
-#: personal/connectivity/kolab/class_kolabAccount.inc:114
-#: personal/connectivity/kolab/kolab.tpl:87
+#: personal/kolab/class_kolabAccount.inc:114 personal/kolab/kolab.tpl:87
 msgid "No mail size restriction for this account"
 msgstr ""
 
-#: personal/connectivity/kolab/class_kolabAccount.inc:121
-#: personal/connectivity/kolab/kolab.tpl:95
+#: personal/kolab/class_kolabAccount.inc:121 personal/kolab/kolab.tpl:95
 msgid "Free Busy information"
 msgstr ""
 
-#: personal/connectivity/kolab/class_kolabAccount.inc:124
-#: personal/connectivity/kolab/kolab.tpl:98
+#: personal/kolab/class_kolabAccount.inc:124 personal/kolab/kolab.tpl:98
 msgid "URL"
 msgstr ""
 
-#: personal/connectivity/kolab/class_kolabAccount.inc:129
-#: personal/connectivity/kolab/kolab.tpl:107
+#: personal/kolab/class_kolabAccount.inc:129 personal/kolab/kolab.tpl:107
 msgid "Future"
 msgstr ""
 
-#: personal/connectivity/kolab/class_kolabAccount.inc:129
-#: personal/connectivity/kolab/kolab.tpl:112
+#: personal/kolab/class_kolabAccount.inc:129 personal/kolab/kolab.tpl:112
 msgid "days"
 msgstr ""
 
-#: personal/connectivity/kolab/class_kolabAccount.inc:137
-#: personal/connectivity/kolab/class_kolabAccount.inc:140
-#: personal/connectivity/kolab/class_kolabAccount.inc:148
-#: personal/connectivity/kolab/class_kolabAccount.inc:158
-#: personal/connectivity/kolab/kolab.tpl:119
+#: personal/kolab/class_kolabAccount.inc:137
+#: personal/kolab/class_kolabAccount.inc:140
+#: personal/kolab/class_kolabAccount.inc:148
+#: personal/kolab/class_kolabAccount.inc:158 personal/kolab/kolab.tpl:119
 msgid "Invitation policy"
 msgstr ""
 
-#: personal/connectivity/kolab/class_kolabAccount.inc:143
+#: personal/kolab/class_kolabAccount.inc:143
 msgid "Default policy"
 msgstr ""
 
-#: personal/connectivity/kolab/class_kolabAccount.inc:143
+#: personal/kolab/class_kolabAccount.inc:143
 msgid "Default invitation policy"
 msgstr ""
 
-#: personal/connectivity/kolab/class_kolabAccount.inc:145
-#: personal/connectivity/kolab/class_kolabAccount.inc:154
+#: personal/kolab/class_kolabAccount.inc:145
+#: personal/kolab/class_kolabAccount.inc:154
 msgid "Manual"
 msgstr ""
 
-#: personal/connectivity/kolab/class_kolabAccount.inc:145
-#: personal/connectivity/kolab/class_kolabAccount.inc:154
+#: personal/kolab/class_kolabAccount.inc:145
+#: personal/kolab/class_kolabAccount.inc:154
 msgid "Always accept"
 msgstr ""
 
-#: personal/connectivity/kolab/class_kolabAccount.inc:145
-#: personal/connectivity/kolab/class_kolabAccount.inc:154
+#: personal/kolab/class_kolabAccount.inc:145
+#: personal/kolab/class_kolabAccount.inc:154
 msgid "Always reject"
 msgstr ""
 
-#: personal/connectivity/kolab/class_kolabAccount.inc:145
-#: personal/connectivity/kolab/class_kolabAccount.inc:154
+#: personal/kolab/class_kolabAccount.inc:145
+#: personal/kolab/class_kolabAccount.inc:154
 msgid "Reject if conflicts"
 msgstr ""
 
-#: personal/connectivity/kolab/class_kolabAccount.inc:145
-#: personal/connectivity/kolab/class_kolabAccount.inc:154
+#: personal/kolab/class_kolabAccount.inc:145
+#: personal/kolab/class_kolabAccount.inc:154
 msgid "Manual if conflicts"
 msgstr ""
 
-#: personal/connectivity/kolab/class_kolabAccount.inc:151
+#: personal/kolab/class_kolabAccount.inc:151
 msgid "mail address"
 msgstr ""
 
-#: personal/connectivity/kolab/class_kolabAccount.inc:152
+#: personal/kolab/class_kolabAccount.inc:152
 msgid "policy for this mail address"
 msgstr ""
 
-#: personal/connectivity/kolab/kolab.tpl:4
+#: personal/kolab/kolab.tpl:4
 msgid ""
 "The kolab account is currently disabled. It's features can be adjusted if "
 "you add a mail account."

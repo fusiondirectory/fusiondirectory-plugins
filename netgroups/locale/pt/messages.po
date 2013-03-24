@@ -1,20 +1,20 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
-"POT-Creation-Date: 2013-02-12 23:50+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-03-24 15:12+0100\n"
 "PO-Revision-Date: 2012-01-06 17:49+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: admin/netgroups/netgroup-filter.tpl:3
@@ -30,16 +30,16 @@ msgstr ""
 #: admin/netgroups/netgroup-filter.tpl:19
 #: admin/netgroups/memberNisnetgroupSelect/memberNisnetgroup-filter.tpl:17
 #: admin/netgroups/tripleSelect/triple-filter.tpl:21
-#: admin/netgroups/class_netgroup.inc:653
-#: admin/netgroups/class_netgroup.inc:665
-#: admin/netgroups/class_netgroup.inc:667
-#: admin/netgroups/class_netgroup.inc:762 admin/netgroups/netgroup-list.xml:41
+#: admin/netgroups/class_netgroup.inc:654
+#: admin/netgroups/class_netgroup.inc:666
+#: admin/netgroups/class_netgroup.inc:668
+#: admin/netgroups/class_netgroup.inc:763 admin/netgroups/netgroup-list.xml:41
 msgid "Name"
 msgstr "Nome"
 
 #: admin/netgroups/memberNisnetgroupSelect/memberNisnetgroup-list.tpl:13
 #: admin/netgroups/tripleSelect/triple-list.tpl:13
-#: admin/netgroups/class_netgroup.inc:764 admin/netgroups/netgroup-list.tpl:13
+#: admin/netgroups/class_netgroup.inc:765 admin/netgroups/netgroup-list.tpl:13
 #: admin/netgroups/generic.tpl:39
 msgid "Base"
 msgstr "Base"
@@ -50,12 +50,12 @@ msgstr ""
 
 #: admin/netgroups/memberNisnetgroupSelect/memberNisnetgroup-list.xml:14
 #: admin/netgroups/tripleSelect/triple-list.xml:14
-#: admin/netgroups/class_netgroup.inc:474
-#: admin/netgroups/class_netgroup.inc:759 admin/netgroups/netgroup-list.xml:15
+#: admin/netgroups/class_netgroup.inc:475
+#: admin/netgroups/class_netgroup.inc:760 admin/netgroups/netgroup-list.xml:15
 #: admin/netgroups/netgroup-list.xml:79
-#: admin/systems/netgroups/class_netgroupSystem.inc:28
-#: admin/systems/netgroups/class_netgroupSystem.inc:304
-#: personal/netgroups/class_netgroupAccount.inc:28
+#: admin/systems/netgroups/class_netgroupSystem.inc:29
+#: admin/systems/netgroups/class_netgroupSystem.inc:305
+#: personal/netgroups/class_netgroupAccount.inc:359
 msgid "NIS Netgroup"
 msgstr ""
 
@@ -66,7 +66,7 @@ msgstr ""
 
 #: admin/netgroups/memberNisnetgroupSelect/memberNisnetgroup-list.xml:48
 #: admin/netgroups/tripleSelect/triple-list.xml:89
-#: admin/netgroups/class_netgroup.inc:763 admin/netgroups/netgroup-list.xml:49
+#: admin/netgroups/class_netgroup.inc:764 admin/netgroups/netgroup-list.xml:49
 #: admin/netgroups/generic.tpl:24
 msgid "Description"
 msgstr "Descrição"
@@ -88,18 +88,18 @@ msgid "Please select the desired entries"
 msgstr ""
 
 #: admin/netgroups/tripleSelect/triple-list.xml:22
-#: admin/netgroups/class_netgroup.inc:462
-#: admin/netgroups/class_netgroup.inc:464
+#: admin/netgroups/class_netgroup.inc:463
+#: admin/netgroups/class_netgroup.inc:465
 msgid "User"
 msgstr "Usuário"
 
 #: admin/netgroups/tripleSelect/triple-list.xml:30
-#: admin/netgroups/class_netgroup.inc:470
+#: admin/netgroups/class_netgroup.inc:471
 msgid "Host"
 msgstr ""
 
 #: admin/netgroups/tripleSelect/triple-list.xml:38
-#: admin/netgroups/class_netgroup.inc:472
+#: admin/netgroups/class_netgroup.inc:473
 msgid "Network Device"
 msgstr ""
 
@@ -111,67 +111,67 @@ msgstr "Login"
 msgid "Surname"
 msgstr "Sobrenome"
 
-#: admin/netgroups/class_netgroup.inc:313
-#: admin/netgroups/class_netgroup.inc:540
+#: admin/netgroups/class_netgroup.inc:314
+#: admin/netgroups/class_netgroup.inc:541
 msgid "Error"
 msgstr "Erro"
 
-#: admin/netgroups/class_netgroup.inc:314
+#: admin/netgroups/class_netgroup.inc:315
 #, php-format
 msgid "Add CN/UID '%s' to NIS netgroup '%s' failed: cannot find object!"
 msgstr ""
 
-#: admin/netgroups/class_netgroup.inc:441
+#: admin/netgroups/class_netgroup.inc:442
 msgid "! unknown UID/CN"
 msgstr ""
 
-#: admin/netgroups/class_netgroup.inc:466
+#: admin/netgroups/class_netgroup.inc:467
 msgid "Server"
 msgstr "Servidor"
 
-#: admin/netgroups/class_netgroup.inc:468
+#: admin/netgroups/class_netgroup.inc:469
 msgid "Workstation"
 msgstr "Estação de trabalho"
 
-#: admin/netgroups/class_netgroup.inc:485
-#: admin/netgroups/class_netgroup.inc:630
-#: admin/systems/netgroups/class_netgroupSystem.inc:276
-#: personal/netgroups/class_netgroupAccount.inc:292
+#: admin/netgroups/class_netgroup.inc:486
+#: admin/netgroups/class_netgroup.inc:631
+#: admin/systems/netgroups/class_netgroupSystem.inc:277
+#: personal/netgroups/class_netgroupAccount.inc:288
 msgid "LDAP error"
 msgstr "Erro de LDAP"
 
-#: admin/netgroups/class_netgroup.inc:736
+#: admin/netgroups/class_netgroup.inc:737
 msgid "NIS Netgroup Error"
 msgstr ""
 
-#: admin/netgroups/class_netgroup.inc:736
+#: admin/netgroups/class_netgroup.inc:737
 msgid "Error: There are a loop with NIS Netgroups"
 msgstr ""
 
-#: admin/netgroups/class_netgroup.inc:738
+#: admin/netgroups/class_netgroup.inc:739
 msgid "IMPORTANT: Check the members of NIS Netgroup"
 msgstr ""
 
-#: admin/netgroups/class_netgroup.inc:755
+#: admin/netgroups/class_netgroup.inc:756
 msgid "Generic"
 msgstr "Geral"
 
-#: admin/netgroups/class_netgroup.inc:756
+#: admin/netgroups/class_netgroup.inc:757
 msgid "Generic NIS Netgroup settings"
 msgstr ""
 
-#: admin/netgroups/class_netgroup.inc:758
-#: admin/netgroups/class_netgroupManagement.inc:36
+#: admin/netgroups/class_netgroup.inc:759
+#: admin/netgroups/class_netgroupManagement.inc:37
 msgid "NIS Netgroups"
 msgstr ""
 
-#: admin/netgroups/class_netgroup.inc:765 admin/netgroups/generic.tpl:72
-#: admin/systems/netgroups/class_netgroupSystem.inc:311
-#: personal/netgroups/class_netgroupAccount.inc:369
+#: admin/netgroups/class_netgroup.inc:766 admin/netgroups/generic.tpl:72
+#: admin/systems/netgroups/class_netgroupSystem.inc:312
+#: personal/netgroups/class_netgroupAccount.inc:366
 msgid "NIS Netgroup members"
 msgstr ""
 
-#: admin/netgroups/class_netgroupManagement.inc:37
+#: admin/netgroups/class_netgroupManagement.inc:38
 msgid "NIS Netgroup management"
 msgstr ""
 
@@ -240,15 +240,11 @@ msgstr ""
 msgid "Member of the following NIS Netgroups"
 msgstr ""
 
-#: admin/systems/netgroups/class_netgroupSystem.inc:29
+#: admin/systems/netgroups/class_netgroupSystem.inc:30
 msgid "Choose NIS Netgroups for the host"
 msgstr ""
 
-#: admin/systems/netgroups/class_netgroupSystem.inc:305
-#: personal/netgroups/class_netgroupAccount.inc:363
+#: admin/systems/netgroups/class_netgroupSystem.inc:306
+#: personal/netgroups/class_netgroupAccount.inc:360
 msgid "NIS Netgroup member"
-msgstr ""
-
-#: personal/netgroups/class_netgroupAccount.inc:29
-msgid "Choose NIS Netgroups for the user"
 msgstr ""

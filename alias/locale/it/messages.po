@@ -1,21 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 #  <giuliano@opensides.be>, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
-"POT-Creation-Date: 2013-02-12 23:23+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-03-24 15:08+0100\n"
 "PO-Revision-Date: 2013-03-08 23:20+0000\n"
 "Last-Translator: poterealpopolo <giuliano@opensides.be>\n"
-"Language-Team: Italian (http://www.transifex.com/projects/p/FusionDirectory/language/it/)\n"
+"Language-Team: Italian (http://www.transifex.com/projects/p/FusionDirectory/"
+"language/it/)\n"
+"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: admin/alias/alias-filter.tpl:3
@@ -81,8 +82,10 @@ msgid "Description"
 msgstr "Descrizione"
 
 #: admin/alias/alias-list.xml:73
-msgid "aliasExpirationDate"
-msgstr "Data scadenza alias"
+#: admin/alias/class_mailAliasDistribution.inc:73
+#: admin/alias/class_mailAliasRedirection.inc:69
+msgid "Expiration date"
+msgstr "Data di scadenza"
 
 #: admin/alias/alias-list.xml:81
 msgid "Actions"
@@ -147,14 +150,11 @@ msgid "Mail server fot this alias"
 msgstr "Server mail per questo alias"
 
 #: admin/alias/class_mailAliasDistribution.inc:73
-#: admin/alias/class_mailAliasRedirection.inc:69
-msgid "Expiration date"
-msgstr "Data di scadenza"
-
-#: admin/alias/class_mailAliasDistribution.inc:73
 msgid ""
 "Date after which the alias should be deleted. Leave empty for no deletion."
-msgstr "Data dopo la quale l'alias sarà cancellato. Lasciare vuoto per disabilitare la cancellazione."
+msgstr ""
+"Data dopo la quale l'alias sarà cancellato. Lasciare vuoto per disabilitare "
+"la cancellazione."
 
 #: admin/alias/remove.tpl:2
 msgid "Warning"
@@ -162,7 +162,9 @@ msgstr "Avvertimento"
 
 #: admin/alias/remove.tpl:9
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr "Quindi - se sei sicuro - premi 'Rimuovi' per continuare oppure 'Annulla' per interrompere."
+msgstr ""
+"Quindi - se sei sicuro - premi 'Rimuovi' per continuare oppure 'Annulla' per "
+"interrompere."
 
 #: admin/alias/class_mailAliasRedirection.inc:31
 #: admin/alias/class_mailAliasRedirection.inc:32
@@ -198,7 +200,9 @@ msgstr "Destinazione di questa redirezione"
 msgid ""
 "Date after which the redirection should be deleted. Leave empty for no "
 "deletion."
-msgstr "Data dopo la quale la redirezione sarà cancellata.Lasciare vuoto per non cancellare la redirezione."
+msgstr ""
+"Data dopo la quale la redirezione sarà cancellata.Lasciare vuoto per non "
+"cancellare la redirezione."
 
 #: config/alias/class_aliasConfig.inc:28
 msgid "Alias configuration"
@@ -219,3 +223,6 @@ msgstr "RDN alias"
 #: config/alias/class_aliasConfig.inc:45
 msgid "Branch in which aliases will be stored"
 msgstr "Ramo nel quale gli alias saranno immagazzinati"
+
+#~ msgid "aliasExpirationDate"
+#~ msgstr "Data scadenza alias"

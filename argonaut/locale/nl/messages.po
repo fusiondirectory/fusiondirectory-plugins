@@ -1,20 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
-"POT-Creation-Date: 2013-02-12 19:00+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-03-24 15:08+0100\n"
 "PO-Revision-Date: 2013-03-06 21:41+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Dutch (http://www.transifex.com/projects/p/FusionDirectory/language/nl/)\n"
+"Language-Team: Dutch (http://www.transifex.com/projects/p/FusionDirectory/"
+"language/nl/)\n"
+"Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: admin/systems/argonaut/class_argonautClient.inc:115
@@ -243,8 +244,7 @@ msgid "Delete finished tasks"
 msgstr "Verwijder beindigde taken"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:51
-msgid ""
-"Wether or not argonaut server should delete successfully finished tasks"
+msgid "Wether or not argonaut server should delete successfully finished tasks"
 msgstr ""
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:56
@@ -268,8 +268,7 @@ msgid "Timeout"
 msgstr "Timeout"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:68
-msgid ""
-"Time in seconds before to consider an argonaut client or server as down"
+msgid "Time in seconds before to consider an argonaut client or server as down"
 msgstr ""
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:75
@@ -369,7 +368,7 @@ msgstr "NFS root"
 #: addons/goto/class_goto_import_file.inc:49
 #: addons/goto/class_goto_import_file.inc:109
 #: addons/goto/class_goto_import_file.inc:153
-#: addons/goto/goto_import_file.tpl:84 addons/goto/deploy-list.xml:148
+#: addons/goto/goto_import_file.tpl:84 addons/goto/deploy-list.xml:99
 msgid "Import"
 msgstr "Importeren"
 
@@ -380,10 +379,11 @@ msgstr "bestand is leeg"
 #: addons/goto/class_goto_import_file.inc:110
 msgid ""
 "Selected entries will be skipped because of errors. Do you want to proceed?"
-msgstr "Geselecteerde waarden  worden overgeslagen vanwege fouten. Wenst u doorgaan?"
+msgstr ""
+"Geselecteerde waarden  worden overgeslagen vanwege fouten. Wenst u doorgaan?"
 
 #: addons/goto/class_goto_import_file.inc:146
-#: addons/goto/class_gotomasses.inc:331
+#: addons/goto/class_gotomasses.inc:351
 msgid "Service infrastructure"
 msgstr "Dienst infrastructuur"
 
@@ -410,7 +410,9 @@ msgstr "Importeer jobs"
 msgid ""
 "You can import a list of jobs into the FusionDirectory job queue. This "
 "should be a semicolon seperated list of items in the following format:"
-msgstr "U kan een lijst importeren van jobs in de FusionDirectory jobs queue. Dit moet een puntkomma gescheiden lijst met items in het volgende formaat zijn:"
+msgstr ""
+"U kan een lijst importeren van jobs in de FusionDirectory jobs queue. Dit "
+"moet een puntkomma gescheiden lijst met items in het volgende formaat zijn:"
 
 #: addons/goto/goto_import_file.tpl:5
 msgid "timestamp"
@@ -460,18 +462,17 @@ msgstr "Doorzoek"
 msgid "Upload"
 msgstr "Uploaden"
 
-#: addons/goto/goto_import_file.tpl:37
+#: addons/goto/goto_import_file.tpl:37 addons/goto/events/DaemonEvent.tpl:51
 msgid "Timestamp"
 msgstr "Timestamp"
 
 #: addons/goto/goto_import_file.tpl:40
-#: addons/goto/events/eventTargetSystems-list.xml:39
+#: addons/goto/events/eventTargetSystems-list.xml:47
 msgid "Object group"
 msgstr "Objectgroep"
 
 #: addons/goto/goto_import_file.tpl:41
 #: addons/goto/events/eventTargetSystems-list.tpl:13
-#: addons/goto/events/eventTargetUser-list.tpl:13
 #: addons/goto/deploy-list.tpl:13
 msgid "Base"
 msgstr "Basis"
@@ -481,7 +482,7 @@ msgid "FQDN"
 msgstr "FQDN"
 
 #: addons/goto/goto_import_file.tpl:43
-#: addons/goto/events/eventTargetSystems-list.xml:81
+#: addons/goto/events/eventTargetSystems-list.xml:89
 msgid "IP"
 msgstr "IP"
 
@@ -491,8 +492,8 @@ msgstr "DHCP"
 
 #: addons/goto/class_gotoLogView.inc:77 addons/goto/class_gotoLogView.inc:195
 #: addons/goto/class_filterGotoEvents.inc:39
-#: addons/goto/class_gotomasses.inc:174 addons/goto/class_gotomasses.inc:288
-#: addons/goto/class_gotomasses.inc:379
+#: addons/goto/class_gotomasses.inc:194 addons/goto/class_gotomasses.inc:308
+#: addons/goto/class_gotomasses.inc:399
 msgid "Error"
 msgstr "Fout"
 
@@ -522,7 +523,9 @@ msgstr "Waarschuwing"
 
 #: addons/goto/remove.tpl:9
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr "Indien u zeker bent drukt u dan 'Verwijderen' om door te gaan of 'Annuleren' om te annuleren."
+msgstr ""
+"Indien u zeker bent drukt u dan 'Verwijderen' om door te gaan of 'Annuleren' "
+"om te annuleren."
 
 #: addons/goto/log_view.tpl:7
 msgid "Available logs"
@@ -536,6 +539,30 @@ msgstr "Geselecteerde log"
 msgid "No logs for this host available!"
 msgstr "Geen logs voor deze host beschikbaar!"
 
+#: addons/goto/events/DaemonEvent.tpl:9 addons/goto/deploy-list.xml:61
+msgid "Schedule"
+msgstr "Plan"
+
+#: addons/goto/events/DaemonEvent.tpl:18
+msgid "System list"
+msgstr ""
+
+#: addons/goto/events/DaemonEvent.tpl:35
+msgid "ID"
+msgstr ""
+
+#: addons/goto/events/DaemonEvent.tpl:39 addons/goto/deploy-list.xml:69
+msgid "Status"
+msgstr "Status"
+
+#: addons/goto/events/DaemonEvent.tpl:43
+msgid "Result"
+msgstr ""
+
+#: addons/goto/events/DaemonEvent.tpl:47 addons/goto/deploy-list.xml:27
+msgid "Target"
+msgstr "Doel"
+
 #: addons/goto/events/target_list.tpl:5
 msgid "Apply"
 msgstr "Toepassen"
@@ -543,27 +570,6 @@ msgstr "Toepassen"
 #: addons/goto/events/target_list.tpl:6
 msgid "Cancel"
 msgstr "Annuleren"
-
-#: addons/goto/events/eventTargetUser-filter.tpl:3
-#: addons/goto/events/eventTargetSystems-filter.tpl:3
-msgid "Filter"
-msgstr "Filter"
-
-#: addons/goto/events/eventTargetUser-filter.tpl:11
-msgid "Show groups"
-msgstr "Toon groepen"
-
-#: addons/goto/events/eventTargetUser-filter.tpl:12
-msgid "Show users"
-msgstr "Toon gebruikers"
-
-#: addons/goto/events/eventTargetUser-filter.tpl:21
-#: addons/goto/events/eventTargetSystems-list.xml:65
-#: addons/goto/events/eventTargetSystems-filter.tpl:23
-#: addons/goto/events/eventTargetUser-list.xml:49
-#: addons/goto/deploy-list.xml:36
-msgid "Name"
-msgstr "Naam"
 
 #: addons/goto/events/eventTargetSystems-list.xml:11
 msgid "List of target systems"
@@ -581,74 +587,85 @@ msgstr "Workstation"
 msgid "Terminal"
 msgstr "Terminal"
 
+#: addons/goto/events/eventTargetSystems-list.xml:39
+#, fuzzy
+msgid "Winstation"
+msgstr "Workstation"
+
 #: addons/goto/events/eventTargetSystems-list.xml:73
-#: addons/goto/events/eventTargetUser-list.xml:57
-#: addons/goto/class_gotomasses.inc:462
+#: addons/goto/events/eventTargetSystems-filter.tpl:24
+#: addons/goto/deploy-list.xml:36
+msgid "Name"
+msgstr "Naam"
+
+#: addons/goto/events/eventTargetSystems-list.xml:81
+#: addons/goto/class_gotomasses.inc:48
 msgid "Description"
 msgstr "Omschrijving"
 
-#: addons/goto/events/eventTargetSystems-list.xml:89
+#: addons/goto/events/eventTargetSystems-list.xml:97
 msgid "Mac"
 msgstr "Mac"
 
-#: addons/goto/events/class_DaemonEvent.inc:149
+#: addons/goto/events/class_DaemonEvent.inc:150
 #, php-format
 msgid "Create '%s' job"
 msgstr "Maak '%s' job."
 
-#: addons/goto/events/class_DaemonEvent.inc:220
+#: addons/goto/events/class_DaemonEvent.inc:221
 msgid "Minutes"
 msgstr "Minuten"
 
-#: addons/goto/events/class_DaemonEvent.inc:221
+#: addons/goto/events/class_DaemonEvent.inc:222
 msgid "Hours"
 msgstr "Uren"
 
-#: addons/goto/events/class_DaemonEvent.inc:222
+#: addons/goto/events/class_DaemonEvent.inc:223
 msgid "Days"
 msgstr "Dagen"
 
-#: addons/goto/events/class_DaemonEvent.inc:223
+#: addons/goto/events/class_DaemonEvent.inc:224
 msgid "Weeks"
 msgstr "Weken"
 
-#: addons/goto/events/class_DaemonEvent.inc:224
+#: addons/goto/events/class_DaemonEvent.inc:225
 msgid "Months"
 msgstr "Maanden"
 
-#: addons/goto/events/class_DaemonEvent.inc:258
-#: addons/goto/class_gotomasses.inc:237 addons/goto/deploy-list.xml:155
-#: addons/goto/deploy-list.xml:215
+#: addons/goto/events/class_DaemonEvent.inc:259
+#: addons/goto/class_gotomasses.inc:257 addons/goto/deploy-list.xml:106
+#: addons/goto/deploy-list.xml:166
 msgid "Remove"
 msgstr "Verwijderen"
 
-#: addons/goto/events/class_DaemonEvent.inc:262
+#: addons/goto/events/class_DaemonEvent.inc:263
 msgid "Add"
 msgstr "Toevoegen"
 
-#: addons/goto/events/class_DaemonEvent.inc:408 addons/goto/deploy-list.xml:94
+#: addons/goto/events/class_DaemonEvent.inc:409
 msgid "Switch off"
 msgstr "Uitschakelen"
 
-#: addons/goto/events/class_DaemonEvent.inc:412
-#: addons/goto/deploy-list.xml:101
+#: addons/goto/events/class_DaemonEvent.inc:413
 msgid "Reboot"
 msgstr "Herstarten"
 
-#: addons/goto/events/class_DaemonEvent.inc:416
-#: addons/goto/deploy-list.xml:108
+#: addons/goto/events/class_DaemonEvent.inc:417
 msgid "Wake up"
 msgstr "Aanzetten"
 
-#: addons/goto/events/class_DaemonEvent.inc:420
-#: addons/goto/deploy-list.xml:115
+#: addons/goto/events/class_DaemonEvent.inc:421
 msgid "Software update"
 msgstr "Software update"
 
-#: addons/goto/events/class_DaemonEvent.inc:424
-#: addons/goto/deploy-list.xml:136
-msgid "Reinstall"
+#: addons/goto/events/class_DaemonEvent.inc:425
+#, fuzzy
+msgid "(Re)Install"
 msgstr "Herinstalleer"
+
+#: addons/goto/events/eventTargetSystems-filter.tpl:3
+msgid "Filter"
+msgstr "Filter"
 
 #: addons/goto/events/eventTargetSystems-filter.tpl:11
 msgid "Show servers"
@@ -663,6 +680,11 @@ msgid "Show terminals"
 msgstr "Toon terminals"
 
 #: addons/goto/events/eventTargetSystems-filter.tpl:14
+#, fuzzy
+msgid "Show winstations"
+msgstr "Toon werkstations"
+
+#: addons/goto/events/eventTargetSystems-filter.tpl:15
 msgid "Filter by IP address range"
 msgstr "Filteren op IP-adres range"
 
@@ -698,90 +720,76 @@ msgstr "Periodieke job"
 msgid "Job intervall"
 msgstr "Job interval"
 
-#: addons/goto/events/eventTargetUser-list.xml:11
-msgid "List of users"
-msgstr "Lijst met gebruikers"
-
-#: addons/goto/events/eventTargetUser-list.xml:15
-msgid "User"
-msgstr "Gebruiker"
-
-#: addons/goto/events/eventTargetUser-list.xml:23
-msgid "Group"
-msgstr "Groep"
-
 #: addons/goto/class_filterGotoEvents.inc:39
 #, php-format
 msgid "Cannot load queue entries: %s"
 msgstr "Kan queue gegevens : %s niet laden"
 
-#: addons/goto/class_gotomasses.inc:154
+#: addons/goto/class_gotomasses.inc:40 addons/goto/class_gotomasses.inc:46
+msgid "Deployment queue"
+msgstr ""
+
+#: addons/goto/class_gotomasses.inc:41
+msgid "Provide a mechanism to automatically activate systems"
+msgstr "Zorg voor een mechanisme om automatisch systemen te activeren"
+
+#: addons/goto/class_gotomasses.inc:175
 msgid "immediately"
 msgstr "onmiddellijk"
 
-#: addons/goto/class_gotomasses.inc:170
+#: addons/goto/class_gotomasses.inc:190
 msgid "Waiting"
 msgstr "Wachten"
 
-#: addons/goto/class_gotomasses.inc:173
+#: addons/goto/class_gotomasses.inc:193
 msgid "Show error"
 msgstr "Toon fouten"
 
-#: addons/goto/class_gotomasses.inc:177
+#: addons/goto/class_gotomasses.inc:197
 msgid "Processed"
 msgstr "Verwerkte"
 
-#: addons/goto/class_gotomasses.inc:186
+#: addons/goto/class_gotomasses.inc:206
 msgid "in progress"
 msgstr "in verwerking"
 
-#: addons/goto/class_gotomasses.inc:207
+#: addons/goto/class_gotomasses.inc:227
 msgid "Permission"
 msgstr "Recht"
 
-#: addons/goto/class_gotomasses.inc:238
+#: addons/goto/class_gotomasses.inc:258
 #, php-format
 msgid "The following jobs couldn't be deleted, they have to be aborted: %s"
-msgstr "De volgende jobs kunnen niet worden verwijderd, ze moeten afgebroken worden: %s"
+msgstr ""
+"De volgende jobs kunnen niet worden verwijderd, ze moeten afgebroken worden: "
+"%s"
 
-#: addons/goto/class_gotomasses.inc:285
+#: addons/goto/class_gotomasses.inc:305
 msgid "Info"
 msgstr "Info"
 
-#: addons/goto/class_gotomasses.inc:285
+#: addons/goto/class_gotomasses.inc:305
 #, php-format
 msgid "%s"
 msgstr ""
 
-#: addons/goto/class_gotomasses.inc:289
+#: addons/goto/class_gotomasses.inc:309
 #, php-format
 msgid "Required class '%s' cannot be found: job not aborted!"
 msgstr "Vereist klasse '%s' niet gevonden: jobs niet gestopt!"
 
-#: addons/goto/class_gotomasses.inc:321
+#: addons/goto/class_gotomasses.inc:341
 msgid "Error detail"
 msgstr "Fout detail"
 
-#: addons/goto/class_gotomasses.inc:379
+#: addons/goto/class_gotomasses.inc:399
 #, php-format
 msgid "Cannot update queue entries."
 msgstr "Kan queue waarde niet updaten."
 
-#: addons/goto/class_gotomasses.inc:454 addons/goto/class_gotomasses.inc:460
-msgid "Deployment queue"
-msgstr ""
-
-#: addons/goto/class_gotomasses.inc:455
-msgid "Provide a mechanism to automatically activate systems"
-msgstr "Zorg voor een mechanisme om automatisch systemen te activeren"
-
 #: addons/goto/deploy-list.xml:10
 msgid "List of queued jobs"
 msgstr "Lijst van queued jobs"
-
-#: addons/goto/deploy-list.xml:27
-msgid "Target"
-msgstr "Doel"
 
 #: addons/goto/deploy-list.xml:45
 msgid "Task"
@@ -791,14 +799,6 @@ msgstr "Taak"
 msgid "Period"
 msgstr "Periode"
 
-#: addons/goto/deploy-list.xml:61
-msgid "Schedule"
-msgstr "Plan"
-
-#: addons/goto/deploy-list.xml:69
-msgid "Status"
-msgstr "Status"
-
 #: addons/goto/deploy-list.xml:77
 msgid "Actions"
 msgstr "Acties"
@@ -807,31 +807,23 @@ msgstr "Acties"
 msgid "Create"
 msgstr "Aanmaken"
 
-#: addons/goto/deploy-list.xml:122
-msgid "Lock"
-msgstr "Vergrendel"
-
-#: addons/goto/deploy-list.xml:129
-msgid "Unlock"
-msgstr "Ontgrendel"
-
-#: addons/goto/deploy-list.xml:166 addons/goto/deploy-list.xml:223
+#: addons/goto/deploy-list.xml:117 addons/goto/deploy-list.xml:174
 msgid "Abort"
 msgstr "Onderbreek"
 
-#: addons/goto/deploy-list.xml:177
+#: addons/goto/deploy-list.xml:128
 msgid "Execute"
 msgstr "Commando"
 
-#: addons/goto/deploy-list.xml:189
+#: addons/goto/deploy-list.xml:140
 msgid "Process now"
 msgstr "Verwerk nu"
 
-#: addons/goto/deploy-list.xml:197
+#: addons/goto/deploy-list.xml:148
 msgid "View logs"
 msgstr "Toon logs"
 
-#: addons/goto/deploy-list.xml:206
+#: addons/goto/deploy-list.xml:157
 msgid "Edit"
 msgstr "Bewerken"
 
@@ -842,3 +834,24 @@ msgstr "Meerdere argonaut servers gevonden. Er is maar 1 mogelijk"
 #: include/class_supportDaemon.inc:90
 msgid "There is no argonaut server configured"
 msgstr " Er is geen argonaut server geconfigureerd"
+
+#~ msgid "Show groups"
+#~ msgstr "Toon groepen"
+
+#~ msgid "Show users"
+#~ msgstr "Toon gebruikers"
+
+#~ msgid "List of users"
+#~ msgstr "Lijst met gebruikers"
+
+#~ msgid "User"
+#~ msgstr "Gebruiker"
+
+#~ msgid "Group"
+#~ msgstr "Groep"
+
+#~ msgid "Lock"
+#~ msgstr "Vergrendel"
+
+#~ msgid "Unlock"
+#~ msgstr "Ontgrendel"

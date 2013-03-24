@@ -1,75 +1,76 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 #  <giuliano@opensides.be>, 2013.
 #   <giuliano@opensides.be>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
-"POT-Creation-Date: 2013-02-12 23:58+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-03-24 15:09+0100\n"
 "PO-Revision-Date: 2013-03-07 00:14+0000\n"
 "Last-Translator: poterealpopolo <giuliano@opensides.be>\n"
-"Language-Team: Italian (http://www.transifex.com/projects/p/FusionDirectory/language/it/)\n"
+"Language-Team: Italian (http://www.transifex.com/projects/p/FusionDirectory/"
+"language/it/)\n"
+"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: addons/board/users_stats.tpl:22
 msgid "None of them is locked"
 msgstr "Nessuno di loro è bloccato"
 
-#: addons/board/class_boardSystems.inc:48
+#: addons/board/class_boardSystems.inc:45
 msgid "Workstations"
 msgstr "Workstations"
 
-#: addons/board/class_boardSystems.inc:51
+#: addons/board/class_boardSystems.inc:48
 msgid "Servers"
 msgstr "Servers"
 
-#: addons/board/class_boardSystems.inc:54
+#: addons/board/class_boardSystems.inc:51
 msgid "Windows Workstations"
 msgstr "Workstations Windows"
 
-#: addons/board/class_boardSystems.inc:57
+#: addons/board/class_boardSystems.inc:54
 msgid "Terminals"
 msgstr "Terminali"
 
-#: addons/board/class_boardSystems.inc:60
+#: addons/board/class_boardSystems.inc:57
 msgid "Printers"
 msgstr "Stampanti"
 
-#: addons/board/class_boardSystems.inc:63
+#: addons/board/class_boardSystems.inc:60
 msgid "Phones"
 msgstr "Telefoni"
 
-#: addons/board/class_boardSystems.inc:66
+#: addons/board/class_boardSystems.inc:63
 msgid "Components"
 msgstr "Componenti"
 
-#: addons/board/class_boardSystems.inc:69
+#: addons/board/class_boardSystems.inc:66
 msgid "Mobile phones"
 msgstr "Telefono cellulare"
 
-#: addons/board/class_boardSystems.inc:182 addons/board/class_board.inc:107
-#: addons/board/main_stats.tpl:3 addons/board/class_boardUserAccounts.inc:140
+#: addons/board/class_boardSystems.inc:180 addons/board/class_board.inc:101
+#: addons/board/main_stats.tpl:3 addons/board/class_boardUserAccounts.inc:137
 #: addons/board/contents.tpl:3
 msgid "Statistics"
 msgstr "Statistiche"
 
-#: addons/board/class_boardSystems.inc:187 addons/board/contents.tpl:30
+#: addons/board/class_boardSystems.inc:185 addons/board/contents.tpl:30
 msgid "Computer name to use by unit"
 msgstr "Nome del computer da usare per unità"
 
-#: addons/board/class_boardSystems.inc:198
+#: addons/board/class_boardSystems.inc:196
 msgid "Systems"
 msgstr "Sistemi"
 
-#: addons/board/class_boardSystems.inc:199
+#: addons/board/class_boardSystems.inc:197
 msgid "Statistics and informations about systems"
 msgstr "Statistiche e informazioni sui sistemi"
 
@@ -78,7 +79,7 @@ msgid "There is no expired account"
 msgstr "Non ci sono account scaduti"
 
 #: addons/board/users_accounts.tpl:26
-#: addons/board/class_boardUserAccounts.inc:145
+#: addons/board/class_boardUserAccounts.inc:142
 msgid "Expired accounts"
 msgstr "Account scaduti"
 
@@ -115,25 +116,24 @@ msgstr "mail"
 msgid "Next expired accounts"
 msgstr "Prossimi account che scadranno"
 
-#: addons/board/class_boardNetwork.inc:109
+#: addons/board/class_boardNetwork.inc:106
 msgid "DHCP"
 msgstr "DHCP"
 
-#: addons/board/class_boardNetwork.inc:114
+#: addons/board/class_boardNetwork.inc:111
 msgid "DNS"
 msgstr "DNS"
 
-#: addons/board/class_boardNetwork.inc:125
+#: addons/board/class_boardNetwork.inc:122
 msgid "Network"
 msgstr "Rete"
 
-#: addons/board/class_boardNetwork.inc:126 addons/board/class_board.inc:45
-#: addons/board/class_board.inc:119
+#: addons/board/class_boardNetwork.inc:123 addons/board/class_board.inc:113
 msgid "Statistics and various informations"
 msgstr "Statistiche e informazioni varie"
 
-#: addons/board/class_board.inc:44 addons/board/class_board.inc:118
-#: addons/board/class_board.inc:122 addons/board/class_board.inc:123
+#: addons/board/class_board.inc:112 addons/board/class_board.inc:116
+#: addons/board/class_board.inc:117
 msgid "Board"
 msgstr "Board"
 
@@ -145,10 +145,10 @@ msgstr "Ci sono diversi server Argonaut! (questo non è ancora supportato)"
 msgid "But no system is configured to run an argonaut client!"
 msgstr "Ma nessun sistema è configurato per eseguire un client argonaut!"
 
-#: addons/board/class_boardUserAccounts.inc:156
+#: addons/board/class_boardUserAccounts.inc:153
 msgid "User"
 msgstr "Utente"
 
-#: addons/board/class_boardUserAccounts.inc:157
+#: addons/board/class_boardUserAccounts.inc:154
 msgid "Statistics about users"
 msgstr "Statistiche sugli utenti"
