@@ -225,6 +225,8 @@ class mailAccount extends simplePlugin
 
     if (isset($object->cn)) {
       $this->cn = $object->cn;
+    } elseif (isset($this->attrs['cn'])) {
+      $this->cn = $this->attrs['cn'][0];
     }
 
     /* Intialize the used mailMethod */
