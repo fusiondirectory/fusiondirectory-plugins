@@ -223,7 +223,7 @@ class mailAccount extends simplePlugin
   {
     parent::__construct($config, $dn, $object);
 
-    if (isset($object->cn) {
+    if (isset($object->cn)) {
       $this->cn = $object->cn;
     }
 
