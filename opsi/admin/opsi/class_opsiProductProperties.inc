@@ -129,6 +129,7 @@ class opsiProductProperties extends simplePlugin
     return array(
       'main' => array(
         'name'  => _('Name'),
+        'class' => array('fullwidth'),
         'attrs' => array(
           new OrderedArrayAttribute(
             new CharSeparatedCompositeAttribute(
@@ -163,6 +164,7 @@ class opsiProductProperties extends simplePlugin
   public function __construct(&$config, $dn = NULL, $object = NULL)
   {
     parent::__construct($config, $dn, $object);
+    $this->attributesAccess['fdOpsiProductProperty']->setHeight('auto');
   }
 
   public function execute()
