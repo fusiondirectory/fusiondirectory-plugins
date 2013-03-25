@@ -1,5 +1,4 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2011-2013  FusionDirectory

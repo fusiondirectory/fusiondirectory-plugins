@@ -23,28 +23,27 @@
 
 class memberNisnetgroupSelect extends management {
 
-    protected $skipFooter = TRUE;
-    protected $skipHeader = TRUE;
-    private $myFilter;
-    private $myHeadpage;
+  protected $skipFooter = TRUE;
+  protected $skipHeader = TRUE;
+  private $myFilter;
+  private $myHeadpage;
 
-    function __construct($config, $ui) {
-        $this->config = $config;
-        $this->ui = $ui;
+  function __construct($config, $ui) {
+    $this->config = $config;
+    $this->ui = $ui;
 
-        $this->storagePoints = array(get_ou("netgroupRDN"));
+    $this->storagePoints = array(get_ou("netgroupRDN"));
 
-        $myFilter = new filter(get_template_path("memberNisnetgroup-filter.xml", true, dirname(__FILE__)));
-        $myFilter->setObjectStorage($this->storagePoints);
-        $this->setFilter($myFilter);
+    $myFilter = new filter(get_template_path("memberNisnetgroup-filter.xml", true, dirname(__FILE__)));
+    $myFilter->setObjectStorage($this->storagePoints);
+    $this->setFilter($myFilter);
 
-        // Build headpage
-        $myHeadpage = new listing(get_template_path("memberNisnetgroup-list.xml", true, dirname(__FILE__)));
-        $myHeadpage->setFilter($myFilter);
-        parent::__construct($config, $ui, "memberNisnetgroup", $myHeadpage);
-    }
+    // Build headpage
+    $myHeadpage = new listing(get_template_path("memberNisnetgroup-list.xml", true, dirname(__FILE__)));
+    $myHeadpage->setFilter($myFilter);
+    parent::__construct($config, $ui, "memberNisnetgroup", $myHeadpage);
+  }
 
 }
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 
 ?>

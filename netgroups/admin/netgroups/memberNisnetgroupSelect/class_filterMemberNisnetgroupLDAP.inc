@@ -23,49 +23,49 @@
 
 class filterMemberNisnetgroupLDAP {
 
-    static function query($parent, $base, $scope, $filter, $attributes, $category, $objectStorage= "") {
-        $result = array();
-        $menu = array();
-        $dn2index = array();
-        $config = session::global_get('config');
-        $ldap = $config->get_ldap_link(TRUE);
-        $flag = ($scope == "sub") ? GL_SUBSEARCH : 0;
-        $tmp = filterTriplesLDAP::get_list($parent, $base, $filter, $attributes, $category, $objectStorage, $flag | GL_SIZELIMIT);
+  static function query($parent, $base, $scope, $filter, $attributes, $category, $objectStorage= "") {
+    $result = array();
+    $menu = array();
+    $dn2index = array();
+    $config = session::global_get('config');
+    $ldap = $config->get_ldap_link(TRUE);
+    $flag = ($scope == "sub") ? GL_SUBSEARCH : 0;
+    $tmp = filterTriplesLDAP::get_list($parent, $base, $filter, $attributes, $category, $objectStorage, $flag | GL_SIZELIMIT);
 
-        // Sort out menu entries, but save info
-        $index = 0;
-        foreach ($tmp as $entry) {
-            if (in_array_ics("nisNetgroup", $entry['objectClass'])) {
-                $result[$index] = $entry;
-                $dn2index[$entry['dn']] = $index;
-                $index++;
-            } else {
-                foreach ($objectStorage as $storage) {
-                    $group = preg_replace("/^.*,([^,]+)," . preg_quote("$storage$base") . "$/", '$1', $entry['dn']);
-                    $group = "$group,$storage$base";
-
-                    // The current group implementation has no multiple storage settings - so break here
-                    break;
-                }
-                $menu[$group] = true;
-            }
-        }
-
-        return $result;
-    }
-
-    static function get_list($parent, $base, $filter, $attributes, $category, $objectStorage, $flags= GL_SUBSEARCH) {
-        $tmp = array();
+    // Sort out menu entries, but save info
+    $index = 0;
+    foreach ($tmp as $entry) {
+      if (in_array_ics("nisNetgroup", $entry['objectClass'])) {
+        $result[$index] = $entry;
+        $dn2index[$entry['dn']] = $index;
+        $index++;
+      } else {
         foreach ($objectStorage as $storage) {
-            $list = filterLDAP::get_list($parent, $base, $filter, $attributes, $category, array($storage), $flags);
-            foreach ($list as $entry) {
-                $tmp[] = $entry;
-            }
+          $group = preg_replace("/^.*,([^,]+)," . preg_quote("$storage$base") . "$/", '$1', $entry['dn']);
+          $group = "$group,$storage$base";
+
+          // The current group implementation has no multiple storage settings - so break here
+          break;
         }
-        return $tmp;
+        $menu[$group] = true;
+      }
     }
+
+    return filterLDAPBlacklist::filterByBlacklist($result);
+    //~ return $result;
+  }
+
+  static function get_list($parent, $base, $filter, $attributes, $category, $objectStorage, $flags= GL_SUBSEARCH) {
+    $tmp = array();
+    foreach ($objectStorage as $storage) {
+      $list = filterLDAP::get_list($parent, $base, $filter, $attributes, $category, array($storage), $flags);
+      foreach ($list as $entry) {
+        $tmp[] = $entry;
+      }
+    }
+    return $tmp;
+  }
 
 }
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 
 ?>
