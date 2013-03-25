@@ -277,7 +277,7 @@ class sambaAccount extends simplePlugin
         'attrs' => array(
           new BooleanAttribute (
             _('Enforce password change'), _('Force the user to change his password'),
-            'sambaPwdMustChange', FALSE, FALSE, '',
+            'sambaPwdLastSet', FALSE, FALSE, '',
             '0', ''
           ),
           new BooleanAttribute (
@@ -491,8 +491,8 @@ class sambaAccount extends simplePlugin
     }
 
     /* Do not modify values if not needed */
-    if (!$this->attributesAccess['sambaPwdMustChange']->hasChanged()) {
-      unset($this->attrs['sambaPwdMustChange']);
+    if (!$this->attributesAccess['sambaPwdLastSet']->hasChanged()) {
+      unset($this->attrs['sambaPwdLastSet']);
     }
     if (!$this->attributesAccess['sambaPwdCanChange']->hasChanged()) {
       unset($this->attrs['sambaPwdCanChange']);
