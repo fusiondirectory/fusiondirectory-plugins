@@ -223,7 +223,9 @@ class mailAccount extends simplePlugin
   {
     parent::__construct($config, $dn, $object);
 
-    $this->cn = $object->cn;
+    if (isset($object->cn) {
+      $this->cn = $object->cn;
+    }
 
     /* Intialize the used mailMethod */
     $tmp = new mailMethod($config, $this);
