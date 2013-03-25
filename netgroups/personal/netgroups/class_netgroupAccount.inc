@@ -81,13 +81,13 @@ class netgroupAccount extends simplePlugin {
     return array(
       'plShortName'     => _('NIS Netgroup'),
       'plDescription'   => _('NIS Netgroup member'),
+      'plSmallIcon'     => 'plugins/netgroups/images/netgroups.png',
       'plSelfModify'    => FALSE,
       'plPriority'      => 2,
       'plCategory'      => array('users'),
       'plObjectType'    => array('user'),
-      'plProvidedAcls'  => array(
-          'memberCn' => _('NIS Netgroup members')
-      )
+
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }
 
@@ -97,7 +97,7 @@ class netgroupAccount extends simplePlugin {
     return array(
       'groups' => array(
         'name'  => _('Member of the following NIS Netgroups  '),
-        'icon'  => 'plugins/posix/images/members.png',
+        'icon'  => 'plugins/netgroups/images/netgroups.png',
         'attrs' => array(
           new NisNetGroupsAttribute('', _('NIS netgroup membership'), 'nisMembership')
         )
@@ -139,6 +139,25 @@ class netgroupAccount extends simplePlugin {
     $this->attributesAccess['nisMembership']->setValue(array_keys($groupMembership));
     $this->attributesAccess['nisMembership']->setDisplayValues(array_values($groupMembership));
     $this->attributesAccess['nisMembership']->setInitialValue(array_keys($groupMembership));
+  }
+
+  function is_this_account($attrs) {
+    if (isset($attrs['uid'][0])) {
+      $uid = $attrs['uid'][0];
+      $ldap = $this->config->get_ldap_link();
+      $ldap->cd($this->config->current['BASE']);
+      $ldap->search('(objectClass=nisNetgroup)', array('cn', 'nisNetgroupTriple'));
+      while ($attrs = $ldap->fetch()) {
+        if (isset($attrs['nisNetgroupTriple'])) {
+          foreach ($attrs['nisNetgroupTriple'] as $val) {
+            if (preg_match("/^\(\-?,".$uid.",\S*\)$/", $val)) {
+              return TRUE;
+            }
+          }
+        }
+      }
+    }
+    return FALSE;
   }
 
   /* Save data to LDAP, depending on is_account we save or delete */
