@@ -18,5 +18,5 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-netgroupAccount::mainInc('netgroupAccount', $ui->dn);
+netgroupMembership::mainInc('netgroupMembership', $ui->dn);
 ?>

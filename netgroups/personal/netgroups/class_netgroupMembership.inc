@@ -73,8 +73,11 @@ class NisNetGroupsAttribute extends GroupsAttribute
   }
 }
 
-class netgroupAccount extends simplePlugin {
+class netgroupMembership extends simplePlugin {
   var $objectclasses = array("whatever");
+  var $id;
+  var $old_id;
+  protected static $id_attr = 'uid';
 
   static function plInfo()
   {
@@ -110,30 +113,27 @@ class netgroupAccount extends simplePlugin {
     parent::__construct($config, $dn, $object);
 
     $groupMembership = array();
-    if (isset($object->uid)) {
-      $uid = $object->uid;
 
-      /* Groups handling */
-      if ($this->dn != 'new') {
-        $ldap = $this->config->get_ldap_link();
-        $ldap->cd($this->config->current['BASE']);
-        $ldap->search('(objectClass=nisNetgroup)', array('cn', 'nisNetgroupTriple'));
-        while ($attrs = $ldap->fetch()) {
-          if (isset($attrs['nisNetgroupTriple'])) {
-            foreach ($attrs['nisNetgroupTriple'] as $val) {
-              if (preg_match("/^\(\-?,".$uid.",\S*\)$/", $val)) {
-                $desc = "";
-                if (isset($attrs['description'])) {
-                  $desc = $attrs['description'];
-                }
-                $groupMembership[$attrs['dn']] = $attrs['cn'][0]."[".$desc."]";
+    /* Groups handling */
+    if ($this->dn != 'new') {
+      $ldap = $this->config->get_ldap_link();
+      $ldap->cd($this->config->current['BASE']);
+      $ldap->search('(objectClass=nisNetgroup)', array('cn', 'nisNetgroupTriple'));
+      while ($attrs = $ldap->fetch()) {
+        if (isset($attrs['nisNetgroupTriple'])) {
+          foreach ($attrs['nisNetgroupTriple'] as $val) {
+            if (preg_match($this->triple_mask(), $val)) {
+              $label = $attrs['cn'][0];
+              if (isset($attrs['description'])) {
+                $label .= ' ['.$attrs['description'][0].']';
               }
+              $groupMembership[$attrs['dn']] = $label;
             }
           }
         }
-        asort($groupMembership);
-        reset($groupMembership);
       }
+      asort($groupMembership);
+      reset($groupMembership);
     }
     $this->attributesAccess['nisMembership']->setInLdap(FALSE);
     $this->attributesAccess['nisMembership']->setValue(array_keys($groupMembership));
@@ -141,16 +141,45 @@ class netgroupAccount extends simplePlugin {
     $this->attributesAccess['nisMembership']->setInitialValue(array_keys($groupMembership));
   }
 
+  protected function triple_mask()
+  {
+    return "/^\(\-?,".$this->old_id.",\S*\)$/";
+  }
+
+  protected function triple_data()
+  {
+    return '(,'.$this->id.',)';
+  }
+
+  protected function update_id()
+  {
+    $class    = get_class($this);
+    $id_attr  = $class::$id_attr;
+    if (isset($this->parent)) {
+      $baseobject = $this->parent->getBaseObject();
+      if (isset($baseobject->$id_attr)) {
+        $this->id = $baseobject->$id_attr;
+        return;
+      }
+    }
+    if (isset($this->attrs[$id_attr])) {
+      $this->id = $this->attrs[$id_attr][0];
+    }
+  }
+
   function is_this_account($attrs) {
-    if (isset($attrs['uid'][0])) {
-      $uid = $attrs['uid'][0];
+    $class    = get_class($this);
+    $id_attr  = $class::$id_attr;
+    if (isset($attrs[$id_attr])) {
+      $this->id     = $attrs[$id_attr][0];
+      $this->old_id = $this->id;
       $ldap = $this->config->get_ldap_link();
       $ldap->cd($this->config->current['BASE']);
       $ldap->search('(objectClass=nisNetgroup)', array('cn', 'nisNetgroupTriple'));
       while ($attrs = $ldap->fetch()) {
         if (isset($attrs['nisNetgroupTriple'])) {
           foreach ($attrs['nisNetgroupTriple'] as $val) {
-            if (preg_match("/^\(\-?,".$uid.",\S*\)$/", $val)) {
+            if (preg_match($this->triple_mask(), $val)) {
               return TRUE;
             }
           }
@@ -163,6 +192,7 @@ class netgroupAccount extends simplePlugin {
   /* Save data to LDAP, depending on is_account we save or delete */
   function ldap_save($cleanup = TRUE)
   {
+    $this->update_id();
     /* Call parents save to prepare $this->attrs */
     $ldap   = $this->config->get_ldap_link();
     $attrs  = array();
@@ -170,8 +200,13 @@ class netgroupAccount extends simplePlugin {
 
     $old_nisMembership  = $this->attributesAccess['nisMembership']->getInitialValue();
     $nisMembership      = $this->attributesAccess['nisMembership']->getValue();
-    $to_add = array_diff($nisMembership, $old_nisMembership);
-    $to_del = array_diff($old_nisMembership, $nisMembership);
+    if ($this->old_id == $this->id) {
+      $to_add = array_diff($nisMembership, $old_nisMembership);
+      $to_del = array_diff($old_nisMembership, $nisMembership);
+    } else {
+      $to_add = $nisMembership;
+      $to_del = $old_nisMembership;
+    }
 
     foreach ($to_add as $val) {
       $ldap->cd($this->config->current['BASE']);
@@ -187,7 +222,7 @@ class netgroupAccount extends simplePlugin {
             $triples[] = $sattrs['nisNetgroupTriple'][$i];
           }
         }
-        $triples[] = '(,'.$this->uid.',)';
+        $triples[] = $this->triple_data();
         $attrs['nisNetgroupTriple'] = array_values(array_unique($triples));
 
         if (isset($sattrs['memberNisNetgroup'])) {
@@ -212,7 +247,7 @@ class netgroupAccount extends simplePlugin {
 
         if (isset($sattrs['nisNetgroupTriple'])) {
           for ($i = 0;$i < $sattrs['nisNetgroupTriple']['count'];$i++) {
-            if (!preg_match("/^\(\-?," . $this->uid . ",\S*\)$/", $sattrs['nisNetgroupTriple'][$i])) {
+            if (!preg_match($this->triple_mask(), $sattrs['nisNetgroupTriple'][$i])) {
               $triples[] = $sattrs['nisNetgroupTriple'][$i];
             }
           }
