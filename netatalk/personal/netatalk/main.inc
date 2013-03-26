@@ -128,7 +128,7 @@ if ( $cleanup ){
   }
 
   /* Page header*/
-  $display = print_header(get_template_path('plugins/netatalk/images/plugin.png'), _("Netatalk settings"), $info).$display;
+  $display = print_header(get_template_path('plugins/netatalk/images/icon.png'), _("Netatalk settings"), $info).$display;
 
 }
 

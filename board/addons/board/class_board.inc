@@ -111,7 +111,7 @@ class board extends simplePlugin
     return array(
       "plShortName"   => _("Board"),
       "plDescription" => _("Statistics and various informations"),
-      "plIcon"        => "plugins/board/images/plugin.png",
+      "plIcon"        => "plugins/board/images/icon.png",
       "plSelfModify"  => FALSE,
       "plCategory"    => array("board" => array("objectClass" => "", "description" => _("Board"))),
       "plObjectType"  => array("board" => array("name" => _("Board"), "filter" => "")),

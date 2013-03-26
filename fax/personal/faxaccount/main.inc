@@ -132,7 +132,7 @@ if ( $cleanup ){
   }
 
   /* Page header*/
-  $display= print_header(get_template_path('plugins/fax/images/plugin.png'), _("FAX settings"), $info).$display;
+  $display= print_header(get_template_path('plugins/fax/images/icon.png'), _("FAX settings"), $info).$display;
 
 }
 ?>

@@ -39,7 +39,7 @@ class gotomasses extends management
     return array(
       'plShortName'   => _('Deployment queue'),
       'plDescription' => _('Provide a mechanism to automatically activate systems'),
-      'plIcon'        => 'plugins/systems/images/goto.png',
+      'plIcon'        => 'plugins/argonaut/images/icon.png',
       'plSelfModify'  => FALSE,
       'plSection'     => 'admin',
       'plPriority'    => 10,

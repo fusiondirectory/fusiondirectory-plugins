@@ -39,7 +39,7 @@ if ($cleanup) {
   $display .= "<input type=\"hidden\" name=\"ignore\">\n";
 
   /* Page header*/
-  $display = print_header(get_template_path('plugins/addressbook/images/plugin.png'),
+  $display = print_header(get_template_path('plugins/addressbook/images/icon.png'),
                           _("Addressbook")).$display;
 
   /* Store changes  in session */

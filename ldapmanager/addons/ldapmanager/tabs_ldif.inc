@@ -37,7 +37,7 @@ class ldiftab extends tabs
     return array(
       "plShortName"   => _("LDAP manager"),
       "plDescription" => _("Allows the management of the ldap tree"),
-      "plIcon"        => "plugins/ldapmanager/images/ldif.png",
+      "plIcon"        => "plugins/ldapmanager/images/icon.png",
       "plSection"     => "addons",
       "plPriority"    => 20,
       "plCategory"    => array("ldapmanager" => array("objectClass" => "none", "description" => _("Ldap manager"))),

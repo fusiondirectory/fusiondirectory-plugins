@@ -213,7 +213,8 @@ class supannAccount extends simplePlugin
     return array(
       'plShortName'   => _('SupAnn'),
       'plDescription' => _('SupAnn informations management plugin'),
-      'plIcon'        => 'plugins/supann/images/plugin.png',
+      'plIcon'        => 'plugins/supann/images/icon.png',
+      'plSmallIcon'   => 'plugins/supann/images/iconMini.png',
       'plSelfModify'  => TRUE,
       'plPriority'    => 5,
       'plCategory'    => array('users'),

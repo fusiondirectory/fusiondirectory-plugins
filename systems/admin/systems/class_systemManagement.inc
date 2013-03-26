@@ -1123,7 +1123,7 @@ class systemManagement extends management
     return array(
       "plShortName"   => _("Systems"),
       "plDescription" => _("Systems Management"),
-      "plIcon"        => "plugins/systems/images/plugin.png",
+      "plIcon"        => "plugins/systems/images/icon.png",
       "plSelfModify"  => FALSE,
       "plPriority"    => 3,
       "plSection"     => "admin",

@@ -48,7 +48,8 @@ class freeradiusAccount extends simplePlugin {
     return array(
       'plShortName'       => _('Freeradius'),
       'plDescription'     => _('This Plugin is for Radius accounting based in FreeRadius'),
-      'plIcon'            => _('plugins/freeradius/images/plugin.png'),
+      'plIcon'            => 'plugins/freeradius/images/icon.png',
+      'plSmallIcon'       => 'plugins/freeradius/images/iconMini.png',
       'plSelfModify'      => TRUE,                  // Does this plugin have an owner that might be able to edit its entry
       'plCategory'        => array('user'),
       'plObjectType'      => array('user'),

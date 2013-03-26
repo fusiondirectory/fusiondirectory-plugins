@@ -34,7 +34,7 @@ class dsaManagement extends management
     return array(
       "plShortName"   => _("DSA"),
       "plDescription" => _("DSA management"),
-      "plIcon"        => "plugins/dsa/images/plugin.png",
+      "plIcon"        => "plugins/dsa/images/icon.png",
       "plSelfModify"  => FALSE,
       "plSection"     => "admin",
       "plPriority"    => 30,

@@ -89,7 +89,7 @@ class opsiAdmin extends simplePlugin
     return array(
       'plShortName'   => _('OPSI Admin'),
       'plDescription' => _('OPSI import'),
-      'plIcon'        => 'plugins/opsi/images/plugin.png',
+      'plIcon'        => 'plugins/opsi/images/icon.png',
       'plSelfModify'  => FALSE,
       'plCategory'    => array('opsiAdmin' => array('objectClass' => '', 'description' => _('OPSI Admin'))),
       'plObjectType'  => array('opsiAdmin' => array('name' => _('OPSI Admin'), 'filter' => '')),

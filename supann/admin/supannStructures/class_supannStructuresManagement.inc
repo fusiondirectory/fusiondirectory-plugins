@@ -32,7 +32,7 @@ class supannStructuresManagement extends management
     return array(
       "plShortName"   => _("Supann structures"),
       "plDescription" => _("Supann structures management"),
-      "plIcon"        => "plugins/supann/images/plugin.png",
+      "plIcon"        => "plugins/supann/images/icon.png",
       "plSection"     => "admin",
       "plCategory"    => array("supannStructures"),
 

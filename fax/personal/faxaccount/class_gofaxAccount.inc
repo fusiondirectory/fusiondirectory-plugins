@@ -25,7 +25,7 @@ class gofaxAccount extends plugin
   /* Definitions */
   var $plHeadline= "FAX";
   var $plDescription= "This does something";
-  var $plIcon = "plugins/fax/images/plugin.png";
+  var $plIcon = "plugins/fax/images/icon.png";
 
   /* Department list shown in the divSelectList*/
   var $departments;

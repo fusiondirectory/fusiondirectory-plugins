@@ -131,7 +131,7 @@ if ( $cleanup ) {
   }
 
   /* Page header*/
-  $display = print_header(get_template_path('plugins/zarafa/images/plugin.png'), _("User mail settings"), $info).$display;
+  $display = print_header(get_template_path('plugins/zarafa/images/icon.png'), _("Zarafa mail settings"), $info).$display;
 
 }
 

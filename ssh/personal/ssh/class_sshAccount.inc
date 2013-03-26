@@ -98,8 +98,8 @@ class sshAccount extends simplePlugin
       'plPriority'      => 3,
       'plCategory'      => array('users'),
       'plObjectType'    => array('user'),
-      'plIcon'          => 'images/password.png',
-      'plSmallIcon'     => 'plugins/users/images/list_password.png',
+      'plIcon'          => 'plugins/ssh/images/icon.png',
+      'plSmallIcon'     => 'plugins/ssh/images/iconMini.png',
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );

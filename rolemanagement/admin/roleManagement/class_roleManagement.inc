@@ -35,7 +35,7 @@ class roleManagement extends management
     return array(
       "plShortName"   => _("Roles"),
       "plDescription" => _("Role management"),
-      "plIcon"        => "plugins/rolemanagement/images/plugin.png",
+      "plIcon"        => "plugins/rolemanagement/images/icon.png",
       "plSection"     => "admin",
       "plCategory"    => array("roles"),
 

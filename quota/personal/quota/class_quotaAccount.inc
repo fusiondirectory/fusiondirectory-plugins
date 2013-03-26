@@ -135,6 +135,7 @@ class quotaAccount extends simplePlugin
     return array(
       'plShortName'   => _('Quota'),
       'plDescription' => _('Plugin for quota support'),
+      'plIcon'        => 'plugins/quota/images/icon.png',
       'plSelfModify'  => TRUE,
       'plPriority'    => 11,
       'plCategory'    => array('users'),

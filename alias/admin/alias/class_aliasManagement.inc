@@ -33,7 +33,7 @@ class aliasManagement extends management
     return array(
       "plShortName"   => _("Aliases"),
       "plDescription" => _("Alias management"),
-      "plIcon"        => "plugins/alias/images/alias.png",
+      "plIcon"        => "plugins/alias/images/icon.png",
       "plSelfModify"  => FALSE,
       "plSection"     => "admin",
       "plPriority"    => 30,

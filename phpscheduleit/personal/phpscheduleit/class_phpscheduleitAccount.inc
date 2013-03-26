@@ -32,9 +32,10 @@ class phpscheduleitAccount extends simplePlugin
     return array(
       'plShortName'     => _('PHP Schedule it'),
       'plDescription'   => _('PHP Schedule it settings'),
+      'plIcon'          => 'plugins/phpscheduleit/images/icon.png',
+      'plSmallIcon'     => 'plugins/phpscheduleit/images/iconMini.png',
       'plSelfModify'    => TRUE,
       'plPriority'      => 29,                                 // Position in tabs
-      'plIcon'          => 'plugins/phpscheduleit/images/phpscheduleit.png',
       'plCategory'      => array('users'),
       'plObjectType'    => array('user'),
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())

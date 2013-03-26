@@ -81,6 +81,8 @@ class kolabAccount extends simplePlugin
     return array(
       'plShortName'     => _('Kolab'),
       'plDescription'   => _('Kolab account settings'),
+      'plIcon'          => 'plugins/kolab/images/icon.png',
+      'plSmallIcon'     => 'plugins/kolab/images/iconMini.png',
       'plSelfModify'    => TRUE,
       'plPriority'      => 20,
       'plCategory'      => array('users'),

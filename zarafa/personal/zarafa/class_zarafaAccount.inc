@@ -33,7 +33,8 @@ class zarafaAccount extends simplePlugin
     return array(
       'plShortName'     => _('Zarafa'),
       'plDescription'   => _('Zarafa settings'),
-      'plIcon'          => _('plugins/zarafa/images/zarafa.png'),
+      'plIcon'          => 'plugins/zarafa/images/icon.png',
+      'plSmallIcon'     => 'plugins/zarafa/images/iconMini.png',
       'plSelfModify'    => TRUE,                              // Does this plugin have an owner that might be able to edit its entry
       'plCategory'      => array('user'),
       'plObjectType'    => array('user'),

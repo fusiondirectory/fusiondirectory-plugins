@@ -24,7 +24,7 @@ class serviceApacheVhostManagement extends management
 {
   var $plHeadline     = "Vhosts";
   var $plDescription  = "Apache vhosts management";
-  var $plIcon         = "plugins/systems/images/application.png";
+  var $plIcon         = "plugins/systems/images/service_apache.png";
 
   // Tab definition
   protected $tabClass     = "apachevhosttabs";

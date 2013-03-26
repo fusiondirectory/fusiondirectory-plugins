@@ -1044,7 +1044,7 @@ class faiManagement extends management
     return array(
       "plShortName"   => _("FAI software deployment"),
       "plDescription" => _("Manage FAI software packages and deployment recipes"),
-      "plIcon"        => "plugins/fai/images/plugin.png",
+      "plIcon"        => "plugins/fai/images/icon.png",
       "plSelfModify"  => FALSE,
       "plSection"     => "admin",
       "plPriority"    => 10,
