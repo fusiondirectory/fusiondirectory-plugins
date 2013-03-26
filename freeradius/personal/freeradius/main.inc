@@ -18,6 +18,6 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-freeradiusAccount::MainInc('freeradiusAccount');
+freeradiusAccount::MainInc('freeradiusAccount', $ui->dn);
 
 ?>
