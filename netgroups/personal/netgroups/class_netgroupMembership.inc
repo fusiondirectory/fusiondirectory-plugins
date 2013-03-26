@@ -20,7 +20,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
  */
 
-class NisNetGroupSelectDialog
+class NetgroupSelectDialog
 {
   private $select;
   private static $classSelect = 'memberNisnetgroupSelect';
@@ -54,10 +54,10 @@ class NisNetGroupSelectDialog
   }
 }
 
-class NisNetGroupsAttribute extends GroupsAttribute
+class NetgroupsAttribute extends GroupsAttribute
 {
   protected $displays;
-  protected $dialogClass = 'NisNetGroupSelectDialog';
+  protected $dialogClass = 'NetgroupSelectDialog';
 
   function addValue ($dn, $entry)
   {
@@ -102,7 +102,7 @@ class netgroupMembership extends simplePlugin {
         'name'  => _('Member of the following NIS Netgroups  '),
         'icon'  => 'plugins/netgroups/images/netgroups.png',
         'attrs' => array(
-          new NisNetGroupsAttribute('', _('NIS netgroup membership'), 'nisMembership')
+          new NetgroupsAttribute('', _('NIS netgroup membership'), 'nisMembership')
         )
       ),
     );

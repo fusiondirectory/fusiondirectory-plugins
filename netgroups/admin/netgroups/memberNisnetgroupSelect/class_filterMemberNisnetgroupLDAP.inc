@@ -1,5 +1,4 @@
 <?php
-
 /*
  * This code is part of FusionDirectory (http://www.fusiondirectory.org)
  * and  compatible with GOsa 2.6 (http://www.gosa-project.org)
@@ -22,7 +21,6 @@
  */
 
 class filterMemberNisnetgroupLDAP {
-
   static function query($parent, $base, $scope, $filter, $attributes, $category, $objectStorage= "") {
     $result = array();
     $menu = array();
@@ -52,7 +50,6 @@ class filterMemberNisnetgroupLDAP {
     }
 
     return filterLDAPBlacklist::filterByBlacklist($result);
-    //~ return $result;
   }
 
   static function get_list($parent, $base, $filter, $attributes, $category, $objectStorage, $flags= GL_SUBSEARCH) {
@@ -65,7 +62,6 @@ class filterMemberNisnetgroupLDAP {
     }
     return $tmp;
   }
-
 }
 
 ?>
