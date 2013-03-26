@@ -36,7 +36,7 @@ class netgroupManagement extends management
     return array(
       "plShortName"   => _("NIS Netgroups"),
       "plDescription" => _("NIS Netgroup management"),
-      "plIcon"        => "plugins/netgroups/images/plugin.png",
+      "plIcon"        => "plugins/netgroups/images/icon.png",
       "plSection"     => "admin",
       "plCategory"    => array("netgroups"),
 

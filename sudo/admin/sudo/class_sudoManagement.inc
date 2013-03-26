@@ -35,7 +35,7 @@ class sudoManagement extends management
     return array(
       "plShortName"   => _("Sudo"),
       "plDescription" => _("Sudo management"),
-      "plIcon"        => "plugins/sudo/images/sudo.png",
+      "plIcon"        => "plugins/sudo/images/icon.png",
       "plSection"     => "admin",
       "plCategory"    => array("sudo"),
 

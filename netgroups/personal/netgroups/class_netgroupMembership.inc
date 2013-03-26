@@ -84,7 +84,8 @@ class netgroupMembership extends simplePlugin {
     return array(
       'plShortName'     => _('NIS Netgroup'),
       'plDescription'   => _('NIS Netgroup member'),
-      'plSmallIcon'     => 'plugins/netgroups/images/netgroups.png',
+      'plIcon'          => 'plugins/netgroups/images/icon.png',
+      'plSmallIcon'     => 'plugins/netgroups/images/iconMini.png',
       'plSelfModify'    => FALSE,
       'plPriority'      => 2,
       'plCategory'      => array('users'),
@@ -100,7 +101,7 @@ class netgroupMembership extends simplePlugin {
     return array(
       'groups' => array(
         'name'  => _('Member of the following NIS Netgroups  '),
-        'icon'  => 'plugins/netgroups/images/netgroups.png',
+        'icon'  => 'plugins/netgroups/images/iconMini.png',
         'attrs' => array(
           new NetgroupsAttribute('', _('NIS netgroup membership'), 'nisMembership')
         )

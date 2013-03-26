@@ -94,7 +94,7 @@ class netgroup extends simplePlugin
       ),
       'netgroups' => array(
         'name'  => _('Netgroup members'),
-        'icon'  => 'plugins/netgroups/images/netgroups.png',
+        'icon'  => 'plugins/netgroups/images/iconMini.png',
         'attrs' => array(
           new CnNetgroupsAttribute('', _('NIS netgroup members'), 'memberNisNetgroup'),
         )
