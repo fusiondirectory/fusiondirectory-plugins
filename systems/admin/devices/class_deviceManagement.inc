@@ -24,7 +24,7 @@ class deviceManagement extends management
 {
   var $plHeadline     = "Hotplug devices";
   var $plDescription  = "Hotplug device management";
-  var $plIcon  = "plugins/systems/images/devices.png";
+  var $plIcon  = "plugins/systems/images/iconHotplugDevices.png";
 
   var $app_release = ""; // The currently selected release while in release management mode!
 
@@ -41,7 +41,7 @@ class deviceManagement extends management
     return array(
       "plShortName"   => _("Hotplug devices"),
       "plDescription" => _("Hotplug device management"),
-      "plIcon"        => "plugins/systems/images/devices.png",
+      "plIcon"        => "plugins/systems/images/iconHotplugDevices.png",
       "plSection"     => "admin",
       "plCategory"    => array("devices"),
 

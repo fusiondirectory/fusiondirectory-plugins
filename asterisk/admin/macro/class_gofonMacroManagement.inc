@@ -35,7 +35,7 @@ class goFonMacro extends management
     return array(
       "plShortName"   => _("Macros"),
       "plDescription" => _("Macros management"),
-      "plIcon"        => "plugins/asterisk/images/macros.png",
+      "plIcon"        => "plugins/asterisk/images/iconMacros.png",
       "plSection"     => "admin",
       "plCategory"    => array("gofonmacro"),
 

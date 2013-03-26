@@ -37,7 +37,7 @@ class mimetypeManagement extends management
     return array(
       "plShortName"   => _("Mime types"),
       "plDescription" => _("Mime type management"),
-      "plIcon"        => "plugins/systems/images/mimetypes.png",
+      "plIcon"        => "plugins/systems/images/iconMimetypes.png",
       "plSection"     => "admin",
       "plCategory"    => array("mimetypes"),
 

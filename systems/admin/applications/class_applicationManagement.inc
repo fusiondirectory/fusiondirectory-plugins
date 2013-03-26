@@ -37,7 +37,7 @@ class applicationManagement extends management
     return array(
       "plShortName"   => _("Applications"),
       "plDescription" => _("Application management"),
-      "plIcon"        => "plugins/systems/images/application.png",
+      "plIcon"        => "plugins/systems/images/iconApplication.png",
       "plSection"     => "admin",
       "plCategory"    => array("application"),
 

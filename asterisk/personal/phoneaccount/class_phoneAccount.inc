@@ -1674,7 +1674,7 @@ class phoneAccount extends plugin
     return array(
       "plShortName"   => _("Phone"),
       "plDescription" => _("Phone account settings"),
-      "plIcon"        => "plugins/asterisk/images/phoneAccount.png",
+      "plIcon"        => "plugins/asterisk/images/icon.png",
       "plSelfModify"  => TRUE,
       "plPriority"    => 7,                                 // Position in tabs
       "plCategory"    => array("users"),

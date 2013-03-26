@@ -131,7 +131,7 @@ if ( $cleanup ){
   }
 
   /* Page header*/
-  $display= print_header(get_template_path('plugins/asterisk/images/phoneAccount.png'), _("Phone settings"), $info).$display;
+  $display= print_header(get_template_path('plugins/asterisk/images/icon.png'), _("Phone settings"), $info).$display;
 
 }
 ?>
