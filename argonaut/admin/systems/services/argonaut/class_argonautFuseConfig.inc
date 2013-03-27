@@ -30,6 +30,8 @@ class argonautFuseConfig extends simpleService
     return array(
       "plShortName"     => _("Argonaut Fuse settings"),
       "plDescription"   => _("Argonaut Fuse settings")." ("._("Services").")",
+      "plIcon"          => "plugins/asterisk/images/iconMiniFuseConfig.png",
+
       "plCategory"      => array("server"),
       "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );

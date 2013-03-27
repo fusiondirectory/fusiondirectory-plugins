@@ -30,6 +30,7 @@ class goFaxServer extends simpleService {
     return array(
       "plShortName"     => _("FAX service"),
       "plDescription"   => _("FAX service")." ("._("Services").")",
+      "plIcon"          => "plugins/fax/images/iconMini.png",
 
       "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );

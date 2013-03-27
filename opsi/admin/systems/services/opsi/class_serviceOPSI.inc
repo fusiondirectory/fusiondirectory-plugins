@@ -28,7 +28,7 @@ class serviceOPSI extends simpleService
     return array(
       'plShortName'   => _('OPSI service'),
       'plDescription' => _('OPSI service').' ('._('Services').')',
-      'plIcon'        => 'plugins/opsi/images/service.png',
+      'plIcon'        => 'plugins/opsi/images/iconMini.png',
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );

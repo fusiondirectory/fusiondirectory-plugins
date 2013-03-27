@@ -30,7 +30,7 @@ class sympaServer extends simpleService
     return array(
       'plShortName'   => _('Sympa Server'),
       'plDescription' => _('Sympa Server').' ('._('Services').')',
-      'plIcon'        => 'plugins/sympa/images/icon.png',
+      'plIcon'        => 'plugins/sympa/images/iconMini.png',
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );

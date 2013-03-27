@@ -797,7 +797,7 @@ class serviceDHCP extends goService
     return array(
       "plShortName"   => _("DHCP service"),
       "plDescription" => _("DHCP service")." ("._("Services").")",
-      "plIcon"        => "plugins/systems/images/service_dhcp.png",
+      "plIcon"        => "plugins/dhcp/images/iconMini.png",
       "plSelfModify"  => FALSE,
       "plPriority"    => 84,
       "plCategory"    => array("server"),

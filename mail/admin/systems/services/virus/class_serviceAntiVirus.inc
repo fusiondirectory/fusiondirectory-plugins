@@ -30,7 +30,7 @@ class govirusserver extends simpleService {
     return array(
       'plShortName'   => _('Antivirus service'),
       'plDescription' => _('Antivirus service').' ('._('Services').')',
-      'plIcon'        => 'plugins/systems/images/service_antivirus.png',
+      'plIcon'        => 'plugins/systems/images/iconMiniAntivirus.png',
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );

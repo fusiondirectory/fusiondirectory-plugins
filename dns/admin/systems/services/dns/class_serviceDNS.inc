@@ -627,7 +627,7 @@ class serviceDNS extends goService
     return array(
       'plShortName'   => _('DNS service'),
       'plDescription' => _('DNS service').' ('._('Services').')',
-      'plIcon'        => 'plugins/systems/images/service_dns.png',
+      'plIcon'        => 'plugins/dns/images/iconMini.png',
       'plSelfModify'  => FALSE,
       'plPriority'    => 83,
       'plCategory'    => array('server'),

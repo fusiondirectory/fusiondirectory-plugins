@@ -29,7 +29,7 @@ class rSyslogServer extends simpleService {
     return array(
       'plShortName'   => _('Logs service'),
       'plDescription' => _('Logs service').' ('._('Services').')',
-
+      'plIcon'          => 'plugins/rsyslog/images/iconMini.png',
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }
