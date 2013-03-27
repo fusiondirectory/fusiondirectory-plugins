@@ -30,7 +30,7 @@ class argonautMirrorConfig extends simpleService
     return array(
       "plShortName"     => _("Argonaut Mirror settings"),
       "plDescription"   => _("Argonaut Mirror settings")." ("._("Services").")",
-      "plIcon"          => "plugins/asterisk/images/iconMiniMirrorConfig.png",
+      "plIcon"          => "plugins/argonaut/images/iconMiniMirrorConfig.png",
 
       "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
