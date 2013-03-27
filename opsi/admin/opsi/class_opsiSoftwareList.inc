@@ -94,6 +94,7 @@ class opsiSoftwareList extends simplePlugin
     parent::__construct($config, $dn, $object);
 
     $this->attributesAccess['cn']->setUnique(TRUE);
+    $this->attributesAccess['fdOpsiLocalbootProduct']->attribute->attributes[0]->setSubmitForm('product_changed');
   }
 
   public function compute_dn ()
@@ -123,7 +124,7 @@ class opsiSoftwareList extends simplePlugin
         );
         return FALSE;
       }
-      $localboots = $s_daemon->append_call('OPSI.get_localboots', array($this->macAddress), array('args' => array(array('id','name'))));
+      $localboots = $s_daemon->append_call('OPSI.get_localboots', array($this->macAddress), array('args' => array(array('id','name','setupScript','alwaysScript','onceScript','customScript','userLoginScript'))));
       if ($s_daemon->is_error()) {
         msg_dialog::display(
           _('Could contact OPSI server'),
@@ -131,13 +132,26 @@ class opsiSoftwareList extends simplePlugin
         );
         return;
       }
-      $this->products[$this->fdOpsiServerDN]['localboots'] = $localboots;
+      $this->products[$this->fdOpsiServerDN]['localboots'] = array();
+      foreach ($localboots as $localboot) {
+        $this->products[$this->fdOpsiServerDN]['localboots'][$localboot['id']] = $localboot;
+      }
     }
-    $choices = array();
-    foreach ($this->products[$this->fdOpsiServerDN]['localboots'] as $localboot) {
-      $choices[] = $localboot['id'];
-    }
+    $choices = array_keys($this->products[$this->fdOpsiServerDN]['localboots']);
     $this->attributesAccess['fdOpsiLocalbootProduct']->attribute->attributes[0]->setChoices($choices);
+  }
+
+  public function product_changed ()
+  {
+    $localboot = $this->attributesAccess['fdOpsiLocalbootProduct']->attribute->attributes[0]->getValue();
+
+    $actions = array();
+    foreach (array('setup', 'always', 'once', 'custom', 'userLogin') as $action) {
+      if (!empty($this->products[$this->fdOpsiServerDN]['localboots'][$localboot][$action.'Script'])) {
+        $actions[] = strtolower($action);
+      }
+    }
+    $this->attributesAccess['fdOpsiLocalbootProduct']->attribute->attributes[1]->setChoices($actions);
   }
 }
 ?>
