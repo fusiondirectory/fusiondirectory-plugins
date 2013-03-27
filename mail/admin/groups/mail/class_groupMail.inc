@@ -79,6 +79,10 @@ class mailgroup extends simplePlugin
       'main' => array(
         'name'  => _('Generic'),
         'attrs' => array(
+          new HiddenAttribute (
+            'gosaMailDeliveryMode', 'gosaMailDeliveryMode', 'gosaMailDeliveryMode',
+            '[]'
+          ),
           new MailAttribute (
             _('Primary address'), _('The primary mail address'),
             'mail', TRUE
