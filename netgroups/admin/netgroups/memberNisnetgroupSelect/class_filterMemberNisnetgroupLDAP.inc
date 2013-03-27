@@ -28,7 +28,7 @@ class filterMemberNisnetgroupLDAP {
     $config = session::global_get('config');
     $ldap = $config->get_ldap_link(TRUE);
     $flag = ($scope == "sub") ? GL_SUBSEARCH : 0;
-    $tmp = filterTriplesLDAP::get_list($parent, $base, $filter, $attributes, $category, $objectStorage, $flag | GL_SIZELIMIT);
+    $tmp = self::get_list($parent, $base, $filter, $attributes, $category, $objectStorage, $flag | GL_SIZELIMIT);
 
     // Sort out menu entries, but save info
     $index = 0;
