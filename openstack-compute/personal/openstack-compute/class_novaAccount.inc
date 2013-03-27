@@ -30,6 +30,7 @@ class novaAccount extends simplePlugin
       "plShortName"     => _("Nova"),
       "plDescription"   => _("Nova user account settings"),
       "plIcon"          => "plugins/openstack-compute/images/icon.png",
+      "plSmallIcon"     => "plugins/openstack-compute/images/iconMini.png",
       "plSelfModify"    => TRUE,
       "plPriority"      => 3,
       "plCategory"      => array("users"),

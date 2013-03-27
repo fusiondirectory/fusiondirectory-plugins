@@ -399,6 +399,8 @@ class netatalkAccount extends plugin {
     return array(
       "plShortName"       => _("Netatalk"),
       "plDescription"     => _("Netatalk"),
+      "plIcon"            => "plugins/netatalk/images/icon.png",
+      "plSmallIcon"       => "plugins/netatalk/images/iconMini.png",
       "plSelfModify"      => TRUE,
       "plPriority"        => 6,
       "plCategory"        => array("users"),

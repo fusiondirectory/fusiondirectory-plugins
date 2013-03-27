@@ -798,6 +798,8 @@ class gofaxAccount extends plugin
     return array(
       "plShortName"   => _("Fax"),
       "plDescription" => _("Fax account settings"),
+      "plIcon"        => "plugins/fax/images/icon.png",
+      "plSmallIcon"   => "plugins/fax/images/iconMini.png",
       "plSelfModify"  => TRUE,
       "plPriority"    => 6,
       "plCategory"    => array("users"),

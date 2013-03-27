@@ -45,6 +45,7 @@ class nagiosAccount extends simplePlugin
       'plShortName'   => _('Nagios'),
       'plDescription' => _('Nagios account settings'),
       'plIcon'        => 'plugins/nagios/images/icon.png',
+      'plSmallIcon'   => 'plugins/nagios/images/iconMini.png',
       'plSelfModify'  => TRUE,
       'plCategory'    => array('users'),
       'plObjectType'  => array('user'),
