@@ -32,7 +32,7 @@ class serviceCyrus extends simpleService
     return array(
       'plShortName'     => _('Cyrus (IMAP/POP3)'),
       'plDescription'   => _('Cyrus (IMAP/POP3)').' ('._('Services').')',
-      'plIcon'          => 'plugins/systems/images/iconMini.png',
+      'plIcon'          => 'plugins/cyrus/images/iconMini.png',
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
