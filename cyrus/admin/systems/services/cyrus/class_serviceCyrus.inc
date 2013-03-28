@@ -54,7 +54,7 @@ class serviceCyrus extends simpleService
   {
       return array (
       'cyrus' => array (
-        'name'  => _('Settings'),
+        'name'  => _('Cyrus settings'),
         'attrs' => array (
           new CompositeAttribute (
             _('Connect URL for Cyrus server'),
@@ -76,6 +76,11 @@ class serviceCyrus extends simpleService
             _('Password'), _('Admin user password'),
             'fdCyrusPassword', TRUE
           ),
+        )
+      ),
+      'sieve' => array (
+        'name'  => _('Sieve settings'),
+        'attrs' => array (
           new CompositeAttribute (
             _('Sieve connect URL for Cyrus server'),
             'fdCyrusSieveServer',
