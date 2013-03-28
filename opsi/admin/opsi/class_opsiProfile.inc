@@ -124,6 +124,9 @@ class opsiProfile extends simplePlugin
     foreach ($lists as $list) {
       $ldap->cat($list);
       if ($attrs = $ldap->fetch()) {
+        if (in_array('opsiOnDemandList', $attrs['objectClass'])) {
+          continue;
+        }
         for ($i = 0;$i < $attrs['fdOpsiLocalbootProduct']['count'];++$i) {
           $tmp = explode('|', $attrs['fdOpsiLocalbootProduct'][$i], 2);
           $products[] = $tmp[0];
@@ -172,7 +175,7 @@ class opsiProfile extends simplePlugin
       $this->products[$this->fdOpsiServerDN]['netboots'] = $netboots;
 
       $ldap->cd($this->config->current['BASE']);
-      $ldap->search('(&(objectClass=opsiSoftwareList)(fdOpsiServerDN='.$this->fdOpsiServerDN.'))', array('cn'));
+      $ldap->search('(&(|(objectClass=opsiOnDemandList)(objectClass=opsiSoftwareList))(fdOpsiServerDN='.$this->fdOpsiServerDN.'))', array('cn'));
       $lists = array();
       while ($attrs = $ldap->fetch()) {
         $lists[$attrs['dn']] = $attrs['cn'][0];

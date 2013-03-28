@@ -22,7 +22,7 @@ class opsiManagement extends simpleManagement
 {
   // Tab definition
   protected $objectName   = "opsi";
-  protected $objectTypes  = array('opsiProfile', 'opsiSoftwareList');
+  protected $objectTypes  = array('opsiProfile', 'opsiSoftwareList', 'opsiOnDemandList');
 
   protected $departmentBrowser      = FALSE;
   protected $departmentRootVisible  = FALSE;
