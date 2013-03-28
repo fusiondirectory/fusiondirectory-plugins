@@ -298,8 +298,7 @@ class sambaAccount extends simplePlugin
           ),
           new BooleanAttribute (
             _('Cannot change password'), _('Not allowed to change password'),
-            'sambaPwdCanChange', FALSE, FALSE, '',
-            '4294967295', ''
+            'fd_pwdCantChange'
           ),
           new DateAttribute (
             _('Account expiration'), _('When does the account expire'),
@@ -371,6 +370,15 @@ class sambaAccount extends simplePlugin
         'erase' => array ('' => array ('sambaHomePath'))
       )
     );
+    $this->attributesAccess['sambaPwdLastSet']->setManagedAttributes(
+      array(
+        'disable' => array (TRUE => array ('fd_pwdCantChange'))
+      )
+    );
+    $this->attributesAccess['fd_pwdCantChange']->setInLdap(FALSE);
+    $value = (isset($this->attrs['sambaPwdLastSet']) && ($this->attrs['sambaPwdLastSet'][0] == '4294967295'));
+    $this->attributesAccess['fd_pwdCantChange']->setInitialValue($value);
+    $this->attributesAccess['fd_pwdCantChange']->setValue($value);
 
     // Get samba domain and its sid/rid base
     if ($this->sambaSID != "") {
@@ -492,11 +500,10 @@ class sambaAccount extends simplePlugin
     }
 
     /* Do not modify values if not needed */
-    if (!$this->attributesAccess['sambaPwdLastSet']->hasChanged()) {
+    if (!$this->attributesAccess['sambaPwdLastSet']->hasChanged() && !$this->attributesAccess['fd_pwdCantChange']->hasChanged()) {
       unset($this->attrs['sambaPwdLastSet']);
-    }
-    if (!$this->attributesAccess['sambaPwdCanChange']->hasChanged()) {
-      unset($this->attrs['sambaPwdCanChange']);
+    } elseif (!$this->sambaPwdLastSet) {
+      $this->attrs['sambaPwdLastSet'] = ($this->fd_pwdCantChange?array('4294967295'):'');
     }
 
     // Handle "sambaKickoffTime"
