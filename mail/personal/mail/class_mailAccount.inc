@@ -230,6 +230,12 @@ class mailAccount extends simplePlugin
       $this->cn = $this->attrs['cn'][0];
     }
 
+    if (isset($object->uid)) {
+      $this->uid = $object->uid;
+    } elseif (isset($this->attrs['uid'])) {
+      $this->uid = $this->attrs['uid'][0];
+    }
+
     /* Intialize the used mailMethod */
     $tmp = new mailMethod($config, $this);
 
