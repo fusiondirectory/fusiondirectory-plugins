@@ -97,21 +97,21 @@ class zarafaAccount extends simplePlugin
             array("")
           ),
           new IntAttribute (
-            _('Hard quota size'), _(''),
+            _('Hard quota size'), _('Hard quota size'),
             'zarafaQuotaHard', FALSE,
             0,                              // [FloatAttribute] Minimum value
             FALSE,                          // [FloatAttribute] No maximum value
             ''                              // [FloatAttribute] Default value
           ),
           new IntAttribute (
-            _('Soft quota size'), _(''),
+            _('Soft quota size'), _('Soft quota size'),
             'zarafaQuotaSoft', FALSE,                          // Not mandatory
             0,                              // [FloatAttribute] Minimum value
             FALSE,                          // [FloatAttribute] No maximum value
             ''                              // [FloatAttribute] Default value
           ),
           new IntAttribute (
-            _('Warn quota size'), _(''),
+            _('Warn quota size'), _('Warn quota size'),
             'zarafaQuotaWarn', FALSE,
             0,                              // [FloatAttribute] Minimum value
             FALSE,                          // [FloatAttribute] No maximum value
@@ -125,7 +125,7 @@ class zarafaAccount extends simplePlugin
             )
           ),
           new MailsAttribute (
-            _('Forward messages to non group members'), _(''),
+            _('Forward messages to non group members'), _('Forward messages to non group members'),
             'gosaMailForwardingAddress', FALSE,
             ''
           )
@@ -167,21 +167,21 @@ class zarafaAccount extends simplePlugin
             0
           ),
           new SelectAttribute (
-            _('Resource type'), _(''),
+            _('Resource type'), _('Type of resource'),
             'zarafaResourceType', FALSE,
             array('user','room','equipment'),
             "",
             array(_('User'),_('Room'),_('Equipment'))
           ),
           new IntAttribute (
-            _('Resource capacity'), _(''),
+            _('Resource capacity'), _('Resource capacity'),
             'zarafaResourceCapacity', FALSE,
             0,
             FALSE,
             ''
           ),
           new MailsAttribute (
-            _('Send as privileges'), _(''),
+            _('Send as privileges'), _('Send as privileges'),
             'zarafaSendAsPrivilege', FALSE,
             ''
           )
