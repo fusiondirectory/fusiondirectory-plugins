@@ -1,0 +1,727 @@
+#
+# lconf
+# NETWAYS GmbH <support@netways.de>
+#
+# Main OID: 1.3.6.1.4.1.26840
+# Sub  OID: .144
+#
+# OID Tree:
+#   .144
+#     |__.1 structural attributes
+#     |   
+#     |__.2 lconf attributes
+#     |   |
+#     |   |__.1 generally
+#     |   |  
+#     |   |__.2 contact
+#     |   |   
+#     |   |__.3 host
+#     |   |
+#     |   |__.4 service
+#     |   |
+#     |   |__.5 host escalation
+#     |   |
+#     |   |__.6 service escalation
+#     |
+#     |__.3 objectclass templates
+#     |   
+#     |__.4 structural objectclasses
+#     |   
+#     |__.5 lconf objectclasses
+#
+
+
+#
+# .1   | structural attributes
+#
+
+
+#
+# .2.1   | lconf attributes (generally)
+#
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.1.1 NAME 'lconfAlias'
+        DESC 'Nagios / Icinga Alias (alias test)'
+        EQUALITY caseIgnoreMatch
+        SUBSTR caseIgnoreSubstringsMatch
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{128} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.1.2 NAME 'lconfTimeperiodValue'
+        DESC 'Nagios / Icinga Timeperiod Value (monday  00:00-24:00)'
+        EQUALITY caseIgnoreMatch
+        SUBSTR caseIgnoreSubstringsMatch
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{128} )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.1.3 NAME 'lconfCommandline'
+	DESC 'Nagios / Icinga Comamnd Line (command_line $USER1$/check_users -w 50 -c 100)'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{256} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.1.4 NAME 'lconfMembers'
+	DESC 'Nagios / Icinga Members (members test1,test2,test3)'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{512} SINGLE-VALUE )
+	
+attributetype ( 1.3.6.1.4.1.26840.144.2.1.5 NAME 'lconfHostgroupMembers'
+	DESC 'Nagios / Icinga Hostgroup Memebers (hostgroup_members hg1,hg2,hg3)'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{512} SINGLE-VALUE )
+
+
+#
+# .2.2   | lconf attributes (contact)
+#
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.2.1 NAME 'lconfEmail'
+	DESC 'Nagios / Icinga E-Mail (email test.user@test.net)'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{128} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.2.2 NAME 'lconfPager'
+	DESC 'Nagios / Icinga Pager (pager +491701234567)'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{128} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.2.3 NAME 'lconfContactServiceNotificationPeriod'
+	DESC 'Nagios / Icinga Contact Service Notification Period (service_notification_period 24x7)'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{128} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.2.4 NAME 'lconfContactHostNotificationPeriod'
+	DESC 'Nagios / Icinga Contact Host Notification Period (host_notification_period 24x7)'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{128} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.2.5 NAME 'lconfContactServiceNotificationOptions'
+	DESC 'Nagios / Icinga Contact Service Notification Options (service_notification_options c,r)'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{16} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.2.6 NAME 'lconfContactHostNotificationOptions'
+	DESC 'Nagios / Icinga Contact Host Notification Options (host_notification_options d,u,r)'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{16} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.2.7 NAME 'lconfContactServiceNotificationCommands'
+	DESC 'Nagios / Icinga Contact Service Notification Commands (service_notification_commands service-notify-by-mail)'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{256} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.2.8 NAME 'lconfContactHostNotificationCommands'
+	DESC 'Nagios / Icinga Contact Host Notification Commands (host_notification_commands host-notify-by-mail)'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{256} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.2.9 NAME 'lconfContactServiceNotificationsEnabled'
+	DESC 'Nagios / Icinga Contact Service Notification Enabled (service_notifications_enabled 1)'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{16} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.2.10 NAME 'lconfContactHostNotificationsEnabled'
+	DESC 'Nagios / Icinga Contact Host Notification Enabled (host_notifications_enabled 1)'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{16} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.2.11 NAME 'lconfContactCanSubmitCommands'
+	DESC 'Nagios / Icinga Contact Can Submit Commands (can_submit_commands [0/1])'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{16} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.2.12 NAME 'lconfContactgroups'
+	DESC 'Nagios / Icinga contactgroups'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{256} SINGLE-VALUE )
+
+#
+# .2.3   | lconf attributes (host)
+#
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.3.1 NAME 'lconfAddress'
+	DESC 'Nagios / Icinga Address (address 192.168.1.1)'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{128} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.3.2 NAME 'lconfParent'
+	DESC 'Nagios / Icinga Parent (parent switch_nr1)'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{128} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.3.500 NAME 'lconfHostCustomvar'
+	DESC 'Nagios / Icinga Custom Variable (_MyCustomVar Ingolstadt)'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{512} )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.3.501 NAME 'lconfHostContacts'
+	DESC 'Nagios / Icinga Contact (contacts admin)'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{256} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.3.502 NAME 'lconfHostContactgroups'
+	DESC 'Nagios / Icinga Contact Group (contact_groups admins)'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{256} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.3.503 NAME 'lconfHostNotificationOptions'
+	DESC 'Nagios / Icinga Notification Options (notification_options w,u,c,r)'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{16} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.3.504 NAME 'lconfHostNotificationInterval'
+	DESC 'Nagios / Icinga Notification Interval (notification_interval 60)'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{128} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.3.505 NAME 'lconfHostNotificationPeriod'
+	DESC 'Nagios / Icinga Notification Period (notification_period 24x7)'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{128} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.3.506 NAME 'lconfHostCheckPeriod'
+	DESC 'Nagios / Icinga Check Period (check_period 24x7)'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{128} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.3.507 NAME 'lconfHostCheckInterval'
+	DESC 'Nagios / Icinga Check Interval (check_interval 5)'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{128} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.3.508 NAME 'lconfHostCheckRetryInterval'
+	DESC 'Nagios / Icinga Retry Interval (retry_interval 1)'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{16} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.3.509 NAME 'lconfHostCheckMaxCheckAttempts'
+	DESC 'Nagios / Icinga Max Check Attempts (max_check_attempts 3)'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{16} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.3.510 NAME 'lconfHostProcessPerfData'
+	DESC 'Nagios / Icinga Process Perf Data (process_perf_data 1)'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{16} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.3.511 NAME 'lconfHostActiveChecksEnabled'
+	DESC 'Nagios / Icinga Active Checks Enabled (active_checks_enabled 1)'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{16} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.3.512 NAME 'lconfHostPassiveChecksEnabled'
+	DESC 'Nagios / Icinga Passive Checks Enabled (passive_checks_enabled 1)'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{16} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.3.513 NAME 'lconfHostFlapDetectionEnabled'
+	DESC 'Nagios / Icinga Flap Detection Enabled (flap_detection_enabled 1)'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{16} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.3.514 NAME 'lconfHostFlapDetectionOptions'
+	DESC 'Nagios / Icinga Flap Detection Options (flap_detection_options o,d,u)'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{16} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.3.515 NAME 'lconfHostEventhandler'
+	DESC 'Nagios / Icinga Eventhandler (event_handler restart-httpd)'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{256} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.3.516 NAME 'lconfHostNotesURL'
+	DESC 'Nagios / Icinga Notes URL (notes_url http://www.google.de)'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{512} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.3.517 NAME 'lconfHostActionURL'
+	DESC 'Nagios / Icinga Action URL (action_url http://www.google.de)'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{512} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.3.518 NAME 'lconfHostDisable'
+	DESC 'Nagios / Icinga Disable (Disable all below this entry)'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{16} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.3.519 NAME 'lconfHostgroups'
+	DESC 'Nagios / Icinga Hostgroup (hostgroups example-hostgroup)'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{512} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.3.520 NAME 'lconfHostDependency'
+	DESC 'Nagios / Icinga Host Dependency (example-host)'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{256} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.3.521 NAME 'lconfHostDependencyExecutionFailureCriteria'
+	DESC 'Execution Failure Criteria (execution_failure_criteria [o,d,u,p,n])'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{16} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.3.522 NAME 'lconfHostDependencyNotificationFailureCriteria'
+	DESC 'Notification Failure Criteria (notification_failure_cirteria [o,d,u,p,n])'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{16} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.3.523 NAME 'lconfHostNotificationsEnabled'
+	DESC 'Nagios / Icinga Notifications Enabled (notifications_enabled 0/1)'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{128} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.3.524 NAME 'lconfHostFreshnessThreshold'
+        DESC 'Nagios / Icinga Freshness Threshold (freshness_threshold #)'
+        EQUALITY caseIgnoreMatch
+        SUBSTR caseIgnoreSubstringsMatch
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{16} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.3.525 NAME 'lconfHostCheckFreshness'
+	DESC 'Host Freshness Checking (check_freshness [0/1]'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{16} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.3.526 NAME 'lconfHostCheckcommand'
+        DESC 'Nagios / Icinga Check Command (check_command check_disk $ARG1$ $ARG2$)'
+        EQUALITY caseIgnoreMatch
+        SUBSTR caseIgnoreSubstringsMatch
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{256} SINGLE-VALUE )
+
+
+#
+# .2.4   | lconf attributes (service)
+#
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.4.1 NAME 'lconfCheckcommand'
+	DESC 'Nagios / Icinga Check Command (check_command check_disk $ARG1$ $ARG2$)'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{256} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.4.500 NAME 'lconfServiceCustomvar'
+	DESC 'Nagios / Icinga Custom Variable (_MyCustomVar Ingolstadt)'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{512} )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.4.501 NAME 'lconfServiceContacts'
+        DESC 'Nagios / Icinga Contact (contacts admin)'
+        EQUALITY caseIgnoreMatch
+        SUBSTR caseIgnoreSubstringsMatch
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{256} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.4.502 NAME 'lconfServiceContactgroups'
+        DESC 'Nagios / Icinga Contact Group (contact_groups admins)'
+        EQUALITY caseIgnoreMatch
+        SUBSTR caseIgnoreSubstringsMatch
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{256} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.4.503 NAME 'lconfServiceNotificationOptions'
+        DESC 'Nagios / Icinga Notification Options (notification_options w,u,c,r)'
+        EQUALITY caseIgnoreMatch
+        SUBSTR caseIgnoreSubstringsMatch
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{16} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.4.504 NAME 'lconfServiceNotificationInterval'
+        DESC 'Nagios / Icinga Notification Interval (notification_interval 60)'
+        EQUALITY caseIgnoreMatch
+        SUBSTR caseIgnoreSubstringsMatch
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{128} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.4.505 NAME 'lconfServiceNotificationPeriod'
+        DESC 'Nagios / Icinga Notification Period (notification_period 24x7)'
+        EQUALITY caseIgnoreMatch
+        SUBSTR caseIgnoreSubstringsMatch
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{128} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.4.506 NAME 'lconfServiceCheckPeriod'
+        DESC 'Nagios / Icinga Check Period (check_period 24x7)'
+        EQUALITY caseIgnoreMatch
+        SUBSTR caseIgnoreSubstringsMatch
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{128} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.4.507 NAME 'lconfServiceCheckInterval'
+        DESC 'Nagios / Icinga Check Interval (check_interval 5)'
+        EQUALITY caseIgnoreMatch
+        SUBSTR caseIgnoreSubstringsMatch
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{128} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.4.508 NAME 'lconfServiceCheckRetryInterval'
+        DESC 'Nagios / Icinga Retry Interval (retry_interval 1)'
+        EQUALITY caseIgnoreMatch
+        SUBSTR caseIgnoreSubstringsMatch
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{16} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.4.509 NAME 'lconfServiceCheckMaxCheckAttempts'
+        DESC 'Nagios / Icinga Max Check Attempts (max_check_attempts 3)'
+        EQUALITY caseIgnoreMatch
+        SUBSTR caseIgnoreSubstringsMatch
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{16} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.4.510 NAME 'lconfServiceProcessPerfData'
+        DESC 'Nagios / Icinga Process Perf Data (process_perf_data 1)'
+        EQUALITY caseIgnoreMatch
+        SUBSTR caseIgnoreSubstringsMatch
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{16} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.4.511 NAME 'lconfServiceActiveChecksEnabled'
+        DESC 'Nagios / Icinga Active Checks Enabled (active_checks_enabled 1)'
+        EQUALITY caseIgnoreMatch
+        SUBSTR caseIgnoreSubstringsMatch
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{16} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.4.512 NAME 'lconfServicePassiveChecksEnabled'
+        DESC 'Nagios / Icinga Passive Checks Enabled (passive_checks_enabled 1)'
+        EQUALITY caseIgnoreMatch
+        SUBSTR caseIgnoreSubstringsMatch
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{16} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.4.513 NAME 'lconfServiceFlapDetectionEnabled'
+        DESC 'Nagios / Icinga Flap Detection Enabled (flap_detection_enabled 1)'
+        EQUALITY caseIgnoreMatch
+        SUBSTR caseIgnoreSubstringsMatch
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{16} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.4.514 NAME 'lconfServiceFlapDetectionOptions'
+        DESC 'Nagios / Icinga Flap Detection Options (flap_detection_options o,d,u)'
+        EQUALITY caseIgnoreMatch
+        SUBSTR caseIgnoreSubstringsMatch
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{16} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.4.515 NAME 'lconfServiceEventhandler'
+        DESC 'Nagios / Icinga Eventhandler (event_handler restart-httpd)'
+        EQUALITY caseIgnoreMatch
+        SUBSTR caseIgnoreSubstringsMatch
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{256} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.4.516 NAME 'lconfServiceNotesURL'
+        DESC 'Nagios / Icinga Notes URL (notes_url http://www.google.de)'
+        EQUALITY caseIgnoreMatch
+        SUBSTR caseIgnoreSubstringsMatch
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{512} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.4.517 NAME 'lconfServiceActionURL'
+        DESC 'Nagios / Icinga Action URL (action_url http://www.google.de)'
+        EQUALITY caseIgnoreMatch
+        SUBSTR caseIgnoreSubstringsMatch
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{512} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.4.518 NAME 'lconfServiceDisable'
+        DESC 'Nagios / Icinga Disable (Disable all below this entry)'
+        EQUALITY caseIgnoreMatch
+        SUBSTR caseIgnoreSubstringsMatch
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{16} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.4.519 NAME 'lconfServiceDependency'
+	DESC 'Nagios / Icinga Service Dependency (example-host -> example-service)'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{256} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.4.520 NAME 'lconfServiceDependencyExecutionFailureCriteria'
+	DESC 'Execution Failure Criteria (execution_failure_criteria [o,d,u,p,n])'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{16} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.4.521 NAME 'lconfServiceDependencyNotificationFailureCriteria'
+	DESC 'Notification Failure Criteria (notification_failure_cirteria [o,d,u,p,n])'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{16} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.4.522 NAME 'lconfServiceNotificationsEnabled'
+        DESC 'Nagios / Icinga Notifications Enabled (notifications_enabled 0/1)'
+        EQUALITY caseIgnoreMatch
+        SUBSTR caseIgnoreSubstringsMatch
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{128} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.4.523 NAME 'lconfServiceFreshnessThreshold'
+        DESC 'Nagios / Icinga Freshness Threshold (freshness_threshold #)'
+        EQUALITY caseIgnoreMatch
+        SUBSTR caseIgnoreSubstringsMatch
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{16} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.4.524 NAME 'lconfServiceCheckFreshness'
+        DESC 'Service Freshness Checking (check_freshness [0/1]'
+        EQUALITY caseIgnoreMatch
+        SUBSTR caseIgnoreSubstringsMatch
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{16} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.4.525 NAME 'lconfServicegroups'
+	DESC 'Nagios / Icinga Servicegroup (servicegroups example-servicegroup)'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{512} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.4.526 NAME 'lconfServiceCheckcommand'
+        DESC 'Nagios / Icinga Check Command (check_command check_disk $ARG1$ $ARG2$)'
+        EQUALITY caseIgnoreMatch
+        SUBSTR caseIgnoreSubstringsMatch
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{256} SINGLE-VALUE )
+ 
+        
+#
+# .2.5   | lconf attributes (host escalations)
+#
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.5.500 NAME 'lconfHostEscalationFirstNotification'
+	DESC 'Nagios / Icinga Host Escalation attribute (first_notification #)'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{16} SINGLE-VALUE )
+	
+attributetype ( 1.3.6.1.4.1.26840.144.2.5.501 NAME 'lconfHostEscalationLastNotification'
+	DESC 'Nagios / Icinga Host Escalation attribute (last_notification #)'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{16} SINGLE-VALUE )
+	
+attributetype ( 1.3.6.1.4.1.26840.144.2.5.502 NAME 'lconfHostEscalationNotificationInterval'
+	DESC 'Nagios / Icinga Host Escalation attribute (notification_interval #)'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{16} SINGLE-VALUE )
+	
+attributetype ( 1.3.6.1.4.1.26840.144.2.5.503 NAME 'lconfHostEscalationContacts'
+	DESC 'Nagios / Icinga Host Escalation attribute (contacts <contact/s>)'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{256} SINGLE-VALUE )
+	
+attributetype ( 1.3.6.1.4.1.26840.144.2.5.504 NAME 'lconfHostEscalationContactgroups'
+	DESC 'Nagios / Icinga Host Escalation attribute (contact_groups <contact_group/s>)'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{256} SINGLE-VALUE )
+	
+attributetype ( 1.3.6.1.4.1.26840.144.2.5.505 NAME 'lconfHostEscalationPeriod'
+	DESC 'Nagios / Icinga Host Escalation attribute (escalation_period <timeperiod>)'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{128} SINGLE-VALUE )
+	
+attributetype ( 1.3.6.1.4.1.26840.144.2.5.506 NAME 'lconfHostEscalationOptions'
+	DESC 'Nagios / Icinga Host Escalation attribute (escalation_options [d,u,r])'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{16} SINGLE-VALUE )
+	
+	
+#
+# .2.6   | lconf attributes (host escalations)
+#
+
+attributetype ( 1.3.6.1.4.1.26840.144.2.6.500 NAME 'lconfServiceEscalationFirstNotification'
+	DESC 'Nagios / Icinga Service Escalation attribute (first_notification #)'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{16} SINGLE-VALUE )
+	
+attributetype ( 1.3.6.1.4.1.26840.144.2.6.501 NAME 'lconfServiceEscalationLastNotification'
+	DESC 'Nagios / Icinga Service Escalation attribute (last_notification #)'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{16} SINGLE-VALUE )
+	
+attributetype ( 1.3.6.1.4.1.26840.144.2.6.502 NAME 'lconfServiceEscalationNotificationInterval'
+	DESC 'Nagios / Icinga Service Escalation attribute (notification_interval #)'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{16} SINGLE-VALUE )
+	
+attributetype ( 1.3.6.1.4.1.26840.144.2.6.503 NAME 'lconfServiceEscalationContacts'
+	DESC 'Nagios / Icinga Service Escalation attribute (contacts <contact/s>)'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{256} SINGLE-VALUE )
+	
+attributetype ( 1.3.6.1.4.1.26840.144.2.6.504 NAME 'lconfServiceEscalationContactgroups'
+	DESC 'Nagios / Icinga Service Escalation attribute (contact_groups <contact_group/s>)'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{256} SINGLE-VALUE )
+	
+attributetype ( 1.3.6.1.4.1.26840.144.2.6.505 NAME 'lconfServiceEscalationPeriod'
+	DESC 'Nagios / Icinga Service Escalation attribute (escalation_period <timeperiod>)'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{128} SINGLE-VALUE )
+	
+attributetype ( 1.3.6.1.4.1.26840.144.2.6.506 NAME 'lconfServiceEscalationOptions'
+	DESC 'Nagios / Icinga Service Escalation attribute (escalation_options [d,u,r])'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{16} SINGLE-VALUE )
+
+
+#
+# .3   | objectclass templates
+#
+
+objectclass ( 1.3.6.1.4.1.26840.144.3.1 NAME 'lconfTemplateHost'
+	DESC 'Template for a Nagios / Icinga host'
+	SUP top
+	MAY ( lconfHostCustomvar $ lconfHostContacts $ lconfHostContactgroups $
+		lconfHostNotificationOptions $ lconfHostNotificationInterval $ lconfHostNotificationPeriod $ lconfHostNotificationsEnabled $
+		lconfHostCheckPeriod $ lconfHostCheckInterval $ lconfHostCheckRetryInterval $ lconfHostCheckMaxCheckAttempts $
+		lconfHostProcessPerfData $ lconfHostActiveChecksEnabled $ lconfHostPassiveChecksEnabled $
+		lconfHostFlapDetectionEnabled $ lconfHostFlapDetectionOptions $ lconfHostEventhandler $
+		lconfHostNotesURL $ lconfHostActionURL $ lconfHostDisable $
+		lconfParent $ lconfHostCheckcommand $ lconfHostgroups $
+		lconfHostDependency $ lconfHostDependencyExecutionFailureCriteria $ lconfHostDependencyNotificationFailureCriteria $
+		lconfHostCheckFreshness $ lconfHostFreshnessThreshold ) )
+
+objectclass ( 1.3.6.1.4.1.26840.144.3.2 NAME 'lconfTemplateService'
+	DESC 'Tempalte for a Nagios / Icinga service'
+	SUP top
+	MAY ( lconfServiceCustomvar $ lconfServiceContacts $ lconfServiceContactgroups $
+		lconfServiceNotificationOptions $ lconfServiceNotificationInterval $ lconfServiceNotificationPeriod $ lconfServiceNotificationsEnabled $
+		lconfServiceCheckPeriod $ lconfServiceCheckInterval $ lconfServiceCheckRetryInterval $ lconfServiceCheckMaxCheckAttempts $
+		lconfServiceProcessPerfData $ lconfServiceActiveChecksEnabled $ lconfServicePassiveChecksEnabled $
+		lconfServiceFlapDetectionEnabled $ lconfServiceFlapDetectionOptions $ lconfServiceEventhandler $
+		lconfServiceNotesURL $ lconfServiceActionURL $ lconfServiceDisable $
+		lconfServiceCheckcommand $ lconfServicegroups $
+		lconfServiceDependency $ lconfServiceDependencyExecutionFailureCriteria $ lconfServiceDependencyNotificationFailureCriteria $
+		lconfServiceCheckFreshness $ lconfServiceFreshnessThreshold ) )
+
+
+#
+# .4   | structural objectclasses
+#
+
+objectclass ( 1.3.6.1.4.1.26840.144.4.1 NAME 'lconfStructuralObject'
+	DESC 'Structural Obeject'
+	SUP top
+	MUST ( ou )
+	MAY ( description $
+		lconfHostCustomvar $ lconfHostContacts $ lconfHostContactgroups $
+		lconfHostNotificationOptions $ lconfHostNotificationInterval $ lconfHostNotificationPeriod $ lconfHostNotificationsEnabled $
+		lconfHostCheckPeriod $ lconfHostCheckInterval $ lconfHostCheckRetryInterval $ lconfHostCheckMaxCheckAttempts $
+		lconfHostProcessPerfData $ lconfHostActiveChecksEnabled $ lconfHostPassiveChecksEnabled $
+		lconfHostFlapDetectionEnabled $ lconfHostFlapDetectionOptions $ lconfHostEventhandler $
+		lconfHostNotesURL $ lconfHostActionURL $ lconfHostDisable $
+		lconfParent $ lconfHostCheckcommand $ lconfHostgroups $
+		lconfHostDependency $ lconfHostDependencyExecutionFailureCriteria $ lconfHostDependencyNotificationFailureCriteria $
+		lconfHostCheckFreshness $ lconfHostFreshnessThreshold $
+		lconfServiceCustomvar $ lconfServiceContacts $ lconfServiceContactgroups $
+		lconfServiceNotificationOptions $ lconfServiceNotificationInterval $ lconfServiceNotificationPeriod $ lconfServiceNotificationsEnabled $
+		lconfServiceCheckPeriod $ lconfServiceCheckInterval $ lconfServiceCheckRetryInterval $ lconfServiceCheckMaxCheckAttempts $
+		lconfServiceProcessPerfData $ lconfServiceActiveChecksEnabled $ lconfServicePassiveChecksEnabled $
+		lconfServiceFlapDetectionEnabled $ lconfServiceFlapDetectionOptions $ lconfServiceEventhandler $
+		lconfServiceNotesURL $ lconfServiceActionURL $ lconfServiceDisable $
+		lconfServiceCheckcommand $ lconfServicegroups $
+		lconfServiceDependency $ lconfServiceDependencyExecutionFailureCriteria $ lconfServiceDependencyNotificationFailureCriteria $
+		lconfServiceCheckFreshness $ lconfServiceFreshnessThreshold $
+		lconfCheckcommand ) )
+
+
+#
+# .5   | structural objectclasses
+#
+
+objectclass ( 1.3.6.1.4.1.26840.144.5.1 NAME 'lconfTimeperiod'
+        DESC 'Nagios / Icinga Timeperiod'
+        SUP top
+        MUST ( cn $ lconfAlias )
+        MAY ( description $ lconfTimeperiodValue ) )
+
+objectclass ( 1.3.6.1.4.1.26840.144.5.2 NAME 'lconfCommand'
+	DESC 'Nagios / Icinga Command'
+	SUP top
+	MUST ( cn $ lconfCommandline )
+	MAY ( description ) )
+
+objectclass ( 1.3.6.1.4.1.26840.144.5.3 NAME 'lconfContact'
+	DESC 'Nagios / IcingaContact'
+	SUP top
+	MUST ( cn $ lconfAlias )
+	MAY ( description $ lconfEmail $ lconfPager $
+		lconfContactServiceNotificationPeriod   $ lconfContactHostNotificationPeriod $
+		lconfContactServiceNotificationOptions  $ lconfContactHostNotificationOptions $
+		lconfContactServiceNotificationCommands $ lconfContactHostNotificationCommands $
+		lconfContactServiceNotificationsEnabled $ lconfContactHostNotificationsEnabled $
+		lconfContactCanSubmitCommands $
+		lconfContactgroups ) )
+
+objectclass ( 1.3.6.1.4.1.26840.144.5.4 NAME 'lconfContactgroup'
+	DESC 'Nagios / Icinga Host Group'
+	SUP top
+	MUST ( cn $ lconfAlias )
+	MAY ( description $ lconfMembers ) )
+
+objectclass ( 1.3.6.1.4.1.26840.144.5.5 NAME 'lconfHost'
+	DESC 'Nagios / Icinga Host'
+	SUP lconfTemplateHost
+	MUST ( cn $ lconfAddress )
+	MAY ( description $ lconfAlias $ lconfHostCustomvar ) )
+
+objectclass ( 1.3.6.1.4.1.26840.144.5.6 NAME 'lconfHostgroup'
+	DESC 'Nagios / Icinga Hostgroup'
+	SUP top
+	MUST ( cn $ lconfAlias )
+	MAY ( description $ lconfMembers $ lconfHostgroupMembers ) )
+
+objectclass ( 1.3.6.1.4.1.26840.144.5.7 NAME 'lconfService'
+	DESC 'Nagios / Icinga Service'
+	SUP lconfTemplateService
+	MUST ( cn )
+	MAY ( description $ lconfServiceCustomvar $ lconfCheckcommand $ lconfServiceCheckcommand ) )
+
+objectclass ( 1.3.6.1.4.1.26840.144.5.8 NAME 'lconfServicegroup'
+	DESC 'Nagios / Icinga Servicegroup'
+	SUP top
+	MUST (cn $ lconfAlias )
+	MAY ( description $ lconfMembers ) )
+
+objectclass ( 1.3.6.1.4.1.26840.144.5.9 NAME 'lconfHostEscalation'
+	DESC 'Nagios / Icinga Host Escalation'
+	SUP top
+	MUST ( cn $ lconfHostEscalationFirstNotification $ lconfHostEscalationLastNotification $ lconfHostEscalationNotificationInterval )
+	MAY ( lconfHostEscalationContacts $ lconfHostEscalationContactgroups $ lconfHostEscalationPeriod $ lconfHostEscalationOptions ) )
+	
+objectclass ( 1.3.6.1.4.1.26840.144.5.10 NAME 'lconfServiceEscalation'
+	DESC 'Nagios / Icinga Service Escalation'
+	SUP top
+	MUST ( cn $ lconfServiceEscalationFirstNotification $ lconfServiceEscalationLastNotification $ lconfServiceEscalationNotificationInterval )
+	MAY ( lconfServiceEscalationContacts $ lconfServiceEscalationContactgroups $ lconfServiceEscalationPeriod $ lconfServiceEscalationOptions ) )
+	
+	
