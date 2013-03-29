@@ -136,16 +136,16 @@ class proxyAccount extends simplePlugin
             array ('h','d','w','m'), "", array (_("hour"),_("day"),_("week"),_("month"))
           ),
           new BooleanAttribute (
-            _(''),
-            _(''),
+            _('Start Working Hours'),
+            _('Starting hours for internet access'),
             'enableWorkingTime',
             FALSE,
             FALSE,  // default value
             'gosaProxyWorkingStart' // acl
           ),
           new BooleanAttribute (
-            _(''),
-            _(''),
+            _('Proxy Quota'),
+            _('Max Data quota for the proxy'),
             'enableQuota',
             FALSE,
             FALSE,  // default value
