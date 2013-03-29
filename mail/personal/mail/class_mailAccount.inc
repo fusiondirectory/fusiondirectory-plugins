@@ -342,6 +342,51 @@ class mailAccount extends simplePlugin
       return parent::__get($name);
     }
   }
+
+  public function save()
+  {
+    parent::save();
+
+    /* Only do IMAP actions if we are not a template */
+    if (!$this->is_template){
+      $this->mailMethod->connect();
+      if(!$this->mailMethod->is_connected()){
+        msg_dialog::display(_("Mail error"), sprintf(_("Mail method cannot connect: %s"),
+              $this->mailMethod->get_error()), ERROR_DIALOG);
+      }else{
+        if(!$this->mailMethod->updateMailbox()){
+          msg_dialog::display(_("Mail error"), sprintf(_("Cannot update mailbox: %s"),
+                $this->mailMethod->get_error()), ERROR_DIALOG);
+        }
+        if(!$this->mailMethod->setQuota($this->gosaMailQuota)){
+          msg_dialog::display(_("Mail error"), sprintf(_("Cannot write quota settings: %s"),
+                $this->mailMethod->get_error()), ERROR_DIALOG);
+        }
+
+        if (!is_integer(strpos($this->gosaMailDeliveryMode, "C"))){
+
+          /* Do not write sieve settings if this account is new and
+             doesn't seem to exist.
+           */
+          if(!$this->initially_was_account && !$this->mailMethod->account_exists()){
+            @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,
+                "Skipping sieve settings, the account doesn't seem to be created already.</b>","");
+          }else{
+            if(!$this->mailMethod->saveSieveSettings()){
+              msg_dialog::display(_("Mail error saving sieve settings"), $this->mailMethod->get_error(), ERROR_DIALOG);
+            }
+          }
+        }else{
+          if ($this->sieve_management) {
+            @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,
+                "User uses an own sieve script, skipping sieve update.".$str."</b>","");
+            $this->sieve_management->save();
+          }
+        }
+      }
+    }
+    $this->mailMethod->disconnect();
+  }
 }
 
 ?>
