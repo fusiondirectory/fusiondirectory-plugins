@@ -28,6 +28,13 @@ attributetype ( 1.3.6.1.4.1.38414.14.1.5 NAME 'fdCyrusSieveServer'
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SINGLE-VALUE)
 
+# cyrus imapd access control list acls work with users and groups
+attributetype ( 1.3.6.1.4.1.38414.14.1.6 NAME 'fdCyrusAcl'
+  DESC 'FusionDirectory - Cyrus acl for folders'
+  EQUALITY caseIgnoreIA5Match
+  SUBSTR caseIgnoreIA5SubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26{256} )
+
 # Objectclasses
 objectclass (1.3.6.1.4.1.38414.14.2.1 NAME 'fdCyrusServer' SUP top AUXILIARY
   DESC 'FusionDirectory - Cyrus server description'
