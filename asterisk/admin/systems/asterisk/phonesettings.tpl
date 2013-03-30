@@ -1,4 +1,4 @@
-<h2><img class="center" alt="" align="middle" src="plugins/asterisk/images/select_phone.png"> {t}Advanced phone settings{/t}</h2>
+<h2><img class="center" alt="" align="middle" src="plugins/asterisk/images/iconMini.png"> {t}Advanced phone settings{/t}</h2>
 
 <table summary="" style="width:100%" border=0>
   <tr>

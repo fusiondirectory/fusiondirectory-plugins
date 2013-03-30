@@ -5,7 +5,7 @@
 <table summary="{t}Queue Settings{/t}" style="width: 100%; vertical-align: top; text-align: left;" border="0" cellpadding="4">
 <tr>
 <td valign='top'>
-    <h2><img class="center" alt="" src="plugins/asterisk/images/select_phone.png" align="middle">&nbsp;{t}Phone numbers{/t}</h2>
+    <h2><img class="center" alt="" src="plugins/asterisk/images/iconMini.png" align="middle">&nbsp;{t}Phone numbers{/t}</h2>
     <table summary="">
     <tr>
     <td colspan=2>

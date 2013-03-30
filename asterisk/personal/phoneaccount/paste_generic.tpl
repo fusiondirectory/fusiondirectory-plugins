@@ -3,7 +3,7 @@
  <tr>
   <td style="vertical-align:top; border-right:1px solid #A0A0A0; width:50%">
    <h2>
-    <img class="center" alt="" align="middle" src="plugins/asterisk/images/banana.png" />&nbsp;{t}Phone numbers{/t}
+    <img class="center" alt="" align="middle" src="plugins/asterisk/images/iconMini.png" />&nbsp;{t}Phone numbers{/t}
    </h2>
   </td>
  </tr>

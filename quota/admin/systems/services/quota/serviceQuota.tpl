@@ -4,12 +4,12 @@
   <tbody>
     <tr>
       <td colspan="6" rowspan="1" style="vertical-align: top;">
-        <h2><img class="center" alt="" src="plugins/quota/images/storage.png" align="middle"> {t}Quota service Properties{/t}</h2>
+        <h2><img class="center" alt="" src="plugins/quota/images/iconMini.png" align="middle"> {t}Quota service Properties{/t}</h2>
       </td>
     </tr>
     <tr>
       <td colspan="6" style="vertical-align: top;">
-        <h3><img class="center" alt="" src="plugins/quota/images/storage.png" align="middle"> {t}quota device{/t}</h3>
+        <h3><img class="center" alt="" src="plugins/quota/images/iconMini.png" align="middle"> {t}quota device{/t}</h3>
       </td>
     </tr>
     <tr>

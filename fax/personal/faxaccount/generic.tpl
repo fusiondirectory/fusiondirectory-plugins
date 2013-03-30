@@ -14,7 +14,7 @@
 {else}
 {render acl=$facsimileTelephoneNumberACL}
            <input name="facsimileTelephoneNumber" id="facsimileTelephoneNumber" size=20 maxlength=65
-    value="{$facsimileTelephoneNumber}" title="{t}Fax number for GOfax to trigger on{/t}">
+    value="{$facsimileTelephoneNumber}" title="{t}Fax number for fax to trigger on{/t}">
 {/render}
 {/if}
 
@@ -26,7 +26,7 @@
 
 {render acl=$goFaxLanguageACL checkbox=$multiple_support checked=$use_goFaxLanguage}
            <select size="1" name="goFaxLanguage" id="goFaxLanguage"
-    title="{t}Specify the GOfax communication language for fax to mail gateway{/t}">
+    title="{t}Specify the fax communication language for fax to mail gateway{/t}">
       {html_options options=$languages selected=$goFaxLanguage}
            </select>
 {/render}
@@ -96,7 +96,7 @@
 
   {if !$multiple_support}
 
-    <h2><img class="center" alt="" align="middle" src="plugins/fax/images/fax_small.png">&nbsp;{t}Alternate fax numbers{/t}</h2>
+    <h2><img class="center" alt="" align="middle" src="plugins/fax/images/iconMini.png">&nbsp;{t}Alternate fax numbers{/t}</h2>
 {render acl=$facsimileAlternateTelephoneNumberACL}
     <select style="width:100%" name="alternate_list[]" size="10" multiple>
       {html_options values=$facsimileAlternateTelephoneNumber output=$facsimileAlternateTelephoneNumber}

@@ -2,7 +2,7 @@
   <tbody>
     <tr>
       <td colspan="6" rowspan="1" style="vertical-align: top;">
-      <h1><img class="center" alt="" src="plugins/quota/images/storage.png" align="middle"> {t}Quota Informations{/t}<h1>
+      <h1><img class="center" alt="" src="plugins/quota/images/iconMini.png" align="middle"> {t}Quota Informations{/t}<h1>
       </td>
     </tr>
     <tr>
