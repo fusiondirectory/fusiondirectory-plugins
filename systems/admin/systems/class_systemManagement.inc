@@ -344,16 +344,16 @@ class systemManagement extends management
       /* DHCP entry */
       $ldap->search ("(&(objectClass=dhcpHost)(cn=".$entry['cn'][0]."))", array("uid","cn","dn"));
 
-      if ($ldap->count()) {
-        $attr   = $ldap->fetch();
-        $dns[]  = $attr['dn'];
+      if ($attr = $ldap->fetch();) {
+        $dns[] = $attr['dn'];
       }
       /* DNS entry */
-      $dnsEntry = DNS::getDNSHostEntries($this->config, $entry['cn'][0]);
-      if ($dnsEntry['exists']) {
-        $dns[]  = "relativeDomainName=".$entry['cn'][0].",".DNS::getDNSZoneDN($this->config, $dnsEntry['zoneName']);
+      if (class_available('DNS')) {
+        $dnsEntry = DNS::getDNSHostEntries($this->config, $entry['cn'][0]);
+        if ($dnsEntry['exists']) {
+          $dns[]  = "relativeDomainName=".$entry['cn'][0].",".DNS::getDNSZoneDN($this->config, $dnsEntry['zoneName']);
+        }
       }
-      print_r($dns);
       $this->snapHandler->create_snapshot($dns, $this->dialogObject->CurrentDescription);
       @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $this->dn, "Snaptshot created!");
       $this->closeDialogs();
