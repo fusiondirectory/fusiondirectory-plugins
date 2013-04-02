@@ -20,7 +20,7 @@
 */
 
 class rSyslogServer extends simpleService {
-  var $objectclasses  = array('goSyslogServer');
+  var $objectclasses  = array('goLogDBServer');
 
   var $displayHeader  = TRUE;
 
