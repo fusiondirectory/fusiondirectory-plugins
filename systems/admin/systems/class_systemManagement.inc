@@ -325,6 +325,41 @@ class systemManagement extends management
       }
   }
 
+  function saveSnapshot($action="",$target=array(),$all=array())
+  {
+    if (!is_object($this->dialogObject)) return;
+    $this->dialogObject->save_object();
+    $msgs = $this->dialogObject->check();
+    if (count($msgs)) {
+      foreach ($msgs as $msg) {
+        msg_dialog::display(_("Error"), $msg, ERROR_DIALOG);
+      }
+    } else {
+      $this->dn =  $this->dialogObject->dn;
+      $dns      = array($this->dn);
+      /* Check if other dns needs to be included in this snapshot */
+      $entry = $this->getHeadpage()->getEntry($this->dn);
+      $ldap = $this->config->get_ldap_link();
+      $ldap->cd($this->config->current['BASE']);
+      /* DHCP entry */
+      $ldap->search ("(&(objectClass=dhcpHost)(cn=".$entry['cn'][0]."))", array("uid","cn","dn"));
+
+      if ($ldap->count()) {
+        $attr   = $ldap->fetch();
+        $dns[]  = $attr['dn'];
+      }
+      /* DNS entry */
+      $dnsEntry = DNS::getDNSHostEntries($this->config, $entry['cn'][0]);
+      if ($dnsEntry['exists']) {
+        $dns[]  = "relativeDomainName=".$entry['cn'][0].",".DNS::getDNSZoneDN($this->config, $dnsEntry['zoneName']);
+      }
+      print_r($dns);
+      $this->snapHandler->create_snapshot($dns, $this->dialogObject->CurrentDescription);
+      @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $this->dn, "Snaptshot created!");
+      $this->closeDialogs();
+    }
+  }
+
 
   /*! \brief    Queue selected objects to be removed.
    *            Checks ACLs, Locks and ask for confirmation.
