@@ -53,9 +53,9 @@ class faiStartup extends simplePlugin
   var $displayHeader = TRUE;
 
   /* attribute list for save action */
-  var $objectclasses        = array("FAIobject");
+  var $objectclasses  = array("FAIobject");
 
-  var $inheritance = array("gosaGroupOfNames" => "member");
+  var $inheritance    = array("gosaGroupOfNames" => "member");
   var $sdaemon_available;
 
   var $cache = array();
@@ -69,6 +69,7 @@ class faiStartup extends simplePlugin
       'main' => array(
         'name'  => _('FAI settings'),
         'attrs' => array(
+          new HiddenAttribute ('FAIstate'),
           new CompositeAttribute (
             _('FAI profil and release to be applied to this computer'),
             'FAIclass',
