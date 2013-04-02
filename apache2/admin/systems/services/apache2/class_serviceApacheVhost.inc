@@ -24,22 +24,25 @@ class serviceApache extends simpleService
 {
   var $objectclasses = array("whatever");
 
-  var $krb_service_prefix = "HTTP/";
-
   function __construct ($config, $dn = NULL, $parent = NULL)
   {
     parent::__construct ($config, $dn, $parent, array());
 
-    $dn_without_base = preg_replace("/,".preg_quote($this->config->current['BASE'], '/')."$/","",$this->dn);
+    if (($dn != 'new') && ($dn != NULL)) {
 
-    $this->vhostList = new serviceApacheVhostManagement($this->config, get_userinfo(), $dn_without_base);
+      $dn_without_base = preg_replace("/,".preg_quote($this->config->current['BASE'], '/')."$/", "", $this->dn);
 
-    /* If there is at least one entry in this -> types, we have apache vhosts enabled */
+      $this->vhostList = new serviceApacheVhostManagement($this->config, get_userinfo(), $dn_without_base);
 
-    if ($this->vhostList->count() == 0) {
-      $this->is_account = false;
+      /* If there is at least one entry in this -> types, we have apache vhosts enabled */
+
+      if ($this->vhostList->count() == 0) {
+        $this->is_account = FALSE;
+      } else {
+        $this->is_account = TRUE;
+      }
     } else {
-      $this->is_account = true;
+      $this->is_account = FALSE;
     }
 
     $this->initially_was_account = $this->is_account;
@@ -75,12 +78,12 @@ class serviceApache extends simpleService
     return array(
       "plShortName"   => _("Apache service"),
       "plDescription" => _("Apache virtual host service")." ("._("Services").")",
-      "plIcon"          => "plugins/apache2/images/iconMini.png",
+      "plIcon"        => "plugins/apache2/images/iconMini.png",
       "plSelfModify"  => FALSE,
       "plCategory"    => array("server"),
 
-      "plProvidedAcls"=> array(
-        "VirtualHost"           => _("Virtual hosts")
+      "plProvidedAcls"  => array(
+        "VirtualHost" => _("Virtual hosts")
       )
     );
   }

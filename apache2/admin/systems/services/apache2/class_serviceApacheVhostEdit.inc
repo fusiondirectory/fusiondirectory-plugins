@@ -27,7 +27,7 @@ class CompositeScriptAliasAttribute extends CompositeAttribute
     if (($values[0] == "") && ($values[1] == "")) {
       return "";
     } else {
-      return vsprintf($this->writeFormat, $values);
+      return parent::writeValues($values);
     }
   }
 }
@@ -92,7 +92,7 @@ class serviceApacheVhostEdit extends simplePlugin
               new StringAttribute (_('Alias'),  _('Alias Directory'),   'aliasdir'),
               new StringAttribute (_('Script'), _('Script Directory'),  'scriptdir'),
             ),
-            '%s %s',
+            '/^(\S*) (\S*)$/',
             '%s %s',
             '',
             _('Script Alias')
@@ -105,7 +105,7 @@ class serviceApacheVhostEdit extends simplePlugin
                 new StringAttribute (_('URL Alias'),    _('URL Alias'),     'urlalias'),
                 new StringAttribute (_('Directory Path'), _('Directory Path'),  'pathdir'),
               ),
-              '%s %s',
+              '/^(\S*) (\S*)$/',
               '%s %s',
               '',
               _('Server Alias')
