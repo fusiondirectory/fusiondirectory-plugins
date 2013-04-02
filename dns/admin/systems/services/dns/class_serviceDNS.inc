@@ -67,6 +67,9 @@ class serviceDNS extends goService
 
   function is_this_account($attrs)
   {
+    if (!isset($attrs['dn'])) {
+      return FALSE;
+    }
     /* Get all zone Informations
      */
     $this->Zones = DNS::getDNSZoneEntries($this->config, $attrs['dn']);
