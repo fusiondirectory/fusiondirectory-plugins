@@ -39,6 +39,7 @@ class applicationManagement extends management
       "plDescription" => _("Application management"),
       "plIcon"        => "plugins/systems/images/iconApplication.png",
       "plSection"     => "admin",
+      "plPriority"    => 21,
       "plCategory"    => array("application"),
 
       "plProvidedAcls" => array()

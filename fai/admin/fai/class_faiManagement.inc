@@ -1047,7 +1047,7 @@ class faiManagement extends management
       "plIcon"        => "plugins/fai/images/icon.png",
       "plSelfModify"  => FALSE,
       "plSection"     => "admin",
-      "plPriority"    => 10,
+      "plPriority"    => 30,
       "plCategory"    => array("fai" => array("description" => _("FAI"), "objectClass" => "FAIclass")),
 
       "plProvidedAcls" => array()

@@ -37,6 +37,7 @@ class blocklist extends management
       "plDescription" => _("Blocklist management"),
       "plIcon"        => "plugins/fax/images/iconBlocklists.png",
       "plSection"     => "admin",
+      "plPriority"    => 12,
       "plCategory"    => array("gofaxlist"),
 
       "plProvidedAcls" => array()

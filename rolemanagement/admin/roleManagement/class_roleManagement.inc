@@ -37,6 +37,7 @@ class roleManagement extends management
       "plDescription" => _("Role management"),
       "plIcon"        => "plugins/rolemanagement/images/icon.png",
       "plSection"     => "admin",
+      "plPriority"    => 41,
       "plCategory"    => array("roles"),
 
       "plProvidedAcls" => array()

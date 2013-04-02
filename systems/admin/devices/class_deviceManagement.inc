@@ -43,6 +43,7 @@ class deviceManagement extends management
       "plDescription" => _("Hotplug device management"),
       "plIcon"        => "plugins/systems/images/iconHotplugDevices.png",
       "plSection"     => "admin",
+      "plPriority"    => 23,
       "plCategory"    => array("devices"),
 
       "plProvidedAcls" => array()

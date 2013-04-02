@@ -38,6 +38,7 @@ class netgroupManagement extends management
       "plDescription" => _("NIS Netgroup management"),
       "plIcon"        => "plugins/netgroups/images/icon.png",
       "plSection"     => "admin",
+      "plPriority"    => 25,
       "plCategory"    => array("netgroups"),
 
       "plProvidedAcls" => array()

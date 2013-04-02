@@ -37,6 +37,7 @@ class phoneConferenceManagment extends management
       "plDescription" => _("Conference management"),
       "plIcon"        => "plugins/asterisk/images/iconConference.png",
       "plSection"     => "admin",
+      "plPriority"    => 10,
       "plCategory"    => array("gofonconference"),
 
       "plProvidedAcls" => array()

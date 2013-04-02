@@ -36,7 +36,7 @@ class aliasManagement extends management
       "plIcon"        => "plugins/alias/images/icon.png",
       "plSelfModify"  => FALSE,
       "plSection"     => "admin",
-      "plPriority"    => 30,
+      "plPriority"    => 4,
       "plCategory"    => array("alias" => array("description"  => _("Mail aliases"),
                                                 "objectClass"  => array("mailAliasRedirection","mailAliasDistribution"))),
 

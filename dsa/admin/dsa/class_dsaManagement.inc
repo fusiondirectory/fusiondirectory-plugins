@@ -37,7 +37,7 @@ class dsaManagement extends management
       "plIcon"        => "plugins/dsa/images/icon.png",
       "plSelfModify"  => FALSE,
       "plSection"     => "admin",
-      "plPriority"    => 30,
+      "plPriority"    => 40,
       "plCategory"    => array("dsa" => array("description"  => _("DSA"),
                                               "objectClass"  => array("simpleSecurityObject"))),
 

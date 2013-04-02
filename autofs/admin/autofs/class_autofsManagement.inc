@@ -35,7 +35,7 @@ class autofsManagement extends management
       "plShortName"   => _("Auto fs"),
       "plDescription" => _("Auto fs management"),
       "plIcon"        => "plugins/autofs/images/icon.png",
-      "plPriority"    => 20,
+      "plPriority"    => 24,
       "plSection"     => "admin",
       "plCategory"    => array("autofs"),
 

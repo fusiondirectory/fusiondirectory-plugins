@@ -1125,7 +1125,7 @@ class systemManagement extends management
       "plDescription" => _("Systems Management"),
       "plIcon"        => "plugins/systems/images/icon.png",
       "plSelfModify"  => FALSE,
-      "plPriority"    => 3,
+      "plPriority"    => 20,
       "plSection"     => "admin",
       "plCategory"    => array("terminal","workstation","server","phone","printer","component","winstation"),
 

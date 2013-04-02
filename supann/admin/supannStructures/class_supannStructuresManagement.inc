@@ -34,6 +34,7 @@ class supannStructuresManagement extends management
       "plDescription" => _("Supann structures management"),
       "plIcon"        => "plugins/supann/images/icon.png",
       "plSection"     => "admin",
+      "plPriority"    => 13,
       "plCategory"    => array("supannStructures"),
 
       "plProvidedAcls" => array()

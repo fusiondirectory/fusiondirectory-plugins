@@ -42,7 +42,7 @@ class gotomasses extends management
       'plIcon'        => 'plugins/argonaut/images/icon.png',
       'plSelfModify'  => FALSE,
       'plSection'     => 'admin',
-      'plPriority'    => 10,
+      'plPriority'    => 33,
       'plCategory'    => array('gotomasses' => array('objectClass' => 'none', 'description' => _('Deployment queue'))),
 
       'plProvidedAcls' => array('Comment' => _('Description'))

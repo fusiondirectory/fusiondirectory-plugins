@@ -37,6 +37,7 @@ class sudoManagement extends management
       "plDescription" => _("Sudo management"),
       "plIcon"        => "plugins/sudo/images/icon.png",
       "plSection"     => "admin",
+      "plPriority"    => 5,
       "plCategory"    => array("sudo"),
 
       "plProvidedAcls" => array()
