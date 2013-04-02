@@ -33,8 +33,8 @@ class phoneConferenceManagment extends management
   static function plInfo()
   {
     return array(
-      "plShortName"   => _("Conferences"),
-      "plDescription" => _("Conference management"),
+      "plShortName"   => _("Phone Conferences"),
+      "plDescription" => _("Phone Conference management"),
       "plIcon"        => "plugins/asterisk/images/iconConference.png",
       "plSection"     => "admin",
       "plPriority"    => 10,

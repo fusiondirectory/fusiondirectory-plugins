@@ -690,7 +690,7 @@ class conference extends plugin
   static function plInfo()
   {
     return array(
-      "plShortName"   => _("Conference"),
+      "plShortName"   => _("Phone Conference"),
       "plDescription" => _("Phone conference management"),
       "plSelfModify"  => TRUE,
       "plCategory"    => array("gofonconference" => array("description" => _("GOfon conference"),

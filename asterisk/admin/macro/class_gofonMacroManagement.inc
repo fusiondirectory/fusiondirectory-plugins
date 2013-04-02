@@ -33,8 +33,8 @@ class goFonMacro extends management
   static function plInfo()
   {
     return array(
-      "plShortName"   => _("Macros"),
-      "plDescription" => _("Macros management"),
+      "plShortName"   => _("Phone Macros"),
+      "plDescription" => _("Phone Macros management"),
       "plIcon"        => "plugins/asterisk/images/iconMacros.png",
       "plSection"     => "admin",
       "plPriority"    => 11,

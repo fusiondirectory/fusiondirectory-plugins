@@ -1042,7 +1042,7 @@ class faiManagement extends management
   static function plInfo()
   {
     return array(
-      "plShortName"   => _("FAI software deployment"),
+      "plShortName"   => _("FAI"),
       "plDescription" => _("Manage FAI software packages and deployment recipes"),
       "plIcon"        => "plugins/fai/images/icon.png",
       "plSelfModify"  => FALSE,

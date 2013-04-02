@@ -33,8 +33,8 @@ class blocklist extends management
   static function plInfo()
   {
     return array(
-      "plShortName"   => _("Blocklists"),
-      "plDescription" => _("Blocklist management"),
+      "plShortName"   => _("Fax Blocklists"),
+      "plDescription" => _("Fax Blocklists management"),
       "plIcon"        => "plugins/fax/images/iconBlocklists.png",
       "plSection"     => "admin",
       "plPriority"    => 12,

@@ -344,7 +344,7 @@ class systemManagement extends management
       /* DHCP entry */
       $ldap->search ("(&(objectClass=dhcpHost)(cn=".$entry['cn'][0]."))", array("uid","cn","dn"));
 
-      if ($attr = $ldap->fetch();) {
+      if ($attr = $ldap->fetch()) {
         $dns[] = $attr['dn'];
       }
       /* DNS entry */

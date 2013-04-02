@@ -38,7 +38,7 @@ class opsiManagement extends simpleManagement
   static function plInfo()
   {
     return array(
-      'plShortName'   => _('OPSI profiles'),
+      'plShortName'   => _('OPSI'),
       'plDescription' => _('OPSI profile management'),
       'plIcon'        => 'plugins/opsi/images/icon.png',
       'plPriority'    => 32,
