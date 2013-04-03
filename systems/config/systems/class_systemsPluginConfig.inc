@@ -28,7 +28,7 @@ class systemsPluginConfig extends simplePlugin
       'plShortName'     => _('Systems'),
       'plDescription'   => _('Systems plugin configuration'),
       'plCategory'      => array('configuration'),
-      'plObjectType'    => array('smallConfig'),
+      'plObjectType'    => array('configuration'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
@@ -38,7 +38,7 @@ class systemsPluginConfig extends simplePlugin
   {
     return array(
       'rdns' => array(
-        'name'  => _('LDAP tree'),
+        'name'  => _('LDAP tree for systems'),
         'attrs' => array(
           new StringAttribute (
             _('Systems RDN'), _('Branch in which systems will be stored'),
@@ -75,6 +75,11 @@ class systemsPluginConfig extends simplePlugin
             'fdMobilePhoneRDN', TRUE,
             'ou=mobile,ou=systems'
           ),
+        )
+      ),
+      'rdns2' => array(
+        'name'  => _('LDAP tree'),
+        'attrs' => array(
           new StringAttribute (
             _('Device RDN'), _('Branch in which hotplug devices will be stored'),
             'fdDeviceRDN', TRUE,
