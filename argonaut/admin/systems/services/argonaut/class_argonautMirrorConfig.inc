@@ -55,7 +55,7 @@ class argonautMirrorConfig extends simpleService
         )
       ),
       'section2' => array (
-        'name' => _('Argonaut Debconf Crawler config'),
+        'name' => _('Argonaut Debconf Crawler configuration'),
         'attrs' => array (
           new StringAttribute (
             _('Local packages folder'),
@@ -67,7 +67,7 @@ class argonautMirrorConfig extends simpleService
         )
       ),
       'section3' => array (
-        'name' => _('Argonaut Ldap2repository config'),
+        'name' => _('Argonaut Repository configuration'),
         'attrs' => array (
           new StringAttribute (
             _('Proxy'),
