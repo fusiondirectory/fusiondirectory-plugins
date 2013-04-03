@@ -20,7 +20,7 @@
 
 class dsaConfig extends simplePlugin
 {
-  var $objectclasses  = array("fusionDirectoryDSAConf");
+  var $objectclasses  = array("fdDsaPluginConf");
 
   static function plInfo()
   {

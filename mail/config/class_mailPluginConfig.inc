@@ -20,7 +20,7 @@
 
 class mailPluginConfig extends simplePlugin
 {
-  var $objectclasses  = array("mailPluginConf");
+  var $objectclasses  = array("fdMailPluginConf");
 
   static function plInfo()
   {

@@ -18,18 +18,18 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class opsiConfig extends simplePlugin
+class faiConfig extends simplePlugin
 {
-  var $objectclasses  = array('fdOpsiPluginConf');
+  var $objectclasses  = array('fdFaiPluginConf');
 
   static function plInfo()
   {
     return array(
-      'plShortName'   => _('OPSI configuration'),
-      'plDescription' => _('FusionDirectory OPSI plugin configuration'),
-      'plSelfModify'  => FALSE,
-      'plCategory'    => array('configuration'),
-      'plObjectType'  => array('smallConfig'),
+      'plShortName'     => _('FAI configuration'),
+      'plDescription'   => _('FusionDirectory fai plugin configuration'),
+      'plSelfModify'    => FALSE,
+      'plCategory'      => array('configuration'),
+      'plObjectType'    => array('configuration'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
@@ -37,18 +37,28 @@ class opsiConfig extends simplePlugin
 
   static function getAttributesInfo ()
   {
-    return array(
+    $attrs = array(
       'main' => array(
         'name'  => _('LDAP tree'),
         'attrs' => array(
           new StringAttribute (
-            _('OPSI RDN'), _('Branch in which OPSI profiles will be stored'),
-            'fdOpsiRDN', TRUE,
-            'ou=opsi'
+            _('Fai base RDN'), _('Branch in which fai branches will be stored'),
+            'fdFaiBaseRDN', TRUE,
+            'ou=fai,ou=configs,ou=systems'
           ),
         )
       ),
     );
+    $rdns = array('Script', 'Hook', 'Template', 'Variable', 'Profile', 'Package', 'Partition');
+    foreach ($rdns as $rdn) {
+      $attrs['main']['attrs'][] = new String(
+        sprintf(_('Fai %s RDN'), strtolower($rdn)),
+        sprintf(_('Relative branch in which fai %s will be stored'), _(strtolower($rdn).'s')),
+        'fdFai'.$rdn.'RDN', TRUE,
+        'ou='.strtolower($rdn).','
+      );
+    }
+    return $attrs;
   }
 }
 ?>

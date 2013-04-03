@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2012-2013 FusionDirectory
+  Copyright (C) 2013 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -18,20 +18,20 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class autofsConfig extends simplePlugin
+class sudoConfig extends simplePlugin
 {
-  var $objectclasses  = array("fdAutofsPluginConf");
+  var $objectclasses  = array('fdSudoPluginConf');
 
   static function plInfo()
   {
     return array(
-      "plShortName"     => _("Autofs configuration"),
-      "plDescription"   => _("FusionDirectory autofs plugin configuration"),
-      "plSelfModify"    => FALSE,
-      "plCategory"      => array("configuration"),
-      "plObjectType"    => array("smallConfig"),
+      'plShortName'     => _('Sudo configuration'),
+      'plDescription'   => _('FusionDirectory sudo plugin configuration'),
+      'plSelfModify'    => FALSE,
+      'plCategory'      => array('configuration'),
+      'plObjectType'    => array('smallConfig'),
 
-      "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }
 
@@ -42,9 +42,9 @@ class autofsConfig extends simplePlugin
         'name'  => _('LDAP tree'),
         'attrs' => array(
           new StringAttribute (
-            _('AutoFS RDN'), _('Branch in which automount info will be stored'),
-            'fdAutofsRDN', TRUE,
-            'ou=autofs'
+            _('Sudo RDN'), _('Branch in which sudoers will be stored'),
+            'fdSudoRDN', TRUE,
+            'ou=sudoers'
           ),
         )
       ),

@@ -20,7 +20,7 @@
 
 class sambaPluginConfig extends simplePlugin
 {
-  var $objectclasses  = array("sambaPluginConf");
+  var $objectclasses  = array("fdSambaPluginConf");
 
   static function plInfo()
   {

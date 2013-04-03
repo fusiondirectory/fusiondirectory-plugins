@@ -20,7 +20,7 @@
 
 class aliasConfig extends simplePlugin
 {
-  var $objectclasses  = array("fusionDirectoryAliasConf");
+  var $objectclasses  = array("fdAliasPluginConf");
 
   static function plInfo()
   {

@@ -11,7 +11,7 @@ attributetype ( 1.3.6.1.4.1.38414.22.1.1 NAME 'fdNetgroupRDN'
   SINGLE-VALUE)
 
 # Object Class
-objectclass ( 1.3.6.1.4.1.38414.22.2.1 NAME 'fdNetgroupConf'
+objectclass ( 1.3.6.1.4.1.38414.22.2.1 NAME 'fdNetgroupPluginConf'
   DESC 'FusionDirectory netgroup plugin configuration'
   SUP top AUXILIARY
   MUST ( cn )

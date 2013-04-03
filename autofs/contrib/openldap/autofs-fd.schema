@@ -11,7 +11,7 @@ attributetype ( 1.3.6.1.4.1.38414.15.1.1 NAME 'fdAutofsRDN'
   SINGLE-VALUE)
 
 # Object Class
-objectclass ( 1.3.6.1.4.1.38414.15.2.1 NAME 'fusionDirectoryAutofsConf'
+objectclass ( 1.3.6.1.4.1.38414.15.2.1 NAME 'fdAutofsPluginConf'
   DESC 'FusionDirectory autofs plugin configuration'
   SUP top AUXILIARY
   MUST ( cn )

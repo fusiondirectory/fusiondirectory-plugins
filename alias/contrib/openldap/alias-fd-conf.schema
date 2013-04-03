@@ -9,7 +9,7 @@ attributetype ( 1.3.6.1.4.1.38414.11.1.2 NAME 'fdAliasRDN'
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SINGLE-VALUE)
 
-objectclass ( 1.3.6.1.4.1.38414.11.2.3 NAME 'fusionDirectoryAliasConf'
+objectclass ( 1.3.6.1.4.1.38414.11.2.3 NAME 'fdAliasPluginConf'
   DESC 'FusionDirectory alias plugin configuration'
   SUP top AUXILIARY
   MUST ( cn )

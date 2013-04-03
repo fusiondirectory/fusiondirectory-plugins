@@ -1,0 +1,69 @@
+##
+## fai-fd-conf.schema - Needed by Fusion Directory for managing fai
+##
+
+# Attributes
+attributetype ( 1.3.6.1.4.1.38414.25.1.1 NAME 'fdFaiBaseRDN'
+  DESC 'FusionDirectory - fai base RDN'
+  EQUALITY caseExactIA5Match
+  SUBSTR caseExactIA5SubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE)
+
+attributetype ( 1.3.6.1.4.1.38414.25.1.2 NAME 'fdFaiScriptRDN'
+  DESC 'FusionDirectory - fai Script RDN'
+  EQUALITY caseExactIA5Match
+  SUBSTR caseExactIA5SubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE)
+
+attributetype ( 1.3.6.1.4.1.38414.25.1.3 NAME 'fdFaiHookRDN'
+  DESC 'FusionDirectory - fai Hook RDN'
+  EQUALITY caseExactIA5Match
+  SUBSTR caseExactIA5SubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE)
+
+attributetype ( 1.3.6.1.4.1.38414.25.1.4 NAME 'fdFaiTemplateRDN'
+  DESC 'FusionDirectory - fai Template RDN'
+  EQUALITY caseExactIA5Match
+  SUBSTR caseExactIA5SubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE)
+
+attributetype ( 1.3.6.1.4.1.38414.25.1.5 NAME 'fdFaiVariableRDN'
+  DESC 'FusionDirectory - fai Variable RDN'
+  EQUALITY caseExactIA5Match
+  SUBSTR caseExactIA5SubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE)
+
+attributetype ( 1.3.6.1.4.1.38414.25.1.6 NAME 'fdFaiProfileRDN'
+  DESC 'FusionDirectory - fai Profile RDN'
+  EQUALITY caseExactIA5Match
+  SUBSTR caseExactIA5SubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE)
+
+attributetype ( 1.3.6.1.4.1.38414.25.1.7 NAME 'fdFaiPackageRDN'
+  DESC 'FusionDirectory - fai Package RDN'
+  EQUALITY caseExactIA5Match
+  SUBSTR caseExactIA5SubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE)
+
+attributetype ( 1.3.6.1.4.1.38414.25.1.8 NAME 'fdFaiPartitionRDN'
+  DESC 'FusionDirectory - fai Partition RDN'
+  EQUALITY caseExactIA5Match
+  SUBSTR caseExactIA5SubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE)
+
+# Object Class
+objectclass ( 1.3.6.1.4.1.38414.25.2.1 NAME 'fdFaiPluginConf'
+  DESC 'FusionDirectory fai plugin configuration'
+  SUP top AUXILIARY
+  MUST ( cn )
+  MAY ( fdFaiBaseRDN      $ fdFaiScriptRDN    $ fdFaiHookRDN    $
+        fdFaiTemplateRDN  $ fdFaiVariableRDN  $ fdFaiProfileRDN $
+        fdFaiPackageRDN   $ fdFaiPartitionRDN ) )

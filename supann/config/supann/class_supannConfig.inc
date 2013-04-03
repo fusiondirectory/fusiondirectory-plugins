@@ -20,7 +20,7 @@
 
 class supannConfig extends simplePlugin
 {
-  var $objectclasses  = array("fdSupannConf");
+  var $objectclasses  = array("fdSupannPluginConf");
 
   static function plInfo()
   {

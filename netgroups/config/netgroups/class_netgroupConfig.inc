@@ -20,7 +20,7 @@
 
 class netgroupConfig extends simplePlugin
 {
-  var $objectclasses  = array("fdNetgroupConf");
+  var $objectclasses  = array('fdNetgroupPluginConf');
 
   static function plInfo()
   {
