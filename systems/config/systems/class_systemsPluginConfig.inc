@@ -66,7 +66,7 @@ class systemsPluginConfig extends simplePlugin
             'ou=printers,ou=systems'
           ),
           new StringAttribute (
-            _('Component RDN'), _('Branch in which devices will be stored'),
+            _('Component RDN'), _('Branch in which network devices will be stored'),
             'fdComponentRDN', TRUE,
             'ou=netdevices,ou=systems'
           ),
@@ -74,6 +74,21 @@ class systemsPluginConfig extends simplePlugin
             _('Mobile phone RDN'), _('Branch in which mobile phones will be stored'),
             'fdMobilePhoneRDN', TRUE,
             'ou=mobile,ou=systems'
+          ),
+          new StringAttribute (
+            _('Device RDN'), _('Branch in which hotplug devices will be stored'),
+            'fdDeviceRDN', TRUE,
+            'ou=devices'
+          ),
+          new StringAttribute (
+            _('Mimetype RDN'), _('Branch in which mime types will be stored'),
+            'fdMimetypeRDN', TRUE,
+            'ou=mimetypes'
+          ),
+          new StringAttribute (
+            _('Application RDN'), _('Branch in which applications will be stored'),
+            'fdApplicationRDN', TRUE,
+            'ou=apps'
           ),
         )
       ),
