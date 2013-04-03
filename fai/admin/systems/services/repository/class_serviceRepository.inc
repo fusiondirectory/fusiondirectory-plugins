@@ -140,7 +140,7 @@ class serviceDebianRepository extends simpleService
     $done = array();
     foreach ($repos as $repo) {
       $release = $repo[2];
-      if (($repo[4] == 'install') && (!isset($done[$release])) {
+      if (($repo[4] == 'install') && (!isset($done[$release]))) {
         $dn = "ou=$release,$fai";
         $ldap->cat($dn, array('dn'));
         if (!$ldap->count()) {
