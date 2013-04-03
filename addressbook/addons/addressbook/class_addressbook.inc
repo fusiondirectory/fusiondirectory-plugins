@@ -87,8 +87,9 @@ class addressbook extends plugin
 
     /* Get global filter config */
     if (!session::is_set("phonefilter")) {
-      $base         = get_people_ou();
-      $phonefilter  = array(
+      $ui         = get_userinfo();
+      $base       = get_base_from_people($ui->dn);
+      $phonefilter= array(
           "search_base"       => $base,
           "organizational"    => "checked",
           "global"            => "checked",
