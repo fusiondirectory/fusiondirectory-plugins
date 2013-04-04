@@ -42,23 +42,24 @@ define ("FILEHEADER_OLD",
 class sambaMungedDial
 {
   /* Terminal server variables (samba3) */
-  var $ctx= array(
-    'CtxCfgPresent' =>            '551e0bb0',
-    'CtxCfgFlags1' =>             '00e00010',
-    'CtxCallback' =>              '',
-    'CtxShadow' =>                '01000000',
-    'CtxMaxConnectionTime' =>     '',
-    'CtxMaxDisconnectionTime' =>  '',
-    'CtxMaxIdleTime' =>           '',
-    'CtxKeyboardLayout' =>        '',
-    'CtxMinEncryptionLevel' =>    '00',
-    'CtxWorkDirectory' =>         '',
-    'CtxNWLogonServer' =>         '',
-    'CtxWFHomeDir' =>             '',
-    'CtxWFHomeDirDrive' =>        '',
-    'CtxWFProfilePath' =>         '',
-    'CtxInitialProgram' =>        '',
-    'CtxCallbackNumber' =>        '');
+  var $ctx = array(
+    'CtxCfgPresent'           => '551e0bb0',
+    'CtxCfgFlags1'            => '00e00010',
+    'CtxCallback'             => '',
+    'CtxShadow'               => '01000000',
+    'CtxMaxConnectionTime'    => '',
+    'CtxMaxDisconnectionTime' => '',
+    'CtxMaxIdleTime'          => '',
+    'CtxKeyboardLayout'       => '',
+    'CtxMinEncryptionLevel'   => '00',
+    'CtxWorkDirectory'        => '',
+    'CtxNWLogonServer'        => '',
+    'CtxWFHomeDir'            => '',
+    'CtxWFHomeDirDrive'       => '',
+    'CtxWFProfilePath'        => '',
+    'CtxInitialProgram'       => '',
+    'CtxCallbackNumber'       => ''
+  );
 
   /* attribute list for save action */
   var $ctxattributes= array("CtxCfgPresent", "CtxCfgFlags1", "CtxCallback",
@@ -227,62 +228,79 @@ class sambaMungedDial
   /* Takes a base64-encoded MungedDial-String and returns an array of included parameters and values */
   function decode_munged($munge)
   {
-    $result= array();
+    $result = array(
+      'CtxCfgPresent'           => '551e0bb0',
+      'CtxCfgFlags1'            => '00e00010',
+      'CtxCallback'             => '',
+      'CtxShadow'               => '01000000',
+      'CtxMaxConnectionTime'    => '',
+      'CtxMaxDisconnectionTime' => '',
+      'CtxMaxIdleTime'          => '',
+      'CtxKeyboardLayout'       => '',
+      'CtxMinEncryptionLevel'   => '00',
+      'CtxWorkDirectory'        => '',
+      'CtxNWLogonServer'        => '',
+      'CtxWFHomeDir'            => '',
+      'CtxWFHomeDirDrive'       => '',
+      'CtxWFProfilePath'        => '',
+      'CtxInitialProgram'       => '',
+      'CtxCallbackNumber'       => ''
+    );
 
     /*
      * Remove base64 encoding and skip FILEHEADER.
      * The '4' is added, because the FILEHEADER has been stripped by 4 chars.
      * This is the number of attributes following - we don't need this at read time, only when writing.
      */
-    if(substr(base64_decode($munge),0,2)=="6d") {
-      $this->old_behavior=true;
+    if (substr(base64_decode($munge), 0, 2) == "6d") {
+      $this->old_behavior = TRUE;
     }
 
     $ctxField="";
-    if($this->old_behavior==true) {
-      $ctxField= substr(base64_decode($munge), (strlen(FILEHEADER_OLD)) / 2);
+    if ($this->old_behavior == TRUE) {
+      $ctxField = substr(base64_decode($munge), (strlen(FILEHEADER_OLD)) / 2);
     } else {
-      $ctxField= substr(base64_decode($munge), (strlen(FILEHEADER)+4) / 2);
+      $ctxField = substr(base64_decode($munge), (strlen(FILEHEADER)+4) / 2);
     }
 
     /* Decode parameters */
-    while ($ctxField!=""){
+    while ($ctxField != "") {
 
       /* Read value lengths */
-      $ctxParmNameLength= ord($ctxField[0]) + 16 * ord($ctxField[1]);
-      $ctxParmLength= ord($ctxField[2]) + 16 * ord($ctxField[3]);
+      $ctxParmNameLength  = ord($ctxField[0]) + 16 * ord($ctxField[1]);
+      $ctxParmLength      = ord($ctxField[2]) + 16 * ord($ctxField[3]);
 
       /* Reposition ctxField on start of parameter name, read parameter name */
-      $ctxField= substr($ctxField, 6);
-      $ctxParmName= sambaMungedDial::to8bit(substr($ctxField, 0, $ctxParmNameLength));
+      $ctxField     = substr($ctxField, 6);
+      $ctxParmName  = sambaMungedDial::to8bit(substr($ctxField, 0, $ctxParmNameLength));
 
       /* Reposition ctxField on start of parameter */
-      $ctxField= substr($ctxField, $ctxParmNameLength);
-      $ctxParm= substr($ctxField, 0, $ctxParmLength);
+      $ctxField = substr($ctxField, $ctxParmNameLength);
+      $ctxParm  = substr($ctxField, 0, $ctxParmLength);
 
       /* If string parameter, convert */
       if (in_array($ctxParmName, $this->stringParams)){
-          $ctxParm= sambaMungedDial::hexstr($ctxParm);
+          $ctxParm = sambaMungedDial::hexstr($ctxParm);
       }
       /* If time parameter, convert */
-      if (in_array($ctxParmName, $this->timeParams)){
-        $ctxParm= sambaMungedDial::readTime($ctxParm);
+      if (in_array($ctxParmName, $this->timeParams)) {
+        $ctxParm = sambaMungedDial::readTime($ctxParm);
       }
 
       /* Assign in result array */
-      $result[$ctxParmName]= trim($ctxParm);
+      $result[$ctxParmName] = trim($ctxParm);
 
       /* Reposition ctxField on end of parameter and continue */
-      $ctxField= substr($ctxField, $ctxParmLength);
+      $ctxField = substr($ctxField, $ctxParmLength);
     }
 
-    return ($result);
+    return $result;
   }
 
   /* function takes a base64-encoded sambaMungedDial */
   function load ($mungedDial)
   {
-    $this->ctx= $this->decode_munged($mungedDial);
+    $this->ctx = $this->decode_munged($mungedDial);
   }
 
   /* Returns ready-to-run mungedDialString to be filled into ldap */
