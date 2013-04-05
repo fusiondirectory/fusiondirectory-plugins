@@ -6,7 +6,7 @@
 
 # Schema des objets specifiques des recommandations supann
 
-# Placé sous l'arc 1.3.6.1.4.1.7135.1.2 du CRU
+# PlacÃ© sous l'arc 1.3.6.1.4.1.7135.1.2 du CRU
 # sous-arc 1 : attributs
 # sous-arc 2 : classes
 
@@ -15,14 +15,14 @@
 # 09 avril 10 (CC) : supannRefId : suppression du SINGLE-VALUE mis par erreur
 # 23 fevr. 10 (JML): inversion SUP et DESC pour les attributs supannAutreTelephone, supannParrainDN, supannGroupeAdminDN, supannGroupeLecteurDN, supannAutreMail pour 389 Directory Server
 # 23 nov.  09 (CC) : passage de supannEmpCorps en directoryString
-# 13 nov.  09 (CC) : ajout EQUALITY caseIgnoreMatch à mailForwardingAddress
+# 13 nov.  09 (CC) : ajout EQUALITY caseIgnoreMatch Ã  mailForwardingAddress
 # 12 nov.  09 (CC) : retrait supannTypeEntite de supannPerson, ajout de supannTypeEntiteAffectation et supannRefId
 # 20 oct.  09 (CC) : ajout supannEmpCorps
 # 13 mai   09 (CC) : ajout mailForwardingAddress
 # 16 fevr. 09 (CC) : ajout supannAutreMail
-# 23 oct.  08 (CC) : ajout SINGLE-VALUE à supannEntiteAffectationPrincipale
-# 24 juin  08 (CC) : plus de clause MUST à supannPerson, ajout supannRoleGenerique
-# 18 juin  08 (CC) : intégration de supann 2008.rc1
+# 23 oct.  08 (CC) : ajout SINGLE-VALUE Ã  supannEntiteAffectationPrincipale
+# 24 juin  08 (CC) : plus de clause MUST Ã  supannPerson, ajout supannRoleGenerique
+# 18 juin  08 (CC) : intÃ©gration de supann 2008.rc1
 # 25 juil. 03 (CC) : supannGroup* -> supannGroupe*
 # 10 juil. 03 (CC) : supannGroupeLecteur -> supannGroupeLecteurDN, supannGroupeAdministrateur -> supannGroupeAdminDN
 # 09 juil. 03 (CC) : ajout supannGroupeLecteur
