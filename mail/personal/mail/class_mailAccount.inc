@@ -103,7 +103,7 @@ class mailAccount extends simplePlugin
             array()
           ),
           new MailQuotaAttribute (
-            _('Quota size'), '',
+            _('Quota size'), 'Define quota size in MB',
             'gosaMailQuota', FALSE,
             0, FALSE
           )
@@ -135,17 +135,17 @@ class mailAccount extends simplePlugin
             'V', ''
           ),
           new DateAttribute (
-            _('from'), '',
+            _('from'), 'Starting date for vacation message',
             'gosaVacationStart', FALSE,
             'U'
           ),
           new DateAttribute (
-            _('till'), '',
+            _('till'), 'Ending date for vacation message',
             'gosaVacationStop', FALSE,
             'U'
           ),
           new TextAreaAttribute (
-            _('Vacation message'), '',
+            _('Vacation message'), 'The message you wish be sent during your absence',
             'gosaVacationMessage'
           ),
         )
@@ -154,7 +154,7 @@ class mailAccount extends simplePlugin
         'name' => _('Spam options'),
         'attrs' => array(
           new BooleanAttribute (
-            _('Move mails depending on spam level'), '',
+            _('Move mails depending on spam level'), 'Check if you want to move mails depending on spam level',
             'flag_spamlevel', FALSE, FALSE, '',
             'S', ''
           ),
