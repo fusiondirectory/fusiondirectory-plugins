@@ -88,13 +88,13 @@ class mailgroup extends simplePlugin
             'mail', TRUE
           ),
           new SelectAttribute (
-            _('Server'), _('Server mail for zarafa'),
+            _('Server'), _('Server mail'),
             'gosaMailServer', TRUE,
             array('')
           ),
           new SetAttribute (
             new StringAttribute (
-              _('Alternative addresses'), _('Alternative mail addresses for zarafa group'),
+              _('Alternative addresses'), _('Alternative mail addresses for the group'),
               'gosaMailAlternateAddress'
             )
           ),
