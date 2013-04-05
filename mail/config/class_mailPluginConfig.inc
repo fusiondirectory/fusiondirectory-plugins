@@ -65,7 +65,7 @@ class mailPluginConfig extends simplePlugin
           ),
           new BooleanAttribute (
             _('Use cyrus UNIX style'),
-            _('Determines if 'foo/bar' or 'foo.bar' should be uses as namespaces in IMAP.'),
+            _("Determines if 'foo/bar' or 'foo.bar' should be uses as namespaces in IMAP."),
             'fdCyrusUseSlashes'
           ),
           new BooleanAttribute (
