@@ -143,8 +143,8 @@ class freeradiusAccount extends simplePlugin {
               'PPP'
             ),
             new StringAttribute(
-              _('IP Adress'),
-              _('IP Adress'),
+              _('IP Address'),
+              _('IP Address'),
               'radiusFramedIPAddress',
               FALSE,
               '255.255.255.254'
