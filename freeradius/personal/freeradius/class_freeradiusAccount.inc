@@ -133,7 +133,7 @@ class freeradiusAccount extends simplePlugin {
         ),
       ),
       'section3' => array(
-        'name'  => _('User preferences for dorkboy'),
+        'name'  => _('User preferences'),
           'attrs' => array(
             new StringAttribute(
               _('Protocol'),
