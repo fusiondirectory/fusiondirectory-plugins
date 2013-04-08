@@ -51,7 +51,7 @@ class faiConfig extends simplePlugin
     );
     $rdns = array('Script', 'Hook', 'Template', 'Variable', 'Profile', 'Package', 'Partition');
     foreach ($rdns as $rdn) {
-      $attrs['main']['attrs'][] = new String(
+      $attrs['main']['attrs'][] = new StringAttribute (
         sprintf(_('Fai %s RDN'), strtolower($rdn)),
         sprintf(_('Relative branch in which fai %s will be stored'), _(strtolower($rdn).'s')),
         'fdFai'.$rdn.'RDN', TRUE,
