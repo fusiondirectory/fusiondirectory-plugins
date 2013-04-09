@@ -90,7 +90,7 @@ class freeradiusAccount extends simplePlugin {
               _('Date of the expiration account'),       // Description
               'radiusExpiration',                        // LDAP name
               FALSE,                                     // Mandatory
-              'Y-m-d',
+              'd M Y',
               date('Y-m-d', time() + (7 * 24 * 60 * 60))  // Expire in one week
           ),
         )
