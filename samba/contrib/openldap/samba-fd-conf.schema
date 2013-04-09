@@ -39,6 +39,12 @@ attributetype ( 1.3.6.1.4.1.38414.9.1.5 NAME 'fdSambaExpirationSync'
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SINGLE-VALUE )
 
+attributetype ( 1.3.6.1.4.1.38414.9.1.6 NAME 'fdSambaGenLMPassword'
+  DESC 'FusionDirectory - Samba LMPassword activation'
+  EQUALITY booleanMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
+  SINGLE-VALUE )
+
 
 # Object Class
 objectclass ( 1.3.6.1.4.1.38414.9.2.1 NAME 'fdSambaPluginConf'
@@ -46,4 +52,4 @@ objectclass ( 1.3.6.1.4.1.38414.9.2.1 NAME 'fdSambaPluginConf'
   SUP top AUXILIARY
   MUST ( )
   MAY ( fdSambaMachineAccountRDN $ fdSambaIdMapping $
-        fdSambaSID $ fdSambaRidBase $ fdSambaExpirationSync) )
+        fdSambaSID $ fdSambaRidBase $ fdSambaExpirationSync $ fdSambaGenLMPassword) )

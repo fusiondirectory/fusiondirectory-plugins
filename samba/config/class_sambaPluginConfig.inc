@@ -68,6 +68,10 @@ class sambaPluginConfig extends simplePlugin
             'fdSambaExpirationSync', FALSE,
             array('', 'posix', 'samba'), '',
             array('Do not synchronise', 'Synchronise from POSIX', 'Synchronise to POSIX')
+          ),
+          new BooleanAttribute (
+            _('Generate sambaLMPassword'), _('Needed to be compliant with Windows <= 98 or Samba < 3.2'),
+            'fdSambaGenLMPassword', FALSE
           )
         )
       ),
