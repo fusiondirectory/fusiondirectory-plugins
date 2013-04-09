@@ -33,13 +33,14 @@ class ldifimport extends plugin
   static function plInfo()
   {
     return array(
-      "plShortName"   => _("Import"),
-      "plDescription" => _("Import of ldif data into the ldap tree"),
-      "plSelfModify"  => FALSE,
-      "plCategory"    => array("ldapmanager"),
-      "plObjectType"  => array("ldapmanager"),
+      'plShortName'   => _('Import'),
+      'plDescription' => _('Import of ldif data into the ldap tree'),
+      'plSelfModify'  => FALSE,
+      'plCategory'    => array('ldapmanager'),
+      'plObjectType'  => array('ldapmanager'),
+      'plPriority'    => 2,
 
-      "plProvidedAcls"  => array()
+      'plProvidedAcls'  => array()
     );
   }
 

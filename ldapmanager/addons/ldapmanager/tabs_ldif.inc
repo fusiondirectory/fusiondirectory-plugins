@@ -35,14 +35,14 @@ class ldiftab extends tabs
   static function plInfo()
   {
     return array(
-      "plShortName"   => _("LDAP manager"),
-      "plDescription" => _("Allows the management of the ldap tree"),
-      "plIcon"        => "plugins/ldapmanager/images/icon.png",
-      "plSection"     => "addons",
-      "plPriority"    => 20,
-      "plCategory"    => array("ldapmanager" => array("objectClass" => "none", "description" => _("Ldap manager"))),
+      'plShortName'   => _('LDAP import/export'),
+      'plDescription' => _('Allows the import or export of the ldap tree'),
+      'plIcon'        => 'plugins/ldapmanager/images/icon.png',
+      'plSection'     => 'addons',
+      'plPriority'    => 20,
+      'plCategory'    => array('ldapmanager' => array('objectClass' => 'none', 'description' => _('Ldap manager'))),
 
-      "plProvidedAcls" => array()
+      'plProvidedAcls' => array()
     );
   }
 }

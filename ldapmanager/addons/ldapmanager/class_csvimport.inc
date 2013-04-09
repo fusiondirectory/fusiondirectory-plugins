@@ -36,13 +36,14 @@ class csvimport extends plugin
   static function plInfo()
   {
     return array(
-      "plShortName"   => _("CVS import"),
-      "plDescription" => _("Import of cvs data into the ldap tree"),
-      "plSelfModify"  => FALSE,
-      "plCategory"    => array("ldapmanager"),
-      "plObjectType"  => array("ldapmanager"),
+      'plShortName'   => _('CSV import'),
+      'plDescription' => _('Import of csv data into the ldap tree'),
+      'plSelfModify'  => FALSE,
+      'plCategory'    => array('ldapmanager'),
+      'plObjectType'  => array('ldapmanager'),
+      'plPriority'    => 3,
 
-      "plProvidedAcls"  => array()
+      'plProvidedAcls'  => array()
     );
   }
 
