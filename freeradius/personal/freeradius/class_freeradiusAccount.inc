@@ -35,10 +35,7 @@
 class freeradiusAccount extends simplePlugin {
 
   var $displayHeader = TRUE; // If we want the button Add/Delete
-  var $objectclasses = array("radiusprofile");
-  var $plHeadline    = "FreeRadius";
-  var $plDescription = "This Plugin is for Radius accounting based in FreeRadius";
-
+  var $objectclasses = array('radiusprofile');
 
   /*!
    * \brief Plugin information
@@ -56,27 +53,6 @@ class freeradiusAccount extends simplePlugin {
       'plProvidedAcls'    => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }
-
-  /*!
-   * \brief Constructor of the freeradiusAccount
-   *        It will build the select groups choices
-   */
-  function __construct(&$config, $dn = NULL, $object = NULL)
-  {
-    parent::__construct($config, $dn, $object);
-    $ldap = $this->config->get_ldap_link();
-    $ldap->cd($this->config->current['BASE']);
-    $ldap->search("(objectClass=radiusprofile)",array('cn'));
-    $groups = array();
-    $firstcn = TRUE;
-    while ($attrs = $ldap->fetch()) {
-     // if(!$firstcn)
-        $groups[] = $attrs['cn'][0];
-      $firstcn = FALSE;
-    }
-    $this->attributesInfo['section2']['attrs']['radiusGroupName']->attribute->setChoices($groups);
-  }
-
 
   /*!
    *  \brief The main function : information about attributes
@@ -109,12 +85,13 @@ class freeradiusAccount extends simplePlugin {
             FALSE,                          // Mandatory
             ''
           ),
-          new StringAttribute(
+          new DateAttribute(
               _('Expiration date'),                      // Label of the attribute
               _('Date of the expiration account'),       // Description
               'radiusExpiration',                        // LDAP name
               FALSE,                                     // Mandatory
-              date('Y-m-d',time() + (7 * 24 * 60 * 60))  // Expire in one week
+              'Y-m-d',
+              date('Y-m-d', time() + (7 * 24 * 60 * 60))  // Expire in one week
           ),
         )
       ),
@@ -136,72 +113,54 @@ class freeradiusAccount extends simplePlugin {
         'name'  => _('User preferences'),
           'attrs' => array(
             new StringAttribute(
-              _('Protocol'),
-              _('Protocol'),
-              'radiusFramedProtocol',
-              FALSE,
+              _('Protocol'), _('Protocol'),
+              'radiusFramedProtocol', FALSE,
               'PPP'
             ),
             new StringAttribute(
-              _('IP Address'),
-              _('IP Address'),
-              'radiusFramedIPAddress',
-              FALSE,
+              _('IP Address'), _('IP Address'),
+              'radiusFramedIPAddress', FALSE,
               '255.255.255.254'
             ),
             new StringAttribute(
-              _('IP Netmask'),
-              _('IP Netmask'),
-              'radiusFramedIPNetmask',
-              FALSE,
+              _('IP Netmask'), _('IP Netmask'),
+              'radiusFramedIPNetmask', FALSE,
               ''
             ),
             new IntAttribute(
-              _('Framed-MTU'),
-              _('Framed-MTU'),
-              'radiusFramedMTU',
-              FALSE,
+              _('Framed-MTU'), _('Framed-MTU'),
+              'radiusFramedMTU', FALSE,
               0,                                // [FloatAttribute] Minimum value
               FALSE,                            // [FloatAttribute] No maximum value
               1500                              // [FloatAttribute] Default value
             ),
             new StringAttribute(
-              _('Compression'),
-              _('Compression'),
-              'radiusFramedCompression',
-              FALSE,
+              _('Compression'), _('Compression'),
+              'radiusFramedCompression', FALSE,
               'Van-Jacobsen-TCP-IP'
             ),
              new StringAttribute(
-              _('Service type'),
-              _('Service type'),
-              'radiusServiceType',
-              FALSE,
+              _('Service type'), _('Service type'),
+              'radiusServiceType', FALSE,
               'Framed-User'
             ),
             new IntAttribute(
-              _('Session Timeout'),
-              _('Session Timeout'),
-              'radiusSessionTimeout',
-              FALSE,                    // Mandatory
+              _('Session Timeout'), _('Session Timeout'),
+              'radiusSessionTimeout', FALSE,                    // Mandatory
               FALSE,                    // no minimum value
               FALSE,                    // no maximum value
               ""                        // no default value
             ),
             new IntAttribute(
-              _('Idle Timeout'),
-              _('Idle Timeout'),
-              'radiusIdleTimeout',
-              FALSE,
+              _('Idle Timeout'), _('Idle Timeout'),
+              'radiusIdleTimeout', FALSE,
               "",
               FALSE,
               10
             ),
             new IntAttribute(
-              _('Port limit'),
-              _('Port limit'),
-              'radiusPortLimit',
-              FALSE,
+              _('Port limit'), _('Port limit'),
+              'radiusPortLimit', FALSE,
               0,
               FALSE,
               2
@@ -209,6 +168,23 @@ class freeradiusAccount extends simplePlugin {
           )
         )
     );
+  }
+
+  /*!
+   * \brief Constructor of the freeradiusAccount
+   *        It will build the select groups choices
+   */
+  function __construct(&$config, $dn = NULL, $object = NULL)
+  {
+    parent::__construct($config, $dn, $object);
+    $ldap = $this->config->get_ldap_link();
+    $ldap->cd($this->config->current['BASE']);
+    $ldap->search('(objectClass=radiusprofile)', array('cn'));
+    $groups = array();
+    while ($attrs = $ldap->fetch()) {
+      $groups[] = $attrs['cn'][0];
+    }
+    $this->attributesAccess['radiusGroupName']->attribute->setChoices($groups);
   }
 }
 

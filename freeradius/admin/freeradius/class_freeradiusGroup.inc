@@ -34,7 +34,7 @@
 class freeradiusGroup extends simplePlugin {
 
   var $displayHeader = TRUE;
-  var $objectclasses = array("radiusprofile");
+  var $objectclasses = array('radiusprofile');
 
   /*!
    * \brief Plugin information
