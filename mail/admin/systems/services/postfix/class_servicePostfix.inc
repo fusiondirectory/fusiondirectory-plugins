@@ -29,8 +29,8 @@ class servicePostfix extends simpleService {
   static function plInfo()
   {
     return array(
-      'plShortName'    => _('Postfix (SMTP)'),
-      'plDescription'  => _('Postfix (SMTP)').' ('._('Services').')',
+      'plShortName'   => _('Postfix (SMTP)'),
+      'plDescription' => _('Postfix (SMTP)').' ('._('Services').')',
       'plIcon'        => 'plugins/mail/images/iconMiniSmtp.png',
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
@@ -54,7 +54,7 @@ class servicePostfix extends simpleService {
           ),
           new StringAttribute (
             _('Visible full qualified domain'), _('The full qualified domain.'),
-            'postfixMyDomain', TRUE
+            'postfixMyDomain', FALSE
           ),
           new IntAttribute (
             _('Max mail header size (KB)'), _('This value specifies the maximal header size.'),
@@ -152,11 +152,11 @@ class servicePostfix extends simpleService {
     $this->attributesAccess['postfixMyDomain']->setDisabled(TRUE);
   }
 
-  function save()
+  function prepare_save()
   {
-    $this->postfixMyDomain = $this->postfixMyHostname;
-    $this->prepare_save();
-    $this->ldap_save();
+    $this->postfixMyDomain   = preg_replace("/^[^\.]+\./", "", $this->postfixMyhostname);
+    $this->postfixMyhostname = preg_replace("/\..*$/", "", $this->postfixMyhostname);
+    parent::prepare_save();
   }
 }
 ?>
