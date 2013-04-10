@@ -9,7 +9,7 @@
 
   <search>
     <query>
-      <backend>GotoEvents</backend>
+      <backend>ArgonautEvents</backend>
       <filter>(&amp;(objectClass=gosaAccount)$TEMPLATES$NAME(|$FUNCTIONAL$SAMBA$POSIX$MAIL))</filter>
       <attribute>dn</attribute>
       <attribute>objectClass</attribute>

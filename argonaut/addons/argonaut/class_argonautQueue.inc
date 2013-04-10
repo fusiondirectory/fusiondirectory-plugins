@@ -20,7 +20,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class gotomasses extends management
+class argonautQueue extends management
 {
   var $current        = FALSE;
   var $dialog         = FALSE;
@@ -43,7 +43,7 @@ class gotomasses extends management
       'plSelfModify'  => FALSE,
       'plSection'     => 'admin',
       'plPriority'    => 33,
-      'plCategory'    => array('gotomasses' => array('objectClass' => 'none', 'description' => _('Deployment queue'))),
+      'plCategory'    => array('argonautQueue' => array('objectClass' => 'none', 'description' => _('Deployment queue'))),
 
       'plProvidedAcls' => array('Comment' => _('Description'))
     );
@@ -56,7 +56,7 @@ class gotomasses extends management
     $this->o_queue  = new supportDaemon();
     $this->events   = DaemonEvent::get_event_types();
     $this->acl_base = $config->current['BASE'];
-    $this->acl_category = 'gotomasses/';
+    $this->acl_category = 'argonautQueue/';
 
     /* Get tags that will be used in queue searches */
     $this->event_tags = array('none');
@@ -75,11 +75,11 @@ class gotomasses extends management
 
     // Build headpage
     $headpage = new listing(get_template_path('deploy-list.xml', TRUE));
-    $headpage->registerElementFilter('hostName',        'gotomasses::filterHostName');
-    $headpage->registerElementFilter('filterTask',      'gotomasses::filterTask');
-    $headpage->registerElementFilter('filterPeriod',    'gotomasses::filterPeriod');
-    $headpage->registerElementFilter('filterSchedule',  'gotomasses::filterSchedule');
-    $headpage->registerElementFilter('filterStatus',    'gotomasses::filterStatus');
+    $headpage->registerElementFilter('hostName',        'argonautQueue::filterHostName');
+    $headpage->registerElementFilter('filterTask',      'argonautQueue::filterTask');
+    $headpage->registerElementFilter('filterPeriod',    'argonautQueue::filterPeriod');
+    $headpage->registerElementFilter('filterSchedule',  'argonautQueue::filterSchedule');
+    $headpage->registerElementFilter('filterStatus',    'argonautQueue::filterStatus');
     $headpage->setFilter($filter);
 
     parent::__construct($config, $ui, 'Events', $headpage);
@@ -116,7 +116,7 @@ class gotomasses extends management
 
   function importEvents()
   {
-    $this->dialogObject = new goto_import_file($this->config, $this);
+    $this->dialogObject = new argonautImportFile($this->config, $this);
   }
 
   static function filterHostName($mac, $name = "")
@@ -326,7 +326,7 @@ class gotomasses extends management
       $headpage = $this->getHeadpage();
       $tmp      = $headpage->getEntry($id);
       $entry    = $tmp['EVENT'];
-      $this->dialogObject = new gotoLogView($this->config, "", $entry, $this);
+      $this->dialogObject = new argonautLogView($this->config, "", $entry, $this);
     }
   }
 

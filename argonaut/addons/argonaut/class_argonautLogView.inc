@@ -20,7 +20,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class gotoLogView extends plugin
+class argonautLogView extends plugin
 {
 
   var $mac;
@@ -184,7 +184,7 @@ class gotoLogView extends plugin
 
     $smarty->assign("ACL",preg_match("/r/",$this->getacl("")));
     $smarty->assign("divlist",$divlist->DrawList());
-    return($smarty->fetch(get_template_path('log_view.tpl', TRUE,dirname(__FILE__))));
+    return($smarty->fetch(get_template_path('argonaut_log_view.tpl', TRUE,dirname(__FILE__))));
   }
 
 
@@ -218,8 +218,8 @@ class gotoLogView extends plugin
   static function plInfo()
   {
     return array(
-      "plShortName"   => _("Log view"),
-      "plDescription" => _("Goto log view"),
+      "plShortName"   => _("Argonaut Logs"),
+      "plDescription" => _("Argonaut Logs Viewer"),
       "plSelfModify"  => FALSE,
       "plPriority"    => 30,
       "plCategory"    => array("workstation", "server"),

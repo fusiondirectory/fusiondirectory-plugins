@@ -20,7 +20,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class filterGotoEvents extends  filterLDAP {
+class filterArgonautEvents extends  filterLDAP {
   static function query($parent,$base, $scope, $filter, $attributes, $category, $objectStorage= "")
   {
     global $config;
@@ -47,9 +47,9 @@ class filterGotoEvents extends  filterLDAP {
 
 
     $acl_base = $config->current['BASE'];
-    $acl_is_writeable = preg_match('/w/', $ui->get_permissions($acl_base, "gotomasses/gotomasses", "0"));
-    $acl_is_removeable = preg_match('/d/', $ui->get_permissions($acl_base, "gotomasses/gotomasses", "0"));
-    $acl_is_readable = preg_match('/r/', $ui->get_permissions($acl_base, "gotomasses/gotomasses", "0"));
+    $acl_is_writeable = preg_match('/w/', $ui->get_permissions($acl_base, "argonautQueue/argonautQueue", "0"));
+    $acl_is_removeable = preg_match('/d/', $ui->get_permissions($acl_base, "argonautQueue/argonautQueue", "0"));
+    $acl_is_readable = preg_match('/r/', $ui->get_permissions($acl_base, "argonautQueue/argonautQueue", "0"));
 
     foreach($entries as $entry) {
 

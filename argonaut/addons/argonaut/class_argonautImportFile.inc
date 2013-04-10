@@ -20,7 +20,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class goto_import_file extends plugin
+class argonautImportFile extends plugin
 {
 
   var $events     = array();
@@ -170,7 +170,7 @@ class goto_import_file extends plugin
     $smarty = get_smarty();
     $smarty->assign("info",$evts);
     $smarty->assign("count",count($evts));
-    return($smarty->fetch(get_template_path('goto_import_file.tpl', TRUE)));
+    return($smarty->fetch(get_template_path('argonaut_import_file.tpl', TRUE)));
   }
 
 
