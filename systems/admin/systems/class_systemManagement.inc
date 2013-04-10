@@ -143,7 +143,7 @@ class systemManagement extends management
       $smarty = get_smarty();
       $this->dn= array_pop($target);
       set_object_info($this->dn);
-      return ($smarty->fetch(get_template_path('goto/gencd.tpl', TRUE)));
+      return ($smarty->fetch(get_template_path('gencd.tpl', TRUE)));
 
     }
   }
@@ -157,7 +157,7 @@ class systemManagement extends management
   {
     $smarty = get_smarty();
     $smarty->assign("src", "?plug=".$_GET['plug']."&amp;PerformIsoCreation");
-    return ($smarty->fetch(get_template_path('goto/gencd_frame.tpl', TRUE)));
+    return ($smarty->fetch(get_template_path('gencd_frame.tpl', TRUE)));
   }
 
 
