@@ -19,7 +19,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class sympaServer extends simpleService
+class serviceSympa extends simpleService
 {
   /* This plugin only writes its objectClass */
   var $objectclasses  = array("sympaServer");

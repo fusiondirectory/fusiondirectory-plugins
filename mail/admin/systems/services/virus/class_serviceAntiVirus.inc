@@ -20,7 +20,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class govirusserver extends simpleService {
+class serviceAntiVirus extends simpleService {
 
   var $objectclasses    = array('goVirusServer');
 
