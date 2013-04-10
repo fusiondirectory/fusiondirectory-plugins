@@ -293,8 +293,6 @@ class AvailableSudoOptionAttribute extends SelectAttribute
       $this->plugin->attributesInfo['used_options']['attrs']['sudoOption']->addOption($this->getValue(), self::$options[$this->getValue()]);
     }
   }
-
-
 }
 
 class ListSudoOptionAttribute extends SetAttribute
@@ -324,13 +322,15 @@ class ListSudoOptionAttribute extends SetAttribute
   {
     if (isset($value['value'])) {
       $value = $value['value'];
-    }
-    if ($value == "") {
-      $value = array();
-    } elseif ($value[0] != '"') {
-      $value = array($value);
-    } else {
-      $value = preg_split('/ /', preg_replace('/"/','',$value));
+      if ($value == "") {
+        $value = array();
+      } elseif ($value[0] != '"') {
+        $value = array($value);
+      } else {
+        $value = preg_split('/ /',
+          preg_replace(array('/^"/','/"$/'), '', $value)
+        );
+      }
     }
     parent::setValue($value);
   }
@@ -461,7 +461,6 @@ class SudoOptionAttribute extends Attribute
 class sudoOption extends simplePlugin
 {
   var $displayHeader = FALSE;
-
   var $objectclasses = array();
 
   // The main function : information about attributes
@@ -549,19 +548,17 @@ SCRIPT;
     return $str;
   }
 
-  // We also need this function that return some information about the plugin
   static function plInfo ()
   {
     return array(
-      "plShortName"       => _("Options"),
-      "plDescription"     => _("Sudo options"),
-      "plSelfModify"      => FALSE,
-      "plCategory"        => array("sudo"),
-      "plObjectType"      => array("sudo"),
-      "plPriority"        => 2,
+      'plShortName'   => _('Options'),
+      'plDescription' => _('Sudo options'),
+      'plSelfModify'  => FALSE,
+      'plCategory'    => array('sudo'),
+      'plObjectType'  => array('sudo'),
+      'plPriority'    => 2,
 
-      // But simplePlugin can generate the ACL list for us
-      "plProvidedAcls"    => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }
 }
