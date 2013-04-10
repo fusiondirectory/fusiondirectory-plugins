@@ -46,6 +46,7 @@ class ActionAttribute extends SelectAttribute
 
   function loadPostValue ()
   {
+    $this->postValue = '';
     $id = $this->getHtmlId();
     if (isset($_POST[$id.'_action'])) {
       parent::loadPostValue();

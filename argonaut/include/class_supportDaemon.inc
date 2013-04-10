@@ -217,6 +217,7 @@ class supportDaemon
    */
   public function append_call($action, $targets, $data)
   {
+    @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $action, date("H.i.s")." Appending call to");
     if ($this->s_host == "") {
       $this->set_error($this->host_error);
       return FALSE;
