@@ -34,14 +34,14 @@ class ArgonautServiceNameAttribute extends CompositeAttribute
     "serviceAntiVirus"    => "clamav-daemon",
     "serviceDHCP"         => "isc-dhcp-server",
     "serviceDNS"          => "bind9",
+    "serviceQuota"        => "quota",
     "argonautServer"      => "argonaut-server"
   );
 
   static private $argonautService_blacklist = array(
     "argonautDNSConfig",
     "argonautMirrorConfig",
-    "argonautFuseConfig",
-    "serviceQuota"
+    "argonautFuseConfig"
   );
 
   function __construct ($description, $ldapName, $acl = "")
