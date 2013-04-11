@@ -338,7 +338,7 @@ class termgroup extends plugin
     plugin::save();
 
     /* Tell members to inherit all attributes if the flag is set  */
-    $this->inherit_attributes_to_members();
+    //~ $this->inherit_attributes_to_members();
 
     /***************
       Prepare special vars
@@ -406,16 +406,16 @@ class termgroup extends plugin
           ));
   }
 
-  function inherit_attributes_to_members()
-  {
-    if ($this->members_inherit_from_group) {
-      foreach ($this->member_dn as $dn) {
-        $member_obj = new worktabs($this->config, $this->config->data['TABS']['WORKSTATIONTABS'], $dn, "workstation");
-        $member_obj->getBaseObject()->set_everything_to_inherited();
-        $member_obj->save();
-      }
-    }
-  }
+  //~ function inherit_attributes_to_members()
+  //~ {
+    //~ if ($this->members_inherit_from_group) {
+      //~ foreach ($this->member_dn as $dn) {
+        //~ $member_obj = new worktabs($this->config, $this->config->data['TABS']['WORKSTATIONTABS'], $dn, "workstation");
+        //~ $member_obj->getBaseObject()->set_everything_to_inherited();
+        //~ $member_obj->save();
+      //~ }
+    //~ }
+  //~ }
 
   function PrepareForCopyPaste($source)
   {
