@@ -59,7 +59,7 @@ class nagiosAccount extends simplePlugin
    */
   static function getAttributesInfo ()
   {
-    $prefix = 'lconf';
+    $prefix = self::get_prefix();
     return array(
       'main' => array(
         'name'  => _('Nagios Account'),
@@ -107,5 +107,18 @@ class nagiosAccount extends simplePlugin
         )
       )
     );
+  }
+
+  static function get_prefix()
+  {
+    global $config;
+    return $config->get_cfg_value('lconfPrefix', 'lconf');
+  }
+
+  function __construct (&$config, $dn = NULL, $object = NULL)
+  {
+    $prefix = self::get_prefix();
+    $this->objectclasses = array($prefix.'Contact');
+    parent::__construct($config, $dn, $object);
   }
 }

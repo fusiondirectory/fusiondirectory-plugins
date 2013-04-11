@@ -1,0 +1,18 @@
+##
+## nagios-fd-conf.schema - Needed by Fusion Directory for managing nagios
+##
+
+# Attributes
+attributetype ( 1.3.6.1.4.1.38414.26.1.1 NAME 'fdLconfPrefix'
+  DESC 'FusionDirectory - lconf prefix'
+  EQUALITY caseExactIA5Match
+  SUBSTR caseExactIA5SubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE)
+
+# Object Class
+objectclass ( 1.3.6.1.4.1.38414.26.2.1 NAME 'fdNagiosPluginConf'
+  DESC 'FusionDirectory nagios plugin configuration'
+  SUP top AUXILIARY
+  MUST ( cn )
+  MAY ( fdLconfPrefix ) )
