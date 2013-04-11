@@ -42,9 +42,8 @@ class defaultRoleAttribute extends BooleanAttribute
  */
 class sudo extends simplePlugin
 {
-  var $mainTab        = TRUE;
-  var $displayHeader  = FALSE;
   public $objectclasses = array('sudoRole');
+  var $mainTab          = TRUE;
 
   /*! \brief  Add ACL object
    *
@@ -179,14 +178,9 @@ class sudo extends simplePlugin
     return preg_match("/^defaults$/i", $this->cn); // FIXME : should use attributesInfo and not cn directly
   }
 
-  public function get_cn()
+  public function compute_dn()
   {
-    return $this->cn;
-  }
-
-  public static function get_sudoers_ou($config)
-  {
-    return get_ou('sudoRDN').$config->current['BASE'];
+    return 'cn='.$this->cn.','.get_ou('sudoRDN').$this->config->current['BASE'];
   }
 }
 

@@ -1,9 +1,7 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2003  Cajus Pollmeier
-  Copyright (C) 2011-2013  FusionDirectory
+  Copyright (C) 2013  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,43 +18,13 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class sudotabs extends tabs
+class sudotabs extends simpleTabs
 {
-  function sudotabs($config, $data, $dn, $cat = '', $copied_object = NULL)
-  {
-    parent::tabs($config, $data, $dn, "sudo", $copied_object);
-    $this->addSpecialTabs();
-  }
-
   function set_default($state)
   {
     if (isset($this->by_object['sudo'])) {
       $this->by_object['sudo']->set_default($state);
     }
-  }
-
-  function save()
-  {
-    $baseobject = $this->getBaseObject();
-
-    /* Check for new 'dn', in order to propagate the
-       'dn' to all plugins */
-    $new_dn = 'cn='.$baseobject->get_cn().','.sudo::get_sudoers_ou($baseobject->config);
-
-    /* Move group? */
-    if ($this->dn != $new_dn) {
-
-      /* Write entry on new 'dn' */
-      if ($this->dn != "new") {
-        $baseobject->update_acls($this->dn, $new_dn);
-        $baseobject->move($this->dn, $new_dn);
-        $this->by_object['sudo'] = $baseobject;
-      }
-
-      /* Happen to use the new one */
-      $this->dn = $new_dn;
-    }
-    return parent::save();
   }
 }
 ?>
