@@ -42,7 +42,8 @@ class CnNetgroupsAttribute extends DialogAttribute
 
 class netgroup extends simplePlugin
 {
-  var $objectclasses = array("top", "nisNetgroup");
+  var $objectclasses  = array("top", "nisNetgroup");
+  var $mainTab        = TRUE;
 
   static function plInfo() {
     return array(
