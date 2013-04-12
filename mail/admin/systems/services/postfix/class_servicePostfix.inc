@@ -150,6 +150,7 @@ class servicePostfix extends simpleService {
   {
     parent::__construct($config, $dn, $object);
     $this->attributesAccess['postfixMyDomain']->setDisabled(TRUE);
+    $this->attributesAccess['postfixMyDomain']->setVisible(FALSE);
   }
 
   function prepare_save()
