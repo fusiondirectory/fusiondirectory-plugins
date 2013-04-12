@@ -25,6 +25,8 @@ class opsiClient extends simplePlugin
 
   var $inheritance = array('gosaGroupOfNames' => 'member');
 
+  var $initialMembers;
+
   static function plInfo ()
   {
     return array(
@@ -60,10 +62,42 @@ class opsiClient extends simplePlugin
   function __construct(&$config, $dn = NULL, $object = NULL)
   {
     parent::__construct($config, $dn, $object);
+    if ($object instanceof ogroup) {
+      $this->initialMembers = $object->saved_attributes['member'];
+    }
   }
 
   function save()
   {
+    if ($this->initially_was_account && $this->editing_group()) {
+      $oldMembers = array_diff($this->initialMembers, $this->parent->getBaseObject()->member);
+      $macAddresses = array();
+      $ldap = $this->config->get_ldap_link();
+      foreach ($oldMembers as $member) {
+        $ldap->cat($member, array('macAddress'), '(&(!(objectClass=opsiClient))(macAddress=*))');
+        if (!$ldap->success()) {
+          msg_dialog::display(
+            _("Could not get macAddress for $member"),
+            msgPool::ldaperror($ldap->get_error()), ERROR_DIALOG
+          );
+        } elseif ($attrs = $ldap->fetch()) {
+          $macAddresses[] = $attrs['macAddress'][0];
+        }
+      }
+      if (!empty($macAddresses)) {
+        $s_daemon   = new supportDaemon();
+        if ($s_daemon->is_available()) {
+          $res = $s_daemon->append_call('OPSI.delete', $macAddresses, array());
+          if ($s_daemon->is_error()) {
+            msg_dialog::display(
+              _('Could not remove OPSI informations'),
+              msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
+            );
+          }
+        }
+      }
+    }
+
     parent::save();
 
     if ($this->is_account) {
@@ -107,7 +141,7 @@ class opsiClient extends simplePlugin
     $macAddresses = array();
     if ($this->editing_group()) {
       $ldap = $this->config->get_ldap_link();
-      foreach ($this->parent->getBaseObject()->member as $member) {
+      foreach ($this->initialMembers as $member) {
         $ldap->cat($member, array('macAddress'), '(&(!(objectClass=opsiClient))(macAddress=*))');
         if (!$ldap->success()) {
           msg_dialog::display(
@@ -119,11 +153,11 @@ class opsiClient extends simplePlugin
         }
       }
     } elseif (!$this->member_of_group) {
-      $s_daemon   = new supportDaemon();
       $macAddresses = array($this->parent->getBaseObject()->netConfigDNS->macAddress);
     }
 
     if (!empty($macAddresses)) {
+      $s_daemon   = new supportDaemon();
       if ($s_daemon->is_available()) {
         $res = $s_daemon->append_call('OPSI.delete', $macAddresses, array());
         if ($s_daemon->is_error()) {
