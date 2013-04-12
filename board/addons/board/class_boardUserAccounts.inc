@@ -60,7 +60,7 @@ class boardUserAccounts extends simplePlugin
         array('name' => 'samba',  'nb' => $nb_samba_accounts, 'img' => get_template_path("plugins/systems/images/select_winstation.png"))
       ),
       'nb_accounts' => $nb_accounts,
-      'user_img' => get_template_path("plugins/users/images/select_user.png"),
+      'user_img' => get_template_path("plugins/users/images/iconMini.png"),
       'locked_accounts' => array('nb' => $nb_locked_accounts, 'img' => get_template_path("images/lists/locked.png")),
     );
   }

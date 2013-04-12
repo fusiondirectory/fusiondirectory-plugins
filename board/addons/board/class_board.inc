@@ -66,7 +66,7 @@ class board extends simplePlugin
     $nb_ogroups = $ldap->count();
 
     $stats = array(
-      array('name' => 'Accounts',      'nb' => $nb_accounts, 'img' => get_template_path("plugins/users/images/select_user.png")),
+      array('name' => 'Accounts',      'nb' => $nb_accounts, 'img' => get_template_path("plugins/users/images/iconMini.png")),
       array('name' => 'Groups',        'nb' => $nb_groups,   'img' => get_template_path("plugins/groups/images/groups.png")),
       array('name' => 'Object groups', 'nb' => $nb_ogroups,  'img' => get_template_path("plugins/ogroups/images/ogroup.png")),
     );

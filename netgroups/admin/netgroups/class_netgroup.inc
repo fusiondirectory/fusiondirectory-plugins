@@ -75,7 +75,7 @@ class netgroup extends simplePlugin
       ),
       'users' => array(
         'name'  => _('User members'),
-        'icon'  => 'plugins/users/images/select_user.png',
+        'icon'  => 'plugins/users/images/iconMini.png',
         'attrs' => array(
           new SetAttribute(
             new StringAttribute('nisNetgroupTriple', '', 'nisNetgroupTriple')
