@@ -70,17 +70,31 @@ class opsiClient extends simplePlugin
       $s_daemon   = new supportDaemon();
       if ($this->editing_group()) {
         $macAddresses = array();
+        $ldap = $this->config->get_ldap_link();
         foreach ($this->parent->getBaseObject()->member as $member) {
-          $macAddresses[] = $member; // TODO : get mac address
+          $ldap->cat($member, array('macAddress'), '(macAddress=*)');
+          if ($attrs = $ldap->fetch()) {
+            $macAddresses[] = $attrs['macAddress'][0];
+          } else {
+            if ($ldap->success()) {
+              $error = "$member was not found!";
+            } else {
+              $error = $ldap->get_error();
+            }
+            msg_dialog::display(
+              _("Could not get macAddress for $member"),
+              msgPool::ldaperror($error), ERROR_DIALOG
+            );
+          }
         }
       } else {
         $macAddresses = array($this->parent->getBaseObject()->netConfigDNS->macAddress);
       }
       if ($s_daemon->is_available()) {
-        $res = $s_daemon->append_call("OPSI.update_or_insert", $macAddresses, array());
+        $res = $s_daemon->append_call('OPSI.update_or_insert', $macAddresses, array());
         if ($s_daemon->is_error()) {
           msg_dialog::display(
-            _("Could not update OPSI informations"),
+            _('Could not update OPSI informations'),
             msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
           );
         }
@@ -90,14 +104,31 @@ class opsiClient extends simplePlugin
 
   function remove_from_parent()
   {
-    if (!$this->member_of_group) {
+    $macAddresses = array();
+    if ($this->editing_group()) {
+      $ldap = $this->config->get_ldap_link();
+      foreach ($this->parent->getBaseObject()->member as $member) {
+        $ldap->cat($member, array('macAddress'), '(&(!(objectClass=opsiClient))(macAddress=*))');
+        if (!$ldap->success()) {
+          msg_dialog::display(
+            _("Could not get macAddress for $member"),
+            msgPool::ldaperror($ldap->get_error()), ERROR_DIALOG
+          );
+        } elseif ($attrs = $ldap->fetch()) {
+          $macAddresses[] = $attrs['macAddress'][0];
+        }
+      }
+    } elseif (!$this->member_of_group) {
       $s_daemon   = new supportDaemon();
-      $macAddress = $this->parent->getBaseObject()->netConfigDNS->macAddress;
+      $macAddresses = array($this->parent->getBaseObject()->netConfigDNS->macAddress);
+    }
+
+    if (!empty($macAddresses)) {
       if ($s_daemon->is_available()) {
-        $res = $s_daemon->append_call("OPSI.delete", array($macAddress), array());
+        $res = $s_daemon->append_call('OPSI.delete', $macAddresses, array());
         if ($s_daemon->is_error()) {
           msg_dialog::display(
-            _("Could not update OPSI informations"),
+            _('Could not remove OPSI informations'),
             msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
           );
         }
