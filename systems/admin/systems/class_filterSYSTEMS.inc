@@ -166,16 +166,15 @@ class filterSYSTEMS {
         }
 
         /* Skip ACL checks if we are forced to skip those checks */
-        if($flags & GL_NO_ACL_CHECK){
-          $result[]= $attrs;
-        }else{
+        if ($flags & GL_NO_ACL_CHECK) {
+          $result[] = $attrs;
+        } else {
+          $obj = $parent->headpage->getObjectTypeInfos($attrs['objectClass']);
 
-          $obj = $parent->headpage->getObjectType($parent->headpage->objectTypes, $attrs['objectClass']);
-
-          if(isset($obj['category'])){
+          if (isset($obj['category'])) {
             $o = $obj['category']."/".$obj['class'];
-            if(preg_match("/r/",$ui->get_permissions($dn,$o))){
-              $result[]= $attrs;
+            if (preg_match("/r/", $ui->get_permissions($dn, $o))) {
+              $result[] = $attrs;
             }
           }
         }

@@ -51,7 +51,12 @@ class netgroup extends simplePlugin
       'plDescription' => _('Generic NIS Netgroup settings'),
       'plSelfModify'  => FALSE,
       'plCategory'    => array('netgroups' => array('objectClass' => 'nisNetgroup', 'description' => _('NIS Netgroups'))),
-      'plObjectType'  => array('netgroup' => array('name' => _('NIS Netgroup'), 'filter' => 'objectClass=nisNetgroup')),
+      'plObjectType'  => array('netgroup' => array(
+        'name'    => _('NIS Netgroup'),
+        'filter'  => 'objectClass=nisNetgroup',
+        'ou'      => get_ou('netgroupRDN'),
+        'icon'    => 'plugins/netgroups/images/iconMini.png'
+      )),
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
@@ -152,6 +157,11 @@ class netgroup extends simplePlugin
     $this->nisNetgroupTriple = $triples;
 
     parent::prepare_save();
+  }
+
+  public function compute_dn()
+  {
+    return 'cn='.$this->cn.','.get_ou('netgroupRDN').$this->base;
   }
 }
 ?>
