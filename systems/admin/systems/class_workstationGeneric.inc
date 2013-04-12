@@ -91,7 +91,7 @@ class ActionAttribute extends SelectAttribute
 
   function updateChoices()
   {
-    if ($this->plugin->gotoMode) {
+    if (isset($this->plugin->gotoMode) && $this->plugin->gotoMode) {
       $this->setDisabled(TRUE);
       return;
     }
