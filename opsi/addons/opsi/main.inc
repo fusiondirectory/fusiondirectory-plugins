@@ -19,5 +19,5 @@
  */
 
 /* Using a fake dn so that ACLs are handled correctly */
-opsiAdmin::mainInc('opsiAdmin', 'cn=opsiAdmin,'.$config->current['BASE'], FALSE, FALSE);
+opsiImport::mainInc('opsiImport', 'cn=opsiImport,'.$config->current['BASE'], FALSE, FALSE);
 ?>

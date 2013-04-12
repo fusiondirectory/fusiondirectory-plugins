@@ -78,7 +78,7 @@ class ImportOPSIAttribute extends OPSIServerAttribute
   }
 }
 
-class opsiAdmin extends simplePlugin
+class opsiImport extends simplePlugin
 {
   public $dhcps = array();
   public $dns = array();
@@ -87,12 +87,12 @@ class opsiAdmin extends simplePlugin
   static function plInfo()
   {
     return array(
-      'plShortName'   => _('OPSI Admin'),
-      'plDescription' => _('OPSI import'),
+      'plShortName'   => _('OPSI import'),
+      'plDescription' => _('Import windows stations from OPSI into FD'),
       'plIcon'        => 'plugins/opsi/images/icon.png',
       'plSelfModify'  => FALSE,
-      'plCategory'    => array('opsiAdmin' => array('objectClass' => '', 'description' => _('OPSI Admin'))),
-      'plObjectType'  => array('opsiAdmin' => array('name' => _('OPSI Admin'), 'filter' => '')),
+      'plCategory'    => array('opsiImport' => array('objectClass' => '', 'description' => _('OPSI import'))),
+      'plObjectType'  => array('opsiImport' => array('name' => _('OPSI import'), 'filter' => '')),
       'plSection'     => 'addons',
       'plPriority'    => 6,
 
@@ -104,7 +104,7 @@ class opsiAdmin extends simplePlugin
   {
     return array(
       'import' => array(
-        'template'  => get_template_path('opsiadmin.tpl', TRUE, dirname(__FILE__)),
+        'template'  => get_template_path('opsiimport.tpl', TRUE, dirname(__FILE__)),
         'name'      => _('Import'),
         'attrs'     => array(
           new BaseSelectorAttribute(get_ou('sambaMachineAccountRDN')),
@@ -151,7 +151,7 @@ class opsiAdmin extends simplePlugin
                 '<tbody>'.$infos.'</tbody></table>';
     }
     $smarty = get_smarty();
-    $smarty->assign('opsiAdmin_result', $infos);
+    $smarty->assign('opsiImport_result', $infos);
     return parent::execute();
   }
 

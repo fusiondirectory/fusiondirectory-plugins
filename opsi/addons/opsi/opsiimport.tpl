@@ -20,7 +20,7 @@
     {/foreach}
     <tr>
       <td colspan="2">
-        {$opsiAdmin_result}
+        {$opsiImport_result}
       </td>
     </tr>
   </table>
