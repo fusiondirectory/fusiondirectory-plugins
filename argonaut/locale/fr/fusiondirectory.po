@@ -1,0 +1,829 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+#  <antoine.gallavardin@free.fr>, 2013.
+#   <giuliano@opensides.be>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: FusionDirectory\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
+"POT-Creation-Date: 2013-03-24 15:08+0100\n"
+"PO-Revision-Date: 2013-04-14 18:30+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory/language/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: admin/systems/argonaut/class_argonautClient.inc:115
+msgid "Argonaut client settings"
+msgstr "Paramètres du client Argonaut"
+
+#: admin/systems/argonaut/class_argonautClient.inc:118
+msgid "Client port"
+msgstr "Port du client"
+
+#: admin/systems/argonaut/class_argonautClient.inc:118
+msgid "Port used by argonaut client for JSON-RPC"
+msgstr "Port utilisé par le client Argonaut pour le dialogue JSON-RPC"
+
+#: admin/systems/argonaut/class_argonautClient.inc:123
+msgid "WakeOnLan interface"
+msgstr "Interface WakeOnLan"
+
+#: admin/systems/argonaut/class_argonautClient.inc:123
+msgid "Interface used by argonaut for WakeOnLan"
+msgstr "Interface utilisé par argonaut pour le WakeOnLan :"
+
+#: admin/systems/argonaut/class_argonautClient.inc:128
+msgid "TaskId file"
+msgstr "Nom du fichier contenant les id des tâches"
+
+#: admin/systems/argonaut/class_argonautClient.inc:128
+msgid "File which argonaut will use to store its task id when booting"
+msgstr "Fichier qu'Argonaut va utilisé pour stocker les tâches au démarrage"
+
+#: admin/systems/argonaut/class_argonautClient.inc:133
+#: admin/systems/services/argonaut/class_argonautServer.inc:74
+#: admin/systems/services/argonaut/class_argonautFuseConfig.inc:55
+msgid "Log directory"
+msgstr "Répertoire des Journaux systèmes"
+
+#: admin/systems/argonaut/class_argonautClient.inc:133
+msgid "Directory in which argonaut client should write its logs"
+msgstr "Dossier d'écriture des logs du client Argonaut"
+
+#: admin/systems/argonaut/class_argonautClient.inc:140
+msgid "Service names"
+msgstr "Nom des services"
+
+#: admin/systems/argonaut/class_argonautClient.inc:142
+msgid "Argonaut service names"
+msgstr "Nom du service argonaut"
+
+#: admin/systems/argonaut/class_argonautClient.inc:157
+msgid "Argonaut client"
+msgstr "Client Argonaut"
+
+#: admin/systems/argonaut/class_argonautClient.inc:158
+msgid "Edit argonaut client settings"
+msgstr "Édition des paramètres du client argonaut"
+
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:30
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:31
+msgid "Argonaut DNS settings"
+msgstr "Paramètres DNS de Argonaut"
+
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:31
+#: admin/systems/services/argonaut/class_argonautFuseLTSPConfig.inc:33
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:32
+#: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:33
+#: admin/systems/services/argonaut/class_argonautServer.inc:32
+#: admin/systems/services/argonaut/class_argonautFuseConfig.inc:32
+#: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:33
+msgid "Services"
+msgstr "Services"
+
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:45
+msgid "Argonaut Ldap2zone settings:"
+msgstr "Paramétrage du module ldap2zone d'Argonaut"
+
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:48
+msgid "Bind directory"
+msgstr "Répertoire Bind"
+
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:49
+msgid "The directory in which conf file must be created"
+msgstr "Le répertoire contenant le fichier de configuration doit être créé"
+
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:55
+msgid "Bind cache directory"
+msgstr "répertoire contenant les fichiers de zones de Bind"
+
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:56
+msgid "The directory in which zone files must be created"
+msgstr "Le répertoire contenant les fichiers de zones doit être créé"
+
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:62
+msgid "Allow notify"
+msgstr "Autoriser la notification"
+
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:68
+msgid "Allow update (semicolon separated and ended)"
+msgstr "Permettre les mises a jours (séparés par des , ou des ; )"
+
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:74
+msgid "Allow transfer (semicolon separated and ended)"
+msgstr "Permettre le transfert (séparés par des , ou des ; )"
+
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:80
+msgid "TTL"
+msgstr "TTL"
+
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:81
+msgid "Time to live"
+msgstr "Temps de vie"
+
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:89
+msgid "rndc path"
+msgstr "Chemin du programme rndc"
+
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:90
+msgid "path to rndc binary"
+msgstr "Chemin du binaire rndc"
+
+#: admin/systems/services/argonaut/class_argonautFuseLTSPConfig.inc:32
+#: admin/systems/services/argonaut/class_argonautFuseLTSPConfig.inc:33
+msgid "Argonaut Fuse LTSP module settings"
+msgstr "Paramètres de Argonaut Fuse pour le module LTSP"
+
+#: admin/systems/services/argonaut/class_argonautFuseLTSPConfig.inc:47
+msgid "LTSP"
+msgstr "LTSP"
+
+#: admin/systems/services/argonaut/class_argonautFuseLTSPConfig.inc:50
+msgid "LTSP server"
+msgstr "Serveur LTSP"
+
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:31
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:32
+msgid "Argonaut Mirror settings"
+msgstr "Paramètres des mirroirs Argonaut"
+
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:45
+msgid "Argonaut mirror settings"
+msgstr "Service Argonaut miroir"
+
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:48
+msgid "Local debian mirror directory"
+msgstr "Repertoire du mirroir Debian local"
+
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:57
+msgid "Argonaut Debconf Crawler config"
+msgstr "Configuration du module debconf crawler d'Argonaut"
+
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:60
+msgid "Local packages folder"
+msgstr "Répertoire des paquets locaux"
+
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:61
+msgid "Folder in which the crawler will store packages during analysis"
+msgstr "Dossier de stockage des paquets durant durant leur analyse"
+
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:69
+msgid "Argonaut Ldap2repository config"
+msgstr "Configuration du module ldap2zone d'Argonaut"
+
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:72
+msgid "Proxy"
+msgstr "Proxy"
+
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:78
+msgid "Errors"
+msgstr "Erreurs"
+
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:85
+msgid "Source"
+msgstr "Emetteur"
+
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:92
+msgid "GPG Check"
+msgstr "Verification GPG"
+
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:99
+msgid "Contents"
+msgstr "Contenu"
+
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:106
+msgid "Verbose"
+msgstr "Verbeux"
+
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:107
+msgid "Wether to activate verbose mode"
+msgstr "Activer/Désactiver le mode verbeux"
+
+#: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:32
+#: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:33
+msgid "Argonaut Fuse OPSI module settings"
+msgstr "Paramètres de Argonaut Fuse pour le module OPSI"
+
+#: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:47
+msgid "OPSI"
+msgstr "OPSI"
+
+#: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:50
+msgid "Opsi admin"
+msgstr "Administrateur Opsi"
+
+#: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:55
+msgid "Opsi password"
+msgstr "Mot de passe opsi"
+
+#: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:60
+msgid "Opsi server"
+msgstr "Serveur Opsi"
+
+#: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:65
+msgid "Opsi lang"
+msgstr "Langue Opsi"
+
+#: admin/systems/services/argonaut/class_argonautServer.inc:31
+#: admin/systems/services/argonaut/class_argonautServer.inc:32
+msgid "Argonaut Server"
+msgstr "Serveur Argonaut"
+
+#: admin/systems/services/argonaut/class_argonautServer.inc:47
+msgid "Argonaut server"
+msgstr "Serveur Argonaut"
+
+#: admin/systems/services/argonaut/class_argonautServer.inc:50
+msgid "Delete finished tasks"
+msgstr "Supprimer les tâches terminées"
+
+#: admin/systems/services/argonaut/class_argonautServer.inc:51
+msgid ""
+"Wether or not argonaut server should delete successfully finished tasks"
+msgstr "Autoriser  ou non la suppression des tâches terminées avec succès par le serveur argonaut"
+
+#: admin/systems/services/argonaut/class_argonautServer.inc:56
+msgid "Protocol"
+msgstr "Protocole"
+
+#: admin/systems/services/argonaut/class_argonautServer.inc:56
+msgid "Protocol to use for argonaut"
+msgstr "Protocole à utiliser pour argonaut"
+
+#: admin/systems/services/argonaut/class_argonautServer.inc:61
+msgid "Port"
+msgstr "Port"
+
+#: admin/systems/services/argonaut/class_argonautServer.inc:62
+msgid "Port on which the argonaut server will be listening"
+msgstr "Port d'écoute du serveur Argonaut"
+
+#: admin/systems/services/argonaut/class_argonautServer.inc:67
+msgid "Timeout"
+msgstr "Temps d'attente maximum"
+
+#: admin/systems/services/argonaut/class_argonautServer.inc:68
+msgid ""
+"Time in seconds before to consider an argonaut client or server as down"
+msgstr "Délai en secondes avant de considérer le système argonaut (client ou serveur) comme éteint"
+
+#: admin/systems/services/argonaut/class_argonautServer.inc:75
+msgid "Directory in which argonaut will store its log"
+msgstr "Répertoire contenant les journaux d’événement d'argonaut"
+
+#: admin/systems/services/argonaut/class_argonautServer.inc:80
+msgid "Key path"
+msgstr "Chemin de la clé"
+
+#: admin/systems/services/argonaut/class_argonautServer.inc:80
+msgid "Path to the private key file"
+msgstr "Chemin du fichier contenant la clé privée"
+
+#: admin/systems/services/argonaut/class_argonautServer.inc:85
+msgid "Certificate path"
+msgstr "Chemin contenant le certificat"
+
+#: admin/systems/services/argonaut/class_argonautServer.inc:85
+msgid "Path to the certificate file"
+msgstr "Chemin vers le fichier du certificat"
+
+#: admin/systems/services/argonaut/class_argonautServer.inc:92
+msgid "Wake on lan"
+msgstr "Wake on lan"
+
+#: admin/systems/services/argonaut/class_argonautServer.inc:95
+msgid "Interface"
+msgstr "Interface"
+
+#: admin/systems/services/argonaut/class_argonautServer.inc:96
+msgid "Interface to use for sending WakeOnLan requests"
+msgstr "Interface à utiliser pour les requêtes WakeOnLan"
+
+#: admin/systems/services/argonaut/class_argonautServer.inc:101
+msgid "IP tool"
+msgstr "Outil IP"
+
+#: admin/systems/services/argonaut/class_argonautServer.inc:101
+msgid "IP tool to use"
+msgstr "Outil IP à utiliser"
+
+#: admin/systems/services/argonaut/class_argonautFuseConfig.inc:31
+#: admin/systems/services/argonaut/class_argonautFuseConfig.inc:32
+msgid "Argonaut Fuse settings"
+msgstr "Paramètres de Argonaut Fuse"
+
+#: admin/systems/services/argonaut/class_argonautFuseConfig.inc:45
+msgid "Basic settings"
+msgstr "Paramètres de base"
+
+#: admin/systems/services/argonaut/class_argonautFuseConfig.inc:48
+msgid "Default mode"
+msgstr "Mode par défaut"
+
+#: admin/systems/services/argonaut/class_argonautFuseConfig.inc:56
+msgid "Directory in which argonaut-fuse will store its log"
+msgstr "Dossier d'écriture des logs du système argonaut fuse"
+
+#: admin/systems/services/argonaut/class_argonautFuseConfig.inc:64
+msgid "TFTP"
+msgstr "TFTP"
+
+#: admin/systems/services/argonaut/class_argonautFuseConfig.inc:67
+msgid "Pxelinux cfg path"
+msgstr "Répertoire des fichiers pxelinux"
+
+#: admin/systems/services/argonaut/class_argonautFuseConfig.inc:68
+msgid "Path where argonaut-fuse should store pxelinux.cfg"
+msgstr "Chemin où argonaut-fuse stockera le fichier \"pxelinux.cfg\""
+
+#: admin/systems/services/argonaut/class_argonautFuseConfig.inc:74
+msgid "Pxelinux cfg static path"
+msgstr "Répertoire des fichiers pxelinux statiques"
+
+#: admin/systems/services/argonaut/class_argonautFuseConfig.inc:75
+msgid "Path where argonaut-fuse should store pxelinux.static"
+msgstr "Chemin où argonaut-fuse stockera le fichier \"pxelinux.static\""
+
+#: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:32
+#: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:33
+msgid "Argonaut Fuse FAI module settings"
+msgstr "Paramètres de Argonaut Fuse pour le module FAI"
+
+#: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:47
+msgid "FAI"
+msgstr "FAI"
+
+#: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:50
+msgid "Fai flags"
+msgstr "Paramètres FAI"
+
+#: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:57
+msgid "NFS root"
+msgstr "NFS root"
+
+#: addons/goto/class_goto_import_file.inc:49
+#: addons/goto/class_goto_import_file.inc:109
+#: addons/goto/class_goto_import_file.inc:153
+#: addons/goto/goto_import_file.tpl:84 addons/goto/deploy-list.xml:99
+msgid "Import"
+msgstr "Importer"
+
+#: addons/goto/class_goto_import_file.inc:49
+msgid "file is empty"
+msgstr "le fichier est vide."
+
+#: addons/goto/class_goto_import_file.inc:110
+msgid ""
+"Selected entries will be skipped because of errors. Do you want to proceed?"
+msgstr "Les entrées sélectionnées seront ignorées à cause des erreurs qu'elle contiennent. Voulez vous continuer ?"
+
+#: addons/goto/class_goto_import_file.inc:146
+#: addons/goto/class_gotomasses.inc:351
+msgid "Service infrastructure"
+msgstr "Service d'infrastructure"
+
+#: addons/goto/class_goto_import_file.inc:153
+#, php-format
+msgid "Import complete: %s events successfully send, %s failed"
+msgstr "L'importation est finie : %s évènements ont été envoyés, %s ont échoués"
+
+#: addons/goto/class_goto_import_file.inc:190
+#: addons/goto/goto_import_file.tpl:38
+msgid "MAC"
+msgstr "MAC"
+
+#: addons/goto/class_goto_import_file.inc:193
+#: addons/goto/goto_import_file.tpl:39 addons/goto/deploy-list.xml:14
+msgid "Event"
+msgstr "Evenement"
+
+#: addons/goto/goto_import_file.tpl:1
+msgid "Import jobs"
+msgstr "Importer de tâches"
+
+#: addons/goto/goto_import_file.tpl:3
+msgid ""
+"You can import a list of jobs into the FusionDirectory job queue. This "
+"should be a semicolon seperated list of items in the following format:"
+msgstr "Vous pouvez importer une liste de jobs dans la queue des jobs FusionDirectory. Cela doit être un liste séparée par un point virgule dans le format suivant :"
+
+#: addons/goto/goto_import_file.tpl:5
+msgid "timestamp"
+msgstr "Date"
+
+#: addons/goto/goto_import_file.tpl:5
+msgid "MAC-address"
+msgstr "Adresse MAC"
+
+#: addons/goto/goto_import_file.tpl:5
+msgid "job type"
+msgstr "Type de job"
+
+#: addons/goto/goto_import_file.tpl:5
+msgid "object group"
+msgstr "Groupes d'objets"
+
+#: addons/goto/goto_import_file.tpl:5
+msgid "import base"
+msgstr "base pour l'importation"
+
+#: addons/goto/goto_import_file.tpl:5
+msgid "full hostname"
+msgstr "Nom complet de l'hôte"
+
+#: addons/goto/goto_import_file.tpl:5
+msgid "IP-address"
+msgstr "Adresse IP"
+
+#: addons/goto/goto_import_file.tpl:5
+msgid "DHCP group"
+msgstr "Groupe DHCP"
+
+#: addons/goto/goto_import_file.tpl:9
+msgid "Example"
+msgstr "Exemple"
+
+#: addons/goto/goto_import_file.tpl:21
+msgid "Select list to import"
+msgstr "Sélectionnez la liste à importer"
+
+#: addons/goto/goto_import_file.tpl:24
+msgid "Browse"
+msgstr "Parcourir"
+
+#: addons/goto/goto_import_file.tpl:25
+msgid "Upload"
+msgstr "Télécharger"
+
+#: addons/goto/goto_import_file.tpl:37 addons/goto/events/DaemonEvent.tpl:51
+msgid "Timestamp"
+msgstr "Date"
+
+#: addons/goto/goto_import_file.tpl:40
+#: addons/goto/events/eventTargetSystems-list.xml:47
+msgid "Object group"
+msgstr "Groupes d'objets"
+
+#: addons/goto/goto_import_file.tpl:41
+#: addons/goto/events/eventTargetSystems-list.tpl:13
+#: addons/goto/deploy-list.tpl:13
+msgid "Base"
+msgstr "Base"
+
+#: addons/goto/goto_import_file.tpl:42
+msgid "FQDN"
+msgstr "FQDN"
+
+#: addons/goto/goto_import_file.tpl:43
+#: addons/goto/events/eventTargetSystems-list.xml:89
+msgid "IP"
+msgstr "IP"
+
+#: addons/goto/goto_import_file.tpl:44
+msgid "DHCP"
+msgstr "DHCP"
+
+#: addons/goto/class_gotoLogView.inc:77 addons/goto/class_gotoLogView.inc:195
+#: addons/goto/class_filterGotoEvents.inc:39
+#: addons/goto/class_gotomasses.inc:194 addons/goto/class_gotomasses.inc:308
+#: addons/goto/class_gotomasses.inc:399
+msgid "Error"
+msgstr "Erreur"
+
+#: addons/goto/class_gotoLogView.inc:107
+msgid "none"
+msgstr "aucun"
+
+#: addons/goto/class_gotoLogView.inc:133
+msgid "File"
+msgstr "Fichier"
+
+#: addons/goto/class_gotoLogView.inc:135
+msgid "Date"
+msgstr "Date"
+
+#: addons/goto/class_gotoLogView.inc:221
+msgid "Log view"
+msgstr "Vue des journaux"
+
+#: addons/goto/class_gotoLogView.inc:222
+msgid "Goto log view"
+msgstr "Vue des journaux GOto"
+
+#: addons/goto/remove.tpl:2
+msgid "Warning"
+msgstr "Avertissement"
+
+#: addons/goto/remove.tpl:9
+msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
+msgstr "D'accord - si vous êtes sur - cliquez sur 'Supprimer' pour continuer ou sur 'Annuler' pour abandonner."
+
+#: addons/goto/log_view.tpl:7
+msgid "Available logs"
+msgstr "Journaux systèmes disponibles"
+
+#: addons/goto/log_view.tpl:12
+msgid "Selected log"
+msgstr "Sélectionner le journal système"
+
+#: addons/goto/log_view.tpl:17
+msgid "No logs for this host available!"
+msgstr "Pas de journaux systèmes disponibles pour cet hôte !"
+
+#: addons/goto/events/DaemonEvent.tpl:9 addons/goto/deploy-list.xml:61
+msgid "Schedule"
+msgstr "Planificateur"
+
+#: addons/goto/events/DaemonEvent.tpl:18
+msgid "System list"
+msgstr "Liste des systèmes"
+
+#: addons/goto/events/DaemonEvent.tpl:35
+msgid "ID"
+msgstr "ID"
+
+#: addons/goto/events/DaemonEvent.tpl:39 addons/goto/deploy-list.xml:69
+msgid "Status"
+msgstr "Statut"
+
+#: addons/goto/events/DaemonEvent.tpl:43
+msgid "Result"
+msgstr "Résultat"
+
+#: addons/goto/events/DaemonEvent.tpl:47 addons/goto/deploy-list.xml:27
+msgid "Target"
+msgstr "Cible"
+
+#: addons/goto/events/target_list.tpl:5
+msgid "Apply"
+msgstr "Appliquer"
+
+#: addons/goto/events/target_list.tpl:6
+msgid "Cancel"
+msgstr "Annuler"
+
+#: addons/goto/events/eventTargetSystems-list.xml:11
+msgid "List of target systems"
+msgstr "Listes des systèmes Cibles"
+
+#: addons/goto/events/eventTargetSystems-list.xml:15
+msgid "Server"
+msgstr "Serveur"
+
+#: addons/goto/events/eventTargetSystems-list.xml:23
+msgid "Workstation"
+msgstr "Stations de travail"
+
+#: addons/goto/events/eventTargetSystems-list.xml:31
+msgid "Terminal"
+msgstr "Terminal"
+
+#: addons/goto/events/eventTargetSystems-list.xml:39
+msgid "Winstation"
+msgstr "Pc Windows"
+
+#: addons/goto/events/eventTargetSystems-list.xml:73
+#: addons/goto/events/eventTargetSystems-filter.tpl:24
+#: addons/goto/deploy-list.xml:36
+msgid "Name"
+msgstr "Nom"
+
+#: addons/goto/events/eventTargetSystems-list.xml:81
+#: addons/goto/class_gotomasses.inc:48
+msgid "Description"
+msgstr "Description"
+
+#: addons/goto/events/eventTargetSystems-list.xml:97
+msgid "Mac"
+msgstr "Mac"
+
+#: addons/goto/events/class_DaemonEvent.inc:150
+#, php-format
+msgid "Create '%s' job"
+msgstr "Création du job '%s'"
+
+#: addons/goto/events/class_DaemonEvent.inc:221
+msgid "Minutes"
+msgstr "Minutes"
+
+#: addons/goto/events/class_DaemonEvent.inc:222
+msgid "Hours"
+msgstr "Heures"
+
+#: addons/goto/events/class_DaemonEvent.inc:223
+msgid "Days"
+msgstr "Jours"
+
+#: addons/goto/events/class_DaemonEvent.inc:224
+msgid "Weeks"
+msgstr "Semaines"
+
+#: addons/goto/events/class_DaemonEvent.inc:225
+msgid "Months"
+msgstr "Mois"
+
+#: addons/goto/events/class_DaemonEvent.inc:259
+#: addons/goto/class_gotomasses.inc:257 addons/goto/deploy-list.xml:106
+#: addons/goto/deploy-list.xml:166
+msgid "Remove"
+msgstr "Supprimer"
+
+#: addons/goto/events/class_DaemonEvent.inc:263
+msgid "Add"
+msgstr "Ajouter"
+
+#: addons/goto/events/class_DaemonEvent.inc:409
+msgid "Switch off"
+msgstr "Eteindre"
+
+#: addons/goto/events/class_DaemonEvent.inc:413
+msgid "Reboot"
+msgstr "Redémarrer"
+
+#: addons/goto/events/class_DaemonEvent.inc:417
+msgid "Wake up"
+msgstr "Réveiller"
+
+#: addons/goto/events/class_DaemonEvent.inc:421
+msgid "Software update"
+msgstr "Mise à jour logicielle"
+
+#: addons/goto/events/class_DaemonEvent.inc:425
+msgid "(Re)Install"
+msgstr "(Ré)installer"
+
+#: addons/goto/events/eventTargetSystems-filter.tpl:3
+msgid "Filter"
+msgstr "Filtre"
+
+#: addons/goto/events/eventTargetSystems-filter.tpl:11
+msgid "Show servers"
+msgstr "Serveurs"
+
+#: addons/goto/events/eventTargetSystems-filter.tpl:12
+msgid "Show workstations"
+msgstr "Stations de travail"
+
+#: addons/goto/events/eventTargetSystems-filter.tpl:13
+msgid "Show terminals"
+msgstr "Terminaux"
+
+#: addons/goto/events/eventTargetSystems-filter.tpl:14
+msgid "Show winstations"
+msgstr ""
+
+#: addons/goto/events/eventTargetSystems-filter.tpl:15
+msgid "Filter by IP address range"
+msgstr "Filtrer les adresse IP par étendue"
+
+#: addons/goto/events/timestamp_select.tpl:3
+msgid "Year"
+msgstr "Année"
+
+#: addons/goto/events/timestamp_select.tpl:4
+msgid "Month"
+msgstr "Mois"
+
+#: addons/goto/events/timestamp_select.tpl:5
+msgid "Day"
+msgstr "Jour"
+
+#: addons/goto/events/timestamp_select.tpl:7
+msgid "Hour"
+msgstr "Heure"
+
+#: addons/goto/events/timestamp_select.tpl:8
+msgid "Minute"
+msgstr "Minutes"
+
+#: addons/goto/events/timestamp_select.tpl:9
+msgid "Second"
+msgstr "Secondes"
+
+#: addons/goto/events/timestamp_select.tpl:49
+msgid "Periodical job"
+msgstr "Tâche périodique"
+
+#: addons/goto/events/timestamp_select.tpl:55
+msgid "Job intervall"
+msgstr "Intervalle pour les tâches"
+
+#: addons/goto/class_filterGotoEvents.inc:39
+#, php-format
+msgid "Cannot load queue entries: %s"
+msgstr "Impossible de charger les entrées de la queue: %s"
+
+#: addons/goto/class_gotomasses.inc:40 addons/goto/class_gotomasses.inc:46
+msgid "Deployment queue"
+msgstr "File d'attente du déploiement"
+
+#: addons/goto/class_gotomasses.inc:41
+msgid "Provide a mechanism to automatically activate systems"
+msgstr "Procure un mécanisme pour activer un ensemble de systèmes automatiquement"
+
+#: addons/goto/class_gotomasses.inc:175
+msgid "immediately"
+msgstr "immédiatement"
+
+#: addons/goto/class_gotomasses.inc:190
+msgid "Waiting"
+msgstr "En attente"
+
+#: addons/goto/class_gotomasses.inc:193
+msgid "Show error"
+msgstr "Afficher les erreurs"
+
+#: addons/goto/class_gotomasses.inc:197
+msgid "Processed"
+msgstr "Terminé"
+
+#: addons/goto/class_gotomasses.inc:206
+msgid "in progress"
+msgstr "en cours"
+
+#: addons/goto/class_gotomasses.inc:227
+msgid "Permission"
+msgstr "Permissions"
+
+#: addons/goto/class_gotomasses.inc:258
+#, php-format
+msgid "The following jobs couldn't be deleted, they have to be aborted: %s"
+msgstr "Les jobs suivants ne peuvent pas être effacés, il doivent être annulés: %s"
+
+#: addons/goto/class_gotomasses.inc:305
+msgid "Info"
+msgstr "Info"
+
+#: addons/goto/class_gotomasses.inc:305
+#, php-format
+msgid "%s"
+msgstr "%s"
+
+#: addons/goto/class_gotomasses.inc:309
+#, php-format
+msgid "Required class '%s' cannot be found: job not aborted!"
+msgstr "La classe obligatoire '%s' n'a pas été trouvée: job non annulé !"
+
+#: addons/goto/class_gotomasses.inc:341
+msgid "Error detail"
+msgstr "Détail de l'erreur"
+
+#: addons/goto/class_gotomasses.inc:399
+#, php-format
+msgid "Cannot update queue entries."
+msgstr "Impossible de mettre à jour les files d'attentes."
+
+#: addons/goto/deploy-list.xml:10
+msgid "List of queued jobs"
+msgstr "Liste des tâches dans la queue"
+
+#: addons/goto/deploy-list.xml:45
+msgid "Task"
+msgstr "Tâches"
+
+#: addons/goto/deploy-list.xml:53
+msgid "Period"
+msgstr "Période"
+
+#: addons/goto/deploy-list.xml:77
+msgid "Actions"
+msgstr "Actions"
+
+#: addons/goto/deploy-list.xml:88
+msgid "Create"
+msgstr "Créer"
+
+#: addons/goto/deploy-list.xml:117 addons/goto/deploy-list.xml:174
+msgid "Abort"
+msgstr "Annuler"
+
+#: addons/goto/deploy-list.xml:128
+msgid "Execute"
+msgstr "Exécuter"
+
+#: addons/goto/deploy-list.xml:140
+msgid "Process now"
+msgstr "En cours"
+
+#: addons/goto/deploy-list.xml:148
+msgid "View logs"
+msgstr "Voir les journaux systèmes"
+
+#: addons/goto/deploy-list.xml:157
+msgid "Edit"
+msgstr "Editer"
+
+#: include/class_supportDaemon.inc:88
+msgid "Multiple argonaut server found. Only one is supported"
+msgstr "Plusieurs serveurs Argonaut on été trouvés. Un seul est supporté pour l'instant"
+
+#: include/class_supportDaemon.inc:90
+msgid "There is no argonaut server configured"
+msgstr "Il n'y a pas de serveur Argonaut configuré"

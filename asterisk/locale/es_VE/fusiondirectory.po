@@ -1,0 +1,1352 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: FusionDirectory\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
+"POT-Creation-Date: 2013-03-24 15:08+0100\n"
+"PO-Revision-Date: 2013-03-24 15:00+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: Spanish (Venezuela) (http://www.transifex.com/projects/p/FusionDirectory/language/es_VE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: es_VE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: admin/macro/macro-list.tpl:13 admin/macro/class_gofonMacro.inc:546
+#: admin/macro/generic.tpl:27 admin/conference/conf-list.tpl:13
+#: admin/conference/class_phoneConferenceGeneric.inc:703
+#: admin/conference/generic.tpl:49 admin/systems/asterisk/phone.tpl:17
+#: admin/systems/asterisk/class_phoneGeneric.inc:482
+msgid "Base"
+msgstr "Base"
+
+#: admin/macro/macro-list.xml:11
+msgid "List of macros"
+msgstr "Lista de macros"
+
+#: admin/macro/macro-list.xml:15 admin/macro/macro-list.xml:74
+msgid "Macro"
+msgstr "Macro"
+
+#: admin/macro/macro-list.xml:41 admin/macro/macro-filter.tpl:17
+#: admin/macro/class_gofonMacro.inc:395 admin/macro/class_gofonMacro.inc:406
+#: admin/macro/parameter.tpl:6 admin/conference/conf-list.xml:41
+#: admin/conference/class_phoneConferenceGeneric.inc:324
+#: admin/conference/class_phoneConferenceGeneric.inc:347
+#: admin/conference/class_phoneConferenceGeneric.inc:702
+#: admin/conference/conf-filter.tpl:17
+#: admin/systems/asterisk/class_phoneGeneric.inc:344
+#: admin/systems/asterisk/class_phoneGeneric.inc:348
+#: admin/systems/asterisk/class_phoneGeneric.inc:351
+#: admin/systems/asterisk/class_phoneGeneric.inc:366
+#: admin/systems/asterisk/class_phoneGeneric.inc:481
+msgid "Name"
+msgstr "Nombre"
+
+#: admin/macro/macro-list.xml:49 admin/macro/class_gofonMacro.inc:547
+#: admin/macro/generic.tpl:42 admin/conference/conf-list.xml:49
+#: admin/conference/class_phoneConferenceGeneric.inc:704
+#: admin/conference/generic.tpl:92 admin/systems/asterisk/phone.tpl:29
+#: admin/systems/asterisk/class_phoneGeneric.inc:483
+msgid "Description"
+msgstr "Descripción"
+
+#: admin/macro/macro-list.xml:57 admin/conference/conf-list.xml:57
+msgid "Actions"
+msgstr "Acciones"
+
+#: admin/macro/macro-list.xml:68 admin/conference/conf-list.xml:68
+msgid "Create"
+msgstr "Crear"
+
+#: admin/macro/macro-list.xml:86 admin/macro/macro-list.xml:125
+#: admin/conference/conf-list.xml:86 admin/conference/conf-list.xml:125
+msgid "Edit"
+msgstr "Editar"
+
+#: admin/macro/macro-list.xml:93 admin/macro/macro-list.xml:138
+#: admin/conference/conf-list.xml:93 admin/conference/conf-list.xml:138
+msgid "Remove"
+msgstr "Eliminar"
+
+#: admin/macro/macro-filter.tpl:3 admin/conference/conf-filter.tpl:3
+#: addons/fonreports/contents.tpl:2
+msgid "Filter"
+msgstr "Filtro"
+
+#: admin/macro/class_gofonMacro.inc:202
+#, php-format
+msgid ""
+"Macro could not be removed from server '%s', please check database "
+"consistency!"
+msgstr ""
+
+#: admin/macro/class_gofonMacro.inc:264
+#, php-format
+msgid "Application missing in line %s!"
+msgstr "¡La aplicación falla en linea %s!"
+
+#: admin/macro/class_gofonMacro.inc:267
+#, php-format
+msgid "Priority missing in line %s!"
+msgstr ""
+
+#: admin/macro/class_gofonMacro.inc:271
+#, php-format
+msgid "Extension missing in line %s!"
+msgstr "¡La extensión falla en linea %s!"
+
+#: admin/macro/class_gofonMacro.inc:281
+#, php-format
+msgid "Duplicate combination of 'extension' and 'priority' in line %s!"
+msgstr ""
+
+#: admin/macro/class_gofonMacro.inc:317
+#, php-format
+msgid ""
+"Macro could not be added to server '%s', please check database consistency!"
+msgstr ""
+
+#: admin/macro/class_gofonMacro.inc:343 admin/macro/class_gofonMacro.inc:452
+#: admin/macro/class_gofonMacro.inc:461 admin/macro/class_gofonMacro.inc:499
+#: admin/conference/class_phoneConferenceGeneric.inc:229
+#: admin/conference/class_phoneConferenceGeneric.inc:233
+#: admin/conference/class_phoneConferenceGeneric.inc:271
+#: admin/systems/asterisk/class_phoneGeneric.inc:267
+#: admin/systems/asterisk/class_phoneGeneric.inc:308
+#: admin/ogroups/asterisk/class_phonequeue.inc:787
+#: admin/ogroups/asterisk/class_phonequeue.inc:829
+#: addons/fonreports/class_fonreport.inc:220
+#: personal/phoneaccount/class_phoneAccount.inc:1047
+#: personal/phoneaccount/class_phoneAccount.inc:1167
+#: personal/phoneaccount/class_phoneAccount.inc:1173
+#: personal/phoneaccount/class_phoneAccount.inc:1386
+#: personal/phoneaccount/class_phoneAccount.inc:1468
+#: personal/phoneaccount/class_phoneAccount.inc:1546
+msgid "Error"
+msgstr "Error"
+
+#: admin/macro/class_gofonMacro.inc:381 admin/macro/class_gofonMacro.inc:465
+#: admin/conference/class_phoneConferenceGeneric.inc:369
+#: admin/ogroups/asterisk/class_phonequeue.inc:345
+#: admin/ogroups/asterisk/class_phonequeue.inc:696
+#: addons/fonreports/class_fonreport.inc:190
+#: addons/fonreports/class_fonreport.inc:220
+#: personal/phoneaccount/class_phoneAccount.inc:456
+#: personal/phoneaccount/class_phoneAccount.inc:1062
+msgid "GOfon"
+msgstr "GOfon"
+
+#: admin/macro/class_gofonMacro.inc:410
+msgid "Name can be 20 characters at maximum!"
+msgstr "¡El nombre tiene 20 caracteres como máximo!"
+
+#: admin/macro/class_gofonMacro.inc:419
+msgid "Macro is still in use!"
+msgstr "La macro está todavía en uso."
+
+#: admin/macro/class_gofonMacro.inc:426
+msgid "Macro is empty!"
+msgstr "¡La macro está vacía!"
+
+#: admin/macro/class_gofonMacro.inc:452
+#: admin/systems/asterisk/class_phoneGeneric.inc:267
+#, php-format
+msgid "Cannot delete entry because it is still in use by '%s'!"
+msgstr "¡No se puede eliminar la entrada porque está siendo usada por '%s'!"
+
+#: admin/macro/class_gofonMacro.inc:465
+#: addons/fonreports/class_fonreport.inc:190
+#: personal/phoneaccount/class_phoneAccount.inc:456
+#: personal/phoneaccount/class_phoneAccount.inc:1062
+#: personal/phoneaccount/class_phoneAccount.inc:1585
+msgid "Configuration error"
+msgstr "Error en la configuración"
+
+#: admin/macro/class_gofonMacro.inc:473 admin/macro/class_gofonMacro.inc:484
+#: admin/macro/class_gofonMacro.inc:521
+#: admin/macro/class_gofonMacroParameters.inc:435
+#: admin/conference/class_phoneConferenceGeneric.inc:682
+#: admin/systems/services/asterisk/class_serviceAsterisk.inc:107
+#: admin/systems/asterisk/class_phoneGeneric.inc:277
+#: admin/systems/asterisk/class_phoneGeneric.inc:432
+#: admin/systems/asterisk/class_phoneGeneric.inc:446
+#: admin/systems/asterisk/class_phoneGeneric.inc:463
+#: admin/ogroups/asterisk/class_phonequeue.inc:802
+#: admin/ogroups/asterisk/class_phonequeue.inc:857
+#: personal/phoneaccount/class_phoneAccount.inc:1494
+#: personal/phoneaccount/class_phoneAccount.inc:1627
+msgid "LDAP error"
+msgstr "Error LDAP"
+
+#: admin/macro/class_gofonMacro.inc:536
+#: admin/systems/asterisk/class_phoneGeneric.inc:472
+msgid "Generic"
+msgstr "Genérico"
+
+#: admin/macro/class_gofonMacro.inc:537
+msgid "Asterisk macro management"
+msgstr "Administración de macros de Asterisk"
+
+#: admin/macro/class_gofonMacro.inc:539
+msgid "GOfon macro"
+msgstr "Macro GOfon"
+
+#: admin/macro/class_gofonMacro.inc:541
+msgid "Asterisk macro"
+msgstr ""
+
+#: admin/macro/class_gofonMacro.inc:545 admin/macro/paste_generic.tpl:4
+#: admin/macro/paste_generic.tpl:6 admin/macro/generic.tpl:6
+#: admin/macro/generic.tpl:9
+msgid "Macro name"
+msgstr "Nombre de la macro"
+
+#: admin/macro/class_gofonMacro.inc:548 admin/macro/generic.tpl:14
+msgid "Display name"
+msgstr "Nombre a Mostrar"
+
+#: admin/macro/class_gofonMacro.inc:549
+msgid "Macro content and parameter"
+msgstr "Contenido y parámetros de la macro"
+
+#: admin/macro/class_gofonMacro.inc:550
+msgid "Visibility flag"
+msgstr "Atributo de visibilidad"
+
+#: admin/macro/parameter.tpl:4
+msgid "Argument"
+msgstr "Argumento"
+
+#: admin/macro/parameter.tpl:8
+msgid "type"
+msgstr "tipo"
+
+#: admin/macro/parameter.tpl:10
+msgid "Default value"
+msgstr "Valor por defecto"
+
+#: admin/macro/parameter.tpl:19
+msgid "You are not allowed to view the macro parameter settings"
+msgstr "No tiene permisos para ver la configuración de parámetros de la macro"
+
+#: admin/macro/remove.tpl:2
+#: admin/conference/class_phoneConferenceGeneric.inc:399
+#: admin/conference/remove.tpl:2
+#: personal/phoneaccount/class_phoneAccount.inc:347
+#: personal/phoneaccount/class_phoneAccount.inc:360
+#: personal/phoneaccount/class_phoneAccount.inc:618
+#: personal/phoneaccount/class_phoneAccount.inc:657
+#: personal/phoneaccount/class_phoneAccount.inc:1537
+#: personal/phoneaccount/class_phoneAccount.inc:1713
+msgid "Warning"
+msgstr "Aviso"
+
+#: admin/macro/remove.tpl:6 admin/conference/remove.tpl:6
+msgid ""
+"Please double check if you really want to do this since there is no way for "
+"FusionDirectory to get your data back."
+msgstr "Por favor verifique que realmente desea hacer esto ya que FusionDirectory no tiene forma de recuperar la data"
+
+#: admin/macro/remove.tpl:10 admin/conference/remove.tpl:10
+msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
+msgstr "Entonces, si esta seguro, presione <i>Eliminar</i> para continuar o <i>Cancelar</i> para Abortar."
+
+#: admin/macro/class_gofonMacroParameters.inc:58
+#: personal/phoneaccount/class_phoneAccount.inc:1072
+msgid "Parameter"
+msgstr "Parámetro"
+
+#: admin/macro/class_gofonMacroParameters.inc:59
+msgid "Asterisk macro parameter"
+msgstr ""
+
+#: admin/macro/class_gofonMacroParameters.inc:234
+#: personal/phoneaccount/generic.tpl:125 personal/phoneaccount/generic.tpl:127
+msgid "Phone macro"
+msgstr "Macro telefónica"
+
+#: admin/macro/class_gofonMacroParameters.inc:290
+msgid "String"
+msgstr "Cadena de texto"
+
+#: admin/macro/class_gofonMacroParameters.inc:291
+msgid "Combobox"
+msgstr "Cuadro combinado"
+
+#: admin/macro/class_gofonMacroParameters.inc:292
+msgid "Bool"
+msgstr "Booleano"
+
+#: admin/macro/class_gofonMacroParameters.inc:298
+msgid "Delete unused"
+msgstr "Eliminar sin usar"
+
+#: admin/macro/class_gofonMacroParameters.inc:374
+#, php-format
+msgid "Parameter %s contains invalid character. '!,#' is used as delimiter!"
+msgstr "¡El campo '%s' tiene caracteres no validos, '!,#' son usados como delimitadores!"
+
+#: admin/macro/class_gofonMacroParameters.inc:379
+#, php-format
+msgid "Parameter %s is invalid!"
+msgstr "¡El parámetro '%s' no es válido!"
+
+#: admin/macro/class_gofonMacroParameters.inc:408
+#: personal/phoneaccount/class_phoneAccount.inc:1618
+msgid "Information"
+msgstr "Información"
+
+#: admin/macro/class_gofonMacroParameters.inc:408
+msgid ""
+"Number of parameters for this macro has changed. Please update all users "
+"using it!"
+msgstr "El número de parámetros para esta macro ha cambiado. ¡Por favor actualice todos los usuarios que la usen!"
+
+#: admin/macro/generic.tpl:18
+msgid "Macro name to be displayed"
+msgstr "Nombre con el que se mostrara la macro"
+
+#: admin/macro/generic.tpl:53
+msgid "Visible for user"
+msgstr "Visible para el usuario"
+
+#: admin/macro/generic.tpl:63
+msgid "Macro text"
+msgstr "Macro de texto"
+
+#: admin/macro/class_gofonMacroManagement.inc:36
+msgid "Macros"
+msgstr "Macros"
+
+#: admin/macro/class_gofonMacroManagement.inc:37
+msgid "Macros management"
+msgstr ""
+
+#: admin/conference/conf-list.xml:11
+msgid "List of conference rooms"
+msgstr "Lista de grupos de conferencias"
+
+#: admin/conference/conf-list.xml:15 admin/conference/conf-list.xml:74
+#: admin/conference/class_phoneConferenceGeneric.inc:693
+msgid "Conference"
+msgstr "Conferencia"
+
+#: admin/conference/class_phoneConferenceGeneric.inc:104
+#: admin/ogroups/asterisk/class_phonequeue.inc:110
+#: personal/phoneaccount/class_phoneAccount.inc:149
+msgid "Obsolete entry"
+msgstr "Entrada obsoleta"
+
+#: admin/conference/class_phoneConferenceGeneric.inc:104
+#: admin/ogroups/asterisk/class_phonequeue.inc:110
+#: personal/phoneaccount/class_phoneAccount.inc:149
+#, php-format
+msgid ""
+"The current home server is not available anymore. It will be moved to '%s' "
+"if you save this entry!"
+msgstr "El servidor actual no está disponible. ¡Será movido a '%s' si usted guarda esta entrada!"
+
+#: admin/conference/class_phoneConferenceGeneric.inc:233
+#, php-format
+msgid "Cannot delete entry from server '%s' because it seems to be removed!"
+msgstr "¡No se puede eliminar la entrada del servidor '%s' porque ha sido eliminada!"
+
+#: admin/conference/class_phoneConferenceGeneric.inc:308
+#, php-format
+msgid ""
+"The previously selected asterisk home server '%s' is no longer available!"
+msgstr "¡El servidor principal asterisk seleccionado previamente ('%s) no está disponible!"
+
+#: admin/conference/class_phoneConferenceGeneric.inc:315
+#: admin/conference/generic.tpl:159
+msgid "PIN"
+msgstr "PIN"
+
+#: admin/conference/class_phoneConferenceGeneric.inc:328
+#: admin/ogroups/asterisk/class_phonequeue.inc:293
+msgid "Number"
+msgstr "Número"
+
+#: admin/conference/class_phoneConferenceGeneric.inc:333
+#: admin/conference/class_phoneConferenceGeneric.inc:719
+msgid "Lifetime"
+msgstr "Duración"
+
+#: admin/conference/class_phoneConferenceGeneric.inc:400
+#, php-format
+msgid ""
+"FusionDirectory identified problems with your MySQL table definition, please"
+" activate debugging for details."
+msgstr ""
+
+#: admin/conference/class_phoneConferenceGeneric.inc:606
+#: admin/conference/class_phoneConferenceGeneric.inc:608
+#, php-format
+msgid "'%s' is already assigned to '%s'!"
+msgstr "¡'%s' está ya asignado a '%s'!"
+
+#: admin/conference/class_phoneConferenceGeneric.inc:694
+msgid "Phone conference management"
+msgstr "Administración de conferencia telefónica"
+
+#: admin/conference/class_phoneConferenceGeneric.inc:696
+msgid "GOfon conference"
+msgstr "Conferencia GOfon"
+
+#: admin/conference/class_phoneConferenceGeneric.inc:698
+msgid "Asterisk conference"
+msgstr ""
+
+#: admin/conference/class_phoneConferenceGeneric.inc:705
+msgid "Conference PIN"
+msgstr "PIN de conferencia"
+
+#: admin/conference/class_phoneConferenceGeneric.inc:707
+#: admin/conference/generic.tpl:72
+#: admin/ogroups/asterisk/class_phonequeue.inc:892
+#: admin/ogroups/asterisk/phonequeue.tpl:62
+msgid "Language"
+msgstr "Idioma"
+
+#: admin/conference/class_phoneConferenceGeneric.inc:709
+#: admin/conference/generic.tpl:62
+#: admin/ogroups/asterisk/class_phonequeue.inc:275
+#: admin/ogroups/asterisk/class_phonequeue.inc:873
+#: admin/ogroups/asterisk/phonequeue.tpl:50
+#: personal/phoneaccount/class_phoneAccount.inc:1368
+#: personal/phoneaccount/class_phoneAccount.inc:1687
+#: personal/phoneaccount/generic.tpl:58
+msgid "Home server"
+msgstr "Servidor de inicio"
+
+#: admin/conference/class_phoneConferenceGeneric.inc:710
+#: admin/conference/generic.tpl:151
+msgid "Preset PIN"
+msgstr "PIN configurado"
+
+#: admin/conference/class_phoneConferenceGeneric.inc:711
+#: admin/conference/generic.tpl:171
+msgid "Record conference"
+msgstr "Grabar conferencia"
+
+#: admin/conference/class_phoneConferenceGeneric.inc:712
+#: admin/conference/generic.tpl:202
+msgid "Play music on hold"
+msgstr "Poner música en espera"
+
+#: admin/conference/class_phoneConferenceGeneric.inc:713
+msgid "Activate menu"
+msgstr "Activar menú"
+
+#: admin/conference/class_phoneConferenceGeneric.inc:714
+msgid "Announce user activity"
+msgstr "Anunciar actividad de usuario"
+
+#: admin/conference/class_phoneConferenceGeneric.inc:715
+msgid "Count user"
+msgstr "Cuenta de usuario"
+
+#: admin/conference/class_phoneConferenceGeneric.inc:716
+msgid "Conference type"
+msgstr "Tipo de conferencia"
+
+#: admin/conference/class_phoneConferenceGeneric.inc:718
+msgid "Format"
+msgstr "Formato"
+
+#: admin/conference/class_phoneConferenceGeneric.inc:720
+#: personal/phoneaccount/class_phoneAccount.inc:1684
+msgid "Telephone number"
+msgstr "Número de teléfono"
+
+#: admin/conference/class_phoneConferenceGeneric.inc:721
+msgid "Owner"
+msgstr "Propietario"
+
+#: admin/conference/paste_generic.tpl:5 admin/conference/generic.tpl:15
+msgid "Conference name"
+msgstr "Nombre de Conferencia"
+
+#: admin/conference/paste_generic.tpl:10 admin/conference/generic.tpl:21
+msgid "Name of conference to create"
+msgstr "Nombre del Conferencia para crear"
+
+#: admin/conference/paste_generic.tpl:15 admin/conference/generic.tpl:114
+#: personal/phoneaccount/class_phoneAccount.inc:1412
+msgid "Phone number"
+msgstr "Número de teléfono"
+
+#: admin/conference/class_phoneConferenceManagment.inc:36
+msgid "Conferences"
+msgstr ""
+
+#: admin/conference/class_phoneConferenceManagment.inc:37
+msgid "Conference management"
+msgstr "Administración de conferencia"
+
+#: admin/conference/generic.tpl:5
+msgid "Properties"
+msgstr "Propiedades"
+
+#: admin/conference/generic.tpl:28
+msgid "Type"
+msgstr "Tipo"
+
+#: admin/conference/generic.tpl:35
+msgid "Choose subtree to place conference in"
+msgstr "Elija el subárbol donde colocar la conferencia"
+
+#: admin/conference/generic.tpl:76
+msgid "Select language"
+msgstr "Selección de idiomas"
+
+#: admin/conference/generic.tpl:98
+msgid "Descriptive text for department"
+msgstr "Descripción del departamento"
+
+#: admin/conference/generic.tpl:104
+msgid "Lifetime (in days)"
+msgstr "Duración (en días)"
+
+#: admin/conference/generic.tpl:135 admin/ogroups/asterisk/phonequeue.tpl:47
+msgid "Options"
+msgstr "Opciones"
+
+#: admin/conference/generic.tpl:179
+msgid "Sound file format"
+msgstr "Formato del archivo de audio"
+
+#: admin/conference/generic.tpl:182
+msgid "Choose subtree to place department in"
+msgstr "Elija subárbol para colocar el departamento"
+
+#: admin/conference/generic.tpl:210
+msgid "Activate session menu"
+msgstr "Activar menú de sesión"
+
+#: admin/conference/generic.tpl:218
+msgid "Announce users joining or leaving the conference"
+msgstr "Avisar de usuarios que se unen o dejan la conferencia"
+
+#: admin/conference/generic.tpl:226
+msgid "Count users"
+msgstr "Contar usuarios"
+
+#: admin/systems/services/asterisk/class_serviceAsterisk.inc:35
+msgid "VoIP database information"
+msgstr "Información de base de datos VoIP"
+
+#: admin/systems/services/asterisk/class_serviceAsterisk.inc:38
+msgid "Asterisk DB user"
+msgstr "Base de datos de usuarios Asterisk"
+
+#: admin/systems/services/asterisk/class_serviceAsterisk.inc:38
+msgid "Login for asterisk database administrator"
+msgstr ""
+
+#: admin/systems/services/asterisk/class_serviceAsterisk.inc:42
+msgid "Password"
+msgstr "Contraseña"
+
+#: admin/systems/services/asterisk/class_serviceAsterisk.inc:42
+msgid "Password for asterisk database administrator"
+msgstr ""
+
+#: admin/systems/services/asterisk/class_serviceAsterisk.inc:46
+msgid "Country dial prefix"
+msgstr "Prefijo de marcado nacional"
+
+#: admin/systems/services/asterisk/class_serviceAsterisk.inc:50
+msgid "Local dial prefix"
+msgstr "Prefijo de marcado local"
+
+#: admin/systems/services/asterisk/class_serviceAsterisk.inc:81
+#, php-format
+msgid ""
+"You can't remove the asterisk database extension, it is still in use by "
+"these objects '%s'."
+msgstr "No puede eliminar la extensión de base de datos asterisk, esta todavía en use por los objetos '%s'."
+
+#: admin/systems/services/asterisk/class_serviceAsterisk.inc:126
+msgid "VoIP service (asterisk)"
+msgstr ""
+
+#: admin/systems/services/asterisk/class_serviceAsterisk.inc:127
+msgid "VoIP - asterisk management"
+msgstr "VoIP - Administración de Asterisk PBX"
+
+#: admin/systems/services/asterisk/class_serviceAsterisk.inc:127
+msgid "Services"
+msgstr "Servicios"
+
+#: admin/systems/asterisk/phone.tpl:6
+msgid "Phone name"
+msgstr "Número de teléfono"
+
+#: admin/systems/asterisk/class_phoneGeneric.inc:151
+msgid "phone"
+msgstr "Teléfono"
+
+#: admin/systems/asterisk/class_phoneGeneric.inc:230
+msgid "yes"
+msgstr "si"
+
+#: admin/systems/asterisk/class_phoneGeneric.inc:230
+msgid "no"
+msgstr "no"
+
+#: admin/systems/asterisk/class_phoneGeneric.inc:247
+msgid "dynamic"
+msgstr "dinámico"
+
+#: admin/systems/asterisk/class_phoneGeneric.inc:247
+msgid "Networksettings"
+msgstr "Configuración de red"
+
+#: admin/systems/asterisk/class_phoneGeneric.inc:330
+#: admin/systems/asterisk/class_phoneGeneric.inc:333
+msgid "IP address"
+msgstr "Dirección IP"
+
+#: admin/systems/asterisk/class_phoneGeneric.inc:473
+msgid "Phone generic"
+msgstr "Teléfono genérico"
+
+#: admin/systems/asterisk/class_phoneGeneric.inc:475
+#: personal/phoneaccount/class_phoneAccount.inc:1686
+msgid "Phone hardware"
+msgstr "Teléfono hardware"
+
+#: admin/systems/asterisk/class_phoneGeneric.inc:477
+#: admin/ogroups/asterisk/class_phonequeue.inc:864
+#: personal/phoneaccount/class_phoneAccount.inc:1000
+#: personal/phoneaccount/class_phoneAccount.inc:1013
+#: personal/phoneaccount/class_phoneAccount.inc:1025
+#: personal/phoneaccount/class_phoneAccount.inc:1029
+#: personal/phoneaccount/class_phoneAccount.inc:1032
+#: personal/phoneaccount/class_phoneAccount.inc:1675
+msgid "Phone"
+msgstr "Teléfono"
+
+#: admin/systems/asterisk/class_phoneGeneric.inc:484
+msgid "SIP Mode"
+msgstr "Modo SIP"
+
+#: admin/systems/asterisk/class_phoneGeneric.inc:485
+msgid "SIP DTMF mode"
+msgstr "Modo SIP DTMF"
+
+#: admin/systems/asterisk/class_phoneGeneric.inc:486
+msgid "SIP Default ip"
+msgstr "Dirección IP por defecto de SIP"
+
+#: admin/systems/asterisk/class_phoneGeneric.inc:487
+msgid "SIP Qualify"
+msgstr "Capacidad SIP"
+
+#: admin/systems/asterisk/class_phoneGeneric.inc:488
+msgid "IAX authentication type"
+msgstr "Tipo de autentificación IAX"
+
+#: admin/systems/asterisk/class_phoneGeneric.inc:489
+msgid "IAX secret"
+msgstr "contraseña IAX"
+
+#: admin/systems/asterisk/class_phoneGeneric.inc:490
+msgid "IAX account code"
+msgstr "Código de cuenta IAX"
+
+#: admin/systems/asterisk/class_phoneGeneric.inc:491
+msgid "IAX trunk lines"
+msgstr "Lineas troncales IAX"
+
+#: admin/systems/asterisk/class_phoneGeneric.inc:492
+msgid "IAX permit settings"
+msgstr "Configuración permitida IAX"
+
+#: admin/systems/asterisk/class_phoneGeneric.inc:493
+msgid "IAX deny settings"
+msgstr "Configuración denegada IAX"
+
+#: admin/systems/asterisk/class_phoneGeneric.inc:494
+msgid "CAPI MSN"
+msgstr "CAPI MSN"
+
+#: admin/systems/asterisk/class_phoneGeneric.inc:495
+msgid "Hardware type"
+msgstr "Tipo de hardware"
+
+#: admin/systems/asterisk/phonesettings.tpl:1
+msgid "Advanced phone settings"
+msgstr "Configuración telefónica avanzada"
+
+#: admin/systems/asterisk/phonesettings.tpl:6
+msgid "Phone type"
+msgstr "Tipo de teléfono"
+
+#: admin/systems/asterisk/phonesettings.tpl:8
+#: admin/systems/asterisk/phonesettings.tpl:30
+#: admin/systems/asterisk/phonesettings.tpl:42
+#: admin/systems/asterisk/phonesettings.tpl:58
+#: admin/systems/asterisk/phonesettings.tpl:91
+#: admin/systems/asterisk/phonesettings.tpl:128
+#: admin/systems/asterisk/phonesettings.tpl:181
+msgid "Choose a phone type"
+msgstr "Elija tipo de teléfono"
+
+#: admin/systems/asterisk/phonesettings.tpl:13
+msgid "refresh"
+msgstr "refresco"
+
+#: admin/systems/asterisk/phonesettings.tpl:25
+msgid "Mode"
+msgstr "Modo"
+
+#: admin/systems/asterisk/phonesettings.tpl:38
+msgid "DTMF mode"
+msgstr "Modo DTMF"
+
+#: admin/systems/asterisk/phonesettings.tpl:54
+#: admin/systems/asterisk/phonesettings.tpl:99
+msgid "Default IP"
+msgstr "Dirección IP por defecto"
+
+#: admin/systems/asterisk/phonesettings.tpl:66
+#: admin/systems/asterisk/phonesettings.tpl:109
+msgid "Response timeout"
+msgstr "Tiempo máximo de respuesta"
+
+#: admin/systems/asterisk/phonesettings.tpl:87
+msgid "Modus"
+msgstr "Modo"
+
+#: admin/systems/asterisk/phonesettings.tpl:124
+msgid "Authtype"
+msgstr "Tipo de autenticación"
+
+#: admin/systems/asterisk/phonesettings.tpl:136
+msgid "Secret"
+msgstr "Secreto"
+
+#: admin/systems/asterisk/phonesettings.tpl:146
+msgid "GoFonInkeys"
+msgstr "GoFonInkeys"
+
+#: admin/systems/asterisk/phonesettings.tpl:154
+msgid "GoFonOutKeys"
+msgstr "GoFonOutKeys"
+
+#: admin/systems/asterisk/phonesettings.tpl:167
+msgid "Account code"
+msgstr "Código de cuenta"
+
+#: admin/systems/asterisk/phonesettings.tpl:177
+msgid "Trunk lines"
+msgstr "Lineas troncales"
+
+#: admin/systems/asterisk/phonesettings.tpl:194
+msgid "Hosts that are allowed to connect"
+msgstr "Equipos/Redes que tienen permiso para conectar"
+
+#: admin/systems/asterisk/phonesettings.tpl:197
+#: admin/systems/asterisk/phonesettings.tpl:220
+msgid "List of alternative mail addresses"
+msgstr "Lista de direcciones de correo alternativas."
+
+#: admin/systems/asterisk/phonesettings.tpl:217
+msgid "Hosts that are not allowed to connect"
+msgstr "Equipos/Redes que no tienen permisos para conectar"
+
+#: admin/systems/asterisk/phonesettings.tpl:247
+msgid "MSN"
+msgstr "MSN"
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:140
+msgid "ring all"
+msgstr "llamar a todos"
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:141
+msgid "round robin"
+msgstr "round robin"
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:142
+msgid "least recently called"
+msgstr "que han llamado lo menos posible recientemente"
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:143
+msgid "fewest completed calls"
+msgstr "pocas llamadas terminadas"
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:144
+msgid "random"
+msgstr "al azar"
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:145
+msgid "round robin with memory"
+msgstr "round robin en memoria"
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:180
+msgid "Remove the phone queue from this Account"
+msgstr "Eliminar la cola telefónica de esta cuenta"
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:181
+#: admin/ogroups/asterisk/class_phonequeue.inc:184
+msgid "phone queue"
+msgstr "cola telefónica"
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:183
+msgid "Create phone queue"
+msgstr "Crear cola telefónica"
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:272
+msgid ""
+"There must be at least one server with an asterisk database to create a "
+"phone queue."
+msgstr "Debe haber al menos una base de datos asterisk para crear una cola telefónica."
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:281
+#: admin/ogroups/asterisk/class_phonequeue.inc:871
+#: admin/ogroups/asterisk/phonequeue.tpl:75
+msgid "Timeout"
+msgstr "Desconexión por tiempo"
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:284
+#: admin/ogroups/asterisk/class_phonequeue.inc:896
+#: admin/ogroups/asterisk/phonequeue.tpl:85
+msgid "Retry"
+msgstr "Reintento"
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:287
+msgid "Queue length"
+msgstr "Longitud de la cola"
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:290
+#: admin/ogroups/asterisk/class_phonequeue.inc:874
+#: admin/ogroups/asterisk/phonequeue.tpl:119
+msgid "Announce frequency"
+msgstr "Frecuencia de aviso"
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:316
+#: admin/ogroups/asterisk/class_phonequeue.inc:361
+msgid "asterisk"
+msgstr "asterisk"
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:401
+msgid "Cannot find old queue entry!"
+msgstr "¡No se puede encontrar la entrada de la cola anterior!"
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:487
+#, php-format
+msgid ""
+"Found more than one entry named '%s' in queue table. Please inform your "
+"system administrator!"
+msgstr "Se ha encontrado mas de una entrada llamada '%s'. ¡Por favor contacte con su administrador de sistemas!"
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:728
+#: admin/ogroups/asterisk/class_phonequeue.inc:730
+msgid "telephone number"
+msgstr "número de teléfono"
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:865
+msgid "Phone group"
+msgstr "Grupos telefónico"
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:872
+#: admin/ogroups/asterisk/phonequeue.tpl:109
+msgid "Max queue length"
+msgstr "Longitud máxima de la cola"
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:875
+#: admin/ogroups/asterisk/phonequeue.tpl:285
+msgid "Allow the called user to transfer his call"
+msgstr "Permitir al receptor el transferir su llamada"
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:876
+#: admin/ogroups/asterisk/phonequeue.tpl:293
+msgid "Allows calling user to transfer call"
+msgstr "Permitir al emisor el transferir su llamada"
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:877
+#: admin/ogroups/asterisk/phonequeue.tpl:305
+msgid "Allow the called to hangup by pressing *"
+msgstr "Permitir al receptor colgar presionando *"
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:878
+#: admin/ogroups/asterisk/phonequeue.tpl:321
+msgid "Ring instead of playing background music"
+msgstr "Sonar en vez de poner música de fondo"
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:879
+#: admin/ogroups/asterisk/phonequeue.tpl:313
+msgid "Allows calling to hangup by pressing *"
+msgstr "Permitir al emisor colgar presionando *"
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:881
+#: admin/ogroups/asterisk/phonequeue.tpl:149
+msgid "Music on hold"
+msgstr "Música en espera"
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:882
+msgid "Welcome music"
+msgstr "Música de bienvenida"
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:883
+msgid "Report hold time"
+msgstr "Informe de tiempos de espera"
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:884
+msgid "'You are next' sound"
+msgstr "Sonido de 'Eres el siguiente'"
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:885
+msgid "'There are' sound"
+msgstr "Sonido de 'Hay'"
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:886
+msgid "'Call waiting' sound"
+msgstr "Sonido de 'Llamada en espera'"
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:887
+msgid "'Thank you' sound"
+msgstr "Sonido de 'Gracias'"
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:888
+msgid "'Minutes' sound"
+msgstr "Sonido de 'minutos'"
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:889
+msgid "'Seconds' sound"
+msgstr "Sonido de 'segundos'"
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:890
+msgid "'Less than' sound"
+msgstr "Sonido de 'menos que'"
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:891
+msgid "Queue phone number"
+msgstr "Número de cola telefónica"
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:893
+msgid "Method"
+msgstr "Método"
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:894
+#: admin/ogroups/asterisk/phonequeue.tpl:277
+msgid "Announce holdtime"
+msgstr "Tiempo de espera de presentación"
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:895
+msgid "Announce"
+msgstr "Anuncio"
+
+#: admin/ogroups/asterisk/phonequeue.tpl:2
+msgid ""
+"Only users with the same asterisk home server will be included to this "
+"queue."
+msgstr "Los usuarios con el mismo servidor principal asterisk serán incluidos en esta cola."
+
+#: admin/ogroups/asterisk/phonequeue.tpl:5
+msgid "Queue Settings"
+msgstr "Configuración de la cola"
+
+#: admin/ogroups/asterisk/phonequeue.tpl:8
+#: personal/phoneaccount/paste_generic.tpl:2
+#: personal/phoneaccount/paste_generic.tpl:6
+#: personal/phoneaccount/generic.tpl:1 personal/phoneaccount/generic.tpl:6
+msgid "Phone numbers"
+msgstr "Números de teléfonos"
+
+#: admin/ogroups/asterisk/phonequeue.tpl:12
+#: admin/ogroups/asterisk/phonequeue.tpl:135
+msgid "Generic queue Settings"
+msgstr "Configuración genérica de la cola"
+
+#: admin/ogroups/asterisk/phonequeue.tpl:24
+msgid "Up"
+msgstr "Arriba"
+
+#: admin/ogroups/asterisk/phonequeue.tpl:27
+msgid "Down"
+msgstr "Abajo"
+
+#: admin/ogroups/asterisk/phonequeue.tpl:95
+msgid "Strategy"
+msgstr "Estrategia"
+
+#: admin/ogroups/asterisk/phonequeue.tpl:125
+msgid "(in seconds)"
+msgstr "(en segundos)"
+
+#: admin/ogroups/asterisk/phonequeue.tpl:133
+msgid "Queue sound setup"
+msgstr "Configuración de los sonidos de la cola"
+
+#: admin/ogroups/asterisk/phonequeue.tpl:138
+msgid "Use music on hold instead of ringing"
+msgstr "Usar Poner música en espera en vez de timbre de aviso"
+
+#: admin/ogroups/asterisk/phonequeue.tpl:159
+msgid "Welcome sound file"
+msgstr "Archivo de audio de Bienvenida"
+
+#: admin/ogroups/asterisk/phonequeue.tpl:169
+msgid "Announce message"
+msgstr "Mensaje de presentación"
+
+#: admin/ogroups/asterisk/phonequeue.tpl:179
+msgid "Sound file for 'You are next ...'"
+msgstr "Archivo de audio para 'Usted es el siguiente...'"
+
+#: admin/ogroups/asterisk/phonequeue.tpl:189
+msgid "'There are ...'"
+msgstr "'Hay...'"
+
+#: admin/ogroups/asterisk/phonequeue.tpl:199
+msgid "'... calls waiting'"
+msgstr "'... llamadas esperando'"
+
+#: admin/ogroups/asterisk/phonequeue.tpl:209
+msgid "'Thank you' message"
+msgstr "Mensaje de Despedida"
+
+#: admin/ogroups/asterisk/phonequeue.tpl:219
+msgid "'minutes' sound file"
+msgstr "Archivo de audio 'minutos'"
+
+#: admin/ogroups/asterisk/phonequeue.tpl:229
+msgid "'seconds' sound file"
+msgstr "Archivo de audio 'segundos'"
+
+#: admin/ogroups/asterisk/phonequeue.tpl:239
+msgid "Hold sound file"
+msgstr "Archivo de audio de espera"
+
+#: admin/ogroups/asterisk/phonequeue.tpl:249
+msgid "Less Than sound file"
+msgstr "Archivo de audio Menos Que"
+
+#: admin/ogroups/asterisk/phonequeue.tpl:267
+msgid "Phone attributes "
+msgstr "Características del Teléfono"
+
+#: addons/fonreports/main.inc:46 addons/fonreports/class_fonreport.inc:418
+#: addons/fonreports/class_fonreport.inc:419
+#: addons/fonreports/class_fonreport.inc:424
+msgid "Phone reports"
+msgstr "Informes telefónicos"
+
+#: addons/fonreports/class_fonreport.inc:232
+msgid "Insufficient permissions"
+msgstr "Permisos insuficientes"
+
+#: addons/fonreports/class_fonreport.inc:251
+msgid "Y-M-D"
+msgstr "Y-M-D"
+
+#: addons/fonreports/class_fonreport.inc:419
+msgid "All entries are readonly"
+msgstr "Todas las entradas son solo lectura"
+
+#: addons/fonreports/class_fonreport.inc:428 addons/fonreports/contents.tpl:34
+msgid "Date"
+msgstr "Fecha"
+
+#: addons/fonreports/class_fonreport.inc:429 addons/fonreports/contents.tpl:35
+msgid "Source"
+msgstr "Origen"
+
+#: addons/fonreports/class_fonreport.inc:430 addons/fonreports/contents.tpl:36
+msgid "Destination"
+msgstr "Destino"
+
+#: addons/fonreports/class_fonreport.inc:431 addons/fonreports/contents.tpl:37
+msgid "Channel"
+msgstr "Canal"
+
+#: addons/fonreports/class_fonreport.inc:432
+msgid "Application called"
+msgstr "Aplicación llamada"
+
+#: addons/fonreports/class_fonreport.inc:433
+msgid "Disposition"
+msgstr "Disposición"
+
+#: addons/fonreports/class_fonreport.inc:434 addons/fonreports/contents.tpl:40
+msgid "Duration"
+msgstr "Duración"
+
+#: addons/fonreports/contents.tpl:6
+msgid "Search for"
+msgstr "Buscar por"
+
+#: addons/fonreports/contents.tpl:7
+msgid "Enter user name to search for"
+msgstr "Introduzca el nombre de usuario para la búsqueda"
+
+#: addons/fonreports/contents.tpl:8 addons/fonreports/contents.tpl:20
+msgid "in"
+msgstr "en"
+
+#: addons/fonreports/contents.tpl:9
+msgid "Select subtree to base search on"
+msgstr "Seleccione el subárbol como base de la búsqueda"
+
+#: addons/fonreports/contents.tpl:12
+msgid "on"
+msgstr "activo"
+
+#: addons/fonreports/contents.tpl:13
+msgid "Select server to search on"
+msgstr "Seleccione el servidor sobre el que buscar"
+
+#: addons/fonreports/contents.tpl:16
+msgid "during"
+msgstr "durante"
+
+#: addons/fonreports/contents.tpl:25
+msgid "Search"
+msgstr "Buscar"
+
+#: addons/fonreports/contents.tpl:38
+msgid "Application"
+msgstr "Aplicación"
+
+#: addons/fonreports/contents.tpl:39
+msgid "Status"
+msgstr "Estado"
+
+#: addons/fonreports/contents.tpl:55
+msgid "Search returned no results..."
+msgstr "La búsqueda no ha encontrado resultados..."
+
+#: config/asterisk/class_asteriskPluginConfig.inc:28
+msgid "Asterisk"
+msgstr ""
+
+#: config/asterisk/class_asteriskPluginConfig.inc:29
+msgid "Asterisk plugin configuration"
+msgstr ""
+
+#: config/asterisk/class_asteriskPluginConfig.inc:41
+msgid "LDAP tree"
+msgstr ""
+
+#: config/asterisk/class_asteriskPluginConfig.inc:44
+msgid "Phone RDN"
+msgstr ""
+
+#: config/asterisk/class_asteriskPluginConfig.inc:44
+msgid "Branch in which phones will be stored"
+msgstr ""
+
+#: config/asterisk/class_asteriskPluginConfig.inc:49
+msgid "Phone Macro RDN"
+msgstr ""
+
+#: config/asterisk/class_asteriskPluginConfig.inc:49
+msgid "Branch in which phone macros will be stored"
+msgstr ""
+
+#: config/asterisk/class_asteriskPluginConfig.inc:54
+msgid "Phone Conference RDN"
+msgstr ""
+
+#: config/asterisk/class_asteriskPluginConfig.inc:54
+msgid "Branch in which phone conferences will be stored"
+msgstr ""
+
+#: config/asterisk/class_asteriskPluginConfig.inc:61
+msgid "Miscellaneous"
+msgstr "Varios"
+
+#: config/asterisk/class_asteriskPluginConfig.inc:65
+msgid "SIP contexts"
+msgstr ""
+
+#: config/asterisk/class_asteriskPluginConfig.inc:65
+msgid "Available SIP contexts"
+msgstr ""
+
+#: config/asterisk/class_asteriskPluginConfig.inc:72
+msgid "Voicemail contexts"
+msgstr ""
+
+#: config/asterisk/class_asteriskPluginConfig.inc:72
+msgid "Available voicemail contexts"
+msgstr ""
+
+#: personal/phoneaccount/class_phoneAccount.inc:177
+msgid "automatic"
+msgstr "automático"
+
+#: personal/phoneaccount/class_phoneAccount.inc:213
+msgid "no macro"
+msgstr "sin macro"
+
+#: personal/phoneaccount/class_phoneAccount.inc:241
+msgid "undefined"
+msgstr "sin definir"
+
+#: personal/phoneaccount/class_phoneAccount.inc:360
+#, php-format
+msgid ""
+"Cannot identify telephone extension in database, please try to save again."
+msgstr "No se puede identificar la extensión telefónica en la base de datos, por favor intente guardarla de nuevo."
+
+#: personal/phoneaccount/class_phoneAccount.inc:578
+#: personal/phoneaccount/class_phoneAccount.inc:596
+msgid "Abort saving entries to keep the database consistent."
+msgstr "Cancelar la grabación de las entradas para mantener la consistencia de la base de datos."
+
+#: personal/phoneaccount/class_phoneAccount.inc:619
+#: personal/phoneaccount/class_phoneAccount.inc:658
+#: personal/phoneaccount/class_phoneAccount.inc:1538
+#, php-format
+msgid ""
+"FusionDirectory identified problems with your database table definition!"
+msgstr ""
+
+#: personal/phoneaccount/class_phoneAccount.inc:1024
+msgid "Remove phone account"
+msgstr "Eliminar cuenta telefónica"
+
+#: personal/phoneaccount/class_phoneAccount.inc:1028
+#: personal/phoneaccount/class_phoneAccount.inc:1031
+msgid "Create phone account"
+msgstr "Crear cuenta telefónica"
+
+#: personal/phoneaccount/class_phoneAccount.inc:1029
+msgid "User uid"
+msgstr "Identificador (UID) de usuario"
+
+#: personal/phoneaccount/class_phoneAccount.inc:1047
+msgid "Selected macro is not available anymore!"
+msgstr "¡La macro seleccionada no está disponible!"
+
+#: personal/phoneaccount/class_phoneAccount.inc:1222
+msgid "Choose your private phone"
+msgstr "Indique su teléfono particular"
+
+#: personal/phoneaccount/class_phoneAccount.inc:1364
+msgid ""
+"There must be at least one server with an asterisk database to create a "
+"phone account."
+msgstr "Debe existir al menos un servidor con una base de datos asterisk para crear una cuenta telefónica."
+
+#: personal/phoneaccount/class_phoneAccount.inc:1372
+#: personal/phoneaccount/class_phoneAccount.inc:1375
+#: personal/phoneaccount/paste_generic.tpl:32
+#: personal/phoneaccount/generic.tpl:93
+msgid "Voicemail PIN"
+msgstr "PIN del buzón de correo"
+
+#: personal/phoneaccount/class_phoneAccount.inc:1372
+msgid "Between 1-4 charactes"
+msgstr "Entre 1 a 4 caracteres"
+
+#: personal/phoneaccount/class_phoneAccount.inc:1380
+#: personal/phoneaccount/paste_generic.tpl:40
+#: personal/phoneaccount/generic.tpl:103
+msgid "Phone PIN"
+msgstr "PIN del Teléfono"
+
+#: personal/phoneaccount/class_phoneAccount.inc:1420
+#, php-format
+msgid "macro parameter %s"
+msgstr "parámetro de macro %s"
+
+#: personal/phoneaccount/class_phoneAccount.inc:1468
+msgid "An error occured while updating the database entries!"
+msgstr "¡Un error ha ocurrido mientras actualizaba las entradas en la base de datos!"
+
+#: personal/phoneaccount/class_phoneAccount.inc:1618
+#, php-format
+msgid "User '%s' has been removed from phone queue '%s'."
+msgstr "Eliminado usuario '%s' de la cola de teléfono '%s'."
+
+#: personal/phoneaccount/class_phoneAccount.inc:1655
+#: personal/phoneaccount/class_phoneAccount.inc:1657
+#, php-format
+msgid "The specified telephonenumber '%s' is already assigned to '%s'."
+msgstr "El número teléfono introducido '%s' ya está asignado a '%s'."
+
+#: personal/phoneaccount/class_phoneAccount.inc:1667
+#, php-format
+msgid ""
+"The previously selected asterisk home server (%s) is no longer available. "
+"Remove aborted."
+msgstr "El servidor principal de asterisk seleccionado anteriormente (%s) no está disponible. Eliminación cancelada."
+
+#: personal/phoneaccount/class_phoneAccount.inc:1676
+msgid "Phone account settings"
+msgstr "Configuración cuenta telefónica"
+
+#: personal/phoneaccount/class_phoneAccount.inc:1685
+msgid "Macro settings"
+msgstr "Parámetros de macro"
+
+#: personal/phoneaccount/class_phoneAccount.inc:1688
+msgid "Phone context"
+msgstr "Contexto telefónico"
+
+#: personal/phoneaccount/class_phoneAccount.inc:1689
+msgid "Voice mail context"
+msgstr "Contexto de buzón de voz"
+
+#: personal/phoneaccount/class_phoneAccount.inc:1690
+msgid "Telephone pin"
+msgstr "PIN del teléfono"
+
+#: personal/phoneaccount/class_phoneAccount.inc:1691
+msgid "Voicemail pin"
+msgstr "PIN del buzón de voz"
+
+#: personal/phoneaccount/class_phoneAccount.inc:1713
+#, php-format
+msgid "You need to configure %s contexts first"
+msgstr ""
+
+#: personal/phoneaccount/main.inc:124
+msgid "Click the 'Edit' button below to change informations in this dialog"
+msgstr "Pulse en el botón - Editar - para cambiar la información en esta ventana"
+
+#: personal/phoneaccount/main.inc:134
+#: personal/phoneaccount/paste_generic.tpl:1
+msgid "Phone settings"
+msgstr "Configuración telefónica"
+
+#: personal/phoneaccount/paste_generic.tpl:27
+#: personal/phoneaccount/generic.tpl:42
+msgid "Telephone hardware"
+msgstr "Teléfono hardware"
+
+#: personal/phoneaccount/paste_generic.tpl:29
+#: personal/phoneaccount/generic.tpl:44 personal/phoneaccount/generic.tpl:48
+msgid "Telephone"
+msgstr "Teléfono"
+
+#: personal/phoneaccount/generic.tpl:62
+msgid "Select the accounts home server"
+msgstr "Seleccione las cuentas del servidor principal"
+
+#: personal/phoneaccount/generic.tpl:69
+msgid "Context"
+msgstr "Contexto"
+
+#: personal/phoneaccount/generic.tpl:73 personal/phoneaccount/generic.tpl:84
+msgid "Select the accounts context"
+msgstr "Seleccione el contexto de cuentas"
+
+#: personal/phoneaccount/generic.tpl:80
+msgid "Voicemail context"
+msgstr "Contexto de buzón de voz"
+
+#: personal/phoneaccount/generic.tpl:138
+msgid "Refresh"
+msgstr "Refresco"

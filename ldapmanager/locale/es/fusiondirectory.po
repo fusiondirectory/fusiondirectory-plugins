@@ -1,0 +1,265 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+#   <lars.gold@gmail.com>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: FusionDirectory\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
+"POT-Creation-Date: 2013-03-24 15:11+0100\n"
+"PO-Revision-Date: 2013-03-24 15:00+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/FusionDirectory/language/es/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: addons/ldapmanager/tabs_ldif.inc:38
+msgid "LDAP manager"
+msgstr "Administrador LDAP"
+
+#: addons/ldapmanager/tabs_ldif.inc:39
+msgid "Allows the management of the ldap tree"
+msgstr ""
+
+#: addons/ldapmanager/tabs_ldif.inc:43
+msgid "Ldap manager"
+msgstr "Administrador LDAP"
+
+#: addons/ldapmanager/contentexport.tpl:2
+msgid ""
+"The LDIF export plugin provides methods to download a complete snapshot of "
+"the running LDAP directory as ldif. You may save these files for backup "
+"purpose or when initializing a new server."
+msgstr "La extensión exportar LDIF tiene los metodos para crear una copia espejo del directorio LDAP actual como un archivo LDIF. Puede grabar estos archivos como copias de seguridad o para iniciar un nuevo servidor."
+
+#: addons/ldapmanager/contentexport.tpl:9
+msgid "Export single entry"
+msgstr "Exportar solo esta entrada"
+
+#: addons/ldapmanager/contentexport.tpl:15
+#: addons/ldapmanager/contentexport.tpl:27
+#: addons/ldapmanager/class_export.inc:36
+msgid "Export"
+msgstr "Exportar"
+
+#: addons/ldapmanager/contentexport.tpl:21
+msgid "Export complete LDIF for"
+msgstr "Exportación del LDIF completada para"
+
+#: addons/ldapmanager/class_import.inc:36
+#: addons/ldapmanager/contentcsv.tpl:105 addons/ldapmanager/contentcsv.tpl:108
+#: addons/ldapmanager/contentimport.tpl:50
+msgid "Import"
+msgstr "Importar"
+
+#: addons/ldapmanager/class_import.inc:37
+msgid "Import of ldif data into the ldap tree"
+msgstr ""
+
+#: addons/ldapmanager/class_import.inc:82
+#: addons/ldapmanager/class_export.inc:116
+#: addons/ldapmanager/class_csvimport.inc:138
+msgid "Permission error"
+msgstr "Error de permisos"
+
+#: addons/ldapmanager/class_import.inc:82
+msgid "You need full write access to the LDAP tree to import data!"
+msgstr "¡Necesita permisos de escritura para importar datos al arbol LDAP!"
+
+#: addons/ldapmanager/class_import.inc:89
+#: addons/ldapmanager/class_import.inc:92
+#: addons/ldapmanager/class_import.inc:95
+#: addons/ldapmanager/class_export.inc:71
+#: addons/ldapmanager/class_export.inc:122
+#: addons/ldapmanager/class_csvimport.inc:192
+#: addons/ldapmanager/class_csvimport.inc:331
+#: addons/ldapmanager/class_csvimport.inc:368
+#: addons/ldapmanager/class_csvimport.inc:371
+#: addons/ldapmanager/class_csvimport.inc:374
+#: addons/ldapmanager/class_csvimport.inc:377
+#: addons/ldapmanager/class_csvimport.inc:525
+msgid "Error"
+msgstr "Error"
+
+#: addons/ldapmanager/class_import.inc:89
+#: addons/ldapmanager/class_import.inc:92
+#: addons/ldapmanager/class_import.inc:95
+#: addons/ldapmanager/class_csvimport.inc:368
+#: addons/ldapmanager/class_csvimport.inc:371
+#: addons/ldapmanager/class_csvimport.inc:374
+#: addons/ldapmanager/class_csvimport.inc:377
+#, php-format
+msgid "Cannot read uploaded file: %s"
+msgstr "No puedo leer el archivo: %s"
+
+#: addons/ldapmanager/class_import.inc:89
+#: addons/ldapmanager/class_csvimport.inc:371
+msgid "file is empty"
+msgstr "el archivo está vacío"
+
+#: addons/ldapmanager/class_import.inc:92
+#: addons/ldapmanager/class_csvimport.inc:368
+#: addons/ldapmanager/class_csvimport.inc:374
+msgid "file not found"
+msgstr "fichero no encontrado"
+
+#: addons/ldapmanager/class_import.inc:95
+#: addons/ldapmanager/class_csvimport.inc:377
+msgid "file not readable"
+msgstr "fichero no accesible"
+
+#: addons/ldapmanager/class_import.inc:125
+#: addons/ldapmanager/class_import.inc:129
+#: addons/ldapmanager/class_export.inc:99
+msgid "LDAP error"
+msgstr "Error LDAP"
+
+#: addons/ldapmanager/class_import.inc:133
+msgid "Internal error"
+msgstr "Error interno"
+
+#: addons/ldapmanager/class_import.inc:133
+#, php-format
+msgid "Undefined flag '%s'!"
+msgstr "¡Etiqueta sin definir: '%s'!"
+
+#: addons/ldapmanager/contentcsv.tpl:2
+msgid ""
+"The CSV import plugin provides methods to generate user accounts from a file"
+" containing Semi-Colon Seperated Values. The administrator can decide which "
+"columns should be transfered to which attribute. Note that you must have at "
+"least the GIVENNAME and SURNAME set."
+msgstr "El complemento de importado de CSV provee metodos para generar cuentas de usuario a partir de un archivo que contiene Valores Separados por Punto y Coma. El administrador puede decidir cuales columnas son transferidas a cuales atributos. Tome en cuenta que debe tener como minimo el conjunto de NOMBRE y APELLIDO"
+
+#: addons/ldapmanager/contentcsv.tpl:10
+msgid "Select CSV file to import"
+msgstr "Seleccione el archivo CSV para importar"
+
+#: addons/ldapmanager/contentcsv.tpl:14
+#: addons/ldapmanager/contentimport.tpl:15
+msgid "Browse"
+msgstr "Visualizar"
+
+#: addons/ldapmanager/contentcsv.tpl:19
+msgid "Select template"
+msgstr "Selecciona plantilla"
+
+#: addons/ldapmanager/contentcsv.tpl:34
+msgid "All entries have been written to the LDAP database successfully."
+msgstr "Todas las entradas han sido escritas correctamente en la base de datos LDAP."
+
+#: addons/ldapmanager/contentcsv.tpl:36
+msgid "Oups. There was an error during the import of your data."
+msgstr "Error: Ha habido un error durante la importación de los datos."
+
+#: addons/ldapmanager/contentcsv.tpl:39
+msgid "Here is the status report for the import:"
+msgstr "Este es el informe de estado de la importación:"
+
+#: addons/ldapmanager/contentcsv.tpl:80
+msgid "Selected Template"
+msgstr "Plantilla seleccionada"
+
+#: addons/ldapmanager/class_export.inc:37
+msgid "Export the ldap three to ldif format"
+msgstr ""
+
+#: addons/ldapmanager/class_export.inc:40
+msgid "LDAP Manager"
+msgstr ""
+
+#: addons/ldapmanager/class_export.inc:100
+#, php-format
+msgid "No such object %s!"
+msgstr "No existe el objeto %s!"
+
+#: addons/ldapmanager/class_export.inc:117
+#, php-format
+msgid "You have no permission to export %s!"
+msgstr "No tiene permiso para exportar %s!"
+
+#: addons/ldapmanager/class_export.inc:123
+#, php-format
+msgid "Failed to generate ldap export, error was '%s'!"
+msgstr "Fallo al generar el volcado ldap, el error fue '%s'!"
+
+#: addons/ldapmanager/contentimport.tpl:3
+msgid ""
+"The LDIF import plugin provides methods to upload a set of entries to your "
+"running LDAP directory as ldif. You may use this to add new or modify "
+"existing entries. Remember that FusionDirectory will not check your ldifs "
+"for FusionDirectory conformance."
+msgstr "El complemento de importar LDIF provee metodos para subir un grupo de entradas a su directorio LDAP activo, en forma de archivos ldif. Usted puede usar este complemento para añadir entradas nuevas o modificar entradas existentes. Recuerde que FusionDirectory no verificará los archivos ldif para asegurarse que se adapten a FusionDirectory."
+
+#: addons/ldapmanager/contentimport.tpl:10
+msgid "Import LDIF File"
+msgstr "Importar archivo LDIF"
+
+#: addons/ldapmanager/contentimport.tpl:24
+msgid "Modify existing objects, keep untouched attributes"
+msgstr "Modificar los objetos existentes, manteniendo los atributos"
+
+#: addons/ldapmanager/contentimport.tpl:25
+msgid "Overwrite existing objects, all not listed attributes will be removed"
+msgstr "Sobreescribir los objetos existentes, los atributos no mostrados serán eliminados"
+
+#: addons/ldapmanager/contentimport.tpl:34
+msgid "Remove existing entries first"
+msgstr "Primero elimine las entradas existentes"
+
+#: addons/ldapmanager/contentimport.tpl:41
+msgid "Import successful"
+msgstr "Importación correcta"
+
+#: addons/ldapmanager/class_csvimport.inc:39
+msgid "CVS import"
+msgstr ""
+
+#: addons/ldapmanager/class_csvimport.inc:40
+msgid "Import of cvs data into the ldap tree"
+msgstr ""
+
+#: addons/ldapmanager/class_csvimport.inc:138
+msgid "You've no permission to import CSV files."
+msgstr "No tiene permisos para importar archivos CSV."
+
+#: addons/ldapmanager/class_csvimport.inc:192
+msgid "Need at least 'sn' and 'givenName' to create users!"
+msgstr "Se requiere por lo menos de 'sn' y 'givenName' para crear usuarios!"
+
+#: addons/ldapmanager/class_csvimport.inc:193
+#: addons/ldapmanager/class_csvimport.inc:213
+#: addons/ldapmanager/class_csvimport.inc:268
+msgid "failed"
+msgstr "error"
+
+#: addons/ldapmanager/class_csvimport.inc:212
+#, php-format
+msgid "Failed to generate 'uid' for entry '%s'!"
+msgstr "Fallo al generar 'uid' para la entrada '%s'!"
+
+#: addons/ldapmanager/class_csvimport.inc:272
+msgid "ok"
+msgstr "ok"
+
+#: addons/ldapmanager/class_csvimport.inc:331
+#, php-format
+msgid "Cannot insert entry '%s'!"
+msgstr "¡No se puede introducir la entrada '%s'!"
+
+#: addons/ldapmanager/class_csvimport.inc:357
+msgid "Information"
+msgstr "Información"
+
+#: addons/ldapmanager/class_csvimport.inc:357
+msgid "Nothing to import!"
+msgstr "¡No hay nada que importar!"
+
+#: addons/ldapmanager/class_csvimport.inc:525
+msgid "Cannot find CSV data in the selected file!"
+msgstr "¡No se puede encontrar información CSV en el archivo seleccionado!"

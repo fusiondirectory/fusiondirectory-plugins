@@ -1,0 +1,235 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: FusionDirectory\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
+"POT-Creation-Date: 2013-03-24 15:12+0100\n"
+"PO-Revision-Date: 2013-03-24 15:00+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: Russian (http://www.transifex.com/projects/p/FusionDirectory/language/ru/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: admin/systems/services/rsyslog/class_serviceSyslog.inc:30
+#: admin/systems/services/rsyslog/class_serviceSyslog.inc:31
+msgid "Logs service"
+msgstr ""
+
+#: admin/systems/services/rsyslog/class_serviceSyslog.inc:31
+msgid "Services"
+msgstr "Сервисы"
+
+#: admin/systems/services/rsyslog/class_serviceSyslog.inc:41
+msgid "Logging service"
+msgstr ""
+
+#: admin/systems/services/rsyslog/class_serviceSyslog.inc:44
+msgid "Driver"
+msgstr "Драйвер"
+
+#: admin/systems/services/rsyslog/class_serviceSyslog.inc:44
+msgid "Driver to use to contact this database."
+msgstr ""
+
+#: admin/systems/services/rsyslog/class_serviceSyslog.inc:48
+msgid "Database"
+msgstr ""
+
+#: admin/systems/services/rsyslog/class_serviceSyslog.inc:48
+msgid "Database in which syslog stores its informations"
+msgstr ""
+
+#: admin/systems/services/rsyslog/class_serviceSyslog.inc:53
+msgid "Database user"
+msgstr ""
+
+#: admin/systems/services/rsyslog/class_serviceSyslog.inc:53
+msgid "Database administrator"
+msgstr ""
+
+#: admin/systems/services/rsyslog/class_serviceSyslog.inc:58
+msgid "Password"
+msgstr "Пароль"
+
+#: admin/systems/services/rsyslog/class_serviceSyslog.inc:58
+msgid "Password for the database administrator"
+msgstr ""
+
+#: addons/rsyslog/rSyslog.tpl:2
+msgid "Filter"
+msgstr "Фильтр"
+
+#: addons/rsyslog/rSyslog.tpl:7
+msgid "Server"
+msgstr "Сервер"
+
+#: addons/rsyslog/rSyslog.tpl:15
+msgid "Host"
+msgstr ""
+
+#: addons/rsyslog/rSyslog.tpl:23 addons/rsyslog/rSyslog.tpl:90
+msgid "Severity"
+msgstr ""
+
+#: addons/rsyslog/rSyslog.tpl:32
+msgid "From"
+msgstr ""
+
+#: addons/rsyslog/rSyslog.tpl:42
+msgid "till"
+msgstr ""
+
+#: addons/rsyslog/rSyslog.tpl:52 addons/rsyslog/rSyslog.tpl:56
+msgid "Search"
+msgstr "Поиск"
+
+#: addons/rsyslog/rSyslog.tpl:62 addons/rsyslog/class_rsyslog.inc:347
+msgid "Error"
+msgstr ""
+
+#: addons/rsyslog/rSyslog.tpl:70
+msgid "Date"
+msgstr "Дата"
+
+#: addons/rsyslog/rSyslog.tpl:75
+msgid "Source"
+msgstr "Источник"
+
+#: addons/rsyslog/rSyslog.tpl:80
+msgid "Header"
+msgstr ""
+
+#: addons/rsyslog/rSyslog.tpl:85
+msgid "Facility"
+msgstr ""
+
+#: addons/rsyslog/rSyslog.tpl:95
+msgid "Message"
+msgstr "Сообщение"
+
+#: addons/rsyslog/main.inc:48 addons/rsyslog/class_rsyslog.inc:47
+#: addons/rsyslog/class_rsyslog.inc:53
+msgid "System logs"
+msgstr ""
+
+#: addons/rsyslog/class_rsyslog.inc:48
+msgid "This plugin allow to View system logs"
+msgstr ""
+
+#: addons/rsyslog/class_rsyslog.inc:143 addons/rsyslog/class_rsyslog.inc:149
+msgid "-"
+msgstr ""
+
+#: addons/rsyslog/class_rsyslog.inc:145 addons/rsyslog/class_rsyslog.inc:151
+msgid "All"
+msgstr "Все"
+
+#: addons/rsyslog/class_rsyslog.inc:177
+#, php-format
+msgid "%s entries match the filter"
+msgstr ""
+
+#: addons/rsyslog/class_rsyslog.inc:197
+#, php-format
+msgid "The selected server '%s' does not exists!"
+msgstr ""
+
+#: addons/rsyslog/class_rsyslog.inc:344
+msgid "Emergency"
+msgstr ""
+
+#: addons/rsyslog/class_rsyslog.inc:345
+msgid "Alert"
+msgstr ""
+
+#: addons/rsyslog/class_rsyslog.inc:346
+msgid "Critical"
+msgstr ""
+
+#: addons/rsyslog/class_rsyslog.inc:348
+msgid "Warning"
+msgstr "Предупреждение"
+
+#: addons/rsyslog/class_rsyslog.inc:349
+msgid "Notice"
+msgstr ""
+
+#: addons/rsyslog/class_rsyslog.inc:350
+msgid "Informational"
+msgstr ""
+
+#: addons/rsyslog/class_rsyslog.inc:351
+msgid "Debug"
+msgstr ""
+
+#: addons/rsyslog/class_rsyslog.inc:357 addons/rsyslog/class_rsyslog.inc:392
+#, php-format
+msgid "Unknown (%s)"
+msgstr ""
+
+#: addons/rsyslog/class_rsyslog.inc:363
+msgid "Kernel"
+msgstr ""
+
+#: addons/rsyslog/class_rsyslog.inc:364
+msgid "User level"
+msgstr ""
+
+#: addons/rsyslog/class_rsyslog.inc:365
+msgid "Mail system"
+msgstr ""
+
+#: addons/rsyslog/class_rsyslog.inc:366
+msgid "System daemon"
+msgstr ""
+
+#: addons/rsyslog/class_rsyslog.inc:367 addons/rsyslog/class_rsyslog.inc:373
+msgid "Security"
+msgstr ""
+
+#: addons/rsyslog/class_rsyslog.inc:368
+msgid "Internal"
+msgstr ""
+
+#: addons/rsyslog/class_rsyslog.inc:369
+msgid "Printing"
+msgstr ""
+
+#: addons/rsyslog/class_rsyslog.inc:370
+msgid "News"
+msgstr ""
+
+#: addons/rsyslog/class_rsyslog.inc:371
+msgid "UUCP"
+msgstr ""
+
+#: addons/rsyslog/class_rsyslog.inc:372
+msgid "Cron"
+msgstr ""
+
+#: addons/rsyslog/class_rsyslog.inc:374
+msgid "FTP"
+msgstr "FTP"
+
+#: addons/rsyslog/class_rsyslog.inc:375
+msgid "NTP"
+msgstr ""
+
+#: addons/rsyslog/class_rsyslog.inc:376
+msgid "Log audit"
+msgstr ""
+
+#: addons/rsyslog/class_rsyslog.inc:377
+msgid "Log alert"
+msgstr ""
+
+#: addons/rsyslog/class_rsyslog.inc:378
+msgid "Clock"
+msgstr ""

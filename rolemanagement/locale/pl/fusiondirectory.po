@@ -1,0 +1,144 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: FusionDirectory\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
+"POT-Creation-Date: 2013-03-24 15:12+0100\n"
+"PO-Revision-Date: 2013-03-24 15:00+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: Polish (http://www.transifex.com/projects/p/FusionDirectory/language/pl/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: admin/roleManagement/role-list.tpl:13
+#: admin/roleManagement/roleGeneric.tpl:29
+msgid "Base"
+msgstr "Kontener"
+
+#: admin/roleManagement/role-list.xml:11
+msgid "List of roles"
+msgstr ""
+
+#: admin/roleManagement/role-list.xml:15 admin/roleManagement/role-list.xml:74
+#: admin/roleManagement/class_roleGeneric.inc:32
+#: admin/roleManagement/class_roleGeneric.inc:37
+msgid "Role"
+msgstr "Pełniona funkcja"
+
+#: admin/roleManagement/role-list.xml:41
+#: admin/roleManagement/role-filter.tpl:17
+#: admin/roleManagement/roleGeneric.tpl:11
+#: admin/roleManagement/class_roleGeneric.inc:63
+msgid "Name"
+msgstr "Imię"
+
+#: admin/roleManagement/role-list.xml:49
+#: admin/roleManagement/roleGeneric.tpl:19
+#: admin/roleManagement/class_roleGeneric.inc:64
+msgid "Description"
+msgstr "Opis"
+
+#: admin/roleManagement/role-list.xml:57
+msgid "Actions"
+msgstr "Akcje"
+
+#: admin/roleManagement/role-list.xml:68
+msgid "Create"
+msgstr "Utwórz"
+
+#: admin/roleManagement/role-list.xml:86
+msgid "Edit"
+msgstr "Edytuj"
+
+#: admin/roleManagement/role-list.xml:93
+msgid "Remove"
+msgstr "Usuń"
+
+#: admin/roleManagement/role-list.xml:125
+msgid "Edit role"
+msgstr ""
+
+#: admin/roleManagement/role-list.xml:138
+msgid "Remove role"
+msgstr ""
+
+#: admin/roleManagement/remove.tpl:2
+msgid "Warning"
+msgstr "Ostrzeżenie"
+
+#: admin/roleManagement/remove.tpl:6
+msgid ""
+"Please double check if you really want to do this since there is no way for "
+"FusionDirectory to get your data back."
+msgstr ""
+
+#: admin/roleManagement/remove.tpl:10
+msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
+msgstr "Jeśli jesteś pewien - naciśnij 'Usuń' aby kontynuować lub 'Anuluj' aby anulować."
+
+#: admin/roleManagement/paste_generic.tpl:4
+msgid "Role name"
+msgstr ""
+
+#: admin/roleManagement/paste_generic.tpl:7
+msgid "Please enter the new object role name"
+msgstr ""
+
+#: admin/roleManagement/role-filter.tpl:3
+msgid "Filter"
+msgstr "Filtr"
+
+#: admin/roleManagement/roleGeneric.tpl:6
+#: admin/roleManagement/class_roleGeneric.inc:61
+msgid "Generic"
+msgstr "Ogólne"
+
+#: admin/roleManagement/roleGeneric.tpl:42
+#: admin/roleManagement/class_roleGeneric.inc:66
+msgid "Phone number"
+msgstr "Numer telefonu"
+
+#: admin/roleManagement/roleGeneric.tpl:50
+#: admin/roleManagement/class_roleGeneric.inc:67
+msgid "Fax number"
+msgstr "Numer fax"
+
+#: admin/roleManagement/roleGeneric.tpl:62
+msgid "Occupants"
+msgstr ""
+
+#: admin/roleManagement/class_roleManagement.inc:36
+#: admin/roleManagement/class_roleGeneric.inc:36
+msgid "Roles"
+msgstr ""
+
+#: admin/roleManagement/class_roleManagement.inc:37
+msgid "Role management"
+msgstr ""
+
+#: admin/roleManagement/class_roleGeneric.inc:33
+msgid "Role generic"
+msgstr ""
+
+#: admin/roleManagement/class_roleGeneric.inc:63
+msgid "Name of the role"
+msgstr ""
+
+#: admin/roleManagement/class_roleGeneric.inc:64
+msgid "Description of the role"
+msgstr ""
+
+#: admin/roleManagement/class_roleGeneric.inc:68
+msgid "Users"
+msgstr "Użytkownicy"
+
+#: admin/roleManagement/class_roleGeneric.inc:68
+msgid "Add users for the role"
+msgstr ""
