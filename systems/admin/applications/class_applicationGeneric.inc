@@ -238,7 +238,6 @@ class application extends simplePlugin
     parent::__construct($config, $dn, $object);
 
     $this->attributesAccess['cn']->setUnique(TRUE);
-    $this->attributesAccess['base']->setDisabled($this->is_release());
 
     $filename = "./plugins/systems/images/default_icon.png";
 
@@ -249,22 +248,6 @@ class application extends simplePlugin
       if (empty($this->gosaApplicationIcon)) {
         $this->attributesAccess['gosaApplicationIcon']->resetToDefault();
       }
-    }
-  }
-
-  function execute()
-  {
-    $this->attributesAccess['base']->setDisabled($this->is_release());
-    return parent::execute();
-  }
-
-  function is_release()
-  {
-    if (isset($this->parent->parent)) {
-      return $this->parent->parent->IsReleaseManagementActivated();
-    } else {
-      /* Check if we should enable the release selection */
-      return class_available("faiManagement");
     }
   }
 

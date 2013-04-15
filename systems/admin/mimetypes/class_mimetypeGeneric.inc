@@ -338,7 +338,6 @@ class mimetype extends plugin
     }
     $smarty->assign("bases",            $this->get_allowed_bases());
     $smarty->assign("base_select",          $this->base);
-    $smarty->assign("isReleaseMimeType",      $this->is_release());
     $smarty->assign("gotoMimeFilePatterns",     $DivPatterns->DrawList());
     $smarty->assign("gotoMimeApplications",     $DivApps->DrawList());
     $smarty->assign("gotoMimeEmbeddedApplications", $DivEApps->DrawList());
@@ -374,8 +373,6 @@ class mimetype extends plugin
       $this->base = $base_tmp;
 
       /* Only save base if we are not in release mode */
-      if(!$this->is_release()){
-
         /* Set new base if allowed */
         $tmp = $this->get_allowed_bases();
         if(isset($_POST['base'])){
@@ -383,8 +380,6 @@ class mimetype extends plugin
             $this->base= $_POST['base'];
           }
         }
-
-      }
 
       /* Save radio buttons */
       if($this->acl_is_writeable("gotoMimeLeftClickAction")){
@@ -528,11 +523,7 @@ class mimetype extends plugin
     $ldap = $this->config->get_ldap_link();
     $ldap->cd($this->config->current["BASE"]);
 
-    if($this->is_release()){
-      $base = $this->parent->parent->mime_release;
-    }else{
-      $base = get_ou("mimetypeRDN").$this->base;
-    }
+    $base = get_ou("mimetypeRDN").$this->base;
 
     $ldap->ls("(&(objectClass=gotoMimeType)(cn=".$this->cn."))",$base,array("cn"));
     if($ldap->count()){
@@ -696,18 +687,6 @@ class mimetype extends plugin
     );
 
   }
-
-
-  function is_release()
-  {
-    if (is_object($this->parent->parent)) {
-      return $this->parent->parent->IsReleaseManagementActivated();
-    } else {
-      /* Check if we should enable the release selection */
-      return class_available("faiManagement");
-    }
-  }
-
 
   function PrepareForCopyPaste($source)
   {

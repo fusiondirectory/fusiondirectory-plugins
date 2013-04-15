@@ -47,11 +47,7 @@ class mimetabs extends tabs
 
     /* Check for new 'dn', in order to propagate the
        'dn' to all plugins */
-    if ($this->parent->IsReleaseManagementActivated()) {
-      $new_dn = "cn=".$baseobject->cn.",".$this->parent->mime_release;
-    } else {
       $new_dn = "cn=".$baseobject->cn.",".get_ou('mimetypeRDN').$baseobject->base;
-    }
 
     /* Move group? */
     if ($this->dn != $new_dn) {

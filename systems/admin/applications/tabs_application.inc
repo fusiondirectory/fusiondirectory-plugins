@@ -47,11 +47,7 @@ class apptabs extends tabs
 
     /* Check for new 'dn', in order to propagate the
        'dn' to all plugins */
-    if ($this->parent->IsReleaseManagementActivated()) {
-      $new_dn = "cn=".$baseobject->cn.",".$this->parent->app_release;
-    } else {
       $new_dn = "cn=".$baseobject->cn.",".get_ou('applicationRDN').$baseobject->base;
-    }
 
     // Do we have to move the object?
     if ($this->dn != $new_dn) {

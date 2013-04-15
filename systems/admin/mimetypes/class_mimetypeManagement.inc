@@ -51,73 +51,24 @@ class mimetypeManagement extends management
     $this->config = $config;
     $this->ui = $ui;
 
-    if($this->IsReleaseManagementActivated()){
-      $this->mime_release = get_ou('mimetypeRDN').$this->config->current['BASE'];
-      $filter_xml = "mimetype-filter-release.xml";
-      $list_xml = "mimetype-list-release.xml";
-      $this->storagePoints= array("");
-    }else{
-      $filter_xml = "mimetype-filter.xml";
-      $list_xml = "mimetype-list.xml";
-      $this->storagePoints= array(get_ou("mimetypeRDN"));
-    }
+    $filter_xml = "mimetype-filter.xml";
+    $list_xml   = "mimetype-list.xml";
+    $this->storagePoints= array(get_ou("mimetypeRDN"));
 
     // Build filter
-    if (session::global_is_set(get_class($this)."_filter")){
-      $filter= session::global_get(get_class($this)."_filter");
+    if (session::global_is_set(get_class($this)."_filter")) {
+      $filter = session::global_get(get_class($this)."_filter");
     } else {
-      $filter = new filter(get_template_path($filter_xml, true));
+      $filter = new filter(get_template_path($filter_xml, TRUE));
       $filter->setObjectStorage($this->storagePoints);
     }
     $this->setFilter($filter);
 
     // Build headpage
-    $headpage = new listing(get_template_path($list_xml, true));
+    $headpage = new listing(get_template_path($list_xml, TRUE));
     $headpage->setFilter($filter);
 
     parent::__construct($config, $ui, "mimetypes", $headpage);
-  }
-
-  function renderList()
-  {
-    $filter = $this->getFilter();
-    $headpage = $this->getHeadpage();
-    if($this->IsReleaseManagementActivated()){
-      $filter->setComboBoxOptions("RELEASE",$this->getReleaseList());
-
-      if(isset($_POST['RELEASE'])){
-        $this->mime_release = get_post('RELEASE');
-      }
-      $headpage->setBase($this->mime_release);
-    }
-
-    $headpage->update();
-    $display = $headpage->render();
-    return($this->getHeader().$display);
-  }
-
-  function getReleaseList($base = "", $prefix ="")
-  {
-    $list = array();
-    if(empty($base)){
-      $base = get_ou('mimetypeRDN').$this->config->current['BASE'];
-      $list[$base] = "/";
-    }
-
-    $ldap = $this->config->get_ldap_link();
-    $ldap->ls("(objectClass=FAIbranch)",$base,array("ou","FAIstate"));
-    while($release = $ldap->fetch()){
-      $list[$release['dn']] = $prefix.$release['ou'][0];
-      $list = array_merge($list,$this->getReleaseList($release['dn'],$prefix."&nbsp; "));
-    }
-    return($list);
-  }
-
-
-  function IsReleaseManagementActivated()
-  {
-    /* Check if we should enable the release selection */
-    return class_available("faiManagement");
   }
 }
 ?>
