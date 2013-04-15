@@ -40,9 +40,6 @@
       <label>Structure</label>
       <sortAttribute>ou</sortAttribute>
       <sortType>string</sortType>
-<!--
-      <value>%{filter:depLabel(row,dn,"%sa",ou,pid,base)}</value>
--->
       <value>%{filter:structureLabel(row,dn,pid,base,ou,o)}</value> <!-- either o or ou will be absent -->
       <export>true</export>
     </column>
@@ -105,6 +102,20 @@
     </action>
 
     <action>
+      <name>edit</name>
+      <type>entry</type>
+      <image>images/lists/edit.png</image>
+      <label>Edit</label>
+    </action>
+
+    <action>
+      <name>remove</name>
+      <type>entry</type>
+      <image>images/lists/trash.png</image>
+      <label>Remove</label>
+    </action>
+
+    <action>
       <type>separator</type>
     </action>
 
@@ -117,15 +128,15 @@
     </action>
 
     <action>
-      <name>remove</name>
-      <type>entry</type>
-      <image>images/lists/trash.png</image>
-      <label>Remove</label>
+      <type>copypaste</type>
     </action>
 
+    <action>
+      <type>snapshot</type>
+    </action>
   </actionmenu>
 
-  <actiontriggers snapshot="false" copypaste="false">
+  <actiontriggers snapshot="true" copypaste="true">
 
     <action>
       <name>edit</name>
