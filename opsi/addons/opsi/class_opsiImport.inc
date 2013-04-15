@@ -164,6 +164,9 @@ class opsiImport extends simplePlugin
   {
     session::global_set("CurrentMainBase", $this->base);
     $hosts = self::opsiGetHosts($this->config, $server_dn);
+    if ($hosts === FALSE) {
+      return;
+    }
     $plInfo = pluglist::pluginInfos('opsiClient'); // Just to get the objectType dynamically
     $key = key($plInfo['plObjectType']);
     if (is_numeric($key)) {
