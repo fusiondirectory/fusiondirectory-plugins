@@ -30,7 +30,7 @@
   </definition>
 
   <table>
-    <layout>|20px;c|||||70px;r|</layout>
+    <layout>|20px;c|||||150px;r|</layout>
 
     <column>
       <value>%{filter:objectType(dn,objectClass)}</value>
@@ -137,6 +137,10 @@
   </actionmenu>
 
   <actiontriggers snapshot="true" copypaste="true">
+    <action>
+      <name>cp</name>
+      <type>copypaste</type>
+    </action>
 
     <action>
       <name>edit</name>
@@ -147,14 +151,18 @@
     </action>
 
     <action>
+      <name>snapshot</name>
+      <type>snapshot</type>
+    </action>
+
+    <action>
       <name>remove</name>
       <type>entry</type>
       <nospan></nospan>
       <image>images/lists/trash.png</image>
-      <acl>department[d]</acl>
+      <acl>%acl[d]</acl>
       <label>Remove</label>
     </action>
-
   </actiontriggers>
 
 </list>
