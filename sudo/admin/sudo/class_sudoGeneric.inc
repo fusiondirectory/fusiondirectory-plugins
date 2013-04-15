@@ -96,9 +96,8 @@ class sudo extends simplePlugin
               'ALL'
             )
           ),
-          new UsersGroupsAttribute (
-            _('Systems'),
-            _('A host name, IP address or IP network'),
+          new TrustsAttribute (
+            _('Systems'), _('A host name, IP address or IP network'),
             'sudoHost', FALSE,
             array('ALL')
           ),
