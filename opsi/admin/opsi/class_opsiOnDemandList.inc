@@ -38,7 +38,8 @@ class opsiOnDemandList extends simplePlugin
       'plObjectType'  => array('opsiOnDemandList' => array(
         'name'    => _('OPSI ondemand list'),
         'filter'  => 'objectClass=opsiOnDemandList',
-        'ou'      => get_ou('opsiRDN')
+        'ou'      => get_ou('opsiRDN'),
+        'icon'    => 'plugins/opsi/images/iconMiniSoftwareOnDemand.png'
       )),
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())

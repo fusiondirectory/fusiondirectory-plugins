@@ -38,7 +38,8 @@ class opsiSoftwareList extends simplePlugin
       'plObjectType'  => array('opsiSoftwareList' => array(
         'name'    => _('OPSI software list'),
         'filter'  => 'objectClass=opsiSoftwareList',
-        'ou'      => get_ou('opsiRDN')
+        'ou'      => get_ou('opsiRDN'),
+        'icon'    => 'plugins/opsi/images/iconMiniSoftwareList.png'
       )),
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())

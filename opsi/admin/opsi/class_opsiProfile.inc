@@ -58,7 +58,8 @@ class opsiProfile extends simplePlugin
       'plObjectType'  => array('opsiProfile' => array(
         'name'    => _('OPSI profile'),
         'filter'  => 'objectClass=opsiProfile',
-        'ou'      => get_ou('opsiRDN')
+        'ou'      => get_ou('opsiRDN'),
+        'icon'    => 'plugins/opsi/images/iconMini.png'
       )),
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
