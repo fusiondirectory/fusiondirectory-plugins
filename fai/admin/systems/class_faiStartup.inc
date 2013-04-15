@@ -35,9 +35,9 @@ class FAIreleaseAttribute extends SelectAttribute
     }
     parent::setValue($value);
     if (isset($this->plugin)) {
-      $this->plugin->attributesInfo['main']['attrs']['FAIclass']->attributes['profil']->setChoices($this->plugin->cache['PROFILES'][$value]);
-      $this->plugin->attributesInfo['main']['attrs']['FAIdebianMirror']->setChoices($this->plugin->cache['SERVERS'][$value]);
-      $this->plugin->attributesInfo['startup']['attrs']['gotoBootKernel']->setRelease($value);
+      $this->plugin->attributesAccess['FAIclass']->attributes['profil']->setChoices($this->plugin->cache['PROFILES'][$value]);
+      $this->plugin->attributesAccess['FAIdebianMirror']->setChoices($this->plugin->cache['SERVERS'][$value]);
+      $this->plugin->attributesAccess['gotoBootKernel']->setRelease($value);
     }
   }
 
@@ -153,8 +153,7 @@ class faiStartup extends simplePlugin
       $this->cache['PROFILES'] = array();
       $o_queue = new supportDaemon();
       foreach (array_keys($this->cache['SERVERS']) as $release) {
-        /* Get the list of available servers and their releases.
-         */
+        /* Get the list of available servers and their releases. */
         $tmp = $o_queue->FAI_get_profiles($release);
 
         if ($o_queue->is_error()) {

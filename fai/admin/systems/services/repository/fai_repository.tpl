@@ -15,7 +15,7 @@
       </td>
       <td>{eval var=$attributes.mirrorUrl.input}</td>
 
-      <td rowspan="3">
+      <td rowspan="3" title="{$attributes.mirrorArchs_inner.description}">
         <label for="{$attributes.mirrorArchs_inner.htmlid}">
           {eval var=$attributes.mirrorArchs_inner.label}
         </label><br/>
@@ -46,7 +46,7 @@
       </td>
       <td>{eval var=$attributes.mirrorMode.input}</td>
 
-      <td rowspan="2">
+      <td rowspan="2" title="{$attributes.mirrorSections_inner.description}">
         <label for="{$attributes.mirrorSections_inner.htmlid}">
           {eval var=$attributes.mirrorSections_inner.label}
         </label><br/>
