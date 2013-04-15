@@ -155,8 +155,8 @@ class servicePostfix extends simpleService {
 
   function prepare_save()
   {
-    $this->postfixMyDomain   = preg_replace("/^[^\.]+\./", "", $this->postfixMyhostname);
-    $this->postfixMyhostname = preg_replace("/\..*$/", "", $this->postfixMyhostname);
+    $this->postfixMyDomain   = preg_replace("/^[^\.]+\./", "", $this->postfixMyHostname);
+    $this->postfixMyHostname = preg_replace("/\..*$/", "", $this->postfixMyHostname);
     parent::prepare_save();
   }
 }
