@@ -47,6 +47,7 @@ class nagiosAccount extends simplePlugin
       'plIcon'        => 'plugins/nagios/images/icon.png',
       'plSmallIcon'   => 'plugins/nagios/images/iconMini.png',
       'plSelfModify'  => TRUE,
+      'plPriority'    => 7,
       'plCategory'    => array('users'),
       'plObjectType'  => array('user'),
 

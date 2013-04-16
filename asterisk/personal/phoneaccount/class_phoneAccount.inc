@@ -1677,7 +1677,7 @@ class phoneAccount extends plugin
       "plIcon"        => "plugins/asterisk/images/icon.png",
       "plSmallIcon"   => "plugins/asterisk/images/iconMini.png",
       "plSelfModify"  => TRUE,
-      "plPriority"    => 7,                                 // Position in tabs
+      "plPriority"    => 16,                                 // Position in tabs
       "plCategory"    => array("users"),
       "plObjectType"  => array("user"),
 

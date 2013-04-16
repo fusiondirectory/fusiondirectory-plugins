@@ -216,7 +216,7 @@ class supannAccount extends simplePlugin
       'plIcon'        => 'plugins/supann/images/icon.png',
       'plSmallIcon'   => 'plugins/supann/images/iconMini.png',
       'plSelfModify'  => TRUE,
-      'plPriority'    => 5,
+      'plPriority'    => 14,
       'plCategory'    => array('users'),
       'plObjectType'  => array('user'),
 

@@ -95,7 +95,7 @@ class sshAccount extends simplePlugin
       'plDescription'   => _('Edit user\'s SSH public keys'),
       'plSelfModify'    => TRUE,
       'plDepends'       => array('posixAccount'),
-      'plPriority'      => 3,
+      'plPriority'      => 6,
       'plCategory'      => array('users'),
       'plObjectType'    => array('user'),
       'plIcon'          => 'plugins/ssh/images/icon.png',

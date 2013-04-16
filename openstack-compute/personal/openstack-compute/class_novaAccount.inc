@@ -22,21 +22,21 @@
 class novaAccount extends simplePlugin
 {
   var $displayHeader  = TRUE;
-  var $objectclasses  = array("novaUser");
+  var $objectclasses  = array('novaUser');
 
   static function plInfo()
   {
     return array(
-      "plShortName"     => _("Nova"),
-      "plDescription"   => _("Nova user account settings"),
-      "plIcon"          => "plugins/openstack-compute/images/icon.png",
-      "plSmallIcon"     => "plugins/openstack-compute/images/iconMini.png",
-      "plSelfModify"    => TRUE,
-      "plPriority"      => 3,
-      "plCategory"      => array("users"),
-      "plObjectType"    => array("user"),
-      "plRequirements"  => array('ldapSchema' => array('novaUser' => ''), 'onFailureDisablePlugin' => array(get_class())),
-      "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plShortName'     => _('Nova'),
+      'plDescription'   => _('Nova user account settings'),
+      'plIcon'          => 'plugins/openstack-compute/images/icon.png',
+      'plSmallIcon'     => 'plugins/openstack-compute/images/iconMini.png',
+      'plSelfModify'    => TRUE,
+      'plPriority'      => 12,
+      'plCategory'      => array('users'),
+      'plObjectType'    => array('user'),
+      'plRequirements'  => array('ldapSchema' => array('novaUser' => ''), 'onFailureDisablePlugin' => array(get_class())),
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }
 
@@ -58,8 +58,8 @@ class novaAccount extends simplePlugin
   function __construct(&$config, $dn = NULL, $object = NULL)
   {
     parent::__construct($config, $dn, $object);
-    $this->attributesInfo['section1']['attrs']['accessKey']->setDisabled(TRUE);
-    $this->attributesInfo['section1']['attrs']['secretKey']->setDisabled(TRUE);
+    $this->attributesAccess['accessKey']->setDisabled(TRUE);
+    $this->attributesAccess['secretKey']->setDisabled(TRUE);
   }
 
   /*!
@@ -68,7 +68,7 @@ class novaAccount extends simplePlugin
   static function getAttributesInfo ()
   {
     return array(
-      'section1' => array (
+      'main' => array (
         'name'  => _('Nova Account'),
         'attrs' => array (
           new BooleanAttribute (
