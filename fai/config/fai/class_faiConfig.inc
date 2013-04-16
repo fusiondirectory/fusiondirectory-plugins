@@ -55,7 +55,7 @@ class faiConfig extends simplePlugin
         sprintf(_('Fai %s RDN'), strtolower($rdn)),
         sprintf(_('Relative branch in which fai %s will be stored'), _(strtolower($rdn).'s')),
         'fdFai'.$rdn.'RDN', TRUE,
-        'ou='.strtolower($rdn).','
+        'ou='.strtolower($rdn)
       );
     }
     return $attrs;
