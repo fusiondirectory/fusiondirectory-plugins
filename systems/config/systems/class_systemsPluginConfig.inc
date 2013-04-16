@@ -81,11 +81,6 @@ class systemsPluginConfig extends simplePlugin
         'name'  => _('LDAP tree'),
         'attrs' => array(
           new StringAttribute (
-            _('Device RDN'), _('Branch in which hotplug devices will be stored'),
-            'fdDeviceRDN', TRUE,
-            'ou=devices'
-          ),
-          new StringAttribute (
             _('Mimetype RDN'), _('Branch in which mime types will be stored'),
             'fdMimetypeRDN', TRUE,
             'ou=mimetypes'
