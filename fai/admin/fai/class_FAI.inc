@@ -164,19 +164,14 @@ class FAI
   /* Return all relevant FAI departments */
   static function get_FAI_departments($suffix = "")
   {
-    $arr = array("hooks","scripts","disk","packages","profiles","templates","variables");
-    $tmp = array();
-    if(preg_match("/^,/",$suffix)){
-      $suffix = preg_replace("/^,/","",$suffix);
-    }
-    foreach($arr as $name){
-      if(empty($suffix)){
-        $tmp[$name] = "ou=".$name;
-      }else{
-        $tmp[$name] = "ou=".$name.",".$suffix;
+    return array_map(
+      function ($name)
+      {
+        return get_ou('fai'.$name.'RDN').$suffix;
       }
-    }
-    return($tmp);
+      ,
+      array('Hook','Script','Partition','Package','Profile','Template','Variable')
+    );
   }
 
 
