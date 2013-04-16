@@ -117,21 +117,20 @@ class boardSystems extends simplePlugin
     */
 
     $output_next_computer_ids = "";
-    $computer_ids_rules = $this->config->get_cfg_value("board_next_computer_ids_rule", "5;PC");
+    $computer_ids_rules = $this->config->get_cfg_value("boardPrefix", array("PC"));
 
     /* $get_cfg_value return the OU like ou=computer .. */
     $winstation_ou  = mb_substr($this->config->get_cfg_value("sambaMachineAccountRDN"), 3); //FIXME use get_ou
-    $array_rules    = explode(";", $computer_ids_rules);
-    $nb_digits      = $array_rules[0];
+    $nb_digits      = $this->config->get_cfg_value("boardNumberOfDigit", 3);
 
     /* running all the table */
-    for ($i = 1;$i < sizeof($array_rules);$i++) {
+    foreach ($computer_ids_rules as $rule) {
       /* aray initialization*/
       $array_complete_list  = array();
       $array_real_list      = array();
       $unused_computer_ids  = array();
       /* get computer ids configuration */
-      $config_ids = explode("=", $array_rules[$i]);
+      $config_ids = explode("=", $rule);
       /* fist is is the prefix */
       $prefix = $config_ids[0];
       /* second (if specified) is the first item */
@@ -193,14 +192,14 @@ class boardSystems extends simplePlugin
   static function plInfo()
   {
     return array(
-      "plShortName"   => _("Systems"),
-      "plDescription" => _("Statistics and informations about systems"),
-      "plIcon"        => "plugins/board/images/icon.png",
-      "plSelfModify"  => FALSE,
-      "plCategory"    => array("board"),
-      "plObjectType"  => array("board"),
+      'plShortName'   => _('Systems'),
+      'plDescription' => _('Statistics and informations about systems'),
+      'plIcon'        => 'plugins/board/images/icon.png',
+      'plSelfModify'  => FALSE,
+      'plCategory'    => array('board'),
+      'plObjectType'  => array('board'),
 
-      "plProvidedAcls"  => array()
+      'plProvidedAcls'  => array()
     );
   }
 }

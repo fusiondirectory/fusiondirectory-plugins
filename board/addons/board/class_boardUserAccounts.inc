@@ -75,7 +75,7 @@ class boardUserAccounts extends simplePlugin
     $today        = floor(time() / 86400); // 24 * 60 * 60
 
     /* Fetch global value from fusiondirectory.conf */
-    $next_expired_days = $this->config->get_cfg_value("board_next_expired_account", "15");
+    $next_expired_days = $this->config->get_cfg_value("boardExpiredAccountsDays", 15);
     $next_expired_date = ($today + $next_expired_days);
 
     /* search all account with all date, mail, telephone */
