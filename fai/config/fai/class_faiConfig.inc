@@ -49,7 +49,7 @@ class faiConfig extends simplePlugin
         )
       ),
     );
-    $rdns = array('Scripts', 'Hooks', 'Templates', 'Variables', 'Profiles', 'Packages', 'Partition');
+    $rdns = array('Scripts', 'Hooks', 'Templates', 'Variables', 'Profiles', 'Packages', 'Disk');
     foreach ($rdns as $rdn) {
       $attrs['main']['attrs'][] = new StringAttribute (
         sprintf(_('Fai %s RDN'), strtolower($rdn)),
