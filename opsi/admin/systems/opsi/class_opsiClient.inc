@@ -138,6 +138,10 @@ class opsiClient extends simplePlugin
 
   function remove_from_parent()
   {
+    if (!$this->initially_was_account) {
+      return;
+    }
+
     $macAddresses = array();
     if ($this->editing_group()) {
       $ldap = $this->config->get_ldap_link();
