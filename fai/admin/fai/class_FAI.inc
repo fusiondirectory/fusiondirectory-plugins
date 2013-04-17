@@ -165,7 +165,7 @@ class FAI
   static function get_FAI_departments($suffix = "")
   {
     return array_map(
-      function ($name)
+      function ($name) use ($suffix)
       {
         return get_ou('fai'.$name.'RDN').$suffix;
       }
