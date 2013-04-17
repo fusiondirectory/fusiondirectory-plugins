@@ -35,6 +35,7 @@ class networkSettings extends plugin
   var $macAddress            = "";    // Mac address
 
   var $orig_ipHostNumber   = "";    // IP address
+  var $orig_macAddress     = "";    // Mac address
 
   var $cn             = "";    // CN of currently edited device
   var $OrigCn         = "";    // Initial cn
@@ -142,6 +143,7 @@ class networkSettings extends plugin
 
     if (!$this->DNSenabled) {
       $this->DNS_is_account = FALSE;
+      return;
     }
 
     if ($this->DNSenabled) {
@@ -201,14 +203,18 @@ class networkSettings extends plugin
       $ldap->search("(|(macAddress=*)(ipHostNumber=*))", array("macAddress","ipHostNumber"));
       while ($attrs = $ldap->fetch()) {
         if (isset($attrs['ipHostNumber'][0])) {
-          $this->used_ips[$attrs['ipHostNumber'][0]] = $attrs['ipHostNumber'][0];
+          $this->used_ip_mac["ip:".$attrs['ipHostNumber'][0]] = "ip:".$attrs['ipHostNumber'][0];
+        }
+        if (isset($attrs['macAddress'][0])) {
+          $this->used_ip_mac["mac:".$attrs['macAddress'][0]] = "mac:".$attrs['macAddress'][0];
         }
       }
     }
 
     /* Save initial ip and mac values, to be able
         check if the used values are already in use */
-    $this->orig_ipHostNumber = $this->ipHostNumber;
+    $this->orig_ipHostNumber   = $this->ipHostNumber;
+    $this->orig_macAddress     = $this->macAddress;
 
     /* Store initally account settings
      */
@@ -625,8 +631,13 @@ class networkSettings extends plugin
     /* Check if mac and ip are already used */
     if (!empty($this->ipHostNumber) &&
         $this->ipHostNumber != $this->orig_ipHostNumber &&
-        in_array($this->ipHostNumber, $this->used_ip_mac)) {
+        in_array("ip:".$this->ipHostNumber, $this->used_ip_mac)) {
       $message[] = msgPool::duplicated(_("IP address"));
+    }
+    if (!empty($this->macAddress) &&
+        $this->macAddress != $this->orig_macAddress &&
+        in_array("mac:".$this->macAddress, $this->used_ip_mac)) {
+      $message[] = msgPool::duplicated(_("MAC address"));
     }
 
     /* Check if ip must be given
