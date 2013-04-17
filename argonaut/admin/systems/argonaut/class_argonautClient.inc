@@ -26,7 +26,7 @@ class ArgonautServiceNameAttribute extends CompositeAttribute
     "serviceCUPS"         => "cups",
     "serviceMail"         => "postfix",
     "serviceNTP"          => "ntpd",
-    "serviceIMAP"         => "cyrus-imapd",
+    "serviceCyrus"        => "cyrus-imapd",
     "serviceTerminal"     => "ssh",
     "serviceLDAP"         => "slapd",
     "serviceShare"        => "samba",
