@@ -51,7 +51,7 @@ class faiConfig extends simplePlugin
     );
     $rdns = array('Script', 'Hook', 'Template', 'Variable', 'Profile', 'Package', 'Partition');
     foreach ($rdns as $rdn) {
-      if ($rdn == '') {
+      if ($rdn == 'Partition') {
         $default = 'ou=disk';
       } else {
         $default = 'ou='.strtolower($rdn).'s';
