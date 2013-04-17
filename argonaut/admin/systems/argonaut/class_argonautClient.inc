@@ -35,6 +35,7 @@ class ArgonautServiceNameAttribute extends CompositeAttribute
     "serviceDHCP"         => "isc-dhcp-server",
     "serviceDNS"          => "bind9",
     "serviceQuota"        => "quota",
+    "serviceOPSI"         => "opsiconfd",
     "argonautServer"      => "argonaut-server"
   );
 
