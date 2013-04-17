@@ -51,11 +51,16 @@ class faiConfig extends simplePlugin
     );
     $rdns = array('Script', 'Hook', 'Template', 'Variable', 'Profile', 'Package', 'Partition');
     foreach ($rdns as $rdn) {
+      if ($rdn == '') {
+        $default = 'ou=disk';
+      } else {
+        $default = 'ou='.strtolower($rdn).'s';
+      }
       $attrs['main']['attrs'][] = new StringAttribute (
-        sprintf(_('Fai %s RDN'), strtolower($rdn)),
+        sprintf(_('Fai %s RDN'), _(strtolower($rdn))),
         sprintf(_('Relative branch in which fai %s will be stored'), _(strtolower($rdn).'s')),
         'fdFai'.$rdn.'RDN', TRUE,
-        'ou='.strtolower($rdn)
+        $default
       );
     }
     return $attrs;
