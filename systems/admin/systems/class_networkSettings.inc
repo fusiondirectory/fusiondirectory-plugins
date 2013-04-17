@@ -143,7 +143,6 @@ class networkSettings extends plugin
 
     if (!$this->DNSenabled) {
       $this->DNS_is_account = FALSE;
-      return;
     }
 
     if ($this->DNSenabled) {
@@ -634,10 +633,12 @@ class networkSettings extends plugin
         in_array("ip:".$this->ipHostNumber, $this->used_ip_mac)) {
       $message[] = msgPool::duplicated(_("IP address"));
     }
-    if (!empty($this->macAddress) &&
-        $this->macAddress != $this->orig_macAddress &&
-        in_array("mac:".$this->macAddress, $this->used_ip_mac)) {
-      $message[] = msgPool::duplicated(_("MAC address"));
+    if ($this->dhcp_is_Account) {
+      if (!empty($this->macAddress) &&
+          $this->macAddress != $this->orig_macAddress &&
+          in_array("mac:".$this->macAddress, $this->used_ip_mac)) {
+        $message[] = msgPool::duplicated(_("MAC address"));
+      }
     }
 
     /* Check if ip must be given
