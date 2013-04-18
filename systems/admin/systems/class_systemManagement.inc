@@ -62,12 +62,30 @@ class systemManagement extends management
 
     // Register Daemon Events
     if (class_available("DaemonEvent") && class_available("supportDaemon")) {
+      $headpage->xmlData['actionmenu']['action'][2]['action'] = array();
+      $headpage->xmlData['actionmenu']['action'][3]['action'] = array();
       $events = DaemonEvent::get_event_types();
       foreach($events as $name => $data){
         $this->registerAction("T_".$name, "handleEvent");
+        $headpage->xmlData['actionmenu']['action'][2]['action'][] = array(
+        'name' => 'T_'.$name,
+        'type' => 'entry',
+        'image' => $data['img'],
+        'label' => $data['name'],
+        );
         $this->registerAction("S_".$name, "handleEvent");
+        $headpage->xmlData['actionmenu']['action'][3]['action'][] = array(
+        'name' => 'S_'.$name,
+        'type' => 'entry',
+        'image' => $data['img'],
+        'label' => $data['name'],
+        );
       }
       $this->registerAction("activateMultiple", "activateMultiple");
+    } else {
+      unset($headpage->xmlData['actionmenu']['action'][2]);
+      unset($headpage->xmlData['actionmenu']['action'][3]);
+      $headpage->xmlData['actionmenu']['action'] = array_values($headpage->xmlData['actionmenu']['action']);
     }
     $this->registerAction("saveEvent","saveEventDialog");
     $this->registerAction("createISO","createISO");
@@ -245,9 +263,8 @@ class systemManagement extends management
     // Detect triggere or scheduled actions
     $headpage = $this->getHeadpage();
     $event = preg_replace("/^[TS]_/", "", $action);
-    if (preg_match("/^[TS]_/", $action)) {
 
-    }
+    echo "<h1>launching action $action</h1>\n";
 
     // Now send remaining FAI/Argonaut events here.
     if (count($target) && $this->si_active) {
@@ -290,6 +307,7 @@ class systemManagement extends management
           $o_queue->append($this->dialogObject);
           if ($o_queue->is_error()) {
             msg_dialog::display(_("Service infrastructure"), msgPool::siError($o_queue->get_error()), ERROR_DIALOG);
+            $this->closeDialogs();
           } else {
             $this->closeDialogs();
           }

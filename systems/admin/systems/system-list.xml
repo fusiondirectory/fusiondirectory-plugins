@@ -289,132 +289,17 @@
     </action>
 
     <action>
-     <type>sub</type>
-     <image>images/rocket.png</image>
-     <label>Trigger action</label>
-
-      <action>
-        <name>T_halt</name>
-        <depends>DaemonEvent</depends>
-        <type>entry</type>
-        <image>images/lists/off.png</image>
-        <label>Halt </label>
-      </action>
-
-      <action>
-        <name>T_reboot</name>
-        <depends>DaemonEvent</depends>
-        <type>entry</type>
-        <image>images/lists/reload.png</image>
-        <label>Reboot</label>
-      </action>
-
-      <action>
-        <name>T_wakeup</name>
-        <depends>DaemonEvent</depends>
-        <type>entry</type>
-        <image>images/lists/on.png</image>
-        <label>Wakeup</label>
-      </action>
-
-      <action>
-        <name>T_update</name>
-        <depends>DaemonEvent</depends>
-        <type>entry</type>
-        <image>plugins/systems/images/update.png</image>
-        <label>Update</label>
-      </action>
-
-      <action>
-        <name>T_lock</name>
-        <depends>DaemonEvent</depends>
-        <type>entry</type>
-        <image>images/lists/locked.png</image>
-        <label>Lock</label>
-      </action>
-
-      <action>
-        <name>T_activate</name>
-        <depends>DaemonEvent</depends>
-        <type>entry</type>
-        <image>images/lists/unlocked.png</image>
-        <label>Activate</label>
-      </action>
-
-      <action>
-        <name>T_reinstall</name>
-        <depends>DaemonEvent</depends>
-        <type>entry</type>
-        <image>plugins/systems/images/reinstall.png</image>
-        <label>(Re)Install</label>
-      </action>
-
-
+      <type>sub</type>
+      <image>images/rocket.png</image>
+      <label>Trigger action</label>
+      <depends>DaemonEvent</depends>
     </action>
-
-
 
     <action>
      <type>sub</type>
      <image>plugins/systems/images/clock.png</image>
      <label>Schedule action</label>
-
-      <action>
-        <name>S_halt</name>
-        <depends>DaemonEvent</depends>
-        <type>entry</type>
-        <image>images/lists/off.png</image>
-        <label>Halt</label>
-      </action>
-
-      <action>
-        <name>S_reboot</name>
-        <depends>DaemonEvent</depends>
-        <type>entry</type>
-        <image>images/lists/reload.png</image>
-        <label>Reboot</label>
-      </action>
-
-      <action>
-        <name>S_wakeup</name>
-        <depends>DaemonEvent</depends>
-        <type>entry</type>
-        <image>images/lists/on.png</image>
-        <label>Wakeup</label>
-      </action>
-
-      <action>
-        <name>S_update</name>
-        <depends>DaemonEvent</depends>
-        <type>entry</type>
-        <image>plugins/systems/images/update.png</image>
-        <label>Update</label>
-      </action>
-
-      <action>
-        <name>S_lock</name>
-        <depends>DaemonEvent</depends>
-        <type>entry</type>
-        <image>images/lists/locked.png</image>
-        <label>Lock</label>
-      </action>
-
-      <action>
-        <name>S_activate</name>
-        <depends>DaemonEvent</depends>
-        <type>entry</type>
-        <image>images/lists/unlocked.png</image>
-        <label>Activate</label>
-      </action>
-
-      <action>
-        <name>S_reinstall</name>
-        <depends>DaemonEvent</depends>
-        <type>entry</type>
-        <image>plugins/systems/images/reinstall.png</image>
-        <label>(Re)Install</label>
-      </action>
-
+      <depends>DaemonEvent</depends>
     </action>
 
     <action>
