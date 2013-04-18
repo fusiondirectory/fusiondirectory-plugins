@@ -176,7 +176,8 @@ class opsiProfile extends simplePlugin
       $this->products[$this->fdOpsiServerDN]['netboots'] = $netboots;
 
       $ldap->cd($this->config->current['BASE']);
-      $ldap->search('(&(|(objectClass=opsiOnDemandList)(objectClass=opsiSoftwareList))(fdOpsiServerDN='.$this->fdOpsiServerDN.'))', array('cn'));
+      //~ $ldap->search('(&(|(objectClass=opsiOnDemandList)(objectClass=opsiSoftwareList))(fdOpsiServerDN='.$this->fdOpsiServerDN.'))', array('cn'));
+      $ldap->search('(&(objectClass=opsiSoftwareList)(fdOpsiServerDN='.$this->fdOpsiServerDN.'))', array('cn'));
       $lists = array();
       while ($attrs = $ldap->fetch()) {
         $lists[$attrs['dn']] = $attrs['cn'][0];
