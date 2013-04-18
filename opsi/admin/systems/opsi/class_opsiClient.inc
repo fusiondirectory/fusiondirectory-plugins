@@ -101,43 +101,53 @@ class opsiClient extends simplePlugin
     parent::save();
 
     if ($this->is_account) {
-      $s_daemon   = new supportDaemon();
-      if ($this->editing_group()) {
-        $macAddresses = array();
-        $ldap = $this->config->get_ldap_link();
-        foreach ($this->parent->getBaseObject()->member as $member) {
-          $ldap->cat($member, array('macAddress'), '(macAddress=*)');
-          if ($attrs = $ldap->fetch()) {
-            $macAddresses[] = $attrs['macAddress'][0];
+      $this->update_or_insert();
+    }
+  }
+
+  function update_or_insert() {
+    $s_daemon   = new supportDaemon();
+    $macAddresses = array();
+    if ($this->editing_group()) {
+      $ldap = $this->config->get_ldap_link();
+      foreach ($this->parent->getBaseObject()->member as $member) {
+        $ldap->cat($member, array('macAddress'), '(macAddress=*)');
+        if ($attrs = $ldap->fetch()) {
+          $macAddresses[] = $attrs['macAddress'][0];
+        } else {
+          if ($ldap->success()) {
+            $error = "$member was not found!";
           } else {
-            if ($ldap->success()) {
-              $error = "$member was not found!";
-            } else {
-              $error = $ldap->get_error();
-            }
-            msg_dialog::display(
-              _("Could not get macAddress for $member"),
-              msgPool::ldaperror($error), ERROR_DIALOG
-            );
+            $error = $ldap->get_error();
           }
-        }
-      } else {
-        $macAddresses = array($this->parent->getBaseObject()->netConfigDNS->macAddress);
-      }
-      if ($s_daemon->is_available()) {
-        $res = $s_daemon->append_call('OPSI.update_or_insert', $macAddresses, array());
-        if ($s_daemon->is_error()) {
           msg_dialog::display(
-            _('Could not update OPSI informations'),
-            msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
+            _("Could not get macAddress for $member"),
+            msgPool::ldaperror($error), ERROR_DIALOG
           );
         }
+      }
+    } else {
+      $macAddresses = array($this->parent->getBaseObject()->netConfigDNS->macAddress);
+    }
+    if (!empty($macAddresses) && $s_daemon->is_available()) {
+      $res = $s_daemon->append_call('OPSI.update_or_insert', $macAddresses, array());
+      if ($s_daemon->is_error()) {
+        msg_dialog::display(
+          _('Could not update OPSI informations'),
+          msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
+        );
       }
     }
   }
 
   function remove_from_parent()
   {
+    if ($this->member_of_group) {
+      // If the winstation is member of an ogroup which has OPSI activated, we must update_or_insert informations
+      // We have to call this in here because save won't be called as is_account is FALSE
+      $this->update_or_insert();
+    }
+
     if (!$this->initially_was_account) {
       return;
     }
