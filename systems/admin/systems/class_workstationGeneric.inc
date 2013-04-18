@@ -257,10 +257,10 @@ class workstationGeneric extends simplePlugin
       $this->currently_installing = $s_daemon->is_currently_installing($this->netConfigDNS->macAddress);
     }
 
-    $this->attributesInfo['main']['attrs']['cn']->setUnique(TRUE);
+    $this->attributesAccess['cn']->setUnique(TRUE);
 
-    $this->attributesInfo['servers']['attrs']['inheritTimeServer']->setInLdap(FALSE);
-    $this->attributesInfo['servers']['attrs']['inheritTimeServer']->setManagedAttributes(
+    $this->attributesAccess['inheritTimeServer']->setInLdap(FALSE);
+    $this->attributesAccess['inheritTimeServer']->setManagedAttributes(
       array(
         'erase' => array(
           TRUE => array('gotoNtpServer'),
@@ -268,8 +268,8 @@ class workstationGeneric extends simplePlugin
       )
     );
 
-    $this->attributesInfo['servers']['attrs']['inheritLDAPServer']->setInLdap(FALSE);
-    $this->attributesInfo['servers']['attrs']['inheritLDAPServer']->setManagedAttributes(
+    $this->attributesAccess['inheritLDAPServer']->setInLdap(FALSE);
+    $this->attributesAccess['inheritLDAPServer']->setManagedAttributes(
       array(
         'erase' => array(
           TRUE => array('gotoLdapServer'),
@@ -278,30 +278,30 @@ class workstationGeneric extends simplePlugin
     );
 
     /* Create used ntp server array */
-    $ntpServers = $this->attributesInfo['servers']['attrs']['gotoNtpServer']->getValue();
+    $ntpServers = $this->attributesAccess['gotoNtpServer']->getValue();
     /* Set inherit checkbox state */
     if ($this->member_of_group && (in_array("default", $ntpServers) || (count($ntpServers) == 0))) {
-      $this->attributesInfo['servers']['attrs']['inheritTimeServer']->setValue(TRUE);
-      $this->attributesInfo['servers']['attrs']['gotoNtpServer']->setValue(array());
+      $this->attributesAccess['inheritTimeServer']->setValue(TRUE);
+      $this->attributesAccess['gotoNtpServer']->setValue(array());
     } else {
-      $this->attributesInfo['servers']['attrs']['inheritTimeServer']->setValue(FALSE);
+      $this->attributesAccess['inheritTimeServer']->setValue(FALSE);
     }
 
     /* Create used ldap server array */
-    $ldapServers = $this->attributesInfo['servers']['attrs']['gotoLdapServer']->getValue();
+    $ldapServers = $this->attributesAccess['gotoLdapServer']->getValue();
     /* Set inherit checkbox state */
     if ($this->member_of_group && (count($ldapServers) == 0)) {
-      $this->attributesInfo['servers']['attrs']['inheritLDAPServer']->setValue(TRUE);
+      $this->attributesAccess['inheritLDAPServer']->setValue(TRUE);
     } else {
-      $this->attributesInfo['servers']['attrs']['inheritLDAPServer']->setValue(FALSE);
+      $this->attributesAccess['inheritLDAPServer']->setValue(FALSE);
     }
 
     /* Disable inheritance if we're not in a group */
     if (!$this->member_of_group) {
-      $this->attributesInfo['servers']['attrs']['inheritTimeServer']->setDisabled(TRUE);
-      $this->attributesInfo['servers']['attrs']['inheritTimeServer']->setVisible(FALSE);
-      $this->attributesInfo['servers']['attrs']['inheritLDAPServer']->setDisabled(TRUE);
-      $this->attributesInfo['servers']['attrs']['inheritLDAPServer']->setVisible(FALSE);
+      $this->attributesAccess['inheritTimeServer']->setDisabled(TRUE);
+      $this->attributesAccess['inheritTimeServer']->setVisible(FALSE);
+      $this->attributesAccess['inheritLDAPServer']->setDisabled(TRUE);
+      $this->attributesAccess['inheritLDAPServer']->setVisible(FALSE);
     }
 
     /* Create available ntp options */
@@ -312,20 +312,25 @@ class workstationGeneric extends simplePlugin
       }
       $tmp[] = $server;
     }
-    $this->attributesInfo['servers']['attrs']['gotoNtpServer']->attribute->setChoices($tmp);
+    $this->attributesAccess['gotoNtpServer']->attribute->setChoices($tmp);
     if (count($tmp) == 0) {
-      $this->attributesInfo['servers']['attrs']['gotoNtpServer']->setDisabled(TRUE);
-      $this->attributesInfo['servers']['attrs']['inheritTimeServer']->setValue(TRUE);
-      $this->attributesInfo['servers']['attrs']['inheritTimeServer']->setDisabled(TRUE);
+      $this->attributesAccess['gotoNtpServer']->setDisabled(TRUE);
+      $this->attributesAccess['inheritTimeServer']->setValue(TRUE);
+      $this->attributesAccess['inheritTimeServer']->setDisabled(TRUE);
     }
 
     /* Create available ldap options */
-    $tmp = array_keys($this->config->data['SERVERS']['LDAP']);
-    $this->attributesInfo['servers']['attrs']['gotoLdapServer']->attribute->setChoices($tmp);
+    $tmp = array();
+    foreach ($this->config->data['SERVERS']['LDAP'] as $dn => $infos) {
+      $tmp[$dn] = $infos['goLdapURI'][0].$infos['goLdapBase'][0];
+    }
+    $this->attributesAccess['gotoLdapServer']->attribute->setChoices(
+      array_keys($tmp), array_values($tmp)
+    );
     if (count($tmp) == 0) {
-      $this->attributesInfo['servers']['attrs']['gotoLdapServer']->setDisabled(TRUE);
-      $this->attributesInfo['servers']['attrs']['inheritLDAPServer']->setValue(TRUE);
-      $this->attributesInfo['servers']['attrs']['inheritLDAPServer']->setDisabled(TRUE);
+      $this->attributesAccess['gotoLdapServer']->setDisabled(TRUE);
+      $this->attributesAccess['inheritLDAPServer']->setValue(TRUE);
+      $this->attributesAccess['inheritLDAPServer']->setDisabled(TRUE);
     }
 
     /* Create an array of all Syslog servers */
@@ -337,7 +342,7 @@ class workstationGeneric extends simplePlugin
         $tmp_output[$key] = _('inherited');
       }
     }
-    $this->attributesInfo['servers']['attrs']['gotoSyslogServer']->setChoices($tmp, $tmp_output);
+    $this->attributesAccess['gotoSyslogServer']->setChoices($tmp, $tmp_output);
 
     $this->updateAttributesValues();
     $this->prepareSavedAttributes();
@@ -413,13 +418,13 @@ class workstationGeneric extends simplePlugin
   {
     $message = parent::check();
 
-    $activate = ($this->attributesInfo['main']['attrs']['gotoMode']->hasChanged() &&
-                 $this->attributesInfo['main']['attrs']['gotoMode']->getValue());
+    $activate = ($this->attributesAccess['gotoMode']->hasChanged() &&
+                 $this->attributesAccess['gotoMode']->getValue());
     /* Only systems with a valid ldap handle can be activated
      */
     if ($activate) {
-      if ((count($this->attributesInfo['servers']['attrs']['gotoLdapServer']->getValue()) == 0) &&
-          !$this->attributesInfo['servers']['attrs']['inheritLDAPServer']->getValue()) {
+      if ((count($this->attributesAccess['gotoLdapServer']->getValue()) == 0) &&
+          !$this->attributesAccess['inheritLDAPServer']->getValue()) {
         $message[] = _("A valid LDAP server assignement is missing!");
       }
     }
@@ -429,8 +434,8 @@ class workstationGeneric extends simplePlugin
 
   protected function ldap_save($cleanup = TRUE)
   {
-    $activate = ($this->attributesInfo['main']['attrs']['gotoMode']->hasChanged() &&
-                 $this->attributesInfo['main']['attrs']['gotoMode']->getValue());
+    $activate = ($this->attributesAccess['gotoMode']->hasChanged() &&
+                 $this->attributesAccess['gotoMode']->getValue());
     parent::ldap_save($cleanup);
     $this->netConfigDNS->cn = $this->cn;
     $this->netConfigDNS->save();
