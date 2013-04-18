@@ -225,6 +225,7 @@ class winstationGeneric extends simplePlugin
 
   function prepare_save()
   {
+    $this->uid = $this->cn;
     parent::prepare_save();
 
     //verify that the $this->sambaSID exist and that it is correct
@@ -256,13 +257,19 @@ class winstationGeneric extends simplePlugin
   protected function ldap_save($cleanup = TRUE)
   {
     parent::ldap_save($cleanup);
-    $this->netConfigDNS->cn = preg_replace("/\\\$\$/", "", $this->uid);
+    $this->netConfigDNS->cn = preg_replace("/\\\$\$/", "", $this->cn);
     $this->netConfigDNS->save();
   }
 
   function is_modal_dialog()
   {
     return (isset($this->netConfigDNS->dialog) && $this->netConfigDNS->dialog);
+  }
+
+  function compute_dn()
+  {
+    $this->uid = $this->cn;
+    return 'uid='.$this->uid.','.get_winstations_ou().$this->base;
   }
 }
 ?>

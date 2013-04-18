@@ -1048,7 +1048,7 @@ class systemManagement extends management
             "ou"          => get_winstations_ou(),
             "plugClass"   => "winstationGeneric",
             "sendEvents"  => TRUE,
-            "tabClass"    => "wintabs",
+            "tabClass"    => "simpleTabs",
             "tabDesc"     => "WINSTATIONTABS",
             "aclClass"    => "winstationGeneric",
             "aclCategory" => "winstation"),

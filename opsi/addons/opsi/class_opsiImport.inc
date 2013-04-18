@@ -191,7 +191,7 @@ class opsiImport extends simplePlugin
       $cn = $m[1].'$';
       $zone = $m[2].'.';
 
-      $w = new wintabs($this->config, $this->config->data['TABS'][$tabclass], "new", $plCategory);
+      $w = new simpleTabs($this->config, $this->config->data['TABS'][$tabclass], "new", $plCategory);
       $w->set_acl_base($this->base);
       $wingeneric = $w->getBaseObject();
       $wingeneric->cn   = $cn;
