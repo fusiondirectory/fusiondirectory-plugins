@@ -64,6 +64,9 @@ class opsiClient extends simplePlugin
     parent::__construct($config, $dn, $object);
     if ($object instanceof ogroup) {
       $this->initialMembers = $object->saved_attributes['member'];
+      if (!is_array($this->initialMembers)) {
+        $this->initialMembers = array($this->initialMembers);
+      }
     }
   }
 
@@ -96,7 +99,7 @@ class opsiClient extends simplePlugin
         }
         $s_daemon   = new supportDaemon();
         if ($s_daemon->is_available()) {
-          $res = $s_daemon->append_call('OPSI.delete', array($serverMac), array($macAddresses));
+          $res = $s_daemon->append_call('OPSI.delete', array($serverMac), array('args' =>array($macAddresses)));
           if ($s_daemon->is_error()) {
             msg_dialog::display(
               _('Could not remove OPSI informations'),
