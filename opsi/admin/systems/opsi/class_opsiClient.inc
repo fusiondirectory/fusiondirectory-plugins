@@ -96,7 +96,7 @@ class opsiClient extends simplePlugin
         }
         $s_daemon   = new supportDaemon();
         if ($s_daemon->is_available()) {
-          $res = $s_daemon->append_call('OPSI.delete', $serverMac, array($macAddresses));
+          $res = $s_daemon->append_call('OPSI.delete', array($serverMac), array($macAddresses));
           if ($s_daemon->is_error()) {
             msg_dialog::display(
               _('Could not remove OPSI informations'),
