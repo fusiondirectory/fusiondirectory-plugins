@@ -85,9 +85,18 @@ class opsiClient extends simplePlugin
         }
       }
       if (!empty($macAddresses)) {
+        $ldap->cat($this->fdOpsiServerDn, array('macAddress'));
+        if ($attrs = $ldap->fetch()) {
+          $serverMac = $attrs['macAddress'][0];
+        } else {
+          msg_dialog::display(
+            _("Could not get macAddress for OPSI server !"),
+            msgPool::ldaperror($ldap->get_error()), ERROR_DIALOG
+          );
+        }
         $s_daemon   = new supportDaemon();
         if ($s_daemon->is_available()) {
-          $res = $s_daemon->append_call('OPSI.delete', $macAddresses, array());
+          $res = $s_daemon->append_call('OPSI.delete', $serverMac, array($macAddresses));
           if ($s_daemon->is_error()) {
             msg_dialog::display(
               _('Could not remove OPSI informations'),
