@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003  Cajus Pollmeier
-  Copyright (C) 2011  FusionDirectory
+  Copyright (C) 2011-2013  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -26,7 +26,7 @@ class goService extends plugin{
   var $objectclasses    = array();
   var $attributes       = array();
   var $StatusFlag       = "";
- 
+
   /* This class can't be assigned twice so it conflicts with itsself */
   var $conflicts            = array();
   var $dn                   = NULL;
@@ -35,16 +35,16 @@ class goService extends plugin{
   var $view_logged          = FALSE;
 
   var $krb_service_prefix   = "";
-  var $krb_host_key         = NULL; 
-   
-  /* Construction */ 
+  var $krb_host_key         = NULL;
+
+  /* Construction */
   function goService(&$config,$dn,$parent = NULL)
   {
     plugin::plugin($config,$dn);
     $this->DisplayName = _("Empty service");
   }
 
-  
+
   /* Create content */
   function execute()
   {
@@ -64,7 +64,7 @@ class goService extends plugin{
   /* Get service information for serverService plugin */
   function getListEntry()
   {
-    
+
     $this->updateStatusState();
 
     /* Assign status flag */
@@ -80,6 +80,7 @@ class goService extends plugin{
 
     /* Allow/disallow some functions */
     $sf = !empty($this->StatusFlag);
+    $fields['AllowStatus']  = FALSE;
     $fields['AllowStart']   = $sf && $this->acl_is_writeable("start");
     $fields['AllowStop']    = $sf && $this->acl_is_writeable("stop");
     $fields['AllowRestart'] = $sf && $this->acl_is_writeable("restart");
@@ -95,10 +96,10 @@ class goService extends plugin{
     if(!$this->initially_was_account || !$this->acl_is_removeable()){
       return;
     }
-    
+
     plugin::remove_from_parent();
 
-    /* Remove status flag, it is not a memeber of 
+    /* Remove status flag, it is not a memeber of
         this->attributes, so ensure that it is deleted too */
     if(!empty($this->StatusFlag)){
       $this->attrs[$this->StatusFlag] = array();
@@ -113,7 +114,7 @@ class goService extends plugin{
     }else{
       $ldap->cd($this->dn);
       $ldap->add($this->attrs);
-      
+
     }
 
     new log("remove","server/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
@@ -155,21 +156,25 @@ class goService extends plugin{
   /* Directly save new status flag */
   function setStatus($value)
   {
-    if($value == "none") return;
+    if ($value == "none") {
+      return;
+    }
 
     /* Can't set status flag for new services (Object doesn't exists in ldap tree) */
-    if(!$this->initially_was_account) return;
+    if (!$this->initially_was_account) {
+      return;
+    }
 
     /* Can't set status flag, if no flag is specified  */
-    if(empty($this->StatusFlag)){
+    if (empty($this->StatusFlag)) {
       return;
     }
 
     /* Get object (server), update status flag and save changes */
     $ldap = $this->config->get_ldap_link();
     $ldap->cd($this->dn);
-    $ldap->cat($this->dn,array("objectClass"));
-    if($ldap->count()){
+    $ldap->cat($this->dn, array("objectClass"));
+    if ($ldap->count()) {
 
       $tmp = $ldap->fetch();
       for($i = 0; $i < $tmp['objectClass']['count']; $i ++){
@@ -188,50 +193,50 @@ class goService extends plugin{
 
 
   function check()
-  { 
+  {
     $message = plugin::check();
     return($message);
   }
-  
+
 
   function save_object()
   {
     plugin::save_object();
-  }  
+  }
 
-  
-  function action_hook($add_attrs= array())
+
+  function action_hook($add_attrs = array())
   {
     /* Find postcreate entries for this class */
-    $command= $this->config->search(get_class($this), "SERVICEACTIONHOOK",array('menu','tabs'));
-    if ($command != ""){
+    $command = $this->config->search(get_class($this), "SERVICEACTIONHOOK", array('menu','tabs'));
+    if ($command != "") {
 
       /* Walk through attribute list */
-      foreach ($this->attributes as $attr){
-        if (!is_array($this->$attr)){
-          $command= preg_replace("/%$attr/", $this->$attr, $command);
+      foreach ($this->attributes as $attr) {
+        if (!is_array($this->$attr)) {
+          $command = preg_replace("/%$attr%/", $this->$attr, $command);
         }
       }
-      $command= preg_replace("/%dn/", $this->dn, $command);
+      $command = preg_replace("/%dn/", $this->dn, $command);
 
       /* Additional attributes */
-      foreach ($add_attrs as $name => $value){
-        $command= preg_replace("/%$name/", $value, $command);
+      foreach ($add_attrs as $name => $value) {
+        $command = preg_replace("/%$name%/", $value, $command);
       }
 
       /* If there are still some %.. in our command, try to fill these with some other class vars */
-      if(preg_match("/%/",$command)){
+      if (preg_match("/%/", $command)) {
         $attrs = get_object_vars($this);
-        foreach($attrs as $name => $value){
-          if(!is_string($value)) continue;
-          $command= preg_replace("/%$name/", escapeshellarg($value), $command);
+        foreach ($attrs as $name => $value) {
+          if (!is_string($value)) {
+            continue;
+          }
+          $command = preg_replace("/%$name%/", escapeshellarg($value), $command);
         }
       }
 
-      if (check_command($command)){
-        @DEBUG (DEBUG_SHELL, __LINE__, __FUNCTION__, __FILE__,
-            $command, "Execute");
-
+      if (check_command($command)) {
+        @DEBUG (DEBUG_SHELL, __LINE__, __FUNCTION__, __FILE__, $command, "Execute");
         exec($command);
       } else {
         msg_dialog::display(_("Configuration error"), msgPool::cmdnotfound("SERVICEACTIONHOOK", get_class($this)), ERROR_DIALOG);

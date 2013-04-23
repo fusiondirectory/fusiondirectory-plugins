@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011  FusionDirectory
+  Copyright (C) 2011-2013  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -92,7 +92,7 @@ class dhcpTSigKey extends dhcpPlugin
       if (isset($_POST['cn'])){
         $this->cn=get_post('cn');
       }
-    
+
     }
 
     dhcpPlugin::save_object();
@@ -108,7 +108,7 @@ class dhcpTSigKey extends dhcpPlugin
     if(isset($this->parent) && isset($this->parent->dhcpObjectCache)){
       $cache = $this->parent->dhcpObjectCache;
     }
-  
+
     /* All required fields are set? */
     if ($this->cn == ""){
       $message[]= msgPool::required(_("Key name"));
@@ -117,11 +117,11 @@ class dhcpTSigKey extends dhcpPlugin
     if ($this->dhcpKeySecret == ""){
       $message[]= msgPool::required(_("Key"));
     }
-    
+
 
     /* cn already used? */
     if ($this->orig_cn != $this->cn || $this->new){
-      
+
       foreach($cache as $dn => $dummy){
         if (preg_match("/^cn=".$this->cn.",/", $dn) && count($dummy)){
           $message[]= msgPool::duplicated(_("Key name"));
@@ -129,7 +129,7 @@ class dhcpTSigKey extends dhcpPlugin
         }
       }
     }
-    
+
     /* Check external plugins */
     $net= $this->network->check();
     $adv= $this->advanced->check();

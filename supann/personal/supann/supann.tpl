@@ -166,7 +166,7 @@
       </td>
       <td> <!-- SAISIE/DONNE  supannEntiteAffectationPrincipale-->
         <select name="supannEntiteAffectationPrincipale" id="supannEntiteAffectationPrincipale"  >
-          {html_options options=$list_supannEntiteAffectation selected=$supannEntiteAffectationPrincipale }
+          {html_options options=$list_supannEntiteAffectation selected=$supannEntiteAffectationPrincipale}
         </select>
       </td>
       <td> <!-- ENTETE  eduPersonPrimaryAffiliation-->
@@ -201,7 +201,7 @@
     <tr><!-- SAISIE supannEntiteAffectation - eduPersonAffiliation -->
       <td colspan="2"><!-- SAISIE supannEntiteAffectation -->
         <select name="supannEntiteAffectation_new" id="supannEntiteAffectation_new"  >
-          {html_options options=$list_supannEntiteAffectation }
+          {html_options options=$list_supannEntiteAffectation}
         </select>
         <input name="addsupannEntiteAffectation" value="{msgPool type=addButton}" id="addsupannEntiteAffectation" type="submit">
         <input name="delsupannEntiteAffectation" value="{msgPool type=delButton}" id="delsupannEntiteAffectation" type="submit">
@@ -359,7 +359,7 @@
           {html_options values=$list_ref_supannRoleGenerique_SRE output=$list_ref_supannRoleGenerique_SRE selected=$ref_supannRoleGenerique_SRE}
         </select>
         <select name="supannRoleGenerique_SRE" id="supannRoleGenerique_SRE"  >
-          {html_options options=$list_supannRoleGenerique_SRE }
+          {html_options options=$list_supannRoleGenerique_SRE}
         </select>
         <select name="ref_supannTypeEntiteAffectation_SRE" id="ref_supannTypeEntiteAffectation_SRE"  onChange="document.mainform.submit();" >
           {html_options values=$list_ref_supannTypeEntiteAffectation_SRE output=$list_ref_supannTypeEntiteAffectation_SRE selected=$ref_supannTypeEntiteAffectation_SRE}

@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003  Cajus Pollmeier
-  Copyright (C) 2011  FusionDirectory
+  Copyright (C) 2011-2013  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,546 +20,546 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-/*! \brief  Sudo option class.
-            Allows setting flags/options for a sudo role.
+/*
+
+ * TODO
+ * Find a way to translate descriptions
  */
 
-class sudoOption extends plugin
+class UsedOptionAttribute extends CompositeAttribute
 {
-  /* Group attributes */
-  protected $sudoOption = array();
-  public $attributes    = array("sudoOption");
-  private $options = array();
-  public $ignore_account = TRUE;
-
-  /*! \brief  Initializes this class
-        @param  Object $config  The FusionDirectory configuration object.
-        @param  String $dn      The object dn.
-   */
-  function sudoOption(&$config, $dn= NULL)
+  function __construct ($description, $ldapName, $acl = "")
   {
-    plugin::plugin ($config, $dn);
-
-    /****
-      Create a list of known options
-     ****/
-    $options = array();
-    $option['long_otp_prompt']= array('NAME' =>'long_otp_prompt' ,   'TYPE' => 'BOOLEAN' ,   'DEFAULT' => 'FALSE');
-    $option['ignore_dot']=  array('NAME' =>'ignore_dot' ,  'TYPE' => 'BOOLEAN' ,   'DEFAULT' => 'TRUE');
-    $option['mail_always']= array('NAME' =>'mail_always' ,   'TYPE' => 'BOOLEAN' ,   'DEFAULT' => 'FALSE');
-    $option['mail_badpass']=  array('NAME' =>'mail_badpass' ,  'TYPE' => 'BOOLEAN' ,   'DEFAULT' => 'FALSE');
-    $option['mail_no_user']=  array('NAME' =>'mail_no_user' ,  'TYPE' => 'BOOLEAN' ,   'DEFAULT' => 'TRUE');
-    $option['mail_no_host']=  array('NAME' =>'mail_no_host' ,  'TYPE' => 'BOOLEAN' ,   'DEFAULT' => 'FALSE');
-    $option['mail_no_perms']= array('NAME' =>'mail_no_perms' ,   'TYPE' => 'BOOLEAN' ,   'DEFAULT' => 'FALSE');
-    $option['tty_tickets']= array('NAME' =>'tty_tickets' ,   'TYPE' => 'BOOLEAN' ,   'DEFAULT' => 'TRUE');
-    $option['authenticate']=  array('NAME' =>'authenticate' ,  'TYPE' => 'BOOLEAN' ,   'DEFAULT' => 'TRUE');
-    $option['root_sudo']= array('NAME' =>'root_sudo' ,   'TYPE' => 'BOOLEAN' ,   'DEFAULT' => 'TRUE');
-    $option['log_host']=  array('NAME' =>'log_host' ,  'TYPE' => 'BOOLEAN' ,   'DEFAULT' => 'FALSE');
-    $option['log_year']=  array('NAME' =>'log_year' ,  'TYPE' => 'BOOLEAN' ,   'DEFAULT' => 'FALSE');
-    $option['shell_noargs']=  array('NAME' =>'shell_noargs' ,  'TYPE' => 'BOOLEAN' ,   'DEFAULT' => 'FALSE');
-    $option['set_home']=  array('NAME' =>'set_home' ,  'TYPE' => 'BOOLEAN' ,   'DEFAULT' => 'FALSE');
-    $option['always_set_home']= array('NAME' =>'always_set_home' ,   'TYPE' => 'BOOLEAN' ,   'DEFAULT' => 'FALSE');
-    $option['path_info']= array('NAME' =>'path_info' ,   'TYPE' => 'BOOLEAN' ,   'DEFAULT' => 'FALSE');
-    $option['preserve_groups']= array('NAME' =>'preserve_groups' ,   'TYPE' => 'BOOLEAN' ,   'DEFAULT' => 'FALSE');
-    $option['fqdn']=  array('NAME' =>'fqdn' ,  'TYPE' => 'BOOLEAN' ,   'DEFAULT' => 'FALSE');
-    $option['insults']= array('NAME' =>'insults' ,   'TYPE' => 'BOOLEAN' ,   'DEFAULT' => 'FALSE');
-    $option['requiretty']=  array('NAME' =>'requiretty' ,  'TYPE' => 'BOOLEAN' ,   'DEFAULT' => 'FALSE');
-    $option['env_editor']=  array('NAME' =>'env_editor' ,  'TYPE' => 'BOOLEAN' ,   'DEFAULT' => 'TRUE');
-    $option['rootpw']=  array('NAME' =>'rootpw' ,  'TYPE' => 'BOOLEAN' ,   'DEFAULT' => 'FALSE');
-    $option['runaspw']= array('NAME' =>'runaspw' ,   'TYPE' => 'BOOLEAN' ,   'DEFAULT' => 'FALSE');
-    $option['targetpw']=  array('NAME' =>'targetpw' ,  'TYPE' => 'BOOLEAN' ,   'DEFAULT' => 'FALSE');
-    $option['set_logname']= array('NAME' =>'set_logname' ,   'TYPE' => 'BOOLEAN' ,   'DEFAULT' => 'TRUE');
-    $option['stay_setuid']= array('NAME' =>'stay_setuid' ,   'TYPE' => 'BOOLEAN' ,   'DEFAULT' => 'TRUE');
-    $option['env_reset']= array('NAME' =>'env_reset' ,   'TYPE' => 'BOOLEAN' ,   'DEFAULT' => 'TRUE');
-    $option['use_loginclass']=  array('NAME' =>'use_loginclass' ,  'TYPE' => 'BOOLEAN' ,   'DEFAULT' => 'FALSE');
-    $option['noexec']=  array('NAME' =>'noexec' ,  'TYPE' => 'BOOLEAN' ,   'DEFAULT' => 'FALSE');
-    $option['ignore_local_sudoers']=  array('NAME' =>'ignore_local_sudoers' ,  'TYPE' => 'BOOLEAN' ,   'DEFAULT' => 'FALSE');
-    $option['passwd_tries']=  array('NAME' =>'passwd_tries' ,  'TYPE' => 'INTEGER' ,   'DEFAULT' => 3);
-    $option['loglinelen']=  array('NAME' =>'loglinelen' ,  'TYPE' => 'BOOL_INTEGER' ,  'DEFAULT' => 80);
-    $option['timestamp_timeout']= array('NAME' =>'timestamp_timeout' ,   'TYPE' => 'BOOL_INTEGER' ,  'DEFAULT' => 0);
-    $option['passwd_timeout']=  array('NAME' =>'passwd_timeout' ,  'TYPE' => 'BOOL_INTEGER' ,  'DEFAULT' => 15);
-    $option['umask']= array('NAME' =>'umask' ,   'TYPE' => 'BOOL_INTEGER' ,  'DEFAULT' => "0022");
-    $option['mailsub']= array('NAME' =>'mailsub' ,   'TYPE' => 'STRING' ,   'DEFAULT' => '*** SECURITY information for %h ***');
-    $option['badpass_message']= array('NAME' =>'badpass_message' ,   'TYPE' => 'STRING' ,   'DEFAULT' => 'Sorry, try again');
-    $option['timestampdir']=  array('NAME' =>'timestampdir' ,  'TYPE' => 'STRING' ,   'DEFAULT' => '/var/run/sudo');
-    $option['timestampowner']=  array('NAME' =>'timestampowner' ,  'TYPE' => 'STRING' ,   'DEFAULT' => 'root');
-    $option['passprompt']=  array('NAME' =>'passprompt' ,  'TYPE' => 'STRING' ,   'DEFAULT' => '[sudo] password for %p: ');
-    $option['runas_default']= array('NAME' =>'runas_default' ,   'TYPE' => 'STRING' ,   'DEFAULT' => 'root');
-    $option['syslog_goodpri']=  array('NAME' =>'syslog_goodpri' ,  'TYPE' => 'STRING' ,   'DEFAULT' => 'notice');
-    $option['syslog_badpri']= array('NAME' =>'syslog_badpri' ,   'TYPE' => 'STRING' ,   'DEFAULT' => 'alert');
-    $option['editor']=  array('NAME' =>'editor' ,  'TYPE' => 'STRING' ,   'DEFAULT' => '/usr/bin/vi');
-    $option['noexec_file']= array('NAME' =>'noexec_file' ,   'TYPE' => 'STRING' ,   'DEFAULT' => '/usr/lib/sudo/sudo_noexec.so');
-    $option['lecture']= array('NAME' =>'lecture' ,   'TYPE' => 'STRING_BOOL' ,   'DEFAULT' => 'once');
-    $option['lecture_file']=  array('NAME' =>'lecture_file' ,  'TYPE' => 'STRING_BOOL' ,   'DEFAULT' => '');
-    $option['logfile']= array('NAME' =>'logfile' ,   'TYPE' => 'STRING_BOOL' ,   'DEFAULT' => 'syslog');
-    $option['syslog']=  array('NAME' =>'syslog' ,  'TYPE' => 'STRING_BOOL' ,   'DEFAULT' => 'authpriv');
-    $option['mailerpath']=  array('NAME' =>'mailerpath' ,  'TYPE' => 'STRING_BOOL' ,   'DEFAULT' => '');
-    $option['mailerflags']= array('NAME' =>'mailerflags' ,   'TYPE' => 'STRING_BOOL' ,   'DEFAULT' => '-t');
-    $option['mailto']=  array('NAME' =>'mailto' ,  'TYPE' => 'STRING_BOOL' ,   'DEFAULT' => 'root');
-    $option['exempt_group']=  array('NAME' =>'exempt_group' ,  'TYPE' => 'STRING_BOOL' ,   'DEFAULT' => 'root');
-    $option['verifypw']=  array('NAME' =>'verifypw' ,  'TYPE' => 'STRING_BOOL' ,   'DEFAULT' => 'all');
-    $option['listpw']=  array('NAME' =>'listpw' ,  'TYPE' => 'STRING_BOOL' ,   'DEFAULT' => 'any');
-    $option['env_check']= array('NAME' =>'env_check' ,   'TYPE' => 'LISTS' ,   'DEFAULT' => '');
-    $option['env_delete']=  array('NAME' =>'env_delete' ,  'TYPE' => 'LISTS' ,   'DEFAULT' => '');
-    $option['env_keep']=  array('NAME' =>'env_keep' ,  'TYPE' => 'LISTS' ,   'DEFAULT' => '');
-    ksort($option);
-    $this->options = $option;
-
-    $this->load_options();
+    parent::__construct($description, $ldapName, array(), "", "", $acl);
   }
 
-
-  private function load_options()
+  function addOption ($name, $params, $value = NULL)
   {
+    if ($params['TYPE'] == 'LISTS') {
+      $this->attributes[$name] = new ListSudoOptionAttribute($name, $params['DESC'], $params['DEFAULT'], $this->getAcl());
+    } else {
+      $this->attributes[$name] = new SudoOptionAttribute($name, $params['DESC'], $params['TYPE'], $params['DEFAULT'], $this->getAcl());
+    }
+    if ($value !== NULL) {
+      $this->attributes[$name]->setValue($value);
+    }
+    $this->attributes[$name]->setParent($this->plugin);
+  }
 
-    /****
-      Parse given sudoOption attributes 
-     ****/
-    $this->sudoOption = array();
-    if(isset($this->attrs['sudoOption'])){
-      for($i = 0 ; $i < $this->attrs['sudoOption']['count']; $i++){
-
-        /****
-          Detect attribute name/value/negation
-         ****/
-        $opt = $this->attrs['sudoOption'][$i];
-
-        /* Get negation */ 
+  function loadAttrValue ($attrs)
+  {
+    if (isset($attrs[$this->getLdapName()])) {
+      $values = $attrs[$this->getLdapName()];
+      unset($values['count']);
+      foreach ($values as $opt) {
+        /* Get negation */
         $negation = FALSE;
-        if(preg_match("/^!/",$opt)){
-          $negation = TRUE; 
-          $opt = preg_replace("/^!/","",$opt);
+        if (preg_match("/^!/", $opt)) {
+          $negation = TRUE;
+          $opt = preg_replace("/^!/", "", $opt);
         }
 
         /* Get value / name*/
         $value    = "";
-        if(preg_match("/=/",$opt)){
-          $value  = preg_replace("/^[^=]*+=/","",$opt);
-          $opt    = preg_replace("/=.*$/","",$opt);
+        if (preg_match("/=/", $opt)) {
+          $value  = preg_replace("/^[^=]*+=/", "", $opt);
+          $opt    = preg_replace("/=.*$/", "", $opt);
         }
 
         /* Special chars are escaped, remove escape char now.
             \\ => \
             \: => :
             \, => ,
-            \= => = 
+            \= => =
          */
-        $value = $this->unescape_command($value);
+        $value = $this->plugin->unescape_command($value);
+
+        $opt = preg_replace(array('/\-$/','/\+$/'),array('_moins','_plus'),$opt);
 
         /* Check if the given value is part of our options list.
-           If it is not, add it as type STRING and display a warning.  
+           If it is not, add it as type STRING and display a warning.
         */
-        if(!isset($this->options[$opt])){
-          $this->options[$opt]=array('NAME'=>$opt,'TYPE'=>'STRING','DEFAULT' => '');
-          msg_dialog::display(_("Unknown option"),
-              sprintf(_("The sudo option '%s' is invalid!"),
-                $opt),WARNING_DIALOG);
+        if (!isset(AvailableSudoOptionAttribute::$options[$opt])) {
+          msg_dialog::display(
+            _("Unknown option"),
+            sprintf(_("The sudo option '%s' is invalid!"), $opt),
+            WARNING_DIALOG
+          );
+        } else {
+          $this->addOption($opt, AvailableSudoOptionAttribute::$options[$opt], array('negate' => $negation,'value' => $value));
         }
-
-        /* Create internal sudoOption object */
-        $option = array();
-        $option['NAME']   = $opt;
-        $option['VALUE']  = $value;
-        $option['NEGATE'] = $negation;
-
-        /*  Special handling for mixed flag types. 
-            Some attributes like (BOOL_INTEGER) can be TRUE/FALSE and INTEGER.
-            This means, if the value is empty it is BOOL and $negation defines its boolean value.
-         */
-        if(in_array($this->options[$opt]['TYPE'],array("BOOL_INTEGER","STRING_BOOL"))){
-          if(empty($value)){
-            $option['NEGATE'] = FALSE;
-            if($negation){
-              $option['VALUE'] = "FALSE";
-            }else{
-              $option['VALUE'] = "TRUE";
-            }
-          }
-        }
-
-        /* Special handling for BOOLEAN values */
-        if(in_array($this->options[$opt]['TYPE'],array("BOOLEAN"))){
-          $option['NEGATE'] = FALSE;
-          if($negation){
-            $option['VALUE'] = "FALSE";
-          }else{
-            $option['VALUE'] = "TRUE";
-          }
-        }
-
-        /* Append values */
-        $this->sudoOption[$opt][] = $option;
       }
     }
   }
 
-
-
-  /*! \brief  Create HTML output for this plugin 
-      @return String  HTML output for this plugin.
-    */
-  function execute()
+  function readValues ($value)
   {
-    /* Call parent execute */
-    plugin::execute();
+    return $value;
+  }
 
-    /*****
-      Handle Posts 
-     *****/
-    if($this->acl_is_writeable("")){
+  function writeValues ($values)
+  {
+    return array_values($values);
+  }
 
-      foreach($_POST as $name => $value){
-
-        if(preg_match("/^negOption_/",$name)){
-
-          $opt = preg_replace("/^negOption_/","",$name);
-          $opt = preg_replace("/_[^_]*$/","",$opt);
-          $id  = preg_replace("/^.*_([0-9])*$/","\\1",$opt);
-          $opt = preg_replace("/_[0-9]*$/","",$opt);
-
-          if(isset($this->sudoOption[$opt][$id])){
-            $val = $this->sudoOption[$opt][$id]["VALUE"];
-
-            /*****
-              Negate STRING_BOOL && BOOL_INTEGER
-             *****/
-            if(in_array($this->options[$opt]['TYPE'],array('STRING_BOOL','BOOL_INTEGER'))){
-              if(in_array($val, array("TRUE","FALSE"))){
-                if($val == "TRUE"){
-                  $this->sudoOption[$opt][$id]["VALUE"] = "FALSE";
-                }else{
-                  $this->sudoOption[$opt][$id]["VALUE"] = "TRUE";
-                }
-              }else{
-                $this->sudoOption[$opt][$id]['NEGATE'] = !$this->sudoOption[$opt][$id]['NEGATE']; 
-              }
-            }
-
-            /*****
-              Negate STRING / INTEGER
-             *****/
-            if(in_array($this->options[$opt]['TYPE'],array('STRING','INTEGER','LISTS'))){
-              $this->sudoOption[$opt][$id]['NEGATE'] = !$this->sudoOption[$opt][$id]['NEGATE']; 
-            }
-
-            /*****
-              Negate BOOLEAN
-             *****/
-            if(in_array($this->options[$opt]['TYPE'],array('BOOLEAN'))){
-              if($val == "TRUE"){
-                $this->sudoOption[$opt][$id]["VALUE"] = "FALSE";
-              }else{
-                $this->sudoOption[$opt][$id]["VALUE"] = "TRUE";
-              }
-            }
-          }
-          break;
-        }
-
-        /*****
-          Remove options
-         *****/
-        if(preg_match("/^delOption/",$name)){
-          $opt = preg_replace("/^delOption_/","",$name);
-          $opt = preg_replace("/_[^_]*$/","",$opt);
-          $id  = preg_replace("/^.*_([0-9])*$/","\\1",$opt);
-          $opt = preg_replace("/_[0-9]*$/","",$opt);
-
-          if(isset($this->sudoOption[$opt][$id])){
-            unset($this->sudoOption[$opt][$id]);
-          }
-          if(!count($this->sudoOption[$opt])){
-            unset($this->sudoOption[$opt]);
-          }
-          break;
+  function loadPostValue ()
+  {
+    foreach ($_POST as $name => $value) {
+      if (preg_match("/^delOption_/", $name)) {
+        $opt = preg_replace("/^delOption_/", "", $name);
+        $opt = preg_replace("/_[^_]*$/", "", $opt);
+        if (isset($this->attributes[$opt])) {
+          unset($this->attributes[$opt]);
         }
       }
     }
+    parent::loadPostValue();
+  }
+}
 
- 
+class AvailableSudoOptionAttribute extends SelectAttribute
+{
+  public static $options = array(
+    'long_otp_prompt'       => array('TYPE' => 'BOOLEAN',       'DEFAULT' => 'FALSE',
+    'DESC' => 'When validating with a One Time Password (OTP) scheme such as S/Key or OPIE,
+    a two-line prompt is used to make it easier to cut and paste the challenge to a local window'),
+    'ignore_dot'            => array('TYPE' => 'BOOLEAN',       'DEFAULT' => 'TRUE',
+    'DESC' => 'If set, sudo will ignore \'.\' or \'\' (current dir) in the PATH environment variable'),
+    'mail_always'           => array('TYPE' => 'BOOLEAN',       'DEFAULT' => 'FALSE',
+    'DESC' => 'Send mail to the mailto user every time a users runs sudo'),
+    'mail_badpass'          => array('TYPE' => 'BOOLEAN',       'DEFAULT' => 'FALSE',
+    'DESC' => 'Send mail to the mailto user if the user running sudo does not enter the correct password'),
+    'mail_no_user'          => array('TYPE' => 'BOOLEAN',       'DEFAULT' => 'TRUE',
+    'DESC' => 'If set, mail will be sent to the mailto user if the invoking user is not in the sudoers file'),
+    'mail_no_host'          => array('TYPE' => 'BOOLEAN',       'DEFAULT' => 'FALSE',
+    'DESC' => 'If set, mail will be sent to the mailto user if the invoking user exists in the sudoers file, but is not allowed to run commands on the current host'),
+    'mail_no_perms'         => array('TYPE' => 'BOOLEAN',       'DEFAULT' => 'FALSE',
+    'DESC' => 'If set, mail will be sent to the mailto user if the invoking user is allowed to use sudo but not for this command'),
+    'tty_tickets'           => array('TYPE' => 'BOOLEAN',       'DEFAULT' => 'TRUE',
+    'DESC' => 'If set, users must authenticate on a per-tty basis'),
+    'authenticate'          => array('TYPE' => 'BOOLEAN',       'DEFAULT' => 'TRUE',
+    'DESC' => 'If set, users must authenticate themselves via a password (or other means of authentication)'),
+    'root_sudo'             => array('TYPE' => 'BOOLEAN',       'DEFAULT' => 'TRUE',
+    'DESC' => 'If set, root is allowed to run sudo too'),
+    'log_host'              => array('TYPE' => 'BOOLEAN',       'DEFAULT' => 'FALSE',
+    'DESC' => 'If set, the host name will be logged in the (non-syslog) sudo log file'),
+    'log_year'              => array('TYPE' => 'BOOLEAN',       'DEFAULT' => 'FALSE',
+    'DESC' => 'If set, the four-digit year will be logged in the (non-syslog) sudo log file'),
+    'shell_noargs'          => array('TYPE' => 'BOOLEAN',       'DEFAULT' => 'FALSE',
+    'DESC' => 'If set and sudo is invoked with no arguments it acts as if the -s option had been given'),
+    'set_home'              => array('TYPE' => 'BOOLEAN',       'DEFAULT' => 'FALSE',
+    'DESC' => 'If enabled and sudo is invoked with the -s option the HOME environment variable will be set to the home directory of the target user (usually root)'),
+    'always_set_home'       => array('TYPE' => 'BOOLEAN',       'DEFAULT' => 'FALSE',
+    'DESC' => 'If enabled, sudo will set the HOME environment variable to the home directory of the target user (usually root)'),
+    'path_info'             => array('TYPE' => 'BOOLEAN',       'DEFAULT' => 'FALSE',
+    'DESC' => 'If the executable is simply not in the user\'s PATH, sudo will tell the user that they are not allowed to run it'),
+    'preserve_groups'       => array('TYPE' => 'BOOLEAN',       'DEFAULT' => 'FALSE',
+    'DESC' => 'If set, the user\'s existing group vector is left unaltered'),
+    'fqdn'                  => array('TYPE' => 'BOOLEAN',       'DEFAULT' => 'FALSE',
+    'DESC' => 'Set this flag if you want to put fully qualified host names in the sudoers file'),
+    'insults'               => array('TYPE' => 'BOOLEAN',       'DEFAULT' => 'FALSE',
+    'DESC' => 'If set, sudo will insult users when they enter an incorrect password'),
+    'requiretty'            => array('TYPE' => 'BOOLEAN',       'DEFAULT' => 'FALSE',
+    'DESC' => 'If set, sudo will only run when the user is logged in to a real tty'),
+    'env_editor'            => array('TYPE' => 'BOOLEAN',       'DEFAULT' => 'TRUE',
+    'DESC' => 'If set, visudo will use the value of the EDITOR or VISUAL environment variables before falling back on the default editor list'),
+    'rootpw'                => array('TYPE' => 'BOOLEAN',       'DEFAULT' => 'FALSE',
+    'DESC' => 'If set, sudo will prompt for the root password instead of the password of the invoking user'),
+    'runaspw'               => array('TYPE' => 'BOOLEAN',       'DEFAULT' => 'FALSE',
+    'DESC' => 'If set, sudo will prompt for the password of the user defined by the runas_default option (defaults to root) instead of the password of the invoking user'),
+    'targetpw'              => array('TYPE' => 'BOOLEAN',       'DEFAULT' => 'FALSE',
+    'DESC' => 'If set, sudo will prompt for the password of the user specified by the -u option (defaults to root) instead of the password of the invoking user'),
+    'set_logname'           => array('TYPE' => 'BOOLEAN',       'DEFAULT' => 'TRUE',
+    'DESC' => 'If set, sudo will set the LOGNAME environment variables to the name of the target user'),
+    'stay_setuid'           => array('TYPE' => 'BOOLEAN',       'DEFAULT' => 'TRUE',
+    'DESC' => ''),
+    'env_reset'             => array('TYPE' => 'BOOLEAN',       'DEFAULT' => 'TRUE',
+    'DESC' => 'If set, sudo will run the command in a minimal environment containing the TERM, PATH, HOME, MAIL, SHELL, LOGNAME, USER, USERNAME and SUDO_ variables'),
+    'use_loginclass'        => array('TYPE' => 'BOOLEAN',       'DEFAULT' => 'FALSE',
+    'DESC' => 'If set, sudo will apply the defaults specified for the target user\'s login class if one exists'),
+    'noexec'                => array('TYPE' => 'BOOLEAN',       'DEFAULT' => 'FALSE',
+    'DESC' => 'If set, all commands run via sudo will behave as if the NOEXEC tag has been set, unless overridden by a EXEC tag'),
+    'ignore_local_sudoers'  => array('TYPE' => 'BOOLEAN',       'DEFAULT' => 'FALSE',
+    'DESC' => 'If set, parsing of /etc/sudoers file will be skipped.'),
+    'passwd_tries'          => array('TYPE' => 'INTEGER',       'DEFAULT' => 3,
+    'DESC' => 'The number of tries a user gets to enter his/her password before sudo logs the failure and exits'),
+    'loglinelen'            => array('TYPE' => 'BOOL_INTEGER',  'DEFAULT' => 80,
+    'DESC' => 'Number of characters per line for the file log'),
+    'timestamp_timeout'     => array('TYPE' => 'BOOL_INTEGER',  'DEFAULT' => 0,
+    'DESC' => 'Number of minutes that can elapse before sudo will ask for a passwd again'),
+    'passwd_timeout'        => array('TYPE' => 'BOOL_INTEGER',  'DEFAULT' => 15,
+    'DESC' => 'Number of minutes before the sudo password prompt times out, or 0 for no timeout'),
+    'umask'                 => array('TYPE' => 'BOOL_INTEGER',  'DEFAULT' => "0022",
+    'DESC' => 'Umask to use when running the command. Set to FALSE to preserve the user\'s umask'),
+    'mailsub'               => array('TYPE' => 'STRING',        'DEFAULT' => '*** SECURITY information for %h ***',
+    'DESC' => 'Subject of the mail sent to the mailto user. The escape %h will expand to the host name of the machine'),
+    'badpass_message'       => array('TYPE' => 'STRING',        'DEFAULT' => 'Sorry, try again',
+    'DESC' => 'Message that is displayed if a user enters an incorrect password'),
+    'timestampdir'          => array('TYPE' => 'STRING',        'DEFAULT' => '/var/run/sudo',
+    'DESC' => 'The directory in which sudo stores its timestamp files'),
+    'timestampowner'        => array('TYPE' => 'STRING',        'DEFAULT' => 'root',
+    'DESC' => 'The owner of the timestamp directory and the timestamps stored therein'),
+    'passprompt'            => array('TYPE' => 'STRING',        'DEFAULT' => '[sudo] password for %p: ',
+    'DESC' => 'The default prompt to use when asking for a password; can be overridden via the -p option or the SUDO_PROMPT environment variable'),
+    'runas_default'         => array('TYPE' => 'STRING',        'DEFAULT' => 'root',
+    'DESC' => 'The default user to run commands as if the -u option is not specified on the command line'),
+    'syslog_goodpri'        => array('TYPE' => 'STRING',        'DEFAULT' => 'notice',
+    'DESC' => 'Syslog priority to use when user authenticates successfully'),
+    'syslog_badpri'         => array('TYPE' => 'STRING',        'DEFAULT' => 'alert',
+    'DESC' => 'Syslog priority to use when user authenticates unsuccessfully'),
+    'editor'                => array('TYPE' => 'STRING',        'DEFAULT' => '/usr/bin/vi',
+    'DESC' => 'A colon separated list of editors allowed to be used with visudo'),
+    'noexec_file'           => array('TYPE' => 'STRING',        'DEFAULT' => '/usr/lib/sudo/sudo_noexec.so',
+    'DESC' => ''),
+    'lecture'               => array('TYPE' => 'STRING_BOOL',   'DEFAULT' => 'once',
+    'DESC' => 'This option controls when a short lecture will be printed along with the password prompt'),
+    'lecture_file'          => array('TYPE' => 'STRING_BOOL',   'DEFAULT' => '',
+    'DESC' => 'Path to a file containing an alternate sudo lecture that will be used in place of the standard lecture'),
+    'logfile'               => array('TYPE' => 'STRING_BOOL',   'DEFAULT' => 'syslog',
+    'DESC' => 'Path to the sudo log file (not the syslog log file)'),
+    'syslog'                => array('TYPE' => 'STRING_BOOL',   'DEFAULT' => 'authpriv',
+    'DESC' => 'Syslog facility if syslog is being used for logging'),
+    'mailerpath'            => array('TYPE' => 'STRING_BOOL',   'DEFAULT' => '',
+    'DESC' => 'Path to mail program used to send warning mail'),
+    'mailerflags'           => array('TYPE' => 'STRING_BOOL',   'DEFAULT' => '-t',
+    'DESC' => 'Flags to use when invoking mailer'),
+    'mailto'                => array('TYPE' => 'STRING_BOOL',   'DEFAULT' => 'root',
+    'DESC' => 'Address to send warning and error mail to'),
+    'exempt_group'          => array('TYPE' => 'STRING_BOOL',   'DEFAULT' => 'root',
+    'DESC' => 'Users in this group are exempt from password and PATH requirements'),
+    'verifypw'              => array('TYPE' => 'STRING_BOOL',   'DEFAULT' => 'all',
+    'DESC' => 'This option controls when a password will be required when a user runs sudo with the -v option'),
+    'listpw'                => array('TYPE' => 'STRING_BOOL',   'DEFAULT' => 'any',
+    'DESC' => 'This option controls when a password will be required when a user runs sudo with the -l option'),
+    'env_check'             => array('TYPE' => 'LISTS',         'DEFAULT' => '',
+    'DESC' => 'Environment variables to be removed from the user\'s environment if the variable\'s value contains % or / characters'),
+    'env_delete'            => array('TYPE' => 'LISTS',         'DEFAULT' => '',
+    'DESC' => 'Environment variables to be removed from the user\'s environment when the env_reset option is not in effect'),
+    'env_keep'              => array('TYPE' => 'LISTS',         'DEFAULT' => '',
+    'DESC' => 'Environment variables to be preserved in the user\'s environment when the env_reset option is in effect'),
+    'env_check_moins'       => array('TYPE' => 'LISTS',         'DEFAULT' => '',
+    'DESC' => 'Environment variables to be removed from the user\'s environment if the variable\'s value contains % or / characters'),
+    'env_delete_moins'      => array('TYPE' => 'LISTS',         'DEFAULT' => '',
+    'DESC' => 'Environment variables to be removed from the user\'s environment when the env_reset option is not in effect'),
+    'env_keep_moins'        => array('TYPE' => 'LISTS',         'DEFAULT' => '',
+    'DESC' => 'Environment variables to be preserved in the user\'s environment when the env_reset option is in effect'),
+    'env_check_plus'        => array('TYPE' => 'LISTS',         'DEFAULT' => '',
+    'DESC' => 'Environment variables to be removed from the user\'s environment if the variable\'s value contains % or / characters'),
+    'env_delete_plus'       => array('TYPE' => 'LISTS',         'DEFAULT' => '',
+    'DESC' => 'Environment variables to be removed from the user\'s environment when the env_reset option is not in effect'),
+    'env_keep_plus'         => array('TYPE' => 'LISTS',         'DEFAULT' => '',
+    'DESC' => 'Environment variables to be preserved in the user\'s environment when the env_reset option is in effect')
+  );
+
+  function __construct ($label, $description, $ldapName, $required = TRUE, $acl = "")
+  {
+    $choices = array_keys(self::$options);
+    sort($choices);
+    parent::__construct ($label, $description, $ldapName, $required, $choices, "", NULL, $acl);
+    $this->setInLdap(FALSE);
+  }
+
+  function renderFormInput ()
+  {
+    $id = $this->getLdapName();
+    $button = '<input type="submit" name="add'.$id.'" id="add'.$id.'"'.
+                ($this->disabled? ' disabled="disabled"':'').
+                ' value="{msgPool type=addButton}"/>';
+    $display = parent::renderFormInput();
     $smarty = get_smarty();
-    $smarty->assign("ACL",$this->getacl(""));
-    $smarty->assign("map",  array("STRING" => _("string"), "BOOLEAN" => _("bool"),
-      "INTEGER" => _("integer") , "BOOL_INTEGER" => _("integer")."-"._("bool") ,
-      "STRING_BOOL" => _("string")."-"._("bool"),"LISTS" => _("list")));
-    $smarty->assign("sudoOption",$this->prepare_for_html($this->sudoOption));
-    $smarty->assign("options",$this->options);
-    return($smarty->fetch(get_template_path('options.tpl', TRUE)));
+    $id = $this->getLdapName();
+    $choices = array_diff($this->choices, array_keys($this->plugin->attributesInfo['used_options']['attrs']['sudoOption']->attributes));
+    $smarty->assign($id."_choices", $choices);
+    $options = self::$options;
+    $outputs = array_map(
+      function ($choice) use ($options)
+      {
+        $opt = preg_replace(array('/_moins$/','/_plus$/'),array('-','+'),$choice);
+        return sprintf(_("%s (%s)"), $opt, $options[$choice]['TYPE']);
+      },
+      $choices
+    );
+    $smarty->assign($id."_outputs", $outputs);
+
+    return $display.$this->renderAcl($button);
   }
 
-
-  /*! \brief  Prepare options array to be used in HTML.
-      @param  Array   The options array ($this->sudoOption) 
-      @return Array   HTML ready sudoOption. Can now be used in smarty templates
-   */
-  function prepare_for_html($a_options)
+  function loadPostValue ()
   {
-    foreach($a_options as $name => $options){
-      foreach($options as $key => $option){
-        $a_options[$name][$key]['VALUE'] = htmlentities($option['VALUE']);
+    $this->postValue = $this->value;
+    if (isset($_POST["add".$this->getLdapName()])) {
+      parent::loadPostValue();
+      parent::applyPostValue();
+      $this->plugin->attributesInfo['used_options']['attrs']['sudoOption']->addOption($this->getValue(), self::$options[$this->getValue()]);
+    }
+  }
+}
+
+class ListSudoOptionAttribute extends SetAttribute
+{
+  function __construct ($name, $desc, $defaultValue, $acl = "")
+  {
+    parent::__construct(new StringAttribute(preg_replace(array('/_moins$/','/_plus$/'),array('-','+'),$name), $desc, $name, FALSE, $defaultValue, $acl));
+  }
+
+  function getValue ()
+  {
+    if (count($this->value) <= 0) {
+      return preg_replace(array('/_moins$/','/_plus$/'),array('-','+'),$this->getLdapName()).'=';
+    } elseif (count($this->value) > 1) {
+      return preg_replace(array('/_moins$/','/_plus$/'),array('-','+'),$this->getLdapName()).'="'.implode(' ',$this->value).'"';
+    } else {
+      return preg_replace(array('/_moins$/','/_plus$/'),array('-','+'),$this->getLdapName()).'='.$this->value[0];
+    }
+  }
+
+  function computeLdapValue ()
+  {
+    return $this->getValue();
+  }
+
+  function setValue ($value)
+  {
+    if (isset($value['value'])) {
+      $value = $value['value'];
+      if ($value == "") {
+        $value = array();
+      } elseif ($value[0] != '"') {
+        $value = array($value);
+      } else {
+        $value = preg_split('/ /',
+          preg_replace(array('/^"/','/"$/'), '', $value)
+        );
       }
     }
-    return($a_options);
+    parent::setValue($value);
+  }
+}
+
+class SudoOptionAttribute extends Attribute
+{
+  private $type;
+
+  function __construct ($name, $desc, $type, $defaultValue, $acl = "")
+  {
+    parent::__construct($name, $desc, $name, FALSE, array('negate' => FALSE, 'value' => $defaultValue), $acl);
+    $this->type = $type;
   }
 
-
-  /*! \brief  Removes this plugin 
-   */
-  function remove_from_parent()
+  function loadPostValue ()
   {
-  }
-
-
-  /*! \brief  Saves all relevant HTML post values for this plugin 
-   */
-  function save_object()
-  {
-    if($this->acl_is_writeable("")){
-      plugin::save_object();
-
-      if(isset($_POST['add_option']) && isset($_POST['option'])){
-        $opt = get_post("option");
-
-        /* Append attribute only once, lists are handled below */
-        if(isset($this->options[$opt])){
-          $type = $this->options[$opt]['TYPE'];
-          $val  = $this->options[$opt]['DEFAULT'];
-          $option = array("NAME" => $opt, "VALUE" => $val , "NEGATE" => FALSE);
-          $this->sudoOption[$opt][] = $option;
-        }
+    if (in_array($this->type, array('STRING','INTEGER','BOOLEAN'))) {
+      if (isset($_POST[$this->getLdapName()])) {
+        $this->setPostValue(array('negate' => FALSE, 'value' => $_POST[$this->getLdapName()]));
       }
+    } else {
+      if (isset($_POST[$this->getLdapName().'_selection'])) {
+        $sel = get_post($this->getLdapName().'_selection');
+        $val = "";
+        if (isset($_POST[$this->getLdapName().'_value'])) {
+          $val = get_post($this->getLdapName().'_value');
+        }
 
-      foreach($this->sudoOption as $name => $opts){
-        foreach($opts as $id => $opt){
-
-          /****
-            Get posted value for BOOLEAN
-           ****/
-          if(in_array($this->options[$name]['TYPE'],array("BOOLEAN"))){
-            if(isset($_POST['option_value__'.$name.'_'.$id])){
-              $this->sudoOption[$name][$id]["VALUE"] = get_post('option_value__'.$name.'_'.$id);
-            }
-          }
-
-          /****
-            Get posted value for STRING / INTEGER
-           ****/
-          if(in_array($this->options[$name]['TYPE'],array("STRING","INTEGER"))){
-            if(isset($_POST['option_value__'.$name.'_'.$id])){
-              $this->sudoOption[$name][$id]["VALUE"] = get_post('option_value__'.$name.'_'.$id);
-            }
-          }
-
-          /****
-            Get posted value for STRING_BOOL / BOOL_INTEGER
-           ****/
-          if(in_array($this->options[$name]['TYPE'],array("BOOL_INTEGER","STRING_BOOL"))){
-            if(isset($_POST['option_selection__'.$name.'_'.$id])){
-              $sel = get_post('option_selection__'.$name.'_'.$id);
-              $val = "";
-              if(isset($_POST['option_value__'.$name.'_'.$id])){
-                $val = get_post('option_value__'.$name.'_'.$id);
-              }
-
-              if($sel == "FALSE" || $sel == "TRUE"){
-                $this->sudoOption[$name][$id]['VALUE'] = $sel;
-                $this->sudoOption[$name][$id]['NEGATE'] = FALSE;
-              }else{
-                $this->sudoOption[$name][$id]['VALUE'] = $val;
-              }
-            }
-          }
-
-          /****
-            Get posted value for LISTS
-           ****/
-          if(in_array($this->options[$name]['TYPE'],array("LISTS"))){
-            foreach($this->sudoOption[$name] as $entry_key => $entry){
-              if(isset($_POST['list_value__'.$name.'_'.$entry_key])){
-                $val = get_post('list_value__'.$name.'_'.$entry_key);
-                $this->sudoOption[$name][$entry_key]["VALUE"] = $val;
-              }
-            } 
-          }
+        if ($sel == "FALSE" || $sel == "TRUE") {
+          $this->setPostValue(array('negate' => FALSE, 'value' => $sel));
+        } else {
+          $this->setPostValue(array('negate' => $this->postValue['negate'], 'value' => $val));
         }
       }
     }
   }
 
-
-  /*! \brief  Save changes to ldap 
-   */
-  function save()
+  function check ()
   {
-    plugin::save(); 
+    $error = parent::check();
+    if (!empty($error)) {
+      return $error;
+    } elseif ($this->type == "INTEGER") {
+      if (!is_numeric($this->value) && !empty($this->value)) {
+        return msgPool::invalid($this->getLabel(), $this->value);
+      }
+    }
+  }
 
-    $this->attrs['sudoOption'] = array();
-    foreach($this->sudoOption as $name => $opts){
-      foreach($opts as $id => $opt){
+  function renderFormInput ()
+  {
+    $id = $this->getLdapName();
+    $value = htmlentities($this->value['value'], ENT_COMPAT, 'UTF-8');
+    $smarty = get_smarty();
+    $smarty->assign("boolStringOptions", array("FALSE","TRUE","STRING"));
+    $smarty->assign("boolIntOptions", array("FALSE","TRUE","INTEGER"));
+    $smarty->assign("booleanOptions", array("FALSE","TRUE"));
+    if ($this->type == "STRING") {
+      $display = '<input type="text" name="'.$id.'" id="'.$id.'" value="'.$value.'" />';
+    } elseif ($this->type == "LISTS") { //FIXME : LIST must be handle in an other way
+      $display = '<input type="text" name="'.$id.'" id="'.$id.'" value="'.$value.'" />';
+    } elseif ($this->type == "INTEGER") {
+      $display = '<input type="number" name="'.$id.'" id="'.$id.'" value="'.$value.'" />';
+    } elseif ($this->type == "BOOLEAN") {
+      $display = '<select name="'.$id.'" id="'.$id.'">
+        {html_options values=$booleanOptions output=$booleanOptions selected="'.$value.'"}
+      </select>';
+    } elseif (($this->type == "BOOL_INTEGER") || ($this->type == "STRING_BOOL")) {
+      $selected = ($value == "FALSE" || $value == "TRUE" ?$value:"STRING");
+      $display = '<select name="'.$id.'_selection" id="'.$id.'_selection"
+        onChange="toggle_bool_fields(\''.$id.'_selection\',\''.$id.'_value\');">
+        {html_options values=$boolStringOptions output=$bool'.
+        ($this->type == "BOOL_INTEGER"?'Int':'String').
+        'Options selected="'.$selected.'"}
+      </select>';
+      $display .= '<input type="text" name="'.$id.'_value" id="'.$id.'_value" value="'.$value.'"'.
+          ($selected == "STRING"?'':'disabled="disabled"').'/>';
+    }
+    return $this->renderAcl($display);
+  }
 
-        $type   = $this->options[$name]['TYPE'];
-        $neg    = $opt['NEGATE'];
-        $value  = $opt['VALUE'];
-        $option = "";
+  function getValue ()
+  {
+    /* Escape special chars */
+    $name   = $this->getLdapName();
+    $value  = $this->plugin->escape_command($this->value['value']);
+    $neg    = $this->value['negate'];
 
-        /* Escape special chars */
-        $value = $this->escape_command($value);
-
-        /****
-          Save LISTS 
-         ****/
-        if($type=="LISTS"){
-          if($value == ""){
-            $option = $name;
-          }else{
-            $option = $name."=".$value;
-          }
-          if($neg){
-            $option = "!".$option;
-          }
-        }
-
-        /****
-          Save BOOLEAN
-         ****/
-        if(in_array($type,array("BOOLEAN"))){ 
+    if ($this->type == "BOOLEAN") {
+      $option = $name;
+      if ($value == "FALSE") {
+        $option = "!".$option;
+      }
+    } elseif (in_array($this->type, array("STRING","INTEGER","LISTS"))) {
+      if ($value == "") {
+        $option = $name;
+      } else {
+        $option = $name."=".$value;
+      }
+      if ($neg) {
+        $option = "!".$option;
+      }
+    } elseif (in_array($this->type, array("STRING_BOOL","BOOL_INTEGER"))) {
+      if ($value == "FALSE") {
+        $option = "!".$name;
+      } elseif ($value == "TRUE") {
+        $option = $name;
+      } else {
+        if ($value != "") {
+          $option = $name."=".$value;
+        } else {
           $option = $name;
-          if($value == "FALSE"){
-            $option = "!".$option;
-          }
         }
-
-        /****
-          Save STRING / INTEGER
-         ****/
-        if(in_array($type,array("STRING","INTEGER"))){ 
-          if($value != ""){
-            $option = $name."=".$value;
-          }else{
-            $option = $name; 
-          }
-          if($neg){
-            $option = "!".$option;
-          }
-        }
-
-        /****
-          Save STRING_BOOL / BOOL_INTEGER
-         ****/
-        if(in_array($type,array("STRING_BOOL","BOOL_INTEGER"))){
-          if($value == "FALSE"){
-            $option = "!".$name;
-          }elseif($value == "TRUE"){
-            $option = $name;
-          }else{
-            if($value != ""){
-              $option = $name."=".$value;
-            }else{
-              $option = $name; 
-            }
-            if($neg){
-              $option = "!".$option;
-            }
-          }
-        }
-
-        $this->attrs['sudoOption'][] = $option;
-      }
-    }
-    $this->cleanup();
-    $ldap = $this->config->get_ldap_link();
-    $ldap->cd($this->dn);
-    $ldap->modify($this->attrs);;
-  }
-
-
-  /*! \brief  Checks input validity
-   */
-  function check()
-  {
-    $message = plugin::check();
-
-    foreach($this->sudoOption as $name => $options){
-      foreach($options as $id => $option){
-        switch($this->options[$name]['TYPE']){
-
-          /* Check for a valid integer value */
-          case 'INTEGER' : 
-            {
-              if(!preg_match("/^[0-9]*$/",$option['VALUE'])){
-                $message[] = msgPool::invalid($name,$option['VALUE'],"/[0-9]/");
-              }
-            } break;
+        if ($neg) {
+          $option = "!".$option;
         }
       }
     }
-    return ($message);
+
+    return $option;
   }
+}
 
+/*! \brief  Sudo option class.
+            Allows setting flags/options for a sudo role.
+ */
+class sudoOption extends simplePlugin
+{
+  var $displayHeader = FALSE;
+  var $objectclasses = array();
 
-  /*! \brief  This function will be called if an object gets copied.
-              This function adapts attributes from the source object.
-      @param  Array The source object.
-   */
-  function PrepareForCopyPaste($source)
+  // The main function : information about attributes
+  static function getAttributesInfo ()
   {
-    plugin::PrepareForCopyPaste($source);
-    if(isset($source['sudoOption'])){
-      $this->attrs['sudoOption'] = $source['sudoOption'];
-      $this->load_options();
-    }
+    return array(
+      // Attributes are grouped by section
+      'available_options' => array(
+        'name'  => _('Available options'),
+        'attrs' => array(
+          new AvailableSudoOptionAttribute (
+            _('Option'), _('Add a new sudo option'), 'availableSudoOptions'
+          ),
+        )
+      ),
+      'used_options' => array(
+        'name'  => _('Used sudo role options'),
+        'attrs' => array(
+          new UsedOptionAttribute (_('Used sudo role options'), 'sudoOption')
+        ),
+        'template' => get_template_path('usedoptions_section.tpl', TRUE, dirname(__FILE__))
+      ),
+    );
   }
 
+  function __construct(&$config, $dn = NULL, $object = NULL)
+  {
+    parent::__construct($config, $dn, $object);
+  }
+
+  function execute ()
+  {
+    $script = <<<SCRIPT
+  <script language="JavaScript" type="text/javascript">
+   <!--
+    function toggle_bool_fields (source_select, target_input)
+    {
+     var select= document.getElementById(source_select);
+     var input = document.getElementById(target_input);
+     if (select.value == "TRUE" || select.value == "FALSE") {
+      input.disabled = true;
+      input.value = select.value;
+     } else {
+      input.disabled = false;
+      input.value = "";
+     }
+    }
+   -->
+  </script>
+SCRIPT;
+    return $script.parent::execute();
+  }
 
   /*!  \brief   Escape special chars in function parameters.
        @param   String the string to that must be escaped.
    */
-  private function escape_command($str)
+  public function escape_command($str)
   {
     /* Check if given value is a command (/[a-z]/ ..)
      */
-    if(preg_match("/^\//",$str)){
-      $cmd = preg_replace("/^([^ ]*).*$/","\\1",$str);
-      $val = preg_replace("/^[^ ]*(.*)$/","\\1",$str);
-      $str = $cmd.addcslashes($val,":.,\\");
+    if (preg_match("/^\//", $str)) {
+      $cmd = preg_replace("/^([^ ]*).*$/", "\\1", $str);
+      $val = preg_replace("/^[^ ]*(.*)$/", "\\1", $str);
+      $str = $cmd.addcslashes($val, ":.,\\");
     }
-    return($str);
-  }
-
-
-  /*! \brief  Add ACL object
-      @return Returns the ACL object.
-   */
-  static function plInfo()
-  {
-    return (array(  
-          "plShortName" => _("Options"),
-          "plDescription" => _("Sudo options"),
-          "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
-          "plPriority"    => 2,
-          "plSection"     => array("administration"),
-          "plCategory"    => array("sudo"),
-          "plProvidedAcls"    => array()
-        ));
+    return $str;
   }
 
   /*!  \brief   Unescape special chars in function parameters.
        @param   String the string to that must be unescaped.
    */
-  private function unescape_command($str)
+  public function unescape_command($str)
   {
     /* Check if given value is a command (/[a-z]/ ..)
      */
-    if(preg_match("/^\//",$str)){
-      $cmd = preg_replace("/^([^ ]*).*$/","\\1",$str);
-      $val = preg_replace("/^[^ ]*(.*)$/","\\1",$str);
-      $val = preg_replace(array("/\\\\\\\\/","/\\\\,/","/\\\\:/","/\\\\=/"),
-                              array("\\",",",":","="),$val);
+    if (preg_match("/^\//", $str)) {
+      $cmd = preg_replace("/^([^ ]*).*$/", "\\1", $str);
+      $val = preg_replace("/^[^ ]*(.*)$/", "\\1", $str);
+      $val = preg_replace(
+        array("/\\\\\\\\/", "/\\\\,/", "/\\\\:/", "/\\\\=/"),
+        array("\\",",",":","="), $val
+      );
       $str = $cmd.$val;
     }
-    return($str);
+    return $str;
+  }
+
+  static function plInfo ()
+  {
+    return array(
+      'plShortName'   => _('Options'),
+      'plDescription' => _('Sudo options'),
+      'plSelfModify'  => FALSE,
+      'plCategory'    => array('sudo'),
+      'plObjectType'  => array('sudo'),
+      'plPriority'    => 2,
+
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+    );
   }
 }
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

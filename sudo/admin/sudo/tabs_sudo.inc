@@ -1,9 +1,7 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2003  Cajus Pollmeier
-  Copyright (C) 2011  FusionDirectory
+  Copyright (C) 2013  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,45 +18,13 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class sudotabs extends tabs
+class sudotabs extends simpleTabs
 {
-  function sudotabs($config, $data, $dn)
-  {
-    tabs::tabs($config, $data, $dn,"sudo");
-    $this->addSpecialTabs();
-  }
-
   function set_default($state)
   {
-    if(isset($this->by_object['sudo'])){
+    if (isset($this->by_object['sudo'])) {
       $this->by_object['sudo']->set_default($state);
     }
   }
-
-  function save($ignore_account= FALSE)
-  {
-    $baseobject= $this->by_object['sudo'];
-
-    /* Check for new 'dn', in order to propagate the
-       'dn' to all plugins */
-    $new_dn= 'cn='.$baseobject->get_cn().','.sudo::get_sudoers_ou($baseobject->config);
-
-    /* Move group? */
-    if ($this->dn != $new_dn){
-
-      /* Write entry on new 'dn' */
-      if ($this->dn != "new"){
-        $baseobject->update_acls($this->dn,$new_dn);
-        $baseobject->move($this->dn, $new_dn);
-        $this->by_object['sudo']= $baseobject;
-      }
-
-      /* Happen to use the new one */
-      $this->dn= $new_dn;
-    }
-    $ret= tabs::save();
-    return $ret;
-  }
 }
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

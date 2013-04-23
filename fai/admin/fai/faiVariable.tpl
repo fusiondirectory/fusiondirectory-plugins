@@ -11,7 +11,7 @@
             </td>
             <td>
 {render acl=$cnACL}
-              <input type='text' value="{$cn}" size="45" maxlength="80" disabled id="cn">
+              <input type='text' value="{$cn}" size="45" maxlength="80" id="cn" name="cn"/>
 {/render}
             </td>
           </tr>
@@ -41,7 +41,7 @@
         <table summary="" width="100%">
         <tr>
           <td>
-            <select name="SubObject[]" multiple  title="{t}Choose a variable to delete or edit{/t}" 
+            <select name="SubObject[]" multiple  title="{t}Choose a variable to delete or edit{/t}"
               style="width:100%;" size="20" id="SubObject">
               {html_options options=$SubObjects}
             </select><br>

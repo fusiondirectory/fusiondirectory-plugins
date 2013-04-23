@@ -22,23 +22,28 @@
 
 class ldiftab extends tabs
 {
-
-  function ldiftab($config, $data, $dn)
+  function ldiftab($config, $data, $dn, $cat = '', $copied_object = NULL)
   {
-    tabs::tabs($config, $data, $dn);
+    parent::tabs($config, $data, $dn, '', $copied_object);
   }
 
-  function save_object($save_current= FALSE)
-  {
-    tabs::save_object($save_current);
-  }
-
-
-  function save($ignore_account= FALSE)
+  function save()
   {
   }
 
+  /* Return plugin informations for acl handling */
+  static function plInfo()
+  {
+    return array(
+      'plShortName'   => _('LDAP import/export'),
+      'plDescription' => _('Allows the import or export of the ldap tree'),
+      'plIcon'        => 'plugins/ldapmanager/images/icon.png',
+      'plSection'     => 'addons',
+      'plPriority'    => 20,
+      'plCategory'    => array('ldapmanager' => array('objectClass' => 'none', 'description' => _('Ldap manager'))),
+
+      'plProvidedAcls' => array()
+    );
+  }
 }
-
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

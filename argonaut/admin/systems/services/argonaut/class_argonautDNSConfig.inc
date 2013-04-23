@@ -1,8 +1,7 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2011  FusionDirectory
+  Copyright (C) 2011-2013  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -19,155 +18,86 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class argonautDNSConfig extends goService{
-
-  var $cli_summary      = "This plugin is used within the ServerService Pluign \nand indicates that this server supports Argonaut service.";
-  var $cli_description  = "Some longer text\nfor help";
-  var $cli_parameters   = array("one" => "one is nice", "two" => "two is better");
-
-  /* This plugin only writes its objectClass */
-  var $objectclasses    = array("argonautDNSConfig");
-  var $attributes       = array("argonautLdap2zoneBindDir","argonautLdap2zoneAllowNotify",
-                                "argonautLdap2zoneAllowUpdate","argonautLdap2zoneAllowTransfer",
-                                "argonautLdap2zoneTTL","argonautLdap2zoneRndc");
-  var $StatusFlag       = "";
-
-  /* This class can't be assigned twice so it conflicts with itsself */
-  var $conflicts        = array("argonautDNSConfig");
-
-  var $DisplayName      = "";
-  var $dn               = NULL;
-  var $acl;
-  var $cn               = "";
-  var $view_logged      = FALSE;
-
-  var $argonautMirrorDir              = "/srv/www/debian";              // Where is you local debian mirror
-
-  var $argonautCrawlerPackagesFolder  = "/var/cache/argonaut/packages"; // Where is stored the result produced by the crawler
-
-  var $argonautLdap2zoneBindDir       = "/etc/bind";
-  var $argonautLdap2zoneAllowNotify   = FALSE;
-  var $argonautLdap2zoneAllowUpdate   = "";
-  var $argonautLdap2zoneAllowTransfer = "";
-  var $argonautLdap2zoneTTL           = 500;
-  var $argonautLdap2zoneRndc          = "/usr/sbin/rndc";
-
-  var $ldapBooleans     = array("argonautLdap2zoneAllowNotify");
-
-  function argonautDNSConfig(&$config,$dn)
-  {
-    goService::goService($config,$dn);
-    $this->DisplayName = _("Argonaut DNS settings");
-    foreach ($this->ldapBooleans as $ldapBoolean) {
-      $this->$ldapBoolean = ($this->$ldapBoolean == "TRUE"); // conversion from LDAP format to PHP boolean
-    }
-  }
-
-
-  function execute()
-  {
-    $smarty = get_smarty();
-
-    if($this->is_account && !$this->view_logged){
-      $this->view_logged = TRUE;
-      new log("view","server/".get_class($this),$this->dn);
-    }
-
-    $smarty->assign("argonautDNSConfigACL", $this->getacl("argonautDNSConfig")) ;
-    $attributes = array();
-    foreach ($this->attributes as $attribute) {
-      $smarty->assign("$attribute" , $this->$attribute);
-      $attributes[$attribute] = $this->$attribute;
-    }
-    $smarty->assign("attributes" , $attributes);
-    $smarty->assign("booleans" , $this->ldapBooleans);
-    return($smarty->fetch(get_template_path("argonautDNSConfig.tpl",TRUE,dirname(__FILE__))));
-  }
-
-
-  function getListEntry()
-  {
-    $fields               = goService::getListEntry();
-    $fields['Message']    = _("Argonaut DNS settings");
-    return $fields;
-  }
-
-
-  function save()
-  {
-    plugin::save();
-    foreach ($this->ldapBooleans as $ldapBoolean) {
-      $this->attrs[$ldapBoolean] = ($this->$ldapBoolean?"TRUE":"FALSE"); // conversion from PHP format to LDAP boolean
-    }
-    /* Check if this is a new entry ... add/modify */
-    $ldap = $this->config->get_ldap_link();
-    $ldap->cat($this->dn,array("objectClass"));
-    if($ldap->count()){
-      $ldap->cd($this->dn);
-      $ldap->modify($this->attrs);
-    }else{
-      $ldap->cd($this->dn);
-      $ldap->add($this->attrs);
-    }
-    if (!$ldap->success()){
-      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()));
-    }
-    if($this->initially_was_account){
-      $this->handle_post_events("modify");
-      new log("modify","server/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
-    }else{
-      $this->handle_post_events("add");
-      new log("create","server/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
-    }
-  }
-
-
-  function PrepareForCopyPaste($source)
-  {
-    plugin::PrepareForCopyPaste($source);
-  }
-
-  function check()
-  {
-    $message = plugin::check();
-    return $message;
-  }
-
-  function save_object()
-  {
-    if(isset($_POST['argonautDNSConfigPosted'])) {
-      plugin::save_object();
-      if($this->acl_is_writeable("argonautDNSConfig")) {
-        foreach ($this->ldapBooleans as $ldapBoolean) {
-          $this->$ldapBoolean = isset($_POST[$ldapBoolean]);
-        }
-        foreach ($this->attributes as $attribute) {
-          if(in_array($attribute,$this->ldapBooleans)) {
-            continue;
-          } else if(isset($_POST[$attribute])) {
-            $this->$attribute = $_POST[$attribute];
-          }
-        }
-      }
-    }
-  }
+class argonautDNSConfig extends simpleService
+{
+  var $objectclasses  = array("argonautDNSConfig");
+  var $showActions    = FALSE;
 
   /* Return plugin informations for acl handling */
   static function plInfo()
   {
-    return (array(
-          "plShortName"   => _("Argonaut DNS settings"),
-          "plDescription" => _("Argonaut DNS settings")." ("._("Services").")",
-          "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
-          "plPriority"    => 91,
-          "plSection"     => array("administration"),
-          "plCategory"    => array("server"),
+    return array(
+      "plShortName"     => _("Argonaut DNS settings"),
+      "plDescription"   => _("Argonaut DNS settings")." ("._("Services").")",
+      "plIcon"          => "plugins/argonaut/images/iconMiniDnsConfig.png",
 
-          "plProvidedAcls"=> array(
-            "argonautDNSConfig"        =>_("Modify argonaut DNS settings"))
-          ));
+
+      "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+    );
+  }
+
+
+  /*!
+   *  \brief The main function : information about attributes
+   */
+  static function getAttributesInfo ()
+  {
+    return array (
+    'section1' => array (
+        'name'  => _('Argonaut Ldap2zone settings:'),
+        'attrs' => array (
+          new StringAttribute (
+            _('Bind directory'),
+            _('The directory in which conf file must be created'),
+            'argonautLdap2zoneBindDir',
+            TRUE,
+            '/etc/bind'
+          ),
+          new StringAttribute (
+            _('Bind cache directory'),
+            _('The directory in which zone files must be created'),
+            'argonautLdap2zoneBindCacheDir',
+            TRUE,
+            '/var/cache/bind'
+          ),
+          new BooleanAttribute (
+            _('Allow notify'),
+            '',
+            'argonautLdap2zoneAllowNotify',
+            FALSE
+          ),
+          new StringAttribute (
+            _('Allow update (semicolon separated and ended)'),
+            '',
+            'argonautLdap2zoneAllowUpdate',
+            FALSE
+          ),
+          new StringAttribute (
+            _('Allow transfer (semicolon separated and ended)'),
+            '',
+            'argonautLdap2zoneAllowTransfer',
+            FALSE
+          ),
+          new IntAttribute (
+            _('TTL'),
+            _('Time to live'),
+            'argonautLdap2zoneTTL',
+            FALSE,
+            FALSE,
+            FALSE,
+            500
+          ),
+          new StringAttribute (
+            _('rndc path'),
+            _('path to rndc binary'),
+            'argonautLdap2zoneRndc',
+            FALSE,
+            "/usr/sbin/rndc"
+          )
+        )
+      )
+    );
   }
 }
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
+
 ?>

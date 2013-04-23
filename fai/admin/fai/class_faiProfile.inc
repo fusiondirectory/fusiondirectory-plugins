@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011  FusionDirectory
+  Copyright (C) 2011-2013  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,7 +20,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class faiProfile extends plugin
+class faiProfile extends faiPluginClass
 {
   /* attribute list for save action */
   var $ignore_account   = TRUE;
@@ -49,7 +49,6 @@ class faiProfile extends plugin
   {
     /* Load Attributes */
     plugin::plugin ($config, $dn);
-    $ldap=$this->config->get_ldap_link();
 
     $this->ui = get_userinfo();
 
@@ -62,54 +61,12 @@ class faiProfile extends plugin
       }
     }
 
-    /* Sort assigned classes */ 
+    /* Sort assigned classes */
     if(is_array($tmp2)){
       foreach($tmp2 as $class){
         $this->FAIclasses[$class]=$class;
       }
     }
-
-    $categories = array("FAIscript","FAItemplate","FAIhook","FAIvariable","FAIpartitionTable","FAIpackageList");
-
-    /* Build filter */
-    $filter= "";
-    foreach ($categories as $cat){
-      $filter.= "(objectClass=$cat)";
-    }
-    
-    /* Get ldap connection */ 
-    $base  = session::get('CurrentMainBase');
-    $ldap->cd($base);
-    $sort = array();
-
-    /* search all FAI classes */
-    $ldap->search("(|$filter)",array("*"));
-    while($attrs = $ldap->fetch()){
-
-      /* Sort by categorie */
-      foreach($categories as $cat){
-        if(in_array($cat,$attrs['objectClass'])){
-
-          /* Append entry */
-          $this->FAIAllclasses[$attrs['cn'][0]][$cat]=$attrs;
-  
-          /* Create sort array, because the array above is a multidimensional array, and can't be sorted by php sorting functions*/
-          $sort[strtolower($attrs['cn'][0])] = $attrs['cn'][0];
-        }
-      }
-    } 
-
-    /* Sort the sort array */
-    //ksort($sort);
-
-    /* Reorder the FAIclasses array */
-    foreach($sort as $name){
-      $tmp[$name] =$this->FAIAllclasses[$name];
-    }
-
-    /* Assign sorted classes */
-    $this->FAIAllclasses = array();
-    $this->FAIAllclasses = $tmp;
 
     if($dn != "new"){
       $this->dn =$dn;
@@ -137,6 +94,55 @@ class faiProfile extends plugin
     return($ret);
   }
 
+  function get_all_fai_classes()
+  {
+    if (count($this->FAIAllclasses)) {
+      return;
+    }
+
+    $ldap = $this->config->get_ldap_link();
+    $categories = array("FAIscript","FAItemplate","FAIhook","FAIvariable","FAIpartitionTable","FAIpackageList");
+
+    /* Build filter */
+    $filter= "";
+    foreach ($categories as $cat){
+      $filter.= "(objectClass=$cat)";
+    }
+
+    /* Get ldap connection */
+    $base  = session::get('CurrentMainBase');
+    $ldap->cd($base);
+    $sort = array();
+
+    /* search all FAI classes */
+    $res = FAI::get_all_objects_for_given_base($this->parent->parent->fai_release, "(|$filter)", true);
+    foreach($res as $attrs){
+
+    /* Sort by categorie */
+    foreach($categories as $cat){
+      if(in_array($cat,$attrs['objectClass'])) {
+
+        /* Append entry */
+        $this->FAIAllclasses[$attrs['cn'][0]][$cat]=$attrs;
+
+        /* Create sort array, because the array above is a multidimensional array, and can't be sorted by php sorting functions*/
+        $sort[strtolower($attrs['cn'][0])] = $attrs['cn'][0];
+        }
+      }
+    }
+
+    /* Sort the sort array */
+    //ksort($sort);
+
+    /* Reorder the FAIclasses array */
+    foreach($sort as $name){
+      $tmp[$name] =$this->FAIAllclasses[$name];
+    }
+
+    /* Assign sorted classes */
+    $this->FAIAllclasses = array();
+    $this->FAIAllclasses = $tmp;
+  }
 
   function acl_base_for_current_object($dn)
   {
@@ -155,7 +161,7 @@ class faiProfile extends plugin
   function getpos($atr,$attrs)
   {
     $i = 0;
-    foreach($attrs as $attr => $name)    {
+    foreach($attrs as $attr => $name) {
       $i++;
       if($attr == $atr){
         return($i);
@@ -281,7 +287,7 @@ class faiProfile extends plugin
         $list = $this->classSelect->save();
         foreach($list as $entry){
           $class = $entry['cn'][0];
-          $this->FAIclasses[$class] =$class; 
+          $this->FAIclasses[$class] =$class;
         }
         $this->dialog=false;
         $this->classSelect=FALSE;
@@ -312,8 +318,8 @@ class faiProfile extends plugin
     $objTypes['FAIpartitionTable']  = "<img src='plugins/fai/images/fai_partitionTable.png' title='"._("Partition table")."' alt=''>";
 
     /* Delete button */
-    $actions = "<input type='image' src='images/lists/trash.png' title='"._("Remove class from profile")."' name='DEL_%KEY%'>"; 
-    
+    $actions = "<input type='image' src='images/lists/trash.png' title='"._("Remove class from profile")."' name='DEL_%KEY%'>";
+
     /* Up down buttons */
     $linkupdown = "&nbsp;<input type='image' name='sortup_%s'   alt='up'    title='"._("Up")."'   src='images/lists/sort-up.png' align='top' >";
     $linkupdown.= "<input type='image' name='sortdown_%s' alt='down'  title='"._("Down")."' src='images/lists/sort-down.png' >";
@@ -324,9 +330,11 @@ class faiProfile extends plugin
         $str = "&nbsp;";
         $act = "";
 
+        $this->get_all_fai_classes();
+
         if(isset($this->FAIAllclasses[$usedClass])){
           foreach($this->FAIAllclasses[$usedClass] as $class => $obj){
-            $str.= $objTypes[$class]; 
+            $str.= $objTypes[$class];
           }
         }
 
@@ -355,7 +363,7 @@ class faiProfile extends plugin
       $smarty->assign($attrs,($this->$attrs));
     }
 
-    
+
     $dn = $this->acl_base_for_current_object($this->dn);
     $smarty->assign("sub_object_is_addable",
         preg_match("/c/",$this->ui->get_permissions($dn,"fai/faiScriptEntry")) &&
@@ -378,11 +386,11 @@ class faiProfile extends plugin
     $use_dn = preg_replace("/".preg_quote(FAI::get_release_dn($this->dn), '/')."/i", $release, $this->dn);
     new log("remove","fai/".get_class($this),$use_dn,$this->attributes);
     FAI::prepare_to_save_FAI_object($use_dn,array(),true);
-    $this->handle_post_events("remove");    
+    $this->handle_post_events("remove");
   }
 
 
-  /* Save data to object 
+  /* Save data to object
    */
   function save_object()
   {
@@ -396,7 +404,7 @@ class faiProfile extends plugin
   function check()
   {
     /* Call common method to give check the hook */
-    $message= plugin::check();
+    $message = parent::check();
 
     if(count($this->FAIclasses) == 0){
       $message[]=_("No class specified for this profile!");
@@ -406,18 +414,7 @@ class faiProfile extends plugin
       $message[]= msgPool::required(_("Name"));
     }
 
-    /* Ensure that we do not overwrite an allready existing entry 
-     */
-    if($this->dn == "new" || $this->cn != $this->old_cn){
-      $release = $this->parent->parent->fai_release;
-      $new_dn= 'cn='.$this->cn.",".get_ou('faiProfileRDN').get_ou('faiBaseRDN').$release;
-      $res = faiManagement::check_class_name("FAIprofile",$this->cn,$new_dn);
-      if(isset($res[$this->cn])){
-        $message[] = msgPool::duplicated(_("Name"));
-      }
-    }
-
-    return ($message);
+    return $message;
   }
 
 
@@ -443,7 +440,7 @@ class faiProfile extends plugin
       FAI::prepare_to_save_FAI_object($old_dn,array(),TRUE);
     }
     FAI::prepare_to_save_FAI_object($this->dn,$this->attrs);
-   
+
     if($this->initially_was_account){
       new log("modify","fai/".get_class($this),$this->dn,$this->attributes);
     }else{
@@ -451,74 +448,24 @@ class faiProfile extends plugin
     }
   }
 
-
-  function PrepareForCopyPaste($source)
-  {
-    plugin::PrepareForCopyPaste($source);
-
-    /* Parse ldap attribute to get all assigned classes */
-    $tmp = explode(" ",$this->FAIclass);
-    $tmp2 = array();
-    foreach($tmp as $class){
-      if(!empty($class)){
-        $tmp2[trim($class)] = trim($class);
-      }
-    }
-
-    /* Sort assigned classes */
-    if(is_array($tmp2)){
-      foreach($tmp2 as $class){
-        $this->FAIclasses[$class]=$class;
-      }
-    }
-  }
-
-
-  /*! \brief  Used for copy & paste.
-              Returns a HTML input mask, which allows to change the cn of this entry.
-      @param  Array   Array containing current status && a HTML template.
-   */
-  function getCopyDialog()
-  {
-    $vars = array("cn");
-    $smarty = get_smarty();
-    $smarty->assign("cn", htmlentities($this->cn));
-    $str = $smarty->fetch(get_template_path("paste_generic.tpl",TRUE));
-    $ret = array();
-    $ret['string'] = $str;
-    $ret['status'] = "";
-    return($ret);
-  }
-
-
-  /*! \brief  Used for copy & paste.
-              Some entries must be renamed to avaoid duplicate entries.
-   */
-  function saveCopyDialog()
-  {
-    if(isset($_POST['cn'])){
-      $this->cn = get_post('cn');
-    }
-  }
-  
-  /* Return plugin informations for acl handling */ 
+  /* Return plugin informations for acl handling */
   static function plInfo()
   {
-    return (array( 
-          "plShortName" => _("Profile"),
-          "plDescription" => _("FAI profile"),
-          "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
-          "plPriority"    => 30,
-          "plSection"     => array("administration"),
-          "plCategory"    => array("fai"),
-          "plProvidedAcls" => array(
-            "cn"                => _("Name"),
-            "description"       => _("Description"),
-            "FAIclass"          => _("FAI classes"))
-          ));
+    return array(
+      "plShortName"   => _("Profile"),
+      "plDescription" => _("FAI profile"),
+      "plSelfModify"  => FALSE,
+      "plCategory"    => array("fai"),
+      "plObjectType"  => array("faiProfile" => array("name" => _("FAI Profile"),
+                                                    "filter" => "objectClass=FAIprofile")),
+      "plProvidedAcls" => array(
+        "cn"                => _("Name"),
+        "description"       => _("Description"),
+        "FAIclass"          => _("FAI classes")
+      )
+    );
   }
-  
+
 }
 
 // vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:

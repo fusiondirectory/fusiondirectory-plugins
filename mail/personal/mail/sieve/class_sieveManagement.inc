@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2007 - Fabian Hickert <hickert@gonicus.de>
-  Copyright (C) 2011  FusionDirectory
+  Copyright (C) 2011-2013  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -21,28 +21,28 @@
  */
 
 
-/* The sieve management class displays a list of sieve 
- *  scripts for the given mail account. 
- * The account is identified by the parents uid attribute. 
+/* The sieve management class displays a list of sieve
+ *  scripts for the given mail account.
+ * The account is identified by the parents uid attribute.
  *
  *  $config       The config object
- *  $dn           The object edited 
- *  $parent       The parent object that provides the uid attribute 
+ *  $dn           The object edited
+ *  $parent       The parent object that provides the uid attribute
  */
 class sieveManagement extends plugin
 {
   var $parent = NULL;
-  var $scripts= array();  
+  var $scripts= array();
   var $uattrib = "uid";
   var $current_script  = -1;
   var $current_handler = NULL;
   var $script_to_delete =-1;
-  var $sieve_handle = NULL; 
+  var $sieve_handle = NULL;
   var $Script_Error = "";
   var $Sieve_Error = "";
   var $create_script = FALSE;
 
-  /* To add new elements we need to know 
+  /* To add new elements we need to know
    *  Where to add the element              -> add_new_id
    *  Whould we add above or below this id  -> add_above_below
    *  What kind of element should we add    -> add_element_type
@@ -52,14 +52,14 @@ class sieveManagement extends plugin
   var $add_above_below    = "below";
   var $add_element_type   = "sieve_comment";
 
-  /* If this variable is TRUE, this indicates that we have the 
-   *  import dialog opened. 
+  /* If this variable is TRUE, this indicates that we have the
+   *  import dialog opened.
    */
   var $Import_Script = FALSE;
 
-  /* Initialize the class and load all sieve scripts 
-   *  try to parse them and display errors 
-   */ 
+  /* Initialize the class and load all sieve scripts
+   *  try to parse them and display errors
+   */
   function sieveManagement(&$config,$dn,&$parent,$uattrib)
   {
     /* Check given parameter */
@@ -90,9 +90,9 @@ class sieveManagement extends plugin
           }else{
             $data['ACTIVE'] = FALSE;
           }
-          $this->scripts[] = $data;          
+          $this->scripts[] = $data;
         }
-      } 
+      }
     }
 
     /* Get script contents */
@@ -131,7 +131,7 @@ class sieveManagement extends plugin
    */
   function get_sieve()
   {
-    
+
     /* Connect to sieve class and try to get all available sieve scripts */
     if(isset($this->config->data['SERVERS']['IMAP'][$this->parent->gosaMailServer])){
       $cfg=  $this->config->data['SERVERS']['IMAP'][$this->parent->gosaMailServer];
@@ -141,10 +141,10 @@ class sieveManagement extends plugin
 
       /* Log into the mail server */
       $this->sieve_handle= new sieve(
-          $cfg["sieve_server"], 
-          $cfg["sieve_port"], 
-          $this->parent->$uattrib, 
-          $cfg["password"], 
+          $cfg["sieve_server"],
+          $cfg["sieve_port"],
+          $this->parent->$uattrib,
+          $cfg["password"],
           $cfg["admin"],
           $cfg["sieve_option"]);
 
@@ -162,12 +162,12 @@ class sieveManagement extends plugin
   }
 
 
-  /* Handle sieve list 
+  /* Handle sieve list
    */
   function execute()
   {
     /***************
-     * Create a new Script 
+     * Create a new Script
      ***************/
 
     /* Force opening the add script dialog */
@@ -180,20 +180,20 @@ class sieveManagement extends plugin
       $this->create_script = FALSE;
     }
 
-    /* Display create script dialog 
-     *  handle posts, display warnings if specified 
-     *  name is not useable. 
+    /* Display create script dialog
+     *  handle posts, display warnings if specified
+     *  name is not useable.
      * Create a new script with given name
      */
     if($this->create_script){
-    
+
       /* Set initial name or used posted name if available */
       $name = "";
       if(isset($_POST['NewScriptName'])){
         $name = trim($_POST['NewScriptName']);
       }
- 
-      /* Check given name */ 
+
+      /* Check given name */
       $err = false;
 
       /* Is given name in lower case characters ? */
@@ -251,11 +251,11 @@ class sieveManagement extends plugin
         $sc['EDITED'] = TRUE;
         $sc['ACTIVE'] = FALSE;
         $sc['NAME']   = $name;
-      
+
         /* Add script */
         $this->scripts[$name] = $sc;
       }else{
-      
+
         /* Display dialog to enter new script name */
         $smarty = get_smarty();
         $smarty->assign("NewScriptName",$name);
@@ -265,7 +265,7 @@ class sieveManagement extends plugin
 
 
     /*************
-     * Handle several posts 
+     * Handle several posts
      *************/
 
     $once = TRUE;
@@ -287,7 +287,7 @@ class sieveManagement extends plugin
         $script = preg_replace("/^delscript_/","",$name);
         $script = preg_replace("/_(x|y)/","",$script);
         $once = FALSE;
-        $this->script_to_delete = $script;  
+        $this->script_to_delete = $script;
       }
 
       /* Activate script */
@@ -304,8 +304,8 @@ class sieveManagement extends plugin
             msg_dialog::display(_("SIEVE error"), sprintf(_("Cannot log into SIEVE server: %s"), '<br><br><i>'.to_string($this->Sieve_Error).'</i>'), ERROR_DIALOG);
           }
 
-          /* Try to activate the given script and update 
-           *  class script array. 
+          /* Try to activate the given script and update
+           *  class script array.
            */
           if(!$this->sieve_handle->sieve_setactivescript($this->scripts[$script]['NAME'])){
             msg_dialog::display(_("SIEVE error"), sprintf(_("Cannot retrieve SIEVE script: %s"), '<br><br><i>'.to_string($this->sieve_handler->error_raw).'</i>'), ERROR_DIALOG);
@@ -322,9 +322,9 @@ class sieveManagement extends plugin
       }
     }
 
-    
+
     /*************
-     * Remove script handling 
+     * Remove script handling
      *************/
 
     /* Remove aborted */
@@ -365,7 +365,7 @@ class sieveManagement extends plugin
 
 
     /**************
-     * Save script changes 
+     * Save script changes
      **************/
 
     /* Abort saving */
@@ -377,8 +377,8 @@ class sieveManagement extends plugin
     }
 
     /* Save currently edited sieve script. */
-    if($this->parent->acl_is_writeable("sieveManagement") && 
-       isset($_POST['save_sieve_changes']) && 
+    if($this->parent->acl_is_writeable("sieveManagement") &&
+       isset($_POST['save_sieve_changes']) &&
        is_object($this->current_handler)){
       $chk = $this->current_handler->check();
       if(!count($chk)){
@@ -390,7 +390,7 @@ class sieveManagement extends plugin
           if($this->scripts[$this->current_script]['MODE'] == "Source-Only"){
             $this->scripts[$this->current_script]['MODE'] = "Source";
           }
-  
+
           $this->scripts[$this->current_script]['PARSER'] = $p;
           $this->scripts[$this->current_script]['EDITED'] = TRUE;
           $this->scripts[$this->current_script]['STATUS'] = TRUE;
@@ -408,7 +408,7 @@ class sieveManagement extends plugin
 
 
     /*************
-     * Display edit dialog 
+     * Display edit dialog
      *************/
 
     /* Display edit dialog, depending on Mode display different uis
@@ -434,11 +434,11 @@ class sieveManagement extends plugin
           }elseif(!is_readable ($file['tmp_name'])){
             msg_dialog::display(_("SIEVE error"), sprintf(_("Cannot open temporary file '%s'!"), $file['tmp_name']), ERROR_DIALOG);
           }else{
-            
-            
- 
+
+
+
             $contents = file_get_contents($file['tmp_name']);
-           
+
             $this->scripts[$this->current_script]['SCRIPT'] = $contents;
             if(!$this->current_handler->parse($contents)){
               $this->scripts[$this->current_script]['MODE'] = "Source";
@@ -455,7 +455,7 @@ class sieveManagement extends plugin
           $str = $smarty->fetch(get_template_path("templates/import_script.tpl",TRUE,dirname(__FILE__)));
           return($str);
         }
-  
+
 
         /* Create dump of current sieve script */
         if(isset($_POST['Save_Copy'])){
@@ -483,7 +483,7 @@ class sieveManagement extends plugin
        * Add new element to ui
        ****/
 
-      /* Abort add dialog */ 
+      /* Abort add dialog */
       if(isset($_POST['select_new_element_type_cancel'])){
         $this->add_new_element = FALSE;
       }
@@ -506,13 +506,13 @@ class sieveManagement extends plugin
 
 
         /* Element selected */
-        if(isset($_POST['element_type']) && isset($element_types[$_POST['element_type']]) 
+        if(isset($_POST['element_type']) && isset($element_types[$_POST['element_type']])
            || isset($_POST['element_type']) &&in_array($_POST['element_type'],array("sieve_else","sieve_elsif"))){
           $this->add_element_type = $_POST['element_type'];
         }
 
         /* Create new element and add it to
-         *  the selected position 
+         *  the selected position
          */
         if(isset($_POST['select_new_element_type'])){
           if($this->add_new_element_to_current_script($this->add_element_type,$this->add_new_id,$this->add_above_below)){
@@ -526,26 +526,26 @@ class sieveManagement extends plugin
       /* Only display select dialog if it is necessary */
       if($this->add_new_element){
         $smarty = get_smarty();
-    
+
         $add_else_elsif = FALSE;
 
-        /* Check if we should add else/elsif to the select box 
+        /* Check if we should add else/elsif to the select box
          *  or not. We can't add else twice!.
          */
         if($this->add_above_below == "below"){
 
-          /* Get posistion of the current element 
+          /* Get posistion of the current element
            */
           foreach($this->current_handler->tree_->pap as $key => $obj){
-        
+
             if($obj->object_id == $this->add_new_id && in_array(get_class($obj),array("sieve_if","sieve_elsif"))){
-  
+
               /* Get block start/end */
               $end_id = $this->current_handler->tree_->get_block_end($key);
               $else_found = FALSE;
               $elsif_found = FALSE;
-          
-              /* Check if there is already an else in this block 
+
+              /* Check if there is already an else in this block
                */
               for($i =  $key ; $i < $end_id ; $i ++){
                 if(get_class($this->current_handler->tree_->pap[$i]) == "sieve_else"){
@@ -555,11 +555,11 @@ class sieveManagement extends plugin
                   $elsif_found = TRUE;
                 }
               }
-  
-              /* Only allow adding 'else' if there is currently 
-               *  no 'else' statement. And don't allow adding 
+
+              /* Only allow adding 'else' if there is currently
+               *  no 'else' statement. And don't allow adding
                *  'else' before 'elseif'
-               */ 
+               */
               if(!$else_found && (!(get_class($obj) == "sieve_if" && $elsif_found))){
                 $element_types['sieve_else'] = _("Else");
               }
@@ -577,10 +577,10 @@ class sieveManagement extends plugin
 
 
       /****************
-       * Handle test posts 
+       * Handle test posts
        ****************/
 
-      /* handle some special posts from test elements 
+      /* handle some special posts from test elements
        */
       foreach($_POST as $name => $value){
         if(preg_match("/^Add_Test_Object_/",$name)) {
@@ -622,22 +622,22 @@ class sieveManagement extends plugin
     }
 
 
-    /* Create list of available sieve scripts 
+    /* Create list of available sieve scripts
      */
     $List = new divSelectBox("sieveManagement");
     foreach($this->scripts as $key => $script){
-  
+
       $edited =  $script['EDITED'];
       $active =  $script['ACTIVE'];
-      
+
       $field1 = array("string" => "&nbsp;",
-                      "attach" => "style='width:20px;'");  
+                      "attach" => "style='width:20px;'");
       if($active){
-        $field1 = array("string" => "<img src='images/true.png' alt='"._("Active")."' 
+        $field1 = array("string" => "<img src='images/true.png' alt='"._("Active")."'
                                       title='"._("This script is marked as active")."'>",
-                        "attach" => "style='width:20px;'");  
+                        "attach" => "style='width:20px;'");
       }
-      $field2 = array("string" => $script['NAME']);  
+      $field2 = array("string" => $script['NAME']);
       $field3 = array("string" => $script['MSG']);
       $field4 = array("string" => _("Script length").":&nbsp;".strlen($script['SCRIPT']));
 
@@ -658,11 +658,11 @@ class sieveManagement extends plugin
       $field6 = array("string" => $activate."<input type='image' name='editscript_".$key."' src='images/lists/edit.png'
                         title='"._("Edit script")."'>".$del,
                       "attach" => "style='border-right:0px; width:70px;'");
-      $List->AddEntry(array($field1,$field2,$field3,$field4,$field6)); 
+      $List->AddEntry(array($field1,$field2,$field3,$field4,$field6));
     }
 
     $List->SetHeight(400);
- 
+
     /* If the uattrib is empty   (Attribute to use for authentification with sieve)
      *  Display a message that the connection can't be established.
      */
@@ -684,7 +684,7 @@ class sieveManagement extends plugin
 
 
   /* Add a new element to the currently opened script editor.
-   * The insert position is specified by 
+   * The insert position is specified by
    */
   function add_new_element_to_current_script($type,$id,$position)
   {
@@ -759,8 +759,8 @@ class sieveManagement extends plugin
           }
           $element_types['sieve_elsif'] = _("Else If");
         }else{
-         
-          /* Allow adding elsif above elsif */ 
+
+          /* Allow adding elsif above elsif */
           if(in_array(get_class($obj),array("sieve_elsif"))){
             $element_types['sieve_elsif'] = _("Else If");
           }
@@ -774,7 +774,7 @@ class sieveManagement extends plugin
     }
 
 
-    /* Create elements we should add 
+    /* Create elements we should add
      * -Some element require also surrounding block elements
      */
     $parent = $this->current_handler->tree_;
@@ -803,7 +803,7 @@ class sieveManagement extends plugin
       $ele[] = new $this->add_element_type(NULL, preg_replace("/[^0-9]/","",microtime()),$parent);
     }
 
-    /* Get index of the element identified by object_id == $id; 
+    /* Get index of the element identified by object_id == $id;
      */
     $index = -1;
     $data = $this->current_handler->tree_->pap;
@@ -813,16 +813,16 @@ class sieveManagement extends plugin
       }
     }
 
-    /* Tell to user that we couldn't find the given object 
-     *  so we can't add an element. 
+    /* Tell to user that we couldn't find the given object
+     *  so we can't add an element.
      */
     if($index == -1 ){
       trigger_error("Can't add new element, specified \$id=".$id." could not be found in object tree.");
       return(FALSE);
     }
 
-    /* We have found the specified object_id 
-     *  and want to detect the next free position 
+    /* We have found the specified object_id
+     *  and want to detect the next free position
      *  to insert the new element.
      */
     if($position == "above"){
@@ -832,8 +832,8 @@ class sieveManagement extends plugin
       $direction = "down";
       $next_free = $this->current_handler->tree_->_get_next_free_move_slot($index,$direction,TRUE);
     }
-    /* This is extremly necessary, cause some objects 
-     *  updates the tree objects ... Somehow i should change this ... 
+    /* This is extremly necessary, cause some objects
+     *  updates the tree objects ... Somehow i should change this ...
      */
     $data = $this->current_handler->tree_->pap;
     $start = $end = array();
@@ -871,13 +871,13 @@ class sieveManagement extends plugin
         $this->add_new_element    = TRUE;
         $this->add_new_id         = $_GET['Add_Object_Top_ID'];
         $this->add_above_below    = "above";
-      }  
+      }
 
       if(isset($_GET['Add_Object_Bottom_ID'])){
         $this->add_new_element    = TRUE;
         $this->add_new_id         = $_GET['Add_Object_Bottom_ID'];
         $this->add_above_below    = "below";
-      }  
+      }
 
       if(isset($_GET['Remove_Object_ID'])){
         $found_id = -1;
@@ -887,10 +887,10 @@ class sieveManagement extends plugin
           }
         }
         if($found_id != -1 ){
-          $this->current_handler->tree_->remove_object($found_id);  
+          $this->current_handler->tree_->remove_object($found_id);
         }
-      }  
- 
+      }
+
       if(isset($_GET['Move_Up_Object_ID'])){
         $found_id = -1;
         foreach($this->current_handler->tree_->pap as $key => $element){
@@ -901,8 +901,8 @@ class sieveManagement extends plugin
         if($found_id != -1 ){
           $this->current_handler->tree_->move_up_down($found_id,"up");
         }
-      }  
- 
+      }
+
       if(isset($_GET['Move_Down_Object_ID'])){
         $found_id = -1;
         foreach($this->current_handler->tree_->pap as $key => $element){
@@ -913,10 +913,10 @@ class sieveManagement extends plugin
         if($found_id != -1 ){
           $this->current_handler->tree_->move_up_down($found_id,"down");
         }
-      }  
-  
+      }
 
-      /* Check if there is an add object requested 
+
+      /* Check if there is an add object requested
        */
       $data = $this->current_handler->tree_->pap;
       $once = TRUE;
@@ -938,7 +938,7 @@ class sieveManagement extends plugin
             $this->add_above_below    = "below";
             $this->add_new_element_to_current_script($this->add_element_type,$this->add_new_id,$this->add_above_below);
           }
-        
+
           if(isset($obj->object_id) && preg_match("/^Remove_Object_".$obj->object_id."_/",$name) && $once){
             $once = FALSE;
             $this->current_handler->tree_->remove_object($key);
@@ -954,8 +954,8 @@ class sieveManagement extends plugin
         }
       }
 
-      /* Skip Mode changes and Parse tests 
-       *  if we are currently in a subdialog 
+      /* Skip Mode changes and Parse tests
+       *  if we are currently in a subdialog
        */
 
       $this->current_handler->save_object();
@@ -1007,13 +1007,13 @@ class sieveManagement extends plugin
             } else {
               $this->Script_Error = $p->status_text;
             }
-          } 
+          }
         }
       }
     }
   }
 
-  
+
   function get_used_script_names()
   {
     $ret = array();

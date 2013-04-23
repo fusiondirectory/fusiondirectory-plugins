@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011  FusionDirectory
+  Copyright (C) 2011-2013  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -38,10 +38,10 @@ class printerPPDSelectionDialog extends plugin
     $this->list       = $list;
     $this->header     = $headers;
     $this->depselect  = $this->config->current['BASE'];
-    
+
     if(!session::is_set('printerPPDSelectionDialog')){
       session::set("printerPPDSelectionDialog",array('regex'=> "*"));
-    }  
+    }
 
     /* Order the manufacturers index */
     ksort($this->header);
@@ -56,22 +56,22 @@ class printerPPDSelectionDialog extends plugin
     $smarty= get_smarty();
     $display= "";
     $s_action = "none";
- 
+
     $printerPPDSelectionDialog = session::get('printerPPDSelectionDialog');
     $regex = $printerPPDSelectionDialog['regex'];
 
     if(isset($_GET['search'])){
       $regex = $_GET['search']."*";
     }
-  
+
     if(isset($_POST['regex'])){
       $regex= $_POST['regex'];
     }
-    
+
     $regex = str_replace("**","*",$regex);
     $printerPPDSelectionDialog['regex'] = $regex;
     session::set('printerPPDSelectionDialog',$printerPPDSelectionDialog);
- 
+
 
     /* Delete requested, check if everything is ok and display confirmation dialog */
     if(isset($_GET['act']) && $_GET['act'] == "del"){
@@ -137,12 +137,12 @@ class printerPPDSelectionDialog extends plugin
 
     /* Sort the list alphabetically */
     asort($list);
- 
+
     if((isset($_GET['act']))&&($_GET['act']=="open"))  {
-      
+
       if((!empty($_GET['id'])) && (!isset( $this->header[base64_decode($_GET['id'])]))){
         msg_dialog::display(_("PPD error"), sprintf(_("Cannot locate vendor '%s' in available PPDs!"), base64_decode($_GET['id'])), ERROR_DIALOG);
-        $this->Vendor = ""; 
+        $this->Vendor = "";
       }else{
         $this->Vendor = base64_decode($_GET['id']);
       }
@@ -151,19 +151,19 @@ class printerPPDSelectionDialog extends plugin
     $div = new divSelectBox("printerPPDSelectionDialog");
     $div ->SetHeight(450);
     $div ->SetSummary(_("Printer ppd selection."));
-    
+
     $linkopen = "<a href='?plug=".$_GET['plug']."&amp;act=open&amp;id=%s'>
                   <img src='images/lists/folder.png' class='center' border=0>&nbsp;%s
                  </a>";
     $uselink  = "<a href='?plug=".$_GET['plug']."&amp;act=use&amp;id=%s'>%s</a>";
     $dellink  = "<a href='?plug=".$_GET['plug']."&amp;act=del&amp;id=%s'>
                   <img src='images/lists/trash.png' alt='"._("delete")."' border=0>
-                 </a>"; 
+                 </a>";
 
     if(empty($this->Vendor)){
       foreach($this-> header as $key => $entry){
         $div ->AddEntry (array(
-                 
+
               array("string"=>sprintf($linkopen,base64_encode($key),$key),"attach"=>"style='border-right:0px;'")
               ));
       }
@@ -197,14 +197,14 @@ class printerPPDSelectionDialog extends plugin
     $smarty->assign("alphabet",     generate_alphabet());
     $smarty->assign("apply",        apply_filter());
     $smarty->assign("regex",        $regex);
-  
+
     $display.= $smarty->fetch(get_template_path('printerPPDSelectionDialog.tpl', TRUE,dirname(__FILE__)));
     return($display);
   }
 
   function save_object()
   {
-  } 
+  }
 
   function check(){
   }

@@ -2,7 +2,7 @@
 /*
  * This code is part of FusionDirectory (http://www.fusiondirectory.org)
  * Copyright (C) 2010 Antoine Gallavardin
- * Copyright (C) 2011-2012 FusionDirectory project
+ * Copyright (C) 2011-2013 FusionDirectory project
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -31,23 +31,17 @@ class FakeAttribute extends Attribute
     $this->var_name = $var;
   }
 
-  function renderAttribute(&$attributes)
+  function renderAttribute(&$attributes, $readOnly)
   {
     $var = $this->var_name;
-    $attributes[$this->getLdapName()] = $this->plugin->$var;
+    $attributes[$this->getLdapName()] = $this->getValue();
   }
 }
 
 class board extends simplePlugin
 {
-  /* Definitions */
-  var $plHeadline     = "Board";
-  var $plDescription  = "Statistics and various informations";
-
   /* Generic */
   var $view_logged    = FALSE;
-
-  var $stats  = array();
 
   function __construct(&$config, $dn = NULL, $object = NULL)
   {
@@ -72,7 +66,7 @@ class board extends simplePlugin
     $nb_ogroups = $ldap->count();
 
     $stats = array(
-      array('name' => 'Accounts',      'nb' => $nb_accounts, 'img' => get_template_path("plugins/users/images/select_user.png")),
+      array('name' => 'Accounts',      'nb' => $nb_accounts, 'img' => get_template_path("plugins/users/images/iconMini.png")),
       array('name' => 'Groups',        'nb' => $nb_groups,   'img' => get_template_path("plugins/groups/images/groups.png")),
       array('name' => 'Object groups', 'nb' => $nb_ogroups,  'img' => get_template_path("plugins/ogroups/images/ogroup.png")),
     );
@@ -117,13 +111,14 @@ class board extends simplePlugin
     return array(
       "plShortName"   => _("Board"),
       "plDescription" => _("Statistics and various informations"),
-      "plIcon"        => "plugins/board/images/plugin.png",
+      "plIcon"        => "plugins/board/images/icon.png",
       "plSelfModify"  => FALSE,
-      "plPriority"    => 0,
-      "plSection"     => array("addon" => _("Addons")),
-      "plCategory"    => array("board" => array("objectClass" => "inetOrgPerson", "description" => _("board"))),
+      "plCategory"    => array("board" => array("objectClass" => "", "description" => _("Board"))),
+      "plObjectType"  => array("board" => array("name" => _("Board"), "filter" => "")),
+      "plSection"     => "addons",
+      "plPriority"    => 2,
 
-      "plProvidedAcls"    => array()
+      "plProvidedAcls"  => array()
     );
   }
 }

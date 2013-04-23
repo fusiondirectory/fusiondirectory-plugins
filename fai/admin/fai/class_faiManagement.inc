@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011  FusionDirectory
+  Copyright (C) 2011-2013  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -22,10 +22,6 @@
 
 class faiManagement extends management
 {
-  var $plHeadline     = "FAI software deployment";
-  var $plDescription  = "Manage software packages and deployment recipes";
-  var $plIcon  = "plugins/fai/images/plugin.png";
-
   // Tab definition
   protected $tabClass = "";
   protected $tabType = "";
@@ -53,6 +49,7 @@ class faiManagement extends management
     $this->config = $config;
 
     $this->fai_base = get_ou("faiBaseRDN").$this->config->current['BASE'];
+    /* FIXME */
     $cfg_rel = $this->config->search("faiManagement","DEFAULTFAIRELEASE",array("menu"));
     if (!empty($cfg_rel)) {
       $this->fai_release = $cfg_rel;
@@ -93,11 +90,6 @@ class faiManagement extends management
     $headpage->setBase($this->fai_release);
     $headpage->registerElementFilter("filterProperties", "faiManagement::filterProperties");
     $headpage->registerElementFilter("objectTypes", "listing::filterObjectTypes");
-
-    // Add copy&paste and snapshot handler.
-    if ($this->config->boolValueIsTrue("main", "copyPaste")) {
-      $this->cpHandler = new CopyPasteHandler($this->config);
-    }
 
     $this->registerAction("remove_multiple","removeEntryRequested");
     $this->registerAction("new_profile","newEntry");
@@ -166,11 +158,10 @@ class faiManagement extends management
 
     // Display any c&p dialogs, eg. object modifications required before pasting.
     if ($this->cpPastingStarted && $this->cpHandler->entries_queued()) {
-      $this->cpHandler->SetVar("base",$headpage->getBase());
-      $data = $this->cpHandler->execute();
+      $data = $this->cpHandler->execute($headpage->getBase());
       FAI::save_release_changes_now();
       if (!empty($data)) {
-        return($data);
+        return $data;
       }
     }
 
@@ -178,13 +169,13 @@ class faiManagement extends management
     if (isset($this->cpHandler) && !$this->cpHandler->entries_queued()) {
       $this->cpPastingStarted = FALSE;
     }
-    return("");
+    return "";
   }
 
 
   /*! \brief  A new FAI object was requested, let the user specify a name theis object now.
    */
-  function newEntry($action="",$target=array(),$all=array(), $altTabClass ="", $altTabType = "", $altAclCategory="")
+  function newEntry($action = "", $target = array(), $all = array(), $altTabClass = "", $altTabType = "", $altAclCategory = "")
   {
     $types = array(
         "new_partition"     =>  "FAIpartitionTable",
@@ -211,25 +202,26 @@ class faiManagement extends management
           "FAIprofile"         => "faiProfile",
           "FAItemplate"        => "faiTemplate");
 
-      $acl = $this->ui->get_permissions($this->acl_base,"fai/".$type_acl_mapping[$types[$action]]);
-      if (preg_match("/c/",$acl)) {
-        $this->dialogObject = new askClassName($this->config,$this->dn,$this->ui,$types[$action]);
+      $acl = $this->ui->get_permissions($this->acl_base, "fai/".$type_acl_mapping[$types[$action]]);
+      if (preg_match("/c/", $acl)) {
+        $this->dialogObject = new askClassName($this->config, $this->dn, $this->ui, $types[$action]);
         $this->dialogObject->parent = &$this;
       } else {
         msg_dialog::display(_("Permission error"),
-            sprintf(_("You have no permission to create a new %s!"), $types_i18n[$action]),      ERROR_DIALOG);
+            sprintf(_("You have no permission to create a new %s!"), $types_i18n[$action]), ERROR_DIALOG);
       }
     }
     if ($action == "new_profile") {
-      $this->dn = "new" ;
+      $this->dn = "new";
 
-      $acl = $this->ui->get_permissions($this->acl_base,"fai/faiProfile");
-      if (preg_match("/c/",$acl)) {
-        $type= $this->get_type(array("objectClass" => array("FAIprofile")));
-        $str= management::newEntry('newEntry',array(),array(),$type[0],$type[2],$type[1]);
-        if ($str) return($str);
+      $acl = $this->ui->get_permissions($this->acl_base, "fai/faiProfile");
+      if (preg_match("/c/", $acl)) {
+        $type = $this->get_type(array("objectClass" => array("FAIprofile")));
+        $str  = management::newEntry('newEntry', array(), array(), $type[0], $type[2], $type[1]);
+        if ($str) {
+          return $str;
+        }
         $this->tabObject->set_acl_base($this->acl_base);
-        $this->tabObject->by_object[$type[1]]->cn = $name;
       } else {
         msg_dialog::display(_("Permission error"), sprintf(_("You have no permission to create a new %s!"), _("profile")), ERROR_DIALOG);
       }
@@ -243,19 +235,21 @@ class faiManagement extends management
   function newClassNameSelected()
   {
     $this->dialogObject->save_object();
-    if(count($this->dialogObject->check())!=0){
-      foreach($this->dialogObject->check() as $msg){
+    if (count($this->dialogObject->check()) != 0) {
+      foreach ($this->dialogObject->check() as $msg) {
         msg_dialog::display(_("Error"), $msg, ERROR_DIALOG);
       }
-    }elseif(isset($this->dialogObject->objectClass)){
-      $this->dn = "new" ;
-      $type= $this->get_type(array("objectClass"=>array($this->dialogObject->objectClass)));
+    } elseif (isset($this->dialogObject->objectClass)) {
+      $this->dn = "new";
+      $type = $this->get_type(array("objectClass" => array($this->dialogObject->objectClass)));
       $name = $this->dialogObject->save();
 
-      if(class_exists($type[0])){
+      if (class_exists($type[0])) {
         $this->closeDialogs();
-        $str = management::newEntry('newEntry',array(),array(),$type[0],$type[2],$type[1]);
-        if($str) return($str);
+        $str = management::newEntry('newEntry', array(), array(), $type[0], $type[2], $type[1]);
+        if ($str) {
+          return $str;
+        }
         $this->tabObject->set_acl_base($this->acl_base);
         $this->tabObject->by_object[$type[1]]->cn = $name;
       }
@@ -296,31 +290,18 @@ class faiManagement extends management
   function removeEntryRequested($action="",$target=array(),$all=array(), $altTabClass ="", $altTabType = "", $altAclCategory="")
   {
     $this->closeDialogs();
-    if($action == "remove_multiple"){
-
-      // Collect objects to delete
-      $headpage = $this->getHeadpage();
-      $to_delete = array();
-      foreach($target as $id){
-        $object = $headpage->getEntry($id);
-        if(in_array("FAKE_OC_FAI", $object['objectClass'])){
-          foreach($object['GROUPS']  as $entry){
-            array_push($to_delete, $entry);
-          }
-        }
-      }
-      return($this->removeFAIObjects($to_delete));
-    }else{
-
-      // Try to remove a single object, only FAI objects can be removed!
-      $headpage = $this->getHeadpage();
-      if(count($target) == 1){
-        $entry = $headpage->getEntry($target[0]);
-        if($entry && in_array("FAKE_OC_FAI",$entry['objectClass'])){
-          $this->dialogObject = new faiGroupHandle($entry['GROUPS'],"remove");
+    // Collect objects to delete
+    $headpage = $this->getHeadpage();
+    $to_delete = array();
+    foreach ($target as $id) {
+      $object = $headpage->getEntry($id);
+      if (in_array("FAKE_OC_FAI", $object['objectClass'])) {
+        foreach ($object['GROUPS']  as $entry) {
+          array_push($to_delete, $entry);
         }
       }
     }
+    return $this->removeFAIObjects($to_delete);
   }
 
 
@@ -353,20 +334,18 @@ class faiManagement extends management
 
     // Check entry locking
     if (count($this->dns)) {
-      if ($user= get_multiple_locks($this->dns)) {
-        return(gen_locked_message($user,$this->dns));
+      if ($user = get_multiple_locks($this->dns)) {
+        return gen_locked_message($user,$this->dns);
       }
-      if (count($this->dns)) {
-        $smarty = get_smarty();
-        $dns_names = array();
-        foreach($this->dns as $dn){
-          add_lock ($dn, $this->ui->dn);
-          $dns_names[] = LDAP::fix($dn);
-        }
-        $smarty->assign("info",msgPool::deleteInfo($dns_names,_("FAI object")));
-        $smarty->assign("multiple", true);
-        return($smarty->fetch(get_template_path('remove.tpl', TRUE)));
+      $smarty = get_smarty();
+      $dns_names = array();
+      foreach ($this->dns as $dn) {
+        add_lock ($dn, $this->ui->dn);
+        $dns_names[] = LDAP::fix($dn);
       }
+      $smarty->assign("info",msgPool::deleteInfo($dns_names, _("FAI object")));
+      $smarty->assign("multiple", TRUE);
+      return $smarty->fetch(get_template_path('remove.tpl', TRUE));
     }
   }
 
@@ -489,14 +468,14 @@ class faiManagement extends management
     /* Check if we have a post remove method configured
      *  else skip this operation. (Skip:Button in the ui should be disabled in this case too)
      */
-    if("" != $this->config->search("faiManagement", "POSTREMOVE",array('menu','tabs'))){
+    if ("" != $this->config->search("faiManagement", "POSTREMOVE", array('menu','tabs','hooks'))) {
       /* Load permissions for selected 'dn' and check if
          we're allowed to remove this 'dn' */
-      if(preg_match("/d/",$this->ui->get_permissions($this->acl_base,"fai/faiManagement"))){
+      if (preg_match("/d/",$this->ui->get_permissions($this->acl_base,"fai/faiManagement"))) {
         $smarty=get_smarty();
         $smarty->assign("release_hidden",base64_encode($this->fai_release));
         $smarty->assign("info", msgPool::deleteInfo(LDAP::fix($this->fai_release),_("FAI branch/freeze")));
-        return($smarty->fetch(get_template_path('remove_branch.tpl',TRUE)));
+        return $smarty->fetch(get_template_path('remove_branch.tpl',TRUE));
       } else {
         msg_dialog::display(_("Permission error"), _("You have no permission to delete this release!"), ERROR_DIALOG);
       }
@@ -511,11 +490,11 @@ class faiManagement extends management
     /* Check if we have a post remove method configured
      *  else skip this operation. (Skip:Button in the ui should be disabled in this case too)
      */
-    if("" != $this->config->search("faiManagement", "POSTREMOVE",array('menu','tabs'))){
+    if ("" != $this->config->search("faiManagement", "POSTREMOVE", array('menu','tabs','hooks'))) {
 
-      if(!isset($_POST['release_hidden']) || base64_decode($_POST['release_hidden']) != $this->fai_release){
+      if (!isset($_POST['release_hidden']) || base64_decode($_POST['release_hidden']) != $this->fai_release) {
         msg_dialog::display(_("Warning"),_("Release remove aborted because the release name check failed!"));
-      }else{
+      } else {
 
         $bb =  $this->fai_release;
         $ldap = $this->config->get_ldap_link();
@@ -590,21 +569,21 @@ class faiManagement extends management
    */
   function createBranch()
   {
-    if($this->config->search("faiManagement", "POSTCREATE",array('menu','tabs')) == ""){
+    if ($this->config->search("faiManagement", "POSTCREATE",array('menu','tabs','hooks')) == "") {
       msg_dialog::display(_("Configuration"), msgPool::cmdnotfound("POSTCREATE", get_class()), ERROR_DIALOG);
-    }elseif(!preg_match("/c/",$this->ui->get_permissions($this->acl_base,"fai/faiManagement"))){
+    } elseif (!preg_match("/c/", $this->ui->get_permissions($this->acl_base, "fai/faiManagement"))) {
       msg_dialog::display(_("Permission error"), msgPool::permCreate(_("Branch")), ERROR_DIALOG);
-    }else{
+    } else {
       $smarty = get_smarty();
-      $this->dispNewBranch=true;
-      $this->dispNewFreeze=false;
-      $smarty->assign("iframe",false);
-      if(isset($_POST['BranchName'])){
+      $this->dispNewBranch  = TRUE;
+      $this->dispNewFreeze  = FALSE;
+      $smarty->assign("iframe", FALSE);
+      if (isset($_POST['BranchName'])) {
         $smarty->assign("BranchName", $_POST['BranchName']);
-      }else{
-        $smarty->assign("BranchName","");
+      } else {
+        $smarty->assign("BranchName", "");
       }
-      return($smarty->fetch(get_template_path('faiNewBranch.tpl', TRUE, dirname(__FILE__))));
+      return $smarty->fetch(get_template_path('faiNewBranch.tpl', TRUE, dirname(__FILE__)));
     }
   }
 
@@ -876,29 +855,29 @@ class faiManagement extends management
    */
   function get_type($array)
   {
-    if(!isset($array['objectClass'])) return(array());
-    if(in_array("FAIpartitionTable",$array['objectClass'])){
-      return(array("tabsPartition","faiPartitionTable","FAIPARTITIONTABS"));
+    if (!isset($array['objectClass'])) return array();
+    if (in_array("FAIpartitionTable",$array['objectClass'])) {
+      return array("simpleTabs_noSpecial","faiPartitionTable","FAIPARTITIONTABS");
     }
-    if(in_array("FAIscript",$array['objectClass'])){
-      return(array("tabsScript","faiScript","FAISCRIPTTABS"));
+    if (in_array("FAIscript",$array['objectClass'])) {
+      return array("simpleTabs_noSpecial","faiScript","FAISCRIPTTABS");
     }
-    if(in_array("FAItemplate",$array['objectClass'])){
-      return(array("tabsTemplate","faiTemplate","FAITEMPLATETABS"));
+    if (in_array("FAItemplate",$array['objectClass'])) {
+      return array("simpleTabs_noSpecial","faiTemplate","FAITEMPLATETABS");
     }
-    if(in_array("FAIhook",$array['objectClass'])){
-      return(array("tabsHook","faiHook","FAIHOOKTABS"));
+    if (in_array("FAIhook",$array['objectClass'])) {
+      return array("simpleTabs_noSpecial","faiHook","FAIHOOKTABS");
     }
-    if(in_array("FAIvariable",$array['objectClass'])){
-      return(array("tabsVariable","faiVariable","FAIVARIABLETABS"));
+    if (in_array("FAIvariable",$array['objectClass'])) {
+      return array("simpleTabs_noSpecial","faiVariable","FAIVARIABLETABS");
     }
-    if(in_array("FAIprofile",$array['objectClass'])){
-      return(array("tabsProfile","faiProfile","FAIPROFILETABS"));
+    if (in_array("FAIprofile",$array['objectClass'])) {
+      return array("simpleTabs_noSpecial","faiProfile","FAIPROFILETABS");
     }
-    if(in_array("FAIpackageList",$array['objectClass'])){
-      return(array("tabsPackage","faiPackage","FAIPACKAGETABS"));
+    if (in_array("FAIpackageList",$array['objectClass'])) {
+      return array("simpleTabs_noSpecial","faiPackage","FAIPACKAGETABS");
     }
-    return(array());
+    return array();
   }
 
 
@@ -916,7 +895,7 @@ class faiManagement extends management
       }
       $res  = FAI::get_all_objects_for_given_base($base,"(|".$f.")",TRUE);
     }else{
-      $res  = FAI::get_all_objects_for_given_base($base,"(objectClass=".$oc.")",TRUE);
+      $res  = FAI::get_all_objects_for_given_base($base,"(|(objectClass=FAIprofile)(objectClass=".$oc."))",TRUE);
     }
     $delete = array();
     $used   = array();
@@ -995,8 +974,8 @@ class faiManagement extends management
     $smarty = get_smarty();
     $smarty->assign("fai_release", $this->fai_release);
     $smarty->assign("fai_base", $this->fai_base);
-    $r = $this->config->search("faiManagement", "POSTREMOVE",array('menu','tabs'));
-    $c = $this->config->search("faiManagement", "POSTCREATE",array('menu','tabs'));
+    $r = $this->config->search("faiManagement", "POSTREMOVE",array('menu','tabs','hooks'));
+    $c = $this->config->search("faiManagement", "POSTCREATE",array('menu','tabs','hooks'));
     $smarty->assign("allow_create", $c);
     $smarty->assign("allow_remove", $r);
     $display = $headpage->render();
@@ -1063,17 +1042,15 @@ class faiManagement extends management
   static function plInfo()
   {
     return array(
-      "plShortName"   => _("FAI software deployment"),
+      "plShortName"   => _("FAI"),
       "plDescription" => _("Manage FAI software packages and deployment recipes"),
-      "plIcon"        => "plugins/fai/images/plugin.png",
+      "plIcon"        => "plugins/fai/images/icon.png",
       "plSelfModify"  => FALSE,
-      "plDepends"     => array(),
-      "plPriority"    => 0,
-      "plSection"     => array("administration"),
-      "plCategory"    => array(
-        "fai" => array("description" => _("FAI"),"objectClass" => "FAIclass")
-      ),
-      "plProvidedAcls"=> array()
+      "plSection"     => "admin",
+      "plPriority"    => 30,
+      "plCategory"    => array("fai" => array("description" => _("FAI"), "objectClass" => "FAIclass")),
+
+      "plProvidedAcls" => array()
     );
   }
 }

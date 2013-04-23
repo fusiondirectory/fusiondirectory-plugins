@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2012  FusionDirectory
+  Copyright (C) 2012-2013  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,21 +20,31 @@
 
 class supannStructuresManagement extends management
 {
-  var $plHeadline     = "Supann structures";
-  var $plDescription  = "Supann structures administration";
-  var $plIcon         = "plugins/supann/images/plugin.png";
-
   // Tab definition
-  protected $tabClass     = "supannStructurestabs";
-  protected $tabType      = "SUPANNSTRUCTURESTABS";
+  protected $tabClass     = "simpleTabs";
   protected $aclCategory  = "supannStructures";
   protected $aclPlugin    = "supannStructures";
   protected $objectName   = "supannStructures";
 
+  /* Return plugin informations for acl handling */
+  static function plInfo()
+  {
+    return array(
+      "plShortName"   => _("Supann structures"),
+      "plDescription" => _("Supann structures management"),
+      "plIcon"        => "plugins/supann/images/icon.png",
+      "plSection"     => "admin",
+      "plPriority"    => 42,
+      "plCategory"    => array("supannStructures"),
+
+      "plProvidedAcls" => array()
+    );
+  }
+
   function __construct($config, $ui)
   {
     $this->config = $config;
-    $this->ui = $ui;
+    $this->ui     = $ui;
 
     $this->storagePoints = array(get_ou("supannStructuresRDN"));
 
@@ -42,35 +52,28 @@ class supannStructuresManagement extends management
     if (session::global_is_set(get_class($this)."_filter")) {
       $filter = session::global_get(get_class($this)."_filter");
     } else {
-      $filter = new filter(get_template_path("supannStructures-filter.xml", true));
+      $filter = new filter(get_template_path("supannStructures-filter.xml", TRUE));
       $filter->setObjectStorage($this->storagePoints);
     }
     $this->setFilter($filter);
 
     // Build headpage
-    $headpage = new listing(get_template_path("supannStructures-list.xml", true));
+    $headpage = new listing(get_template_path("supannStructures-list.xml", TRUE));
     $headpage->registerElementFilter("structureLabel",
                                      "supannStructuresManagement::filterStructureLabel");
     $headpage->registerElementFilter("filterProperties",
                                      "supannStructuresManagement::filterProperties");
     $headpage->setFilter($filter);
 
-    // Add copy&paste and snapshot handler.
-    if ($this->config->boolValueIsTrue("main", "copyPaste")) {
-      $this->cpHandler = new CopyPasteHandler($this->config);
-    }
-    if ($this->config->get_cfg_value("enableSnapshots") == "true") {
-      $this->snapHandler = new SnapshotHandler($this->config);
-    }
     parent::__construct($config, $ui, "supannStructures", $headpage);
 
     $this->registerAction("edit_etablissement", "editEntry");
     $this->registerAction("edit_entite", "editEntry");
 
-/*
+    /*
     $this->registerAction("remove_etablissement", "removeEntry");
     $this->registerAction("remove_entite", "removeEntry");
-*/
+    */
     $this->registerAction("removeConfirmed", "removeEntryConfirmed");
 
     $this->registerAction("organizationalUnit", "newEntry");
@@ -111,7 +114,8 @@ class supannStructuresManagement extends management
 
   // Overridden new handler - We've different types of departments to create!
   function newEntry($action = "", $target = array(), $all = array(), $altTabClass = "",
-                    $altTabType = "", $altAclCategory = "") {
+                    $altTabType = "", $altAclCategory = "")
+  {
     $types = $this->get_support_supannStructures();
     $type = preg_replace("/^new_/", "", $action);
 
@@ -121,7 +125,8 @@ class supannStructuresManagement extends management
 
 
   function editEntry( $action = "", $target = array(), $all = array(), $altTabClass = "",
-                      $altTabType = "", $altAclCategory = "") {
+                      $altTabType = "", $altAclCategory = "")
+  {
     $types = $this->get_support_supannStructures();
     $headpage = $this->getHeadpage();
 
@@ -142,16 +147,16 @@ class supannStructuresManagement extends management
     }
   }
 
-  function removeEntryConfirmed($action="",$target=array(),$all=array(),
-                                $altTabClass="",$altTabType="",$altAclCategory="")
+  function removeEntryConfirmed($action = "", $target = array(), $all = array(),
+                                $altTabClass = "", $altTabType = "", $altAclCategory = "")
   {
-    $types = $this->get_support_supannStructures();
+    $types    = $this->get_support_supannStructures();
     $headpage = $this->getHeadpage();
 
     $targets = array();
     foreach ($this->dns as $dn) {
       $type = $headpage->getType($dn);
-      if(empty($type)) {
+      if (empty($type)) {
         continue;
       }
       $targets[$type][] = $dn;
@@ -175,21 +180,21 @@ class supannStructuresManagement extends management
      */
     $types['organization']['ACL']      = "etablissement";
     $types['organization']['CLASS']    = "etablissement";
-    $types['organization']['TAB']      = "ETABLISSEMENT_TABS";
+    $types['organization']['TAB']      = "ETABLISSEMENTTABS";
     $types['organization']['ATTR']     = "o";
     $types['organization']['OC']       = "organization";
-    $types['organization']['IMG']      = "plugins/supann/images/etablissement.png";
-    $types['organization']['IMG_FULL'] = "plugins/supann/images/etablissement.png";
+    $types['organization']['IMG']      = "plugins/supann/images/iconMiniEtablissement.png.png";
+    $types['organization']['IMG_FULL'] = "plugins/supann/images/iconMiniEtablissement.png.png";
     $types['organization']['TITLE']    = _("etablissement");
     $types['organization']['TPL']      = "etablissement.tpl";
 
     $types['organizationalUnit']['ACL']       = "entite";
     $types['organizationalUnit']['CLASS']     = "entite";
-    $types['organizationalUnit']['TAB']       = "ENTITE_TABS";
+    $types['organizationalUnit']['TAB']       = "ENTITETABS";
     $types['organizationalUnit']['ATTR']      = "ou";
     $types['organizationalUnit']['OC']        = "organizationalUnit";
-    $types['organizationalUnit']['IMG']       = "plugins/supann/images/entite.png"; //plugins/departments/images/department.png";
-    $types['organizationalUnit']['IMG_FULL']  = "plugins/supann/images/entite.png";  //:wplugins/departments/images/department.png";
+    $types['organizationalUnit']['IMG']       = "plugins/supann/images/iconMiniEntite.png"; //plugins/departments/images/department.png";
+    $types['organizationalUnit']['IMG_FULL']  = "plugins/supann/images/iconMiniEntite.png";  //:wplugins/departments/images/department.png";
     $types['organizationalUnit']['TITLE']     = _("entite");
     $types['organizationalUnit']['TPL']       = "entite.tpl";
 

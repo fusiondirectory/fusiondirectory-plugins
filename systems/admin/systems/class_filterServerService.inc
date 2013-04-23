@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003  Cajus Pollmeier
-  Copyright (C) 2011  FusionDirectory
+  Copyright (C) 2011-2013  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -29,8 +29,9 @@ class filterServerService {
     foreach($plugins as $name => $obj){
       if($obj->is_account){
         $data = $plugins[$name]->getListEntry();
-        $data['objectClass'] = array('FAKE_OC_ServerService'); 
+        $data['objectClass'] = array('FAKE_OC_ServerService');
         $data['name'] = $name;
+        if($data['AllowStatus'])  $data['objectClass'][] = "AllowStatus";
         if($data['AllowStart'])   $data['objectClass'][] = "AllowStart";
         if($data['AllowStop'])    $data['objectClass'][] = "AllowStop";
         if($data['AllowRestart']) $data['objectClass'][] = "AllowRestart";

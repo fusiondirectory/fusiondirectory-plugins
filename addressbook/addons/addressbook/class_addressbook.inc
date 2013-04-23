@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003  Cajus Pollmeier
-  Copyright (C) 2011  FusionDirectory
+  Copyright (C) 2011-2013  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -21,10 +21,6 @@
 
 class addressbook extends plugin
 {
-  /* Definitions */
-  var $plHeadline     = "Addressbook";
-  var $plDescription  = "The addressbook plugin show internal users and external ones";
-
   /* Generic */
   var $ui;
 
@@ -854,9 +850,8 @@ class addressbook extends plugin
       "plShortName"   => _("Addressbook"),
       "plDescription" => _("The addressbook plugin show internal users and external ones"),
       "plSelfModify"  => FALSE,
-      "plDepends"     => array(),
-      "plPriority"    => 0,
-      "plSection"     => array("addon" => _("Addons")),
+      "plSection"     => "addons",
+      "plPriority"    => 10,
       "plCategory"    => array("addressbook" => array("objectClass" => "inetOrgPerson", "description" => _("Addressbook"))),
 
       "plProvidedAcls"    => array(

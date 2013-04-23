@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011  FusionDirectory
+  Copyright (C) 2011-2013  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,7 +20,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class faiPartitionTable extends plugin
+class faiPartitionTable extends faiPluginClass
 {
   /* attribute list for save action */
   var $ignore_account   = TRUE;
@@ -126,6 +126,10 @@ class faiPartitionTable extends plugin
     ksort($this->disks);
   }
 
+  function compute_dn()
+  {
+    return 'cn='.$this->cn.','.get_ou('faiPartitionRDN').$this->parent->parent->fai_release;
+  }
 
   function acl_base_for_current_object($dn)
   {
@@ -493,27 +497,6 @@ class faiPartitionTable extends plugin
     }
   }
 
-
-  /* Check supplied data */
-  function check()
-  {
-    /* Call common method to give check the hook */
-    $message= plugin::check();
-
-    /* Ensure that we do not overwrite an allready existing entry
-     */
-    if($this->is_new){
-      $release = $this->parent->parent->fai_release;
-      $new_dn= 'cn='.$this->cn.",".get_ou('faiPartitionRDN').get_ou('faiBaseRDN').$release;
-      $res = faiManagement::check_class_name("FAIpartitionTable",$this->cn,$new_dn);
-      if(isset($res[$this->cn])){
-        $message[] = msgPool::duplicated(_("Name"));
-      }
-    }
-    return ($message);
-  }
-
-
   /* Save to LDAP */
   function save()
   {
@@ -781,65 +764,23 @@ class faiPartitionTable extends plugin
   }
 
 
-  function PrepareForCopyPaste($source)
-  {
-    plugin::PrepareForCopyPaste($source);
-
-    /* Read all leaf objects of this object (For FAIscript this would be FAIscriptEntry)
-     */
-
-    /* To be sure to copy disks and partitions correctly, just create a
-     *  new PartitionTable object and use the 'disks' attribute
-     *  from this it. This is much easier and less code.
-     */
-    $obj = new faiPartitionTable($this->config, $source['dn']);
-    $this->disks = $obj->disks;
-  }
-
-
   /* Return plugin informations for acl handling */
   static function plInfo()
   {
-    return (array(
-          "plShortName" => _("Partition table"),
-          "plDescription" => _("FAI partition table"),
-          "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
-          "plPriority"    => 26,
-          "plSection"     => array("administration"),
-          "plCategory"    => array("fai"),
-          "plProvidedAcls" => array(
-            "cn"                => _("Name")."&nbsp;("._("Read only").")",
-            "description"       => _("Description"))
-          ));
-  }
+    return array(
+      "plShortName"   => _("Partition table"),
+      "plDescription" => _("FAI partition table"),
+      "plSelfModify"  => FALSE,
+      "plPriority"    => 26,
+      "plCategory"    => array("fai"),
+      "plObjectType"  => array("faiPartition" => array("name" => _("FAI partition table"),
+                                                    "filter" => "objectClass=FAIpartitionTable")),
 
-
-  /*! \brief  Used for copy & paste.
-    Returns a HTML input mask, which allows to change the cn of this entry.
-    @param  Array   Array containing current status && a HTML template.
-   */
-  function getCopyDialog()
-  {
-    $vars = array("cn");
-    $smarty = get_smarty();
-    $smarty->assign("cn", htmlentities($this->cn));
-    $str = $smarty->fetch(get_template_path("paste_generic.tpl",TRUE));
-    $ret = array();
-    $ret['string'] = $str;
-    $ret['status'] = "";
-    return($ret);
-  }
-
-
-  /*! \brief  Used for copy & paste.
-    Some entries must be renamed to avaoid duplicate entries.
-   */
-  function saveCopyDialog()
-  {
-    if(isset($_POST['cn'])){
-      $this->cn = get_post('cn');
-    }
+      "plProvidedAcls" => array(
+        "cn"                => _("Name")."&nbsp;("._("Read only").")",
+        "description"       => _("Description")
+      )
+    );
   }
 
   /* Reload some attributes */

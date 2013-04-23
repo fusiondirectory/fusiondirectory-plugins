@@ -2,7 +2,7 @@
 /*
  * This code is part of FusionDirectory (http://www.fusiondirectory.org)
  * Copyright (C) 2010 Antoine Gallavardin
- * Copyright (C) 2011-2012 FusionDirectory project
+ * Copyright (C) 2011-2013 FusionDirectory project
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,9 +21,6 @@
 
 class boardNetwork extends simplePlugin
 {
-  var $dhcp_infos = array();
-  var $dns_infos  = array();
-
   function __construct(&$config, $dn = NULL, $object = NULL)
   {
     parent::__construct($config, $dn, $object);
@@ -41,6 +38,9 @@ class boardNetwork extends simplePlugin
 
   function dhcp_infos()
   {
+    if (!class_available("dhcpService")) {
+      return array();
+    }
     $ldap = $this->config->get_ldap_link();
 
     $ldap->cd($this->config->current['BASE']);
@@ -67,6 +67,9 @@ class boardNetwork extends simplePlugin
 
   function dns_infos()
   {
+    if (!class_available("DNS")) {
+      return array();
+    }
     $ldap = $this->config->get_ldap_link();
 
     $ldap->cd($this->config->current['BASE']);
@@ -116,12 +119,11 @@ class boardNetwork extends simplePlugin
   static function plInfo()
   {
     return array(
-      "plShortName"   => _("Board - Network"),
+      "plShortName"   => _("Network"),
       "plDescription" => _("Statistics and various informations"),
       "plSelfModify"  => FALSE,
-      "plPriority"    => 0,
-      "plSection"     => array("addon" => _("Addons")),
       "plCategory"    => array("board"),
+      "plObjectType"  => array("board"),
 
       "plProvidedAcls"    => array()
     );

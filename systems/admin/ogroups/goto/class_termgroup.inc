@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011  FusionDirectory
+  Copyright (C) 2011-2013  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -42,7 +42,6 @@ class termgroup extends plugin
                                 "reboot"          => "reboot",
                                 "update"          => "update",
                                 "reinstall"       => "reinstall",
-                                "rescan"          => "rescan",
                                 "wake"            => "wakeup",
          # These are currently not supported by the tftp daemon
                            # "memcheck"        => "memcheck",
@@ -200,20 +199,19 @@ class termgroup extends plugin
      ***************/
 
     /* Watch for events */
-    if ((isset($_POST['action'])) && ($this->acl_is_writeable("FAIstate")) && isset($this->mapActions[$_POST['saction']]) ){
+    if ((isset($_POST['action'])) && ($this->acl_is_writeable("FAIstate")) && isset($this->mapActions[$_POST['saction']])) {
 
       /* Check if we have an DaemonEvent for this action */
       $action = $this->mapActions[$_POST['saction']];
-      if(class_available("DaemonEvent")){
+      if (class_available("DaemonEvent")) {
         $events = DaemonEvent::get_event_types(SYSTEM_EVENT | HIDDEN_EVENT);
-        $macaddresses= array();
+        $macaddresses = array();
         foreach ($this->members as $cn => $macAddress){
           $macaddresses[]= $macAddress;
         }
 
-        if (isset($events['TRIGGERED']["DaemonEvent_".$action])) {
-          $evt = $events['TRIGGERED']["DaemonEvent_".$action];
-          $tmp = new $evt['CLASS_NAME']($this->config);
+        if (isset($events[$action])) {
+          $tmp = new DaemonEvent($this->config, $action);
           $tmp->add_targets($macaddresses);
           $tmp->set_type(TRIGGERED_EVENT);
           $o_queue = new gosaSupportDaemon();
@@ -278,7 +276,6 @@ class termgroup extends plugin
           "update" => _("Scheduled update"),
           "wake" => _("Wake"),
           "reinstall" => _("Reinstall"),
-          "rescan" => _("Rescan hardware"),
           "memcheck" => _("Memory test"),
           "sysinfo"  => _("System analysis")));
 
@@ -341,7 +338,7 @@ class termgroup extends plugin
     plugin::save();
 
     /* Tell members to inherit all attributes if the flag is set  */
-    $this->inherit_attributes_to_members();
+    //~ $this->inherit_attributes_to_members();
 
     /***************
       Prepare special vars
@@ -397,9 +394,7 @@ class termgroup extends plugin
           "plShortName"   => _("System"),
           "plDescription" => _("System group"),
           "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
           "plPriority"    => 5,
-          "plSection"     => array("administration"),
           "plCategory"    => array("ogroups"),
           "plProvidedAcls"=> array(
             "gotoMode"          => _("Mode"),
@@ -411,16 +406,16 @@ class termgroup extends plugin
           ));
   }
 
-  function inherit_attributes_to_members()
-  {
-    if ($this->members_inherit_from_group) {
-      foreach ($this->member_dn as $dn) {
-        $member_obj = new worktabs($this->config, $this->config->data['TABS']['WORKTABS'], $dn, "workstation");
-        $member_obj->by_object['workgeneric']->set_everything_to_inherited();
-        $member_obj->save();
-      }
-    }
-  }
+  //~ function inherit_attributes_to_members()
+  //~ {
+    //~ if ($this->members_inherit_from_group) {
+      //~ foreach ($this->member_dn as $dn) {
+        //~ $member_obj = new worktabs($this->config, $this->config->data['TABS']['WORKSTATIONTABS'], $dn, "workstation");
+        //~ $member_obj->getBaseObject()->set_everything_to_inherited();
+        //~ $member_obj->save();
+      //~ }
+    //~ }
+  //~ }
 
   function PrepareForCopyPaste($source)
   {

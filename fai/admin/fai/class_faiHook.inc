@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011  FusionDirectory
+  Copyright (C) 2011-2013  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,7 +20,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class faiHook extends plugin
+class faiHook extends faiPluginClass
 {
   /* attribute list for save action */
   var $ignore_account   = TRUE;
@@ -36,10 +36,10 @@ class faiHook extends plugin
   var $subClasses       = array("top","FAIclass","FAIhookEntry");
 
   /* Class name of the php class which allows us to edit a Sub Object */
-  var $subClassName     = "faiHookEntry";      
+  var $subClassName     = "faiHookEntry";
 
   /* Attributes to initialise for each subObject */
-  var $subAttributes    = array("cn","description","FAItask"); 
+  var $subAttributes    = array("cn","description","FAItask");
   var $sub_Load_Later   = array("FAIscript");
   var $sub64coded       = array();
   var $subBinary        = array("FAIscript");
@@ -50,7 +50,7 @@ class faiHook extends plugin
   var $is_dialog        = false;    // specifies which buttons will be shown to save or abort
   var $SubObjects       = array();  // All leafobjects of this object
   var $view_logged      = FALSE;
-  var $FAIstate         = "";  
+  var $FAIstate         = "";
   var $ui;
 
   function faiHook (&$config, $dn= NULL)
@@ -63,7 +63,7 @@ class faiHook extends plugin
      */
     if($dn != "new"){
       $this->dn =$dn;
-   
+
       /* Read all leaf objects of this object (For FAIscript this would be FAIscriptEntry)
        */
       $res = FAI::get_all_objects_for_given_base($this->dn,"(&(objectClass=FAIclass)(objectClass=".$this->subClass."))");
@@ -137,7 +137,7 @@ class faiHook extends plugin
     foreach($this->SubObjects as $name => $class){
       if($class['cn'] == $cn){
         continue;
-      } 
+      }
       if($class['status'] != "delete"){
         $ret[$class['FAItask']] = $class['FAItask'];
       }
@@ -265,7 +265,7 @@ class faiHook extends plugin
         if(isset($obj['remove'])){
 
           $old_stat = $this->SubObjects[$obj['remove']['from']]['status'];
-  
+
           /* Depending on status, set new status */
           if($old_stat == "edited" || $old_stat == "FreshLoaded"){
             $this->SubObjects[$obj['remove']['from']]['status'] = "delete";
@@ -300,7 +300,7 @@ class faiHook extends plugin
 
     /* Cancel Dialog */
     if(isset($_POST['CancelSubObject'])){
-      $this->is_dialog=false; 
+      $this->is_dialog=false;
       unset($this->dialog);
       $this->dialog=FALSE;
     }
@@ -369,7 +369,7 @@ class faiHook extends plugin
     }
 
     $tmp = $this->plInfo();
-      
+
     $c_dn = $this->acl_base_for_current_object($this->dn);
     $smarty->assign("sub_object_is_addable", preg_match("/c/",$this->ui->get_permissions($c_dn,"fai/faiHookEntry")) && !preg_match('/^freeze/', $this->FAIstate));
     foreach($tmp['plProvidedAcls'] as $name => $translation){
@@ -391,7 +391,7 @@ class faiHook extends plugin
         $desc = "";
 
         if((isset($obj['description']))&&(!empty($obj['description']))){
-          $desc = " [".stripslashes($obj['description'])."]"; 
+          $desc = " [".stripslashes($obj['description'])."]";
         }
 
         if($use_dns){
@@ -427,7 +427,7 @@ class faiHook extends plugin
   }
 
 
-  /* Save data to object 
+  /* Save data to object
    */
   function save_object()
   {
@@ -435,28 +435,6 @@ class faiHook extends plugin
       plugin::save_object();
     }
   }
-
-
-  /* Check supplied data */
-  function check()
-  {
-    /* Call common method to give check the hook */
-    $message= plugin::check();
-
-    /* Ensure that we do not overwrite an allready existing entry 
-     */
-    if($this->is_new){
-      $release = $this->parent->parent->fai_release;
-      $new_dn= 'cn='.$this->cn.",".get_ou('faiHookRDN').get_ou('faiBaseRDN').$release;
-      $res = faiManagement::check_class_name("FAIhook",$this->cn,$new_dn);
-      if(isset($res[$this->cn])){
-        $message[] = msgPool::duplicated(_("Name"));
-      }
-    }
-
-    return ($message);
-  }
-
 
   /* Save to LDAP */
   function save()
@@ -478,14 +456,14 @@ class faiHook extends plugin
     /* Prepare FAIscriptEntry to write it to ldap
      * First sort array.
      *  Because we must delete old entries first.
-     * After deletion, we perform add and modify 
+     * After deletion, we perform add and modify
      */
     $Objects = array();
 
     /* We do not need to save untouched objects */
     foreach($this->SubObjects as $name => $obj){
       if($obj['status'] != "FreshLoaded"){
-        $Objects[$name] = $obj; 
+        $Objects[$name] = $obj;
       }
     }
 
@@ -498,7 +476,7 @@ class faiHook extends plugin
       $tmp = array();
       $attributes = array_merge($this->sub_Load_Later,$this->subAttributes);
       foreach($attributes as $attrs){
-        if(!isset($obj[$attrs])) continue; 
+        if(!isset($obj[$attrs])) continue;
         if($obj[$attrs] == ""){
           $obj[$attrs] = array();
         }
@@ -507,7 +485,7 @@ class faiHook extends plugin
         }else{
           $tmp[$attrs] = $obj[$attrs];
         }
-      }    
+      }
 
       $tmp['objectClass'] = $this->subClasses;
 
@@ -537,73 +515,22 @@ class faiHook extends plugin
   }
 
 
-  function PrepareForCopyPaste($source)
-  {
-    plugin::PrepareForCopyPaste($source);
-
-    /* Read all leaf objects of this object (For FAIscript this would be FAIscriptEntry)
-     */
-    $res = FAI::get_all_objects_for_given_base($source['dn'],"(&(objectClass=FAIclass)(objectClass=".$this->subClass."))");
-    foreach($res as $obj){
-
-      /* Skip not relevant objects */
-      if(!preg_match("/".preg_quote($source['dn'], '/')."$/i",$obj['dn'])) continue;
-
-      $objects = array();
-      $objects['status']      = "edited";
-      $objects['dn']          = $obj['dn'];
-      $objects                = $this->get_object_attributes($objects,$this->subAttributes);
-      $objects                = $this->get_object_attributes($objects,$this->sub_Load_Later);
-      $this->SubObjects[$objects['cn']] = $objects;
-    }
-  }
-
-
-  /* Return plugin informations for acl handling */ 
+  /* Return plugin informations for acl handling */
   static function plInfo()
   {
-    return (array( 
-          "plShortName" => _("Hook"),
-          "plDescription" => _("FAI hook"),
-          "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
-          "plPriority"    => 20,
-          "plSection"     => array("administration"),
-          "plCategory"    => array("fai"),
-          "plProvidedAcls" => array(
-            "cn"                => _("Name")." ("._("Read only").")",
-            "description"       => _("Description"))
-          ));
-  }
-
-
-  /*! \brief  Used for copy & paste.
-    Returns a HTML input mask, which allows to change the cn of this entry.
-    @param  Array   Array containing current status && a HTML template.
-   */
-  function getCopyDialog()
-  {
-    $vars = array("cn");
-    $smarty = get_smarty();
-    $smarty->assign("cn", htmlentities($this->cn));
-    $str = $smarty->fetch(get_template_path("paste_generic.tpl",TRUE));
-    $ret = array();
-    $ret['string'] = $str;
-    $ret['status'] = "";
-    return($ret);
-  }
-
-
-  /*! \brief  Used for copy & paste.
-    Some entries must be renamed to avaoid duplicate entries.
-   */
-  function saveCopyDialog()
-  {
-    if(isset($_POST['cn'])){
-      $this->cn = get_post('cn');
-    }
+    return array(
+      "plShortName"   => _("Hook"),
+      "plDescription" => _("FAI hook"),
+      "plSelfModify"  => FALSE,
+      "plPriority"    => 20,
+      "plCategory"    => array("fai"),
+      "plObjectType"  => array("faiHook" => array("name" => _("FAI hook"),
+                                                    "filter" => "objectClass=FAIhook")),
+      "plProvidedAcls" => array(
+        "cn"                => _("Name")." ("._("Read only").")",
+        "description"       => _("Description")
+      )
+    );
   }
 }
-
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

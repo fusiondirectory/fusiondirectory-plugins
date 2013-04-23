@@ -2,7 +2,7 @@
 /*
  * This code is part of FusionDirectory (http://www.fusiondirectory.org)
  * Copyright (C) 2010 Antoine Gallavardin
- * Copyright (C) 2011-2012 FusionDirectory project
+ * Copyright (C) 2011-2013 FusionDirectory project
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,9 +21,6 @@
 
 class boardSystems extends simplePlugin
 {
-  var $stats;
-  var $pc_ids;
-
   /* default values*/
   var $default_start_computer_id        = 0;
 
@@ -66,6 +63,9 @@ class boardSystems extends simplePlugin
       array('name' => _('Components'),
             'filter' => 'objectClass=ieee802Device',
             'img' => get_template_path("plugins/systems/images/select_component.png")),
+      array('name' => _('Mobile phones'),
+            'filter' => 'objectClass=fdMobilePhone',
+            'img' => get_template_path("plugins/systems/images/select_mobilephone.png")),
     );
 
     $ldap->cd($this->config->current['BASE']);
@@ -73,6 +73,7 @@ class boardSystems extends simplePlugin
       $ldap->search($stat['filter'], array("cn"));
       $stat['nb'] = $ldap->count();
     }
+    unset($stat);
 
     return $stats;
   }
@@ -116,21 +117,20 @@ class boardSystems extends simplePlugin
     */
 
     $output_next_computer_ids = "";
-    $computer_ids_rules = $this->config->get_cfg_value("board_next_computer_ids_rule", "5;PC");
+    $computer_ids_rules = $this->config->get_cfg_value("boardPrefix", array("PC"));
 
     /* $get_cfg_value return the OU like ou=computer .. */
     $winstation_ou  = mb_substr($this->config->get_cfg_value("sambaMachineAccountRDN"), 3); //FIXME use get_ou
-    $array_rules    = explode(";", $computer_ids_rules);
-    $nb_digits      = $array_rules[0];
+    $nb_digits      = $this->config->get_cfg_value("boardNumberOfDigit", 3);
 
     /* running all the table */
-    for ($i = 1;$i < sizeof($array_rules);$i++) {
+    foreach ($computer_ids_rules as $rule) {
       /* aray initialization*/
       $array_complete_list  = array();
       $array_real_list      = array();
       $unused_computer_ids  = array();
       /* get computer ids configuration */
-      $config_ids = explode("=", $array_rules[$i]);
+      $config_ids = explode("=", $rule);
       /* fist is is the prefix */
       $prefix = $config_ids[0];
       /* second (if specified) is the first item */
@@ -192,15 +192,14 @@ class boardSystems extends simplePlugin
   static function plInfo()
   {
     return array(
-      "plShortName"   => _("Board - Systems"),
-      "plDescription" => _("Statistics and informations about systems"),
-      "plIcon"        => "plugins/board/images/plugin.png",
-      "plSelfModify"  => FALSE,
-      "plPriority"    => 0,
-      "plSection"     => array("addon" => _("Addons")),
-      "plCategory"    => array("board"),
+      'plShortName'   => _('Systems'),
+      'plDescription' => _('Statistics and informations about systems'),
+      'plIcon'        => 'plugins/board/images/icon.png',
+      'plSelfModify'  => FALSE,
+      'plCategory'    => array('board'),
+      'plObjectType'  => array('board'),
 
-      "plProvidedAcls"  => array()
+      'plProvidedAcls'  => array()
     );
   }
 }

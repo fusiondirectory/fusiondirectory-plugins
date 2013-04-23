@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011  FusionDirectory
+  Copyright (C) 2011-2013  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -35,7 +35,7 @@ class ppdManager
     if(preg_match('/false/i',$value)){
       $this->useGzip  = false;
     }
-  
+
     if(is_dir($path)){
       $this->path= $path;
     }elseif(is_link($path) && (is_dir(readlink($path)))) {
@@ -96,7 +96,7 @@ class ppdManager
       $wp= @fopen("$file.tmp", "w");
     }
 
-    if($this->useGzip){ 
+    if($this->useGzip){
       while (!gzeof($rp)){
         $lines[]= gzgets($rp, 1024);
       }
@@ -109,10 +109,10 @@ class ppdManager
     $ret = "";
     $done =false;
     foreach($lines as $nr => $line){
-  
+
       if (preg_match("/\*OpenGroup:*\s+\**$section\/*/", $line)){
                 $fsection= true;
-        $ret .=$line; 
+        $ret .=$line;
                 continue;
             }
 
@@ -125,21 +125,21 @@ class ppdManager
       if (($fsection) && ($section != "NO_SECTION")){
         if (preg_match("/^\*CloseGroup:*\s+\**$section\/*/", $line)){
           $fsection= false;
-          $ret .=$line; 
+          $ret .=$line;
           continue;
         }
 
 
         if (preg_match("/^\*OpenUI:*\s+\**$attribute\/*/", $line)){
           $fattribute= true;
-          $ret .= $line; 
+          $ret .= $line;
           continue;
         }
 
         if ($fattribute){
           if (preg_match("/^\*CloseUI:*\s+\**$attribute\/*/", $line)){
             $fattribute= false;
-            $ret .= $line; 
+            $ret .= $line;
             continue;
           }
 
@@ -151,14 +151,14 @@ class ppdManager
       }else{
         if (preg_match("/^\*OpenUI:*\s+\**$attribute\/*/", $line)){
           $fattribute= true;
-          $ret .= $line; 
+          $ret .= $line;
           continue;
         }
 
         if ($fattribute){
           if (preg_match("/^\*CloseUI:*\s+\**$attribute\/*/", $line)){
             $fattribute= false;
-            $ret .= $line; 
+            $ret .= $line;
             continue;
           }
 
@@ -168,7 +168,7 @@ class ppdManager
           }
         }
       }
-      $ret .=$line; 
+      $ret .=$line;
     }
 
     if($this->useGzip){
@@ -324,8 +324,8 @@ class ppdManager
         /* Possible value? */
         if (preg_match("@^\*$eoption\s+@", $line)){
 
-                    // Detect what comes first, the  '/' or the ':'. 
-                    // We may have entries like this: 
+                    // Detect what comes first, the  '/' or the ':'.
+                    // We may have entries like this:
                     //  *Resolution 300dpi: "<</HWResolution [300 300] >> setpagedevice"
                     // and
                     //  *Resolution 300dpi/300: "<</HWResolution [300 300] >> setpagedevice"
@@ -356,7 +356,7 @@ class ppdManager
     }
 
     $ppdDesc = array();
-  
+
     /* Only parse complete PPD file again, if it was changed */
     $modified = filemtime($ppdFile);
     if(isset($this->cachedList[$ppdFile]) && isset($this->timestamps[$ppdFile]) && $modified == $this->timestamps[$ppdFile]){
@@ -413,7 +413,7 @@ class ppdManager
       /* Load descriptive informations to build final printer list */
       $new = array();
       foreach ($list as $ppdFile){
-        $new[$ppdFile] = $this->loadDescription($ppdFile); 
+        $new[$ppdFile] = $this->loadDescription($ppdFile);
       }
       $this->cachedList= $new ;
 

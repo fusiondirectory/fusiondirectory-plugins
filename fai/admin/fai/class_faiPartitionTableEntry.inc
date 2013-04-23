@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011  FusionDirectory
+  Copyright (C) 2011-2013  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -29,7 +29,7 @@ class faiPartitionTableEntry extends plugin
 
   var $DISKcn              = "";
   var $DISKdescription     = "";
-  
+
   var $partitions           = array();
   var $UsedAttrs            = array();
   var $is_edit              = false;
@@ -55,7 +55,7 @@ class faiPartitionTableEntry extends plugin
         /* Assign empty attributes, if attribute is missing */
         foreach($this->UsedAttrs as $attr){
           if(!isset($values[$attr])){
-            $disk['partitions'][$name][$attr]="";  
+            $disk['partitions'][$name][$attr]="";
           }
         }
 
@@ -84,8 +84,8 @@ class faiPartitionTableEntry extends plugin
     $s_action   = "";
     $s_entry    = "";
     $display    = "";
-    
-    /* Assign values 
+
+    /* Assign values
      * And Checkbox selection
      */
     foreach($this->attributes as $attrs){
@@ -98,19 +98,19 @@ class faiPartitionTableEntry extends plugin
     }
 
     /* Check all Posts if there is something usefull for us,
-     * For example : Delete is posted as Delete_1 
+     * For example : Delete is posted as Delete_1
      * The number specifies the index we want to delete
      */
     foreach($_POST as $name => $value){
       if((preg_match("/Delete_.*/",$name)) && $this->acl_is_removeable() && !preg_match("/freeze/i",$this->FAIstate)){
         $tmp = explode("_",$name);
         $s_action = "remove";
-        $s_entry  = $tmp[1]; 
+        $s_entry  = $tmp[1];
       }
     }
 
     /* To remove a partition we unset the index posted.
-     * We must sort the index again, else we possibly got problems 
+     * We must sort the index again, else we possibly got problems
      * with partitions order.
      */
     if($s_action == "remove" && $this->acl_is_removeable() && !preg_match("/freeze/i",$this->FAIstate)){
@@ -122,18 +122,18 @@ class faiPartitionTableEntry extends plugin
       $this->partitions = $tmp;
     }
 
-    /* To add a partitions we only append an empty 
+    /* To add a partitions we only append an empty
      *  array to the already defined partitions.
      */
     if(isset($_POST['AddPartition']) && $this->acl_is_createable() && !preg_match("/freeze/i",$this->FAIstate)){
       foreach($this->UsedAttrs as $attr){
-        $tmp[$attr]                = "";     
+        $tmp[$attr]                = "";
       }
-      $tmp["old_cn"]               = "";     
+      $tmp["old_cn"]               = "";
       $this->partitions[count($this->partitions)+1]=$tmp;
     }
 
-    /* $setup contains a table with the partitions. 
+    /* $setup contains a table with the partitions.
      */
     $smarty->assign("setup", $this->generateParts());
     foreach($this->attributes as $attr){
@@ -146,10 +146,10 @@ class faiPartitionTableEntry extends plugin
       $acl = $this->getacl($name, preg_match("/freeze/i",$this->FAIstate));
       $smarty->assign($name."ACL",$acl);
     }
-   
+
     $smarty->assign("sub_object_is_createable",$this->acl_is_createable());
     $smarty->assign("freeze",preg_match("/freeze/i",$this->FAIstate));
- 
+
     /* Fetch template and show the result
      */
     $display.= $smarty->fetch(get_template_path('faiPartitionTableEntry.tpl', TRUE));
@@ -176,9 +176,9 @@ class faiPartitionTableEntry extends plugin
       $str .= "<td>&nbsp;</td>";
       $str .= "</tr>";
     }
-    
+
     /* Walk through all defined partitions.
-     * Create a new row for each partition and append it to 
+     * Create a new row for each partition and append it to
      *  the header defined above.
      * To be able to check the posts later, we append a key to each single postfield. like cn_1 ... cn_2
      */
@@ -194,7 +194,7 @@ class faiPartitionTableEntry extends plugin
         $disableALL = " disabled ";
       }
 
-      /* Generate Partition select box  
+      /* Generate Partition select box
        */
       $PartitionType = "";
       if($this->acl_is_writeable("FAIpartitionType")){
@@ -205,14 +205,14 @@ class faiPartitionTableEntry extends plugin
           }else{
             $PartitionType .="<option value='".$type."'>".$PTname."</option>";
           }
-        }        
-        $PartitionType.="</select>";   
+        }
+        $PartitionType.="</select>";
       }elseif($this->acl_is_readable("FAIpartitionType")){
         $PartitionType = $part['FAIpartitionType'];
       }
 
 
-      /* Generate fsType select box  
+      /* Generate fsType select box
        */
       $FAIfsType= "";
       if($this->acl_is_writeable("FAIfsType")){
@@ -223,8 +223,8 @@ class faiPartitionTableEntry extends plugin
           }else{
             $FAIfsType .="<option value='".$type."'>".$type."</option>";
           }
-        }        
-        $FAIfsType.="</select>";   
+        }
+        $FAIfsType.="</select>";
       }elseif($this->acl_is_readable("FAIfsType")){
         $FAIfsType = $part['FAIfsType'];
       }
@@ -256,24 +256,24 @@ class faiPartitionTableEntry extends plugin
         "changeState('FAIfsOptions_".$key."') ; \"";
 
       if($this->acl_is_writeable("FAIpartitionFlags")){
-        if($part['FAIpartitionFlags']!=false){
+        if($part['FAIpartitionFlags']=="preserve"){
           $str .= "\n<td><input type='checkbox' name='FAIpartitionFlags_".$key."' value='preserve' checked ".$changeState." ".$disableALL."></td>";
         }else{
           $str .= "\n<td><input type='checkbox' name='FAIpartitionFlags_".$key."' value='preserve' ".$changeState." ".$disableALL."></td>";
         }
       }else{
-        if($part['FAIpartitionFlags']!=false){
+        if($part['FAIpartitionFlags']=="preserve"){
           $str .= "<td>"._("False")."</td>";
         }else{
           $str .= "<td>"._("True")."</td>";
         }
       }
       if($this->acl_is_removeable()){
-        $str .= "\n<td><input type='submit' name='Delete_".$key."' value='"._("Remove")."' ".$disableALL."></td>";    
+        $str .= "\n<td><input type='submit' name='Delete_".$key."' value='"._("Remove")."' ".$disableALL."></td>";
       }else{
-        $str .= "\n<td><input type='submit' name='restricted' disabled value='"._("Remove")."'></td>";    
+        $str .= "\n<td><input type='submit' name='restricted' disabled value='"._("Remove")."'></td>";
       }
-      $str .= "\n</tr>";    
+      $str .= "\n</tr>";
     }
 
     if(!empty($str)){
@@ -324,6 +324,10 @@ class faiPartitionTableEntry extends plugin
               $this->partitions[$key][$attrs] = false;
             }
           }
+
+          if(!$this->partitions[$key]['FAIpartitionFlags']) {
+            $this->partitions[$key]['FAIpartitionFlags'] = " ";
+          }
         }
 
         /* Adapt ext3 to have -j option */
@@ -342,7 +346,7 @@ class faiPartitionTableEntry extends plugin
   {
     /* Call common method to give check the hook */
     $message= plugin::check();
-  
+
     /* Check for an empty disk name */
     $d = trim($this->DISKcn);
     if($d == "" ){
@@ -355,7 +359,7 @@ class faiPartitionTableEntry extends plugin
     if($this->old_cn != $this->DISKcn && in_array($this->DISKcn,$this->parent->getUsedDiskNames())){
       $message[] = msgPool::duplicated(_("Name"));
     }
-       
+
     /* check every partition.
      * if there is an invalid value defined, append an errorstr to message
      */
@@ -364,17 +368,18 @@ class faiPartitionTableEntry extends plugin
     $alreadyUsed    = array();
     foreach($this->UsedAttrs as $attrs){
       $alreadyUsed[$attrs] = array();
-    }      
+    }
 
     foreach($this->partitions as $key => $part){
-  
-      /* Skip all checks, if preserve is set */ 
+
+      /* Skip all checks, if preserve is set */
       if($part['FAIpartitionFlags'] == "preserve"){
+        $this->partitions[$key]['FAImountPoint']    = "-";
         $this->partitions[$key]['FAIfsType']        = "preserve";
         $this->partitions[$key]['FAIpartitionSize'] = "preserve";
         continue;
       }
- 
+
       if((in_array($part['FAImountPoint'],$alreadyUsed['FAImountPoint']))&&($part['FAIfsType']!="swap")){
         $message[]=sprintf(_("please enter a unique mount point for partition %s"),($key));
       }
@@ -403,7 +408,7 @@ class faiPartitionTableEntry extends plugin
                   $message[]=  msgPool::invalid(sprintf(_("partition %s size"),$key));
                 }
                 break;
-                
+
         case 2:
                 if( !tests::is_id($tmp[0]) && !tests::is_id($tmp[1]) && !empty($tmp[1]) ){
                   $message[]= msgPool::invalid(sprintf(_("partition %s size"),$key));
@@ -418,13 +423,13 @@ class faiPartitionTableEntry extends plugin
 
       foreach($this->UsedAttrs as $attrs){
         $alreadyUsed[$attrs][$key] = $part[$attrs];
-      }      
+      }
     }
 
     $cnt = 0;
     foreach($this->partitions as $key => $part){
       if($part['FAIpartitionType'] == "primary"){
-        $cnt ++ ; 
+        $cnt ++ ;
       }
     }
     if($cnt > 3){
@@ -434,7 +439,7 @@ class faiPartitionTableEntry extends plugin
     return ($message);
   }
 
-  
+
 
   /* Return plugin informations for acl handling */
   static function plInfo()
@@ -443,13 +448,11 @@ class faiPartitionTableEntry extends plugin
           "plShortName" => _("Partition table entry"),
           "plDescription" => _("FAI partition table entry"),
           "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
           "plPriority"    => 27,
-          "plSection"     => array("administration"),
           "plCategory"    => array("fai"),
           "plProvidedAcls" => array(
-            "DISKcn"           => _("Name"),
-            "DISKdescription"  => _("Description"),
+            "DISKcn"            => _("Name"),
+            "DISKdescription"   => _("Description"),
             "FAIpartitionType"  => _("Partition type"),
             "FAIpartitionNr"    => _("Partition no."),
             "FAIfsType"         => _("File system type"),
@@ -461,7 +464,7 @@ class faiPartitionTableEntry extends plugin
           ));
   }
 
- 
+
 }
 
 // vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:

@@ -33,8 +33,8 @@
   {if $USE_ieee802Device}
   {$COMPONENT}<label for="COMPONENT">&nbsp;{t}Show network devices{/t}</label><br>
   {/if}
-  {if $USE_FAKE_OC_NewWorkstation || $USE_FAKE_OC_NewTerminal || $USE_FAKE_OC_NewServer || $USE_FAKE_OC_NewDevice || $USE_FAKE_OC_ArpNewDevice}
-  {$INCOMING}<label for="INCOMING">&nbsp;{t}Show incoming devices{/t}</label><br>
+  {if $USE_fdMobilePhone}
+  {$MOBILEPHONE}<label for="MOBILEPHONE">&nbsp;{t}Show mobile phones{/t}</label><br>
   {/if}
 
   <div style="border-top:1px solid #AAAAAA"></div>
@@ -50,16 +50,6 @@
    </td>
    <td>
     {$NAME}
-   </td>
-  </tr>
-  <tr>
-   <td>
-    <label for="NAME">
-     <img src="plugins/users/images/select_user.png" align=middle>&nbsp;User
-    </label>
-   </td>
-   <td>
-    {$USER}
    </td>
   </tr>
  </table>

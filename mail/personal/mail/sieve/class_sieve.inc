@@ -394,7 +394,7 @@ class sieve
     }
 
     /* Fill error message if no auth types are present */
-    if (!isset($this->capabilities["auth"])){
+    if (($this->options != "tls") && (!isset($this->capabilities["auth"]))){
       $this->error=EC_UNKNOWN;
       $this->error_raw = "No authentication methods found - please check your sieve setup for missing sasl modules";
       return false;

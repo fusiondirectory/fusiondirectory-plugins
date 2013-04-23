@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011  FusionDirectory
+  Copyright (C) 2011-2013  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -70,12 +70,12 @@ class mailogroup extends plugin
         $display= $this->show_disable_header(_("Remove mail account"),
             msgPool::featuresEnabled(_("mail group")));
       } else {
-        $display= $this->show_enable_header(_("Create mail account"), 
+        $display= $this->show_enable_header(_("Create mail account"),
             msgPool::featuresDisabled(_("mail group")));
         return ($display);
       }
     }
-    
+
     /* Initialize templating engine */
     $smarty= get_smarty();
 
@@ -128,7 +128,7 @@ class mailogroup extends plugin
     /* Save data to LDAP */
     $ldap->cd($this->dn);
     $this->cleanup();
-    $ldap->modify ($this->attrs); 
+    $ldap->modify ($this->attrs);
 
     if($this->initially_was_account){
       new log("modify","ogroups/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
@@ -169,7 +169,7 @@ class mailogroup extends plugin
         $this->attributes, "Save");
     $ldap->cd($this->dn);
     $this->cleanup();
-    $ldap->modify ($this->attrs); 
+    $ldap->modify ($this->attrs);
 
     new log("remove","ogroups/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
 
@@ -178,37 +178,13 @@ class mailogroup extends plugin
     }
   }
 
-
-  function getCopyDialog()
-  {
-    $str = "";
-    $smarty = get_smarty();
-    $smarty->assign("mail",     $this->mail);
-    $str = $smarty->fetch(get_template_path("paste_mail.tpl",TRUE,dirname(__FILE__)));
-    $ret = array();
-    $ret['string'] = $str;
-    $ret['status'] = "";
-    return($ret);
-  }
-
-
-  function saveCopyDialog()
-  {
-    if(isset($_POST['mail'])){
-      $this->mail = $_POST['mail'];
-    }
-  }
-
-
    static function plInfo()
   {
     return (array(
           "plShortName"   => _("Mail"),
           "plDescription" => _("Mail group"),
           "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
           "plPriority"    => 4,
-          "plSection"     => array("administration"),
           "plCategory"    => array("ogroups"),
           "plProvidedAcls"=> array(
             "mail" => _("Mail address"))

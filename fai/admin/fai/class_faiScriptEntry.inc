@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011  FusionDirectory
+  Copyright (C) 2011-2013  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -37,7 +37,7 @@ class faiScriptEntry extends plugin
   var $status        = "new";
   var $parent        = NULL;
   var $FAIstate      = "";
-  
+
   function faiScriptEntry (&$config, $dn= NULL,$object=false)
   {
     plugin::plugin ($config, NULL);
@@ -73,7 +73,7 @@ class faiScriptEntry extends plugin
     $smarty     = get_smarty();
     $smarty->assign("freeze", preg_match("/freeze/i",$this->FAIstate));
     $display = "";
-  
+
     if(isset($_POST['ImportUpload']) && $this->acl_is_writeable("FAIscript")){
       if(($_FILES['ImportFile']['error']!=0)){
         msg_dialog::display(_("Error"), msgPool::incorrectUpload(), ERROR_DIALOG);
@@ -86,7 +86,7 @@ class faiScriptEntry extends plugin
         $this->FAIscript = $str;
       }
     }
-  
+
     foreach($this->attributes as $attrs){
       $smarty->assign($attrs,($this->$attrs));
     }
@@ -142,17 +142,16 @@ class faiScriptEntry extends plugin
   {
     /* Call common method to give check the hook */
     $message= plugin::check();
-  
+
     if(isset($this->parent->SubObjects[$this->cn]) && $this->cn != $this->orig_cn){
       $message[] = msgPool::duplicated(_("Name"));
     }
 
-    $c = trim($this->cn);
-    if($c == ""){
+    if($this->cn == ""){
       $message[] = msgPool::required(_("Name"));
     }
-    if(preg_match("/[^a-z0-9_\-]/i",$c)){
-      $message[] = msgPool::invalid(_("Name"),$c,"/[a-z0-9_\-]/i");
+    if(preg_match("/[^a-z0-9_\-]/i",$this->cn)){
+      $message[] = msgPool::invalid(_("Name"),$this->cn,"/[a-z0-9_\-]/i");
     }
 
     $s = trim($this->FAIscript);
@@ -162,11 +161,11 @@ class faiScriptEntry extends plugin
 
     return ($message);
   }
- 
+
   function save()
   {
     $tmp=array();
-    foreach($this->attributes as $attrs){ 
+    foreach($this->attributes as $attrs){
       $tmp[$attrs] = $this->$attrs;
     }
 
@@ -177,13 +176,13 @@ class faiScriptEntry extends plugin
       $tmp['remove']['from']  = $this->orig_cn;
       $tmp['remove']['to']    = $tmp['cn'];
     }
-  
-    $tmp['dn']      = $this->dn;  
-    $tmp['status']  = $this->status; 
+
+    $tmp['dn']      = $this->dn;
+    $tmp['status']  = $this->status;
     return($tmp);
   }
 
-  
+
   /* Return plugin informations for acl handling */
   static function plInfo()
   {
@@ -191,9 +190,7 @@ class faiScriptEntry extends plugin
           "plShortName" => _("Script entry"),
           "plDescription" => _("FAI script entry"),
           "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
           "plPriority"    => 19,
-          "plSection"     => array("administration"),
           "plCategory"    => array("fai"),
           "plProvidedAcls" => array(
             "cn"              => _("Name"),

@@ -10,7 +10,7 @@
   <search>
     <query>
       <backend>SYSTEMS</backend>
-      <filter>(&amp;(|$SERVER$WORKSTATION$TERMINAL$PHONE$PRINTER$COMPONENT$WINSTATION$INCOMING)$NAME$USER)</filter>
+      <filter>(&amp;(|$SERVER$WORKSTATION$TERMINAL$PHONE$PRINTER$COMPONENT$WINSTATION$MOBILEPHONE)$NAME)</filter>
       <attribute>dn</attribute>
       <attribute>objectClass</attribute>
       <attribute>cn</attribute>
@@ -20,7 +20,7 @@
       <attribute>FAIstate</attribute>
       <attribute>FAIclass</attribute>
       <attribute>macAddress</attribute>
-      <attribute>gotoLastUser</attribute>
+      <attribute>ipHostNumber</attribute>
     </query>
     <scope>auto</scope>
   </search>
@@ -37,25 +37,6 @@
     <autocomplete>
       <backend>SYSTEMS</backend>
       <filter>(|(cn=*$NAME*)(uid=*$NAME*))</filter>
-      <attribute>cn</attribute>
-      <attribute>uid</attribute>
-      <frequency>0.5</frequency>
-      <characters>3</characters>
-    </autocomplete>
-  </element>
-
-  <element>
-    <type>textfield</type>
-    <tag>USER</tag>
-    <size>20</size>
-    <maxlength>60</maxlength>
-    <default></default>
-    <unset></unset>
-    <set>(gotoLastUser=*$*)</set>
-    <alphabet>false</alphabet>
-    <autocomplete>
-      <backend>SYSTEMS</backend>
-      <filter>(gotoLastUser=*USER*)</filter>
       <attribute>cn</attribute>
       <attribute>uid</attribute>
       <frequency>0.5</frequency>
@@ -121,10 +102,10 @@
 
   <element>
     <type>checkbox</type>
-    <tag>INCOMING</tag>
+    <tag>MOBILEPHONE</tag>
     <default>true</default>
     <unset></unset>
-    <set>(&amp;(|(objectClass=goWorkstation)(objectClass=gotoTerminal)(objectClass=goHard))(ou:dn:=%systemIncomingRDN))</set>
+    <set>(objectClass=fdMobilePhone)</set>
   </element>
 
 </filterdef>

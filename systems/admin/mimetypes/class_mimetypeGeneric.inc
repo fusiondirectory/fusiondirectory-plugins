@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011  FusionDirectory
+  Copyright (C) 2011-2013  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -338,7 +338,6 @@ class mimetype extends plugin
     }
     $smarty->assign("bases",            $this->get_allowed_bases());
     $smarty->assign("base_select",          $this->base);
-    $smarty->assign("isReleaseMimeType",      $this->is_release());
     $smarty->assign("gotoMimeFilePatterns",     $DivPatterns->DrawList());
     $smarty->assign("gotoMimeApplications",     $DivApps->DrawList());
     $smarty->assign("gotoMimeEmbeddedApplications", $DivEApps->DrawList());
@@ -374,8 +373,6 @@ class mimetype extends plugin
       $this->base = $base_tmp;
 
       /* Only save base if we are not in release mode */
-      if(!$this->is_release()){
-
         /* Set new base if allowed */
         $tmp = $this->get_allowed_bases();
         if(isset($_POST['base'])){
@@ -383,8 +380,6 @@ class mimetype extends plugin
             $this->base= $_POST['base'];
           }
         }
-
-      }
 
       /* Save radio buttons */
       if($this->acl_is_writeable("gotoMimeLeftClickAction")){
@@ -528,11 +523,7 @@ class mimetype extends plugin
     $ldap = $this->config->get_ldap_link();
     $ldap->cd($this->config->current["BASE"]);
 
-    if($this->is_release()){
-      $base = $this->parent->parent->mime_release;
-    }else{
-      $base = get_ou("mimetypeRDN").$this->base;
-    }
+    $base = get_ou("mimetypeRDN").$this->base;
 
     $ldap->ls("(&(objectClass=gotoMimeType)(cn=".$this->cn."))",$base,array("cn"));
     if($ldap->count()){
@@ -652,92 +643,50 @@ class mimetype extends plugin
   function combineArrays($ar0,$ar1,$ar2)
   {
     $ret = array();
-    if(is_array($ar0))
-      foreach($ar0 as $ar => $a){
-        $ret[]=$a;
-      }
-    if(is_array($ar1))
-      foreach($ar1 as $ar => $a){
-        $ret[]=$a;
-      }
-    if(is_array($ar2))
-      foreach($ar2 as $ar => $a){
-        $ret[]=$a;
-      }
-    return($ret);
-  }
-
-
-  /* Return a dialog with all fields that must be changed,
-     if we want to copy this entry */
-  function getCopyDialog()
-  {
-    $str = "";
-
-    $smarty = get_smarty();
-    $smarty->assign("cn",         $this->cn);
-    $smarty->assign("description",  $this->description);
-    $str = $smarty->fetch(get_template_path("paste_generic.tpl",TRUE,dirname(__FILE__)));
-
-    $ret = array();
-    $ret['string'] = $str;
-    $ret['status'] = "";
-    return($ret);
-  }
-
-
-  /* Save all */
-  function saveCopyDialog()
-  {
-    $attrs = array("cn","description");
-    foreach($attrs as $attr){
-      if(isset($_POST[$attr])){
-        $this->$attr = $_POST[$attr];
+    if (is_array($ar0)) {
+      foreach ($ar0 as $ar => $a) {
+        $ret[] = $a;
       }
     }
+    if (is_array($ar1)) {
+      foreach ($ar1 as $ar => $a) {
+        $ret[] = $a;
+      }
+    }
+    if (is_array($ar2)) {
+      foreach ($ar2 as $ar => $a) {
+        $ret[] = $a;
+      }
+    }
+    return $ret;
   }
 
   /* Return plugin informations for acl handling  */
   static function plInfo()
   {
-    return (array(
-          "plShortName"   => _("Generic"),
-          "plDescription" => _("Mime type generic"),
-          "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
-          "plPriority"    => 0,
-          "plSection"     => array("administration"),
-          "plCategory"    => array("mimetypes" => array("description"  => _("Mime types"),
-                                                        "objectClass"  => "gotoMimeType")),
-          "plProvidedAcls"=> array(
-            "cn"                          => _("Name"),
-            "gotoMimeGroup"               => _("Mime group"),
-            "description"                 => _("Description"),
-            "base"                        => _("Base"),
-            "gotoMimeApplication"         => _("Application"),
-            "gotoMimeLeftClickAction"     => _("Left click action"),
-            "gotoMimeIcon"                => _("Icon"),
-            "gotoMimeFilePattern"         => _("File patterns"),
-            "gotoMimeEmbeddedApplication" => _("Embedded applications"))
-          ));
+    return array(
+      "plShortName"   => _("Generic"),
+      "plDescription" => _("Mime type generic"),
+      "plSelfModify"  => FALSE,
+      "plCategory"    => array("mimetypes" => array("description"  => _("Mime types"),
+                                                    "objectClass"  => "gotoMimeType")),
+      "plObjectType"  => array("mimetype" => array("name"  => _("Mime type"),
+                                                  "filter"  => "objectClass=gotoMimeType")),
+
+      "plProvidedAcls"  => array(
+        "cn"                          => _("Name"),
+        "gotoMimeGroup"               => _("Mime group"),
+        "description"                 => _("Description"),
+        "base"                        => _("Base"),
+        "gotoMimeApplication"         => _("Application"),
+        "gotoMimeLeftClickAction"     => _("Left click action"),
+        "gotoMimeIcon"                => _("Icon"),
+        "gotoMimeFilePattern"         => _("File patterns"),
+        "gotoMimeEmbeddedApplication" => _("Embedded applications")
+      )
+    );
 
   }
-
-
-  function is_release()
-  {
-    if(is_object($this->parent->parent)){
-      return($this->parent->parent->IsReleaseManagementActivated());
-    }else{
-      /* Check if we should enable the release selection */
-      $tmp = $this->config->search("faiManagement", "CLASS",array('menu','tabs'));
-      if(!empty($tmp) && class_available("faiManagement")){
-        return(true);
-      }
-    }
-    return(FALSE);
-  }
-
 
   function PrepareForCopyPaste($source)
   {

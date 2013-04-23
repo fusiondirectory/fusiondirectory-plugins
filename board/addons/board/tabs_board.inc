@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2012  FusionDirectory
+  Copyright (C) 2011-2013  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,10 +20,10 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class boardtabs extends tabs
+class tabs_board extends tabs
 {
 
-  function __construct($config, $data, $dn = NULL, $category = "board", $hide_refs = FALSE, $hide_acls = FALSE)
+  function __construct($config, $data, $dn = NULL, $category = "board", $copied_object = NULL)
   {
     foreach ($data as $key => $infos) {
       if (($infos['CLASS'] == 'boardSystems') && (!class_available("systemManagement"))) {
@@ -35,14 +35,10 @@ class boardtabs extends tabs
       }
     }
     $data = array_values($data);
-    parent::tabs($config, $data, $dn, $category, $hide_refs, $hide_acls);
+    parent::tabs($config, $data, $dn, $category);
   }
 
-  function save_object($save_current = FALSE)
-  {
-  }
-
-  function save($ignore_account = FALSE)
+  function save()
   {
   }
 }

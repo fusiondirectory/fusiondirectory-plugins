@@ -2,7 +2,7 @@
 /*
  * This code is part of FusionDirectory (http://www.fusiondirectory.org)
  * Copyright (C) 2010 Antoine Gallavardin
- * Copyright (C) 2011-2012 FusionDirectory project
+ * Copyright (C) 2011-2013 FusionDirectory project
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,9 +23,6 @@
 
 class boardUserAccounts extends simplePlugin
 {
-  var $stats;
-  var $expired;
-
   function __construct(&$config, $dn = NULL, $object = NULL)
   {
     parent::__construct($config, $dn, $object);
@@ -63,7 +60,7 @@ class boardUserAccounts extends simplePlugin
         array('name' => 'samba',  'nb' => $nb_samba_accounts, 'img' => get_template_path("plugins/systems/images/select_winstation.png"))
       ),
       'nb_accounts' => $nb_accounts,
-      'user_img' => get_template_path("plugins/users/images/select_user.png"),
+      'user_img' => get_template_path("plugins/users/images/iconMini.png"),
       'locked_accounts' => array('nb' => $nb_locked_accounts, 'img' => get_template_path("images/lists/locked.png")),
     );
   }
@@ -78,7 +75,7 @@ class boardUserAccounts extends simplePlugin
     $today        = floor(time() / 86400); // 24 * 60 * 60
 
     /* Fetch global value from fusiondirectory.conf */
-    $next_expired_days = $this->config->get_cfg_value("board_next_expired_account", "15");
+    $next_expired_days = $this->config->get_cfg_value("boardExpiredAccountsDays", 15);
     $next_expired_date = ($today + $next_expired_days);
 
     /* search all account with all date, mail, telephone */
@@ -153,12 +150,11 @@ class boardUserAccounts extends simplePlugin
   static function plInfo()
   {
     return array(
-      "plShortName"   => _("Board - User"),
+      "plShortName"   => _("User"),
       "plDescription" => _("Statistics about users"),
       "plSelfModify"  => FALSE,
-      "plPriority"    => 0,
-      "plSection"     => array("addon" => _("Addons")),
       "plCategory"    => array("board"),
+      "plObjectType"  => array("board"),
 
       "plProvidedAcls"    => array()
     );

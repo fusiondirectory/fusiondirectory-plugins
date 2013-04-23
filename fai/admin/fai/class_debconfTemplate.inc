@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011  FusionDirectory
+  Copyright (C) 2011-2013  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -56,7 +56,7 @@ class debconf
 
       /* Template header */
       if (preg_match("/^Template: /", $line)){
-        $post_name ++; 
+        $post_name ++;
         $name= trim(preg_replace("/^Template: (.*)$/", "\\1", $line));
         $this->template[$post_name]['Name'] = $name;
         $this->template[$post_name]['Default'] ="";
@@ -167,15 +167,15 @@ class debconf
         }
       }
     }
-    
+
     foreach($this->template as $post_name => $entry){
-      if(isset($_POST["multi-".$entry['post_name']])){ 
+      if(isset($_POST["multi-".$entry['post_name']])){
         $this->template[$post_name]['Default']= "";
         foreach($_POST as $name => $value){
           if(preg_match("/".$entry['post_name']."-multi-/",$name)){
             $this->template[$post_name]['Default'] .= $value.", ";
           }
-        } 
+        }
         $this->template[$post_name]['Default'] = preg_replace("/, $/","",$this->template[$post_name]['Default']);
       }
     }
@@ -220,7 +220,7 @@ class debconf
         }
       }
 
-    
+
       $result .= "<input type='hidden' post_name='check_post' value='1'></table>";
       return ($result);
     } else {
@@ -278,7 +278,7 @@ class debconf
         <td valign='top'  style=\"white-space:nowrap; border-left: 1px solid rgb(160, 160, 160);\">
           <input type='hidden' name='multi-".$post_name."' value='1'>
         ";
-        
+
       $defs = explode(", ",$data['Default']);
       foreach($choices as $value){
         if(in_array($value,$defs)){
@@ -291,7 +291,7 @@ class debconf
     $result .=    "</td>
         </tr>
         ";
-    }    
+    }
 
     return ($result);
   }
@@ -330,7 +330,7 @@ class debconf
       }
 
       $result="
-        
+
         <tr>
         <td valign='top'>
         <h2>".$data['Topic']."</h2>".$data['Description']."
@@ -347,7 +347,7 @@ class debconf
       }
 
       $result.= "
-        
+
         </td>
         </tr>
         ";

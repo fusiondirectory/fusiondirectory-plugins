@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<list>
+  <definition>
+    <departmentBrowser>true</departmentBrowser>
+    <departmentRootVisible>true</departmentRootVisible>
+    <baseMode>true</baseMode>
+    <multiSelect>true</multiSelect>
+    <template>alias-list.tpl</template>
+    <module>alias</module>
+    <label>List of Mail aliases</label>
+    <defaultSortColumn>1</defaultSortColumn>
+
+    <objectType>
+      <label>Mail redirection</label>
+      <objectClass>mailAliasRedirection</objectClass>
+      <category>alias</category>
+      <class>mailAliasRedirection</class>
+      <image>plugins/alias/images/iconMiniMailredirection.png</image>
+    </objectType>
+
+    <objectType>
+      <label>Mail distribution</label>
+      <objectClass>mailAliasDistribution</objectClass>
+      <category>alias</category>
+      <class>mailAliasDistribution</class>
+      <image>plugins/alias/images/iconMiniMailDistribution.png</image>
+    </objectType>
+
+    <objectType>
+      <label>Sympa list alias</label>
+      <objectClass>sympaAlias</objectClass>
+      <category>alias</category>
+      <class>sympaAlias</class>
+      <image>plugins/alias/images/iconMiniSympa.png</image>
+    </objectType>
+
+  </definition>
+
+  <table>
+    <layout>|20px;c|||110px;c|100px;r|</layout>
+
+    <department>
+      <value>%{filter:objectType(dn,objectClass)}</value>
+    </department>
+
+    <department>
+      <value>%{filter:departmentLink(row,dn,description)}</value>
+      <span>3</span>
+    </department>
+
+    <column>
+      <value>%{filter:objectType(dn,objectClass)}</value>
+    </column>
+
+    <column>
+      <label>Name</label>
+      <sortAttribute>cn</sortAttribute>
+      <sortType>string</sortType>
+      <value>%{filter:link(row,dn,"%s",cn)}</value>
+      <export>true</export>
+    </column>
+
+    <column>
+      <label>Description</label>
+      <sortAttribute>description</sortAttribute>
+      <sortType>string</sortType>
+      <value>%{filter:link(row,dn,"%s",description)}</value>
+      <export>true</export>
+    </column>
+
+    <column>
+      <label>Expiration date</label>
+      <sortAttribute>aliasExpirationDate</sortAttribute>
+      <sortType>integer</sortType>
+      <value>%{filter:filterDate(aliasExpirationDate)}</value>
+      <export>true</export>
+    </column>
+
+    <column>
+      <label>Actions</label>
+      <value>%{filter:actions(dn,row,objectClass)}</value>
+    </column>
+
+  </table>
+
+  <actionmenu>
+
+
+    <action>
+     <type>sub</type>
+     <image>images/lists/new.png</image>
+     <label>Create</label>
+
+     <action>
+      <name>new_mailAliasRedirection</name>
+      <type>entry</type>
+      <image>plugins/alias/images/iconMiniMailredirection.png</image>
+      <label>Mail redirection</label>
+     </action>
+
+     <action>
+      <name>new_mailAliasDistribution</name>
+      <type>entry</type>
+      <image>plugins/alias/images/iconMiniMailDistribution.png</image>
+      <label>Mail distribution</label>
+     </action>
+
+     <action>
+      <name>new_sympaAlias</name>
+      <type>entry</type>
+      <image>plugins/alias/images/iconMiniSympa.png</image>
+      <label>Sympa alias</label>
+      <depends>sympaAlias</depends>
+     </action>
+    </action>
+
+    <action>
+      <name>edit</name>
+      <type>entry</type>
+      <image>images/lists/edit.png</image>
+      <label>Edit</label>
+    </action>
+
+     <action>
+      <name>remove</name>
+      <type>entry</type>
+      <image>images/lists/trash.png</image>
+      <label>Remove</label>
+    </action>
+
+        <action>
+      <type>separator</type>
+    </action>
+
+    <action>
+      <type>exporter</type>
+    </action>
+
+    <action>
+      <type>separator</type>
+    </action>
+
+    <action>
+      <type>copypaste</type>
+    </action>
+
+    <action>
+      <type>snapshot</type>
+    </action>
+
+  </actionmenu>
+
+  <actiontriggers snapshot="true" copypaste="true">
+
+    <action>
+      <name>cp</name>
+      <type>copypaste</type>
+    </action>
+
+    <action>
+      <name>edit</name>
+      <type>entry</type>
+      <image>images/lists/edit.png</image>
+      <label>Edit alias</label>
+    </action>
+
+    <action>
+      <name>snapshot</name>
+      <type>snapshot</type>
+    </action>
+
+    <action>
+      <name>remove</name>
+      <type>entry</type>
+      <image>images/lists/trash.png</image>
+      <acl>alias/mailAliasRedirection[d]</acl>
+      <label>Remove alias</label>
+    </action>
+
+  </actiontriggers>
+
+</list>

@@ -1,0 +1,620 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: FusionDirectory\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
+"POT-Creation-Date: 2013-03-24 15:09+0100\n"
+"PO-Revision-Date: 2013-03-24 15:00+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: Polish (http://www.transifex.com/projects/p/FusionDirectory/language/pl/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: admin/systems/services/dhcp/class_dhcpPool.inc:104
+#: admin/systems/services/dhcp/class_dhcpPool.inc:112
+#: admin/systems/services/dhcp/class_dhcpDnsZone.inc:167
+#: admin/systems/services/dhcp/dhcp_pool.tpl:6
+#: admin/systems/services/dhcp/class_dhcpHost.inc:132
+#: admin/systems/services/dhcp/class_dhcpHost.inc:140
+#: admin/systems/services/dhcp/class_dhcpNetwork.inc:48
+#: admin/systems/services/dhcp/dhcp_host.tpl:8
+#: admin/systems/services/dhcp/class_dhcpSubClass.inc:86
+#: admin/systems/services/dhcp/class_dhcpSubClass.inc:89
+#: admin/systems/services/dhcp/class_dhcpSubClass.inc:97
+#: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl:10
+#: admin/systems/services/dhcp/dhcp_group.tpl:6
+#: admin/systems/services/dhcp/class_dhcpSharedNetwork.inc:152
+#: admin/systems/services/dhcp/class_dhcpSharedNetwork.inc:170
+#: admin/systems/services/dhcp/class_dhcpSubnet.inc:150
+#: admin/systems/services/dhcp/class_dhcpClass.inc:87
+#: admin/systems/services/dhcp/class_dhcpClass.inc:90
+#: admin/systems/services/dhcp/class_dhcpClass.inc:98
+#: admin/systems/services/dhcp/class_dhcpGroup.inc:87
+#: admin/systems/services/dhcp/class_dhcpGroup.inc:90
+#: admin/systems/services/dhcp/class_dhcpGroup.inc:98
+msgid "Name"
+msgstr "Imię"
+
+#: admin/systems/services/dhcp/class_dhcpPool.inc:119
+#: admin/systems/services/dhcp/class_dhcpPool.inc:123
+#: admin/systems/services/dhcp/class_dhcpPool.inc:127
+#: admin/systems/services/dhcp/dhcp_pool.tpl:13
+#: admin/systems/services/dhcp/class_dhcpSubnet.inc:160
+#: admin/systems/services/dhcp/class_dhcpSubnet.inc:161
+msgid "Range"
+msgstr ""
+
+#: admin/systems/services/dhcp/class_dhcpPool.inc:141
+#: admin/systems/services/dhcp/class_dhcpSubnet.inc:176
+msgid "'Range' is not inside the configured network."
+msgstr ""
+
+#: admin/systems/services/dhcp/class_dhcpDnsZone.inc:150
+#: admin/systems/services/dhcp/dhcp_dnszone.tpl:6
+msgid "DNS zone"
+msgstr ""
+
+#: admin/systems/services/dhcp/class_dhcpDnsZone.inc:154
+#: admin/systems/services/dhcp/dhcp_network.tpl:73
+#: admin/systems/services/dhcp/dhcp_dnszone.tpl:13
+msgid "DNS server"
+msgstr ""
+
+#: admin/systems/services/dhcp/class_dhcpDnsZone.inc:158
+#: admin/systems/services/dhcp/dhcp_dnszone.tpl:21
+msgid "Key DN"
+msgstr ""
+
+#: admin/systems/services/dhcp/dhcp_service.tpl:1
+#: admin/systems/services/dhcp/dhcp_pool.tpl:2
+#: admin/systems/services/dhcp/dhcp_host.tpl:2
+#: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl:2
+#: admin/systems/services/dhcp/dhcp_group.tpl:2
+#: admin/systems/services/dhcp/dhcp_subnet.tpl:2
+msgid "Generic"
+msgstr "Ogólne"
+
+#: admin/systems/services/dhcp/dhcp_service.tpl:7
+msgid "Authoritative service"
+msgstr ""
+
+#: admin/systems/services/dhcp/dhcp_service.tpl:10
+msgid "Dynamic DNS update"
+msgstr ""
+
+#: admin/systems/services/dhcp/dhcp_service.tpl:12
+msgid "Dynamic DNS update style"
+msgstr ""
+
+#: admin/systems/services/dhcp/dhcp_service.tpl:22
+msgid "Default lease time (s)"
+msgstr ""
+
+#: admin/systems/services/dhcp/dhcp_service.tpl:25
+msgid "Enter default lease time in seconds."
+msgstr ""
+
+#: admin/systems/services/dhcp/dhcp_service.tpl:30
+msgid "Maximum lease time (s)"
+msgstr ""
+
+#: admin/systems/services/dhcp/dhcp_service.tpl:33
+msgid "Enter maximum lease time in seconds."
+msgstr ""
+
+#: admin/systems/services/dhcp/remove_dhcp.tpl:2
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:136
+msgid "Warning"
+msgstr "Ostrzeżenie"
+
+#: admin/systems/services/dhcp/remove_dhcp.tpl:6
+msgid ""
+"This includes 'all' DHCP subsections that are located within this section. "
+"Please double check if your really want to do this since there is no way for"
+" FusionDirectory to get your data back."
+msgstr ""
+
+#: admin/systems/services/dhcp/remove_dhcp.tpl:10
+msgid ""
+"Best thing to do before performing this action would be to save the current "
+"contents of your LDAP tree in a file. So - if you've done so - press "
+"'Delete' to continue or 'Cancel' to abort."
+msgstr "Przed wykonaniem tej operacji zaleca się wykonanie kopii bezpieczeństwa drzewa LDAP. Naciśnij 'Usuń' aby kontynuować, lub 'Anuluj' aby przerwać."
+
+#: admin/systems/services/dhcp/class_dhcpService.inc:128
+msgid "Lease time"
+msgstr ""
+
+#: admin/systems/services/dhcp/class_dhcpService.inc:131
+msgid "Max lease time"
+msgstr ""
+
+#: admin/systems/services/dhcp/class_dhcpService.inc:134
+#: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl:55
+#: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl:59
+#: admin/systems/services/dhcp/class_dhcpSharedNetwork.inc:156
+msgid "Default lease time"
+msgstr ""
+
+#: admin/systems/services/dhcp/class_dhcpService.inc:134
+#: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl:68
+msgid "Maximum lease time"
+msgstr ""
+
+#: admin/systems/services/dhcp/class_dhcpAdvanced.inc:59
+#: admin/systems/services/dhcp/class_dhcpAdvanced.inc:73
+#: admin/systems/services/dhcp/class_dhcpNetwork.inc:48
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:787
+msgid "Error"
+msgstr "Błąd"
+
+#: admin/systems/services/dhcp/class_dhcpAdvanced.inc:59
+#: admin/systems/services/dhcp/class_dhcpAdvanced.inc:73
+msgid "Cannot delete automatic statements!"
+msgstr ""
+
+#: admin/systems/services/dhcp/class_dhcpAdvanced.inc:89
+#: admin/systems/services/dhcp/class_dhcpAdvanced.inc:104
+msgid "automatic"
+msgstr "automatyczne"
+
+#: admin/systems/services/dhcp/dhcp_pool.tpl:9
+msgid "Name of pool"
+msgstr ""
+
+#: admin/systems/services/dhcp/class_dhcpHost.inc:64
+msgid "Ethernet"
+msgstr ""
+
+#: admin/systems/services/dhcp/class_dhcpHost.inc:65
+msgid "FDDI"
+msgstr ""
+
+#: admin/systems/services/dhcp/class_dhcpHost.inc:66
+msgid "Token Ring"
+msgstr ""
+
+#: admin/systems/services/dhcp/class_dhcpHost.inc:149
+#: admin/systems/services/dhcp/dhcp_host.tpl:41
+msgid "Hardware address"
+msgstr ""
+
+#: admin/systems/services/dhcp/class_dhcpNewSectionDialog.inc:48
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:62
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:321
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:731
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:763
+msgid "Global options"
+msgstr ""
+
+#: admin/systems/services/dhcp/class_dhcpNewSectionDialog.inc:49
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:63
+msgid "Class"
+msgstr "Klasa"
+
+#: admin/systems/services/dhcp/class_dhcpNewSectionDialog.inc:50
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:64
+msgid "Subclass"
+msgstr ""
+
+#: admin/systems/services/dhcp/class_dhcpNewSectionDialog.inc:51
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:65
+msgid "Host"
+msgstr ""
+
+#: admin/systems/services/dhcp/class_dhcpNewSectionDialog.inc:52
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:66
+msgid "Group"
+msgstr "Grupa"
+
+#: admin/systems/services/dhcp/class_dhcpNewSectionDialog.inc:53
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:67
+msgid "Pool"
+msgstr ""
+
+#: admin/systems/services/dhcp/class_dhcpNewSectionDialog.inc:54
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:68
+msgid "Subnet"
+msgstr ""
+
+#: admin/systems/services/dhcp/class_dhcpNewSectionDialog.inc:55
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:70
+msgid "Shared network"
+msgstr ""
+
+#: admin/systems/services/dhcp/class_dhcpNewSectionDialog.inc:56
+#: admin/systems/services/dhcp/dhcp_tsigkey.tpl:2
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:71
+msgid "DNS update key"
+msgstr ""
+
+#: admin/systems/services/dhcp/class_dhcpNewSectionDialog.inc:57
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:72
+msgid "DNS update zones"
+msgstr ""
+
+#: admin/systems/services/dhcp/dhcp_network.tpl:5
+msgid "Network configuration"
+msgstr ""
+
+#: admin/systems/services/dhcp/dhcp_network.tpl:8
+msgid "Router"
+msgstr ""
+
+#: admin/systems/services/dhcp/dhcp_network.tpl:12
+msgid "Enter name or IP address of router to be used in this section"
+msgstr ""
+
+#: admin/systems/services/dhcp/dhcp_network.tpl:17
+#: admin/systems/services/dhcp/class_dhcpNetwork.inc:197
+#: admin/systems/services/dhcp/dhcp_subnet.tpl:16
+#: admin/systems/services/dhcp/class_dhcpSubnet.inc:142
+#: admin/systems/services/dhcp/class_dhcpSubnet.inc:158
+msgid "Netmask"
+msgstr "Maska sieciowa"
+
+#: admin/systems/services/dhcp/dhcp_network.tpl:25
+#: admin/systems/services/dhcp/class_dhcpNetwork.inc:197
+msgid "Broadcast"
+msgstr ""
+
+#: admin/systems/services/dhcp/dhcp_network.tpl:35
+msgid "Bootup"
+msgstr ""
+
+#: admin/systems/services/dhcp/dhcp_network.tpl:38
+msgid "Filename"
+msgstr "Nazwa pliku"
+
+#: admin/systems/services/dhcp/dhcp_network.tpl:42
+msgid ""
+"Enter name of file that will be loaded via tftp after client has started"
+msgstr ""
+
+#: admin/systems/services/dhcp/dhcp_network.tpl:47
+msgid "Next server"
+msgstr ""
+
+#: admin/systems/services/dhcp/dhcp_network.tpl:51
+msgid "Enter name of server to retrieve bootimages from"
+msgstr ""
+
+#: admin/systems/services/dhcp/dhcp_network.tpl:59
+msgid "Domain Name Service"
+msgstr ""
+
+#: admin/systems/services/dhcp/dhcp_network.tpl:62
+msgid "Domain"
+msgstr "Domena"
+
+#: admin/systems/services/dhcp/dhcp_network.tpl:66
+msgid "Name of domain"
+msgstr ""
+
+#: admin/systems/services/dhcp/dhcp_network.tpl:75
+msgid "List of DNS servers to be propagated"
+msgstr ""
+
+#: admin/systems/services/dhcp/dhcp_network.tpl:81
+msgid "DNS server do be added"
+msgstr ""
+
+#: admin/systems/services/dhcp/dhcp_network.tpl:84
+msgid "Click here add the selected server to the list"
+msgstr ""
+
+#: admin/systems/services/dhcp/dhcp_network.tpl:87
+msgid "Click here remove the selected servers from the list"
+msgstr ""
+
+#: admin/systems/services/dhcp/dhcp_network.tpl:93
+msgid "Domain Name Service options"
+msgstr ""
+
+#: admin/systems/services/dhcp/dhcp_network.tpl:95
+msgid "Assign hostnames found via reverse mapping"
+msgstr ""
+
+#: admin/systems/services/dhcp/dhcp_network.tpl:99
+msgid "Assign hostnames from host declarations"
+msgstr ""
+
+#: admin/systems/services/dhcp/class_dhcpNetwork.inc:202
+#, php-format
+msgid "Error in definition of '%s'!"
+msgstr ""
+
+#: admin/systems/services/dhcp/dhcp_dnszone.tpl:2
+msgid "DNS update zone"
+msgstr ""
+
+#: admin/systems/services/dhcp/dhcp_host.tpl:12
+msgid "Name of host"
+msgstr ""
+
+#: admin/systems/services/dhcp/dhcp_host.tpl:17
+msgid "Fixed address"
+msgstr ""
+
+#: admin/systems/services/dhcp/dhcp_host.tpl:22
+msgid "Use hostname or IP-address to assign fixed address"
+msgstr ""
+
+#: admin/systems/services/dhcp/dhcp_host.tpl:31
+msgid "Hardware type"
+msgstr "Typ sprzętu"
+
+#: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl:13
+msgid "Name for shared network"
+msgstr ""
+
+#: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl:18
+msgid "Server identifier"
+msgstr "Identyfikator serwera"
+
+#: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl:22
+msgid "Propagated server identifier for this shared network"
+msgstr ""
+
+#: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl:36
+msgid "Select if this server is authoritative for this shared network"
+msgstr ""
+
+#: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl:36
+msgid "Authoritative server"
+msgstr ""
+
+#: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl:52
+msgid "Leases"
+msgstr ""
+
+#: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl:59
+#: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl:68
+#: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl:77
+msgid "seconds"
+msgstr ""
+
+#: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl:64
+#: admin/systems/services/dhcp/class_dhcpSharedNetwork.inc:157
+msgid "Max. lease time"
+msgstr ""
+
+#: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl:73
+#: admin/systems/services/dhcp/class_dhcpSharedNetwork.inc:158
+msgid "Min. lease time"
+msgstr ""
+
+#: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl:77
+msgid "Minimum lease time"
+msgstr ""
+
+#: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl:86
+msgid "Access control"
+msgstr "Kontrola dostępu"
+
+#: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl:92
+msgid "Select if unknown clients should get dynamic IP addresses"
+msgstr ""
+
+#: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl:92
+msgid "Allow unknown clients"
+msgstr ""
+
+#: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl:100
+msgid "Select if bootp clients should get dynamic IP addresses"
+msgstr ""
+
+#: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl:100
+msgid "Allow bootp clients"
+msgstr ""
+
+#: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl:108
+msgid "Select if clients are allowed to boot using this DHCP server"
+msgstr ""
+
+#: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl:108
+msgid "Allow booting"
+msgstr ""
+
+#: admin/systems/services/dhcp/dhcp_tsigkey.tpl:6
+#: admin/systems/services/dhcp/class_dhcpTSigKey.inc:114
+#: admin/systems/services/dhcp/class_dhcpTSigKey.inc:127
+msgid "Key name"
+msgstr ""
+
+#: admin/systems/services/dhcp/dhcp_tsigkey.tpl:9
+msgid "Name of Key"
+msgstr ""
+
+#: admin/systems/services/dhcp/dhcp_tsigkey.tpl:13
+msgid "Encryption method"
+msgstr ""
+
+#: admin/systems/services/dhcp/dhcp_tsigkey.tpl:21
+#: admin/systems/services/dhcp/class_dhcpTSigKey.inc:118
+msgid "Key"
+msgstr ""
+
+#: admin/systems/services/dhcp/dhcp_group.tpl:11
+msgid "Name of group"
+msgstr ""
+
+#: admin/systems/services/dhcp/dhcp_subnet.tpl:8
+#: admin/systems/services/dhcp/class_dhcpSubnet.inc:139
+#: admin/systems/services/dhcp/class_dhcpSubnet.inc:159
+msgid "Network address"
+msgstr "Adres sieciowy"
+
+#: admin/systems/services/dhcp/dhcp_subnet.tpl:32
+msgid "Range for dynamic address assignment"
+msgstr ""
+
+#: admin/systems/services/dhcp/class_dhcpTSigKey.inc:51
+msgid "HMAC-MD5"
+msgstr ""
+
+#: admin/systems/services/dhcp/class_dhcpTSigKey.inc:51
+msgid "RSAMD5"
+msgstr ""
+
+#: admin/systems/services/dhcp/class_dhcpTSigKey.inc:51
+msgid "RSASHA1"
+msgstr ""
+
+#: admin/systems/services/dhcp/class_dhcpTSigKey.inc:51
+msgid "DSA"
+msgstr ""
+
+#: admin/systems/services/dhcp/class_dhcpTSigKey.inc:51
+msgid "DH"
+msgstr ""
+
+#: admin/systems/services/dhcp/serviceDHCP.tpl:5
+msgid ""
+"DHCP take over will take place when saving this entry. Choose 'Cancel' to "
+"abort."
+msgstr ""
+
+#: admin/systems/services/dhcp/serviceDHCP.tpl:14
+msgid "Take over dhcp configuration from following server"
+msgstr ""
+
+#: admin/systems/services/dhcp/serviceDHCP.tpl:24
+msgid "DHCP sections"
+msgstr ""
+
+#: admin/systems/services/dhcp/class_dhcpSubnet.inc:170
+msgid "Network range"
+msgstr ""
+
+#: admin/systems/services/dhcp/dhcpNewSection.tpl:2
+msgid "Create new DHCP section"
+msgstr ""
+
+#: admin/systems/services/dhcp/dhcpNewSection.tpl:6
+msgid "Please choose one of the following DHCP section types."
+msgstr ""
+
+#: admin/systems/services/dhcp/dhcpNewSection.tpl:9
+msgid "Section"
+msgstr "Sekcja"
+
+#: admin/systems/services/dhcp/dhcpNewSection.tpl:10
+msgid "Choose section type to create"
+msgstr ""
+
+#: admin/systems/services/dhcp/dhcpNewSection.tpl:15
+msgid "Create"
+msgstr "Utwórz"
+
+#: admin/systems/services/dhcp/dhcp_advanced.tpl:8
+msgid "Hide advanced settings"
+msgstr ""
+
+#: admin/systems/services/dhcp/dhcp_advanced.tpl:15
+msgid "DHCP statements"
+msgstr ""
+
+#: admin/systems/services/dhcp/dhcp_advanced.tpl:36
+msgid "DHCP options"
+msgstr ""
+
+#: admin/systems/services/dhcp/dhcp_advanced.tpl:59
+msgid "Show advanced settings"
+msgstr ""
+
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:59
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:798
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:799
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:845
+msgid "DHCP service"
+msgstr ""
+
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:61
+msgid "Logging"
+msgstr ""
+
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:69
+msgid "Failover peer"
+msgstr ""
+
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:131
+#, php-format
+msgid ""
+"You have requested a migration of the DHCP setup from server '%s' to the "
+"current one."
+msgstr ""
+
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:133
+msgid "The migration will be started when you save this system."
+msgstr ""
+
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:227
+msgid "Permission error"
+msgstr ""
+
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:264
+msgid "DHCP section"
+msgstr ""
+
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:345
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:348
+msgid "Insert new DHCP section"
+msgstr ""
+
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:346
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:349
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:350
+msgid "Edit DHCP section"
+msgstr ""
+
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:347
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:351
+msgid "Remove DHCP section"
+msgstr ""
+
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:352
+msgid "Expand DHCP subnet"
+msgstr ""
+
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:353
+msgid "Fold DHCP subnet"
+msgstr ""
+
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:428
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:445
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:500
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:576
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:584
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:611
+msgid "LDAP error"
+msgstr "błąd LDAP"
+
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:787
+msgid ""
+"The DHCP configuration set is unkown. Please contact your system "
+"administrator."
+msgstr ""
+
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:799
+msgid "Services"
+msgstr "Usługi"
+
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:806
+msgid "Start service"
+msgstr "Uruchom usługę"
+
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:807
+msgid "Stop service"
+msgstr "Zatrzymaj usługę"
+
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:808
+msgid "Restart service"
+msgstr "Restartuj usługę"

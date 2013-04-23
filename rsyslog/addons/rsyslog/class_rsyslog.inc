@@ -1,9 +1,8 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011  FusionDirectory
+  Copyright (C) 2011-2013  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -23,29 +22,44 @@ require_once 'MDB2.php';
 
 class rsyslog extends plugin
 {
-  var $plHeadline= "System logs";
-  var $plDescription= "This plugin allow to View system logs";
-
-  var $servers = array();
-  var $selected_server = "";
-  var $selected_host = "all";
-  var $selected_priority = "all";
+  var $servers            = array();
+  var $selected_server    = "";
+  var $selected_host      = "all";
+  var $selected_priority  = "all";
 
   var $startTime = "";
   var $stopTime  = "";
 
-  var $search_for ="";
+  var $search_for = "";
 
-  var $sort_value  = "DeviceReportedTime";
+  var $sort_value = "DeviceReportedTime";
   var $sort_type  = "DESC";
-  var $limit  = "0";
-  var $limits = array(20,50,100,200,500,1000,'-');
-  var $page   = 0;
+  var $limit      = "0";
+  var $limits     = array(20,50,100,200,500,1000,'-');
+  var $page       = 0;
 
-  function rsyslog (&$config, $dn= NULL)
+  /*! \brief  Return plugin informations for acl handling
+      @return Array ACL infos of this plugin.
+   */
+  static function plInfo()
   {
-    $this->config= &$config;
-    $this->ui = get_userinfo();
+    return array(
+      "plShortName"   => _("System logs"),
+      "plDescription" => _("This plugin allow to View system logs"),
+      "plSelfModify"  => FALSE,
+      "plSection"     => "addons",
+      "plPriority"    => 3,
+      "plCategory"    => array("server/serviceSyslog"),
+      "plObjectType"  => array("rsyslog" => array("name" => _("System logs"))),
+
+      "plProvidedAcls" => array()
+    );
+  }
+
+  function rsyslog (&$config, $dn = NULL)
+  {
+    $this->config = &$config;
+    $this->ui     = get_userinfo();
 
     $this->startTime = date("d.m.Y", (time() - 7*24*60*60));
     $this->stopTime  = date("d.m.Y", time());
@@ -53,19 +67,24 @@ class rsyslog extends plugin
     // Get list of rsyslog servers
     $ldap = $this->config->get_ldap_link();
     $ldap->cd($this->config->current['BASE']);
-    $ldap->search("objectClass=goLogDBServer",array("cn","goLogAdmin","gosaLogDB","goLogPassword"));
+    $ldap->search('objectClass=goLogDBServer',array('cn','goLogDriver','goLogDB','goLogAdmin','goLogPassword'));
     while ($attrs = $ldap->fetch()) {
       if (empty($this->selected_server)) {
         $this->selected_server = $attrs['cn'][0];
       }
-      $s = array('cn' => $attrs['cn'][0], 'dn' => $attrs['dn'], 'PASSWORD' => '', 'status' => 'ok');
-      $s['LOGIN']       = $attrs['goLogAdmin'][0];
-      $s['DB']          = $attrs['gosaLogDB'][0];
-      $s['PASSWORD'] = $attrs['goLogPassword'][0];
-      $s['SERVER']      = $s['cn'];
-      $s['Hosts']       = array();
-      $s['Priorities']  = array();
-      $s['ACL']         = "";
+      $s = array(
+        'cn'          => $attrs['cn'][0],
+        'dn'          => $attrs['dn'],
+        'DRIVER'      => $attrs['goLogDriver'][0],
+        'DB'          => $attrs['goLogDB'][0],
+        'LOGIN'       => $attrs['goLogAdmin'][0],
+        'PASSWORD'    => $attrs['goLogPassword'][0],
+        'SERVER'      => $attrs['cn'][0],
+        'Hosts'       => array(),
+        'Priorities'  => array(),
+        'ACL'         => '',
+        'status'      => 'ok'
+      );
 
       $this->servers[$attrs['cn'][0]] = $s;
     }
@@ -373,14 +392,11 @@ class rsyslog extends plugin
     return sprintf(_("Unknown (%s)"), $facility);
   }
 
-
   function time2local($str)
   {
     list($date, $time)= explode(" ", $str);
     list($y, $m, $d)= explode("-", $date);
     return "$d.$m.$y $time";
   }
-
 }
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

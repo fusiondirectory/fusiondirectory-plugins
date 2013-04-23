@@ -2,7 +2,7 @@
 
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2011  FusionDirectory
+  Copyright (C) 2011-2013  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -19,162 +19,100 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class argonautMirrorConfig extends goService{
-
-  var $cli_summary      = "This plugin is used within the ServerService Pluign \nand indicates that this server supports Argonaut service.";
-  var $cli_description  = "Some longer text\nfor help";
-  var $cli_parameters   = array("one" => "one is nice", "two" => "two is better");
-
-  /* This plugin only writes its objectClass */
-  var $objectclasses    = array("argonautMirrorConfig");
-  var $attributes       = array("argonautMirrorDir",
-                                "argonautCrawlerPackagesFolder",
-                                "argonautLdap2repProxy",
-                                "argonautLdap2repErrors",
-                                "argonautLdap2repSource","argonautLdap2repGPGCheck",
-                                "argonautLdap2repContents","argonautLdap2repVerbose");
-  var $StatusFlag       = "";
-
-  /* This class can't be assigned twice so it conflicts with itsself */
-  var $conflicts        = array("argonautMirrorConfig");
-
-  var $DisplayName      = "";
-  var $dn               = NULL;
-  var $acl;
-  var $cn               = "";
-  var $view_logged      = FALSE;
-
-  var $argonautMirrorDir              = "/srv/www/debian";              // Where is you local debian mirror
-
-  var $argonautCrawlerPackagesFolder  = "/var/cache/argonaut/packages"; // Where is stored the result produced by the crawler
-
-  var $argonautLdap2repProxy          = "";
-  var $argonautLdap2repErrors         = TRUE;
-  var $argonautLdap2repSource         = FALSE;
-  var $argonautLdap2repGPGCheck       = FALSE;
-  var $argonautLdap2repContents       = FALSE;
-  var $argonautLdap2repVerbose        = FALSE;
-
-  var $ldapBooleans     = array("argonautLdap2repErrors",
-                                "argonautLdap2repSource",   "argonautLdap2repGPGCheck",
-                                "argonautLdap2repContents", "argonautLdap2repVerbose");
-
-  function argonautMirrorConfig(&$config,$dn)
-  {
-    goService::goService($config,$dn);
-    $this->DisplayName = _("Argonaut Mirror settings");
-    foreach ($this->ldapBooleans as $ldapBoolean) {
-      $this->$ldapBoolean = ($this->$ldapBoolean == "TRUE"); // conversion from LDAP format to PHP boolean
-    }
-  }
-
-
-  function execute()
-  {
-    $smarty = get_smarty();
-
-    if ($this->is_account && !$this->view_logged) {
-      $this->view_logged = TRUE;
-      new log("view","server/".get_class($this),$this->dn);
-    }
-
-    $smarty->assign("argonautMirrorConfigACL", $this->getacl("argonautMirrorConfig")) ;
-    $attributes = array();
-    foreach ($this->attributes as $attribute) {
-      $smarty->assign("$attribute" , $this->$attribute);
-      $attributes[$attribute] = $this->$attribute;
-    }
-    $smarty->assign("attributes" , $attributes);
-    $smarty->assign("crawlerIndice" , 1);
-    $smarty->assign("ldap2repIndice" , 2);
-    $smarty->assign("booleans" , $this->ldapBooleans);
-    return $smarty->fetch(get_template_path("argonautMirrorConfig.tpl",TRUE,dirname(__FILE__)));
-  }
-
-
-  function getListEntry()
-  {
-    $fields               = goService::getListEntry();
-    $fields['Message']    = _("Argonaut Mirror settings");
-    return $fields;
-  }
-
-
-  function save()
-  {
-    plugin::save();
-    foreach ($this->ldapBooleans as $ldapBoolean) {
-      $this->attrs[$ldapBoolean] = ($this->$ldapBoolean?"TRUE":"FALSE"); // conversion from PHP format to LDAP boolean
-    }
-    /* Check if this is a new entry ... add/modify */
-    $ldap = $this->config->get_ldap_link();
-    $ldap->cat($this->dn,array("objectClass"));
-    if ($ldap->count()) {
-      $ldap->cd($this->dn);
-      $ldap->modify($this->attrs);
-    } else {
-      $ldap->cd($this->dn);
-      $ldap->add($this->attrs);
-    }
-    if (!$ldap->success()) {
-      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()));
-    }
-    if ($this->initially_was_account) {
-      $this->handle_post_events("modify");
-      new log("modify","server/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
-    } else {
-      $this->handle_post_events("add");
-      new log("create","server/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
-    }
-  }
-
-
-  function PrepareForCopyPaste($source)
-  {
-    plugin::PrepareForCopyPaste($source);
-  }
-
-  function check()
-  {
-    $message = plugin::check();
-    return $message;
-  }
-
-  function save_object()
-  {
-    if(isset($_POST['argonautMirrorConfigPosted'])) {
-      plugin::save_object();
-      if($this->acl_is_writeable("argonautMirrorConfig")) {
-        foreach ($this->ldapBooleans as $ldapBoolean) {
-          $this->$ldapBoolean = isset($_POST[$ldapBoolean]);
-        }
-        foreach ($this->attributes as $attribute) {
-          if(in_array($attribute,$this->ldapBooleans)) {
-            continue;
-          } else if(isset($_POST[$attribute])) {
-            $this->$attribute = $_POST[$attribute];
-          }
-        }
-      }
-    }
-  }
+class argonautMirrorConfig extends simpleService
+{
+  var $objectclasses  = array("argonautMirrorConfig");
+  var $showActions    = FALSE;
 
   /* Return plugin informations for acl handling */
   static function plInfo()
   {
-    return (array(
-          "plShortName"   => _("Argonaut Mirror settings"),
-          "plDescription" => _("Argonaut Mirror settings")." ("._("Services").")",
-          "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
-          "plPriority"    => 91,
-          "plSection"     => array("administration"),
-          "plCategory"    => array("server"),
+    return array(
+      "plShortName"     => _("Argonaut Mirror settings"),
+      "plDescription"   => _("Argonaut Mirror settings")." ("._("Services").")",
+      "plIcon"          => "plugins/argonaut/images/iconMiniMirrorConfig.png",
 
-          "plProvidedAcls"=> array(
-            "argonautMirrorConfig"        =>_("Modify argonaut mirror settings"))
-          ));
+      "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+    );
+  }
+
+  /*!
+   *  \brief The main function : information about attributes
+   */
+  static function getAttributesInfo ()
+  {
+    return array (
+    'section1' => array (
+        'name'  => _('Argonaut mirror settings'),
+        'attrs' => array (
+          new StringAttribute (
+            _('Local debian mirror directory'),
+            '',
+            'argonautMirrorDir',
+            FALSE,
+            '/srv/www/debian'
+          )
+        )
+      ),
+      'section2' => array (
+        'name' => _('Argonaut Debconf Crawler configuration'),
+        'attrs' => array (
+          new StringAttribute (
+            _('Local packages folder'),
+            _('Folder in which the crawler will store packages during analysis'),
+            'argonautCrawlerPackagesFolder',
+            FALSE,
+            '/var/cache/argonaut/packages'
+          )
+        )
+      ),
+      'section3' => array (
+        'name' => _('Argonaut Repository configuration'),
+        'attrs' => array (
+          new StringAttribute (
+            _('Proxy'),
+            '',
+            'argonautLdap2repProxy',
+            FALSE
+          ),
+          new BooleanAttribute (
+            _('Errors'),
+            '',
+            'argonautLdap2repErrors',
+            FALSE,
+            TRUE
+          ),
+          new BooleanAttribute (
+            _('Source'),
+            '',
+            'argonautLdap2repSource',
+            FALSE,
+            FALSE
+          ),
+          new BooleanAttribute (
+            _('GPG Check'),
+            '',
+            'argonautLdap2repGPGCheck',
+            FALSE,
+            FALSE
+          ),
+          new BooleanAttribute (
+            _('Contents'),
+            '',
+            'argonautLdap2repContents',
+            FALSE,
+            FALSE
+          ),
+          new BooleanAttribute (
+            _('Verbose'),
+            _('Wether to activate verbose mode'),
+            'argonautLdap2repVerbose',
+            FALSE,
+            FALSE
+          ),
+        )
+      )
+    );
   }
 }
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

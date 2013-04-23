@@ -20,12 +20,12 @@
   {/if}
   <tr>
     <td style="width:50%; vertical-align:top;">
-    <div style="height:290px; overflow:auto; 
+    <div style="height:290px; overflow:auto;
           border-top: solid 2px #999999;
           border-left: solid 2px #999999;
-          padding:5px; 
+          padding:5px;
           ">
-      
+
 <table style='width:100%' cellpadding=0 cellspacing=0>
 {foreach from=$entries item=item key=key}
   {if $item.TYPE == "OPEN"}
@@ -76,16 +76,16 @@
         {/if}
       </td>
       <td style='background-color: transparent;'>
-        <b>{$item.NAME}&nbsp; </b> 
+        <b>{$item.NAME}&nbsp; </b>
       </td>
       <td style='width:100px;text-align:right; background-color: transparent;'>
-        <input title="{t}Move up{/t}"   class="center" type='image' 
+        <input title="{t}Move up{/t}"   class="center" type='image'
           name='up_{$item.UNIQID}' src='images/move_object_up.png'>
-        <input title="{t}Move down{/t}" class="center" type='image' 
+        <input title="{t}Move down{/t}" class="center" type='image'
           name='down_{$item.UNIQID}' src='images/move_object_down.png'>
-        <input title="{t}Remove{/t}"  class="center" type='image' 
+        <input title="{t}Remove{/t}"  class="center" type='image'
           name='del_{$item.UNIQID}' src='images/lists/trash.png'>
-        <input title="{t}Edit{/t}"    class="center" type='image' 
+        <input title="{t}Edit{/t}"    class="center" type='image'
           name='app_entry_edit{$item.UNIQID}' src='images/lists/edit.png'>
       </td>
     </tr>
@@ -125,13 +125,13 @@
         {$item.NAME} {$item.INFO}
       </td>
       <td style='width:100px;text-align:right;background-color: transparent;'>
-        <input title="{t}Move up{/t}"   class="center" type='image' 
+        <input title="{t}Move up{/t}"   class="center" type='image'
           name='up_{$item.UNIQID}' src='images/move_object_up.png'>
-        <input title="{t}Move down{/t}" class="center" type='image' 
+        <input title="{t}Move down{/t}" class="center" type='image'
           name='down_{$item.UNIQID}' src='images/move_object_down.png'>
-        <input title="{t}Remove{/t}"  class="center" type='image' 
+        <input title="{t}Remove{/t}"  class="center" type='image'
           name='del_{$item.UNIQID}' src='images/lists/trash.png'>
-        <input title="{t}Edit{/t}"    class="center" type='image' 
+        <input title="{t}Edit{/t}"    class="center" type='image'
           name='app_entry_edit{$item.UNIQID}' src='images/lists/edit.png'>
       </td>
     </tr>
@@ -146,11 +146,11 @@
         <option value="{$key}">{$item}</option>
       {/foreach}
       </select>
-      <input type="submit" name="add_menu_to_folder" value="{msgPool type=addButton}" title="{t}Add selected applications to this folder.{/t}">
+      <input type="submit" name="add_menu_to_folder" value="{msgPool type=addButton}" title="{t}Add selected category to this folder..{/t}">
       <input type="submit" name="add_seperator"      value="{t}Separator{/t}" title="{t}Add a separator to this folder.{/t}">
     </td>
     <td style="vertical-align:top">
-      {$app_list} 
+      {$app_list}
       <select name="folder">
       {foreach from=$folders item=item key=key}
         <option value="{$key}">{$item}</option>
@@ -160,4 +160,4 @@
     </td>
   </tr>
 </table>
-  
+

@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011  FusionDirectory
+  Copyright (C) 2011-2013  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -23,57 +23,52 @@
 class roletabs extends tabs
 {
 
-  function __construct($config, $data, $dn,$hide_refs = FALSE, $hide_acls = FALSE)
+  function __construct($config, $data, $dn, $cat = '', $copied_object = NULL)
   {
-    tabs::tabs($config, $data, $dn,$hide_refs, $hide_acls);
-    $this->base = $baseobject= $this->by_object['roleGeneric']->base;
+    parent::tabs($config, $data, $dn, $cat, $copied_object);
+    $this->base = $this->getBaseObject()->base;
     $this->addSpecialTabs();
-
-    
   }
 
-  function save_object($save_current= FALSE)
+  function save_object($save_current = FALSE)
   {
-    tabs::save_object($save_current);
+    parent::save_object($save_current);
 
     /* Update reference, transfer variables */
-    $baseobject= $this->by_object['roleGeneric'];
-    foreach ($this->by_object as $name => $obj){
+    $baseobject = $this->getBaseObject();
+    foreach ($this->by_object as $name => $obj) {
 
       /* Don't touch base object */
-      if ($name != 'roleGeneric'){
-        $obj->parent= &$this;
-        $obj->cn= $baseobject->cn;
-        $this->by_object[$name]= $obj;
+      if ($name != 'roleGeneric') {
+        $obj->parent            = &$this;
+        $obj->cn                = $baseobject->cn;
+        $this->by_object[$name] = $obj;
       }
     }
   }
 
-  function save($ignore_account= FALSE)
+  function save()
   {
-    $baseobject= $this->by_object['roleGeneric'];
+    $baseobject = $this->getBaseObject();
 
     /* Check for new 'dn', in order to propagate the
        'dn' to all plugins */
-    $new_dn= 'cn='.$baseobject->cn.','.get_ou("roleRDN").$baseobject->base;
+    $new_dn = 'cn='.$baseobject->cn.','.get_ou("roleRDN").$baseobject->base;
 
     /* Move role? */
-    if ($this->dn != $new_dn){
+    if ($this->dn != $new_dn) {
 
       /* Write entry on new 'dn' */
-      if ($this->dn != "new"){
-        $baseobject->update_acls($this->dn,$new_dn);
+      if ($this->dn != "new") {
+        $baseobject->update_acls($this->dn, $new_dn);
         $baseobject->move($this->dn, $new_dn);
-        $this->by_object['roleGeneric']= $baseobject;
+        $this->by_object['roleGeneric'] = $baseobject;
       }
 
       /* Happen to use the new one */
-      $this->dn= $new_dn;
+      $this->dn = $new_dn;
     }
-    $ret= tabs::save();
-    return $ret;
+    return parent::save();
   }
 }
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
-
 ?>

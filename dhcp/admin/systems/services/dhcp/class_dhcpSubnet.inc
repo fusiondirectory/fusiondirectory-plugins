@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011  FusionDirectory
+  Copyright (C) 2011-2013  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -102,16 +102,16 @@ class dhcpSubnet extends dhcpPlugin
   function save_object()
   {
 
-    /* Skip here if do not have write permissions here 
+    /* Skip here if do not have write permissions here
         Still executed at bottom - dhcpPlugin::save_object();
      */
     if(isset($_POST['dhcp_subnet_posted']) && preg_match("/w/",$this->parent->getacl(""))){
       if (isset($_POST['cn'])){
         $this->cn= validate(get_post('cn'));
-      } 
+      }
       if (isset($_POST['dhcp_netmask'])){
         $this->dhcpNetMask= validate(get_post('dhcp_netmask'));
-      } 
+      }
       if (isset($_POST['use_range'])){
         $this->use_range= TRUE;
         $this->range_start= validate(get_post('range_start'));
@@ -155,7 +155,7 @@ class dhcpSubnet extends dhcpPlugin
 
     /* IP's? */
     foreach(array(
-          'dhcpNetMask' => _("Netmask"), 
+          'dhcpNetMask' => _("Netmask"),
           'cn'          => _("Network address"),
           'range_start' => _("Range"),
           'range_stop'  => _("Range")) as $attr => $str){
@@ -201,7 +201,7 @@ class dhcpSubnet extends dhcpPlugin
 
     return ($this->attrs);
   }
-  
+
 }
 // vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

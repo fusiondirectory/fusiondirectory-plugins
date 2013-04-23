@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011  FusionDirectory
+  Copyright (C) 2011-2013  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -110,10 +110,10 @@ class applicationParameters extends plugin
       $this->option_name[]= "";
       $this->option_value[]= "";
     }
-    
 
 
-    $acl = $this->getacl("gosaApplicationParameter")	;
+
+    $acl = $this->getacl("gosaApplicationParameter")  ;
     $table= "<table summary=\"\"><tr><td>"._("Variable")."</td><td>"._("Default value")."</td><td></td></tr>";
     if (count ($this->option_name)){
 
@@ -173,7 +173,7 @@ class applicationParameters extends plugin
     @DEBUG (DEBUG_LDAP, __LINE__, __FUNCTION__, __FILE__,
         $this->attributes, "Save");
     $this->cleanup();
-    $ldap->modify ($this->attrs); 
+    $ldap->modify ($this->attrs);
 
     if (!$ldap->success()){
       msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_MOD, get_class()));
@@ -207,7 +207,12 @@ class applicationParameters extends plugin
 
     /* Check for valid option names */
     for ($i= 0; $i<count($this->option_name); $i++){
-      if (!preg_match ("/^[a-z0-9_]+$/i", $this->option_name[$i])){
+      /* Check for empty option names */
+      if (!$this->option_name[$i]) {
+        $message[]= msgPool::required(_("Name"));
+      }
+      /* Check for valid option names */
+      elseif (!preg_match ("/^[a-z0-9_]+$/i", $this->option_name[$i])){
         $message[]= msgPool::invalid(_("Name"), $this->option_name[$i],"/^[a-z0-9_]+$/i");
       }
     }
@@ -236,7 +241,7 @@ class applicationParameters extends plugin
     @DEBUG (DEBUG_LDAP, __LINE__, __FUNCTION__, __FILE__,
         $this->attributes, "Save");
     $this->cleanup();
-    $ldap->modify ($this->attrs); 
+    $ldap->modify ($this->attrs);
 
     if (!$ldap->success()){
       msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_MOD, get_class()));
@@ -246,7 +251,7 @@ class applicationParameters extends plugin
     $this->handle_post_events('modify');
   }
 
- 
+
   function PrepareForCopyPaste($source)
   {
     plugin::PrepareForCopyPaste($source);
@@ -260,25 +265,22 @@ class applicationParameters extends plugin
   }
 
 
-  /* Return plugin informations for acl handling
-#FIXME FAIscript seams to ununsed within this class... */
+  /* Return plugin informations for acl handling */
   static function plInfo()
   {
-    return (array(
-          "plShortName"   => _("Parameter"),
-          "plDescription" => _("Parameter configuration"),
-          "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
-          "plPriority"    => 0,
-          "plSection"     => array("administration"),
-          "plCategory"    => array("application"),
+    return array(
+      "plShortName"   => _("Parameter"),
+      "plDescription" => _("Parameter configuration"),
+      "plSelfModify"  => FALSE,
+      "plCategory"    => array("application"),
+      "plObjectType"  => array("application"),
 
-          "plProvidedAcls"=> array(
-            "gosaApplicationParameter"      => _("Application parameter settings"))  
-          ));
+      "plProvidedAcls"=> array(
+        "gosaApplicationParameter"      => _("Application parameter settings")
+      )
+    );
   }
 
 
 }
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

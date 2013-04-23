@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011  FusionDirectory
+  Copyright (C) 2011-2013  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -45,7 +45,7 @@ if ( $cleanup ){
   $display.= "<input type=\"hidden\" name=\"ignore\">\n";
 
   /* Page header*/
-  $display= print_header(get_template_path('plugins/rsyslog/images/plugin.png'), _("System logs")).$display;
+  $display= print_header(get_template_path('plugins/rsyslog/images/icon.png'), _("System logs")).$display;
 
   /* Store changes  in session */
   session::set('rsyslogObject',$rsyslogObject);

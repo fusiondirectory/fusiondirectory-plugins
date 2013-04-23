@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003  Cajus Pollmeier
-  Copyright (C) 2011  FusionDirectory
+  Copyright (C) 2011-2013  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -19,22 +19,22 @@
   along with this program; if not, write to the Free Software
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
-define("SERVICE_STOPPED",   _("Stop"));
-define("SERVICE_STARTED",   _("Start"));
-define("SERVICE_RESTARTED", _("Restart"));
 
 class ServerService extends management
 {
   static public $actionStatus = array(
-    "start"   => SERVICE_STARTED,
-    "stop"    => SERVICE_STOPPED,
-    "restart" => SERVICE_RESTARTED,
+    "start"   => "running",
+    "stop"    => "stopped",
+    "restart" => "running",
+    "status"  => "",
   );
 
   /* attribute list for save action */
   var $ignore_account   = TRUE;
   var $skipFooter       = TRUE;
   var $skipHeader       = TRUE;
+  var $skipCpHandler    = TRUE;
+  var $skipSnapHandler  = TRUE;
   var $plugins          = array();
   var $pluign_names     = array();
   var $current          = "";
@@ -50,6 +50,21 @@ class ServerService extends management
 
   var $is_account;
 
+  /* Return plugin informations for acl handling */
+  static function plInfo()
+  {
+    return array(
+      "plShortName"   => _("Services"),
+      "plDescription" => _("Server services"),
+      "plSelfModify"  => FALSE,
+      "plCategory"    => array("server"),
+      "plObjectType"  => array("server"),
+      "plPrority"     => 5,
+
+      "plProvidedAcls"  => array()
+    );
+  }
+
   function __construct (&$config, $dn, $parent)
   {
     $this->config = $config;
@@ -59,6 +74,9 @@ class ServerService extends management
     if (isset($this->parent->attrs)) {
       $this->attrs = $this->parent->attrs;
     }
+
+    /* Initialize acl base */
+    $this->set_acl_base($this->dn);
 
     // Set storage points - We do not have any - We just create a fake list which lists all services
     $this->storagePoints = array("");
@@ -86,11 +104,6 @@ class ServerService extends management
         $this->plugin_names[] = $name;
         $this->plugins[$name] = new $name($config, $dn, $this);
 
-        /* Initialize kerberos key support */
-        if (isset($this->plugins[$name]->krb_service_prefix) && !empty($this->plugins[$name]->krb_service_prefix)) {
-          $this->plugins[$name]->krb_host_key = &$this->parent->kerberos_key_service;
-        }
-
         /* Capture all service objectClases, necessary for acl handling */
         if (isset($this->plugins[$name]->objectclasses)) {
           foreach ($this->plugins[$name]->objectclasses as $oc) {
@@ -102,14 +115,38 @@ class ServerService extends management
 
     parent::__construct($config, $this->ui, "services", $headpage);
     $this->registerAction("new",                "newService");
+    foreach ($this->plugins as $name => $obj) {
+      $this->registerAction("new_$name",        "newService");
+    }
     $this->registerAction("remove",             "removeService");
     $this->registerAction("newServiceSelected", "newServiceSelected");
     $this->registerAction("saveService",        "saveService");
     $this->registerAction("cancelService",      "cancelEdit");
     $this->registerAction("newServiceCancel",   "closeDialogs");
+    $this->registerAction("status",             "updateServiceStatus");
     $this->registerAction("restart",            "updateServiceStatus");
     $this->registerAction("stop",               "updateServiceStatus");
     $this->registerAction("start",              "updateServiceStatus");
+    $this->updateActionMenu();
+  }
+
+  function updateActionMenu()
+  {
+    $this->headpage->xmlData['actionmenu']['action'][0]['action'] = array();
+    $available_services = $this->getAllUnusedServices();
+    foreach ($available_services as $class => $label) {
+      $icon = 'images/lists/new.png';
+      $infos = pluglist::pluginInfos($class);
+      if (isset($infos['plIcon'])) {
+        $icon = $infos['plIcon'];
+      }
+      $this->headpage->xmlData['actionmenu']['action'][0]['action'][] = array(
+        'name' => 'new_'.$class,
+        'type' => 'entry',
+        'image' => $icon,
+        'label' => $label,
+      );
+    }
   }
 
 
@@ -139,9 +176,9 @@ class ServerService extends management
     $this->dialog = TRUE;
     $s_entry = array_pop($target);
     if ($this->plugins[$s_entry]->acl_is_readable("")) {
-      $this->backup   = get_object_vars($this->plugins[$s_entry]);
-      $this->dialogObject   = $this->plugins[$s_entry];
-      $this->current  = $s_entry;
+      $this->backup       = get_object_vars($this->plugins[$s_entry]);
+      $this->dialogObject = $this->plugins[$s_entry];
+      $this->current      = $s_entry;
     }
   }
 
@@ -169,26 +206,15 @@ class ServerService extends management
 
   /*! \brief  Let the user choose the new service to create.
    */
-  function newService()
-  {
-    $this->dialog = TRUE;
-    $this->dialogObject = new ServiceAddDialog($this->config, $this->dn, $this);
-  }
-
-
-  /*! \brief  Create the selected service.
-   */
-  function newServiceSelected()
+  function newService($action = "")
   {
     $this->closeDialogs();
-    $serv = $_POST['ServiceName'];
-
+    $serv = preg_replace('/^new_/', '', $action);
     $this->plugins[$serv]->is_account = TRUE;
     $this->dialogObject               = $this->plugins[$serv];
     $this->current                    = $serv;
     $this->dialog                     = TRUE;
   }
-
 
   /*! \brief  Save the currently edited service.
    */
@@ -208,6 +234,7 @@ class ServerService extends management
       }
       $this->closeDialogs();
       $this->backup = NULL;
+      $this->updateActionMenu();
     }
   }
 
@@ -230,7 +257,7 @@ class ServerService extends management
       $new_obj = new $s_entry($this->config,$this->dn, $this);
       $new_obj->set_acl_base($this->acl_base);
       $new_obj->set_acl_category(preg_replace("/\/$/", "", $this->acl_category));
-      $tmp     = $new_obj->getListEntry();
+      $tmp = $new_obj->getListEntry();
 
       /* Check if we are allowed to remove this service
        */
@@ -265,13 +292,10 @@ class ServerService extends management
     $img = "";
     if (isset($d['0'])) {
       switch ($d[0]) {
-        case 'Restart':
-          $img = ('images/status_restarting.png');
-          break;
-        case 'Stop':
+        case 'stopped':
           $img = ('images/lists/off.png');
           break;
-        case 'Start':
+        case 'running':
           $img = ('images/lists/on.png');
           break;
       }
@@ -340,21 +364,6 @@ class ServerService extends management
       return $this->getHeader().$display;
     }
 
-    // Set current restore base for snapshot handling.
-    if (is_object($this->snapHandler)) {
-      $bases = array();
-      foreach ($this->storagePoints as $sp) {
-        $bases[] = $sp.$this->headpage->getBase();
-      }
-
-      // No bases specified? Try base
-      if (!count($bases)) {
-        $bases[] = $this->headpage->getBase();
-      }
-
-      $this->snapHandler->setSnapshotBases($bases);
-    }
-
     // Display list
     session::set('ServerService', $this->plugins);
     return $this->renderList();
@@ -401,27 +410,33 @@ class ServerService extends management
     if ($this->plugins[$service]->is_account) {
       $this->updateServicesVars($service);
 
-      if (!class_available("supportDaemon")) {
+      $s_daemon = new supportDaemon();
+      if ($s_daemon->is_error()) {
         msg_dialog::display(
           sprintf(_("Could not get execute action %s on service %s."), $action, $service),
-          msgPool::siError("supportDaemon is not available"), ERROR_DIALOG
+          msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
         );
       } else {
-        $s_daemon = new supportDaemon();
-        if ($s_daemon->is_error()) {
-          msg_dialog::display(
-            sprintf(_("Could not get execute action %s on service %s."), $action, $service),
-            msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
-          );
+        $target = array($this->parent->getBaseObject()->netConfigDNS->macAddress);
+        if ($action == 'status') {
+          $res = $s_daemon->append_call("Service.is_running", $target, array("args" => array($service)));
+          if ($s_daemon->is_error()) {
+            msg_dialog::display(
+              sprintf(_("Could not get execute action %s on service %s."), $action, $service),
+              msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
+            );
+          } else {
+            $this->plugins[$service]->setStatus($res == "yes"?"running":"stopped");
+          }
         } else {
-          $res = $s_daemon->manage_service($this->parent->by_object['servgeneric']->netConfigDNS->macAddress, $service, $action);
+          $res = $s_daemon->append_call("Service.manage", $target, array("args" => array($service, $action)));
 
           if ($s_daemon->is_error()) {
             msg_dialog::display(
               sprintf(_("Could not get execute action %s on service %s."), $action, $service),
               msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
             );
-          } elseif ($res) {
+          } elseif (preg_match("/^done/", $res)) {
             $this->plugins[$service]->setStatus(self::$actionStatus[$action]);
           }
         }
@@ -456,34 +471,32 @@ class ServerService extends management
     $tmp = $this->getAllUsedServices();
     $pool_of_ocs = array();
     foreach ($tmp as $name => $value) {
+      $pool_of_ocs[] = get_class($this->plugins[$name]);
       if (isset($this->plugins[$name]->conflicts)) {
-        $pool_of_ocs[] = get_class($this->plugins[$name]);
+        $pool_of_ocs = array_merge($pool_of_ocs, $this->plugins[$name]->conflicts);
       }
     }
 
     $ret = array();
     foreach ($this->plugins as $name => $obj) {
+      if (!$obj->acl_is_createable()) {
+        continue;
+      }
 
       /* Skip all pluigns that will lead into conflicts */
-      $skip = FALSE;
+      $conflicts = array();
       if (isset($obj->conflicts)) {
-        foreach ($obj->conflicts as $oc) {
-          if (in_array_ics($oc, $pool_of_ocs)) {
-            $skip = TRUE;
-          }
-        }
+        $conflicts = $obj->conflicts;
+      }
+      $conflicts[] = get_class($obj);
+      if (count(array_uintersect($conflicts, $pool_of_ocs, "strcasecmp"))) {
+        continue;
       }
 
-      if (!$obj->acl_is_createable()) {
-        $skip = TRUE;
-      }
-
-      if (!$skip) {
-        if (isset($obj->DisplayName)) {
-          $ret[$name] = $obj->DisplayName;
-        } else {
-          $ret[$name] = $name;
-        }
+      if (isset($obj->DisplayName)) {
+        $ret[$name] = $obj->DisplayName;
+      } else {
+        $ret[$name] = $name;
       }
     }
     return $ret;
@@ -530,28 +543,37 @@ class ServerService extends management
    */
   function save()
   {
-    $caseVars = array("cn","dn");
     foreach ($this->plugins as $name => $obj) {
       $this->updateServicesVars($name);
 
       if ($this->plugins[$name]->is_account) {
         $this->plugins[$name]->save();
-      } else {
-        if ($this->plugins[$name]->initially_was_account) {
-          $this->plugins[$name]->remove_from_parent();
-        }
+      } elseif ($this->plugins[$name]->initially_was_account) {
+        $this->plugins[$name]->remove_from_parent();
       }
     }
+  }
+
+  /*! \brief    Prepare active services to be copied.
+   */
+  function resetCopyInfos()
+  {
+    $this->dn = 'new';
+    foreach ($this->plugins as &$plugin) {
+      $plugin->resetCopyInfos();
+    }
+    unset($plugin);
   }
 
 
   /*! \brief    Prepare active services to be copied.
    */
-  function PrepareForCopyPaste($source)
+  function postCopyHook()
   {
-    foreach ($this->plugins as $name => $plugin) {
-      $this->plugins[$name]->PrepareForCopyPaste($source);
+    foreach ($this->plugins as &$plugin) {
+      $plugin->postCopyHook();
     }
+    unset($plugin);
   }
 
 
@@ -589,16 +611,5 @@ class ServerService extends management
       $this->plugins[$name]->set_acl_category($category);
     }
   }
-
-  function saveCopyDialog()
-  {
-  }
-
-
-  function getCopyDialog()
-  {
-    return array("string" => "", "status" => "");
-  }
-
 }
 ?>

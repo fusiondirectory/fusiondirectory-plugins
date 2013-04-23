@@ -1,0 +1,839 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: FusionDirectory\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
+"POT-Creation-Date: 2013-03-24 15:13+0100\n"
+"PO-Revision-Date: 2013-03-24 15:01+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: Polish (http://www.transifex.com/projects/p/FusionDirectory/language/pl/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: admin/supannStructures/class_etablissement.inc:31
+#: admin/supannStructures/supannStructures-list.xml:16
+#: admin/supannStructures/supannStructures-list.xml:94
+#: personal/supann/class_supannAccount.inc:316
+#: personal/supann/class_supannAccount.inc:355
+msgid "Etablissement"
+msgstr ""
+
+#: admin/supannStructures/class_etablissement.inc:32
+msgid "SUPANN Etablissement Settings"
+msgstr ""
+
+#: admin/supannStructures/class_etablissement.inc:35
+msgid "SUPANN Etablissement"
+msgstr ""
+
+#: admin/supannStructures/class_etablissement.inc:47
+#: admin/supannStructures/etablissement.tpl:4
+msgid "Properties"
+msgstr "Właściwości"
+
+#: admin/supannStructures/class_etablissement.inc:50
+msgid "Root etablissement"
+msgstr ""
+
+#: admin/supannStructures/class_etablissement.inc:50
+msgid "Set this etablissement as the root one"
+msgstr ""
+
+#: admin/supannStructures/class_etablissement.inc:54
+#: admin/supannStructures/class_entite.inc:98
+#: admin/supannStructures/supannStructures-filter.tpl:15
+msgid "Name"
+msgstr "Imię"
+
+#: admin/supannStructures/class_etablissement.inc:54
+msgid "The name to write in the o attribute for this etablissement"
+msgstr ""
+
+#: admin/supannStructures/class_etablissement.inc:58
+#: admin/supannStructures/etablissement.tpl:34
+#: admin/supannStructures/class_entite.inc:119
+#: admin/supannStructures/supannStructures-list.xml:68
+#: admin/supannStructures/entite.tpl:42
+msgid "Description"
+msgstr "Opis"
+
+#: admin/supannStructures/class_etablissement.inc:58
+msgid "A short description of this etablissement"
+msgstr ""
+
+#: admin/supannStructures/class_etablissement.inc:64
+#: admin/supannStructures/class_etablissement.inc:67
+#: admin/supannStructures/etablissement.tpl:96
+#: admin/supannStructures/etablissement.tpl:100
+msgid "Location"
+msgstr "Lokalizacja"
+
+#: admin/supannStructures/class_etablissement.inc:67
+msgid "Usually the city in which is this etablissement"
+msgstr ""
+
+#: admin/supannStructures/class_etablissement.inc:71
+#: admin/supannStructures/etablissement.tpl:108
+msgid "Address"
+msgstr "Adres"
+
+#: admin/supannStructures/class_etablissement.inc:71
+msgid "The postal address of this etablissement"
+msgstr ""
+
+#: admin/supannStructures/class_etablissement.inc:75
+#: admin/supannStructures/class_entite.inc:107
+#: admin/supannStructures/entite.tpl:17
+msgid "Telephone"
+msgstr "Telefon"
+
+#: admin/supannStructures/class_etablissement.inc:75
+msgid "Phone number for this etablissement"
+msgstr ""
+
+#: admin/supannStructures/class_etablissement.inc:79
+#: admin/supannStructures/etablissement.tpl:123
+#: admin/supannStructures/class_entite.inc:111
+#: admin/supannStructures/entite.tpl:28
+msgid "Fax"
+msgstr "Fax"
+
+#: admin/supannStructures/class_etablissement.inc:79
+msgid "Fax number for this etablissement"
+msgstr ""
+
+#: admin/supannStructures/class_etablissement.inc:85
+msgid "SUPANN properties"
+msgstr ""
+
+#: admin/supannStructures/class_etablissement.inc:88
+msgid "Etablissement code"
+msgstr ""
+
+#: admin/supannStructures/class_etablissement.inc:88
+msgid "The code of this etablissement"
+msgstr ""
+
+#: admin/supannStructures/class_etablissement.inc:92
+msgid "SUPANN code"
+msgstr ""
+
+#: admin/supannStructures/class_etablissement.inc:92
+msgid "The SUPANN code for this etablissement"
+msgstr ""
+
+#: admin/supannStructures/class_etablissement.inc:97
+msgid "Legal name"
+msgstr ""
+
+#: admin/supannStructures/class_etablissement.inc:97
+msgid "The legal name of this etablissement"
+msgstr ""
+
+#: admin/supannStructures/class_etablissement.inc:101
+msgid "Home page URI"
+msgstr ""
+
+#: admin/supannStructures/class_etablissement.inc:101
+msgid "The URI of this etablissement website home page"
+msgstr ""
+
+#: admin/supannStructures/class_etablissement.inc:105
+msgid "Institution URI"
+msgstr ""
+
+#: admin/supannStructures/class_etablissement.inc:105
+msgid "The URI of this etablissement institution website"
+msgstr ""
+
+#: admin/supannStructures/class_etablissement.inc:109
+msgid "White pages URI"
+msgstr ""
+
+#: admin/supannStructures/class_etablissement.inc:109
+msgid "The URI of this etablissement white pages"
+msgstr ""
+
+#: admin/supannStructures/class_etablissement.inc:142
+#: admin/supannStructures/class_etablissement.inc:184
+#: admin/supannStructures/class_etablissement.inc:202
+msgid "LDAP error"
+msgstr "błąd LDAP"
+
+#: admin/supannStructures/remove.tpl:2
+msgid "Warning"
+msgstr "Ostrzeżenie"
+
+#: admin/supannStructures/remove.tpl:6
+msgid ""
+"This may be a primary user group. Please double check if you really want to "
+"do this since there is no way for FusionDirectory to get your data back."
+msgstr ""
+
+#: admin/supannStructures/remove.tpl:10
+msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
+msgstr "Jeśli jesteś pewien - naciśnij 'Usuń' aby kontynuować lub 'Anuluj' aby anulować."
+
+#: admin/supannStructures/class_supannStructuresManagement.inc:33
+msgid "Supann structures"
+msgstr ""
+
+#: admin/supannStructures/class_supannStructuresManagement.inc:34
+msgid "Supann structures management"
+msgstr ""
+
+#: admin/supannStructures/class_supannStructuresManagement.inc:187
+msgid "etablissement"
+msgstr ""
+
+#: admin/supannStructures/class_supannStructuresManagement.inc:197
+msgid "entite"
+msgstr ""
+
+#: admin/supannStructures/etablissement.tpl:9
+msgid "Set this etablissement as root one"
+msgstr ""
+
+#: admin/supannStructures/etablissement.tpl:18
+msgid "This etablissement is the root one"
+msgstr ""
+
+#: admin/supannStructures/etablissement.tpl:22
+msgid "Name of etablissement"
+msgstr ""
+
+#: admin/supannStructures/etablissement.tpl:42
+msgid "eduOrgHomePageURI"
+msgstr ""
+
+#: admin/supannStructures/etablissement.tpl:50
+msgid "eduOrgLegalName"
+msgstr ""
+
+#: admin/supannStructures/etablissement.tpl:58
+msgid "eduOrgWhitePagesURI"
+msgstr ""
+
+#: admin/supannStructures/etablissement.tpl:66
+msgid "eduOrgSuperiorURI"
+msgstr ""
+
+#: admin/supannStructures/etablissement.tpl:74
+#: personal/supann/class_supannAccount.inc:316 personal/supann/supann.tpl:223
+#: personal/supann/supann.tpl:443
+msgid "supannEtablissement"
+msgstr ""
+
+#: admin/supannStructures/etablissement.tpl:82
+#: admin/supannStructures/supannStructures-list.xml:51
+msgid "supannCodeEntite"
+msgstr ""
+
+#: admin/supannStructures/etablissement.tpl:103
+msgid "Location of this subtree"
+msgstr "Lokalizacja tego poddrzewa"
+
+#: admin/supannStructures/etablissement.tpl:111
+msgid "Postal address of this subtree"
+msgstr "Kod pocztowy tego poddrzewa"
+
+#: admin/supannStructures/etablissement.tpl:115
+msgid "Phone"
+msgstr "Telefon"
+
+#: admin/supannStructures/etablissement.tpl:118
+msgid "Base telephone number of this subtree"
+msgstr "Bazowy numer telefonu tego poddrzewa"
+
+#: admin/supannStructures/etablissement.tpl:126
+msgid "Base facsimile telephone number of this subtree"
+msgstr "Bazowy numer faxu tego poddrzewa"
+
+#: admin/supannStructures/class_entite.inc:79
+#: admin/supannStructures/class_entite.inc:95
+#: admin/supannStructures/supannStructures-list.xml:24
+#: admin/supannStructures/supannStructures-list.xml:101
+#: admin/supannStructures/entite.tpl:4
+#: personal/supann/class_supannAccount.inc:443
+msgid "Entite"
+msgstr ""
+
+#: admin/supannStructures/class_entite.inc:80
+msgid "SUPANN Entite Settings"
+msgstr ""
+
+#: admin/supannStructures/class_entite.inc:83
+msgid "SUPANN Entite"
+msgstr ""
+
+#: admin/supannStructures/class_entite.inc:98
+msgid "The name to write in the ou attribute for this entite"
+msgstr ""
+
+#: admin/supannStructures/class_entite.inc:104
+msgid "Administrative informations"
+msgstr ""
+
+#: admin/supannStructures/class_entite.inc:107
+msgid "Phone number for this entite"
+msgstr ""
+
+#: admin/supannStructures/class_entite.inc:111
+msgid "Fax number for this entite"
+msgstr ""
+
+#: admin/supannStructures/class_entite.inc:115
+msgid "Postal address"
+msgstr "Adres pocztowy"
+
+#: admin/supannStructures/class_entite.inc:115
+msgid "Postal address of this entite"
+msgstr ""
+
+#: admin/supannStructures/class_entite.inc:119
+msgid "Short description of this entite"
+msgstr ""
+
+#: admin/supannStructures/class_entite.inc:125
+msgid "SUPANN informations"
+msgstr ""
+
+#: admin/supannStructures/class_entite.inc:128
+#: personal/supann/class_supannAccount.inc:439
+msgid "Entite type"
+msgstr ""
+
+#: admin/supannStructures/class_entite.inc:128
+msgid "The best SUPANN type that fits this entite"
+msgstr ""
+
+#: admin/supannStructures/class_entite.inc:132
+msgid "Entite code"
+msgstr ""
+
+#: admin/supannStructures/class_entite.inc:132
+msgid "The SUPANN code of this entite"
+msgstr ""
+
+#: admin/supannStructures/class_entite.inc:137
+msgid "Parent entite"
+msgstr ""
+
+#: admin/supannStructures/class_entite.inc:137
+msgid "The parent entite of this entite"
+msgstr ""
+
+#: admin/supannStructures/class_entite.inc:141
+msgid "Reference ID"
+msgstr ""
+
+#: admin/supannStructures/class_entite.inc:141
+msgid "SUPANN reference ID of this entite"
+msgstr ""
+
+#: admin/supannStructures/supannStructures-list.xml:11
+msgid "List of Supann Structures"
+msgstr ""
+
+#: admin/supannStructures/supannStructures-list.xml:40
+msgid "Structure"
+msgstr ""
+
+#: admin/supannStructures/supannStructures-list.xml:60
+msgid "supannCodeEntiteParent"
+msgstr ""
+
+#: admin/supannStructures/supannStructures-list.xml:78
+msgid "Actions"
+msgstr "Akcje"
+
+#: admin/supannStructures/supannStructures-list.xml:89
+msgid "Create"
+msgstr "Utwórz"
+
+#: admin/supannStructures/supannStructures-list.xml:123
+#: admin/supannStructures/supannStructures-list.xml:144
+msgid "Remove"
+msgstr "Usuń"
+
+#: admin/supannStructures/supannStructures-list.xml:135
+msgid "Edit"
+msgstr "Edytuj"
+
+#: admin/supannStructures/entite.tpl:7
+msgid "OU name"
+msgstr ""
+
+#: admin/supannStructures/entite.tpl:13
+msgid "Administrative Information"
+msgstr ""
+
+#: admin/supannStructures/entite.tpl:14
+msgid "Supann Informations"
+msgstr ""
+
+#: admin/supannStructures/entite.tpl:19
+msgid "Type entite Supann"
+msgstr ""
+
+#: admin/supannStructures/entite.tpl:30
+msgid "Supann entity code"
+msgstr ""
+
+#: admin/supannStructures/entite.tpl:34
+msgid "Postal Address"
+msgstr ""
+
+#: admin/supannStructures/entite.tpl:36
+msgid "Supann parent entity code"
+msgstr ""
+
+#: admin/supannStructures/entite.tpl:44
+msgid "Supann Reference ID"
+msgstr ""
+
+#: admin/supannStructures/supannStructures-filter.tpl:3
+msgid "Filter"
+msgstr "Filtr"
+
+#: config/supann/class_supannConfig.inc:28
+msgid "SUPANN configuration"
+msgstr ""
+
+#: config/supann/class_supannConfig.inc:29
+msgid "FusionDirectory SUPANN plugin configuration"
+msgstr ""
+
+#: config/supann/class_supannConfig.inc:42
+msgid "LDAP tree"
+msgstr ""
+
+#: config/supann/class_supannConfig.inc:45
+msgid "SUPANN RDN"
+msgstr ""
+
+#: config/supann/class_supannConfig.inc:45
+msgid "Branch in which SUPANN structures will be stored"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:35
+#: personal/supann/class_supannAccount.inc:109
+msgid "None"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:106
+msgid "Licence"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:106
+msgid "Master"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:106
+msgid "Ph.D."
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:106
+msgid "Another class of degree"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:106
+msgid "post-graduate year"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:109
+msgid "1st year"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:109
+msgid "2nd year"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:109
+msgid "3rd year"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:110
+msgid "4th year"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:110
+msgid "5th year"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:110
+msgid "6th year"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:111
+msgid "7th year"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:111
+msgid "8th year"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:111
+msgid "9th year"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:214
+msgid "SupAnn"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:215
+msgid "SupAnn informations management plugin"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:232 personal/supann/supann.tpl:24
+msgid "Identity"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:235
+msgid "Civilite"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:235
+msgid "supannCivilite - Civilte for this person"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:240
+msgid "Alias login"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:240
+msgid "supannAliasLogin - An alias for the login of this user"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:244 personal/supann/supann.tpl:42
+msgid "eduPersonPrincipalName"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:244
+msgid ""
+"eduPersonPrincipalName - A name that look like <id>@<domain> which is unique"
+" for this domain, and has not be assigned to anyone else recently"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:248
+msgid "Nick name"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:248
+msgid "eduPersonNickName - Can contain a nick name for this user"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:254 personal/supann/supann.tpl:68
+msgid "Contact"
+msgstr "Kontakt"
+
+#: personal/supann/class_supannAccount.inc:258
+msgid "Other phone numbers"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:258
+msgid "supannAutreTelephone - Other phone numbers for this user"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:264
+msgid "Other mail addresses"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:264
+msgid ""
+"supannAutreMail - Other mail addresses for this user. Each must be unique"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:270
+msgid "Personal mail addresses"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:270
+msgid "supannMailPerso - Personal mail addresses for this user"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:275
+msgid "Liste rouge"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:275
+msgid "supannListeRouge - Should this person be on the red list"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:281 personal/supann/supann.tpl:148
+#: personal/supann/supann.tpl:153
+msgid "Affectation"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:284
+msgid "Entite affectation principale"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:284 personal/supann/supann.tpl:165
+msgid "supannEntiteAffectationPrincipale"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:289
+#: personal/supann/class_supannAccount.inc:380
+msgid "Entite affectation"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:289
+#: personal/supann/class_supannAccount.inc:443 personal/supann/supann.tpl:183
+#: personal/supann/supann.tpl:532
+msgid "supannEntiteAffectation"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:295
+msgid "Type entite affectation"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:295
+#: personal/supann/class_supannAccount.inc:439 personal/supann/supann.tpl:220
+msgid "supannTypeEntiteAffectation"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:302 personal/supann/supann.tpl:148
+#: personal/supann/supann.tpl:160
+msgid "Affiliation"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:305
+msgid "Primary affiliation"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:305 personal/supann/supann.tpl:173
+msgid "eduPersonPrimaryAffiliation"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:310
+msgid "Affiliations"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:310 personal/supann/supann.tpl:186
+msgid "eduPersonAffiliation"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:323
+msgid "Student profile"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:326
+msgid "INE code"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:326
+msgid "supannCodeINE - INE code of this student"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:330
+msgid "Student ID"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:330
+msgid "supannEtuId - scolarity id"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:336
+msgid "Student subscriptions"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:351
+msgid "supannEtuInscription - Subscriptions for this student"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:355
+msgid ""
+"supannEtablissement - Etablissement in which this subscription was done"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:359
+msgid "Year"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:359
+msgid "supannEtuAnneeInscription - The year this subscription will begin"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:364
+msgid "Subscription type"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:364
+msgid "supannEtuRegimeInscription - The type of this subscription"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:368
+msgid "Secteur Disciplinaire"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:368 personal/supann/supann.tpl:483
+msgid "supannEtuSecteurDisciplinaire"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:372
+msgid "Diploma type"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:372
+msgid "supannEtuTypeDiplome - Type of diploma"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:376
+msgid "Cursus annee"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:376 personal/supann/supann.tpl:519
+msgid "supannEtuCursusAnnee"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:380
+msgid "supannEntiteAffectation_affect"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:384
+msgid "Diploma"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:384 personal/supann/supann.tpl:505
+msgid "supannEtuDiplome"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:388
+msgid "Step"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:388 personal/supann/supann.tpl:543
+msgid "supannEtuEtape"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:392
+msgid "educational element"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:392 personal/supann/supann.tpl:556
+msgid "supannEtuElementPedagogique"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:404
+msgid "Personnal profile"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:407
+msgid "Personal ID"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:407 personal/supann/supann.tpl:275
+msgid "supannEmpId"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:411
+msgid "Personal corps"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:411 personal/supann/supann.tpl:314
+msgid "supannEmpCorps"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:416
+msgid "Activite"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:416 personal/supann/supann.tpl:283
+msgid "supannActivite"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:423
+msgid "Roles"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:431 personal/supann/supann.tpl:348
+msgid "supannRoleEntite"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:435
+msgid "Generic role"
+msgstr ""
+
+#: personal/supann/class_supannAccount.inc:435 personal/supann/supann.tpl:317
+msgid "supannRoleGenerique"
+msgstr ""
+
+#: personal/supann/supann.tpl:6
+msgid "Common Profil"
+msgstr ""
+
+#: personal/supann/supann.tpl:12
+msgid "Additional Profil"
+msgstr ""
+
+#: personal/supann/supann.tpl:29
+msgid "supannCivilite"
+msgstr ""
+
+#: personal/supann/supann.tpl:50
+msgid "supannAliasLogin"
+msgstr ""
+
+#: personal/supann/supann.tpl:59
+msgid "eduPersonNickName"
+msgstr ""
+
+#: personal/supann/supann.tpl:73
+msgid "supannAutreMail"
+msgstr ""
+
+#: personal/supann/supann.tpl:81
+msgid "supannMailPerso"
+msgstr ""
+
+#: personal/supann/supann.tpl:112
+msgid "supannAutreTelephone"
+msgstr ""
+
+#: personal/supann/supann.tpl:115
+msgid "supannListeRouge"
+msgstr ""
+
+#: personal/supann/supann.tpl:270
+msgid "Personal Profil"
+msgstr ""
+
+#: personal/supann/supann.tpl:385
+msgid "Student Profil"
+msgstr ""
+
+#: personal/supann/supann.tpl:390
+msgid "supannCodeINE"
+msgstr ""
+
+#: personal/supann/supann.tpl:397
+msgid "supannEtuId"
+msgstr ""
+
+#: personal/supann/supann.tpl:428
+msgid "Student subscription"
+msgstr ""
+
+#: personal/supann/supann.tpl:433
+msgid "supannEtuInscription"
+msgstr ""
+
+#: personal/supann/supann.tpl:455
+msgid "supannEtuTypeDiplome"
+msgstr ""
+
+#: personal/supann/supann.tpl:470
+msgid "supannEtuRegimeInscription"
+msgstr ""
+
+#: personal/supann/supann.tpl:497
+msgid "supannEtuAnneeInscription"
+msgstr ""

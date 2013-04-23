@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011  FusionDirectory
+  Copyright (C) 2011-2013  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -42,7 +42,7 @@ class faiTemplateEntry extends plugin
   var $binary        = false;
   var $parent        = NULL;
   var $FAIstate      = "";
-  
+
   function faiTemplateEntry (&$config, $dn= NULL,$object=false)
   {
     plugin::plugin ($config, $dn);
@@ -72,7 +72,7 @@ class faiTemplateEntry extends plugin
       session::set('binary',$ldap->get_attribute($this->dn,"FAItemplateFile"));
       $this->FAItemplateFile  = session::get('binary');
     }
-    
+
     $this->FAImode= sprintf("%0.4s", $this->FAImode)." ";
   }
 
@@ -102,7 +102,7 @@ class faiTemplateEntry extends plugin
         session::set('binaryfile',basename($this->FAItemplatePath));
       }
     }
-   
+
     /* File download requested */
     if(isset($_GET['getFAItemplate'])){
       send_binary_content($this->FAItemplateFile,$this->cn.".FAItemplate");
@@ -137,10 +137,10 @@ class faiTemplateEntry extends plugin
     }
 
     $status= _("no file uploaded yet");
-    $bStatus = false; // Hide download icon on default 
+    $bStatus = false; // Hide download icon on default
     if(strlen($this->FAItemplateFile)){
       $status= sprintf(_("exists in database (size: %s bytes)"),strlen($this->FAItemplateFile));
-      $bStatus = true;  // Display download icon 
+      $bStatus = true;  // Display download icon
     }
 
     $smarty->assign("status",$status);
@@ -185,13 +185,13 @@ class faiTemplateEntry extends plugin
     /* Check if form is posted and we are not freezed */
     if((isset($_POST['SubObjectFormSubmitted'])) && !preg_match("/freeze/", $this->FAIstate)){
 
-      /* Remember destination current path 
+      /* Remember destination current path
           depending on the ACLs we will assemble a new one later.
        */
       $cur_path = $this->FAItemplatePath;
       plugin::save_object();
 
-      /* Set user.group (FAIowner) attribute */  
+      /* Set user.group (FAIowner) attribute */
       if(isset($_POST['group']) && isset($_POST["user"]) && $this->acl_is_writeable("FAIowner")){
         $this->FAIowner = $_POST["user"].'.'.$_POST["group"];
         $this->user = $_POST['user'];
@@ -217,16 +217,16 @@ class faiTemplateEntry extends plugin
         $this->FAImode= $tmode;
       }
 
-      /* Check if we are allowed to change the destination directory 
+      /* Check if we are allowed to change the destination directory
        */
       if($this->acl_is_writeable("FAItemplatePath")){
         $cur_path = get_post('templatePath').'/'.basename($cur_path);
       }
 
-      /* Check if we are allowed to change the destination directory 
+      /* Check if we are allowed to change the destination directory
        */
       if($this->acl_is_writeable("cn")){
-        $cur_path = preg_replace("/[^\/]*$/","",$cur_path).get_post('templateFile');
+        $cur_path = preg_replace("/[^\/]*$/","",$cur_path).trim(get_post('templateFile'));
       }
       $cur_path= str_replace("//","/",$cur_path);
       if(trim($cur_path,"/") == ""){
@@ -249,13 +249,13 @@ class faiTemplateEntry extends plugin
 
     if(empty($this->FAItemplateFile)){
       $message[]= msgPool::required(_("File"));
-    } 
+    }
 
     if(!preg_match('/^\//', $this->FAItemplatePath)){
       $message[]= msgPool::invalid(_("Destination path"),"","","/path");
-    } 
- 
-    $b = trim(basename($this->FAItemplatePath)); 
+    }
+
+    $b = trim(basename($this->FAItemplatePath));
     if($b == ""){
       $message[] = msgPool::required(_("File name"));
     }
@@ -278,11 +278,11 @@ class faiTemplateEntry extends plugin
 
     return ($message);
   }
- 
+
   function save()
   {
     $tmp=array();
-    foreach($this->attributes as $attrs){ 
+    foreach($this->attributes as $attrs){
       $tmp[$attrs] = $this->$attrs;
     }
 
@@ -290,14 +290,14 @@ class faiTemplateEntry extends plugin
       $tmp['remove']['from']  = $this->orig_cn;
       $tmp['remove']['to']    = $tmp['cn'];
     }
-  
-    $tmp['dn']      = $this->dn;  
-    $tmp['status']  = $this->status;  
+
+    $tmp['dn']      = $this->dn;
+    $tmp['status']  = $this->status;
 
     return($tmp);
   }
 
-  
+
   /* Return plugin informations for acl handling */
   static function plInfo()
   {
@@ -305,9 +305,7 @@ class faiTemplateEntry extends plugin
           "plShortName" => _("Template entry"),
           "plDescription" => _("FAI template entry"),
           "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
           "plPriority"    => 25,
-          "plSection"     => array("administration"),
           "plCategory"    => array("fai"),
           "plProvidedAcls" => array(
             "cn"                => _("Name"),

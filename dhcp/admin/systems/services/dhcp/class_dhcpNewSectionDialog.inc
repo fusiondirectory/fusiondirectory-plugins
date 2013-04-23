@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011  FusionDirectory
+  Copyright (C) 2011-2013  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -68,7 +68,7 @@ class dhcpNewSectionDialog extends plugin
     $sections= $this->sectionMap[$this->classtype];
     $t_sections= array();
     foreach ($sections as $section){
-      $t_sections[$section]= $this->types[$section]; 
+      $t_sections[$section]= $this->types[$section];
     }
     asort($t_sections);
     $ui = get_userinfo();
@@ -77,8 +77,8 @@ class dhcpNewSectionDialog extends plugin
     return($display);
   }
 
-  /* Get posts and set class name 
-   */ 
+  /* Get posts and set class name
+   */
   function save_object()
   {
   }
@@ -88,7 +88,7 @@ class dhcpNewSectionDialog extends plugin
   {
     /* Call common method to give check the hook */
     $message= "";
- 
+
     return ($message);
   }
 

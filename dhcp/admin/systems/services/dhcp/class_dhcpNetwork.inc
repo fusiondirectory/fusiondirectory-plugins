@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011  FusionDirectory
+  Copyright (C) 2011-2013  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -66,7 +66,7 @@ class dhcpNetwork extends plugin
     }
 
     if ($acl_writeable && isset($_POST['delete_dns']) && isset($_POST['dnsserver'])){
-      $tmp= preg_replace("/(\s*,\s*)?".get_post('dnsserver')."/i", '', 
+      $tmp= preg_replace("/(\s*,\s*)?".get_post('dnsserver')."/i", '',
         $this->options->get('domain-name-servers'));
       $tmp= trim(preg_replace("/(\s*)?,(\s*)?$/", '', $tmp),",");
 
@@ -163,7 +163,7 @@ class dhcpNetwork extends plugin
         if ($_POST["$val"] == ''){
           $this->statements->removeAll($key);
         } else {
-    
+
           /* Only quote filename values */
           if(in_array($key,array("filename"))){
             $this->statements->set($key,'"'.trim(get_post($val),"\"").'"');
@@ -210,7 +210,7 @@ class dhcpNetwork extends plugin
   function save()
   {
   }
-  
+
 }
 // vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

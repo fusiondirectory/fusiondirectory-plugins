@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011  FusionDirectory
+  Copyright (C) 2011-2013  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,7 +20,8 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class mailMethod{
+class mailMethod
+{
 
   /* Allow modification of account_ids for existing mail accounts */
   protected $modifyableMail   = TRUE;
@@ -29,21 +30,21 @@ class mailMethod{
   protected $modifyableServer = TRUE;
 
   /* Enforces same value for 'mail' as used for 'cn' */
-  protected $mailEqualsCN   = FALSE; 
+  protected $mailEqualsCN   = FALSE;
 
-  /* the attribute used to create accounts */ 
+  /* the attribute used to create accounts */
   protected $uattrib        = "mail";  // Naming attribute for accounts, e.g. imap.
 
   /* The account prefixes, keep the '.' here! See FAQ cyrusUseSlashes */
-  protected $user_prefix    = "user.";  
+  protected $user_prefix    = "user.";
   protected $share_prefix   = "share.";
 
-  /* Account ID creation 
+  /* Account ID creation
 
       !!Depends on the attributes 'user_prefix'/'share_prefix' and the option 'cyrusUseSlashes'
 
-      Examples - based on defaults : 
-        %PREFIX%    => "user." or "user/"           (Depending on cyrusUseSlashes=FALSE/TRUE) 
+      Examples - based on defaults :
+        %PREFIX%    => "user." or "user/"           (Depending on cyrusUseSlashes=FALSE/TRUE)
         %CN%        => "technical"                  (The groups cn)
         %UID%       => "john"                       (The users uid)
         %MAIL%      => "john@fusiondirectory.org"   (The mail address)
@@ -52,27 +53,27 @@ class mailMethod{
         %UATTRIB%   => "john"/"john@fusiondirectory.org"
                                             (Configured in fusiondirectory.conf mailAttribute="mail"/"uid")
    */
-  protected $user_id    = "%PREFIX%%UATTRIB%";  
+  protected $user_id    = "%PREFIX%%UATTRIB%";
   protected $share_id   = "%PREFIX%%UATTRIB%";
 
   /* Create accounts in cyrus style with '/' instead of '.' */
   protected $cyrusUseSlashes= FALSE;
 
-  /* gosaSharedFolderTarget settings, 
-   *  E.g. 
-   *    For an accountID like: 'share/john.folder@fusiondirectory.org' the value 'dummy+' 
+  /* gosaSharedFolderTarget settings,
+   *  E.g.
+   *    For an accountID like: 'share/john.folder@fusiondirectory.org' the value 'dummy+'
    *    will result in gosaSharedFolderTarget: dummy+share/john.folder@fusiondirectory.org
    */
-  protected $gosaSharedPrefix = '';  
+  protected $mailSharedPrefix = '';
 
   /* The atribute mapping for this class  Source --> Destination */
   protected $attributes     = array();
   protected $userObjectClasses = array();
   protected $shareObjectClasses = array();
 
-  /* Enabled mail domain selection. If enabled getMailDomains() have to return an array 
+  /* Enabled mail domain selection. If enabled getMailDomains() have to return an array
    *  with the domain parts.
-   */ 
+   */
   protected $enableDomainSelection= FALSE;
   protected $enableQuota          = TRUE;
   protected $enableSieveManager   = FALSE;
@@ -80,17 +81,16 @@ class mailMethod{
   protected $enableFolderTypes    = FALSE;
 
   /* Default values */
-  protected $quotaValue   = 0;  
-  protected $quotaUsage   = 0;  
+  protected $quotaValue   = 0;
+  protected $quotaUsage   = 0;
 
   /* Method internal */
-  protected $type               = "user"; 
+  protected $type               = "user";
   protected $account_id         = "";
   protected $initial_account_id = "";
   protected $connected          = FALSE;
   protected $error              = "";
-  protected $parent             = NULL;   
-  protected $MailServer         = "";
+  protected $parent             = NULL;
 
   protected $default_acls = array("__anyone__" => "p", "__member__" => "lrswp");
 
@@ -107,7 +107,7 @@ class mailMethod{
   protected $acl_mapping = array();
 
 
-  /*! \brief  Constructs the mail class 
+  /*! \brief  Constructs the mail class
       @param  Object  Config  The FusionDirectory configuration object
       @param  Object  Plugin  The initator
       @param  String          Open "user" or "group" account.
@@ -117,11 +117,7 @@ class mailMethod{
     $this->parent = $parent;
     $this->config = $config;
 
-    /* Create a refernce to the mail selected server 
-     */
-    if(isset($this->parent->gosaMailServer)){
-      $this->MailServer = &$this->parent->gosaMailServer;
-    }else{
+    if(!isset($this->parent->gosaMailServer)){
       trigger_error("mailMethod with invalid parent object initialized.");
     }
 
@@ -133,14 +129,14 @@ class mailMethod{
 
   }
 
-  
+
   /*! \brief  Intialize attributes and config settings.
    */
   protected function init()
   {
     /* Get config value for cyrusUseSlashes
      */
-    if ($this->config->get_cfg_value("cyrusUseSlashes") == "true"){
+    if ($this->config->get_cfg_value("cyrusUseSlashes") == "TRUE"){
       $this->cyrusUseSlashes = TRUE;
       @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "","<b>MAIL:</b> cyrusUseSlashes: <b>Enabled</b>");
     }else{
@@ -157,7 +153,7 @@ class mailMethod{
       }else{
         @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>".$new_uattrib."</b>",
           "<b>MAIL:</b> Unsupported 'mailAttribute' in FusionDirectory configuration specified");
-        msg_dialog::display(_("Configuration error"), 
+        msg_dialog::display(_("Configuration error"),
             sprintf(_("The configured mail attribute '%s' is unsupported!"), $new_uattrib), ERROR_DIALOG);
       }
     }
@@ -167,7 +163,7 @@ class mailMethod{
       $this->acl_mapping[$acl] = _($name);
     }
 
-    /* Check if we have an individual user/folder creation syntax 
+    /* Check if we have an individual user/folder creation syntax
      */
     $tmp = $this->config->get_cfg_value("mailUserCreation");
     if(!empty($tmp)){
@@ -181,18 +177,18 @@ class mailMethod{
           "<b>MAIL:</b> Shared folder creation set to");
       $this->share_id = $tmp;
     }
-    $tmp = $this->config->get_cfg_value("gosaSharedPrefix");
+    $tmp = $this->config->get_cfg_value("mailSharedPrefix");
     if(!empty($tmp)){
       @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<i>".$tmp."</i>",
           "<b>MAIL:</b> Shared folder prefix set to");
-      $this->gosaSharedPrefix = $tmp;
+      $this->mailSharedPrefix = $tmp;
     }
 
     $this->build_account_id();
     $this->initial_account_id = $this->account_id;
   }
 
-  
+
   public function fixAttributesOnLoad()
   {
     foreach($this->attributes as $source => $dest){
@@ -213,17 +209,17 @@ class mailMethod{
   {
     return($this->mailEqualsCN);
   }
-  
+
 
   public function fixAttributesOnRemove()
   {
-    /* Remove objectClasses  
-     */ 
+    /* Remove objectClasses
+     */
     if($this->type == "user"){
-      $this->parent->attrs['objectClass'] = 
+      $this->parent->attrs['objectClass'] =
         array_remove_entries_ics($this->userObjectClasses, $this->parent->attrs['objectClass']);
     }else{
-      $this->parent->attrs['objectClass'] = 
+      $this->parent->attrs['objectClass'] =
         array_remove_entries_ics($this->shareObjectClasses, $this->parent->attrs['objectClass']);
       $this->parent->attrs['gosaSharedFolderTarget'] =array();
     }
@@ -254,12 +250,12 @@ class mailMethod{
         $this->parent->attrs['objectClass'][] = $oc;
       }
     }
-  
+
     // Add gosaSharedFolderTarget for groups.
     $this->build_account_id();
-    if($this->type == "group"){ 
-      $this->parent->attrs['gosaSharedFolderTarget'] = 
-        $this->gosaSharedPrefix.$this->account_id;
+    if($this->type == "group"){
+      $this->parent->attrs['gosaSharedFolderTarget'] =
+        $this->mailSharedPrefix.$this->account_id;
     }
   }
 
@@ -272,8 +268,8 @@ class mailMethod{
   {
     $this->reset_error();
     @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,"","<b>MAIL: Connect method</b>: ".get_class($this));
-    @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,"","<b>MAIL: Current server</b>: ".$this->MailServer);
- 
+    @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,"","<b>MAIL: Current server</b>: ".$this->parent->gosaMailServer);
+
     $this->connected = TRUE;
     return(TRUE);
   }
@@ -296,11 +292,11 @@ class mailMethod{
     $this->reset_error();
     if($this->is_connected()){
       @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,"","<b>MAIL: Disconnect method</b>: ".get_class($this));
-      $this->connected =FALSE; 
+      $this->connected =FALSE;
     }
   }
 
-  
+
   /*! \brief  Returns true the current object represents a valid account
               (Some methods may check imap accounts here.)
       @return Boolean TRUE if this is a valid account else FALSE
@@ -310,9 +306,9 @@ class mailMethod{
     $this->reset_error();
     return(TRUE);
   }
-  
 
-  /*! \brief  Returns the last error occurred 
+
+  /*! \brief  Returns the last error occurred
       @return String  The last error message.
    */
   public function get_error(){
@@ -366,25 +362,25 @@ class mailMethod{
       $acc_string = $this->share_id;
     }
 
-    /* Create account prefix and respect "cyrusUseSlashes" 
+    /* Create account prefix and respect "cyrusUseSlashes"
        Do not replace escaped dots for cyrusUseSlashes.
      */
     $uattrib = $this->uattrib;
     if($this->cyrusUseSlashes){
       $prefix     = preg_replace('/([^\\\\])\./',"\\1/",$prefix);
-      $acc_string = preg_replace('/([^\\\\])\./',"\\1/",$acc_string); 
+      $acc_string = preg_replace('/([^\\\\])\./',"\\1/",$acc_string);
     }
     $prefix = preg_replace("/\\\\([\.\/])/","\\1",$prefix);
-    $acc_string = preg_replace("/\\\\([\.\/])/","\\1",$acc_string); 
-  
+    $acc_string = preg_replace("/\\\\([\.\/])/","\\1",$acc_string);
+
     $domain = $mailpart = "";
     $mail = $this->parent->mail;
     if(preg_match("/\@/",$mail)){
       list($mailpart,$domain) = explode("@",$mail);
     }
 
-    /* Create account_id 
-     */ 
+    /* Create account_id
+     */
     $from = array("/%cn%/i","/%uid%/i","/%prefix%/i","/%uattrib%/i","/%domain%/i","/%mailpart%/i","/%mail%/i");
     $to   = array($this->parent->cn,$this->parent->uid,$prefix,$this->parent->$uattrib, $domain, $mailpart,$mail);
     $acc_id = trim(strtolower(preg_replace($from,$to,$acc_string)));
@@ -394,7 +390,7 @@ class mailMethod{
     if(preg_match("/%/",$acc_id)){
       $notr = preg_replace("/^[^%]*/","",$acc_id);
       if(!empty($notr)){
-        @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,"<b>Warning</b>", 
+        @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,"<b>Warning</b>",
             sprintf("<b>MAIL: WARNING unknown pattern in account creation string '%s' near '%s'</b>", $acc_id, $notr));
 
         /* Remove incomprehensible patterns */
@@ -435,17 +431,17 @@ class mailMethod{
       $acc_string = $this->share_id;
     }
 
-    /* Create account prefix and respect "cyrusUseSlashes" 
+    /* Create account prefix and respect "cyrusUseSlashes"
        Do not replace escaped dots for cyrusUseSlashes.
      */
     $uattrib = $this->uattrib;
     if($this->cyrusUseSlashes){
       $prefix     = preg_replace('/([^\\\\])\./',"\\1/",$prefix);
-      $acc_string = preg_replace('/([^\\\\])\./',"\\1/",$acc_string); 
+      $acc_string = preg_replace('/([^\\\\])\./',"\\1/",$acc_string);
     }
     $prefix = preg_replace("/\\\\([\.\/])/","\\1",$prefix);
-    $acc_string = preg_replace("/\\\\([\.\/])/","\\1",$acc_string); 
-  
+    $acc_string = preg_replace("/\\\\([\.\/])/","\\1",$acc_string);
+
     $domain = $mailpart = "";
     $mail = $this->parent->mail;
     if(preg_match("/\@/",$mail)){
@@ -463,7 +459,7 @@ class mailMethod{
     if(preg_match("/%/",$acc_id)){
       $notr = preg_replace("/^[^%]*/","",$acc_id);
       if(!empty($notr)){
-        @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,"<b>Warning</b>", 
+        @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,"<b>Warning</b>",
             sprintf("<b>MAIL: WARNING unknown pattern in account creation string '%s' near '%s'</b>", $acc_id, $notr));
 
         /* Remove incomprehensible patterns */
@@ -481,7 +477,7 @@ class mailMethod{
   }
 
 
-  /*! \brief  Returns the configured mail method for the given parent object, 
+  /*! \brief  Returns the configured mail method for the given parent object,
                 initialized and read for use.
       @return mailMethod  The configured mailMethod.
    */
@@ -489,20 +485,20 @@ class mailMethod{
   {
     $methods = mailMethod::get_methods();
     if ($this->config->get_cfg_value("mailmethod") != ""){
-      $method= $this->config->get_cfg_value("mailmethod");
+      $method = $this->config->get_cfg_value("mailmethod");
       $cls = get_correct_class_name("mailMethod$method");
-      if(isset($methods[$cls])){
+      if (isset($methods[$cls])) {
         @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,"", "<b>MAIL:</b> Selected mailMethod: <b>".$cls."</b>");
         $tmp = new $cls($this->config,$this->parent,$this->type);
         $tmp->init();
-        return($tmp);
-      }else{
+        return $tmp;
+      } else {
         @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "","<b>MAIL: Invalid mailMethod defined: ".$cls.
             " falling back to ".get_class($this)."</b>");
 
-        /* Print out configuration errors directly, we can't catch them everywhere. 
+        /* Print out configuration errors directly, we can't catch them everywhere.
          */
-        msg_dialog::display(_("Configuration error"), 
+        msg_dialog::display(_("Configuration error"),
             sprintf(_("Mail method '%s' is unknown!"), $method), ERROR_DIALOG);
       }
     }
@@ -510,11 +506,11 @@ class mailMethod{
     /* If no valued mailMethod could be detected, return the base class.
      */
     $this->init();
-    return($this);
+    return $this;
   }
 
 
-  /*! \brief Saves sieve settings 
+  /*! \brief Saves sieve settings
    */
   public function saveSieveSettings()
   {
@@ -522,8 +518,8 @@ class mailMethod{
     return(TRUE);
   }
 
-  
-  /*! \brief  Creates or Updates the mailAccount represented by this class. 
+
+  /*! \brief  Creates or Updates the mailAccount represented by this class.
    */
   public function updateMailbox()
   {
@@ -532,7 +528,7 @@ class mailMethod{
   }
 
 
-  /*! \brief  Update shared folder dependencies 
+  /*! \brief  Update shared folder dependencies
    */
   public function updateSharedFolder()
   {
@@ -549,12 +545,12 @@ class mailMethod{
     $this->reset_error();
 
     @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>".$this->account_id."</b>" ,
-        "<b>MAIL: Remove account</b> from server :".$this->MailServer);
+        "<b>MAIL: Remove account</b> from server :".$this->parent->gosaMailServer);
 
     return(TRUE);
   }
 
-  
+
   /*! \brief  Returns the used mail attribute (mail,uid)
       @param  String  One out of 'mail','uid'
    */
@@ -573,8 +569,8 @@ class mailMethod{
     return($this->parent->$uattrib);
   }
 
-  
-  /*! \brief  Returns whether the quota settings are enabled or not 
+
+  /*! \brief  Returns whether the quota settings are enabled or not
       @return Boolean TRUE if enabled else FALSE
    */
   public function quotaEnabled()
@@ -582,8 +578,8 @@ class mailMethod{
     return($this->enableQuota);
   }
 
-  
-  /*! \brief  Returns the used quota 
+
+  /*! \brief  Returns the used quota
       @return Integer Quota used.
    */
   public function getQuotaUsage()
@@ -600,7 +596,7 @@ class mailMethod{
     return($quotaValue);
   }
 
-  
+
   /*! \brief  Sets the mail quota
    */
   public function setQuota($number)
@@ -611,29 +607,29 @@ class mailMethod{
         $number = 0;
       }
     }
-    $this->quotaValue = $number; 
+    $this->quotaValue = $number;
     return(TRUE);
   }
 
 
-  /*! \brief  Returns true whether the domain is selectable or not 
+  /*! \brief  Returns true whether the domain is selectable or not
    */
   public function domainSelectionEnabled()
   {
     return($this->enableDomainSelection);
-  } 
+  }
 
 
-  /*! \brief Returns a list of configured mail domains 
+  /*! \brief Returns a list of configured mail domains
       @return Array A list of mail domains
    */
   public function getMailDomains()
   {
     return(array("Unconfigured"));
-  } 
+  }
 
-  
-  /*! \brief  Returns the used Spamlevels for this mailmethod 
+
+  /*! \brief  Returns the used Spamlevels for this mailmethod
    */
   public function getSpamLevels()
   {
@@ -644,7 +640,7 @@ class mailMethod{
     return($spamlevel);
   }
 
-  
+
   /*! \brief  Returns the list of configured mailbox folders
       @return Array The mailbox folders.
    */
@@ -662,14 +658,14 @@ class mailMethod{
     return($this->enableVacationRange);
   }
 
-  
+
   /*! \brief  Returns true if the sieveManagement is allowed
       @return Boolean TRUE, FALSE
    */
   public function allowSieveManagement()
   {
     return($this->enableSieveManager);
-  } 
+  }
 
 
   /*! \brief  Checks dependencies to other FusionDirectory plugins.
@@ -686,8 +682,8 @@ class mailMethod{
     return(TRUE);
   }
 
-  
-  /*! \brief  Returns all mail servers configured in FusionDirectory 
+
+  /*! \brief  Returns all mail servers configured in FusionDirectory
                that are useable with this mailMethod.
       @return Array  All useable mail servers.
   */
@@ -696,32 +692,31 @@ class mailMethod{
     $mailserver = array();
     $ui = get_userinfo();
     foreach ($this->config->data['SERVERS']['IMAP'] as $key => $val){
-      if( $this->MailServer == $key ||
-          preg_match("/r/",$ui->get_permissions($val['server_dn'],"server/goImapServer",""))){
+      if( $this->parent->gosaMailServer == $key ||
+          preg_match("/r/",$ui->get_permissions($val['server_dn'],"server/serviceIMAP",""))){
         $mailserver[]= $key;
       }
     }
     return($mailserver);
   }
 
-  
+
   /*! \brief  Returns the available mailMethods
       @return Array   A list of all avaialable mailMethods_
-   */ 
-  static protected function get_methods()
+   */
+  static public function get_methods()
   {
     global $class_mapping;
     $available = array();
-    foreach($class_mapping as $class => $path){
-      if($class == "mailMethod") continue;
-      if(preg_match("/^mailMethod/",$class)){
+    foreach ($class_mapping as $class => $path) {
+      if (preg_match("/^mailMethod.+/", $class)) {
         $available[$class] = $class;
       }
     }
-    return($available);
+    return $available;
   }
 
-  
+
   /* \brief   Some method require special folder types, "kolab" for example.
       !! Those values are dummy values, the base class doesn't use folder types;
      @return  Array Return folder types.
@@ -729,13 +724,13 @@ class mailMethod{
   public function getAvailableFolderTypes()
   {
     $ret = array();
-    $ret['CAT'][''] = _("None"); 
+    $ret['CAT'][''] = _("None");
     $ret['SUB_CAT'][''][''] = _("None");
     return($ret);
   }
 
 
-  /* \brief  Returns the selected folder type. 
+  /* \brief  Returns the selected folder type.
       !! Those values are dummy values, the base class doesn't use folder types;
      @return  Array  The folde type.
    */
@@ -744,22 +739,22 @@ class mailMethod{
     return($default);
   }
 
- 
-  /* \brief  Returns the selected folder type. 
+
+  /* \brief  Returns the selected folder type.
       !! Those values are dummy values, the base class doesn't use folder types;
      @return  Array  The folde type.
    */
   public function setFolderType($type)
   {
-    return(TRUE) ;   
+    return(TRUE) ;
   }
 
 
-  /*! \brief  Returns configured acls 
+  /*! \brief  Returns configured acls
    */
   public function  getFolderACLs($folder_acls)
   {
-    /* Merge given ACL with acl mapping 
+    /* Merge given ACL with acl mapping
        This ensures that no ACL will accidentally overwritten by fusiondirectory.
      */
     foreach($folder_acls as $user => $acl){
@@ -772,7 +767,7 @@ class mailMethod{
   }
 
 
-  /*! \brief  Write ACLs back to imap or what ever 
+  /*! \brief  Write ACLs back to imap or what ever
    */
   public function  setFolderACLs($array)
   {
@@ -828,10 +823,31 @@ class mailMethod{
     }
   }
 
- 
+  static public function get_server_list($config)
+  {
+    $serverList = array();
+
+    $ldap = $config->get_ldap_link();
+    $ldap->cd($config->current['BASE']);
+    $ldap->search('(objectClass=fdImapServer)', array('cn'));
+    while ($attrs = $ldap->fetch()) {
+      $serverList[$attrs['cn'][0]] = array(
+        'server_dn'     => $attrs['dn'],
+        'connect'       => '',
+        'admin'         => '',
+        'password'      => '',
+        'sieve_server'  => '',
+        'sieve_option'  => '',
+        'sieve_port'    => ''
+      );
+    }
+
+    return $serverList;
+  }
+
   /*! \brief  Returns the default sharedFolder ACLs for this method.
       @return Array Returns an array containg acls for __member__ and __anyone__
-   */ 
+   */
   public function getDefaultACLs()
   {
     $tmp = $this->default_acls;
@@ -840,7 +856,4 @@ class mailMethod{
     return($tmp);
   }
 }
-
-
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

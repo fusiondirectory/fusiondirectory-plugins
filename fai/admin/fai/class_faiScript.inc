@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011  FusionDirectory
+  Copyright (C) 2011-2013  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,7 +20,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class faiScript extends plugin
+class faiScript extends faiPluginClass
 {
   /* attribute list for save action */
   var $ignore_account   = TRUE;
@@ -36,10 +36,10 @@ class faiScript extends plugin
   var $subClasses       = array("top","FAIclass","FAIscriptEntry");
 
   /* Class name of the php class which allows us to edit a Sub Object */
-  var $subClassName     = "faiScriptEntry";      
+  var $subClassName     = "faiScriptEntry";
 
   /* Attributes to initialise for each subObject */
-  var $subAttributes    = array("cn","description","FAIpriority"); 
+  var $subAttributes    = array("cn","description","FAIpriority");
   var $sub_Load_Later   = array("FAIscript");
   var $sub64coded       = array();
   var $subBinary        = array("FAIscript");
@@ -89,7 +89,7 @@ class faiScript extends plugin
     if($this->dn == "new"){
       $this->is_new =TRUE;
     }
- 
+
     $this->ui = get_userinfo();
   }
 
@@ -124,7 +124,7 @@ class faiScript extends plugin
     return($object);
   }
 
-  
+
   /* Return a valid dn to fetch acls. Because 'new' will not work. */
   function acl_base_for_current_object($dn)
   {
@@ -172,10 +172,10 @@ class faiScript extends plugin
       if(isset($this->SubObjects[base64_decode($_GET['getFAIscript'])])){
         $obj = $this->SubObjects[base64_decode($_GET['getFAIscript'])];
         $obj  = $this->get_object_attributes($obj,$this->sub_Load_Later);
-        send_binary_content(stripslashes($obj['FAIscript']),$obj['cn'].".FAIscript"); 
+        send_binary_content(stripslashes($obj['FAIscript']),$obj['cn'].".FAIscript");
       }
     }
-    
+
     /* Handle posts */
     $s_action = $s_entry = "";
     foreach($_POST as $name => $value){
@@ -226,7 +226,7 @@ class faiScript extends plugin
 
     /* Check acls, are we allowed to delete an entry */
     if($s_action == "remove" && isset($this->SubObjects[$s_entry])){
-      $entry = $this->SubObjects[$s_entry];  
+      $entry = $this->SubObjects[$s_entry];
       $acl = $this->ui->get_permissions($this->acl_base_for_current_object($entry['dn']),"fai/faiScriptEntry")  ;
       if(preg_match("/d/",$acl)){
         $status = $entry['status'];
@@ -271,7 +271,7 @@ class faiScript extends plugin
           $this->SubObjects[$obj['remove']['to']] = $obj;
           unset($this->SubObjects[$obj['remove']['to']]['remove']);
         }else{
-  
+
           /* Set new status and append the entry */
           if($obj['status'] == "FreshLoaded"){
             $obj['status'] = "edited";
@@ -311,7 +311,7 @@ class faiScript extends plugin
 
     /* Cancel Dialog */
     if(isset($_POST['CancelSubObject'])){
-      $this->is_dialog=false; 
+      $this->is_dialog=false;
       unset($this->dialog);
       $this->dialog=FALSE;
     }
@@ -323,19 +323,19 @@ class faiScript extends plugin
       return($display);
     }
 
-    /* Divlist            added 23.02.2006 
-       Containing FAIscripts 
+    /* Divlist            added 23.02.2006
+       Containing FAIscripts
      */
     $divlist = new divlist("FAIscripts");
     $divlist->SetEntriesPerPage(0);
     $plug = $_GET['plug'];
-   
+
     if($this->sort_order == "up"){
       $dir = "<img src='images/lists/sort-up.png' title='"._("Sort direction")."' alt='\/' border=0>";
     }else{
       $dir = "<img src='images/lists/sort-down.png' title='"._("Sort direction")."' alt='/\' border=0>";
     }
- 
+
     if($this->sort_by == "name"){
       $sort_name = $dir;
       $sort_prio = "";
@@ -358,7 +358,7 @@ class faiScript extends plugin
       $dn= $this->acl_base_for_current_object($name['dn']);
       $acl = $this->ui->get_permissions($dn,"fai/faiScriptEntry")  ;
       $act = "";
-      
+
       /* Hide delete icon if this object is freezed */
       if(preg_match("/freeze/", $this->FAIstate)){
         $act .= "<input type='image' src='images/lists/edit.png'      name='editscript_%s'    title='"._("edit")."' alt='"._("edit")."'>";
@@ -376,8 +376,8 @@ class faiScript extends plugin
       }else{
         $down = "<a href='?plug=".$_GET['plug']."&getFAIscript=".base64_encode($key)."'>
           <img src='images/save.png' alt='"._("Download")."' title='"._("Download")."' border=0>
-          </a>"; 
-      } 
+          </a>";
+      }
 
       /* Check if we are allowed to view this object */
       $s_acl = $this->ui->get_permissions($dn,"fai/faiScriptEntry","cn")  ;
@@ -396,8 +396,8 @@ class faiScript extends plugin
     }
 
     $dn = $this->acl_base_for_current_object($this->dn);
-    $smarty->assign("sub_object_is_addable",  
-        preg_match("/c/",$this->ui->get_permissions($dn,"fai/faiScriptEntry")) && 
+    $smarty->assign("sub_object_is_addable",
+        preg_match("/c/",$this->ui->get_permissions($dn,"fai/faiScriptEntry")) &&
         !preg_match("/freeze/",$this->FAIstate));
 
     $tmp = $this->plInfo();
@@ -448,7 +448,7 @@ class faiScript extends plugin
       $use_dn = preg_replace("/".preg_quote(FAI::get_release_dn($this->dn), '/')."/i", $release, $this->dn);
       new log("remove","fai/".get_class($this),$use_dn,$this->attributes);
       FAI::prepare_to_save_FAI_object($use_dn,array(),true);
- 
+
       foreach($this->SubObjects as $name => $obj){
         $use_dn = preg_replace("/".preg_quote(FAI::get_release_dn($this->dn), '/')."/i", $release, $obj['dn']);
         FAI::prepare_to_save_FAI_object($use_dn,array(),true);
@@ -458,14 +458,14 @@ class faiScript extends plugin
   }
 
 
-  /* Save data to object 
+  /* Save data to object
    */
   function save_object()
   {
     if((isset($_POST['FAIscript_posted'])) && !preg_match("/freeze/", $this->FAIstate)){
       plugin::save_object();
     }
-    
+
     /* Get sort order */
     if(isset($_GET['sort']) && in_array($_GET['sort'],array("name","priority"))){
       if($this->sort_by == $_GET['sort']){
@@ -478,28 +478,6 @@ class faiScript extends plugin
       $this->sort_by = $_GET['sort'];
     }
   }
-
-
-  /* Check supplied data */
-  function check()
-  {
-    /* Call common method to give check the hook */
-    $message= plugin::check();
-
-    /* Ensure that we do not overwrite an allready existing entry 
-     */
-    if($this->is_new){
-      $release = $this->parent->parent->fai_release;
-      $new_dn= 'cn='.$this->cn.",".get_ou('faiScriptRDN').get_ou('faiBaseRDN').$release;
-      $res = faiManagement::check_class_name("FAIscript",$this->cn,$new_dn);
-      if(isset($res[$this->cn])){
-        $message[] = msgPool::duplicated(_("Name"));
-      }
-    }
-
-    return ($message);
-  }
-
 
   /* Save to LDAP */
   function save()
@@ -519,7 +497,7 @@ class faiScript extends plugin
     /* Prepare FAIscriptEntry to write it to ldap
      * First sort array.
      *  Because we must delete old entries first.
-     * After deletion, we perform add and modify 
+     * After deletion, we perform add and modify
      */
     $Objects = array();
 
@@ -532,12 +510,12 @@ class faiScript extends plugin
 
     foreach($this->SubObjects as $name => $obj){
       if($obj['status'] == "delete"){
-        $Objects[$name] = $obj; 
+        $Objects[$name] = $obj;
       }
     }
     foreach($this->SubObjects as $name => $obj){
       if($obj['status'] != "delete"){
-        $Objects[$name] = $obj; 
+        $Objects[$name] = $obj;
       }
     }
 
@@ -550,7 +528,7 @@ class faiScript extends plugin
       $tmp = array();
       $attributes = array_merge($this->sub_Load_Later,$this->subAttributes);
       foreach($attributes as $attrs){
-        if(!isset($obj[$attrs])) continue; 
+        if(!isset($obj[$attrs])) continue;
         if($obj[$attrs] == ""){
           $obj[$attrs] = array();
         }
@@ -559,7 +537,7 @@ class faiScript extends plugin
         }else{
           $tmp[$attrs] = $obj[$attrs];
         }
-      }    
+      }
 
       $tmp['objectClass'] = $this->subClasses;
 
@@ -614,52 +592,23 @@ class faiScript extends plugin
     }
   }
 
-
-  /*! \brief  Used for copy & paste.
-              Returns a HTML input mask, which allows to change the cn of this entry.
-      @param  Array   Array containing current status && a HTML template.
-   */
-  function getCopyDialog()
-  {
-    $vars = array("cn");
-    $smarty = get_smarty();
-    $smarty->assign("cn", htmlentities($this->cn));
-    $str = $smarty->fetch(get_template_path("paste_generic.tpl",TRUE));
-    $ret = array();
-    $ret['string'] = $str;
-    $ret['status'] = "";
-    return($ret);
-  }
-
-
-  /*! \brief  Used for copy & paste.
-              Some entries must be renamed to avaoid duplicate entries.
-   */
-  function saveCopyDialog()
-  {
-    if(isset($_POST['cn'])){
-      $this->cn = get_post('cn');
-    }
-  }
-  
-
-  /* Return plugin informations for acl handling */ 
+  /* Return plugin informations for acl handling */
   static function plInfo()
   {
-    return (array( 
-          "plShortName" => _("Script"),
-          "plDescription" => _("FAI script"),
-          "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
-          "plPriority"    => 18,
-          "plSection"     => array("administration"),
-          "plCategory"    => array("fai"),
-          "plProvidedAcls" => array(
-            "cn"                => _("Name")." ("._("Readonly").")",
-            "description"       => _("Description"))
-          ));
+    return array(
+      "plShortName" => _("Script"),
+      "plDescription" => _("FAI script"),
+      "plSelfModify"  => FALSE,
+      "plPriority"    => 18,
+      "plCategory"    => array("fai"),
+      "plObjectType"  => array("faiScript" => array("name" => _("FAI script"),
+                                                    "filter" => "objectClass=FAIscript")),
+
+      "plProvidedAcls" => array(
+        "cn"                => _("Name")." ("._("Readonly").")",
+        "description"       => _("Description")
+      )
+    );
   }
 }
-
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

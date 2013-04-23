@@ -33,6 +33,11 @@ if ( $cleanup ){
   session::un_set('mimetypeManagement');
 }else{
 
+  /* Reset requested? */
+  if (isset($_GET['reset']) && $_GET['reset'] == 1){
+    session::un_set ('mimetypeManagement');
+  }
+
   /* Create mimetypemanagement object on demand */
   if (!session::is_set('mimetypeManagement')){
     $mimetypeManagement= new mimetypeManagement ($config, $ui);
@@ -40,11 +45,6 @@ if ( $cleanup ){
   }
   $mimetypeManagement = session::get('mimetypeManagement');
   $display= $mimetypeManagement->execute();
-
-  /* Reset requested? */
-  if (isset($_GET['reset']) && $_GET['reset'] == 1){
-    session::un_set ('mimetypeManagement');
-  }
 
   /* Show and save dialog */
   session::set('mimetypeManagement',$mimetypeManagement);

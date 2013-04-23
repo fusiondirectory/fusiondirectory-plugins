@@ -2,7 +2,7 @@
 
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2011  FusionDirectory
+  Copyright (C) 2011-2013  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -19,144 +19,193 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class argonautFuseConfig extends goService {
-
-  var $cli_summary      = "This plugin is used within the ServerService Pluign \nand indicates that this server supports Argonaut fuse service.";
-  var $cli_description  = "Some longer text\nfor help";
-  var $cli_parameters   = array("one" => "one is nice", "two" => "two is better");
-
-  /* This plugin only writes its objectClass */
-  var $objectclasses    = array("argonautFuseConfig");
-  var $attributes       = array("argonautFuseDefaultMode","argonautFuseLogDir","argonautFusePxelinuxCfg",
-                                "argonautFusePxelinuxCfgStatic","argonautFuseFaiFlags","argonautFuseNfsRoot",
-                                "argonautFuseOpsiAdmin","argonautFuseOpsiPassword","argonautFuseOpsiServer",
-                                "argonautFuseOpsiLang","argonautFuseLtspServer"
-                              );
-  var $StatusFlag       = "";
-
-  /* This class can't be assigned twice so it conflicts with itsself */
-  var $conflicts        = array("argonautFuseConfig");
-
-  var $DisplayName      = "";
-  var $dn               = NULL;
-  var $acl;
-  var $cn               = "";
-  var $view_logged      = FALSE;
-
-  var $argonautFuseDefaultMode        = "install";
-  var $argonautFuseLogDir             = "/var/log/argonaut";
-
-  var $argonautFusePxelinuxCfg        = "/srv/tftp/pxelinux.cfg";
-  var $argonautFusePxelinuxCfgStatic  = "/srv/tftp/pxelinux.static";
-
-  var $argonautFuseFaiFlags           = "verbose,sshd,syslogd,createvt,reboot";
-  var $argonautFuseNfsRoot            = "/srv/fai/nfsroot";
-
-  var $argonautFuseOpsiAdmin          = "";
-  var $argonautFuseOpsiPassword       = "";
-  var $argonautFuseOpsiServer         = "";
-  var $argonautFuseOpsiLang           = "";
-
-  var $argonautFuseLtspServer          = "";
-
-  function argonautFuseConfig(&$config,$dn)
-  {
-    goService::goService($config,$dn);
-    $this->DisplayName = _("Argonaut Fuse settings");
-  }
-
-  function execute()
-  {
-    $smarty = get_smarty();
-
-    if($this->is_account && !$this->view_logged){
-      $this->view_logged = TRUE;
-      new log("view","server/".get_class($this),$this->dn);
-    }
-
-/*
-    $smarty->assign("argonautFuseConfigACL", $this->getacl("argonautFuseConfig")) ;
-*/
-    $attributes = array();
-    foreach ($this->attributes as $attribute) {
-      $smarty->assign("$attribute" , $this->$attribute);
-      $attributes[$attribute] = $this->$attribute;
-    }
-    $smarty->assign("attributes" , $attributes);
-    return($smarty->fetch(get_template_path("argonautFuseConfig.tpl",TRUE,dirname(__FILE__))));
-  }
-
-  function getListEntry()
-  {
-    $fields               = goService::getListEntry();
-    $fields['Message']    = _("Argonaut Fuse settings");
-
-    return $fields;
-  }
-
-  function save()
-  {
-    plugin::save();
-
-
-    /* Check if this is a new entry ... add/modify */
-    $ldap = $this->config->get_ldap_link();
-    $ldap->cat($this->dn,array("objectClass"));
-    $this->cleanup();
-    if($ldap->count()) {
-      $ldap->cd($this->dn);
-      $ldap->modify($this->attrs);
-    } else {
-      $ldap->cd($this->dn);
-      $ldap->add($this->attrs);
-    }
-    if (!$ldap->success()) {
-      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()));
-    }
-
-    if ($this->initially_was_account) {
-      $this->handle_post_events("modify");
-      new log("modify","server/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
-    } else {
-      $this->handle_post_events("add");
-      new log("create","server/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
-    }
-  }
-
-  function PrepareForCopyPaste($source)
-  {
-    plugin::PrepareForCopyPaste($source);
-  }
-
-  function check()
-  {
-    $message = plugin::check();
-    // FIXME : Should check for MUST attributes
-    // FIXME : Should check that if one of the Opsi attributes is there, the others are too
-    return $message;
-  }
-
-  function save_object()
-  {
-    if(isset($_POST['argonautFuseConfigPosted'])) {
-      plugin::save_object();
-    }
-  }
+class argonautFuseConfig extends simpleService
+{
+  var $objectclasses  = array("argonautFuseConfig");
+  var $showActions    = FALSE;
 
   /* Return plugin informations for acl handling */
   static function plInfo()
   {
-    return (array(
-          "plShortName"   => _("Argonaut Fuse settings"),
-          "plDescription" => _("Argonaut Fuse settings")." ("._("Services").")",
-          "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
-          "plPriority"    => 91,
-          "plSection"     => array("administration"),
-          "plCategory"    => array("server"),
+    return array(
+      "plShortName"     => _("Argonaut Fuse settings"),
+      "plDescription"   => _("Argonaut Fuse settings")." ("._("Services").")",
+      "plIcon"          => "plugins/argonaut/images/iconMiniFuseConfig.png",
 
-          "plProvidedAcls"=> array()));
+      "plCategory"      => array("server"),
+      "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+    );
+  }
+
+  /*!
+   *  \brief The main function : information about attributes
+   */
+  static function getAttributesInfo ()
+  {
+    return array (
+      'main' => array (
+        'name'  => _('Basic settings'),
+        'attrs' => array (
+          new StringAttribute (
+            _('Default mode'),
+            '',
+            'argonautFuseDefaultMode',
+            TRUE,
+            'install'
+          ),
+          new StringAttribute (
+            _('Log directory'),
+            _('Directory in which argonaut-fuse will store its log'),
+            'argonautFuseLogDir',
+            TRUE,
+            '/var/log/argonaut'
+          ),
+        )
+      ),
+      'tftp' => array (
+        'name'  => _('TFTP'),
+        'attrs' => array (
+          new StringAttribute (
+            _('Pxelinux cfg path'),
+            _('Path where argonaut-fuse should store pxelinux.cfg'),
+            'argonautFusePxelinuxCfg',
+            TRUE,
+            '/srv/tftp/pxelinux.cfg'
+          ),
+          new StringAttribute (
+            _('Pxelinux cfg static path'),
+            _('Path where argonaut-fuse should store pxelinux.static'),
+            'argonautFusePxelinuxCfgStatic',
+            TRUE,
+            '/srv/tftp/pxelinux.static'
+          ),
+        )
+      )
+    );
+  }
+
+  function __construct(&$config, $dn, $object = NULL, $attributesInfo = NULL)
+  {
+    parent::__construct($config, $dn, $object, $attributesInfo);
+
+    /* Load modules */
+    $this->plugin = array();
+    foreach ($config->data['TABS']['FUSEMODULETABS'] as $plug) {
+      @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $plug['CLASS'], "Loading Fuse module");
+      if (!plugin_available($plug['CLASS'])) {
+        @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $plug['CLASS'], "Fuse module not available");
+        continue;
+      }
+      $name = $plug['CLASS'];
+      $this->plugin[$name] = new $name($config, $dn, $object);
+
+      $this->plugin[$name]->set_acl_category($this->acl_category);
+      $this->plugin[$name]->set_acl_base($this->dn);
+    }
+  }
+
+
+  /*! \brief This function display the service and return the html code
+   */
+  function execute ()
+  {
+    if ($this->is_account && !$this->view_logged) {
+      $this->view_logged = TRUE;
+      new log("view", "server/".get_class($this), $this->dn);
+    }
+
+    $str = "<div style='width:100%; text-align:right; clear:both; float:none;'>".
+           "  <input type='submit' name='SaveService' value='".msgPool::saveButton()."'>&nbsp;".
+           "  <input type='submit' name='CancelService' value='".msgPool::cancelButton()."'>".
+           "</div>";
+
+    $display = simplePlugin::execute();
+
+    foreach ($this->plugin as &$plugin) {
+      if ($this->parent !== NULL) {
+        $plugin->parent = $this->parent;
+      } else {
+        $plugin->parent = $this;
+      }
+      $display .= '<p class="seperator plugbottom">&nbsp;</p><div></div>';
+      $display .= $plugin->execute();
+    }
+    unset($plugin);
+
+    return $display.$str;
+  }
+
+
+  /* Save data to object */
+  function save_object()
+  {
+    parent::save_object();
+    if (isset($_POST[get_class($this)."_posted"])) {
+      foreach ($this->plugin as &$plugin) {
+        $plugin->save_object();
+      }
+      unset($plugin);
+    }
+  }
+
+  function check()
+  {
+    $message = parent::check();
+
+    foreach ($this->plugin as &$plugin) {
+      if ($plugin->is_account) {
+        $message = array_merge($message, $plugin->check());
+      }
+    }
+    unset($plugin);
+
+    return $message;
+  }
+
+  function set_acl_category($cat)
+  {
+    parent::set_acl_category($cat);
+    foreach ($this->plugin as &$plugin) {
+      $plugin->set_acl_category($cat);
+    }
+    unset($plugin);
+  }
+
+  function set_acl_base($base)
+  {
+    parent::set_acl_base($base);
+    foreach ($this->plugin as &$plugin) {
+      $plugin->set_acl_base($base);
+    }
+    unset($plugin);
+  }
+
+  /* Save to LDAP */
+  function save()
+  {
+    parent::save();
+    /* Save objects */
+    foreach ($this->plugin as &$plugin) {
+      $plugin->dn = $this->dn;
+
+      if ($plugin->is_account) {
+        $plugin->save();
+      } else {
+        $plugin->remove_from_parent();
+      }
+    }
+    unset($plugin);
+  }
+
+  function remove_from_parent()
+  {
+    /* Remove objects */
+    foreach ($this->plugin as &$plugin) {
+      $plugin->dn = $this->dn;
+      $plugin->remove_from_parent();
+    }
+    unset($plugin);
+    parent::remove_from_parent();
   }
 }
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

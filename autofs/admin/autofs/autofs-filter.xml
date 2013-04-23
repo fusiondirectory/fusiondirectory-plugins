@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<filterdef>
+  <definition>
+    <category>autofs</category>
+    <template>autofs-filter.tpl</template>
+    <initial>true</initial>
+  </definition>
+
+  <search>
+    <query>
+      <backend>LDAP</backend>
+      <filter>(&amp;(|$NISMAP$NISOBJECT)$NAME)</filter>
+      <attribute>dn</attribute>
+      <attribute>objectClass</attribute>
+      <attribute>cn</attribute>
+      <attribute>nisMapName</attribute>
+    </query>
+    <scope>one</scope>
+  </search>
+
+  <element>
+    <type>textfield</type>
+    <tag>NAME</tag>
+    <size>20</size>
+    <maxlength>60</maxlength>
+    <default></default>
+    <unset></unset>
+    <set>(|(cn=*$*)(nisMapName=*$*))</set>
+    <alphabet>true</alphabet>
+    <autocomplete>
+      <backend>LDAP</backend>
+      <filter>(&amp;(|$NISMAP$NISOBJECT)(|(cn=*$NAME*)(nisMapName=*$NAME*)))</filter>
+      <attribute>cn</attribute>
+      <frequency>0.5</frequency>
+      <characters>3</characters>
+    </autocomplete>
+  </element>
+
+  <element>
+    <type>checkbox</type>
+    <tag>NISOBJECT</tag>
+    <default>true</default>
+    <unset></unset>
+    <set>(objectClass=nisObject)</set>
+  </element>
+
+  <element>
+    <type>checkbox</type>
+    <tag>NISMAP</tag>
+    <default>true</default>
+    <unset></unset>
+    <set>(objectClass=nisMap)</set>
+  </element>
+
+</filterdef>

@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011  FusionDirectory
+  Copyright (C) 2011-2013  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -32,7 +32,7 @@ class dhcpDnsZone extends dhcpPlugin
   var $drop_down_domain= array();
   var $drop_down_nameserver= array();
   var $drop_down_tsigkey= array();
-        
+
   /* attribute list for save action */
   var $objectclasses= array("top", "dhcpDnsZone");
 
@@ -144,7 +144,7 @@ class dhcpDnsZone extends dhcpPlugin
     if(isset($this->parent) && isset($this->parent->dhcpObjectCache)){
       $cache = $this->parent->dhcpObjectCache;
     }
-  
+
     /* All required fields are set? */
     if ($this->cn == ""){
       $message[]= msgPool::required(_("DNS zone"));
@@ -157,11 +157,11 @@ class dhcpDnsZone extends dhcpPlugin
     if ($this->dhcpKeyDN == ""){
       $message[]= msgPool::required(_("Key DN"));
     }
-    
+
 
     /* cn already used? */
     if ($this->orig_cn != $this->cn || $this->new){
-      
+
       foreach($cache as $dn => $dummy){
         if (preg_match("/^cn=".$this->cn.",/", $dn) && count($dummy)){
           $message[]= msgPool::duplicated(_("Name"));
@@ -169,7 +169,7 @@ class dhcpDnsZone extends dhcpPlugin
         }
       }
     }
-    
+
     /* Check external plugins */
     $net= $this->network->check();
     $adv= $this->advanced->check();

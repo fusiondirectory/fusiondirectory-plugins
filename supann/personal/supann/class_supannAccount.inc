@@ -2,6 +2,7 @@
 /*
  * This code is part of FusionDirectory (http://www.fusiondirectory.org)
  * Copyright (C) 2010-2012 Antoine Gallavardin
+ * Copyright (C) 2013 FusionDirectory
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,916 +19,527 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
  */
 
-class supannAccount extends plugin
+class SupannPrefixedSelectAttribute extends CompositeAttribute
 {
-  var $plHeadline     = "Supann";
-  var $plDescription  = "Plugin supann";
+  protected $prefixedChoices;
 
-  var $view_logged            = FALSE;
-  var $is_account             = FALSE;
-  var $initially_was_account  = FALSE;
-
-  var $type_profil                        = "";
-
-  var $eduPersonAffiliation               = "";
-  var $eduPersonPrimaryAffiliation        = "";
-  var $eduPersonNickName                  = "";
-  var $supannEntiteAffectation            = "";
-  var $supannEntiteAffectationPrincipale  = "";
-  var $eduPersonPrincipalName             = "";
-  var $supannAliasLogin                   = "";
-  var $supannAutreTelephone               = "";
-  var $supannCivilite                     = "";
-  var $supannEtablissement                = "";
-  var $supannAutreMail                    = "";
-  var $supannListeRouge                   = "";
-  var $supannMailPerso                    = "";
-  var $supannTypeEntiteAffectation        = "";
-  var $supannEmpCorps                     = "";
-  var $supannEmpId                        = "";
-  var $supannRoleGenerique                = "";
-  var $supannRoleEntite                   = "";
-  var $supannActivite                     = "";
-/*
-  var $supannParrainDN                    = "";
-  var $supannRefId                        = "";
-*/
-  var $supannEtuId                        = "";
-
-  var $list_supannEtuSecteurDisciplinaire_SEI                = array();
-
-  var $list_supannEtuCursusAnnee = array(
-                                          "L" => "Licence",
-                                          "M" => "Master",
-                                          "D" => "Doctorat",
-                                          "X" => "Autre catégorie de diplome",
-                                          "B" => "année post-bac"
-                                        );
-
-  var $years_supannEtuCursusAnnee = array(
-                                          "L" => 3,
-                                          "M" => 2,
-                                          "D" => 10,
-                                          "X" => 10,
-                                          "B" => 20
-                                        );
-
-  var $attributes =
-    array("eduPersonAffiliation", "eduPersonPrimaryAffiliation",
-          "eduPersonNickName", "eduPersonPrincipalName",
-          "supannEntiteAffectation", "supannEntiteAffectationPrincipale",
-          "supannAliasLogin", "supannAutreMail",
-          "supannAutreTelephone", "supannCivilite",
-          "supannEtablissement", "supannListeRouge",
-          "supannMailPerso",
-/*
-          "supannParrainDN",
-          "supannRefId",
-*/
-
-          /* Student attributes */
-          "supannTypeEntiteAffectation", "supannCodeINE",
-          "supannEtuId",
-
-          "supannEtuInscription",
-          /* Inscription sub attributes */
-          "supannEtuAnneeInscription", "supannEtuRegimeInscription",
-          "supannEtuSecteurDisciplinaire", "supannEtuTypeDiplome",
-          "supannEtuCursusAnnee",
-          /* optional ones */
-          "supannEtuDiplome", "supannEtuEtape",
-          "supannEtuElementPedagogique",
-
-          /* Personal attributes */
-          "supannEmpCorps", "supannEmpId",
-          "supannRoleGenerique", "supannRoleEntite",
-          "supannActivite",
-        );
-
-  /* supannEtuInscription */
-  var $SEI_attributes = array(
-    "supannEtablissement" => array(
-                                    /* Does this attribute looks like {ref}value */
-                                    'ref'=>TRUE,
-                                    /* Does this attribute needs a list of available values */
-                                    'list'=>TRUE,
-                                    /* Name of this attribute in the SEI entry */
-                                    'shortname'=>"etab"
-                                  ),
-    "supannEtuAnneeInscription"     => array('ref'=>FALSE,'list'=>FALSE,'shortname'=>"anneeinsc"),
-    "supannEtuRegimeInscription"    => array('ref'=>TRUE, 'list'=>TRUE, 'shortname'=>"regimeinsc"),
-    "supannEtuSecteurDisciplinaire" => array('ref'=>TRUE, 'list'=>TRUE, 'shortname'=>"sectdisc"),
-    "supannEtuTypeDiplome"          => array('ref'=>TRUE, 'list'=>TRUE, 'shortname'=>"typedip"),
-    "supannEtuCursusAnnee"          => array('ref'=>FALSE,'list'=>FALSE,'shortname'=>"cursusann"),
-    "supannEntiteAffectation"       => array('ref'=>FALSE,'list'=>TRUE, 'shortname'=>"affect"),
-    "supannEtuDiplome"              => array('ref'=>TRUE, 'list'=>TRUE, 'shortname'=>"diplome"),
-    "supannEtuEtape"                => array('ref'=>TRUE, 'list'=>TRUE, 'shortname'=>"etape"),
-    "supannEtuElementPedagogique"   => array('ref'=>TRUE, 'list'=>TRUE, 'shortname'=>"eltpedago"),
-  );
-
-  /* ref of chosen value for SEI attribute */
-  var $ref_supannEtablissement_SEI;
-  //var $ref_supannEtuAnneeInscription_SEI;
-  var $ref_supannEtuRegimeInscription_SEI;
-  var $ref_supannEtuSecteurDisciplinaire_SEI;
-  var $ref_supannEtuTypeDiplome_SEI;
-  //var $ref_supannEntiteAffectation_SEI;
-  var $ref_supannEtuDiplome_SEI;
-  var $ref_supannEtuEtape_SEI;
-  var $ref_supannEtuElementPedagogique_SEI;
-
-  /* chosen value for SEI attribute */
-  var $supannEtablissement_SEI;
-  //var $supannEtuAnneeInscription_SEI;
-  var $supannEtuRegimeInscription_SEI;
-  var $supannEtuSecteurDisciplinaire_SEI;
-  var $supannEtuTypeDiplome_SEI;
-  var $supannEtuCursusAnnee_SEI = 'L1';
-  var $supannEntiteAffectation_SEI;
-  var $supannEtuDiplome_SEI;
-  var $supannEtuEtape_SEI;
-  var $supannEtuElementPedagogique_SEI;
-
-  /* supannRoleEntite */
-  var $SRE_attributes = array(
-    "supannRoleGenerique"         => array('ref'=>TRUE, 'list'=>TRUE, 'shortname'=>"role"),
-    "supannTypeEntiteAffectation" => array('ref'=>TRUE, 'list'=>TRUE, 'shortname'=>"type"),
-    "supannEntiteAffectation"     => array('ref'=>FALSE,'list'=>TRUE, 'shortname'=>"code"),
-  );
-
-  var $ref_supannRoleGenerique_SRE;
-  var $ref_supannTypeEntiteAffectation_SRE;
-
-  var $supannRoleGenerique_SRE;
-  var $supannTypeEntiteAffectation_SRE;
-  var $supannEntiteAffectation_SRE;
-
-
-  var $single_attributes = /* single valued attributes */
-    array("eduPersonPrimaryAffiliation",
-          "eduPersonNickName", "eduPersonPrincipalName",
-          "supannEntiteAffectationPrincipale",
-          "supannAliasLogin",  "supannCivilite",
-          "supannListeRouge",
-          "supannEmpId",
-        );
-
-  var $student_attributes =
-    array(
-          "supannCodeINE",
-          "supannEtuAnneeInscription", "supannEtuSecteurDisciplinaire",
-          "supannEtuDiplome", "supannEtuTypeDiplome",
-          "supannEtuCursusAnnee", "supannEtuEtape",
-          "supannEtuElementPedagogique", "supannEtuRegimeInscription",
-          "supannEtuInscription", "supannEtuId",
-        );
-
-  var $personal_attributes =
-    array(
-          "supannEmpCorps", "supannEmpId",
-          "supannRoleGenerique", "supannRoleEntite",
-          "supannActivite",
-        );
-
-  var $ref_attributes =
-    array(
-            "supannEtablissement",
-            "supannTypeEntiteAffectation",
-            "supannEmpCorps",
-            "supannActivite",
-          );
-
-  var $objectclasses = array("eduPerson", "supannPerson");
-
-  function supannAccount(&$config, $dn = NULL)
+  function __construct($label, $description, $ldapName, $required, $filename, $acl = "")
   {
-    global $class_mapping;
-
-    /* on charge la configuration global ede gosa */
-
-    $this->config = $config;
-
-    plugin::plugin($config, $dn);
-
-    $ldap = $this->config->get_ldap_link();
-
-    if ($dn !== NULL) {
-      if (isset($this->attrs['objectClass']) &&
-          in_array('supannAccount', $this->attrs['objectClass'])) {
-        $this->is_account = TRUE;
-      }
-
-      /* Save initial account state */
-      $this->initially_was_account = $this->is_account;
-    }
-
-    foreach($this->attributes as $attr) {
-      if (in_array($attr,$this->single_attributes)) {
-        if (isset($this->parent->by_object['group']) &&
-            isset($this->parent->by_object['group']->$attr)) {
-          $this->$attr = &$this->parent->by_object['group']->$attr;
-        } elseif(isset($this->attrs[$attr])) {
-          $this->$attr = $this->attrs[$attr][0];
-        }
-      } else {
-        $tmp = array();
-        if (isset($this->attrs[$attr])) {
-          for ($i = 0; $i < $this->attrs[$attr]['count']; $i++) {
-            $tmp[$this->attrs[$attr][$i]] = $this->attrs[$attr][$i];
-          }
-        }
-        $this->$attr = $tmp;
-      }
-      if (empty($this->type_profil) && isset($this->$attr) && !empty($this->$attr)) {
-        if (in_array($attr,$this->student_attributes)) {
-          $this->type_profil = "student";
-        } elseif (in_array($attr,$this->personal_attributes)) {
-          $this->type_profil = "personal";
-        }
-      }
-    }
-
-    if (empty($this->type_profil)) {
-      $this->type_profil = "student";
-    }
-
-
-    // Reading supann files
-    $dir = @opendir(SUPANN_DIR);
-
-    while ($file = readdir($dir)) {
-      foreach (array(
-                'entites'               => 'supannTypeEntiteAffectation',
-                'etablissement'         => 'supannEtablissement',
-                'affiliation'           => 'eduPersonAffiliation',
-                'activites'             => 'supannActivite',
-                'corps'                 => 'supannEmpCorps',
-                'roles'                 => 'supannRoleGenerique',
-                'discipline'            => 'supannEtuSecteurDisciplinaire',
-                'diplome'               => 'supannEtuDiplome',
-                'typediplome'           => 'supannEtuTypeDiplome',
-                'etuetape'              => 'supannEtuEtape',
-                'etuelementpedagogique' => 'supannEtuElementPedagogique',
-                'eturegimeinscription'  => 'supannEtuRegimeInscription',
-              ) as $shortname => $attr) {
-        if (preg_match("/^".$shortname."_/", $file)) {
-          $referentiel = preg_replace("/^".$shortname."_/", "", $file);
-          $lines = file(SUPANN_DIR.$file);
-          $list = array();
-          foreach($lines as $line) {
-            if (!preg_match("/^#/", $line)) {
-              $rec = preg_split('/;/', $line);
-              $list[$referentiel][$rec[0]] = $this->truncate_label($rec[1]);
-            }
-          }
-          $list_name = 'list_'.$attr;
-          $this->$list_name = $list;
-        }
-      }
-    }
-
-    closedir($dir);
-
-    foreach (array(
-                'supannEtuDiplome',
-                'supannEtuEtape',
-                'supannEtuElementPedagogique',
-                ) as $attr) {
-      $list_name = 'list_'.$attr;
-      $list =& $this->$list_name;
-      $list['none']['none'] = _("None");
-    }
-
-    /* list of entity stored in LDAP tree */
-    $ldap = $this->config->get_ldap_link();
-    $ldap->cd($this->config->current['BASE']);
-    $ldap->search("(objectClass=supannEntite)",
-                  array("supannCodeEntite", "ou", "o"));
-
-    $list_entite = array();
-    while ($attrs = $ldap->fetch()) {
-      if (isset($attrs['supannCodeEntite'][0])) {
-        if (isset($attrs['ou'][0])) {
-          $list_entite[] = $attrs['supannCodeEntite'][0].";".$attrs['ou'][0];
-        } else {
-          $list_entite[] = $attrs['supannCodeEntite'][0].";".$attrs['o'][0];
-        }
-      }
-    }
-    $list_entite[] = _(";"._("None"));
-
-    foreach($list_entite as $line) {
-      $rec = preg_split('/;/', $line);
-      $this->list_supannEntiteAffectation[$rec[0]] = $rec[1]." (".$rec[0].")";
-    }
-
-    $this->list_eduPersonAffiliation = $this->list_eduPersonAffiliation['EDU'];
-
-    foreach ($this->ref_attributes as $attr) {
-      $ref_name = 'ref_'.$attr;
-      $list_name = 'list_'.$attr;
-      $refs = array_keys($this->$list_name);
-      $this->$ref_name = $refs[0];
-    }
-
-    foreach ($this->SEI_attributes as $attr => $flags) {
-      if ($flags['ref']) {
-        $ref_name = 'ref_'.$attr.'_SEI';
-        if (!isset($this->$ref_name)) {
-          $list_name = 'list_'.$attr;
-          $refs = array_keys($this->$list_name);
-          if(in_array('none',$refs)) {
-            $this->$ref_name = "none";
-          } else {
-            $this->$ref_name = $refs[0];
-          }
-        }
-      }
-    }
-
-    foreach ($this->SRE_attributes as $attr => $flags) {
-      if ($flags['ref']) {
-        $ref_name = 'ref_'.$attr.'_SRE';
-        if (!isset($this->$ref_name)) {
-          $list_name = 'list_'.$attr;
-          $refs = array_keys($this->$list_name);
-          $this->$ref_name = $refs[0];
-        }
-      }
-    }
-
-    // Labels for the supannEtuCursusAnnee year selection
-    $this->cursusAnneeLabels = array(
-      _("None"),
-      _("1st year"),
-      _("2nd year"),
-      _("3rd year"),
-      _("4th year"),
-      _("5th year"),
-      _("6th year"),
-      _("7th year"),
-      _("8th year"),
-      _("9th year"),
+    $attributes = array(
+      new SelectAttribute('', '', $ldapName.'_prefix', $required),
+      new SelectAttribute('', '', $ldapName.'_content', $required)
     );
-
+    parent::__construct($description, $ldapName, $attributes, '/^{(.*)}(.*)$/', '{%s}%s', $acl, $label);
+    $this->setLinearRendering(TRUE);
+    $this->prefixedChoices = supann::get_prefixed_choices_for($filename);
+    $this->prefixedChoices[''] = array(array(''), array(_('None')));
+    $this->attributes[0]->setChoices(array_keys($this->prefixedChoices));
+    $this->attributes[0]->setSubmitForm(TRUE);
+    $this->supannUpdateSelect();
+    $this->setRequired($required);
   }
 
-  function execute()
+  protected function supannUpdateSelect()
   {
-    /* Call parent execute */
-    plugin::execute();
-
-    $display = "";
-    /* log function */
-    if ($this->is_account && !$this->view_logged) {
-      $this->view_logged = TRUE;
-      new log("view", "users/".get_class($this), $this->dn);
-    }
-
-    if (isset($_POST['modify_state'])) {
-      if ($this->is_account && $this->acl_is_removeable()) {
-        $this->is_account = FALSE;
-      }
-      elseif(!$this->is_account && $this->acl_is_createable()) {
-        $this->is_account = TRUE;
-      }
-    }
-
-    if (!$this->is_account && $this->parent == NULL) {
-      $display  = "<img alt=\"\" src=\"images/small-error.png\" align=\"middle\">&nbsp;<b>".
-                  msgPool::noValidExtension(_("SUPANN"))."</b>";
-      $display .= back_to_main();
-      return $display;
-    }
-
-    /****************
-      Account status
-     ****************/
-    /* Show tab dialog headers */
-
-    if ($this->parent !== NULL) {
-      if ($this->is_account) {
-        $display = $this->show_disable_header(msgPool::removeFeaturesButton(_("SUPANN")),
-                                              msgPool::featuresEnabled(_("SUPANN")));
-      } else {
-        $display = $this->show_enable_header( msgPool::addFeaturesButton(_("SUPANN")),
-                                              msgPool::featuresDisabled(_("SUPANN")));
-        return $display;
-      }
-    }
-    /* Templates now! */
-    $smarty = get_smarty();
-
-    foreach($this->attributes as $attribute) {
-      if (in_array($attribute,$this->single_attributes)) {
-        /* assign smarty values for single attribute */
-        $smarty->assign($attribute, $this->$attribute);
-      } else {
-        /* assign smarty values for multiple attribute */
-        if (in_array($attribute,$this->ref_attributes)) {
-          $list_name = 'list_'.$attribute;
-          $array =& $this->$list_name;
-          $tmp = array();
-          foreach($this->$attribute as $value) {
-            $rec = $this->supannExplodeQualifiedAttribute($value);
-            $ref = preg_replace('/\{|\}/', '', $rec[0]);
-
-            $info = $array[$ref[0]][$ref[1]];
-            $tmp[$value] = $info."(base: ".$ref[0].")";
-          }
-          $smarty->assign($attribute.'_values', $tmp);
-
-          $ref_name = 'ref_'.$attribute;
-          $smarty->assign('list_ref_'.$attribute, array_keys($array));
-          $smarty->assign('list_'.$attribute, $array[$this->$ref_name]);
-          $smarty->assign($ref_name, $this->$ref_name);
-        } elseif (($attribute == 'supannEntiteAffectation') || ($attribute == 'eduPersonAffiliation')) {
-          $list_name = 'list_'.$attribute;
-          $array =& $this->$list_name;
-          $tmp = array();
-          foreach($this->$attribute as $attr_value) {
-            $tmp[$attr_value] = $array[$attr_value];
-          }
-          $smarty->assign($attribute.'_values', $tmp);
-        } else {
-          $tmp = array();
-          foreach($this->$attribute as $attr_value) {
-            $tmp[$attr_value] = $attr_value;
-          }
-          $smarty->assign($attribute.'_values', $tmp);
-        }
-      }
-    }
-
-    $profil_list = array("student" => _("student"), "personal" => _("personal"));
-    $smarty->assign("profil_list", $profil_list);
-
-    $smarty->assign("type_profil", $this->type_profil);
-
-    $smarty->assign("list_supannCivilite", array("M.", "Mme", "Mlle"));
-
-    if ($this->type_profil == "personal") {
-      foreach ($this->SRE_attributes as $SRE_attr => $flags) {
-        $list_name = 'list_'.$SRE_attr;
-        if ($flags['ref']) {
-          $ref_name = 'ref_'.$SRE_attr.'_SRE';
-          $array =& $this->$list_name;
-          $smarty->assign('list_ref_'.$SRE_attr.'_SRE', array_keys($array));
-          $smarty->assign('list_'.$SRE_attr.'_SRE', $array[$this->$ref_name]);
-          $smarty->assign($ref_name, $this->$ref_name);
-        } elseif ($flags['list']) {
-          $smarty->assign('list_'.$SRE_attr.'_SRE', $this->$list_name);
-        }
-      }
-
-      /* create list box */
-      $supannEntiteRoleList = new divSelectBox("supannEntiteRole");
-      /* set listbox height */
-      $supannEntiteRoleList->SetHeight(100);
-      /* store in php value html code for editing entries by POST variable */
-      $link_delete =
-        "<a href='?plug=".$_GET['plug'].
-        "&act=delete_SRE&id=%s'><img style='border: 0px' src='images/lists/trash.png'></a>";
-
-      /* walk all values in supannRoleEntite object */
-      foreach($this->supannRoleEntite as $entiteRole => $values) {
-        $SRE_values = $this->supannExplodeCompositeAttribute($values);
-
-        $SRE_entry = array();
-        foreach ($this->SRE_attributes as $SRE_attr => $flags) {
-          if ($flags['ref']) {
-            $tmp = $this->supannExplodeQualifiedAttribute($SRE_values[$flags['shortname']]);
-            $tmp_value = preg_replace('/\{|\}/', '', $tmp[0]);
-            $list_name = 'list_'.$SRE_attr;
-            $array =& $this->$list_name;
-            $value = $array[$tmp_value[0]][$tmp_value[1]];
-          } else {
-            $value = $SRE_values[$flags['shortname']];
-          }
-          $SRE_entry[] = array('string' => _($flags['shortname']).' : '.$value);
-        }
-        $SRE_entry[] = array('string' => str_replace("%s", base64_encode($entiteRole), $link_delete));
-
-        $supannEntiteRoleList->AddEntry($SRE_entry);
-      }
-
-      $smarty->assign("supannEntiteRoleList",
-                      $supannEntiteRoleList->DrawList());
-    }
-
-    if ($this->type_profil == "student") {
-      foreach ($this->SEI_attributes as $SEI_attr => $flags) {
-        $list_name = 'list_'.$SEI_attr;
-        $ref_name = 'ref_'.$SEI_attr.'_SEI';
-        $val_name = $SEI_attr.'_SEI';
-        if ($flags['ref']) {
-          $array =& $this->$list_name;
-          $smarty->assign('list_ref_'.$SEI_attr.'_SEI', array_keys($array));
-          $smarty->assign('list_'.$SEI_attr.'_SEI', $array[$this->$ref_name]);
-          $smarty->assign($ref_name, $this->$ref_name);
-          $smarty->assign($val_name, $this->$val_name);
-        } elseif ($flags['list']) {
-          $smarty->assign('list_'.$SEI_attr.'_SEI', $this->$list_name);
-          $smarty->assign($val_name, $this->$val_name);
-        } elseif ($SEI_attr == 'supannEtuCursusAnnee') {
-          $smarty->assign('list_'.$SEI_attr.'_SEI', $this->$list_name);
-          $cursus_type = substr($this->$val_name,0,1);
-          $cursus_year = intval(substr($this->$val_name,1));
-          $smarty->assign($ref_name, $cursus_type);
-          $smarty->assign($val_name, $cursus_year);
-          $smarty->assign("years_supannEtuCursusAnnee",
-                          array_slice(
-                                      $this->cursusAnneeLabels,
-                                      0,
-                                      $this->years_supannEtuCursusAnnee[$cursus_type]+1 // we add 1 for the "None" value
-                                    )
-                        );
-        }
-      }
-
-      /* create list box */
-      $supannEtuInscriptionList = new divSelectBox("supannEtuInscription");
-      /* set listbox height */
-      $supannEtuInscriptionList->SetHeight(100);
-      /* store in php value html code for editing entries by POST variable */
-      $link_delete = "<a href='?plug=".$_GET['plug']."&act=delete_SEI&id=%s'><img style='border: 0px' src='images/lists/trash.png'></a>";
-
-      /* walk all values in supannRoleEntite object */
-      foreach($this->supannEtuInscription as $entiteSEI => $values) {
-        $SEI_values = $this->supannExplodeCompositeAttribute($values);
-
-        $SEI_entry = array();
-        foreach ($this->SEI_attributes as $SEI_attr => $flags) {
-          if ($flags['ref']) {
-            if (isset($SEI_values[$flags['shortname']])) {
-              $tmp = $this->supannExplodeQualifiedAttribute($SEI_values[$flags['shortname']]);
-              $tmp_value = preg_replace('/\{|\}/', '', $tmp[0]);
-              $list_name = 'list_'.$SEI_attr;
-              $array =& $this->$list_name;
-              $value = $array[$tmp_value[0]][$tmp_value[1]];
-            } else {
-              $value = "";
-            }
-          } elseif ($SEI_attr == 'supannEtuCursusAnnee') {
-            $tmp = $SEI_values[$flags['shortname']];
-            $list_name = 'list_'.$SEI_attr;
-            $array =& $this->$list_name;
-
-            $type_cursus = substr($tmp, 0, 1);
-            $reste_cursus = intval(substr($tmp, 1));
-            $value = $array[$type_cursus];
-            if ($reste_cursus != 0) {
-              $value .= " (".$this->cursusAnneeLabels[$reste_cursus].")";
-            }
-          } else {
-            if (isset($SEI_values[$flags['shortname']])) {
-              $value = $SEI_values[$flags['shortname']];
-            } else {
-              $value = "";
-            }
-          }
-          $SEI_entry[] = array('string' => _($flags['shortname']).' : '.$value);
-        }
-        $SEI_entry[] = array('string' => str_replace("%s", base64_encode($entiteSEI), $link_delete));
-
-        $supannEtuInscriptionList->AddEntry($SEI_entry);
-      }
-      $smarty->assign("supannEtuInscriptionList", $supannEtuInscriptionList->DrawList());
-    }
-
-    $smarty->assign("supannListeRouge_flag", ($this->supannListeRouge == "TRUE"));
-
-    $smarty->assign("list_supannEntiteAffectation", $this->list_supannEntiteAffectation);
-    $smarty->assign("list_eduPersonAffiliation",    $this->list_eduPersonAffiliation);
-
-    $smarty->assign("HELP_eduPersonPrincipalName",  _("HELP_eduPersonPrincipalName"));
-    $smarty->assign("HELP_supannAutreTelephone",    _("HELP_supannAutreTelephone"));
-    $smarty->assign("HELP_supannAliasLogin",        _("HELP_supannAliasLogin"));
-    $smarty->assign("HELP_supannCivilite",          _("HELP_supannCivilite"));
-    $smarty->assign("HELP_supannListeRouge",        _("HELP_supannListeRouge"));
-    $smarty->assign("HELP_supannAutreMail",         _("HELP_supannAutreMail"));
-    $smarty->assign("HELP_supannMailPerso",         _("HELP_supannMailPerso"));
-    $smarty->assign("HELP_supannEmpId",             _("HELP_supannEmpId"));
-    $smarty->assign("HELP_eduPersonAffiliation",    _("HELP_eduPersonAffiliation"));
-    $smarty->assign("HELP_supannEmpCorps",          _("HELP_supannEmpCorps"));
-    $smarty->assign("HELP_supannActivite",          _("HELP_supannActivite"));
-    $smarty->assign("HELP_supannEntiteAffectationPrincipale", _("HELP_supannEntiteAffectationPrincipale"));
-    $smarty->assign("HELP_supannEntiteAffectation", _("HELP_supannEntiteAffectation"));
-    $smarty->assign("HELP_supannEtablissement",     _("HELP_supannEtablissement"));
-    $smarty->assign("HELP_supannTypeEntiteAffectation", _("HELP_supannTypeEntiteAffectation"));
-    $smarty->assign("HELP_supannRoleGenerique",     _("HELP_supannRoleGenerique"));
-    $smarty->assign("HELP_supannRoleEntite",        _("HELP_supannRoleEntite"));
-
-    $display = $display.$smarty->fetch(get_template_path('supann.tpl', TRUE, dirname(__FILE__)));
-
-    return $display;
+    $prefix = $this->attributes[0]->getValue();
+    $this->attributes[1]->setChoices($this->prefixedChoices[$prefix][0], $this->prefixedChoices[$prefix][1]);
+    $this->attributes[1]->setRequired($prefix != '');
   }
 
-  /* Validate user inputthis->$attr
-   */
-  function check()
+  function applyPostValue()
   {
-    $message = plugin::check();
-    if (($this->type_profil != "student") && ($this->type_profil != "personal")) {
-      $message[] = msgPool::invalid("type_profil");
-    }
-
-    return $message;
+    parent::applyPostValue();
+    $this->supannUpdateSelect();
   }
 
-  /* Save data to object */
-  function save_object()
+  function setValue ($values)
   {
-    @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $this->dn, "dn");
-    /* Save additional values for possible next step */
-    if (isset($_GET['act']) && $_GET['act'] == "delete_SRE") {
-      $tmp = base64_decode($_GET['id']);
-      unset($this->supannRoleEntite[$tmp]);
+    if (!is_array($values)) {
+      $values = $this->inputValue($values);
     }
-    if (isset($_GET['act']) && $_GET['act'] == "delete_SEI") {
-      $tmp = base64_decode($_GET['id']);
-      unset($this->supannEtuInscription[$tmp]);
-    }
-    if (isset($_POST['supannAccountTab'])) {
-      if (isset($_POST['type_profil']) && $_POST['type_profil'] == "student") {
-        $this->type_profil = "student";
-      } else {
-        $this->type_profil = "personal";
-      }
-
-      plugin::save_object();
-
-      if (isset($_POST['supannListeRouge'])) {
-        $this->supannListeRouge = "TRUE";
-      } else {
-        $this->supannListeRouge = "FALSE";
-      }
-
-      foreach(array("supannAutreMail","supannMailPerso","supannAutreTelephone",
-                    "supannEntiteAffectation","eduPersonAffiliation",
-                    "supannCodeINE","supannEtuAnneeInscription","supannEtuId","supannEtuInscription")
-              as $attr) {
-        /* add Value */
-        if (isset($_POST[$attr.'_new']) && isset($_POST['add'.$attr])) {
-          $array =& $this->$attr;
-          $array[$_POST[$attr.'_new']] = $_POST[$attr.'_new'];
-        }
-        /* delete Value */
-        if (isset($_POST['del'.$attr]) && isset($_POST[$attr.'_selected'])) {
-          foreach($_POST[$attr.'_selected'] as $name) {
-            $array =& $this->$attr;
-            unset($array[$name]);
-          }
-        }
-      }
-
-      foreach($this->ref_attributes as $attr) {
-        /* add Value */
-        if (isset($_POST[$attr.'_new']) && isset($_POST['add'.$attr])) {
-          $rec = "{".$_POST['ref_'.$attr]."}".$_POST[$attr.'_new'];
-          $array =& $this->$attr;
-          $array[$rec] = $rec;
-        }
-        /* delete Value */
-        if (isset($_POST['del'.$attr]) && isset($_POST[$attr.'_selected'])) {
-          foreach($_POST[$attr.'_selected'] as $name) {
-            $array =& $this->$attr;
-            unset($array[$name]);
-          }
-        }
-        $ref_name = 'ref_'.$attr;
-        if (isset($_POST[$ref_name])) {
-          $this->$ref_name = $_POST[$ref_name];
-        }
-      }
-
-      if ($this->type_profil == 'personal') {
-        /* supannRoleEntite */
-        foreach ($this->SRE_attributes as $SRE_attr => $flags) {
-          if ($flags['ref']) {
-            $ref_name = 'ref_'.$SRE_attr.'_SRE';
-            if (isset($_POST[$ref_name])) {
-              $this->$ref_name = $_POST[$ref_name];
-            }
-          }
-          $val_name = $SRE_attr.'_SRE';
-          if (isset($_POST[$val_name])) {
-            $this->$val_name = $_POST[$val_name];
-          }
-        }
-
-        if (isset($_POST['addsupannRoleEntite'])) {
-          $rec = "";
-          foreach ($this->SRE_attributes as $SRE_attr => $flags) {
-            $val_name = $SRE_attr.'_SRE';
-            $value = $this->$val_name;
-            if ($flags['ref']) {
-              $ref_name = 'ref_'.$SRE_attr.'_SRE';
-              $value    = "{".$this->$ref_name."}".$value;
-            }
-            $values =& $this->$SRE_attr;
-            if (!isset($values[$this->$val_name])) {
-              /* Adding the value to the attribute itself */
-              $values[$value] = $value;
-            }
-            /* SRE entry */
-            $rec .= "[".$flags['shortname']."=".$value."]";
-          }
-          $this->supannRoleEntite[$rec] = $rec;
-        }
-      } else {
-        /* supannEtuInscription */
-        foreach ($this->SEI_attributes as $SEI_attr => $flags) {
-          if ($flags['ref']) {
-            $ref_name = 'ref_'.$SEI_attr.'_SEI';
-            if (isset($_POST[$ref_name])) {
-              $this->$ref_name = $_POST[$ref_name];
-            }
-          }
-          $val_name = $SEI_attr.'_SEI';
-          if (isset($_POST[$val_name])) {
-            if ($SEI_attr == 'supannEtuCursusAnnee') {
-              $year = intval($_POST[$val_name]);
-              if ($year <= 0) {
-                $year = "";
-              }
-              $this->$val_name = $_POST['ref_'.$val_name].$year;
-            } else {
-              $this->$val_name = $_POST[$val_name];
-            }
-          }
-        }
-
-        if (isset($_POST['addsupannEtuInscription'])) {
-          $rec = "";
-          foreach ($this->SEI_attributes as $SEI_attr => $flags) {
-            $val_name = $SEI_attr.'_SEI';
-            $value = $this->$val_name;
-            if ($flags['ref']) {
-              $ref_name = 'ref_'.$SEI_attr.'_SEI';
-              if ($this->$ref_name == 'none') {
-                continue;
-              }
-              $value = "{".$this->$ref_name."}".$value;
-            }
-            if ($value == "") {
-              continue;
-            }
-            $values =& $this->$SEI_attr;
-            if (!isset($values[$this->$val_name])) {
-              /* Adding the value to the attribute itself */
-              $values[$value] = $value;
-            }
-            /* SEI entry */
-            $rec .= "[".$flags['shortname']."=".$value."]";
-          }
-          $this->supannEtuInscription[$rec] = $rec;
-        }
-      }
-    }
+    $this->attributes[0]->setValue($values[0]);
+    $this->supannUpdateSelect();
+    $this->attributes[1]->setValue($values[1]);
   }
 
-  /* Save attribute modifications back to the ldap
-   */
-  function save()
+  function resetToDefault ()
   {
-    if ($this->type_profil == "student") {
-      foreach ($this->personal_attributes as $attribute) {
-        $this->$attribute = "";
-      }
-    } elseif ($this->type_profil == "personal") {
-      foreach ($this->student_attributes as $attribute) {
-        $this->$attribute = "";
-      }
-    }
-
-    foreach($this->attributes as $attr) {
-      if (is_array($this->$attr)) {
-        $tmp = array();
-        foreach($this->$attr as $item) {
-          array_push($tmp,$item);
-        }
-        $this->$attr = $tmp;
-      }
-    }
-
-    /* Save values to object */
-    plugin::save();
-
-    $this->cleanup();
-
-    $ldap = $this->config->get_ldap_link();
-    $ldap->cd($this->dn);
-    $ldap->modify($this->attrs);
-    if (!$ldap->success()) {
-      msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_MOD, get_class());
-    }
+    $this->attributes[0]->resetToDefault();
+    $this->supannUpdateSelect();
+    $this->attributes[1]->resetToDefault();
   }
 
-  /*! \brief  Removes the mailAccount extension from ldap
-   */
-  function remove_from_parent()
+  function writeValues ($values)
   {
-    /* Cancel if there's nothing to do here */
-    if (!$this->initially_was_account) {
-      return;
+    if ($values[0] == '') {
+      return '';
+    } else {
+      return parent::writeValues($values);
     }
-
-    /* Remove GOsa attributes */
-    plugin::remove_from_parent();
-
-
-    @DEBUG(DEBUG_LDAP, __LINE__, __FUNCTION__, __FILE__, $this->attributes, "Save");
-    $ldap = $this->config->get_ldap_link();
-    $ldap->cd($this->dn);
-    $ldap->modify($this->attrs);
-
-    /* Add "view" to logging class */
-    new log("remove", "users/".get_class($this), $this->dn,
-            array_keys($this->attrs), $ldap->get_error());
-    if (!$ldap->success()) {
-      msg_dialog::display(_("LDAP error"),
-                          msgPool::ldaperror($ldap->get_error(), $this->dn,
-                                             LDAP_MOD, get_class()));
-    }
-
-    /* Optionally execute a command after we're done */
-    $this->handle_post_events("remove", array("uid" => $this->uid));
   }
+
+  function displayValue($values)
+  {
+    if (!is_array($values)) {
+      $values = $this->inputValue($values);
+    }
+    $this->setValue($values);
+    $v1 = $this->attributes[0]->displayValue($values[0]);
+    $v2 = $this->attributes[1]->displayValue($values[1]);
+    return ($v1 == ''?$v2:$v1.': '.$v2);
+  }
+}
+
+class SupannCursusAnneeAttribute extends SupannPrefixedSelectAttribute
+{
+  function __construct($label, $description, $ldapName, $required, $acl = "")
+  {
+    $attributes = array(
+      new SelectAttribute('', '', $ldapName.'_prefix', $required),
+      new SelectAttribute('', '', $ldapName.'_content', FALSE)
+    );
+    CompositeAttribute::__construct($description, $ldapName, $attributes, '/^{SUPANN}(.)(\\d+)$/', '{SUPANN}%s%d', $acl, $label);
+    $this->setLinearRendering(TRUE);
+
+    $this->attributes[0]->setChoices(
+      array('L','M','D','X','B'),
+      array(_('Licence'),_('Master'),_('Ph.D.'),_('Another class of degree'),_('post-graduate year'))
+    );
+    $yearLabels = array(
+      _('None'),_('1st year'),_('2nd year'),_('3rd year'),
+      _('4th year'),_('5th year'),_('6th year'),
+      _('7th year'),_('8th year'),_('9th year'),
+    );
+    $this->prefixedChoices = array(
+      'L' => array(range(0, 3),array_slice($yearLabels, 0, 3 + 1)),
+      'M' => array(range(0, 2),array_slice($yearLabels, 0, 2 + 1)),
+      'D' => array(range(0, 9),array_slice($yearLabels, 0, 10)),
+      'X' => array(range(0, 9),array_slice($yearLabels, 0, 10)),
+      'B' => array(range(0, 20),range(0, 20)),
+    );
+    $this->attributes[0]->setSubmitForm(TRUE);
+    $this->supannUpdateSelect();
+    $this->setRequired($required);
+  }
+  protected function supannUpdateSelect()
+  {
+    $prefix = $this->attributes[0]->getValue();
+    $this->attributes[1]->setChoices($this->prefixedChoices[$prefix][0], $this->prefixedChoices[$prefix][1]);
+  }
+}
+
+class SupannCompositeAttribute extends CompositeAttribute
+{
+  function __construct($description, $ldapName, $attributes, $acl = "", $label = "Composite attribute")
+  {
+    parent::__construct($description, $ldapName, $attributes, '', '', $acl, $label);
+  }
+
+  function readValues($value)
+  {
+    $values = array();
+    $m = array();
+    foreach ($this->attributes as &$attribute) {
+      $shortname = preg_replace('/^[^_]+_/', '', $attribute->getLdapName());
+      if (preg_match("/\\[$shortname=([^\\]]+)\\]/", $value, $m)) {
+        $values[] = $m[1];
+      } else {
+        $values[] = "";
+      }
+    }
+    unset($attribute);
+
+    return $values;
+  }
+
+  function writeValues($values)
+  {
+    $value  = '';
+    $i      = 0;
+    foreach ($this->attributes as &$attribute) {
+      if ($values[$i] != '') {
+        $shortname = preg_replace('/^[^_]+_/', '', $attribute->getLdapName());
+        $value .= "[$shortname=".$values[$i]."]";
+      }
+      $i++;
+    }
+    unset($attribute);
+    return $value;
+  }
+
+  function supannGetValues(&$values)
+  {
+    foreach ($this->attributes as &$attribute) {
+      $shortname = preg_replace('/^([^_]+)_.*$/', '\\1', $attribute->getLdapName());
+      $value = $attribute->getValue();
+      if (!isset($values[$shortname])) {
+        $values[$shortname] = array();
+      }
+      if ($value == "") {
+        continue;
+      }
+      $values[$shortname][$value] = $value;
+    }
+    unset($attribute);
+  }
+}
+
+class SupannOrderedArrayAttribute extends OrderedArrayAttribute
+{
+  function supannPrepareSave()
+  {
+    $values = array();
+    foreach ($this->value as $value) {
+      $this->attribute->setValue($value);
+      $this->attribute->supannGetValues($values);
+    }
+    foreach ($values as $ldapName => $array) {
+      if ($this->plugin->attributesAccess[$ldapName]->isVisible()) {
+        continue;
+      }
+      $this->plugin->attributesAccess[$ldapName]->setValue(array_values($array));
+    }
+  }
+}
+
+class supannAccount extends simplePlugin
+{
+  var $objectclasses = array('eduPerson', 'supannPerson');
+
+  var $displayHeader = TRUE;
 
   static function plInfo()
   {
     return array(
-      "plShortName"   => _("Supann"),
-      "plDescription" => _("SUPANN informations management plugin"),
-      "plIcon"        => "plugins/supann/images/plugin.png",
-      "plSelfModify"  => TRUE,
-      "plDepends"     => array("users"),
-      "plPriority"    => 5,
-      "plSection"     => array("personal" => _("My account")),
-      "plCategory"    => array("users"),
-      "plOptions"     => array(),
-      "plProvidedAcls" => array(
-        "eduPersonAffiliation"        => _("eduPersonAffiliation"),
-        "eduPersonPrimaryAffiliation" => _("eduPersonPrimaryAffiliation"),
-        "eduPersonNickName"           => _("eduPersonNickName"),
-        "eduPersonPrincipalName"      => _("eduPersonPrincipalName"),
-        "supannEntiteAffectation"     => _("supannEntiteAffectation"),
-        "supannEntiteAffectationPrincipale" => _("supannEntiteAffectationPrincipale"),
-        "supannAliasLogin"            => _("supannAliasLogin"),
-        "supannAutreMail"             => _("supannAutreMail"),
-        "supannAutreTelephone"        => _("supannAutreTelephone"),
-        "supannCivilite"              => _("supannCivilite"),
-        "supannEtablissement"         => _("supannEtablissement"),
-        "supannListeRouge"            => _("supannListeRouge"),
-        "supannMailPerso"             => _("supannMailPerso"),
-        "supannTypeEntiteAffectation" => _("supannTypeEntiteAffectation"),
-        "supannCodeINE"               => _("supannCodeINE"),
-        "supannEtuId"                 => _("supannEtuId"),
-        "supannEtuInscription"        => _("supannEtuInscription"),
-        "supannEtuAnneeInscription"   => _("supannEtuAnneeInscription"),
-        "supannEtuRegimeInscription"  => _("supannEtuRegimeInscription"),
-        "supannEtuSecteurDisciplinaire" => _("supannEtuSecteurDisciplinaire"),
-        "supannEtuTypeDiplome"        => _("supannEtuTypeDiplome"),
-        "supannEtuCursusAnnee"        => _("supannEtuCursusAnnee"),
-        "supannEtuDiplome"            => _("supannEtuDiplome"),
-        "supannEtuEtape"              => _("supannEtuEtape"),
-        "supannEtuElementPedagogique" => _("supannEtuElementPedagogique"),
-        "supannEmpCorps"              => _("supannEmpCorps"),
-        "supannEmpId"                 => _("supannEmpId"),
-        "supannRoleGenerique"         => _("supannRoleGenerique"),
-        "supannRoleEntite"            => _("supannRoleEntite"),
-        "supannActivite"              => _("supannActivite"),
-      )
+      'plShortName'   => _('SupAnn'),
+      'plDescription' => _('SupAnn informations management plugin'),
+      'plIcon'        => 'plugins/supann/images/icon.png',
+      'plSmallIcon'   => 'plugins/supann/images/iconMini.png',
+      'plSelfModify'  => TRUE,
+      'plPriority'    => 14,
+      'plCategory'    => array('users'),
+      'plObjectType'  => array('user'),
+
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }
 
-  function supannExplodeQualifiedAttribute($val)
+  // The main function : information about attributes
+  static function getAttributesInfo ()
   {
-    $accolade_pattern = '#\{.*?\}|[^ ]+#';
-    preg_match_all($accolade_pattern, $val, $tabResult);
-    return ($tabResult);
+    $year = intval(date('Y'));
+    return array(
+      'identity' => array(
+        'name'  => _('Identity'),
+        'attrs' => array(
+          new SelectAttribute(
+            _('Civilite'), _('supannCivilite - Civilte for this person'),
+            'supannCivilite', FALSE,
+            array('', 'M.', 'Mme', 'Mlle')
+          ),
+          new StringAttribute(
+            _('Alias login'), _('supannAliasLogin - An alias for the login of this user'),
+            'supannAliasLogin', FALSE
+          ),
+          new StringAttribute(
+            _('eduPersonPrincipalName'), _('eduPersonPrincipalName - A name that look like <id>@<domain> which is unique for this domain, and has not be assigned to anyone else recently'),
+            'eduPersonPrincipalName', TRUE
+          ),
+          new StringAttribute(
+            _('Nick name'), _('eduPersonNickName - Can contain a nick name for this user'),
+            'eduPersonNickName', FALSE
+          ),
+        )
+      ),
+      'contact' => array(
+        'name'  => _('Contact'),
+        'attrs' => array(
+          new SetAttribute(
+            new StringAttribute(
+              _('Other phone numbers'), _('supannAutreTelephone - Other phone numbers for this user'),
+              'supannAutreTelephone', FALSE
+            )
+          ),
+          new SetAttribute(
+            new MailAttribute(
+              _('Other mail addresses'), _('supannAutreMail - Other mail addresses for this user. Each must be unique'),
+              'supannAutreMail', FALSE
+            )
+          ),
+          new SetAttribute(
+            new MailAttribute(
+              _('Personal mail addresses'), _('supannMailPerso - Personal mail addresses for this user'),
+              'supannMailPerso', FALSE
+            )
+          ),
+          new BooleanAttribute(
+            _('Liste rouge'), _('supannListeRouge - Should this person be on the red list'),
+            'supannListeRouge', TRUE
+          )
+        )
+      ),
+      'affectation' => array(
+        'name'  => _('Affectation'),
+        'attrs' => array(
+          new SelectAttribute(
+            _('Entite affectation principale'), _('supannEntiteAffectationPrincipale'),
+            'supannEntiteAffectationPrincipale', FALSE
+          ),
+          new SetAttribute(
+            new SelectAttribute(
+              _('Entite affectation'), _('supannEntiteAffectation'),
+              'supannEntiteAffectation', FALSE
+            )
+          ),
+          new SetAttribute(
+            new SelectAttribute(
+              _('Type entite affectation'), _('supannTypeEntiteAffectation'),
+              'supannTypeEntiteAffectation', FALSE
+            )
+          ),
+        )
+      ),
+      'affiliation' => array(
+        'name'  => _('Affiliation'),
+        'attrs' => array(
+          new SelectAttribute(
+            _('Primary affiliation'), _('eduPersonPrimaryAffiliation'),
+            'eduPersonPrimaryAffiliation', FALSE
+          ),
+          new SetAttribute(
+            new SelectAttribute(
+              _('Affiliations'), _('eduPersonAffiliation'),
+              'eduPersonAffiliation', FALSE
+            )
+          ),
+          new SetAttribute(
+            new SelectAttribute(
+              _('Etablissement'), _('supannEtablissement'),
+              'supannEtablissement', FALSE
+            )
+          ),
+        )
+      ),
+      'student' => array(
+        'name'  => _('Student profile'),
+        'attrs' => array(
+          new StringAttribute(
+            _('INE code'), _('supannCodeINE - INE code of this student'),
+            'supannCodeINE', FALSE
+          ),
+          new StringAttribute(
+            _('Student ID'), _('supannEtuId - scolarity id'),
+            'supannEtuId', FALSE
+          ),
+        )
+      ),
+      'student2' => array(
+        'name'      => _('Student subscriptions'),
+        'class'     => array('fullwidth'),
+        'template'  => get_template_path('student_subscription.tpl', TRUE, dirname(__FILE__)),
+        'attrs'     => array(
+          /* These attributes are handled by the SupannOrderedArrayAttribute */
+          new HiddenAttribute('supannEtuAnneeInscription'),
+          new HiddenAttribute('supannEtuRegimeInscription'),
+          new HiddenAttribute('supannEtuSecteurDisciplinaire'),
+          new HiddenAttribute('supannEtuTypeDiplome'),
+          new HiddenAttribute('supannEtuCursusAnnee'),
+          new HiddenAttribute('supannEtuDiplome'),
+          new HiddenAttribute('supannEtuEtape'),
+          new HiddenAttribute('supannEtuElementPedagogique'),
+          new SupannOrderedArrayAttribute(
+            new SupannCompositeAttribute(
+              _('supannEtuInscription - Subscriptions for this student'),
+              'supannEtuInscription',
+              array(
+                new SelectAttribute(
+                  _('Etablissement'), _('supannEtablissement - Etablissement in which this subscription was done'),
+                  'supannEtablissement_etab', TRUE
+                ),
+                new IntAttribute(
+                  _('Year'), _('supannEtuAnneeInscription - The year this subscription will begin'),
+                  'supannEtuAnneeInscription_anneeinsc', TRUE,
+                  $year - 100, $year + 100, $year
+                ),
+                new SelectAttribute(
+                  _('Subscription type'), _('supannEtuRegimeInscription - The type of this subscription'),
+                  'supannEtuRegimeInscription_regimeinsc', TRUE
+                ),
+                new SelectAttribute(
+                  _('Secteur Disciplinaire'), _('supannEtuSecteurDisciplinaire'),
+                  'supannEtuSecteurDisciplinaire_sectdisc', TRUE
+                ),
+                new SelectAttribute(
+                  _('Diploma type'), _('supannEtuTypeDiplome - Type of diploma'),
+                  'supannEtuTypeDiplome_typedip', TRUE
+                ),
+                new SupannCursusAnneeAttribute(
+                  _('Cursus annee'), _('supannEtuCursusAnnee'),
+                  'supannEtuCursusAnnee_cursusann', TRUE
+                ),
+                new SelectAttribute(
+                  _('Entite affectation'), _('supannEntiteAffectation_affect'),
+                  'supannEntiteAffectation_affect', FALSE
+                ),
+                new SupannPrefixedSelectAttribute(
+                  _('Diploma'), _('supannEtuDiplome'),
+                  'supannEtuDiplome_diplome', FALSE, 'diplome'
+                ),
+                new SupannPrefixedSelectAttribute(
+                  _('Step'), _('supannEtuEtape'),
+                  'supannEtuEtape_etape', FALSE, 'etuetape'
+                ),
+                new SupannPrefixedSelectAttribute(
+                  _('educational element'), _('supannEtuElementPedagogique'),
+                  'supannEtuElementPedagogique_eltpedago', FALSE, 'etuelementpedagogique'
+                ),
+              )
+            ),
+            FALSE,  // no order
+            array(),
+            FALSE   // no edit button
+          )
+        )
+      ),
+      'personnal' => array(
+        'name'  => _('Personnal profile'),
+        'attrs' => array(
+          new StringAttribute(
+            _('Personal ID'), _('supannEmpId'),
+            'supannEmpId', FALSE
+          ),
+          new SelectAttribute(
+            _('Personal corps'), _('supannEmpCorps'),
+            'supannEmpCorps', FALSE
+          ),
+          new SetAttribute(
+            new SupannPrefixedSelectAttribute(
+              _('Activite'), _('supannActivite'),
+              'supannActivite', FALSE, 'activite'
+            )
+          )
+        )
+      ),
+      'personnal2' => array(
+        'name'      => _('Roles'),
+        'class'     => array('fullwidth'),
+        //~ 'template'  => get_template_path('personnal_role.tpl', TRUE, dirname(__FILE__)),
+        'attrs'     => array(
+          /* These attributes are handled by the SupannOrderedArrayAttribute */
+          new HiddenAttribute('supannRoleGenerique'),
+          new SupannOrderedArrayAttribute(
+            new SupannCompositeAttribute(
+              _('supannRoleEntite'),
+              'supannRoleEntite',
+              array(
+                new SelectAttribute(
+                  _('Generic role'), _('supannRoleGenerique'),
+                  'supannRoleGenerique_role', TRUE
+                ),
+                new SelectAttribute(
+                  _('Entite type'), _('supannTypeEntiteAffectation'),
+                  'supannTypeEntiteAffectation_type', TRUE
+                ),
+                new SelectAttribute(
+                  _('Entite'), _('supannEntiteAffectation'),
+                  'supannEntiteAffectation_code', FALSE
+                ),
+              ),
+              '',
+              '' // no label
+            ),
+            FALSE,  // no order
+            array(),
+            FALSE   // no edit button
+          )
+        )
+      ),
+    );
   }
 
-  function supannExplodeCompositeAttribute($str)
+  function __construct (&$config, $dn = NULL, $object = NULL)
   {
-    preg_match_all('`\[([^\]]*)\]`', $str, $tabResult);
-    for ($i = 0; $i < count($tabResult[1]); $i++) {
-      $val = preg_split('/\=/i', $tabResult[1][$i]);
-      $res[$val[0]] = $val[1];
+    parent::__construct($config, $dn, $object);
+
+    /* list of entity stored in LDAP tree */
+    $ldap = $this->config->get_ldap_link();
+    $ldap->cd($this->config->current['BASE']);
+    $ldap->search('(objectClass=supannEntite)', array('supannCodeEntite', 'ou', 'o','supannEtablissement'));
+
+    $code_entites   = array();
+    $label_entites  = array();
+    $code_etablissements  = array();
+    $label_etablissements = array();
+    while ($attrs = $ldap->fetch()) {
+      if (isset($attrs['supannCodeEntite'][0])) {
+        $code_entites[] = $attrs['supannCodeEntite'][0];
+        if (isset($attrs['ou'][0])) {
+          $label_entites[] = $attrs['ou'][0]." (".$attrs['supannCodeEntite'][0].")";
+        } else {
+          $label_entites[] = $attrs['o'][0]." (".$attrs['supannCodeEntite'][0].")";
+        }
+        if (isset($attrs['supannEtablissement'][0])) {
+          $code_etablissements[]  = $attrs['supannEtablissement'][0];
+          $label_etablissements[] = $attrs['o'][0]." (".$attrs['supannEtablissement'][0].")";
+        }
+      }
     }
 
-    return $res;
+    $this->attributesAccess['supannEntiteAffectation']->attribute->setChoices($code_entites, $label_entites);
+    $this->attributesAccess['supannEtablissement']->attribute->setChoices($code_etablissements, $label_etablissements);
+    list ($codes, $labels) = supann::get_choices_for('entite');
+    $this->attributesAccess['supannTypeEntiteAffectation']->attribute->setChoices($codes, $labels);
+    list ($codes, $labels) = supann::get_choices_for('affiliation');
+    $this->attributesAccess['eduPersonAffiliation']->attribute->setChoices($codes, $labels);
+    $this->attributesAccess['supannEtuInscription']->setLinearRendering(FALSE);
+    $this->supannInit();
+    list ($codes, $labels) = supann::get_choices_for('corps', 'NCORPS');
+    $this->attributesAccess['supannEmpCorps']->setChoices($codes, $labels);
   }
 
-  /* return the 64 first chars and "…" after if text is longer */
-  function truncate_label($str,$len = 64)
+  function supannInit()
   {
-    if (strlen($str) > $len) {
-      return substr($str,0,$len)."…";
-    } else {
-      return $str;
-    }
+    list ($codes, $labels) = supann::get_choices_for('eturegimeinscription_SISE', '{SISE}');
+    $this->attributesAccess['supannEtuInscription']->attribute->attributes[2]->setChoices($codes, $labels); // supannEtuRegimeInscription
+
+    list ($codes, $labels) = supann::get_choices_for('discipline_SISE', '{SISE}');
+    $this->attributesAccess['supannEtuInscription']->attribute->attributes[3]->setChoices($codes, $labels); // supannEtuSecteurDisciplinaire
+
+    list ($codes, $labels) = supann::get_choices_for('typediplome_SISE', '{SISE}');
+    $this->attributesAccess['supannEtuInscription']->attribute->attributes[4]->setChoices($codes, $labels); // supannEtuTypeDiplome
+
+    list ($codes, $labels) = supann::get_choices_for('role', '{SUPANN}');
+    $this->attributesAccess['supannRoleEntite']->attribute->attributes[0]->setChoices($codes, $labels); // supannRoleGeneric
+  }
+
+  function execute()
+  {
+    $code_ent   = $this->attributesAccess['supannEntiteAffectation']->getValue();
+    $label_ent  = $this->attributesAccess['supannEntiteAffectation']->getDisplayValues();
+    $this->attributesAccess['supannEntiteAffectationPrincipale']->setChoices(
+      $code_ent, $label_ent
+    );
+    $code_etab   = $this->attributesAccess['supannEtablissement']->getValue();
+    $label_etab  = $this->attributesAccess['supannEtablissement']->getDisplayValues();
+    $this->attributesAccess['supannEtuInscription']->attribute->attributes[0]->setChoices($code_etab, $label_etab); // supannEtablissement
+    $this->attributesAccess['supannEtuInscription']->attribute->attributes[6]->setChoices($code_ent, $label_ent); // supannEntiteAffectation
+    $this->attributesAccess['supannRoleEntite']->attribute->attributes[2]->setChoices($code_ent, $label_ent); // supannEntiteAffectation
+    $code_tent   = $this->attributesAccess['supannTypeEntiteAffectation']->getValue();
+    $label_tent  = $this->attributesAccess['supannTypeEntiteAffectation']->getDisplayValues();
+    $this->attributesAccess['supannRoleEntite']->attribute->attributes[1]->setChoices($code_tent, $label_tent); // supannTypeEntiteAffectation
+
+    $this->attributesAccess['eduPersonPrimaryAffiliation']->setChoices(
+      $this->attributesAccess['eduPersonAffiliation']->getValue(),
+      $this->attributesAccess['eduPersonAffiliation']->getDisplayValues()
+    );
+    return parent::execute();
+  }
+
+  protected function prepare_save ()
+  {
+    $this->attributesAccess['supannEtuInscription']->supannPrepareSave();
+    $this->attributesAccess['supannEtuInscription']->supannPrepareSave();
+    parent::prepare_save();
   }
 }
 ?>

@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011  FusionDirectory
+  Copyright (C) 2011-2013  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -25,7 +25,7 @@ class sambaLogonHours extends plugin
 
   var $sambaLogonHours = "";
   var $Matrix          = array();
-  var $timezone        = 0; 
+  var $timezone        = 0;
   var $config;
   var $acl;
 
@@ -67,12 +67,12 @@ class sambaLogonHours extends plugin
       $new = substr($new,0,168);
     }
 
-    /* Create matrix */ 
+    /* Create matrix */
     $this->Matrix = array();
     for($day = 0 ; $day < 7 ; $day ++ ){
       for($hour  = 0 ; $hour < 24 ; $hour ++){
         $bitpos  = ($day * 24 + $hour) % 168;
-        $this->Matrix[$day][$hour] = $new[$bitpos]; 
+        $this->Matrix[$day][$hour] = $new[$bitpos];
       }
     }
   }
@@ -101,7 +101,7 @@ class sambaLogonHours extends plugin
   {
     /* Get userinfo */
     $ui = get_userinfo();
-  
+
     /* Check if dialog was opened and if there were any changes */
     if(isset($_POST['sambaLogonHoursPosted'])){
       foreach($this->Matrix as $day_key => $days){
@@ -115,7 +115,7 @@ class sambaLogonHours extends plugin
       }
     }
   }
-  
+
   function save()
   {
 
@@ -133,7 +133,7 @@ class sambaLogonHours extends plugin
       $slh = $slh[167].$slh;
       $slh = substr($slh,0,168);
     }
- 
+
     /* Rework string, because it was stored in little endian */
     $new = '';
     for($i = 0 ; $i < 21 ; $i ++ ){
@@ -151,7 +151,7 @@ class sambaLogonHours extends plugin
 
     /* Create uppercase HEX chars */
     $ret = strtoupper( $tmp);
-    
+
     /* All hours and days selected */
     if(substr_count($ret,'F') == 42){
       $ret = "";
@@ -160,5 +160,32 @@ class sambaLogonHours extends plugin
     return($ret);
   }
 }
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
+
+class SambaLogonHoursDialog
+{
+  private $dialog;
+  private $sambaAttribute;
+
+  function __construct ($simplePlugin, &$sambaAttribute)
+  {
+    $this->sambaAttribute = $sambaAttribute;
+    $this->dialog         = new sambaLogonHours(
+      $simplePlugin->config, $simplePlugin->dn, $sambaAttribute->getValue(),
+      $simplePlugin->getacl('sambaLogonHours')
+    );
+  }
+
+  function execute ()
+  {
+    if (isset($_POST['cancel_logonHours'])) {
+      return FALSE;
+    }
+    $this->dialog->save_object();
+    if (isset($_POST['save_logonHours'])) {
+      $this->sambaAttribute->setValue($this->dialog->save());
+      return FALSE;
+    }
+    return $this->dialog->execute();
+  }
+}
 ?>

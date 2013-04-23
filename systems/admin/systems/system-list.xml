@@ -14,7 +14,7 @@
       <label>New workstation</label>
       <objectClass>FAKE_OC_NewWorkstation</objectClass>
       <category>workstation</category>
-      <class>workgeneric</class>
+      <class>workstationGeneric</class>
       <image>plugins/systems/images/select_new_workstation.png</image>
     </objectType>
 
@@ -22,7 +22,7 @@
       <label>Locked server</label>
       <objectClass>goServer__IS_LOCKED</objectClass>
       <category>server</category>
-      <class>servgeneric</class>
+      <class>serverGeneric</class>
       <image>plugins/systems/images/server_locked.png</image>
     </objectType>
 
@@ -30,7 +30,7 @@
       <label>Locked workstation</label>
       <objectClass>gotoWorkstation__IS_LOCKED</objectClass>
       <category>workstation</category>
-      <class>workgeneric</class>
+      <class>workstationGeneric</class>
       <image>plugins/systems/images/workstation_locked.png</image>
     </objectType>
 
@@ -38,7 +38,7 @@
       <label>Locked terminal</label>
       <objectClass>gotoTerminal__IS_LOCKED</objectClass>
       <category>terminal</category>
-      <class>termgeneric</class>
+      <class>terminalGeneric</class>
       <image>plugins/systems/images/terminal_locked.png</image>
     </objectType>
 
@@ -47,23 +47,15 @@
       <label>New terminal</label>
       <objectClass>FAKE_OC_NewTerminal</objectClass>
       <category>terminal</category>
-      <class>termgeneric</class>
+      <class>terminalGeneric</class>
       <image>plugins/systems/images/select_new_terminal.png</image>
-    </objectType>
-
-    <objectType>
-      <label>New unknown device</label>
-      <objectClass>FAKE_OC_ArpNewDevice</objectClass>
-      <category>terminal</category>
-      <class>termgeneric</class>
-      <image>plugins/systems/images/select_newsystem.png</image>
     </objectType>
 
     <objectType>
       <label>New device</label>
       <objectClass>FAKE_OC_NewDevice</objectClass>
       <category>terminal</category>
-      <class>termgeneric</class>
+      <class>terminalGeneric</class>
       <image>plugins/systems/images/select_newsystem.png</image>
     </objectType>
 
@@ -71,7 +63,7 @@
       <label>Workstation template</label>
       <objectClass>FAKE_OC_WorkstationTemplate</objectClass>
       <category>workstation</category>
-      <class>workgeneric</class>
+      <class>workstationGeneric</class>
       <image>plugins/systems/images/select_default.png</image>
     </objectType>
 
@@ -79,15 +71,15 @@
       <label>Terminal template</label>
       <objectClass>FAKE_OC_TerminalTemplate</objectClass>
       <category>terminal</category>
-      <class>termgeneric</class>
+      <class>terminalGeneric</class>
       <image>plugins/systems/images/select_default.png</image>
     </objectType>
 
     <objectType>
       <label>Winstation</label>
       <objectClass>sambaSamAccount</objectClass>
-      <category>winworkstation</category>
-      <class>wingeneric</class>
+      <category>winstation</category>
+      <class>winstationGeneric</class>
       <image>plugins/systems/images/select_winstation.png</image>
     </objectType>
 
@@ -95,7 +87,7 @@
       <label>Server</label>
       <objectClass>goServer</objectClass>
       <category>server</category>
-      <class>servgeneric</class>
+      <class>serverGeneric</class>
       <image>plugins/systems/images/select_server.png</image>
     </objectType>
 
@@ -103,7 +95,7 @@
       <label>Workstation</label>
       <objectClass>gotoWorkstation</objectClass>
       <category>workstation</category>
-      <class>workgeneric</class>
+      <class>workstationGeneric</class>
       <image>plugins/systems/images/select_workstation.png</image>
     </objectType>
 
@@ -111,7 +103,7 @@
       <label>Terminal</label>
       <objectClass>gotoTerminal</objectClass>
       <category>terminal</category>
-      <class>termgeneric</class>
+      <class>terminalGeneric</class>
       <image>plugins/systems/images/select_terminal.png</image>
     </objectType>
 
@@ -129,6 +121,14 @@
       <category>phone</category>
       <class>phoneGeneric</class>
       <image>plugins/systems/images/select_phone.png</image>
+    </objectType>
+
+    <objectType>
+      <label>Mobile phone</label>
+      <objectClass>fdMobilePhone</objectClass>
+      <category>mobilePhone</category>
+      <class>mobilePhoneGeneric</class>
+      <image>plugins/systems/images/select_mobilephone.png</image>
     </objectType>
 
     <objectType>
@@ -169,7 +169,7 @@
       <label>IP</label>
       <sortAttribute>ip</sortAttribute>
       <sortType>string</sortType>
-      <value>%{filter:ipOf(dn)}</value>
+      <value>%{ipHostNumber}</value>
       <export>true</export>
     </column>
 
@@ -177,7 +177,7 @@
       <label>MAC</label>
       <sortAttribute>mac</sortAttribute>
       <sortType>string</sortType>
-      <value>%{filter:macOf(dn)}</value>
+      <value>%{macAddress}</value>
       <export>true</export>
     </column>
 
@@ -193,7 +193,7 @@
       <label>Services</label>
       <sortAttribute>services</sortAttribute>
       <sortType>string</sortType>
-      <value>%{filter:listServices(dn)}</value>
+      <value>%{filter:listServices(row,dn)}</value>
       <export>true</export>
     </column>
 
@@ -224,7 +224,7 @@
       <type>entry</type>
       <image>plugins/systems/images/select_server.png</image>
       <label>Server</label>
-      <depends>servgeneric</depends>
+      <depends>serverGeneric</depends>
      </action>
 
      <action>
@@ -232,7 +232,7 @@
       <type>entry</type>
       <image>plugins/systems/images/select_workstation.png</image>
       <label>Workstation</label>
-      <depends>workgeneric</depends>
+      <depends>workstationGeneric</depends>
      </action>
 
      <action>
@@ -240,7 +240,7 @@
       <type>entry</type>
       <image>plugins/systems/images/select_terminal.png</image>
       <label>Terminal</label>
-      <depends>termgeneric</depends>
+      <depends>terminalGeneric</depends>
      </action>
 
     <action>
@@ -248,7 +248,7 @@
       <type>entry</type>
       <image>plugins/systems/images/select_winstation.png</image>
       <label>winStation</label>
-      <depends>wingeneric</depends>
+      <depends>winstationGeneric</depends>
     </action>
 
      <action>
@@ -274,6 +274,14 @@
       <label>Network device</label>
       <depends>componentGeneric</depends>
      </action>
+
+     <action>
+      <name>new_fdMobilePhone</name>
+      <type>entry</type>
+      <image>plugins/systems/images/select_mobilephone.png</image>
+      <label>Mobile Phone</label>
+      <depends>mobilePhoneGeneric</depends>
+     </action>
     </action>
 
     <action>
@@ -281,132 +289,17 @@
     </action>
 
     <action>
-     <type>sub</type>
-     <image>images/rocket.png</image>
-     <label>Trigger action</label>
-
-      <action>
-        <name>T_DaemonEvent_halt</name>
-        <depends>DaemonEvent_halt</depends>
-        <type>entry</type>
-        <image>images/lists/off.png</image>
-        <label>Halt </label>
-      </action>
-
-      <action>
-        <name>T_DaemonEvent_reboot</name>
-        <depends>DaemonEvent_reboot</depends>
-        <type>entry</type>
-        <image>images/lists/reload.png</image>
-        <label>Reboot</label>
-      </action>
-
-      <action>
-        <name>T_DaemonEvent_wakeup</name>
-        <depends>DaemonEvent_wakeup</depends>
-        <type>entry</type>
-        <image>images/lists/on.png</image>
-        <label>Wakeup</label>
-      </action>
-
-      <action>
-        <name>T_DaemonEvent_update</name>
-        <depends>DaemonEvent_update</depends>
-        <type>entry</type>
-        <image>plugins/systems/images/update.png</image>
-        <label>Update</label>
-      </action>
-
-      <action>
-        <name>T_DaemonEvent_lock</name>
-        <depends>DaemonEvent_lock</depends>
-        <type>entry</type>
-        <image>images/lists/locked.png</image>
-        <label>Lock</label>
-      </action>
-
-      <action>
-        <name>T_DaemonEvent_activate</name>
-        <depends>DaemonEvent_activate</depends>
-        <type>entry</type>
-        <image>images/lists/unlocked.png</image>
-        <label>Activate</label>
-      </action>
-
-      <action>
-        <name>T_DaemonEvent_reinstall</name>
-        <depends>DaemonEvent_reinstall</depends>
-        <type>entry</type>
-        <image>plugins/systems/images/reinstall.png</image>
-        <label>Reinstall</label>
-      </action>
-
-
+      <type>sub</type>
+      <image>images/rocket.png</image>
+      <label>Trigger action</label>
+      <depends>DaemonEvent</depends>
     </action>
-
-
 
     <action>
      <type>sub</type>
      <image>plugins/systems/images/clock.png</image>
      <label>Schedule action</label>
-
-      <action>
-        <name>S_DaemonEvent_halt</name>
-        <depends>DaemonEvent_halt</depends>
-        <type>entry</type>
-        <image>images/lists/off.png</image>
-        <label>Halt</label>
-      </action>
-
-      <action>
-        <name>S_DaemonEvent_reboot</name>
-        <depends>DaemonEvent_reboot</depends>
-        <type>entry</type>
-        <image>images/lists/reload.png</image>
-        <label>Reboot</label>
-      </action>
-
-      <action>
-        <name>S_DaemonEvent_wakeup</name>
-        <depends>DaemonEvent_wakeup</depends>
-        <type>entry</type>
-        <image>images/lists/on.png</image>
-        <label>Wakeup</label>
-      </action>
-
-      <action>
-        <name>S_DaemonEvent_update</name>
-        <depends>DaemonEvent_update</depends>
-        <type>entry</type>
-        <image>plugins/systems/images/update.png</image>
-        <label>Update</label>
-      </action>
-
-      <action>
-        <name>S_DaemonEvent_lock</name>
-        <depends>DaemonEvent_lock</depends>
-        <type>entry</type>
-        <image>images/lists/locked.png</image>
-        <label>Lock</label>
-      </action>
-
-      <action>
-        <name>S_DaemonEvent_activate</name>
-        <depends>DaemonEvent_activate</depends>
-        <type>entry</type>
-        <image>images/lists/unlocked.png</image>
-        <label>Activate</label>
-      </action>
-
-      <action>
-        <name>S_DaemonEvent_reinstall</name>
-        <depends>DaemonEvent_reinstall</depends>
-        <type>entry</type>
-        <image>plugins/systems/images/reinstall.png</image>
-        <label>Reinstall</label>
-      </action>
-
+      <depends>DaemonEvent</depends>
     </action>
 
     <action>
@@ -415,7 +308,7 @@
 
     <action>
       <name>activateMultiple</name>
-      <depends>DaemonEvent_activate</depends>
+      <depends>DaemonEvent</depends>
       <type>entry</type>
       <image>images/lists/unlocked.png</image>
       <label>Activate systems</label>
@@ -449,21 +342,12 @@
   <actiontriggers snapshot="true" copypaste="true">
 
     <action>
-      <name>setPassword</name>
-      <type>entry</type>
-      <objectclass>FAKE_OC_PWD_changeAble</objectclass>
-      <image>images/lists/key.png</image>
-      <label>Change password</label>
-    </action>
-
-
-    <action>
       <name>createISO</name>
       <type>entry</type>
       <objectclass>gotoWorkstation</objectclass>
       <objectclass>FAIobject</objectclass>
       <image>plugins/systems/images/cdrom.png</image>
-      <acl>workstation/workgeneric[createFAICD:w]</acl>
+      <acl>workstation/workstationGeneric[createFAICD:w]</acl>
       <label>Create ISO</label>
     </action>
 

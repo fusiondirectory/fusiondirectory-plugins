@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<filterdef>
+  <definition>
+    <category>alias</category>
+    <template>alias-filter.tpl</template>
+    <initial>true</initial>
+  </definition>
+
+  <search>
+    <query>
+      <backend>LDAP</backend>
+      <filter>(&amp;(|$MAILREDIRECTION$MAILDISTRIBUTION$SYMPAALIAS)$NAME)</filter>
+      <attribute>dn</attribute>
+      <attribute>cn</attribute>
+      <attribute>aliasExpirationDate</attribute>
+      <attribute>description</attribute>
+    </query>
+    <scope>auto</scope>
+  </search>
+
+  <element>
+    <type>textfield</type>
+    <tag>NAME</tag>
+    <size>20</size>
+    <maxlength>60</maxlength>
+    <default></default>
+    <unset></unset>
+    <set>(|(cn=*$*)(mail=*$*)(description=*$*))</set>
+    <alphabet>true</alphabet>
+    <autocomplete>
+      <backend>LDAP</backend>
+      <filter>(&amp;(|$MAILREDIRECTION$MAILDISTRIBUTION$SYMPAALIAS)(|(mail=*$NAME*)(cn=*$NAME*)(description=*$NAME*)))</filter>
+      <attribute>cn</attribute>
+      <attribute>aliasExpirationDate</attribute>
+      <attribute>description</attribute>
+      <frequency>0.5</frequency>
+      <characters>3</characters>
+    </autocomplete>
+  </element>
+
+  <element>
+    <type>checkbox</type>
+    <tag>MAILREDIRECTION</tag>
+    <default>true</default>
+    <unset></unset>
+    <set>(objectClass=mailAliasRedirection)</set>
+  </element>
+
+  <element>
+    <type>checkbox</type>
+    <tag>MAILDISTRIBUTION</tag>
+    <default>true</default>
+    <unset></unset>
+    <set>(objectClass=mailAliasDistribution)</set>
+  </element>
+
+  <element>
+    <type>checkbox</type>
+    <tag>SYMPAALIAS</tag>
+    <default>true</default>
+    <unset></unset>
+    <set>(objectClass=sympaAlias)</set>
+  </element>
+
+
+
+</filterdef>

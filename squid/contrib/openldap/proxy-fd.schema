@@ -1,0 +1,38 @@
+##
+## proxy-fd.schema - Needed by FusionDirectory Mail Plugin for its configuration
+##
+attributetype ( 1.3.6.1.4.1.10098.1.1.12.18 NAME 'gosaProxyAcctFlags'
+  DESC 'Proxy Account Flags'
+  EQUALITY caseIgnoreIA5Match
+  SUBSTR caseIgnoreIA5SubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26{16} SINGLE-VALUE)
+
+attributetype ( 1.3.6.1.4.1.10098.1.1.12.19 NAME 'gosaProxyWorkingStart'
+  DESC 'Specifies the beginning of work in minutes, relative to 00:00'
+  EQUALITY caseIgnoreIA5Match
+  SUBSTR caseIgnoreIA5SubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26)
+
+attributetype ( 1.3.6.1.4.1.10098.1.1.12.20 NAME 'gosaProxyWorkingStop'
+  DESC 'Specifies the end of work in minutes, relative to 00:00'
+  EQUALITY caseIgnoreIA5Match
+  SUBSTR caseIgnoreIA5SubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26)
+
+attributetype ( 1.3.6.1.4.1.10098.1.1.12.28 NAME 'gosaProxyQuota'
+  DESC 'Specifies the amount of data a user may surf in a defined period of time'
+  EQUALITY caseIgnoreIA5Match
+  SUBSTR caseIgnoreIA5SubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26)
+
+attributetype ( 1.3.6.1.4.1.10098.1.1.12.29 NAME 'gosaProxyQuotaPeriod'
+  DESC 'Specifies period of time where the counter is been reseted'
+  EQUALITY caseIgnoreIA5Match
+  SUBSTR caseIgnoreIA5SubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26)
+
+objectclass ( 1.3.6.1.4.1.10098.1.2.1.19.8 NAME 'gosaProxyAccount' SUP top AUXILIARY
+  DESC 'Class for GOsa Proxy settings (v2.6.1)'
+  MUST ( gosaProxyAcctFlags )
+  MAY ( gosaProxyWorkingStart $ gosaProxyWorkingStop $ gosaProxyQuota $
+        gosaProxyQuotaPeriod ))

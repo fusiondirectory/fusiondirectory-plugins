@@ -1,8 +1,7 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2012  FusionDirectory
+  Copyright (C) 2012-2013  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -19,332 +18,195 @@
   Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class etablissement extends plugin
+class etablissement extends simplePlugin
 {
-  var $o                        = "";
-  var $telephoneNumber          = "";
-  var $facsimileTelephoneNumber = "";
-  var $postalAddress            = "";
-  var $l                        = "";
-  var $description              = "";
-  var $eduOrgHomePageURI        = "";
-  var $eduOrgLegalName          = "";
-  var $eduOrgWhitePagesURI      = "";
-  var $eduOrgSuperiorURI        = "";
-  var $supannEtablissement      = "";
+  var $objectclasses = array('top','supannEntite','organization','supannOrg','eduOrg');
 
-  var $supannCodeEntite         = "";
+  var $mainTab = TRUE;
 
-  var $orig_o                   = "";
-
-  var $attributes     = array("o","telephoneNumber","facsimileTelephoneNumber",
-                              "postalAddress","l","description",
-                              "eduOrgHomePageURI","eduOrgLegalName","eduOrgWhitePagesURI",
-                              "eduOrgSuperiorURI","supannEtablissement","supannCodeEntite");
-
-  /* attributes that are both required and unique */
-  var $required_attributes = array(
-                                    "o",
-                                    "supannEtablissement",
-                                    "supannCodeEntite",
-                                    "eduOrgLegalName"
-                                  );
-
-  var $objectclasses  = array("top", "supannEntite","organization","supannOrg","eduOrg");
-
-  var $set_root = FALSE;
-
-  function etablissement (&$config, $dn)
+  /* Return plugin informations */
+  static function plInfo()
   {
-    @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $dn, "dn:");
-    plugin::plugin ($config, $dn);
+    return array(
+      'plShortName'   => _('Etablissement'),
+      'plDescription' => _('SUPANN Etablissement Settings'),
+      'plSelfModify'  => FALSE,
+      'plCategory'    => array('supann'),
+      'plObjectType'  => array('etablissement' => array('name' => _('SUPANN Etablissement'),
+                                                        'filter' => '(&(objectClass=supannEntite)(objectClass=organization))')),
 
-    $this->orig_dn = $dn;
-    $this->orig_o = $this->o;
-
-    $this->is_account = TRUE;
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+    );
   }
 
-  function execute()
+  // The main function : information about attributes
+  static function getAttributesInfo ()
   {
-    @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, "", "");
-    /* Call parent execute */
-    plugin::execute();
+    return array(
+      'main' => array(
+        'name'  => _('Properties'),
+        'attrs' => array(
+          new BooleanAttribute(
+            _('Root etablissement'), _('Set this etablissement as the root one'),
+            'set_root'
+          ),
+          new StringAttribute(
+            _('Name'), _('The name to write in the o attribute for this etablissement'),
+            'o', TRUE
+          ),
+          new TextAreaAttribute(
+            _('Description'), _('A short description of this etablissement'),
+            'description', FALSE
+          )
+        )
+      ),
+      'location' => array(
+        'name'  => _('Location'),
+        'attrs' => array(
+          new StringAttribute(
+            _('Location'), _('Usually the city in which is this etablissement'),
+            'l', FALSE
+          ),
+          new TextAreaAttribute(
+            _('Address'), _('The postal address of this etablissement'),
+            'postalAddress', FALSE
+          ),
+          new StringAttribute(
+            _('Telephone'), _('Phone number for this etablissement'),
+            'telephoneNumber', FALSE
+          ),
+          new StringAttribute(
+            _('Fax'), _('Fax number for this etablissement'),
+            'facsimileTelephoneNumber', FALSE
+          ),
+        )
+      ),
+      'supann' => array(
+        'name'  => _('SUPANN properties'),
+        'attrs' => array(
+          new StringAttribute(
+            _('Etablissement code'), _('The code of this etablissement'),
+            'supannEtablissement', TRUE
+          ),
+          new StringAttribute(
+            _('SUPANN code'), _('The SUPANN code for this etablissement'),
+            'supannCodeEntite', TRUE,
+            '', '', '/[a-z0-9_-]/'.(strict_uid_mode()?'':'i')
+          ),
+          new StringAttribute(
+            _('Legal name'), _('The legal name of this etablissement'),
+            'eduOrgLegalName', TRUE
+          ),
+          new StringAttribute(
+            _('Home page URI'), _('The URI of this etablissement website home page'),
+            'eduOrgHomePageURI', FALSE
+          ),
+          new StringAttribute(
+            _('Institution URI'), _('The URI of this etablissement institution website'),
+            'eduOrgSuperiorURI', FALSE
+          ),
+          new StringAttribute(
+            _('White pages URI'), _('The URI of this etablissement white pages'),
+            'eduOrgWhitePagesURI', FALSE
+          ),
+        )
+      ),
+    );
+  }
 
-    $smarty = get_smarty();
+  function __construct (&$config, $dn = NULL, $object = NULL)
+  {
+    parent::__construct($config, $dn, $object);
 
-    foreach($this->attributes as $attribute) {
-      $smarty->assign($attribute,$this->$attribute);
-      $smarty->assign($attribute."ACL",$this->getacl($attribute));
+    $this->attributesAccess['o']->setUnique(TRUE);
+    $this->attributesAccess['supannCodeEntite']->setUnique(TRUE);
+    $this->attributesAccess['supannEtablissement']->setUnique(TRUE);
+    $this->attributesAccess['eduOrgLegalName']->setUnique(TRUE);
 
-    }
-
-    $root_code = $this->root_code();
-    $smarty->assign("root_available",$root_code === FALSE);
-    $smarty->assign("is_root",($root_code !== FALSE)&&($root_code == $this->supannEtablissement));
-
-    return $smarty->fetch(get_template_path('etablissement.tpl', TRUE));
+    $root_code = $this->get_root_code();
+    $this->attributesAccess['set_root']->setInLdap(FALSE);
+    $this->attributesAccess['set_root']->setDisabled($root_code === FALSE);
+    $this->set_root = (($root_code !== FALSE) && ($root_code == $this->supannEtablissement));
   }
 
   function remove_from_parent()
   {
-    @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $this->dn, "dn");
-    plugin::remove_from_parent();
-
-    $ldap = $this->config->get_ldap_link();
-    $ldap->rmdir($this->dn);
-    if (!$ldap->success()) {
-      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_DEL, get_class()));
-    }
-
-    new log("remove","etablissement/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
-
-    /* Remove ACL dependencies, too */
-    acl::remove_acl_for($this->dn);
+    parent::remove_from_parent();
 
     /* If we're the root etablissement, delete it too */
-    $root_code = $this->root_code();
+    $root_code = $this->get_root_code();
     if (($root_code !== FALSE) && ($root_code == $this->supannEtablissement)) {
-      $dn = "o=".$this->o.",".$this->config->current['BASE'];
+      $dn = 'o='.$this->o.','.$this->config->current['BASE'];
       $ldap->rmdir($dn);
       if (!$ldap->success()) {
-        msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_DEL, get_class()));
+        msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_DEL, get_class()));
       }
       /* Remove ACL dependencies, too */
       acl::remove_acl_for($dn);
     }
-
-    /* Send signal to the world that we've done */
-    $this->handle_post_events("remove");
   }
 
-
-  /* Save data to object */
-  function save_object()
+  function ldap_save($cleanup = TRUE)
   {
-    @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $this->o, "o");
-    /* Save additional values for possible next step */
-    if (isset($_POST['etablissement_posted'])) {
-      $root_code = $this->root_code();
-      if(isset($_POST['o']) && ($root_code !== FALSE) && ($root_code == $this->supannEtablissement)) {
-        unset($_POST['o']);
-      }
-
-      plugin::save_object();
-
-      if (isset($_POST['set_root'])) {
-        $this->set_root = TRUE;
-      }
-    }
-  }
-
-  /* Save to LDAP */
-  function save()
-  {
-    @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $this->o, "o");
-    /* New accounts need proper 'dn', propagate it to remaining objects */
-    if ($this->dn == 'new') {
-      $this->dn = $this->compute_dn();
-    }
-
-    plugin::save();
+    parent::ldap_save($cleanup);
 
     $ldap = $this->config->get_ldap_link();
 
-
-    /* Save data. Using 'modify' implies that the entry is already present, use 'add' for
-       new entries. So do a check first... */
-    $ldap->cat($this->dn, array('dn'));
-    if ($ldap->fetch()) {
-      $mode = "modify";
-    } else {
-      @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $this->supannCodeEntite, "code");
-      $mode = "add";
-      $ldap->cd($this->config->current['BASE']);
-      $ldap->create_missing_trees(preg_replace('/^[^,]+,/', '', $this->dn));
-      if (!$ldap->success()) {
-        msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()));
-        $ret = 1;
-      }
-    }
-
-    /* Write back to ldap */
-    $ldap->cd($this->dn);
-    $this->cleanup();
-    $ldap->$mode($this->attrs);
-
-    if ($this->initially_was_account) {
-      new log("modify","etablissement/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
-    } else {
-      new log("create","etablissement/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
-    }
-
-    $ret = 0;
-    if (!$ldap->success()) {
-      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()));
-      $ret = 1;
-    }
-
-    $root_mode = "";
-    $root_code = $this->root_code();
+    $root_mode = FALSE;
+    $root_code = $this->get_root_code();
     if (($root_code === FALSE) && ($this->set_root)) {
       /* Set this etablissement as root one */
-      $root_attrs = array();
-      foreach ($this->attributes as $attribute) {
-        $root_attrs[$attribute] = $this->$attribute;
-      }
-      $root_mode = "add";
-    } else if (($root_code !== FALSE) && ($root_code == $this->supannEtablissement)) {
+      $ldap->cat($this->dn);
+      $root_attrs = $ldap->fetch();
+      $root_mode  = 'add';
+    } else if (($root_code !== FALSE) && ($root_code == $this->supannEtablissement) && $this->set_root) {
       /* We are the root etablissement, we need to update it */
       $root_attrs = $this->attrs;
-      $root_mode = "modify";
+      $root_mode  = 'modify';
+    } else if (($root_code !== FALSE) && ($root_code == $this->supannEtablissement) && !$this->set_root) {
+      /* We are the root etablissement, we want to delete it */
+      $root_mode = 'delete';
     }
 
-    if (!empty($root_mode)) {
-      $root_attrs['objectClass'] = array("top", "dcObject","organization","supannOrg","eduOrg");
-      $root_attrs['dc'] = "foobar";
+    if ($root_mode) {
+      $root_attrs['objectClass'] = array('top','dcObject','organization','supannOrg','eduOrg');
+      $root_attrs['dc'] = 'foobar';
       unset($root_attrs['supannCodeEntite']);
-      $dn = "o=".$this->o.",".$this->config->current['BASE'];
-      $ldap->cd($dn);
-      $this->cleanup();
-      $ldap->$root_mode($root_attrs);
+      $dn = 'o='.$this->o.','.$this->config->current['BASE'];
+      if ($root_mode == 'delete') {
+        $ldap->rmdir($dn);
+        acl::remove_acl_for($dn);
+      } else {
+        $ldap->cd($dn);
+        $ldap->$root_mode($root_attrs);
+      }
       if (!$ldap->success()) {
         msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()));
-        $ret = 1;
       }
     }
-
-    /* Post that we've done*/
-    $this->handle_post_events($mode);
-
-    return $ret;
-  }
-
-  function check()
-  {
-    /* Call common method to give check the hook */
-    $message = plugin::check();
-
-    /* Check for valid input */
-    $root_code = $this->root_code();
-    if ((($root_code !== FALSE) && ($root_code == $this->supannEtablissement)) ||
-        (($root_code === FALSE) && ($this->set_root))) {
-      if (!tests::is_uid($this->o)) {
-        if (strict_uid_mode()) {
-          $message[] = msgPool::invalid(_("Name"), $this->o, "/[a-z0-9_-]/");
-        } else {
-          $message[] = msgPool::invalid(_("Name"), $this->o, "/[a-z0-9_-]/i");
-        }
-      }
-    }
-    if (!tests::is_uid($this->supannCodeEntite)) {
-      if (strict_uid_mode()) {
-        $message[] = msgPool::invalid(_("Name"), $this->supannCodeEntite, "/[a-z0-9_-]/");
-      } else {
-        $message[] = msgPool::invalid(_("Name"), $this->supannCodeEntite, "/[a-z0-9_-]/i");
-      }
-    }
-
-    /* Check that required attributes are there */
-    foreach ($this->required_attributes as $attribute) {
-      if ($this->acl_is_writeable($attribute)) {
-        if ($this->$attribute == "")  {
-          $message[] = msgPool::required(_($attribute));
-        } else {
-          /* check unicity */
-          $ldap = $this->config->get_ldap_link();
-          $ldap->cd(get_ou('supannStructuresRDN').$this->config->current['BASE']);
-          $ldap->search("($attribute=".$this->$attribute.")");
-          while ($attrs = $ldap->fetch()) {
-            if ($attrs['dn'] != $this->orig_dn) {
-              $message[] = msgPool::duplicated(_($attribute));
-              break;
-            }
-          }
-        }
-      }
-    }
-
-    return $message;
   }
 
   function compute_dn()
   {
-    return "supannCodeEntite=".$this->supannCodeEntite.",".get_ou('supannStructuresRDN').$this->config->current['BASE'];
+    return 'supannCodeEntite='.$this->supannCodeEntite.','.get_ou('supannStructuresRDN').$this->config->current['BASE'];
   }
 
-  function generate_code()
-  {
-    $ldap = $this->config->get_ldap_link();
-
-    $ldap->cd(get_ou('supannStructuresRDN').$this->config->current['BASE']);
-    $ldap->search("(objectClass=supannEntite)", array("supannCodeEntite"));
-    $code = 0;
-    while ($attr = $ldap->fetch()) {
-      $code_ldap = intval($attr['supannCodeEntite'][0]);
-      if ($code_ldap > $code) {
-        $code = $code_ldap;
-      }
-    }
-    $code++;
-
-    return $code;
-  }
-
-  function root_code()
+  function get_root_code()
   {
     $ldap = $this->config->get_ldap_link();
 
     $ldap->cd($this->config->current['BASE']);
-    $ldap->ls("(objectClass=supannOrg)");
+    $ldap->ls('(objectClass=supannOrg)');
 
-    if($ldap->count() > 1) {
-      msg_dialog::display(_("LDAP error"), "There are several etablissements at root!");
+    if ($ldap->count() > 1) {
+      msg_dialog::display(_('LDAP error'), 'There are several etablissements at root!');
       return FALSE;
     } else if ($ldap->count() > 0) {
       $attr = $ldap->fetch();
-      $code = $attr['supannEtablissement'][0];
-      @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $code, "code");
-      return $code;
+      return $attr['supannEtablissement'][0];
     } else {
       return FALSE;
     }
   }
-
-  /* Return plugin informations for acl handling  */
-  static function plInfo()
-  {
-    return array(
-          "plShortName"     => _("supann Etablissement Settings"),
-          "plDescription"   => _("supann Etablissement Settings"),
-          "plSelfModify"    => FALSE,
-          "plDepends"       => array(),
-          "plPriority"      => 0,
-          "plSection"       => array("administration"),
-          "plCategory"      => array("supann"),
-
-          "plProvidedAcls"  => array(
-              "o"                         =>  _("o"),
-              "telephoneNumber"           =>  _("telephoneNumber"),
-              "facsimileTelephoneNumber"  =>  _("facsimileTelephoneNumber"),
-              "postalAddress"             =>  _("postalAddress"),
-              "l"                         =>  _("l"),
-              "description"               =>  _("Description"),
-              "eduOrgHomePageURI"         =>  _("eduOrgHomePageURI"),
-              "eduOrgLegalName"           =>  _("eduOrgLegalName"),
-              "eduOrgWhitePagesURI"       =>  _("eduOrgWhitePagesURI"),
-              "eduOrgSuperiorURI"         =>  _("eduOrgSuperiorURI"),
-              "supannEtablissement"       =>  _("supannEtablissement"),
-              "supannCodeEntite"          =>  _("supannCodeEntite"),
-            )
-        );
-  }
-
-
-  function PrepareForCopyPaste($source)
-  {
-    plugin::PrepareForCopyPaste($source);
-  }
-
 }
 ?>

@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011  FusionDirectory
+  Copyright (C) 2011-2013  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -40,7 +40,7 @@ class faiPartition extends plugin
   var $FAIpartitionType = "";
   var $FAIstate = "";
   var $FAIpartitionFlags = "";
-  
+
   var $FAIdiskType = "disk";
 
   // Size options.
@@ -49,9 +49,9 @@ class faiPartition extends plugin
   var $sizeStop  = 0;
   var $sizeStart_Type = "MB";
   var $sizeStop_Type  = "MB";
-  
-  //  Flags 
-  var $bootable = false; 
+
+  //  Flags
+  var $bootable = false;
   var $resize = false;
   var $encrypted = false;
   var $preserve = false;
@@ -61,7 +61,7 @@ class faiPartition extends plugin
 
   // Once we've exceeded the primary partition limit,
   //  hide the the 'primary' option from the select box.
-  var $disablePrimary = FALSE; 
+  var $disablePrimary = FALSE;
 
   function __construct($config, $object, $parent,$type)
   {
@@ -81,10 +81,10 @@ class faiPartition extends plugin
         }elseif(count($types['logical']) >= 4){
           $this->disablePrimary = TRUE;
         }
-      } 
-    } 
+      }
+    }
 
-    // Load attributes from existing partition 
+    // Load attributes from existing partition
     if($object){
       foreach($this->attributes as $attr){
         if(isset($object[$attr])){
@@ -94,8 +94,8 @@ class faiPartition extends plugin
 
       if($type == "disk" || $type =="lvm"){
 
-        /* Prepare size attribute 
-         * This attribute may represent a range, a fixed value 
+        /* Prepare size attribute
+         * This attribute may represent a range, a fixed value
          *  or a percentage.
          * fixed is just a number   * 500MB
          * range                    * 500MB-1TB
@@ -136,20 +136,20 @@ class faiPartition extends plugin
           $this->FAImountPoint = preg_replace("/:encrypt/","",$this->FAImountPoint);
           $this->encrypted = TRUE;
         }
-    
+
       }elseif($type == "raid"){
-   
-        // Extract raid devices out of the partition size attribute. 
+
+        // Extract raid devices out of the partition size attribute.
         $usedDisks = explode(",",$this->FAIpartitionSize);
         foreach($usedDisks as $disk){
           $name = preg_replace("/:.*$/","",$disk);
           $spare = preg_match("/:spare/",$disk);
           $missing = preg_match("/:missing/",$disk);
           if(!empty($name)){
-            $this->raidDevices[$name] = 
+            $this->raidDevices[$name] =
               array(
-                  "name" => $name, 
-                  "spare" => $spare, 
+                  "name" => $name,
+                  "spare" => $spare,
                   "missing" => $missing);
           }
         }
@@ -165,7 +165,7 @@ class faiPartition extends plugin
     // Remove partition
     if(isset($_POST['addPhysicalPartition']) && isset($_POST['physicalPartitionAdd'])){
       $name = $_POST['physicalPartitionAdd'];
-      $this->raidDevices[$name] = array("name" => $name,"spare"=>false,"missing"=>false);     
+      $this->raidDevices[$name] = array("name" => $name,"spare"=>false,"missing"=>false);
     }
 
     // Create a list of selectable partition types
@@ -189,7 +189,7 @@ class faiPartition extends plugin
     }else{
       $types = "";
     }
-     
+
     // Create a list of all size options
     $partitionSizeTypes  = array(
         "fixed"     => _("fixed"),
@@ -207,12 +207,12 @@ class faiPartition extends plugin
         "%"      => _("%")
         );
 
-    // Preserve types 
+    // Preserve types
     $preserveTypes = array(
         "always" => _("always"),
         "reinstall" => _("reinstall"));
 
-    // File system types.  
+    // File system types.
     $FAIfsTypes = array(
         "swap" => _("swap space"),
         "ext2" => _("ext2"),
@@ -249,19 +249,19 @@ class faiPartition extends plugin
     return($smarty->fetch(get_template_path("faiPartition.tpl", TRUE, dirname(__FILE__))));
   }
 
-  
-  /* Returns a list of all partitions that are useable 
+
+  /* Returns a list of all partitions that are useable
    *  for raid arrays.
    */
   function getPartitionList()
   {
-    $may = $used = array();  
+    $may = $used = array();
     foreach($this->parent->parent->disks as $disk){
 
-      // Skip ourselves 
+      // Skip ourselves
       if($disk['cn'] == $this->parent->DISKcn) continue;
 
-      // Add partition from lvm combinations 
+      // Add partition from lvm combinations
       if($disk['FAIdiskType'] == "lvm"){
         $used = array_merge($used,$disk['FAIlvmDevice']);
       }
@@ -275,7 +275,7 @@ class faiPartition extends plugin
           }
         }
 
-        // Collect all available disks 
+        // Collect all available disks
         if($disk['FAIdiskType'] == "disk"){
           $name = $part['cn'];
           if(!isset($this->raidDevices[$name])){
@@ -284,8 +284,8 @@ class faiPartition extends plugin
         }
       }
     }
- 
-    // Check which of the available disks are unused. 
+
+    // Check which of the available disks are unused.
     $ret = array();
     foreach($may as $val){
       if(!in_array($val,$used)){
@@ -296,7 +296,7 @@ class faiPartition extends plugin
   }
 
 
-  /* Creates a human readable list of all used partitions 
+  /* Creates a human readable list of all used partitions
    *  of a raid device.
    */
   function getRaidList()
@@ -311,7 +311,7 @@ class faiPartition extends plugin
         }
       }
     }
-  
+
     $list = array();
     foreach($this->raidDevices as $device){
       $str = $name = $device['name'];
@@ -374,31 +374,31 @@ class faiPartition extends plugin
 
       // Toggle spare flag for partition entries
       if(isset($_POST['toggleSpare']) && isset($_POST['physicalPartition'])){
-        $this->raidDevices[$_POST['physicalPartition']]['spare'] = 
+        $this->raidDevices[$_POST['physicalPartition']]['spare'] =
             !$this->raidDevices[$_POST['physicalPartition']]['spare'];
       }
 
       // Toggle missing flag for partition entries
       if(isset($_POST['toggleMissing']) && isset($_POST['physicalPartition'])){
-        $this->raidDevices[$_POST['physicalPartition']]['missing'] = 
+        $this->raidDevices[$_POST['physicalPartition']]['missing'] =
             !$this->raidDevices[$_POST['physicalPartition']]['missing'];
       }
-    } 
+    }
   }
 
 
   function check()
   {
-    $msgs = plugin::check();
-    
+    $msgs = parent::check();
+
     // Check the given partition size.
-    if($this->FAIdiskType == "disk" || $this->FAIdiskType == "lvm"){
-      if($this->FAIpartitionSizeType == "fixed" || $this->FAIpartitionSizeType == "dynamic"){ 
+    if ($this->FAIdiskType == "disk" || $this->FAIdiskType == "lvm") {
+      if($this->FAIpartitionSizeType == "fixed" || $this->FAIpartitionSizeType == "dynamic"){
         if(!is_numeric($this->sizeStart)){
           $msgs[] = msgPool::invalid(_("Partition size"),$this->sizeStart,"/[0-9]/i");
         }
       }
-      if($this->FAIpartitionSizeType == "dynamic"){ 
+      if($this->FAIpartitionSizeType == "dynamic"){
         if(!is_numeric($this->sizeStop)){
           $msgs[] = msgPool::invalid(_("Partition size"),$this->sizeStop,"/[0-9]/i");
         }
@@ -427,7 +427,7 @@ class faiPartition extends plugin
       }
     }
 
-    // check mount point 
+    // check mount point
     if($this->FAIfsType != "swap"){
       if(!preg_match("#^/#",$this->FAImountPoint)){
         $msgs[] = msgPool::invalid(_("Mount point"));
@@ -446,15 +446,15 @@ class faiPartition extends plugin
     }
 
     // Save partition size
-    if($this->FAIdiskType == "disk" || $this->FAIdiskType == "lvm"){ 
+    if($this->FAIdiskType == "disk" || $this->FAIdiskType == "lvm"){
       switch($this->FAIpartitionSizeType){
-        case 'fixed' : 
-          $ret['FAIpartitionSize'] = $this->sizeStart.$this->sizeStart_Type;break; 
-        case 'dynamic' : 
-          $ret['FAIpartitionSize'] = $this->sizeStart.$this->sizeStart_Type."-".  
-            $this->sizeStop.$this->sizeStop_Type;break; 
-        case 'remaining' : 
-          $ret['FAIpartitionSize'] = "0-";break; 
+        case 'fixed' :
+          $ret['FAIpartitionSize'] = $this->sizeStart.$this->sizeStart_Type;break;
+        case 'dynamic' :
+          $ret['FAIpartitionSize'] = $this->sizeStart.$this->sizeStart_Type."-".
+            $this->sizeStop.$this->sizeStop_Type;break;
+        case 'remaining' :
+          $ret['FAIpartitionSize'] = "0-";break;
         default: trigger_error("Unknown partition size!");
       }
 
@@ -483,7 +483,7 @@ class faiPartition extends plugin
     if($this->FAIfsType == "swap"){
       $ret['FAImountPoint'] = "swap";
     }
- 
+
     return($ret);
   }
 }

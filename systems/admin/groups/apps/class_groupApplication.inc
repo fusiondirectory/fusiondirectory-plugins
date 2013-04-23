@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011  FusionDirectory
+  Copyright (C) 2011-2013  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -38,40 +38,43 @@ class appgroup extends plugin
   var $edit_entry    = array();
   var $enableReleaseManagement = FALSE;
 
-  var $copied_release = ""; 
-   
+  var $copied_release = "";
+  var $gosaApplicationFlags;
+  var $app_flags = array(
+                        "placeOnDesktop" => "D",
+                        "placeOnMenuBar"  => "L",
+                        "placeInStartmenu" => "M",
+                      );
 
   public function __construct(&$config, $dn= NULL, $parent= NULL)
   {
     plugin::plugin($config,$dn,$parent);
-    $this->dn = $dn; 
+    $this->dn = $dn;
     $this->_load_menu_structure();
     $this->a_Structure_on_load = $this->a_Structure;
 
     /* Check if we have relase mangement enabled and prepare group application for release management */
-    $tmp = $config->search("faiManagement", "CLASS",array('menu','tabs'));
-    if(!empty($tmp)){
-      $this->enableReleaseManagement = true;
-    }
+    $this->enableReleaseManagement = class_available("faiManagement");
 
     $this->Releases   = $this->getReleases();
 
-    /* Set intial release */
-    $this->FAIrelease = $config->search("faiManagement","DEFAULTFAIRELEASE",array("menu"));
-    if(empty($this->FAIrelease) || !isset($this->Releases[$this->FAIrelease])){
+    /* Set intial release
+     * FIXME : we can't use this kind of things anymore with new menu sytem */
+    $this->FAIrelease = $config->search("faiManagement", "DEFAULTFAIRELEASE", array("menu"));
+    if (empty($this->FAIrelease) || !isset($this->Releases[$this->FAIrelease])) {
       $this->FAIrelease = "/";
     }
 
     $this->curbase    = $this->config->current['BASE'];
     $this->reload();
- 
+
     /* If we have at least one assigned application-
        Enable this account.
-     */ 
+     */
     $this->is_account = FALSE;
     if(count($this->_get_all_entries()) > 1){
       $this->is_account= TRUE;
-    }   
+    }
     $this->initially_was_account = $this->is_account;
   }
 
@@ -86,11 +89,11 @@ class appgroup extends plugin
 
     /* Check if the available application were already been fetched.
        If not, build up a list of available applications.
-     */  
+     */
     if(!isset($this->_cache['ReleaseApps'][$release_info['suffix']])){
 
       /* First of all, get all application departments to search in.
-       */  
+       */
       $ldap = $this->config->get_ldap_link();
       $ldap->cd($this->config->current['BASE']);
       $ldap->search("ou=apps",array("dn"));
@@ -109,7 +112,7 @@ class appgroup extends plugin
         }
       }
 
-      /* Filter out those releases that match the currently selected release, 
+      /* Filter out those releases that match the currently selected release,
           and fetch all applications from those departments.
        */
       foreach($app_deps as $dep){
@@ -119,8 +122,8 @@ class appgroup extends plugin
       }
 
       /* Create a new array containing all fetch apps for the currently selected release,
-          sort it and store results in cache. 
-       */ 
+          sort it and store results in cache.
+       */
       $tmp = array();
       foreach($ret as $key => $app){
         $tmp[$key] = $app['cn'][0];
@@ -132,12 +135,12 @@ class appgroup extends plugin
       }
 
       $this->_cache['ReleaseApps'][$release_info['suffix']] = $res;
-    } 
+    }
     $this->apps = $this->_cache['ReleaseApps'][$release_info['suffix']];
   }
 
-  
-  
+
+
   /*! \brief generate a list of available releases
       @return return an array with all available releases.
 
@@ -150,13 +153,13 @@ class appgroup extends plugin
 
       halut "name"    halut
             "found"   1
-            "FAIstate"  
+            "FAIstate"
             "dn"      ou=halut,ou=apps,ou=Direktorium,o=Landeshauptstadt München,c=de
             "parts"   0 halut
             "suffix"  ou=halut,ou=apps,
 
       This will be used as base for the application menu structure.
-      If there is a menu assigned for a release, this menu will be 
+      If there is a menu assigned for a release, this menu will be
        appended with the index 'ENTRIES';
     */
   function getReleases()
@@ -164,14 +167,14 @@ class appgroup extends plugin
     $ret =array("/" => array("name" => "/", "found" => TRUE , "parts" => array(),"suffix" => get_ou('applicationRDN')));
     if($this->enableReleaseManagement){
 
-      /* Only display those releases that we are able to read 
+      /* Only display those releases that we are able to read
        */
       $dn     = get_ou("applicationRDN").$this->config->current['BASE'];
       $filter = "(&(objectClass=organizationalUnit)(objectClass=FAIbranch))";
-      $res    = get_sub_list($filter,array("application","fai"), 
+      $res    = get_sub_list($filter,array("application","fai"),
           array(get_ou("applicationRDN"),get_ou("faiBaseRDN")),$dn, array("ou","FAIstate"), GL_SUBSEARCH);
 
-      /* Go through all departments and check which department is a valid 
+      /* Go through all departments and check which department is a valid
           department release.
        */
       foreach($res as $attrs){
@@ -203,7 +206,7 @@ class appgroup extends plugin
             $FAIstate = $attrs['FAIstate'][0];
           }
 
-          /* Check if this department has a menu structure assigned 
+          /* Check if this department has a menu structure assigned
            */
           $all = $this->_get_all_entries();
           $found = FALSE;
@@ -214,10 +217,10 @@ class appgroup extends plugin
             }
           }
 
-          $ret[$name] = array("name"     => $name, 
+          $ret[$name] = array("name"     => $name,
               "found"    => $found,
               "FAIstate" => $FAIstate,
-              "dn"       => $attrs['dn'], 
+              "dn"       => $attrs['dn'],
               "parts"    => $parts,"suffix" => $bb.get_ou('applicationRDN'));
         }
       }
@@ -233,7 +236,7 @@ class appgroup extends plugin
       e.g.:
 
       $this->a_Structure =
-  
+
       [0]['TYPE']   = "BASE"
       [0]['ENTRIES']  [0]['TYPE']   = "RELEASE"
                       [0]['NAME']   = "halut"
@@ -254,12 +257,12 @@ class appgroup extends plugin
      */
     $base =  array();
     $base['UNIQID'] = uniqid();
-    $base['PARENT'] = 0; 
+    $base['PARENT'] = 0;
     $base['NAME']   = "";
     $base['TYPE']   = "BASE";
     $base['ENTRIES']= array();
     $base['STATUS'] = "LOADED";
-    
+
     $this->a_Structure  = array();
     $this->a_Structure[0] = $base;
 
@@ -275,7 +278,7 @@ class appgroup extends plugin
           e.g. If we have cn=firefox,cn=Programme,ou=halut...
 
           1. get a pointer to the halut array ($this->a_Structure['0'][ENTRIES''][]['halut'])
-          2. then get a pointer to the halut['ENTRIES'][]['Programme'] array. 
+          2. then get a pointer to the halut['ENTRIES'][]['Programme'] array.
           3. append 'firefox' to the 'ENTRIES' of our "Programme" pointer.
        */
       $cur          = &$this->a_Structure[0]['ENTRIES'];
@@ -283,13 +286,13 @@ class appgroup extends plugin
       $sub_dn       = preg_replace("/,".preg_quote($this->dn, '/')."$/","",$attrs['dn']);
       $sub_dn_array = explode(",",$sub_dn);
 
-      /* Walk through our menu structure array while we have found 
-          the correct position where to add this object. 
+      /* Walk through our menu structure array while we have found
+          the correct position where to add this object.
        */
       $found = true;
       for($i = (count($sub_dn_array)-1) ; $i >= 0 ; $i--){
         $name = preg_replace("/^[^=]*+=/","",$sub_dn_array[$i]);
-        
+
         /* We haven't found the end node where this object has to be added
          */
         if($i > 0){
@@ -303,7 +306,7 @@ class appgroup extends plugin
             }
           }
         }else{
-          
+
           if(!$found){
             break;
           }
@@ -319,14 +322,14 @@ class appgroup extends plugin
             $priority ++;
           }
 
-          /* Create the data object that should be added 
+          /* Create the data object that should be added
              * Folder
              * Entry
              * Release
            */
           $data = array();
-    
-          /* Add a menu folder 
+
+          /* Add a menu folder
            */
           if(in_array("gotoSubmenuEntry",$attrs['objectClass'])){
             $type = "FOLDER";
@@ -336,18 +339,23 @@ class appgroup extends plugin
               $data['ICON'] = $ldap->get_attribute($attrs['dn'],"gosaApplicationIcon");
             }
 
-          /* Add a menu entry 
+          /* Add a menu entry
            */
           }elseif(in_array("gotoMenuEntry",$attrs['objectClass'])){
 
             $type = "ENTRY";
             $data['INFO'] = "";
             $data['PARAMETER'] = array();
-            if(isset($attrs['gosaApplicationParameter'])){
-              for($p = 0 ; $p < $attrs['gosaApplicationParameter']['count'] ; $p ++){
-                if(preg_match("/:/",$attrs['gosaApplicationParameter'][$p])){
-                  $tmp = explode(":",$attrs['gosaApplicationParameter'][$p]);
-                  $data['PARAMETER'][$tmp[0]] = preg_replace('/^[^:]+:/', '', $attrs['gosaApplicationParameter'][$p]);
+            if(isset($attrs['gosaApplicationParameter'])) {
+              for($p = 0 ; $p < $attrs['gosaApplicationParameter']['count'] ; $p ++) {
+                if(preg_match("/:/",$attrs['gosaApplicationParameter'][$p])) {
+                  list($key, $value) = explode(":",$attrs['gosaApplicationParameter'][$p], 2);
+                  if($key == "gosaApplicationFlags") {
+                    $data['FLAGS'] = $value;
+                  }
+                  else {
+                    $data['PARAMETER'][$key] = $value;
+                  }
                 }elseif($attrs['gosaApplicationParameter'][$p] == "*separator*"){
                   $type = "SEPERATOR";
                   $data['PARAMETER'] = array();
@@ -367,7 +375,7 @@ class appgroup extends plugin
             }
           }
 
-          /* Create object and append it to the current structure pointer 
+          /* Create object and append it to the current structure pointer
            */
           $data['LDAP_ATTRS'] = $attrs;
           $data['DN']       = $attrs['dn'];
@@ -383,7 +391,7 @@ class appgroup extends plugin
         }
       }
     }
-  } 
+  }
 
 
   function execute()
@@ -417,9 +425,24 @@ class appgroup extends plugin
     if(isset($_GET['r']))
     $this->__construct($this->config,$this->dn);
 
-    if(count($this->edit_entry)){
+    if(count($this->edit_entry)) {
+
+      $smarty = get_smarty();
+      /* Checkboxes */
+      foreach ($this->app_flags as $name => $flag){
+      if (preg_match("/$flag/", $this->gosaApplicationFlags) && $this->acl_is_readable("$name")) {
+        $smarty->assign("$name", "checked");
+        } else {
+          $smarty->assign("$name", "");
+        }
+      }
+
+      $tmp = $this->plInfo();
+      foreach($tmp['plProvidedAcls'] as $name => $translation) {
+        $smarty->assign($name."ACL",$this->getacl($name));
+      }
+
       if($this->edit_entry['TYPE'] == "ENTRY"){
-        $smarty = get_smarty();
         $smarty->assign("type", "ENTRY");
         $smarty->assign("entry",$this->edit_entry);
         $smarty->assign("paras",$this->app_parameter);
@@ -427,13 +450,12 @@ class appgroup extends plugin
         return($display);
       }
       if($this->edit_entry['TYPE'] == "FOLDER"){
-        $smarty = get_smarty();
 
         session::set("binarytype" , "image/jpeg");
         session::set("binary" , $this->edit_entry['ICON']);
-  
+
         $smarty->assign("rand", microtime(TRUE));
-        $smarty->assign("image_set" , strlen($this->edit_entry['ICON']) > 0); 
+        $smarty->assign("image_set" , strlen($this->edit_entry['ICON']) > 0);
         $smarty->assign("type", "FOLDER");
         $smarty->assign("entry",$this->edit_entry);
         $display= $smarty->fetch (get_template_path('edit_entry.tpl', TRUE, dirname(__FILE__)));
@@ -482,7 +504,7 @@ class appgroup extends plugin
             ));
     }
 
-  
+
     /* Add applications found on this base */
     $used_apps = $this->_get_used_entry_name();
     foreach($this->apps as $key => $app){
@@ -504,7 +526,7 @@ class appgroup extends plugin
             ));
     }
 
-    /* Assign copy / paste values 
+    /* Assign copy / paste values
      */
     if(!empty($this->copied_release)){
       $smarty->assign("copied", TRUE);
@@ -524,10 +546,10 @@ class appgroup extends plugin
     return($display);
   }
 
-   
-  /*! \brief Returns all used folder names 
+
+  /*! \brief Returns all used folder names
       @return Array  All used folder names.
-   */ 
+   */
   function _get_folder_names()
   {
     $data = $this->_get_entries_for_release($this->FAIrelease);
@@ -539,12 +561,12 @@ class appgroup extends plugin
         $str = $entry['NAME'];
         $parent = $entry['PARENT'];
         $i = 10;
-        while(isset($all[$parent]) && $i){  
+        while(isset($all[$parent]) && $i){
           $i --;
           $parent_o = $all[$parent];
           $str      = $parent_o['NAME']."/".$str;
           $parent   = $all[$parent_o['UNIQID']]['PARENT'];
-        }        
+        }
         $ret[$entry['UNIQID']] = $str;
       }
     }
@@ -552,9 +574,9 @@ class appgroup extends plugin
   }
 
 
-  /*! \brief return all used applications 
+  /*! \brief return all used applications
       @return Array  All used applications.
-   */ 
+   */
   function _get_used_entry_name()
   {
     $data = $this->_get_entries_for_release($this->FAIrelease);
@@ -568,9 +590,9 @@ class appgroup extends plugin
   }
 
 
-  /*! \brief Returns all folder an entries for the selected release 
+  /*! \brief Returns all folder an entries for the selected release
       @return Array  Returns the complete menu structure for the given array.
-   */ 
+   */
   function _get_entries_for_release($release,$cur = NULL)
   {
     $all = $this->_get_all_entries();
@@ -578,12 +600,12 @@ class appgroup extends plugin
     if(isset($all[$key]) && count($all[$key]['ENTRIES'])){
       $res = $this->_get_all_entries(TRUE,TRUE,$all[$key]['ENTRIES']);
       return($res);
-    } 
+    }
     return(array());
   }
 
 
-  /*! \brief Save the currently edited entry 
+  /*! \brief Save the currently edited entry
     */
   function _save_entry_edit()
   {
@@ -594,9 +616,10 @@ class appgroup extends plugin
 
     if($entry['TYPE'] == "ENTRY"){
       $r_entry['PARAMETER'] = $this->app_parameter;
+      $r_entry['FLAGS'] = $this->gosaApplicationFlags;
       if($r_entry['STATUS'] != "ADDED"){
         $r_entry['STATUS'] = "EDITED";
-      } 
+      }
     }
     if($entry['TYPE'] == "FOLDER"){
       $r_entry['ICON']   = $this->edit_entry['ICON'];
@@ -626,21 +649,29 @@ class appgroup extends plugin
         }
       }
       if($found){
-      
+
         /* Create a list of editable parameter */
         if(isset($app['gosaApplicationParameter'])){
           for($i = 0 ; $i < $app['gosaApplicationParameter']['count'] ; $i++) {
             $para = $app['gosaApplicationParameter'][$i];
-            $tmp  = explode(":",$para);
+            $tmp  = explode(":",$para, 2);
             $this->app_parameter[$tmp[0]] = $tmp[1];
           }
+        }
+
+        if(isset($app['gosaApplicationFlags'])) {
+          $this->gosaApplicationFlags = $app['gosaApplicationFlags'][0];
         }
 
         /* Overwrite parameters with entry parameters */
         foreach($entry['PARAMETER'] as $name => $value){
           $this->app_parameter[$name] = $value;
         }
-        
+
+        if (isset($entry['FLAGS'])) {
+          $this->gosaApplicationFlags = $entry['FLAGS'];
+        }
+
         $this->dialog = TRUE;
         $this->edit_entry = $entry;
       }
@@ -653,7 +684,7 @@ class appgroup extends plugin
   }
 
 
-  /*! \brief Removes the menu structure from ldap 
+  /*! \brief Removes the menu structure from ldap
    */
   function remove_from_parent()
   {
@@ -698,7 +729,7 @@ class appgroup extends plugin
         if($name['NAME'] == $part){
           $parent_id = $cur[$key]['UNIQID'];
           $cur = &$cur[$key]['ENTRIES'];
-          
+
           $found =TRUE;
           break;
         }
@@ -729,7 +760,7 @@ class appgroup extends plugin
     $all   = $this->_get_all_entries();
     if($dir == "down"){
       $to = $this->_get_next($id);
-    } 
+    }
     if($dir == "up"){
       $to = $this->_get_last($id);
     }
@@ -742,10 +773,10 @@ class appgroup extends plugin
     $o_from = $all[$id];
 
     if($o_to['PARENT'] == $o_from['UNIQID'] && $dir == "down"){
-      $to    = $this->_get_next($to,$o_from['PARENT']); 
-      $o_to  = $all[$to]; 
+      $to    = $this->_get_next($to,$o_from['PARENT']);
+      $o_to  = $all[$to];
     }
- 
+
     /* Target is ENTRY && same BASE, just switch */
     if($o_to['PARENT'] == $o_from['PARENT'] ){
       $parent = $all[$o_to['PARENT']];
@@ -767,10 +798,10 @@ class appgroup extends plugin
   }
 
 
-   
+
   /*! \brief  Returns the railing object ID of the given object.
       @return String  The id of the trailing object.
-   */ 
+   */
   function _get_last($id)
   {
     $all_l = array_reverse($this->_get_entries_for_release($this->FAIrelease));
@@ -780,7 +811,7 @@ class appgroup extends plugin
         break;
       }
     }
-    while(isset($all_l[$i]) && !in_array($all_l[$i]['TYPE'],array("ENTRY","FOLDER","CLOSE","OPEN")) && $i < count($all_l)){
+      while(isset($all_l[$i]) && !in_array($all_l[$i]['TYPE'],array("SEPERATOR", "ENTRY","FOLDER","CLOSE","OPEN")) && $i < count($all_l)){
       $i++;
     }
 
@@ -790,7 +821,7 @@ class appgroup extends plugin
 
     if(in_array($all_l[$i]['TYPE'],array("CLOSE","OPEN"))){
       return($all_l[$i]['PARENT']);
-    }     
+    }
 
     return($all_l[$i]['UNIQID']);
   }
@@ -798,7 +829,7 @@ class appgroup extends plugin
 
   /*! \brief  Returns the following object ID of the given object.
       @return String  The id of the following object.
-   */ 
+   */
   function _get_next($id,$parent = 0)
   {
     $all_l = $this->_get_entries_for_release($this->FAIrelease);
@@ -813,7 +844,7 @@ class appgroup extends plugin
         $i++;
       }
     }else{
-      while(isset($all_l[$i]) && !in_array($all_l[$i]['TYPE'],array("ENTRY","FOLDER")) && $i < count($all_l)){
+        while(isset($all_l[$i]) && !in_array($all_l[$i]['TYPE'],array("SEPERATOR", "ENTRY","FOLDER")) && $i < count($all_l)){
         $i++;
       }
     }
@@ -830,7 +861,7 @@ class appgroup extends plugin
 
 
   /* !\brief Handle ui POSTS, like sort up/down/delete
-   */ 
+   */
   function save_object()
   {
     foreach($_POST as $name => $value){
@@ -840,17 +871,17 @@ class appgroup extends plugin
         break;
       }
       if(preg_match("/^menu_delete/",$name)){
-        $current_rel  = $this->_get_release_key($this->FAIrelease); 
+        $current_rel  = $this->_get_release_key($this->FAIrelease);
         $this->_remove_entry_id($current_rel);
         break;
       }
       if(preg_match("/^menu_paste_/",$name)){
-        $source_rel   = $this->_get_release_key($this->copied_release); 
+        $source_rel   = $this->_get_release_key($this->copied_release);
         $current_rel  = $this->_get_release_key($this->FAIrelease);
 
         $all = $this->_get_all_entries();
         $menu = $all[$source_rel]['ENTRIES'];
-    
+
         foreach($menu as $entry){
           if(in_array($entry['TYPE'],array("FOLDER","ENTRY","SEPERATOR"))){
             $this->_add_entry($current_rel,$entry,-1);
@@ -884,7 +915,7 @@ class appgroup extends plugin
         $this->_move_entry($id,"down");
         break;
       }
-      if(preg_match("/^parameter_/",$name) && 
+      if(preg_match("/^parameter_/",$name) &&
         count($this->edit_entry) && $this->edit_entry['TYPE'] == "ENTRY"){
         $name = preg_replace("/^parameter_/","",$name);
         $this->app_parameter[$name] = $value;
@@ -901,7 +932,7 @@ class appgroup extends plugin
       $folder = $_POST['folder'];
       foreach($_POST as $name => $value){
         if(preg_match("/^AddApp_[0-9]*$/",$name)){
-          $this->_add_app_id($folder,preg_replace("/^AddApp_/","",$name));   
+          $this->_add_app_id($folder,preg_replace("/^AddApp_/","",$name));
         }
       }
     }
@@ -919,7 +950,17 @@ class appgroup extends plugin
         $this->_add_sub_folder($folder,$name);
       }
     }
-    if(isset($_POST['app_entry_save'])){ 
+    if(isset($_POST['app_entry_save'])){
+
+      foreach($this->app_flags as $name => $flag) {
+        if($this->acl_is_writeable($name)) {
+          if(!isset($_POST[$name]) && strstr($this->gosaApplicationFlags,$flag)) {
+            $this->gosaApplicationFlags = str_replace($flag,"",$this->gosaApplicationFlags);
+          } elseif(isset($_POST[$name]) && !strstr($this->gosaApplicationFlags,$flag)) {
+              $this->gosaApplicationFlags = str_replace("]", "$flag]", $this->gosaApplicationFlags);
+            }
+        }
+      }
       $this->_save_entry_edit();
     }
 
@@ -940,9 +981,9 @@ class appgroup extends plugin
     $this->reload();
   }
 
- 
-  /*! \brief Returns the UNIQID of the currently selected release 
-   */ 
+
+  /*! \brief Returns the UNIQID of the currently selected release
+   */
   function _get_release_key($release,$add_if_missing = FALSE)
   {
     $release_info = $this->Releases[$release];
@@ -966,30 +1007,30 @@ class appgroup extends plugin
       }
     }
     if($found){
-      return($s_key);  
-    }  
+      return($s_key);
+    }
     return(FALSE);
   }
 
- 
+
   /*! \brief Add a new folder folder to the specified folder id
       @param  String $folder The folder id in where we want to add the new folder.
       @param  String $name   The name of the new folder.
-   */ 
+   */
   function _add_sub_folder($folder,$name)
   {
     $all = $this->_get_all_entries();
     if($folder == "BASE"){
       $folder = $this->_get_release_key($this->FAIrelease,TRUE);
     }
-    
+
     if(isset($all[$folder])){
       $a_folder = array();
       $a_folder['STATUS'] = "ADDED";
       $a_folder['NAME']   = $name;
       $a_folder['UNIQID'] = uniqid();
       $a_folder['ENTRIES']= array();
-      $a_folder['PARENT'] = $folder;      
+      $a_folder['PARENT'] = $folder;
       $a_folder['TYPE']   = "FOLDER";
       $a_folder['ICON']   = "";
       $all[$folder]['ENTRIES'][] = $a_folder;
@@ -1012,7 +1053,7 @@ class appgroup extends plugin
     return(FALSE);
   }
 
-  
+
   /* !\brief  Adds an object to a given folder.
       @param  String  The folder where we should add the entry
       @param  Array   The entry we want to add.
@@ -1027,11 +1068,11 @@ class appgroup extends plugin
       return;
     }
 
-    /* Check if the folder exists 
+    /* Check if the folder exists
      */
     if(isset($all[$folder_id])){
 
-      /* Check if the entry we want to add, 
+      /* Check if the entry we want to add,
           contains su objects.
        */
       if(!isset($entry['ENTRIES'])){
@@ -1043,15 +1084,15 @@ class appgroup extends plugin
 
       /* Prepare the entry to be added.
        */
-      $entry['UNIQID'] = uniqid();     
+      $entry['UNIQID'] = uniqid();
       $entry['PARENT'] = $folder_id;
       $entry['ENTRIES']= array();
       $entry['STATUS'] = "ADDED";
-     
-      /* Append the ebtry to the given folder 
+
+      /* Append the ebtry to the given folder
           and to the given position \$pos
-       */ 
-      $cnt = 0; 
+       */
+      $cnt = 0;
       $new = array();
       $added =FALSE;
       foreach($folder['ENTRIES'] as $key => $obj){
@@ -1069,9 +1110,9 @@ class appgroup extends plugin
         $new[] = $entry;
       }
       $all[$folder_id]['ENTRIES'] = &$new;
- 
+
       /* Add sub entries too.
-       */ 
+       */
       foreach($entries as $sub){
         $this->_add_entry($entry['UNIQID'],$sub,-1);
       }
@@ -1080,11 +1121,11 @@ class appgroup extends plugin
     return(FALSE);
   }
 
- 
-  /*! \brief Add the application identified by $app_id to folder $folder_id 
+
+  /*! \brief Add the application identified by $app_id to folder $folder_id
       @param  String  folder_id The UNIQID of the folder where we want to add the new folder.
       @param  Integer app_id    The ID of the application which should be added.
-   */ 
+   */
   function _add_app_id($folder_id,$app_id)
   {
     $all = $this->_get_all_entries();
@@ -1096,7 +1137,7 @@ class appgroup extends plugin
       $new = array();
       $new['TYPE']  = "ENTRY";
       $new['NAME']  = $this->apps[$app_id]['cn'][0];
-      $new['UNIQID']= uniqid(); 
+      $new['UNIQID']= uniqid();
       $new['PARENT']= $folder_id;
       $new['PARAMETER']= array();
       if(isset($this->apps[$app_id]['description'][0])){
@@ -1110,10 +1151,10 @@ class appgroup extends plugin
   }
 
 
-  /*! \brief Add the application identified by $app_id to folder $folder_id 
+  /*! \brief Add the application identified by $app_id to folder $folder_id
       @param  String  folder_id The UNIQID of the folder where we want to add the new folder.
       @param  Integer app_id    The ID of the application which should be added.
-   */ 
+   */
   function _add_seperator($folder_id)
   {
     $all = $this->_get_all_entries();
@@ -1125,7 +1166,7 @@ class appgroup extends plugin
       $new = array();
       $new['TYPE']  = "SEPERATOR";
       $new['NAME']  = "SEPERATOR";
-      $new['UNIQID']= uniqid(); 
+      $new['UNIQID']= uniqid();
       $new['PARENT']= $folder_id;
       $new['PARAMETER']= array();
       $new['STATUS']= "ADDED";
@@ -1134,11 +1175,11 @@ class appgroup extends plugin
   }
 
 
-  /*! \brief  Return all entries linear. ($this->a_Structure is a multidimensional array) 
+  /*! \brief  Return all entries linear. ($this->a_Structure is a multidimensional array)
       @param  Boolean   $add_tags  If TRUE, OPEN/CLOSE Tags will be appended.
                         Used in the smarty template to display logical sperations.
       @param  &Array    Start here, Pointer to an array.
-   */ 
+   */
   function _get_all_entries($add_tags = FALSE, $skip_release = FALSE, &$cur = NULL)
   {
     $ret = array();
@@ -1146,12 +1187,12 @@ class appgroup extends plugin
       $cur = &$this->a_Structure;
     }
 
-    /* Walk through all entries and append them to our return array 
+    /* Walk through all entries and append them to our return array
      */
     foreach($cur as $key => $entry){
       if($skip_release && $entry['TYPE'] == "RELEASE"){
         continue;
-      }    
+      }
       if($entry['TYPE'] == "ENTRY"){
         $found = FALSE;
         foreach($this->apps as $app){
@@ -1162,27 +1203,27 @@ class appgroup extends plugin
             }
             break;
           }
-        } 
+        }
         if(!$found){
           $entry['INFO'] = "<font color='red'>"._("Not available in release.")."</font>";
         }
       }
 
       $tmp = $entry;
-  
-      /* Recursive resolution of the subentries  
+
+      /* Recursive resolution of the subentries
          There are two methods.
-            - Just add sub entries  
-            - Add sub entries and additionaly add OPEN / CLOSE tags to be able 
+            - Just add sub entries
+            - Add sub entries and additionaly add OPEN / CLOSE tags to be able
                 to display logical seperators in the smarty template.
-       */ 
+       */
       if(!$add_tags){
         $ret[$tmp['UNIQID']] = &$cur[$key];
         if(isset($entry['ENTRIES']) && count($entry['ENTRIES'])){
           $ret = array_merge($ret,$this->_get_all_entries($add_tags,$skip_release,$cur[$key]['ENTRIES']));
         }
       }else{
-      
+
         if(isset($tmp['ENTRIES'])){
           unset($tmp['ENTRIES']);
         }
@@ -1220,7 +1261,7 @@ class appgroup extends plugin
     $prio = 0;
     $Actions = array("Remove" => array(),"Edit" => array() , "Add" => array());
 
-    /* Walk through the menu structure and build up the ldap data object, 
+    /* Walk through the menu structure and build up the ldap data object,
         the entry dn and the entry priority.
      */
     $sep_id = 0;
@@ -1231,7 +1272,7 @@ class appgroup extends plugin
 
       /* Build entry dn
        */
-      do{  
+      do{
         if($cur['TYPE'] == "SEPERATOR"){
           $sep_id ++;
           $dn.= "cn=seperator_".$sep_id.",";
@@ -1257,7 +1298,7 @@ class appgroup extends plugin
        */
       switch($entry['TYPE']){
         case "SEPERATOR"    :
-        { 
+        {
           $attrs['objectClass'] = array("gotoMenuEntry");
           $attrs['cn']          = "seperator_".$sep_id;
           $attrs['gosaApplicationPriority'] = $prio;
@@ -1265,35 +1306,39 @@ class appgroup extends plugin
         }
         break;
         case "ENTRY"    :
-        { 
+        {
           $attrs['objectClass'] = array("gotoMenuEntry");
           $attrs['cn']          = $entry['NAME'];
           $attrs['gosaApplicationPriority'] = $prio;
-          $attrs['gosaApplicationParameter'] = array(); 
-          
+          $attrs['gosaApplicationParameter'] = array();
+
+          if (isset($entry['FLAGS'])) {
+            $attrs['gosaApplicationParameter'][] = "gosaApplicationFlags:".$entry['FLAGS'];
+          }
+
           foreach($entry['PARAMETER'] as $name => $value){
-            $attrs['gosaApplicationParameter'][] = $name.":".$value; 
+            $attrs['gosaApplicationParameter'][] = $name.":".$value;
           }
           if($entry['STATUS'] == "ADDED" && !count($attrs['gosaApplicationParameter'])){
             unset($attrs['gosaApplicationParameter']);
-          } 
+          }
         }
         break;
-        case "FOLDER"   : 
-        { 
+        case "FOLDER"   :
+        {
           $attrs['objectClass'] = array("gotoSubmenuEntry");
           $attrs['cn']          = $entry['NAME'];
           $attrs['gosaApplicationPriority'] = $prio;
           if($entry['STATUS'] != "ADDED"){
             $attrs['gosaApplicationIcon'] = array();
           }
-          
+
           if(!empty($entry['ICON'])){
             $attrs['gosaApplicationIcon']     = $entry['ICON'];
           }
         }
         break;
-        case "RELEASE"  : 
+        case "RELEASE"  :
         {
           $attrs['ou']            = $entry['NAME'];
           $attrs['objectClass']   = array();
@@ -1306,8 +1351,8 @@ class appgroup extends plugin
         }
         break;
       }
- 
-      /* Append missing ObjectClasses,  ...  Tagging 
+
+      /* Append missing ObjectClasses,  ...  Tagging
        */
       if(isset($entry['LDAP_ATTRS'])){
         for($i = 0 ; $i < $entry['LDAP_ATTRS']['objectClass']['count']; $i ++){
@@ -1317,7 +1362,7 @@ class appgroup extends plugin
           }
         }
       }
-  
+
       /* Create an array containing all operations sorted by type. (add,remove...)
        */
       if($entry['STATUS'] == "LOADED"){
@@ -1352,7 +1397,7 @@ class appgroup extends plugin
         }
       }
     }
-    
+
     /* Add new entries
      */
     foreach($Actions['Add'] as $dn => $data){
@@ -1393,7 +1438,7 @@ class appgroup extends plugin
   function PrepareForCopyPaste($source)
   {
     plugin::PrepareForCopyPaste($source);
-   
+
     $tmp = new appgroup($this->config,$source['dn']);
     $this->is_account = TRUE;
     $this->a_Structure = $tmp->a_Structure;
@@ -1403,6 +1448,7 @@ class appgroup extends plugin
         $entry['STATUS'] = "ADDED";
       }
     }
+    unset($entry);
   }
 
 
@@ -1411,9 +1457,9 @@ class appgroup extends plugin
   function multiple_save_object()
   {
     if(isset($_POST['group_apps_multi'])){
-      $this->save_object(); 
-      plugin::multiple_save_object();    
-  
+      $this->save_object();
+      plugin::multiple_save_object();
+
       /* Get posts */
       foreach(array("apps") as $attr){
         if(isset($_POST['use_'.$attr])) {
@@ -1422,10 +1468,10 @@ class appgroup extends plugin
       }
     }
   }
-  
+
 
   /*! \brief  Return values used in multiple edit mode.
-              Some values can be modified for multiple 
+              Some values can be modified for multiple
               groups at the same time.
       @return Array  All values that support multiple edit.
    */
@@ -1442,27 +1488,30 @@ class appgroup extends plugin
     }
     return($ret);
   }
-  
-  /*! \brief  Return plugin informations for acl handling  
-   * 
+
+  /*! \brief  Return plugin informations for acl handling
+   *
    * \return Array containing all plugin ACL informations
-   */ 
+   */
   static function plInfo()
   {
-    return (array(
-          "plShortName"   => _("Applications"),
-          "plDescription" => _("Group applications"),
-          "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
-          "plPriority"    => 7,
-          "plSection"     => array("administration"),
-          "plCategory"    => array("groups"),
-          
-          "plProvidedAcls"=> array(
-            "gosaMemberApplication"     => _("Application"),
-            "FAIrelease"                => _("Release"),
-            "gosaApplicationParameter"  => _("Application parameter"))
-          ));
+    return array(
+      "plShortName"   => _("Applications"),
+      "plDescription" => _("Group applications"),
+      "plSelfModify"  => FALSE,
+      "plPriority"    => 7,
+      "plCategory"    => array("groups"),
+      "plObjectType"  => array("group"),
+
+      "plProvidedAcls"=> array(
+        "gosaMemberApplication"     => _("Application"),
+        "FAIrelease"                => _("Release"),
+        "gosaApplicationParameter"  => _("Application parameter"),
+        "placeOnDesktop"            => _("Place icon on members desktop"),      // D
+        "placeOnMenuBar"            => _("Place entry in members launch bar"),  // L
+        "placeInStartmenu"          => _("Place entry in members startmenu")    // M
+      )
+    );
   }
 }
 // vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:

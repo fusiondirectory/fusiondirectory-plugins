@@ -11,8 +11,7 @@
     {/if}
     </h1>
     {if $attributes.expired.accounts|@count > 0}
-      <div class="listContainer">
-      <table summary="" style="width: 100%; table-layout: fixed;"  cellpadding="4" cellspacing="0">
+      <table summary="" style="width: 100%;" class="listingTable">
         <colgroup>
           <col width="10%"/>
           <col width="15%"/>
@@ -21,38 +20,37 @@
           <col width="15%"/>
           <col width="10%"/>
         </colgroup>
-        <thead class="fixedListHeader listHeaderFormat">
+        <thead>
           <tr style="background-color: white; text-align:center;">
-            <td colspan="4" class="listheader" style="background-color: white; padding:5px;">
+            <th colspan="4" style="background-color: white; padding:5px;">
               {t}Expired accounts{/t}
-            </td>
-            <td colspan="3" class="listheader" style="background-color: white; padding:5px;">
+            </th>
+            <th colspan="3" style="background-color: white; padding:5px;">
               {t}Manager concerned{/t}
-            </td>
+            </th>
           </tr>
 
 
           <tr style="background-color: #E8E8E8; height:26px;font-weight:bold;">
         <!-- uid/cn/telephonNumber/mail/shadowExpire/sambaKickoffTime -->
-          <td class="listheader">{t}uid{/t}</td><td class="listheader">{t}cn{/t}</td><td class="listheader">{t}telephoneNumber{/t}</td><td class="listheader">{t}shadowExpire{/t}</td>
-          <td class="listheader">{t}manager{/t}</td><td class="listheader">{t}mail{/t}</td><td class="listheader">{t}telephoneNumber{/t}</td>
+          <th>{t}uid{/t}</th><th>{t}cn{/t}</th><th>{t}telephoneNumber{/t}</th><th>{t}shadowExpire{/t}</th>
+          <th>{t}manager{/t}</th><th>{t}mail{/t}</th><th>{t}telephoneNumber{/t}</th>
           </tr>
         </thead>
-        <tbody class="listScrollContent listBodyFormat">
+        <tbody>
           {foreach from=$attributes.expired.accounts item=account}
             <tr>
-              <td class="list0">&nbsp;{$account.uid}</td>
-              <td class="list0">&nbsp;{$account.cn}</td>
-              <td class="list0">&nbsp;{$account.telephoneNumber}</td>
-              <td class="list0">&nbsp;{$account.shadowExpire}</td>
-              <td class="list0">&nbsp;{$account.manager_cn}</td>
-              <td class="list0"><a href="mailto:{$account.manager_mail}">{$account.manager_mail}</a></td>
-              <td class="list0">&nbsp;{$account.manager_phone}</td>
+              <td>&nbsp;{$account.uid}</td>
+              <td>&nbsp;{$account.cn}</td>
+              <td>&nbsp;{$account.telephoneNumber}</td>
+              <td>&nbsp;{$account.shadowExpire}</td>
+              <td>&nbsp;{$account.manager_cn}</td>
+              <td><a href="mailto:{$account.manager_mail}">{$account.manager_mail}</a></td>
+              <td>&nbsp;{$account.manager_phone}</td>
             </tr>
           {/foreach}
         </tbody>
       </table>
-      </div>
      {/if}
 
     <h1>
@@ -63,7 +61,6 @@
     {/if}
     </h1>
     {if $attributes.expired.accounts_next_days|@count > 0}
-      <div class="listContainer">
       <table summary="" style="width: 100%; table-layout: fixed;"  cellpadding="4" cellspacing="0">
         <colgroup>
           <col width="10%"/>
@@ -73,36 +70,35 @@
           <col width="15%"/>
           <col width="10%"/>
         </colgroup>
-        <thead class="fixedListHeader listHeaderFormat">
+        <thead>
           <tr style="background-color: white; text-align:center;">
-            <td colspan="4" class="listheader" style="background-color: white; padding:5px;">
+            <th colspan="4" style="background-color: white; padding:5px;">
               {t}Next expired accounts{/t}
             </th>
-            <td colspan="3" class="listheader" style="background-color: white; padding:5px;">
+            <th colspan="3" style="background-color: white; padding:5px;">
               {t}Manager concerned{/t}
             </th>
           </tr>
-          <tr style="background-color: #E8E8E8; height:26px;font-weight:bold;">
+          <tr>
           <!-- uid/cn/telephonNumber/mail/shadowExpire/sambaKickoffTime -->
-          <td class="listheader">{t}uid{/t}</td><td class="listheader">{t}cn{/t}</td><td class="listheader">{t}telephoneNumber{/t}</td><td class="listheader">{t}shadowExpire{/t}</td>
-          <td class="listheader">{t}manager{/t}</td><td class="listheader">{t}mail{/t}</td><td class="listheader">{t}telephoneNumber{/t}</td>
+          <th>{t}uid{/t}</th><th>{t}cn{/t}</th><th>{t}telephoneNumber{/t}</th><th>{t}shadowExpire{/t}</th>
+          <th>{t}manager{/t}</th><th>{t}mail{/t}</th><th>{t}telephoneNumber{/t}</th>
           </tr>
         </thead>
-        <tbody class="listScrollContent listBodyFormat">
+        <tbody>
           {foreach from=$attributes.expired.accounts_next_days item=account}
             <tr>
-              <td class="list0">&nbsp;{$account.uid}</td>
-              <td class="list0">&nbsp;{$account.cn}</td>
-              <td class="list0">&nbsp;{$account.telephoneNumber}</td>
-              <td class="list0">&nbsp;{$account.shadowExpire}</td>
-              <td class="list0">&nbsp;{$account.manager_cn}</td>
-              <td class="list0"><a href="mailto:{$account.manager_mail}">{$account.manager_mail}</a></td>
-              <td class="list0">&nbsp;{$account.manager_phone}</td>
+              <td>&nbsp;{$account.uid}</td>
+              <td>&nbsp;{$account.cn}</td>
+              <td>&nbsp;{$account.telephoneNumber}</td>
+              <td>&nbsp;{$account.shadowExpire}</td>
+              <td>&nbsp;{$account.manager_cn}</td>
+              <td><a href="mailto:{$account.manager_mail}">{$account.manager_mail}</a></td>
+              <td>&nbsp;{$account.manager_phone}</td>
             </tr>
           {/foreach}
         </tbody>
       </table>
-      </div>
     {/if}
   </div>
 </div>

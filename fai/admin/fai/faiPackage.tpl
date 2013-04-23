@@ -11,7 +11,7 @@
             </td>
             <td>
 {render acl=$cnACL}
-              <input type='text' value="{$cn}" size="45" disabled id="cn">
+              <input type='text' value="{$cn}" size="45" id="cn" name="cn"/>
 {/render}
             </td>
           </tr>
@@ -34,7 +34,7 @@
         <table summary="" cellspacing="4">
           <tr>
             <td>
-              {t}Release{/t} : 
+              {t}Release{/t} :
             </td>
             <td>
               {$release}
@@ -42,7 +42,7 @@
           </tr>
           <tr>
             <td>
-              {t}Section{/t} : 
+              {t}Section{/t} :
             </td>
             <td>
               {$section}
@@ -67,7 +67,7 @@
 <p class="seperator">&nbsp;</p>
 <table width="99%" summary="">
   <tr>
-    <td> 
+    <td>
       <h2><img class="center" alt="" src="plugins/fai/images/fai_packages.png" align="middle" title="{t}Used packages{/t}">&nbsp;{t}Used packages{/t}</h2>
       {$divlist}
     </td>

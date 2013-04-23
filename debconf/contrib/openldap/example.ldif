@@ -1,0 +1,1299 @@
+version: 1
+
+dn: ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: organizationalUnit
+objectClass: top
+ou: debconf
+
+dn: ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: organizationalUnit
+objectClass: top
+ou: questions
+seeAlso: ou=questions,ou=debconf,ou=systems,dc=spinlock,dc=hr
+
+dn: ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: organizationalUnit
+objectClass: top
+ou: templates
+seeAlso: ou=templates,ou=debconf,ou=systems,dc=spinlock,dc=hr
+
+dn: cn=apt-setup/contrib,ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: apt-setup/contrib
+default: false
+description: Use contrib software?
+extendedDescription:: U29tZSBhZGRpdGlvbmFsIHNvZnR3YXJlIGhhcyBiZWVuIG1hZGUgdG8gd29yayB3aXRoIERlYmlhbi4gVGhvdWdoIHRoaXMgc29mdHdhcmUgaXMgZnJlZSwgaXQgZGVwZW5kcyBvbi
+ Bub24tZnJlZSBzb2Z0d2FyZSBmb3IgaXRzIG9wZXJhdGlvbi4gVGhpcyBzb2Z0d2FyZSBpcyBub3QgYSBwYXJ0IG9mIERlYmlhbiwgYnV0IHN0YW5kYXJkIERlYmlhbiB0b29scyBjYW4gYmUgdXNlZCB0byBpb
+ nN0YWxsIGl0LgoKUGxlYXNlIGNob29zZSB3aGV0aGVyIHlvdSB3YW50IHRoaXMgc29mdHdhcmUgdG8gYmUgbWFkZSBhdmFpbGFibGUgdG8geW91Lg==
+type: boolean
+
+dn: cn=apt-setup/non-free,ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: apt-setup/non-free
+default: false
+description: Use non-free software?
+extendedDescription:: U29tZSBub24tZnJlZSBzb2Z0d2FyZSBoYXMgYmVlbiBtYWRlIHRvIHdvcmsgd2l0aCBEZWJpYW4uIFRob3VnaCB0aGlzIHNvZnR3YXJlIGlzIG5vdCBhdCBhbGwgYSBwYXJ0IG9mIE
+ RlYmlhbiwgc3RhbmRhcmQgRGViaWFuIHRvb2xzIGNhbiBiZSB1c2VkIHRvIGluc3RhbGwgaXQuIFRoaXMgc29mdHdhcmUgaGFzIHZhcnlpbmcgbGljZW5zZXMgd2hpY2ggbWF5IHByZXZlbnQgeW91IGZyb20gd
+ XNpbmcsIG1vZGlmeWluZywgb3Igc2hhcmluZyBpdC4KClBsZWFzZSBjaG9vc2Ugd2hldGhlciB5b3Ugd2FudCB0byBoYXZlIGl0IGF2YWlsYWJsZSBhbnl3YXku
+type: boolean
+
+dn: cn=apt-setup/security_host,ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: apt-setup/security_host
+default: security.debian.org
+description: for internal use; can be preseeded
+extendedDescription: Host to use for security updates
+type: string
+
+dn: cn=apt-setup/services-select,ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: apt-setup/services-select
+choices: security updates (from ${SEC_HOST}), volatile updates (from ${VOL_HOST})
+default: security, volatile
+description: Services to use:
+extendedDescription:: RGViaWFuIGhhcyB0d28gc2VydmljZXMgdGhhdCBwcm92aWRlIHVwZGF0ZXMgdG8gcmVsZWFzZXM6IHNlY3VyaXR5IGFuZCB2b2xhdGlsZS4KClNlY3VyaXR5IHVwZGF0ZXMgaGVscC
+ B0byBrZWVwIHlvdXIgc3lzdGVtIHNlY3VyZWQgYWdhaW5zdCBhdHRhY2tzLiBFbmFibGluZyB0aGlzIHNlcnZpY2UgaXMgc3Ryb25nbHkgcmVjb21tZW5kZWQuCgpWb2xhdGlsZSB1cGRhdGVzIHByb3ZpZGUgb
+ W9yZSBjdXJyZW50IHZlcnNpb25zIGZvciBzb2Z0d2FyZSB0aGF0IGNoYW5nZXMgcmVsYXRpdmVseSBmcmVxdWVudGx5IGFuZCB3aGVyZSBub3QgaGF2aW5nIHRoZSBsYXRlc3QgdmVyc2lvbiBjb3VsZCByZWR1
+ Y2UgdGhlIHVzYWJpbGl0eSBvZiB0aGUgc29mdHdhcmUuIEFuIGV4YW1wbGUgaXMgdGhlIHZpcnVzIHNpZ25hdHVyZXMgZm9yIGEgdmlydXMgc2Nhbm5lci4gVGhpcyBzZXJ2aWNlIGlzIG9ubHkgYXZhaWxhYmx
+ lIGZvciBzdGFibGUgYW5kIG9sZHN0YWJsZSByZWxlYXNlcy4=
+type: multiselect
+
+dn: cn=apt-setup/use_mirror,ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: apt-setup/use_mirror
+description: Use a network mirror?
+extendedDescription:: QSBuZXR3b3JrIG1pcnJvciBjYW4gYmUgdXNlZCB0byBzdXBwbGVtZW50IHRoZSBzb2Z0d2FyZSB0aGF0IGlzIGluY2x1ZGVkIG9uIHRoZSBDRC1ST00uIFRoaXMgbWF5IGFsc28gbW
+ FrZSBuZXdlciB2ZXJzaW9ucyBvZiBzb2Z0d2FyZSBhdmFpbGFibGUuCgoke0VYUExBTkFUSU9OfQ==
+type: boolean
+
+dn: cn=apt-setup/volatile_host,ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: apt-setup/volatile_host
+default: volatile.debian.org
+description: for internal use; can be preseeded
+extendedDescription: Host to use for volatile updates
+type: string
+
+dn: cn=base-installer/install-recommends,ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: base-installer/install-recommends
+default: true
+description: for internal use; can be preseeded
+extendedDescription: Will configure APT in the target system not to install recommened packages by default. For experienced users only.
+type: boolean
+
+dn: cn=base-installer/kernel/image,ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: base-installer/kernel/image
+choices: ${KERNELS}, none
+description: Kernel to install:
+extendedDescription: The list shows the available kernels. Please choose one of them in order to make the system bootable from the hard drive.
+type: string
+
+dn: cn=cdrom-detect/eject,ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: cdrom-detect/eject
+type: boolean
+
+dn: cn=clock-setup/ntp,ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: clock-setup/ntp
+default: true
+description: Set the clock using NTP?
+extendedDescription: The Network Time Protocol (NTP) can be used to set the system's clock. The installation process works best with a correctly set clock.
+type: boolean
+
+dn: cn=clock-setup/utc,ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: clock-setup/utc
+default: true
+description: Is the system clock set to UTC?
+extendedDescription: System clocks are generally set to Coordinated Universal Time (UTC). The operating system uses your time zone to convert system time into l
+ ocal time. This is recommended unless you also use another operating system that expects the clock to be set to local time.
+type: boolean
+
+dn: cn=console-keymaps-at/keymap,ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: console-keymaps-at/keymap
+choices: American English, Belarusian, Belgian, Brazilian (ABNT2 layout), Brazilian (EUA layout), British English, Bulgarian, Canadian French, Canadian Multilin
+ gual, Croatian, Czech, Danish, Dutch, Dvorak, Estonian, Finnish, French, German, Greek, Hebrew, Hungarian, Icelandic, Italian, Japanese, Kirghiz, Latin America
+ n, Latvian, Lithuanian, Macedonian, Norwegian, Polish, Portuguese, Romanian, Russian, Serbian (Cyrillic), Slovakian, Slovene, Spanish, Swedish, Swiss French, S
+ wiss German, Thai, Turkish (F layout), Turkish (Q layout), Ukrainian
+description: Keymap to use:
+type: select
+
+dn: cn=console-tools/archs,ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: console-tools/archs
+choices: ${KBD-ARCHS-L10N}
+description: Type of keyboard:
+extendedDescription: Please choose the type of keyboard to configure.
+type: select
+
+dn: cn=debian-installer/allow_unauthenticated,ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: debian-installer/allow_unauthenticated
+default: false
+description: for internal use; can be preseeded
+type: boolean
+
+dn: cn=debian-installer/country,ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: debian-installer/country
+description: for internal use; can be preseeded
+type: string
+
+dn: cn=debian-installer/exit/halt,ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: debian-installer/exit/halt
+default: false
+description: for internal use; can be preseeded
+extendedDescription: Halt the machine
+type: boolean
+
+dn: cn=debian-installer/exit/poweroff,ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: debian-installer/exit/poweroff
+default: false
+description: for internal use; can be preseeded
+extendedDescription: Power off the machine
+type: boolean
+
+dn: cn=debian-installer/language,ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: debian-installer/language
+description: for internal use only
+type: string
+
+dn: cn=debian-installer/locale,ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: debian-installer/locale
+choices: ${LOCALELIST}
+description: System locale:
+extendedDescription: Select the default locale for the installed system.
+type: string
+
+dn: cn=finish-install/reboot_in_progress,ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: finish-install/reboot_in_progress
+description: Installation complete
+extendedDescription: Installation is complete, so it is time to boot into your new system. Make sure to remove the installation media (CD-ROM, floppies), so tha
+ t you boot into the new system rather than restarting the installation.
+type: note
+
+dn: cn=hw-detect/load_firmware,ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: hw-detect/load_firmware
+default: true
+description: Load missing firmware from removable media?
+extendedDescription:: U29tZSBvZiB5b3VyIGhhcmR3YXJlIG5lZWRzIG5vbi1mcmVlIGZpcm13YXJlIGZpbGVzIHRvIG9wZXJhdGUuIFRoZSBmaXJtd2FyZSBjYW4gYmUgbG9hZGVkIGZyb20gcmVtb3ZhYm
+ xlIG1lZGlhLCBzdWNoIGFzIGEgVVNCIHN0aWNrIG9yIGZsb3BweS4KClRoZSBtaXNzaW5nIGZpcm13YXJlIGZpbGVzIGFyZTogJHtGSUxFU30KCklmIHlvdSBoYXZlIHN1Y2ggbWVkaWEgYXZhaWxhYmxlIG5vd
+ ywgaW5zZXJ0IGl0LCBhbmQgY29udGludWUu
+type: boolean
+
+dn: cn=localechooser/supported-locales,ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: localechooser/supported-locales
+choices: ${LOCALELIST}
+description: Additional locales:
+extendedDescription:: QmFzZWQgb24geW91ciBwcmV2aW91cyBjaG9pY2VzLCB0aGUgZGVmYXVsdCBsb2NhbGUgY3VycmVudGx5IHNlbGVjdGVkIGZvciB0aGUgaW5zdGFsbGVkIHN5c3RlbSBpcyAnJHtMT0
+ NBTEV9Jy4KCklmIHlvdSB3aXNoIHRvIHVzZSBhIGRpZmZlcmVudCBkZWZhdWx0IG9yIHRvIGFsc28gaGF2ZSBvdGhlciBsb2NhbGVzIGF2YWlsYWJsZSwgeW91IG1heSBjaG9vc2UgYWRkaXRpb25hbCBsb2Nhb
+ GVzIHRvIGJlIGluc3RhbGxlZC4gSWYgeW91IGFyZSB1bnN1cmUgaXQgaXMgYmVzdCB0byBqdXN0IHVzZSB0aGUgc2VsZWN0ZWQgZGVmYXVsdC4=
+type: en_US.UTF-8,
+
+dn: cn=mirror/country,ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: mirror/country
+description: country code or "manual" (for internal use)
+type: string
+
+dn: cn=mirror/http/directory,ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: mirror/http/directory
+default: /debian/
+description: Debian archive mirror directory:
+extendedDescription: Please enter the directory in which the mirror of the Debian archive is located.
+type: string
+
+dn: cn=mirror/http/hostname,ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: mirror/http/hostname
+default: mirror
+description: Debian archive mirror hostname:
+extendedDescription:: UGxlYXNlIGVudGVyIHRoZSBob3N0bmFtZSBvZiB0aGUgbWlycm9yIGZyb20gd2hpY2ggRGViaWFuIHdpbGwgYmUgZG93bmxvYWRlZC4KCkFuIGFsdGVybmF0ZSBwb3J0IGNhbiBiZS
+ BzcGVjaWZpZWQgdXNpbmcgdGhlIHN0YW5kYXJkIFtob3N0bmFtZV06W3BvcnRdIGZvcm1hdC4=
+type: string
+
+dn: cn=mirror/http/proxy,ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: mirror/http/proxy
+description: HTTP proxy information (blank for none):
+extendedDescription:: SWYgeW91IG5lZWQgdG8gdXNlIGEgSFRUUCBwcm94eSB0byBhY2Nlc3MgdGhlIG91dHNpZGUgd29ybGQsIGVudGVyIHRoZSBwcm94eSBpbmZvcm1hdGlvbiBoZXJlLiBPdGhlcndpc2
+ UsIGxlYXZlIHRoaXMgYmxhbmsuCgpUaGUgcHJveHkgaW5mb3JtYXRpb24gc2hvdWxkIGJlIGdpdmVuIGluIHRoZSBzdGFuZGFyZCBmb3JtIG9mICJodHRwOi8vW1t1c2VyXVs6cGFzc11AXWhvc3RbOnBvcnRdL
+ yIu
+type: string
+
+dn: cn=mirror/protocol,ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: mirror/protocol
+choices: ${protocols}
+default: http
+description: Protocol for file downloads:
+extendedDescription: Please select the protocol to be used for downloading files. If unsure, select "http"; it is less prone to problems involving firewalls.
+type: string
+
+dn: cn=netcfg/choose_interface,ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: netcfg/choose_interface
+choices: ${ifchoices}
+description: Primary network interface:
+extendedDescription: Your system has multiple network interfaces. Choose the one to use as the primary network interface during the installation. If possible, t
+ he first connected network interface found has been selected.
+type: select
+
+dn: cn=netcfg/dhcp_timeout,ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: netcfg/dhcp_timeout
+default: 15
+description: for internal use; can be preseeded
+extendedDescription: Timeout for trying DHCP
+type: string
+
+dn: cn=netcfg/enable,ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: netcfg/enable
+default: true
+description: for internal use; can be preseeded
+extendedDescription: Set to false to disable netcfg entirely via preseed.
+type: boolean
+
+dn: cn=netcfg/get_domain,ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: netcfg/get_domain
+description: Domain name:
+extendedDescription: The domain name is the part of your Internet address to the right of your host name.  It is often something that ends in .com, .net, .edu, 
+ or .org.  If you are setting up a home network, you can make something up, but make sure you use the same domain name on all your computers.
+type: string
+
+dn: cn=netcfg/get_hostname,ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: netcfg/get_hostname
+default: debian
+description: Hostname:
+extendedDescription:: UGxlYXNlIGVudGVyIHRoZSBob3N0bmFtZSBmb3IgdGhpcyBzeXN0ZW0uCgpUaGUgaG9zdG5hbWUgaXMgYSBzaW5nbGUgd29yZCB0aGF0IGlkZW50aWZpZXMgeW91ciBzeXN0ZW0gdG
+ 8gdGhlIG5ldHdvcmsuIElmIHlvdSBkb24ndCBrbm93IHdoYXQgeW91ciBob3N0bmFtZSBzaG91bGQgYmUsIGNvbnN1bHQgeW91ciBuZXR3b3JrIGFkbWluaXN0cmF0b3IuIElmIHlvdSBhcmUgc2V0dGluZyB1c
+ CB5b3VyIG93biBob21lIG5ldHdvcmssIHlvdSBjYW4gbWFrZSBzb21ldGhpbmcgdXAgaGVyZS4=
+type: string
+
+dn: cn=netcfg/wireless_wep,ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: netcfg/wireless_wep
+description: WEP key for wireless device ${iface}:
+extendedDescription:: SWYgYXBwbGljYWJsZSwgcGxlYXNlIGVudGVyIHRoZSBXRVAgc2VjdXJpdHkga2V5IGZvciB0aGUgd2lyZWxlc3MgZGV2aWNlICR7aWZhY2V9LiBUaGVyZSBhcmUgdHdvIHdheXMgdG
+ 8gZG8gdGhpczoKCklmIHlvdXIgV0VQIGtleSBpcyBpbiB0aGUgZm9ybWF0ICdubm5uLW5ubm4tbm4nLCAnbm46bm46bm46bm46bm46bm46bm46bm4nLCBvciAnbm5ubm5ubm4nLCB3aGVyZSBuIGlzIGEgbnVtY
+ mVyLCBqdXN0IGVudGVyIGl0IGFzIGl0IGlzIGludG8gdGhpcyBmaWVsZC4KCklmIHlvdXIgV0VQIGtleSBpcyBpbiB0aGUgZm9ybWF0IG9mIGEgcGFzc3BocmFzZSwgcHJlZml4IGl0IHdpdGggJ3M6JyAod2l0
+ aG91dCBxdW90ZXMpLgoKT2YgY291cnNlLCBpZiB0aGVyZSBpcyBubyBXRVAga2V5IGZvciB5b3VyIHdpcmVsZXNzIG5ldHdvcmssIGxlYXZlIHRoaXMgZmllbGQgYmxhbmsu
+type: string
+
+dn: cn=partman-auto/choose_recipe,ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: partman-auto/choose_recipe
+choices: ${DESCRIPTIONS}
+description: Partitioning scheme:
+extendedDescription:: U2VsZWN0ZWQgZm9yIHBhcnRpdGlvbmluZzoKCiR7VEFSR0VUfQoKVGhlIGRpc2sgY2FuIGJlIHBhcnRpdGlvbmVkIHVzaW5nIG9uZSBvZiBzZXZlcmFsIGRpZmZlcmVudCBzY2hlbW
+ VzLiBJZiB5b3UgYXJlIHVuc3VyZSwgY2hvb3NlIHRoZSBmaXJzdCBvbmUu
+type: select
+
+dn: cn=partman-auto/disk,ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: partman-auto/disk
+description: for internal use; can be preseeded
+extendedDescription: Device to partition, in either devfs or non format
+type: string
+
+dn: cn=partman-auto/method,ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: partman-auto/method
+description: for internal use; can be preseeded
+extendedDescription: Method to use for partitioning
+type: string
+
+dn: cn=partman-lvm/confirm,ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: partman-lvm/confirm
+default: false
+description: Write the changes to disks and configure LVM?
+extendedDescription:: QmVmb3JlIHRoZSBMb2dpY2FsIFZvbHVtZSBNYW5hZ2VyIGNhbiBiZSBjb25maWd1cmVkLCB0aGUgY3VycmVudCBwYXJ0aXRpb25pbmcgc2NoZW1lIGhhcyB0byBiZSB3cml0dGVuIH
+ RvIGRpc2suICBUaGVzZSBjaGFuZ2VzIGNhbm5vdCBiZSB1bmRvbmUuCgpBZnRlciB0aGUgTG9naWNhbCBWb2x1bWUgTWFuYWdlciBpcyBjb25maWd1cmVkLCBubyBhZGRpdGlvbmFsIGNoYW5nZXMgdG8gdGhlI
+ HBhcnRpdGlvbmluZyBzY2hlbWUgb2YgZGlza3MgY29udGFpbmluZyBwaHlzaWNhbCB2b2x1bWVzIGFyZSBhbGxvd2VkIGR1cmluZyB0aGUgaW5zdGFsbGF0aW9uLiBQbGVhc2UgZGVjaWRlIGlmIHlvdSBhcmUg
+ c2F0aXNmaWVkIHdpdGggdGhlIGN1cnJlbnQgcGFydGl0aW9uaW5nIHNjaGVtZSBiZWZvcmUgY29udGludWluZy4KCiR7SVRFTVN9
+type: boolean
+
+dn: cn=partman-lvm/device_remove_lvm,ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: partman-lvm/device_remove_lvm
+default: false
+description: Remove existing logical volume data?
+extendedDescription:: VGhlIHNlbGVjdGVkIGRldmljZSBhbHJlYWR5IGNvbnRhaW5zIHRoZSBmb2xsb3dpbmcgTFZNIGxvZ2ljYWwgdm9sdW1lcywgdm9sdW1lIGdyb3VwcyBhbmQgcGh5c2ljYWwgdm9sdW
+ 1lcyB3aGljaCBhcmUgYWJvdXQgdG8gYmUgcmVtb3ZlZDoKCkxvZ2ljYWwgdm9sdW1lKHMpIHRvIGJlIHJlbW92ZWQ6ICR7TFZUQVJHRVRTfQoKVm9sdW1lIGdyb3VwKHMpIHRvIGJlIHJlbW92ZWQ6ICR7VkdUQ
+ VJHRVRTfQoKUGh5c2ljYWwgdm9sdW1lKHMpIHRvIGJlIHJlbW92ZWQ6ICR7UFZUQVJHRVRTfQoKTm90ZSB0aGF0IHRoaXMgd2lsbCBhbHNvIHBlcm1hbmVudGx5IGVyYXNlIGFueSBkYXRhIGN1cnJlbnRseSBv
+ biB0aGUgbG9naWNhbCB2b2x1bWVzLg==
+type: boolean
+
+dn: cn=partman-md/confirm,ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: partman-md/confirm
+default: false
+description: Write the changes to the storage devices and configure RAID?
+extendedDescription:: QmVmb3JlIFJBSUQgY2FuIGJlIGNvbmZpZ3VyZWQsIHRoZSBjaGFuZ2VzIGhhdmUgdG8gYmUgd3JpdHRlbiB0byB0aGUgc3RvcmFnZSBkZXZpY2VzLiAgVGhlc2UgY2hhbmdlcyBjYW
+ 5ub3QgYmUgdW5kb25lLgoKV2hlbiBSQUlEIGlzIGNvbmZpZ3VyZWQsIG5vIGFkZGl0aW9uYWwgY2hhbmdlcyB0byB0aGUgcGFydGl0aW9ucyBpbiB0aGUgZGlza3MgY29udGFpbmluZyBwaHlzaWNhbCB2b2x1b
+ WVzIGFyZSBhbGxvd2VkLiAgUGxlYXNlIGNvbnZpbmNlIHlvdXJzZWxmIHRoYXQgeW91IGFyZSBzYXRpc2ZpZWQgd2l0aCB0aGUgY3VycmVudCBwYXJ0aXRpb25pbmcgc2NoZW1lIGluIHRoZXNlIGRpc2tzLgoK
+ JHtJVEVNU30=
+type: boolean
+
+dn: cn=partman-md/device_remove_md,ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: partman-md/device_remove_md
+default: false
+description: Remove existing software RAID partitions?
+extendedDescription:: VGhlIHNlbGVjdGVkIGRldmljZSBjb250YWlucyBwYXJ0aXRpb25zIHVzZWQgZm9yIHNvZnR3YXJlIFJBSUQgZGV2aWNlcy4gVGhlIGZvbGxvd2luZyBkZXZpY2VzIGFuZCBwYXJ0aX
+ Rpb25zIGFyZSBhYm91dCB0byBiZSByZW1vdmVkOgoKU29mdHdhcmUgUkFJRCBkZXZpY2VzIGFib3V0IHRvIGJlIHJlbW92ZWQ6ICR7UkVNT1ZFRF9ERVZJQ0VTfQoKUGFydGl0aW9ucyB1c2VkIGJ5IHRoZXNlI
+ FJBSUQgZGV2aWNlczogJHtSRU1PVkVEX1BBUlRJVElPTlN9CgpOb3RlIHRoYXQgdGhpcyB3aWxsIGFsc28gcGVybWFuZW50bHkgZXJhc2UgYW55IGRhdGEgY3VycmVudGx5IG9uIHRoZSBzb2Z0d2FyZSBSQUlE
+ IGRldmljZXMu
+type: boolean
+
+dn: cn=partman-partitioning/confirm_write_new_label,ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: partman-partitioning/confirm_write_new_label
+default: false
+description: Write a new empty partition table?
+extendedDescription:: QmVjYXVzZSBvZiBsaW1pdGF0aW9ucyBpbiB0aGUgY3VycmVudCBpbXBsZW1lbnRhdGlvbiBvZiB0aGUgU3VuIHBhcnRpdGlvbiB0YWJsZXMgaW4gbGlicGFydGVkLCB0aGUgbmV3bH
+ kgY3JlYXRlZCBwYXJ0aXRpb24gdGFibGUgaGFzIHRvIGJlIHdyaXR0ZW4gdG8gdGhlIGRpc2sgaW1tZWRpYXRlbHkuCgpZb3Ugd2lsbCBOT1QgYmUgYWJsZSB0byB1bmRvIHRoaXMgb3BlcmF0aW9uIGxhdGVyI
+ GFuZCBhbGwgZXhpc3RpbmcgZGF0YSBvbiB0aGUgZGlzayB3aWxsIGJlIGlycmV2ZXJzaWJseSByZW1vdmVkLgoKQ29uZmlybSB3aGV0aGVyIHlvdSBhY3R1YWxseSB3YW50IHRvIGNyZWF0ZSBhIG5ldyBwYXJ0
+ aXRpb24gdGFibGUgYW5kIHdyaXRlIGl0IHRvIGRpc2su
+type: boolean
+
+dn: cn=partman/choose_partition,ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: partman/choose_partition
+choices: ${DESCRIPTIONS}
+description: This is an overview of your currently configured partitions and mount points. Select a partition to modify its settings (file system, mount point, 
+ etc.), a free space to create partitions, or a device to initialize its partition table.
+type: select
+
+dn: cn=partman/confirm,ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: partman/confirm
+default: false
+description: Write the changes to disks?
+extendedDescription:: SWYgeW91IGNvbnRpbnVlLCB0aGUgY2hhbmdlcyBsaXN0ZWQgYmVsb3cgd2lsbCBiZSB3cml0dGVuIHRvIHRoZSBkaXNrcy4gT3RoZXJ3aXNlLCB5b3Ugd2lsbCBiZSBhYmxlIHRvIG
+ 1ha2UgZnVydGhlciBjaGFuZ2VzIG1hbnVhbGx5LgoKV0FSTklORzogVGhpcyB3aWxsIGRlc3Ryb3kgYWxsIGRhdGEgb24gYW55IHBhcnRpdGlvbnMgeW91IGhhdmUgcmVtb3ZlZCBhcyB3ZWxsIGFzIG9uIHRoZ
+ SBwYXJ0aXRpb25zIHRoYXQgYXJlIGdvaW5nIHRvIGJlIGZvcm1hdHRlZC4KCiR7SVRFTVN9
+type: boolean
+
+dn: cn=partman/confirm_nooverwrite,ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: partman/confirm_nooverwrite
+default: false
+description: Write the changes to disks?
+extendedDescription:: SWYgeW91IGNvbnRpbnVlLCB0aGUgY2hhbmdlcyBsaXN0ZWQgYmVsb3cgd2lsbCBiZSB3cml0dGVuIHRvIHRoZSBkaXNrcy4gT3RoZXJ3aXNlLCB5b3Ugd2lsbCBiZSBhYmxlIHRvIG
+ 1ha2UgZnVydGhlciBjaGFuZ2VzIG1hbnVhbGx5LgoKJHtJVEVNU30=
+type: boolean
+
+dn: cn=partman/mount_style,ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: partman/mount_style
+choices: traditional, label, uuid
+default: uuid
+description: for internal use; can be preseeded
+extendedDescription:: Tm9ybWFsbHksIGZpbGVzeXN0ZW1zIGFyZSBtb3VudGVkIHVzaW5nIGEgdW5pdmVyc2FsbHkgdW5pcXVlIGlkZW50aWZpZXIgKFVVSUQpIGFzIGEga2V5OyB0aGlzIGFsbG93cyB0aG
+ VtIHRvIGJlIG1vdW50ZWQgcHJvcGVybHkgZXZlbiBpZiB0aGVpciBkZXZpY2UgbmFtZSBjaGFuZ2VzLiBVVUlEcyBhcmUgbG9uZyBhbmQgZGlmZmljdWx0IHRvIHJlYWQsIHNvLCBpZiB5b3UgcHJlZmVyLCB0a
+ GUgaW5zdGFsbGVyIGNhbiBtb3VudCBmaWxlc3lzdGVtcyBiYXNlZCBvbiB0aGUgdHJhZGl0aW9uYWwgZGV2aWNlIG5hbWVzLCBvciBiYXNlZCBvbiBhIGxhYmVsIHlvdSBhc3NpZ24uIEhvd2V2ZXIsIG5vdGUg
+ dGhhdCB0cmFkaXRpb25hbCBkZXZpY2UgbmFtZXMgbWF5IGNoYW5nZSBiYXNlZCBvbiB0aGUgb3JkZXIgaW4gd2hpY2ggdGhlIGtlcm5lbCBkaXNjb3ZlcnMgZGV2aWNlcyBhdCBib290LCB3aGljaCBtYXkgY2F
+ 1c2UgdGhlIHdyb25nIGZpbGVzeXN0ZW0gdG8gYmUgbW91bnRlZDsgc2ltaWxhcmx5LCBsYWJlbHMgYXJlIGxpa2VseSB0byBjbGFzaCBpZiB5b3UgcGx1ZyBpbiBhIG5ldyBkaXNrIG9yIGEgVVNCIGRyaXZlLC
+ BhbmQgaWYgdGhhdCBoYXBwZW5zIHlvdXIgc3lzdGVtJ3MgYmVoYXZpb3VyIHdoZW4gc3RhcnRlZCB3aWxsIGJlIHJhbmRvbS4KCklmIHlvdSBzZXQgImxhYmVsIiBoZXJlLCBhbnkgZmlsZXN5c3RlbXMgd2l0a
+ G91dCBhIGxhYmVsIHdpbGwgYmUgbW91bnRlZCB1c2luZyBhIFVVSUQgaW5zdGVhZC4KCkRldmljZXMgd2l0aCBzdGFibGUgbmFtZXMsIHN1Y2ggYXMgTFZNIGxvZ2ljYWwgdm9sdW1lcywgd2lsbCBjb250aW51
+ ZSB0byB1c2UgdGhlaXIgdHJhZGl0aW9uYWwgbmFtZXMgcmF0aGVyIHRoYW4gVVVJRHMu
+type: select
+
+dn: cn=passwd/make-user,ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: passwd/make-user
+default: true
+description: Create a normal user account now?
+extendedDescription:: SXQncyBhIGJhZCBpZGVhIHRvIHVzZSB0aGUgcm9vdCBhY2NvdW50IGZvciBub3JtYWwgZGF5LXRvLWRheSBhY3Rpdml0aWVzLCBzdWNoIGFzIHRoZSByZWFkaW5nIG9mIGVsZWN0cm
+ 9uaWMgbWFpbCwgYmVjYXVzZSBldmVuIGEgc21hbGwgbWlzdGFrZSBjYW4gcmVzdWx0IGluIGRpc2FzdGVyLiBZb3Ugc2hvdWxkIGNyZWF0ZSBhIG5vcm1hbCB1c2VyIGFjY291bnQgdG8gdXNlIGZvciB0aG9zZ
+ SBkYXktdG8tZGF5IHRhc2tzLgoKTm90ZSB0aGF0IHlvdSBtYXkgY3JlYXRlIGl0IGxhdGVyIChhcyB3ZWxsIGFzIGFueSBhZGRpdGlvbmFsIGFjY291bnQpIGJ5IHR5cGluZyAnYWRkdXNlciA8dXNlcm5hbWU+
+ JyBhcyByb290LCB3aGVyZSA8dXNlcm5hbWU+IGlzIGFuIHVzZXJuYW1lLCBsaWtlICdpbXVyZG9jaycgb3IgJ3Jtcycu
+type: boolean
+
+dn: cn=passwd/root-login,ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: passwd/root-login
+default: true
+description: Allow login as root?
+extendedDescription: If you choose not to allow root to log in, then a user account will be created and given the power to become root using the 'sudo' command.
+type: boolean
+
+dn: cn=passwd/user-fullname,ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: passwd/user-fullname
+description: Full name for the new user:
+extendedDescription:: QSB1c2VyIGFjY291bnQgd2lsbCBiZSBjcmVhdGVkIGZvciB5b3UgdG8gdXNlIGluc3RlYWQgb2YgdGhlIHJvb3QgYWNjb3VudCBmb3Igbm9uLWFkbWluaXN0cmF0aXZlIGFjdGl2aX
+ RpZXMuCgpQbGVhc2UgZW50ZXIgdGhlIHJlYWwgbmFtZSBvZiB0aGlzIHVzZXIuIFRoaXMgaW5mb3JtYXRpb24gd2lsbCBiZSB1c2VkIGZvciBpbnN0YW5jZSBhcyBkZWZhdWx0IG9yaWdpbiBmb3IgZW1haWxzI
+ HNlbnQgYnkgdGhpcyB1c2VyIGFzIHdlbGwgYXMgYW55IHByb2dyYW0gd2hpY2ggZGlzcGxheXMgb3IgdXNlcyB0aGUgdXNlcidzIHJlYWwgbmFtZS4gWW91ciBmdWxsIG5hbWUgaXMgYSByZWFzb25hYmxlIGNo
+ b2ljZS4=
+type: string
+
+dn: cn=passwd/user-password,ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: passwd/user-password
+description: Choose a password for the new user:
+extendedDescription: A good password will contain a mixture of letters, numbers and punctuation and should be changed at regular intervals.
+type: password
+
+dn: cn=passwd/user-password-again,ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: passwd/user-password-again
+description: Re-enter password to verify:
+extendedDescription: Please enter the same user password again to verify you have typed it correctly.
+type: password
+
+dn: cn=passwd/user-uid,ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: passwd/user-uid
+description: for internal use only
+type: string
+
+dn: cn=passwd/username,ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: passwd/username
+description: Username for your account:
+extendedDescription: Select a username for the new account. Your first name is a reasonable choice. The username should start with a lower-case letter, which ca
+ n be followed by any combination of numbers and more lower-case letters.
+type: string
+
+dn: cn=pkgsel/include,ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: pkgsel/include
+description: for internal use; can be preseeded
+extendedDescription: Comma/space-separated list of extra packages to install
+type: string
+
+dn: cn=pkgsel/upgrade,ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: pkgsel/upgrade
+choices: none, safe-upgrade, full-upgrade
+default: safe-upgrade
+description: for internal use; can be preseeded
+extendedDescription: type of upgrade to perform
+type: select
+
+dn: cn=popularity-contest/participate,ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: popularity-contest/participate
+description: Participate in the package usage survey?
+extendedDescription:: VGhlIHN5c3RlbSBtYXkgYW5vbnltb3VzbHkgc3VwcGx5IHRoZSBkaXN0cmlidXRpb24gZGV2ZWxvcGVycyB3aXRoIHN0YXRpc3RpY3MgYWJvdXQgdGhlIG1vc3QgdXNlZCBwYWNrYW
+ dlcyBvbiB0aGlzIHN5c3RlbS4gVGhpcyBpbmZvcm1hdGlvbiBpbmZsdWVuY2VzIGRlY2lzaW9ucyBzdWNoIGFzIHdoaWNoIHBhY2thZ2VzIHNob3VsZCBnbyBvbiB0aGUgZmlyc3QgZGlzdHJpYnV0aW9uIENEL
+ goKSWYgeW91IGNob29zZSB0byBwYXJ0aWNpcGF0ZSwgdGhlIGF1dG9tYXRpYyBzdWJtaXNzaW9uIHNjcmlwdCB3aWxsIHJ1biBvbmNlIGV2ZXJ5IHdlZWssIHNlbmRpbmcgc3RhdGlzdGljcyB0byB0aGUgZGlz
+ dHJpYnV0aW9uIGRldmVsb3BlcnMuIFRoZSBjb2xsZWN0ZWQgc3RhdGlzdGljcyBjYW4gYmUgdmlld2VkIG9uIGh0dHA6Ly9wb3Bjb24uZGViaWFuLm9yZy8uCgpUaGlzIGNob2ljZSBjYW4gYmUgbGF0ZXIgbW9
+ kaWZpZWQgYnkgcnVubmluZyAiZHBrZy1yZWNvbmZpZ3VyZSBwb3B1bGFyaXR5LWNvbnRlc3QiLg==
+type: boolean
+
+dn: cn=preseed/early_command,ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: preseed/early_command
+description: for internal use; can be preseeded
+extendedDescription: Shell command or commands to run in the d-i environment as early as possible
+type: string
+
+dn: cn=preseed/late_command,ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: preseed/late_command
+description: for internal use; can be preseeded
+extendedDescription: Shell command or commands to run in the d-i environment as late as possible
+type: string
+
+dn: cn=tasksel/desktop,ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: tasksel/desktop
+type: multiselect
+
+dn: cn=time/zone,ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: time/zone
+choices: ${CHOICES}
+description: ${DESCRIPTION}
+extendedDescription: If the desired time zone is not listed, then please go back to the step "Choose language" and select a country that uses the desired time z
+ one (the country where you live or are located).
+type: string
+
+dn: cn=apt-setup/contrib,ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: apt-setup/contrib
+flags: preseed
+owners: apt-mirror-setup
+template: apt-setup/contrib
+value: false
+
+dn: cn=apt-setup/non-free,ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: apt-setup/non-free
+flags: preseed
+owners: apt-mirror-setup
+template: apt-setup/non-free
+value: false
+
+dn: cn=apt-setup/security_host,ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: apt-setup/security_host
+flags: preseed
+owners: apt-setup-udeb
+template: apt-setup/security_host
+value: security.debian.org
+
+dn: cn=apt-setup/services-select,ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: apt-setup/services-select
+flags: preseed
+owners: apt-setup-udeb
+template: apt-setup/services-select
+value: security, volatile
+variables: SEC_HOST=security.debian.org
+variables: VOL_HOST=volatile.debian.org
+
+dn: cn=apt-setup/use_mirror,ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: apt-setup/use_mirror
+flags: preseed
+owners: apt-mirror-setup
+template: apt-setup/use_mirror
+value: true
+
+dn: cn=apt-setup/volatile_host,ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: apt-setup/volatile_host
+flags: preseed
+owners: apt-setup-udeb
+template: apt-setup/volatile_host
+value: volatile.debian.org
+
+dn: cn=base-installer/install-recommends,ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: base-installer/install-recommends
+flags: preseed
+owners: base-installer
+template: base-installer/install-recommends
+value: true
+
+dn: cn=base-installer/kernel/image,ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: base-installer/kernel/image
+flags: preseed
+owners: bootstrap-base
+template: base-installer/kernel/image
+value: linux-image-2.6-486
+variables: KERNELS=linux-image-2.6-amd64,linux-image-2.6-openvz-amd64,linux-image-2.6-vserver-amd64,linux-image-2.6-xen-amd64,linux-image-2.6.32-5-amd64,linux-i
+ mage-2.6.32-5-amd64-dbg,linux-image-2.6.32-5-openvz-amd64,linux-image-2.6.32-5-openvz-amd64-dbg,linux-image-2.6.32-5-vserver-amd64,linux-image-2.6.32-5-vserver
+ -amd64-dbg,linux-image-2.6.32-5-xen-amd64,linux-image-2.6.32-5-xen-amd64-dbg,linux-image-amd64,linux-image-openvz-amd64,linux-image-vserver-amd64,linux-image-x
+ en-amd64
+
+dn: cn=cdrom-detect/eject,ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: cdrom-detect/eject
+flags: preseed
+owners: d-i
+value: false
+
+dn: cn=clock-setup/ntp,ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: clock-setup/ntp
+flags: preseed
+owners: clock-setup
+template: clock-setup/ntp
+value: true
+
+dn: cn=clock-setup/utc,ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: clock-setup/utc
+flags: preseed
+owners: clock-setup
+template: clock-setup/utc
+value: true
+
+dn: cn=console-keymaps-at/keymap,ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: console-keymaps-at/keymap
+flags: preseed
+owners: d-i
+template: console-keymaps-at/keymap
+value: us
+
+dn: cn=console-tools/archs,ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: console-tools/archs
+flags: preseed
+owners: d-i
+template: console-tools/archs
+value: at
+variables: KBD-ARCHS-L10N=PC-style (AT or PS-2 connector) keyboard, Do not configure keyboard; keep kernel keymap
+variables: KBD-ARCHS=at, skip-config
+
+dn: cn=debian-installer/country,ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: debian-installer/country
+flags: preseed
+owners: d-i
+template: debian-installer/country
+value: HR
+
+dn: cn=debian-installer/exit/halt,ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: debian-installer/exit/halt
+flags: preseed
+owners: d-i
+template: debian-installer/exit/halt
+value: false
+
+dn: cn=debian-installer/exit/poweroff,ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: debian-installer/exit/poweroff
+flags: preseed
+owners: d-i
+template: debian-installer/exit/poweroff
+value: false
+
+dn: cn=debian-installer/language,ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: debian-installer/language
+flags: preseed
+owners: d-i
+template: debian-installer/language
+value: en
+
+dn: cn=debian-installer/locale,ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: debian-installer/locale
+flags: append
+owners: d-i
+template: debian-installer/locale
+value: en_US.UTF-8
+
+dn: cn=finish-install/reboot_in_progress,ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: finish-install/reboot_in_progress
+flags: preseed
+owners: finish-install
+template: finish-install/reboot_in_progress
+
+dn: cn=hw-detect/load_firmware,ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: hw-detect/load_firmware
+flags: preseed
+owners: d-i
+template: hw-detect/load_firmware
+value: false
+
+dn: cn=localechooser/supported-locales,ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: localechooser/supported-locales
+flags: preseed
+owners: d-i
+template: localechooser/supported-locales
+value: nl_NL.UTF-8
+variables: LOCALE=en_US.UTF-8
+variables: LOCALELIST=aa_DJ.UTF-8, aa_DJ, aa_ER, aa_ER@saaho, aa_ET, af_ZA.UTF-8, af_ZA, am_ET, an_ES.UTF-8, an_ES, ar_AE.UTF-8, ar_AE, ar_BH.UTF-8, ar_BH, ar_D
+ Z.UTF-8, ar_DZ, ar_EG.UTF-8, ar_EG, ar_IN, ar_IQ.UTF-8, ar_IQ, ar_JO.UTF-8, ar_JO, ar_KW.UTF-8, ar_KW, ar_LB.UTF-8, ar_LB, ar_LY.UTF-8, ar_LY, ar_MA.UTF-8, ar_
+ MA, ar_OM.UTF-8, ar_OM, ar_QA.UTF-8, ar_QA, ar_SA.UTF-8, ar_SA, ar_SD.UTF-8, ar_SD, ar_SY.UTF-8, ar_SY, ar_TN.UTF-8, ar_TN, ar_YE.UTF-8, ar_YE, az_AZ.UTF-8, as
+ _IN.UTF-8, ast_ES.UTF-8, ast_ES, be_BY.UTF-8, be_BY, be_BY@latin, ber_DZ, ber_MA, bg_BG.UTF-8, bg_BG, bn_BD, bn_IN, bo_CN, bo_IN, br_FR.UTF-8, br_FR, br_FR@eur
+ o, bs_BA.UTF-8, bs_BA, byn_ER, ca_AD.UTF-8, ca_AD, ca_ES.UTF-8, ca_ES, ca_ES@euro, ca_ES.UTF-8@valencia, ca_ES@valencia, ca_FR.UTF-8, ca_FR, ca_IT.UTF-8, ca_IT
+ , crh_UA, cs_CZ.UTF-8, cs_CZ, csb_PL, cy_GB.UTF-8, cy_GB, da_DK.UTF-8, da_DK, de_AT.UTF-8, de_AT, de_AT@euro, de_BE.UTF-8, de_BE, de_BE@euro, de_CH.UTF-8, de_C
+ H, de_DE.UTF-8, de_DE, de_DE@euro, de_LI.UTF-8, de_LU.UTF-8, de_LU, de_LU@euro, dv_MV, dz_BT, el_GR.UTF-8, el_GR, el_CY.UTF-8, el_CY, en_AG, en_AU.UTF-8, en_AU
+ , en_BW.UTF-8, en_BW, en_CA.UTF-8, en_CA, en_DK.UTF-8, en_DK.ISO-8859-15, en_DK, en_GB.UTF-8, en_GB, en_GB.ISO-8859-15, en_HK.UTF-8, en_HK, en_IE.UTF-8, en_IE,
+  en_IE@euro, en_IN, en_NG, en_NZ.UTF-8, en_NZ, en_PH.UTF-8, en_PH, en_SG.UTF-8, en_SG, en_US, en_US.ISO-8859-15, en_ZA.UTF-8, en_ZA, en_ZW.UTF-8, en_ZW, eo.UTF
+ -8, eo, es_AR.UTF-8, es_AR, es_BO.UTF-8, es_BO, es_CL.UTF-8, es_CL, es_CO.UTF-8, es_CO, es_CR.UTF-8, es_CR, es_DO.UTF-8, es_DO, es_EC.UTF-8, es_EC, es_ES.UTF-8
+ , es_ES, es_ES@euro, es_GT.UTF-8, es_GT, es_HN.UTF-8, es_HN, es_MX.UTF-8, es_MX, es_NI.UTF-8, es_NI, es_PA.UTF-8, es_PA, es_PE.UTF-8, es_PE, es_PR.UTF-8, es_PR
+ , es_PY.UTF-8, es_PY, es_SV.UTF-8, es_SV, es_US.UTF-8, es_US, es_UY.UTF-8, es_UY, es_VE.UTF-8, es_VE, et_EE.UTF-8, et_EE, et_EE.ISO-8859-15, eu_ES.UTF-8, eu_ES
+ , eu_ES@euro, eu_FR.UTF-8, eu_FR, eu_FR@euro, fa_IR, fi_FI.UTF-8, fi_FI, fi_FI@euro, fil_PH, fo_FO.UTF-8, fo_FO, fr_BE.UTF-8, fr_BE, fr_BE@euro, fr_CA.UTF-8, f
+ r_CA, fr_CH.UTF-8, fr_CH, fr_FR.UTF-8, fr_FR, fr_FR@euro, fr_LU.UTF-8, fr_LU, fr_LU@euro, fur_IT, fy_NL, fy_DE, ga_IE.UTF-8, ga_IE, ga_IE@euro, gd_GB.UTF-8, gd
+ _GB, gez_ER, gez_ER@abegede, gez_ET, gez_ET@abegede, gl_ES.UTF-8, gl_ES, gl_ES@euro, gu_IN, gv_GB.UTF-8, gv_GB, ha_NG, he_IL.UTF-8, he_IL, hi_IN, hne_IN, hr_HR
+ .UTF-8, hr_HR, hsb_DE.UTF-8, hsb_DE, ht_HT, hu_HU.UTF-8, hu_HU, hy_AM, hy_AM.ARMSCII-8, ia, id_ID.UTF-8, id_ID, ig_NG, ik_CA, is_IS.UTF-8, is_IS, it_CH.UTF-8, 
+ it_CH, it_IT.UTF-8, it_IT, it_IT@euro, iu_CA, iw_IL.UTF-8, iw_IL, ja_JP.UTF-8, ja_JP.EUC-JP, ka_GE.UTF-8, ka_GE, kk_KZ.UTF-8, kk_KZ, kl_GL.UTF-8, kl_GL, km_KH,
+  kn_IN, ko_KR.UTF-8, ko_KR.EUC-KR, ks_IN, ks_IN@devanagari, ku_TR.UTF-8, ku_TR, kw_GB.UTF-8, kw_GB, ky_KG, lg_UG.UTF-8, lg_UG, li_BE, li_NL, lo_LA, lt_LT.UTF-8
+ , lt_LT, lv_LV.UTF-8, lv_LV, mai_IN, mg_MG.UTF-8, mg_MG, mi_NZ.UTF-8, mi_NZ, mk_MK.UTF-8, mk_MK, ml_IN, mn_MN, mr_IN, ms_MY.UTF-8, ms_MY, mt_MT.UTF-8, mt_MT, m
+ y_MM, nan_TW@latin, nb_NO.UTF-8, nb_NO, nds_DE, nds_NL, ne_NP, nl_AW, nl_BE.UTF-8, nl_BE, nl_BE@euro, nl_NL.UTF-8, nl_NL, nl_NL@euro, nn_NO.UTF-8, nn_NO, nr_ZA
+ , nso_ZA, oc_FR.UTF-8, oc_FR, om_ET, om_KE.UTF-8, om_KE, or_IN, pa_IN, pa_PK, pap_AN, pl_PL.UTF-8, pl_PL, ps_AF, pt_BR.UTF-8, pt_BR, pt_PT.UTF-8, pt_PT, pt_PT@
+ euro, ro_RO.UTF-8, ro_RO, ru_RU.UTF-8, ru_RU.KOI8-R, ru_RU, ru_RU.CP1251, ru_UA.UTF-8, ru_UA, rw_RW, sa_IN, sc_IT, sd_IN, sd_IN@devanagari, se_NO, shs_CA, si_L
+ K, sid_ET, sk_SK.UTF-8, sk_SK, sl_SI.UTF-8, sl_SI, so_DJ.UTF-8, so_DJ, so_ET, so_KE.UTF-8, so_KE, so_SO.UTF-8, so_SO, sq_AL.UTF-8, sq_AL, sr_ME, sr_RS, sr_RS@l
+ atin, ss_ZA, st_ZA.UTF-8, st_ZA, sv_FI.UTF-8, sv_FI, sv_FI@euro, sv_SE.UTF-8, sv_SE, sv_SE.ISO-8859-15, ta_IN, te_IN, tg_TJ.UTF-8, tg_TJ, th_TH.UTF-8, th_TH, t
+ i_ER, ti_ET, tig_ER, tk_TM, tl_PH.UTF-8, tl_PH, tn_ZA, tr_CY.UTF-8, tr_CY, tr_TR.UTF-8, tr_TR, ts_ZA, tt_RU.UTF-8, tt_RU@iqtelif.UTF-8, ug_CN, uk_UA.UTF-8, uk_
+ UA, ur_PK, uz_UZ.UTF-8, uz_UZ, uz_UZ@cyrillic, ve_ZA, vi_VN, vi_VN.TCVN, wa_BE.UTF-8, wa_BE, wa_BE@euro, wo_SN, xh_ZA.UTF-8, xh_ZA, yi_US.UTF-8, yi_US, yo_NG, 
+ zh_CN.UTF-8, zh_CN.GB18030, zh_CN.GBK, zh_CN, zh_HK.UTF-8, zh_HK, zh_SG.UTF-8, zh_SG.GBK, zh_SG, zh_TW.UTF-8, zh_TW.EUC-TW, zh_TW, zu_ZA.UTF-8, zu_ZA
+
+dn: cn=mirror/country,ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: mirror/country
+flags: preseed
+owners: d-i
+template: mirror/country
+value: manual
+
+dn: cn=mirror/http/directory,ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: mirror/http/directory
+flags: preseed
+owners: d-i
+template: mirror/http/directory
+value: /mirror/debian
+
+dn: cn=mirror/http/hostname,ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: mirror/http/hostname
+flags: preseed
+owners: d-i
+template: mirror/http/hostname
+value: 10.0.0.1
+
+dn: cn=mirror/http/proxy,ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: mirror/http/proxy
+flags: preseed
+owners: d-i
+template: mirror/http/proxy
+value: 
+
+dn: cn=mirror/protocol,ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: mirror/protocol
+flags: preseed
+owners: d-i
+template: mirror/protocol
+value: http
+variables: protocols=http, ftp
+
+dn: cn=netcfg/choose_interface,ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: netcfg/choose_interface
+flags: preseed
+flags: append
+owners: d-i
+template: netcfg/choose_interface
+value: eth0
+
+dn: cn=netcfg/dhcp_timeout,ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: netcfg/dhcp_timeout
+flags: preseed
+flags: append
+owners: d-i
+template: netcfg/dhcp_timeout
+value: 60
+
+dn: cn=netcfg/enable,ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: netcfg/enable
+flags: preseed
+owners: d-i
+template: netcfg/enable
+value: true
+
+dn: cn=netcfg/get_domain,ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: netcfg/get_domain
+flags: preseed
+owners: d-i
+template: netcfg/get_domain
+value: unassigned-domain
+
+dn: cn=netcfg/get_hostname,ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: netcfg/get_hostname
+flags: preseed
+owners: d-i
+template: netcfg/get_hostname
+value: unassigned-hostname
+
+dn: cn=netcfg/wireless_wep,ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: netcfg/wireless_wep
+flags: preseed
+owners: d-i
+template: netcfg/wireless_wep
+
+dn: cn=partman-auto/choose_recipe,ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: partman-auto/choose_recipe
+flags: preseed
+owners: partman-auto
+template: partman-auto/choose_recipe
+value: home
+variables: CHOICES=/lib/partman/recipes/30atomic, /lib/partman/recipes/50home, /lib/partman/recipes/80multi
+variables: TARGET=SCSI1 (0,0,0) (sda) - ATA WDC WD800JD-55MU: 80.0 GB
+variables: DESCRIPTIONS=All files in one partition (recommended for new users), Separate /home partition, Separate /home\, /usr\, /var\, and /tmp partitions
+
+dn: cn=partman-auto/disk,ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: partman-auto/disk
+flags: preseed
+owners: partman-auto
+template: partman-auto/disk
+value: /dev/sda
+
+dn: cn=partman-auto/method,ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: partman-auto/method
+flags: preseed
+owners: partman-auto
+template: partman-auto/method
+value: regular
+
+dn: cn=partman-lvm/confirm,ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: partman-lvm/confirm
+flags: preseed
+owners: partman-lvm
+template: partman-lvm/confirm
+value: true
+
+dn: cn=partman-lvm/device_remove_lvm,ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: partman-lvm/device_remove_lvm
+flags: preseed
+owners: partman-lvm
+template: partman-lvm/device_remove_lvm
+value: true
+
+dn: cn=partman-md/confirm,ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: partman-md/confirm
+flags: preseed
+owners: partman-md
+template: partman-md/confirm
+value: true
+
+dn: cn=partman-md/device_remove_md,ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: partman-md/device_remove_md
+flags: preseed
+owners: partman-md
+template: partman-md/device_remove_md
+value: true
+
+dn: cn=partman-partitioning/confirm_write_new_label,ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: partman-partitioning/confirm_write_new_label
+flags: preseed
+owners: partman-partitioning
+template: partman-partitioning/confirm_write_new_label
+value: true
+
+dn: cn=partman/choose_partition,ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: partman/choose_partition
+flags: preseed
+owners: partman-base
+template: partman/choose_partition
+value: finish
+
+dn: cn=partman/confirm,ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: partman/confirm
+flags: preseed
+owners: partman-base
+template: partman/confirm
+value: true
+
+dn: cn=partman/confirm_nooverwrite,ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: partman/confirm_nooverwrite
+flags: preseed
+owners: partman-base
+template: partman/confirm_nooverwrite
+value: true
+
+dn: cn=partman/mount_style,ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: partman/mount_style
+flags: preseed
+owners: partman-target
+template: partman/mount_style
+value: uuid
+
+dn: cn=passwd/make-user,ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: passwd/make-user
+flags: preseed
+owners: d-i
+template: passwd/make-user
+value: false
+
+dn: cn=passwd/root-login,ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: passwd/root-login
+flags: preseed
+owners: d-i
+template: passwd/root-login
+value: true
+
+dn: cn=passwd/user-fullname,ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: passwd/user-fullname
+flags: preseed
+owners: user-setup-udeb
+template: passwd/user-fullname
+value: wheel
+
+dn: cn=passwd/user-password,ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: passwd/user-password
+flags: preseed
+owners: d-i
+value: wheel
+
+dn: cn=passwd/user-password-again,ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: passwd/user-password-again
+flags: preseed
+owners: d-i
+value: wheel
+
+dn: cn=passwd/user-uid,ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: passwd/user-uid
+flags: preseed
+owners: user-setup-udeb
+template: passwd/user-uid
+value: 1000
+
+dn: cn=passwd/username,ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: passwd/username
+flags: preseed
+owners: user-setup-udeb
+template: passwd/username
+value: wheel
+
+dn: cn=pkgsel/include,ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: pkgsel/include
+flags: preseed
+owners: pkgsel
+template: pkgsel/include
+value: debsums etckeeper logcheck debfoster denyhosts mutt libnet-ldap-perl glusterfs-client upstart
+
+dn: cn=pkgsel/upgrade,ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: pkgsel/upgrade
+flags: preseed
+owners: pkgsel
+template: pkgsel/upgrade
+value: full-upgrade
+
+dn: cn=popularity-contest/participate,ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: popularity-contest/participate
+flags: preseed
+owners: popularity-contest
+template: popularity-contest/participate
+value: false
+
+dn: cn=preseed/early_command,ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: preseed/early_command
+flags: preseed
+owners: d-i
+template: preseed/early_command
+
+dn: cn=preseed/late_command,ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: preseed/late_command
+flags: preseed
+owners: d-i
+template: preseed/late_command
+
+dn: cn=tasksel/desktop,ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: tasksel/desktop
+flags: preseed
+owners: tasksel
+
+dn: cn=time/zone,ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: time/zone
+flags: preseed
+owners: tzsetup-udeb
+template: time/zone
+value: Europe/Zagreb
+variables: CHOICES=Europe/Zagreb
+variables: DESCRIPTION=Select your time zone:
+variables: CHOICES-C=Europe/Zagreb
+
+dn: cn=debconf/priority,ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: debconf/priority
+choices: critical, high, medium, low
+default: high
+description: Ignore questions with a priority less than:
+extendedDescription:: UGFja2FnZXMgdGhhdCB1c2UgZGViY29uZiBmb3IgY29uZmlndXJhdGlvbiBwcmlvcml0aXplIHRoZSBxdWVzdGlvbnMgdGhleSBtaWdodCBhc2sgeW91LiBPbmx5IHF1ZXN0aW9ucy
+ B3aXRoIGEgY2VydGFpbiBwcmlvcml0eSBvciBoaWdoZXIgYXJlIGFjdHVhbGx5IHNob3duIHRvIHlvdTsgYWxsIGxlc3MgaW1wb3J0YW50IHF1ZXN0aW9ucyBhcmUgc2tpcHBlZC4KCllvdSBjYW4gc2VsZWN0I
+ HRoZSBsb3dlc3QgcHJpb3JpdHkgb2YgcXVlc3Rpb24geW91IHdhbnQgdG8gc2VlOgogLSAnY3JpdGljYWwnIGlzIGZvciBpdGVtcyB0aGF0IHdpbGwgcHJvYmFibHkgYnJlYWsgdGhlIHN5c3RlbQogICAgd2l0
+ aG91dCB1c2VyIGludGVydmVudGlvbi4KIC0gJ2hpZ2gnIGlzIGZvciBpdGVtcyB0aGF0IGRvbid0IGhhdmUgcmVhc29uYWJsZSBkZWZhdWx0cy4KIC0gJ21lZGl1bScgaXMgZm9yIG5vcm1hbCBpdGVtcyB0aGF
+ 0IGhhdmUgcmVhc29uYWJsZSBkZWZhdWx0cy4KIC0gJ2xvdycgaXMgZm9yIHRyaXZpYWwgaXRlbXMgdGhhdCBoYXZlIGRlZmF1bHRzIHRoYXQgd2lsbCB3b3JrIGluCiAgIHRoZSB2YXN0IG1ham9yaXR5IG9mIG
+ Nhc2VzLgoKRm9yIGV4YW1wbGUsIHRoaXMgcXVlc3Rpb24gaXMgb2YgbWVkaXVtIHByaW9yaXR5LCBhbmQgaWYgeW91ciBwcmlvcml0eSB3ZXJlIGFscmVhZHkgJ2hpZ2gnIG9yICdjcml0aWNhbCcsIHlvdSB3b
+ 3VsZG4ndCBzZWUgdGhpcyBxdWVzdGlvbi4=
+type: select
+
+dn: cn=debconf/priority,ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: debconf/priority
+flags: append
+owners: d-i
+template: debconf/priority
+value: critical
+
+dn: cn=auto-install/enable,ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: auto-install/enable
+default: false
+description: for internal use; can be preseeded
+extendedDescription: If true, attempt a fully automatic install
+type: boolean
+
+dn: cn=auto-install/enable,ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: auto-install/enable
+flags: preseed
+flags: append
+owners: d-i
+template: auto-install/enable
+value: true
+
+dn: cn=preseed/url,ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: preseed/url
+description: Location of initial preconfiguration file:
+extendedDescription:: SW4gb3JkZXIgdG8gcGVyZm9ybSBhbiBhdXRvbWF0ZWQgaW5zdGFsbCwgeW91IG5lZWQgdG8gc3VwcGx5IGEgcHJlY29uZmlndXJhdGlvbiBmaWxlICh3aGljaCBjYW4gaW4gdHVybi
+ BwdWxsIGluIG90aGVyIGZpbGVzKS4gVG8gZG8gdGhhdCwgeW91IG5lZWQgdG8gcHJvdmlkZSBhIChwZXJoYXBzIHBhcnRpYWwpIFVSTC4KClRoaXMgY2FuIGJlIGFzIHNpbXBsZSBhcyB0aGUgbWFjaGluZSBuY
+ W1lIHdoZXJlIHlvdXIgcHJlc2VlZCBmaWxlcyByZXNpZGUgdXAgdG8gYSBmdWxsIFVSTC4gIEFueSBvZiB0aGVzZSBjb3VsZCBiZSBtYWRlIHRvIHdvcms6CiAgaW50cmEJCVtmb3IgZXhhbXBsZS5jb20sIHRo
+ ZXNlIHRocmVlIGFyZSBlcXVpdmFsZW50XQogIGludHJhLmV4YW1wbGUuY29tCiAgaHR0cDovL2ludHJhLmV4YW1wbGUuY29tL2QtaS8uL2xlbm55L3ByZXNlZWQuY2ZnCiAgaHR0cDovLzE5Mi4xNjguMC4xL35
+ waGlsL3Rlc3Q0Ny50eHQKICBmbG9wcHk6Ly9wcmVzZWVkLmNmZwogIGZpbGU6Ly8vaGQtbWVkaWEva2lvc2svLi9wcmVzZWVkLmNmZwoKRm9yIGZ1bGx5IGF1dG9tYXRlZCBpbnN0YWxscywgcHJlc2VlZC91cm
+ wgc2hvdWxkIGl0c2VsZiBiZSBwcmVzZWVkZWQgKHZpYSBrZXJuZWwgY29tbWFuZCBsaW5lLCBESENQLCBvciBzeXNsaW51eC5jZmcgb24gY3VzdG9taXNlZCBtZWRpYSkKClNlZSBodHRwOi8vd2lraS5kZWJpY
+ W4ub3JnL0RlYmlhbkluc3RhbGxlci9QcmVzZWVkIGZvciBpbnNwaXJhdGlvbi4=
+type: string
+
+dn: cn=preseed/url,ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: preseed/url
+flags: append
+owners: d-i
+template: preseed/url
+value: 10.0.0.1
+
+dn: cn=debian-installer/allow_unauthenticated,ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: debian-installer/allow_unauthenticated
+flags: preseed
+owners: d-i
+template: debian-installer/allow_unauthenticated
+value: true
+
+dn: cn=passwd/root-password,ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: passwd/root-password
+description: Root password:
+extendedDescription:: WW91IG5lZWQgdG8gc2V0IGEgcGFzc3dvcmQgZm9yICdyb290JywgdGhlIHN5c3RlbSBhZG1pbmlzdHJhdGl2ZSBhY2NvdW50LiBBIG1hbGljaW91cyBvciB1bnF1YWxpZmllZCB1c2
+ VyIHdpdGggcm9vdCBhY2Nlc3MgY2FuIGhhdmUgZGlzYXN0cm91cyByZXN1bHRzLCBzbyB5b3Ugc2hvdWxkIHRha2UgY2FyZSB0byBjaG9vc2UgYSByb290IHBhc3N3b3JkIHRoYXQgaXMgbm90IGVhc3kgdG8gZ
+ 3Vlc3MuIEl0IHNob3VsZCBub3QgYmUgYSB3b3JkIGZvdW5kIGluIGRpY3Rpb25hcmllcywgb3IgYSB3b3JkIHRoYXQgY291bGQgYmUgZWFzaWx5IGFzc29jaWF0ZWQgd2l0aCB5b3UuCgpBIGdvb2QgcGFzc3dv
+ cmQgd2lsbCBjb250YWluIGEgbWl4dHVyZSBvZiBsZXR0ZXJzLCBudW1iZXJzIGFuZCBwdW5jdHVhdGlvbiBhbmQgc2hvdWxkIGJlIGNoYW5nZWQgYXQgcmVndWxhciBpbnRlcnZhbHMuCgpUaGUgcm9vdCB1c2V
+ yIHNob3VsZCBub3QgaGF2ZSBhbiBlbXB0eSBwYXNzd29yZC4gSWYgeW91IGxlYXZlIHRoaXMgZW1wdHksIHRoZSByb290IGFjY291bnQgd2lsbCBiZSBkaXNhYmxlZCBhbmQgdGhlIHN5c3RlbSdzIGluaXRpYW
+ wgdXNlciBhY2NvdW50IHdpbGwgYmUgZ2l2ZW4gdGhlIHBvd2VyIHRvIGJlY29tZSByb290IHVzaW5nIHRoZSAic3VkbyIgY29tbWFuZC4KCk5vdGUgdGhhdCB5b3Ugd2lsbCBub3QgYmUgYWJsZSB0byBzZWUgd
+ GhlIHBhc3N3b3JkIGFzIHlvdSB0eXBlIGl0Lg==
+type: password
+
+dn: cn=passwd/root-password-again,ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: passwd/root-password-again
+description: Re-enter password to verify:
+extendedDescription: Please enter the same root password again to verify that you have typed it correctly.
+type: password
+
+dn: cn=passwd/root-password-crypted,ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: passwd/root-password-crypted
+description: for internal use only
+type: password
+
+dn: cn=passwd/root-password,ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: passwd/root-password
+flags: preseed
+owners: d-i
+value: root
+
+dn: cn=passwd/root-password-again,ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: passwd/root-password-again
+flags: preseed
+owners: d-i
+value: root
+
+dn: cn=passwd/root-password-crypted,ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: passwd/root-password-crypted
+flags: preseed
+owners: d-i
+value: $1$x.SPZwEk$sNUc3EnvVimWx4VwJ1uaf1
+
+dn: cn=tasksel/first,ou=templates,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: tasksel/first
+choices: ${CHOICES}
+description: Choose software to install:
+extendedDescription: At the moment, only the core of the system is installed. To tune the system to your needs, you can choose to install one or more of the fol
+ lowing predefined collections of software.
+type: multiselect
+
+dn: cn=tasksel/first,ou=questions,ou=debconf,cn=server1,ou=servers,ou=systems,dc=spinlock,dc=hr
+objectClass: top
+objectClass: debConfDbEntry
+cn: tasksel/first
+flags: preseed
+owners: tasksel
+template: tasksel/first
+value: 
+variables: ORIGCHOICES=Graphical desktop environment, Web server, Print server, DNS server, File server, Mail server, SQL database, SSH server, Laptop, Standard
+  system utilities
+variables: CHOICES=Graphical desktop environment, Web server, Print server, DNS server, File server, Mail server, SQL database, SSH server, Laptop, Standard sys
+ tem utilities
+

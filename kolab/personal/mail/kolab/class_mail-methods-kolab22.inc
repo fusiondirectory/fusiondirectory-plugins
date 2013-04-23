@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011  FusionDirectory
+  Copyright (C) 2011-2013  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -27,9 +27,9 @@ class mailMethodKolab22 extends mailMethodKolab
   protected $modifyableMail = FALSE;
 
   /* Enforces same value for 'mail' as used for 'cn' */
-  protected $mailEqualsCN   = TRUE; 
+  protected $mailEqualsCN   = TRUE;
 
-  /* Enabled mail domain selection. If enabled getMailDomains must the domain parts */ 
+  /* Enabled mail domain selection. If enabled getMailDomains must the domain parts */
   protected $enableDomainSelection= TRUE;
   protected $enableQuota          = TRUE;
   protected $enableSieveManager   = TRUE;
@@ -48,7 +48,7 @@ class mailMethodKolab22 extends mailMethodKolab
 //     "lrswipkxtecda" => "admin",
 //     " "             => "none");
 "none"             => "none",
-"post"             => "post",             
+"post"             => "post",
 "read"             => "read",
 "read/post"        => "read/post",
 "append"           => "append",
@@ -90,7 +90,7 @@ class mailMethodKolab22 extends mailMethodKolab
   }
 
 
-  /*! \brief Returns a list of configured mail domains 
+  /*! \brief Returns a list of configured mail domains
       @return Array A list of mail domains
    */
   public function getMailDomains()
@@ -116,7 +116,7 @@ class mailMethodKolab22 extends mailMethodKolab
     }
 
     return($domains);
-  } 
+  }
 }
 
 

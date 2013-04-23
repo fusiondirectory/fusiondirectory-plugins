@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003  Cajus Pollmeier
-  Copyright (C) 2011  FusionDirectory
+  Copyright (C) 2011-2013  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,46 +20,8 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-#
-# NewDevices
-# -> Edit
-#     |- SelectDeviceType()        (Allows to select target SystemType and OGroup)
-# -> Save
-#     |-> systemTypeChosen()       (Queue entry to be activated)
-#     |-> handleActivationQueue()  (Now acticvate queued objects)
-#       |-> Ogroup selected
-#       | |-> Try to adapt values from ogroup and save directly.
-#       |
-#       |-> NO Ogroup selected
-#       |  |-> Open dialogs of the target system type and allow modifcations.
-#       |
-#       |->activate_new_device()   (Finally activate the device - FAIsate=..)
-#
-#
-# NewArpDevices (NewUnknwonDevices )
-# -> Edit
-#     |-> editEntry - ArpNewDeviceTabs
-# -> Save
-#     |-> NO gotoIntegeration
-#     | |-> Save DHCP and DNS entries, then remove the source entry from ldap.
-#     |
-#     |-> gotoIntegration selected (Handle object like a NewDevice now)
-#     |-> systemTypeChosen()       (Queue entry to be activated)
-#     |-> handleActivationQueue()  (Now acticvate queued objects)
-#       |-> Ogroup selected
-#       | |-> Try to adapt values from ogroup and save directly.
-#       |
-#       |-> NO Ogroup selected
-#       |  |-> Open dialogs of the target system type and allow modifcations.
-#       |
-#       |->activate_new_device()   (Finally activate the device - FAIsate=..)
-#
 class systemManagement extends management
 {
-  var $plHeadline     = "Systems";
-  var $plDescription  = "Systems Management";
-  var $plIcon  = "plugins/systems/images/plugin.png";
-
   // Tab definition
   protected $tabClass         = "";
   protected $tabType          = "";
@@ -95,20 +57,35 @@ class systemManagement extends management
     // Build headpage
     $headpage = new listing(get_template_path("system-list.xml", true));
     $headpage->registerElementFilter("systemRelease", "systemManagement::systemRelease");
-    $headpage->registerElementFilter("ipOf", "systemManagement::ipOf");
-    $headpage->registerElementFilter("macOf", "systemManagement::macOf");
     $headpage->registerElementFilter("listServices", "systemManagement::listServices");
     $headpage->setFilter($filter);
-    $filter->setConverter('INCOMING', 'systemManagement::incomingFilterConverter');
 
     // Register Daemon Events
-    if(class_available("DaemonEvent") && class_available("supportDaemon")){
-      $events = DaemonEvent::get_event_types(SYSTEM_EVENT | HIDDEN_EVENT);
-      foreach($events['TRIGGERED'] as $name => $data){
-        $this->registerAction("T_".$name,"handleEvent");
-        $this->registerAction("S_".$name,"handleEvent");
+    if (class_available("DaemonEvent") && class_available("supportDaemon")) {
+      $headpage->xmlData['actionmenu']['action'][2]['action'] = array();
+      $headpage->xmlData['actionmenu']['action'][3]['action'] = array();
+      $events = DaemonEvent::get_event_types();
+      foreach($events as $name => $data){
+        $this->registerAction("T_".$name, "handleEvent");
+        $headpage->xmlData['actionmenu']['action'][2]['action'][] = array(
+        'name' => 'T_'.$name,
+        'type' => 'entry',
+        'image' => $data['img'],
+        'label' => $data['name'],
+        );
+        $this->registerAction("S_".$name, "handleEvent");
+        $headpage->xmlData['actionmenu']['action'][3]['action'][] = array(
+        'name' => 'S_'.$name,
+        'type' => 'entry',
+        'image' => $data['img'],
+        'label' => $data['name'],
+        );
       }
-      $this->registerAction("activateMultiple","activateMultiple");
+      $this->registerAction("activateMultiple", "activateMultiple");
+    } else {
+      unset($headpage->xmlData['actionmenu']['action'][2]);
+      unset($headpage->xmlData['actionmenu']['action'][3]);
+      $headpage->xmlData['actionmenu']['action'] = array_values($headpage->xmlData['actionmenu']['action']);
     }
     $this->registerAction("saveEvent","saveEventDialog");
     $this->registerAction("createISO","createISO");
@@ -120,56 +97,25 @@ class systemManagement extends management
     $this->registerAction("new_goServer",         "newEntry");
     $this->registerAction("new_gotoWorkstation",  "newEntry");
     $this->registerAction("new_gotoTerminal",     "newEntry");
-    $this->registerAction("new_sambaSamAccount",       "newEntry");
+    $this->registerAction("new_sambaSamAccount",  "newEntry");
     $this->registerAction("new_gotoPrinter",      "newEntry");
     $this->registerAction("new_goFonHardware",    "newEntry");
     $this->registerAction("new_ieee802Device",    "newEntry");
+    $this->registerAction("new_fdMobilePhone",    "newEntry");
 
-    $this->registerAction("setPassword", "setPassword");
-    $this->registerAction("passwordChangeConfirmed", "passwordChangeConfirmed");
-
-    // Add copy&paste and snapshot handler.
-    if ($this->config->boolValueIsTrue("main", "copyPaste")){
-      $this->cpHandler = new CopyPasteHandler($this->config);
-    }
-    if($this->config->get_cfg_value("enableSnapshots") == "true"){
-      $this->snapHandler = new SnapshotHandler($this->config);
+    foreach ($this->config->data['TABS']['SERVERSERVICE'] as $plug) {
+      if (class_available($plug['CLASS'])) {
+        $this->registerAction("edit_".$plug['CLASS'], "editEntry");
+      }
     }
 
     // Check if we are able to communicate with Argonaut server
-    if(class_available("supportDaemon")){
+    if (class_available("supportDaemon")) {
       $o = new supportDaemon();
       $this->si_active = $o->is_available() && class_available("DaemonEvent");
     }
 
     parent::__construct($config, $ui, "systems", $headpage);
-  }
-
-
-  /*! \brief  Act on password change requests.
-   */
-  function setPassword($action,$target)
-  {
-    if(count($target) == 1){
-      $tDefs= $this->getObjectDefinitions();
-      $headpage = $this->getHeadpage();
-      $dn = array_pop($target);
-      $type = $headpage->getType($dn);
-      $entry = $headpage->getEntry($dn);
-      $ui       = get_userinfo();
-      $smarty = get_smarty();
-      if(in_array("FAKE_OC_PWD_changeAble", $entry['objectClass'])){
-        $acl = $tDefs[$type]['aclCategory'].'/'.$tDefs[$type]['aclClass'];
-        $tabacl   = $ui->get_permissions($dn,$acl,"userPassword");
-        if(preg_match("/w/",$tabacl)){
-          $this->dn= $dn;
-          set_object_info($this->dn);
-          return ($smarty->fetch(get_template_path('password.tpl', TRUE)));
-        }else{
-          msg_dialog::display(_("Permission error"), _("You have no permission to change this password!"), ERROR_DIALOG);
-        }
-      }
-    }
   }
 
 
@@ -179,145 +125,29 @@ class systemManagement extends management
    *  @param  Array   'target'  A list of object dns, which should be affected by this method.
    *  @param  Array   'all'     A combination of both 'action' and 'target'.
    */
-  function copyPasteHandler($action="",$target=array(),$all=array(),
-      $altTabClass ="", $altTabType = "", $altAclCategory="",$altAclPlugin="")
+  function copyPasteHandler($action = "", $target = array(), $all = array(),
+      $altTabClass = "", $altTabType = "", $altAclCategory = "", $altAclPlugin = "")
   {
-    // Return without any actions while copy&paste handler is disabled.
-    if(!is_object($this->cpHandler))  return("");
+    $tDefs    = $this->getObjectDefinitions();
 
-    // Save user input
-    $this->cpHandler->save_object();
+    $tabClass     = array();
+    $tabType      = array();
+    $aclCategory  = array();
+    $aclPlugin    = array();
 
-    // Add entries to queue
-    if($action == "copy" || $action == "cut"){
-
-      $tDefs= $this->getObjectDefinitions();
-      $headpage = $this->getHeadpage();
-      $ui       = get_userinfo();
-      $this->cpHandler->cleanup_queue();
-      foreach($target as $dn){
-
-        $type = $headpage->getType($dn);
-        $entry = $headpage->getEntry($dn);
-
-        $aclCategory = $tDefs[$type]['aclCategory'];
-        $aclPlugin = $tDefs[$type]['aclClass'];
-        $tabClass = $tDefs[$type]['tabClass'];
-        $tabType = $tDefs[$type]['tabDesc'];
-
-        if($action == "copy" && $this->ui->is_copyable($dn,$aclCategory,$aclPlugin)){
-          $this->cpHandler->add_to_queue($dn,"copy",$tabClass,$tabType,$aclCategory,$this);
-          @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,$dn,"Entry copied!");
-        }
-        if($action == "cut" && $this->ui->is_cutable($dn,$aclCategory,$aclPlugin)){
-          $this->cpHandler->add_to_queue($dn,"cut",$tabClass,$tabType,$aclCategory,$this);
-          @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,$dn,"Entry cutted!");
-        }
-      }
-    }
-
-    // Initiate pasting
-    if($action == "paste"){
-      $this->cpPastingStarted = TRUE;
-    }
-
-    // Display any c&p dialogs, eg. object modifications required before pasting.
-    if($this->cpPastingStarted && $this->cpHandler->entries_queued()){
-      $headpage = $this->getHeadpage();
-      $this->cpHandler->SetVar("base",$headpage->getBase());
-      $data = $this->cpHandler->execute();
-      if(!empty($data)){
-        return($data);
-      }
-    }
-
-    // Automatically disable pasting process since there is no entry left to paste.
-    if(!$this->cpHandler->entries_queued()){
-      $this->cpPastingStarted = FALSE;
-    }
-    return("");
-  }
-
-
-  /*! \brief  Password change confirmed, now try to change the systems pwd.
-   */
-  function passwordChangeConfirmed()
-  {
-    $tDefs= $this->getObjectDefinitions();
     $headpage = $this->getHeadpage();
-    $type = $headpage->getType($this->dn);
-    $entry = $headpage->getEntry($this->dn);
-    $ui       = get_userinfo();
-    $smarty = get_smarty();
 
-    if(!in_array('FAKE_OC_PWD_changeAble', $entry['objectClass'])){
-      trigger_error("Tried to change pwd, for invalid object!");
-    }elseif ($_POST['new_password'] != $_POST['repeated_password']){
-      msg_dialog::display(_("Error"),
-          _("The passwords you've entered as 'New password' and 'Repeated password' do not   match!"), ERROR_DIALOG);
-      return($smarty->fetch(get_template_path('password.tpl', TRUE)));
-    }else{
-      $acl = $tDefs[$type]['aclCategory'].'/'.$tDefs[$type]['aclClass'];
-      $tabacl   = $ui->get_permissions($this->dn,$acl,"userPassword");
+    foreach ($target as $dn) {
+      $type   = $headpage->getType($dn);
+      $entry  = $headpage->getEntry($dn);
 
-      // Check acls
-      if(!preg_match("/w/",$tabacl)){
-        msg_dialog::display(_("Permission error"), _("You have no permission to change this password!"), ERROR_DIALOG);
-      }else{
-        $ldap = $this->config->get_ldap_link();
-        $ldap->cd($this->dn);
-        $ldap->cat($this->dn);
-        $old_attrs = $ldap->fetch();
-
-        $attrs= array();
-        if ($_POST['new_password'] == ""){
-
-          /* Remove password attribute
-           */
-          if(in_array("simpleSecurityObject",$old_attrs['objectClass'])){
-            $attrs['objectClass'] = array();
-            for($i = 0 ; $i < $old_attrs['objectClass']['count'] ; $i ++){
-              if(!preg_match("/simpleSecurityObject/i",$old_attrs['objectClass'][$i])){
-                $attrs['objectClass'][] = $old_attrs['objectClass'][$i];
-              }
-            }
-          }
-          $attrs['userPassword']= array();
-        } else {
-
-          /* Add/modify password attribute
-           */
-          if(!in_array("simpleSecurityObject",$old_attrs['objectClass'])){
-            $attrs['objectClass'] = array();
-            for($i = 0 ; $i < $old_attrs['objectClass']['count'] ; $i ++){
-              $attrs['objectClass'][] = $old_attrs['objectClass'][$i];
-            }
-            $attrs['objectClass'][] = "simpleSecurityObject";
-          }
-
-          if(class_available("passwordMethodCrypt")){
-            $pwd_m = new passwordMethodCrypt($this->config);
-            $pwd_m->set_hash("crypt/md5");
-            $attrs['userPassword'] = $pwd_m->generate_hash($_POST['new_password']);
-          }else{
-            msg_dialog::display(_("Password method"),_("Password method crypt is missing. Cannot set system password."));
-            $attrs = array();
-          }
-        }
-        $ldap->modify($attrs);
-        if (!$ldap->success()){
-          msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_MOD, $type));
-        }else{
-          if(class_available($tDefs[$type]['plugClass'])){
-            $plug = $tDefs[$type]['plugClass'];
-            $p = new $plug($this->config,$this->dn);
-            $p->handle_post_events("modify");
-          }
-        }
-        new log("security","systems/".get_class($this),$this->dn,array_keys($attrs),$ldap->get_error());
-      }
-      set_object_info();
+      $tabClass[$dn]    = $tDefs[$type]['tabClass'];
+      $tabType[$dn]     = $tDefs[$type]['tabDesc'];
+      $aclCategory[$dn] = $tDefs[$type]['aclCategory'];
+      $aclPlugin[$dn]   = $tDefs[$type]['aclClass'];
     }
+
+    return parent::copyPasteHandler($action, $target, $all, $tabClass, $tabType, $aclCategory, $aclPlugin);
   }
 
 
@@ -331,7 +161,7 @@ class systemManagement extends management
       $smarty = get_smarty();
       $this->dn= array_pop($target);
       set_object_info($this->dn);
-      return ($smarty->fetch(get_template_path('goto/gencd.tpl', TRUE)));
+      return ($smarty->fetch(get_template_path('gencd.tpl', TRUE)));
 
     }
   }
@@ -345,7 +175,7 @@ class systemManagement extends management
   {
     $smarty = get_smarty();
     $smarty->assign("src", "?plug=".$_GET['plug']."&amp;PerformIsoCreation");
-    return ($smarty->fetch(get_template_path('goto/gencd_frame.tpl', TRUE)));
+    return ($smarty->fetch(get_template_path('gencd_frame.tpl', TRUE)));
   }
 
 
@@ -362,8 +192,8 @@ class systemManagement extends management
     $dsc   = array(0 => array("pipe", "r"), 1 => array("pipe", "w"), 2 => array("pipe", "w"));
 
     /* Get and check command */
-    $command= $this->config->search("workgeneric", "SYSTEMISOHOOK",array('tabs'));
-    if (check_command($command)){
+    $command= $this->config->search("workstationGeneric", "SYSTEMISOHOOK", array('tabs'));
+    if (check_command($command)) {
       @DEBUG (DEBUG_SHELL, __LINE__, __FUNCTION__, __FILE__, $command, "Execute");
 
       /* Print out html introduction */
@@ -426,31 +256,30 @@ class systemManagement extends management
   {
     // Detect whether this event is scheduled or triggered.
     $triggered = TRUE;
-    if(preg_match("/^S_/",$action)){
+    if (preg_match("/^S_/", $action)) {
       $triggered = FALSE;
     }
 
     // Detect triggere or scheduled actions
     $headpage = $this->getHeadpage();
-    $event = preg_replace("/^[TS]_/","",$action);
-    if(preg_match("/^[TS]_/", $action)){
+    $event = preg_replace("/^[TS]_/", "", $action);
 
-    }
+    echo "<h1>launching action $action</h1>\n";
 
     // Now send remaining FAI/Argonaut events here.
-    if(count($target) && $this->si_active){
-      $mac= array();
+    if (count($target) && $this->si_active) {
+      $mac = array();
 
       // Collect target mac addresses
-      $ldap = $this->config->get_ldap_link();
-      $tD = $this->getObjectDefinitions();
-      $events = DaemonEvent::get_event_types(SYSTEM_EVENT);
-      $o_queue = new supportDaemon();
-      foreach($target as $dn){
+      $ldap     = $this->config->get_ldap_link();
+      $tD       = $this->getObjectDefinitions();
+      $events   = DaemonEvent::get_event_types();
+      $o_queue  = new supportDaemon();
+      foreach ($target as $dn) {
         $type = $headpage->getType($dn);
-        if($tD[$type]['sendEvents']){
+        if ($tD[$type]['sendEvents']) {
           $obj = $headpage->getEntry($dn);
-          if(isset($obj['macAddress'][0])){
+          if (isset($obj['macAddress'][0])) {
             $mac[] = $obj['macAddress'][0];
           }
         }
@@ -459,31 +288,30 @@ class systemManagement extends management
       /* Skip installation or update trigerred events,
        *  if this entry is currently processing.
        */
-      if($triggered && in_array($event,array("DaemonEvent_reinstall","DaemonEvent_update"))){
-        foreach($mac as $key => $mac_address){
-            if($o_queue->is_currently_installing($mac_address)) {
-                unset($mac[$key]);
-
-                new log("security","systems/".get_class($this),"",array(),"Skip adding 'DaemonEvent::".$type."' for mac '".$mac_address."', there is already a job in progress.");
-            }
+      if ($triggered && in_array($event, array("reinstall","update"))) {
+        foreach ($mac as $key => $mac_address) {
+          if ($o_queue->is_currently_installing($mac_address)) {
+            unset($mac[$key]);
+            new log("security", "systems/".get_class($this), "", array(), "Skip adding 'DaemonEvent::".$type."' for mac '".$mac_address."', there is already a job in progress.");
+          }
         }
       }
 
       // Prepare event to be added
-      if(count($mac) && isset($events['BY_CLASS'][$event]) && $this->si_active){
-        $event = $events['BY_CLASS'][$event];
-        $this->dialogObject = new $event['CLASS_NAME']($this->config);
+      if (count($mac) && isset($events[$event]) && $this->si_active) {
+        $this->dialogObject = new DaemonEvent($this->config, $event);
         $this->dialogObject->add_targets($mac);
 
-        if($triggered){
+        if ($triggered) {
           $this->dialogObject->set_type(TRIGGERED_EVENT);
           $o_queue->append($this->dialogObject);
-          if($o_queue->is_error()){
-            msg_dialog::display(_("Service infrastructure"),msgPool::siError($o_queue->get_error()),ERROR_DIALOG);
-          }else{
+          if ($o_queue->is_error()) {
+            msg_dialog::display(_("Service infrastructure"), msgPool::siError($o_queue->get_error()), ERROR_DIALOG);
+            $this->closeDialogs();
+          } else {
             $this->closeDialogs();
           }
-        }else{
+        } else {
           $this->dialogObject->set_type(SCHEDULED_EVENT);
         }
       }
@@ -515,15 +343,39 @@ class systemManagement extends management
       }
   }
 
-
-  /*! \brief    Update filter part for INCOMING.
-   *            Allows us to search for "systemIncomingRDN".
-   */
-  static function incomingFilterConverter($filter)
+  function saveSnapshot($action="",$target=array(),$all=array())
   {
-    $rdn = preg_replace("/^[^=]*=/", "", get_ou('systemIncomingRDN'));
-    $rdn = preg_replace("/,.*$/","",$rdn);
-    return(preg_replace("/%systemIncomingRDN/", $rdn,$filter));
+    if (!is_object($this->dialogObject)) return;
+    $this->dialogObject->save_object();
+    $msgs = $this->dialogObject->check();
+    if (count($msgs)) {
+      foreach ($msgs as $msg) {
+        msg_dialog::display(_("Error"), $msg, ERROR_DIALOG);
+      }
+    } else {
+      $this->dn =  $this->dialogObject->dn;
+      $dns      = array($this->dn);
+      /* Check if other dns needs to be included in this snapshot */
+      $entry = $this->getHeadpage()->getEntry($this->dn);
+      $ldap = $this->config->get_ldap_link();
+      $ldap->cd($this->config->current['BASE']);
+      /* DHCP entry */
+      $ldap->search ("(&(objectClass=dhcpHost)(cn=".$entry['cn'][0]."))", array("uid","cn","dn"));
+
+      if ($attr = $ldap->fetch()) {
+        $dns[] = $attr['dn'];
+      }
+      /* DNS entry */
+      if (class_available('DNS')) {
+        $dnsEntry = DNS::getDNSHostEntries($this->config, $entry['cn'][0]);
+        if ($dnsEntry['exists']) {
+          $dns[]  = "relativeDomainName=".$entry['cn'][0].",".DNS::getDNSZoneDN($this->config, $dnsEntry['zoneName']);
+        }
+      }
+      $this->snapHandler->create_snapshot($dns, $this->dialogObject->CurrentDescription);
+      @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $this->dn, "Snaptshot created!");
+      $this->closeDialogs();
+    }
   }
 
 
@@ -615,7 +467,7 @@ class systemManagement extends management
              $this->tabObject->by_object['phoneGeneric']->remove_from_parent ();
           }else{
             $this->tabObject= new $info['tabClass']($this->config,$this->config->data['TABS'][$info['tabDesc']],
-                $this->dn, $info['aclCategory'], true, true);
+                $this->dn, $info['aclCategory']);
             $this->tabObject->set_acl_base($this->dn);
             $this->tabObject->parent = &$this;
             $this->tabObject->delete ();
@@ -640,36 +492,29 @@ class systemManagement extends management
   }
 
 
-  /*! \brief  Edit the selected system type.
-   *          NewDevice and ArpNewDevice are handled here separately
-   */
-  function editEntry($action="",$target=array(),$all=array(), $altTabClass ="", $altTabType = "", $altAclCategory="")
+  /*! \brief  Edit the selected system type. */
+  function editEntry($action = "", $target = array(), $all = array(), $altTabClass = "", $altTabType = "", $altAclCategory = "")
   {
-    if(count($target) == 1){
-      $tInfo = $this->getObjectDefinitions();
+    if (count($target) == 1) {
+      $tInfo    = $this->getObjectDefinitions();
       $headpage = $this->getHeadpage();
-      $dn = $target[0];
-      $type =$headpage->getType($dn);
-      $tData = $tInfo[$type];
+      $dn       = $target[0];
+      $type     = $headpage->getType($dn);
+      $tData    = $tInfo[$type];
 
-      if($type == "FAKE_OC_ArpNewDevice"){
-        if(!class_available("ArpNewDeviceTabs")){
-          msg_dialog::display(_("Error"), msgPool::class_not_found("ArpNewDevice"), ERROR_DIALOG);
-        }else{
-          return(management::editEntry($action,$target,$all,"ArpNewDeviceTabs","ARPNEWDEVICETABS","incoming"));
+      $str = management::editEntry($action, $target, $all, $tData['tabClass'], $tData['tabDesc'], $tData['aclCategory']);
+      if ($str) {
+        return $str;
+      }
+      if (preg_match("/^edit_/", $action)) {
+        $service = preg_replace("/^edit_/", "", $action);
+        if (isset($this->tabObject->by_object['ServerService'])) {
+          $this->tabObject->current = 'ServerService';
+          $all = array('action'  => 'edit', 'targets' => array($service));
+          $this->tabObject->by_object['ServerService']->editEntry($all['action'], $all['targets'], $all);
+        } else {
+          trigger_error("Unknown tab: ServerService");
         }
-      }elseif($type == "FAKE_OC_NewDevice"){
-        if(!class_available("SelectDeviceType")){
-          msg_dialog::display(_("Error"), msgPool::class_not_found("SelectDeviceType"), ERROR_DIALOG);
-        }else{
-          $this->activationQueue[$dn] = array();
-          $this->dialogObject = new SelectDeviceType($this->config,$dn);
-          $this->skipFooter = TRUE;
-          $this->displayApplyBtn = FALSE;
-          // see condition  -$s_action == "::systemTypeChosen"-  for further handling
-        }
-      }else{
-         return(management::editEntry($action,$target,$all,$tData['tabClass'],$tData['tabDesc'],$tData['aclCategory']));
       }
     }
   }
@@ -823,7 +668,7 @@ class systemManagement extends management
 
             // Set gotoMode to active if there was an ogroup selected.
             $found = false;
-            foreach(array("workgeneric"=>"active","servgeneric"=>"active","termgeneric"=>"active") as $tab => $value){
+            foreach(array("workstationGeneric"=>"active","serverGeneric"=>"active","terminalGeneric"=>"active") as $tab => $value){
               if(isset($this->tabObject->by_object[$tab]->gotoMode)) {
                 $found = true;
                 $this->tabObject->by_object[$tab]->gotoMode = $value;
@@ -845,7 +690,7 @@ class systemManagement extends management
             }
 
             // Set default system specific attributes
-            foreach (array("workgeneric", "termgeneric") as $cls){
+            foreach (array("workstationGeneric", "terminalGeneric") as $cls){
               if (isset($this->tabObject->by_object[$cls])){
                 $this->tabObject->by_object[$cls]->set_everything_to_inherited();
                 @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,
@@ -854,7 +699,7 @@ class systemManagement extends management
             }
 
             // Enable activation
-            foreach (array("servgeneric", "workgeneric", "termgeneric") as $cls){
+            foreach (array("serverGeneric", "workstationGeneric", "terminalGeneric") as $cls){
               if (isset($this->tabObject->by_object[$cls])){
                 $this->tabObject->by_object[$cls]->auto_activate= TRUE;
                 @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,
@@ -903,26 +748,6 @@ class systemManagement extends management
   {
     @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,
         get_class($this->tabObject).": ".$this->tabObject->dn, "<b>Save</b>");
-
-    // Handle 'New Unknown Devices' here.
-    if($this->tabObject instanceOf ArpNewDeviceTabs){
-      $this->tabObject->save_object();
-
-      if($this->tabObject->by_object['ArpNewDevice']->gotoIntegration){
-        $message = $this->tabObject->check();
-        if(count($message)){
-          msg_dialog::displayChecks($message);
-        }else{
-          @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,
-              get_class($this->tabObject).": ".$this->tabObject->dn, "<b>Queued for goto activation</b>");
-          $this->tabObject->save();
-          $this->activationQueue[$this->tabObject->dn]=array();
-          $this->closeDialogs();
-          $this->systemTypeChosen();
-        }
-        return;
-      }
-    }
 
     // Try to save changes here.
     $str = management::saveChanges();
@@ -1133,8 +958,6 @@ class systemManagement extends management
     if(isset($_POST['cd_create']))  $action['action'] = "initiateISOcreation";
     if(isset($_GET['PerformIsoCreation']))  $action['action'] = "performIsoCreation";
     if(isset($_POST['SystemTypeAborted']))  $action['action'] = "cancel";
-    if(isset($_POST['password_cancel']))  $action['action'] = "cancel";
-    if(isset($_POST['password_finish']))  $action['action'] = "passwordChangeConfirmed";
 
     if(isset($_POST['new_goServer']))  $action['action'] = "new_goServer";
     if(isset($_POST['new_gotoWorkstation']))  $action['action'] = "new_gotoWorkstation";
@@ -1165,7 +988,7 @@ class systemManagement extends management
     $tD = $this->getObjectDefinitions();
     $smarty = get_smarty();
     foreach($tD as $name => $obj){
-      $smarty->assign("USE_".$name, (empty($obj['TABNAME']) || class_available($obj['TABNAME'])));
+      $smarty->assign("USE_".$name, (empty($obj['tabClass']) || class_available($obj['tabClass'])));
     }
 
     $display = $headpage->render();
@@ -1178,48 +1001,39 @@ class systemManagement extends management
     $tabs = array(
         "goServer" => array(
           "ou"          => get_ou('serverRDN'),
-          "plugClass"   => "servgeneric",
+          "plugClass"   => "serverGeneric",
           "tabClass"    => "servtabs",
-          "tabDesc"     => "SERVTABS",
-          "aclClass"    => "servgeneric",
+          "tabDesc"     => "SERVERTABS",
+          "aclClass"    => "serverGeneric",
           "sendEvents"  => TRUE,
           "aclCategory" => "server"),
 
         "gotoWorkstation" => array(
           "ou"          => get_ou('workstationRDN'),
-          "plugClass"   => "workgeneric",
+          "plugClass"   => "workstationGeneric",
           "tabClass"    => "worktabs",
-          "tabDesc"     => "WORKTABS",
-          "aclClass"    => "workgeneric",
+          "tabDesc"     => "WORKSTATIONTABS",
+          "aclClass"    => "workstationGeneric",
           "sendEvents"  => TRUE,
           "aclCategory" => "workstation"),
 
         "gotoTerminal" => array(
             "ou"          => get_ou('terminalRDN'),
-            "plugClass"   => "termgeneric",
+            "plugClass"   => "terminalGeneric",
             "tabClass"    => "termtabs",
             "sendEvents"  => TRUE,
-            "tabDesc"     => "TERMTABS",
-            "aclClass"    => "termgeneric",
+            "tabDesc"     => "TERMINALTABS",
+            "aclClass"    => "terminalGeneric",
             "aclCategory" => "terminal"),
 
         "gotoPrinter" => array(
             "ou"          => get_ou('printerRDN'),
             "plugClass"   => "printgeneric",
             "tabClass"    => "printtabs",
-            "tabDesc"     => "PRINTTABS",
+            "tabDesc"     => "PRINTERTABS",
             "aclClass"    => "printgeneric",
             "sendEvents"  => FALSE,
             "aclCategory" => "printer"),
-
-        "FAKE_OC_NewDevice" => array(
-            "ou"          => get_ou('systemIncomingRDN'),
-            "plugClass"   => "termgeneric",
-            "tabClass"    => "termtabs",
-            "sendEvents"  => TRUE,
-            "tabDesc"     => "TERMTABS",
-            "aclClass"    => "termgeneric",
-            "aclCategory" => "terminal"),
 
         "goFonHardware" => array(
             "ou"          => get_ou('phoneRDN'),
@@ -1232,12 +1046,12 @@ class systemManagement extends management
 
         "sambaSamAccount" => array(
             "ou"          => get_winstations_ou(),
-            "plugClass"   => "wingeneric",
+            "plugClass"   => "winstationGeneric",
             "sendEvents"  => TRUE,
-            "tabClass"    => "wintabs",
-            "tabDesc"     => "WINTABS",
-            "aclClass"    => "wingeneric",
-            "aclCategory" => "winworkstation"),
+            "tabClass"    => "simpleTabs",
+            "tabDesc"     => "WINSTATIONTABS",
+            "aclClass"    => "winstationGeneric",
+            "aclCategory" => "winstation"),
 
         "ieee802Device" => array(
             "ou"          => get_ou('componentRDN'),
@@ -1247,6 +1061,15 @@ class systemManagement extends management
             "tabDesc"     => "COMPONENTTABS",
             "aclClass"    => "componentGeneric",
             "aclCategory" => "component"),
+
+        "fdMobilePhone"   => array(
+            "ou"          => get_ou('mobilePhoneRDN'),
+            "plugClass"   => "mobilePhoneGeneric",
+            "tabClass"    => "mobiletabs",
+            "tabDesc"     => "MOBILEPHONETABS",
+            "aclClass"    => "mobilePhoneGeneric",
+            "sendEvents"  => FALSE,
+            "aclCategory" => "mobilePhone"),
         );
 
     // Now map some special types
@@ -1265,9 +1088,7 @@ class systemManagement extends management
     $tabs['goServer__IS_ERROR'] = &$tabs['goServer'];
     $tabs['goServer__IS_LOCKED'] = &$tabs['goServer'];
 
-    $tabs['FAKE_OC_ArpNewDevice'] = &$tabs['FAKE_OC_NewDevice'];
-
-    return($tabs);
+    return $tabs;
   }
 
 
@@ -1287,7 +1108,7 @@ class systemManagement extends management
     if ($class && is_array($class)) {
       foreach (explode(' ', $class[0]) as $element) {
         if ($element[0] == ":") {
-          return "&nbsp;<img class='center' src='images/empty.png'>&nbsp;".mb_substr($element, 1);
+          return "&nbsp;".htmlentities(mb_substr($element, 1), ENT_COMPAT, 'UTF-8');
         }
       }
     }
@@ -1296,105 +1117,73 @@ class systemManagement extends management
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
     $ldap->search("(&(objectClass=gosaGroupOfNames)(FAIclass=*)(member=".$b."))",array('FAIclass','cn'));
-    while($attrs = $ldap->fetch()){
-      $rel = preg_replace("/^.*:/","",$attrs['FAIclass'][0]);
-      $sys = sprintf(_("Inherited from %s"),$attrs['cn'][0]);
+    while ($attrs = $ldap->fetch()) {
+      $rel = htmlentities(preg_replace("/^.*:/", "", $attrs['FAIclass'][0]), ENT_COMPAT, 'UTF-8');
+      $sys = htmlentities(sprintf(_("Inherited from %s"), $attrs['cn'][0]), ENT_COMPAT, 'UTF-8');
       $str = "&nbsp;<img class='center' src='plugins/ogroups/images/ogroup.png'
           title='".$sys."'
           alt='".$sys."' >&nbsp;".$rel;
-      return($str);
+      return $str;
     }
 
-    return("&nbsp;");
+    return "&nbsp;";
   }
 
-  static function listServices($dn)
+  static function listServices($row, $dn)
   {
     global $config;
+    static $services = array();
+    if (empty($services)) {
+      foreach ($config->data['TABS']['SERVERSERVICE'] as $plug) {
+        if (class_available($plug['CLASS'])) {
+          $name = $plug['CLASS'];
 
-    // Load information if needed
-    $ldap = $config->get_ldap_link();
-    $ldap->cd($dn);
-    $ldap->search("(objectClass=*)",array('objectClass'));
-    $str = "&nbsp;";
-    $services = array();
-    $services_class = array (
-        "FAIrepositoryServer" => "repository",
-        "goLdapServer" => "ldap",
-        "dNSZone" => "dns",
-        "goNtpServer" => "ntp",
-        "argonautServer" => "argonaut",
-        "dhcpServer" => "dhcp",
-        "goVirusServer" => "antivirus",
-        "goSpamServer" => "spamassassin",
-        "goShareServer" => "file",
-        "goCupsServer" => "print",
-        "goImapServer" => "imap",
-        "goTerminalServer" => "terminal",
-        "goMailServer" => "smtp"
-        );
-    while($attrs = $ldap->fetch()){
-        unset($attrs['objectClass']['count']);
-        foreach($attrs['objectClass'] as $class) {
-            if(isset($services_class[$class])) {
-              $services[$services_class[$class]] =" <img class='center' src='plugins/systems/images/service_".$services_class[$class].".png' alt='".$services_class[$class]."' title ='".$services_class[$class]."'/>";
-            }
+          $services[$name] = new $name($config, $dn);
         }
+      }
     }
-    $str = implode("",$services);
-    if($str=="") {
-        $str="&nbsp;";
-    }
-    return($str);
-  }
-
-  static function ipOf($dn)
-  {
-    global $config;
 
     // Load information if needed
     $ldap = $config->get_ldap_link();
-    $ldap->cd($dn);
-    $ldap->search("(ipHostNumber=*)",array('ipHostNumber'));
-    $str = "&nbsp;";
-    if($attrs = $ldap->fetch()){
-        $str = $attrs['ipHostNumber'][0];
+    $ldap->cat($dn);
+    $services_imgs = array();
+    if ($attrs = $ldap->fetch()) {
+      foreach ($services as $class => $service) {
+        if ($service->is_this_account($attrs)) {
+          $infos = pluglist::pluginInfos($class);
+          if (isset($infos['plIcon'])) {
+            $services_imgs[] = "<input class='center' type='image' src='".$infos['plIcon']."' ".
+                               "alt='".$infos['plShortName']."' title='".$infos['plShortName']."' ".
+                               "name='listing_edit_".$class."_$row' style='padding:1px'/>";
+          } else {
+            @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $infos['plShortName']." ($class)", "No icon for");
+          }
+        }
+      }
     }
-    return($str);
-  }
 
- static function macOf($dn)
-  {
-    global $config;
-
-    // Load information if needed
-    $ldap = $config->get_ldap_link();
-    $ldap->cd($dn);
-    $ldap->search("(macAddress=*)",array('macAddress'));
-    $str = "&nbsp;";
-    if($attrs = $ldap->fetch()){
-        $str = $attrs['macAddress'][0];
+    $str = implode("", $services_imgs);
+    if ($str == "") {
+      $str = "&nbsp;";
     }
-    return($str);
+    return $str;
   }
 
   /*! \brief  !! Incoming dummy acls, required to defined acls for incoming objects
    */
   static function plInfo()
   {
-    return (array(
-          "plShortName"   => _("Systems"),
-          "plDescription" => _("Systems Management"),
-          "plIcon"        => "plugins/systems/images/plugin.png",
-          "plSelfModify"  => FALSE,
-          "plDepends"     => array(),
-          "plPriority"    => 99,
-          "plSection"     => array("administration"),
-          "plCategory"    => array("incoming"   => array( "description"  => _("Systems"),
-              "objectClass"  => "")),
-          "plProvidedAcls"=> array()
-          ));
+    return array(
+      "plShortName"   => _("Systems"),
+      "plDescription" => _("Systems Management"),
+      "plIcon"        => "plugins/systems/images/icon.png",
+      "plSelfModify"  => FALSE,
+      "plPriority"    => 20,
+      "plSection"     => "admin",
+      "plCategory"    => array("terminal","workstation","server","phone","printer","component","winstation"),
+
+      "plProvidedAcls"  => array()
+    );
   }
 }
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>
