@@ -43,14 +43,14 @@
 # kolab attributes #
 ####################
 
-# helper attribute to make the kolab root easily findable in 
+# helper attribute to make the kolab root easily findable in
 # a big ldap directory
 attributetype ( 1.3.6.1.4.1.19414.2.1.1
   NAME ( 'k' 'kolab' )
   DESC 'Kolab attribute'
   SUP name )
 
-# kolabDeleteflag used to be a boolean but describes with Kolab 2 
+# kolabDeleteflag used to be a boolean but describes with Kolab 2
 # the fqdn of the server which is requested to delete this objects
 # in its local store
 attributetype ( 1.3.6.1.4.1.19414.2.1.2
@@ -72,8 +72,8 @@ attributetype ( 1.3.6.1.4.1.19414.2.1.3
 # cleartext password. This is required in order to pass the password from
 # the maintainance/administration application to the kolabHomeServer running the
 # resource handler application in a secure manner.
-# Actually this attribute is deprecated as of Kolab 2.1. Instead we grant the 
-# calendar user dn: cn=calendar,cn=internal,dc=yourcompany,dc=com access to 
+# Actually this attribute is deprecated as of Kolab 2.1. Instead we grant the
+# calendar user dn: cn=calendar,cn=internal,dc=yourcompany,dc=com access to
 # the respective calendar folder using IMAP ACLs.
 attributetype ( 1.3.6.1.4.1.19419.2.1.4
   NAME 'kolabEncryptedPassword'
@@ -111,7 +111,7 @@ attributetype ( 1.3.6.1.4.1.19419.1.1.1.2
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.7 )
 
 # Specifies the email delegates.
-# An email delegate can send email on behalf of the account  
+# An email delegate can send email on behalf of the account
 # which means using the "from" of the account.
 # Delegates are specified by the syntax of rfc822 email addresses.
 attributetype ( 1.3.6.1.4.1.19419.1.1.1.3
@@ -131,7 +131,7 @@ attributetype ( 1.3.6.1.4.1.19419.1.1.1.3
 #  ACT_REJECT_IF_CONFLICTS
 #  ACT_MANUAL_IF_CONFLICTS
 #  ACT_MANUAL
-# In addition one of these values may be prefixed with a primary email 
+# In addition one of these values may be prefixed with a primary email
 # address followed by a colon like
 # user@domain.tld: ACT_ALWAYS_ACCEPT
 attributetype ( 1.3.6.1.4.1.19419.1.1.1.4
@@ -144,10 +144,10 @@ attributetype ( 1.3.6.1.4.1.19419.1.1.1.4
 # time span from now to the future used for the free busy data
 # measured in days
 attributetype ( 1.3.6.1.4.1.19419.1.1.1.5
-  NAME 'kolabFreeBusyFuture' 
+  NAME 'kolabFreeBusyFuture'
   DESC 'time in days for fb data towards the future'
   EQUALITY integerMatch
-  SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
   SINGLE-VALUE )
 
 # time span from now to the past used for the free busy data
@@ -204,7 +204,7 @@ attributetype ( 1.3.6.1.4.1.19419.1.1.1.9
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.24
   SINGLE-VALUE )
 
-# Intervall in days after which senders get 
+# Intervall in days after which senders get
 # another vacation message.
 # Currently this attribute is not used in Kolab.
 attributetype ( 1.3.6.1.4.1.19419.1.1.1.10
@@ -248,11 +248,11 @@ attributetype ( 1.3.6.1.4.1.19419.1.1.1.13
   DESC 'Multivalued -- Email domain for vacation to response upon'
   EQUALITY caseIgnoreIA5Match
   SUBSTR caseIgnoreIA5SubstringsMatch
-  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26{256} )  
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26{256} )
 
 # Forward all incoming emails except UCE if kolabForwardUCE
 # is not set to this email address.
-# There can be multiple kolabForwardAddress entries for 
+# There can be multiple kolabForwardAddress entries for
 # each kolabInetOrgPerson.
 # Currently this attribute is not used in Kolab.
 attributetype ( 1.3.6.1.4.1.19419.1.1.1.14
@@ -263,7 +263,7 @@ attributetype ( 1.3.6.1.4.1.19419.1.1.1.14
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26{256} )
 
 # Keep local copy when forwarding emails to list of
-# kolabForwardAddress. 
+# kolabForwardAddress.
 # Default is no.
 # Currently this attribute is not used in Kolab.
 attributetype ( 1.3.6.1.4.1.19419.1.1.1.15
@@ -273,21 +273,21 @@ attributetype ( 1.3.6.1.4.1.19419.1.1.1.15
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
   SINGLE-VALUE )
 
-# Enable forwarding of UCE. 
+# Enable forwarding of UCE.
 # Default is yes.
 # Currently this attribute is not used in Kolab.
 attributetype ( 1.3.6.1.4.1.19419.1.1.1.16
   NAME 'kolabForwardUCE'
   DESC 'Enable forwarding of mails known as UCE'
   EQUALITY booleanMatch
-  SYNTAX 1.3.6.1.4.1.1466.115.121.1.7 
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
   SINGLE-VALUE )
 
 # comment when creating or deleting a kolab object
 # a comment might be appropriate. This is most useful
-# for tracability when users get moved to the graveyard 
+# for tracability when users get moved to the graveyard
 # instead of being really deleted. Every entry must be prefixed
-# with an ISO 8601 date string e.g 200604301458Z. All times must 
+# with an ISO 8601 date string e.g 200604301458Z. All times must
 # be in zulu timezone.
 attributetype ( 1.3.6.1.4.1.19419.1.1.1.17
   NAME 'kolabComment'
@@ -296,7 +296,7 @@ attributetype ( 1.3.6.1.4.1.19419.1.1.1.17
   SUBSTR caseIgnoreSubstringsMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{1024} )
 
-# describes the allowed or disallowed smtp addresses for 
+# describes the allowed or disallowed smtp addresses for
 # recipients. If this attribute is not set for a user no
 # kolab recipient policy does apply.
 # example entries:
@@ -323,24 +323,24 @@ attributetype ( 1.3.6.1.4.1.19414.1.1.1.19
   NAME 'kolabHomeServerOnly'
   DESC 'Create the user mailbox on the kolabHomeServer only'
   EQUALITY booleanMatch
-  SYNTAX 1.3.6.1.4.1.1466.115.121.1.7 
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
   SINGLE-VALUE )
 
 # kolabFolderType describes the kind of Kolab folder
-# as defined in the kolab format specification. 
-# We will annotate all folders with an entry 
-# /vendor/kolab/folder-type containing the attribute 
-# value.shared set to: <type>[.<subtype>]. 
-# The <type> can be: mail, event, journal, task, note, 
-# or contact. The <subtype> for a mail folder can be 
-# inbox, drafts, sentitems, or junkemail (this one holds 
-# spam mails). For the other <type>s, it can only be 
-# default, or not set.  For other types of folders 
-# supported by the clients, these should be prefixed with 
-# "k-" for KMail, "h-" for Horde and "o-" for Outlook, and 
+# as defined in the kolab format specification.
+# We will annotate all folders with an entry
+# /vendor/kolab/folder-type containing the attribute
+# value.shared set to: <type>[.<subtype>].
+# The <type> can be: mail, event, journal, task, note,
+# or contact. The <subtype> for a mail folder can be
+# inbox, drafts, sentitems, or junkemail (this one holds
+# spam mails). For the other <type>s, it can only be
+# default, or not set.  For other types of folders
+# supported by the clients, these should be prefixed with
+# "k-" for KMail, "h-" for Horde and "o-" for Outlook, and
 # look like for example "kolab.o-voicemail". Other third-party
 # clients shall use the "x-" prefix.
-# We then use the ANNOTATEMORE IMAP extension to 
+# We then use the ANNOTATEMORE IMAP extension to
 # associate the folder type with a folder.
 attributetype ( 1.3.6.1.4.1.19414.2.1.7
   NAME 'kolabFolderType'
@@ -399,7 +399,7 @@ attributetype ( 1.3.6.1.4.1.19414.2.1.507
 attributetype ( 1.3.6.1.4.1.19414.2.1.508
   NAME 'postfix-allow-unauthenticated'
   EQUALITY booleanMatch
-  SYNTAX 1.3.6.1.4.1.1466.115.121.1.7 
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
   SINGLE-VALUE )
 
 attributetype ( 1.3.6.1.4.1.19414.2.1.509
@@ -426,7 +426,7 @@ attributetype ( 1.3.6.1.4.1.19414.2.1.511
 attributetype ( 1.3.6.1.4.1.19414.2.1.601
   NAME 'cyrus-autocreatequota'
   EQUALITY integerMatch
-  SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
   SINGLE-VALUE )
 
 attributetype ( 1.3.6.1.4.1.19414.2.1.602
@@ -435,11 +435,11 @@ attributetype ( 1.3.6.1.4.1.19414.2.1.602
   SUBSTR caseIgnoreIA5SubstringsMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26{256} )
 
-# enable plain imap without ssl 
+# enable plain imap without ssl
 attributetype ( 1.3.6.1.4.1.19414.2.1.603
   NAME 'cyrus-imap'
   EQUALITY booleanMatch
-  SYNTAX 1.3.6.1.4.1.1466.115.121.1.7 
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
   SINGLE-VALUE )
 
 # enable legacy pop3
@@ -463,7 +463,7 @@ attributetype ( 1.3.6.1.4.1.19414.2.1.605
 #  SUBSTR caseIgnoreIA5SubstringsMatch
 #  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26{256} )
 
-# enable secure imap 
+# enable secure imap
 attributetype ( 1.3.6.1.4.1.19414.2.1.606
   NAME 'cyrus-imaps'
   EQUALITY booleanMatch
@@ -481,7 +481,7 @@ attributetype ( 1.3.6.1.4.1.19414.2.1.608
   EQUALITY booleanMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.7 )
 
-# installation wide percentage which determines when to send a 
+# installation wide percentage which determines when to send a
 # warning to the user
 attributetype ( 1.3.6.1.4.1.19414.2.1.609
   NAME 'cyrus-quotawarn'
@@ -627,29 +627,29 @@ objectclass ( 1.3.6.1.4.1.19414.2.2.1
         uid $
         userPassword ) )
 
-# public folders are typically visible to everyone subscribed to 
+# public folders are typically visible to everyone subscribed to
 # the server without the need for an extra login. Subfolders are
 # defined using the hiarchy seperator '/' e.g. "sf/sub1". Please note
-# that the term public folder is prefered to shared folder because 
+# that the term public folder is prefered to shared folder because
 # normal user mailboxes can also share folders using acls.
-objectclass ( 1.3.6.1.4.1.19414.2.2.9 
+objectclass ( 1.3.6.1.4.1.19414.2.2.9
   NAME 'kolabSharedFolder'
   DESC 'Kolab public shared folder'
   SUP top AUXILIARY
   MUST cn
-  MAY ( acl $
-        alias $
+  MAY ( alias $
+#       acl $
         cyrus-userquota $
         kolabHomeServer $
         kolabFolderType $
         kolabDeleteflag ) )
 
-# kolabNamedObject is used as a plain node for the LDAP tree. 
-# In contrast to unix filesystem directories LDAP nodes can 
-# and often do also have contents/attributes. We use the 
-# kolabNamedObject in order to put some structure in the 
+# kolabNamedObject is used as a plain node for the LDAP tree.
+# In contrast to unix filesystem directories LDAP nodes can
+# and often do also have contents/attributes. We use the
+# kolabNamedObject in order to put some structure in the
 # LDAP directory tree.
-objectclass ( 1.3.6.1.4.1.5322.13.1.1 
+objectclass ( 1.3.6.1.4.1.5322.13.1.1
   NAME 'kolabNamedObject'
   SUP top STRUCTURAL
   MAY (cn $ ou) )
@@ -657,9 +657,9 @@ objectclass ( 1.3.6.1.4.1.5322.13.1.1
 # kolab account
 # we use an auxiliary in order to ease integration
 # with existing inetOrgPerson objects
-# Please note that userPassword is a may 
+# Please note that userPassword is a may
 # attribute in the schema but is mandatory for
-# Kolab 
+# Kolab
 objectclass ( 1.3.6.1.4.1.19414.3.2.2
   NAME 'kolabInetOrgPerson'
   DESC 'Kolab Internet Organizational Person'
@@ -690,7 +690,7 @@ objectclass ( 1.3.6.1.4.1.19414.3.2.2
         kolabComment ) )
 
 # kolab organization with country support
-objectclass ( 1.3.6.1.4.1.19414.3.2.3 
+objectclass ( 1.3.6.1.4.1.19414.3.2.3
   NAME 'kolabOrganization'
   DESC 'RFC2256: a Kolab organization'
   SUP organization STRUCTURAL
@@ -700,7 +700,7 @@ objectclass ( 1.3.6.1.4.1.19414.3.2.3
         alias ) )
 
 # kolab organizational unit with country support
-objectclass ( 1.3.6.1.4.1.19414.3.2.4 
+objectclass ( 1.3.6.1.4.1.19414.3.2.4
   NAME 'kolabOrganizationalUnit'
   DESC 'a Kolab organizational unit'
   SUP organizationalUnit STRUCTURAL
@@ -709,7 +709,7 @@ objectclass ( 1.3.6.1.4.1.19414.3.2.4
         kolabDeleteflag $
         alias ) )
 
-# kolab groupOfNames with extra kolabDeleteflag and the required 
+# kolab groupOfNames with extra kolabDeleteflag and the required
 # attribute mail.
 # The mail attribute for kolab objects of the type kolabGroupOfNames
 # is not arbitrary but MUST be a single attribute of the form
