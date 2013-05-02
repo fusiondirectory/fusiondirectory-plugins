@@ -142,8 +142,13 @@ class simpleSecurityObject extends simplePlugin
       'plDescription' => _('Simple security object'),
       'plSelfModify'  => FALSE,
       'plCategory'    => array('dsa'),
-      'plObjectType'  => array('simpleSecurityObject' => array('name'  => _('Simple security object'),
-                                                              'filter'  => 'objectClass=simpleSecurityObject')),
+      'plObjectType'  => array('simpleSecurityObject' => array(
+        'name'        => _('Simple security object'),
+        'filter'      => 'objectClass=simpleSecurityObject',
+        'aclCategory' => 'dsa',
+        'ou'          => get_ou('dsaRDN'),
+        'icon'        => 'plugins/dsa/images/iconMini.png'
+      )),
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
