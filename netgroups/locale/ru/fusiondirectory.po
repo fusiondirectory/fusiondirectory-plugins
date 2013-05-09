@@ -1,250 +1,158 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
-"POT-Creation-Date: 2013-03-24 15:12+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-05-09 19:18+0200\n"
 "PO-Revision-Date: 2013-03-24 15:00+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Russian (http://www.transifex.com/projects/p/FusionDirectory/language/ru/)\n"
+"Language-Team: Russian (http://www.transifex.com/projects/p/FusionDirectory/"
+"language/ru/)\n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ru\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: admin/netgroups/netgroup-filter.tpl:3
-#: admin/netgroups/memberNisnetgroupSelect/memberNisnetgroup-filter.tpl:3
-#: admin/netgroups/tripleSelect/triple-filter.tpl:3
-msgid "Filter"
-msgstr "Фильтр"
-
-#: admin/netgroups/netgroup-filter.tpl:11
-msgid "Show NIS Netgroups"
+#: config/netgroups/class_netgroupConfig.inc:28
+msgid "Netgroup configuration"
 msgstr ""
 
-#: admin/netgroups/netgroup-filter.tpl:19
-#: admin/netgroups/memberNisnetgroupSelect/memberNisnetgroup-filter.tpl:17
-#: admin/netgroups/tripleSelect/triple-filter.tpl:21
-#: admin/netgroups/class_netgroup.inc:654
-#: admin/netgroups/class_netgroup.inc:666
-#: admin/netgroups/class_netgroup.inc:668
-#: admin/netgroups/class_netgroup.inc:763 admin/netgroups/netgroup-list.xml:41
-msgid "Name"
-msgstr "Фамилия"
+#: config/netgroups/class_netgroupConfig.inc:29
+msgid "FusionDirectory netgroup plugin configuration"
+msgstr ""
 
-#: admin/netgroups/memberNisnetgroupSelect/memberNisnetgroup-list.tpl:13
-#: admin/netgroups/tripleSelect/triple-list.tpl:13
-#: admin/netgroups/class_netgroup.inc:765 admin/netgroups/netgroup-list.tpl:13
-#: admin/netgroups/generic.tpl:39
-msgid "Base"
-msgstr "Ветка"
+#: config/netgroups/class_netgroupConfig.inc:42
+#, fuzzy
+msgid "LDAP tree"
+msgstr "Ошибка LDAP"
+
+#: config/netgroups/class_netgroupConfig.inc:45
+msgid "Netgroup RDN"
+msgstr ""
+
+#: config/netgroups/class_netgroupConfig.inc:45
+msgid "Branch in which netgroups will be stored"
+msgstr ""
+
+#: personal/netgroups/class_netgroupMembership.inc:85
+#: admin/systems/netgroups/class_netgroupSystem.inc:26
+#: admin/netgroups/memberNisnetgroupSelect/memberNisnetgroup-list.xml:14
+#: admin/netgroups/class_netgroup.inc:55
+msgid "NIS Netgroup"
+msgstr ""
+
+#: personal/netgroups/class_netgroupMembership.inc:86
+#: admin/systems/netgroups/class_netgroupSystem.inc:27
+msgid "NIS Netgroup member"
+msgstr ""
+
+#: personal/netgroups/class_netgroupMembership.inc:103
+msgid "Member of the following NIS Netgroups  "
+msgstr ""
+
+#: personal/netgroups/class_netgroupMembership.inc:106
+msgid "NIS netgroup membership"
+msgstr ""
 
 #: admin/netgroups/memberNisnetgroupSelect/memberNisnetgroup-list.xml:10
 msgid "Please select the desired NIS Netgroups"
 msgstr ""
 
-#: admin/netgroups/memberNisnetgroupSelect/memberNisnetgroup-list.xml:14
-#: admin/netgroups/tripleSelect/triple-list.xml:14
-#: admin/netgroups/class_netgroup.inc:475
-#: admin/netgroups/class_netgroup.inc:760 admin/netgroups/netgroup-list.xml:15
-#: admin/netgroups/netgroup-list.xml:79
-#: admin/systems/netgroups/class_netgroupSystem.inc:29
-#: admin/systems/netgroups/class_netgroupSystem.inc:305
-#: personal/netgroups/class_netgroupAccount.inc:359
-msgid "NIS Netgroup"
-msgstr ""
-
 #: admin/netgroups/memberNisnetgroupSelect/memberNisnetgroup-list.xml:40
-#: admin/netgroups/tripleSelect/triple-list.xml:65
 msgid "Common name"
 msgstr ""
 
 #: admin/netgroups/memberNisnetgroupSelect/memberNisnetgroup-list.xml:48
-#: admin/netgroups/tripleSelect/triple-list.xml:89
-#: admin/netgroups/class_netgroup.inc:764 admin/netgroups/netgroup-list.xml:49
-#: admin/netgroups/generic.tpl:24
+#: admin/netgroups/class_netgroup.inc:76
 msgid "Description"
 msgstr "Описание"
 
-#: admin/netgroups/tripleSelect/triple-filter.tpl:11
-msgid "Show Users"
-msgstr ""
-
-#: admin/netgroups/tripleSelect/triple-filter.tpl:12
-msgid "Show Hosts"
-msgstr ""
-
-#: admin/netgroups/tripleSelect/triple-filter.tpl:13
-msgid "Show NIS Netgroup"
-msgstr ""
-
-#: admin/netgroups/tripleSelect/triple-list.xml:10
-msgid "Please select the desired entries"
-msgstr ""
-
-#: admin/netgroups/tripleSelect/triple-list.xml:22
-#: admin/netgroups/class_netgroup.inc:463
-#: admin/netgroups/class_netgroup.inc:465
-msgid "User"
-msgstr "Пользователь"
-
-#: admin/netgroups/tripleSelect/triple-list.xml:30
-#: admin/netgroups/class_netgroup.inc:471
-msgid "Host"
-msgstr ""
-
-#: admin/netgroups/tripleSelect/triple-list.xml:38
-#: admin/netgroups/class_netgroup.inc:473
-msgid "Network Device"
-msgstr ""
-
-#: admin/netgroups/tripleSelect/triple-list.xml:73
-msgid "Login"
-msgstr "Имя пользователя"
-
-#: admin/netgroups/tripleSelect/triple-list.xml:81
-msgid "Surname"
-msgstr ""
-
-#: admin/netgroups/class_netgroup.inc:314
-#: admin/netgroups/class_netgroup.inc:541
-msgid "Error"
-msgstr ""
-
-#: admin/netgroups/class_netgroup.inc:315
-#, php-format
-msgid "Add CN/UID '%s' to NIS netgroup '%s' failed: cannot find object!"
-msgstr ""
-
-#: admin/netgroups/class_netgroup.inc:442
-msgid "! unknown UID/CN"
-msgstr ""
-
-#: admin/netgroups/class_netgroup.inc:467
-msgid "Server"
-msgstr "Сервер"
-
-#: admin/netgroups/class_netgroup.inc:469
-msgid "Workstation"
-msgstr "Рабочая станция"
-
-#: admin/netgroups/class_netgroup.inc:486
-#: admin/netgroups/class_netgroup.inc:631
-#: admin/systems/netgroups/class_netgroupSystem.inc:277
-#: personal/netgroups/class_netgroupAccount.inc:288
-msgid "LDAP error"
-msgstr "Ошибка LDAP"
-
-#: admin/netgroups/class_netgroup.inc:737
-msgid "NIS Netgroup Error"
-msgstr ""
-
-#: admin/netgroups/class_netgroup.inc:737
-msgid "Error: There are a loop with NIS Netgroups"
-msgstr ""
-
-#: admin/netgroups/class_netgroup.inc:739
-msgid "IMPORTANT: Check the members of NIS Netgroup"
-msgstr ""
-
-#: admin/netgroups/class_netgroup.inc:756
-msgid "Generic"
-msgstr "Общее"
-
-#: admin/netgroups/class_netgroup.inc:757
-msgid "Generic NIS Netgroup settings"
-msgstr ""
-
-#: admin/netgroups/class_netgroup.inc:759
-#: admin/netgroups/class_netgroupManagement.inc:37
+#: admin/netgroups/class_netgroupManagement.inc:35
+#: admin/netgroups/class_netgroup.inc:53
 msgid "NIS Netgroups"
 msgstr ""
 
-#: admin/netgroups/class_netgroup.inc:766 admin/netgroups/generic.tpl:72
-#: admin/systems/netgroups/class_netgroupSystem.inc:312
-#: personal/netgroups/class_netgroupAccount.inc:366
-msgid "NIS Netgroup members"
-msgstr ""
-
-#: admin/netgroups/class_netgroupManagement.inc:38
+#: admin/netgroups/class_netgroupManagement.inc:36
 msgid "NIS Netgroup management"
 msgstr ""
 
-#: admin/netgroups/netgroup-list.xml:11
-msgid "List of NIS Netgroups"
+#: admin/netgroups/class_netgroup.inc:50
+msgid "Generic"
+msgstr "Общее"
+
+#: admin/netgroups/class_netgroup.inc:51
+msgid "Generic NIS Netgroup settings"
 msgstr ""
 
-#: admin/netgroups/netgroup-list.xml:57
-msgid "Properties"
-msgstr "Свойства"
+#: admin/netgroups/class_netgroup.inc:70
+#, fuzzy
+msgid "Informations"
+msgstr "Рабочая станция"
 
-#: admin/netgroups/netgroup-list.xml:62
-msgid "Actions"
-msgstr "Действия"
+#: admin/netgroups/class_netgroup.inc:73
+#: admin/netgroups/memberNisnetgroupSelect/memberNisnetgroup-filter.tpl.c:5
+msgid "Name"
+msgstr "Фамилия"
 
-#: admin/netgroups/netgroup-list.xml:73
-msgid "Create"
-msgstr "Создать"
-
-#: admin/netgroups/netgroup-list.xml:91
-msgid "Edit"
-msgstr "Изменить"
-
-#: admin/netgroups/netgroup-list.xml:98
-msgid "Remove"
-msgstr "Удалить"
-
-#: admin/netgroups/netgroup-list.xml:130
-msgid "Edit NIS Netgroup"
+#: admin/netgroups/class_netgroup.inc:73
+msgid "Name of this NIS netgroup"
 msgstr ""
 
-#: admin/netgroups/netgroup-list.xml:143
-msgid "Remove NIS Netgroup"
+#: admin/netgroups/class_netgroup.inc:76
+msgid "Description of this NIS netgroup"
 msgstr ""
 
-#: admin/netgroups/generic.tpl:11
-msgid "NIS Netgroup name"
+#: admin/netgroups/class_netgroup.inc:82
+msgid "User members"
 msgstr ""
 
-#: admin/netgroups/generic.tpl:14
-msgid "Multiple edit"
+#: admin/netgroups/class_netgroup.inc:89 admin/netgroups/class_netgroup.inc:98
+#: admin/netgroups/class_netgroup.inc:105
+msgid "NIS netgroup members"
 msgstr ""
 
-#: admin/netgroups/generic.tpl:17
-msgid "Name of the NIS Netgroup"
+#: admin/netgroups/class_netgroup.inc:95
+msgid "System members"
 msgstr ""
 
-#: admin/netgroups/generic.tpl:28
-msgid "Descriptive text for this NIS Netgroup"
+#: admin/netgroups/class_netgroup.inc:102
+msgid "Netgroup members"
 msgstr ""
 
-#: admin/netgroups/generic.tpl:79
-#: admin/systems/netgroups/netgroupSystem.tpl:24
-#: personal/netgroups/netgroupAccount.tpl:24
-msgid "In all NIS Netgroups"
-msgstr ""
+#: admin/netgroups/memberNisnetgroupSelect/memberNisnetgroup-filter.tpl.c:2
+msgid "Filter"
+msgstr "Фильтр"
 
-#: admin/netgroups/generic.tpl:82
-#: admin/systems/netgroups/netgroupSystem.tpl:27
-#: personal/netgroups/netgroupAccount.tpl:27
-msgid "Not in all NIS Netgroups"
-msgstr ""
+#: admin/netgroups/memberNisnetgroupSelect/memberNisnetgroup-list.tpl.c:2
+msgid "Base"
+msgstr "Ветка"
 
-#: admin/systems/netgroups/netgroupSystem.tpl:17
-#: personal/netgroups/netgroupAccount.tpl:17
-msgid "Member of the following NIS Netgroups"
-msgstr ""
+#~ msgid "User"
+#~ msgstr "Пользователь"
 
-#: admin/systems/netgroups/class_netgroupSystem.inc:30
-msgid "Choose NIS Netgroups for the host"
-msgstr ""
+#~ msgid "Login"
+#~ msgstr "Имя пользователя"
 
-#: admin/systems/netgroups/class_netgroupSystem.inc:306
-#: personal/netgroups/class_netgroupAccount.inc:360
-msgid "NIS Netgroup member"
-msgstr ""
+#~ msgid "Server"
+#~ msgstr "Сервер"
+
+#~ msgid "Properties"
+#~ msgstr "Свойства"
+
+#~ msgid "Actions"
+#~ msgstr "Действия"
+
+#~ msgid "Create"
+#~ msgstr "Создать"
+
+#~ msgid "Edit"
+#~ msgstr "Изменить"
+
+#~ msgid "Remove"
+#~ msgstr "Удалить"

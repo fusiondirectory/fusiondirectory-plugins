@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Benoit Mortier <benoit.mortier@opensides.be>, 2010
 # fusiondirectory <contact@fusiondirectory.org>, 2013
@@ -11,113 +11,17 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
-"POT-Creation-Date: 2013-03-24 15:12+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-05-09 19:19+0200\n"
 "PO-Revision-Date: 2013-04-18 10:30+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory/language/fr/)\n"
+"Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory/"
+"language/fr/)\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-
-#: admin/systems/services/rsyslog/class_serviceSyslog.inc:30
-#: admin/systems/services/rsyslog/class_serviceSyslog.inc:31
-msgid "Logs service"
-msgstr "Service de Journaux systèmes"
-
-#: admin/systems/services/rsyslog/class_serviceSyslog.inc:31
-msgid "Services"
-msgstr "Services"
-
-#: admin/systems/services/rsyslog/class_serviceSyslog.inc:41
-msgid "Logging service"
-msgstr "Service de journaux systèmes"
-
-#: admin/systems/services/rsyslog/class_serviceSyslog.inc:44
-msgid "Driver"
-msgstr "Pilote"
-
-#: admin/systems/services/rsyslog/class_serviceSyslog.inc:44
-msgid "Driver to use to contact this database."
-msgstr "Driver pour se connecter à cette base de données"
-
-#: admin/systems/services/rsyslog/class_serviceSyslog.inc:48
-msgid "Database"
-msgstr "Base de données"
-
-#: admin/systems/services/rsyslog/class_serviceSyslog.inc:48
-msgid "Database in which syslog stores its informations"
-msgstr "Base de données dans laquelle syslog stocke ses informations"
-
-#: admin/systems/services/rsyslog/class_serviceSyslog.inc:53
-msgid "Database user"
-msgstr "Utilisateur de la base de données"
-
-#: admin/systems/services/rsyslog/class_serviceSyslog.inc:53
-msgid "Database administrator"
-msgstr "Administrateur de la base de données"
-
-#: admin/systems/services/rsyslog/class_serviceSyslog.inc:58
-msgid "Password"
-msgstr "Mot de passe"
-
-#: admin/systems/services/rsyslog/class_serviceSyslog.inc:58
-msgid "Password for the database administrator"
-msgstr "Mot de passe administrateur pour la base de donnés"
-
-#: addons/rsyslog/rSyslog.tpl:2
-msgid "Filter"
-msgstr "Filtre"
-
-#: addons/rsyslog/rSyslog.tpl:7
-msgid "Server"
-msgstr "Serveur"
-
-#: addons/rsyslog/rSyslog.tpl:15
-msgid "Host"
-msgstr "Hôte"
-
-#: addons/rsyslog/rSyslog.tpl:23 addons/rsyslog/rSyslog.tpl:90
-msgid "Severity"
-msgstr "Sévérité"
-
-#: addons/rsyslog/rSyslog.tpl:32
-msgid "From"
-msgstr "Depuis"
-
-#: addons/rsyslog/rSyslog.tpl:42
-msgid "till"
-msgstr "jusqu'au"
-
-#: addons/rsyslog/rSyslog.tpl:52 addons/rsyslog/rSyslog.tpl:56
-msgid "Search"
-msgstr "Chercher"
-
-#: addons/rsyslog/rSyslog.tpl:62 addons/rsyslog/class_rsyslog.inc:347
-msgid "Error"
-msgstr "Erreur"
-
-#: addons/rsyslog/rSyslog.tpl:70
-msgid "Date"
-msgstr "Date"
-
-#: addons/rsyslog/rSyslog.tpl:75
-msgid "Source"
-msgstr "Emetteur"
-
-#: addons/rsyslog/rSyslog.tpl:80
-msgid "Header"
-msgstr "Entête"
-
-#: addons/rsyslog/rSyslog.tpl:85
-msgid "Facility"
-msgstr "Facilité"
-
-#: addons/rsyslog/rSyslog.tpl:95
-msgid "Message"
-msgstr "Message"
 
 #: addons/rsyslog/main.inc:48 addons/rsyslog/class_rsyslog.inc:47
 #: addons/rsyslog/class_rsyslog.inc:53
@@ -157,6 +61,10 @@ msgstr "Alerte"
 #: addons/rsyslog/class_rsyslog.inc:346
 msgid "Critical"
 msgstr "Critique"
+
+#: addons/rsyslog/class_rsyslog.inc:347 addons/rsyslog/rSyslog.tpl.c:26
+msgid "Error"
+msgstr "Erreur"
 
 #: addons/rsyslog/class_rsyslog.inc:348
 msgid "Warning"
@@ -238,3 +146,96 @@ msgstr "Avertissement du Journaux systèmes"
 #: addons/rsyslog/class_rsyslog.inc:378
 msgid "Clock"
 msgstr "Heure"
+
+#: admin/systems/services/rsyslog/class_serviceSyslog.inc:30
+#: admin/systems/services/rsyslog/class_serviceSyslog.inc:31
+msgid "Logs service"
+msgstr "Service de Journaux systèmes"
+
+#: admin/systems/services/rsyslog/class_serviceSyslog.inc:31
+msgid "Services"
+msgstr "Services"
+
+#: admin/systems/services/rsyslog/class_serviceSyslog.inc:41
+msgid "Logging service"
+msgstr "Service de journaux systèmes"
+
+#: admin/systems/services/rsyslog/class_serviceSyslog.inc:44
+msgid "Driver"
+msgstr "Pilote"
+
+#: admin/systems/services/rsyslog/class_serviceSyslog.inc:44
+msgid "Driver to use to contact this database."
+msgstr "Driver pour se connecter à cette base de données"
+
+#: admin/systems/services/rsyslog/class_serviceSyslog.inc:48
+msgid "Database"
+msgstr "Base de données"
+
+#: admin/systems/services/rsyslog/class_serviceSyslog.inc:48
+msgid "Database in which syslog stores its informations"
+msgstr "Base de données dans laquelle syslog stocke ses informations"
+
+#: admin/systems/services/rsyslog/class_serviceSyslog.inc:53
+msgid "Database user"
+msgstr "Utilisateur de la base de données"
+
+#: admin/systems/services/rsyslog/class_serviceSyslog.inc:53
+msgid "Database administrator"
+msgstr "Administrateur de la base de données"
+
+#: admin/systems/services/rsyslog/class_serviceSyslog.inc:58
+msgid "Password"
+msgstr "Mot de passe"
+
+#: admin/systems/services/rsyslog/class_serviceSyslog.inc:58
+msgid "Password for the database administrator"
+msgstr "Mot de passe administrateur pour la base de donnés"
+
+#: addons/rsyslog/rSyslog.tpl.c:2
+msgid "Filter"
+msgstr "Filtre"
+
+#: addons/rsyslog/rSyslog.tpl.c:5
+msgid "Server"
+msgstr "Serveur"
+
+#: addons/rsyslog/rSyslog.tpl.c:8
+msgid "Host"
+msgstr "Hôte"
+
+#: addons/rsyslog/rSyslog.tpl.c:11 addons/rsyslog/rSyslog.tpl.c:41
+msgid "Severity"
+msgstr "Sévérité"
+
+#: addons/rsyslog/rSyslog.tpl.c:14
+msgid "From"
+msgstr "Depuis"
+
+#: addons/rsyslog/rSyslog.tpl.c:17
+msgid "till"
+msgstr "jusqu'au"
+
+#: addons/rsyslog/rSyslog.tpl.c:20 addons/rsyslog/rSyslog.tpl.c:23
+msgid "Search"
+msgstr "Chercher"
+
+#: addons/rsyslog/rSyslog.tpl.c:29
+msgid "Date"
+msgstr "Date"
+
+#: addons/rsyslog/rSyslog.tpl.c:32
+msgid "Source"
+msgstr "Emetteur"
+
+#: addons/rsyslog/rSyslog.tpl.c:35
+msgid "Header"
+msgstr "Entête"
+
+#: addons/rsyslog/rSyslog.tpl.c:38
+msgid "Facility"
+msgstr "Facilité"
+
+#: addons/rsyslog/rSyslog.tpl.c:44
+msgid "Message"
+msgstr "Message"

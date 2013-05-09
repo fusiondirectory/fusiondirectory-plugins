@@ -1,122 +1,393 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # pavelb <pavel.borecki@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
-"POT-Creation-Date: 2013-03-24 15:11+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-05-09 19:18+0200\n"
 "PO-Revision-Date: 2013-03-24 15:00+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/FusionDirectory/language/cs_CZ/)\n"
+"Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/"
+"FusionDirectory/language/cs_CZ/)\n"
+"Language: cs_CZ\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: cs_CZ\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
-#: admin/groups/mail/mail_admins.tpl:4
-msgid "Folder administrators"
-msgstr "správci složek"
+#: config/class_mailPluginConfig.inc:28 personal/mail/class_mailAccount.inc:74
+#: admin/groups/mail/class_groupMail.inc:46
+#: admin/ogroups/mail/class_mailogroup.inc:184
+#: admin/ogroups/mail/paste_mail.tpl.c:2
+msgid "Mail"
+msgstr "e-mail"
 
-#: admin/groups/mail/mail_admins.tpl:24
-msgid "Select a specific department"
-msgstr "vyberte konkrétní oddělení"
+#: config/class_mailPluginConfig.inc:29
+msgid "Mail plugin configuration"
+msgstr ""
 
-#: admin/groups/mail/mail_admins.tpl:30
-msgid "Choose"
-msgstr "zvolit"
+#: config/class_mailPluginConfig.inc:42 personal/mail/class_mailAccount.inc:75
+msgid "Mail settings"
+msgstr "nastavení e-mailu"
 
-#: admin/groups/mail/class_groupMail.inc:138
-#: admin/groups/mail/class_groupMail.inc:145
-#: admin/groups/mail/class_groupMail.inc:152
-#: admin/groups/mail/class_groupMail.inc:159
-#: admin/groups/mail/class_groupMail.inc:164
-#: admin/groups/mail/class_groupMail.inc:167
-#: admin/groups/mail/class_groupMail.inc:580
-#: admin/groups/mail/class_groupMail.inc:584
-#: admin/groups/mail/class_groupMail.inc:588
-#: admin/groups/mail/class_groupMail.inc:810
-#: admin/groups/mail/class_groupMail.inc:814
-#: admin/groups/mail/class_groupMail.inc:818
-#: admin/groups/mail/class_groupMail.inc:827
+#: config/class_mailPluginConfig.inc:45
+msgid "Mail method"
+msgstr "systém správy elektronické pošty"
+
+#: config/class_mailPluginConfig.inc:46
+msgid ""
+"Mail method the setup should use to communicate with a possible mail server. "
+"Leave this undefined if your mail method does not match the predefined ones."
+msgstr ""
+
+#: config/class_mailPluginConfig.inc:51
+msgid "Account identification attribute"
+msgstr "atribut, dle kterého budou rozlišovány účty"
+
+#: config/class_mailPluginConfig.inc:52
+msgid "Which attribute will be used to create accounts."
+msgstr ""
+
+#: config/class_mailPluginConfig.inc:57
+msgid "Mail user template"
+msgstr ""
+
+#: config/class_mailPluginConfig.inc:58
+msgid "Override the user account creation syntax."
+msgstr ""
+
+#: config/class_mailPluginConfig.inc:62
+msgid "Mail folder template"
+msgstr ""
+
+#: config/class_mailPluginConfig.inc:63
+msgid "Override the methods default account creation syntax."
+msgstr ""
+
+#: config/class_mailPluginConfig.inc:67
+msgid "Use cyrus UNIX style"
+msgstr ""
+
+#: config/class_mailPluginConfig.inc:68
+msgid ""
+"Determines if 'foo/bar' or 'foo.bar' should be uses as namespaces in IMAP."
+msgstr ""
+
+#: config/class_mailPluginConfig.inc:72
+msgid "Delete mailbox on account deletion"
+msgstr ""
+
+#: config/class_mailPluginConfig.inc:73
+msgid ""
+"Determines if the mailbox should be removed from your IMAP server after the "
+"account is deleted in LDAP."
+msgstr ""
+
+#: config/class_mailPluginConfig.inc:78
+msgid "Cyrus autocreate folders"
+msgstr ""
+
+#: config/class_mailPluginConfig.inc:79
+msgid ""
+"List of personal IMAP folders that should be created along initial account "
+"creation."
+msgstr ""
+
+#: config/class_mailPluginConfig.inc:84
+msgid "IMAP timeout"
+msgstr ""
+
+#: config/class_mailPluginConfig.inc:85
+msgid "Sets the connection timeout for imap actions."
+msgstr ""
+
+#: config/class_mailPluginConfig.inc:90
+msgid "Shared prefix"
+msgstr ""
+
+#: config/class_mailPluginConfig.inc:91
+msgid "Prefix to add for mail shared folders."
+msgstr ""
+
+#: config/class_mailPluginConfig.inc:109
+#: personal/mail/class_mailAccount.inc:93
+#: admin/groups/mail/class_groupMail.inc:80
+#: admin/systems/services/postfix/class_servicePostfix.inc:48
+msgid "Generic"
+msgstr "obecné"
+
+#: personal/mail/mailAddressSelect/selectMailAddress-list.xml:10
+msgid "Please select the desired entries"
+msgstr "vyberte prosím požadované položky"
+
+#: personal/mail/mailAddressSelect/selectMailAddress-list.xml:14
+msgid "User"
+msgstr "uživatel"
+
+#: personal/mail/mailAddressSelect/selectMailAddress-list.xml:22
+msgid "Group"
+msgstr "skupina"
+
+#: personal/mail/mailAddressSelect/selectMailAddress-list.xml:48
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:119
+#: personal/mail/mailAddressSelect/selectMailAddress-filter.tpl.c:11
+msgid "Name"
+msgstr "název"
+
+#: personal/mail/mailAddressSelect/selectMailAddress-list.xml:56
+#: admin/ogroups/mail/class_mailogroup.inc:106
+#: admin/ogroups/mail/class_mailogroup.inc:113
+#: admin/ogroups/mail/class_mailogroup.inc:190
+msgid "Mail address"
+msgstr "e-mailová adresa"
+
+#: personal/mail/class_mail-methods.inc:156
+#: personal/mail/class_mail-methods.inc:501
+msgid "Configuration error"
+msgstr "chyba v nastavení"
+
+#: personal/mail/class_mail-methods.inc:157
+#, php-format
+msgid "The configured mail attribute '%s' is unsupported!"
+msgstr "Nastavený atribut zprávy '%s' není podporován!"
+
+#: personal/mail/class_mail-methods.inc:502
+#, php-format
+msgid "Mail method '%s' is unknown!"
+msgstr "Neznámý systém správy e-mailů '%s'!"
+
+#: personal/mail/class_mail-methods.inc:727
+#: personal/mail/class_mail-methods.inc:728
+msgid "None"
+msgstr "žádné"
+
+#: personal/mail/class_mail-methods.inc:817
+msgid "Unknown"
+msgstr "neznámé"
+
+#: personal/mail/class_mail-methods.inc:819
+msgid "Unlimited"
+msgstr "neomezené"
+
 #: personal/mail/class_mailAccount.inc:48
-#: personal/mail/class_mailAccount.inc:248
-#: personal/mail/class_mailAccount.inc:252
-#: personal/mail/class_mailAccount.inc:255
+#: personal/mail/class_mailAccount.inc:259
+#: personal/mail/class_mailAccount.inc:263
+#: personal/mail/class_mailAccount.inc:266
+#: personal/mail/class_mailAccount.inc:354
+#: personal/mail/class_mailAccount.inc:358
+#: personal/mail/class_mailAccount.inc:362
 msgid "Mail error"
 msgstr "chyba e-mailu"
 
-#: admin/groups/mail/class_groupMail.inc:138
 #: personal/mail/class_mailAccount.inc:48
 #, php-format
 msgid "Cannot read quota settings: %s"
 msgstr "nelze načíst nastavení kvóty: %s"
 
-#: admin/groups/mail/class_groupMail.inc:145
-#: personal/mail/class_mailAccount.inc:248
+#: personal/mail/class_mailAccount.inc:58
+msgid "Quota usage"
+msgstr ""
+
+#: personal/mail/class_mailAccount.inc:59
+msgid "Part of the quota which is used"
+msgstr ""
+
+#: personal/mail/class_mailAccount.inc:97
+#: admin/groups/mail/class_groupMail.inc:87 admin/ogroups/mail/mail.tpl.c:5
+msgid "Primary address"
+msgstr "hlavní adresa"
+
+#: personal/mail/class_mailAccount.inc:97
+msgid "Primary mail address"
+msgstr ""
+
+#: personal/mail/class_mailAccount.inc:101
+#: admin/groups/mail/class_groupMail.inc:91
+msgid "Server"
+msgstr "server"
+
+#: personal/mail/class_mailAccount.inc:101
+msgid "Specify the mail server where the user will be hosted on"
+msgstr "Zvolte poštovní server, na kterém bude uživatel mít svůj účet."
+
+#: personal/mail/class_mailAccount.inc:106
+msgid "Quota size"
+msgstr "kvóta objemu dat"
+
+#: personal/mail/class_mailAccount.inc:113
+msgid "Other addresses and redirections"
+msgstr ""
+
+#: personal/mail/class_mailAccount.inc:118
+#: admin/groups/mail/class_groupMail.inc:97
+msgid "Alternative addresses"
+msgstr "alternativní adresy"
+
+#: personal/mail/class_mailAccount.inc:118
+msgid "List of alternative mail addresses"
+msgstr "seznam alternativních e-mailových adres"
+
+#: personal/mail/class_mailAccount.inc:123
+msgid "Forward messages to"
+msgstr "přesměrovat zprávy na"
+
+#: personal/mail/class_mailAccount.inc:123
+msgid "Addresses to which messages should be forwarded"
+msgstr ""
+
+#: personal/mail/class_mailAccount.inc:129
+#: personal/mail/class_mailAccount.inc:148
+#: personal/mail/sieve/class_sieveManagement.inc:504
+#: personal/mail/sieve/class_sieveManagement.inc:722
+#: personal/mail/sieve/templates/object_container.tpl.c:56
+#: personal/mail/sieve/templates/element_vacation.tpl.c:17
+msgid "Vacation message"
+msgstr "zpráva „jsem na dovolené“"
+
+#: personal/mail/class_mailAccount.inc:132
+msgid "Activate vacation message"
+msgstr "aktivovat zprávu „jsem na dovolené“"
+
+#: personal/mail/class_mailAccount.inc:133
+msgid ""
+"Select to automatically response with the vacation message defined below"
+msgstr ""
+"zaškrtněte pro automatické odpovídání níže uvedenou zprávou „jsem na "
+"dovolené“"
+
+#: personal/mail/class_mailAccount.inc:138
+msgid "from"
+msgstr "od"
+
+#: personal/mail/class_mailAccount.inc:143
+msgid "till"
+msgstr "dokud"
+
+#: personal/mail/class_mailAccount.inc:154
+msgid "Spam options"
+msgstr ""
+
+#: personal/mail/class_mailAccount.inc:157
+msgid "Move mails depending on spam level"
+msgstr ""
+
+#: personal/mail/class_mailAccount.inc:162
+msgid "Minimum spam level"
+msgstr ""
+
+#: personal/mail/class_mailAccount.inc:162
+msgid "Spam level above which a mail will be moved"
+msgstr ""
+
+#: personal/mail/class_mailAccount.inc:167
+msgid "Move spam to folder"
+msgstr ""
+
+#: personal/mail/class_mailAccount.inc:167
+msgid "Folder in which spam will be moved"
+msgstr ""
+
+#: personal/mail/class_mailAccount.inc:172
+msgid "Reject mail depending on their size"
+msgstr ""
+
+#: personal/mail/class_mailAccount.inc:172
+msgid "Messages bigger than the chosen size will be rejected"
+msgstr ""
+
+#: personal/mail/class_mailAccount.inc:177
+msgid "Minimum size to reject a mail (MB)"
+msgstr ""
+
+#: personal/mail/class_mailAccount.inc:193
+msgid "Advanced mail options"
+msgstr "pokročilé volby e-mailu"
+
+#: personal/mail/class_mailAccount.inc:197
+msgid "Use custom sieve script"
+msgstr "použít vlastní skript Sieve"
+
+#: personal/mail/class_mailAccount.inc:197
+msgid "disables all Mail options!"
+msgstr "zakáže všechny volby e-mailu!"
+
+#: personal/mail/class_mailAccount.inc:198
+msgid "Use your sieve script with personnal customization"
+msgstr ""
+
+#: personal/mail/class_mailAccount.inc:203
+msgid "User is only allowed to send and receive local mails"
+msgstr "uživateli je dovoleno přijímat a odesílat pouze místní poštu"
+
+#: personal/mail/class_mailAccount.inc:204
+msgid "Select if user can only send and receive inside his own domain"
+msgstr ""
+"zvolte, zda uživatel bude moci přijímat a odesílat pouze v rámci vlastní "
+"domény"
+
+#: personal/mail/class_mailAccount.inc:209
+msgid "No delivery to own mailbox"
+msgstr "nedoručovat do vlastní schránky"
+
+#: personal/mail/class_mailAccount.inc:210
+msgid "Select if you want to forward mails without getting own copies of them"
+msgstr ""
+"Zvolte, zda chcete přeposílat zprávy bez toho, abyste si ponechávali jejich "
+"kopie."
+
+#: personal/mail/class_mailAccount.inc:259
 #, php-format
 msgid "Cannot get list of mailboxes: %s"
 msgstr "Nezdařilo se získat seznam schránek: %s"
 
-#: admin/groups/mail/class_groupMail.inc:152
-#, php-format
-msgid "Cannot receive folder types: %s"
-msgstr "Nezdařilo se zjistit typy složky: %s"
-
-#: admin/groups/mail/class_groupMail.inc:159
-#, php-format
-msgid "Cannot receive folder permissions: %s"
-msgstr "Nezdařilo se zjistit práva na složce: %s"
-
-#: admin/groups/mail/class_groupMail.inc:164
-#: admin/groups/mail/class_groupMail.inc:580
-#: admin/groups/mail/class_groupMail.inc:810
-#: personal/mail/class_mailAccount.inc:252
+#: personal/mail/class_mailAccount.inc:263
+#: personal/mail/class_mailAccount.inc:354
 #, php-format
 msgid "Mail method cannot connect: %s"
 msgstr ""
 
-#: admin/groups/mail/class_groupMail.inc:167
-#: personal/mail/class_mailAccount.inc:255
+#: personal/mail/class_mailAccount.inc:266
 #, php-format
 msgid "Mailbox '%s' doesn't exists on mail server: %s"
 msgstr "Schránka '%s' neexistuje na poštovním serveru: %s"
 
-#: admin/groups/mail/class_groupMail.inc:302
-#: admin/groups/mail/class_groupMail.inc:304
-#: admin/groups/mail/class_groupMail.inc:305
-#: admin/groups/mail/class_groupMail.inc:310
-#: admin/groups/mail/class_groupMail.inc:312
-#: admin/groups/mail/class_groupMail.inc:313
-#: admin/groups/mail/class_groupMail.inc:865
-#: admin/groups/mail/class_groupMail.inc:980
-#: admin/ogroups/mail/paste_mail.tpl:4
-#: admin/ogroups/mail/class_mailogroup.inc:184
-#: config/class_mailPluginConfig.inc:28 personal/mail/class_mailAccount.inc:74
-msgid "Mail"
-msgstr "e-mail"
+#: personal/mail/class_mailAccount.inc:358
+#, php-format
+msgid "Cannot update mailbox: %s"
+msgstr "Nezdařilo se aktualizovat schránku: %s"
 
-#: admin/groups/mail/class_groupMail.inc:323
+#: personal/mail/class_mailAccount.inc:362
+#, php-format
+msgid "Cannot write quota settings: %s"
+msgstr "Nezdařilo se zapsat nastavení kvóty: %s"
+
+#: personal/mail/class_mailAccount.inc:376
+#, fuzzy
+msgid "Mail error saving sieve settings"
+msgstr "selhalo uložení skriptu Sieve"
+
+#: personal/mail/sieve/class_sieveManagement.inc:116
+#: personal/mail/sieve/class_sieveManagement.inc:244
+msgid "Parse failed"
+msgstr "analýza selhala"
+
+#: personal/mail/sieve/class_sieveManagement.inc:120
+#: personal/mail/sieve/class_sieveManagement.inc:248
+msgid "Parse successful"
+msgstr "analýza proběhla úspěšně"
+
+#: personal/mail/sieve/class_sieveManagement.inc:158
+#, php-format
 msgid ""
-"Remove shared folder from mail server database when entry gets removed in "
-"LDAP"
-msgstr "při odebírání položky z LDAPu odebrat také sdílenou složku z poštovního serveru"
+"The specified mail server '%s' does not exist within the FusionDirectory "
+"configuration."
+msgstr ""
+"Zadaný poštovní server '%s' není definován v nastavení FusionDirectory."
 
-#: admin/groups/mail/class_groupMail.inc:324
-msgid ""
-"Remove the shared folder and all its contents after saving this account"
-msgstr "po uložení tohoto účtu odebrat sdílenou složku (včetně veškerého jejího obsahu)"
-
-#: admin/groups/mail/class_groupMail.inc:368
-#: admin/groups/mail/class_groupMail.inc:392
-#: admin/groups/mail/class_groupMail.inc:398
-#: admin/groups/mail/class_groupMail.inc:424
-#: admin/groups/mail/class_groupMail.inc:430
-#: admin/groups/mail/class_groupMail.inc:444
 #: personal/mail/sieve/class_sieveManagement.inc:203
 #: personal/mail/sieve/class_sieveManagement.inc:208
 #: personal/mail/sieve/class_sieveManagement.inc:214
@@ -126,251 +397,515 @@ msgstr "po uložení tohoto účtu odebrat sdílenou složku (včetně veškeré
 msgid "Error"
 msgstr "chyba"
 
-#: admin/groups/mail/class_groupMail.inc:368
-msgid "Please select an entry!"
-msgstr "prosím vyberte (nějakou) položku!"
+#: personal/mail/sieve/class_sieveManagement.inc:203
+msgid "No script name specified!"
+msgstr "Nebyl zadán název skriptu!"
 
-#: admin/groups/mail/class_groupMail.inc:392
-#: admin/groups/mail/class_groupMail.inc:424
-#: admin/groups/mail/class_groupMail.inc:430
-#: admin/groups/mail/class_groupMail.inc:444
-#: admin/groups/mail/class_groupMail.inc:877
-#: admin/groups/mail/class_groupMail.inc:897
-#: admin/groups/mail/class_groupMail.inc:988
+#: personal/mail/sieve/class_sieveManagement.inc:208
+msgid "Please use only lowercase script names!"
+msgstr "V názvech skriptů prosím používejte pouze malá písmena!"
+
+#: personal/mail/sieve/class_sieveManagement.inc:214
+msgid "Please use only alphabetical characters in script names!"
+msgstr "V názvech skriptů prosím používejte pouze písmena a čísla!"
+
+#: personal/mail/sieve/class_sieveManagement.inc:220
+msgid "Script name already in use!"
+msgstr "Skript s takovým názvem již existuje!"
+
+#: personal/mail/sieve/class_sieveManagement.inc:304
+#: personal/mail/sieve/class_sieveManagement.inc:311
+#: personal/mail/sieve/class_sieveManagement.inc:347
+#: personal/mail/sieve/class_sieveManagement.inc:351
+#: personal/mail/sieve/class_sieveManagement.inc:400
+#: personal/mail/sieve/class_sieveManagement.inc:404
+#: personal/mail/sieve/class_sieveManagement.inc:435
+#: personal/mail/sieve/class_sieveManagement.inc:521
+#: personal/mail/sieve/class_sieveManagement.inc:772
+#: personal/mail/sieve/class_sieveManagement.inc:1032
+#: personal/mail/sieve/class_sieveManagement.inc:1045
+msgid "SIEVE error"
+msgstr "chyba Sieve"
+
+#: personal/mail/sieve/class_sieveManagement.inc:304
+#: personal/mail/sieve/class_sieveManagement.inc:347
+#: personal/mail/sieve/class_sieveManagement.inc:1032
+#, php-format
+msgid "Cannot log into SIEVE server: %s"
+msgstr "Nelze se přihlásit na Sieve server: %s"
+
+#: personal/mail/sieve/class_sieveManagement.inc:311
+#, php-format
+msgid "Cannot retrieve SIEVE script: %s"
+msgstr "Nedaří se získat skript Sieve: %s"
+
+#: personal/mail/sieve/class_sieveManagement.inc:351
+#, php-format
+msgid "Cannot remove SIEVE script: %s"
+msgstr "Nelze odebrat skript Sieve: %s"
+
+#: personal/mail/sieve/class_sieveManagement.inc:397
+msgid "Edited"
+msgstr "upravené"
+
+#: personal/mail/sieve/class_sieveManagement.inc:431
+msgid "Uploaded script is empty!"
+msgstr "Nahraný skript neobsahuje žádné příkazy!"
+
+#: personal/mail/sieve/class_sieveManagement.inc:433
+msgid "Internal error"
+msgstr "vnitřní chyba"
+
+#: personal/mail/sieve/class_sieveManagement.inc:433
+#, php-format
+msgid "Cannot access temporary file '%s'!"
+msgstr "Nemám přístup k dočasnému souboru '%s'!"
+
+#: personal/mail/sieve/class_sieveManagement.inc:435
+#, php-format
+msgid "Cannot open temporary file '%s'!"
+msgstr "Nemohu otevřít dočasný soubor '%s'!"
+
+#: personal/mail/sieve/class_sieveManagement.inc:495
+#: personal/mail/sieve/class_sieveManagement.inc:498
+#: personal/mail/sieve/class_sieveManagement.inc:713
+#: personal/mail/sieve/class_sieveManagement.inc:716
+#: personal/mail/sieve/templates/object_container.tpl.c:29
+#: personal/mail/sieve/templates/object_container.tpl.c:38
+#: personal/mail/sieve/templates/element_keep.tpl.c:2
+msgid "Keep"
+msgstr "ponechat"
+
+#: personal/mail/sieve/class_sieveManagement.inc:496
+#: personal/mail/sieve/class_sieveManagement.inc:714
+#: personal/mail/sieve/templates/object_container.tpl.c:32
+#: personal/mail/sieve/templates/element_comment.tpl.c:2
+msgid "Comment"
+msgstr "komentář"
+
+#: personal/mail/sieve/class_sieveManagement.inc:497
+#: personal/mail/sieve/class_sieveManagement.inc:715
+msgid "File into"
+msgstr "vyplnit do"
+
+#: personal/mail/sieve/class_sieveManagement.inc:499
+#: personal/mail/sieve/class_sieveManagement.inc:717
+#: personal/mail/sieve/templates/object_container.tpl.c:41
+#: personal/mail/sieve/templates/element_discard.tpl.c:2
+msgid "Discard"
+msgstr "zahodit"
+
+#: personal/mail/sieve/class_sieveManagement.inc:500
+#: personal/mail/sieve/class_sieveManagement.inc:718
+#: personal/mail/sieve/templates/object_container.tpl.c:44
+#: personal/mail/sieve/templates/element_redirect.tpl.c:2
+msgid "Redirect"
+msgstr "přesměrovat"
+
+#: personal/mail/sieve/class_sieveManagement.inc:501
+#: personal/mail/sieve/class_sieveManagement.inc:719
+#: personal/mail/sieve/templates/object_container.tpl.c:47
+msgid "Reject"
+msgstr "odmítnout"
+
+#: personal/mail/sieve/class_sieveManagement.inc:502
+#: personal/mail/sieve/class_sieveManagement.inc:720
+#: personal/mail/sieve/templates/object_container.tpl.c:50
+#: personal/mail/sieve/templates/element_require.tpl.c:2
+msgid "Require"
+msgstr "vyžadovat"
+
+#: personal/mail/sieve/class_sieveManagement.inc:503
+#: personal/mail/sieve/class_sieveManagement.inc:721
+#: personal/mail/sieve/templates/object_container.tpl.c:53
+#: personal/mail/sieve/templates/element_stop.tpl.c:2
+msgid "Stop"
+msgstr "zastavit"
+
+#: personal/mail/sieve/class_sieveManagement.inc:505
+#: personal/mail/sieve/class_sieveManagement.inc:723
+#: personal/mail/sieve/class_sieveElement_If.inc:836
+#: personal/mail/sieve/templates/object_container.tpl.c:59
+msgid "If"
+msgstr "když"
+
+#: personal/mail/sieve/class_sieveManagement.inc:521
+msgid "Cannot add new element!"
+msgstr "Nemohu přidat nový prvek!"
+
+#: personal/mail/sieve/class_sieveManagement.inc:564
+#: personal/mail/sieve/class_sieveManagement.inc:758
+#: personal/mail/sieve/class_sieveElement_If.inc:840
+#: personal/mail/sieve/templates/object_container.tpl.c:62
+#: personal/mail/sieve/templates/element_else.tpl.c:2
+msgid "Else"
+msgstr "jinak"
+
+#: personal/mail/sieve/class_sieveManagement.inc:566
+#: personal/mail/sieve/class_sieveManagement.inc:760
+#: personal/mail/sieve/class_sieveManagement.inc:765
+#: personal/mail/sieve/class_sieveElement_If.inc:838
+#: personal/mail/sieve/templates/object_container.tpl.c:65
+#: personal/mail/sieve/templates/element_elsif.tpl.c:2
+msgid "Else If"
+msgstr "jinak ještě"
+
+#: personal/mail/sieve/class_sieveManagement.inc:591
+#: personal/mail/sieve/templates/element_address.tpl.c:2
+#: personal/mail/sieve/templates/element_address.tpl.c:47
+msgid "Address"
+msgstr "adresa"
+
+#: personal/mail/sieve/class_sieveManagement.inc:592
+#: personal/mail/sieve/templates/element_header.tpl.c:2
+#: personal/mail/sieve/templates/element_header.tpl.c:41
+msgid "Header"
+msgstr "hlavička"
+
+#: personal/mail/sieve/class_sieveManagement.inc:593
+#: personal/mail/sieve/templates/element_envelope.tpl.c:2
+#: personal/mail/sieve/templates/element_envelope.tpl.c:47
+msgid "Envelope"
+msgstr "obálka"
+
+#: personal/mail/sieve/class_sieveManagement.inc:594
+#: personal/mail/sieve/templates/element_size.tpl.c:2
+msgid "Size"
+msgstr "velikost"
+
+#: personal/mail/sieve/class_sieveManagement.inc:595
+#: personal/mail/sieve/templates/element_exists.tpl.c:2
+msgid "Exists"
+msgstr "existuje"
+
+#: personal/mail/sieve/class_sieveManagement.inc:596
+#: personal/mail/sieve/templates/element_allof.tpl.c:14
+msgid "All of"
+msgstr "všechno z"
+
+#: personal/mail/sieve/class_sieveManagement.inc:597
+#: personal/mail/sieve/templates/element_anyof.tpl.c:11
+msgid "Any of"
+msgstr "cokoli z"
+
+#: personal/mail/sieve/class_sieveManagement.inc:598
+#: personal/mail/sieve/class_sieveElement_If.inc:915
+msgid "True"
+msgstr "platí"
+
+#: personal/mail/sieve/class_sieveManagement.inc:599
+#: personal/mail/sieve/class_sieveElement_If.inc:915
+msgid "False"
+msgstr "neplatí"
+
+#: personal/mail/sieve/class_sieveManagement.inc:636
+msgid "Active"
+msgstr "činné"
+
+#: personal/mail/sieve/class_sieveManagement.inc:637
+msgid "This script is marked as active"
+msgstr "tento skript je označen jako aktivní"
+
+#: personal/mail/sieve/class_sieveManagement.inc:642
+msgid "Script length"
+msgstr "délka skriptu"
+
+#: personal/mail/sieve/class_sieveManagement.inc:646
+msgid "Remove script"
+msgstr "odebrat skript"
+
+#: personal/mail/sieve/class_sieveManagement.inc:655
+msgid "Activate script"
+msgstr "aktivovat skript"
+
+#: personal/mail/sieve/class_sieveManagement.inc:659
+msgid "Edit script"
+msgstr "upravit skript"
+
+#: personal/mail/sieve/class_sieveManagement.inc:674
+#, php-format
+msgid "Can't log into SIEVE server. Server says '%s'."
+msgstr "Nedaří se přihlášení na Sieve server. Server vrací '%s'."
+
+#: personal/mail/sieve/class_sieveManagement.inc:772
+msgid "Cannot insert element at the requested position!"
+msgstr "Prvek nelze vložit na požadovanou pozici!"
+
+#: personal/mail/sieve/class_sieveManagement.inc:1045
+#, php-format
+msgid "Cannot store SIEVE script: %s"
+msgstr "Nedaří se uložit skript Sieve: %s"
+
+#: personal/mail/sieve/class_sieveManagement.inc:1047
+msgid "Failed to save sieve script"
+msgstr "selhalo uložení skriptu Sieve"
+
+#: personal/mail/sieve/class_My_Tree.inc:266
+#: personal/mail/sieve/templates/remove_script.tpl.c:2
+msgid "Warning"
+msgstr "varování"
+
+#: personal/mail/sieve/class_My_Tree.inc:266
+msgid "Cannot remove last element!"
+msgstr "Nemohu odebrat poslední prvek"
+
+#: personal/mail/sieve/class_My_Tree.inc:679
+msgid "Require must be the first command in the script."
+msgstr "„require“ (vyžaduj) musí být první příkazem skriptu."
+
+#: personal/mail/sieve/class_sieveElement_Require.inc:73
+msgid "Please specify at least one valid requirement."
+msgstr "Zadejte prosím alespoň jeden platný argument."
+
+#: personal/mail/sieve/class_sieveElement_Reject.inc:21
+msgid "Invalid character found, quotes are not allowed in a reject message."
+msgstr ""
+"Zjištěny nepovolené znaky – ve zprávě o odmítnutí není možné použít uvozovky."
+
+#: personal/mail/sieve/class_sieveElement_Reject.inc:37
+msgid "Your reject text here"
+msgstr "Sem zadejte svůj text o odmítnutí."
+
+#: personal/mail/sieve/class_sieveElement_Vacation.inc:148
+msgid "Alternative sender address must be a valid email addresses."
+msgstr "Alternativní adresa odesilatele musí být platnou e-mailovou adresou."
+
+#: personal/mail/sieve/class_sieveElement_Redirect.inc:24
+msgid "Please specify a valid email address."
+msgstr "Zadejte prosím platnou e-mailovou adresu."
+
+#: personal/mail/sieve/class_sieveElement_Redirect.inc:35
+msgid "Place a mail address here"
+msgstr "Zadejte sem e-mailovou adresu."
+
+#: personal/mail/sieve/class_sieveElement_If.inc:27
+msgid "Complete address"
+msgstr "úplná adresa"
+
+#: personal/mail/sieve/class_sieveElement_If.inc:27
+#: personal/mail/sieve/class_sieveElement_If.inc:33
+msgid "Default"
+msgstr "výchozí"
+
+#: personal/mail/sieve/class_sieveElement_If.inc:28
+msgid "Domain part"
+msgstr "doménová část"
+
+#: personal/mail/sieve/class_sieveElement_If.inc:29
+msgid "Local part"
+msgstr "místní část"
+
+#: personal/mail/sieve/class_sieveElement_If.inc:33
+msgid "Case insensitive"
+msgstr "nerozlišuje velikost písmen"
+
+#: personal/mail/sieve/class_sieveElement_If.inc:34
+msgid "Case sensitive"
+msgstr "rozlišuje velikost písmen"
+
+#: personal/mail/sieve/class_sieveElement_If.inc:35
+msgid "Numeric"
+msgstr "číselné"
+
+#: personal/mail/sieve/class_sieveElement_If.inc:39
+msgid "is"
+msgstr "je"
+
+#: personal/mail/sieve/class_sieveElement_If.inc:40
+msgid "regex"
+msgstr "regulární výraz"
+
+#: personal/mail/sieve/class_sieveElement_If.inc:41
+msgid "contains"
+msgstr "obsahuje"
+
+#: personal/mail/sieve/class_sieveElement_If.inc:42
+msgid "matches"
+msgstr "shoduje se"
+
+#: personal/mail/sieve/class_sieveElement_If.inc:43
+msgid "count"
+msgstr "počet"
+
+#: personal/mail/sieve/class_sieveElement_If.inc:44
+msgid "value is"
+msgstr "hodnota je"
+
+#: personal/mail/sieve/class_sieveElement_If.inc:48
+msgid "less than"
+msgstr "méně než"
+
+#: personal/mail/sieve/class_sieveElement_If.inc:49
+msgid "less or equal"
+msgstr "méně či rovno"
+
+#: personal/mail/sieve/class_sieveElement_If.inc:50
+msgid "equals"
+msgstr "rovno"
+
+#: personal/mail/sieve/class_sieveElement_If.inc:51
+msgid "greater or equal"
+msgstr "více než či rovno"
+
+#: personal/mail/sieve/class_sieveElement_If.inc:52
+#: personal/mail/sieve/class_sieveElement_If.inc:726
+#: personal/mail/sieve/class_sieveElement_If.inc:1059
+msgid "greater than"
+msgstr "více než"
+
+#: personal/mail/sieve/class_sieveElement_If.inc:53
+msgid "not equal"
+msgstr "nerovná se"
+
+#: personal/mail/sieve/class_sieveElement_If.inc:102
+msgid "Can't save empty tests."
+msgstr "Nemohu uložit nevyplněný test."
+
+#: personal/mail/sieve/class_sieveElement_If.inc:446
+msgid "emtpy"
+msgstr "prázdné"
+
+#: personal/mail/sieve/class_sieveElement_If.inc:447
+msgid "empty"
+msgstr "prázdné"
+
+#: personal/mail/sieve/class_sieveElement_If.inc:493
+msgid "Nothing specified right now"
+msgstr "v tuto chvíli není nic zadáno"
+
+#: personal/mail/sieve/class_sieveElement_If.inc:595
+msgid "Invalid type of address part."
+msgstr "Neplatný typ adresní části."
+
+#: personal/mail/sieve/class_sieveElement_If.inc:605
+msgid "Invalid match type given."
+msgstr "Zadán neplatný typ shody."
+
+#: personal/mail/sieve/class_sieveElement_If.inc:621
+msgid "Invalid operator given."
+msgstr "Zadán neplatný operátor."
+
+#: personal/mail/sieve/class_sieveElement_If.inc:638
+msgid "Please specify a valid operator."
+msgstr "Zadejte prosím platný operátor."
+
+#: personal/mail/sieve/class_sieveElement_If.inc:654
+msgid ""
+"Invalid character found in address attribute. Quotes are not allowed here."
+msgstr ""
+"V atributu adresa se nachází nepovolený znak – uvozovky zde zkrátka nemohou "
+"být."
+
+#: personal/mail/sieve/class_sieveElement_If.inc:669
+msgid ""
+"Invalid character found in value attribute. Quotes are not allowed here."
+msgstr ""
+"V hodnotě atributu se nachází nepovolený znak – uvozovky zde zkrátka nemohou "
+"být."
+
+#: personal/mail/sieve/class_sieveElement_If.inc:727
+#: personal/mail/sieve/class_sieveElement_If.inc:1060
+msgid "lower than"
+msgstr "nižší než"
+
+#: personal/mail/sieve/class_sieveElement_If.inc:729
+#: personal/mail/sieve/class_sieveElement_If.inc:1062
+msgid "Megabyte"
+msgstr ""
+
+#: personal/mail/sieve/class_sieveElement_If.inc:730
+#: personal/mail/sieve/class_sieveElement_If.inc:1063
+msgid "Kilobyte"
+msgstr ""
+
+#: personal/mail/sieve/class_sieveElement_If.inc:731
+#: personal/mail/sieve/class_sieveElement_If.inc:1064
+msgid "Bytes"
+msgstr "Bytů"
+
+#: personal/mail/sieve/class_sieveElement_If.inc:745
+msgid "Please select a valid match type in the list box below."
+msgstr "Zvolte prosím platný typ shody z nabídky níže."
+
+#: personal/mail/sieve/class_sieveElement_If.inc:759
+msgid "Only numeric values are allowed here."
+msgstr "Zde mohou být pouze číslice."
+
+#: personal/mail/sieve/class_sieveElement_If.inc:769
+msgid "No valid unit selected"
+msgstr "nebyla zvolena platná jednotka"
+
+#: personal/mail/sieve/class_sieveElement_If.inc:834
+#: personal/mail/sieve/templates/element_if.tpl.c:2
+msgid "Condition"
+msgstr "podmínka"
+
+#: personal/mail/sieve/class_sieveElement_If.inc:876
+msgid "Empty"
+msgstr "prázdné"
+
+#: personal/mail/sieve/class_sieveElement_If.inc:1134
+#: personal/mail/sieve/class_sieveElement_If.inc:1164
+msgid "Click here to add a new test"
+msgstr "pro přidání nového testu klikněte sem"
+
+#: personal/mail/sieve/class_sieveElement_If.inc:1176
+msgid "Unhandled switch type"
+msgstr "neošetřený typ přepínače"
+
+#: personal/mail/sieve/class_sieveElement_Comment.inc:21
+msgid "Your comment here"
+msgstr "Sem zadejte svůj komentář."
+
+#: admin/groups/mail/class_groupMail.inc:47
+#, fuzzy
+msgid "Group mail options"
+msgstr "skupinový e-mail"
+
+#: admin/groups/mail/class_groupMail.inc:87
+#, fuzzy
+msgid "The primary mail address"
+msgstr "hlavní adresa"
+
+#: admin/groups/mail/class_groupMail.inc:91
+#, fuzzy
+msgid "Server mail"
+msgstr "server"
+
+#: admin/groups/mail/class_groupMail.inc:97
+#, fuzzy
+msgid "Alternative mail addresses for the group"
+msgstr "alternativní adresy"
+
+#: admin/groups/mail/class_groupMail.inc:102
+msgid "Forward messages to non group members"
+msgstr "přeposlat zprávy těm, kdo nejsou členy skupiny"
+
+#: admin/ogroups/mail/class_mailogroup.inc:70
+msgid "Remove mail account"
+msgstr "odebrat e-mailový účet"
+
+#: admin/ogroups/mail/class_mailogroup.inc:71
+#: admin/ogroups/mail/class_mailogroup.inc:74
+msgid "mail group"
+msgstr "e-mailová skupina"
+
+#: admin/ogroups/mail/class_mailogroup.inc:73
+msgid "Create mail account"
+msgstr "vytvořit účet pro e-mail"
+
 #: admin/ogroups/mail/class_mailogroup.inc:106
-#: admin/ogroups/mail/class_mailogroup.inc:113
-#: admin/ogroups/mail/class_mailogroup.inc:190
-#: personal/mail/mailAddressSelect/selectMailAddress-list.xml:56
-msgid "Mail address"
-msgstr "e-mailová adresa"
+msgid "your-name@your-domain.com"
+msgstr "vase-jmeno@vase-domena.cz"
 
-#: admin/groups/mail/class_groupMail.inc:398
-msgid "Cannot add primary address to the list of forwarders!"
-msgstr "Přidání hlavní adresy na seznam přeposílání se nezdařilo!"
-
-#: admin/groups/mail/class_groupMail.inc:440
-#, php-format
-msgid "Address is already in use by group '%s'."
-msgstr "Danou adresu již využívá skupina '%s'."
-
-#: admin/groups/mail/class_groupMail.inc:442
-#, php-format
-msgid "Address is already in use by user '%s'."
-msgstr "Danou adresu již využívá uživatel '%s'."
-
-#: admin/groups/mail/class_groupMail.inc:568
-#: admin/groups/mail/class_groupMail.inc:797
 #: admin/ogroups/mail/class_mailogroup.inc:140
 #: admin/ogroups/mail/class_mailogroup.inc:177
 msgid "LDAP error"
 msgstr "chyba LDAPu"
 
-#: admin/groups/mail/class_groupMail.inc:584
-#, php-format
-msgid "Cannot remove mailbox: %s"
-msgstr "Nelze odebrat schárnku: %s"
-
-#: admin/groups/mail/class_groupMail.inc:588
-#: admin/groups/mail/class_groupMail.inc:827
-#, php-format
-msgid "Cannot update shared folder permissions: %s"
-msgstr "Nezdařilo se aktualizovat práva na sdílené složce: %s"
-
-#: admin/groups/mail/class_groupMail.inc:686
-msgid "New"
-msgstr "nové"
-
-#: admin/groups/mail/class_groupMail.inc:814
-#, php-format
-msgid "Cannot update mailbox: %s"
-msgstr "Nezdařilo se aktualizovat schránku: %s"
-
-#: admin/groups/mail/class_groupMail.inc:818
-#, php-format
-msgid "Cannot write quota settings: %s"
-msgstr "Nezdařilo se zapsat nastavení kvóty: %s"
-
-#: admin/groups/mail/class_groupMail.inc:859
-#, php-format
-msgid ""
-"The group 'cn' has changed. It can't be changed due to the fact that mail "
-"method '%s' relies on it!"
-msgstr "Skupina 'cn' byla změněna. To není dobré, protože na ní závisí způsob nakládání s e-maily '%s'!"
-
-#: admin/groups/mail/class_groupMail.inc:875
-#: admin/groups/mail/paste_mail.tpl:8 admin/groups/mail/mail.tpl:7
-#: admin/ogroups/mail/mail.tpl:10 personal/mail/class_mailAccount.inc:96
-msgid "Primary address"
-msgstr "hlavní adresa"
-
-#: admin/groups/mail/class_groupMail.inc:884
-#: admin/groups/mail/class_groupMail.inc:989 admin/groups/mail/mail.tpl:60
-#: personal/mail/class_mailAccount.inc:105
-msgid "Quota size"
-msgstr "kvóta objemu dat"
-
-#: admin/groups/mail/class_groupMail.inc:903
-msgid "Mail max size"
-msgstr "nejvyšší povolený datový objem zprávy"
-
-#: admin/groups/mail/class_groupMail.inc:911
-msgid "You need to set the maximum mail size in order to reject anything."
-msgstr "Aby odmítání zpráv vůbec fungovalo, musíte nastavit největší povolenou velikost zpráv."
-
-#: admin/groups/mail/class_groupMail.inc:915
-#: admin/groups/mail/class_groupMail.inc:990
-msgid "Mail server"
-msgstr "poštovní server"
-
-#: admin/groups/mail/class_groupMail.inc:981
-msgid "Group mail"
-msgstr "skupinový e-mail"
-
-#: admin/groups/mail/class_groupMail.inc:991 admin/groups/mail/mail.tpl:73
-msgid "Folder type"
-msgstr "typ složky"
-
-#: admin/groups/mail/class_groupMail.inc:991
-msgid "Kolab"
-msgstr "Kolab"
-
-#: admin/groups/mail/class_groupMail.inc:992
-msgid "Alternate addresses"
-msgstr "alternativní adresa"
-
-#: admin/groups/mail/class_groupMail.inc:993
-msgid "Forwarding addresses"
-msgstr "adresy k přeposílání"
-
-#: admin/groups/mail/class_groupMail.inc:994
-msgid "Only local"
-msgstr "pouze místní"
-
-#: admin/groups/mail/class_groupMail.inc:995
-msgid "Permissions"
-msgstr "oprávnění"
-
-#: admin/groups/mail/paste_mail.tpl:1 config/class_mailPluginConfig.inc:42
-#: personal/mail/class_mailAccount.inc:75
-msgid "Mail settings"
-msgstr "nastavení e-mailu"
-
-#: admin/groups/mail/paste_mail.tpl:12
-msgid "Primary mail address for this shared folder"
-msgstr "hlavní e-mailová adresa pro tuto sdílenou složku"
-
-#: admin/groups/mail/paste_mail.tpl:23 admin/groups/mail/mail.tpl:102
-#: personal/mail/class_mailAccount.inc:117
-msgid "Alternative addresses"
-msgstr "alternativní adresy"
-
-#: admin/groups/mail/paste_mail.tpl:24 admin/groups/mail/mail.tpl:107
-#: personal/mail/class_mailAccount.inc:117
-msgid "List of alternative mail addresses"
-msgstr "seznam alternativních e-mailových adres"
-
-#: admin/groups/mail/paste_mail.tpl:34 admin/groups/mail/mail.tpl:204
-msgid "Forward messages to non group members"
-msgstr "přeposlat zprávy těm, kdo nejsou členy skupiny"
-
-#: admin/groups/mail/paste_mail.tpl:42 admin/groups/mail/mail.tpl:234
-msgid "Add local"
-msgstr "přidat místní"
-
-#: admin/groups/mail/mail.tpl:4
-#: admin/systems/services/postfix/class_servicePostfix.inc:48
-#: config/class_mailPluginConfig.inc:109
-#: personal/mail/class_mailAccount.inc:92
-msgid "Generic"
-msgstr "obecné"
-
-#: admin/groups/mail/mail.tpl:35 personal/mail/class_mailAccount.inc:100
-msgid "Server"
-msgstr "server"
-
-#: admin/groups/mail/mail.tpl:42 personal/mail/class_mailAccount.inc:100
-msgid "Specify the mail server where the user will be hosted on"
-msgstr "Zvolte poštovní server, na kterém bude uživatel mít svůj účet."
-
-#: admin/groups/mail/mail.tpl:56 personal/mail/class_mailAccount.inc:58
-msgid "Quota usage"
-msgstr ""
-
-#: admin/groups/mail/mail.tpl:91
-msgid "Reload"
-msgstr "načíst znovu"
-
-#: admin/groups/mail/mail.tpl:136
-msgid "IMAP shared folders"
-msgstr "sdílené složky IMAPu"
-
-#: admin/groups/mail/mail.tpl:143
-msgid "Default permission"
-msgstr "výchozí oprávnění"
-
-#: admin/groups/mail/mail.tpl:145
-msgid "Member permission"
-msgstr "oprávnění členů"
-
-#: admin/groups/mail/mail.tpl:163
-msgid "Hide"
-msgstr "skrýt"
-
-#: admin/groups/mail/mail.tpl:165
-msgid "Show"
-msgstr "zobrazit"
-
-#: admin/groups/mail/mail.tpl:187 personal/mail/class_mailAccount.inc:192
-msgid "Advanced mail options"
-msgstr "pokročilé volby e-mailu"
-
-#: admin/groups/mail/mail.tpl:193 personal/mail/class_mailAccount.inc:203
-msgid "Select if user can only send and receive inside his own domain"
-msgstr "zvolte, zda uživatel bude moci přijímat a odesílat pouze v rámci vlastní domény"
-
-#: admin/groups/mail/mail.tpl:195 personal/mail/class_mailAccount.inc:202
-msgid "User is only allowed to send and receive local mails"
-msgstr "uživateli je dovoleno přijímat a odesílat pouze místní poštu"
-
-#: admin/groups/mail/mail.tpl:213
-msgid "Used in all groups"
-msgstr "použito ve všech skupinách"
-
-#: admin/groups/mail/mail.tpl:216
-msgid "Not used in all groups"
-msgstr "nepoužito v žádné skupině"
-
-#: admin/groups/mail/mail_locals.tpl:6
-msgid "Select addresses to add"
-msgstr "vybrat adresy, které budou přidány"
-
-#: admin/groups/mail/mail_locals.tpl:22
-msgid "Filters"
-msgstr "filtry"
-
-#: admin/groups/mail/mail_locals.tpl:32
-msgid "Display addresses of department"
-msgstr "zobrazit adresy oddělení"
-
-#: admin/groups/mail/mail_locals.tpl:33
-msgid "Choose the department the search will be based on"
-msgstr "vyberte oddělení ve kterém se bude hledat"
-
-#: admin/groups/mail/mail_locals.tpl:42
-msgid "Display addresses matching"
-msgstr "zobrazit adresy odpovídající"
-
-#: admin/groups/mail/mail_locals.tpl:45
-msgid "Regular expression for matching addresses"
-msgstr "regulární výraz pro nalezení odpovídající adresy"
-
-#: admin/groups/mail/mail_locals.tpl:52
-msgid "Display addresses of user"
-msgstr "zobrazit adresy uživatele"
-
-#: admin/groups/mail/mail_locals.tpl:55
-msgid "User name of which addresses are shown"
-msgstr "uživatelské jméno ke kterému jsou zobrazeny adresy"
+#: admin/ogroups/mail/class_mailogroup.inc:185
+msgid "Mail group"
+msgstr "e-mailová skupina"
 
 #: admin/systems/services/imap/class_serviceIMAP.inc:32
 msgid "IMAP/POP3 generic service"
@@ -406,7 +941,9 @@ msgstr "potřebný stupeň hodnocení"
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:56
 msgid "Select required score to tag mail as spam"
-msgstr "zvolte stupeň hodnocení, po jehož dosažení bude zpráva považována za nevyžádanou (SPAM)"
+msgstr ""
+"zvolte stupeň hodnocení, po jehož dosažení bude zpráva považována za "
+"nevyžádanou (SPAM)"
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:62
 msgid "Trusted networks"
@@ -447,12 +984,6 @@ msgstr "pravidla"
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:116
 msgid "Edit spam ruleEdit spam rule"
 msgstr ""
-
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:119
-#: personal/mail/mailAddressSelect/selectMailAddress-filter.tpl:22
-#: personal/mail/mailAddressSelect/selectMailAddress-list.xml:48
-msgid "Name"
-msgstr "název"
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:120
 msgid "Rule"
@@ -644,1146 +1175,582 @@ msgstr "omezení odesilatele"
 msgid "Restrictions for recipient"
 msgstr "omezení příjemce"
 
-#: admin/ogroups/mail/paste_mail.tpl:7
-msgid "Please enter a mail address"
-msgstr "zadejte prosím e-mailovou adresu"
-
-#: admin/ogroups/mail/mail.tpl:7
-msgid "Mail distribution list"
-msgstr "distribuční seznam"
-
-#: admin/ogroups/mail/mail.tpl:13
-msgid "Primary mail address for this distribution list"
-msgstr "hlavní e-mailová adresa pro tento distribuční seznam"
-
-#: admin/ogroups/mail/class_mailogroup.inc:70
-msgid "Remove mail account"
-msgstr "odebrat e-mailový účet"
-
-#: admin/ogroups/mail/class_mailogroup.inc:71
-#: admin/ogroups/mail/class_mailogroup.inc:74
-msgid "mail group"
-msgstr "e-mailová skupina"
-
-#: admin/ogroups/mail/class_mailogroup.inc:73
-msgid "Create mail account"
-msgstr "vytvořit účet pro e-mail"
-
-#: admin/ogroups/mail/class_mailogroup.inc:106
-msgid "your-name@your-domain.com"
-msgstr "vase-jmeno@vase-domena.cz"
-
-#: admin/ogroups/mail/class_mailogroup.inc:185
-msgid "Mail group"
-msgstr "e-mailová skupina"
-
-#: config/class_mailPluginConfig.inc:29
-msgid "Mail plugin configuration"
-msgstr ""
-
-#: config/class_mailPluginConfig.inc:45
-msgid "Mail method"
-msgstr "systém správy elektronické pošty"
-
-#: config/class_mailPluginConfig.inc:46
-msgid ""
-"Mail method the setup should use to communicate with a possible mail server."
-" Leave this undefined if your mail method does not match the predefined "
-"ones."
-msgstr ""
-
-#: config/class_mailPluginConfig.inc:51
-msgid "Account identification attribute"
-msgstr "atribut, dle kterého budou rozlišovány účty"
-
-#: config/class_mailPluginConfig.inc:52
-msgid "Which attribute will be used to create accounts."
-msgstr ""
-
-#: config/class_mailPluginConfig.inc:57
-msgid "Mail user template"
-msgstr ""
-
-#: config/class_mailPluginConfig.inc:58
-msgid "Override the user account creation syntax."
-msgstr ""
-
-#: config/class_mailPluginConfig.inc:62
-msgid "Mail folder template"
-msgstr ""
-
-#: config/class_mailPluginConfig.inc:63
-msgid "Override the methods default account creation syntax."
-msgstr ""
-
-#: config/class_mailPluginConfig.inc:67
-msgid "Use cyrus UNIX style"
-msgstr ""
-
-#: config/class_mailPluginConfig.inc:68
-msgid "Determines if \"foo/bar\" or \"foo.bar\" should be uses as namespaces in IMAP."
-msgstr ""
-
-#: config/class_mailPluginConfig.inc:72
-msgid "Delete mailbox on account deletion"
-msgstr ""
-
-#: config/class_mailPluginConfig.inc:73
-msgid ""
-"Determines if the mailbox should be removed from your IMAP server after the "
-"account is deleted in LDAP."
-msgstr ""
-
-#: config/class_mailPluginConfig.inc:78
-msgid "Cyrus autocreate folders"
-msgstr ""
-
-#: config/class_mailPluginConfig.inc:79
-msgid ""
-"List of personal IMAP folders that should be created along initial account "
-"creation."
-msgstr ""
-
-#: config/class_mailPluginConfig.inc:84
-msgid "IMAP timeout"
-msgstr ""
-
-#: config/class_mailPluginConfig.inc:85
-msgid "Sets the connection timeout for imap actions."
-msgstr ""
-
-#: config/class_mailPluginConfig.inc:90
-msgid "Shared prefix"
-msgstr ""
-
-#: config/class_mailPluginConfig.inc:91
-msgid "Prefix to add for mail shared folders."
-msgstr ""
-
-#: personal/mail/mailAddressSelect/selectMailAddress-filter.tpl:3
-msgid "Filter"
-msgstr "filtr"
-
-#: personal/mail/mailAddressSelect/selectMailAddress-filter.tpl:11
-msgid "Show users"
-msgstr "zobrazit uživatele"
-
-#: personal/mail/mailAddressSelect/selectMailAddress-filter.tpl:12
-msgid "Show groups"
-msgstr "zobrazit skupiny"
-
-#: personal/mail/mailAddressSelect/selectMailAddress-list.tpl:13
+#: personal/mail/mailAddressSelect/selectMailAddress-list.tpl.c:2
 msgid "Base"
 msgstr "základ"
 
-#: personal/mail/mailAddressSelect/selectMailAddress-list.xml:10
-msgid "Please select the desired entries"
-msgstr "vyberte prosím požadované položky"
-
-#: personal/mail/mailAddressSelect/selectMailAddress-list.xml:14
-msgid "User"
-msgstr "uživatel"
-
-#: personal/mail/mailAddressSelect/selectMailAddress-list.xml:22
-msgid "Group"
-msgstr "skupina"
-
-#: personal/mail/sieve/class_sieveManagement.inc:116
-#: personal/mail/sieve/class_sieveManagement.inc:244
-msgid "Parse failed"
-msgstr "analýza selhala"
-
-#: personal/mail/sieve/class_sieveManagement.inc:120
-#: personal/mail/sieve/class_sieveManagement.inc:248
-msgid "Parse successful"
-msgstr "analýza proběhla úspěšně"
-
-#: personal/mail/sieve/class_sieveManagement.inc:158
-#, php-format
-msgid ""
-"The specified mail server '%s' does not exist within the FusionDirectory "
-"configuration."
-msgstr "Zadaný poštovní server '%s' není definován v nastavení FusionDirectory."
-
-#: personal/mail/sieve/class_sieveManagement.inc:203
-msgid "No script name specified!"
-msgstr "Nebyl zadán název skriptu!"
-
-#: personal/mail/sieve/class_sieveManagement.inc:208
-msgid "Please use only lowercase script names!"
-msgstr "V názvech skriptů prosím používejte pouze malá písmena!"
-
-#: personal/mail/sieve/class_sieveManagement.inc:214
-msgid "Please use only alphabetical characters in script names!"
-msgstr "V názvech skriptů prosím používejte pouze písmena a čísla!"
-
-#: personal/mail/sieve/class_sieveManagement.inc:220
-msgid "Script name already in use!"
-msgstr "Skript s takovým názvem již existuje!"
-
-#: personal/mail/sieve/class_sieveManagement.inc:304
-#: personal/mail/sieve/class_sieveManagement.inc:311
-#: personal/mail/sieve/class_sieveManagement.inc:347
-#: personal/mail/sieve/class_sieveManagement.inc:351
-#: personal/mail/sieve/class_sieveManagement.inc:400
-#: personal/mail/sieve/class_sieveManagement.inc:404
-#: personal/mail/sieve/class_sieveManagement.inc:435
-#: personal/mail/sieve/class_sieveManagement.inc:521
-#: personal/mail/sieve/class_sieveManagement.inc:772
-#: personal/mail/sieve/class_sieveManagement.inc:1032
-#: personal/mail/sieve/class_sieveManagement.inc:1045
-msgid "SIEVE error"
-msgstr "chyba Sieve"
-
-#: personal/mail/sieve/class_sieveManagement.inc:304
-#: personal/mail/sieve/class_sieveManagement.inc:347
-#: personal/mail/sieve/class_sieveManagement.inc:1032
-#, php-format
-msgid "Cannot log into SIEVE server: %s"
-msgstr "Nelze se přihlásit na Sieve server: %s"
-
-#: personal/mail/sieve/class_sieveManagement.inc:311
-#, php-format
-msgid "Cannot retrieve SIEVE script: %s"
-msgstr "Nedaří se získat skript Sieve: %s"
-
-#: personal/mail/sieve/class_sieveManagement.inc:351
-#, php-format
-msgid "Cannot remove SIEVE script: %s"
-msgstr "Nelze odebrat skript Sieve: %s"
-
-#: personal/mail/sieve/class_sieveManagement.inc:397
-msgid "Edited"
-msgstr "upravené"
-
-#: personal/mail/sieve/class_sieveManagement.inc:431
-msgid "Uploaded script is empty!"
-msgstr "Nahraný skript neobsahuje žádné příkazy!"
-
-#: personal/mail/sieve/class_sieveManagement.inc:433
-msgid "Internal error"
-msgstr "vnitřní chyba"
-
-#: personal/mail/sieve/class_sieveManagement.inc:433
-#, php-format
-msgid "Cannot access temporary file '%s'!"
-msgstr "Nemám přístup k dočasnému souboru '%s'!"
-
-#: personal/mail/sieve/class_sieveManagement.inc:435
-#, php-format
-msgid "Cannot open temporary file '%s'!"
-msgstr "Nemohu otevřít dočasný soubor '%s'!"
-
-#: personal/mail/sieve/class_sieveManagement.inc:495
-#: personal/mail/sieve/class_sieveManagement.inc:498
-#: personal/mail/sieve/class_sieveManagement.inc:713
-#: personal/mail/sieve/class_sieveManagement.inc:716
-#: personal/mail/sieve/templates/element_keep.tpl:4
-#: personal/mail/sieve/templates/object_container.tpl:22
-#: personal/mail/sieve/templates/object_container.tpl:25
-msgid "Keep"
-msgstr "ponechat"
-
-#: personal/mail/sieve/class_sieveManagement.inc:496
-#: personal/mail/sieve/class_sieveManagement.inc:714
-#: personal/mail/sieve/templates/element_comment.tpl:4
-#: personal/mail/sieve/templates/object_container.tpl:23
-msgid "Comment"
-msgstr "komentář"
-
-#: personal/mail/sieve/class_sieveManagement.inc:497
-#: personal/mail/sieve/class_sieveManagement.inc:715
-msgid "File into"
-msgstr "vyplnit do"
-
-#: personal/mail/sieve/class_sieveManagement.inc:499
-#: personal/mail/sieve/class_sieveManagement.inc:717
-#: personal/mail/sieve/templates/element_discard.tpl:4
-#: personal/mail/sieve/templates/object_container.tpl:26
-msgid "Discard"
-msgstr "zahodit"
-
-#: personal/mail/sieve/class_sieveManagement.inc:500
-#: personal/mail/sieve/class_sieveManagement.inc:718
-#: personal/mail/sieve/templates/element_redirect.tpl:13
-#: personal/mail/sieve/templates/object_container.tpl:27
-msgid "Redirect"
-msgstr "přesměrovat"
-
-#: personal/mail/sieve/class_sieveManagement.inc:501
-#: personal/mail/sieve/class_sieveManagement.inc:719
-#: personal/mail/sieve/templates/object_container.tpl:28
-msgid "Reject"
-msgstr "odmítnout"
-
-#: personal/mail/sieve/class_sieveManagement.inc:502
-#: personal/mail/sieve/class_sieveManagement.inc:720
-#: personal/mail/sieve/templates/element_require.tpl:12
-#: personal/mail/sieve/templates/object_container.tpl:29
-msgid "Require"
-msgstr "vyžadovat"
-
-#: personal/mail/sieve/class_sieveManagement.inc:503
-#: personal/mail/sieve/class_sieveManagement.inc:721
-#: personal/mail/sieve/templates/element_stop.tpl:4
-#: personal/mail/sieve/templates/object_container.tpl:30
-msgid "Stop"
-msgstr "zastavit"
-
-#: personal/mail/sieve/class_sieveManagement.inc:504
-#: personal/mail/sieve/class_sieveManagement.inc:722
-#: personal/mail/sieve/templates/element_vacation.tpl:44
-#: personal/mail/sieve/templates/object_container.tpl:31
-#: personal/mail/class_mailAccount.inc:128
-#: personal/mail/class_mailAccount.inc:147
-msgid "Vacation message"
-msgstr "zpráva „jsem na dovolené“"
-
-#: personal/mail/sieve/class_sieveManagement.inc:505
-#: personal/mail/sieve/class_sieveManagement.inc:723
-#: personal/mail/sieve/class_sieveElement_If.inc:836
-#: personal/mail/sieve/templates/object_container.tpl:32
-msgid "If"
-msgstr "když"
-
-#: personal/mail/sieve/class_sieveManagement.inc:521
-msgid "Cannot add new element!"
-msgstr "Nemohu přidat nový prvek!"
-
-#: personal/mail/sieve/class_sieveManagement.inc:564
-#: personal/mail/sieve/class_sieveManagement.inc:758
-#: personal/mail/sieve/class_sieveElement_If.inc:840
-#: personal/mail/sieve/templates/element_else.tpl:4
-#: personal/mail/sieve/templates/object_container.tpl:33
-msgid "Else"
-msgstr "jinak"
-
-#: personal/mail/sieve/class_sieveManagement.inc:566
-#: personal/mail/sieve/class_sieveManagement.inc:760
-#: personal/mail/sieve/class_sieveManagement.inc:765
-#: personal/mail/sieve/class_sieveElement_If.inc:838
-#: personal/mail/sieve/templates/element_elsif.tpl:4
-#: personal/mail/sieve/templates/object_container.tpl:34
-msgid "Else If"
-msgstr "jinak ještě"
-
-#: personal/mail/sieve/class_sieveManagement.inc:591
-#: personal/mail/sieve/templates/element_address.tpl:15
-#: personal/mail/sieve/templates/element_address.tpl:113
-msgid "Address"
-msgstr "adresa"
-
-#: personal/mail/sieve/class_sieveManagement.inc:592
-#: personal/mail/sieve/templates/element_header.tpl:16
-#: personal/mail/sieve/templates/element_header.tpl:106
-msgid "Header"
-msgstr "hlavička"
-
-#: personal/mail/sieve/class_sieveManagement.inc:593
-#: personal/mail/sieve/templates/element_envelope.tpl:16
-#: personal/mail/sieve/templates/element_envelope.tpl:105
-msgid "Envelope"
-msgstr "obálka"
-
-#: personal/mail/sieve/class_sieveManagement.inc:594
-#: personal/mail/sieve/templates/element_size.tpl:4
-msgid "Size"
-msgstr "velikost"
-
-#: personal/mail/sieve/class_sieveManagement.inc:595
-#: personal/mail/sieve/templates/element_exists.tpl:8
-msgid "Exists"
-msgstr "existuje"
-
-#: personal/mail/sieve/class_sieveManagement.inc:596
-#: personal/mail/sieve/templates/element_allof.tpl:10
-msgid "All of"
-msgstr "všechno z"
-
-#: personal/mail/sieve/class_sieveManagement.inc:597
-#: personal/mail/sieve/templates/element_anyof.tpl:10
-msgid "Any of"
-msgstr "cokoli z"
-
-#: personal/mail/sieve/class_sieveManagement.inc:598
-#: personal/mail/sieve/class_sieveElement_If.inc:915
-msgid "True"
-msgstr "platí"
-
-#: personal/mail/sieve/class_sieveManagement.inc:599
-#: personal/mail/sieve/class_sieveElement_If.inc:915
-msgid "False"
-msgstr "neplatí"
-
-#: personal/mail/sieve/class_sieveManagement.inc:636
-msgid "Active"
-msgstr "činné"
-
-#: personal/mail/sieve/class_sieveManagement.inc:637
-msgid "This script is marked as active"
-msgstr "tento skript je označen jako aktivní"
-
-#: personal/mail/sieve/class_sieveManagement.inc:642
-msgid "Script length"
-msgstr "délka skriptu"
-
-#: personal/mail/sieve/class_sieveManagement.inc:646
-msgid "Remove script"
-msgstr "odebrat skript"
-
-#: personal/mail/sieve/class_sieveManagement.inc:655
-msgid "Activate script"
-msgstr "aktivovat skript"
-
-#: personal/mail/sieve/class_sieveManagement.inc:659
-msgid "Edit script"
-msgstr "upravit skript"
-
-#: personal/mail/sieve/class_sieveManagement.inc:674
-#, php-format
-msgid "Can't log into SIEVE server. Server says '%s'."
-msgstr "Nedaří se přihlášení na Sieve server. Server vrací '%s'."
-
-#: personal/mail/sieve/class_sieveManagement.inc:772
-msgid "Cannot insert element at the requested position!"
-msgstr "Prvek nelze vložit na požadovanou pozici!"
-
-#: personal/mail/sieve/class_sieveManagement.inc:1045
-#, php-format
-msgid "Cannot store SIEVE script: %s"
-msgstr "Nedaří se uložit skript Sieve: %s"
-
-#: personal/mail/sieve/class_sieveManagement.inc:1047
-msgid "Failed to save sieve script"
-msgstr "selhalo uložení skriptu Sieve"
-
-#: personal/mail/sieve/class_My_Tree.inc:266
-#: personal/mail/sieve/templates/remove_script.tpl:2
-msgid "Warning"
-msgstr "varování"
-
-#: personal/mail/sieve/class_My_Tree.inc:266
-msgid "Cannot remove last element!"
-msgstr "Nemohu odebrat poslední prvek"
-
-#: personal/mail/sieve/class_My_Tree.inc:679
-msgid "Require must be the first command in the script."
-msgstr "„require“ (vyžaduj) musí být první příkazem skriptu."
-
-#: personal/mail/sieve/class_sieveElement_Require.inc:73
-msgid "Please specify at least one valid requirement."
-msgstr "Zadejte prosím alespoň jeden platný argument."
-
-#: personal/mail/sieve/class_sieveElement_If.inc:27
-msgid "Complete address"
-msgstr "úplná adresa"
-
-#: personal/mail/sieve/class_sieveElement_If.inc:27
-#: personal/mail/sieve/class_sieveElement_If.inc:33
-msgid "Default"
-msgstr "výchozí"
-
-#: personal/mail/sieve/class_sieveElement_If.inc:28
-msgid "Domain part"
-msgstr "doménová část"
-
-#: personal/mail/sieve/class_sieveElement_If.inc:29
-msgid "Local part"
-msgstr "místní část"
-
-#: personal/mail/sieve/class_sieveElement_If.inc:33
-msgid "Case insensitive"
-msgstr "nerozlišuje velikost písmen"
-
-#: personal/mail/sieve/class_sieveElement_If.inc:34
-msgid "Case sensitive"
-msgstr "rozlišuje velikost písmen"
-
-#: personal/mail/sieve/class_sieveElement_If.inc:35
-msgid "Numeric"
-msgstr "číselné"
-
-#: personal/mail/sieve/class_sieveElement_If.inc:39
-msgid "is"
-msgstr "je"
-
-#: personal/mail/sieve/class_sieveElement_If.inc:40
-msgid "regex"
-msgstr "regulární výraz"
-
-#: personal/mail/sieve/class_sieveElement_If.inc:41
-msgid "contains"
-msgstr "obsahuje"
-
-#: personal/mail/sieve/class_sieveElement_If.inc:42
-msgid "matches"
-msgstr "shoduje se"
-
-#: personal/mail/sieve/class_sieveElement_If.inc:43
-msgid "count"
-msgstr "počet"
-
-#: personal/mail/sieve/class_sieveElement_If.inc:44
-msgid "value is"
-msgstr "hodnota je"
-
-#: personal/mail/sieve/class_sieveElement_If.inc:48
-msgid "less than"
-msgstr "méně než"
-
-#: personal/mail/sieve/class_sieveElement_If.inc:49
-msgid "less or equal"
-msgstr "méně či rovno"
-
-#: personal/mail/sieve/class_sieveElement_If.inc:50
-msgid "equals"
-msgstr "rovno"
-
-#: personal/mail/sieve/class_sieveElement_If.inc:51
-msgid "greater or equal"
-msgstr "více než či rovno"
-
-#: personal/mail/sieve/class_sieveElement_If.inc:52
-#: personal/mail/sieve/class_sieveElement_If.inc:726
-#: personal/mail/sieve/class_sieveElement_If.inc:1059
-msgid "greater than"
-msgstr "více než"
-
-#: personal/mail/sieve/class_sieveElement_If.inc:53
-msgid "not equal"
-msgstr "nerovná se"
-
-#: personal/mail/sieve/class_sieveElement_If.inc:102
-msgid "Can't save empty tests."
-msgstr "Nemohu uložit nevyplněný test."
-
-#: personal/mail/sieve/class_sieveElement_If.inc:446
-msgid "emtpy"
-msgstr "prázdné"
-
-#: personal/mail/sieve/class_sieveElement_If.inc:447
-msgid "empty"
-msgstr "prázdné"
-
-#: personal/mail/sieve/class_sieveElement_If.inc:493
-msgid "Nothing specified right now"
-msgstr "v tuto chvíli není nic zadáno"
-
-#: personal/mail/sieve/class_sieveElement_If.inc:595
-msgid "Invalid type of address part."
-msgstr "Neplatný typ adresní části."
-
-#: personal/mail/sieve/class_sieveElement_If.inc:605
-msgid "Invalid match type given."
-msgstr "Zadán neplatný typ shody."
-
-#: personal/mail/sieve/class_sieveElement_If.inc:621
-msgid "Invalid operator given."
-msgstr "Zadán neplatný operátor."
-
-#: personal/mail/sieve/class_sieveElement_If.inc:638
-msgid "Please specify a valid operator."
-msgstr "Zadejte prosím platný operátor."
-
-#: personal/mail/sieve/class_sieveElement_If.inc:654
-msgid ""
-"Invalid character found in address attribute. Quotes are not allowed here."
-msgstr "V atributu adresa se nachází nepovolený znak – uvozovky zde zkrátka nemohou být."
-
-#: personal/mail/sieve/class_sieveElement_If.inc:669
-msgid ""
-"Invalid character found in value attribute. Quotes are not allowed here."
-msgstr "V hodnotě atributu se nachází nepovolený znak – uvozovky zde zkrátka nemohou být."
-
-#: personal/mail/sieve/class_sieveElement_If.inc:727
-#: personal/mail/sieve/class_sieveElement_If.inc:1060
-msgid "lower than"
-msgstr "nižší než"
-
-#: personal/mail/sieve/class_sieveElement_If.inc:729
-#: personal/mail/sieve/class_sieveElement_If.inc:1062
-msgid "Megabyte"
+#: personal/mail/mailAddressSelect/selectMailAddress-filter.tpl.c:2
+msgid "Filter"
+msgstr "filtr"
+
+#: personal/mail/mailAddressSelect/selectMailAddress-filter.tpl.c:5
+msgid "Show users"
+msgstr "zobrazit uživatele"
+
+#: personal/mail/mailAddressSelect/selectMailAddress-filter.tpl.c:8
+msgid "Show groups"
+msgstr "zobrazit skupiny"
+
+#: personal/mail/sieve/templates/object_container.tpl.c:2
+msgid "Move object up one position"
+msgstr "přesunout objekt o jednu pozici nahoru"
+
+#: personal/mail/sieve/templates/object_container.tpl.c:5
+#: personal/mail/sieve/templates/object_container_clear.tpl.c:5
+msgid "Up"
+msgstr "nahoru"
+
+#: personal/mail/sieve/templates/object_container.tpl.c:8
+#: personal/mail/sieve/templates/object_container_clear.tpl.c:8
+msgid "Move up"
+msgstr "přesunout nahoru"
+
+#: personal/mail/sieve/templates/object_container.tpl.c:11
+msgid "Move object down one position"
+msgstr "přesunout objekt o jednu pozici dolů"
+
+#: personal/mail/sieve/templates/object_container.tpl.c:14
+#: personal/mail/sieve/templates/object_container_clear.tpl.c:14
+msgid "Down"
+msgstr "dolů"
+
+#: personal/mail/sieve/templates/object_container.tpl.c:17
+#: personal/mail/sieve/templates/object_container_clear.tpl.c:17
+msgid "Move down"
+msgstr "přesunout dolů"
+
+#: personal/mail/sieve/templates/object_container.tpl.c:20
+#: personal/mail/sieve/templates/object_test_container.tpl.c:5
+msgid "Remove object"
+msgstr "odebrat objekt"
+
+#: personal/mail/sieve/templates/object_container.tpl.c:23
+#: personal/mail/sieve/templates/object_container_clear.tpl.c:23
+msgid "Remove element"
+msgstr "odebrat prvek"
+
+#: personal/mail/sieve/templates/object_container.tpl.c:26
+msgid "choose element"
+msgstr "zvolit prvek"
+
+#: personal/mail/sieve/templates/object_container.tpl.c:35
+msgid "Fileinto"
 msgstr ""
 
-#: personal/mail/sieve/class_sieveElement_If.inc:730
-#: personal/mail/sieve/class_sieveElement_If.inc:1063
-msgid "Kilobyte"
-msgstr ""
+#: personal/mail/sieve/templates/object_container.tpl.c:68
+#: personal/mail/sieve/templates/object_container.tpl.c:80
+msgid "Add new"
+msgstr "přidat nové"
 
-#: personal/mail/sieve/class_sieveElement_If.inc:731
-#: personal/mail/sieve/class_sieveElement_If.inc:1064
-msgid "Bytes"
-msgstr "Bytů"
+#: personal/mail/sieve/templates/object_container.tpl.c:71
+#: personal/mail/sieve/templates/object_container.tpl.c:77
+msgid "Add a new object above this one."
+msgstr "Přidat nový objekt nad tento."
 
-#: personal/mail/sieve/class_sieveElement_If.inc:745
-msgid "Please select a valid match type in the list box below."
-msgstr "Zvolte prosím platný typ shody z nabídky níže."
+#: personal/mail/sieve/templates/object_container.tpl.c:74
+msgid "Add element above"
+msgstr "přidat prvek nad"
 
-#: personal/mail/sieve/class_sieveElement_If.inc:759
-msgid "Only numeric values are allowed here."
-msgstr "Zde mohou být pouze číslice."
+#: personal/mail/sieve/templates/object_container.tpl.c:83
+#: personal/mail/sieve/templates/object_container.tpl.c:89
+msgid "Add a new object below this one."
+msgstr "Přidat nový objekt pod tento."
 
-#: personal/mail/sieve/class_sieveElement_If.inc:769
-msgid "No valid unit selected"
-msgstr "nebyla zvolena platná jednotka"
+#: personal/mail/sieve/templates/object_container.tpl.c:86
+msgid "Add element below"
+msgstr "přidat prvek pod"
 
-#: personal/mail/sieve/class_sieveElement_If.inc:834
-#: personal/mail/sieve/templates/element_if.tpl:4
-msgid "Condition"
-msgstr "podmínka"
+#: personal/mail/sieve/templates/element_boolean.tpl.c:2
+msgid "Bool"
+msgstr "ano/ne (Boolean)"
 
-#: personal/mail/sieve/class_sieveElement_If.inc:876
-msgid "Empty"
-msgstr "prázdné"
-
-#: personal/mail/sieve/class_sieveElement_If.inc:1134
-#: personal/mail/sieve/class_sieveElement_If.inc:1164
-msgid "Click here to add a new test"
-msgstr "pro přidání nového testu klikněte sem"
-
-#: personal/mail/sieve/class_sieveElement_If.inc:1176
-msgid "Unhandled switch type"
-msgstr "neošetřený typ přepínače"
-
-#: personal/mail/sieve/class_sieveElement_Redirect.inc:24
-msgid "Please specify a valid email address."
-msgstr "Zadejte prosím platnou e-mailovou adresu."
-
-#: personal/mail/sieve/class_sieveElement_Redirect.inc:35
-msgid "Place a mail address here"
-msgstr "Zadejte sem e-mailovou adresu."
-
-#: personal/mail/sieve/class_sieveElement_Reject.inc:21
-msgid "Invalid character found, quotes are not allowed in a reject message."
-msgstr "Zjištěny nepovolené znaky – ve zprávě o odmítnutí není možné použít uvozovky."
-
-#: personal/mail/sieve/class_sieveElement_Reject.inc:37
-msgid "Your reject text here"
-msgstr "Sem zadejte svůj text o odmítnutí."
-
-#: personal/mail/sieve/class_sieveElement_Comment.inc:21
-msgid "Your comment here"
-msgstr "Sem zadejte svůj komentář."
-
-#: personal/mail/sieve/class_sieveElement_Vacation.inc:148
-msgid "Alternative sender address must be a valid email addresses."
-msgstr "Alternativní adresa odesilatele musí být platnou e-mailovou adresou."
-
-#: personal/mail/sieve/templates/element_vacation.tpl:13
-msgid "Vacation Message"
-msgstr "zpráva „jsem na dovolené“"
-
-#: personal/mail/sieve/templates/element_vacation.tpl:16
-#: personal/mail/sieve/templates/element_address.tpl:18
-#: personal/mail/sieve/templates/element_envelope.tpl:19
-#: personal/mail/sieve/templates/element_header.tpl:19
-msgid "Normal view"
-msgstr "běžné zobrazení"
-
-#: personal/mail/sieve/templates/element_vacation.tpl:21
-msgid "Release interval"
-msgstr ""
-
-#: personal/mail/sieve/templates/element_vacation.tpl:25
-msgid "days"
-msgstr "dny"
-
-#: personal/mail/sieve/templates/element_vacation.tpl:30
-msgid "Alternative sender addresses"
-msgstr "alternativní adresa odesilatele"
-
-#: personal/mail/sieve/templates/element_vacation.tpl:47
-#: personal/mail/sieve/templates/element_address.tpl:138
-#: personal/mail/sieve/templates/element_envelope.tpl:130
-#: personal/mail/sieve/templates/element_header.tpl:131
-msgid "Expert view"
-msgstr "zobrazení pro odborníky"
-
-#: personal/mail/sieve/templates/import_script.tpl:1
-msgid "Import sieve script"
-msgstr "importovat skript v Sieve"
-
-#: personal/mail/sieve/templates/import_script.tpl:2
-msgid ""
-"Please select the sieve script you want to import. Use the import button to "
-"import the script or the cancel button to abort."
-msgstr "Vyberte prosím skript v Sieve, který chcete importovat. Poté klikněte na „importovat“ nebo celou akci zrušte kliknutím na “zrušit“."
-
-#: personal/mail/sieve/templates/import_script.tpl:5
-msgid "Script to import"
-msgstr "skript k importu"
-
-#: personal/mail/sieve/templates/import_script.tpl:12
-#: personal/mail/sieve/templates/edit_frame_base.tpl:7
-msgid "Import"
-msgstr "import"
-
-#: personal/mail/sieve/templates/element_exists.tpl:10
-#: personal/mail/sieve/templates/element_address.tpl:116
-#: personal/mail/sieve/templates/element_size.tpl:11
-#: personal/mail/sieve/templates/element_envelope.tpl:108
-#: personal/mail/sieve/templates/element_allof.tpl:5
-#: personal/mail/sieve/templates/element_anyof.tpl:5
-#: personal/mail/sieve/templates/element_header.tpl:109
-msgid "Not"
-msgstr "ne"
-
-#: personal/mail/sieve/templates/element_exists.tpl:10
-#: personal/mail/sieve/templates/element_exists.tpl:12
-#: personal/mail/sieve/templates/element_size.tpl:11
-#: personal/mail/sieve/templates/element_size.tpl:13
-#: personal/mail/sieve/templates/element_envelope.tpl:41
-#: personal/mail/sieve/templates/element_envelope.tpl:43
-#: personal/mail/sieve/templates/element_allof.tpl:5
-#: personal/mail/sieve/templates/element_allof.tpl:7
-#: personal/mail/sieve/templates/element_anyof.tpl:5
-#: personal/mail/sieve/templates/element_anyof.tpl:7
-msgid "Inverse match"
-msgstr "obrácená shoda"
-
-#: personal/mail/sieve/templates/element_exists.tpl:12
-#: personal/mail/sieve/templates/element_address.tpl:118
-#: personal/mail/sieve/templates/element_size.tpl:13
-#: personal/mail/sieve/templates/element_envelope.tpl:110
-#: personal/mail/sieve/templates/element_allof.tpl:7
-#: personal/mail/sieve/templates/element_header.tpl:111
-msgid "-"
-msgstr "–"
-
-#: personal/mail/sieve/templates/management.tpl:1
-msgid "List of sieve scripts"
-msgstr "seznam skriptů v Sieve"
-
-#: personal/mail/sieve/templates/management.tpl:5
-msgid ""
-"Connection to the sieve server could not be established, the "
-"authentification attribute is empty."
-msgstr "Není možné navázat připojení na Sieve server – atribut pro ověření je prázdný."
-
-#: personal/mail/sieve/templates/management.tpl:6
-msgid ""
-"Please verify that the attributes uid and mail are not empty and try again."
-msgstr "Ověřte prosím, že atributy „uid“ a „mail“ nejsou prázdné a zkuste to znovu."
-
-#: personal/mail/sieve/templates/management.tpl:12
-msgid "Connection to the sieve server could not be established."
-msgstr "Připojení na Sieve server se nezdařilo."
-
-#: personal/mail/sieve/templates/management.tpl:15
-msgid "Possibly the sieve account has not been created yet."
-msgstr "Účet Sieve pravděpodobně ještě nebyl vytvořen."
-
-#: personal/mail/sieve/templates/management.tpl:19
-msgid ""
-"Be careful. All your changes will be saved directly to sieve, if you use the"
-" save button below."
-msgstr "Buďte opatrní – jakmile kliknete na „uložit“ všechny Vámi provedené změny se okamžitě promítnou přímo do Sieve."
-
-#: personal/mail/sieve/templates/management.tpl:22
-msgid "Create new script"
-msgstr "vytvořit nový skript"
-
-#: personal/mail/sieve/templates/element_address.tpl:25
-#: personal/mail/sieve/templates/element_envelope.tpl:26
-#: personal/mail/sieve/templates/element_header.tpl:26
-msgid "Match type"
-msgstr "typ shody"
-
-#: personal/mail/sieve/templates/element_address.tpl:28
-#: personal/mail/sieve/templates/element_address.tpl:51
-#: personal/mail/sieve/templates/element_address.tpl:61
-#: personal/mail/sieve/templates/element_address.tpl:72
-#: personal/mail/sieve/templates/element_address.tpl:121
-#: personal/mail/sieve/templates/element_address.tpl:126
-#: personal/mail/sieve/templates/element_envelope.tpl:29
-#: personal/mail/sieve/templates/element_envelope.tpl:52
-#: personal/mail/sieve/templates/element_envelope.tpl:63
-#: personal/mail/sieve/templates/element_envelope.tpl:113
-#: personal/mail/sieve/templates/element_envelope.tpl:118
-#: personal/mail/sieve/templates/element_header.tpl:29
-#: personal/mail/sieve/templates/element_header.tpl:52
-#: personal/mail/sieve/templates/element_header.tpl:63
-#: personal/mail/sieve/templates/element_header.tpl:114
-#: personal/mail/sieve/templates/element_header.tpl:119
-#: personal/mail/sieve/templates/element_boolean.tpl:5
+#: personal/mail/sieve/templates/element_boolean.tpl.c:5
+#: personal/mail/sieve/templates/element_address.tpl.c:11
+#: personal/mail/sieve/templates/element_address.tpl.c:26
+#: personal/mail/sieve/templates/element_address.tpl.c:32
+#: personal/mail/sieve/templates/element_address.tpl.c:38
+#: personal/mail/sieve/templates/element_address.tpl.c:56
+#: personal/mail/sieve/templates/element_address.tpl.c:59
+#: personal/mail/sieve/templates/element_header.tpl.c:11
+#: personal/mail/sieve/templates/element_header.tpl.c:26
+#: personal/mail/sieve/templates/element_header.tpl.c:32
+#: personal/mail/sieve/templates/element_header.tpl.c:50
+#: personal/mail/sieve/templates/element_header.tpl.c:53
+#: personal/mail/sieve/templates/element_envelope.tpl.c:11
+#: personal/mail/sieve/templates/element_envelope.tpl.c:32
+#: personal/mail/sieve/templates/element_envelope.tpl.c:38
+#: personal/mail/sieve/templates/element_envelope.tpl.c:56
+#: personal/mail/sieve/templates/element_envelope.tpl.c:59
 msgid "Boolean value"
 msgstr ""
 
-#: personal/mail/sieve/templates/element_address.tpl:36
-#: personal/mail/sieve/templates/element_envelope.tpl:37
-#: personal/mail/sieve/templates/element_header.tpl:37
-msgid "Invert test"
-msgstr "obrátit (invertovat) test"
+#: personal/mail/sieve/templates/element_boolean.tpl.c:8
+msgid "update"
+msgstr "aktualizovat"
 
-#: personal/mail/sieve/templates/element_address.tpl:40
-#: personal/mail/sieve/templates/element_envelope.tpl:41
-#: personal/mail/sieve/templates/element_header.tpl:41
-msgid "Yes"
-msgstr "ano"
-
-#: personal/mail/sieve/templates/element_address.tpl:42
-#: personal/mail/sieve/templates/element_envelope.tpl:43
-#: personal/mail/sieve/templates/element_header.tpl:43
-msgid "No"
-msgstr "ne"
-
-#: personal/mail/sieve/templates/element_address.tpl:48
-msgid "Part of address that should be used"
-msgstr "část adresy, která má být použita"
-
-#: personal/mail/sieve/templates/element_address.tpl:58
-#: personal/mail/sieve/templates/element_envelope.tpl:49
-#: personal/mail/sieve/templates/element_header.tpl:49
-msgid "Comparator"
-msgstr "porovnání"
-
-#: personal/mail/sieve/templates/element_address.tpl:69
-#: personal/mail/sieve/templates/element_envelope.tpl:60
-msgid "Operator"
-msgstr "operátor"
-
-#: personal/mail/sieve/templates/element_address.tpl:85
-#: personal/mail/sieve/templates/element_envelope.tpl:76
-#: personal/mail/sieve/templates/element_header.tpl:77
-msgid "Address fields to include"
-msgstr "zahrnout tyto pole z adresy"
-
-#: personal/mail/sieve/templates/element_address.tpl:89
-#: personal/mail/sieve/templates/element_envelope.tpl:80
-#: personal/mail/sieve/templates/element_header.tpl:81
-msgid "Values to match for"
-msgstr ""
-
-#: personal/mail/sieve/templates/element_size.tpl:16
-msgid "Select match type"
-msgstr "zvolte typ shody"
-
-#: personal/mail/sieve/templates/element_size.tpl:20
-msgid "Select value unit"
-msgstr "zvolte jednotku hodnoty"
-
-#: personal/mail/sieve/templates/edit_frame_base.tpl:6
-msgid "Export"
-msgstr "export(ovat)"
-
-#: personal/mail/sieve/templates/edit_frame_base.tpl:12
-msgid "View structured"
-msgstr "zobrazit uspořádaně"
-
-#: personal/mail/sieve/templates/edit_frame_base.tpl:14
-msgid "View source"
-msgstr "zobrazit zdroj"
-
-#: personal/mail/sieve/templates/add_element.tpl:1
+#: personal/mail/sieve/templates/add_element.tpl.c:2
 msgid "Add a new element"
 msgstr "přidat nový prvek"
 
-#: personal/mail/sieve/templates/add_element.tpl:2
+#: personal/mail/sieve/templates/add_element.tpl.c:5
 msgid "Please select the type of element you want to add"
 msgstr "vyberte prosím typ prvku, který chcete přidat"
 
-#: personal/mail/sieve/templates/add_element.tpl:11
-#: personal/mail/sieve/templates/select_test_type.tpl:11
+#: personal/mail/sieve/templates/add_element.tpl.c:8
+#: personal/mail/sieve/templates/select_test_type.tpl.c:8
 msgid "Continue"
 msgstr "pokračovat"
 
-#: personal/mail/sieve/templates/add_element.tpl:13
+#: personal/mail/sieve/templates/add_element.tpl.c:11
 msgid "Abort"
 msgstr "přerušit"
 
-#: personal/mail/sieve/templates/element_fileinto.tpl:4
+#: personal/mail/sieve/templates/element_reject.tpl.c:2
+msgid "Reject mail"
+msgstr "odmítnout zprávu"
+
+#: personal/mail/sieve/templates/element_reject.tpl.c:5
+msgid "This is a multiline text element"
+msgstr "toto je víceřádkový textový prvek"
+
+#: personal/mail/sieve/templates/element_reject.tpl.c:8
+msgid "This is stored as single string"
+msgstr "toto je uloženo jako jediný řetězec"
+
+#: personal/mail/sieve/templates/element_stop.tpl.c:5
+msgid "Stop execution here"
+msgstr "zastavit provádění zde"
+
+#: personal/mail/sieve/templates/element_fileinto.tpl.c:2
 msgid "Move mail into folder"
 msgstr "přesunout zprávu do složky"
 
-#: personal/mail/sieve/templates/element_fileinto.tpl:8
+#: personal/mail/sieve/templates/element_fileinto.tpl.c:5
 msgid "Select from list"
 msgstr "vybrat ze seznamu"
 
-#: personal/mail/sieve/templates/element_fileinto.tpl:10
+#: personal/mail/sieve/templates/element_fileinto.tpl.c:8
 msgid "Manual selection"
 msgstr "ruční výběr"
 
-#: personal/mail/sieve/templates/element_fileinto.tpl:18
+#: personal/mail/sieve/templates/element_fileinto.tpl.c:11
 msgid "Folder"
 msgstr "složka"
 
-#: personal/mail/sieve/templates/element_comment.tpl:8
+#: personal/mail/sieve/templates/element_comment.tpl.c:5
 msgid "Edit"
 msgstr "upravit"
 
-#: personal/mail/sieve/templates/remove_script.tpl:6
-msgid ""
-"Please double check if your really want to do this since there is no way for"
-" FusionDirectory to get your data back."
-msgstr "Prosím velmi dobře si rozmyslete, zda to opravdu chcete udělat, protože provedené změny už ve FusionDirectory nepůjde vzít nijak jednoduše zpět (nanejvýš složitě ze záloh, pokud existují a obsahují potřebná data)!"
+#: personal/mail/sieve/templates/element_size.tpl.c:5
+#: personal/mail/sieve/templates/element_allof.tpl.c:2
+#: personal/mail/sieve/templates/element_address.tpl.c:50
+#: personal/mail/sieve/templates/element_exists.tpl.c:5
+#: personal/mail/sieve/templates/element_anyof.tpl.c:2
+#: personal/mail/sieve/templates/element_header.tpl.c:44
+#: personal/mail/sieve/templates/element_envelope.tpl.c:50
+msgid "Not"
+msgstr "ne"
 
-#: personal/mail/sieve/templates/remove_script.tpl:10
+#: personal/mail/sieve/templates/element_size.tpl.c:8
+#: personal/mail/sieve/templates/element_size.tpl.c:14
+#: personal/mail/sieve/templates/element_allof.tpl.c:5
+#: personal/mail/sieve/templates/element_allof.tpl.c:11
+#: personal/mail/sieve/templates/element_exists.tpl.c:8
+#: personal/mail/sieve/templates/element_exists.tpl.c:14
+#: personal/mail/sieve/templates/element_anyof.tpl.c:5
+#: personal/mail/sieve/templates/element_anyof.tpl.c:8
+#: personal/mail/sieve/templates/element_envelope.tpl.c:20
+#: personal/mail/sieve/templates/element_envelope.tpl.c:26
+msgid "Inverse match"
+msgstr "obrácená shoda"
+
+#: personal/mail/sieve/templates/element_size.tpl.c:11
+#: personal/mail/sieve/templates/element_allof.tpl.c:8
+#: personal/mail/sieve/templates/element_address.tpl.c:53
+#: personal/mail/sieve/templates/element_exists.tpl.c:11
+#: personal/mail/sieve/templates/element_header.tpl.c:47
+#: personal/mail/sieve/templates/element_envelope.tpl.c:53
+msgid "-"
+msgstr "–"
+
+#: personal/mail/sieve/templates/element_size.tpl.c:17
+msgid "Select match type"
+msgstr "zvolte typ shody"
+
+#: personal/mail/sieve/templates/element_size.tpl.c:20
+msgid "Select value unit"
+msgstr "zvolte jednotku hodnoty"
+
+#: personal/mail/sieve/templates/object_container_clear.tpl.c:2
+msgid "Move this object up one position"
+msgstr "přesunout objekt o jednu pozici nahoru"
+
+#: personal/mail/sieve/templates/object_container_clear.tpl.c:11
+msgid "Move this object down one position"
+msgstr "přesunout objekt o jednu pozici dolů"
+
+#: personal/mail/sieve/templates/object_container_clear.tpl.c:20
+msgid "Remove this object"
+msgstr "odebrat tento objekt"
+
+#: personal/mail/sieve/templates/import_script.tpl.c:2
+msgid "Import sieve script"
+msgstr "importovat skript v Sieve"
+
+#: personal/mail/sieve/templates/import_script.tpl.c:5
+msgid ""
+"Please select the sieve script you want to import. Use the import button to "
+"import the script or the cancel button to abort."
+msgstr ""
+"Vyberte prosím skript v Sieve, který chcete importovat. Poté klikněte na "
+"„importovat“ nebo celou akci zrušte kliknutím na “zrušit“."
+
+#: personal/mail/sieve/templates/import_script.tpl.c:8
+msgid "Script to import"
+msgstr "skript k importu"
+
+#: personal/mail/sieve/templates/import_script.tpl.c:11
+#: personal/mail/sieve/templates/edit_frame_base.tpl.c:5
+msgid "Import"
+msgstr "import"
+
+#: personal/mail/sieve/templates/create_script.tpl.c:2
+msgid ""
+"Please enter the name for the new script below. Script names must consist of "
+"lower case characters only."
+msgstr ""
+"Zadejte prosím název skriptu níže. Názvy skriptů mohou být pouze malými "
+"písmeny."
+
+#: personal/mail/sieve/templates/create_script.tpl.c:5
+msgid "Script name"
+msgstr "název skriptu"
+
+#: personal/mail/sieve/templates/element_vacation.tpl.c:2
+msgid "Vacation Message"
+msgstr "zpráva „jsem na dovolené“"
+
+#: personal/mail/sieve/templates/element_vacation.tpl.c:5
+#: personal/mail/sieve/templates/element_address.tpl.c:5
+#: personal/mail/sieve/templates/element_header.tpl.c:5
+#: personal/mail/sieve/templates/element_envelope.tpl.c:5
+msgid "Normal view"
+msgstr "běžné zobrazení"
+
+#: personal/mail/sieve/templates/element_vacation.tpl.c:8
+msgid "Release interval"
+msgstr ""
+
+#: personal/mail/sieve/templates/element_vacation.tpl.c:11
+msgid "days"
+msgstr "dny"
+
+#: personal/mail/sieve/templates/element_vacation.tpl.c:14
+msgid "Alternative sender addresses"
+msgstr "alternativní adresa odesilatele"
+
+#: personal/mail/sieve/templates/element_vacation.tpl.c:20
+#: personal/mail/sieve/templates/element_address.tpl.c:62
+#: personal/mail/sieve/templates/element_header.tpl.c:56
+#: personal/mail/sieve/templates/element_envelope.tpl.c:62
+msgid "Expert view"
+msgstr "zobrazení pro odborníky"
+
+#: personal/mail/sieve/templates/select_test_type.tpl.c:2
+msgid "Select the type of test you want to add"
+msgstr "vyberte typ testu, který chcete přidat"
+
+#: personal/mail/sieve/templates/select_test_type.tpl.c:5
+msgid "Available test types"
+msgstr "dostupné typy testů"
+
+#: personal/mail/sieve/templates/element_redirect.tpl.c:5
+msgid "Redirect mail to following recipients"
+msgstr "zprávy přesměrovat na tyto příjemce"
+
+#: personal/mail/sieve/templates/edit_frame_base.tpl.c:2
+msgid "Export"
+msgstr "export(ovat)"
+
+#: personal/mail/sieve/templates/edit_frame_base.tpl.c:8
+msgid "View structured"
+msgstr "zobrazit uspořádaně"
+
+#: personal/mail/sieve/templates/edit_frame_base.tpl.c:11
+msgid "View source"
+msgstr "zobrazit zdroj"
+
+#: personal/mail/sieve/templates/element_address.tpl.c:8
+#: personal/mail/sieve/templates/element_header.tpl.c:8
+#: personal/mail/sieve/templates/element_envelope.tpl.c:8
+msgid "Match type"
+msgstr "typ shody"
+
+#: personal/mail/sieve/templates/element_address.tpl.c:14
+#: personal/mail/sieve/templates/element_header.tpl.c:14
+#: personal/mail/sieve/templates/element_envelope.tpl.c:14
+msgid "Invert test"
+msgstr "obrátit (invertovat) test"
+
+#: personal/mail/sieve/templates/element_address.tpl.c:17
+#: personal/mail/sieve/templates/element_header.tpl.c:17
+#: personal/mail/sieve/templates/element_envelope.tpl.c:17
+msgid "Yes"
+msgstr "ano"
+
+#: personal/mail/sieve/templates/element_address.tpl.c:20
+#: personal/mail/sieve/templates/element_header.tpl.c:20
+#: personal/mail/sieve/templates/element_envelope.tpl.c:23
+msgid "No"
+msgstr "ne"
+
+#: personal/mail/sieve/templates/element_address.tpl.c:23
+msgid "Part of address that should be used"
+msgstr "část adresy, která má být použita"
+
+#: personal/mail/sieve/templates/element_address.tpl.c:29
+#: personal/mail/sieve/templates/element_header.tpl.c:23
+#: personal/mail/sieve/templates/element_envelope.tpl.c:29
+msgid "Comparator"
+msgstr "porovnání"
+
+#: personal/mail/sieve/templates/element_address.tpl.c:35
+#: personal/mail/sieve/templates/element_envelope.tpl.c:35
+msgid "Operator"
+msgstr "operátor"
+
+#: personal/mail/sieve/templates/element_address.tpl.c:41
+#: personal/mail/sieve/templates/element_header.tpl.c:35
+#: personal/mail/sieve/templates/element_envelope.tpl.c:41
+msgid "Address fields to include"
+msgstr "zahrnout tyto pole z adresy"
+
+#: personal/mail/sieve/templates/element_address.tpl.c:44
+#: personal/mail/sieve/templates/element_header.tpl.c:38
+#: personal/mail/sieve/templates/element_envelope.tpl.c:44
+msgid "Values to match for"
+msgstr ""
+
+#: personal/mail/sieve/templates/management.tpl.c:2
+msgid "List of sieve scripts"
+msgstr "seznam skriptů v Sieve"
+
+#: personal/mail/sieve/templates/management.tpl.c:5
+msgid ""
+"Connection to the sieve server could not be established, the "
+"authentification attribute is empty."
+msgstr ""
+"Není možné navázat připojení na Sieve server – atribut pro ověření je "
+"prázdný."
+
+#: personal/mail/sieve/templates/management.tpl.c:8
+msgid ""
+"Please verify that the attributes uid and mail are not empty and try again."
+msgstr ""
+"Ověřte prosím, že atributy „uid“ a „mail“ nejsou prázdné a zkuste to znovu."
+
+#: personal/mail/sieve/templates/management.tpl.c:11
+msgid "Connection to the sieve server could not be established."
+msgstr "Připojení na Sieve server se nezdařilo."
+
+#: personal/mail/sieve/templates/management.tpl.c:14
+msgid "Possibly the sieve account has not been created yet."
+msgstr "Účet Sieve pravděpodobně ještě nebyl vytvořen."
+
+#: personal/mail/sieve/templates/management.tpl.c:17
+msgid ""
+"Be careful. All your changes will be saved directly to sieve, if you use the "
+"save button below."
+msgstr ""
+"Buďte opatrní – jakmile kliknete na „uložit“ všechny Vámi provedené změny se "
+"okamžitě promítnou přímo do Sieve."
+
+#: personal/mail/sieve/templates/management.tpl.c:20
+msgid "Create new script"
+msgstr "vytvořit nový skript"
+
+#: personal/mail/sieve/templates/element_keep.tpl.c:5
+msgid "Keep message"
+msgstr "uchovat zprávu"
+
+#: personal/mail/sieve/templates/object_test_container.tpl.c:2
+msgid "Add object"
+msgstr "přidat objekt"
+
+#: personal/mail/sieve/templates/remove_script.tpl.c:5
+msgid ""
+"Please double check if your really want to do this since there is no way for "
+"FusionDirectory to get your data back."
+msgstr ""
+"Prosím velmi dobře si rozmyslete, zda to opravdu chcete udělat, protože "
+"provedené změny už ve FusionDirectory nepůjde vzít nijak jednoduše zpět "
+"(nanejvýš složitě ze záloh, pokud existují a obsahují potřebná data)!"
+
+#: personal/mail/sieve/templates/remove_script.tpl.c:8
 msgid ""
 "Best thing to do before performing this action would be to save the current "
 "script in a file. So - if you've done so - press 'Delete' to continue or "
 "'Cancel' to abort."
-msgstr "Před provedením akce doporučujeme uložit si upravovaný skript do souboru. Pokud jste tak již učinil(a), klikněte na 'smazat', nebo celou akci zrušte kliknutím na 'zrušit'."
+msgstr ""
+"Před provedením akce doporučujeme uložit si upravovaný skript do souboru. "
+"Pokud jste tak již učinil(a), klikněte na 'smazat', nebo celou akci zrušte "
+"kliknutím na 'zrušit'."
 
-#: personal/mail/sieve/templates/element_redirect.tpl:18
-msgid "Redirect mail to following recipients"
-msgstr "zprávy přesměrovat na tyto příjemce"
-
-#: personal/mail/sieve/templates/element_keep.tpl:9
-msgid "Keep message"
-msgstr "uchovat zprávu"
-
-#: personal/mail/sieve/templates/object_container_clear.tpl:8
-msgid "Move this object up one position"
-msgstr "přesunout objekt o jednu pozici nahoru"
-
-#: personal/mail/sieve/templates/object_container_clear.tpl:8
-#: personal/mail/sieve/templates/object_container.tpl:8
-msgid "Up"
-msgstr "nahoru"
-
-#: personal/mail/sieve/templates/object_container_clear.tpl:9
-#: personal/mail/sieve/templates/object_container.tpl:9
-msgid "Move up"
-msgstr "přesunout nahoru"
-
-#: personal/mail/sieve/templates/object_container_clear.tpl:12
-msgid "Move this object down one position"
-msgstr "přesunout objekt o jednu pozici dolů"
-
-#: personal/mail/sieve/templates/object_container_clear.tpl:12
-#: personal/mail/sieve/templates/object_container.tpl:12
-msgid "Down"
-msgstr "dolů"
-
-#: personal/mail/sieve/templates/object_container_clear.tpl:13
-#: personal/mail/sieve/templates/object_container.tpl:13
-msgid "Move down"
-msgstr "přesunout dolů"
-
-#: personal/mail/sieve/templates/object_container_clear.tpl:16
-msgid "Remove this object"
-msgstr "odebrat tento objekt"
-
-#: personal/mail/sieve/templates/object_container_clear.tpl:17
-#: personal/mail/sieve/templates/object_container.tpl:17
-msgid "Remove element"
-msgstr "odebrat prvek"
-
-#: personal/mail/sieve/templates/element_discard.tpl:9
-msgid "Discard message"
-msgstr "zahodit zprávu"
-
-#: personal/mail/sieve/templates/element_stop.tpl:9
-msgid "Stop execution here"
-msgstr "zastavit provádění zde"
-
-#: personal/mail/sieve/templates/element_header.tpl:60
+#: personal/mail/sieve/templates/element_header.tpl.c:29
 msgid "operator"
 msgstr "operátor"
 
-#: personal/mail/sieve/templates/create_script.tpl:2
-msgid ""
-"Please enter the name for the new script below. Script names must consist of"
-" lower case characters only."
-msgstr "Zadejte prosím název skriptu níže. Názvy skriptů mohou být pouze malými písmeny."
+#: personal/mail/sieve/templates/element_discard.tpl.c:5
+msgid "Discard message"
+msgstr "zahodit zprávu"
 
-#: personal/mail/sieve/templates/create_script.tpl:8
-msgid "Script name"
-msgstr "název skriptu"
+#: admin/ogroups/mail/mail.tpl.c:2
+msgid "Mail distribution list"
+msgstr "distribuční seznam"
 
-#: personal/mail/sieve/templates/object_container.tpl:8
-msgid "Move object up one position"
-msgstr "přesunout objekt o jednu pozici nahoru"
+#: admin/ogroups/mail/mail.tpl.c:8
+msgid "Primary mail address for this distribution list"
+msgstr "hlavní e-mailová adresa pro tento distribuční seznam"
 
-#: personal/mail/sieve/templates/object_container.tpl:12
-msgid "Move object down one position"
-msgstr "přesunout objekt o jednu pozici dolů"
+#: admin/ogroups/mail/paste_mail.tpl.c:5
+msgid "Please enter a mail address"
+msgstr "zadejte prosím e-mailovou adresu"
 
-#: personal/mail/sieve/templates/object_container.tpl:16
-#: personal/mail/sieve/templates/object_test_container.tpl:10
-msgid "Remove object"
-msgstr "odebrat objekt"
+#~ msgid "Folder administrators"
+#~ msgstr "správci složek"
 
-#: personal/mail/sieve/templates/object_container.tpl:21
-msgid "choose element"
-msgstr "zvolit prvek"
+#~ msgid "Select a specific department"
+#~ msgstr "vyberte konkrétní oddělení"
 
-#: personal/mail/sieve/templates/object_container.tpl:24
-msgid "Fileinto"
-msgstr ""
+#~ msgid "Choose"
+#~ msgstr "zvolit"
 
-#: personal/mail/sieve/templates/object_container.tpl:38
-#: personal/mail/sieve/templates/object_container.tpl:42
-msgid "Add new"
-msgstr "přidat nové"
+#~ msgid "Cannot receive folder types: %s"
+#~ msgstr "Nezdařilo se zjistit typy složky: %s"
 
-#: personal/mail/sieve/templates/object_container.tpl:38
-#: personal/mail/sieve/templates/object_container.tpl:40
-msgid "Add a new object above this one."
-msgstr "Přidat nový objekt nad tento."
+#~ msgid "Cannot receive folder permissions: %s"
+#~ msgstr "Nezdařilo se zjistit práva na složce: %s"
 
-#: personal/mail/sieve/templates/object_container.tpl:40
-msgid "Add element above"
-msgstr "přidat prvek nad"
+#~ msgid ""
+#~ "Remove shared folder from mail server database when entry gets removed in "
+#~ "LDAP"
+#~ msgstr ""
+#~ "při odebírání položky z LDAPu odebrat také sdílenou složku z poštovního "
+#~ "serveru"
 
-#: personal/mail/sieve/templates/object_container.tpl:42
-#: personal/mail/sieve/templates/object_container.tpl:44
-msgid "Add a new object below this one."
-msgstr "Přidat nový objekt pod tento."
+#~ msgid ""
+#~ "Remove the shared folder and all its contents after saving this account"
+#~ msgstr ""
+#~ "po uložení tohoto účtu odebrat sdílenou složku (včetně veškerého jejího "
+#~ "obsahu)"
 
-#: personal/mail/sieve/templates/object_container.tpl:44
-msgid "Add element below"
-msgstr "přidat prvek pod"
+#~ msgid "Please select an entry!"
+#~ msgstr "prosím vyberte (nějakou) položku!"
 
-#: personal/mail/sieve/templates/element_reject.tpl:14
-msgid "Reject mail"
-msgstr "odmítnout zprávu"
+#~ msgid "Cannot add primary address to the list of forwarders!"
+#~ msgstr "Přidání hlavní adresy na seznam přeposílání se nezdařilo!"
 
-#: personal/mail/sieve/templates/element_reject.tpl:17
-msgid "This is a multiline text element"
-msgstr "toto je víceřádkový textový prvek"
+#~ msgid "Address is already in use by group '%s'."
+#~ msgstr "Danou adresu již využívá skupina '%s'."
 
-#: personal/mail/sieve/templates/element_reject.tpl:19
-msgid "This is stored as single string"
-msgstr "toto je uloženo jako jediný řetězec"
+#~ msgid "Address is already in use by user '%s'."
+#~ msgstr "Danou adresu již využívá uživatel '%s'."
 
-#: personal/mail/sieve/templates/select_test_type.tpl:1
-msgid "Select the type of test you want to add"
-msgstr "vyberte typ testu, který chcete přidat"
+#~ msgid "Cannot remove mailbox: %s"
+#~ msgstr "Nelze odebrat schárnku: %s"
 
-#: personal/mail/sieve/templates/select_test_type.tpl:3
-msgid "Available test types"
-msgstr "dostupné typy testů"
+#~ msgid "Cannot update shared folder permissions: %s"
+#~ msgstr "Nezdařilo se aktualizovat práva na sdílené složce: %s"
 
-#: personal/mail/sieve/templates/object_test_container.tpl:6
-msgid "Add object"
-msgstr "přidat objekt"
+#~ msgid "New"
+#~ msgstr "nové"
 
-#: personal/mail/sieve/templates/element_boolean.tpl:4
-msgid "Bool"
-msgstr "ano/ne (Boolean)"
+#~ msgid ""
+#~ "The group 'cn' has changed. It can't be changed due to the fact that mail "
+#~ "method '%s' relies on it!"
+#~ msgstr ""
+#~ "Skupina 'cn' byla změněna. To není dobré, protože na ní závisí způsob "
+#~ "nakládání s e-maily '%s'!"
 
-#: personal/mail/sieve/templates/element_boolean.tpl:8
-msgid "update"
-msgstr "aktualizovat"
+#~ msgid "Mail max size"
+#~ msgstr "nejvyšší povolený datový objem zprávy"
 
-#: personal/mail/class_mailAccount.inc:59
-msgid "Part of the quota which is used"
-msgstr ""
+#~ msgid "You need to set the maximum mail size in order to reject anything."
+#~ msgstr ""
+#~ "Aby odmítání zpráv vůbec fungovalo, musíte nastavit největší povolenou "
+#~ "velikost zpráv."
 
-#: personal/mail/class_mailAccount.inc:96
-msgid "Primary mail address"
-msgstr ""
+#~ msgid "Mail server"
+#~ msgstr "poštovní server"
 
-#: personal/mail/class_mailAccount.inc:112
-msgid "Other addresses and redirections"
-msgstr ""
+#~ msgid "Folder type"
+#~ msgstr "typ složky"
 
-#: personal/mail/class_mailAccount.inc:122
-msgid "Forward messages to"
-msgstr "přesměrovat zprávy na"
+#~ msgid "Kolab"
+#~ msgstr "Kolab"
 
-#: personal/mail/class_mailAccount.inc:122
-msgid "Addresses to which messages should be forwarded"
-msgstr ""
+#~ msgid "Alternate addresses"
+#~ msgstr "alternativní adresa"
 
-#: personal/mail/class_mailAccount.inc:131
-msgid "Activate vacation message"
-msgstr "aktivovat zprávu „jsem na dovolené“"
+#~ msgid "Forwarding addresses"
+#~ msgstr "adresy k přeposílání"
 
-#: personal/mail/class_mailAccount.inc:132
-msgid ""
-"Select to automatically response with the vacation message defined below"
-msgstr "zaškrtněte pro automatické odpovídání níže uvedenou zprávou „jsem na dovolené“"
+#~ msgid "Only local"
+#~ msgstr "pouze místní"
 
-#: personal/mail/class_mailAccount.inc:137
-msgid "from"
-msgstr "od"
+#~ msgid "Permissions"
+#~ msgstr "oprávnění"
 
-#: personal/mail/class_mailAccount.inc:142
-msgid "till"
-msgstr "dokud"
+#~ msgid "Primary mail address for this shared folder"
+#~ msgstr "hlavní e-mailová adresa pro tuto sdílenou složku"
 
-#: personal/mail/class_mailAccount.inc:153
-msgid "Spam options"
-msgstr ""
+#~ msgid "Add local"
+#~ msgstr "přidat místní"
 
-#: personal/mail/class_mailAccount.inc:156
-msgid "Move mails depending on spam level"
-msgstr ""
+#~ msgid "Reload"
+#~ msgstr "načíst znovu"
 
-#: personal/mail/class_mailAccount.inc:161
-msgid "Minimum spam level"
-msgstr ""
+#~ msgid "IMAP shared folders"
+#~ msgstr "sdílené složky IMAPu"
 
-#: personal/mail/class_mailAccount.inc:161
-msgid "Spam level above which a mail will be moved"
-msgstr ""
+#~ msgid "Default permission"
+#~ msgstr "výchozí oprávnění"
 
-#: personal/mail/class_mailAccount.inc:166
-msgid "Move spam to folder"
-msgstr ""
+#~ msgid "Member permission"
+#~ msgstr "oprávnění členů"
 
-#: personal/mail/class_mailAccount.inc:166
-msgid "Folder in which spam will be moved"
-msgstr ""
+#~ msgid "Hide"
+#~ msgstr "skrýt"
 
-#: personal/mail/class_mailAccount.inc:171
-msgid "Reject mail depending on their size"
-msgstr ""
+#~ msgid "Show"
+#~ msgstr "zobrazit"
 
-#: personal/mail/class_mailAccount.inc:171
-msgid "Messages bigger than the chosen size will be rejected"
-msgstr ""
+#~ msgid "Used in all groups"
+#~ msgstr "použito ve všech skupinách"
 
-#: personal/mail/class_mailAccount.inc:176
-msgid "Minimum size to reject a mail (MB)"
-msgstr ""
+#~ msgid "Not used in all groups"
+#~ msgstr "nepoužito v žádné skupině"
 
-#: personal/mail/class_mailAccount.inc:196
-msgid "Use custom sieve script"
-msgstr "použít vlastní skript Sieve"
+#~ msgid "Select addresses to add"
+#~ msgstr "vybrat adresy, které budou přidány"
 
-#: personal/mail/class_mailAccount.inc:196
-msgid "disables all Mail options!"
-msgstr "zakáže všechny volby e-mailu!"
+#~ msgid "Filters"
+#~ msgstr "filtry"
 
-#: personal/mail/class_mailAccount.inc:197
-msgid "Use your sieve script with personnal customization"
-msgstr ""
+#~ msgid "Display addresses of department"
+#~ msgstr "zobrazit adresy oddělení"
 
-#: personal/mail/class_mailAccount.inc:208
-msgid "No delivery to own mailbox"
-msgstr "nedoručovat do vlastní schránky"
+#~ msgid "Choose the department the search will be based on"
+#~ msgstr "vyberte oddělení ve kterém se bude hledat"
 
-#: personal/mail/class_mailAccount.inc:209
-msgid "Select if you want to forward mails without getting own copies of them"
-msgstr "Zvolte, zda chcete přeposílat zprávy bez toho, abyste si ponechávali jejich kopie."
+#~ msgid "Display addresses matching"
+#~ msgstr "zobrazit adresy odpovídající"
 
-#: personal/mail/class_mail-methods.inc:156
-#: personal/mail/class_mail-methods.inc:501
-msgid "Configuration error"
-msgstr "chyba v nastavení"
+#~ msgid "Regular expression for matching addresses"
+#~ msgstr "regulární výraz pro nalezení odpovídající adresy"
 
-#: personal/mail/class_mail-methods.inc:157
-#, php-format
-msgid "The configured mail attribute '%s' is unsupported!"
-msgstr "Nastavený atribut zprávy '%s' není podporován!"
+#~ msgid "Display addresses of user"
+#~ msgstr "zobrazit adresy uživatele"
 
-#: personal/mail/class_mail-methods.inc:502
-#, php-format
-msgid "Mail method '%s' is unknown!"
-msgstr "Neznámý systém správy e-mailů '%s'!"
-
-#: personal/mail/class_mail-methods.inc:727
-#: personal/mail/class_mail-methods.inc:728
-msgid "None"
-msgstr "žádné"
-
-#: personal/mail/class_mail-methods.inc:817
-msgid "Unknown"
-msgstr "neznámé"
-
-#: personal/mail/class_mail-methods.inc:819
-msgid "Unlimited"
-msgstr "neomezené"
+#~ msgid "User name of which addresses are shown"
+#~ msgstr "uživatelské jméno ke kterému jsou zobrazeny adresy"

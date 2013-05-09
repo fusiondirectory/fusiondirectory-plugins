@@ -1,375 +1,321 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 #  Jiang Xin <worldhello.net@gmail.com>, 2007
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
-"POT-Creation-Date: 2013-03-24 15:12+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-05-09 19:19+0200\n"
 "PO-Revision-Date: 2013-03-24 15:00+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Chinese (http://www.transifex.com/projects/p/FusionDirectory/language/zh/)\n"
+"Language-Team: Chinese (http://www.transifex.com/projects/p/FusionDirectory/"
+"language/zh/)\n"
+"Language: zh\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: zh\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: admin/systems/samba/class_winstationGeneric.inc:40
-msgid "Winstation generic"
-msgstr ""
-
-#: admin/systems/samba/class_winstationGeneric.inc:41
-msgid "Windows workstation generic"
-msgstr ""
-
-#: admin/systems/samba/class_winstationGeneric.inc:43
-#: admin/systems/samba/class_winstationGeneric.inc:45
-msgid "Windows workstation"
-msgstr "Windows 工作站"
-
-#: admin/systems/samba/class_winstationGeneric.inc:59
-msgid "Properties"
-msgstr "属性"
-
-#: admin/systems/samba/class_winstationGeneric.inc:68
-#: admin/systems/samba/class_winstationGeneric.inc:72
-msgid "The name of the winstation"
-msgstr ""
-
-#: admin/systems/samba/class_winstationGeneric.inc:72
-msgid "Name"
-msgstr "名称"
-
-#: admin/systems/samba/class_winstationGeneric.inc:79
-msgid "Description"
-msgstr "描述"
-
-#: admin/systems/samba/class_winstationGeneric.inc:79
-msgid "A short description of the winstation"
-msgstr ""
-
-#: admin/systems/samba/class_winstationGeneric.inc:83
-#: personal/samba/class_sambaAccount.inc:170
-msgid "Domain"
-msgstr "域"
-
-#: admin/systems/samba/class_winstationGeneric.inc:83
-#: personal/samba/class_sambaAccount.inc:170
-msgid "Samba domain name"
-msgstr ""
-
-#: admin/systems/samba/class_winstationGeneric.inc:87
-msgid "Location"
-msgstr "位置"
-
-#: admin/systems/samba/class_winstationGeneric.inc:87
-msgid "The location of the winstation"
-msgstr ""
-
-#: admin/systems/samba/class_winstationGeneric.inc:94
-#: admin/systems/samba/class_winstationGeneric.inc:98
-msgid "Action"
-msgstr "行动"
-
-#: admin/systems/samba/class_winstationGeneric.inc:99
-msgid "Select action to execute for this terminal"
-msgstr "选择这个终端要执行的动作"
-
-#: admin/systems/samba/class_winstationGeneric.inc:105
-msgid "Network settings"
-msgstr ""
-
-#: config/class_sambaPluginConfig.inc:28
+#: config/samba/class_sambaPluginConfig.inc:28
 #: personal/samba/class_sambaAccount.inc:129
 msgid "Samba"
 msgstr "Samba"
 
-#: config/class_sambaPluginConfig.inc:29
+#: config/samba/class_sambaPluginConfig.inc:29
 msgid "Samba plugin configuration"
 msgstr ""
 
-#: config/class_sambaPluginConfig.inc:42
+#: config/samba/class_sambaPluginConfig.inc:42
 #: personal/samba/class_sambaAccount.inc:130
 msgid "Samba settings"
 msgstr "Samba 设置"
 
-#: config/class_sambaPluginConfig.inc:45
+#: config/samba/class_sambaPluginConfig.inc:45
 msgid "Samba machine account RDN"
 msgstr ""
 
-#: config/class_sambaPluginConfig.inc:45
+#: config/samba/class_sambaPluginConfig.inc:45
 msgid "The location where FusionDirectory looks for new samba workstations."
 msgstr ""
 
-#: config/class_sambaPluginConfig.inc:50
+#: config/samba/class_sambaPluginConfig.inc:50
 msgid "Samba ID mapping"
 msgstr ""
 
-#: config/class_sambaPluginConfig.inc:51
+#: config/samba/class_sambaPluginConfig.inc:51
 msgid ""
 "Maintain sambaIdmapEntry objects. Depending on your setup this can "
 "drastically improve the windows login performance."
 msgstr ""
 
-#: config/class_sambaPluginConfig.inc:55
+#: config/samba/class_sambaPluginConfig.inc:55
 msgid "Samba SID"
 msgstr ""
 
-#: config/class_sambaPluginConfig.inc:56
+#: config/samba/class_sambaPluginConfig.inc:56
 msgid ""
-"A samba SID if not available inside of the LDAP though samba schema. You can"
-" retrieve the current sid by net getlocalsid."
+"A samba SID if not available inside of the LDAP though samba schema. You can "
+"retrieve the current sid by net getlocalsid."
 msgstr ""
 
-#: config/class_sambaPluginConfig.inc:61
+#: config/samba/class_sambaPluginConfig.inc:61
 msgid "Samba rid base"
 msgstr ""
 
-#: config/class_sambaPluginConfig.inc:62
+#: config/samba/class_sambaPluginConfig.inc:62
 msgid ""
-"The base id to add to ordinary sid calculations - if not available inside of"
-" the LDAP though samba schema."
+"The base id to add to ordinary sid calculations - if not available inside of "
+"the LDAP though samba schema."
 msgstr ""
 
-#: config/class_sambaPluginConfig.inc:67
+#: config/samba/class_sambaPluginConfig.inc:67
 msgid "Expiration date synchronisaton"
 msgstr ""
 
-#: config/class_sambaPluginConfig.inc:67
+#: config/samba/class_sambaPluginConfig.inc:67
 msgid "Synchronisaton the expiration date with the POSIX one?"
 msgstr ""
 
-#: personal/samba/sambaLogonHours.tpl:22
-msgid "Specify the hours this user is allowed to log in"
-msgstr "指定用户允许登录几个小时"
+#: config/samba/class_sambaPluginConfig.inc:73
+msgid "Generate sambaLMPassword"
+msgstr ""
 
-#: personal/samba/sambaLogonHours.tpl:28
-msgid "Hour"
-msgstr "小时"
+#: config/samba/class_sambaPluginConfig.inc:73
+msgid "Needed to be compliant with Windows <= 98 or Samba < 3.2"
+msgstr ""
 
 #: personal/samba/class_sambaAccount.inc:31
 msgid "Samba Munged Dial"
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:154
+#: personal/samba/class_sambaAccount.inc:155
 msgid "Generic"
 msgstr "通用配置"
 
-#: personal/samba/class_sambaAccount.inc:160
-#: personal/samba/class_sambaAccount.inc:193
+#: personal/samba/class_sambaAccount.inc:161
+#: personal/samba/class_sambaAccount.inc:194
 msgid "Home directory drive"
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:160
-#: personal/samba/class_sambaAccount.inc:193
+#: personal/samba/class_sambaAccount.inc:161
+#: personal/samba/class_sambaAccount.inc:194
 msgid "Letter for the home drive"
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:165
-#: personal/samba/class_sambaAccount.inc:198
+#: personal/samba/class_sambaAccount.inc:166
+#: personal/samba/class_sambaAccount.inc:199
 msgid "Home directory path"
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:165
-#: personal/samba/class_sambaAccount.inc:198
+#: personal/samba/class_sambaAccount.inc:166
+#: personal/samba/class_sambaAccount.inc:199
 msgid "UNC path for the home drive"
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:174
+#: personal/samba/class_sambaAccount.inc:171
+#: admin/systems/samba/class_winstationGeneric.inc:83
+msgid "Domain"
+msgstr "域"
+
+#: personal/samba/class_sambaAccount.inc:171
+#: admin/systems/samba/class_winstationGeneric.inc:83
+msgid "Samba domain name"
+msgstr ""
+
+#: personal/samba/class_sambaAccount.inc:175
 msgid "Script path"
 msgstr "脚本路径"
 
-#: personal/samba/class_sambaAccount.inc:174
+#: personal/samba/class_sambaAccount.inc:175
 msgid "Login script path"
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:178
-#: personal/samba/class_sambaAccount.inc:203
+#: personal/samba/class_sambaAccount.inc:179
+#: personal/samba/class_sambaAccount.inc:204
 msgid "Profile path"
 msgstr "Profile path"
 
-#: personal/samba/class_sambaAccount.inc:178
-#: personal/samba/class_sambaAccount.inc:203
+#: personal/samba/class_sambaAccount.inc:179
+#: personal/samba/class_sambaAccount.inc:204
 msgid "UNC profile path"
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:185
+#: personal/samba/class_sambaAccount.inc:186
 msgid "Terminal server"
 msgstr "终端服务器"
 
-#: personal/samba/class_sambaAccount.inc:189
+#: personal/samba/class_sambaAccount.inc:190
 msgid "Allow login on terminal server"
 msgstr "允许登录到终端服务器"
 
-#: personal/samba/class_sambaAccount.inc:208
+#: personal/samba/class_sambaAccount.inc:209
 msgid "Inherit client config"
 msgstr "继承客户配置"
 
-#: personal/samba/class_sambaAccount.inc:208
+#: personal/samba/class_sambaAccount.inc:209
 msgid "Inherit client configuration"
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:212
+#: personal/samba/class_sambaAccount.inc:213
 msgid "Initial progam"
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:212
+#: personal/samba/class_sambaAccount.inc:213
 msgid "Program to start after connecting"
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:216
+#: personal/samba/class_sambaAccount.inc:217
 msgid "Working directory"
 msgstr "工作目录"
 
-#: personal/samba/class_sambaAccount.inc:216
+#: personal/samba/class_sambaAccount.inc:217
 msgid "Basic working directory"
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:220
+#: personal/samba/class_sambaAccount.inc:221
 msgid "Connection timeout"
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:220
+#: personal/samba/class_sambaAccount.inc:221
 msgid "Timeout when connecting to terminal server"
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:225
+#: personal/samba/class_sambaAccount.inc:226
 msgid "Disconnection timeout"
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:225
+#: personal/samba/class_sambaAccount.inc:226
 msgid "Timeout before disconnecting from terminal server"
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:230
+#: personal/samba/class_sambaAccount.inc:231
 msgid "Idle timeout"
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:230
+#: personal/samba/class_sambaAccount.inc:231
 msgid "Idle timeout before disconnecting from terminal server"
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:235
+#: personal/samba/class_sambaAccount.inc:236
 msgid "Connect client drives at logon"
 msgstr "登录时连接客户驱动器"
 
-#: personal/samba/class_sambaAccount.inc:235
+#: personal/samba/class_sambaAccount.inc:236
 msgid "Drive to connect after login"
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:239
+#: personal/samba/class_sambaAccount.inc:240
 msgid "Connect client printers at logon"
 msgstr "登录时连接客户打印机"
 
-#: personal/samba/class_sambaAccount.inc:239
+#: personal/samba/class_sambaAccount.inc:240
 msgid "Printers to connect after login"
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:243
+#: personal/samba/class_sambaAccount.inc:244
 msgid "Default to main client printer"
 msgstr "缺省用主要客户打印机"
 
-#: personal/samba/class_sambaAccount.inc:243
+#: personal/samba/class_sambaAccount.inc:244
 msgid "Default printer for this client"
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:247
+#: personal/samba/class_sambaAccount.inc:248
 msgid "Shadowing"
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:250
+#: personal/samba/class_sambaAccount.inc:251
 msgid "disabled"
 msgstr "禁用"
 
-#: personal/samba/class_sambaAccount.inc:250
+#: personal/samba/class_sambaAccount.inc:251
 msgid "input on, notify on"
 msgstr "输入打开，通知打开"
 
-#: personal/samba/class_sambaAccount.inc:250
+#: personal/samba/class_sambaAccount.inc:251
 msgid "input on, notify off"
 msgstr "输入打开，通知关闭"
 
-#: personal/samba/class_sambaAccount.inc:251
+#: personal/samba/class_sambaAccount.inc:252
 msgid "input off, notify on"
 msgstr "输入关闭，通知打开"
 
-#: personal/samba/class_sambaAccount.inc:251
+#: personal/samba/class_sambaAccount.inc:252
 msgid "input off, nofify off"
 msgstr "输入关闭，通知关闭"
 
-#: personal/samba/class_sambaAccount.inc:254
+#: personal/samba/class_sambaAccount.inc:255
 msgid "On broken or timed out"
 msgstr "断开或超时"
 
-#: personal/samba/class_sambaAccount.inc:254
+#: personal/samba/class_sambaAccount.inc:255
 msgid "What happen if disconnected or timeout"
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:257
+#: personal/samba/class_sambaAccount.inc:258
 msgid "disconnect"
 msgstr "断开"
 
-#: personal/samba/class_sambaAccount.inc:257
+#: personal/samba/class_sambaAccount.inc:258
 msgid "reset"
 msgstr "重置"
 
-#: personal/samba/class_sambaAccount.inc:260
+#: personal/samba/class_sambaAccount.inc:261
 msgid "Reconnect if disconnected"
 msgstr "断线重连"
 
-#: personal/samba/class_sambaAccount.inc:263
+#: personal/samba/class_sambaAccount.inc:264
 msgid "from any client"
 msgstr "从任意客户"
 
-#: personal/samba/class_sambaAccount.inc:263
+#: personal/samba/class_sambaAccount.inc:264
 msgid "from previous client only"
 msgstr "只从上一个客户"
 
-#: personal/samba/class_sambaAccount.inc:275
+#: personal/samba/class_sambaAccount.inc:276
 msgid "Access options"
 msgstr "访问选项"
 
-#: personal/samba/class_sambaAccount.inc:279
+#: personal/samba/class_sambaAccount.inc:280
 msgid "Enforce password change"
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:279
+#: personal/samba/class_sambaAccount.inc:280
 msgid "Force the user to change his password"
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:284
+#: personal/samba/class_sambaAccount.inc:285
 msgid "The password never expire"
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:284
+#: personal/samba/class_sambaAccount.inc:285
 msgid "The password will never expire"
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:289
+#: personal/samba/class_sambaAccount.inc:290
 msgid "Login from windows client requires no password"
 msgstr "从 Windows 客户端登录不需要口令"
 
-#: personal/samba/class_sambaAccount.inc:289
+#: personal/samba/class_sambaAccount.inc:290
 msgid "Login from a client without a password"
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:294
+#: personal/samba/class_sambaAccount.inc:295
 msgid "Lock samba account"
 msgstr "锁定 samba 账号"
 
-#: personal/samba/class_sambaAccount.inc:294
+#: personal/samba/class_sambaAccount.inc:295
 msgid "Lock the account"
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:299
+#: personal/samba/class_sambaAccount.inc:300
 msgid "Cannot change password"
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:299
+#: personal/samba/class_sambaAccount.inc:300
 msgid "Not allowed to change password"
 msgstr ""
 
@@ -405,28 +351,91 @@ msgstr "只允许从这些工作站建立连接"
 msgid "Only allow this user to connect to this list of hosts"
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:432
+#: personal/samba/class_sambaAccount.inc:441
 msgid "Home drive"
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:435
+#: personal/samba/class_sambaAccount.inc:444
 msgid "Home path"
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:440
+#: personal/samba/class_sambaAccount.inc:449
 msgid "The windows user manager allows eight clients at maximum!"
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:456
-#: personal/samba/class_sambaAccount.inc:478
+#: personal/samba/class_sambaAccount.inc:465
+#: personal/samba/class_sambaAccount.inc:487
 msgid "Warning"
 msgstr "警告"
 
-#: personal/samba/class_sambaAccount.inc:456
+#: personal/samba/class_sambaAccount.inc:465
 msgid "Undefined Samba SID detected. Please fix this problem manually!"
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:479
+#: personal/samba/class_sambaAccount.inc:488
 msgid ""
 "Cannot convert primary group to samba group: group cannot be identified!"
 msgstr ""
+
+#: admin/systems/samba/class_winstationGeneric.inc:40
+msgid "Winstation generic"
+msgstr ""
+
+#: admin/systems/samba/class_winstationGeneric.inc:41
+msgid "Windows workstation generic"
+msgstr ""
+
+#: admin/systems/samba/class_winstationGeneric.inc:43
+#: admin/systems/samba/class_winstationGeneric.inc:45
+msgid "Windows workstation"
+msgstr "Windows 工作站"
+
+#: admin/systems/samba/class_winstationGeneric.inc:59
+msgid "Properties"
+msgstr "属性"
+
+#: admin/systems/samba/class_winstationGeneric.inc:68
+#: admin/systems/samba/class_winstationGeneric.inc:72
+msgid "The name of the winstation"
+msgstr ""
+
+#: admin/systems/samba/class_winstationGeneric.inc:72
+msgid "Name"
+msgstr "名称"
+
+#: admin/systems/samba/class_winstationGeneric.inc:79
+msgid "Description"
+msgstr "描述"
+
+#: admin/systems/samba/class_winstationGeneric.inc:79
+msgid "A short description of the winstation"
+msgstr ""
+
+#: admin/systems/samba/class_winstationGeneric.inc:87
+msgid "Location"
+msgstr "位置"
+
+#: admin/systems/samba/class_winstationGeneric.inc:87
+msgid "The location of the winstation"
+msgstr ""
+
+#: admin/systems/samba/class_winstationGeneric.inc:94
+#: admin/systems/samba/class_winstationGeneric.inc:98
+msgid "Action"
+msgstr "行动"
+
+#: admin/systems/samba/class_winstationGeneric.inc:99
+msgid "Select action to execute for this terminal"
+msgstr "选择这个终端要执行的动作"
+
+#: admin/systems/samba/class_winstationGeneric.inc:105
+msgid "Network settings"
+msgstr ""
+
+#: personal/samba/sambaLogonHours.tpl.c:2
+msgid "Specify the hours this user is allowed to log in"
+msgstr "指定用户允许登录几个小时"
+
+#: personal/samba/sambaLogonHours.tpl.c:5
+msgid "Hour"
+msgstr "小时"

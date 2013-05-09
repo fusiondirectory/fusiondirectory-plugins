@@ -1,87 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
-"POT-Creation-Date: 2013-03-24 15:12+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-05-09 19:19+0200\n"
 "PO-Revision-Date: 2013-02-12 18:40+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Polish (http://www.transifex.com/projects/p/FusionDirectory/language/pl/)\n"
+"Language-Team: Polish (http://www.transifex.com/projects/p/FusionDirectory/"
+"language/pl/)\n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pl\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-
-#: personal/pureftpd/pureftpd.tpl:6
-msgid "FTP account"
-msgstr "Konto FTP"
-
-#: personal/pureftpd/pureftpd.tpl:17
-#: personal/pureftpd/class_pureftpdAccount.inc:50
-msgid "Bandwidth"
-msgstr "Przepustowość"
-
-#: personal/pureftpd/pureftpd.tpl:21
-#: personal/pureftpd/class_pureftpdAccount.inc:53
-#: personal/pureftpd/class_pureftpdAccount.inc:54
-msgid "Upload bandwidth"
-msgstr "Przepustowość wysyłania"
-
-#: personal/pureftpd/pureftpd.tpl:26 personal/pureftpd/pureftpd.tpl:34
-msgid "kb/s"
-msgstr "kb/s"
-
-#: personal/pureftpd/pureftpd.tpl:29
-#: personal/pureftpd/class_pureftpdAccount.inc:62
-msgid "Download bandwidth"
-msgstr "Przepustowość ściągania"
-
-#: personal/pureftpd/pureftpd.tpl:45
-msgid "Quota"
-msgstr "Quota"
-
-#: personal/pureftpd/pureftpd.tpl:49
-#: personal/pureftpd/class_pureftpdAccount.inc:99
-msgid "Files"
-msgstr "Pliko"
-
-#: personal/pureftpd/pureftpd.tpl:57
-#: personal/pureftpd/class_pureftpdAccount.inc:108
-msgid "Size"
-msgstr "Rozmiar"
-
-#: personal/pureftpd/pureftpd.tpl:62
-msgid "MB"
-msgstr "MB"
-
-#: personal/pureftpd/pureftpd.tpl:73
-#: personal/pureftpd/class_pureftpdAccount.inc:73
-msgid "Ratio"
-msgstr "Proporcja"
-
-#: personal/pureftpd/pureftpd.tpl:77
-msgid "Uploaded / downloaded files"
-msgstr "Pliki wysłane / ściągnięte"
-
-#: personal/pureftpd/pureftpd.tpl:95
-#: personal/pureftpd/class_pureftpdAccount.inc:119
-msgid "Miscellaneous"
-msgstr "Różne"
-
-#: personal/pureftpd/pureftpd.tpl:100
-msgid "Check to disable FTP Access"
-msgstr "Zaznacz aby wyłączyć dostęp do FTP"
-
-#: personal/pureftpd/pureftpd.tpl:102
-#: personal/pureftpd/class_pureftpdAccount.inc:122
-#: personal/pureftpd/class_pureftpdAccount.inc:123
-msgid "Temporary disable FTP access"
-msgstr "Tymczasowo wyłącz dostęp do FTP"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
 
 #: personal/pureftpd/class_pureftpdAccount.inc:34
 msgid "Ftp"
@@ -95,33 +31,85 @@ msgstr "Konto Pure-ftp"
 msgid "Connectivity addon"
 msgstr "dodatek Połączeń"
 
-#: personal/pureftpd/class_pureftpdAccount.inc:53
-#: personal/pureftpd/class_pureftpdAccount.inc:62
+#: personal/pureftpd/class_pureftpdAccount.inc:51
+msgid "Bandwidth"
+msgstr "Przepustowość"
+
+#: personal/pureftpd/class_pureftpdAccount.inc:54
+#: personal/pureftpd/class_pureftpdAccount.inc:55
+msgid "Upload bandwidth"
+msgstr "Przepustowość wysyłania"
+
+#: personal/pureftpd/class_pureftpdAccount.inc:54
+#: personal/pureftpd/class_pureftpdAccount.inc:63
 msgid " (kb/sec)"
 msgstr ""
 
 #: personal/pureftpd/class_pureftpdAccount.inc:63
+msgid "Download bandwidth"
+msgstr "Przepustowość ściągania"
+
+#: personal/pureftpd/class_pureftpdAccount.inc:64
 msgid "Download bandwidth in kb/sec"
 msgstr ""
 
-#: personal/pureftpd/class_pureftpdAccount.inc:76
+#: personal/pureftpd/class_pureftpdAccount.inc:74
+msgid "Ratio"
+msgstr "Proporcja"
+
 #: personal/pureftpd/class_pureftpdAccount.inc:77
+#: personal/pureftpd/class_pureftpdAccount.inc:78
 msgid "Uploaded files"
 msgstr ""
 
-#: personal/pureftpd/class_pureftpdAccount.inc:85
 #: personal/pureftpd/class_pureftpdAccount.inc:86
+#: personal/pureftpd/class_pureftpdAccount.inc:87
 msgid "Downloaded files"
 msgstr ""
 
 #: personal/pureftpd/class_pureftpdAccount.inc:100
+msgid "Files"
+msgstr "Pliko"
+
+#: personal/pureftpd/class_pureftpdAccount.inc:101
 msgid "Quota files"
 msgstr " Quota pliki"
 
-#: personal/pureftpd/class_pureftpdAccount.inc:108
+#: personal/pureftpd/class_pureftpdAccount.inc:109
+msgid "Size"
+msgstr "Rozmiar"
+
+#: personal/pureftpd/class_pureftpdAccount.inc:109
 msgid " (MB)"
 msgstr ""
 
-#: personal/pureftpd/class_pureftpdAccount.inc:109
+#: personal/pureftpd/class_pureftpdAccount.inc:110
 msgid "Files size"
 msgstr ""
+
+#: personal/pureftpd/class_pureftpdAccount.inc:120
+msgid "Miscellaneous"
+msgstr "Różne"
+
+#: personal/pureftpd/class_pureftpdAccount.inc:123
+#: personal/pureftpd/class_pureftpdAccount.inc:124
+msgid "Temporary disable FTP access"
+msgstr "Tymczasowo wyłącz dostęp do FTP"
+
+#~ msgid "FTP account"
+#~ msgstr "Konto FTP"
+
+#~ msgid "kb/s"
+#~ msgstr "kb/s"
+
+#~ msgid "Quota"
+#~ msgstr "Quota"
+
+#~ msgid "MB"
+#~ msgstr "MB"
+
+#~ msgid "Uploaded / downloaded files"
+#~ msgstr "Pliki wysłane / ściągnięte"
+
+#~ msgid "Check to disable FTP Access"
+#~ msgstr "Zaznacz aby wyłączyć dostęp do FTP"

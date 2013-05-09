@@ -1,1130 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 #  Jiang Xin <worldhello.net@gmail.com>, 2007
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
-"POT-Creation-Date: 2013-03-24 15:08+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-05-09 19:16+0200\n"
 "PO-Revision-Date: 2013-03-24 15:00+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Chinese (http://www.transifex.com/projects/p/FusionDirectory/language/zh/)\n"
+"Language-Team: Chinese (http://www.transifex.com/projects/p/FusionDirectory/"
+"language/zh/)\n"
+"Language: zh\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: zh\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-
-#: admin/macro/macro-list.tpl:13 admin/macro/class_gofonMacro.inc:546
-#: admin/macro/generic.tpl:27 admin/conference/conf-list.tpl:13
-#: admin/conference/class_phoneConferenceGeneric.inc:703
-#: admin/conference/generic.tpl:49 admin/systems/asterisk/phone.tpl:17
-#: admin/systems/asterisk/class_phoneGeneric.inc:482
-msgid "Base"
-msgstr "位置"
-
-#: admin/macro/macro-list.xml:11
-msgid "List of macros"
-msgstr "宏列表"
-
-#: admin/macro/macro-list.xml:15 admin/macro/macro-list.xml:74
-msgid "Macro"
-msgstr "宏"
-
-#: admin/macro/macro-list.xml:41 admin/macro/macro-filter.tpl:17
-#: admin/macro/class_gofonMacro.inc:395 admin/macro/class_gofonMacro.inc:406
-#: admin/macro/parameter.tpl:6 admin/conference/conf-list.xml:41
-#: admin/conference/class_phoneConferenceGeneric.inc:324
-#: admin/conference/class_phoneConferenceGeneric.inc:347
-#: admin/conference/class_phoneConferenceGeneric.inc:702
-#: admin/conference/conf-filter.tpl:17
-#: admin/systems/asterisk/class_phoneGeneric.inc:344
-#: admin/systems/asterisk/class_phoneGeneric.inc:348
-#: admin/systems/asterisk/class_phoneGeneric.inc:351
-#: admin/systems/asterisk/class_phoneGeneric.inc:366
-#: admin/systems/asterisk/class_phoneGeneric.inc:481
-msgid "Name"
-msgstr "名称"
-
-#: admin/macro/macro-list.xml:49 admin/macro/class_gofonMacro.inc:547
-#: admin/macro/generic.tpl:42 admin/conference/conf-list.xml:49
-#: admin/conference/class_phoneConferenceGeneric.inc:704
-#: admin/conference/generic.tpl:92 admin/systems/asterisk/phone.tpl:29
-#: admin/systems/asterisk/class_phoneGeneric.inc:483
-msgid "Description"
-msgstr "描述"
-
-#: admin/macro/macro-list.xml:57 admin/conference/conf-list.xml:57
-msgid "Actions"
-msgstr "动作"
-
-#: admin/macro/macro-list.xml:68 admin/conference/conf-list.xml:68
-msgid "Create"
-msgstr "创建"
-
-#: admin/macro/macro-list.xml:86 admin/macro/macro-list.xml:125
-#: admin/conference/conf-list.xml:86 admin/conference/conf-list.xml:125
-msgid "Edit"
-msgstr "编辑"
-
-#: admin/macro/macro-list.xml:93 admin/macro/macro-list.xml:138
-#: admin/conference/conf-list.xml:93 admin/conference/conf-list.xml:138
-msgid "Remove"
-msgstr "删除"
-
-#: admin/macro/macro-filter.tpl:3 admin/conference/conf-filter.tpl:3
-#: addons/fonreports/contents.tpl:2
-msgid "Filter"
-msgstr "过滤器"
-
-#: admin/macro/class_gofonMacro.inc:202
-#, php-format
-msgid ""
-"Macro could not be removed from server '%s', please check database "
-"consistency!"
-msgstr ""
-
-#: admin/macro/class_gofonMacro.inc:264
-#, php-format
-msgid "Application missing in line %s!"
-msgstr ""
-
-#: admin/macro/class_gofonMacro.inc:267
-#, php-format
-msgid "Priority missing in line %s!"
-msgstr ""
-
-#: admin/macro/class_gofonMacro.inc:271
-#, php-format
-msgid "Extension missing in line %s!"
-msgstr ""
-
-#: admin/macro/class_gofonMacro.inc:281
-#, php-format
-msgid "Duplicate combination of 'extension' and 'priority' in line %s!"
-msgstr ""
-
-#: admin/macro/class_gofonMacro.inc:317
-#, php-format
-msgid ""
-"Macro could not be added to server '%s', please check database consistency!"
-msgstr ""
-
-#: admin/macro/class_gofonMacro.inc:343 admin/macro/class_gofonMacro.inc:452
-#: admin/macro/class_gofonMacro.inc:461 admin/macro/class_gofonMacro.inc:499
-#: admin/conference/class_phoneConferenceGeneric.inc:229
-#: admin/conference/class_phoneConferenceGeneric.inc:233
-#: admin/conference/class_phoneConferenceGeneric.inc:271
-#: admin/systems/asterisk/class_phoneGeneric.inc:267
-#: admin/systems/asterisk/class_phoneGeneric.inc:308
-#: admin/ogroups/asterisk/class_phonequeue.inc:787
-#: admin/ogroups/asterisk/class_phonequeue.inc:829
-#: addons/fonreports/class_fonreport.inc:220
-#: personal/phoneaccount/class_phoneAccount.inc:1047
-#: personal/phoneaccount/class_phoneAccount.inc:1167
-#: personal/phoneaccount/class_phoneAccount.inc:1173
-#: personal/phoneaccount/class_phoneAccount.inc:1386
-#: personal/phoneaccount/class_phoneAccount.inc:1468
-#: personal/phoneaccount/class_phoneAccount.inc:1546
-msgid "Error"
-msgstr "错误"
-
-#: admin/macro/class_gofonMacro.inc:381 admin/macro/class_gofonMacro.inc:465
-#: admin/conference/class_phoneConferenceGeneric.inc:369
-#: admin/ogroups/asterisk/class_phonequeue.inc:345
-#: admin/ogroups/asterisk/class_phonequeue.inc:696
-#: addons/fonreports/class_fonreport.inc:190
-#: addons/fonreports/class_fonreport.inc:220
-#: personal/phoneaccount/class_phoneAccount.inc:456
-#: personal/phoneaccount/class_phoneAccount.inc:1062
-msgid "GOfon"
-msgstr ""
-
-#: admin/macro/class_gofonMacro.inc:410
-msgid "Name can be 20 characters at maximum!"
-msgstr ""
-
-#: admin/macro/class_gofonMacro.inc:419
-msgid "Macro is still in use!"
-msgstr ""
-
-#: admin/macro/class_gofonMacro.inc:426
-msgid "Macro is empty!"
-msgstr ""
-
-#: admin/macro/class_gofonMacro.inc:452
-#: admin/systems/asterisk/class_phoneGeneric.inc:267
-#, php-format
-msgid "Cannot delete entry because it is still in use by '%s'!"
-msgstr ""
-
-#: admin/macro/class_gofonMacro.inc:465
-#: addons/fonreports/class_fonreport.inc:190
-#: personal/phoneaccount/class_phoneAccount.inc:456
-#: personal/phoneaccount/class_phoneAccount.inc:1062
-#: personal/phoneaccount/class_phoneAccount.inc:1585
-msgid "Configuration error"
-msgstr ""
-
-#: admin/macro/class_gofonMacro.inc:473 admin/macro/class_gofonMacro.inc:484
-#: admin/macro/class_gofonMacro.inc:521
-#: admin/macro/class_gofonMacroParameters.inc:435
-#: admin/conference/class_phoneConferenceGeneric.inc:682
-#: admin/systems/services/asterisk/class_serviceAsterisk.inc:107
-#: admin/systems/asterisk/class_phoneGeneric.inc:277
-#: admin/systems/asterisk/class_phoneGeneric.inc:432
-#: admin/systems/asterisk/class_phoneGeneric.inc:446
-#: admin/systems/asterisk/class_phoneGeneric.inc:463
-#: admin/ogroups/asterisk/class_phonequeue.inc:802
-#: admin/ogroups/asterisk/class_phonequeue.inc:857
-#: personal/phoneaccount/class_phoneAccount.inc:1494
-#: personal/phoneaccount/class_phoneAccount.inc:1627
-msgid "LDAP error"
-msgstr "LDAP 错误"
-
-#: admin/macro/class_gofonMacro.inc:536
-#: admin/systems/asterisk/class_phoneGeneric.inc:472
-msgid "Generic"
-msgstr "通用配置"
-
-#: admin/macro/class_gofonMacro.inc:537
-msgid "Asterisk macro management"
-msgstr ""
-
-#: admin/macro/class_gofonMacro.inc:539
-msgid "GOfon macro"
-msgstr ""
-
-#: admin/macro/class_gofonMacro.inc:541
-msgid "Asterisk macro"
-msgstr ""
-
-#: admin/macro/class_gofonMacro.inc:545 admin/macro/paste_generic.tpl:4
-#: admin/macro/paste_generic.tpl:6 admin/macro/generic.tpl:6
-#: admin/macro/generic.tpl:9
-msgid "Macro name"
-msgstr "宏名称"
-
-#: admin/macro/class_gofonMacro.inc:548 admin/macro/generic.tpl:14
-msgid "Display name"
-msgstr "显示名称"
-
-#: admin/macro/class_gofonMacro.inc:549
-msgid "Macro content and parameter"
-msgstr ""
-
-#: admin/macro/class_gofonMacro.inc:550
-msgid "Visibility flag"
-msgstr ""
-
-#: admin/macro/parameter.tpl:4
-msgid "Argument"
-msgstr "参数"
-
-#: admin/macro/parameter.tpl:8
-msgid "type"
-msgstr "类型"
-
-#: admin/macro/parameter.tpl:10
-msgid "Default value"
-msgstr "缺省值"
-
-#: admin/macro/parameter.tpl:19
-msgid "You are not allowed to view the macro parameter settings"
-msgstr ""
-
-#: admin/macro/remove.tpl:2
-#: admin/conference/class_phoneConferenceGeneric.inc:399
-#: admin/conference/remove.tpl:2
-#: personal/phoneaccount/class_phoneAccount.inc:347
-#: personal/phoneaccount/class_phoneAccount.inc:360
-#: personal/phoneaccount/class_phoneAccount.inc:618
-#: personal/phoneaccount/class_phoneAccount.inc:657
-#: personal/phoneaccount/class_phoneAccount.inc:1537
-#: personal/phoneaccount/class_phoneAccount.inc:1713
-msgid "Warning"
-msgstr "警告"
-
-#: admin/macro/remove.tpl:6 admin/conference/remove.tpl:6
-msgid ""
-"Please double check if you really want to do this since there is no way for "
-"FusionDirectory to get your data back."
-msgstr ""
-
-#: admin/macro/remove.tpl:10 admin/conference/remove.tpl:10
-msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr "所以，如果您确定，请按“删除”继续，否则按“取消”退出。"
-
-#: admin/macro/class_gofonMacroParameters.inc:58
-#: personal/phoneaccount/class_phoneAccount.inc:1072
-msgid "Parameter"
-msgstr "参数"
-
-#: admin/macro/class_gofonMacroParameters.inc:59
-msgid "Asterisk macro parameter"
-msgstr ""
-
-#: admin/macro/class_gofonMacroParameters.inc:234
-#: personal/phoneaccount/generic.tpl:125 personal/phoneaccount/generic.tpl:127
-msgid "Phone macro"
-msgstr "电话宏"
-
-#: admin/macro/class_gofonMacroParameters.inc:290
-msgid "String"
-msgstr "字符串"
-
-#: admin/macro/class_gofonMacroParameters.inc:291
-msgid "Combobox"
-msgstr "单选框"
-
-#: admin/macro/class_gofonMacroParameters.inc:292
-msgid "Bool"
-msgstr "布尔值"
-
-#: admin/macro/class_gofonMacroParameters.inc:298
-msgid "Delete unused"
-msgstr "删除未使用的"
-
-#: admin/macro/class_gofonMacroParameters.inc:374
-#, php-format
-msgid "Parameter %s contains invalid character. '!,#' is used as delimiter!"
-msgstr ""
-
-#: admin/macro/class_gofonMacroParameters.inc:379
-#, php-format
-msgid "Parameter %s is invalid!"
-msgstr ""
-
-#: admin/macro/class_gofonMacroParameters.inc:408
-#: personal/phoneaccount/class_phoneAccount.inc:1618
-msgid "Information"
-msgstr "提示信息"
-
-#: admin/macro/class_gofonMacroParameters.inc:408
-msgid ""
-"Number of parameters for this macro has changed. Please update all users "
-"using it!"
-msgstr ""
-
-#: admin/macro/generic.tpl:18
-msgid "Macro name to be displayed"
-msgstr "要显示的宏名称"
-
-#: admin/macro/generic.tpl:53
-msgid "Visible for user"
-msgstr "用户可见"
-
-#: admin/macro/generic.tpl:63
-msgid "Macro text"
-msgstr "宏文本"
-
-#: admin/macro/class_gofonMacroManagement.inc:36
-msgid "Macros"
-msgstr ""
-
-#: admin/macro/class_gofonMacroManagement.inc:37
-msgid "Macros management"
-msgstr ""
-
-#: admin/conference/conf-list.xml:11
-msgid "List of conference rooms"
-msgstr "会议室列表"
-
-#: admin/conference/conf-list.xml:15 admin/conference/conf-list.xml:74
-#: admin/conference/class_phoneConferenceGeneric.inc:693
-msgid "Conference"
-msgstr "会议"
-
-#: admin/conference/class_phoneConferenceGeneric.inc:104
-#: admin/ogroups/asterisk/class_phonequeue.inc:110
-#: personal/phoneaccount/class_phoneAccount.inc:149
-msgid "Obsolete entry"
-msgstr ""
-
-#: admin/conference/class_phoneConferenceGeneric.inc:104
-#: admin/ogroups/asterisk/class_phonequeue.inc:110
-#: personal/phoneaccount/class_phoneAccount.inc:149
-#, php-format
-msgid ""
-"The current home server is not available anymore. It will be moved to '%s' "
-"if you save this entry!"
-msgstr ""
-
-#: admin/conference/class_phoneConferenceGeneric.inc:233
-#, php-format
-msgid "Cannot delete entry from server '%s' because it seems to be removed!"
-msgstr ""
-
-#: admin/conference/class_phoneConferenceGeneric.inc:308
-#, php-format
-msgid ""
-"The previously selected asterisk home server '%s' is no longer available!"
-msgstr ""
-
-#: admin/conference/class_phoneConferenceGeneric.inc:315
-#: admin/conference/generic.tpl:159
-msgid "PIN"
-msgstr "PIN"
-
-#: admin/conference/class_phoneConferenceGeneric.inc:328
-#: admin/ogroups/asterisk/class_phonequeue.inc:293
-msgid "Number"
-msgstr ""
-
-#: admin/conference/class_phoneConferenceGeneric.inc:333
-#: admin/conference/class_phoneConferenceGeneric.inc:719
-msgid "Lifetime"
-msgstr ""
-
-#: admin/conference/class_phoneConferenceGeneric.inc:400
-#, php-format
-msgid ""
-"FusionDirectory identified problems with your MySQL table definition, please"
-" activate debugging for details."
-msgstr ""
-
-#: admin/conference/class_phoneConferenceGeneric.inc:606
-#: admin/conference/class_phoneConferenceGeneric.inc:608
-#, php-format
-msgid "'%s' is already assigned to '%s'!"
-msgstr ""
-
-#: admin/conference/class_phoneConferenceGeneric.inc:694
-msgid "Phone conference management"
-msgstr ""
-
-#: admin/conference/class_phoneConferenceGeneric.inc:696
-msgid "GOfon conference"
-msgstr ""
-
-#: admin/conference/class_phoneConferenceGeneric.inc:698
-msgid "Asterisk conference"
-msgstr ""
-
-#: admin/conference/class_phoneConferenceGeneric.inc:705
-msgid "Conference PIN"
-msgstr ""
-
-#: admin/conference/class_phoneConferenceGeneric.inc:707
-#: admin/conference/generic.tpl:72
-#: admin/ogroups/asterisk/class_phonequeue.inc:892
-#: admin/ogroups/asterisk/phonequeue.tpl:62
-msgid "Language"
-msgstr "语言"
-
-#: admin/conference/class_phoneConferenceGeneric.inc:709
-#: admin/conference/generic.tpl:62
-#: admin/ogroups/asterisk/class_phonequeue.inc:275
-#: admin/ogroups/asterisk/class_phonequeue.inc:873
-#: admin/ogroups/asterisk/phonequeue.tpl:50
-#: personal/phoneaccount/class_phoneAccount.inc:1368
-#: personal/phoneaccount/class_phoneAccount.inc:1687
-#: personal/phoneaccount/generic.tpl:58
-msgid "Home server"
-msgstr "主服务器"
-
-#: admin/conference/class_phoneConferenceGeneric.inc:710
-#: admin/conference/generic.tpl:151
-msgid "Preset PIN"
-msgstr "预置 PIN"
-
-#: admin/conference/class_phoneConferenceGeneric.inc:711
-#: admin/conference/generic.tpl:171
-msgid "Record conference"
-msgstr "会议记录"
-
-#: admin/conference/class_phoneConferenceGeneric.inc:712
-#: admin/conference/generic.tpl:202
-msgid "Play music on hold"
-msgstr "播放暂停音乐"
-
-#: admin/conference/class_phoneConferenceGeneric.inc:713
-msgid "Activate menu"
-msgstr ""
-
-#: admin/conference/class_phoneConferenceGeneric.inc:714
-msgid "Announce user activity"
-msgstr ""
-
-#: admin/conference/class_phoneConferenceGeneric.inc:715
-msgid "Count user"
-msgstr ""
-
-#: admin/conference/class_phoneConferenceGeneric.inc:716
-msgid "Conference type"
-msgstr ""
-
-#: admin/conference/class_phoneConferenceGeneric.inc:718
-msgid "Format"
-msgstr ""
-
-#: admin/conference/class_phoneConferenceGeneric.inc:720
-#: personal/phoneaccount/class_phoneAccount.inc:1684
-msgid "Telephone number"
-msgstr ""
-
-#: admin/conference/class_phoneConferenceGeneric.inc:721
-msgid "Owner"
-msgstr "所有者"
-
-#: admin/conference/paste_generic.tpl:5 admin/conference/generic.tpl:15
-msgid "Conference name"
-msgstr "会议名称"
-
-#: admin/conference/paste_generic.tpl:10 admin/conference/generic.tpl:21
-msgid "Name of conference to create"
-msgstr "要创建会议的名称"
-
-#: admin/conference/paste_generic.tpl:15 admin/conference/generic.tpl:114
-#: personal/phoneaccount/class_phoneAccount.inc:1412
-msgid "Phone number"
-msgstr "电话号码"
-
-#: admin/conference/class_phoneConferenceManagment.inc:36
-msgid "Conferences"
-msgstr ""
-
-#: admin/conference/class_phoneConferenceManagment.inc:37
-msgid "Conference management"
-msgstr "会议管理"
-
-#: admin/conference/generic.tpl:5
-msgid "Properties"
-msgstr "属性"
-
-#: admin/conference/generic.tpl:28
-msgid "Type"
-msgstr "类型"
-
-#: admin/conference/generic.tpl:35
-msgid "Choose subtree to place conference in"
-msgstr "选择放置会议的子树"
-
-#: admin/conference/generic.tpl:76
-msgid "Select language"
-msgstr ""
-
-#: admin/conference/generic.tpl:98
-msgid "Descriptive text for department"
-msgstr "部门描述文件"
-
-#: admin/conference/generic.tpl:104
-msgid "Lifetime (in days)"
-msgstr "生存期（天）"
-
-#: admin/conference/generic.tpl:135 admin/ogroups/asterisk/phonequeue.tpl:47
-msgid "Options"
-msgstr "选项"
-
-#: admin/conference/generic.tpl:179
-msgid "Sound file format"
-msgstr "声音文件类型"
-
-#: admin/conference/generic.tpl:182
-msgid "Choose subtree to place department in"
-msgstr "选择放置部门的子树"
-
-#: admin/conference/generic.tpl:210
-msgid "Activate session menu"
-msgstr "激活会话菜单"
-
-#: admin/conference/generic.tpl:218
-msgid "Announce users joining or leaving the conference"
-msgstr "通知用户加入或者离开会议"
-
-#: admin/conference/generic.tpl:226
-msgid "Count users"
-msgstr ""
-
-#: admin/systems/services/asterisk/class_serviceAsterisk.inc:35
-msgid "VoIP database information"
-msgstr ""
-
-#: admin/systems/services/asterisk/class_serviceAsterisk.inc:38
-msgid "Asterisk DB user"
-msgstr "Asterisk DB 用户"
-
-#: admin/systems/services/asterisk/class_serviceAsterisk.inc:38
-msgid "Login for asterisk database administrator"
-msgstr ""
-
-#: admin/systems/services/asterisk/class_serviceAsterisk.inc:42
-msgid "Password"
-msgstr "口令"
-
-#: admin/systems/services/asterisk/class_serviceAsterisk.inc:42
-msgid "Password for asterisk database administrator"
-msgstr ""
-
-#: admin/systems/services/asterisk/class_serviceAsterisk.inc:46
-msgid "Country dial prefix"
-msgstr "国内拨号前缀"
-
-#: admin/systems/services/asterisk/class_serviceAsterisk.inc:50
-msgid "Local dial prefix"
-msgstr "内部拨号前缀"
-
-#: admin/systems/services/asterisk/class_serviceAsterisk.inc:81
-#, php-format
-msgid ""
-"You can't remove the asterisk database extension, it is still in use by "
-"these objects '%s'."
-msgstr "您不能删除 asterisk 数据库扩展，它仍被这些对象 '%s' 使用。"
-
-#: admin/systems/services/asterisk/class_serviceAsterisk.inc:126
-msgid "VoIP service (asterisk)"
-msgstr ""
-
-#: admin/systems/services/asterisk/class_serviceAsterisk.inc:127
-msgid "VoIP - asterisk management"
-msgstr ""
-
-#: admin/systems/services/asterisk/class_serviceAsterisk.inc:127
-msgid "Services"
-msgstr "服务"
-
-#: admin/systems/asterisk/phone.tpl:6
-msgid "Phone name"
-msgstr "电话名称"
-
-#: admin/systems/asterisk/class_phoneGeneric.inc:151
-msgid "phone"
-msgstr ""
-
-#: admin/systems/asterisk/class_phoneGeneric.inc:230
-msgid "yes"
-msgstr "是"
-
-#: admin/systems/asterisk/class_phoneGeneric.inc:230
-msgid "no"
-msgstr "否"
-
-#: admin/systems/asterisk/class_phoneGeneric.inc:247
-msgid "dynamic"
-msgstr "动态"
-
-#: admin/systems/asterisk/class_phoneGeneric.inc:247
-msgid "Networksettings"
-msgstr "网络设置"
-
-#: admin/systems/asterisk/class_phoneGeneric.inc:330
-#: admin/systems/asterisk/class_phoneGeneric.inc:333
-msgid "IP address"
-msgstr ""
-
-#: admin/systems/asterisk/class_phoneGeneric.inc:473
-msgid "Phone generic"
-msgstr ""
-
-#: admin/systems/asterisk/class_phoneGeneric.inc:475
-#: personal/phoneaccount/class_phoneAccount.inc:1686
-msgid "Phone hardware"
-msgstr ""
-
-#: admin/systems/asterisk/class_phoneGeneric.inc:477
-#: admin/ogroups/asterisk/class_phonequeue.inc:864
-#: personal/phoneaccount/class_phoneAccount.inc:1000
-#: personal/phoneaccount/class_phoneAccount.inc:1013
-#: personal/phoneaccount/class_phoneAccount.inc:1025
-#: personal/phoneaccount/class_phoneAccount.inc:1029
-#: personal/phoneaccount/class_phoneAccount.inc:1032
-#: personal/phoneaccount/class_phoneAccount.inc:1675
-msgid "Phone"
-msgstr "电话"
-
-#: admin/systems/asterisk/class_phoneGeneric.inc:484
-msgid "SIP Mode"
-msgstr ""
-
-#: admin/systems/asterisk/class_phoneGeneric.inc:485
-msgid "SIP DTMF mode"
-msgstr ""
-
-#: admin/systems/asterisk/class_phoneGeneric.inc:486
-msgid "SIP Default ip"
-msgstr ""
-
-#: admin/systems/asterisk/class_phoneGeneric.inc:487
-msgid "SIP Qualify"
-msgstr ""
-
-#: admin/systems/asterisk/class_phoneGeneric.inc:488
-msgid "IAX authentication type"
-msgstr ""
-
-#: admin/systems/asterisk/class_phoneGeneric.inc:489
-msgid "IAX secret"
-msgstr ""
-
-#: admin/systems/asterisk/class_phoneGeneric.inc:490
-msgid "IAX account code"
-msgstr ""
-
-#: admin/systems/asterisk/class_phoneGeneric.inc:491
-msgid "IAX trunk lines"
-msgstr ""
-
-#: admin/systems/asterisk/class_phoneGeneric.inc:492
-msgid "IAX permit settings"
-msgstr ""
-
-#: admin/systems/asterisk/class_phoneGeneric.inc:493
-msgid "IAX deny settings"
-msgstr ""
-
-#: admin/systems/asterisk/class_phoneGeneric.inc:494
-msgid "CAPI MSN"
-msgstr ""
-
-#: admin/systems/asterisk/class_phoneGeneric.inc:495
-msgid "Hardware type"
-msgstr ""
-
-#: admin/systems/asterisk/phonesettings.tpl:1
-msgid "Advanced phone settings"
-msgstr "高级电话设置"
-
-#: admin/systems/asterisk/phonesettings.tpl:6
-msgid "Phone type"
-msgstr "电话类型"
-
-#: admin/systems/asterisk/phonesettings.tpl:8
-#: admin/systems/asterisk/phonesettings.tpl:30
-#: admin/systems/asterisk/phonesettings.tpl:42
-#: admin/systems/asterisk/phonesettings.tpl:58
-#: admin/systems/asterisk/phonesettings.tpl:91
-#: admin/systems/asterisk/phonesettings.tpl:128
-#: admin/systems/asterisk/phonesettings.tpl:181
-msgid "Choose a phone type"
-msgstr "选择一个电话类型"
-
-#: admin/systems/asterisk/phonesettings.tpl:13
-msgid "refresh"
-msgstr "刷新"
-
-#: admin/systems/asterisk/phonesettings.tpl:25
-msgid "Mode"
-msgstr "模式"
-
-#: admin/systems/asterisk/phonesettings.tpl:38
-msgid "DTMF mode"
-msgstr "DTMF 模式"
-
-#: admin/systems/asterisk/phonesettings.tpl:54
-#: admin/systems/asterisk/phonesettings.tpl:99
-msgid "Default IP"
-msgstr "缺省 IP"
-
-#: admin/systems/asterisk/phonesettings.tpl:66
-#: admin/systems/asterisk/phonesettings.tpl:109
-msgid "Response timeout"
-msgstr "响应超时"
-
-#: admin/systems/asterisk/phonesettings.tpl:87
-msgid "Modus"
-msgstr "模块"
-
-#: admin/systems/asterisk/phonesettings.tpl:124
-msgid "Authtype"
-msgstr "认证类型"
-
-#: admin/systems/asterisk/phonesettings.tpl:136
-msgid "Secret"
-msgstr "秘密"
-
-#: admin/systems/asterisk/phonesettings.tpl:146
-msgid "GoFonInkeys"
-msgstr ""
-
-#: admin/systems/asterisk/phonesettings.tpl:154
-msgid "GoFonOutKeys"
-msgstr ""
-
-#: admin/systems/asterisk/phonesettings.tpl:167
-msgid "Account code"
-msgstr "账号号码"
-
-#: admin/systems/asterisk/phonesettings.tpl:177
-msgid "Trunk lines"
-msgstr ""
-
-#: admin/systems/asterisk/phonesettings.tpl:194
-msgid "Hosts that are allowed to connect"
-msgstr "允许连接的主机"
-
-#: admin/systems/asterisk/phonesettings.tpl:197
-#: admin/systems/asterisk/phonesettings.tpl:220
-msgid "List of alternative mail addresses"
-msgstr "替代邮件地址列表"
-
-#: admin/systems/asterisk/phonesettings.tpl:217
-msgid "Hosts that are not allowed to connect"
-msgstr "不允许连接的主机"
-
-#: admin/systems/asterisk/phonesettings.tpl:247
-msgid "MSN"
-msgstr "MSN"
-
-#: admin/ogroups/asterisk/class_phonequeue.inc:140
-msgid "ring all"
-msgstr "全部响铃"
-
-#: admin/ogroups/asterisk/class_phonequeue.inc:141
-msgid "round robin"
-msgstr "round robin"
-
-#: admin/ogroups/asterisk/class_phonequeue.inc:142
-msgid "least recently called"
-msgstr ""
-
-#: admin/ogroups/asterisk/class_phonequeue.inc:143
-msgid "fewest completed calls"
-msgstr ""
-
-#: admin/ogroups/asterisk/class_phonequeue.inc:144
-msgid "random"
-msgstr "随机"
-
-#: admin/ogroups/asterisk/class_phonequeue.inc:145
-msgid "round robin with memory"
-msgstr "内存 round robin"
-
-#: admin/ogroups/asterisk/class_phonequeue.inc:180
-msgid "Remove the phone queue from this Account"
-msgstr "删除来自该账号的电话队列"
-
-#: admin/ogroups/asterisk/class_phonequeue.inc:181
-#: admin/ogroups/asterisk/class_phonequeue.inc:184
-msgid "phone queue"
-msgstr ""
-
-#: admin/ogroups/asterisk/class_phonequeue.inc:183
-msgid "Create phone queue"
-msgstr "创建电话队列"
-
-#: admin/ogroups/asterisk/class_phonequeue.inc:272
-msgid ""
-"There must be at least one server with an asterisk database to create a "
-"phone queue."
-msgstr "必须有至少一个带有 asterisk 数据库的服务器来创建一个电话队列。"
-
-#: admin/ogroups/asterisk/class_phonequeue.inc:281
-#: admin/ogroups/asterisk/class_phonequeue.inc:871
-#: admin/ogroups/asterisk/phonequeue.tpl:75
-msgid "Timeout"
-msgstr "过期"
-
-#: admin/ogroups/asterisk/class_phonequeue.inc:284
-#: admin/ogroups/asterisk/class_phonequeue.inc:896
-#: admin/ogroups/asterisk/phonequeue.tpl:85
-msgid "Retry"
-msgstr "重试"
-
-#: admin/ogroups/asterisk/class_phonequeue.inc:287
-msgid "Queue length"
-msgstr ""
-
-#: admin/ogroups/asterisk/class_phonequeue.inc:290
-#: admin/ogroups/asterisk/class_phonequeue.inc:874
-#: admin/ogroups/asterisk/phonequeue.tpl:119
-msgid "Announce frequency"
-msgstr "公告频率"
-
-#: admin/ogroups/asterisk/class_phonequeue.inc:316
-#: admin/ogroups/asterisk/class_phonequeue.inc:361
-msgid "asterisk"
-msgstr ""
-
-#: admin/ogroups/asterisk/class_phonequeue.inc:401
-msgid "Cannot find old queue entry!"
-msgstr ""
-
-#: admin/ogroups/asterisk/class_phonequeue.inc:487
-#, php-format
-msgid ""
-"Found more than one entry named '%s' in queue table. Please inform your "
-"system administrator!"
-msgstr ""
-
-#: admin/ogroups/asterisk/class_phonequeue.inc:728
-#: admin/ogroups/asterisk/class_phonequeue.inc:730
-msgid "telephone number"
-msgstr ""
-
-#: admin/ogroups/asterisk/class_phonequeue.inc:865
-msgid "Phone group"
-msgstr ""
-
-#: admin/ogroups/asterisk/class_phonequeue.inc:872
-#: admin/ogroups/asterisk/phonequeue.tpl:109
-msgid "Max queue length"
-msgstr "最大队列长度"
-
-#: admin/ogroups/asterisk/class_phonequeue.inc:875
-#: admin/ogroups/asterisk/phonequeue.tpl:285
-msgid "Allow the called user to transfer his call"
-msgstr "允许被叫用户转移呼叫"
-
-#: admin/ogroups/asterisk/class_phonequeue.inc:876
-#: admin/ogroups/asterisk/phonequeue.tpl:293
-msgid "Allows calling user to transfer call"
-msgstr "允许拨叫用户转移呼叫"
-
-#: admin/ogroups/asterisk/class_phonequeue.inc:877
-#: admin/ogroups/asterisk/phonequeue.tpl:305
-msgid "Allow the called to hangup by pressing *"
-msgstr "允许被叫用户按 * 键挂起"
-
-#: admin/ogroups/asterisk/class_phonequeue.inc:878
-#: admin/ogroups/asterisk/phonequeue.tpl:321
-msgid "Ring instead of playing background music"
-msgstr "振铃而非播放背景音乐"
-
-#: admin/ogroups/asterisk/class_phonequeue.inc:879
-#: admin/ogroups/asterisk/phonequeue.tpl:313
-msgid "Allows calling to hangup by pressing *"
-msgstr "允许拨叫用户按 * 键挂起"
-
-#: admin/ogroups/asterisk/class_phonequeue.inc:881
-#: admin/ogroups/asterisk/phonequeue.tpl:149
-msgid "Music on hold"
-msgstr "暂停的音乐"
-
-#: admin/ogroups/asterisk/class_phonequeue.inc:882
-msgid "Welcome music"
-msgstr ""
-
-#: admin/ogroups/asterisk/class_phonequeue.inc:883
-msgid "Report hold time"
-msgstr ""
-
-#: admin/ogroups/asterisk/class_phonequeue.inc:884
-msgid "'You are next' sound"
-msgstr ""
-
-#: admin/ogroups/asterisk/class_phonequeue.inc:885
-msgid "'There are' sound"
-msgstr ""
-
-#: admin/ogroups/asterisk/class_phonequeue.inc:886
-msgid "'Call waiting' sound"
-msgstr ""
-
-#: admin/ogroups/asterisk/class_phonequeue.inc:887
-msgid "'Thank you' sound"
-msgstr ""
-
-#: admin/ogroups/asterisk/class_phonequeue.inc:888
-msgid "'Minutes' sound"
-msgstr ""
-
-#: admin/ogroups/asterisk/class_phonequeue.inc:889
-msgid "'Seconds' sound"
-msgstr ""
-
-#: admin/ogroups/asterisk/class_phonequeue.inc:890
-msgid "'Less than' sound"
-msgstr ""
-
-#: admin/ogroups/asterisk/class_phonequeue.inc:891
-msgid "Queue phone number"
-msgstr ""
-
-#: admin/ogroups/asterisk/class_phonequeue.inc:893
-msgid "Method"
-msgstr ""
-
-#: admin/ogroups/asterisk/class_phonequeue.inc:894
-#: admin/ogroups/asterisk/phonequeue.tpl:277
-msgid "Announce holdtime"
-msgstr "公告期限"
-
-#: admin/ogroups/asterisk/class_phonequeue.inc:895
-msgid "Announce"
-msgstr ""
-
-#: admin/ogroups/asterisk/phonequeue.tpl:2
-msgid ""
-"Only users with the same asterisk home server will be included to this "
-"queue."
-msgstr "只有有着相同 asterisk 主服务器的用户才会被包含在这个队列中。"
-
-#: admin/ogroups/asterisk/phonequeue.tpl:5
-msgid "Queue Settings"
-msgstr "队列设置"
-
-#: admin/ogroups/asterisk/phonequeue.tpl:8
-#: personal/phoneaccount/paste_generic.tpl:2
-#: personal/phoneaccount/paste_generic.tpl:6
-#: personal/phoneaccount/generic.tpl:1 personal/phoneaccount/generic.tpl:6
-msgid "Phone numbers"
-msgstr "电话号码"
-
-#: admin/ogroups/asterisk/phonequeue.tpl:12
-#: admin/ogroups/asterisk/phonequeue.tpl:135
-msgid "Generic queue Settings"
-msgstr "通用队列设置"
-
-#: admin/ogroups/asterisk/phonequeue.tpl:24
-msgid "Up"
-msgstr "上"
-
-#: admin/ogroups/asterisk/phonequeue.tpl:27
-msgid "Down"
-msgstr "关闭"
-
-#: admin/ogroups/asterisk/phonequeue.tpl:95
-msgid "Strategy"
-msgstr "策略"
-
-#: admin/ogroups/asterisk/phonequeue.tpl:125
-msgid "(in seconds)"
-msgstr "(秒)"
-
-#: admin/ogroups/asterisk/phonequeue.tpl:133
-msgid "Queue sound setup"
-msgstr "队列声音设置"
-
-#: admin/ogroups/asterisk/phonequeue.tpl:138
-msgid "Use music on hold instead of ringing"
-msgstr "播放音乐保持锁定而非播放"
-
-#: admin/ogroups/asterisk/phonequeue.tpl:159
-msgid "Welcome sound file"
-msgstr "欢迎声音文件"
-
-#: admin/ogroups/asterisk/phonequeue.tpl:169
-msgid "Announce message"
-msgstr "公告信息"
-
-#: admin/ogroups/asterisk/phonequeue.tpl:179
-msgid "Sound file for 'You are next ...'"
-msgstr "声音文件“您是下一个...”"
-
-#: admin/ogroups/asterisk/phonequeue.tpl:189
-msgid "'There are ...'"
-msgstr "'这里有 ...'"
-
-#: admin/ogroups/asterisk/phonequeue.tpl:199
-msgid "'... calls waiting'"
-msgstr "'... 电话在等待'"
-
-#: admin/ogroups/asterisk/phonequeue.tpl:209
-msgid "'Thank you' message"
-msgstr "'谢谢您' 消息"
-
-#: admin/ogroups/asterisk/phonequeue.tpl:219
-msgid "'minutes' sound file"
-msgstr "'分钟' 声音文件"
-
-#: admin/ogroups/asterisk/phonequeue.tpl:229
-msgid "'seconds' sound file"
-msgstr "'秒' 声音文件"
-
-#: admin/ogroups/asterisk/phonequeue.tpl:239
-msgid "Hold sound file"
-msgstr "暂停声音文件"
-
-#: admin/ogroups/asterisk/phonequeue.tpl:249
-msgid "Less Than sound file"
-msgstr "声音文件“小于...”"
-
-#: admin/ogroups/asterisk/phonequeue.tpl:267
-msgid "Phone attributes "
-msgstr "电话属性"
-
-#: addons/fonreports/main.inc:46 addons/fonreports/class_fonreport.inc:418
-#: addons/fonreports/class_fonreport.inc:419
-#: addons/fonreports/class_fonreport.inc:424
-msgid "Phone reports"
-msgstr "电话记录"
-
-#: addons/fonreports/class_fonreport.inc:232
-msgid "Insufficient permissions"
-msgstr ""
-
-#: addons/fonreports/class_fonreport.inc:251
-msgid "Y-M-D"
-msgstr "Y-M-D"
-
-#: addons/fonreports/class_fonreport.inc:419
-msgid "All entries are readonly"
-msgstr ""
-
-#: addons/fonreports/class_fonreport.inc:428 addons/fonreports/contents.tpl:34
-msgid "Date"
-msgstr "日期"
-
-#: addons/fonreports/class_fonreport.inc:429 addons/fonreports/contents.tpl:35
-msgid "Source"
-msgstr "源"
-
-#: addons/fonreports/class_fonreport.inc:430 addons/fonreports/contents.tpl:36
-msgid "Destination"
-msgstr "目标"
-
-#: addons/fonreports/class_fonreport.inc:431 addons/fonreports/contents.tpl:37
-msgid "Channel"
-msgstr "频道"
-
-#: addons/fonreports/class_fonreport.inc:432
-msgid "Application called"
-msgstr ""
-
-#: addons/fonreports/class_fonreport.inc:433
-msgid "Disposition"
-msgstr ""
-
-#: addons/fonreports/class_fonreport.inc:434 addons/fonreports/contents.tpl:40
-msgid "Duration"
-msgstr "持续时间"
-
-#: addons/fonreports/contents.tpl:6
-msgid "Search for"
-msgstr "查询"
-
-#: addons/fonreports/contents.tpl:7
-msgid "Enter user name to search for"
-msgstr "输入要查询的用户名"
-
-#: addons/fonreports/contents.tpl:8 addons/fonreports/contents.tpl:20
-msgid "in"
-msgstr "于"
-
-#: addons/fonreports/contents.tpl:9
-msgid "Select subtree to base search on"
-msgstr "选择查询基于的子树"
-
-#: addons/fonreports/contents.tpl:12
-msgid "on"
-msgstr ""
-
-#: addons/fonreports/contents.tpl:13
-msgid "Select server to search on"
-msgstr ""
-
-#: addons/fonreports/contents.tpl:16
-msgid "during"
-msgstr "在"
-
-#: addons/fonreports/contents.tpl:25
-msgid "Search"
-msgstr "查找"
-
-#: addons/fonreports/contents.tpl:38
-msgid "Application"
-msgstr "应用程序"
-
-#: addons/fonreports/contents.tpl:39
-msgid "Status"
-msgstr "状态"
-
-#: addons/fonreports/contents.tpl:55
-msgid "Search returned no results..."
-msgstr "查无结果..."
 
 #: config/asterisk/class_asteriskPluginConfig.inc:28
 msgid "Asterisk"
@@ -1182,114 +75,241 @@ msgstr ""
 msgid "Available voicemail contexts"
 msgstr ""
 
-#: personal/phoneaccount/class_phoneAccount.inc:177
+#: personal/phoneaccount/class_phoneAccount.inc:148
+#: admin/ogroups/asterisk/class_phonequeue.inc:110
+#: admin/conference/class_phoneConferenceGeneric.inc:104
+msgid "Obsolete entry"
+msgstr ""
+
+#: personal/phoneaccount/class_phoneAccount.inc:148
+#: admin/ogroups/asterisk/class_phonequeue.inc:110
+#: admin/conference/class_phoneConferenceGeneric.inc:104
+#, php-format
+msgid ""
+"The current home server is not available anymore. It will be moved to '%s' "
+"if you save this entry!"
+msgstr ""
+
+#: personal/phoneaccount/class_phoneAccount.inc:176
 msgid "automatic"
 msgstr "自动"
 
-#: personal/phoneaccount/class_phoneAccount.inc:213
+#: personal/phoneaccount/class_phoneAccount.inc:212
 msgid "no macro"
 msgstr "没有宏"
 
-#: personal/phoneaccount/class_phoneAccount.inc:241
+#: personal/phoneaccount/class_phoneAccount.inc:240
 msgid "undefined"
 msgstr "未定义"
 
-#: personal/phoneaccount/class_phoneAccount.inc:360
+#: personal/phoneaccount/class_phoneAccount.inc:346
+#: personal/phoneaccount/class_phoneAccount.inc:359
+#: personal/phoneaccount/class_phoneAccount.inc:617
+#: personal/phoneaccount/class_phoneAccount.inc:656
+#: personal/phoneaccount/class_phoneAccount.inc:1536
+#: personal/phoneaccount/class_phoneAccount.inc:1713
+#: admin/conference/class_phoneConferenceGeneric.inc:399
+#: admin/macro/remove.tpl.c:2 admin/conference/remove.tpl.c:2
+msgid "Warning"
+msgstr "警告"
+
+#: personal/phoneaccount/class_phoneAccount.inc:359
 #, php-format
 msgid ""
 "Cannot identify telephone extension in database, please try to save again."
 msgstr ""
 
-#: personal/phoneaccount/class_phoneAccount.inc:578
-#: personal/phoneaccount/class_phoneAccount.inc:596
+#: personal/phoneaccount/class_phoneAccount.inc:455
+#: personal/phoneaccount/class_phoneAccount.inc:1061
+#: personal/phoneaccount/class_phoneAccount.inc:1584
+#: addons/fonreports/class_fonreport.inc:190
+#: admin/macro/class_gofonMacro.inc:465
+msgid "Configuration error"
+msgstr ""
+
+#: personal/phoneaccount/class_phoneAccount.inc:455
+#: personal/phoneaccount/class_phoneAccount.inc:1061
+#: addons/fonreports/class_fonreport.inc:190
+#: addons/fonreports/class_fonreport.inc:220
+#: admin/ogroups/asterisk/class_phonequeue.inc:345
+#: admin/ogroups/asterisk/class_phonequeue.inc:696
+#: admin/macro/class_gofonMacro.inc:381 admin/macro/class_gofonMacro.inc:465
+#: admin/conference/class_phoneConferenceGeneric.inc:369
+msgid "GOfon"
+msgstr ""
+
+#: personal/phoneaccount/class_phoneAccount.inc:577
+#: personal/phoneaccount/class_phoneAccount.inc:595
 msgid "Abort saving entries to keep the database consistent."
 msgstr ""
 
-#: personal/phoneaccount/class_phoneAccount.inc:619
-#: personal/phoneaccount/class_phoneAccount.inc:658
-#: personal/phoneaccount/class_phoneAccount.inc:1538
+#: personal/phoneaccount/class_phoneAccount.inc:618
+#: personal/phoneaccount/class_phoneAccount.inc:657
+#: personal/phoneaccount/class_phoneAccount.inc:1537
 #, php-format
 msgid ""
 "FusionDirectory identified problems with your database table definition!"
 msgstr ""
 
+#: personal/phoneaccount/class_phoneAccount.inc:999
+#: personal/phoneaccount/class_phoneAccount.inc:1012
 #: personal/phoneaccount/class_phoneAccount.inc:1024
+#: personal/phoneaccount/class_phoneAccount.inc:1028
+#: personal/phoneaccount/class_phoneAccount.inc:1031
+#: personal/phoneaccount/class_phoneAccount.inc:1674
+#: admin/ogroups/asterisk/class_phonequeue.inc:864
+#: admin/systems/asterisk/class_phoneGeneric.inc:477
+msgid "Phone"
+msgstr "电话"
+
+#: personal/phoneaccount/class_phoneAccount.inc:1023
 msgid "Remove phone account"
 msgstr "删除电话账号"
 
-#: personal/phoneaccount/class_phoneAccount.inc:1028
-#: personal/phoneaccount/class_phoneAccount.inc:1031
+#: personal/phoneaccount/class_phoneAccount.inc:1027
+#: personal/phoneaccount/class_phoneAccount.inc:1030
 msgid "Create phone account"
 msgstr "创建电话账号"
 
-#: personal/phoneaccount/class_phoneAccount.inc:1029
+#: personal/phoneaccount/class_phoneAccount.inc:1028
 msgid "User uid"
 msgstr ""
 
-#: personal/phoneaccount/class_phoneAccount.inc:1047
+#: personal/phoneaccount/class_phoneAccount.inc:1046
+#: personal/phoneaccount/class_phoneAccount.inc:1166
+#: personal/phoneaccount/class_phoneAccount.inc:1172
+#: personal/phoneaccount/class_phoneAccount.inc:1385
+#: personal/phoneaccount/class_phoneAccount.inc:1467
+#: personal/phoneaccount/class_phoneAccount.inc:1545
+#: addons/fonreports/class_fonreport.inc:220
+#: admin/ogroups/asterisk/class_phonequeue.inc:787
+#: admin/ogroups/asterisk/class_phonequeue.inc:829
+#: admin/macro/class_gofonMacro.inc:343 admin/macro/class_gofonMacro.inc:452
+#: admin/macro/class_gofonMacro.inc:461 admin/macro/class_gofonMacro.inc:499
+#: admin/systems/asterisk/class_phoneGeneric.inc:267
+#: admin/systems/asterisk/class_phoneGeneric.inc:308
+#: admin/conference/class_phoneConferenceGeneric.inc:229
+#: admin/conference/class_phoneConferenceGeneric.inc:233
+#: admin/conference/class_phoneConferenceGeneric.inc:271
+msgid "Error"
+msgstr "错误"
+
+#: personal/phoneaccount/class_phoneAccount.inc:1046
 msgid "Selected macro is not available anymore!"
 msgstr ""
 
-#: personal/phoneaccount/class_phoneAccount.inc:1222
+#: personal/phoneaccount/class_phoneAccount.inc:1071
+#: admin/macro/class_gofonMacroParameters.inc:58
+msgid "Parameter"
+msgstr "参数"
+
+#: personal/phoneaccount/class_phoneAccount.inc:1221
 msgid "Choose your private phone"
 msgstr "选择您私人电话"
 
-#: personal/phoneaccount/class_phoneAccount.inc:1364
+#: personal/phoneaccount/class_phoneAccount.inc:1363
 msgid ""
 "There must be at least one server with an asterisk database to create a "
 "phone account."
 msgstr "必须有至少一个带有 asterisk 数据库的服务器来创建一个电话账号。"
 
-#: personal/phoneaccount/class_phoneAccount.inc:1372
-#: personal/phoneaccount/class_phoneAccount.inc:1375
-#: personal/phoneaccount/paste_generic.tpl:32
-#: personal/phoneaccount/generic.tpl:93
+#: personal/phoneaccount/class_phoneAccount.inc:1367
+#: personal/phoneaccount/class_phoneAccount.inc:1687
+#: admin/ogroups/asterisk/class_phonequeue.inc:275
+#: admin/ogroups/asterisk/class_phonequeue.inc:873
+#: admin/conference/class_phoneConferenceGeneric.inc:709
+#: personal/phoneaccount/generic.tpl.c:17
+#: admin/ogroups/asterisk/phonequeue.tpl.c:23
+#: admin/conference/generic.tpl.c:20
+msgid "Home server"
+msgstr "主服务器"
+
+#: personal/phoneaccount/class_phoneAccount.inc:1371
+#: personal/phoneaccount/class_phoneAccount.inc:1374
+#: personal/phoneaccount/paste_generic.tpl.c:17
+#: personal/phoneaccount/generic.tpl.c:35
 msgid "Voicemail PIN"
 msgstr "语音邮件 PIN"
 
-#: personal/phoneaccount/class_phoneAccount.inc:1372
+#: personal/phoneaccount/class_phoneAccount.inc:1371
 msgid "Between 1-4 charactes"
 msgstr ""
 
-#: personal/phoneaccount/class_phoneAccount.inc:1380
-#: personal/phoneaccount/paste_generic.tpl:40
-#: personal/phoneaccount/generic.tpl:103
+#: personal/phoneaccount/class_phoneAccount.inc:1379
+#: personal/phoneaccount/paste_generic.tpl.c:20
+#: personal/phoneaccount/generic.tpl.c:38
 msgid "Phone PIN"
 msgstr "电话 PIN"
 
-#: personal/phoneaccount/class_phoneAccount.inc:1420
+#: personal/phoneaccount/class_phoneAccount.inc:1411
+#: admin/conference/paste_generic.tpl.c:8 admin/conference/generic.tpl.c:38
+msgid "Phone number"
+msgstr "电话号码"
+
+#: personal/phoneaccount/class_phoneAccount.inc:1419
 #, php-format
 msgid "macro parameter %s"
 msgstr ""
 
-#: personal/phoneaccount/class_phoneAccount.inc:1468
+#: personal/phoneaccount/class_phoneAccount.inc:1467
 msgid "An error occured while updating the database entries!"
 msgstr ""
 
-#: personal/phoneaccount/class_phoneAccount.inc:1618
+#: personal/phoneaccount/class_phoneAccount.inc:1493
+#: personal/phoneaccount/class_phoneAccount.inc:1626
+#: admin/ogroups/asterisk/class_phonequeue.inc:802
+#: admin/ogroups/asterisk/class_phonequeue.inc:857
+#: admin/macro/class_gofonMacro.inc:473 admin/macro/class_gofonMacro.inc:484
+#: admin/macro/class_gofonMacro.inc:521
+#: admin/macro/class_gofonMacroParameters.inc:435
+#: admin/systems/asterisk/class_phoneGeneric.inc:277
+#: admin/systems/asterisk/class_phoneGeneric.inc:432
+#: admin/systems/asterisk/class_phoneGeneric.inc:446
+#: admin/systems/asterisk/class_phoneGeneric.inc:463
+#: admin/systems/services/asterisk/class_serviceAsterisk.inc:107
+#: admin/conference/class_phoneConferenceGeneric.inc:682
+msgid "LDAP error"
+msgstr "LDAP 错误"
+
+#: personal/phoneaccount/class_phoneAccount.inc:1617
+#: admin/macro/class_gofonMacroParameters.inc:408
+msgid "Information"
+msgstr "提示信息"
+
+#: personal/phoneaccount/class_phoneAccount.inc:1617
 #, php-format
 msgid "User '%s' has been removed from phone queue '%s'."
 msgstr ""
 
-#: personal/phoneaccount/class_phoneAccount.inc:1655
-#: personal/phoneaccount/class_phoneAccount.inc:1657
+#: personal/phoneaccount/class_phoneAccount.inc:1654
+#: personal/phoneaccount/class_phoneAccount.inc:1656
 #, php-format
 msgid "The specified telephonenumber '%s' is already assigned to '%s'."
 msgstr "指定的电话号码 '%s' 已经分配给了 '%s'。"
 
-#: personal/phoneaccount/class_phoneAccount.inc:1667
+#: personal/phoneaccount/class_phoneAccount.inc:1666
 #, php-format
 msgid ""
 "The previously selected asterisk home server (%s) is no longer available. "
 "Remove aborted."
 msgstr "之前选择的 asterisk 主服务器 (%s) 不存在了。删除终止。"
 
-#: personal/phoneaccount/class_phoneAccount.inc:1676
+#: personal/phoneaccount/class_phoneAccount.inc:1675
 msgid "Phone account settings"
+msgstr ""
+
+#: personal/phoneaccount/class_phoneAccount.inc:1684
+#: admin/conference/class_phoneConferenceGeneric.inc:720
+msgid "Telephone number"
 msgstr ""
 
 #: personal/phoneaccount/class_phoneAccount.inc:1685
 msgid "Macro settings"
+msgstr ""
+
+#: personal/phoneaccount/class_phoneAccount.inc:1686
+#: admin/systems/asterisk/class_phoneGeneric.inc:475
+msgid "Phone hardware"
 msgstr ""
 
 #: personal/phoneaccount/class_phoneAccount.inc:1688
@@ -1318,36 +338,1033 @@ msgid "Click the 'Edit' button below to change informations in this dialog"
 msgstr "点击下面的“编辑”按钮修改该对话框内的信息"
 
 #: personal/phoneaccount/main.inc:134
-#: personal/phoneaccount/paste_generic.tpl:1
+#: personal/phoneaccount/paste_generic.tpl.c:2
 msgid "Phone settings"
 msgstr "电话设置"
 
-#: personal/phoneaccount/paste_generic.tpl:27
-#: personal/phoneaccount/generic.tpl:42
+#: addons/fonreports/main.inc:46 addons/fonreports/class_fonreport.inc:418
+#: addons/fonreports/class_fonreport.inc:419
+#: addons/fonreports/class_fonreport.inc:424
+msgid "Phone reports"
+msgstr "电话记录"
+
+#: addons/fonreports/class_fonreport.inc:232
+msgid "Insufficient permissions"
+msgstr ""
+
+#: addons/fonreports/class_fonreport.inc:251
+msgid "Y-M-D"
+msgstr "Y-M-D"
+
+#: addons/fonreports/class_fonreport.inc:419
+msgid "All entries are readonly"
+msgstr ""
+
+#: addons/fonreports/class_fonreport.inc:428
+#: addons/fonreports/contents.tpl.c:32
+msgid "Date"
+msgstr "日期"
+
+#: addons/fonreports/class_fonreport.inc:429
+#: addons/fonreports/contents.tpl.c:35
+msgid "Source"
+msgstr "源"
+
+#: addons/fonreports/class_fonreport.inc:430
+#: addons/fonreports/contents.tpl.c:38
+msgid "Destination"
+msgstr "目标"
+
+#: addons/fonreports/class_fonreport.inc:431
+#: addons/fonreports/contents.tpl.c:41
+msgid "Channel"
+msgstr "频道"
+
+#: addons/fonreports/class_fonreport.inc:432
+msgid "Application called"
+msgstr ""
+
+#: addons/fonreports/class_fonreport.inc:433
+msgid "Disposition"
+msgstr ""
+
+#: addons/fonreports/class_fonreport.inc:434
+#: addons/fonreports/contents.tpl.c:50
+msgid "Duration"
+msgstr "持续时间"
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:140
+msgid "ring all"
+msgstr "全部响铃"
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:141
+msgid "round robin"
+msgstr "round robin"
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:142
+msgid "least recently called"
+msgstr ""
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:143
+msgid "fewest completed calls"
+msgstr ""
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:144
+msgid "random"
+msgstr "随机"
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:145
+msgid "round robin with memory"
+msgstr "内存 round robin"
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:180
+msgid "Remove the phone queue from this Account"
+msgstr "删除来自该账号的电话队列"
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:181
+#: admin/ogroups/asterisk/class_phonequeue.inc:184
+msgid "phone queue"
+msgstr ""
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:183
+msgid "Create phone queue"
+msgstr "创建电话队列"
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:272
+msgid ""
+"There must be at least one server with an asterisk database to create a "
+"phone queue."
+msgstr "必须有至少一个带有 asterisk 数据库的服务器来创建一个电话队列。"
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:281
+#: admin/ogroups/asterisk/class_phonequeue.inc:871
+#: admin/ogroups/asterisk/phonequeue.tpl.c:29
+msgid "Timeout"
+msgstr "过期"
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:284
+#: admin/ogroups/asterisk/class_phonequeue.inc:896
+#: admin/ogroups/asterisk/phonequeue.tpl.c:32
+msgid "Retry"
+msgstr "重试"
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:287
+msgid "Queue length"
+msgstr ""
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:290
+#: admin/ogroups/asterisk/class_phonequeue.inc:874
+#: admin/ogroups/asterisk/phonequeue.tpl.c:41
+msgid "Announce frequency"
+msgstr "公告频率"
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:293
+#: admin/conference/class_phoneConferenceGeneric.inc:328
+msgid "Number"
+msgstr ""
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:316
+#: admin/ogroups/asterisk/class_phonequeue.inc:361
+msgid "asterisk"
+msgstr ""
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:401
+msgid "Cannot find old queue entry!"
+msgstr ""
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:487
+#, php-format
+msgid ""
+"Found more than one entry named '%s' in queue table. Please inform your "
+"system administrator!"
+msgstr ""
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:728
+#: admin/ogroups/asterisk/class_phonequeue.inc:730
+msgid "telephone number"
+msgstr ""
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:865
+msgid "Phone group"
+msgstr ""
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:872
+#: admin/ogroups/asterisk/phonequeue.tpl.c:38
+msgid "Max queue length"
+msgstr "最大队列长度"
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:875
+#: admin/ogroups/asterisk/phonequeue.tpl.c:95
+msgid "Allow the called user to transfer his call"
+msgstr "允许被叫用户转移呼叫"
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:876
+#: admin/ogroups/asterisk/phonequeue.tpl.c:98
+msgid "Allows calling user to transfer call"
+msgstr "允许拨叫用户转移呼叫"
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:877
+#: admin/ogroups/asterisk/phonequeue.tpl.c:101
+msgid "Allow the called to hangup by pressing *"
+msgstr "允许被叫用户按 * 键挂起"
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:878
+#: admin/ogroups/asterisk/phonequeue.tpl.c:107
+msgid "Ring instead of playing background music"
+msgstr "振铃而非播放背景音乐"
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:879
+#: admin/ogroups/asterisk/phonequeue.tpl.c:104
+msgid "Allows calling to hangup by pressing *"
+msgstr "允许拨叫用户按 * 键挂起"
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:881
+#: admin/ogroups/asterisk/phonequeue.tpl.c:56
+msgid "Music on hold"
+msgstr "暂停的音乐"
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:882
+msgid "Welcome music"
+msgstr ""
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:883
+msgid "Report hold time"
+msgstr ""
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:884
+msgid "'You are next' sound"
+msgstr ""
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:885
+msgid "'There are' sound"
+msgstr ""
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:886
+msgid "'Call waiting' sound"
+msgstr ""
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:887
+msgid "'Thank you' sound"
+msgstr ""
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:888
+msgid "'Minutes' sound"
+msgstr ""
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:889
+msgid "'Seconds' sound"
+msgstr ""
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:890
+msgid "'Less than' sound"
+msgstr ""
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:891
+msgid "Queue phone number"
+msgstr ""
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:892
+#: admin/conference/class_phoneConferenceGeneric.inc:707
+#: admin/ogroups/asterisk/phonequeue.tpl.c:26
+#: admin/conference/generic.tpl.c:23
+msgid "Language"
+msgstr "语言"
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:893
+msgid "Method"
+msgstr ""
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:894
+#: admin/ogroups/asterisk/phonequeue.tpl.c:92
+msgid "Announce holdtime"
+msgstr "公告期限"
+
+#: admin/ogroups/asterisk/class_phonequeue.inc:895
+msgid "Announce"
+msgstr ""
+
+#: admin/macro/class_gofonMacro.inc:202
+#, php-format
+msgid ""
+"Macro could not be removed from server '%s', please check database "
+"consistency!"
+msgstr ""
+
+#: admin/macro/class_gofonMacro.inc:264
+#, php-format
+msgid "Application missing in line %s!"
+msgstr ""
+
+#: admin/macro/class_gofonMacro.inc:267
+#, php-format
+msgid "Priority missing in line %s!"
+msgstr ""
+
+#: admin/macro/class_gofonMacro.inc:271
+#, php-format
+msgid "Extension missing in line %s!"
+msgstr ""
+
+#: admin/macro/class_gofonMacro.inc:281
+#, php-format
+msgid "Duplicate combination of 'extension' and 'priority' in line %s!"
+msgstr ""
+
+#: admin/macro/class_gofonMacro.inc:317
+#, php-format
+msgid ""
+"Macro could not be added to server '%s', please check database consistency!"
+msgstr ""
+
+#: admin/macro/class_gofonMacro.inc:395 admin/macro/class_gofonMacro.inc:406
+#: admin/macro/macro-list.xml:41
+#: admin/systems/asterisk/class_phoneGeneric.inc:344
+#: admin/systems/asterisk/class_phoneGeneric.inc:348
+#: admin/systems/asterisk/class_phoneGeneric.inc:351
+#: admin/systems/asterisk/class_phoneGeneric.inc:366
+#: admin/systems/asterisk/class_phoneGeneric.inc:481
+#: admin/conference/class_phoneConferenceGeneric.inc:324
+#: admin/conference/class_phoneConferenceGeneric.inc:347
+#: admin/conference/class_phoneConferenceGeneric.inc:702
+#: admin/conference/conf-list.xml:41 admin/macro/macro-filter.tpl.c:5
+#: admin/macro/parameter.tpl.c:5 admin/conference/conf-filter.tpl.c:5
+msgid "Name"
+msgstr "名称"
+
+#: admin/macro/class_gofonMacro.inc:410
+msgid "Name can be 20 characters at maximum!"
+msgstr ""
+
+#: admin/macro/class_gofonMacro.inc:419
+msgid "Macro is still in use!"
+msgstr ""
+
+#: admin/macro/class_gofonMacro.inc:426
+msgid "Macro is empty!"
+msgstr ""
+
+#: admin/macro/class_gofonMacro.inc:452
+#: admin/systems/asterisk/class_phoneGeneric.inc:267
+#, php-format
+msgid "Cannot delete entry because it is still in use by '%s'!"
+msgstr ""
+
+#: admin/macro/class_gofonMacro.inc:536
+#: admin/systems/asterisk/class_phoneGeneric.inc:472
+msgid "Generic"
+msgstr "通用配置"
+
+#: admin/macro/class_gofonMacro.inc:537
+msgid "Asterisk macro management"
+msgstr ""
+
+#: admin/macro/class_gofonMacro.inc:539
+msgid "GOfon macro"
+msgstr ""
+
+#: admin/macro/class_gofonMacro.inc:541
+msgid "Asterisk macro"
+msgstr ""
+
+#: admin/macro/class_gofonMacro.inc:545 admin/macro/paste_generic.tpl.c:2
+#: admin/macro/paste_generic.tpl.c:5 admin/macro/generic.tpl.c:2
+#: admin/macro/generic.tpl.c:5
+msgid "Macro name"
+msgstr "宏名称"
+
+#: admin/macro/class_gofonMacro.inc:546
+#: admin/systems/asterisk/class_phoneGeneric.inc:482
+#: admin/conference/class_phoneConferenceGeneric.inc:703
+#: admin/macro/generic.tpl.c:14 admin/macro/macro-list.tpl.c:2
+#: admin/systems/asterisk/phone.tpl.c:5 admin/conference/conf-list.tpl.c:2
+#: admin/conference/generic.tpl.c:17
+msgid "Base"
+msgstr "位置"
+
+#: admin/macro/class_gofonMacro.inc:547 admin/macro/macro-list.xml:49
+#: admin/systems/asterisk/class_phoneGeneric.inc:483
+#: admin/conference/class_phoneConferenceGeneric.inc:704
+#: admin/conference/conf-list.xml:49 admin/macro/generic.tpl.c:17
+#: admin/systems/asterisk/phone.tpl.c:8 admin/conference/generic.tpl.c:29
+msgid "Description"
+msgstr "描述"
+
+#: admin/macro/class_gofonMacro.inc:548 admin/macro/generic.tpl.c:8
+msgid "Display name"
+msgstr "显示名称"
+
+#: admin/macro/class_gofonMacro.inc:549
+msgid "Macro content and parameter"
+msgstr ""
+
+#: admin/macro/class_gofonMacro.inc:550
+msgid "Visibility flag"
+msgstr ""
+
+#: admin/macro/class_gofonMacroParameters.inc:59
+msgid "Asterisk macro parameter"
+msgstr ""
+
+#: admin/macro/class_gofonMacroParameters.inc:234
+#: personal/phoneaccount/generic.tpl.c:41
+#: personal/phoneaccount/generic.tpl.c:44
+msgid "Phone macro"
+msgstr "电话宏"
+
+#: admin/macro/class_gofonMacroParameters.inc:290
+msgid "String"
+msgstr "字符串"
+
+#: admin/macro/class_gofonMacroParameters.inc:291
+msgid "Combobox"
+msgstr "单选框"
+
+#: admin/macro/class_gofonMacroParameters.inc:292
+msgid "Bool"
+msgstr "布尔值"
+
+#: admin/macro/class_gofonMacroParameters.inc:298
+msgid "Delete unused"
+msgstr "删除未使用的"
+
+#: admin/macro/class_gofonMacroParameters.inc:374
+#, php-format
+msgid "Parameter %s contains invalid character. '!,#' is used as delimiter!"
+msgstr ""
+
+#: admin/macro/class_gofonMacroParameters.inc:379
+#, php-format
+msgid "Parameter %s is invalid!"
+msgstr ""
+
+#: admin/macro/class_gofonMacroParameters.inc:408
+msgid ""
+"Number of parameters for this macro has changed. Please update all users "
+"using it!"
+msgstr ""
+
+#: admin/macro/macro-list.xml:11
+msgid "List of macros"
+msgstr "宏列表"
+
+#: admin/macro/macro-list.xml:15 admin/macro/macro-list.xml:74
+msgid "Macro"
+msgstr "宏"
+
+#: admin/macro/macro-list.xml:57 admin/conference/conf-list.xml:57
+msgid "Actions"
+msgstr "动作"
+
+#: admin/macro/macro-list.xml:68 admin/conference/conf-list.xml:68
+msgid "Create"
+msgstr "创建"
+
+#: admin/macro/macro-list.xml:86 admin/macro/macro-list.xml:125
+#: admin/conference/conf-list.xml:86 admin/conference/conf-list.xml:125
+msgid "Edit"
+msgstr "编辑"
+
+#: admin/macro/macro-list.xml:93 admin/macro/macro-list.xml:138
+#: admin/conference/conf-list.xml:93 admin/conference/conf-list.xml:138
+msgid "Remove"
+msgstr "删除"
+
+#: admin/macro/class_gofonMacroManagement.inc:36
+#, fuzzy
+msgid "Phone Macros"
+msgstr "电话宏"
+
+#: admin/macro/class_gofonMacroManagement.inc:37
+#, fuzzy
+msgid "Phone Macros management"
+msgstr "会议管理"
+
+#: admin/systems/asterisk/class_phoneGeneric.inc:151
+msgid "phone"
+msgstr ""
+
+#: admin/systems/asterisk/class_phoneGeneric.inc:230
+msgid "yes"
+msgstr "是"
+
+#: admin/systems/asterisk/class_phoneGeneric.inc:230
+msgid "no"
+msgstr "否"
+
+#: admin/systems/asterisk/class_phoneGeneric.inc:247
+msgid "dynamic"
+msgstr "动态"
+
+#: admin/systems/asterisk/class_phoneGeneric.inc:247
+msgid "Networksettings"
+msgstr "网络设置"
+
+#: admin/systems/asterisk/class_phoneGeneric.inc:330
+#: admin/systems/asterisk/class_phoneGeneric.inc:333
+msgid "IP address"
+msgstr ""
+
+#: admin/systems/asterisk/class_phoneGeneric.inc:473
+msgid "Phone generic"
+msgstr ""
+
+#: admin/systems/asterisk/class_phoneGeneric.inc:484
+msgid "SIP Mode"
+msgstr ""
+
+#: admin/systems/asterisk/class_phoneGeneric.inc:485
+msgid "SIP DTMF mode"
+msgstr ""
+
+#: admin/systems/asterisk/class_phoneGeneric.inc:486
+msgid "SIP Default ip"
+msgstr ""
+
+#: admin/systems/asterisk/class_phoneGeneric.inc:487
+msgid "SIP Qualify"
+msgstr ""
+
+#: admin/systems/asterisk/class_phoneGeneric.inc:488
+msgid "IAX authentication type"
+msgstr ""
+
+#: admin/systems/asterisk/class_phoneGeneric.inc:489
+msgid "IAX secret"
+msgstr ""
+
+#: admin/systems/asterisk/class_phoneGeneric.inc:490
+msgid "IAX account code"
+msgstr ""
+
+#: admin/systems/asterisk/class_phoneGeneric.inc:491
+msgid "IAX trunk lines"
+msgstr ""
+
+#: admin/systems/asterisk/class_phoneGeneric.inc:492
+msgid "IAX permit settings"
+msgstr ""
+
+#: admin/systems/asterisk/class_phoneGeneric.inc:493
+msgid "IAX deny settings"
+msgstr ""
+
+#: admin/systems/asterisk/class_phoneGeneric.inc:494
+msgid "CAPI MSN"
+msgstr ""
+
+#: admin/systems/asterisk/class_phoneGeneric.inc:495
+msgid "Hardware type"
+msgstr ""
+
+#: admin/systems/services/asterisk/class_serviceAsterisk.inc:35
+msgid "VoIP database information"
+msgstr ""
+
+#: admin/systems/services/asterisk/class_serviceAsterisk.inc:38
+msgid "Asterisk DB user"
+msgstr "Asterisk DB 用户"
+
+#: admin/systems/services/asterisk/class_serviceAsterisk.inc:38
+msgid "Login for asterisk database administrator"
+msgstr ""
+
+#: admin/systems/services/asterisk/class_serviceAsterisk.inc:42
+msgid "Password"
+msgstr "口令"
+
+#: admin/systems/services/asterisk/class_serviceAsterisk.inc:42
+msgid "Password for asterisk database administrator"
+msgstr ""
+
+#: admin/systems/services/asterisk/class_serviceAsterisk.inc:46
+msgid "Country dial prefix"
+msgstr "国内拨号前缀"
+
+#: admin/systems/services/asterisk/class_serviceAsterisk.inc:50
+msgid "Local dial prefix"
+msgstr "内部拨号前缀"
+
+#: admin/systems/services/asterisk/class_serviceAsterisk.inc:81
+#, php-format
+msgid ""
+"You can't remove the asterisk database extension, it is still in use by "
+"these objects '%s'."
+msgstr "您不能删除 asterisk 数据库扩展，它仍被这些对象 '%s' 使用。"
+
+#: admin/systems/services/asterisk/class_serviceAsterisk.inc:126
+msgid "VoIP service (asterisk)"
+msgstr ""
+
+#: admin/systems/services/asterisk/class_serviceAsterisk.inc:127
+msgid "VoIP - asterisk management"
+msgstr ""
+
+#: admin/systems/services/asterisk/class_serviceAsterisk.inc:127
+msgid "Services"
+msgstr "服务"
+
+#: admin/conference/class_phoneConferenceGeneric.inc:233
+#, php-format
+msgid "Cannot delete entry from server '%s' because it seems to be removed!"
+msgstr ""
+
+#: admin/conference/class_phoneConferenceGeneric.inc:308
+#, php-format
+msgid ""
+"The previously selected asterisk home server '%s' is no longer available!"
+msgstr ""
+
+#: admin/conference/class_phoneConferenceGeneric.inc:315
+#: admin/conference/generic.tpl.c:47
+msgid "PIN"
+msgstr "PIN"
+
+#: admin/conference/class_phoneConferenceGeneric.inc:333
+#: admin/conference/class_phoneConferenceGeneric.inc:719
+msgid "Lifetime"
+msgstr ""
+
+#: admin/conference/class_phoneConferenceGeneric.inc:400
+#, php-format
+msgid ""
+"FusionDirectory identified problems with your MySQL table definition, please "
+"activate debugging for details."
+msgstr ""
+
+#: admin/conference/class_phoneConferenceGeneric.inc:606
+#: admin/conference/class_phoneConferenceGeneric.inc:608
+#, php-format
+msgid "'%s' is already assigned to '%s'!"
+msgstr ""
+
+#: admin/conference/class_phoneConferenceGeneric.inc:693
+#, fuzzy
+msgid "Phone Conference"
+msgstr "会议"
+
+#: admin/conference/class_phoneConferenceGeneric.inc:694
+msgid "Phone conference management"
+msgstr ""
+
+#: admin/conference/class_phoneConferenceGeneric.inc:696
+msgid "GOfon conference"
+msgstr ""
+
+#: admin/conference/class_phoneConferenceGeneric.inc:698
+msgid "Asterisk conference"
+msgstr ""
+
+#: admin/conference/class_phoneConferenceGeneric.inc:705
+msgid "Conference PIN"
+msgstr ""
+
+#: admin/conference/class_phoneConferenceGeneric.inc:710
+#: admin/conference/generic.tpl.c:44
+msgid "Preset PIN"
+msgstr "预置 PIN"
+
+#: admin/conference/class_phoneConferenceGeneric.inc:711
+#: admin/conference/generic.tpl.c:50
+msgid "Record conference"
+msgstr "会议记录"
+
+#: admin/conference/class_phoneConferenceGeneric.inc:712
+#: admin/conference/generic.tpl.c:59
+msgid "Play music on hold"
+msgstr "播放暂停音乐"
+
+#: admin/conference/class_phoneConferenceGeneric.inc:713
+msgid "Activate menu"
+msgstr ""
+
+#: admin/conference/class_phoneConferenceGeneric.inc:714
+msgid "Announce user activity"
+msgstr ""
+
+#: admin/conference/class_phoneConferenceGeneric.inc:715
+msgid "Count user"
+msgstr ""
+
+#: admin/conference/class_phoneConferenceGeneric.inc:716
+msgid "Conference type"
+msgstr ""
+
+#: admin/conference/class_phoneConferenceGeneric.inc:718
+msgid "Format"
+msgstr ""
+
+#: admin/conference/class_phoneConferenceGeneric.inc:721
+msgid "Owner"
+msgstr "所有者"
+
+#: admin/conference/conf-list.xml:11
+msgid "List of conference rooms"
+msgstr "会议室列表"
+
+#: admin/conference/conf-list.xml:15 admin/conference/conf-list.xml:74
+msgid "Conference"
+msgstr "会议"
+
+#: admin/conference/class_phoneConferenceManagment.inc:36
+#, fuzzy
+msgid "Phone Conferences"
+msgstr "会议"
+
+#: admin/conference/class_phoneConferenceManagment.inc:37
+#, fuzzy
+msgid "Phone Conference management"
+msgstr "会议管理"
+
+#: personal/phoneaccount/paste_generic.tpl.c:5
+#: personal/phoneaccount/paste_generic.tpl.c:8
+#: personal/phoneaccount/generic.tpl.c:2 personal/phoneaccount/generic.tpl.c:5
+#: admin/ogroups/asterisk/phonequeue.tpl.c:8
+msgid "Phone numbers"
+msgstr "电话号码"
+
+#: personal/phoneaccount/paste_generic.tpl.c:11
+#: personal/phoneaccount/generic.tpl.c:8
 msgid "Telephone hardware"
 msgstr "电话硬件"
 
-#: personal/phoneaccount/paste_generic.tpl:29
-#: personal/phoneaccount/generic.tpl:44 personal/phoneaccount/generic.tpl:48
+#: personal/phoneaccount/paste_generic.tpl.c:14
+#: personal/phoneaccount/generic.tpl.c:11
+#: personal/phoneaccount/generic.tpl.c:14
 msgid "Telephone"
 msgstr "电话"
 
-#: personal/phoneaccount/generic.tpl:62
+#: personal/phoneaccount/generic.tpl.c:20
 msgid "Select the accounts home server"
 msgstr "选择账号的主服务器"
 
-#: personal/phoneaccount/generic.tpl:69
+#: personal/phoneaccount/generic.tpl.c:23
 msgid "Context"
 msgstr ""
 
-#: personal/phoneaccount/generic.tpl:73 personal/phoneaccount/generic.tpl:84
+#: personal/phoneaccount/generic.tpl.c:26
+#: personal/phoneaccount/generic.tpl.c:32
 msgid "Select the accounts context"
 msgstr ""
 
-#: personal/phoneaccount/generic.tpl:80
+#: personal/phoneaccount/generic.tpl.c:29
 msgid "Voicemail context"
 msgstr ""
 
-#: personal/phoneaccount/generic.tpl:138
+#: personal/phoneaccount/generic.tpl.c:47
 msgid "Refresh"
 msgstr "刷新"
+
+#: addons/fonreports/contents.tpl.c:2 admin/macro/macro-filter.tpl.c:2
+#: admin/conference/conf-filter.tpl.c:2
+msgid "Filter"
+msgstr "过滤器"
+
+#: addons/fonreports/contents.tpl.c:5
+msgid "Search for"
+msgstr "查询"
+
+#: addons/fonreports/contents.tpl.c:8
+msgid "Enter user name to search for"
+msgstr "输入要查询的用户名"
+
+#: addons/fonreports/contents.tpl.c:11 addons/fonreports/contents.tpl.c:26
+msgid "in"
+msgstr "于"
+
+#: addons/fonreports/contents.tpl.c:14
+msgid "Select subtree to base search on"
+msgstr "选择查询基于的子树"
+
+#: addons/fonreports/contents.tpl.c:17
+msgid "on"
+msgstr ""
+
+#: addons/fonreports/contents.tpl.c:20
+msgid "Select server to search on"
+msgstr ""
+
+#: addons/fonreports/contents.tpl.c:23
+msgid "during"
+msgstr "在"
+
+#: addons/fonreports/contents.tpl.c:29
+msgid "Search"
+msgstr "查找"
+
+#: addons/fonreports/contents.tpl.c:44
+msgid "Application"
+msgstr "应用程序"
+
+#: addons/fonreports/contents.tpl.c:47
+msgid "Status"
+msgstr "状态"
+
+#: addons/fonreports/contents.tpl.c:53
+msgid "Search returned no results..."
+msgstr "查无结果..."
+
+#: admin/ogroups/asterisk/phonequeue.tpl.c:2
+msgid ""
+"Only users with the same asterisk home server will be included to this queue."
+msgstr "只有有着相同 asterisk 主服务器的用户才会被包含在这个队列中。"
+
+#: admin/ogroups/asterisk/phonequeue.tpl.c:5
+msgid "Queue Settings"
+msgstr "队列设置"
+
+#: admin/ogroups/asterisk/phonequeue.tpl.c:11
+#: admin/ogroups/asterisk/phonequeue.tpl.c:50
+msgid "Generic queue Settings"
+msgstr "通用队列设置"
+
+#: admin/ogroups/asterisk/phonequeue.tpl.c:14
+msgid "Up"
+msgstr "上"
+
+#: admin/ogroups/asterisk/phonequeue.tpl.c:17
+msgid "Down"
+msgstr "关闭"
+
+#: admin/ogroups/asterisk/phonequeue.tpl.c:20
+#: admin/conference/generic.tpl.c:41
+msgid "Options"
+msgstr "选项"
+
+#: admin/ogroups/asterisk/phonequeue.tpl.c:35
+msgid "Strategy"
+msgstr "策略"
+
+#: admin/ogroups/asterisk/phonequeue.tpl.c:44
+msgid "(in seconds)"
+msgstr "(秒)"
+
+#: admin/ogroups/asterisk/phonequeue.tpl.c:47
+msgid "Queue sound setup"
+msgstr "队列声音设置"
+
+#: admin/ogroups/asterisk/phonequeue.tpl.c:53
+msgid "Use music on hold instead of ringing"
+msgstr "播放音乐保持锁定而非播放"
+
+#: admin/ogroups/asterisk/phonequeue.tpl.c:59
+msgid "Welcome sound file"
+msgstr "欢迎声音文件"
+
+#: admin/ogroups/asterisk/phonequeue.tpl.c:62
+msgid "Announce message"
+msgstr "公告信息"
+
+#: admin/ogroups/asterisk/phonequeue.tpl.c:65
+msgid "Sound file for 'You are next ...'"
+msgstr "声音文件“您是下一个...”"
+
+#: admin/ogroups/asterisk/phonequeue.tpl.c:68
+msgid "'There are ...'"
+msgstr "'这里有 ...'"
+
+#: admin/ogroups/asterisk/phonequeue.tpl.c:71
+msgid "'... calls waiting'"
+msgstr "'... 电话在等待'"
+
+#: admin/ogroups/asterisk/phonequeue.tpl.c:74
+msgid "'Thank you' message"
+msgstr "'谢谢您' 消息"
+
+#: admin/ogroups/asterisk/phonequeue.tpl.c:77
+msgid "'minutes' sound file"
+msgstr "'分钟' 声音文件"
+
+#: admin/ogroups/asterisk/phonequeue.tpl.c:80
+msgid "'seconds' sound file"
+msgstr "'秒' 声音文件"
+
+#: admin/ogroups/asterisk/phonequeue.tpl.c:83
+msgid "Hold sound file"
+msgstr "暂停声音文件"
+
+#: admin/ogroups/asterisk/phonequeue.tpl.c:86
+msgid "Less Than sound file"
+msgstr "声音文件“小于...”"
+
+#: admin/ogroups/asterisk/phonequeue.tpl.c:89
+msgid "Phone attributes "
+msgstr "电话属性"
+
+#: admin/macro/parameter.tpl.c:2
+msgid "Argument"
+msgstr "参数"
+
+#: admin/macro/parameter.tpl.c:8
+msgid "type"
+msgstr "类型"
+
+#: admin/macro/parameter.tpl.c:11
+msgid "Default value"
+msgstr "缺省值"
+
+#: admin/macro/parameter.tpl.c:14
+msgid "You are not allowed to view the macro parameter settings"
+msgstr ""
+
+#: admin/macro/remove.tpl.c:5 admin/conference/remove.tpl.c:5
+msgid ""
+"Please double check if you really want to do this since there is no way for "
+"FusionDirectory to get your data back."
+msgstr ""
+
+#: admin/macro/remove.tpl.c:8 admin/conference/remove.tpl.c:8
+msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
+msgstr "所以，如果您确定，请按“删除”继续，否则按“取消”退出。"
+
+#: admin/macro/generic.tpl.c:11
+msgid "Macro name to be displayed"
+msgstr "要显示的宏名称"
+
+#: admin/macro/generic.tpl.c:20
+msgid "Visible for user"
+msgstr "用户可见"
+
+#: admin/macro/generic.tpl.c:23
+msgid "Macro text"
+msgstr "宏文本"
+
+#: admin/systems/asterisk/phone.tpl.c:2
+msgid "Phone name"
+msgstr "电话名称"
+
+#: admin/systems/asterisk/phonesettings.tpl.c:2
+msgid "Advanced phone settings"
+msgstr "高级电话设置"
+
+#: admin/systems/asterisk/phonesettings.tpl.c:5
+msgid "Phone type"
+msgstr "电话类型"
+
+#: admin/systems/asterisk/phonesettings.tpl.c:8
+#: admin/systems/asterisk/phonesettings.tpl.c:17
+#: admin/systems/asterisk/phonesettings.tpl.c:23
+#: admin/systems/asterisk/phonesettings.tpl.c:29
+#: admin/systems/asterisk/phonesettings.tpl.c:38
+#: admin/systems/asterisk/phonesettings.tpl.c:50
+#: admin/systems/asterisk/phonesettings.tpl.c:68
+msgid "Choose a phone type"
+msgstr "选择一个电话类型"
+
+#: admin/systems/asterisk/phonesettings.tpl.c:11
+msgid "refresh"
+msgstr "刷新"
+
+#: admin/systems/asterisk/phonesettings.tpl.c:14
+msgid "Mode"
+msgstr "模式"
+
+#: admin/systems/asterisk/phonesettings.tpl.c:20
+msgid "DTMF mode"
+msgstr "DTMF 模式"
+
+#: admin/systems/asterisk/phonesettings.tpl.c:26
+#: admin/systems/asterisk/phonesettings.tpl.c:41
+msgid "Default IP"
+msgstr "缺省 IP"
+
+#: admin/systems/asterisk/phonesettings.tpl.c:32
+#: admin/systems/asterisk/phonesettings.tpl.c:44
+msgid "Response timeout"
+msgstr "响应超时"
+
+#: admin/systems/asterisk/phonesettings.tpl.c:35
+msgid "Modus"
+msgstr "模块"
+
+#: admin/systems/asterisk/phonesettings.tpl.c:47
+msgid "Authtype"
+msgstr "认证类型"
+
+#: admin/systems/asterisk/phonesettings.tpl.c:53
+msgid "Secret"
+msgstr "秘密"
+
+#: admin/systems/asterisk/phonesettings.tpl.c:56
+msgid "GoFonInkeys"
+msgstr ""
+
+#: admin/systems/asterisk/phonesettings.tpl.c:59
+msgid "GoFonOutKeys"
+msgstr ""
+
+#: admin/systems/asterisk/phonesettings.tpl.c:62
+msgid "Account code"
+msgstr "账号号码"
+
+#: admin/systems/asterisk/phonesettings.tpl.c:65
+msgid "Trunk lines"
+msgstr ""
+
+#: admin/systems/asterisk/phonesettings.tpl.c:71
+msgid "Hosts that are allowed to connect"
+msgstr "允许连接的主机"
+
+#: admin/systems/asterisk/phonesettings.tpl.c:74
+#: admin/systems/asterisk/phonesettings.tpl.c:80
+msgid "List of alternative mail addresses"
+msgstr "替代邮件地址列表"
+
+#: admin/systems/asterisk/phonesettings.tpl.c:77
+msgid "Hosts that are not allowed to connect"
+msgstr "不允许连接的主机"
+
+#: admin/systems/asterisk/phonesettings.tpl.c:83
+msgid "MSN"
+msgstr "MSN"
+
+#: admin/conference/paste_generic.tpl.c:2 admin/conference/generic.tpl.c:5
+msgid "Conference name"
+msgstr "会议名称"
+
+#: admin/conference/paste_generic.tpl.c:5 admin/conference/generic.tpl.c:8
+msgid "Name of conference to create"
+msgstr "要创建会议的名称"
+
+#: admin/conference/generic.tpl.c:2
+msgid "Properties"
+msgstr "属性"
+
+#: admin/conference/generic.tpl.c:11
+msgid "Type"
+msgstr "类型"
+
+#: admin/conference/generic.tpl.c:14
+msgid "Choose subtree to place conference in"
+msgstr "选择放置会议的子树"
+
+#: admin/conference/generic.tpl.c:26
+msgid "Select language"
+msgstr ""
+
+#: admin/conference/generic.tpl.c:32
+msgid "Descriptive text for department"
+msgstr "部门描述文件"
+
+#: admin/conference/generic.tpl.c:35
+msgid "Lifetime (in days)"
+msgstr "生存期（天）"
+
+#: admin/conference/generic.tpl.c:53
+msgid "Sound file format"
+msgstr "声音文件类型"
+
+#: admin/conference/generic.tpl.c:56
+msgid "Choose subtree to place department in"
+msgstr "选择放置部门的子树"
+
+#: admin/conference/generic.tpl.c:62
+msgid "Activate session menu"
+msgstr "激活会话菜单"
+
+#: admin/conference/generic.tpl.c:65
+msgid "Announce users joining or leaving the conference"
+msgstr "通知用户加入或者离开会议"
+
+#: admin/conference/generic.tpl.c:68
+msgid "Count users"
+msgstr ""

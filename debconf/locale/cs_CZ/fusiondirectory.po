@@ -1,35 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
-"POT-Creation-Date: 2013-03-24 15:09+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-05-09 19:17+0200\n"
 "PO-Revision-Date: 2013-03-24 15:00+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/FusionDirectory/language/cs_CZ/)\n"
+"Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/"
+"FusionDirectory/language/cs_CZ/)\n"
+"Language: cs_CZ\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: cs_CZ\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-
-#: admin/debconfProfile/remove.tpl:2
-msgid "Warning"
-msgstr "varování"
-
-#: admin/debconfProfile/remove.tpl:6
-msgid ""
-"Please double check if you really want to do this since there is no way for "
-"FusionDirectory to get your data back."
-msgstr "Týká se veškerých informací o této položce v adresáři. Prosím velmi dobře si rozmyslete, zda to opravdu chcete udělat, protože provedené změny už ve FusionDirectory nepůjde vzít nijak jednoduše zpět (nanejvýš složitě ze záloh, pokud existují a obsahují potřebná data)!"
-
-#: admin/debconfProfile/remove.tpl:10
-msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr "Tedy – pokud jste si jist(a), stiskněte 'smazat'. V opačném případě operaci zrušte pomocí 'zrušit'."
 
 #: admin/debconfProfile/debconfProfile-list.xml:11
 msgid "List of debconf profiles"
@@ -42,7 +29,7 @@ msgstr ""
 #: admin/debconfProfile/debconfProfile-list.xml:32
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:190
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:193
-#: admin/debconfProfile/debconfProfile-filter.tpl:15
+#: admin/debconfProfile/debconfProfile-filter.tpl.c:5
 msgid "Name"
 msgstr "název"
 
@@ -59,8 +46,9 @@ msgid "Create"
 msgstr "vytvořit"
 
 #: admin/debconfProfile/debconfProfile-list.xml:65
-msgid "debconfProfil"
-msgstr ""
+#: admin/systems/debconf/class_debconfStartup.inc:68
+msgid "Profile"
+msgstr "profil"
 
 #: admin/debconfProfile/debconfProfile-list.xml:77
 msgid "Remove"
@@ -75,7 +63,8 @@ msgid "Remove debconfProfile"
 msgstr ""
 
 #: admin/debconfProfile/class_debconfProfileManagement.inc:35
-msgid "Debconf profiles"
+#: admin/systems/debconf/class_debconfStartup.inc:111
+msgid "Debconf"
 msgstr ""
 
 #: admin/debconfProfile/class_debconfProfileManagement.inc:36
@@ -107,10 +96,10 @@ msgstr ""
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:147
 #, php-format
 msgid ""
-"In order to import a debconf file, please run the following command : "
-"<br/><i>debconf2ldif.pl -b ou=<b>name</b>,%s -k <b>filename</b> > "
-"template.ldif </i><br/>With <b>filename</b> the file name, and <b>name</b> "
-"the desired name for the template.<br/>"
+"In order to import a debconf file, please run the following command : <br/"
+"><i>debconf2ldif.pl -b ou=<b>name</b>,%s -k <b>filename</b> > template.ldif "
+"</i><br/>With <b>filename</b> the file name, and <b>name</b> the desired "
+"name for the template.<br/>"
 msgstr ""
 
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:169
@@ -143,17 +132,9 @@ msgstr ""
 msgid "Debconf profile generic"
 msgstr ""
 
-#: admin/debconfProfile/debconfProfile-filter.tpl:3
-msgid "Filter"
-msgstr "filtr"
-
 #: admin/systems/debconf/class_debconfStartup.inc:65
 msgid "Debconf settings"
 msgstr ""
-
-#: admin/systems/debconf/class_debconfStartup.inc:68
-msgid "Profile"
-msgstr "profil"
 
 #: admin/systems/debconf/class_debconfStartup.inc:68
 msgid "Debconf preseed profile to be used for installation"
@@ -183,10 +164,30 @@ msgstr ""
 msgid "Linux kernel parameters to be ran"
 msgstr ""
 
-#: admin/systems/debconf/class_debconfStartup.inc:111
-msgid "Debconf"
-msgstr ""
-
 #: admin/systems/debconf/class_debconfStartup.inc:112
 msgid "Debconf preseed startup"
 msgstr ""
+
+#: admin/debconfProfile/debconfProfile-filter.tpl.c:2
+msgid "Filter"
+msgstr "filtr"
+
+#: admin/debconfProfile/remove.tpl.c:2
+msgid "Warning"
+msgstr "varování"
+
+#: admin/debconfProfile/remove.tpl.c:5
+msgid ""
+"Please double check if you really want to do this since there is no way for "
+"FusionDirectory to get your data back."
+msgstr ""
+"Týká se veškerých informací o této položce v adresáři. Prosím velmi dobře si "
+"rozmyslete, zda to opravdu chcete udělat, protože provedené změny už ve "
+"FusionDirectory nepůjde vzít nijak jednoduše zpět (nanejvýš složitě ze "
+"záloh, pokud existují a obsahují potřebná data)!"
+
+#: admin/debconfProfile/remove.tpl.c:8
+msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
+msgstr ""
+"Tedy – pokud jste si jist(a), stiskněte 'smazat'. V opačném případě operaci "
+"zrušte pomocí 'zrušit'."
