@@ -1,27 +1,32 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 #  Stefan Koehler <stefan.koehler@GONICUS.de>, 2005
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
-"POT-Creation-Date: 2013-03-24 15:12+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-05-09 19:19+0200\n"
 "PO-Revision-Date: 2013-03-24 15:00+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: German (http://www.transifex.com/projects/p/FusionDirectory/language/de/)\n"
+"Language-Team: German (http://www.transifex.com/projects/p/FusionDirectory/"
+"language/de/)\n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: admin/roleManagement/role-list.tpl:13
-#: admin/roleManagement/roleGeneric.tpl:29
-msgid "Base"
-msgstr "Basis"
+#: admin/roleManagement/class_roleManagement.inc:36
+#: admin/roleManagement/class_roleGeneric.inc:36
+msgid "Roles"
+msgstr "Rollen"
+
+#: admin/roleManagement/class_roleManagement.inc:37
+msgid "Role management"
+msgstr "Rollen-Verwaltung"
 
 #: admin/roleManagement/role-list.xml:11
 msgid "List of roles"
@@ -34,15 +39,15 @@ msgid "Role"
 msgstr "Rolle"
 
 #: admin/roleManagement/role-list.xml:41
-#: admin/roleManagement/role-filter.tpl:17
-#: admin/roleManagement/roleGeneric.tpl:11
 #: admin/roleManagement/class_roleGeneric.inc:63
+#: admin/roleManagement/role-filter.tpl.c:5
+#: admin/roleManagement/roleGeneric.tpl.c:5
 msgid "Name"
 msgstr "Name"
 
 #: admin/roleManagement/role-list.xml:49
-#: admin/roleManagement/roleGeneric.tpl:19
 #: admin/roleManagement/class_roleGeneric.inc:64
+#: admin/roleManagement/roleGeneric.tpl.c:8
 msgid "Description"
 msgstr "Beschreibung"
 
@@ -70,63 +75,14 @@ msgstr "Rolle bearbeiten"
 msgid "Remove role"
 msgstr "Rolle entfernen"
 
-#: admin/roleManagement/remove.tpl:2
-msgid "Warning"
-msgstr "Warnung"
-
-#: admin/roleManagement/remove.tpl:6
-msgid ""
-"Please double check if you really want to do this since there is no way for "
-"FusionDirectory to get your data back."
-msgstr ""
-
-#: admin/roleManagement/remove.tpl:10
-msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr "Wenn Sie sicher sind, drücken Sie 'Entfernen' um fortzufahren oder 'Abbrechen' zum Abbruch."
-
-#: admin/roleManagement/paste_generic.tpl:4
-msgid "Role name"
-msgstr "Rollen-Name"
-
-#: admin/roleManagement/paste_generic.tpl:7
-msgid "Please enter the new object role name"
-msgstr "Bitte geben Sie einen Namen für die neue Rolle ein"
-
-#: admin/roleManagement/role-filter.tpl:3
-msgid "Filter"
-msgstr "Filter"
-
-#: admin/roleManagement/roleGeneric.tpl:6
-#: admin/roleManagement/class_roleGeneric.inc:61
-msgid "Generic"
-msgstr "Allgemein"
-
-#: admin/roleManagement/roleGeneric.tpl:42
-#: admin/roleManagement/class_roleGeneric.inc:66
-msgid "Phone number"
-msgstr "Telefonnummer"
-
-#: admin/roleManagement/roleGeneric.tpl:50
-#: admin/roleManagement/class_roleGeneric.inc:67
-msgid "Fax number"
-msgstr "Faxnummer"
-
-#: admin/roleManagement/roleGeneric.tpl:62
-msgid "Occupants"
-msgstr "Rollen-Inhaber"
-
-#: admin/roleManagement/class_roleManagement.inc:36
-#: admin/roleManagement/class_roleGeneric.inc:36
-msgid "Roles"
-msgstr "Rollen"
-
-#: admin/roleManagement/class_roleManagement.inc:37
-msgid "Role management"
-msgstr "Rollen-Verwaltung"
-
 #: admin/roleManagement/class_roleGeneric.inc:33
 msgid "Role generic"
 msgstr "Allgemeine Rolleneinstellungen"
+
+#: admin/roleManagement/class_roleGeneric.inc:61
+#: admin/roleManagement/roleGeneric.tpl.c:2
+msgid "Generic"
+msgstr "Allgemein"
 
 #: admin/roleManagement/class_roleGeneric.inc:63
 msgid "Name of the role"
@@ -136,6 +92,16 @@ msgstr ""
 msgid "Description of the role"
 msgstr ""
 
+#: admin/roleManagement/class_roleGeneric.inc:66
+#: admin/roleManagement/roleGeneric.tpl.c:14
+msgid "Phone number"
+msgstr "Telefonnummer"
+
+#: admin/roleManagement/class_roleGeneric.inc:67
+#: admin/roleManagement/roleGeneric.tpl.c:17
+msgid "Fax number"
+msgstr "Faxnummer"
+
 #: admin/roleManagement/class_roleGeneric.inc:68
 msgid "Users"
 msgstr "Benutzer"
@@ -143,3 +109,40 @@ msgstr "Benutzer"
 #: admin/roleManagement/class_roleGeneric.inc:68
 msgid "Add users for the role"
 msgstr ""
+
+#: admin/roleManagement/role-filter.tpl.c:2
+msgid "Filter"
+msgstr "Filter"
+
+#: admin/roleManagement/paste_generic.tpl.c:2
+msgid "Role name"
+msgstr "Rollen-Name"
+
+#: admin/roleManagement/paste_generic.tpl.c:5
+msgid "Please enter the new object role name"
+msgstr "Bitte geben Sie einen Namen für die neue Rolle ein"
+
+#: admin/roleManagement/role-list.tpl.c:2
+#: admin/roleManagement/roleGeneric.tpl.c:11
+msgid "Base"
+msgstr "Basis"
+
+#: admin/roleManagement/remove.tpl.c:2
+msgid "Warning"
+msgstr "Warnung"
+
+#: admin/roleManagement/remove.tpl.c:5
+msgid ""
+"Please double check if you really want to do this since there is no way for "
+"FusionDirectory to get your data back."
+msgstr ""
+
+#: admin/roleManagement/remove.tpl.c:8
+msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
+msgstr ""
+"Wenn Sie sicher sind, drücken Sie 'Entfernen' um fortzufahren oder "
+"'Abbrechen' zum Abbruch."
+
+#: admin/roleManagement/roleGeneric.tpl.c:20
+msgid "Occupants"
+msgstr "Rollen-Inhaber"

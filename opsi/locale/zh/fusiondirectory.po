@@ -1,145 +1,213 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
-"POT-Creation-Date: 2013-03-24 15:12+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-05-09 19:18+0200\n"
 "PO-Revision-Date: 2013-03-24 15:01+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Chinese (http://www.transifex.com/projects/p/FusionDirectory/language/zh/)\n"
+"Language-Team: Chinese (http://www.transifex.com/projects/p/FusionDirectory/"
+"language/zh/)\n"
+"Language: zh\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: zh\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: admin/opsi/opsiProfile-filter.tpl:3
-msgid "Filter"
-msgstr "过滤器"
+#: config/opsi/class_opsiConfig.inc:28
+msgid "OPSI configuration"
+msgstr ""
 
-#: admin/opsi/opsiProfile-filter.tpl:15
-#: admin/opsi/class_opsiSoftwareList.inc:58 admin/opsi/opsiProfile-list.xml:32
+#: config/opsi/class_opsiConfig.inc:29
+msgid "FusionDirectory OPSI plugin configuration"
+msgstr ""
+
+#: config/opsi/class_opsiConfig.inc:42
+msgid "LDAP tree"
+msgstr ""
+
+#: config/opsi/class_opsiConfig.inc:45
+msgid "OPSI RDN"
+msgstr ""
+
+#: config/opsi/class_opsiConfig.inc:45
+msgid "Branch in which OPSI profiles will be stored"
+msgstr ""
+
+#: addons/opsi/class_opsiImport.inc:90 addons/opsi/class_opsiImport.inc:94
+#: addons/opsi/class_opsiImport.inc:95
+msgid "OPSI import"
+msgstr ""
+
+#: addons/opsi/class_opsiImport.inc:91
+msgid "Import windows stations from OPSI into FD"
+msgstr ""
+
+#: addons/opsi/class_opsiImport.inc:108
+msgid "Import"
+msgstr "导入"
+
+#: addons/opsi/class_opsiImport.inc:112
+#: admin/systems/opsi/class_opsiClient.inc:50
+msgid "OPSI Server"
+msgstr ""
+
+#: addons/opsi/class_opsiImport.inc:112
+msgid "The OPSI server you wish to import host from"
+msgstr ""
+
+#: addons/opsi/class_opsiImport.inc:188
+#, php-format
+msgid "Could not parse %s"
+msgstr ""
+
+#: addons/opsi/class_opsiImport.inc:225
+#, php-format
+msgid "No DHCP server found for ip %s"
+msgstr ""
+
+#: addons/opsi/class_opsiImport.inc:239
+#, php-format
+msgid "No DNS server found for zone %s"
+msgstr ""
+
+#: addons/opsi/class_opsiImport.inc:264
+msgid "Argonaut server is not available"
+msgstr ""
+
+#: addons/opsi/class_opsiImport.inc:282
+#: admin/systems/opsi/class_opsiClient.inc:148
+msgid "Could not update OPSI informations"
+msgstr ""
+
+#: admin/opsi/class_opsiProfile.inc:52 admin/opsi/class_opsiProfile.inc:53
+#: admin/opsi/class_opsiProfile.inc:56 admin/opsi/class_opsiProfile.inc:59
+msgid "OPSI profile"
+msgstr ""
+
+#: admin/opsi/class_opsiProfile.inc:73 admin/opsi/class_opsiProfile.inc:80
+#: admin/opsi/class_opsiOnDemandList.inc:60
+#: admin/opsi/class_opsiSoftwareList.inc:60
 #: admin/opsi/class_opsiProductProperties.inc:131
-#: admin/opsi/class_opsiProfile.inc:71 admin/opsi/class_opsiProfile.inc:78
 msgid "Name"
 msgstr "名称"
+
+#: admin/opsi/class_opsiProfile.inc:76
+#: admin/opsi/class_opsiOnDemandList.inc:56
+#: admin/opsi/class_opsiSoftwareList.inc:56
+msgid "OPSI server"
+msgstr ""
+
+#: admin/opsi/class_opsiProfile.inc:76
+#: admin/opsi/class_opsiOnDemandList.inc:56
+#: admin/opsi/class_opsiSoftwareList.inc:56
+msgid "OPSI server to use for deployment"
+msgstr ""
+
+#: admin/opsi/class_opsiProfile.inc:80
+#: admin/opsi/class_opsiOnDemandList.inc:60
+#: admin/opsi/class_opsiSoftwareList.inc:60
+msgid "Name of this OPSI profile"
+msgstr ""
+
+#: admin/opsi/class_opsiProfile.inc:86
+msgid "Entries"
+msgstr ""
+
+#: admin/opsi/class_opsiProfile.inc:89
+msgid "Netboot product"
+msgstr ""
+
+#: admin/opsi/class_opsiProfile.inc:89
+msgid "The netboot product to use for this profile"
+msgstr ""
+
+#: admin/opsi/class_opsiProfile.inc:94
+msgid "Software lists"
+msgstr ""
+
+#: admin/opsi/class_opsiProfile.inc:94
+msgid "Software lists that will be installed with this profile"
+msgstr ""
+
+#: admin/opsi/class_opsiProfile.inc:137 admin/opsi/class_opsiProfile.inc:163
+#: admin/opsi/class_opsiOnDemandList.inc:112
+#: admin/opsi/class_opsiSoftwareList.inc:124
+#, php-format
+msgid "Could not find %s in the LDAP"
+msgstr ""
+
+#: admin/opsi/class_opsiProfile.inc:152
+#: admin/opsi/class_opsiOnDemandList.inc:101
+#: admin/opsi/class_opsiSoftwareList.inc:113
+#: admin/opsi/class_opsiProductProperties.inc:190
+msgid "Could not contact argonaut server"
+msgstr ""
+
+#: admin/opsi/class_opsiProfile.inc:171
+#: admin/opsi/class_opsiOnDemandList.inc:120
+#: admin/opsi/class_opsiSoftwareList.inc:132
+#: admin/opsi/class_opsiProductProperties.inc:206
+msgid "Could contact OPSI server"
+msgstr ""
+
+#: admin/opsi/class_opsiOnDemandList.inc:32
+#: admin/opsi/class_opsiOnDemandList.inc:36
+#: admin/opsi/class_opsiOnDemandList.inc:39
+msgid "OPSI ondemand list"
+msgstr ""
+
+#: admin/opsi/class_opsiOnDemandList.inc:33
+msgid "OPSI on demand software list"
+msgstr ""
+
+#: admin/opsi/class_opsiOnDemandList.inc:53
+#: admin/opsi/class_opsiSoftwareList.inc:53
+msgid "Infos"
+msgstr ""
+
+#: admin/opsi/class_opsiOnDemandList.inc:64
+msgid "Show details"
+msgstr ""
+
+#: admin/opsi/class_opsiOnDemandList.inc:64
+msgid "Show further information to the user"
+msgstr ""
+
+#: admin/opsi/class_opsiOnDemandList.inc:70
+#: admin/opsi/class_opsiSoftwareList.inc:66
+msgid "Softwares"
+msgstr ""
+
+#: admin/opsi/class_opsiOnDemandList.inc:74
+#: admin/opsi/class_opsiSoftwareList.inc:83
+msgid "Localboot products"
+msgstr ""
+
+#: admin/opsi/class_opsiOnDemandList.inc:74
+msgid "The localboot products to put in this list"
+msgstr ""
 
 #: admin/opsi/class_opsiSoftwareList.inc:32
 msgid "OPSI list"
 msgstr ""
 
 #: admin/opsi/class_opsiSoftwareList.inc:33
-#: admin/opsi/class_opsiSoftwareList.inc:35
-#: admin/opsi/class_opsiSoftwareList.inc:38
+#: admin/opsi/class_opsiSoftwareList.inc:36
+#: admin/opsi/class_opsiSoftwareList.inc:39
 msgid "OPSI software list"
 msgstr ""
 
-#: admin/opsi/class_opsiSoftwareList.inc:51
-msgid "Infos"
-msgstr ""
-
-#: admin/opsi/class_opsiSoftwareList.inc:54
-#: admin/opsi/class_opsiProfile.inc:74
-msgid "OPSI server"
-msgstr ""
-
-#: admin/opsi/class_opsiSoftwareList.inc:54
-#: admin/opsi/class_opsiProfile.inc:74
-msgid "OPSI server to use for deployment"
-msgstr ""
-
-#: admin/opsi/class_opsiSoftwareList.inc:58
-#: admin/opsi/class_opsiProfile.inc:78
-msgid "Name of this OPSI profile"
-msgstr ""
-
-#: admin/opsi/class_opsiSoftwareList.inc:64
-msgid "Softwares"
-msgstr ""
-
-#: admin/opsi/class_opsiSoftwareList.inc:68
+#: admin/opsi/class_opsiSoftwareList.inc:70
 msgid "The localboot products to install with this list"
 msgstr ""
 
-#: admin/opsi/class_opsiSoftwareList.inc:81
-msgid "Localboot products"
-msgstr ""
-
-#: admin/opsi/class_opsiSoftwareList.inc:110
-#: admin/opsi/class_opsiProductProperties.inc:188
-#: admin/opsi/class_opsiProfile.inc:147
-msgid "Could not contact argonaut server"
-msgstr ""
-
-#: admin/opsi/class_opsiSoftwareList.inc:121
-#: admin/opsi/class_opsiProfile.inc:132 admin/opsi/class_opsiProfile.inc:158
-#, php-format
-msgid "Could not find %s in the LDAP"
-msgstr ""
-
-#: admin/opsi/class_opsiSoftwareList.inc:129
-#: admin/opsi/class_opsiProductProperties.inc:204
-#: admin/opsi/class_opsiProfile.inc:166
-msgid "Could contact OPSI server"
-msgstr ""
-
-#: admin/opsi/opsiProfile-list.xml:11
-msgid "List of opsi profiles"
-msgstr ""
-
-#: admin/opsi/opsiProfile-list.xml:15
-#: admin/systems/opsi/class_opsiClient.inc:52
-msgid "OPSI Profile"
-msgstr ""
-
-#: admin/opsi/opsiProfile-list.xml:40
-msgid "Description"
-msgstr "描述"
-
-#: admin/opsi/opsiProfile-list.xml:48
-msgid "Actions"
-msgstr "动作"
-
-#: admin/opsi/opsiProfile-list.xml:59
-msgid "Create"
-msgstr "创建"
-
-#: admin/opsi/opsiProfile-list.xml:65
-msgid "opsiProfil"
-msgstr ""
-
-#: admin/opsi/opsiProfile-list.xml:77
-msgid "Remove"
-msgstr "删除"
-
-#: admin/opsi/opsiProfile-list.xml:109
-msgid "Edit opsiProfile"
-msgstr ""
-
-#: admin/opsi/opsiProfile-list.xml:122
-msgid "Remove opsiProfile"
-msgstr ""
-
-#: admin/opsi/remove.tpl:2
-msgid "Warning"
-msgstr "警告"
-
-#: admin/opsi/remove.tpl:6
-msgid ""
-"Please double check if you really want to do this since there is no way for "
-"FusionDirectory to get your data back."
-msgstr ""
-
-#: admin/opsi/remove.tpl:10
-msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr "所以，如果您确定，请按“删除”继续，否则按“取消”退出。"
-
 #: admin/opsi/class_opsiProfileManagement.inc:41
-msgid "OPSI profiles"
+msgid "OPSI"
 msgstr ""
 
 #: admin/opsi/class_opsiProfileManagement.inc:42
@@ -151,64 +219,8 @@ msgstr ""
 msgid "Product properties"
 msgstr ""
 
-#: admin/opsi/class_opsiProductProperties.inc:135
+#: admin/opsi/class_opsiProductProperties.inc:136
 msgid "Properties of the products of this profile"
-msgstr ""
-
-#: admin/opsi/class_opsiProfile.inc:52 admin/opsi/class_opsiProfile.inc:53
-#: admin/opsi/class_opsiProfile.inc:55 admin/opsi/class_opsiProfile.inc:58
-msgid "OPSI profile"
-msgstr ""
-
-#: admin/opsi/class_opsiProfile.inc:84
-msgid "Entries"
-msgstr ""
-
-#: admin/opsi/class_opsiProfile.inc:87
-msgid "Netboot product"
-msgstr ""
-
-#: admin/opsi/class_opsiProfile.inc:87
-msgid "The netboot product to use for this profile"
-msgstr ""
-
-#: admin/opsi/class_opsiProfile.inc:92
-msgid "Software lists"
-msgstr ""
-
-#: admin/opsi/class_opsiProfile.inc:92
-msgid "Software lists that will be installed with this profile"
-msgstr ""
-
-#: admin/systems/opsi/class_opsiClient.inc:31
-msgid "OPSI client"
-msgstr ""
-
-#: admin/systems/opsi/class_opsiClient.inc:32
-msgid "Edit OPSI client settings"
-msgstr ""
-
-#: admin/systems/opsi/class_opsiClient.inc:45
-msgid "OPSI Client"
-msgstr ""
-
-#: admin/systems/opsi/class_opsiClient.inc:48
-#: addons/opsi/class_opsiAdmin.inc:112
-msgid "OPSI Server"
-msgstr ""
-
-#: admin/systems/opsi/class_opsiClient.inc:48
-msgid "The OPSI Server this client is connected to"
-msgstr ""
-
-#: admin/systems/opsi/class_opsiClient.inc:52
-msgid "The OPSI Profile to apply to this client"
-msgstr ""
-
-#: admin/systems/opsi/class_opsiClient.inc:83
-#: admin/systems/opsi/class_opsiClient.inc:100
-#: addons/opsi/class_opsiAdmin.inc:279
-msgid "Could not update OPSI informations"
 msgstr ""
 
 #: admin/systems/services/opsi/class_serviceOPSI.inc:29
@@ -248,58 +260,64 @@ msgstr "口令"
 msgid "The password to use for connection"
 msgstr ""
 
-#: addons/opsi/class_opsiAdmin.inc:90 addons/opsi/class_opsiAdmin.inc:94
-#: addons/opsi/class_opsiAdmin.inc:95
-msgid "OPSI Admin"
+#: admin/systems/opsi/class_opsiClient.inc:33
+msgid "OPSI client"
 msgstr ""
 
-#: addons/opsi/class_opsiAdmin.inc:91
-msgid "OPSI import"
+#: admin/systems/opsi/class_opsiClient.inc:34
+msgid "Edit OPSI client settings"
 msgstr ""
 
-#: addons/opsi/class_opsiAdmin.inc:108
-msgid "Import"
-msgstr "导入"
-
-#: addons/opsi/class_opsiAdmin.inc:112
-msgid "The OPSI server you wish to import host from"
+#: admin/systems/opsi/class_opsiClient.inc:47
+msgid "OPSI Client"
 msgstr ""
 
-#: addons/opsi/class_opsiAdmin.inc:185
-#, php-format
-msgid "Could not parse %s"
+#: admin/systems/opsi/class_opsiClient.inc:50
+msgid "The OPSI Server this client is connected to"
 msgstr ""
 
-#: addons/opsi/class_opsiAdmin.inc:222
-#, php-format
-msgid "No DHCP server found for ip %s"
+#: admin/systems/opsi/class_opsiClient.inc:54
+msgid "OPSI Profile"
 msgstr ""
 
-#: addons/opsi/class_opsiAdmin.inc:236
-#, php-format
-msgid "No DNS server found for zone %s"
+#: admin/systems/opsi/class_opsiClient.inc:54
+msgid "The OPSI Profile to apply to this client"
 msgstr ""
 
-#: addons/opsi/class_opsiAdmin.inc:261
-msgid "Argonaut server is not available"
+#: admin/systems/opsi/class_opsiClient.inc:96
+msgid "Could not get macAddress for OPSI server !"
 msgstr ""
 
-#: config/opsi/class_opsiConfig.inc:28
-msgid "OPSI configuration"
+#: admin/systems/opsi/class_opsiClient.inc:105
+#: admin/systems/opsi/class_opsiClient.inc:191
+msgid "Could not remove OPSI informations"
 msgstr ""
 
-#: config/opsi/class_opsiConfig.inc:29
-msgid "FusionDirectory OPSI plugin configuration"
+#: addons/opsi/opsiimport.tpl.c:2
+msgid ""
+"Warning : Once you import your OPSI hosts into FusionDirectory, they will be "
+"managed by it, so if you delete them or deactivate their OPSI tab, they will "
+"be removed from OPSI."
 msgstr ""
 
-#: config/opsi/class_opsiConfig.inc:42
-msgid "LDAP tree"
-msgstr ""
+#~ msgid "Filter"
+#~ msgstr "过滤器"
 
-#: config/opsi/class_opsiConfig.inc:45
-msgid "OPSI RDN"
-msgstr ""
+#~ msgid "Description"
+#~ msgstr "描述"
 
-#: config/opsi/class_opsiConfig.inc:45
-msgid "Branch in which OPSI profiles will be stored"
-msgstr ""
+#~ msgid "Actions"
+#~ msgstr "动作"
+
+#~ msgid "Create"
+#~ msgstr "创建"
+
+#~ msgid "Remove"
+#~ msgstr "删除"
+
+#~ msgid "Warning"
+#~ msgstr "警告"
+
+#~ msgid ""
+#~ "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
+#~ msgstr "所以，如果您确定，请按“删除”继续，否则按“取消”退出。"
