@@ -1,39 +1,44 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # poterealpopolo <giuliano@opensides.be>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
-"POT-Creation-Date: 2013-03-24 15:09+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-05-09 19:16+0200\n"
 "PO-Revision-Date: 2013-03-24 15:01+0000\n"
 "Last-Translator: poterealpopolo <giuliano@opensides.be>\n"
-"Language-Team: Italian (http://www.transifex.com/projects/p/FusionDirectory/language/it/)\n"
+"Language-Team: Italian (http://www.transifex.com/projects/p/FusionDirectory/"
+"language/it/)\n"
+"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: admin/autofs/autofs-filter.tpl:3
-msgid "Filter"
-msgstr "Filtro"
+#: config/autofs/class_autofsConfig.inc:28
+msgid "Autofs configuration"
+msgstr "Configurazione di Autofs"
 
-#: admin/autofs/autofs-filter.tpl:9
-msgid "Show nis objects"
-msgstr "Mostra gli oggetti nis"
+#: config/autofs/class_autofsConfig.inc:29
+msgid "FusionDirectory autofs plugin configuration"
+msgstr "Configurazione del plugin Autofs di FusionDirectory"
 
-#: admin/autofs/autofs-filter.tpl:10
-msgid "Show nis maps"
-msgstr "Visualizza le mappe nis"
+#: config/autofs/class_autofsConfig.inc:42
+msgid "LDAP tree"
+msgstr "Struttura LDAP"
 
-#: admin/autofs/autofs-filter.tpl:20 admin/autofs/autofs-list.xml:49
-#: admin/autofs/class_nisObject.inc:49 admin/autofs/class_nisMap.inc:49
-msgid "Name"
-msgstr "Nome"
+#: config/autofs/class_autofsConfig.inc:45
+msgid "AutoFS RDN"
+msgstr "RDN Autofs"
+
+#: config/autofs/class_autofsConfig.inc:45
+msgid "Branch in which automount info will be stored"
+msgstr ""
+"Ramo nel quale saranno immagazzinate le informazioni relative ad automount"
 
 #: admin/autofs/class_autofsManagement.inc:35
 msgid "Auto fs"
@@ -48,9 +53,24 @@ msgstr "Gestione di Auto fs"
 msgid "Permission"
 msgstr "Permessi"
 
-#: admin/autofs/autofs-list.tpl:13
-msgid "Base"
-msgstr "Base"
+#: admin/autofs/class_nisMap.inc:31 admin/autofs/class_nisMap.inc:34
+#: admin/autofs/class_nisMap.inc:45 admin/autofs/autofs-list.xml:23
+#: admin/autofs/autofs-list.xml:57 admin/autofs/class_nisObject.inc:57
+msgid "Mount point"
+msgstr "Punto di montaggio"
+
+#: admin/autofs/class_nisMap.inc:32
+msgid "Autofs mount point"
+msgstr "Punto di montaggio Autofs"
+
+#: admin/autofs/class_nisMap.inc:49 admin/autofs/autofs-list.xml:49
+#: admin/autofs/class_nisObject.inc:49 admin/autofs/autofs-filter.tpl.c:11
+msgid "Name"
+msgstr "Nome"
+
+#: admin/autofs/class_nisMap.inc:49
+msgid "Name of the mount point"
+msgstr "Nome del punto di montaggio"
 
 #: admin/autofs/autofs-list.xml:11
 msgid "List of automount entries"
@@ -61,12 +81,6 @@ msgstr "Elenco delle voci automount"
 #: admin/autofs/class_nisObject.inc:45
 msgid "Directory"
 msgstr "Cartella"
-
-#: admin/autofs/autofs-list.xml:23 admin/autofs/autofs-list.xml:57
-#: admin/autofs/class_nisObject.inc:57 admin/autofs/class_nisMap.inc:31
-#: admin/autofs/class_nisMap.inc:34 admin/autofs/class_nisMap.inc:45
-msgid "Mount point"
-msgstr "Punto di montaggio"
 
 #: admin/autofs/autofs-list.xml:65
 msgid "Description"
@@ -100,21 +114,6 @@ msgstr "Modifica contatto"
 msgid "Remove entry"
 msgstr "Elimina contatto"
 
-#: admin/autofs/remove.tpl:2
-msgid "Warning"
-msgstr "Avvertimento"
-
-#: admin/autofs/remove.tpl:6
-msgid ""
-"This includes all account data, system access rules, imap settings, etc. for"
-" this user. Please double check if your really want to do this since there "
-"is no way for FusionDirectory to get your data back."
-msgstr "Questo include tutti i dati degli account, i permessi di accesso al sistema, la configurazione imap, etc. di questo utente. Accertati che vuoi davvero eseguire questa azione visto che poi sarà impossibile per FusionDirectory recuperare i tuoi dati."
-
-#: admin/autofs/remove.tpl:10
-msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr "Quindi - se sei sicuro - premi 'Rimuovi' per continuare oppure 'Annulla' per interrompere."
-
 #: admin/autofs/class_nisObject.inc:49
 msgid "Name of this directory"
 msgstr "Nome di questa cartella"
@@ -127,36 +126,47 @@ msgstr "Voce Automount"
 msgid ""
 "The entry of this directory for the automount daemon.\n"
 " For instance 'auto.u' or '-fstype=nfs domaine.tld:/mount/directory'"
-msgstr "Il nome di questa cartella per il demone automount.\n Ad esempio 'auto.u' oppure '-fstype=nfs domaine.tld:/mount/directory'"
+msgstr ""
+"Il nome di questa cartella per il demone automount.\n"
+" Ad esempio 'auto.u' oppure '-fstype=nfs domaine.tld:/mount/directory'"
 
 #: admin/autofs/class_nisObject.inc:57
 msgid "The mount point this directory will be placed in"
 msgstr "Il punto di montaggio in cui sarà posta questa cartella"
 
-#: admin/autofs/class_nisMap.inc:32
-msgid "Autofs mount point"
-msgstr "Punto di montaggio Autofs"
+#: admin/autofs/autofs-filter.tpl.c:2
+msgid "Filter"
+msgstr "Filtro"
 
-#: admin/autofs/class_nisMap.inc:49
-msgid "Name of the mount point"
-msgstr "Nome del punto di montaggio"
+#: admin/autofs/autofs-filter.tpl.c:5
+msgid "Show nis objects"
+msgstr "Mostra gli oggetti nis"
 
-#: config/autofs/class_autofsConfig.inc:28
-msgid "Autofs configuration"
-msgstr "Configurazione di Autofs"
+#: admin/autofs/autofs-filter.tpl.c:8
+msgid "Show nis maps"
+msgstr "Visualizza le mappe nis"
 
-#: config/autofs/class_autofsConfig.inc:29
-msgid "FusionDirectory autofs plugin configuration"
-msgstr "Configurazione del plugin Autofs di FusionDirectory"
+#: admin/autofs/remove.tpl.c:2
+msgid "Warning"
+msgstr "Avvertimento"
 
-#: config/autofs/class_autofsConfig.inc:42
-msgid "LDAP tree"
-msgstr "Struttura LDAP"
+#: admin/autofs/remove.tpl.c:5
+msgid ""
+"This includes all account data, system access rules, imap settings, etc. for "
+"this user. Please double check if your really want to do this since there is "
+"no way for FusionDirectory to get your data back."
+msgstr ""
+"Questo include tutti i dati degli account, i permessi di accesso al sistema, "
+"la configurazione imap, etc. di questo utente. Accertati che vuoi davvero "
+"eseguire questa azione visto che poi sarà impossibile per FusionDirectory "
+"recuperare i tuoi dati."
 
-#: config/autofs/class_autofsConfig.inc:45
-msgid "AutoFS RDN"
-msgstr "RDN Autofs"
+#: admin/autofs/remove.tpl.c:8
+msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
+msgstr ""
+"Quindi - se sei sicuro - premi 'Rimuovi' per continuare oppure 'Annulla' per "
+"interrompere."
 
-#: config/autofs/class_autofsConfig.inc:45
-msgid "Branch in which automount info will be stored"
-msgstr "Ramo nel quale saranno immagazzinate le informazioni relative ad automount"
+#: admin/autofs/autofs-list.tpl.c:2
+msgid "Base"
+msgstr "Base"

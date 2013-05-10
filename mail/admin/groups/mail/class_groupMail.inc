@@ -80,7 +80,7 @@ class mailgroup extends simplePlugin
         'name'  => _('Generic'),
         'attrs' => array(
           new HiddenAttribute (
-            'gosaMailDeliveryMode', 'gosaMailDeliveryMode', 'gosaMailDeliveryMode',
+            'gosaMailDeliveryMode', FALSE,
             '[]'
           ),
           new MailAttribute (

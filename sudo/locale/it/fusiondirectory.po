@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Alessandro Amici <a.amici@bopen.it>, 2005
 # poterealpopolo <giuliano@opensides.be>, 2011
@@ -10,46 +10,47 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
-"POT-Creation-Date: 2013-03-24 15:13+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-05-09 19:20+0200\n"
 "PO-Revision-Date: 2013-03-24 15:00+0000\n"
 "Last-Translator: poterealpopolo <giuliano@opensides.be>\n"
-"Language-Team: Italian (http://www.transifex.com/projects/p/FusionDirectory/language/it/)\n"
+"Language-Team: Italian (http://www.transifex.com/projects/p/FusionDirectory/"
+"language/it/)\n"
+"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: admin/sudo/sudo-filter.tpl:3
-msgid "Filter"
-msgstr "Filtro"
+#: config/sudo/class_sudoConfig.inc:28
+#, fuzzy
+msgid "Sudo configuration"
+msgstr "Opzioni di Sudo"
 
-#: admin/sudo/sudo-filter.tpl:13 admin/sudo/sudo-list.xml:32
-#: admin/sudo/class_sudoGeneric.inc:80 admin/sudo/paste_generic.tpl:5
-#: admin/sudo/generic.tpl:7 admin/sudo/generic.tpl:34
-msgid "Name"
-msgstr "Nome"
+#: config/sudo/class_sudoConfig.inc:29
+msgid "FusionDirectory sudo plugin configuration"
+msgstr ""
 
-#: admin/sudo/sudo-filter.tpl:23
-msgid "User"
-msgstr "Utente"
+#: config/sudo/class_sudoConfig.inc:42
+msgid "LDAP tree"
+msgstr ""
 
-#: admin/sudo/options.tpl:5
-msgid "Option name"
-msgstr "Nome dell'opzione"
+#: config/sudo/class_sudoConfig.inc:45
+#, fuzzy
+msgid "Sudo RDN"
+msgstr "Sudo"
 
-#: admin/sudo/options.tpl:7
-msgid "Value"
-msgstr "Valore"
+#: config/sudo/class_sudoConfig.inc:45
+msgid "Branch in which sudoers will be stored"
+msgstr ""
 
-#: admin/sudo/options.tpl:8 admin/sudo/class_sudoOption.inc:556
-msgid "Options"
-msgstr "Opzioni"
+#: admin/sudo/class_sudoManagement.inc:36 admin/sudo/class_sudoGeneric.inc:55
+msgid "Sudo"
+msgstr "Sudo"
 
-#: admin/sudo/options.tpl:86 admin/sudo/class_sudoOption.inc:473
-msgid "Available options"
-msgstr "Opzioni disponibili"
+#: admin/sudo/class_sudoManagement.inc:37
+msgid "Sudo management"
+msgstr "Gestione di Sudo"
 
 #: admin/sudo/sudo-list.xml:11
 msgid "List of sudo roles"
@@ -59,8 +60,12 @@ msgstr "Elenco dei ruoli sudo"
 msgid "Role"
 msgstr "Ruolo"
 
-#: admin/sudo/sudo-list.xml:40 admin/sudo/class_sudoGeneric.inc:87
-#: admin/sudo/generic.tpl:15 admin/sudo/generic.tpl:44
+#: admin/sudo/sudo-list.xml:32 admin/sudo/class_sudoGeneric.inc:76
+#: admin/sudo/paste_generic.tpl.c:8 admin/sudo/sudo-filter.tpl.c:5
+msgid "Name"
+msgstr "Nome"
+
+#: admin/sudo/sudo-list.xml:40 admin/sudo/class_sudoGeneric.inc:81
 msgid "Description"
 msgstr "Descrizione"
 
@@ -88,116 +93,6 @@ msgstr "Modifica il ruolo sudo"
 msgid "Remove sudo role"
 msgstr "Elimina il ruolo sudo"
 
-#: admin/sudo/class_sudoGeneric.inc:59 admin/sudo/class_sudoManagement.inc:36
-msgid "Sudo"
-msgstr "Sudo"
-
-#: admin/sudo/class_sudoGeneric.inc:60 admin/sudo/class_sudoGeneric.inc:63
-#: admin/sudo/class_sudoGeneric.inc:64
-msgid "Sudo role"
-msgstr "Ruolo Sudo"
-
-#: admin/sudo/class_sudoGeneric.inc:61
-msgid "plugins/sudo/images/sudo.png"
-msgstr "plugins/sudo/images/sudo.png"
-
-#: admin/sudo/class_sudoGeneric.inc:75 admin/sudo/paste_generic.tpl:1
-#: admin/sudo/generic.tpl:3 admin/sudo/generic.tpl:30
-msgid "Generic"
-msgstr "Informazioni"
-
-#: admin/sudo/class_sudoGeneric.inc:75 admin/sudo/paste_generic.tpl:1
-#: admin/sudo/generic.tpl:3
-msgid "global defaults"
-msgstr "Parametri globali di default"
-
-#: admin/sudo/class_sudoGeneric.inc:81
-msgid "Name of the role"
-msgstr "Nome del ruolo"
-
-#: admin/sudo/class_sudoGeneric.inc:88
-msgid "Description for the new sudo role"
-msgstr "Descrizione per il nuovo ruolo di sudo"
-
-#: admin/sudo/class_sudoGeneric.inc:94 admin/sudo/generic.tpl:120
-msgid "Commands"
-msgstr "comandi"
-
-#: admin/sudo/class_sudoGeneric.inc:95
-msgid ""
-"A Unix command with optional command line arguments, potentially including "
-"globbing characters (aka wild cards)"
-msgstr ""
-
-#: admin/sudo/class_sudoGeneric.inc:102 admin/sudo/generic.tpl:132
-msgid "Run as"
-msgstr "Esegui come"
-
-#: admin/sudo/class_sudoGeneric.inc:103
-msgid ""
-"A user that commands may be run as or a Unix group that contains a list of "
-"users that commands may be run as"
-msgstr ""
-
-#: admin/sudo/class_sudoGeneric.inc:110 admin/sudo/generic.tpl:102
-msgid "Systems"
-msgstr "Sistemi"
-
-#: admin/sudo/class_sudoGeneric.inc:111
-msgid "A host name, IP address or IP network"
-msgstr ""
-
-#: admin/sudo/class_sudoGeneric.inc:117 admin/sudo/generic.tpl:87
-msgid "Users and groups"
-msgstr "Utenti e gruppi"
-
-#: admin/sudo/class_sudoGeneric.inc:118
-msgid ""
-"A user name, user ID (prefixed with '#'), Unix group (prefixed with '%')"
-msgstr ""
-
-#: admin/sudo/class_sudoGeneric.inc:126 admin/sudo/generic.tpl:55
-msgid "System trust"
-msgstr "Sistema di fiducia"
-
-#: admin/sudo/class_sudoGeneric.inc:130 admin/sudo/generic.tpl:56
-msgid "Trust mode"
-msgstr "Modalità di fiducia"
-
-#: admin/sudo/class_sudoGeneric.inc:131
-msgid "Trust mode for the role"
-msgstr ""
-
-#: admin/sudo/class_sudoGeneric.inc:136
-msgid "disabled"
-msgstr "disattivato"
-
-#: admin/sudo/class_sudoGeneric.inc:136
-msgid "full access"
-msgstr "accesso completo"
-
-#: admin/sudo/class_sudoGeneric.inc:136
-msgid "allow access to these hosts"
-msgstr "autorizza l'accesso a questi host"
-
-#: admin/sudo/remove.tpl:2
-msgid "Warning"
-msgstr "Avvertimento"
-
-#: admin/sudo/remove.tpl:6
-msgid ""
-"Please double check if you really want to do this since there is no way for "
-"FusionDirectory to get your data back."
-msgstr "Assicurati che vuoi davvero eseguire l'azione visto che poi sarà impossibile per FusionDirectory recuperare i tuoi dati."
-
-#: admin/sudo/remove.tpl:10
-msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr "Quindi - se sei sicuro - premi 'Rimuovi' per continuare oppure 'Annulla' per interrompere."
-
-#: admin/sudo/class_sudoManagement.inc:37
-msgid "Sudo management"
-msgstr "Gestione di Sudo"
-
 #: admin/sudo/class_sudoOption.inc:84
 msgid "Unknown option"
 msgstr "Opzione sconosciuta"
@@ -212,22 +107,146 @@ msgstr "L'opzione di sudo '%s' non è valida !"
 msgid "%s (%s)"
 msgstr "%s (%s)"
 
-#: admin/sudo/class_sudoOption.inc:476
+#: admin/sudo/class_sudoOption.inc:472
+msgid "Available options"
+msgstr "Opzioni disponibili"
+
+#: admin/sudo/class_sudoOption.inc:475
 msgid "Option"
 msgstr "Opzione"
 
-#: admin/sudo/class_sudoOption.inc:476
+#: admin/sudo/class_sudoOption.inc:475
 msgid "Add a new sudo option"
 msgstr "Aggiungi una nuova opzione sudo"
 
-#: admin/sudo/class_sudoOption.inc:481 admin/sudo/class_sudoOption.inc:483
+#: admin/sudo/class_sudoOption.inc:480 admin/sudo/class_sudoOption.inc:482
 msgid "Used sudo role options"
 msgstr ""
 
-#: admin/sudo/class_sudoOption.inc:557
+#: admin/sudo/class_sudoOption.inc:554
+msgid "Options"
+msgstr "Opzioni"
+
+#: admin/sudo/class_sudoOption.inc:555
 msgid "Sudo options"
 msgstr "Opzioni di Sudo"
 
-#: admin/sudo/generic.tpl:98 admin/sudo/generic.tpl:113
-msgid "Add from list"
-msgstr "Aggiungi dalla lista"
+#: admin/sudo/class_sudoGeneric.inc:56 admin/sudo/class_sudoGeneric.inc:59
+#: admin/sudo/class_sudoGeneric.inc:60
+msgid "Sudo role"
+msgstr "Ruolo Sudo"
+
+#: admin/sudo/class_sudoGeneric.inc:71 admin/sudo/paste_generic.tpl.c:2
+msgid "Generic"
+msgstr "Informazioni"
+
+#: admin/sudo/class_sudoGeneric.inc:71 admin/sudo/paste_generic.tpl.c:5
+msgid "global defaults"
+msgstr "Parametri globali di default"
+
+#: admin/sudo/class_sudoGeneric.inc:76
+msgid "Name of the role"
+msgstr "Nome del ruolo"
+
+#: admin/sudo/class_sudoGeneric.inc:81
+msgid "Description for the new sudo role"
+msgstr "Descrizione per il nuovo ruolo di sudo"
+
+#: admin/sudo/class_sudoGeneric.inc:86
+msgid "Commands"
+msgstr "comandi"
+
+#: admin/sudo/class_sudoGeneric.inc:87
+msgid ""
+"A Unix command with optional command line arguments, potentially including "
+"globbing characters (aka wild cards)"
+msgstr ""
+
+#: admin/sudo/class_sudoGeneric.inc:93
+msgid "Run as"
+msgstr "Esegui come"
+
+#: admin/sudo/class_sudoGeneric.inc:94
+msgid ""
+"A user that commands may be run as or a Unix group that contains a list of "
+"users that commands may be run as"
+msgstr ""
+
+#: admin/sudo/class_sudoGeneric.inc:100
+msgid "Systems"
+msgstr "Sistemi"
+
+#: admin/sudo/class_sudoGeneric.inc:100
+msgid "A host name, IP address or IP network"
+msgstr ""
+
+#: admin/sudo/class_sudoGeneric.inc:105
+msgid "Users and groups"
+msgstr "Utenti e gruppi"
+
+#: admin/sudo/class_sudoGeneric.inc:106
+msgid ""
+"A user name, user ID (prefixed with '#'), Unix group (prefixed with '%')"
+msgstr ""
+
+#: admin/sudo/class_sudoGeneric.inc:113
+msgid "System trust"
+msgstr "Sistema di fiducia"
+
+#: admin/sudo/class_sudoGeneric.inc:117
+msgid "Trust mode"
+msgstr "Modalità di fiducia"
+
+#: admin/sudo/class_sudoGeneric.inc:117
+msgid "Trust mode for the role"
+msgstr ""
+
+#: admin/sudo/class_sudoGeneric.inc:121
+msgid "disabled"
+msgstr "disattivato"
+
+#: admin/sudo/class_sudoGeneric.inc:121
+msgid "full access"
+msgstr "accesso completo"
+
+#: admin/sudo/class_sudoGeneric.inc:121
+msgid "allow access to these hosts"
+msgstr "autorizza l'accesso a questi host"
+
+#: admin/sudo/remove.tpl.c:2
+msgid "Warning"
+msgstr "Avvertimento"
+
+#: admin/sudo/remove.tpl.c:5
+msgid ""
+"Please double check if you really want to do this since there is no way for "
+"FusionDirectory to get your data back."
+msgstr ""
+"Assicurati che vuoi davvero eseguire l'azione visto che poi sarà impossibile "
+"per FusionDirectory recuperare i tuoi dati."
+
+#: admin/sudo/remove.tpl.c:8
+msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
+msgstr ""
+"Quindi - se sei sicuro - premi 'Rimuovi' per continuare oppure 'Annulla' per "
+"interrompere."
+
+#: admin/sudo/sudo-filter.tpl.c:2
+msgid "Filter"
+msgstr "Filtro"
+
+#: admin/sudo/sudo-filter.tpl.c:8
+msgid "User"
+msgstr "Utente"
+
+#~ msgid "Option name"
+#~ msgstr "Nome dell'opzione"
+
+#~ msgid "Value"
+#~ msgstr "Valore"
+
+#~ msgid "plugins/sudo/images/sudo.png"
+#~ msgstr "plugins/sudo/images/sudo.png"
+
+#~ msgid "Add from list"
+#~ msgstr "Aggiungi dalla lista"

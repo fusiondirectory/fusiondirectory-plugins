@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Alessandro Amici <a.amici@bopen.it>, 2005
 # poterealpopolo <giuliano@opensides.be>, 2011
@@ -9,15 +9,16 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
-"POT-Creation-Date: 2013-03-24 15:13+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-05-09 19:19+0200\n"
 "PO-Revision-Date: 2012-12-09 15:30+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Italian (http://www.transifex.com/projects/p/FusionDirectory/language/it/)\n"
+"Language-Team: Italian (http://www.transifex.com/projects/p/FusionDirectory/"
+"language/it/)\n"
+"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: personal/squid/class_proxyAccount.inc:65
@@ -26,79 +27,99 @@ msgstr "Proxy"
 
 #: personal/squid/class_proxyAccount.inc:66
 msgid "This allow to store basic squid settings in ldap for each user"
-msgstr "Questo permette di memorizzare le impostazioni di base di squid nell'annuario ldap per ogni utente"
+msgstr ""
+"Questo permette di memorizzare le impostazioni di base di squid "
+"nell'annuario ldap per ogni utente"
 
-#: personal/squid/class_proxyAccount.inc:84
+#: personal/squid/class_proxyAccount.inc:85
 msgid "Proxy account"
 msgstr "Account Proxy"
 
-#: personal/squid/class_proxyAccount.inc:90
+#: personal/squid/class_proxyAccount.inc:91
 msgid "Filter unwanted content (i.e. pornographic or violence related)"
 msgstr "Filtra il contenuto non desiderato (p.e. pornografico o violento)"
 
-#: personal/squid/class_proxyAccount.inc:91
+#: personal/squid/class_proxyAccount.inc:92
 msgid "filterF"
 msgstr ""
 
-#: personal/squid/class_proxyAccount.inc:97
+#: personal/squid/class_proxyAccount.inc:98
 msgid "Working Start"
 msgstr ""
 
-#: personal/squid/class_proxyAccount.inc:100
-#: personal/squid/class_proxyAccount.inc:112
+#: personal/squid/class_proxyAccount.inc:101
+#: personal/squid/class_proxyAccount.inc:113
 msgid "HourStart"
 msgstr ""
 
-#: personal/squid/class_proxyAccount.inc:101
+#: personal/squid/class_proxyAccount.inc:102
 msgid "MinuteStart"
 msgstr ""
 
-#: personal/squid/class_proxyAccount.inc:106
+#: personal/squid/class_proxyAccount.inc:107
 msgid "Limit proxy access to working time"
 msgstr "Accesso al proxy autorizzato durante la fascia oraria seguente"
 
-#: personal/squid/class_proxyAccount.inc:109
+#: personal/squid/class_proxyAccount.inc:110
 msgid "Working Stop"
 msgstr ""
 
-#: personal/squid/class_proxyAccount.inc:112
+#: personal/squid/class_proxyAccount.inc:113
 msgid "-"
 msgstr ""
 
-#: personal/squid/class_proxyAccount.inc:113
+#: personal/squid/class_proxyAccount.inc:114
 msgid ":"
 msgstr ""
 
-#: personal/squid/class_proxyAccount.inc:113
+#: personal/squid/class_proxyAccount.inc:114
 msgid "MinuteStop"
 msgstr ""
 
-#: personal/squid/class_proxyAccount.inc:119
-#: personal/squid/class_proxyAccount.inc:128
+#: personal/squid/class_proxyAccount.inc:120
+#: personal/squid/class_proxyAccount.inc:129
 msgid "Restrict proxy usage by quota"
-msgstr "Restringi la quantità di dati scaricabili via il proxy impostando una quota"
+msgstr ""
+"Restringi la quantità di dati scaricabili via il proxy impostando una quota"
 
-#: personal/squid/class_proxyAccount.inc:122
+#: personal/squid/class_proxyAccount.inc:123
 msgid "Up"
 msgstr "Sopra"
 
-#: personal/squid/class_proxyAccount.inc:131
 #: personal/squid/class_proxyAccount.inc:132
+#: personal/squid/class_proxyAccount.inc:133
 msgid "per"
 msgstr "per"
 
-#: personal/squid/class_proxyAccount.inc:135
+#: personal/squid/class_proxyAccount.inc:136
 msgid "hour"
 msgstr "ora"
 
-#: personal/squid/class_proxyAccount.inc:135
+#: personal/squid/class_proxyAccount.inc:136
 msgid "day"
 msgstr "giorno"
 
-#: personal/squid/class_proxyAccount.inc:135
+#: personal/squid/class_proxyAccount.inc:136
 msgid "week"
 msgstr "settimana"
 
-#: personal/squid/class_proxyAccount.inc:135
+#: personal/squid/class_proxyAccount.inc:136
 msgid "month"
 msgstr "mese"
+
+#: personal/squid/class_proxyAccount.inc:139
+msgid "Start Working Hours"
+msgstr ""
+
+#: personal/squid/class_proxyAccount.inc:140
+msgid "Starting hours for internet access"
+msgstr ""
+
+#: personal/squid/class_proxyAccount.inc:147
+#, fuzzy
+msgid "Proxy Quota"
+msgstr "Account Proxy"
+
+#: personal/squid/class_proxyAccount.inc:148
+msgid "Max Data quota for the proxy"
+msgstr ""

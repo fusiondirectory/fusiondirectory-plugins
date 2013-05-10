@@ -65,9 +65,6 @@ class gofaxAccount extends plugin
 
   var $objectclasses= array("goFaxAccount");
 
-  /* Enable multiple edit support */
-  var $multiple_support = TRUE;
-
   function gofaxAccount (&$config, $dn= NULL)
   {
     /* General initialization */

@@ -6,15 +6,6 @@
     &nbsp;{t}Phone numbers{/t}
    </h2>
 
-{if $multiple_support}
-
-   <select style="width:100%;" name="dummy1" size=7 >
-    {html_options options=$phoneNumbers}
-    <option disabled>&nbsp;</option>
-   </select>
-
-{else}
-
 {render acl=$telephoneNumberACL}
    <select style="width:100%;" name="phonenumber_list[]" size=7 multiple>
     {html_options options=$phoneNumbers}
@@ -32,7 +23,6 @@
       <input type="submit" value="{msgPool type=delButton}" name="delete_phonenumber">
 {/render}
 
-{/if}
   </td>
   <td style="vertical-align:top; width:50%;">
    <table summary="" style="width:100%" border=0>
@@ -42,23 +32,21 @@
    <h2><img class="center" alt="" align="middle" src="plugins/asterisk/images/hardware.png" />&nbsp;{t}Telephone hardware{/t}</h2>
 
       <table summary="{t}Telephone{/t}" border=0>
-     {if !$multiple_support}
        <tr>
         <td>
       {t}Telephone{/t}
     </td>
         <td>
-    {render acl=$goFonHardwareACL checkbox=$multiple_support checked=$use_goFonHardware}
+    {render acl=$goFonHardwareACL checked=$use_goFonHardware}
       {$hardware_list}
     {/render}
     </td>
        </tr>
-     {/if}
        <tr>
         <td>{t}Home server{/t}{$must}
         </td>
         <td>
-{render acl=$goFonHomeServerACL checkbox=$multiple_support checked=$use_goFonHomeServer}
+{render acl=$goFonHomeServerACL checked=$use_goFonHomeServer}
          <select name='goFonHomeServer' title='{t}Select the accounts home server{/t}'>
           {html_options options=$goFonHomeServers selected=$goFonHomeServer}
          </select>
@@ -69,7 +57,7 @@
      <td>{t}Context{/t}
      </td>
      <td>
-{render acl=$goFonContextACL checkbox=$multiple_support checked=$use_goFonContext}
+{render acl=$goFonContextACL checked=$use_goFonContext}
       <select name='context' title='{t}Select the accounts context{/t}'>
         {html_options values=$sip_contexts output=$sip_contexts selected=$context}
       </select>
@@ -80,7 +68,7 @@
      <td>{t}Voicemail context{/t}
      </td>
      <td>
-{render acl=$goFonVoiceMailContextACL checkbox=$multiple_support checked=$use_goFonVoiceMailContext}
+{render acl=$goFonVoiceMailContextACL checked=$use_goFonVoiceMailContext}
       <select name='voice_context' title='{t}Select the accounts context{/t}'>
         {html_options values=$voicemail_contexts output=$voicemail_contexts selected=$voice_context}
       </select>
@@ -93,7 +81,7 @@
         <label for="goFonVoicemailPIN">{t}Voicemail PIN{/t}{$must}</label>
        </td>
        <td>
-{render acl=$goFonVoicemailPINACL checkbox=$multiple_support checked=$use_goFonVoicemailPIN}
+{render acl=$goFonVoicemailPINACL checked=$use_goFonVoicemailPIN}
         <input type="password" id="goFonVoicemailPIN" name="goFonVoicemailPIN" value="{$goFonVoicemailPIN}">
 {/render}
       </td>
@@ -103,7 +91,7 @@
         <label for="goFonPIN">{t}Phone PIN{/t}{$must}</label>
        </td>
        <td>
-{render acl=$goFonPINACL checkbox=$multiple_support checked=$use_goFonPIN}
+{render acl=$goFonPINACL checked=$use_goFonPIN}
         <input type="password" id="goFonPIN" name="goFonPIN" value="{$goFonPIN}">
 {/render}
       </td>
@@ -127,7 +115,7 @@
   <table summary="{t}Phone macro{/t}">
    <tr>
     <td colspan=2>
-{render acl=$goFonMacroACL  checkbox=$multiple_support checked=$use_macro}
+{render acl=$goFonMacroACL  checked=$use_macro}
      <select id="macro" name="macro" onchange="document.mainform.submit()">
       {html_options options=$macros selected=$macro}
       <option disabled>&nbsp;</option>

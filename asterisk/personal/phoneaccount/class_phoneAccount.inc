@@ -65,7 +65,6 @@ class phoneAccount extends plugin
   var $cn;
 
   var $view_logged      = FALSE;
-  var $multiple_support = TRUE;
   var $mailAddress      = "";
   var $pager            = "";
 

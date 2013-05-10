@@ -1,165 +1,33 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
-"POT-Creation-Date: 2013-03-24 15:10+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-05-09 19:17+0200\n"
 "PO-Revision-Date: 2012-01-06 15:44+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: vi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: vi\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: admin/systems/services/dns/class_serviceDNS.inc:51
-#: admin/systems/services/dns/class_serviceDNS.inc:599
-#: admin/systems/services/dns/class_serviceDNS.inc:628
-#: admin/systems/services/dns/class_serviceDNS.inc:629
-msgid "DNS service"
-msgstr ""
-
-#: admin/systems/services/dns/class_serviceDNS.inc:179
-#, php-format
-msgid "You are going to migrate the DNS setup from server '%s'."
-msgstr ""
-
-#: admin/systems/services/dns/class_serviceDNS.inc:180
-msgid ""
-"The migration will be started when you save this system. To cancel this "
-"action, use the cancel button below."
-msgstr ""
-
-#: admin/systems/services/dns/class_serviceDNS.inc:202
-#: admin/systems/services/dns/class_serviceDNS.inc:377
-#: admin/systems/services/dns/class_serviceDNS.inc:391
-#: admin/systems/services/dns/class_serviceDNS.inc:397
 #: admin/systems/services/dns/class_DNS.inc:181
 #: admin/systems/services/dns/class_DNS.inc:186
 #: admin/systems/services/dns/class_DNS.inc:650
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:204
+#: admin/systems/services/dns/class_serviceDNS.inc:205
+#: admin/systems/services/dns/class_serviceDNS.inc:380
+#: admin/systems/services/dns/class_serviceDNS.inc:394
+#: admin/systems/services/dns/class_serviceDNS.inc:400
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:240
 msgid "Error"
 msgstr "Lỗi"
-
-#: admin/systems/services/dns/class_serviceDNS.inc:311
-#: admin/systems/services/dns/class_serviceDNS.inc:641
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:360
-msgid "Reverse zone"
-msgstr ""
-
-#: admin/systems/services/dns/class_serviceDNS.inc:312
-#: admin/systems/services/dns/class_serviceDNS.inc:650
-#: admin/systems/services/dns/serviceDNSeditZone.tpl:129
-msgid "TTL"
-msgstr ""
-
-#: admin/systems/services/dns/class_serviceDNS.inc:313
-msgid "Class"
-msgstr ""
-
-#: admin/systems/services/dns/class_serviceDNS.inc:377
-#, php-format
-msgid "Cannot delete the selected zone. It is still in use by '%s'"
-msgstr ""
-
-#: admin/systems/services/dns/class_serviceDNS.inc:391
-#, php-format
-msgid "Was not able to contact argonaut server: %s"
-msgstr ""
-
-#: admin/systems/services/dns/class_serviceDNS.inc:397
-#, php-format
-msgid "Was not able to launch ldap2zone: %s"
-msgstr ""
-
-#: admin/systems/services/dns/class_serviceDNS.inc:504
-#: admin/systems/services/dns/class_serviceDNS.inc:520
-#: admin/systems/services/dns/class_serviceDNS.inc:545
-#: admin/systems/services/dns/class_serviceDNS.inc:556
-#: admin/systems/services/dns/class_serviceDNS.inc:589
-#: admin/systems/services/dns/class_DNS.inc:768
-msgid "LDAP error"
-msgstr "Lỗi LDAP"
-
-#: admin/systems/services/dns/class_serviceDNS.inc:629
-msgid "Services"
-msgstr ""
-
-#: admin/systems/services/dns/class_serviceDNS.inc:636
-msgid "Start service"
-msgstr ""
-
-#: admin/systems/services/dns/class_serviceDNS.inc:637
-msgid "Stop service"
-msgstr ""
-
-#: admin/systems/services/dns/class_serviceDNS.inc:638
-msgid "Restart service"
-msgstr ""
-
-#: admin/systems/services/dns/class_serviceDNS.inc:640
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:351
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:356
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:364
-#: admin/systems/services/dns/serviceDNSeditZone.tpl:7
-msgid "Zone name"
-msgstr ""
-
-#: admin/systems/services/dns/class_serviceDNS.inc:642
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:437
-msgid "Network class"
-msgstr ""
-
-#: admin/systems/services/dns/class_serviceDNS.inc:643
-msgid "Zone entry editor"
-msgstr ""
-
-#: admin/systems/services/dns/class_serviceDNS.inc:644
-msgid "Primary dns server"
-msgstr ""
-
-#: admin/systems/services/dns/class_serviceDNS.inc:645
-#: admin/systems/services/dns/serviceDNSeditZone.tpl:80
-msgid "Mail address"
-msgstr "Địa chỉ thư"
-
-#: admin/systems/services/dns/class_serviceDNS.inc:646
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:368
-msgid "Serial"
-msgstr ""
-
-#: admin/systems/services/dns/class_serviceDNS.inc:647
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:372
-#: admin/systems/services/dns/serviceDNSeditZone.tpl:102
-msgid "Refresh"
-msgstr ""
-
-#: admin/systems/services/dns/class_serviceDNS.inc:648
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:384
-#: admin/systems/services/dns/serviceDNSeditZone.tpl:111
-msgid "Retry"
-msgstr ""
-
-#: admin/systems/services/dns/class_serviceDNS.inc:649
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:380
-#: admin/systems/services/dns/serviceDNSeditZone.tpl:120
-msgid "Expire"
-msgstr ""
-
-#: admin/systems/services/dns/class_serviceDNS.inc:651
-msgid "MX records"
-msgstr ""
-
-#: admin/systems/services/dns/class_serviceDNS.inc:652
-#: admin/systems/services/dns/serviceDNSeditZone.tpl:48
-msgid "Zone records"
-msgstr ""
 
 #: admin/systems/services/dns/class_DNS.inc:181
 #, php-format
@@ -176,6 +44,15 @@ msgstr ""
 msgid "Undefined zone name '%s'!"
 msgstr ""
 
+#: admin/systems/services/dns/class_DNS.inc:768
+#: admin/systems/services/dns/class_serviceDNS.inc:507
+#: admin/systems/services/dns/class_serviceDNS.inc:523
+#: admin/systems/services/dns/class_serviceDNS.inc:548
+#: admin/systems/services/dns/class_serviceDNS.inc:559
+#: admin/systems/services/dns/class_serviceDNS.inc:592
+msgid "LDAP error"
+msgstr "Lỗi LDAP"
+
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:258
 msgid "Warning"
 msgstr "Cảnh báo"
@@ -189,18 +66,55 @@ msgstr ""
 msgid "Delete"
 msgstr "Xóa"
 
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:351
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:356
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:364
+#: admin/systems/services/dns/class_serviceDNS.inc:643
+#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:5
+msgid "Zone name"
+msgstr ""
+
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:360
+#: admin/systems/services/dns/class_serviceDNS.inc:314
+#: admin/systems/services/dns/class_serviceDNS.inc:644
+msgid "Reverse zone"
+msgstr ""
+
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:364
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:390
 msgid "Only lowercase allowed"
+msgstr ""
+
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:368
+#: admin/systems/services/dns/class_serviceDNS.inc:649
+msgid "Serial"
+msgstr ""
+
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:372
+#: admin/systems/services/dns/class_serviceDNS.inc:650
+#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:38
+msgid "Refresh"
 msgstr ""
 
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:376
 msgid "Time to life"
 msgstr ""
 
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:380
+#: admin/systems/services/dns/class_serviceDNS.inc:652
+#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:44
+msgid "Expire"
+msgstr ""
+
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:384
+#: admin/systems/services/dns/class_serviceDNS.inc:651
+#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:41
+msgid "Retry"
+msgstr ""
+
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:399
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:413
-#: admin/systems/services/dns/serviceDNSeditZone.tpl:16
+#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:8
 msgid "Network address"
 msgstr ""
 
@@ -212,53 +126,99 @@ msgid ""
 "The specified network address and the network class (%s/%s) do not match!"
 msgstr ""
 
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:437
+#: admin/systems/services/dns/class_serviceDNS.inc:645
+msgid "Network class"
+msgstr ""
+
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:531
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:475
 msgid "Add"
 msgstr "Thêm vào"
 
-#: admin/systems/services/dns/serviceDNSeditZone.tpl:1
-msgid "Generic"
-msgstr "Thông tin chung"
-
-#: admin/systems/services/dns/serviceDNSeditZone.tpl:25
-msgid "Netmask"
+#: admin/systems/services/dns/class_serviceDNS.inc:51
+#: admin/systems/services/dns/class_serviceDNS.inc:602
+#: admin/systems/services/dns/class_serviceDNS.inc:631
+#: admin/systems/services/dns/class_serviceDNS.inc:632
+msgid "DNS service"
 msgstr ""
 
-#: admin/systems/services/dns/serviceDNSeditZone.tpl:38
-msgid "Zone is in use, network settings can't be modified."
+#: admin/systems/services/dns/class_serviceDNS.inc:182
+#, php-format
+msgid "You are going to migrate the DNS setup from server '%s'."
 msgstr ""
 
-#: admin/systems/services/dns/serviceDNSeditZone.tpl:51
-msgid "Can't be edited because the zone wasn't saved right now."
+#: admin/systems/services/dns/class_serviceDNS.inc:183
+msgid ""
+"The migration will be started when you save this system. To cancel this "
+"action, use the cancel button below."
 msgstr ""
 
-#: admin/systems/services/dns/serviceDNSeditZone.tpl:56
-msgid "Edit"
-msgstr "Hiệu chỉnh"
-
-#: admin/systems/services/dns/serviceDNSeditZone.tpl:65
-msgid "SOA record"
+#: admin/systems/services/dns/class_serviceDNS.inc:315
+#: admin/systems/services/dns/class_serviceDNS.inc:653
+#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:47
+msgid "TTL"
 msgstr ""
 
-#: admin/systems/services/dns/serviceDNSeditZone.tpl:71
-msgid "Primary dns server for this zone"
+#: admin/systems/services/dns/class_serviceDNS.inc:316
+msgid "Class"
 msgstr ""
 
-#: admin/systems/services/dns/serviceDNSeditZone.tpl:89
-msgid "Serial number (automatically incremented)"
+#: admin/systems/services/dns/class_serviceDNS.inc:380
+#, php-format
+msgid "Cannot delete the selected zone. It is still in use by '%s'"
 msgstr ""
 
-#: admin/systems/services/dns/serviceDNSeditZone.tpl:147
-msgid "MxRecords"
+#: admin/systems/services/dns/class_serviceDNS.inc:394
+#, php-format
+msgid "Was not able to contact argonaut server: %s"
 msgstr ""
 
-#: admin/systems/services/dns/serviceDNSeditZone.tpl:165
-msgid "Global zone records"
+#: admin/systems/services/dns/class_serviceDNS.inc:400
+#, php-format
+msgid "Was not able to launch ldap2zone: %s"
+msgstr ""
+
+#: admin/systems/services/dns/class_serviceDNS.inc:632
+msgid "Services"
+msgstr ""
+
+#: admin/systems/services/dns/class_serviceDNS.inc:639
+msgid "Start service"
+msgstr ""
+
+#: admin/systems/services/dns/class_serviceDNS.inc:640
+msgid "Stop service"
+msgstr ""
+
+#: admin/systems/services/dns/class_serviceDNS.inc:641
+msgid "Restart service"
+msgstr ""
+
+#: admin/systems/services/dns/class_serviceDNS.inc:646
+msgid "Zone entry editor"
+msgstr ""
+
+#: admin/systems/services/dns/class_serviceDNS.inc:647
+msgid "Primary dns server"
+msgstr ""
+
+#: admin/systems/services/dns/class_serviceDNS.inc:648
+#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:32
+msgid "Mail address"
+msgstr "Địa chỉ thư"
+
+#: admin/systems/services/dns/class_serviceDNS.inc:654
+msgid "MX records"
+msgstr ""
+
+#: admin/systems/services/dns/class_serviceDNS.inc:655
+#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:17
+msgid "Zone records"
 msgstr ""
 
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:126
-#: admin/systems/services/dns/serviceDNSeditZoneEntries.tpl:13
+#: admin/systems/services/dns/serviceDNSeditZoneEntries.tpl.c:8
 msgid "New entry"
 msgstr ""
 
@@ -367,44 +327,84 @@ msgstr ""
 msgid "Value should be composed of 'priority weight port target'."
 msgstr ""
 
-#: admin/systems/services/dns/serviceDNSeditZoneEntries.tpl:1
-msgid ""
-"This dialog allows you to configure all components of this DNS zone on a "
-"single list."
-msgstr ""
-
-#: admin/systems/services/dns/serviceDNSeditZoneEntries.tpl:5
-msgid ""
-"This dialog can't be used until the currently edited zone was saved or the "
-"zone entry exists in the ldap database."
-msgstr ""
-
-#: admin/systems/services/dns/serviceDNSeditZoneEntries.tpl:13
-msgid "Create a new DNS zone entry"
-msgstr ""
-
-#: admin/systems/services/dns/serviceDNS.tpl:5
+#: admin/systems/services/dns/serviceDNS.tpl.c:2
 msgid "DNS take over initiated"
 msgstr ""
 
-#: admin/systems/services/dns/serviceDNS.tpl:7
+#: admin/systems/services/dns/serviceDNS.tpl.c:5
 msgid ""
 "This includes 'all' DNS zones that are located within this server. Please "
 "double check if your really want to do this."
 msgstr ""
 
-#: admin/systems/services/dns/serviceDNS.tpl:14
+#: admin/systems/services/dns/serviceDNS.tpl.c:8
 msgid "Following objects will be taken over"
 msgstr ""
 
-#: admin/systems/services/dns/serviceDNS.tpl:27
+#: admin/systems/services/dns/serviceDNS.tpl.c:11
 msgid "Take over DNS configuration from"
 msgstr ""
 
-#: admin/systems/services/dns/serviceDNS.tpl:31
+#: admin/systems/services/dns/serviceDNS.tpl.c:14
 msgid "Take over"
 msgstr ""
 
-#: admin/systems/services/dns/serviceDNS.tpl:37
+#: admin/systems/services/dns/serviceDNS.tpl.c:17
 msgid "Zones"
+msgstr ""
+
+#: admin/systems/services/dns/serviceDNSeditZoneEntries.tpl.c:2
+msgid ""
+"This dialog allows you to configure all components of this DNS zone on a "
+"single list."
+msgstr ""
+
+#: admin/systems/services/dns/serviceDNSeditZoneEntries.tpl.c:5
+msgid ""
+"This dialog can't be used until the currently edited zone was saved or the "
+"zone entry exists in the ldap database."
+msgstr ""
+
+#: admin/systems/services/dns/serviceDNSeditZoneEntries.tpl.c:11
+msgid "Create a new DNS zone entry"
+msgstr ""
+
+#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:2
+msgid "Generic"
+msgstr "Thông tin chung"
+
+#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:11
+msgid "Netmask"
+msgstr ""
+
+#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:14
+msgid "Zone is in use, network settings can't be modified."
+msgstr ""
+
+#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:20
+msgid "Can't be edited because the zone wasn't saved right now."
+msgstr ""
+
+#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:23
+msgid "Edit"
+msgstr "Hiệu chỉnh"
+
+#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:26
+msgid "SOA record"
+msgstr ""
+
+#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:29
+msgid "Primary dns server for this zone"
+msgstr ""
+
+#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:35
+msgid "Serial number (automatically incremented)"
+msgstr ""
+
+#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:50
+msgid "MxRecords"
+msgstr ""
+
+#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:53
+msgid "Global zone records"
 msgstr ""
