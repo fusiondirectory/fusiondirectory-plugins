@@ -264,8 +264,6 @@ class systemManagement extends management
     $headpage = $this->getHeadpage();
     $event = preg_replace("/^[TS]_/", "", $action);
 
-    echo "<h1>launching action $action</h1>\n";
-
     // Now send remaining FAI/Argonaut events here.
     if (count($target) && $this->si_active) {
       $mac = array();
