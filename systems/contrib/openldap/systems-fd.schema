@@ -110,16 +110,10 @@ attributetype ( 1.3.6.1.4.1.10098.1.1.11.19 NAME 'gotoLogoffScript'
   SUBSTR caseIgnoreSubstringsMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.15)
 
-attributetype ( 1.3.6.1.4.1.24376.1.95 NAME 'goComment'
-  DESC 'GOto - additional information about systems'
-  EQUALITY caseIgnoreMatch
-  SUBSTR caseIgnoreSubstringsMatch
-  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15)
-
 objectclass (1.3.6.1.4.1.10098.1.2.1.1 NAME 'gotoTerminal'
   DESC 'GOto - Gonicus Terminal Concept, objectclass (v2.6.1)' SUP top AUXILIARY
   MUST ( cn )
-  MAY  ( description $ macAddress $ ipHostNumber $ gotoShare $ goComment))
+  MAY  ( description $ macAddress $ ipHostNumber $ gotoShare))
 
 attributetype ( 1.3.6.1.4.1.10098.1.1.12.24 NAME 'gosaApplicationIcon'
   DESC 'Keeps the application icon in png format'
@@ -174,19 +168,19 @@ attributetype ( 1.3.6.1.4.1.10098.1.1.12.26 NAME 'gosaMemberApplication'
 objectclass (1.3.6.1.4.1.10098.1.2.1.30 NAME 'gotoWorkstation'
   DESC 'GOto - Gonicus Terminal Concept, objectclass (v2.6.1)' SUP top AUXILIARY
   MUST ( cn )
-  MAY  ( description $ macAddress $ ipHostNumber $ gotoShare $ goComment))
+  MAY  ( description $ macAddress $ ipHostNumber $ gotoShare))
 
 objectclass (1.3.6.1.4.1.10098.1.2.1.31 NAME 'gotoPrinter'
   DESC 'GOto - Gonicus Terminal Concept, objectclass (v2.2)' SUP top STRUCTURAL
   MUST ( cn )
   MAY ( labeledURI $ description $ l $ gotoPrinterPPD $ macAddress $ ipHostNumber $ gotoUserPrinter $
-        gotoUserAdminPrinter $ gotoGroupPrinter $ gotoGroupAdminPrinter $ goComment $
+        gotoUserAdminPrinter $ gotoGroupPrinter $ gotoGroupAdminPrinter $
         printerWindowsInfFile $ printerWindowsDriverDir $ printerWindowsDriverName) )
 
 objectclass (1.3.6.1.4.1.10098.1.2.1.32 NAME 'gotoEnvironment'
   DESC 'GOto - contains environment settings (v2.2)' SUP top AUXILIARY
   MAY ( gotoProfileServer $ gotoProfileFlags $ gotoXResolution $ gotoShare $ gotoLogonScript $
-        gotoHotplugDevice $ gotoProfileQuota $ gotoHotplugDeviceDN $ gosaDefaultPrinter $ goComment) )
+        gotoHotplugDevice $ gotoProfileQuota $ gotoHotplugDeviceDN $ gosaDefaultPrinter) )
 
 objectclass (1.3.6.1.4.1.10098.1.2.1.34 NAME 'gotoWorkstationTemplate'
   DESC 'GOto - Gonicus Terminal Concept, objectclass (v2.6.1)' SUP top AUXILIARY
@@ -218,7 +212,7 @@ objectclass (1.3.6.1.4.1.10098.1.2.1.35 NAME 'gotoTerminalTemplate'
          gotoXColordepth $ gotoXMouseport $ gotoXMouseButtons $ gotoMode $ gotoXKbModel $
          gotoXKbLayout $ gotoXKbVariant $ gotoXDriver $ gotoXMouseType $ macAddress $
          gotoAutoFs $ gotoModules $ gotoAdaptPath $ gotoKernelParameters $ gotoBootKernel $
-         gotoTerminalPath $ gotoLdapServer $ gotoScannerModel $ goComment))
+         gotoTerminalPath $ gotoLdapServer $ gotoScannerModel))
 
 objectclass (1.3.6.1.4.1.10098.1.2.1.42 NAME 'gotoDevice'
   DESC 'GOto - contains environment settings (v2.6)' SUP top STRUCTURAL

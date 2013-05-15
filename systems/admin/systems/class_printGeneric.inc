@@ -33,7 +33,6 @@ class printgeneric extends plugin
   var $description      = "";
   var $labeledURI       = "";
   var $gotoPrinterPPD   = "";
-  var $goComment        = "";
   var $initial_PPD      = "";
   var $orig_dn          = "";
   var $orig_cn          = "";
@@ -71,7 +70,7 @@ class printgeneric extends plugin
   /* attribute list for save action */
   var $attributes     = array("cn", "description", "l", "labeledURI", "gotoPrinterPPD","gotoUserPrinter", "macAddress",
                               "gotoUserAdminPrinter","gotoGroupAdminPrinter","gotoUserPrinter","gotoGroupPrinter","gosaUnitTag",
-                              "goComment","printerWindowsInfFile","printerWindowsDriverDir","printerWindowsDriverName");
+                              "printerWindowsInfFile","printerWindowsDriverDir","printerWindowsDriverName");
   var $objectclasses  = array("top", "gotoPrinter");
   var $view_logged    = FALSE;
   var $parent;
@@ -617,7 +616,6 @@ class printgeneric extends plugin
     $smarty->assign("AdminMember"    ,$this->AdminMember);
     $smarty->assign("AdminMembers"   ,$adminlist);
     $smarty->assign("AdminMemberKeys",array_flip($adminlist));
-    $smarty->assign("goComment", htmlencode($this->goComment));
 
     if (preg_match("/Printer/i",$this->BelongsTo)) {
 
@@ -714,10 +712,6 @@ class printgeneric extends plugin
 
     if (is_object($this->netConfigDNS)) {
       $this->netConfigDNS->save_object();
-    }
-
-    if (isset($_POST['goComment'])) {
-      $this->goComment = get_post('goComment');
     }
 
     /* Refresh base */
@@ -1028,7 +1022,6 @@ class printgeneric extends plugin
         "labeledURI"        => _("LabeledURL"),
         "gotoPrinterPPD"    => _("Printer PPD"),
         "gotoUserPrinter"   => _("Permissions"),
-        "goComment"         => _("Comments"),
 
         "printerWindowsInfFile"     => _("Windows inf file"),
         "printerWindowsDriverDir"   => _("Windows driver dir"),
