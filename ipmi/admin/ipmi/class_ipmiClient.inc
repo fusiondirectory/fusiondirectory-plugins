@@ -45,8 +45,8 @@ class ipmiClient extends simplePlugin
         'name'  => _('IPMI client settings'),
         'attrs' => array(
           new StringAttribute (
-            _('Host'), _('Host to contact IPMI service'),
-            'fdIpmiHost', TRUE
+            _('IP'), _('IP of the IPMI interface'),
+            'fdIpmiIP', TRUE
           ),
           new StringAttribute (
             _('User login'), _('IPMI user login'),
