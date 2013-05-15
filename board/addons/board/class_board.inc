@@ -22,18 +22,14 @@
 /* Dummy attribute class in order to give stats information to the template */
 class FakeAttribute extends Attribute
 {
-  private $var_name;
-
-  function __construct ($var)
+  function __construct ($varName)
   {
-    parent::__construct("Fake one", "", $var, FALSE, "", "noacl");
+    parent::__construct("Fake one", "", $varName, FALSE, "", "noacl");
     $this->setInLdap(FALSE);
-    $this->var_name = $var;
   }
 
   function renderAttribute(&$attributes, $readOnly)
   {
-    $var = $this->var_name;
     $attributes[$this->getLdapName()] = $this->getValue();
   }
 }
