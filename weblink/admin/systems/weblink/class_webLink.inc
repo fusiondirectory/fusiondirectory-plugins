@@ -1,0 +1,89 @@
+<?php
+/*
+  This code is part of FusionDirectory (http://www.fusiondirectory.org/)
+  Copyright (C) 2013  FusionDirectory
+
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
+*/
+
+class webLink extends simplePlugin
+{
+  var $objectclasses  = array('webLink');
+  var $displayHeader  = TRUE;
+
+  var $inheritance = array('gosaGroupOfNames' => 'member');
+
+  static function plInfo ()
+  {
+    return array(
+      'plShortName'     => _('Web link'),
+      'plDescription'   => _('Edit web link'),
+      'plSelfModify'    => FALSE,
+      'plCategory'      => array('workstation','server'),
+      'plObjectType'    => array('workstation','server'),
+
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+    );
+  }
+
+  static function getAttributesInfo ()
+  {
+    return array(
+      'main' => array(
+        'name'  => _('IPMI client settings'),
+        'attrs' => array(
+          new SelectAttribute (
+            _('Protocol'), _('Protocol to use to access the IPMI Web Admin page'),
+            'fdWebLinkProtocol', TRUE,
+            array('https', 'http')
+          ),
+          new DisplayAttribute (
+            _('Link'), _('Web link to this computer'),
+            'fdWebLink', FALSE
+          )
+        )
+      ),
+    );
+  }
+
+  function __construct(&$config, $dn = NULL, $object = NULL)
+  {
+    parent::__construct($config, $dn, $object);
+  }
+
+  function execute()
+  {
+    $this->fdWebLink = $this->computeLink();
+    return parent::execute();
+  }
+
+  function computeLink()
+  {
+    if ($this->member_of_group) {
+      $protocol = $this->group_attrs['fdWebLinkProtocol'][0];
+    } else {
+      $protocol = $this->fdWebLinkProtocol;
+    }
+    $basetab &= $this->parent->getBaseObject();
+    if ($basetab->netConfigDNS->DNS_is_account) {
+      $host = $basetab->cn.'.'.substr(strrchr($basetab->netConfigDNS->dnsEntry['zoneName'], '/'), 1);
+    } else {
+      $host = $basetab->netConfigDNS->ipHostNumber;
+    }
+    return $protocol.'://'.$host;
+  }
+}
+
+?>
