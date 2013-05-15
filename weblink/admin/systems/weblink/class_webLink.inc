@@ -61,12 +61,14 @@ class webLink extends simplePlugin
   function __construct(&$config, $dn = NULL, $object = NULL)
   {
     parent::__construct($config, $dn, $object);
+    $this->attributesAccess['fdWebLinkProtocol']->setSubmitForm(TRUE);
   }
 
-  function execute()
+  function renderAttributes($readOnly = FALSE)
   {
-    $this->fdWebLink = $this->computeLink();
-    return parent::execute();
+    $link = $this->computeLink();
+    $this->fdWebLink = '<a href="'.$link.'">'.$link.'</a>';
+    return parent::renderAttributes($readOnly);
   }
 
   function computeLink()
@@ -76,9 +78,10 @@ class webLink extends simplePlugin
     } else {
       $protocol = $this->fdWebLinkProtocol;
     }
-    $basetab &= $this->parent->getBaseObject();
+    $basetab = $this->parent->getBaseObject();
     if ($basetab->netConfigDNS->DNS_is_account) {
-      $host = $basetab->cn.'.'.substr(strrchr($basetab->netConfigDNS->dnsEntry['zoneName'], '/'), 1);
+      $zone = strrchr($basetab->netConfigDNS->dnsEntry['zoneName'], '/');
+      $host = $basetab->cn.'.'.preg_replace(array('/^\//', '/.$/'), '', $zone);
     } else {
       $host = $basetab->netConfigDNS->ipHostNumber;
     }
