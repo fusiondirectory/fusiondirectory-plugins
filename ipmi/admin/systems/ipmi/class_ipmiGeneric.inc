@@ -59,5 +59,10 @@ class ipmiGeneric extends workstationGeneric
   {
     /* Nothing to init, we do not use this section */
   }
+
+  function compute_dn()
+  {
+    return 'cn='.$this->cn.','.get_ou('ipmiRDN').$this->base;
+  }
 }
 ?>
