@@ -418,25 +418,6 @@ class workstationGeneric extends simplePlugin
     }
   }
 
-  /* Check supplied data */
-  function check()
-  {
-    $message = parent::check();
-
-    $activate = ($this->attributesAccess['gotoMode']->hasChanged() &&
-                 $this->attributesAccess['gotoMode']->getValue());
-    /* Only systems with a valid ldap handle can be activated
-     */
-    if ($activate) {
-      if ((count($this->attributesAccess['gotoLdapServer']->getValue()) == 0) &&
-          !$this->attributesAccess['inheritLDAPServer']->getValue()) {
-        $message[] = _("A valid LDAP server assignement is missing!");
-      }
-    }
-
-    return $message;
-  }
-
   protected function ldap_save($cleanup = TRUE)
   {
     $activate = ($this->attributesAccess['gotoMode']->hasChanged() &&
