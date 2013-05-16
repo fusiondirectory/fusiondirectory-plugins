@@ -37,11 +37,12 @@ class systemManagement extends management
     $this->ui     = $ui;
 
     // Set storage points
-    $tD = $this->getObjectDefinitions();
+    $typeDefs = $this->getObjectDefinitions();
     $sP = array();
-    foreach($tD as $entry){
-      if(!empty($entry['ou']))
+    foreach ($typeDefs as $entry) {
+      if (!empty($entry['ou'])) {
         $sP[] = $entry['ou'];
+      }
     }
     $this->storagePoints = array_unique($sP);
 
@@ -49,13 +50,13 @@ class systemManagement extends management
     if (session::global_is_set(get_class($this)."_filter")) {
       $filter = session::global_get(get_class($this)."_filter");
     } else {
-      $filter = new filter(get_template_path("system-filter.xml", true));
+      $filter = new filter(get_template_path("system-filter.xml", TRUE));
       $filter->setObjectStorage($this->storagePoints);
     }
     $this->setFilter($filter);
 
     // Build headpage
-    $headpage = new listing(get_template_path("system-list.xml", true));
+    $headpage = new listing(get_template_path("system-list.xml", TRUE));
     $headpage->registerElementFilter("systemRelease", "systemManagement::systemRelease");
     $headpage->registerElementFilter("listServices", "systemManagement::listServices");
     $headpage->setFilter($filter);
@@ -94,14 +95,9 @@ class systemManagement extends management
     $this->registerAction("systemTypeChosen", "systemTypeChosen");
     $this->registerAction("handleActivationQueue", "handleActivationQueue");
 
-    $this->registerAction("new_goServer",         "newEntry");
-    $this->registerAction("new_gotoWorkstation",  "newEntry");
-    $this->registerAction("new_gotoTerminal",     "newEntry");
-    $this->registerAction("new_sambaSamAccount",  "newEntry");
-    $this->registerAction("new_gotoPrinter",      "newEntry");
-    $this->registerAction("new_goFonHardware",    "newEntry");
-    $this->registerAction("new_ieee802Device",    "newEntry");
-    $this->registerAction("new_fdMobilePhone",    "newEntry");
+    foreach (array_keys($typeDefs) as $type) {
+      $this->registerAction("new_$type",         "newEntry");
+    }
 
     // Check if we are able to communicate with Argonaut server
     if (class_available("supportDaemon")) {
@@ -1110,6 +1106,15 @@ class systemManagement extends management
             "aclClass"    => "mobilePhoneGeneric",
             "sendEvents"  => FALSE,
             "aclCategory" => "mobilePhone"),
+
+        "ipmiInterface"   => array(
+            "ou"          => get_ou('ipmiRDN'),
+            "plugClass"   => "ipmiGeneric",
+            "tabClass"    => "simpleTabs",
+            "tabDesc"     => "IPMITABS",
+            "aclClass"    => "ipmiGeneric",
+            "sendEvents"  => FALSE,
+            "aclCategory" => "ipmi"),
         );
 
     // Now map some special types

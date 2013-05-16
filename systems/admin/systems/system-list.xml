@@ -139,6 +139,14 @@
       <image>plugins/systems/images/select_component.png</image>
     </objectType>
 
+    <objectType>
+      <label>IPMI</label>
+      <objectClass>ipmiInterface</objectClass>
+      <category>ipmi</category>
+      <class>ipmiGeneric</class>
+      <image>plugins/systems/images/select_server.png</image>
+    </objectType>
+
   </definition>
 
   <table>
@@ -281,6 +289,14 @@
       <image>plugins/systems/images/select_mobilephone.png</image>
       <label>Mobile Phone</label>
       <depends>mobilePhoneGeneric</depends>
+     </action>
+
+     <action>
+      <name>new_ipmiInterface</name>
+      <type>entry</type>
+      <image>plugins/systems/images/select_server.png</image>
+      <label>IPMI</label>
+      <depends>ipmiGeneric</depends>
      </action>
     </action>
 
