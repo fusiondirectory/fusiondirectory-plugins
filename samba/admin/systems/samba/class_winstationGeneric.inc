@@ -254,9 +254,6 @@ class winstationGeneric extends simplePlugin
       $this->attrs['sambaSID']  = $sid;
       $this->attrs['uidNumber'] = $uidNumber + $this->ridBase;
     }
-    if (($this->gosaUnitTag) && (!in_array_ics("gosaAdministrativeUnitTag", $this->attrs['objectClass']))) {
-      $this->attrs['objectClass'][] = "gosaAdministrativeUnitTag";
-    }
   }
 
   protected function ldap_save($cleanup = TRUE)

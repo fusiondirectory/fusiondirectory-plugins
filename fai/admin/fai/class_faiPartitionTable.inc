@@ -577,9 +577,6 @@ class faiPartitionTable extends faiPluginClass
       }
 
 
-      /* Tag object */
-      $this->tag_attrs($disk_attrs, $disk_dn, $this->gosaUnitTag);
-
       if($disk['status'] == "delete"){
         @DEBUG (DEBUG_FAI, __LINE__, __FUNCTION__, __FILE__,$short_dn , "Removing disk: ");
         FAI::prepare_to_save_FAI_object($disk_dn,array(),true);
@@ -627,10 +624,6 @@ class faiPartitionTable extends faiPluginClass
         if((!isset($partition['FAImountPoint']))||(empty($partition['FAImountPoint']))){
           $partition_attrs['FAImountPoint']="swap";
         }
-
-        /* Tag object */
-        $this->tag_attrs($partition_attrs, $partition_dn, $this->gosaUnitTag);
-
 
         if($partition['status'] == "delete"){
           @DEBUG (DEBUG_FAI, __LINE__, __FUNCTION__, __FILE__,$short_dn , "Removing partition: ");

@@ -735,7 +735,7 @@ class supportDaemon
   {
     $ldap = $this->config->get_ldap_link();
     $ldap->cd($this->config->current['BASE']);
-    $ldap->search("(&(FAIrepository=*)(objectClass=FAIrepositoryServer))", array("FAIrepository", "gosaUnitTag"));
+    $ldap->search("(&(FAIrepository=*)(objectClass=FAIrepositoryServer))", array("FAIrepository"));
 
     $repos = array();
     while ($entry = $ldap->fetch()) {
@@ -751,7 +751,6 @@ class supportDaemon
           $infos['INSTALL']       = $tmp[4];
           $infos['LOCAL']         = $tmp[5];
           $infos['ARCHS']         = explode(",", $tmp[6]);
-          $infos['TAG']           = (isset($entry['gosaUnitTag'])?$entry['gosaUnitTag']:'');
           $repos[] = $infos;
         }
       }

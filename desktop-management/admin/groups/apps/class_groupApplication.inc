@@ -1401,7 +1401,6 @@ class appgroup extends plugin
     /* Add new entries
      */
     foreach($Actions['Add'] as $dn => $data){
-      $this->tag_attrs($data,$dn,$this->gosaUnitTag);
       $ldap->cd($dn);
       $ldap->cat($dn);
       if(!$ldap->count()){
@@ -1415,7 +1414,6 @@ class appgroup extends plugin
     /* Modify entries
      */
     foreach($Actions['Edit'] as $dn => $data){
-      $this->tag_attrs($data,$dn,$this->gosaUnitTag);
       $ldap->cd($dn);
       $ldap->cat($dn);
       if($ldap->count()){

@@ -663,9 +663,6 @@ class faiPackage extends faiPluginClass
         $pkgattrs['FAIvariableContent']   = $attr['Value'];
         $pkgdn =  "FAIvariable=".$name.",".$this->dn;
 
-        /* Tag object */
-        $this->tag_attrs($pkgattrs, $pkgdn, $this->gosaUnitTag);
-
         if (in_array($pkgattrs['FAIvariableType'],array("boolean","multiselect","password","select","string","text"))) {
           if ($pkgattrs['FAIvariableType'] == "text" && $pkgattrs['FAIvariableContent'] == "") {
             fusiondirectory_log("Skipped saving FAIvariable '$name' empty string can't be saved.");
