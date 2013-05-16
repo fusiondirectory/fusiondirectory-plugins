@@ -67,7 +67,7 @@ class webLink extends simplePlugin
   function renderAttributes($readOnly = FALSE)
   {
     $link = $this->computeLink();
-    $this->fdWebLink = '<a href="'.$link.'">'.$link.'</a>';
+    $this->fdWebLink = '<a target="_blank" href="'.$link.'">'.$link.'</a>';
     return parent::renderAttributes($readOnly);
   }
 
