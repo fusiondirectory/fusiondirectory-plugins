@@ -481,9 +481,6 @@ class faiTemplate extends faiPluginClass
         }
       }
 
-      /* Tag object */
-      $this->tag_attrs($tmp, $sub_dn, $this->gosaUnitTag);
-
       if($obj['status'] == "delete"){
         FAI::prepare_to_save_FAI_object($sub_dn,array(),true);
         $this->handle_post_events("remove");

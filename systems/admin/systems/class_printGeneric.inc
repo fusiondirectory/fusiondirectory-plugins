@@ -69,7 +69,7 @@ class printgeneric extends plugin
 
   /* attribute list for save action */
   var $attributes     = array("cn", "description", "l", "labeledURI", "gotoPrinterPPD","gotoUserPrinter", "macAddress",
-                              "gotoUserAdminPrinter","gotoGroupAdminPrinter","gotoUserPrinter","gotoGroupPrinter","gosaUnitTag",
+                              "gotoUserAdminPrinter","gotoGroupAdminPrinter","gotoUserPrinter","gotoGroupPrinter",
                               "printerWindowsInfFile","printerWindowsDriverDir","printerWindowsDriverName");
   var $objectclasses  = array("top", "gotoPrinter");
   var $view_logged    = FALSE;
