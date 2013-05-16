@@ -259,6 +259,14 @@ class workstationGeneric extends simplePlugin
 
     $this->attributesAccess['cn']->setUnique(TRUE);
 
+    $this->init_server_section();
+
+    $this->updateAttributesValues();
+    $this->prepareSavedAttributes();
+  }
+
+  protected function init_server_section()
+  {
     $this->attributesAccess['inheritTimeServer']->setInLdap(FALSE);
     $this->attributesAccess['inheritTimeServer']->setManagedAttributes(
       array(
@@ -343,9 +351,6 @@ class workstationGeneric extends simplePlugin
       }
     }
     $this->attributesAccess['gotoSyslogServer']->setChoices($tmp, $tmp_output);
-
-    $this->updateAttributesValues();
-    $this->prepareSavedAttributes();
   }
 
   function resetCopyInfos()

@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2013  FusionDirectory
+  Copyright (C) 2012-2013 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -18,21 +18,18 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class ipmiClient extends simplePlugin
+class ipmiConfig extends simplePlugin
 {
-  var $objectclasses  = array('ipmiClient');
-  var $displayHeader  = TRUE;
+  var $objectclasses  = array('fdIpmiPluginConf');
 
-  //~ var $inheritance = array("gosaGroupOfNames" => "member");
-
-  static function plInfo ()
+  static function plInfo()
   {
     return array(
-      'plShortName'     => _('IPMI client'),
-      'plDescription'   => _('Edit IPMI client settings'),
+      'plShortName'     => _('IPMI configuration'),
+      'plDescription'   => _('FusionDirectory ipmi plugin configuration'),
       'plSelfModify'    => FALSE,
-      'plCategory'      => array('workstation','server'),
-      'plObjectType'    => array('workstation','server'),
+      'plCategory'      => array('configuration'),
+      'plObjectType'    => array('smallConfig'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
@@ -42,30 +39,16 @@ class ipmiClient extends simplePlugin
   {
     return array(
       'main' => array(
-        'name'  => _('IPMI client settings'),
+        'name'  => _('LDAP tree'),
         'attrs' => array(
           new StringAttribute (
-            _('IP'), _('IP of the IPMI interface'),
-            'fdIpmiIP', TRUE
-          ),
-          new StringAttribute (
-            _('User login'), _('IPMI user login'),
-            'fdIpmiLogin', TRUE,
-            ''
-          ),
-          new PasswordAttribute (
-            _('User password'), _('IPMI user password'),
-            'fdIpmiPassword', TRUE
+            _('IPMI RDN'), _('Branch in which IPMI objects will be stored (required)'),
+            'fdIpmiRDN', TRUE,
+            'ou=ipmi'
           ),
         )
       ),
     );
   }
-
-  function __construct(&$config, $dn = NULL, $object = NULL)
-  {
-    parent::__construct($config, $dn, $object);
-  }
 }
-
 ?>
