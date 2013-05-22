@@ -42,7 +42,8 @@ class supportDaemon
 
   private $logdir       = "";
 
-  private $stateReloadDelay = 300; // Don't recheck status if less than 5 minutes have passed.
+  /* Duration in seconds while we do not try to contact server if previous task has failed */
+  private $stateReloadDelay = 0; // Disabled
 
   /*!
    * \brief constructor
