@@ -56,69 +56,6 @@ class ScriptAttribute extends FileTextAreaAttribute
   }
 }
 
-class IconAttribute extends FileAttribute
-{
-  /*! \brief Update this attributes postValue depending of the $_POST values
-   */
-  function loadPostValue ()
-  {
-    if (isset($_POST['upload'.$this->getHtmlId()])) {
-      parent::loadPostValue();
-    }
-  }
-
-  function setValue ($value)
-  {
-    if ($value == "") {
-      $this->value = "";
-      return;
-    }
-    if (class_exists('Imagick')) {
-      $im = new Imagick();
-      $im->readImageBlob($value);
-
-      $size = $im->getImageGeometry();
-
-      if (($size['width'] != 0 && $size['height'] != 0) && ($size['width'] != 48 && $size['height'] != 48)) {
-        $im->resizeImage(48, 48, Imagick::FILTER_GAUSSIAN, 1, FALSE);
-      }
-      $im->setImageFormat('png');
-
-      /* Save attribute */
-      $this->value = $im->getImageBlob();
-    } else {
-      msg_dialog::display(_("Error"),
-                _("Cannot save user picture, FusionDirectory requires the package 'php5-imagick' to be installed!"),
-                ERROR_DIALOG);
-    }
-  }
-
-  function renderFormInput ()
-  {
-    $this->setValue($this->inputValue($this->getValue()));
-    $id = $this->getHtmlId();
-    srand((double)microtime()*1000000); // Just to be sure the image is not cached
-    $display  = '<img name="'.$id.'_img" id="'.$id.'_img"'.
-                ($this->disabled? 'disabled="disabled"':'').
-                ' src="getbin.php?rand='.rand(0, 10000).'"'.
-                ' style="vertical-align:middle;margin-right:10px;border:1px solid black;" />';
-    $display  .= '<input type="file" name="'.$id.'" id="'.$id.'" '.
-                ($this->disabled? 'disabled="disabled"':'').'/>';
-    $display  .= '<input type="submit" name="upload'.$id.'" id="upload'.$id.'"'.
-                ($this->disabled? ' disabled="disabled"':'').
-                ' value="'._('Upload').'"/>';
-    session::set('binary', $this->getValue());
-    session::set('binarytype', 'image/png');
-    return $this->renderAcl($display);
-  }
-
-  protected function htmlIds()
-  {
-    $id = $this->getHtmlId();
-    return array($id.'_img',$id,'upload'.$id);
-  }
-}
-
 class application extends simplePlugin
 {
   var $objectclasses = array("top", "gosaApplication");
@@ -172,9 +109,10 @@ class application extends simplePlugin
       'icon' => array(
         'name'  => _('Icon'),
         'attrs' => array(
-          new IconAttribute (
+          new ImageAttribute (
             '', _('The icon for this application'),
-            'gosaApplicationIcon'
+            'gosaApplicationIcon', FALSE,
+            48, 48, 'png', TRUE
           ),
         )
       ),
