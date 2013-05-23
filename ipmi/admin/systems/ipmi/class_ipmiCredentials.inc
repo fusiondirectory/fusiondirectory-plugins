@@ -47,17 +47,12 @@ class ipmiCredentials extends simplePlugin
         'name'  => _('IPMI client settings'),
         'attrs' => array(
           new StringAttribute (
-            _('Host'), _('Host to contact IPMI service'),
-            'fdIpmiHost', TRUE
-          ),
-          new StringAttribute (
             _('User login'), _('IPMI user login'),
-            'fdIpmiLogin', TRUE,
-            ''
+            'fdIpmiLogin', FALSE
           ),
           new PasswordAttribute (
             _('User password'), _('IPMI user password'),
-            'fdIpmiPassword', TRUE
+            'fdIpmiPassword', FALSE
           ),
         )
       ),
