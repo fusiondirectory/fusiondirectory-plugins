@@ -310,7 +310,7 @@ class sambaAccount extends simplePlugin
           ),
           new ButtonAttribute (
             _('Samba logon times'), _('What is the allowed time to connect'),
-            'sambaLogonHours', 'SambaLogonHoursDialog', _('Edit settings')
+            'sambaLogonHours', FALSE, 'SambaLogonHoursDialog', _('Edit settings')
           )
         )
       ),
