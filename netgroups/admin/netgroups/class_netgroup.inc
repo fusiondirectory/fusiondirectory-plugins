@@ -94,7 +94,7 @@ class netgroup extends simplePlugin
         'name'  => _('System members'),
         'icon'  => 'plugins/systems/images/select_server.png',
         'attrs' => array(
-          new TrustsAttribute('', _('NIS netgroup members'), 'memberSystems', FALSE),
+          new SystemsAttribute('', _('NIS netgroup members'), 'memberSystems', FALSE),
         )
       ),
       'netgroups' => array(

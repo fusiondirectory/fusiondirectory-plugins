@@ -326,7 +326,7 @@ class sambaAccount extends simplePlugin
         'attrs' => array(
           new CommaListAttribute(
             'sambaUserWorkstations',
-            new TrustsAttribute(
+            new SystemsAttribute(
               _('Allow connection from these workstations only'), _('Only allow this user to connect to this list of hosts'),
               'sambaUserWorkstations_ta', FALSE
             )
