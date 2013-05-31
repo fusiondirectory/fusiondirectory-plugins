@@ -41,13 +41,13 @@ class EventAddSystemDialog extends management
 #    if (session::global_is_set(get_class($this)."_filter")){
  #     $filter= session::global_get(get_class($this)."_filter");
   #  } else {
-      $filter = new filter(get_template_path("../../addons/goto/events/eventTargetSystems-filter.xml", TRUE));
+      $filter = new filter(get_template_path("../../addons/argonaut/events/eventTargetSystems-filter.xml", TRUE));
       $filter->setObjectStorage($this->storagePoints);
    # }
     $this->setFilter($filter);
 
     // Build headpage
-    $headpage = new listing(get_template_path("../../addons/goto/events/eventTargetSystems-list.xml", TRUE));
+    $headpage = new listing(get_template_path("../../addons/argonaut/events/eventTargetSystems-list.xml", TRUE));
     $headpage->setFilter($filter);
     parent::__construct($config, $ui, "object", $headpage);
   }
