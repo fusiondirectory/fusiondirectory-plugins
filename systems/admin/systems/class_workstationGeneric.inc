@@ -261,6 +261,8 @@ class workstationGeneric extends simplePlugin
 
     $this->init_server_section();
 
+    $this->netConfigDNS->MACisMust = FALSE;
+
     $this->updateAttributesValues();
     $this->prepareSavedAttributes();
   }
