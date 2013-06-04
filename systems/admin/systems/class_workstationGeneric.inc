@@ -259,6 +259,16 @@ class workstationGeneric extends simplePlugin
 
     $this->attributesAccess['cn']->setUnique(TRUE);
 
+    $this->init_server_section();
+
+    $this->netConfigDNS->MACisMust = FALSE;
+
+    $this->updateAttributesValues();
+    $this->prepareSavedAttributes();
+  }
+
+  protected function init_server_section()
+  {
     $this->attributesAccess['inheritTimeServer']->setInLdap(FALSE);
     $this->attributesAccess['inheritTimeServer']->setManagedAttributes(
       array(
