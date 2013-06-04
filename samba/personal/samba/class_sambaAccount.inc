@@ -310,8 +310,18 @@ class sambaAccount extends simplePlugin
           ),
           new ButtonAttribute (
             _('Samba logon times'), _('What is the allowed time to connect'),
-            'sambaLogonHours', 'SambaLogonHoursDialog', _('Edit settings')
-          )
+            'sambaLogonHours', FALSE, 'SambaLogonHoursDialog', _('Edit settings')
+          ),
+          /* Unused attributes, that needs to appear in attributes array in order to be
+           * removed when disabling the samba tab */
+          new HiddenAttribute('sambaLogonTime'),
+          new HiddenAttribute('sambaLogoffTime'),
+          new HiddenAttribute('sambaPwdCanChange'),
+          new HiddenAttribute('sambaPwdMustChange'),
+          new HiddenAttribute('sambaUserWorkstations'),
+          new HiddenAttribute('sambaPasswordHistory'),
+          new HiddenAttribute('sambaBadPasswordTime'),
+          new HiddenAttribute('sambaBadPasswordCount'),
         )
       ),
       'system_trust' => array(
