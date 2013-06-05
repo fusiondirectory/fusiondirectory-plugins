@@ -352,7 +352,6 @@ class sambaAccount extends simplePlugin
     parent::__construct($config, $dn, $baseobject);
 
     $this->attributesAccess['sambaDomainName']->setChoices(array_keys($this->config->data['SERVERS']['SAMBA']));
-    $this->attributesAccess['sambaDomainName']->setInLdap(FALSE);
     $this->attributesAccess['TsLogin']->setManagedAttributes(
       array(
         'disable' => array (
