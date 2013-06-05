@@ -318,7 +318,6 @@ class sambaAccount extends simplePlugin
           new HiddenAttribute('sambaLogoffTime'),
           new HiddenAttribute('sambaPwdCanChange'),
           new HiddenAttribute('sambaPwdMustChange'),
-          new HiddenAttribute('sambaUserWorkstations'),
           new HiddenAttribute('sambaPasswordHistory'),
           new HiddenAttribute('sambaBadPasswordTime'),
           new HiddenAttribute('sambaBadPasswordCount'),
