@@ -300,8 +300,8 @@ class argonautQueue extends management
       $tmp->add_targets($macs);
       $tmp->set_type(TRIGGERED_EVENT);
       $this->recently_removed = $macs;
-      $o_queue->append($tmp);
-      if ($o_queue->is_error()) {
+      $this->o_queue->append($tmp);
+      if ($this->o_queue->is_error()) {
         msg_dialog::display(_("Info"), sprintf(_("%s"), $this->o_queue->get_error()), INFO_DIALOG);
       }
     } else {
