@@ -6,8 +6,6 @@
 
 <div class="contentboxb">
 
-<div style="border-top:1px solid #AAAAAA"></div>
-
   {$SERVER}&nbsp;<LABEL for='SERVER'>{t}Show servers{/t}</LABEL><br/>
   {$WORKSTATION}&nbsp;<LABEL for='WORKSTATION'>{t}Show workstations{/t}</LABEL><br/>
   {$TERMINAL}&nbsp;<LABEL for='TERMINAL'>{t}Show terminals{/t}</LABEL><br/>
