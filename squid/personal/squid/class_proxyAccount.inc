@@ -68,7 +68,6 @@ class proxyAccount extends simplePlugin
       'plSmallIcon'     => 'plugins/squid/images/iconMini.png',
       'plSelfModify'    => TRUE,
       'plPriority'      => 9,
-      'plCategory'      => array('users'),
       'plObjectType'    => array('user'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())

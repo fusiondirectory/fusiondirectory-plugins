@@ -85,7 +85,6 @@ class kolabAccount extends simplePlugin
       'plSmallIcon'     => 'plugins/kolab/images/iconMini.png',
       'plSelfModify'    => TRUE,
       'plPriority'      => 20,
-      'plCategory'      => array('users'),
       'plObjectType'    => array('user'),
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );

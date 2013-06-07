@@ -217,7 +217,6 @@ class supannAccount extends simplePlugin
       'plSmallIcon'   => 'plugins/supann/images/iconMini.png',
       'plSelfModify'  => TRUE,
       'plPriority'    => 14,
-      'plCategory'    => array('users'),
       'plObjectType'  => array('user'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())

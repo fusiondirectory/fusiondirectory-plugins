@@ -48,7 +48,6 @@ class nagiosAccount extends simplePlugin
       'plSmallIcon'   => 'plugins/nagios/images/iconMini.png',
       'plSelfModify'  => TRUE,
       'plPriority'    => 7,
-      'plCategory'    => array('users'),
       'plObjectType'  => array('user'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())

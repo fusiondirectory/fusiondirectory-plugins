@@ -51,7 +51,7 @@ class mailogroup extends plugin
 
     if($this->is_account && !$this->view_logged){
       $this->view_logged = TRUE;
-      new log("view","ogroups/".get_class($this),$this->dn);
+      new log("view","ogroup/".get_class($this),$this->dn);
     }
 
 
@@ -131,9 +131,9 @@ class mailogroup extends plugin
     $ldap->modify ($this->attrs);
 
     if($this->initially_was_account){
-      new log("modify","ogroups/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
+      new log("modify","ogroup/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
     }else{
-      new log("create","ogroups/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
+      new log("create","ogroup/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
     }
 
     if (!$ldap->success()){
@@ -171,7 +171,7 @@ class mailogroup extends plugin
     $this->cleanup();
     $ldap->modify ($this->attrs);
 
-    new log("remove","ogroups/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
+    new log("remove","ogroup/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
 
     if (!$ldap->success()){
       msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_MOD, get_class()));
@@ -180,15 +180,15 @@ class mailogroup extends plugin
 
    static function plInfo()
   {
-    return (array(
+    return array(
           "plShortName"   => _("Mail"),
           "plDescription" => _("Mail group"),
           "plSelfModify"  => FALSE,
           "plPriority"    => 4,
-          "plCategory"    => array("ogroups"),
+          "plCategory"    => array("ogroup"),
           "plProvidedAcls"=> array(
             "mail" => _("Mail address"))
-          ));
+          );
   }
 
 }

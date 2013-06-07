@@ -1500,7 +1500,6 @@ class appgroup extends plugin
       "plDescription" => _("Group applications"),
       "plSelfModify"  => FALSE,
       "plPriority"    => 7,
-      "plCategory"    => array("groups"),
       "plObjectType"  => array("group"),
 
       "plProvidedAcls"=> array(

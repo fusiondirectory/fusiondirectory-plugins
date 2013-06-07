@@ -51,28 +51,28 @@ class selectUserToPrinterDialog extends plugin
         $this->searchAttrs   = array("cn","uid");
         $this->searchAppend  = "uid";
         $this->baseAddition  = get_people_ou();
-        $this->search_cat    = "users";
+        $this->search_cat    = "user";
           ;break;
       case "AddGroup" :
         $this->searchObjects = "(objectClass=posixGroup)";
         $this->searchAttrs   = array("cn","description");
         $this->searchAppend  = "cn";
         $this->baseAddition  = get_groups_ou();
-        $this->search_cat    = "groups";
+        $this->search_cat    = "group";
           ;break;
       case "AddAdminUser" :
         $this->searchObjects = "(objectClass=gosaAccount)(!(uid=*$))";
         $this->searchAttrs   = array("cn","uid");
         $this->searchAppend  = "uid";
         $this->baseAddition  = get_people_ou();
-        $this->search_cat    = "users";
+        $this->search_cat    = "user";
           ;break;
       case "AddAdminGroup" :
         $this->searchObjects = "(objectClass=posixGroup)";
         $this->searchAttrs   = array("cn","description");
         $this->searchAppend  = "cn";
         $this->baseAddition  = get_groups_ou();
-        $this->search_cat    = "groups";
+        $this->search_cat    = "group";
           ;break;
     }
     $this->type = $type;
@@ -110,17 +110,17 @@ class selectUserToPrinterDialog extends plugin
     /* Get all departments within this subtree */
     $base = $this->config->current['BASE'];
     $deps_res[] = array("dn"=>$this->config->current['BASE']);
-    $deps_res= array_merge($deps_res,get_list("(&(|(ou=*)(description=*))(objectClass=gosaDepartment))", array("users","groups"), $this->config->current['BASE'],
+    $deps_res= array_merge($deps_res,get_list("(&(|(ou=*)(description=*))(objectClass=gosaDepartment))", array("user","group"), $this->config->current['BASE'],
                     array("ou", "description"), GL_SIZELIMIT | GL_SUBSEARCH));
 
     /* Load possible departments */
     $ui     = get_userinfo();
 
     /* Allowed user departments */
-    $udeps  = $ui->get_module_departments("users");
+    $udeps  = $ui->get_module_departments("user");
 
     /* Allowed groups department */
-    $gdeps  = $ui->get_module_departments("groups");
+    $gdeps  = $ui->get_module_departments("group");
 
     /* Combine both arrays */
     $tdeps  = array_unique(array_merge($udeps,$gdeps));

@@ -670,8 +670,11 @@ class mimetype extends plugin
       "plSelfModify"  => FALSE,
       "plCategory"    => array("mimetypes" => array("description"  => _("Mime types"),
                                                     "objectClass"  => "gotoMimeType")),
-      "plObjectType"  => array("mimetype" => array("name"  => _("Mime type"),
-                                                  "filter"  => "objectClass=gotoMimeType")),
+      "plObjectType"  => array("mimetype" => array(
+        "aclCategory" => "mimetypes",
+        "name"        => _("Mime type"),
+        "filter"      => "objectClass=gotoMimeType")
+      ),
 
       "plProvidedAcls"  => array(
         "cn"                          => _("Name"),

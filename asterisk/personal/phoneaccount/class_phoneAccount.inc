@@ -951,7 +951,7 @@ class phoneAccount extends plugin
     /* Log view */
     if($this->is_account && !$this->view_logged){
       $this->view_logged = TRUE;
-      new log("view","users/".get_class($this),$this->dn);
+      new log("view","user/".get_class($this),$this->dn);
     }
 
     $display = "";
@@ -1484,9 +1484,9 @@ class phoneAccount extends plugin
 
     /* Log last action */
     if($this->initially_was_account){
-      new log("modify","users/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
+      new log("modify","user/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
     }else{
-      new log("create","users/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
+      new log("create","user/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
     }
 
     if (!$ldap->success()){
@@ -1621,7 +1621,7 @@ class phoneAccount extends plugin
     $this->cleanup();
     $ldap->modify ($this->attrs);
 
-    new log("remove","users/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
+    new log("remove","user/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
     if (!$ldap->success()){
       msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_MOD, get_class()));
     }
@@ -1677,7 +1677,6 @@ class phoneAccount extends plugin
       "plSmallIcon"   => "plugins/asterisk/images/iconMini.png",
       "plSelfModify"  => TRUE,
       "plPriority"    => 16,                                 // Position in tabs
-      "plCategory"    => array("users"),
       "plObjectType"  => array("user"),
 
       "plProvidedAcls"  => array(

@@ -33,7 +33,6 @@ class novaAccount extends simplePlugin
       'plSmallIcon'     => 'plugins/openstack-compute/images/iconMini.png',
       'plSelfModify'    => TRUE,
       'plPriority'      => 12,
-      'plCategory'      => array('users'),
       'plObjectType'    => array('user'),
       'plRequirements'  => array('ldapSchema' => array('novaUser' => ''), 'onFailureDisablePlugin' => array(get_class())),
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())

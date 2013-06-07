@@ -112,7 +112,6 @@ class debconfStartup extends simplePlugin
       "plDescription"   => _("Debconf preseed startup"),
       "plSelfModify"    => FALSE,
       "plPriority"      => 9,
-      "plCategory"      => array("workstation", "server", "ogroups"),
       "plObjectType"    => array("workstation", "server", "ogroup"),
 
       "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
