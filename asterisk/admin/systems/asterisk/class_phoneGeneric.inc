@@ -472,12 +472,13 @@ class phoneGeneric extends plugin
       "plShortName"   => _("Generic"),
       "plDescription" => _("Phone generic"),
       "plSelfModify"  => FALSE,
-      "plCategory"    => array("phone" => array("description"  => _("Phone hardware"),
-                                                "objectClass"  => "goFonHardware")),
-      "plObjectType"  => array("phone" => array("name" => _("Phone"),
-                                                "filter" => "objectClass=goFonHardware")),
+      "plObjectType"  => array("phone" => array(
+        "description"  => _("Phone hardware"),
+        "name" => _("Phone"),
+        "filter" => "objectClass=goFonHardware")
+      ),
 
-      "plProvidedAcls"=> array(
+      "plProvidedAcls" => array(
         "cn"                  => _("Name"),
         "base"                => _("Base"),
         "description"         => _("Description"),

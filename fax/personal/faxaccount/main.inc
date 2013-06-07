@@ -45,7 +45,7 @@ if ( $cleanup ){
   if (!session::is_set('gofaxAccount') || (isset($_GET['reset']) && $_GET['reset'] == 1)){
     $gofaxAccount= new gofaxAccount ($config, $ui->dn);
     $gofaxAccount->set_acl_base($ui->dn);
-    $gofaxAccount->set_acl_category("users");
+    $gofaxAccount->set_acl_category("user");
     session::set('gofaxAccount',$gofaxAccount);
   }
   $gofaxAccount = session::get('gofaxAccount');
@@ -122,7 +122,7 @@ if ( $cleanup ){
     } else {
       $info= "<img alt=\"\" align=\"middle\" src=\"".get_template_path('images/lists/unlocked.png')."\"> ".$ui->dn."&nbsp;";
 
-      if(preg_match("/r/",$ui->get_permissions($ui->dn,"users/gofaxAccount"))){
+      if(preg_match("/r/",$ui->get_permissions($ui->dn,"user/gofaxAccount"))){
         $info.= "<img alt=\"\" align=\"middle\" src=\"".get_template_path('images/lists/on.png')."\">"._("Click the 'Edit' button below to change informations in this dialog");
         $display.= "<input type=submit name=\"edit\" value=\"".msgPool::editButton()."\">";
       }

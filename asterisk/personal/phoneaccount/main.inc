@@ -46,7 +46,7 @@ if ( $cleanup ){
   if (!session::is_set('phoneAccount') || (isset($_GET['reset']) && $_GET['reset'] == 1)){
     $phoneAccount= new phoneAccount ($config, $ui->dn);
     $phoneAccount->set_acl_base($ui->dn);
-    $phoneAccount->set_acl_category("users");
+    $phoneAccount->set_acl_category("user");
     session::set('phoneAccount',$phoneAccount);
   }
   $phoneAccount = session::get('phoneAccount');
@@ -120,7 +120,7 @@ if ( $cleanup ){
     } else {
       $info= "<img alt=\"\" align=\"middle\" src=\"".get_template_path('images/lists/unlocked.png')."\"> ".$ui->dn."&nbsp;";
 
-      if(preg_match("/r/",$ui->get_permissions($ui->dn,"users/phoneAccount"))){
+      if(preg_match("/r/",$ui->get_permissions($ui->dn,"user/phoneAccount"))){
         $info.= "<img alt=\"\" align=\"middle\" src=\"".get_template_path('images/lists/on.png')."\">"._("Click the 'Edit' button below to change informations in this dialog");
         $display.= "<input type=submit name=\"edit\" value=\"".msgPool::editButton()."\">\n";
       }

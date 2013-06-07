@@ -133,7 +133,6 @@ class sambaAccount extends simplePlugin
       'plSelfModify'    => TRUE,
       'plDepends'       => array('posixAccount'),
       'plPriority'      => 5,
-      'plCategory'      => array('users'),
       'plObjectType'    => array('user'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())

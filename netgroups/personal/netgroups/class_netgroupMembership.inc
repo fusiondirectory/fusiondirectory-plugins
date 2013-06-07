@@ -88,7 +88,6 @@ class netgroupMembership extends simplePlugin {
       'plSmallIcon'     => 'plugins/netgroups/images/iconMini.png',
       'plSelfModify'    => FALSE,
       'plPriority'      => 13,
-      'plCategory'      => array('users'),
       'plObjectType'    => array('user'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())

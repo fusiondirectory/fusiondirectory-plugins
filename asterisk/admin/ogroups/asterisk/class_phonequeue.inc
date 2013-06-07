@@ -163,7 +163,7 @@ class phonequeue extends plugin
 
     if ($this->is_account && !$this->view_logged) {
       $this->view_logged = TRUE;
-      new log("view","ogroups/".get_class($this),$this->dn);
+      new log("view","ogroup/".get_class($this),$this->dn);
     }
 
     if (isset($_POST['modify_state'])) {
@@ -341,7 +341,7 @@ class phonequeue extends plugin
         foreach($delete as $sql) {
           $res = $res_cur->exex($sql);
           if (PEAR::isError($res)) {
-            new log("debug","ogroups/".get_class($this),"",array(),$res->getMessage());
+            new log("debug","ogroup/".get_class($this),"",array(),$res->getMessage());
             return(msgPool::dbquery(_("GOfon"),$res->getMessage()));
           }
         }
@@ -397,7 +397,7 @@ class phonequeue extends plugin
       $query = "SELECT * FROM ".$cfg_Current['QUEUE_TABLE']."  WHERE name='".$this->old_cn."';";
       $res   = $res_cur->query($query);
       if (PEAR::isError($res)) {
-        new log("debug","ogroups/".get_class($this),"",array(),$res_cur->getMessage());
+        new log("debug","ogroup/".get_class($this),"",array(),$res_cur->getMessage());
         return(_("Cannot find old queue entry!"));
       }
       $cnt = $res_cur->numRows;
@@ -692,7 +692,7 @@ class phonequeue extends plugin
       foreach($SQL as $query)
       $res   = $res_cur->exec($query);
       if (PEAR::isError($res)) {
-        new log("debug","ogroups/".get_class($this),"",array(),$res->getMessage());
+        new log("debug","ogroup/".get_class($this),"",array(),$res->getMessage());
         return msgPool::dbquery(_("GOfon"),$res->getMessage);
       }
     }
@@ -793,9 +793,9 @@ class phonequeue extends plugin
     $ldap->modify ($this->attrs);
 
     if($this->initially_was_account){
-      new log("modify","ogroups/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
+      new log("modify","ogroup/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
     }else{
-      new log("modify","ogroups/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
+      new log("modify","ogroup/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
     }
 
     if (!$ldap->success()){
@@ -852,7 +852,7 @@ class phonequeue extends plugin
     $ldap->cd($this->dn);
     $this->cleanup();
     $ldap->modify ($this->attrs);
-    new log("remove","ogroups/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
+    new log("remove","ogroup/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
     if (!$ldap->success()){
       msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()));
     }
@@ -865,7 +865,7 @@ class phonequeue extends plugin
       "plDescription" => _("Phone group"),
       "plSelfModify"  => FALSE,
       "plPriority"    => 3,
-      "plCategory"    => array("ogroups"),
+      "plCategory"    => array("ogroup"),
       "plProvidedAcls"=> array(
 
         "goFonTimeOut"              => _("Timeout"),

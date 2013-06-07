@@ -1039,7 +1039,7 @@ class sieveManagement extends plugin
       if($script['EDITED']){
         $data = $this->scripts[$key]['SCRIPT'];
         if(!$this->sieve_handle->sieve_sendscript($script['NAME'], addcslashes ($data,"\\"))){
-          new log("modify","users/mailAccount".get_class($this),$script['NAME'],"Failed to save sieve script named '".$script['NAME']."': ".to_string($this->sieve_handle->error_raw));
+          new log("modify","user/mailAccount".get_class($this),$script['NAME'],"Failed to save sieve script named '".$script['NAME']."': ".to_string($this->sieve_handle->error_raw));
 
           $everything_went_fine = FALSE;
           msg_dialog::display(_("SIEVE error"), sprintf(_("Cannot store SIEVE script: %s"), '<br><br><i>'.to_string($this->sieve_handle->error_raw).'</i>'), ERROR_DIALOG);

@@ -96,7 +96,6 @@ class sshAccount extends simplePlugin
       'plSelfModify'    => TRUE,
       'plDepends'       => array('posixAccount'),
       'plPriority'      => 6,
-      'plCategory'      => array('users'),
       'plObjectType'    => array('user'),
       'plIcon'          => 'plugins/ssh/images/icon.png',
       'plSmallIcon'     => 'plugins/ssh/images/iconMini.png',

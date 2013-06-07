@@ -77,7 +77,6 @@ class mailAccount extends simplePlugin
       'plSmallIcon'     => 'plugins/mail/images/iconMini.png',
       'plSelfModify'    => TRUE,
       'plPriority'      => 4,                                 // Position in tabs
-      'plCategory'      => array('users'),
       'plObjectType'    => array('user'),
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
