@@ -3,7 +3,7 @@
 ##
 
 # Attributes
-attributetype ( 1.3.6.1.4.1.38414.13.1.1 NAME 'fdIpmiRDN'
+attributetype ( 1.3.6.1.4.1.38414.36.1.1 NAME 'fdIpmiRDN'
   DESC 'FusionDirectory - IPMI RDN'
   EQUALITY caseExactIA5Match
   SUBSTR caseExactIA5SubstringsMatch
@@ -11,7 +11,7 @@ attributetype ( 1.3.6.1.4.1.38414.13.1.1 NAME 'fdIpmiRDN'
   SINGLE-VALUE)
 
 # Object Class
-objectclass ( 1.3.6.1.4.1.38414.13.2.1 NAME 'fdIpmiPluginConf'
+objectclass ( 1.3.6.1.4.1.38414.36.2.1 NAME 'fdIpmiPluginConf'
   DESC 'FusionDirectory ipmi plugin configuration'
   SUP top AUXILIARY
   MUST ( cn )
