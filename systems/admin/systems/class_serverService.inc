@@ -65,14 +65,13 @@ class ServerService extends management
     );
   }
 
-  function __construct (&$config, $dn, $parent)
+  function __construct (&$config, $dn, $object)
   {
     $this->config = $config;
-    $this->parent = $parent;
     $this->ui     = get_userinfo();
     $this->dn     = $dn;
-    if (isset($this->parent->attrs)) {
-      $this->attrs = $this->parent->attrs;
+    if (isset($object->attrs)) {
+      $this->attrs = $object->attrs;
     }
 
     /* Initialize acl base */
@@ -246,6 +245,8 @@ class ServerService extends management
   {
     management::closeDialogs();
     $this->dialog = FALSE;
+    /* Get our dn back */
+    $this->dn     = $this->last_dn;
   }
 
 
@@ -254,7 +255,7 @@ class ServerService extends management
   protected function removeService($action = "", $target = array(), $all = array())
   {
     foreach ($target as $s_entry) {
-      $new_obj = new $s_entry($this->config,$this->dn, $this);
+      $new_obj = new $s_entry($this->config, $this->dn, $this);
       $new_obj->set_acl_base($this->acl_base);
       $new_obj->set_acl_category(preg_replace("/\/$/", "", $this->acl_category));
       $tmp = $new_obj->getListEntry();
