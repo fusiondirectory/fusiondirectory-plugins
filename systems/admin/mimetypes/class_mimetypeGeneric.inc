@@ -279,11 +279,11 @@ class mimetype extends plugin
 
     /* Create divlists */
     $DivPatterns  = new divSelectBox("gotoMimePatterns");
-    $DivApps    = new divSelectBox("gotoMimeApplications");
+    $DivApps      = new divSelectBox("gotoMimeApplications");
     $DivEApps     = new divSelectBox("gotoMimeEmbeddedApplications");
-    $DivPatterns  -> SetHeight(100);
-    $DivApps    -> SetHeight(100);
-    $DivEApps   -> SetHeight(100);
+    $DivPatterns->SetHeight(100);
+    $DivApps->SetHeight(100);
+    $DivEApps->SetHeight(100);
 
 
     if($this->acl_is_writeable("gotoMimeFilePattern") && !preg_match("/freeze/i",$this->FAIstate)){
@@ -313,8 +313,8 @@ class mimetype extends plugin
     /* Before adding some entries check acls */
     if($this->acl_is_readable("gotoMimeFilePattern")){
       foreach($this->use_gotoMimeFilePattern as $key => $pattern){
-        $field1 = array("string" => $pattern);
-        $field2 = array("string" => preg_replace("/%s/",$key,$Pattern_Actions),"attach"=>"style='border-right:0px;width:50px;'");
+        $field1 = array("html" => $pattern);
+        $field2 = array("html" => preg_replace("/%s/",$key,$Pattern_Actions),"attach"=>"style='border-right:0px;width:50px;'");
         $fields = array($field1,$field2);
         $DivPatterns -> AddEntry($fields);
       }
@@ -322,16 +322,16 @@ class mimetype extends plugin
 
     if($this->acl_is_readable("gotoMimeApplication")){
       foreach($this->use_gotoMimeApplication as $key => $pattern){
-        $field1 = array("string" => $pattern);
-        $field2 = array("string" => preg_replace("/%s/",$key,$Apps_Actions),"attach"=>"style='border-right:0px;width:50px;'");
+        $field1 = array("html" => $pattern);
+        $field2 = array("html" => preg_replace("/%s/",$key,$Apps_Actions),"attach"=>"style='border-right:0px;width:50px;'");
         $fields = array($field1,$field2);
         $DivApps -> AddEntry($fields);
       }
     }
     if($this->acl_is_readable("gotoMimeEmbeddedApplication")){
       foreach($this->use_gotoMimeEmbeddedApplication as $key => $pattern){
-        $field1 = array("string" => $pattern);
-        $field2 = array("string" => preg_replace("/%s/",$key,$EApps_Actions),"attach"=>"style='border-right:0px;width:50px;'");
+        $field1 = array("html" => $pattern);
+        $field2 = array("html" => preg_replace("/%s/",$key,$EApps_Actions),"attach"=>"style='border-right:0px;width:50px;'");
         $fields = array($field1,$field2);
         $DivEApps -> AddEntry($fields);
       }

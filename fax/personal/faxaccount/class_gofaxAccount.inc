@@ -440,17 +440,17 @@ class gofaxAccount extends plugin
         if(!isset($this->config->departments[trim($key)])){
           $this->config->departments[trim($key)]="";
         }
-        $field1 = array("string" => "<img src='images/lists/folder.png' alt='department'>","attach"=>"style='width:16px;text-align:center;'");
-        $field2 = array("string" => sprintf($linkopen,base64_encode($key),$val),"attach"=>" style='border:none'");
+        $field1 = array("html" => "<img src='images/lists/folder.png' alt='department'>","attach"=>"style='width:16px;text-align:center;'");
+        $field2 = array("html" => sprintf($linkopen,base64_encode($key),$val),"attach"=>" style='border:none'");
         $divSel->AddEntry(array($field1,$field2));
       }
 
       /* Append predefined Blocklists */
       foreach($list as $entry => $value){
         $divSel->AddEntry(array(
-              array("string"=>"<input type='checkbox' value='".base64_encode($entry)."' name='ADDLIST_".base64_encode($entry)."'>"),
-              array("string"=>$value,"attach"=>"style='border:0px;'")
-              ));
+          array("html"=>"<input type='checkbox' value='".base64_encode($entry)."' name='ADDLIST_".base64_encode($entry)."'>"),
+          array("string"=>$value,"attach"=>"style='border:0px;'")
+        ));
       }
 
       /* Show dialog */
@@ -523,17 +523,17 @@ class gofaxAccount extends plugin
           $this->config->departments[trim($key)]="";
         }
 
-        $field1 = array("string" => "<img src='images/lists/folder.png' alt='department'>","attach"=>"style='width:16px;text-align:center;'");
-        $field2 = array("string" => sprintf($linkopen,base64_encode($key),$val),"attach"=>" style='border:none'");
+        $field1 = array("html" => "<img src='images/lists/folder.png' alt='department'>","attach"=>"style='width:16px;text-align:center;'");
+        $field2 = array("html" => sprintf($linkopen,base64_encode($key),$val),"attach"=>" style='border:none'");
         $divSel->AddEntry(array($field1,$field2));
       }
 
       /* Append Blocklits */
-      foreach($list as $entry => $value){
+      foreach ($list as $entry => $value) {
         $divSel->AddEntry(array(
-              array("string"=>"<input type='checkbox' value='".base64_encode($entry)."' name='ADDLIST_".base64_encode($entry)."'>"),
-              array("string"=>$value,"attach"=>"style='border:0px;'")
-              ));
+          array("html"    => "<input type='checkbox' value='".base64_encode($entry)."' name='ADDLIST_".base64_encode($entry)."'>"),
+          array("string"  => $value, "attach"=>"style='border:0px;'")
+        ));
       }
 
       /* Show dialog */

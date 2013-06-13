@@ -517,20 +517,20 @@ class faiDiskEntry extends plugin
 
       // Create default table cols
       $cn =array(
-          "string" => "<a href='?plug=".$_GET['plug']."&amp;act=editPart&amp;id={$key}'>".$part['cn']."</a>",
+          "html" => "<a href='?plug=".$_GET['plug']."&amp;act=editPart&amp;id={$key}'>".$part['cn']."</a>",
           "attach" => "style='width:160px;'");
       $desc =array(
-          "string" => "<a href='?plug=".$_GET['plug']."&amp;act=editPart&amp;id={$key}'>".
+          "html" => "<a href='?plug=".$_GET['plug']."&amp;act=editPart&amp;id={$key}'>".
           $part['description']."</a>",
           "attach" => "style='width:200px;'");
       $number =array(
-          "string" => $part['FAIpartitionNr'],
+          "html" => $part['FAIpartitionNr'],
           "attach" => "style='width:20px;'");
       $size   =array(
-          "string" => $part['FAIpartitionSize'],
+          "html" => $part['FAIpartitionSize'],
           "attach" => "style='width:100px;'");
       $type   =array(
-          "string" => $part['FAIpartitionType'],
+          "html" => $part['FAIpartitionType'],
           "attach" => "style='width:80px;'");
 
       // Remove encryption info from the mount point.
@@ -538,7 +538,7 @@ class faiDiskEntry extends plugin
       if(preg_match("/:encrypt/", $mnt)){
         $mnt = preg_replace("/:encrypt/","",$mnt);
       }
-      $mntp   =array("string" => $mnt);
+      $mntp = array("html" => $mnt);
 
       // create human readable strings out of the flags.
       $opt = "";
@@ -554,18 +554,18 @@ class faiDiskEntry extends plugin
 
       // Combine options to a single table col.
       $opt    =array(
-          "string" => "<i>".preg_replace('/, $/',"",$opt)."</i>");
+          "html" => "<i>".preg_replace('/, $/',"",$opt)."</i>");
 
       // Depending on the FAIstatus (freeze?) we will display different options.
       // We can't remove freezed branches -> Hide remove button.
       if(!preg_match("/freeze/", $this->FAIstate)){
         $action =array(
-            "string" => "<input type='image' src='images/lists/edit.png' name='EditPartition_".$key."'>".
+            "html" => "<input type='image' src='images/lists/edit.png' name='EditPartition_".$key."'>".
             "<input type='image' src='images/lists/trash.png' name='RemovePartition_".$key."'>",
             "attach" => "style='width:40px; border-right: 0px;'");
       }else{
         $action =array(
-            "string" => "<input type='image' src='images/lists/edit.png' name='EditPartition_".$key."'>",
+            "html" => "<input type='image' src='images/lists/edit.png' name='EditPartition_".$key."'>",
             "attach" => "style='width:40px; border-right: 0px;'");
       }
 
@@ -574,7 +574,7 @@ class faiDiskEntry extends plugin
         $fields = array($cn,$desc,$mntp,$opt,$size, $action);
       }elseif($this->FAIdiskType == "raid"){
         $raid_str = $part['FAIpartitionType']." (".$part['FAIpartitionSize'].")";
-        $raid = array("string" => $raid_str);
+        $raid = array("html" => $raid_str);
         $fields = array($cn,$desc,$raid,$mntp,$opt,$action);
       }else{
         $fields = array($desc,$type,$mntp,$opt,$size,$action);

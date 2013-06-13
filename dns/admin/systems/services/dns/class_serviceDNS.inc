@@ -309,13 +309,15 @@ class serviceDNS extends goService
 
     $link = "<a href='?plug=".$_GET['plug']."&act=edit&id=%s'>%s</a>";
     foreach($this->Zones as $zone => $values ){
-      $ZoneList->AddEntry(array(
-            array("string" => sprintf($link,base64_encode($zone),($zone))),
-            array("string" => sprintf($link,base64_encode($zone),_("Reverse zone")." : ".($values['ReverseZone']))),
-            array("string" => _("TTL")." : ".$values['sOAttl']),
-            array("string" => _("Class")." : ".$values['dNSClass']),
-            array("string" =>str_replace("%s",base64_encode($zone),$editImg))
-            ));
+      $ZoneList->AddEntry(
+        array(
+          array("html"    => sprintf($link, base64_encode($zone), $zone)),
+          array("html"    => sprintf($link, base64_encode($zone), _("Reverse zone")." : ".($values['ReverseZone']))),
+          array("string"  => _("TTL")." : ".$values['sOAttl']),
+          array("string"  => _("Class")." : ".$values['dNSClass']),
+          array("html"    => str_replace("%s", base64_encode($zone), $editImg))
+        )
+      );
     }
 
     /* Display tempalte

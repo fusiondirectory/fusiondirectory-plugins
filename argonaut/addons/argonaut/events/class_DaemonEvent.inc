@@ -256,7 +256,7 @@ class DaemonEvent
     foreach ($this->a_targets as $key => $target) {
       $divlist->AddEntry(array(
             array("string"  => $target),
-            array("string"  => "<input type='image' src='images/lists/trash.png' title='"._("Remove")."' name='del_target_".$key."'>",
+            array("html"  => "<input type='image' src='images/lists/trash.png' title='"._("Remove")."' name='del_target_".$key."'>",
               "attach"  => "style='width:20px; border-right:0px;'")
             ));
     }

@@ -370,11 +370,11 @@ class serviceDHCP extends goService
             $values = sprintf($subnetExpandImg,$id).$values;
           }
           $DhcpList->AddEntry(array(
-              array("string" => $values),
-              array("string" => ''),
-              array("string" => ''),
-              array("string" => str_replace("%s", $id, $editImgInsNoDel), "attach" => "style='text-align:right;'")
-              ));
+            array("html"    => $values),
+            array("string"  => ''),
+            array("string"  => ''),
+            array("html"    => str_replace("%s", $id, $editImgInsNoDel), "attach" => "style='text-align:right;'")
+          ));
         } else {
           if ($objtype == "dhcpSubnet") {
             if ($section === $this->subnet_expanded) {
@@ -384,19 +384,19 @@ class serviceDHCP extends goService
             }
           }
           $DhcpList->AddEntry(array(
-              array("string" => $values),
-              array("string" => $dhcpObject->options->get('routers')),
-              array("string" => ''),
-              array("string" => str_replace("%s",$id,$editImgIns), "attach" => "style='text-align:right;'")
-              ));
+            array("html"    => $values),
+            array("html"    => $dhcpObject->options->get('routers')),
+            array("string"  => ''),
+            array("html"    => str_replace("%s",$id,$editImgIns), "attach" => "style='text-align:right;'")
+          ));
         }
       } else {
         $DhcpList->AddEntry(array(
-              array("string" => $values),
-              array("string" => $dhcpObject->statements->get('fixed-address')),
-              array("string" =>  preg_replace('/^[^ ]+ /', '', isset($dhcpObject->dhcpHWAddress)?$dhcpObject->dhcpHWAddress:"")),
-              array("string" => str_replace("%s",$id,$editImg), "attach" => "style='text-align:right;'")
-              ));
+          array("html" => $values),
+          array("html" => $dhcpObject->statements->get('fixed-address')),
+          array("html" =>  preg_replace('/^[^ ]+ /', '', isset($dhcpObject->dhcpHWAddress)?$dhcpObject->dhcpHWAddress:"")),
+          array("html" => str_replace("%s",$id,$editImg), "attach" => "style='text-align:right;'")
+        ));
       }
     }
 

@@ -490,18 +490,18 @@ class appgroup extends plugin
     $base_back = preg_replace("/^[^,]+,/","",$this->curbase);
     if((strlen($base_back)>= strlen($this->config->current['BASE']))&&($this->curbase!=$this->config->current['BASE'])){
       $div->AddEntry(array(
-            array("string"=>sprintf($linkopen,base64_encode($base_back),".. ["._("back")."]"),
-              "attach"=>"style='border:0px;'")
-            ));
+        array("html"=>sprintf($linkopen,base64_encode($base_back),".. ["._("back")."]"),
+          "attach"=>"style='border:0px;'")
+      ));
     }
 
     /* Append departments for current base */
     foreach($departments as $key => $app){
       $div->AddEntry(array(
-            array("string"=>"<img class='center' src='images/lists/folder.png' alt='"._("department")."'>&nbsp;".sprintf($linkopen,
-                base64_encode($key),$app),
-              "attach"=>"style='border:0px;'")
-            ));
+        array("html"=>"<img class='center' src='images/lists/folder.png' alt='"._("department")."'>&nbsp;".sprintf($linkopen,
+            base64_encode($key),$app),
+          "attach"=>"style='border:0px;'")
+      ));
     }
 
 
@@ -520,10 +520,10 @@ class appgroup extends plugin
         $name .= "&nbsp;[".$app['description'][0]."]";
       }
       $div->AddEntry(array(
-            array("string"=>sprintf("<input class='center' type='checkbox' value='1' name='AddApp_%s'>",$key).
+        array("html"=>sprintf("<input class='center' type='checkbox' value='1' name='AddApp_%s'>",$key).
               "<img class='center' src='plugins/systems/images/select_application.png' alt='"._("application")."'>&nbsp;".$name,
               "attach"=>"style='border:0px;'")
-            ));
+      ));
     }
 
     /* Assign copy / paste values

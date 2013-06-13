@@ -630,10 +630,10 @@ class sieveManagement extends plugin
       $edited =  $script['EDITED'];
       $active =  $script['ACTIVE'];
 
-      $field1 = array("string" => "&nbsp;",
+      $field1 = array("string" => "",
                       "attach" => "style='width:20px;'");
       if($active){
-        $field1 = array("string" => "<img src='images/true.png' alt='"._("Active")."'
+        $field1 = array("html" => "<img src='images/true.png' alt='"._("Active")."'
                                       title='"._("This script is marked as active")."'>",
                         "attach" => "style='width:20px;'");
       }
@@ -655,7 +655,7 @@ class sieveManagement extends plugin
                        title='"._("Activate script")."'>";
       }
 
-      $field6 = array("string" => $activate."<input type='image' name='editscript_".$key."' src='images/lists/edit.png'
+      $field6 = array("html" => $activate."<input type='image' name='editscript_".$key."' src='images/lists/edit.png'
                         title='"._("Edit script")."'>".$del,
                       "attach" => "style='border-right:0px; width:70px;'");
       $List->AddEntry(array($field1,$field2,$field3,$field4,$field6));
