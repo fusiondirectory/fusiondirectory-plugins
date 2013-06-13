@@ -1,0 +1,41 @@
+##
+## dovecot-fd.schema - Needed by Fusion Directory for managing dovecot servers
+##
+
+# attributes
+
+attributetype ( 1.3.6.1.4.1.38414.31.1.1 NAME 'fdDovecotConnect'
+  DESC 'FusionDirectory - PHP connect string for Dovecot server'
+  EQUALITY caseExactIA5Match
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE)
+
+attributetype ( 1.3.6.1.4.1.38414.31.1.2 NAME 'fdDovecotAdmin'
+  DESC 'FusionDirectory - Dovecot admin account'
+  EQUALITY caseExactIA5Match
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE)
+
+attributetype ( 1.3.6.1.4.1.38414.31.1.3 NAME 'fdDovecotPassword'
+  DESC 'FusionDirectory - Dovecot admin password'
+  EQUALITY caseExactIA5Match
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE)
+
+attributetype ( 1.3.6.1.4.1.38414.31.1.4 NAME 'fdDovecotMailDir'
+  DESC 'FusionDirectory - Dovecot admin password'
+  EQUALITY caseExactIA5Match
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE)
+
+attributetype ( 1.3.6.1.4.1.38414.31.1.5 NAME 'fdDovecotArgonautMkdir'
+  DESC 'FusionDirectory - Dovecot argonaut user folder creation activation'
+  EQUALITY booleanMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
+  SINGLE-VALUE)
+
+# Objectclasses
+objectclass (1.3.6.1.4.1.38414.31.2.1 NAME 'fdDovecotServer' SUP top AUXILIARY
+  DESC 'FusionDirectory - Dovecot server description'
+  MUST ( cn $ fdDovecotConnect $ fdDovecotAdmin $ fdDovecotPassword $ fdDovecotMaildir)
+  MAY  ( fdDovecotArgonautMkdir ) )
