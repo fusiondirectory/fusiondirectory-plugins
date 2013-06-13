@@ -56,21 +56,7 @@ class NetgroupSelectDialog
 
 class NetgroupsAttribute extends GroupsAttribute
 {
-  protected $displays;
   protected $dialogClass = 'NetgroupSelectDialog';
-
-  function addValue ($dn, $entry)
-  {
-    if (!in_array($dn, $this->value)) {
-      $display = $entry['cn'][0];
-      if (isset($entry['description'][0]) && !empty($entry['description'][0])) {
-        $display .= ' ['.$entry['description'][0].']';
-      }
-
-      $this->value[]    = $dn;
-      $this->displays[] = $display;
-    }
-  }
 }
 
 class netgroupMembership extends simplePlugin {
