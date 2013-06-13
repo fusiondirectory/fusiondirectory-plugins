@@ -163,7 +163,7 @@ class serviceDHCP extends goService
     }
 
     /* Save changes */
-    if (isset($_POST['save_dhcp'])){
+    if (isset($_POST['save_dhcp'])) {
       $this->dialog->save_object();
       $messages= $this->dialog->check();
       if (count($messages)){
@@ -192,11 +192,11 @@ class serviceDHCP extends goService
             $this->dhcpObjectCache[$data['dn']]= $data;
 
             /* If we renamed a section, we've to rename a couple of objects, too */
-            foreach ($this->dhcpObjectCache as $key => $dsc){
-              if (preg_match("/,$dn$/", $key)){
-                $new_dn= preg_replace("/,$dn$/", ",".$data['dn'], $key);
-                $dsc['MODIFIED']= TRUE;
-                $this->dhcpObjectCache[$new_dn]= $dsc;
+            foreach ($this->dhcpObjectCache as $key => $dsc) {
+              if (preg_match("/,$dn$/", $key)) {
+                $new_dn = preg_replace("/,$dn$/", ",".$data['dn'], $key);
+                $dsc['MODIFIED'] = TRUE;
+                $this->dhcpObjectCache[$new_dn] = $dsc;
                 unset($this->dhcpObjectCache[$key]);
               }
             }
@@ -206,7 +206,7 @@ class serviceDHCP extends goService
           }
         }
         $this->reload(FALSE);
-        $this->dialog= FALSE;
+        $this->dialog = FALSE;
       }
     }
 
@@ -277,17 +277,6 @@ class serviceDHCP extends goService
       }
 
     }
-
-    if(isset($_GET['act']) && $_GET['act']=="edit" && isset($_GET['id'])){
-      $id = $_GET['id'];
-      $dn = $this->dhcpDNtoID[$id];
-      if (isset($this->dhcpObjectCache[$dn])){
-        $section= $this->objectType($dn);
-        $this->current_object= $dn;
-        $this->dialog= new $section($this,$this->dhcpObjectCache[$dn]);
-      }
-    }
-
 
     if(isset($_GET['act']) && $_GET['act']=="edit" && isset($_GET['id'])){
       $id = $_GET['id'];
@@ -415,23 +404,23 @@ class serviceDHCP extends goService
   function remove_from_parent()
   {
     /* Cancel if there's nothing to do here */
-    if (!$this->initially_was_account){
+    if (!$this->initially_was_account) {
       return;
     }
 
     /* Remove subtrees */
-    $ldap= $this->config->get_ldap_link();
-    foreach ($this->dhcpObjectCache as $dn => $content){
-      if ($this->objectType($dn) == 'dhcpService'){
+    $ldap = $this->config->get_ldap_link();
+    foreach ($this->dhcpObjectCache as $dn => $content) {
+      if ($this->objectType($dn) == 'dhcpService') {
         $ldap->rmdir_recursive($dn);
-        if (!$ldap->success()){
+        if (!$ldap->success()) {
           msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_DEL, get_class()));
         }
       }
     }
 
     /* Remove from self */
-    $ldap= $this->config->get_ldap_link();
+    $ldap = $this->config->get_ldap_link();
 
     /* Remove and write to LDAP */
     plugin::remove_from_parent();
@@ -441,7 +430,7 @@ class serviceDHCP extends goService
     $this->cleanup();
     $ldap->modify ($this->attrs);
 
-    if (!$ldap->success()){
+    if (!$ldap->success()) {
       msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_MOD, get_class()));
     }
 
@@ -715,6 +704,9 @@ class serviceDHCP extends goService
     $ldap = $this->config->get_ldap_link();
     $ui   = get_userinfo();
     $me   = $this->dn;
+    if (empty($me)) {
+      trigger_error('reload launched with empty dn');
+    }
 
     $filter = "(&(objectClass=dhcpService)(|(dhcpPrimaryDN=$me)(dhcpSecondaryDN=$me)(dhcpServerDN=$me)(dhcpFailOverPeerDN=$me)))";
 
@@ -846,8 +838,5 @@ class serviceDHCP extends goService
     #$fields['AllowEdit']  = true;
     return($fields);
   }
-
 }
-
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>
