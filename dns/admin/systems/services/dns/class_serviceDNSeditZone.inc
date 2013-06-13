@@ -291,9 +291,9 @@ class servdnseditZone extends plugin
     foreach($recs as $key => $rec){
       list($prio,$value) = preg_split("/ /", $rec['value']);
       $div ->AddEntry(array(
-            array("string"=> $prio, "attach"=>"style='width:20px;'"),
-            array("string"=> $value),
-            array("string"=>str_replace("%s",base64_encode($key),$onedel),
+            array("html"=> $prio, "attach"=>"style='width:20px;'"),
+            array("html"=> $value),
+            array("html"=>str_replace("%s",base64_encode($key),$onedel),
                   "attach"=>"style='width:20px;border-right:0px;'")
             ));
     }

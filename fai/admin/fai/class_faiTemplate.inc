@@ -326,9 +326,9 @@ class faiTemplate extends faiPluginClass
       if(preg_match("/r/",$s_acl)){
 
         $edit_link = "<a href='?plug=".$_GET['plug']."&amp;act=edit&amp;id=".$key."'>".$tmp[$key]."</a>";
-        $divlist->AddEntry(array( array("string"=> $edit_link),
-              array("string"=>$down , "attach" => "style='width:20px;'"),
-              array("string"=>str_replace("%s",base64_encode($key),$act),
+        $divlist->AddEntry(array( array("html"=> $edit_link),
+              array("html"=>$down , "attach" => "style='width:20px;'"),
+              array("html"=>str_replace("%s",base64_encode($key),$act),
                 "attach"=>"style='border-right: 0px;width:50px;text-align:right;'")));
       }
     }

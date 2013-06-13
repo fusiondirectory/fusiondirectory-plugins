@@ -338,14 +338,14 @@ class faiProfile extends faiPluginClass
           }
         }
 
-        $field1 = array("string"=> $usedClass,"attach"=>"");
-        $field2 = array("string"=> $str,"attach"=>"");
+        $field1 = array("html"=> $usedClass,"attach"=>"");
+        $field2 = array("html"=> $str,"attach"=>"");
         if(!preg_match("/freeze/", $this->FAIstate) && $this->acl_is_writeable("FAIclass")){
-          $field3 = array("string"=> preg_replace("/%KEY%/",base64_encode($usedClass),$actions).
+          $field3 = array("html"=> preg_replace("/%KEY%/",base64_encode($usedClass),$actions).
               preg_replace("/%s/",base64_encode($usedClass),$linkupdown),
               "attach"=>"style='border-right:none;'");
-        }else{
-          $field3 = array("string"=>"&nbsp;", "attach"=>"style='border-right:none;'");
+        } else {
+          $field3 = array("string" => "", "attach"=>"style='border-right:none;'");
         }
         $divlist->AddEntry(array($field1,$field2,$field3));
       }
