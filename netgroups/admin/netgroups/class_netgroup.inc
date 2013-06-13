@@ -87,7 +87,7 @@ class netgroup extends simplePlugin
           ),
           new UsersAttribute(
             '', _('NIS netgroup members'), 'memberUsers',
-            FALSE, array(), 'uid'
+            FALSE, array(), 'dn', 'uid'
           ),
         )
       ),
