@@ -32,7 +32,7 @@ class gpgAccount extends simplePlugin
         'class' => array('fullwidth'),
         'attrs' => array(
           new PgpKeyAttribute(
-            _('GPG keys'), _('GPG keys of this user'),
+            '', _('GPG keys of this user'),
             'fdUserKeyDN'
           )
         )

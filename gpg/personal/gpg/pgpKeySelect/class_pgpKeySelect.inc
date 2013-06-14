@@ -111,12 +111,22 @@ class PgpKeySelectDialog extends GenericSelectDialog
 class PgpKeyAttribute extends GenericDialogAttribute
 {
   protected $dialogClass      = 'PgpKeySelectDialog';
-  protected $height           = 90;
-  protected $displayed_values = array('pgpKeyID','pgpUserID','pgpKeyCreateTime','pgpKeyExpireTime','pgpKeyType','pgpKeySize','pgpRevoked','pgpDisabled');
+  protected $height           = 200;
+  protected $displayed_values;
 
   function __construct ($label, $description, $ldapName, $required = FALSE, $defaultValue = array(), $acl = '')
   {
     parent::__construct ($label, $description, $ldapName, $required, $defaultValue, 'dn', NULL, $acl);
+    $this->displayed_values = array(
+      'pgpKeyID'          => _('Key ID'),
+      'pgpUserID'         => _('User ID'),
+      'pgpKeyCreateTime'  => _('Creation time'),
+      'pgpKeyExpireTime'  => _('Expiration'),
+      'pgpKeyType'        => _('Algorithm'),
+      'pgpKeySize'        => _('Size'),
+      'pgpRevoked'        => _('Revoked'),
+      'pgpDisabled'       => _('Disabled')
+    );
   }
 
   function addValue ($dn, $entry)
@@ -164,9 +174,12 @@ class PgpKeyAttribute extends GenericDialogAttribute
     $id   = $this->getHtmlId();
     $div  = new divSelectBox($id);
     $div->SetHeight($this->height);
+    $headers    = array_values($this->displayed_values);
+    $headers[]  = '';
+    $div->SetHeaders($headers);
     foreach ($this->value as $key => $value) {
       $fields = array();
-      foreach ($this->displayed_values as $field) {
+      foreach (array_keys($this->displayed_values) as $field) {
         if (isset($this->displays[$key][$field][0]) && !empty($this->displays[$key][$field][0])) {
           $display = $this->displays[$key][$field][0];
           if ($field == 'pgpKeySize') {
