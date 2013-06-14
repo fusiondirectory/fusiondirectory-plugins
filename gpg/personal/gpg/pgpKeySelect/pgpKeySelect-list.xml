@@ -21,7 +21,7 @@
   </definition>
 
   <table>
-    <layout>|20px;c||||||</layout>
+    <layout>|20px;c|||||||||</layout>
 
     <department>
       <value>%{filter:objectType(dn,objectClass)}</value>
@@ -55,8 +55,16 @@
     <column>
       <label>Creation date</label>
       <sortAttribute>pgpKeyCreateTime</sortAttribute>
-      <sortType>string</sortType>
-      <value>%{pgpKeyCreateTime}</value>
+      <sortType>date</sortType>
+      <value>%{filter:pgpDate(pgpKeyCreateTime)}</value>
+      <export>true</export>
+    </column>
+
+    <column>
+      <label>Expiration date</label>
+      <sortAttribute>pgpKeyExpireTime</sortAttribute>
+      <sortType>date</sortType>
+      <value>%{filter:pgpDate(pgpKeyExpireTime)}</value>
       <export>true</export>
     </column>
 
@@ -71,8 +79,24 @@
     <column>
       <label>Size</label>
       <sortAttribute>pgpKeySize</sortAttribute>
+      <sortType>integer</sortType>
+      <value>%{filter:pgpSize(pgpKeySize)}</value>
+      <export>true</export>
+    </column>
+
+    <column>
+      <label>Revoked</label>
+      <sortAttribute>pgpRevoked</sortAttribute>
       <sortType>string</sortType>
-      <value>%{pgpKeySize}</value>
+      <value>%{filter:pgpRevoked(pgpRevoked)}</value>
+      <export>true</export>
+    </column>
+
+    <column>
+      <label>Disabled</label>
+      <sortAttribute>pgpDisabled</sortAttribute>
+      <sortType>string</sortType>
+      <value>%{filter:pgpDisabled(pgpDisabled)}</value>
       <export>true</export>
     </column>
 

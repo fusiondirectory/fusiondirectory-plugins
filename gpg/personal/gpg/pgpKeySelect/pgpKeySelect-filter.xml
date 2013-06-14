@@ -15,9 +15,12 @@
       <attribute>objectClass</attribute>
       <attribute>pgpKeyID</attribute>
       <attribute>pgpUserID</attribute>
-      <attribute>pgpKeyType</attribute>
       <attribute>pgpKeyCreateTime</attribute>
+      <attribute>pgpKeyExpireTime</attribute>
+      <attribute>pgpKeyType</attribute>
       <attribute>pgpKeySize</attribute>
+      <attribute>pgpRevoked</attribute>
+      <attribute>pgpDisabled</attribute>
     </query>
     <scope>auto</scope>
   </search>

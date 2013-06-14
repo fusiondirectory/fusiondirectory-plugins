@@ -47,10 +47,59 @@ class pgpKeySelect extends management
 
     // Build headpage
     $headpage = new listing(get_template_path('pgpKeySelect-list.xml', TRUE, dirname(__FILE__)));
+    $headpage->registerElementFilter('pgpDate', 'pgpKeySelect::filterPgpDate');
+    $headpage->registerElementFilter('pgpSize', 'pgpKeySelect::filterPgpSize');
+    $headpage->registerElementFilter('pgpDisabled', 'pgpKeySelect::filterPgpRevoked');
+    $headpage->registerElementFilter('pgpRevoked', 'pgpKeySelect::filterPgpRevoked');
     $headpage->setBase($this->config->current['BASE']);
     $headpage->setFilter($filter);
 
     parent::__construct($config, $ui, '', $headpage);
+  }
+
+  static function filterSingleValue($value, $func)
+  {
+    if (count($value) == 0) {
+      return '&nbsp;';
+    }
+    $return = self::$func($value[0]);
+    return ($return === ''?'&nbsp;':$return);
+  }
+
+  static function filterPgpDate($value = array())
+  {
+    return self::filterSingleValue($value, 'pgpDate');
+  }
+
+  static function filterPgpSize($value = array())
+  {
+    return self::filterSingleValue($value, 'pgpSize');
+  }
+
+  static function filterPgpRevoked($value = array())
+  {
+    if (empty($value)) {
+      return 'No';
+    }
+    return self::pgpRevoked($value[0]);
+  }
+
+  static function pgpDate($date)
+  {
+    if (empty($date)) {
+      return $date;
+    }
+    return DateTime::createFromFormat('Ymd', substr($date, 0, 8))->format('d.m.Y');
+  }
+
+  static function pgpSize($size)
+  {
+    return strval(intval($size)); // Remove useless 0 at the beginning
+  }
+
+  static function pgpRevoked($value)
+  {
+    return ($value == 0?'No':'Yes'); // Remove useless 0 at the beginning
   }
 }
 
@@ -63,7 +112,7 @@ class PgpKeyAttribute extends GenericDialogAttribute
 {
   protected $dialogClass      = 'PgpKeySelectDialog';
   protected $height           = 90;
-  protected $displayed_values = array('pgpKeyID','pgpUserID','pgpKeyCreateTime','pgpKeyType','pgpKeySize');
+  protected $displayed_values = array('pgpKeyID','pgpUserID','pgpKeyCreateTime','pgpKeyExpireTime','pgpKeyType','pgpKeySize','pgpRevoked','pgpDisabled');
 
   function __construct ($label, $description, $ldapName, $required = FALSE, $defaultValue = array(), $acl = '')
   {
@@ -92,6 +141,24 @@ class PgpKeyAttribute extends GenericDialogAttribute
     }
   }
 
+  function loadPostValue ()
+  {
+    if ($this->isVisible()) {
+      $id = $this->getHtmlId();
+      foreach ($_POST as $name => $value) {
+        if (preg_match('/^'.$id.'_del_/', $name)) {
+          $key = preg_replace('/^'.$id.'_del_/', '', $name);
+          $key = preg_replace('/_[xy]$/', '', $key);
+          $this->removeValue($key);
+          break;
+        }
+      }
+      if (isset($_POST['add'.$this->getLdapName().'_dialog'])) {
+        $this->plugin->openDialog(new $this->dialogClass($this->plugin, $this));
+      }
+    }
+  }
+
   function renderOnlyFormInput ()
   {
     $id   = $this->getHtmlId();
@@ -103,13 +170,23 @@ class PgpKeyAttribute extends GenericDialogAttribute
         if (isset($this->displays[$key][$field][0]) && !empty($this->displays[$key][$field][0])) {
           $display = $this->displays[$key][$field][0];
           if ($field == 'pgpKeySize') {
-            $display = intval($display); // Remove useless 0 in front of the number
+            $display = pgpKeySelect::pgpSize($display); // Remove useless 0 in front of the number
           } elseif ($field == 'pgpKeyCreateTime') {
-            $display = DateTime::createFromFormat('Ymd', substr($display, 0, 8))->format('Y-m-d');
+            $display = pgpKeySelect::pgpDate($display);
+          } elseif ($field == 'pgpKeyExpireTime') {
+            $display = pgpKeySelect::pgpDate($display);
+          } elseif ($field == 'pgpRevoked') {
+            $display = pgpKeySelect::pgpRevoked($display);
+          } elseif ($field == 'pgpDisabled') {
+            $display = pgpKeySelect::pgpRevoked($display);
           }
           $fields[] = array('string' => $display);
         } else {
-          $fields[] = array('string' => '&nbsp;');
+          $display = '';
+          if (($field == 'pgpRevoked') || ($field == 'pgpDisabled')) {
+            $display = pgpKeySelect::pgpRevoked($display);
+          }
+          $fields[] = array('string' => $display);
         }
       }
       $img = '<input type="image" src="images/lists/trash.png" name="'.$id.'_del_'.$key.'" class="center"/>&nbsp;';
@@ -119,6 +196,26 @@ class PgpKeyAttribute extends GenericDialogAttribute
     $smarty = get_smarty();
     $smarty->assign("div_$id", $div->DrawList());
     return '{$div_'.$id.'}'."\n";
+  }
+
+  protected function htmlIds()
+  {
+    $id = $this->getHtmlId();
+    $ids = array_merge(array('add'.$id), $this->attribute->htmlIds());
+    $nb_values = count($this->value);
+    for ($i = 0; $i < $nb_values; ++$i) {
+      $ids[] = $id.'_del_'.$i;
+    }
+    return $ids;
+  }
+
+  function renderButtons ()
+  {
+    $id = $this->getHtmlId();
+    $buttons  = '<input type="submit" name="add'.$id.'_dialog" id="add'.$id.'_dialog"'.
+                ($this->disabled? ' disabled="disabled"':'').
+                ' value="{msgPool type=addButton}"/>';
+    return $buttons;
   }
 }
 
