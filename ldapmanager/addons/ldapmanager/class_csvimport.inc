@@ -96,10 +96,9 @@ class csvimport extends plugin
       $this->csvinfo['attr'] = array();
       $this->usertab = new usertabs($this->config, $this->config->data['TABS']['USERTABS'], 'new', 'user');
       foreach ($this->usertab->by_object as $pname => $plugin) { // for each user tab
-        $attrs = @get_class_vars($pname);
-        $attrs = $attrs['attributes'];            // get saved attributes
+        $attrs = $plugin->attributes;
         foreach ($attrs as &$attr) {
-          $attr = $pname.":".$attr;
+          $attr = $pname.':'.$attr;
         }
         unset($attr);
         $this->csvinfo['attr']  = array_merge($this->csvinfo['attr'], $attrs);
