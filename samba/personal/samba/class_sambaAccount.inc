@@ -308,7 +308,7 @@ class sambaAccount extends simplePlugin
             'sambaAcctFlags',
             array('flag_pwdExpire','flag_noPwdRequired','flag_lockSamba')
           ),
-          new ButtonAttribute (
+          new DialogButtonAttribute (
             _('Samba logon times'), _('What is the allowed time to connect'),
             'sambaLogonHours', FALSE, 'SambaLogonHoursDialog', _('Edit settings')
           ),
