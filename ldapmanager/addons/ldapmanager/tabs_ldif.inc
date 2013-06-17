@@ -25,6 +25,7 @@ class ldiftab extends tabs
   function ldiftab($config, $data, $dn, $cat = '', $copied_object = NULL)
   {
     parent::tabs($config, $data, $dn, '', $copied_object);
+    $this->set_acl_base($config->current['BASE']);
   }
 
   function save()
