@@ -35,7 +35,7 @@ class tabs_board extends tabs
       }
     }
     $data = array_values($data);
-    parent::tabs($config, $data, $dn, $category);
+    parent::__construct($config, $data, $dn, $category);
   }
 
   function save()
