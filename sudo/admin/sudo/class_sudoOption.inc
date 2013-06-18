@@ -494,7 +494,7 @@ class sudoOption extends simplePlugin
   function execute ()
   {
     $script = <<<SCRIPT
-  <script language="JavaScript" type="text/javascript">
+  <script type="text/javascript">
    <!--
     function toggle_bool_fields (source_select, target_input)
     {

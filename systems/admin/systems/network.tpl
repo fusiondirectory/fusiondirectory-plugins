@@ -1,10 +1,10 @@
 <h2><img  class="center"  alt=""  align="middle"  src="plugins/systems/images/network.png"> {t}Network  settings{/t}</h2>
 
 
-<table  summary=""  width="100%" cellspacing=0 cellpadding=0>
+<table width="100%" cellspacing="0" cellpadding="0">
   <tr>
     <td style="width:50%; vertical-align: top;">
-      <table  summary="">
+      <table>
         <tr>
           <td style='vertical-align:top;'><LABEL  for="ipHostNumber">{t}IP-address{/t}{if $IPisMust}{$must}{/if}</LABEL></td>
           <td>
@@ -134,7 +134,7 @@
       {else}
       <div style="padding-left:20px;display: none;" id="test2">
       {/if}
-      <table summary="">
+      <table>
         <tr>
           <td><LABEL  for="zoneName">{t}Zone{/t}</LABEL></td>
           <td>

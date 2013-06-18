@@ -277,7 +277,7 @@ class faiPartitionTableEntry extends plugin
     }
 
     if(!empty($str)){
-      $str = "<table summary='' style='width:100%'>".$str."</table>";
+      $str = "<table style='width:100%'>".$str."</table>";
     }
     return($str);
 

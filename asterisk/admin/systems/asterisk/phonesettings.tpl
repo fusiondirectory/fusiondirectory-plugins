@@ -1,6 +1,6 @@
 <h2><img class="center" alt="" align="middle" src="plugins/asterisk/images/iconMini.png"> {t}Advanced phone settings{/t}</h2>
 
-<table summary="" style="width:100%" border=0>
+<table style="width:100%" border=0>
   <tr>
     <td colspan="2">
     <LABEL for="selected_categorie">{t}Phone type{/t}</LABEL>{$staticAddress}
@@ -19,7 +19,7 @@
 {if $selected_categorie eq '0'}
   <tr>
     <td style="width:50%; border-right:1px solid #A0A0A0">
-      <table summary="" border=0>
+      <table border=0>
        <tr>
         <td>
           <LABEL for="goFonType">{t}Mode{/t}</LABEL>{$staticAddress}
@@ -48,7 +48,7 @@
     </table>
      </td>
      <td>
-    <table summary="" border=0>
+    <table border=0>
       <tr>
         <td >
           <LABEL for="goFonDefaultIP">{t}Default IP{/t}</LABEL>
@@ -81,7 +81,7 @@
 
   <tr>
     <td style="vertical-align:top; width:50%; border-right:1px solid #A0A0A0">
-      <table summary="" width="100%">
+      <table width="100%">
        <tr>
         <td>
           <LABEL for="goFonType">{t}Modus{/t}{$staticAddress}</LABEL>
@@ -188,7 +188,7 @@
       </table>
     </td>
     <td valign="top" style="vertical-align:top">
-       <table summary="" width="100%">
+       <table width="100%">
                <tr>
                     <td style="vertical-align:top;">
                         <LABEL for="goFonPermitS">{t}Hosts that are allowed to connect{/t}</LABEL><br>
@@ -241,7 +241,7 @@
 {if $selected_categorie eq '2'}
   <tr>
     <td style="width:50%">
-      <table summary="" width="100%">
+      <table width="100%">
         <tr>
           <td>
             <LABEL for="goFonMSN">{t}MSN{/t}</LABEL>&nbsp;

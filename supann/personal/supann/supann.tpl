@@ -1,9 +1,9 @@
-<script language="javascript" src="include/overlib.js" type="text/javascript"></script>
+<script src="include/overlib.js" type="text/javascript"></script>
 <table style="text-align: left; width: 100%;" border="0" cellpadding="2" cellspacing="2">
   <tbody>
     <tr>
       <td colspan="2" style="vertical-align: top; width: 49%;">
-        <h1><img alt="" align="middle" src="plugins/supann/images/profil.png" class="center"> {t}Common Profil{/t}</h1>
+        <h1><img alt="" src="plugins/supann/images/profil.png" class="center"> {t}Common Profil{/t}</h1>
       </td>
         <td style="width: 2%">
         </td>
@@ -145,7 +145,7 @@
     <tbody>
     <tr>
       <td colspan="5">
-        <h1><img alt="" align="middle" src="plugins/supann/images/affiliation.png" class="center"> {t}Affectation{/t} - {t}Affiliation{/t}</h1>
+        <h1><img alt="" src="plugins/supann/images/affiliation.png" class="center"> {t}Affectation{/t} - {t}Affiliation{/t}</h1>
       </td>
     </tr>
     <tr> <!-- ENTETE AFFECTATION - AFFILIATION -->
@@ -267,7 +267,7 @@
   <tbody>
     <tr>
       <td colspan="5" style="vertical-align: top;border-top: 1px solid rgb(160, 160, 160);border-left: 1px solid rgb(160, 160, 160);">
-        <h1><img alt="" align="middle" src="plugins/supann/images/user-employee.png" class="center"> {t}Personal Profil{/t}</h1>
+        <h1><img alt="" src="plugins/supann/images/user-employee.png" class="center"> {t}Personal Profil{/t}</h1>
       </td>
     </tr>
     <tr> <!-- ENTETE supannEmpId - supannActivite -->
@@ -382,7 +382,7 @@
   <tbody>
     <tr>
       <td colspan="5">
-        <h1><img alt="" align="middle" src="plugins/supann/images/user-student.png" class="center"> {t}Student Profil{/t}</h1>
+        <h1><img alt="" src="plugins/supann/images/user-student.png" class="center"> {t}Student Profil{/t}</h1>
       </td>
     </tr>
     <tr> <!-- INTITULE supannCodeINE supannEtuId -->

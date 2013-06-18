@@ -1,5 +1,5 @@
 {if $dns_take_over}
-<table summary="" width="100%">
+<table width="100%">
     <tr>
         <td style="width:100%;vertical-align:top;">
             <h2>{t}DNS take over initiated{/t}</h2>
@@ -20,7 +20,7 @@
     </tr>
 </table>
 {else}
-<table summary="" width="100%">
+<table width="100%">
 {if $dns_server_list_cnt}
 <tr>
     <td style="width:100%;vertical-align:top;">
@@ -46,7 +46,7 @@
 </table>
 
 
-<script language="JavaScript" type="text/javascript">
+<script type="text/javascript">
   <!-- // First input field on page
   focus_field('AddZone');
   -->

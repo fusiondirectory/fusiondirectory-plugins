@@ -1,4 +1,4 @@
-<table summary="" style="width:100%; vertical-align:top; text-align:left;" cellpadding=4>
+<table style="width:100%; vertical-align:top; text-align:left;" cellpadding=4>
   <tbody>
     <tr>
       <td colspan="4" rowspan="1"><h2>{t}Entite{/t}</h2></td>
@@ -52,7 +52,7 @@
 
 <!-- Place cursor -->
 <input type='hidden' name='entite_posted' value='1'>
-<script language="JavaScript" type="text/javascript">
+<script type="text/javascript">
   <!-- // First input field on page
   focus_field('ou');
   -->

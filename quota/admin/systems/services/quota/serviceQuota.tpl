@@ -1,15 +1,15 @@
-<script language="javascript" src="include/overlib.js" type="text/javascript"></script>
+<script src="include/overlib.js" type="text/javascript"></script>
 
 <table style="text-align: left; width: 100%;" border="0" cellpadding="2" cellspacing="2">
   <tbody>
     <tr>
       <td colspan="6" rowspan="1" style="vertical-align: top;">
-        <h2><img class="center" alt="" src="plugins/quota/images/iconMini.png" align="middle"> {t}Quota service Properties{/t}</h2>
+        <h2><img class="center" alt="" src="plugins/quota/images/iconMini.png"> {t}Quota service Properties{/t}</h2>
       </td>
     </tr>
     <tr>
       <td colspan="6" style="vertical-align: top;">
-        <h3><img class="center" alt="" src="plugins/quota/images/iconMini.png" align="middle"> {t}quota device{/t}</h3>
+        <h3><img class="center" alt="" src="plugins/quota/images/iconMini.png"> {t}quota device{/t}</h3>
       </td>
     </tr>
     <tr>
@@ -57,7 +57,7 @@
     </tr>
     <tr>
       <td colspan="6" style="vertical-align: top;">
-        <h3><img class="center" alt="" src="plugins/quota/images/warning.png" align="middle"> {t}Quota Warning Message{/t}</h3>
+        <h3><img class="center" alt="" src="plugins/quota/images/warning.png"> {t}Quota Warning Message{/t}</h3>
       </td>
     </tr>
     <tr>
@@ -125,7 +125,7 @@
     </tr>
     <tr>
       <td colspan="5" style="vertical-align: top;">
-        <h3><img class="center" alt="" src="plugins/quota/images/ldap.png" align="middle"> {t}LDAP Message Support{/t}</h3>
+        <h3><img class="center" alt="" src="plugins/quota/images/ldap.png"> {t}LDAP Message Support{/t}</h3>
       </td>
     </tr>
     <tr>

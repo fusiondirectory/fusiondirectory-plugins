@@ -970,7 +970,7 @@ class networkSettings extends plugin
   {
     $changeStateForRecords = "";
 
-    $str = "<table summary='' width='100%'>";
+    $str = "<table width='100%'>";
 
     foreach ($this->dnsEntry['RECORDS'] as $key => $entry) {
 

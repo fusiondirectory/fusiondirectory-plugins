@@ -14,7 +14,7 @@
    &nbsp;
    <input type='submit' name='create_script_cancel' value='{msgPool type=cancelButton}'>
 </div>
-<script language="JavaScript" type="text/javascript">
+<script type="text/javascript">
   <!--
   focus_field('NewScriptName');
   -->

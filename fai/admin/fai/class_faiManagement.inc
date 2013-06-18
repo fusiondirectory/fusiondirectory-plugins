@@ -673,7 +673,7 @@ class faiManagement extends management
         <head>
         <title></title>
         <style type="text/css">@import url("themes/default/style.css");</style>
-        <script language="javascript" src="include/focus.js" type="text/javascript"></script>
+        <script src="include/focus.js" type="text/javascript"></script>
         </head>
         <body style="background: none;margin:3px;color:black">
         ';

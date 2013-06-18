@@ -4,7 +4,7 @@
   <b>{msgPool type=invalidConfigurationAttribute param=ppdPath}</b>
 </p>
 {else}
-  <table summary="" width="100%">
+  <table width="100%">
     <tr>
       <td width="50%" style="vertical-align:top">
         {t}Model{/t}: <i>{$ppdString}</i>&nbsp;

@@ -14,15 +14,15 @@
 <br>
 </p>
 <br>
-<table summary="" style='width:100%'>
+<table style='width:100%'>
  <tr>
   <td style='width:49%'>
-   <table summary="">
+   <table>
     <tr>
      <td>
        <input type=radio name="classSelector" id="classSelector1" value="1" checked>
      </td>
-     <td> 
+     <td>
        <h1><label for="classSelector1">{t}Enter FAI class name manually{/t}</label></h1>
      </td>
    </tr>
@@ -39,7 +39,7 @@
   <td style='border-left:1px solid #909090'>
   </td>
   <td>
-   <table summary="" {$grey}>
+   <table {$grey}>
     <tr>
      <td>
        <input type=radio name="classSelector" id="classSelector2" value="2" {$ClassNamesAvailable}>
@@ -70,7 +70,7 @@
 </p>
 
 <!-- Place cursor -->
-<script language="JavaScript" type="text/javascript">
+<script type="text/javascript">
   <!--
   focus_field('UseTextInputName');
   -->

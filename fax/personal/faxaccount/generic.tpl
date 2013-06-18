@@ -1,11 +1,11 @@
-<table summary="" style="width:100%; vertical-align:top; text-align:left;" cellpadding="0" border="0">
+<table style="width:100%; vertical-align:top; text-align:left;" cellpadding="0" border="0">
 
  <!-- Headline container -->
  <tr>
    <td style="width:50%; vertical-align:top;">
-     <h2><img class="center" alt="" align="middle" src="images/rightarrow.png" />&nbsp;{t}Generic{/t}</h2>
+     <h2><img class="center" alt="" src="images/rightarrow.png" />&nbsp;{t}Generic{/t}</h2>
 
-     <table summary="">
+     <table>
        <tr>
          <td><label for="facsimileTelephoneNumber">{t}Fax{/t}</label>{$must}</td>
          <td>
@@ -46,7 +46,7 @@
     &nbsp;
    </td>
    <td style="vertical-align:top; width:100%">
-     <h2><img class="center" alt="" align="middle" src="plugins/fax/images/printer.png" />&nbsp;{t}Delivery methods{/t}</h2>
+     <h2><img class="center" alt="" src="plugins/fax/images/printer.png" />&nbsp;{t}Delivery methods{/t}</h2>
 
 {render acl=$goFaxIsEnabledACL checked=$use_goFaxIsEnabled}
      <input type=checkbox name="goFaxIsEnabled" value="1" {$goFaxIsEnabled} class="center">
@@ -85,10 +85,10 @@
 
 <p class="seperator">&nbsp;</p>
 
-<table summary="" style="width:100%; vertical-align:top; text-align:left;" cellpadding=4 border=0>
+<table style="width:100%; vertical-align:top; text-align:left;" cellpadding=4 border=0>
   <tr>
     <td style="width:50%; border-right:1px solid #A0A0A0">
-    <h2><img class="center" alt="" align="middle" src="plugins/fax/images/iconMini.png">&nbsp;{t}Alternate fax numbers{/t}</h2>
+    <h2><img class="center" alt="" src="plugins/fax/images/iconMini.png">&nbsp;{t}Alternate fax numbers{/t}</h2>
 {render acl=$facsimileAlternateTelephoneNumberACL}
     <select style="width:100%" name="alternate_list[]" size="10" multiple>
       {html_options values=$facsimileAlternateTelephoneNumber output=$facsimileAlternateTelephoneNumber}
@@ -97,7 +97,7 @@
 {/render}
     <br>
 {render acl=$facsimileAlternateTelephoneNumberACL}
-    <input type='text' name="forward_address" size=20 align="middle" maxlength=65 value="">
+    <input type='text' name="forward_address" size=20 maxlength=65 value="">
 {/render}
 {render acl=$facsimileAlternateTelephoneNumberACL}
     <input type=submit value="{msgPool type=addButton}" name="add_alternate">&nbsp;
@@ -110,8 +110,8 @@
 {/render}
    </td>
    <td style="vertical-align:top; width:50%">
-      <h2><img class="center" alt="" align="middle" src="images/false.png" />&nbsp;{t}Blocklists{/t}</h2>
-      <table summary="" style="width:100%">
+      <h2><img class="center" alt="" src="images/false.png" />&nbsp;{t}Blocklists{/t}</h2>
+      <table style="width:100%">
         <tr>
           <td>{t}Blocklists for incoming fax{/t}</td>
           <td>
@@ -136,7 +136,7 @@
 <input type="hidden" name="faxTab" value="faxTab">
 
 <!-- Place cursor -->
-<script language="JavaScript" type="text/javascript">
+<script type="text/javascript">
   <!-- // First input field on page
   focus_field('facsimileTelephoneNumber');
   -->

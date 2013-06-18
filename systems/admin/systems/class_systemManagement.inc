@@ -198,7 +198,7 @@ class systemManagement extends management
         <head>
         <title></title>
         <style type="text/css">@import url("themes/default/style.css");</style>
-        <script language="javascript" src="include/focus.js" type="text/javascript"></script>
+        <script src="include/focus.js" type="text/javascript"></script>
         </head>
         <body style="background: none; margin:4px;" id="body" >
         <pre>';
@@ -212,7 +212,7 @@ class systemManagement extends management
         while (!feof($pipes[1])){
           $cur_dat = fgets($pipes[1], 1024);
           echo $cur_dat;
-          echo '<script language="javascript" type="text/javascript">scrollDown2();</script>' ;
+          echo '<script type="text/javascript">scrollDown2();</script>' ;
           flush();
         }
       }
@@ -238,7 +238,7 @@ class systemManagement extends management
     }
 
     /* Scroll down completly */
-    echo '<script language="javascript" type="text/javascript">scrollDown2();</script>' ;
+    echo '<script type="text/javascript">scrollDown2();</script>' ;
     echo '</body></html>';
     flush();
     exit;
