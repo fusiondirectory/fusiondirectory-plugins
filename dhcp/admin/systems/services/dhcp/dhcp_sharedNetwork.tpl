@@ -24,9 +24,9 @@
      </td>
     </tr>
    </table>
-  
+
   </td>
-  
+
   <td style="vertical-align:top;">
    <table>
     <tr>
@@ -39,7 +39,7 @@
     </tr>
    </table>
   </td>
-  
+
  </tr>
 </table>
 
@@ -48,7 +48,7 @@
 <table width="100%">
  <tr>
   <td width="50%">
-  
+
   <p><b>{t}Leases{/t}</b></p>
    <table>
     <tr>
@@ -79,7 +79,7 @@
      </td>
     </tr>
    </table>
-   
+
   </td>
 
   <td style="vertical-align:top">
@@ -111,14 +111,14 @@
     </tr>
    </table>
   </td>
-  
- </tr> 
+
+ </tr>
 </table>
 
 <p class="seperator">&nbsp;</p>
 
 <!-- Place cursor in correct field -->
-<script language="JavaScript" type="text/javascript">
+<script type="text/javascript">
   <!-- // First input field on page
   document.mainform.cn.focus();
   -->

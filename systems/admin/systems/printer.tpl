@@ -1,9 +1,9 @@
-<table summary="" width="100%">
+<table width="100%">
  <tr>
   <td style="vertical-align:top; width:50%; border-right:1px solid #B0B0B0">
 {if $StandAlone}
    <h2>{t}General{/t}</h2>
-   <table summary="">
+   <table>
     <tr>
      <td><LABEL for="cn" >{t}Printer name{/t}</LABEL>{$must}</td>
      <td>
@@ -36,7 +36,7 @@
   <td>
 {/if}
    <h2>{t}Details{/t}</h2>
-   <table summary="">
+   <table>
 {if !$StandAlone}
       <tr>
   <td><LABEL for="description">{t}Description{/t}</LABEL></td>
@@ -73,7 +73,7 @@
     </tr>
 {/if}
    </table>
-   <table summary="">
+   <table>
     <tr>
      <td>
       <br>
@@ -93,11 +93,11 @@
 
 <p class="plugbottom" style="margin-bottom:0px; padding:0px;">&nbsp;</p>
 
-<h2><img class="center" alt="" align="middle" src="images/lists/locked.png"> {t}Permissions{/t}</h2>
-<table summary="" width="100%">
+<h2><img class="center" alt="" src="images/lists/locked.png"> {t}Permissions{/t}</h2>
+<table width="100%">
  <tr>
   <td style="border-right:1px solid #B0B0B0; width:50%">
-   <table style="width:100%" summary=''>
+   <table style="width:100%">
     <tr>
      <td>
       {t}Users which are allowed to use this printer{/t}<br>
@@ -118,7 +118,7 @@
 
   </td>
   <td>
-   <table style="width:100%" summary=''>
+   <table style="width:100%">
     <tr>
      <td>
       {t}Users which are allowed to administrate this printer{/t}<br>
@@ -144,7 +144,7 @@
 
 <p class="plugbottom" style="margin-bottom:0px; padding:0px;">&nbsp;</p>
 {if $netconfig ne ''}
-<table style="width:100%" summary=''>
+<table style="width:100%">
 <tr>
 <td style="vertical-align:top; width:50%; border-right:1px solid #B0B0B0">
 {$netconfig}
@@ -152,7 +152,7 @@
 <td>
 {/if}
 <h2>{t}Windows paths{/t}</h2>
-<table style="width:100%" summary=''>
+<table style="width:100%">
      <tr>
        <td><LABEL for="printerWindowsInfFile">{t}Printer windows inf file{/t}</LABEL></td>
        <td>
@@ -184,7 +184,7 @@
 
 
 <!-- Place cursor -->
-<script language="JavaScript" type="text/javascript">
+<script type="text/javascript">
 
   <!-- // First input field on page
   if(document.mainform.cn)

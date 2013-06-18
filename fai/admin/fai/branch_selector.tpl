@@ -2,7 +2,7 @@
     <p class="contentboxh"><img src="{$branchimage}" align="right" alt="[F]">{t}Releases{/t}</p>
    </div>
    <div class="contentboxb">
-        <table summary="" style="width:100%;border-bottom:1px solid #B0B0B0;">
+        <table style="width:100%;border-bottom:1px solid #B0B0B0;">
      <tr>
       <td>
     {t}Current release{/t}&nbsp;
@@ -12,7 +12,7 @@
       </td>
      </tr>
         </table>
-        <table summary="" style="width:100%;">
+        <table style="width:100%;">
      <tr>
       <td>
     {if $allow_create}

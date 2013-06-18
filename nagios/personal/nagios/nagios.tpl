@@ -1,9 +1,9 @@
-<table summary="" style="width:100%; vertical-align:top; text-align:left;" cellpadding="0" border="0">
+<table style="width:100%; vertical-align:top; text-align:left;" cellpadding="0" border="0">
  <tr>
   <td style="width:50%; vertical-align:top;">
    <h2>
-    <img class="center" alt="" align="middle" src="images/rightarrow.png" />&nbsp;{t}Nagios Account{/t}</h2>
-   <table summary="">
+    <img class="center" alt="" src="images/rightarrow.png" />&nbsp;{t}Nagios Account{/t}</h2>
+   <table>
     <tr>
      <td><label for="NagiosAlias">{t}Alias{/t}</label>{$must}</td>
      <td>
@@ -111,10 +111,10 @@
    &nbsp;
   </td>
   <td style="width:100%; vertical-align:top;">
-   <h2> 
-    <img class="center" alt="" align="middle" src="images/rightarrow.png" />&nbsp;{t}Nagios authentification{/t}
+   <h2>
+    <img class="center" alt="" src="images/rightarrow.png" />&nbsp;{t}Nagios authentification{/t}
    </h2>
-   <table summary="">
+   <table>
     <tr>
      <td>
 {render acl=$AuthorizedSystemInformationACL}
@@ -122,56 +122,56 @@
 {/render}
      </td>
     </tr>
- 
+
     <tr>
      <td>
 {render acl=$AuthorizedConfigurationInformationACL}
-      <input type="checkbox" name="AuthorizedConfigurationInformation" value="1" 
+      <input type="checkbox" name="AuthorizedConfigurationInformation" value="1"
        {$AuthorizedConfigurationInformationCHK}>{t}view configuration information{/t}
 {/render}
      </td>
     </tr>
- 	
+
     <tr>
      <td>
 {render acl=$AuthorizedSystemCommandsACL}
-      <input type="checkbox" name="AuthorizedSystemCommands" value="1" 
+      <input type="checkbox" name="AuthorizedSystemCommands" value="1"
        {$AuthorizedSystemCommandsCHK}>{t}trigger system commands{/t}
 {/render}
      </td>
     </tr>
- 	
+
     <tr>
      <td>
 {render acl=$AuthorizedAllServicesACL}
-      <input type="checkbox" name="AuthorizedAllServices" value="1" 
+      <input type="checkbox" name="AuthorizedAllServices" value="1"
        {$AuthorizedAllServicesCHK}>{t}view all services{/t}
 {/render}
      </td>
     </tr>
- 	
+
     <tr>
      <td>
 {render acl=$AuthorizedAllHostsACL}
-      <input type="checkbox" name="AuthorizedAllHosts" value="1" 
+      <input type="checkbox" name="AuthorizedAllHosts" value="1"
        {$AuthorizedAllHostsCHK}>{t}view all hosts{/t}
 {/render}
-     </td> 
+     </td>
     </tr>
- 	
+
     <tr>
      <td>
 {render acl=$AuthorizedAllServiceCommandsACL}
-      <input type="checkbox" name="AuthorizedAllServiceCommands" value="1" 
+      <input type="checkbox" name="AuthorizedAllServiceCommands" value="1"
        {$AuthorizedAllServiceCommandsCHK}>{t}trigger all service commands{/t}
 {/render}
      </td>
     </tr>
- 	
+
     <tr>
      <td>
 {render acl=$AuthorizedAllHostCommandsACL}
-      <input type="checkbox" name="AuthorizedAllHostCommands" value="1" 
+      <input type="checkbox" name="AuthorizedAllHostCommands" value="1"
        {$AuthorizedAllHostCommandsCHK}>{t}trigger all host commands{/t}
 {/render}
      </td>
@@ -184,7 +184,7 @@
 <input type="hidden" name="nagiosTab" value="nagiosTab">
 
 <!-- Place cursor -->
-<script language="JavaScript" type="text/javascript">
+<script type="text/javascript">
   <!-- // First input field on page
 	focus_field('NagiosAlias');
   -->

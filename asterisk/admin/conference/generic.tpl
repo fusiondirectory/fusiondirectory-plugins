@@ -1,14 +1,14 @@
-<table summary="" style="width:100%; vertical-align:top; text-align:left;" cellpadding=4>
+<table style="width:100%; vertical-align:top; text-align:left;" cellpadding=4>
   <tr>
     <td colspan=3>
-      <h2 style='margin:0px; padding:0px;'><img class="center" alt="" align="middle" src="images/rightarrow.png">
+      <h2 style='margin:0px; padding:0px;'><img class="center" alt="" src="images/rightarrow.png">
         {t}Properties{/t}
       </h2>
     </td>
   </tr>
   <tr>
     <td style="vertical-align:top">
-      <table summary="">
+      <table>
         <tr>
           <td>
             <LABEL for="cn">
@@ -85,7 +85,7 @@
       &nbsp;
     </td>
     <td width="50%">
-      <table summary="">
+      <table>
         <tr>
           <td>
             <LABEL for="description">
@@ -131,7 +131,7 @@
   </tr>
   <tr>
     <td colspan=3>
-      <h2 style='margin:0px; padding:0px;'><img class="center" alt="" align="middle" src="plugins/asterisk/images/options.png">
+      <h2 style='margin:0px; padding:0px;'><img class="center" alt="" src="plugins/asterisk/images/options.png">
         {t}Options{/t}
       </h2>
     </td>
@@ -139,7 +139,7 @@
   <tr>
     <td>
 
-      <table summary="">
+      <table>
         <tr>
           <td>
 {render acl=$goFonConferenceOptionPACL}
@@ -193,7 +193,7 @@
     </td>
     <td>
 
-      <table summary="">
+      <table>
         <tr>
           <td>
 {render acl=$goFonConferenceOptionMACL}
@@ -235,7 +235,7 @@
 <input type='hidden' name='phoneConferenceGeneric' value='1'>
 
 <!-- Place cursor -->
-<script language="JavaScript" type="text/javascript">
+<script type="text/javascript">
   <!-- // First input field on page
   focus_field('cn');
   -->

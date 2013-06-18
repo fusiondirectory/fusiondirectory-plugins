@@ -1,8 +1,8 @@
-<table summary="{t}Phone numbers{/t}" style="width:100%">
+<table style="width:100%">
  <tr>
   <td style="vertical-align:top; border-right:1px solid #A0A0A0; width:50%">
    <h2>
-    <img class="center" alt="" align="middle" src="plugins/asterisk/images/iconMini.png" />
+    <img class="center" alt="" src="plugins/asterisk/images/iconMini.png" />
     &nbsp;{t}Phone numbers{/t}
    </h2>
 
@@ -25,13 +25,13 @@
 
   </td>
   <td style="vertical-align:top; width:50%;">
-   <table summary="" style="width:100%" border=0>
+   <table style="width:100%" border=0>
  <tr>
 
   <td style="vertical-align:top;">
-   <h2><img class="center" alt="" align="middle" src="plugins/asterisk/images/hardware.png" />&nbsp;{t}Telephone hardware{/t}</h2>
+   <h2><img class="center" alt="" src="plugins/asterisk/images/hardware.png" />&nbsp;{t}Telephone hardware{/t}</h2>
 
-      <table summary="{t}Telephone{/t}" border=0>
+      <table border="0">
        <tr>
         <td>
       {t}Telephone{/t}
@@ -109,10 +109,10 @@
  <tr style="vertical-align:top; border-top:1px solid #A0A0A0;">
  <td colspan=2 style="vertical-align:top;width:50%">
   <h2>
-   <img class="center" alt="" src="plugins/asterisk/images/iconMiniMacros.png" align="middle" />
+   <img class="center" alt="" src="plugins/asterisk/images/iconMiniMacros.png" />
    &nbsp;{t}Phone macro{/t}
   </h2>
-  <table summary="{t}Phone macro{/t}">
+  <table>
    <tr>
     <td colspan=2>
 {render acl=$goFonMacroACL  checked=$use_macro}
@@ -132,7 +132,7 @@
 <input type="hidden" name="phoneTab" value="phoneTab">
 
 
-<script language="JavaScript" type="text/javascript">
+<script type="text/javascript">
   <!-- // First input field on page
   focus_field('phonenumber');
   -->

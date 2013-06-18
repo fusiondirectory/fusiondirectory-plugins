@@ -1,9 +1,9 @@
-<h2><img class="center" alt="" align="middle" src="images/rightarrow.png"> {t}Generic{/t}</h2>
-<table summary="" style="width:100%; vertical-align:top; text-align:left;">
+<h2><img class="center" alt="" src="images/rightarrow.png"> {t}Generic{/t}</h2>
+<table style="width:100%; vertical-align:top; text-align:left;">
 
  <tr>
    <td style="width:50%; vertical-align:top;">
-    <table summary="">
+    <table>
      <tr>
       <td><LABEL for="cn">{t}List name{/t}</LABEL>{$must}</td>
       <td>
@@ -29,7 +29,7 @@
   </td>
 
    <td style="vertical-align:top;">
-    <table summary="">
+    <table>
      <tr>
        <td><LABEL for="type">{t}Type{/t}</LABEL></td>
        <td>
@@ -56,10 +56,10 @@
 
 <p class="plugbottom" style="margin-bottom:0px; padding:0px;">&nbsp;</p>
 
-<table summary="" style="width:100%">
+<table style="width:100%">
  <tr>
    <td style="width:50%;">
-     <h2><img class="center" alt="" align="middle" src="images/false.png"> {t}Blocked numbers{/t}</h2>
+     <h2><img class="center" alt="" src="images/false.png"> {t}Blocked numbers{/t}</h2>
 {render acl=$goFaxBlocklistACL}
      <select style="width:100%; height:200px;" name="numbers[]" size=15 multiple>
       {html_options values=$goFaxBlocklist output=$goFaxBlocklist}
@@ -81,7 +81,7 @@
    &nbsp;
   </td>
    <td style="vertical-align:top;" >
-     <h2><img class="center" alt="" align="middle" src="images/info_small.png"> {t}Information{/t}</h2>
+     <h2><img class="center" alt="" src="images/info_small.png"> {t}Information{/t}</h2>
      <p>
       {t}Numbers can also contain wild cards.{/t}
      </p>
@@ -91,7 +91,7 @@
 
 <input type='hidden' name='blocklist_posted' value="1">
 <!-- Place cursor -->
-<script language="JavaScript" type="text/javascript">
+<script type="text/javascript">
   <!-- // First input field on page
   focus_field('n');
   -->

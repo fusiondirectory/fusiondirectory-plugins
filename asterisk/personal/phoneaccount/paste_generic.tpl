@@ -1,5 +1,5 @@
 <h2>{t}Phone settings{/t}</h2>
-<table summary="{t}Phone numbers{/t}" style="width:100%" cellspacing=0>
+<table style="width:100%" cellspacing=0>
  <tr>
   <td style="vertical-align:top; border-right:1px solid #A0A0A0; width:50%">
    <h2>
@@ -19,14 +19,14 @@
    <input type="submit" value="{msgPool type=delButton}" name="delete_phonenumber">
   </td>
   <td style="vertical-align:top; width:50%;">
-   <table summary="" style="width:100%" border=0>
+   <table style="width:100%" border=0>
     <tr>
      <td style="vertical-align:top;">
       <h2>
        <img class="center" alt="" align="middle" src="plugins/asterisk/images/hardware.png" />
        &nbsp;{t}Telephone hardware{/t}
       </h2>
-      <table summary="{t}Telephone{/t}" border=0>
+      <table border=0>
        <tr>
         <td>
          <label for="goFonVoicemailPIN">{t}Voicemail PIN{/t}{$must}</label>

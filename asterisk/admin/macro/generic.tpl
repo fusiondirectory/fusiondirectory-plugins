@@ -1,7 +1,7 @@
-<table width="100%" summary="">
+<table width="100%">
   <tr>
     <td>
-        <table summary="">
+        <table>
           <tr>
               <td><LABEL for="cn">{t}Macro name{/t}</LABEL>{$must}</td>
               <td>
@@ -14,7 +14,7 @@
             <td><LABEL for="displayName">{t}Display name{/t}</LABEL>{$must}</td>
             <td>
 {render acl=$displayNameACL}
-                <input name="displayName" id="displayName" size=35 maxlength=60 value="{$displayName}" 
+                <input name="displayName" id="displayName" size=35 maxlength=60 value="{$displayName}"
             title="{t}Macro name to be displayed{/t}">
 {/render}
             </td>
@@ -37,7 +37,7 @@
          &nbsp;
     </td>
     <td style="vertical-align:top;">
-      <table summary="">
+      <table>
           <tr>
             <td><LABEL for="description">{t}Description{/t}</LABEL></td>
             <td>
@@ -49,7 +49,7 @@
           <tr>
             <td colspan=2>
 {render acl=$goFonMacroVisibleACL}
-                <input type="checkbox" name="goFonMacroVisible" size=35 maxlength=60 value="1" 
+                <input type="checkbox" name="goFonMacroVisible" size=35 maxlength=60 value="1"
             {$goFonMacroVisibleChecked}> {t}Visible for user{/t}
 {/render}
             </td>
@@ -69,7 +69,7 @@
 <input type='hidden' name='gofonMacroGenericPosted' value='1'>
 
 <!-- Place cursor -->
-<script language="JavaScript" type="text/javascript">
+<script type="text/javascript">
   <!-- // First input field on page
   focus_field('cn');
   -->

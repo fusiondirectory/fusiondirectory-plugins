@@ -1,9 +1,9 @@
-<table summary="" style="width:100%; vertical-align:top; text-align:left;" cellpadding=4>
+<table style="width:100%; vertical-align:top; text-align:left;" cellpadding=4>
  <tr>
    <td style="vertical-align:top; width:50%">
-     <h2><img class="center" alt="" align="middle" src="images/rightarrow.png"> {t}Properties{/t}</h2>
+     <h2><img class="center" alt="" src="images/rightarrow.png"> {t}Properties{/t}</h2>
 
-     <table summary="">
+     <table>
 {if $root_available}
       <tr>
         <td><label for="set_root">{t}Set this etablissement as root one{/t}{$must}</label></td>
@@ -93,9 +93,9 @@
     &nbsp;
    </td>
    <td>
-     <h2><img class="center" alt="" align="middle" src="plugins/departments/images/department.png"> {t}Location{/t}</h2>
+     <h2><img class="center" alt="" src="plugins/departments/images/department.png"> {t}Location{/t}</h2>
 
-     <table summary="" style="width:100%">
+     <table style="width:100%">
       <tr>
        <td><label for="l">{t}Location{/t}</label></td>
        <td>
@@ -137,7 +137,7 @@
 
 <!-- Place cursor -->
 <input type='hidden' name='etablissement_posted' value='1'>
-<script language="JavaScript" type="text/javascript">
+<script type="text/javascript">
   <!-- // First input field on page
 	focus_field('o');
   -->

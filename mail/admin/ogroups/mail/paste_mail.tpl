@@ -4,11 +4,11 @@
       <LABEL for="mail">{t}Mail{/t}</LABEL>{$must}
     </td>
     <td>
-      <input type='text' id='main' name='mail' value='{$mail}' size='40' title='{t}Please enter a mail address{/t}'> 
+      <input type='text' id='main' name='mail' value='{$mail}' size='40' title='{t}Please enter a mail address{/t}'>
     </td>
   </tr>
 </table>
 
-<script language="JavaScript" type="text/javascript">
+<script type="text/javascript">
   focus_field('mail');
 </script>

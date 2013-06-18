@@ -18,7 +18,7 @@
 </p>
 
 <!-- Place cursor -->
-<script language="JavaScript" type="text/javascript">
+<script type="text/javascript">
   <!--
   focus_field('section');
   -->

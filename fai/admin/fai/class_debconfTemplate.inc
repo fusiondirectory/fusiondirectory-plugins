@@ -199,7 +199,7 @@ class debconf
   function get_dialog()
   {
     if ($this->loaded_template) {
-      $result= "<table summary=''>";
+      $result= "<table>";
 
       foreach ($this->template as $post_name => $entry){
 

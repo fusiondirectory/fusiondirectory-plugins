@@ -1068,7 +1068,7 @@ class phoneAccount extends plugin
       $macrotab="";
     }else{
 
-      $macrotab ="<table summary=\""._("Parameter")."\">";
+      $macrotab ='<table>';
       /* for every single parameter-> display textfile,combo, or true false switch*/
 
       foreach($this->phoneNumbers as $phonenum){

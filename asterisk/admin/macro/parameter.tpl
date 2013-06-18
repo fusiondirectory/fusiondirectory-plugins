@@ -1,5 +1,5 @@
 {if $readable}
-<table width="100%" summary="">
+<table width="100%">
   <tr>
     <td>{t}Argument{/t}
     </td>
@@ -21,7 +21,7 @@
 <input type="hidden" name="phoneparemeters">
 
 <!-- Place cursor -->
-<script language="JavaScript" type="text/javascript">
+<script type="text/javascript">
   <!-- // First input field on page
   focus_field('cn');
   -->

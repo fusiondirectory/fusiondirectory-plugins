@@ -26,7 +26,7 @@
     <tr>
      <td>
 {render acl=$acl}
-    <input type="checkbox" name="use_range" value="1" 
+    <input type="checkbox" name="use_range" value="1"
       onChange="changeState('range_start');changeState('range_stop');" {$use_range}></td>
 {/render}
      <td>{t}Range for dynamic address assignment{/t}</td>
@@ -51,7 +51,7 @@
 <p class="seperator"></p>
 
 <!-- Place cursor in correct field -->
-<script language="JavaScript" type="text/javascript">
+<script type="text/javascript">
   <!-- // First input field on page
    focus_field('cn');
   -->

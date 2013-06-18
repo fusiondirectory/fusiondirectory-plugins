@@ -24,9 +24,9 @@
     </p>
 </div>
 
-<script language="JavaScript" type="text/javascript">
+<script type="text/javascript">
   <!-- // First input field on page
   focus_field('zoneName');
   -->
 </script>
-                                                                            
+

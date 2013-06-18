@@ -1,5 +1,5 @@
 {if $dns_take_over}
-<table summary="" width="100%">
+<table width="100%">
     <tr>
         <td style="width:100%;vertical-align:top;">
         <h2>{t}DHCP take over will take place when saving this entry. Choose 'Cancel' to abort.{/t}</h2>
@@ -7,7 +7,7 @@
     </tr>
 </table>
 {else}
-<table summary="" width="100%">
+<table width="100%">
 {if $dhcp_server_list_cnt}
 <tr>
     <td style="width:100%;vertical-align:top;">
