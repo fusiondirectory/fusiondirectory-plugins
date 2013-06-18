@@ -3,7 +3,7 @@
     {$section}
   </span>
   <div>
-    <table summary="" style="border:1px solid #B0B0B0; width:100%; vertical-align:top; text-align:left;"  cellpadding="4" cellspacing="0">
+    <table style="border-collapse:collapse; border:1px solid #B0B0B0; width:100%; vertical-align:top; text-align:left;">
       {$attributes.pc_ids}
     </table>
   </div>
