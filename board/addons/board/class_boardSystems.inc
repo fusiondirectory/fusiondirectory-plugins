@@ -144,7 +144,7 @@ class boardSystems extends simplePlugin
         $start_id = $config_ids[1];
       }
 
-      $output_next_computer_ids = $output_next_computer_ids."<tr><td><b>".$prefix."</b></td>";
+      $output_next_computer_ids = $output_next_computer_ids.'<tr><th style="padding:4px;border:1px solid #BBB;">'.$prefix."</th>";
       $nb_digits_suffix         = $nb_digits - strlen($prefix);
 
       /* generation of list of suffixe */
@@ -168,7 +168,7 @@ class boardSystems extends simplePlugin
       /* we take the 5 first */
 
       for ($r = 0;$r <= 5;$r++) {
-        $output_next_computer_ids .= "<td>".$prefix.$unused_computer_ids[$r]."</td>";
+        $output_next_computer_ids .= '<td style="padding:4px;border-bottom:1px solid #BBB;">'.$prefix.$unused_computer_ids[$r]."</td>";
       }
       $output_next_computer_ids .= "</tr>";
     }
