@@ -25,7 +25,7 @@ class roletabs extends tabs
 
   function __construct($config, $data, $dn, $cat = '', $copied_object = NULL)
   {
-    parent::tabs($config, $data, $dn, $cat, $copied_object);
+    parent::__construct($config, $data, $dn, $cat, $copied_object);
     $this->base = $this->getBaseObject()->base;
     $this->addSpecialTabs();
   }

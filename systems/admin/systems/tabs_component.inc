@@ -23,9 +23,9 @@
 class componenttabs extends tabs
 {
 
-  function componenttabs($config, $data, $dn, $category, $copied_object = NULL)
+  function __construct($config, $data, $dn, $category, $copied_object = NULL)
   {
-    parent::tabs($config, $data, $dn, $category, $copied_object);
+    parent::__construct($config, $data, $dn, $category, $copied_object);
 
     /* Add references/acls/snapshots */
     $this->addSpecialTabs();
