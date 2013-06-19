@@ -21,14 +21,14 @@
 
 
 
-class boardUserAccounts extends simplePlugin
+class dashboardUsers extends simplePlugin
 {
   function __construct(&$config, $dn = NULL, $object = NULL)
   {
     parent::__construct($config, $dn, $object);
 
-    $this->stats = $this->users_stats();
-    $this->expired = $this->expired_accounts_info();
+    $this->stats    = $this->users_stats();
+    $this->expired  = $this->expired_accounts_info();
   }
 
   function users_stats ()
@@ -75,22 +75,22 @@ class boardUserAccounts extends simplePlugin
     $today        = floor(time() / 86400); // 24 * 60 * 60
 
     /* Fetch global value from fusiondirectory.conf */
-    $next_expired_days = $this->config->get_cfg_value("boardExpiredAccountsDays", 15);
+    $next_expired_days = $this->config->get_cfg_value('dashboardExpiredAccountsDays', 15);
     $next_expired_date = ($today + $next_expired_days);
 
     /* search all account with all date, mail, telephone */
     $ldap = $this->config->get_ldap_link();
     $ldap->cd($this->config->current['BASE']);
-    $ldap->search("(&(|(objectClass=posixAccount)(objectClass=sambaSamAccount))(shadowExpire=*))",
-                  array("uid","shadowExpire","mail","telephoneNumber","cn","manager"));
+    $ldap->search('(&(|(objectClass=posixAccount)(objectClass=sambaSamAccount))(shadowExpire=*))',
+                  array('uid','shadowExpire','mail','telephoneNumber','cn','manager'));
 
     $expired_accounts = array();
     $next_expired_accounts = array();
     while ($attrs = $ldap->fetch()) {
       // Test if account is expired now
-      if ($attrs["shadowExpire"][0] <= $today) {
+      if ($attrs['shadowExpire'][0] <= $today) {
         $expired_accounts[] = $this->get_user_infos($attrs);
-      } elseif ($attrs["shadowExpire"][0] <= $next_expired_date) {
+      } elseif ($attrs['shadowExpire'][0] <= $next_expired_date) {
         $next_expired_accounts[] = $this->get_user_infos($attrs);
       }
     }
@@ -150,13 +150,13 @@ class boardUserAccounts extends simplePlugin
   static function plInfo()
   {
     return array(
-      "plShortName"   => _("User"),
-      "plDescription" => _("Statistics about users"),
-      "plSelfModify"  => FALSE,
-      "plCategory"    => array("board"),
-      "plObjectType"  => array("board"),
+      'plShortName'   => _('Users'),
+      'plDescription' => _('Statistics about users'),
+      'plSelfModify'  => FALSE,
+      'plCategory'    => array('dashboard'),
+      'plObjectType'  => array('dashboard'),
 
-      "plProvidedAcls"    => array()
+      'plProvidedAcls'    => array()
     );
   }
 }

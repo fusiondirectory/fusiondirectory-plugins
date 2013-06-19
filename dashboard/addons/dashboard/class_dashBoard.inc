@@ -38,7 +38,7 @@ class FakeAttribute extends Attribute
   }
 }
 
-class board extends simplePlugin
+class dashboard extends simplePlugin
 {
   /* Generic */
   var $view_logged    = FALSE;
@@ -109,16 +109,16 @@ class board extends simplePlugin
   static function plInfo()
   {
     return array(
-      "plShortName"   => _("Board"),
-      "plDescription" => _("Statistics and various informations"),
-      "plIcon"        => "plugins/board/images/icon.png",
-      "plSelfModify"  => FALSE,
-      "plCategory"    => array("board" => array("objectClass" => "", "description" => _("Board"))),
-      "plObjectType"  => array("board" => array("name" => _("Board"), "filter" => "")),
-      "plSection"     => "addons",
-      "plPriority"    => 2,
+      'plShortName'   => _('Dashboard'),
+      'plDescription' => _('Statistics and various informations'),
+      'plIcon'        => 'plugins/dashboard/images/icon.png',
+      'plSelfModify'  => FALSE,
+      'plCategory'    => array('dashboard' => array('objectClass' => '', 'description' => _('Dashboard'))),
+      'plObjectType'  => array('dashboard' => array('name' => _('Dashboard'), 'filter' => '')),
+      'plSection'     => 'addons',
+      'plPriority'    => 2,
 
-      "plProvidedAcls"  => array()
+      'plProvidedAcls'  => array()
     );
   }
 }

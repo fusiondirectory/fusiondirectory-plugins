@@ -18,15 +18,15 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class boardConfig extends simplePlugin
+class dashboardConfig extends simplePlugin
 {
-  var $objectclasses  = array('fdBoardPluginConf');
+  var $objectclasses  = array('fdDashboardPluginConf');
 
   static function plInfo()
   {
     return array(
-      'plShortName'     => _('Board configuration'),
-      'plDescription'   => _('FusionDirectory board plugin configuration'),
+      'plShortName'     => _('Dashboard configuration'),
+      'plDescription'   => _('FusionDirectory dashboard plugin configuration'),
       'plSelfModify'    => FALSE,
       'plCategory'      => array('configuration'),
       'plObjectType'    => array('smallConfig'),
@@ -39,28 +39,28 @@ class boardConfig extends simplePlugin
   {
     return array(
       'systems' => array(
-        'name'  => _('Board name schema'),
+        'name'  => _('Dashboard name schema'),
         'attrs' => array(
           new IntAttribute (
             _('Number of digits'), _('Number of digits to use after prefix'),
-            'fdBoardNumberOfDigit', FALSE,
+            'fdDashboardNumberOfDigit', FALSE,
             1, 20, 3
           ),
           new SetAttribute (
             new StringAttribute (
               _('Prefixes'), _('Prefixes to be used for computer ids'),
-              'fdBoardPrefix', TRUE
+              'fdDashboardPrefix', TRUE
             ),
             array("PC")
           )
         )
       ),
       'users' => array(
-        'name'  => _('Board expired users'),
+        'name'  => _('Dashboard expired users'),
         'attrs' => array(
           new IntAttribute (
-            _('Number of days'), _('Number of days before expiration needed for an account to show in the board next expired accounts list'),
-            'fdBoardExpiredAccountsDays', FALSE,
+            _('Number of days'), _('Number of days before expiration needed for an account to show in the dashboard next expired accounts list'),
+            'fdDashboardExpiredAccountsDays', FALSE,
             1, FALSE, 15
           ),
         )
