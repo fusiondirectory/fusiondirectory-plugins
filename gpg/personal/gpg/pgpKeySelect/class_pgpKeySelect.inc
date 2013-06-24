@@ -177,11 +177,12 @@ class PgpKeyAttribute extends GenericDialogAttribute
     $headers    = array_values($this->displayed_values);
     $headers[]  = '';
     $div->SetHeaders($headers);
-    foreach ($this->value as $key => $value) {
+    $displays = $this->getDisplayValues(); // Updates and get display values
+    foreach ($displays as $key => $display_item) {
       $fields = array();
       foreach (array_keys($this->displayed_values) as $field) {
-        if (isset($this->displays[$key][$field][0]) && !empty($this->displays[$key][$field][0])) {
-          $display = $this->displays[$key][$field][0];
+        if (isset($display_item[$field][0]) && !empty($display_item[$field][0])) {
+          $display = $display_item[$field][0];
           if ($field == 'pgpKeySize') {
             $display = pgpKeySelect::pgpSize($display); // Remove useless 0 in front of the number
           } elseif ($field == 'pgpKeyCreateTime') {
