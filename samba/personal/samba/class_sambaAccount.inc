@@ -530,20 +530,6 @@ class sambaAccount extends simplePlugin
     }
   }
 
-  /* Force password set, if this account doesn't have any samba passwords  */
-  function password_change_needed()
-  {
-    if (!$this->initially_was_account && $this->is_account) {
-      $ldap = $this->config->get_ldap_link();
-      $ldap->cat($this->dn, array("sambaLMPassword","sambaNTPassword"));
-      $attrs = $ldap->fetch();
-      if (!isset($attrs['sambaLMPassword']) || !isset($attrs['sambaNTPassword'])) {
-        return TRUE;
-      }
-    }
-    return FALSE;
-  }
-
   function adapt_from_template($dn, $skip = array())
   {
     parent::adapt_from_template($dn, $skip);
