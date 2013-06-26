@@ -564,7 +564,7 @@ class supportDaemon
       return FALSE;
     }
     /* read mac directory */
-    $logfiledir = $this->logdir."/$mac/";
+    $logfiledir = $this->logdir.strtolower("/$mac/");
     if (!is_dir($logfiledir)) {
       return FALSE;
     }
@@ -603,10 +603,17 @@ class supportDaemon
    */
   public function get_log_file($mac, $date, $file)
   {
-    if (is_file("/$mac/$date/$file")) {
-      return implode("", file($this->logdir."/$mac/$date/$file"));
+    $path = $this->logdir.strtolower("/$mac")."/$date/$file";
+    if (is_file($path)) {
+      $this->reset_error();
+      $lines = file_get_contents($path);
+      if ($lines === FALSE) {
+        $this->set_error(sprintf(_('Could not read "%s"!'), $path));
+      }
+      return $lines;
     } else {
-      return "";
+      $this->set_error(sprintf(_('"%s" is not a file!'), $path));
+      return FALSE;
     }
   }
 

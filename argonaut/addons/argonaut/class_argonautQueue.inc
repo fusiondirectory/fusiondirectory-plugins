@@ -326,7 +326,7 @@ class argonautQueue extends management
       $headpage = $this->getHeadpage();
       $tmp      = $headpage->getEntry($id);
       $entry    = $tmp['EVENT'];
-      $this->dialogObject = new argonautLogView($this->config, "", $entry, $this);
+      $this->dialogObject = new faiLogView($this->config, "", $entry, $this);
     }
   }
 
