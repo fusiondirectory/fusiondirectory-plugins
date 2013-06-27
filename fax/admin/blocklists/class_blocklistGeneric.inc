@@ -160,9 +160,8 @@ class blocklistGeneric extends simplePlugin
     $this->attributesInfo['section1']['attrs']['cn']->setUnique(TRUE);
   }
 
-  function save ()
+  protected function ldap_save ($cleanup = TRUE)
   {
-    $this->prepare_save();
     $ldap = $this->config->get_ldap_link();
     $old_oc = $this->saved_attributes['objectClass'];
     if (!is_array($old_oc)) {
@@ -171,7 +170,7 @@ class blocklistGeneric extends simplePlugin
     if (array_diff($old_oc, $this->attrs['objectClass'])) {
       $ldap->rmdir($this->dn);
     }
-    $this->ldap_save();
+    parent::ldap_save($cleanup);
   }
 
   function postCopyHook()
