@@ -118,7 +118,7 @@
     {/if}
       <td style='background-color: transparent;width:22px; padding-top:5px;padding-bottom:5px;'>
         <div style="width:20px; overflow:hidden; text-align:center;">
-          <img src='plugins/systems/images/select_application.png' alt='{t}Entry{/t}' class="center">
+          <img src='plugins/desktop-management/images/select_application.png' alt='{t}Entry{/t}' class="center">
         </div>
       </td>
       <td style="background-color: transparent;">

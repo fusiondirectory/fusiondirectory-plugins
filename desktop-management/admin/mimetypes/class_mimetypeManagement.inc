@@ -20,27 +20,27 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class applicationManagement extends management
+class mimetypeManagement extends management
 {
-  var $app_release = ""; // The currently selected release while in release management mode!
+  var $mime_release = ""; // The currently selected release while in release management mode!
 
   // Tab definition
-  protected $tabClass = "apptabs";
-  protected $tabType = "APPLICATIONTABS";
-  protected $aclCategory = "application";
-  protected $aclPlugin   = "application";
-  protected $objectName   = "application";
+  protected $tabClass     = "mimetabs";
+  protected $tabType      = "MIMETYPETABS";
+  protected $aclCategory  = "mimetypes";
+  protected $aclPlugin    = "mimetype";
+  protected $objectName   = "mimetype";
 
   /* Return plugin informations for acl handling */
   static function plInfo()
   {
     return array(
-      "plShortName"   => _("Applications"),
-      "plDescription" => _("Application management"),
-      "plIcon"        => "plugins/systems/images/iconApplication.png",
+      "plShortName"   => _("Mime types"),
+      "plDescription" => _("Mime type management"),
+      "plIcon"        => "plugins/desktop-management/images/iconMimetypes.png",
       "plSection"     => "admin",
-      "plPriority"    => 21,
-      "plCategory"    => array("application"),
+      "plPriority"    => 22,
+      "plCategory"    => array("mimetypes"),
 
       "plProvidedAcls" => array()
     );
@@ -51,29 +51,24 @@ class applicationManagement extends management
     $this->config = $config;
     $this->ui = $ui;
 
-    $filter_xml = "application-filter.xml";
-    $list_xml   = "application-list.xml";
-    $this->storagePoints= array(get_ou("applicationRDN"));
+    $filter_xml = "mimetype-filter.xml";
+    $list_xml   = "mimetype-list.xml";
+    $this->storagePoints= array(get_ou("mimetypeRDN"));
 
     // Build filter
-    if (session::global_is_set(get_class($this)."_filter")){
-      $filter= session::global_get(get_class($this)."_filter");
+    if (session::global_is_set(get_class($this)."_filter")) {
+      $filter = session::global_get(get_class($this)."_filter");
     } else {
-      $filter = new filter(get_template_path($filter_xml, true));
+      $filter = new filter(get_template_path($filter_xml, TRUE));
       $filter->setObjectStorage($this->storagePoints);
     }
     $this->setFilter($filter);
 
     // Build headpage
-    $headpage = new listing(get_template_path($list_xml, true));
+    $headpage = new listing(get_template_path($list_xml, TRUE));
     $headpage->setFilter($filter);
 
-    parent::__construct($config, $ui, "applications", $headpage);
-
-    $this->registerAction("edit_application","editEntry");
-    $this->registerAction("edit_environment","editEntry");
-    $this->registerAction("edit_appapplication","editEntry");
-    $this->registerAction("edit_mailapplication","editEntry");
+    parent::__construct($config, $ui, "mimetypes", $headpage);
   }
 }
 ?>
