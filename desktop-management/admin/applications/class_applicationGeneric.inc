@@ -177,7 +177,7 @@ class application extends simplePlugin
 
     $this->attributesAccess['cn']->setUnique(TRUE);
 
-    $filename = "./plugins/systems/images/default_icon.png";
+    $filename = "./plugins/desktop-management/images/default_icon.png";
 
     if (file_exists($filename)) {
       $fd = fopen ($filename, "rb");
