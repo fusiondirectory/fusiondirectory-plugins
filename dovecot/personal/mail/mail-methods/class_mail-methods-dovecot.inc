@@ -39,6 +39,10 @@ class mailMethodDovecot extends mailMethod
   {
     mailMethod::connect();
 
+    if ($this->config->get_cfg_value("mailMethodDisabled", "FALSE") == "TRUE") {
+      return FALSE;
+    }
+
     if (!count($this->config->data['SERVERS']['IMAP'])) {
       $this->error = _("There are no IMAP compatible mail servers defined!");
       @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,
@@ -109,6 +113,9 @@ class mailMethodDovecot extends mailMethod
   {
     if (!$this->quotaEnabled()) {
       return TRUE;
+    }
+    if ($this->config->get_cfg_value("mailMethodDisabled", "FALSE") == "TRUE") {
+      return FALSE;
     }
     if (!$this->is_connected()) {
       trigger_error('Method not connected, catch error.');
