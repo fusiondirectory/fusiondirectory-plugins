@@ -51,7 +51,7 @@ class servicePostfix extends simpleService {
           new StringAttribute (
             _('Visible full qualified hostname'), _('The full qualified host name.'),
             'postfixMyHostname', TRUE,
-            '', '', '/^[^\.]+\.([^\.]+\.)+[^\.]+$/', 'smtp.example.org'
+            'smtp', '', '/^[^\.]+.([^\.]+.)+[^\.]+$/'
           ),
           new StringAttribute (
             _('Visible full qualified domain'), _('The full qualified domain.'),
@@ -152,6 +152,9 @@ class servicePostfix extends simpleService {
     parent::__construct($config, $dn, $object);
     $this->attributesAccess['postfixMyDomain']->setDisabled(TRUE);
     $this->attributesAccess['postfixMyDomain']->setVisible(FALSE);
+    if ($this->postfixMyDomain != "") {
+      $this->postfixMyHostname .= '.'.$this->postfixMyDomain;
+    }
   }
 
   function prepare_save()
