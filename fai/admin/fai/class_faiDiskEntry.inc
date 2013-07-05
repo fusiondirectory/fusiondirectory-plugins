@@ -302,8 +302,6 @@ class faiDiskEntry extends plugin
    */
   function getPartitionList()
   {
-    $divlist = new divSelectBox("RaidList");
-
     /* Create a list of all available disks and partitions.
      * This list will then be used to display detailed info.
      */
@@ -354,7 +352,7 @@ class faiDiskEntry extends plugin
       }
       $list[$device] = $str;
     }
-    return($list);
+    return $list;
   }
 
 
@@ -512,7 +510,7 @@ class faiDiskEntry extends plugin
    */
   function generateParts()
   {
-    $divlist = new divSelectBox("DiskEntries");
+    $divselectbox = new divSelectBox("DiskEntries");
     foreach($this->partitions as $key => $part){
 
       // Create default table cols
@@ -579,9 +577,9 @@ class faiDiskEntry extends plugin
       }else{
         $fields = array($desc,$type,$mntp,$opt,$size,$action);
       }
-      $divlist->AddEntry($fields);
+      $divselectbox->AddEntry($fields);
     }
-    return($divlist->DrawList());
+    return $divselectbox->DrawList();
   }
 
 

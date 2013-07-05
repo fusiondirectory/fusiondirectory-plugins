@@ -405,9 +405,8 @@ class faiPackage extends faiPluginClass
      * Display UI / HTML / smarty
      ******/
 
-    /* Create divlist to display a list of all currently used packages
-     */
-    $divlist = new divSelectBox("faiPackages");
+    /* Create divselectbox to display a list of all currently used packages */
+    $divselectbox = new divSelectBox("faiPackages");
 
     ksort($this->usedPackages);
     if(is_array($this->usedPackages)){
@@ -461,7 +460,7 @@ class faiPackage extends faiPluginClass
         $field3 = array("html" => $version);
         $field4 = array("html" => $description);
         $field5 = array("html" => $actions, "attach" => "style='width:60px; border-right:0px;'");
-        $divlist->AddEntry(array($field1,$field2,$field3,$field4,$field5));
+        $divselectbox->AddEntry(array($field1,$field2,$field3,$field4,$field5));
       }
     }
 
@@ -482,11 +481,11 @@ class faiPackage extends faiPluginClass
       $smarty->assign($name."ACL",$this->getacl($name,preg_match("/freeze/",$this->FAIstate)));
     }
 
-    $smarty->assign("freeze", preg_match("/freeze/",$this->FAIstate));
-    $smarty->assign("divlist",$divlist->DrawList());
-    $smarty->assign("release" ,$this->FAIdebianRelease);
-    $smarty->assign("sections",$this->sections);
-    $smarty->assign("section" ,$strsec);
+    $smarty->assign("freeze",       preg_match("/freeze/", $this->FAIstate));
+    $smarty->assign("divselectbox", $divselectbox->DrawList());
+    $smarty->assign("release",      $this->FAIdebianRelease);
+    $smarty->assign("sections",     $this->sections);
+    $smarty->assign("section",      $strsec);
     $display.= $smarty->fetch(get_template_path('faiPackage.tpl', TRUE));
     return($display);
   }

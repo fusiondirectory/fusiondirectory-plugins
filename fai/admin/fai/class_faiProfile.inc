@@ -306,8 +306,8 @@ class faiProfile extends faiPluginClass
       return($this->classSelect->execute());
     }
 
-    $divlist  =new divSelectBox("Profile");
-    $divlist->SetSummary(_("This list displays all assigned class names for this profile."));
+    $divselectbox = new divSelectBox("Profile");
+    $divselectbox->SetSummary(_("This list displays all assigned class names for this profile."));
 
     /* item images */
     $objTypes['FAIhook']            = "<img src='plugins/fai/images/fai_hook.png' title='"._("Hook bundle")."' alt=''>";
@@ -324,7 +324,7 @@ class faiProfile extends faiPluginClass
     $linkupdown = "&nbsp;<input type='image' name='sortup_%s'   alt='up'    title='"._("Up")."'   src='images/lists/sort-up.png' align='top' >";
     $linkupdown.= "<input type='image' name='sortdown_%s' alt='down'  title='"._("Down")."' src='images/lists/sort-down.png' >";
 
-    /* Append fai classes to divlist */
+    /* Append fai classes to divselectbox */
     if($this->acl_is_readable("FAIclass")){
       foreach($this->FAIclasses as $usedClass){
         $str = "&nbsp;";
@@ -347,14 +347,14 @@ class faiProfile extends faiPluginClass
         } else {
           $field3 = array("string" => "", "attach"=>"style='border-right:none;'");
         }
-        $divlist->AddEntry(array($field1,$field2,$field3));
+        $divselectbox->AddEntry(array($field1,$field2,$field3));
       }
     }
 
     $smarty->assign("freeze", preg_match("/freeze/i",$this->FAIstate));
 
-    $smarty->assign("FAIclasses"  ,$this->FAIclasses);
-    $smarty->assign("divlist"     ,$divlist->DrawList());
+    $smarty->assign("FAIclasses",   $this->FAIclasses);
+    $smarty->assign("divselectbox", $divselectbox->DrawList());
 
     /* Magic quotes GPC, escapes every ' " \, to solve some security risks
      * If we post the escaped strings they will be escaped again

@@ -179,13 +179,9 @@ class faiProfileEntry extends plugin
       }
     }
 
-    /* Create a divlist to display all available class names with the depending object types */
-    $divlist = new divlist("ProfileEntry");
-    $divlist->SetPluginMode();
-    $divlist->SetSummary(_("This list displays all assigned class names for this profile."));
-    $divlist->SetEntriesPerPage(0);
-    $divlist->SetHeader(array(array("string"=> _("Class name")),
-                              array("string"=> _("Objects"),"attach"=>"style='border-right:0px;'")));
+    /* Create a divselectbox to display all available class names with the depending object types */
+    $divselectbox = new divSelectBox();
+    $divselectbox->SetHeader(array(_("Class name"),_("Objects")));
 
     /* Action button allows us to delete an entry */
     $action = "<input type='hidden' name='ON_PAGE_%KEY%' value='1'>
@@ -239,22 +235,22 @@ class faiProfileEntry extends plugin
         }
 
         /* Append to list */
-        $field1 = array("string"=> str_replace("%KEY%",base64_encode($usedClass),$action_check).$usedClass,"attach"=>"");
-        $field2 = array("string"=> $str,"attach"=>"style='border-right:0px;'");
-        $divlist->AddEntry(array($field1,$field2));
+        $field1 = array("html" => str_replace("%KEY%",base64_encode($usedClass),$action_check).$usedClass, "attach"=>"");
+        $field2 = array("html" => $str, "attach"=>"style='border-right:0px;'");
+        $divselectbox->AddEntry(array($field1,$field2));
       }
     }
 
     $smarty->assign("faihead"       , "");
-    $smarty->assign("failist"       , $divlist->DrawList());
+    $smarty->assign("failist"       , $divselectbox->DrawList());
     $smarty->assign("infoimage"     , get_template_path('images/info_small.png'));
     $smarty->assign("launchimage"   , get_template_path('images/lists/action.png'));
     $smarty->assign("alphabet"      , generate_alphabet());
     $smarty->assign("apply"         , apply_filter(TRUE));
     $smarty->assign("search_image"  , get_template_path('images/lists/search.png'));
 
-    $display.= $smarty->fetch(get_template_path('faiProfileEntry.tpl', TRUE));
-    return($display);
+    $display .= $smarty->fetch(get_template_path('faiProfileEntry.tpl', TRUE));
+    return $display;
   }
 
   /* Save data to object */
