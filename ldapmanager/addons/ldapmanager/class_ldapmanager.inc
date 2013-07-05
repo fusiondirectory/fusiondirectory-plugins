@@ -163,7 +163,7 @@ class ldapmanager extends simplePlugin
             ERROR_DIALOG);
       } else {
         $ldap = $this->config->get_ldap_link();
-        $data = $ldap->generateLdif(LDAP::fix($dn), $this->export_filter, array(), $scope);
+        $data = $ldap->generateLdif(LDAP::fix($dn), $this->export_filter, $scope);
         if ($data === NULL) {
           msg_dialog::display(_('Error'),
               sprintf(_('Failed to generate ldap export, error was "%s"!'), $ldap->get_error()),
