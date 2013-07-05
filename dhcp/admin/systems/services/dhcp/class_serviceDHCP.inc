@@ -335,8 +335,7 @@ class serviceDHCP extends goService
     $DhcpList = new divSelectBox("dhcpSections");
     $DhcpList->SetHeight(400);
 
-    /* Add entries to divlist
-     */
+    /* Add entries to DhcpList */
     $editImgIns = "<input type='image' src='images/lists/new.png' name='insertDhcp_%s' title='"._("Insert new DHCP section")."'>".
       "<input type='image' src='images/lists/edit.png' name='editDhcp_%s' title='"._("Edit DHCP section")."'>".
       "<input type='image' src='images/lists/trash.png' name='delDhcp_%s' title='"._("Remove DHCP section")."'>";

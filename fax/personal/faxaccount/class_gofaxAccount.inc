@@ -421,7 +421,7 @@ class gofaxAccount extends plugin
         $this->departments[preg_replace("/^[^,]+,/","",$base)] = ".. - ["._("back")."]";
       }
 
-      /* Fetch all returned departments an add them to our divlist */
+      /* Fetch all returned departments an add them to our divselectbox */
       while($value = $ldap->fetch()){
         if($value["description"][0]!=".."){
           $this->departments[$value['dn']]=LDAP::fix(convert_department_dn($value['dn'])." - [".$value["description"][0]."]");
@@ -517,7 +517,7 @@ class gofaxAccount extends plugin
       // Defining Links
       $linkopen = "<a href='?plug=".$_GET['plug']."&amp;act=dep_open&amp;dep_id=%s'>%s</a>";
 
-      /* Insert departments in divlist*/
+      /* Insert departments in divselectbox */
       foreach($this->departments as $key=> $val){
         if(!isset($this->config->departments[trim($key)])){
           $this->config->departments[trim($key)]="";

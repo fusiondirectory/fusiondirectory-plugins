@@ -299,8 +299,7 @@ class serviceDNS extends goService
     $ZoneList = new divSelectBox("dNSZones");
     $ZoneList -> SetHeight(254);
 
-    /* Add entries to divlist
-     */
+    /* Add entries to divselectbox */
     $editImg = "<input type='image' src='images/lists/edit.png' name='editZone_%s' alt='edit' title='edit'>";
     if($this->acl_is_removeable()){
       $editImg.= "<input type='image' src='images/lists/trash.png' name='delZone_%s' alt='delete' title='delete'>";

@@ -52,7 +52,7 @@ class DaemonEvent
   protected $mode         = SCHEDULED_EVENT; // Default action is sheduled.
 
   /* Sub dialog hanlding */
-  protected $target_divlist       = NULL;     // The divlist used by the target add dialog
+  protected $target_divlist       = NULL;     // The divselectbox used by the target add dialog
   protected $target_add_list_used = FALSE;    // Indicates that the target add list was used.
   protected $time_select_used     = FALSE;    // Indicates that we have used the timestamp select boxes.
   protected $target_list_used     = FALSE;    // Target list was diaplayed?
@@ -252,16 +252,16 @@ class DaemonEvent
   public function get_target_list()
   {
     $this->target_list_used = TRUE;
-    $divlist = new divSelectBox("EventTargets");
+    $divselectbox = new divSelectBox("EventTargets");
     foreach ($this->a_targets as $key => $target) {
-      $divlist->AddEntry(array(
+      $divselectbox->AddEntry(array(
             array("string"  => $target),
             array("html"  => "<input type='image' src='images/lists/trash.png' title='"._("Remove")."' name='del_target_".$key."'>",
               "attach"  => "style='width:20px; border-right:0px;'")
             ));
     }
     $list_footer = "<input type='submit' name='open_target_list' value='"._("Add")."'>";
-    return $divlist->DrawList().$list_footer;
+    return $divselectbox->DrawList().$list_footer;
   }
 
 
@@ -277,7 +277,7 @@ class DaemonEvent
     }
 
     $smarty = get_smarty();
-    $smarty->assign("divlist", $this->target_divlist->execute());
+    $smarty->assign("divselectbox", $this->target_divlist->execute());
     return $smarty->fetch(get_template_path('target_list.tpl', TRUE, dirname(__FILE__)));
   }
 

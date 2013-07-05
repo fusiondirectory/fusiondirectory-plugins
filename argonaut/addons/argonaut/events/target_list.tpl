@@ -1,4 +1,4 @@
-{$divlist}
+{$divselectbox}
 
 <p class='seperator'></p>
 <div style='text-align:right;width:100%;padding-top:5px;padding-right:5px;padding-bottom:5px;'>

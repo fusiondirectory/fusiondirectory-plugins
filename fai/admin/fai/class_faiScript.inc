@@ -326,8 +326,7 @@ class faiScript extends faiPluginClass
     /* Divlist            added 23.02.2006
        Containing FAIscripts
      */
-    $divlist = new divlist("FAIscripts");
-    $divlist->SetEntriesPerPage(0);
+    $divselectbox = new divSelectBox("FAIscripts");
     $plug = $_GET['plug'];
 
     if($this->sort_order == "up"){
@@ -344,20 +343,17 @@ class faiScript extends faiPluginClass
       $sort_prio = $dir;
     }
 
-    $divlist->SetHeader(array(  array("string"=>"<a href='?plug=".$plug."&amp;sort=name'>"._("Name").$sort_name."</a>"),
-                                array("string"=>"<a href='?plug=".$plug."&amp;sort=priority'>".$sort_prio._("Priority")."</a>",
-                                      "attach"=>"style='width:100px;'"),
-                                array("string"=>_("Download"),
-                                      "attach"=>"style='width:100px;'"),
-                                array("string"=>_("Action"),
-                                      "attach"=>"style='border-right: 0px;width:100px;text-align:right;'")));
-    $divlist->SetHeight(300);
-    $divlist->SetWidth("100%");
-    foreach($this->getList(true) as $key => $name){
-
-      $dn= $this->acl_base_for_current_object($name['dn']);
-      $acl = $this->ui->get_permissions($dn,"fai/faiScriptEntry")  ;
-      $act = "";
+    $divselectbox->SetHeaders(array(
+      "<a href='?plug=".$plug."&amp;sort=name'>"._("Name").$sort_name."</a>",
+      "<a href='?plug=".$plug."&amp;sort=priority'>".$sort_prio._("Priority")."</a>",
+      _("Download"),
+      _("Action"),
+    ));
+    $divselectbox->setHeight(300);
+    foreach ($this->getList(true) as $key => $name) {
+      $dn   = $this->acl_base_for_current_object($name['dn']);
+      $acl  = $this->ui->get_permissions($dn,"fai/faiScriptEntry")  ;
+      $act  = "";
 
       /* Hide delete icon if this object is freezed */
       if(preg_match("/freeze/", $this->FAIstate)){
@@ -372,7 +368,7 @@ class faiScript extends faiPluginClass
       /* Check acls for download icon */
       $s_acl = $this->ui->get_permissions($dn,"fai/faiScriptEntry","FAIscript")  ;
       if(($this->SubObjects[$key]['status'] == "new") || ($this->SubObjects[$key]['dn'] == "new") || !preg_match("/r/",$s_acl)){
-        $down = "";
+        $down = "&nbsp;";
       }else{
         $down = "<a href='?plug=".$_GET['plug']."&getFAIscript=".base64_encode($key)."'>
           <img src='images/save.png' alt='"._("Download")."' title='"._("Download")."' border=0>
@@ -382,14 +378,16 @@ class faiScript extends faiPluginClass
       /* Check if we are allowed to view this object */
       $s_acl = $this->ui->get_permissions($dn,"fai/faiScriptEntry","cn")  ;
       if(preg_match("/r/",$s_acl)){
-        $divlist->AddEntry(array( array("string"=>"<a href='?plug=".$_GET['plug']."&amp;act=edit&amp;id=".base64_encode($key)."'>".$name['name']."</a>"),
-              array("string"=>$name['FAIpriority'] , "attach" => "style='width:100px;'"),
-              array("string"=>$down , "attach" => "style='width:100px;'"),
-              array("string"=>str_replace("%s",base64_encode($key),$act),
-                "attach"=>"style='border-right: 0px;width:100px;text-align:right;'")));
+        $divselectbox->AddEntry(array(
+          array("html"    => "<a href='?plug=".$_GET['plug']."&amp;act=edit&amp;id=".base64_encode($key)."'>".$name['name']."</a>"),
+          array("string"  => $name['FAIpriority']),
+          array("html"    => $down),
+          array("html"    => str_replace("%s",base64_encode($key),$act),
+                "attach"  => "style='border-right: 0px;text-align:right;'")
+        ));
       }
     }
-    $smarty->assign("Entry_divlist",$divlist->DrawList());
+    $smarty->assign("Entry_divlist", $divselectbox->DrawList());
 
     foreach($this->attributes as $attrs){
       $smarty->assign($attrs,($this->$attrs));

@@ -318,8 +318,8 @@ class faiHook extends faiPluginClass
        Containing FAIscripts
      */
 
-    $divlist = new divSelectBox("FAIhooks");
-    $divlist->setHeight(400);
+    $divselectbox = new divSelectBox("FAIhooks");
+    $divselectbox->setHeight(400);
 
     foreach($this->getList(true) as $key => $name){
 
@@ -352,7 +352,7 @@ class faiHook extends faiPluginClass
       if(preg_match("/r/",$s_acl)){
 
         $edit_link = "<a href='?plug=".$_GET['plug']."&amp;act=edit&amp;id=".base64_encode($key)."'>".$name['name']."</a>";
-        $divlist->AddEntry(array(
+        $divselectbox->AddEntry(array(
           array("html"=>$edit_link),
           array("html"=>$down , "attach" => "style='width:20px;'"),
           array("html"=>str_replace("%s",base64_encode($key),$act),
@@ -360,7 +360,7 @@ class faiHook extends faiPluginClass
         ));
       }
     }
-    $smarty->assign("Entry_divlist",$divlist->DrawList());
+    $smarty->assign("Entry_divlist",$divselectbox->DrawList());
     /* Divlist creation complete
      */
 

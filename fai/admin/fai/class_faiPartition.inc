@@ -301,7 +301,6 @@ class faiPartition extends plugin
    */
   function getRaidList()
   {
-    $divlist = new divSelectBox("RaidList");
     $disks = $this->parent->parent->disks;
     $objs = array();
     foreach($disks as $disk){
@@ -334,7 +333,7 @@ class faiPartition extends plugin
       $str = str_pad($str,80," ");
       $list[$name] = preg_replace("/ /","&nbsp;",$str);
     }
-    return($list);
+    return $list;
   }
 
   function save_object()

@@ -69,7 +69,7 @@
   <tr>
     <td>
       <h2><img class="center" alt="" src="plugins/fai/images/fai_packages.png" title="{t}Used packages{/t}">&nbsp;{t}Used packages{/t}</h2>
-      {$divlist}
+      {$divselectbox}
     </td>
   </tr>
 {render acl=$FAIpackageACL}

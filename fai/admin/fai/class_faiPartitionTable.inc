@@ -400,8 +400,8 @@ class faiPartitionTable extends faiPluginClass
     }
 
     /* Divlist containing disks */
-    $divlist = new divSelectBox("FAItemplates");
-    $divlist->setHeight(400);
+    $divselectbox = new divSelectBox("FAItemplates");
+    $divselectbox->setHeight(400);
     foreach($this->disks as $key => $disk){
       $act = "";
 
@@ -424,7 +424,7 @@ class faiPartitionTable extends faiPluginClass
         $types= array("old" => "plugins/fai/images/fai_partitionTable.png", "disk" => "plugins/fai/images/fai_partitionTable.png",
             "raid" => "plugins/fai/images/raid.png", "lvm" => "plugins/ogroups/images/list_ogroup.png");
         $type = isset($disk['FAIdiskType'])?$types[$disk['FAIdiskType']]:$types['old'];
-        $divlist->AddEntry(array(
+        $divselectbox->AddEntry(array(
               array("html"=> "<img border='0' src='".$type."'>", "attach"=>"style='width:16px'"),
               array("html"=> $edit_link, "attach"=>"style='width:100px'"),
               array("html"=> $disk['description']),
@@ -433,10 +433,10 @@ class faiPartitionTable extends faiPluginClass
                 "attach"=>"style='border-right: 0px;width:50px;text-align:right;'")));
       }
     }
-    $smarty->assign("Entry_divlist",$divlist->DrawList());
+    $smarty->assign("Entry_divlist",$divselectbox->DrawList());
 
-    $display.= $smarty->fetch(get_template_path('faiPartitionTable.tpl', TRUE));
-    return($display);
+    $display .= $smarty->fetch(get_template_path('faiPartitionTable.tpl', TRUE));
+    return $display;
   }
 
 
