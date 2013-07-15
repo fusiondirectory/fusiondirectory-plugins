@@ -51,7 +51,7 @@ class servicePostfix extends simpleService {
           new StringAttribute (
             _('Visible full qualified hostname'), _('The full qualified host name.'),
             'postfixMyHostname', TRUE,
-            'smtp', '', '/^[^\.]+.([^\.]+.)+[^\.]+$/'
+            '', '', '/^[^\.]+\.([^\.]+\.)+[^\.]+$/', 'smtp.example.org'
           ),
           new StringAttribute (
             _('Visible full qualified domain'), _('The full qualified domain.'),
@@ -100,7 +100,7 @@ class servicePostfix extends simpleService {
                 new SelectAttribute ('', '', 'filter', TRUE, array('smtp'), '', array('SMTP')),
                 new StringAttribute ('', '', 'second'),
               ),
-              '/^(.+) ([^:]+):(.+)$/',
+              '/^(.*) ([^:]+):(.*)$/',
               '%s %s:%s',
               '', _('Transport')
             )
@@ -119,7 +119,7 @@ class servicePostfix extends simpleService {
                 new SelectAttribute ('', '', 'filter2', TRUE, array('FILTER'), 'FILTER'),
                 new StringAttribute ('', '', 'second2'),
               ),
-              '/^(.+) ([^:]+) (.+)$/',
+              '/^(.*) ([^:]+) (.*)$/',
               '%s %s %s',
               '', _('Restrictions for sender')
             )
@@ -133,7 +133,7 @@ class servicePostfix extends simpleService {
                 new SelectAttribute ('', '', 'filter3', TRUE, array('FILTER'), 'FILTER'),
                 new StringAttribute ('', '', 'second3'),
               ),
-              '/^(.+) ([^:]+) (.+)$/',
+              '/^(.*) ([^:]+) (.*)$/',
               '%s %s %s',
               '', _('Restrictions for recipient')
             )
