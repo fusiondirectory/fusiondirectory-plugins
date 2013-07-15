@@ -51,7 +51,7 @@ class servicePostfix extends simpleService {
           new StringAttribute (
             _('Visible full qualified hostname'), _('The full qualified host name.'),
             'postfixMyHostname', TRUE,
-            'smtp', '', '/^[^\.]+.([^\.]+.)+[^\.]+$/'
+            '', '', '/^[^\.]+\.([^\.]+\.)+[^\.]+$/', 'smtp.example.org'
           ),
           new StringAttribute (
             _('Visible full qualified domain'), _('The full qualified domain.'),
