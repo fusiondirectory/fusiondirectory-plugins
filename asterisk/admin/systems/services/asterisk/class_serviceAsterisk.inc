@@ -50,9 +50,23 @@ class serviceAsterisk extends simpleService {
             _("Local dial prefix"), _("Local dial prefix"),
             "goFonAreaCode", TRUE
           ),
+          new SelectAttribute (
+            _('Driver'), _('Driver to use to contact this database.'),
+            'fdAsteriskDriver', TRUE
+          ),
         )
       ),
     );
+  }
+
+  function __construct(&$config, $dn = NULL, $object = NULL)
+  {
+    parent::__construct($config, $dn, $object);
+    $drivers = array(
+      'fbsql','ibase','mssql','mysql','mysqli','oci8','odbc','pgsql','querysim','sqlite','sqlsrv'
+    );
+    sort($drivers);
+    $this->attributesAccess['fdAsteriskDriver']->setChoices($drivers);
   }
 
   function allow_remove()
