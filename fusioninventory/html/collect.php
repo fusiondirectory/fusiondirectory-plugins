@@ -68,43 +68,28 @@ if (preg_match('/QUERY>PROLOG<\/QUERY/', $xml)) {
     $infos = array('fdCpus' => array());
 
     $data = xml::xml2array($xml, 1);
-    $cpus = $data['REQUEST']['CONTENT']['CPUS'];
+    $data = $data['REQUEST']['CONTENT'];
+    $cpus = $data['CPUS'];
     if (!is_numeric(key($cpus))) {
       $cpus = array($cpus);
     }
-    foreach ($cpus as $cpu) {
-      $infos['fdCpus'][] = join('|', array_map(
-        function ($key, $value)
-        {
-          return $key.":".$value;
-        },
-        array_keys($cpu), array_values($cpu)
-      ));
-    }
-    $os = $data['REQUEST']['CONTENT']['OPERATINGSYSTEM'];
-    if (is_numeric(key($os))) {
-      $os = $os[0];
-    }
-    $infos['fdOperatingSystem'] = join('|', array_map(
-      function ($key, $value)
-      {
-        return $key.":".$value;
-      },
-      array_keys($os), array_values($os)
-    ));
-
-    /* Check if CONFIG_FILE is accessible */
-    if (!is_readable(CONFIG_DIR."/".CONFIG_FILE)) {
-      die(_("FusionDirectory configuration %s/%s is not readable. Aborted."));
+    $os = $data['OPERATINGSYSTEM'];
+    if (!is_numeric(key($os))) {
+      $os = array($os);
     }
 
     $macs = array();
-    foreach ($data['REQUEST']['CONTENT']['NETWORKS'] as $network) {
+    foreach ($data['NETWORKS'] as $network) {
       if (isset($network['MACADDR']) && ($network['MACADDR'] != "00:00:00:00:00:00")) {
         $macs[] = $network['MACADDR'];
       }
     }
     $macs = array_unique($macs);
+
+    /* Check if CONFIG_FILE is accessible */
+    if (!is_readable(CONFIG_DIR."/".CONFIG_FILE)) {
+      die(sprintf(_("FusionDirectory configuration %s/%s is not readable. Aborted."), CONFIG_DIR, CONFIG_FILE));
+    }
 
     /* Parse configuration file */
     $config = new config(CONFIG_DIR."/".CONFIG_FILE, $BASE_DIR);
@@ -115,21 +100,45 @@ if (preg_match('/QUERY>PROLOG<\/QUERY/', $xml)) {
     }
     $config->set_current($directory);
     session::global_set('config', $config);
-    $ldap   = $config->get_ldap_link();
-    $ldap->search('(|(macAddress='.join(')(macAddress=', $macs).'))');
-    if ($attrs = $ldap->fetch()) {
-      $dn = $attrs['dn'];
+    $ldap = $config->get_ldap_link();
 
-      if (!in_array('fdInventoryObject', $attrs['objectClass'])) {
-        $infos['objectClass'] = $attrs['objectClass'];
-        unset($infos['objectClass']['count']);
-        $infos['objectClass'][] = 'fdInventoryObject';
-      }
+    $dn = 'cn='.$_SERVER['REMOTE_ADDR'].','.get_ou('inventoryRDN').$config->current['BASE'];
+    $ldap->cat($dn);
+
+    if ($ldap->count()) {
+      /* Emtpy the subtree */
+      /* TODO */
+    } else {
+      /* Create root node */
+      $ldap->cd($config->current['BASE']);
+      $ldap->create_missing_trees(get_ou('inventoryRDN').$config->current['BASE']);
       $ldap->cd($dn);
-      $ldap->modify($infos);
+      $ldap->add(
+        array(
+          'cn'          => $_SERVER['REMOTE_ADDR'],
+          'objectClass' => array('fdInventoryContent')
+        )
+      );
+    }
+    foreach ($cpus as $i => $cpu) {
+      $ldap->cd('cn=cpu'.$i.','.$dn);
+      $ldap->add(
+        array(
+          'cn' => 'cpu'.$i,
+          'objectClass'             => array('fdInventoryCpu'),
+          'fdInventoryName'         => $cpu['NAME'],
+          'fdInventoryCore'         => $cpu['CORE'],
+          'fdInventoryFamilyNumber' => $cpu['FAMILYNUMBER'],
+          'fdInventoryManufacturer' => $cpu['MANUFACTURER'],
+          'fdInventoryModel'        => $cpu['MODEL'],
+          'fdInventorySpeed'        => $cpu['SPEED'],
+          'fdInventoryStepping'     => $cpu['STEPPING'],
+          'fdInventoryThread'       => $cpu['THREAD'],
+        )
+      );
     }
 
-    if (!file_put_contents($invFile, "$dn\n".print_r($data['REQUEST']['CONTENT']['OPERATINGSYSTEM'], TRUE))) {
+    if (!file_put_contents($invFile, "$dn\n".print_r($data, TRUE))) {
         error_log("Failed to write ");
     }
 }
