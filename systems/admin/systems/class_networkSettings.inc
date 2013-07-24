@@ -1227,7 +1227,7 @@ class networkSettings extends plugin
   {
     $oldEntries = DNS::getDNSHostEntries($this->config, $this->OrigCn);
     $newEntries = $this->dnsEntry;
-    if (array_differs($newEntries['RECORDS'], $oldEntries['RECORDS'])) {
+    if (array_differs_recursive($newEntries['RECORDS'], $oldEntries['RECORDS'])) {
       DNS::touchDNSZone($this->config, $this->dnsEntry['zoneName']);
     }
   }
