@@ -65,8 +65,6 @@ if (preg_match('/QUERY>PROLOG<\/QUERY/', $xml)) {
        </REPLY>";
     $invFile = sprintf('%s/%s.xml', $dumpDir, $_SERVER['REMOTE_ADDR']);
 
-    $infos = array('fdCpus' => array());
-
     $data = xml::xml2array($xml, 1);
     $data = $data['REQUEST']['CONTENT'];
     $cpus = $data['CPUS'];
@@ -84,7 +82,7 @@ if (preg_match('/QUERY>PROLOG<\/QUERY/', $xml)) {
         $macs[] = $network['MACADDR'];
       }
     }
-    $macs = array_unique($macs);
+    $macs = array_values(array_unique($macs));
 
     /* Check if CONFIG_FILE is accessible */
     if (!is_readable(CONFIG_DIR."/".CONFIG_FILE)) {
@@ -105,40 +103,88 @@ if (preg_match('/QUERY>PROLOG<\/QUERY/', $xml)) {
     $dn = 'cn='.$_SERVER['REMOTE_ADDR'].','.get_ou('inventoryRDN').$config->current['BASE'];
     $ldap->cat($dn);
 
+  $msg = "";
     if ($ldap->count()) {
       /* Emtpy the subtree */
-      /* TODO */
+      $ldap->rmdir_recursive($dn);
+      if (!$ldap->success()) {
+        $msg.="error :".$ldap->get_error()."\n";
+      }
     } else {
-      /* Create root node */
+      /* Make sure branch is existing */
       $ldap->cd($config->current['BASE']);
       $ldap->create_missing_trees(get_ou('inventoryRDN').$config->current['BASE']);
-      $ldap->cd($dn);
-      $ldap->add(
-        array(
-          'cn'          => $_SERVER['REMOTE_ADDR'],
-          'objectClass' => array('fdInventoryContent')
-        )
-      );
     }
-    foreach ($cpus as $i => $cpu) {
-      $ldap->cd('cn=cpu'.$i.','.$dn);
-      $ldap->add(
-        array(
-          'cn' => 'cpu'.$i,
-          'objectClass'             => array('fdInventoryCpu'),
-          'fdInventoryName'         => $cpu['NAME'],
-          'fdInventoryCore'         => $cpu['CORE'],
-          'fdInventoryFamilyNumber' => $cpu['FAMILYNUMBER'],
-          'fdInventoryManufacturer' => $cpu['MANUFACTURER'],
-          'fdInventoryModel'        => $cpu['MODEL'],
-          'fdInventorySpeed'        => $cpu['SPEED'],
-          'fdInventoryStepping'     => $cpu['STEPPING'],
-          'fdInventoryThread'       => $cpu['THREAD'],
-        )
-      );
+    /* Create root node */
+    $ldap->cd($dn);
+    $ldap->add(
+      array(
+        'cn'          => $_SERVER['REMOTE_ADDR'],
+        'objectClass' => array('fdInventoryContent'),
+        'macAddress'  => $macs,
+      )
+    );
+    if (!$ldap->success()) {
+      $msg.="error :".$ldap->get_error()."\n";
     }
 
-    if (!file_put_contents($invFile, "$dn\n".print_r($data, TRUE))) {
+    $infos = array(
+      'CPUS' => array(
+        'cn'    => 'cpu',
+        'oc'    => 'fdInventoryCpu',
+        'attrs' => array(
+          'NAME','CORE','FAMILYNUMBER','MANUFACTURER',
+          'MODEL','SPEED','STEPPING','THREAD'
+        )
+      ),
+      'OPERATINGSYSTEM' => array(
+        'cn'    => 'os',
+        'oc'    => 'fdInventoryOperatingSystem',
+        'attrs' => array(
+          'NAME','FULL_NAME','VERSION',
+          'KERNEL_NAME','KERNEL_VERSION'
+        )
+      ),
+      'NETWORKS' => array(
+        'cn'    => 'network',
+        'oc'    => 'fdInventoryNetwork',
+        'attrs' => array(
+          'DESCRIPTION','IPADDRESS','IPMASK','IPSUBNET',
+          'MACADDR','STATUS','VIRTUALDEV','DRIVER','PCISLOT',
+          'IPADDRESS6','IPMASK6','IPSUBNET6',
+        )
+      )
+    );
+
+    foreach ($infos as $key => $info) {
+      if (!isset($data[$key])) {
+        continue;
+      }
+      $objects = $data[$key];
+      if (!is_numeric(key($objects))) {
+        $objects = array($objects);
+      }
+      foreach ($objects as $i => $object) {
+        $cn         = $info['cn'].$i;
+        $ldap_attrs = array(
+          'cn' => $cn,
+          'objectClass' => $info['oc'],
+        );
+        foreach ($info['attrs'] as $attr) {
+          if (isset($object[$attr])) {
+            $ldap_attrs['fdInventory'.preg_replace('/_/', '', $attr)] = $object[$attr];
+          }
+        }
+        $msg.=print_r($ldap_attrs, TRUE);
+        $ldap->cd('cn='.$cn.','.$dn);
+        $ldap->add($ldap_attrs);
+        if (!$ldap->success()) {
+          $msg.="error :".$ldap->get_error()."\n";
+        }
+      }
+    }
+
+    if (!file_put_contents($invFile, "$dn\n$msg\n".print_r($data, TRUE))) {
         error_log("Failed to write ");
     }
 }

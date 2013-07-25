@@ -58,5 +58,9 @@ class fiInventory extends simplePlugin
 
     $this->attributesAccess['fdOperatingSystem']->setDisabled(TRUE);
   }
+
+  function save()
+  {
+  }
 }
 ?>
