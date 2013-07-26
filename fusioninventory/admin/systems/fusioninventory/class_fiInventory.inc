@@ -18,25 +18,6 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-/* Dummy attribute class in order to give stats information to the template */
-class FakeAttribute extends Attribute
-{
-  private $var_name;
-
-  function __construct ($var)
-  {
-    parent::__construct("Fake one", "", $var, FALSE, "", "noacl");
-    $this->setInLdap(FALSE);
-    $this->var_name = $var;
-  }
-
-  function renderAttribute(&$attributes, $readOnly)
-  {
-    $var = $this->var_name;
-    $attributes[$this->getLdapName()] = $this->getValue();
-  }
-}
-
 class fiInventory extends simplePlugin
 {
   var $objectclasses  = array();
@@ -71,16 +52,38 @@ class fiInventory extends simplePlugin
   {
     parent::__construct($config, $dn, $object);
 
-    $this->inventory_infos = $this->get_inventory_infos('cn=192.168.1.52,ou=inventory,dc=mcmic,dc=test');
+    $this->inventory_infos = NULL;
+  }
+
+  function execute()
+  {
+    if ($this->inventory_infos === NULL) {
+      $this->inventory_infos = $this->get_inventory_infos();
+    }
+    $smarty = get_smarty();
+    $smarty->assign('usePrototype', 'true');
+    $smarty->append('css_files', 'plugins/fusioninventory/inventory.css');
+    return parent::execute();
   }
 
   function save()
   {
   }
 
-  function get_inventory_infos($dn)
+  function get_inventory_infos()
   {
+    if (!isset($this->parent)) {
+      return array();
+    }
+    $macAddress = $this->parent->getBaseObject()->netConfigDNS->macAddress;
     $ldap = $this->config->get_ldap_link();
+    $ldap->cd(get_ou('inventoryRDN').$this->config->current['BASE']);
+    $ldap->search('(&(objectClass=fdInventoryContent)(macAddress='.$macAddress.'))');
+    if ($attrs = $ldap->fetch()) {
+      $dn = $attrs['dn'];
+    } else {
+      return array();
+    }
     $ldap->ls('(objectClass=*)', $dn);
     $infos = array();
     while ($attrs = $ldap->fetch()) {

@@ -4,20 +4,25 @@
   </span>
   <div>
     {foreach from=$attributes item=infos}
-    <ul>
+    <ul class="inventory">
       {foreach from=$infos key=cn item=object}
-      <li style="list-style-image:url(plugins/systems/images/select_server.png)" class="{$object.class}">
-        {$cn}
-        <ul>
-          {foreach from=$object.infos key=label item=value}
-            <li style="list-style:disc">
-              {$label}:&nbsp;{$value}
-            </li>
-          {/foreach}
-        </ul>
+      <li class="{$object.class}">
+        <a href="#" onclick="Effect.toggle('toggle_{$cn}', 'blind', {literal}{ duration: 0.3 }{/literal}); return false;">
+          {$cn}
+        </a>
+        <div id="toggle_{$cn}" style="overflow: visible; display: none;">
+          <table>
+            {foreach from=$object.infos key=label item=value}
+              <tr>
+                <th>{$label}</th><td>{$value}</td>
+              </tr>
+            {/foreach}
+          </table>
+        </div>
       </li>
       {/foreach}
     </ul>
     {/foreach}
   </div>
 </div>
+

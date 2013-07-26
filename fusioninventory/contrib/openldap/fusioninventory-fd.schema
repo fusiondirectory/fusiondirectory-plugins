@@ -3,193 +3,61 @@
 ##
 
 # Attributes
+
 #Strings
-attributetype ( 1.3.6.1.4.1.38414.39.1.1 NAME 'fdInventoryName'
-  DESC 'FusionDirectory - name'
+
+attributetype ( 1.3.6.1.4.1.38414.40.10.1 NAME 'fiAgentServer'
+  DESC 'FusionInventory - server'
   EQUALITY caseExactMatch
   SUBSTR caseExactSubstringsMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
   SINGLE-VALUE )
 
-attributetype ( 1.3.6.1.4.1.38414.39.1.2 NAME 'fdInventoryManufacturer'
-  DESC 'FusionDirectory - manufacturer'
+attributetype ( 1.3.6.1.4.1.38414.40.10.2 NAME 'fiAgentHttpdIp'
+  DESC 'FusionInventory - httpd-ip'
   EQUALITY caseExactMatch
   SUBSTR caseExactSubstringsMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
   SINGLE-VALUE )
 
-attributetype ( 1.3.6.1.4.1.38414.39.1.3 NAME 'fdInventoryFullName'
-  DESC 'FusionDirectory - '
+attributetype ( 1.3.6.1.4.1.38414.40.10.3 NAME 'fiAgentHttpdTrust'
+  DESC 'FusionInventory - httpd-trust'
   EQUALITY caseExactMatch
   SUBSTR caseExactSubstringsMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
   SINGLE-VALUE )
 
-attributetype ( 1.3.6.1.4.1.38414.39.1.4 NAME 'fdInventoryVersion'
-  DESC 'FusionDirectory - '
-  EQUALITY caseExactMatch
-  SUBSTR caseExactSubstringsMatch
-  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
-  SINGLE-VALUE )
+#Int
 
-attributetype ( 1.3.6.1.4.1.38414.39.1.5 NAME 'fdInventoryKernelName'
-  DESC 'FusionDirectory - '
-  EQUALITY caseExactMatch
-  SUBSTR caseExactSubstringsMatch
-  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
-  SINGLE-VALUE )
-
-attributetype ( 1.3.6.1.4.1.38414.39.1.6 NAME 'fdInventoryKernelVersion'
-  DESC 'FusionDirectory - '
-  EQUALITY caseExactMatch
-  SUBSTR caseExactSubstringsMatch
-  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
-  SINGLE-VALUE )
-
-attributetype ( 1.3.6.1.4.1.38414.39.1.12 NAME 'fdInventoryModel'
-  DESC 'FusionDirectory - '
-  EQUALITY caseExactMatch
-  SUBSTR caseExactSubstringsMatch
-  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
-  SINGLE-VALUE )
-
-attributetype ( 1.3.6.1.4.1.38414.39.1.13 NAME 'fdInventoryDescription'
-  DESC 'FusionDirectory - '
-  EQUALITY caseExactMatch
-  SUBSTR caseExactSubstringsMatch
-  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
-  SINGLE-VALUE )
-
-attributetype ( 1.3.6.1.4.1.38414.39.1.14 NAME 'fdInventoryIPAddress'
-  DESC 'FusionDirectory - '
-  EQUALITY caseExactMatch
-  SUBSTR caseExactSubstringsMatch
-  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
-  SINGLE-VALUE )
-
-attributetype ( 1.3.6.1.4.1.38414.39.1.15 NAME 'fdInventoryIPMask'
-  DESC 'FusionDirectory - '
-  EQUALITY caseExactMatch
-  SUBSTR caseExactSubstringsMatch
-  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
-  SINGLE-VALUE )
-
-attributetype ( 1.3.6.1.4.1.38414.39.1.16 NAME 'fdInventoryIPSubnet'
-  DESC 'FusionDirectory - '
-  EQUALITY caseExactMatch
-  SUBSTR caseExactSubstringsMatch
-  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
-  SINGLE-VALUE )
-
-attributetype ( 1.3.6.1.4.1.38414.39.1.17 NAME 'fdInventoryMacAddr'
-  DESC 'FusionDirectory - '
-  EQUALITY caseExactMatch
-  SUBSTR caseExactSubstringsMatch
-  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
-  SINGLE-VALUE )
-
-attributetype ( 1.3.6.1.4.1.38414.39.1.18 NAME 'fdInventoryStatus'
-  DESC 'FusionDirectory - '
-  EQUALITY caseExactMatch
-  SUBSTR caseExactSubstringsMatch
-  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
-  SINGLE-VALUE )
-
-attributetype ( 1.3.6.1.4.1.38414.39.1.20 NAME 'fdInventoryIPAddress6'
-  DESC 'FusionDirectory - '
-  EQUALITY caseExactMatch
-  SUBSTR caseExactSubstringsMatch
-  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
-  SINGLE-VALUE )
-
-attributetype ( 1.3.6.1.4.1.38414.39.1.21 NAME 'fdInventoryIPMask6'
-  DESC 'FusionDirectory - '
-  EQUALITY caseExactMatch
-  SUBSTR caseExactSubstringsMatch
-  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
-  SINGLE-VALUE )
-
-attributetype ( 1.3.6.1.4.1.38414.39.1.22 NAME 'fdInventoryIPSubnet6'
-  DESC 'FusionDirectory - '
-  EQUALITY caseExactMatch
-  SUBSTR caseExactSubstringsMatch
-  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
-  SINGLE-VALUE )
-
-attributetype ( 1.3.6.1.4.1.38414.39.1.23 NAME 'fdInventoryDriver'
-  DESC 'FusionDirectory - '
-  EQUALITY caseExactMatch
-  SUBSTR caseExactSubstringsMatch
-  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
-  SINGLE-VALUE )
-
-attributetype ( 1.3.6.1.4.1.38414.39.1.24 NAME 'fdInventoryPCISlot'
-  DESC 'FusionDirectory - '
-  EQUALITY caseExactMatch
-  SUBSTR caseExactSubstringsMatch
-  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
-  SINGLE-VALUE )
-
-#Numbers
-attributetype ( 1.3.6.1.4.1.38414.39.1.7 NAME 'fdInventoryCore'
-  DESC 'FusionDirectory - number of cores'
+attributetype ( 1.3.6.1.4.1.38414.40.11.1 NAME 'fiAgentDelaytime'
+  DESC 'FusionInventory - delaytime'
   EQUALITY integerMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
   SINGLE-VALUE )
 
-attributetype ( 1.3.6.1.4.1.38414.39.1.8 NAME 'fdInventoryFamilyNumber'
-  DESC 'FusionDirectory - '
+attributetype ( 1.3.6.1.4.1.38414.40.11.2 NAME 'fiAgentWait'
+  DESC 'FusionInventory - wait'
   EQUALITY integerMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
   SINGLE-VALUE )
 
-attributetype ( 1.3.6.1.4.1.38414.39.1.9 NAME 'fdInventorySpeed'
-  DESC 'FusionDirectory - '
+attributetype ( 1.3.6.1.4.1.38414.40.11.3 NAME 'fiAgentHttpdPort'
+  DESC 'FusionInventory - httpd-port'
   EQUALITY integerMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
   SINGLE-VALUE )
 
-attributetype ( 1.3.6.1.4.1.38414.39.1.10 NAME 'fdInventoryStepping'
-  DESC 'FusionDirectory - '
-  EQUALITY integerMatch
-  SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
-  SINGLE-VALUE )
+#Booleans
 
-attributetype ( 1.3.6.1.4.1.38414.39.1.11 NAME 'fdInventoryThread'
-  DESC 'FusionDirectory - '
-  EQUALITY integerMatch
-  SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
-  SINGLE-VALUE )
-
-attributetype ( 1.3.6.1.4.1.38414.39.1.19 NAME 'fdInventoryVirtualDev'
-  DESC 'FusionDirectory - '
-  EQUALITY integerMatch
-  SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
+attributetype ( 1.3.6.1.4.1.38414.40.12.1 NAME 'fiAgentNoHttpd'
+  DESC 'FusionInventory - no-httpd'
+  EQUALITY booleanMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
   SINGLE-VALUE )
 
 # Object Class
-objectclass ( 1.3.6.1.4.1.38414.39.2.1 NAME 'fdInventoryContent'
-  DESC 'FusionDirectory inventory information'
+objectclass ( 1.3.6.1.4.1.38414.40.2.1 NAME 'fusionInventoryAgent'
+  DESC 'FusionInventory Agent configuration'
   MUST ( cn )
-  MAY ( macAddress ) )
-
-objectclass ( 1.3.6.1.4.1.38414.39.2.2 NAME 'fdInventoryCpu'
-  DESC 'FusionDirectory inventory information'
-  MUST ( cn )
-  MAY ( fdInventoryCore         $ fdInventoryName   $ fdInventoryFamilyNumber $
-        fdInventoryManufacturer $ fdInventoryModel  $ fdInventorySpeed $
-        fdInventoryStepping     $ fdInventoryThread ) )
-
-objectclass ( 1.3.6.1.4.1.38414.39.2.3 NAME 'fdInventoryOperatingSystem'
-  DESC 'FusionDirectory inventory information'
-  MUST ( cn )
-  MAY ( fdInventoryName       $ fdInventoryVersion        $ fdInventoryFullName $
-        fdInventoryKernelName $ fdInventoryKernelVersion  ) )
-
-objectclass ( 1.3.6.1.4.1.38414.39.2.4 NAME 'fdInventoryNetwork'
-  DESC 'FusionDirectory inventory information'
-  MUST ( cn )
-  MAY ( fdInventoryDescription  $ fdInventoryIPAddress  $ fdInventoryIPMask   $
-        fdInventoryIPSubnet     $ fdInventoryMacAddr    $ fdInventoryStatus   $
-        fdInventoryVirtualDev   $ fdInventoryDriver     $ fdInventoryPCISlot  $
-        fdInventoryIPAddress6   $ fdInventoryIPMask6    $ fdInventoryIPSubnet6) )
+  MAY ( fiAgentServer $ fiAgentHttpdIp $ fiAgentHttpdTrust $
+        fiAgentDelaytime $ fiAgentWait $ fiAgentHttpdPort $ fiAgentNoHttpd ) )

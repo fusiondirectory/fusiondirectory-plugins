@@ -19,25 +19,6 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
  */
 
-/* Dummy attribute class in order to give stats information to the template */
-class FakeAttribute extends Attribute
-{
-  private $var_name;
-
-  function __construct ($var)
-  {
-    parent::__construct("Fake one", "", $var, FALSE, "", "noacl");
-    $this->setInLdap(FALSE);
-    $this->var_name = $var;
-  }
-
-  function renderAttribute(&$attributes, $readOnly)
-  {
-    $var = $this->var_name;
-    $attributes[$this->getLdapName()] = $this->getValue();
-  }
-}
-
 class dashboard extends simplePlugin
 {
   /* Generic */
