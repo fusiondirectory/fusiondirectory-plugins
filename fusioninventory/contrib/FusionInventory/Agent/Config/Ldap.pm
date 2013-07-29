@@ -7,8 +7,45 @@ use base qw(FusionInventory::Agent::Config::Backend);
 
 use English qw(-no_match_vars);
 
+use Net::LDAP;
+
 sub new {
     my ($class, %params) = @_;
+
+    my $file =
+        $params{file}      ? $params{file}                     :
+        $params{directory} ? $params{directory} . '/agent.cfg' :
+                            'agent.cfg';
+
+    if ($file) {
+        die "non-existing file $file" unless -f $file;
+        die "non-readable file $file" unless -r $file;
+    } else {
+        die "no configuration file";
+    }
+
+    my $handle;
+    if (!open $handle, '<', $file) {
+        die "Config: Failed to open $file: $ERRNO";
+    }
+
+    while (my $line = <$handle>) {
+        $line =~ s/#.+//;
+        if ($line =~ /([\w-]+)\s*=\s*(.+)/) {
+            my $key = $1;
+            my $value = $2;
+
+            # remove the quotes
+            $value =~ s/\s+$//;
+            $value =~ s/^'(.*)'$/$1/;
+            $value =~ s/^"(.*)"$/$1/;
+
+            if ($key =~ m/^ldap_(.*)$/) {
+              $params{$1} = $value;
+            }
+        }
+    }
+    close $handle;
 
     die "Missing parameter uri" unless $params{uri};
     die "Missing parameter ip"  unless $params{ip};
@@ -18,7 +55,7 @@ sub new {
         ip  => $params{ip}
     };
 
-    if ($param{base}) {
+    if ($params{base}) {
       $self->{base}   = $params{base};
     } else {
       $self->{uri}  =~ m|^(ldap://[^/]+)/([^/]+)$| or die "Missing ldap base";
@@ -61,7 +98,7 @@ sub getValues {
 
     my %values;
     my %params =
-    {
+    (
       'server'                  => 'fiAgentServer',
       'local'                   => 'fiAgentLocal',
       'delaytime'               => 'fiAgentDelaytime',
@@ -95,8 +132,8 @@ sub getValues {
       'daemon'                  => 'fiAgentDaemon',
       'no-fork'                 => 'fiAgentNoFork',
       'debug'                   => 'fiAgentDebug',
-    };
-    @booleans =
+    );
+    my @booleans =
     (
       'no-httpd',
       'no-fork',
@@ -104,7 +141,6 @@ sub getValues {
       'daemon'
     );
 
-    $ldap->cat($self->{dn});
     $mesg = $ldap->search(
         base   => $self->{base},
         filter => "(&(objectClass=fusionInventoryAgent)(ipHostNumber=".$self->{ip}."))",
@@ -115,14 +151,12 @@ sub getValues {
         while (my ($key,$value) = each(%params)) {
             if (($mesg->entries)[0]->exists("$value")) {
                 if (grep {$_ eq $key} @booleans) {
-                    $values{"$key"} = ($mesg->entries)[0]->get_value("$value") eq "TRUE";
+                    $values{"$key"} = ($mesg->entries)[0]->get_value("$value") eq "TRUE" ? 1 : undef;
                 } else {
                     $values{"$key"} = ($mesg->entries)[0]->get_value("$value");
                 }
             } else {
-                if (grep {$_ eq $key} @booleans) {
-                    $values{"$key"} = 0;
-                } else {
+                if (not (grep {$_ eq $key} @booleans)) {
                     $values{"$key"} = "";
                 }
             }
@@ -151,14 +185,12 @@ sub getValues {
             while (my ($key,$value) = each(%params)) {
                 if (($mesg->entries)[0]->get_value("$value")) {
                     if (grep {$_ eq $key} @booleans) {
-                        $values{"$key"} = ($mesg->entries)[0]->get_value("$value") eq "TRUE";
+                        $values{"$key"} = ($mesg->entries)[0]->get_value("$value") eq "TRUE" ? 1 : undef;
                     } else {
                         $values{"$key"} = ($mesg->entries)[0]->get_value("$value");
                     }
                 } else {
-                    if (grep {$_ eq $key} @booleans) {
-                        $values{"$key"} = 0;
-                    } else {
+                    if (not (grep {$_ eq $key} @booleans)) {
                         $values{"$key"} = "";
                     }
                 }
