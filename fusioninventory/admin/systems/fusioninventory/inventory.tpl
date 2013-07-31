@@ -5,21 +5,29 @@
   <div>
     {foreach from=$attributes item=infos}
     <ul class="inventory">
-      {foreach from=$infos key=cn item=object}
-      <li class="{$object.class}">
-        <a href="#" onclick="Effect.toggle('toggle_{$cn}', 'blind', {literal}{ duration: 0.3 }{/literal}); return false;">
-          {$cn}
-        </a>
-        <div id="toggle_{$cn}" style="overflow: visible; display: none;">
-          <table>
-            {foreach from=$object.infos key=label item=value}
-              <tr>
-                <th>{$label}</th><td>{$value}</td>
-              </tr>
-            {/foreach}
-          </table>
-        </div>
-      </li>
+      {foreach from=$infos key=class item=objects}
+        <li class="{$class}">
+          <a href="#" onclick="Effect.toggle('toggle_{$class}', 'blind', {literal}{ duration: 0.3 }{/literal}); return false;">
+            {$class}
+          </a>
+          <div id="toggle_{$class}" style="overflow: visible; display: none;">
+            <table>
+              {foreach from=$objects key=cn item=object}
+                <tr>
+                    {foreach from=$object key=label item=value}
+                      <th>{$label}</th>
+                    {/foreach}
+                </tr>
+              {/foreach}
+              {foreach from=$objects key=cn item=object}
+                <tr>
+                    {foreach from=$object key=label item=value}
+                      <td>{$value}</td>
+                    {/foreach}
+                </tr>
+              {/foreach}
+            </table>
+          </div>
       {/foreach}
     </ul>
     {/foreach}

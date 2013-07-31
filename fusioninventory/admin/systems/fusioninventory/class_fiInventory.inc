@@ -23,16 +23,42 @@ class fiInventory extends simplePlugin
   var $objectclasses  = array();
   var $displayHeader  = FALSE;
 
-  static function getAttributesInfo ()
-  {
-    return array(
-      'inventory' => array(
-        'name'  => _('Inventory'),
-        'attrs' => array(new FakeAttribute('inventory_infos')),
-        'template' => get_template_path('inventory.tpl', TRUE, dirname(__FILE__)),
-      ),
-    );
-  }
+  static $sections = array (
+    'antivirus'       => 'software',
+    'batteries'       => 'hardware',
+    'controllers'     => 'hardware',
+    'cpus'            => 'hardware',
+    'drives'          => 'hardware',
+    'envs'            => 'software',
+    'inputs'          => 'hardware',
+    'memories'        => 'hardware',
+    'modems'          => 'hardware',
+    'monitors'        => 'hardware',
+    'networks'        => 'software',
+    'ports'           => 'hardware',
+    'processes'       => 'process',
+    'registry'        => 'software',
+    'rudder'          => 'software',
+    'slots'           => 'software',
+    'softwares'       => 'software',
+    'sounds'          => 'hardware',
+    'storages'        => 'hardware',
+    'videos'          => 'hardware',
+    'usbdevices'      => 'hardware',
+    'users'           => 'software',
+    'localusers'      => 'software',
+    'localgroups'     => 'software',
+    'printers'        => 'hardware',
+    'bios'            => 'software',
+    'hardware'        => 'hardware',
+    'operatingsystem' => 'software',
+    'accesslog'       => 'software',
+    'virtualmachines' => 'software',
+    'logicalvolumes'  => 'software',
+    'physicalvolumes' => 'hardware',
+    'volumegroups'    => 'software',
+    'licenseinfos'    => 'software',
+  );
 
   /* Return plugin informations */
   static function plInfo()
@@ -48,17 +74,43 @@ class fiInventory extends simplePlugin
     );
   }
 
+  static function getAttributesInfo ()
+  {
+    return array(
+      'hardware' => array(
+        'name'  => _('Hardware'),
+        'attrs' => array(new FakeAttribute('hardware_infos')),
+        'template' => get_template_path('inventory.tpl', TRUE, dirname(__FILE__)),
+      ),
+      'software' => array(
+        'name'  => _('Software'),
+        'attrs' => array(new FakeAttribute('software_infos')),
+        'template' => get_template_path('inventory.tpl', TRUE, dirname(__FILE__)),
+      ),
+      'process' => array(
+        'name'  => _('Processes'),
+        'attrs' => array(new FakeAttribute('process_infos')),
+        'template' => get_template_path('inventory.tpl', TRUE, dirname(__FILE__)),
+      ),
+    );
+  }
+
   function __construct(&$config, $dn, $object)
   {
     parent::__construct($config, $dn, $object);
 
-    $this->inventory_infos = NULL;
+    $this->hardware_infos = NULL;
+    $this->software_infos = NULL;
+    $this->process_infos  = NULL;
   }
 
   function execute()
   {
-    if ($this->inventory_infos === NULL) {
-      $this->inventory_infos = $this->get_inventory_infos();
+    if ($this->hardware_infos === NULL) {
+      $infos = $this->get_inventory_infos();
+      $this->hardware_infos = $infos['hardware'];
+      $this->software_infos = $infos['software'];
+      $this->process_infos  = $infos['process'];
     }
     $smarty = get_smarty();
     $smarty->assign('usePrototype', 'true');
@@ -89,11 +141,10 @@ class fiInventory extends simplePlugin
     while ($attrs = $ldap->fetch()) {
       $object = array();
       $cn     = FALSE;
-      $class  = '';
+      $class  = strtolower(preg_replace('/^fdInventory/', '', $attrs['objectClass'][0]));
       for ($i = 0; $i < $attrs['count']; $i++) {
         $key  = $attrs[$i];
         if ($key == 'objectClass') {
-          $class = strtolower(preg_replace('/^fdInventory/', '', $attrs[$key][0]));
           continue;
         } elseif ($key == 'cn') {
           $cn = $attrs[$key][0];
@@ -106,15 +157,15 @@ class fiInventory extends simplePlugin
         } elseif ($attr['count'] == 1) {
           $object[$key] = $attr[0];
         } else {
-          $object[$key] = $attr;
-          unset($object[$key]['count']);
+          unset($attr['count']);
+          $object[$key] = '['.join(', ',$attr).']';
         }
       }
       if ($cn === FALSE) {
         trigger_error('inventory object with no cn');
         continue;
       }
-      $infos[$cn] = array('class' => $class, 'infos' => $object);
+      $infos[self::$sections[$class]][$class][$cn] = $object;
     }
 
     return $infos;
