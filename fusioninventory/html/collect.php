@@ -103,7 +103,7 @@ if (preg_match('/QUERY>PROLOG<\/QUERY/', $xml)) {
     $dn = 'cn='.$_SERVER['REMOTE_ADDR'].','.get_ou('inventoryRDN').$config->current['BASE'];
     $ldap->cat($dn);
 
-  $msg = "";
+    $msg = "";
     if ($ldap->count()) {
       /* Emtpy the subtree */
       $ldap->rmdir_recursive($dn);
@@ -128,63 +128,31 @@ if (preg_match('/QUERY>PROLOG<\/QUERY/', $xml)) {
       $msg.="error :".$ldap->get_error()."\n";
     }
 
-    $infos = array(
-      'CPUS' => array(
-        'cn'    => 'cpu',
-        'oc'    => 'fdInventoryCpu',
-        'attrs' => array(
-          'NAME','CORE','FAMILYNUMBER','MANUFACTURER',
-          'MODEL','SPEED','STEPPING','THREAD'
-        )
-      ),
-      'OPERATINGSYSTEM' => array(
-        'cn'    => 'os',
-        'oc'    => 'fdInventoryOperatingSystem',
-        'attrs' => array(
-          'NAME','FULL_NAME','VERSION',
-          'KERNEL_NAME','KERNEL_VERSION'
-        )
-      ),
-      'NETWORKS' => array(
-        'cn'    => 'network',
-        'oc'    => 'fdInventoryNetwork',
-        'attrs' => array(
-          'DESCRIPTION','IPADDRESS','IPMASK','IPSUBNET',
-          'MACADDR','STATUS','VIRTUALDEV','DRIVER','PCISLOT',
-          'IPADDRESS6','IPMASK6','IPSUBNET6',
-        )
-      )
-    );
-
-    foreach ($infos as $key => $info) {
-      if (!isset($data[$key])) {
-        continue;
-      }
-      $objects = $data[$key];
+    foreach ($data as $key => $objects) {
       if (!is_numeric(key($objects))) {
         $objects = array($objects);
       }
       foreach ($objects as $i => $object) {
-        $cn         = $info['cn'].$i;
+        $cn         = strtolower($key).$i;
         $ldap_attrs = array(
           'cn' => $cn,
-          'objectClass' => $info['oc'],
+          'objectClass' => 'fdInventory'.preg_replace('/_/', '', $key),
         );
-        foreach ($info['attrs'] as $attr) {
-          if (isset($object[$attr])) {
-            $ldap_attrs['fdInventory'.preg_replace('/_/', '', $attr)] = $object[$attr];
+        foreach ($object as $attr => $value) {
+          if (!(is_array($value) && empty($value))) {
+            $ldap_attrs['fdInventory'.preg_replace('/_/', '', $attr)] = $value;
           }
         }
-        $msg.=print_r($ldap_attrs, TRUE);
         $ldap->cd('cn='.$cn.','.$dn);
         $ldap->add($ldap_attrs);
         if (!$ldap->success()) {
-          $msg.="error :".$ldap->get_error()."\n";
+          $msg .= print_r($ldap_attrs, TRUE);
+          $msg .= "error :".$ldap->get_error()."\n";
         }
       }
     }
 
-    if (!file_put_contents($invFile, "$dn\n$msg\n".print_r($data, TRUE))) {
+    if (!file_put_contents($invFile, "$dn\n$msg\n")) {
         error_log("Failed to write ");
     }
 }
