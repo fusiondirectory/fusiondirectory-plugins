@@ -1,20 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-develop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-30 18:14+0200\n"
+"POT-Creation-Date: 2013-07-31 10:43+0200\n"
 "PO-Revision-Date: 2013-07-30 16:57+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory/language/fr/)\n"
+"Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory/"
+"language/fr/)\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: config/supann/class_supannConfig.inc:28
@@ -132,9 +133,11 @@ msgstr "Nom principal eduPerson"
 
 #: personal/supann/class_supannAccount.inc:244
 msgid ""
-"eduPersonPrincipalName - A name that look like <id>@<domain> which is unique"
-" for this domain, and has not be assigned to anyone else recently"
-msgstr "eduPersonPrincipalName - identifiant similaire à <id>@<domaine> qui est unique pour le domaine  et qui n'a jamais été attribué récemment "
+"eduPersonPrincipalName - A name that look like <id>@<domain> which is unique "
+"for this domain, and has not be assigned to anyone else recently"
+msgstr ""
+"eduPersonPrincipalName - identifiant similaire à <id>@<domaine> qui est "
+"unique pour le domaine  et qui n'a jamais été attribué récemment "
 
 #: personal/supann/class_supannAccount.inc:248
 msgid "Nick name"
@@ -154,7 +157,8 @@ msgstr "Autre numéros de téléphone"
 
 #: personal/supann/class_supannAccount.inc:258
 msgid "supannAutreTelephone - Other phone numbers for this user"
-msgstr "supannAutreTelephone - Autres numéros de téléphone pour cet utilisateur"
+msgstr ""
+"supannAutreTelephone - Autres numéros de téléphone pour cet utilisateur"
 
 #: personal/supann/class_supannAccount.inc:264
 msgid "Other mail addresses"
@@ -163,7 +167,9 @@ msgstr "Autres adresses emails"
 #: personal/supann/class_supannAccount.inc:264
 msgid ""
 "supannAutreMail - Other mail addresses for this user. Each must be unique"
-msgstr "supannAutreMail - Autres adresse emailpour cet utilisateur. Chacun doit être unique"
+msgstr ""
+"supannAutreMail - Autres adresse emailpour cet utilisateur. Chacun doit être "
+"unique"
 
 #: personal/supann/class_supannAccount.inc:270
 msgid "Personal mail addresses"
@@ -179,7 +185,9 @@ msgstr "Liste Rouge"
 
 #: personal/supann/class_supannAccount.inc:275
 msgid "supannListeRouge - Should this person be on the red list"
-msgstr "supannListeRouge - Cette personne ne doit pas apparaître dans les annuaires pages blanches"
+msgstr ""
+"supannListeRouge - Cette personne ne doit pas apparaître dans les annuaires "
+"pages blanches"
 
 #: personal/supann/class_supannAccount.inc:281 personal/supann/supann.tpl.c:38
 #: personal/supann/supann.tpl.c:44
@@ -278,9 +286,9 @@ msgid "supannEtuInscription - Subscriptions for this student"
 msgstr "supannEtuInscription - Inscription pour cet étudiant"
 
 #: personal/supann/class_supannAccount.inc:355
-msgid ""
-"supannEtablissement - Etablissement in which this subscription was done"
-msgstr "supannEtablissement - Établissement dans lequel l'inscription a été faite"
+msgid "supannEtablissement - Etablissement in which this subscription was done"
+msgstr ""
+"supannEtablissement - Établissement dans lequel l'inscription a été faite"
 
 #: personal/supann/class_supannAccount.inc:359
 msgid "Year"
@@ -565,7 +573,8 @@ msgstr "Entité SUPANN"
 
 #: admin/supannStructures/class_entite.inc:98
 msgid "The name to write in the ou attribute for this entite"
-msgstr "Nom à écrire dans l'attribut 'organizationalUnit' pour cet établissement"
+msgstr ""
+"Nom à écrire dans l'attribut 'organizationalUnit' pour cet établissement"
 
 #: admin/supannStructures/class_entite.inc:104
 msgid "Administrative informations"
@@ -834,11 +843,16 @@ msgstr "Avertissement"
 msgid ""
 "This may be a primary user group. Please double check if you really want to "
 "do this since there is no way for FusionDirectory to get your data back."
-msgstr "Ce groupe est un groupe principal contenant des utilisateurs. Veuillez vous assurez que vous voulez bien exécuter cette action étant donné qu'il est impossible pour FusionDirectory de récupérer vos données."
+msgstr ""
+"Ce groupe est un groupe principal contenant des utilisateurs. Veuillez vous "
+"assurez que vous voulez bien exécuter cette action étant donné qu'il est "
+"impossible pour FusionDirectory de récupérer vos données."
 
 #: admin/supannStructures/remove.tpl.c:8
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr "D'accord - si vous êtes sur - cliquez sur 'Supprimer' pour continuer ou sur 'Annuler' pour abandonner."
+msgstr ""
+"D'accord - si vous êtes sur - cliquez sur 'Supprimer' pour continuer ou sur "
+"'Annuler' pour abandonner."
 
 #: admin/supannStructures/supannStructures-filter.tpl.c:2
 msgid "Filter"

@@ -1,20 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-develop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-30 18:14+0200\n"
+"POT-Creation-Date: 2013-07-31 10:40+0200\n"
 "PO-Revision-Date: 2013-07-30 16:45+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory/language/fr/)\n"
+"Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory/"
+"language/fr/)\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: addons/ldapmanager/tabs_ldif.inc:39
@@ -146,7 +147,8 @@ msgstr ""
 
 #: addons/ldapmanager/class_csvimport.inc:138
 msgid "You've no permission to import CSV files."
-msgstr "Vous n'avez pas les droits nécessaires pour effectuer des importations CSV."
+msgstr ""
+"Vous n'avez pas les droits nécessaires pour effectuer des importations CSV."
 
 #: addons/ldapmanager/class_csvimport.inc:192
 msgid "Need at least 'sn' and 'givenName' to create users!"
@@ -207,11 +209,15 @@ msgstr "Impossible de trouver des données CSV dans le fichier selectionné !"
 
 #: addons/ldapmanager/contentcsv.tpl.c:2
 msgid ""
-"The CSV import plugin provides methods to generate user accounts from a file"
-" containing Semi-Colon Seperated Values. The administrator can decide which "
+"The CSV import plugin provides methods to generate user accounts from a file "
+"containing Semi-Colon Seperated Values. The administrator can decide which "
 "columns should be transfered to which attribute. Note that you must have at "
 "least the GIVENNAME and SURNAME set."
-msgstr "L'extension CSV permet de générer des comptes utilisateurs depuis un fichier contenant des valeurs séparées par des points virgules. L'administrateur peut choisir quelle colonnes doivent être transférées vers quel attribut. Notez que vous devez au moins fournir le GIVENNAME et SURENAME."
+msgstr ""
+"L'extension CSV permet de générer des comptes utilisateurs depuis un fichier "
+"contenant des valeurs séparées par des points virgules. L'administrateur "
+"peut choisir quelle colonnes doivent être transférées vers quel attribut. "
+"Notez que vous devez au moins fournir le GIVENNAME et SURENAME."
 
 #: addons/ldapmanager/contentcsv.tpl.c:5
 msgid "Select CSV file to import"

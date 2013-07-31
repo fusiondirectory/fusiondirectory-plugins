@@ -1,20 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-develop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-30 18:14+0200\n"
+"POT-Creation-Date: 2013-07-31 10:43+0200\n"
 "PO-Revision-Date: 2013-07-30 17:03+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: Dutch (http://www.transifex.com/projects/p/FusionDirectory/language/nl/)\n"
+"Language-Team: Dutch (http://www.transifex.com/projects/p/FusionDirectory/"
+"language/nl/)\n"
+"Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: config/systems/class_systemsPluginConfig.inc:28
@@ -702,8 +703,8 @@ msgstr ""
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:78
 msgid ""
-"Specifies what checks to perform on server certificates in a TLS session, if"
-" any"
+"Specifies what checks to perform on server certificates in a TLS session, if "
+"any"
 msgstr ""
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:83
@@ -1083,7 +1084,8 @@ msgstr "Hardware adres (MAC)"
 #: admin/systems/class_networkSettings.inc:674
 #, php-format
 msgid "The IP address '%s' is not part of the selected reverse zone '%s'!"
-msgstr "Het IP-adres '%s' is geen onderdeel van de geselecteerde reverse zone '%s'!"
+msgstr ""
+"Het IP-adres '%s' is geen onderdeel van de geselecteerde reverse zone '%s'!"
 
 #: admin/systems/class_networkSettings.inc:686
 #, php-format
@@ -1100,7 +1102,9 @@ msgstr "Uniek record type '%s' is dubbel!"
 msgid ""
 "The IP address '%s' will be added as 'A Record', this will be done "
 "automatically, please remove the record."
-msgstr "Het IP-adres '%s' zal worden toegevoegd als 'A Record', dit gebeurt automatisch. Gelieve de record te verwijderen."
+msgstr ""
+"Het IP-adres '%s' zal worden toegevoegd als 'A Record', dit gebeurt "
+"automatisch. Gelieve de record te verwijderen."
 
 #: admin/systems/class_networkSettings.inc:716
 #, php-format
@@ -1209,7 +1213,9 @@ msgstr "Ontleding PPD bestand mislukt  - bestand is leeg!"
 msgid ""
 "Parsing PPD file %s failed - line too long. Trailing characters have been "
 "ignored!"
-msgstr "Ontleding PPD bestand %s mislukt - lijn is te lang. Loshangende tekens zijn genereerd!"
+msgstr ""
+"Ontleding PPD bestand %s mislukt - lijn is te lang. Loshangende tekens zijn "
+"genereerd!"
 
 #: admin/systems/ppd/class_ppdManager.inc:234
 msgid "Nested groups are not supported!"
@@ -1237,12 +1243,15 @@ msgstr "PickMany wordt nog niet ondersteund!"
 msgid ""
 "Parsing PPD file %s failed - line too long. Trailing characters have been "
 "ignored"
-msgstr "Het parsen van PPD bestand %s is mislukt - regel was te lang. Resterende karakters zijn genegeerd."
+msgstr ""
+"Het parsen van PPD bestand %s is mislukt - regel was te lang. Resterende "
+"karakters zijn genegeerd."
 
 #: admin/systems/ppd/class_ppdManager.inc:399
 #, php-format
 msgid "Parsing PPD file %s failed - no information found."
-msgstr "Het parsen van PPD bestand %s is mislukt - er is geen informatie gevonden."
+msgstr ""
+"Het parsen van PPD bestand %s is mislukt - er is geen informatie gevonden."
 
 #: admin/systems/ppd/class_printerPPDSelectionDialog.inc:95
 #: admin/systems/ppd/class_printerPPDSelectionDialog.inc:120
@@ -1315,7 +1324,9 @@ msgstr "Overschrijf bestaande PPD"
 msgid ""
 "There is already a ppd file for this kind of printer. Do you want to "
 "overwrite it?"
-msgstr "Er is al een bestaande ppd bestand voor dit soort printer. Wilt u deze overschrijven?"
+msgstr ""
+"Er is al een bestaande ppd bestand voor dit soort printer. Wilt u deze "
+"overschrijven?"
 
 #: admin/systems/ppd/class_printerPPDDialog.inc:494
 msgid "Section"
@@ -1340,7 +1351,9 @@ msgstr "PPD type '%s' niet ondersteund!"
 msgid ""
 "Please select a valid ppd file or use 'Cancel' to go back to printer "
 "configuration."
-msgstr "Gelieve een geldig ppd bestand te selecteren of  'Annuleer' om terug te keren naar de printer configuratie."
+msgstr ""
+"Gelieve een geldig ppd bestand te selecteren of  'Annuleer' om terug te "
+"keren naar de printer configuratie."
 
 #: admin/systems/class_terminalStartup.inc:63
 msgid "Startup parameters"
@@ -1374,7 +1387,8 @@ msgstr "Terminal startup"
 #, php-format
 msgid ""
 "Cannot determine a valid department for this object. Setting base to '%s'!"
-msgstr "Kan geen geldig afdeling bepalen voor dit object. Basis instelling om '%s'!"
+msgstr ""
+"Kan geen geldig afdeling bepalen voor dit object. Basis instelling om '%s'!"
 
 #: admin/systems/class_printGeneric.inc:311
 #: admin/systems/class_printGeneric.inc:319
@@ -1389,7 +1403,9 @@ msgstr "Voeg printer extensie toe"
 msgid ""
 "Could not initialize printer tab, parameter parent was missing while "
 "construction."
-msgstr "Kan printer tab niet initialiseren, parent parameter ontbreekt tijdens constructie."
+msgstr ""
+"Kan printer tab niet initialiseren, parent parameter ontbreekt tijdens "
+"constructie."
 
 #: admin/systems/class_printGeneric.inc:320
 msgid "This is a workstation template, printer tab is disabled."
@@ -1412,7 +1428,9 @@ msgstr "printer"
 msgid ""
 "You can't enable it while 'cn' is not present in entry. Possibly you are "
 "currently creating a new terminal template."
-msgstr "U kan het niet activeren zolang 'cn' niet aanwezig is in invoer. Mogelijk bent u op dit moment bezig met het creëren van een nieuwe terminal sjabloon."
+msgstr ""
+"U kan het niet activeren zolang 'cn' niet aanwezig is in invoer. Mogelijk "
+"bent u op dit moment bezig met het creëren van een nieuwe terminal sjabloon."
 
 #: admin/systems/class_printGeneric.inc:382
 #: admin/systems/class_printGeneric.inc:385
@@ -1516,7 +1534,10 @@ msgid ""
 "Actions you choose here influence all systems in this object group. "
 "Additionally, all values editable here can be inherited by the clients "
 "assigned to this object group."
-msgstr "De acties die u hier kiest, beinvloeden alle systemen in deze objectgroep. Daarnaast kunnen alle hier bewerkbare waardes overerfd worden door terminal clients die aan deze objectgroep worden toegekend."
+msgstr ""
+"De acties die u hier kiest, beinvloeden alle systemen in deze objectgroep. "
+"Daarnaast kunnen alle hier bewerkbare waardes overerfd worden door terminal "
+"clients die aan deze objectgroep worden toegekend."
 
 #: admin/ogroups/goto/termgroup.tpl.c:11
 msgid "NTP server"
@@ -1632,7 +1653,10 @@ msgstr "Voeg nieuwe dienst toe aan de huidige server"
 msgid ""
 "This dialog allows you to add new services to the currenty edited server "
 "object. The box below shows all available but not already used services."
-msgstr "In dit dialoogvenster kunt u nieuwe diensten toe te voegen aan de server. De dialoog venster hieronder geeft alle beschikbare al gebruikt weer, maar geen diensten."
+msgstr ""
+"In dit dialoogvenster kunt u nieuwe diensten toe te voegen aan de server. De "
+"dialoog venster hieronder geeft alle beschikbare al gebruikt weer, maar geen "
+"diensten."
 
 #: admin/systems/services/ServiceAddDialog.tpl.c:8
 msgid "Service to add"
@@ -1660,19 +1684,26 @@ msgid ""
 "This system has no system type configured. Please choose a system type for "
 "this object and an optional inheritance group. Press the 'continue' button "
 "to proceed."
-msgstr "Dit systeem heeft geen geconfigureerd systeem type. Kies een type systeem voor dit object en een optionele erfenis groep. Druk op de knop 'Doorgaan' om verder te gaan."
+msgstr ""
+"Dit systeem heeft geen geconfigureerd systeem type. Kies een type systeem "
+"voor dit object en een optionele erfenis groep. Druk op de knop 'Doorgaan' "
+"om verder te gaan."
 
 #: admin/systems/SelectDeviceType.tpl.c:5
 msgid ""
-"Please select a system type and an optional bundle of predefined settings to"
-" be inherited."
-msgstr "Selecteer a.u.b. een systeemtype en een optionele bundel met te overerven voorgedefinieerde instellingen."
+"Please select a system type and an optional bundle of predefined settings to "
+"be inherited."
+msgstr ""
+"Selecteer a.u.b. een systeemtype en een optionele bundel met te overerven "
+"voorgedefinieerde instellingen."
 
 #: admin/systems/SelectDeviceType.tpl.c:8
 msgid ""
 "Please select a system type and a bundle of predefined settings to be "
 "inherited."
-msgstr "Selecteer een type systeem en een bundel van vooraf gedefinieerde instellingen die worden overgenomen."
+msgstr ""
+"Selecteer een type systeem en een bundel van vooraf gedefinieerde "
+"instellingen die worden overgenomen."
 
 #: admin/systems/SelectDeviceType.tpl.c:11
 #: admin/systems/SelectDeviceType.tpl.c:14
@@ -1710,7 +1741,10 @@ msgid ""
 "This option enables you to generate FAI install CD images for the selected "
 "workstation. The procedure may take about 10 minutes to complete, so please "
 "be patient after pressing the 'Create ISO-Image' button."
-msgstr "Deze optie maakt het mogelijk om FAI installatie CD images te genereren voor de geselecteerde workstation. De procedure kan ongeveer 10 minuten duren, dus wees geduldig na het indrukken van de 'Create ISO-Image' knop."
+msgstr ""
+"Deze optie maakt het mogelijk om FAI installatie CD images te genereren voor "
+"de geselecteerde workstation. De procedure kan ongeveer 10 minuten duren, "
+"dus wees geduldig na het indrukken van de 'Create ISO-Image' knop."
 
 #: admin/systems/gencd.tpl.c:8
 msgid "Create ISO-Image"
@@ -1819,14 +1853,19 @@ msgstr "DNS records"
 
 #: admin/systems/remove.tpl.c:5
 msgid ""
-"This includes all account data, system access rules, imap settings, etc. for"
-" this user. Please double check if your really want to do this since there "
-"is no way for FusionDirectory to get your data back."
-msgstr "Inclusief alle account data,system access rules,imap opties,etc. Voor deze gebruiker. Gelieve dubbel na te kijken of je dit echt wenst te doen want er is geen andere manier voor FusionDirectory om je data terug te krijgen."
+"This includes all account data, system access rules, imap settings, etc. for "
+"this user. Please double check if your really want to do this since there is "
+"no way for FusionDirectory to get your data back."
+msgstr ""
+"Inclusief alle account data,system access rules,imap opties,etc. Voor deze "
+"gebruiker. Gelieve dubbel na te kijken of je dit echt wenst te doen want er "
+"is geen andere manier voor FusionDirectory om je data terug te krijgen."
 
 #: admin/systems/remove.tpl.c:8
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr "Indien u zeker bent drukt u dan 'Verwijderen' om door te gaan of 'Annuleren' om te annuleren."
+msgstr ""
+"Indien u zeker bent drukt u dan 'Verwijderen' om door te gaan of 'Annuleren' "
+"om te annuleren."
 
 #: admin/systems/ppd/printerPPDSelectionDialog.tpl.c:2
 msgid "Select objects to add"
@@ -1870,7 +1909,9 @@ msgstr "Opties"
 
 #: admin/systems/ppd/remove_ppd.tpl.c:5
 msgid "The ppd file will be removed from the server and can not be restored."
-msgstr "Het ppd bestand zal verwijderd worden van de server and kan niet hersteld worden."
+msgstr ""
+"Het ppd bestand zal verwijderd worden van de server and kan niet hersteld "
+"worden."
 
 #: admin/systems/gencd_frame.tpl.c:2
 msgid "Your browser does not supprt iframes."
@@ -1879,9 +1920,12 @@ msgstr "Uw browser ondersteund iframes niet."
 #: admin/systems/password.tpl.c:2
 msgid ""
 "To change the terminal root password use the fields below. The changes take "
-"effect during the next reboot. Please memorize the new password, because you"
-" wouldn't be able to log in."
-msgstr "Gebruik de velden hieronder om het terminal root wachtwoord te veranderen. De veranderingen worden onmiddelijk doorgevoerd. Onthoud het nieuwe wachtwoord a.u.b. aangezien u niet in kan loggen zonder dit wachtwoord."
+"effect during the next reboot. Please memorize the new password, because you "
+"wouldn't be able to log in."
+msgstr ""
+"Gebruik de velden hieronder om het terminal root wachtwoord te veranderen. "
+"De veranderingen worden onmiddelijk doorgevoerd. Onthoud het nieuwe "
+"wachtwoord a.u.b. aangezien u niet in kan loggen zonder dit wachtwoord."
 
 #: admin/systems/password.tpl.c:5
 msgid "Leave fields blank for password inheritance from default entries."
@@ -1889,7 +1933,8 @@ msgstr "Laat velden leeg voor wachtwoord overerving vanuit standaard waarden."
 
 #: admin/systems/password.tpl.c:8
 msgid "Changing the password impinges on authentification only."
-msgstr "Het veranderen van het wachtwoord is alleen van toepassing op authenticatie."
+msgstr ""
+"Het veranderen van het wachtwoord is alleen van toepassing op authenticatie."
 
 #: admin/systems/password.tpl.c:11
 msgid "New password"

@@ -1,20 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-develop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-30 18:14+0200\n"
+"POT-Creation-Date: 2013-07-31 10:43+0200\n"
 "PO-Revision-Date: 2013-07-30 17:03+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory/language/fr/)\n"
+"Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory/"
+"language/fr/)\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: config/systems/class_systemsPluginConfig.inc:28
@@ -670,7 +671,9 @@ msgstr "Deref"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:61
 msgid "Specifies how alias dereferencing is done when performing a search"
-msgstr "Spécifie comment les alias de dé-référencement sont fait lors de l’exécution d'une recherche"
+msgstr ""
+"Spécifie comment les alias de dé-référencement sont fait lors de l’exécution "
+"d'une recherche"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:66
 msgid "TLS Cert"
@@ -694,7 +697,8 @@ msgstr "Chemin vers le fichier contenant l'autorité de certification TLS"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:74
 msgid "Filepath to tls ca certificate"
-msgstr "Chemin vers le fichier du certificat de l'autorité de certification TLS"
+msgstr ""
+"Chemin vers le fichier du certificat de l'autorité de certification TLS"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:78
 msgid "TLS ReqCert"
@@ -702,9 +706,11 @@ msgstr "Requête de certificats TLS"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:78
 msgid ""
-"Specifies what checks to perform on server certificates in a TLS session, if"
-" any"
-msgstr "Indique quels sont les vérifications à faire sur les certificats serveurs en cas d'utilisation de session TLS"
+"Specifies what checks to perform on server certificates in a TLS session, if "
+"any"
+msgstr ""
+"Indique quels sont les vérifications à faire sur les certificats serveurs en "
+"cas d'utilisation de session TLS"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:83
 msgid "TLS CrlCheck"
@@ -714,7 +720,10 @@ msgstr "Vérification de la liste de révocation des certificats TLS"
 msgid ""
 "Specifies if the Certificate Revocation List (CRL) of the CA should be used "
 "to verify if the server certificates have  not  been  revoked"
-msgstr "Indique si la liste de certificats révoqués (CRL) de l'autorité de certification doit être utilisé pour vérifier si le certificat a été révoqué ou non"
+msgstr ""
+"Indique si la liste de certificats révoqués (CRL) de l'autorité de "
+"certification doit être utilisé pour vérifier si le certificat a été révoqué "
+"ou non"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:97
 msgid "LDAP"
@@ -764,7 +773,8 @@ msgstr "La création de l'image à échoué. veuillez lire le rapport ci dessous
 #: admin/systems/class_systemManagement.inc:235
 #, php-format
 msgid "Command '%s', specified for ISO creation doesn't seem to exist."
-msgstr "La commande '%s', utilisée dans la création de l'image ISO n'existe pas."
+msgstr ""
+"La commande '%s', utilisée dans la création de l'image ISO n'existe pas."
 
 #: admin/systems/class_systemManagement.inc:406
 #: admin/systems/class_systemManagement.inc:482
@@ -787,7 +797,8 @@ msgstr "Impossible de mettre le mode comme 'actif' !"
 #: admin/systems/class_systemManagement.inc:855
 #, php-format
 msgid "You are not allowed to create a snapshot for %s."
-msgstr "Vous n'êtes pas autorisé à créer une nouvelle copie instantanée pour %s."
+msgstr ""
+"Vous n'êtes pas autorisé à créer une nouvelle copie instantanée pour %s."
 
 #: admin/systems/class_systemManagement.inc:902
 #: admin/systems/class_systemManagement.inc:923
@@ -1083,7 +1094,9 @@ msgstr "Adresse MAC"
 #: admin/systems/class_networkSettings.inc:674
 #, php-format
 msgid "The IP address '%s' is not part of the selected reverse zone '%s'!"
-msgstr "L'adresse spécifiée '%s' ne correspond pas à la l'entrée de la zone inverse sélectionnée '%s'."
+msgstr ""
+"L'adresse spécifiée '%s' ne correspond pas à la l'entrée de la zone inverse "
+"sélectionnée '%s'."
 
 #: admin/systems/class_networkSettings.inc:686
 #, php-format
@@ -1100,12 +1113,15 @@ msgstr "L'enregistrement de type '%s' est dupliqué !"
 msgid ""
 "The IP address '%s' will be added as 'A Record', this will be done "
 "automatically, please remove the record."
-msgstr "L'adresse IP '%s' est ajoutée comme un 'A' record, ceci sera fait automatiquement, veuillez enlever l'enregistrement."
+msgstr ""
+"L'adresse IP '%s' est ajoutée comme un 'A' record, ceci sera fait "
+"automatiquement, veuillez enlever l'enregistrement."
 
 #: admin/systems/class_networkSettings.inc:716
 #, php-format
 msgid "Only lowercase records are allowed, please check your '%ss'."
-msgstr "Seulement les minuscules sont autorisée, veuillez vérifier votre '%ss'."
+msgstr ""
+"Seulement les minuscules sont autorisée, veuillez vérifier votre '%ss'."
 
 #: admin/systems/class_networkSettings.inc:984
 msgid "Delete"
@@ -1209,7 +1225,9 @@ msgstr "La lecture du fichier PPD à échoué - le fichier est vide !"
 msgid ""
 "Parsing PPD file %s failed - line too long. Trailing characters have been "
 "ignored!"
-msgstr "La lecture du PPD %s à échoué - ligne trop longue. Les caractères restant on été ignorés !"
+msgstr ""
+"La lecture du PPD %s à échoué - ligne trop longue. Les caractères restant on "
+"été ignorés !"
 
 #: admin/systems/ppd/class_ppdManager.inc:234
 msgid "Nested groups are not supported!"
@@ -1237,7 +1255,9 @@ msgstr "La sélection multiple n'est pas encore supportée !"
 msgid ""
 "Parsing PPD file %s failed - line too long. Trailing characters have been "
 "ignored"
-msgstr "La lecture du PPD %s à échoué - ligne trop longue. Les caractères restant on été ignorés"
+msgstr ""
+"La lecture du PPD %s à échoué - ligne trop longue. Les caractères restant on "
+"été ignorés"
 
 #: admin/systems/ppd/class_ppdManager.inc:399
 #, php-format
@@ -1295,7 +1315,8 @@ msgstr "Impossible d'obtenir des informations sur les ppd."
 #: admin/systems/ppd/class_printerPPDDialog.inc:141
 #, php-format
 msgid "Cannot open PPD path '%s' for reading and writing!"
-msgstr "Impossible de lire et d'écrire dans le chemin spécifié pour le PPD '%s' !"
+msgstr ""
+"Impossible de lire et d'écrire dans le chemin spécifié pour le PPD '%s' !"
 
 #: admin/systems/ppd/class_printerPPDDialog.inc:160
 #: admin/systems/ppd/class_printerPPDDialog.inc:370
@@ -1315,7 +1336,8 @@ msgstr "Ecrasement du PPD existant"
 msgid ""
 "There is already a ppd file for this kind of printer. Do you want to "
 "overwrite it?"
-msgstr "Il y a déjà un fichier ppd pour ce type d'imprimante. Voulez vous l'écraser ?"
+msgstr ""
+"Il y a déjà un fichier ppd pour ce type d'imprimante. Voulez vous l'écraser ?"
 
 #: admin/systems/ppd/class_printerPPDDialog.inc:494
 msgid "Section"
@@ -1340,7 +1362,9 @@ msgstr " PPD de type '%s' non supporté !"
 msgid ""
 "Please select a valid ppd file or use 'Cancel' to go back to printer "
 "configuration."
-msgstr "Veuillez sélectionner un fichier ppd valide ou utiliser 'Annuler' pour revenir à la configuration de l'imprimante."
+msgstr ""
+"Veuillez sélectionner un fichier ppd valide ou utiliser 'Annuler' pour "
+"revenir à la configuration de l'imprimante."
 
 #: admin/systems/class_terminalStartup.inc:63
 msgid "Startup parameters"
@@ -1374,7 +1398,9 @@ msgstr "Démarrage du terminal"
 #, php-format
 msgid ""
 "Cannot determine a valid department for this object. Setting base to '%s'!"
-msgstr "Impossible d'obtenir un département valide pour cet objet. Je met la base à '%s' ! "
+msgstr ""
+"Impossible d'obtenir un département valide pour cet objet. Je met la base à "
+"'%s' ! "
 
 #: admin/systems/class_printGeneric.inc:311
 #: admin/systems/class_printGeneric.inc:319
@@ -1389,11 +1415,14 @@ msgstr "Ajouter une extension d'imprimante"
 msgid ""
 "Could not initialize printer tab, parameter parent was missing while "
 "construction."
-msgstr "Impossible d'initialiser l'onglet imprimante, le paramètre parent était manquant pendant la construction."
+msgstr ""
+"Impossible d'initialiser l'onglet imprimante, le paramètre parent était "
+"manquant pendant la construction."
 
 #: admin/systems/class_printGeneric.inc:320
 msgid "This is a workstation template, printer tab is disabled."
-msgstr "Ceci est un modèle de station de travail, l'onglet imprimante est désactivé."
+msgstr ""
+"Ceci est un modèle de station de travail, l'onglet imprimante est désactivé."
 
 #: admin/systems/class_printGeneric.inc:325
 msgid "This is a terminal template, printer tab is disabled."
@@ -1412,7 +1441,9 @@ msgstr "imprimante"
 msgid ""
 "You can't enable it while 'cn' is not present in entry. Possibly you are "
 "currently creating a new terminal template."
-msgstr "Vous ne pourrez l'activer tant qu'un 'cn' n'est pas présent dans l'entrée. Vous êtes probablement occupé à créer un nouveau modèle de terminal."
+msgstr ""
+"Vous ne pourrez l'activer tant qu'un 'cn' n'est pas présent dans l'entrée. "
+"Vous êtes probablement occupé à créer un nouveau modèle de terminal."
 
 #: admin/systems/class_printGeneric.inc:382
 #: admin/systems/class_printGeneric.inc:385
@@ -1516,7 +1547,10 @@ msgid ""
 "Actions you choose here influence all systems in this object group. "
 "Additionally, all values editable here can be inherited by the clients "
 "assigned to this object group."
-msgstr "Les actions que vous choisissez ici influencent tout les systèmes dans ce groupe d'objet. De plus tout les valeurs éditables ici peuvent être hérité par les clients assigné à ce groupe d'objets."
+msgstr ""
+"Les actions que vous choisissez ici influencent tout les systèmes dans ce "
+"groupe d'objet. De plus tout les valeurs éditables ici peuvent être hérité "
+"par les clients assigné à ce groupe d'objets."
 
 #: admin/ogroups/goto/termgroup.tpl.c:11
 msgid "NTP server"
@@ -1632,7 +1666,10 @@ msgstr "Ajouter un nouveau service au serveur sélectionné"
 msgid ""
 "This dialog allows you to add new services to the currenty edited server "
 "object. The box below shows all available but not already used services."
-msgstr "Cette boite de dialogue vous permet d'ajouter des nouveaux services au serveur que vous éditez actuellement. Le cadre si dessous vous montre tout les services disponibles mais pas encore utilisés."
+msgstr ""
+"Cette boite de dialogue vous permet d'ajouter des nouveaux services au "
+"serveur que vous éditez actuellement. Le cadre si dessous vous montre tout "
+"les services disponibles mais pas encore utilisés."
 
 #: admin/systems/services/ServiceAddDialog.tpl.c:8
 msgid "Service to add"
@@ -1660,19 +1697,26 @@ msgid ""
 "This system has no system type configured. Please choose a system type for "
 "this object and an optional inheritance group. Press the 'continue' button "
 "to proceed."
-msgstr "Ce système n'a pas de type de système configuré. S'il vous plaît choisissez un type de système pourcet objet et un héritage de groupe facultatif. Appuyez sur le bouton 'Continuer' pour continuer."
+msgstr ""
+"Ce système n'a pas de type de système configuré. S'il vous plaît choisissez "
+"un type de système pourcet objet et un héritage de groupe facultatif. "
+"Appuyez sur le bouton 'Continuer' pour continuer."
 
 #: admin/systems/SelectDeviceType.tpl.c:5
 msgid ""
-"Please select a system type and an optional bundle of predefined settings to"
-" be inherited."
-msgstr "Veuillez sélectionner un type de système et éventuellement d'un ensemble de paramètres à hériter."
+"Please select a system type and an optional bundle of predefined settings to "
+"be inherited."
+msgstr ""
+"Veuillez sélectionner un type de système et éventuellement d'un ensemble de "
+"paramètres à hériter."
 
 #: admin/systems/SelectDeviceType.tpl.c:8
 msgid ""
 "Please select a system type and a bundle of predefined settings to be "
 "inherited."
-msgstr "Veuillez sélectionner un type de système et d'un ensemble de paramètres à hériter."
+msgstr ""
+"Veuillez sélectionner un type de système et d'un ensemble de paramètres à "
+"hériter."
 
 #: admin/systems/SelectDeviceType.tpl.c:11
 #: admin/systems/SelectDeviceType.tpl.c:14
@@ -1710,7 +1754,10 @@ msgid ""
 "This option enables you to generate FAI install CD images for the selected "
 "workstation. The procedure may take about 10 minutes to complete, so please "
 "be patient after pressing the 'Create ISO-Image' button."
-msgstr "Cette option permet de créer des images d'installation FAI pour le poste de travail sélectionné. La procédure peut mettre 10 minutes pour se terminer, veuillez être patient après avoir cliquer sur  'Créer une image ISO'."
+msgstr ""
+"Cette option permet de créer des images d'installation FAI pour le poste de "
+"travail sélectionné. La procédure peut mettre 10 minutes pour se terminer, "
+"veuillez être patient après avoir cliquer sur  'Créer une image ISO'."
 
 #: admin/systems/gencd.tpl.c:8
 msgid "Create ISO-Image"
@@ -1819,14 +1866,20 @@ msgstr "Enregistrement dns"
 
 #: admin/systems/remove.tpl.c:5
 msgid ""
-"This includes all account data, system access rules, imap settings, etc. for"
-" this user. Please double check if your really want to do this since there "
-"is no way for FusionDirectory to get your data back."
-msgstr "Cela inclut toutes les données des comptes, les droits d'accès, la configuration imap,etc. pour cet utilisateur. Veuillez vous assurez que vous voulez effectuez cette opération étant donné qu'il est impossible pour FusionDirectory de récupérer vos données."
+"This includes all account data, system access rules, imap settings, etc. for "
+"this user. Please double check if your really want to do this since there is "
+"no way for FusionDirectory to get your data back."
+msgstr ""
+"Cela inclut toutes les données des comptes, les droits d'accès, la "
+"configuration imap,etc. pour cet utilisateur. Veuillez vous assurez que vous "
+"voulez effectuez cette opération étant donné qu'il est impossible pour "
+"FusionDirectory de récupérer vos données."
 
 #: admin/systems/remove.tpl.c:8
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr "D'accord - si vous êtes sur - cliquez sur 'Supprimer' pour continuer ou sur 'Annuler' pour abandonner."
+msgstr ""
+"D'accord - si vous êtes sur - cliquez sur 'Supprimer' pour continuer ou sur "
+"'Annuler' pour abandonner."
 
 #: admin/systems/ppd/printerPPDSelectionDialog.tpl.c:2
 msgid "Select objects to add"
@@ -1879,13 +1932,18 @@ msgstr "Votre navigateur ne supporte pas les iframes."
 #: admin/systems/password.tpl.c:2
 msgid ""
 "To change the terminal root password use the fields below. The changes take "
-"effect during the next reboot. Please memorize the new password, because you"
-" wouldn't be able to log in."
-msgstr "Pour changer le mot de passe root du terminal, utilisez le champ ci-dessous. Les changements prennent effet immédiatement. Veuillez mémoriser le nouveau mot de passe sinon vous ne pourrez pas vous identifier sans celui-ci."
+"effect during the next reboot. Please memorize the new password, because you "
+"wouldn't be able to log in."
+msgstr ""
+"Pour changer le mot de passe root du terminal, utilisez le champ ci-dessous. "
+"Les changements prennent effet immédiatement. Veuillez mémoriser le nouveau "
+"mot de passe sinon vous ne pourrez pas vous identifier sans celui-ci."
 
 #: admin/systems/password.tpl.c:5
 msgid "Leave fields blank for password inheritance from default entries."
-msgstr "Laissez le champ vide pour le mot de passe afin de l'obtenir depuis l'entrée par défaut."
+msgstr ""
+"Laissez le champ vide pour le mot de passe afin de l'obtenir depuis l'entrée "
+"par défaut."
 
 #: admin/systems/password.tpl.c:8
 msgid "Changing the password impinges on authentification only."

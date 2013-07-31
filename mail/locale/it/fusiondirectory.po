@@ -1,20 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-develop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-30 18:14+0200\n"
+"POT-Creation-Date: 2013-07-31 10:41+0200\n"
 "PO-Revision-Date: 2013-07-30 16:46+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: Italian (http://www.transifex.com/projects/p/FusionDirectory/language/it/)\n"
+"Language-Team: Italian (http://www.transifex.com/projects/p/FusionDirectory/"
+"language/it/)\n"
+"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: config/mail/class_mailPluginConfig.inc:28
@@ -40,10 +41,11 @@ msgstr "Algoritmo per la posta elettronica"
 
 #: config/mail/class_mailPluginConfig.inc:46
 msgid ""
-"Mail method the setup should use to communicate with a possible mail server."
-" Leave this undefined if your mail method does not match the predefined "
-"ones."
-msgstr "Metodo mail che l'impostazione deve usare per comunicare con un possibile server mail."
+"Mail method the setup should use to communicate with a possible mail server. "
+"Leave this undefined if your mail method does not match the predefined ones."
+msgstr ""
+"Metodo mail che l'impostazione deve usare per comunicare con un possibile "
+"server mail."
 
 #: config/mail/class_mailPluginConfig.inc:51
 msgid "Account identification attribute"
@@ -67,7 +69,9 @@ msgstr "Modello per la cartella mail"
 
 #: config/mail/class_mailPluginConfig.inc:63
 msgid "Override the methods default account creation syntax."
-msgstr "Sovrascrivere i metodi predefiniti per la sintassi della creazione degli account."
+msgstr ""
+"Sovrascrivere i metodi predefiniti per la sintassi della creazione degli "
+"account."
 
 #: config/mail/class_mailPluginConfig.inc:67
 msgid "Use cyrus UNIX style"
@@ -86,7 +90,9 @@ msgstr "Rimuovi la mailbox alla rimozione dell'utente"
 msgid ""
 "Determines if the mailbox should be removed from your IMAP server after the "
 "account is deleted in LDAP."
-msgstr "Determina se la milbox dovrà essere rimossa dal vostro server IMAP in seguito alla rimozione dell'account utente nell'annuario LDAP."
+msgstr ""
+"Determina se la milbox dovrà essere rimossa dal vostro server IMAP in "
+"seguito alla rimozione dell'account utente nell'annuario LDAP."
 
 #: config/mail/class_mailPluginConfig.inc:78
 msgid "Cyrus autocreate folders"
@@ -96,7 +102,9 @@ msgstr "Creazione automatica delle cartelle da parte di cyrus"
 msgid ""
 "List of personal IMAP folders that should be created along initial account "
 "creation."
-msgstr "Elenco delle cartelle IMAP personali che dovranno essere create durante la creazione iniziale dell'account."
+msgstr ""
+"Elenco delle cartelle IMAP personali che dovranno essere create durante la "
+"creazione iniziale dell'account."
 
 #: config/mail/class_mailPluginConfig.inc:84
 msgid "IMAP timeout"
@@ -213,7 +221,8 @@ msgstr "Server"
 
 #: personal/mail/class_mailAccount.inc:106
 msgid "Specify the mail server where the user will be hosted on"
-msgstr "Specifica il server di posta elettronica che ospiterà l'account dell'utente"
+msgstr ""
+"Specifica il server di posta elettronica che ospiterà l'account dell'utente"
 
 #: personal/mail/class_mailAccount.inc:111
 msgid "Quota size"
@@ -296,7 +305,8 @@ msgstr "Rifiuta le mail a seconda della loro dimensione"
 
 #: personal/mail/class_mailAccount.inc:177
 msgid "Messages bigger than the chosen size will be rejected"
-msgstr "Le mail più grandi rispetto alla dimensione massima scelta saranno respinte"
+msgstr ""
+"Le mail più grandi rispetto alla dimensione massima scelta saranno respinte"
 
 #: personal/mail/class_mailAccount.inc:182
 msgid "Minimum size to reject a mail (MB)"
@@ -324,7 +334,9 @@ msgstr "L'utente è abilitato a inviare e ricevere solo messaggi locali"
 
 #: personal/mail/class_mailAccount.inc:209
 msgid "Select if user can only send and receive inside his own domain"
-msgstr "Seleziona se l'utente può inviare e ricevere messaggi solo all'interno del suo dominio"
+msgstr ""
+"Seleziona se l'utente può inviare e ricevere messaggi solo all'interno del "
+"suo dominio"
 
 #: personal/mail/class_mailAccount.inc:214
 msgid "No delivery to own mailbox"
@@ -332,7 +344,8 @@ msgstr "Non recapitare nella casella di posta elettronica dell'utente"
 
 #: personal/mail/class_mailAccount.inc:215
 msgid "Select if you want to forward mails without getting own copies of them"
-msgstr "Seleziona se intendi inoltrare le mail senza mantenerne una copia locale"
+msgstr ""
+"Seleziona se intendi inoltrare le mail senza mantenerne una copia locale"
 
 #: personal/mail/class_mailAccount.inc:260
 #, php-format
@@ -362,7 +375,9 @@ msgstr "Impossibile impostare le quote : %s"
 
 #: personal/mail/class_mailAccount.inc:377
 msgid "Mail error saving sieve settings"
-msgstr "Errore del server di posta elettronica quando si cercano di salvare le impostazioni dello script sieve "
+msgstr ""
+"Errore del server di posta elettronica quando si cercano di salvare le "
+"impostazioni dello script sieve "
 
 #: personal/mail/sieve/class_sieveManagement.inc:116
 #: personal/mail/sieve/class_sieveManagement.inc:244
@@ -379,7 +394,9 @@ msgstr "L'analisi è riuscita"
 msgid ""
 "The specified mail server '%s' does not exist within the FusionDirectory "
 "configuration."
-msgstr "Il server di posta elettronica specificato ('%s') non è presente nella configurazione di FusionDirectory."
+msgstr ""
+"Il server di posta elettronica specificato ('%s') non è presente nella "
+"configurazione di FusionDirectory."
 
 #: personal/mail/sieve/class_sieveManagement.inc:203
 #: personal/mail/sieve/class_sieveManagement.inc:208
@@ -618,7 +635,8 @@ msgstr "Modifica lo script"
 #: personal/mail/sieve/class_sieveManagement.inc:674
 #, php-format
 msgid "Can't log into SIEVE server. Server says '%s'."
-msgstr "Impossibile connettersi al server SIEVE per la seguente ragione : '%s'."
+msgstr ""
+"Impossibile connettersi al server SIEVE per la seguente ragione : '%s'."
 
 #: personal/mail/sieve/class_sieveManagement.inc:772
 msgid "Cannot insert element at the requested position!"
@@ -652,7 +670,9 @@ msgstr "Specifica almeno un parametro valido."
 
 #: personal/mail/sieve/class_sieveElement_Reject.inc:21
 msgid "Invalid character found, quotes are not allowed in a reject message."
-msgstr "Carattere non valido, gli apici e le virgolette non sono permessi in un messaggio di rifiuto."
+msgstr ""
+"Carattere non valido, gli apici e le virgolette non sono permessi in un "
+"messaggio di rifiuto."
 
 #: personal/mail/sieve/class_sieveElement_Reject.inc:37
 msgid "Your reject text here"
@@ -660,7 +680,9 @@ msgstr "Il tuo testo di rifiuto qui"
 
 #: personal/mail/sieve/class_sieveElement_Vacation.inc:148
 msgid "Alternative sender address must be a valid email addresses."
-msgstr "L'indirizzo di destinazione alternativo dev'essere un indirizzo di posta elettronica valido."
+msgstr ""
+"L'indirizzo di destinazione alternativo dev'essere un indirizzo di posta "
+"elettronica valido."
 
 #: personal/mail/sieve/class_sieveElement_Redirect.inc:24
 msgid "Please specify a valid email address."
@@ -784,12 +806,16 @@ msgstr "Specifica un operatore valido."
 #: personal/mail/sieve/class_sieveElement_If.inc:654
 msgid ""
 "Invalid character found in address attribute. Quotes are not allowed here."
-msgstr "C'è un carattere non valido nell'indirizzo. Gli apici e le virgolette non sono permessi."
+msgstr ""
+"C'è un carattere non valido nell'indirizzo. Gli apici e le virgolette non "
+"sono permessi."
 
 #: personal/mail/sieve/class_sieveElement_If.inc:669
 msgid ""
 "Invalid character found in value attribute. Quotes are not allowed here."
-msgstr "C'è un carattere non valido nell'attributo. Gli apici e le virgolette non sono permessi."
+msgstr ""
+"C'è un carattere non valido nell'attributo. Gli apici e le virgolette non "
+"sono permessi."
 
 #: personal/mail/sieve/class_sieveElement_If.inc:727
 #: personal/mail/sieve/class_sieveElement_If.inc:1060
@@ -1095,7 +1121,8 @@ msgstr "Dimensione massima dell'intestazione della mail (KB)"
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:61
 msgid "This value specifies the maximal header size."
-msgstr "Questo valore specifica la dimensione massima dell'intestazione dei messaggi."
+msgstr ""
+"Questo valore specifica la dimensione massima dell'intestazione dei messaggi."
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:66
 msgid "Max mailbox size (KB)"
@@ -1383,7 +1410,10 @@ msgstr "Importa uno script sieve"
 msgid ""
 "Please select the sieve script you want to import. Use the import button to "
 "import the script or the cancel button to abort."
-msgstr "Scegli lo script sieve che vuoi importare. Usa il pulsante 'importa' per cominciare l'importazione dello script altrimenti premi 'cancella' per annullare."
+msgstr ""
+"Scegli lo script sieve che vuoi importare. Usa il pulsante 'importa' per "
+"cominciare l'importazione dello script altrimenti premi 'cancella' per "
+"annullare."
 
 #: personal/mail/sieve/templates/import_script.tpl.c:8
 msgid "Script to import"
@@ -1396,9 +1426,11 @@ msgstr "Importa"
 
 #: personal/mail/sieve/templates/create_script.tpl.c:2
 msgid ""
-"Please enter the name for the new script below. Script names must consist of"
-" lower case characters only."
-msgstr "Inserisci il nome del nuovo script qui sotto. I nomi degli script devono essere composti da sole lettere minuscole."
+"Please enter the name for the new script below. Script names must consist of "
+"lower case characters only."
+msgstr ""
+"Inserisci il nome del nuovo script qui sotto. I nomi degli script devono "
+"essere composti da sole lettere minuscole."
 
 #: personal/mail/sieve/templates/create_script.tpl.c:5
 msgid "Script name"
@@ -1517,12 +1549,15 @@ msgstr "Elenco degli script di sieve"
 msgid ""
 "Connection to the sieve server could not be established, the "
 "authentification attribute is empty."
-msgstr "La connessione verso il server sieve non puó essere stabilita, l'attributo per l'identificazione è vuoto."
+msgstr ""
+"La connessione verso il server sieve non puó essere stabilita, l'attributo "
+"per l'identificazione è vuoto."
 
 #: personal/mail/sieve/templates/management.tpl.c:8
 msgid ""
 "Please verify that the attributes uid and mail are not empty and try again."
-msgstr "Verifica che gli attributi 'uid' e 'mail' non siano vuoti e poi riprova."
+msgstr ""
+"Verifica che gli attributi 'uid' e 'mail' non siano vuoti e poi riprova."
 
 #: personal/mail/sieve/templates/management.tpl.c:11
 msgid "Connection to the sieve server could not be established."
@@ -1534,9 +1569,11 @@ msgstr "Probabilmente l'account per Sieve non è ancora stato creato."
 
 #: personal/mail/sieve/templates/management.tpl.c:17
 msgid ""
-"Be careful. All your changes will be saved directly to sieve, if you use the"
-" save button below."
-msgstr "Fai attenzione. Ogni modifica sarà registrata direttamente in sieve, quando userai il pulsante qui sotto."
+"Be careful. All your changes will be saved directly to sieve, if you use the "
+"save button below."
+msgstr ""
+"Fai attenzione. Ogni modifica sarà registrata direttamente in sieve, quando "
+"userai il pulsante qui sotto."
 
 #: personal/mail/sieve/templates/management.tpl.c:20
 msgid "Create new script"
@@ -1552,16 +1589,22 @@ msgstr "Aggiungi un oggetto"
 
 #: personal/mail/sieve/templates/remove_script.tpl.c:5
 msgid ""
-"Please double check if your really want to do this since there is no way for"
-" FusionDirectory to get your data back."
-msgstr "Assicurati che vuoi davvero eseguire l'azione visto che poi sarà impossibile per FusionDirectory recuperare i tuoi dati."
+"Please double check if your really want to do this since there is no way for "
+"FusionDirectory to get your data back."
+msgstr ""
+"Assicurati che vuoi davvero eseguire l'azione visto che poi sarà impossibile "
+"per FusionDirectory recuperare i tuoi dati."
 
 #: personal/mail/sieve/templates/remove_script.tpl.c:8
 msgid ""
 "Best thing to do before performing this action would be to save the current "
 "script in a file. So - if you've done so - press 'Delete' to continue or "
 "'Cancel' to abort."
-msgstr "La migliore cosa da fare, prima di eseguire questa azione, potrebbe essere quella di registrare l'attuale script in un file. Quindi - se lo hai già fatto - premi'Cancella' per continuare altrimenti  'Annulla' per interrompere."
+msgstr ""
+"La migliore cosa da fare, prima di eseguire questa azione, potrebbe essere "
+"quella di registrare l'attuale script in un file. Quindi - se lo hai già "
+"fatto - premi'Cancella' per continuare altrimenti  'Annulla' per "
+"interrompere."
 
 #: personal/mail/sieve/templates/element_header.tpl.c:29
 msgid "operator"

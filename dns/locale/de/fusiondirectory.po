@@ -1,20 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-develop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-30 18:14+0200\n"
+"POT-Creation-Date: 2013-07-31 10:39+0200\n"
 "PO-Revision-Date: 2013-07-30 16:24+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: German (http://www.transifex.com/projects/p/FusionDirectory/language/de/)\n"
+"Language-Team: German (http://www.transifex.com/projects/p/FusionDirectory/"
+"language/de/)\n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: admin/systems/services/dns/class_DNS.inc:181
@@ -32,12 +33,16 @@ msgstr "Fehler"
 #: admin/systems/services/dns/class_DNS.inc:181
 #, php-format
 msgid "Cannot find reverse zone for DNS zone '%s'. Parsing zone aborted."
-msgstr "Konnte die Reverse-Zone für DNS-Zone '%s' nicht finden. Das Einlesen der Zone wurde abgebrochen."
+msgstr ""
+"Konnte die Reverse-Zone für DNS-Zone '%s' nicht finden. Das Einlesen der "
+"Zone wurde abgebrochen."
 
 #: admin/systems/services/dns/class_DNS.inc:186
 #, php-format
 msgid "Found more than one reverse zone for '%s'. Parsing zone aborted."
-msgstr "Es wurde mehr als eine Reverse-Zone für DNS-Zone '%s' gefunden. Das Einlesen der Zone wurde abgebrochen."
+msgstr ""
+"Es wurde mehr als eine Reverse-Zone für DNS-Zone '%s' gefunden. Das Einlesen "
+"der Zone wurde abgebrochen."
 
 #: admin/systems/services/dns/class_DNS.inc:650
 #, php-format
@@ -124,7 +129,9 @@ msgstr "Netzwerk-Adresse"
 #, php-format
 msgid ""
 "The specified network address and the network class (%s/%s) do not match!"
-msgstr "Die angegebene Netzwerkaddresse und die Netzwerkklasse (%s/%s) passen nicht zueinander!"
+msgstr ""
+"Die angegebene Netzwerkaddresse und die Netzwerkklasse (%s/%s) passen nicht "
+"zueinander!"
 
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:437
 #: admin/systems/services/dns/class_serviceDNS.inc:646
@@ -152,7 +159,9 @@ msgstr "Sie sind dabei, die DNS-Konfiguration vom Server '%s' zu übernehmen."
 msgid ""
 "The migration will be started when you save this system. To cancel this "
 "action, use the cancel button below."
-msgstr "Die Migration wird gestartet, sobald Sie das System speichern. Klicken Sie auf den Knopf 'Abbrechen', um abzubrechen."
+msgstr ""
+"Die Migration wird gestartet, sobald Sie das System speichern. Klicken Sie "
+"auf den Knopf 'Abbrechen', um abzubrechen."
 
 #: admin/systems/services/dns/class_serviceDNS.inc:315
 #: admin/systems/services/dns/class_serviceDNS.inc:654
@@ -167,7 +176,9 @@ msgstr "Klasse"
 #: admin/systems/services/dns/class_serviceDNS.inc:381
 #, php-format
 msgid "Cannot delete the selected zone. It is still in use by '%s'"
-msgstr "Sie können die gewählte Zone nicht entfernen, sie wird noch von folgendem(n) Eintrag / Einträgen verwendet: '%s'"
+msgstr ""
+"Sie können die gewählte Zone nicht entfernen, sie wird noch von folgendem(n) "
+"Eintrag / Einträgen verwendet: '%s'"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:395
 #, php-format
@@ -225,7 +236,9 @@ msgstr "Neuer Eintrag"
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:240
 #, php-format
 msgid "Cannot rename '%s' to '%s'. Name is already in use!"
-msgstr "Kann '%s' nicht in '%s' umbenennen, der angegebene Name wird bereits verwendet!"
+msgstr ""
+"Kann '%s' nicht in '%s' umbenennen, der angegebene Name wird bereits "
+"verwendet!"
 
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:272
 msgid "Name"
@@ -234,7 +247,8 @@ msgstr "Name"
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:281
 #, php-format
 msgid "Cannot rename '%s' to '%s'. Entry is already in use."
-msgstr "Kann '%s' nicht in '%s' umbenennen, der Eintrag wird bereits verwendet."
+msgstr ""
+"Kann '%s' nicht in '%s' umbenennen, der Eintrag wird bereits verwendet."
 
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:287
 #, php-format
@@ -335,7 +349,10 @@ msgstr "DNS-Übernahme initiiert"
 msgid ""
 "This includes 'all' DNS zones that are located within this server. Please "
 "double check if your really want to do this."
-msgstr "Dies umfasst 'alle' Konten, System- und Setup-Informationen dieses Teilbaums. Bitte prüfen Sie genau, ob Sie dies wünschen, da es keine Möglichkeit für FusionDirectory gibt, die Daten wiederherzustellen. "
+msgstr ""
+"Dies umfasst 'alle' Konten, System- und Setup-Informationen dieses "
+"Teilbaums. Bitte prüfen Sie genau, ob Sie dies wünschen, da es keine "
+"Möglichkeit für FusionDirectory gibt, die Daten wiederherzustellen. "
 
 #: admin/systems/services/dns/serviceDNS.tpl.c:8
 msgid "Following objects will be taken over"
@@ -357,13 +374,18 @@ msgstr "Zonen"
 msgid ""
 "This dialog allows you to configure all components of this DNS zone on a "
 "single list."
-msgstr "Dieser Dialog erlaubt es Ihnen, alle Komponenten dieser DNS-Zone mithilfe einer einzelnen Liste zu konfigurieren."
+msgstr ""
+"Dieser Dialog erlaubt es Ihnen, alle Komponenten dieser DNS-Zone mithilfe "
+"einer einzelnen Liste zu konfigurieren."
 
 #: admin/systems/services/dns/serviceDNSeditZoneEntries.tpl.c:5
 msgid ""
 "This dialog can't be used until the currently edited zone was saved or the "
 "zone entry exists in the ldap database."
-msgstr "Dieser Dialog kann nicht verwendet werden, bis die momentan geöffnete Zone gespeichert wurde und/oder der passende Eintrag in der LDAP-Datenbank existiert."
+msgstr ""
+"Dieser Dialog kann nicht verwendet werden, bis die momentan geöffnete Zone "
+"gespeichert wurde und/oder der passende Eintrag in der LDAP-Datenbank "
+"existiert."
 
 #: admin/systems/services/dns/serviceDNSeditZoneEntries.tpl.c:11
 msgid "Create a new DNS zone entry"
@@ -379,11 +401,14 @@ msgstr "Netzmaske"
 
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:14
 msgid "Zone is in use, network settings can't be modified."
-msgstr "Die Zone wird gerade verwendet, die Einstellungen können nicht verändert werden."
+msgstr ""
+"Die Zone wird gerade verwendet, die Einstellungen können nicht verändert "
+"werden."
 
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:20
 msgid "Can't be edited because the zone wasn't saved right now."
-msgstr "Kann nicht bearbeitet werden, da die Zone bis jetzt nicht gespeichert wurde."
+msgstr ""
+"Kann nicht bearbeitet werden, da die Zone bis jetzt nicht gespeichert wurde."
 
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:23
 msgid "Edit"

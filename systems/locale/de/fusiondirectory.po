@@ -1,20 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-develop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-30 18:14+0200\n"
+"POT-Creation-Date: 2013-07-31 10:43+0200\n"
 "PO-Revision-Date: 2013-07-30 17:03+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: German (http://www.transifex.com/projects/p/FusionDirectory/language/de/)\n"
+"Language-Team: German (http://www.transifex.com/projects/p/FusionDirectory/"
+"language/de/)\n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: config/systems/class_systemsPluginConfig.inc:28
@@ -702,8 +703,8 @@ msgstr ""
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:78
 msgid ""
-"Specifies what checks to perform on server certificates in a TLS session, if"
-" any"
+"Specifies what checks to perform on server certificates in a TLS session, if "
+"any"
 msgstr ""
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:83
@@ -759,12 +760,16 @@ msgstr "Zurück"
 
 #: admin/systems/class_systemManagement.inc:230
 msgid "Creating the image failed. Please see the report below."
-msgstr "Erstellen des Abbilds fehlgeschlagen. Bitte überprüfen Sie den Fehlerbericht unterhalb."
+msgstr ""
+"Erstellen des Abbilds fehlgeschlagen. Bitte überprüfen Sie den Fehlerbericht "
+"unterhalb."
 
 #: admin/systems/class_systemManagement.inc:235
 #, php-format
 msgid "Command '%s', specified for ISO creation doesn't seem to exist."
-msgstr "Das Kommando '%s', angegeben für die ISO-Erstellung, scheint nicht zu existieren."
+msgstr ""
+"Das Kommando '%s', angegeben für die ISO-Erstellung, scheint nicht zu "
+"existieren."
 
 #: admin/systems/class_systemManagement.inc:406
 #: admin/systems/class_systemManagement.inc:482
@@ -1100,12 +1105,15 @@ msgstr "Eindeutiger Datensatz-Typ '%s' ist doppelt vorhanden!"
 msgid ""
 "The IP address '%s' will be added as 'A Record', this will be done "
 "automatically, please remove the record."
-msgstr "Die IP-Adresse '%s' wird automatisch als 'A'-Datensatz eingefügt. Bitte entfernen Sie den Eintrag."
+msgstr ""
+"Die IP-Adresse '%s' wird automatisch als 'A'-Datensatz eingefügt. Bitte "
+"entfernen Sie den Eintrag."
 
 #: admin/systems/class_networkSettings.inc:716
 #, php-format
 msgid "Only lowercase records are allowed, please check your '%ss'."
-msgstr "Es sind nur Kleinbuchstaben in Datensätzen erlaubt, bitte prüfen Sie '%ss'."
+msgstr ""
+"Es sind nur Kleinbuchstaben in Datensätzen erlaubt, bitte prüfen Sie '%ss'."
 
 #: admin/systems/class_networkSettings.inc:984
 msgid "Delete"
@@ -1209,7 +1217,9 @@ msgstr "Das Verarbeiten der PPD-Datei ist fehlgeschlagen - die Datei ist leer!"
 msgid ""
 "Parsing PPD file %s failed - line too long. Trailing characters have been "
 "ignored!"
-msgstr "Das Verarbeiten der PPD-Datei '%s' ist fehlgeschlagen - Zeile zu lang. Nachfolgende Zeichen wurden ausgelassen!"
+msgstr ""
+"Das Verarbeiten der PPD-Datei '%s' ist fehlgeschlagen - Zeile zu lang. "
+"Nachfolgende Zeichen wurden ausgelassen!"
 
 #: admin/systems/ppd/class_ppdManager.inc:234
 msgid "Nested groups are not supported!"
@@ -1237,12 +1247,16 @@ msgstr "Die Option PickMany wird noch nicht unterstützt!"
 msgid ""
 "Parsing PPD file %s failed - line too long. Trailing characters have been "
 "ignored"
-msgstr "Das Verarbeiten der PPD-Datei '%s' ist fehlgeschlagen - Zeile zu lang. Nachfolgende Zeichen wurden ausgelassen."
+msgstr ""
+"Das Verarbeiten der PPD-Datei '%s' ist fehlgeschlagen - Zeile zu lang. "
+"Nachfolgende Zeichen wurden ausgelassen."
 
 #: admin/systems/ppd/class_ppdManager.inc:399
 #, php-format
 msgid "Parsing PPD file %s failed - no information found."
-msgstr "Das Verarbeiten der PPD-Datei '%s' ist fehlgeschlagen - keine Information gefunden."
+msgstr ""
+"Das Verarbeiten der PPD-Datei '%s' ist fehlgeschlagen - keine Information "
+"gefunden."
 
 #: admin/systems/ppd/class_printerPPDSelectionDialog.inc:95
 #: admin/systems/ppd/class_printerPPDSelectionDialog.inc:120
@@ -1315,7 +1329,9 @@ msgstr "Existierende PPD überschreiben"
 msgid ""
 "There is already a ppd file for this kind of printer. Do you want to "
 "overwrite it?"
-msgstr "Der von Ihnen gewählte Drucker-Typ verfügt bereits über eine PPD-Datei. Möchten Sie diese überschreiben?"
+msgstr ""
+"Der von Ihnen gewählte Drucker-Typ verfügt bereits über eine PPD-Datei. "
+"Möchten Sie diese überschreiben?"
 
 #: admin/systems/ppd/class_printerPPDDialog.inc:494
 msgid "Section"
@@ -1340,7 +1356,9 @@ msgstr "PPD-Typ '%s' wird nicht unterstützt!"
 msgid ""
 "Please select a valid ppd file or use 'Cancel' to go back to printer "
 "configuration."
-msgstr "Bitte wählen Sie eine gültige PPD-Datei oder drücken Sie 'Abbrechen', um zurück zur Drucker-Konfiguration zu gelangen."
+msgstr ""
+"Bitte wählen Sie eine gültige PPD-Datei oder drücken Sie 'Abbrechen', um "
+"zurück zur Drucker-Konfiguration zu gelangen."
 
 #: admin/systems/class_terminalStartup.inc:63
 msgid "Startup parameters"
@@ -1374,7 +1392,9 @@ msgstr "Terminal-Start"
 #, php-format
 msgid ""
 "Cannot determine a valid department for this object. Setting base to '%s'!"
-msgstr "Kann keine gültige Abteilung für dieses Objekt ermitteln, setze Basis auf '%s'."
+msgstr ""
+"Kann keine gültige Abteilung für dieses Objekt ermitteln, setze Basis auf "
+"'%s'."
 
 #: admin/systems/class_printGeneric.inc:311
 #: admin/systems/class_printGeneric.inc:319
@@ -1389,11 +1409,14 @@ msgstr "Drucker-Erweiterung hinzufügen"
 msgid ""
 "Could not initialize printer tab, parameter parent was missing while "
 "construction."
-msgstr "Konnte den 'Druck'-Reiter nicht initialisieren, der Parameter 'parent' fehlte während der Erstellung."
+msgstr ""
+"Konnte den 'Druck'-Reiter nicht initialisieren, der Parameter 'parent' "
+"fehlte während der Erstellung."
 
 #: admin/systems/class_printGeneric.inc:320
 msgid "This is a workstation template, printer tab is disabled."
-msgstr "Dies ist eine Arbeitsstations-Vorlage, der Drucker-Tab ist deaktiviert."
+msgstr ""
+"Dies ist eine Arbeitsstations-Vorlage, der Drucker-Tab ist deaktiviert."
 
 #: admin/systems/class_printGeneric.inc:325
 msgid "This is a terminal template, printer tab is disabled."
@@ -1412,7 +1435,10 @@ msgstr "Drucker"
 msgid ""
 "You can't enable it while 'cn' is not present in entry. Possibly you are "
 "currently creating a new terminal template."
-msgstr "Sie können es nicht aktivieren, solange das 'cn'-Attribut nicht im Eintrag enthalten ist. Wahrscheinlich erstellen Sie gerade eine neue Terminal-Vorlage."
+msgstr ""
+"Sie können es nicht aktivieren, solange das 'cn'-Attribut nicht im Eintrag "
+"enthalten ist. Wahrscheinlich erstellen Sie gerade eine neue Terminal-"
+"Vorlage."
 
 #: admin/systems/class_printGeneric.inc:382
 #: admin/systems/class_printGeneric.inc:385
@@ -1516,7 +1542,10 @@ msgid ""
 "Actions you choose here influence all systems in this object group. "
 "Additionally, all values editable here can be inherited by the clients "
 "assigned to this object group."
-msgstr "Aktionen die hier ausgewählt werden beeinflussen alle Systeme dieser Objektgruppe. Zusätzlich können alle hier einstellbaren Werte von den Systemen ererbt werden."
+msgstr ""
+"Aktionen die hier ausgewählt werden beeinflussen alle Systeme dieser "
+"Objektgruppe. Zusätzlich können alle hier einstellbaren Werte von den "
+"Systemen ererbt werden."
 
 #: admin/ogroups/goto/termgroup.tpl.c:11
 msgid "NTP server"
@@ -1524,7 +1553,8 @@ msgstr "Zeit-Server"
 
 #: admin/ogroups/goto/termgroup.tpl.c:14
 msgid "Choose server to use for synchronizing time"
-msgstr "Wählen Sie den Server, der zur Zeit-Synchronisation genutzt werden soll"
+msgstr ""
+"Wählen Sie den Server, der zur Zeit-Synchronisation genutzt werden soll"
 
 #: admin/ogroups/goto/termgroup.tpl.c:20
 msgid "Select terminal mode"
@@ -1540,7 +1570,9 @@ msgstr "Wählen Sie das NFS-Root-Dateisystem"
 
 #: admin/ogroups/goto/termgroup.tpl.c:38
 msgid "Choose NFS filesystem to place swap files on"
-msgstr "Wählen Sie das NFS-Dateisystem, in dem die Auslagerungsdateien abgelegt werden sollen"
+msgstr ""
+"Wählen Sie das NFS-Dateisystem, in dem die Auslagerungsdateien abgelegt "
+"werden sollen"
 
 #: admin/ogroups/goto/termgroup.tpl.c:47
 msgid "Execute"
@@ -1632,7 +1664,10 @@ msgstr "Hinzufügen eines neues Dienstes zum gewählten Server"
 msgid ""
 "This dialog allows you to add new services to the currenty edited server "
 "object. The box below shows all available but not already used services."
-msgstr "Dieser Dialog ermöglicht Ihnen das Hinzufügen neuer Dienste zum momentan gewählten Server. Die Box unterhalb zeigt alle verfügbaren aber momentan nicht verwendeten Dienste."
+msgstr ""
+"Dieser Dialog ermöglicht Ihnen das Hinzufügen neuer Dienste zum momentan "
+"gewählten Server. Die Box unterhalb zeigt alle verfügbaren aber momentan "
+"nicht verwendeten Dienste."
 
 #: admin/systems/services/ServiceAddDialog.tpl.c:8
 msgid "Service to add"
@@ -1660,19 +1695,26 @@ msgid ""
 "This system has no system type configured. Please choose a system type for "
 "this object and an optional inheritance group. Press the 'continue' button "
 "to proceed."
-msgstr "Dieses System hat keinen zugewiesenen Typ. Bitte wählen Sie einen Typ und eine optionale Gruppe mit vordefinierten Eigenschaften. Drücken Sie 'Weiter' um fortzufahren."
+msgstr ""
+"Dieses System hat keinen zugewiesenen Typ. Bitte wählen Sie einen Typ und "
+"eine optionale Gruppe mit vordefinierten Eigenschaften. Drücken Sie 'Weiter' "
+"um fortzufahren."
 
 #: admin/systems/SelectDeviceType.tpl.c:5
 msgid ""
-"Please select a system type and an optional bundle of predefined settings to"
-" be inherited."
-msgstr "Bitte wählen Sie einen Systemtyp und (optional) einen Satz von vordefinierten Einstellungen (werden automatisch übernommen)."
+"Please select a system type and an optional bundle of predefined settings to "
+"be inherited."
+msgstr ""
+"Bitte wählen Sie einen Systemtyp und (optional) einen Satz von "
+"vordefinierten Einstellungen (werden automatisch übernommen)."
 
 #: admin/systems/SelectDeviceType.tpl.c:8
 msgid ""
 "Please select a system type and a bundle of predefined settings to be "
 "inherited."
-msgstr "Bitte wählen Sie einen Systemtyp und (optional) einen Satz von  vordefinierten Einstellungen."
+msgstr ""
+"Bitte wählen Sie einen Systemtyp und (optional) einen Satz von  "
+"vordefinierten Einstellungen."
 
 #: admin/systems/SelectDeviceType.tpl.c:11
 #: admin/systems/SelectDeviceType.tpl.c:14
@@ -1710,7 +1752,11 @@ msgid ""
 "This option enables you to generate FAI install CD images for the selected "
 "workstation. The procedure may take about 10 minutes to complete, so please "
 "be patient after pressing the 'Create ISO-Image' button."
-msgstr "Diese Option erlaubt es Ihnen, ein Abbild einer FAI-Installations-CD für die gewählte Arbeitsstation zu erstellen. Dieser Vorgang dauert etwa 10 Minuten, haben Sie also Geduld, nachdem Sie den Knopf 'Erstelle ISO-Abbild' gedrückt haben."
+msgstr ""
+"Diese Option erlaubt es Ihnen, ein Abbild einer FAI-Installations-CD für die "
+"gewählte Arbeitsstation zu erstellen. Dieser Vorgang dauert etwa 10 Minuten, "
+"haben Sie also Geduld, nachdem Sie den Knopf 'Erstelle ISO-Abbild' gedrückt "
+"haben."
 
 #: admin/systems/gencd.tpl.c:8
 msgid "Create ISO-Image"
@@ -1819,14 +1865,16 @@ msgstr "DNS-Einträge"
 
 #: admin/systems/remove.tpl.c:5
 msgid ""
-"This includes all account data, system access rules, imap settings, etc. for"
-" this user. Please double check if your really want to do this since there "
-"is no way for FusionDirectory to get your data back."
+"This includes all account data, system access rules, imap settings, etc. for "
+"this user. Please double check if your really want to do this since there is "
+"no way for FusionDirectory to get your data back."
 msgstr ""
 
 #: admin/systems/remove.tpl.c:8
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr "Wenn Sie sicher sind, drücken Sie 'Entfernen' um fortzufahren oder 'Abbrechen' zum Abbruch."
+msgstr ""
+"Wenn Sie sicher sind, drücken Sie 'Entfernen' um fortzufahren oder "
+"'Abbrechen' zum Abbruch."
 
 #: admin/systems/ppd/printerPPDSelectionDialog.tpl.c:2
 msgid "Select objects to add"
@@ -1870,7 +1918,9 @@ msgstr "Optionen"
 
 #: admin/systems/ppd/remove_ppd.tpl.c:5
 msgid "The ppd file will be removed from the server and can not be restored."
-msgstr "Die PPD-Datei wird vom Server entfernt und kann nicht wiederhergestellt werden."
+msgstr ""
+"Die PPD-Datei wird vom Server entfernt und kann nicht wiederhergestellt "
+"werden."
 
 #: admin/systems/gencd_frame.tpl.c:2
 msgid "Your browser does not supprt iframes."
@@ -1879,17 +1929,23 @@ msgstr "Ihr Browser unterstützt keine iframes."
 #: admin/systems/password.tpl.c:2
 msgid ""
 "To change the terminal root password use the fields below. The changes take "
-"effect during the next reboot. Please memorize the new password, because you"
-" wouldn't be able to log in."
-msgstr "Um das root-Passwort des Terminals zu ändern, nutzen Sie die Felder unten. Die Änderungen werden beim nächsten Neustart wirksam. Merken Sie sich das Passwort, da eine Anmeldung ohne dieses Passwort nicht möglich ist."
+"effect during the next reboot. Please memorize the new password, because you "
+"wouldn't be able to log in."
+msgstr ""
+"Um das root-Passwort des Terminals zu ändern, nutzen Sie die Felder unten. "
+"Die Änderungen werden beim nächsten Neustart wirksam. Merken Sie sich das "
+"Passwort, da eine Anmeldung ohne dieses Passwort nicht möglich ist."
 
 #: admin/systems/password.tpl.c:5
 msgid "Leave fields blank for password inheritance from default entries."
-msgstr "Lassen Sie die Felder leer, um das Passwort aus den Standard-Einträgen zu übernehmen."
+msgstr ""
+"Lassen Sie die Felder leer, um das Passwort aus den Standard-Einträgen zu "
+"übernehmen."
 
 #: admin/systems/password.tpl.c:8
 msgid "Changing the password impinges on authentification only."
-msgstr "Das Ändern des Passwortes wirkt sich nur auf die Authentifizierung aus."
+msgstr ""
+"Das Ändern des Passwortes wirkt sich nur auf die Authentifizierung aus."
 
 #: admin/systems/password.tpl.c:11
 msgid "New password"

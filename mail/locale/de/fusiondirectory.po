@@ -1,20 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-develop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-30 18:14+0200\n"
+"POT-Creation-Date: 2013-07-31 10:41+0200\n"
 "PO-Revision-Date: 2013-07-30 16:46+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: German (http://www.transifex.com/projects/p/FusionDirectory/language/de/)\n"
+"Language-Team: German (http://www.transifex.com/projects/p/FusionDirectory/"
+"language/de/)\n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: config/mail/class_mailPluginConfig.inc:28
@@ -40,9 +41,8 @@ msgstr "Zustellungs-Methode"
 
 #: config/mail/class_mailPluginConfig.inc:46
 msgid ""
-"Mail method the setup should use to communicate with a possible mail server."
-" Leave this undefined if your mail method does not match the predefined "
-"ones."
+"Mail method the setup should use to communicate with a possible mail server. "
+"Leave this undefined if your mail method does not match the predefined ones."
 msgstr ""
 
 #: config/mail/class_mailPluginConfig.inc:51
@@ -256,7 +256,9 @@ msgstr "Urlaubsbenachrichtigung aktivieren"
 #: personal/mail/class_mailAccount.inc:138
 msgid ""
 "Select to automatically response with the vacation message defined below"
-msgstr "Wählen Sie dies, um automatisch eine Urlaubsmeldung mit dem unten angebenen Text zu versenden."
+msgstr ""
+"Wählen Sie dies, um automatisch eine Urlaubsmeldung mit dem unten angebenen "
+"Text zu versenden."
 
 #: personal/mail/class_mailAccount.inc:143
 msgid "from"
@@ -324,7 +326,9 @@ msgstr "Der Benutzer darf nur lokale Mails senden und empfangen"
 
 #: personal/mail/class_mailAccount.inc:209
 msgid "Select if user can only send and receive inside his own domain"
-msgstr "Wählen Sie dies, wenn der Benutzer Mails nur innerhalb seiner Domäne senden und empfangen darf"
+msgstr ""
+"Wählen Sie dies, wenn der Benutzer Mails nur innerhalb seiner Domäne senden "
+"und empfangen darf"
 
 #: personal/mail/class_mailAccount.inc:214
 msgid "No delivery to own mailbox"
@@ -332,7 +336,9 @@ msgstr "Keine Zustellung in eigenes Postfach"
 
 #: personal/mail/class_mailAccount.inc:215
 msgid "Select if you want to forward mails without getting own copies of them"
-msgstr "Wählen Sie diese Einstellung, wenn Mails lediglich weitergeleitet werden sollen, ohne eine lokale Kopie zu speichern."
+msgstr ""
+"Wählen Sie diese Einstellung, wenn Mails lediglich weitergeleitet werden "
+"sollen, ohne eine lokale Kopie zu speichern."
 
 #: personal/mail/class_mailAccount.inc:260
 #, php-format
@@ -396,11 +402,13 @@ msgstr "Kein Skriptname angegeben!"
 
 #: personal/mail/sieve/class_sieveManagement.inc:208
 msgid "Please use only lowercase script names!"
-msgstr "Bitte verwenden Sie ausschliesslich Kleinbuchstaben für den Skriptnamen!"
+msgstr ""
+"Bitte verwenden Sie ausschliesslich Kleinbuchstaben für den Skriptnamen!"
 
 #: personal/mail/sieve/class_sieveManagement.inc:214
 msgid "Please use only alphabetical characters in script names!"
-msgstr "Bitte verwenden Sie ausschliesslich Kleinbuchstaben für den Skriptnamen!"
+msgstr ""
+"Bitte verwenden Sie ausschliesslich Kleinbuchstaben für den Skriptnamen!"
 
 #: personal/mail/sieve/class_sieveManagement.inc:220
 msgid "Script name already in use!"
@@ -618,7 +626,8 @@ msgstr "Skript bearbeiten"
 #: personal/mail/sieve/class_sieveManagement.inc:674
 #, php-format
 msgid "Can't log into SIEVE server. Server says '%s'."
-msgstr "Die Anmeldung am SIEVE-Server ist fehlgeschlagen. Die Meldung war '%s'."
+msgstr ""
+"Die Anmeldung am SIEVE-Server ist fehlgeschlagen. Die Meldung war '%s'."
 
 #: personal/mail/sieve/class_sieveManagement.inc:772
 msgid "Cannot insert element at the requested position!"
@@ -652,7 +661,9 @@ msgstr "Bitte geben Sie mindestens eine gültige Bedingung an."
 
 #: personal/mail/sieve/class_sieveElement_Reject.inc:21
 msgid "Invalid character found, quotes are not allowed in a reject message."
-msgstr "Ungültiges Zeichen gefunden, Hochkommata sind in der Ablehnungsmeldung nicht erlaubt."
+msgstr ""
+"Ungültiges Zeichen gefunden, Hochkommata sind in der Ablehnungsmeldung nicht "
+"erlaubt."
 
 #: personal/mail/sieve/class_sieveElement_Reject.inc:37
 msgid "Your reject text here"
@@ -784,12 +795,16 @@ msgstr "Bitte wählen Sie einen gültigen Operator."
 #: personal/mail/sieve/class_sieveElement_If.inc:654
 msgid ""
 "Invalid character found in address attribute. Quotes are not allowed here."
-msgstr "Ungültiges Zeichen im Adressattribut gefunden. Anführungszeichen sind nicht erlaubt."
+msgstr ""
+"Ungültiges Zeichen im Adressattribut gefunden. Anführungszeichen sind nicht "
+"erlaubt."
 
 #: personal/mail/sieve/class_sieveElement_If.inc:669
 msgid ""
 "Invalid character found in value attribute. Quotes are not allowed here."
-msgstr "Ungültiges Zeichen im Wertattribut gefunden. Anführungszeichen sind nicht erlaubt."
+msgstr ""
+"Ungültiges Zeichen im Wertattribut gefunden. Anführungszeichen sind nicht "
+"erlaubt."
 
 #: personal/mail/sieve/class_sieveElement_If.inc:727
 #: personal/mail/sieve/class_sieveElement_If.inc:1060
@@ -813,7 +828,8 @@ msgstr "Bytes"
 
 #: personal/mail/sieve/class_sieveElement_If.inc:745
 msgid "Please select a valid match type in the list box below."
-msgstr "Bitte wählen Sie eine gültige Art der Übereinstimmung in der Liste unterhalb."
+msgstr ""
+"Bitte wählen Sie eine gültige Art der Übereinstimmung in der Liste unterhalb."
 
 #: personal/mail/sieve/class_sieveElement_If.inc:759
 msgid "Only numeric values are allowed here."
@@ -925,7 +941,8 @@ msgstr "Benötigter Wert"
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:56
 msgid "Select required score to tag mail as spam"
-msgstr "Wählen Sie den gewünschten Wert, ab dem Mail als Spam gekennzeichnet wird."
+msgstr ""
+"Wählen Sie den gewünschten Wert, ab dem Mail als Spam gekennzeichnet wird."
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:62
 msgid "Trusted networks"
@@ -1383,7 +1400,9 @@ msgstr "Sieve-Skript importieren"
 msgid ""
 "Please select the sieve script you want to import. Use the import button to "
 "import the script or the cancel button to abort."
-msgstr "Bitte wählen Sie das zu importierende Sieve-Skript. Verwenden Sie den Import-Knopf um das Skript zu importieren oder den Abbrechen-Knopf um abzubrechen."
+msgstr ""
+"Bitte wählen Sie das zu importierende Sieve-Skript. Verwenden Sie den Import-"
+"Knopf um das Skript zu importieren oder den Abbrechen-Knopf um abzubrechen."
 
 #: personal/mail/sieve/templates/import_script.tpl.c:8
 msgid "Script to import"
@@ -1396,9 +1415,11 @@ msgstr "Importieren"
 
 #: personal/mail/sieve/templates/create_script.tpl.c:2
 msgid ""
-"Please enter the name for the new script below. Script names must consist of"
-" lower case characters only."
-msgstr "Bitte geben Sie den Namen für das neue Skript unten ein. Skriptnamen dürfen ausschliesslich aus Kleinbuchstaben bestehen."
+"Please enter the name for the new script below. Script names must consist of "
+"lower case characters only."
+msgstr ""
+"Bitte geben Sie den Namen für das neue Skript unten ein. Skriptnamen dürfen "
+"ausschliesslich aus Kleinbuchstaben bestehen."
 
 #: personal/mail/sieve/templates/create_script.tpl.c:5
 msgid "Script name"
@@ -1517,12 +1538,16 @@ msgstr "Liste der Sieve-Skripte"
 msgid ""
 "Connection to the sieve server could not be established, the "
 "authentification attribute is empty."
-msgstr "Die Verbindung zum Sieve-Server konnte nicht hergestellt werden, das Authentifizierungsattribut ist leer."
+msgstr ""
+"Die Verbindung zum Sieve-Server konnte nicht hergestellt werden, das "
+"Authentifizierungsattribut ist leer."
 
 #: personal/mail/sieve/templates/management.tpl.c:8
 msgid ""
 "Please verify that the attributes uid and mail are not empty and try again."
-msgstr "Bitte überprüfen Sie, dass die Attribute uid und mail nicht leer sind und versuchen Sie es erneut."
+msgstr ""
+"Bitte überprüfen Sie, dass die Attribute uid und mail nicht leer sind und "
+"versuchen Sie es erneut."
 
 #: personal/mail/sieve/templates/management.tpl.c:11
 msgid "Connection to the sieve server could not be established."
@@ -1534,9 +1559,11 @@ msgstr "Wahrscheinlich wurde das Sieve-Konto noch nicht erstellt."
 
 #: personal/mail/sieve/templates/management.tpl.c:17
 msgid ""
-"Be careful. All your changes will be saved directly to sieve, if you use the"
-" save button below."
-msgstr "Bitte seien Sie vorsichtig. Alle Änderungen werden direkt für Sieve übernommen, wenn Sie den 'Speichern'-Knopf drücken."
+"Be careful. All your changes will be saved directly to sieve, if you use the "
+"save button below."
+msgstr ""
+"Bitte seien Sie vorsichtig. Alle Änderungen werden direkt für Sieve "
+"übernommen, wenn Sie den 'Speichern'-Knopf drücken."
 
 #: personal/mail/sieve/templates/management.tpl.c:20
 msgid "Create new script"
@@ -1552,8 +1579,8 @@ msgstr "Objekt hinzufügen"
 
 #: personal/mail/sieve/templates/remove_script.tpl.c:5
 msgid ""
-"Please double check if your really want to do this since there is no way for"
-" FusionDirectory to get your data back."
+"Please double check if your really want to do this since there is no way for "
+"FusionDirectory to get your data back."
 msgstr ""
 
 #: personal/mail/sieve/templates/remove_script.tpl.c:8
@@ -1561,7 +1588,10 @@ msgid ""
 "Best thing to do before performing this action would be to save the current "
 "script in a file. So - if you've done so - press 'Delete' to continue or "
 "'Cancel' to abort."
-msgstr "Eine Sicherung des Skripts bietet sich an. Wenn Sie dies erledigt haben, drücken Sie 'Entfernen' um Fortzufahren oder 'Abbrechen', um den Vorgang abzubrechen."
+msgstr ""
+"Eine Sicherung des Skripts bietet sich an. Wenn Sie dies erledigt haben, "
+"drücken Sie 'Entfernen' um Fortzufahren oder 'Abbrechen', um den Vorgang "
+"abzubrechen."
 
 #: personal/mail/sieve/templates/element_header.tpl.c:29
 msgid "operator"

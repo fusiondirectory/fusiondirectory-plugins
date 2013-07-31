@@ -1,20 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-develop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-30 18:14+0200\n"
+"POT-Creation-Date: 2013-07-31 10:38+0200\n"
 "PO-Revision-Date: 2013-07-30 16:19+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: Spanish (http://www.transifex.com/projects/p/FusionDirectory/language/es/)\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/FusionDirectory/"
+"language/es/)\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: addons/argonaut/events/class_DaemonEvent.inc:150
@@ -132,7 +133,8 @@ msgstr "el archivo está vacío"
 #: addons/argonaut/class_argonautImportFile.inc:110
 msgid ""
 "Selected entries will be skipped because of errors. Do you want to proceed?"
-msgstr "Seleccione entradas que serán ignoradas a causa de errores. ¿Quiere proceder?"
+msgstr ""
+"Seleccione entradas que serán ignoradas a causa de errores. ¿Quiere proceder?"
 
 #: addons/argonaut/class_argonautImportFile.inc:146
 #: addons/argonaut/class_argonautQueue.inc:351
@@ -198,7 +200,8 @@ msgstr "Permisos"
 #: addons/argonaut/class_argonautQueue.inc:258
 #, php-format
 msgid "The following jobs couldn't be deleted, they have to be aborted: %s"
-msgstr "Las siguientes tareas no pueden ser eliminadas, han sido canceladas: %s"
+msgstr ""
+"Las siguientes tareas no pueden ser eliminadas, han sido canceladas: %s"
 
 #: addons/argonaut/class_argonautQueue.inc:305
 msgid "Info"
@@ -212,7 +215,8 @@ msgstr ""
 #: addons/argonaut/class_argonautQueue.inc:309
 #, php-format
 msgid "Required class '%s' cannot be found: job not aborted!"
-msgstr "No se ha encontrado la clase necesaria '%s': ¡no se ha cancelado el trabajo!"
+msgstr ""
+"No se ha encontrado la clase necesaria '%s': ¡no se ha cancelado el trabajo!"
 
 #: addons/argonaut/class_argonautQueue.inc:341
 msgid "Error detail"
@@ -428,8 +432,7 @@ msgid "Delete finished tasks"
 msgstr "Eliminar tareas terminadas"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:51
-msgid ""
-"Wether or not argonaut server should delete successfully finished tasks"
+msgid "Wether or not argonaut server should delete successfully finished tasks"
 msgstr ""
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:56
@@ -453,8 +456,7 @@ msgid "Timeout"
 msgstr "Desconexión por tiempo"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:68
-msgid ""
-"Time in seconds before to consider an argonaut client or server as down"
+msgid "Time in seconds before to consider an argonaut client or server as down"
 msgstr ""
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:75
@@ -808,4 +810,6 @@ msgstr "Aviso"
 
 #: addons/argonaut/remove.tpl.c:5
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr "Entonces, si esta seguro, presione <i>Eliminar</i> para continuar o <i>Cancelar</i> para Abortar."
+msgstr ""
+"Entonces, si esta seguro, presione <i>Eliminar</i> para continuar o "
+"<i>Cancelar</i> para Abortar."

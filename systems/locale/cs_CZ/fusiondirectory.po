@@ -1,20 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-develop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-30 18:14+0200\n"
+"POT-Creation-Date: 2013-07-31 10:43+0200\n"
 "PO-Revision-Date: 2013-07-30 17:03+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/FusionDirectory/language/cs_CZ/)\n"
+"Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/"
+"FusionDirectory/language/cs_CZ/)\n"
+"Language: cs_CZ\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: cs_CZ\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
 #: config/systems/class_systemsPluginConfig.inc:28
@@ -702,8 +703,8 @@ msgstr ""
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:78
 msgid ""
-"Specifies what checks to perform on server certificates in a TLS session, if"
-" any"
+"Specifies what checks to perform on server certificates in a TLS session, if "
+"any"
 msgstr ""
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:83
@@ -759,12 +760,14 @@ msgstr "zpět"
 
 #: admin/systems/class_systemManagement.inc:230
 msgid "Creating the image failed. Please see the report below."
-msgstr "Vytvoření obrazu selhalo. Více informací poskytne níže uvedené hlášení."
+msgstr ""
+"Vytvoření obrazu selhalo. Více informací poskytne níže uvedené hlášení."
 
 #: admin/systems/class_systemManagement.inc:235
 #, php-format
 msgid "Command '%s', specified for ISO creation doesn't seem to exist."
-msgstr "Příkaz '%s', nastavený pro vytváření ISO obrazů pravděpodobně neexistuje."
+msgstr ""
+"Příkaz '%s', nastavený pro vytváření ISO obrazů pravděpodobně neexistuje."
 
 #: admin/systems/class_systemManagement.inc:406
 #: admin/systems/class_systemManagement.inc:482
@@ -1093,14 +1096,18 @@ msgstr "Záznam typu '%s' existuje vícekrát!"
 #: admin/systems/class_networkSettings.inc:694
 #, php-format
 msgid "Uniq record type '%s' is duplicated!"
-msgstr "Záznam typu '%s' může správně existovat nejvýše jeden – ale existuje vícekrát!"
+msgstr ""
+"Záznam typu '%s' může správně existovat nejvýše jeden – ale existuje "
+"vícekrát!"
 
 #: admin/systems/class_networkSettings.inc:708
 #, php-format
 msgid ""
 "The IP address '%s' will be added as 'A Record', this will be done "
 "automatically, please remove the record."
-msgstr "IP adresa '%s' bude přidána jako 'záznam typu A'. Stane se tak automaticky – prosím smažte ho."
+msgstr ""
+"IP adresa '%s' bude přidána jako 'záznam typu A'. Stane se tak automaticky – "
+"prosím smažte ho."
 
 #: admin/systems/class_networkSettings.inc:716
 #, php-format
@@ -1632,7 +1639,9 @@ msgstr "Přidání nové služby na tento server."
 msgid ""
 "This dialog allows you to add new services to the currenty edited server "
 "object. The box below shows all available but not already used services."
-msgstr "Tento dialog Vám umožní přidat na v současnosti upravovaný server novou službu. Níže je uveden výpis dostupných, ale ještě nevyužívaných služeb."
+msgstr ""
+"Tento dialog Vám umožní přidat na v současnosti upravovaný server novou "
+"službu. Níže je uveden výpis dostupných, ale ještě nevyužívaných služeb."
 
 #: admin/systems/services/ServiceAddDialog.tpl.c:8
 msgid "Service to add"
@@ -1664,8 +1673,8 @@ msgstr ""
 
 #: admin/systems/SelectDeviceType.tpl.c:5
 msgid ""
-"Please select a system type and an optional bundle of predefined settings to"
-" be inherited."
+"Please select a system type and an optional bundle of predefined settings to "
+"be inherited."
 msgstr ""
 
 #: admin/systems/SelectDeviceType.tpl.c:8
@@ -1819,14 +1828,20 @@ msgstr "DNS záznamy"
 
 #: admin/systems/remove.tpl.c:5
 msgid ""
-"This includes all account data, system access rules, imap settings, etc. for"
-" this user. Please double check if your really want to do this since there "
-"is no way for FusionDirectory to get your data back."
-msgstr "Týká se veškerých informací o této položce v adresáři. Prosím velmi dobře si rozmyslete, zda to opravdu chcete udělat, protože provedené změny už ve FusionDirectory nepůjde vzít nijak jednoduše zpět (nanejvýš složitě ze záloh, pokud existují a obsahují potřebná data)!"
+"This includes all account data, system access rules, imap settings, etc. for "
+"this user. Please double check if your really want to do this since there is "
+"no way for FusionDirectory to get your data back."
+msgstr ""
+"Týká se veškerých informací o této položce v adresáři. Prosím velmi dobře si "
+"rozmyslete, zda to opravdu chcete udělat, protože provedené změny už ve "
+"FusionDirectory nepůjde vzít nijak jednoduše zpět (nanejvýš složitě ze "
+"záloh, pokud existují a obsahují potřebná data)!"
 
 #: admin/systems/remove.tpl.c:8
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr "Tedy – pokud jste si jist(a), stiskněte 'smazat'. V opačném případě operaci zrušte pomocí 'zrušit'."
+msgstr ""
+"Tedy – pokud jste si jist(a), stiskněte 'smazat'. V opačném případě operaci "
+"zrušte pomocí 'zrušit'."
 
 #: admin/systems/ppd/printerPPDSelectionDialog.tpl.c:2
 msgid "Select objects to add"
@@ -1870,7 +1885,9 @@ msgstr "volby"
 
 #: admin/systems/ppd/remove_ppd.tpl.c:5
 msgid "The ppd file will be removed from the server and can not be restored."
-msgstr "PPD soubor bude definitivně odebrán ze serveru – nepůjde ho pak (jednoduše) obnovit."
+msgstr ""
+"PPD soubor bude definitivně odebrán ze serveru – nepůjde ho pak (jednoduše) "
+"obnovit."
 
 #: admin/systems/gencd_frame.tpl.c:2
 msgid "Your browser does not supprt iframes."
@@ -1879,9 +1896,12 @@ msgstr "Váš webový prohlížeč nepodporuje prvek „iframe“."
 #: admin/systems/password.tpl.c:2
 msgid ""
 "To change the terminal root password use the fields below. The changes take "
-"effect during the next reboot. Please memorize the new password, because you"
-" wouldn't be able to log in."
-msgstr "Pro změnu hesla správce terminálu (root) použijte polí níže. Změna se projeví po jeho restartu. Zapamatujte si prosím nové heslo, protože jinak se nebudete moci přihlásit."
+"effect during the next reboot. Please memorize the new password, because you "
+"wouldn't be able to log in."
+msgstr ""
+"Pro změnu hesla správce terminálu (root) použijte polí níže. Změna se "
+"projeví po jeho restartu. Zapamatujte si prosím nové heslo, protože jinak se "
+"nebudete moci přihlásit."
 
 #: admin/systems/password.tpl.c:5
 msgid "Leave fields blank for password inheritance from default entries."
