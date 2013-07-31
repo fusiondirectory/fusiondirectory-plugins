@@ -1,21 +1,20 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-09 19:19+0200\n"
-"PO-Revision-Date: 2013-02-12 18:28+0000\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
+"POT-Creation-Date: 2013-07-31 13:09+0200\n"
+"PO-Revision-Date: 2013-07-31 11:13+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Persian (Iran) (http://www.transifex.com/projects/p/"
-"FusionDirectory/language/fa_IR/)\n"
-"Language: fa_IR\n"
+"Language-Team: Persian (Iran) <biabani.mohammad@gmail.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fa_IR\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: config/samba/class_sambaPluginConfig.inc:28
@@ -56,8 +55,8 @@ msgstr ""
 
 #: config/samba/class_sambaPluginConfig.inc:56
 msgid ""
-"A samba SID if not available inside of the LDAP though samba schema. You can "
-"retrieve the current sid by net getlocalsid."
+"A samba SID if not available inside of the LDAP though samba schema. You can"
+" retrieve the current sid by net getlocalsid."
 msgstr ""
 
 #: config/samba/class_sambaPluginConfig.inc:61
@@ -66,8 +65,8 @@ msgstr ""
 
 #: config/samba/class_sambaPluginConfig.inc:62
 msgid ""
-"The base id to add to ordinary sid calculations - if not available inside of "
-"the LDAP though samba schema."
+"The base id to add to ordinary sid calculations - if not available inside of"
+" the LDAP though samba schema."
 msgstr ""
 
 #: config/samba/class_sambaPluginConfig.inc:67
@@ -338,40 +337,40 @@ msgstr ""
 msgid "Edit settings"
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:318
+#: personal/samba/class_sambaAccount.inc:327
 msgid "System trust"
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:324
+#: personal/samba/class_sambaAccount.inc:333
 msgid "Allow connection from these workstations only"
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:324
+#: personal/samba/class_sambaAccount.inc:333
 msgid "Only allow this user to connect to this list of hosts"
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:441
+#: personal/samba/class_sambaAccount.inc:449
 msgid "Home drive"
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:444
+#: personal/samba/class_sambaAccount.inc:452
 msgid "Home path"
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:449
+#: personal/samba/class_sambaAccount.inc:457
 msgid "The windows user manager allows eight clients at maximum!"
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:465
-#: personal/samba/class_sambaAccount.inc:487
+#: personal/samba/class_sambaAccount.inc:473
+#: personal/samba/class_sambaAccount.inc:495
 msgid "Warning"
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:465
+#: personal/samba/class_sambaAccount.inc:473
 msgid "Undefined Samba SID detected. Please fix this problem manually!"
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:488
+#: personal/samba/class_sambaAccount.inc:496
 msgid ""
 "Cannot convert primary group to samba group: group cannot be identified!"
 msgstr ""

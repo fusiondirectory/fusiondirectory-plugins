@@ -1,20 +1,20 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-09 19:16+0200\n"
-"PO-Revision-Date: 2013-03-24 15:00+0000\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
+"POT-Creation-Date: 2013-07-31 13:09+0200\n"
+"PO-Revision-Date: 2013-07-31 11:12+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: nb\n"
+"Language-Team: Norwegian Bokmål (http://www.transifex.com/projects/p/FusionDirectory/language/nb/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nb\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: addons/argonaut/events/class_DaemonEvent.inc:150
@@ -330,7 +330,7 @@ msgstr ""
 
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:57
 #: admin/systems/services/argonaut/class_argonautServer.inc:74
-#: admin/systems/argonaut/class_argonautClient.inc:134
+#: admin/systems/argonaut/class_argonautClient.inc:135
 msgid "Log directory"
 msgstr ""
 
@@ -450,7 +450,8 @@ msgid "Delete finished tasks"
 msgstr ""
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:51
-msgid "Wether or not argonaut server should delete successfully finished tasks"
+msgid ""
+"Wether or not argonaut server should delete successfully finished tasks"
 msgstr ""
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:56
@@ -474,7 +475,8 @@ msgid "Timeout"
 msgstr ""
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:68
-msgid "Time in seconds before to consider an argonaut client or server as down"
+msgid ""
+"Time in seconds before to consider an argonaut client or server as down"
 msgstr ""
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:75
@@ -604,59 +606,59 @@ msgstr ""
 msgid "NFS root"
 msgstr ""
 
-#: admin/systems/argonaut/class_argonautClient.inc:116
+#: admin/systems/argonaut/class_argonautClient.inc:117
 msgid "Argonaut client settings"
 msgstr ""
 
-#: admin/systems/argonaut/class_argonautClient.inc:119
+#: admin/systems/argonaut/class_argonautClient.inc:120
 msgid "Client port"
 msgstr ""
 
-#: admin/systems/argonaut/class_argonautClient.inc:119
+#: admin/systems/argonaut/class_argonautClient.inc:120
 msgid "Port used by argonaut client for JSON-RPC"
 msgstr ""
 
-#: admin/systems/argonaut/class_argonautClient.inc:124
+#: admin/systems/argonaut/class_argonautClient.inc:125
 msgid "WakeOnLan interface"
 msgstr ""
 
-#: admin/systems/argonaut/class_argonautClient.inc:124
+#: admin/systems/argonaut/class_argonautClient.inc:125
 msgid "Interface used by argonaut for WakeOnLan"
 msgstr ""
 
-#: admin/systems/argonaut/class_argonautClient.inc:129
+#: admin/systems/argonaut/class_argonautClient.inc:130
 msgid "TaskId file"
 msgstr ""
 
-#: admin/systems/argonaut/class_argonautClient.inc:129
+#: admin/systems/argonaut/class_argonautClient.inc:130
 msgid "File which argonaut will use to store its task id when booting"
 msgstr ""
 
-#: admin/systems/argonaut/class_argonautClient.inc:134
+#: admin/systems/argonaut/class_argonautClient.inc:135
 msgid "Directory in which argonaut client should write its logs"
 msgstr ""
 
-#: admin/systems/argonaut/class_argonautClient.inc:141
+#: admin/systems/argonaut/class_argonautClient.inc:142
 msgid "Service names"
 msgstr ""
 
-#: admin/systems/argonaut/class_argonautClient.inc:143
+#: admin/systems/argonaut/class_argonautClient.inc:144
 msgid "Argonaut service names"
 msgstr ""
 
-#: admin/systems/argonaut/class_argonautClient.inc:158
+#: admin/systems/argonaut/class_argonautClient.inc:159
 msgid "Argonaut client"
 msgstr ""
 
-#: admin/systems/argonaut/class_argonautClient.inc:159
+#: admin/systems/argonaut/class_argonautClient.inc:160
 msgid "Edit argonaut client settings"
 msgstr ""
 
-#: include/class_supportDaemon.inc:88
+#: include/class_supportDaemon.inc:89
 msgid "Multiple argonaut server found. Only one is supported"
 msgstr ""
 
-#: include/class_supportDaemon.inc:90
+#: include/class_supportDaemon.inc:91
 msgid "There is no argonaut server configured"
 msgstr ""
 
@@ -724,7 +726,6 @@ msgid "Timestamp"
 msgstr ""
 
 #: addons/argonaut/argonaut_import_file.tpl.c:56
-#: addons/argonaut/events/eventTargetSystems-list.tpl.c:2
 #: addons/argonaut/deploy-list.tpl.c:2
 msgid "Base"
 msgstr ""

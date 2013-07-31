@@ -1,28 +1,28 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
+# pavelb <pavel.borecki@gmail.com>, 2012
 # pavelb <pavel.borecki@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-09 19:17+0200\n"
-"PO-Revision-Date: 2013-03-24 15:00+0000\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
+"POT-Creation-Date: 2013-07-31 13:09+0200\n"
+"PO-Revision-Date: 2013-07-31 10:51+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/"
-"FusionDirectory/language/cs_CZ/)\n"
-"Language: cs_CZ\n"
+"Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/FusionDirectory/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: cs_CZ\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
 #: admin/systems/services/dhcp/class_dhcpNetwork.inc:48
 #: admin/systems/services/dhcp/class_dhcpAdvanced.inc:59
 #: admin/systems/services/dhcp/class_dhcpAdvanced.inc:73
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:787
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:775
 msgid "Error"
 msgstr "chyba"
 
@@ -145,11 +145,11 @@ msgstr "ethernet"
 
 #: admin/systems/services/dhcp/class_dhcpHost.inc:65
 msgid "FDDI"
-msgstr ""
+msgstr "FDDI"
 
 #: admin/systems/services/dhcp/class_dhcpHost.inc:66
 msgid "Token Ring"
-msgstr ""
+msgstr "Token Ring"
 
 #: admin/systems/services/dhcp/class_dhcpHost.inc:149
 #: admin/systems/services/dhcp/dhcp_host.tpl.c:20
@@ -158,15 +158,15 @@ msgstr "hardwarová adresa (MAC)"
 
 #: admin/systems/services/dhcp/class_dhcpTSigKey.inc:51
 msgid "HMAC-MD5"
-msgstr ""
+msgstr "HMAC-MD5"
 
 #: admin/systems/services/dhcp/class_dhcpTSigKey.inc:51
 msgid "RSAMD5"
-msgstr ""
+msgstr "RSAMD5"
 
 #: admin/systems/services/dhcp/class_dhcpTSigKey.inc:51
 msgid "RSASHA1"
-msgstr ""
+msgstr "RSASHA1"
 
 #: admin/systems/services/dhcp/class_dhcpTSigKey.inc:51
 msgid "DSA"
@@ -174,7 +174,7 @@ msgstr "DSA"
 
 #: admin/systems/services/dhcp/class_dhcpTSigKey.inc:51
 msgid "DH"
-msgstr ""
+msgstr "DH"
 
 #: admin/systems/services/dhcp/class_dhcpTSigKey.inc:114
 #: admin/systems/services/dhcp/class_dhcpTSigKey.inc:127
@@ -188,9 +188,9 @@ msgid "Key"
 msgstr "klíč"
 
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:59
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:798
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:799
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:845
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:786
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:787
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:833
 msgid "DHCP service"
 msgstr "služba DHCP"
 
@@ -199,9 +199,8 @@ msgid "Logging"
 msgstr "pořizování protokolovacích záznamů (logů)"
 
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:62
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:321
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:731
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:763
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:103
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:730
 #: admin/systems/services/dhcp/class_dhcpNewSectionDialog.inc:48
 msgid "Global options"
 msgstr "globální volby"
@@ -256,82 +255,82 @@ msgstr "klíč pro aktualizaci DNS"
 msgid "DNS update zones"
 msgstr "zóny aktualizace DNS"
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:131
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:149
 #, php-format
 msgid ""
 "You have requested a migration of the DHCP setup from server '%s' to the "
 "current one."
 msgstr "Požadujete přesun nastavení DNCP serveru '%s' na tento."
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:133
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:151
 msgid "The migration will be started when you save this system."
 msgstr "Migrace započne jakmile tento systém uložíte."
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:136
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:154
 #: admin/systems/services/dhcp/remove_dhcp.tpl.c:2
 msgid "Warning"
 msgstr "varování"
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:227
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:246
 msgid "Permission error"
 msgstr "chyba oprávnění"
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:264
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:283
 msgid "DHCP section"
 msgstr "DHCP sekce"
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:345
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:348
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:340
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:343
 msgid "Insert new DHCP section"
 msgstr "vložit novou DHCP sekci"
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:346
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:349
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:350
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:341
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:344
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:345
 msgid "Edit DHCP section"
 msgstr "upravit DHCP sekci"
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:347
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:351
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:342
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:346
 msgid "Remove DHCP section"
 msgstr "odebrat DHCP sekci"
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:352
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:347
 msgid "Expand DHCP subnet"
 msgstr ""
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:353
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:348
 msgid "Fold DHCP subnet"
 msgstr ""
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:428
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:445
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:500
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:576
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:584
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:611
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:423
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:440
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:495
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:571
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:579
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:606
 msgid "LDAP error"
 msgstr "chyba LDAPu"
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:787
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:775
 msgid ""
 "The DHCP configuration set is unkown. Please contact your system "
 "administrator."
 msgstr "Nastavení DHCP jsou neznámá. Kontaktujte prosím svého správce systémů."
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:799
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:787
 msgid "Services"
 msgstr "služby"
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:806
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:794
 msgid "Start service"
 msgstr "spustit službu"
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:807
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:795
 msgid "Stop service"
 msgstr "zastavit službu"
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:808
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:796
 msgid "Restart service"
 msgstr "restartovat službu"
 
@@ -348,22 +347,16 @@ msgstr "síťový rozsah"
 #: admin/systems/services/dhcp/remove_dhcp.tpl.c:5
 msgid ""
 "This includes 'all' DHCP subsections that are located within this section. "
-"Please double check if your really want to do this since there is no way for "
-"FusionDirectory to get your data back."
-msgstr ""
-"Týká se 'všech' podsekcí této sekce DHCP. Prosím velmi dobře si rozmyslete, "
-"zda to skutečně chcete udělat – provedené změny pak FusionDirectory už "
-"nemůže vrátit zpět!"
+"Please double check if your really want to do this since there is no way for"
+" FusionDirectory to get your data back."
+msgstr "Týká se 'všech' podsekcí této sekce DHCP. Prosím velmi dobře si rozmyslete, zda to skutečně chcete udělat – provedené změny pak FusionDirectory už nemůže vrátit zpět!"
 
 #: admin/systems/services/dhcp/remove_dhcp.tpl.c:8
 msgid ""
 "Best thing to do before performing this action would be to save the current "
 "contents of your LDAP tree in a file. So - if you've done so - press "
 "'Delete' to continue or 'Cancel' to abort."
-msgstr ""
-"Před provedením této akce by bylo nejlepší uložit obsah Vašeho LDAP stromu "
-"do souboru. Tedy – pokud jste tak již učinil(a), stiskněte 'smazat'. V "
-"opačném případě operaci zrušte pomocí 'zrušit'."
+msgstr "Před provedením této akce by bylo nejlepší uložit obsah Vašeho LDAP stromu do souboru. Tedy – pokud jste tak již učinil(a), stiskněte 'smazat'. V opačném případě operaci zrušte pomocí 'zrušit'."
 
 #: admin/systems/services/dhcp/dhcp_host.tpl.c:2
 #: admin/systems/services/dhcp/dhcp_service.tpl.c:2
@@ -482,9 +475,7 @@ msgstr "povolit neznámé stroje"
 
 #: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl.c:62
 msgid "Select if bootp clients should get dynamic IP addresses"
-msgstr ""
-"zadejte, zda budou stroje, startující přes protokol bootp, dostávat "
-"dynamickou IP adresu"
+msgstr "zadejte, zda budou stroje, startující přes protokol bootp, dostávat dynamickou IP adresu"
 
 #: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl.c:65
 msgid "Allow bootp clients"
@@ -492,9 +483,7 @@ msgstr "zapnout podporu pro stroje startující s protokolem bootp"
 
 #: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl.c:68
 msgid "Select if clients are allowed to boot using this DHCP server"
-msgstr ""
-"zadejte, zda tento DHCP server bude ostatním strojům poskytovat zavádění "
-"jejich systému ze sítě"
+msgstr "zadejte, zda tento DHCP server bude ostatním strojům poskytovat zavádění jejich systému ze sítě"
 
 #: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl.c:71
 msgid "Allow booting"
@@ -516,9 +505,7 @@ msgstr "metoda šifrování"
 msgid ""
 "DHCP take over will take place when saving this entry. Choose 'Cancel' to "
 "abort."
-msgstr ""
-"Uložení této položky spustí převzetí DHCP. Pro přerušení akce klikněte na "
-"'zrušit'."
+msgstr "Uložení této položky spustí převzetí DHCP. Pro přerušení akce klikněte na 'zrušit'."
 
 #: admin/systems/services/dhcp/serviceDHCP.tpl.c:5
 msgid "Take over dhcp configuration from following server"
@@ -566,8 +553,7 @@ msgstr "směrovač (router)"
 
 #: admin/systems/services/dhcp/dhcp_network.tpl.c:8
 msgid "Enter name or IP address of router to be used in this section"
-msgstr ""
-"zadejte název nebo IP adresu směrovače, který bude použit pro tuto sekci"
+msgstr "zadejte název nebo IP adresu směrovače, který bude použit pro tuto sekci"
 
 #: admin/systems/services/dhcp/dhcp_network.tpl.c:17
 msgid "Bootup"
@@ -580,9 +566,7 @@ msgstr "název souboru"
 #: admin/systems/services/dhcp/dhcp_network.tpl.c:23
 msgid ""
 "Enter name of file that will be loaded via tftp after client has started"
-msgstr ""
-"zadejte název souboru, který bude nahrán (přes TFTP prtokol) na klienta "
-"poté, co bude zapnut"
+msgstr "zadejte název souboru, který bude nahrán (přes TFTP prtokol) na klienta poté, co bude zapnut"
 
 #: admin/systems/services/dhcp/dhcp_network.tpl.c:26
 msgid "Next server"

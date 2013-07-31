@@ -1,23 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-09 19:16+0200\n"
-"PO-Revision-Date: 2013-03-24 15:00+0000\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
+"POT-Creation-Date: 2013-07-31 13:09+0200\n"
+"PO-Revision-Date: 2013-07-31 11:30+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Polish (http://www.transifex.com/projects/p/FusionDirectory/"
-"language/pl/)\n"
-"Language: pl\n"
+"Language-Team: Polish (http://www.transifex.com/projects/p/FusionDirectory/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2);\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:28
 msgid "Asterisk"
@@ -266,10 +264,14 @@ msgstr ""
 #: admin/systems/asterisk/class_phoneGeneric.inc:432
 #: admin/systems/asterisk/class_phoneGeneric.inc:446
 #: admin/systems/asterisk/class_phoneGeneric.inc:463
-#: admin/systems/services/asterisk/class_serviceAsterisk.inc:107
+#: admin/systems/services/asterisk/class_serviceAsterisk.inc:121
 #: admin/conference/class_phoneConferenceGeneric.inc:682
 msgid "LDAP error"
 msgstr "błąd LDAP"
+
+#: personal/phoneaccount/class_phoneAccount.inc:1584
+msgid "Was not able to found any asterisk server"
+msgstr ""
 
 #: personal/phoneaccount/class_phoneAccount.inc:1617
 #: admin/macro/class_gofonMacroParameters.inc:408
@@ -675,8 +677,7 @@ msgstr "Nazwa makra"
 #: admin/macro/class_gofonMacro.inc:546
 #: admin/systems/asterisk/class_phoneGeneric.inc:482
 #: admin/conference/class_phoneConferenceGeneric.inc:703
-#: admin/macro/generic.tpl.c:14 admin/macro/macro-list.tpl.c:2
-#: admin/systems/asterisk/phone.tpl.c:5 admin/conference/conf-list.tpl.c:2
+#: admin/macro/generic.tpl.c:14 admin/systems/asterisk/phone.tpl.c:5
 #: admin/conference/generic.tpl.c:17
 msgid "Base"
 msgstr "Kontener"
@@ -770,14 +771,12 @@ msgid "Remove"
 msgstr "Usuń"
 
 #: admin/macro/class_gofonMacroManagement.inc:36
-#, fuzzy
 msgid "Phone Macros"
-msgstr "Makro telefoniczne"
+msgstr ""
 
 #: admin/macro/class_gofonMacroManagement.inc:37
-#, fuzzy
 msgid "Phone Macros management"
-msgstr "Zarządzanie konferencją telefoniczną"
+msgstr ""
 
 #: admin/systems/asterisk/class_phoneGeneric.inc:151
 msgid "phone"
@@ -884,22 +883,30 @@ msgstr "Krajowy prefix telefoniczny"
 msgid "Local dial prefix"
 msgstr "Lokalny prefix telefoniczny"
 
-#: admin/systems/services/asterisk/class_serviceAsterisk.inc:81
+#: admin/systems/services/asterisk/class_serviceAsterisk.inc:54
+msgid "Driver"
+msgstr "Sterownik"
+
+#: admin/systems/services/asterisk/class_serviceAsterisk.inc:54
+msgid "Driver to use to contact this database."
+msgstr ""
+
+#: admin/systems/services/asterisk/class_serviceAsterisk.inc:95
 #, php-format
 msgid ""
 "You can't remove the asterisk database extension, it is still in use by "
 "these objects '%s'."
 msgstr ""
 
-#: admin/systems/services/asterisk/class_serviceAsterisk.inc:126
+#: admin/systems/services/asterisk/class_serviceAsterisk.inc:140
 msgid "VoIP service (asterisk)"
 msgstr ""
 
-#: admin/systems/services/asterisk/class_serviceAsterisk.inc:127
+#: admin/systems/services/asterisk/class_serviceAsterisk.inc:141
 msgid "VoIP - asterisk management"
 msgstr ""
 
-#: admin/systems/services/asterisk/class_serviceAsterisk.inc:127
+#: admin/systems/services/asterisk/class_serviceAsterisk.inc:141
 msgid "Services"
 msgstr "Usługi"
 
@@ -927,8 +934,8 @@ msgstr "Wiek"
 #: admin/conference/class_phoneConferenceGeneric.inc:400
 #, php-format
 msgid ""
-"FusionDirectory identified problems with your MySQL table definition, please "
-"activate debugging for details."
+"FusionDirectory identified problems with your MySQL table definition, please"
+" activate debugging for details."
 msgstr ""
 
 #: admin/conference/class_phoneConferenceGeneric.inc:606
@@ -938,9 +945,8 @@ msgid "'%s' is already assigned to '%s'!"
 msgstr ""
 
 #: admin/conference/class_phoneConferenceGeneric.inc:693
-#, fuzzy
 msgid "Phone Conference"
-msgstr "Konferencja"
+msgstr ""
 
 #: admin/conference/class_phoneConferenceGeneric.inc:694
 msgid "Phone conference management"
@@ -1006,14 +1012,12 @@ msgid "Conference"
 msgstr "Konferencja"
 
 #: admin/conference/class_phoneConferenceManagment.inc:36
-#, fuzzy
 msgid "Phone Conferences"
-msgstr "Konferencja"
+msgstr ""
 
 #: admin/conference/class_phoneConferenceManagment.inc:37
-#, fuzzy
 msgid "Phone Conference management"
-msgstr "Zarządzanie konferencją telefoniczną"
+msgstr ""
 
 #: personal/phoneaccount/paste_generic.tpl.c:5
 #: personal/phoneaccount/paste_generic.tpl.c:8
@@ -1105,7 +1109,8 @@ msgstr "Wyszukiwanie nie zwróciło żadnych wyników..."
 
 #: admin/ogroups/asterisk/phonequeue.tpl.c:2
 msgid ""
-"Only users with the same asterisk home server will be included to this queue."
+"Only users with the same asterisk home server will be included to this "
+"queue."
 msgstr ""
 
 #: admin/ogroups/asterisk/phonequeue.tpl.c:5
@@ -1214,9 +1219,7 @@ msgstr ""
 
 #: admin/macro/remove.tpl.c:8 admin/conference/remove.tpl.c:8
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr ""
-"Jeśli jesteś pewien - naciśnij 'Usuń' aby kontynuować lub 'Anuluj' aby "
-"anulować."
+msgstr "Jeśli jesteś pewien - naciśnij 'Usuń' aby kontynuować lub 'Anuluj' aby anulować."
 
 #: admin/macro/generic.tpl.c:11
 msgid "Macro name to be displayed"
@@ -1370,6 +1373,3 @@ msgstr "Zapowiadaj użytkowników dołączających lub opuszczających konferenc
 #: admin/conference/generic.tpl.c:68
 msgid "Count users"
 msgstr "Zlicz użytkowników"
-
-#~ msgid "Conference management"
-#~ msgstr "Zarządzanie konferencją"

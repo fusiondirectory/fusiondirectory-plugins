@@ -1,23 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-09 19:17+0200\n"
-"PO-Revision-Date: 2013-03-24 15:00+0000\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
+"POT-Creation-Date: 2013-07-31 13:09+0200\n"
+"PO-Revision-Date: 2013-07-31 11:16+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Polish (http://www.transifex.com/projects/p/FusionDirectory/"
-"language/pl/)\n"
-"Language: pl\n"
+"Language-Team: Polish (http://www.transifex.com/projects/p/FusionDirectory/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2);\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: config/fax/class_faxConfig.inc:28
 msgid "Fax configuration"
@@ -28,9 +26,8 @@ msgid "FusionDirectory fax plugin configuration"
 msgstr ""
 
 #: config/fax/class_faxConfig.inc:42
-#, fuzzy
 msgid "LDAP tree"
-msgstr "błąd LDAP"
+msgstr ""
 
 #: config/fax/class_faxConfig.inc:45
 msgid "Fax RDN"
@@ -304,14 +301,12 @@ msgid "Transfer time"
 msgstr "Czas transferu"
 
 #: admin/blocklists/class_blocklistManagement.inc:36
-#, fuzzy
 msgid "Fax Blocklists"
-msgstr "Bloklisty"
+msgstr ""
 
 #: admin/blocklists/class_blocklistManagement.inc:37
-#, fuzzy
 msgid "Fax Blocklists management"
-msgstr "Zarządzanie bloklistą"
+msgstr ""
 
 #: admin/blocklists/blocklist-list.xml:11
 msgid "List of blocklists"
@@ -470,7 +465,7 @@ msgid "Filter"
 msgstr "Filtr"
 
 #: personal/faxaccount/faxNumberSelect/faxNumberSelect-list.tpl.c:2
-#: admin/blocklists/blocklist-list.tpl.c:2 admin/blocklists/generic.tpl.c:11
+#: admin/blocklists/generic.tpl.c:11
 msgid "Base"
 msgstr "Kontener"
 
@@ -500,14 +495,12 @@ msgid "Alternate fax numbers will not be copied"
 msgstr ""
 
 #: personal/faxaccount/generic.tpl.c:8
-#, fuzzy
 msgid "Fax number for fax to trigger on"
-msgstr "Numer faxu dla GOfax dla przełączenia"
+msgstr ""
 
 #: personal/faxaccount/generic.tpl.c:14
-#, fuzzy
 msgid "Specify the fax communication language for fax to mail gateway"
-msgstr "Podaj język komunikacji GOfax dla bramki fax2mail"
+msgstr ""
 
 #: personal/faxaccount/generic.tpl.c:20
 msgid "Specify delivery format for fax to mail gateway"
@@ -621,9 +614,7 @@ msgstr ""
 
 #: admin/blocklists/remove.tpl.c:8
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr ""
-"Jeśli jesteś pewien - naciśnij 'Usuń' aby kontynuować lub 'Anuluj' aby "
-"anulować."
+msgstr "Jeśli jesteś pewien - naciśnij 'Usuń' aby kontynuować lub 'Anuluj' aby anulować."
 
 #: admin/blocklists/generic.tpl.c:17
 msgid "Select wether to filter incoming or outgoing calls"

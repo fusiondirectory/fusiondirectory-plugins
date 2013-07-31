@@ -1,22 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
+# fusiondirectory <contact@fusiondirectory.org>, 2012
 # fusiondirectory <contact@fusiondirectory.org>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-09 19:17+0200\n"
-"PO-Revision-Date: 2013-03-24 15:00+0000\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
+"POT-Creation-Date: 2013-07-31 13:09+0200\n"
+"PO-Revision-Date: 2013-07-31 11:30+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory/"
-"language/fr/)\n"
-"Language: fr\n"
+"Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: config/dsa/class_dsaConfig.inc:28
@@ -36,60 +36,31 @@ msgid "DSA RDN"
 msgstr "DSA RDN"
 
 #: config/dsa/class_dsaConfig.inc:45
-#, fuzzy
 msgid ""
 "Branch in which Directory Service Account (dsa) will be stored (required)"
-msgstr "Branches ou seront stockés les objets de sécurité"
-
-#: admin/dsa/class_simpleSecurityObject.inc:45
-#, fuzzy
-msgid "Password method"
-msgstr "Mot de passe"
-
-#: admin/dsa/class_simpleSecurityObject.inc:45
-msgid "Password hash method to use"
 msgstr ""
 
-#: admin/dsa/class_simpleSecurityObject.inc:50
-#: admin/dsa/class_simpleSecurityObject.inc:176
-msgid "Password"
-msgstr "Mot de passe"
-
-#: admin/dsa/class_simpleSecurityObject.inc:50
-msgid "Password (Leave empty if you do not wish to change it)"
-msgstr ""
-
-#: admin/dsa/class_simpleSecurityObject.inc:54
-#, fuzzy
-msgid "Password again"
-msgstr "Mot de passe"
-
-#: admin/dsa/class_simpleSecurityObject.inc:54
-msgid "Same password as above, to avoid errors"
-msgstr ""
-
-#: admin/dsa/class_simpleSecurityObject.inc:126
-msgid "Passwords does not match"
-msgstr ""
-
-#: admin/dsa/class_simpleSecurityObject.inc:141
-#: admin/dsa/class_simpleSecurityObject.inc:142
-#: admin/dsa/class_simpleSecurityObject.inc:146
-#: admin/dsa/class_simpleSecurityObject.inc:163
+#: admin/dsa/class_simpleSecurityObject.inc:31
+#: admin/dsa/class_simpleSecurityObject.inc:32
+#: admin/dsa/class_simpleSecurityObject.inc:36
+#: admin/dsa/class_simpleSecurityObject.inc:53
 msgid "Simple security object"
 msgstr "simple objet de sécurité"
 
-#: admin/dsa/class_simpleSecurityObject.inc:167
+#: admin/dsa/class_simpleSecurityObject.inc:57
 msgid "Entry name"
 msgstr "Nom"
 
-#: admin/dsa/class_simpleSecurityObject.inc:167
+#: admin/dsa/class_simpleSecurityObject.inc:57
 msgid "Account name"
 msgstr "Nom du compte"
 
-#: admin/dsa/class_simpleSecurityObject.inc:173
-#, fuzzy
+#: admin/dsa/class_simpleSecurityObject.inc:63
 msgid "Change password"
+msgstr "Modifier le mot de passe"
+
+#: admin/dsa/class_simpleSecurityObject.inc:66
+msgid "Password"
 msgstr "Mot de passe"
 
 #: admin/dsa/class_dsaManagement.inc:35 admin/dsa/class_dsaManagement.inc:40
@@ -99,39 +70,3 @@ msgstr "DSA"
 #: admin/dsa/class_dsaManagement.inc:36
 msgid "DSA management"
 msgstr "Gestion des objets de sécurité"
-
-#~ msgid "Filter"
-#~ msgstr "Filtre"
-
-#~ msgid "Name"
-#~ msgstr "Nom"
-
-#~ msgid "Base"
-#~ msgstr "Base"
-
-#~ msgid "List of Simple security object"
-#~ msgstr "Liste d'objets de sécurité"
-
-#~ msgid "Description"
-#~ msgstr "Description"
-
-#~ msgid "Actions"
-#~ msgstr "Actions"
-
-#~ msgid "Create"
-#~ msgstr "Créer"
-
-#~ msgid "Edit"
-#~ msgstr "Editer"
-
-#~ msgid "Remove"
-#~ msgstr "Supprimer"
-
-#~ msgid "Warning"
-#~ msgstr "Avertissement"
-
-#~ msgid ""
-#~ "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-#~ msgstr ""
-#~ "D'accord - si vous êtes sur - cliquez sur 'Supprimer' pour continuer ou "
-#~ "sur 'Annuler' pour abandonner."

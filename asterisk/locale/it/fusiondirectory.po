@@ -1,33 +1,33 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Alessandro Amici <a.amici@bopen.it>, 2005
 # poterealpopolo <giuliano@opensides.be>, 2011
+# poterealpopolo <giuliano@opensides.be>, 2013
 # poterealpopolo <giuliano@opensides.be>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-09 19:16+0200\n"
-"PO-Revision-Date: 2013-03-24 15:00+0000\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
+"POT-Creation-Date: 2013-07-31 13:09+0200\n"
+"PO-Revision-Date: 2013-07-31 11:30+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Italian (http://www.transifex.com/projects/p/FusionDirectory/"
-"language/it/)\n"
-"Language: it\n"
+"Language-Team: Italian (http://www.transifex.com/projects/p/FusionDirectory/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:28
 msgid "Asterisk"
-msgstr ""
+msgstr "Asterisk"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:29
 msgid "Asterisk plugin configuration"
-msgstr ""
+msgstr "Configurazione del plugin Asterisk"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:41
 msgid "LDAP tree"
@@ -35,27 +35,27 @@ msgstr "Struttura LDAP"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:44
 msgid "Phone RDN"
-msgstr ""
+msgstr "RDN telefono"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:44
 msgid "Branch in which phones will be stored"
-msgstr ""
+msgstr "Ramo nel quale i telefoni saranno immagazzinati"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:49
 msgid "Phone Macro RDN"
-msgstr ""
+msgstr "RDN Macro telefonica"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:49
 msgid "Branch in which phone macros will be stored"
-msgstr ""
+msgstr "Ramo nel quale le macro telefoniche saranno immagazzinate"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:54
 msgid "Phone Conference RDN"
-msgstr ""
+msgstr "RDN conferenze telefoniche"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:54
 msgid "Branch in which phone conferences will be stored"
-msgstr ""
+msgstr "Ramo nel quale le conferenze telefoniche saranno immagazzinate"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:61
 msgid "Miscellaneous"
@@ -63,19 +63,19 @@ msgstr "Altro"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:65
 msgid "SIP contexts"
-msgstr ""
+msgstr "Contesti SIP"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:65
 msgid "Available SIP contexts"
-msgstr ""
+msgstr "Contesti SIP disponibili"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:72
 msgid "Voicemail contexts"
-msgstr ""
+msgstr "Contesti della segreteria telefonica"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:72
 msgid "Available voicemail contexts"
-msgstr ""
+msgstr "Contesti della segreteria telefonica disponibili"
 
 #: personal/phoneaccount/class_phoneAccount.inc:148
 #: admin/ogroups/asterisk/class_phonequeue.inc:110
@@ -90,9 +90,7 @@ msgstr "Entry obsoleta"
 msgid ""
 "The current home server is not available anymore. It will be moved to '%s' "
 "if you save this entry!"
-msgstr ""
-"L'attuale server principale non è più disponibile. Verrà spostato verso '%s' "
-"se registri."
+msgstr "L'attuale server principale non è più disponibile. Verrà spostato verso '%s' se registri."
 
 #: personal/phoneaccount/class_phoneAccount.inc:176
 msgid "automatic"
@@ -121,9 +119,7 @@ msgstr "Avvertimento"
 #, php-format
 msgid ""
 "Cannot identify telephone extension in database, please try to save again."
-msgstr ""
-"Impossibile identificare l'estensione telefonica nel database, prova a "
-"registrare di nuovo."
+msgstr "Impossibile identificare l'estensione telefonica nel database, prova a registrare di nuovo."
 
 #: personal/phoneaccount/class_phoneAccount.inc:455
 #: personal/phoneaccount/class_phoneAccount.inc:1061
@@ -147,8 +143,7 @@ msgstr "GOfon"
 #: personal/phoneaccount/class_phoneAccount.inc:577
 #: personal/phoneaccount/class_phoneAccount.inc:595
 msgid "Abort saving entries to keep the database consistent."
-msgstr ""
-"Abbandono della registrazione per salvaguardare la consistenza del database."
+msgstr "Abbandono della registrazione per salvaguardare la consistenza del database."
 
 #: personal/phoneaccount/class_phoneAccount.inc:618
 #: personal/phoneaccount/class_phoneAccount.inc:657
@@ -156,9 +151,7 @@ msgstr ""
 #, php-format
 msgid ""
 "FusionDirectory identified problems with your database table definition!"
-msgstr ""
-"FusionDirectory ha identificato dei problemi nelle definizioni del tuo "
-"database"
+msgstr "FusionDirectory ha identificato dei problemi nelle definizioni del tuo database"
 
 #: personal/phoneaccount/class_phoneAccount.inc:999
 #: personal/phoneaccount/class_phoneAccount.inc:1012
@@ -220,9 +213,7 @@ msgstr "Scegli il tuo numero di telefono personale"
 msgid ""
 "There must be at least one server with an asterisk database to create a "
 "phone account."
-msgstr ""
-"Ci deve essere almeno un server con un database asterisk per poter creare un "
-"account telefonico."
+msgstr "Ci deve essere almeno un server con un database asterisk per poter creare un account telefonico."
 
 #: personal/phoneaccount/class_phoneAccount.inc:1367
 #: personal/phoneaccount/class_phoneAccount.inc:1687
@@ -264,8 +255,7 @@ msgstr "Parametri della macro %s"
 
 #: personal/phoneaccount/class_phoneAccount.inc:1467
 msgid "An error occured while updating the database entries!"
-msgstr ""
-"C'è stato un errore durante l'aggiornamento delle entries del database !"
+msgstr "C'è stato un errore durante l'aggiornamento delle entries del database !"
 
 #: personal/phoneaccount/class_phoneAccount.inc:1493
 #: personal/phoneaccount/class_phoneAccount.inc:1626
@@ -278,10 +268,14 @@ msgstr ""
 #: admin/systems/asterisk/class_phoneGeneric.inc:432
 #: admin/systems/asterisk/class_phoneGeneric.inc:446
 #: admin/systems/asterisk/class_phoneGeneric.inc:463
-#: admin/systems/services/asterisk/class_serviceAsterisk.inc:107
+#: admin/systems/services/asterisk/class_serviceAsterisk.inc:121
 #: admin/conference/class_phoneConferenceGeneric.inc:682
 msgid "LDAP error"
 msgstr "Errore LDAP"
+
+#: personal/phoneaccount/class_phoneAccount.inc:1584
+msgid "Was not able to found any asterisk server"
+msgstr ""
 
 #: personal/phoneaccount/class_phoneAccount.inc:1617
 #: admin/macro/class_gofonMacroParameters.inc:408
@@ -304,9 +298,7 @@ msgstr "Il numero di telefono '%s' è già usato da '%s'."
 msgid ""
 "The previously selected asterisk home server (%s) is no longer available. "
 "Remove aborted."
-msgstr ""
-"Il server principale asterisk, selezionato precedentemente, non esiste più "
-"(%s). Rimozione  cancellata."
+msgstr "Il server principale asterisk, selezionato precedentemente, non esiste più (%s). Rimozione  cancellata."
 
 #: personal/phoneaccount/class_phoneAccount.inc:1675
 msgid "Phone account settings"
@@ -345,13 +337,11 @@ msgstr "pin della segreteria telefonica"
 #: personal/phoneaccount/class_phoneAccount.inc:1713
 #, php-format
 msgid "You need to configure %s contexts first"
-msgstr ""
+msgstr "È necessario configurare prima i contesti %s"
 
 #: personal/phoneaccount/main.inc:124
 msgid "Click the 'Edit' button below to change informations in this dialog"
-msgstr ""
-"Premi il bottone 'Modifica' qui sotto per cambiare le informazioni in questa "
-"finestra"
+msgstr "Premi il bottone 'Modifica' qui sotto per cambiare le informazioni in questa finestra"
 
 #: personal/phoneaccount/main.inc:134
 #: personal/phoneaccount/paste_generic.tpl.c:2
@@ -450,9 +440,7 @@ msgstr "Crea una coda telefonica"
 msgid ""
 "There must be at least one server with an asterisk database to create a "
 "phone queue."
-msgstr ""
-"Ci deve essere almeno un server con un database asterisk per poter creare "
-"una coda telefonica."
+msgstr "Ci deve essere almeno un server con un database asterisk per poter creare una coda telefonica."
 
 #: admin/ogroups/asterisk/class_phonequeue.inc:281
 #: admin/ogroups/asterisk/class_phonequeue.inc:871
@@ -495,9 +483,7 @@ msgstr "Impossibile trovare l'entry nella vecchia coda !"
 msgid ""
 "Found more than one entry named '%s' in queue table. Please inform your "
 "system administrator!"
-msgstr ""
-"C'è più di una entry chiamata '%s' nella coda. Informa l'amministratore "
-"della rete."
+msgstr "C'è più di una entry chiamata '%s' nella coda. Informa l'amministratore della rete."
 
 #: admin/ogroups/asterisk/class_phonequeue.inc:728
 #: admin/ogroups/asterisk/class_phonequeue.inc:730
@@ -608,9 +594,7 @@ msgstr "Annuncio della posizione in coda"
 msgid ""
 "Macro could not be removed from server '%s', please check database "
 "consistency!"
-msgstr ""
-"La macro non può essere rimossa dal server '%s', verifica la consistenza del "
-"server !"
+msgstr "La macro non può essere rimossa dal server '%s', verifica la consistenza del server !"
 
 #: admin/macro/class_gofonMacro.inc:264
 #, php-format
@@ -636,9 +620,7 @@ msgstr "Combinazione di doppioni per 'estensione' e 'priorità' alla linea %s !"
 #, php-format
 msgid ""
 "Macro could not be added to server '%s', please check database consistency!"
-msgstr ""
-"La macro non può essere aggiunta al server '%s', verifica la consistenza del "
-"database !"
+msgstr "La macro non può essere aggiunta al server '%s', verifica la consistenza del database !"
 
 #: admin/macro/class_gofonMacro.inc:395 admin/macro/class_gofonMacro.inc:406
 #: admin/macro/macro-list.xml:41
@@ -688,7 +670,7 @@ msgstr "Macro di GOfon"
 
 #: admin/macro/class_gofonMacro.inc:541
 msgid "Asterisk macro"
-msgstr ""
+msgstr "Macro di asterisk"
 
 #: admin/macro/class_gofonMacro.inc:545 admin/macro/paste_generic.tpl.c:2
 #: admin/macro/paste_generic.tpl.c:5 admin/macro/generic.tpl.c:2
@@ -699,8 +681,7 @@ msgstr "Nome della macro"
 #: admin/macro/class_gofonMacro.inc:546
 #: admin/systems/asterisk/class_phoneGeneric.inc:482
 #: admin/conference/class_phoneConferenceGeneric.inc:703
-#: admin/macro/generic.tpl.c:14 admin/macro/macro-list.tpl.c:2
-#: admin/systems/asterisk/phone.tpl.c:5 admin/conference/conf-list.tpl.c:2
+#: admin/macro/generic.tpl.c:14 admin/systems/asterisk/phone.tpl.c:5
 #: admin/conference/generic.tpl.c:17
 msgid "Base"
 msgstr "Base"
@@ -727,7 +708,7 @@ msgstr "Flag di visibilità"
 
 #: admin/macro/class_gofonMacroParameters.inc:59
 msgid "Asterisk macro parameter"
-msgstr ""
+msgstr "Parametri delle macro di asterisk"
 
 #: admin/macro/class_gofonMacroParameters.inc:234
 #: personal/phoneaccount/generic.tpl.c:41
@@ -754,9 +735,7 @@ msgstr "Rimuovi i parametri non utilizzati"
 #: admin/macro/class_gofonMacroParameters.inc:374
 #, php-format
 msgid "Parameter %s contains invalid character. '!,#' is used as delimiter!"
-msgstr ""
-"Il parametro %s contiene dei caratteri non validi. '!,#' è usato come "
-"separatore !"
+msgstr "Il parametro %s contiene dei caratteri non validi. '!,#' è usato come separatore !"
 
 #: admin/macro/class_gofonMacroParameters.inc:379
 #, php-format
@@ -767,9 +746,7 @@ msgstr "Il parametro %s non è valido !"
 msgid ""
 "Number of parameters for this macro has changed. Please update all users "
 "using it!"
-msgstr ""
-"Il numero di parametri per questa macro è cambiato. Aggiorna tutti gli "
-"utenti che li utilizzano !"
+msgstr "Il numero di parametri per questa macro è cambiato. Aggiorna tutti gli utenti che li utilizzano !"
 
 #: admin/macro/macro-list.xml:11
 msgid "List of macros"
@@ -798,14 +775,12 @@ msgid "Remove"
 msgstr "Rimuovi"
 
 #: admin/macro/class_gofonMacroManagement.inc:36
-#, fuzzy
 msgid "Phone Macros"
-msgstr "Macro telefonica"
+msgstr ""
 
 #: admin/macro/class_gofonMacroManagement.inc:37
-#, fuzzy
 msgid "Phone Macros management"
-msgstr "Gestione delle conferenze telefoniche"
+msgstr ""
 
 #: admin/systems/asterisk/class_phoneGeneric.inc:151
 msgid "phone"
@@ -894,7 +869,7 @@ msgstr "Utente del database asterisk"
 
 #: admin/systems/services/asterisk/class_serviceAsterisk.inc:38
 msgid "Login for asterisk database administrator"
-msgstr ""
+msgstr "Login per l'amministrazione della base dati di Asterisk"
 
 #: admin/systems/services/asterisk/class_serviceAsterisk.inc:42
 msgid "Password"
@@ -902,7 +877,7 @@ msgstr "Password"
 
 #: admin/systems/services/asterisk/class_serviceAsterisk.inc:42
 msgid "Password for asterisk database administrator"
-msgstr ""
+msgstr "Password per l'amministratore della base dati di Asterisk"
 
 #: admin/systems/services/asterisk/class_serviceAsterisk.inc:46
 msgid "Country dial prefix"
@@ -912,41 +887,43 @@ msgstr "Prefisso internazionale"
 msgid "Local dial prefix"
 msgstr "Prefisso locale"
 
-#: admin/systems/services/asterisk/class_serviceAsterisk.inc:81
+#: admin/systems/services/asterisk/class_serviceAsterisk.inc:54
+msgid "Driver"
+msgstr "Driver"
+
+#: admin/systems/services/asterisk/class_serviceAsterisk.inc:54
+msgid "Driver to use to contact this database."
+msgstr "Driver da usare per contattare questa base dati"
+
+#: admin/systems/services/asterisk/class_serviceAsterisk.inc:95
 #, php-format
 msgid ""
 "You can't remove the asterisk database extension, it is still in use by "
 "these objects '%s'."
-msgstr ""
-"Impossibile rimuovere l'estensione del database asterisk in quanto è ancora "
-"utilizzata da questo(i) oggetto(i) '%s'."
+msgstr "Impossibile rimuovere l'estensione del database asterisk in quanto è ancora utilizzata da questo(i) oggetto(i) '%s'."
 
-#: admin/systems/services/asterisk/class_serviceAsterisk.inc:126
+#: admin/systems/services/asterisk/class_serviceAsterisk.inc:140
 msgid "VoIP service (asterisk)"
-msgstr ""
+msgstr "servizio VoIP (asterisk)"
 
-#: admin/systems/services/asterisk/class_serviceAsterisk.inc:127
+#: admin/systems/services/asterisk/class_serviceAsterisk.inc:141
 msgid "VoIP - asterisk management"
 msgstr "VoIP - amministrazione di asterisk"
 
-#: admin/systems/services/asterisk/class_serviceAsterisk.inc:127
+#: admin/systems/services/asterisk/class_serviceAsterisk.inc:141
 msgid "Services"
 msgstr "Servizi"
 
 #: admin/conference/class_phoneConferenceGeneric.inc:233
 #, php-format
 msgid "Cannot delete entry from server '%s' because it seems to be removed!"
-msgstr ""
-"Impossibile rimuovere l'entry dal server '%s' in quanto pare sia stata già "
-"rimossa in precedenza !"
+msgstr "Impossibile rimuovere l'entry dal server '%s' in quanto pare sia stata già rimossa in precedenza !"
 
 #: admin/conference/class_phoneConferenceGeneric.inc:308
 #, php-format
 msgid ""
 "The previously selected asterisk home server '%s' is no longer available!"
-msgstr ""
-"Il server principale di asterisk (%s), precedentemente selezionato, non è "
-"più disponibile ! "
+msgstr "Il server principale di asterisk (%s), precedentemente selezionato, non è più disponibile ! "
 
 #: admin/conference/class_phoneConferenceGeneric.inc:315
 #: admin/conference/generic.tpl.c:47
@@ -961,11 +938,9 @@ msgstr "Durata"
 #: admin/conference/class_phoneConferenceGeneric.inc:400
 #, php-format
 msgid ""
-"FusionDirectory identified problems with your MySQL table definition, please "
-"activate debugging for details."
-msgstr ""
-"FusionDirectory ha identificato dei problemi nelle definizioni della tua "
-"tavola MySQL, attiva la modalità di debug per avere più informazioni."
+"FusionDirectory identified problems with your MySQL table definition, please"
+" activate debugging for details."
+msgstr "FusionDirectory ha identificato dei problemi nelle definizioni della tua tavola MySQL, attiva la modalità di debug per avere più informazioni."
 
 #: admin/conference/class_phoneConferenceGeneric.inc:606
 #: admin/conference/class_phoneConferenceGeneric.inc:608
@@ -974,9 +949,8 @@ msgid "'%s' is already assigned to '%s'!"
 msgstr "'%s' è già utilizzato da '%s' !"
 
 #: admin/conference/class_phoneConferenceGeneric.inc:693
-#, fuzzy
 msgid "Phone Conference"
-msgstr "Conferenza"
+msgstr ""
 
 #: admin/conference/class_phoneConferenceGeneric.inc:694
 msgid "Phone conference management"
@@ -988,7 +962,7 @@ msgstr "Conferenze telefoniche"
 
 #: admin/conference/class_phoneConferenceGeneric.inc:698
 msgid "Asterisk conference"
-msgstr ""
+msgstr "Conferenze telefoniche"
 
 #: admin/conference/class_phoneConferenceGeneric.inc:705
 msgid "Conference PIN"
@@ -1042,14 +1016,12 @@ msgid "Conference"
 msgstr "Conferenza"
 
 #: admin/conference/class_phoneConferenceManagment.inc:36
-#, fuzzy
 msgid "Phone Conferences"
-msgstr "Conferenza"
+msgstr ""
 
 #: admin/conference/class_phoneConferenceManagment.inc:37
-#, fuzzy
 msgid "Phone Conference management"
-msgstr "Gestione delle conferenze telefoniche"
+msgstr ""
 
 #: personal/phoneaccount/paste_generic.tpl.c:5
 #: personal/phoneaccount/paste_generic.tpl.c:8
@@ -1141,10 +1113,9 @@ msgstr "La ricerca non ha prodotto risultati ..."
 
 #: admin/ogroups/asterisk/phonequeue.tpl.c:2
 msgid ""
-"Only users with the same asterisk home server will be included to this queue."
-msgstr ""
-"Soltanto gli utenti dello stesso server asterisk saranno inclusi in questa "
-"coda."
+"Only users with the same asterisk home server will be included to this "
+"queue."
+msgstr "Soltanto gli utenti dello stesso server asterisk saranno inclusi in questa coda."
 
 #: admin/ogroups/asterisk/phonequeue.tpl.c:5
 msgid "Queue Settings"
@@ -1248,15 +1219,11 @@ msgstr "Non sei autorizzato a vedere i parametri di impostazione della macro"
 msgid ""
 "Please double check if you really want to do this since there is no way for "
 "FusionDirectory to get your data back."
-msgstr ""
-"Assicurati che vuoi davvero eseguire l'azione visto che poi sarà impossibile "
-"per FusionDirectory recuperare i tuoi dati."
+msgstr "Assicurati che vuoi davvero eseguire l'azione visto che poi sarà impossibile per FusionDirectory recuperare i tuoi dati."
 
 #: admin/macro/remove.tpl.c:8 admin/conference/remove.tpl.c:8
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr ""
-"Quindi - se sei sicuro - premi 'Rimuovi' per continuare oppure 'Annulla' per "
-"interrompere."
+msgstr "Quindi - se sei sicuro - premi 'Rimuovi' per continuare oppure 'Annulla' per interrompere."
 
 #: admin/macro/generic.tpl.c:11
 msgid "Macro name to be displayed"
@@ -1397,8 +1364,7 @@ msgstr "Formato del file musicale"
 
 #: admin/conference/generic.tpl.c:56
 msgid "Choose subtree to place department in"
-msgstr ""
-"Seleziona il ramo dell'annuario nel quale sarà piazzato il dipartimento"
+msgstr "Seleziona il ramo dell'annuario nel quale sarà piazzato il dipartimento"
 
 #: admin/conference/generic.tpl.c:62
 msgid "Activate session menu"
@@ -1411,9 +1377,3 @@ msgstr "Annuncia i nuovi utenti e quelli che partono dalla conferenza"
 #: admin/conference/generic.tpl.c:68
 msgid "Count users"
 msgstr "Conta gli utenti"
-
-#~ msgid "Macros"
-#~ msgstr "Macros"
-
-#~ msgid "Conference management"
-#~ msgstr "Gestione delle conferenze"

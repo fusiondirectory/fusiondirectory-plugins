@@ -1,23 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
+# Kenny Tordeurs <tordeurskenny@gmail.com>, 2012-2013
 #  Niels Klomp (CareWorks ICT Services) <nk@careworks.nl>, 2005
 # Kenny Tordeurs <tordeurskenny@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-09 19:19+0200\n"
-"PO-Revision-Date: 2012-12-09 15:30+0000\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
+"POT-Creation-Date: 2013-07-31 13:09+0200\n"
+"PO-Revision-Date: 2013-07-31 11:11+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Dutch (http://www.transifex.com/projects/p/FusionDirectory/"
-"language/nl/)\n"
-"Language: nl\n"
+"Language-Team: Dutch (http://www.transifex.com/projects/p/FusionDirectory/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: personal/squid/class_proxyAccount.inc:65
@@ -26,8 +26,7 @@ msgstr "Proxy"
 
 #: personal/squid/class_proxyAccount.inc:66
 msgid "This allow to store basic squid settings in ldap for each user"
-msgstr ""
-"Dit staat toe om basis squid opties op te slaan in ldap voor elke gebruiker"
+msgstr "Dit staat toe om basis squid opties op te slaan in ldap voor elke gebruiker"
 
 #: personal/squid/class_proxyAccount.inc:85
 msgid "Proxy account"
@@ -35,26 +34,24 @@ msgstr "Proxy account"
 
 #: personal/squid/class_proxyAccount.inc:91
 msgid "Filter unwanted content (i.e. pornographic or violence related)"
-msgstr ""
-"Filter ongewilde inhoud (bijvoorbeeld pornografische of geweld gerelateerde "
-"inhoud)"
+msgstr "Filter ongewilde inhoud (bijvoorbeeld pornografische of geweld gerelateerde inhoud)"
 
 #: personal/squid/class_proxyAccount.inc:92
 msgid "filterF"
-msgstr ""
+msgstr "filterF"
 
 #: personal/squid/class_proxyAccount.inc:98
 msgid "Working Start"
-msgstr ""
+msgstr "Werkende Start"
 
 #: personal/squid/class_proxyAccount.inc:101
 #: personal/squid/class_proxyAccount.inc:113
 msgid "HourStart"
-msgstr ""
+msgstr "UurStart"
 
 #: personal/squid/class_proxyAccount.inc:102
 msgid "MinuteStart"
-msgstr ""
+msgstr "MinuutStart"
 
 #: personal/squid/class_proxyAccount.inc:107
 msgid "Limit proxy access to working time"
@@ -62,19 +59,19 @@ msgstr "Beperk proxy gebruik tot tijd"
 
 #: personal/squid/class_proxyAccount.inc:110
 msgid "Working Stop"
-msgstr ""
+msgstr "Werkende Stop"
 
 #: personal/squid/class_proxyAccount.inc:113
 msgid "-"
-msgstr ""
+msgstr "-"
 
 #: personal/squid/class_proxyAccount.inc:114
 msgid ":"
-msgstr ""
+msgstr ":"
 
 #: personal/squid/class_proxyAccount.inc:114
 msgid "MinuteStop"
-msgstr ""
+msgstr "MinuutStop"
 
 #: personal/squid/class_proxyAccount.inc:120
 #: personal/squid/class_proxyAccount.inc:129
@@ -115,9 +112,8 @@ msgid "Starting hours for internet access"
 msgstr ""
 
 #: personal/squid/class_proxyAccount.inc:147
-#, fuzzy
 msgid "Proxy Quota"
-msgstr "Proxy account"
+msgstr ""
 
 #: personal/squid/class_proxyAccount.inc:148
 msgid "Max Data quota for the proxy"

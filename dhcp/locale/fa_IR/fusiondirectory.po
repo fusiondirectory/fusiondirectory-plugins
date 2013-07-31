@@ -1,27 +1,26 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-09 19:17+0200\n"
-"PO-Revision-Date: 2012-12-09 15:44+0000\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
+"POT-Creation-Date: 2013-07-31 13:09+0200\n"
+"PO-Revision-Date: 2013-07-30 17:20+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Persian (Iran) (http://www.transifex.com/projects/p/"
-"FusionDirectory/language/fa_IR/)\n"
-"Language: fa_IR\n"
+"Language-Team: Persian (Iran) <biabani.mohammad@gmail.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fa_IR\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: admin/systems/services/dhcp/class_dhcpNetwork.inc:48
 #: admin/systems/services/dhcp/class_dhcpAdvanced.inc:59
 #: admin/systems/services/dhcp/class_dhcpAdvanced.inc:73
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:787
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:775
 msgid "Error"
 msgstr "خطا"
 
@@ -187,9 +186,9 @@ msgid "Key"
 msgstr ""
 
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:59
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:798
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:799
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:845
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:786
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:787
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:833
 msgid "DHCP service"
 msgstr ""
 
@@ -198,9 +197,8 @@ msgid "Logging"
 msgstr ""
 
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:62
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:321
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:731
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:763
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:103
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:730
 #: admin/systems/services/dhcp/class_dhcpNewSectionDialog.inc:48
 msgid "Global options"
 msgstr ""
@@ -255,82 +253,82 @@ msgstr ""
 msgid "DNS update zones"
 msgstr ""
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:131
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:149
 #, php-format
 msgid ""
 "You have requested a migration of the DHCP setup from server '%s' to the "
 "current one."
 msgstr ""
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:133
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:151
 msgid "The migration will be started when you save this system."
 msgstr ""
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:136
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:154
 #: admin/systems/services/dhcp/remove_dhcp.tpl.c:2
 msgid "Warning"
 msgstr ""
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:227
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:246
 msgid "Permission error"
 msgstr ""
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:264
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:283
 msgid "DHCP section"
 msgstr ""
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:345
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:348
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:340
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:343
 msgid "Insert new DHCP section"
 msgstr ""
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:346
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:349
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:350
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:341
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:344
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:345
 msgid "Edit DHCP section"
 msgstr ""
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:347
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:351
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:342
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:346
 msgid "Remove DHCP section"
 msgstr ""
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:352
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:347
 msgid "Expand DHCP subnet"
 msgstr ""
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:353
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:348
 msgid "Fold DHCP subnet"
 msgstr ""
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:428
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:445
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:500
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:576
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:584
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:611
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:423
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:440
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:495
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:571
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:579
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:606
 msgid "LDAP error"
 msgstr "خطای LDAP"
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:787
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:775
 msgid ""
 "The DHCP configuration set is unkown. Please contact your system "
 "administrator."
 msgstr ""
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:799
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:787
 msgid "Services"
 msgstr ""
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:806
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:794
 msgid "Start service"
 msgstr ""
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:807
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:795
 msgid "Stop service"
 msgstr ""
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:808
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:796
 msgid "Restart service"
 msgstr ""
 
@@ -347,8 +345,8 @@ msgstr ""
 #: admin/systems/services/dhcp/remove_dhcp.tpl.c:5
 msgid ""
 "This includes 'all' DHCP subsections that are located within this section. "
-"Please double check if your really want to do this since there is no way for "
-"FusionDirectory to get your data back."
+"Please double check if your really want to do this since there is no way for"
+" FusionDirectory to get your data back."
 msgstr ""
 
 #: admin/systems/services/dhcp/remove_dhcp.tpl.c:8

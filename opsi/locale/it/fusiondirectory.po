@@ -1,22 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
+# poterealpopolo <giuliano@opensides.be>, 2013
 # poterealpopolo <giuliano@opensides.be>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-09 19:18+0200\n"
-"PO-Revision-Date: 2013-03-26 15:30+0000\n"
-"Last-Translator: poterealpopolo <giuliano@opensides.be>\n"
-"Language-Team: Italian (http://www.transifex.com/projects/p/FusionDirectory/"
-"language/it/)\n"
-"Language: it\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
+"POT-Creation-Date: 2013-07-31 13:09+0200\n"
+"PO-Revision-Date: 2013-07-31 11:30+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: Italian (http://www.transifex.com/projects/p/FusionDirectory/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: config/opsi/class_opsiConfig.inc:28
@@ -33,7 +33,7 @@ msgstr "Struttura LDAP"
 
 #: config/opsi/class_opsiConfig.inc:45
 msgid "OPSI RDN"
-msgstr ""
+msgstr "OPSI RDN"
 
 #: config/opsi/class_opsiConfig.inc:45
 msgid "Branch in which OPSI profiles will be stored"
@@ -154,19 +154,17 @@ msgstr "Non posso contattare il server Argonaut"
 #: admin/opsi/class_opsiSoftwareList.inc:132
 #: admin/opsi/class_opsiProductProperties.inc:206
 msgid "Could contact OPSI server"
-msgstr ""
+msgstr "Potrebbe contattare il server OPSI"
 
 #: admin/opsi/class_opsiOnDemandList.inc:32
 #: admin/opsi/class_opsiOnDemandList.inc:36
 #: admin/opsi/class_opsiOnDemandList.inc:39
-#, fuzzy
 msgid "OPSI ondemand list"
-msgstr "Elenco OPSI"
+msgstr ""
 
 #: admin/opsi/class_opsiOnDemandList.inc:33
-#, fuzzy
 msgid "OPSI on demand software list"
-msgstr "Elenco software OPSI"
+msgstr ""
 
 #: admin/opsi/class_opsiOnDemandList.inc:53
 #: admin/opsi/class_opsiSoftwareList.inc:53
@@ -178,9 +176,8 @@ msgid "Show details"
 msgstr ""
 
 #: admin/opsi/class_opsiOnDemandList.inc:64
-#, fuzzy
 msgid "Show further information to the user"
-msgstr "Informazioni sul server OPSI"
+msgstr ""
 
 #: admin/opsi/class_opsiOnDemandList.inc:70
 #: admin/opsi/class_opsiSoftwareList.inc:66
@@ -193,9 +190,8 @@ msgid "Localboot products"
 msgstr "Prodotti localboot"
 
 #: admin/opsi/class_opsiOnDemandList.inc:74
-#, fuzzy
 msgid "The localboot products to put in this list"
-msgstr "I prodotti localboot da installare con questo elenco"
+msgstr ""
 
 #: admin/opsi/class_opsiSoftwareList.inc:32
 msgid "OPSI list"
@@ -212,9 +208,8 @@ msgid "The localboot products to install with this list"
 msgstr "I prodotti localboot da installare con questo elenco"
 
 #: admin/opsi/class_opsiProfileManagement.inc:41
-#, fuzzy
 msgid "OPSI"
-msgstr "Elenco OPSI"
+msgstr "OPSI"
 
 #: admin/opsi/class_opsiProfileManagement.inc:42
 msgid "OPSI profile management"
@@ -296,62 +291,12 @@ msgstr ""
 
 #: admin/systems/opsi/class_opsiClient.inc:105
 #: admin/systems/opsi/class_opsiClient.inc:191
-#, fuzzy
 msgid "Could not remove OPSI informations"
-msgstr "Impossibile aggiornare le informazioni di OPSI"
+msgstr ""
 
 #: addons/opsi/opsiimport.tpl.c:2
 msgid ""
-"Warning : Once you import your OPSI hosts into FusionDirectory, they will be "
-"managed by it, so if you delete them or deactivate their OPSI tab, they will "
-"be removed from OPSI."
+"Warning : Once you import your OPSI hosts into FusionDirectory, they will be"
+" managed by it, so if you delete them or deactivate their OPSI tab, they "
+"will be removed from OPSI."
 msgstr ""
-
-#~ msgid "Filter"
-#~ msgstr "Filtro"
-
-#~ msgid "List of opsi profiles"
-#~ msgstr "Elenco dei profili OPSI"
-
-#~ msgid "Description"
-#~ msgstr "Descrizione"
-
-#~ msgid "Actions"
-#~ msgstr "Azioni"
-
-#~ msgid "Create"
-#~ msgstr "Crea"
-
-#~ msgid "opsiProfil"
-#~ msgstr "Profilo OPSI"
-
-#~ msgid "Remove"
-#~ msgstr "Elimina"
-
-#~ msgid "Edit opsiProfile"
-#~ msgstr "Modifica il profilo OPSI"
-
-#~ msgid "Remove opsiProfile"
-#~ msgstr "Elimina il profilo OPSI"
-
-#~ msgid "Warning"
-#~ msgstr "Avvertimento"
-
-#~ msgid ""
-#~ "Please double check if you really want to do this since there is no way "
-#~ "for FusionDirectory to get your data back."
-#~ msgstr ""
-#~ "Assicurati che vuoi davvero eseguire l'azione visto che poi sarà "
-#~ "impossibile per FusionDirectory recuperare i tuoi dati."
-
-#~ msgid ""
-#~ "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-#~ msgstr ""
-#~ "Quindi - se sei sicuro - premi 'Rimuovi' per continuare oppure 'Annulla' "
-#~ "per interrompere."
-
-#~ msgid "OPSI profiles"
-#~ msgstr "Profili OPSI"
-
-#~ msgid "OPSI Admin"
-#~ msgstr "Amministratore OPSI"

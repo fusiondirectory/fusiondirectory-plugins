@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Alessandro Amici <a.amici@bopen.it>, 2005
 # poterealpopolo <giuliano@opensides.be>, 2011
@@ -10,16 +10,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-09 19:18+0200\n"
-"PO-Revision-Date: 2013-03-26 15:40+0000\n"
-"Last-Translator: poterealpopolo <giuliano@opensides.be>\n"
-"Language-Team: Italian (http://www.transifex.com/projects/p/FusionDirectory/"
-"language/it/)\n"
-"Language: it\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
+"POT-Creation-Date: 2013-07-31 13:09+0200\n"
+"PO-Revision-Date: 2013-07-31 11:13+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: Italian (http://www.transifex.com/projects/p/FusionDirectory/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: personal/kolab/class_kolabAccount.inc:82
@@ -165,10 +164,9 @@ msgid "Default"
 msgstr "Default"
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:183
-msgid "Mail settings cannot be removed while there are delegations configured!"
-msgstr ""
-"Impostazioni mail non possono essere rimosse mentre ci sono delle deleghe "
-"configurate!"
+msgid ""
+"Mail settings cannot be removed while there are delegations configured!"
+msgstr "Impostazioni mail non possono essere rimosse mentre ci sono delle deleghe configurate!"
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:281
 msgid "Waiting for kolab to remove mail properties..."
@@ -275,9 +273,7 @@ msgstr "Servizio FTP FreeBusy (legacy)"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:130
 msgid "FTP FreeBusy service (legacy, not interoperable with Kolab2 FreeBusy)"
-msgstr ""
-"Servizio d'opzione di disponibilità via FTP (vecchio, non compatibile con le "
-"opzioni di disponibilità di kolab2)"
+msgstr "Servizio d'opzione di disponibilità via FTP (vecchio, non compatibile con le opzioni di disponibilità di kolab2)"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:134
 msgid "HTTP FreeBusy service (legacy)"
@@ -302,7 +298,7 @@ msgstr "Quota limite di occupazione, prima di avvertire l'utente (%)"
 #: admin/systems/services/kolab/class_serviceKolab.inc:148
 #, php-format
 msgid "Warn users when using more than X% of their mail quota"
-msgstr ""
+msgstr "Avverti gli utenti quando stanno utilizzando più di X% o della loro quota di casella di posta elettronica"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:156
 msgid "Free/Busy settings"
@@ -311,19 +307,15 @@ msgstr "Impostazioni delle opzioni di disponibilità"
 #: admin/systems/services/kolab/class_serviceKolab.inc:159
 #: admin/systems/services/kolab/class_serviceKolab.inc:160
 msgid "Allow unauthenticated downloading of Free/Busy information"
-msgstr ""
-"Permetti il download delle informazioni di disponibilità in modo anonimo"
+msgstr "Permetti il download delle informazioni di disponibilità in modo anonimo"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:164
 msgid "Number of days to include when creating free/busy lists"
-msgstr ""
-"Numero di giorni da includere durante la creazione degli elenchi free/busy"
+msgstr "Numero di giorni da includere durante la creazione degli elenchi free/busy"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:165
 msgid "Include data from X days in the past when creating free/busy lists"
-msgstr ""
-"Includere i dati da X giorni nel passato quando si creano gli elenchi free/"
-"busy"
+msgstr "Includere i dati da X giorni nel passato quando si creano gli elenchi free/busy"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:173
 msgid "SMTP privileged networks"
@@ -335,8 +327,7 @@ msgstr "Hosts/reti abilitate al relay"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:177
 msgid "Hosts/networks allowed to relay (multiple values comma-seperated)"
-msgstr ""
-"Clienti/Reti a cui è consentito il relay (più valori separati da virgola)"
+msgstr "Clienti/Reti a cui è consentito il relay (più valori separati da virgola)"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:185
 msgid "SMTP smarthost/relayhost"
@@ -349,9 +340,7 @@ msgstr "Accetta la posta elettronica che viene da Internet"
 #: admin/systems/services/kolab/class_serviceKolab.inc:196
 #: admin/systems/services/kolab/class_serviceKolab.inc:197
 msgid "Accept mail from other domains over non-authenticated SMTP"
-msgstr ""
-"Accetta i messaggi che vengono da altri domini, via degli SMTP non "
-"autentificati"
+msgstr "Accetta i messaggi che vengono da altri domini, via degli SMTP non autentificati"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:271
 msgid "Internal error"
@@ -373,10 +362,3 @@ msgstr "Nome dell'host"
 #: admin/systems/services/kolab/class_serviceKolab.inc:295
 msgid "LDAP error"
 msgstr "Errore LDAP"
-
-#~ msgid ""
-#~ "The kolab account is currently disabled. It's features can be adjusted if "
-#~ "you add a mail account."
-#~ msgstr ""
-#~ "L'estensione Kolab è disattivata. I suoi parametri possono essere "
-#~ "modificati se aggiungi un account di posta elettronica."

@@ -1,26 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 #  Stefan Koehler <stefan.koehler@GONICUS.de>, 2005
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-09 19:20+0200\n"
-"PO-Revision-Date: 2013-03-24 15:00+0000\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
+"POT-Creation-Date: 2013-07-31 13:09+0200\n"
+"PO-Revision-Date: 2013-07-31 11:30+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: German (http://www.transifex.com/projects/p/FusionDirectory/"
-"language/de/)\n"
-"Language: de\n"
+"Language-Team: German (http://www.transifex.com/projects/p/FusionDirectory/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: config/systems/class_systemsPluginConfig.inc:28
-#: admin/systems/class_systemManagement.inc:1177
+#: admin/systems/class_systemManagement.inc:1175
 msgid "Systems"
 msgstr "Systeme"
 
@@ -29,9 +28,8 @@ msgid "Systems plugin configuration"
 msgstr ""
 
 #: config/systems/class_systemsPluginConfig.inc:41
-#, fuzzy
 msgid "LDAP tree for systems"
-msgstr "Liste der Systeme"
+msgstr ""
 
 #: config/systems/class_systemsPluginConfig.inc:44
 msgid "Systems RDN"
@@ -94,18 +92,16 @@ msgid "LDAP tree"
 msgstr ""
 
 #: config/systems/class_systemsPluginConfig.inc:84
-#, fuzzy
 msgid "Mimetype RDN"
-msgstr "MIME-Typ"
+msgstr ""
 
 #: config/systems/class_systemsPluginConfig.inc:84
 msgid "Branch in which mime types will be stored"
 msgstr ""
 
 #: config/systems/class_systemsPluginConfig.inc:89
-#, fuzzy
 msgid "Application RDN"
-msgstr "Anwendung"
+msgstr ""
 
 #: config/systems/class_systemsPluginConfig.inc:89
 msgid "Branch in which applications will be stored"
@@ -145,8 +141,8 @@ msgstr "Liste der Anwendungen"
 
 #: admin/applications/application-list.xml:15
 #: admin/applications/application-list.xml:74
-#: admin/applications/class_applicationGeneric.inc:135
-#: admin/applications/class_applicationGeneric.inc:137
+#: admin/applications/class_applicationGeneric.inc:72
+#: admin/applications/class_applicationGeneric.inc:74
 #: admin/groups/apps/class_groupApplication.inc:1507
 #: admin/mimetypes/class_mimetypeGeneric.inc:681
 msgid "Application"
@@ -165,10 +161,10 @@ msgstr "Anwendung"
 #: admin/systems/phoneSelect/phoneSelect-list.xml:48
 #: admin/systems/class_workstationGeneric.inc:154
 #: admin/systems/class_mobilePhoneGeneric.inc:60
-#: admin/systems/class_printGeneric.inc:760
-#: admin/systems/class_printGeneric.inc:770
-#: admin/systems/class_printGeneric.inc:789
-#: admin/systems/class_printGeneric.inc:1024
+#: admin/systems/class_printGeneric.inc:754
+#: admin/systems/class_printGeneric.inc:764
+#: admin/systems/class_printGeneric.inc:783
+#: admin/systems/class_printGeneric.inc:1018
 #: admin/applications/application-filter.tpl.c:5
 #: admin/groups/apps/edit_entry.tpl.c:26
 #: admin/mimetypes/mimetype-filter.tpl.c:5
@@ -179,7 +175,7 @@ msgid "Name"
 msgstr "Name"
 
 #: admin/applications/application-list.xml:49
-#: admin/applications/class_applicationGeneric.inc:166
+#: admin/applications/class_applicationGeneric.inc:103
 #: admin/mimetypes/mimetype-list.xml:49
 #: admin/mimetypes/class_mimetypeGeneric.inc:679
 #: admin/systems/system-list.xml:185
@@ -189,9 +185,9 @@ msgstr "Name"
 #: admin/systems/class_workstationGeneric.inc:160
 #: admin/systems/serverService-list.xml:35
 #: admin/systems/class_mobilePhoneGeneric.inc:64
-#: admin/systems/class_printGeneric.inc:1026
+#: admin/systems/class_printGeneric.inc:1020
 #: admin/mimetypes/paste_generic.tpl.c:11 admin/mimetypes/generic.tpl.c:17
-#: admin/systems/printer.tpl.c:8 admin/systems/printer.tpl.c:20
+#: admin/systems/printer.tpl.c:8 admin/systems/printer.tpl.c:17
 msgid "Description"
 msgstr "Beschreibung"
 
@@ -213,7 +209,7 @@ msgstr "Anlegen"
 #: admin/mimetypes/mimetype-list.xml:86 admin/systems/system-list.xml:321
 #: admin/systems/serverService-list.xml:69 admin/groups/apps/app_list.tpl.c:29
 #: admin/groups/apps/app_list.tpl.c:41 admin/groups/apps/app_list.tpl.c:53
-#: admin/systems/printer.tpl.c:38
+#: admin/systems/printer.tpl.c:35
 msgid "Remove"
 msgstr "Entfernen"
 
@@ -252,7 +248,7 @@ msgstr "Option hinzufügen"
 
 #: admin/applications/class_applicationParameters.inc:179
 #: admin/applications/class_applicationParameters.inc:247
-#: admin/applications/class_applicationGeneric.inc:346
+#: admin/applications/class_applicationGeneric.inc:284
 #: admin/groups/apps/class_groupApplication.inc:701
 #: admin/groups/apps/class_groupApplication.inc:1396
 #: admin/groups/apps/class_groupApplication.inc:1410
@@ -264,7 +260,7 @@ msgstr "Option hinzufügen"
 #: admin/systems/services/class_goService.inc:123
 #: admin/systems/services/class_goService.inc:151
 #: admin/systems/services/class_goService.inc:188
-#: admin/systems/class_systemManagement.inc:814
+#: admin/systems/class_systemManagement.inc:812
 #: admin/systems/class_networkSettings.inc:470
 #: admin/systems/class_networkSettings.inc:484
 #: admin/systems/class_networkSettings.inc:761
@@ -274,8 +270,8 @@ msgstr "Option hinzufügen"
 #: admin/systems/class_networkSettings.inc:865
 #: admin/systems/class_networkSettings.inc:883
 #: admin/systems/class_networkSettings.inc:957
-#: admin/systems/class_printGeneric.inc:674
-#: admin/systems/class_printGeneric.inc:980
+#: admin/systems/class_printGeneric.inc:672
+#: admin/systems/class_printGeneric.inc:974
 msgid "LDAP error"
 msgstr "LDAP-Fehler"
 
@@ -301,48 +297,12 @@ msgstr "Anwendungen"
 msgid "Application management"
 msgstr "Anwendungsverwaltung"
 
-#: admin/applications/class_applicationGeneric.inc:90
-#: admin/applications/class_applicationGeneric.inc:332
-#: admin/systems/services/shares/class_serviceShare.inc:103
-#: admin/systems/class_systemManagement.inc:353
-#: admin/systems/class_systemManagement.inc:627
-#: admin/systems/class_systemManagement.inc:642
-#: admin/systems/class_serverService.inc:227
-#: admin/systems/class_serverService.inc:270
-#: admin/systems/class_serverService.inc:394
-#: admin/systems/class_networkSettings.inc:296
-#: admin/systems/class_networkSettings.inc:328
-#: admin/systems/class_networkSettings.inc:579
-#: admin/systems/class_networkSettings.inc:586
-#: admin/systems/class_networkSettings.inc:592
-#: admin/systems/class_networkSettings.inc:599
-#: admin/systems/class_printGeneric.inc:475
-#: admin/systems/class_printGeneric.inc:656
-#: admin/systems/class_printGeneric.inc:663
-#: admin/systems/class_printGeneric.inc:726
-#: admin/systems/class_printGeneric.inc:1108
-#: admin/systems/class_printGeneric.inc:1119
-msgid "Error"
-msgstr "Fehler"
-
-#: admin/applications/class_applicationGeneric.inc:91
-msgid ""
-"Cannot save user picture, FusionDirectory requires the package 'php5-"
-"imagick' to be installed!"
-msgstr ""
-
-#: admin/applications/class_applicationGeneric.inc:109
-#: admin/groups/apps/edit_entry.tpl.c:14
-#: admin/systems/ppd/printerPPDDialog.tpl.c:14
-msgid "Upload"
-msgstr "Hochladen"
-
-#: admin/applications/class_applicationGeneric.inc:132
+#: admin/applications/class_applicationGeneric.inc:69
 #: admin/mimetypes/class_mimetypeGeneric.inc:668
 #: admin/systems/class_componentGeneric.inc:36
 #: admin/systems/services/ntp/class_serviceNTP.inc:44
 #: admin/systems/class_serverGeneric.inc:46
-#: admin/systems/class_workstationGeneric.inc:470
+#: admin/systems/class_workstationGeneric.inc:480
 #: admin/systems/class_mobilePhoneGeneric.inc:38
 #: admin/systems/class_terminalGeneric.inc:81
 #: admin/ogroups/goto/termgroup.tpl.c:8 admin/mimetypes/paste_generic.tpl.c:2
@@ -350,130 +310,151 @@ msgstr "Hochladen"
 msgid "Generic"
 msgstr "Allgemein"
 
-#: admin/applications/class_applicationGeneric.inc:133
+#: admin/applications/class_applicationGeneric.inc:70
 msgid "Application generic"
 msgstr "Anwendung (Allgemein)"
 
-#: admin/applications/class_applicationGeneric.inc:151
+#: admin/applications/class_applicationGeneric.inc:88
 #: admin/systems/class_componentGeneric.inc:55
 #: admin/systems/class_workstationGeneric.inc:151
 #: admin/systems/class_mobilePhoneGeneric.inc:57
 msgid "Properties"
 msgstr "Eigenschaften"
 
-#: admin/applications/class_applicationGeneric.inc:154
+#: admin/applications/class_applicationGeneric.inc:91
 msgid "Application name"
 msgstr "Name der Anwendung"
 
-#: admin/applications/class_applicationGeneric.inc:154
+#: admin/applications/class_applicationGeneric.inc:91
 msgid "The name of this application"
 msgstr ""
 
-#: admin/applications/class_applicationGeneric.inc:158
+#: admin/applications/class_applicationGeneric.inc:95
 msgid "Display name"
 msgstr "Anzeigename"
 
-#: admin/applications/class_applicationGeneric.inc:158
+#: admin/applications/class_applicationGeneric.inc:95
 msgid "The displayed name for this application"
 msgstr ""
 
-#: admin/applications/class_applicationGeneric.inc:162
+#: admin/applications/class_applicationGeneric.inc:99
 #: admin/ogroups/goto/termgroup.tpl.c:47
 msgid "Execute"
 msgstr "Ausführen"
 
-#: admin/applications/class_applicationGeneric.inc:162
+#: admin/applications/class_applicationGeneric.inc:99
 msgid "The application to be executed"
 msgstr ""
 
-#: admin/applications/class_applicationGeneric.inc:166
+#: admin/applications/class_applicationGeneric.inc:103
 msgid "A short description of this application"
 msgstr ""
 
-#: admin/applications/class_applicationGeneric.inc:173
+#: admin/applications/class_applicationGeneric.inc:110
 #: admin/mimetypes/class_mimetypeGeneric.inc:683
 #: admin/mimetypes/generic.tpl.c:32
 msgid "Icon"
 msgstr "Symbol"
 
-#: admin/applications/class_applicationGeneric.inc:176
+#: admin/applications/class_applicationGeneric.inc:113
 msgid "The icon for this application"
 msgstr ""
 
-#: admin/applications/class_applicationGeneric.inc:182
+#: admin/applications/class_applicationGeneric.inc:120
 #: admin/systems/ppd/printerPPDDialog.tpl.c:17
 msgid "Options"
 msgstr "Optionen"
 
-#: admin/applications/class_applicationGeneric.inc:185
+#: admin/applications/class_applicationGeneric.inc:123
 msgid "Only executable for member"
 msgstr ""
 
-#: admin/applications/class_applicationGeneric.inc:185
+#: admin/applications/class_applicationGeneric.inc:123
 msgid "Only executable by the memebers of the group"
 msgstr ""
 
-#: admin/applications/class_applicationGeneric.inc:190
+#: admin/applications/class_applicationGeneric.inc:128
 msgid "Replace user configuration on startup"
 msgstr "Konfiguration bei jedem Start ersetzen"
 
-#: admin/applications/class_applicationGeneric.inc:190
+#: admin/applications/class_applicationGeneric.inc:128
 msgid "Replace the user configuration on startup"
 msgstr ""
 
-#: admin/applications/class_applicationGeneric.inc:195
+#: admin/applications/class_applicationGeneric.inc:133
 #: admin/groups/apps/class_groupApplication.inc:1510
 #: admin/groups/apps/edit_entry.tpl.c:32
 msgid "Place icon on members desktop"
 msgstr "Platziere das Symbol auf dem Desktop der Gruppenmitglieder"
 
-#: admin/applications/class_applicationGeneric.inc:195
+#: admin/applications/class_applicationGeneric.inc:133
 msgid "Put an icon on the user desktop"
 msgstr ""
 
-#: admin/applications/class_applicationGeneric.inc:200
+#: admin/applications/class_applicationGeneric.inc:138
 #: admin/groups/apps/class_groupApplication.inc:1512
 #: admin/groups/apps/edit_entry.tpl.c:35
 msgid "Place entry in members startmenu"
 msgstr "Platziere einen Eintrag im Startmenü der Gruppenmitglieder"
 
-#: admin/applications/class_applicationGeneric.inc:200
-#: admin/applications/class_applicationGeneric.inc:205
+#: admin/applications/class_applicationGeneric.inc:138
+#: admin/applications/class_applicationGeneric.inc:143
 msgid "Put an entry in the startup menu"
 msgstr ""
 
-#: admin/applications/class_applicationGeneric.inc:205
+#: admin/applications/class_applicationGeneric.inc:143
 #: admin/groups/apps/class_groupApplication.inc:1511
 #: admin/groups/apps/edit_entry.tpl.c:38
 msgid "Place entry in members launch bar"
 msgstr "Platziere einen Eintrag in der Kontrollleiste der Gruppenmitglieder"
 
-#: admin/applications/class_applicationGeneric.inc:216
+#: admin/applications/class_applicationGeneric.inc:154
 msgid "Script"
 msgstr "Skript"
 
-#: admin/applications/class_applicationGeneric.inc:219
+#: admin/applications/class_applicationGeneric.inc:157
 msgid "Script to run at logon"
 msgstr ""
 
-#: admin/applications/class_applicationGeneric.inc:225
+#: admin/applications/class_applicationGeneric.inc:163
 msgid "Log off script"
 msgstr ""
 
-#: admin/applications/class_applicationGeneric.inc:228
+#: admin/applications/class_applicationGeneric.inc:166
 msgid "Script to run at logoff"
 msgstr ""
 
-#: admin/applications/class_applicationGeneric.inc:283
+#: admin/applications/class_applicationGeneric.inc:221
 msgid "no example"
 msgstr "kein Beispiel"
 
-#: admin/applications/class_applicationGeneric.inc:332
+#: admin/applications/class_applicationGeneric.inc:270
+#: admin/systems/services/shares/class_serviceShare.inc:103
+#: admin/systems/class_systemManagement.inc:351
+#: admin/systems/class_systemManagement.inc:625
+#: admin/systems/class_systemManagement.inc:640
+#: admin/systems/class_serverService.inc:226
+#: admin/systems/class_serverService.inc:271
+#: admin/systems/class_serverService.inc:395
+#: admin/systems/class_networkSettings.inc:296
+#: admin/systems/class_networkSettings.inc:328
+#: admin/systems/class_networkSettings.inc:579
+#: admin/systems/class_networkSettings.inc:586
+#: admin/systems/class_networkSettings.inc:592
+#: admin/systems/class_networkSettings.inc:599
+#: admin/systems/class_printGeneric.inc:474
+#: admin/systems/class_printGeneric.inc:654
+#: admin/systems/class_printGeneric.inc:661
+#: admin/systems/class_printGeneric.inc:720
+#: admin/systems/class_printGeneric.inc:1101
+#: admin/systems/class_printGeneric.inc:1112
+msgid "Error"
+msgstr "Fehler"
+
+#: admin/applications/class_applicationGeneric.inc:270
 #, php-format
 msgid "Cannot remove application - it is still in use by these objects: %s"
-msgstr ""
-"Die Anwendung konnte nicht entfernt werden, sie wird momentan noch von "
-"folgenden Objekten verwendet: %s"
+msgstr "Die Anwendung konnte nicht entfernt werden, sie wird momentan noch von folgenden Objekten verwendet: %s"
 
 #: admin/groups/apps/class_groupApplication.inc:410
 #: admin/groups/apps/class_groupApplication.inc:414
@@ -486,7 +467,7 @@ msgid "Back"
 msgstr "Zurück"
 
 #: admin/groups/apps/class_groupApplication.inc:493
-#: admin/systems/ppd/class_printerPPDSelectionDialog.inc:172
+#: admin/systems/ppd/class_printerPPDSelectionDialog.inc:171
 msgid "back"
 msgstr "zurück"
 
@@ -531,17 +512,17 @@ msgstr "Lokaler Auslagerungsspeicher"
 
 #: admin/ogroups/goto/class_termgroup.inc:124
 #: admin/ogroups/goto/class_termgroup.inc:136
-#: admin/systems/class_workstationGeneric.inc:342
+#: admin/systems/class_workstationGeneric.inc:352
 #: admin/systems/class_terminalGeneric.inc:103
 #: admin/systems/class_terminalGeneric.inc:119
 msgid "inherited"
 msgstr "geerbt"
 
 #: admin/ogroups/goto/class_termgroup.inc:220
-#: admin/systems/class_systemManagement.inc:309
-#: admin/systems/class_systemManagement.inc:339
+#: admin/systems/class_systemManagement.inc:307
+#: admin/systems/class_systemManagement.inc:337
 #: admin/systems/class_workstationGeneric.inc:72
-#: admin/systems/class_workstationGeneric.inc:455
+#: admin/systems/class_workstationGeneric.inc:465
 msgid "Service infrastructure"
 msgstr "Dienst-Infrastruktur"
 
@@ -671,13 +652,10 @@ msgid "Mime group"
 msgstr "MIME-Gruppe"
 
 #: admin/mimetypes/class_mimetypeGeneric.inc:680
-#: admin/systems/class_printGeneric.inc:1025
-#: admin/applications/application-list.tpl.c:2
-#: admin/mimetypes/mimetype-list.tpl.c:2 admin/mimetypes/generic.tpl.c:23
+#: admin/systems/class_printGeneric.inc:1019 admin/mimetypes/generic.tpl.c:23
 #: admin/systems/printer.tpl.c:11
 #: admin/systems/systemSelect/selectSystem-list.tpl.c:2
 #: admin/systems/phoneSelect/phoneSelect-list.tpl.c:2
-#: admin/systems/system-list.tpl.c:2
 msgid "Base"
 msgstr "Basis"
 
@@ -744,8 +722,8 @@ msgstr "Server"
 
 #: admin/systems/system-list.xml:95 admin/systems/system-list.xml:234
 #: admin/systems/systemSelect/selectSystem-list.xml:23
-#: admin/systems/class_workstationGeneric.inc:473
-#: admin/systems/class_workstationGeneric.inc:475
+#: admin/systems/class_workstationGeneric.inc:483
+#: admin/systems/class_workstationGeneric.inc:485
 #: admin/systems/class_SelectDeviceType.inc:58
 msgid "Workstation"
 msgstr "Arbeitsstation"
@@ -758,9 +736,9 @@ msgstr "Arbeitsstation"
 msgid "Terminal"
 msgstr "Terminal"
 
-#: admin/systems/system-list.xml:111 admin/systems/class_printGeneric.inc:1014
-#: admin/systems/class_printGeneric.inc:1018
-#: admin/systems/class_printGeneric.inc:1020
+#: admin/systems/system-list.xml:111 admin/systems/class_printGeneric.inc:1008
+#: admin/systems/class_printGeneric.inc:1012
+#: admin/systems/class_printGeneric.inc:1014
 msgid "Printer"
 msgstr "Drucker"
 
@@ -1004,7 +982,7 @@ msgstr ""
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:46
 msgid "fill-in-your-servers-dns-name"
-msgstr ""
+msgstr "tragen-sie-den-dns-namen-des-servers-ein"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:51
 msgid "Size limit"
@@ -1060,8 +1038,8 @@ msgstr ""
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:78
 msgid ""
-"Specifies what checks to perform on server certificates in a TLS session, if "
-"any"
+"Specifies what checks to perform on server certificates in a TLS session, if"
+" any"
 msgstr ""
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:83
@@ -1113,52 +1091,48 @@ msgstr ""
 
 #: admin/systems/class_systemManagement.inc:234
 msgid "Creating the image failed. Please see the report below."
-msgstr ""
-"Erstellen des Abbilds fehlgeschlagen. Bitte überprüfen Sie den Fehlerbericht "
-"unterhalb."
+msgstr "Erstellen des Abbilds fehlgeschlagen. Bitte überprüfen Sie den Fehlerbericht unterhalb."
 
 #: admin/systems/class_systemManagement.inc:239
 #, php-format
 msgid "Command '%s', specified for ISO creation doesn't seem to exist."
-msgstr ""
-"Das Kommando '%s', angegeben für die ISO-Erstellung, scheint nicht zu "
-"existieren."
+msgstr "Das Kommando '%s', angegeben für die ISO-Erstellung, scheint nicht zu existieren."
 
-#: admin/systems/class_systemManagement.inc:410
-#: admin/systems/class_systemManagement.inc:486
-#: admin/systems/class_systemManagement.inc:859
-#: admin/systems/class_systemManagement.inc:906
-#: admin/systems/class_systemManagement.inc:927
+#: admin/systems/class_systemManagement.inc:408
+#: admin/systems/class_systemManagement.inc:484
+#: admin/systems/class_systemManagement.inc:857
+#: admin/systems/class_systemManagement.inc:904
+#: admin/systems/class_systemManagement.inc:925
 msgid "Permission"
 msgstr "Berechtigung"
 
-#: admin/systems/class_systemManagement.inc:680
-#: admin/systems/class_printGeneric.inc:132
-#: admin/systems/class_printGeneric.inc:1068
+#: admin/systems/class_systemManagement.inc:678
+#: admin/systems/class_printGeneric.inc:131
+#: admin/systems/class_printGeneric.inc:1061
 msgid "Internal error"
 msgstr "Interner Fehler"
 
-#: admin/systems/class_systemManagement.inc:680
+#: admin/systems/class_systemManagement.inc:678
 msgid "Cannot set mode to 'active'!"
 msgstr "Kann Modus nicht auf 'aktiv' setzen!"
 
-#: admin/systems/class_systemManagement.inc:859
+#: admin/systems/class_systemManagement.inc:857
 #, php-format
 msgid "You are not allowed to create a snapshot for %s."
 msgstr "Ihnen ist es nicht erlaubt, einen Snapshot für %s zu erstellen."
 
-#: admin/systems/class_systemManagement.inc:906
-#: admin/systems/class_systemManagement.inc:927
+#: admin/systems/class_systemManagement.inc:904
+#: admin/systems/class_systemManagement.inc:925
 #, php-format
 msgid "You are not allowed to restore a snapshot for %s."
 msgstr "Ihnen ist es nicht erlaubt, einen Snapshot für %s wiederherzustellen."
 
-#: admin/systems/class_systemManagement.inc:1122
+#: admin/systems/class_systemManagement.inc:1120
 #, php-format
 msgid "Inherited from %s"
 msgstr "Geerbt von %s"
 
-#: admin/systems/class_systemManagement.inc:1178
+#: admin/systems/class_systemManagement.inc:1176
 msgid "Systems Management"
 msgstr ""
 
@@ -1174,25 +1148,25 @@ msgstr "Server (Allgemein)"
 msgid "Server services"
 msgstr ""
 
-#: admin/systems/class_serverService.inc:332
+#: admin/systems/class_serverService.inc:333
 msgid "Filter error"
 msgstr "Filter Fehler"
 
-#: admin/systems/class_serverService.inc:332
+#: admin/systems/class_serverService.inc:333
 msgid "The filter is incomplete!"
 msgstr "Der Filter ist unvollständig!"
 
-#: admin/systems/class_serverService.inc:388
+#: admin/systems/class_serverService.inc:389
 msgid "Information"
 msgstr "Information"
 
-#: admin/systems/class_serverService.inc:388
+#: admin/systems/class_serverService.inc:389
 msgid "Cannot update service status until it has been saved!"
 msgstr "Kann den Dienst-Status nicht setzen bis der Server gespeichert wurde."
 
-#: admin/systems/class_serverService.inc:416
-#: admin/systems/class_serverService.inc:425
-#: admin/systems/class_serverService.inc:436
+#: admin/systems/class_serverService.inc:417
+#: admin/systems/class_serverService.inc:426
+#: admin/systems/class_serverService.inc:437
 #, php-format
 msgid "Could not get execute action %s on service %s."
 msgstr ""
@@ -1219,7 +1193,7 @@ msgid "Wake up"
 msgstr "Aufwecken"
 
 #: admin/systems/class_workstationGeneric.inc:144
-#: admin/systems/class_printGeneric.inc:607
+#: admin/systems/class_printGeneric.inc:606
 msgid "workstation"
 msgstr "Arbeitsstation"
 
@@ -1234,7 +1208,7 @@ msgid "A short description of the %s"
 msgstr ""
 
 #: admin/systems/class_workstationGeneric.inc:166
-#: admin/systems/class_printGeneric.inc:1027
+#: admin/systems/class_printGeneric.inc:1021
 msgid "Location"
 msgstr "Ort"
 
@@ -1307,11 +1281,11 @@ msgstr "Aktion"
 msgid "Select action to execute for this terminal"
 msgstr "Wählen Sie die auszuführende Aktion für dieses Terminal"
 
-#: admin/systems/class_workstationGeneric.inc:428
+#: admin/systems/class_workstationGeneric.inc:438
 msgid "A valid LDAP server assignement is missing!"
 msgstr "Es fehlt eine gültige LDAP-Server-Zuweisung!"
 
-#: admin/systems/class_workstationGeneric.inc:471
+#: admin/systems/class_workstationGeneric.inc:481
 msgid "Workstation generic"
 msgstr "Arbeitsstation (Allgemein)"
 
@@ -1462,15 +1436,12 @@ msgstr "Eindeutiger Datensatz-Typ '%s' ist doppelt vorhanden!"
 msgid ""
 "The IP address '%s' will be added as 'A Record', this will be done "
 "automatically, please remove the record."
-msgstr ""
-"Die IP-Adresse '%s' wird automatisch als 'A'-Datensatz eingefügt. Bitte "
-"entfernen Sie den Eintrag."
+msgstr "Die IP-Adresse '%s' wird automatisch als 'A'-Datensatz eingefügt. Bitte entfernen Sie den Eintrag."
 
 #: admin/systems/class_networkSettings.inc:716
 #, php-format
 msgid "Only lowercase records are allowed, please check your '%ss'."
-msgstr ""
-"Es sind nur Kleinbuchstaben in Datensätzen erlaubt, bitte prüfen Sie '%ss'."
+msgstr "Es sind nur Kleinbuchstaben in Datensätzen erlaubt, bitte prüfen Sie '%ss'."
 
 #: admin/systems/class_networkSettings.inc:984
 msgid "Delete"
@@ -1493,7 +1464,7 @@ msgid "DHCP configuration"
 msgstr "DHCP-Konfiguration"
 
 #: admin/systems/class_terminalGeneric.inc:34
-#: admin/systems/class_printGeneric.inc:605
+#: admin/systems/class_printGeneric.inc:604
 msgid "terminal"
 msgstr "Terminal"
 
@@ -1574,9 +1545,7 @@ msgstr "Das Verarbeiten der PPD-Datei ist fehlgeschlagen - die Datei ist leer!"
 msgid ""
 "Parsing PPD file %s failed - line too long. Trailing characters have been "
 "ignored!"
-msgstr ""
-"Das Verarbeiten der PPD-Datei '%s' ist fehlgeschlagen - Zeile zu lang. "
-"Nachfolgende Zeichen wurden ausgelassen!"
+msgstr "Das Verarbeiten der PPD-Datei '%s' ist fehlgeschlagen - Zeile zu lang. Nachfolgende Zeichen wurden ausgelassen!"
 
 #: admin/systems/ppd/class_ppdManager.inc:234
 msgid "Nested groups are not supported!"
@@ -1604,16 +1573,12 @@ msgstr "Die Option PickMany wird noch nicht unterstützt!"
 msgid ""
 "Parsing PPD file %s failed - line too long. Trailing characters have been "
 "ignored"
-msgstr ""
-"Das Verarbeiten der PPD-Datei '%s' ist fehlgeschlagen - Zeile zu lang. "
-"Nachfolgende Zeichen wurden ausgelassen."
+msgstr "Das Verarbeiten der PPD-Datei '%s' ist fehlgeschlagen - Zeile zu lang. Nachfolgende Zeichen wurden ausgelassen."
 
 #: admin/systems/ppd/class_ppdManager.inc:399
 #, php-format
 msgid "Parsing PPD file %s failed - no information found."
-msgstr ""
-"Das Verarbeiten der PPD-Datei '%s' ist fehlgeschlagen - keine Information "
-"gefunden."
+msgstr "Das Verarbeiten der PPD-Datei '%s' ist fehlgeschlagen - keine Information gefunden."
 
 #: admin/systems/ppd/class_printerPPDSelectionDialog.inc:95
 #: admin/systems/ppd/class_printerPPDSelectionDialog.inc:120
@@ -1655,7 +1620,7 @@ msgid "Cannot open PPD '%s'!"
 msgstr "Kann PPD '%s' nicht öffnen!"
 
 #: admin/systems/ppd/class_printerPPDDialog.inc:116
-#: admin/systems/class_printGeneric.inc:589
+#: admin/systems/class_printGeneric.inc:588
 msgid "Can't get ppd informations."
 msgstr "Kann PPD-Information nicht lesen"
 
@@ -1682,9 +1647,7 @@ msgstr "Existierende PPD überschreiben"
 msgid ""
 "There is already a ppd file for this kind of printer. Do you want to "
 "overwrite it?"
-msgstr ""
-"Der von Ihnen gewählte Drucker-Typ verfügt bereits über eine PPD-Datei. "
-"Möchten Sie diese überschreiben?"
+msgstr "Der von Ihnen gewählte Drucker-Typ verfügt bereits über eine PPD-Datei. Möchten Sie diese überschreiben?"
 
 #: admin/systems/ppd/class_printerPPDDialog.inc:494
 msgid "Section"
@@ -1709,9 +1672,7 @@ msgstr "PPD-Typ '%s' wird nicht unterstützt!"
 msgid ""
 "Please select a valid ppd file or use 'Cancel' to go back to printer "
 "configuration."
-msgstr ""
-"Bitte wählen Sie eine gültige PPD-Datei oder drücken Sie 'Abbrechen', um "
-"zurück zur Drucker-Konfiguration zu gelangen."
+msgstr "Bitte wählen Sie eine gültige PPD-Datei oder drücken Sie 'Abbrechen', um zurück zur Drucker-Konfiguration zu gelangen."
 
 #: admin/systems/class_terminalStartup.inc:63
 msgid "Startup parameters"
@@ -1741,149 +1702,137 @@ msgstr "Start"
 msgid "Terminal startup"
 msgstr "Terminal-Start"
 
-#: admin/systems/class_printGeneric.inc:132
+#: admin/systems/class_printGeneric.inc:131
 #, php-format
 msgid ""
 "Cannot determine a valid department for this object. Setting base to '%s'!"
-msgstr ""
-"Kann keine gültige Abteilung für dieses Objekt ermitteln, setze Basis auf "
-"'%s'."
+msgstr "Kann keine gültige Abteilung für dieses Objekt ermitteln, setze Basis auf '%s'."
 
-#: admin/systems/class_printGeneric.inc:312
-#: admin/systems/class_printGeneric.inc:320
-#: admin/systems/class_printGeneric.inc:325
-#: admin/systems/class_printGeneric.inc:375
-#: admin/systems/class_printGeneric.inc:391
-#: admin/systems/class_printGeneric.inc:394
+#: admin/systems/class_printGeneric.inc:311
+#: admin/systems/class_printGeneric.inc:319
+#: admin/systems/class_printGeneric.inc:324
+#: admin/systems/class_printGeneric.inc:374
+#: admin/systems/class_printGeneric.inc:390
+#: admin/systems/class_printGeneric.inc:393
 msgid "Add printer extension"
 msgstr "Drucker-Erweiterung hinzufügen"
 
-#: admin/systems/class_printGeneric.inc:313
+#: admin/systems/class_printGeneric.inc:312
 msgid ""
 "Could not initialize printer tab, parameter parent was missing while "
 "construction."
-msgstr ""
-"Konnte den 'Druck'-Reiter nicht initialisieren, der Parameter 'parent' "
-"fehlte während der Erstellung."
+msgstr "Konnte den 'Druck'-Reiter nicht initialisieren, der Parameter 'parent' fehlte während der Erstellung."
 
-#: admin/systems/class_printGeneric.inc:321
+#: admin/systems/class_printGeneric.inc:320
 msgid "This is a workstation template, printer tab is disabled."
-msgstr ""
-"Dies ist eine Arbeitsstations-Vorlage, der Drucker-Tab ist deaktiviert."
+msgstr "Dies ist eine Arbeitsstations-Vorlage, der Drucker-Tab ist deaktiviert."
 
-#: admin/systems/class_printGeneric.inc:326
+#: admin/systems/class_printGeneric.inc:325
 msgid "This is a terminal template, printer tab is disabled."
 msgstr "Dies ist eine Terminal-Vorlage, das Drucker-Tab ist deaktiviert."
 
-#: admin/systems/class_printGeneric.inc:368
-#: admin/systems/class_printGeneric.inc:376
-#: admin/systems/class_printGeneric.inc:384
-#: admin/systems/class_printGeneric.inc:387
-#: admin/systems/class_printGeneric.inc:392
-#: admin/systems/class_printGeneric.inc:395
+#: admin/systems/class_printGeneric.inc:367
+#: admin/systems/class_printGeneric.inc:375
+#: admin/systems/class_printGeneric.inc:383
+#: admin/systems/class_printGeneric.inc:386
+#: admin/systems/class_printGeneric.inc:391
+#: admin/systems/class_printGeneric.inc:394
 msgid "printer"
 msgstr "Drucker"
 
-#: admin/systems/class_printGeneric.inc:376
+#: admin/systems/class_printGeneric.inc:375
 msgid ""
 "You can't enable it while 'cn' is not present in entry. Possibly you are "
 "currently creating a new terminal template."
-msgstr ""
-"Sie können es nicht aktivieren, solange das 'cn'-Attribut nicht im Eintrag "
-"enthalten ist. Wahrscheinlich erstellen Sie gerade eine neue Terminal-"
-"Vorlage."
+msgstr "Sie können es nicht aktivieren, solange das 'cn'-Attribut nicht im Eintrag enthalten ist. Wahrscheinlich erstellen Sie gerade eine neue Terminal-Vorlage."
 
-#: admin/systems/class_printGeneric.inc:383
-#: admin/systems/class_printGeneric.inc:386
+#: admin/systems/class_printGeneric.inc:382
+#: admin/systems/class_printGeneric.inc:385
 msgid "Remove printer extension"
 msgstr "Drucker-Erweiterung entfernen"
 
-#: admin/systems/class_printGeneric.inc:579
+#: admin/systems/class_printGeneric.inc:578
 #, php-format
 msgid "Your currently selected PPD file '%s' doesn't exist."
 msgstr "Die momentan gewählte PPD-Datei '%s' wurde nicht gefunden."
 
-#: admin/systems/class_printGeneric.inc:585
+#: admin/systems/class_printGeneric.inc:584
 msgid "Not defined"
 msgstr "Nicht definiert"
 
-#: admin/systems/class_printGeneric.inc:605
-#: admin/systems/class_printGeneric.inc:607
+#: admin/systems/class_printGeneric.inc:604
+#: admin/systems/class_printGeneric.inc:606
 #, php-format
 msgid "This printer belongs to %s. You can't rename this printer."
 msgstr "Dieser Drucker gehört zu %s. Sie können ihn nicht umbenennen."
 
-#: admin/systems/class_printGeneric.inc:656
-#: admin/systems/class_printGeneric.inc:663
+#: admin/systems/class_printGeneric.inc:654
+#: admin/systems/class_printGeneric.inc:661
 msgid "Object is no printer!"
 msgstr "Das Objekt ist kein Drucker!"
 
-#: admin/systems/class_printGeneric.inc:775 admin/systems/printer.tpl.c:26
+#: admin/systems/class_printGeneric.inc:769 admin/systems/printer.tpl.c:23
 msgid "Printer URL"
 msgstr "Drucker URL"
 
-#: admin/systems/class_printGeneric.inc:998
-#: admin/systems/class_printGeneric.inc:1000
+#: admin/systems/class_printGeneric.inc:992
+#: admin/systems/class_printGeneric.inc:994
 msgid "Group"
 msgstr "Gruppe"
 
-#: admin/systems/class_printGeneric.inc:1003
+#: admin/systems/class_printGeneric.inc:997
 msgid "User"
 msgstr "Benutzer"
 
-#: admin/systems/class_printGeneric.inc:1015
+#: admin/systems/class_printGeneric.inc:1009
 msgid "Print generic"
 msgstr "Drucken (Alllgemein)"
 
-#: admin/systems/class_printGeneric.inc:1028
+#: admin/systems/class_printGeneric.inc:1022
 msgid "LabeledURL"
 msgstr "Benannte URL"
 
-#: admin/systems/class_printGeneric.inc:1029
+#: admin/systems/class_printGeneric.inc:1023
 msgid "Printer PPD"
 msgstr "Drucker-PPD"
 
-#: admin/systems/class_printGeneric.inc:1030 admin/systems/printer.tpl.c:41
+#: admin/systems/class_printGeneric.inc:1024 admin/systems/printer.tpl.c:38
 msgid "Permissions"
 msgstr "Berechtigungen"
 
-#: admin/systems/class_printGeneric.inc:1031
-msgid "Comments"
-msgstr ""
-
-#: admin/systems/class_printGeneric.inc:1033
+#: admin/systems/class_printGeneric.inc:1026
 msgid "Windows inf file"
 msgstr ""
 
-#: admin/systems/class_printGeneric.inc:1034
+#: admin/systems/class_printGeneric.inc:1027
 msgid "Windows driver dir"
 msgstr ""
 
-#: admin/systems/class_printGeneric.inc:1035 admin/systems/printer.tpl.c:65
+#: admin/systems/class_printGeneric.inc:1028 admin/systems/printer.tpl.c:62
 msgid "Driver printer name"
 msgstr ""
 
-#: admin/systems/class_printGeneric.inc:1051
-#: admin/systems/class_printGeneric.inc:1073
+#: admin/systems/class_printGeneric.inc:1044
+#: admin/systems/class_printGeneric.inc:1066
 msgid "Permission error"
 msgstr "Berechtigungsfehler"
 
-#: admin/systems/class_printGeneric.inc:1051
-#: admin/systems/class_printGeneric.inc:1073
+#: admin/systems/class_printGeneric.inc:1044
+#: admin/systems/class_printGeneric.inc:1066
 msgid "printer user"
 msgstr "Druckerbenutzer"
 
-#: admin/systems/class_printGeneric.inc:1068
+#: admin/systems/class_printGeneric.inc:1061
 #, php-format
 msgid "Illegal member type '%s'!"
 msgstr "Ungültiger Mitgliedstyp '%s'!"
 
-#: admin/systems/class_printGeneric.inc:1108
+#: admin/systems/class_printGeneric.inc:1101
 #, php-format
 msgid "'%s' is already used!"
 msgstr "'%s' wird bereits verwendet!"
 
-#: admin/systems/class_printGeneric.inc:1119
+#: admin/systems/class_printGeneric.inc:1112
 #, php-format
 msgid "'%s' does not exist!"
 msgstr "'%s' existiert nicht!"
@@ -1906,9 +1855,7 @@ msgstr ""
 #: admin/applications/remove.tpl.c:8 admin/mimetypes/remove.tpl.c:8
 #: admin/systems/remove.tpl.c:8
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr ""
-"Wenn Sie sicher sind, drücken Sie 'Entfernen' um fortzufahren oder "
-"'Abbrechen' zum Abbruch."
+msgstr "Wenn Sie sicher sind, drücken Sie 'Entfernen' um fortzufahren oder 'Abbrechen' zum Abbruch."
 
 #: admin/groups/apps/edit_entry.tpl.c:2
 msgid "Folder image"
@@ -1925,6 +1872,11 @@ msgstr "Keine"
 #: admin/groups/apps/edit_entry.tpl.c:11
 msgid "Upload image"
 msgstr "Bild Hochladen"
+
+#: admin/groups/apps/edit_entry.tpl.c:14
+#: admin/systems/ppd/printerPPDDialog.tpl.c:14
+msgid "Upload"
+msgstr "Hochladen"
 
 #: admin/groups/apps/edit_entry.tpl.c:17
 msgid "Reset image"
@@ -1969,7 +1921,7 @@ msgid "Move down"
 msgstr "Nach unten bewegen"
 
 #: admin/groups/apps/app_list.tpl.c:32 admin/groups/apps/app_list.tpl.c:56
-#: admin/systems/printer.tpl.c:35
+#: admin/systems/printer.tpl.c:32
 msgid "Edit"
 msgstr "Bearbeiten"
 
@@ -2002,10 +1954,7 @@ msgid ""
 "Actions you choose here influence all systems in this object group. "
 "Additionally, all values editable here can be inherited by the clients "
 "assigned to this object group."
-msgstr ""
-"Aktionen die hier ausgewählt werden beeinflussen alle Systeme dieser "
-"Objektgruppe. Zusätzlich können alle hier einstellbaren Werte von den "
-"Systemen ererbt werden."
+msgstr "Aktionen die hier ausgewählt werden beeinflussen alle Systeme dieser Objektgruppe. Zusätzlich können alle hier einstellbaren Werte von den Systemen ererbt werden."
 
 #: admin/ogroups/goto/termgroup.tpl.c:11
 msgid "NTP server"
@@ -2013,8 +1962,7 @@ msgstr "Zeit-Server"
 
 #: admin/ogroups/goto/termgroup.tpl.c:14
 msgid "Choose server to use for synchronizing time"
-msgstr ""
-"Wählen Sie den Server, der zur Zeit-Synchronisation genutzt werden soll"
+msgstr "Wählen Sie den Server, der zur Zeit-Synchronisation genutzt werden soll"
 
 #: admin/ogroups/goto/termgroup.tpl.c:20
 msgid "Select terminal mode"
@@ -2030,9 +1978,7 @@ msgstr "Wählen Sie das NFS-Root-Dateisystem"
 
 #: admin/ogroups/goto/termgroup.tpl.c:38
 msgid "Choose NFS filesystem to place swap files on"
-msgstr ""
-"Wählen Sie das NFS-Dateisystem, in dem die Auslagerungsdateien abgelegt "
-"werden sollen"
+msgstr "Wählen Sie das NFS-Dateisystem, in dem die Auslagerungsdateien abgelegt werden sollen"
 
 #: admin/mimetypes/paste_generic.tpl.c:8 admin/mimetypes/generic.tpl.c:8
 msgid "Please enter a name for the mime type here"
@@ -2115,50 +2061,46 @@ msgid "Printer name"
 msgstr "Druckername"
 
 #: admin/systems/printer.tpl.c:14
-msgid "Comment"
-msgstr "Kommentar"
-
-#: admin/systems/printer.tpl.c:17
 msgid "Details"
 msgstr "Details"
 
-#: admin/systems/printer.tpl.c:23
+#: admin/systems/printer.tpl.c:20
 msgid "Printer location"
 msgstr "Drucker-Standort"
 
-#: admin/systems/printer.tpl.c:29
+#: admin/systems/printer.tpl.c:26
 msgid "PPD Provider"
 msgstr "PPD Anbieter"
 
-#: admin/systems/printer.tpl.c:32
+#: admin/systems/printer.tpl.c:29
 msgid "Driver"
 msgstr "Treiber"
 
-#: admin/systems/printer.tpl.c:44
+#: admin/systems/printer.tpl.c:41
 msgid "Users which are allowed to use this printer"
 msgstr "Benutzer mit Berechtigung, diesen Drucker zu nutzen"
 
-#: admin/systems/printer.tpl.c:47
+#: admin/systems/printer.tpl.c:44
 msgid "Users"
 msgstr "Benutzer"
 
-#: admin/systems/printer.tpl.c:50
+#: admin/systems/printer.tpl.c:47
 msgid "Users which are allowed to administrate this printer"
 msgstr "Benutzer mit Berechtigung, diesen Drucker zu verwalten"
 
-#: admin/systems/printer.tpl.c:53
+#: admin/systems/printer.tpl.c:50
 msgid "Admins"
 msgstr "Administratoren"
 
-#: admin/systems/printer.tpl.c:56
+#: admin/systems/printer.tpl.c:53
 msgid "Windows paths"
 msgstr ""
 
-#: admin/systems/printer.tpl.c:59
+#: admin/systems/printer.tpl.c:56
 msgid "Printer windows inf file"
 msgstr ""
 
-#: admin/systems/printer.tpl.c:62
+#: admin/systems/printer.tpl.c:59
 msgid "Printer driver directory"
 msgstr ""
 
@@ -2185,10 +2127,7 @@ msgstr "Hinzufügen eines neues Dienstes zum gewählten Server"
 msgid ""
 "This dialog allows you to add new services to the currenty edited server "
 "object. The box below shows all available but not already used services."
-msgstr ""
-"Dieser Dialog ermöglicht Ihnen das Hinzufügen neuer Dienste zum momentan "
-"gewählten Server. Die Box unterhalb zeigt alle verfügbaren aber momentan "
-"nicht verwendeten Dienste."
+msgstr "Dieser Dialog ermöglicht Ihnen das Hinzufügen neuer Dienste zum momentan gewählten Server. Die Box unterhalb zeigt alle verfügbaren aber momentan nicht verwendeten Dienste."
 
 #: admin/systems/services/ServiceAddDialog.tpl.c:8
 msgid "Service to add"
@@ -2216,26 +2155,19 @@ msgid ""
 "This system has no system type configured. Please choose a system type for "
 "this object and an optional inheritance group. Press the 'continue' button "
 "to proceed."
-msgstr ""
-"Dieses System hat keinen zugewiesenen Typ. Bitte wählen Sie einen Typ und "
-"eine optionale Gruppe mit vordefinierten Eigenschaften. Drücken Sie 'Weiter' "
-"um fortzufahren."
+msgstr "Dieses System hat keinen zugewiesenen Typ. Bitte wählen Sie einen Typ und eine optionale Gruppe mit vordefinierten Eigenschaften. Drücken Sie 'Weiter' um fortzufahren."
 
 #: admin/systems/SelectDeviceType.tpl.c:5
 msgid ""
-"Please select a system type and an optional bundle of predefined settings to "
-"be inherited."
-msgstr ""
-"Bitte wählen Sie einen Systemtyp und (optional) einen Satz von "
-"vordefinierten Einstellungen (werden automatisch übernommen)."
+"Please select a system type and an optional bundle of predefined settings to"
+" be inherited."
+msgstr "Bitte wählen Sie einen Systemtyp und (optional) einen Satz von vordefinierten Einstellungen (werden automatisch übernommen)."
 
 #: admin/systems/SelectDeviceType.tpl.c:8
 msgid ""
 "Please select a system type and a bundle of predefined settings to be "
 "inherited."
-msgstr ""
-"Bitte wählen Sie einen Systemtyp und (optional) einen Satz von  "
-"vordefinierten Einstellungen."
+msgstr "Bitte wählen Sie einen Systemtyp und (optional) einen Satz von  vordefinierten Einstellungen."
 
 #: admin/systems/SelectDeviceType.tpl.c:11
 #: admin/systems/SelectDeviceType.tpl.c:14
@@ -2266,22 +2198,18 @@ msgstr ""
 
 #: admin/systems/gencd.tpl.c:2
 msgid "CD-Install-Image generation"
-msgstr ""
+msgstr "Erstellung der Installations-CD (Abbild)"
 
 #: admin/systems/gencd.tpl.c:5
 msgid ""
 "This option enables you to generate FAI install CD images for the selected "
 "workstation. The procedure may take about 10 minutes to complete, so please "
 "be patient after pressing the 'Create ISO-Image' button."
-msgstr ""
-"Diese Option erlaubt es Ihnen, ein Abbild einer FAI-Installations-CD für die "
-"gewählte Arbeitsstation zu erstellen. Dieser Vorgang dauert etwa 10 Minuten, "
-"haben Sie also Geduld, nachdem Sie den Knopf 'Erstelle ISO-Abbild' gedrückt "
-"haben."
+msgstr "Diese Option erlaubt es Ihnen, ein Abbild einer FAI-Installations-CD für die gewählte Arbeitsstation zu erstellen. Dieser Vorgang dauert etwa 10 Minuten, haben Sie also Geduld, nachdem Sie den Knopf 'Erstelle ISO-Abbild' gedrückt haben."
 
 #: admin/systems/gencd.tpl.c:8
 msgid "Create ISO-Image"
-msgstr ""
+msgstr "Erstelle ISO-Abbild"
 
 #: admin/systems/system-filter.tpl.c:14
 msgid "Show network printer"
@@ -2386,9 +2314,9 @@ msgstr "DNS-Einträge"
 
 #: admin/systems/remove.tpl.c:5
 msgid ""
-"This includes all account data, system access rules, imap settings, etc. for "
-"this user. Please double check if your really want to do this since there is "
-"no way for FusionDirectory to get your data back."
+"This includes all account data, system access rules, imap settings, etc. for"
+" this user. Please double check if your really want to do this since there "
+"is no way for FusionDirectory to get your data back."
 msgstr ""
 
 #: admin/systems/ppd/printerPPDSelectionDialog.tpl.c:2
@@ -2425,9 +2353,7 @@ msgstr "Neuer Treiber"
 
 #: admin/systems/ppd/remove_ppd.tpl.c:5
 msgid "The ppd file will be removed from the server and can not be restored."
-msgstr ""
-"Die PPD-Datei wird vom Server entfernt und kann nicht wiederhergestellt "
-"werden."
+msgstr "Die PPD-Datei wird vom Server entfernt und kann nicht wiederhergestellt werden."
 
 #: admin/systems/gencd_frame.tpl.c:2
 msgid "Your browser does not supprt iframes."
@@ -2436,23 +2362,17 @@ msgstr "Ihr Browser unterstützt keine iframes."
 #: admin/systems/password.tpl.c:2
 msgid ""
 "To change the terminal root password use the fields below. The changes take "
-"effect during the next reboot. Please memorize the new password, because you "
-"wouldn't be able to log in."
-msgstr ""
-"Um das root-Passwort des Terminals zu ändern, nutzen Sie die Felder unten. "
-"Die Änderungen werden beim nächsten Neustart wirksam. Merken Sie sich das "
-"Passwort, da eine Anmeldung ohne dieses Passwort nicht möglich ist."
+"effect during the next reboot. Please memorize the new password, because you"
+" wouldn't be able to log in."
+msgstr "Um das root-Passwort des Terminals zu ändern, nutzen Sie die Felder unten. Die Änderungen werden beim nächsten Neustart wirksam. Merken Sie sich das Passwort, da eine Anmeldung ohne dieses Passwort nicht möglich ist."
 
 #: admin/systems/password.tpl.c:5
 msgid "Leave fields blank for password inheritance from default entries."
-msgstr ""
-"Lassen Sie die Felder leer, um das Passwort aus den Standard-Einträgen zu "
-"übernehmen."
+msgstr "Lassen Sie die Felder leer, um das Passwort aus den Standard-Einträgen zu übernehmen."
 
 #: admin/systems/password.tpl.c:8
 msgid "Changing the password impinges on authentification only."
-msgstr ""
-"Das Ändern des Passwortes wirkt sich nur auf die Authentifizierung aus."
+msgstr "Das Ändern des Passwortes wirkt sich nur auf die Authentifizierung aus."
 
 #: admin/systems/password.tpl.c:11
 msgid "New password"
@@ -2469,96 +2389,3 @@ msgstr "Passwort-Stärke"
 #: admin/systems/password.tpl.c:20
 msgid "Set password"
 msgstr "Passwort setzen"
-
-#~ msgid "List of devices"
-#~ msgstr "Liste der Geräte"
-
-#~ msgid "Device"
-#~ msgstr "Gerät"
-
-#~ msgid "Edit device"
-#~ msgstr "Gerät bearbeiten"
-
-#~ msgid "Remove device"
-#~ msgstr "Gerät entfernen"
-
-#~ msgid "Digital camera"
-#~ msgstr "Digitalkamera"
-
-#~ msgid "USB stick"
-#~ msgstr "USB-Stick"
-
-#~ msgid "CD/DVD drive"
-#~ msgstr "CD/DVD-Laufwerk"
-
-#~ msgid "Device name"
-#~ msgstr "Gerätename"
-
-#~ msgid "iSerial"
-#~ msgstr "iSerial"
-
-#~ msgid "Device generic"
-#~ msgstr "Allgemeines zum Gerät"
-
-#~ msgid "Hotplug"
-#~ msgstr "Hotplug"
-
-#~ msgid "Devices"
-#~ msgstr "Geräte"
-
-#~ msgid "Serial"
-#~ msgstr "Seriell"
-
-#~ msgid "Vendor"
-#~ msgstr "Hersteller"
-
-#~ msgid "Device ID"
-#~ msgstr "Geräte-ID"
-
-#~ msgid "Device type"
-#~ msgstr "Gerätetyp"
-
-#~ msgid "Choose the device type"
-#~ msgstr "Wählen Sie den Gerätetyp"
-
-#~ msgid "Serial number"
-#~ msgstr "Seriennummer"
-
-#~ msgid "(iSerial)"
-#~ msgstr "(iSerial)"
-
-#~ msgid "(idVendor)"
-#~ msgstr "(idVendor)"
-
-#~ msgid "(idProduct)"
-#~ msgstr "(idProduct)"
-
-#~ msgid "Hotplug devices"
-#~ msgstr "Hotplug-Geräte"
-
-#~ msgid "Hotplug device management"
-#~ msgstr "Verwaltung der Hotplug-Geräte"
-
-#~ msgid "Branches"
-#~ msgstr "Zweige"
-
-#~ msgid "Current release"
-#~ msgstr "Momentanes Release"
-
-#~ msgid "Halt "
-#~ msgstr "Anhalten"
-
-#~ msgid "Wakeup"
-#~ msgstr "Aufwecken"
-
-#~ msgid "Lock"
-#~ msgstr "Sperren"
-
-#~ msgid "Activate"
-#~ msgstr "Aktivieren"
-
-#~ msgid "Halt"
-#~ msgstr "Anhalten"
-
-#~ msgid "Inherit all values to group members"
-#~ msgstr "Alle Werte auf Mitglieder übertragen"

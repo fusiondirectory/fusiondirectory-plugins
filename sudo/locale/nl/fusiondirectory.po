@@ -1,29 +1,27 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Christophe Augello <christophe@augello.be>, 2012
 #  Niels Klomp (CareWorks ICT Services) <nk@careworks.nl>, 2005
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-09 19:20+0200\n"
-"PO-Revision-Date: 2013-03-24 15:00+0000\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
+"POT-Creation-Date: 2013-07-31 13:09+0200\n"
+"PO-Revision-Date: 2013-07-31 11:30+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Dutch (http://www.transifex.com/projects/p/FusionDirectory/"
-"language/nl/)\n"
-"Language: nl\n"
+"Language-Team: Dutch (http://www.transifex.com/projects/p/FusionDirectory/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: config/sudo/class_sudoConfig.inc:28
-#, fuzzy
 msgid "Sudo configuration"
-msgstr "Sudo opties"
+msgstr ""
 
 #: config/sudo/class_sudoConfig.inc:29
 msgid "FusionDirectory sudo plugin configuration"
@@ -31,12 +29,11 @@ msgstr ""
 
 #: config/sudo/class_sudoConfig.inc:42
 msgid "LDAP tree"
-msgstr ""
+msgstr "LDAP tree"
 
 #: config/sudo/class_sudoConfig.inc:45
-#, fuzzy
 msgid "Sudo RDN"
-msgstr "Sudo"
+msgstr ""
 
 #: config/sudo/class_sudoConfig.inc:45
 msgid "Branch in which sudoers will be stored"
@@ -219,15 +216,11 @@ msgstr "Waarschuwing"
 msgid ""
 "Please double check if you really want to do this since there is no way for "
 "FusionDirectory to get your data back."
-msgstr ""
-"Controleer a.u.b. of u dit daadwerkelijk wil doen, aangezien er geen "
-"mogelijkheid voor FusionDirectory is om uw data terug te krijgen."
+msgstr "Controleer a.u.b. of u dit daadwerkelijk wil doen, aangezien er geen mogelijkheid voor FusionDirectory is om uw data terug te krijgen."
 
 #: admin/sudo/remove.tpl.c:8
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr ""
-"Indien u zeker bent drukt u dan 'Verwijderen' om door te gaan of 'Annuleren' "
-"om te annuleren."
+msgstr "Indien u zeker bent drukt u dan 'Verwijderen' om door te gaan of 'Annuleren' om te annuleren."
 
 #: admin/sudo/sudo-filter.tpl.c:2
 msgid "Filter"
@@ -236,12 +229,3 @@ msgstr "Filter"
 #: admin/sudo/sudo-filter.tpl.c:8
 msgid "User"
 msgstr "Gebruiker"
-
-#~ msgid "Option name"
-#~ msgstr "Optie naam"
-
-#~ msgid "Value"
-#~ msgstr "Waarde"
-
-#~ msgid "Add from list"
-#~ msgstr "Voeg toe van uit lijst"

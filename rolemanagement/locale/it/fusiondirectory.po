@@ -1,23 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Alessandro Amici <a.amici@bopen.it>, 2005
 # poterealpopolo <giuliano@opensides.be>, 2011
+# poterealpopolo <giuliano@opensides.be>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-09 19:19+0200\n"
-"PO-Revision-Date: 2013-03-24 15:00+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Italian (http://www.transifex.com/projects/p/FusionDirectory/"
-"language/it/)\n"
-"Language: it\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
+"POT-Creation-Date: 2013-07-31 13:09+0200\n"
+"PO-Revision-Date: 2013-07-30 17:21+0000\n"
+"Last-Translator: poterealpopolo <giuliano@opensides.be>\n"
+"Language-Team: Italian (http://www.transifex.com/projects/p/FusionDirectory/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: admin/roleManagement/class_roleManagement.inc:36
@@ -91,7 +91,7 @@ msgstr "Nome del ruolo"
 
 #: admin/roleManagement/class_roleGeneric.inc:64
 msgid "Description of the role"
-msgstr ""
+msgstr "Descrizione del ruolo"
 
 #: admin/roleManagement/class_roleGeneric.inc:66
 #: admin/roleManagement/roleGeneric.tpl.c:14
@@ -109,7 +109,7 @@ msgstr "Utenti"
 
 #: admin/roleManagement/class_roleGeneric.inc:68
 msgid "Add users for the role"
-msgstr ""
+msgstr "Aggiungi degli utenti per il ruolo"
 
 #: admin/roleManagement/role-filter.tpl.c:2
 msgid "Filter"
@@ -123,11 +123,6 @@ msgstr "Nome del ruolo"
 msgid "Please enter the new object role name"
 msgstr "Inserisci il nuovo nome del ruolo"
 
-#: admin/roleManagement/role-list.tpl.c:2
-#: admin/roleManagement/roleGeneric.tpl.c:11
-msgid "Base"
-msgstr "Base"
-
 #: admin/roleManagement/remove.tpl.c:2
 msgid "Warning"
 msgstr "Avvertimento"
@@ -136,15 +131,15 @@ msgstr "Avvertimento"
 msgid ""
 "Please double check if you really want to do this since there is no way for "
 "FusionDirectory to get your data back."
-msgstr ""
-"Assicurati che vuoi davvero eseguire l'azione visto che poi sarà impossibile "
-"per FusionDirectory recuperare i tuoi dati."
+msgstr "Assicurati che vuoi davvero eseguire l'azione visto che poi sarà impossibile per FusionDirectory recuperare i tuoi dati."
 
 #: admin/roleManagement/remove.tpl.c:8
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr ""
-"Quindi - se sei sicuro - premi 'Rimuovi' per continuare oppure 'Annulla' per "
-"interrompere."
+msgstr "Quindi - se sei sicuro - premi 'Rimuovi' per continuare oppure 'Annulla' per interrompere."
+
+#: admin/roleManagement/roleGeneric.tpl.c:11
+msgid "Base"
+msgstr "Base"
 
 #: admin/roleManagement/roleGeneric.tpl.c:20
 msgid "Occupants"

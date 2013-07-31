@@ -1,33 +1,31 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 #  Valia V. Vaneeva <fattie@altlinux.ru>, 2004
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-09 19:17+0200\n"
-"PO-Revision-Date: 2013-03-24 15:00+0000\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
+"POT-Creation-Date: 2013-07-31 13:09+0200\n"
+"PO-Revision-Date: 2013-07-30 17:20+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Russian (http://www.transifex.com/projects/p/FusionDirectory/"
-"language/ru/)\n"
-"Language: ru\n"
+"Language-Team: Russian (http://www.transifex.com/projects/p/FusionDirectory/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: admin/systems/services/dns/class_DNS.inc:181
 #: admin/systems/services/dns/class_DNS.inc:186
 #: admin/systems/services/dns/class_DNS.inc:650
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:204
 #: admin/systems/services/dns/class_serviceDNS.inc:205
-#: admin/systems/services/dns/class_serviceDNS.inc:380
-#: admin/systems/services/dns/class_serviceDNS.inc:394
-#: admin/systems/services/dns/class_serviceDNS.inc:400
+#: admin/systems/services/dns/class_serviceDNS.inc:382
+#: admin/systems/services/dns/class_serviceDNS.inc:396
+#: admin/systems/services/dns/class_serviceDNS.inc:402
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:240
 msgid "Error"
 msgstr ""
@@ -48,11 +46,11 @@ msgid "Undefined zone name '%s'!"
 msgstr ""
 
 #: admin/systems/services/dns/class_DNS.inc:768
-#: admin/systems/services/dns/class_serviceDNS.inc:507
-#: admin/systems/services/dns/class_serviceDNS.inc:523
-#: admin/systems/services/dns/class_serviceDNS.inc:548
-#: admin/systems/services/dns/class_serviceDNS.inc:559
-#: admin/systems/services/dns/class_serviceDNS.inc:592
+#: admin/systems/services/dns/class_serviceDNS.inc:509
+#: admin/systems/services/dns/class_serviceDNS.inc:525
+#: admin/systems/services/dns/class_serviceDNS.inc:550
+#: admin/systems/services/dns/class_serviceDNS.inc:561
+#: admin/systems/services/dns/class_serviceDNS.inc:594
 msgid "LDAP error"
 msgstr "Ошибка LDAP"
 
@@ -72,14 +70,14 @@ msgstr "Удалить"
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:351
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:356
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:364
-#: admin/systems/services/dns/class_serviceDNS.inc:643
+#: admin/systems/services/dns/class_serviceDNS.inc:645
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:5
 msgid "Zone name"
 msgstr ""
 
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:360
-#: admin/systems/services/dns/class_serviceDNS.inc:314
-#: admin/systems/services/dns/class_serviceDNS.inc:644
+#: admin/systems/services/dns/class_serviceDNS.inc:315
+#: admin/systems/services/dns/class_serviceDNS.inc:646
 msgid "Reverse zone"
 msgstr ""
 
@@ -89,12 +87,12 @@ msgid "Only lowercase allowed"
 msgstr ""
 
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:368
-#: admin/systems/services/dns/class_serviceDNS.inc:649
+#: admin/systems/services/dns/class_serviceDNS.inc:651
 msgid "Serial"
 msgstr ""
 
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:372
-#: admin/systems/services/dns/class_serviceDNS.inc:650
+#: admin/systems/services/dns/class_serviceDNS.inc:652
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:38
 msgid "Refresh"
 msgstr ""
@@ -104,13 +102,13 @@ msgid "Time to life"
 msgstr ""
 
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:380
-#: admin/systems/services/dns/class_serviceDNS.inc:652
+#: admin/systems/services/dns/class_serviceDNS.inc:654
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:44
 msgid "Expire"
 msgstr ""
 
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:384
-#: admin/systems/services/dns/class_serviceDNS.inc:651
+#: admin/systems/services/dns/class_serviceDNS.inc:653
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:41
 msgid "Retry"
 msgstr "Повторить"
@@ -130,7 +128,7 @@ msgid ""
 msgstr ""
 
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:437
-#: admin/systems/services/dns/class_serviceDNS.inc:645
+#: admin/systems/services/dns/class_serviceDNS.inc:647
 msgid "Network class"
 msgstr ""
 
@@ -140,9 +138,9 @@ msgid "Add"
 msgstr "Добавить"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:51
-#: admin/systems/services/dns/class_serviceDNS.inc:602
-#: admin/systems/services/dns/class_serviceDNS.inc:631
-#: admin/systems/services/dns/class_serviceDNS.inc:632
+#: admin/systems/services/dns/class_serviceDNS.inc:604
+#: admin/systems/services/dns/class_serviceDNS.inc:633
+#: admin/systems/services/dns/class_serviceDNS.inc:634
 msgid "DNS service"
 msgstr ""
 
@@ -157,65 +155,65 @@ msgid ""
 "action, use the cancel button below."
 msgstr ""
 
-#: admin/systems/services/dns/class_serviceDNS.inc:315
-#: admin/systems/services/dns/class_serviceDNS.inc:653
+#: admin/systems/services/dns/class_serviceDNS.inc:316
+#: admin/systems/services/dns/class_serviceDNS.inc:655
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:47
 msgid "TTL"
 msgstr ""
 
-#: admin/systems/services/dns/class_serviceDNS.inc:316
+#: admin/systems/services/dns/class_serviceDNS.inc:317
 msgid "Class"
 msgstr ""
 
-#: admin/systems/services/dns/class_serviceDNS.inc:380
+#: admin/systems/services/dns/class_serviceDNS.inc:382
 #, php-format
 msgid "Cannot delete the selected zone. It is still in use by '%s'"
 msgstr ""
 
-#: admin/systems/services/dns/class_serviceDNS.inc:394
+#: admin/systems/services/dns/class_serviceDNS.inc:396
 #, php-format
 msgid "Was not able to contact argonaut server: %s"
 msgstr ""
 
-#: admin/systems/services/dns/class_serviceDNS.inc:400
+#: admin/systems/services/dns/class_serviceDNS.inc:402
 #, php-format
 msgid "Was not able to launch ldap2zone: %s"
 msgstr ""
 
-#: admin/systems/services/dns/class_serviceDNS.inc:632
+#: admin/systems/services/dns/class_serviceDNS.inc:634
 msgid "Services"
 msgstr "Сервисы"
 
-#: admin/systems/services/dns/class_serviceDNS.inc:639
+#: admin/systems/services/dns/class_serviceDNS.inc:641
 msgid "Start service"
 msgstr ""
 
-#: admin/systems/services/dns/class_serviceDNS.inc:640
+#: admin/systems/services/dns/class_serviceDNS.inc:642
 msgid "Stop service"
 msgstr ""
 
-#: admin/systems/services/dns/class_serviceDNS.inc:641
+#: admin/systems/services/dns/class_serviceDNS.inc:643
 msgid "Restart service"
 msgstr ""
 
-#: admin/systems/services/dns/class_serviceDNS.inc:646
+#: admin/systems/services/dns/class_serviceDNS.inc:648
 msgid "Zone entry editor"
 msgstr ""
 
-#: admin/systems/services/dns/class_serviceDNS.inc:647
+#: admin/systems/services/dns/class_serviceDNS.inc:649
 msgid "Primary dns server"
 msgstr ""
 
-#: admin/systems/services/dns/class_serviceDNS.inc:648
+#: admin/systems/services/dns/class_serviceDNS.inc:650
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:32
 msgid "Mail address"
 msgstr ""
 
-#: admin/systems/services/dns/class_serviceDNS.inc:654
+#: admin/systems/services/dns/class_serviceDNS.inc:656
 msgid "MX records"
 msgstr ""
 
-#: admin/systems/services/dns/class_serviceDNS.inc:655
+#: admin/systems/services/dns/class_serviceDNS.inc:657
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:17
 msgid "Zone records"
 msgstr ""

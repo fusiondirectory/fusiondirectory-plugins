@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Benoit Mortier <benoit.mortier@opensides.be>, 2005-2011
 # fusiondirectory <contact@fusiondirectory.org>, 2013
@@ -10,31 +10,28 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-09 19:17+0200\n"
-"PO-Revision-Date: 2013-04-18 10:30+0000\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
+"POT-Creation-Date: 2013-07-31 13:09+0200\n"
+"PO-Revision-Date: 2013-07-31 11:30+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory/"
-"language/fr/)\n"
-"Language: fr\n"
+"Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: config/fai/class_faiConfig.inc:28
-#, fuzzy
 msgid "FAI configuration"
-msgstr "Configuration"
+msgstr ""
 
 #: config/fai/class_faiConfig.inc:29
 msgid "FusionDirectory fai plugin configuration"
 msgstr ""
 
 #: config/fai/class_faiConfig.inc:42
-#, fuzzy
 msgid "LDAP tree"
-msgstr "Erreur LDAP"
+msgstr "Annuaire LDAP"
 
 #: config/fai/class_faiConfig.inc:45
 msgid "Fai base RDN"
@@ -118,8 +115,7 @@ msgstr "Branche verrouillée"
 #: admin/fai/class_faiManagement.inc:329
 #, php-format
 msgid "The following entries are locked, you can't remove them %s."
-msgstr ""
-"Les entrées suivantes %s sont vérouillées, vous ne pouvez pas les effacer."
+msgstr "Les entrées suivantes %s sont vérouillées, vous ne pouvez pas les effacer."
 
 #: admin/fai/class_faiManagement.inc:346
 msgid "FAI object"
@@ -140,9 +136,7 @@ msgstr "Avertissement"
 
 #: admin/fai/class_faiManagement.inc:496
 msgid "Release remove aborted because the release name check failed!"
-msgstr ""
-"Echec de l'effacement de la version, la vérification du nom de la version à "
-"échoué !"
+msgstr "Echec de l'effacement de la version, la vérification du nom de la version à échoué !"
 
 #: admin/fai/class_faiManagement.inc:573 admin/fai/class_faiManagement.inc:596
 msgid "Configuration"
@@ -171,7 +165,7 @@ msgstr "Continuer"
 #: admin/fai/class_faiScript.inc:608
 #: admin/fai/classSelect/selectClass-list.xml:28
 #: admin/fai/class_faiVariable.inc:399 admin/fai/class_faiTemplate.inc:513
-#: admin/fai/class_faiHook.inc:530 admin/fai/fai-list.xml:80
+#: admin/fai/class_faiHook.inc:532 admin/fai/fai-list.xml:80
 #: admin/fai/class_faiPartitionTable.inc:780
 #: admin/fai/class_faiScriptEntry.inc:147
 #: admin/fai/class_faiScriptEntry.inc:151
@@ -277,7 +271,7 @@ msgstr "Connexions FAI"
 #: admin/fai/class_faiTemplateEntry.inc:312 admin/fai/class_faiProfile.inc:463
 #: admin/fai/class_faiVariableEntry.inc:149 admin/fai/class_faiScript.inc:609
 #: admin/fai/class_faiVariable.inc:400 admin/fai/class_faiTemplate.inc:514
-#: admin/fai/class_faiHook.inc:531 admin/fai/class_faiPartitionTable.inc:781
+#: admin/fai/class_faiHook.inc:533 admin/fai/class_faiPartitionTable.inc:781
 #: admin/fai/class_faiScriptEntry.inc:197
 #: admin/fai/class_faiPartitionTableEntry.inc:455
 #: admin/fai/class_faiDiskEntry.inc:757 admin/fai/faiTemplateEntry.tpl.c:14
@@ -336,9 +330,7 @@ msgstr "Veuillez sélectionner au moins un paquet !"
 #: admin/fai/class_faiPackage.inc:538
 msgid ""
 "Please choose a valid release/section combination for your repository setup!"
-msgstr ""
-"Veuillez choisir une combinaison valable version/section pour la création de "
-"votre dépôt de paquets !"
+msgstr "Veuillez choisir une combinaison valable version/section pour la création de votre dépôt de paquets !"
 
 #: admin/fai/class_faiPackage.inc:571
 #: admin/fai/packageSelect/class_filterFAIPackages.inc:41
@@ -636,8 +628,7 @@ msgstr "Traitement en cours"
 
 #: admin/fai/class_FAI.inc:1080
 msgid "Could not create new release, the destination dn is already in use."
-msgstr ""
-"Impossible de créer une nouvelle version, le dn de destination existe déjà."
+msgstr "Impossible de créer une nouvelle version, le dn de destination existe déjà."
 
 #: admin/fai/class_FAI.inc:1093
 msgid "Error while fetching source dn - aborted!"
@@ -651,9 +642,7 @@ msgstr "Erreur Fatale"
 #, php-format
 msgid ""
 "Release creation failed due to ldap errors. Additional informations '%s'."
-msgstr ""
-"La création de la version à échoué du à des erreurs ldap. Information "
-"additionnelles '%s'."
+msgstr "La création de la version à échoué du à des erreurs ldap. Information additionnelles '%s'."
 
 #: admin/fai/classSelect/selectClass-list.xml:36 admin/fai/fai-list.xml:88
 #: admin/fai/faiScriptEntry.tpl.c:14
@@ -668,7 +657,7 @@ msgstr "Variable"
 msgid "FAI variable"
 msgstr "Variables FAI"
 
-#: admin/fai/class_faiVariable.inc:399 admin/fai/class_faiHook.inc:530
+#: admin/fai/class_faiVariable.inc:399 admin/fai/class_faiHook.inc:532
 #: admin/fai/class_faiPartitionTable.inc:780
 msgid "Read only"
 msgstr "Lecture seule"
@@ -689,13 +678,9 @@ msgstr "Ce paquet n'a pas d'options debconf."
 msgid ""
 "This debconf question is dynamically generated during package installation "
 "and requires choosing between specific options which cannot be presented "
-"here. The entered text needs to be one of the valid choices in order to take "
-"effect."
-msgstr ""
-"Cette question debconf est générée dynamiquement pendant l'installation du "
-"paquet et nécessite le choix entre différentes options qui ne peuvent pas "
-"être affichées ici. Le texte entré doit être un de ces choix pour être "
-"valide."
+"here. The entered text needs to be one of the valid choices in order to take"
+" effect."
+msgstr "Cette question debconf est générée dynamiquement pendant l'installation du paquet et nécessite le choix entre différentes options qui ne peuvent pas être affichées ici. Le texte entré doit être un de ces choix pour être valide."
 
 #: admin/fai/class_faiHook.inc:332 admin/fai/class_faiHook.inc:334
 #: admin/fai/fai-list.xml:190 admin/fai/faiVariable.tpl.c:23
@@ -707,11 +692,11 @@ msgstr "Editer"
 msgid "Delete"
 msgstr "Supprimer"
 
-#: admin/fai/class_faiHook.inc:522 admin/fai/fai-list.xml:128
+#: admin/fai/class_faiHook.inc:524 admin/fai/fai-list.xml:128
 msgid "Hook"
 msgstr "Connexions"
 
-#: admin/fai/class_faiHook.inc:523 admin/fai/class_faiHook.inc:527
+#: admin/fai/class_faiHook.inc:525 admin/fai/class_faiHook.inc:529
 msgid "FAI hook"
 msgstr "Connexions FAI"
 
@@ -746,9 +731,7 @@ msgstr "Supprimer"
 #, php-format
 msgid ""
 "The disk cannot be deleted while it is used in the '%s' disk definition!"
-msgstr ""
-"Ce disque ne peut pas être supprimé car il est utilisé par la définition de "
-"disque '%s' !"
+msgstr "Ce disque ne peut pas être supprimé car il est utilisé par la définition de disque '%s' !"
 
 #: admin/fai/class_faiPartitionTable.inc:772
 #: admin/fai/class_faiPartitionTable.inc:776
@@ -841,15 +824,11 @@ msgstr "partition %s point de montage"
 msgid ""
 "File system type 'swap' is already used, change file system type for "
 "partition %s."
-msgstr ""
-"Le système de fichier 'swap' est déjà utilisé, veuillez changer le type pour "
-"la partition %s."
+msgstr "Le système de fichier 'swap' est déjà utilisé, veuillez changer le type pour la partition %s."
 
 #: admin/fai/class_faiPartitionTableEntry.inc:398
 msgid "Please use 'swap' as mount point, if 'swap' is used as fs-type."
-msgstr ""
-"Veuillez utiliser 'swap' comme point de montage, si 'swap' est utilisé comme "
-"type de fichier."
+msgstr "Veuillez utiliser 'swap' comme point de montage, si 'swap' est utilisé comme type de fichier."
 
 #: admin/fai/class_faiPartitionTableEntry.inc:404
 #: admin/fai/class_faiPartitionTableEntry.inc:408
@@ -864,9 +843,7 @@ msgstr "taille de la partition %s"
 msgid ""
 "You have more than 3 primary partition table entries in your configuration, "
 "please check your configuration twice."
-msgstr ""
-"Vous avez plus de 3 partitions primaires dans votre configuration, veuillez "
-"vérifier votre configuration."
+msgstr "Vous avez plus de 3 partitions primaires dans votre configuration, veuillez vérifier votre configuration."
 
 #: admin/fai/class_faiPartitionTableEntry.inc:448
 #: admin/fai/class_faiDiskEntry.inc:750
@@ -913,9 +890,7 @@ msgstr "Indicateur des partitions"
 #, php-format
 msgid ""
 "The file encodig has changed from '%s' to '%s'. Do you really want to save?"
-msgstr ""
-"L'encodage du fichier à changé de '%s' vers '%s', voulez vous réellement le "
-"sauver ?"
+msgstr "L'encodage du fichier à changé de '%s' vers '%s', voulez vous réellement le sauver ?"
 
 #: admin/fai/class_faiDiskEntry.inc:273 admin/fai/faiDiskEntry.tpl.c:5
 #: admin/fai/faiPartitionTableEntry.tpl.c:5
@@ -955,17 +930,13 @@ msgstr "Préserver"
 msgid ""
 "You have more than four primary partition table entries in your "
 "configuration, please check your configuration twice."
-msgstr ""
-"Vous avez plus de 4 partitions primaires dans votre configuration, veuillez "
-"vérifier votre configuration."
+msgstr "Vous avez plus de 4 partitions primaires dans votre configuration, veuillez vérifier votre configuration."
 
 #: admin/fai/class_faiDiskEntry.inc:737
 msgid ""
 "You cannot have more than three primary partition while using logical "
 "partitions, please check your configuration twice."
-msgstr ""
-"Vous ne pouvez pas avoir plus de 3 partitions primaires quand vous utilisez "
-"des partitions logiques, veuillez vérifier votre configuration."
+msgstr "Vous ne pouvez pas avoir plus de 3 partitions primaires quand vous utilisez des partitions logiques, veuillez vérifier votre configuration."
 
 #: admin/fai/class_faiDiskEntry.inc:758
 msgid "Disk options"
@@ -1137,10 +1108,9 @@ msgid "Mirror mode"
 msgstr "Mode du miroir"
 
 #: admin/systems/services/repository/class_serviceRepository.inc:64
-msgid "Is this mirror an installation repository? Is its release a custom one?"
-msgstr ""
-"Est ce que ce miroir est dépôt d'installation ? est ce que sa release est "
-"personnalisée "
+msgid ""
+"Is this mirror an installation repository? Is its release a custom one?"
+msgstr "Est ce que ce miroir est dépôt d'installation ? est ce que sa release est personnalisée "
 
 #: admin/systems/services/repository/class_serviceRepository.inc:69
 msgid "Local mirror"
@@ -1397,9 +1367,7 @@ msgstr "Sélectionnez les objets que vous voulez copier :"
 
 #: admin/fai/faiTemplateEdit.tpl.c:2
 msgid "This FAI template is write protected. Editing may break it!"
-msgstr ""
-"Ce modèle FAI est protégé contre l'écriture. L'édition peut abîmer le "
-"fichier !"
+msgstr "Ce modèle FAI est protégé contre l'écriture. L'édition peut abîmer le fichier !"
 
 #: admin/fai/faiTemplateEdit.tpl.c:5
 msgid "Edit anyway"
@@ -1552,31 +1520,21 @@ msgstr "Choisissez une tâche FAI existante"
 
 #: admin/fai/remove.tpl.c:5
 msgid ""
-"This includes all account data, system access rules, imap settings, etc. for "
-"this user. Please double check if your really want to do this since there is "
-"no way for FusionDirectory to get your data back."
-msgstr ""
-"Cela inclut toutes les données des comptes, les droits d'accès, la "
-"configuration imap,etc. pour cet utilisateur. Veuillez vous assurez que vous "
-"voulez effectuez cette opération étant donné qu'il est impossible pour "
-"FusionDirectory de récupérer vos données."
+"This includes all account data, system access rules, imap settings, etc. for"
+" this user. Please double check if your really want to do this since there "
+"is no way for FusionDirectory to get your data back."
+msgstr "Cela inclut toutes les données des comptes, les droits d'accès, la configuration imap,etc. pour cet utilisateur. Veuillez vous assurez que vous voulez effectuez cette opération étant donné qu'il est impossible pour FusionDirectory de récupérer vos données."
 
 #: admin/fai/remove.tpl.c:8 admin/fai/remove_branch.tpl.c:8
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr ""
-"D'accord - si vous êtes sur - cliquez sur 'Supprimer' pour continuer ou sur "
-"'Annuler' pour abandonner."
+msgstr "D'accord - si vous êtes sur - cliquez sur 'Supprimer' pour continuer ou sur 'Annuler' pour abandonner."
 
 #: admin/fai/remove_branch.tpl.c:5
 msgid ""
 "This includes all account data, system access, etc. for this branch. Please "
 "double check if your really want to do this since there is no way for "
 "FusionDirectory to get your data back."
-msgstr ""
-"Cela inclut toutes les données des comptes, les droits d'accès, la "
-"configuration imap,etc. pour cette branche. Veuillez vous assurez que vous "
-"voulez effectuez cette opération étant donné qu'il est impossible pour "
-"FusionDirectory de récupérer vos données."
+msgstr "Cela inclut toutes les données des comptes, les droits d'accès, la configuration imap,etc. pour cette branche. Veuillez vous assurez que vous voulez effectuez cette opération étant donné qu'il est impossible pour FusionDirectory de récupérer vos données."
 
 #: admin/fai/faiProfileEntry.tpl.c:2
 msgid "List of FAI objects (Fully Automatic Installation)"
@@ -1590,9 +1548,7 @@ msgstr "Information"
 msgid ""
 "This menu allows you to select FAI class names and to add them to the "
 "currently edited profile."
-msgstr ""
-"Ce menu vous permet de sélectionner des classes FAI et de les ajouter au "
-"profile actuellement édité."
+msgstr "Ce menu vous permet de sélectionner des classes FAI et de les ajouter au profile actuellement édité."
 
 #: admin/fai/faiProfileEntry.tpl.c:11
 msgid "Filters"
@@ -1646,24 +1602,14 @@ msgid ""
 "classes are possible. Branch names should be alphanumeric, excluding the "
 "reserved names 'scripts', 'hooks', 'partitions', 'variables', 'templates' "
 "and 'fai'."
-msgstr ""
-"Vous allez maintenant créer un branche ou une branche verrouillée. Cette "
-"action copie la version actuelle dans un nouvelle version. Les branches "
-"peuvent être modifiées comme d'habitude. Les classes FAI des branches "
-"verrouillées ne peuvent pas être modifiées, seul des des classes "
-"supplémentaires sont possibles. Les noms de branches doivent être "
-"alphanumériques, a l'exception des mots réservés 'scripts', 'hooks', "
-"'partitions', 'variables', 'templates' et 'fai'."
+msgstr "Vous allez maintenant créer un branche ou une branche verrouillée. Cette action copie la version actuelle dans un nouvelle version. Les branches peuvent être modifiées comme d'habitude. Les classes FAI des branches verrouillées ne peuvent pas être modifiées, seul des des classes supplémentaires sont possibles. Les noms de branches doivent être alphanumériques, a l'exception des mots réservés 'scripts', 'hooks', 'partitions', 'variables', 'templates' et 'fai'."
 
 #: admin/fai/faiNewBranch.tpl.c:5
 msgid ""
 "Branches are created as subreleases of the currently selected branch. "
-"Creating a new branch named 1.0.2 in SARGE for example, will result in a new "
-"release called SARGE/1.0.2."
-msgstr ""
-"Les branches sont crées comme des sous versions de la branche sélectionnées. "
-"La création d'un nouvelle branche nommée 1.0.2 in SARGE par exemple, donnera "
-"comme résultat une nouvelle version appelée SARGE/1.0.2"
+"Creating a new branch named 1.0.2 in SARGE for example, will result in a new"
+" release called SARGE/1.0.2."
+msgstr "Les branches sont crées comme des sous versions de la branche sélectionnées. La création d'un nouvelle branche nommée 1.0.2 in SARGE par exemple, donnera comme résultat une nouvelle version appelée SARGE/1.0.2"
 
 #: admin/fai/faiNewBranch.tpl.c:8
 msgid "Please enter a name for the branch"
@@ -1676,19 +1622,15 @@ msgstr "Opération en cours"
 #: admin/fai/faiNewBranch.tpl.c:14
 msgid ""
 "As soon as the copy operation has finished, you can scroll down to end of "
-"the page and press the 'Continue' button to continue with the fai management "
-"dialog."
-msgstr ""
-"Aussitôt que l'opération de copie est finie, vous pouvez aller à la fin de "
-"la page et cliquer sur 'Continuer' pour continuer la configuration de fai."
+"the page and press the 'Continue' button to continue with the fai management"
+" dialog."
+msgstr "Aussitôt que l'opération de copie est finie, vous pouvez aller à la fin de la page et cliquer sur 'Continuer' pour continuer la configuration de fai."
 
 #: admin/fai/faiNewBranch.tpl.c:17
 msgid ""
 "Your browser doesn't support iframes, please use this link to perform the "
 "requested operation."
-msgstr ""
-"Votre navigateur ne supporte pas les iframes, veuillez utiliser ce lien pour "
-"effectuer l'opération demandée."
+msgstr "Votre navigateur ne supporte pas les iframes, veuillez utiliser ce lien pour effectuer l'opération demandée."
 
 #: admin/fai/faiNewBranch.tpl.c:20
 msgid "Perform requested operation."
@@ -1700,25 +1642,18 @@ msgstr "Démarrage de l'opération"
 
 #: admin/fai/askClassName.tpl.c:2
 msgid ""
-"Adding a new class to the FAI management, requires a class name. You have to "
-"specify a unique class name for unique types of FAI classes, while you can "
+"Adding a new class to the FAI management, requires a class name. You have to"
+" specify a unique class name for unique types of FAI classes, while you can "
 "use the same class name for different types of FAI classes. In the laste "
 "case, FAI will automatically enclose all these different class types to one "
 "unique class name."
-msgstr ""
-"Ajouter une classe à la gestion FAI nécessite un nom de classe. Vous devez "
-"spécifier un nom de classe unique pour les classe FAI de type unique, alors "
-"que vous pouvez utiliser le même nom pour des classes FAI de type différent. "
-"Dans le dernier cas, FAI incluera automatiquement toutes ces classes de "
-"différent type dans un nom de classe unique."
+msgstr "Ajouter une classe à la gestion FAI nécessite un nom de classe. Vous devez spécifier un nom de classe unique pour les classe FAI de type unique, alors que vous pouvez utiliser le même nom pour des classes FAI de type différent. Dans le dernier cas, FAI incluera automatiquement toutes ces classes de différent type dans un nom de classe unique."
 
 #: admin/fai/askClassName.tpl.c:5
 msgid ""
 "Please use one of the following methods to choose the name for the new FAI "
 "class."
-msgstr ""
-"Veuillez utiliser une des méthodes suivantes pour choisir le nom de la "
-"nouvelle classe FAI."
+msgstr "Veuillez utiliser une des méthodes suivantes pour choisir le nom de la nouvelle classe FAI."
 
 #: admin/fai/askClassName.tpl.c:8
 msgid "Enter FAI class name manually"
@@ -1731,6 +1666,3 @@ msgstr "Choisissez le nom de la classe FAI parmi les classes existantes"
 #: admin/fai/askClassName.tpl.c:20
 msgid "Choose class name"
 msgstr "Choisissez un nom de classe"
-
-#~ msgid "FAI software deployment"
-#~ msgstr "Déploiement avec FAI"
