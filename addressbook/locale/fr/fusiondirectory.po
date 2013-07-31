@@ -1,24 +1,20 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
-# Benoit Mortier <benoit.mortier@opensides.be>, 2005-2009,2011
-# fusiondirectory <contact@fusiondirectory.org>, 2012
-# ptitoliv <ptitoliv@ptitoliv.net>, 2012
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory\n"
+"Project-Id-Version: FusionDirectory-develop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-09 19:15+0200\n"
-"PO-Revision-Date: 2013-03-24 15:00+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory/"
-"language/fr/)\n"
-"Language: fr\n"
+"POT-Creation-Date: 2013-07-30 18:14+0200\n"
+"PO-Revision-Date: 2013-07-30 16:15+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: html/getvcard.php:39
@@ -41,9 +37,7 @@ msgstr "Erreur"
 #: addons/addressbook/class_addressbook.inc:198
 msgid ""
 "You need to set your personal phone number in order to perform direct dials."
-msgstr ""
-"Vous n'avez pas de numéro de téléphone personnel indiqué. Veuillez rectifier "
-"cela afin de pouvoir faire des appels directs."
+msgstr "Vous n'avez pas de numéro de téléphone personnel indiqué. Veuillez rectifier cela afin de pouvoir faire des appels directs."
 
 #: addons/addressbook/class_addressbook.inc:227
 #: addons/addressbook/class_addressbook.inc:798
@@ -120,7 +114,7 @@ msgstr "GSM"
 
 #: addons/addressbook/class_addressbook.inc:660
 msgid "Home phone"
-msgstr "Téléphone personnel"
+msgstr "Téléphone privé"
 
 #: addons/addressbook/class_addressbook.inc:660
 msgid "User ID"
@@ -167,9 +161,7 @@ msgstr "Adresse de messagerie"
 #: addons/addressbook/class_addressbook.inc:747
 msgid ""
 "Cannot create a unique DN for your entry. Please fill more formular fields."
-msgstr ""
-"Impossible de créer un DN unique pour cette entrée. Veuillez remplir plus de "
-"champs."
+msgstr "Impossible de créer un DN unique pour cette entrée. Veuillez remplir plus de champs."
 
 #: addons/addressbook/class_addressbook.inc:850
 #: addons/addressbook/class_addressbook.inc:855 addons/addressbook/main.inc:43
@@ -182,7 +174,7 @@ msgstr "Le carnet d'adresse montre les utilisateurs internes et externes"
 
 #: addons/addressbook/class_addressbook.inc:858
 msgid "Surname"
-msgstr "Nom de famille"
+msgstr "Nom"
 
 #: addons/addressbook/class_addressbook.inc:860
 msgid "Telefon number"
@@ -247,7 +239,7 @@ msgstr "Adresse postale personnelle"
 
 #: addons/addressbook/class_addressbook.inc:876
 msgid "Common name"
-msgstr "Nom complet"
+msgstr "Nom commun"
 
 #: addons/addressbook/address_info.tpl.c:2
 #: addons/addressbook/address_edit.tpl.c:5
@@ -312,15 +304,9 @@ msgstr "Information"
 
 #: addons/addressbook/contents.tpl.c:23
 msgid ""
-"The telephone list plugin provides list and search facilities for the people "
-"in your site. You may want to specify the asterisk [*] like in \n"
-"'Fu*ry' to find 'FusionDirectory'. Use the filters below to narrow down your "
-"search."
+"The telephone list plugin provides list and search facilities for the people in your site. You may want to specify the asterisk [*] like in\n"
+"'Fu*ry' to find 'FusionDirectory'. Use the filters below to narrow down your search."
 msgstr ""
-"L'extension gérant les listes de numéros de téléphone permet de les mettre à "
-"disposition de vos utilisateurs. Vous pouvez utiliser les [*] dans vos "
-"recherches, comme dans 'Fu*ry' pour trouver 'FusionDirectory'. Utilisez les "
-"filtres ci dessous pour réduire l'étendue de votre recherche."
 
 #: addons/addressbook/contents.tpl.c:26
 msgid "Actions"
@@ -352,8 +338,7 @@ msgstr "Afficher les entrées de l'organisation"
 
 #: addons/addressbook/contents.tpl.c:47
 msgid "Select to see users in addressbook"
-msgstr ""
-"Sélectionner pour afficher les utilisateurs présent dans le carnet d'adresse"
+msgstr "Sélectionner pour afficher les utilisateurs présent dans le carnet d'adresse"
 
 #: addons/addressbook/contents.tpl.c:50
 msgid "Show addressbook entries"
@@ -406,16 +391,10 @@ msgstr "Avertissement"
 #: addons/addressbook/remove.tpl.c:5
 msgid ""
 "This includes all addressbook data in this entry. Please double check if "
-"your really want to do this since there is no way for FusionDirectory to get "
-"your data back."
-msgstr ""
-"Ceci inclut toutes les données du carnet d'adresses situées dans cette "
-"entrée. Veuillez vérifier si vous voulez réaliser cette opération, toutes "
-"les données seront définitivement perdues, il n'y a pas de moyen pour "
-"FusionDirectory de les récupérer."
+"your really want to do this since there is no way for FusionDirectory to get"
+" your data back."
+msgstr "Ceci inclut toutes les données du carnet d'adresses situées dans cette entrée. Veuillez vérifier si vous voulez réaliser cette opération, toutes les données seront définitivement perdues, il n'y a pas de moyen pour FusionDirectory de les récupérer."
 
 #: addons/addressbook/remove.tpl.c:8
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr ""
-"D'accord - si vous êtes sur - cliquez sur 'Supprimer' pour continuer ou sur "
-"'Annuler' pour abandonner."
+msgstr "D'accord - si vous êtes sur - cliquez sur 'Supprimer' pour continuer ou sur 'Annuler' pour abandonner."

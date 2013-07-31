@@ -1,22 +1,20 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
-# pavelb <pavel.borecki@gmail.com>, 2012
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory\n"
+"Project-Id-Version: FusionDirectory-develop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-09 19:19+0200\n"
-"PO-Revision-Date: 2013-03-24 15:00+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/"
-"FusionDirectory/language/cs_CZ/)\n"
-"Language: cs_CZ\n"
+"POT-Creation-Date: 2013-07-30 18:14+0200\n"
+"PO-Revision-Date: 2013-07-30 16:52+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/FusionDirectory/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: cs_CZ\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
 #: admin/roleManagement/class_roleManagement.inc:36
@@ -36,14 +34,14 @@ msgstr "seznam rolí"
 #: admin/roleManagement/class_roleGeneric.inc:32
 #: admin/roleManagement/class_roleGeneric.inc:37
 msgid "Role"
-msgstr "úloha"
+msgstr "role"
 
 #: admin/roleManagement/role-list.xml:41
 #: admin/roleManagement/class_roleGeneric.inc:63
 #: admin/roleManagement/role-filter.tpl.c:5
 #: admin/roleManagement/roleGeneric.tpl.c:5
 msgid "Name"
-msgstr "jméno"
+msgstr "název"
 
 #: admin/roleManagement/role-list.xml:49
 #: admin/roleManagement/class_roleGeneric.inc:64
@@ -100,7 +98,7 @@ msgstr "telefonní číslo"
 #: admin/roleManagement/class_roleGeneric.inc:67
 #: admin/roleManagement/roleGeneric.tpl.c:17
 msgid "Fax number"
-msgstr "faxové číslo"
+msgstr "číslo faxu"
 
 #: admin/roleManagement/class_roleGeneric.inc:68
 msgid "Users"
@@ -122,11 +120,6 @@ msgstr "název úlohy"
 msgid "Please enter the new object role name"
 msgstr "zadejte prosím název objektu nové role"
 
-#: admin/roleManagement/role-list.tpl.c:2
-#: admin/roleManagement/roleGeneric.tpl.c:11
-msgid "Base"
-msgstr "základ"
-
 #: admin/roleManagement/remove.tpl.c:2
 msgid "Warning"
 msgstr "varování"
@@ -135,15 +128,15 @@ msgstr "varování"
 msgid ""
 "Please double check if you really want to do this since there is no way for "
 "FusionDirectory to get your data back."
-msgstr ""
-"Prosím dobře si rozmyslete, zda to opravdu chcete udělat, protože pak už "
-"nebude možné vzít provedené změny zpět."
+msgstr "Týká se veškerých informací o této položce v adresáři. Prosím velmi dobře si rozmyslete, zda to opravdu chcete udělat, protože provedené změny už ve FusionDirectory nepůjde vzít nijak jednoduše zpět (nanejvýš složitě ze záloh, pokud existují a obsahují potřebná data)!"
 
 #: admin/roleManagement/remove.tpl.c:8
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr ""
-"Tedy – pokud si jste jist(a) – klikněte na „smazat“. V opačném případě celou "
-"akci zrušte kliknutím na „zrušit“."
+msgstr "Tedy – pokud jste si jist(a), stiskněte 'smazat'. V opačném případě operaci zrušte pomocí 'zrušit'."
+
+#: admin/roleManagement/roleGeneric.tpl.c:11
+msgid "Base"
+msgstr "základ"
 
 #: admin/roleManagement/roleGeneric.tpl.c:20
 msgid "Occupants"

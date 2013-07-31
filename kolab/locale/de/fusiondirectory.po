@@ -1,22 +1,20 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
-#  Stefan Koehler <stefan.koehler@GONICUS.de>, 2005
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory\n"
+"Project-Id-Version: FusionDirectory-develop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-09 19:18+0200\n"
-"PO-Revision-Date: 2013-03-24 14:46+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: German (http://www.transifex.com/projects/p/FusionDirectory/"
-"language/de/)\n"
-"Language: de\n"
+"POT-Creation-Date: 2013-07-30 18:14+0200\n"
+"PO-Revision-Date: 2013-07-30 16:44+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: German (http://www.transifex.com/projects/p/FusionDirectory/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: personal/kolab/class_kolabAccount.inc:82
@@ -27,83 +25,83 @@ msgstr "Kolab"
 msgid "Kolab account settings"
 msgstr "Kolab Konto-Einstellungen"
 
-#: personal/kolab/class_kolabAccount.inc:101
+#: personal/kolab/class_kolabAccount.inc:100
 msgid "Kolab account"
 msgstr "Kolab-Konto"
 
-#: personal/kolab/class_kolabAccount.inc:105
+#: personal/kolab/class_kolabAccount.inc:104
 msgid "Delegations"
 msgstr "Stellvertreter"
 
-#: personal/kolab/class_kolabAccount.inc:113
+#: personal/kolab/class_kolabAccount.inc:112
 msgid "Mail size"
 msgstr "Mailgröße"
 
-#: personal/kolab/class_kolabAccount.inc:116
+#: personal/kolab/class_kolabAccount.inc:115
 msgid "No mail size restriction for this account"
 msgstr "Keine Beschränkung der Mailgröße für dieses Konto"
 
-#: personal/kolab/class_kolabAccount.inc:123
+#: personal/kolab/class_kolabAccount.inc:122
 msgid "Free Busy information"
 msgstr "Frei/Belegt-Information"
 
-#: personal/kolab/class_kolabAccount.inc:126
+#: personal/kolab/class_kolabAccount.inc:125
 msgid "URL"
 msgstr "URL"
 
-#: personal/kolab/class_kolabAccount.inc:131
+#: personal/kolab/class_kolabAccount.inc:130
 msgid "Future"
 msgstr "Zukunft"
 
-#: personal/kolab/class_kolabAccount.inc:131
+#: personal/kolab/class_kolabAccount.inc:130
 msgid "days"
 msgstr "Tage"
 
-#: personal/kolab/class_kolabAccount.inc:139
-#: personal/kolab/class_kolabAccount.inc:142
-#: personal/kolab/class_kolabAccount.inc:150
-#: personal/kolab/class_kolabAccount.inc:160
+#: personal/kolab/class_kolabAccount.inc:138
+#: personal/kolab/class_kolabAccount.inc:141
+#: personal/kolab/class_kolabAccount.inc:149
+#: personal/kolab/class_kolabAccount.inc:159
 msgid "Invitation policy"
 msgstr "Einladungs-Richtlinie"
 
-#: personal/kolab/class_kolabAccount.inc:145
+#: personal/kolab/class_kolabAccount.inc:144
 msgid "Default policy"
 msgstr ""
 
-#: personal/kolab/class_kolabAccount.inc:145
+#: personal/kolab/class_kolabAccount.inc:144
 msgid "Default invitation policy"
 msgstr ""
 
-#: personal/kolab/class_kolabAccount.inc:147
-#: personal/kolab/class_kolabAccount.inc:156
+#: personal/kolab/class_kolabAccount.inc:146
+#: personal/kolab/class_kolabAccount.inc:155
 msgid "Manual"
 msgstr "Manuell"
 
-#: personal/kolab/class_kolabAccount.inc:147
-#: personal/kolab/class_kolabAccount.inc:156
+#: personal/kolab/class_kolabAccount.inc:146
+#: personal/kolab/class_kolabAccount.inc:155
 msgid "Always accept"
 msgstr "Immer annehmen"
 
-#: personal/kolab/class_kolabAccount.inc:147
-#: personal/kolab/class_kolabAccount.inc:156
+#: personal/kolab/class_kolabAccount.inc:146
+#: personal/kolab/class_kolabAccount.inc:155
 msgid "Always reject"
 msgstr "Immer ablehnen"
 
-#: personal/kolab/class_kolabAccount.inc:147
-#: personal/kolab/class_kolabAccount.inc:156
+#: personal/kolab/class_kolabAccount.inc:146
+#: personal/kolab/class_kolabAccount.inc:155
 msgid "Reject if conflicts"
 msgstr "Im Konfliktfall ablehnen"
 
-#: personal/kolab/class_kolabAccount.inc:147
-#: personal/kolab/class_kolabAccount.inc:156
+#: personal/kolab/class_kolabAccount.inc:146
+#: personal/kolab/class_kolabAccount.inc:155
 msgid "Manual if conflicts"
 msgstr "Im Konfliktfall manuell bearbeiten"
 
-#: personal/kolab/class_kolabAccount.inc:153
+#: personal/kolab/class_kolabAccount.inc:152
 msgid "mail address"
 msgstr ""
 
-#: personal/kolab/class_kolabAccount.inc:154
+#: personal/kolab/class_kolabAccount.inc:153
 msgid "policy for this mail address"
 msgstr ""
 
@@ -159,13 +157,12 @@ msgstr "Werbung"
 #: personal/mail/kolab/class_mail-methods-kolab.inc:167
 #: personal/mail/kolab/class_mail-methods-kolab.inc:168
 msgid "Default"
-msgstr "Standard"
+msgstr "Vorgabe"
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:183
-msgid "Mail settings cannot be removed while there are delegations configured!"
-msgstr ""
-"Die Mail-Einstellungen können nicht entfernt werden solange Vertretungen "
-"vorhanden sind!"
+msgid ""
+"Mail settings cannot be removed while there are delegations configured!"
+msgstr "Die Mail-Einstellungen können nicht entfernt werden solange Vertretungen vorhanden sind!"
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:281
 msgid "Waiting for kolab to remove mail properties..."
@@ -306,8 +303,7 @@ msgstr "Frei/Belegt-Einstellungen"
 #: admin/systems/services/kolab/class_serviceKolab.inc:159
 #: admin/systems/services/kolab/class_serviceKolab.inc:160
 msgid "Allow unauthenticated downloading of Free/Busy information"
-msgstr ""
-"Erlaube nicht-authentifiziertes Herunterladen von Frei/Belegt-Informationen"
+msgstr "Erlaube nicht-authentifiziertes Herunterladen von Frei/Belegt-Informationen"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:164
 msgid "Number of days to include when creating free/busy lists"
@@ -362,10 +358,3 @@ msgstr "Hostname"
 #: admin/systems/services/kolab/class_serviceKolab.inc:295
 msgid "LDAP error"
 msgstr "LDAP-Fehler"
-
-#~ msgid ""
-#~ "The kolab account is currently disabled. It's features can be adjusted if "
-#~ "you add a mail account."
-#~ msgstr ""
-#~ "Das Kolab-Konto ist aktuell deaktiviert. Die Einstellungen können "
-#~ "angepasst werden, wenn Sie ein Postfach hinzufügen."

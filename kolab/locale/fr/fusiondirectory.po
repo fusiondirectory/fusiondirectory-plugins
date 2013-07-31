@@ -1,25 +1,20 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
-# Benoit Mortier <benoit.mortier@opensides.be>, 2005-2009
-# fusiondirectory <contact@fusiondirectory.org>, 2013
-# fusiondirectory <contact@fusiondirectory.org>, 2012
-# fusiondirectory <contact@fusiondirectory.org>, 2012
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory\n"
+"Project-Id-Version: FusionDirectory-develop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-09 19:18+0200\n"
-"PO-Revision-Date: 2013-04-18 09:30+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory/"
-"language/fr/)\n"
-"Language: fr\n"
+"POT-Creation-Date: 2013-07-30 18:14+0200\n"
+"PO-Revision-Date: 2013-07-30 16:44+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: personal/kolab/class_kolabAccount.inc:82
@@ -30,83 +25,83 @@ msgstr "Kolab"
 msgid "Kolab account settings"
 msgstr "Paramètres du compte Kolab"
 
-#: personal/kolab/class_kolabAccount.inc:101
+#: personal/kolab/class_kolabAccount.inc:100
 msgid "Kolab account"
 msgstr "Compte Kolab"
 
-#: personal/kolab/class_kolabAccount.inc:105
+#: personal/kolab/class_kolabAccount.inc:104
 msgid "Delegations"
 msgstr "Délégations"
 
-#: personal/kolab/class_kolabAccount.inc:113
+#: personal/kolab/class_kolabAccount.inc:112
 msgid "Mail size"
 msgstr "Quota de messagerie"
 
-#: personal/kolab/class_kolabAccount.inc:116
+#: personal/kolab/class_kolabAccount.inc:115
 msgid "No mail size restriction for this account"
 msgstr "Pas de taille maximale pour l'envoi de messages"
 
-#: personal/kolab/class_kolabAccount.inc:123
+#: personal/kolab/class_kolabAccount.inc:122
 msgid "Free Busy information"
 msgstr "Information de disponibilité"
 
-#: personal/kolab/class_kolabAccount.inc:126
+#: personal/kolab/class_kolabAccount.inc:125
 msgid "URL"
 msgstr "URL"
 
-#: personal/kolab/class_kolabAccount.inc:131
+#: personal/kolab/class_kolabAccount.inc:130
 msgid "Future"
 msgstr "Futur"
 
-#: personal/kolab/class_kolabAccount.inc:131
+#: personal/kolab/class_kolabAccount.inc:130
 msgid "days"
 msgstr "jours"
 
-#: personal/kolab/class_kolabAccount.inc:139
-#: personal/kolab/class_kolabAccount.inc:142
-#: personal/kolab/class_kolabAccount.inc:150
-#: personal/kolab/class_kolabAccount.inc:160
+#: personal/kolab/class_kolabAccount.inc:138
+#: personal/kolab/class_kolabAccount.inc:141
+#: personal/kolab/class_kolabAccount.inc:149
+#: personal/kolab/class_kolabAccount.inc:159
 msgid "Invitation policy"
 msgstr "Politique d'invitation"
 
-#: personal/kolab/class_kolabAccount.inc:145
+#: personal/kolab/class_kolabAccount.inc:144
 msgid "Default policy"
 msgstr "Politique par défaut"
 
-#: personal/kolab/class_kolabAccount.inc:145
+#: personal/kolab/class_kolabAccount.inc:144
 msgid "Default invitation policy"
 msgstr "Politique par défaut pour les invitations"
 
-#: personal/kolab/class_kolabAccount.inc:147
-#: personal/kolab/class_kolabAccount.inc:156
+#: personal/kolab/class_kolabAccount.inc:146
+#: personal/kolab/class_kolabAccount.inc:155
 msgid "Manual"
 msgstr "Manuel"
 
-#: personal/kolab/class_kolabAccount.inc:147
-#: personal/kolab/class_kolabAccount.inc:156
+#: personal/kolab/class_kolabAccount.inc:146
+#: personal/kolab/class_kolabAccount.inc:155
 msgid "Always accept"
 msgstr "Toujours accepter"
 
-#: personal/kolab/class_kolabAccount.inc:147
-#: personal/kolab/class_kolabAccount.inc:156
+#: personal/kolab/class_kolabAccount.inc:146
+#: personal/kolab/class_kolabAccount.inc:155
 msgid "Always reject"
 msgstr "Toujours rejeter"
 
-#: personal/kolab/class_kolabAccount.inc:147
-#: personal/kolab/class_kolabAccount.inc:156
+#: personal/kolab/class_kolabAccount.inc:146
+#: personal/kolab/class_kolabAccount.inc:155
 msgid "Reject if conflicts"
 msgstr "Rejeter si il y a conflit"
 
-#: personal/kolab/class_kolabAccount.inc:147
-#: personal/kolab/class_kolabAccount.inc:156
+#: personal/kolab/class_kolabAccount.inc:146
+#: personal/kolab/class_kolabAccount.inc:155
 msgid "Manual if conflicts"
 msgstr "Manuel si il y a conflit"
 
-#: personal/kolab/class_kolabAccount.inc:153
+#: personal/kolab/class_kolabAccount.inc:152
 msgid "mail address"
 msgstr "Adresse de messagerie"
 
-#: personal/kolab/class_kolabAccount.inc:154
+#: personal/kolab/class_kolabAccount.inc:153
 msgid "policy for this mail address"
 msgstr "Politique pour mon adresse de messagerie"
 
@@ -165,15 +160,13 @@ msgid "Default"
 msgstr "Défaut"
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:183
-msgid "Mail settings cannot be removed while there are delegations configured!"
-msgstr ""
-"Les paramètres de la messagerie de peuvent pas être supprimé quand des "
-"délégations sont actives !"
+msgid ""
+"Mail settings cannot be removed while there are delegations configured!"
+msgstr "Les paramètres de la messagerie de peuvent pas être supprimé quand des délégations sont actives !"
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:281
 msgid "Waiting for kolab to remove mail properties..."
-msgstr ""
-"En attente de kolab pour la suppression des paramètres de messagerie..."
+msgstr "En attente de kolab pour la suppression des paramètres de messagerie..."
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:284
 msgid "Please remove the mail settings first!"
@@ -200,11 +193,11 @@ msgstr "Service de messagerie Kolab"
 #: admin/systems/services/kolab/class_serviceKolab.inc:68
 #: admin/systems/services/kolab/class_serviceKolab.inc:106
 msgid "Services"
-msgstr "Services"
+msgstr "Service"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:84
 msgid "Generic"
-msgstr "Informations"
+msgstr "Générique"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:90
 msgid "Postfix mydomain"
@@ -276,9 +269,7 @@ msgstr "Service d'option de disponibilité par HTTP (ancien)"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:130
 msgid "FTP FreeBusy service (legacy, not interoperable with Kolab2 FreeBusy)"
-msgstr ""
-"Service des options de disponibilités par FTP (ancien, pas compatible avec "
-"les options de disponibilités de Kolab2)"
+msgstr "Service des options de disponibilités par FTP (ancien, pas compatible avec les options de disponibilités de Kolab2)"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:134
 msgid "HTTP FreeBusy service (legacy)"
@@ -303,9 +294,7 @@ msgstr "Limite du quota avant de prévenir les utilisateurs (%)"
 #: admin/systems/services/kolab/class_serviceKolab.inc:148
 #, php-format
 msgid "Warn users when using more than X% of their mail quota"
-msgstr ""
-"Avertissez les utilisateurs quand ils utilisent plus de X% de leur quota de "
-"messagerie"
+msgstr "Avertissez les utilisateurs quand ils utilisent plus de X% de leur quota de messagerie"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:156
 msgid "Free/Busy settings"
@@ -314,20 +303,15 @@ msgstr "Préférences des options de disponibilités"
 #: admin/systems/services/kolab/class_serviceKolab.inc:159
 #: admin/systems/services/kolab/class_serviceKolab.inc:160
 msgid "Allow unauthenticated downloading of Free/Busy information"
-msgstr ""
-"Permettre le téléchargement des informations de disponibilités de manière "
-"anonyme"
+msgstr "Permettre le téléchargement des informations de disponibilités de manière anonyme"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:164
 msgid "Number of days to include when creating free/busy lists"
-msgstr ""
-"Nombre de jours à inclure lors de la création d'une liste de disponibilités"
+msgstr "Nombre de jours à inclure lors de la création d'une liste de disponibilités"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:165
 msgid "Include data from X days in the past when creating free/busy lists"
-msgstr ""
-"Nombre de jours dans le passé à inclure lors de la création d'une liste de "
-"disponibilités"
+msgstr "Nombre de jours dans le passé à inclure lors de la création d'une liste de disponibilités"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:173
 msgid "SMTP privileged networks"
@@ -339,9 +323,7 @@ msgstr "Machines/Réseaux qui peuvent relayer des messages"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:177
 msgid "Hosts/networks allowed to relay (multiple values comma-seperated)"
-msgstr ""
-"Machines/Réseaux qui peuvent relayer des messages (plusieurs valeurs  séparé "
-"par des virgules)"
+msgstr "Machines/Réseaux qui peuvent relayer des messages (plusieurs valeurs  séparé par des virgules)"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:185
 msgid "SMTP smarthost/relayhost"
@@ -354,8 +336,7 @@ msgstr "Accepter le courrier électronique venant d'internet"
 #: admin/systems/services/kolab/class_serviceKolab.inc:196
 #: admin/systems/services/kolab/class_serviceKolab.inc:197
 msgid "Accept mail from other domains over non-authenticated SMTP"
-msgstr ""
-"Accepter les messages sur du SMTP non authentifié venant d'autre domaines"
+msgstr "Accepter les messages sur du SMTP non authentifié venant d'autre domaines"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:271
 msgid "Internal error"
@@ -377,10 +358,3 @@ msgstr "Nom de l'hôte"
 #: admin/systems/services/kolab/class_serviceKolab.inc:295
 msgid "LDAP error"
 msgstr "Erreur LDAP"
-
-#~ msgid ""
-#~ "The kolab account is currently disabled. It's features can be adjusted if "
-#~ "you add a mail account."
-#~ msgstr ""
-#~ "L'extension Kolab est désactivée. Ces paramètres peuvent être ajustés si "
-#~ "vous ajoutez un compte de messagerie."

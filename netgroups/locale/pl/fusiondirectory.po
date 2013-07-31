@@ -1,23 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory\n"
+"Project-Id-Version: FusionDirectory-develop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-09 19:18+0200\n"
-"PO-Revision-Date: 2013-03-24 15:00+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Polish (http://www.transifex.com/projects/p/FusionDirectory/"
-"language/pl/)\n"
-"Language: pl\n"
+"POT-Creation-Date: 2013-07-30 18:14+0200\n"
+"PO-Revision-Date: 2013-07-30 16:47+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Polish (http://www.transifex.com/projects/p/FusionDirectory/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2);\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: config/netgroups/class_netgroupConfig.inc:28
 msgid "Netgroup configuration"
@@ -28,9 +26,8 @@ msgid "FusionDirectory netgroup plugin configuration"
 msgstr ""
 
 #: config/netgroups/class_netgroupConfig.inc:42
-#, fuzzy
 msgid "LDAP tree"
-msgstr "błąd LDAP"
+msgstr ""
 
 #: config/netgroups/class_netgroupConfig.inc:45
 msgid "Netgroup RDN"
@@ -40,23 +37,23 @@ msgstr ""
 msgid "Branch in which netgroups will be stored"
 msgstr ""
 
-#: personal/netgroups/class_netgroupMembership.inc:85
+#: personal/netgroups/class_netgroupMembership.inc:71
 #: admin/systems/netgroups/class_netgroupSystem.inc:26
 #: admin/netgroups/memberNisnetgroupSelect/memberNisnetgroup-list.xml:14
 #: admin/netgroups/class_netgroup.inc:55
 msgid "NIS Netgroup"
 msgstr ""
 
-#: personal/netgroups/class_netgroupMembership.inc:86
+#: personal/netgroups/class_netgroupMembership.inc:72
 #: admin/systems/netgroups/class_netgroupSystem.inc:27
 msgid "NIS Netgroup member"
 msgstr ""
 
-#: personal/netgroups/class_netgroupMembership.inc:103
+#: personal/netgroups/class_netgroupMembership.inc:88
 msgid "Member of the following NIS Netgroups  "
 msgstr ""
 
-#: personal/netgroups/class_netgroupMembership.inc:106
+#: personal/netgroups/class_netgroupMembership.inc:91
 msgid "NIS netgroup membership"
 msgstr ""
 
@@ -91,9 +88,8 @@ msgid "Generic NIS Netgroup settings"
 msgstr ""
 
 #: admin/netgroups/class_netgroup.inc:70
-#, fuzzy
 msgid "Informations"
-msgstr "Stacja robocza"
+msgstr ""
 
 #: admin/netgroups/class_netgroup.inc:73
 #: admin/netgroups/memberNisnetgroupSelect/memberNisnetgroup-filter.tpl.c:5
@@ -132,33 +128,3 @@ msgstr "Filtr"
 #: admin/netgroups/memberNisnetgroupSelect/memberNisnetgroup-list.tpl.c:2
 msgid "Base"
 msgstr "Kontener"
-
-#~ msgid "User"
-#~ msgstr "Użytkownik"
-
-#~ msgid "Login"
-#~ msgstr "Login"
-
-#~ msgid "Surname"
-#~ msgstr "Nazwisko"
-
-#~ msgid "Error"
-#~ msgstr "Błąd"
-
-#~ msgid "Server"
-#~ msgstr "Serwer"
-
-#~ msgid "Properties"
-#~ msgstr "Właściwości"
-
-#~ msgid "Actions"
-#~ msgstr "Akcje"
-
-#~ msgid "Create"
-#~ msgstr "Utwórz"
-
-#~ msgid "Edit"
-#~ msgstr "Edytuj"
-
-#~ msgid "Remove"
-#~ msgstr "Usuń"

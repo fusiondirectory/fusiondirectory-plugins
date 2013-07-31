@@ -1,24 +1,20 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
-# Benoit Mortier <benoit.mortier@opensides.be>, 2005-2008,2010-2011
-# fusiondirectory <contact@fusiondirectory.org>, 2012
-# fusiondirectory <contact@fusiondirectory.org>, 2012
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory\n"
+"Project-Id-Version: FusionDirectory-develop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-09 19:17+0200\n"
-"PO-Revision-Date: 2013-03-24 15:00+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory/"
-"language/fr/)\n"
-"Language: fr\n"
+"POT-Creation-Date: 2013-07-30 18:14+0200\n"
+"PO-Revision-Date: 2013-07-30 16:27+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: config/fax/class_faxConfig.inc:28
@@ -30,14 +26,12 @@ msgid "FusionDirectory fax plugin configuration"
 msgstr ""
 
 #: config/fax/class_faxConfig.inc:42
-#, fuzzy
 msgid "LDAP tree"
-msgstr "Erreur LDAP"
+msgstr "Annuaire LDAP"
 
 #: config/fax/class_faxConfig.inc:45
-#, fuzzy
 msgid "Fax RDN"
-msgstr "ID Fax"
+msgstr ""
 
 #: config/fax/class_faxConfig.inc:45
 msgid "Branch in which fax blocklists will be stored"
@@ -74,9 +68,7 @@ msgstr "La lecture de l'image à échoué"
 
 #: personal/faxaccount/main.inc:126
 msgid "Click the 'Edit' button below to change informations in this dialog"
-msgstr ""
-"Cliquez sur le bouton 'Editer' ci-dessous pour changer les informations dans "
-"cette boite de dialogue"
+msgstr "Cliquez sur le bouton 'Editer' ci-dessous pour changer les informations dans cette boite de dialogue"
 
 #: personal/faxaccount/main.inc:135
 msgid "FAX settings"
@@ -120,15 +112,13 @@ msgstr "Erreur LDAP"
 
 #: personal/faxaccount/class_gofaxAccount.inc:627
 #: personal/faxaccount/class_gofaxAccount.inc:631
-#: personal/faxaccount/class_gofaxAccount.inc:806
+#: personal/faxaccount/class_gofaxAccount.inc:805
 msgid "Fax number"
 msgstr "Numéro de fax"
 
 #: personal/faxaccount/class_gofaxAccount.inc:638
 msgid "Mail delivery is requested without target address!"
-msgstr ""
-"L'envoi d'un message à été demandé alors que l'adresse du destinataire n'est "
-"pas défini !"
+msgstr "L'envoi d'un message à été demandé alors que l'adresse du destinataire n'est pas défini !"
 
 #: personal/faxaccount/class_gofaxAccount.inc:640
 msgid "Mail address"
@@ -153,40 +143,40 @@ msgstr "Fax"
 msgid "Fax account settings"
 msgstr "Paramètres du compte FAX"
 
-#: personal/faxaccount/class_gofaxAccount.inc:807
+#: personal/faxaccount/class_gofaxAccount.inc:806
 #: personal/faxaccount/generic.tpl.c:11
 msgid "Language"
 msgstr "Langue"
 
-#: personal/faxaccount/class_gofaxAccount.inc:808
+#: personal/faxaccount/class_gofaxAccount.inc:807
 #: personal/faxaccount/generic.tpl.c:17
 msgid "Delivery format"
 msgstr "Format de distribution"
 
-#: personal/faxaccount/class_gofaxAccount.inc:809
+#: personal/faxaccount/class_gofaxAccount.inc:808
 msgid "Alternate fax number"
 msgstr "Numéros de fax alternatif"
 
-#: personal/faxaccount/class_gofaxAccount.inc:810
+#: personal/faxaccount/class_gofaxAccount.inc:809
 msgid "Enable/Disable fax"
 msgstr "Activer/désactiver le fax"
 
-#: personal/faxaccount/class_gofaxAccount.inc:811
+#: personal/faxaccount/class_gofaxAccount.inc:810
 #: personal/faxaccount/generic.tpl.c:32
 msgid "Deliver fax as mail"
 msgstr "Délivrer les fax comme des messages"
 
-#: personal/faxaccount/class_gofaxAccount.inc:812
+#: personal/faxaccount/class_gofaxAccount.inc:811
 #: personal/faxaccount/generic.tpl.c:35
 msgid "Deliver fax to printer"
 msgstr "Imprimer directement les fax"
 
-#: personal/faxaccount/class_gofaxAccount.inc:813
+#: personal/faxaccount/class_gofaxAccount.inc:812
 #: admin/blocklists/blocklist-list.xml:23
 msgid "Receive blocklist"
 msgstr "Afficher les listes rouges en réception"
 
-#: personal/faxaccount/class_gofaxAccount.inc:814
+#: personal/faxaccount/class_gofaxAccount.inc:813
 #: admin/blocklists/blocklist-list.xml:15
 msgid "Send blocklist"
 msgstr "Afficher les listes rouges en envoi"
@@ -206,7 +196,7 @@ msgstr "Prénom"
 
 #: personal/faxaccount/faxNumberSelect/faxNumberSelect-list.xml:48
 msgid "Surname"
-msgstr "Nom de famille"
+msgstr "Nom"
 
 #: addons/faxreports/main.inc:44
 msgid "FAX reports"
@@ -311,14 +301,12 @@ msgid "Transfer time"
 msgstr "Temps de transfert"
 
 #: admin/blocklists/class_blocklistManagement.inc:36
-#, fuzzy
 msgid "Fax Blocklists"
-msgstr "Liste Rouge des Fax"
+msgstr ""
 
 #: admin/blocklists/class_blocklistManagement.inc:37
-#, fuzzy
 msgid "Fax Blocklists management"
-msgstr "Configuration des listes rouges"
+msgstr ""
 
 #: admin/blocklists/blocklist-list.xml:11
 msgid "List of blocklists"
@@ -407,13 +395,13 @@ msgstr "Description de la liste"
 msgid "List of blocked number"
 msgstr "Liste des numéro bloqués"
 
-#: admin/blocklists/class_blocklistGeneric.inc:187
-#: admin/blocklists/class_blocklistGeneric.inc:191
-#: admin/blocklists/class_blocklistGeneric.inc:194
+#: admin/blocklists/class_blocklistGeneric.inc:186
+#: admin/blocklists/class_blocklistGeneric.inc:190
+#: admin/blocklists/class_blocklistGeneric.inc:193
 msgid "Fax blocklists"
 msgstr "Liste Rouge des Fax"
 
-#: admin/blocklists/class_blocklistGeneric.inc:188
+#: admin/blocklists/class_blocklistGeneric.inc:187
 msgid "The part of the fax plugin managing blacklist"
 msgstr "Gestion des listes bloquées"
 
@@ -424,7 +412,7 @@ msgstr "Service Fax"
 
 #: admin/systems/services/fax/class_serviceFax.inc:32
 msgid "Services"
-msgstr "Services"
+msgstr "Service"
 
 #: admin/systems/services/fax/class_serviceFax.inc:46
 msgid "FAX database information"
@@ -477,7 +465,7 @@ msgid "Filter"
 msgstr "Filtre"
 
 #: personal/faxaccount/faxNumberSelect/faxNumberSelect-list.tpl.c:2
-#: admin/blocklists/blocklist-list.tpl.c:2 admin/blocklists/generic.tpl.c:11
+#: admin/blocklists/generic.tpl.c:11
 msgid "Base"
 msgstr "Base"
 
@@ -496,7 +484,7 @@ msgstr "Ajouter a la liste des listes rouges"
 #: personal/faxaccount/paste_generic.tpl.c:2
 #: personal/faxaccount/generic.tpl.c:2 admin/blocklists/generic.tpl.c:2
 msgid "Generic"
-msgstr "Informations"
+msgstr "Générique"
 
 #: personal/faxaccount/paste_generic.tpl.c:8
 msgid "Fax number for GOfax to trigger on"
@@ -507,22 +495,16 @@ msgid "Alternate fax numbers will not be copied"
 msgstr "Les numéros de fax alternatif ne seront pas copiés"
 
 #: personal/faxaccount/generic.tpl.c:8
-#, fuzzy
 msgid "Fax number for fax to trigger on"
-msgstr "Numéro de fax pour lesquels GOfax s'activera"
+msgstr ""
 
 #: personal/faxaccount/generic.tpl.c:14
-#, fuzzy
 msgid "Specify the fax communication language for fax to mail gateway"
 msgstr ""
-"Indiquez le le protocole de communication GOfax pour les fax vers la "
-"passerelle de messagerie"
 
 #: personal/faxaccount/generic.tpl.c:20
 msgid "Specify delivery format for fax to mail gateway"
-msgstr ""
-"Spécifiez le format de distribution pour les fax vers la passerelle de "
-"messagerie"
+msgstr "Spécifiez le format de distribution pour les fax vers la passerelle de messagerie"
 
 #: personal/faxaccount/generic.tpl.c:23
 msgid "Delivery methods"
@@ -628,21 +610,15 @@ msgstr "Avertissement"
 msgid ""
 "Please double check if you really want to do this since there is no way for "
 "FusionDirectory to get your data back."
-msgstr ""
-"Veuillez vérifier que vous voulez effectuer cette action. Toutes les données "
-"seront perdues étant donné qu'il est impossible pour FusionDirectory de "
-"récupérer vos données."
+msgstr "Veuillez vérifier que vous voulez effectuer cette action. Toutes les données seront perdues étant donné qu'il est impossible pour FusionDirectory de récupérer vos données."
 
 #: admin/blocklists/remove.tpl.c:8
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr ""
-"D'accord - si vous êtes sur - cliquez sur 'Supprimer' pour continuer ou sur "
-"'Annuler' pour abandonner."
+msgstr "D'accord - si vous êtes sur - cliquez sur 'Supprimer' pour continuer ou sur 'Annuler' pour abandonner."
 
 #: admin/blocklists/generic.tpl.c:17
 msgid "Select wether to filter incoming or outgoing calls"
-msgstr ""
-"Veuillez sélectionner si il faut filtrer sur les appels entrants ou sortants"
+msgstr "Veuillez sélectionner si il faut filtrer sur les appels entrants ou sortants"
 
 #: admin/blocklists/generic.tpl.c:23
 msgid "Descriptive text for this blocklist"
@@ -651,6 +627,3 @@ msgstr "Texte descriptif pour cette liste rouge"
 #: admin/blocklists/generic.tpl.c:29
 msgid "Information"
 msgstr "Information"
-
-#~ msgid "Multiple edit"
-#~ msgstr "Edition multiple"

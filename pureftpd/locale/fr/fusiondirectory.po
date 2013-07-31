@@ -1,24 +1,20 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
-# Benoit Mortier <benoit.mortier@opensides.be>, 2005-2008
-# fusiondirectory <contact@fusiondirectory.org>, 2012
-# fusiondirectory <contact@fusiondirectory.org>, 2012
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory\n"
+"Project-Id-Version: FusionDirectory-develop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-09 19:19+0200\n"
-"PO-Revision-Date: 2013-02-12 18:40+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory/"
-"language/fr/)\n"
-"Language: fr\n"
+"POT-Creation-Date: 2013-07-30 18:14+0200\n"
+"PO-Revision-Date: 2013-07-30 16:50+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: personal/pureftpd/class_pureftpdAccount.inc:34
@@ -33,85 +29,67 @@ msgstr "Compte Pure ftp"
 msgid "Connectivity addon"
 msgstr "Connectivité"
 
-#: personal/pureftpd/class_pureftpdAccount.inc:51
+#: personal/pureftpd/class_pureftpdAccount.inc:50
 msgid "Bandwidth"
 msgstr "Bande passante"
 
+#: personal/pureftpd/class_pureftpdAccount.inc:53
 #: personal/pureftpd/class_pureftpdAccount.inc:54
-#: personal/pureftpd/class_pureftpdAccount.inc:55
 msgid "Upload bandwidth"
 msgstr "Bande passante montante"
 
-#: personal/pureftpd/class_pureftpdAccount.inc:54
-#: personal/pureftpd/class_pureftpdAccount.inc:63
+#: personal/pureftpd/class_pureftpdAccount.inc:53
+#: personal/pureftpd/class_pureftpdAccount.inc:62
 msgid " (kb/sec)"
 msgstr "(kb/sec)"
 
-#: personal/pureftpd/class_pureftpdAccount.inc:63
+#: personal/pureftpd/class_pureftpdAccount.inc:62
 msgid "Download bandwidth"
 msgstr "Bande passante descendante"
 
-#: personal/pureftpd/class_pureftpdAccount.inc:64
+#: personal/pureftpd/class_pureftpdAccount.inc:63
 msgid "Download bandwidth in kb/sec"
 msgstr "Bande passante descendante"
 
-#: personal/pureftpd/class_pureftpdAccount.inc:74
+#: personal/pureftpd/class_pureftpdAccount.inc:73
 msgid "Ratio"
 msgstr "Ratio"
 
+#: personal/pureftpd/class_pureftpdAccount.inc:76
 #: personal/pureftpd/class_pureftpdAccount.inc:77
-#: personal/pureftpd/class_pureftpdAccount.inc:78
 msgid "Uploaded files"
 msgstr "Données envoyées / reçues"
 
+#: personal/pureftpd/class_pureftpdAccount.inc:85
 #: personal/pureftpd/class_pureftpdAccount.inc:86
-#: personal/pureftpd/class_pureftpdAccount.inc:87
 msgid "Downloaded files"
 msgstr "Données envoyées / reçues"
 
-#: personal/pureftpd/class_pureftpdAccount.inc:100
+#: personal/pureftpd/class_pureftpdAccount.inc:99
 msgid "Files"
 msgstr "Fichiers"
 
-#: personal/pureftpd/class_pureftpdAccount.inc:101
+#: personal/pureftpd/class_pureftpdAccount.inc:100
 msgid "Quota files"
 msgstr "Taille du Quota pour les fichiers"
 
-#: personal/pureftpd/class_pureftpdAccount.inc:109
+#: personal/pureftpd/class_pureftpdAccount.inc:108
 msgid "Size"
 msgstr "Taille"
 
-#: personal/pureftpd/class_pureftpdAccount.inc:109
+#: personal/pureftpd/class_pureftpdAccount.inc:108
 msgid " (MB)"
-msgstr ""
+msgstr " (MB)"
 
-#: personal/pureftpd/class_pureftpdAccount.inc:110
+#: personal/pureftpd/class_pureftpdAccount.inc:109
 msgid "Files size"
 msgstr "Taille des fichiers"
 
-#: personal/pureftpd/class_pureftpdAccount.inc:120
+#: personal/pureftpd/class_pureftpdAccount.inc:119
 msgid "Miscellaneous"
 msgstr "Divers"
 
+#: personal/pureftpd/class_pureftpdAccount.inc:122
 #: personal/pureftpd/class_pureftpdAccount.inc:123
-#: personal/pureftpd/class_pureftpdAccount.inc:124
 msgid "Temporary disable FTP access"
 msgstr "Désactiver temporairement l'accès FTP"
-
-#~ msgid "FTP account"
-#~ msgstr "Compte FTP"
-
-#~ msgid "kb/s"
-#~ msgstr "kb/sec"
-
-#~ msgid "Quota"
-#~ msgstr "Quota"
-
-#~ msgid "MB"
-#~ msgstr "MB"
-
-#~ msgid "Uploaded / downloaded files"
-#~ msgstr "Données envoyées / reçues"
-
-#~ msgid "Check to disable FTP Access"
-#~ msgstr "Cliquez ici pour désactivez l'accès FTP"

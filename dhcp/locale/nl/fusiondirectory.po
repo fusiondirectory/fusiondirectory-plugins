@@ -1,30 +1,26 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
-# Kenny Tordeurs <tordeurskenny@gmail.com>, 2012
-#  Niels Klomp (CareWorks ICT Services) <nk@careworks.nl>, 2005-2008
-# Kenny Tordeurs <tordeurskenny@gmail.com>, 2012
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory\n"
+"Project-Id-Version: FusionDirectory-develop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-09 19:17+0200\n"
-"PO-Revision-Date: 2013-03-24 15:00+0000\n"
-"Last-Translator: Kenny Tordeurs <tordeurskenny@gmail.com>\n"
-"Language-Team: Dutch (http://www.transifex.com/projects/p/FusionDirectory/"
-"language/nl/)\n"
-"Language: nl\n"
+"POT-Creation-Date: 2013-07-30 18:14+0200\n"
+"PO-Revision-Date: 2013-07-30 16:23+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Dutch (http://www.transifex.com/projects/p/FusionDirectory/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: admin/systems/services/dhcp/class_dhcpNetwork.inc:48
 #: admin/systems/services/dhcp/class_dhcpAdvanced.inc:59
 #: admin/systems/services/dhcp/class_dhcpAdvanced.inc:73
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:787
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:774
 msgid "Error"
 msgstr "Fout"
 
@@ -190,9 +186,9 @@ msgid "Key"
 msgstr "Sleutel"
 
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:59
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:798
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:799
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:845
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:785
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:786
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:832
 msgid "DHCP service"
 msgstr "DHCP service"
 
@@ -201,9 +197,8 @@ msgid "Logging"
 msgstr "Loggen"
 
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:62
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:321
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:731
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:763
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:103
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:729
 #: admin/systems/services/dhcp/class_dhcpNewSectionDialog.inc:48
 msgid "Global options"
 msgstr "Globale opties"
@@ -258,88 +253,84 @@ msgstr "DNS update sleutel"
 msgid "DNS update zones"
 msgstr "DNS update zones"
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:131
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:149
 #, php-format
 msgid ""
 "You have requested a migration of the DHCP setup from server '%s' to the "
 "current one."
-msgstr ""
-"U heeft een aanvraag gedaan om de DHCP instellingen te migreren van server "
-"'%s' naar de huidige server."
+msgstr "U heeft een aanvraag gedaan om de DHCP instellingen te migreren van server '%s' naar de huidige server."
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:133
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:151
 msgid "The migration will be started when you save this system."
 msgstr "De migratie zal gestart worden, zodra u dit systeem bewaart."
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:136
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:154
 #: admin/systems/services/dhcp/remove_dhcp.tpl.c:2
 msgid "Warning"
 msgstr "Waarschuwing"
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:227
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:246
 msgid "Permission error"
 msgstr "Permissiefout"
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:264
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:283
 msgid "DHCP section"
 msgstr "DHCP sectie"
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:345
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:348
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:339
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:342
 msgid "Insert new DHCP section"
 msgstr "Voer nieuwe DHCP sectie in"
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:346
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:349
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:350
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:340
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:343
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:344
 msgid "Edit DHCP section"
 msgstr "Bewerk DCHP sectie"
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:347
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:351
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:341
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:345
 msgid "Remove DHCP section"
 msgstr "Verwijder DHCP sectie"
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:352
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:346
 msgid "Expand DHCP subnet"
 msgstr "Vergroot DHCP subnet"
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:353
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:347
 msgid "Fold DHCP subnet"
 msgstr "Verklein DHCP subnet"
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:428
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:445
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:500
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:576
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:584
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:611
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:422
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:439
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:494
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:570
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:578
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:605
 msgid "LDAP error"
 msgstr "LDAP fout"
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:787
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:774
 msgid ""
 "The DHCP configuration set is unkown. Please contact your system "
 "administrator."
-msgstr ""
-"De ingestelde DHCP configuratie is onbekend. Neem contact op met uw "
-"systeembeheerder."
+msgstr "De ingestelde DHCP configuratie is onbekend. Neem contact op met uw systeembeheerder."
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:799
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:786
 msgid "Services"
 msgstr "Services"
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:806
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:793
 msgid "Start service"
-msgstr "Start dienst"
+msgstr "Start service"
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:807
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:794
 msgid "Stop service"
-msgstr "Stop dienst"
+msgstr "Stop service"
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:808
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:795
 msgid "Restart service"
-msgstr "Herstart dienst"
+msgstr "Restart service"
 
 #: admin/systems/services/dhcp/class_dhcpSubnet.inc:139
 #: admin/systems/services/dhcp/class_dhcpSubnet.inc:159
@@ -354,22 +345,16 @@ msgstr "Netwerkreeks"
 #: admin/systems/services/dhcp/remove_dhcp.tpl.c:5
 msgid ""
 "This includes 'all' DHCP subsections that are located within this section. "
-"Please double check if your really want to do this since there is no way for "
-"FusionDirectory to get your data back."
-msgstr ""
-"Dit omvat 'alle' DHCP subsecties die zich binnen deze locatie bevinden. "
-"Verzeker uzelf hiervan, aangezien er geen manier is voor FusionDirectory om "
-"deze gegevens terug te halen."
+"Please double check if your really want to do this since there is no way for"
+" FusionDirectory to get your data back."
+msgstr "Dit omvat 'alle' DHCP subsecties die zich binnen deze locatie bevinden. Verzeker uzelf hiervan, aangezien er geen manier is voor FusionDirectory om deze gegevens terug te halen."
 
 #: admin/systems/services/dhcp/remove_dhcp.tpl.c:8
 msgid ""
 "Best thing to do before performing this action would be to save the current "
 "contents of your LDAP tree in a file. So - if you've done so - press "
 "'Delete' to continue or 'Cancel' to abort."
-msgstr ""
-"Het is aan te raden de huidige inhoud van uw LDAP database op te slaan "
-"alvorens u doorgaat. Indien u dat gedaan heeft drukt u op 'Verwijderen' om "
-"door te gaan of op 'Annuleren' om te annuleren."
+msgstr "Het is aan te raden de huidige inhoud van uw LDAP database op te slaan alvorens u doorgaat. Indien u dat gedaan heeft drukt u op 'Verwijderen' om door te gaan of op 'Annuleren' om te annuleren."
 
 #: admin/systems/services/dhcp/dhcp_host.tpl.c:2
 #: admin/systems/services/dhcp/dhcp_service.tpl.c:2
@@ -518,9 +503,7 @@ msgstr "Encryptie methode"
 msgid ""
 "DHCP take over will take place when saving this entry. Choose 'Cancel' to "
 "abort."
-msgstr ""
-"Een DHCP overname zal plaatsvinden, zodra deze invoer opgeslagen wordt. "
-"Selecteer 'Annuleren' om de annuleren."
+msgstr "Een DHCP overname zal plaatsvinden, zodra deze invoer opgeslagen wordt. Selecteer 'Annuleren' om de annuleren."
 
 #: admin/systems/services/dhcp/serviceDHCP.tpl.c:5
 msgid "Take over dhcp configuration from following server"
@@ -568,8 +551,7 @@ msgstr "Router"
 
 #: admin/systems/services/dhcp/dhcp_network.tpl.c:8
 msgid "Enter name or IP address of router to be used in this section"
-msgstr ""
-"Geeft de naam of het IP adres van de te gebruiken router op in deze sectie"
+msgstr "Geeft de naam of het IP adres van de te gebruiken router op in deze sectie"
 
 #: admin/systems/services/dhcp/dhcp_network.tpl.c:17
 msgid "Bootup"
@@ -582,9 +564,7 @@ msgstr "Bestandsnaam"
 #: admin/systems/services/dhcp/dhcp_network.tpl.c:23
 msgid ""
 "Enter name of file that will be loaded via tftp after client has started"
-msgstr ""
-"Geef de bestandsnaam die geladen zal worden via tftp nadat de client "
-"opgestart is"
+msgstr "Geef de bestandsnaam die geladen zal worden via tftp nadat de client opgestart is"
 
 #: admin/systems/services/dhcp/dhcp_network.tpl.c:26
 msgid "Next server"

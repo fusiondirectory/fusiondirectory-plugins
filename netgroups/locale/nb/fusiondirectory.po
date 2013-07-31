@@ -1,21 +1,20 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
-# Petter Reinholdtsen <pere@hungry.com>, 2012
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory\n"
+"Project-Id-Version: FusionDirectory-develop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-09 19:18+0200\n"
-"PO-Revision-Date: 2013-03-24 15:00+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: nb\n"
+"POT-Creation-Date: 2013-07-30 18:14+0200\n"
+"PO-Revision-Date: 2013-07-30 16:47+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Norwegian Bokmål (http://www.transifex.com/projects/p/FusionDirectory/language/nb/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nb\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: config/netgroups/class_netgroupConfig.inc:28
@@ -27,40 +26,36 @@ msgid "FusionDirectory netgroup plugin configuration"
 msgstr ""
 
 #: config/netgroups/class_netgroupConfig.inc:42
-#, fuzzy
 msgid "LDAP tree"
-msgstr "LDAP-feil"
+msgstr ""
 
 #: config/netgroups/class_netgroupConfig.inc:45
-#, fuzzy
 msgid "Netgroup RDN"
-msgstr "NIS-nettgruppe"
+msgstr ""
 
 #: config/netgroups/class_netgroupConfig.inc:45
 msgid "Branch in which netgroups will be stored"
 msgstr ""
 
-#: personal/netgroups/class_netgroupMembership.inc:85
+#: personal/netgroups/class_netgroupMembership.inc:71
 #: admin/systems/netgroups/class_netgroupSystem.inc:26
 #: admin/netgroups/memberNisnetgroupSelect/memberNisnetgroup-list.xml:14
 #: admin/netgroups/class_netgroup.inc:55
 msgid "NIS Netgroup"
 msgstr "NIS-nettgruppe"
 
-#: personal/netgroups/class_netgroupMembership.inc:86
+#: personal/netgroups/class_netgroupMembership.inc:72
 #: admin/systems/netgroups/class_netgroupSystem.inc:27
 msgid "NIS Netgroup member"
 msgstr "NIS-nettgruppemedlem"
 
-#: personal/netgroups/class_netgroupMembership.inc:103
-#, fuzzy
+#: personal/netgroups/class_netgroupMembership.inc:88
 msgid "Member of the following NIS Netgroups  "
-msgstr "Medlem av de følgende NIS-nettgrupper"
+msgstr ""
 
-#: personal/netgroups/class_netgroupMembership.inc:106
-#, fuzzy
+#: personal/netgroups/class_netgroupMembership.inc:91
 msgid "NIS netgroup membership"
-msgstr "NIS-nettgruppemedlemmer"
+msgstr ""
 
 #: admin/netgroups/memberNisnetgroupSelect/memberNisnetgroup-list.xml:10
 msgid "Please select the desired NIS Netgroups"
@@ -68,7 +63,7 @@ msgstr "Velg ønsket NIS-nettgrupper"
 
 #: admin/netgroups/memberNisnetgroupSelect/memberNisnetgroup-list.xml:40
 msgid "Common name"
-msgstr ""
+msgstr "Navn"
 
 #: admin/netgroups/memberNisnetgroupSelect/memberNisnetgroup-list.xml:48
 #: admin/netgroups/class_netgroup.inc:76
@@ -93,9 +88,8 @@ msgid "Generic NIS Netgroup settings"
 msgstr "Generiske NIS-nettgruppeoppsett"
 
 #: admin/netgroups/class_netgroup.inc:70
-#, fuzzy
 msgid "Informations"
-msgstr "Arbeidsstasjon"
+msgstr ""
 
 #: admin/netgroups/class_netgroup.inc:73
 #: admin/netgroups/memberNisnetgroupSelect/memberNisnetgroup-filter.tpl.c:5
@@ -103,34 +97,29 @@ msgid "Name"
 msgstr "Navn"
 
 #: admin/netgroups/class_netgroup.inc:73
-#, fuzzy
 msgid "Name of this NIS netgroup"
-msgstr "NIS-nettgruppens navn"
+msgstr ""
 
 #: admin/netgroups/class_netgroup.inc:76
-#, fuzzy
 msgid "Description of this NIS netgroup"
-msgstr "NIS-nettgruppens navn"
+msgstr ""
 
 #: admin/netgroups/class_netgroup.inc:82
-#, fuzzy
 msgid "User members"
-msgstr "NIS-nettgruppemedlemmer"
+msgstr ""
 
 #: admin/netgroups/class_netgroup.inc:89 admin/netgroups/class_netgroup.inc:98
 #: admin/netgroups/class_netgroup.inc:105
-#, fuzzy
 msgid "NIS netgroup members"
-msgstr "NIS-nettgruppemedlemmer"
+msgstr ""
 
 #: admin/netgroups/class_netgroup.inc:95
 msgid "System members"
 msgstr ""
 
 #: admin/netgroups/class_netgroup.inc:102
-#, fuzzy
 msgid "Netgroup members"
-msgstr "NIS-nettgruppemedlemmer"
+msgstr ""
 
 #: admin/netgroups/memberNisnetgroupSelect/memberNisnetgroup-filter.tpl.c:2
 msgid "Filter"
@@ -139,75 +128,3 @@ msgstr "Filter"
 #: admin/netgroups/memberNisnetgroupSelect/memberNisnetgroup-list.tpl.c:2
 msgid "Base"
 msgstr ""
-
-#~ msgid "Show NIS Netgroups"
-#~ msgstr "Vis NIS-nettgrupper"
-
-#~ msgid "Show Users"
-#~ msgstr "Vis brukere"
-
-#~ msgid "Show Hosts"
-#~ msgstr "Vis verter"
-
-#~ msgid "Show NIS Netgroup"
-#~ msgstr "Vis NIS-nettgruppe"
-
-#~ msgid "User"
-#~ msgstr "Bruker"
-
-#~ msgid "Host"
-#~ msgstr "Vert"
-
-#~ msgid "Network Device"
-#~ msgstr "Nettverksenhet"
-
-#~ msgid "Surname"
-#~ msgstr "Etternavn"
-
-#~ msgid "Error"
-#~ msgstr "Feil"
-
-#~ msgid "Server"
-#~ msgstr "Tjener"
-
-#~ msgid "NIS Netgroup Error"
-#~ msgstr "NIS-nettgruppefeil"
-
-#~ msgid "Error: There are a loop with NIS Netgroups"
-#~ msgstr "Feil: Det er en løkke i NIS-nettgruppene"
-
-#~ msgid "IMPORTANT: Check the members of NIS Netgroup"
-#~ msgstr "VIKTIG: Sjekk medlemmene i NIS-nettgruppe"
-
-#~ msgid "List of NIS Netgroups"
-#~ msgstr "Liste med NIS-nettgrupper"
-
-#~ msgid "Properties"
-#~ msgstr "Egenskaper"
-
-#~ msgid "Create"
-#~ msgstr "Opprett"
-
-#~ msgid "Edit"
-#~ msgstr "Endre"
-
-#~ msgid "Remove"
-#~ msgstr "Fjern"
-
-#~ msgid "Edit NIS Netgroup"
-#~ msgstr "Endre NIS-nettgruppe"
-
-#~ msgid "Remove NIS Netgroup"
-#~ msgstr "Fjern NIS-nettgruppe"
-
-#~ msgid "NIS Netgroup name"
-#~ msgstr "NIS-nettgruppenavn"
-
-#~ msgid "In all NIS Netgroups"
-#~ msgstr "I alle NIS-nettgrupper"
-
-#~ msgid "Not in all NIS Netgroups"
-#~ msgstr "Ikke i alle NIS-nettgrupper"
-
-#~ msgid "Choose NIS Netgroups for the host"
-#~ msgstr "Velg NIS-nettgrupper for denne verten"

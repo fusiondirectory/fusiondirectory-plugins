@@ -1,26 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
-#  Jiang Xin <worldhello.net@gmail.com>, 2007
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory\n"
+"Project-Id-Version: FusionDirectory-develop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-09 19:20+0200\n"
-"PO-Revision-Date: 2013-03-24 15:00+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Chinese (http://www.transifex.com/projects/p/FusionDirectory/"
-"language/zh/)\n"
-"Language: zh\n"
+"POT-Creation-Date: 2013-07-30 18:14+0200\n"
+"PO-Revision-Date: 2013-07-30 17:03+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Chinese (http://www.transifex.com/projects/p/FusionDirectory/language/zh/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: zh\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: config/systems/class_systemsPluginConfig.inc:28
-#: admin/systems/class_systemManagement.inc:1177
+#: admin/systems/class_systemManagement.inc:1182
 msgid "Systems"
 msgstr "系统设置"
 
@@ -29,9 +27,8 @@ msgid "Systems plugin configuration"
 msgstr ""
 
 #: config/systems/class_systemsPluginConfig.inc:41
-#, fuzzy
 msgid "LDAP tree for systems"
-msgstr "系统列表"
+msgstr ""
 
 #: config/systems/class_systemsPluginConfig.inc:44
 msgid "Systems RDN"
@@ -90,427 +87,31 @@ msgid "Branch in which mobile phones will be stored"
 msgstr ""
 
 #: config/systems/class_systemsPluginConfig.inc:81
-msgid "LDAP tree"
-msgstr ""
-
-#: config/systems/class_systemsPluginConfig.inc:84
-msgid "Mimetype RDN"
-msgstr ""
-
-#: config/systems/class_systemsPluginConfig.inc:84
-msgid "Branch in which mime types will be stored"
-msgstr ""
-
-#: config/systems/class_systemsPluginConfig.inc:89
-#, fuzzy
-msgid "Application RDN"
-msgstr "应用程序"
-
-#: config/systems/class_systemsPluginConfig.inc:89
-msgid "Branch in which applications will be stored"
-msgstr ""
-
-#: config/systems/class_systemsPluginConfig.inc:96
 msgid "Miscellaneous"
 msgstr "杂项"
 
-#: config/systems/class_systemsPluginConfig.inc:100
+#: config/systems/class_systemsPluginConfig.inc:85
 msgid "Available encodings for share services"
 msgstr ""
 
-#: config/systems/class_systemsPluginConfig.inc:104
+#: config/systems/class_systemsPluginConfig.inc:89
 msgid "Encoding"
 msgstr ""
 
-#: config/systems/class_systemsPluginConfig.inc:104
+#: config/systems/class_systemsPluginConfig.inc:89
 msgid "The encoding code name"
 msgstr ""
 
-#: config/systems/class_systemsPluginConfig.inc:109
+#: config/systems/class_systemsPluginConfig.inc:94
 msgid "Label"
 msgstr ""
 
-#: config/systems/class_systemsPluginConfig.inc:109
+#: config/systems/class_systemsPluginConfig.inc:94
 msgid "The encoding displayed name"
 msgstr ""
 
-#: config/systems/class_systemsPluginConfig.inc:117
+#: config/systems/class_systemsPluginConfig.inc:102
 msgid "Encodings"
-msgstr ""
-
-#: admin/applications/application-list.xml:11
-msgid "List of applications"
-msgstr ""
-
-#: admin/applications/application-list.xml:15
-#: admin/applications/application-list.xml:74
-#: admin/applications/class_applicationGeneric.inc:135
-#: admin/applications/class_applicationGeneric.inc:137
-#: admin/groups/apps/class_groupApplication.inc:1507
-#: admin/mimetypes/class_mimetypeGeneric.inc:681
-msgid "Application"
-msgstr "应用程序"
-
-#: admin/applications/application-list.xml:41
-#: admin/applications/class_applicationParameters.inc:212
-#: admin/applications/class_applicationParameters.inc:216
-#: admin/mimetypes/mimetype-list.xml:41
-#: admin/mimetypes/class_mimetypeGeneric.inc:516
-#: admin/mimetypes/class_mimetypeGeneric.inc:677
-#: admin/systems/system-list.xml:161
-#: admin/systems/systemSelect/selectSystem-list.xml:57
-#: admin/systems/class_componentGeneric.inc:58
-#: admin/systems/services/shares/class_serviceShare.inc:52
-#: admin/systems/phoneSelect/phoneSelect-list.xml:48
-#: admin/systems/class_workstationGeneric.inc:154
-#: admin/systems/class_mobilePhoneGeneric.inc:60
-#: admin/systems/class_printGeneric.inc:760
-#: admin/systems/class_printGeneric.inc:770
-#: admin/systems/class_printGeneric.inc:789
-#: admin/systems/class_printGeneric.inc:1024
-#: admin/applications/application-filter.tpl.c:5
-#: admin/groups/apps/edit_entry.tpl.c:26
-#: admin/mimetypes/mimetype-filter.tpl.c:5
-#: admin/systems/systemSelect/selectSystem-filter.tpl.c:14
-#: admin/systems/phoneSelect/phoneSelect-filter.tpl.c:11
-#: admin/systems/system-filter.tpl.c:29
-msgid "Name"
-msgstr "名称"
-
-#: admin/applications/application-list.xml:49
-#: admin/applications/class_applicationGeneric.inc:166
-#: admin/mimetypes/mimetype-list.xml:49
-#: admin/mimetypes/class_mimetypeGeneric.inc:679
-#: admin/systems/system-list.xml:185
-#: admin/systems/systemSelect/selectSystem-list.xml:65
-#: admin/systems/class_componentGeneric.inc:62
-#: admin/systems/services/shares/class_serviceShare.inc:56
-#: admin/systems/class_workstationGeneric.inc:160
-#: admin/systems/serverService-list.xml:35
-#: admin/systems/class_mobilePhoneGeneric.inc:64
-#: admin/systems/class_printGeneric.inc:1026
-#: admin/mimetypes/paste_generic.tpl.c:11 admin/mimetypes/generic.tpl.c:17
-#: admin/systems/printer.tpl.c:8 admin/systems/printer.tpl.c:20
-msgid "Description"
-msgstr "描述"
-
-#: admin/applications/application-list.xml:57
-#: admin/mimetypes/mimetype-list.xml:57 admin/systems/system-list.xml:209
-#: admin/systems/phoneSelect/phoneSelect-list.xml:70
-#: admin/systems/serverService-list.xml:43
-msgid "Actions"
-msgstr "动作"
-
-#: admin/applications/application-list.xml:68
-#: admin/mimetypes/mimetype-list.xml:68 admin/systems/system-list.xml:220
-#: admin/systems/serverService-list.xml:54
-msgid "Create"
-msgstr "创建"
-
-#: admin/applications/application-list.xml:86
-#: admin/applications/class_applicationParameters.inc:143
-#: admin/mimetypes/mimetype-list.xml:86 admin/systems/system-list.xml:321
-#: admin/systems/serverService-list.xml:69 admin/groups/apps/app_list.tpl.c:29
-#: admin/groups/apps/app_list.tpl.c:41 admin/groups/apps/app_list.tpl.c:53
-#: admin/systems/printer.tpl.c:38
-msgid "Remove"
-msgstr "删除"
-
-#: admin/applications/application-list.xml:118
-msgid "Edit application"
-msgstr ""
-
-#: admin/applications/application-list.xml:131
-msgid "Remove application"
-msgstr ""
-
-#: admin/applications/class_applicationParameters.inc:71
-msgid "Remove options"
-msgstr "删除选项"
-
-#: admin/applications/class_applicationParameters.inc:71
-#: admin/applications/class_applicationParameters.inc:73
-msgid "parameter"
-msgstr ""
-
-#: admin/applications/class_applicationParameters.inc:73
-msgid "Create options"
-msgstr "创建选项"
-
-#: admin/applications/class_applicationParameters.inc:117
-msgid "Variable"
-msgstr "变量"
-
-#: admin/applications/class_applicationParameters.inc:117
-msgid "Default value"
-msgstr "缺省值"
-
-#: admin/applications/class_applicationParameters.inc:149
-msgid "Add option"
-msgstr "添加选项"
-
-#: admin/applications/class_applicationParameters.inc:179
-#: admin/applications/class_applicationParameters.inc:247
-#: admin/applications/class_applicationGeneric.inc:346
-#: admin/groups/apps/class_groupApplication.inc:701
-#: admin/groups/apps/class_groupApplication.inc:1396
-#: admin/groups/apps/class_groupApplication.inc:1410
-#: admin/groups/apps/class_groupApplication.inc:1424
-#: admin/ogroups/goto/class_termgroup.inc:386
-#: admin/mimetypes/class_mimetypeGeneric.inc:478
-#: admin/mimetypes/class_mimetypeGeneric.inc:490
-#: admin/mimetypes/class_mimetypeGeneric.inc:505
-#: admin/systems/services/class_goService.inc:123
-#: admin/systems/services/class_goService.inc:151
-#: admin/systems/services/class_goService.inc:188
-#: admin/systems/class_systemManagement.inc:814
-#: admin/systems/class_networkSettings.inc:470
-#: admin/systems/class_networkSettings.inc:484
-#: admin/systems/class_networkSettings.inc:761
-#: admin/systems/class_networkSettings.inc:820
-#: admin/systems/class_networkSettings.inc:839
-#: admin/systems/class_networkSettings.inc:856
-#: admin/systems/class_networkSettings.inc:865
-#: admin/systems/class_networkSettings.inc:883
-#: admin/systems/class_networkSettings.inc:957
-#: admin/systems/class_printGeneric.inc:674
-#: admin/systems/class_printGeneric.inc:980
-msgid "LDAP error"
-msgstr "LDAP 错误"
-
-#: admin/applications/class_applicationParameters.inc:272
-msgid "Parameter"
-msgstr "参数"
-
-#: admin/applications/class_applicationParameters.inc:273
-msgid "Parameter configuration"
-msgstr ""
-
-#: admin/applications/class_applicationParameters.inc:279
-msgid "Application parameter settings"
-msgstr ""
-
-#: admin/applications/class_applicationManagement.inc:38
-#: admin/groups/apps/class_groupApplication.inc:1499
-#: admin/mimetypes/generic.tpl.c:62 admin/mimetypes/generic.tpl.c:86
-msgid "Applications"
-msgstr "应用程序"
-
-#: admin/applications/class_applicationManagement.inc:39
-msgid "Application management"
-msgstr "应用程序管理"
-
-#: admin/applications/class_applicationGeneric.inc:90
-#: admin/applications/class_applicationGeneric.inc:332
-#: admin/systems/services/shares/class_serviceShare.inc:103
-#: admin/systems/class_systemManagement.inc:353
-#: admin/systems/class_systemManagement.inc:627
-#: admin/systems/class_systemManagement.inc:642
-#: admin/systems/class_serverService.inc:227
-#: admin/systems/class_serverService.inc:270
-#: admin/systems/class_serverService.inc:394
-#: admin/systems/class_networkSettings.inc:296
-#: admin/systems/class_networkSettings.inc:328
-#: admin/systems/class_networkSettings.inc:579
-#: admin/systems/class_networkSettings.inc:586
-#: admin/systems/class_networkSettings.inc:592
-#: admin/systems/class_networkSettings.inc:599
-#: admin/systems/class_printGeneric.inc:475
-#: admin/systems/class_printGeneric.inc:656
-#: admin/systems/class_printGeneric.inc:663
-#: admin/systems/class_printGeneric.inc:726
-#: admin/systems/class_printGeneric.inc:1108
-#: admin/systems/class_printGeneric.inc:1119
-msgid "Error"
-msgstr "错误"
-
-#: admin/applications/class_applicationGeneric.inc:91
-msgid ""
-"Cannot save user picture, FusionDirectory requires the package 'php5-"
-"imagick' to be installed!"
-msgstr ""
-
-#: admin/applications/class_applicationGeneric.inc:109
-#: admin/groups/apps/edit_entry.tpl.c:14
-#: admin/systems/ppd/printerPPDDialog.tpl.c:14
-msgid "Upload"
-msgstr "上传"
-
-#: admin/applications/class_applicationGeneric.inc:132
-#: admin/mimetypes/class_mimetypeGeneric.inc:668
-#: admin/systems/class_componentGeneric.inc:36
-#: admin/systems/services/ntp/class_serviceNTP.inc:44
-#: admin/systems/class_serverGeneric.inc:46
-#: admin/systems/class_workstationGeneric.inc:470
-#: admin/systems/class_mobilePhoneGeneric.inc:38
-#: admin/systems/class_terminalGeneric.inc:81
-#: admin/ogroups/goto/termgroup.tpl.c:8 admin/mimetypes/paste_generic.tpl.c:2
-#: admin/mimetypes/generic.tpl.c:2
-msgid "Generic"
-msgstr "通用配置"
-
-#: admin/applications/class_applicationGeneric.inc:133
-msgid "Application generic"
-msgstr ""
-
-#: admin/applications/class_applicationGeneric.inc:151
-#: admin/systems/class_componentGeneric.inc:55
-#: admin/systems/class_workstationGeneric.inc:151
-#: admin/systems/class_mobilePhoneGeneric.inc:57
-msgid "Properties"
-msgstr "属性"
-
-#: admin/applications/class_applicationGeneric.inc:154
-msgid "Application name"
-msgstr "应用程序名称"
-
-#: admin/applications/class_applicationGeneric.inc:154
-msgid "The name of this application"
-msgstr ""
-
-#: admin/applications/class_applicationGeneric.inc:158
-msgid "Display name"
-msgstr "显示名称"
-
-#: admin/applications/class_applicationGeneric.inc:158
-msgid "The displayed name for this application"
-msgstr ""
-
-#: admin/applications/class_applicationGeneric.inc:162
-#: admin/ogroups/goto/termgroup.tpl.c:47
-msgid "Execute"
-msgstr "执行"
-
-#: admin/applications/class_applicationGeneric.inc:162
-msgid "The application to be executed"
-msgstr ""
-
-#: admin/applications/class_applicationGeneric.inc:166
-msgid "A short description of this application"
-msgstr ""
-
-#: admin/applications/class_applicationGeneric.inc:173
-#: admin/mimetypes/class_mimetypeGeneric.inc:683
-#: admin/mimetypes/generic.tpl.c:32
-msgid "Icon"
-msgstr "图标"
-
-#: admin/applications/class_applicationGeneric.inc:176
-msgid "The icon for this application"
-msgstr ""
-
-#: admin/applications/class_applicationGeneric.inc:182
-#: admin/systems/ppd/printerPPDDialog.tpl.c:17
-msgid "Options"
-msgstr "选项"
-
-#: admin/applications/class_applicationGeneric.inc:185
-msgid "Only executable for member"
-msgstr ""
-
-#: admin/applications/class_applicationGeneric.inc:185
-msgid "Only executable by the memebers of the group"
-msgstr ""
-
-#: admin/applications/class_applicationGeneric.inc:190
-msgid "Replace user configuration on startup"
-msgstr "替换启动时用户配置"
-
-#: admin/applications/class_applicationGeneric.inc:190
-msgid "Replace the user configuration on startup"
-msgstr ""
-
-#: admin/applications/class_applicationGeneric.inc:195
-#: admin/groups/apps/class_groupApplication.inc:1510
-#: admin/groups/apps/edit_entry.tpl.c:32
-msgid "Place icon on members desktop"
-msgstr "在成员桌面放置图标"
-
-#: admin/applications/class_applicationGeneric.inc:195
-msgid "Put an icon on the user desktop"
-msgstr ""
-
-#: admin/applications/class_applicationGeneric.inc:200
-#: admin/groups/apps/class_groupApplication.inc:1512
-#: admin/groups/apps/edit_entry.tpl.c:35
-msgid "Place entry in members startmenu"
-msgstr "替换成员启动菜单条目"
-
-#: admin/applications/class_applicationGeneric.inc:200
-#: admin/applications/class_applicationGeneric.inc:205
-msgid "Put an entry in the startup menu"
-msgstr ""
-
-#: admin/applications/class_applicationGeneric.inc:205
-#: admin/groups/apps/class_groupApplication.inc:1511
-#: admin/groups/apps/edit_entry.tpl.c:38
-msgid "Place entry in members launch bar"
-msgstr "在成员的启动条放置条目"
-
-#: admin/applications/class_applicationGeneric.inc:216
-msgid "Script"
-msgstr "脚本"
-
-#: admin/applications/class_applicationGeneric.inc:219
-msgid "Script to run at logon"
-msgstr ""
-
-#: admin/applications/class_applicationGeneric.inc:225
-msgid "Log off script"
-msgstr ""
-
-#: admin/applications/class_applicationGeneric.inc:228
-msgid "Script to run at logoff"
-msgstr ""
-
-#: admin/applications/class_applicationGeneric.inc:283
-msgid "no example"
-msgstr "没有示例"
-
-#: admin/applications/class_applicationGeneric.inc:332
-#, php-format
-msgid "Cannot remove application - it is still in use by these objects: %s"
-msgstr ""
-
-#: admin/groups/apps/class_groupApplication.inc:410
-#: admin/groups/apps/class_groupApplication.inc:414
-msgid "Menu"
-msgstr ""
-
-#: admin/groups/apps/class_groupApplication.inc:482
-#: admin/systems/class_systemManagement.inc:188
-msgid "Back"
-msgstr "返回"
-
-#: admin/groups/apps/class_groupApplication.inc:493
-#: admin/systems/ppd/class_printerPPDSelectionDialog.inc:172
-msgid "back"
-msgstr "返回"
-
-#: admin/groups/apps/class_groupApplication.inc:501
-msgid "department"
-msgstr "部门"
-
-#: admin/groups/apps/class_groupApplication.inc:524
-msgid "application"
-msgstr "应用程序"
-
-#: admin/groups/apps/class_groupApplication.inc:1208
-msgid "Not available in release."
-msgstr ""
-
-#: admin/groups/apps/class_groupApplication.inc:1500
-msgid "Group applications"
-msgstr ""
-
-#: admin/groups/apps/class_groupApplication.inc:1508
-#: admin/systems/system-list.xml:201 admin/groups/apps/app_list.tpl.c:2
-#: admin/groups/apps/app_list.tpl.c:14
-msgid "Release"
-msgstr "发行"
-
-#: admin/groups/apps/class_groupApplication.inc:1509
-msgid "Application parameter"
 msgstr ""
 
 #: admin/ogroups/goto/class_termgroup.inc:70
@@ -528,17 +129,17 @@ msgstr ""
 
 #: admin/ogroups/goto/class_termgroup.inc:124
 #: admin/ogroups/goto/class_termgroup.inc:136
-#: admin/systems/class_workstationGeneric.inc:342
+#: admin/systems/class_workstationGeneric.inc:352
 #: admin/systems/class_terminalGeneric.inc:103
 #: admin/systems/class_terminalGeneric.inc:119
 msgid "inherited"
 msgstr "继承"
 
 #: admin/ogroups/goto/class_termgroup.inc:220
-#: admin/systems/class_systemManagement.inc:309
-#: admin/systems/class_systemManagement.inc:339
+#: admin/systems/class_systemManagement.inc:305
+#: admin/systems/class_systemManagement.inc:335
 #: admin/systems/class_workstationGeneric.inc:72
-#: admin/systems/class_workstationGeneric.inc:455
+#: admin/systems/class_workstationGeneric.inc:443
 msgid "Service infrastructure"
 msgstr ""
 
@@ -588,6 +189,25 @@ msgstr "内存测试"
 msgid "System analysis"
 msgstr "系统分析"
 
+#: admin/ogroups/goto/class_termgroup.inc:386
+#: admin/systems/services/class_goService.inc:123
+#: admin/systems/services/class_goService.inc:151
+#: admin/systems/services/class_goService.inc:188
+#: admin/systems/class_systemManagement.inc:810
+#: admin/systems/class_networkSettings.inc:470
+#: admin/systems/class_networkSettings.inc:484
+#: admin/systems/class_networkSettings.inc:761
+#: admin/systems/class_networkSettings.inc:820
+#: admin/systems/class_networkSettings.inc:839
+#: admin/systems/class_networkSettings.inc:856
+#: admin/systems/class_networkSettings.inc:865
+#: admin/systems/class_networkSettings.inc:883
+#: admin/systems/class_networkSettings.inc:957
+#: admin/systems/class_printGeneric.inc:672
+#: admin/systems/class_printGeneric.inc:974
+msgid "LDAP error"
+msgstr "LDAP 错误"
+
 #: admin/ogroups/goto/class_termgroup.inc:394
 msgid "System"
 msgstr "系统"
@@ -613,7 +233,7 @@ msgstr ""
 
 #: admin/ogroups/goto/class_termgroup.inc:403
 msgid "Ntp server"
-msgstr ""
+msgstr "NTP 服务器"
 
 #: admin/ogroups/goto/class_termgroup.inc:404
 #: admin/systems/class_terminalGeneric.inc:41
@@ -626,70 +246,6 @@ msgstr "根服务器"
 #: admin/ogroups/goto/termgroup.tpl.c:35
 msgid "Swap server"
 msgstr "交换服务器"
-
-#: admin/mimetypes/class_mimetypeManagement.inc:38
-#: admin/mimetypes/class_mimetypeGeneric.inc:671
-msgid "Mime types"
-msgstr ""
-
-#: admin/mimetypes/class_mimetypeManagement.inc:39
-msgid "Mime type management"
-msgstr ""
-
-#: admin/mimetypes/mimetype-list.xml:11
-msgid "List of mimetypes"
-msgstr ""
-
-#: admin/mimetypes/mimetype-list.xml:15 admin/mimetypes/mimetype-list.xml:74
-#: admin/mimetypes/class_mimetypeGeneric.inc:673
-#: admin/mimetypes/paste_generic.tpl.c:5 admin/mimetypes/generic.tpl.c:5
-msgid "Mime type"
-msgstr ""
-
-#: admin/mimetypes/mimetype-list.xml:118
-msgid "Edit mimetype"
-msgstr ""
-
-#: admin/mimetypes/mimetype-list.xml:131
-msgid "Remove mimetype"
-msgstr ""
-
-#: admin/mimetypes/class_mimetypeGeneric.inc:519
-msgid "File pattern"
-msgstr ""
-
-#: admin/mimetypes/class_mimetypeGeneric.inc:669
-msgid "Mime type generic"
-msgstr ""
-
-#: admin/mimetypes/class_mimetypeGeneric.inc:678
-#: admin/mimetypes/generic.tpl.c:11
-msgid "Mime group"
-msgstr ""
-
-#: admin/mimetypes/class_mimetypeGeneric.inc:680
-#: admin/systems/class_printGeneric.inc:1025
-#: admin/applications/application-list.tpl.c:2
-#: admin/mimetypes/mimetype-list.tpl.c:2 admin/mimetypes/generic.tpl.c:23
-#: admin/systems/printer.tpl.c:11
-#: admin/systems/systemSelect/selectSystem-list.tpl.c:2
-#: admin/systems/phoneSelect/phoneSelect-list.tpl.c:2
-#: admin/systems/system-list.tpl.c:2
-msgid "Base"
-msgstr "位置"
-
-#: admin/mimetypes/class_mimetypeGeneric.inc:682
-msgid "Left click action"
-msgstr ""
-
-#: admin/mimetypes/class_mimetypeGeneric.inc:684
-#: admin/mimetypes/generic.tpl.c:53
-msgid "File patterns"
-msgstr ""
-
-#: admin/mimetypes/class_mimetypeGeneric.inc:685
-msgid "Embedded applications"
-msgstr ""
 
 #: admin/systems/system-list.xml:10
 msgid "List of systems"
@@ -731,7 +287,7 @@ msgstr "终端模板"
 msgid "Winstation"
 msgstr "Windows 工作站"
 
-#: admin/systems/system-list.xml:87 admin/systems/system-list.xml:226
+#: admin/systems/system-list.xml:87 admin/systems/system-list.xml:234
 #: admin/systems/systemSelect/selectSystem-list.xml:15
 #: admin/systems/class_serverGeneric.inc:49
 #: admin/systems/class_serverGeneric.inc:51
@@ -739,15 +295,15 @@ msgstr "Windows 工作站"
 msgid "Server"
 msgstr "服务器"
 
-#: admin/systems/system-list.xml:95 admin/systems/system-list.xml:234
+#: admin/systems/system-list.xml:95 admin/systems/system-list.xml:242
 #: admin/systems/systemSelect/selectSystem-list.xml:23
-#: admin/systems/class_workstationGeneric.inc:473
-#: admin/systems/class_workstationGeneric.inc:475
+#: admin/systems/class_workstationGeneric.inc:461
+#: admin/systems/class_workstationGeneric.inc:463
 #: admin/systems/class_SelectDeviceType.inc:58
 msgid "Workstation"
 msgstr "工作站"
 
-#: admin/systems/system-list.xml:103 admin/systems/system-list.xml:242
+#: admin/systems/system-list.xml:103 admin/systems/system-list.xml:250
 #: admin/systems/systemSelect/selectSystem-list.xml:31
 #: admin/systems/class_terminalGeneric.inc:84
 #: admin/systems/class_terminalGeneric.inc:86
@@ -755,13 +311,13 @@ msgstr "工作站"
 msgid "Terminal"
 msgstr "终端"
 
-#: admin/systems/system-list.xml:111 admin/systems/class_printGeneric.inc:1014
-#: admin/systems/class_printGeneric.inc:1018
-#: admin/systems/class_printGeneric.inc:1020
+#: admin/systems/system-list.xml:111 admin/systems/class_printGeneric.inc:1008
+#: admin/systems/class_printGeneric.inc:1012
+#: admin/systems/class_printGeneric.inc:1014
 msgid "Printer"
 msgstr "打印机"
 
-#: admin/systems/system-list.xml:119 admin/systems/system-list.xml:266
+#: admin/systems/system-list.xml:119 admin/systems/system-list.xml:274
 #: admin/systems/phoneSelect/phoneSelect-list.xml:14
 #: admin/systems/class_mobilePhoneGeneric.inc:71
 msgid "Phone"
@@ -778,16 +334,49 @@ msgstr "移动电话"
 msgid "Component"
 msgstr ""
 
+#: admin/systems/system-list.xml:143 admin/systems/system-list.xml:298
+msgid "IPMI"
+msgstr ""
+
 #: admin/systems/system-list.xml:169
+#: admin/systems/systemSelect/selectSystem-list.xml:57
+#: admin/systems/class_componentGeneric.inc:58
+#: admin/systems/services/shares/class_serviceShare.inc:52
+#: admin/systems/phoneSelect/phoneSelect-list.xml:48
+#: admin/systems/class_workstationGeneric.inc:154
+#: admin/systems/class_mobilePhoneGeneric.inc:60
+#: admin/systems/class_printGeneric.inc:754
+#: admin/systems/class_printGeneric.inc:764
+#: admin/systems/class_printGeneric.inc:783
+#: admin/systems/class_printGeneric.inc:1018
+#: admin/systems/systemSelect/selectSystem-filter.tpl.c:14
+#: admin/systems/phoneSelect/phoneSelect-filter.tpl.c:11
+#: admin/systems/system-filter.tpl.c:32
+msgid "Name"
+msgstr "名称"
+
+#: admin/systems/system-list.xml:177
 #: admin/systems/phoneSelect/phoneSelect-list.xml:63
 msgid "IP"
 msgstr ""
 
-#: admin/systems/system-list.xml:177
+#: admin/systems/system-list.xml:185
 msgid "MAC"
 msgstr ""
 
 #: admin/systems/system-list.xml:193
+#: admin/systems/systemSelect/selectSystem-list.xml:65
+#: admin/systems/class_componentGeneric.inc:62
+#: admin/systems/services/shares/class_serviceShare.inc:56
+#: admin/systems/class_workstationGeneric.inc:160
+#: admin/systems/serverService-list.xml:35
+#: admin/systems/class_mobilePhoneGeneric.inc:64
+#: admin/systems/class_printGeneric.inc:1020 admin/systems/printer.tpl.c:8
+#: admin/systems/printer.tpl.c:17
+msgid "Description"
+msgstr "描述"
+
+#: admin/systems/system-list.xml:201
 #: admin/systems/services/ntp/class_serviceNTP.inc:32
 #: admin/systems/services/shares/class_serviceShare.inc:31
 #: admin/systems/services/terminal/class_serviceTerminal.inc:34
@@ -797,45 +386,64 @@ msgstr ""
 msgid "Services"
 msgstr "服务"
 
-#: admin/systems/system-list.xml:250
+#: admin/systems/system-list.xml:209
+msgid "Release"
+msgstr "发行"
+
+#: admin/systems/system-list.xml:217
+#: admin/systems/phoneSelect/phoneSelect-list.xml:70
+#: admin/systems/serverService-list.xml:43
+msgid "Actions"
+msgstr "动作"
+
+#: admin/systems/system-list.xml:228 admin/systems/serverService-list.xml:54
+msgid "Create"
+msgstr "创建"
+
+#: admin/systems/system-list.xml:258
 msgid "winStation"
 msgstr ""
 
-#: admin/systems/system-list.xml:258
+#: admin/systems/system-list.xml:266
 msgid "Network printer"
 msgstr "网络打印机"
 
-#: admin/systems/system-list.xml:274
+#: admin/systems/system-list.xml:282
 #: admin/systems/class_componentGeneric.inc:39
 #: admin/systems/class_componentGeneric.inc:41
 msgid "Network device"
 msgstr ""
 
-#: admin/systems/system-list.xml:282
+#: admin/systems/system-list.xml:290
 msgid "Mobile Phone"
 msgstr ""
 
-#: admin/systems/system-list.xml:294
+#: admin/systems/system-list.xml:310
 msgid "Trigger action"
 msgstr ""
 
-#: admin/systems/system-list.xml:301
+#: admin/systems/system-list.xml:317
 msgid "Schedule action"
 msgstr ""
 
-#: admin/systems/system-list.xml:314
+#: admin/systems/system-list.xml:330
 msgid "Activate systems"
 msgstr ""
 
-#: admin/systems/system-list.xml:351
+#: admin/systems/system-list.xml:337 admin/systems/serverService-list.xml:69
+#: admin/systems/printer.tpl.c:35
+msgid "Remove"
+msgstr "删除"
+
+#: admin/systems/system-list.xml:367
 msgid "Create ISO"
 msgstr ""
 
-#: admin/systems/system-list.xml:363
+#: admin/systems/system-list.xml:379
 msgid "Edit role"
 msgstr ""
 
-#: admin/systems/system-list.xml:376
+#: admin/systems/system-list.xml:392
 msgid "Remove system"
 msgstr ""
 
@@ -848,9 +456,25 @@ msgstr ""
 msgid "Please select a printer or press cancel."
 msgstr "请选择一个打印机或者取消。"
 
+#: admin/systems/class_componentGeneric.inc:36
+#: admin/systems/services/ntp/class_serviceNTP.inc:44
+#: admin/systems/class_serverGeneric.inc:46
+#: admin/systems/class_workstationGeneric.inc:458
+#: admin/systems/class_mobilePhoneGeneric.inc:38
+#: admin/systems/class_terminalGeneric.inc:81
+#: admin/ogroups/goto/termgroup.tpl.c:8
+msgid "Generic"
+msgstr "通用配置"
+
 #: admin/systems/class_componentGeneric.inc:37
 msgid "Component generic"
 msgstr ""
+
+#: admin/systems/class_componentGeneric.inc:55
+#: admin/systems/class_workstationGeneric.inc:151
+#: admin/systems/class_mobilePhoneGeneric.inc:57
+msgid "Properties"
+msgstr "属性"
 
 #: admin/systems/class_componentGeneric.inc:58
 msgid "The name of the component"
@@ -933,12 +557,33 @@ msgid "Special option(s) for this share"
 msgstr ""
 
 #: admin/systems/services/shares/class_serviceShare.inc:103
+#: admin/systems/class_systemManagement.inc:349
+#: admin/systems/class_systemManagement.inc:623
+#: admin/systems/class_systemManagement.inc:638
+#: admin/systems/class_serverService.inc:226
+#: admin/systems/class_serverService.inc:271
+#: admin/systems/class_serverService.inc:395
+#: admin/systems/class_networkSettings.inc:296
+#: admin/systems/class_networkSettings.inc:328
+#: admin/systems/class_networkSettings.inc:579
+#: admin/systems/class_networkSettings.inc:586
+#: admin/systems/class_networkSettings.inc:592
+#: admin/systems/class_networkSettings.inc:599
+#: admin/systems/class_printGeneric.inc:474
+#: admin/systems/class_printGeneric.inc:654
+#: admin/systems/class_printGeneric.inc:661
+#: admin/systems/class_printGeneric.inc:720
+#: admin/systems/class_printGeneric.inc:1101
+#: admin/systems/class_printGeneric.inc:1112
+msgid "Error"
+msgstr "错误"
+
+#: admin/systems/services/shares/class_serviceShare.inc:103
 msgid "You need to configure encodings first"
 msgstr ""
 
 #: admin/systems/services/shares/class_serviceShare.inc:110
-#: admin/applications/remove.tpl.c:2 admin/ogroups/goto/termgroup.tpl.c:2
-#: admin/mimetypes/remove.tpl.c:2 admin/systems/remove.tpl.c:2
+#: admin/ogroups/goto/termgroup.tpl.c:2 admin/systems/remove.tpl.c:2
 #: admin/systems/ppd/remove_ppd.tpl.c:2
 msgid "Warning"
 msgstr "警告"
@@ -1057,8 +702,8 @@ msgstr ""
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:78
 msgid ""
-"Specifies what checks to perform on server certificates in a TLS session, if "
-"any"
+"Specifies what checks to perform on server certificates in a TLS session, if"
+" any"
 msgstr ""
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:83
@@ -1108,56 +753,60 @@ msgstr ""
 msgid "Select this number"
 msgstr ""
 
-#: admin/systems/class_systemManagement.inc:234
+#: admin/systems/class_systemManagement.inc:184
+msgid "Back"
+msgstr "返回"
+
+#: admin/systems/class_systemManagement.inc:230
 msgid "Creating the image failed. Please see the report below."
 msgstr "创建图片错误。请检查下面的报告。"
 
-#: admin/systems/class_systemManagement.inc:239
+#: admin/systems/class_systemManagement.inc:235
 #, php-format
 msgid "Command '%s', specified for ISO creation doesn't seem to exist."
 msgstr "命令 '%s'，用于创建 ISO 好像并不存在。"
 
-#: admin/systems/class_systemManagement.inc:410
-#: admin/systems/class_systemManagement.inc:486
-#: admin/systems/class_systemManagement.inc:859
-#: admin/systems/class_systemManagement.inc:906
-#: admin/systems/class_systemManagement.inc:927
+#: admin/systems/class_systemManagement.inc:406
+#: admin/systems/class_systemManagement.inc:482
+#: admin/systems/class_systemManagement.inc:855
+#: admin/systems/class_systemManagement.inc:902
+#: admin/systems/class_systemManagement.inc:923
 msgid "Permission"
-msgstr ""
+msgstr "允许"
 
-#: admin/systems/class_systemManagement.inc:680
-#: admin/systems/class_printGeneric.inc:132
-#: admin/systems/class_printGeneric.inc:1068
+#: admin/systems/class_systemManagement.inc:676
+#: admin/systems/class_printGeneric.inc:131
+#: admin/systems/class_printGeneric.inc:1061
 msgid "Internal error"
 msgstr ""
 
-#: admin/systems/class_systemManagement.inc:680
+#: admin/systems/class_systemManagement.inc:676
 msgid "Cannot set mode to 'active'!"
 msgstr ""
 
-#: admin/systems/class_systemManagement.inc:859
+#: admin/systems/class_systemManagement.inc:855
 #, php-format
 msgid "You are not allowed to create a snapshot for %s."
 msgstr ""
 
-#: admin/systems/class_systemManagement.inc:906
-#: admin/systems/class_systemManagement.inc:927
+#: admin/systems/class_systemManagement.inc:902
+#: admin/systems/class_systemManagement.inc:923
 #, php-format
 msgid "You are not allowed to restore a snapshot for %s."
 msgstr ""
 
-#: admin/systems/class_systemManagement.inc:1122
+#: admin/systems/class_systemManagement.inc:1127
 #, php-format
 msgid "Inherited from %s"
 msgstr ""
 
-#: admin/systems/class_systemManagement.inc:1178
+#: admin/systems/class_systemManagement.inc:1183
 msgid "Systems Management"
 msgstr ""
 
 #: admin/systems/class_serverGeneric.inc:34
 msgid "server"
-msgstr ""
+msgstr "服务器"
 
 #: admin/systems/class_serverGeneric.inc:47
 msgid "Server generic"
@@ -1167,25 +816,25 @@ msgstr ""
 msgid "Server services"
 msgstr ""
 
-#: admin/systems/class_serverService.inc:332
+#: admin/systems/class_serverService.inc:333
 msgid "Filter error"
 msgstr ""
 
-#: admin/systems/class_serverService.inc:332
+#: admin/systems/class_serverService.inc:333
 msgid "The filter is incomplete!"
 msgstr ""
 
-#: admin/systems/class_serverService.inc:388
+#: admin/systems/class_serverService.inc:389
 msgid "Information"
 msgstr "提示信息"
 
-#: admin/systems/class_serverService.inc:388
+#: admin/systems/class_serverService.inc:389
 msgid "Cannot update service status until it has been saved!"
 msgstr ""
 
-#: admin/systems/class_serverService.inc:416
-#: admin/systems/class_serverService.inc:425
-#: admin/systems/class_serverService.inc:436
+#: admin/systems/class_serverService.inc:417
+#: admin/systems/class_serverService.inc:426
+#: admin/systems/class_serverService.inc:437
 #, php-format
 msgid "Could not get execute action %s on service %s."
 msgstr ""
@@ -1212,7 +861,7 @@ msgid "Wake up"
 msgstr "唤醒"
 
 #: admin/systems/class_workstationGeneric.inc:144
-#: admin/systems/class_printGeneric.inc:607
+#: admin/systems/class_printGeneric.inc:606
 msgid "workstation"
 msgstr ""
 
@@ -1227,7 +876,7 @@ msgid "A short description of the %s"
 msgstr ""
 
 #: admin/systems/class_workstationGeneric.inc:166
-#: admin/systems/class_printGeneric.inc:1027
+#: admin/systems/class_printGeneric.inc:1021
 msgid "Location"
 msgstr "位置"
 
@@ -1300,11 +949,7 @@ msgstr "行动"
 msgid "Select action to execute for this terminal"
 msgstr "选择这个终端要执行的动作"
 
-#: admin/systems/class_workstationGeneric.inc:428
-msgid "A valid LDAP server assignement is missing!"
-msgstr ""
-
-#: admin/systems/class_workstationGeneric.inc:471
+#: admin/systems/class_workstationGeneric.inc:459
 msgid "Workstation generic"
 msgstr ""
 
@@ -1483,9 +1128,9 @@ msgid "DHCP configuration"
 msgstr ""
 
 #: admin/systems/class_terminalGeneric.inc:34
-#: admin/systems/class_printGeneric.inc:605
+#: admin/systems/class_printGeneric.inc:604
 msgid "terminal"
-msgstr ""
+msgstr "终端"
 
 #: admin/systems/class_terminalGeneric.inc:42
 #, php-format
@@ -1633,13 +1278,17 @@ msgstr "打印机 ppd 选择。"
 msgid "delete"
 msgstr "删除"
 
+#: admin/systems/ppd/class_printerPPDSelectionDialog.inc:171
+msgid "back"
+msgstr "返回"
+
 #: admin/systems/ppd/class_printerPPDDialog.inc:92
 #, php-format
 msgid "Cannot open PPD '%s'!"
 msgstr ""
 
 #: admin/systems/ppd/class_printerPPDDialog.inc:116
-#: admin/systems/class_printGeneric.inc:589
+#: admin/systems/class_printGeneric.inc:588
 msgid "Can't get ppd informations."
 msgstr "无法获取 ppd 信息。"
 
@@ -1721,250 +1370,145 @@ msgstr "启动"
 msgid "Terminal startup"
 msgstr ""
 
-#: admin/systems/class_printGeneric.inc:132
+#: admin/systems/class_printGeneric.inc:131
 #, php-format
 msgid ""
 "Cannot determine a valid department for this object. Setting base to '%s'!"
 msgstr ""
 
-#: admin/systems/class_printGeneric.inc:312
-#: admin/systems/class_printGeneric.inc:320
-#: admin/systems/class_printGeneric.inc:325
-#: admin/systems/class_printGeneric.inc:375
-#: admin/systems/class_printGeneric.inc:391
-#: admin/systems/class_printGeneric.inc:394
+#: admin/systems/class_printGeneric.inc:311
+#: admin/systems/class_printGeneric.inc:319
+#: admin/systems/class_printGeneric.inc:324
+#: admin/systems/class_printGeneric.inc:374
+#: admin/systems/class_printGeneric.inc:390
+#: admin/systems/class_printGeneric.inc:393
 msgid "Add printer extension"
 msgstr "添加打印机扩展"
 
-#: admin/systems/class_printGeneric.inc:313
+#: admin/systems/class_printGeneric.inc:312
 msgid ""
 "Could not initialize printer tab, parameter parent was missing while "
 "construction."
 msgstr ""
 
-#: admin/systems/class_printGeneric.inc:321
+#: admin/systems/class_printGeneric.inc:320
 msgid "This is a workstation template, printer tab is disabled."
 msgstr "这是一个工作站模板，打印机页被禁用。"
 
-#: admin/systems/class_printGeneric.inc:326
+#: admin/systems/class_printGeneric.inc:325
 msgid "This is a terminal template, printer tab is disabled."
 msgstr "这是一个终端模板，打印机页被禁用。"
 
-#: admin/systems/class_printGeneric.inc:368
-#: admin/systems/class_printGeneric.inc:376
-#: admin/systems/class_printGeneric.inc:384
-#: admin/systems/class_printGeneric.inc:387
-#: admin/systems/class_printGeneric.inc:392
-#: admin/systems/class_printGeneric.inc:395
+#: admin/systems/class_printGeneric.inc:367
+#: admin/systems/class_printGeneric.inc:375
+#: admin/systems/class_printGeneric.inc:383
+#: admin/systems/class_printGeneric.inc:386
+#: admin/systems/class_printGeneric.inc:391
+#: admin/systems/class_printGeneric.inc:394
 msgid "printer"
 msgstr ""
 
-#: admin/systems/class_printGeneric.inc:376
+#: admin/systems/class_printGeneric.inc:375
 msgid ""
 "You can't enable it while 'cn' is not present in entry. Possibly you are "
 "currently creating a new terminal template."
 msgstr ""
 
-#: admin/systems/class_printGeneric.inc:383
-#: admin/systems/class_printGeneric.inc:386
+#: admin/systems/class_printGeneric.inc:382
+#: admin/systems/class_printGeneric.inc:385
 msgid "Remove printer extension"
 msgstr "删除打印机扩展"
 
-#: admin/systems/class_printGeneric.inc:579
+#: admin/systems/class_printGeneric.inc:578
 #, php-format
 msgid "Your currently selected PPD file '%s' doesn't exist."
 msgstr "您当前选择的 PPD 文件 '%s' 不存在。"
 
-#: admin/systems/class_printGeneric.inc:585
+#: admin/systems/class_printGeneric.inc:584
 msgid "Not defined"
 msgstr ""
 
-#: admin/systems/class_printGeneric.inc:605
-#: admin/systems/class_printGeneric.inc:607
+#: admin/systems/class_printGeneric.inc:604
+#: admin/systems/class_printGeneric.inc:606
 #, php-format
 msgid "This printer belongs to %s. You can't rename this printer."
 msgstr ""
 
-#: admin/systems/class_printGeneric.inc:656
-#: admin/systems/class_printGeneric.inc:663
+#: admin/systems/class_printGeneric.inc:654
+#: admin/systems/class_printGeneric.inc:661
 msgid "Object is no printer!"
 msgstr ""
 
-#: admin/systems/class_printGeneric.inc:775 admin/systems/printer.tpl.c:26
+#: admin/systems/class_printGeneric.inc:769 admin/systems/printer.tpl.c:23
 msgid "Printer URL"
 msgstr "打印机 URL"
 
-#: admin/systems/class_printGeneric.inc:998
-#: admin/systems/class_printGeneric.inc:1000
+#: admin/systems/class_printGeneric.inc:992
+#: admin/systems/class_printGeneric.inc:994
 msgid "Group"
 msgstr "组"
 
-#: admin/systems/class_printGeneric.inc:1003
+#: admin/systems/class_printGeneric.inc:997
 msgid "User"
 msgstr "用户"
 
-#: admin/systems/class_printGeneric.inc:1015
+#: admin/systems/class_printGeneric.inc:1009
 msgid "Print generic"
 msgstr ""
 
-#: admin/systems/class_printGeneric.inc:1028
+#: admin/systems/class_printGeneric.inc:1019 admin/systems/printer.tpl.c:11
+#: admin/systems/systemSelect/selectSystem-list.tpl.c:2
+#: admin/systems/phoneSelect/phoneSelect-list.tpl.c:2
+msgid "Base"
+msgstr "位置"
+
+#: admin/systems/class_printGeneric.inc:1022
 msgid "LabeledURL"
 msgstr ""
 
-#: admin/systems/class_printGeneric.inc:1029
+#: admin/systems/class_printGeneric.inc:1023
 msgid "Printer PPD"
 msgstr ""
 
-#: admin/systems/class_printGeneric.inc:1030 admin/systems/printer.tpl.c:41
+#: admin/systems/class_printGeneric.inc:1024 admin/systems/printer.tpl.c:38
 msgid "Permissions"
 msgstr "允许"
 
-#: admin/systems/class_printGeneric.inc:1031
-msgid "Comments"
-msgstr ""
-
-#: admin/systems/class_printGeneric.inc:1033
+#: admin/systems/class_printGeneric.inc:1026
 msgid "Windows inf file"
 msgstr ""
 
-#: admin/systems/class_printGeneric.inc:1034
+#: admin/systems/class_printGeneric.inc:1027
 msgid "Windows driver dir"
 msgstr ""
 
-#: admin/systems/class_printGeneric.inc:1035 admin/systems/printer.tpl.c:65
+#: admin/systems/class_printGeneric.inc:1028 admin/systems/printer.tpl.c:62
 msgid "Driver printer name"
 msgstr ""
 
-#: admin/systems/class_printGeneric.inc:1051
-#: admin/systems/class_printGeneric.inc:1073
+#: admin/systems/class_printGeneric.inc:1044
+#: admin/systems/class_printGeneric.inc:1066
 msgid "Permission error"
 msgstr ""
 
-#: admin/systems/class_printGeneric.inc:1051
-#: admin/systems/class_printGeneric.inc:1073
+#: admin/systems/class_printGeneric.inc:1044
+#: admin/systems/class_printGeneric.inc:1066
 msgid "printer user"
 msgstr ""
 
-#: admin/systems/class_printGeneric.inc:1068
+#: admin/systems/class_printGeneric.inc:1061
 #, php-format
 msgid "Illegal member type '%s'!"
 msgstr ""
 
-#: admin/systems/class_printGeneric.inc:1108
+#: admin/systems/class_printGeneric.inc:1101
 #, php-format
 msgid "'%s' is already used!"
 msgstr ""
 
-#: admin/systems/class_printGeneric.inc:1119
+#: admin/systems/class_printGeneric.inc:1112
 #, php-format
 msgid "'%s' does not exist!"
-msgstr ""
-
-#: admin/applications/application-filter.tpl.c:2
-#: admin/mimetypes/mimetype-filter.tpl.c:2
-#: admin/systems/systemSelect/selectSystem-filter.tpl.c:2
-#: admin/systems/phoneSelect/phoneSelect-filter.tpl.c:2
-#: admin/systems/serverService-filter.tpl.c:2
-#: admin/systems/system-filter.tpl.c:2
-msgid "Filter"
-msgstr "过滤器"
-
-#: admin/applications/remove.tpl.c:5 admin/mimetypes/remove.tpl.c:5
-msgid ""
-"Please double check if you really want to do this since there is no way for "
-"FusionDirectory to get your data back."
-msgstr ""
-
-#: admin/applications/remove.tpl.c:8 admin/mimetypes/remove.tpl.c:8
-#: admin/systems/remove.tpl.c:8
-msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr "所以，如果您确定，请按“删除”继续，否则按“取消”退出。"
-
-#: admin/groups/apps/edit_entry.tpl.c:2
-msgid "Folder image"
-msgstr ""
-
-#: admin/groups/apps/edit_entry.tpl.c:5
-msgid "Could not load image."
-msgstr ""
-
-#: admin/groups/apps/edit_entry.tpl.c:8
-msgid "None"
-msgstr ""
-
-#: admin/groups/apps/edit_entry.tpl.c:11
-msgid "Upload image"
-msgstr ""
-
-#: admin/groups/apps/edit_entry.tpl.c:17
-msgid "Reset image"
-msgstr ""
-
-#: admin/groups/apps/edit_entry.tpl.c:20
-msgid "Reset"
-msgstr ""
-
-#: admin/groups/apps/edit_entry.tpl.c:23
-msgid "Application settings"
-msgstr "应用程序设置"
-
-#: admin/groups/apps/edit_entry.tpl.c:29
-msgid "Application options"
-msgstr "应用程序选项"
-
-#: admin/groups/apps/app_list.tpl.c:5
-msgid "Copy menu"
-msgstr ""
-
-#: admin/groups/apps/app_list.tpl.c:8
-msgid "Paste menu from"
-msgstr ""
-
-#: admin/groups/apps/app_list.tpl.c:11
-msgid "Delete menu"
-msgstr ""
-
-#: admin/groups/apps/app_list.tpl.c:17 admin/groups/apps/app_list.tpl.c:20
-msgid "Folder"
-msgstr ""
-
-#: admin/groups/apps/app_list.tpl.c:23 admin/groups/apps/app_list.tpl.c:35
-#: admin/groups/apps/app_list.tpl.c:47
-msgid "Move up"
-msgstr "向上移动"
-
-#: admin/groups/apps/app_list.tpl.c:26 admin/groups/apps/app_list.tpl.c:38
-#: admin/groups/apps/app_list.tpl.c:50
-msgid "Move down"
-msgstr "向下移动"
-
-#: admin/groups/apps/app_list.tpl.c:32 admin/groups/apps/app_list.tpl.c:56
-#: admin/systems/printer.tpl.c:35
-msgid "Edit"
-msgstr "编辑"
-
-#: admin/groups/apps/app_list.tpl.c:44
-msgid "Entry"
-msgstr ""
-
-#: admin/groups/apps/app_list.tpl.c:59
-msgid "add to"
-msgstr ""
-
-#: admin/groups/apps/app_list.tpl.c:62
-msgid "Add selected category to this folder.."
-msgstr ""
-
-#: admin/groups/apps/app_list.tpl.c:65
-msgid "Separator"
-msgstr ""
-
-#: admin/groups/apps/app_list.tpl.c:68
-msgid "Add a separator to this folder."
-msgstr ""
-
-#: admin/groups/apps/app_list.tpl.c:71
-msgid "Add selected applications to this folder."
 msgstr ""
 
 #: admin/ogroups/goto/termgroup.tpl.c:5
@@ -1972,9 +1516,7 @@ msgid ""
 "Actions you choose here influence all systems in this object group. "
 "Additionally, all values editable here can be inherited by the clients "
 "assigned to this object group."
-msgstr ""
-"您这里选择的动作会影响这个对象组内所有系统。而且，所有这里可以修改的值都可以"
-"被分配到该对象组的对象继承。"
+msgstr "您这里选择的动作会影响这个对象组内所有系统。而且，所有这里可以修改的值都可以被分配到该对象组的对象继承。"
 
 #: admin/ogroups/goto/termgroup.tpl.c:11
 msgid "NTP server"
@@ -2000,77 +1542,9 @@ msgstr "选择要用的 NFS 根文件系统。"
 msgid "Choose NFS filesystem to place swap files on"
 msgstr "选择放置交换文件的 NFS 文件系统"
 
-#: admin/mimetypes/paste_generic.tpl.c:8 admin/mimetypes/generic.tpl.c:8
-msgid "Please enter a name for the mime type here"
-msgstr ""
-
-#: admin/mimetypes/paste_generic.tpl.c:14
-msgid "Please specify a description for this mime type here"
-msgstr ""
-
-#: admin/mimetypes/generic.tpl.c:14
-msgid "Categorize this mime type"
-msgstr ""
-
-#: admin/mimetypes/generic.tpl.c:20
-msgid "Please specify a description"
-msgstr ""
-
-#: admin/mimetypes/generic.tpl.c:26
-msgid "Choose subtree to place application in"
-msgstr "选择放置应用程序的子树"
-
-#: admin/mimetypes/generic.tpl.c:29
-msgid "Select a base"
-msgstr "选择一个位置"
-
-#: admin/mimetypes/generic.tpl.c:35 admin/mimetypes/generic.tpl.c:38
-msgid "Mime icon"
-msgstr ""
-
-#: admin/mimetypes/generic.tpl.c:41
-msgid "Update"
-msgstr "更新"
-
-#: admin/mimetypes/generic.tpl.c:44
-msgid "Update mime type icon"
-msgstr ""
-
-#: admin/mimetypes/generic.tpl.c:47 admin/mimetypes/generic.tpl.c:50
-msgid "Left click"
-msgstr ""
-
-#: admin/mimetypes/generic.tpl.c:56
-msgid "Please specify a new file pattern"
-msgstr ""
-
-#: admin/mimetypes/generic.tpl.c:59
-msgid "Add a new file pattern"
-msgstr ""
-
-#: admin/mimetypes/generic.tpl.c:65 admin/mimetypes/generic.tpl.c:89
-msgid "Enter an application name here"
-msgstr ""
-
-#: admin/mimetypes/generic.tpl.c:68 admin/mimetypes/generic.tpl.c:92
-msgid "Add application"
-msgstr ""
-
-#: admin/mimetypes/generic.tpl.c:71 admin/mimetypes/generic.tpl.c:74
-msgid "Embedding"
-msgstr ""
-
-#: admin/mimetypes/generic.tpl.c:77
-msgid "Show file in embedded viewer"
-msgstr ""
-
-#: admin/mimetypes/generic.tpl.c:80
-msgid "Show file in external viewer"
-msgstr ""
-
-#: admin/mimetypes/generic.tpl.c:83
-msgid "Ask whether to save to local disk"
-msgstr ""
+#: admin/ogroups/goto/termgroup.tpl.c:47
+msgid "Execute"
+msgstr "执行"
 
 #: admin/systems/printer.tpl.c:2
 msgid "General"
@@ -2081,52 +1555,59 @@ msgid "Printer name"
 msgstr "打印机名称"
 
 #: admin/systems/printer.tpl.c:14
-msgid "Comment"
-msgstr "注释"
-
-#: admin/systems/printer.tpl.c:17
 msgid "Details"
 msgstr "详细"
 
-#: admin/systems/printer.tpl.c:23
+#: admin/systems/printer.tpl.c:20
 msgid "Printer location"
 msgstr "打印机位置"
 
-#: admin/systems/printer.tpl.c:29
+#: admin/systems/printer.tpl.c:26
 msgid "PPD Provider"
 msgstr ""
 
-#: admin/systems/printer.tpl.c:32
+#: admin/systems/printer.tpl.c:29
 msgid "Driver"
 msgstr "驱动"
 
-#: admin/systems/printer.tpl.c:44
+#: admin/systems/printer.tpl.c:32
+msgid "Edit"
+msgstr "编辑"
+
+#: admin/systems/printer.tpl.c:41
 msgid "Users which are allowed to use this printer"
 msgstr "允许使用该打印机的用户"
 
-#: admin/systems/printer.tpl.c:47
+#: admin/systems/printer.tpl.c:44
 msgid "Users"
 msgstr "用户"
 
-#: admin/systems/printer.tpl.c:50
+#: admin/systems/printer.tpl.c:47
 msgid "Users which are allowed to administrate this printer"
 msgstr "允许管理该打印机的用户"
 
-#: admin/systems/printer.tpl.c:53
+#: admin/systems/printer.tpl.c:50
 msgid "Admins"
 msgstr "管理员"
 
-#: admin/systems/printer.tpl.c:56
+#: admin/systems/printer.tpl.c:53
 msgid "Windows paths"
 msgstr ""
 
-#: admin/systems/printer.tpl.c:59
+#: admin/systems/printer.tpl.c:56
 msgid "Printer windows inf file"
 msgstr ""
 
-#: admin/systems/printer.tpl.c:62
+#: admin/systems/printer.tpl.c:59
 msgid "Printer driver directory"
 msgstr ""
+
+#: admin/systems/systemSelect/selectSystem-filter.tpl.c:2
+#: admin/systems/phoneSelect/phoneSelect-filter.tpl.c:2
+#: admin/systems/serverService-filter.tpl.c:2
+#: admin/systems/system-filter.tpl.c:2
+msgid "Filter"
+msgstr "过滤器"
 
 #: admin/systems/systemSelect/selectSystem-filter.tpl.c:5
 #: admin/systems/system-filter.tpl.c:5
@@ -2183,8 +1664,8 @@ msgstr ""
 
 #: admin/systems/SelectDeviceType.tpl.c:5
 msgid ""
-"Please select a system type and an optional bundle of predefined settings to "
-"be inherited."
+"Please select a system type and an optional bundle of predefined settings to"
+" be inherited."
 msgstr "请选择一个系统类型以及一个要继承的可选的预定义设置。"
 
 #: admin/systems/SelectDeviceType.tpl.c:8
@@ -2222,20 +1703,18 @@ msgstr ""
 
 #: admin/systems/gencd.tpl.c:2
 msgid "CD-Install-Image generation"
-msgstr ""
+msgstr "创建 CD 安装镜像"
 
 #: admin/systems/gencd.tpl.c:5
 msgid ""
 "This option enables you to generate FAI install CD images for the selected "
 "workstation. The procedure may take about 10 minutes to complete, so please "
 "be patient after pressing the 'Create ISO-Image' button."
-msgstr ""
-"这个选项使您能够为选择的工作站创建 FAI 安装光盘镜像。这个过程可能需要 10 分"
-"钟，所以请在按下“创建 ISO 镜像”后耐心等待。"
+msgstr "这个选项使您能够为选择的工作站创建 FAI 安装光盘镜像。这个过程可能需要 10 分钟，所以请在按下“创建 ISO 镜像”后耐心等待。"
 
 #: admin/systems/gencd.tpl.c:8
 msgid "Create ISO-Image"
-msgstr ""
+msgstr "创建 ISO 镜像"
 
 #: admin/systems/system-filter.tpl.c:14
 msgid "Show network printer"
@@ -2249,40 +1728,40 @@ msgstr ""
 msgid "Show network devices"
 msgstr "显示网络设备"
 
-#: admin/systems/selectUserToPrinterDialog.tpl.c:2
-msgid "Select printer to add"
-msgstr "选择要添加的打印机"
+#: admin/systems/system-filter.tpl.c:29
+msgid "Show IPMI interfaces"
+msgstr ""
 
-#: admin/systems/selectUserToPrinterDialog.tpl.c:5
+#: admin/systems/selectUserToPrinterDialog.tpl.c:2
 msgid "Select entries to add"
 msgstr "选择要添加的条目"
 
-#: admin/systems/selectUserToPrinterDialog.tpl.c:8
+#: admin/systems/selectUserToPrinterDialog.tpl.c:5
 #: admin/systems/ppd/printerPPDSelectionDialog.tpl.c:5
 msgid "Filters"
 msgstr "过滤器"
 
-#: admin/systems/selectUserToPrinterDialog.tpl.c:11
+#: admin/systems/selectUserToPrinterDialog.tpl.c:8
 msgid "Select to search within subtrees"
 msgstr "选择在子树中查询"
 
-#: admin/systems/selectUserToPrinterDialog.tpl.c:14
+#: admin/systems/selectUserToPrinterDialog.tpl.c:11
 msgid "Search in subtrees"
 msgstr ""
 
-#: admin/systems/selectUserToPrinterDialog.tpl.c:17
+#: admin/systems/selectUserToPrinterDialog.tpl.c:14
 msgid "Display members of department"
 msgstr "显示成员的部门"
 
-#: admin/systems/selectUserToPrinterDialog.tpl.c:20
+#: admin/systems/selectUserToPrinterDialog.tpl.c:17
 msgid "Choose the department the search will be based on"
 msgstr "选择一个部门来做查询"
 
-#: admin/systems/selectUserToPrinterDialog.tpl.c:23
+#: admin/systems/selectUserToPrinterDialog.tpl.c:20
 msgid "Display members matching"
 msgstr "显示匹配的成员"
 
-#: admin/systems/selectUserToPrinterDialog.tpl.c:26
+#: admin/systems/selectUserToPrinterDialog.tpl.c:23
 msgid "Regular expression for matching member names"
 msgstr "匹配成员名的正则表达式"
 
@@ -2340,10 +1819,14 @@ msgstr "Dns 记录"
 
 #: admin/systems/remove.tpl.c:5
 msgid ""
-"This includes all account data, system access rules, imap settings, etc. for "
-"this user. Please double check if your really want to do this since there is "
-"no way for FusionDirectory to get your data back."
+"This includes all account data, system access rules, imap settings, etc. for"
+" this user. Please double check if your really want to do this since there "
+"is no way for FusionDirectory to get your data back."
 msgstr ""
+
+#: admin/systems/remove.tpl.c:8
+msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
+msgstr "所以，如果您确定，请按“删除”继续，否则按“取消”退出。"
 
 #: admin/systems/ppd/printerPPDSelectionDialog.tpl.c:2
 msgid "Select objects to add"
@@ -2377,6 +1860,14 @@ msgstr "选择"
 msgid "New driver"
 msgstr "新驱动"
 
+#: admin/systems/ppd/printerPPDDialog.tpl.c:14
+msgid "Upload"
+msgstr "上传"
+
+#: admin/systems/ppd/printerPPDDialog.tpl.c:17
+msgid "Options"
+msgstr "选项"
+
 #: admin/systems/ppd/remove_ppd.tpl.c:5
 msgid "The ppd file will be removed from the server and can not be restored."
 msgstr "服务器中的 ppd 文件将被删除并且不能被恢复。"
@@ -2388,11 +1879,9 @@ msgstr "您的浏览器不支持 iframes。"
 #: admin/systems/password.tpl.c:2
 msgid ""
 "To change the terminal root password use the fields below. The changes take "
-"effect during the next reboot. Please memorize the new password, because you "
-"wouldn't be able to log in."
-msgstr ""
-"用下面的字段来修改终端 root 口令。这项修改将在下次重启之后起作用。请记住新口"
-"令，否则您无法登录。"
+"effect during the next reboot. Please memorize the new password, because you"
+" wouldn't be able to log in."
+msgstr "用下面的字段来修改终端 root 口令。这项修改将在下次重启之后起作用。请记住新口令，否则您无法登录。"
 
 #: admin/systems/password.tpl.c:5
 msgid "Leave fields blank for password inheritance from default entries."
@@ -2417,36 +1906,3 @@ msgstr ""
 #: admin/systems/password.tpl.c:20
 msgid "Set password"
 msgstr "设置口令"
-
-#~ msgid "Device"
-#~ msgstr "设备"
-
-#~ msgid "Device name"
-#~ msgstr "设备名称"
-
-#~ msgid "Devices"
-#~ msgstr "设备"
-
-#~ msgid "Serial"
-#~ msgstr "串行"
-
-#~ msgid "Serial number"
-#~ msgstr "系列号"
-
-#~ msgid "(iSerial)"
-#~ msgstr "(iSerial)"
-
-#~ msgid "(idVendor)"
-#~ msgstr "(idVendor)"
-
-#~ msgid "(idProduct)"
-#~ msgstr "(idProduct)"
-
-#~ msgid "Hotplug devices"
-#~ msgstr "热插拔设备"
-
-#~ msgid "Branches"
-#~ msgstr "分支"
-
-#~ msgid "Current release"
-#~ msgstr "当前版本"

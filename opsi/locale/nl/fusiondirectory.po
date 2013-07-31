@@ -1,21 +1,20 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory\n"
+"Project-Id-Version: FusionDirectory-develop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-09 19:18+0200\n"
-"PO-Revision-Date: 2013-03-24 15:01+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Dutch (http://www.transifex.com/projects/p/FusionDirectory/"
-"language/nl/)\n"
-"Language: nl\n"
+"POT-Creation-Date: 2013-07-30 18:14+0200\n"
+"PO-Revision-Date: 2013-07-30 16:48+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Dutch (http://www.transifex.com/projects/p/FusionDirectory/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: config/opsi/class_opsiConfig.inc:28
@@ -28,7 +27,7 @@ msgstr ""
 
 #: config/opsi/class_opsiConfig.inc:42
 msgid "LDAP tree"
-msgstr ""
+msgstr "LDAP tree"
 
 #: config/opsi/class_opsiConfig.inc:45
 msgid "OPSI RDN"
@@ -52,7 +51,7 @@ msgid "Import"
 msgstr "Importeren"
 
 #: addons/opsi/class_opsiImport.inc:112
-#: admin/systems/opsi/class_opsiClient.inc:50
+#: admin/systems/opsi/class_opsiClient.inc:49
 msgid "OPSI Server"
 msgstr ""
 
@@ -80,7 +79,7 @@ msgid "Argonaut server is not available"
 msgstr ""
 
 #: addons/opsi/class_opsiImport.inc:282
-#: admin/systems/opsi/class_opsiClient.inc:148
+#: admin/systems/opsi/class_opsiClient.inc:147
 msgid "Could not update OPSI informations"
 msgstr ""
 
@@ -268,65 +267,34 @@ msgstr ""
 msgid "Edit OPSI client settings"
 msgstr ""
 
-#: admin/systems/opsi/class_opsiClient.inc:47
+#: admin/systems/opsi/class_opsiClient.inc:46
 msgid "OPSI Client"
 msgstr ""
 
-#: admin/systems/opsi/class_opsiClient.inc:50
+#: admin/systems/opsi/class_opsiClient.inc:49
 msgid "The OPSI Server this client is connected to"
 msgstr ""
 
-#: admin/systems/opsi/class_opsiClient.inc:54
+#: admin/systems/opsi/class_opsiClient.inc:53
 msgid "OPSI Profile"
 msgstr ""
 
-#: admin/systems/opsi/class_opsiClient.inc:54
+#: admin/systems/opsi/class_opsiClient.inc:53
 msgid "The OPSI Profile to apply to this client"
 msgstr ""
 
-#: admin/systems/opsi/class_opsiClient.inc:96
+#: admin/systems/opsi/class_opsiClient.inc:95
 msgid "Could not get macAddress for OPSI server !"
 msgstr ""
 
-#: admin/systems/opsi/class_opsiClient.inc:105
-#: admin/systems/opsi/class_opsiClient.inc:191
+#: admin/systems/opsi/class_opsiClient.inc:104
+#: admin/systems/opsi/class_opsiClient.inc:190
 msgid "Could not remove OPSI informations"
 msgstr ""
 
 #: addons/opsi/opsiimport.tpl.c:2
 msgid ""
-"Warning : Once you import your OPSI hosts into FusionDirectory, they will be "
-"managed by it, so if you delete them or deactivate their OPSI tab, they will "
-"be removed from OPSI."
+"Warning : Once you import your OPSI hosts into FusionDirectory, they will be"
+" managed by it, so if you delete them or deactivate their OPSI tab, they "
+"will be removed from OPSI."
 msgstr ""
-
-#~ msgid "Filter"
-#~ msgstr "Filter"
-
-#~ msgid "Description"
-#~ msgstr "Omschrijving"
-
-#~ msgid "Actions"
-#~ msgstr "Acties"
-
-#~ msgid "Create"
-#~ msgstr "Aanmaken"
-
-#~ msgid "Remove"
-#~ msgstr "Verwijderen"
-
-#~ msgid "Warning"
-#~ msgstr "Waarschuwing"
-
-#~ msgid ""
-#~ "Please double check if you really want to do this since there is no way "
-#~ "for FusionDirectory to get your data back."
-#~ msgstr ""
-#~ "Verifieer aub dubbel of je dit echt wenst te doen want er is geen manier "
-#~ "voor FusionDirectory om je data terug te krijgen."
-
-#~ msgid ""
-#~ "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-#~ msgstr ""
-#~ "Indien u zeker bent drukt u dan 'Verwijderen' om door te gaan of "
-#~ "'Annuleren' om te annuleren."

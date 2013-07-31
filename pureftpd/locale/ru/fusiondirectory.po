@@ -1,24 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
-#  Valia V. Vaneeva <fattie@altlinux.ru>, 2004
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory\n"
+"Project-Id-Version: FusionDirectory-develop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-09 19:19+0200\n"
-"PO-Revision-Date: 2013-02-12 18:40+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Russian (http://www.transifex.com/projects/p/FusionDirectory/"
-"language/ru/)\n"
-"Language: ru\n"
+"POT-Creation-Date: 2013-07-30 18:14+0200\n"
+"PO-Revision-Date: 2013-07-30 16:50+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Russian (http://www.transifex.com/projects/p/FusionDirectory/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: personal/pureftpd/class_pureftpdAccount.inc:34
 msgid "Ftp"
@@ -32,85 +29,67 @@ msgstr ""
 msgid "Connectivity addon"
 msgstr ""
 
-#: personal/pureftpd/class_pureftpdAccount.inc:51
+#: personal/pureftpd/class_pureftpdAccount.inc:50
 msgid "Bandwidth"
 msgstr "Пропускная способность"
 
+#: personal/pureftpd/class_pureftpdAccount.inc:53
 #: personal/pureftpd/class_pureftpdAccount.inc:54
-#: personal/pureftpd/class_pureftpdAccount.inc:55
 msgid "Upload bandwidth"
 msgstr "Пропускная способность (на сервер)"
 
-#: personal/pureftpd/class_pureftpdAccount.inc:54
-#: personal/pureftpd/class_pureftpdAccount.inc:63
+#: personal/pureftpd/class_pureftpdAccount.inc:53
+#: personal/pureftpd/class_pureftpdAccount.inc:62
 msgid " (kb/sec)"
 msgstr ""
 
-#: personal/pureftpd/class_pureftpdAccount.inc:63
+#: personal/pureftpd/class_pureftpdAccount.inc:62
 msgid "Download bandwidth"
 msgstr "Пропускная способность (с сервера)"
 
-#: personal/pureftpd/class_pureftpdAccount.inc:64
+#: personal/pureftpd/class_pureftpdAccount.inc:63
 msgid "Download bandwidth in kb/sec"
 msgstr ""
 
-#: personal/pureftpd/class_pureftpdAccount.inc:74
+#: personal/pureftpd/class_pureftpdAccount.inc:73
 msgid "Ratio"
 msgstr "Отношение"
 
+#: personal/pureftpd/class_pureftpdAccount.inc:76
 #: personal/pureftpd/class_pureftpdAccount.inc:77
-#: personal/pureftpd/class_pureftpdAccount.inc:78
 msgid "Uploaded files"
 msgstr ""
 
+#: personal/pureftpd/class_pureftpdAccount.inc:85
 #: personal/pureftpd/class_pureftpdAccount.inc:86
-#: personal/pureftpd/class_pureftpdAccount.inc:87
 msgid "Downloaded files"
 msgstr ""
 
-#: personal/pureftpd/class_pureftpdAccount.inc:100
+#: personal/pureftpd/class_pureftpdAccount.inc:99
 msgid "Files"
 msgstr "Файлы"
 
-#: personal/pureftpd/class_pureftpdAccount.inc:101
+#: personal/pureftpd/class_pureftpdAccount.inc:100
 msgid "Quota files"
 msgstr ""
 
-#: personal/pureftpd/class_pureftpdAccount.inc:109
+#: personal/pureftpd/class_pureftpdAccount.inc:108
 msgid "Size"
 msgstr "Размер"
 
-#: personal/pureftpd/class_pureftpdAccount.inc:109
+#: personal/pureftpd/class_pureftpdAccount.inc:108
 msgid " (MB)"
 msgstr ""
 
-#: personal/pureftpd/class_pureftpdAccount.inc:110
+#: personal/pureftpd/class_pureftpdAccount.inc:109
 msgid "Files size"
 msgstr ""
 
-#: personal/pureftpd/class_pureftpdAccount.inc:120
+#: personal/pureftpd/class_pureftpdAccount.inc:119
 msgid "Miscellaneous"
 msgstr "Разное"
 
+#: personal/pureftpd/class_pureftpdAccount.inc:122
 #: personal/pureftpd/class_pureftpdAccount.inc:123
-#: personal/pureftpd/class_pureftpdAccount.inc:124
 msgid "Temporary disable FTP access"
 msgstr "Временно отключить доступ к FTP"
-
-#~ msgid "FTP account"
-#~ msgstr "Аккаунт FTP"
-
-#~ msgid "kb/s"
-#~ msgstr "Кб/с"
-
-#~ msgid "Quota"
-#~ msgstr "Квота"
-
-#~ msgid "MB"
-#~ msgstr "Мб"
-
-#~ msgid "Uploaded / downloaded files"
-#~ msgstr "Загрузка на сервер / с сервера"
-
-#~ msgid "Check to disable FTP Access"
-#~ msgstr "Отметьте, чтобы отключить доступ к FTP"

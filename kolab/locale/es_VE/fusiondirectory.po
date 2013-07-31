@@ -1,21 +1,20 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory\n"
+"Project-Id-Version: FusionDirectory-develop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-09 19:18+0200\n"
-"PO-Revision-Date: 2013-03-24 14:46+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Spanish (Venezuela) (http://www.transifex.com/projects/p/"
-"FusionDirectory/language/es_VE/)\n"
-"Language: es_VE\n"
+"POT-Creation-Date: 2013-07-30 18:14+0200\n"
+"PO-Revision-Date: 2013-07-30 16:44+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Spanish (Venezuela) (http://www.transifex.com/projects/p/FusionDirectory/language/es_VE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es_VE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: personal/kolab/class_kolabAccount.inc:82
@@ -26,83 +25,83 @@ msgstr "Kolab"
 msgid "Kolab account settings"
 msgstr "Configuración cuenta Kolab"
 
-#: personal/kolab/class_kolabAccount.inc:101
+#: personal/kolab/class_kolabAccount.inc:100
 msgid "Kolab account"
 msgstr "Cuenta Kolab"
 
-#: personal/kolab/class_kolabAccount.inc:105
+#: personal/kolab/class_kolabAccount.inc:104
 msgid "Delegations"
 msgstr "Delegaciones"
 
-#: personal/kolab/class_kolabAccount.inc:113
+#: personal/kolab/class_kolabAccount.inc:112
 msgid "Mail size"
 msgstr "Tamaño del correo electrónico"
 
-#: personal/kolab/class_kolabAccount.inc:116
+#: personal/kolab/class_kolabAccount.inc:115
 msgid "No mail size restriction for this account"
 msgstr "No hay restricción de correo para esta cuenta."
 
-#: personal/kolab/class_kolabAccount.inc:123
+#: personal/kolab/class_kolabAccount.inc:122
 msgid "Free Busy information"
 msgstr "Información de estado de presencia"
 
-#: personal/kolab/class_kolabAccount.inc:126
+#: personal/kolab/class_kolabAccount.inc:125
 msgid "URL"
 msgstr "URL"
 
-#: personal/kolab/class_kolabAccount.inc:131
+#: personal/kolab/class_kolabAccount.inc:130
 msgid "Future"
 msgstr "Futuro"
 
-#: personal/kolab/class_kolabAccount.inc:131
+#: personal/kolab/class_kolabAccount.inc:130
 msgid "days"
 msgstr "días"
 
-#: personal/kolab/class_kolabAccount.inc:139
-#: personal/kolab/class_kolabAccount.inc:142
-#: personal/kolab/class_kolabAccount.inc:150
-#: personal/kolab/class_kolabAccount.inc:160
+#: personal/kolab/class_kolabAccount.inc:138
+#: personal/kolab/class_kolabAccount.inc:141
+#: personal/kolab/class_kolabAccount.inc:149
+#: personal/kolab/class_kolabAccount.inc:159
 msgid "Invitation policy"
 msgstr "Política de invitación"
 
-#: personal/kolab/class_kolabAccount.inc:145
+#: personal/kolab/class_kolabAccount.inc:144
 msgid "Default policy"
 msgstr ""
 
-#: personal/kolab/class_kolabAccount.inc:145
+#: personal/kolab/class_kolabAccount.inc:144
 msgid "Default invitation policy"
 msgstr ""
 
-#: personal/kolab/class_kolabAccount.inc:147
-#: personal/kolab/class_kolabAccount.inc:156
+#: personal/kolab/class_kolabAccount.inc:146
+#: personal/kolab/class_kolabAccount.inc:155
 msgid "Manual"
 msgstr "Manual"
 
-#: personal/kolab/class_kolabAccount.inc:147
-#: personal/kolab/class_kolabAccount.inc:156
+#: personal/kolab/class_kolabAccount.inc:146
+#: personal/kolab/class_kolabAccount.inc:155
 msgid "Always accept"
 msgstr "Aceptar siempre"
 
-#: personal/kolab/class_kolabAccount.inc:147
-#: personal/kolab/class_kolabAccount.inc:156
+#: personal/kolab/class_kolabAccount.inc:146
+#: personal/kolab/class_kolabAccount.inc:155
 msgid "Always reject"
 msgstr "Denegar siempre"
 
-#: personal/kolab/class_kolabAccount.inc:147
-#: personal/kolab/class_kolabAccount.inc:156
+#: personal/kolab/class_kolabAccount.inc:146
+#: personal/kolab/class_kolabAccount.inc:155
 msgid "Reject if conflicts"
 msgstr "Denegar si hay conflictos"
 
-#: personal/kolab/class_kolabAccount.inc:147
-#: personal/kolab/class_kolabAccount.inc:156
+#: personal/kolab/class_kolabAccount.inc:146
+#: personal/kolab/class_kolabAccount.inc:155
 msgid "Manual if conflicts"
 msgstr "Preguntar si hay conflictos"
 
-#: personal/kolab/class_kolabAccount.inc:153
+#: personal/kolab/class_kolabAccount.inc:152
 msgid "mail address"
 msgstr ""
 
-#: personal/kolab/class_kolabAccount.inc:154
+#: personal/kolab/class_kolabAccount.inc:153
 msgid "policy for this mail address"
 msgstr ""
 
@@ -161,10 +160,9 @@ msgid "Default"
 msgstr "Por defecto"
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:183
-msgid "Mail settings cannot be removed while there are delegations configured!"
-msgstr ""
-"¡Las características de correo no pueden ser eliminadas mientras haya "
-"delegaciones configuradas!"
+msgid ""
+"Mail settings cannot be removed while there are delegations configured!"
+msgstr "¡Las características de correo no pueden ser eliminadas mientras haya delegaciones configuradas!"
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:281
 msgid "Waiting for kolab to remove mail properties..."
@@ -271,9 +269,7 @@ msgstr ""
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:130
 msgid "FTP FreeBusy service (legacy, not interoperable with Kolab2 FreeBusy)"
-msgstr ""
-"Servicio de presencia de FTP (propio, no tiene interacción con el servicio "
-"de presencia de Kolab2)"
+msgstr "Servicio de presencia de FTP (propio, no tiene interacción con el servicio de presencia de Kolab2)"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:134
 msgid "HTTP FreeBusy service (legacy)"
@@ -344,7 +340,7 @@ msgstr "Aceptar correo desde otros dominios que no usen autentificación SMTP"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:271
 msgid "Internal error"
-msgstr "Error interno"
+msgstr "error interno"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:271
 msgid "Kolab account does not exist!"
@@ -361,11 +357,4 @@ msgstr "nombre de Maquina"
 #: admin/systems/services/kolab/class_serviceKolab.inc:284
 #: admin/systems/services/kolab/class_serviceKolab.inc:295
 msgid "LDAP error"
-msgstr "Error LDAP"
-
-#~ msgid ""
-#~ "The kolab account is currently disabled. It's features can be adjusted if "
-#~ "you add a mail account."
-#~ msgstr ""
-#~ "La cuenta kolab está actualmente desactivada. Sus características serán "
-#~ "modificadas si añade una cuenta de correo."
+msgstr "Error de LDAP"

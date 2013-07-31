@@ -1,28 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
-# lars_g <lars.gold@gmail.com>, 2012
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory\n"
+"Project-Id-Version: FusionDirectory-develop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-09 19:20+0200\n"
-"PO-Revision-Date: 2013-03-24 15:00+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Spanish (Venezuela) (http://www.transifex.com/projects/p/"
-"FusionDirectory/language/es_VE/)\n"
-"Language: es_VE\n"
+"POT-Creation-Date: 2013-07-30 18:14+0200\n"
+"PO-Revision-Date: 2013-07-30 16:56+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Spanish (Venezuela) (http://www.transifex.com/projects/p/FusionDirectory/language/es_VE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es_VE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: config/sudo/class_sudoConfig.inc:28
-#, fuzzy
 msgid "Sudo configuration"
-msgstr "Opciones Sudo"
+msgstr ""
 
 #: config/sudo/class_sudoConfig.inc:29
 msgid "FusionDirectory sudo plugin configuration"
@@ -33,9 +30,8 @@ msgid "LDAP tree"
 msgstr ""
 
 #: config/sudo/class_sudoConfig.inc:45
-#, fuzzy
 msgid "Sudo RDN"
-msgstr "Sudo"
+msgstr ""
 
 #: config/sudo/class_sudoConfig.inc:45
 msgid "Branch in which sudoers will be stored"
@@ -218,15 +214,11 @@ msgstr "Aviso"
 msgid ""
 "Please double check if you really want to do this since there is no way for "
 "FusionDirectory to get your data back."
-msgstr ""
-"Por favor verifique si realmente quiere hacer esto ya que FusionDirectory no "
-"tiene forma de recuperar la data."
+msgstr "Por favor verifique que realmente desea hacer esto ya que FusionDirectory no tiene forma de recuperar la data"
 
 #: admin/sudo/remove.tpl.c:8
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr ""
-"Entonces, si esta seguro, presione <i>Eliminar</i> para continuar o "
-"<i>Cancelar</i> para Abortar."
+msgstr "Entonces, si esta seguro, presione <i>Eliminar</i> para continuar o <i>Cancelar</i> para Abortar."
 
 #: admin/sudo/sudo-filter.tpl.c:2
 msgid "Filter"
@@ -235,12 +227,3 @@ msgstr "Filtro"
 #: admin/sudo/sudo-filter.tpl.c:8
 msgid "User"
 msgstr "Usuario"
-
-#~ msgid "Option name"
-#~ msgstr "Nombre de la opción"
-
-#~ msgid "Value"
-#~ msgstr "Valor"
-
-#~ msgid "Add from list"
-#~ msgstr "Añadir de la lista"
