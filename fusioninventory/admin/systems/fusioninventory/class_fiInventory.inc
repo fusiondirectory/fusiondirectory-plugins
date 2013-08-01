@@ -78,19 +78,22 @@ class fiInventory extends simplePlugin
   {
     return array(
       'hardware' => array(
-        'name'  => _('Hardware'),
-        'attrs' => array(new FakeAttribute('hardware_infos')),
-        'template' => get_template_path('inventory.tpl', TRUE, dirname(__FILE__)),
+        'name'      => _('Hardware'),
+        'class'     => array('fullwidth'),
+        'attrs'     => array(new FakeAttribute('hardware_infos')),
+        'template'  => get_template_path('inventory.tpl', TRUE, dirname(__FILE__)),
       ),
       'software' => array(
-        'name'  => _('Software'),
-        'attrs' => array(new FakeAttribute('software_infos')),
-        'template' => get_template_path('inventory.tpl', TRUE, dirname(__FILE__)),
+        'name'      => _('Software'),
+        'class'     => array('fullwidth'),
+        'attrs'     => array(new FakeAttribute('software_infos')),
+        'template'  => get_template_path('inventory.tpl', TRUE, dirname(__FILE__)),
       ),
       'process' => array(
-        'name'  => _('Processes'),
-        'attrs' => array(new FakeAttribute('process_infos')),
-        'template' => get_template_path('inventory.tpl', TRUE, dirname(__FILE__)),
+        'name'      => _('Processes'),
+        'class'     => array('fullwidth'),
+        'attrs'     => array(new FakeAttribute('process_infos')),
+        'template'  => get_template_path('inventory.tpl', TRUE, dirname(__FILE__)),
       ),
     );
   }
@@ -165,7 +168,19 @@ class fiInventory extends simplePlugin
         trigger_error('inventory object with no cn');
         continue;
       }
-      $infos[self::$sections[$class]][$class][$cn] = $object;
+      if (empty($object)) {
+        continue;
+      }
+
+      if (!isset($infos[self::$sections[$class]][$class])) {
+        $infos[self::$sections[$class]][$class] = array('keys' => array(), 'objects' => array());
+      }
+      $infos[self::$sections[$class]][$class]['keys'] =
+        array_unique(array_merge(
+          $infos[self::$sections[$class]][$class]['keys'],
+          array_keys($object)
+        ));
+      $infos[self::$sections[$class]][$class]['objects'][$cn] = $object;
     }
 
     return $infos;

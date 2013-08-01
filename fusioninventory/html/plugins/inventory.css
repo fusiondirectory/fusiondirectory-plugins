@@ -18,13 +18,22 @@ html.rtl ul.inventory li div
 margin-right:20px;
 }
 
-html.ltr ul.inventory li table th
+html.ltr ul.inventory li table.list th
 {
 text-align:left;
 padding-right:10px;
 }
-html.rtl ul.inventory li table th
+html.rtl ul.inventory li table.list th
 {
 text-align:right;
 padding-left:10px;
+}
+
+ul.inventory li table.table
+{
+border-collapse:collapse;
+}
+ul.inventory li table.table, ul.inventory li table.table td, ul.inventory li table.table th
+{
+border:1px solid black;
 }
