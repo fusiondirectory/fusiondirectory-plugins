@@ -48,7 +48,7 @@ class appgroup extends plugin
 
   public function __construct(&$config, $dn= NULL, $parent= NULL)
   {
-    plugin::plugin($config,$dn,$parent);
+    parent::__construct($config,$dn,$parent);
     $this->dn = $dn;
     $this->_load_menu_structure();
     $this->a_Structure_on_load = $this->a_Structure;
@@ -397,7 +397,7 @@ class appgroup extends plugin
   function execute()
   {
     /* Call parent execute */
-    plugin::execute();
+    parent::execute();
 
     if(isset($_GET['r'])) $this->__construct($this->config,$this->dn);
 
@@ -1447,44 +1447,6 @@ class appgroup extends plugin
       }
     }
     unset($entry);
-  }
-
-
-  /*! \brief  Save HTML posts in multiple edit mode
-   */
-  function multiple_save_object()
-  {
-    if(isset($_POST['group_apps_multi'])){
-      $this->save_object();
-      plugin::multiple_save_object();
-
-      /* Get posts */
-      foreach(array("apps") as $attr){
-        if(isset($_POST['use_'.$attr])) {
-          $this->multi_boxes[] = $attr;
-        }
-      }
-    }
-  }
-
-
-  /*! \brief  Return values used in multiple edit mode.
-              Some values can be modified for multiple
-              groups at the same time.
-      @return Array  All values that support multiple edit.
-   */
-  function get_multi_edit_values()
-  {
-    $ret = plugin::get_multi_edit_values();
-
-    if(in_array("apps",$this->multi_boxes)){
-      $ret['gosaApplicationParameter'] = $this->gosaApplicationParameter;
-      $ret['Categories']               = $this->Categories;
-      $ret['gosaMemberApplication']    = $this->gosaMemberApplication;
-      $ret['FAIrelease']               = $this->FAIrelease;
-      $ret['appoption']                = $this->appoption;
-    }
-    return($ret);
   }
 
   /*! \brief  Return plugin informations for acl handling

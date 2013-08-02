@@ -38,7 +38,7 @@ class faiPartitionTableEntry extends plugin
 
   function faiPartitionTableEntry (&$config, $dn= NULL,&$parent,$disk=false)
   {
-    plugin::plugin ($config, $dn);
+    parent::__construct($config, $dn);
     $this->UsedAttrs  = array("cn","description","FAIpartitionType","FAIpartitionNr","FAIfsType","FAImountPoint","FAIpartitionSize",
                          "FAImountOptions","FAIfsOptions","FAIpartitionFlags");
 
@@ -77,7 +77,7 @@ class faiPartitionTableEntry extends plugin
   function execute()
   {
     /* Call parent execute */
-    plugin::execute();
+    parent::execute();
 
     /* Fill templating stuff */
     $smarty     = get_smarty();
@@ -311,7 +311,7 @@ class faiPartitionTableEntry extends plugin
   function save_object()
   {
     if((isset($_POST['TableEntryFrameSubmitted'])) && !preg_match("/freeze/", $this->FAIstate) ){
-      plugin::save_object();
+      parent::save_object();
 
       foreach($this->partitions as $key => $part){
         foreach($this->UsedAttrs as $attrs){

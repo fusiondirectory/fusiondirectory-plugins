@@ -48,7 +48,7 @@ class faiDiskEntry extends plugin
 
   function faiDiskEntry (&$config, $dn= NULL,$parent,$disk,$type)
   {
-    plugin::plugin ($config, $dn);
+    parent::__construct($config, $dn);
 
     // Set default attributes
     $this->parent = $parent;
@@ -170,7 +170,7 @@ class faiDiskEntry extends plugin
   function execute()
   {
     /* Call parent execute */
-    plugin::execute();
+    parent::execute();
 
     // Fill templating stuff
     $smarty     = get_smarty();
@@ -673,7 +673,7 @@ class faiDiskEntry extends plugin
   function save_object()
   {
     if((isset($_POST['TableEntryFrameSubmitted'])) && !preg_match("/freeze/", $this->FAIstate) ){
-      plugin::save_object();
+      parent::save_object();
 
       // Save posted disk label and fstab key
       if (isset($_POST['disklabel']) && preg_match("/^(msdos|gpt)$/", $_POST['disklabel'])){

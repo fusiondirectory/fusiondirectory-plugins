@@ -44,7 +44,7 @@ class faiHookEntry extends plugin
 
   function faiHookEntry (&$config, $dn= NULL,$object=false)
   {
-    plugin::plugin ($config, NULL);
+    parent::__construct($config, NULL);
     if($dn != "new"){
       $this->orig_cn= $object['cn'];
       $this->dn=$object['dn'];
@@ -72,7 +72,7 @@ class faiHookEntry extends plugin
   function execute()
   {
     /* Call parent execute */
-    plugin::execute();
+    parent::execute();
 
     /* Fill templating stuff */
     $smarty     = get_smarty();

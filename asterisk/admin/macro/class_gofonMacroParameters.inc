@@ -73,7 +73,7 @@ class macroParameter extends plugin
   */
   function macroParameter (&$config, $dn= NULL, $parent= NULL)
   {
-    plugin::plugin ($config, $dn, $parent);
+    parent::__construct($config, $dn, $parent);
 
     $tmp = array();  // temporary Var
     $tmp2 = array(); // temporary Var ...
@@ -204,7 +204,7 @@ class macroParameter extends plugin
   function execute()
   {
     /* Call parent execute */
-    plugin::execute();
+    parent::execute();
 
     /* Variables */
     $vars   = "";
@@ -328,7 +328,7 @@ class macroParameter extends plugin
   function save_object()
   {
     if (isset($_POST['phoneparameters'])){
-      plugin::save_object();
+      parent::save_object();
     }
     /* read out post data, and assign it to the parameters */
     /* And or delete */
@@ -396,7 +396,7 @@ class macroParameter extends plugin
   {
     /* Post checks */
 
-    plugin::save();
+    parent::save();
 
     $this->attrs['goFonMacroParameter']=array();
 

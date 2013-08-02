@@ -100,7 +100,7 @@ class printgeneric extends plugin
     $this->orig_dn = $this->dn;
 
     /* Get printer settings, possibly dn has changed */
-    plugin::plugin ($config, $this->dn);
+    parent::__construct($config, $this->dn);
 
     /* Get is_account initially_was_account status */
     $this->updateAccountStatus();
@@ -297,7 +297,7 @@ class printgeneric extends plugin
   function execute()
   {
     /* Call parent execute */
-    plugin::execute();
+    parent::execute();
 
     if ($this->is_account && !$this->view_logged) {
       $this->view_logged = TRUE;
@@ -695,10 +695,10 @@ class printgeneric extends plugin
   function save_object()
   {
     /* Create a base backup and reset the
-       base directly after calling plugin::save_object();
+       base directly after calling parent::save_object();
        Base will be set seperatly a few lines below */
     $base_tmp = $this->base;
-    plugin::save_object();
+    parent::save_object();
     $this->base = $base_tmp;
 
     // Remove whitespace characters at the beginning or end of an URI
@@ -889,7 +889,7 @@ class printgeneric extends plugin
     /* reduce objectClasses to minimun */
     $this->attrs['objectClass']= $this->objectclasses;
 
-    plugin::save();
+    parent::save();
     $ldap= $this->config->get_ldap_link();
 
     /* Remove all empty values */

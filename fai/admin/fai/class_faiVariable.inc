@@ -56,7 +56,7 @@ class faiVariable extends faiPluginClass
   function faiVariable (&$config, $dn= NULL)
   {
     /* Load Attributes */
-    plugin::plugin ($config, $dn);
+    parent::__construct($config, $dn);
 
     if($dn != "new"){
       $this->dn =$dn;
@@ -97,7 +97,7 @@ class faiVariable extends faiPluginClass
   function execute()
   {
     /* Call parent execute */
-    plugin::execute();
+    parent::execute();
 
     if($this->is_account && !$this->view_logged){
       $this->view_logged = TRUE;
@@ -287,14 +287,14 @@ class faiVariable extends faiPluginClass
   function save_object()
   {
     if((isset($_POST['FAIvariable_posted'])) && !preg_match("/freeze/", $this->FAIstate) ){
-      plugin::save_object();
+      parent::save_object();
     }
   }
 
   /* Save to LDAP */
   function save()
   {
-    plugin::save();
+    parent::save();
 
     $ldap = $this->config->get_ldap_link();
     FAI::prepare_to_save_FAI_object($this->dn,$this->attrs);

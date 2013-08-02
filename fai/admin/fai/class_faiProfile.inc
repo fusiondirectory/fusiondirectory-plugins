@@ -48,7 +48,7 @@ class faiProfile extends faiPluginClass
   function faiProfile(&$config, $dn= NULL)
   {
     /* Load Attributes */
-    plugin::plugin ($config, $dn);
+    parent::__construct($config, $dn);
 
     $this->ui = get_userinfo();
 
@@ -222,7 +222,7 @@ class faiProfile extends faiPluginClass
   function execute()
   {
     /* Call parent execute */
-    plugin::execute();
+    parent::execute();
 
     if($this->is_account && !$this->view_logged){
       $this->view_logged = TRUE;
@@ -395,7 +395,7 @@ class faiProfile extends faiPluginClass
   function save_object()
   {
     if(!preg_match("/freeze/",$this->FAIstate)){
-      plugin::save_object();
+      parent::save_object();
     }
   }
 
@@ -421,7 +421,7 @@ class faiProfile extends faiPluginClass
   /* Save to LDAP */
   function save()
   {
-    plugin::save();
+    parent::save();
 
     $ldap = $this->config->get_ldap_link();
 

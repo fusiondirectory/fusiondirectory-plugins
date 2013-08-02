@@ -40,7 +40,7 @@ class goService extends plugin{
   /* Construction */
   function goService(&$config,$dn,$parent = NULL)
   {
-    plugin::plugin($config,$dn);
+    parent::__construct($config,$dn);
     $this->DisplayName = _("Empty service");
   }
 
@@ -97,7 +97,7 @@ class goService extends plugin{
       return;
     }
 
-    plugin::remove_from_parent();
+    parent::remove_from_parent();
 
     /* Remove status flag, it is not a memeber of
         this->attributes, so ensure that it is deleted too */
@@ -129,7 +129,7 @@ class goService extends plugin{
   /* Save service */
   function save()
   {
-    plugin::save();
+    parent::save();
     /* Check if this is a new entry ... add/modify */
     $ldap = $this->config->get_ldap_link();
     $ldap->cat($this->dn,array("objectClass"));
@@ -201,7 +201,7 @@ class goService extends plugin{
 
   function save_object()
   {
-    plugin::save_object();
+    parent::save_object();
   }
 
 

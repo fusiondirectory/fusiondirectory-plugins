@@ -63,7 +63,7 @@ class termgroup extends plugin
       Some  initialisations
      ***************/
 
-    plugin::plugin($config, $dn, $parent);
+    parent::__construct($config, $dn, $parent);
     $ldap= $config->get_ldap_link();
 
     $this->is_account = true;
@@ -173,7 +173,7 @@ class termgroup extends plugin
     }
 
     /* Remove acc */
-    plugin::remove_from_parent();
+    parent::remove_from_parent();
     $ldap = $this->config->get_ldap_link();
     $ldap->cd($this->orig_dn);
     $ldap->modify($this->attrs);
@@ -186,7 +186,7 @@ class termgroup extends plugin
   function execute()
   {
     /* Call parent execute */
-    plugin::execute();
+    parent::execute();
 
     if(!$this->view_logged){
       $this->view_logged = TRUE;
@@ -311,7 +311,7 @@ class termgroup extends plugin
 
   function save_object()
   {
-    plugin::save_object();
+    parent::save_object();
     /* Set inherit mode */
     if(isset($_POST['workgeneric_posted'])){
 
@@ -335,7 +335,7 @@ class termgroup extends plugin
       $this->objectclasses= array("gotoWorkstationTemplate");
     }
 
-    plugin::save();
+    parent::save();
 
     /* Tell members to inherit all attributes if the flag is set  */
     //~ $this->inherit_attributes_to_members();

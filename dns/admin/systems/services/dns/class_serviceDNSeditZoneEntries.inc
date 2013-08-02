@@ -39,7 +39,7 @@ class servDNSeditZoneEntries extends plugin
 
   function servDNSeditZoneEntries (&$config,$dn, &$zoneObject)
   {
-    plugin::plugin ($config, $dn);
+    parent::__construct($config, $dn);
 
     /* Initialise class
      */
@@ -81,7 +81,7 @@ class servDNSeditZoneEntries extends plugin
 
   function execute()
   {
-    plugin::execute();
+    parent::execute();
 
     /* Fill templating stuff */
     $smarty= get_smarty();

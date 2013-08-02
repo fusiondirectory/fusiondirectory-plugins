@@ -34,7 +34,7 @@ class printerPPDSelectionDialog extends plugin
 
   function printerPPDSelectionDialog (&$config, $dn= NULL,$list=false,$headers=false,$ppd=false)
   {
-    plugin::plugin ($config, $dn);
+    parent::__construct($config, $dn);
     $this->list       = $list;
     $this->header     = $headers;
     $this->depselect  = $this->config->current['BASE'];
@@ -50,7 +50,7 @@ class printerPPDSelectionDialog extends plugin
   function execute()
   {
   /* Call parent execute */
-  plugin::execute();
+  parent::execute();
 
     /* Fill templating stuff */
     $smarty= get_smarty();

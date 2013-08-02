@@ -60,7 +60,7 @@ class faiScript extends faiPluginClass
   function faiScript (&$config, $dn= NULL)
   {
     /* Load Attributes */
-    plugin::plugin ($config, $dn);
+    parent::__construct($config, $dn);
 
     /* If "dn==new" we try to create a new entry
      * Else we must read all objects from ldap which belong to this entry.
@@ -142,7 +142,7 @@ class faiScript extends faiPluginClass
   function execute()
   {
     /* Call parent execute */
-    plugin::execute();
+    parent::execute();
 
     if($this->is_account && !$this->view_logged){
       $this->view_logged = TRUE;
@@ -461,7 +461,7 @@ class faiScript extends faiPluginClass
   function save_object()
   {
     if((isset($_POST['FAIscript_posted'])) && !preg_match("/freeze/", $this->FAIstate)){
-      plugin::save_object();
+      parent::save_object();
     }
 
     /* Get sort order */
@@ -480,7 +480,7 @@ class faiScript extends faiPluginClass
   /* Save to LDAP */
   function save()
   {
-    plugin::save();
+    parent::save();
 
     $ldap = $this->config->get_ldap_link();
 

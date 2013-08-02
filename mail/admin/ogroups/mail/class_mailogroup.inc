@@ -34,7 +34,7 @@ class mailogroup extends plugin
 
   function mailogroup (&$config, $dn= NULL, $parent= NULL)
   {
-    plugin::plugin($config, $dn, $parent);
+    parent::__construct($config, $dn, $parent);
 
     /* Include config object */
     $this->config= $config;
@@ -47,7 +47,7 @@ class mailogroup extends plugin
   function execute()
   {
     /* Call parent execute */
-    plugin::execute();
+    parent::execute();
 
     if($this->is_account && !$this->view_logged){
       $this->view_logged = TRUE;
@@ -123,7 +123,7 @@ class mailogroup extends plugin
     $ldap= $this->config->get_ldap_link();
 
     /* Call parents save to prepare $this->attrs */
-    plugin::save();
+    parent::save();
 
     /* Save data to LDAP */
     $ldap->cd($this->dn);
@@ -163,7 +163,7 @@ class mailogroup extends plugin
     $ldap= $this->config->get_ldap_link();
 
     /* Remove and write to LDAP */
-    plugin::remove_from_parent();
+    parent::remove_from_parent();
 
     @DEBUG (DEBUG_LDAP, __LINE__, __FUNCTION__, __FILE__,
         $this->attributes, "Save");

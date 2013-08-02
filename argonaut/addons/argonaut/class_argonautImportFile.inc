@@ -29,7 +29,7 @@ class argonautImportFile extends plugin
 
   public function __construct($config,&$parent)
   {
-    plugin::plugin($config,NULL);
+    parent::__construct($config,NULL);
     $this->parent = $parent;
     $this->daemon_events  = DaemonEvent::get_event_types();
 

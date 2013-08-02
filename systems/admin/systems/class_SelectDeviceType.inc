@@ -42,7 +42,7 @@ class SelectDeviceType extends plugin
     }else{
       $this->dns = $dn;
     }
-    plugin::plugin ($config, NULL);
+    parent::__construct($config, NULL);
 
     /* Get object groups */
     $ldap = $this->config->get_ldap_link();
@@ -62,7 +62,7 @@ class SelectDeviceType extends plugin
   function execute()
   {
     /* Call parent execute */
-    plugin::execute();
+    parent::execute();
 
 
     /* Get object groups */
@@ -92,7 +92,7 @@ class SelectDeviceType extends plugin
   /* Save data to object */
   function save_object()
   {
-    plugin::save_object();
+    parent::save_object();
     foreach($this->attributes as $attr){
       if(isset($_POST[$attr])){
         $this->$attr = $_POST[$attr];

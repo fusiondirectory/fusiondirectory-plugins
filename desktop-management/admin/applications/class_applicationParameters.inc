@@ -31,7 +31,7 @@ class applicationParameters extends plugin
 
   function applicationParameters (&$config, $dn= NULL, $parent= NULL)
   {
-    plugin::plugin ($config, $dn, $parent);
+    parent::__construct($config, $dn, $parent);
 
     $this->gosaApplicationParameter = array();
 
@@ -53,7 +53,7 @@ class applicationParameters extends plugin
   function execute()
   {
     /* Call parent execute */
-    plugin::execute();
+    parent::execute();
 
     /* Do we need to flip is_account state? */
     if(isset($_POST['modify_state'])){
