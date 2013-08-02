@@ -70,7 +70,7 @@ class phoneAccount extends plugin
 
   function phoneAccount (&$config, $dn= NULL, $parent= NULL)
   {
-    plugin::plugin ($config, $dn, $parent);
+    parent::__construct($config, $dn, $parent);
 
     $this->delimiter = $config->get_cfg_value("asteriskParameterDelimiter","|");
 
@@ -946,7 +946,7 @@ class phoneAccount extends plugin
   function execute()
   {
     /* Call parent execute */
-    plugin::execute();
+    parent::execute();
 
     /* Log view */
     if($this->is_account && !$this->view_logged){
@@ -1265,7 +1265,7 @@ class phoneAccount extends plugin
     $SkipWrite = (!isset($this->parent) || !$this->parent) && !session::is_set('edit');
     if (isset($_POST["phoneTab"])){
 
-      plugin::save_object();
+      parent::save_object();
 
       /* Save checkbox */
       $tmp = preg_replace("/[^a-z]/i","",$this->goFonDeliveryMode);
@@ -1427,7 +1427,7 @@ class phoneAccount extends plugin
 
   function save()
   {
-    plugin::save();
+    parent::save();
 
     /* Force saving macro again
      * This ensures that
@@ -1595,7 +1595,7 @@ class phoneAccount extends plugin
       return;
     }
 
-    plugin::remove_from_parent();
+    parent::remove_from_parent();
 
     /* Just keep one phone number */
     if (count($this->telephoneNumber) && $this->telephoneNumber != ""){

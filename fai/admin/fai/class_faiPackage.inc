@@ -79,7 +79,7 @@ class faiPackage extends faiPluginClass
   function faiPackage (&$config, $dn= NULL)
   {
     /* Load Attributes */
-    plugin::plugin ($config, $dn);
+    parent::__construct($config, $dn);
 
     /* If "dn==new" we try to create a new entry
      * Else we must read all objects from ldap which belong to this entry.
@@ -194,7 +194,7 @@ class faiPackage extends faiPluginClass
   function execute()
   {
     /* Call parent execute */
-    plugin::execute();
+    parent::execute();
 
     if($this->is_account && !$this->view_logged){
       $this->view_logged = TRUE;
@@ -518,7 +518,7 @@ class faiPackage extends faiPluginClass
   function save_object()
   {
     if(preg_match("/^freeze/", $this->FAIstate)) return;
-    plugin::save_object();
+    parent::save_object();
   }
 
 
@@ -613,7 +613,7 @@ class faiPackage extends faiPluginClass
       $this->FAIdebianRelease= preg_replace('#^/#', '', $this->FAIdebianRelease);
     }
 
-    plugin::save();
+    parent::save();
 
     $ldap = $this->config->get_ldap_link();
 

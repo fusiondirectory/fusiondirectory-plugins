@@ -76,7 +76,7 @@ class mimetype extends plugin
 
   function mimetype(&$config,$dn= NULL)
   {
-    plugin::plugin ($config, $dn);
+    parent::__construct($config, $dn);
 
     /* Save original dn */
     $this->orig_dn = $dn;
@@ -366,10 +366,10 @@ class mimetype extends plugin
     if(isset($_POST['MimeGeneric']) && !preg_match("/freeze/i",$this->FAIstate)){
 
       /* Create a base backup and reset the
-         base directly after calling plugin::save_object();
+         base directly after calling parent::save_object();
          Base will be set seperatly a few lines below */
       $base_tmp = $this->base;
-      plugin::save_object();
+      parent::save_object();
       $this->base = $base_tmp;
 
       /* Only save base if we are not in release mode */
@@ -448,7 +448,7 @@ class mimetype extends plugin
       $this->gotoMimeIcon = "";
     }
 
-    plugin::save();
+    parent::save();
 
     /* If this is a newly created object, skip storing those
        attributes that contain an empty array */
@@ -483,7 +483,7 @@ class mimetype extends plugin
   /* Remove current mime type */
   function remove_from_parent()
   {
-    plugin::remove_from_parent();
+    parent::remove_from_parent();
     $ldap = $this->config->get_ldap_link();
     $ldap->rmDir($this->dn);
     if (!$ldap->success()){

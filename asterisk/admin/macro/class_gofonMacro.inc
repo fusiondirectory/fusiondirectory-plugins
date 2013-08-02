@@ -70,7 +70,7 @@ class macro extends plugin
   /*!  Konstructor, load class with  attributes of the given dn*/
   function macro (&$config, $dn= NULL, $parent= NULL)
   {
-    plugin::plugin ($config, $dn, $parent);
+    parent::__construct($config, $dn, $parent);
 
     /* This is always an account */
     $this->is_account= TRUE;
@@ -118,7 +118,7 @@ class macro extends plugin
   function execute()
   {
     /* Call parent execute */
-    plugin::execute();
+    parent::execute();
 
     /* Log view */
     if($this->is_account && !$this->view_logged){
@@ -331,10 +331,10 @@ class macro extends plugin
       $old_visible  = $this->goFonMacroVisible;
 
       /* Create a base backup and reset the
-         base directly after calling plugin::save_object();
+         base directly after calling parent::save_object();
          Base will be set seperatly a few lines below */
       $base_tmp = $this->base;
-      plugin::save_object();
+      parent::save_object();
       $this->base = $base_tmp;
 
       /* Refresh base */
@@ -490,7 +490,7 @@ class macro extends plugin
   /*! Save to LDAP */
   function save()
   {
-    plugin::save();
+    parent::save();
     unset($this->attrs['base']);
 
     /* Try to add entries to databases */

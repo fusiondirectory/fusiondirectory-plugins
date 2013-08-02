@@ -45,7 +45,7 @@ class faiTemplateEntry extends plugin
 
   function faiTemplateEntry (&$config, $dn= NULL,$object=false)
   {
-    plugin::plugin ($config, $dn);
+    parent::__construct($config, $dn);
 
     if((isset($object['cn'])) && (!empty($object['cn']))){
       $this->orig_cn= $object['cn'];
@@ -80,7 +80,7 @@ class faiTemplateEntry extends plugin
   function execute()
   {
     /* Call parent execute */
-    plugin::execute();
+    parent::execute();
 
     /* Fill templating stuff */
     $smarty     = get_smarty();
@@ -189,7 +189,7 @@ class faiTemplateEntry extends plugin
           depending on the ACLs we will assemble a new one later.
        */
       $cur_path = $this->FAItemplatePath;
-      plugin::save_object();
+      parent::save_object();
 
       /* Set user.group (FAIowner) attribute */
       if(isset($_POST['group']) && isset($_POST["user"]) && $this->acl_is_writeable("FAIowner")){

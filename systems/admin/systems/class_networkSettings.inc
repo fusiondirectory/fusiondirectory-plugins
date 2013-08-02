@@ -79,7 +79,7 @@ class networkSettings extends plugin
     $this->IPisMust       = $IPisMust;
     $this->namingAttr     = $namingAttr;
 
-    plugin::plugin ($config, $parent->dn, $this->parent);
+    parent::__construct($config, $parent->dn, $this->parent);
 
     $this->attrs = &$this->parent->attrs;
 
@@ -493,7 +493,7 @@ class networkSettings extends plugin
     if (isset($_POST['network_tpl_posted'])) {
 
       /* Save all posted vars */
-      plugin::save_object();
+      parent::save_object();
 
       /******
         Additional IP Host Numbers
@@ -734,7 +734,7 @@ class networkSettings extends plugin
     $this->dn = $dn;
 
     /* Save DNS setting & ip/Mac*/
-    plugin::save();
+    parent::save();
 
     /* Add all additional ipHostNumbers now
      */

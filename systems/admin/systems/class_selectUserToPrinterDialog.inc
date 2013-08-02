@@ -42,7 +42,7 @@ class selectUserToPrinterDialog extends plugin
 
   function selectUserToPrinterDialog (&$config, $dn= NULL,$type=false,$already_assigned )
   {
-    plugin::plugin ($config, $dn);
+    parent::__construct($config, $dn);
     $this->depselect = $this->config->current['BASE'];
 
     switch($type){
@@ -89,7 +89,7 @@ class selectUserToPrinterDialog extends plugin
   function execute()
   {
     /* Call parent execute */
-    plugin::execute();
+    parent::execute();
 
     /* Fill templating stuff */
     $smarty= get_smarty();

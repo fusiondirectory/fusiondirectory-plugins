@@ -69,7 +69,7 @@ class sieveManagement extends plugin
 
     $this->uattrib = $uattrib;
     $this->parent = &$parent;
-    plugin::plugin($config,$dn);
+    parent::__construct($config,$dn);
 
     /* Get sieve, if this fail abort class initialization */
     if(!$this->sieve_handle = $this->get_sieve()){

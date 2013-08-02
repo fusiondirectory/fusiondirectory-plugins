@@ -74,7 +74,7 @@ class phoneGeneric extends plugin
 
   function phoneGeneric (&$config, $dn= NULL, $parent= NULL)
   {
-    plugin::plugin ($config, $dn, $parent);
+    parent::__construct($config, $dn, $parent);
     $this->netConfigDNS = new networkSettings($this->config,$this,$this->objectclasses, true);
     $this->netConfigDNS->MACisMust =TRUE;
 
@@ -138,7 +138,7 @@ class phoneGeneric extends plugin
   function execute()
   {
     /* Call parent execute */
-    plugin::execute();
+    parent::execute();
 
     if($this->is_account && !$this->view_logged){
       $this->view_logged = TRUE;
@@ -294,10 +294,10 @@ class phoneGeneric extends plugin
   function save_object()
   {
     /* Create a base backup and reset the
-       base directly after calling plugin::save_object();
+       base directly after calling parent::save_object();
        Base will be set seperatly a few lines below */
     $base_tmp = $this->base;
-    plugin::save_object();
+    parent::save_object();
     $this->base = $base_tmp;
 
     $this->netConfigDNS->save_object();
@@ -385,7 +385,7 @@ class phoneGeneric extends plugin
   /* Save to LDAP */
   function save()
   {
-    plugin::save();
+    parent::save();
 
 
     /* only to define which attrs to save*/

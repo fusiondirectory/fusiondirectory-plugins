@@ -68,7 +68,7 @@ class gofaxAccount extends plugin
   function gofaxAccount (&$config, $dn= NULL)
   {
     /* General initialization */
-    plugin::plugin ($config, $dn);
+    parent::__construct($config, $dn);
 
     /* Set uid, it is used in handle_post_events */
     if(isset($this->attrs['uid'])){
@@ -126,7 +126,7 @@ class gofaxAccount extends plugin
   function execute()
   {
     /* Call parent execute */
-    plugin::execute();
+    parent::execute();
 
     /* Log view */
     if($this->is_account && !$this->view_logged){
@@ -593,7 +593,7 @@ class gofaxAccount extends plugin
       return;
     }
 
-    plugin::remove_from_parent();
+    parent::remove_from_parent();
 
     /* Adapt mail settings if needed */
     if ((isset($this->parent->by_object['mailAccount']->is_account)) && ($this->parent->by_object['mailAccount']->is_account)){
@@ -654,7 +654,7 @@ class gofaxAccount extends plugin
   {
     $edit_mode = (!is_object($this->parent) && !session::is_set('edit'));
     if (isset($_POST['faxTab'])){
-      plugin::save_object();
+      parent::save_object();
 
 
       $tmp = 0+$this->goFaxDeliveryMode;
@@ -703,7 +703,7 @@ class gofaxAccount extends plugin
   /* Save to LDAP */
   function save()
   {
-    plugin::save();
+    parent::save();
 
     /* Save arrays */
     foreach (array("goFaxRBlocklist", "goFaxRBlockgroups", "goFaxSBlocklist",

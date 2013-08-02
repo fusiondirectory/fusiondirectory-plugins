@@ -35,7 +35,7 @@ class faiTemplateEdit extends plugin
 
   function faiTemplateEdit (&$config, $dn, $value)
   {
-    plugin::plugin ($config, $dn);
+    parent::__construct($config, $dn);
     if(!function_exists("mb_detect_encoding")){
       $this->mb_extension = FALSE;
     }else{
@@ -50,7 +50,7 @@ class faiTemplateEdit extends plugin
   function execute()
   {
     /* Call parent execute */
-    plugin::execute();
+    parent::execute();
 
     /* We now split cn/FAItemplatePath to make things more clear... */
     $smarty     = get_smarty();

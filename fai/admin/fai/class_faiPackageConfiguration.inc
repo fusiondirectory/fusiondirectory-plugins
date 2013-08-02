@@ -42,7 +42,7 @@ class faiPackageConfiguration extends plugin
    */
   function faiPackageConfiguration (&$config, $dn= NULL,$obj,$release,$pkg_config)
   {
-    plugin::plugin ($config, $dn);
+    parent::__construct($config, $dn);
     $this->obj = $obj;
     $this->release = $release;
     $this->pkg_config = $pkg_config;
@@ -81,7 +81,7 @@ class faiPackageConfiguration extends plugin
   function execute()
   {
     /* Call parent execute */
-    plugin::execute();
+    parent::execute();
 
     /* Fill templating stuff */
     $smarty     = get_smarty();

@@ -33,7 +33,7 @@ class ServiceAddDialog extends plugin
 
   function ServiceAddDialog(&$config, $dn, $parent)
   {
-    plugin::plugin($config);
+    parent::__construct($config);
     $this->parent = $parent;
   }
 

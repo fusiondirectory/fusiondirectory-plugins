@@ -48,7 +48,7 @@ class faiPartitionTable extends faiPluginClass
   function faiPartitionTable (&$config, $dn= NULL)
   {
     /* Load Attributes */
-    plugin::plugin ($config, $dn);
+    parent::__construct($config, $dn);
 
     /* If "dn==new" we try to create a new entry
      * Else we must read all objects from ldap which belong to this entry.
@@ -147,7 +147,7 @@ class faiPartitionTable extends faiPluginClass
   function execute()
   {
     /* Call parent execute */
-    plugin::execute();
+    parent::execute();
 
     if($this->is_account && !$this->view_logged){
       $this->view_logged = TRUE;
@@ -481,7 +481,7 @@ class faiPartitionTable extends faiPluginClass
   {
     if(isset($_POST['FAIpartitionTablePosted'])){
       if (preg_match("/freeze/", $this->FAIstate)) return;
-      plugin::save_object();
+      parent::save_object();
       foreach($this->attributes as $attrs){
         if(isset($_POST[$attrs])){
           $this->$attrs = $_POST[$attrs];
@@ -500,7 +500,7 @@ class faiPartitionTable extends faiPluginClass
   /* Save to LDAP */
   function save()
   {
-    plugin::save();
+    parent::save();
 
     /* Save current settings.
      * 1 : We must save the partition table, with its description and cn

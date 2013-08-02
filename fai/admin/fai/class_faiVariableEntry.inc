@@ -38,7 +38,7 @@ class faiVariableEntry extends plugin
 
   function faiVariableEntry (&$config, $dn= NULL,$object=false)
   {
-    plugin::plugin ($config, $dn);
+    parent::__construct($config, $dn);
     if((isset($object['cn'])) && (!empty($object['cn']))){
       $this->orig_cn= $object['cn'];
       $this->dn=$object['dn'];
@@ -55,7 +55,7 @@ class faiVariableEntry extends plugin
   function execute()
   {
   /* Call parent execute */
-  plugin::execute();
+  parent::execute();
 
     /* Fill templating stuff */
     $smarty     = get_smarty();

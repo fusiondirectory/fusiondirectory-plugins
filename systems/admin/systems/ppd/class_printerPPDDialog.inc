@@ -51,7 +51,7 @@ class printerPPDDialog extends plugin
 
   function printerPPDDialog (&$config, $dn= NULL, $ppdfile=NULL )
   {
-    plugin::plugin ($config, $dn);
+    parent::__construct($config, $dn);
     $this->depselect = $this->config->current['BASE'];
 
     $this->ui = get_userinfo();
@@ -108,7 +108,7 @@ class printerPPDDialog extends plugin
   function execute()
   {
     /* Call parent execute */
-    plugin::execute();
+    parent::execute();
 
     /* Fill templating stuff */
     $display= "";

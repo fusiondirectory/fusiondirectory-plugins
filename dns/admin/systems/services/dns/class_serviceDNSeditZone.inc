@@ -63,7 +63,7 @@ class servdnseditZone extends plugin
 
   function servdnseditZone (&$config, $dn= NULL,$attrs = array())
   {
-    plugin::plugin ($config, $dn);
+    parent::__construct($config, $dn);
 
     /* All types with required attrs */
     $this->RecordTypes = DNS::getDnsRecordTypes(true);
@@ -160,7 +160,7 @@ class servdnseditZone extends plugin
   function execute()
   {
     /* Call parent execute */
-    plugin::execute();
+    parent::execute();
 
     /* Fill templating stuff */
     $smarty= get_smarty();
@@ -317,7 +317,7 @@ class servdnseditZone extends plugin
   /* Save data to object */
   function save_object()
   {
-    plugin::save_object();
+    parent::save_object();
 
     if(!is_object($this->parent)) return;
 

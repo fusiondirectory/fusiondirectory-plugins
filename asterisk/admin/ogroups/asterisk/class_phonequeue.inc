@@ -85,7 +85,7 @@ class phonequeue extends plugin
    */
   function phonequeue (&$config, $dn= NULL)
   {
-    plugin::plugin($config, $dn);
+    parent::__construct($config, $dn);
 
     /* Check server configurations
      * Load all server configuration in $this->goFonHomeServers if available
@@ -159,7 +159,7 @@ class phonequeue extends plugin
   function execute()
   {
     /* Call parent execute */
-    plugin::execute();
+    parent::execute();
 
     if ($this->is_account && !$this->view_logged) {
       $this->view_logged = TRUE;
@@ -737,7 +737,7 @@ class phonequeue extends plugin
   /* Get posted attributes */
   function save_object()
   {
-    plugin::save_object();
+    parent::save_object();
     if(isset($_POST['phonenumber'])){
       foreach(array("goFonDialOptiont","goFonDialOptionT","goFonDialOptionh","goFonDialOptionr","goFonDialOptionH","goFonMusiconHold") as $val){
         if(isset($_POST[$val])){
@@ -759,7 +759,7 @@ class phonequeue extends plugin
   {
     $ldap= $this->config->get_ldap_link();
 
-    plugin::save();
+    parent::save();
 
     /* Create dial option attribute */
     $this->attrs['goFonDialOption'] = "";
@@ -846,7 +846,7 @@ class phonequeue extends plugin
     $ldap= $this->config->get_ldap_link();
 
     /* Remove and write to LDAP */
-    plugin::remove_from_parent();
+    parent::remove_from_parent();
 
     @DEBUG (DEBUG_LDAP, __LINE__, __FUNCTION__, __FILE__,$this->attributes, "Save");
     $ldap->cd($this->dn);

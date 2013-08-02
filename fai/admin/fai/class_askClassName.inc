@@ -37,13 +37,13 @@ class askClassName extends plugin
   {
     $this->ui = $ui;
     $this->objectClass = $objectClass;
-    plugin::plugin ($config, $dn);
+    parent::__construct($config, $dn);
   }
 
   function execute()
   {
     /* Call parent execute */
-    plugin::execute();
+    parent::execute();
 
     /* Fill templating stuff */
     $smarty = get_smarty();

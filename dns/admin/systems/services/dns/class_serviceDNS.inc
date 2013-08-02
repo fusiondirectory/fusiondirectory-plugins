@@ -46,7 +46,7 @@ class serviceDNS extends goService
 
   function serviceDNS (&$config, $dn = NULL, $parent = NULL)
   {
-    plugin::plugin ($config, $dn, $parent);
+    parent::__construct($config, $dn, $parent);
 
     $this->DisplayName = _("DNS service");
 

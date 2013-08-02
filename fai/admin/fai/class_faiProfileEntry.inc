@@ -33,7 +33,7 @@ class faiProfileEntry extends plugin
 
   function faiProfileEntry (&$config, $dn= NULL,$used=array(),$base)
   {
-    plugin::plugin ($config, $dn);
+    parent::__construct($config, $dn);
 
     /* Search only in fai tree */
     $this->ui = get_userinfo();
@@ -109,7 +109,7 @@ class faiProfileEntry extends plugin
   function execute()
   {
     /* Call parent execute */
-    plugin::execute();
+    parent::execute();
 
     /* Fill templating stuff */
     $smarty     = get_smarty();
