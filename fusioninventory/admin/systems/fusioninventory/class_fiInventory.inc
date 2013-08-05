@@ -34,7 +34,7 @@ class fiInventory extends simplePlugin
     'memories'        => 'hardware',
     'modems'          => 'hardware',
     'monitors'        => 'hardware',
-    'networks'        => 'software',
+    'networks'        => 'hardware',
     'ports'           => 'hardware',
     'processes'       => 'process',
     'registry'        => 'software',
@@ -45,9 +45,9 @@ class fiInventory extends simplePlugin
     'storages'        => 'hardware',
     'videos'          => 'hardware',
     'usbdevices'      => 'hardware',
-    'users'           => 'software',
-    'localusers'      => 'software',
-    'localgroups'     => 'software',
+    'users'           => 'users',
+    'localusers'      => 'users',
+    'localgroups'     => 'users',
     'printers'        => 'hardware',
     'bios'            => 'software',
     'hardware'        => 'hardware',
@@ -89,6 +89,12 @@ class fiInventory extends simplePlugin
         'attrs'     => array(new FakeAttribute('software_infos')),
         'template'  => get_template_path('inventory.tpl', TRUE, dirname(__FILE__)),
       ),
+      'users' => array(
+        'name'      => _('Users'),
+        'class'     => array('fullwidth'),
+        'attrs'     => array(new FakeAttribute('users_infos')),
+        'template'  => get_template_path('inventory.tpl', TRUE, dirname(__FILE__)),
+      ),
       'process' => array(
         'name'      => _('Processes'),
         'class'     => array('fullwidth'),
@@ -105,6 +111,7 @@ class fiInventory extends simplePlugin
     $this->hardware_infos = NULL;
     $this->software_infos = NULL;
     $this->process_infos  = NULL;
+    $this->users_infos    = NULL;
   }
 
   function execute()
@@ -114,6 +121,7 @@ class fiInventory extends simplePlugin
       $this->hardware_infos = $infos['hardware'];
       $this->software_infos = $infos['software'];
       $this->process_infos  = $infos['process'];
+      $this->users_infos    = $infos['users'];
     }
     $smarty = get_smarty();
     $smarty->assign('usePrototype', 'true');
