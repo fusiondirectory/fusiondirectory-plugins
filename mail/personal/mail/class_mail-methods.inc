@@ -382,16 +382,21 @@ class mailMethod
     /* Create account_id
      */
     $from = array("/%cn%/i","/%uid%/i","/%prefix%/i","/%uattrib%/i","/%domain%/i","/%mailpart%/i","/%mail%/i");
-    $uid  = '';
-    $cn   = '';
+    $uid    = '';
+    $cn     = '';
+    $attrib = '';
     if (isset($this->parent->cn)) {
-      $cn   = $this->parent->cn;
-      $uid  = $cn;
+      $cn     = $this->parent->cn;
+      $uid    = $cn;
+      $attrib = $cn;
     }
     if (isset($this->parent->uid)) {
       $uid = $this->parent->uid;
     }
-    $to   = array($cn,$uid,$prefix,$this->parent->$uattrib, $domain, $mailpart,$mail);
+    if (isset($this->parent->$uattrib)) {
+      $attrib = $this->parent->$uattrib;
+    }
+    $to   = array($cn,$uid,$prefix,$attrib,$domain,$mailpart,$mail);
     $acc_id = trim(strtolower(preg_replace($from,$to,$acc_string)));
 
     /* Check for not replaced pattern.
