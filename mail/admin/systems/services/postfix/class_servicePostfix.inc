@@ -1,5 +1,4 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
@@ -20,12 +19,10 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class servicePostfix extends simpleService {
+class servicePostfix extends simpleService
+{
+  var $objectclasses = array('fdPostfixServer');
 
-  /* This plugin only writes its objectClass */
-  var $objectclasses    = array('fdPostfixServer');
-
-  /* Return plugin informations for acl handling */
   static function plInfo()
   {
     return array(
@@ -36,7 +33,6 @@ class servicePostfix extends simpleService {
       'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }
-
 
   /*!
   *  \brief The main function : information about attributes
@@ -49,13 +45,14 @@ class servicePostfix extends simpleService {
         'icon' => 'images/rightarrow.png',
         'attrs' => array (
           new StringAttribute (
-            _('Visible full qualified hostname'), _('The full qualified host name.'),
+            _('Hostname'), _('The host name.'),
             'postfixMyHostname', TRUE,
-            '', '', '/^[^\.]+\.([^\.]+\.)+[^\.]+$/', 'smtp.example.org'
+            '', '', '/^([^\.]+\.)+[^\.]+$/', 'smtp'
           ),
           new StringAttribute (
-            _('Visible full qualified domain'), _('The full qualified domain.'),
-            'postfixMyDomain', FALSE
+            _('Domain'), _('The domain.'),
+            'postfixMyDomain', TRUE,
+            '', '', '/^([^\.]+\.)+[^\.]+$/', 'example.org'
           ),
           new IntAttribute (
             _('Max mail header size (KB)'), _('This value specifies the maximal header size.'),
@@ -143,25 +140,9 @@ class servicePostfix extends simpleService {
     );
   }
 
-   /*!
-   * \brief Constructor of the freeradiusAccount
-   *        It will build the select groups choices
-   */
   function __construct(&$config, $dn = NULL, $object = NULL)
   {
     parent::__construct($config, $dn, $object);
-    $this->attributesAccess['postfixMyDomain']->setDisabled(TRUE);
-    $this->attributesAccess['postfixMyDomain']->setVisible(FALSE);
-    if ($this->postfixMyDomain != "") {
-      $this->postfixMyHostname .= '.'.$this->postfixMyDomain;
-    }
-  }
-
-  function prepare_save()
-  {
-    $this->postfixMyDomain   = preg_replace("/^[^\.]+\./", "", $this->postfixMyHostname);
-    $this->postfixMyHostname = preg_replace("/\..*$/", "", $this->postfixMyHostname);
-    parent::prepare_save();
   }
 }
 ?>
