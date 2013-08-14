@@ -103,12 +103,6 @@ class systemManagement extends management
     $this->registerAction("new_ieee802Device",    "newEntry");
     $this->registerAction("new_fdMobilePhone",    "newEntry");
 
-    foreach ($this->config->data['TABS']['SERVERSERVICE'] as $plug) {
-      if (class_available($plug['CLASS'])) {
-        $this->registerAction("edit_".$plug['CLASS'], "editEntry");
-      }
-    }
-
     // Check if we are able to communicate with Argonaut server
     if (class_available("supportDaemon")) {
       $o = new supportDaemon();
@@ -504,14 +498,23 @@ class systemManagement extends management
       if ($str) {
         return $str;
       }
-      if (preg_match("/^edit_/", $action)) {
-        $service = preg_replace("/^edit_/", "", $action);
-        if (isset($this->tabObject->by_object['ServerService'])) {
-          $this->tabObject->current = 'ServerService';
-          $all = array('action'  => 'edit', 'targets' => array($service));
-          $this->tabObject->by_object['ServerService']->editEntry($all['action'], $all['targets'], $all);
-        } else {
-          trigger_error("Unknown tab: ServerService");
+      if (isset($all['subaction'])) {
+        if (preg_match('/^tab_([a-zA-Z_]+)$/', $all['subaction'], $m)) {
+          $tab = $m[1];
+          if (isset($this->tabObject->by_object[$tab])) {
+            $this->tabObject->current = $tab;
+          } else {
+            trigger_error('Unknown tab: '.$tab);
+          }
+        } elseif (preg_match('/^service_([a-zA-Z_]+)$/', $all['subaction'], $m)) {
+          $service = $m[1];
+          if (isset($this->tabObject->by_object['ServerService'])) {
+            $this->tabObject->current = 'ServerService';
+            $all = array('action'  => 'edit', 'targets' => array($service));
+            $this->tabObject->by_object['ServerService']->editEntry($all['action'], $all['targets'], $all);
+          } else {
+            trigger_error("Unknown tab: ServerService");
+          }
         }
       }
     }
@@ -983,6 +986,7 @@ class systemManagement extends management
     $headpage = $this->getHeadpage();
     $headpage->update();
 
+
     $tD = $this->getObjectDefinitions();
     $smarty = get_smarty();
     foreach($tD as $name => $obj){
@@ -990,7 +994,7 @@ class systemManagement extends management
     }
 
     $display = $headpage->render();
-    return($this->getHeader().$display);
+    return $this->getHeader().$display;
   }
 
 
@@ -1152,7 +1156,7 @@ class systemManagement extends management
           if (isset($infos['plIcon'])) {
             $services_imgs[] = "<input class='center' type='image' src='".$infos['plIcon']."' ".
                                "alt='".$infos['plShortName']."' title='".$infos['plShortName']."' ".
-                               "name='listing_edit_".$class."_$row' style='padding:1px'/>";
+                               "name='listing_edit_service_".$class."_$row' style='padding:1px'/>";
           } else {
             @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $infos['plShortName']." ($class)", "No icon for");
           }
@@ -1178,6 +1182,7 @@ class systemManagement extends management
       'plSelfModify'  => FALSE,
       'plPriority'    => 20,
       'plSection'     => 'admin',
+      'plCategory'    => array('terminal','workstation','server','phone','printer','component','winstation'),
       'plManages'     => array('terminal','workstation','server','phone','printer','component','winstation'),
 
       'plProvidedAcls'  => array()
