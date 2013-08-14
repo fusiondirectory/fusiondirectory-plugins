@@ -6,8 +6,8 @@
     {foreach from=$attributes item=infos}
     <ul>
     {foreach from=$infos item=server}
-    <li style="list-style-image:url(plugins/systems/images/select_server.png)">
-      {$server.name}
+    <li style="list-style-image:url(plugins/systems/images/select_server.png)" id="server_{$server.name}">
+      {$server.link}
       <ul>
         {foreach from=$server.zones item=zone}
         <li style="list-style:disc">

@@ -58,6 +58,7 @@ class dashboardNetwork extends simplePlugin
 
       $servers[] = array(
         'name'  => $attrs['cn'][0],
+        'link'  => objects::link($attrs['dn'], 'server', 'service_serviceDHCP', $attrs, FALSE),
         'zones' => $zones
       );
     }
@@ -81,7 +82,11 @@ class dashboardNetwork extends simplePlugin
       if (preg_match("/^cn=/", $dn)) {
         $cn = preg_replace("/^cn=([^,]+),.*$/", "$1", $dn);
         if (!isset($servers[$dn])) {
-          $servers[$dn] = array('name' => $cn, 'zones' => array());
+          $servers[$dn] = array(
+            'name' => $cn,
+            'link'  => objects::link($attrs['dn'], 'server', 'service_serviceDNS', $cn, FALSE),
+            'zones' => array()
+          );
         }
         $servers[$dn]['zones'][$attrs['zoneName'][0]] = $attrs['zoneName'][0];
       } elseif (preg_match("/^zoneName=/", $dn)) {
