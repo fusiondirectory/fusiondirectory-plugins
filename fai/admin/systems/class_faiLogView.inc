@@ -174,7 +174,7 @@ class faiLogView extends simplePlugin
       'plShortName'   => _('FAI Logs'),
       'plDescription' => _('FAI Logs Viewer'),
       'plPriority'    => 30,
-      'plObjectType'  => array('workstation', 'server'),
+      'plObjectType'  => array('workstation', 'server', 'ogroup-dynamic'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );

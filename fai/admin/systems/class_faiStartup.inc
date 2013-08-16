@@ -178,7 +178,7 @@ class faiStartup extends simplePlugin
       'plDescription'   => _('Full automated installation'),
       'plSelfModify'    => FALSE,
       'plPriority'      => 9,
-      'plObjectType'    => array('workstation', 'server', 'ogroup'),
+      'plObjectType'    => array('workstation', 'server', 'ogroup-dynamic'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );

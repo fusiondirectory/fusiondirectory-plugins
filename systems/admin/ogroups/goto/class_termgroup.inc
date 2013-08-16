@@ -395,7 +395,7 @@ class termgroup extends plugin
       'plDescription' => _('System group'),
       'plSelfModify'  => FALSE,
       'plPriority'    => 5,
-      'plObjectType'  => array('ogroup'),
+      'plObjectType'  => array('ogroup-workstation', 'ogroup-terminal'),
 
       'plProvidedAcls'  => array(
         'gotoMode'          => _('Mode'),
