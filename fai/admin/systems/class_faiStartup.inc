@@ -175,13 +175,13 @@ class faiStartup extends simplePlugin
   static function plInfo()
   {
     return array(
-      "plShortName"     => _("FAI"),
-      "plDescription"   => _("Full automated installation"),
-      "plSelfModify"    => FALSE,
-      "plPriority"      => 9,
-      "plObjectType"    => array("workstation", "server", "ogroup"),
+      'plShortName'     => _('FAI'),
+      'plDescription'   => _('Full automated installation'),
+      'plSelfModify'    => FALSE,
+      'plPriority'      => 9,
+      'plObjectType'    => array('workstation', 'server', 'ogroup-dynamic'),
 
-      "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }
 }

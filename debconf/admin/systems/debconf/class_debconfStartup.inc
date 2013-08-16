@@ -108,13 +108,13 @@ class debconfStartup extends simplePlugin
   static function plInfo()
   {
     return array(
-      "plShortName"     => _("Debconf"),
-      "plDescription"   => _("Debconf preseed startup"),
-      "plSelfModify"    => FALSE,
-      "plPriority"      => 9,
-      "plObjectType"    => array("workstation", "server", "ogroup"),
+      'plShortName'     => _('Debconf'),
+      'plDescription'   => _('Debconf preseed startup'),
+      'plSelfModify'    => FALSE,
+      'plPriority'      => 9,
+      'plObjectType'    => array('workstation', 'server', 'ogroup-dynamic'),
 
-      "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }
 }

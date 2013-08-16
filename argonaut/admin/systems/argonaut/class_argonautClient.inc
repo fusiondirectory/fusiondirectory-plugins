@@ -156,13 +156,13 @@ class argonautClient extends simplePlugin
   static function plInfo ()
   {
     return array(
-      "plShortName"     => _("Argonaut client"),
-      "plDescription"   => _("Edit argonaut client settings"),
-      "plSelfModify"    => FALSE,
-      "plObjectType"    => array("workstation","server","ogroup"),
+      'plShortName'     => _('Argonaut client'),
+      'plDescription'   => _('Edit argonaut client settings'),
+      'plSelfModify'    => FALSE,
+      'plObjectType'    => array('workstation','server','ogroup-dynamic'),
 
       // But simplePlugin can generate the ACL list for us
-      "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }
 }
