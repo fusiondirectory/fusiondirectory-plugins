@@ -515,7 +515,7 @@ class serviceDNS extends goService
     foreach($tmp['del'] as $dn => $del){
 
       $for = $del['InitialzoneName'];
-      $rev = DNS::FlipIp($del['InitialReverseZone']).".in-addr.arpa.";
+      $rev = DNS::FlipIp($del['InitialReverseZone']).DNS::getInAddrArpa();
 
       $ldap->cd($dn);
       $ldap->rmdir_recursive($dn);
