@@ -1,5 +1,4 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
@@ -22,33 +21,34 @@
 
 class DNS
 {
-  static $RecordTypes= array('aRecord' => "aRecord",
-                    'mDRecord'      => "mDRecord",
-                    'mXRecord'      => "mXRecord",
-                    'nSRecord'      => "nSRecord",
-                    'pTRRecord'     => "relativeDomainName",
-                    'hInfoRecord'   => "hInfoRecord",
-                    'mInfoRecord'   => "mInfoRecord",
-                    'cNAMERecord'   => "relativeDomainName",
-                    'tXTRecord'     => "tXTRecord",
-                    'aFSDBRecord'   => "aFSDBRecord",
-                    'SigRecord'     => "SigRecord",
-                    'KeyRecord'     => "KeyRecord",
-                    'aAAARecord'    => "aAAARecord",
-                    'LocRecord'     => "LocRecord",
-                    'nXTRecord'     => "nXTRecord",
-                    'sRVRecord'     => "sRVRecord",
-                    'nAPTRRecord'   => "nAPTRRecord",
-                    'kXRecord'      => "kXRecord",
-                    'certRecord'    => "certRecord",
-                    'a6Record'      => "a6Record",
-                    'dSRecord'      => "dSRecord",
-                    'sSHFPRecord'   => "sSHFPRecord",
-                    'rRSIGRecord'   => "rRSIGRecord",
-                    'nSECRecord'    => "nSECRecord");
+  static $RecordTypes = array(
+    'aRecord' => 'aRecord',
+    'mDRecord'      => 'mDRecord',
+    'mXRecord'      => 'mXRecord',
+    'nSRecord'      => 'nSRecord',
+    'pTRRecord'     => 'relativeDomainName',
+    'hInfoRecord'   => 'hInfoRecord',
+    'mInfoRecord'   => 'mInfoRecord',
+    'cNAMERecord'   => 'relativeDomainName',
+    'tXTRecord'     => 'tXTRecord',
+    'aFSDBRecord'   => 'aFSDBRecord',
+    'SigRecord'     => 'SigRecord',
+    'KeyRecord'     => 'KeyRecord',
+    'aAAARecord'    => 'aAAARecord',
+    'LocRecord'     => 'LocRecord',
+    'nXTRecord'     => 'nXTRecord',
+    'sRVRecord'     => 'sRVRecord',
+    'nAPTRRecord'   => 'nAPTRRecord',
+    'kXRecord'      => 'kXRecord',
+    'certRecord'    => 'certRecord',
+    'a6Record'      => 'a6Record',
+    'dSRecord'      => 'dSRecord',
+    'sSHFPRecord'   => 'sSHFPRecord',
+    'rRSIGRecord'   => 'rRSIGRecord',
+    'nSECRecord'    => 'nSECRecord'
+  );
   /* All available record types */
-  /* Return all record types
-   */
+  /* Return all record types */
   static function getDnsRecordTypes($ForZones = false)
   {
     if($ForZones){
@@ -188,8 +188,8 @@ class DNS
         unset($Zones[$zoneName]);
       }else{
         $tmp = $ldap->fetch();
-        $Zones[$zoneName]['ReverseZone']        = DNS::FlipIp(str_replace(".in-addr.arpa.","",$tmp['zoneName'][0]));
-        $Zones[$zoneName]['InitialReverseZone'] = DNS::FlipIp(str_replace(".in-addr.arpa.","",$tmp['zoneName'][0]));
+        $Zones[$zoneName]['ReverseZone']        = DNS::FlipIp(preg_replace('/\.in\-addr\.arpa\.?$/', '', $tmp['zoneName'][0]));
+        $Zones[$zoneName]['InitialReverseZone'] = DNS::FlipIp(preg_replace('/\.in\-addr\.arpa\.?$/', '', $tmp['zoneName'][0]));
       }
     }
     return($Zones);
@@ -269,9 +269,9 @@ class DNS
       if(!empty($zone['InitialReverseZone'])){
         if($zone['InitialReverseZone'] != $zone['ReverseZone']){
           $base = "zoneName=".$zone['zoneName'].",".$HostDn;
-          $oldRDn = "zoneName=". DNS::FlipIp($zone['InitialReverseZone']).".in-addr.arpa.,".$base;
-          $newRDn = "zoneName=". DNS::FlipIp($zone['ReverseZone']).".in-addr.arpa.,".$base;
-          $PrePareZoneEntries[DNS::FlipIp($zone['InitialReverseZone']).".in-addr.arpa."] = DNS::FlipIp($zone['ReverseZone']).".in-addr.arpa.";
+          $oldRDn = "zoneName=". DNS::FlipIp($zone['InitialReverseZone']).DNS::getInAddrArpa().",".$base;
+          $newRDn = "zoneName=". DNS::FlipIp($zone['ReverseZone']).DNS::getInAddrArpa().",".$base;
+          $PrePareZoneEntries[DNS::FlipIp($zone['InitialReverseZone']).DNS::getInAddrArpa()] = DNS::FlipIp($zone['ReverseZone']).DNS::getInAddrArpa();
           $move [$oldRDn] = $newRDn;
         }
       }
@@ -302,7 +302,7 @@ class DNS
       /* Create Reverse Entry
        * And append it to our add queue
        */
-      $zone['ReverseZone'] = DNS::FlipIp($zone['ReverseZone']).".in-addr.arpa.";
+      $zone['ReverseZone'] = DNS::FlipIp($zone['ReverseZone']).DNS::getInAddrArpa();
       $base = "zoneName=".$zone['zoneName'].",".$HostDn;
       $newRDn = "zoneName=".$zone['ReverseZone'].",".$base;
       $rObj = $obj;
@@ -691,7 +691,7 @@ class DNS
           $config->current['BASE'],array("zoneName"),GL_NO_ACL_CHECK | GL_SUBSEARCH);
 
       foreach($tmp as $at){
-        if(preg_match("/\.in\-addr\.arpa\./",$at['zoneName'][0])){
+        if(preg_match("/\.in\-addr\.arpa\.?$/",$at['zoneName'][0])){
           $ReverseZones[$at['dn']] = $at;
         }else{
           $ForwardZones[$at['dn']] = $at;
@@ -770,6 +770,20 @@ class DNS
       }
     }
   }
+
+  static function getInAddrArpa()
+  {
+    if (self::finalDot()) {
+      return '.in-addr.arpa.';
+    } else {
+      return '.in-addr.arpa';
+    }
+  }
+
+  static function finalDot()
+  {
+    global $config;
+    return ($config->get_cfg_value('DNSFinalDot', 'TRUE') == 'TRUE');
+  }
 }
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

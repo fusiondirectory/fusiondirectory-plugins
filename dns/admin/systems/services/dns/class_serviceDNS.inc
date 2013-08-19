@@ -354,8 +354,8 @@ class serviceDNS extends goService
 
     /* Add Records which uses this reverse zone
      */
-    if(isset($zones[$rev.".in-addr.arpa."])){
-      $used = array_merge($used,$zones[$rev.".in-addr.arpa."]);
+    if(isset($zones[$rev.DNS::getInAddrArpa()])){
+      $used = array_merge($used,$zones[$rev.DNS::getInAddrArpa()]);
     }
 
     /* There are still entries using this configuration
