@@ -134,7 +134,7 @@ class servdnseditZone extends plugin
       /* Check if this used, in this case disable forward and reverse configuration */
       $tmp = $this->getUsedZoneNames();
       $this->Zone_is_used = FALSE;
-      if(isset($tmp[DNS::FlipIp($this->InitialReverseZone).".in-addr.arpa."])){
+      if(isset($tmp[DNS::FlipIp($this->InitialReverseZone).DNS::getInAddrArpa()])){
         $this->Zone_is_used = TRUE;
       }
     }
@@ -484,11 +484,15 @@ class servdnseditZone extends plugin
 
     $ret['sOAmail']            = preg_replace("/\@/",".",$this->sOAmail);
 
-    foreach(array("sOAprimary","zoneName","sOAmail") as $attr){
+    foreach (array("sOAprimary","zoneName","sOAmail") as $attr) {
+
+      if (($attr == 'zoneName') && !DNS::finalDot()) {
+        continue;
+      }
 
       // Append trailing dots if we've full qualified host names.
-      if(!preg_match("/\.$/",$ret[$attr])){
-        if(!tests::is_ip($ret[$attr]) && preg_match("/\./",$ret[$attr])){
+      if (!preg_match("/\.$/", $ret[$attr])) {
+        if (!tests::is_ip($ret[$attr]) && preg_match("/\./",$ret[$attr])) {
           $ret[$attr] = $ret[$attr].".";
         }
       }
