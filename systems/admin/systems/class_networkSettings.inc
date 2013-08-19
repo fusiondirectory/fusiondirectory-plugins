@@ -227,7 +227,7 @@ class networkSettings extends plugin
 
   function netmaskIsCoherent($idZone)
   {
-    $netmask = DNS::FlipIp(str_replace(".in-addr.arpa.", "", DNS::getNameFromMix($idZone)));
+    $netmask = DNS::FlipIp(str_replace(DNS::getInAddrArpa(), "", DNS::getNameFromMix($idZone)));
     if (!strstr($this->ipHostNumber, $netmask)) {
       return FALSE;
     } else {
