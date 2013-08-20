@@ -20,20 +20,12 @@
 
 class opsiManagement extends simpleManagement
 {
-  // Tab definition
-  protected $objectName   = "opsi";
   protected $objectTypes  = array('opsiProfile', 'opsiSoftwareList');//, 'opsiOnDemandList');
 
   protected $departmentBrowser      = FALSE;
   protected $departmentRootVisible  = FALSE;
   protected $baseMode               = FALSE;
 
-  function __construct($config, $ui)
-  {
-    $this->acl_base = $config->current['BASE'];
-    parent::__construct($config, $ui);
-    $this->headpage->setBase($this->acl_base); // May be done by simpleManagement when departementBrowser is FALSE?
-  }
   /* Return plugin informations for acl handling */
   static function plInfo()
   {
