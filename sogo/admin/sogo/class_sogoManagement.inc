@@ -21,7 +21,6 @@
 class sogoManagement extends simpleManagement
 {
   // Tab definition
-  protected $objectName   = 'sogo';
   protected $objectTypes  = array('sogoResource');
 
   protected $departmentBrowser      = TRUE;

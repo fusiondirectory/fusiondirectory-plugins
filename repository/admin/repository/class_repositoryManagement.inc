@@ -21,7 +21,6 @@
 class repositoryManagement extends simpleManagement
 {
   // Tab definition
-  protected $objectName   = 'repository';
   protected $objectTypes  = array('buildRepository', 'repoDistribution', 'repoSection');
 
   protected $departmentBrowser      = TRUE;
