@@ -74,7 +74,7 @@ class repositorySection extends simplePlugin
 
     $this->attributesAccess['cn']->setUnique(TRUE);
 
-    $sections = $this->config->getObjectList('repoSection', 'cn');
+    $sections = objects::ls('repoSection', 'cn');
     $this->attributesAccess['fdBasedOn']->attribute->setChoices(array_values($sections));
   }
 

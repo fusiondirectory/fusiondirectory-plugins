@@ -110,6 +110,7 @@ class buildRepository extends simplePlugin
       }
     }
     $this->attributesAccess['fdRepoDistributionSection']->attribute->setChoices(array_values($choices));
+
   }
 
   /* Returns the dn of the entry */
