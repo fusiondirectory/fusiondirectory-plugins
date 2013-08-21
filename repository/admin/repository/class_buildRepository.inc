@@ -103,10 +103,10 @@ class buildRepository extends simplePlugin
 
     $this->attributesAccess['cn']->setUnique(TRUE);
 
-    $distros = $this->config->getObjectList('repoDistribution', 'cn');
+    $distros = objects::ls('repoDistribution', 'cn');
     $this->attributesAccess['fdRepoDistribution']->attribute->setChoices(array_values($distros));
 
-    $sections = $this->config->getObjectList('repoSection', 'cn');
+    $sections = objects::ls('repoSection', 'cn');
     $this->attributesAccess['fdRepoSection']->attribute->setChoices(array_values($sections));
   }
 

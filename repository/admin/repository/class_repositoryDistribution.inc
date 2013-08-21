@@ -74,7 +74,7 @@ class repositoryDistribution extends simplePlugin
 
     $this->attributesAccess['cn']->setUnique(TRUE);
 
-    $distros = $this->config->getObjectList('repoDistribution', 'cn');
+    $distros = objects::ls('repoDistribution', 'cn');
     $this->attributesAccess['fdBasedOn']->attribute->setChoices(array_values($distros));
   }
 
