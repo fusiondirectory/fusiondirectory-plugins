@@ -1,0 +1,17 @@
+##
+## repository-fd-conf.schema - Needed by Fusion Directory for managing repositories
+##
+
+# Attributes
+attributetype ( 1.3.6.1.4.1.38414.34.1.1 NAME 'fdRepositoryRDN'
+  DESC 'FusionDirectory - Repository RDN'
+  EQUALITY caseExactIA5Match
+  SUBSTR caseExactIA5SubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE)
+
+# Object Class
+objectclass ( 1.3.6.1.4.1.38414.34.2.1 NAME 'fdRepositoryPluginConf'
+  DESC 'FusionDirectory repository plugin configuration'
+  SUP top AUXILIARY
+  MUST ( cn $ fdRepositoryRDN ) )
