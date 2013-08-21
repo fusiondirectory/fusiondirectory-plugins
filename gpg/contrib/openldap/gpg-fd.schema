@@ -1,0 +1,14 @@
+##
+## gpg-fd.schema - Needed by Fusion Directory for managing gpg keys
+##
+
+# Attributes
+attributetype ( 1.3.6.1.4.1.38414.35.1.1 NAME 'fdUserKeyDN'
+  DESC 'FusionDirectory - Repository type'
+  EQUALITY caseExactIA5Match
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26)
+
+# Objectclasses
+objectclass (1.3.6.1.4.1.38414.35.2.1 NAME 'fdGpgAccount' SUP top AUXILIARY
+  DESC 'FusionDirectory - User GPG tab'
+  MUST ( fdUserKeyDN ) )
