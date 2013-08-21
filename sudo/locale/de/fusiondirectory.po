@@ -4,13 +4,14 @@
 # 
 # Translators:
 #  Cajus Pollmeier <pollmeier@gonicus.de>, 2008
+# Maik Wagner <maikwagner@yahoo.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
 "Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
-"POT-Creation-Date: 2013-07-31 13:09+0200\n"
-"PO-Revision-Date: 2013-07-31 11:11+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"POT-Creation-Date: 2013-08-21 18:26+0200\n"
+"PO-Revision-Date: 2013-08-21 16:31+0000\n"
+"Last-Translator: Maik Wagner <maikwagner@yahoo.com>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/FusionDirectory/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,23 +21,23 @@ msgstr ""
 
 #: config/sudo/class_sudoConfig.inc:28
 msgid "Sudo configuration"
-msgstr ""
+msgstr "Sudo Konfiguration"
 
 #: config/sudo/class_sudoConfig.inc:29
 msgid "FusionDirectory sudo plugin configuration"
-msgstr ""
+msgstr "FusionDirectory sudo Pluginkonfiguration"
 
 #: config/sudo/class_sudoConfig.inc:42
 msgid "LDAP tree"
-msgstr ""
+msgstr "LDAP Baum"
 
 #: config/sudo/class_sudoConfig.inc:45
 msgid "Sudo RDN"
-msgstr ""
+msgstr "Sudo RDN"
 
 #: config/sudo/class_sudoConfig.inc:45
 msgid "Branch in which sudoers will be stored"
-msgstr ""
+msgstr "Zweig in dem sudoers gespeichert werden wird"
 
 #: admin/sudo/class_sudoManagement.inc:36 admin/sudo/class_sudoGeneric.inc:55
 msgid "Sudo"
@@ -99,7 +100,7 @@ msgstr "Die sudo-Option '%s' ist ungültig!"
 #: admin/sudo/class_sudoOption.inc:278
 #, php-format
 msgid "%s (%s)"
-msgstr ""
+msgstr "%s (%s)"
 
 #: admin/sudo/class_sudoOption.inc:472
 msgid "Available options"
@@ -111,11 +112,11 @@ msgstr "Option"
 
 #: admin/sudo/class_sudoOption.inc:475
 msgid "Add a new sudo option"
-msgstr ""
+msgstr "Eine neue sudo-Option hinzufügen"
 
 #: admin/sudo/class_sudoOption.inc:480 admin/sudo/class_sudoOption.inc:482
 msgid "Used sudo role options"
-msgstr ""
+msgstr "Benutzte sudo Rollenoptionen"
 
 #: admin/sudo/class_sudoOption.inc:554
 msgid "Options"
@@ -140,11 +141,11 @@ msgstr "globale Vorgaben"
 
 #: admin/sudo/class_sudoGeneric.inc:76
 msgid "Name of the role"
-msgstr ""
+msgstr "Name der Rolle"
 
 #: admin/sudo/class_sudoGeneric.inc:81
 msgid "Description for the new sudo role"
-msgstr ""
+msgstr "Beschreibung für die neue sudo-Rolle"
 
 #: admin/sudo/class_sudoGeneric.inc:86
 msgid "Commands"
@@ -154,7 +155,7 @@ msgstr "Kommandos"
 msgid ""
 "A Unix command with optional command line arguments, potentially including "
 "globbing characters (aka wild cards)"
-msgstr ""
+msgstr "Ein Unix-Befehl mit optionalen Kommandozeilenargumenten, potentiell inklusive globbing-Zeichen (aka wild cards)"
 
 #: admin/sudo/class_sudoGeneric.inc:93
 msgid "Run as"
@@ -164,7 +165,7 @@ msgstr "Ausführen als"
 msgid ""
 "A user that commands may be run as or a Unix group that contains a list of "
 "users that commands may be run as"
-msgstr ""
+msgstr "Ein befehlender Benutzer kann gestartet werden oder eine Unixgruppe, die eine List von Benutzern enthält unter der Befehle gestartet werden"
 
 #: admin/sudo/class_sudoGeneric.inc:100
 msgid "Systems"
@@ -172,7 +173,7 @@ msgstr "Systeme"
 
 #: admin/sudo/class_sudoGeneric.inc:100
 msgid "A host name, IP address or IP network"
-msgstr ""
+msgstr "Ein Hostname, IP Adresse oder IP-Netzwerk"
 
 #: admin/sudo/class_sudoGeneric.inc:105
 msgid "Users and groups"
@@ -181,7 +182,7 @@ msgstr "Benutzer und Gruppen"
 #: admin/sudo/class_sudoGeneric.inc:106
 msgid ""
 "A user name, user ID (prefixed with '#'), Unix group (prefixed with '%')"
-msgstr ""
+msgstr "Ein Benutzername, user ID (mit Prefix '#'), Unixgruppe (mit Prefix '#')"
 
 #: admin/sudo/class_sudoGeneric.inc:113
 msgid "System trust"
@@ -193,7 +194,7 @@ msgstr "Vertrauens-Modus"
 
 #: admin/sudo/class_sudoGeneric.inc:117
 msgid "Trust mode for the role"
-msgstr ""
+msgstr "Vertrauensmodus für Rolle"
 
 #: admin/sudo/class_sudoGeneric.inc:121
 msgid "disabled"
@@ -215,7 +216,7 @@ msgstr "Warnung"
 msgid ""
 "Please double check if you really want to do this since there is no way for "
 "FusionDirectory to get your data back."
-msgstr ""
+msgstr "Bitte überprüfen Sie, ob Sie dies wirklich tun wollen, da es keinen Weg gibt, für FusionDirectory die Daten wieder herzustellen."
 
 #: admin/sudo/remove.tpl.c:8
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."

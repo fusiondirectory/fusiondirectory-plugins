@@ -4,14 +4,15 @@
 # 
 # Translators:
 # Benoit Mortier <benoit.mortier@opensides.be>, 2005-2008,2010-2011
+# fusiondirectory <contact@fusiondirectory.org>, 2013
 # fusiondirectory <contact@fusiondirectory.org>, 2012
 # fusiondirectory <contact@fusiondirectory.org>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
 "Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
-"POT-Creation-Date: 2013-07-31 13:09+0200\n"
-"PO-Revision-Date: 2013-07-30 17:20+0000\n"
+"POT-Creation-Date: 2013-08-21 18:26+0200\n"
+"PO-Revision-Date: 2013-08-21 16:30+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -19,6 +20,26 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: config/dns/class_dnsConfig.inc:28
+msgid "DNS configuration"
+msgstr "Configuration du DNS"
+
+#: config/dns/class_dnsConfig.inc:29
+msgid "FusionDirectory dns plugin configuration"
+msgstr "Configuration du plugin DNS"
+
+#: config/dns/class_dnsConfig.inc:42
+msgid "DNS config"
+msgstr "Configuration du DNS"
+
+#: config/dns/class_dnsConfig.inc:45
+msgid "Store final dot in domains"
+msgstr "Stocker le point final dans des domaines"
+
+#: config/dns/class_dnsConfig.inc:45
+msgid "Should FD store a final dot at the end of domains?"
+msgstr "Est ce que FusionDirectory doit stocker un point final à la fin de domaines?"
 
 #: admin/systems/services/dns/class_DNS.inc:181
 #: admin/systems/services/dns/class_DNS.inc:186
@@ -65,7 +86,7 @@ msgid "MxRecord"
 msgstr "Enregistrements mx"
 
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:290
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:525
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:529
 msgid "Delete"
 msgstr "Supprimer"
 
@@ -134,7 +155,7 @@ msgstr "L'adresse réseau spécifiée et la classe réseau (%s/%s) ne concordent
 msgid "Network class"
 msgstr "Classe réseau"
 
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:531
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:535
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:475
 msgid "Add"
 msgstr "Ajouter"

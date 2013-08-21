@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Maik Wagner <maikwagner@yahoo.com>, 2013
 #  Stefan Koehler <stefan.koehler@GONICUS.de>, 2005
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
 "Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
-"POT-Creation-Date: 2013-07-31 13:09+0200\n"
-"PO-Revision-Date: 2013-07-31 11:30+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"POT-Creation-Date: 2013-08-21 18:26+0200\n"
+"PO-Revision-Date: 2013-08-21 16:31+0000\n"
+"Last-Translator: Maik Wagner <maikwagner@yahoo.com>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/FusionDirectory/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,87 +26,87 @@ msgstr "Systeme"
 
 #: config/systems/class_systemsPluginConfig.inc:29
 msgid "Systems plugin configuration"
-msgstr ""
+msgstr "Systeme Plugin-Konfiguration"
 
 #: config/systems/class_systemsPluginConfig.inc:41
 msgid "LDAP tree for systems"
-msgstr ""
+msgstr "LDAP Baum für Systeme"
 
 #: config/systems/class_systemsPluginConfig.inc:44
 msgid "Systems RDN"
-msgstr ""
+msgstr "Systems RDN"
 
 #: config/systems/class_systemsPluginConfig.inc:44
 msgid "Branch in which systems will be stored"
-msgstr ""
+msgstr "Zweig in welchem Systeme gespeichert werden"
 
 #: config/systems/class_systemsPluginConfig.inc:49
 msgid "Server RDN"
-msgstr ""
+msgstr "Server RDN"
 
 #: config/systems/class_systemsPluginConfig.inc:49
 msgid "Branch in which servers will be stored"
-msgstr ""
+msgstr "Zweig in welchem Server gespeichert werden"
 
 #: config/systems/class_systemsPluginConfig.inc:54
 msgid "Workstations RDN"
-msgstr ""
+msgstr "Workstations RDN"
 
 #: config/systems/class_systemsPluginConfig.inc:54
 msgid "Branch in which workstations will be stored"
-msgstr ""
+msgstr "Zweig in welchem Workstations gespeichert werden"
 
 #: config/systems/class_systemsPluginConfig.inc:59
 msgid "Terminal RDN"
-msgstr ""
+msgstr "Terminal RDN"
 
 #: config/systems/class_systemsPluginConfig.inc:59
 msgid "Branch in which terminals will be stored"
-msgstr ""
+msgstr "Zweig in welchem Terminals gespeichert werden"
 
 #: config/systems/class_systemsPluginConfig.inc:64
 msgid "Printer RDN"
-msgstr ""
+msgstr "Drucker RDN"
 
 #: config/systems/class_systemsPluginConfig.inc:64
 msgid "Branch in which printers will be stored"
-msgstr ""
+msgstr "Zweig in welchem Drucker gespeichert werden"
 
 #: config/systems/class_systemsPluginConfig.inc:69
 msgid "Component RDN"
-msgstr ""
+msgstr "Komponenten RDN"
 
 #: config/systems/class_systemsPluginConfig.inc:69
 msgid "Branch in which network devices will be stored"
-msgstr ""
+msgstr "Zweig in welchem Netzwerkgeräte gespeichert werden"
 
 #: config/systems/class_systemsPluginConfig.inc:74
 msgid "Mobile phone RDN"
-msgstr ""
+msgstr "Mobiltelefon RDN"
 
 #: config/systems/class_systemsPluginConfig.inc:74
 msgid "Branch in which mobile phones will be stored"
-msgstr ""
+msgstr "Zweig in welchem Mobiltelefone gespeichert werden"
 
 #: config/systems/class_systemsPluginConfig.inc:81
 msgid "LDAP tree"
-msgstr ""
+msgstr "LDAP Baum"
 
 #: config/systems/class_systemsPluginConfig.inc:84
 msgid "Mimetype RDN"
-msgstr ""
+msgstr "Mimetype RDN"
 
 #: config/systems/class_systemsPluginConfig.inc:84
 msgid "Branch in which mime types will be stored"
-msgstr ""
+msgstr "Zweig in welchem mime-types gespeichert werden"
 
 #: config/systems/class_systemsPluginConfig.inc:89
 msgid "Application RDN"
-msgstr ""
+msgstr "Anwendung RDN"
 
 #: config/systems/class_systemsPluginConfig.inc:89
 msgid "Branch in which applications will be stored"
-msgstr ""
+msgstr "Zweig in welchem Anwendungen gespeichert werden"
 
 #: config/systems/class_systemsPluginConfig.inc:96
 msgid "Miscellaneous"
@@ -113,15 +114,15 @@ msgstr "Verschiedenes"
 
 #: config/systems/class_systemsPluginConfig.inc:100
 msgid "Available encodings for share services"
-msgstr ""
+msgstr "Verfügbare Encodings für Sharedienste"
 
 #: config/systems/class_systemsPluginConfig.inc:104
 msgid "Encoding"
-msgstr ""
+msgstr "Encoding"
 
 #: config/systems/class_systemsPluginConfig.inc:104
 msgid "The encoding code name"
-msgstr ""
+msgstr "Der Encoding Codename"
 
 #: config/systems/class_systemsPluginConfig.inc:109
 msgid "Label"
@@ -129,11 +130,11 @@ msgstr "Label"
 
 #: config/systems/class_systemsPluginConfig.inc:109
 msgid "The encoding displayed name"
-msgstr ""
+msgstr "Der angezeigte Encodingname"
 
 #: config/systems/class_systemsPluginConfig.inc:117
 msgid "Encodings"
-msgstr ""
+msgstr "Encodings"
 
 #: admin/applications/application-list.xml:11
 msgid "List of applications"
@@ -335,7 +336,7 @@ msgstr "Anzeigename"
 
 #: admin/applications/class_applicationGeneric.inc:95
 msgid "The displayed name for this application"
-msgstr ""
+msgstr "Der angezeigte Name für diese Anwendung"
 
 #: admin/applications/class_applicationGeneric.inc:99
 #: admin/ogroups/goto/termgroup.tpl.c:47
@@ -344,11 +345,11 @@ msgstr "Ausführen"
 
 #: admin/applications/class_applicationGeneric.inc:99
 msgid "The application to be executed"
-msgstr ""
+msgstr "Die auszuführende Anwendung"
 
 #: admin/applications/class_applicationGeneric.inc:103
 msgid "A short description of this application"
-msgstr ""
+msgstr "Eine kurze Beschreibung dieser Anwendung"
 
 #: admin/applications/class_applicationGeneric.inc:110
 #: admin/mimetypes/class_mimetypeGeneric.inc:683
@@ -358,7 +359,7 @@ msgstr "Symbol"
 
 #: admin/applications/class_applicationGeneric.inc:113
 msgid "The icon for this application"
-msgstr ""
+msgstr "Das Icon für diese Anwendung"
 
 #: admin/applications/class_applicationGeneric.inc:120
 #: admin/systems/ppd/printerPPDDialog.tpl.c:17
@@ -367,7 +368,7 @@ msgstr "Optionen"
 
 #: admin/applications/class_applicationGeneric.inc:123
 msgid "Only executable for member"
-msgstr ""
+msgstr "Nur für Mitglied ausführbar"
 
 #: admin/applications/class_applicationGeneric.inc:123
 msgid "Only executable by the memebers of the group"
@@ -389,7 +390,7 @@ msgstr "Platziere das Symbol auf dem Desktop der Gruppenmitglieder"
 
 #: admin/applications/class_applicationGeneric.inc:133
 msgid "Put an icon on the user desktop"
-msgstr ""
+msgstr "Ein Icon auf der Arbeitsfläche erstellen"
 
 #: admin/applications/class_applicationGeneric.inc:138
 #: admin/groups/apps/class_groupApplication.inc:1512
@@ -400,7 +401,7 @@ msgstr "Platziere einen Eintrag im Startmenü der Gruppenmitglieder"
 #: admin/applications/class_applicationGeneric.inc:138
 #: admin/applications/class_applicationGeneric.inc:143
 msgid "Put an entry in the startup menu"
-msgstr ""
+msgstr "Einen Eintrag im Startmenü setzen"
 
 #: admin/applications/class_applicationGeneric.inc:143
 #: admin/groups/apps/class_groupApplication.inc:1511
@@ -414,15 +415,15 @@ msgstr "Skript"
 
 #: admin/applications/class_applicationGeneric.inc:157
 msgid "Script to run at logon"
-msgstr ""
+msgstr "Skript, welches beim Logon gestartet werden soll"
 
 #: admin/applications/class_applicationGeneric.inc:163
 msgid "Log off script"
-msgstr ""
+msgstr "Skript zum Ausloggen"
 
 #: admin/applications/class_applicationGeneric.inc:166
 msgid "Script to run at logoff"
-msgstr ""
+msgstr "Skript, welches beim Logoff gestartet werden soll"
 
 #: admin/applications/class_applicationGeneric.inc:221
 msgid "no example"
@@ -780,7 +781,7 @@ msgstr "Dienste"
 
 #: admin/systems/system-list.xml:250
 msgid "winStation"
-msgstr ""
+msgstr "winStation"
 
 #: admin/systems/system-list.xml:258
 msgid "Network printer"
@@ -846,7 +847,7 @@ msgstr ""
 #: admin/systems/class_mobilePhoneGeneric.inc:103
 #: admin/systems/class_networkSettings.inc:1022
 msgid "Network settings"
-msgstr ""
+msgstr "Netzwerkeinstellungen"
 
 #: admin/systems/services/ntp/class_serviceNTP.inc:31
 msgid "Time service"
@@ -942,7 +943,7 @@ msgstr "Anmeldung sperren (temporär)"
 #: admin/systems/services/terminal/class_serviceTerminal.inc:52
 #: admin/systems/services/terminal/class_serviceTerminal.inc:63
 msgid " "
-msgstr ""
+msgstr " "
 
 #: admin/systems/services/terminal/class_serviceTerminal.inc:62
 msgid "Supported session types"
@@ -1134,7 +1135,7 @@ msgstr "Geerbt von %s"
 
 #: admin/systems/class_systemManagement.inc:1176
 msgid "Systems Management"
-msgstr ""
+msgstr "Systemverwaltung"
 
 #: admin/systems/class_serverGeneric.inc:34
 msgid "server"
@@ -1146,7 +1147,7 @@ msgstr "Server (Allgemein)"
 
 #: admin/systems/class_serverService.inc:58
 msgid "Server services"
-msgstr ""
+msgstr "Serverdienste"
 
 #: admin/systems/class_serverService.inc:333
 msgid "Filter error"
@@ -1182,7 +1183,7 @@ msgstr ""
 
 #: admin/systems/class_workstationGeneric.inc:106
 msgid "(Re)Install"
-msgstr ""
+msgstr "(Re)Installieren"
 
 #: admin/systems/class_workstationGeneric.inc:107
 msgid "Software update"
@@ -1200,12 +1201,12 @@ msgstr "Arbeitsstation"
 #: admin/systems/class_workstationGeneric.inc:155
 #, php-format
 msgid "The name of the %s"
-msgstr ""
+msgstr "Der Name der %s"
 
 #: admin/systems/class_workstationGeneric.inc:161
 #, php-format
 msgid "A short description of the %s"
-msgstr ""
+msgstr "Eine kurze Beschreibung der %s"
 
 #: admin/systems/class_workstationGeneric.inc:166
 #: admin/systems/class_printGeneric.inc:1021
@@ -1215,17 +1216,17 @@ msgstr "Ort"
 #: admin/systems/class_workstationGeneric.inc:167
 #, php-format
 msgid "The location of the %s"
-msgstr ""
+msgstr "Der Ort des %s"
 
 #: admin/systems/class_workstationGeneric.inc:173
 #, php-format
 msgid "Lock this %s"
-msgstr ""
+msgstr "Sperren dieser %s"
 
 #: admin/systems/class_workstationGeneric.inc:174
 #, php-format
 msgid "This will prevent the %s from being reinstalled"
-msgstr ""
+msgstr "Dies wird verhindern dass %s neu installiert wird"
 
 #: admin/systems/class_workstationGeneric.inc:185
 msgid "Servers"
@@ -1238,15 +1239,15 @@ msgstr ""
 
 #: admin/systems/class_workstationGeneric.inc:195
 msgid "Inherit NTP servers"
-msgstr ""
+msgstr "Erben von NTP-Servern"
 
 #: admin/systems/class_workstationGeneric.inc:196
 msgid "Inherit time server attributes from ogroup"
-msgstr ""
+msgstr "Erben von Zeitserverattributen von ogroup"
 
 #: admin/systems/class_workstationGeneric.inc:202
 msgid "NTP servers"
-msgstr ""
+msgstr "NTP Server"
 
 #: admin/systems/class_workstationGeneric.inc:203
 #, php-format
@@ -1255,15 +1256,15 @@ msgstr ""
 
 #: admin/systems/class_workstationGeneric.inc:209
 msgid "Inherit LDAP servers"
-msgstr ""
+msgstr "Erben von LDAP-Servern"
 
 #: admin/systems/class_workstationGeneric.inc:210
 msgid "Inherit LDAP server attributes from ogroup"
-msgstr ""
+msgstr "Erben von LDAP Serverattributen von ogroup"
 
 #: admin/systems/class_workstationGeneric.inc:216
 msgid "LDAP servers"
-msgstr ""
+msgstr "LDAP Server"
 
 #: admin/systems/class_workstationGeneric.inc:217
 #, php-format
@@ -1303,7 +1304,7 @@ msgstr "!"
 
 #: admin/systems/serverService-list.xml:89
 msgid "Get status"
-msgstr ""
+msgstr "Status erhalten"
 
 #: admin/systems/serverService-list.xml:121
 msgid "Edit service"
@@ -1315,55 +1316,55 @@ msgstr "Dienst entfernen"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:39
 msgid "Mobile phone generic"
-msgstr ""
+msgstr "Mobiltelefon generisch"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:60
 msgid "The name of the mobile phone"
-msgstr ""
+msgstr "Der Name des Mobiltelefons"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:64
 msgid "A short description of the mobile phone"
-msgstr ""
+msgstr "Eine kurze Beschreibung des Mobiltelefons"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:74
 msgid "Serial Number"
-msgstr ""
+msgstr "Seriennummer"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:74
 msgid "The serial number of the mobile phone"
-msgstr ""
+msgstr "Die Seriennummer des Mobiltelefons"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:78
 msgid "IMEI Number"
-msgstr ""
+msgstr "IMEI Nummer"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:78
 msgid "The IMEI number of the mobile phone"
-msgstr ""
+msgstr "Die IMEI Nummer des Mobiltelefons"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:83
 msgid "OS"
-msgstr ""
+msgstr "OS"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:83
 msgid "The Operating System installed on this phone"
-msgstr ""
+msgstr "Das Betriebssystem,welches auf diesem Telefon installiert ist"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:89
 msgid "SimCard"
-msgstr ""
+msgstr "SimCard"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:92
 msgid "Telephone Number"
-msgstr ""
+msgstr "Telefonnummer"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:92
 msgid "The telephone number of the mobile phone"
-msgstr ""
+msgstr "Die Telefonnumer des Mobiltelefons"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:96
 msgid "PUK Number"
-msgstr ""
+msgstr "PUK Nummer"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:96
 msgid "The PUK number of the simcard in this mobile phone"
@@ -1371,7 +1372,7 @@ msgstr ""
 
 #: admin/systems/class_networkSettings.inc:296
 msgid "NOT IMPLEMENTED"
-msgstr ""
+msgstr "NICHT IMPLEMENTIERT"
 
 #: admin/systems/class_networkSettings.inc:429
 msgid "Not matching"
@@ -1380,7 +1381,7 @@ msgstr "Nicht zutreffend"
 #: admin/systems/class_networkSettings.inc:579
 #, php-format
 msgid "Was not able to contact argonaut server: %s"
-msgstr ""
+msgstr "Es ist nicht möglich gewesen, argonaut Server: %s zu kontaktieren"
 
 #: admin/systems/class_networkSettings.inc:586
 #, php-format
@@ -1395,7 +1396,7 @@ msgstr ""
 #: admin/systems/class_networkSettings.inc:599
 #, php-format
 msgid "Was not able to launch ldap2zone: %s"
-msgstr ""
+msgstr "Es ist nicht möglich gewesen ldap2zone: %s zu starten"
 
 #: admin/systems/class_networkSettings.inc:625
 #, php-format
@@ -1453,7 +1454,7 @@ msgstr "Hinzufügen"
 
 #: admin/systems/class_networkSettings.inc:1021
 msgid "Network"
-msgstr ""
+msgstr "Netzwerk"
 
 #: admin/systems/class_networkSettings.inc:1036
 msgid "DNS configuration"
@@ -1676,7 +1677,7 @@ msgstr "Bitte wählen Sie eine gültige PPD-Datei oder drücken Sie 'Abbrechen',
 
 #: admin/systems/class_terminalStartup.inc:63
 msgid "Startup parameters"
-msgstr ""
+msgstr "Startparameter"
 
 #: admin/systems/class_terminalStartup.inc:66
 msgid "Boot kernel"
@@ -1684,15 +1685,15 @@ msgstr "Boot-Kernel"
 
 #: admin/systems/class_terminalStartup.inc:66
 msgid "Linux kernel to be installed and booted"
-msgstr ""
+msgstr "Zu installierender und bootender Linux-Kernel"
 
 #: admin/systems/class_terminalStartup.inc:70
 msgid "Boot kernel parameters"
-msgstr ""
+msgstr "Boot Kernel Parameter"
 
 #: admin/systems/class_terminalStartup.inc:70
 msgid "Linux kernel parameters to be ran"
-msgstr ""
+msgstr "Linux Kernel Parameter, die gestartet werden sollen"
 
 #: admin/systems/class_terminalStartup.inc:82
 msgid "Startup"
@@ -1802,11 +1803,11 @@ msgstr "Berechtigungen"
 
 #: admin/systems/class_printGeneric.inc:1026
 msgid "Windows inf file"
-msgstr ""
+msgstr "Windows inf Datei"
 
 #: admin/systems/class_printGeneric.inc:1027
 msgid "Windows driver dir"
-msgstr ""
+msgstr "Windows Treiber Verz"
 
 #: admin/systems/class_printGeneric.inc:1028 admin/systems/printer.tpl.c:62
 msgid "Driver printer name"
@@ -1850,7 +1851,7 @@ msgstr "Filter"
 msgid ""
 "Please double check if you really want to do this since there is no way for "
 "FusionDirectory to get your data back."
-msgstr ""
+msgstr "Bitte überprüfen Sie, ob Sie dies wirklich tun wollen, da es keinen Weg gibt, für FusionDirectory die Daten wieder herzustellen."
 
 #: admin/applications/remove.tpl.c:8 admin/mimetypes/remove.tpl.c:8
 #: admin/systems/remove.tpl.c:8
@@ -2094,15 +2095,15 @@ msgstr "Administratoren"
 
 #: admin/systems/printer.tpl.c:53
 msgid "Windows paths"
-msgstr ""
+msgstr "Windowspfade"
 
 #: admin/systems/printer.tpl.c:56
 msgid "Printer windows inf file"
-msgstr ""
+msgstr "Drucker windows inf Datei"
 
 #: admin/systems/printer.tpl.c:59
 msgid "Printer driver directory"
-msgstr ""
+msgstr "Druckertreiber-Verzeichnis"
 
 #: admin/systems/systemSelect/selectSystem-filter.tpl.c:5
 #: admin/systems/system-filter.tpl.c:5
@@ -2262,7 +2263,7 @@ msgstr "Regulärer Ausdruck zum Erkennen von Mitgliedsnamen"
 
 #: admin/systems/network.tpl.c:2
 msgid "Network  settings"
-msgstr ""
+msgstr "Netzwerk  Einstellungen"
 
 #: admin/systems/network.tpl.c:5
 msgid "IP-address"
@@ -2317,7 +2318,7 @@ msgid ""
 "This includes all account data, system access rules, imap settings, etc. for"
 " this user. Please double check if your really want to do this since there "
 "is no way for FusionDirectory to get your data back."
-msgstr ""
+msgstr "Dies beinhaltet alle Kontendaten, Systemzugangsregeln, Imap-Einstellungen etc. für diesen Benutzer. Bitte überprüfen Sie nochmals ob Sie dies tun wollen, da es keinen Weg für FusionDirectory gibt Ihre Daten zurück zu bekommen."
 
 #: admin/systems/ppd/printerPPDSelectionDialog.tpl.c:2
 msgid "Select objects to add"

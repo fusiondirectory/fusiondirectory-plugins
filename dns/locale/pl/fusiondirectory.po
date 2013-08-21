@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
 "Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
-"POT-Creation-Date: 2013-07-31 13:09+0200\n"
-"PO-Revision-Date: 2013-07-30 17:20+0000\n"
+"POT-Creation-Date: 2013-08-21 18:26+0200\n"
+"PO-Revision-Date: 2013-08-21 16:30+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Polish (http://www.transifex.com/projects/p/FusionDirectory/language/pl/)\n"
 "MIME-Version: 1.0\n"
@@ -16,6 +16,26 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: pl\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: config/dns/class_dnsConfig.inc:28
+msgid "DNS configuration"
+msgstr ""
+
+#: config/dns/class_dnsConfig.inc:29
+msgid "FusionDirectory dns plugin configuration"
+msgstr ""
+
+#: config/dns/class_dnsConfig.inc:42
+msgid "DNS config"
+msgstr ""
+
+#: config/dns/class_dnsConfig.inc:45
+msgid "Store final dot in domains"
+msgstr ""
+
+#: config/dns/class_dnsConfig.inc:45
+msgid "Should FD store a final dot at the end of domains?"
+msgstr ""
 
 #: admin/systems/services/dns/class_DNS.inc:181
 #: admin/systems/services/dns/class_DNS.inc:186
@@ -62,7 +82,7 @@ msgid "MxRecord"
 msgstr ""
 
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:290
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:525
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:529
 msgid "Delete"
 msgstr "Usuń"
 
@@ -131,7 +151,7 @@ msgstr "Podany adres sieciowe i klasa sieciowa (%s/%s) nie zgadzają się!"
 msgid "Network class"
 msgstr "Klasa sieciowa"
 
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:531
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:535
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:475
 msgid "Add"
 msgstr "Dodaj"

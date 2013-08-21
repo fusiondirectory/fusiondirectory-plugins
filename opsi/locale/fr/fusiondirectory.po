@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
 "Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
-"POT-Creation-Date: 2013-07-31 13:09+0200\n"
-"PO-Revision-Date: 2013-07-31 11:30+0000\n"
+"POT-Creation-Date: 2013-08-21 18:26+0200\n"
+"PO-Revision-Date: 2013-08-21 16:31+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -48,7 +48,7 @@ msgstr "Importation OPSI"
 
 #: addons/opsi/class_opsiImport.inc:91
 msgid "Import windows stations from OPSI into FD"
-msgstr ""
+msgstr "Importer stations Windows de OPSI dans FD"
 
 #: addons/opsi/class_opsiImport.inc:108
 msgid "Import"
@@ -162,11 +162,11 @@ msgstr "Impossible de contacter le serveur OPSI"
 #: admin/opsi/class_opsiOnDemandList.inc:36
 #: admin/opsi/class_opsiOnDemandList.inc:39
 msgid "OPSI ondemand list"
-msgstr ""
+msgstr "Liste ondemand OPSI"
 
 #: admin/opsi/class_opsiOnDemandList.inc:33
 msgid "OPSI on demand software list"
-msgstr ""
+msgstr "Liste de logiciels à la demande OPSI"
 
 #: admin/opsi/class_opsiOnDemandList.inc:53
 #: admin/opsi/class_opsiSoftwareList.inc:53
@@ -175,11 +175,11 @@ msgstr "Informations"
 
 #: admin/opsi/class_opsiOnDemandList.inc:64
 msgid "Show details"
-msgstr ""
+msgstr "Montrer les détails"
 
 #: admin/opsi/class_opsiOnDemandList.inc:64
 msgid "Show further information to the user"
-msgstr ""
+msgstr "Montrer plus d'informations à ,l'utilisateur"
 
 #: admin/opsi/class_opsiOnDemandList.inc:70
 #: admin/opsi/class_opsiSoftwareList.inc:66
@@ -193,7 +193,7 @@ msgstr "Produit localboot OPSI"
 
 #: admin/opsi/class_opsiOnDemandList.inc:74
 msgid "The localboot products to put in this list"
-msgstr ""
+msgstr "Les produits localboot à mettre dans cette liste"
 
 #: admin/opsi/class_opsiSoftwareList.inc:32
 msgid "OPSI list"
@@ -289,16 +289,16 @@ msgstr "Le profil OPSI à appliquer à ce client"
 
 #: admin/systems/opsi/class_opsiClient.inc:96
 msgid "Could not get macAddress for OPSI server !"
-msgstr ""
+msgstr "Impossible d'obtenir l'adresse mac pour le serveur OPSI!"
 
 #: admin/systems/opsi/class_opsiClient.inc:105
 #: admin/systems/opsi/class_opsiClient.inc:191
 msgid "Could not remove OPSI informations"
-msgstr ""
+msgstr "Effacement des informations OPSI impossible"
 
 #: addons/opsi/opsiimport.tpl.c:2
 msgid ""
 "Warning : Once you import your OPSI hosts into FusionDirectory, they will be"
 " managed by it, so if you delete them or deactivate their OPSI tab, they "
 "will be removed from OPSI."
-msgstr ""
+msgstr "Attention: Une fois que vous importez vos hôtes OPSI dans FusionDirectory, ils seront gérés par lui, donc si vous supprimez ou désactivez leur onglet OPSI, ils seront retirés de OPSI."

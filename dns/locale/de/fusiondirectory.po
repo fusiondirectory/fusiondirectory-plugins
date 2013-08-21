@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Maik Wagner <maikwagner@yahoo.com>, 2013
 #  Stefan Koehler <stefan.koehler@GONICUS.de>, 2005
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
 "Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
-"POT-Creation-Date: 2013-07-31 13:09+0200\n"
-"PO-Revision-Date: 2013-07-30 17:20+0000\n"
+"POT-Creation-Date: 2013-08-21 18:26+0200\n"
+"PO-Revision-Date: 2013-08-21 16:30+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/FusionDirectory/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -17,6 +18,26 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: config/dns/class_dnsConfig.inc:28
+msgid "DNS configuration"
+msgstr "DNS-Konfiguration"
+
+#: config/dns/class_dnsConfig.inc:29
+msgid "FusionDirectory dns plugin configuration"
+msgstr "FusionDirectory dns Pluginkonfiguration"
+
+#: config/dns/class_dnsConfig.inc:42
+msgid "DNS config"
+msgstr "DNS Konfiguration"
+
+#: config/dns/class_dnsConfig.inc:45
+msgid "Store final dot in domains"
+msgstr "Letzten dot in Domains speichern"
+
+#: config/dns/class_dnsConfig.inc:45
+msgid "Should FD store a final dot at the end of domains?"
+msgstr "Soll FD einen letzten Dot am Ende von Domains speichern?"
 
 #: admin/systems/services/dns/class_DNS.inc:181
 #: admin/systems/services/dns/class_DNS.inc:186
@@ -63,7 +84,7 @@ msgid "MxRecord"
 msgstr "MX-Eintrag"
 
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:290
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:525
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:529
 msgid "Delete"
 msgstr "Entfernen"
 
@@ -132,7 +153,7 @@ msgstr "Die angegebene Netzwerkaddresse und die Netzwerkklasse (%s/%s) passen ni
 msgid "Network class"
 msgstr "Netzwerk-Klasse"
 
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:531
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:535
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:475
 msgid "Add"
 msgstr "Hinzufügen"
@@ -173,12 +194,12 @@ msgstr "Sie können die gewählte Zone nicht entfernen, sie wird noch von folgen
 #: admin/systems/services/dns/class_serviceDNS.inc:396
 #, php-format
 msgid "Was not able to contact argonaut server: %s"
-msgstr ""
+msgstr "Es ist nicht möglich gewesen, argonaut server: %s zu kontaktieren"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:402
 #, php-format
 msgid "Was not able to launch ldap2zone: %s"
-msgstr ""
+msgstr "Es ist nicht möglich gewesen, ldap2zone: %s zu starten "
 
 #: admin/systems/services/dns/class_serviceDNS.inc:634
 msgid "Services"

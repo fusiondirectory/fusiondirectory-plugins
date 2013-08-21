@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
 "Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
-"POT-Creation-Date: 2013-07-31 13:09+0200\n"
-"PO-Revision-Date: 2013-07-31 11:30+0000\n"
+"POT-Creation-Date: 2013-08-21 18:26+0200\n"
+"PO-Revision-Date: 2013-08-21 16:30+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/FusionDirectory/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -20,39 +20,39 @@ msgstr ""
 
 #: config/asterisk/class_asteriskPluginConfig.inc:28
 msgid "Asterisk"
-msgstr ""
+msgstr "Asterisk"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:29
 msgid "Asterisk plugin configuration"
-msgstr ""
+msgstr "Asteriskplugin-Konfiguration"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:41
 msgid "LDAP tree"
-msgstr ""
+msgstr "LDAP Baum"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:44
 msgid "Phone RDN"
-msgstr ""
+msgstr "Phone RDN"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:44
 msgid "Branch in which phones will be stored"
-msgstr ""
+msgstr "Zweig"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:49
 msgid "Phone Macro RDN"
-msgstr ""
+msgstr "Phone Macro RDN"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:49
 msgid "Branch in which phone macros will be stored"
-msgstr ""
+msgstr "Zweig in dem Telefonmakros gespeichert werden"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:54
 msgid "Phone Conference RDN"
-msgstr ""
+msgstr "Phone Conference RDN"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:54
 msgid "Branch in which phone conferences will be stored"
-msgstr ""
+msgstr "Zweig in dem Telefonkonferenzen gespeichert werden"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:61
 msgid "Miscellaneous"
@@ -60,19 +60,19 @@ msgstr "Verschiedenes"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:65
 msgid "SIP contexts"
-msgstr ""
+msgstr "SIP Kontexte"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:65
 msgid "Available SIP contexts"
-msgstr ""
+msgstr "Verfügbare SIP-Kontexte"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:72
 msgid "Voicemail contexts"
-msgstr ""
+msgstr "Voicemail-Kontexte"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:72
 msgid "Available voicemail contexts"
-msgstr ""
+msgstr "Verfügbare Voicemail-Kontexte"
 
 #: personal/phoneaccount/class_phoneAccount.inc:148
 #: admin/ogroups/asterisk/class_phonequeue.inc:110
@@ -148,7 +148,7 @@ msgstr "Das Speichern der Einträge abbrechen, um die Datenbank konsistent zu ha
 #, php-format
 msgid ""
 "FusionDirectory identified problems with your database table definition!"
-msgstr ""
+msgstr "FusionDirectory identifizierte Probleme mit Ihrer Datenbanken Tabellen-Definition!"
 
 #: personal/phoneaccount/class_phoneAccount.inc:999
 #: personal/phoneaccount/class_phoneAccount.inc:1012
@@ -272,7 +272,7 @@ msgstr "LDAP-Fehler"
 
 #: personal/phoneaccount/class_phoneAccount.inc:1584
 msgid "Was not able to found any asterisk server"
-msgstr ""
+msgstr "War nicht in der Lage, einen Asteriskserver zu finden"
 
 #: personal/phoneaccount/class_phoneAccount.inc:1617
 #: admin/macro/class_gofonMacroParameters.inc:408
@@ -334,7 +334,7 @@ msgstr "Voicemail-PIN"
 #: personal/phoneaccount/class_phoneAccount.inc:1713
 #, php-format
 msgid "You need to configure %s contexts first"
-msgstr ""
+msgstr "Sie müssen %s Kontexte vorerst konfigurieren"
 
 #: personal/phoneaccount/main.inc:124
 msgid "Click the 'Edit' button below to change informations in this dialog"
@@ -667,7 +667,7 @@ msgstr "GOfon-Makro"
 
 #: admin/macro/class_gofonMacro.inc:541
 msgid "Asterisk macro"
-msgstr ""
+msgstr "Asteriskmakro"
 
 #: admin/macro/class_gofonMacro.inc:545 admin/macro/paste_generic.tpl.c:2
 #: admin/macro/paste_generic.tpl.c:5 admin/macro/generic.tpl.c:2
@@ -705,7 +705,7 @@ msgstr "Sichtbarkeits-Flag"
 
 #: admin/macro/class_gofonMacroParameters.inc:59
 msgid "Asterisk macro parameter"
-msgstr ""
+msgstr "Asterisk Makroparameter"
 
 #: admin/macro/class_gofonMacroParameters.inc:234
 #: personal/phoneaccount/generic.tpl.c:41
@@ -773,11 +773,11 @@ msgstr "Entfernen"
 
 #: admin/macro/class_gofonMacroManagement.inc:36
 msgid "Phone Macros"
-msgstr ""
+msgstr "Telefonmakros"
 
 #: admin/macro/class_gofonMacroManagement.inc:37
 msgid "Phone Macros management"
-msgstr ""
+msgstr "Telefonmakro-Verwaltung"
 
 #: admin/systems/asterisk/class_phoneGeneric.inc:151
 msgid "phone"
@@ -866,7 +866,7 @@ msgstr "Asterisk-DB Benutzer"
 
 #: admin/systems/services/asterisk/class_serviceAsterisk.inc:38
 msgid "Login for asterisk database administrator"
-msgstr ""
+msgstr "Login für Asterisk Datenbankadministrator"
 
 #: admin/systems/services/asterisk/class_serviceAsterisk.inc:42
 msgid "Password"
@@ -874,7 +874,7 @@ msgstr "Passwort"
 
 #: admin/systems/services/asterisk/class_serviceAsterisk.inc:42
 msgid "Password for asterisk database administrator"
-msgstr ""
+msgstr "Passwort für Asterisk Datenbankadministrator"
 
 #: admin/systems/services/asterisk/class_serviceAsterisk.inc:46
 msgid "Country dial prefix"
@@ -890,7 +890,7 @@ msgstr "Treiber"
 
 #: admin/systems/services/asterisk/class_serviceAsterisk.inc:54
 msgid "Driver to use to contact this database."
-msgstr ""
+msgstr "Verwendeter Treibe um diese Datenbank zu erreichen."
 
 #: admin/systems/services/asterisk/class_serviceAsterisk.inc:95
 #, php-format
@@ -901,7 +901,7 @@ msgstr "Sie können die Asterisk Datenbank-Erweiterung nicht entfernen, sie wird
 
 #: admin/systems/services/asterisk/class_serviceAsterisk.inc:140
 msgid "VoIP service (asterisk)"
-msgstr ""
+msgstr "VoIP Dienst (asterisk)"
 
 #: admin/systems/services/asterisk/class_serviceAsterisk.inc:141
 msgid "VoIP - asterisk management"
@@ -937,7 +937,7 @@ msgstr "Lebenszeit"
 msgid ""
 "FusionDirectory identified problems with your MySQL table definition, please"
 " activate debugging for details."
-msgstr ""
+msgstr "FusionDirectory bemerkte Probleme mit Ihrer MySQL Tabellendefinition, bitte aktivieren Sie Debuggin für Details."
 
 #: admin/conference/class_phoneConferenceGeneric.inc:606
 #: admin/conference/class_phoneConferenceGeneric.inc:608
@@ -947,7 +947,7 @@ msgstr "'%s' wird bereits von '%s' verwendet!"
 
 #: admin/conference/class_phoneConferenceGeneric.inc:693
 msgid "Phone Conference"
-msgstr ""
+msgstr "Telefonkonferenz"
 
 #: admin/conference/class_phoneConferenceGeneric.inc:694
 msgid "Phone conference management"
@@ -959,7 +959,7 @@ msgstr "GOfon-Konferenz"
 
 #: admin/conference/class_phoneConferenceGeneric.inc:698
 msgid "Asterisk conference"
-msgstr ""
+msgstr "Asterisk-Konferenz"
 
 #: admin/conference/class_phoneConferenceGeneric.inc:705
 msgid "Conference PIN"
@@ -1014,11 +1014,11 @@ msgstr "Konferenz"
 
 #: admin/conference/class_phoneConferenceManagment.inc:36
 msgid "Phone Conferences"
-msgstr ""
+msgstr "Telefonkonferenzen"
 
 #: admin/conference/class_phoneConferenceManagment.inc:37
 msgid "Phone Conference management"
-msgstr ""
+msgstr "Telefonkonferenzverwaltung"
 
 #: personal/phoneaccount/paste_generic.tpl.c:5
 #: personal/phoneaccount/paste_generic.tpl.c:8
@@ -1216,7 +1216,7 @@ msgstr "Sie haben keine Berechtigung, die Makro-Parameter Einstellungen anzuzeig
 msgid ""
 "Please double check if you really want to do this since there is no way for "
 "FusionDirectory to get your data back."
-msgstr ""
+msgstr "Bitte überprüfen Sie, ob Sie dies wirklich tun wollen, da es keinen Weg gibt, für FusionDirectory die Daten wieder herzustellen."
 
 #: admin/macro/remove.tpl.c:8 admin/conference/remove.tpl.c:8
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."

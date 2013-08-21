@@ -4,14 +4,15 @@
 # 
 # Translators:
 # Benoit Mortier <benoit.mortier@opensides.be>, 2005-2008,2010-2011
+# fusiondirectory <contact@fusiondirectory.org>, 2013
 # fusiondirectory <contact@fusiondirectory.org>, 2012
 # fusiondirectory <contact@fusiondirectory.org>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
 "Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
-"POT-Creation-Date: 2013-07-31 13:09+0200\n"
-"PO-Revision-Date: 2013-07-31 11:30+0000\n"
+"POT-Creation-Date: 2013-08-21 18:26+0200\n"
+"PO-Revision-Date: 2013-08-21 16:30+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -22,11 +23,11 @@ msgstr ""
 
 #: config/fax/class_faxConfig.inc:28
 msgid "Fax configuration"
-msgstr ""
+msgstr "Configuration de la base de données des fax"
 
 #: config/fax/class_faxConfig.inc:29
 msgid "FusionDirectory fax plugin configuration"
-msgstr ""
+msgstr "Configuration du plugin Fax"
 
 #: config/fax/class_faxConfig.inc:42
 msgid "LDAP tree"
@@ -38,7 +39,7 @@ msgstr ""
 
 #: config/fax/class_faxConfig.inc:45
 msgid "Branch in which fax blocklists will be stored"
-msgstr ""
+msgstr "Branche dans laquelle les listes rouges du fax seront stockées"
 
 #: html/getfax.php:59
 msgid "Could not connect to database server!"
@@ -305,11 +306,11 @@ msgstr "Temps de transfert"
 
 #: admin/blocklists/class_blocklistManagement.inc:36
 msgid "Fax Blocklists"
-msgstr ""
+msgstr "Liste Rouge des Fax"
 
 #: admin/blocklists/class_blocklistManagement.inc:37
 msgid "Fax Blocklists management"
-msgstr ""
+msgstr "Configuration des listes rouges"
 
 #: admin/blocklists/blocklist-list.xml:11
 msgid "List of blocklists"
@@ -503,7 +504,7 @@ msgstr ""
 
 #: personal/faxaccount/generic.tpl.c:14
 msgid "Specify the fax communication language for fax to mail gateway"
-msgstr ""
+msgstr "Spécifiez le format de distribution pour les fax vers la passerelle de messagerie"
 
 #: personal/faxaccount/generic.tpl.c:20
 msgid "Specify delivery format for fax to mail gateway"

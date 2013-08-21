@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
 "Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
-"POT-Creation-Date: 2013-07-31 13:09+0200\n"
-"PO-Revision-Date: 2013-07-31 11:30+0000\n"
+"POT-Creation-Date: 2013-08-21 18:26+0200\n"
+"PO-Revision-Date: 2013-08-21 16:30+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/FusionDirectory/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -122,7 +122,7 @@ msgstr "Prefisso da aggiungere per cartelle mail condivise."
 #: config/mail/class_mailPluginConfig.inc:109
 #: personal/mail/class_mailAccount.inc:99
 #: admin/groups/mail/class_groupMail.inc:80
-#: admin/systems/services/postfix/class_servicePostfix.inc:48
+#: admin/systems/services/postfix/class_servicePostfix.inc:44
 msgid "Generic"
 msgstr "Informazioni"
 
@@ -907,7 +907,7 @@ msgstr "IMAP/POP3"
 #: admin/systems/services/imap/class_serviceIMAP.inc:33
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:34
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:32
-#: admin/systems/services/postfix/class_servicePostfix.inc:33
+#: admin/systems/services/postfix/class_servicePostfix.inc:30
 msgid "Services"
 msgstr "Servizi"
 
@@ -1073,92 +1073,92 @@ msgstr "Rapporto massimo di compressione"
 msgid " "
 msgstr " "
 
-#: admin/systems/services/postfix/class_servicePostfix.inc:32
-#: admin/systems/services/postfix/class_servicePostfix.inc:33
+#: admin/systems/services/postfix/class_servicePostfix.inc:29
+#: admin/systems/services/postfix/class_servicePostfix.inc:30
 msgid "Postfix (SMTP)"
 msgstr "Postfix (SMTP)"
 
-#: admin/systems/services/postfix/class_servicePostfix.inc:52
-msgid "Visible full qualified hostname"
-msgstr "Nome completo qualificato visibile (Full Qualified Hostname)"
+#: admin/systems/services/postfix/class_servicePostfix.inc:48
+msgid "Hostname"
+msgstr "Nome dell'host"
 
-#: admin/systems/services/postfix/class_servicePostfix.inc:52
-msgid "The full qualified host name."
-msgstr "Nome completo qualificato (Full Qualified Hostname)."
+#: admin/systems/services/postfix/class_servicePostfix.inc:48
+msgid "The host name."
+msgstr ""
 
-#: admin/systems/services/postfix/class_servicePostfix.inc:57
-msgid "Visible full qualified domain"
-msgstr "Dominio completo qualificato visibile"
+#: admin/systems/services/postfix/class_servicePostfix.inc:53
+msgid "Domain"
+msgstr "Dominio"
 
-#: admin/systems/services/postfix/class_servicePostfix.inc:57
-msgid "The full qualified domain."
-msgstr "Il dominio completo qualificato ."
+#: admin/systems/services/postfix/class_servicePostfix.inc:53
+msgid "The domain."
+msgstr ""
 
-#: admin/systems/services/postfix/class_servicePostfix.inc:61
+#: admin/systems/services/postfix/class_servicePostfix.inc:58
 msgid "Max mail header size (KB)"
 msgstr "Dimensione massima dell'intestazione della mail (KB)"
 
-#: admin/systems/services/postfix/class_servicePostfix.inc:61
+#: admin/systems/services/postfix/class_servicePostfix.inc:58
 msgid "This value specifies the maximal header size."
 msgstr "Questo valore specifica la dimensione massima dell'intestazione dei messaggi."
 
-#: admin/systems/services/postfix/class_servicePostfix.inc:66
+#: admin/systems/services/postfix/class_servicePostfix.inc:63
 msgid "Max mailbox size (KB)"
 msgstr "Dimensione massima della mailbox (KB)"
 
-#: admin/systems/services/postfix/class_servicePostfix.inc:66
+#: admin/systems/services/postfix/class_servicePostfix.inc:63
 msgid "Defines the maximal size of mail box."
 msgstr "Definisci la capacità massima della casella di posta elettronica."
 
-#: admin/systems/services/postfix/class_servicePostfix.inc:71
+#: admin/systems/services/postfix/class_servicePostfix.inc:68
 msgid "Max message size (KB)"
 msgstr "Dimensione massima del messaggio (KB)"
 
-#: admin/systems/services/postfix/class_servicePostfix.inc:71
+#: admin/systems/services/postfix/class_servicePostfix.inc:68
 msgid "Specify the maximal size of a message."
 msgstr "Definisci la grandezza massima dei messaggi."
 
-#: admin/systems/services/postfix/class_servicePostfix.inc:76
+#: admin/systems/services/postfix/class_servicePostfix.inc:73
 msgid "Relay host"
 msgstr "Host a cui inviare i messaggi in uscita (Relay host)"
 
-#: admin/systems/services/postfix/class_servicePostfix.inc:76
+#: admin/systems/services/postfix/class_servicePostfix.inc:73
 msgid "Relay messages to following host"
 msgstr "Inoltrare i messaggi ai seguenti host"
 
-#: admin/systems/services/postfix/class_servicePostfix.inc:80
+#: admin/systems/services/postfix/class_servicePostfix.inc:77
 msgid "Local networks"
 msgstr "Rete locale"
 
-#: admin/systems/services/postfix/class_servicePostfix.inc:80
-#: admin/systems/services/postfix/class_servicePostfix.inc:90
+#: admin/systems/services/postfix/class_servicePostfix.inc:77
+#: admin/systems/services/postfix/class_servicePostfix.inc:87
 msgid "Postfix networks"
 msgstr "Rete Postfix"
 
-#: admin/systems/services/postfix/class_servicePostfix.inc:86
+#: admin/systems/services/postfix/class_servicePostfix.inc:83
 msgid "Domains and routing"
 msgstr "Domini e Routing"
 
-#: admin/systems/services/postfix/class_servicePostfix.inc:90
+#: admin/systems/services/postfix/class_servicePostfix.inc:87
 msgid "Domains to accept mail for"
 msgstr "Dominio dal quale i messaggi possono essere accettati"
 
-#: admin/systems/services/postfix/class_servicePostfix.inc:96
-#: admin/systems/services/postfix/class_servicePostfix.inc:105
+#: admin/systems/services/postfix/class_servicePostfix.inc:93
+#: admin/systems/services/postfix/class_servicePostfix.inc:102
 msgid "Transport"
 msgstr "Transport"
 
-#: admin/systems/services/postfix/class_servicePostfix.inc:111
+#: admin/systems/services/postfix/class_servicePostfix.inc:108
 msgid "Restrictions"
 msgstr "Restrizioni"
 
-#: admin/systems/services/postfix/class_servicePostfix.inc:115
-#: admin/systems/services/postfix/class_servicePostfix.inc:124
+#: admin/systems/services/postfix/class_servicePostfix.inc:112
+#: admin/systems/services/postfix/class_servicePostfix.inc:121
 msgid "Restrictions for sender"
 msgstr "Restrizioni per il mittente"
 
-#: admin/systems/services/postfix/class_servicePostfix.inc:129
-#: admin/systems/services/postfix/class_servicePostfix.inc:138
+#: admin/systems/services/postfix/class_servicePostfix.inc:126
+#: admin/systems/services/postfix/class_servicePostfix.inc:135
 msgid "Restrictions for recipient"
 msgstr "Restrizioni per i destinatari"
 
