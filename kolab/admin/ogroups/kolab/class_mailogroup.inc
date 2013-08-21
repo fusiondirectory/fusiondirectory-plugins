@@ -1,5 +1,4 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
@@ -23,24 +22,37 @@
 class mailogroup extends plugin
 {
   /* plugin specific values */
-  var $mail= "";
-  var $cn= "";
+  var $mail = "";
+  var $cn   = "";
 
   /* attribute list for save action */
-  var $attributes= array("mail");
-  var $objectclasses= array("kolabGroupOfNames");
-  var $members= array();
-  var $view_logged = FALSE;
+  var $attributes     = array("mail");
+  var $objectclasses  = array("kolabGroupOfNames");
+  var $members        = array();
+  var $view_logged    = FALSE;
 
-  function mailogroup (&$config, $dn= NULL, $parent= NULL)
+   static function plInfo()
+  {
+    return array(
+      "plShortName"   => _("Mail"),
+      "plDescription" => _("Mail group"),
+      "plSelfModify"  => FALSE,
+      "plPriority"    => 4,
+      "plCategory"    => array("ogroup"),
+      "plObjectType"  => array("ogroup-user"),
+
+      "plProvidedAcls"=> array(
+        "mail" => _("Mail address")
+      )
+    );
+  }
+
+  function __construct (&$config, $dn = NULL, $parent = NULL)
   {
     parent::__construct($config, $dn, $parent);
 
-    /* Include config object */
-    $this->config= $config;
-
     /* Save initial account state */
-    $this->initially_was_account= $this->is_account;
+    $this->initially_was_account = $this->is_account;
   }
 
 
@@ -177,21 +189,5 @@ class mailogroup extends plugin
       msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_MOD, get_class()));
     }
   }
-
-   static function plInfo()
-  {
-    return array(
-          "plShortName"   => _("Mail"),
-          "plDescription" => _("Mail group"),
-          "plSelfModify"  => FALSE,
-          "plPriority"    => 4,
-          "plCategory"    => array("ogroup"),
-          "plProvidedAcls"=> array(
-            "mail" => _("Mail address"))
-          );
-  }
-
 }
-
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>
