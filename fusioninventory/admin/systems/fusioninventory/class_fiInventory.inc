@@ -68,7 +68,17 @@ class fiInventory extends simplePlugin
       'plDescription' => _('Inventory Viewer'),
       'plPriority'    => 90,
       'plCategory'    => array('workstation', 'server'),
-      'plObjectType'  => array('workstation', 'server'),
+      'plObjectType'  => array(
+        'workstation', 'server',
+        'inventory' => array(
+          'description' => _('Inventory'),
+          'filter'      => 'objectClass=fdInventoryContent',
+          'mainAttr'    => 'cn',
+          'icon'        => 'plugins/inventory/images/iconMini.png',
+          'name'        => _('Inventory'),
+          'ou'          => get_ou('inventoryRDN'),
+        )
+      ),
 
       "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
@@ -106,12 +116,24 @@ class fiInventory extends simplePlugin
 
   function __construct(&$config, $dn, $object)
   {
+    $attributesInfo = self::getAttributesInfo();
+    if (preg_match('/'.preg_quote(get_ou('inventoryRDN').$config->current['BASE'], '/').'$/', $dn)) {
+      $this->mainTab        = TRUE;
+      $this->objectclasses  = array('fdInventoryContent');
+      $attributesInfo['hardware']['attrs'][] = new HiddenAttribute('cn');
+    }
+
     parent::__construct($config, $dn, $object);
 
     $this->hardware_infos = NULL;
     $this->software_infos = NULL;
     $this->process_infos  = NULL;
     $this->users_infos    = NULL;
+  }
+
+  function compute_dn()
+  {
+    return 'cn='.$this->cn.','.get_ou("inventoryRDN").$this->config->current['BASE'];
   }
 
   function execute()
@@ -135,17 +157,22 @@ class fiInventory extends simplePlugin
 
   function get_inventory_infos()
   {
-    if (!isset($this->parent)) {
-      return array();
-    }
-    $macAddress = $this->parent->getBaseObject()->netConfigDNS->macAddress;
     $ldap = $this->config->get_ldap_link();
-    $ldap->cd(get_ou('inventoryRDN').$this->config->current['BASE']);
-    $ldap->search('(&(objectClass=fdInventoryContent)(macAddress='.$macAddress.'))');
-    if ($attrs = $ldap->fetch()) {
-      $dn = $attrs['dn'];
+
+    if ($this->mainTab) {
+      $dn = $this->dn;
     } else {
-      return array();
+      if (!isset($this->parent)) {
+        return array();
+      }
+      $macAddress = $this->parent->getBaseObject()->netConfigDNS->macAddress;
+      $ldap->cd(get_ou('inventoryRDN').$this->config->current['BASE']);
+      $ldap->search('(&(objectClass=fdInventoryContent)(macAddress='.$macAddress.'))');
+      if ($attrs = $ldap->fetch()) {
+        $dn = $attrs['dn'];
+      } else {
+        return array();
+      }
     }
     $ldap->ls('(objectClass=*)', $dn);
     $infos = array();
