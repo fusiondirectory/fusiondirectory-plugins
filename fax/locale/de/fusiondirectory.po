@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# scobo <matthias.koerner@binary-artworks.com>, 2013
 #  Stefan Koehler <stefan.koehler@GONICUS.de>, 2005
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
 "Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
 "POT-Creation-Date: 2013-08-21 18:26+0200\n"
-"PO-Revision-Date: 2013-08-21 16:40+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"PO-Revision-Date: 2013-08-22 21:20+0000\n"
+"Last-Translator: scobo <matthias.koerner@binary-artworks.com>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/FusionDirectory/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,7 +25,7 @@ msgstr ""
 
 #: config/fax/class_faxConfig.inc:29
 msgid "FusionDirectory fax plugin configuration"
-msgstr ""
+msgstr "FusionDirectory Fax-Plugin-Konfiguration"
 
 #: config/fax/class_faxConfig.inc:42
 msgid "LDAP tree"
@@ -32,7 +33,7 @@ msgstr "LDAP Baum"
 
 #: config/fax/class_faxConfig.inc:45
 msgid "Fax RDN"
-msgstr ""
+msgstr "Fax RDN"
 
 #: config/fax/class_faxConfig.inc:45
 msgid "Branch in which fax blocklists will be stored"
@@ -57,15 +58,15 @@ msgstr "Fehler"
 
 #: html/getfax.php:96
 msgid "cannot resize fax image"
-msgstr ""
+msgstr "Kann das Fax-Bild nicht in der Größe verändern"
 
 #: html/getfax.php:101
 msgid "cannot convert fax image to png"
-msgstr ""
+msgstr "Kann das Fax-Bild nicht zu png konvertieren"
 
 #: html/getfax.php:106
 msgid "Reading fax image image failed"
-msgstr ""
+msgstr "Lesen des Fax-Bildes fehlgeschlagen"
 
 #: personal/faxaccount/main.inc:126
 msgid "Click the 'Edit' button below to change informations in this dialog"
@@ -303,11 +304,11 @@ msgstr "Übertragungszeit"
 
 #: admin/blocklists/class_blocklistManagement.inc:36
 msgid "Fax Blocklists"
-msgstr ""
+msgstr "Fax-Sperrlisten"
 
 #: admin/blocklists/class_blocklistManagement.inc:37
 msgid "Fax Blocklists management"
-msgstr ""
+msgstr "Sperrlistenverwaltung"
 
 #: admin/blocklists/blocklist-list.xml:11
 msgid "List of blocklists"
@@ -355,7 +356,7 @@ msgstr "Typ"
 
 #: admin/blocklists/class_blocklistGeneric.inc:32
 msgid "Type of this list"
-msgstr ""
+msgstr "Typ dieser Liste"
 
 #: admin/blocklists/class_blocklistGeneric.inc:35
 msgid "send"
@@ -386,11 +387,11 @@ msgstr "Listenname"
 
 #: admin/blocklists/class_blocklistGeneric.inc:144
 msgid "The name of the list"
-msgstr ""
+msgstr "Der Name der Liste"
 
 #: admin/blocklists/class_blocklistGeneric.inc:145
 msgid "A description for the list"
-msgstr ""
+msgstr "Eine Beschreibung dieser Liste"
 
 #: admin/blocklists/class_blocklistGeneric.inc:147
 msgid "List of blocked number"
