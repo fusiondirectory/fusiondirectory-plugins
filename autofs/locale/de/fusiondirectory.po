@@ -1,50 +1,49 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-develop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-31 10:38+0200\n"
+"POT-Creation-Date: 2013-08-21 17:43+0200\n"
 "PO-Revision-Date: 2013-07-30 16:20+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: German (http://www.transifex.com/projects/p/FusionDirectory/"
-"language/de/)\n"
-"Language: de\n"
+"Language-Team: German (http://www.transifex.com/projects/p/FusionDirectory/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: config/autofs/class_autofsConfig.inc:28
 msgid "Autofs configuration"
-msgstr ""
+msgstr "Autofs Konfiguration"
 
 #: config/autofs/class_autofsConfig.inc:29
 msgid "FusionDirectory autofs plugin configuration"
-msgstr ""
+msgstr "FusionDirectory autofs Plugin  Konfiguration"
 
 #: config/autofs/class_autofsConfig.inc:42
 msgid "LDAP tree"
-msgstr ""
+msgstr "LDAP Baum"
 
 #: config/autofs/class_autofsConfig.inc:45
 msgid "AutoFS RDN"
-msgstr ""
+msgstr "AutoFS RDN"
 
 #: config/autofs/class_autofsConfig.inc:45
 msgid "Branch in which automount info will be stored"
-msgstr ""
+msgstr "Zweig in welchem automount info gespeichert wird"
 
 #: admin/autofs/class_autofsManagement.inc:35
 msgid "Auto fs"
-msgstr ""
+msgstr "Auto fs"
 
 #: admin/autofs/class_autofsManagement.inc:36
 msgid "Auto fs management"
-msgstr ""
+msgstr "Auto fs Verwaltung"
 
 #: admin/autofs/class_autofsManagement.inc:120
 #: admin/autofs/class_autofsManagement.inc:182
@@ -59,7 +58,7 @@ msgstr "Einhänge-Pfad"
 
 #: admin/autofs/class_nisMap.inc:32
 msgid "Autofs mount point"
-msgstr ""
+msgstr "Autofs mount point"
 
 #: admin/autofs/class_nisMap.inc:49 admin/autofs/autofs-list.xml:49
 #: admin/autofs/class_nisObject.inc:49 admin/autofs/autofs-filter.tpl.c:11
@@ -68,11 +67,11 @@ msgstr "Name"
 
 #: admin/autofs/class_nisMap.inc:49
 msgid "Name of the mount point"
-msgstr ""
+msgstr "Name des Mountpoints"
 
 #: admin/autofs/autofs-list.xml:11
 msgid "List of automount entries"
-msgstr ""
+msgstr "Liste von automount Einträgen"
 
 #: admin/autofs/autofs-list.xml:15 admin/autofs/class_nisObject.inc:31
 #: admin/autofs/class_nisObject.inc:32 admin/autofs/class_nisObject.inc:34
@@ -94,11 +93,11 @@ msgstr "Anlegen"
 
 #: admin/autofs/autofs-list.xml:90
 msgid "nisObject"
-msgstr ""
+msgstr "nisObject"
 
 #: admin/autofs/autofs-list.xml:97
 msgid "nisMap"
-msgstr ""
+msgstr "nisMap"
 
 #: admin/autofs/autofs-list.xml:109
 msgid "Remove"
@@ -114,21 +113,21 @@ msgstr "Eintrag entfernen"
 
 #: admin/autofs/class_nisObject.inc:49
 msgid "Name of this directory"
-msgstr ""
+msgstr "Name dieses Verzeichnisses"
 
 #: admin/autofs/class_nisObject.inc:53
 msgid "Automount entry"
-msgstr ""
+msgstr "Automounteintrag"
 
 #: admin/autofs/class_nisObject.inc:53
 msgid ""
 "The entry of this directory for the automount daemon.\n"
 " For instance 'auto.u' or '-fstype=nfs domaine.tld:/mount/directory'"
-msgstr ""
+msgstr "Der Eintrag dieses Verzeichnisses für den automount Daemon.\nZum Beispiel 'auto.u' oder '-fstype=nfs domain.tld:/mount/directory'"
 
 #: admin/autofs/class_nisObject.inc:57
 msgid "The mount point this directory will be placed in"
-msgstr ""
+msgstr "Der Mountpoint dieses Verzeichnisses wird plaziert in"
 
 #: admin/autofs/autofs-filter.tpl.c:2
 msgid "Filter"
@@ -136,11 +135,11 @@ msgstr "Filter"
 
 #: admin/autofs/autofs-filter.tpl.c:5
 msgid "Show nis objects"
-msgstr ""
+msgstr "nis Objekte anzeigen"
 
 #: admin/autofs/autofs-filter.tpl.c:8
 msgid "Show nis maps"
-msgstr ""
+msgstr "Nis maps anzeigen"
 
 #: admin/autofs/remove.tpl.c:2
 msgid "Warning"
@@ -148,13 +147,11 @@ msgstr "Warnung"
 
 #: admin/autofs/remove.tpl.c:5
 msgid ""
-"This includes all account data, system access rules, imap settings, etc. for "
-"this user. Please double check if your really want to do this since there is "
-"no way for FusionDirectory to get your data back."
-msgstr ""
+"This includes all account data, system access rules, imap settings, etc. for"
+" this user. Please double check if your really want to do this since there "
+"is no way for FusionDirectory to get your data back."
+msgstr "Dies beinhaltet alle Kontendaten, Systemzugangsregeln, Imap-Einstellungen etc. für diesen Benutzer. Bitte überprüfen Sie nochmals ob Sie dies tun wollen, da es keinen Weg für FusionDirectory gibt Ihre Daten zurück zu bekommen."
 
 #: admin/autofs/remove.tpl.c:8
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr ""
-"Wenn Sie sicher sind, drücken Sie 'Entfernen' um fortzufahren oder "
-"'Abbrechen' zum Abbruch."
+msgstr "Wenn Sie sicher sind, drücken Sie 'Entfernen' um fortzufahren oder 'Abbrechen' zum Abbruch."

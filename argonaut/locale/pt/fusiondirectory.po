@@ -1,21 +1,20 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-develop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-31 10:38+0200\n"
-"PO-Revision-Date: 2013-07-30 16:19+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: Portuguese (http://www.transifex.com/projects/p/"
-"FusionDirectory/language/pt/)\n"
-"Language: pt\n"
+"POT-Creation-Date: 2013-08-21 17:43+0200\n"
+"PO-Revision-Date: 2013-08-21 16:31+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: Portuguese (http://www.transifex.com/projects/p/FusionDirectory/language/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: addons/argonaut/events/class_DaemonEvent.inc:150
@@ -180,6 +179,8 @@ msgstr ""
 #: addons/argonaut/class_argonautQueue.inc:194
 #: addons/argonaut/class_argonautQueue.inc:308
 #: addons/argonaut/class_argonautQueue.inc:399
+#: addons/argonaut/class_argonautLogView.inc:77
+#: addons/argonaut/class_argonautLogView.inc:195
 #: addons/argonaut/class_filterArgonautEvents.inc:39
 msgid "Error"
 msgstr "Erro"
@@ -222,6 +223,26 @@ msgstr ""
 #: addons/argonaut/class_argonautQueue.inc:399
 #, php-format
 msgid "Cannot update queue entries."
+msgstr ""
+
+#: addons/argonaut/class_argonautLogView.inc:107
+msgid "none"
+msgstr "nenhum"
+
+#: addons/argonaut/class_argonautLogView.inc:133
+msgid "File"
+msgstr ""
+
+#: addons/argonaut/class_argonautLogView.inc:135
+msgid "Date"
+msgstr ""
+
+#: addons/argonaut/class_argonautLogView.inc:221
+msgid "Argonaut Logs"
+msgstr ""
+
+#: addons/argonaut/class_argonautLogView.inc:222
+msgid "Argonaut Logs Viewer"
 msgstr ""
 
 #: addons/argonaut/deploy-list.xml:10
@@ -429,7 +450,8 @@ msgid "Delete finished tasks"
 msgstr ""
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:51
-msgid "Wether or not argonaut server should delete successfully finished tasks"
+msgid ""
+"Wether or not argonaut server should delete successfully finished tasks"
 msgstr ""
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:56
@@ -453,7 +475,8 @@ msgid "Timeout"
 msgstr ""
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:68
-msgid "Time in seconds before to consider an argonaut client or server as down"
+msgid ""
+"Time in seconds before to consider an argonaut client or server as down"
 msgstr ""
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:75
@@ -639,16 +662,6 @@ msgstr ""
 msgid "There is no argonaut server configured"
 msgstr ""
 
-#: include/class_supportDaemon.inc:611
-#, php-format
-msgid "Could not read \"%s\"!"
-msgstr ""
-
-#: include/class_supportDaemon.inc:615
-#, php-format
-msgid "\"%s\" is not a file!"
-msgstr ""
-
 #: addons/argonaut/argonaut_import_file.tpl.c:2
 msgid "Import jobs"
 msgstr ""
@@ -807,6 +820,16 @@ msgstr "Atenção"
 
 #: addons/argonaut/remove.tpl.c:5
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
+msgstr "Então, se você tem certeza, pressione 'Deletar' para continuar ou 'Cancelar' para abortar."
+
+#: addons/argonaut/argonaut_log_view.tpl.c:2
+msgid "Available logs"
 msgstr ""
-"Então, se você tem certeza, pressione 'Deletar' para continuar ou 'Cancelar' "
-"para abortar."
+
+#: addons/argonaut/argonaut_log_view.tpl.c:5
+msgid "Selected log"
+msgstr ""
+
+#: addons/argonaut/argonaut_log_view.tpl.c:8
+msgid "No logs for this host available!"
+msgstr ""

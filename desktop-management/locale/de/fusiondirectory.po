@@ -1,21 +1,20 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-develop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-31 10:39+0200\n"
+"POT-Creation-Date: 2013-08-19 16:53+0200\n"
 "PO-Revision-Date: 2013-07-30 16:39+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: German (http://www.transifex.com/projects/p/FusionDirectory/"
-"language/de/)\n"
-"Language: de\n"
+"Language-Team: German (http://www.transifex.com/projects/p/FusionDirectory/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: config/desktop-management/class_desktopPluginConfig.inc:28
@@ -28,23 +27,23 @@ msgstr ""
 
 #: config/desktop-management/class_desktopPluginConfig.inc:40
 msgid "LDAP tree"
-msgstr ""
+msgstr "LDAP Baum"
 
 #: config/desktop-management/class_desktopPluginConfig.inc:43
 msgid "Mimetype RDN"
-msgstr ""
+msgstr "Mimetype RDN"
 
 #: config/desktop-management/class_desktopPluginConfig.inc:43
 msgid "Branch in which mime types will be stored"
-msgstr ""
+msgstr "Zweig in welchem mime-types gespeichert werden"
 
 #: config/desktop-management/class_desktopPluginConfig.inc:48
 msgid "Application RDN"
-msgstr ""
+msgstr "Anwendung RDN"
 
 #: config/desktop-management/class_desktopPluginConfig.inc:48
 msgid "Branch in which applications will be stored"
-msgstr ""
+msgstr "Zweig in welchem Anwendungen gespeichert werden"
 
 #: admin/applications/application-list.xml:11
 msgid "List of applications"
@@ -54,7 +53,7 @@ msgstr "Liste der Anwendungen"
 #: admin/applications/application-list.xml:74
 #: admin/applications/class_applicationGeneric.inc:72
 #: admin/applications/class_applicationGeneric.inc:74
-#: admin/groups/apps/class_groupApplication.inc:1504
+#: admin/groups/apps/class_groupApplication.inc:1466
 #: admin/mimetypes/class_mimetypeGeneric.inc:684
 msgid "Application"
 msgstr "Anwendung"
@@ -155,7 +154,7 @@ msgid "Application parameter settings"
 msgstr "Konfiguration der Anwendungs-Parameter"
 
 #: admin/applications/class_applicationManagement.inc:38
-#: admin/groups/apps/class_groupApplication.inc:1497
+#: admin/groups/apps/class_groupApplication.inc:1459
 #: admin/mimetypes/generic.tpl.c:62 admin/mimetypes/generic.tpl.c:86
 msgid "Applications"
 msgstr "Anwendungen"
@@ -192,7 +191,7 @@ msgstr "Anzeigename"
 
 #: admin/applications/class_applicationGeneric.inc:95
 msgid "The displayed name for this application"
-msgstr ""
+msgstr "Der angezeigte Name für diese Anwendung"
 
 #: admin/applications/class_applicationGeneric.inc:99
 msgid "Execute"
@@ -200,11 +199,11 @@ msgstr "Ausführen"
 
 #: admin/applications/class_applicationGeneric.inc:99
 msgid "The application to be executed"
-msgstr ""
+msgstr "Die auszuführende Anwendung"
 
 #: admin/applications/class_applicationGeneric.inc:103
 msgid "A short description of this application"
-msgstr ""
+msgstr "Eine kurze Beschreibung dieser Anwendung"
 
 #: admin/applications/class_applicationGeneric.inc:110
 #: admin/mimetypes/class_mimetypeGeneric.inc:686
@@ -214,7 +213,7 @@ msgstr "Symbol"
 
 #: admin/applications/class_applicationGeneric.inc:113
 msgid "The icon for this application"
-msgstr ""
+msgstr "Das Icon für diese Anwendung"
 
 #: admin/applications/class_applicationGeneric.inc:120
 msgid "Options"
@@ -222,7 +221,7 @@ msgstr "Optionen"
 
 #: admin/applications/class_applicationGeneric.inc:123
 msgid "Only executable for member"
-msgstr ""
+msgstr "Nur für Mitglied ausführbar"
 
 #: admin/applications/class_applicationGeneric.inc:123
 msgid "Only executable by the memebers of the group"
@@ -237,17 +236,17 @@ msgid "Replace the user configuration on startup"
 msgstr ""
 
 #: admin/applications/class_applicationGeneric.inc:133
-#: admin/groups/apps/class_groupApplication.inc:1507
+#: admin/groups/apps/class_groupApplication.inc:1469
 #: admin/groups/apps/edit_entry.tpl.c:32
 msgid "Place icon on members desktop"
 msgstr "Platziere das Symbol auf dem Desktop der Gruppenmitglieder"
 
 #: admin/applications/class_applicationGeneric.inc:133
 msgid "Put an icon on the user desktop"
-msgstr ""
+msgstr "Ein Icon auf der Arbeitsfläche erstellen"
 
 #: admin/applications/class_applicationGeneric.inc:138
-#: admin/groups/apps/class_groupApplication.inc:1509
+#: admin/groups/apps/class_groupApplication.inc:1471
 #: admin/groups/apps/edit_entry.tpl.c:35
 msgid "Place entry in members startmenu"
 msgstr "Platziere einen Eintrag im Startmenü der Gruppenmitglieder"
@@ -255,10 +254,10 @@ msgstr "Platziere einen Eintrag im Startmenü der Gruppenmitglieder"
 #: admin/applications/class_applicationGeneric.inc:138
 #: admin/applications/class_applicationGeneric.inc:143
 msgid "Put an entry in the startup menu"
-msgstr ""
+msgstr "Einen Eintrag im Startmenü setzen"
 
 #: admin/applications/class_applicationGeneric.inc:143
-#: admin/groups/apps/class_groupApplication.inc:1508
+#: admin/groups/apps/class_groupApplication.inc:1470
 #: admin/groups/apps/edit_entry.tpl.c:38
 msgid "Place entry in members launch bar"
 msgstr "Platziere einen Eintrag in der Kontrollleiste der Gruppenmitglieder"
@@ -269,15 +268,15 @@ msgstr "Skript"
 
 #: admin/applications/class_applicationGeneric.inc:157
 msgid "Script to run at logon"
-msgstr ""
+msgstr "Skript, welches beim Logon gestartet werden soll"
 
 #: admin/applications/class_applicationGeneric.inc:163
 msgid "Log off script"
-msgstr ""
+msgstr "Skript zum Ausloggen"
 
 #: admin/applications/class_applicationGeneric.inc:166
 msgid "Script to run at logoff"
-msgstr ""
+msgstr "Skript, welches beim Logoff gestartet werden soll"
 
 #: admin/applications/class_applicationGeneric.inc:221
 msgid "no example"
@@ -290,9 +289,7 @@ msgstr "Fehler"
 #: admin/applications/class_applicationGeneric.inc:270
 #, php-format
 msgid "Cannot remove application - it is still in use by these objects: %s"
-msgstr ""
-"Die Anwendung konnte nicht entfernt werden, sie wird momentan noch von "
-"folgenden Objekten verwendet: %s"
+msgstr "Die Anwendung konnte nicht entfernt werden, sie wird momentan noch von folgenden Objekten verwendet: %s"
 
 #: admin/groups/apps/class_groupApplication.inc:410
 #: admin/groups/apps/class_groupApplication.inc:414
@@ -319,16 +316,16 @@ msgstr "Anwendung"
 msgid "Not available in release."
 msgstr "Nicht verfügbar in Release."
 
-#: admin/groups/apps/class_groupApplication.inc:1498
+#: admin/groups/apps/class_groupApplication.inc:1460
 msgid "Group applications"
 msgstr "Anwendungen der Gruppe"
 
-#: admin/groups/apps/class_groupApplication.inc:1505
+#: admin/groups/apps/class_groupApplication.inc:1467
 #: admin/groups/apps/app_list.tpl.c:2 admin/groups/apps/app_list.tpl.c:14
 msgid "Release"
 msgstr "Release"
 
-#: admin/groups/apps/class_groupApplication.inc:1506
+#: admin/groups/apps/class_groupApplication.inc:1468
 msgid "Application parameter"
 msgstr "Anwendungs-Parameter"
 
@@ -403,13 +400,11 @@ msgstr "Warnung"
 msgid ""
 "Please double check if you really want to do this since there is no way for "
 "FusionDirectory to get your data back."
-msgstr ""
+msgstr "Bitte überprüfen Sie, ob Sie dies wirklich tun wollen, da es keinen Weg gibt, für FusionDirectory die Daten wieder herzustellen."
 
 #: admin/applications/remove.tpl.c:8 admin/mimetypes/remove.tpl.c:8
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr ""
-"Wenn Sie sicher sind, drücken Sie 'Entfernen' um fortzufahren oder "
-"'Abbrechen' zum Abbruch."
+msgstr "Wenn Sie sicher sind, drücken Sie 'Entfernen' um fortzufahren oder 'Abbrechen' zum Abbruch."
 
 #: admin/groups/apps/edit_entry.tpl.c:2
 msgid "Folder image"

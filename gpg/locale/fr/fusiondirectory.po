@@ -1,21 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
+# fusiondirectory <contact@fusiondirectory.org>, 2013
+# erdesc <erdesc@free.fr>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-develop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-31 10:40+0200\n"
-"PO-Revision-Date: 2013-07-30 16:42+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory/"
-"language/fr/)\n"
-"Language: fr\n"
+"POT-Creation-Date: 2013-08-21 17:43+0200\n"
+"PO-Revision-Date: 2013-08-21 16:32+0000\n"
+"Last-Translator: erdesc <erdesc@free.fr>\n"
+"Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:10
@@ -55,7 +56,7 @@ msgstr "Taille"
 #: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:88
 #: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:127
 msgid "Revoked"
-msgstr ""
+msgstr "Révoquée"
 
 #: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:96
 #: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:128
@@ -68,9 +69,7 @@ msgstr "Erreur de configuration"
 
 #: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:41
 msgid "You need to configure GPG base dn through the addons section first"
-msgstr ""
-"Vous devez configurer d'abord le DN de base de GPG, dans la section "
-"Extensions"
+msgstr "Vous devez configurer d'abord le DN de base de GPG, dans la section Extensions"
 
 #: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:122
 msgid "User ID"
@@ -78,15 +77,15 @@ msgstr "ID de l'utilisateur"
 
 #: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:123
 msgid "Creation time"
-msgstr ""
+msgstr "Date de création"
 
 #: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:124
 msgid "Expiration"
-msgstr ""
+msgstr "Date d'expiration"
 
 #: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:125
 msgid "Algorithm"
-msgstr ""
+msgstr "Algorithme"
 
 #: personal/gpg/class_gpgAccount.inc:31
 msgid "GPG keys"
@@ -102,7 +101,7 @@ msgstr "GPG"
 
 #: personal/gpg/class_gpgAccount.inc:47
 msgid "Edit user's GPG IDs"
-msgstr ""
+msgstr "Modifier les identifiants GPG de l'utilisateur"
 
 #: addons/gpg/class_pgpServerInfo.inc:34 addons/gpg/class_pgpServerInfo.inc:69
 #: addons/gpg/class_pgpServerInfo.inc:70
@@ -115,7 +114,7 @@ msgstr "Logiciel"
 
 #: addons/gpg/class_pgpServerInfo.inc:38
 msgid "Which software this GPG key server is running"
-msgstr ""
+msgstr "Version du logiciel de ce serveur de clés GPG "
 
 #: addons/gpg/class_pgpServerInfo.inc:43
 msgid "GPG version"
@@ -123,7 +122,7 @@ msgstr "Version de GPG"
 
 #: addons/gpg/class_pgpServerInfo.inc:43
 msgid "Which version of GPG this key server is running"
-msgstr ""
+msgstr "Version du logiciel de ce serveur de clés GPG "
 
 #: addons/gpg/class_pgpServerInfo.inc:48
 msgid "Branch in which keys are stored"
@@ -131,7 +130,7 @@ msgstr "Branches ou seront stockés les clefs GPG"
 
 #: addons/gpg/class_pgpServerInfo.inc:52
 msgid "Keys RDN"
-msgstr ""
+msgstr "RDN des clés"
 
 #: addons/gpg/class_pgpServerInfo.inc:52
 msgid "Branch under base in which keys are stored"

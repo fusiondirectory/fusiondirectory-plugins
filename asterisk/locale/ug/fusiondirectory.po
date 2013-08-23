@@ -1,21 +1,20 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-develop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-31 10:38+0200\n"
-"PO-Revision-Date: 2013-07-30 16:20+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: Uighur (http://www.transifex.com/projects/p/FusionDirectory/"
-"language/ug/)\n"
-"Language: ug\n"
+"POT-Creation-Date: 2013-08-21 17:43+0200\n"
+"PO-Revision-Date: 2013-08-21 15:48+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: Uighur (http://www.transifex.com/projects/p/FusionDirectory/language/ug/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ug\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:28
@@ -106,7 +105,7 @@ msgstr ""
 #: personal/phoneaccount/class_phoneAccount.inc:617
 #: personal/phoneaccount/class_phoneAccount.inc:656
 #: personal/phoneaccount/class_phoneAccount.inc:1536
-#: personal/phoneaccount/class_phoneAccount.inc:1712
+#: personal/phoneaccount/class_phoneAccount.inc:1713
 #: admin/conference/class_phoneConferenceGeneric.inc:399
 #: admin/macro/remove.tpl.c:2 admin/conference/remove.tpl.c:2
 msgid "Warning"
@@ -197,6 +196,11 @@ msgstr ""
 msgid "Selected macro is not available anymore!"
 msgstr ""
 
+#: personal/phoneaccount/class_phoneAccount.inc:1071
+#: admin/macro/class_gofonMacroParameters.inc:58
+msgid "Parameter"
+msgstr ""
+
 #: personal/phoneaccount/class_phoneAccount.inc:1221
 msgid "Choose your private phone"
 msgstr ""
@@ -208,20 +212,20 @@ msgid ""
 msgstr ""
 
 #: personal/phoneaccount/class_phoneAccount.inc:1367
-#: personal/phoneaccount/class_phoneAccount.inc:1686
+#: personal/phoneaccount/class_phoneAccount.inc:1687
 #: admin/ogroups/asterisk/class_phonequeue.inc:275
 #: admin/ogroups/asterisk/class_phonequeue.inc:873
 #: admin/conference/class_phoneConferenceGeneric.inc:709
-#: personal/phoneaccount/generic.tpl.c:11
-#: admin/ogroups/asterisk/phonequeue.tpl.c:17
+#: personal/phoneaccount/generic.tpl.c:17
+#: admin/ogroups/asterisk/phonequeue.tpl.c:23
 #: admin/conference/generic.tpl.c:20
 msgid "Home server"
 msgstr ""
 
 #: personal/phoneaccount/class_phoneAccount.inc:1371
 #: personal/phoneaccount/class_phoneAccount.inc:1374
-#: personal/phoneaccount/paste_generic.tpl.c:11
-#: personal/phoneaccount/generic.tpl.c:29
+#: personal/phoneaccount/paste_generic.tpl.c:17
+#: personal/phoneaccount/generic.tpl.c:35
 msgid "Voicemail PIN"
 msgstr ""
 
@@ -230,8 +234,8 @@ msgid "Between 1-4 charactes"
 msgstr ""
 
 #: personal/phoneaccount/class_phoneAccount.inc:1379
-#: personal/phoneaccount/paste_generic.tpl.c:14
-#: personal/phoneaccount/generic.tpl.c:32
+#: personal/phoneaccount/paste_generic.tpl.c:20
+#: personal/phoneaccount/generic.tpl.c:38
 msgid "Phone PIN"
 msgstr ""
 
@@ -296,37 +300,37 @@ msgstr ""
 msgid "Phone account settings"
 msgstr ""
 
-#: personal/phoneaccount/class_phoneAccount.inc:1683
+#: personal/phoneaccount/class_phoneAccount.inc:1684
 #: admin/conference/class_phoneConferenceGeneric.inc:720
 msgid "Telephone number"
 msgstr ""
 
-#: personal/phoneaccount/class_phoneAccount.inc:1684
+#: personal/phoneaccount/class_phoneAccount.inc:1685
 msgid "Macro settings"
 msgstr ""
 
-#: personal/phoneaccount/class_phoneAccount.inc:1685
-#: admin/systems/asterisk/class_phoneGeneric.inc:476
+#: personal/phoneaccount/class_phoneAccount.inc:1686
+#: admin/systems/asterisk/class_phoneGeneric.inc:475
 msgid "Phone hardware"
 msgstr ""
 
-#: personal/phoneaccount/class_phoneAccount.inc:1687
+#: personal/phoneaccount/class_phoneAccount.inc:1688
 msgid "Phone context"
 msgstr ""
 
-#: personal/phoneaccount/class_phoneAccount.inc:1688
+#: personal/phoneaccount/class_phoneAccount.inc:1689
 msgid "Voice mail context"
 msgstr ""
 
-#: personal/phoneaccount/class_phoneAccount.inc:1689
+#: personal/phoneaccount/class_phoneAccount.inc:1690
 msgid "Telephone pin"
 msgstr ""
 
-#: personal/phoneaccount/class_phoneAccount.inc:1690
+#: personal/phoneaccount/class_phoneAccount.inc:1691
 msgid "Voicemail pin"
 msgstr ""
 
-#: personal/phoneaccount/class_phoneAccount.inc:1712
+#: personal/phoneaccount/class_phoneAccount.inc:1713
 #, php-format
 msgid "You need to configure %s contexts first"
 msgstr ""
@@ -436,13 +440,13 @@ msgstr ""
 
 #: admin/ogroups/asterisk/class_phonequeue.inc:281
 #: admin/ogroups/asterisk/class_phonequeue.inc:871
-#: admin/ogroups/asterisk/phonequeue.tpl.c:23
+#: admin/ogroups/asterisk/phonequeue.tpl.c:29
 msgid "Timeout"
 msgstr ""
 
 #: admin/ogroups/asterisk/class_phonequeue.inc:284
 #: admin/ogroups/asterisk/class_phonequeue.inc:896
-#: admin/ogroups/asterisk/phonequeue.tpl.c:26
+#: admin/ogroups/asterisk/phonequeue.tpl.c:32
 msgid "Retry"
 msgstr ""
 
@@ -452,7 +456,7 @@ msgstr ""
 
 #: admin/ogroups/asterisk/class_phonequeue.inc:290
 #: admin/ogroups/asterisk/class_phonequeue.inc:874
-#: admin/ogroups/asterisk/phonequeue.tpl.c:35
+#: admin/ogroups/asterisk/phonequeue.tpl.c:41
 msgid "Announce frequency"
 msgstr ""
 
@@ -487,37 +491,37 @@ msgid "Phone group"
 msgstr ""
 
 #: admin/ogroups/asterisk/class_phonequeue.inc:872
-#: admin/ogroups/asterisk/phonequeue.tpl.c:32
+#: admin/ogroups/asterisk/phonequeue.tpl.c:38
 msgid "Max queue length"
 msgstr ""
 
 #: admin/ogroups/asterisk/class_phonequeue.inc:875
-#: admin/ogroups/asterisk/phonequeue.tpl.c:86
+#: admin/ogroups/asterisk/phonequeue.tpl.c:95
 msgid "Allow the called user to transfer his call"
 msgstr ""
 
 #: admin/ogroups/asterisk/class_phonequeue.inc:876
-#: admin/ogroups/asterisk/phonequeue.tpl.c:89
+#: admin/ogroups/asterisk/phonequeue.tpl.c:98
 msgid "Allows calling user to transfer call"
 msgstr ""
 
 #: admin/ogroups/asterisk/class_phonequeue.inc:877
-#: admin/ogroups/asterisk/phonequeue.tpl.c:92
+#: admin/ogroups/asterisk/phonequeue.tpl.c:101
 msgid "Allow the called to hangup by pressing *"
 msgstr ""
 
 #: admin/ogroups/asterisk/class_phonequeue.inc:878
-#: admin/ogroups/asterisk/phonequeue.tpl.c:98
+#: admin/ogroups/asterisk/phonequeue.tpl.c:107
 msgid "Ring instead of playing background music"
 msgstr ""
 
 #: admin/ogroups/asterisk/class_phonequeue.inc:879
-#: admin/ogroups/asterisk/phonequeue.tpl.c:95
+#: admin/ogroups/asterisk/phonequeue.tpl.c:104
 msgid "Allows calling to hangup by pressing *"
 msgstr ""
 
 #: admin/ogroups/asterisk/class_phonequeue.inc:881
-#: admin/ogroups/asterisk/phonequeue.tpl.c:47
+#: admin/ogroups/asterisk/phonequeue.tpl.c:56
 msgid "Music on hold"
 msgstr ""
 
@@ -563,7 +567,7 @@ msgstr ""
 
 #: admin/ogroups/asterisk/class_phonequeue.inc:892
 #: admin/conference/class_phoneConferenceGeneric.inc:707
-#: admin/ogroups/asterisk/phonequeue.tpl.c:20
+#: admin/ogroups/asterisk/phonequeue.tpl.c:26
 #: admin/conference/generic.tpl.c:23
 msgid "Language"
 msgstr ""
@@ -573,7 +577,7 @@ msgid "Method"
 msgstr ""
 
 #: admin/ogroups/asterisk/class_phonequeue.inc:894
-#: admin/ogroups/asterisk/phonequeue.tpl.c:83
+#: admin/ogroups/asterisk/phonequeue.tpl.c:92
 msgid "Announce holdtime"
 msgstr ""
 
@@ -620,7 +624,7 @@ msgstr ""
 #: admin/systems/asterisk/class_phoneGeneric.inc:348
 #: admin/systems/asterisk/class_phoneGeneric.inc:351
 #: admin/systems/asterisk/class_phoneGeneric.inc:366
-#: admin/systems/asterisk/class_phoneGeneric.inc:482
+#: admin/systems/asterisk/class_phoneGeneric.inc:481
 #: admin/conference/class_phoneConferenceGeneric.inc:324
 #: admin/conference/class_phoneConferenceGeneric.inc:347
 #: admin/conference/class_phoneConferenceGeneric.inc:702
@@ -671,7 +675,7 @@ msgid "Macro name"
 msgstr ""
 
 #: admin/macro/class_gofonMacro.inc:546
-#: admin/systems/asterisk/class_phoneGeneric.inc:483
+#: admin/systems/asterisk/class_phoneGeneric.inc:482
 #: admin/conference/class_phoneConferenceGeneric.inc:703
 #: admin/macro/generic.tpl.c:14 admin/systems/asterisk/phone.tpl.c:5
 #: admin/conference/generic.tpl.c:17
@@ -679,7 +683,7 @@ msgid "Base"
 msgstr ""
 
 #: admin/macro/class_gofonMacro.inc:547 admin/macro/macro-list.xml:49
-#: admin/systems/asterisk/class_phoneGeneric.inc:484
+#: admin/systems/asterisk/class_phoneGeneric.inc:483
 #: admin/conference/class_phoneConferenceGeneric.inc:704
 #: admin/conference/conf-list.xml:49 admin/macro/generic.tpl.c:17
 #: admin/systems/asterisk/phone.tpl.c:8 admin/conference/generic.tpl.c:29
@@ -698,16 +702,13 @@ msgstr ""
 msgid "Visibility flag"
 msgstr ""
 
-#: admin/macro/class_gofonMacroParameters.inc:58
-msgid "Parameter"
-msgstr ""
-
 #: admin/macro/class_gofonMacroParameters.inc:59
 msgid "Asterisk macro parameter"
 msgstr ""
 
 #: admin/macro/class_gofonMacroParameters.inc:234
-#: personal/phoneaccount/generic.tpl.c:35
+#: personal/phoneaccount/generic.tpl.c:41
+#: personal/phoneaccount/generic.tpl.c:44
 msgid "Phone macro"
 msgstr ""
 
@@ -806,51 +807,51 @@ msgstr ""
 msgid "Phone generic"
 msgstr ""
 
-#: admin/systems/asterisk/class_phoneGeneric.inc:485
+#: admin/systems/asterisk/class_phoneGeneric.inc:484
 msgid "SIP Mode"
 msgstr ""
 
-#: admin/systems/asterisk/class_phoneGeneric.inc:486
+#: admin/systems/asterisk/class_phoneGeneric.inc:485
 msgid "SIP DTMF mode"
 msgstr ""
 
-#: admin/systems/asterisk/class_phoneGeneric.inc:487
+#: admin/systems/asterisk/class_phoneGeneric.inc:486
 msgid "SIP Default ip"
 msgstr ""
 
-#: admin/systems/asterisk/class_phoneGeneric.inc:488
+#: admin/systems/asterisk/class_phoneGeneric.inc:487
 msgid "SIP Qualify"
 msgstr ""
 
-#: admin/systems/asterisk/class_phoneGeneric.inc:489
+#: admin/systems/asterisk/class_phoneGeneric.inc:488
 msgid "IAX authentication type"
 msgstr ""
 
-#: admin/systems/asterisk/class_phoneGeneric.inc:490
+#: admin/systems/asterisk/class_phoneGeneric.inc:489
 msgid "IAX secret"
 msgstr ""
 
-#: admin/systems/asterisk/class_phoneGeneric.inc:491
+#: admin/systems/asterisk/class_phoneGeneric.inc:490
 msgid "IAX account code"
 msgstr ""
 
-#: admin/systems/asterisk/class_phoneGeneric.inc:492
+#: admin/systems/asterisk/class_phoneGeneric.inc:491
 msgid "IAX trunk lines"
 msgstr ""
 
-#: admin/systems/asterisk/class_phoneGeneric.inc:493
+#: admin/systems/asterisk/class_phoneGeneric.inc:492
 msgid "IAX permit settings"
 msgstr ""
 
-#: admin/systems/asterisk/class_phoneGeneric.inc:494
+#: admin/systems/asterisk/class_phoneGeneric.inc:493
 msgid "IAX deny settings"
 msgstr ""
 
-#: admin/systems/asterisk/class_phoneGeneric.inc:495
+#: admin/systems/asterisk/class_phoneGeneric.inc:494
 msgid "CAPI MSN"
 msgstr ""
 
-#: admin/systems/asterisk/class_phoneGeneric.inc:496
+#: admin/systems/asterisk/class_phoneGeneric.inc:495
 msgid "Hardware type"
 msgstr ""
 
@@ -933,8 +934,8 @@ msgstr ""
 #: admin/conference/class_phoneConferenceGeneric.inc:400
 #, php-format
 msgid ""
-"FusionDirectory identified problems with your MySQL table definition, please "
-"activate debugging for details."
+"FusionDirectory identified problems with your MySQL table definition, please"
+" activate debugging for details."
 msgstr ""
 
 #: admin/conference/class_phoneConferenceGeneric.inc:606
@@ -1019,38 +1020,41 @@ msgid "Phone Conference management"
 msgstr ""
 
 #: personal/phoneaccount/paste_generic.tpl.c:5
-#: personal/phoneaccount/generic.tpl.c:2
-#: admin/ogroups/asterisk/phonequeue.tpl.c:5
+#: personal/phoneaccount/paste_generic.tpl.c:8
+#: personal/phoneaccount/generic.tpl.c:2 personal/phoneaccount/generic.tpl.c:5
+#: admin/ogroups/asterisk/phonequeue.tpl.c:8
 msgid "Phone numbers"
 msgstr ""
 
-#: personal/phoneaccount/paste_generic.tpl.c:8
-#: personal/phoneaccount/generic.tpl.c:5
+#: personal/phoneaccount/paste_generic.tpl.c:11
+#: personal/phoneaccount/generic.tpl.c:8
 msgid "Telephone hardware"
 msgstr ""
 
-#: personal/phoneaccount/generic.tpl.c:8
+#: personal/phoneaccount/paste_generic.tpl.c:14
+#: personal/phoneaccount/generic.tpl.c:11
+#: personal/phoneaccount/generic.tpl.c:14
 msgid "Telephone"
 msgstr ""
 
-#: personal/phoneaccount/generic.tpl.c:14
+#: personal/phoneaccount/generic.tpl.c:20
 msgid "Select the accounts home server"
 msgstr ""
 
-#: personal/phoneaccount/generic.tpl.c:17
+#: personal/phoneaccount/generic.tpl.c:23
 msgid "Context"
 msgstr ""
 
-#: personal/phoneaccount/generic.tpl.c:20
 #: personal/phoneaccount/generic.tpl.c:26
+#: personal/phoneaccount/generic.tpl.c:32
 msgid "Select the accounts context"
 msgstr ""
 
-#: personal/phoneaccount/generic.tpl.c:23
+#: personal/phoneaccount/generic.tpl.c:29
 msgid "Voicemail context"
 msgstr ""
 
-#: personal/phoneaccount/generic.tpl.c:38
+#: personal/phoneaccount/generic.tpl.c:47
 msgid "Refresh"
 msgstr ""
 
@@ -1105,79 +1109,89 @@ msgstr ""
 
 #: admin/ogroups/asterisk/phonequeue.tpl.c:2
 msgid ""
-"Only users with the same asterisk home server will be included to this queue."
+"Only users with the same asterisk home server will be included to this "
+"queue."
 msgstr ""
 
-#: admin/ogroups/asterisk/phonequeue.tpl.c:8
-msgid "Up"
+#: admin/ogroups/asterisk/phonequeue.tpl.c:5
+msgid "Queue Settings"
 msgstr ""
 
 #: admin/ogroups/asterisk/phonequeue.tpl.c:11
-msgid "Down"
+#: admin/ogroups/asterisk/phonequeue.tpl.c:50
+msgid "Generic queue Settings"
 msgstr ""
 
 #: admin/ogroups/asterisk/phonequeue.tpl.c:14
+msgid "Up"
+msgstr ""
+
+#: admin/ogroups/asterisk/phonequeue.tpl.c:17
+msgid "Down"
+msgstr ""
+
+#: admin/ogroups/asterisk/phonequeue.tpl.c:20
 #: admin/conference/generic.tpl.c:41
 msgid "Options"
 msgstr ""
 
-#: admin/ogroups/asterisk/phonequeue.tpl.c:29
+#: admin/ogroups/asterisk/phonequeue.tpl.c:35
 msgid "Strategy"
 msgstr ""
 
-#: admin/ogroups/asterisk/phonequeue.tpl.c:38
+#: admin/ogroups/asterisk/phonequeue.tpl.c:44
 msgid "(in seconds)"
 msgstr ""
 
-#: admin/ogroups/asterisk/phonequeue.tpl.c:41
+#: admin/ogroups/asterisk/phonequeue.tpl.c:47
 msgid "Queue sound setup"
 msgstr ""
 
-#: admin/ogroups/asterisk/phonequeue.tpl.c:44
+#: admin/ogroups/asterisk/phonequeue.tpl.c:53
 msgid "Use music on hold instead of ringing"
 msgstr ""
 
-#: admin/ogroups/asterisk/phonequeue.tpl.c:50
+#: admin/ogroups/asterisk/phonequeue.tpl.c:59
 msgid "Welcome sound file"
 msgstr ""
 
-#: admin/ogroups/asterisk/phonequeue.tpl.c:53
+#: admin/ogroups/asterisk/phonequeue.tpl.c:62
 msgid "Announce message"
 msgstr ""
 
-#: admin/ogroups/asterisk/phonequeue.tpl.c:56
+#: admin/ogroups/asterisk/phonequeue.tpl.c:65
 msgid "Sound file for 'You are next ...'"
 msgstr ""
 
-#: admin/ogroups/asterisk/phonequeue.tpl.c:59
+#: admin/ogroups/asterisk/phonequeue.tpl.c:68
 msgid "'There are ...'"
 msgstr ""
 
-#: admin/ogroups/asterisk/phonequeue.tpl.c:62
+#: admin/ogroups/asterisk/phonequeue.tpl.c:71
 msgid "'... calls waiting'"
 msgstr ""
 
-#: admin/ogroups/asterisk/phonequeue.tpl.c:65
+#: admin/ogroups/asterisk/phonequeue.tpl.c:74
 msgid "'Thank you' message"
 msgstr ""
 
-#: admin/ogroups/asterisk/phonequeue.tpl.c:68
+#: admin/ogroups/asterisk/phonequeue.tpl.c:77
 msgid "'minutes' sound file"
 msgstr ""
 
-#: admin/ogroups/asterisk/phonequeue.tpl.c:71
+#: admin/ogroups/asterisk/phonequeue.tpl.c:80
 msgid "'seconds' sound file"
 msgstr ""
 
-#: admin/ogroups/asterisk/phonequeue.tpl.c:74
+#: admin/ogroups/asterisk/phonequeue.tpl.c:83
 msgid "Hold sound file"
 msgstr ""
 
-#: admin/ogroups/asterisk/phonequeue.tpl.c:77
+#: admin/ogroups/asterisk/phonequeue.tpl.c:86
 msgid "Less Than sound file"
 msgstr ""
 
-#: admin/ogroups/asterisk/phonequeue.tpl.c:80
+#: admin/ogroups/asterisk/phonequeue.tpl.c:89
 msgid "Phone attributes "
 msgstr ""
 

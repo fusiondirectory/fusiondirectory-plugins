@@ -1,21 +1,20 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-develop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-31 10:38+0200\n"
-"PO-Revision-Date: 2013-07-30 16:19+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: Italian (http://www.transifex.com/projects/p/FusionDirectory/"
-"language/it/)\n"
-"Language: it\n"
+"POT-Creation-Date: 2013-08-21 17:43+0200\n"
+"PO-Revision-Date: 2013-08-21 16:31+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: Italian (http://www.transifex.com/projects/p/FusionDirectory/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: addons/argonaut/events/class_DaemonEvent.inc:150
@@ -133,8 +132,7 @@ msgstr "il file è vuoto"
 #: addons/argonaut/class_argonautImportFile.inc:110
 msgid ""
 "Selected entries will be skipped because of errors. Do you want to proceed?"
-msgstr ""
-"Le voci selezionate saranno ignorate a causa di errori. Vuoi continuare?"
+msgstr "Le voci selezionate saranno ignorate a causa di errori. Vuoi continuare?"
 
 #: addons/argonaut/class_argonautImportFile.inc:146
 #: addons/argonaut/class_argonautQueue.inc:351
@@ -181,6 +179,8 @@ msgstr "Mostra l'errore"
 #: addons/argonaut/class_argonautQueue.inc:194
 #: addons/argonaut/class_argonautQueue.inc:308
 #: addons/argonaut/class_argonautQueue.inc:399
+#: addons/argonaut/class_argonautLogView.inc:77
+#: addons/argonaut/class_argonautLogView.inc:195
 #: addons/argonaut/class_filterArgonautEvents.inc:39
 msgid "Error"
 msgstr "Errore"
@@ -200,8 +200,7 @@ msgstr "Permessi"
 #: addons/argonaut/class_argonautQueue.inc:258
 #, php-format
 msgid "The following jobs couldn't be deleted, they have to be aborted: %s"
-msgstr ""
-"I lavori seguenti non possono essere cancellati, devono essere interrotti: %s"
+msgstr "I lavori seguenti non possono essere cancellati, devono essere interrotti: %s"
 
 #: addons/argonaut/class_argonautQueue.inc:305
 msgid "Info"
@@ -225,6 +224,26 @@ msgstr "Dettaglio dell'errore"
 #, php-format
 msgid "Cannot update queue entries."
 msgstr "Impossibile aggiornare la coda delle entry."
+
+#: addons/argonaut/class_argonautLogView.inc:107
+msgid "none"
+msgstr "nessuno"
+
+#: addons/argonaut/class_argonautLogView.inc:133
+msgid "File"
+msgstr "File"
+
+#: addons/argonaut/class_argonautLogView.inc:135
+msgid "Date"
+msgstr "Data"
+
+#: addons/argonaut/class_argonautLogView.inc:221
+msgid "Argonaut Logs"
+msgstr ""
+
+#: addons/argonaut/class_argonautLogView.inc:222
+msgid "Argonaut Logs Viewer"
+msgstr ""
 
 #: addons/argonaut/deploy-list.xml:10
 msgid "List of queued jobs"
@@ -337,8 +356,7 @@ msgstr "Path statica per la configurazione di Pxelinux"
 
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:77
 msgid "Path where argonaut-fuse should store pxelinux.static"
-msgstr ""
-"Percorso dove argonaut-fuse dovrebbe conservare il file pxelinux.static"
+msgstr "Percorso dove argonaut-fuse dovrebbe conservare il file pxelinux.static"
 
 #: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:32
 #: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:33
@@ -396,13 +414,11 @@ msgstr "Attiva la notifica"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:70
 msgid "Allow update (semicolon separated and ended)"
-msgstr ""
-"Consenti l'aggiornamento (punto e virgola per la separazione e la chiusura)"
+msgstr "Consenti l'aggiornamento (punto e virgola per la separazione e la chiusura)"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:76
 msgid "Allow transfer (semicolon separated and ended)"
-msgstr ""
-"Consenti il trasferimento (punto e virgola per la separazione e la chiusura)"
+msgstr "Consenti il trasferimento (punto e virgola per la separazione e la chiusura)"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:82
 msgid "TTL"
@@ -434,10 +450,9 @@ msgid "Delete finished tasks"
 msgstr "Cancella le operazioni terminate"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:51
-msgid "Wether or not argonaut server should delete successfully finished tasks"
-msgstr ""
-"Se é vero o meno che il server argonaut dovrebbe cancellare le tasks "
-"terminate con successo"
+msgid ""
+"Wether or not argonaut server should delete successfully finished tasks"
+msgstr "Se é vero o meno che il server argonaut dovrebbe cancellare le tasks terminate con successo"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:56
 msgid "Protocol"
@@ -460,10 +475,9 @@ msgid "Timeout"
 msgstr "Tempo di attesa massimo"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:68
-msgid "Time in seconds before to consider an argonaut client or server as down"
-msgstr ""
-"Tempo in secondi prima di prendere in considerazione un client o un server "
-"Argonaut come inattivo "
+msgid ""
+"Time in seconds before to consider an argonaut client or server as down"
+msgstr "Tempo in secondi prima di prendere in considerazione un client o un server Argonaut come inattivo "
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:75
 msgid "Directory in which argonaut will store its log"
@@ -648,16 +662,6 @@ msgstr "Trovati più di un server Argonaut. Solo uno è supportato"
 msgid "There is no argonaut server configured"
 msgstr "Non c'è nessun server Argonaut configurato"
 
-#: include/class_supportDaemon.inc:611
-#, php-format
-msgid "Could not read \"%s\"!"
-msgstr ""
-
-#: include/class_supportDaemon.inc:615
-#, php-format
-msgid "\"%s\" is not a file!"
-msgstr ""
-
 #: addons/argonaut/argonaut_import_file.tpl.c:2
 msgid "Import jobs"
 msgstr "Importa dei lavori"
@@ -666,10 +670,7 @@ msgstr "Importa dei lavori"
 msgid ""
 "You can import a list of jobs into the FusionDirectory job queue. This "
 "should be a semicolon seperated list of items in the following format:"
-msgstr ""
-"È possibile importare una lista di lavori nella coda di lavoro di "
-"FusionDirectory. Dovrebbe essere un elenco di elementi separati da punto e "
-"virgola nel seguente formato:"
+msgstr "È possibile importare una lista di lavori nella coda di lavoro di FusionDirectory. Dovrebbe essere un elenco di elementi separati da punto e virgola nel seguente formato:"
 
 #: addons/argonaut/argonaut_import_file.tpl.c:8
 msgid "timestamp"
@@ -819,6 +820,16 @@ msgstr "Avvertimento"
 
 #: addons/argonaut/remove.tpl.c:5
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr ""
-"Quindi - se sei sicuro - premi 'Rimuovi' per continuare oppure 'Annulla' per "
-"interrompere."
+msgstr "Quindi - se sei sicuro - premi 'Rimuovi' per continuare oppure 'Annulla' per interrompere."
+
+#: addons/argonaut/argonaut_log_view.tpl.c:2
+msgid "Available logs"
+msgstr "Logs di sistema disponibili"
+
+#: addons/argonaut/argonaut_log_view.tpl.c:5
+msgid "Selected log"
+msgstr "Logs di sistema selezionato"
+
+#: addons/argonaut/argonaut_log_view.tpl.c:8
+msgid "No logs for this host available!"
+msgstr "Non ci sono logs di sitema disponibili per questo host"

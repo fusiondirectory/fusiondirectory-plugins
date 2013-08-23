@@ -1,21 +1,20 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-develop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-31 10:39+0200\n"
+"POT-Creation-Date: 2013-08-19 16:53+0200\n"
 "PO-Revision-Date: 2013-07-30 16:39+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/"
-"FusionDirectory/language/cs_CZ/)\n"
-"Language: cs_CZ\n"
+"Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/FusionDirectory/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: cs_CZ\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
 #: config/desktop-management/class_desktopPluginConfig.inc:28
@@ -54,7 +53,7 @@ msgstr "seznam aplikací"
 #: admin/applications/application-list.xml:74
 #: admin/applications/class_applicationGeneric.inc:72
 #: admin/applications/class_applicationGeneric.inc:74
-#: admin/groups/apps/class_groupApplication.inc:1504
+#: admin/groups/apps/class_groupApplication.inc:1466
 #: admin/mimetypes/class_mimetypeGeneric.inc:684
 msgid "Application"
 msgstr "aplikace"
@@ -155,7 +154,7 @@ msgid "Application parameter settings"
 msgstr "nastavení parametru aplikace"
 
 #: admin/applications/class_applicationManagement.inc:38
-#: admin/groups/apps/class_groupApplication.inc:1497
+#: admin/groups/apps/class_groupApplication.inc:1459
 #: admin/mimetypes/generic.tpl.c:62 admin/mimetypes/generic.tpl.c:86
 msgid "Applications"
 msgstr "aplikace"
@@ -237,7 +236,7 @@ msgid "Replace the user configuration on startup"
 msgstr ""
 
 #: admin/applications/class_applicationGeneric.inc:133
-#: admin/groups/apps/class_groupApplication.inc:1507
+#: admin/groups/apps/class_groupApplication.inc:1469
 #: admin/groups/apps/edit_entry.tpl.c:32
 msgid "Place icon on members desktop"
 msgstr "členům umisťovat ikonu na plochu"
@@ -247,7 +246,7 @@ msgid "Put an icon on the user desktop"
 msgstr ""
 
 #: admin/applications/class_applicationGeneric.inc:138
-#: admin/groups/apps/class_groupApplication.inc:1509
+#: admin/groups/apps/class_groupApplication.inc:1471
 #: admin/groups/apps/edit_entry.tpl.c:35
 msgid "Place entry in members startmenu"
 msgstr "členům umisťovat položku do nabídky start"
@@ -258,7 +257,7 @@ msgid "Put an entry in the startup menu"
 msgstr ""
 
 #: admin/applications/class_applicationGeneric.inc:143
-#: admin/groups/apps/class_groupApplication.inc:1508
+#: admin/groups/apps/class_groupApplication.inc:1470
 #: admin/groups/apps/edit_entry.tpl.c:38
 msgid "Place entry in members launch bar"
 msgstr "členům umisťovat položku na panel „snadné spuštění“"
@@ -317,16 +316,16 @@ msgstr "aplikace"
 msgid "Not available in release."
 msgstr "V tomto vydání není k dispozici."
 
-#: admin/groups/apps/class_groupApplication.inc:1498
+#: admin/groups/apps/class_groupApplication.inc:1460
 msgid "Group applications"
 msgstr "skupinové aplikace"
 
-#: admin/groups/apps/class_groupApplication.inc:1505
+#: admin/groups/apps/class_groupApplication.inc:1467
 #: admin/groups/apps/app_list.tpl.c:2 admin/groups/apps/app_list.tpl.c:14
 msgid "Release"
 msgstr "vydání"
 
-#: admin/groups/apps/class_groupApplication.inc:1506
+#: admin/groups/apps/class_groupApplication.inc:1468
 msgid "Application parameter"
 msgstr "parametr aplikace"
 
@@ -377,9 +376,7 @@ msgstr "základ"
 
 #: admin/mimetypes/class_mimetypeGeneric.inc:685
 msgid "Left click action"
-msgstr ""
-"akce spuštěná kliknutím levým tlačítkem myši (či jiného polohovacího "
-"zařízení)"
+msgstr "akce spuštěná kliknutím levým tlačítkem myši (či jiného polohovacího zařízení)"
 
 #: admin/mimetypes/class_mimetypeGeneric.inc:687
 #: admin/mimetypes/generic.tpl.c:53
@@ -403,17 +400,11 @@ msgstr "varování"
 msgid ""
 "Please double check if you really want to do this since there is no way for "
 "FusionDirectory to get your data back."
-msgstr ""
-"Týká se veškerých informací o této položce v adresáři. Prosím velmi dobře si "
-"rozmyslete, zda to opravdu chcete udělat, protože provedené změny už ve "
-"FusionDirectory nepůjde vzít nijak jednoduše zpět (nanejvýš složitě ze "
-"záloh, pokud existují a obsahují potřebná data)!"
+msgstr "Týká se veškerých informací o této položce v adresáři. Prosím velmi dobře si rozmyslete, zda to opravdu chcete udělat, protože provedené změny už ve FusionDirectory nepůjde vzít nijak jednoduše zpět (nanejvýš složitě ze záloh, pokud existují a obsahují potřebná data)!"
 
 #: admin/applications/remove.tpl.c:8 admin/mimetypes/remove.tpl.c:8
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr ""
-"Tedy – pokud jste si jist(a), stiskněte 'smazat'. V opačném případě operaci "
-"zrušte pomocí 'zrušit'."
+msgstr "Tedy – pokud jste si jist(a), stiskněte 'smazat'. V opačném případě operaci zrušte pomocí 'zrušit'."
 
 #: admin/groups/apps/edit_entry.tpl.c:2
 msgid "Folder image"

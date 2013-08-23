@@ -1,23 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-develop\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-31 10:40+0200\n"
+"POT-Creation-Date: 2013-08-21 17:43+0200\n"
 "PO-Revision-Date: 2013-07-30 16:27+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: Polish (http://www.transifex.com/projects/p/FusionDirectory/"
-"language/pl/)\n"
-"Language: pl\n"
+"Language-Team: Polish (http://www.transifex.com/projects/p/FusionDirectory/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2);\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: config/fax/class_faxConfig.inc:28
 msgid "Fax configuration"
@@ -114,7 +112,7 @@ msgstr "błąd LDAP"
 
 #: personal/faxaccount/class_gofaxAccount.inc:627
 #: personal/faxaccount/class_gofaxAccount.inc:631
-#: personal/faxaccount/class_gofaxAccount.inc:805
+#: personal/faxaccount/class_gofaxAccount.inc:806
 msgid "Fax number"
 msgstr "Numer fax"
 
@@ -145,40 +143,40 @@ msgstr "Fax"
 msgid "Fax account settings"
 msgstr "Ustawienia konta fax"
 
-#: personal/faxaccount/class_gofaxAccount.inc:806
+#: personal/faxaccount/class_gofaxAccount.inc:807
 #: personal/faxaccount/generic.tpl.c:11
 msgid "Language"
 msgstr "Język"
 
-#: personal/faxaccount/class_gofaxAccount.inc:807
+#: personal/faxaccount/class_gofaxAccount.inc:808
 #: personal/faxaccount/generic.tpl.c:17
 msgid "Delivery format"
 msgstr "Format dostarczania"
 
-#: personal/faxaccount/class_gofaxAccount.inc:808
+#: personal/faxaccount/class_gofaxAccount.inc:809
 msgid "Alternate fax number"
 msgstr ""
 
-#: personal/faxaccount/class_gofaxAccount.inc:809
+#: personal/faxaccount/class_gofaxAccount.inc:810
 msgid "Enable/Disable fax"
 msgstr "Włącz/Wyłącz fax"
 
-#: personal/faxaccount/class_gofaxAccount.inc:810
+#: personal/faxaccount/class_gofaxAccount.inc:811
 #: personal/faxaccount/generic.tpl.c:32
 msgid "Deliver fax as mail"
 msgstr "Dostarcz fax jako pocztę"
 
-#: personal/faxaccount/class_gofaxAccount.inc:811
+#: personal/faxaccount/class_gofaxAccount.inc:812
 #: personal/faxaccount/generic.tpl.c:35
 msgid "Deliver fax to printer"
 msgstr "Dostarcz fax na drukarkę"
 
-#: personal/faxaccount/class_gofaxAccount.inc:812
+#: personal/faxaccount/class_gofaxAccount.inc:813
 #: admin/blocklists/blocklist-list.xml:23
 msgid "Receive blocklist"
 msgstr "Bloklista otrzymywania"
 
-#: personal/faxaccount/class_gofaxAccount.inc:813
+#: personal/faxaccount/class_gofaxAccount.inc:814
 #: admin/blocklists/blocklist-list.xml:15
 msgid "Send blocklist"
 msgstr "Bloklista wysyłania"
@@ -397,13 +395,13 @@ msgstr ""
 msgid "List of blocked number"
 msgstr ""
 
-#: admin/blocklists/class_blocklistGeneric.inc:186
-#: admin/blocklists/class_blocklistGeneric.inc:190
-#: admin/blocklists/class_blocklistGeneric.inc:193
+#: admin/blocklists/class_blocklistGeneric.inc:187
+#: admin/blocklists/class_blocklistGeneric.inc:191
+#: admin/blocklists/class_blocklistGeneric.inc:194
 msgid "Fax blocklists"
 msgstr ""
 
-#: admin/blocklists/class_blocklistGeneric.inc:187
+#: admin/blocklists/class_blocklistGeneric.inc:188
 msgid "The part of the fax plugin managing blacklist"
 msgstr ""
 
@@ -616,9 +614,7 @@ msgstr ""
 
 #: admin/blocklists/remove.tpl.c:8
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr ""
-"Jeśli jesteś pewien - naciśnij 'Usuń' aby kontynuować lub 'Anuluj' aby "
-"anulować."
+msgstr "Jeśli jesteś pewien - naciśnij 'Usuń' aby kontynuować lub 'Anuluj' aby anulować."
 
 #: admin/blocklists/generic.tpl.c:17
 msgid "Select wether to filter incoming or outgoing calls"
