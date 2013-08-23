@@ -33,8 +33,8 @@ class inventoryManagement extends simpleManagement
   static function plInfo()
   {
     return array(
-      'plShortName'   => _('Inventories'),
-      'plDescription' => _('Browse inventories'),
+      'plShortName'   => _('Inventory objects'),
+      'plDescription' => _('Browse inventory objects'),
       'plIcon'        => 'plugins/inventory/images/icon.png',
       'plSection'     => 'addons',
       'plCategory'    => array('inventory'),

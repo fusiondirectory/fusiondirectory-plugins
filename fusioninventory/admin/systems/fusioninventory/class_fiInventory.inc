@@ -71,11 +71,11 @@ class fiInventory extends simplePlugin
       'plObjectType'  => array(
         'workstation', 'server',
         'inventory' => array(
-          'description' => _('Inventory'),
+          'description' => _('Inventory object'),
           'filter'      => 'objectClass=fdInventoryContent',
           'mainAttr'    => 'cn',
           'icon'        => 'plugins/inventory/images/iconMini.png',
-          'name'        => _('Inventory'),
+          'name'        => _('Inventory object'),
           'ou'          => get_ou('inventoryRDN'),
         )
       ),
