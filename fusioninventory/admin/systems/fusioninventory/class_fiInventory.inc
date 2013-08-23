@@ -74,7 +74,7 @@ class fiInventory extends simplePlugin
           'description' => _('Inventory object'),
           'filter'      => 'objectClass=fdInventoryContent',
           'mainAttr'    => 'cn',
-          'icon'        => 'plugins/inventory/images/iconMini.png',
+          'icon'        => 'plugins/fusioninventory/images/iconMini.png',
           'name'        => _('Inventory object'),
           'ou'          => get_ou('inventoryRDN'),
         )
