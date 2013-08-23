@@ -165,9 +165,41 @@ class fiInventory extends simplePlugin
       if (!isset($this->parent)) {
         return array();
       }
-      $macAddress = $this->parent->getBaseObject()->netConfigDNS->macAddress;
+      $matching     = $this->config->get_cfg_value('inventoryMatching', 'mac');
+      $macAddress   = $this->parent->getBaseObject()->netConfigDNS->macAddress;
+      $ipHostNumber = $this->parent->getBaseObject()->netConfigDNS->ipHostNumber;
+      if ($macAddress != '') {
+        $macfilter = "(macAddress=$macAddress)";
+      } else {
+        $macfilter = NULL;
+        if (($matching == 'mac') || ($matchin == 'both')) {
+          return array();
+        }
+      }
+      if ($ipHostNumber != '') {
+        $ipfilter = "(ipHostNumber=$ipHostNumber)";
+      } else {
+        $ipfilter = NULL;
+        if (($matching == 'ip') || ($matchin == 'both') || ($macfilter === NULL)) {
+          return array();
+        }
+      }
+      switch ($matching) {
+        case 'ip':
+          $filter = $ipfilter;
+          break;
+        case 'mac':
+          $filter = $macfilter;
+          break;
+        case 'both':
+          $filter = "(&$macfilter$ipfilter)";
+          break;
+        case 'either':
+          $filter = "(|$macfilter$ipfilter)";
+          break;
+      }
       $ldap->cd(get_ou('inventoryRDN').$this->config->current['BASE']);
-      $ldap->search('(&(objectClass=fdInventoryContent)(macAddress='.$macAddress.'))');
+      $ldap->search('(&(objectClass=fdInventoryContent)'.$filter.')');
       if ($attrs = $ldap->fetch()) {
         $dn = $attrs['dn'];
       } else {
@@ -196,7 +228,7 @@ class fiInventory extends simplePlugin
           $object[$key] = $attr[0];
         } else {
           unset($attr['count']);
-          $object[$key] = '['.join(', ',$attr).']';
+          $object[$key] = '['.join(', ', $attr).']';
         }
       }
       if ($cn === FALSE) {
