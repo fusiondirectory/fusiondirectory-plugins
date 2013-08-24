@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: FusionDirectory\n"
 "Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
 "POT-Creation-Date: 2013-08-21 18:26+0200\n"
-"PO-Revision-Date: 2013-08-22 11:20+0000\n"
+"PO-Revision-Date: 2013-08-23 12:10+0000\n"
 "Last-Translator: Maik Wagner <maikwagner@yahoo.com>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/FusionDirectory/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -45,7 +45,7 @@ msgid ""
 "Mail method the setup should use to communicate with a possible mail server."
 " Leave this undefined if your mail method does not match the predefined "
 "ones."
-msgstr ""
+msgstr "Mailmethode, die das Setup verwenden sollte um mit einem möglichen Mailserver zu kommunizieren. Lassen Sie dies offen wenn Ihre Mailmethode nicht den voreingestellten entspricht."
 
 #: config/mail/class_mailPluginConfig.inc:51
 msgid "Account identification attribute"
@@ -53,7 +53,7 @@ msgstr "Attribut für Kontoidentifikation"
 
 #: config/mail/class_mailPluginConfig.inc:52
 msgid "Which attribute will be used to create accounts."
-msgstr ""
+msgstr "Welches Attribut verwendet werden wird um Konten zu erstellen."
 
 #: config/mail/class_mailPluginConfig.inc:57
 msgid "Mail user template"
@@ -61,15 +61,15 @@ msgstr "Mailbenutzer-Vorlage"
 
 #: config/mail/class_mailPluginConfig.inc:58
 msgid "Override the user account creation syntax."
-msgstr ""
+msgstr "Überschreiben der Benutzerkontenerstellungs-Syntax"
 
 #: config/mail/class_mailPluginConfig.inc:62
 msgid "Mail folder template"
-msgstr ""
+msgstr "Mailordnervorlage"
 
 #: config/mail/class_mailPluginConfig.inc:63
 msgid "Override the methods default account creation syntax."
-msgstr ""
+msgstr "Überschreiben der Methoden standard Kontenerstellungssyntax."
 
 #: config/mail/class_mailPluginConfig.inc:67
 msgid "Use cyrus UNIX style"
@@ -78,7 +78,7 @@ msgstr "cyrus UNIX-Stil benutzen"
 #: config/mail/class_mailPluginConfig.inc:68
 msgid ""
 "Determines if 'foo/bar' or 'foo.bar' should be uses as namespaces in IMAP."
-msgstr ""
+msgstr "Entscheidet ob 'foo/bar' Nutzen als Namespace in IMAP sein soll ."
 
 #: config/mail/class_mailPluginConfig.inc:72
 msgid "Delete mailbox on account deletion"
@@ -92,13 +92,13 @@ msgstr "Bestimmt ob die Mailbox vom IMAP-Server nach der Löschung in LDAP gelö
 
 #: config/mail/class_mailPluginConfig.inc:78
 msgid "Cyrus autocreate folders"
-msgstr ""
+msgstr "Cyrus autocreate folders"
 
 #: config/mail/class_mailPluginConfig.inc:79
 msgid ""
 "List of personal IMAP folders that should be created along initial account "
 "creation."
-msgstr ""
+msgstr "Liste von persönlichen IMAP-Ordnern, die während der ersten Kontenerstellung erstellt werden sollten ."
 
 #: config/mail/class_mailPluginConfig.inc:84
 msgid "IMAP timeout"
@@ -106,15 +106,15 @@ msgstr "IMAP Timeout"
 
 #: config/mail/class_mailPluginConfig.inc:85
 msgid "Sets the connection timeout for imap actions."
-msgstr ""
+msgstr "Setzt das Connection-Timeout für IMAP-Aktionen."
 
 #: config/mail/class_mailPluginConfig.inc:90
 msgid "Shared prefix"
-msgstr ""
+msgstr "Geteiltes Prefix"
 
 #: config/mail/class_mailPluginConfig.inc:91
 msgid "Prefix to add for mail shared folders."
-msgstr ""
+msgstr "Hinzuzufügendes Prefix für Mail geteilter Ordner"
 
 #: config/mail/class_mailPluginConfig.inc:109
 #: personal/mail/class_mailAccount.inc:99
@@ -197,7 +197,7 @@ msgstr "Kontingent-Nutzung"
 
 #: personal/mail/class_mailAccount.inc:59
 msgid "Part of the quota which is used"
-msgstr ""
+msgstr "Teil der verwendeten Quota"
 
 #: personal/mail/class_mailAccount.inc:103
 #: admin/groups/mail/class_groupMail.inc:87 admin/ogroups/mail/mail.tpl.c:5
@@ -282,7 +282,7 @@ msgstr "Maximaler Spamlevel"
 
 #: personal/mail/class_mailAccount.inc:168
 msgid "Spam level above which a mail will be moved"
-msgstr ""
+msgstr "Spamlevel über dem eine Mail verschoben wird"
 
 #: personal/mail/class_mailAccount.inc:173
 msgid "Move spam to folder"
@@ -294,15 +294,15 @@ msgstr "Ordner in den Spam verschoben wird"
 
 #: personal/mail/class_mailAccount.inc:178
 msgid "Reject mail depending on their size"
-msgstr ""
+msgstr "Abweisen von Mail abhängig von ihrer Größe"
 
 #: personal/mail/class_mailAccount.inc:178
 msgid "Messages bigger than the chosen size will be rejected"
-msgstr ""
+msgstr "Nachrichten, die größer als die gewählte Größe sind werden abgelehnt"
 
 #: personal/mail/class_mailAccount.inc:183
 msgid "Minimum size to reject a mail (MB)"
-msgstr ""
+msgstr "Minimale Größe um eine Mail abuzweisen (MB)"
 
 #: personal/mail/class_mailAccount.inc:199
 msgid "Advanced mail options"
@@ -318,7 +318,7 @@ msgstr "schaltet alle übrigen Mail-Einstellungen aus!"
 
 #: personal/mail/class_mailAccount.inc:204
 msgid "Use your sieve script with personnal customization"
-msgstr ""
+msgstr "Benutzen Sie Ihr sieve-Skript mit persönlicher Anpassung"
 
 #: personal/mail/class_mailAccount.inc:209
 msgid "User is only allowed to send and receive local mails"
@@ -381,7 +381,7 @@ msgstr "Einlesen erfolgreich"
 msgid ""
 "The specified mail server '%s' does not exist within the FusionDirectory "
 "configuration."
-msgstr ""
+msgstr "Der angegebene Mailserver '%s' existiert nicht innerhalb der FusionDirectory Konfiguration."
 
 #: personal/mail/sieve/class_sieveManagement.inc:203
 #: personal/mail/sieve/class_sieveManagement.inc:208
@@ -849,19 +849,19 @@ msgstr "Hier folgt Ihr Kommentar"
 
 #: admin/groups/mail/class_groupMail.inc:47
 msgid "Group mail options"
-msgstr ""
+msgstr "Gruppenmailoptionen"
 
 #: admin/groups/mail/class_groupMail.inc:87
 msgid "The primary mail address"
-msgstr ""
+msgstr "Die primäre Mailadresse"
 
 #: admin/groups/mail/class_groupMail.inc:91
 msgid "Server mail"
-msgstr ""
+msgstr "Server Mail"
 
 #: admin/groups/mail/class_groupMail.inc:97
 msgid "Alternative mail addresses for the group"
-msgstr ""
+msgstr "Alternative Mailadressen für die Gruppe"
 
 #: admin/groups/mail/class_groupMail.inc:102
 msgid "Forward messages to non group members"
@@ -967,7 +967,7 @@ msgstr "Regeln"
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:116
 msgid "Edit spam ruleEdit spam rule"
-msgstr ""
+msgstr "Edit spam ruleEdit spam rule"
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:120
 msgid "Rule"
@@ -1081,7 +1081,7 @@ msgstr "Hostname"
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:48
 msgid "The host name."
-msgstr ""
+msgstr "Der Hostname."
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:53
 msgid "Domain"
@@ -1089,7 +1089,7 @@ msgstr "Domäne"
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:53
 msgid "The domain."
-msgstr ""
+msgstr "Die Domain."
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:58
 msgid "Max mail header size (KB)"
@@ -1556,7 +1556,7 @@ msgstr "Objekt hinzufügen"
 msgid ""
 "Please double check if your really want to do this since there is no way for"
 " FusionDirectory to get your data back."
-msgstr ""
+msgstr "Bitte überprüfen Sie ob Sie dies wirklich tun wollen, da es keine Möglichkeit für FusionDirectory gibt, Ihre Daten wieder zu holen."
 
 #: personal/mail/sieve/templates/remove_script.tpl.c:8
 msgid ""

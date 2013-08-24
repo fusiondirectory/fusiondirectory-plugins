@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: FusionDirectory\n"
 "Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
 "POT-Creation-Date: 2013-08-21 18:26+0200\n"
-"PO-Revision-Date: 2013-08-21 16:40+0000\n"
+"PO-Revision-Date: 2013-08-23 12:30+0000\n"
 "Last-Translator: Maik Wagner <maikwagner@yahoo.com>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/FusionDirectory/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -328,7 +328,7 @@ msgstr "Name der Anwendung"
 
 #: admin/applications/class_applicationGeneric.inc:91
 msgid "The name of this application"
-msgstr ""
+msgstr "Der Name dieser Anwendung"
 
 #: admin/applications/class_applicationGeneric.inc:95
 msgid "Display name"
@@ -372,7 +372,7 @@ msgstr "Nur für Mitglied ausführbar"
 
 #: admin/applications/class_applicationGeneric.inc:123
 msgid "Only executable by the memebers of the group"
-msgstr ""
+msgstr "Nur ausführbar von den Mitgliedern der Gruppe"
 
 #: admin/applications/class_applicationGeneric.inc:128
 msgid "Replace user configuration on startup"
@@ -380,7 +380,7 @@ msgstr "Konfiguration bei jedem Start ersetzen"
 
 #: admin/applications/class_applicationGeneric.inc:128
 msgid "Replace the user configuration on startup"
-msgstr ""
+msgstr "Ersetzen der Benutzerkonfiguration beim Start"
 
 #: admin/applications/class_applicationGeneric.inc:133
 #: admin/groups/apps/class_groupApplication.inc:1510
@@ -619,7 +619,7 @@ msgstr "MIME-Typen"
 
 #: admin/mimetypes/class_mimetypeManagement.inc:39
 msgid "Mime type management"
-msgstr ""
+msgstr "Mimeart-Verwaltung"
 
 #: admin/mimetypes/mimetype-list.xml:11
 msgid "List of mimetypes"
@@ -795,7 +795,7 @@ msgstr "Netzwerk-Gerät"
 
 #: admin/systems/system-list.xml:282
 msgid "Mobile Phone"
-msgstr ""
+msgstr "Mobiltelefon"
 
 #: admin/systems/system-list.xml:294
 msgid "Trigger action"
@@ -836,11 +836,11 @@ msgstr "Netzwerk-Komponente (Allgemein)"
 
 #: admin/systems/class_componentGeneric.inc:58
 msgid "The name of the component"
-msgstr ""
+msgstr "Der Name der Komponente"
 
 #: admin/systems/class_componentGeneric.inc:62
 msgid "A short description of the component"
-msgstr ""
+msgstr "Eine kurze Beschreibung der Komponente"
 
 #: admin/systems/class_componentGeneric.inc:69
 #: admin/systems/class_workstationGeneric.inc:236
@@ -864,7 +864,7 @@ msgstr "Zeit-Server"
 #: admin/systems/services/shares/class_serviceShare.inc:30
 #: admin/systems/services/shares/class_serviceShare.inc:31
 msgid "Share service"
-msgstr ""
+msgstr "Freigabendienst"
 
 #: admin/systems/services/shares/class_serviceShare.inc:43
 msgid "Shares"
@@ -872,15 +872,15 @@ msgstr "Freigaben"
 
 #: admin/systems/services/shares/class_serviceShare.inc:48
 msgid "Shares this server hosts"
-msgstr ""
+msgstr "Freigaben, die dieser Server hostet"
 
 #: admin/systems/services/shares/class_serviceShare.inc:52
 msgid "Name of this share"
-msgstr ""
+msgstr "Name dieser Freigabe"
 
 #: admin/systems/services/shares/class_serviceShare.inc:56
 msgid "Description of this share"
-msgstr ""
+msgstr "Beschreibung dieser Freigabe"
 
 #: admin/systems/services/shares/class_serviceShare.inc:60
 msgid "Type"
@@ -888,7 +888,7 @@ msgstr "Typ"
 
 #: admin/systems/services/shares/class_serviceShare.inc:60
 msgid "Type of share"
-msgstr ""
+msgstr "Typ der Freigabe"
 
 #: admin/systems/services/shares/class_serviceShare.inc:65
 msgid "Codepage"
@@ -896,15 +896,15 @@ msgstr "Codepage"
 
 #: admin/systems/services/shares/class_serviceShare.inc:65
 msgid "Codepage for this share"
-msgstr ""
+msgstr "Codepage für diese Freigabe"
 
 #: admin/systems/services/shares/class_serviceShare.inc:69
 msgid "Path / Volume"
-msgstr ""
+msgstr "Pfad / Volume"
 
 #: admin/systems/services/shares/class_serviceShare.inc:69
 msgid "Path or volume concerned by this share"
-msgstr ""
+msgstr "Pfad oder Volume, die diese Freigabe betrifft"
 
 #: admin/systems/services/shares/class_serviceShare.inc:73
 msgid "Option"
@@ -912,11 +912,11 @@ msgstr "Option"
 
 #: admin/systems/services/shares/class_serviceShare.inc:73
 msgid "Special option(s) for this share"
-msgstr ""
+msgstr "Spezille Option(en) für diese Freigabe"
 
 #: admin/systems/services/shares/class_serviceShare.inc:103
 msgid "You need to configure encodings first"
-msgstr ""
+msgstr "Sie müssen zuerst die Encodings konfigurieren"
 
 #: admin/systems/services/shares/class_serviceShare.inc:110
 #: admin/applications/remove.tpl.c:2 admin/ogroups/goto/termgroup.tpl.c:2
@@ -928,7 +928,7 @@ msgstr "Warnung"
 #: admin/systems/services/shares/class_serviceShare.inc:110
 #, php-format
 msgid "Invalid value in encodings : %s"
-msgstr ""
+msgstr "Ungültiger Wert in Encodings : %s"
 
 #: admin/systems/services/terminal/class_serviceTerminal.inc:33
 #: admin/systems/services/terminal/class_serviceTerminal.inc:34
@@ -967,11 +967,11 @@ msgstr "LDAP-Dienst"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:39
 msgid "LDAP Base"
-msgstr ""
+msgstr "LDAP Basis"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:39
 msgid "The LDAP base to use for this LDAP server"
-msgstr ""
+msgstr "Die zu verwendende LDAP Basis für diesen LDAP-Server"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:44
 msgid "LDAP URI"
@@ -979,7 +979,7 @@ msgstr "LDAP URI"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:44
 msgid "The LDAP URI to use in order to contact this LDAP server"
-msgstr ""
+msgstr "Die zu verwendende LDAP URI um diesen LDAP-Server zu erreichen"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:46
 msgid "fill-in-your-servers-dns-name"
@@ -987,71 +987,71 @@ msgstr "tragen-sie-den-dns-namen-des-servers-ein"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:51
 msgid "Size limit"
-msgstr ""
+msgstr "Größenbegrenzung"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:51
 msgid "Limit the number of record returned"
-msgstr ""
+msgstr "Begrenzen der ausgegebenen Aufzeichnungen"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:56
 msgid "Time limit"
-msgstr ""
+msgstr "Zeitbegrenzung"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:56
 msgid "Time limit for the result to be returned"
-msgstr ""
+msgstr "Zeitlimmer für die Rückgabe des Ergebnisses"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:61
 msgid "Deref"
-msgstr ""
+msgstr "Deref"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:61
 msgid "Specifies how alias dereferencing is done when performing a search"
-msgstr ""
+msgstr "Spezifiziert wie alias-Dereferenzierung bei einer Suche erfolgt "
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:66
 msgid "TLS Cert"
-msgstr ""
+msgstr "TLS Cert"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:66
 msgid "Filepath to tls certificate"
-msgstr ""
+msgstr "Dateipfad zum tls-Zertifikat"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:70
 msgid "TLS Key"
-msgstr ""
+msgstr "TLS Schlüssel"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:70
 msgid "Filepath to tls key"
-msgstr ""
+msgstr "Dateipfad zum tls-Schlüssel"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:74
 msgid "TLS CaCert"
-msgstr ""
+msgstr "TLS CaCert"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:74
 msgid "Filepath to tls ca certificate"
-msgstr ""
+msgstr "Dateipfad zum tls ca Zertifikat"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:78
 msgid "TLS ReqCert"
-msgstr ""
+msgstr "TLS ReqCert"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:78
 msgid ""
 "Specifies what checks to perform on server certificates in a TLS session, if"
 " any"
-msgstr ""
+msgstr "Spezifiziert welche Checks auf Serverzertfikaten in einer TLS-Sitzung, wenn vorhanden, gemacht werden sollen"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:83
 msgid "TLS CrlCheck"
-msgstr ""
+msgstr "TLS CrlCheck"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:83
 msgid ""
 "Specifies if the Certificate Revocation List (CRL) of the CA should be used "
 "to verify if the server certificates have  not  been  revoked"
-msgstr ""
+msgstr "Spezifiziert die Certificate Revocation List (CRL) des CA sollte verwendet werden um zu überprüfen ob die Serverzertifikate nicht entzogen worden sind"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:97
 msgid "LDAP"
@@ -1088,7 +1088,7 @@ msgstr "Nummer"
 
 #: admin/systems/phoneSelect/phoneSelect-list.xml:83
 msgid "Select this number"
-msgstr ""
+msgstr "Wählen Sie diese Anzahl"
 
 #: admin/systems/class_systemManagement.inc:234
 msgid "Creating the image failed. Please see the report below."
@@ -1170,16 +1170,16 @@ msgstr "Kann den Dienst-Status nicht setzen bis der Server gespeichert wurde."
 #: admin/systems/class_serverService.inc:437
 #, php-format
 msgid "Could not get execute action %s on service %s."
-msgstr ""
+msgstr "Konnte nicht ausführ Aktion %s auf Dienst %s bekommen."
 
 #: admin/systems/class_workstationGeneric.inc:75
 #, php-format
 msgid "Event %s is not available!"
-msgstr ""
+msgstr "Ereignis %s ist nicht verfügbar!"
 
 #: admin/systems/class_workstationGeneric.inc:78
 msgid "Events are not available!"
-msgstr ""
+msgstr "Ereignisse sind nicht verfügbar!"
 
 #: admin/systems/class_workstationGeneric.inc:106
 msgid "(Re)Install"
@@ -1235,7 +1235,7 @@ msgstr "Server"
 #: admin/systems/class_workstationGeneric.inc:190
 #, php-format
 msgid "The syslog server the %s should be using"
-msgstr ""
+msgstr "Der Syslogserver den %s verwenden sollte"
 
 #: admin/systems/class_workstationGeneric.inc:195
 msgid "Inherit NTP servers"
@@ -1252,7 +1252,7 @@ msgstr "NTP Server"
 #: admin/systems/class_workstationGeneric.inc:203
 #, php-format
 msgid "The NTP servers for the %s"
-msgstr ""
+msgstr "Die NTP Server für die %s"
 
 #: admin/systems/class_workstationGeneric.inc:209
 msgid "Inherit LDAP servers"
@@ -1269,7 +1269,7 @@ msgstr "LDAP Server"
 #: admin/systems/class_workstationGeneric.inc:217
 #, php-format
 msgid "The LDAP servers for the %s"
-msgstr ""
+msgstr "Die LDAP-Server für die %s"
 
 #: admin/systems/class_workstationGeneric.inc:225
 #: admin/systems/class_workstationGeneric.inc:229
@@ -1368,7 +1368,7 @@ msgstr "PUK Nummer"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:96
 msgid "The PUK number of the simcard in this mobile phone"
-msgstr ""
+msgstr "Die PUK Nummer der SIM-Karte in diesem Mobiltelefon"
 
 #: admin/systems/class_networkSettings.inc:296
 msgid "NOT IMPLEMENTED"
@@ -1386,12 +1386,12 @@ msgstr "Es ist nicht möglich gewesen, argonaut Server: %s zu kontaktieren"
 #: admin/systems/class_networkSettings.inc:586
 #, php-format
 msgid "Was not able to find DNS server for zone %s"
-msgstr ""
+msgstr "War nicht in der Lage, DNS Server für Zone %s zu finden"
 
 #: admin/systems/class_networkSettings.inc:592
 #, php-format
 msgid "Was not able to find mac address of DNS server %s"
-msgstr ""
+msgstr "War nicht in der Lage, mac-Adresse von DNS Server %s zu finden"
 
 #: admin/systems/class_networkSettings.inc:599
 #, php-format
@@ -1472,12 +1472,12 @@ msgstr "Terminal"
 #: admin/systems/class_terminalGeneric.inc:42
 #, php-format
 msgid "The root server the terminal should be using"
-msgstr ""
+msgstr "Der root-Server den das Terminal verwenden sollte"
 
 #: admin/systems/class_terminalGeneric.inc:48
 #, php-format
 msgid "The swap server the terminal should be using"
-msgstr ""
+msgstr "Der swap-Server den das Terminal verwenden sollte"
 
 #: admin/systems/class_terminalGeneric.inc:54
 msgid "Remote desktop"
@@ -1811,7 +1811,7 @@ msgstr "Windows Treiber Verz"
 
 #: admin/systems/class_printGeneric.inc:1028 admin/systems/printer.tpl.c:62
 msgid "Driver printer name"
-msgstr ""
+msgstr "Treiber Druckername"
 
 #: admin/systems/class_printGeneric.inc:1044
 #: admin/systems/class_printGeneric.inc:1066
@@ -1936,7 +1936,7 @@ msgstr "hinzufügen"
 
 #: admin/groups/apps/app_list.tpl.c:62
 msgid "Add selected category to this folder.."
-msgstr ""
+msgstr "Ausgewählte Kategorie diesem Ordner hinzufügen.."
 
 #: admin/groups/apps/app_list.tpl.c:65
 msgid "Separator"
@@ -2195,7 +2195,7 @@ msgstr "Zeige Telefone"
 #: admin/systems/phoneSelect/phoneSelect-filter.tpl.c:8
 #: admin/systems/system-filter.tpl.c:26
 msgid "Show mobile phones"
-msgstr ""
+msgstr "Mobiltelefone anzeigen"
 
 #: admin/systems/gencd.tpl.c:2
 msgid "CD-Install-Image generation"
