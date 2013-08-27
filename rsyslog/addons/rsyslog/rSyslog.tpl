@@ -119,8 +119,8 @@
       <td title='{$item.priority}'>
         {$item.priority}
       </td>
-      <td title='{$item.message}' style="width:400px">
-        <div style='overflow:scroll; width:400px'><nobr>{$item.message}</nobr></div>
+      <td title='{$item.message}' style="min-width:400px;">
+        {$item.message}
       </td>
     </tr>
     {/foreach}
