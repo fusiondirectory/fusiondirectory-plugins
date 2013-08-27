@@ -120,7 +120,7 @@
         {$item.priority}
       </td>
       <td title='{$item.message}' style="width:400px">
-        <div style='overflow:hidden; width:400px'><nobr>{$item.message}</nobr></div>
+        <div style='overflow:scroll; width:400px'><nobr>{$item.message}</nobr></div>
       </td>
     </tr>
     {/foreach}
