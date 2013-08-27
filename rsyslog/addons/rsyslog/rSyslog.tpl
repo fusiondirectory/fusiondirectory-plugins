@@ -64,66 +64,70 @@
 {else}
 
   <br>
-  <table style="width:100%;background-color: #B0B0B0;" cellspacing=1 cellpadding=2>
-    <tr style="background-color: #E8E8E8; height:26px; font-weight:bold">
-      <td>
-        <a href='?plug={$plug_id}&amp;sort_value=DeviceReportedTime'>{t}Date{/t}
-          {if $sort_value=="DeviceReportedTime"}{if $sort_type=="DESC"}{$downimg}{else}{$upimg}{/if}{/if}
-        </a>
-      </td>
-      <td>
-        <a href='?plug={$plug_id}&amp;sort_value=FromHost'>{t}Source{/t}
-          {if $sort_value=="FromHost"}{if $sort_type=="DESC"}{$downimg}{else}{$upimg}{/if}{/if}
-        </a>
-      </td>
-      <td>
-        <a href='?plug={$plug_id}&amp;sort_value=SysLogTag'>{t}Header{/t}
-          {if $sort_value=="SysLogTag"}{if $sort_type=="DESC"}{$downimg}{else}{$upimg}{/if}{/if}
-        </a>
-      </td>
-      <td>
-        <a href='?plug={$plug_id}&amp;sort_value=Facility'>{t}Facility{/t}
-          {if $sort_value=="Facility"}{if $sort_type=="DESC"}{$downimg}{else}{$upimg}{/if}{/if}
-        </a>
-      </td>
-      <td>
-        <a href='?plug={$plug_id}&amp;sort_value=Priority'>{t}Severity{/t}
-          {if $sort_value=="Priority"}{if $sort_type=="DESC"}{$downimg}{else}{$upimg}{/if}{/if}
-        </a>
-      </td>
-      <td>
-        <a href='?plug={$plug_id}&amp;sort_value=Message'>{t}Message{/t}
-          {if $sort_value=="Message"}{if $sort_type=="DESC"}{$downimg}{else}{$upimg}{/if}{/if}
-        </a>
-      </td>
-    </tr>
-    {foreach from=$result.entries item=item key=key}
+  <table style="width:100%; background-color:#B0B0B0; white-space:nowrap; overflow-x:scroll;" cellspacing="1" cellpadding="2">
+    <thead>
+      <tr style="background-color: #E8E8E8; height:26px;">
+        <th>
+          <a href='?plug={$plug_id}&amp;sort_value=DeviceReportedTime'>{t}Date{/t}
+            {if $sort_value=="DeviceReportedTime"}{if $sort_type=="DESC"}{$downimg}{else}{$upimg}{/if}{/if}
+          </a>
+        </th>
+        <th>
+          <a href='?plug={$plug_id}&amp;sort_value=FromHost'>{t}Source{/t}
+            {if $sort_value=="FromHost"}{if $sort_type=="DESC"}{$downimg}{else}{$upimg}{/if}{/if}
+          </a>
+        </th>
+        <th>
+          <a href='?plug={$plug_id}&amp;sort_value=SysLogTag'>{t}Header{/t}
+            {if $sort_value=="SysLogTag"}{if $sort_type=="DESC"}{$downimg}{else}{$upimg}{/if}{/if}
+          </a>
+        </th>
+        <th>
+          <a href='?plug={$plug_id}&amp;sort_value=Facility'>{t}Facility{/t}
+            {if $sort_value=="Facility"}{if $sort_type=="DESC"}{$downimg}{else}{$upimg}{/if}{/if}
+          </a>
+        </th>
+        <th>
+          <a href='?plug={$plug_id}&amp;sort_value=Priority'>{t}Severity{/t}
+            {if $sort_value=="Priority"}{if $sort_type=="DESC"}{$downimg}{else}{$upimg}{/if}{/if}
+          </a>
+        </th>
+        <th>
+          <a href='?plug={$plug_id}&amp;sort_value=Message'>{t}Message{/t}
+            {if $sort_value=="Message"}{if $sort_type=="DESC"}{$downimg}{else}{$upimg}{/if}{/if}
+          </a>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      {foreach from=$result.entries item=item key=key}
 
-    {if ($key%2)}
-    <tr style='background-color: #ECECEC;'>
-    {else}
-    <tr style='background-color: #F5F5F5;'>
-    {/if}
-      <td title='{$item.devicereportedtime}' style='width:120px'>
-        {$item.devicereportedtime}
-      </td>
-      <td title='{$item.fromhost}'>
-        {$item.fromhost}
-      </td>
-      <td title='{$item.syslogtag}'>
-        {$item.syslogtag}
-      </td>
-      <td title='{$item.facility}'>
-        {$item.facility}
-      </td>
-      <td title='{$item.priority}'>
-        {$item.priority}
-      </td>
-      <td title='{$item.message}' style="min-width:400px;">
-        {$item.message}
-      </td>
-    </tr>
-    {/foreach}
+      {if ($key%2)}
+      <tr style='background-color: #ECECEC;'>
+      {else}
+      <tr style='background-color: #F5F5F5;'>
+      {/if}
+        <td title='{$item.devicereportedtime}' style="padding-left:10px; padding-right:10px">
+          {$item.devicereportedtime}
+        </td>
+        <td title='{$item.fromhost}' style="padding-left:10px; padding-right:10px">
+          {$item.fromhost}
+        </td>
+        <td title='{$item.syslogtag}' style="padding-left:10px; padding-right:10px">
+          {$item.syslogtag}
+        </td>
+        <td title='{$item.facility}' style="padding-left:10px; padding-right:10px">
+          {$item.facility}
+        </td>
+        <td title='{$item.priority}' style="padding-left:10px; padding-right:10px">
+          {$item.priority}
+        </td>
+        <td title='{$item.message}' style="padding-left:10px; padding-right:10px">
+          {$item.message}
+        </td>
+      </tr>
+      {/foreach}
+    </tbody>
   </table>
   {if !$result.count == 0}
   <p class="separator">&nbsp;</p>
