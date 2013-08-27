@@ -413,6 +413,15 @@ class SudoOptionAttribute extends Attribute
     return $this->renderAcl($display);
   }
 
+  function setValue ($value)
+  {
+    if ($value['value'] == '') {
+      $value['value']   = ($value['negate'] ? 'FALSE' : 'TRUE');
+      $value['negate']  = FALSE;
+    }
+    parent::setValue($value);
+  }
+
   function getValue ()
   {
     /* Escape special chars */
