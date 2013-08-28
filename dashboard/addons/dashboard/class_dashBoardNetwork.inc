@@ -93,7 +93,7 @@ class dashboardNetwork extends simplePlugin
         $reverseName  = preg_replace("/^zoneName=([^,]+),.*$/", "$1", $attrs['dn']);
         $zoneName     = preg_replace("/^zoneName=([^,]+),.*$/", "$1", $dn);
         $dn = preg_replace("/^zoneName=[^,]+,/", "", $dn);
-        $IP = DNS::FlipIp(str_replace(".in-addr.arpa.", "", $reverseName));
+        $IP = DNS::FlipIp(str_replace(DNS::getInAddrArpa(), "", $reverseName));
         for ($dots = count(explode(".", $IP));$dots < 4;$dots++) {
           $IP .= ".0";
         }
