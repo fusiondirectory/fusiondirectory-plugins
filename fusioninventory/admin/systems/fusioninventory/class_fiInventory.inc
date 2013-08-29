@@ -172,7 +172,7 @@ class fiInventory extends simplePlugin
         $macfilter = "(macAddress=$macAddress)";
       } else {
         $macfilter = NULL;
-        if (($matching == 'mac') || ($matchin == 'both')) {
+        if (($matching == 'mac') || ($matching == 'both')) {
           return array();
         }
       }
@@ -180,7 +180,7 @@ class fiInventory extends simplePlugin
         $ipfilter = "(ipHostNumber=$ipHostNumber)";
       } else {
         $ipfilter = NULL;
-        if (($matching == 'ip') || ($matchin == 'both') || ($macfilter === NULL)) {
+        if (($matching == 'ip') || ($matching == 'both') || ($macfilter === NULL)) {
           return array();
         }
       }
