@@ -321,27 +321,18 @@ class sambaMungedDial
   function getOnDemandFlags ()
   {
     $result= array();
-    if (session::get("js")){
-      foreach ($this->timeParams as $value) {
-        if (!isset($this->ctx[$value]) || (isset($this->ctx[$value]) && $this->ctx[$value] == 0)) {
-          $result[$value."Mode"]= "disabled";
-        } else {
-          $result[$value."Mode"]= "";
-        }
-      }
-
-      if (substr($this->ctx['CtxCfgFlags1'], 6, 1) == "1") {
-        $result['CtxInitialProgramMode'] = "disabled";
+    foreach ($this->timeParams as $value) {
+      if (!isset($this->ctx[$value]) || (isset($this->ctx[$value]) && $this->ctx[$value] == 0)) {
+        $result[$value."Mode"]= "disabled";
       } else {
-        $result['CtxInitialProgramMode'] = "";
-      }
-    }else{
-      foreach ($this->timeParams as $value) {
         $result[$value."Mode"]= "";
       }
+    }
 
+    if (substr($this->ctx['CtxCfgFlags1'], 6, 1) == "1") {
+      $result['CtxInitialProgramMode'] = "disabled";
+    } else {
       $result['CtxInitialProgramMode'] = "";
-
     }
 
     return $result;
