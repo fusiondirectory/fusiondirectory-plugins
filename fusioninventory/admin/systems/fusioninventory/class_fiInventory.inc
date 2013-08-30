@@ -140,10 +140,12 @@ class fiInventory extends simplePlugin
   {
     if ($this->hardware_infos === NULL) {
       $infos = $this->get_inventory_infos();
-      $this->hardware_infos = $infos['hardware'];
-      $this->software_infos = $infos['software'];
-      $this->process_infos  = $infos['process'];
-      $this->users_infos    = $infos['users'];
+      if (!empty($infos)) {
+        $this->hardware_infos = $infos['hardware'];
+        $this->software_infos = $infos['software'];
+        $this->process_infos  = $infos['process'];
+        $this->users_infos    = $infos['users'];
+      }
     }
     $smarty = get_smarty();
     $smarty->assign('usePrototype', 'true');
