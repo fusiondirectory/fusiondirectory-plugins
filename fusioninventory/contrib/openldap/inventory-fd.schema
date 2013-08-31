@@ -1,0 +1,1370 @@
+##
+## inventory-fd.schema - Needed by Fusion Directory for managing inventories
+##
+
+# Attributes
+attributetype ( 1.3.6.1.4.1.38414.39.1.1 NAME 'fdInventoryREGVALUE'
+  DESC 'FusionDirectory - inventory, REGVALUE'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.2 NAME 'fdInventoryVOLUMN'
+  DESC 'FusionDirectory - inventory, VOLUMN'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.3 NAME 'fdInventoryUSERID'
+  DESC 'FusionDirectory - inventory, USERID'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.4 NAME 'fdInventoryTRIAL'
+  DESC 'FusionDirectory - inventory, TRIAL'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.5 NAME 'fdInventorySPEED'
+  DESC 'FusionDirectory - inventory, SPEED'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.6 NAME 'fdInventoryIPSUBNET'
+  DESC 'FusionDirectory - inventory, IPSUBNET'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.7 NAME 'fdInventoryOSCOMMENTS'
+  DESC 'FusionDirectory - inventory, OSCOMMENTS'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.8 NAME 'fdInventoryCOMPANY'
+  DESC 'FusionDirectory - inventory, COMPANY'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.9 NAME 'fdInventoryVMSYSTEM'
+  DESC 'FusionDirectory - inventory, VMSYSTEM'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.10 NAME 'fdInventoryLVUUID'
+  DESC 'FusionDirectory - inventory, LVUUID'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.11 NAME 'fdInventoryWINLANG'
+  DESC 'FusionDirectory - inventory, WINLANG'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.12 NAME 'fdInventoryCORE'
+  DESC 'FusionDirectory - inventory, CORE'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.13 NAME 'fdInventoryPROCESSORS'
+  DESC 'FusionDirectory - inventory, PROCESSORS'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.14 NAME 'fdInventorySTEPPING'
+  DESC 'FusionDirectory - inventory, STEPPING'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.15 NAME 'fdInventoryUUENCODE'
+  DESC 'FusionDirectory - inventory, UUENCODE'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.16 NAME 'fdInventorySSID'
+  DESC 'FusionDirectory - inventory, SSID'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.17 NAME 'fdInventoryVAL'
+  DESC 'FusionDirectory - inventory, VAL'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.18 NAME 'fdInventoryVMID'
+  DESC 'FusionDirectory - inventory, VMID'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.19 NAME 'fdInventorySCSILUN'
+  DESC 'FusionDirectory - inventory, SCSILUN'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.20 NAME 'fdInventorySCSICHID'
+  DESC 'FusionDirectory - inventory, SCSICHID'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.21 NAME 'fdInventoryDNSDOMAIN'
+  DESC 'FusionDirectory - inventory, DNSDOMAIN'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.22 NAME 'fdInventoryOWNER'
+  DESC 'FusionDirectory - inventory, OWNER'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.23 NAME 'fdInventoryBASE64'
+  DESC 'FusionDirectory - inventory, BASE64'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.24 NAME 'fdInventorySIZE'
+  DESC 'FusionDirectory - inventory, SIZE'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.25 NAME 'fdInventoryPVCOUNT'
+  DESC 'FusionDirectory - inventory, PVCOUNT'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.26 NAME 'fdInventoryWINPRODKEY'
+  DESC 'FusionDirectory - inventory, WINPRODKEY'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.27 NAME 'fdInventoryVMNAME'
+  DESC 'FusionDirectory - inventory, VMNAME'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.28 NAME 'fdInventoryTTY'
+  DESC 'FusionDirectory - inventory, TTY'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.29 NAME 'fdInventoryIPDHCP'
+  DESC 'FusionDirectory - inventory, IPDHCP'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.30 NAME 'fdInventoryIPADDRESS6'
+  DESC 'FusionDirectory - inventory, IPADDRESS6'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.31 NAME 'fdInventoryCAPTION'
+  DESC 'FusionDirectory - inventory, CAPTION'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.32 NAME 'fdInventoryPCISLOT'
+  DESC 'FusionDirectory - inventory, PCISLOT'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.33 NAME 'fdInventorySERVERNAME'
+  DESC 'FusionDirectory - inventory, SERVERNAME'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.34 NAME 'fdInventoryENABLED'
+  DESC 'FusionDirectory - inventory, ENABLED'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.35 NAME 'fdInventoryERRSTATUS'
+  DESC 'FusionDirectory - inventory, ERRSTATUS'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.36 NAME 'fdInventoryUUID'
+  DESC 'FusionDirectory - inventory, UUID'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.37 NAME 'fdInventoryENCLOSURESERIAL'
+  DESC 'FusionDirectory - inventory, ENCLOSURESERIAL'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.38 NAME 'fdInventoryWWN'
+  DESC 'FusionDirectory - inventory, WWN'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.39 NAME 'fdInventoryPRODUCTID'
+  DESC 'FusionDirectory - inventory, PRODUCTID'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.40 NAME 'fdInventoryCLASS'
+  DESC 'FusionDirectory - inventory, CLASS'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.41 NAME 'fdInventoryVERSIONMINOR'
+  DESC 'FusionDirectory - inventory, VERSIONMINOR'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.42 NAME 'fdInventoryPURPOSE'
+  DESC 'FusionDirectory - inventory, PURPOSE'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.43 NAME 'fdInventoryFREE'
+  DESC 'FusionDirectory - inventory, FREE'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.44 NAME 'fdInventoryHOSTNAME'
+  DESC 'FusionDirectory - inventory, HOSTNAME'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.45 NAME 'fdInventorySCSICOID'
+  DESC 'FusionDirectory - inventory, SCSICOID'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.46 NAME 'fdInventoryDEVICE'
+  DESC 'FusionDirectory - inventory, DEVICE'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.47 NAME 'fdInventoryLVNAME'
+  DESC 'FusionDirectory - inventory, LVNAME'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.48 NAME 'fdInventoryVERSIONMAJOR'
+  DESC 'FusionDirectory - inventory, VERSIONMAJOR'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.49 NAME 'fdInventoryBIOSSERIAL'
+  DESC 'FusionDirectory - inventory, BIOSSERIAL'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.50 NAME 'fdInventoryAGENT'
+  DESC 'FusionDirectory - inventory, AGENT'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.51 NAME 'fdInventoryUNINSTALLSTRING'
+  DESC 'FusionDirectory - inventory, UNINSTALLSTRING'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.52 NAME 'fdInventoryDRIVER'
+  DESC 'FusionDirectory - inventory, DRIVER'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.53 NAME 'fdInventoryMTU'
+  DESC 'FusionDirectory - inventory, MTU'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.54 NAME 'fdInventoryBDATE'
+  DESC 'FusionDirectory - inventory, BDATE'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.55 NAME 'fdInventoryRELEASETYPE'
+  DESC 'FusionDirectory - inventory, RELEASETYPE'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.56 NAME 'fdInventorySHELL'
+  DESC 'FusionDirectory - inventory, SHELL'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.57 NAME 'fdInventoryURLINFOABOUT'
+  DESC 'FusionDirectory - inventory, URLINFOABOUT'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.58 NAME 'fdInventoryKERNELNAME'
+  DESC 'FusionDirectory - inventory, KERNELNAME'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.59 NAME 'fdInventoryLETTER'
+  DESC 'FusionDirectory - inventory, LETTER'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.60 NAME 'fdInventoryIPGATEWAY'
+  DESC 'FusionDirectory - inventory, IPGATEWAY'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.61 NAME 'fdInventorySUBSYSTEM'
+  DESC 'FusionDirectory - inventory, SUBSYSTEM'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.62 NAME 'fdInventoryBOOTTIME'
+  DESC 'FusionDirectory - inventory, BOOTTIME'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.63 NAME 'fdInventoryBMANUFACTURER'
+  DESC 'FusionDirectory - inventory, BMANUFACTURER'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.64 NAME 'fdInventoryMMODEL'
+  DESC 'FusionDirectory - inventory, MMODEL'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.65 NAME 'fdInventoryDISKSIZE'
+  DESC 'FusionDirectory - inventory, DISKSIZE'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.66 NAME 'fdInventoryPESIZE'
+  DESC 'FusionDirectory - inventory, PESIZE'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.67 NAME 'fdInventoryIPADDRESS'
+  DESC 'FusionDirectory - inventory, IPADDRESS'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.68 NAME 'fdInventorySTARTED'
+  DESC 'FusionDirectory - inventory, STARTED'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.69 NAME 'fdInventoryUPDATE'
+  DESC 'FusionDirectory - inventory, UPDATE'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.70 NAME 'fdInventoryMEM'
+  DESC 'FusionDirectory - inventory, MEM'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.71 NAME 'fdInventoryUSERDOMAIN'
+  DESC 'FusionDirectory - inventory, USERDOMAIN'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.72 NAME 'fdInventoryVGEXTENTSIZE'
+  DESC 'FusionDirectory - inventory, VGEXTENTSIZE'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.73 NAME 'fdInventoryHELPLINK'
+  DESC 'FusionDirectory - inventory, HELPLINK'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.74 NAME 'fdInventoryWORKGROUP'
+  DESC 'FusionDirectory - inventory, WORKGROUP'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.75 NAME 'fdInventoryDESCRIPTION'
+  DESC 'FusionDirectory - inventory, DESCRIPTION'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.76 NAME 'fdInventoryMMANUFACTURER'
+  DESC 'FusionDirectory - inventory, MMANUFACTURER'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.77 NAME 'fdInventoryID'
+  DESC 'FusionDirectory - inventory, ID'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.78 NAME 'fdInventoryINTERFACE'
+  DESC 'FusionDirectory - inventory, INTERFACE'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.79 NAME 'fdInventoryPUBLISHER'
+  DESC 'FusionDirectory - inventory, PUBLISHER'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.80 NAME 'fdInventoryLABEL'
+  DESC 'FusionDirectory - inventory, LABEL'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.81 NAME 'fdInventoryVGUUID'
+  DESC 'FusionDirectory - inventory, VGUUID'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.82 NAME 'fdInventoryMSN'
+  DESC 'FusionDirectory - inventory, MSN'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.83 NAME 'fdInventoryLOGDATE'
+  DESC 'FusionDirectory - inventory, LOGDATE'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.84 NAME 'fdInventoryCHECKSUM'
+  DESC 'FusionDirectory - inventory, CHECKSUM'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.85 NAME 'fdInventoryCAPACITY'
+  DESC 'FusionDirectory - inventory, CAPACITY'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.86 NAME 'fdInventoryVCPU'
+  DESC 'FusionDirectory - inventory, VCPU'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.87 NAME 'fdInventoryPORT'
+  DESC 'FusionDirectory - inventory, PORT'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.88 NAME 'fdInventorySWAP'
+  DESC 'FusionDirectory - inventory, SWAP'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.89 NAME 'fdInventorySSN'
+  DESC 'FusionDirectory - inventory, SSN'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.90 NAME 'fdInventoryINSTALLDATE'
+  DESC 'FusionDirectory - inventory, INSTALLDATE'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.91 NAME 'fdInventoryTYPE'
+  DESC 'FusionDirectory - inventory, TYPE'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.92 NAME 'fdInventorySCSIUNID'
+  DESC 'FusionDirectory - inventory, SCSIUNID'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.93 NAME 'fdInventoryMAC'
+  DESC 'FusionDirectory - inventory, MAC'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.94 NAME 'fdInventoryOSNAME'
+  DESC 'FusionDirectory - inventory, OSNAME'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.95 NAME 'fdInventorySHARED'
+  DESC 'FusionDirectory - inventory, SHARED'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.96 NAME 'fdInventoryREMOVABLE'
+  DESC 'FusionDirectory - inventory, REMOVABLE'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.97 NAME 'fdInventorySEGCOUNT'
+  DESC 'FusionDirectory - inventory, SEGCOUNT'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.98 NAME 'fdInventoryIPADDR'
+  DESC 'FusionDirectory - inventory, IPADDR'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.99 NAME 'fdInventoryMANAGEMENT'
+  DESC 'FusionDirectory - inventory, MANAGEMENT'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.100 NAME 'fdInventoryPOINTINGTYPE'
+  DESC 'FusionDirectory - inventory, POINTINGTYPE'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.101 NAME 'fdInventoryMANUFACTURER'
+  DESC 'FusionDirectory - inventory, MANUFACTURER'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.102 NAME 'fdInventoryARCH'
+  DESC 'FusionDirectory - inventory, ARCH'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.103 NAME 'fdInventoryFQDN'
+  DESC 'FusionDirectory - inventory, FQDN'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.104 NAME 'fdInventoryMEMORY'
+  DESC 'FusionDirectory - inventory, MEMORY'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.105 NAME 'fdInventoryDOMAIN'
+  DESC 'FusionDirectory - inventory, DOMAIN'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.106 NAME 'fdInventoryUPTODATE'
+  DESC 'FusionDirectory - inventory, UPTODATE'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.107 NAME 'fdInventoryATTR'
+  DESC 'FusionDirectory - inventory, ATTR'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.108 NAME 'fdInventoryDATE'
+  DESC 'FusionDirectory - inventory, DATE'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.109 NAME 'fdInventoryVIRTUALDEV'
+  DESC 'FusionDirectory - inventory, VIRTUALDEV'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.110 NAME 'fdInventorySTATUS'
+  DESC 'FusionDirectory - inventory, STATUS'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.111 NAME 'fdInventorySERIALNUMBER'
+  DESC 'FusionDirectory - inventory, SERIALNUMBER'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.112 NAME 'fdInventoryBSSID'
+  DESC 'FusionDirectory - inventory, BSSID'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.113 NAME 'fdInventoryCOMMENT'
+  DESC 'FusionDirectory - inventory, COMMENT'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.114 NAME 'fdInventorySSHKEY'
+  DESC 'FusionDirectory - inventory, SSHKEY'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.115 NAME 'fdInventoryFAMILYNUMBER'
+  DESC 'FusionDirectory - inventory, FAMILYNUMBER'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.116 NAME 'fdInventorySHARENAME'
+  DESC 'FusionDirectory - inventory, SHARENAME'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.117 NAME 'fdInventoryPROCESSORT'
+  DESC 'FusionDirectory - inventory, PROCESSORT'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.118 NAME 'fdInventoryFORMAT'
+  DESC 'FusionDirectory - inventory, FORMAT'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.119 NAME 'fdInventoryCOMMENTS'
+  DESC 'FusionDirectory - inventory, COMMENTS'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.120 NAME 'fdInventoryKERNELVERSION'
+  DESC 'FusionDirectory - inventory, KERNELVERSION'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.121 NAME 'fdInventoryASSETTAG'
+  DESC 'FusionDirectory - inventory, ASSETTAG'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.122 NAME 'fdInventoryETIME'
+  DESC 'FusionDirectory - inventory, ETIME'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.123 NAME 'fdInventoryMACADDR'
+  DESC 'FusionDirectory - inventory, MACADDR'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.124 NAME 'fdInventoryCHIPSET'
+  DESC 'FusionDirectory - inventory, CHIPSET'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.125 NAME 'fdInventoryHIVE'
+  DESC 'FusionDirectory - inventory, HIVE'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.126 NAME 'fdInventorySUBCLASS'
+  DESC 'FusionDirectory - inventory, SUBCLASS'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.127 NAME 'fdInventoryWINCOMPANY'
+  DESC 'FusionDirectory - inventory, WINCOMPANY'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.128 NAME 'fdInventoryGUID'
+  DESC 'FusionDirectory - inventory, GUID'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.129 NAME 'fdInventoryNOREMOVE'
+  DESC 'FusionDirectory - inventory, NOREMOVE'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.130 NAME 'fdInventoryPCISUBSYSTEMID'
+  DESC 'FusionDirectory - inventory, PCISUBSYSTEMID'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.131 NAME 'fdInventoryFROM'
+  DESC 'FusionDirectory - inventory, FROM'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.132 NAME 'fdInventoryTOTAL'
+  DESC 'FusionDirectory - inventory, TOTAL'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.133 NAME 'fdInventoryDATELASTLOGGEDUSER'
+  DESC 'FusionDirectory - inventory, DATELASTLOGGEDUSER'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.134 NAME 'fdInventoryNETWORK'
+  DESC 'FusionDirectory - inventory, NETWORK'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.135 NAME 'fdInventoryBVERSION'
+  DESC 'FusionDirectory - inventory, BVERSION'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.136 NAME 'fdInventoryCREATEDATE'
+  DESC 'FusionDirectory - inventory, CREATEDATE'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.137 NAME 'fdInventoryOEM'
+  DESC 'FusionDirectory - inventory, OEM'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.138 NAME 'fdInventoryFORMFACTOR'
+  DESC 'FusionDirectory - inventory, FORMFACTOR'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.139 NAME 'fdInventoryVGNAME'
+  DESC 'FusionDirectory - inventory, VGNAME'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.140 NAME 'fdInventorySLAVES'
+  DESC 'FusionDirectory - inventory, SLAVES'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.141 NAME 'fdInventoryACTIVATIONDATE'
+  DESC 'FusionDirectory - inventory, ACTIVATIONDATE'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.142 NAME 'fdInventorySYSTEMDRIVE'
+  DESC 'FusionDirectory - inventory, SYSTEMDRIVE'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.143 NAME 'fdInventoryCOMPONENTS'
+  DESC 'FusionDirectory - inventory, COMPONENTS'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.144 NAME 'fdInventoryFULLNAME'
+  DESC 'FusionDirectory - inventory, FULLNAME'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.145 NAME 'fdInventoryEXTERNALCLOCK'
+  DESC 'FusionDirectory - inventory, EXTERNALCLOCK'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.146 NAME 'fdInventorySMODEL'
+  DESC 'FusionDirectory - inventory, SMODEL'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.147 NAME 'fdInventoryDEFAULTGATEWAY'
+  DESC 'FusionDirectory - inventory, DEFAULTGATEWAY'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.148 NAME 'fdInventoryNAME'
+  DESC 'FusionDirectory - inventory, NAME'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.149 NAME 'fdInventoryFIRMWARE'
+  DESC 'FusionDirectory - inventory, FIRMWARE'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.150 NAME 'fdInventoryMEMBER'
+  DESC 'FusionDirectory - inventory, MEMBER'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.151 NAME 'fdInventorySMANUFACTURER'
+  DESC 'FusionDirectory - inventory, SMANUFACTURER'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.152 NAME 'fdInventoryPRINTPROCESSOR'
+  DESC 'FusionDirectory - inventory, PRINTPROCESSOR'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.153 NAME 'fdInventoryCPUUSAGE'
+  DESC 'FusionDirectory - inventory, CPUUSAGE'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.154 NAME 'fdInventoryLAYOUT'
+  DESC 'FusionDirectory - inventory, LAYOUT'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.155 NAME 'fdInventoryPVUUID'
+  DESC 'FusionDirectory - inventory, PVUUID'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.156 NAME 'fdInventoryNUMSLOTS'
+  DESC 'FusionDirectory - inventory, NUMSLOTS'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.157 NAME 'fdInventoryVMHOSTSERIAL'
+  DESC 'FusionDirectory - inventory, VMHOSTSERIAL'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.158 NAME 'fdInventorySKUNUMBER'
+  DESC 'FusionDirectory - inventory, SKUNUMBER'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.159 NAME 'fdInventoryOSVERSION'
+  DESC 'FusionDirectory - inventory, OSVERSION'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.160 NAME 'fdInventoryCHASSISTYPE'
+  DESC 'FusionDirectory - inventory, CHASSISTYPE'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.161 NAME 'fdInventoryTHREAD'
+  DESC 'FusionDirectory - inventory, THREAD'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.162 NAME 'fdInventoryCHEMISTRY'
+  DESC 'FusionDirectory - inventory, CHEMISTRY'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.163 NAME 'fdInventoryMEMORYCORRECTION'
+  DESC 'FusionDirectory - inventory, MEMORYCORRECTION'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.164 NAME 'fdInventoryWINOWNER'
+  DESC 'FusionDirectory - inventory, WINOWNER'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.165 NAME 'fdInventoryUSER'
+  DESC 'FusionDirectory - inventory, USER'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.166 NAME 'fdInventoryKEY'
+  DESC 'FusionDirectory - inventory, KEY'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.167 NAME 'fdInventoryLVCOUNT'
+  DESC 'FusionDirectory - inventory, LVCOUNT'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.168 NAME 'fdInventoryCACHE'
+  DESC 'FusionDirectory - inventory, CACHE'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.169 NAME 'fdInventoryWINPRODID'
+  DESC 'FusionDirectory - inventory, WINPRODID'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.170 NAME 'fdInventoryFILESYSTEM'
+  DESC 'FusionDirectory - inventory, FILESYSTEM'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.171 NAME 'fdInventoryREV'
+  DESC 'FusionDirectory - inventory, REV'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.172 NAME 'fdInventoryDNS'
+  DESC 'FusionDirectory - inventory, DNS'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.173 NAME 'fdInventoryPCICLASS'
+  DESC 'FusionDirectory - inventory, PCICLASS'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.174 NAME 'fdInventorySERIAL'
+  DESC 'FusionDirectory - inventory, SERIAL'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.175 NAME 'fdInventoryIPSUBNET6'
+  DESC 'FusionDirectory - inventory, IPSUBNET6'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.176 NAME 'fdInventoryFOLDER'
+  DESC 'FusionDirectory - inventory, FOLDER'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.177 NAME 'fdInventoryVENDORID'
+  DESC 'FusionDirectory - inventory, VENDORID'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.178 NAME 'fdInventoryHOME'
+  DESC 'FusionDirectory - inventory, HOME'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.179 NAME 'fdInventoryDESIGNATION'
+  DESC 'FusionDirectory - inventory, DESIGNATION'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.180 NAME 'fdInventoryPROCESSORN'
+  DESC 'FusionDirectory - inventory, PROCESSORN'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.181 NAME 'fdInventoryLOGIN'
+  DESC 'FusionDirectory - inventory, LOGIN'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.182 NAME 'fdInventoryVIRTUALMEMORY'
+  DESC 'FusionDirectory - inventory, VIRTUALMEMORY'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.183 NAME 'fdInventoryVMTYPE'
+  DESC 'FusionDirectory - inventory, VMTYPE'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.184 NAME 'fdInventoryCMD'
+  DESC 'FusionDirectory - inventory, CMD'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.185 NAME 'fdInventoryLASTLOGGEDUSER'
+  DESC 'FusionDirectory - inventory, LASTLOGGEDUSER'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.186 NAME 'fdInventoryMODEL'
+  DESC 'FusionDirectory - inventory, MODEL'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.187 NAME 'fdInventoryVOLTAGE'
+  DESC 'FusionDirectory - inventory, VOLTAGE'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.188 NAME 'fdInventoryPID'
+  DESC 'FusionDirectory - inventory, PID'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.189 NAME 'fdInventoryIPMASK6'
+  DESC 'FusionDirectory - inventory, IPMASK6'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.190 NAME 'fdInventoryUSERNAME'
+  DESC 'FusionDirectory - inventory, USERNAME'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.191 NAME 'fdInventoryIPMASK'
+  DESC 'FusionDirectory - inventory, IPMASK'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.192 NAME 'fdInventoryFAMILYNAME'
+  DESC 'FusionDirectory - inventory, FAMILYNAME'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.193 NAME 'fdInventoryPNPDEVICEID'
+  DESC 'FusionDirectory - inventory, PNPDEVICEID'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.194 NAME 'fdInventoryFILESIZE'
+  DESC 'FusionDirectory - inventory, FILESIZE'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.195 NAME 'fdInventoryRESOLUTION'
+  DESC 'FusionDirectory - inventory, RESOLUTION'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.196 NAME 'fdInventorySERVICEPACK'
+  DESC 'FusionDirectory - inventory, SERVICEPACK'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.197 NAME 'fdInventoryVERSION'
+  DESC 'FusionDirectory - inventory, VERSION'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+attributetype ( 1.3.6.1.4.1.38414.39.1.198 NAME 'fdInventoryPVPECOUNT'
+  DESC 'FusionDirectory - inventory, PVPECOUNT'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
+
+
+# Object classes
+objectclass ( 1.3.6.1.4.1.38414.39.2.1 NAME 'fdInventoryContent'
+  DESC 'FusionDirectory inventory information'
+  MUST ( cn )
+  MAY ( macAddress ) )
+
+objectclass ( 1.3.6.1.4.1.38414.39.2.2 NAME 'fdInventoryPRINTERS'
+  DESC 'FusionDirectory inventory information - PRINTERS'
+  MUST ( cn )
+  MAY ( fdInventoryCOMMENT $ fdInventoryDESCRIPTION $ fdInventoryDRIVER $ fdInventoryNAME $ fdInventoryNETWORK $ fdInventoryPORT $ fdInventoryRESOLUTION $ fdInventorySHARED $ fdInventorySTATUS $ fdInventoryERRSTATUS $ fdInventorySERVERNAME $ fdInventorySHARENAME $ fdInventoryPRINTPROCESSOR $ fdInventorySERIAL ) )
+
+objectclass ( 1.3.6.1.4.1.38414.39.2.3 NAME 'fdInventoryLICENSEINFOS'
+  DESC 'FusionDirectory inventory information - LICENSEINFOS'
+  MUST ( cn )
+  MAY ( fdInventoryNAME $ fdInventoryFULLNAME $ fdInventoryKEY $ fdInventoryCOMPONENTS $ fdInventoryTRIAL $ fdInventoryUPDATE $ fdInventoryOEM $ fdInventoryACTIVATIONDATE $ fdInventoryPRODUCTID ) )
+
+objectclass ( 1.3.6.1.4.1.38414.39.2.4 NAME 'fdInventoryINPUTS'
+  DESC 'FusionDirectory inventory information - INPUTS'
+  MUST ( cn )
+  MAY ( fdInventoryNAME $ fdInventoryMANUFACTURER $ fdInventoryCAPTION $ fdInventoryDESCRIPTION $ fdInventoryINTERFACE $ fdInventoryLAYOUT $ fdInventoryPOINTINGTYPE $ fdInventoryTYPE ) )
+
+objectclass ( 1.3.6.1.4.1.38414.39.2.5 NAME 'fdInventorySOUNDS'
+  DESC 'FusionDirectory inventory information - SOUNDS'
+  MUST ( cn )
+  MAY ( fdInventoryCAPTION $ fdInventoryDESCRIPTION $ fdInventoryMANUFACTURER $ fdInventoryNAME ) )
+
+objectclass ( 1.3.6.1.4.1.38414.39.2.6 NAME 'fdInventoryENVS'
+  DESC 'FusionDirectory inventory information - ENVS'
+  MUST ( cn )
+  MAY ( fdInventoryKEY $ fdInventoryVAL ) )
+
+objectclass ( 1.3.6.1.4.1.38414.39.2.7 NAME 'fdInventorySOFTWARES'
+  DESC 'FusionDirectory inventory information - SOFTWARES'
+  MUST ( cn )
+  MAY ( fdInventoryCOMMENTS $ fdInventoryFILESIZE $ fdInventoryFOLDER $ fdInventoryFROM $ fdInventoryHELPLINK $ fdInventoryINSTALLDATE $ fdInventoryNAME $ fdInventoryNOREMOVE $ fdInventoryRELEASETYPE $ fdInventoryPUBLISHER $ fdInventoryUNINSTALLSTRING $ fdInventoryURLINFOABOUT $ fdInventoryVERSION $ fdInventoryVERSIONMINOR $ fdInventoryVERSIONMAJOR $ fdInventoryGUID $ fdInventoryARCH $ fdInventoryUSERNAME $ fdInventoryUSERID ) )
+
+objectclass ( 1.3.6.1.4.1.38414.39.2.8 NAME 'fdInventoryBATTERIES'
+  DESC 'FusionDirectory inventory information - BATTERIES'
+  MUST ( cn )
+  MAY ( fdInventoryCAPACITY $ fdInventoryCHEMISTRY $ fdInventoryDATE $ fdInventoryNAME $ fdInventorySERIAL $ fdInventoryMANUFACTURER $ fdInventoryVOLTAGE ) )
+
+objectclass ( 1.3.6.1.4.1.38414.39.2.9 NAME 'fdInventoryUSBDEVICES'
+  DESC 'FusionDirectory inventory information - USBDEVICES'
+  MUST ( cn )
+  MAY ( fdInventoryVENDORID $ fdInventoryPRODUCTID $ fdInventoryMANUFACTURER $ fdInventoryCAPTION $ fdInventorySERIAL $ fdInventoryCLASS $ fdInventorySUBCLASS $ fdInventoryNAME ) )
+
+objectclass ( 1.3.6.1.4.1.38414.39.2.10 NAME 'fdInventoryLOCALGROUPS'
+  DESC 'FusionDirectory inventory information - LOCALGROUPS'
+  MUST ( cn )
+  MAY ( fdInventoryNAME $ fdInventoryID $ fdInventoryMEMBER ) )
+
+objectclass ( 1.3.6.1.4.1.38414.39.2.11 NAME 'fdInventorySTORAGES'
+  DESC 'FusionDirectory inventory information - STORAGES'
+  MUST ( cn )
+  MAY ( fdInventoryDESCRIPTION $ fdInventoryDISKSIZE $ fdInventoryINTERFACE $ fdInventoryMANUFACTURER $ fdInventoryMODEL $ fdInventoryNAME $ fdInventoryTYPE $ fdInventorySERIAL $ fdInventorySERIALNUMBER $ fdInventoryFIRMWARE $ fdInventorySCSICOID $ fdInventorySCSICHID $ fdInventorySCSIUNID $ fdInventorySCSILUN $ fdInventoryWWN ) )
+
+objectclass ( 1.3.6.1.4.1.38414.39.2.12 NAME 'fdInventoryMODEMS'
+  DESC 'FusionDirectory inventory information - MODEMS'
+  MUST ( cn )
+  MAY ( fdInventoryDESCRIPTION $ fdInventoryNAME ) )
+
+objectclass ( 1.3.6.1.4.1.38414.39.2.13 NAME 'fdInventoryUSERS'
+  DESC 'FusionDirectory inventory information - USERS'
+  MUST ( cn )
+  MAY ( fdInventoryLOGIN $ fdInventoryDOMAIN ) )
+
+objectclass ( 1.3.6.1.4.1.38414.39.2.14 NAME 'fdInventoryPORTS'
+  DESC 'FusionDirectory inventory information - PORTS'
+  MUST ( cn )
+  MAY ( fdInventoryCAPTION $ fdInventoryDESCRIPTION $ fdInventoryNAME $ fdInventoryTYPE ) )
+
+objectclass ( 1.3.6.1.4.1.38414.39.2.15 NAME 'fdInventoryLOCALUSERS'
+  DESC 'FusionDirectory inventory information - LOCALUSERS'
+  MUST ( cn )
+  MAY ( fdInventoryLOGIN $ fdInventoryID $ fdInventoryNAME $ fdInventoryHOME $ fdInventorySHELL ) )
+
+objectclass ( 1.3.6.1.4.1.38414.39.2.16 NAME 'fdInventoryRUDDER'
+  DESC 'FusionDirectory inventory information - RUDDER'
+  MUST ( cn )
+  MAY ( fdInventoryAGENT $ fdInventoryUUID $ fdInventoryHOSTNAME ) )
+
+objectclass ( 1.3.6.1.4.1.38414.39.2.17 NAME 'fdInventoryCPUS'
+  DESC 'FusionDirectory inventory information - CPUS'
+  MUST ( cn )
+  MAY ( fdInventoryCACHE $ fdInventoryCORE $ fdInventoryDESCRIPTION $ fdInventoryMANUFACTURER $ fdInventoryNAME $ fdInventoryTHREAD $ fdInventorySERIAL $ fdInventorySTEPPING $ fdInventoryFAMILYNAME $ fdInventoryFAMILYNUMBER $ fdInventoryMODEL $ fdInventorySPEED $ fdInventoryID $ fdInventoryEXTERNALCLOCK $ fdInventoryARCH ) )
+
+objectclass ( 1.3.6.1.4.1.38414.39.2.18 NAME 'fdInventoryPROCESSES'
+  DESC 'FusionDirectory inventory information - PROCESSES'
+  MUST ( cn )
+  MAY ( fdInventoryUSER $ fdInventoryPID $ fdInventoryCPUUSAGE $ fdInventoryMEM $ fdInventoryVIRTUALMEMORY $ fdInventoryTTY $ fdInventorySTARTED $ fdInventoryCMD ) )
+
+objectclass ( 1.3.6.1.4.1.38414.39.2.19 NAME 'fdInventoryVOLUMEGROUPS'
+  DESC 'FusionDirectory inventory information - VOLUMEGROUPS'
+  MUST ( cn )
+  MAY ( fdInventoryVGNAME $ fdInventoryPVCOUNT $ fdInventoryLVCOUNT $ fdInventoryATTR $ fdInventorySIZE $ fdInventoryFREE $ fdInventoryVGUUID $ fdInventoryVGEXTENTSIZE ) )
+
+objectclass ( 1.3.6.1.4.1.38414.39.2.20 NAME 'fdInventoryBIOS'
+  DESC 'FusionDirectory inventory information - BIOS'
+  MUST ( cn )
+  MAY ( fdInventorySMODEL $ fdInventorySMANUFACTURER $ fdInventorySSN $ fdInventoryBDATE $ fdInventoryBVERSION $ fdInventoryBMANUFACTURER $ fdInventoryMMANUFACTURER $ fdInventoryMSN $ fdInventoryMMODEL $ fdInventoryASSETTAG $ fdInventoryENCLOSURESERIAL $ fdInventoryBIOSSERIAL $ fdInventoryTYPE $ fdInventorySKUNUMBER ) )
+
+objectclass ( 1.3.6.1.4.1.38414.39.2.21 NAME 'fdInventoryLOGICALVOLUMES'
+  DESC 'FusionDirectory inventory information - LOGICALVOLUMES'
+  MUST ( cn )
+  MAY ( fdInventoryLVNAME $ fdInventoryVGNAME $ fdInventoryATTR $ fdInventorySIZE $ fdInventoryLVUUID $ fdInventorySEGCOUNT $ fdInventoryVGUUID ) )
+
+objectclass ( 1.3.6.1.4.1.38414.39.2.22 NAME 'fdInventoryVIDEOS'
+  DESC 'FusionDirectory inventory information - VIDEOS'
+  MUST ( cn )
+  MAY ( fdInventoryCHIPSET $ fdInventoryMEMORY $ fdInventoryNAME $ fdInventoryRESOLUTION $ fdInventoryPCISLOT ) )
+
+objectclass ( 1.3.6.1.4.1.38414.39.2.23 NAME 'fdInventoryHARDWARE'
+  DESC 'FusionDirectory inventory information - HARDWARE'
+  MUST ( cn )
+  MAY ( fdInventoryUSERID $ fdInventoryOSVERSION $ fdInventoryPROCESSORN $ fdInventoryOSCOMMENTS $ fdInventoryCHECKSUM $ fdInventoryPROCESSORT $ fdInventoryNAME $ fdInventoryPROCESSORS $ fdInventorySWAP $ fdInventoryETIME $ fdInventoryTYPE $ fdInventoryOSNAME $ fdInventoryIPADDR $ fdInventoryWORKGROUP $ fdInventoryDESCRIPTION $ fdInventoryMEMORY $ fdInventoryUUID $ fdInventoryVMID $ fdInventoryDNS $ fdInventoryLASTLOGGEDUSER $ fdInventoryUSERDOMAIN $ fdInventoryDATELASTLOGGEDUSER $ fdInventoryDEFAULTGATEWAY $ fdInventoryVMSYSTEM $ fdInventoryWINOWNER $ fdInventoryWINPRODID $ fdInventoryWINPRODKEY $ fdInventoryWINCOMPANY $ fdInventoryWINLANG $ fdInventoryCHASSISTYPE $ fdInventoryVMID $ fdInventoryVMNAME $ fdInventoryVMHOSTSERIAL ) )
+
+objectclass ( 1.3.6.1.4.1.38414.39.2.24 NAME 'fdInventoryMEMORIES'
+  DESC 'FusionDirectory inventory information - MEMORIES'
+  MUST ( cn )
+  MAY ( fdInventoryCAPACITY $ fdInventoryCAPTION $ fdInventoryFORMFACTOR $ fdInventoryREMOVABLE $ fdInventoryPURPOSE $ fdInventorySPEED $ fdInventorySERIALNUMBER $ fdInventoryTYPE $ fdInventoryDESCRIPTION $ fdInventoryNUMSLOTS $ fdInventoryMEMORYCORRECTION $ fdInventoryMANUFACTURER ) )
+
+objectclass ( 1.3.6.1.4.1.38414.39.2.25 NAME 'fdInventoryCONTROLLERS'
+  DESC 'FusionDirectory inventory information - CONTROLLERS'
+  MUST ( cn )
+  MAY ( fdInventoryCAPTION $ fdInventoryDRIVER $ fdInventoryNAME $ fdInventoryMANUFACTURER $ fdInventoryPCICLASS $ fdInventoryVENDORID $ fdInventoryPRODUCTID $ fdInventoryPCISUBSYSTEMID $ fdInventoryPCISLOT $ fdInventoryTYPE $ fdInventoryREV ) )
+
+objectclass ( 1.3.6.1.4.1.38414.39.2.26 NAME 'fdInventoryVIRTUALMACHINES'
+  DESC 'FusionDirectory inventory information - VIRTUALMACHINES'
+  MUST ( cn )
+  MAY ( fdInventoryMEMORY $ fdInventoryNAME $ fdInventoryUUID $ fdInventorySTATUS $ fdInventorySUBSYSTEM $ fdInventoryVMTYPE $ fdInventoryVCPU $ fdInventoryVMID $ fdInventoryMAC $ fdInventoryCOMMENT $ fdInventoryOWNER $ fdInventorySERIAL ) )
+
+objectclass ( 1.3.6.1.4.1.38414.39.2.27 NAME 'fdInventoryANTIVIRUS'
+  DESC 'FusionDirectory inventory information - ANTIVIRUS'
+  MUST ( cn )
+  MAY ( fdInventoryCOMPANY $ fdInventoryNAME $ fdInventoryGUID $ fdInventoryENABLED $ fdInventoryUPTODATE $ fdInventoryVERSION ) )
+
+objectclass ( 1.3.6.1.4.1.38414.39.2.28 NAME 'fdInventoryPHYSICALVOLUMES'
+  DESC 'FusionDirectory inventory information - PHYSICALVOLUMES'
+  MUST ( cn )
+  MAY ( fdInventoryDEVICE $ fdInventoryPVPECOUNT $ fdInventoryPVUUID $ fdInventoryFORMAT $ fdInventoryATTR $ fdInventorySIZE $ fdInventoryFREE $ fdInventoryPESIZE $ fdInventoryVGUUID ) )
+
+objectclass ( 1.3.6.1.4.1.38414.39.2.29 NAME 'fdInventoryNETWORKS'
+  DESC 'FusionDirectory inventory information - NETWORKS'
+  MUST ( cn )
+  MAY ( fdInventoryBSSID $ fdInventoryDESCRIPTION $ fdInventoryDRIVER $ fdInventoryFIRMWARE $ fdInventoryIPADDRESS $ fdInventoryIPADDRESS6 $ fdInventoryIPDHCP $ fdInventoryIPGATEWAY $ fdInventoryIPMASK $ fdInventoryIPMASK6 $ fdInventoryIPSUBNET $ fdInventoryIPSUBNET6 $ fdInventoryMANAGEMENT $ fdInventoryMANUFACTURER $ fdInventoryMACADDR $ fdInventoryMODEL $ fdInventoryMTU $ fdInventoryPCISLOT $ fdInventoryPNPDEVICEID $ fdInventorySTATUS $ fdInventorySLAVES $ fdInventorySPEED $ fdInventorySSID $ fdInventoryTYPE $ fdInventoryVIRTUALDEV $ fdInventoryWWN ) )
+
+objectclass ( 1.3.6.1.4.1.38414.39.2.30 NAME 'fdInventoryMONITORS'
+  DESC 'FusionDirectory inventory information - MONITORS'
+  MUST ( cn )
+  MAY ( fdInventoryBASE64 $ fdInventoryCAPTION $ fdInventoryDESCRIPTION $ fdInventoryMANUFACTURER $ fdInventorySERIAL $ fdInventoryUUENCODE ) )
+
+objectclass ( 1.3.6.1.4.1.38414.39.2.31 NAME 'fdInventoryDRIVES'
+  DESC 'FusionDirectory inventory information - DRIVES'
+  MUST ( cn )
+  MAY ( fdInventoryCREATEDATE $ fdInventoryDESCRIPTION $ fdInventoryFREE $ fdInventoryFILESYSTEM $ fdInventoryLABEL $ fdInventoryLETTER $ fdInventorySERIAL $ fdInventorySYSTEMDRIVE $ fdInventoryTOTAL $ fdInventoryTYPE $ fdInventoryVOLUMN ) )
+
+objectclass ( 1.3.6.1.4.1.38414.39.2.32 NAME 'fdInventoryACCESSLOG'
+  DESC 'FusionDirectory inventory information - ACCESSLOG'
+  MUST ( cn )
+  MAY ( fdInventoryUSERID $ fdInventoryLOGDATE ) )
+
+objectclass ( 1.3.6.1.4.1.38414.39.2.33 NAME 'fdInventoryREGISTRY'
+  DESC 'FusionDirectory inventory information - REGISTRY'
+  MUST ( cn )
+  MAY ( fdInventoryNAME $ fdInventoryREGVALUE $ fdInventoryHIVE ) )
+
+objectclass ( 1.3.6.1.4.1.38414.39.2.34 NAME 'fdInventorySLOTS'
+  DESC 'FusionDirectory inventory information - SLOTS'
+  MUST ( cn )
+  MAY ( fdInventoryDESCRIPTION $ fdInventoryDESIGNATION $ fdInventoryNAME $ fdInventorySTATUS ) )
+
+objectclass ( 1.3.6.1.4.1.38414.39.2.35 NAME 'fdInventoryOPERATINGSYSTEM'
+  DESC 'FusionDirectory inventory information - OPERATINGSYSTEM'
+  MUST ( cn )
+  MAY ( fdInventoryKERNELNAME $ fdInventoryKERNELVERSION $ fdInventoryNAME $ fdInventoryVERSION $ fdInventoryFULLNAME $ fdInventorySERVICEPACK $ fdInventoryINSTALLDATE $ fdInventoryFQDN $ fdInventoryDNSDOMAIN $ fdInventorySSHKEY $ fdInventoryARCH $ fdInventoryBOOTTIME ) )
+
