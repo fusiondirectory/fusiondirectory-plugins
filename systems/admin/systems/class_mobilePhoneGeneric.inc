@@ -122,6 +122,11 @@ class mobilePhoneGeneric extends simplePlugin
     $this->netConfigDNS->MACisMust  = FALSE;
   }
 
+  function compute_dn ()
+  {
+    return "cn=".$this->cn.",".get_ou('mobilePhoneRDN').$this->base;
+  }
+
   function resetCopyInfos()
   {
     parent::resetCopyInfos();

@@ -35,7 +35,7 @@ class componenttabs extends tabs
   {
     parent::save_object($save_current);
 
-    $baseobject = $this->getBaseObject();
+    $baseobject                   = $this->getBaseObject();
     $baseobject->netConfigDNS->cn = $baseobject->cn;
   }
 
@@ -45,7 +45,7 @@ class componenttabs extends tabs
     /* Check for new 'dn', in order to propagate the
        'dn' to all plugins */
     $baseobject = $this->getBaseObject();
-    $this->dn = "cn=$baseobject->cn,".get_ou('componentRDN').$baseobject->base;
+    $this->dn   = "cn=$baseobject->cn,".get_ou('componentRDN').$baseobject->base;
 
     if (($this->dn != $baseobject->orig_dn) && ($baseobject->orig_dn != "new")) {
 

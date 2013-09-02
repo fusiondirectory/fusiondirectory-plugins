@@ -1067,7 +1067,7 @@ class systemManagement extends management
         "fdMobilePhone"   => array(
             "ou"          => get_ou('mobilePhoneRDN'),
             "plugClass"   => "mobilePhoneGeneric",
-            "tabClass"    => "mobiletabs",
+            "tabClass"    => "simpleTabs",
             "tabDesc"     => "MOBILEPHONETABS",
             "aclClass"    => "mobilePhoneGeneric",
             "sendEvents"  => FALSE,
