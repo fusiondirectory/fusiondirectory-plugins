@@ -1005,27 +1005,36 @@ class printgeneric extends plugin
   static function plInfo()
   {
     return array(
-      "plShortName"   => _("Printer"),
-      "plDescription" => _("Print generic"),
-      "plSelfModify"  => FALSE,
-      "plPriority"    => 10,
-      "plCategory"    => array("printer" => array("description"  => _("Printer"),
-                                                "objectClass"  => "gotoPrinter"),"workstation","terminal"),
-      "plObjectType"  => array("printer" => array("name"  => _("Printer"),
-                                                  "filter"  => "objectClass=gotoPrinter"),
-                              "workstation", "terminal"),
-      "plProvidedAcls"  => array(
-        "cn"                => _("Name"),
-        "base"              => _("Base"),
-        "description"       => _("Description"),
-        "l"                 => _("Location"),
-        "labeledURI"        => _("LabeledURL"),
-        "gotoPrinterPPD"    => _("Printer PPD"),
-        "gotoUserPrinter"   => _("Permissions"),
+      'plShortName'   => _('Printer'),
+      'plDescription' => _('Print generic'),
+      'plSelfModify'  => FALSE,
+      'plPriority'    => 10,
+      'plCategory'    => array('printer' => array('description'  => _('Printer'),
+                                                'objectClass'  => 'gotoPrinter'),'workstation','terminal'),
+      'plObjectType'  => array(
+        'printer' => array(
+          'name'        => _('Printer'),
+          'description' => _('Printer'),
+          'filter'      => 'objectClass=gotoPrinter',
+          'icon'        => 'plugins/systems/images/select_printer.png',
+          'ou'          => get_ou('printerRDN'),
+          'tabClass'    => 'printtabs',
+        ),
+        'workstation', 'terminal'
+      ),
 
-        "printerWindowsInfFile"     => _("Windows inf file"),
-        "printerWindowsDriverDir"   => _("Windows driver dir"),
-        "printerWindowsDriverName"  => _("Driver printer name")
+      'plProvidedAcls'  => array(
+        'cn'                => _('Name'),
+        'base'              => _('Base'),
+        'description'       => _('Description'),
+        'l'                 => _('Location'),
+        'labeledURI'        => _('LabeledURL'),
+        'gotoPrinterPPD'    => _('Printer PPD'),
+        'gotoUserPrinter'   => _('Permissions'),
+
+        'printerWindowsInfFile'     => _('Windows inf file'),
+        'printerWindowsDriverDir'   => _('Windows driver dir'),
+        'printerWindowsDriverName'  => _('Driver printer name')
       )
     );
   }

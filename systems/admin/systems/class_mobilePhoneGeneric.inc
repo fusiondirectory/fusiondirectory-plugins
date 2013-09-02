@@ -40,8 +40,15 @@ class mobilePhoneGeneric extends simplePlugin
       'plSelfModify'  => FALSE,
       'plCategory'    => array('mobilePhone' => array('description'  => _('Mobile phone'),
                                                       'objectClass'  => 'fdMobilePhone')),
-      'plObjectType'  => array('mobilePhone' => array('name'   => _('Mobile phone'),
-                                                 'filter' => 'objectClass=fdMobilePhone')),
+      'plObjectType'  => array(
+        'mobilePhone' => array(
+          'name'        => _('Mobile phone'),
+          'description' => _('Mobile phone'),
+          'filter'      => 'objectClass=fdMobilePhone',
+          'icon'        => 'plugins/systems/images/select_mobilephone.png',
+          'ou'          => get_ou('mobilePhoneRDN'),
+        )
+      ),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
@@ -115,6 +122,11 @@ class mobilePhoneGeneric extends simplePlugin
     $this->attributesAccess['cn']->setUnique(TRUE);
     $this->netConfigDNS->IPisMust   = FALSE;
     $this->netConfigDNS->MACisMust  = FALSE;
+  }
+
+  function compute_dn ()
+  {
+    return "cn=".$this->cn.",".get_ou('mobilePhoneRDN').$this->base;
   }
 
   function resetCopyInfos()

@@ -31,12 +31,12 @@ class printtabs extends tabs
   }
 
 
-  function save_object($save_current= FALSE)
+  function save_object($save_current = FALSE)
   {
-    tabs::save_object($save_current);
+    parent::save_object($save_current);
 
     /* Assign current cn */
-    $baseobject = $this->getBaseObject();
+    $baseobject                   = $this->getBaseObject();
     $baseobject->netConfigDNS->cn = $baseobject->cn;
   }
 
@@ -45,8 +45,8 @@ class printtabs extends tabs
   {
     /* Check for new 'dn', in order to propagate the
        'dn' to all plugins */
-    $baseobject = $this->getBaseObject();
-    $this->dn = "cn=$baseobject->cn,".get_ou('printerRDN').$baseobject->base;
+    $baseobject     = $this->getBaseObject();
+    $this->dn       = "cn=$baseobject->cn,".get_ou('printerRDN').$baseobject->base;
     $baseobject->dn = $this->dn;
 
     foreach ($this->by_object as $key => $obj) {

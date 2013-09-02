@@ -95,7 +95,7 @@ class dashboard extends simplePlugin
       'plIcon'        => 'plugins/dashboard/images/icon.png',
       'plSelfModify'  => FALSE,
       'plCategory'    => array('dashboard' => array('objectClass' => '', 'description' => _('Dashboard'))),
-      'plObjectType'  => array('dashboard' => array('name' => _('Dashboard'), 'filter' => '')),
+      'plObjectType'  => array('dashboard' => array('name' => _('Dashboard'))),
       'plSection'     => 'addons',
       'plPriority'    => 2,
 
