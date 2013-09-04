@@ -90,6 +90,7 @@ class dashboardSystems extends simplePlugin
       foreach (array('cn','ipHostNumber','argonautProtocol','argonautPort') as $key) {
         $argonaut_server[$key] = $attrs[$key][0];
       }
+      $argonaut_server['link'] = objects::link($attrs['dn'], 'server', 'service_serviceArgonaut', $attrs);
     }
     $ldap->search("(objectClass=argonautClient)", array('cn'));
     $nb_argonaut_clients = $ldap->count();
