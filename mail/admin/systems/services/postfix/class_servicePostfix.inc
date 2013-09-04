@@ -174,10 +174,10 @@ class servicePostfix extends simpleService
                 _('Transport rule'),
                 'fdTransportTableRule',
                 array(
-                  new SelectAttribute ('', '', 'transport', TRUE, array('smtp', 'lmtp'), 'smtp', array('SMTP', 'LMTP')),
-                  new StringAttribute ('', '', 'nexthop', TRUE),
+                  new StringAttribute ('', '', 'transport', TRUE, 'smtp'),
+                  new StringAttribute ('', '', 'nexthop', FALSE),
                 ),
-                '/^([^:]+):(.+)$/',
+                '/^([^:]+):(.*)$/',
                 '%s:%s', '', ''
               )
             )
