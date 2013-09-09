@@ -90,8 +90,10 @@ class jsonRPCClient {
 
     // HTTP options : method, header and content must not be overridden
     unset($http_options['method']);
-    unset($http_options['header']);
     unset($http_options['content']);
+    if (isset($http_options['header'])) {
+      $http_options['header'] = "Content-type: application/json\r\n".$http_options['header'];
+    }
     $this->http_options = $http_options;
     // debug state
     $this->debug = ($debug?true:false);
