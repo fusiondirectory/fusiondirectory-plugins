@@ -1,5 +1,6 @@
 [main]
 host = https://www.transifex.com
+type = PO
 
 [fusiondirectory-develop.fusiondirectory-debconf]
 file_filter = debconf/locale/<lang>/fusiondirectory.po
@@ -216,4 +217,9 @@ file_filter = dns/locale/<lang>/fusiondirectory.po
 source_file = dns/locale/fusiondirectory.po
 source_lang = en
 
+
+[fusiondirectory-develop.fusiondirectory-ldapdump]
+file_filter = ldapdump/locale/<lang>/fusiondirectory.po
+source_file = ldapdump/locale/fusiondirectory.po
+source_lang = en
 
