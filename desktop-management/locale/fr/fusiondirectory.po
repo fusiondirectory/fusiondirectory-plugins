@@ -3,14 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# erdesc <erdesc@free.fr>, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-develop\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-19 16:53+0200\n"
-"PO-Revision-Date: 2013-08-21 16:32+0000\n"
-"Last-Translator: erdesc <erdesc@free.fr>\n"
+"Project-Id-Version: FusionDirectory\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
+"POT-Creation-Date: 2013-09-11 11:08+0200\n"
+"PO-Revision-Date: 2013-09-11 09:10+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -54,8 +53,8 @@ msgstr "Liste des applications"
 #: admin/applications/application-list.xml:74
 #: admin/applications/class_applicationGeneric.inc:72
 #: admin/applications/class_applicationGeneric.inc:74
-#: admin/groups/apps/class_groupApplication.inc:1466
-#: admin/mimetypes/class_mimetypeGeneric.inc:684
+#: admin/groups/apps/class_groupApplication.inc:1507
+#: admin/mimetypes/class_mimetypeGeneric.inc:681
 msgid "Application"
 msgstr "Applications"
 
@@ -64,7 +63,7 @@ msgstr "Applications"
 #: admin/applications/class_applicationParameters.inc:216
 #: admin/mimetypes/mimetype-list.xml:41
 #: admin/mimetypes/class_mimetypeGeneric.inc:516
-#: admin/mimetypes/class_mimetypeGeneric.inc:680
+#: admin/mimetypes/class_mimetypeGeneric.inc:677
 #: admin/applications/application-filter.tpl.c:5
 #: admin/groups/apps/edit_entry.tpl.c:26
 #: admin/mimetypes/mimetype-filter.tpl.c:5
@@ -74,7 +73,7 @@ msgstr "Nom"
 #: admin/applications/application-list.xml:49
 #: admin/applications/class_applicationGeneric.inc:103
 #: admin/mimetypes/mimetype-list.xml:49
-#: admin/mimetypes/class_mimetypeGeneric.inc:682
+#: admin/mimetypes/class_mimetypeGeneric.inc:679
 #: admin/mimetypes/paste_generic.tpl.c:11 admin/mimetypes/generic.tpl.c:17
 msgid "Description"
 msgstr "Description"
@@ -134,8 +133,8 @@ msgstr "Ajouter une option"
 #: admin/applications/class_applicationGeneric.inc:284
 #: admin/groups/apps/class_groupApplication.inc:701
 #: admin/groups/apps/class_groupApplication.inc:1396
-#: admin/groups/apps/class_groupApplication.inc:1409
-#: admin/groups/apps/class_groupApplication.inc:1422
+#: admin/groups/apps/class_groupApplication.inc:1410
+#: admin/groups/apps/class_groupApplication.inc:1424
 #: admin/mimetypes/class_mimetypeGeneric.inc:478
 #: admin/mimetypes/class_mimetypeGeneric.inc:490
 #: admin/mimetypes/class_mimetypeGeneric.inc:505
@@ -155,7 +154,7 @@ msgid "Application parameter settings"
 msgstr "Préférences de l'application"
 
 #: admin/applications/class_applicationManagement.inc:38
-#: admin/groups/apps/class_groupApplication.inc:1459
+#: admin/groups/apps/class_groupApplication.inc:1499
 #: admin/mimetypes/generic.tpl.c:62 admin/mimetypes/generic.tpl.c:86
 msgid "Applications"
 msgstr "Applications"
@@ -168,7 +167,7 @@ msgstr "Gestion des applications"
 #: admin/mimetypes/class_mimetypeGeneric.inc:668
 #: admin/mimetypes/paste_generic.tpl.c:2 admin/mimetypes/generic.tpl.c:2
 msgid "Generic"
-msgstr "Générique"
+msgstr "Général"
 
 #: admin/applications/class_applicationGeneric.inc:70
 msgid "Application generic"
@@ -207,7 +206,7 @@ msgid "A short description of this application"
 msgstr "Une courte description de cette application"
 
 #: admin/applications/class_applicationGeneric.inc:110
-#: admin/mimetypes/class_mimetypeGeneric.inc:686
+#: admin/mimetypes/class_mimetypeGeneric.inc:683
 #: admin/mimetypes/generic.tpl.c:32
 msgid "Icon"
 msgstr "Icône"
@@ -237,7 +236,7 @@ msgid "Replace the user configuration on startup"
 msgstr "Remplacer la configuration de l'utilisateur au démarrage"
 
 #: admin/applications/class_applicationGeneric.inc:133
-#: admin/groups/apps/class_groupApplication.inc:1469
+#: admin/groups/apps/class_groupApplication.inc:1510
 #: admin/groups/apps/edit_entry.tpl.c:32
 msgid "Place icon on members desktop"
 msgstr "Placer une icône sur le bureau des membres"
@@ -247,7 +246,7 @@ msgid "Put an icon on the user desktop"
 msgstr "Placer une icône sur le bureau de l'utilisateur"
 
 #: admin/applications/class_applicationGeneric.inc:138
-#: admin/groups/apps/class_groupApplication.inc:1471
+#: admin/groups/apps/class_groupApplication.inc:1512
 #: admin/groups/apps/edit_entry.tpl.c:35
 msgid "Place entry in members startmenu"
 msgstr "Placer une entrée dans le menu démarrage des membres"
@@ -258,7 +257,7 @@ msgid "Put an entry in the startup menu"
 msgstr "Placer une entrée dans le menu démarrage"
 
 #: admin/applications/class_applicationGeneric.inc:143
-#: admin/groups/apps/class_groupApplication.inc:1470
+#: admin/groups/apps/class_groupApplication.inc:1511
 #: admin/groups/apps/edit_entry.tpl.c:38
 msgid "Place entry in members launch bar"
 msgstr "Placer une entrée dans le menu démarrage des membres"
@@ -317,16 +316,16 @@ msgstr "application"
 msgid "Not available in release."
 msgstr "Non disponible dans cette version."
 
-#: admin/groups/apps/class_groupApplication.inc:1460
+#: admin/groups/apps/class_groupApplication.inc:1500
 msgid "Group applications"
 msgstr "Groupe d'applications"
 
-#: admin/groups/apps/class_groupApplication.inc:1467
+#: admin/groups/apps/class_groupApplication.inc:1508
 #: admin/groups/apps/app_list.tpl.c:2 admin/groups/apps/app_list.tpl.c:14
 msgid "Release"
 msgstr "Version"
 
-#: admin/groups/apps/class_groupApplication.inc:1468
+#: admin/groups/apps/class_groupApplication.inc:1509
 msgid "Application parameter"
 msgstr "Paramètre de l'application"
 
@@ -344,7 +343,7 @@ msgid "List of mimetypes"
 msgstr "Liste des type mime"
 
 #: admin/mimetypes/mimetype-list.xml:15 admin/mimetypes/mimetype-list.xml:74
-#: admin/mimetypes/class_mimetypeGeneric.inc:675
+#: admin/mimetypes/class_mimetypeGeneric.inc:673
 #: admin/mimetypes/paste_generic.tpl.c:5 admin/mimetypes/generic.tpl.c:5
 msgid "Mime type"
 msgstr "Type mime"
@@ -365,26 +364,26 @@ msgstr "Filtres des fichiers"
 msgid "Mime type generic"
 msgstr "Information sur les types mime"
 
-#: admin/mimetypes/class_mimetypeGeneric.inc:681
+#: admin/mimetypes/class_mimetypeGeneric.inc:678
 #: admin/mimetypes/generic.tpl.c:11
 msgid "Mime group"
 msgstr "Groupe de type mime"
 
-#: admin/mimetypes/class_mimetypeGeneric.inc:683
+#: admin/mimetypes/class_mimetypeGeneric.inc:680
 #: admin/mimetypes/generic.tpl.c:23
 msgid "Base"
 msgstr "Base"
 
-#: admin/mimetypes/class_mimetypeGeneric.inc:685
+#: admin/mimetypes/class_mimetypeGeneric.inc:682
 msgid "Left click action"
 msgstr "Clic gauche"
 
-#: admin/mimetypes/class_mimetypeGeneric.inc:687
+#: admin/mimetypes/class_mimetypeGeneric.inc:684
 #: admin/mimetypes/generic.tpl.c:53
 msgid "File patterns"
 msgstr "Filtres des fichiers"
 
-#: admin/mimetypes/class_mimetypeGeneric.inc:688
+#: admin/mimetypes/class_mimetypeGeneric.inc:685
 msgid "Embedded applications"
 msgstr "Applications Incorporées"
 
