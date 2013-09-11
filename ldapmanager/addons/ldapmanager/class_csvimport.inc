@@ -95,7 +95,7 @@ class csvimport extends plugin
 
       /* Generating attributes */
       $this->csvinfo['attr'] = array();
-      $this->usertab = new usertabs($this->config, $this->config->data['TABS']['USERTABS'], 'new');
+      $this->usertab = new usertabs($this->config, $this->config->data['TABS']['USERTABS'], 'new', 'user');
       foreach ($this->usertab->by_object as $pname => $plugin) { // for each user tab
         $attrs = $plugin->attributes;
         foreach ($attrs as &$attr) {
@@ -109,7 +109,7 @@ class csvimport extends plugin
       $this->csvinfo['attr'] = array_merge(array("none","userPassword"), $this->csvinfo['attr']);
 
       /* Search all Templates  */
-      $this->csvinfo['templates'] = $ldap->search("(objectClass = gosaUserTemplate)", array("*"));
+      $this->csvinfo['templates'] = $ldap->search("(objectClass=gosaUserTemplate)", array("*"));
 
       /* Array to handle selected Form fiels */
       $this->csvinfo['arrtempls'][$tempvar]['name'] = "";
@@ -119,9 +119,9 @@ class csvimport extends plugin
 
       while ($temp = $ldap->fetch($this->csvinfo['templates'])) {
         $tempvar++;
-        $this->csvinfo['arrtemplates'][$tempvar] = $temp['sn'][0]." - ".$this->config->idepartments[preg_replace("/^[^,] +,".preg_quote(get_people_ou(), '/')."/i", "", $temp['dn'])];
-        $this->csvinfo['arrtempls']   [$tempvar]['name'] = $temp['sn'][0];
-        $this->csvinfo['arrtempls']   [$tempvar]['dn']   = $temp['dn'];
+        $this->csvinfo['arrtemplates'][$tempvar]      = $temp['sn'][0]." - ".$this->config->idepartments[preg_replace("/^[^,] +,".preg_quote(get_people_ou(), '/')."/i", "", $temp['dn'])];
+        $this->csvinfo['arrtempls'][$tempvar]['name'] = $temp['sn'][0];
+        $this->csvinfo['arrtempls'][$tempvar]['dn']   = $temp['dn'];
       }
     }
 
@@ -137,7 +137,7 @@ class csvimport extends plugin
       if (isset($_POST['userfile']) || isset($_POST['sorted']) || isset($_POST['fileup'])) {
         msg_dialog::display(_("Permission error"), _("You've no permission to import CSV files."), ERROR_DIALOG);
       }
-      return ($smarty->fetch (get_template_path('contentcsv.tpl', TRUE)));
+      return $smarty->fetch(get_template_path('contentcsv.tpl', TRUE));
     }
 
     /* If the given data from the csv file are sorted by the attributes */
@@ -147,7 +147,7 @@ class csvimport extends plugin
       $smarty->assign("fileup", TRUE);
       $smarty->assign("sorted", TRUE);
 
-      for ($i = 0; $i < $this->csvinfo['rows']; $i ++) {
+      for ($i = 0; $i < $this->csvinfo['rows']; $i++) {
         /* Preparing given Data */
         $this->csvinfo['sorteddata'][$i] = array();
 
@@ -222,7 +222,7 @@ class csvimport extends plugin
           }
 
           /* Register usertab to trigger edit dialog */
-          $this->usertab = new usertabs($this->config, $this->config->data['TABS']['USERTABS'], 'new');
+          $this->usertab = new usertabs($this->config, $this->config->data['TABS']['USERTABS'], 'new', 'user');
           $keys = array_keys($dat);
 
           /* Set all submitted vars  */
@@ -527,11 +527,9 @@ class csvimport extends plugin
         }
       }
     }
-
     /* Show main page */
     return $smarty->fetch (get_template_path('contentcsv.tpl', TRUE));
   }
-
 }
 
 ?>
