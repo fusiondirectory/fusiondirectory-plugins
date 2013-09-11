@@ -208,7 +208,21 @@ class csvimport extends plugin
                 $attributes[$key_exp[1]] = $val;
               }
             }
-            $uids = gen_uids ($this->config->get_cfg_value("idGenerator"), $attributes);
+
+            /* Use idGenerator if defined */
+            $uids = array();
+            if ($this->config->get_cfg_value("idGenerator") != "") {
+              $uids = gen_uids($this->config->get_cfg_value("idGenerator"), $attributes);
+            /* Else use template uid if defined */
+            } elseif ($this->csvinfo['tplid'] != 0) {
+              $ldap->cat($this->csvinfo['arrtempls'][$this->csvinfo['tplid']]['dn']);
+              if ($attrs = $ldap->fetch()) {
+                if ($attrs['uid'][0] != user::$nouid) {
+                  $uids = gen_uids($attrs['uid'][0], $attributes);
+                }
+              }
+            }
+
             if (!count($uids) || empty($uids[0])) {
               $msgs = sprintf(_("Failed to generate 'uid' for entry '%s'!"), ($i + 1));
               $this->csvinfo['sorteddata'][$i]['status'] = "<b>"._("failed")."</b>&nbsp;". $msgs;
