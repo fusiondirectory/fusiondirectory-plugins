@@ -119,7 +119,7 @@ class csvimport extends plugin
 
       while ($temp = $ldap->fetch($this->csvinfo['templates'])) {
         $tempvar++;
-        $this->csvinfo['arrtemplates'][$tempvar]      = $temp['sn'][0]." - ".$this->config->idepartments[preg_replace("/^[^,] +,".preg_quote(get_people_ou(), '/')."/i", "", $temp['dn'])];
+        $this->csvinfo['arrtemplates'][$tempvar]      = $temp['sn'][0]." - ".$this->config->idepartments[preg_replace("/^[^,]+,".preg_quote(get_people_ou(), '/')."/i", "", $temp['dn'])];
         $this->csvinfo['arrtempls'][$tempvar]['name'] = $temp['sn'][0];
         $this->csvinfo['arrtempls'][$tempvar]['dn']   = $temp['dn'];
       }
@@ -260,7 +260,7 @@ class csvimport extends plugin
           if ($this->csvinfo['tplid'] != 0) {
             $tpl_dn = $this->csvinfo['arrtempls'][$this->csvinfo['tplid']]['dn'];
             $this->usertab->adapt_from_template($tpl_dn, array("uid","cn","givenName","sn"));
-            $tpl_base  = preg_replace("/^[^,] +,".preg_quote(get_people_ou(), '/i')."/", '', $tpl_dn);
+            $tpl_base  = preg_replace("/^[^,]+,".preg_quote(get_people_ou(), '/')."/i", '', $tpl_dn);
             $this->usertab->by_object['user']->base = $tpl_base;
           }
 
