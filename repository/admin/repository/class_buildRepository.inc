@@ -97,7 +97,6 @@ class buildRepository extends simplePlugin
     $this->attributesAccess['cn']->setUnique(TRUE);
 
     $distros = objects::ls('repoDistribution', array('cn' => '1', 'fdRepoSection' => '*'));
-    print_r($distros);
     $choices = array();
     foreach ($distros as $infos) {
       foreach ($infos['fdRepoSection'] as $section) {
