@@ -58,6 +58,13 @@ class repositoryDistribution extends simplePlugin
           ),
           new SetAttribute (
             new SelectAttribute (
+              _('Section'), _('The sections this distribution contains'),
+              'fdRepoSection', TRUE,
+              array()
+            )
+          ),
+          new SetAttribute (
+            new SelectAttribute (
               _('Based on'), _('The distributions this one is based on'),
               'fdBasedOn', FALSE,
               array()
@@ -76,6 +83,8 @@ class repositoryDistribution extends simplePlugin
 
     $distros = $this->config->getObjectList('repoDistribution', 'cn');
     $this->attributesAccess['fdBasedOn']->attribute->setChoices(array_values($distros));
+    $sections = objects::ls('repoSection', 'cn');
+    $this->attributesAccess['fdRepoSection']->attribute->setChoices(array_values($sections));
   }
 
   /* Returns the dn of the entry */
