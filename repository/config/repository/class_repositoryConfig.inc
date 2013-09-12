@@ -46,6 +46,13 @@ class repositoryConfig extends simplePlugin
             'fdRepositoryRDN', TRUE,
             'ou=repository'
           ),
+          new SetAttribute(
+            new StringAttribute (
+              _('Repository types'), _('Available repository types'),
+              'fdRepositoryTypes', TRUE
+            ),
+            array('debian')
+          )
         )
       ),
     );
