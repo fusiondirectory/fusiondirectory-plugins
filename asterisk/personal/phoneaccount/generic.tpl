@@ -121,11 +121,6 @@
       <option disabled>&nbsp;</option>
      </select>
 {/render}
-     {if $javascript eq 'false'}
-{render acl=$goFonMacroACL}
-      <input type="submit" name="refresh" value="{t}Refresh{/t}">
-{/render}
-     {/if}
     </td>
    </tr>
   </table>

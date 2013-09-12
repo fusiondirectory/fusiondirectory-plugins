@@ -9,9 +9,6 @@
       {html_options options=$categories selected=$selected_categorie}
     </select>
 {/render}
-    {if $javascript eq 'false'}
-      <input type="submit" value="{t}refresh{/t}" name="refresh">
-    {/if}
     <br>
     <br>
   </td>
