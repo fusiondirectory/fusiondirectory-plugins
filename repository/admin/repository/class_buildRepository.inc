@@ -43,6 +43,8 @@ class buildRepository extends simplePlugin
 
   static function getAttributesInfo ()
   {
+    global $config;
+
     return array(
       'main' => array(
         'name'  => _('Build repository'),
@@ -56,7 +58,6 @@ class buildRepository extends simplePlugin
             _('description'), _('description'),
             'description', FALSE
           ),
-          new HiddenAttribute('fdRepoType', TRUE, 'debian'),
           new SetAttribute (
             new SelectAttribute (
               _('Distribution sections'), _('The distribution sections this repository provides'),
@@ -67,6 +68,11 @@ class buildRepository extends simplePlugin
           new BooleanAttribute (
             _('Private'), _('Is this repository private or public?'),
             'fdRepoPrivate', FALSE
+          ),
+          new SelectAttribute (
+            _('Type'), _('Repository type'),
+            'fdRepoType', TRUE,
+            $config->get_cfg_value('repositoryTypes', array('debian'))
           )
         )
       ),
