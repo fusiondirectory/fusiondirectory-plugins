@@ -43,6 +43,11 @@ attributetype ( 1.3.6.1.4.1.38414.33.10.7 NAME 'fdRepoPrivate'
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
   SINGLE-VALUE)
 
+attributetype ( 1.3.6.1.4.1.38414.33.10.8 NAME 'fdRepoDistributionSection'
+  DESC 'FusionDirectory - dn of repository distribution section'
+  EQUALITY caseExactIA5Match
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 )
+
 ## Distribution and section attributes
 
 attributetype ( 1.3.6.1.4.1.38414.33.11.1 NAME 'fdBasedOn'
@@ -53,14 +58,14 @@ attributetype ( 1.3.6.1.4.1.38414.33.11.1 NAME 'fdBasedOn'
 # Objectclasses
 objectclass (1.3.6.1.4.1.38414.33.2.1 NAME 'fdBuildRepository'
   DESC 'FusionDirectory - Build repository server description'
-  MUST ( cn $ fdRepoType $ fdRepoDistribution $ fdRepoSection )
+  MUST ( cn $ fdRepoType $ fdRepoDistributionSection )
   MAY  (  fdRepoAdmin $ fdRepoUser $ fdRepoUploader $
           fdRepoPrivate $ description ) )
 
 objectclass (1.3.6.1.4.1.38414.33.2.2 NAME 'fdBuildRepositoryDistribution'
   DESC 'FusionDirectory - Build repository distribution description'
   MUST ( cn )
-  MAY  ( description $ fdBasedOn ) )
+  MAY  ( description $ fdBasedOn $ fdRepoSection ) )
 
 objectclass (1.3.6.1.4.1.38414.33.2.3 NAME 'fdBuildRepositorySection'
   DESC 'FusionDirectory - Build repository section description'

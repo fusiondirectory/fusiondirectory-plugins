@@ -59,15 +59,8 @@ class buildRepository extends simplePlugin
           new HiddenAttribute('fdRepoType', TRUE, 'debian'),
           new SetAttribute (
             new SelectAttribute (
-              _('Distribution'), _('The distribution this repository provides'),
-              'fdRepoDistribution', TRUE,
-              array()
-            )
-          ),
-          new SetAttribute (
-            new SelectAttribute (
-              _('Section'), _('The sections this repository provides'),
-              'fdRepoSection', TRUE,
+              _('Distribution sections'), _('The distribution sections this repository provides'),
+              'fdRepoDistributionSection', TRUE,
               array()
             )
           ),
@@ -103,11 +96,15 @@ class buildRepository extends simplePlugin
 
     $this->attributesAccess['cn']->setUnique(TRUE);
 
-    $distros = objects::ls('repoDistribution', 'cn');
-    $this->attributesAccess['fdRepoDistribution']->attribute->setChoices(array_values($distros));
-
-    $sections = objects::ls('repoSection', 'cn');
-    $this->attributesAccess['fdRepoSection']->attribute->setChoices(array_values($sections));
+    $distros = objects::ls('repoDistribution', array('cn' => '1', 'fdRepoSection' => '*'));
+    print_r($distros);
+    $choices = array();
+    foreach ($distros as $infos) {
+      foreach ($infos['fdRepoSection'] as $section) {
+        $choices[] = $infos['cn'].'/'.$section;
+      }
+    }
+    $this->attributesAccess['fdRepoDistributionSection']->attribute->setChoices(array_values($choices));
   }
 
   /* Returns the dn of the entry */
