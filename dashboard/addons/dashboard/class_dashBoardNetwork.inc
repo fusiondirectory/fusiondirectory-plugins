@@ -126,8 +126,6 @@ class dashboardNetwork extends simplePlugin
     return array(
       'plShortName'   => _('Network'),
       'plDescription' => _('Statistics and various informations'),
-      'plSelfModify'  => FALSE,
-      'plCategory'    => array('dashboard'),
       'plObjectType'  => array('dashboard'),
 
       'plProvidedAcls'    => array()

@@ -37,7 +37,6 @@ class inventoryManagement extends simpleManagement
       'plDescription' => _('Browse inventory objects'),
       'plIcon'        => 'plugins/fusioninventory/images/icon.png',
       'plSection'     => 'addons',
-      'plCategory'    => array('inventory'),
       'plManages'     => array('inventory'),
 
       'plProvidedAcls' => array()

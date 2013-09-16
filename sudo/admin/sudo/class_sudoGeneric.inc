@@ -56,8 +56,10 @@ class sudo extends simplePlugin
       'plDescription' => _('Sudo role'),
       'plIcon'        => 'plugins/sudo/images/icon.png',
       'plSelfModify'  => FALSE,
-      'plCategory'    => array('sudo' => array('objectClass' => 'sudoRole', 'description' => _('Sudo role'))),
-      'plObjectType'  => array('sudo' => array('name' => _('Sudo role'), 'filter' => 'objectClass=sudoRole')),
+      'plObjectType'  => array('sudo' => array(
+        'name'    => _('Sudo role'),
+        'filter'  => 'objectClass=sudoRole'
+      )),
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );

@@ -38,6 +38,7 @@ class sogoManagement extends simpleManagement
       'plPriority'    => 40,
       'plCategory'    => array('sogo' => array('description'  => _('SOGo'),
                                               'objectClass'  => array('sogoResource'))),
+      'plManages'     => array('sogoResource'),
 
       'plProvidedAcls' => array()
     );

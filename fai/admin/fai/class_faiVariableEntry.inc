@@ -138,20 +138,19 @@ class faiVariableEntry extends plugin
   /* Return plugin informations for acl handling */
   static function plInfo()
   {
-    return (array(
-          "plShortName" => _("Variable entry"),
-          "plDescription" => _("FAI variable entry "),
-          "plSelfModify"  => FALSE,
-          "plPriority"    => 23,
-          "plCategory"    => array("fai"),
-          "plProvidedAcls" => array(
-            "cn"                => _("Name"),
-            "description"       => _("Description"),
-            "FAIvariableContent"=> _("Variable content") )
-          ));
+    return array(
+      'plShortName'   => _('Variable entry'),
+      'plDescription' => _('FAI variable entry '),
+      'plSelfModify'  => FALSE,
+      'plPriority'    => 23,
+      'plCategory'    => array('fai'),
+
+      'plProvidedAcls' => array(
+        'cn'                => _('Name'),
+        'description'       => _('Description'),
+        'FAIvariableContent'=> _('Variable content')
+      )
+    );
   }
-
-
 }
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

@@ -27,7 +27,6 @@ class systemsPluginConfig extends simplePlugin
     return array(
       'plShortName'     => _('Systems'),
       'plDescription'   => _('Systems plugin configuration'),
-      'plCategory'      => array('configuration'),
       'plObjectType'    => array('configuration'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())

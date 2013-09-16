@@ -36,8 +36,6 @@ class componentGeneric extends simplePlugin
       'plShortName'   => _('Generic'),
       'plDescription' => _('Component generic'),
       'plSelfModify'  => FALSE,
-      'plCategory'    => array('component' => array('description'  => _('Network device'),
-                                                    'objectClass'  => array('device', 'ipHost', 'ieee802Device'))),
       'plObjectType'  => array(
         'component' => array(
           'name'        => _('Network device'),

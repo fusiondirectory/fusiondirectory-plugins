@@ -518,16 +518,18 @@ class faiHook extends faiPluginClass
   static function plInfo()
   {
     return array(
-      "plShortName"   => _("Hook"),
-      "plDescription" => _("FAI hook"),
-      "plSelfModify"  => FALSE,
-      "plPriority"    => 20,
-      "plCategory"    => array("fai"),
-      "plObjectType"  => array("faiHook" => array("name" => _("FAI hook"),
-                                                    "filter" => "objectClass=FAIhook")),
-      "plProvidedAcls" => array(
-        "cn"                => _("Name")." ("._("Read only").")",
-        "description"       => _("Description")
+      'plShortName'   => _('Hook'),
+      'plDescription' => _('FAI hook'),
+      'plSelfModify'  => FALSE,
+      'plPriority'    => 20,
+      'plObjectType'  => array('faiHook' => array(
+        'name'        => _('FAI hook'),
+        'filter'      => 'objectClass=FAIhook',
+        'aclCategory' => 'fai'
+      )),
+      'plProvidedAcls' => array(
+        'cn'                => _('Name').' ('._('Read only').')',
+        'description'       => _('Description')
       )
     );
   }

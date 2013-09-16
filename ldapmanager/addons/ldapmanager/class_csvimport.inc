@@ -39,7 +39,6 @@ class csvimport extends plugin
       'plShortName'   => _('CSV import'),
       'plDescription' => _('Import of csv data into the ldap tree'),
       'plSelfModify'  => FALSE,
-      'plCategory'    => array('ldapmanager'),
       'plObjectType'  => array('ldapmanager'),
       'plPriority'    => 3,
 

@@ -91,7 +91,6 @@ class opsiImport extends simplePlugin
       'plDescription' => _('Import windows stations from OPSI into FD'),
       'plIcon'        => 'plugins/opsi/images/icon.png',
       'plSelfModify'  => FALSE,
-      'plCategory'    => array('opsiImport' => array('objectClass' => '', 'description' => _('OPSI import'))),
       'plObjectType'  => array('opsiImport' => array('name' => _('OPSI import'), 'filter' => '')),
       'plSection'     => 'addons',
       'plPriority'    => 6,

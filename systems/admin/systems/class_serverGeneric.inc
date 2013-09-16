@@ -46,8 +46,6 @@ class serverGeneric extends workstationGeneric
       'plShortName'   => _('Generic'),
       'plDescription' => _('Server generic'),
       'plSelfModify'  => FALSE,
-      'plCategory'    => array('server' => array('description'  => _('Server'),
-                                                 'objectClass'  => 'goServer')),
       'plObjectType'  => array(
         'server' => array(
           'name'        => _('Server'),

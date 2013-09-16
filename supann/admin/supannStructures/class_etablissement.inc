@@ -31,9 +31,11 @@ class etablissement extends simplePlugin
       'plShortName'   => _('Etablissement'),
       'plDescription' => _('SUPANN Etablissement Settings'),
       'plSelfModify'  => FALSE,
-      'plCategory'    => array('supann'),
-      'plObjectType'  => array('etablissement' => array('name' => _('SUPANN Etablissement'),
-                                                        'filter' => '(&(objectClass=supannEntite)(objectClass=organization))')),
+      'plObjectType'  => array('etablissement' => array(
+        'name'        => _('SUPANN Etablissement'),
+        'filter'      => '(&(objectClass=supannEntite)(objectClass=organization))',
+        'aclCategory' => 'supann'
+      )),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );

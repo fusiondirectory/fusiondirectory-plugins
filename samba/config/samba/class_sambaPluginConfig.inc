@@ -28,7 +28,6 @@ class sambaPluginConfig extends simplePlugin
       "plShortName"     => _("Samba"),
       "plDescription"   => _("Samba plugin configuration"),
       "plPriority"      => 2,
-      "plCategory"      => array("configuration"),
       "plObjectType"    => array("configuration"),
 
       "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())

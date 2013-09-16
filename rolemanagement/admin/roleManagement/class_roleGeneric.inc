@@ -29,14 +29,18 @@ class roleGeneric extends simplePlugin {
   static function plInfo()
   {
     return array(
-      "plShortName"   => _("Role"),
-      "plDescription" => _("Role generic"),
-      "plSelfModify"  => FALSE,
-      "plPriority"    => 1,
-      "plCategory"    => array("roles" => array("description"  => _("Roles"), "objectClass"  => "organizationalRole")),
-      "plObjectType"  => array("role" => array("name"  => _("Role"), "filter"  => "objectClass=organizationalRole")),
+      'plShortName'   => _('Role'),
+      'plDescription' => _('Role generic'),
+      'plSelfModify'  => FALSE,
+      'plPriority'    => 1,
+      'plCategory'    => array('roles' => array('description'  => _('Roles'), 'objectClass'  => 'organizationalRole')),
+      'plObjectType'  => array('role' => array(
+        'name'        => _('Role'),
+        'filter'      => 'objectClass=organizationalRole',
+        'aclCategory' => 'roles'
+      )),
 
-      "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }
 

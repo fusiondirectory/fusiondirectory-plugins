@@ -152,8 +152,6 @@ class dashboardUsers extends simplePlugin
     return array(
       'plShortName'   => _('Users'),
       'plDescription' => _('Statistics about users'),
-      'plSelfModify'  => FALSE,
-      'plCategory'    => array('dashboard'),
       'plObjectType'  => array('dashboard'),
 
       'plProvidedAcls'    => array()

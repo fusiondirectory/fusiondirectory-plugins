@@ -186,21 +186,20 @@ class faiScriptEntry extends plugin
   /* Return plugin informations for acl handling */
   static function plInfo()
   {
-    return (array(
-          "plShortName" => _("Script entry"),
-          "plDescription" => _("FAI script entry"),
-          "plSelfModify"  => FALSE,
-          "plPriority"    => 19,
-          "plCategory"    => array("fai"),
-          "plProvidedAcls" => array(
-            "cn"              => _("Name"),
-            "description"     => _("Description"),
-            "FAIscript"       => _("Script entry"),
-            "FAIpriority"     => _("Script Priority"))
-          ));
+    return array(
+      'plShortName'   => _('Script entry'),
+      'plDescription' => _('FAI script entry'),
+      'plSelfModify'  => FALSE,
+      'plPriority'    => 19,
+      'plCategory'    => array('fai'),
+
+      'plProvidedAcls' => array(
+        'cn'              => _('Name'),
+        'description'     => _('Description'),
+        'FAIscript'       => _('Script entry'),
+        'FAIpriority'     => _('Script Priority')
+      )
+    );
   }
-
-
 }
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

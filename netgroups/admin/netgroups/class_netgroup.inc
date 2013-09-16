@@ -50,7 +50,6 @@ class netgroup extends simplePlugin
       'plShortName'   => _('Generic'),
       'plDescription' => _('Generic NIS Netgroup settings'),
       'plSelfModify'  => FALSE,
-      'plCategory'    => array('netgroup' => array('objectClass' => 'nisNetgroup', 'description' => _('NIS Netgroups'))),
       'plObjectType'  => array('netgroup' => array(
         'name'    => _('NIS Netgroup'),
         'filter'  => 'objectClass=nisNetgroup',

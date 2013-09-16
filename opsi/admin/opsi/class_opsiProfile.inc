@@ -53,8 +53,6 @@ class opsiProfile extends simplePlugin
       'plDescription' => _('OPSI profile'),
       'plIcon'        => 'plugins/opsi/images/iconMini.png',
       'plSelfModify'  => FALSE,
-      'plCategory'    => array('opsiProfile' => array('description'  => _('OPSI profile'),
-                                                          'objectClass'  => 'opsiProfile')),
       'plObjectType'  => array('opsiProfile' => array(
         'name'    => _('OPSI profile'),
         'filter'  => 'objectClass=opsiProfile',

@@ -28,8 +28,10 @@ class ldapmanager extends simplePlugin
       'plShortName'   => _('LDIF'),
       'plDescription' => _('Export/Import the ldap tree to/from LDIF format'),
       'plSelfModify'  => FALSE,
-      'plCategory'    => array('ldapmanager'),
-      'plObjectType'  => array('ldapmanager' => array('name'  => _('LDAP Manager'))),
+      'plObjectType'  => array('ldapmanager' => array(
+        'name'        => _('LDAP Manager'),
+        'aclCategory' => 'ldapmanager'
+      )),
 
       'plProvidedAcls'  => array()
     );

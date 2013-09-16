@@ -40,8 +40,6 @@ class winstationGeneric extends simplePlugin
       'plShortName'   => _('Winstation generic'),
       'plDescription' => _('Windows workstation generic'),
       'plSelfModify'  => FALSE,
-      'plCategory'    => array('winstation' => array('description'  => _('Windows workstation'),
-                                                      'objectClass'  => 'gotoWorkstation')),
       'plObjectType'  => array(
         'winstation' => array(
           'name'        => _('Windows workstation'),

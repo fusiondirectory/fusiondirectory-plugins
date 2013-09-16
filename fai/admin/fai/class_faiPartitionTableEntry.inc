@@ -444,28 +444,26 @@ class faiPartitionTableEntry extends plugin
   /* Return plugin informations for acl handling */
   static function plInfo()
   {
-    return (array(
-          "plShortName" => _("Partition table entry"),
-          "plDescription" => _("FAI partition table entry"),
-          "plSelfModify"  => FALSE,
-          "plPriority"    => 27,
-          "plCategory"    => array("fai"),
-          "plProvidedAcls" => array(
-            "DISKcn"            => _("Name"),
-            "DISKdescription"   => _("Description"),
-            "FAIpartitionType"  => _("Partition type"),
-            "FAIpartitionNr"    => _("Partition no."),
-            "FAIfsType"         => _("File system type"),
-            "FAImountPoint"     => _("Mount point"),
-            "FAIpartitionSize"  => _("Partition size"),
-            "FAImountOptions"   => _("Mount options"),
-            "FAIfsOptions"      => _("File system options"),
-            "FAIpartitionFlags" => _("Partition flags"))
-          ));
+    return array(
+      "plShortName"   => _("Partition table entry"),
+      "plDescription" => _("FAI partition table entry"),
+      "plSelfModify"  => FALSE,
+      "plPriority"    => 27,
+      "plCategory"    => array("fai"),
+
+      "plProvidedAcls" => array(
+        "DISKcn"            => _("Name"),
+        "DISKdescription"   => _("Description"),
+        "FAIpartitionType"  => _("Partition type"),
+        "FAIpartitionNr"    => _("Partition no."),
+        "FAIfsType"         => _("File system type"),
+        "FAImountPoint"     => _("Mount point"),
+        "FAIpartitionSize"  => _("Partition size"),
+        "FAImountOptions"   => _("Mount options"),
+        "FAIfsOptions"      => _("File system options"),
+        "FAIpartitionFlags" => _("Partition flags")
+      )
+    );
   }
-
-
 }
-
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

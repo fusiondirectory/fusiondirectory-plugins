@@ -37,7 +37,7 @@ class debconfProfileManagement extends management
       "plIcon"        => "plugins/debconf/images/icon.png",
       "plPriority"    => 31,
       "plSection"     => "admin",
-      "plCategory"    => array("debconfProfile"),
+      "plManages"     => array("debconfProfile"),
 
       "plProvidedAcls" => array()
     );

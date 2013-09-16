@@ -67,8 +67,6 @@ class serviceKolab extends simpleService
       "plShortName"     => _("Kolab mail service"),
       "plDescription"   => _("Kolab mail service")." ("._("Services").")",
       "plIcon"          => "plugins/kolab/images/iconMini.png",
-      "plSelfModify"    => FALSE,
-      "plCategory"      => array("server"),
       "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }

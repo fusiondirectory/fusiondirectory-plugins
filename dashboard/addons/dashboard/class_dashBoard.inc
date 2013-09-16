@@ -93,8 +93,6 @@ class dashboard extends simplePlugin
       'plShortName'   => _('Dashboard'),
       'plDescription' => _('Statistics and various informations'),
       'plIcon'        => 'plugins/dashboard/images/icon.png',
-      'plSelfModify'  => FALSE,
-      'plCategory'    => array('dashboard' => array('objectClass' => '', 'description' => _('Dashboard'))),
       'plObjectType'  => array('dashboard' => array('name' => _('Dashboard'))),
       'plSection'     => 'addons',
       'plPriority'    => 2,

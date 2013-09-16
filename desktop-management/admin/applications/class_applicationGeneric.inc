@@ -69,10 +69,10 @@ class application extends simplePlugin
       'plShortName'   => _('Generic'),
       'plDescription' => _('Application generic'),
       'plSelfModify'  => FALSE,
-      'plCategory'    => array('application' => array('description'  => _('Application'),
-                                                      'objectClass'  => 'gosaApplication')),
-      'plObjectType'  => array('application' => array('name'  => _('Application'),
-                                                      'filter'  => 'objectClass=gosaApplication')),
+      'plObjectType'  => array('application' => array(
+        'name'  => _('Application'),
+        'filter'  => 'objectClass=gosaApplication'
+      )),
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );

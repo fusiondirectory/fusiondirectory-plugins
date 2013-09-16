@@ -205,14 +205,14 @@ class debconfProfileGeneric extends simplePlugin
   public static function plInfo()
   {
     return array(
-      "plShortName"   => _("Debconf profile"),
-      "plDescription" => _("Debconf profile generic"),
-      "plSelfModify"  => FALSE,
-      "plCategory"    => array("debconfProfile" => array("description"  => _("Debconf profile"),
-                                                          "objectClass"  => "debConfDbEntry")),
-      "plObjectType"  => array("debconfProfile" => array( "name"  => _("Debconf profile"),
-                                                          "filter"  => "objectClass=debConfDbEntry")),
-      "plProvidedAcls" => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plShortName'   => _('Debconf profile'),
+      'plDescription' => _('Debconf profile generic'),
+      'plSelfModify'  => FALSE,
+      'plObjectType'  => array('debconfProfile' => array(
+        'name'    => _('Debconf profile'),
+        'filter'  => 'objectClass=debConfDbEntry'
+      )),
+      'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }
 }

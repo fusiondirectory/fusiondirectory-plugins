@@ -183,16 +183,14 @@ class blocklistGeneric extends simplePlugin
   static function plInfo()
   {
     return array(
-      "plShortName"     => _("Fax blocklists"),
-      "plDescription"   => _("The part of the fax plugin managing blacklist"),
-      "plSelfModify"    => FALSE,
-      "plCategory"      => array( "gofaxlist" => array(
-                            "description" => _("Fax blocklists"),
-                            "objectClass" => array("goFaxRBlock","goFaxSBlock"))),
-      "plObjectType"    => array("faxBlock" => array(
-                            "name" => _("Fax blocklists"),
-                            "filter" => "(|(goFaxRBlock)(goFaxSBlock))")),
-      "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plShortName'     => _('Fax blocklists'),
+      'plDescription'   => _('The part of the fax plugin managing blacklist'),
+      'plSelfModify'    => FALSE,
+      'plObjectType'    => array('faxBlock' => array(
+        'name'        => _('Fax blocklists'),
+        'filter'      => '(|(objectClass=goFaxRBlock)(objectClass=goFaxSBlock))'
+      )),
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }
 

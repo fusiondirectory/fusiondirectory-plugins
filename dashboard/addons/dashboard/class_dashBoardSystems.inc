@@ -199,8 +199,6 @@ class dashboardSystems extends simplePlugin
       'plShortName'   => _('Systems'),
       'plDescription' => _('Statistics and informations about systems'),
       'plIcon'        => 'plugins/dashboard/images/icon.png',
-      'plSelfModify'  => FALSE,
-      'plCategory'    => array('dashboard'),
       'plObjectType'  => array('dashboard'),
 
       'plProvidedAcls'  => array()

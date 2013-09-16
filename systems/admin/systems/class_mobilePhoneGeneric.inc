@@ -38,8 +38,6 @@ class mobilePhoneGeneric extends simplePlugin
       'plShortName'   => _('Generic'),
       'plDescription' => _('Mobile phone generic'),
       'plSelfModify'  => FALSE,
-      'plCategory'    => array('mobilePhone' => array('description'  => _('Mobile phone'),
-                                                      'objectClass'  => 'fdMobilePhone')),
       'plObjectType'  => array(
         'mobilePhone' => array(
           'name'        => _('Mobile phone'),

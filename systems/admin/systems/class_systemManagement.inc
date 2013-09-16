@@ -1189,7 +1189,6 @@ class systemManagement extends management
       'plSelfModify'  => FALSE,
       'plPriority'    => 20,
       'plSection'     => 'admin',
-      'plCategory'    => array('terminal','workstation','server','phone','printer','component','winstation'),
       'plManages'     => array('terminal','workstation','server','phone','printer','component','winstation'),
 
       'plProvidedAcls'  => array()
