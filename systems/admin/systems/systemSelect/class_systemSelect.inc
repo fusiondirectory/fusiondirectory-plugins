@@ -1,9 +1,7 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2003  Cajus Pollmeier
-  Copyright (C) 2011-2013  FusionDirectory
+  Copyright (C) 2013  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,40 +18,10 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class systemSelect extends management
+class systemSelect extends simpleSelectManagement
 {
-  // Tab definition
-  protected $skipFooter = TRUE;
-  protected $skipHeader = TRUE;
-
-  function __construct($config,$ui)
-  {
-    $this->config = $config;
-    $this->ui = $ui;
-    $this->storagePoints = array(get_ou("serverRDN"), get_ou("workstationRDN"), get_ou('terminalRDN'));
-
-    // Build Filter
-    $filter = new filter(get_template_path("selectSystem-filter.xml", true, dirname(__FILE__)));
-    $filter->setObjectStorage($this->storagePoints);
-    $this->setFilter($filter);
-
-    // Build headpage
-    $headpage = new listing(get_template_path("selectSystem-list.xml", true, dirname(__FILE__)));
-    $headpage->setFilter($filter);
-    parent::__construct($config, $ui, "object", $headpage);
-  }
-
-  function save()
-  {
-    $act = $this->detectPostActions();
-    $headpage = $this->getHeadpage();
-    if(!isset($act['targets'])) return(array());
-    $ret = array();
-    foreach($act['targets'] as $dn){
-      $ret[] = $headpage->getEntry($dn);
-    }
-    return($ret);
-  }
+  protected $objectTypes = array(
+    'terminal', 'workstation', 'server'
+  );
 }
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>
