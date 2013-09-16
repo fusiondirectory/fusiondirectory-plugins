@@ -768,17 +768,19 @@ class faiPartitionTable extends faiPluginClass
   static function plInfo()
   {
     return array(
-      "plShortName"   => _("Partition table"),
-      "plDescription" => _("FAI partition table"),
-      "plSelfModify"  => FALSE,
-      "plPriority"    => 26,
-      "plCategory"    => array("fai"),
-      "plObjectType"  => array("faiPartition" => array("name" => _("FAI partition table"),
-                                                    "filter" => "objectClass=FAIpartitionTable")),
+      'plShortName'   => _('Partition table'),
+      'plDescription' => _('FAI partition table'),
+      'plSelfModify'  => FALSE,
+      'plPriority'    => 26,
+      'plObjectType'  => array('faiPartition' => array(
+        'name'        => _('FAI partition table'),
+        'filter'      => 'objectClass=FAIpartitionTable',
+        'aclCategory' => 'fai'
+      )),
 
-      "plProvidedAcls" => array(
-        "cn"                => _("Name")."&nbsp;("._("Read only").")",
-        "description"       => _("Description")
+      'plProvidedAcls' => array(
+        'cn'                => _('Name').'&nbsp;('._('Read only').')',
+        'description'       => _('Description')
       )
     );
   }

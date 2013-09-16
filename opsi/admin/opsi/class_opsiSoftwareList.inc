@@ -33,8 +33,6 @@ class opsiSoftwareList extends simplePlugin
       'plDescription' => _('OPSI software list'),
       'plIcon'        => 'plugins/opsi/images/iconMiniSoftwareList.png',
       'plSelfModify'  => FALSE,
-      'plCategory'    => array('opsiSoftwareList' => array('description'  => _('OPSI software list'),
-                                                          'objectClass'  => 'opsiSoftwareList')),
       'plObjectType'  => array('opsiSoftwareList' => array(
         'name'    => _('OPSI software list'),
         'filter'  => 'objectClass=opsiSoftwareList',

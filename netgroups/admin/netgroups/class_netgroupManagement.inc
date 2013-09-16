@@ -37,7 +37,7 @@ class netgroupManagement extends simpleManagement
       'plIcon'        => 'plugins/netgroups/images/icon.png',
       'plSection'     => 'admin',
       'plPriority'    => 25,
-      'plCategory'    => array('netgroup'),
+      'plManages'     => array('netgroup'),
 
       'plProvidedAcls' => array()
     );

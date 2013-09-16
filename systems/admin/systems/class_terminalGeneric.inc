@@ -78,13 +78,19 @@ class terminalGeneric extends workstationGeneric
   static function plInfo()
   {
     return array(
-      "plShortName"   => _("Generic"),
-      "plDescription" => _("Terminal generic"),
-      "plSelfModify"  => FALSE,
-      "plCategory"    => array("terminal" => array("description"  => _("Terminal"),
-                                                 "objectClass"  => "gotoTerminal")),
-      "plObjectType"  => array("terminal" => array("name"   => _("Terminal"),
-                                                 "filter" => "objectClass=gotoTerminal")),
+      'plShortName'   => _('Generic'),
+      'plDescription' => _('Terminal generic'),
+      'plSelfModify'  => FALSE,
+      'plObjectType'  => array('terminal' =>
+        array(
+          'name'        => _('Terminal'),
+          'description' => _('Terminal'),
+          'filter'      => 'objectClass=gotoTerminal',
+          'icon'        => 'plugins/systems/images/select_terminal.png',
+          'ou'          => get_ou('terminalRDN'),
+          'tabClass'    => 'termtabs',
+        )
+      ),
 
       "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );

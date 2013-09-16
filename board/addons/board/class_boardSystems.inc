@@ -197,10 +197,8 @@ class boardSystems extends simplePlugin
     return array(
       'plShortName'   => _('Systems'),
       'plDescription' => _('Statistics and informations about systems'),
-      'plIcon'        => 'plugins/board/images/icon.png',
-      'plSelfModify'  => FALSE,
-      'plCategory'    => array('board'),
-      'plObjectType'  => array('board'),
+      'plIcon'        => 'plugins/dashboard/images/icon.png',
+      'plObjectType'  => array('dashboard'),
 
       'plProvidedAcls'  => array()
     );

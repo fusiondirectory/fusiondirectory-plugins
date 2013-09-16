@@ -44,7 +44,6 @@ class freeradiusGroup extends simplePlugin {
     return array(
       'plShortName'       => _('Freeradius'),
       'plDescription'     => _('This Plugin is for Radius accounting based in FreeRadius'),
-      'plCategory'        => array('group'),
       'plObjectType'      => array('group'),
       'plProvidedAcls'    => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );

@@ -30,9 +30,11 @@ class nisMap extends simplePlugin
     return array(
       'plShortName'     => _('Mount point'),
       'plDescription'   => _('Autofs mount point'),
-      'plCategory'      => array('autofs'),
-      'plObjectType'    => array('nisMap' => array('name'    => _('Mount point'),
-                                                  'filter'  => 'objectClass=nisMap')),
+      'plObjectType'    => array('nisMap' => array(
+        'name'        => _('Mount point'),
+        'filter'      => 'objectClass=nisMap',
+        'aclCategory' => 'autofs'
+      )),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );

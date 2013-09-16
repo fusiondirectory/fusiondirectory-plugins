@@ -31,10 +31,11 @@ class ipmiGeneric extends workstationGeneric
       'plShortName'   => _('Generic'),
       'plDescription' => _('IPMI generic'),
       'plSelfModify'  => FALSE,
-      'plCategory'    => array('ipmi' => array('description'  => _('IPMI'),
-                                                 'objectClass'  => 'ipmiInterface')),
-      'plObjectType'  => array('ipmi' => array('name'   => _('IPMI'),
-                                                 'filter' => 'objectClass=ipmiInterface')),
+      'plObjectType'  => array('ipmi' => array(
+        'name'   => _('IPMI'),
+        'filter' => 'objectClass=ipmiInterface',
+      )),
+
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }

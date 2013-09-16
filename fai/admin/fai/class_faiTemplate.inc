@@ -501,17 +501,19 @@ class faiTemplate extends faiPluginClass
   static function plInfo()
   {
     return array(
-      "plShortName"   => _("Template"),
-      "plDescription" => _("FAI template"),
-      "plSelfModify"  => FALSE,
-      "plPriority"    => 24,
-      "plCategory"    => array("fai"),
-      "plObjectType"  => array("faiTemplate" => array("name" => _("FAI template"),
-                                                    "filter" => "objectClass=FAItemplate")),
+      'plShortName'   => _('Template'),
+      'plDescription' => _('FAI template'),
+      'plSelfModify'  => FALSE,
+      'plPriority'    => 24,
+      'plObjectType'  => array('faiTemplate' => array(
+        'name'        => _('FAI template'),
+        'filter'      => 'objectClass=FAItemplate',
+        'aclCategory' => 'fai'
+      )),
 
-      "plProvidedAcls" => array(
-        "cn"                => _("Name")." ("._("Readonly").")",
-        "description"       => _("Description")
+      'plProvidedAcls' => array(
+        'cn'                => _('Name').' ('._('Readonly').')',
+        'description'       => _('Description')
       )
     );
   }

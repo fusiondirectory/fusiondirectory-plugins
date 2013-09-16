@@ -32,14 +32,14 @@ class autofsManagement extends management
   static function plInfo()
   {
     return array(
-      "plShortName"   => _("Auto fs"),
-      "plDescription" => _("Auto fs management"),
-      "plIcon"        => "plugins/autofs/images/icon.png",
-      "plPriority"    => 24,
-      "plSection"     => "admin",
-      "plCategory"    => array("autofs"),
+      'plShortName'   => _('Auto fs'),
+      'plDescription' => _('Auto fs management'),
+      'plIcon'        => 'plugins/autofs/images/icon.png',
+      'plPriority'    => 24,
+      'plSection'     => 'admin',
+      'plManages'     => array('autofs'),
 
-      "plProvidedAcls" => array()
+      'plProvidedAcls' => array()
     );
   }
 

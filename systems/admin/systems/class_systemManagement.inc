@@ -1172,15 +1172,15 @@ class systemManagement extends management
   static function plInfo()
   {
     return array(
-      "plShortName"   => _("Systems"),
-      "plDescription" => _("Systems Management"),
-      "plIcon"        => "plugins/systems/images/icon.png",
-      "plSelfModify"  => FALSE,
-      "plPriority"    => 20,
-      "plSection"     => "admin",
-      "plCategory"    => array("terminal","workstation","server","phone","printer","component","winstation"),
+      'plShortName'   => _('Systems'),
+      'plDescription' => _('Systems Management'),
+      'plIcon'        => 'plugins/systems/images/icon.png',
+      'plSelfModify'  => FALSE,
+      'plPriority'    => 20,
+      'plSection'     => 'admin',
+      'plManages'     => array('terminal','workstation','server','phone','printer','component','winstation'),
 
-      "plProvidedAcls"  => array()
+      'plProvidedAcls'  => array()
     );
   }
 }

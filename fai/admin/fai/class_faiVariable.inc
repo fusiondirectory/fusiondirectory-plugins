@@ -387,22 +387,21 @@ class faiVariable extends faiPluginClass
   static function plInfo()
   {
     return array(
-      "plShortName"   => _("Variable"),
-      "plDescription" => _("FAI variable"),
-      "plSelfModify"  => FALSE,
-      "plPriority"    => 22,
-      "plCategory"    => array("fai"),
-      "plObjectType"  => array("faiVariable" => array("name" => _("FAI variable"),
-                                                    "filter" => "objectClass=FAIvariable")),
+      'plShortName'   => _('Variable'),
+      'plDescription' => _('FAI variable'),
+      'plSelfModify'  => FALSE,
+      'plPriority'    => 22,
+      'plObjectType'  => array('faiVariable' => array(
+        'name'        => _('FAI variable'),
+        'filter'      => 'objectClass=FAIvariable',
+        'aclCategory' => 'fai'
+      )),
 
-      "plProvidedAcls" => array(
-        "cn"                => _("Name")." ("._("Read only").")",
-        "description"       => _("Description")
+      'plProvidedAcls' => array(
+        'cn'                => _('Name').' ('._('Read only').')',
+        'description'       => _('Description')
       )
     );
   }
-
 }
-
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

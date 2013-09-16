@@ -27,7 +27,6 @@ class fiConfig extends simplePlugin
     return array(
       "plShortName"     => _("FusionInventory configuration"),
       "plDescription"   => _("FusionDirectory FusionInventory plugin configuration"),
-      "plSelfModify"    => FALSE,
       "plCategory"      => array("configuration"),
       "plObjectType"    => array("smallConfig"),
 

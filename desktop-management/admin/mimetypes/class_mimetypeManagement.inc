@@ -41,6 +41,7 @@ class mimetypeManagement extends management
       "plSection"     => "admin",
       "plPriority"    => 22,
       "plCategory"    => array("mimetypes"),
+      "plManages"     => array("mimetype"),
 
       "plProvidedAcls" => array()
     );

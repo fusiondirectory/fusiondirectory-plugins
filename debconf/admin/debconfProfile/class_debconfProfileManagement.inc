@@ -32,12 +32,12 @@ class debconfProfileManagement extends management
   static function plInfo()
   {
     return array(
-      'plShortName'   => _('Debconf'),
-      'plDescription' => _('Debconf profile management'),
-      'plIcon'        => 'plugins/debconf/images/icon.png',
-      'plPriority'    => 31,
-      'plSection'     => 'admin',
-      'plManages'    => array('debconfProfile'),
+      "plShortName"   => _("Debconf"),
+      "plDescription" => _("Debconf profile management"),
+      "plIcon"        => "plugins/debconf/images/icon.png",
+      "plPriority"    => 31,
+      "plSection"     => "admin",
+      "plManages"     => array("debconfProfile"),
 
       'plProvidedAcls' => array()
     );

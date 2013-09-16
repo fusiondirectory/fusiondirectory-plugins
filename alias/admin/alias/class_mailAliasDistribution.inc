@@ -31,9 +31,11 @@ class mailAliasDistribution extends simplePlugin
       'plShortName'   => _('Temporary mail distribution'),
       'plDescription' => _('Temporary mail distribution'),
       'plSelfModify'  => FALSE,
-      'plCategory'    => array('alias'),
-      'plObjectType'  => array('mailAliasDistribution' => array('name'  => _('Temporary mail distribution'),
-                                                              'filter'  => 'objectClass=mailAliasDistribution')),
+      'plObjectType'  => array('mailAliasDistribution' => array(
+        'name'        => _('Temporary mail distribution'),
+        'filter'      => 'objectClass=mailAliasDistribution',
+        'aclCategory' => 'alias'
+      )),
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );

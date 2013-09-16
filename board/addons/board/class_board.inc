@@ -90,14 +90,12 @@ class board extends simplePlugin
   static function plInfo()
   {
     return array(
-      "plShortName"   => _("Dashboard"),
-      "plDescription" => _("Statistics and various informations"),
-      "plIcon"        => "plugins/board/images/icon.png",
-      "plSelfModify"  => FALSE,
-      "plCategory"    => array("board" => array("objectClass" => "", "description" => _("Dashboard"))),
-      "plObjectType"  => array("board" => array("name" => _("Dashboard"), "filter" => "")),
-      "plSection"     => "addons",
-      "plPriority"    => 2,
+      'plShortName'   => _('Dashboard'),
+      'plDescription' => _('Statistics and various informations'),
+      'plIcon'        => 'plugins/dashboard/images/icon.png',
+      'plObjectType'  => array('dashboard' => array('name' => _('Dashboard'))),
+      'plSection'     => 'addons',
+      'plPriority'    => 2,
 
       "plProvidedAcls"  => array()
     );

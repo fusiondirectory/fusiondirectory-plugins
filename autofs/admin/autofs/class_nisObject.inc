@@ -30,9 +30,11 @@ class nisObject extends simplePlugin
     return array(
       'plShortName'     => _('Directory'),
       'plDescription'   => _('Directory'),
-      'plCategory'      => array('autofs'),
-      'plObjectType'    => array('nisObject' => array('name'    => _('Directory'),
-                                                      'filter'  => 'objectClass=nisObject')),
+      'plObjectType'    => array('nisObject' => array(
+        'name'        => _('Directory'),
+        'filter'      => 'objectClass=nisObject',
+        'aclCategory' => 'autofs'
+      )),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );

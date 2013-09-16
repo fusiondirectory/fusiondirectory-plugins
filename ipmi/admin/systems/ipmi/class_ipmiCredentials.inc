@@ -30,7 +30,6 @@ class ipmiCredentials extends simplePlugin
       'plShortName'   => _('Credentials'),
       'plDescription' => _('IPMI credentials'),
       'plSelfModify'  => FALSE,
-      'plCategory'    => array('ipmi'),
       'plObjectType'  => array('ipmi'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())

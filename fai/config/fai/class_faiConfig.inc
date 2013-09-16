@@ -28,7 +28,6 @@ class faiConfig extends simplePlugin
       'plShortName'     => _('FAI configuration'),
       'plDescription'   => _('FusionDirectory fai plugin configuration'),
       'plSelfModify'    => FALSE,
-      'plCategory'      => array('configuration'),
       'plObjectType'    => array('configuration'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())

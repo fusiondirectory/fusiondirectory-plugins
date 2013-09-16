@@ -43,14 +43,20 @@ class serverGeneric extends workstationGeneric
   static function plInfo()
   {
     return array(
-      "plShortName"   => _("Generic"),
-      "plDescription" => _("Server generic"),
-      "plSelfModify"  => FALSE,
-      "plCategory"    => array("server" => array("description"  => _("Server"),
-                                                 "objectClass"  => "goServer")),
-      "plObjectType"  => array("server" => array("name"   => _("Server"),
-                                                 "filter" => "objectClass=goServer")),
-      "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plShortName'   => _('Generic'),
+      'plDescription' => _('Server generic'),
+      'plSelfModify'  => FALSE,
+      'plObjectType'  => array(
+        'server' => array(
+          'name'        => _('Server'),
+          'description' => _('Server'),
+          'filter'      => 'objectClass=goServer',
+          'icon'        => 'plugins/systems/images/select_server.png',
+          'ou'          => get_ou('serverRDN'),
+          'tabClass'    => 'servtabs',
+        )
+      ),
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }
 

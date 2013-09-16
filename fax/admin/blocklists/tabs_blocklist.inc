@@ -24,7 +24,7 @@ class faxblocktabs extends tabs
 {
   function __construct($config, $data, $dn, $cat = '', $copied_object = NULL)
   {
-    parent::__construct($config, $data, $dn, 'gofaxlist', $copied_object);
+    parent::__construct($config, $data, $dn, 'faxBlock', $copied_object);
 
     /* Add references/acls/snapshots */
     $this->addSpecialTabs();

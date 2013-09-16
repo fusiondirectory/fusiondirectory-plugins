@@ -30,14 +30,14 @@ class supannStructuresManagement extends management
   static function plInfo()
   {
     return array(
-      "plShortName"   => _("Supann structures"),
-      "plDescription" => _("Supann structures management"),
-      "plIcon"        => "plugins/supann/images/icon.png",
-      "plSection"     => "admin",
-      "plPriority"    => 42,
-      "plCategory"    => array("supannStructures"),
+      'plShortName'   => _('Supann structures'),
+      'plDescription' => _('Supann structures management'),
+      'plIcon'        => 'plugins/supann/images/icon.png',
+      'plSection'     => 'admin',
+      'plPriority'    => 42,
+      'plManages'     => array('etablissement', 'entite'),
 
-      "plProvidedAcls" => array()
+      'plProvidedAcls' => array()
     );
   }
 

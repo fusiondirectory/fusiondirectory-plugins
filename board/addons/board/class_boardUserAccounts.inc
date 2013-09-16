@@ -150,12 +150,9 @@ class boardUserAccounts extends simplePlugin
   static function plInfo()
   {
     return array(
-      "plShortName"   => _("User"),
-      "plDescription" => _("Statistics about users"),
-      "plSelfModify"  => FALSE,
-      "plCategory"    => array("board"),
-      "plObjectType"  => array("board"),
-
+      'plShortName'   => _('Users'),
+      'plDescription' => _('Statistics about users'),
+      'plObjectType'  => array('dashboard'),
       "plProvidedAcls"    => array()
     );
   }

@@ -140,9 +140,7 @@ class serviceAsterisk extends simpleService {
       "plShortName"     => _("VoIP service (asterisk)"),
       "plDescription"   => _("VoIP - asterisk management")." ("._("Services").")",
       "plIcon"          => "plugins/asterisk/images/iconMini.png",
-      "plSelfModify"    => FALSE,
       "plPriority"      => 92,
-      "plCategory"      => array("server"),
 
       "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );

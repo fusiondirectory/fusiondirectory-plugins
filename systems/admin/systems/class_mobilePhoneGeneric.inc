@@ -38,10 +38,15 @@ class mobilePhoneGeneric extends simplePlugin
       'plShortName'   => _('Generic'),
       'plDescription' => _('Mobile phone generic'),
       'plSelfModify'  => FALSE,
-      'plCategory'    => array('mobilePhone' => array('description'  => _('Mobile phone'),
-                                                      'objectClass'  => 'fdMobilePhone')),
-      'plObjectType'  => array('mobilePhone' => array('name'   => _('Mobile phone'),
-                                                 'filter' => 'objectClass=fdMobilePhone')),
+      'plObjectType'  => array(
+        'mobilePhone' => array(
+          'name'        => _('Mobile phone'),
+          'description' => _('Mobile phone'),
+          'filter'      => 'objectClass=fdMobilePhone',
+          'icon'        => 'plugins/systems/images/select_mobilephone.png',
+          'ou'          => get_ou('mobilePhoneRDN'),
+        )
+      ),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );

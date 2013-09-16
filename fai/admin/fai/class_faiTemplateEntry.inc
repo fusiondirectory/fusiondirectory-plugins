@@ -301,22 +301,22 @@ class faiTemplateEntry extends plugin
   /* Return plugin informations for acl handling */
   static function plInfo()
   {
-    return (array(
-          "plShortName" => _("Template entry"),
-          "plDescription" => _("FAI template entry"),
-          "plSelfModify"  => FALSE,
-          "plPriority"    => 25,
-          "plCategory"    => array("fai"),
-          "plProvidedAcls" => array(
-            "cn"                => _("Name"),
-            "description"       => _("Description"),
-            "FAItemplateFile"   => _("Template file"),
-            "FAItemplatePath"   => _("Template path"),
-            "FAIowner"          => _("File owner"),
-            "FAImode"           => _("File permissions"))
-          ));
-  }
+    return array(
+      'plShortName'   => _('Template entry'),
+      'plDescription' => _('FAI template entry'),
+      'plSelfModify'  => FALSE,
+      'plPriority'    => 25,
+      'plCategory'    => array('fai'),
 
+      'plProvidedAcls' => array(
+        'cn'                => _('Name'),
+        'description'       => _('Description'),
+        'FAItemplateFile'   => _('Template file'),
+        'FAItemplatePath'   => _('Template path'),
+        'FAIowner'          => _('File owner'),
+        'FAImode'           => _('File permissions')
+      )
+    );
+  }
 }
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

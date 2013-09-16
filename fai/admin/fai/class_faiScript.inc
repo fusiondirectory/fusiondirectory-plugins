@@ -596,17 +596,19 @@ class faiScript extends faiPluginClass
   static function plInfo()
   {
     return array(
-      "plShortName" => _("Script"),
-      "plDescription" => _("FAI script"),
-      "plSelfModify"  => FALSE,
-      "plPriority"    => 18,
-      "plCategory"    => array("fai"),
-      "plObjectType"  => array("faiScript" => array("name" => _("FAI script"),
-                                                    "filter" => "objectClass=FAIscript")),
+      'plShortName'   => _('Script'),
+      'plDescription' => _('FAI script'),
+      'plSelfModify'  => FALSE,
+      'plPriority'    => 18,
+      'plObjectType'  => array('faiScript' => array(
+        'name'        => _('FAI script'),
+        'filter'      => 'objectClass=FAIscript',
+        'aclCategory' => 'fai'
+      )),
 
-      "plProvidedAcls" => array(
-        "cn"                => _("Name")." ("._("Readonly").")",
-        "description"       => _("Description")
+      'plProvidedAcls' => array(
+        'cn'                => _('Name').' ('._('Readonly').')',
+        'description'       => _('Description')
       )
     );
   }

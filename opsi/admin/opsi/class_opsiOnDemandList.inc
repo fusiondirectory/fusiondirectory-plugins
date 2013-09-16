@@ -33,8 +33,6 @@ class opsiOnDemandList extends simplePlugin
       'plDescription' => _('OPSI on demand software list'),
       'plIcon'        => 'plugins/opsi/images/iconMiniSoftwareOnDemand.png',
       'plSelfModify'  => FALSE,
-      'plCategory'    => array('opsiOnDemandList' => array('description'  => _('OPSI ondemand list'),
-                                                          'objectClass'  => 'opsiOnDemandList')),
       'plObjectType'  => array('opsiOnDemandList' => array(
         'name'    => _('OPSI ondemand list'),
         'filter'  => 'objectClass=opsiOnDemandList',

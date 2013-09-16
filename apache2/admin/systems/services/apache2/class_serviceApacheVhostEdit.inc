@@ -46,14 +46,16 @@ class serviceApacheVhostEdit extends simplePlugin
   static function plInfo ()
   {
     return array(
-      "plHeadline"    => _("Apache2"),
-      "plShortName"   => _("Apache2"),
-      "plDescription" => _("This Plugin is for Apache serveur"),
-      "plSelfModify"  => FALSE,                  // Does this plugin have an owner that might be able to edit its entry
-      "plCategory"    => array("server"),
-      "plObjectType"  => array("apacheVhost" => array("name" => _("Apache Vhost"), "filter" => "objectClass=apacheConfig")),
+      'plHeadline'    => _('Apache2'),
+      'plShortName'   => _('Apache2'),
+      'plDescription' => _('This Plugin is for Apache server'),
+      'plObjectType'  => array('apacheVhost' => array(
+        'name' => _('Apache Vhost'),
+        'filter' => 'objectClass=apacheConfig',
+        'aclCategory' => 'server'
+      )),
 
-      "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }
 

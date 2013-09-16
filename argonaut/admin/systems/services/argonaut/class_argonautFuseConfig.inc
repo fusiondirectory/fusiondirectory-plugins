@@ -32,7 +32,6 @@ class argonautFuseConfig extends simpleService
       "plDescription"   => _("Argonaut Fuse settings")." ("._("Services").")",
       "plIcon"          => "plugins/argonaut/images/iconMiniFuseConfig.png",
 
-      "plCategory"      => array("server"),
       "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }

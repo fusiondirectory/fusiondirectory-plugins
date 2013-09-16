@@ -25,7 +25,7 @@ class blocklist extends management
   // Tab definition
   protected $tabClass     = "faxblocktabs";
   protected $tabType      = "FAXBLOCKTABS";
-  protected $aclCategory  = "gofaxlist";
+  protected $aclCategory  = "faxBlock";
   protected $aclPlugin    = "blocklistGeneric";
   protected $objectName   = "blocklist";
 
@@ -38,7 +38,7 @@ class blocklist extends management
       "plIcon"        => "plugins/fax/images/iconBlocklists.png",
       "plSection"     => "admin",
       "plPriority"    => 12,
-      "plCategory"    => array("gofaxlist"),
+      "plManages"     => array("faxBlock"),
 
       "plProvidedAcls" => array()
     );

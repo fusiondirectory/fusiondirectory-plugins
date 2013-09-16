@@ -31,16 +31,17 @@ class aliasManagement extends management
   public static function plInfo()
   {
     return array(
-      "plShortName"   => _("Aliases"),
-      "plDescription" => _("Alias management"),
-      "plIcon"        => "plugins/alias/images/icon.png",
-      "plSelfModify"  => FALSE,
-      "plSection"     => "admin",
-      "plPriority"    => 4,
-      "plCategory"    => array("alias" => array("description"  => _("Mail aliases"),
-                                                "objectClass"  => array("mailAliasRedirection","mailAliasDistribution"))),
+      'plShortName'   => _('Aliases'),
+      'plDescription' => _('Alias management'),
+      'plIcon'        => 'plugins/alias/images/icon.png',
+      'plSelfModify'  => FALSE,
+      'plSection'     => 'admin',
+      'plPriority'    => 4,
+      'plCategory'    => array('alias' => array('description'  => _('Mail aliases'),
+                                                'objectClass'  => array('mailAliasRedirection','mailAliasDistribution'))),
+      'plManages'     => array('mailAliasDistribution','mailAliasRedirection'),
 
-      "plProvidedAcls" => array()
+      'plProvidedAcls' => array()
     );
   }
 

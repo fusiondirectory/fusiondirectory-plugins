@@ -196,20 +196,20 @@ class faiHookEntry extends plugin
     /* Return plugin informations for acl handling */
   static function plInfo()
   {
-    return (array(
-          "plShortName" => _("Hook entry"),
-          "plDescription" => _("FAI hook entry"),
-          "plSelfModify"  => FALSE,
-          "plPriority"    => 21,
-          "plCategory"    => array("fai"),
-          "plProvidedAcls" => array(
-            "cn"                => _("Name"),
-            "description"       => _("Description"),
-            "FAItask"           => _("Task"),
-            "FAIscript"         => _("FAI script"))
-          ));
-  }
+    return array(
+      'plShortName'   => _('Hook entry'),
+      'plDescription' => _('FAI hook entry'),
+      'plSelfModify'  => FALSE,
+      'plPriority'    => 21,
+      'plCategory'    => array('fai'),
 
+      'plProvidedAcls' => array(
+        'cn'                => _('Name'),
+        'description'       => _('Description'),
+        'FAItask'           => _('Task'),
+        'FAIscript'         => _('FAI script')
+      )
+    );
+  }
 }
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

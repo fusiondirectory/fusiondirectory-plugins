@@ -36,10 +36,16 @@ class componentGeneric extends simplePlugin
       'plShortName'   => _('Generic'),
       'plDescription' => _('Component generic'),
       'plSelfModify'  => FALSE,
-      'plCategory'    => array('component' => array('description'  => _('Network device'),
-                                                    'objectClass'  => array('device', 'ipHost', 'ieee802Device'))),
-      'plObjectType'  => array('component' => array('name'  => _('Network device'),
-                                                    'filter'  => '(&(objectClass=device)(objectClass=ipHost)(objectClass=ieee802Device))')),
+      'plObjectType'  => array(
+        'component' => array(
+          'name'        => _('Network device'),
+          'description' => _('Network device'),
+          'filter'      => '(&(objectClass=ieee802Device)(objectClass=device)(objectClass=ipHost))',
+          'icon'        => 'plugins/systems/images/select_component.png',
+          'ou'          => get_ou('componentRDN'),
+          'tabClass'    => 'componenttabs',
+        )
+      ),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );

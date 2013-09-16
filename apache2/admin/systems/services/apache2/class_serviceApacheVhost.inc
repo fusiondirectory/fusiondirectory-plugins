@@ -79,8 +79,6 @@ class serviceApache extends simpleService
       "plShortName"   => _("Apache service"),
       "plDescription" => _("Apache virtual host service")." ("._("Services").")",
       "plIcon"        => "plugins/apache2/images/iconMini.png",
-      "plSelfModify"  => FALSE,
-      "plCategory"    => array("server"),
 
       "plProvidedAcls"  => array(
         "VirtualHost" => _("Virtual hosts")

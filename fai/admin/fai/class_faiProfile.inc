@@ -452,21 +452,22 @@ class faiProfile extends faiPluginClass
   static function plInfo()
   {
     return array(
-      "plShortName"   => _("Profile"),
-      "plDescription" => _("FAI profile"),
-      "plSelfModify"  => FALSE,
-      "plCategory"    => array("fai"),
-      "plObjectType"  => array("faiProfile" => array("name" => _("FAI Profile"),
-                                                    "filter" => "objectClass=FAIprofile")),
-      "plProvidedAcls" => array(
-        "cn"                => _("Name"),
-        "description"       => _("Description"),
-        "FAIclass"          => _("FAI classes")
+      'plShortName'   => _('Profile'),
+      'plDescription' => _('FAI profile'),
+      'plSelfModify'  => FALSE,
+      'plObjectType'  => array('faiProfile' => array(
+        'name'        => _('FAI Profile'),
+        'filter'      => 'objectClass=FAIprofile',
+        'aclCategory' => 'fai'
+      )),
+      'plProvidedAcls' => array(
+        'cn'                => _('Name'),
+        'description'       => _('Description'),
+        'FAIclass'          => _('FAI classes')
       )
     );
   }
 
 }
 
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

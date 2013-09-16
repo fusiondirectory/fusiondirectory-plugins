@@ -40,10 +40,15 @@ class winstationGeneric extends simplePlugin
       'plShortName'   => _('Winstation generic'),
       'plDescription' => _('Windows workstation generic'),
       'plSelfModify'  => FALSE,
-      'plCategory'    => array('winstation' => array('description'  => _('Windows workstation'),
-                                                      'objectClass'  => 'gotoWorkstation')),
-      'plObjectType'  => array('winstation' => array('name' => _('Windows workstation'),
-                                                    'filter' => 'objectClass=gotoWorkstation')),
+      'plObjectType'  => array(
+        'winstation' => array(
+          'name'        => _('Windows workstation'),
+          'description' => _('Windows workstation'),
+          'filter'      => '(&(objectClass=sambaSamAccount)(uid=*$))',
+          'icon'        => 'plugins/systems/images/select_winstation.png',
+          'ou'          => get_ou('sambaMachineAccountRDN'),
+        )
+      ),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
