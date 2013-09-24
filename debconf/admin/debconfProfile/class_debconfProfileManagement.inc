@@ -22,7 +22,7 @@
 class debconfProfileManagement extends management
 {
   // Tab definition
-  protected $tabClass     = "debconfprofiletabs";
+  protected $tabClass     = "simpleTabs";
   protected $tabType      = "DEBCONFPROFILETABS";
   protected $aclCategory  = "debconfProfile";
   protected $aclPlugin    = "debconfProfile";
@@ -32,14 +32,14 @@ class debconfProfileManagement extends management
   static function plInfo()
   {
     return array(
-      "plShortName"   => _("Debconf"),
-      "plDescription" => _("Debconf profile management"),
-      "plIcon"        => "plugins/debconf/images/icon.png",
-      "plPriority"    => 31,
-      "plSection"     => "admin",
-      "plCategory"    => array("debconfProfile"),
+      'plShortName'   => _('Debconf'),
+      'plDescription' => _('Debconf profile management'),
+      'plIcon'        => 'plugins/debconf/images/icon.png',
+      'plPriority'    => 31,
+      'plSection'     => 'admin',
+      'plManages'    => array('debconfProfile'),
 
-      "plProvidedAcls" => array()
+      'plProvidedAcls' => array()
     );
   }
 
