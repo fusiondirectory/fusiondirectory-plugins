@@ -111,7 +111,7 @@ class opsiOnDemandList extends simplePlugin
         } else {
           msg_dialog::display(
             _("No mac address"),
-            _("Server $server_dn has no mac address configured in the LDAP"), ERROR_DIALOG
+            sprintf(_("Server %s has no mac address configured in the LDAP"), $this->fdOpsiServerDN), ERROR_DIALOG
           );
           return FALSE;
         }
