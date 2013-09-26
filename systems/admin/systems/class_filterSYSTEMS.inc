@@ -169,7 +169,7 @@ class filterSYSTEMS {
         if ($flags & GL_NO_ACL_CHECK) {
           $result[] = $attrs;
         } else {
-          $obj = $parent->headpage->getObjectTypeInfos($attrs['objectClass']);
+          $obj = $parent->headpage->getObjectTypeInfos($attrs);
 
           if (isset($obj['category'])) {
             $o = $obj['category']."/".$obj['class'];
@@ -185,6 +185,5 @@ class filterSYSTEMS {
     return $result;
   }
 }
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 
 ?>
