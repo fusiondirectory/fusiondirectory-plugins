@@ -42,14 +42,12 @@ class MungedAttribute extends Attribute
       foreach ($this->attrList as $key => $attr) {
         if (isset($this->plugin->attributesAccess[$attr])) {
           $this->plugin->attributesAccess[$attr]->setInLdap(FALSE);
-          $this->plugin->attributesAccess[$attr]->setAcl('sambaMungedDial');
         } else {
           unset($this->attrList[$key]);
         }
       }
       foreach ($this->flagList as $attr) {
         $this->plugin->attributesAccess[$attr]->setInLdap(FALSE);
-        $this->plugin->attributesAccess[$attr]->setAcl('sambaMungedDial');
       }
     }
   }
