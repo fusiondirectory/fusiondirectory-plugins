@@ -127,12 +127,11 @@ class DebconfImportAttribute extends FileAttribute
       }
       @fclose($handle);
 
-      $ErrorStr = "";
       $ldap = $this->plugin->config->get_ldap_link();
-      $check = $ldap->import_complete_ldif($str, $ErrorStr, FALSE, FALSE);
-
-      if ($check != INSERT_OK) {
-        msg_dialog::display(_("LDAP error"), $ErrorStr, ERROR_DIALOG);
+      try {
+        $ldap->import_complete_ldif($str, FALSE, FALSE);
+      } catch(Exception $e) {
+        msg_dialog::display(_('LDAP error'), $e->getMessage(), ERROR_DIALOG);
       }
     } else {
       msg_dialog::display(_("LDIF error"),  "Could not found template name in the ldif ".

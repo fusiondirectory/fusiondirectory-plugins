@@ -1,22 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
+# pavelb <pavel.borecki@gmail.com>, 2012
 # pavelb <pavel.borecki@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-09 19:18+0200\n"
-"PO-Revision-Date: 2013-03-24 15:00+0000\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
+"POT-Creation-Date: 2013-08-21 18:26+0200\n"
+"PO-Revision-Date: 2013-08-21 16:40+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/"
-"FusionDirectory/language/cs_CZ/)\n"
-"Language: cs_CZ\n"
+"Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/FusionDirectory/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: cs_CZ\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
 #: config/netgroups/class_netgroupConfig.inc:28
@@ -28,40 +28,36 @@ msgid "FusionDirectory netgroup plugin configuration"
 msgstr ""
 
 #: config/netgroups/class_netgroupConfig.inc:42
-#, fuzzy
 msgid "LDAP tree"
-msgstr "chyba LDAPu"
+msgstr ""
 
 #: config/netgroups/class_netgroupConfig.inc:45
-#, fuzzy
 msgid "Netgroup RDN"
-msgstr "skupina v NIS"
+msgstr ""
 
 #: config/netgroups/class_netgroupConfig.inc:45
 msgid "Branch in which netgroups will be stored"
 msgstr ""
 
-#: personal/netgroups/class_netgroupMembership.inc:85
+#: personal/netgroups/class_netgroupMembership.inc:71
 #: admin/systems/netgroups/class_netgroupSystem.inc:26
 #: admin/netgroups/memberNisnetgroupSelect/memberNisnetgroup-list.xml:14
 #: admin/netgroups/class_netgroup.inc:55
 msgid "NIS Netgroup"
 msgstr "skupina v NIS"
 
-#: personal/netgroups/class_netgroupMembership.inc:86
+#: personal/netgroups/class_netgroupMembership.inc:72
 #: admin/systems/netgroups/class_netgroupSystem.inc:27
 msgid "NIS Netgroup member"
 msgstr "člen skupiny NIS"
 
-#: personal/netgroups/class_netgroupMembership.inc:103
-#, fuzzy
+#: personal/netgroups/class_netgroupMembership.inc:89
 msgid "Member of the following NIS Netgroups  "
-msgstr "člen těchto skupin NIS (síťového informačního systému)"
+msgstr ""
 
-#: personal/netgroups/class_netgroupMembership.inc:106
-#, fuzzy
+#: personal/netgroups/class_netgroupMembership.inc:92
 msgid "NIS netgroup membership"
-msgstr "členové skupiny NIS"
+msgstr ""
 
 #: admin/netgroups/memberNisnetgroupSelect/memberNisnetgroup-list.xml:10
 msgid "Please select the desired NIS Netgroups"
@@ -94,9 +90,8 @@ msgid "Generic NIS Netgroup settings"
 msgstr "obecné nastavení skupiny NIS"
 
 #: admin/netgroups/class_netgroup.inc:70
-#, fuzzy
 msgid "Informations"
-msgstr "pracovní stanice"
+msgstr ""
 
 #: admin/netgroups/class_netgroup.inc:73
 #: admin/netgroups/memberNisnetgroupSelect/memberNisnetgroup-filter.tpl.c:5
@@ -104,34 +99,29 @@ msgid "Name"
 msgstr "jméno"
 
 #: admin/netgroups/class_netgroup.inc:73
-#, fuzzy
 msgid "Name of this NIS netgroup"
-msgstr "název skupiny v NIS"
+msgstr ""
 
 #: admin/netgroups/class_netgroup.inc:76
-#, fuzzy
 msgid "Description of this NIS netgroup"
-msgstr "popis této skupiny v NIS"
+msgstr ""
 
 #: admin/netgroups/class_netgroup.inc:82
-#, fuzzy
 msgid "User members"
-msgstr "členové skupiny NIS"
+msgstr ""
 
 #: admin/netgroups/class_netgroup.inc:89 admin/netgroups/class_netgroup.inc:98
 #: admin/netgroups/class_netgroup.inc:105
-#, fuzzy
 msgid "NIS netgroup members"
-msgstr "členové skupiny NIS"
+msgstr ""
 
 #: admin/netgroups/class_netgroup.inc:95
 msgid "System members"
 msgstr ""
 
 #: admin/netgroups/class_netgroup.inc:102
-#, fuzzy
 msgid "Netgroup members"
-msgstr "členové skupiny NIS"
+msgstr ""
 
 #: admin/netgroups/memberNisnetgroupSelect/memberNisnetgroup-filter.tpl.c:2
 msgid "Filter"
@@ -140,94 +130,3 @@ msgstr "filtr"
 #: admin/netgroups/memberNisnetgroupSelect/memberNisnetgroup-list.tpl.c:2
 msgid "Base"
 msgstr "základ"
-
-#~ msgid "Show NIS Netgroups"
-#~ msgstr "zobrazit skupiny v NIS"
-
-#~ msgid "Show Users"
-#~ msgstr "zobrazit uživatele"
-
-#~ msgid "Show Hosts"
-#~ msgstr "zobrazit stroje"
-
-#~ msgid "Show NIS Netgroup"
-#~ msgstr "zobrazit skupiny z NIS"
-
-#~ msgid "Please select the desired entries"
-#~ msgstr "vyberte prosím požadované položky"
-
-#~ msgid "User"
-#~ msgstr "uživatel"
-
-#~ msgid "Host"
-#~ msgstr "hostitel"
-
-#~ msgid "Network Device"
-#~ msgstr "síťové zařízení"
-
-#~ msgid "Login"
-#~ msgstr "uživatelské jméno"
-
-#~ msgid "Surname"
-#~ msgstr "příjmení"
-
-#~ msgid "Error"
-#~ msgstr "chyba"
-
-#~ msgid "Add CN/UID '%s' to NIS netgroup '%s' failed: cannot find object!"
-#~ msgstr ""
-#~ "Přidání CN/UID '%s' do skupiny v NIS '%s' selhalo: objekt nelze nalézt!"
-
-#~ msgid "! unknown UID/CN"
-#~ msgstr "! neznámé UID/CN"
-
-#~ msgid "Server"
-#~ msgstr "server"
-
-#~ msgid "NIS Netgroup Error"
-#~ msgstr "chyba skupiny NIS"
-
-#~ msgid "Error: There are a loop with NIS Netgroups"
-#~ msgstr "chyba: došlo k zacyklení skupiny NIS"
-
-#~ msgid "IMPORTANT: Check the members of NIS Netgroup"
-#~ msgstr "DŮLEŽITÉ: zkontrolujte členy skupiny NIS"
-
-#~ msgid "List of NIS Netgroups"
-#~ msgstr "seznam skupin NIS"
-
-#~ msgid "Properties"
-#~ msgstr "vlastnosti"
-
-#~ msgid "Actions"
-#~ msgstr "akce"
-
-#~ msgid "Create"
-#~ msgstr "vytvoř"
-
-#~ msgid "Edit"
-#~ msgstr "uprav"
-
-#~ msgid "Remove"
-#~ msgstr "odeber"
-
-#~ msgid "Edit NIS Netgroup"
-#~ msgstr "uprav skupinu NIS"
-
-#~ msgid "Remove NIS Netgroup"
-#~ msgstr "odebrat skupinu z NIS"
-
-#~ msgid "NIS Netgroup name"
-#~ msgstr "název skupiny v NIS"
-
-#~ msgid "Multiple edit"
-#~ msgstr "hromadná úprava"
-
-#~ msgid "In all NIS Netgroups"
-#~ msgstr "ve všech skupinách NIS"
-
-#~ msgid "Not in all NIS Netgroups"
-#~ msgstr "nenachází se v žádné ze skupin NIS"
-
-#~ msgid "Choose NIS Netgroups for the host"
-#~ msgstr "vyberte skupinu NIS, které bude stroj členem"

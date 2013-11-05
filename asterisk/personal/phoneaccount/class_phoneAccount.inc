@@ -1581,8 +1581,8 @@ class phoneAccount extends plugin
       }
 
     } else {
-      msg_dialog::display(_("Configuration error"), msgPool::missingext("php-mysql"), WARNING_DIALOG);
-      return false;
+      msg_dialog::display(_("Configuration error"), _("Was not able to found any asterisk server"), WARNING_DIALOG);
+      return FALSE;
     }
 
     /* unset macro attr, it will cause an error */

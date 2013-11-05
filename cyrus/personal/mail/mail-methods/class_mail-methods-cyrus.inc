@@ -318,7 +318,7 @@ class mailMethodCyrus extends mailMethod
     $cfg = $this->ServerList[$this->parent->gosaMailServer];
     @imap_setacl ($this->imap_handle, $this->account_id, $cfg["admin"], "lrswipcda");
 
-    if ($this->config->get_cfg_value("cyrusDeleteMailbox", "true") == "true") {
+    if ($this->config->get_cfg_value("cyrusDeleteMailbox", "TRUE") == "TRUE") {
       if (!imap_deletemailbox($this->imap_handle, $cfg["connect"].$this->account_id)) {
         $this->error = imap_last_error();
         return FALSE;

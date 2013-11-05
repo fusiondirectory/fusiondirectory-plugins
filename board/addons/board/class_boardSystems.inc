@@ -118,6 +118,9 @@ class boardSystems extends simplePlugin
 
     $output_next_computer_ids = "";
     $computer_ids_rules = $this->config->get_cfg_value("boardPrefix", array("PC"));
+    if (!is_array($computer_ids_rules)) {
+      $computer_ids_rules = array($computer_ids_rules);
+    }
 
     /* $get_cfg_value return the OU like ou=computer .. */
     $winstation_ou  = mb_substr($this->config->get_cfg_value("sambaMachineAccountRDN"), 3); //FIXME use get_ou

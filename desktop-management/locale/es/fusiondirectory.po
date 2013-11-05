@@ -1,0 +1,569 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: FusionDirectory\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
+"POT-Creation-Date: 2013-09-11 11:08+0200\n"
+"PO-Revision-Date: 2013-09-11 09:10+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/FusionDirectory/language/es/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: config/desktop-management/class_desktopPluginConfig.inc:28
+msgid "Desktop management"
+msgstr ""
+
+#: config/desktop-management/class_desktopPluginConfig.inc:29
+msgid "Desktop management plugin configuration"
+msgstr ""
+
+#: config/desktop-management/class_desktopPluginConfig.inc:40
+msgid "LDAP tree"
+msgstr ""
+
+#: config/desktop-management/class_desktopPluginConfig.inc:43
+msgid "Mimetype RDN"
+msgstr ""
+
+#: config/desktop-management/class_desktopPluginConfig.inc:43
+msgid "Branch in which mime types will be stored"
+msgstr ""
+
+#: config/desktop-management/class_desktopPluginConfig.inc:48
+msgid "Application RDN"
+msgstr ""
+
+#: config/desktop-management/class_desktopPluginConfig.inc:48
+msgid "Branch in which applications will be stored"
+msgstr ""
+
+#: admin/applications/application-list.xml:11
+msgid "List of applications"
+msgstr "Lista de aplicaciones"
+
+#: admin/applications/application-list.xml:15
+#: admin/applications/application-list.xml:74
+#: admin/applications/class_applicationGeneric.inc:72
+#: admin/applications/class_applicationGeneric.inc:74
+#: admin/groups/apps/class_groupApplication.inc:1507
+#: admin/mimetypes/class_mimetypeGeneric.inc:681
+msgid "Application"
+msgstr "Aplicación"
+
+#: admin/applications/application-list.xml:41
+#: admin/applications/class_applicationParameters.inc:212
+#: admin/applications/class_applicationParameters.inc:216
+#: admin/mimetypes/mimetype-list.xml:41
+#: admin/mimetypes/class_mimetypeGeneric.inc:516
+#: admin/mimetypes/class_mimetypeGeneric.inc:677
+#: admin/applications/application-filter.tpl.c:5
+#: admin/groups/apps/edit_entry.tpl.c:26
+#: admin/mimetypes/mimetype-filter.tpl.c:5
+msgid "Name"
+msgstr "Nombre"
+
+#: admin/applications/application-list.xml:49
+#: admin/applications/class_applicationGeneric.inc:103
+#: admin/mimetypes/mimetype-list.xml:49
+#: admin/mimetypes/class_mimetypeGeneric.inc:679
+#: admin/mimetypes/paste_generic.tpl.c:11 admin/mimetypes/generic.tpl.c:17
+msgid "Description"
+msgstr "Descripción"
+
+#: admin/applications/application-list.xml:57
+#: admin/mimetypes/mimetype-list.xml:57
+msgid "Actions"
+msgstr "Acciones"
+
+#: admin/applications/application-list.xml:68
+#: admin/mimetypes/mimetype-list.xml:68
+msgid "Create"
+msgstr "Crear"
+
+#: admin/applications/application-list.xml:86
+#: admin/applications/class_applicationParameters.inc:143
+#: admin/mimetypes/mimetype-list.xml:86 admin/groups/apps/app_list.tpl.c:29
+#: admin/groups/apps/app_list.tpl.c:41 admin/groups/apps/app_list.tpl.c:53
+msgid "Remove"
+msgstr "Eliminar"
+
+#: admin/applications/application-list.xml:118
+msgid "Edit application"
+msgstr "Editar aplicación"
+
+#: admin/applications/application-list.xml:131
+msgid "Remove application"
+msgstr "Eliminar aplicación"
+
+#: admin/applications/class_applicationParameters.inc:71
+msgid "Remove options"
+msgstr "Eliminar opciones"
+
+#: admin/applications/class_applicationParameters.inc:71
+#: admin/applications/class_applicationParameters.inc:73
+msgid "parameter"
+msgstr "Parámetro"
+
+#: admin/applications/class_applicationParameters.inc:73
+msgid "Create options"
+msgstr "Crear opciones"
+
+#: admin/applications/class_applicationParameters.inc:117
+msgid "Variable"
+msgstr "Variable"
+
+#: admin/applications/class_applicationParameters.inc:117
+msgid "Default value"
+msgstr "Valor por defecto"
+
+#: admin/applications/class_applicationParameters.inc:149
+msgid "Add option"
+msgstr "Añadir opción"
+
+#: admin/applications/class_applicationParameters.inc:179
+#: admin/applications/class_applicationParameters.inc:247
+#: admin/applications/class_applicationGeneric.inc:284
+#: admin/groups/apps/class_groupApplication.inc:701
+#: admin/groups/apps/class_groupApplication.inc:1396
+#: admin/groups/apps/class_groupApplication.inc:1410
+#: admin/groups/apps/class_groupApplication.inc:1424
+#: admin/mimetypes/class_mimetypeGeneric.inc:478
+#: admin/mimetypes/class_mimetypeGeneric.inc:490
+#: admin/mimetypes/class_mimetypeGeneric.inc:505
+msgid "LDAP error"
+msgstr "Error LDAP"
+
+#: admin/applications/class_applicationParameters.inc:272
+msgid "Parameter"
+msgstr "Parámetro"
+
+#: admin/applications/class_applicationParameters.inc:273
+msgid "Parameter configuration"
+msgstr "Configuración del parámetro"
+
+#: admin/applications/class_applicationParameters.inc:279
+msgid "Application parameter settings"
+msgstr "Configuración de los parámetros de aplicación"
+
+#: admin/applications/class_applicationManagement.inc:38
+#: admin/groups/apps/class_groupApplication.inc:1499
+#: admin/mimetypes/generic.tpl.c:62 admin/mimetypes/generic.tpl.c:86
+msgid "Applications"
+msgstr "Aplicaciones"
+
+#: admin/applications/class_applicationManagement.inc:39
+msgid "Application management"
+msgstr "Administración de aplicación"
+
+#: admin/applications/class_applicationGeneric.inc:69
+#: admin/mimetypes/class_mimetypeGeneric.inc:668
+#: admin/mimetypes/paste_generic.tpl.c:2 admin/mimetypes/generic.tpl.c:2
+msgid "Generic"
+msgstr "Genérico"
+
+#: admin/applications/class_applicationGeneric.inc:70
+msgid "Application generic"
+msgstr "Aplicación genérica"
+
+#: admin/applications/class_applicationGeneric.inc:88
+msgid "Properties"
+msgstr "Propiedades"
+
+#: admin/applications/class_applicationGeneric.inc:91
+msgid "Application name"
+msgstr "Nombre de la aplicación"
+
+#: admin/applications/class_applicationGeneric.inc:91
+msgid "The name of this application"
+msgstr ""
+
+#: admin/applications/class_applicationGeneric.inc:95
+msgid "Display name"
+msgstr "Nombre a Mostrar"
+
+#: admin/applications/class_applicationGeneric.inc:95
+msgid "The displayed name for this application"
+msgstr ""
+
+#: admin/applications/class_applicationGeneric.inc:99
+msgid "Execute"
+msgstr "Ejecute"
+
+#: admin/applications/class_applicationGeneric.inc:99
+msgid "The application to be executed"
+msgstr ""
+
+#: admin/applications/class_applicationGeneric.inc:103
+msgid "A short description of this application"
+msgstr ""
+
+#: admin/applications/class_applicationGeneric.inc:110
+#: admin/mimetypes/class_mimetypeGeneric.inc:683
+#: admin/mimetypes/generic.tpl.c:32
+msgid "Icon"
+msgstr "Icono"
+
+#: admin/applications/class_applicationGeneric.inc:113
+msgid "The icon for this application"
+msgstr ""
+
+#: admin/applications/class_applicationGeneric.inc:120
+msgid "Options"
+msgstr "Opciones"
+
+#: admin/applications/class_applicationGeneric.inc:123
+msgid "Only executable for member"
+msgstr ""
+
+#: admin/applications/class_applicationGeneric.inc:123
+msgid "Only executable by the memebers of the group"
+msgstr ""
+
+#: admin/applications/class_applicationGeneric.inc:128
+msgid "Replace user configuration on startup"
+msgstr "Reemplazar la configuración del usuario en el inicio"
+
+#: admin/applications/class_applicationGeneric.inc:128
+msgid "Replace the user configuration on startup"
+msgstr ""
+
+#: admin/applications/class_applicationGeneric.inc:133
+#: admin/groups/apps/class_groupApplication.inc:1510
+#: admin/groups/apps/edit_entry.tpl.c:32
+msgid "Place icon on members desktop"
+msgstr "Colocar icono en los escritorios de los miembros "
+
+#: admin/applications/class_applicationGeneric.inc:133
+msgid "Put an icon on the user desktop"
+msgstr ""
+
+#: admin/applications/class_applicationGeneric.inc:138
+#: admin/groups/apps/class_groupApplication.inc:1512
+#: admin/groups/apps/edit_entry.tpl.c:35
+msgid "Place entry in members startmenu"
+msgstr "Colocar entrado en los menús de inicio de los miembros"
+
+#: admin/applications/class_applicationGeneric.inc:138
+#: admin/applications/class_applicationGeneric.inc:143
+msgid "Put an entry in the startup menu"
+msgstr ""
+
+#: admin/applications/class_applicationGeneric.inc:143
+#: admin/groups/apps/class_groupApplication.inc:1511
+#: admin/groups/apps/edit_entry.tpl.c:38
+msgid "Place entry in members launch bar"
+msgstr "Colocar entrada en los barra de inicio de los miembros"
+
+#: admin/applications/class_applicationGeneric.inc:154
+msgid "Script"
+msgstr "Script"
+
+#: admin/applications/class_applicationGeneric.inc:157
+msgid "Script to run at logon"
+msgstr ""
+
+#: admin/applications/class_applicationGeneric.inc:163
+msgid "Log off script"
+msgstr ""
+
+#: admin/applications/class_applicationGeneric.inc:166
+msgid "Script to run at logoff"
+msgstr ""
+
+#: admin/applications/class_applicationGeneric.inc:221
+msgid "no example"
+msgstr "sin ejemplo"
+
+#: admin/applications/class_applicationGeneric.inc:270
+msgid "Error"
+msgstr "Error"
+
+#: admin/applications/class_applicationGeneric.inc:270
+#, php-format
+msgid "Cannot remove application - it is still in use by these objects: %s"
+msgstr "No se puede eliminar las aplicación, está todavía en uso por el objeto '%s'."
+
+#: admin/groups/apps/class_groupApplication.inc:410
+#: admin/groups/apps/class_groupApplication.inc:414
+msgid "Menu"
+msgstr "Menú"
+
+#: admin/groups/apps/class_groupApplication.inc:482
+msgid "Back"
+msgstr "Atrás"
+
+#: admin/groups/apps/class_groupApplication.inc:493
+msgid "back"
+msgstr "atrás"
+
+#: admin/groups/apps/class_groupApplication.inc:501
+msgid "department"
+msgstr "departamento"
+
+#: admin/groups/apps/class_groupApplication.inc:524
+msgid "application"
+msgstr "aplicación"
+
+#: admin/groups/apps/class_groupApplication.inc:1208
+msgid "Not available in release."
+msgstr "No esta disponible en esta versión"
+
+#: admin/groups/apps/class_groupApplication.inc:1500
+msgid "Group applications"
+msgstr "Grupo de aplicaciones"
+
+#: admin/groups/apps/class_groupApplication.inc:1508
+#: admin/groups/apps/app_list.tpl.c:2 admin/groups/apps/app_list.tpl.c:14
+msgid "Release"
+msgstr "Versión"
+
+#: admin/groups/apps/class_groupApplication.inc:1509
+msgid "Application parameter"
+msgstr "Parámetro de la aplicación"
+
+#: admin/mimetypes/class_mimetypeManagement.inc:38
+#: admin/mimetypes/class_mimetypeGeneric.inc:671
+msgid "Mime types"
+msgstr "Tipos MIME"
+
+#: admin/mimetypes/class_mimetypeManagement.inc:39
+msgid "Mime type management"
+msgstr ""
+
+#: admin/mimetypes/mimetype-list.xml:11
+msgid "List of mimetypes"
+msgstr "Listas de tipos mimes"
+
+#: admin/mimetypes/mimetype-list.xml:15 admin/mimetypes/mimetype-list.xml:74
+#: admin/mimetypes/class_mimetypeGeneric.inc:673
+#: admin/mimetypes/paste_generic.tpl.c:5 admin/mimetypes/generic.tpl.c:5
+msgid "Mime type"
+msgstr "Tipo MIME"
+
+#: admin/mimetypes/mimetype-list.xml:118
+msgid "Edit mimetype"
+msgstr "Editar tipo mime"
+
+#: admin/mimetypes/mimetype-list.xml:131
+msgid "Remove mimetype"
+msgstr "Eliminar tipo mime"
+
+#: admin/mimetypes/class_mimetypeGeneric.inc:519
+msgid "File pattern"
+msgstr "Patrón de archivo"
+
+#: admin/mimetypes/class_mimetypeGeneric.inc:669
+msgid "Mime type generic"
+msgstr "Tipo MIME genérico"
+
+#: admin/mimetypes/class_mimetypeGeneric.inc:678
+#: admin/mimetypes/generic.tpl.c:11
+msgid "Mime group"
+msgstr "Grupo Mime"
+
+#: admin/mimetypes/class_mimetypeGeneric.inc:680
+#: admin/mimetypes/generic.tpl.c:23
+msgid "Base"
+msgstr "Base"
+
+#: admin/mimetypes/class_mimetypeGeneric.inc:682
+msgid "Left click action"
+msgstr "Acción del botón izquierdo"
+
+#: admin/mimetypes/class_mimetypeGeneric.inc:684
+#: admin/mimetypes/generic.tpl.c:53
+msgid "File patterns"
+msgstr "Patrones de archivos"
+
+#: admin/mimetypes/class_mimetypeGeneric.inc:685
+msgid "Embedded applications"
+msgstr "Aplicaciones embebidas"
+
+#: admin/applications/application-filter.tpl.c:2
+#: admin/mimetypes/mimetype-filter.tpl.c:2
+msgid "Filter"
+msgstr "Filtro"
+
+#: admin/applications/remove.tpl.c:2 admin/mimetypes/remove.tpl.c:2
+msgid "Warning"
+msgstr "Aviso"
+
+#: admin/applications/remove.tpl.c:5 admin/mimetypes/remove.tpl.c:5
+msgid ""
+"Please double check if you really want to do this since there is no way for "
+"FusionDirectory to get your data back."
+msgstr "Por favor verifique si realmente quiere hacer esto ya que no hay forma para que FusionDirectory recupere la data."
+
+#: admin/applications/remove.tpl.c:8 admin/mimetypes/remove.tpl.c:8
+msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
+msgstr "Entonces, si esta seguro, presione <i>Eliminar</i> para continuar o <i>Cancelar</i> para Abortar."
+
+#: admin/groups/apps/edit_entry.tpl.c:2
+msgid "Folder image"
+msgstr "Imagen de carpeta"
+
+#: admin/groups/apps/edit_entry.tpl.c:5
+msgid "Could not load image."
+msgstr "No se puede subir la imagen."
+
+#: admin/groups/apps/edit_entry.tpl.c:8
+msgid "None"
+msgstr "Ninguno"
+
+#: admin/groups/apps/edit_entry.tpl.c:11
+msgid "Upload image"
+msgstr "Subir imagen"
+
+#: admin/groups/apps/edit_entry.tpl.c:14
+msgid "Upload"
+msgstr "Enviar"
+
+#: admin/groups/apps/edit_entry.tpl.c:17
+msgid "Reset image"
+msgstr "Eliminar imagen"
+
+#: admin/groups/apps/edit_entry.tpl.c:20
+msgid "Reset"
+msgstr "Borrar"
+
+#: admin/groups/apps/edit_entry.tpl.c:23
+msgid "Application settings"
+msgstr "Parametros de la aplicación"
+
+#: admin/groups/apps/edit_entry.tpl.c:29
+msgid "Application options"
+msgstr "Opciones de la aplicación"
+
+#: admin/groups/apps/app_list.tpl.c:5
+msgid "Copy menu"
+msgstr "Copiar menú"
+
+#: admin/groups/apps/app_list.tpl.c:8
+msgid "Paste menu from"
+msgstr "Pegar menú de"
+
+#: admin/groups/apps/app_list.tpl.c:11
+msgid "Delete menu"
+msgstr "Eliminar menú"
+
+#: admin/groups/apps/app_list.tpl.c:17 admin/groups/apps/app_list.tpl.c:20
+msgid "Folder"
+msgstr "Carpeta"
+
+#: admin/groups/apps/app_list.tpl.c:23 admin/groups/apps/app_list.tpl.c:35
+#: admin/groups/apps/app_list.tpl.c:47
+msgid "Move up"
+msgstr "Mover arriba"
+
+#: admin/groups/apps/app_list.tpl.c:26 admin/groups/apps/app_list.tpl.c:38
+#: admin/groups/apps/app_list.tpl.c:50
+msgid "Move down"
+msgstr "Mover abajo"
+
+#: admin/groups/apps/app_list.tpl.c:32 admin/groups/apps/app_list.tpl.c:56
+msgid "Edit"
+msgstr "Editar"
+
+#: admin/groups/apps/app_list.tpl.c:44
+msgid "Entry"
+msgstr "Entrada"
+
+#: admin/groups/apps/app_list.tpl.c:59
+msgid "add to"
+msgstr "Añadir a"
+
+#: admin/groups/apps/app_list.tpl.c:62
+msgid "Add selected category to this folder.."
+msgstr ""
+
+#: admin/groups/apps/app_list.tpl.c:65
+msgid "Separator"
+msgstr "Separador"
+
+#: admin/groups/apps/app_list.tpl.c:68
+msgid "Add a separator to this folder."
+msgstr "Añadir un separador a esta carpeta."
+
+#: admin/groups/apps/app_list.tpl.c:71
+msgid "Add selected applications to this folder."
+msgstr "Añadir la aplicación seleccionada a esta carpeta."
+
+#: admin/mimetypes/paste_generic.tpl.c:8 admin/mimetypes/generic.tpl.c:8
+msgid "Please enter a name for the mime type here"
+msgstr "Por favor introduzca un nombre para el tipo mime valido"
+
+#: admin/mimetypes/paste_generic.tpl.c:14
+msgid "Please specify a description for this mime type here"
+msgstr "Por favor introduzca una descripción para este tipo mime aquí"
+
+#: admin/mimetypes/generic.tpl.c:14
+msgid "Categorize this mime type"
+msgstr "Categorizar este tipo mime"
+
+#: admin/mimetypes/generic.tpl.c:20
+msgid "Please specify a description"
+msgstr "Por favor introduzca una descripción"
+
+#: admin/mimetypes/generic.tpl.c:26
+msgid "Choose subtree to place application in"
+msgstr "Elija lugar del árbol donde colocar la aplicación"
+
+#: admin/mimetypes/generic.tpl.c:29
+msgid "Select a base"
+msgstr "Seleccione una base"
+
+#: admin/mimetypes/generic.tpl.c:35 admin/mimetypes/generic.tpl.c:38
+msgid "Mime icon"
+msgstr "Icono Mime"
+
+#: admin/mimetypes/generic.tpl.c:41
+msgid "Update"
+msgstr "Actualizar"
+
+#: admin/mimetypes/generic.tpl.c:44
+msgid "Update mime type icon"
+msgstr "Actualizar icono de tipo mime"
+
+#: admin/mimetypes/generic.tpl.c:47 admin/mimetypes/generic.tpl.c:50
+msgid "Left click"
+msgstr "Botón izquierdo"
+
+#: admin/mimetypes/generic.tpl.c:56
+msgid "Please specify a new file pattern"
+msgstr "Por favor introduzca un nuevo patrón de archivo"
+
+#: admin/mimetypes/generic.tpl.c:59
+msgid "Add a new file pattern"
+msgstr "Añadir nuevo patrón de archivo"
+
+#: admin/mimetypes/generic.tpl.c:65 admin/mimetypes/generic.tpl.c:89
+msgid "Enter an application name here"
+msgstr "Introduzca un nombre de la aplicación aquí"
+
+#: admin/mimetypes/generic.tpl.c:68 admin/mimetypes/generic.tpl.c:92
+msgid "Add application"
+msgstr "Añadir aplicación"
+
+#: admin/mimetypes/generic.tpl.c:71 admin/mimetypes/generic.tpl.c:74
+msgid "Embedding"
+msgstr "Embebido"
+
+#: admin/mimetypes/generic.tpl.c:77
+msgid "Show file in embedded viewer"
+msgstr "Mostrar archivo en un visor interno"
+
+#: admin/mimetypes/generic.tpl.c:80
+msgid "Show file in external viewer"
+msgstr "Mostrar archivo en un visor externo"
+
+#: admin/mimetypes/generic.tpl.c:83
+msgid "Ask whether to save to local disk"
+msgstr "Para saber si graba al disco local"

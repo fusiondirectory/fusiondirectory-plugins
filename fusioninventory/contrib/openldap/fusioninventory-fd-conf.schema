@@ -1,0 +1,25 @@
+##
+## fusioninventory-fd-conf.schema - Needed by Fusion -Directory for managing inventories
+##
+
+# Attributes
+attributetype ( 1.3.6.1.4.1.38414.41.1.1 NAME 'fdInventoryRDN'
+  DESC 'FusionDirectory - Inventory RDN'
+  EQUALITY caseExactIA5Match
+  SUBSTR caseExactIA5SubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE)
+
+attributetype ( 1.3.6.1.4.1.38414.41.1.2 NAME 'fdInventoryMatching'
+  DESC 'FusionDirectory - Inventory matching'
+  EQUALITY caseExactIA5Match
+  SUBSTR caseExactIA5SubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE)
+
+# Object Class
+objectclass ( 1.3.6.1.4.1.38414.41.2.1 NAME 'fdInventoryPluginConf'
+  DESC 'FusionDirectory inventory configuration'
+  SUP top AUXILIARY
+  MUST ( cn )
+  MAY ( fdInventoryRDN $ fdInventoryMatching ) )

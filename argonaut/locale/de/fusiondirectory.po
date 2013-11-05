@@ -1,21 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
+# Maik Wagner <maikwagner@yahoo.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-09 19:16+0200\n"
-"PO-Revision-Date: 2013-03-24 15:00+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: German (http://www.transifex.com/projects/p/FusionDirectory/"
-"language/de/)\n"
-"Language: de\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
+"POT-Creation-Date: 2013-08-21 18:26+0200\n"
+"PO-Revision-Date: 2013-08-23 12:30+0000\n"
+"Last-Translator: Maik Wagner <maikwagner@yahoo.com>\n"
+"Language-Team: German (http://www.transifex.com/projects/p/FusionDirectory/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: addons/argonaut/events/class_DaemonEvent.inc:150
@@ -71,7 +71,7 @@ msgstr "Softwareupdate"
 
 #: addons/argonaut/events/class_DaemonEvent.inc:425
 msgid "(Re)Install"
-msgstr ""
+msgstr "(Re)Installieren"
 
 #: addons/argonaut/events/eventTargetSystems-list.xml:11
 msgid "List of target systems"
@@ -133,9 +133,7 @@ msgstr "Die Datei ist leer"
 #: addons/argonaut/class_argonautImportFile.inc:110
 msgid ""
 "Selected entries will be skipped because of errors. Do you want to proceed?"
-msgstr ""
-"Die ausgewählten Einträge sind fehlerhaft und werden nicht berücksichtig. "
-"Möchten Sie fortfahren?"
+msgstr "Die ausgewählten Einträge sind fehlerhaft und werden nicht berücksichtig. Möchten Sie fortfahren?"
 
 #: addons/argonaut/class_argonautImportFile.inc:146
 #: addons/argonaut/class_argonautQueue.inc:351
@@ -161,7 +159,7 @@ msgstr "Ereignis"
 #: addons/argonaut/class_argonautQueue.inc:40
 #: addons/argonaut/class_argonautQueue.inc:46
 msgid "Deployment queue"
-msgstr ""
+msgstr "Deployment-Warteschlange"
 
 #: addons/argonaut/class_argonautQueue.inc:41
 msgid "Provide a mechanism to automatically activate systems"
@@ -177,7 +175,7 @@ msgstr "Wartend"
 
 #: addons/argonaut/class_argonautQueue.inc:193
 msgid "Show error"
-msgstr ""
+msgstr "Fehler anzeigen"
 
 #: addons/argonaut/class_argonautQueue.inc:194
 #: addons/argonaut/class_argonautQueue.inc:308
@@ -203,28 +201,25 @@ msgstr "Berechtigung"
 #: addons/argonaut/class_argonautQueue.inc:258
 #, php-format
 msgid "The following jobs couldn't be deleted, they have to be aborted: %s"
-msgstr ""
-"Die folgenden Aufträge konnten nicht gelöscht werden, sie müssen abgebrochen "
-"werden: %s"
+msgstr "Die folgenden Aufträge konnten nicht gelöscht werden, sie müssen abgebrochen werden: %s"
 
 #: addons/argonaut/class_argonautQueue.inc:305
 msgid "Info"
-msgstr ""
+msgstr "Info"
 
 #: addons/argonaut/class_argonautQueue.inc:305
 #, php-format
 msgid "%s"
-msgstr ""
+msgstr "%s"
 
 #: addons/argonaut/class_argonautQueue.inc:309
 #, php-format
 msgid "Required class '%s' cannot be found: job not aborted!"
-msgstr ""
-"Die erforderliche Klasse '%s' wurde nicht gefunden: Auftrag abgebrochen!"
+msgstr "Die erforderliche Klasse '%s' wurde nicht gefunden: Auftrag abgebrochen!"
 
 #: addons/argonaut/class_argonautQueue.inc:341
 msgid "Error detail"
-msgstr ""
+msgstr "Fehlerdetail"
 
 #: addons/argonaut/class_argonautQueue.inc:399
 #, php-format
@@ -245,11 +240,11 @@ msgstr "Datum"
 
 #: addons/argonaut/class_argonautLogView.inc:221
 msgid "Argonaut Logs"
-msgstr ""
+msgstr "Argonaut Logs"
 
 #: addons/argonaut/class_argonautLogView.inc:222
 msgid "Argonaut Logs Viewer"
-msgstr ""
+msgstr "Argonaut Logs Betrachter"
 
 #: addons/argonaut/deploy-list.xml:10
 msgid "List of queued jobs"
@@ -314,7 +309,7 @@ msgstr "Kann Warteschlangeneinträge nicht laden: %s"
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:31
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:32
 msgid "Argonaut Fuse settings"
-msgstr ""
+msgstr "Argonaut Fuse Einstellungen"
 
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:32
 #: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:33
@@ -328,29 +323,29 @@ msgstr "Dienste"
 
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:47
 msgid "Basic settings"
-msgstr ""
+msgstr "Grundlegende Einstellungen"
 
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:50
 msgid "Default mode"
-msgstr ""
+msgstr "Standardmodus"
 
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:57
 #: admin/systems/services/argonaut/class_argonautServer.inc:74
-#: admin/systems/argonaut/class_argonautClient.inc:134
+#: admin/systems/argonaut/class_argonautClient.inc:135
 msgid "Log directory"
-msgstr ""
+msgstr "Log Verzeichnis"
 
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:58
 msgid "Directory in which argonaut-fuse will store its log"
-msgstr ""
+msgstr "Verzeichnis in dem argonaut-fuse sein Log speichern wird"
 
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:66
 msgid "TFTP"
-msgstr ""
+msgstr "TFTP"
 
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:69
 msgid "Pxelinux cfg path"
-msgstr ""
+msgstr "Pxelinux cfg Pfad"
 
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:70
 msgid "Path where argonaut-fuse should store pxelinux.cfg"
@@ -371,60 +366,60 @@ msgstr ""
 
 #: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:47
 msgid "OPSI"
-msgstr ""
+msgstr "OPSI"
 
 #: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:50
 msgid "Opsi admin"
-msgstr ""
+msgstr "Opsi admin"
 
 #: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:55
 msgid "Opsi password"
-msgstr ""
+msgstr "Opsi Passwort"
 
 #: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:60
 msgid "Opsi server"
-msgstr ""
+msgstr "Opsi Server"
 
 #: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:65
 msgid "Opsi lang"
-msgstr ""
+msgstr "Opsi lang"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:30
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:31
 msgid "Argonaut DNS settings"
-msgstr ""
+msgstr "Argonaut DNS Einstellungen"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:47
 msgid "Argonaut Ldap2zone settings:"
-msgstr ""
+msgstr "Argonaut Ldap2zone Einstellungen:"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:50
 msgid "Bind directory"
-msgstr ""
+msgstr "Bind Verzeichnis"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:51
 msgid "The directory in which conf file must be created"
-msgstr ""
+msgstr "Das Verzeichnis in dem conf-Datei erstellt werden muss"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:57
 msgid "Bind cache directory"
-msgstr ""
+msgstr "Bind cache Verzeichnis"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:58
 msgid "The directory in which zone files must be created"
-msgstr ""
+msgstr "Das Verzeichnis in welchem Zonendateien erstellt werden müssen"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:64
 msgid "Allow notify"
-msgstr ""
+msgstr "Benachrichtigung erlauben"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:70
 msgid "Allow update (semicolon separated and ended)"
-msgstr ""
+msgstr "Aktualisierung erlauben (Semikolon getrennt und beendet)"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:76
 msgid "Allow transfer (semicolon separated and ended)"
-msgstr ""
+msgstr "Transfer erlauben  (Semikolon getrennt und beendet)"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:82
 msgid "TTL"
@@ -432,40 +427,41 @@ msgstr "TTL"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:83
 msgid "Time to live"
-msgstr ""
+msgstr "Time to Live"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:91
 msgid "rndc path"
-msgstr ""
+msgstr "rndc Pfad"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:92
 msgid "path to rndc binary"
-msgstr ""
+msgstr "Pfad zu rndc-Binary"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:31
 #: admin/systems/services/argonaut/class_argonautServer.inc:32
 msgid "Argonaut Server"
-msgstr ""
+msgstr "Argonaut Server"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:47
 msgid "Argonaut server"
-msgstr ""
+msgstr "Argonaut Server"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:50
 msgid "Delete finished tasks"
-msgstr ""
+msgstr "Beendete Aufgaben löschen"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:51
-msgid "Wether or not argonaut server should delete successfully finished tasks"
+msgid ""
+"Wether or not argonaut server should delete successfully finished tasks"
 msgstr ""
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:56
 msgid "Protocol"
-msgstr ""
+msgstr "Protokoll"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:56
 msgid "Protocol to use for argonaut"
-msgstr ""
+msgstr "Zu verwendendes Protokoll für argonaut"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:61
 msgid "Port"
@@ -480,16 +476,17 @@ msgid "Timeout"
 msgstr "Wartezeit"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:68
-msgid "Time in seconds before to consider an argonaut client or server as down"
+msgid ""
+"Time in seconds before to consider an argonaut client or server as down"
 msgstr ""
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:75
 msgid "Directory in which argonaut will store its log"
-msgstr ""
+msgstr "Verzeichnis in dem argonaut sein Log speichern wird"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:80
 msgid "Key path"
-msgstr ""
+msgstr "Schlüsselpfad"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:80
 msgid "Path to the private key file"
@@ -497,65 +494,65 @@ msgstr ""
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:85
 msgid "Certificate path"
-msgstr ""
+msgstr "Zertifikatpfad"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:85
 msgid "Path to the certificate file"
-msgstr ""
+msgstr "Pfad zur Zertifikatsdatei"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:92
 msgid "Wake on lan"
-msgstr ""
+msgstr "Wake on lan"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:95
 msgid "Interface"
-msgstr ""
+msgstr "Schnittstelle"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:96
 msgid "Interface to use for sending WakeOnLan requests"
-msgstr ""
+msgstr "Zu verwendende Schnittstelle für den Versand von WakeOnLan-Anfragen"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:101
 msgid "IP tool"
-msgstr ""
+msgstr "IP Werkzeug"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:101
 msgid "IP tool to use"
-msgstr ""
+msgstr "Zu verwendendes IP-Werkzeug"
 
 #: admin/systems/services/argonaut/class_argonautFuseLTSPConfig.inc:32
 #: admin/systems/services/argonaut/class_argonautFuseLTSPConfig.inc:33
 msgid "Argonaut Fuse LTSP module settings"
-msgstr ""
+msgstr "Argonaut Fuse LTSP Moduleinstellungen"
 
 #: admin/systems/services/argonaut/class_argonautFuseLTSPConfig.inc:47
 msgid "LTSP"
-msgstr ""
+msgstr "LTSP"
 
 #: admin/systems/services/argonaut/class_argonautFuseLTSPConfig.inc:50
 msgid "LTSP server"
-msgstr ""
+msgstr "LTSP Server"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:31
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:32
 msgid "Argonaut Mirror settings"
-msgstr ""
+msgstr "Argonaut Mirror-Einstellungen"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:46
 msgid "Argonaut mirror settings"
-msgstr ""
+msgstr "Argonaut Mirror-Einstellungen"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:49
 msgid "Local debian mirror directory"
-msgstr ""
+msgstr "Lokales Debianmirror-Verzeichnis"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:58
 msgid "Argonaut Debconf Crawler configuration"
-msgstr ""
+msgstr "Argonaut Debconf Crawler Konfiguration"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:61
 msgid "Local packages folder"
-msgstr ""
+msgstr "Lokale Paketeordner"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:62
 msgid "Folder in which the crawler will store packages during analysis"
@@ -563,7 +560,7 @@ msgstr ""
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:70
 msgid "Argonaut Repository configuration"
-msgstr ""
+msgstr "Argonaut Repository Konfiguration"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:73
 msgid "Proxy"
@@ -571,7 +568,7 @@ msgstr "Proxy"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:79
 msgid "Errors"
-msgstr ""
+msgstr "Fehler"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:86
 msgid "Source"
@@ -579,7 +576,7 @@ msgstr "Quelle"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:93
 msgid "GPG Check"
-msgstr ""
+msgstr "GPG Check"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:100
 msgid "Contents"
@@ -587,7 +584,7 @@ msgstr "Inhalt"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:107
 msgid "Verbose"
-msgstr ""
+msgstr "Ausführlich"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:108
 msgid "Wether to activate verbose mode"
@@ -608,63 +605,63 @@ msgstr ""
 
 #: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:57
 msgid "NFS root"
-msgstr ""
+msgstr "NFS root"
 
-#: admin/systems/argonaut/class_argonautClient.inc:116
+#: admin/systems/argonaut/class_argonautClient.inc:117
 msgid "Argonaut client settings"
-msgstr ""
+msgstr "Argonaut Clienteinstellungen"
 
-#: admin/systems/argonaut/class_argonautClient.inc:119
+#: admin/systems/argonaut/class_argonautClient.inc:120
 msgid "Client port"
-msgstr ""
+msgstr "Clientport"
 
-#: admin/systems/argonaut/class_argonautClient.inc:119
+#: admin/systems/argonaut/class_argonautClient.inc:120
 msgid "Port used by argonaut client for JSON-RPC"
 msgstr ""
 
-#: admin/systems/argonaut/class_argonautClient.inc:124
+#: admin/systems/argonaut/class_argonautClient.inc:125
 msgid "WakeOnLan interface"
-msgstr ""
+msgstr "WakeOnLan Schnittstelle"
 
-#: admin/systems/argonaut/class_argonautClient.inc:124
+#: admin/systems/argonaut/class_argonautClient.inc:125
 msgid "Interface used by argonaut for WakeOnLan"
 msgstr ""
 
-#: admin/systems/argonaut/class_argonautClient.inc:129
+#: admin/systems/argonaut/class_argonautClient.inc:130
 msgid "TaskId file"
-msgstr ""
+msgstr "TaskId Datei"
 
-#: admin/systems/argonaut/class_argonautClient.inc:129
+#: admin/systems/argonaut/class_argonautClient.inc:130
 msgid "File which argonaut will use to store its task id when booting"
 msgstr ""
 
-#: admin/systems/argonaut/class_argonautClient.inc:134
+#: admin/systems/argonaut/class_argonautClient.inc:135
 msgid "Directory in which argonaut client should write its logs"
-msgstr ""
+msgstr "Verzeichnis in dem argonaut-Client seine Logs schreiben soll"
 
-#: admin/systems/argonaut/class_argonautClient.inc:141
+#: admin/systems/argonaut/class_argonautClient.inc:142
 msgid "Service names"
-msgstr ""
+msgstr "Dienstnamen"
 
-#: admin/systems/argonaut/class_argonautClient.inc:143
+#: admin/systems/argonaut/class_argonautClient.inc:144
 msgid "Argonaut service names"
-msgstr ""
-
-#: admin/systems/argonaut/class_argonautClient.inc:158
-msgid "Argonaut client"
-msgstr ""
+msgstr "Argonaut Dienstnamen"
 
 #: admin/systems/argonaut/class_argonautClient.inc:159
-msgid "Edit argonaut client settings"
-msgstr ""
+msgid "Argonaut client"
+msgstr "Argonaut Client"
 
-#: include/class_supportDaemon.inc:88
+#: admin/systems/argonaut/class_argonautClient.inc:160
+msgid "Edit argonaut client settings"
+msgstr "Argonaut Clienteinstellungen bearbeiten"
+
+#: include/class_supportDaemon.inc:89
 msgid "Multiple argonaut server found. Only one is supported"
 msgstr ""
 
-#: include/class_supportDaemon.inc:90
+#: include/class_supportDaemon.inc:91
 msgid "There is no argonaut server configured"
-msgstr ""
+msgstr "Es ist kein argonaut-Server konfiguriert"
 
 #: addons/argonaut/argonaut_import_file.tpl.c:2
 msgid "Import jobs"
@@ -682,7 +679,7 @@ msgstr "Zeitstempel"
 
 #: addons/argonaut/argonaut_import_file.tpl.c:11
 msgid "MAC-address"
-msgstr ""
+msgstr "MAC-Adresse"
 
 #: addons/argonaut/argonaut_import_file.tpl.c:14
 msgid "job type"
@@ -702,7 +699,7 @@ msgstr "Voll qualifizierter Hostname"
 
 #: addons/argonaut/argonaut_import_file.tpl.c:26
 msgid "IP-address"
-msgstr ""
+msgstr "IP-Adresse"
 
 #: addons/argonaut/argonaut_import_file.tpl.c:29
 msgid "DHCP group"
@@ -730,7 +727,6 @@ msgid "Timestamp"
 msgstr "Zeitstempel"
 
 #: addons/argonaut/argonaut_import_file.tpl.c:56
-#: addons/argonaut/events/eventTargetSystems-list.tpl.c:2
 #: addons/argonaut/deploy-list.tpl.c:2
 msgid "Base"
 msgstr "Basis"
@@ -813,7 +809,7 @@ msgstr "Zeige Terminals"
 
 #: addons/argonaut/events/eventTargetSystems-filter.tpl.c:14
 msgid "Show winstations"
-msgstr ""
+msgstr "Winstations anzeigen"
 
 #: addons/argonaut/events/eventTargetSystems-filter.tpl.c:17
 msgid "Filter by IP address range"
@@ -825,9 +821,7 @@ msgstr "Warnung"
 
 #: addons/argonaut/remove.tpl.c:5
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr ""
-"Wenn Sie sicher sind, drücken Sie 'Entfernen' um fortzufahren oder "
-"'Abbrechen' zum Abbruch."
+msgstr "Wenn Sie sicher sind, drücken Sie 'Entfernen' um fortzufahren oder 'Abbrechen' zum Abbruch."
 
 #: addons/argonaut/argonaut_log_view.tpl.c:2
 msgid "Available logs"
@@ -840,6 +834,3 @@ msgstr "Ausgewähltes Protokoll"
 #: addons/argonaut/argonaut_log_view.tpl.c:8
 msgid "No logs for this host available!"
 msgstr "Es sind keine Protokolle für dieses System verfügbar!"
-
-#~ msgid "Log view"
-#~ msgstr "Log-Ansicht"

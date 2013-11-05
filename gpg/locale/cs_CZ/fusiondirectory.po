@@ -1,0 +1,163 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: FusionDirectory\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
+"POT-Creation-Date: 2013-08-21 18:26+0200\n"
+"PO-Revision-Date: 2013-08-21 16:32+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/FusionDirectory/language/cs_CZ/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: cs_CZ\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+
+#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:10
+msgid "Please select the desired entries"
+msgstr "vyberte prosím požadované položky"
+
+#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:14
+msgid "PGP Key"
+msgstr ""
+
+#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:40
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:121
+msgid "Key ID"
+msgstr ""
+
+#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:48
+msgid "User"
+msgstr "uživatel"
+
+#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:56
+msgid "Creation date"
+msgstr ""
+
+#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:64
+msgid "Expiration date"
+msgstr ""
+
+#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:72
+msgid "Type"
+msgstr "typ"
+
+#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:80
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:126
+msgid "Size"
+msgstr "velikost"
+
+#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:88
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:127
+msgid "Revoked"
+msgstr ""
+
+#: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:96
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:128
+msgid "Disabled"
+msgstr "zakázáno"
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:41
+msgid "Configuration error"
+msgstr "chyba v nastavení"
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:41
+msgid "You need to configure GPG base dn through the addons section first"
+msgstr ""
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:122
+msgid "User ID"
+msgstr "ID uživatele"
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:123
+msgid "Creation time"
+msgstr ""
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:124
+msgid "Expiration"
+msgstr ""
+
+#: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:125
+msgid "Algorithm"
+msgstr ""
+
+#: personal/gpg/class_gpgAccount.inc:31
+msgid "GPG keys"
+msgstr ""
+
+#: personal/gpg/class_gpgAccount.inc:35
+msgid "GPG keys of this user"
+msgstr ""
+
+#: personal/gpg/class_gpgAccount.inc:46
+msgid "GPG"
+msgstr ""
+
+#: personal/gpg/class_gpgAccount.inc:47
+msgid "Edit user's GPG IDs"
+msgstr ""
+
+#: addons/gpg/class_pgpServerInfo.inc:34 addons/gpg/class_pgpServerInfo.inc:69
+#: addons/gpg/class_pgpServerInfo.inc:70
+msgid "GPG server info"
+msgstr ""
+
+#: addons/gpg/class_pgpServerInfo.inc:38
+msgid "Software"
+msgstr "software"
+
+#: addons/gpg/class_pgpServerInfo.inc:38
+msgid "Which software this GPG key server is running"
+msgstr ""
+
+#: addons/gpg/class_pgpServerInfo.inc:43
+msgid "GPG version"
+msgstr ""
+
+#: addons/gpg/class_pgpServerInfo.inc:43
+msgid "Which version of GPG this key server is running"
+msgstr ""
+
+#: addons/gpg/class_pgpServerInfo.inc:48
+msgid "Branch in which keys are stored"
+msgstr ""
+
+#: addons/gpg/class_pgpServerInfo.inc:52
+msgid "Keys RDN"
+msgstr ""
+
+#: addons/gpg/class_pgpServerInfo.inc:52
+msgid "Branch under base in which keys are stored"
+msgstr ""
+
+#: addons/gpg/class_pgpServerInfo.inc:91
+msgid "LDAP error"
+msgstr "chyba LDAPu"
+
+#: personal/gpg/pgpKeySelect/pgpKeySelect-filter.tpl.c:2
+msgid "Filter"
+msgstr "filtr"
+
+#: personal/gpg/pgpKeySelect/pgpKeySelect-filter.tpl.c:5
+msgid "Show servers"
+msgstr "zobrazit servery"
+
+#: personal/gpg/pgpKeySelect/pgpKeySelect-filter.tpl.c:8
+msgid "Show workstations"
+msgstr "zobrazit pracovní stanice"
+
+#: personal/gpg/pgpKeySelect/pgpKeySelect-filter.tpl.c:11
+msgid "Show Windows PC"
+msgstr "zobrazit počítače s OS MS Windows"
+
+#: personal/gpg/pgpKeySelect/pgpKeySelect-filter.tpl.c:14
+msgid "Show terminals"
+msgstr "zobrazit terminály"
+
+#: personal/gpg/pgpKeySelect/pgpKeySelect-filter.tpl.c:17
+msgid "Name"
+msgstr "název"

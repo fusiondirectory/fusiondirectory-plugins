@@ -1,30 +1,30 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Alessandro Amici <a.amici@bopen.it>, 2005
 # poterealpopolo <giuliano@opensides.be>, 2011
+# poterealpopolo <giuliano@opensides.be>, 2013
 # poterealpopolo <giuliano@opensides.be>, 2012
+# poterealpopolo <giuliano@opensides.be>, 2011-2012
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-09 19:18+0200\n"
-"PO-Revision-Date: 2013-03-24 14:46+0000\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
+"POT-Creation-Date: 2013-08-21 18:26+0200\n"
+"PO-Revision-Date: 2013-08-21 16:40+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Italian (http://www.transifex.com/projects/p/FusionDirectory/"
-"language/it/)\n"
-"Language: it\n"
+"Language-Team: Italian (http://www.transifex.com/projects/p/FusionDirectory/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: config/nagios/class_nagiosConfig.inc:28
-#, fuzzy
 msgid "Nagios configuration"
-msgstr "Autentificazione di Nagios"
+msgstr ""
 
 #: config/nagios/class_nagiosConfig.inc:29
 msgid "FusionDirectory nagios plugin configuration"
@@ -32,7 +32,7 @@ msgstr ""
 
 #: config/nagios/class_nagiosConfig.inc:42
 msgid "LDAP tree"
-msgstr ""
+msgstr "Struttura LDAP"
 
 #: config/nagios/class_nagiosConfig.inc:45
 msgid "Lconf prefix"
@@ -60,7 +60,7 @@ msgstr "Alias dell'utente"
 
 #: personal/nagios/class_nagiosAccount.inc:69
 msgid "Name of the nagios alias"
-msgstr ""
+msgstr "Nome dell'alias Nagios"
 
 #: personal/nagios/class_nagiosAccount.inc:73 personal/nagios/nagios.tpl.c:8
 msgid "Mail address"
@@ -68,7 +68,7 @@ msgstr "Indirizzo di posta elettronica"
 
 #: personal/nagios/class_nagiosAccount.inc:73
 msgid "Email of the nagios alias"
-msgstr ""
+msgstr "Email dell'alias Nagios"
 
 #: personal/nagios/class_nagiosAccount.inc:77 personal/nagios/nagios.tpl.c:11
 msgid "Host notification period"
@@ -92,7 +92,7 @@ msgstr "Cercapersone"
 
 #: personal/nagios/class_nagiosAccount.inc:97
 msgid " Pager"
-msgstr ""
+msgstr "Cercapersone"
 
 #: personal/nagios/class_nagiosAccount.inc:101 personal/nagios/nagios.tpl.c:26
 msgid "Service notification commands"

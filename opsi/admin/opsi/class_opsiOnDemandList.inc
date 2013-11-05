@@ -106,7 +106,15 @@ class opsiOnDemandList extends simplePlugin
       $ldap = $this->config->get_ldap_link();
       $ldap->cat($this->fdOpsiServerDN);
       if ($attrs = $ldap->fetch()) {
-        $this->macAddress = $attrs['macAddress'][0];
+        if (isset($attrs['macAddress'])) {
+          $this->macAddress = $attrs['macAddress'][0];
+        } else {
+          msg_dialog::display(
+            _("No mac address"),
+            sprintf(_("Server %s has no mac address configured in the LDAP"), $this->fdOpsiServerDN), ERROR_DIALOG
+          );
+          return FALSE;
+        }
       } else {
         msg_dialog::display(
           sprintf(_("Could not find %s in the LDAP"),$this->fdOpsiServerDN),

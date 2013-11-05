@@ -1,60 +1,59 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
-# Kenny Tordeurs <tordeurskenny@gmail.com>, 2012
+# Kenny Tordeurs <tordeurskenny@gmail.com>, 2012-2013
 #  Niels Klomp (CareWorks ICT Services) <nk@careworks.nl>, 2005
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-09 19:16+0200\n"
-"PO-Revision-Date: 2013-03-24 15:00+0000\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
+"POT-Creation-Date: 2013-08-21 18:26+0200\n"
+"PO-Revision-Date: 2013-08-21 16:40+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Dutch (http://www.transifex.com/projects/p/FusionDirectory/"
-"language/nl/)\n"
-"Language: nl\n"
+"Language-Team: Dutch (http://www.transifex.com/projects/p/FusionDirectory/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:28
 msgid "Asterisk"
-msgstr ""
+msgstr "Asterisk"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:29
 msgid "Asterisk plugin configuration"
-msgstr ""
+msgstr "Asterisk plugin configuratie"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:41
 msgid "LDAP tree"
-msgstr ""
+msgstr "LDAP tree"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:44
 msgid "Phone RDN"
-msgstr ""
+msgstr "Telefoon RDN"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:44
 msgid "Branch in which phones will be stored"
-msgstr ""
+msgstr "Branch in welke telefoons zullen worden bewaard"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:49
 msgid "Phone Macro RDN"
-msgstr ""
+msgstr "Telefoon Macro RDN"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:49
 msgid "Branch in which phone macros will be stored"
-msgstr ""
+msgstr "Branch in welke telefoon macros worden bewaard"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:54
 msgid "Phone Conference RDN"
-msgstr ""
+msgstr "Telefoon Conferentie RDN"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:54
 msgid "Branch in which phone conferences will be stored"
-msgstr ""
+msgstr "Branch in dewelke telefoon conferenties worden bewaard"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:61
 msgid "Miscellaneous"
@@ -62,19 +61,19 @@ msgstr "Terminal Service diverse"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:65
 msgid "SIP contexts"
-msgstr ""
+msgstr "SIP contexten"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:65
 msgid "Available SIP contexts"
-msgstr ""
+msgstr "Beschikbare SIP contexten"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:72
 msgid "Voicemail contexts"
-msgstr ""
+msgstr "Voicemail contexten"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:72
 msgid "Available voicemail contexts"
-msgstr ""
+msgstr "Beschikbare voicemail contexten"
 
 #: personal/phoneaccount/class_phoneAccount.inc:148
 #: admin/ogroups/asterisk/class_phonequeue.inc:110
@@ -89,9 +88,7 @@ msgstr "Obsolete inzending"
 msgid ""
 "The current home server is not available anymore. It will be moved to '%s' "
 "if you save this entry!"
-msgstr ""
-"De huidige home server is niet meer beschikbaar. Het zal naar '%s' worden "
-"verplaatst als je deze inzending opslaagd!"
+msgstr "De huidige home server is niet meer beschikbaar. Het zal naar '%s' worden verplaatst als je deze inzending opslaagd!"
 
 #: personal/phoneaccount/class_phoneAccount.inc:176
 msgid "automatic"
@@ -120,8 +117,7 @@ msgstr "Waarschuwing"
 #, php-format
 msgid ""
 "Cannot identify telephone extension in database, please try to save again."
-msgstr ""
-"Kan telefoon extensie niet identificeren in databank, probeer aub opnieuw."
+msgstr "Kan telefoon extensie niet identificeren in databank, probeer aub opnieuw."
 
 #: personal/phoneaccount/class_phoneAccount.inc:455
 #: personal/phoneaccount/class_phoneAccount.inc:1061
@@ -145,8 +141,7 @@ msgstr "GOfon"
 #: personal/phoneaccount/class_phoneAccount.inc:577
 #: personal/phoneaccount/class_phoneAccount.inc:595
 msgid "Abort saving entries to keep the database consistent."
-msgstr ""
-"Stop met inzendingen op te slaan om de databank consistentie te behouden"
+msgstr "Stop met inzendingen op te slaan om de databank consistentie te behouden"
 
 #: personal/phoneaccount/class_phoneAccount.inc:618
 #: personal/phoneaccount/class_phoneAccount.inc:657
@@ -154,8 +149,7 @@ msgstr ""
 #, php-format
 msgid ""
 "FusionDirectory identified problems with your database table definition!"
-msgstr ""
-"FusionDirectory heeft problemen met je databank tabel definitie gevonden!"
+msgstr "FusionDirectory heeft problemen met je databank tabel definitie gevonden!"
 
 #: personal/phoneaccount/class_phoneAccount.inc:999
 #: personal/phoneaccount/class_phoneAccount.inc:1012
@@ -217,9 +211,7 @@ msgstr "Kies uw privé telefoon"
 msgid ""
 "There must be at least one server with an asterisk database to create a "
 "phone account."
-msgstr ""
-"Er moet minstens 1 server met asterisk databank bestaan om een telefoon "
-"account te maken"
+msgstr "Er moet minstens 1 server met asterisk databank bestaan om een telefoon account te maken"
 
 #: personal/phoneaccount/class_phoneAccount.inc:1367
 #: personal/phoneaccount/class_phoneAccount.inc:1687
@@ -274,10 +266,14 @@ msgstr "Een error vond plaats tijdens het updaten van de databank inzendingen!"
 #: admin/systems/asterisk/class_phoneGeneric.inc:432
 #: admin/systems/asterisk/class_phoneGeneric.inc:446
 #: admin/systems/asterisk/class_phoneGeneric.inc:463
-#: admin/systems/services/asterisk/class_serviceAsterisk.inc:107
+#: admin/systems/services/asterisk/class_serviceAsterisk.inc:121
 #: admin/conference/class_phoneConferenceGeneric.inc:682
 msgid "LDAP error"
 msgstr "LDAP fout"
+
+#: personal/phoneaccount/class_phoneAccount.inc:1584
+msgid "Was not able to found any asterisk server"
+msgstr ""
 
 #: personal/phoneaccount/class_phoneAccount.inc:1617
 #: admin/macro/class_gofonMacroParameters.inc:408
@@ -300,9 +296,7 @@ msgstr "Het opgegeven telefoonnummer '%s' is al toegekend aan '%s'."
 msgid ""
 "The previously selected asterisk home server (%s) is no longer available. "
 "Remove aborted."
-msgstr ""
-"De vorige geselecteerde asterisk home server (%s) is niet meer beschikbaar. "
-"Verwijdering is geannuleerd."
+msgstr "De vorige geselecteerde asterisk home server (%s) is niet meer beschikbaar. Verwijdering is geannuleerd."
 
 #: personal/phoneaccount/class_phoneAccount.inc:1675
 msgid "Phone account settings"
@@ -341,13 +335,11 @@ msgstr "Voicemail pin"
 #: personal/phoneaccount/class_phoneAccount.inc:1713
 #, php-format
 msgid "You need to configure %s contexts first"
-msgstr ""
+msgstr "U moet %s eerst configureren"
 
 #: personal/phoneaccount/main.inc:124
 msgid "Click the 'Edit' button below to change informations in this dialog"
-msgstr ""
-"Gebruik de 'Bewerk' knop hieronder om de informatie in deze dialoog te "
-"veranderen"
+msgstr "Gebruik de 'Bewerk' knop hieronder om de informatie in deze dialoog te veranderen"
 
 #: personal/phoneaccount/main.inc:134
 #: personal/phoneaccount/paste_generic.tpl.c:2
@@ -446,9 +438,7 @@ msgstr "Telefoonwachtrij aanmaken"
 msgid ""
 "There must be at least one server with an asterisk database to create a "
 "phone queue."
-msgstr ""
-"Er moet minstens 1 server met een asterisk databank bestaan om een telefoon "
-"wachtrij aan te maken"
+msgstr "Er moet minstens 1 server met een asterisk databank bestaan om een telefoon wachtrij aan te maken"
 
 #: admin/ogroups/asterisk/class_phonequeue.inc:281
 #: admin/ogroups/asterisk/class_phonequeue.inc:871
@@ -491,9 +481,7 @@ msgstr "Kon geen oude wachtrij inzending vinden!"
 msgid ""
 "Found more than one entry named '%s' in queue table. Please inform your "
 "system administrator!"
-msgstr ""
-"Er is meer dan 1 inzending gevonden on de naam '%s' in de wachtrij tabel. "
-"Gelieve je systeem beheerder op de hoogte te brengen!"
+msgstr "Er is meer dan 1 inzending gevonden on de naam '%s' in de wachtrij tabel. Gelieve je systeem beheerder op de hoogte te brengen!"
 
 #: admin/ogroups/asterisk/class_phonequeue.inc:728
 #: admin/ogroups/asterisk/class_phonequeue.inc:730
@@ -604,9 +592,7 @@ msgstr "Vermelding"
 msgid ""
 "Macro could not be removed from server '%s', please check database "
 "consistency!"
-msgstr ""
-"Macro kon niet worden verwijderd van de server '%s', verifieer aub de "
-"databank consistentie!"
+msgstr "Macro kon niet worden verwijderd van de server '%s', verifieer aub de databank consistentie!"
 
 #: admin/macro/class_gofonMacro.inc:264
 #, php-format
@@ -632,9 +618,7 @@ msgstr "Duplicate combinatie van 'extensie' en 'prioriteit' op lijn %s!"
 #, php-format
 msgid ""
 "Macro could not be added to server '%s', please check database consistency!"
-msgstr ""
-"Macro kon niet worden toegevoegd aan de server '%s', verifieer de databank "
-"consistentie"
+msgstr "Macro kon niet worden toegevoegd aan de server '%s', verifieer de databank consistentie"
 
 #: admin/macro/class_gofonMacro.inc:395 admin/macro/class_gofonMacro.inc:406
 #: admin/macro/macro-list.xml:41
@@ -695,8 +679,7 @@ msgstr "Macronaam"
 #: admin/macro/class_gofonMacro.inc:546
 #: admin/systems/asterisk/class_phoneGeneric.inc:482
 #: admin/conference/class_phoneConferenceGeneric.inc:703
-#: admin/macro/generic.tpl.c:14 admin/macro/macro-list.tpl.c:2
-#: admin/systems/asterisk/phone.tpl.c:5 admin/conference/conf-list.tpl.c:2
+#: admin/macro/generic.tpl.c:14 admin/systems/asterisk/phone.tpl.c:5
 #: admin/conference/generic.tpl.c:17
 msgid "Base"
 msgstr "Basis"
@@ -750,8 +733,7 @@ msgstr "Verwijder ongebruikte"
 #: admin/macro/class_gofonMacroParameters.inc:374
 #, php-format
 msgid "Parameter %s contains invalid character. '!,#' is used as delimiter!"
-msgstr ""
-"Parameter %s bevat ongeldige karakters. '!,#' word gebruikt als delimeter!"
+msgstr "Parameter %s bevat ongeldige karakters. '!,#' word gebruikt als delimeter!"
 
 #: admin/macro/class_gofonMacroParameters.inc:379
 #, php-format
@@ -762,9 +744,7 @@ msgstr "Parameter %s is ongeldig"
 msgid ""
 "Number of parameters for this macro has changed. Please update all users "
 "using it!"
-msgstr ""
-"Aantal parameters voor deze macro zijn gewijzigd. Gelieve alle gebruikers "
-"die dit gebruiken up te daten!"
+msgstr "Aantal parameters voor deze macro zijn gewijzigd. Gelieve alle gebruikers die dit gebruiken up te daten!"
 
 #: admin/macro/macro-list.xml:11
 msgid "List of macros"
@@ -793,14 +773,12 @@ msgid "Remove"
 msgstr "Verwijderen"
 
 #: admin/macro/class_gofonMacroManagement.inc:36
-#, fuzzy
 msgid "Phone Macros"
-msgstr "Telefoon macro"
+msgstr ""
 
 #: admin/macro/class_gofonMacroManagement.inc:37
-#, fuzzy
 msgid "Phone Macros management"
-msgstr "Beheer van macros"
+msgstr ""
 
 #: admin/systems/asterisk/class_phoneGeneric.inc:151
 msgid "phone"
@@ -907,24 +885,30 @@ msgstr "Internationale telefoon prefix"
 msgid "Local dial prefix"
 msgstr "Lokale telefoon prefix"
 
-#: admin/systems/services/asterisk/class_serviceAsterisk.inc:81
+#: admin/systems/services/asterisk/class_serviceAsterisk.inc:54
+msgid "Driver"
+msgstr "Stuurprogramma"
+
+#: admin/systems/services/asterisk/class_serviceAsterisk.inc:54
+msgid "Driver to use to contact this database."
+msgstr "Driver gebruikt voor deze databank te benaderen."
+
+#: admin/systems/services/asterisk/class_serviceAsterisk.inc:95
 #, php-format
 msgid ""
 "You can't remove the asterisk database extension, it is still in use by "
 "these objects '%s'."
-msgstr ""
-"Je kan de asterisk databank niet verwijderen, het is in gebruik door deze "
-"objecten '%s'."
+msgstr "Je kan de asterisk databank niet verwijderen, het is in gebruik door deze objecten '%s'."
 
-#: admin/systems/services/asterisk/class_serviceAsterisk.inc:126
+#: admin/systems/services/asterisk/class_serviceAsterisk.inc:140
 msgid "VoIP service (asterisk)"
 msgstr "VoIP dienst (asterisk)"
 
-#: admin/systems/services/asterisk/class_serviceAsterisk.inc:127
+#: admin/systems/services/asterisk/class_serviceAsterisk.inc:141
 msgid "VoIP - asterisk management"
 msgstr "VoIP - asterisk beheer"
 
-#: admin/systems/services/asterisk/class_serviceAsterisk.inc:127
+#: admin/systems/services/asterisk/class_serviceAsterisk.inc:141
 msgid "Services"
 msgstr "Services"
 
@@ -937,8 +921,7 @@ msgstr "Kan inzending niet van server '%s' verwijderen want het bestaat niet!"
 #, php-format
 msgid ""
 "The previously selected asterisk home server '%s' is no longer available!"
-msgstr ""
-"De vorige geselecteerde asterisk home server '%s' is niet langer beschikbaar!"
+msgstr "De vorige geselecteerde asterisk home server '%s' is niet langer beschikbaar!"
 
 #: admin/conference/class_phoneConferenceGeneric.inc:315
 #: admin/conference/generic.tpl.c:47
@@ -953,11 +936,9 @@ msgstr "Levensduur"
 #: admin/conference/class_phoneConferenceGeneric.inc:400
 #, php-format
 msgid ""
-"FusionDirectory identified problems with your MySQL table definition, please "
-"activate debugging for details."
-msgstr ""
-"FusionDirectory heeft problemen met je MySQL tabel definitie gevonden, "
-"gelieve de debug te activeren voor details"
+"FusionDirectory identified problems with your MySQL table definition, please"
+" activate debugging for details."
+msgstr "FusionDirectory heeft problemen met je MySQL tabel definitie gevonden, gelieve de debug te activeren voor details"
 
 #: admin/conference/class_phoneConferenceGeneric.inc:606
 #: admin/conference/class_phoneConferenceGeneric.inc:608
@@ -966,9 +947,8 @@ msgid "'%s' is already assigned to '%s'!"
 msgstr "'%s' is reeds toegewezen aan '%s'!"
 
 #: admin/conference/class_phoneConferenceGeneric.inc:693
-#, fuzzy
 msgid "Phone Conference"
-msgstr "Conferentie"
+msgstr ""
 
 #: admin/conference/class_phoneConferenceGeneric.inc:694
 msgid "Phone conference management"
@@ -1034,14 +1014,12 @@ msgid "Conference"
 msgstr "Conferentie"
 
 #: admin/conference/class_phoneConferenceManagment.inc:36
-#, fuzzy
 msgid "Phone Conferences"
-msgstr "Conferenties"
+msgstr ""
 
 #: admin/conference/class_phoneConferenceManagment.inc:37
-#, fuzzy
 msgid "Phone Conference management"
-msgstr "Telefoon vergadering beheer"
+msgstr ""
 
 #: personal/phoneaccount/paste_generic.tpl.c:5
 #: personal/phoneaccount/paste_generic.tpl.c:8
@@ -1133,10 +1111,9 @@ msgstr "De zoekopdracht gaf geen resultaten terug..."
 
 #: admin/ogroups/asterisk/phonequeue.tpl.c:2
 msgid ""
-"Only users with the same asterisk home server will be included to this queue."
-msgstr ""
-"Enkel gebruikers met dezelfde asterisk home server worden toegevoegd aan "
-"deze wachtrij"
+"Only users with the same asterisk home server will be included to this "
+"queue."
+msgstr "Enkel gebruikers met dezelfde asterisk home server worden toegevoegd aan deze wachtrij"
 
 #: admin/ogroups/asterisk/phonequeue.tpl.c:5
 msgid "Queue Settings"
@@ -1240,15 +1217,11 @@ msgstr "Je hebt geen toelating om de macro parameter te bekijken"
 msgid ""
 "Please double check if you really want to do this since there is no way for "
 "FusionDirectory to get your data back."
-msgstr ""
-"Verifieer aub dubbel of je dit echt wil doen want er is geen manier voor "
-"FusionDirectory om je data terug te plaatsen."
+msgstr "Verifieer aub dubbel of je dit echt wil doen want er is geen manier voor FusionDirectory om je data terug te plaatsen."
 
 #: admin/macro/remove.tpl.c:8 admin/conference/remove.tpl.c:8
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr ""
-"Indien u zeker bent drukt u dan 'Verwijderen' om door te gaan of 'Annuleren' "
-"om te annuleren."
+msgstr "Indien u zeker bent drukt u dan 'Verwijderen' om door te gaan of 'Annuleren' om te annuleren."
 
 #: admin/macro/generic.tpl.c:11
 msgid "Macro name to be displayed"
@@ -1402,9 +1375,3 @@ msgstr "Kondig binnenkomende en verlatende gebruikers aan"
 #: admin/conference/generic.tpl.c:68
 msgid "Count users"
 msgstr "Tel het aantal gebruikers"
-
-#~ msgid "Macros"
-#~ msgstr "Macros"
-
-#~ msgid "Conference management"
-#~ msgstr "Conferentie beheer"

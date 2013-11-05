@@ -95,7 +95,7 @@ class csvimport extends plugin
 
       /* Generating attributes */
       $this->csvinfo['attr'] = array();
-      $this->usertab = new usertabs($this->config, $this->config->data['TABS']['USERTABS'], 'new');
+      $this->usertab = new usertabs($this->config, $this->config->data['TABS']['USERTABS'], 'new', 'user');
       foreach ($this->usertab->by_object as $pname => $plugin) { // for each user tab
         $attrs = @get_class_vars($pname);
         $attrs = $attrs['attributes'];            // get saved attributes
@@ -110,7 +110,7 @@ class csvimport extends plugin
       $this->csvinfo['attr'] = array_merge(array("none","userPassword"), $this->csvinfo['attr']);
 
       /* Search all Templates  */
-      $this->csvinfo['templates'] = $ldap->search("(objectClass = gosaUserTemplate)", array("*"));
+      $this->csvinfo['templates'] = $ldap->search("(objectClass=gosaUserTemplate)", array("*"));
 
       /* Array to handle selected Form fiels */
       $this->csvinfo['arrtempls'][$tempvar]['name'] = "";
@@ -120,9 +120,9 @@ class csvimport extends plugin
 
       while ($temp = $ldap->fetch($this->csvinfo['templates'])) {
         $tempvar++;
-        $this->csvinfo['arrtemplates'][$tempvar] = $temp['sn'][0]." - ".$this->config->idepartments[preg_replace("/^[^,] +,".preg_quote(get_people_ou(), '/')."/i", "", $temp['dn'])];
-        $this->csvinfo['arrtempls']   [$tempvar]['name'] = $temp['sn'][0];
-        $this->csvinfo['arrtempls']   [$tempvar]['dn']   = $temp['dn'];
+        $this->csvinfo['arrtemplates'][$tempvar]      = $temp['sn'][0]." - ".$this->config->idepartments[preg_replace("/^[^,]+,".preg_quote(get_people_ou(), '/')."/i", "", $temp['dn'])];
+        $this->csvinfo['arrtempls'][$tempvar]['name'] = $temp['sn'][0];
+        $this->csvinfo['arrtempls'][$tempvar]['dn']   = $temp['dn'];
       }
     }
 
@@ -138,7 +138,7 @@ class csvimport extends plugin
       if (isset($_POST['userfile']) || isset($_POST['sorted']) || isset($_POST['fileup'])) {
         msg_dialog::display(_("Permission error"), _("You've no permission to import CSV files."), ERROR_DIALOG);
       }
-      return ($smarty->fetch (get_template_path('contentcsv.tpl', TRUE)));
+      return $smarty->fetch(get_template_path('contentcsv.tpl', TRUE));
     }
 
     /* If the given data from the csv file are sorted by the attributes */
@@ -148,7 +148,7 @@ class csvimport extends plugin
       $smarty->assign("fileup", TRUE);
       $smarty->assign("sorted", TRUE);
 
-      for ($i = 0; $i < $this->csvinfo['rows']; $i ++) {
+      for ($i = 0; $i < $this->csvinfo['rows']; $i++) {
         /* Preparing given Data */
         $this->csvinfo['sorteddata'][$i] = array();
 
@@ -208,7 +208,21 @@ class csvimport extends plugin
                 $attributes[$key_exp[1]] = $val;
               }
             }
-            $uids = gen_uids ($this->config->get_cfg_value("idGenerator"), $attributes);
+
+            /* Use idGenerator if defined */
+            $uids = array();
+            if ($this->config->get_cfg_value("idGenerator") != "") {
+              $uids = gen_uids($this->config->get_cfg_value("idGenerator"), $attributes);
+            /* Else use template uid if defined */
+            } elseif ($this->csvinfo['tplid'] != 0) {
+              $ldap->cat($this->csvinfo['arrtempls'][$this->csvinfo['tplid']]['dn']);
+              if ($attrs = $ldap->fetch()) {
+                if ($attrs['uid'][0] != user::$nouid) {
+                  $uids = gen_uids($attrs['uid'][0], $attributes);
+                }
+              }
+            }
+
             if (!count($uids) || empty($uids[0])) {
               $msgs = sprintf(_("Failed to generate 'uid' for entry '%s'!"), ($i + 1));
               $this->csvinfo['sorteddata'][$i]['status'] = "<b>"._("failed")."</b>&nbsp;". $msgs;
@@ -223,7 +237,7 @@ class csvimport extends plugin
           }
 
           /* Register usertab to trigger edit dialog */
-          $this->usertab = new usertabs($this->config, $this->config->data['TABS']['USERTABS'], 'new');
+          $this->usertab = new usertabs($this->config, $this->config->data['TABS']['USERTABS'], 'new', 'user');
           $keys = array_keys($dat);
 
           /* Set all submitted vars  */
@@ -247,7 +261,7 @@ class csvimport extends plugin
           if ($this->csvinfo['tplid'] != 0) {
             $tpl_dn = $this->csvinfo['arrtempls'][$this->csvinfo['tplid']]['dn'];
             $this->usertab->adapt_from_template($tpl_dn, array("uid","cn","givenName","sn"));
-            $tpl_base  = preg_replace("/^[^,] +,".preg_quote(get_people_ou(), '/i')."/", '', $tpl_dn);
+            $tpl_base  = preg_replace("/^[^,]+,".preg_quote(get_people_ou(), '/')."/i", '', $tpl_dn);
             $this->usertab->by_object['user']->base = $tpl_base;
           }
 
@@ -528,11 +542,9 @@ class csvimport extends plugin
         }
       }
     }
-
     /* Show main page */
     return $smarty->fetch (get_template_path('contentcsv.tpl', TRUE));
   }
-
 }
 
 ?>

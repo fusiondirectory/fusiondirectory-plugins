@@ -76,8 +76,8 @@ class QuotaEntryAttribute extends CharSeparatedCompositeAttribute
     if (!empty($values[5])) {
       $blocksize = $this->plugin->getBlockSize($values[5], $values[0]);
       if ($blocksize !== FALSE) {
-        $values[1] = ceil($values[1]/$blocksize);
-        $values[2] = ceil($values[2]/$blocksize);
+        $values[1] = ceil($values[1] / $blocksize);
+        $values[2] = ceil($values[2] / $blocksize);
       }
     }
     return parent::writeValues($values);

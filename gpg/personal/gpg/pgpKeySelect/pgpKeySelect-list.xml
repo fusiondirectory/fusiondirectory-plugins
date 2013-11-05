@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<list>
+  <definition>
+    <departmentBrowser>false</departmentBrowser>
+    <departmentRootVisible>false</departmentRootVisible>
+    <baseMode>false</baseMode>
+    <multiSelect>true</multiSelect>
+    <template>../plugins/personal/gpg/pgpKeySelect/pgpKeySelect-list.tpl</template>
+    <label>Please select the desired entries</label>
+    <defaultSortColumn>1</defaultSortColumn>
+
+    <objectType>
+      <label>PGP Key</label>
+      <objectClass>pgpKeyInfo</objectClass>
+      <category>user</category>
+      <class></class>
+      <image>images/lists/key.png</image>
+    </objectType>
+
+  </definition>
+
+  <table>
+    <layout>|20px;c|||||||||</layout>
+
+    <department>
+      <value>%{filter:objectType(dn,objectClass)}</value>
+    </department>
+
+    <department>
+      <value>%{filter:departmentLink(row,dn,description)}</value>
+      <span>1</span>
+    </department>
+
+    <column>
+      <value>%{filter:objectType(dn,objectClass)}</value>
+    </column>
+
+    <column>
+      <label>Key ID</label>
+      <sortAttribute>pgpKeyID</sortAttribute>
+      <sortType>string</sortType>
+      <value>%{pgpKeyID}</value>
+      <export>true</export>
+    </column>
+
+    <column>
+      <label>User</label>
+      <sortAttribute>pgpUserID</sortAttribute>
+      <sortType>string</sortType>
+      <value>%{pgpUserID}</value>
+      <export>true</export>
+    </column>
+
+    <column>
+      <label>Creation date</label>
+      <sortAttribute>pgpKeyCreateTime</sortAttribute>
+      <sortType>date</sortType>
+      <value>%{filter:pgpDate(pgpKeyCreateTime)}</value>
+      <export>true</export>
+    </column>
+
+    <column>
+      <label>Expiration date</label>
+      <sortAttribute>pgpKeyExpireTime</sortAttribute>
+      <sortType>date</sortType>
+      <value>%{filter:pgpDate(pgpKeyExpireTime)}</value>
+      <export>true</export>
+    </column>
+
+    <column>
+      <label>Type</label>
+      <sortAttribute>pgpKeyType</sortAttribute>
+      <sortType>string</sortType>
+      <value>%{pgpKeyType}</value>
+      <export>true</export>
+    </column>
+
+    <column>
+      <label>Size</label>
+      <sortAttribute>pgpKeySize</sortAttribute>
+      <sortType>integer</sortType>
+      <value>%{filter:pgpSize(pgpKeySize)}</value>
+      <export>true</export>
+    </column>
+
+    <column>
+      <label>Revoked</label>
+      <sortAttribute>pgpRevoked</sortAttribute>
+      <sortType>string</sortType>
+      <value>%{filter:pgpRevoked(pgpRevoked)}</value>
+      <export>true</export>
+    </column>
+
+    <column>
+      <label>Disabled</label>
+      <sortAttribute>pgpDisabled</sortAttribute>
+      <sortType>string</sortType>
+      <value>%{filter:pgpDisabled(pgpDisabled)}</value>
+      <export>true</export>
+    </column>
+
+  </table>
+
+  <actionmenu>
+  </actionmenu>
+
+  <actiontriggers snapshot="false" copypaste="false">
+  </actiontriggers>
+
+</list>

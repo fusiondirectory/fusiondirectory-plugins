@@ -1,22 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
+# poterealpopolo <giuliano@opensides.be>, 2013
 # poterealpopolo <giuliano@opensides.be>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-09 19:17+0200\n"
-"PO-Revision-Date: 2013-03-09 00:30+0000\n"
-"Last-Translator: poterealpopolo <giuliano@opensides.be>\n"
-"Language-Team: Italian (http://www.transifex.com/projects/p/FusionDirectory/"
-"language/it/)\n"
-"Language: it\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
+"POT-Creation-Date: 2013-08-21 18:26+0200\n"
+"PO-Revision-Date: 2013-08-21 16:31+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: Italian (http://www.transifex.com/projects/p/FusionDirectory/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: personal/mail/mail-methods/class_mail-methods-cyrus.inc:59
@@ -34,8 +34,7 @@ msgstr "Errore IMAP"
 #: personal/mail/mail-methods/class_mail-methods-cyrus.inc:252
 #, php-format
 msgid "Cannot modify IMAP mailbox quota: %s"
-msgstr ""
-"Impossibile modificare la quota della casella di posta elettronica IMAP :%s"
+msgstr "Impossibile modificare la quota della casella di posta elettronica IMAP :%s"
 
 #: personal/mail/mail-methods/class_mail-methods-cyrus.inc:327
 msgid "Mail info"
@@ -46,10 +45,7 @@ msgstr "informazioni Mail"
 msgid ""
 "LDAP entry has been removed but cyrus mailbox (%s) is kept.\n"
 "Please delete it manually!"
-msgstr ""
-"L'entry LDAP è stata eliminata, ma la casella di posta elettronica (%s) è "
-"ancora presente in cyrus.\n"
-"Elimina manualmente !"
+msgstr "L'entry LDAP è stata eliminata, ma la casella di posta elettronica (%s) è ancora presente in cyrus.\nElimina manualmente !"
 
 #: personal/mail/mail-methods/class_mail-methods-cyrus.inc:420
 #: personal/mail/mail-methods/class_mail-methods-cyrus.inc:459
@@ -81,9 +77,8 @@ msgid "Services"
 msgstr "Servizi"
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:57
-#, fuzzy
 msgid "Cyrus settings"
-msgstr "Impostazioni"
+msgstr ""
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:60
 msgid "Connect URL for Cyrus server"
@@ -92,12 +87,11 @@ msgstr "Connetere all'URL del server Cyrus"
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:63
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:88
 msgid "Hostname"
-msgstr ""
+msgstr "Nome dell'host"
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:63
-#, fuzzy
 msgid "Hostname of the Cyrus server"
-msgstr "Connetere all'URL del server Cyrus"
+msgstr ""
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:64
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:89
@@ -142,18 +136,16 @@ msgid "Admin user password"
 msgstr "Password dell'amministratore "
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:82
-#, fuzzy
 msgid "Sieve settings"
-msgstr "Impostazioni"
+msgstr ""
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:85
 msgid "Sieve connect URL for Cyrus server"
-msgstr ""
+msgstr "URL di connessione Sieve per il server Cyrus"
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:88
-#, fuzzy
 msgid "Hostname of the Cyrus sieve server"
-msgstr "URL di connessione per Sieve verso il seerver Cyrus"
+msgstr ""
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:89
 msgid "Port number on which Cyrus sieve server should be contacted"
@@ -162,9 +154,3 @@ msgstr "Numero della porta sulla quale sieve Cyrus server sarà contattato"
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:90
 msgid "Options for contacting Cyrus sieve server"
 msgstr "Opzioni per contattare il server Sieve di Cyrus"
-
-#~ msgid "URL"
-#~ msgstr "URL"
-
-#~ msgid "URL to contact Cyrus server"
-#~ msgstr "URL di connessione del server Cyrus"

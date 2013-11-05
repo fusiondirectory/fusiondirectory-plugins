@@ -149,8 +149,8 @@ class printerPPDSelectionDialog extends plugin
     }
 
     $div = new divSelectBox("printerPPDSelectionDialog");
-    $div ->SetHeight(450);
-    $div ->SetSummary(_("Printer ppd selection."));
+    $div->SetHeight(450);
+    $div->SetSummary(_("Printer ppd selection."));
 
     $linkopen = "<a href='?plug=".$_GET['plug']."&amp;act=open&amp;id=%s'>
                   <img src='images/lists/folder.png' class='center' border=0>&nbsp;%s
@@ -163,14 +163,13 @@ class printerPPDSelectionDialog extends plugin
     if(empty($this->Vendor)){
       foreach($this-> header as $key => $entry){
         $div ->AddEntry (array(
-
-              array("string"=>sprintf($linkopen,base64_encode($key),$key),"attach"=>"style='border-right:0px;'")
-              ));
+          array("html"=>sprintf($linkopen,base64_encode($key),$key),"attach"=>"style='border-right:0px;'")
+        ));
       }
     }else{
       $div ->AddEntry (array(
-            array("string"=>sprintf($linkopen,"",".. ["._("back")."]"),"attach"=>"style='border-right:0px;'")
-            ));
+        array("html"=>sprintf($linkopen,"",".. ["._("back")."]"),"attach"=>"style='border-right:0px;'")
+      ));
       foreach($list as $key => $ppd){
        $name = $ppd['ppd']['name'];
         if(preg_match("/^".$this->Vendor."/", $name)){
@@ -182,10 +181,9 @@ class printerPPDSelectionDialog extends plugin
           }
 
           $div ->AddEntry (array(
-                                  array("string"=>sprintf($uselink,base64_encode($key),$name)),
-                                  array("string"=>$del_str,"attach"=>"style='border-right:0px;'")
-
-                ));
+            array("html"=>sprintf($uselink,base64_encode($key),$name)),
+            array("html"=>$del_str,"attach"=>"style='border-right:0px;'")
+          ));
         }
       }
     }

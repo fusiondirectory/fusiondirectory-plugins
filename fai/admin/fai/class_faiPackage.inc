@@ -456,11 +456,11 @@ class faiPackage extends faiPluginClass
             src='images/lists/trash.png' name='remove_package_".base64_encode($usedName)."' >";
         }
 
-        $field1 = array("string" => $configured."&nbsp;".$removal,"attach" => "style='width:40px;'");
-        $field2 = array("string" => $usedName ,"attach" => "style='width:200px;'");
-        $field3 = array("string" => $version);
-        $field4 = array("string" => $description);
-        $field5 = array("string" => $actions ,"attach" => "style='width:60px; border-right:0px;'");
+        $field1 = array("html" => $configured."&nbsp;".$removal,"attach" => "style='width:40px;'");
+        $field2 = array("html" => $usedName, "attach" => "style='width:200px;'");
+        $field3 = array("html" => $version);
+        $field4 = array("html" => $description);
+        $field5 = array("html" => $actions, "attach" => "style='width:60px; border-right:0px;'");
         $divlist->AddEntry(array($field1,$field2,$field3,$field4,$field5));
       }
     }

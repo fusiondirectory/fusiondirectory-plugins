@@ -77,21 +77,6 @@ class systemsPluginConfig extends simplePlugin
           ),
         )
       ),
-      'rdns2' => array(
-        'name'  => _('LDAP tree'),
-        'attrs' => array(
-          new StringAttribute (
-            _('Mimetype RDN'), _('Branch in which mime types will be stored'),
-            'fdMimetypeRDN', TRUE,
-            'ou=mimetypes'
-          ),
-          new StringAttribute (
-            _('Application RDN'), _('Branch in which applications will be stored'),
-            'fdApplicationRDN', TRUE,
-            'ou=apps'
-          ),
-        )
-      ),
       'config' => array(
         'name'  => _('Miscellaneous'),
         'attrs' => array(

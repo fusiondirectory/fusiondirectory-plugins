@@ -85,6 +85,24 @@ class serviceDHCP extends goService
     }
   }
 
+  function add_global_node()
+  {
+    $attrs = array();
+
+    $attrs['dn'] = 'cn=dhcp,'.$this->dn;
+    $attrs['cn'] = array('dhcp');
+
+    $attrs['objectClass']     = array('top', 'dhcpService');
+    $attrs['dhcpPrimaryDN']   = array($this->dn);
+    $attrs['dhcpStatements']  = array("default-lease-time 600",
+                                    "max-lease-time 1200",
+                                    "authoritative",
+                                    "ddns-update-style none");
+    $attrs['MODIFIED']        = TRUE;
+
+    $this->dhcpSections['cn=dhcp,'.$this->dn]     = _("Global options");
+    $this->dhcpObjectCache['cn=dhcp,'.$this->dn]  = $attrs;
+  }
 
   function execute()
   {
@@ -136,7 +154,8 @@ class serviceDHCP extends goService
         msg_dialog::display(_("Warning"), $warning, WARNING_DIALOG);
         $this->display_warning = FALSE;
       }
-      return($smarty->fetch(get_template_path('serviceDHCP.tpl', TRUE, dirname(__FILE__))));
+
+      return $smarty->fetch(get_template_path('serviceDHCP.tpl', TRUE, dirname(__FILE__)));
     }
 
 
@@ -146,14 +165,14 @@ class serviceDHCP extends goService
 
     /* Section Creation? */
     if (isset($_POST['create_section']) && isset($_POST['section'])){
-      $section= $_POST['section'];
+      $section = $_POST['section'];
 
       $tmp = new dhcpNewSectionDialog(NULL);
-      if (isset($tmp->sectionMap[$section])){
-        $this->dialog= new $section($this,$this->current_object);
-        $this->current_object= "";
+      if (isset($tmp->sectionMap[$section])) {
+        $this->dialog = new $section($this, $this->current_object);
+        $this->current_object = "";
       } else {
-        $this->dialog= FALSE;
+        $this->dialog = FALSE;
       }
     }
 
@@ -163,28 +182,28 @@ class serviceDHCP extends goService
     }
 
     /* Save changes */
-    if (isset($_POST['save_dhcp'])){
+    if (isset($_POST['save_dhcp'])) {
       $this->dialog->save_object();
-      $messages= $this->dialog->check();
-      if (count($messages)){
+      $messages = $this->dialog->check();
+      if (count($messages)) {
         msg_dialog::displayChecks($messages);
       } else {
-        $dn = $this->dialog->dn;
-        $class = get_class($this->dialog);
-        $type = $this->types[$class];
+        $dn     = $this->dialog->dn;
+        $class  = get_class($this->dialog);
+        $type   = $this->types[$class];
         if (empty($this->serviceDN)) {
           $indent = substr_count(preg_replace("/".$this->dn."/", '', $dn), ",") -1;
         } else {
           $indent = substr_count(preg_replace("/".$this->serviceDN."/", '', $dn), ",");
         }
         $spaces = "";
-        for ($i= 0; $i < $indent; $i++) {
+        for ($i = 0; $i < $indent; $i++) {
           $spaces .= "&nbsp;&nbsp;&nbsp;&nbsp;";
         }
         $data = $this->dialog->save();
         if ($this->current_object == "") {
           /* New object */
-          $this->dhcpObjectCache[$data['dn']]= $data;
+          $this->dhcpObjectCache[$data['dn']] = $data;
         } else {
           if ($dn != $data['dn']) {
             /* Old object, new name */
@@ -192,11 +211,11 @@ class serviceDHCP extends goService
             $this->dhcpObjectCache[$data['dn']]= $data;
 
             /* If we renamed a section, we've to rename a couple of objects, too */
-            foreach ($this->dhcpObjectCache as $key => $dsc){
-              if (preg_match("/,$dn$/", $key)){
-                $new_dn= preg_replace("/,$dn$/", ",".$data['dn'], $key);
-                $dsc['MODIFIED']= TRUE;
-                $this->dhcpObjectCache[$new_dn]= $dsc;
+            foreach ($this->dhcpObjectCache as $key => $dsc) {
+              if (preg_match("/,$dn$/", $key)) {
+                $new_dn = preg_replace("/,$dn$/", ",".$data['dn'], $key);
+                $dsc['MODIFIED'] = TRUE;
+                $this->dhcpObjectCache[$new_dn] = $dsc;
                 unset($this->dhcpObjectCache[$key]);
               }
             }
@@ -206,7 +225,7 @@ class serviceDHCP extends goService
           }
         }
         $this->reload(FALSE);
-        $this->dialog= FALSE;
+        $this->dialog = FALSE;
       }
     }
 
@@ -289,17 +308,6 @@ class serviceDHCP extends goService
     }
 
 
-    if(isset($_GET['act']) && $_GET['act']=="edit" && isset($_GET['id'])){
-      $id = $_GET['id'];
-      $dn = $this->dhcpDNtoID[$id];
-      if (isset($this->dhcpObjectCache[$dn])){
-        $section= $this->objectType($dn);
-        $this->current_object= $dn;
-        $this->dialog= new $section($this,$this->dhcpObjectCache[$dn]);
-      }
-    }
-
-
     /* Do we need to flip is_account state? */
     if (isset($_POST['modify_state'])){
       $this->is_account= !$this->is_account;
@@ -308,24 +316,11 @@ class serviceDHCP extends goService
     /* Show tab dialog headers */
     if ($this->is_account) {
       if (!count($this->dhcpObjectCache)) {
-        $attrs = array();
-        $attrs['dn'] = 'cn=dhcp,'.$this->dn;
-        $attrs['cn'] = array('dhcp');
-        $attrs['objectClass'] = array('top', 'dhcpService');
-        $attrs['dhcpPrimaryDN'] = array($this->dn);
-        $attrs['dhcpStatements'] = array("default-lease-time 600",
-                                        "max-lease-time 1200",
-                                        "authoritative",
-                                        "ddns-update-style none");
-        $attrs['MODIFIED'] = TRUE;
-        $this->dhcpSections['cn=dhcp,'.$this->dn] = _("Global options");
-        $this->dhcpObjectCache['cn=dhcp,'.$this->dn] = $attrs;
+        $this->add_global_node();
       }
-
     } else {
       return $display;
     }
-
 
     /* Show dialog
      */
@@ -375,11 +370,11 @@ class serviceDHCP extends goService
             $values = sprintf($subnetExpandImg,$id).$values;
           }
           $DhcpList->AddEntry(array(
-              array("string" => $values),
-              array("string" => ''),
-              array("string" => ''),
-              array("string" => str_replace("%s", $id, $editImgInsNoDel), "attach" => "style='text-align:right;'")
-              ));
+            array("html"    => $values),
+            array("string"  => ''),
+            array("string"  => ''),
+            array("html"    => str_replace("%s", $id, $editImgInsNoDel), "attach" => "style='text-align:right;'")
+          ));
         } else {
           if ($objtype == "dhcpSubnet") {
             if ($section === $this->subnet_expanded) {
@@ -389,19 +384,19 @@ class serviceDHCP extends goService
             }
           }
           $DhcpList->AddEntry(array(
-              array("string" => $values),
-              array("string" => $dhcpObject->options->get('routers')),
-              array("string" => ''),
-              array("string" => str_replace("%s",$id,$editImgIns), "attach" => "style='text-align:right;'")
-              ));
+            array("html"    => $values),
+            array("html"    => $dhcpObject->options->get('routers')),
+            array("string"  => ''),
+            array("html"    => str_replace("%s",$id,$editImgIns), "attach" => "style='text-align:right;'")
+          ));
         }
       } else {
         $DhcpList->AddEntry(array(
-              array("string" => $values),
-              array("string" => $dhcpObject->statements->get('fixed-address')),
-              array("string" =>  preg_replace('/^[^ ]+ /', '', isset($dhcpObject->dhcpHWAddress)?$dhcpObject->dhcpHWAddress:"")),
-              array("string" => str_replace("%s",$id,$editImg), "attach" => "style='text-align:right;'")
-              ));
+          array("html" => $values),
+          array("html" => $dhcpObject->statements->get('fixed-address')),
+          array("html" =>  preg_replace('/^[^ ]+ /', '', isset($dhcpObject->dhcpHWAddress)?$dhcpObject->dhcpHWAddress:"")),
+          array("html" => str_replace("%s",$id,$editImg), "attach" => "style='text-align:right;'")
+        ));
       }
     }
 
@@ -415,23 +410,23 @@ class serviceDHCP extends goService
   function remove_from_parent()
   {
     /* Cancel if there's nothing to do here */
-    if (!$this->initially_was_account){
+    if (!$this->initially_was_account) {
       return;
     }
 
     /* Remove subtrees */
-    $ldap= $this->config->get_ldap_link();
-    foreach ($this->dhcpObjectCache as $dn => $content){
-      if ($this->objectType($dn) == 'dhcpService'){
+    $ldap = $this->config->get_ldap_link();
+    foreach ($this->dhcpObjectCache as $dn => $content) {
+      if ($this->objectType($dn) == 'dhcpService') {
         $ldap->rmdir_recursive($dn);
-        if (!$ldap->success()){
+        if (!$ldap->success()) {
           msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_DEL, get_class()));
         }
       }
     }
 
     /* Remove from self */
-    $ldap= $this->config->get_ldap_link();
+    $ldap = $this->config->get_ldap_link();
 
     /* Remove and write to LDAP */
     plugin::remove_from_parent();
@@ -441,7 +436,7 @@ class serviceDHCP extends goService
     $this->cleanup();
     $ldap->modify ($this->attrs);
 
-    if (!$ldap->success()){
+    if (!$ldap->success()) {
       msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_MOD, get_class()));
     }
 
@@ -711,10 +706,14 @@ class serviceDHCP extends goService
 
   function reload($erase = TRUE)
   {
+    @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $erase, "reload");
     /* Init LDAP and load list */
     $ldap = $this->config->get_ldap_link();
     $ui   = get_userinfo();
     $me   = $this->dn;
+    if (empty($me)) {
+      trigger_error('reload launched with empty dn');
+    }
 
     $filter = "(&(objectClass=dhcpService)(|(dhcpPrimaryDN=$me)(dhcpSecondaryDN=$me)(dhcpServerDN=$me)(dhcpFailOverPeerDN=$me)))";
 
@@ -738,9 +737,9 @@ class serviceDHCP extends goService
       while ($attrs = $ldap->fetch()) {
         $this->reload_readItemFromLDAP($ldap, $attrs, $final, $erase);
       }
-
-      $this->reload_refreshListFromCache($final);
     }
+    $this->reload_refreshListFromCache($final);
+
 
     /* Sort it... */
     natsort($final);
@@ -750,18 +749,7 @@ class serviceDHCP extends goService
     }
 
     if (empty($final)) {
-      $attrs = array();
-      $attrs['dn'] = 'cn=dhcp,'.$this->dn;
-      $attrs['cn'] = array('dhcp');
-      $attrs['objectClass'] = array('top', 'dhcpService');
-      $attrs['dhcpPrimaryDN'] = array($this->dn);
-      $attrs['dhcpStatements'] = array("default-lease-time 600",
-                                      "max-lease-time 1200",
-                                      "authoritative",
-                                      "ddns-update-style none");
-      $attrs['MODIFIED'] = TRUE;
-      $this->dhcpSections['cn=dhcp,'.$this->dn] = _("Global options");
-      $this->dhcpObjectCache['cn=dhcp,'.$this->dn] = $attrs;
+      $this->add_global_node();
     }
 
     $this->dhcpDNtoID = array();
@@ -846,8 +834,5 @@ class serviceDHCP extends goService
     #$fields['AllowEdit']  = true;
     return($fields);
   }
-
 }
-
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

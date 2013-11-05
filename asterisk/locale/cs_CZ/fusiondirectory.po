@@ -1,22 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
+# pavelb <pavel.borecki@gmail.com>, 2012
 # pavelb <pavel.borecki@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-09 19:16+0200\n"
-"PO-Revision-Date: 2013-03-24 15:00+0000\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
+"POT-Creation-Date: 2013-08-21 18:26+0200\n"
+"PO-Revision-Date: 2013-08-21 16:40+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/"
-"FusionDirectory/language/cs_CZ/)\n"
-"Language: cs_CZ\n"
+"Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/FusionDirectory/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: cs_CZ\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:28
@@ -88,9 +88,7 @@ msgstr "zastaralá položka"
 msgid ""
 "The current home server is not available anymore. It will be moved to '%s' "
 "if you save this entry!"
-msgstr ""
-"Současný domovský server již není k dispozici. Uložením této položky dojde k "
-"přesunutí na '%s'!"
+msgstr "Současný domovský server již není k dispozici. Uložením této položky dojde k přesunutí na '%s'!"
 
 #: personal/phoneaccount/class_phoneAccount.inc:176
 msgid "automatic"
@@ -119,8 +117,7 @@ msgstr "varování"
 #, php-format
 msgid ""
 "Cannot identify telephone extension in database, please try to save again."
-msgstr ""
-"Nedaří se určit telefonní číslo v databázi – zkuste prosím znovu uložit."
+msgstr "Nedaří se určit telefonní číslo v databázi – zkuste prosím znovu uložit."
 
 #: personal/phoneaccount/class_phoneAccount.inc:455
 #: personal/phoneaccount/class_phoneAccount.inc:1061
@@ -214,9 +211,7 @@ msgstr "zvolte Váš soukromý telefon"
 msgid ""
 "There must be at least one server with an asterisk database to create a "
 "phone account."
-msgstr ""
-"Aby bylo možné vytvořit telefonní účet, musí být k dispozici alespoň jeden "
-"server s databází Asterisku."
+msgstr "Aby bylo možné vytvořit telefonní účet, musí být k dispozici alespoň jeden server s databází Asterisku."
 
 #: personal/phoneaccount/class_phoneAccount.inc:1367
 #: personal/phoneaccount/class_phoneAccount.inc:1687
@@ -271,10 +266,14 @@ msgstr "Vyskytla se chyba při aktualizaci položek v databázi!"
 #: admin/systems/asterisk/class_phoneGeneric.inc:432
 #: admin/systems/asterisk/class_phoneGeneric.inc:446
 #: admin/systems/asterisk/class_phoneGeneric.inc:463
-#: admin/systems/services/asterisk/class_serviceAsterisk.inc:107
+#: admin/systems/services/asterisk/class_serviceAsterisk.inc:121
 #: admin/conference/class_phoneConferenceGeneric.inc:682
 msgid "LDAP error"
 msgstr "chyba LDAPu"
+
+#: personal/phoneaccount/class_phoneAccount.inc:1584
+msgid "Was not able to found any asterisk server"
+msgstr ""
 
 #: personal/phoneaccount/class_phoneAccount.inc:1617
 #: admin/macro/class_gofonMacroParameters.inc:408
@@ -297,9 +296,7 @@ msgstr ""
 msgid ""
 "The previously selected asterisk home server (%s) is no longer available. "
 "Remove aborted."
-msgstr ""
-"Zvolený domovský Asterisk server (%s) již není k dispozici. Odebírání "
-"přerušeno."
+msgstr "Zvolený domovský Asterisk server (%s) již není k dispozici. Odebírání přerušeno."
 
 #: personal/phoneaccount/class_phoneAccount.inc:1675
 msgid "Phone account settings"
@@ -441,9 +438,7 @@ msgstr "vytvořit telefonní frontu"
 msgid ""
 "There must be at least one server with an asterisk database to create a "
 "phone queue."
-msgstr ""
-"Aby bylo možné vytvořit frontu pro volající, musí existovat alespoň jeden "
-"server s databází Asterisku."
+msgstr "Aby bylo možné vytvořit frontu pro volající, musí existovat alespoň jeden server s databází Asterisku."
 
 #: admin/ogroups/asterisk/class_phonequeue.inc:281
 #: admin/ogroups/asterisk/class_phonequeue.inc:871
@@ -486,9 +481,7 @@ msgstr "Nedaří se nalézt položku staré fronty hovorů!"
 msgid ""
 "Found more than one entry named '%s' in queue table. Please inform your "
 "system administrator!"
-msgstr ""
-"V tabulce fronty bylo nalezeno více položek s názvem '%s'. Kontaktujte "
-"prosím Vašeho správce systémů!"
+msgstr "V tabulce fronty bylo nalezeno více položek s názvem '%s'. Kontaktujte prosím Vašeho správce systémů!"
 
 #: admin/ogroups/asterisk/class_phonequeue.inc:728
 #: admin/ogroups/asterisk/class_phonequeue.inc:730
@@ -599,9 +592,7 @@ msgstr "oznámení"
 msgid ""
 "Macro could not be removed from server '%s', please check database "
 "consistency!"
-msgstr ""
-"Makro se nezdařilo odebrat ze serveru '%s', zkontrolujte prosím soudržnost "
-"(konzistenci) databáze!"
+msgstr "Makro se nezdařilo odebrat ze serveru '%s', zkontrolujte prosím soudržnost (konzistenci) databáze!"
 
 #: admin/macro/class_gofonMacro.inc:264
 #, php-format
@@ -621,17 +612,13 @@ msgstr "Chybějící rozšíření na řádku %s!"
 #: admin/macro/class_gofonMacro.inc:281
 #, php-format
 msgid "Duplicate combination of 'extension' and 'priority' in line %s!"
-msgstr ""
-"Zdvojená kombinace „rozšíření (extension)“ a „priorita (priority)“ na řádku "
-"%s!"
+msgstr "Zdvojená kombinace „rozšíření (extension)“ a „priorita (priority)“ na řádku %s!"
 
 #: admin/macro/class_gofonMacro.inc:317
 #, php-format
 msgid ""
 "Macro could not be added to server '%s', please check database consistency!"
-msgstr ""
-"Nezdařilo se přidat makro na server '%s', zkontrolujte prosím neporušenost "
-"databáze!"
+msgstr "Nezdařilo se přidat makro na server '%s', zkontrolujte prosím neporušenost databáze!"
 
 #: admin/macro/class_gofonMacro.inc:395 admin/macro/class_gofonMacro.inc:406
 #: admin/macro/macro-list.xml:41
@@ -692,8 +679,7 @@ msgstr "název makra"
 #: admin/macro/class_gofonMacro.inc:546
 #: admin/systems/asterisk/class_phoneGeneric.inc:482
 #: admin/conference/class_phoneConferenceGeneric.inc:703
-#: admin/macro/generic.tpl.c:14 admin/macro/macro-list.tpl.c:2
-#: admin/systems/asterisk/phone.tpl.c:5 admin/conference/conf-list.tpl.c:2
+#: admin/macro/generic.tpl.c:14 admin/systems/asterisk/phone.tpl.c:5
 #: admin/conference/generic.tpl.c:17
 msgid "Base"
 msgstr "základ"
@@ -747,8 +733,7 @@ msgstr "smazat nepoužívané"
 #: admin/macro/class_gofonMacroParameters.inc:374
 #, php-format
 msgid "Parameter %s contains invalid character. '!,#' is used as delimiter!"
-msgstr ""
-"Parametr %s obsahuje neplatné znaky. '!,#' nelze použít jako oddělovač!"
+msgstr "Parametr %s obsahuje neplatné znaky. '!,#' nelze použít jako oddělovač!"
 
 #: admin/macro/class_gofonMacroParameters.inc:379
 #, php-format
@@ -759,9 +744,7 @@ msgstr "Parametr %s je neplatný!"
 msgid ""
 "Number of parameters for this macro has changed. Please update all users "
 "using it!"
-msgstr ""
-"Počet parametrů tohoto makra se změnil. Prosím aktualizujte nastavení u "
-"všech, kteří jej využívají!"
+msgstr "Počet parametrů tohoto makra se změnil. Prosím aktualizujte nastavení u všech, kteří jej využívají!"
 
 #: admin/macro/macro-list.xml:11
 msgid "List of macros"
@@ -790,14 +773,12 @@ msgid "Remove"
 msgstr "odebrat"
 
 #: admin/macro/class_gofonMacroManagement.inc:36
-#, fuzzy
 msgid "Phone Macros"
-msgstr "telefonní makro"
+msgstr ""
 
 #: admin/macro/class_gofonMacroManagement.inc:37
-#, fuzzy
 msgid "Phone Macros management"
-msgstr "správa telefonických konferencí"
+msgstr ""
 
 #: admin/systems/asterisk/class_phoneGeneric.inc:151
 msgid "phone"
@@ -904,22 +885,30 @@ msgstr "předvolba země"
 msgid "Local dial prefix"
 msgstr "místní předvolba"
 
-#: admin/systems/services/asterisk/class_serviceAsterisk.inc:81
+#: admin/systems/services/asterisk/class_serviceAsterisk.inc:54
+msgid "Driver"
+msgstr "ovladač"
+
+#: admin/systems/services/asterisk/class_serviceAsterisk.inc:54
+msgid "Driver to use to contact this database."
+msgstr ""
+
+#: admin/systems/services/asterisk/class_serviceAsterisk.inc:95
 #, php-format
 msgid ""
 "You can't remove the asterisk database extension, it is still in use by "
 "these objects '%s'."
 msgstr ""
 
-#: admin/systems/services/asterisk/class_serviceAsterisk.inc:126
+#: admin/systems/services/asterisk/class_serviceAsterisk.inc:140
 msgid "VoIP service (asterisk)"
 msgstr ""
 
-#: admin/systems/services/asterisk/class_serviceAsterisk.inc:127
+#: admin/systems/services/asterisk/class_serviceAsterisk.inc:141
 msgid "VoIP - asterisk management"
 msgstr "VoIP - asterisk management"
 
-#: admin/systems/services/asterisk/class_serviceAsterisk.inc:127
+#: admin/systems/services/asterisk/class_serviceAsterisk.inc:141
 msgid "Services"
 msgstr "služby"
 
@@ -947,11 +936,9 @@ msgstr "životnost"
 #: admin/conference/class_phoneConferenceGeneric.inc:400
 #, php-format
 msgid ""
-"FusionDirectory identified problems with your MySQL table definition, please "
-"activate debugging for details."
-msgstr ""
-"FusionDirectory zjistil problém s definicí tabulky ve Vaší databázi MySQL – "
-"pro získání podrobnějších informací zapněte režim ladění."
+"FusionDirectory identified problems with your MySQL table definition, please"
+" activate debugging for details."
+msgstr "FusionDirectory zjistil problém s definicí tabulky ve Vaší databázi MySQL – pro získání podrobnějších informací zapněte režim ladění."
 
 #: admin/conference/class_phoneConferenceGeneric.inc:606
 #: admin/conference/class_phoneConferenceGeneric.inc:608
@@ -960,9 +947,8 @@ msgid "'%s' is already assigned to '%s'!"
 msgstr "'%s' je již přiřazeno '%s'!"
 
 #: admin/conference/class_phoneConferenceGeneric.inc:693
-#, fuzzy
 msgid "Phone Conference"
-msgstr "konference"
+msgstr ""
 
 #: admin/conference/class_phoneConferenceGeneric.inc:694
 msgid "Phone conference management"
@@ -1028,14 +1014,12 @@ msgid "Conference"
 msgstr "konference"
 
 #: admin/conference/class_phoneConferenceManagment.inc:36
-#, fuzzy
 msgid "Phone Conferences"
-msgstr "konference"
+msgstr ""
 
 #: admin/conference/class_phoneConferenceManagment.inc:37
-#, fuzzy
 msgid "Phone Conference management"
-msgstr "správa telefonických konferencí"
+msgstr ""
 
 #: personal/phoneaccount/paste_generic.tpl.c:5
 #: personal/phoneaccount/paste_generic.tpl.c:8
@@ -1099,7 +1083,7 @@ msgstr "zvolte podstrom ve kterém se bude vyhledávat"
 
 #: addons/fonreports/contents.tpl.c:17
 msgid "on"
-msgstr ""
+msgstr "zapnuto"
 
 #: addons/fonreports/contents.tpl.c:20
 msgid "Select server to search on"
@@ -1127,10 +1111,9 @@ msgstr "Nic nebylo nalezeno…"
 
 #: admin/ogroups/asterisk/phonequeue.tpl.c:2
 msgid ""
-"Only users with the same asterisk home server will be included to this queue."
-msgstr ""
-"Do této fronty budou zařazováni pouze uživatelé se stejným domovským "
-"Asterisk serverem."
+"Only users with the same asterisk home server will be included to this "
+"queue."
+msgstr "Do této fronty budou zařazováni pouze uživatelé se stejným domovským Asterisk serverem."
 
 #: admin/ogroups/asterisk/phonequeue.tpl.c:5
 msgid "Queue Settings"
@@ -1234,16 +1217,11 @@ msgstr "nejste oprávněn(a) zobrazit nastavení parametrů makra"
 msgid ""
 "Please double check if you really want to do this since there is no way for "
 "FusionDirectory to get your data back."
-msgstr ""
-"Prosím velmi dobře si rozmyslete, zda to opravdu chcete udělat, protože "
-"provedené změny už ve FusionDirectory nepůjde vzít nijak jednoduše zpět "
-"(nanejvýš složitě ze záloh, pokud existují a obsahují potřebná data)!"
+msgstr "Prosím velmi dobře si rozmyslete, zda to opravdu chcete udělat, protože provedené změny už ve FusionDirectory nepůjde vzít nijak jednoduše zpět (nanejvýš složitě ze záloh, pokud existují a obsahují potřebná data)!"
 
 #: admin/macro/remove.tpl.c:8 admin/conference/remove.tpl.c:8
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr ""
-"Tedy – pokud jste si jist(a), stiskněte 'smazat'. V opačném případě operaci "
-"zrušte pomocí 'zrušit'."
+msgstr "Tedy – pokud jste si jist(a), stiskněte 'smazat'. V opačném případě operaci zrušte pomocí 'zrušit'."
 
 #: admin/macro/generic.tpl.c:11
 msgid "Macro name to be displayed"
@@ -1303,7 +1281,7 @@ msgstr ""
 
 #: admin/systems/asterisk/phonesettings.tpl.c:35
 msgid "Modus"
-msgstr ""
+msgstr "režim"
 
 #: admin/systems/asterisk/phonesettings.tpl.c:47
 msgid "Authtype"
@@ -1397,9 +1375,3 @@ msgstr "upozorňovat na připojování a odpojování účastníků konference"
 #: admin/conference/generic.tpl.c:68
 msgid "Count users"
 msgstr "spočítat uživatele"
-
-#~ msgid "Macros"
-#~ msgstr "makra"
-
-#~ msgid "Conference management"
-#~ msgstr "správa konference"

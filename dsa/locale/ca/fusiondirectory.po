@@ -1,20 +1,20 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-09 19:17+0200\n"
-"PO-Revision-Date: 2012-11-26 13:40+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: ca\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
+"POT-Creation-Date: 2013-08-21 18:26+0200\n"
+"PO-Revision-Date: 2013-08-21 16:31+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: Catalan (http://www.transifex.com/projects/p/FusionDirectory/language/ca/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ca\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: config/dsa/class_dsaConfig.inc:28
@@ -38,55 +38,27 @@ msgid ""
 "Branch in which Directory Service Account (dsa) will be stored (required)"
 msgstr ""
 
-#: admin/dsa/class_simpleSecurityObject.inc:45
-#, fuzzy
-msgid "Password method"
-msgstr "Contrasenya"
-
-#: admin/dsa/class_simpleSecurityObject.inc:45
-msgid "Password hash method to use"
-msgstr ""
-
-#: admin/dsa/class_simpleSecurityObject.inc:50
-#: admin/dsa/class_simpleSecurityObject.inc:176
-msgid "Password"
-msgstr "Contrasenya"
-
-#: admin/dsa/class_simpleSecurityObject.inc:50
-msgid "Password (Leave empty if you do not wish to change it)"
-msgstr ""
-
-#: admin/dsa/class_simpleSecurityObject.inc:54
-#, fuzzy
-msgid "Password again"
-msgstr "Contrasenya"
-
-#: admin/dsa/class_simpleSecurityObject.inc:54
-msgid "Same password as above, to avoid errors"
-msgstr ""
-
-#: admin/dsa/class_simpleSecurityObject.inc:126
-msgid "Passwords does not match"
-msgstr ""
-
-#: admin/dsa/class_simpleSecurityObject.inc:141
-#: admin/dsa/class_simpleSecurityObject.inc:142
-#: admin/dsa/class_simpleSecurityObject.inc:146
-#: admin/dsa/class_simpleSecurityObject.inc:163
+#: admin/dsa/class_simpleSecurityObject.inc:31
+#: admin/dsa/class_simpleSecurityObject.inc:32
+#: admin/dsa/class_simpleSecurityObject.inc:36
+#: admin/dsa/class_simpleSecurityObject.inc:53
 msgid "Simple security object"
 msgstr ""
 
-#: admin/dsa/class_simpleSecurityObject.inc:167
+#: admin/dsa/class_simpleSecurityObject.inc:57
 msgid "Entry name"
 msgstr ""
 
-#: admin/dsa/class_simpleSecurityObject.inc:167
+#: admin/dsa/class_simpleSecurityObject.inc:57
 msgid "Account name"
 msgstr ""
 
-#: admin/dsa/class_simpleSecurityObject.inc:173
-#, fuzzy
+#: admin/dsa/class_simpleSecurityObject.inc:63
 msgid "Change password"
+msgstr "Canvia la contrasenya"
+
+#: admin/dsa/class_simpleSecurityObject.inc:66
+msgid "Password"
 msgstr "Contrasenya"
 
 #: admin/dsa/class_dsaManagement.inc:35 admin/dsa/class_dsaManagement.inc:40
@@ -96,12 +68,3 @@ msgstr ""
 #: admin/dsa/class_dsaManagement.inc:36
 msgid "DSA management"
 msgstr ""
-
-#~ msgid "Name"
-#~ msgstr "Nom"
-
-#~ msgid "Base"
-#~ msgstr "Base"
-
-#~ msgid "Warning"
-#~ msgstr "Avís"

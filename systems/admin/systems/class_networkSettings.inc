@@ -227,7 +227,7 @@ class networkSettings extends plugin
 
   function netmaskIsCoherent($idZone)
   {
-    $netmask = DNS::FlipIp(str_replace(".in-addr.arpa.", "", DNS::getNameFromMix($idZone)));
+    $netmask = DNS::FlipIp(str_replace(DNS::getInAddrArpa(), "", DNS::getNameFromMix($idZone)));
     if (!strstr($this->ipHostNumber, $netmask)) {
       return FALSE;
     } else {
@@ -374,7 +374,7 @@ class networkSettings extends plugin
       if (isset($_POST['propose_ip']) && $this->acl_is_writeable("ipHostNumber")) {
         foreach ($this->Zones as $key => $name) {
           if ($name == $this->dnsEntry['zoneName']) {
-            $net = DNS::FlipIp(str_replace(".in-addr.arpa.", "", DNS::getNameFromMix($key)));
+            $net = DNS::FlipIp(str_replace(DNS::getInAddrArpa(), "", DNS::getNameFromMix($key)));
             $this->ipHostNumber = $this->generateRandomIP($net);
           }
         }
@@ -1131,7 +1131,7 @@ class networkSettings extends plugin
       $attrs = $ldap->fetch();
       $tmp = array_flip($this->Zones);
       $tmp = preg_replace("/^[^\/]*+\//", "", $tmp[$this->dnsEntry['zoneName']]);
-      $tmp = trim(preg_replace("/\.in-addr.arpa\.$/", "", $tmp));
+      $tmp = trim(preg_replace('/'.preg_quote(DNS::getInAddrArpa(), '/').'$/', '', $tmp));
       $ptr = preg_replace("/^".preg_quote(DNS::FlipIp($tmp), '/')."\./", "", $this->ipHostNumber);
       return $ptr;
     } else {
@@ -1227,7 +1227,7 @@ class networkSettings extends plugin
   {
     $oldEntries = DNS::getDNSHostEntries($this->config, $this->OrigCn);
     $newEntries = $this->dnsEntry;
-    if (array_differs($newEntries['RECORDS'], $oldEntries['RECORDS'])) {
+    if (array_differs_recursive($newEntries['RECORDS'], $oldEntries['RECORDS'])) {
       DNS::touchDNSZone($this->config, $this->dnsEntry['zoneName']);
     }
   }

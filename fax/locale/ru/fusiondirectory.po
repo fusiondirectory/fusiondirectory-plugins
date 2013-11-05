@@ -1,24 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 #  Valia V. Vaneeva <fattie@altlinux.ru>, 2004
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-09 19:17+0200\n"
-"PO-Revision-Date: 2013-03-24 15:00+0000\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
+"POT-Creation-Date: 2013-08-21 18:26+0200\n"
+"PO-Revision-Date: 2013-08-21 16:40+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Russian (http://www.transifex.com/projects/p/FusionDirectory/"
-"language/ru/)\n"
-"Language: ru\n"
+"Language-Team: Russian (http://www.transifex.com/projects/p/FusionDirectory/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: config/fax/class_faxConfig.inc:28
 msgid "Fax configuration"
@@ -29,9 +27,8 @@ msgid "FusionDirectory fax plugin configuration"
 msgstr ""
 
 #: config/fax/class_faxConfig.inc:42
-#, fuzzy
 msgid "LDAP tree"
-msgstr "Ошибка LDAP"
+msgstr ""
 
 #: config/fax/class_faxConfig.inc:45
 msgid "Fax RDN"
@@ -305,14 +302,12 @@ msgid "Transfer time"
 msgstr "Время передачи"
 
 #: admin/blocklists/class_blocklistManagement.inc:36
-#, fuzzy
 msgid "Fax Blocklists"
-msgstr "\"Черные списки\""
+msgstr ""
 
 #: admin/blocklists/class_blocklistManagement.inc:37
-#, fuzzy
 msgid "Fax Blocklists management"
-msgstr "Управление \"черными списками\""
+msgstr ""
 
 #: admin/blocklists/blocklist-list.xml:11
 msgid "List of blocklists"
@@ -471,7 +466,7 @@ msgid "Filter"
 msgstr "Фильтр"
 
 #: personal/faxaccount/faxNumberSelect/faxNumberSelect-list.tpl.c:2
-#: admin/blocklists/blocklist-list.tpl.c:2 admin/blocklists/generic.tpl.c:11
+#: admin/blocklists/generic.tpl.c:11
 msgid "Base"
 msgstr "Ветка"
 
@@ -501,15 +496,12 @@ msgid "Alternate fax numbers will not be copied"
 msgstr ""
 
 #: personal/faxaccount/generic.tpl.c:8
-#, fuzzy
 msgid "Fax number for fax to trigger on"
-msgstr "Номер факса, для которого сработает GOfax"
+msgstr ""
 
 #: personal/faxaccount/generic.tpl.c:14
-#, fuzzy
 msgid "Specify the fax communication language for fax to mail gateway"
 msgstr ""
-"Укаэите предпочтительный язык для получения сообщений о факсах по эл. почте"
 
 #: personal/faxaccount/generic.tpl.c:20
 msgid "Specify delivery format for fax to mail gateway"

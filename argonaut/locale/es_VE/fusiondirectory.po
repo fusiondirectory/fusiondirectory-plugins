@@ -1,21 +1,20 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-09 19:16+0200\n"
-"PO-Revision-Date: 2013-03-24 15:00+0000\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
+"POT-Creation-Date: 2013-08-21 18:26+0200\n"
+"PO-Revision-Date: 2013-08-21 16:31+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Spanish (Venezuela) (http://www.transifex.com/projects/p/"
-"FusionDirectory/language/es_VE/)\n"
-"Language: es_VE\n"
+"Language-Team: Spanish (Venezuela) (http://www.transifex.com/projects/p/FusionDirectory/language/es_VE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es_VE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: addons/argonaut/events/class_DaemonEvent.inc:150
@@ -133,8 +132,7 @@ msgstr "el archivo está vacío"
 #: addons/argonaut/class_argonautImportFile.inc:110
 msgid ""
 "Selected entries will be skipped because of errors. Do you want to proceed?"
-msgstr ""
-"Seleccione entradas que serán ignoradas a causa de errores. ¿Quiere proceder?"
+msgstr "Seleccione entradas que serán ignoradas a causa de errores. ¿Quiere proceder?"
 
 #: addons/argonaut/class_argonautImportFile.inc:146
 #: addons/argonaut/class_argonautQueue.inc:351
@@ -202,8 +200,7 @@ msgstr "Permisos"
 #: addons/argonaut/class_argonautQueue.inc:258
 #, php-format
 msgid "The following jobs couldn't be deleted, they have to be aborted: %s"
-msgstr ""
-"Las siguientes tareas no pueden ser eliminadas, han sido canceladas: %s"
+msgstr "Las siguientes tareas no pueden ser eliminadas, han sido canceladas: %s"
 
 #: addons/argonaut/class_argonautQueue.inc:305
 msgid "Info"
@@ -212,13 +209,12 @@ msgstr "Información"
 #: addons/argonaut/class_argonautQueue.inc:305
 #, php-format
 msgid "%s"
-msgstr ""
+msgstr "%s"
 
 #: addons/argonaut/class_argonautQueue.inc:309
 #, php-format
 msgid "Required class '%s' cannot be found: job not aborted!"
-msgstr ""
-"No se ha encontrado la clase necesaria '%s': ¡no se ha cancelado el trabajo!"
+msgstr "No se ha encontrado la clase necesaria '%s': ¡no se ha cancelado el trabajo!"
 
 #: addons/argonaut/class_argonautQueue.inc:341
 msgid "Error detail"
@@ -242,14 +238,12 @@ msgid "Date"
 msgstr "Fecha"
 
 #: addons/argonaut/class_argonautLogView.inc:221
-#, fuzzy
 msgid "Argonaut Logs"
-msgstr "Servidor Argonaut"
+msgstr ""
 
 #: addons/argonaut/class_argonautLogView.inc:222
-#, fuzzy
 msgid "Argonaut Logs Viewer"
-msgstr "Servidor Argonaut"
+msgstr ""
 
 #: addons/argonaut/deploy-list.xml:10
 msgid "List of queued jobs"
@@ -336,7 +330,7 @@ msgstr "Modo por defecto"
 
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:57
 #: admin/systems/services/argonaut/class_argonautServer.inc:74
-#: admin/systems/argonaut/class_argonautClient.inc:134
+#: admin/systems/argonaut/class_argonautClient.inc:135
 msgid "Log directory"
 msgstr "Directorio de rgistros"
 
@@ -456,7 +450,8 @@ msgid "Delete finished tasks"
 msgstr "Eliminar tareas terminadas"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:51
-msgid "Wether or not argonaut server should delete successfully finished tasks"
+msgid ""
+"Wether or not argonaut server should delete successfully finished tasks"
 msgstr ""
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:56
@@ -480,7 +475,8 @@ msgid "Timeout"
 msgstr "Desconexión por tiempo"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:68
-msgid "Time in seconds before to consider an argonaut client or server as down"
+msgid ""
+"Time in seconds before to consider an argonaut client or server as down"
 msgstr ""
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:75
@@ -571,7 +567,7 @@ msgstr "Proxy"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:79
 msgid "Errors"
-msgstr ""
+msgstr "Errores"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:86
 msgid "Source"
@@ -610,59 +606,59 @@ msgstr "Banderas de Fai"
 msgid "NFS root"
 msgstr "Raiz NFS"
 
-#: admin/systems/argonaut/class_argonautClient.inc:116
+#: admin/systems/argonaut/class_argonautClient.inc:117
 msgid "Argonaut client settings"
 msgstr "Opciones del cliente Argonaut"
 
-#: admin/systems/argonaut/class_argonautClient.inc:119
+#: admin/systems/argonaut/class_argonautClient.inc:120
 msgid "Client port"
 msgstr ""
 
-#: admin/systems/argonaut/class_argonautClient.inc:119
+#: admin/systems/argonaut/class_argonautClient.inc:120
 msgid "Port used by argonaut client for JSON-RPC"
 msgstr ""
 
-#: admin/systems/argonaut/class_argonautClient.inc:124
+#: admin/systems/argonaut/class_argonautClient.inc:125
 msgid "WakeOnLan interface"
 msgstr ""
 
-#: admin/systems/argonaut/class_argonautClient.inc:124
+#: admin/systems/argonaut/class_argonautClient.inc:125
 msgid "Interface used by argonaut for WakeOnLan"
 msgstr ""
 
-#: admin/systems/argonaut/class_argonautClient.inc:129
+#: admin/systems/argonaut/class_argonautClient.inc:130
 msgid "TaskId file"
 msgstr ""
 
-#: admin/systems/argonaut/class_argonautClient.inc:129
+#: admin/systems/argonaut/class_argonautClient.inc:130
 msgid "File which argonaut will use to store its task id when booting"
 msgstr ""
 
-#: admin/systems/argonaut/class_argonautClient.inc:134
+#: admin/systems/argonaut/class_argonautClient.inc:135
 msgid "Directory in which argonaut client should write its logs"
 msgstr ""
 
-#: admin/systems/argonaut/class_argonautClient.inc:141
+#: admin/systems/argonaut/class_argonautClient.inc:142
 msgid "Service names"
 msgstr ""
 
-#: admin/systems/argonaut/class_argonautClient.inc:143
+#: admin/systems/argonaut/class_argonautClient.inc:144
 msgid "Argonaut service names"
 msgstr ""
 
-#: admin/systems/argonaut/class_argonautClient.inc:158
+#: admin/systems/argonaut/class_argonautClient.inc:159
 msgid "Argonaut client"
 msgstr "Cliente Argonaut"
 
-#: admin/systems/argonaut/class_argonautClient.inc:159
+#: admin/systems/argonaut/class_argonautClient.inc:160
 msgid "Edit argonaut client settings"
 msgstr ""
 
-#: include/class_supportDaemon.inc:88
+#: include/class_supportDaemon.inc:89
 msgid "Multiple argonaut server found. Only one is supported"
 msgstr "Varios servidores Argonaut encontrados. Solo se soporta uno"
 
-#: include/class_supportDaemon.inc:90
+#: include/class_supportDaemon.inc:91
 msgid "There is no argonaut server configured"
 msgstr "No hay un servidor Argonaut configurado"
 
@@ -674,10 +670,7 @@ msgstr "Importar trabajos"
 msgid ""
 "You can import a list of jobs into the FusionDirectory job queue. This "
 "should be a semicolon seperated list of items in the following format:"
-msgstr ""
-"Puede importar una lista de trabajos a la cola de trabajos de "
-"FusionDirectory. Esta debe ser una lista separada por punto y coma de "
-"entradas en el siguiente formato:"
+msgstr "Puede importar una lista de trabajos a la cola de trabajos de FusionDirectory. Esta debe ser una lista separada por punto y coma de entradas en el siguiente formato:"
 
 #: addons/argonaut/argonaut_import_file.tpl.c:8
 msgid "timestamp"
@@ -685,7 +678,7 @@ msgstr "marca de tiempo"
 
 #: addons/argonaut/argonaut_import_file.tpl.c:11
 msgid "MAC-address"
-msgstr ""
+msgstr "Dirección MAC"
 
 #: addons/argonaut/argonaut_import_file.tpl.c:14
 msgid "job type"
@@ -705,7 +698,7 @@ msgstr "nombre de dominio cualificado (fqdn)"
 
 #: addons/argonaut/argonaut_import_file.tpl.c:26
 msgid "IP-address"
-msgstr ""
+msgstr "Dirección IP"
 
 #: addons/argonaut/argonaut_import_file.tpl.c:29
 msgid "DHCP group"
@@ -733,7 +726,6 @@ msgid "Timestamp"
 msgstr "Marca de tiempo"
 
 #: addons/argonaut/argonaut_import_file.tpl.c:56
-#: addons/argonaut/events/eventTargetSystems-list.tpl.c:2
 #: addons/argonaut/deploy-list.tpl.c:2
 msgid "Base"
 msgstr "Base"
@@ -828,9 +820,7 @@ msgstr "Aviso"
 
 #: addons/argonaut/remove.tpl.c:5
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr ""
-"Entonces, si esta seguro, presione <i>Eliminar</i> para continuar o "
-"<i>Cancelar</i> para Abortar."
+msgstr "Entonces, si esta seguro, presione <i>Eliminar</i> para continuar o <i>Cancelar</i> para Abortar."
 
 #: addons/argonaut/argonaut_log_view.tpl.c:2
 msgid "Available logs"
@@ -843,6 +833,3 @@ msgstr "Seleccionar registro"
 #: addons/argonaut/argonaut_log_view.tpl.c:8
 msgid "No logs for this host available!"
 msgstr "¡No hay registros para este equipo disponibles!"
-
-#~ msgid "Log view"
-#~ msgstr "Vista del registro"

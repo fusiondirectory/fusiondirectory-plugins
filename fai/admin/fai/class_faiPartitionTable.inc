@@ -425,11 +425,11 @@ class faiPartitionTable extends faiPluginClass
             "raid" => "plugins/fai/images/raid.png", "lvm" => "plugins/ogroups/images/list_ogroup.png");
         $type = isset($disk['FAIdiskType'])?$types[$disk['FAIdiskType']]:$types['old'];
         $divlist->AddEntry(array(
-              array("string"=> "<img border='0' src='".$type."'>", "attach"=>"style='width:16px'"),
-              array("string"=> $edit_link, "attach"=>"style='width:100px'"),
-              array("string"=> $disk['description']),
-              array("string"=> $cnt,  "attach"=>"style='width:16px'"),
-              array("string"=>str_replace("%s",base64_encode($key),$act),
+              array("html"=> "<img border='0' src='".$type."'>", "attach"=>"style='width:16px'"),
+              array("html"=> $edit_link, "attach"=>"style='width:100px'"),
+              array("html"=> $disk['description']),
+              array("html"=> $cnt,  "attach"=>"style='width:16px'"),
+              array("html"=>str_replace("%s",base64_encode($key),$act),
                 "attach"=>"style='border-right: 0px;width:50px;text-align:right;'")));
       }
     }

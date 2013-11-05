@@ -99,7 +99,7 @@ class mailgroup extends simplePlugin
             )
           ),
           new GroupMailsAttribute (
-            _('Forward messages to non group members'), _(''),
+            _('Forward messages to non group members'), _('Forward messages to non group members'),
             'gosaMailForwardingAddress'
           )
         )

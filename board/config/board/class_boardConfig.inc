@@ -25,7 +25,7 @@ class boardConfig extends simplePlugin
   static function plInfo()
   {
     return array(
-      'plShortName'     => _('Board configuration'),
+      'plShortName'     => _('Dashboard configuration'),
       'plDescription'   => _('FusionDirectory board plugin configuration'),
       'plSelfModify'    => FALSE,
       'plCategory'      => array('configuration'),
@@ -39,7 +39,7 @@ class boardConfig extends simplePlugin
   {
     return array(
       'systems' => array(
-        'name'  => _('Board name schema'),
+        'name'  => _('Dashboard name schema'),
         'attrs' => array(
           new IntAttribute (
             _('Number of digits'), _('Number of digits to use after prefix'),
@@ -59,7 +59,7 @@ class boardConfig extends simplePlugin
         'name'  => _('Board expired users'),
         'attrs' => array(
           new IntAttribute (
-            _('Number of days'), _('Number of days before expiration needed for an account to show in the board next expired accounts list'),
+            _('Number of days'), _('Number of days before expiration needed for an account to show in the dashboard next expired accounts list'),
             'fdBoardExpiredAccountsDays', FALSE,
             1, FALSE, 15
           ),

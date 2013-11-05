@@ -1,21 +1,20 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-09 19:17+0200\n"
-"PO-Revision-Date: 2013-03-24 15:00+0000\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
+"POT-Creation-Date: 2013-08-21 18:26+0200\n"
+"PO-Revision-Date: 2013-08-21 16:40+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Spanish (Venezuela) (http://www.transifex.com/projects/p/"
-"FusionDirectory/language/es_VE/)\n"
-"Language: es_VE\n"
+"Language-Team: Spanish (Venezuela) (http://www.transifex.com/projects/p/FusionDirectory/language/es_VE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es_VE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: config/fax/class_faxConfig.inc:28
@@ -27,14 +26,12 @@ msgid "FusionDirectory fax plugin configuration"
 msgstr ""
 
 #: config/fax/class_faxConfig.inc:42
-#, fuzzy
 msgid "LDAP tree"
-msgstr "Error LDAP"
+msgstr ""
 
 #: config/fax/class_faxConfig.inc:45
-#, fuzzy
 msgid "Fax RDN"
-msgstr "Fax ID"
+msgstr ""
 
 #: config/fax/class_faxConfig.inc:45
 msgid "Branch in which fax blocklists will be stored"
@@ -71,8 +68,7 @@ msgstr ""
 
 #: personal/faxaccount/main.inc:126
 msgid "Click the 'Edit' button below to change informations in this dialog"
-msgstr ""
-"Pulse en el botón - Editar - para cambiar la información en esta ventana"
+msgstr "Pulse en el botón - Editar - para cambiar la información en esta ventana"
 
 #: personal/faxaccount/main.inc:135
 msgid "FAX settings"
@@ -122,9 +118,7 @@ msgstr "Número de Fax"
 
 #: personal/faxaccount/class_gofaxAccount.inc:638
 msgid "Mail delivery is requested without target address!"
-msgstr ""
-"¡Ha seleccionado envío de correo, pero no se ha introducido ninguna "
-"dirección de correo!"
+msgstr "¡Ha seleccionado envío de correo, pero no se ha introducido ninguna dirección de correo!"
 
 #: personal/faxaccount/class_gofaxAccount.inc:640
 msgid "Mail address"
@@ -136,8 +130,7 @@ msgstr "your-name@your-domain.com"
 
 #: personal/faxaccount/class_gofaxAccount.inc:646
 msgid "Printing is requested without a target printer!"
-msgstr ""
-"¡Ha seleccionado impresión, pero no se ha introducido ninguna impresora!"
+msgstr "¡Ha seleccionado impresión, pero no se ha introducido ninguna impresora!"
 
 #: personal/faxaccount/class_gofaxAccount.inc:796
 #: personal/faxaccount/faxNumberSelect/faxNumberSelect-list.xml:56
@@ -308,14 +301,12 @@ msgid "Transfer time"
 msgstr "Tiempo de envío"
 
 #: admin/blocklists/class_blocklistManagement.inc:36
-#, fuzzy
 msgid "Fax Blocklists"
-msgstr "Lista de bloqueos de Fax"
+msgstr ""
 
 #: admin/blocklists/class_blocklistManagement.inc:37
-#, fuzzy
 msgid "Fax Blocklists management"
-msgstr "Administración de listas de bloqueo"
+msgstr ""
 
 #: admin/blocklists/blocklist-list.xml:11
 msgid "List of blocklists"
@@ -474,7 +465,7 @@ msgid "Filter"
 msgstr "Filtro"
 
 #: personal/faxaccount/faxNumberSelect/faxNumberSelect-list.tpl.c:2
-#: admin/blocklists/blocklist-list.tpl.c:2 admin/blocklists/generic.tpl.c:11
+#: admin/blocklists/generic.tpl.c:11
 msgid "Base"
 msgstr "Base"
 
@@ -504,16 +495,12 @@ msgid "Alternate fax numbers will not be copied"
 msgstr "Los números de fax alternativos no serán copiados"
 
 #: personal/faxaccount/generic.tpl.c:8
-#, fuzzy
 msgid "Fax number for fax to trigger on"
-msgstr "Numero de fax para activar GOfax"
+msgstr ""
 
 #: personal/faxaccount/generic.tpl.c:14
-#, fuzzy
 msgid "Specify the fax communication language for fax to mail gateway"
 msgstr ""
-"Especificar el lenguaje de comunicación de GOfax para la pasarela de fax a "
-"correo"
 
 #: personal/faxaccount/generic.tpl.c:20
 msgid "Specify delivery format for fax to mail gateway"
@@ -623,15 +610,11 @@ msgstr "Aviso"
 msgid ""
 "Please double check if you really want to do this since there is no way for "
 "FusionDirectory to get your data back."
-msgstr ""
-"Por favor verifique que realmente desea hacer esto ya que FusionDirectory no "
-"tiene forma de recuperar la data"
+msgstr "Por favor verifique que realmente desea hacer esto ya que FusionDirectory no tiene forma de recuperar la data"
 
 #: admin/blocklists/remove.tpl.c:8
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr ""
-"Entonces, si esta seguro, presione <i>Eliminar</i> para continuar o "
-"<i>Cancelar</i> para Abortar."
+msgstr "Entonces, si esta seguro, presione <i>Eliminar</i> para continuar o <i>Cancelar</i> para Abortar."
 
 #: admin/blocklists/generic.tpl.c:17
 msgid "Select wether to filter incoming or outgoing calls"
@@ -644,6 +627,3 @@ msgstr "Descripción de esta lista de bloqueos"
 #: admin/blocklists/generic.tpl.c:29
 msgid "Information"
 msgstr "Información"
-
-#~ msgid "Multiple edit"
-#~ msgstr "Edición multiple"

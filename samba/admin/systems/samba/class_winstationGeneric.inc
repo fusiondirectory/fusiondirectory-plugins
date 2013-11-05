@@ -179,7 +179,7 @@ class winstationGeneric extends simplePlugin
   function save_object()
   {
     parent::save_object();
-    $this->uid = $this->cn;
+    $this->attributesAccess['uid']->setValue($this->attributesAccess['cn']->getValue());
   }
 
   function resetCopyInfos()
@@ -225,7 +225,7 @@ class winstationGeneric extends simplePlugin
 
   function prepare_save()
   {
-    $this->uid = $this->cn;
+    $this->attributesAccess['uid']->setValue($this->attributesAccess['cn']->getValue());
     parent::prepare_save();
 
     //verify that the $this->sambaSID exist and that it is correct
@@ -268,8 +268,8 @@ class winstationGeneric extends simplePlugin
 
   function compute_dn()
   {
-    $this->uid = $this->cn;
-    return 'uid='.$this->uid.','.get_winstations_ou().$this->base;
+    $this->attributesAccess['uid']->setValue($this->attributesAccess['cn']->getValue());
+    return 'uid='.$this->attributesAccess['uid']->getValue().','.get_winstations_ou().$this->base;
   }
 }
 ?>

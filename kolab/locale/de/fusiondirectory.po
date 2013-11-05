@@ -1,22 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 #  Stefan Koehler <stefan.koehler@GONICUS.de>, 2005
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-09 19:18+0200\n"
-"PO-Revision-Date: 2013-03-24 14:46+0000\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
+"POT-Creation-Date: 2013-08-21 18:26+0200\n"
+"PO-Revision-Date: 2013-08-21 16:40+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: German (http://www.transifex.com/projects/p/FusionDirectory/"
-"language/de/)\n"
-"Language: de\n"
+"Language-Team: German (http://www.transifex.com/projects/p/FusionDirectory/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: personal/kolab/class_kolabAccount.inc:82
@@ -162,10 +161,9 @@ msgid "Default"
 msgstr "Standard"
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:183
-msgid "Mail settings cannot be removed while there are delegations configured!"
-msgstr ""
-"Die Mail-Einstellungen können nicht entfernt werden solange Vertretungen "
-"vorhanden sind!"
+msgid ""
+"Mail settings cannot be removed while there are delegations configured!"
+msgstr "Die Mail-Einstellungen können nicht entfernt werden solange Vertretungen vorhanden sind!"
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:281
 msgid "Waiting for kolab to remove mail properties..."
@@ -306,8 +304,7 @@ msgstr "Frei/Belegt-Einstellungen"
 #: admin/systems/services/kolab/class_serviceKolab.inc:159
 #: admin/systems/services/kolab/class_serviceKolab.inc:160
 msgid "Allow unauthenticated downloading of Free/Busy information"
-msgstr ""
-"Erlaube nicht-authentifiziertes Herunterladen von Frei/Belegt-Informationen"
+msgstr "Erlaube nicht-authentifiziertes Herunterladen von Frei/Belegt-Informationen"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:164
 msgid "Number of days to include when creating free/busy lists"
@@ -362,10 +359,3 @@ msgstr "Hostname"
 #: admin/systems/services/kolab/class_serviceKolab.inc:295
 msgid "LDAP error"
 msgstr "LDAP-Fehler"
-
-#~ msgid ""
-#~ "The kolab account is currently disabled. It's features can be adjusted if "
-#~ "you add a mail account."
-#~ msgstr ""
-#~ "Das Kolab-Konto ist aktuell deaktiviert. Die Einstellungen können "
-#~ "angepasst werden, wenn Sie ein Postfach hinzufügen."

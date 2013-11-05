@@ -6,7 +6,7 @@
     <departmentRootVisible>false</departmentRootVisible>
     <baseMode>true</baseMode>
     <multiSelect>true</multiSelect>
-    <template>system-list.tpl</template>
+    <template>simple-list.tpl</template>
     <label>List of systems</label>
     <defaultSortColumn>1</defaultSortColumn>
 
@@ -142,7 +142,7 @@
   </definition>
 
   <table>
-    <layout>|20px;c||90px|110px|100px||60px|170px;r|</layout>
+    <layout>|20px;c||90px-d|110px|100px;o||60px;o|170px-d;r|</layout>
 
     <department>
       <value>%{filter:objectType(dn,objectClass)}</value>

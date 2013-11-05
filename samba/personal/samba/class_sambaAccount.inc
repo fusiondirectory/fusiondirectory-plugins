@@ -308,10 +308,19 @@ class sambaAccount extends simplePlugin
             'sambaAcctFlags',
             array('flag_pwdExpire','flag_noPwdRequired','flag_lockSamba')
           ),
-          new ButtonAttribute (
+          new DialogButtonAttribute (
             _('Samba logon times'), _('What is the allowed time to connect'),
-            'sambaLogonHours', 'SambaLogonHoursDialog', _('Edit settings')
-          )
+            'sambaLogonHours', FALSE, 'SambaLogonHoursDialog', _('Edit settings')
+          ),
+          /* Unused attributes, that needs to appear in attributes array in order to be
+           * removed when disabling the samba tab */
+          new HiddenAttribute('sambaLogonTime'),
+          new HiddenAttribute('sambaLogoffTime'),
+          new HiddenAttribute('sambaPwdCanChange'),
+          new HiddenAttribute('sambaPwdMustChange'),
+          new HiddenAttribute('sambaPasswordHistory'),
+          new HiddenAttribute('sambaBadPasswordTime'),
+          new HiddenAttribute('sambaBadPasswordCount'),
         )
       ),
       'system_trust' => array(
@@ -342,7 +351,6 @@ class sambaAccount extends simplePlugin
     parent::__construct($config, $dn, $baseobject);
 
     $this->attributesAccess['sambaDomainName']->setChoices(array_keys($this->config->data['SERVERS']['SAMBA']));
-    $this->attributesAccess['sambaDomainName']->setInLdap(FALSE);
     $this->attributesAccess['TsLogin']->setManagedAttributes(
       array(
         'disable' => array (
@@ -520,20 +528,6 @@ class sambaAccount extends simplePlugin
         $this->attrs['sambaKickoffTime'] = array();
       }
     }
-  }
-
-  /* Force password set, if this account doesn't have any samba passwords  */
-  function password_change_needed()
-  {
-    if (!$this->initially_was_account && $this->is_account) {
-      $ldap = $this->config->get_ldap_link();
-      $ldap->cat($this->dn, array("sambaLMPassword","sambaNTPassword"));
-      $attrs = $ldap->fetch();
-      if (!isset($attrs['sambaLMPassword']) || !isset($attrs['sambaNTPassword'])) {
-        return TRUE;
-      }
-    }
-    return FALSE;
   }
 
   function adapt_from_template($dn, $skip = array())

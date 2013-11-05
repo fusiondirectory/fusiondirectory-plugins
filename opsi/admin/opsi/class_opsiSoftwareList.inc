@@ -77,7 +77,7 @@ class opsiSoftwareList extends simplePlugin
                 new SelectAttribute(
                   '', '',
                   'fdOpsiLocalbootProduct_action', TRUE,
-                  array('setup', 'always', 'once', 'custom', 'userlogin')
+                  array('setup', 'always', 'once', 'custom', 'userlogin', 'update')
                 )
               ),
               '|','',_('Localboot products')
@@ -118,7 +118,15 @@ class opsiSoftwareList extends simplePlugin
       $ldap = $this->config->get_ldap_link();
       $ldap->cat($this->fdOpsiServerDN);
       if ($attrs = $ldap->fetch()) {
-        $this->macAddress = $attrs['macAddress'][0];
+        if (isset($attrs['macAddress'])) {
+          $this->macAddress = $attrs['macAddress'][0];
+        } else {
+          msg_dialog::display(
+            _("No mac address"),
+            sprintf(_("Server %s has no mac address configured in the LDAP"), $this->fdOpsiServerDN), ERROR_DIALOG
+          );
+          return FALSE;
+        }
       } else {
         msg_dialog::display(
           sprintf(_("Could not find %s in the LDAP"),$this->fdOpsiServerDN),
@@ -126,7 +134,7 @@ class opsiSoftwareList extends simplePlugin
         );
         return FALSE;
       }
-      $localboots = $s_daemon->append_call('OPSI.get_localboots', array($this->macAddress), array('args' => array(array('id','name','setupScript','alwaysScript','onceScript','customScript','userLoginScript'))));
+      $localboots = $s_daemon->append_call('OPSI.get_localboots', array($this->macAddress), array('args' => array(array('id','name','setupScript','alwaysScript','onceScript','customScript','userLoginScript','updateScript'))));
       if ($s_daemon->is_error()) {
         msg_dialog::display(
           _('Could contact OPSI server'),
@@ -148,7 +156,7 @@ class opsiSoftwareList extends simplePlugin
     $localboot = $this->attributesAccess['fdOpsiLocalbootProduct']->attribute->attributes[0]->getValue();
 
     $actions = array();
-    foreach (array('setup', 'always', 'once', 'custom', 'userLogin') as $action) {
+    foreach (array('setup', 'always', 'once', 'custom', 'userLogin', 'update') as $action) {
       if (!empty($this->products[$this->fdOpsiServerDN]['localboots'][$localboot][$action.'Script'])) {
         $actions[] = strtolower($action);
       }

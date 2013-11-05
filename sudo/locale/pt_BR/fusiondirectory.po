@@ -1,0 +1,229 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: FusionDirectory\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
+"POT-Creation-Date: 2013-08-21 18:26+0200\n"
+"PO-Revision-Date: 2013-08-06 07:24+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/FusionDirectory/language/pt_BR/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: config/sudo/class_sudoConfig.inc:28
+msgid "Sudo configuration"
+msgstr ""
+
+#: config/sudo/class_sudoConfig.inc:29
+msgid "FusionDirectory sudo plugin configuration"
+msgstr ""
+
+#: config/sudo/class_sudoConfig.inc:42
+msgid "LDAP tree"
+msgstr ""
+
+#: config/sudo/class_sudoConfig.inc:45
+msgid "Sudo RDN"
+msgstr ""
+
+#: config/sudo/class_sudoConfig.inc:45
+msgid "Branch in which sudoers will be stored"
+msgstr ""
+
+#: admin/sudo/class_sudoManagement.inc:36 admin/sudo/class_sudoGeneric.inc:55
+msgid "Sudo"
+msgstr ""
+
+#: admin/sudo/class_sudoManagement.inc:37
+msgid "Sudo management"
+msgstr ""
+
+#: admin/sudo/sudo-list.xml:11
+msgid "List of sudo roles"
+msgstr ""
+
+#: admin/sudo/sudo-list.xml:15 admin/sudo/sudo-list.xml:65
+msgid "Role"
+msgstr ""
+
+#: admin/sudo/sudo-list.xml:32 admin/sudo/class_sudoGeneric.inc:76
+#: admin/sudo/paste_generic.tpl.c:8 admin/sudo/sudo-filter.tpl.c:5
+msgid "Name"
+msgstr ""
+
+#: admin/sudo/sudo-list.xml:40 admin/sudo/class_sudoGeneric.inc:81
+msgid "Description"
+msgstr ""
+
+#: admin/sudo/sudo-list.xml:48
+msgid "Actions"
+msgstr ""
+
+#: admin/sudo/sudo-list.xml:59
+msgid "Create"
+msgstr ""
+
+#: admin/sudo/sudo-list.xml:72
+msgid "Default"
+msgstr ""
+
+#: admin/sudo/sudo-list.xml:85
+msgid "Remove"
+msgstr ""
+
+#: admin/sudo/sudo-list.xml:117
+msgid "Edit sudo role"
+msgstr ""
+
+#: admin/sudo/sudo-list.xml:130
+msgid "Remove sudo role"
+msgstr ""
+
+#: admin/sudo/class_sudoOption.inc:84
+msgid "Unknown option"
+msgstr ""
+
+#: admin/sudo/class_sudoOption.inc:85
+#, php-format
+msgid "The sudo option '%s' is invalid!"
+msgstr ""
+
+#: admin/sudo/class_sudoOption.inc:278
+#, php-format
+msgid "%s (%s)"
+msgstr ""
+
+#: admin/sudo/class_sudoOption.inc:472
+msgid "Available options"
+msgstr ""
+
+#: admin/sudo/class_sudoOption.inc:475
+msgid "Option"
+msgstr ""
+
+#: admin/sudo/class_sudoOption.inc:475
+msgid "Add a new sudo option"
+msgstr ""
+
+#: admin/sudo/class_sudoOption.inc:480 admin/sudo/class_sudoOption.inc:482
+msgid "Used sudo role options"
+msgstr ""
+
+#: admin/sudo/class_sudoOption.inc:554
+msgid "Options"
+msgstr ""
+
+#: admin/sudo/class_sudoOption.inc:555
+msgid "Sudo options"
+msgstr ""
+
+#: admin/sudo/class_sudoGeneric.inc:56 admin/sudo/class_sudoGeneric.inc:59
+#: admin/sudo/class_sudoGeneric.inc:60
+msgid "Sudo role"
+msgstr ""
+
+#: admin/sudo/class_sudoGeneric.inc:71 admin/sudo/paste_generic.tpl.c:2
+msgid "Generic"
+msgstr ""
+
+#: admin/sudo/class_sudoGeneric.inc:71 admin/sudo/paste_generic.tpl.c:5
+msgid "global defaults"
+msgstr ""
+
+#: admin/sudo/class_sudoGeneric.inc:76
+msgid "Name of the role"
+msgstr ""
+
+#: admin/sudo/class_sudoGeneric.inc:81
+msgid "Description for the new sudo role"
+msgstr ""
+
+#: admin/sudo/class_sudoGeneric.inc:86
+msgid "Commands"
+msgstr ""
+
+#: admin/sudo/class_sudoGeneric.inc:87
+msgid ""
+"A Unix command with optional command line arguments, potentially including "
+"globbing characters (aka wild cards)"
+msgstr ""
+
+#: admin/sudo/class_sudoGeneric.inc:93
+msgid "Run as"
+msgstr ""
+
+#: admin/sudo/class_sudoGeneric.inc:94
+msgid ""
+"A user that commands may be run as or a Unix group that contains a list of "
+"users that commands may be run as"
+msgstr ""
+
+#: admin/sudo/class_sudoGeneric.inc:100
+msgid "Systems"
+msgstr ""
+
+#: admin/sudo/class_sudoGeneric.inc:100
+msgid "A host name, IP address or IP network"
+msgstr ""
+
+#: admin/sudo/class_sudoGeneric.inc:105
+msgid "Users and groups"
+msgstr ""
+
+#: admin/sudo/class_sudoGeneric.inc:106
+msgid ""
+"A user name, user ID (prefixed with '#'), Unix group (prefixed with '%')"
+msgstr ""
+
+#: admin/sudo/class_sudoGeneric.inc:113
+msgid "System trust"
+msgstr ""
+
+#: admin/sudo/class_sudoGeneric.inc:117
+msgid "Trust mode"
+msgstr ""
+
+#: admin/sudo/class_sudoGeneric.inc:117
+msgid "Trust mode for the role"
+msgstr ""
+
+#: admin/sudo/class_sudoGeneric.inc:121
+msgid "disabled"
+msgstr ""
+
+#: admin/sudo/class_sudoGeneric.inc:121
+msgid "full access"
+msgstr ""
+
+#: admin/sudo/class_sudoGeneric.inc:121
+msgid "allow access to these hosts"
+msgstr ""
+
+#: admin/sudo/remove.tpl.c:2
+msgid "Warning"
+msgstr ""
+
+#: admin/sudo/remove.tpl.c:5
+msgid ""
+"Please double check if you really want to do this since there is no way for "
+"FusionDirectory to get your data back."
+msgstr ""
+
+#: admin/sudo/remove.tpl.c:8
+msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
+msgstr ""
+
+#: admin/sudo/sudo-filter.tpl.c:2
+msgid "Filter"
+msgstr ""
+
+#: admin/sudo/sudo-filter.tpl.c:8
+msgid "User"
+msgstr ""

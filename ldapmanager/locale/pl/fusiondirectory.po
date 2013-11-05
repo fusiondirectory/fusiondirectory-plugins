@@ -1,23 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-09 19:18+0200\n"
-"PO-Revision-Date: 2013-03-24 15:00+0000\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
+"POT-Creation-Date: 2013-08-21 18:26+0200\n"
+"PO-Revision-Date: 2013-08-21 16:30+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Polish (http://www.transifex.com/projects/p/FusionDirectory/"
-"language/pl/)\n"
-"Language: pl\n"
+"Language-Team: Polish (http://www.transifex.com/projects/p/FusionDirectory/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2);\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: addons/ldapmanager/tabs_ldif.inc:38
 msgid "LDAP import/export"
@@ -139,9 +137,8 @@ msgid "Undefined flag '%s'!"
 msgstr ""
 
 #: addons/ldapmanager/class_csvimport.inc:39
-#, fuzzy
 msgid "CSV import"
-msgstr "Import"
+msgstr "import CVS"
 
 #: addons/ldapmanager/class_csvimport.inc:40
 msgid "Import of csv data into the ldap tree"
@@ -210,8 +207,7 @@ msgstr " Zmień istniejące obiekty, zachowaj nienaruszone atrybuty"
 
 #: addons/ldapmanager/contentimport.tpl.c:14
 msgid "Overwrite existing objects, all not listed attributes will be removed"
-msgstr ""
-"Nadpisz istniejące obiekty, wszystkie wyświetlone atrybuty zostaną usunięte"
+msgstr "Nadpisz istniejące obiekty, wszystkie wyświetlone atrybuty zostaną usunięte"
 
 #: addons/ldapmanager/contentimport.tpl.c:17
 msgid "Remove existing entries first"
@@ -223,8 +219,8 @@ msgstr "Import powiódł się"
 
 #: addons/ldapmanager/contentcsv.tpl.c:2
 msgid ""
-"The CSV import plugin provides methods to generate user accounts from a file "
-"containing Semi-Colon Seperated Values. The administrator can decide which "
+"The CSV import plugin provides methods to generate user accounts from a file"
+" containing Semi-Colon Seperated Values. The administrator can decide which "
 "columns should be transfered to which attribute. Note that you must have at "
 "least the GIVENNAME and SURNAME set."
 msgstr ""
@@ -258,10 +254,7 @@ msgid ""
 "The LDIF export plugin provides methods to download a complete snapshot of "
 "the running LDAP directory as ldif. You may save these files for backup "
 "purpose or when initializing a new server."
-msgstr ""
-"Dodatek eksport LDIF zapewnia metody do sciągnięcia snapshot'u działającego "
-"katalogu LDAP jako ldif. Można zapisać te pliki dla celów bezpieczeństwa lub "
-"podczas inicjalizacji nowego serwera."
+msgstr "Dodatek eksport LDIF zapewnia metody do sciągnięcia snapshot'u działającego katalogu LDAP jako ldif. Można zapisać te pliki dla celów bezpieczeństwa lub podczas inicjalizacji nowego serwera."
 
 #: addons/ldapmanager/contentexport.tpl.c:5
 msgid "Export single entry"
@@ -270,6 +263,3 @@ msgstr "Eksportuj pojedynczy wpis"
 #: addons/ldapmanager/contentexport.tpl.c:11
 msgid "Export complete LDIF for"
 msgstr "Eksportuj kompletny LDIF dla"
-
-#~ msgid "LDAP manager"
-#~ msgstr "Menedżer LDAP"

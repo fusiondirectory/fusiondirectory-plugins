@@ -42,7 +42,8 @@ class ArgonautServiceNameAttribute extends CompositeAttribute
   static private $argonautService_blacklist = array(
     "argonautDNSConfig",
     "argonautMirrorConfig",
-    "argonautFuseConfig"
+    "argonautFuseConfig",
+    "serviceDebianRepository",
   );
 
   function __construct ($description, $ldapName, $acl = "")

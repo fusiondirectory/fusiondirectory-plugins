@@ -68,6 +68,12 @@ class mailAccount extends simplePlugin
   var $displayHeader    = TRUE;
   var $objectclasses    = array('gosaMailAccount');
 
+  /* Used by the mail method */
+  var $cn;
+  var $uid;
+  var $uidNumber;
+  var $gidNumber;
+
   static function plInfo()
   {
     return array(
@@ -224,16 +230,12 @@ class mailAccount extends simplePlugin
   {
     parent::__construct($config, $dn, $object);
 
-    if (isset($object->cn)) {
-      $this->cn = $object->cn;
-    } elseif (isset($this->attrs['cn'])) {
-      $this->cn = $this->attrs['cn'][0];
-    }
-
-    if (isset($object->uid)) {
-      $this->uid = $object->uid;
-    } elseif (isset($this->attrs['uid'])) {
-      $this->uid = $this->attrs['uid'][0];
+    foreach (array('cn','uid','uidNumber','gidNumber') as $var) {
+      if (isset($object->$var)) {
+        $this->$var = $object->$var;
+      } elseif (isset($this->attrs[$var])) {
+        $this->$var = $this->attrs[$var][0];
+      }
     }
 
     /* Intialize the used mailMethod */

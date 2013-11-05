@@ -1,22 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
+# scobo <matthias.koerner@binary-artworks.com>, 2013
 #  Stefan Koehler <stefan.koehler@GONICUS.de>, 2005
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-09 19:17+0200\n"
-"PO-Revision-Date: 2013-03-24 15:00+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: German (http://www.transifex.com/projects/p/FusionDirectory/"
-"language/de/)\n"
-"Language: de\n"
+"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
+"POT-Creation-Date: 2013-08-21 18:26+0200\n"
+"PO-Revision-Date: 2013-08-22 21:20+0000\n"
+"Last-Translator: scobo <matthias.koerner@binary-artworks.com>\n"
+"Language-Team: German (http://www.transifex.com/projects/p/FusionDirectory/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: config/fax/class_faxConfig.inc:28
@@ -25,17 +25,15 @@ msgstr ""
 
 #: config/fax/class_faxConfig.inc:29
 msgid "FusionDirectory fax plugin configuration"
-msgstr ""
+msgstr "FusionDirectory Fax-Plugin-Konfiguration"
 
 #: config/fax/class_faxConfig.inc:42
-#, fuzzy
 msgid "LDAP tree"
-msgstr "LDAP-Fehler"
+msgstr "LDAP Baum"
 
 #: config/fax/class_faxConfig.inc:45
-#, fuzzy
 msgid "Fax RDN"
-msgstr "Fax-ID"
+msgstr "Fax RDN"
 
 #: config/fax/class_faxConfig.inc:45
 msgid "Branch in which fax blocklists will be stored"
@@ -60,21 +58,19 @@ msgstr "Fehler"
 
 #: html/getfax.php:96
 msgid "cannot resize fax image"
-msgstr ""
+msgstr "Kann das Fax-Bild nicht in der Größe verändern"
 
 #: html/getfax.php:101
 msgid "cannot convert fax image to png"
-msgstr ""
+msgstr "Kann das Fax-Bild nicht zu png konvertieren"
 
 #: html/getfax.php:106
 msgid "Reading fax image image failed"
-msgstr ""
+msgstr "Lesen des Fax-Bildes fehlgeschlagen"
 
 #: personal/faxaccount/main.inc:126
 msgid "Click the 'Edit' button below to change informations in this dialog"
-msgstr ""
-"Betätigen sie den 'Bearbeiten'-Schalter unten um Informationen in diesem "
-"Dialog zu ändern"
+msgstr "Betätigen sie den 'Bearbeiten'-Schalter unten um Informationen in diesem Dialog zu ändern"
 
 #: personal/faxaccount/main.inc:135
 msgid "FAX settings"
@@ -307,12 +303,10 @@ msgid "Transfer time"
 msgstr "Übertragungszeit"
 
 #: admin/blocklists/class_blocklistManagement.inc:36
-#, fuzzy
 msgid "Fax Blocklists"
 msgstr "Fax-Sperrlisten"
 
 #: admin/blocklists/class_blocklistManagement.inc:37
-#, fuzzy
 msgid "Fax Blocklists management"
 msgstr "Sperrlistenverwaltung"
 
@@ -362,7 +356,7 @@ msgstr "Typ"
 
 #: admin/blocklists/class_blocklistGeneric.inc:32
 msgid "Type of this list"
-msgstr ""
+msgstr "Typ dieser Liste"
 
 #: admin/blocklists/class_blocklistGeneric.inc:35
 msgid "send"
@@ -384,7 +378,7 @@ msgstr "Nummern können auch Platzhalter enthalten."
 
 #: admin/blocklists/class_blocklistGeneric.inc:141
 msgid "Informations"
-msgstr ""
+msgstr "Informationen"
 
 #: admin/blocklists/class_blocklistGeneric.inc:144
 #: admin/blocklists/paste_generic.tpl.c:2 admin/blocklists/generic.tpl.c:5
@@ -393,11 +387,11 @@ msgstr "Listenname"
 
 #: admin/blocklists/class_blocklistGeneric.inc:144
 msgid "The name of the list"
-msgstr ""
+msgstr "Der Name der Liste"
 
 #: admin/blocklists/class_blocklistGeneric.inc:145
 msgid "A description for the list"
-msgstr ""
+msgstr "Eine Beschreibung dieser Liste"
 
 #: admin/blocklists/class_blocklistGeneric.inc:147
 msgid "List of blocked number"
@@ -473,7 +467,7 @@ msgid "Filter"
 msgstr "Filter"
 
 #: personal/faxaccount/faxNumberSelect/faxNumberSelect-list.tpl.c:2
-#: admin/blocklists/blocklist-list.tpl.c:2 admin/blocklists/generic.tpl.c:11
+#: admin/blocklists/generic.tpl.c:11
 msgid "Base"
 msgstr "Basis"
 
@@ -503,14 +497,12 @@ msgid "Alternate fax numbers will not be copied"
 msgstr "Alternative Fax-Nummern werden nicht kopiert"
 
 #: personal/faxaccount/generic.tpl.c:8
-#, fuzzy
 msgid "Fax number for fax to trigger on"
-msgstr "Fax-Nummer, auf die GOfax ansprechen soll"
+msgstr ""
 
 #: personal/faxaccount/generic.tpl.c:14
-#, fuzzy
 msgid "Specify the fax communication language for fax to mail gateway"
-msgstr "Geben Sie die Kommunikations-Sprache für das Fax to Mail-Gateway an"
+msgstr ""
 
 #: personal/faxaccount/generic.tpl.c:20
 msgid "Specify delivery format for fax to mail gateway"
@@ -620,13 +612,11 @@ msgstr "Warnung"
 msgid ""
 "Please double check if you really want to do this since there is no way for "
 "FusionDirectory to get your data back."
-msgstr ""
+msgstr "Bitte überprüfen Sie, ob Sie dies wirklich tun wollen, da es keinen Weg gibt, für FusionDirectory die Daten wieder herzustellen."
 
 #: admin/blocklists/remove.tpl.c:8
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr ""
-"Wenn Sie sicher sind, drücken Sie 'Entfernen' um fortzufahren oder "
-"'Abbrechen' zum Abbruch."
+msgstr "Wenn Sie sicher sind, drücken Sie 'Entfernen' um fortzufahren oder 'Abbrechen' zum Abbruch."
 
 #: admin/blocklists/generic.tpl.c:17
 msgid "Select wether to filter incoming or outgoing calls"
@@ -639,6 +629,3 @@ msgstr "Beschreibender Text zu dieser Sperrliste"
 #: admin/blocklists/generic.tpl.c:29
 msgid "Information"
 msgstr "Information"
-
-#~ msgid "Multiple edit"
-#~ msgstr "Mehrfaches Bearbeiten"

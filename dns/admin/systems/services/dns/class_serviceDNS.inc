@@ -309,13 +309,15 @@ class serviceDNS extends goService
 
     $link = "<a href='?plug=".$_GET['plug']."&act=edit&id=%s'>%s</a>";
     foreach($this->Zones as $zone => $values ){
-      $ZoneList->AddEntry(array(
-            array("string" => sprintf($link,base64_encode($zone),($zone))),
-            array("string" => sprintf($link,base64_encode($zone),_("Reverse zone")." : ".($values['ReverseZone']))),
-            array("string" => _("TTL")." : ".$values['sOAttl']),
-            array("string" => _("Class")." : ".$values['dNSClass']),
-            array("string" =>str_replace("%s",base64_encode($zone),$editImg))
-            ));
+      $ZoneList->AddEntry(
+        array(
+          array("html"    => sprintf($link, base64_encode($zone), $zone)),
+          array("html"    => sprintf($link, base64_encode($zone), _("Reverse zone")." : ".($values['ReverseZone']))),
+          array("string"  => _("TTL")." : ".$values['sOAttl']),
+          array("string"  => _("Class")." : ".$values['dNSClass']),
+          array("html"    => str_replace("%s", base64_encode($zone), $editImg))
+        )
+      );
     }
 
     /* Display tempalte
@@ -353,8 +355,8 @@ class serviceDNS extends goService
 
     /* Add Records which uses this reverse zone
      */
-    if(isset($zones[$rev.".in-addr.arpa."])){
-      $used = array_merge($used,$zones[$rev.".in-addr.arpa."]);
+    if(isset($zones[$rev.DNS::getInAddrArpa()])){
+      $used = array_merge($used,$zones[$rev.DNS::getInAddrArpa()]);
     }
 
     /* There are still entries using this configuration
@@ -514,7 +516,7 @@ class serviceDNS extends goService
     foreach($tmp['del'] as $dn => $del){
 
       $for = $del['InitialzoneName'];
-      $rev = DNS::FlipIp($del['InitialReverseZone']).".in-addr.arpa.";
+      $rev = DNS::FlipIp($del['InitialReverseZone']).DNS::getInAddrArpa();
 
       $ldap->cd($dn);
       $ldap->rmdir_recursive($dn);
