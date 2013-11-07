@@ -10,7 +10,7 @@
   <LABEL for='RELEASE'>{t}Release{/t}</LABEL>&nbsp;{$RELEASE}<br>
 </div>
 
-<div style="border-top:1px solid #AAAAAA"></div>
+<div style="display:block;width=100%;border-top:1px solid #AAAAAA;"></div>
 
 <div style='padding:4px;'>
 
@@ -38,7 +38,7 @@
 
 </div>
 
-<div style="border-top:1px solid #AAAAAA"></div>
+<div style="display:block;width=100%;border-top:1px solid #AAAAAA;"></div>
 
 {$PROFILE}<label for="PROFILE">   {t}Show profiles{/t}</label>
 <br>{$TEMPLATE}<label for="TEMPLATE">  {t}Show templates{/t}</label>

@@ -6,8 +6,6 @@
 
 <div class="contentboxb">
 
-<div style="border-top:1px solid #AAAAAA"></div>
-
  <table style="width:100%;border-top:1px solid #B0B0B0;">
   <tr>
    <td>

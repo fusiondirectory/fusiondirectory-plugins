@@ -5,7 +5,6 @@
 </div>
 
 <div class="contentboxb">
- <div style="border-top:1px solid #AAAAAA"></div>
  {$SCOPE}
 
  <table style="width:100%;border-top:1px solid #B0B0B0;">

@@ -39,7 +39,7 @@
   {$IPMI}<label for="IPMI">&nbsp;{t}Show IPMI interfaces{/t}</label><br>
   {/if}
 
-  <div style="border-top:1px solid #AAAAAA"></div>
+  <div style="display:block;width=100%;border-top:1px solid #AAAAAA;"></div>
 
  {$SCOPE}
 

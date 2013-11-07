@@ -6,8 +6,6 @@
 
 <div class="contentboxb">
 
-<div style="border-top:1px solid #AAAAAA"></div>
-
  <div style='padding: 3px;'>
   {t}A maximum of 200 entries will be shown here.{/t}
  </div>

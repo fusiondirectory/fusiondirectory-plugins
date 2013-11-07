@@ -9,7 +9,7 @@
   {$NISOBJECT}<label for="NISOBJECT">&nbsp;{t}Show nis objects{/t}</label><br/>
   {$NISMAP}<label for="NISMAP">&nbsp;{t}Show nis maps{/t}</label><br/>
 
-<div style="border-top:1px solid #AAAAAA"></div>
+  <div style="display:block;width=100%;border-top:1px solid #AAAAAA;"></div>
 
  {$SCOPE}
 
