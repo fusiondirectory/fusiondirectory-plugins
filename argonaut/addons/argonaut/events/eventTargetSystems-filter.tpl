@@ -12,7 +12,7 @@
   {$WINSTATION}&nbsp;<LABEL for='WINSTATION'>{t}Show winstations{/t}</LABEL><br/>
   {$BYIP}&nbsp;<LABEL for='BYIP'>{t}Filter by IP address range{/t}</LABEL><br/>
 
- <div style="border-top:1px solid #AAAAAA"></div>
+ <div style="display:block;width=100%;border-top:1px solid #AAAAAA;"></div>
  {$SCOPE}
 
  <table summary="" style="width:100%;border-top:1px solid #B0B0B0;">

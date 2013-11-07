@@ -12,7 +12,7 @@
   {$SYMPAALIAS}<label for="SYMPAALIAS">&nbsp;{t}Show sympa list alias{/t}</label><br>
   {/if}
 
-  <div style="border-top:1px solid #AAAAAA"></div>
+  <div style="display:block;width=100%;border-top:1px solid #AAAAAA;"></div>
 
  {$SCOPE}
 

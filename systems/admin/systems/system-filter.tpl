@@ -36,7 +36,7 @@
   {$MOBILEPHONE}<label for="MOBILEPHONE">&nbsp;{t}Show mobile phones{/t}</label><br>
   {/if}
 
-  <div style="border-top:1px solid #AAAAAA"></div>
+  <div style="display:block;width=100%;border-top:1px solid #AAAAAA;"></div>
 
  {$SCOPE}
 

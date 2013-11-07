@@ -10,7 +10,7 @@
   {$WORKSTATION}&nbsp;<LABEL for='WORKSTATION'>{t}Show workstations{/t}</LABEL><br>
   {$TERMINAL}&nbsp;<LABEL for='TERMINAL'>{t}Show terminals{/t}</LABEL><br>
 
- <div style="border-top:1px solid #AAAAAA"></div>
+ <div style="display:block;width=100%;border-top:1px solid #AAAAAA;"></div>
  {$SCOPE}
 
  <table summary="" style="width:100%;border-top:1px solid #B0B0B0;">
