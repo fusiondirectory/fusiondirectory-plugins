@@ -19,10 +19,10 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
  */
 
-class boardSystems extends simplePlugin
+class dashboardSystems extends simplePlugin
 {
   /* default values*/
-  var $default_start_computer_id        = 0;
+  var $default_start_computer_id = 0;
 
   function __construct(&$config, $dn = NULL, $object = NULL)
   {
@@ -118,14 +118,14 @@ class boardSystems extends simplePlugin
     */
 
     $output_next_computer_ids = "";
-    $computer_ids_rules = $this->config->get_cfg_value("boardPrefix", array("PC"));
+    $computer_ids_rules = $this->config->get_cfg_value('dashboardPrefix', array('PC'));
     if (!is_array($computer_ids_rules)) {
       $computer_ids_rules = array($computer_ids_rules);
     }
 
     /* $get_cfg_value return the OU like ou=computer .. */
-    $winstation_ou  = mb_substr($this->config->get_cfg_value("sambaMachineAccountRDN"), 3); //FIXME use get_ou
-    $nb_digits      = $this->config->get_cfg_value("boardNumberOfDigit", 3);
+    $winstation_ou  = mb_substr($this->config->get_cfg_value('sambaMachineAccountRDN'), 3); //FIXME use get_ou
+    $nb_digits      = $this->config->get_cfg_value('dashboardNumberOfDigit', 3);
 
     /* running all the table */
     foreach ($computer_ids_rules as $rule) {

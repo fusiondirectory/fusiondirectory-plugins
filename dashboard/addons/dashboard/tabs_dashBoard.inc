@@ -20,17 +20,17 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class tabs_board extends tabs
+class tabs_dashboard extends tabs
 {
 
-  function __construct($config, $data, $dn = NULL, $category = "board", $copied_object = NULL)
+  function __construct($config, $data, $dn = NULL, $category = 'dashboard', $copied_object = NULL)
   {
     foreach ($data as $key => $infos) {
-      if (($infos['CLASS'] == 'boardSystems') && (!class_available("systemManagement"))) {
+      if (($infos['CLASS'] == 'dashboardSystems') && (!class_available('systemManagement'))) {
         unset($data[$key]);
       }
-      if (($infos['CLASS'] == 'boardNetwork') &&
-          (!class_available("systemManagement") || !(class_available("dhcpService") || class_available("serviceDNS")))) {
+      if (($infos['CLASS'] == 'dashboardNetwork') &&
+          (!class_available('systemManagement') || !(class_available('dhcpService') || class_available('serviceDNS')))) {
         unset($data[$key]);
       }
     }

@@ -19,7 +19,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
  */
 
-class boardNetwork extends simplePlugin
+class dashboardNetwork extends simplePlugin
 {
   function __construct(&$config, $dn = NULL, $object = NULL)
   {
@@ -128,7 +128,7 @@ class boardNetwork extends simplePlugin
       'plDescription' => _('Statistics and various informations'),
       'plObjectType'  => array('dashboard'),
 
-      "plProvidedAcls"    => array()
+      'plProvidedAcls'    => array()
     );
   }
 }

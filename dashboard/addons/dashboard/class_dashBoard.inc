@@ -19,7 +19,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
  */
 
-class board extends simplePlugin
+class dashboard extends simplePlugin
 {
   /* Generic */
   var $view_logged    = FALSE;
@@ -97,7 +97,7 @@ class board extends simplePlugin
       'plSection'     => 'addons',
       'plPriority'    => 2,
 
-      "plProvidedAcls"  => array()
+      'plProvidedAcls'  => array()
     );
   }
 }
