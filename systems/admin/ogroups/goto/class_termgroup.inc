@@ -390,20 +390,22 @@ class termgroup extends plugin
 
   static function plInfo()
   {
-    return (array(
-          "plShortName"   => _("System"),
-          "plDescription" => _("System group"),
-          "plSelfModify"  => FALSE,
-          "plPriority"    => 5,
-          "plCategory"    => array("ogroup"),
-          "plProvidedAcls"=> array(
-            "gotoMode"          => _("Mode"),
-            "gotoSyslogServer"  => _("Syslog server"),
-            "FAIstate"          => _("Action flag"),
-            "gotoNtpServer"     => _("Ntp server"),
-            "gotoTerminalPath"    => _("Root server"),
-            "gotoSwapServer"      => _("Swap server"))
-          ));
+    return array(
+      'plShortName'   => _('System'),
+      'plDescription' => _('System group'),
+      'plSelfModify'  => FALSE,
+      'plPriority'    => 5,
+      'plObjectType'  => array('ogroup'),
+
+      'plProvidedAcls'  => array(
+        'gotoMode'          => _('Mode'),
+        'gotoSyslogServer'  => _('Syslog server'),
+        'FAIstate'          => _('Action flag'),
+        'gotoNtpServer'     => _('Ntp server'),
+        'gotoTerminalPath'  => _('Root server'),
+        'gotoSwapServer'    => _('Swap server')
+      )
+    );
   }
 
   //~ function inherit_attributes_to_members()

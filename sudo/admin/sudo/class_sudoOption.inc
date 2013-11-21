@@ -563,7 +563,6 @@ SCRIPT;
       'plShortName'   => _('Options'),
       'plDescription' => _('Sudo options'),
       'plSelfModify'  => FALSE,
-      'plCategory'    => array('sudo'),
       'plObjectType'  => array('sudo'),
       'plPriority'    => 2,
 

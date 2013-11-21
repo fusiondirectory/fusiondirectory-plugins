@@ -79,14 +79,14 @@ class terminalStartup extends simplePlugin
   static function plInfo()
   {
     return array(
-      "plShortName"     => _("Startup"),
-      "plDescription"   => _("Terminal startup"),
-      "plSelfModify"    => FALSE,
-      "plPriority"      => 3,
-      "plCategory"      => array("terminal"),
-      "plObjectType"    => array("terminal"),
+      'plShortName'     => _('Startup'),
+      'plDescription'   => _('Terminal startup'),
+      'plSelfModify'    => FALSE,
+      'plPriority'      => 3,
+      'plCategory'      => array('terminal'),
+      'plObjectType'    => array('terminal'),
 
-      "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }
 }

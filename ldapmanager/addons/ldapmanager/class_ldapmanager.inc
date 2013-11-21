@@ -25,11 +25,11 @@ class ldapmanager extends simplePlugin
   static function plInfo()
   {
     return array(
-      'plShortName'   => _('Export'),
-      'plDescription' => _('Export the ldap three to ldif format'),
-      'plSelfModify'  => FALSE,
-      'plCategory'    => array('ldapmanager'),
-      'plObjectType'  => array('ldapmanager' => array('name'  => _('LDAP Manager'))),
+      'plShortName'   => _('LDIF'),
+      'plDescription' => _('Export/Import the ldap tree to/from LDIF format'),
+      'plObjectType'  => array('ldapmanager' => array(
+        'name'  => _('LDAP Manager')
+      )),
 
       'plProvidedAcls'  => array()
     );

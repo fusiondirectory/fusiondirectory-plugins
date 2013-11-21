@@ -458,14 +458,21 @@ class workstationGeneric extends simplePlugin
   static function plInfo()
   {
     return array(
-      "plShortName"     => _("Generic"),
-      "plDescription"   => _("Workstation generic"),
-      "plSelfModify"    => FALSE,
-      "plCategory"      => array("workstation" => array("description"  => _("Workstation"),
-                                                      "objectClass"  => "gotoWorkstation")),
-      "plObjectType"    => array("workstation" => array("name"   => _("Workstation"),
-                                                 "filter" => "objectClass=gotoWorkstation")),
-      "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plShortName'   => _('Generic'),
+      'plDescription' => _('Workstation generic'),
+      'plSelfModify'  => FALSE,
+      'plObjectType'  => array('workstation' =>
+        array(
+          'name'        => _('Workstation'),
+          'description' => _('Workstation'),
+          'filter'      => 'objectClass=gotoWorkstation',
+          'ou'          => get_ou('workstationRDN'),
+          'icon'        => 'plugins/systems/images/select_workstation.png',
+          'mainAttr'    => 'cn',
+          'tabClass'    => 'worktabs',
+        )
+      ),
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }
 }
