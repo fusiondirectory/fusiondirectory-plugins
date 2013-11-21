@@ -397,7 +397,8 @@ class termgroup extends plugin
       'plPriority'    => 5,
       'plCategory'    => array('ogroup'),
       'plObjectType'  => array('ogroup-workstation', 'ogroup-terminal'),
-      'plProvidedAcls'=> array(
+
+      'plProvidedAcls'  => array(
         'gotoMode'          => _('Mode'),
         'gotoSyslogServer'  => _('Syslog server'),
         'FAIstate'          => _('Action flag'),
