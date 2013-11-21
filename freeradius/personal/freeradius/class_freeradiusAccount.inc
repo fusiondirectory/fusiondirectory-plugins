@@ -69,7 +69,7 @@ class freeradiusAccount extends simplePlugin {
           new StringAttribute(
             _('Tunnel medium type'), _('Name of the tunnel medium type'),
             'radiusTunnelMediumType', TRUE,
-            'IEEE 802'
+            'IEEE-802'
           ),
             new StringAttribute(
             _('Tunnel type'), _('Name of the tunnel type'),

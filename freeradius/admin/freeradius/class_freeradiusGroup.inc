@@ -65,7 +65,7 @@ class freeradiusGroup extends simplePlugin {
             _('Name of the tunnel medium type'),  // Description
             'radiusTunnelMediumType',             // LDAP name
             TRUE,                                 // Mandatory
-            'IEEE 802'                            // default value
+            'IEEE-802'                            // default value
           ),
             new StringAttribute(
             _('Tunnel type'),               // Label of the attribute
