@@ -36,6 +36,14 @@ class repositoryDistribution extends simplePlugin
         'ou'          => get_ou('repositoryRDN'),
         'icon'        => 'plugins/repository/images/iconDistribution.png'
       )),
+      'plForeignKeys'  => array(
+        'fdBasedOn' => array(
+          array('repositoryDistribution', 'cn'),
+        ),
+        'fdRepoSection' => array(
+          array('repositorySection', 'cn'),
+        ),
+      ),
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
