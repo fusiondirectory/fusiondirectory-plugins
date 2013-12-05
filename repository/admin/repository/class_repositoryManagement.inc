@@ -40,6 +40,7 @@ class repositoryManagement extends simpleManagement
         'description'  => _('Repository'),
         'objectClass'  => array('fdBuildRepository', 'fdBuildRepositoryDistribution', 'fdBuildRepositorySection')
       )),
+      'plManages'     => array('repoSection', 'repoDistribution', 'buildRepository'),
 
       'plProvidedAcls' => array()
     );

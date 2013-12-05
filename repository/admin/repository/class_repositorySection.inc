@@ -36,6 +36,11 @@ class repositorySection extends simplePlugin
         'ou'          => get_ou('repositoryRDN'),
         'icon'        => 'plugins/repository/images/iconSection.png'
       )),
+      'plForeignKeys'  => array(
+        'fdBasedOn' => array(
+          array('repositorySection',  'cn'),
+        )
+      ),
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
