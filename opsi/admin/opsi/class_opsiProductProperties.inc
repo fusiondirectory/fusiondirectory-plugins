@@ -53,7 +53,7 @@ class ProductPropertyAttribute extends CompositeAttribute
 {
   function __construct ($label, $description, $ldapName, $acl = "")
   {
-    parent::__construct ($description, $ldapName, array(new StringAttribute('','','fake')), '', '', $acl, $label);
+    parent::__construct ($description, $ldapName, array(new StringAttribute('', '', 'fake')), '', '', $acl, $label);
   }
 
   function check()

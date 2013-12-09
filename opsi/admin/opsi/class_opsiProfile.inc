@@ -39,11 +39,9 @@ class SubmittingOPSIServerAttribute extends OPSIServerAttribute
 class opsiProfile extends simplePlugin
 {
   var $mainTab = TRUE;
-
   var $objectclasses   = array('opsiProfile');
 
   var $macAddress = NULL;
-
   var $products;
 
   public static function plInfo()
@@ -158,7 +156,7 @@ class opsiProfile extends simplePlugin
         $this->macAddress = $attrs['macAddress'][0];
       } else {
         msg_dialog::display(
-          sprintf_(_("Could not find %s in the LDAP"),$this->fdOpsiServerDN),
+          sprintf_(_("Could not find %s in the LDAP"), $this->fdOpsiServerDN),
           msgPool::ldaperror($ldap->get_error()), ERROR_DIALOG
         );
         return FALSE;
