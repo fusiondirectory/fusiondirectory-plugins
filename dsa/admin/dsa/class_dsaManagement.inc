@@ -38,7 +38,7 @@ class dsaManagement extends simpleManagement
       'plPriority'    => 40,
       'plCategory'    => array('dsa' => array('description'  => _('DSA'),
                                               'objectClass'  => array('simpleSecurityObject'))),
-      'plManages'     => array('dsa'),
+      'plManages'     => array('simpleSecurityObject'),
 
       'plProvidedAcls' => array()
     );

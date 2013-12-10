@@ -30,7 +30,6 @@ class simpleSecurityObject extends simplePlugin
     return array(
       'plShortName'   => _('Simple security object'),
       'plDescription' => _('Simple security object'),
-      'plSelfModify'  => FALSE,
       'plObjectType'  => array('simpleSecurityObject' => array(
         'name'        => _('Simple security object'),
         'filter'      => 'objectClass=simpleSecurityObject',

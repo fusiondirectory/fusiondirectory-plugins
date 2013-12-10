@@ -1,8 +1,7 @@
 <?php
 /*
  * This code is part of FusionDirectory (http://www.fusiondirectory.org)
- * Copyright (C) 2010 Antoine Gallavardin
- * Copyright (C) 2011-2013 FusionDirectory
+ * Copyright (C) 2013 FusionDirectory
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,35 +18,5 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-/* Remove locks created by this plugin */
-if ($remove_lock){
-  if(session::is_set('aliasManagement')){
-      $macl = session::get('aliasManagement');
-      $macl->remove_lock();
-  }
-}
-
-/* Remove this plugin from session */
-if ( $cleanup ){
-  session::un_set('aliasManagement');
-}else{
-
-  /* Create usermanagement object on demand */
-  if (!session::is_set('aliasManagement')){
-    $aliasManagement= new aliasManagement ($config, $ui);
-    session::set('aliasManagement',$aliasManagement);
-  }
-  $aliasManagement = session::get('aliasManagement');
-  $display= $aliasManagement->execute();
-
-  /* Reset requested? */
-  if (isset($_GET['reset']) && $_GET['reset'] == 1){
-    session::un_set ('aliasManagement');
-  }
-
-  /* Show and save dialog */
-  session::set('aliasManagement',$aliasManagement);
-}
-
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
+simpleManagement::mainInc('aliasManagement');
 ?>

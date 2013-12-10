@@ -34,7 +34,9 @@ class mailAliasRedirection extends simplePlugin
       'plObjectType'  => array('mailAliasRedirection' => array(
         'name'        => _('Temporary mail redirection'),
         'filter'      => 'objectClass=mailAliasRedirection',
-        'aclCategory' => 'alias'
+        'aclCategory' => 'alias',
+        'icon'        => 'plugins/alias/images/iconMiniMailredirection.png',
+        'ou'          => get_ou('aliasRDN'),
       )),
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
