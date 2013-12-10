@@ -182,7 +182,7 @@ class ldapmanager extends simplePlugin
         $ldap   = $this->config->get_ldap_link();
         try {
           $ldap->import_complete_ldif($this->import, !$this->overwrite, FALSE);
-        } catch(Exception $e) {
+        } catch (Exception $e) {
           msg_dialog::display(_('LDAP error'), $e->getMessage(), ERROR_DIALOG);
         }
       }

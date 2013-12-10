@@ -321,7 +321,7 @@ class sieve
 
           $this->modules = explode(" ", $this->item[1]);
           if(is_array($this->modules)){
-            foreach($this->modules as $this->module)
+            foreach ($this->modules as $this->module)
               $this->capabilities[$this->cap_type][$this->module]=true;
           } /* end if */
           elseif(is_string($this->modules))
@@ -353,7 +353,7 @@ class sieve
 
       //fill up our $this->modules property
       if(is_array($this->modules)){
-        foreach($this->modules as $this->module)
+        foreach ($this->modules as $this->module)
           $this->capabilities[$this->cap_type][$this->module]=true;
       } /* end if */
       elseif(is_string($this->modules))
@@ -374,7 +374,7 @@ class sieve
     }
 
     /* Loop through each allowed authentication type and see if the server allows the type */
-    foreach(explode(" ",$this->auth_types) as $auth_type)
+    foreach (explode(" ",$this->auth_types) as $auth_type)
     {
       if (isset($this->capabilities["auth"][$auth_type]))
       {

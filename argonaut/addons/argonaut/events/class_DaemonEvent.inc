@@ -35,7 +35,6 @@ class DaemonEvent
 {
   /* Menu Strings */
   protected $s_Menu_Name  = "s_Menu_Name not set";  // Diplayed in the ActionsMenu->CreateNew
-  //~ protected $s_Event_Name = "s_Event_Name not set"; // Will be displayed in the Management list.
   protected $s_Menu_Image = "images/empty.png";     // Image displayed in Actions->New
   protected $s_List_Image = "";                     // Image displayed in event listing
 

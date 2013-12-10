@@ -30,34 +30,28 @@ class mailMethodKolab22 extends mailMethodKolab
   protected $mailEqualsCN   = TRUE;
 
   /* Enabled mail domain selection. If enabled getMailDomains must the domain parts */
-  protected $enableDomainSelection= TRUE;
-  protected $enableQuota          = TRUE;
-  protected $enableSieveManager   = TRUE;
-  protected $enableVacationRange  = TRUE;
-  protected $enableFolderTypes    = TRUE;
+  protected $enableDomainSelection  = TRUE;
+  protected $enableQuota            = TRUE;
+  protected $enableSieveManager     = TRUE;
+  protected $enableVacationRange    = TRUE;
+  protected $enableFolderTypes      = TRUE;
 
-  protected $userObjectClasses = array("kolabInetOrgPerson");
+  protected $userObjectClasses  = array("kolabInetOrgPerson");
   protected $shareObjectClasses = array("kolabSharedFolder");
 
   protected $acl_map = array(
-//     "lrs"           => "read",
-//     "lrsp"          => "post",
-//     "lrsip"         => "append",
-//     "lrswipkxte"    => "write",
-//     "lrxte"         => "delete",
-//     "lrswipkxtecda" => "admin",
-//     " "             => "none");
-"none"             => "none",
-"post"             => "post",
-"read"             => "read",
-"read/post"        => "read/post",
-"append"           => "append",
-"write"            => "write",
-"read anon"        => "read anon",
-"read anon/post"   => "read anon/post",
-"read hidden"      => "read hidden",
-"read hidden/post" => "read hidden/post",
-"all"              => "all");
+    "none"             => "none",
+    "post"             => "post",
+    "read"             => "read",
+    "read/post"        => "read/post",
+    "append"           => "append",
+    "write"            => "write",
+    "read anon"        => "read anon",
+    "read anon/post"   => "read anon/post",
+    "read hidden"      => "read hidden",
+    "read hidden/post" => "read hidden/post",
+    "all"              => "all"
+  );
 
   protected $default_acls = array("__anyone__" => "none", "__member__" => "write");
 
@@ -69,10 +63,10 @@ class mailMethodKolab22 extends mailMethodKolab
     $this->reset_error();
     $imap_acls = mailMethodKolab::getFolderACLs(array());
 
-    foreach($imap_acls as $user => $acl){
-      if(!isset($ldap_acls[$user])){
+    foreach ($imap_acls as $user => $acl) {
+      if (!isset($ldap_acls[$user])) {
         $ldap_acls[$user] = $acl;
-      }else{
+      } else {
         // Ldap attributes come first in kolab22.
       }
     }
@@ -80,13 +74,13 @@ class mailMethodKolab22 extends mailMethodKolab
     /* Merge given ACL with acl mapping
        This ensures that no ACL will accidentally overwritten by gosa.
      */
-    foreach($ldap_acls as $user => $acl){
-      if(!isset($this->acl_mapping[$acl])){
+    foreach ($ldap_acls as $user => $acl) {
+      if (!isset($this->acl_mapping[$acl])) {
         $this->acl_mapping[$acl] = $acl;
       }
     }
 
-    return($ldap_acls);
+    return $ldap_acls;
   }
 
 
@@ -98,27 +92,24 @@ class mailMethodKolab22 extends mailMethodKolab
     $domains = array();
     $ldap = $this->config->get_ldap_link();
     $ldap->cd($this->config->current['BASE']);
-    $ldap->search("(&(objectClass=kolab)(k=kolab)(postfix-mydestination=*))",array("postfix-mydestination"));
+    $ldap->search("(&(objectClass=kolab)(k=kolab)(postfix-mydestination=*))", array("postfix-mydestination"));
 
-    if($ldap->count() == 1){
+    if ($ldap->count() == 1) {
       $attrs = $ldap->fetch();
-      for($i=0; $i <$attrs['postfix-mydestination']['count']; $i ++ ){
+      for ($i = 0; $i < $attrs['postfix-mydestination']['count']; $i++) {
         $domains[] = $attrs['postfix-mydestination'][$i];
       }
-      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>Found: ".trim(implode($domains,", "),", ")."</b>",
+      @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>Found: ".trim(implode($domains, ", "), ", ")."</b>",
           "Revceiving 'Mail domains for kolab22'.");
-    }elseif($ldap->count() == 0){
+    } elseif ($ldap->count() == 0) {
       @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>No domains found. Check k=kolab and postfix-mydestination</b>",
           "Revceiving 'Mail domains for kolab22'.");
-    }else{
+    } else {
       @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__, "<b>Found more than one kolab configuration object. Giving up.</b>",
           "Revceiving 'Mail domains for kolab22'.");
     }
 
-    return($domains);
+    return $domains;
   }
 }
-
-
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>
