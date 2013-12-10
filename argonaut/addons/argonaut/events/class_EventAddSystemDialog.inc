@@ -26,10 +26,10 @@ class EventAddSystemDialog extends management
   protected $skipFooter = TRUE;
   protected $skipHeader = TRUE;
 
-  function __construct($config,$ui)
+  function __construct($config, $ui)
   {
     $this->config = $config;
-    $this->ui = $ui;
+    $this->ui     = $ui;
     $this->storagePoints = array(
         get_ou("serverRDN"),
         get_ou("workstationRDN"),
@@ -38,12 +38,8 @@ class EventAddSystemDialog extends management
         get_ou("terminalRDN"));
 
     // Build filter
-#    if (session::global_is_set(get_class($this)."_filter")){
- #     $filter= session::global_get(get_class($this)."_filter");
-  #  } else {
-      $filter = new filter(get_template_path("../../addons/argonaut/events/eventTargetSystems-filter.xml", TRUE));
-      $filter->setObjectStorage($this->storagePoints);
-   # }
+    $filter = new filter(get_template_path("../../addons/argonaut/events/eventTargetSystems-filter.xml", TRUE));
+    $filter->setObjectStorage($this->storagePoints);
     $this->setFilter($filter);
 
     // Build headpage
@@ -52,18 +48,22 @@ class EventAddSystemDialog extends management
     parent::__construct($config, $ui, "object", $headpage);
   }
 
-  function save_object() {}
+  function save_object()
+  {
+  }
 
   function save()
   {
     $act = $this->detectPostActions();
     $headpage = $this->getHeadpage();
-    if(!isset($act['targets'])) return(array());
+    if (!isset($act['targets'])) {
+      return array();
+    }
     $ret = array();
-    foreach($act['targets'] as $dn){
+    foreach ($act['targets'] as $dn) {
       $ret[] = $headpage->getEntry($dn);
     }
-    return($ret);
+    return $ret;
   }
 
   function get_selected_targets()
@@ -74,33 +74,32 @@ class EventAddSystemDialog extends management
     $ldap = $this->config->get_ldap_link();
     $ldap->cd($this->config->current['BASE']);
     $member_dns = array();
-    foreach($entries as $entry){
-      if(isset($entry['macAddress'][0])){
+    foreach ($entries as $entry) {
+      if (isset($entry['macAddress'][0])) {
         $macs[] = $entry['macAddress'][0];
       }
-      if(in_array("gosaGroupOfNames", $entry['objectClass'])){
+      if (in_array("gosaGroupOfNames", $entry['objectClass'])) {
         $ldap->cat($entry['dn']);
-        if($ldap->count()){
+        if ($ldap->count()) {
           $attrs = $ldap->fetch();
-          if(isset($attrs['member'])){
-            for($i =0 ; $i< $attrs['member']['count']; $i++){
+          if (isset($attrs['member'])) {
+            for ($i = 0; $i < $attrs['member']['count']; $i++) {
               $member_dns[] = $attrs['member'][$i];
             }
           }
         }
       }
     }
-    foreach($member_dns as $dn){
+    foreach ($member_dns as $dn) {
       $ldap->cat($dn, array('macAddress'));
-      if($ldap->count()){
+      if ($ldap->count()) {
         $attrs = $ldap->fetch();
-        if(isset($attrs['macAddress'])){
+        if (isset($attrs['macAddress'])) {
           $macs[] = $attrs['macAddress'][0];
         }
       }
     }
-    return($macs);
+    return $macs;
   }
 }
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

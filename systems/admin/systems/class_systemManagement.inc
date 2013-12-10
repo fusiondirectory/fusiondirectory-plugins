@@ -31,10 +31,10 @@ class systemManagement extends management
   protected $objectInfo       = array();
   protected $activationQueue  = array();
 
-  function __construct($config,$ui)
+  function __construct($config, $ui)
   {
     $this->config = $config;
-    $this->ui = $ui;
+    $this->ui     = $ui;
 
     // Set storage points
     $tD = $this->getObjectDefinitions();
@@ -46,8 +46,8 @@ class systemManagement extends management
     $this->storagePoints = array_unique($sP);
 
     // Build filter
-    if (session::global_is_set(get_class($this)."_filter")){
-     $filter= session::global_get(get_class($this)."_filter");
+    if (session::global_is_set(get_class($this)."_filter")) {
+      $filter = session::global_get(get_class($this)."_filter");
     } else {
       $filter = new filter(get_template_path("system-filter.xml", true));
       $filter->setObjectStorage($this->storagePoints);
@@ -65,7 +65,7 @@ class systemManagement extends management
       $headpage->xmlData['actionmenu']['action'][2]['action'] = array();
       $headpage->xmlData['actionmenu']['action'][3]['action'] = array();
       $events = DaemonEvent::get_event_types();
-      foreach($events as $name => $data){
+      foreach ($events as $name => $data) {
         $this->registerAction("T_".$name, "handleEvent");
         $headpage->xmlData['actionmenu']['action'][2]['action'][] = array(
         'name' => 'T_'.$name,
@@ -87,12 +87,12 @@ class systemManagement extends management
       unset($headpage->xmlData['actionmenu']['action'][3]);
       $headpage->xmlData['actionmenu']['action'] = array_values($headpage->xmlData['actionmenu']['action']);
     }
-    $this->registerAction("saveEvent","saveEventDialog");
-    $this->registerAction("createISO","createISO");
-    $this->registerAction("initiateISOcreation","initiateISOcreation");
-    $this->registerAction("performIsoCreation","performIsoCreation");
-    $this->registerAction("systemTypeChosen","systemTypeChosen");
-    $this->registerAction("handleActivationQueue","handleActivationQueue");
+    $this->registerAction("saveEvent", "saveEventDialog");
+    $this->registerAction("createISO", "createISO");
+    $this->registerAction("initiateISOcreation", "initiateISOcreation");
+    $this->registerAction("performIsoCreation", "performIsoCreation");
+    $this->registerAction("systemTypeChosen", "systemTypeChosen");
+    $this->registerAction("handleActivationQueue", "handleActivationQueue");
 
     $this->registerAction("new_goServer",         "newEntry");
     $this->registerAction("new_gotoWorkstation",  "newEntry");
@@ -149,13 +149,13 @@ class systemManagement extends management
    *           in the system listing.
    *          A confirmation will be shown to acknowledge the creation.
    */
-  function createISO($action,$target)
+  function createISO($action, $target)
   {
-    if(count($target) == 1){
-      $smarty = get_smarty();
-      $this->dn= array_pop($target);
+    if (count($target) == 1) {
+      $smarty   = get_smarty();
+      $this->dn = array_pop($target);
       set_object_info($this->dn);
-      return ($smarty->fetch(get_template_path('gencd.tpl', TRUE)));
+      return $smarty->fetch(get_template_path('gencd.tpl', TRUE));
 
     }
   }
@@ -169,7 +169,7 @@ class systemManagement extends management
   {
     $smarty = get_smarty();
     $smarty->assign("src", "?plug=".$_GET['plug']."&amp;PerformIsoCreation");
-    return ($smarty->fetch(get_template_path('gencd_frame.tpl', TRUE)));
+    return $smarty->fetch(get_template_path('gencd_frame.tpl', TRUE));
   }
 
 
@@ -186,7 +186,7 @@ class systemManagement extends management
     $dsc   = array(0 => array("pipe", "r"), 1 => array("pipe", "w"), 2 => array("pipe", "w"));
 
     /* Get and check command */
-    $command= $this->config->search("workstationGeneric", "SYSTEMISOHOOK", array('tabs'));
+    $command = $this->config->search("workstationGeneric", "SYSTEMISOHOOK", array('tabs'));
     if (check_command($command)) {
       @DEBUG (DEBUG_SHELL, __LINE__, __FUNCTION__, __FILE__, $command, "Execute");
 
@@ -202,41 +202,41 @@ class systemManagement extends management
         <pre>';
 
       /* Open process handle and check if it is a valid process */
-      $process= proc_open($command." '".$this->dn."'", $dsc, $pipes);
+      $process = proc_open($command." '".$this->dn."'", $dsc, $pipes);
       if (is_resource($process)) {
         fclose($pipes[0]);
 
         /* Print out returned lines && write JS to scroll down each line */
-        while (!feof($pipes[1])){
+        while (!feof($pipes[1])) {
           $cur_dat = fgets($pipes[1], 1024);
           echo $cur_dat;
-          echo '<script type="text/javascript">scrollDown2();</script>' ;
+          echo '<script type="text/javascript">scrollDown2();</script>';
           flush();
         }
       }
 
       /* Get error string && close streams */
-      $buffer= stream_get_contents($pipes[2]);
+      $buffer = stream_get_contents($pipes[2]);
 
       fclose($pipes[1]);
       fclose($pipes[2]);
       echo "</pre>";
 
       /* Check return code */
-      $ret= proc_close($process);
-      if ($ret != 0){
+      $ret = proc_close($process);
+      if ($ret != 0) {
         echo "<h1 style='color:red'>"._("Creating the image failed. Please see the report below.")."</h1>";
         echo "<pre style='color:red'>$buffer</pre>";
       }
       echo $return_button."<br>";
     } else {
-      $tmp= "<h1 style='color:red'>".sprintf(_("Command '%s', specified for ISO creation doesn't seem to exist."), $command)."</h1>";
+      $tmp = "<h1 style='color:red'>".sprintf(_("Command '%s', specified for ISO creation doesn't seem to exist."), $command)."</h1>";
       echo $tmp;
       echo $return_button."<br>";
     }
 
     /* Scroll down completly */
-    echo '<script type="text/javascript">scrollDown2();</script>' ;
+    echo '<script type="text/javascript">scrollDown2();</script>';
     echo '</body></html>';
     flush();
     exit;
@@ -246,7 +246,7 @@ class systemManagement extends management
   /*! \brief    Handle Argonaut events
    *            All schedules and triggered events are handled here.
    */
-  function handleEvent($action="",$target=array(),$all=array())
+  function handleEvent($action = "", $target = array(), $all = array())
   {
     // Detect whether this event is scheduled or triggered.
     $triggered = TRUE;
@@ -324,20 +324,22 @@ class systemManagement extends management
    */
   function saveEventDialog()
   {
-      if ($this->si_active) {
-          $o_queue = new supportDaemon();
-          $o_queue->append($this->dialogObject);
-          if ($o_queue->is_error()) {
-              msg_dialog::display(_("Service infrastructure"), msgPool::siError($o_queue->get_error()), ERROR_DIALOG);
-          } else {
-              $this->closeDialogs();
-          }
+    if ($this->si_active) {
+      $o_queue = new supportDaemon();
+      $o_queue->append($this->dialogObject);
+      if ($o_queue->is_error()) {
+        msg_dialog::display(_("Service infrastructure"), msgPool::siError($o_queue->get_error()), ERROR_DIALOG);
+      } else {
+        $this->closeDialogs();
       }
+    }
   }
 
-  function saveSnapshot($action="",$target=array(),$all=array())
+  function saveSnapshot($action = "", $target = array(), $all = array())
   {
-    if (!is_object($this->dialogObject)) return;
+    if (!is_object($this->dialogObject)) {
+      return;
+    }
     $this->dialogObject->save_object();
     $msgs = $this->dialogObject->check();
     if (count($msgs)) {
@@ -345,7 +347,7 @@ class systemManagement extends management
         msg_dialog::display(_("Error"), $msg, ERROR_DIALOG);
       }
     } else {
-      $this->dn =  $this->dialogObject->dn;
+      $this->dn = $this->dialogObject->dn;
       $dns      = array($this->dn);
       /* Check if other dns needs to be included in this snapshot */
       $entry = $this->getHeadpage()->getEntry($this->dn);
@@ -374,54 +376,53 @@ class systemManagement extends management
   /*! \brief    Queue selected objects to be removed.
    *            Checks ACLs, Locks and ask for confirmation.
    */
-  protected function removeEntryRequested($action="",$target=array(),$all=array())
+  protected function removeEntryRequested($action = "", $target = array(), $all = array())
   {
     $disallowed = array();
-    $this->dns = array();
+    $this->dns  = array();
 
-    @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,$target,"Entry removel requested!");
+    @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $target, "Entry removel requested!");
 
     // Check permissons for each target
-    $tInfo = $this->getObjectDefinitions();
+    $tInfo    = $this->getObjectDefinitions();
     $headpage = $this->getHeadpage();
-    foreach($target as $dn){
+    foreach ($target as $dn) {
       $type = $headpage->getType($dn);
-      if(!isset($tInfo[$type])){
+      if (!isset($tInfo[$type])) {
         trigger_error("Unknown object type received '".$type."' please update systemManagement::getObjectDefinitions()!");
-      }else{
+      } else {
         $info = $tInfo[$type];
-        $acl = $this->ui->get_permissions($dn, $info['aclCategory']."/".$info['aclClass']);
-        if(preg_match("/d/",$acl)){
+        $acl  = $this->ui->get_permissions($dn, $info['aclCategory']."/".$info['aclClass']);
+        if (preg_match("/d/", $acl)) {
           $this->dns[] = $dn;
-        }else{
+        } else {
           $disallowed[] = $dn;
         }
       }
     }
-    if(count($disallowed)){
-      msg_dialog::display(_("Permission"),msgPool::permDelete($disallowed),INFO_DIALOG);
+    if (count($disallowed)) {
+      msg_dialog::display(_("Permission"), msgPool::permDelete($disallowed), INFO_DIALOG);
     }
 
     // We've at least one entry to delete.
-    if(count($this->dns)){
-
+    if (count($this->dns)) {
       // check locks
-      if ($user= get_multiple_locks($this->dns)){
-        return(gen_locked_message($user,$this->dns));
+      if ($user = get_multiple_locks($this->dns)) {
+        return gen_locked_message($user, $this->dns);
       }
 
       // Add locks
       $dns_names = array();
-      foreach($this->dns as $dn){
-        $dns_names[] =LDAP::fix($dn);
+      foreach ($this->dns as $dn) {
+        $dns_names[] = LDAP::fix($dn);
       }
       add_lock ($this->dns, $this->ui->dn);
 
       // Display confirmation dialog.
       $smarty = get_smarty();
-      $smarty->assign("info", msgPool::deleteInfo($dns_names,_($this->objectName)));
-      $smarty->assign("multiple", true);
-      return($smarty->fetch(get_template_path('remove.tpl', TRUE)));
+      $smarty->assign("info", msgPool::deleteInfo($dns_names, _($this->objectName)));
+      $smarty->assign("multiple", TRUE);
+      return $smarty->fetch(get_template_path('remove.tpl', TRUE));
     }
   }
 
@@ -432,33 +433,33 @@ class systemManagement extends management
    *  @param  Array   'target'  A list of object dns, which should be affected by this method.
    *  @param  Array   'all'     A combination of both 'action' and 'target'.
    */
-  function removeEntryConfirmed($action="",$target=array(),$all=array(),
-      $altTabClass="",$altTabType="",$altAclCategory="")
+  function removeEntryConfirmed($action = "", $target = array(), $all = array(),
+      $altTabClass = "", $altTabType = "", $altAclCategory = "")
   {
-    @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,$target,"Entry removel confirmed!");
+    @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $target, "Entry removel confirmed!");
 
     // Check permissons for each target
     $tInfo = $this->getObjectDefinitions();
     $headpage = $this->getHeadpage();
     $disallowed = array();
-    foreach($this->dns as $key => $dn){
+    foreach ($this->dns as $key => $dn) {
       $type = $headpage->getType($dn);
-      if(!isset($tInfo[$type])){
+      if (!isset($tInfo[$type])) {
         trigger_error("Unknown object type received '".$type."' please update systemManagement::getObjectDefinitions()!");
-      }else{
+      } else {
 
         $info = $tInfo[$type];
         $acl = $this->ui->get_permissions($dn, $info['aclCategory']."/".$info['aclClass']);
-        if(preg_match("/d/",$acl)){
+        if (preg_match("/d/", $acl)) {
 
           // Delete the object
           $this->dn = $dn;
-          if($info['tabClass'] == "phonetabs"){
-             $this->tabObject= new $info['tabClass']($this->config, $this->config->data['TABS'][$info['tabDesc']], $dn,$type);
+          if ($info['tabClass'] == "phonetabs") {
+             $this->tabObject = new $info['tabClass']($this->config, $this->config->data['TABS'][$info['tabDesc']], $dn,$type);
              $this->tabObject->set_acl_base($dn);
              $this->tabObject->by_object['phoneGeneric']->remove_from_parent ();
-          }else{
-            $this->tabObject= new $info['tabClass']($this->config,$this->config->data['TABS'][$info['tabDesc']],
+          } else {
+            $this->tabObject = new $info['tabClass']($this->config, $this->config->data['TABS'][$info['tabDesc']],
                 $this->dn, $info['aclCategory']);
             $this->tabObject->set_acl_base($this->dn);
             $this->tabObject->parent = &$this;
@@ -468,14 +469,14 @@ class systemManagement extends management
           // Remove the lock for the current object.
           del_lock($this->dn);
 
-        }else{
+        } else {
           $disallowed[] = $dn;
-          new log("security","system/".get_class($this),$dn,array(),"Tried to trick deletion.");
+          new log("security", "system/".get_class($this), $dn, array(), "Tried to trick deletion.");
         }
       }
     }
-    if(count($disallowed)){
-      msg_dialog::display(_("Permission"),msgPool::permDelete($disallowed),INFO_DIALOG);
+    if (count($disallowed)) {
+      msg_dialog::display(_("Permission"), msgPool::permDelete($disallowed), INFO_DIALOG);
     }
 
     // Cleanup
@@ -533,7 +534,7 @@ class systemManagement extends management
     $info = preg_replace("/^new_/","",$action);
     if(!isset($tInfo[$info])){
       trigger_error("Unknown action type '".$action."' cant create a new system!");
-    }else{
+    } else {
       return(management::newEntry($action,$target,$all,
           $tInfo[$info]['tabClass'],
           $tInfo[$info]['tabDesc'],
@@ -548,7 +549,7 @@ class systemManagement extends management
   function activateMultiple($action,$target)
   {
     $headpage = $this->getHeadpage();
-    foreach($target as $dn) {
+    foreach ($target as $dn) {
       if($headpage->getType($dn) == "FAKE_OC_NewDevice"){
         $this->activationQueue[$dn] = array();
       }
@@ -573,7 +574,7 @@ class systemManagement extends management
     }
     $selected_system = $_POST['SystemType'];
     $tmp = array();
-    foreach($this->activationQueue as $dn => $data){
+    foreach ($this->activationQueue as $dn => $data){
       $tmp[$dn]['OG'] = $selected_group;
       $tmp[$dn]['SS'] = $selected_system;
     }
@@ -628,7 +629,7 @@ class systemManagement extends management
         msg_dialog::display(_("Error"), msgPool::class_not_found($tabclass), ERROR_DIALOG);
         unset($this->activationQueue[$dn]);
         continue;
-      }else{
+      } else {
 
         @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,
             $sysType, "<b>System type:</b>");
@@ -645,7 +646,7 @@ class systemManagement extends management
           @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,
               $acls, "<b>Insufficient permissions!</b>");
           continue;
-        }else{
+        } else {
 
           // Open object an preset some values like the objects base
           del_lock($dn);
@@ -668,10 +669,10 @@ class systemManagement extends management
           if($data['OG'] != "none"){
 
             // Set gotoMode to active if there was an ogroup selected.
-            $found = false;
-            foreach(array("workstationGeneric"=>"active","serverGeneric"=>"active","terminalGeneric"=>"active") as $tab => $value){
+            $found = FALSE;
+            foreach (array("workstationGeneric"=>"active","serverGeneric"=>"active","terminalGeneric"=>"active") as $tab => $value){
               if(isset($this->tabObject->by_object[$tab]->gotoMode)) {
-                $found = true;
+                $found = TRUE;
                 $this->tabObject->by_object[$tab]->gotoMode = $value;
                 @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,
                     $tab."->gotoMode = {$value}", "<b>Setting gotoMode to: </b>");
@@ -730,7 +731,7 @@ class systemManagement extends management
             }
             @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,
                 "", "<b>System activated!</b>");
-          }else{
+          } else {
             @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,
                 "", "<b>Open dialogs now</b>");
             return;
@@ -816,17 +817,17 @@ class systemManagement extends management
                 LDAP_MOD, "activate_new_device($dn)"));
           @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,
               $dn, "<b>Failed!</b>");
-        }else{
+        } else {
           @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,
               $dn, "<b>Success</b>");
-          return(TRUE);
+          return TRUE;
         }
-      }else{
+      } else {
         @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,
             $dn, "<b>FAIstate not set to install, this is only done for gotoWorkstation/goServer!</b>");
       }
     }
-    return(FALSE);
+    return FALSE;
   }
 
 
@@ -842,7 +843,7 @@ class systemManagement extends management
 
     $pInfo    = $this->getObjectDefinitions();
     $headpage = $this->getHeadpage();
-    foreach($target as $dn){
+    foreach ($target as $dn){
 
       $entry = $headpage->getEntry($dn);
       $type = $headpage->getType($dn);
@@ -856,7 +857,7 @@ class systemManagement extends management
         $this->dialogObject->aclCategories = array($pInfo[$type]['aclCategory']);
         $this->dialogObject->parent = &$this;
 
-      }else{
+      } else {
         msg_dialog::display(_("Permission"),sprintf(_("You are not allowed to create a snapshot for %s."),$dn),
             ERROR_DIALOG);
       }
@@ -878,7 +879,7 @@ class systemManagement extends management
     $pInfo    = $this->getObjectDefinitions();
     if(is_object($this->snapHandler)){
       $bases = array();
-      foreach($this->storagePoints as $sp){
+      foreach ($this->storagePoints as $sp){
         $bases[] = $sp.$headpage->getBase();
       }
     }
@@ -890,7 +891,7 @@ class systemManagement extends management
     if(!count($target)){
 
       $cats = array();
-      foreach($pInfo as $data){
+      foreach ($pInfo as $data){
         $cats[] = $data['aclCategory'];
       }
       $cats = array_unique($cats);
@@ -900,14 +901,14 @@ class systemManagement extends management
         @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,$entry,"Snaptshot restoring initiated!");
         $this->dialogObject = new SnapShotDialog($this->config,$entry,$this);
         $this->dialogObject->set_snapshot_bases($bases);
-        $this->dialogObject->display_all_removed_objects = true;
-        $this->dialogObject->display_restore_dialog = true;
+        $this->dialogObject->display_all_removed_objects = TRUE;
+        $this->dialogObject->display_restore_dialog = TRUE;
         $this->dialogObject->parent = &$this;
-      }else{
+      } else {
         msg_dialog::display(_("Permission"),sprintf(_("You are not allowed to restore a snapshot for %s."),$entry),
             ERROR_DIALOG);
       }
-    }else{
+    } else {
 
       // Display the restore points for a given object.
       $dn = array_pop($target);
@@ -922,10 +923,10 @@ class systemManagement extends management
         @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,$dn,"Snaptshot restoring initiated!");
         $this->dialogObject = new SnapShotDialog($this->config,$dn,$this);
         $this->dialogObject->set_snapshot_bases($bases);
-        $this->dialogObject->display_restore_dialog = true;
+        $this->dialogObject->display_restore_dialog = TRUE;
         $this->dialogObject->parent = &$this;
-      }else{
-        msg_dialog::display(_("Permission"),sprintf(_("You are not allowed to restore a snapshot for %s."),$dn),
+      } else {
+        msg_dialog::display(_("Permission"), sprintf(_("You are not allowed to restore a snapshot for %s."), $dn),
             ERROR_DIALOG);
       }
     }
@@ -939,11 +940,11 @@ class systemManagement extends management
    *  @param  Array   'target'  A list of object dns, which should be affected by this method.
    *  @param  Array   'all'     A combination of both 'action' and 'target'.
    */
-  function restoreSnapshot($action="",$target=array(),$all=array())
+  function restoreSnapshot($action = "", $target = array(), $all = array())
   {
-    $dn       = array_pop($target);
+    $dn = array_pop($target);
     $this->snapHandler->restore_snapshot($dn);
-    @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,$dn,"Snaptshot restored!");
+    @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $dn, "Snaptshot restored!");
     $this->closeDialogs();
   }
 
@@ -953,28 +954,32 @@ class systemManagement extends management
    */
   function detectPostActions()
   {
-    $action= management::detectPostActions();
-    if(isset($_POST['abort_event_dialog']))  $action['action'] = "cancel";
-    if(isset($_POST['save_event_dialog']))  $action['action'] = "saveEvent";
-    if(isset($_POST['cd_create']))  $action['action'] = "initiateISOcreation";
-    if(isset($_GET['PerformIsoCreation']))  $action['action'] = "performIsoCreation";
-    if(isset($_POST['SystemTypeAborted']))  $action['action'] = "cancel";
+    $action = management::detectPostActions();
+    if (isset($_POST['abort_event_dialog']))  $action['action'] = "cancel";
+    if (isset($_POST['save_event_dialog']))  $action['action'] = "saveEvent";
+    if (isset($_POST['cd_create']))  $action['action'] = "initiateISOcreation";
+    if (isset($_GET['PerformIsoCreation']))  $action['action'] = "performIsoCreation";
+    if (isset($_POST['SystemTypeAborted']))  $action['action'] = "cancel";
 
-    if(isset($_POST['new_goServer']))  $action['action'] = "new_goServer";
-    if(isset($_POST['new_gotoWorkstation']))  $action['action'] = "new_gotoWorkstation";
-    if(isset($_POST['new_gotoTerminal']))  $action['action'] = "new_gotoTerminal";
-    if(isset($_POST['new_sambaSamAccount']))  $action['action'] = "new_sambaSamAccount";
-    if(isset($_POST['new_gotoPrinter']))  $action['action'] = "new_gotoPrinter";
-    if(isset($_POST['new_goFonHardware']))  $action['action'] = "new_goFonHardware";
-    if(isset($_POST['new_ieee802Device']))  $action['action'] = "new_ieee802Device";
+    if (isset($_POST['new_goServer']))  $action['action'] = "new_goServer";
+    if (isset($_POST['new_gotoWorkstation']))  $action['action'] = "new_gotoWorkstation";
+    if (isset($_POST['new_gotoTerminal']))  $action['action'] = "new_gotoTerminal";
+    if (isset($_POST['new_sambaSamAccount']))  $action['action'] = "new_sambaSamAccount";
+    if (isset($_POST['new_gotoPrinter']))  $action['action'] = "new_gotoPrinter";
+    if (isset($_POST['new_goFonHardware']))  $action['action'] = "new_goFonHardware";
+    if (isset($_POST['new_ieee802Device']))  $action['action'] = "new_ieee802Device";
 
-    if(!is_object($this->tabObject) && !is_object($this->dialogObject)){
-      if(count($this->activationQueue)) $action['action'] = "handleActivationQueue";
+    if (!is_object($this->tabObject) && !is_object($this->dialogObject)) {
+      if (count($this->activationQueue)) {
+        $action['action'] = "handleActivationQueue";
+      }
     }
 
-    if(isset($_POST['systemTypeChosen']))  $action['action'] = "systemTypeChosen";
+    if (isset($_POST['systemTypeChosen'])) {
+      $action['action'] = "systemTypeChosen";
+    }
 
-    return($action);
+    return $action;
   }
 
 
@@ -987,9 +992,9 @@ class systemManagement extends management
     $headpage->update();
 
 
-    $tD = $this->getObjectDefinitions();
+    $tD     = $this->getObjectDefinitions();
     $smarty = get_smarty();
-    foreach($tD as $name => $obj){
+    foreach ($tD as $name => $obj) {
       $smarty->assign("USE_".$name, (empty($obj['tabClass']) || class_available($obj['tabClass'])));
     }
 
@@ -1001,21 +1006,54 @@ class systemManagement extends management
   public function getObjectDefinitions()
   {
     $tabs = array(
-        "goServer" => array(
-          "ou"          => get_ou('serverRDN'),
-          "plugClass"   => "serverGeneric",
-          "tabClass"    => "servtabs",
-          "tabDesc"     => "SERVERTABS",
-          "aclClass"    => "serverGeneric",
-          "sendEvents"  => TRUE,
-          "aclCategory" => "server"),
+      "goServer" => array(
+        "ou"          => get_ou('serverRDN'),
+        "plugClass"   => "serverGeneric",
+        "tabClass"    => "servtabs",
+        "tabDesc"     => "SERVERTABS",
+        "aclClass"    => "serverGeneric",
+        "sendEvents"  => TRUE,
+        "aclCategory" => "server"),
 
-        "gotoWorkstation" => array(
-          "ou"          => get_ou('workstationRDN'),
-          "plugClass"   => "workstationGeneric",
-          "tabClass"    => "worktabs",
-          "tabDesc"     => "WORKSTATIONTABS",
-          "aclClass"    => "workstationGeneric",
+      "gotoWorkstation" => array(
+        "ou"          => get_ou('workstationRDN'),
+        "plugClass"   => "workstationGeneric",
+        "tabClass"    => "worktabs",
+        "tabDesc"     => "WORKSTATIONTABS",
+        "aclClass"    => "workstationGeneric",
+        "sendEvents"  => TRUE,
+        "aclCategory" => "workstation"),
+
+      "gotoTerminal" => array(
+          "ou"          => get_ou('terminalRDN'),
+          "plugClass"   => "terminalGeneric",
+          "tabClass"    => "termtabs",
+          "sendEvents"  => TRUE,
+          "tabDesc"     => "TERMINALTABS",
+          "aclClass"    => "terminalGeneric",
+          "aclCategory" => "terminal"),
+
+      "gotoPrinter" => array(
+          "ou"          => get_ou('printerRDN'),
+          "plugClass"   => "printgeneric",
+          "tabClass"    => "printtabs",
+          "tabDesc"     => "PRINTERTABS",
+          "aclClass"    => "printgeneric",
+          "sendEvents"  => FALSE,
+          "aclCategory" => "printer"),
+
+      "goFonHardware" => array(
+          "ou"          => get_ou('phoneRDN'),
+          "plugClass"   => "phoneGeneric",
+          "tabClass"    => "phonetabs",
+          "tabDesc"     => "PHONETABS",
+          "sendEvents"  => FALSE,
+          "aclClass"    => "phoneGeneric",
+          "aclCategory" => "phone"),
+
+      "sambaSamAccount" => array(
+          "ou"          => get_winstations_ou(),
+          "plugClass"   => "winstationGeneric",
           "sendEvents"  => TRUE,
           "aclCategory" => "workstation"),
 
@@ -1073,33 +1111,35 @@ class systemManagement extends management
             "sendEvents"  => FALSE,
             "aclCategory" => "mobilePhone"),
         );
-
+        
     // Now map some special types
-    $tabs['FAKE_OC_NewWorkstation'] = &$tabs['gotoWorkstation'];
-    $tabs['FAKE_OC_NewTerminal'] = &$tabs['gotoTerminal'];
-    $tabs['FAKE_OC_NewServer'] = &$tabs['gotoWorkstation'];
-    $tabs['gotoWorkstation__IS_BUSY'] = &$tabs['gotoWorkstation'];
-    $tabs['gotoWorkstation__IS_ERROR'] = &$tabs['gotoWorkstation'];
-    $tabs['gotoWorkstation__IS_LOCKED'] = &$tabs['gotoWorkstation'];
-    $tabs['gotoTerminal__IS_BUSY'] = &$tabs['gotoTerminal'];
-    $tabs['gotoTerminal__IS_ERROR'] = &$tabs['gotoTerminal'];
-    $tabs['gotoTerminal__IS_LOCKED'] = &$tabs['gotoTerminal'];
-    $tabs['FAKE_OC_TerminalTemplate'] = &$tabs['gotoTerminal'];
-    $tabs['FAKE_OC_WorkstationTemplate'] = &$tabs['gotoTerminal'];
-    $tabs['goServer__IS_BUSY'] = &$tabs['goServer'];
-    $tabs['goServer__IS_ERROR'] = &$tabs['goServer'];
-    $tabs['goServer__IS_LOCKED'] = &$tabs['goServer'];
+    $tabs['FAKE_OC_NewWorkstation']       = &$tabs['gotoWorkstation'];
+    $tabs['FAKE_OC_NewTerminal']          = &$tabs['gotoTerminal'];
+    $tabs['FAKE_OC_NewServer']            = &$tabs['gotoWorkstation'];
+    $tabs['gotoWorkstation__IS_BUSY']     = &$tabs['gotoWorkstation'];
+    $tabs['gotoWorkstation__IS_ERROR']    = &$tabs['gotoWorkstation'];
+    $tabs['gotoWorkstation__IS_LOCKED']   = &$tabs['gotoWorkstation'];
+    $tabs['gotoTerminal__IS_BUSY']        = &$tabs['gotoTerminal'];
+    $tabs['gotoTerminal__IS_ERROR']       = &$tabs['gotoTerminal'];
+    $tabs['gotoTerminal__IS_LOCKED']      = &$tabs['gotoTerminal'];
+    $tabs['FAKE_OC_TerminalTemplate']     = &$tabs['gotoTerminal'];
+    $tabs['FAKE_OC_WorkstationTemplate']  = &$tabs['gotoTerminal'];
+    $tabs['goServer__IS_BUSY']            = &$tabs['goServer'];
+    $tabs['goServer__IS_ERROR']           = &$tabs['goServer'];
+    $tabs['goServer__IS_LOCKED']          = &$tabs['goServer'];
 
     return $tabs;
   }
 
 
-  static function systemRelease($a,$b,$c,$objectclasses= null,$class= null)
+  static function systemRelease($a, $b, $c, $objectclasses = NULL, $class = NULL)
   {
     global $config;
 
     // No objectclasses set - go ahead
-    if(!$objectclasses) return("&nbsp;");
+    if (!$objectclasses) {
+      return "&nbsp;";
+    }
 
     // Skip non fai objects
     if (!in_array_ics("FAIobject", $objectclasses)) {
@@ -1118,7 +1158,7 @@ class systemManagement extends management
     // Load information if needed
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
-    $ldap->search("(&(objectClass=gosaGroupOfNames)(FAIclass=*)(member=".$b."))",array('FAIclass','cn'));
+    $ldap->search("(&(objectClass=gosaGroupOfNames)(FAIclass=*)(member=".$b."))", array('FAIclass','cn'));
     while ($attrs = $ldap->fetch()) {
       $rel = htmlentities(preg_replace("/^.*:/", "", $attrs['FAIclass'][0]), ENT_COMPAT, 'UTF-8');
       $sys = htmlentities(sprintf(_("Inherited from %s"), $attrs['cn'][0]), ENT_COMPAT, 'UTF-8');
