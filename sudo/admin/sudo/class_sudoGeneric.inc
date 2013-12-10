@@ -76,10 +76,6 @@ class sudo extends simplePlugin
   public $objectclasses = array('sudoRole');
   var $mainTab          = TRUE;
 
-  /*! \brief  Add ACL object
-   *
-   * \return Returns the ACL object.
-   */
   static function plInfo()
   {
     return array(
@@ -88,14 +84,16 @@ class sudo extends simplePlugin
       'plIcon'        => 'plugins/sudo/images/icon.png',
       'plSelfModify'  => FALSE,
       'plObjectType'  => array('sudo' => array(
-        'name'    => _('Sudo role'),
-        'filter'  => 'objectClass=sudoRole'
+        'name'      => _('Sudo role'),
+        'filter'    => 'objectClass=sudoRole',
+        'icon'      => 'plugins/sudo/images/iconMini.png',
+        'ou'        => get_ou('sudoRDN'),
+        'tabClass'  => 'sudotabs',
       )),
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }
-
 
   static function getAttributesInfo ()
   {
@@ -207,7 +205,7 @@ class sudo extends simplePlugin
 
   public function is_default()
   {
-    return preg_match("/^defaults$/i", $this->cn); // FIXME : should use attributesInfo and not cn directly
+    return preg_match("/^defaults$/i", $this->attributesAccess['cn']->getValue());
   }
 
   public function compute_dn()

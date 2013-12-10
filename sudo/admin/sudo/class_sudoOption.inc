@@ -1,5 +1,4 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003  Cajus Pollmeier
@@ -21,7 +20,6 @@
 */
 
 /*
-
  * TODO
  * Find a way to translate descriptions
  */
@@ -74,7 +72,7 @@ class UsedOptionAttribute extends CompositeAttribute
          */
         $value = $this->plugin->unescape_command($value);
 
-        $opt = preg_replace(array('/\-$/','/\+$/'),array('_moins','_plus'),$opt);
+        $opt = preg_replace(array('/\-$/','/\+$/'), array('_moins','_plus'), $opt);
 
         /* Check if the given value is part of our options list.
            If it is not, add it as type STRING and display a warning.
@@ -274,7 +272,7 @@ class AvailableSudoOptionAttribute extends SelectAttribute
     $outputs = array_map(
       function ($choice) use ($options)
       {
-        $opt = preg_replace(array('/_moins$/','/_plus$/'),array('-','+'),$choice);
+        $opt = preg_replace(array('/_moins$/','/_plus$/'), array('-','+'), $choice);
         return sprintf(_("%s (%s)"), $opt, $options[$choice]['TYPE']);
       },
       $choices
@@ -299,17 +297,17 @@ class ListSudoOptionAttribute extends SetAttribute
 {
   function __construct ($name, $desc, $defaultValue, $acl = "")
   {
-    parent::__construct(new StringAttribute(preg_replace(array('/_moins$/','/_plus$/'),array('-','+'),$name), $desc, $name, FALSE, $defaultValue, $acl));
+    parent::__construct(new StringAttribute(preg_replace(array('/_moins$/','/_plus$/'), array('-','+'), $name), $desc, $name, FALSE, $defaultValue, $acl));
   }
 
   function getValue ()
   {
     if (count($this->value) <= 0) {
-      return preg_replace(array('/_moins$/','/_plus$/'),array('-','+'),$this->getLdapName()).'=';
+      return preg_replace(array('/_moins$/','/_plus$/'), array('-','+'), $this->getLdapName()).'=';
     } elseif (count($this->value) > 1) {
-      return preg_replace(array('/_moins$/','/_plus$/'),array('-','+'),$this->getLdapName()).'="'.implode(' ',$this->value).'"';
+      return preg_replace(array('/_moins$/','/_plus$/'), array('-','+'), $this->getLdapName()).'="'.implode(' ', $this->value).'"';
     } else {
-      return preg_replace(array('/_moins$/','/_plus$/'),array('-','+'),$this->getLdapName()).'='.$this->value[0];
+      return preg_replace(array('/_moins$/','/_plus$/'), array('-','+'), $this->getLdapName()).'='.$this->value[0];
     }
   }
 
