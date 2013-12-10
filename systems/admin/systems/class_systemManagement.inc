@@ -528,17 +528,17 @@ class systemManagement extends management
    *  @param  Array   'target'  A list of object dns, which should be affected by this method.
    *  @param  Array   'all'     A combination of both 'action' and 'target'.
    */
-  function newEntry($action="",$target=array(),$all=array(), $altTabClass ="", $altTabType = "", $altAclCategory="")
+  function newEntry($action = "", $target = array(), $all = array(), $altTabClass = "", $altTabType = "", $altAclCategory = "")
   {
     $tInfo = $this->getObjectDefinitions();
-    $info = preg_replace("/^new_/","",$action);
-    if(!isset($tInfo[$info])){
+    $info = preg_replace("/^new_/", "", $action);
+    if (!isset($tInfo[$info])) {
       trigger_error("Unknown action type '".$action."' cant create a new system!");
     } else {
-      return(management::newEntry($action,$target,$all,
-          $tInfo[$info]['tabClass'],
-          $tInfo[$info]['tabDesc'],
-          $tInfo[$info]['aclCategory']));
+      return management::newEntry(
+        $action, $target, $all,
+        $tInfo[$info]['tabClass'], $tInfo[$info]['tabDesc'], $tInfo[$info]['aclCategory']
+      );
     }
   }
 
@@ -546,17 +546,17 @@ class systemManagement extends management
   /*! \brief  Activates all selcted 'NewDevices' at once.
    *          Enqueues the selected Devices in the activation queue.
    */
-  function activateMultiple($action,$target)
+  function activateMultiple($action, $target)
   {
     $headpage = $this->getHeadpage();
     foreach ($target as $dn) {
-      if($headpage->getType($dn) == "FAKE_OC_NewDevice"){
+      if ($headpage->getType($dn) == "FAKE_OC_NewDevice") {
         $this->activationQueue[$dn] = array();
       }
     }
-    if(count($this->activationQueue)){
+    if (count($this->activationQueue)) {
       $this->dialogObject = new SelectDeviceType($this->config, array_keys($this->activationQueue));
-      $this->skipFooter = TRUE;
+      $this->skipFooter   = TRUE;
     }
   }
 
@@ -569,18 +569,18 @@ class systemManagement extends management
     // Detect the systems target type
     $tInfo = $this->getObjectDefinitions();
     $selected_group = "none";
-    if(isset($_POST['ObjectGroup'])){
+    if (isset($_POST['ObjectGroup'])) {
       $selected_group = $_POST['ObjectGroup'];
     }
     $selected_system = $_POST['SystemType'];
     $tmp = array();
-    foreach ($this->activationQueue as $dn => $data){
+    foreach ($this->activationQueue as $dn => $data) {
       $tmp[$dn]['OG'] = $selected_group;
       $tmp[$dn]['SS'] = $selected_system;
     }
     $this->closeDialogs();
     $this->activationQueue = $tmp;
-    return($this->handleActivationQueue());
+    return $this->handleActivationQueue();
   }
 
 
@@ -591,7 +591,9 @@ class systemManagement extends management
     @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,
         'Entries left: '.count($this->activationQueue), "<b>Handling system activation queue!</b>");
 
-    if(!count($this->activationQueue)) return("");
+    if (!count($this->activationQueue)) {
+      return "";
+    }
 
     $ldap     = $this->config->get_ldap_link();
     $pInfo    = $this->getObjectDefinitions();
@@ -600,17 +602,17 @@ class systemManagement extends management
     $ldap->cd($this->config->current['BASE']);
 
     // Walk through systems to activate
-    while(count($this->activationQueue)){
+    while (count($this->activationQueue)) {
 
       // Get next entry
       reset($this->activationQueue);
-      $dn = key($this->activationQueue);
-      $data= $this->activationQueue[$dn];
+      $dn   = key($this->activationQueue);
+      $data = $this->activationQueue[$dn];
 
       // Validate the given system type.
-      if(!isset($data['SS'])) continue;
+      if (!isset($data['SS'])) continue;
       $sysType = $data['SS'];
-      if(!isset($pInfo[$sysType])){
+      if (!isset($pInfo[$sysType])) {
         trigger_error('Unknown type \''.$sysType.'\'!');
         continue;
       }
@@ -625,7 +627,7 @@ class systemManagement extends management
       $aclCategory  = $type["aclCategory"];
       $tabDesc      = $type["tabDesc"];
 
-      if(!class_available($tabClass)){
+      if (!class_available($tabClass)) {
         msg_dialog::display(_("Error"), msgPool::class_not_found($tabclass), ERROR_DIALOG);
         unset($this->activationQueue[$dn]);
         continue;
@@ -636,10 +638,10 @@ class systemManagement extends management
 
         // Load permissions for selected 'dn' and check if we're allowed to create this 'dn'
         $this->dn = $dn;
-        $acls   = $ui->get_permissions($this->dn,$aclCategory."/".$plugClass);
+        $acls     = $ui->get_permissions($this->dn, $aclCategory."/".$plugClass);
 
         // Check permissions
-        if(!preg_match("/c/",$acls)){
+        if (!preg_match("/c/", $acls)) {
           unset($this->activationQueue[$dn]);
           msg_dialog::display(_("Error"), msgPool::permCreate(), ERROR_DIALOG);
 
@@ -650,14 +652,14 @@ class systemManagement extends management
 
           // Open object an preset some values like the objects base
           del_lock($dn);
-          management::editEntry('editEntry',array($dn),array(),$tabClass,$tabDesc, $aclCategory);
+          management::editEntry('editEntry', array($dn), array(), $tabClass, $tabDesc, $aclCategory);
           $this->displayApplyBtn = FALSE;
           $this->tabObject->set_acl_base($headpage->getBase());
 
           @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,
               $data['OG'], "<b>Selected ogroup:</b>");
 
-          if($data['OG'] != "none"){
+          if ($data['OG'] != "none") {
             $this->tabObject->base = preg_replace("/^[^,]+,".preg_quote(get_ou('ogroupRDN'), '/')."/i", "", $data['OG']);
             $this->tabObject->by_object[$plugClass]->baseSelector->setBase($this->tabObject->base);
           } else {
@@ -666,25 +668,26 @@ class systemManagement extends management
           }
 
           // Queue entry to be activated, when it is saved.
-          if($data['OG'] != "none"){
+          if ($data['OG'] != "none") {
 
             // Set gotoMode to active if there was an ogroup selected.
             $found = FALSE;
-            foreach (array("workstationGeneric"=>"active","serverGeneric"=>"active","terminalGeneric"=>"active") as $tab => $value){
-              if(isset($this->tabObject->by_object[$tab]->gotoMode)) {
+            foreach (array("workstationGeneric" => "active","serverGeneric" => "active","terminalGeneric" => "active") as $tab => $value) {
+              if (isset($this->tabObject->by_object[$tab]->gotoMode)) {
                 $found = TRUE;
+
                 $this->tabObject->by_object[$tab]->gotoMode = $value;
                 @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,
                     $tab."->gotoMode = {$value}", "<b>Setting gotoMode to: </b>");
               }
             }
-            if(!$found){
+            if (!$found) {
               msg_dialog::display(_("Internal error"), _("Cannot set mode to 'active'!"), ERROR_DIALOG);
             }
 
             // Update object group membership
-            $og = new ogroup($this->config,$data['OG']);
-            if($og){
+            $og = new ogroup($this->config, $data['OG']);
+            if ($og) {
               $og->AddDelMembership($this->tabObject->dn);
               $og->save();
               @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,
@@ -692,8 +695,8 @@ class systemManagement extends management
             }
 
             // Set default system specific attributes
-            foreach (array("workstationGeneric", "terminalGeneric") as $cls){
-              if (isset($this->tabObject->by_object[$cls])){
+            foreach (array("workstationGeneric", "terminalGeneric") as $cls) {
+              if (isset($this->tabObject->by_object[$cls])) {
                 $this->tabObject->by_object[$cls]->set_everything_to_inherited();
                 @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,
                     $og->dn, "<b>Calling {$cls}->set_everything_to_inherited()</b>");
@@ -701,17 +704,17 @@ class systemManagement extends management
             }
 
             // Enable activation
-            foreach (array("serverGeneric", "workstationGeneric", "terminalGeneric") as $cls){
-              if (isset($this->tabObject->by_object[$cls])){
-                $this->tabObject->by_object[$cls]->auto_activate= TRUE;
+            foreach (array("serverGeneric", "workstationGeneric", "terminalGeneric") as $cls) {
+              if (isset($this->tabObject->by_object[$cls])) {
+                $this->tabObject->by_object[$cls]->auto_activate = TRUE;
                 @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,
                     $cls, "<b>Setting auto_activate=TRUE for</b>");
               }
             }
 
             // Enable sending of LDAP events
-            if (isset($this->tabObject->by_object["workstartup"])){
-              $this->tabObject->by_object["workstartup"]->gotoLdap_inherit= TRUE;
+            if (isset($this->tabObject->by_object["workstartup"])) {
+              $this->tabObject->by_object["workstartup"]->gotoLdap_inherit = TRUE;
               @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,
                   "", "<b>Setting workstartup->gotoLdap_inherit=TRUE</b>");
             }
@@ -720,11 +723,11 @@ class systemManagement extends management
           // Try to inherit everythin from the selected object group and then save
           //  the entry, normally this should work without any problems.
           // But if there is any, then display the dialogs.
-          if($data['OG'] != "none"){
+          if ($data['OG'] != "none") {
             $str = $this->saveChanges();
 
             // There was a problem, skip activation here and allow to fix the problems..
-            if(is_object($this->tabObject)){
+            if (is_object($this->tabObject)) {
               @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,
                   "", "<b>Automatic saving failed, let the user fix the issues now.</b>");
               return;
@@ -753,16 +756,18 @@ class systemManagement extends management
 
     // Try to save changes here.
     $str = management::saveChanges();
-    if($this->tabObject) return("");
+    if ($this->tabObject) {
+      return "";
+    }
 
     // Activate system if required..
-    if(isset($this->activationQueue[$this->last_dn])){
+    if (isset($this->activationQueue[$this->last_dn])) {
       $dn = $this->last_tabObject->dn;
       $this->activate_new_device($dn);
       unset($this->activationQueue[$this->last_dn]);
     }
 
-    if(isset($this->last_tabObject->was_activated) && $this->last_tabObject->was_activated) {
+    if (isset($this->last_tabObject->was_activated) && $this->last_tabObject->was_activated) {
       $this->activate_new_device($this->last_tabObject->dn);
     }
 
@@ -778,9 +783,11 @@ class systemManagement extends management
   protected function applyChanges()
   {
     $str = management::applyChanges();
-    if($str) return($str);
+    if ($str) {
+      return $str;
+    }
 
-    if(isset($this->tabObject->was_activated) && $this->tabObject->was_activated) {
+    if (isset($this->tabObject->was_activated) && $this->tabObject->was_activated) {
       $this->activate_new_device($this->tabObject->dn);
     }
   }
@@ -799,20 +806,20 @@ class systemManagement extends management
     $ldap = $this->config->get_ldap_link();
     $ldap->cd($this->config->current['BASE']);
     $ldap->cat($dn);
-    if($ldap->count()){
+    if ($ldap->count()) {
       $attrs = $ldap->fetch();
-      if(count(array_intersect(array('goServer','gotoWorkstation'), $attrs['objectClass']))){
+      if (count(array_intersect(array('goServer','gotoWorkstation'), $attrs['objectClass']))) {
         $ocs = $attrs['objectClass'];
         unset($ocs['count']);
         $new_attrs = array();
-        if(!in_array("FAIobject",$ocs)){
-          $ocs[] = "FAIobject";
+        if (!in_array("FAIobject", $ocs)) {
+          $ocs[]                    = "FAIobject";
           $new_attrs['objectClass'] = $ocs;
         }
         $new_attrs['FAIstate'] = "install";
         $ldap->cd($dn);
         $ldap->modify($new_attrs);
-        if (!$ldap->success()){
+        if (!$ldap->success()) {
           msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn,
                 LDAP_MOD, "activate_new_device($dn)"));
           @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,
@@ -837,28 +844,28 @@ class systemManagement extends management
    *  @param  Array   'target'  A list of object dns, which should be affected by this method.
    *  @param  Array   'all'     A combination of both 'action' and 'target'.
    */
-  function createSnapshotDialog($action="",$target=array(),$all=array())
+  function createSnapshotDialog($action = "", $target = array(), $all = array())
   {
-    @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,$target,"Snaptshot creation initiated!");
+    @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $target, "Snaptshot creation initiated!");
 
     $pInfo    = $this->getObjectDefinitions();
     $headpage = $this->getHeadpage();
-    foreach ($target as $dn){
+    foreach ($target as $dn) {
 
       $entry = $headpage->getEntry($dn);
       $type = $headpage->getType($dn);
-      if(!isset($pInfo[$type])) {
+      if (!isset($pInfo[$type])) {
         trigger_error('Unknown system type \''.$type.'\'!');
         return;
       }
 
-      if(!empty($dn) && $this->ui->allow_snapshot_create($dn,$pInfo[$type]['aclCategory'])){
-        $this->dialogObject = new SnapShotDialog($this->config,$dn,$this);
-        $this->dialogObject->aclCategories = array($pInfo[$type]['aclCategory']);
-        $this->dialogObject->parent = &$this;
+      if (!empty($dn) && $this->ui->allow_snapshot_create($dn, $pInfo[$type]['aclCategory'])) {
+        $this->dialogObject = new SnapShotDialog($this->config, $dn, $this);
+        $this->dialogObject->aclCategories  = array($pInfo[$type]['aclCategory']);
+        $this->dialogObject->parent         = &$this;
 
       } else {
-        msg_dialog::display(_("Permission"),sprintf(_("You are not allowed to create a snapshot for %s."),$dn),
+        msg_dialog::display(_("Permission"), sprintf(_("You are not allowed to create a snapshot for %s."), $dn),
             ERROR_DIALOG);
       }
     }
@@ -872,40 +879,40 @@ class systemManagement extends management
    *  @param  Array   'target'  A list of object dns, which should be affected by this method.
    *  @param  Array   'all'     A combination of both 'action' and 'target'.
    */
-  function restoreSnapshotDialog($action="",$target=array(),$all=array())
+  function restoreSnapshotDialog($action = "", $target = array(), $all = array())
   {
     // Set current restore base for snapshot handling.
     $headpage = $this->getHeadpage();
     $pInfo    = $this->getObjectDefinitions();
-    if(is_object($this->snapHandler)){
+    if (is_object($this->snapHandler)) {
       $bases = array();
-      foreach ($this->storagePoints as $sp){
+      foreach ($this->storagePoints as $sp) {
         $bases[] = $sp.$headpage->getBase();
       }
     }
 
     // No bases specified? Try base
-    if(!count($bases)) $bases[] = $this->headpage->getBase();
+    if (!count($bases)) $bases[] = $this->headpage->getBase();
 
     // No target, open the restore removed object dialog.
-    if(!count($target)){
+    if (!count($target)) {
 
       $cats = array();
-      foreach ($pInfo as $data){
+      foreach ($pInfo as $data) {
         $cats[] = $data['aclCategory'];
       }
       $cats = array_unique($cats);
 
       $entry = $headpage->getBase();
-      if(!empty($entry) && $this->ui->allow_snapshot_restore($entry,$cats)){
-        @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,$entry,"Snaptshot restoring initiated!");
-        $this->dialogObject = new SnapShotDialog($this->config,$entry,$this);
+      if (!empty($entry) && $this->ui->allow_snapshot_restore($entry, $cats)) {
+        @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $entry, "Snaptshot restoring initiated!");
+        $this->dialogObject = new SnapShotDialog($this->config, $entry, $this);
         $this->dialogObject->set_snapshot_bases($bases);
-        $this->dialogObject->display_all_removed_objects = TRUE;
-        $this->dialogObject->display_restore_dialog = TRUE;
-        $this->dialogObject->parent = &$this;
+        $this->dialogObject->display_all_removed_objects  = TRUE;
+        $this->dialogObject->display_restore_dialog       = TRUE;
+        $this->dialogObject->parent                       = &$this;
       } else {
-        msg_dialog::display(_("Permission"),sprintf(_("You are not allowed to restore a snapshot for %s."),$entry),
+        msg_dialog::display(_("Permission"), sprintf(_("You are not allowed to restore a snapshot for %s."), $entry),
             ERROR_DIALOG);
       }
     } else {
@@ -914,17 +921,17 @@ class systemManagement extends management
       $dn = array_pop($target);
       $entry = $headpage->getEntry($dn);
       $type = $headpage->getType($dn);
-      if(!isset($pInfo[$type])) {
+      if (!isset($pInfo[$type])) {
         trigger_error('Unknown system type \''.$type.'\'!');
         return;
       }
 
-      if(!empty($dn) && $this->ui->allow_snapshot_create($dn,$pInfo[$type]['aclCategory'])){
-        @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,$dn,"Snaptshot restoring initiated!");
-        $this->dialogObject = new SnapShotDialog($this->config,$dn,$this);
+      if (!empty($dn) && $this->ui->allow_snapshot_create($dn, $pInfo[$type]['aclCategory'])) {
+        @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $dn, "Snaptshot restoring initiated!");
+        $this->dialogObject = new SnapShotDialog($this->config, $dn, $this);
         $this->dialogObject->set_snapshot_bases($bases);
         $this->dialogObject->display_restore_dialog = TRUE;
-        $this->dialogObject->parent = &$this;
+        $this->dialogObject->parent                 = &$this;
       } else {
         msg_dialog::display(_("Permission"), sprintf(_("You are not allowed to restore a snapshot for %s."), $dn),
             ERROR_DIALOG);

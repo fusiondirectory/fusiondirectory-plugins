@@ -93,7 +93,6 @@ class ServerService extends management
     $headpage->registerElementFilter("filterServiceStatus", "ServerService::filterServiceStatus");
     $headpage->setFilter($filter);
 
-
     // Initialize list of used and useable services.
     foreach ($config->data['TABS']['SERVERSERVICE'] as $plug) {
       if (class_available($plug['CLASS'])) {
@@ -332,7 +331,6 @@ class ServerService extends management
         msg_dialog::display(_("Filter error"), _("The filter is incomplete!"), ERROR_DIALOG);
       }
     }
-
 
     // Handle actions (POSTs and GETs)
     $str = $this->handleActions($this->detectPostActions());
@@ -582,7 +580,7 @@ class ServerService extends management
    */
   function allow_remove()
   {
-    foreach ($this->plugins as $name => $obj) {
+    foreach ($this->plugins as $obj) {
       $str = $obj->allow_remove();
       if (!empty($str)) {
         return $str;
