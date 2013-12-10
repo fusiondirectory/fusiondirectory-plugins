@@ -555,7 +555,6 @@ class printgeneric extends plugin
       }
     }
 
-
     /* Display dialog, if there is currently one open*/
     if (is_object($this->dialog)) {
       $this->dialog->save_object();
@@ -589,7 +588,6 @@ class printgeneric extends plugin
       $smarty->assign("displayServerPath", TRUE);
     }
     $smarty->assign("ppdServerPart", $this->ppdServerPart);
-
 
     /* Create user & admin user list */
     $list = $this->generateList();
@@ -883,8 +881,6 @@ class printgeneric extends plugin
     } else {
       $this->gotoPrinterPPD = array();
     }
-
-    $dn = $this->dn;
 
     /* reduce objectClasses to minimun */
     $this->attrs['objectClass'] = $this->objectclasses;
