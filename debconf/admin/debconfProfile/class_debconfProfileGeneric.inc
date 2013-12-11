@@ -1,5 +1,4 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2011-2013  FusionDirectory
@@ -80,7 +79,7 @@ class DebconfEntriesAttribute extends CompositeAttribute
     $ldap = $this->plugin->config->get_ldap_link();
     foreach ($this->attributes as $cn => $attribute) {
       $dn = "cn=$cn,ou=questions,".$this->plugin->dn;
-      $ldap->cat($dn,array("objectClass"));
+      $ldap->cat($dn, array("objectClass"));
       if ($ldap->count() != 1) {
         msg_dialog::display(_("Error"),
           sprintf(_("Can't find entry %s in LDAP for profile %s"), $cn, $this->plugin->dn),
@@ -131,7 +130,7 @@ class DebconfImportAttribute extends FileAttribute
       try {
         $ldap->import_complete_ldif($str, FALSE, FALSE);
         $this->plugin->initially_was_account = TRUE;
-      } catch(Exception $e) {
+      } catch (Exception $e) {
         msg_dialog::display(_('LDAP error'), $e->getMessage(), ERROR_DIALOG);
       }
     } else {
@@ -163,12 +162,12 @@ class debconfProfileGeneric extends simplePlugin
       'plShortName'   => _('Debconf profile'),
       'plDescription' => _('Debconf profile generic'),
       'plSelfModify'  => FALSE,
-      'plCategory'    => array('debconfProfile' => array('description'  => _('Debconf profile'),
-                                                          'objectClass'  => 'debConfDbEntry')),
       'plObjectType'  => array('debconfProfile' => array(
-        'name'    => _('Debconf profile'),
-        'filter'  => 'objectClass=debConfDbEntry',
-        'ou'      => get_ou('debconfRDN')
+        'name'      => _('Debconf profile'),
+        'filter'    => '(&(objectClass=organizationalUnit)(!(objectClass=gosaDepartment)))',
+        'ou'        => get_ou('debconfRDN'),
+        'icon'      => 'plugins/debconf/images/iconMini.png',
+        'mainAttr'  => 'ou',
       )),
       'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
@@ -212,8 +211,7 @@ class debconfProfileGeneric extends simplePlugin
 
   function compute_dn()
   {
-    $ou = $this->attributesAccess['ou']->getValue();
-    return "ou=$ou,".get_ou("debconfRDN").$this->config->current['BASE'];
+    return 'ou='.$this->attributesAccess['ou']->getValue().','.get_ou("debconfRDN").$this->config->current['BASE'];
   }
 
   function ldap_save($cleanup = TRUE)

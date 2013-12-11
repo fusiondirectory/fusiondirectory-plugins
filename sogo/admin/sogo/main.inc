@@ -18,33 +18,5 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-/* Remove locks created by this plugin */
-if ($remove_lock) {
-  if (session::is_set('sogoManagement')) {
-      $macl = session::get('sogoManagement');
-      $macl->remove_lock();
-  }
-}
-
-/* Remove this plugin from session */
-if ($cleanup) {
-  session::un_set('sogoManagement');
-} else {
-
-  /* Create usermanagement object on demand */
-  if (!session::is_set('sogoManagement')) {
-    $sogoManagement = new sogoManagement ($config, $ui);
-    session::set('sogoManagement', $sogoManagement);
-  }
-  $sogoManagement = session::get('sogoManagement');
-  $display = $sogoManagement->execute();
-
-  /* Reset requested? */
-  if (isset($_GET['reset']) && $_GET['reset'] == 1) {
-    session::un_set('sogoManagement');
-  }
-
-  /* Show and save dialog */
-  session::set('sogoManagement', $sogoManagement);
-}
+simpleManagement::mainInc('sogoManagement');
 ?>

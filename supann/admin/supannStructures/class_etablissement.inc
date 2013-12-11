@@ -34,7 +34,10 @@ class etablissement extends simplePlugin
       'plObjectType'  => array('etablissement' => array(
         'name'        => _('SUPANN Etablissement'),
         'filter'      => '(&(objectClass=supannEntite)(objectClass=organization))',
-        'aclCategory' => 'supann'
+        'ou'          => get_ou('supannStructuresRDN'),
+        'mainAttr'    => 'supannCodeEntite',
+        'icon'        => 'plugins/supann/images/iconMiniEtablissement.png',
+        'nameAttr'    => 'o',
       )),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
