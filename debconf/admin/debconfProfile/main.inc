@@ -1,8 +1,7 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2011-2013  FusionDirectory
+  Copyright (C) 2013  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -19,34 +18,6 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-/* Remove locks created by this plugin */
-if ($remove_lock) {
-  if (session::is_set('debconfProfileManagement')) {
-    $macl = session::get('debconfProfileManagement');
-    $macl->remove_lock();
-  }
-}
-
-/* Remove this plugin from session */
-if ($cleanup) {
-  session::un_set('debconfProfileManagement');
-} else {
-
-  /* Create devicemanagement object on demand */
-  if (!session::is_set('debconfProfileManagement')) {
-    $debconfProfileManagement = new debconfProfileManagement ($config, $ui);
-    session::set('debconfProfileManagement', $debconfProfileManagement);
-  }
-  $debconfProfileManagement = session::get('debconfProfileManagement');
-  $display = $debconfProfileManagement->execute();
-
-  /* Reset requested? */
-  if (isset($_GET['reset']) && $_GET['reset'] == 1) {
-    session::un_set('debconfProfileManagement');
-  }
-
-  /* Show and save dialog */
-  session::set('debconfProfileManagement', $debconfProfileManagement);
-}
+simpleManagement::mainInc('debconfProfileManagement');
 
 ?>

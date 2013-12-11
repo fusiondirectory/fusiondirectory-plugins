@@ -91,7 +91,10 @@ class entite extends simplePlugin
       'plObjectType'  => array('entite' => array(
         'name'        => _('SUPANN Entite'),
         'filter'      => '(&(objectClass=supannEntite)(objectClass=organizationalUnit))',
-        'aclCategory' => 'supann'
+        'ou'          => get_ou('supannStructuresRDN'),
+        'mainAttr'    => 'supannCodeEntite',
+        'icon'        => 'plugins/supann/images/iconMiniEntite.png',
+        'nameAttr'    => 'ou',
       )),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())

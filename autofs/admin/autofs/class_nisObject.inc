@@ -33,7 +33,9 @@ class nisObject extends simplePlugin
       'plObjectType'    => array('nisObject' => array(
         'name'        => _('Directory'),
         'filter'      => 'objectClass=nisObject',
-        'aclCategory' => 'autofs'
+        'ou'          => get_ou('autofsRDN'),
+        'icon'        => 'plugins/autofs/images/iconMiniNisObject.png',
+        'mainAttr'    => 'cn',
       )),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
@@ -94,6 +96,13 @@ class nisObject extends simplePlugin
   {
     $this->base = preg_replace('/^nisMapName=[^,]+,/', '', $this->base);
     return parent::get_allowed_bases();
+  }
+
+  function compute_dn()
+  {
+    return 'cn='.$this->attributesAccess['cn']->getValue().','.
+            'nisMapName='.$this->attributesAccess['nisMapName'].','.
+              get_ou("autofsRDN").$baseobject->base;
   }
 }
 
