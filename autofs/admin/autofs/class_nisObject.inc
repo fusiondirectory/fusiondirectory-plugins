@@ -101,8 +101,8 @@ class nisObject extends simplePlugin
   function compute_dn()
   {
     return 'cn='.$this->attributesAccess['cn']->getValue().','.
-            'nisMapName='.$this->attributesAccess['nisMapName'].','.
-              get_ou("autofsRDN").$baseobject->base;
+            'nisMapName='.$this->nisMapName.','.
+              get_ou("autofsRDN").$this->base;
   }
 }
 

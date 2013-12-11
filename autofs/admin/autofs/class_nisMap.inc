@@ -60,7 +60,7 @@ class nisMap extends simplePlugin
 
   function compute_dn()
   {
-    return "nisMapName=".$this->nisMapName.",".get_ou("autofsRDN").$baseobject->base;
+    return "nisMapName=".$this->nisMapName.",".get_ou("autofsRDN").$this->base;
   }
 }
 
