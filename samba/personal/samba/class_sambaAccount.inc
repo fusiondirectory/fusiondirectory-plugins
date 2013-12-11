@@ -493,7 +493,6 @@ class sambaAccount extends simplePlugin
                   _("Cannot convert primary group to samba group: group cannot be identified!"),
                   WARNING_DIALOG);
       } else {
-        $attrs = $ldap->fetch();
         $g = new group($this->config, $ldap->getDN());
         if ($g->sambaSID == "") {
           $g->sambaDomainName = $this->sambaDomainName;

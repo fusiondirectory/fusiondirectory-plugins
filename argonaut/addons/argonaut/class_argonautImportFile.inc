@@ -1,5 +1,4 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
@@ -22,14 +21,13 @@
 
 class argonautImportFile extends plugin
 {
-
   var $events     = array();
   var $csv_fields = array();
   var $import_successful = FALSE; // Indicates that we have successfully imported everything.
 
-  public function __construct($config,&$parent)
+  public function __construct($config, &$parent)
   {
-    parent::__construct($config,NULL);
+    parent::__construct($config, NULL);
     $this->parent = $parent;
     $this->daemon_events  = DaemonEvent::get_event_types();
 
@@ -38,36 +36,31 @@ class argonautImportFile extends plugin
         "4" => "BASE", "5" => "FQDN",   "6" => "IP",     "7" => "DHCP");
   }
 
-
   private function parse_csv($str)
   {
-
-    /* Some file checks
-     */
-    $lines = preg_split("/\n/",$str);
-    if(empty($str) || !count($lines)){
-      msg_dialog::display(_("Import"), msgPool::incorrectUpload(_("file is empty")),ERROR_DIALOG);
+    /* Some file checks */
+    $lines = preg_split("/\n/", $str);
+    if (empty($str) || !count($lines)) {
+      msg_dialog::display(_("Import"), msgPool::incorrectUpload(_("file is empty")), ERROR_DIALOG);
       return;
     }
 
-    /* Reset current events
-     */
+    /* Reset current events */
     $this->events = array();
 
-    /* Parse each line of the given file
-     */
-    foreach($lines as $line){
+    /* Parse each line of the given file */
+    foreach ($lines as $line) {
+      /* Skip empty lines */
+      if (empty($line)) {
+        continue;
+      }
 
-      // Skip empty lines.
-      if(empty($line)) continue;
-
-      /* Load values from file
-       */
-      $fields = explode(";",$line);
-      $event = array();
-      foreach($this->csv_fields as $key => $val) {
+      /* Load values from file */
+      $fields = explode(";", $line);
+      $event  = array();
+      foreach ($this->csv_fields as $key => $val) {
         $event[$val] = "";
-        if(isset($fields[$key])){
+        if (isset($fields[$key])) {
           $event[$val] = $fields[$key];
         }
       }
@@ -79,20 +72,18 @@ class argonautImportFile extends plugin
 
   public function execute()
   {
-    /* Import file
-     */
-    if(isset($_POST['import']) && isset($_FILES['file'])) {
-      if(isset($_FILES['file']['tmp_name'])){
+    /* Import file */
+    if (isset($_POST['import']) && isset($_FILES['file'])) {
+      if (isset($_FILES['file']['tmp_name'])) {
         $str = file_get_contents($_FILES['file']['tmp_name']);
         $this->parse_csv($str);
       }
     }
 
-    /* Import started
-     */
+    /* Import started */
     $confirmed = FALSE;
     foreach ($_POST as $name => $value) {
-      if (preg_match("/^MSG_OK/",$name)) {
+      if (preg_match("/^MSG_OK/", $name)) {
         $confirmed = TRUE;
       }
     }
@@ -107,11 +98,10 @@ class argonautImportFile extends plugin
         }
         if ($error) {
           msg_dialog::display(_("Import"),
-              _("Selected entries will be skipped because of errors. Do you want to proceed?"),CONFIRM_DIALOG);
+              _("Selected entries will be skipped because of errors. Do you want to proceed?"), CONFIRM_DIALOG);
         }
       }
       if (!$error) {
-
         $success  = 0;
         $fail     = 0;
 
@@ -121,8 +111,7 @@ class argonautImportFile extends plugin
             continue;
           }
 
-          /* Create event
-           */
+          /* Create event */
           $o_data = $this->daemon_events[$event['HEADER']];
           $object = new DaemonEvent($this->config, $event['HEADER']);
           $object->add_targets(array($event['MAC']));
@@ -132,8 +121,7 @@ class argonautImportFile extends plugin
             $object->set_type(SCHEDULED_EVENT);
           }
 
-          /* Update values like fqdn a.s.o
-           */
+          /* Update values like fqdn a.s.o */
           foreach ($this->csv_fields as $name) {
             if ($name == "TIMESTAMP" && empty($event[$name])) {
               continue;
@@ -143,34 +131,33 @@ class argonautImportFile extends plugin
 
           $this->parent->o_queue->append($object);
           if ($this->parent->o_queue->is_error()) {
-            msg_dialog::display(_("Service infrastructure"),msgPool::siError($this->parent->o_queue->get_error()),ERROR_DIALOG);
+            msg_dialog::display(_("Service infrastructure"), msgPool::siError($this->parent->o_queue->get_error()), ERROR_DIALOG);
             $fail ++;
           } else {
             unset($this->events[$key]);
             $success ++;
           }
         }
-        msg_dialog::display(_("Import"),sprintf(_("Import complete: %s events successfully send, %s failed"),$success,$fail),INFO_DIALOG);
-        $this->import_successful = count($this->events) == 0;
+        msg_dialog::display(_("Import"), sprintf(_("Import complete: %s events successfully send, %s failed"), $success, $fail), INFO_DIALOG);
+        $this->import_successful = (count($this->events) == 0);
       }
     }
 
 
-    /* Prepare output
-     */
+    /* Prepare output */
     $evts = $this->events;
-    foreach($this->events as $id => $evt){
-      foreach($evt as $key => $val){
-        if(in_array($key,$this->csv_fields)){
+    foreach ($this->events as $id => $evt) {
+      foreach ($evt as $key => $val) {
+        if (in_array($key, $this->csv_fields)) {
           $evts[$id][$key] = "<span style=\"white-space: nowrap;\">".strip_tags($val)."</span>";
         }
       }
     }
 
     $smarty = get_smarty();
-    $smarty->assign("info",$evts);
-    $smarty->assign("count",count($evts));
-    return($smarty->fetch(get_template_path('argonaut_import_file.tpl', TRUE)));
+    $smarty->assign("info",   $evts);
+    $smarty->assign("count",  count($evts));
+    return $smarty->fetch(get_template_path('argonaut_import_file.tpl', TRUE));
   }
 
 
@@ -187,12 +174,12 @@ class argonautImportFile extends plugin
     foreach ($this->events as $key => $event) {
       $this->events[$key]['ERROR'] = "";
       if (empty($event['MAC']) || !tests::is_mac($event['MAC'])) {
-        $this->events[$key]['ERROR'] .=  msgPool::invalid(_("MAC")).", ";
+        $this->events[$key]['ERROR'] .= msgPool::invalid(_("MAC")).", ";
       }
       if (empty($event['HEADER']) || !isset($this->daemon_events[$event['HEADER']])) {
-        $this->events[$key]['ERROR'] .=  msgPool::invalid(_("Event")).", ";
+        $this->events[$key]['ERROR'] .= msgPool::invalid(_("Event")).", ";
       }
-      $this->events[$key]['ERROR'] = trim($this->events[$key]['ERROR'],", ");
+      $this->events[$key]['ERROR'] = trim($this->events[$key]['ERROR'], ", ");
     }
   }
 }

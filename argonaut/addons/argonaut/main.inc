@@ -1,5 +1,4 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
@@ -21,34 +20,31 @@
 */
 
 /* Remove locks created by this plugin */
-if ($remove_lock){
-  if(session::is_set('argonautQueue')){
-      $macl = session::get('argonautQueue');
-      $macl->remove_lock();
+if ($remove_lock) {
+  if (session::is_set('argonautQueue')) {
+    $macl = session::get('argonautQueue');
+    $macl->remove_lock();
   }
 }
 
 /* Remove this plugin from session */
-if ( $cleanup ){
+if ($cleanup ) {
   session::un_set('argonautQueue');
-}else{
-
+} else {
   /* Reset requested? */
-  if (isset($_GET['reset']) && $_GET['reset'] == 1){
+  if (isset($_GET['reset']) && $_GET['reset'] == 1) {
     session::un_set ('argonautQueue');
   }
 
   /* Create argonautQueue object on demand */
-  if (!session::is_set('argonautQueue')){
-    $argonautQueue= new argonautQueue ($config, $ui);
-    session::set('argonautQueue',$argonautQueue);
+  if (!session::is_set('argonautQueue')) {
+    $argonautQueue = new argonautQueue ($config, $ui);
+    session::set('argonautQueue', $argonautQueue);
   }
-  $argonautQueue = session::get('argonautQueue');
-  $display= $argonautQueue->execute();
+  $argonautQueue  = session::get('argonautQueue');
+  $display        = $argonautQueue->execute();
 
   /* Show and save dialog */
-  session::set('argonautQueue',$argonautQueue);
+  session::set('argonautQueue', $argonautQueue);
 }
-
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

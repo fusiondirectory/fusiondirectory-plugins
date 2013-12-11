@@ -29,8 +29,8 @@ class printerPPDDialog extends plugin
 
   /* PPD Handling */
   var $selectedPPD          = FALSE;        // e.g. /vendor/device.ppd
-  var $ppdManager           = FALSE;        // new ppdManager;
-  var $ppdConfig            = FALSE;        // $this->ppdManager->loadProperties($this->selectedPPD['link']);
+  var $ppdManager           = FALSE;
+  var $ppdConfig            = FALSE;
   var $ppdList              = array();      // Contains all Printer models
   var $ppdListHeader        = array();      // Contains all printer vendors
 
@@ -49,7 +49,7 @@ class printerPPDDialog extends plugin
   var $add_ppd_later            = "";
   var $add_later_msg_dialog     = NULL;
 
-  function printerPPDDialog (&$config, $dn = NULL, $ppdfile = NULL )
+  function __construct (&$config, $dn = NULL, $ppdfile = NULL )
   {
     parent::__construct($config, $dn);
     $this->depselect = $this->config->current['BASE'];
@@ -229,7 +229,6 @@ class printerPPDDialog extends plugin
     $AbsoluteDestinationPath  = $this->pathToPPD.$this->pathToModified;
     $Vendor                   = ""; // Vendor
     $Name                     = ""; // Name
-    $Modell                   = ""; // Modell
     $PrinterName              = ""; // The new name of the printer
     $PPDName                  = "";
 
@@ -246,7 +245,6 @@ class printerPPDDialog extends plugin
     if ($ppdDesc) {
       $Name   = $ppdDesc['name'];
       $Vendor = $ppdDesc['manufacturer'];
-      $Model  = $ppdDesc['model'];
     }
 
     $PrinterName  = $this->cn."-".preg_replace("/[^a-z0-9-_\.]/i", "_", $Name);
@@ -281,8 +279,6 @@ class printerPPDDialog extends plugin
     $str = file_get_contents($AbsoluteSourceName);
     fputs($fp, $str);
     @fclose($fp);
-
-    //$this->ppdManager->updateAttribute($filename,"NO_SECTION","ModelName",$printerName);
 
     $tmp3['link']       = $PPDName;
     $this->selectedPPD  = $tmp3;
@@ -329,7 +325,6 @@ class printerPPDDialog extends plugin
     $filename     = $this->pathToPPD.preg_replace("/[^a-z0-9-_\.\/]/i", "_", $ppdname);
     $filename     = $this->pathToPPD.$ppdname;
     $contents     = file_get_contents($_PathOnHdd);
-
 
     /* Check if this ppd already exists */
     $found = FALSE;
