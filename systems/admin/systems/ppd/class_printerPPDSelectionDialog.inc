@@ -1,5 +1,4 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
@@ -32,7 +31,7 @@ class printerPPDSelectionDialog extends plugin
   var $current_del_id       = "";
   var $Vendor               = "";
 
-  function printerPPDSelectionDialog (&$config, $dn = NULL, $list = FALSE, $headers = FALSE, $ppd = FALSE)
+  function __construct (&$config, $dn = NULL, $list = FALSE, $headers = FALSE, $ppd = FALSE)
   {
     parent::__construct($config, $dn);
     $this->list       = $list;
@@ -55,10 +54,9 @@ class printerPPDSelectionDialog extends plugin
     /* Fill templating stuff */
     $smarty   = get_smarty();
     $display  = "";
-    $s_action = "none";
 
-    $printerPPDSelectionDialog = session::get('printerPPDSelectionDialog');
-    $regex = $printerPPDSelectionDialog['regex'];
+    $printerPPDSelectionDialog  = session::get('printerPPDSelectionDialog');
+    $regex                      = $printerPPDSelectionDialog['regex'];
 
     if (isset($_GET['search'])) {
       $regex = $_GET['search']."*";
@@ -71,7 +69,6 @@ class printerPPDSelectionDialog extends plugin
     $regex = str_replace("**", "*", $regex);
     $printerPPDSelectionDialog['regex'] = $regex;
     session::set('printerPPDSelectionDialog', $printerPPDSelectionDialog);
-
 
     /* Delete requested, check if everything is ok and display confirmation dialog */
     if (isset($_GET['act']) && $_GET['act'] == "del") {
@@ -120,10 +117,9 @@ class printerPPDSelectionDialog extends plugin
       }
     }
 
-
-    /** Added **/
+    /* Added */
     $list = array();
-    foreach ($this->list as $cat => $ppds) {
+    foreach ($this->list as $ppds) {
       foreach ($ppds as $ppd) {
         $name = $ppd['ppd']['name'];
         if (preg_match("/^".str_replace("*", ".*", $regex)."/i", $name)) {

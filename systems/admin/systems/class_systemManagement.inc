@@ -129,7 +129,6 @@ class systemManagement extends management
 
     foreach ($target as $dn) {
       $type   = $headpage->getType($dn);
-      $entry  = $headpage->getEntry($dn);
 
       $tabClass[$dn]    = $tDefs[$type]['tabClass'];
       $tabType[$dn]     = $tDefs[$type]['tabDesc'];
@@ -261,7 +260,6 @@ class systemManagement extends management
       $mac = array();
 
       // Collect target mac addresses
-      $ldap     = $this->config->get_ldap_link();
       $tD       = $this->getObjectDefinitions();
       $events   = DaemonEvent::get_event_types();
       $o_queue  = new supportDaemon();
@@ -440,7 +438,7 @@ class systemManagement extends management
     $tInfo = $this->getObjectDefinitions();
     $headpage = $this->getHeadpage();
     $disallowed = array();
-    foreach ($this->dns as $key => $dn) {
+    foreach ($this->dns as $dn) {
       $type = $headpage->getType($dn);
       if (!isset($tInfo[$type])) {
         trigger_error("Unknown object type received '".$type."' please update systemManagement::getObjectDefinitions()!");
@@ -565,7 +563,6 @@ class systemManagement extends management
   function systemTypeChosen()
   {
     // Detect the systems target type
-    $tInfo = $this->getObjectDefinitions();
     $selected_group = "none";
     if (isset($_POST['ObjectGroup'])) {
       $selected_group = $_POST['ObjectGroup'];
@@ -626,7 +623,7 @@ class systemManagement extends management
       $tabDesc      = $type["tabDesc"];
 
       if (!class_available($tabClass)) {
-        msg_dialog::display(_("Error"), msgPool::class_not_found($tabclass), ERROR_DIALOG);
+        msg_dialog::display(_("Error"), msgPool::class_not_found($tabClass), ERROR_DIALOG);
         unset($this->activationQueue[$dn]);
         continue;
       } else {
@@ -722,7 +719,7 @@ class systemManagement extends management
           //  the entry, normally this should work without any problems.
           // But if there is any, then display the dialogs.
           if ($data['OG'] != "none") {
-            $str = $this->saveChanges();
+            $this->saveChanges();
 
             // There was a problem, skip activation here and allow to fix the problems..
             if (is_object($this->tabObject)) {
@@ -753,9 +750,9 @@ class systemManagement extends management
         get_class($this->tabObject).": ".$this->tabObject->dn, "<b>Save</b>");
 
     // Try to save changes here.
-    $str = management::saveChanges();
+    management::saveChanges();
     if ($this->tabObject) {
-      return "";
+      return;
     }
 
     // Activate system if required..
@@ -849,8 +846,6 @@ class systemManagement extends management
     $pInfo    = $this->getObjectDefinitions();
     $headpage = $this->getHeadpage();
     foreach ($target as $dn) {
-
-      $entry = $headpage->getEntry($dn);
       $type = $headpage->getType($dn);
       if (!isset($pInfo[$type])) {
         trigger_error('Unknown system type \''.$type.'\'!');
@@ -861,7 +856,6 @@ class systemManagement extends management
         $this->dialogObject = new SnapShotDialog($this->config, $dn, $this);
         $this->dialogObject->aclCategories  = array($pInfo[$type]['aclCategory']);
         $this->dialogObject->parent         = &$this;
-
       } else {
         msg_dialog::display(_("Permission"), sprintf(_("You are not allowed to create a snapshot for %s."), $dn),
             ERROR_DIALOG);
@@ -995,7 +989,6 @@ class systemManagement extends management
   {
     $headpage = $this->getHeadpage();
     $headpage->update();
-
 
     $tD     = $this->getObjectDefinitions();
     $smarty = get_smarty();

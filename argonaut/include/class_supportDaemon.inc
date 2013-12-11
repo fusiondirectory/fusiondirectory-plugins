@@ -173,7 +173,6 @@ class supportDaemon
     /* Add to queue if new
      */
     if ($event->is_new()) {
-      $request_answer = FALSE;
       $action = $event->get_action();
 
       /* Get event informations, like targets..
@@ -399,7 +398,9 @@ class supportDaemon
 
     try {
       $client = new jsonRPCClient($this->s_host, $this->http_options);
-      $entries = $client->remove_entries($ids);
+      $client->remove_entries($ids);
+      $this->reset_error();
+      return $this->new_state(TRUE);
     } catch (jsonRPCClient_RequestErrorException $e) {
       $this->set_error(nl2br($e->getMessage()));
       $this->new_state(TRUE); // connection is OK
@@ -408,8 +409,6 @@ class supportDaemon
       $this->set_error(nl2br($e->getMessage()));
       return $this->new_state(FALSE);
     }
-    $this->reset_error();
-    return $this->new_state(TRUE);
   }
 
   /*!
@@ -459,7 +458,7 @@ class supportDaemon
 
     try {
       $client = new jsonRPCClient($this->s_host, $this->http_options);
-      $entries = $client->process_entries_now($ids);
+      $client->process_entries_now($ids);
       $this->reset_error();
       return $this->new_state(TRUE);
     } catch (jsonRPCClient_RequestErrorException $e) {
@@ -570,8 +569,7 @@ class supportDaemon
     }
     $dates = scandir($logfiledir);
     if (!$dates) {
-      /* removed because in this case we don't need to say that there is nothing */
-      /*  $this->set_error("client fai log directory ".$this->logdir." do not exist"); */
+      /* directory does not exists */
       return FALSE;
     }
     $ret = array();

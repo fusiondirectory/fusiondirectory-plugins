@@ -936,9 +936,7 @@ class networkSettings extends plugin
         new log("modify", "unknown/".get_class($this), $dn, array_keys($attrs), $ldap->get_error());
       }
 
-
-      /* Display errors
-       */
+      /* Display errors */
       if (!$ldap->success()) {
         msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $dn, 0, get_class()));
       }

@@ -1,5 +1,4 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
@@ -105,7 +104,7 @@ class argonautQueue extends management
 
   function newEntry($action = "", $target = array(), $all = array(), $altTabClass = "", $altTabType = "", $altAclCategory = "")
   {
-    $action = preg_replace("/^new_/","",$action);
+    $action = preg_replace("/^new_/", "", $action);
     if ($this->acl_is_writeable("")) {
       if (isset($this->events[$action])) {
         $this->dialogObject = new DaemonEvent($this->config, $action);

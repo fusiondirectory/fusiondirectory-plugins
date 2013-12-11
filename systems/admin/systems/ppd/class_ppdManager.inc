@@ -28,7 +28,7 @@ class ppdManager
 
   var $useGzip = TRUE;
 
-  function ppdManager($path)
+  function __construct($path)
   {
     global $config;
     $value = $config->get_cfg_value("ppdGzip", "TRUE");
@@ -44,8 +44,6 @@ class ppdManager
       msg_dialog::display(_("PPD manager error"), sprintf(_("The specified path '%s' does not exist."), $path), ERROR_DIALOG);
       return FALSE;
     }
-
-
   }
 
 
@@ -108,7 +106,7 @@ class ppdManager
 
     $ret  = "";
     $done = FALSE;
-    foreach ($lines as $nr => $line) {
+    foreach ($lines as $line) {
       if (preg_match("/\*OpenGroup:*\s+\**$section\/*/", $line)) {
         $fsection = TRUE;
         $ret      .= $line;
@@ -127,7 +125,6 @@ class ppdManager
           $ret      .= $line;
           continue;
         }
-
 
         if (preg_match("/^\*OpenUI:*\s+\**$attribute\/*/", $line)) {
           $fattribute = TRUE;
