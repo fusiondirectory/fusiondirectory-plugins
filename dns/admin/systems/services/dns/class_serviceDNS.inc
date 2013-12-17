@@ -311,7 +311,7 @@ class serviceDNS extends goService
    */
   function RemoveZone($id, $force = FALSE)
   {
-    $zones = $this->getUsedZoneNames();
+    $zones = DNS::getUsedZoneNames();
 
     if (isset($this->Zones[$id]['InitialReverseZone'])) {
       $rev = DNS::FlipIp($this->Zones[$id]['InitialReverseZone']);
@@ -379,22 +379,6 @@ class serviceDNS extends goService
     }
   }
 
-
-  /* This funtion returns all used Zonenames
-   */
-  function getUsedZoneNames()
-  {
-    $ret  = array();
-    $ldap = $this->config->get_ldap_link();
-    $ldap->cd($this->config->current['BASE']);
-    $ldap->search("(&(objectClass=dNSZone)(!(relativeDomainName=@))(zoneName=*))", array("zoneName","relativeDomainName"));
-    while ($attr = $ldap->fetch()) {
-      $ret[$attr['zoneName'][0]][] = $attr['dn'];
-    }
-    return $ret;
-  }
-
-
   /* Remove dns service */
   function remove_from_parent()
   {
@@ -410,7 +394,6 @@ class serviceDNS extends goService
       return $bool;
     }
   }
-
 
   /* Save to LDAP */
   function save()
@@ -523,67 +506,12 @@ class serviceDNS extends goService
     $this->handle_post_events("modify");
   }
 
-
-  /* Directly save new status flag */
-  function setStatus($value)
-  {
-    if ($value == "none") {
-      return;
-    }
-    if (!$this->initially_was_account) {
-      return;
-    }
-    if (empty($this->StatusFlag)) {
-      return;
-    }
-    $ldap = $this->config->get_ldap_link();
-    $ldap->cd($this->dn);
-    $ldap->cat($this->dn, array("objectClass"));
-    if ($ldap->count()) {
-      $tmp = $ldap->fetch();
-      for ($i = 0; $i < $tmp['objectClass']['count']; $i++) {
-        $attrs['objectClass'][] = $tmp['objectClass'][$i];
-      }
-      $flag         = $this->StatusFlag;
-      $attrs[$flag] = $value;
-      $this->$flag  = $value;
-      $ldap->modify($attrs);
-      if (!$ldap->success()) {
-        msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_MOD, get_class()));
-      }
-      $this->action_hook();
-    }
-  }
-
-
   function getListEntry()
   {
     $fields             = goService::getListEntry();
     $fields['Message']  = _("DNS service");
     return $fields;
   }
-
-
-  /* Get updates for status flag */
-  function updateStatusState()
-  {
-    if (empty($this->StatusFlag)) {
-      return;
-    }
-
-    $attrs  = array();
-    $flag   = $this->StatusFlag;
-    $ldap   = $this->config->get_ldap_link();
-    $ldap->cd($this->cn);
-    $ldap->cat($this->dn, array($flag));
-    if ($ldap->count()) {
-      $attrs = $ldap->fetch();
-    }
-    if (isset($attrs[$flag][0])) {
-      $this->$flag = $attrs[$flag][0];
-    }
-  }
-
 
   /* Return plugin informations for acl handling */
   static function plInfo()

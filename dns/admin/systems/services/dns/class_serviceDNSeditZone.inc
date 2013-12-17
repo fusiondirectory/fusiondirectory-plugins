@@ -131,7 +131,7 @@ class servdnseditZone extends plugin
       }
 
       /* Check if this used, in this case disable forward and reverse configuration */
-      $tmp = $this->getUsedZoneNames();
+      $tmp = DNS::getUsedZoneNames();
       $this->Zone_is_used = FALSE;
       if (isset($tmp[DNS::FlipIp($this->InitialReverseZone).DNS::getInAddrArpa()])) {
         $this->Zone_is_used = TRUE;
@@ -332,7 +332,7 @@ class servdnseditZone extends plugin
     $message = plugin::check();
 
     /* Check if zoneName is already in use */
-    $usedZones = $this->getUsedZoneNames();
+    $usedZones = DNS::getUsedZoneNames();
     if ($this->OldZoneName == "" && !empty($this->zoneName)) {
       $tmp = trim($this->zoneName, ".").".";
       if (isset($usedZones[$tmp])) {
@@ -430,22 +430,6 @@ class servdnseditZone extends plugin
 
     return $message;
   }
-
-
-  /* This funtion returns all used Zonenames
-   */
-  function getUsedZoneNames()
-  {
-    $ret = array();
-    $ldap = $this->config->get_ldap_link();
-    $ldap->cd($this->config->current['BASE']);
-    $ldap->search("(&(objectClass=dNSZone)(!(relativeDomainName=@))(zoneName=*))", array("zoneName","relativeDomainName"));
-    while ($attr = $ldap->fetch()) {
-      $ret[$attr['zoneName'][0]][] = $attr['dn'];
-    }
-    return $ret;
-  }
-
 
   /* Save to LDAP */
   function save()
