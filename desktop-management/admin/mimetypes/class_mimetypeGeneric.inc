@@ -1,5 +1,4 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
@@ -74,7 +73,7 @@ class mimetype extends plugin
   var $orig_dn    = "";
   var $orig_base  = "";
 
-  function mimetype(&$config,$dn= NULL)
+  function __construct(&$config, $dn = NULL)
   {
     parent::__construct($config, $dn);
 
@@ -167,6 +166,10 @@ class mimetype extends plugin
     $this->orig_base = $this->base;
   }
 
+  public function compute_dn()
+  {
+    return 'cn='.$this->cn.','.get_ou('mimetypeRDN').$this->base;
+  }
 
   function execute()
   {
@@ -665,30 +668,31 @@ class mimetype extends plugin
   static function plInfo()
   {
     return array(
-      "plShortName"   => _("Generic"),
-      "plDescription" => _("Mime type generic"),
-      "plSelfModify"  => FALSE,
-      "plCategory"    => array("mimetypes" => array("description"  => _("Mime types"),
-                                                    "objectClass"  => "gotoMimeType")),
-      "plObjectType"  => array("mimetype" => array(
-        "aclCategory" => "mimetypes",
-        "name"        => _("Mime type"),
-        "filter"      => "objectClass=gotoMimeType")
-      ),
+      'plShortName'   => _('Generic'),
+      'plDescription' => _('Mime type generic'),
+      'plSelfModify'  => FALSE,
+      'plCategory'    => array('mimetypes' => array('description'  => _('Mime types'),
+                                                    'objectClass'  => 'gotoMimeType')),
+      'plObjectType'  => array('mimetype' => array(
+        'aclCategory' => 'mimetypes',
+        'name'        => _('Mime type'),
+        'filter'      => 'objectClass=gotoMimeType',
+        'ou'          => get_ou('mimetypeRDN'),
+        'icon'        => 'plugins/desktop-management/images/iconMiniMimetypes.png',
+      )),
 
-      "plProvidedAcls"  => array(
-        "cn"                          => _("Name"),
-        "gotoMimeGroup"               => _("Mime group"),
-        "description"                 => _("Description"),
-        "base"                        => _("Base"),
-        "gotoMimeApplication"         => _("Application"),
-        "gotoMimeLeftClickAction"     => _("Left click action"),
-        "gotoMimeIcon"                => _("Icon"),
-        "gotoMimeFilePattern"         => _("File patterns"),
-        "gotoMimeEmbeddedApplication" => _("Embedded applications")
+      'plProvidedAcls'  => array(
+        'cn'                          => _('Name'),
+        'gotoMimeGroup'               => _('Mime group'),
+        'description'                 => _('Description'),
+        'base'                        => _('Base'),
+        'gotoMimeApplication'         => _('Application'),
+        'gotoMimeLeftClickAction'     => _('Left click action'),
+        'gotoMimeIcon'                => _('Icon'),
+        'gotoMimeFilePattern'         => _('File patterns'),
+        'gotoMimeEmbeddedApplication' => _('Embedded applications')
       )
     );
-
   }
 
   function PrepareForCopyPaste($source)

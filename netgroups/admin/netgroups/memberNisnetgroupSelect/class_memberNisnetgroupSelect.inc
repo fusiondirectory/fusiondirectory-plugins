@@ -1,10 +1,8 @@
 <?php
-
 /*
  * This code is part of FusionDirectory (http://www.fusiondirectory.org)
  * and  compatible with GOsa 2.6 (http://www.gosa-project.org)
- * Copyright (C) 2011 Alejandro Escanero Blanco (aescanero@gmail.com)
- * Copyright (C) 2011-2013  FusionDirectory
+ * Copyright (C) 2013  FusionDirectory
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,29 +19,8 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
  */
 
-class memberNisnetgroupSelect extends management {
-
-  protected $skipFooter = TRUE;
-  protected $skipHeader = TRUE;
-  private $myFilter;
-  private $myHeadpage;
-
-  function __construct($config, $ui) {
-    $this->config = $config;
-    $this->ui = $ui;
-
-    $this->storagePoints = array(get_ou("netgroupRDN"));
-
-    $myFilter = new filter(get_template_path("memberNisnetgroup-filter.xml", true, dirname(__FILE__)));
-    $myFilter->setObjectStorage($this->storagePoints);
-    $this->setFilter($myFilter);
-
-    // Build headpage
-    $myHeadpage = new listing(get_template_path("memberNisnetgroup-list.xml", true, dirname(__FILE__)));
-    $myHeadpage->setFilter($myFilter);
-    parent::__construct($config, $ui, "memberNisnetgroup", $myHeadpage);
-  }
-
+class memberNisnetgroupSelect extends simpleSelectManagement
+{
+  protected $objectTypes = array('netgroup');
 }
-
 ?>

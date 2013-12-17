@@ -70,8 +70,10 @@ class application extends simplePlugin
       'plDescription' => _('Application generic'),
       'plSelfModify'  => FALSE,
       'plObjectType'  => array('application' => array(
-        'name'  => _('Application'),
-        'filter'  => 'objectClass=gosaApplication'
+        'name'    => _('Application'),
+        'filter'  => 'objectClass=gosaApplication',
+        'ou'      => get_ou('applicationRDN'),
+        'icon'    => 'plugins/desktop-management/images/iconMimiApplications.png',
       )),
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
@@ -189,6 +191,11 @@ class application extends simplePlugin
     }
   }
 
+  public function compute_dn()
+  {
+    return 'cn='.$this->attributesAccess['cn']->getValue().','.get_ou('applicationRDN').$this->base;
+  }
+
   function generateTemplate()
   {
     if (!isset($this->parent->by_object['applicationParameters'])) {
@@ -209,23 +216,22 @@ class application extends simplePlugin
       $str .= "# This plugin handles no environment variables.\n";
     }
 
-    foreach($names as $index => $name){
-
+    foreach ($names as $index => $name) {
       // Fix length
-      for($i = strlen($name) ; $i < 30 ; $i++){
-        $name= $name." ";
+      for ($i = strlen($name); $i < 30; $i++) {
+        $name = $name." ";
       }
-      if((isset($values[$index]))&&(!empty($values[$index]))){
-        $str.= "# ".$name."\t(e.g. '".$values[$index]."')\n";
-      }else{
-        $str.= "# ".$name."\t("._("no example").")\n";
+      if ((isset($values[$index])) && (!empty($values[$index]))) {
+        $str .= "# ".$name."\t(e.g. '".$values[$index]."')\n";
+      } else {
+        $str .= "# ".$name."\t("._("no example").")\n";
       }
     }
     $str .= "#\n".
       "# Don't remove the following tag, it is used for header update.\n".
       "### END HEADER ###";
 
-    return($str);
+    return $str;
   }
 
   function remove_from_parent()
@@ -236,28 +242,28 @@ class application extends simplePlugin
 
     if ($this->acl_is_removeable()) {
       /* Parse release out of object dn */
-      $release = preg_replace("/".preg_quote(get_ou('applicationRDN').$this->base, '/')."$/i","",$this->dn);
-      $release = preg_replace("/^cn=[^,]+,/","",$release);
+      $release = preg_replace("/".preg_quote(get_ou('applicationRDN').$this->base, '/')."$/i", "", $this->dn);
+      $release = preg_replace("/^cn=[^,]+,/", "", $release);
 
       /* Get a list of all groups
        */
       $groups = array();
-      $ldap= $this->config->get_ldap_link();
+      $ldap   = $this->config->get_ldap_link();
       $ldap->cd($this->config->current['BASE']);
-      $ldap->search("(objectClass=posixGroup)",array("dn"));
-      while($attrs = $ldap->fetch()){
+      $ldap->search("(objectClass=posixGroup)", array("dn"));
+      while ($attrs = $ldap->fetch()) {
         $groups[$attrs['dn']] = array();
       }
 
       /* Check if there are groups, useing this application
        */
       $found = array();
-      foreach($groups as $group => $data){
+      foreach ($groups as $group => $data) {
         $ldap->cd($release.$group);
-        $ldap->search("(objectClass=gotoMenuEntry)",array("dn"));
-        while($attrs = $ldap->fetch()){
-          $info = preg_replace("/".preg_quote($release.$group, '/')."$/","",$attrs['dn']);
-          if(preg_match("/^cn=".$this->cn."/",$info) && !preg_match("/ou=[^,]+,/",$info)){
+        $ldap->search("(objectClass=gotoMenuEntry)", array("dn"));
+        while ($attrs = $ldap->fetch()) {
+          $info = preg_replace("/".preg_quote($release.$group, '/')."$/", "", $attrs['dn']);
+          if (preg_match("/^cn=".$this->cn."/", $info) && !preg_match("/ou=[^,]+,/", $info)) {
             $found[] = $attrs['dn'];
           }
         }
@@ -266,9 +272,9 @@ class application extends simplePlugin
       /* Create an error message an skip remove, if
           this application is still in use.
        */
-      if(count($found)){
+      if (count($found)) {
         msg_dialog::display(_("Error"), sprintf(_("Cannot remove application - it is still in use by these objects: %s"), "<br>".msgPool::buildList($found)), ERROR_DIALOG);
-        return(FALSE);
+        return FALSE;
       }
 
       parent::remove_from_parent();
@@ -276,11 +282,11 @@ class application extends simplePlugin
       /* Delete references to object groups */
       $ldap->cd ($this->config->current['BASE']);
       $ldap->search ("(&(objectClass=gosaGroupOfNames)(member=".LDAP::prepare4filter($this->dn)."))", array("cn"));
-      while ($ldap->fetch()){
-        $og= new ogroup($this->config, $ldap->getDN());
+      while ($ldap->fetch()) {
+        $og = new ogroup($this->config, $ldap->getDN());
         unset($og->member[$this->dn]);
-        $og->save ();
-        if (!$ldap->success()){
+        $og->save();
+        if (!$ldap->success()) {
           msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()), ERROR_DIALOG);
         }
       }

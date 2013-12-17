@@ -34,7 +34,6 @@ class CompositeScriptAliasAttribute extends CompositeAttribute
 
 class serviceApacheVhostEdit extends simplePlugin
 {
-
   var $displayHeader  = FALSE;
   var $mainTab        = TRUE;
   var $objectclasses  = array("apacheConfig");
@@ -50,8 +49,8 @@ class serviceApacheVhostEdit extends simplePlugin
       'plShortName'   => _('Apache2'),
       'plDescription' => _('This Plugin is for Apache server'),
       'plObjectType'  => array('apacheVhost' => array(
-        'name' => _('Apache Vhost'),
-        'filter' => 'objectClass=apacheConfig',
+        'name'        => _('Apache Vhost'),
+        'filter'      => 'objectClass=apacheConfig',
         'aclCategory' => 'server'
       )),
 
