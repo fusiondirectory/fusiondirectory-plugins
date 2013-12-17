@@ -797,12 +797,9 @@ class serviceDHCP extends goService
     );
   }
 
-
   function take_over_service()
   {
-
   }
-
 
   function get_list_of_dhcp_servers()
   {
@@ -825,13 +822,11 @@ class serviceDHCP extends goService
     return($ret);
   }
 
-
   function getListEntry()
   {
-    $fields               = goService::getListEntry();
-    $fields['Message']    = _("DHCP service");
-    #$fields['AllowEdit']  = true;
-    return($fields);
+    $fields             = goService::getListEntry();
+    $fields['Message']  = _("DHCP service");
+    return $fields;
   }
 }
 ?>

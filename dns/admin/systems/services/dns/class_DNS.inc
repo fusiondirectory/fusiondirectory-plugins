@@ -62,7 +62,6 @@ class DNS
     }
   }
 
-
   /* This function is used to flip the ip address, for example
      12.3.45  ->  45.3.12
      Because some entries (like zones) are store like that 45.3.12.in-addr.arpa.
@@ -78,9 +77,7 @@ class DNS
     return preg_replace("/.$/", "", $new);
   }
 
-
-  /* This static function returns the zones specified for given host
-   */
+  /* This static function returns the zones specified for given host */
   static function getDNSZoneEntries($config, $HostDn, $silent = FALSE)
   {
     $ldap = $config->get_ldap_link();
@@ -183,7 +180,6 @@ class DNS
     }
     return $Zones;
   }
-
 
   /* This static function compares two dns zone objects and returns an
    *  array with following indexes
@@ -323,7 +319,6 @@ class DNS
     return $ret;
   }
 
-
   /* This static function returns the dns-host eintries for given
    *  name.
    */
@@ -423,8 +418,6 @@ class DNS
     }
     return $ret;
   }
-
-
 
   /* This static function compares two dns settings and returns an
    *  array with following indexes
@@ -546,8 +539,7 @@ class DNS
     $baseDn       = "relativeDomainName=".$newName.",".$zoneDn;
     $add[$baseDn] = $baseObj;
 
-    /* Add base obejct which contains all std records
-     */
+    /* Add base obejct which contains all std records */
     $stdDn        = "relativeDomainName=".$newName.",".$baseDn;
     $add[$stdDn]  = $baseObj;
 
@@ -650,7 +642,6 @@ class DNS
     return $ret;
   }
 
-
   /* returns all available zones
    *  array[reverseName] = zoneName;
    */
@@ -686,7 +677,6 @@ class DNS
     }
     return $runtime_cache['DNS']['getAvailableZones'];
   }
-
 
   static function touchDNSZone($config, $zoneName)
   {
@@ -756,6 +746,20 @@ class DNS
   {
     global $config;
     return ($config->get_cfg_value('DNSFinalDot', 'TRUE') == 'TRUE');
+  }
+
+  /* This funtion returns all used Zonenames*/
+  static function getUsedZoneNames()
+  {
+    global $config;
+    $ret  = array();
+    $ldap = $config->get_ldap_link();
+    $ldap->cd($config->current['BASE']);
+    $ldap->search("(&(objectClass=dNSZone)(!(relativeDomainName=@))(zoneName=*))", array("zoneName","relativeDomainName"));
+    while ($attr = $ldap->fetch()) {
+      $ret[$attr['zoneName'][0]][] = $attr['dn'];
+    }
+    return $ret;
   }
 }
 ?>
