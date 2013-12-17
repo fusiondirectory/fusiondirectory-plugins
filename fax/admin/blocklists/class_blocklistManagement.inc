@@ -1,9 +1,7 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2013  FusionDirectory
+  Copyright (C) 2013  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,46 +18,22 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class blocklist extends management
+class blocklist extends simpleManagement
 {
-  // Tab definition
-  protected $tabClass     = "faxblocktabs";
-  protected $tabType      = "FAXBLOCKTABS";
-  protected $aclCategory  = "faxBlock";
-  protected $aclPlugin    = "blocklistGeneric";
-  protected $objectName   = "blocklist";
+  protected $objectTypes  = array('faxBlock');
 
-  /* Return plugin informations for acl handling */
   static function plInfo()
   {
     return array(
-      "plShortName"   => _("Fax Blocklists"),
-      "plDescription" => _("Fax Blocklists management"),
-      "plIcon"        => "plugins/fax/images/iconBlocklists.png",
-      "plSection"     => "admin",
-      "plPriority"    => 12,
-      "plManages"     => array("faxBlock"),
+      'plShortName'   => _('Fax Blocklists'),
+      'plDescription' => _('Fax Blocklists management'),
+      'plIcon'        => 'plugins/fax/images/iconBlocklists.png',
+      'plSection'     => 'admin',
+      'plPriority'    => 12,
+      'plManages'     => array('faxBlock'),
 
-      "plProvidedAcls" => array()
+      'plProvidedAcls' => array()
     );
-  }
-
-  function __construct($config, $ui)
-  {
-    $this->config = $config;
-    $this->ui     = $ui;
-
-    $this->storagePoints = array(get_ou("faxBlocklistRDN"));
-
-    $filter = new filter(get_template_path("blocklist-filter.xml", TRUE));
-    $filter->setObjectStorage($this->storagePoints);
-    $this->setFilter($filter);
-
-    // Build headpage
-    $headpage = new listing(get_template_path("blocklist-list.xml", TRUE));
-    $headpage->setFilter($filter);
-
-    parent::__construct($config, $ui, "blocklists", $headpage);
   }
 }
 ?>

@@ -30,8 +30,6 @@ class mobilePhoneGeneric extends simplePlugin
 
   var $preInitAttributes = array('networkSettings');
 
-
-  /* Return plugin informations for acl handling */
   static function plInfo()
   {
     return array(

@@ -1,9 +1,7 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2013  FusionDirectory
+  Copyright (C) 2013  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,56 +18,23 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class mimetypeManagement extends management
+class mimetypeManagement extends simpleManagement
 {
-  var $mime_release = ""; // The currently selected release while in release management mode!
+  protected $objectTypes  = array('mimetype');
 
-  // Tab definition
-  protected $tabClass     = "mimetabs";
-  protected $tabType      = "MIMETYPETABS";
-  protected $aclCategory  = "mimetypes";
-  protected $aclPlugin    = "mimetype";
-  protected $objectName   = "mimetype";
-
-  /* Return plugin informations for acl handling */
   static function plInfo()
   {
     return array(
-      "plShortName"   => _("Mime types"),
-      "plDescription" => _("Mime type management"),
-      "plIcon"        => "plugins/desktop-management/images/iconMimetypes.png",
-      "plSection"     => "admin",
-      "plPriority"    => 22,
-      "plCategory"    => array("mimetypes"),
-      "plManages"     => array("mimetype"),
+      'plShortName'   => _('Mime types'),
+      'plDescription' => _('Mime type management'),
+      'plIcon'        => 'plugins/desktop-management/images/iconMimetypes.png',
+      'plSection'     => 'admin',
+      'plPriority'    => 22,
+      'plCategory'    => array('mimetypes'),
+      'plManages'     => array('mimetype'),
 
-      "plProvidedAcls" => array()
+      'plProvidedAcls' => array()
     );
-  }
-
-  function __construct($config,$ui)
-  {
-    $this->config = $config;
-    $this->ui = $ui;
-
-    $filter_xml = "mimetype-filter.xml";
-    $list_xml   = "mimetype-list.xml";
-    $this->storagePoints= array(get_ou("mimetypeRDN"));
-
-    // Build filter
-    if (session::global_is_set(get_class($this)."_filter")) {
-      $filter = session::global_get(get_class($this)."_filter");
-    } else {
-      $filter = new filter(get_template_path($filter_xml, TRUE));
-      $filter->setObjectStorage($this->storagePoints);
-    }
-    $this->setFilter($filter);
-
-    // Build headpage
-    $headpage = new listing(get_template_path($list_xml, TRUE));
-    $headpage->setFilter($filter);
-
-    parent::__construct($config, $ui, "mimetypes", $headpage);
   }
 }
 ?>

@@ -131,7 +131,25 @@ class blocklistGeneric extends simplePlugin
   var $displayHeader  = FALSE;
   var $mainTab        = TRUE;
 
-    /*!
+  static function plInfo()
+  {
+    return array(
+      'plShortName'   => _('Fax blocklists'),
+      'plDescription' => _('The part of the fax plugin managing blacklist'),
+      'plObjectType'  => array(
+        'faxBlock' => array(
+          'name'    => _('Fax blocklists'),
+          'filter'  => '(|(objectClass=goFaxRBlock)(objectClass=goFaxSBlock))',
+          'ou'      => get_ou('faxBlocklistRDN'),
+          'icon'    => 'plugins/fax/images/iconMiniBlocklists.png',
+        ),
+      ),
+
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+    );
+  }
+
+  /*!
    *  \brief The main function : information about attributes
    */
   static function getAttributesInfo ()
@@ -157,7 +175,12 @@ class blocklistGeneric extends simplePlugin
   function __construct(&$config, $dn = NULL, $object = NULL)
   {
     parent::__construct($config, $dn, $object);
-    $this->attributesInfo['section1']['attrs']['cn']->setUnique(TRUE);
+    $this->attributesAccess['cn']->setUnique(TRUE);
+  }
+
+  public function compute_dn()
+  {
+    return 'cn='.$this->attributesAccess['cn']->getValue().','.get_ou('faxBlocklistRDN').$this->base;
   }
 
   protected function ldap_save ($cleanup = TRUE)
@@ -178,21 +201,5 @@ class blocklistGeneric extends simplePlugin
     /* We will not be able to rename edited blocklists */
     $this->readonly = TRUE;
   }
-
-  /* Return plugin informations for acl handling */
-  static function plInfo()
-  {
-    return array(
-      'plShortName'     => _('Fax blocklists'),
-      'plDescription'   => _('The part of the fax plugin managing blacklist'),
-      'plSelfModify'    => FALSE,
-      'plObjectType'    => array('faxBlock' => array(
-        'name'        => _('Fax blocklists'),
-        'filter'      => '(|(objectClass=goFaxRBlock)(objectClass=goFaxSBlock))'
-      )),
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
-    );
-  }
-
 }
 ?>

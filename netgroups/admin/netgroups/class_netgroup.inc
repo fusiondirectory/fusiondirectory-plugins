@@ -111,10 +111,11 @@ class netgroup extends simplePlugin
   {
     parent::__construct($config, $dn, $object);
 
+    $this->attributesAccess['cn']->setUnique(TRUE);
     $this->attributesAccess['nisNetgroupTriple']->setVisible(FALSE);
     $this->attributesAccess['memberUsers']->setInLdap(FALSE);
     $this->attributesAccess['memberSystems']->setInLdap(FALSE);
-    $triples = $this->attributesAccess['nisNetgroupTriple']->getArrayValue();
+    $triples      = $this->attributesAccess['nisNetgroupTriple']->getValue();
     $usersfilter  = '(|';
     $cns          = array();
     foreach ($triples as $triple) {

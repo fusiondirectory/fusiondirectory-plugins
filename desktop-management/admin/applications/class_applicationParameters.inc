@@ -23,13 +23,13 @@
 class applicationParameters extends plugin
 {
   /* Parameters  */
-  var $option_name= array();
-  var $option_value= array();
+  var $option_name  = array();
+  var $option_value = array();
 
   /* attribute list for save action */
-  var $attributes= array("gosaApplicationParameter");
+  var $attributes = array("gosaApplicationParameter");
 
-  function applicationParameters (&$config, $dn= NULL, $parent= NULL)
+  function __construct (&$config, $dn = NULL, $parent = NULL)
   {
     parent::__construct($config, $dn, $parent);
 
@@ -111,8 +111,6 @@ class applicationParameters extends plugin
       $this->option_value[]= "";
     }
 
-
-
     $acl = $this->getacl("gosaApplicationParameter")  ;
     $table= "<table><tr><td>"._("Variable")."</td><td>"._("Default value")."</td><td></td></tr>";
     if (count ($this->option_name)){
@@ -158,7 +156,7 @@ class applicationParameters extends plugin
     $smarty->assign("table", $table);
     $display.= $smarty->fetch(get_template_path('parameters.tpl', TRUE));
     $this->parent->by_object['application']->generateTemplate();
-    return ($display);
+    return $display;
   }
 
   function remove_from_parent()
@@ -183,7 +181,6 @@ class applicationParameters extends plugin
     $this->handle_post_events('remove');
   }
 
-
   /* Save data to object */
   function save_object()
   {
@@ -197,7 +194,6 @@ class applicationParameters extends plugin
       }
     }
   }
-
 
   /* Check values */
   function check()
@@ -219,7 +215,6 @@ class applicationParameters extends plugin
 
     return $message;
   }
-
 
   /* Save to LDAP */
   function save()
@@ -251,7 +246,6 @@ class applicationParameters extends plugin
     $this->handle_post_events('modify');
   }
 
-
   function PrepareForCopyPaste($source)
   {
     plugin::PrepareForCopyPaste($source);
@@ -264,7 +258,6 @@ class applicationParameters extends plugin
     $this->is_account = TRUE;
   }
 
-
   /* Return plugin informations for acl handling */
   static function plInfo()
   {
@@ -275,11 +268,9 @@ class applicationParameters extends plugin
       "plObjectType"  => array("application"),
 
       "plProvidedAcls"=> array(
-        "gosaApplicationParameter"      => _("Application parameter settings")
+        "gosaApplicationParameter" => _("Application parameter settings")
       )
     );
   }
-
-
 }
 ?>
