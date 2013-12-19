@@ -758,7 +758,7 @@ class addressbook extends plugin
   function load()
   {
     /* Load base attributes */
-    plugin::plugin ($this->config, $this->dn);
+    parent::__construct ($this->config, $this->dn);
     $this->view_logged  = FALSE;
     $this->storage_base = preg_replace('/^[^,]+,/', '', preg_replace('/'.$this->abobjectclass.',/', '', $this->dn));
   }

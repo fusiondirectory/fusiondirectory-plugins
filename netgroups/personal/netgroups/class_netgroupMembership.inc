@@ -124,7 +124,8 @@ class netgroupMembership extends simplePlugin {
     }
   }
 
-  function is_this_account($attrs) {
+  function is_this_account($attrs)
+  {
     $class    = get_class($this);
     $id_attr  = $class::$id_attr;
     if (isset($attrs[$id_attr])) {
