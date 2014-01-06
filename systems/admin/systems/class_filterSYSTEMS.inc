@@ -169,7 +169,7 @@ class filterSYSTEMS
         if ($flags & GL_NO_ACL_CHECK) {
           $result[] = $attrs;
         } else {
-          $obj = $parent->headpage->getObjectTypeInfos($attrs);
+          $obj = $parent->headpage->getObjectTypeInfos($dn, $attrs);
 
           if (isset($obj['category'])) {
             $o = $obj['category']."/".$obj['class'];
