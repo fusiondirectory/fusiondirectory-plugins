@@ -432,7 +432,7 @@ class macroParameter extends plugin
       $this->handle_post_events("add");
     }
     if (!$ldap->success()){
-      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()));
+      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()), LDAP_ERROR);
     }
   }
 

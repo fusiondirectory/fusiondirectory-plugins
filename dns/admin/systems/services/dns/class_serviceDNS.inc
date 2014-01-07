@@ -462,7 +462,7 @@ class serviceDNS extends goService
         $ldap->modify($attrs);
         new log("modify", "unknown/".get_class($this), $this->dn, array_keys($this->attrs), $ldap->get_error());
         if (!$ldap->success()) {
-          msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_MOD, get_class()));
+          msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_MOD, get_class()), LDAP_ERROR);
         }
       }
     }
@@ -476,7 +476,7 @@ class serviceDNS extends goService
       $ldap->rmdir_recursive($dn);
       new log("remove", "unknown/".get_class($this), $this->dn, array_keys($this->attrs), $ldap->get_error());
       if (!$ldap->success()) {
-        msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_DEL, get_class()));
+        msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_DEL, get_class()), LDAP_ERROR);
       }
     }
 
@@ -493,13 +493,13 @@ class serviceDNS extends goService
         $ldap->cd($dn);
         $ldap->modify ($attrs);
         if (!$ldap->success()) {
-          msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_MOD, get_class()));
+          msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_MOD, get_class()), LDAP_ERROR);
         }
       } else {
         $ldap->cd($dn);
         $ldap->add($attrs);
         if (!$ldap->success()) {
-          msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_ADD, get_class()));
+          msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_ADD, get_class()), LDAP_ERROR);
         }
       }
     }

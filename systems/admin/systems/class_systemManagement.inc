@@ -818,7 +818,7 @@ class systemManagement extends management
         $ldap->modify($new_attrs);
         if (!$ldap->success()) {
           msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn,
-                LDAP_MOD, "activate_new_device($dn)"));
+                LDAP_MOD, "activate_new_device($dn)"), LDAP_ERROR);
           @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,
               $dn, "<b>Failed!</b>");
         } else {
@@ -1111,7 +1111,7 @@ class systemManagement extends management
             "sendEvents"  => FALSE,
             "aclCategory" => "mobilePhone"),
         );
-        
+
     // Now map some special types
     $tabs['FAKE_OC_NewWorkstation']       = &$tabs['gotoWorkstation'];
     $tabs['FAKE_OC_NewTerminal']          = &$tabs['gotoTerminal'];

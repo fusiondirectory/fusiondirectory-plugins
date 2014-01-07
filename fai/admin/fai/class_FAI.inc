@@ -284,7 +284,7 @@ class FAI
                 $ldap->modify($attrs);
 
                 if (!$ldap->success()){
-                  msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_MOD, get_class()));
+                  msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_MOD, get_class()), LDAP_ERROR);
                 }
               }
             }
@@ -676,7 +676,7 @@ class FAI
       $ldap->add($attrs);
     }
     if (!$ldap->success()){
-      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $dn, 0, get_class()));
+      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $dn, 0, get_class()), LDAP_ERROR);
     }
   }
 

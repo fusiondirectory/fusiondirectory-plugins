@@ -465,7 +465,7 @@ class networkSettings extends plugin
         $ldap->rmdir_recursive($dn);
         new log("remove", "unknown/".get_class($this), $dn);
         if (!$ldap->success()) {
-          msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_DEL, get_class()));
+          msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_DEL, get_class()), LDAP_ERROR);
         }
       }
     }
@@ -478,7 +478,7 @@ class networkSettings extends plugin
     if ($this->dhcp_is_Account) {
       $ldap->rmdir_recursive($this->dhcpHostEntry['dn']);
       if (!$ldap->success()) {
-        msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dhcpHostEntry['dn'], LDAP_DEL, get_class()));
+        msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dhcpHostEntry['dn'], LDAP_DEL, get_class()), LDAP_ERROR);
       }
     }
   }
@@ -744,7 +744,7 @@ class networkSettings extends plugin
     /* Display errors
      */
     if (!$ldap->success()) {
-      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()));
+      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()), LDAP_ERROR);
     }
 
     /* DHCP HANDLING */
@@ -803,7 +803,7 @@ class networkSettings extends plugin
       if ($this->initial_dhcp_is_Account && !$this->dhcp_is_Account) {
         $ldap->rmdir_recursive($this->dhcpHostEntry['dn']);
         if (!$ldap->success()) {
-          msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dhcpHostEntry['dn'], LDAP_DEL, get_class()));
+          msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dhcpHostEntry['dn'], LDAP_DEL, get_class()), LDAP_ERROR);
         }
 
         $tmp = new serviceDHCP($this->config, $this->dhcpParentNode);
@@ -822,7 +822,7 @@ class networkSettings extends plugin
         $tmp->handle_post_events("add");
 
         if (!$ldap->success()) {
-          msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), "cn=".$this->cn.",".$this->dhcpParentNode, LDAP_ADD, get_class()));
+          msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), "cn=".$this->cn.",".$this->dhcpParentNode, LDAP_ADD, get_class()), LDAP_ERROR);
         }
       }
 
@@ -839,7 +839,7 @@ class networkSettings extends plugin
           $ldap->cd("cn=".$this->cn.",".$this->dhcpParentNode);
           $res = $ldap->add($attrs);
           if (!$ldap->success()) {
-            msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), "cn=".$this->cn.",".$this->dhcpParentNode, LDAP_ADD, get_class()));
+            msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), "cn=".$this->cn.",".$this->dhcpParentNode, LDAP_ADD, get_class()), LDAP_ERROR);
           }
 
           $tmp = new serviceDHCP($this->config, $this->dhcpParentNode);
@@ -848,7 +848,7 @@ class networkSettings extends plugin
           if ($res) {
             $ldap->rmdir_recursive($this->dhcpHostEntry['dn']);
             if (!$ldap->success()) {
-              msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dhcpHostEntry['dn'], LDAP_DEL, get_class()));
+              msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dhcpHostEntry['dn'], LDAP_DEL, get_class()), LDAP_ERROR);
             }
           }
         }
@@ -866,7 +866,7 @@ class networkSettings extends plugin
           $tmp->handle_post_events("modify");
 
           if (!$ldap->success()) {
-            msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dhcpHostEntry['dn'], LDAP_MOD, get_class()));
+            msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dhcpHostEntry['dn'], LDAP_MOD, get_class()), LDAP_ERROR);
           }
         }
       }
@@ -938,7 +938,7 @@ class networkSettings extends plugin
 
       /* Display errors */
       if (!$ldap->success()) {
-        msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $dn, 0, get_class()));
+        msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $dn, 0, get_class()), LDAP_ERROR);
       }
 
       $tmp2 = new serviceDNS($this->config, $this->dn);

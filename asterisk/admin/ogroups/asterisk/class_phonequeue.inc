@@ -799,7 +799,7 @@ class phonequeue extends plugin
     }
 
     if (!$ldap->success()){
-      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()));
+      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()), LDAP_ERROR);
     }
 
     /* Optionally execute a command after we're done */
@@ -854,7 +854,7 @@ class phonequeue extends plugin
     $ldap->modify ($this->attrs);
     new log("remove","ogroup/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
     if (!$ldap->success()){
-      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()));
+      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()), LDAP_ERROR);
     }
   }
 

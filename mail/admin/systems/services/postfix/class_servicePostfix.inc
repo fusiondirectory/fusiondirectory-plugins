@@ -90,7 +90,7 @@ class SubNodesAttribute extends OrderedArrayAttribute
       $ldap->cd($dn);
       $ldap->add($attrs);
       if (!$ldap->success()) {
-        msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_ADD, get_class()));
+        msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_ADD, get_class()), LDAP_ERROR);
       }
     }
   }

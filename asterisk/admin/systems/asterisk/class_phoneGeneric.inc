@@ -274,7 +274,7 @@ class phoneGeneric extends plugin
       new log("remove","phone/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
 
       if (!$ldap->success()){
-        msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()));
+        msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()), LDAP_ERROR);
       }
       $this->handle_post_events("remove",array("macAddress" => $this->netConfigDNS->macAddress,"ipHostNumber" => $this->netConfigDNS->ipHostNumber));
 
@@ -429,7 +429,7 @@ class phoneGeneric extends plugin
       $ldap->cd($this->dn);
       $ldap->add($this->attrs);
       if (!$ldap->success()){
-        msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()));
+        msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()), LDAP_ERROR);
       }
       new log("create","phone/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
       $this->handle_post_events("add",array("macAddress" => $this->netConfigDNS->macAddress,"ipHostNumber" => $this->netConfigDNS->ipHostNumber));
@@ -443,7 +443,7 @@ class phoneGeneric extends plugin
       $ldap->modify ($this->attrs);
       new log("modify","phone/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
       if (!$ldap->success()){
-        msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()));
+        msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()), LDAP_ERROR);
       }
 
       // $user_phone_reload
@@ -460,7 +460,7 @@ class phoneGeneric extends plugin
     $this->netConfigDNS->cn = $this->cn;
     $this->netConfigDNS->save();
     if (!$ldap->success()){
-      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()));
+      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()), LDAP_ERROR);
     }
   }
 

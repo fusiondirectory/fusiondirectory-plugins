@@ -287,7 +287,7 @@ class application extends simplePlugin
         unset($og->member[$this->dn]);
         $og->save();
         if (!$ldap->success()) {
-          msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()), ERROR_DIALOG);
+          msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()), LDAP_ERROR);
         }
       }
     }
