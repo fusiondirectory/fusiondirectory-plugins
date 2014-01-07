@@ -698,7 +698,7 @@ class appgroup extends plugin
     foreach($a_remove as $remove){
       $ldap->rmdir_recursive($remove);
       if (!$ldap->success()){
-        msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_DEL, get_class()));
+        msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_DEL, get_class()), LDAP_ERROR);
       }
     }
     $this->_load_menu_structure();
@@ -1393,7 +1393,7 @@ class appgroup extends plugin
       if($ldap->count()){
         $ldap->rmdir_recursive($dn);
         if (!$ldap->success()){
-          msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_DEL, get_class()));
+          msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_DEL, get_class()), LDAP_ERROR);
         }
       }
     }
@@ -1406,7 +1406,7 @@ class appgroup extends plugin
       if(!$ldap->count()){
         $ldap->add($data);
         if (!$ldap->success()){
-          msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_ADD, get_class()));
+          msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_ADD, get_class()), LDAP_ERROR);
         }
       }
     }
@@ -1419,7 +1419,7 @@ class appgroup extends plugin
       if($ldap->count()){
         $ldap->modify($data);
         if (!$ldap->success()){
-          msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_MOD, get_class()));
+          msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_MOD, get_class()), LDAP_ERROR);
         }
       }
     }

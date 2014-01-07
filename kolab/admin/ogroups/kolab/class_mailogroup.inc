@@ -149,7 +149,7 @@ class mailogroup extends plugin
     }
 
     if (!$ldap->success()){
-      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_MOD, get_class()));
+      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_MOD, get_class()), LDAP_ERROR);
     }
 
     /* Optionally execute a command after we're done */
@@ -186,7 +186,7 @@ class mailogroup extends plugin
     new log("remove","ogroup/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
 
     if (!$ldap->success()){
-      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_MOD, get_class()));
+      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_MOD, get_class()), LDAP_ERROR);
     }
   }
 }

@@ -667,7 +667,7 @@ class printgeneric extends plugin
       new log("remove", "printer/".get_class($this), $this->dn, array_keys($this->attrs), $ldap->get_error());
 
       if (!$ldap->success()) {
-        msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_DEL, get_class()));
+        msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_DEL, get_class()), LDAP_ERROR);
       }
       $this->handle_post_events("remove", array("macAddress" => $this->netConfigDNS->macAddress,"ipHostNumber" => $this->netConfigDNS->ipHostNumber));
 
@@ -967,7 +967,7 @@ class printgeneric extends plugin
       new log("modify", "printer/".get_class($this), $this->dn, array_keys($this->attrs), $ldap->get_error());
     }
     if (!$ldap->success()) {
-      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()));
+      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()), LDAP_ERROR);
     }
 
     //if (preg_match("/printer/i",$this->BelongsTo)) {

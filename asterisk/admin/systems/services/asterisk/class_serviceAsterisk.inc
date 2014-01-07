@@ -118,7 +118,7 @@ class serviceAsterisk extends simpleService {
           $ldap->cd($dn);
           $ldap->modify(array("goFonHomeServer" => $this->dn));
           if (!$ldap->success()) {
-            msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_MOD, get_class()));
+            msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_MOD, get_class()), LDAP_ERROR);
           }
         }
       }

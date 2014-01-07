@@ -224,7 +224,7 @@ class addressbook extends plugin
         $ldap->rmdir ($this->dn);
         new log("remove","addressbook/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
         if (!$ldap->success()) {
-          msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_DEL, get_class()));
+          msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_DEL, get_class()), LDAP_ERROR);
         }
         new log("remove","addressbook/".get_class($this),$this->dn,array(),"Addressbook object'".$this->dn."' has been removed");
 
@@ -795,7 +795,7 @@ class addressbook extends plugin
     $this->cleanup();
     $ldap->$mode($this->attrs);
     if (!$ldap->success()) {
-      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_DEL, get_class()));
+      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_DEL, get_class()), LDAP_ERROR);
       return 1;
     }
 

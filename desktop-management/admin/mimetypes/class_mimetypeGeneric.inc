@@ -478,7 +478,7 @@ class mimetype extends plugin
       new log("create","mimetypes/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
     }
     if (!$ldap->success()){
-      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()));
+      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()), LDAP_ERROR);
     }
   }
 
@@ -490,7 +490,7 @@ class mimetype extends plugin
     $ldap = $this->config->get_ldap_link();
     $ldap->rmDir($this->dn);
     if (!$ldap->success()){
-      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_DEL, get_class()));
+      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_DEL, get_class()), LDAP_ERROR);
     }
     new log("remove","mimetypes/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
 
@@ -505,7 +505,7 @@ class mimetype extends plugin
       unset($og->member[$this->dn]);
       $og->save ();
       if (!$ldap->success()){
-        msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $og->dn, 0, get_class()));
+        msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $og->dn, 0, get_class()), LDAP_ERROR);
       }
     }
   }
