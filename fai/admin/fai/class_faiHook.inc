@@ -329,11 +329,11 @@ class faiHook extends faiPluginClass
 
       /* Check if this object is freezed, in this case hide the delete icon */
       if(preg_match("/^freeze/", $this->FAIstate)){
-        $act .= "<input type='image' src='images/lists/edit.png'      name='editscript_%s'    title='"._("Edit")."' alt='"._("Edit")."'>";
+        $act .= "<input type='image' src='geticon.php?context=actions&icon=document-edit&size=16'      name='editscript_%s'    title='"._("Edit")."' alt='"._("Edit")."'>";
       }else{
-        $act .= "<input type='image' src='images/lists/edit.png'      name='editscript_%s'    title='"._("Edit")."' alt='"._("Edit")."'>";
+        $act .= "<input type='image' src='geticon.php?context=actions&icon=document-edit&size=16'      name='editscript_%s'    title='"._("Edit")."' alt='"._("Edit")."'>";
         if(preg_match("/d/",$acl)){
-          $act .="<input type='image' src='images/lists/trash.png' name='deletescript_%s'  title='"._("Delete")."' alt='"._("Delete")."'>";
+          $act .="<input type='image' src='geticon.php?context=actions&icon=edit-delete&size=16' name='deletescript_%s'  title='"._("Delete")."' alt='"._("Delete")."'>";
         }
       }
 

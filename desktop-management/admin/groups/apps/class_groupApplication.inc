@@ -498,7 +498,7 @@ class appgroup extends plugin
     /* Append departments for current base */
     foreach($departments as $key => $app){
       $div->AddEntry(array(
-        array("html"=>"<img class='center' src='images/lists/folder.png' alt='"._("department")."'>&nbsp;".sprintf($linkopen,
+        array("html"=>"<img class='center' src='geticon.php?context=places&icon=folder&size=16' alt='"._("department")."'>&nbsp;".sprintf($linkopen,
             base64_encode($key),$app),
           "attach"=>"style='border:0px;'")
       ));

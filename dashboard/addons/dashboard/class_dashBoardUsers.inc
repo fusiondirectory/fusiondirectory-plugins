@@ -60,8 +60,8 @@ class dashboardUsers extends simplePlugin
         array('name' => 'samba',  'nb' => $nb_samba_accounts, 'img' => get_template_path("plugins/systems/images/select_winstation.png"))
       ),
       'nb_accounts' => $nb_accounts,
-      'user_img' => get_template_path("plugins/users/images/iconMini.png"),
-      'locked_accounts' => array('nb' => $nb_locked_accounts, 'img' => get_template_path("images/lists/locked.png")),
+      'user_img' => 'geticon.php?context=types&icon=user&size=16',
+      'locked_accounts' => array('nb' => $nb_locked_accounts, 'img' => "geticon.php?context=status&icon=object-locked&size=16"),
     );
   }
 

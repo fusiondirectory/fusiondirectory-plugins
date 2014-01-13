@@ -633,7 +633,7 @@ class sieveManagement extends plugin
       $field1 = array("string" => "",
                       "attach" => "style='width:20px;'");
       if($active){
-        $field1 = array("html" => "<img src='images/true.png' alt='"._("Active")."'
+        $field1 = array("html" => "<img src='geticon.php?context=status&icon=task-complete&size=16' alt='"._("Active")."'
                                       title='"._("This script is marked as active")."'>",
                         "attach" => "style='width:20px;'");
       }
@@ -642,7 +642,7 @@ class sieveManagement extends plugin
       $field4 = array("string" => _("Script length").":&nbsp;".strlen($script['SCRIPT']));
 
       if($this->parent->acl_is_writeable("sieveManagement")){
-        $del = "<input type='image' name='delscript_".$key."' src='images/lists/trash.png'
+        $del = "<input type='image' name='delscript_".$key."' src='geticon.php?context=actions&icon=edit-delete&size=16'
                   title='"._("Remove script")."'>";
       }else{
         $del = "<img src='images/empty.png' alt=' '>";
@@ -651,11 +651,11 @@ class sieveManagement extends plugin
       if($active || $script['IS_NEW'] || !$this->parent->acl_is_writeable("sieveManagement")){
         $activate = "<img src='images/empty.png' alt=' '>";
       }else{
-        $activate = "<input type='image' name='active_script_".$key."' src='images/true.png'
+        $activate = "<input type='image' name='active_script_".$key."' src='geticon.php?context=status&icon=task-complete&size=16'
                        title='"._("Activate script")."'>";
       }
 
-      $field6 = array("html" => $activate."<input type='image' name='editscript_".$key."' src='images/lists/edit.png'
+      $field6 = array("html" => $activate."<input type='image' name='editscript_".$key."' src='geticon.php?context=actions&icon=document-edit&size=16'
                         title='"._("Edit script")."'>".$del,
                       "attach" => "style='border-right:0px; width:70px;'");
       $List->AddEntry(array($field1,$field2,$field3,$field4,$field6));

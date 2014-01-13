@@ -41,7 +41,7 @@ class mobilePhoneGeneric extends simplePlugin
           'name'        => _('Mobile phone'),
           'description' => _('Mobile phone'),
           'filter'      => 'objectClass=fdMobilePhone',
-          'icon'        => 'plugins/systems/images/select_mobilephone.png',
+          'icon'        => 'geticon.php?context=devices&icon=mobile-phone&size=16',
           'ou'          => get_ou('mobilePhoneRDN'),
         )
       ),
@@ -106,7 +106,7 @@ class mobilePhoneGeneric extends simplePlugin
         'name'      => _('Network settings'),
         'attrs'     => array(new NetworkSettingsAttribute('cn', array('ipHost', 'ieee802Device'))),
         'template'  => get_template_path('network_section.tpl', TRUE, dirname(__FILE__)),
-        'icon'      => get_template_path('plugins/systems/images/network.png'),
+        'icon'      => 'geticon.php?context=categories&icon=applications-internet&size=16',
       ),
     );
   }

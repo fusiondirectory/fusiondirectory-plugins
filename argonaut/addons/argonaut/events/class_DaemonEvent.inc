@@ -255,7 +255,7 @@ class DaemonEvent
     foreach ($this->a_targets as $key => $target) {
       $divselectbox->AddEntry(array(
             array("string"  => $target),
-            array("html"  => "<input type='image' src='images/lists/trash.png' title='"._("Remove")."' name='del_target_".$key."'>",
+            array("html"  => "<input type='image' src='geticon.php?context=actions&icon=edit-delete&size=16' title='"._("Remove")."' name='del_target_".$key."'>",
               "attach"  => "style='width:20px; border-right:0px;'")
             ));
     }
@@ -406,15 +406,15 @@ class DaemonEvent
     return array(
       'System.halt' => array(
         'name'  => _('Switch off'),
-        'img'   => 'images/lists/off.png'
+        'img'   => 'geticon.php?context=actions&icon=system-shutdown&size=16'
       ),
       'Deployment.reboot' => array(
         'name'  => _('Reboot'),
-        'img'   => 'images/lists/reload.png'
+        'img'   => 'geticon.php?context=actions&icon=view-refresh&size=16'
       ),
       'Deployment.wake' => array(
-        'name'  => _('Wake up'),
-        'img'   => 'images/lists/on.png'
+        'name'  => _('Wake up'),w
+        'img'   => 'geticon.php?context=status&icon=task-running&size=16'
       ),
       'Deployment.update' => array(
         'name'  => _('Software update'),

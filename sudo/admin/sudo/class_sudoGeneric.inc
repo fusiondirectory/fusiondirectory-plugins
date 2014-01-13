@@ -142,7 +142,7 @@ class sudo extends simplePlugin
       ),
       'section2' => array (
         'name' => _('System trust'),
-        'icon' => 'images/lists/locked.png',
+        'icon' => 'geticon.php?context=categories&icon=acl&size=16',
         'attrs' => array (
           new SelectAttribute (
             _('Trust mode'), _('Trust mode for the role'),

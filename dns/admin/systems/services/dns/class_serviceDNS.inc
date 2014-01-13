@@ -281,11 +281,11 @@ class serviceDNS extends goService
     $ZoneList->SetHeight(254);
 
     /* Add entries to divselectbox */
-    $editImg = "<input type='image' src='images/lists/edit.png' name='editZone_%s' alt='edit' title='edit'>";
+    $editImg = "<input type='image' src='geticon.php?context=actions&icon=document-edit&size=16' name='editZone_%s' alt='edit' title='edit'>";
     if ($this->acl_is_removeable()) {
-      $editImg .= "<input type='image' src='images/lists/trash.png' name='delZone_%s' alt='delete' title='delete'>";
+      $editImg .= "<input type='image' src='geticon.php?context=actions&icon=edit-delete&size=16' name='delZone_%s' alt='delete' title='delete'>";
     }
-    $editImg .= "<input type='image' src='images/lists/reload.png' name='ldap2Zone_%s' alt='ldap2zone' title='ldap2zone'>";
+    $editImg .= "<input type='image' src='geticon.php?context=actions&icon=view-refresh&size=16' name='ldap2Zone_%s' alt='ldap2zone' title='ldap2zone'>";
 
     $link = "<a href='?plug=".$_GET['plug']."&act=edit&id=%s'>%s</a>";
     foreach ($this->Zones as $zone => $values) {

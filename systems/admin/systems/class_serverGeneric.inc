@@ -51,7 +51,7 @@ class serverGeneric extends workstationGeneric
           'name'        => _('Server'),
           'description' => _('Server'),
           'filter'      => 'objectClass=goServer',
-          'icon'        => 'plugins/systems/images/select_server.png',
+          'icon'        => 'geticon.php?context=devices&icon=server&size=16',
           'ou'          => get_ou('serverRDN'),
           'tabClass'    => 'servtabs',
         )

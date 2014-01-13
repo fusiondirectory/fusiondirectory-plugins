@@ -336,13 +336,13 @@ class serviceDHCP extends goService
     $DhcpList->SetHeight(400);
 
     /* Add entries to DhcpList */
-    $editImgIns = "<input type='image' src='images/lists/new.png' name='insertDhcp_%s' title='"._("Insert new DHCP section")."'>".
-      "<input type='image' src='images/lists/edit.png' name='editDhcp_%s' title='"._("Edit DHCP section")."'>".
-      "<input type='image' src='images/lists/trash.png' name='delDhcp_%s' title='"._("Remove DHCP section")."'>";
-    $editImgInsNoDel = "<input type='image' src='images/lists/new.png' name='insertDhcp_%s' title='"._("Insert new DHCP section")."'>".
-      "<input type='image' src='images/lists/edit.png' name='editDhcp_%s' title='"._("Edit DHCP section")."'>";
-    $editImg = "<input type='image' src='images/lists/edit.png' name='editDhcp_%s' title='"._("Edit DHCP section")."'>".
-      "<input type='image' src='images/lists/trash.png' name='delDhcp_%s' title='"._("Remove DHCP section")."'>";
+    $editImgIns = "<input type='image' src='geticon.php?context=actions&icon=document-new&size=16' name='insertDhcp_%s' title='"._("Insert new DHCP section")."'>".
+      "<input type='image' src='geticon.php?context=actions&icon=document-edit&size=16' name='editDhcp_%s' title='"._("Edit DHCP section")."'>".
+      "<input type='image' src='geticon.php?context=actions&icon=edit-delete&size=16' name='delDhcp_%s' title='"._("Remove DHCP section")."'>";
+    $editImgInsNoDel = "<input type='image' src='geticon.php?context=actions&icon=document-new&size=16' name='insertDhcp_%s' title='"._("Insert new DHCP section")."'>".
+      "<input type='image' src='geticon.php?context=actions&icon=document-edit&size=16' name='editDhcp_%s' title='"._("Edit DHCP section")."'>";
+    $editImg = "<input type='image' src='geticon.php?context=actions&icon=document-edit&size=16' name='editDhcp_%s' title='"._("Edit DHCP section")."'>".
+      "<input type='image' src='geticon.php?context=actions&icon=edit-delete&size=16' name='delDhcp_%s' title='"._("Remove DHCP section")."'>";
     $subnetExpandImg = "<input style='padding:5px 6px 4px;vertical-align:middle;' type='image' src='images/lists/expand.png' name='expandDhcp_%s' title='"._("Expand DHCP subnet")."'/>";
     $subnetExpandedImg = "<input style='padding:6px 5px 6px 4px;vertical-align:middle;' type='image' src='images/lists/sort-down.png' name='foldDhcp_%s' title='"._("Fold DHCP subnet")."'/>";
 

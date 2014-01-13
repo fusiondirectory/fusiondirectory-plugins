@@ -132,7 +132,7 @@ class ServerService extends management
     $this->headpage->xmlData['actionmenu']['action'][0]['action'] = array();
     $available_services = $this->getAllUnusedServices();
     foreach ($available_services as $class => $label) {
-      $icon = 'images/lists/new.png';
+      $icon = 'geticon.php?context=actions&icon=document-new&size=16';
       $infos = pluglist::pluginInfos($class);
       if (isset($infos['plIcon'])) {
         $icon = $infos['plIcon'];
@@ -292,10 +292,10 @@ class ServerService extends management
     if (isset($d['0'])) {
       switch ($d[0]) {
         case 'stopped':
-          $img = ('images/lists/off.png');
+          $img = 'geticon.php?context=status&icon=task-stopped&size=16';
           break;
         case 'running':
-          $img = ('images/lists/on.png');
+          $img = 'geticon.php?context=status&icon=task-running&size=16';
           break;
       }
     }

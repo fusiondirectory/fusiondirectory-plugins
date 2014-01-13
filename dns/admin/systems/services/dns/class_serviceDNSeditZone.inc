@@ -271,7 +271,7 @@ class servdnseditZone extends plugin
     $div->setHeight(120);
     $recs = $this->mXRecords;
     ksort($recs);
-    $onedel = "<input name='MXdel_%s'   type='image' src='images/lists/trash.png'  title='"._("Delete")."'  class='center'>";
+    $onedel = "<input name='MXdel_%s'   type='image' src='geticon.php?context=actions&icon=edit-delete&size=16'  title='"._("Delete")."'  class='center'>";
     foreach ($recs as $key => $rec) {
       list($prio,$value) = preg_split("/ /", $rec['value']);
       $div->AddEntry(

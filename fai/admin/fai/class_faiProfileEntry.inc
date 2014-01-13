@@ -247,7 +247,7 @@ class faiProfileEntry extends plugin
     $smarty->assign("launchimage"   , get_template_path('images/lists/action.png'));
     $smarty->assign("alphabet"      , generate_alphabet());
     $smarty->assign("apply"         , apply_filter(TRUE));
-    $smarty->assign("search_image"  , get_template_path('images/lists/search.png'));
+    $smarty->assign("search_image"  , 'geticon.php?context=actions&icon=system-search&size=16');
 
     $display .= $smarty->fetch(get_template_path('faiProfileEntry.tpl', TRUE));
     return $display;

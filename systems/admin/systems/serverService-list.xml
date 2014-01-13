@@ -15,7 +15,7 @@
       <objectClass>FAKE_OC_ServerService</objectClass>
       <category>server</category>
       <class>ServerService</class>
-      <image>images/list/new.png</image>
+      <image>geticon.php?context=actions&amp;icon=document-new&amp;size=16</image>
     </objectType>
 
   </definition>
@@ -50,7 +50,7 @@
 
     <action>
      <type>sub</type>
-     <image>images/lists/new.png</image>
+     <image>geticon.php?context=actions&amp;icon=document-new&amp;size=16</image>
      <label>Create</label>
 
      <action>
@@ -65,7 +65,7 @@
     <action>
       <name>remove</name>
       <type>entry</type>
-      <image>images/lists/trash.png</image>
+      <image>geticon.php?context=actions&icon=edit-delete&size=16</image>
       <label>Remove</label>
     </action>
 
@@ -84,7 +84,7 @@
     <action>
       <name>status</name>
       <type>entry</type>
-      <image>images/lists/reload.png</image>
+      <image>geticon.php?context=actions&amp;icon=view-refresh&amp;size=16</image>
       <objectclass>AllowStatus</objectclass>
       <label>Get status</label>
     </action>
@@ -108,7 +108,7 @@
     <action>
       <name>restart</name>
       <type>entry</type>
-      <image>images/lists/reload.png</image>
+      <image>geticon.php?context=actions&amp;icon=view-refresh&amp;size=16</image>
       <objectclass>AllowRestart</objectclass>
       <label>Restart</label>
     </action>
@@ -116,7 +116,7 @@
     <action>
       <name>edit</name>
       <type>entry</type>
-      <image>images/lists/edit.png</image>
+      <image>geticon.php?context=actions&amp;icon=document-edit&amp;size=16</image>
       <objectclass>AllowEdit</objectclass>
       <label>Edit service</label>
     </action>
@@ -124,7 +124,7 @@
     <action>
       <name>remove</name>
       <type>entry</type>
-      <image>images/lists/trash.png</image>
+      <image>geticon.php?context=actions&icon=edit-delete&size=16</image>
       <objectclass>AllowRemove</objectclass>
       <label>Remove service</label>
     </action>

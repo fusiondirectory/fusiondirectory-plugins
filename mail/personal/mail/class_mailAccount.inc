@@ -196,7 +196,7 @@ class mailAccount extends simplePlugin
       ),
       'advanced' => array (
          'name' => _('Advanced mail options'),
-         'icon' => 'images/false.png',
+         'icon' => 'geticon.php?context=status&icon=task-failure&size=16',
          'attrs' => array (
           new BooleanAttribute (
             _('Use custom sieve script').' <b>('._('disables all Mail options!').')<b>',

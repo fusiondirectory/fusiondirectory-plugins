@@ -1,5 +1,5 @@
 <p style='padding-left:7px;'>
- <img class='center' src='images/lists/on.png' alt='!'>&nbsp;<b>{t}Only users with the same asterisk home server will be included to this queue.{/t}</b>
+ <img class='center' src='geticon.php?context=status&icon=dialog-information&size=16' alt='!'>&nbsp;<b>{t}Only users with the same asterisk home server will be included to this queue.{/t}</b>
 </p>
 
 <table style="width: 100%; vertical-align: top; text-align: left;" border="0" cellpadding="4">

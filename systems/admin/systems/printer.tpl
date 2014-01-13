@@ -93,7 +93,7 @@
 
 <p class="plugbottom" style="margin-bottom:0px; padding:0px;">&nbsp;</p>
 
-<h2><img class="center" alt="" src="images/lists/locked.png"> {t}Permissions{/t}</h2>
+<h2><img class="center" alt="" src="geticon.php?context=categories&icon=acl&size=16"> {t}Permissions{/t}</h2>
 <table width="100%">
  <tr>
   <td style="border-right:1px solid #B0B0B0; width:50%">

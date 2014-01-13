@@ -32,7 +32,7 @@
 
 {if $fai_release != $fai_base && $allow_remove}
   <br>
-  <input class="center" type="image" name="remove_branch" src="images/lists/trash.png">
+  <input class="center" type="image" name="remove_branch" src="geticon.php?context=actions&icon=edit-delete&size=16">
   <a href="{$plug}&act=remove_branch">{t}Delete current release{/t}</a>
 {/if}
 
@@ -52,7 +52,7 @@
   <tr>
    <td>
     <label for="NAME">
-     <img src="images/lists/search.png" align=middle>&nbsp;{t}Name{/t}
+     <img src="geticon.php?context=actions&icon=system-search&size=16" align=middle>&nbsp;{t}Name{/t}
     </label>
    </td>
    <td>

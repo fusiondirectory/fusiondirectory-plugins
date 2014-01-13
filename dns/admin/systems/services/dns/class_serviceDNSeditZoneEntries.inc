@@ -436,9 +436,9 @@ class servDNSeditZoneEntries extends plugin
       $field3 = "<input type='text' $dis value='".$record['value']."' name='ValueSelection_".$name."' style='width:250px;'>";
       if (preg_match("/w/", $this->acl)) {
         $acl = "<input type='image' name='AddRecord_".$name."'
-          src='images/lists/new.png' alt='"._("Add")."' title='"._("Add")."'>
+          src='geticon.php?context=actions&icon=document-new&size=16' alt='"._("Add")."' title='"._("Add")."'>
           <input type='image' name='RemoveRecord_".$name."'
-          src='images/lists/trash.png'      alt='"._("Remove")."' title='"._("Remove")."'>";
+          src='geticon.php?context=actions&icon=edit-delete&size=16'      alt='"._("Remove")."' title='"._("Remove")."'>";
       }
 
       /* Display settings backwards for CNAMERecords */

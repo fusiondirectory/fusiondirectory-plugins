@@ -129,7 +129,7 @@ class opsiImport extends simplePlugin
       foreach ($this->messages as $id => $message) {
         if (is_array($message)) {
           $infos .= '<tr class="error">';
-          $infos .= '<td><img src="images/false.png"/></td>';
+          $infos .= '<td><img src="geticon.php?context=status&icon=task-failure&size=16"/></td>';
           $infos .= '<td>'.$id.'</td>';
           $infos .= '<td>';
           foreach ($message as $m) {
@@ -137,7 +137,7 @@ class opsiImport extends simplePlugin
           }
         } else {
           $infos .= '<tr class="success">';
-          $infos .= '<td><img src="images/true.png"/></td>';
+          $infos .= '<td><img src="geticon.php?context=status&icon=task-complete&size=16"/></td>';
           $infos .= '<td>'.$id.'</td>';
           $infos .= '<td>saved</td>';
         }

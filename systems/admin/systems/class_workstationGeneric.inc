@@ -183,7 +183,7 @@ class workstationGeneric extends simplePlugin
       ),
       'servers' => array(
         'name'  => _('Servers'),
-        'icon'  => get_template_path("plugins/systems/images/select_server.png"),
+        'icon'  => 'geticon.php?context=devices&icon=server&size=16',
         'attrs' => array(
           new SelectAttribute (
             _('Syslog server'),
@@ -236,7 +236,7 @@ class workstationGeneric extends simplePlugin
         'name'      => _('Network settings'),
         'attrs'     => array(new NetworkSettingsAttribute()),
         'template'  => get_template_path('network_section.tpl', TRUE, dirname(__FILE__)),
-        'icon'      => get_template_path('plugins/systems/images/network.png'),
+        'icon'      => 'geticon.php?context=categories&icon=applications-internet&size=16',
       ),
     );
   }
@@ -464,7 +464,7 @@ class workstationGeneric extends simplePlugin
           'description' => _('Workstation'),
           'filter'      => 'objectClass=gotoWorkstation',
           'ou'          => get_ou('workstationRDN'),
-          'icon'        => 'plugins/systems/images/select_workstation.png',
+          'icon'        => 'geticon.php?context=devices&icon=computer&size=16',
           'mainAttr'    => 'cn',
           'tabClass'    => 'worktabs',
         )

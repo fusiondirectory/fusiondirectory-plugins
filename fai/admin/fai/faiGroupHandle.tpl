@@ -8,7 +8,7 @@
   <tr>
     <td>
       {if $item.freezed}
-        <img src="images/lists/locked.png" class='center'>
+        <img src="geticon.php?context=status&icon=object-locked&size=16" class='center'>
       {else}
         <input type='checkbox' name='{$mode}_{$key}'
               {if $item.selected} checked {/if}>

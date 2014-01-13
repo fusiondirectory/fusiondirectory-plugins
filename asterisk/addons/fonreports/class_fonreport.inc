@@ -162,7 +162,7 @@ class fonreport extends plugin
 
     $smarty->assign("plug",           "?plug=".validate($_GET['plug']));
     $smarty->assign("launchimage",    get_template_path('images/launch.png'));
-    $smarty->assign("search_image",   get_template_path('images/lists/search.png'));
+    $smarty->assign("search_image",   'geticon.php?context=actions&icon=system-search&size=16');
     $smarty->assign("search_for",     htmlentities($this->search_for));
     $smarty->assign("bases",          $bases);
     $smarty->assign("base_select",    $this->search_base);
@@ -228,7 +228,7 @@ class fonreport extends plugin
     $report_list= array();
 
     /* Restricted attributes will not be displayed, this will be displayed instead */
-    $no_acl = "<img class='center' src='images/lists/locked.png'
+    $no_acl = "<img class='center' src='geticon.php?context=status&icon=object-locked&size=16'
       title='".msgPool::permView()."' alt='"._("Insufficient permissions")."'>";
 
     $no_acl = "&nbsp;";

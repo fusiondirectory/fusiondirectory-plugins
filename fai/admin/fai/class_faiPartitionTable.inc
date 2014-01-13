@@ -413,9 +413,9 @@ class faiPartitionTable extends faiPluginClass
       $acl = $this->ui->get_permissions($dn,"fai/faiPartitionTableEntry");
       if(preg_match("/(r|w)/",$acl)) {
 
-        $act .= "<input type='image' src='images/lists/edit.png'   name='edit_%s'    title='"._("edit")."' alt='"._("edit")."'>";
+        $act .= "<input type='image' src='geticon.php?context=actions&icon=document-edit&size=16'   name='edit_%s'    title='"._("edit")."' alt='"._("edit")."'>";
         if(preg_match("/d/",$acl) && !preg_match("/freeze/", $this->FAIstate)){
-          $act .="<input type='image' src='images/lists/trash.png' name='delete_%s'  title='"._("delete")."' alt='"._("delete")."'>";
+          $act .="<input type='image' src='geticon.php?context=actions&icon=edit-delete&size=16' name='delete_%s'  title='"._("delete")."' alt='"._("delete")."'>";
         }
 
         $cnt= count($disk['partitions']);

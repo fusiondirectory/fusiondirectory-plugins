@@ -1223,7 +1223,7 @@ class systemManagement extends management
     return array(
       'plShortName'   => _('Systems'),
       'plDescription' => _('Systems Management'),
-      'plIcon'        => 'plugins/systems/images/icon.png',
+      'plIcon'        => 'geticon.php?context=devices&icon=computer&size=48',
       'plSelfModify'  => FALSE,
       'plPriority'    => 20,
       'plSection'     => 'admin',
