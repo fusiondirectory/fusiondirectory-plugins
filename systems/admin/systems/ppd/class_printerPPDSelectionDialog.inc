@@ -148,11 +148,11 @@ class printerPPDSelectionDialog extends plugin
     $div->SetSummary(_("Printer ppd selection."));
 
     $linkopen = "<a href='?plug=".$_GET['plug']."&amp;act=open&amp;id=%s'>
-                  <img src='images/lists/folder.png' class='center' border=0>&nbsp;%s
+                  <img src='geticon.php?context=places&icon=folder&size=16' class='center' border=0>&nbsp;%s
                  </a>";
     $uselink  = "<a href='?plug=".$_GET['plug']."&amp;act=use&amp;id=%s'>%s</a>";
     $dellink  = "<a href='?plug=".$_GET['plug']."&amp;act=del&amp;id=%s'>
-                  <img src='images/lists/trash.png' alt='"._("delete")."' border=0>
+                  <img src='geticon.php?context=actions&icon=edit-delete&size=16' alt='"._("delete")."' border=0>
                  </a>";
 
     if (empty($this->Vendor)) {
@@ -183,7 +183,7 @@ class printerPPDSelectionDialog extends plugin
     }
 
     $smarty->assign("List",         $div->DrawList());
-    $smarty->assign("search_image", get_template_path('images/lists/search.png'));
+    $smarty->assign("search_image", 'geticon.php?context=actions&icon=system-search&size=16');
     $smarty->assign("launchimage",  get_template_path('images/lists/action.png'));
     $smarty->assign("tree_image",   get_template_path('images/lists/search-subtree.png'));
     $smarty->assign("alphabet",     generate_alphabet());

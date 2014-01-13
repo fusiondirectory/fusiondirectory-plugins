@@ -271,7 +271,7 @@ class sambaAccount extends simplePlugin
       ),
       'access' => array(
         'name'  => _('Access options'),
-        'icon'  => 'images/lists/key.png',
+        'icon'  => 'geticon.php?context=status&icon=dialog-password&size=16',
         'attrs' => array(
           new BooleanAttribute (
             _('Enforce password change'), _('Force the user to change his password'),
@@ -322,7 +322,7 @@ class sambaAccount extends simplePlugin
       ),
       'system_trust' => array(
         'name'  => _('System trust'),
-        'icon'  => 'images/lists/locked.png',
+        'icon'  => 'geticon.php?context=categories&icon=acl&size=16',
         'attrs' => array(
           new CommaListAttribute(
             'sambaUserWorkstations',

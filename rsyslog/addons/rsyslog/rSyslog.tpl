@@ -49,7 +49,7 @@
         {/literal}
       </script>
     </td>
-    <td><img src="images/lists/search.png" alt="" class="center">&nbsp;{t}Search{/t}:</td>
+    <td><img src="geticon.php?context=actions&icon=system-search&size=16" alt="" class="center">&nbsp;{t}Search{/t}:</td>
     <td>
       <input type='text' name='search_for' value='{$search_for}' style='width:250px;'>
     </td>

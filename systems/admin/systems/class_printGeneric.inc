@@ -363,7 +363,7 @@ class printgeneric extends plugin
 
     /* Do we represent a valid printer? */
     if (!$this->is_account && $this->parent === NULL) {
-      $display = "<img alt=\"\" src=\"images/small-error.png\" align=middle>&nbsp;<b>".
+      $display = "<img alt=\"\" src=\"geticon.php?context=status&icon=dialog-error&size=16\" align=middle>&nbsp;<b>".
         msgPool::noValidExtension(_("printer"))."</b>";
       return $display;
     }
@@ -1011,7 +1011,7 @@ class printgeneric extends plugin
           'name'        => _('Printer'),
           'description' => _('Printer'),
           'filter'      => 'objectClass=gotoPrinter',
-          'icon'        => 'plugins/systems/images/select_printer.png',
+          'icon'        => 'geticon.php?context=devices&icon=printer&size=16',
           'ou'          => get_ou('printerRDN'),
           'tabClass'    => 'printtabs',
         ),

@@ -19,7 +19,7 @@
   <tr>
    <td>
     <label for="NAME">
-     <img src="images/lists/search.png" align=middle>&nbsp;{t}Name{/t}
+     <img src="geticon.php?context=actions&icon=system-search&size=16" align=middle>&nbsp;{t}Name{/t}
     </label>
    </td>
    <td>
@@ -29,7 +29,7 @@
   <tr>
    <td>
     <label for="IPSTART">
-     <img src="images/lists/search.png" align=middle>&nbsp;IP Start
+     <img src="geticon.php?context=actions&icon=system-search&size=16" align=middle>&nbsp;IP Start
     </label>
    </td>
    <td>
@@ -39,7 +39,7 @@
   <tr>
    <td>
     <label for="IPSTOP">
-     <img src="images/lists/search.png" align=middle>&nbsp;IP Stop
+     <img src="geticon.php?context=actions&icon=system-search&size=16" align=middle>&nbsp;IP Stop
     </label>
    </td>
    <td>

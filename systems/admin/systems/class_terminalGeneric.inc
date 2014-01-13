@@ -52,7 +52,7 @@ class terminalGeneric extends workstationGeneric
     $attributesInfo['actions']['attrs'][0]->setIsTerminal(TRUE);
     $attributesInfo['remote_desktop'] = array(
       'name'  => _('Remote desktop'),
-      'icon'  => get_template_path('plugins/systems/images/server.png'),
+      'icon'  => 'geticon.php?context=devices&icon=server&size=16',
       'attrs' => array(
         new SelectAttribute(
           _('Connect method'), _('Connect method'),

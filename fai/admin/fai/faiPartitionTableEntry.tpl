@@ -21,7 +21,7 @@
 <br>
 <p class="seperator">&nbsp;</p>
 <br>
-<h2><img class="center" alt="" src="images/lists/paste.png" title="{t}Partition entries{/t}">&nbsp;{t}Partition entries{/t}</h2>
+<h2><img class="center" alt="" src="geticon.php?context=actions&icon=edit-paste&size=16" title="{t}Partition entries{/t}">&nbsp;{t}Partition entries{/t}</h2>
 {$setup}
 <br>
 {if !$freeze}

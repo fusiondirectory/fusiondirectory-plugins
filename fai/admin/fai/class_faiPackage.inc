@@ -452,7 +452,7 @@ class faiPackage extends faiPluginClass
         }
         if(!preg_match('/^freeze/', $this->FAIstate) && $this->acl_is_writeable("FAIpackage")){
           $actions.= "&nbsp;<input type='image' class='center' title='"._("Remove this package")."'
-            src='images/lists/trash.png' name='remove_package_".base64_encode($usedName)."' >";
+            src='geticon.php?context=actions&icon=edit-delete&size=16' name='remove_package_".base64_encode($usedName)."' >";
         }
 
         $field1 = array("html" => $configured."&nbsp;".$removal,"attach" => "style='width:40px;'");

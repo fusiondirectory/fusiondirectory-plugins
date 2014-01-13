@@ -189,11 +189,11 @@ class argonautQueue extends management
       $status = "<img class='center' src='plugins/systems/images/clock.png' alt=''>&nbsp;"._("Waiting");
     }
     if ($status == "error") {
-      $status = "<input class='center' type='image' src='images/false.png' title='"._("Show error")."' ".
+      $status = "<input class='center' type='image' src='geticon.php?context=status&icon=task-failure&size=16' title='"._("Show error")."' ".
                "name='listing_showError_$row' style='padding:1px'>"._("Error");
     }
     if ($status == "processed") {
-      $status = "<img class='center' src='images/true.png' alt=''>&nbsp;"._("Processed");
+      $status = "<img class='center' src='geticon.php?context=status&icon=task-complete&size=16' alt=''>&nbsp;"._("Processed");
     }
 
     /* Special handling for all entries that have

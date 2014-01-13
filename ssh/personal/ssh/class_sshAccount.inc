@@ -73,7 +73,7 @@ class sshAccount extends simplePlugin
     return array(
       'main' => array(
         'name'  => _('SSH Keys'),
-        'icon'  => 'images/lists/key.png',
+        'icon'  => 'geticon.php?context=status&icon=dialog-password&size=16',
         'class' => array('fullwidth'),
         'attrs' => array(
           new OrderedArrayAttribute(

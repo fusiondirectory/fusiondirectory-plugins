@@ -110,7 +110,7 @@ class faxreport extends plugin
 
     $smarty= get_smarty();
     $smarty->assign("launchimage", get_template_path('images/launch.png'));
-    $smarty->assign("search_image", get_template_path('images/lists/search.png'));
+    $smarty->assign("search_image", 'geticon.php?context=actions&icon=system-search&size=16');
     $smarty->assign("search_for", $this->search_for);
     $smarty->assign("bases", $this->config->idepartments);
     $smarty->assign("base_select", $this->search_base);
@@ -315,7 +315,7 @@ class faxreport extends plugin
         }
 
         /* Restricted attributes will not be displayed, this will be displayed instead */
-        $no_acl = "<img class='center' src='images/lists/locked.png'
+        $no_acl = "<img class='center' src='geticon.php?context=status&icon=object-locked&size=16'
                     title='"._("Insufficient permissions to view this attribute")."' alt='"._("Insufficient permissions")."'>";
 
         /* Create date */

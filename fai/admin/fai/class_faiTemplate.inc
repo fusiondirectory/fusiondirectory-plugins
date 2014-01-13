@@ -303,11 +303,11 @@ class faiTemplate extends faiPluginClass
 
       /* Hide delete icon if this object is freezed */
       if(preg_match("/freeze/",$this->FAIstate)){
-        $act .= "<input type='image' src='images/lists/edit.png'      name='editscript_%s'    title='"._("edit")."' alt='"._("edit")."'>";
+        $act .= "<input type='image' src='geticon.php?context=actions&icon=document-edit&size=16'      name='editscript_%s'    title='"._("edit")."' alt='"._("edit")."'>";
       }else{
-        $act .= "<input type='image' src='images/lists/edit.png'      name='editscript_%s'    title='"._("edit")."' alt='"._("edit")."'>";
+        $act .= "<input type='image' src='geticon.php?context=actions&icon=document-edit&size=16'      name='editscript_%s'    title='"._("edit")."' alt='"._("edit")."'>";
         if(preg_match("/d/",$acl)){
-          $act .="<input type='image' src='images/lists/trash.png' name='deletescript_%s'  title='"._("delete")."' alt='"._("delete")."'>";
+          $act .="<input type='image' src='geticon.php?context=actions&icon=edit-delete&size=16' name='deletescript_%s'  title='"._("delete")."' alt='"._("delete")."'>";
         }
       }
 

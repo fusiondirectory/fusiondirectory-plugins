@@ -176,7 +176,7 @@ class gofaxAccount extends plugin
 
     /* Do we represent a valid account? */
     if (!$this->is_account && $this->parent === NULL){
-      $display= "<img alt=\"\" src=\"images/small-error.png\" align=\"middle\">&nbsp;<b>".
+      $display= "<img alt=\"\" src=\"geticon.php?context=status&icon=dialog-error&size=16\" align=\"middle\">&nbsp;<b>".
         msgPool::noValidExtension(_("GOfax"))."</b>";
       $display.= back_to_main();
       return ($display);
@@ -440,7 +440,7 @@ class gofaxAccount extends plugin
         if(!isset($this->config->departments[trim($key)])){
           $this->config->departments[trim($key)]="";
         }
-        $field1 = array("html" => "<img src='images/lists/folder.png' alt='department'>","attach"=>"style='width:16px;text-align:center;'");
+        $field1 = array("html" => "<img src='geticon.php?context=places&icon=folder&size=16' alt='department'>","attach"=>"style='width:16px;text-align:center;'");
         $field2 = array("html" => sprintf($linkopen,base64_encode($key),$val),"attach"=>" style='border:none'");
         $divSel->AddEntry(array($field1,$field2));
       }
@@ -523,7 +523,7 @@ class gofaxAccount extends plugin
           $this->config->departments[trim($key)]="";
         }
 
-        $field1 = array("html" => "<img src='images/lists/folder.png' alt='department'>","attach"=>"style='width:16px;text-align:center;'");
+        $field1 = array("html" => "<img src='geticon.php?context=places&icon=folder&size=16' alt='department'>","attach"=>"style='width:16px;text-align:center;'");
         $field2 = array("html" => sprintf($linkopen,base64_encode($key),$val),"attach"=>" style='border:none'");
         $divSel->AddEntry(array($field1,$field2));
       }

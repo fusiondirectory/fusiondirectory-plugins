@@ -10,9 +10,9 @@
       </select>
       <input type='image' src='images/lists/copy.png' title='{t}Copy menu{/t}' class='center' name='menu_copy'>
       {if $copied}
-        <input type='image' src='images/lists/paste.png' title='{t}Paste menu from{/t}&nbsp;{$copy_source}' class='center' name='menu_paste'>
+        <input type='image' src='geticon.php?context=actions&icon=edit-paste&size=16' title='{t}Paste menu from{/t}&nbsp;{$copy_source}' class='center' name='menu_paste'>
       {else}
-        <input type='image' src='images/lists/paste-grey.png' class='center'>
+        <input type='image' src='geticon.php?context=actions&icon=edit-paste&size=16$disabled=1' class='center'>
       {/if}
       <input type='image' src='images/lists/delete.png' title='{t}Delete menu{/t}' class='center' name='menu_delete'>
     </td>
@@ -71,7 +71,7 @@
           </div>
         {else}
           <div style="height:20px;width:20px; overflow:hidden">
-          <img class="center" src='images/lists/folder.png' alt='{t}Folder{/t}'>
+          <img class="center" src='geticon.php?context=places&icon=folder&size=16' alt='{t}Folder{/t}'>
           </div>
         {/if}
       </td>
@@ -84,9 +84,9 @@
         <input title="{t}Move down{/t}" class="center" type='image'
           name='down_{$item.UNIQID}' src='images/move_object_down.png'>
         <input title="{t}Remove{/t}"  class="center" type='image'
-          name='del_{$item.UNIQID}' src='images/lists/trash.png'>
+          name='del_{$item.UNIQID}' src='geticon.php?context=actions&icon=edit-delete&size=16'>
         <input title="{t}Edit{/t}"    class="center" type='image'
-          name='app_entry_edit{$item.UNIQID}' src='images/lists/edit.png'>
+          name='app_entry_edit{$item.UNIQID}' src='geticon.php?context=actions&icon=document-edit&size=16'>
       </td>
     </tr>
   {elseif $item.TYPE == "SEPERATOR"}
@@ -105,7 +105,7 @@
                 <input title="{t}Move down{/t}" class="center" type='image'
                     name='down_{$item.UNIQID}' src='images/move_object_down.png'>
                 <input title="{t}Remove{/t}"    class="center" type='image'
-                    name='del_{$item.UNIQID}' src='images/lists/trash.png'>
+                    name='del_{$item.UNIQID}' src='geticon.php?context=actions&icon=edit-delete&size=16'>
         <img src="images/empty.png" style="width:16px;" alt=" ">
             </td>
     </tr>
@@ -130,9 +130,9 @@
         <input title="{t}Move down{/t}" class="center" type='image'
           name='down_{$item.UNIQID}' src='images/move_object_down.png'>
         <input title="{t}Remove{/t}"  class="center" type='image'
-          name='del_{$item.UNIQID}' src='images/lists/trash.png'>
+          name='del_{$item.UNIQID}' src='geticon.php?context=actions&icon=edit-delete&size=16'>
         <input title="{t}Edit{/t}"    class="center" type='image'
-          name='app_entry_edit{$item.UNIQID}' src='images/lists/edit.png'>
+          name='app_entry_edit{$item.UNIQID}' src='geticon.php?context=actions&icon=document-edit&size=16'>
       </td>
     </tr>
   {/if}

@@ -74,7 +74,7 @@
           </a>
           <a href="{$plug}&amp;editFAItemplate">
           <img class="center" alt="{t}Edit template{/t}..."
-            title="{t}Edit template{/t}..." src="images/lists/edit.png"/>
+            title="{t}Edit template{/t}..." src="geticon.php?context=actions&icon=document-edit&size=16"/>
           </a>
         {/if}
       </td>

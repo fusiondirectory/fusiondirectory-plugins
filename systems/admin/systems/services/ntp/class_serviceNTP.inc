@@ -42,7 +42,6 @@ class serviceNTP extends simpleService {
       return array (
       'section1' => array (
         'name'  => _('Generic'),
-        'icon' => 'images/rightarrow.png',
         'attrs' => array (
           new SetAttribute (
             new StringAttribute (

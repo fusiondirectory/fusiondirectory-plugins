@@ -519,7 +519,7 @@ class addressbook extends plugin
     $smarty->assign("depselect", $this->search_base);
     $smarty->assign("global", $phonefilter['global']);
     $smarty->assign("organizational", $phonefilter['organizational']);
-    $smarty->assign("search_image", get_template_path('images/lists/search.png'));
+    $smarty->assign("search_image", 'geticon.php?context=actions&icon=system-search&size=16');
     $smarty->assign("obj_image", get_template_path('plugins/addressbook/images/objects.png'));
     $smarty->assign("tree_image", get_template_path('images/lists/search-subtree.png'));
     $smarty->assign("infoimage", get_template_path('images/info.png'));
@@ -665,8 +665,8 @@ class addressbook extends plugin
     $smarty->assign('personal_image', get_template_path('plugins/addressbook/images/addr_personal.png'));
     $smarty->assign('home_image', get_template_path('plugins/addressbook/images/addr_home.png'));
     $smarty->assign('company_image', get_template_path('plugins/addressbook/images/addr_company.png'));
-    $smarty->assign('add_image', get_template_path('images/lists/paste.png'));
-    $smarty->assign('edit_image', get_template_path('images/lists/edit.png'));
+    $smarty->assign('add_image', 'geticon.php?context=actions&icon=edit-paste&size=16');
+    $smarty->assign('edit_image', 'geticon.php?context=actions&icon=document-edit&size=16');
     $smarty->assign('delete_image', get_template_path('images/lists/delete.png'));
     return $smarty->fetch(get_template_path('contents.tpl', TRUE));
   }

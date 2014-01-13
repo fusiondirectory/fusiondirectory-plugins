@@ -45,7 +45,7 @@ class serviceTerminal extends simpleService
   {
       return array (
       'section1' => array (
-        'name'  => '<img src="images/rightarrow.png" /> '._('Terminal service'),
+        'name'  => _('Terminal service'),
         'attrs' => array (
           new BooleanAttribute (
             _('Temporary disable login'),

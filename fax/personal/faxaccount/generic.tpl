@@ -110,7 +110,7 @@
 {/render}
    </td>
    <td style="vertical-align:top; width:50%">
-      <h2><img class="center" alt="" src="images/false.png" />&nbsp;{t}Blocklists{/t}</h2>
+      <h2><img class="center" alt="" src="geticon.php?context=status&icon=task-failure&size=16" />&nbsp;{t}Blocklists{/t}</h2>
       <table style="width:100%">
         <tr>
           <td>{t}Blocklists for incoming fax{/t}</td>

@@ -292,7 +292,7 @@ class mimetype extends plugin
     if($this->acl_is_writeable("gotoMimeFilePattern") && !preg_match("/freeze/i",$this->FAIstate)){
       $Pattern_Actions= " <input type='image' src='images/lists/sort-up.png'  class='center'  name='Pattern_SortUp_%s' >&nbsp;
       <input type='image' src='images/lists/sort-down.png'  class='center'  name='Pattern_SortDown_%s'>&nbsp;
-      <input type='image' src='images/lists/trash.png'  class='center'  name='Pattern_Remove_%s'>";
+      <input type='image' src='geticon.php?context=actions&icon=edit-delete&size=16'  class='center'  name='Pattern_Remove_%s'>";
     }else{
       $Pattern_Actions= "";
     }
@@ -300,7 +300,7 @@ class mimetype extends plugin
     if($this->acl_is_writeable("gotoMimeApplication") && !preg_match("/freeze/i",$this->FAIstate)){
       $Apps_Actions   = " <input type='image' src='images/lists/sort-up.png'  class='center'  name='Apps_SortUp_%s' >&nbsp;
       <input type='image' src='images/lists/sort-down.png'  class='center'  name='Apps_SortDown_%s'>&nbsp;
-      <input type='image' src='images/lists/trash.png'  class='center'  name='Apps_Remove_%s'>";
+      <input type='image' src='geticon.php?context=actions&icon=edit-delete&size=16'  class='center'  name='Apps_Remove_%s'>";
     }else{
       $Apps_Actions= "";
     }
@@ -308,7 +308,7 @@ class mimetype extends plugin
     if($this->acl_is_writeable("gotoMimeEmbeddedApplication") && !preg_match("/freeze/i",$this->FAIstate)){
       $EApps_Actions  = " <input type='image' src='images/lists/sort-up.png'  class='center'  name='EApps_SortUp_%s' >&nbsp;
       <input type='image' src='images/lists/sort-down.png'  class='center'  name='EApps_SortDown_%s'>&nbsp;
-      <input type='image' src='images/lists/trash.png'  class='center'  name='EApps_Remove_%s'>";
+      <input type='image' src='geticon.php?context=actions&icon=edit-delete&size=16'  class='center'  name='EApps_Remove_%s'>";
     }else{
       $EApps_Actions= "";
     }
