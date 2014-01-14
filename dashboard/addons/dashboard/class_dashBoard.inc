@@ -68,7 +68,7 @@ class dashboard extends simplePlugin
       $nb_systems = $ldap->count();
       array_unshift(
         $stats,
-        array('name' => 'Systems', 'nb' => $nb_systems, 'img' => get_template_path("plugins/systems/images/select_server.png"))
+        array('name' => 'Systems', 'nb' => $nb_systems, 'img' => 'geticon.php?context=devices&icon=server&size=16')
       );
     }
 
@@ -92,7 +92,7 @@ class dashboard extends simplePlugin
     return array(
       'plShortName'   => _('Dashboard'),
       'plDescription' => _('Statistics and various informations'),
-      'plIcon'        => 'plugins/dashboard/images/icon.png',
+      'plIcon'        => 'geticon.php?context=applications&icon=utilities-system-monitor&size=48',
       'plObjectType'  => array('dashboard' => array('name' => _('Dashboard'))),
       'plSection'     => 'addons',
       'plPriority'    => 2,
