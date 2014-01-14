@@ -53,19 +53,19 @@ class dashboardSystems extends simplePlugin
             'img' => 'geticon.php?context=devices&icon=computer-windows&size=16'),
       array('name' => _('Terminals'),
             'filter' => 'objectClass=gotoTerminal',
-            'img' => get_template_path("plugins/systems/images/select_terminal.png")),
+            'img' => 'geticon.php?context=devices&icon=terminal&size=16'),
       array('name' => _('Printers'),
             'filter' => 'objectClass=gotoPrinter',
             'img' => 'geticon.php?context=devices&icon=printer&size=16'),
       array('name' => _('Phones'),
             'filter' => 'objectClass=goFonHardware',
-            'img' => 'geticon.php?context=devices&icon=phone&size=16'),
+            'img' => 'geticon.php?context=devices&icon=telephone&size=16'),
       array('name' => _('Components'),
             'filter' => 'objectClass=ieee802Device',
-            'img' => get_template_path("plugins/systems/images/select_component.png")),
+            'img' => 'geticon.php?context=devices&icon=network-device&size=16'),
       array('name' => _('Mobile phones'),
             'filter' => 'objectClass=fdMobilePhone',
-            'img' => 'geticon.php?context=devices&icon=mobile-phone&size=16'),
+            'img' => 'geticon.php?context=devices&icon=phone&size=16'),
     );
 
     $ldap->cd($this->config->current['BASE']);

@@ -45,7 +45,7 @@ class winstationGeneric extends simplePlugin
           'name'        => _('Windows workstation'),
           'description' => _('Windows workstation'),
           'filter'      => '(&(objectClass=sambaSamAccount)(uid=*$))',
-          'icon'        => 'plugins/systems/images/select_winstation.png',
+          'icon'        => 'geticon.php?context=devices&icon=computer-windows&size=16',
           'ou'          => get_ou('sambaMachineAccountRDN'),
         )
       ),

@@ -79,7 +79,7 @@ class netgroup extends simplePlugin
       ),
       'users' => array(
         'name'  => _('User members'),
-        'icon'  => 'plugins/users/images/iconMini.png',
+        'icon'  => 'geticon.php?context=types&icon=user&size=16',
         'attrs' => array(
           new SetAttribute(
             new StringAttribute('nisNetgroupTriple', '', 'nisNetgroupTriple')
@@ -92,7 +92,7 @@ class netgroup extends simplePlugin
       ),
       'systems' => array(
         'name'  => _('System members'),
-        'icon'  => 'plugins/systems/images/select_server.png',
+        'icon'  => 'geticon.php?context=devices&icon=server&size=16',
         'attrs' => array(
           new SystemsAttribute('', _('NIS netgroup members'), 'memberSystems', FALSE),
         )

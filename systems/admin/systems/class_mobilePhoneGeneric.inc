@@ -41,7 +41,7 @@ class mobilePhoneGeneric extends simplePlugin
           'name'        => _('Mobile phone'),
           'description' => _('Mobile phone'),
           'filter'      => 'objectClass=fdMobilePhone',
-          'icon'        => 'geticon.php?context=devices&icon=mobile-phone&size=16',
+          'icon'        => 'geticon.php?context=devices&icon=phone&size=16',
           'ou'          => get_ou('mobilePhoneRDN'),
         )
       ),
