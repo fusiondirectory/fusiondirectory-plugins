@@ -413,7 +413,7 @@ class DaemonEvent
         'img'   => 'geticon.php?context=actions&icon=view-refresh&size=16'
       ),
       'Deployment.wake' => array(
-        'name'  => _('Wake up'),w
+        'name'  => _('Wake up'),
         'img'   => 'geticon.php?context=status&icon=task-running&size=16'
       ),
       'Deployment.update' => array(
