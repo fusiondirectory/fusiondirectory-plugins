@@ -19,7 +19,7 @@
          <td><label for="goFaxLanguage">{t}Language{/t}</label></td>
    <td>
 
-{render acl=$goFaxLanguageACL checked=$use_goFaxLanguage}
+{render acl=$goFaxLanguageACL}
            <select size="1" name="goFaxLanguage" id="goFaxLanguage"
     title="{t}Specify the fax communication language for fax to mail gateway{/t}">
       {html_options options=$languages selected=$goFaxLanguage}
@@ -32,7 +32,7 @@
          <td><label for="goFaxFormat">{t}Delivery format{/t}</label></td>
          <td>
 
-{render acl=$goFaxFormatACL checked=$use_goFaxFormat}
+{render acl=$goFaxFormatACL}
            <select id="goFaxFormat" size="1" name="goFaxFormat" title="{t}Specify delivery format for fax to mail gateway{/t}">
       {html_options values=$formats output=$formats selected=$goFaxFormat}
            </select>
@@ -48,32 +48,32 @@
    <td style="vertical-align:top; width:100%">
      <h2><img class="center" alt="" src="plugins/fax/images/printer.png" />&nbsp;{t}Delivery methods{/t}</h2>
 
-{render acl=$goFaxIsEnabledACL checked=$use_goFaxIsEnabled}
+{render acl=$goFaxIsEnabledACL}
      <input type=checkbox name="goFaxIsEnabled" value="1" {$goFaxIsEnabled} class="center">
 {/render}
      {t}Temporary disable fax usage{/t}<br>
 
      {if $has_mailaccount eq "false"}
-{render acl=$faxtomailACL checked=$use_faxtomail}
+{render acl=$faxtomailACL}
      <input type=checkbox name="faxtomail" value="1" {$faxtomail} class="center">
 {/render}
       <label for="mail">{t}Deliver fax as mail to{/t}</label>&nbsp;
-{render acl=$faxtomailACL checked=$use_mail}
+{render acl=$faxtomailACL}
       <input type='text' name="mail" id="mail" size=25 maxlength=65 value="{$mail}" class="center">
 {/render}
      {else}
-{render acl=$faxtomailACL checked=$use_faxtomail}
+{render acl=$faxtomailACL}
      <input type=checkbox name="faxtomail" value="1" {$faxtomail} class="center">
 {/render}
       {t}Deliver fax as mail{/t}
      {/if}
      <br>
 
-{render acl=$faxtoprinterACL checked=$use_faxtoprinter}
+{render acl=$faxtoprinterACL}
      <input type=checkbox name="faxtoprinter" value="1" {$faxtoprinter} class="center">
 {/render}
      {t}Deliver fax to printer{/t}&nbsp;
-{render acl=$faxtoprinterACL checked=$use_goFaxPrinter}
+{render acl=$faxtoprinterACL}
      <select size="1" name="goFaxPrinter">
       {html_options options=$printers selected=$goFaxPrinter}
     <option disabled>&nbsp;</option>
@@ -115,7 +115,7 @@
         <tr>
           <td>{t}Blocklists for incoming fax{/t}</td>
           <td>
-{render acl=$goFaxRBlocklistACL checked=$use_edit_incoming}
+{render acl=$goFaxRBlocklistACL}
             <input type=submit name="edit_incoming" value="{t}Edit{/t}">
 {/render}
           </td>
@@ -123,7 +123,7 @@
         <tr>
           <td>{t}Blocklists for outgoing fax{/t}</td>
           <td>
-{render acl=$goFaxSBlocklistACL checked=$use_edit_outgoing}
+{render acl=$goFaxSBlocklistACL}
             <input type=submit name="edit_outgoing" value="{t}Edit{/t}">
 {/render}
           </td>

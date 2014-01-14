@@ -37,7 +37,7 @@
       {t}Telephone{/t}
     </td>
         <td>
-    {render acl=$goFonHardwareACL checked=$use_goFonHardware}
+    {render acl=$goFonHardwareACL}
       {$hardware_list}
     {/render}
     </td>
@@ -46,7 +46,7 @@
         <td>{t}Home server{/t}{$must}
         </td>
         <td>
-{render acl=$goFonHomeServerACL checked=$use_goFonHomeServer}
+{render acl=$goFonHomeServerACL}
          <select name='goFonHomeServer' title='{t}Select the accounts home server{/t}'>
           {html_options options=$goFonHomeServers selected=$goFonHomeServer}
          </select>
@@ -57,7 +57,7 @@
      <td>{t}Context{/t}
      </td>
      <td>
-{render acl=$goFonContextACL checked=$use_goFonContext}
+{render acl=$goFonContextACL}
       <select name='context' title='{t}Select the accounts context{/t}'>
         {html_options values=$sip_contexts output=$sip_contexts selected=$context}
       </select>
@@ -68,7 +68,7 @@
      <td>{t}Voicemail context{/t}
      </td>
      <td>
-{render acl=$goFonVoiceMailContextACL checked=$use_goFonVoiceMailContext}
+{render acl=$goFonVoiceMailContextACL}
       <select name='voice_context' title='{t}Select the accounts context{/t}'>
         {html_options values=$voicemail_contexts output=$voicemail_contexts selected=$voice_context}
       </select>
@@ -81,7 +81,7 @@
         <label for="goFonVoicemailPIN">{t}Voicemail PIN{/t}{$must}</label>
        </td>
        <td>
-{render acl=$goFonVoicemailPINACL checked=$use_goFonVoicemailPIN}
+{render acl=$goFonVoicemailPINACL}
         <input type="password" id="goFonVoicemailPIN" name="goFonVoicemailPIN" value="{$goFonVoicemailPIN}">
 {/render}
       </td>
@@ -91,7 +91,7 @@
         <label for="goFonPIN">{t}Phone PIN{/t}{$must}</label>
        </td>
        <td>
-{render acl=$goFonPINACL checked=$use_goFonPIN}
+{render acl=$goFonPINACL}
         <input type="password" id="goFonPIN" name="goFonPIN" value="{$goFonPIN}">
 {/render}
       </td>
@@ -115,7 +115,7 @@
   <table>
    <tr>
     <td colspan=2>
-{render acl=$goFonMacroACL  checked=$use_macro}
+{render acl=$goFonMacroACL }
      <select id="macro" name="macro" onchange="document.mainform.submit()">
       {html_options options=$macros selected=$macro}
       <option disabled>&nbsp;</option>
