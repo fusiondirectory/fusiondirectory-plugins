@@ -86,7 +86,7 @@ class terminalGeneric extends workstationGeneric
           'name'        => _('Terminal'),
           'description' => _('Terminal'),
           'filter'      => 'objectClass=gotoTerminal',
-          'icon'        => 'plugins/systems/images/select_terminal.png',
+          'icon'        => 'geticon.php?context=devices&icon=terminal&size=16',
           'ou'          => get_ou('terminalRDN'),
           'tabClass'    => 'termtabs',
         )

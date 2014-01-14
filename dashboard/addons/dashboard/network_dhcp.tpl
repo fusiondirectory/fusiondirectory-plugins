@@ -6,7 +6,7 @@
     {foreach from=$attributes item=infos}
     <ul>
     {foreach from=$infos item=server}
-    <li style="list-style-image:url(plugins/systems/images/select_server.png)" id="server_{$server.name}">
+    <li style="list-style-image:url(geticon.php?context=devices&icon=server&size=16)" id="server_{$server.name}">
       {$server.link}
       <ul>
         {foreach from=$server.zones item=zone}

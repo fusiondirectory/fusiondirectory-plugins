@@ -181,7 +181,7 @@ class sambaAccount extends simplePlugin
       ),
       'terminal' => array(
         'name'  => _('Terminal server'),
-        'icon'  => 'plugins/systems/images/select_terminal.png',
+        'icon'  => 'geticon.php?context=devices&icon=terminal&size=16',
         'attrs' => array(
           new BooleanAttribute (
             _('Allow login on terminal server'), _('Allow login on terminal server'),
