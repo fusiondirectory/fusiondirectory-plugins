@@ -364,7 +364,7 @@ class sambaAccount extends simplePlugin
     $this->attributesAccess['InheritMode']->setManagedAttributes(
       array(
         'disable' => array (
-          FALSE => array (
+          TRUE => array (
             'CtxInitialProgram', 'CtxWorkDirectory',
           )
         )
