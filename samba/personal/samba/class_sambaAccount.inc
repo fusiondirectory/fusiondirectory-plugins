@@ -35,6 +35,15 @@ class MungedAttribute extends Attribute
     $this->flagList     = $flagList;
   }
 
+  protected function loadAttrValue ($attrs)
+  {
+    if (isset($attrs[$this->getLdapName()])) {
+      $this->setValue($this->inputValue($attrs[$this->getLdapName()][0]));
+    } else {
+      $this->resetToDefault();
+    }
+  }
+
   function setParent(&$plugin)
   {
     $this->plugin = $plugin;
@@ -54,10 +63,9 @@ class MungedAttribute extends Attribute
 
   function setValue($value)
   {
-    if (empty($value)) {
-      return;
+    if (!empty($value)) {
+      $this->mungedObject->load($value);
     }
-    $this->mungedObject->load($value);
     if (is_object($this->plugin)) {
       foreach ($this->attrList as $attr) {
         if (isset($this->mungedObject->ctx[$attr])) {
@@ -185,7 +193,7 @@ class sambaAccount extends simplePlugin
         'attrs' => array(
           new BooleanAttribute (
             _('Allow login on terminal server'), _('Allow login on terminal server'),
-            'TsLogin', FALSE, TRUE
+            'TsLogin', FALSE
           ),
           new SelectAttribute (
             _('Home directory drive'), _('Letter for the home drive'),
@@ -204,7 +212,7 @@ class sambaAccount extends simplePlugin
           ),
           new BooleanAttribute (
             _('Inherit client config'), _('Inherit client configuration'),
-            'InheritMode', FALSE, TRUE
+            'InheritMode', FALSE
           ),
           new StringAttribute (
             _('Initial progam'), _('Program to start after connecting'),
@@ -231,15 +239,15 @@ class sambaAccount extends simplePlugin
           ),
           new BooleanAttribute (
             _('Connect client drives at logon'), _('Drive to connect after login'),
-            'ConnectClientDrives', FALSE, TRUE
+            'ConnectClientDrives', FALSE
           ),
           new BooleanAttribute (
             _('Connect client printers at logon'), _('Printers to connect after login'),
-            'ConnectClientPrinters', FALSE, TRUE
+            'ConnectClientPrinters', FALSE
           ),
           new BooleanAttribute (
             _('Default to main client printer'), _('Default printer for this client'),
-            'DefaultPrinter', FALSE, TRUE
+            'DefaultPrinter', FALSE
           ),
           new SelectAttribute (
             _('Shadowing'), _('Shadowing'),
