@@ -342,7 +342,7 @@ class sambaMungedDial
   function getTsLogin ()
   {
     $flags = ord(substr($this->ctx['CtxCfgFlags1'], 5, 1));
-    return ($flags & 1?TRUE:FALSE);
+    return ($flags & 1?FALSE:TRUE);
   }
 
   /* Sets Terminal-Server-Login value: enabled/disabled */
