@@ -3,7 +3,7 @@
 <br>
 <br>
 <p class="plugbottom" style="margin-bottom:0px; padding:0px;">&nbsp;</p>
-<h2><img class="center" alt="" align="middle" src="plugins/ogroups/images/generic.png"> {t}Generic{/t}</h2>
+<h2><img class="center" alt="" align="middle" src="geticon.php?context=devices&icon=terminal&size=16"> {t}Generic{/t}</h2>
 
 <table width="100%">
   <tr>
