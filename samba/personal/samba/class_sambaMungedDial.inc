@@ -329,7 +329,7 @@ class sambaMungedDial
       }
     }
 
-    if (substr($this->ctx['CtxCfgFlags1'], 6, 1) == "1") {
+    if ($this->getInheritMode()) {
       $result['CtxInitialProgramMode'] = "disabled";
     } else {
       $result['CtxInitialProgramMode'] = "";
