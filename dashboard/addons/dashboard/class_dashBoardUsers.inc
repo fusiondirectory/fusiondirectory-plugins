@@ -55,9 +55,9 @@ class dashboardUsers extends simplePlugin
 
     return array(
       'accounts' => array(
-        array('name' => 'mail',   'nb' => $nb_mail_accounts,  'img' => get_template_path("images/mailto.png")),
-        array('name' => 'posix',  'nb' => $nb_posix_accounts, 'img' => get_template_path("images/penguin.png")),
-        array('name' => 'samba',  'nb' => $nb_samba_accounts, 'img' => 'geticon.php?context=devices&icon=computer-windows&size=16')
+        array('name' => 'mail',   'nb' => $nb_mail_accounts,  'img' => 'geticon.php?context=applications&icon=internet-mail&size=16'),
+        array('name' => 'posix',  'nb' => $nb_posix_accounts, 'img' => 'geticon.php?context=applications&icon=os-linux&size=16'),
+        array('name' => 'samba',  'nb' => $nb_samba_accounts, 'img' => 'geticon.php?context=applications&icon=os-windows&size=16')
       ),
       'nb_accounts' => $nb_accounts,
       'user_img' => 'geticon.php?context=types&icon=user&size=16',

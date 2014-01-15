@@ -46,7 +46,7 @@
     &nbsp;
    </td>
    <td style="vertical-align:top; width:100%">
-     <h2><img class="center" alt="" src="plugins/fax/images/printer.png" />&nbsp;{t}Delivery methods{/t}</h2>
+     <h2><img class="center" alt="" src="geticon.php?context=devices&icon=printer&size=16" />&nbsp;{t}Delivery methods{/t}</h2>
 
 {render acl=$goFaxIsEnabledACL}
      <input type=checkbox name="goFaxIsEnabled" value="1" {$goFaxIsEnabled} class="center">

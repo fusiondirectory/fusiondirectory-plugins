@@ -191,7 +191,7 @@ class addressbook extends plugin
 
         /* Perform call */
         if ($target != "" && $source != "") {
-          $smarty->assign("phone_image", get_template_path('plugins/addressbook/images/phone.png'));
+          $smarty->assign("phone_image", 'geticon.php?context=devices&icon=telephone&size=16');
           $smarty->assign("dial_info", sprintf(_("Dial from %s to %s now?"), "<b style='font-size:22px; color:red'>".$source."</b>", "<b style='font-size:22px;color:red'>".$target."</b>"));
           return $smarty->fetch(get_template_path('dial.tpl', TRUE));
         } else {
@@ -489,7 +489,7 @@ class addressbook extends plugin
               $this->telephone_list[$attrs['sn'][0].$attrs['dn']].=
 
                 "<a href=\"mailto:".htmlentities($attrs['mail'][0])."\">".
-                "<img  align=\"top\" border=0 src=\"images/mailto.png\" alt=\"vcf\" title=\"$dest\"></a>";
+                "<img  align=\"top\" border=0 src=\"geticon.php?context=applications&icon=internet-mail&size=16\" alt=\"vcf\" title=\"$dest\"></a>";
             }
           }
           $this->telephone_list[$attrs['sn'][0].$attrs['dn']] .= "&nbsp;</td>";
