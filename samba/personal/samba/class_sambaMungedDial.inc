@@ -161,16 +161,16 @@ class sambaMungedDial
     $counter    = 0;
     $result_tmp = "";
     foreach ($params as $paramName => $paramValue) {
-      /* String parameter? */
+      if ($paramValue === '') {
+        continue;
+      }
+      $isString = FALSE;
       if (in_array($paramName, $this->stringParams)) {
+        /* String parameter */
         $isString   = TRUE;
         $paramValue = sambaMungedDial::strhex($paramValue.chr(0).chr(0));
-      } else {
-        $isString = FALSE;
-      }
-
-      /* Time parameter? */
-      if (in_array($paramName, $this->timeParams)) {
+      } elseif (in_array($paramName, $this->timeParams)) {
+        /* Time parameter */
         $paramValue = sambaMungedDial::genTime($paramValue);
       }
 
@@ -350,10 +350,10 @@ class sambaMungedDial
   {
     $flag = substr($this->ctx['CtxCfgFlags1'], 5, 1);
 
-    if (!$checked) {
-      $flag |= 1;
-    } else {
+    if ($checked) {
       $flag &= 0xFE;
+    } else {
+      $flag |= 1;
     }
 
     $this->ctx['CtxCfgFlags1'][5] = sprintf('%1x', $flag);
