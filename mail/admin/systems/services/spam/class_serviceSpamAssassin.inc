@@ -32,7 +32,7 @@ class serviceSpamAssassin extends simpleService {
     return array(
       'plShortName'   => _('Spamassassin service'),
       'plDescription' => _('Spamassassin service').' ('._('Services').')',
-      'plIcon'        => 'plugins/mail/images/iconMiniSpamassassin.png',
+      'plIcon'        => 'geticon.php?context=applications&icon=spamassassin&size=16',
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );

@@ -113,7 +113,7 @@ class servicePostfix extends simpleService
     return array(
       'plShortName'   => _('Postfix (SMTP)'),
       'plDescription' => _('Postfix (SMTP)').' ('._('Services').')',
-      'plIcon'        => 'plugins/mail/images/iconMiniSmtp.png',
+      'plIcon'        => 'geticon.php?context=applications&icon=smtp&size=16',
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
