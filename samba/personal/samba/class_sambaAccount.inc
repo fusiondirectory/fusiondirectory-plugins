@@ -134,8 +134,8 @@ class sambaAccount extends simplePlugin
     return array(
       'plShortName'     => _('Samba'),
       'plDescription'   => _('Samba settings'),
-      'plIcon'          => 'plugins/samba/images/icon.png',
-      'plSmallIcon'     => 'plugins/samba/images/iconMini.png',
+      'plIcon'          => 'geticon.php?context=applications&icon=samba&size=48',
+      'plSmallIcon'     => 'geticon.php?context=applications&icon=samba&size=16',
       'plSelfModify'    => TRUE,
       'plDepends'       => array('posixAccount'),
       'plPriority'      => 5,

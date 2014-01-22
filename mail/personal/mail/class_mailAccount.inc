@@ -79,8 +79,8 @@ class mailAccount extends simplePlugin
     return array(
       'plShortName'     => _('Mail'),
       'plDescription'   => _('Mail settings'),
-      'plIcon'          => 'plugins/mail/images/icon.png',
-      'plSmallIcon'     => 'plugins/mail/images/iconMini.png',
+      'plIcon'          => 'geticon.php?context=applications&icon=internet-mail&size=48',
+      'plSmallIcon'     => 'geticon.php?context=applications&icon=internet-mail&size=16',
       'plSelfModify'    => TRUE,
       'plPriority'      => 4,                                 // Position in tabs
       'plObjectType'    => array('user'),
@@ -96,7 +96,6 @@ class mailAccount extends simplePlugin
     return array (
       'main' => array (
         'name'  => _('Generic'),
-        'icon' => 'images/rightarrow.png',
         'attrs' => array (
           new StringAttribute (
             _('Primary address'), _('Primary mail address'),
@@ -116,7 +115,6 @@ class mailAccount extends simplePlugin
       ),
       'other_addresses' => array(
         'name'  => _('Other addresses and redirections'),
-        'icon'  => get_template_path('plugins/mail/images/alternatemail.png'),
         'attrs' => array(
           new SetAttribute (
             new MailAttribute (
@@ -196,7 +194,6 @@ class mailAccount extends simplePlugin
       ),
       'advanced' => array (
          'name' => _('Advanced mail options'),
-         'icon' => 'geticon.php?context=status&icon=task-failure&size=16',
          'attrs' => array (
           new BooleanAttribute (
             _('Use custom sieve script').' <b>('._('disables all Mail options!').')<b>',
