@@ -18,44 +18,54 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class ipmiCredentials extends simplePlugin
+class ipmiClient extends simplePlugin
 {
-  var $objectclasses  = array();
-  var $displayHeader  = FALSE;
+  var $objectclasses  = array('ipmiClient');
+  var $displayHeader  = TRUE;
 
-  /* Return plugin informations for acl handling */
-  static function plInfo()
+  //~ var $inheritance = array("gosaGroupOfNames" => "member");
+
+  static function plInfo ()
   {
     return array(
-      'plShortName'   => _('Credentials'),
-      'plDescription' => _('IPMI credentials'),
-      'plSelfModify'  => FALSE,
-      'plObjectType'  => array('ipmi'),
+      'plShortName'     => _('IPMI client'),
+      'plDescription'   => _('Edit IPMI client settings'),
+      'plSelfModify'    => FALSE,
+      'plCategory'      => array('workstation','server'),
+      'plObjectType'    => array('workstation','server'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }
 
-  /*!
-   *  \brief The main function : information about attributes
-   */
-  static function getAttributesInfo ($word = NULL, $rdn = NULL)
+  static function getAttributesInfo ()
   {
     return array(
       'main' => array(
         'name'  => _('IPMI client settings'),
         'attrs' => array(
           new StringAttribute (
+            _('IP'), _('IP of the IPMI interface'),
+            'fdIpmiIP', TRUE
+          ),
+          new StringAttribute (
             _('User login'), _('IPMI user login'),
-            'fdIpmiLogin', FALSE
+            'fdIpmiLogin', TRUE,
+            ''
           ),
           new PasswordAttribute (
             _('User password'), _('IPMI user password'),
-            'fdIpmiPassword', FALSE
+            'fdIpmiPassword', TRUE
           ),
         )
       ),
     );
   }
+
+  function __construct(&$config, $dn = NULL, $object = NULL)
+  {
+    parent::__construct($config, $dn, $object);
+  }
 }
+
 ?>
