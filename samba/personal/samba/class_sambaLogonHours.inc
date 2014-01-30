@@ -1,5 +1,4 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
@@ -20,18 +19,15 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class sambaLogonHours extends plugin
+class sambaLogonHours
 {
-
   var $sambaLogonHours = "";
   var $Matrix          = array();
   var $timezone        = 0;
-  var $config;
   var $acl;
 
-  function __construct (&$config, $dn, $slh, $acl = 'rw')
+  function __construct ($slh, $acl = 'rw')
   {
-    parent::__construct($config, $dn);
     $this->sambaLogonHours  = $slh;
     $this->acl              = $acl;
 
@@ -168,7 +164,7 @@ class SambaLogonHoursDialog
   {
     $this->sambaAttribute = $sambaAttribute;
     $this->dialog         = new sambaLogonHours(
-      $simplePlugin->config, $simplePlugin->dn, $sambaAttribute->getValue(),
+      $sambaAttribute->getValue(),
       $simplePlugin->getacl('sambaLogonHours')
     );
   }
