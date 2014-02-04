@@ -1236,23 +1236,6 @@ class phoneAccount extends plugin
     $hl.= "</select>\n";
     $smarty->assign ("hardware_list", $hl);
 
-
-    foreach($this->attributes as $attr){
-      if(in_array($attr,$this->multi_boxes)){
-        $smarty->assign("use_".$attr,TRUE);
-      }else{
-        $smarty->assign("use_".$attr,FALSE);
-      }
-    }
-
-    foreach(array("goFonVoiceMailContext","goFonContext") as $attr){
-      if(in_array($attr,$this->multi_boxes)){
-        $smarty->assign("use_".$attr,TRUE);
-      }else{
-        $smarty->assign("use_".$attr,FALSE);
-      }
-    }
-
     /* Show main page */
     $this->lastmacro = $this->macro;
     $display.= $smarty->fetch(get_template_path('generic.tpl', TRUE, dirname(__FILE__)));

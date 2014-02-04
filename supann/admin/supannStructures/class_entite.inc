@@ -42,8 +42,16 @@ class supann
     $entity_codes   = array();
     $entity_labels  = array();
     if (file_exists(SUPANN_DIR.'/'.$type)) {
-      $entiteList = file(SUPANN_DIR.'/'.$type);
-      foreach ($entiteList as $line) {
+      $entiteList = fopen(SUPANN_DIR.'/'.$type, 'r');
+      if ($entiteList === FALSE) {
+        msg_dialog::display(
+          _("File error"),
+          sprintf(_("Cannot read file: '%s'"), SUPANN_DIR.'/'.$type),
+          ERROR_DIALOG
+        );
+        return array(array(), array());
+      }
+      while (($line = fgets($entiteList)) !== FALSE) {
         if (!preg_match ('/^#/', $line)) {
           $entite_line = preg_split('/;/', trim($line));
 
@@ -51,6 +59,7 @@ class supann
           $entity_labels[]  = self::truncate_label($entite_line[1]);
         }
       }
+      fclose($entiteList);
     }
     return array($entity_codes, $entity_labels);
   }

@@ -161,20 +161,20 @@ class sambaMungedDial
     $counter= 0;
     $result_tmp= "";
     foreach ($params as $paramName => $paramValue) {
-      /* String parameter? */
-      if (in_array($paramName, $this->stringParams)){
-        $isString= TRUE;
-        $paramValue= sambaMungedDial::strhex($paramValue.chr(0).chr(0));
-      } else {
-        $isString= FALSE;
+      if ($paramValue === '') {
+        continue;
+      }
+      $isString = FALSE;
+      if (in_array($paramName, $this->stringParams)) {
+        /* String parameter */
+        $isString   = TRUE;
+        $paramValue = sambaMungedDial::strhex($paramValue.chr(0).chr(0));
+      } elseif (in_array($paramName, $this->timeParams)) {
+        /* Time parameter */
+        $paramValue = sambaMungedDial::genTime($paramValue);
       }
 
-      /* Time parameter? */
-      if (in_array($paramName, $this->timeParams)){
-        $paramValue= sambaMungedDial::genTime($paramValue);
-      }
-
-      $result_tmp.= sambaMungedDial::munge($paramName, $paramValue, $isString);
+      $result_tmp .= sambaMungedDial::munge($paramName, $paramValue, $isString);
       $counter++;
     }
 
@@ -329,7 +329,7 @@ class sambaMungedDial
       }
     }
 
-    if (substr($this->ctx['CtxCfgFlags1'], 6, 1) == "1") {
+    if ($this->getInheritMode()) {
       $result['CtxInitialProgramMode'] = "disabled";
     } else {
       $result['CtxInitialProgramMode'] = "";
@@ -344,9 +344,9 @@ class sambaMungedDial
     $flags = ord(substr($this->ctx['CtxCfgFlags1'], 5, 1));
 
     if ($flags & 1) {
-        $result = FALSE;
-      } else {
-        $result = TRUE;
+      $result = FALSE;
+    } else {
+      $result = TRUE;
     }
 
     return $result;
@@ -357,10 +357,10 @@ class sambaMungedDial
   {
     $flag = substr($this->ctx['CtxCfgFlags1'], 5, 1);
 
-    if (!$checked) {
-      $flag |= 1;
-    } else {
+    if ($checked) {
       $flag &= 0xFE;
+    } else {
+      $flag |= 1;
     }
 
     $this->ctx['CtxCfgFlags1'][5] = sprintf('%1x', $flag);

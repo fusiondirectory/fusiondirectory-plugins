@@ -49,5 +49,38 @@ class inventoryManagement extends simpleManagement
     $this->listXMLPath  = get_template_path('inventory-list.xml', TRUE, dirname(__FILE__));
     parent::__construct($config, $ui);
   }
+
+  function configureHeadpage ()
+  {
+    parent::configureHeadpage();
+    $this->headpage->registerElementFilter('filterOS', 'inventoryManagement::filterOS');
+  }
+
+  static function filterOS()
+  {
+    $pid    = func_get_arg(0);
+    $row    = func_get_arg(1);
+    $dn     = func_get_arg(2);
+    $trans  = array();
+
+    global $config;
+    $ldap = $config->get_ldap_link();
+    $ldap->ls('(objectClass=fdInventoryOPERATINGSYSTEM)', $dn, array('fdInventoryNAME','fdInventoryFQDN'));
+    while ($attrs = $ldap->fetch()) {
+      $link = $attrs['fdInventoryNAME'][0];
+      if (isset($attrs['fdInventoryFQDN'][0])) {
+        $link .= ' ('.$attrs['fdInventoryFQDN'][0].')';
+      }
+      $trans[] = $link;
+    }
+
+    $trans  = join("<br/>\n", $trans);
+
+    if ($trans != "") {
+      return '<a href="?plug='.$_GET['plug'].'&amp;PID='.$pid.'&amp;act=listing_edit_'.$row.'" title="'.$dn.'">'.$trans.'</a>';
+    }
+
+    return '';
+  }
 }
 ?>

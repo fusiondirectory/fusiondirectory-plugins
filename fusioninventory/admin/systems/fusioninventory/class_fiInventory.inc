@@ -77,6 +77,7 @@ class fiInventory extends simplePlugin
           'icon'        => 'plugins/fusioninventory/images/iconMini.png',
           'name'        => _('Inventory object'),
           'ou'          => get_ou('inventoryRDN'),
+          'tabClass'    => 'simpleTabs_noSpecial',
         )
       ),
 

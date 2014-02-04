@@ -9,7 +9,7 @@
   </definition>
 
   <table>
-    <layout>|20px;c||150px-d|185px-d;r|</layout>
+    <layout>|20px;c||150px-d||185px-d;r|</layout>
 
     <department>
       <value>%{filter:objectType(dn,objectClass)}</value>
@@ -37,6 +37,12 @@
       <sortAttribute>macAddress</sortAttribute>
       <sortType>string</sortType>
       <value>%{filter:filterRowLink(pid,row,dn,macAddress)}</value>
+      <export>true</export>
+    </column>
+
+    <column>
+      <label>Operating Systems</label>
+      <value>%{filter:filterOS(pid,row,dn)}</value>
       <export>true</export>
     </column>
 
