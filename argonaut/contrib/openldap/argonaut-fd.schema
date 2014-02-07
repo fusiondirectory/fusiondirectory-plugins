@@ -197,12 +197,6 @@ attributetype ( 1.3.6.1.4.1.38414.2.14.3 NAME 'argonautFusePxelinuxCfg'
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SINGLE-VALUE )
 
-attributetype ( 1.3.6.1.4.1.38414.2.14.4 NAME 'argonautFusePxelinuxCfgStatic'
-  DESC 'Fusion Directory - Argonaut, fuse pxelinux_cfg_static.'
-  EQUALITY caseExactIA5Match
-  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
-  SINGLE-VALUE )
-
 attributetype ( 1.3.6.1.4.1.38414.2.14.5 NAME 'argonautFuseFaiFlags'
   DESC 'Fusion Directory - Argonaut, fuse fai flags.'
   EQUALITY caseExactIA5Match
@@ -275,8 +269,7 @@ objectclass ( 1.3.6.1.4.1.38414.2.2.4 NAME 'argonautDNSConfig'
 objectclass ( 1.3.6.1.4.1.38414.2.2.5 NAME 'argonautFuseConfig'
   DESC 'An argonaut config for fuse'
   SUP top AUXILIARY
-  MUST (  argonautFuseDefaultMode $ argonautFuseLogDir $ argonautFusePxelinuxCfg $
-          argonautFusePxelinuxCfgStatic ) )
+  MUST ( argonautFuseDefaultMode $ argonautFuseLogDir $ argonautFusePxelinuxCfg ) )
 
 objectclass ( 1.3.6.1.4.1.38414.2.2.6 NAME 'argonautFuseOPSIConfig'
   DESC 'An argonaut config for fuse OPSI module'
