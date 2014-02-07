@@ -71,13 +71,6 @@ class argonautFuseConfig extends simpleService
             TRUE,
             '/srv/tftp/pxelinux.cfg'
           ),
-          new StringAttribute (
-            _('Pxelinux cfg static path'),
-            _('Path where argonaut-fuse should store pxelinux.static'),
-            'argonautFusePxelinuxCfgStatic',
-            TRUE,
-            '/srv/tftp/pxelinux.static'
-          ),
         )
       )
     );
