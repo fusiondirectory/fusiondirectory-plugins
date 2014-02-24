@@ -75,6 +75,11 @@ class argonautMirrorConfig extends simpleService
             'argonautLdap2repProxy',
             FALSE
           ),
+          new StringAttribute (
+            _('Log directory'), '',
+            'argonautLdap2repLogDir', FALSE,
+            '/var/log/argonaut/'
+          ),
           new BooleanAttribute (
             _('Errors'),
             '',
