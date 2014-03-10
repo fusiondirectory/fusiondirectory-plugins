@@ -1,5 +1,4 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
@@ -39,7 +38,7 @@ class serviceNTP extends simpleService {
  /* The main function : information about attributes */
   static function getAttributesInfo ()
   {
-      return array (
+    return array (
       'section1' => array (
         'name'  => _('Generic'),
         'attrs' => array (

@@ -37,7 +37,7 @@ class filterServerService
         }
         foreach ($data as $key => $value) {
           if (!is_array($value)) {
-            $data[$key] = array($value);
+            $value = array($value);
           }
           $list[$name][]              = $key;
           $list[$name][$key]          = $value;

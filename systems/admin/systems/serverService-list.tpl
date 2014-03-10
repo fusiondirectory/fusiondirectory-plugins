@@ -1,23 +1,29 @@
-<table style="width:100%;height:100%; vertical-align:top; text-align:left;" cellpadding=2>
-  <tr>
-    <td style="vertical-align:top; width:100%;">
-      <div class="contentboxh">
-        <p class="contentboxh">&nbsp;{$HEADLINE}&nbsp;{$SIZELIMIT}</p>
-      </div>
+<table class="listing_container">
+  <tbody>
+    <tr>
+      <td class="list">
+        <div class="contentboxh">
+          <p class="contentboxh">&nbsp;{$HEADLINE}&nbsp;{$SIZELIMIT}</p>
+        </div>
 
-      <div class="contentboxb">
-       <div style='background:white;padding:3px;'>
-        <table><tr>
-          <td>{$ROOT}&nbsp;</td><td>{$BACK}&nbsp;</td><td>{$HOME}&nbsp;</td><td>{$RELOAD}&nbsp;</td><td>{$SEPARATOR}&nbsp;</td><td><img src='images/rocket.png' alt='' class='center'></td><td> {$ACTIONS}</td>
-        </tr></table>
-       </div>
-      </div>
+        <div class="contentboxb" style="background:white;">
+          <table>
+            <tbody>
+              <tr>
+                <td>{$ROOT}&nbsp;</td><td>{$BACK}&nbsp;</td><td>{$HOME}&nbsp;</td><td class="optional">{$RELOAD}&nbsp;</td><td>{$SEPARATOR}&nbsp;</td>
+                {if $BASE}<td>{t}Base{/t} {$BASE}&nbsp;</td><td>{$SEPARATOR}&nbsp;</td>{/if}
+                <td>{$ACTIONS}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
-      <div style='height:4px;'>
-      </div>
-      {$LIST}
-    </td>
-  </tr>
+        <div style="margin-top:4px;">
+          {$LIST}
+        </div>
+      </td>
+    </tr>
+  </tbody>
 </table>
 
-<input type="hidden" name="ignore">
+<input type="hidden" name="ignore"/>
