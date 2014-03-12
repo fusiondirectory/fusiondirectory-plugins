@@ -189,8 +189,7 @@ class faiPluginClass extends plugin
     /* Call common method to give check the hook */
     $message = parent::check();
 
-    /* Ensure that we do not overwrite an allready existing entry
-     */
+    /* Ensure that we do not overwrite an allready existing entry */
     $new_dn   = $this->compute_dn();
     $ldap     = $this->config->get_ldap_link();
     $ldap->cat($new_dn);
@@ -204,6 +203,33 @@ class faiPluginClass extends plugin
   function compute_dn()
   {
     return 'cn='.$this->cn.','.get_ou(get_class($this).'RDN').$this->parent->parent->fai_release;
+  }
+}
+
+class faiSimplePluginClass extends simplePlugin
+{
+  /* Check supplied data */
+  function check()
+  {
+    /* Call common method to give check the hook */
+    $message = parent::check();
+
+    /* Ensure that we do not overwrite an allready existing entry */
+    $new_dn   = $this->compute_dn();
+    if ($this->dn != $new_dn) {
+      $ldap     = $this->config->get_ldap_link();
+      $ldap->cat($new_dn);
+      if ($ldap->count() != 0) {
+        $message[] = msgPool::duplicated(_("Name"));
+      }
+    }
+
+    return $message;
+  }
+
+  function compute_dn()
+  {
+    return 'cn='.$this->cn.','.get_ou(get_class($this).'RDN').$this->base;
   }
 }
 ?>
