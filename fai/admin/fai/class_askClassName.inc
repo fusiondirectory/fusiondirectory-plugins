@@ -208,6 +208,20 @@ class faiPluginClass extends plugin
 
 class faiSimplePluginClass extends simplePlugin
 {
+  protected $base;
+
+  function __construct (&$config, $dn = NULL, $object = NULL)
+  {
+    parent::__construct($config, $dn, $object);
+
+    if ($dn == "new") {
+      $ui = get_userinfo();
+      $this->base = dn2base(session::global_is_set("CurrentMainBase")?"cn=dummy,".session::global_get("CurrentMainBase"):$ui->dn);
+    } else {
+      $this->base = dn2base($dn, get_ou(get_class($this).'RDN'));
+    }
+  }
+
   /* Check supplied data */
   function check()
   {

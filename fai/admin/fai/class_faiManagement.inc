@@ -53,13 +53,13 @@ class faiListing extends listing
 class faiBaseSelector extends baseSelector {
   protected $select;
 
-  function __construct($bases, $base = "")
+  function __construct($bases, $base = '')
   {
     parent::__construct($bases, $base);
     $this->select = new SelectAttribute(
       '', '',
       'bs_rebase_'.$this->pid, TRUE,
-      array_keys($this->pathMapping), "", array_values($this->pathMapping)
+      array_keys($this->pathMapping), '', array_values($this->pathMapping)
     );
     $this->select->setSubmitForm(TRUE);
   }
@@ -91,9 +91,9 @@ class faiBaseSelector extends baseSelector {
       $this->setBase($this->select->getValue());
     }
     $smarty = get_smarty();
-    $smarty->assign($this->select->getAcl()."ACL", "rwcdm");
+    $smarty->assign($this->select->getAcl().'ACL', 'rwcdm');
     $this->tree = $smarty->fetch('eval:'.$this->select->renderFormInput());
-    $this->tree .= "<input type='hidden' name='BPID' id='BPID' value='".$this->pid."'>";
+    $this->tree .= '<input type="hidden" name="BPID" id="BPID" value="'.$this->pid.'"/>';
 
     $this->lastState = TRUE;
     return TRUE;
@@ -105,11 +105,11 @@ class faiManagement extends simpleManagement
   // Tab definition
   protected $objectTypes  = array('faiVariable');
 
-  //~ protected $departmentBrowser      = FALSE;
-  //~ protected $departmentRootVisible  = FALSE;
+  protected $departmentBrowser      = FALSE;
+  protected $departmentRootVisible  = FALSE;
   //~ protected $baseMode               = FALSE;
 
-  protected $headpageClass = "faiListing";
+  protected $headpageClass = 'faiListing';
 
   public static function plInfo()
   {
@@ -134,7 +134,7 @@ class faiManagement extends simpleManagement
     global $config;
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
-    $ldap->search("(objectClass=FAIbranch)", array("ou","FAIstate"));
+    $ldap->search('(objectClass=FAIbranch)', array('ou','FAIstate'));
 
     $list = array();
 
