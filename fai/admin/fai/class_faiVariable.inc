@@ -67,7 +67,7 @@ class faiVariable extends faiSimplePluginClass
         'attrs' => array(
           new SubNodesAttribute (
             '', _('Variables in this class'),
-            'variables', 'FAIvariableEntry',
+            'variables', array('FAIvariableEntry','FAIclass','top'),
             array(
               new StringAttribute (
                 _('Name'), _('The name of the variable'),
@@ -97,6 +97,12 @@ class faiVariable extends faiSimplePluginClass
 
     $this->attributesAccess['cn']->setUnique(TRUE);
     $this->attributesAccess['variables']->setLinearRendering(FALSE);
+  }
+
+  function ldap_save ($cleanup = TRUE)
+  {
+    parent::ldap_save($cleanup);
+    $this->attributesAccess['variables']->postLdapSave($this->config->get_ldap_link());
   }
 }
 ?>
