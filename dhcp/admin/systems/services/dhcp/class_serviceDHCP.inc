@@ -344,7 +344,7 @@ class serviceDHCP extends goService
     $editImg = "<input type='image' src='geticon.php?context=actions&icon=document-edit&size=16' name='editDhcp_%s' title='"._("Edit DHCP section")."'>".
       "<input type='image' src='geticon.php?context=actions&icon=edit-delete&size=16' name='delDhcp_%s' title='"._("Remove DHCP section")."'>";
     $subnetExpandImg = "<input style='padding:5px 6px 4px;vertical-align:middle;' type='image' src='images/lists/expand.png' name='expandDhcp_%s' title='"._("Expand DHCP subnet")."'/>";
-    $subnetExpandedImg = "<input style='padding:6px 5px 6px 4px;vertical-align:middle;' type='image' src='images/lists/sort-down.png' name='foldDhcp_%s' title='"._("Fold DHCP subnet")."'/>";
+    $subnetExpandedImg = "<input style='padding:6px 5px 6px 4px;vertical-align:middle;' type='image' src='images/down-arrow.png' name='foldDhcp_%s' title='"._("Fold DHCP subnet")."'/>";
 
     $tmp = new dhcpNewSectionDialog(NULL);
     foreach ($this->dhcpSections as $section => $values) {
