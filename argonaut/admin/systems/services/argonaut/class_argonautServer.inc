@@ -51,6 +51,12 @@ class argonautServer extends simpleService
             'argonautDeleteFinished', FALSE,
             TRUE
           ),
+          new BooleanAttribute (
+            _('Get packages informations'),
+            _('Wether or not argonaut server should get packages information from repositories at start and then once a day. Needed for FAI package list creation.'),
+            'argonautFetchPackages', FALSE,
+            TRUE
+          ),
           new SelectAttribute (
             _('Protocol'), _('Protocol to use for argonaut'),
             'argonautProtocol', TRUE,
