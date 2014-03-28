@@ -3,13 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Maik Wagner <maikwagner@yahoo.com>, 2013
+# Maik Wagner <maikwagner@yahoo.com>, 2013-2014
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
+"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-08-21 18:26+0200\n"
-"PO-Revision-Date: 2013-08-23 12:30+0000\n"
+"PO-Revision-Date: 2014-02-13 09:20+0000\n"
 "Last-Translator: Maik Wagner <maikwagner@yahoo.com>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/FusionDirectory/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -349,20 +349,20 @@ msgstr "Pxelinux cfg Pfad"
 
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:70
 msgid "Path where argonaut-fuse should store pxelinux.cfg"
-msgstr ""
+msgstr "Pfad wo argonaut-fuse pxelinux.cfg speichern soll"
 
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:76
 msgid "Pxelinux cfg static path"
-msgstr ""
+msgstr "Pxelinux cfg statischer Pfad"
 
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:77
 msgid "Path where argonaut-fuse should store pxelinux.static"
-msgstr ""
+msgstr "Pfad wo argonaut-fuse pxelinux.static speichern soll"
 
 #: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:32
 #: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:33
 msgid "Argonaut Fuse OPSI module settings"
-msgstr ""
+msgstr "Argonaut Fuse OPSI Moduleinstellungen"
 
 #: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:47
 msgid "OPSI"
@@ -453,7 +453,7 @@ msgstr "Beendete Aufgaben löschen"
 #: admin/systems/services/argonaut/class_argonautServer.inc:51
 msgid ""
 "Wether or not argonaut server should delete successfully finished tasks"
-msgstr ""
+msgstr "Ob der argonaut-Server erfolgreich abgeschlossene Aufgaben löschen soll"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:56
 msgid "Protocol"
@@ -469,7 +469,7 @@ msgstr "Anschluss"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:62
 msgid "Port on which the argonaut server will be listening"
-msgstr ""
+msgstr "Port auf dem der argonaut-Server lauschen wird"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:67
 msgid "Timeout"
@@ -478,7 +478,7 @@ msgstr "Wartezeit"
 #: admin/systems/services/argonaut/class_argonautServer.inc:68
 msgid ""
 "Time in seconds before to consider an argonaut client or server as down"
-msgstr ""
+msgstr "Zeit in Sekunden bevor ein argonaut-Client oder Server als down bezeichnet werden soll"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:75
 msgid "Directory in which argonaut will store its log"
@@ -490,7 +490,7 @@ msgstr "Schlüsselpfad"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:80
 msgid "Path to the private key file"
-msgstr ""
+msgstr "Pfad zur privaten Schlüsseldatei"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:85
 msgid "Certificate path"
@@ -556,7 +556,7 @@ msgstr "Lokale Paketeordner"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:62
 msgid "Folder in which the crawler will store packages during analysis"
-msgstr ""
+msgstr "Ordner in dem der Crawler Paket während der Analyse speichern wird"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:70
 msgid "Argonaut Repository configuration"
@@ -588,12 +588,12 @@ msgstr "Ausführlich"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:108
 msgid "Wether to activate verbose mode"
-msgstr ""
+msgstr "Ob der verbose-Modus aktiviert werden soll"
 
 #: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:32
 #: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:33
 msgid "Argonaut Fuse FAI module settings"
-msgstr ""
+msgstr "Argonaut Fuse FAI Moduleinstellungen"
 
 #: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:47
 msgid "FAI"
@@ -601,7 +601,7 @@ msgstr "FAI"
 
 #: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:50
 msgid "Fai flags"
-msgstr ""
+msgstr "Fai Flags"
 
 #: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:57
 msgid "NFS root"
@@ -617,7 +617,7 @@ msgstr "Clientport"
 
 #: admin/systems/argonaut/class_argonautClient.inc:120
 msgid "Port used by argonaut client for JSON-RPC"
-msgstr ""
+msgstr "Port, der vom argonaut-client für JSON-RPC verwendet wird"
 
 #: admin/systems/argonaut/class_argonautClient.inc:125
 msgid "WakeOnLan interface"
@@ -625,7 +625,7 @@ msgstr "WakeOnLan Schnittstelle"
 
 #: admin/systems/argonaut/class_argonautClient.inc:125
 msgid "Interface used by argonaut for WakeOnLan"
-msgstr ""
+msgstr "Schnittstelle, die von argonaut für WakeOnLan verwendet wird"
 
 #: admin/systems/argonaut/class_argonautClient.inc:130
 msgid "TaskId file"
@@ -633,7 +633,7 @@ msgstr "TaskId Datei"
 
 #: admin/systems/argonaut/class_argonautClient.inc:130
 msgid "File which argonaut will use to store its task id when booting"
-msgstr ""
+msgstr "Datei, die argonaut verwenden wird um seine Task ID während des Bootens zu speichern"
 
 #: admin/systems/argonaut/class_argonautClient.inc:135
 msgid "Directory in which argonaut client should write its logs"
@@ -657,7 +657,7 @@ msgstr "Argonaut Clienteinstellungen bearbeiten"
 
 #: include/class_supportDaemon.inc:89
 msgid "Multiple argonaut server found. Only one is supported"
-msgstr ""
+msgstr "Mehrere argonaut Server gefunden. Nur einer wird unterstützt"
 
 #: include/class_supportDaemon.inc:91
 msgid "There is no argonaut server configured"
@@ -671,7 +671,7 @@ msgstr "Vorgänge importieren"
 msgid ""
 "You can import a list of jobs into the FusionDirectory job queue. This "
 "should be a semicolon seperated list of items in the following format:"
-msgstr ""
+msgstr "Sie können eine Liste von Jobs, der FusionDirectory Jobschlange hinzufügen. Dies sollte durch Semikolon getrennte Liste von Items in folgenden Format sein:"
 
 #: addons/argonaut/argonaut_import_file.tpl.c:8
 msgid "timestamp"

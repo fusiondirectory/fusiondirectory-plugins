@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# alejandrobarrios <alejandrobarrios@interlegis.leg.br>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
+"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-08-21 18:26+0200\n"
-"PO-Revision-Date: 2013-08-06 07:24+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"PO-Revision-Date: 2014-03-25 18:50+0000\n"
+"Last-Translator: alejandrobarrios <alejandrobarrios@interlegis.leg.br>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/FusionDirectory/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -27,7 +28,7 @@ msgstr ""
 
 #: config/supann/class_supannConfig.inc:42
 msgid "LDAP tree"
-msgstr ""
+msgstr "Árvore LDAP"
 
 #: config/supann/class_supannConfig.inc:45
 msgid "SUPANN RDN"
@@ -40,19 +41,19 @@ msgstr ""
 #: personal/supann/class_supannAccount.inc:35
 #: personal/supann/class_supannAccount.inc:109
 msgid "None"
-msgstr ""
+msgstr "Nenhum"
 
 #: personal/supann/class_supannAccount.inc:106
 msgid "Licence"
-msgstr ""
+msgstr "Licença"
 
 #: personal/supann/class_supannAccount.inc:106
 msgid "Master"
-msgstr ""
+msgstr "Mestre"
 
 #: personal/supann/class_supannAccount.inc:106
 msgid "Ph.D."
-msgstr ""
+msgstr "Ph.D."
 
 #: personal/supann/class_supannAccount.inc:106
 msgid "Another class of degree"
@@ -60,43 +61,43 @@ msgstr ""
 
 #: personal/supann/class_supannAccount.inc:106
 msgid "post-graduate year"
-msgstr ""
+msgstr "Ano de pós-graduação"
 
 #: personal/supann/class_supannAccount.inc:109
 msgid "1st year"
-msgstr ""
+msgstr "1º ano"
 
 #: personal/supann/class_supannAccount.inc:109
 msgid "2nd year"
-msgstr ""
+msgstr "2º ano"
 
 #: personal/supann/class_supannAccount.inc:109
 msgid "3rd year"
-msgstr ""
+msgstr "3º ano"
 
 #: personal/supann/class_supannAccount.inc:110
 msgid "4th year"
-msgstr ""
+msgstr "4º ano"
 
 #: personal/supann/class_supannAccount.inc:110
 msgid "5th year"
-msgstr ""
+msgstr "5º ano"
 
 #: personal/supann/class_supannAccount.inc:110
 msgid "6th year"
-msgstr ""
+msgstr "6º ano"
 
 #: personal/supann/class_supannAccount.inc:111
 msgid "7th year"
-msgstr ""
+msgstr "7º ano"
 
 #: personal/supann/class_supannAccount.inc:111
 msgid "8th year"
-msgstr ""
+msgstr "8º ano"
 
 #: personal/supann/class_supannAccount.inc:111
 msgid "9th year"
-msgstr ""
+msgstr "9º ano"
 
 #: personal/supann/class_supannAccount.inc:214
 msgid "SupAnn"
@@ -108,7 +109,7 @@ msgstr ""
 
 #: personal/supann/class_supannAccount.inc:233 personal/supann/supann.tpl.c:8
 msgid "Identity"
-msgstr ""
+msgstr "Identidade"
 
 #: personal/supann/class_supannAccount.inc:236
 msgid "Civilite"
@@ -120,7 +121,7 @@ msgstr ""
 
 #: personal/supann/class_supannAccount.inc:241
 msgid "Alias login"
-msgstr ""
+msgstr "Login de alias"
 
 #: personal/supann/class_supannAccount.inc:241
 msgid "supannAliasLogin - An alias for the login of this user"
@@ -138,7 +139,7 @@ msgstr ""
 
 #: personal/supann/class_supannAccount.inc:249
 msgid "Nick name"
-msgstr ""
+msgstr "Apelido"
 
 #: personal/supann/class_supannAccount.inc:249
 msgid "eduPersonNickName - Can contain a nick name for this user"
@@ -146,11 +147,11 @@ msgstr ""
 
 #: personal/supann/class_supannAccount.inc:255 personal/supann/supann.tpl.c:23
 msgid "Contact"
-msgstr ""
+msgstr "Contato"
 
 #: personal/supann/class_supannAccount.inc:259
 msgid "Other phone numbers"
-msgstr ""
+msgstr "Outros números de telefone"
 
 #: personal/supann/class_supannAccount.inc:259
 msgid "supannAutreTelephone - Other phone numbers for this user"
@@ -158,7 +159,7 @@ msgstr ""
 
 #: personal/supann/class_supannAccount.inc:265
 msgid "Other mail addresses"
-msgstr ""
+msgstr "Outro endereço de email"
 
 #: personal/supann/class_supannAccount.inc:265
 msgid ""
@@ -167,7 +168,7 @@ msgstr ""
 
 #: personal/supann/class_supannAccount.inc:271
 msgid "Personal mail addresses"
-msgstr ""
+msgstr "Endereços pessoais de correio"
 
 #: personal/supann/class_supannAccount.inc:271
 msgid "supannMailPerso - Personal mail addresses for this user"
@@ -217,7 +218,7 @@ msgstr ""
 #: personal/supann/class_supannAccount.inc:303 personal/supann/supann.tpl.c:41
 #: personal/supann/supann.tpl.c:47
 msgid "Affiliation"
-msgstr ""
+msgstr "Afiliação"
 
 #: personal/supann/class_supannAccount.inc:306
 msgid "Primary affiliation"
@@ -229,7 +230,7 @@ msgstr ""
 
 #: personal/supann/class_supannAccount.inc:311
 msgid "Affiliations"
-msgstr ""
+msgstr "Afiliações"
 
 #: personal/supann/class_supannAccount.inc:311 personal/supann/supann.tpl.c:59
 msgid "eduPersonAffiliation"
@@ -251,7 +252,7 @@ msgstr ""
 
 #: personal/supann/class_supannAccount.inc:324
 msgid "Student profile"
-msgstr ""
+msgstr "Perfil de estudante"
 
 #: personal/supann/class_supannAccount.inc:327
 msgid "INE code"
@@ -284,7 +285,7 @@ msgstr ""
 
 #: personal/supann/class_supannAccount.inc:360
 msgid "Year"
-msgstr ""
+msgstr "Ano"
 
 #: personal/supann/class_supannAccount.inc:360
 msgid "supannEtuAnneeInscription - The year this subscription will begin"
@@ -292,7 +293,7 @@ msgstr ""
 
 #: personal/supann/class_supannAccount.inc:365
 msgid "Subscription type"
-msgstr ""
+msgstr "Tipo de inscrição"
 
 #: personal/supann/class_supannAccount.inc:365
 msgid "supannEtuRegimeInscription - The type of this subscription"
@@ -357,7 +358,7 @@ msgstr ""
 
 #: personal/supann/class_supannAccount.inc:405
 msgid "Personnal profile"
-msgstr ""
+msgstr "Perfil pessoal"
 
 #: personal/supann/class_supannAccount.inc:408
 msgid "Personal ID"
@@ -385,7 +386,7 @@ msgstr ""
 
 #: personal/supann/class_supannAccount.inc:424
 msgid "Roles"
-msgstr ""
+msgstr "Atribuições"
 
 #: personal/supann/class_supannAccount.inc:432 personal/supann/supann.tpl.c:83
 msgid "supannRoleEntite"
@@ -424,7 +425,7 @@ msgstr ""
 #: admin/supannStructures/class_etablissement.inc:47
 #: admin/supannStructures/etablissement.tpl.c:2
 msgid "Properties"
-msgstr ""
+msgstr "Propriedades"
 
 #: admin/supannStructures/class_etablissement.inc:50
 msgid "Root etablissement"
@@ -438,7 +439,7 @@ msgstr ""
 #: admin/supannStructures/class_entite.inc:98
 #: admin/supannStructures/supannStructures-filter.tpl.c:5
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
 #: admin/supannStructures/class_etablissement.inc:54
 msgid "The name to write in the o attribute for this etablissement"
@@ -450,7 +451,7 @@ msgstr ""
 #: admin/supannStructures/etablissement.tpl.c:14
 #: admin/supannStructures/entite.tpl.c:32
 msgid "Description"
-msgstr ""
+msgstr "Descrição"
 
 #: admin/supannStructures/class_etablissement.inc:58
 msgid "A short description of this etablissement"
@@ -461,7 +462,7 @@ msgstr ""
 #: admin/supannStructures/etablissement.tpl.c:35
 #: admin/supannStructures/etablissement.tpl.c:38
 msgid "Location"
-msgstr ""
+msgstr "Localização"
 
 #: admin/supannStructures/class_etablissement.inc:67
 msgid "Usually the city in which is this etablissement"
@@ -470,7 +471,7 @@ msgstr ""
 #: admin/supannStructures/class_etablissement.inc:71
 #: admin/supannStructures/etablissement.tpl.c:44
 msgid "Address"
-msgstr ""
+msgstr "Endereço"
 
 #: admin/supannStructures/class_etablissement.inc:71
 msgid "The postal address of this etablissement"
@@ -480,7 +481,7 @@ msgstr ""
 #: admin/supannStructures/class_entite.inc:107
 #: admin/supannStructures/entite.tpl.c:14
 msgid "Telephone"
-msgstr ""
+msgstr "Telefone"
 
 #: admin/supannStructures/class_etablissement.inc:75
 msgid "Phone number for this etablissement"
@@ -491,7 +492,7 @@ msgstr ""
 #: admin/supannStructures/etablissement.tpl.c:56
 #: admin/supannStructures/entite.tpl.c:20
 msgid "Fax"
-msgstr ""
+msgstr "Fax"
 
 #: admin/supannStructures/class_etablissement.inc:79
 msgid "Fax number for this etablissement"
@@ -499,7 +500,7 @@ msgstr ""
 
 #: admin/supannStructures/class_etablissement.inc:85
 msgid "SUPANN properties"
-msgstr ""
+msgstr "Propriedades SUPANN"
 
 #: admin/supannStructures/class_etablissement.inc:88
 msgid "Etablissement code"
@@ -511,7 +512,7 @@ msgstr ""
 
 #: admin/supannStructures/class_etablissement.inc:92
 msgid "SUPANN code"
-msgstr ""
+msgstr "Código SUPANN"
 
 #: admin/supannStructures/class_etablissement.inc:92
 msgid "The SUPANN code for this etablissement"
@@ -519,7 +520,7 @@ msgstr ""
 
 #: admin/supannStructures/class_etablissement.inc:97
 msgid "Legal name"
-msgstr ""
+msgstr "Nome legal"
 
 #: admin/supannStructures/class_etablissement.inc:97
 msgid "The legal name of this etablissement"
@@ -553,7 +554,7 @@ msgstr ""
 #: admin/supannStructures/class_etablissement.inc:184
 #: admin/supannStructures/class_etablissement.inc:202
 msgid "LDAP error"
-msgstr ""
+msgstr "Erro de LDAP"
 
 #: admin/supannStructures/class_entite.inc:80
 msgid "SUPANN Entite Settings"
@@ -569,7 +570,7 @@ msgstr ""
 
 #: admin/supannStructures/class_entite.inc:104
 msgid "Administrative informations"
-msgstr ""
+msgstr "Informações administrativas"
 
 #: admin/supannStructures/class_entite.inc:107
 msgid "Phone number for this entite"
@@ -581,7 +582,7 @@ msgstr ""
 
 #: admin/supannStructures/class_entite.inc:115
 msgid "Postal address"
-msgstr ""
+msgstr "Endereços de correspondência"
 
 #: admin/supannStructures/class_entite.inc:115
 msgid "Postal address of this entite"
@@ -593,7 +594,7 @@ msgstr ""
 
 #: admin/supannStructures/class_entite.inc:125
 msgid "SUPANN informations"
-msgstr ""
+msgstr "Informações de SUPANN"
 
 #: admin/supannStructures/class_entite.inc:128
 msgid "The best SUPANN type that fits this entite"
@@ -617,7 +618,7 @@ msgstr ""
 
 #: admin/supannStructures/class_entite.inc:141
 msgid "Reference ID"
-msgstr ""
+msgstr "ID de referência"
 
 #: admin/supannStructures/class_entite.inc:141
 msgid "SUPANN reference ID of this entite"
@@ -629,7 +630,7 @@ msgstr ""
 
 #: admin/supannStructures/supannStructures-list.xml:40
 msgid "Structure"
-msgstr ""
+msgstr "Estrutura"
 
 #: admin/supannStructures/supannStructures-list.xml:48
 #: admin/supannStructures/etablissement.tpl.c:32
@@ -642,29 +643,29 @@ msgstr ""
 
 #: admin/supannStructures/supannStructures-list.xml:75
 msgid "Actions"
-msgstr ""
+msgstr "Ações"
 
 #: admin/supannStructures/supannStructures-list.xml:86
 msgid "Create"
-msgstr ""
+msgstr "Criar"
 
 #: admin/supannStructures/supannStructures-list.xml:108
 #: admin/supannStructures/supannStructures-list.xml:150
 msgid "Edit"
-msgstr ""
+msgstr "Editar"
 
 #: admin/supannStructures/supannStructures-list.xml:115
 #: admin/supannStructures/supannStructures-list.xml:164
 msgid "Remove"
-msgstr ""
+msgstr "Remover"
 
 #: admin/supannStructures/class_supannStructuresManagement.inc:33
 msgid "Supann structures"
-msgstr ""
+msgstr "Estruturas Supann"
 
 #: admin/supannStructures/class_supannStructuresManagement.inc:34
 msgid "Supann structures management"
-msgstr ""
+msgstr "Gerenciador de estruturas Supann"
 
 #: admin/supannStructures/class_supannStructuresManagement.inc:188
 msgid "etablissement"
@@ -728,7 +729,7 @@ msgstr ""
 
 #: personal/supann/supann.tpl.c:95
 msgid "Student subscription"
-msgstr ""
+msgstr "Inscrição de estudante"
 
 #: personal/supann/supann.tpl.c:98
 msgid "supannEtuInscription"
@@ -784,7 +785,7 @@ msgstr ""
 
 #: admin/supannStructures/etablissement.tpl.c:50
 msgid "Phone"
-msgstr ""
+msgstr "Telefone"
 
 #: admin/supannStructures/etablissement.tpl.c:53
 msgid "Base telephone number of this subtree"
@@ -796,11 +797,11 @@ msgstr ""
 
 #: admin/supannStructures/entite.tpl.c:5
 msgid "OU name"
-msgstr ""
+msgstr "Nome OU"
 
 #: admin/supannStructures/entite.tpl.c:8
 msgid "Administrative Information"
-msgstr ""
+msgstr "Informações administrativas"
 
 #: admin/supannStructures/entite.tpl.c:11
 msgid "Supann Informations"
@@ -816,7 +817,7 @@ msgstr ""
 
 #: admin/supannStructures/entite.tpl.c:26
 msgid "Postal Address"
-msgstr ""
+msgstr "Endereço postal"
 
 #: admin/supannStructures/entite.tpl.c:29
 msgid "Supann parent entity code"
@@ -828,18 +829,18 @@ msgstr ""
 
 #: admin/supannStructures/remove.tpl.c:2
 msgid "Warning"
-msgstr ""
+msgstr "Aviso"
 
 #: admin/supannStructures/remove.tpl.c:5
 msgid ""
 "This may be a primary user group. Please double check if you really want to "
 "do this since there is no way for FusionDirectory to get your data back."
-msgstr ""
+msgstr "Este talvez seja um grupo de usuários primários. Clique duas vezes para confirmar. O FusionDirectory não poderá desfazer a ação."
 
 #: admin/supannStructures/remove.tpl.c:8
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr ""
+msgstr "Se você tem certeza, pressione 'Delete' para continuar ou 'Cancel' para desistir."
 
 #: admin/supannStructures/supannStructures-filter.tpl.c:2
 msgid "Filter"
-msgstr ""
+msgstr "Filtro"
