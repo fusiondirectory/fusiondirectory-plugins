@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# marcosantos <marcoa.csantos@yahoo.it>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
+"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-08-21 18:26+0200\n"
-"PO-Revision-Date: 2013-08-06 07:24+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"PO-Revision-Date: 2014-03-26 14:54+0000\n"
+"Last-Translator: marcosantos <marcoa.csantos@yahoo.it>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/FusionDirectory/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,7 +21,7 @@ msgstr ""
 #: config/samba/class_sambaPluginConfig.inc:28
 #: personal/samba/class_sambaAccount.inc:129
 msgid "Samba"
-msgstr ""
+msgstr "Samba"
 
 #: config/samba/class_sambaPluginConfig.inc:29
 msgid "Samba plugin configuration"
@@ -29,7 +30,7 @@ msgstr ""
 #: config/samba/class_sambaPluginConfig.inc:42
 #: personal/samba/class_sambaAccount.inc:130
 msgid "Samba settings"
-msgstr ""
+msgstr "Configurações Samba"
 
 #: config/samba/class_sambaPluginConfig.inc:45
 msgid "Samba machine account RDN"
@@ -79,11 +80,11 @@ msgstr ""
 
 #: config/samba/class_sambaPluginConfig.inc:73
 msgid "Generate sambaLMPassword"
-msgstr ""
+msgstr "Gerar sambaLMPassword"
 
 #: config/samba/class_sambaPluginConfig.inc:73
 msgid "Needed to be compliant with Windows <= 98 or Samba < 3.2"
-msgstr ""
+msgstr "Necessário ser compatível com Windows <=98 ou Samba < 3.2"
 
 #: personal/samba/class_sambaAccount.inc:31
 msgid "Samba Munged Dial"
@@ -91,7 +92,7 @@ msgstr ""
 
 #: personal/samba/class_sambaAccount.inc:155
 msgid "Generic"
-msgstr ""
+msgstr "Genérico"
 
 #: personal/samba/class_sambaAccount.inc:161
 #: personal/samba/class_sambaAccount.inc:194
@@ -116,7 +117,7 @@ msgstr ""
 #: personal/samba/class_sambaAccount.inc:171
 #: admin/systems/samba/class_winstationGeneric.inc:83
 msgid "Domain"
-msgstr ""
+msgstr "Domínio"
 
 #: personal/samba/class_sambaAccount.inc:171
 #: admin/systems/samba/class_winstationGeneric.inc:83
@@ -125,7 +126,7 @@ msgstr ""
 
 #: personal/samba/class_sambaAccount.inc:175
 msgid "Script path"
-msgstr ""
+msgstr "Local do script"
 
 #: personal/samba/class_sambaAccount.inc:175
 msgid "Login script path"
@@ -134,7 +135,7 @@ msgstr ""
 #: personal/samba/class_sambaAccount.inc:179
 #: personal/samba/class_sambaAccount.inc:204
 msgid "Profile path"
-msgstr ""
+msgstr "Local do perfil"
 
 #: personal/samba/class_sambaAccount.inc:179
 #: personal/samba/class_sambaAccount.inc:204
@@ -147,7 +148,7 @@ msgstr ""
 
 #: personal/samba/class_sambaAccount.inc:190
 msgid "Allow login on terminal server"
-msgstr ""
+msgstr "Permitir login no terminal do servidor"
 
 #: personal/samba/class_sambaAccount.inc:209
 msgid "Inherit client config"
@@ -219,7 +220,7 @@ msgstr ""
 
 #: personal/samba/class_sambaAccount.inc:244
 msgid "Default printer for this client"
-msgstr ""
+msgstr "Impressora padrão para este cliente"
 
 #: personal/samba/class_sambaAccount.inc:248
 msgid "Shadowing"
@@ -227,7 +228,7 @@ msgstr ""
 
 #: personal/samba/class_sambaAccount.inc:251
 msgid "disabled"
-msgstr ""
+msgstr "desabilitado"
 
 #: personal/samba/class_sambaAccount.inc:251
 msgid "input on, notify on"
@@ -255,11 +256,11 @@ msgstr ""
 
 #: personal/samba/class_sambaAccount.inc:258
 msgid "disconnect"
-msgstr ""
+msgstr "desconectar"
 
 #: personal/samba/class_sambaAccount.inc:258
 msgid "reset"
-msgstr ""
+msgstr "resetar"
 
 #: personal/samba/class_sambaAccount.inc:261
 msgid "Reconnect if disconnected"
@@ -283,15 +284,15 @@ msgstr ""
 
 #: personal/samba/class_sambaAccount.inc:280
 msgid "Force the user to change his password"
-msgstr ""
+msgstr "Forçar o usuário a mudar sua senha"
 
 #: personal/samba/class_sambaAccount.inc:285
 msgid "The password never expire"
-msgstr ""
+msgstr "A senha nunca expira"
 
 #: personal/samba/class_sambaAccount.inc:285
 msgid "The password will never expire"
-msgstr ""
+msgstr "A senha nunca expirará"
 
 #: personal/samba/class_sambaAccount.inc:290
 msgid "Login from windows client requires no password"
@@ -303,11 +304,11 @@ msgstr ""
 
 #: personal/samba/class_sambaAccount.inc:295
 msgid "Lock samba account"
-msgstr ""
+msgstr "Bloquear conta do samba"
 
 #: personal/samba/class_sambaAccount.inc:295
 msgid "Lock the account"
-msgstr ""
+msgstr "Bloquear a conta"
 
 #: personal/samba/class_sambaAccount.inc:300
 msgid "Cannot change password"
@@ -315,15 +316,15 @@ msgstr ""
 
 #: personal/samba/class_sambaAccount.inc:300
 msgid "Not allowed to change password"
-msgstr ""
+msgstr "Não é permitido alterar a senha"
 
 #: personal/samba/class_sambaAccount.inc:304
 msgid "Account expiration"
-msgstr ""
+msgstr "Expiração da conta"
 
 #: personal/samba/class_sambaAccount.inc:304
 msgid "When does the account expire"
-msgstr ""
+msgstr "Quando a conta expira"
 
 #: personal/samba/class_sambaAccount.inc:312
 msgid "Samba logon times"
@@ -335,7 +336,7 @@ msgstr ""
 
 #: personal/samba/class_sambaAccount.inc:313
 msgid "Edit settings"
-msgstr ""
+msgstr "Editar configurações"
 
 #: personal/samba/class_sambaAccount.inc:327
 msgid "System trust"
@@ -347,7 +348,7 @@ msgstr ""
 
 #: personal/samba/class_sambaAccount.inc:333
 msgid "Only allow this user to connect to this list of hosts"
-msgstr ""
+msgstr "Permitir apenas que este usuário conecte-se à lista de hosts"
 
 #: personal/samba/class_sambaAccount.inc:449
 msgid "Home drive"
@@ -364,7 +365,7 @@ msgstr ""
 #: personal/samba/class_sambaAccount.inc:473
 #: personal/samba/class_sambaAccount.inc:495
 msgid "Warning"
-msgstr ""
+msgstr "Aviso"
 
 #: personal/samba/class_sambaAccount.inc:473
 msgid "Undefined Samba SID detected. Please fix this problem manually!"
@@ -390,7 +391,7 @@ msgstr ""
 
 #: admin/systems/samba/class_winstationGeneric.inc:59
 msgid "Properties"
-msgstr ""
+msgstr "Propriedades"
 
 #: admin/systems/samba/class_winstationGeneric.inc:68
 #: admin/systems/samba/class_winstationGeneric.inc:72
@@ -399,11 +400,11 @@ msgstr ""
 
 #: admin/systems/samba/class_winstationGeneric.inc:72
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
 #: admin/systems/samba/class_winstationGeneric.inc:79
 msgid "Description"
-msgstr ""
+msgstr "Descrição"
 
 #: admin/systems/samba/class_winstationGeneric.inc:79
 msgid "A short description of the winstation"
@@ -411,7 +412,7 @@ msgstr ""
 
 #: admin/systems/samba/class_winstationGeneric.inc:87
 msgid "Location"
-msgstr ""
+msgstr "Localização"
 
 #: admin/systems/samba/class_winstationGeneric.inc:87
 msgid "The location of the winstation"
@@ -420,15 +421,15 @@ msgstr ""
 #: admin/systems/samba/class_winstationGeneric.inc:94
 #: admin/systems/samba/class_winstationGeneric.inc:98
 msgid "Action"
-msgstr ""
+msgstr "Ação"
 
 #: admin/systems/samba/class_winstationGeneric.inc:99
 msgid "Select action to execute for this terminal"
-msgstr ""
+msgstr "Selecione a ação que será executada por esse terminal"
 
 #: admin/systems/samba/class_winstationGeneric.inc:105
 msgid "Network settings"
-msgstr ""
+msgstr "Configurações de rede"
 
 #: personal/samba/sambaLogonHours.tpl.c:2
 msgid "Specify the hours this user is allowed to log in"
@@ -436,4 +437,4 @@ msgstr ""
 
 #: personal/samba/sambaLogonHours.tpl.c:5
 msgid "Hour"
-msgstr ""
+msgstr "Hora"

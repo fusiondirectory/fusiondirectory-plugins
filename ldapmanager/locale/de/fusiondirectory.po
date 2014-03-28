@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Maik Wagner <maikwagner@yahoo.com>, 2013
+# Maik Wagner <maikwagner@yahoo.com>, 2013-2014
 #  Stefan Koehler <stefan.koehler@GONICUS.de>, 2005
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
+"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-08-21 18:26+0200\n"
-"PO-Revision-Date: 2013-08-21 16:30+0000\n"
+"PO-Revision-Date: 2014-02-13 09:20+0000\n"
 "Last-Translator: Maik Wagner <maikwagner@yahoo.com>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/FusionDirectory/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -39,7 +39,7 @@ msgstr "Export"
 
 #: addons/ldapmanager/class_export.inc:37
 msgid "Export the ldap three to ldif format"
-msgstr ""
+msgstr "Exportieren des lpad-Baums ins ldif-Format"
 
 #: addons/ldapmanager/class_export.inc:40
 msgid "LDAP Manager"
@@ -96,7 +96,7 @@ msgstr "Importieren"
 
 #: addons/ldapmanager/class_import.inc:37
 msgid "Import of ldif data into the ldap tree"
-msgstr ""
+msgstr "Import von ldif-Daten in den ldap-Baum"
 
 #: addons/ldapmanager/class_import.inc:83
 msgid "You need full write access to the LDAP tree to import data!"
@@ -192,7 +192,7 @@ msgid ""
 "running LDAP directory as ldif. You may use this to add new or modify "
 "existing entries. Remember that FusionDirectory will not check your ldifs "
 "for FusionDirectory conformance."
-msgstr ""
+msgstr "Das LDIF-Importplugin bietet Methoden um einen Satz von Einträgen Ihrem laufenden LDAP-Verzeichnis als ldif hinzuzufügen. Sie können dies verwenden um neue Einträge hinzuzufügen oder zu modifizieren. Bitte behalten Sie im Hinterkopf, dass FusionDirectory Ihre ldifs nicht nach FusionDirectory-Konformität überprüfen wird."
 
 #: addons/ldapmanager/contentimport.tpl.c:5
 msgid "Import LDIF File"
@@ -225,7 +225,7 @@ msgid ""
 " containing Semi-Colon Seperated Values. The administrator can decide which "
 "columns should be transfered to which attribute. Note that you must have at "
 "least the GIVENNAME and SURNAME set."
-msgstr ""
+msgstr "Das CSV-Importplugin bietet Methoden um Benutzerkonten von einer Datei zu erstellen. Diese Datei sollte Semikolon-getrennte Werte haben. Der Administrator kann sich entscheiden, welche Spalten zu welchem Attribut transferiert werden. Beachten Sie dass Sie mindestes den VORNAMEN und NACHNAMEN als Set haben müssen."
 
 #: addons/ldapmanager/contentcsv.tpl.c:5
 msgid "Select CSV file to import"

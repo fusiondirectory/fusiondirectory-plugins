@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# alejandrobarrios <alejandrobarrios@interlegis.leg.br>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
+"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-08-21 18:26+0200\n"
-"PO-Revision-Date: 2013-08-06 07:24+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"PO-Revision-Date: 2014-03-25 18:31+0000\n"
+"Last-Translator: alejandrobarrios <alejandrobarrios@interlegis.leg.br>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/FusionDirectory/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,7 +23,7 @@ msgstr ""
 #: admin/systems/services/dhcp/class_dhcpAdvanced.inc:73
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:775
 msgid "Error"
-msgstr ""
+msgstr "Erro"
 
 #: admin/systems/services/dhcp/class_dhcpNetwork.inc:48
 #: admin/systems/services/dhcp/class_dhcpSubClass.inc:86
@@ -47,7 +48,7 @@ msgstr ""
 #: admin/systems/services/dhcp/dhcp_pool.tpl.c:5
 #: admin/systems/services/dhcp/dhcp_group.tpl.c:5
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
 #: admin/systems/services/dhcp/class_dhcpNetwork.inc:197
 #: admin/systems/services/dhcp/class_dhcpSubnet.inc:142
@@ -65,7 +66,7 @@ msgstr ""
 #: admin/systems/services/dhcp/class_dhcpNetwork.inc:202
 #, php-format
 msgid "Error in definition of '%s'!"
-msgstr ""
+msgstr "Erro na definição de '%s'!"
 
 #: admin/systems/services/dhcp/class_dhcpService.inc:128
 msgid "Lease time"
@@ -104,23 +105,23 @@ msgstr ""
 #: admin/systems/services/dhcp/class_dhcpSubnet.inc:161
 #: admin/systems/services/dhcp/dhcp_pool.tpl.c:11
 msgid "Range"
-msgstr ""
+msgstr "Faixa de IP's"
 
 #: admin/systems/services/dhcp/class_dhcpPool.inc:141
 #: admin/systems/services/dhcp/class_dhcpSubnet.inc:176
 msgid "'Range' is not inside the configured network."
-msgstr ""
+msgstr "Faixa de IP's não está dentro da rede configurada"
 
 #: admin/systems/services/dhcp/class_dhcpDnsZone.inc:150
 #: admin/systems/services/dhcp/dhcp_dnszone.tpl.c:5
 msgid "DNS zone"
-msgstr ""
+msgstr "Zona DNS"
 
 #: admin/systems/services/dhcp/class_dhcpDnsZone.inc:154
 #: admin/systems/services/dhcp/dhcp_dnszone.tpl.c:8
 #: admin/systems/services/dhcp/dhcp_network.tpl.c:41
 msgid "DNS server"
-msgstr ""
+msgstr "Servidor DNS"
 
 #: admin/systems/services/dhcp/class_dhcpDnsZone.inc:158
 #: admin/systems/services/dhcp/dhcp_dnszone.tpl.c:11
@@ -156,23 +157,23 @@ msgstr ""
 
 #: admin/systems/services/dhcp/class_dhcpTSigKey.inc:51
 msgid "HMAC-MD5"
-msgstr ""
+msgstr "HMAC-MD5"
 
 #: admin/systems/services/dhcp/class_dhcpTSigKey.inc:51
 msgid "RSAMD5"
-msgstr ""
+msgstr "RSAMD5"
 
 #: admin/systems/services/dhcp/class_dhcpTSigKey.inc:51
 msgid "RSASHA1"
-msgstr ""
+msgstr "RSASHA1"
 
 #: admin/systems/services/dhcp/class_dhcpTSigKey.inc:51
 msgid "DSA"
-msgstr ""
+msgstr "DSA"
 
 #: admin/systems/services/dhcp/class_dhcpTSigKey.inc:51
 msgid "DH"
-msgstr ""
+msgstr "DH"
 
 #: admin/systems/services/dhcp/class_dhcpTSigKey.inc:114
 #: admin/systems/services/dhcp/class_dhcpTSigKey.inc:127
@@ -183,18 +184,18 @@ msgstr ""
 #: admin/systems/services/dhcp/class_dhcpTSigKey.inc:118
 #: admin/systems/services/dhcp/dhcp_tsigkey.tpl.c:14
 msgid "Key"
-msgstr ""
+msgstr "Chave"
 
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:59
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:786
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:787
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:833
 msgid "DHCP service"
-msgstr ""
+msgstr "Serviço DHCP"
 
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:61
 msgid "Logging"
-msgstr ""
+msgstr "Logando"
 
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:62
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:103
@@ -216,12 +217,12 @@ msgstr ""
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:65
 #: admin/systems/services/dhcp/class_dhcpNewSectionDialog.inc:51
 msgid "Host"
-msgstr ""
+msgstr "Host"
 
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:66
 #: admin/systems/services/dhcp/class_dhcpNewSectionDialog.inc:52
 msgid "Group"
-msgstr ""
+msgstr "Grupo"
 
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:67
 #: admin/systems/services/dhcp/class_dhcpNewSectionDialog.inc:53
@@ -258,44 +259,44 @@ msgstr ""
 msgid ""
 "You have requested a migration of the DHCP setup from server '%s' to the "
 "current one."
-msgstr ""
+msgstr "Você requisitou uma migração das configurações de DHCP do servidor '%s' para este."
 
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:151
 msgid "The migration will be started when you save this system."
-msgstr ""
+msgstr "A migração será iniciada quando você salvar este sistema."
 
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:154
 #: admin/systems/services/dhcp/remove_dhcp.tpl.c:2
 msgid "Warning"
-msgstr ""
+msgstr "Aviso"
 
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:246
 msgid "Permission error"
-msgstr ""
+msgstr "Erro de permissão"
 
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:283
 msgid "DHCP section"
-msgstr ""
+msgstr "Seção DHCP"
 
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:340
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:343
 msgid "Insert new DHCP section"
-msgstr ""
+msgstr "Inserir nova seção DHCP"
 
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:341
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:344
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:345
 msgid "Edit DHCP section"
-msgstr ""
+msgstr "Editar seção DHCP"
 
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:342
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:346
 msgid "Remove DHCP section"
-msgstr ""
+msgstr "Remover seção DHCP"
 
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:347
 msgid "Expand DHCP subnet"
-msgstr ""
+msgstr "Expandir DHCP de subrede"
 
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:348
 msgid "Fold DHCP subnet"
@@ -308,17 +309,17 @@ msgstr ""
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:579
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:606
 msgid "LDAP error"
-msgstr ""
+msgstr "Erro de LDAP"
 
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:775
 msgid ""
 "The DHCP configuration set is unkown. Please contact your system "
 "administrator."
-msgstr ""
+msgstr "A configuração de DHCP é desconhecida. Por favor, contacte seu administrador do sistema."
 
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:787
 msgid "Services"
-msgstr ""
+msgstr "Serviços"
 
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:794
 msgid "Start service"
@@ -336,25 +337,25 @@ msgstr ""
 #: admin/systems/services/dhcp/class_dhcpSubnet.inc:159
 #: admin/systems/services/dhcp/dhcp_subnet.tpl.c:5
 msgid "Network address"
-msgstr ""
+msgstr "Endereço de rede"
 
 #: admin/systems/services/dhcp/class_dhcpSubnet.inc:170
 msgid "Network range"
-msgstr ""
+msgstr "Faixa de IP's da rede"
 
 #: admin/systems/services/dhcp/remove_dhcp.tpl.c:5
 msgid ""
 "This includes 'all' DHCP subsections that are located within this section. "
 "Please double check if your really want to do this since there is no way for"
 " FusionDirectory to get your data back."
-msgstr ""
+msgstr "Isso inclui 'todas' as subseções DHCP que estão nesta seção. Por favor, clique duas vezes para confirmar. O FusionDirectory não poderá desfazer a ação."
 
 #: admin/systems/services/dhcp/remove_dhcp.tpl.c:8
 msgid ""
 "Best thing to do before performing this action would be to save the current "
 "contents of your LDAP tree in a file. So - if you've done so - press "
 "'Delete' to continue or 'Cancel' to abort."
-msgstr ""
+msgstr "A melhor coisa a se fazer neste caso é salvar o conteúdo atual da árvore LDAP. Se já fez isso, aperte 'Delete' para continuar ou 'Cancelar' para desistir."
 
 #: admin/systems/services/dhcp/dhcp_host.tpl.c:2
 #: admin/systems/services/dhcp/dhcp_service.tpl.c:2
@@ -363,7 +364,7 @@ msgstr ""
 #: admin/systems/services/dhcp/dhcp_subnet.tpl.c:2
 #: admin/systems/services/dhcp/dhcp_group.tpl.c:2
 msgid "Generic"
-msgstr ""
+msgstr "Genérico"
 
 #: admin/systems/services/dhcp/dhcp_host.tpl.c:8
 msgid "Name of host"
@@ -371,7 +372,7 @@ msgstr ""
 
 #: admin/systems/services/dhcp/dhcp_host.tpl.c:11
 msgid "Fixed address"
-msgstr ""
+msgstr "Endereços fixos"
 
 #: admin/systems/services/dhcp/dhcp_host.tpl.c:14
 msgid "Use hostname or IP-address to assign fixed address"
@@ -379,11 +380,11 @@ msgstr ""
 
 #: admin/systems/services/dhcp/dhcp_host.tpl.c:17
 msgid "Hardware type"
-msgstr ""
+msgstr "Tipo de hardware"
 
 #: admin/systems/services/dhcp/dhcp_advanced.tpl.c:2
 msgid "Hide advanced settings"
-msgstr ""
+msgstr "Esconder configurações avançadas"
 
 #: admin/systems/services/dhcp/dhcp_advanced.tpl.c:5
 msgid "DHCP statements"
@@ -391,11 +392,11 @@ msgstr ""
 
 #: admin/systems/services/dhcp/dhcp_advanced.tpl.c:8
 msgid "DHCP options"
-msgstr ""
+msgstr "Opções de DHCP"
 
 #: admin/systems/services/dhcp/dhcp_advanced.tpl.c:11
 msgid "Show advanced settings"
-msgstr ""
+msgstr "Mostrar configurações avançadas"
 
 #: admin/systems/services/dhcp/dhcp_service.tpl.c:5
 msgid "Authoritative service"
@@ -403,7 +404,7 @@ msgstr ""
 
 #: admin/systems/services/dhcp/dhcp_service.tpl.c:8
 msgid "Dynamic DNS update"
-msgstr ""
+msgstr "Atualização dinâmica de DNS"
 
 #: admin/systems/services/dhcp/dhcp_service.tpl.c:11
 msgid "Dynamic DNS update style"
@@ -427,11 +428,11 @@ msgstr ""
 
 #: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl.c:8
 msgid "Name for shared network"
-msgstr ""
+msgstr "Nome da rede compartilhada"
 
 #: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl.c:11
 msgid "Server identifier"
-msgstr ""
+msgstr "Indentificador do servidor"
 
 #: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl.c:14
 msgid "Propagated server identifier for this shared network"
@@ -439,11 +440,11 @@ msgstr ""
 
 #: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl.c:17
 msgid "Select if this server is authoritative for this shared network"
-msgstr ""
+msgstr "Selecione caso este servidor seja autoritativo para esta rede compartilhada"
 
 #: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl.c:20
 msgid "Authoritative server"
-msgstr ""
+msgstr "Servidor autoritativo"
 
 #: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl.c:23
 msgid "Leases"
@@ -453,7 +454,7 @@ msgstr ""
 #: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl.c:41
 #: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl.c:50
 msgid "seconds"
-msgstr ""
+msgstr "segundos"
 
 #: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl.c:47
 msgid "Minimum lease time"
@@ -461,15 +462,15 @@ msgstr ""
 
 #: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl.c:53
 msgid "Access control"
-msgstr ""
+msgstr "Controle de acesso"
 
 #: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl.c:56
 msgid "Select if unknown clients should get dynamic IP addresses"
-msgstr ""
+msgstr "Selecionar caso clientes desconhecidos devam receber IP dinâmico"
 
 #: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl.c:59
 msgid "Allow unknown clients"
-msgstr ""
+msgstr "Permitir clientes desconhecidos"
 
 #: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl.c:62
 msgid "Select if bootp clients should get dynamic IP addresses"
@@ -497,7 +498,7 @@ msgstr ""
 
 #: admin/systems/services/dhcp/dhcp_tsigkey.tpl.c:11
 msgid "Encryption method"
-msgstr ""
+msgstr "Método de encriptação"
 
 #: admin/systems/services/dhcp/serviceDHCP.tpl.c:2
 msgid ""
@@ -511,35 +512,35 @@ msgstr ""
 
 #: admin/systems/services/dhcp/serviceDHCP.tpl.c:8
 msgid "DHCP sections"
-msgstr ""
+msgstr "Seções DHCP"
 
 #: admin/systems/services/dhcp/dhcp_subnet.tpl.c:11
 msgid "Range for dynamic address assignment"
-msgstr ""
+msgstr "Faixa de IP's para designar endereços dinamicamente"
 
 #: admin/systems/services/dhcp/dhcp_dnszone.tpl.c:2
 msgid "DNS update zone"
-msgstr ""
+msgstr "Atualizar zona DNS"
 
 #: admin/systems/services/dhcp/dhcpNewSection.tpl.c:2
 msgid "Create new DHCP section"
-msgstr ""
+msgstr "Criar nova seção DHCP"
 
 #: admin/systems/services/dhcp/dhcpNewSection.tpl.c:5
 msgid "Please choose one of the following DHCP section types."
-msgstr ""
+msgstr "Por favor, escolha um dos seguintes tipos de seção DHCP "
 
 #: admin/systems/services/dhcp/dhcpNewSection.tpl.c:8
 msgid "Section"
-msgstr ""
+msgstr "Seção"
 
 #: admin/systems/services/dhcp/dhcpNewSection.tpl.c:11
 msgid "Choose section type to create"
-msgstr ""
+msgstr "Escolha um tipo de seção a ser criado"
 
 #: admin/systems/services/dhcp/dhcpNewSection.tpl.c:14
 msgid "Create"
-msgstr ""
+msgstr "Criar"
 
 #: admin/systems/services/dhcp/dhcp_network.tpl.c:2
 msgid "Network configuration"
@@ -580,15 +581,15 @@ msgstr ""
 
 #: admin/systems/services/dhcp/dhcp_network.tpl.c:35
 msgid "Domain"
-msgstr ""
+msgstr "Domínio"
 
 #: admin/systems/services/dhcp/dhcp_network.tpl.c:38
 msgid "Name of domain"
-msgstr ""
+msgstr "Nome de domínio"
 
 #: admin/systems/services/dhcp/dhcp_network.tpl.c:44
 msgid "List of DNS servers to be propagated"
-msgstr ""
+msgstr "Lista de servidores DNS a ser propagada"
 
 #: admin/systems/services/dhcp/dhcp_network.tpl.c:47
 msgid "DNS server do be added"
@@ -596,15 +597,15 @@ msgstr ""
 
 #: admin/systems/services/dhcp/dhcp_network.tpl.c:50
 msgid "Click here add the selected server to the list"
-msgstr ""
+msgstr "Clique aqui para adicionar os servidores selecionados para a lista"
 
 #: admin/systems/services/dhcp/dhcp_network.tpl.c:53
 msgid "Click here remove the selected servers from the list"
-msgstr ""
+msgstr "Clique aqui para remover os servidores selecionados da lista"
 
 #: admin/systems/services/dhcp/dhcp_network.tpl.c:56
 msgid "Domain Name Service options"
-msgstr ""
+msgstr "Opções de DNS"
 
 #: admin/systems/services/dhcp/dhcp_network.tpl.c:59
 msgid "Assign hostnames found via reverse mapping"
@@ -616,4 +617,4 @@ msgstr ""
 
 #: admin/systems/services/dhcp/dhcp_group.tpl.c:8
 msgid "Name of group"
-msgstr ""
+msgstr "Nome do grupo"
