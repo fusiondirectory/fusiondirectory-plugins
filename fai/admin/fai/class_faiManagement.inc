@@ -103,7 +103,7 @@ class faiBaseSelector extends baseSelector {
 class faiManagement extends simpleManagement
 {
   // Tab definition
-  protected $objectTypes  = array('faiVariable');
+  protected $objectTypes  = array('faiVariable', 'faiHook', 'faiScript');
 
   protected $departmentBrowser      = FALSE;
   protected $departmentRootVisible  = FALSE;
@@ -116,12 +116,12 @@ class faiManagement extends simpleManagement
     return array(
       'plShortName'   => _('FAI'),
       'plDescription' => _('Manage FAI software packages and deployment recipes'),
-      'plIcon'        => 'plugins/fai/images/icon.png',
+      'plIcon'        => 'geticon.php?context=applications&icon=fai&size=48',
       'plSection'     => 'admin',
       'plPriority'    => 30,
       'plCategory'    => array('fai' => array('description'  => _('FAI'),
                                               'objectClass'  => array('FAIclass'))),
-      'plManages'     => array('faiVariable'),
+      'plManages'     => array('faiVariable', 'faiHook', 'faiScript'),
 
       'plProvidedAcls' => array()
     );

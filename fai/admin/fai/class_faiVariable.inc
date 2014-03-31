@@ -35,7 +35,7 @@ class faiVariable extends faiSimplePluginClass
           'filter'      => 'objectClass=FAIvariable',
           'aclCategory' => 'fai',
           'ou'          => get_ou('faiVariableRDN'),
-          'icon'        => 'geticon.php?context=fai&icon=variable&size=16'
+          'icon'        => 'geticon.php?context=applications&icon=fai-variable&size=16'
         )
       ),
 
@@ -43,11 +43,9 @@ class faiVariable extends faiSimplePluginClass
     );
   }
 
-  // The main function : information about attributes
   static function getAttributesInfo ()
   {
     return array(
-      // Attributes are grouped by section
       'main' => array(
         'name'  => _('Properties'),
         'attrs' => array(
