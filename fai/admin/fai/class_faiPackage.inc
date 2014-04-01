@@ -20,7 +20,164 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class faiPackage extends faiPluginClass
+/*! \brief This class allows to handle an attribute for selecting an mail address
+ *
+ * It looks like a SetAttribute, but clicking "Add" will open a dialog that allow to select one or more users.
+ *
+ */
+
+class PackageSelectDialog extends GenericSelectDialog
+{
+  protected $dialogClass = 'packageSelect';
+
+  protected $post_cancel = 'packageSelect_cancel';
+  protected $post_finish = 'packageSelect_save';
+
+  function handle_finish ()
+  {
+    $result = $this->dialog->detectPostActions();
+    if (isset($result['targets'])) {
+      $headpage = $this->dialog->getHeadpage();
+      foreach ($result['targets'] as $dn) {
+        $attrs = $headpage->getEntry($dn);
+
+        $this->attribute->addValue($attrs['PACKAGE']);
+      }
+    }
+    return FALSE;
+  }
+}
+
+class PackagesAttribute extends DialogOrderedArrayAttribute
+{
+  protected $dialogClass = 'PackageSelectDialog';
+
+  function __construct ($label, $description, $ldapName, $required = FALSE, $defaultValue = array(), $acl = "")
+  {
+    OrderedArrayAttribute::__construct(
+      new StringAttribute($label, $description, $ldapName, $required, "", $acl),
+      FALSE,
+      $defaultValue,
+      FALSE
+    );
+  }
+
+  function getFilterBlackList ()
+  {
+    return array('PACKAGE' => $this->getValue());
+  }
+
+  function renderButtons ()
+  {
+    $id = $this->getHtmlId();
+    $buttons  = '<input type="submit" name="add'.$id.'" id="add'.$id.'"'.
+                ($this->disabled? ' disabled="disabled"':'').
+                ' value="{msgPool type=addButton}"/>';
+    $buttons  .= '<input type="submit" name="add'.$id.'_dialog" id="add'.$id.'_dialog"'.
+                ($this->disabled? ' disabled="disabled"':'').
+                ' value="{msgPool type=addButton}{t} from list{/t}"/>';
+    return $buttons;
+  }
+
+  protected function htmlIds()
+  {
+    $id = $this->getHtmlId();
+    return array_merge(array('add'.$id), parent::htmlIds());
+  }
+
+  protected function getAttributeArrayValue($value)
+  {
+    return array($value);
+  }
+}
+
+class faiPackage extends faiSimplePluginClass
+{
+  var $mainTab = TRUE;
+
+  var $objectclasses = array('top','FAIclass','FAIpackageList','FAIrepository');
+
+  static function plInfo()
+  {
+    return array(
+      'plShortName'   => _('Package'),
+      'plDescription' => _('FAI Package list'),
+      'plObjectType'  => array(
+        'faiPackage' => array(
+          'name'        => _('FAI Package'),
+          'filter'      => 'objectClass=FAIpackageList',
+          'aclCategory' => 'fai',
+          'ou'          => get_ou('faiPackageRDN'),
+          'icon'        => 'geticon.php?context=applications&icon=fai-packages&size=16'
+        )
+      ),
+
+      'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
+    );
+  }
+
+  static function getAttributesInfo ()
+  {
+    return array(
+      'main' => array(
+        'name'  => _('Properties'),
+        'attrs' => array(
+          new HostNameAttribute (
+            _('Class name'), _('Variables class name'),
+            'cn', TRUE
+          ),
+          new StringAttribute (
+            _('Description'), _('Short description of the class'),
+            'description', FALSE
+          ),
+        )
+      ),
+      'repo' => array(
+        'name'  => _('Repository'),
+        'attrs' => array(
+          new DisplayLDAPAttribute (
+            _('Release'), _('Debian release concerned'),
+            'FAIdebianRelease', FALSE
+          ),
+          new DisplayLDAPAttribute (
+            _('Section'), _('Section concerned'),
+            'FAIdebianSection', FALSE
+          ),
+          new SelectAttribute (
+            _('Install method'), _('Install method to use for this package list'),
+            'FAIinstallMethod', TRUE,
+            array('install', 'ninstall', 'remove',
+              'dselect-upgrade', 'taskinst', 'taskrm',
+              'hold', 'clean', 'aptitude', 'aptitude-r',
+              'pending', 'dpkgc'),
+            'aptitude'
+          ),
+        )
+      ),
+      'packages' => array(
+        'name'  => _('Packages'),
+        'class' => array('fullwidth'),
+        'attrs' => array(
+          new PackagesAttribute (
+            '', _('Packages in this class'),
+            'FAIpackage', FALSE
+          )
+        )
+      )
+    );
+  }
+
+  function __construct (&$config, $dn = NULL, $object = NULL)
+  {
+    parent::__construct($config, $dn, $object);
+
+    $this->attributesAccess['cn']->setUnique(TRUE);
+
+    session::set('packageSelect_Release',$this->FAIdebianRelease);
+  }
+}
+
+class faiPackage_old extends faiPluginClass
 {
   /* attribute list for save action */
   var $ignore_account   = TRUE;
@@ -662,36 +819,6 @@ class faiPackage extends faiPluginClass
         }
       }
     }
-  }
-
-
-  /*! \brief  Return plugin informations for acl handling
-      @return Array ACL infos of this plugin.
-   */
-  static function plInfo()
-  {
-    return array(
-      'plShortName'   => _('Package'),
-      'plDescription' => _('FAI Package list'),
-      'plSelfModify'  => FALSE,
-      'plPriority'    => 28,
-      'plObjectType'  => array('faiPackage' => array(
-        'name'        => _('FAI Package'),
-        'filter'      => 'objectClass=FAIpackageList',
-        'icon'        => 'plugins/fai/images/fai_packages.png',
-        'aclCategory' => 'fai'
-      )),
-
-      'plProvidedAcls' => array(
-        'cn'                => _('Name'),
-        'description'       => _('Description'),
-        'FAIpackage'        => _('Packages'),
-        'FAIdebianSection'  => _('Section').'&nbsp;('._('Readonly').')',
-        'FAIinstallMethod'  => _('Install Method'),
-        'FAIdebconfInfo'    => _('Package configuration'),
-        'FAIdebianRelease'  => _('Release').'&nbsp;('._('Readonly').')'
-      )
-    );
   }
 
 
