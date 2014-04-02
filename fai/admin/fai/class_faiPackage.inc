@@ -173,7 +173,43 @@ class faiPackage extends faiSimplePluginClass
 
     $this->attributesAccess['cn']->setUnique(TRUE);
 
+    if (!$this->is_account) {
+      /* Assemble release name */
+      $release  = $this->parent->parent->fai_release;
+      $tmp      = preg_replace('/[,]*'.preg_quote(get_ou('faiBaseRDN'), '/').'.*$/i', '', $release);
+      $tmp      = preg_replace('/ou=/', '', $tmp);
+      $rev      = array_reverse(explode(',', $tmp));
+      $FAIdebianRelease = "/";
+      foreach ($rev as $part) {
+        $FAIdebianRelease .= "/$part";
+      }
+      $this->FAIdebianRelease = preg_replace('#^[/]*#', '', $FAIdebianRelease);
+
+      /* Assemble sections */
+      $repos = $this->getServerInfos();
+      if (isset($repos[$this->FAIdebianRelease])) {
+        $this->FAIdebianSection = array_unique($repos[$this->FAIdebianRelease]);
+      }
+
+      /* Assign Repository settings*/
+      $this->is_account = TRUE;
+    }
+
     session::set('packageSelect_Release',$this->FAIdebianRelease);
+  }
+
+  /*! \brief  Returns a list of all configured servers with repositories.
+      @return Array  All repository server
+   */
+  function getServerInfos()
+  {
+    $ret = array();
+    $o_queue = new supportDaemon();
+    $servs = $o_queue->FAI_get_server();
+    foreach ($servs as $serv) {
+        $ret[$serv["FAI_RELEASE"]] = $serv["SECTIONS"];
+    }
+    return $ret;
   }
 }
 
