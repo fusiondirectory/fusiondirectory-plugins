@@ -173,7 +173,7 @@ class faiPackage extends faiSimplePluginClass
 
     $this->attributesAccess['cn']->setUnique(TRUE);
 
-    if (!$this->is_account) {
+    if ($this->FAIdebianRelease === "") {
       /* Assemble release name */
       $release  = $this->parent->parent->fai_release;
       $tmp      = preg_replace('/[,]*'.preg_quote(get_ou('faiBaseRDN'), '/').'.*$/i', '', $release);
@@ -190,9 +190,6 @@ class faiPackage extends faiSimplePluginClass
       if (isset($repos[$this->FAIdebianRelease])) {
         $this->FAIdebianSection = array_unique($repos[$this->FAIdebianRelease]);
       }
-
-      /* Assign Repository settings*/
-      $this->is_account = TRUE;
     }
 
     session::set('packageSelect_Release',$this->FAIdebianRelease);
