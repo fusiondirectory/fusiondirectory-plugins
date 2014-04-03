@@ -107,7 +107,7 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
       return array(
         $this->buffer[$value]['PACKAGE'],
         $this->buffer[$value]['VERSION'],
-        $this->buffer[$value]['DESCRIPTION'],
+        base64_decode($this->buffer[$value]['DESCRIPTION']),
       );
     }
     return array($value, '', '');
