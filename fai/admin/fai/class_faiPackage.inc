@@ -41,8 +41,7 @@ class PackageSelectDialog extends GenericSelectDialog
       foreach ($result['targets'] as $dn) {
         $attrs = $headpage->getEntry($dn);
 
-      @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,$attrs['PACKAGE'],"$dn adding value");
-        $this->attribute->addValue($attrs['PACKAGE']);
+        $this->attribute->addValue($attrs['PACKAGE'][0]);
       }
     }
     return FALSE;
