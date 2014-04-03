@@ -44,13 +44,16 @@ class PackageSelectDialog extends GenericSelectDialog
         $this->attribute->addValue($attrs['PACKAGE'][0]);
       }
     }
+    $this->attribute->genPkgs();
     return FALSE;
   }
 }
 
 class PackagesAttribute extends DialogOrderedArrayAttribute
 {
-  protected $dialogClass = 'PackageSelectDialog';
+  protected $dialogClass        = 'PackageSelectDialog';
+  protected $buffer             = array();
+  protected $configuredPackages = array();
 
   function __construct ($label, $description, $ldapName, $required = FALSE, $defaultValue = array(), $acl = "")
   {
@@ -58,8 +61,18 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
       new StringAttribute($label, $description, $ldapName, $required, "", $acl),
       FALSE,
       $defaultValue,
-      FALSE
+      TRUE
     );
+  }
+
+  function addValue($value)
+  {
+    $this->value[$value] = $value;
+  }
+
+  function readValue($value)
+  {
+    return array($value, $value);
   }
 
   function getFilterBlackList ()
@@ -87,7 +100,134 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
 
   protected function getAttributeArrayValue($value)
   {
-    return array($value);
+    if (!isset($this->buffer[$value])) {
+      $this->genPkgs();
+    }
+    if (isset($this->buffer[$value])) {
+      return array(
+        $this->buffer[$value]['PACKAGE'],
+        $this->buffer[$value]['VERSION'],
+        $this->buffer[$value]['DESCRIPTION'],
+      );
+    }
+    return array($value, '', '');
+  }
+
+  /*! \brief  Reload the list of cached packages.
+      @return Returns the currently cached list of packages.
+   */
+  function genPkgs()
+  {
+    if (empty($this->plugin->FAIdebianRelease)) {
+      return;
+    }
+
+    if (empty($this->value)) {
+      return; // If there are no packages, no need to do anything
+    }
+
+    $attrs = array("distribution", "package","version", "section", "description", "timestamp","hastemplate");
+
+    $packages = array_diff_key($this->value, $this->buffer); // packages names that are not already in the buffer
+
+    $release  = $this->plugin->FAIdebianRelease;
+    $q        = new supportDaemon();
+    $customs  = $q->FAI_get_customs($release);
+    for ($i = -1; (count($packages) > 0) && ($i < count($customs)); $i++) {
+      if ($i >= 0) { // if release has been handled
+        $release = $customs[$i]; // take the next custom
+      }
+      $ret = $q->FAI_get_packages($release, $attrs, array_keys($packages), -1, -1, TRUE);
+      if ($q->is_error()) {
+        msg_dialog::display(_("Service infrastructure"), msgPool::siError($q->get_error()), ERROR_DIALOG);
+        return $this->buffer;
+      } else {
+        foreach ($ret as $attr) {
+          $this->buffer[$attr['PACKAGE']] = $attr;
+          echo "found ".$attr['PACKAGE']."<br\>\n";
+          unset($packages[$attr['PACKAGE']]); // remove found packages
+          if ($i >= 0) {
+            $this->FAIcustomRelease[$release] = $release;
+          }
+        }
+      }
+      @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, count($packages), "$release done, packages left");
+    }
+
+    if (count($packages) > 0) {
+      msg_dialog::display(_("Unkown packages"), "The following packages were not found on the repository : ".join(",", $packages), ERROR_DIALOG);
+      foreach($packages as $p => $pp) {
+        unset($this->value[$p]);
+      }
+    }
+
+    return $this->buffer;
+  }
+
+  function genConfiguredPackages()
+  {
+    /* Fetch all package configurations from ldap */
+    $PackageFilter = "";
+    foreach ($this->value as $name) {
+      $PackageFilter .= "(FAIpackage=".$name.")";
+    }
+    /* Also fetch d-i */
+    $PackageFilter .= "(FAIpackage=d-i)";
+
+    $PackageFilter = "(&(objectClass=FAIdebconfInfo)(|".$PackageFilter."))";
+
+    /* Search for configuration objects */
+    $ldap = $this->plugin->config->get_ldap_link();
+    $ldap->cd($this->plugin->dn);
+    $ldap->search($PackageFilter, array("FAIvariable","FAIvariableType",
+          "FAIvariableContent","FAIpackage","FAIdebianSection","FAIstate"));
+
+    $this->configuredPackages = array();
+
+    /* Walk through configurations and append them to our list of ConfiguredPackages */
+    while ($attr = $ldap->fetch()) {
+      /* Skip objects, that are tagged as removed */
+      if (isset($object['FAIstate'][0])) {
+        if (preg_match("/removed$/", $attr['FAIstate'][0])) {
+          continue;
+        }
+      }
+
+      $tmp = array();
+      $tmp['Name']  = $attr['FAIvariable'][0];
+      $tmp['Type']  = $attr['FAIvariableType'][0];
+      $tmp['Save']  = TRUE;
+
+      if (isset($attr['FAIvariableContent'][0])) {
+        if (!in_array($attr['FAIvariableType'], array("multiselect"))) {
+          $tmp['Value'] = $attr['FAIvariableContent'][0];
+        } else {
+          $content = array();
+          unset($attr['FAIvariableContent']['count']);
+          foreach ($attr['FAIvariableContent'] as $attr) {
+            $tmp['Value'][] = $attr;
+          }
+        }
+        $this->configuredPackages[$attr['FAIpackage'][0]][$attr['FAIvariable'][0]] = $tmp;
+      } else {
+        $tmp['Value'] = "";
+        $this->configuredPackages[$attr['FAIpackage'][0]][$attr['FAIvariable'][0]] = $tmp;
+      }
+    }
+  }
+
+  protected function handleEdit($key)
+  {
+    global $config;
+
+    /* Configuration dialog open*/
+    $pkg_config = array();
+    if (isset($this->configuredPackages[$key])) {
+      $pkg_config = $this->configuredPackages[$key];
+    }
+    $this->plugin->openDialog(
+      new faiPackageConfiguration($config, $this->plugin->dn, $key, $this->plugin->FAIdebianRelease , $pkg_config)
+    );
   }
 }
 
