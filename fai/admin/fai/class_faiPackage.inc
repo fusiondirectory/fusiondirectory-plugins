@@ -41,6 +41,7 @@ class PackageSelectDialog extends GenericSelectDialog
       foreach ($result['targets'] as $dn) {
         $attrs = $headpage->getEntry($dn);
 
+      @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__,$attrs['PACKAGE'],"$dn adding value");
         $this->attribute->addValue($attrs['PACKAGE']);
       }
     }
@@ -139,8 +140,8 @@ class faiPackage extends faiSimplePluginClass
             _('Release'), _('Debian release concerned'),
             'FAIdebianRelease', FALSE
           ),
-          new DisplayLDAPAttribute (
-            _('Section'), _('Section concerned'),
+          new DisplayLDAPArrayAttribute (
+            _('Sections'), _('Sections concerned'),
             'FAIdebianSection', FALSE
           ),
           new SelectAttribute (
@@ -160,7 +161,7 @@ class faiPackage extends faiSimplePluginClass
         'attrs' => array(
           new PackagesAttribute (
             '', _('Packages in this class'),
-            'FAIpackage', FALSE
+            'FAIpackage', TRUE
           )
         )
       )
@@ -192,7 +193,7 @@ class faiPackage extends faiSimplePluginClass
       }
     }
 
-    session::set('packageSelect_Release',$this->FAIdebianRelease);
+    session::set('packageSelect_Release', $this->FAIdebianRelease);
   }
 
   /*! \brief  Returns a list of all configured servers with repositories.
@@ -200,11 +201,15 @@ class faiPackage extends faiSimplePluginClass
    */
   function getServerInfos()
   {
-    $ret = array();
-    $o_queue = new supportDaemon();
-    $servs = $o_queue->FAI_get_server();
+    $o_queue  = new supportDaemon();
+    $servs    = $o_queue->FAI_get_server();
+    $ret      = array();
     foreach ($servs as $serv) {
-        $ret[$serv["FAI_RELEASE"]] = $serv["SECTIONS"];
+      if (isset($ret[$serv['FAI_RELEASE']])) {
+        $ret[$serv['FAI_RELEASE']] = array_merge($ret[$serv['FAI_RELEASE']], $serv['SECTIONS']);
+      } else {
+        $ret[$serv['FAI_RELEASE']] = $serv['SECTIONS'];
+      }
     }
     return $ret;
   }
