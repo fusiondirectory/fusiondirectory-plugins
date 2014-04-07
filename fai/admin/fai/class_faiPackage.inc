@@ -1,9 +1,8 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2015  FusionDirectory
+  Copyright (C) 2011-2014  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -49,6 +48,47 @@ class PackageSelectDialog extends GenericSelectDialog
   }
 }
 
+class PackageConfigDialog extends GenericDialog
+{
+  protected $dialogClass = "faiPackageConfiguration";
+
+  protected $post_cancel = 'CancelObjectConfig';
+  protected $post_finish = 'SaveObjectConfig';
+
+  function __construct($simplePlugin, &$attribute, $key, $pkg_config)
+  {
+    $this->attribute  = $attribute;
+    $this->dialog     = new $this->dialogClass($simplePlugin->config, $simplePlugin->dn, $key, $simplePlugin->FAIdebianRelease , $pkg_config);
+  }
+
+  function execute ()
+  {
+    if (isset($_POST[$this->post_cancel])) {
+      return $this->handle_cancel();
+    }
+    if (isset($_POST[$this->post_finish]) || isset($_GET[$this->post_finish])) {
+      return $this->handle_finish();
+    }
+    return $this->dialog_execute();
+  }
+
+  function dialog_execute ()
+  {
+    return $this->dialog->execute();
+  }
+
+  function handle_finish ()
+  {
+    $this->attribute->packageConfigured($this->dialog->save());
+    return FALSE;
+  }
+
+  function handle_cancel ()
+  {
+    return FALSE;
+  }
+}
+
 class PackagesAttribute extends DialogOrderedArrayAttribute
 {
   protected $dialogClass        = 'PackageSelectDialog';
@@ -61,7 +101,7 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
       new StringAttribute($label, $description, $ldapName, $required, "", $acl),
       FALSE,
       $defaultValue,
-      TRUE
+      FALSE
     );
   }
 
@@ -111,6 +151,47 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
       );
     }
     return array($value, '', '');
+  }
+
+  protected function genRowIcons($key, $value)
+  {
+    list ($img, $width) = parent::genRowIcons($key, $value);
+    if ($this->buffer[$value]['HASTEMPLATE']) {
+      $img = '<input type="image" src="geticon.php?context=actions&icon=package-configure&size=16"'.
+              ' name="'.$id.'config_'.$key.'" class="center" alt="'._('Edit configuration').'" title="'._('Edit configuration').'"/>'.
+              '&nbsp;'.$img;
+    } else {
+      $img = '<img src="images/empty.png" alt="" style="width:16px;"/>'.$img;
+    }
+    $width += 16;
+
+    return array ($img, $width);
+  }
+
+  protected function handleAddAndEditValue()
+  {
+    global $config;
+
+    foreach (array_keys($_POST) as $name) {
+      if (preg_match('/^'.$id.'_config_/', $name)) {
+        /* Open configuration dialog */
+        $pkg_config = array();
+        if (isset($this->configuredPackages[$key])) {
+          $pkg_config = $this->configuredPackages[$key];
+        }
+        $this->plugin->openDialog(
+          new PackageConfigDialog($this->plugin, $this, $key, $pkg_config)
+        );
+        break;
+      }
+    }
+
+    parent::handleAddAndEditValue();
+  }
+
+  function packagedConfigured($packageConfig)
+  {
+    $this->configuredPackages = array_merge($this->configuredPackages, $packageConfig);
   }
 
   /*! \brief  Reload the list of cached packages.
@@ -214,20 +295,6 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
         $this->configuredPackages[$attr['FAIpackage'][0]][$attr['FAIvariable'][0]] = $tmp;
       }
     }
-  }
-
-  protected function handleEdit($key)
-  {
-    global $config;
-
-    /* Configuration dialog open*/
-    $pkg_config = array();
-    if (isset($this->configuredPackages[$key])) {
-      $pkg_config = $this->configuredPackages[$key];
-    }
-    $this->plugin->openDialog(
-      new faiPackageConfiguration($config, $this->plugin->dn, $key, $this->plugin->FAIdebianRelease , $pkg_config)
-    );
   }
 }
 
