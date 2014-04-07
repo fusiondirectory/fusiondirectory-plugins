@@ -155,6 +155,7 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
 
   protected function genRowIcons($key, $value)
   {
+    $id = $this->getHtmlId();
     list ($img, $width) = parent::genRowIcons($key, $value);
     if ($this->buffer[$value]['HASTEMPLATE']) {
       $img = '<input type="image" src="geticon.php?context=actions&icon=package-configure&size=16"'.
