@@ -189,9 +189,48 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
     parent::handleAddAndEditValue();
   }
 
-  function packagedConfigured($packageConfig)
+  function packageConfigured($packageConfig)
   {
     $this->configuredPackages = array_merge($this->configuredPackages, $packageConfig);
+  }
+
+  /* Special LDAP treatment that this attribute does after plugin ldap save */
+  function postLdapSave ($ldap)
+  {
+    /* FIXME Should be tested: empty strings/values, configuring a package and then delete it */
+
+    /* First delete all old nodes */
+    $ldap->ls('objectClass=FAIdebconfInfo', $this->plugin->dn, array('dn'));
+    $delete = array();
+    while ($attrs = $ldap->fetch()) {
+      $delete[] = $attrs['dn'];
+    }
+    foreach ($delete as $dn) {
+      $ldap->rmdir($dn);
+    }
+
+    /* Then add our values */
+    foreach ($this->configuredPackages as $pkgname => $pkgvars) {
+      foreach ($pkgvars as $varname => $varinfos) {
+        $attrs = array('objectClass' => 'FAIdebconfInfo');
+        $attrs['FAIpackage']           = $pkgname;
+        $attrs['FAIvariable']          = $varname;
+        $attrs['FAIvariableType']      = $varinfos['Type'];
+        $attrs['FAIvariableContent']   = $varinfos['Value'];
+        $vardn = "FAIvariable=".$varname.",".$this->plugin->dn;
+
+        $ldap->cd($vardn);
+        foreach (array_keys($attrs) as $index) {
+          if (is_array($attrs[$index]) && (count($attrs[$index]) == 0)) {
+            unset($attrs[$index]);
+          }
+        }
+        $ldap->add($attrs);
+        if (!$ldap->success()) {
+          msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $vardn, LDAP_ADD, get_class()), LDAP_ERROR);
+        }
+      }
+    }
   }
 
   /*! \brief  Reload the list of cached packages.
@@ -400,6 +439,12 @@ class faiPackage extends faiSimplePluginClass
     }
 
     session::set('packageSelect_Release', $this->FAIdebianRelease);
+  }
+
+  function ldap_save ($cleanup = TRUE)
+  {
+    parent::ldap_save($cleanup);
+    $this->attributesAccess['FAIpackage']->postLdapSave($this->config->get_ldap_link());
   }
 
   /*! \brief  Returns a list of all configured servers with repositories.
