@@ -171,6 +171,7 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
   protected function handleAddAndEditValue()
   {
     global $config;
+    $id = $this->getHtmlId();
 
     foreach (array_keys($_POST) as $name) {
       if (preg_match('/^'.$id.'_config_/', $name)) {
