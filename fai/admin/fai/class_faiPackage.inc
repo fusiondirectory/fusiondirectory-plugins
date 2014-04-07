@@ -159,7 +159,7 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
     list ($img, $width) = parent::genRowIcons($key, $value);
     if ($this->buffer[$value]['HASTEMPLATE']) {
       $img = '<input type="image" src="geticon.php?context=actions&icon=package-configure&size=16"'.
-              ' name="'.$id.'config_'.$key.'" class="center" alt="'._('Edit configuration').'" title="'._('Edit configuration').'"/>'.
+              ' name="'.$id.'_config_'.$key.'" class="center" alt="'._('Edit configuration').'" title="'._('Edit configuration').'"/>'.
               '&nbsp;'.$img;
     } else {
       $img = '<img src="images/empty.png" alt="" style="width:16px;"/>'.$img;
