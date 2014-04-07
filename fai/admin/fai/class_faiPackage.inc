@@ -176,6 +176,8 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
 
     foreach (array_keys($_POST) as $name) {
       if (preg_match('/^'.$id.'_config_/', $name)) {
+        $key = preg_replace('/^'.$id.'_config_/', '', $name);
+        $key = preg_replace('/_[xy]$/', '', $key);
         /* Open configuration dialog */
         $pkg_config = array();
         if (isset($this->configuredPackages[$key])) {
