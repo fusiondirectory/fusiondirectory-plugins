@@ -167,7 +167,7 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
               ' name="'.$id.'_removal_'.$key64.'" class="center" alt="'._('Mark for removal').'" title="'._('Mark for removal').'"/>'.
               '&nbsp;'.$img;
     }
-    if ($this->buffer[$key]['HASTEMPLATE']) {
+    if (isset($this->buffer[$key]['HASTEMPLATE']) && $this->buffer[$key]['HASTEMPLATE']) {
       $img = '<input type="image" src="geticon.php?context=actions&icon=package-configure&size=16"'.
               ' name="'.$id.'_config_'.$key64.'" class="center" alt="'._('Edit configuration').'" title="'._('Edit configuration').'"/>'.
               '&nbsp;'.$img;
@@ -286,7 +286,6 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
       } else {
         foreach ($ret as $attr) {
           $this->buffer[$attr['PACKAGE']] = $attr;
-          echo "found ".$attr['PACKAGE']."<br\>\n";
           unset($packages[$attr['PACKAGE']]); // remove found packages
           if ($i >= 0) {
             $this->FAIcustomRelease[$release] = $release;
