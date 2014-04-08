@@ -157,18 +157,19 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
   {
     $id = $this->getHtmlId();
     list ($img, $width) = parent::genRowIcons($key, $value);
+    $key64 = base64_encode($key);
     if (preg_match('/\-$/', $value)) {
       $img = '<input type="image" src="geticon.php?context=actions&icon=add&size=16"'.
-              ' name="'.$id.'_removal_'.$key.'" class="center" alt="'._('Mark for installation').'" title="'._('Mark for installation').'"/>'.
+              ' name="'.$id.'_removal_'.$key64.'" class="center" alt="'._('Mark for installation').'" title="'._('Mark for installation').'"/>'.
               '&nbsp;'.$img;
     } else {
       $img = '<input type="image" src="geticon.php?context=actions&icon=remove&size=16"'.
-              ' name="'.$id.'_removal_'.$key.'" class="center" alt="'._('Mark for removal').'" title="'._('Mark for removal').'"/>'.
+              ' name="'.$id.'_removal_'.$key64.'" class="center" alt="'._('Mark for removal').'" title="'._('Mark for removal').'"/>'.
               '&nbsp;'.$img;
     }
-    if ($this->buffer[$value]['HASTEMPLATE']) {
+    if ($this->buffer[$key]['HASTEMPLATE']) {
       $img = '<input type="image" src="geticon.php?context=actions&icon=package-configure&size=16"'.
-              ' name="'.$id.'_config_'.$key.'" class="center" alt="'._('Edit configuration').'" title="'._('Edit configuration').'"/>'.
+              ' name="'.$id.'_config_'.$key64.'" class="center" alt="'._('Edit configuration').'" title="'._('Edit configuration').'"/>'.
               '&nbsp;'.$img;
     } else {
       $img = '<img src="images/empty.png" alt="" style="width:16px;"/>'.$img;
@@ -186,7 +187,7 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
     foreach (array_keys($_POST) as $name) {
       if (preg_match('/^'.$id.'_config_/', $name)) {
         $key = preg_replace('/^'.$id.'_config_/', '', $name);
-        $key = preg_replace('/_[xy]$/', '', $key);
+        $key = base64_decode(preg_replace('/_[xy]$/', '', $key));
         /* Open configuration dialog */
         $pkg_config = array();
         if (isset($this->configuredPackages[$key])) {
@@ -198,7 +199,7 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
         break;
       } elseif (preg_match('/^'.$id.'_removal_/', $name)) {
         $key = preg_replace('/^'.$id.'_removal_/', '', $name);
-        $key = preg_replace('/_[xy]$/', '', $key);
+        $key = base64_decode(preg_replace('/_[xy]$/', '', $key));
         if (preg_match('/\-$/', $this->value[$key])) {
           $this->value[$key] = preg_replace('/\-$/', '', $this->value[$key]);
         } else {
