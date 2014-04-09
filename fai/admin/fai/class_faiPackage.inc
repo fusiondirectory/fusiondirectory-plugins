@@ -205,6 +205,7 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
         } else {
           $this->value[$key] .= '-';
         }
+        break;
       }
     }
 
