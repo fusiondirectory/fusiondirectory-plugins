@@ -32,6 +32,13 @@ class PartitionDialog extends GenericDialog
   {
     $this->attribute  = $attribute;
     $this->dialog     = new $this->dialogClass($simplePlugin->config, $simplePlugin->dn, $attribute, $disk, $attribute->diskType);
+
+    $base = $simplePlugin->dn;
+    if ($base == 'new') {
+      $base = $simplePlugin->base;
+    }
+    $this->dialog->set_acl_base($base);
+    $this->dialog->set_acl_category('fai');
     if (!empty($disk)) {
       $this->initialDialogValue = $disk;
     }
@@ -279,8 +286,7 @@ class faiPartitionTable extends faiSimplePluginClass
             'FAIpartitionMethod', FALSE, 'setup-storage'
           ),
           new PartitionTableAttribute (
-            '', _('Packages in this class'),
-            'FAIpackage', TRUE
+            '', _('Packages in this class'), 'FAIpackage'
           )
         )
       )
