@@ -1,9 +1,8 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2015  FusionDirectory
+  Copyright (C) 2011-2014  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,7 +19,253 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class faiPartitionTable extends faiPluginClass
+class PartitionDialog extends GenericDialog
+{
+  protected $dialogClass = "faiDiskEntry";
+
+  protected $post_cancel = 'CancelDisk';
+  protected $post_finish = 'SaveDisk';
+
+  function __construct($simplePlugin, &$attribute, $disk = array())
+  {
+    $this->attribute  = $attribute;
+    $this->dialog     = new $this->dialogClass($simplePlugin->config, $simplePlugin->dn, $simplePlugin, $disk, $attribute->diskType);
+  }
+
+  function dialog_execute ()
+  {
+    $this->dialog->save_object();
+    return $this->dialog->execute();
+  }
+
+  function handle_finish ()
+  {
+    $this->dialog->save_object();
+    if (count($this->dialog->check())) {
+      foreach ($this->dialog->check() as $msg) {
+        msg_dialog::display(_("Error"), $msg, ERROR_DIALOG);
+      }
+      return $this->dialog->execute();
+    }
+
+    $this->attribute->diskConfigured($this->dialog->save());
+    return FALSE;
+  }
+}
+
+class PartitionTableAttribute extends DialogOrderedArrayAttribute
+{
+  protected $dialogClass = 'PartitionDialog';
+  protected $partitionAttributes  = array("cn","FAIpartitionNr","FAIpartitionSize","FAImountPoint","FAIfsType","FAIpartitionType","FAImountOptions","FAIfsOptions","FAIpartitionFlags","description","FAIfsCreateOptions","FAIfsTuneOptions","FAIfsOptions","FAIpartitionFlags","FAIlvmDevice");
+
+  protected $diskFilter = '(&(objectClass=FAIclass)(objectClass=FAIpartitionDisk))';
+  protected $partFilter = '(&(objectClass=FAIclass)(objectClass=FAIpartitionEntry))';
+
+  public $diskType = 'disk';
+
+  function __construct ($label, $description, $ldapName, $values = array(), $acl = "")
+  {
+    parent::__construct ($label, $description, $ldapName, FALSE, $values, $acl);
+  }
+
+  protected function loadAttrValue ($attrs)
+  {
+    if (isset($attrs['dn'])) {
+      /* Fetch disks */
+      $ldap = $this->plugin->config->get_ldap_link();
+      $ldap->ls($this->diskFilter, $attrs['dn']);
+      $this->value = array();
+      while ($subattrs = $ldap->fetch()) {
+        $diskInfos = array();
+        $diskInfos['description']  = "";
+        $diskInfos['FAIdiskType']  = $subattrs['FAIdiskType'][0];
+
+        // Get disk options, without 'count' index.
+        $diskInfos['FAIdiskOption'] = array();
+        if (isset($subattrs['FAIdiskOption'])) {
+          for ($i = 0; $i < $subattrs['FAIdiskOption']['count']; $i++) {
+            $diskInfos['FAIdiskOption'][] = $subattrs['FAIdiskOption'][$i];
+          }
+        }
+
+        // Transform potential lvm information
+        if (isset($subattrs['FAIlvmDevice'])) {
+          for ($i = 0; $i < $subattrs['FAIlvmDevice']['count']; $i++) {
+            $name = $subattrs['FAIlvmDevice'][$i];
+            $diskInfos['FAIlvmDevice'][$name] = $name;
+          }
+        }
+
+        $diskInfos['dn'] = $subattrs['dn'];
+        $this->value[$diskInfos['dn']] = $diskInfos;
+        $this->value[$diskInfos['dn']]['partitions'] = array();
+      }
+      /* Fetch partitions */
+      foreach ($this->value as $name => $disk) {
+        $ldap->ls($this->partFilter, $disk['dn']);
+        while ($obj = $ldap->fetch()) {
+          $partitionInfos = array();
+          foreach ($this->partitionAttributes as $attr) {
+            if (isset($obj[$attr][0])) {
+              $partitionInfos[$attr] = $obj[$attr][0];
+            }
+          }
+          $this->value[$name]['partitions'][$partitionInfos['FAIpartitionNr'][0]] = $partitionInfos;
+        }
+      }
+    } else {
+      $this->resetToDefault();
+    }
+  }
+
+  /* Not saving anything into base node */
+  function fillLdapValue (&$attrs)
+  {
+    /* Remove crap made by plugin */
+    unset ($attrs[$this->getLdapName()]);
+  }
+
+  /* Special LDAP treatment that this attribute does after plugin ldap save */
+  function postLdapSave ($ldap)
+  {
+    /* First delete all old nodes */
+    $ldap->ls($this->diskFilter, $this->plugin->dn, array('dn'));
+    $delete = array();
+    while ($attrs = $ldap->fetch()) {
+      $delete[] = $attrs['dn'];
+    }
+    foreach ($delete as $dn) {
+      $ldap->rmdir($dn);
+    }
+    /* Then add our values */
+    foreach ($this->value as $val) {
+      $attrs = $val;
+      $attrs['objectClass'] = array('top','FAIClass','FAIpartitionDisk');
+      unset($attrs['partitions']);
+      $disk_dn = $this->compute_disk_dn($val);
+      $this->ldap_add($ldap, $disk_dn, $attrs);
+      /* disk added, now add partition */
+      foreach ($val['partitions'] as $part) {
+        $attrs = $part;
+        $attrs['objectClass'] = array('top','FAIClass','FAIpartitionEntry');
+        $dn = $this->compute_part_dn($part, $disk_dn);
+        $this->ldap_add($ldap, $dn, $attrs);
+      }
+    }
+  }
+
+  function compute_disk_dn ($disk)
+  {
+    return 'cn='.$disk['cn'].','.$this->plugin->dn;
+  }
+
+  function compute_part_dn ($part, $disk_dn)
+  {
+    return 'FAIpartitionNr='.$part['FAIpartitionNr'].','.$disk_dn;
+  }
+
+  protected function ldap_add ($ldap, $dn, $attrs)
+  {
+    $ldap->cd($dn);
+    foreach (array_keys($attrs) as $index) {
+      if ((is_array($attrs[$index]) && (count($attrs[$index]) == 0)) || ($attrs[$index] == '')) {
+        unset($attrs[$index]);
+      }
+    }
+    $ldap->add($attrs);
+    if (!$ldap->success()) {
+      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_ADD, get_class()), LDAP_ERROR);
+    }
+  }
+
+  protected function getAttributeArrayValue($value)
+  {
+    return $value;
+  }
+
+  function diskConfigured ($disk)
+  {
+    if (isset($disk['rename'])) {
+      unset($this->value[$disk['rename']['from']]);
+      $disk['cn'] = $disk['rename']['to'];
+    }
+
+    $this->value[$disk['cn']] = $disk;
+  }
+}
+
+class faiPartitionTable extends faiSimplePluginClass
+{
+  var $mainTab = TRUE;
+
+  var $objectclasses    = array('top','FAIclass','FAIpartitionTable');
+
+  static function plInfo()
+  {
+    return array(
+      'plShortName'   => _('Partition table'),
+      'plDescription' => _('FAI partition table'),
+      'plObjectType'  => array(
+        'faiPartition' => array(
+          'name'        => _('FAI partition table'),
+          'filter'      => 'objectClass=FAIpartitionTable',
+          'aclCategory' => 'fai',
+          'ou'          => get_ou('faiPartitionRDN'),
+          'icon'        => 'geticon.php?context=applications&icon=fai-partitiontable&size=16'
+        )
+      ),
+
+      'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
+    );
+  }
+
+  static function getAttributesInfo ()
+  {
+    return array(
+      'main' => array(
+        'name'  => _('Properties'),
+        'attrs' => array(
+          new HostNameAttribute (
+            _('Class name'), _('Variables class name'),
+            'cn', TRUE
+          ),
+          new StringAttribute (
+            _('Description'), _('Short description of the class'),
+            'description', FALSE
+          ),
+        )
+      ),
+      'table' => array(
+        'name'  => _('Discs'),
+        'class' => array('fullwidth'),
+        'attrs' => array(
+          new HiddenAttribute (
+            'FAIpartitionMethod', FALSE, 'setup-storage'
+          ),
+          new PartitionTableAttribute (
+            '', _('Packages in this class'),
+            'FAIpackage', TRUE
+          )
+        )
+      )
+    );
+  }
+
+  function __construct (&$config, $dn = NULL, $object = NULL)
+  {
+    parent::__construct($config, $dn, $object);
+
+    $this->attributesAccess['cn']->setUnique(TRUE);
+  }
+
+  function ldap_save ($cleanup = TRUE)
+  {
+    parent::ldap_save($cleanup);
+    $this->attributesAccess['FAIpackage']->postLdapSave($this->config->get_ldap_link());
+  }
+}
+
+class faiPartitionTable_old extends faiPluginClass
 {
   /* attribute list for save action */
   var $ignore_account   = TRUE;
@@ -795,16 +1040,6 @@ class faiPartitionTable extends faiPluginClass
       if(isset($tmp[$attrs][0])){
         $var = $tmp[$attrs][0];
 
-        /* Check if we must decode some attributes */
-        if(in_array_ics($attrs,$this->sub64coded)){
-          $var = base64_decode($var);
-        }
-
-        /*  check if this is a binary entry */
-        if(in_array_ics($attrs,$this->subBinary)){
-          $var = $ldap->get_attribute($object['dn'], $attrs,$r_array=0);
-        }
-
         /* Fix slashes */
         $var = addslashes($var);
         $object[$attrs] = $var;
@@ -814,6 +1049,4 @@ class faiPartitionTable extends faiPluginClass
   }
 
 }
-
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>
