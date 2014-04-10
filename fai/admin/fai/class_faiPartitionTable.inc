@@ -21,15 +21,20 @@
 
 class PartitionDialog extends GenericDialog
 {
-  protected $dialogClass = "faiDiskEntry";
+  protected $dialogClass = 'faiDiskEntry';
 
   protected $post_cancel = 'CancelDisk';
   protected $post_finish = 'SaveDisk';
 
+  protected $initialDialogValue = NULL;
+
   function __construct($simplePlugin, &$attribute, $disk = array())
   {
     $this->attribute  = $attribute;
-    $this->dialog     = new $this->dialogClass($simplePlugin->config, $simplePlugin->dn, $simplePlugin, $disk, $attribute->diskType);
+    $this->dialog     = new $this->dialogClass($simplePlugin->config, $simplePlugin->dn, $attribute, $disk, $attribute->diskType);
+    if (!empty($disk)) {
+      $this->initialDialogValue = $disk;
+    }
   }
 
   function dialog_execute ()
@@ -43,7 +48,7 @@ class PartitionDialog extends GenericDialog
     $this->dialog->save_object();
     if (count($this->dialog->check())) {
       foreach ($this->dialog->check() as $msg) {
-        msg_dialog::display(_("Error"), $msg, ERROR_DIALOG);
+        msg_dialog::display(_('Error'), $msg, ERROR_DIALOG);
       }
       return $this->dialog->execute();
     }
@@ -51,21 +56,39 @@ class PartitionDialog extends GenericDialog
     $this->attribute->diskConfigured($this->dialog->save());
     return FALSE;
   }
+
+  function handle_cancel ()
+  {
+    if ($this->initialDialogValue !== NULL) {
+      $this->attribute->addValue($this->initialDialogValue);
+    }
+    return FALSE;
+  }
 }
 
 class PartitionTableAttribute extends DialogOrderedArrayAttribute
 {
   protected $dialogClass = 'PartitionDialog';
-  protected $partitionAttributes  = array("cn","FAIpartitionNr","FAIpartitionSize","FAImountPoint","FAIfsType","FAIpartitionType","FAImountOptions","FAIfsOptions","FAIpartitionFlags","description","FAIfsCreateOptions","FAIfsTuneOptions","FAIfsOptions","FAIpartitionFlags","FAIlvmDevice");
+  protected $partitionAttributes  = array(
+    'cn','description',
+    'FAIpartitionNr',   'FAIpartitionSize',   'FAImountPoint',
+    'FAIfsType',        'FAIpartitionType',   'FAImountOptions',
+    'FAIfsOptions',     'FAIpartitionFlags',  'FAIfsCreateOptions',
+    'FAIfsTuneOptions', 'FAIfsOptions',       'FAIpartitionFlags',
+    'FAIlvmDevice'
+  );
 
   protected $diskFilter = '(&(objectClass=FAIclass)(objectClass=FAIpartitionDisk))';
   protected $partFilter = '(&(objectClass=FAIclass)(objectClass=FAIpartitionEntry))';
 
   public $diskType = 'disk';
 
-  function __construct ($label, $description, $ldapName, $values = array(), $acl = "")
+  public $disks;
+
+  function __construct ($label, $description, $ldapName, $values = array(), $acl = '')
   {
     parent::__construct ($label, $description, $ldapName, FALSE, $values, $acl);
+    $this->disks = &$this->value;
   }
 
   protected function loadAttrValue ($attrs)
@@ -76,9 +99,13 @@ class PartitionTableAttribute extends DialogOrderedArrayAttribute
       $ldap->ls($this->diskFilter, $attrs['dn']);
       $this->value = array();
       while ($subattrs = $ldap->fetch()) {
-        $diskInfos = array();
-        $diskInfos['description']  = "";
-        $diskInfos['FAIdiskType']  = $subattrs['FAIdiskType'][0];
+        $diskInfos = array('description' => '', 'FAIdiskType' => 'disk');
+        $diskInfos['description']  = '';
+        foreach (array('cn', 'description','FAIdiskType') as $attr) {
+          if (isset($subattrs[$attr][0])) {
+            $diskInfos[$attr] = $subattrs[$attr][0];
+          }
+        }
 
         // Get disk options, without 'count' index.
         $diskInfos['FAIdiskOption'] = array();
@@ -135,7 +162,10 @@ class PartitionTableAttribute extends DialogOrderedArrayAttribute
       $delete[] = $attrs['dn'];
     }
     foreach ($delete as $dn) {
-      $ldap->rmdir($dn);
+      $ldap->rmdir_recursive($dn);
+      if (!$ldap->success()) {
+        msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_ADD, get_class()), LDAP_ERROR);
+      }
     }
     /* Then add our values */
     foreach ($this->value as $val) {
@@ -166,6 +196,7 @@ class PartitionTableAttribute extends DialogOrderedArrayAttribute
 
   protected function ldap_add ($ldap, $dn, $attrs)
   {
+    unset($attrs['dn']);
     $ldap->cd($dn);
     foreach (array_keys($attrs) as $index) {
       if ((is_array($attrs[$index]) && (count($attrs[$index]) == 0)) || ($attrs[$index] == '')) {
@@ -174,13 +205,18 @@ class PartitionTableAttribute extends DialogOrderedArrayAttribute
     }
     $ldap->add($attrs);
     if (!$ldap->success()) {
-      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_ADD, get_class()), LDAP_ERROR);
+      msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_ADD, get_class()), LDAP_ERROR);
     }
   }
 
   protected function getAttributeArrayValue($value)
   {
-    return $value;
+    return array(
+      $value['FAIdiskType'],
+      $value['cn'],
+      $value['description'],
+      count($value['partitions']),
+    );
   }
 
   function diskConfigured ($disk)
@@ -206,11 +242,11 @@ class faiPartitionTable extends faiSimplePluginClass
       'plShortName'   => _('Partition table'),
       'plDescription' => _('FAI partition table'),
       'plObjectType'  => array(
-        'faiPartition' => array(
+        'faiPartitionTable' => array(
           'name'        => _('FAI partition table'),
           'filter'      => 'objectClass=FAIpartitionTable',
           'aclCategory' => 'fai',
-          'ou'          => get_ou('faiPartitionRDN'),
+          'ou'          => get_ou('faiPartitionTableRDN'),
           'icon'        => 'geticon.php?context=applications&icon=fai-partitiontable&size=16'
         )
       ),
@@ -373,7 +409,7 @@ class faiPartitionTable_old extends faiPluginClass
 
   function compute_dn()
   {
-    return 'cn='.$this->cn.','.get_ou('faiPartitionRDN').$this->parent->parent->fai_release;
+    return 'cn='.$this->cn.','.get_ou('faiPartitionTableRDN').$this->parent->parent->fai_release;
   }
 
   function acl_base_for_current_object($dn)
@@ -1001,28 +1037,6 @@ class faiPartitionTable_old extends faiPluginClass
     }
   }
 
-
-  /* Return plugin informations for acl handling */
-  static function plInfo()
-  {
-    return array(
-      'plShortName'   => _('Partition table'),
-      'plDescription' => _('FAI partition table'),
-      'plSelfModify'  => FALSE,
-      'plPriority'    => 26,
-      'plObjectType'  => array('faiPartition' => array(
-        'name'        => _('FAI partition table'),
-        'filter'      => 'objectClass=FAIpartitionTable',
-        'aclCategory' => 'fai'
-      )),
-
-      'plProvidedAcls' => array(
-        'cn'                => _('Name').'&nbsp;('._('Read only').')',
-        'description'       => _('Description')
-      )
-    );
-  }
-
   /* Reload some attributes */
   function get_object_attributes($object,$attributes)
   {
@@ -1042,6 +1056,5 @@ class faiPartitionTable_old extends faiPluginClass
     }
     return($object);
   }
-
 }
 ?>

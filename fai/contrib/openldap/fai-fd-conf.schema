@@ -52,7 +52,7 @@ attributetype ( 1.3.6.1.4.1.38414.25.1.7 NAME 'fdFaiPackageRDN'
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SINGLE-VALUE)
 
-attributetype ( 1.3.6.1.4.1.38414.25.1.8 NAME 'fdFaiPartitionRDN'
+attributetype ( 1.3.6.1.4.1.38414.25.1.8 NAME 'fdFaiPartitionTableRDN'
   DESC 'FusionDirectory - fai Partition RDN'
   EQUALITY caseExactIA5Match
   SUBSTR caseExactIA5SubstringsMatch
@@ -66,4 +66,4 @@ objectclass ( 1.3.6.1.4.1.38414.25.2.1 NAME 'fdFaiPluginConf'
   MUST ( cn )
   MAY ( fdFaiBaseRDN      $ fdFaiScriptRDN    $ fdFaiHookRDN    $
         fdFaiTemplateRDN  $ fdFaiVariableRDN  $ fdFaiProfileRDN $
-        fdFaiPackageRDN   $ fdFaiPartitionRDN ) )
+        fdFaiPackageRDN   $ fdFaiPartitionTableRDN ) )
