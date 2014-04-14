@@ -80,9 +80,6 @@ class ImportOPSIAttribute extends OPSIServerAttribute
 
 class opsiImport extends simplePlugin
 {
-  public $dhcps = array();
-  public $dns = array();
-
   /* Return plugin informations for acl handling  */
   static function plInfo()
   {
@@ -172,88 +169,14 @@ class opsiImport extends simplePlugin
     if (is_numeric($key)) {
       $key = $plInfo['plObjectType'][$key];
     }
-    $tabclass = strtoupper($key)."TABS";
-    $plCategory = $plInfo['plCategory'];
-    $key = key($plCategory);
-    if (is_numeric($key)) {
-      $plCategory = $plCategory[$key];
-    } else {
-      $plCategory = $key;
-    }
-    $messages     = array();
-    $this->dhcps  = array();
-    $this->dns    = DNS::getAvailableZones($this->config);
-    foreach ($hosts as $host) {
-      if (!preg_match('/^([^.]+)\.(.*)$/', $host['id'], $m)) {
-        $messages[$host['id']] = array(sprintf(_('Could not parse %s'),$host['id']));
-        continue;
-      }
-      $cn = $m[1].'$';
-      $zone = $m[2].'.';
 
-      $w = new simpleTabs($this->config, $this->config->data['TABS'][$tabclass], "new", $plCategory);
-      $w->set_acl_base($this->base);
-      $wingeneric = $w->getBaseObject();
-      $wingeneric->cn   = $cn;
-      $wingeneric->uid  = $wingeneric->cn;
-      $wingeneric->description                = $host['description'];
-      $wingeneric->netConfigDNS->ipHostNumber = $host['ipAddress'];
-      $wingeneric->netConfigDNS->macAddress   = $host['hardwareAddress'];
-      if (empty($this->dhcps)) {
-        $dhcps = $wingeneric->netConfigDNS->dhcpParentNodes;
-        $ldap = $this->config->get_ldap_link();
-        foreach ($dhcps as $dn => $value) {
-          $ldap->cat($dn);
-          if ($attrs = $ldap->fetch()) {
-            if (isset($attrs['dhcpNetMask'])) {
-              $this->dhcps[$dn] = array($attrs['cn'][0],normalize_netmask($attrs['dhcpNetMask'][0]));
-            }
-          }
-        }
-      }
-      if (!empty($wingeneric->netConfigDNS->ipHostNumber)) {
-        $wingeneric->netConfigDNS->dhcp_is_Account = FALSE;
-        foreach ($this->dhcps as $dn => $infos) {
-          list($ip, $mask) = $infos;
-          if (tests::is_in_network($ip,$mask,$wingeneric->netConfigDNS->ipHostNumber)) {
-            $wingeneric->netConfigDNS->dhcp_is_Account  = TRUE;
-            $wingeneric->netConfigDNS->dhcpParentNode   = $dn;
-            break;
-          }
-        }
-        if ($wingeneric->netConfigDNS->dhcp_is_Account == FALSE) {
-          $messages[$host['id']] = array(sprintf(_('No DHCP server found for ip %s'), $wingeneric->netConfigDNS->ipHostNumber));
-          continue;
-        }
-      }
-
-      $wingeneric->netConfigDNS->DNS_is_account = FALSE;
-      foreach ($this->dns as $key => $value) {
-        if (preg_match('/'.$zone.'$/', $value)) {
-          $wingeneric->netConfigDNS->DNS_is_account = TRUE;
-          $wingeneric->netConfigDNS->dnsEntry['zoneName'] = $value;
-          break;
-        }
-      }
-      if ($wingeneric->netConfigDNS->DNS_is_account == FALSE) {
-        $messages[$host['id']] = array(sprintf(_('No DNS server found for zone %s'), $zone));
-        continue;
-      }
-      $w->by_object['opsiClient']->is_account = TRUE;
-      $w->by_object['opsiClient']->fdOpsiServerDn = $server_dn;
-      /* Perform checks */
-      $message = $w->check();
-
-      if (count($message) == 0) {
-        /* No errors, save object */
-        $messages[$host['id']] = TRUE;
-        $w->save();
-      } else {
-        /* Errors found */
-        $messages[$host['id']] = $message;
-      }
-    }
-    $this->messages = $messages;
+    $tabs = array(
+      'opsiClient' => array(
+        'is_account'      => TRUE,
+        'fdOpsiServerDn'  => $server_dn,
+      )
+    );
+    $this->messages = systemImport::massImport($hosts, $key, $this->base, $tabs);
   }
 
   static function opsiGetHosts ($config, $server_dn)
