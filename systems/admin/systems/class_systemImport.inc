@@ -18,14 +18,51 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class systemImport
+class ImportServerAttribute extends ObjectSelectAttribute
 {
-  static function massImport ($hosts, $objectType, $base = NULL, $otherTabs = array())
+  function __construct ($label, $description, $ldapName, $filter, $acl = "")
+  {
+    parent::__construct($label, $description, $ldapName, FALSE, 'server', NULL, $filter, $acl);
+    $this->setInLdap(FALSE);
+  }
+
+  function loadPostValue ()
+  {
+    $id = $this->getHtmlId();
+    if (isset($_POST[$id.'_action'])) {
+      parent::loadPostValue();
+    }
+  }
+
+  function applyPostValue ()
+  {
+    if (!$this->disabled && $this->postValue != '') {
+      if (in_array($this->postValue, $this->choices)) {
+        $this->plugin->massImport($this->postValue);
+      }
+    }
+  }
+
+  function renderFormInput ()
+  {
+    $id = $this->getHtmlId();
+    $disabled = ($this->disabled?' disabled="disabled"':'');
+    $button = '<input type="submit" name="'.$id.'_action" id="'.$id.'_action" value="{t}Import{/t}"'.$disabled.'/>';
+    return parent::renderFormInput().$this->renderAcl($button);
+  }
+}
+
+class systemImport extends simplePlugin
+{
+  protected $defaultType = '';
+
+  static function massImport ($hosts, $defaultObjectType, $base = NULL, $otherTabs = array())
   {
     global $config;
     if ($base === NULL) {
       $base = $config->current['BASE'];
     }
+    session::global_set("CurrentMainBase", $base);
 
     $messages = array();
     $dhcps    = array();
@@ -38,6 +75,10 @@ class systemImport
       $cn   = $m[1].'$';
       $zone = $m[2].'.';
 
+      $objectType = $defaultObjectType;
+      if (isset($host['objectType'])) {
+        $objectType = $host['objectType'];
+      }
       $tabObject = objects::create($objectType);
       $tabObject->set_acl_base($base);
       $baseObject = $tabObject->getBaseObject();
@@ -114,6 +155,60 @@ class systemImport
       }
     }
     return $messages;
+  }
+
+  static function getAttributesInfo($filter = '')
+  {
+    return array(
+      'import' => array(
+        'template'  => get_template_path('server_import.tpl', TRUE, dirname(__FILE__)),
+        'name'      => _('Import'),
+        'attrs'     => array(
+          new BaseSelectorAttribute(get_ou('sambaMachineAccountRDN')),
+          new ImportServerAttribute(
+            _('Server'), _('The server you wish to import hosts from'),
+            'apiServer', $filter
+          ),
+        ),
+      ),
+    );
+  }
+
+  function __construct(&$config, $dn = NULL, $object = NULL)
+  {
+    parent::__construct($config, $dn, $object);
+    $this->messages = FALSE;
+  }
+
+  function execute()
+  {
+    $smarty = get_smarty();
+    $smarty->assign('importResult', $this->messages);
+    return parent::execute();
+  }
+
+  function save()
+  {
+  }
+
+  function systemMassImport ($server_dn)
+  {
+    $hosts = $this->getHosts($server_dn);
+    if ($hosts === FALSE) {
+      return;
+    }
+
+    $this->messages = systemImport::massImport($hosts, $this->defaultType, $this->base, $this->getExtraTabs($server_dn));
+  }
+
+  protected function getHosts($server_dn)
+  {
+    die('Not implemented');
+  }
+
+  protected function getExtraTabs($server_dn)
+  {
+    return array();
   }
 }
 ?>
