@@ -42,7 +42,7 @@ class SSHPublicKeyAttribute extends FileAttribute
   {
     $line = fgets($handle);
     if (preg_match($this->format, $line)) {
-      $this->postValue = $line;
+      $this->postValue = trim($line);
     } else {
       msg_dialog::display(_("Upload error"), _("Unknown public key format!"), ERROR_DIALOG);
     }
