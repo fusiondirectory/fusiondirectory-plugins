@@ -28,10 +28,13 @@ class PartitionDialog extends GenericDialog
 
   protected $initialDialogValue = NULL;
 
-  function __construct($simplePlugin, &$attribute, $disk = array())
+  function __construct($simplePlugin, &$attribute, $disk = array(), $diskType = 'disk')
   {
     $this->attribute  = $attribute;
-    $this->dialog     = new $this->dialogClass($simplePlugin->config, $simplePlugin->dn, $attribute, $disk, $attribute->diskType);
+    if (isset($disk['FAIdiskType'])) {
+      $diskType = $disk['FAIdiskType'];
+    }
+    $this->dialog     = new $this->dialogClass($simplePlugin->config, $simplePlugin->dn, $attribute, $disk, $diskType);
 
     $base = $simplePlugin->dn;
     if ($base == 'new') {
@@ -88,14 +91,46 @@ class PartitionTableAttribute extends DialogOrderedArrayAttribute
   protected $diskFilter = '(&(objectClass=FAIclass)(objectClass=FAIpartitionDisk))';
   protected $partFilter = '(&(objectClass=FAIclass)(objectClass=FAIpartitionEntry))';
 
-  public $diskType = 'disk';
-
   public $disks;
 
   function __construct ($label, $description, $ldapName, $values = array(), $acl = '')
   {
     parent::__construct ($label, $description, $ldapName, FALSE, $values, $acl);
     $this->disks = &$this->value;
+  }
+
+  function renderButtons ()
+  {
+    $id = $this->getHtmlId();
+    return $this->renderInputField(
+      'submit',
+      'add'.$id.'_dialog',
+      array('value' => '{msgPool type=addButton}')
+    ).$this->renderInputField(
+      'submit',
+      'add'.$id.'_dialog_raid',
+      array('value' => _('Add RAID'))
+    ).$this->renderInputField(
+      'submit',
+      'add'.$id.'_dialog_lvm',
+      array('value' => _('Add LVM'))
+    );
+  }
+
+  function loadPostValue ()
+  {
+    $id = $this->getHtmlId();
+    if ($this->isVisible()) {
+      parent::loadPostValue();
+      parent::applyPostValue();
+      if (isset($_POST['add'.$id.'_dialog'])) {
+        $this->plugin->openDialog(new $this->dialogClass($this->plugin, $this, array(), 'disk'));
+      } elseif (isset($_POST['add'.$id.'_dialog_raid'])) {
+        $this->plugin->openDialog(new $this->dialogClass($this->plugin, $this, array(), 'raid'));
+      } elseif (isset($_POST['add'.$id.'_dialog_lvm'])) {
+        $this->plugin->openDialog(new $this->dialogClass($this->plugin, $this, array(), 'lvm'));
+      }
+    }
   }
 
   protected function loadAttrValue ($attrs)
