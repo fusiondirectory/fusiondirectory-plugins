@@ -1,9 +1,8 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2007  Fabian Hicker
-  Copyright (C) 2011-2013  FusionDirectory
+  Copyright (C) 2011-2014  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -97,7 +96,7 @@ class mailAccount extends simplePlugin
       'main' => array (
         'name'  => _('Generic'),
         'attrs' => array (
-          new StringAttribute (
+          new MailAttribute (
             _('Primary address'), _('Primary mail address'),
             'mail', TRUE
           ),
@@ -240,49 +239,49 @@ class mailAccount extends simplePlugin
     $this->mailMethod = $tmp->get_method();
     $this->mailMethod->fixAttributesOnLoad();
 
-    $this->attributesInfo['main']['attrs']['gosaMailServer']->setChoices($this->mailMethod->getMailServers());
-    $this->attributesInfo['options2']['attrs']['gosaSpamSortLevel']->setChoices($this->mailMethod->getSpamLevels());
+    $this->attributesAccess['gosaMailServer']->setChoices($this->mailMethod->getMailServers());
+    $this->attributesAccess['gosaSpamSortLevel']->setChoices($this->mailMethod->getSpamLevels());
 
     /* Initialize configured values */
     if ($this->is_account) {
       if ($this->mailMethod->connect() && $this->mailMethod->account_exists()) {
 
         /* Read quota */
-        $this->attributesInfo['main']['attrs']['gosaMailQuota']->setMailMethod($this->mailMethod);
+        $this->attributesAccess['gosaMailQuota']->setMailMethod($this->mailMethod);
 
         /* Read mailboxes */
         $mailBoxes = $this->mailMethod->getMailboxList();
-        $this->attributesInfo['options2']['attrs']['gosaSpamMailbox']->setChoices($mailBoxes);
+        $this->attributesAccess['gosaSpamMailbox']->setChoices($mailBoxes);
         if ($this->mailMethod->is_error()) {
           msg_dialog::display(_("Mail error"), sprintf(_("Cannot get list of mailboxes: %s"),
                 $this->mailMethod->get_error()), ERROR_DIALOG);
         }
-      } elseif(!$this->mailMethod->is_connected()) {
+      } elseif (!$this->mailMethod->is_connected()) {
         msg_dialog::display(_("Mail error"), sprintf(_("Mail method cannot connect: %s"),
               $this->mailMethod->get_error()), ERROR_DIALOG);
-      } elseif(!$this->mailMethod->account_exists()) {
+      } elseif (!$this->mailMethod->account_exists()) {
         msg_dialog::display(_("Mail error"), sprintf(_("Mailbox '%s' doesn't exists on mail server: %s"),
-              $this->mailMethod->get_account_id(),$this->gosaMailServer), ERROR_DIALOG);
+              $this->mailMethod->get_account_id(), $this->gosaMailServer), ERROR_DIALOG);
       }
 
       if ($this->initially_was_account) {
-        $this->attributesInfo['main']['attrs']['mail']->setDisabled(!$this->mailMethod->isModifyableMail());
-        $this->attributesInfo['main']['attrs']['gosaMailServer']->setDisabled(!$this->mailMethod->isModifyableServer());
+        $this->attributesAccess['mail']->setDisabled(!$this->mailMethod->isModifyableMail());
+        $this->attributesAccess['gosaMailServer']->setDisabled(!$this->mailMethod->isModifyableServer());
       }
     }
 
-    $this->attributesInfo['advanced']['attrs']['flag_ownmailbox']->setInLdap(FALSE);
-    $this->attributesInfo['options1']['attrs']['flag_vacation']->setInLdap(FALSE);
-    $this->attributesInfo['options2']['attrs']['flag_spamlevel']->setInLdap(FALSE);
-    $this->attributesInfo['options2']['attrs']['flag_spamsize']->setInLdap(FALSE);
-    $this->attributesInfo['advanced']['attrs']['flag_localonly']->setInLdap(FALSE);
-    $this->attributesInfo['advanced']['attrs']['flag_sieveownscript']->setInLdap(FALSE);
+    $this->attributesAccess['flag_ownmailbox']->setInLdap(FALSE);
+    $this->attributesAccess['flag_vacation']->setInLdap(FALSE);
+    $this->attributesAccess['flag_spamlevel']->setInLdap(FALSE);
+    $this->attributesAccess['flag_spamsize']->setInLdap(FALSE);
+    $this->attributesAccess['flag_localonly']->setInLdap(FALSE);
+    $this->attributesAccess['flag_sieveownscript']->setInLdap(FALSE);
 
     if (!$this->mailMethod->vacationRangeEnabled()) {
-      unset($this->attributesInfo['options1']['attrs']['gosaVacationStart']);
-      unset($this->attributesInfo['options1']['attrs']['gosaVacationStop']);
+      unset($this->attributesAccess['gosaVacationStart']);
+      unset($this->attributesAccess['gosaVacationStop']);
     } else {
-      $this->attributesInfo['options1']['attrs']['flag_vacation']->setManagedAttributes (
+      $this->attributesAccess['flag_vacation']->setManagedAttributes (
         array (
           'erase' => array (
             FALSE => array (
@@ -293,7 +292,7 @@ class mailAccount extends simplePlugin
       );
     }
 
-    $this->attributesInfo['options2']['attrs']['flag_spamlevel']->setManagedAttributes (
+    $this->attributesAccess['flag_spamlevel']->setManagedAttributes (
       array (
         'erase' => array (
           FALSE => array (
@@ -302,7 +301,7 @@ class mailAccount extends simplePlugin
         )
       )
     );
-    $this->attributesInfo['options2']['attrs']['flag_spamsize']->setManagedAttributes (
+    $this->attributesAccess['flag_spamsize']->setManagedAttributes (
       array (
         'erase' => array (
           FALSE => array ('gosaMailMaxSize')
@@ -310,7 +309,7 @@ class mailAccount extends simplePlugin
       )
     );
 
-    $this->attributesInfo['advanced']['attrs']['flag_sieveownscript']->setManagedAttributes (
+    $this->attributesAccess['flag_sieveownscript']->setManagedAttributes (
       array (
         'erase' => array (
           TRUE => array (
@@ -325,7 +324,7 @@ class mailAccount extends simplePlugin
       )
     );
     /* sieve submit the form so that managed attributes are correctly updated */
-    $this->attributesInfo['advanced']['attrs']['flag_sieveownscript']->setSubmitForm(TRUE);
+    $this->attributesAccess['flag_sieveownscript']->setSubmitForm(TRUE);
 
     $this->updateAttributesValues();
   }
@@ -346,38 +345,37 @@ class mailAccount extends simplePlugin
     parent::save();
 
     /* Only do IMAP actions if we are not a template */
-    if (!$this->is_template){
+    if (!$this->is_template) {
       $this->mailMethod->connect();
-      if(!$this->mailMethod->is_connected()){
+      if (!$this->mailMethod->is_connected()) {
         msg_dialog::display(_("Mail error"), sprintf(_("Mail method cannot connect: %s"),
               $this->mailMethod->get_error()), ERROR_DIALOG);
-      }else{
-        if(!$this->mailMethod->updateMailbox()){
+      } else {
+        if (!$this->mailMethod->updateMailbox()) {
           msg_dialog::display(_("Mail error"), sprintf(_("Cannot update mailbox: %s"),
                 $this->mailMethod->get_error()), ERROR_DIALOG);
         }
-        if(!$this->mailMethod->setQuota($this->gosaMailQuota)){
+        if (!$this->mailMethod->setQuota($this->gosaMailQuota)) {
           msg_dialog::display(_("Mail error"), sprintf(_("Cannot write quota settings: %s"),
                 $this->mailMethod->get_error()), ERROR_DIALOG);
         }
 
-        if (!is_integer(strpos($this->gosaMailDeliveryMode, "C"))){
+        if (!is_integer(strpos($this->gosaMailDeliveryMode, "C"))) {
 
           /* Do not write sieve settings if this account is new and
-             doesn't seem to exist.
-           */
-          if(!$this->initially_was_account && !$this->mailMethod->account_exists()){
+             doesn't seem to exist. */
+          if (!$this->initially_was_account && !$this->mailMethod->account_exists()) {
             @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,
-                "Skipping sieve settings, the account doesn't seem to be created already.</b>","");
-          }else{
-            if(!$this->mailMethod->saveSieveSettings()){
+                "Skipping sieve settings, the account doesn't seem to be created already.</b>", "");
+          } else {
+            if (!$this->mailMethod->saveSieveSettings()) {
               msg_dialog::display(_("Mail error saving sieve settings"), $this->mailMethod->get_error(), ERROR_DIALOG);
             }
           }
-        }else{
+        } else {
           if ($this->sieve_management) {
             @DEBUG (DEBUG_MAIL, __LINE__, __FUNCTION__, __FILE__,
-                "User uses an own sieve script, skipping sieve update.".$str."</b>","");
+                "User uses an own sieve script, skipping sieve update.".$str."</b>", "");
             $this->sieve_management->save();
           }
         }
