@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: FusionDirectory\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-08-21 18:26+0200\n"
-"PO-Revision-Date: 2014-03-26 14:54+0000\n"
+"PO-Revision-Date: 2014-03-31 14:31+0000\n"
 "Last-Translator: marcosantos <marcoa.csantos@yahoo.it>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/FusionDirectory/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -25,7 +25,7 @@ msgstr "Samba"
 
 #: config/samba/class_sambaPluginConfig.inc:29
 msgid "Samba plugin configuration"
-msgstr ""
+msgstr "Configuração do plugin Samba"
 
 #: config/samba/class_sambaPluginConfig.inc:42
 #: personal/samba/class_sambaAccount.inc:130
@@ -38,11 +38,11 @@ msgstr ""
 
 #: config/samba/class_sambaPluginConfig.inc:45
 msgid "The location where FusionDirectory looks for new samba workstations."
-msgstr ""
+msgstr "A localização onde o FusionDirectory procura por novas estações de trabalho samba."
 
 #: config/samba/class_sambaPluginConfig.inc:50
 msgid "Samba ID mapping"
-msgstr ""
+msgstr "Mapeamento Samba ID"
 
 #: config/samba/class_sambaPluginConfig.inc:51
 msgid ""
@@ -52,7 +52,7 @@ msgstr ""
 
 #: config/samba/class_sambaPluginConfig.inc:55
 msgid "Samba SID"
-msgstr ""
+msgstr "Samba SID"
 
 #: config/samba/class_sambaPluginConfig.inc:56
 msgid ""
@@ -264,23 +264,23 @@ msgstr "resetar"
 
 #: personal/samba/class_sambaAccount.inc:261
 msgid "Reconnect if disconnected"
-msgstr ""
+msgstr "Reconecte se estiver desconectado"
 
 #: personal/samba/class_sambaAccount.inc:264
 msgid "from any client"
-msgstr ""
+msgstr "a partir de qualquer cliente"
 
 #: personal/samba/class_sambaAccount.inc:264
 msgid "from previous client only"
-msgstr ""
+msgstr "somente do cliente anterior"
 
 #: personal/samba/class_sambaAccount.inc:276
 msgid "Access options"
-msgstr ""
+msgstr "Opções de acesso"
 
 #: personal/samba/class_sambaAccount.inc:280
 msgid "Enforce password change"
-msgstr ""
+msgstr "Forçar alteraçã de senha"
 
 #: personal/samba/class_sambaAccount.inc:280
 msgid "Force the user to change his password"
@@ -296,7 +296,7 @@ msgstr "A senha nunca expirará"
 
 #: personal/samba/class_sambaAccount.inc:290
 msgid "Login from windows client requires no password"
-msgstr ""
+msgstr "Efetuar login de um cliente windows não requer senha"
 
 #: personal/samba/class_sambaAccount.inc:290
 msgid "Login from a client without a password"
@@ -312,7 +312,7 @@ msgstr "Bloquear a conta"
 
 #: personal/samba/class_sambaAccount.inc:300
 msgid "Cannot change password"
-msgstr ""
+msgstr "Não é possivel alterar a senha"
 
 #: personal/samba/class_sambaAccount.inc:300
 msgid "Not allowed to change password"
@@ -369,12 +369,12 @@ msgstr "Aviso"
 
 #: personal/samba/class_sambaAccount.inc:473
 msgid "Undefined Samba SID detected. Please fix this problem manually!"
-msgstr ""
+msgstr "Detectado Samba SID indefinido. Favor corrigir este problema manualmente!"
 
 #: personal/samba/class_sambaAccount.inc:496
 msgid ""
 "Cannot convert primary group to samba group: group cannot be identified!"
-msgstr ""
+msgstr "Não é possível converter o grupo principal para o grupo samba: o grupo não pode ser identificado!"
 
 #: admin/systems/samba/class_winstationGeneric.inc:40
 msgid "Winstation generic"

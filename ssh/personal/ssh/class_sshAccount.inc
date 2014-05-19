@@ -22,7 +22,7 @@
 class SSHPublicKeyAttribute extends FileAttribute
 {
   /* cache for key extracted informations */
-  protected $format = '/^(ssh-(dss|rsa))\s+([a-zA-Z0-9+\/.=]+)\s+([[:print:]]+)$/';
+  protected $format = '/^\s*(ssh-(dss|rsa))\s+([a-zA-Z0-9+\/.=]+)\s+([[:graph:]]+)\s*$/';
 
   function getArrayValue ()
   {
@@ -42,7 +42,7 @@ class SSHPublicKeyAttribute extends FileAttribute
   {
     $line = fgets($handle);
     if (preg_match($this->format, $line)) {
-      $this->postValue = $line;
+      $this->postValue = trim($line);
     } else {
       msg_dialog::display(_("Upload error"), _("Unknown public key format!"), ERROR_DIALOG);
     }
