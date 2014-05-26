@@ -139,7 +139,6 @@ class AvailableLogsAttribute extends Attribute
 class faiLogView extends simplePlugin
 {
   var $mac;
-
   var $o_queue;
 
   var $displayHeader  = FALSE;
@@ -177,7 +176,7 @@ class faiLogView extends simplePlugin
       'plPriority'    => 30,
       'plObjectType'  => array('workstation', 'server'),
 
-      "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }
 
@@ -185,35 +184,34 @@ class faiLogView extends simplePlugin
   {
     $this->config = $config;
 
-    /* Try to fetch logs for the given event (mac)
-     */
+    /* Try to fetch logs for the given event (mac) */
     $this->o_queue = new supportDaemon();
 
-    /* Load ldap object if given
-        and use this macAddress.
-     */
+    /* Load ldap object if given and use this macAddress. */
     if (is_object($object) && $dn != "" && $dn != "new") {
       parent::__construct($config, $dn, $object);
+    } else {
+      parent::__construct($config, 'new', $object);
     }
 
-    /* Get correct macAddress.
-        Check if an event is given or a ldap object.
-     */
+    /* Get correct macAddress. Check if an event is given or a ldap object. */
     if (isset($this->attrs['macAddress'][0])) {
       $this->mac = $this->attrs['macAddress'][0];
     }
 
-    /* Query for log files
-     */
-    $res = $this->o_queue->get_log_info_for_mac($this->mac);
-    if ($this->o_queue->is_error()) {
-        msg_dialog::display(_("Error"), $this->o_queue->get_error(), ERROR_DIALOG);
-    }
+    $this->is_account = FALSE;
+    if ($this->mac != '') {
+      /* Query for log files */
+      $res = $this->o_queue->get_log_info_for_mac($this->mac);
+      if ($this->o_queue->is_error()) {
+          msg_dialog::display(_("Error"), $this->o_queue->get_error(), ERROR_DIALOG);
+      }
 
-    /* Check if there is at least one log file
-     */
-    if (isset($res[$this->mac]) && is_array($res[$this->mac])) {
-      $this->attributesAccess['available_logs']->logs = $res;
+      /* Check if there is at least one log file */
+      if (isset($res[$this->mac]) && is_array($res[$this->mac])) {
+        $this->attributesAccess['available_logs']->logs = $res;
+        $this->is_account = TRUE;
+      }
     }
   }
 
