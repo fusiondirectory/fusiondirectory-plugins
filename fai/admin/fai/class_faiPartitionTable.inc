@@ -304,7 +304,7 @@ class faiPartitionTable extends faiSimplePluginClass
         'name'  => _('Properties'),
         'attrs' => array(
           new HostNameAttribute (
-            _('Class name'), _('Variables class name'),
+            _('Class name'), _('Partition table class name'),
             'cn', TRUE
           ),
           new StringAttribute (
@@ -321,7 +321,7 @@ class faiPartitionTable extends faiSimplePluginClass
             'FAIpartitionMethod', FALSE, 'setup-storage'
           ),
           new PartitionTableAttribute (
-            '', _('Packages in this class'), 'FAIpackage'
+            '', _('Partitions in this class'), 'FAIpartitions'
           )
         )
       )
