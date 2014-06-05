@@ -20,7 +20,76 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class faiProfile extends faiPluginClass
+class faiProfile extends faiSimplePluginClass
+{
+  var $objectclasses    = array('top','FAIclass','FAIprofile');
+
+  static function plInfo()
+  {
+    return array(
+      'plShortName'   => _('Profile'),
+      'plDescription' => _('FAI profile'),
+      'plObjectType'  => array(
+        'faiProfile' => array(
+          'name'        => _('FAI Profile'),
+          'filter'      => 'objectClass=FAIprofile',
+          'aclCategory' => 'fai',
+          'ou'          => get_ou('faiProfileRDN'),
+          'icon'        => 'geticon.php?context=applications&icon=fai-profile&size=16'
+        )
+      ),
+      'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
+    );
+  }
+
+  static function getAttributesInfo ()
+  {
+    return array(
+      'main' => array(
+        'name'  => _('Properties'),
+        'attrs' => array(
+          new HostNameAttribute (
+            _('Class name'), _('Partition table class name'),
+            'cn', TRUE
+          ),
+          new StringAttribute (
+            _('Description'), _('Short description of the class'),
+            'description', FALSE
+          ),
+          new CommaListAttribute(
+            'FAIclass',
+            new SetAttribute(
+              new SelectAttribute(
+                _('FAI classes'), _('FAI classes which are part of this profile'),
+                'FAIclass_set', TRUE
+              )
+            ),
+            ' '
+          )
+        )
+      ),
+    );
+  }
+
+  function __construct (&$config, $dn = NULL, $object = NULL)
+  {
+    parent::__construct($config, $dn, $object);
+
+    $this->attributesAccess['cn']->setUnique(TRUE);
+
+    /* Build filter */
+    $types    = array('faiVariable', 'faiHook', 'faiScript', 'faiPackage', 'faiPartitionTable', 'faiTemplate');
+    $choices  = array();
+    foreach ($types as $type) {
+      $choices = array_unique(array_merge($choices, objects::ls($type, NULL, $this->base)));
+    }
+    sort($choices);
+
+    $this->attributesAccess['FAIclass']->attributes[0]->attribute->setChoices($choices);
+  }
+}
+
+class faiProfile_old extends faiPluginClass
 {
   /* attribute list for save action */
   var $ignore_account   = TRUE;
@@ -118,15 +187,15 @@ class faiProfile extends faiPluginClass
     $res = FAI::get_all_objects_for_given_base($this->parent->parent->fai_release, "(|$filter)", true);
     foreach($res as $attrs){
 
-    /* Sort by categorie */
-    foreach($categories as $cat){
-      if(in_array($cat,$attrs['objectClass'])) {
+      /* Sort by categorie */
+      foreach($categories as $cat){
+        if(in_array($cat,$attrs['objectClass'])) {
 
-        /* Append entry */
-        $this->FAIAllclasses[$attrs['cn'][0]][$cat]=$attrs;
+          /* Append entry */
+          $this->FAIAllclasses[$attrs['cn'][0]][$cat]=$attrs;
 
-        /* Create sort array, because the array above is a multidimensional array, and can't be sorted by php sorting functions*/
-        $sort[strtolower($attrs['cn'][0])] = $attrs['cn'][0];
+          /* Create sort array, because the array above is a multidimensional array, and can't be sorted by php sorting functions*/
+          $sort[strtolower($attrs['cn'][0])] = $attrs['cn'][0];
         }
       }
     }
@@ -445,27 +514,6 @@ class faiProfile extends faiPluginClass
     }else{
       new log("create","fai/".get_class($this),$this->dn,$this->attributes);
     }
-  }
-
-  /* Return plugin informations for acl handling */
-  static function plInfo()
-  {
-    return array(
-      'plShortName'   => _('Profile'),
-      'plDescription' => _('FAI profile'),
-      'plSelfModify'  => FALSE,
-      'plObjectType'  => array('faiProfile' => array(
-        'name'        => _('FAI Profile'),
-        'filter'      => 'objectClass=FAIprofile',
-        'icon'        => 'plugins/fai/images/fai_profile.png',
-        'aclCategory' => 'fai'
-      )),
-      'plProvidedAcls' => array(
-        'cn'                => _('Name'),
-        'description'       => _('Description'),
-        'FAIclass'          => _('FAI classes')
-      )
-    );
   }
 
 }
