@@ -410,7 +410,7 @@ class DaemonEvent
       ),
       'Deployment.reboot' => array(
         'name'  => _('Reboot'),
-        'img'   => 'geticon.php?context=actions&icon=view-refresh&size=16'
+        'img'   => 'geticon.php?context=actions&icon=system-reboot&size=16'
       ),
       'Deployment.wake' => array(
         'name'  => _('Wake up'),
@@ -418,11 +418,11 @@ class DaemonEvent
       ),
       'Deployment.update' => array(
         'name'  => _('Software update'),
-        'img'   => 'plugins/systems/images/update.png'
+        'img'   => 'geticon.php?context=actions&icon=system-update&size=16'
       ),
       'Deployment.reinstall' => array(
         'name'  => _('(Re)Install'),
-        'img'   => 'plugins/systems/images/reinstall.png'
+        'img'   => 'geticon.php?context=actions&icon=system-reinstall&size=16'
       ),
     );
   }

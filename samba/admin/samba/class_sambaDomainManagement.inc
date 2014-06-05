@@ -34,7 +34,7 @@ class sambaDomainManagement extends simpleManagement
     return array(
       'plShortName'   => _('Samba domains'),
       'plDescription' => _('Samba domain management'),
-      'plIcon'        => 'geticon.php?context=applications&ion=samba&size=48',
+      'plIcon'        => 'geticon.php?context=applications&icon=samba&size=48',
       'plSection'     => 'admin',
       'plPriority'    => 31,
       'plManages'     => array('sambaDomain'),
