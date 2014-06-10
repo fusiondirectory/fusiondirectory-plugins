@@ -36,6 +36,7 @@ class sambaDomain extends simplePlugin
           'filter'      => '(objectClass=sambaDomain)',
           'icon'        => 'geticon.php?context=applications&icon=samba&size=16',
           'ou'          => '',
+          'mainAttr'    => 'sambaDomainName',
         )
       ),
 
@@ -62,57 +63,70 @@ class sambaDomain extends simplePlugin
             'sambaAlgorithmicRidBase', FALSE
           ),
           new IntAttribute(
-            _('Minimum password age'), 'sambaMinPwdAge',
+            _('Minimum password age'),
+            _('Minimum password age, in seconds (default: 0 => allow immediate password change)'),
             'sambaMinPwdAge', FALSE,
             0, FALSE, ''
           ),
           new IntAttribute(
-            _('Maximum password age'), 'sambaMaxPwdAge',
+            _('Maximum password age'),
+            _('Maximum password age, in seconds (default: -1 => never expire passwords)'),
             'sambaMaxPwdAge', FALSE,
-            0, FALSE, ''
+            -1, FALSE, ''
           ),
           new DisplayLDAPAttribute(
-            _('Next RID'), 'sambaNextRid',
+            _('Next RID'),
+            _('Next NT rid to give out for anything'),
             'sambaNextRid'
           ),
           new DisplayLDAPAttribute(
-            _('Next group RID'), 'sambaNextGroupRid',
+            _('Next group RID'),
+            _('Next NT rid to give out for groups'),
             'sambaNextGroupRid'
           ),
           new DisplayLDAPAttribute(
-            _('Next user RID'), 'sambaNextUserRid',
+            _('Next user RID'),
+            _('Next NT rid to give our for users'),
             'sambaNextUserRid'
           ),
           new DisplayLDAPAttribute(
-            _('Minimum password length'), 'sambaMinPwdLength',
+            _('Minimum password length'),
+            _('Minimal password length (default: 5)'),
             'sambaMinPwdLength'
           ),
           new DisplayLDAPAttribute(
-            _('Password history length'), 'sambaPwdHistoryLength',
+            _('Password history length'),
+            _('Length of Password History Entries (default: 0 => off)'),
             'sambaPwdHistoryLength'
           ),
           new DisplayLDAPAttribute(
-            _('Logon to change password'), 'sambaLogonToChgPwd',
+            _('Logon to change password'),
+            _('Force Users to logon for password change (default: 0 => off, 2 => on)'),
             'sambaLogonToChgPwd'
           ),
           new DisplayLDAPAttribute(
-            _('Lockout duration'), 'sambaLockoutDuration',
+            _('Lockout duration'),
+            _('Lockout duration in minutes (default: 30, -1 => forever)'),
             'sambaLockoutDuration'
           ),
           new DisplayLDAPAttribute(
-            _('Lockout observation window'), 'sambaLockoutObservationWindow',
+            _('Lockout observation window'),
+            _('Reset time after lockout in minutes (default: 30)'),
             'sambaLockoutObservationWindow'
           ),
           new DisplayLDAPAttribute(
-            _('Lockout threshold'), 'sambaLockoutThreshold',
+            _('Lockout threshold'),
+            _('Lockout users after bad logon attempts (default: 0 => off)'),
             'sambaLockoutThreshold'
           ),
           new DisplayLDAPAttribute(
-            _('Force logoff'), 'sambaForceLogoff',
+            _('Force logoff'),
+            _('Disconnect Users outside logon hours (default: -1 => off, 0 => on)'),
             'sambaForceLogoff'
           ),
           new DisplayLDAPAttribute(
-            _('Refuse machine password change'), 'sambaRefuseMachinePwdChange',
+            _('Refuse machine password change'),
+            _('Allow Machine Password changes (default: 0 => off)'),
             'sambaRefuseMachinePwdChange'
           ),
         )
@@ -123,5 +137,11 @@ class sambaDomain extends simplePlugin
   function __construct (&$config, $dn = NULL, $object = NULL)
   {
     parent::__construct($config, $dn, $object);
+  }
+
+  function compute_dn ()
+  {
+    global $config;
+    return 'sambaDomainName='.$this->sambaDomainName.','.$config->current['BASE'];
   }
 }
