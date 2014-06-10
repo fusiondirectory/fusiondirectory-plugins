@@ -410,11 +410,11 @@ class faiProfile extends faiPluginClass
       $message[]=_("No class specified for this profile!");
     }
 
-    if($this->cn == ""){
-      $message[]= msgPool::required(_("Name"));
+    if ($this->cn == "") {
+      $message[] = msgPool::required(_("Name"));
     } elseif (empty($message)) {
       /* Profile can't use a name used by a class */
-      $res = FAI::get_all_objects_for_given_base($this->parent->parent->fai_release, "(cn=".$this->cn.")");
+      $res = FAI::get_all_objects_for_given_base($this->parent->parent->fai_release, "(&(!(objectClass=faiProfile))(cn=".$this->cn."))");
       if (!empty($res)) {
         $message[] = _("You can't use the same name for a class and a profile!");
       }
