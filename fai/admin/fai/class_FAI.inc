@@ -329,7 +329,7 @@ class FAI
     }
     ksort($ar1);
     ksort($ar2);
-    if(count( array_diff($ar1,$ar2)) || FAI::arr_diff($ar1,$ar2)){
+    if(array_differs_recursive($ar1,$ar2)){
       return(true);
     }else{
       return(false);

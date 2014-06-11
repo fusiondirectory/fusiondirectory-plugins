@@ -437,14 +437,7 @@ class faiProfile extends faiPluginClass
     }
 
     $this->attrs['FAIclass']=trim($this->FAIclass);
-
-    /* Remove the old FAI profile, if the dn has changed.
-     */
-    if($this->cn != $this->old_cn && $this->old_cn != ""){
-
-      $old_dn = preg_replace("/^cn=[^,]+,/","cn=".$this->old_cn.",",$this->dn);
-      FAI::prepare_to_save_FAI_object($old_dn,array(),TRUE);
-    }
+    
     FAI::prepare_to_save_FAI_object($this->dn,$this->attrs);
 
     if($this->initially_was_account){
