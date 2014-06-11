@@ -200,7 +200,7 @@ class opsiProfile extends simplePlugin
     $choices_labels = array();
     foreach ($this->products[$this->fdOpsiServerDN]['netboots'] as $netboot) {
       $choices_values[] = $netboot['id'];
-      $choices_labels[] = $netboot['name'];
+      $choices_labels[] = sprintf(_('%s (%s)'), $netboot['id'], $netboot['name']);
     }
     $this->attributesAccess['fdOpsiNetbootProduct']->setChoices($choices_values, $choices_labels);
     $this->attributesAccess['fdOpsiSoftwareList']->attribute->setChoices(

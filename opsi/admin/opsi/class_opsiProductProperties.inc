@@ -20,13 +20,10 @@
 
 class SubmittingOPSIProductAttribute extends SelectAttribute
 {
-  private $func;
-
   function __construct ($label, $description, $ldapName, $required = FALSE, $func, $acl = "")
   {
-    $this->func = $func;
     parent::__construct($label, $description, $ldapName, $required, array(), "", NULL, $acl);
-    $this->setSubmitForm(TRUE);
+    $this->setSubmitForm($func);
   }
 
   function check()
@@ -36,16 +33,6 @@ class SubmittingOPSIProductAttribute extends SelectAttribute
   function displayValue($value)
   {
     return $value;
-  }
-
-  function setValue($value)
-  {
-    $v = $this->getValue();
-    parent::setValue($value);
-    if (is_object($this->plugin) && ($v != $this->getValue())) {
-      $func = $this->func;
-      $this->plugin->$func();
-    }
   }
 }
 
