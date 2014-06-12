@@ -245,6 +245,7 @@ class ServerService extends management
     $this->dialog = FALSE;
     /* Get our dn back */
     $this->dn     = $this->last_dn;
+    set_object_info($this->dn);
   }
 
 
