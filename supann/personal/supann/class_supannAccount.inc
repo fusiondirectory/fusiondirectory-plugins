@@ -243,7 +243,7 @@ class supannAccount extends simplePlugin
           ),
           new StringAttribute(
             _('eduPersonPrincipalName'), _('eduPersonPrincipalName - A name that look like <id>@<domain> which is unique for this domain, and has not be assigned to anyone else recently'),
-            'eduPersonPrincipalName', TRUE
+            'eduPersonPrincipalName', FALSE
           ),
           new StringAttribute(
             _('Nick name'), _('eduPersonNickName - Can contain a nick name for this user'),
@@ -423,7 +423,6 @@ class supannAccount extends simplePlugin
       'personnal2' => array(
         'name'      => _('Roles'),
         'class'     => array('fullwidth'),
-        //~ 'template'  => get_template_path('personnal_role.tpl', TRUE, dirname(__FILE__)),
         'attrs'     => array(
           /* These attributes are handled by the SupannOrderedArrayAttribute */
           new HiddenAttribute('supannRoleGenerique'),
@@ -487,13 +486,13 @@ class supannAccount extends simplePlugin
 
     $this->attributesAccess['supannEntiteAffectation']->attribute->setChoices($code_entites, $label_entites);
     $this->attributesAccess['supannEtablissement']->attribute->setChoices($code_etablissements, $label_etablissements);
-    list ($codes, $labels) = supann::get_choices_for('entite');
+    list ($codes, $labels) = supann::get_choices_for('entite', '{SUPANN}');
     $this->attributesAccess['supannTypeEntiteAffectation']->attribute->setChoices($codes, $labels);
     list ($codes, $labels) = supann::get_choices_for('affiliation');
     $this->attributesAccess['eduPersonAffiliation']->attribute->setChoices($codes, $labels);
     $this->attributesAccess['supannEtuInscription']->setLinearRendering(FALSE);
     $this->supannInit();
-    list ($codes, $labels) = supann::get_choices_for('corps', 'NCORPS');
+    list ($codes, $labels) = supann::get_choices_for('corps', '{NCORPS}');
     $this->attributesAccess['supannEmpCorps']->setChoices($codes, $labels);
   }
 
@@ -538,7 +537,7 @@ class supannAccount extends simplePlugin
   protected function prepare_save ()
   {
     $this->attributesAccess['supannEtuInscription']->supannPrepareSave();
-    $this->attributesAccess['supannEtuInscription']->supannPrepareSave();
+    $this->attributesAccess['supannRoleEntite']->supannPrepareSave();
     parent::prepare_save();
   }
 }
