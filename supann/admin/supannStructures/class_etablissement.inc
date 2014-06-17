@@ -130,7 +130,7 @@ class etablissement extends simplePlugin
 
     $root_code = $this->get_root_code();
     $this->attributesAccess['set_root']->setInLdap(FALSE);
-    $this->attributesAccess['set_root']->setDisabled($root_code === FALSE);
+    $this->attributesAccess['set_root']->setDisabled(($root_code !== FALSE) && ($root_code != $this->supannEtablissement));
     $this->set_root = (($root_code !== FALSE) && ($root_code == $this->supannEtablissement));
   }
 
@@ -163,6 +163,17 @@ class etablissement extends simplePlugin
       /* Set this etablissement as root one */
       $ldap->cat($this->dn);
       $root_attrs = $ldap->fetch();
+      unset($root_attrs['count']);
+      unset($root_attrs['dn']);
+      foreach ($root_attrs as $key => $value) {
+        if (is_numeric($key)) {
+          unset($root_attrs[$key]);
+          continue;
+        }
+        if (is_array($root_attrs[$key])) {
+          unset($root_attrs[$key]['count']);
+        }
+      }
       $root_mode  = 'add';
     } else if (($root_code !== FALSE) && ($root_code == $this->supannEtablissement) && $this->set_root) {
       /* We are the root etablissement, we need to update it */
@@ -175,7 +186,7 @@ class etablissement extends simplePlugin
 
     if ($root_mode) {
       $root_attrs['objectClass'] = array('top','dcObject','organization','supannOrg','eduOrg');
-      $root_attrs['dc'] = 'foobar';
+      $root_attrs['dc'] = $root_attrs['o'];
       unset($root_attrs['supannCodeEntite']);
       $dn = 'o='.$this->o.','.$this->config->current['BASE'];
       if ($root_mode == 'delete') {
