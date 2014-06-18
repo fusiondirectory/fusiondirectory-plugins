@@ -90,13 +90,14 @@ class etablissement extends simplePlugin
         'name'  => _('SUPANN properties'),
         'attrs' => array(
           new StringAttribute(
-            _('Etablissement code'), _('The code of this etablissement'),
-            'supannEtablissement', TRUE
+            _('Etablissement code'), _('The code of this etablissement (must have a prefix between {})'),
+            'supannEtablissement', TRUE,
+            '', '', '/^{[^}]}.*$/'
           ),
           new StringAttribute(
             _('SUPANN code'), _('The SUPANN code for this etablissement'),
             'supannCodeEntite', TRUE,
-            '', '', '/[a-z0-9_-]/'.(strict_uid_mode()?'':'i')
+            '', '', '/^[a-z0-9_-]*$/'.(strict_uid_mode()?'':'i')
           ),
           new StringAttribute(
             _('Legal name'), _('The legal name of this etablissement'),
