@@ -6,9 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
+"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-08-21 18:26+0200\n"
-"PO-Revision-Date: 2013-08-06 07:24+0000\n"
+"PO-Revision-Date: 2014-04-08 17:20+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/FusionDirectory/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -27,7 +27,7 @@ msgstr ""
 
 #: config/fax/class_faxConfig.inc:42
 msgid "LDAP tree"
-msgstr ""
+msgstr "Árvore LDAP"
 
 #: config/fax/class_faxConfig.inc:45
 msgid "Fax RDN"
@@ -52,7 +52,7 @@ msgstr ""
 #: addons/faxreports/class_faxreport.inc:159
 #: addons/faxreports/class_faxreport.inc:300
 msgid "Error"
-msgstr ""
+msgstr "Erro"
 
 #: html/getfax.php:96
 msgid "cannot resize fax image"
@@ -68,7 +68,7 @@ msgstr ""
 
 #: personal/faxaccount/main.inc:126
 msgid "Click the 'Edit' button below to change informations in this dialog"
-msgstr ""
+msgstr "Clique no botão 'Editar' abaixo para mudar as informações neste diálogo"
 
 #: personal/faxaccount/main.inc:135
 msgid "FAX settings"
@@ -76,7 +76,7 @@ msgstr ""
 
 #: personal/faxaccount/class_gofaxAccount.inc:26
 msgid "FAX"
-msgstr ""
+msgstr "FAX"
 
 #: personal/faxaccount/class_gofaxAccount.inc:27
 msgid "This does something"
@@ -98,23 +98,23 @@ msgstr ""
 
 #: personal/faxaccount/class_gofaxAccount.inc:272
 msgid "Phone number"
-msgstr ""
+msgstr "Número de telefone"
 
 #: personal/faxaccount/class_gofaxAccount.inc:421
 #: personal/faxaccount/class_gofaxAccount.inc:503
 msgid "back"
-msgstr ""
+msgstr "voltar"
 
 #: personal/faxaccount/class_gofaxAccount.inc:611
 #: personal/faxaccount/class_gofaxAccount.inc:739
 msgid "LDAP error"
-msgstr ""
+msgstr "Erro de LDAP"
 
 #: personal/faxaccount/class_gofaxAccount.inc:627
 #: personal/faxaccount/class_gofaxAccount.inc:631
 #: personal/faxaccount/class_gofaxAccount.inc:806
 msgid "Fax number"
-msgstr ""
+msgstr "Número de Fax"
 
 #: personal/faxaccount/class_gofaxAccount.inc:638
 msgid "Mail delivery is requested without target address!"
@@ -122,11 +122,11 @@ msgstr ""
 
 #: personal/faxaccount/class_gofaxAccount.inc:640
 msgid "Mail address"
-msgstr ""
+msgstr "E-mail"
 
 #: personal/faxaccount/class_gofaxAccount.inc:640
 msgid "your-name@your-domain.com"
-msgstr ""
+msgstr "seu-nome@seu-domínio.com"
 
 #: personal/faxaccount/class_gofaxAccount.inc:646
 msgid "Printing is requested without a target printer!"
@@ -137,7 +137,7 @@ msgstr ""
 #: personal/faxaccount/paste_generic.tpl.c:5
 #: personal/faxaccount/generic.tpl.c:5
 msgid "Fax"
-msgstr ""
+msgstr "Fax"
 
 #: personal/faxaccount/class_gofaxAccount.inc:797
 msgid "Fax account settings"
@@ -146,7 +146,7 @@ msgstr ""
 #: personal/faxaccount/class_gofaxAccount.inc:807
 #: personal/faxaccount/generic.tpl.c:11
 msgid "Language"
-msgstr ""
+msgstr "Idioma"
 
 #: personal/faxaccount/class_gofaxAccount.inc:808
 #: personal/faxaccount/generic.tpl.c:17
@@ -183,20 +183,20 @@ msgstr ""
 
 #: personal/faxaccount/faxNumberSelect/faxNumberSelect-list.xml:10
 msgid "Please select the desired entries"
-msgstr ""
+msgstr "Por favor, selecione as entradas desejadas"
 
 #: personal/faxaccount/faxNumberSelect/faxNumberSelect-list.xml:14
 #: addons/faxreports/contents.tpl.c:26 addons/faxreports/detail.tpl.c:11
 msgid "User"
-msgstr ""
+msgstr "Usuário"
 
 #: personal/faxaccount/faxNumberSelect/faxNumberSelect-list.xml:40
 msgid "Given name"
-msgstr ""
+msgstr "Primeiro nome"
 
 #: personal/faxaccount/faxNumberSelect/faxNumberSelect-list.xml:48
 msgid "Surname"
-msgstr ""
+msgstr "Sobrenome"
 
 #: addons/faxreports/main.inc:44
 msgid "FAX reports"
@@ -209,18 +209,18 @@ msgstr ""
 #: addons/faxreports/class_faxreport.inc:139
 #, php-format
 msgid "Cannot connect to %s database!"
-msgstr ""
+msgstr "Não é possível conectar-se ao banco de dados %s"
 
 #: addons/faxreports/class_faxreport.inc:159
 #: addons/faxreports/class_faxreport.inc:300
 #, php-format
 msgid "Cannot query %s database!"
-msgstr ""
+msgstr "Não é possível consultar banco de dados %s!"
 
 #: addons/faxreports/class_faxreport.inc:168
 #: addons/faxreports/class_faxreport.inc:178
 msgid "Permission error"
-msgstr ""
+msgstr "Erro de permissão"
 
 #: addons/faxreports/class_faxreport.inc:168
 #: addons/faxreports/class_faxreport.inc:178
@@ -230,7 +230,7 @@ msgstr ""
 #: addons/faxreports/class_faxreport.inc:209
 #: addons/faxreports/class_faxreport.inc:325
 msgid "Y-M-D"
-msgstr ""
+msgstr "A-M-D"
 
 #: addons/faxreports/class_faxreport.inc:319
 msgid "Insufficient permissions to view this attribute"
@@ -238,7 +238,7 @@ msgstr ""
 
 #: addons/faxreports/class_faxreport.inc:319
 msgid "Insufficient permissions"
-msgstr ""
+msgstr "Permissões insuficientes"
 
 #: addons/faxreports/class_faxreport.inc:482
 #: addons/faxreports/class_faxreport.inc:483
@@ -248,7 +248,7 @@ msgstr ""
 
 #: addons/faxreports/class_faxreport.inc:483
 msgid "All entries are readonly"
-msgstr ""
+msgstr "Todas as entradas somente leitura"
 
 #: addons/faxreports/class_faxreport.inc:492
 msgid "Detailed view"
@@ -261,7 +261,7 @@ msgstr ""
 #: addons/faxreports/class_faxreport.inc:494
 #: addons/faxreports/contents.tpl.c:29
 msgid "Date"
-msgstr ""
+msgstr "Data"
 
 #: addons/faxreports/class_faxreport.inc:494
 msgid "Time"
@@ -270,7 +270,7 @@ msgstr ""
 #: addons/faxreports/class_faxreport.inc:495
 #: addons/faxreports/contents.tpl.c:32 addons/faxreports/detail.tpl.c:29
 msgid "Status"
-msgstr ""
+msgstr "Estado"
 
 #: addons/faxreports/class_faxreport.inc:496 addons/faxreports/detail.tpl.c:20
 msgid "Sender ID"
@@ -316,21 +316,21 @@ msgstr ""
 #: personal/faxaccount/faxNumberSelect/faxNumberSelect-filter.tpl.c:5
 #: admin/blocklists/blocklist-filter.tpl.c:5
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
 #: admin/blocklists/blocklist-list.xml:57
 #: admin/blocklists/class_blocklistGeneric.inc:145
 #: admin/blocklists/generic.tpl.c:20
 msgid "Description"
-msgstr ""
+msgstr "Descrição"
 
 #: admin/blocklists/blocklist-list.xml:65
 msgid "Actions"
-msgstr ""
+msgstr "Ações"
 
 #: admin/blocklists/blocklist-list.xml:76
 msgid "Create"
-msgstr ""
+msgstr "Criar"
 
 #: admin/blocklists/blocklist-list.xml:82
 msgid "Blocklist"
@@ -340,17 +340,17 @@ msgstr ""
 #: admin/blocklists/blocklist-list.xml:133
 #: personal/faxaccount/generic.tpl.c:50 personal/faxaccount/generic.tpl.c:56
 msgid "Edit"
-msgstr ""
+msgstr "Editar"
 
 #: admin/blocklists/blocklist-list.xml:101
 #: admin/blocklists/blocklist-list.xml:146
 msgid "Remove"
-msgstr ""
+msgstr "Remover"
 
 #: admin/blocklists/class_blocklistGeneric.inc:32
 #: admin/blocklists/generic.tpl.c:14
 msgid "Type"
-msgstr ""
+msgstr "Tipo"
 
 #: admin/blocklists/class_blocklistGeneric.inc:32
 msgid "Type of this list"
@@ -376,7 +376,7 @@ msgstr ""
 
 #: admin/blocklists/class_blocklistGeneric.inc:141
 msgid "Informations"
-msgstr ""
+msgstr "Informações"
 
 #: admin/blocklists/class_blocklistGeneric.inc:144
 #: admin/blocklists/paste_generic.tpl.c:2 admin/blocklists/generic.tpl.c:5
@@ -412,7 +412,7 @@ msgstr ""
 
 #: admin/systems/services/fax/class_serviceFax.inc:32
 msgid "Services"
-msgstr ""
+msgstr "Serviços"
 
 #: admin/systems/services/fax/class_serviceFax.inc:46
 msgid "FAX database information"
@@ -424,7 +424,7 @@ msgstr ""
 
 #: admin/systems/services/fax/class_serviceFax.inc:56
 msgid "Password"
-msgstr ""
+msgstr "Senha"
 
 #: personal/faxaccount/locals.tpl.c:2
 msgid "Select numbers to add"
@@ -432,7 +432,7 @@ msgstr ""
 
 #: personal/faxaccount/locals.tpl.c:5
 msgid "Filters"
-msgstr ""
+msgstr "Filtros"
 
 #: personal/faxaccount/locals.tpl.c:8
 msgid "Display numbers of department"
@@ -462,12 +462,12 @@ msgstr ""
 #: addons/faxreports/contents.tpl.c:2
 #: admin/blocklists/blocklist-filter.tpl.c:2
 msgid "Filter"
-msgstr ""
+msgstr "Filtro"
 
 #: personal/faxaccount/faxNumberSelect/faxNumberSelect-list.tpl.c:2
 #: admin/blocklists/generic.tpl.c:11
 msgid "Base"
-msgstr ""
+msgstr "Base"
 
 #: personal/faxaccount/lists.tpl.c:2
 msgid "Blocked numbers/lists"
@@ -484,7 +484,7 @@ msgstr ""
 #: personal/faxaccount/paste_generic.tpl.c:2
 #: personal/faxaccount/generic.tpl.c:2 admin/blocklists/generic.tpl.c:2
 msgid "Generic"
-msgstr ""
+msgstr "Genérico"
 
 #: personal/faxaccount/paste_generic.tpl.c:8
 msgid "Fax number for GOfax to trigger on"
@@ -540,11 +540,11 @@ msgstr ""
 
 #: addons/faxreports/contents.tpl.c:5
 msgid "Search for"
-msgstr ""
+msgstr "Procurar por"
 
 #: addons/faxreports/contents.tpl.c:8
 msgid "Enter user name to search for"
-msgstr ""
+msgstr "Digite o nome de usuário a ser pesquisado"
 
 #: addons/faxreports/contents.tpl.c:11 addons/faxreports/contents.tpl.c:20
 msgid "in"
@@ -556,11 +556,11 @@ msgstr ""
 
 #: addons/faxreports/contents.tpl.c:17
 msgid "during"
-msgstr ""
+msgstr "durante"
 
 #: addons/faxreports/contents.tpl.c:23
 msgid "Search"
-msgstr ""
+msgstr "Pesquisar"
 
 #: addons/faxreports/contents.tpl.c:35
 msgid "Sender"
@@ -576,7 +576,7 @@ msgstr ""
 
 #: addons/faxreports/contents.tpl.c:44
 msgid "Search returned no results..."
-msgstr ""
+msgstr "A pesquisa não retornou resultados..."
 
 #: addons/faxreports/detail.tpl.c:2
 msgid "FAX preview - please wait"
@@ -604,17 +604,17 @@ msgstr ""
 
 #: admin/blocklists/remove.tpl.c:2
 msgid "Warning"
-msgstr ""
+msgstr "Aviso"
 
 #: admin/blocklists/remove.tpl.c:5
 msgid ""
 "Please double check if you really want to do this since there is no way for "
 "FusionDirectory to get your data back."
-msgstr ""
+msgstr "Favor clicar duas vezes se você quer realmete executar esta ação. O FusionDirectory não poderá desfazê-la."
 
 #: admin/blocklists/remove.tpl.c:8
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr ""
+msgstr "Se você tem certeza, pressione 'Delete' para continuar ou 'Cancel' para desistir."
 
 #: admin/blocklists/generic.tpl.c:17
 msgid "Select wether to filter incoming or outgoing calls"
@@ -626,4 +626,4 @@ msgstr ""
 
 #: admin/blocklists/generic.tpl.c:29
 msgid "Information"
-msgstr ""
+msgstr "Informação"

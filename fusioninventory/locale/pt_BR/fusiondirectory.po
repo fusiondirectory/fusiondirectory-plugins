@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# ALEJANDRO BARRIOS <alejandrobarrios@interlegis.leg.br>, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-develop\n"
+"Project-Id-Version: FusionDirectory\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-19 16:53+0200\n"
-"PO-Revision-Date: 2013-08-19 14:53+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"POT-Creation-Date: 2013-09-08 14:00+0200\n"
+"PO-Revision-Date: 2014-04-08 17:10+0000\n"
+"Last-Translator: ALEJANDRO BARRIOS <alejandrobarrios@interlegis.leg.br>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/FusionDirectory/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -17,55 +18,101 @@ msgstr ""
 "Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
+#: config/fusioninventory/class_fiConfig.inc:28
+msgid "FusionInventory configuration"
+msgstr "Configuração "
+
+#: config/fusioninventory/class_fiConfig.inc:29
+msgid "FusionDirectory FusionInventory plugin configuration"
+msgstr "Configuração de plugin FusionDirectory FusionInventory"
+
+#: config/fusioninventory/class_fiConfig.inc:42
+#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:77
+msgid "FusionInventory"
+msgstr "FusionInventory"
+
+#: config/fusioninventory/class_fiConfig.inc:45
+msgid "Inventory RDN"
+msgstr "Inventário RDN"
+
+#: config/fusioninventory/class_fiConfig.inc:45
+msgid "Branch in which inventory objects will be stored"
+msgstr "Ramo o qual objetos de inventário serão armazenados"
+
+#: config/fusioninventory/class_fiConfig.inc:50
+msgid "Inventory matching"
+msgstr "Inventário correspondente"
+
+#: config/fusioninventory/class_fiConfig.inc:50
+msgid "Criteria to link an inventory result to a system"
+msgstr "Critérios para ligar um resultado de inventário a um sistema"
+
+#: config/fusioninventory/class_fiConfig.inc:53
+msgid "Mac address"
+msgstr "Endereço MAC"
+
+#: config/fusioninventory/class_fiConfig.inc:53
+msgid "IP address"
+msgstr "Endereço IP"
+
+#: config/fusioninventory/class_fiConfig.inc:53
+msgid "Both"
+msgstr "Ambos"
+
+#: config/fusioninventory/class_fiConfig.inc:53
+msgid "IP or Mac address"
+msgstr "IP ou endereço MAC"
+
 #: html/collect.php:89
 #, php-format
 msgid "FusionDirectory configuration %s/%s is not readable. Aborted."
-msgstr ""
+msgstr "Abortado. Configuração %s/%s do FusionDirectory não pôde ser lida."
 
 #: admin/systems/fusioninventory/class_fiInventoryAgent.inc:30
 msgid "Configuration"
-msgstr ""
+msgstr "Configuração"
 
 #: admin/systems/fusioninventory/class_fiInventoryAgent.inc:33
 msgid "Server"
-msgstr ""
+msgstr "Servidor"
 
 #: admin/systems/fusioninventory/class_fiInventoryAgent.inc:33
 msgid "Server which FI will send inventory infos"
-msgstr ""
+msgstr "Servidor o qual FI enviará informações de inventário"
 
 #: admin/systems/fusioninventory/class_fiInventoryAgent.inc:37
 msgid "Delay time"
-msgstr ""
+msgstr "Tempo de atraso"
 
 #: admin/systems/fusioninventory/class_fiInventoryAgent.inc:37
 msgid "Maximum initial delay before first target, in seconds"
-msgstr ""
+msgstr "Atraso máximo inicial antes do primeiro alvo, em segundos"
 
 #: admin/systems/fusioninventory/class_fiInventoryAgent.inc:42
 msgid "Wait"
-msgstr ""
+msgstr "Espere"
 
 #: admin/systems/fusioninventory/class_fiInventoryAgent.inc:42
 #: admin/systems/fusioninventory/class_fiInventoryAgent.inc:60
 msgid "Maximum delay between each targets, in seconds"
-msgstr ""
+msgstr "Atraso máximo entre alvos, em segundos"
 
 #: admin/systems/fusioninventory/class_fiInventoryAgent.inc:49
 msgid "Web Interface"
-msgstr ""
+msgstr "Interface web"
 
 #: admin/systems/fusioninventory/class_fiInventoryAgent.inc:52
 msgid "Disable web interface"
-msgstr ""
+msgstr "Desabilitar interface web"
 
 #: admin/systems/fusioninventory/class_fiInventoryAgent.inc:52
 msgid "Do not use web interface"
-msgstr ""
+msgstr "Não usar interface web"
 
 #: admin/systems/fusioninventory/class_fiInventoryAgent.inc:56
+#: admin/inventory/inventory-list.xml:28
 msgid "IP"
-msgstr ""
+msgstr "IP"
 
 #: admin/systems/fusioninventory/class_fiInventoryAgent.inc:56
 msgid "Network interface to listen to"
@@ -73,44 +120,73 @@ msgstr ""
 
 #: admin/systems/fusioninventory/class_fiInventoryAgent.inc:60
 msgid "Port"
-msgstr ""
+msgstr "Porta"
 
 #: admin/systems/fusioninventory/class_fiInventoryAgent.inc:65
 msgid "Trust"
-msgstr ""
+msgstr "Confiar"
 
 #: admin/systems/fusioninventory/class_fiInventoryAgent.inc:65
 msgid "IPs allowed to launch inventory task through web interface"
-msgstr ""
-
-#: admin/systems/fusioninventory/class_fiInventoryAgent.inc:77
-msgid "FusionInventory"
-msgstr ""
+msgstr "IPs autorizados a realizar tarefas de inventário através da interface web"
 
 #: admin/systems/fusioninventory/class_fiInventoryAgent.inc:78
 msgid "FusionInventory agent configuration"
-msgstr ""
+msgstr "Agente de configuração "
 
 #: admin/systems/fusioninventory/class_fiInventory.inc:67
 msgid "Inventory"
-msgstr ""
+msgstr "Inventário"
 
 #: admin/systems/fusioninventory/class_fiInventory.inc:68
 msgid "Inventory Viewer"
-msgstr ""
+msgstr "Visualizador de inventário"
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:81
+#: admin/systems/fusioninventory/class_fiInventory.inc:74
+#: admin/systems/fusioninventory/class_fiInventory.inc:78
+msgid "Inventory object"
+msgstr "Objeto de inventário"
+
+#: admin/systems/fusioninventory/class_fiInventory.inc:91
 msgid "Hardware"
-msgstr ""
+msgstr "Hardware"
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:87
+#: admin/systems/fusioninventory/class_fiInventory.inc:97
 msgid "Software"
-msgstr ""
+msgstr "Software"
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:93
+#: admin/systems/fusioninventory/class_fiInventory.inc:103
 msgid "Users"
+msgstr "Usuários"
+
+#: admin/systems/fusioninventory/class_fiInventory.inc:109
+msgid "Processes"
+msgstr "Processos"
+
+#: admin/inventory/inventory-list.xml:7
+msgid "NO LABEL"
+msgstr "SEM RÓTULO"
+
+#: admin/inventory/inventory-list.xml:36
+msgid "Macs"
 msgstr ""
 
-#: admin/systems/fusioninventory/class_fiInventory.inc:99
-msgid "Processes"
-msgstr ""
+#: admin/inventory/inventory-list.xml:44
+msgid "Actions"
+msgstr "Ações"
+
+#: admin/inventory/inventory-list.xml:55 admin/inventory/inventory-list.xml:79
+msgid "Edit"
+msgstr "Editar"
+
+#: admin/inventory/inventory-list.xml:62 admin/inventory/inventory-list.xml:86
+msgid "Remove"
+msgstr "Remover"
+
+#: admin/inventory/class_inventoryManagement.inc:36
+msgid "Inventory objects"
+msgstr "Objetos de inventário"
+
+#: admin/inventory/class_inventoryManagement.inc:37
+msgid "Browse inventory objects"
+msgstr "Navegar em objetos de inventário"

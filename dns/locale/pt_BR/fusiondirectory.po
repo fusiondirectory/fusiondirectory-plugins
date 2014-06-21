@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# ALEJANDRO BARRIOS <alejandrobarrios@interlegis.leg.br>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
+"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-08-21 18:26+0200\n"
-"PO-Revision-Date: 2013-08-19 16:13+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"PO-Revision-Date: 2014-04-07 17:40+0000\n"
+"Last-Translator: ALEJANDRO BARRIOS <alejandrobarrios@interlegis.leg.br>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/FusionDirectory/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,7 +20,7 @@ msgstr ""
 
 #: config/dns/class_dnsConfig.inc:28
 msgid "DNS configuration"
-msgstr ""
+msgstr "Configuração DNS"
 
 #: config/dns/class_dnsConfig.inc:29
 msgid "FusionDirectory dns plugin configuration"
@@ -47,7 +48,7 @@ msgstr ""
 #: admin/systems/services/dns/class_serviceDNS.inc:402
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:240
 msgid "Error"
-msgstr ""
+msgstr "Erro"
 
 #: admin/systems/services/dns/class_DNS.inc:181
 #, php-format
@@ -71,11 +72,11 @@ msgstr ""
 #: admin/systems/services/dns/class_serviceDNS.inc:561
 #: admin/systems/services/dns/class_serviceDNS.inc:594
 msgid "LDAP error"
-msgstr ""
+msgstr "Erro de LDAP"
 
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:258
 msgid "Warning"
-msgstr ""
+msgstr "Aviso"
 
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:258
 msgid "MxRecord"
@@ -84,7 +85,7 @@ msgstr ""
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:290
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:529
 msgid "Delete"
-msgstr ""
+msgstr "Deletar"
 
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:351
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:356
@@ -114,7 +115,7 @@ msgstr ""
 #: admin/systems/services/dns/class_serviceDNS.inc:652
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:38
 msgid "Refresh"
-msgstr ""
+msgstr "Atualizar"
 
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:376
 msgid "Time to life"
@@ -130,13 +131,13 @@ msgstr ""
 #: admin/systems/services/dns/class_serviceDNS.inc:653
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:41
 msgid "Retry"
-msgstr ""
+msgstr "Tente novamente"
 
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:399
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:413
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:8
 msgid "Network address"
-msgstr ""
+msgstr "Endereço de rede"
 
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:421
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:427
@@ -154,7 +155,7 @@ msgstr ""
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:535
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:475
 msgid "Add"
-msgstr ""
+msgstr "Adicionar"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:51
 #: admin/systems/services/dns/class_serviceDNS.inc:604
@@ -178,7 +179,7 @@ msgstr ""
 #: admin/systems/services/dns/class_serviceDNS.inc:655
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:47
 msgid "TTL"
-msgstr ""
+msgstr "TTL"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:317
 msgid "Class"
@@ -201,7 +202,7 @@ msgstr ""
 
 #: admin/systems/services/dns/class_serviceDNS.inc:634
 msgid "Services"
-msgstr ""
+msgstr "Serviços"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:641
 msgid "Start service"
@@ -226,7 +227,7 @@ msgstr ""
 #: admin/systems/services/dns/class_serviceDNS.inc:650
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:32
 msgid "Mail address"
-msgstr ""
+msgstr "E-mail"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:656
 msgid "MX records"
@@ -240,31 +241,31 @@ msgstr ""
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:126
 #: admin/systems/services/dns/serviceDNSeditZoneEntries.tpl.c:8
 msgid "New entry"
-msgstr ""
+msgstr "Nova entrada"
 
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:240
 #, php-format
 msgid "Cannot rename '%s' to '%s'. Name is already in use!"
-msgstr ""
+msgstr "Não é possível renomear '%s' para '%s'. Nome já está em uso!"
 
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:272
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:281
 #, php-format
 msgid "Cannot rename '%s' to '%s'. Entry is already in use."
-msgstr ""
+msgstr "Não é possível renomear '%s' para '%s'. Entrada já está em uso."
 
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:287
 #, php-format
 msgid "Cannot create '%s'. Entry is already in use."
-msgstr ""
+msgstr "Não é possível criar '%s'. Entrada já está em uso."
 
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:296
 #, php-format
 msgid "Entry '%s' is used more than once."
-msgstr ""
+msgstr "Entrada '%s' é usada mais de uma vez."
 
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:322
 #, php-format
@@ -283,7 +284,7 @@ msgstr ""
 
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:477
 msgid "Remove"
-msgstr ""
+msgstr "Remover"
 
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:529
 #, php-format
@@ -292,7 +293,7 @@ msgstr ""
 
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:529
 msgid "Example"
-msgstr ""
+msgstr "Exemplo"
 
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:535
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:543
@@ -391,7 +392,7 @@ msgstr ""
 
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:2
 msgid "Generic"
-msgstr ""
+msgstr "Genérico"
 
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:11
 msgid "Netmask"
@@ -407,7 +408,7 @@ msgstr ""
 
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:23
 msgid "Edit"
-msgstr ""
+msgstr "Editar"
 
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:26
 msgid "SOA record"

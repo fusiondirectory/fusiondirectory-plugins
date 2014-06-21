@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# ALEJANDRO BARRIOS <alejandrobarrios@interlegis.leg.br>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: https://forge.fusiondirectory.org/projects/fd\n"
+"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-08-21 18:26+0200\n"
-"PO-Revision-Date: 2013-08-19 16:12+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"PO-Revision-Date: 2014-04-07 17:00+0000\n"
+"Last-Translator: ALEJANDRO BARRIOS <alejandrobarrios@interlegis.leg.br>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/FusionDirectory/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,7 +24,7 @@ msgstr ""
 #: admin/ogroups/mail/class_mailogroup.inc:184
 #: admin/ogroups/mail/paste_mail.tpl.c:2
 msgid "Mail"
-msgstr ""
+msgstr "Correio"
 
 #: config/mail/class_mailPluginConfig.inc:29
 msgid "Mail plugin configuration"
@@ -32,7 +33,7 @@ msgstr ""
 #: config/mail/class_mailPluginConfig.inc:42
 #: personal/mail/class_mailAccount.inc:81
 msgid "Mail settings"
-msgstr ""
+msgstr "Configurações de correio"
 
 #: config/mail/class_mailPluginConfig.inc:45
 msgid "Mail method"
@@ -119,37 +120,37 @@ msgstr ""
 #: admin/groups/mail/class_groupMail.inc:80
 #: admin/systems/services/postfix/class_servicePostfix.inc:44
 msgid "Generic"
-msgstr ""
+msgstr "Genérico"
 
 #: personal/mail/mailAddressSelect/selectMailAddress-list.xml:10
 msgid "Please select the desired entries"
-msgstr ""
+msgstr "Por favor, selecione as entradas desejadas"
 
 #: personal/mail/mailAddressSelect/selectMailAddress-list.xml:14
 msgid "User"
-msgstr ""
+msgstr "Usuário"
 
 #: personal/mail/mailAddressSelect/selectMailAddress-list.xml:22
 msgid "Group"
-msgstr ""
+msgstr "Grupo"
 
 #: personal/mail/mailAddressSelect/selectMailAddress-list.xml:48
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:119
 #: personal/mail/mailAddressSelect/selectMailAddress-filter.tpl.c:11
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
 #: personal/mail/mailAddressSelect/selectMailAddress-list.xml:56
 #: admin/ogroups/mail/class_mailogroup.inc:106
 #: admin/ogroups/mail/class_mailogroup.inc:113
 #: admin/ogroups/mail/class_mailogroup.inc:190
 msgid "Mail address"
-msgstr ""
+msgstr "E-mail"
 
 #: personal/mail/class_mail-methods.inc:156
 #: personal/mail/class_mail-methods.inc:501
 msgid "Configuration error"
-msgstr ""
+msgstr "Erro de configuração"
 
 #: personal/mail/class_mail-methods.inc:157
 #, php-format
@@ -164,11 +165,11 @@ msgstr ""
 #: personal/mail/class_mail-methods.inc:727
 #: personal/mail/class_mail-methods.inc:728
 msgid "None"
-msgstr ""
+msgstr "Nenhum"
 
 #: personal/mail/class_mail-methods.inc:817
 msgid "Unknown"
-msgstr ""
+msgstr "Desconhecido"
 
 #: personal/mail/class_mail-methods.inc:819
 msgid "Unlimited"
@@ -182,7 +183,7 @@ msgstr ""
 #: personal/mail/class_mailAccount.inc:360
 #: personal/mail/class_mailAccount.inc:364
 msgid "Mail error"
-msgstr ""
+msgstr "Erro de correio"
 
 #: personal/mail/class_mailAccount.inc:48
 #, php-format
@@ -191,7 +192,7 @@ msgstr ""
 
 #: personal/mail/class_mailAccount.inc:58
 msgid "Quota usage"
-msgstr ""
+msgstr "Uso da cota"
 
 #: personal/mail/class_mailAccount.inc:59
 msgid "Part of the quota which is used"
@@ -200,7 +201,7 @@ msgstr ""
 #: personal/mail/class_mailAccount.inc:103
 #: admin/groups/mail/class_groupMail.inc:87 admin/ogroups/mail/mail.tpl.c:5
 msgid "Primary address"
-msgstr ""
+msgstr "Endereço primário"
 
 #: personal/mail/class_mailAccount.inc:103
 msgid "Primary mail address"
@@ -209,15 +210,15 @@ msgstr ""
 #: personal/mail/class_mailAccount.inc:107
 #: admin/groups/mail/class_groupMail.inc:91
 msgid "Server"
-msgstr ""
+msgstr "Servidor"
 
 #: personal/mail/class_mailAccount.inc:107
 msgid "Specify the mail server where the user will be hosted on"
-msgstr ""
+msgstr "Especifique o servidor de correio que o usuário está hospedado"
 
 #: personal/mail/class_mailAccount.inc:112
 msgid "Quota size"
-msgstr ""
+msgstr "Tamanho da cota"
 
 #: personal/mail/class_mailAccount.inc:119
 msgid "Other addresses and redirections"
@@ -226,11 +227,11 @@ msgstr ""
 #: personal/mail/class_mailAccount.inc:124
 #: admin/groups/mail/class_groupMail.inc:97
 msgid "Alternative addresses"
-msgstr ""
+msgstr "Endereços alternativos"
 
 #: personal/mail/class_mailAccount.inc:124
 msgid "List of alternative mail addresses"
-msgstr ""
+msgstr "Lista de endereços alternativos de correio"
 
 #: personal/mail/class_mailAccount.inc:129
 msgid "Forward messages to"
@@ -247,7 +248,7 @@ msgstr ""
 #: personal/mail/sieve/templates/object_container.tpl.c:56
 #: personal/mail/sieve/templates/element_vacation.tpl.c:17
 msgid "Vacation message"
-msgstr ""
+msgstr "Mensagem de férias"
 
 #: personal/mail/class_mailAccount.inc:138
 msgid "Activate vacation message"
@@ -260,7 +261,7 @@ msgstr ""
 
 #: personal/mail/class_mailAccount.inc:144
 msgid "from"
-msgstr ""
+msgstr "de"
 
 #: personal/mail/class_mailAccount.inc:149
 msgid "till"
@@ -304,7 +305,7 @@ msgstr ""
 
 #: personal/mail/class_mailAccount.inc:199
 msgid "Advanced mail options"
-msgstr ""
+msgstr "Opções avançadas de correio"
 
 #: personal/mail/class_mailAccount.inc:203
 msgid "Use custom sieve script"
@@ -320,11 +321,11 @@ msgstr ""
 
 #: personal/mail/class_mailAccount.inc:209
 msgid "User is only allowed to send and receive local mails"
-msgstr ""
+msgstr "Usuário está autorizado somente a enviar e receber emails locais"
 
 #: personal/mail/class_mailAccount.inc:210
 msgid "Select if user can only send and receive inside his own domain"
-msgstr ""
+msgstr "Selecione se o usuário deverá somente enviar e receber mensagens do próprio domínio"
 
 #: personal/mail/class_mailAccount.inc:215
 msgid "No delivery to own mailbox"
@@ -343,17 +344,17 @@ msgstr ""
 #: personal/mail/class_mailAccount.inc:356
 #, php-format
 msgid "Mail method cannot connect: %s"
-msgstr ""
+msgstr "Não foi possível conectar com este método de correio: %s"
 
 #: personal/mail/class_mailAccount.inc:268
 #, php-format
 msgid "Mailbox '%s' doesn't exists on mail server: %s"
-msgstr ""
+msgstr "Caixa de correio '%s' não existe no servidor de correio: %s"
 
 #: personal/mail/class_mailAccount.inc:360
 #, php-format
 msgid "Cannot update mailbox: %s"
-msgstr ""
+msgstr "Não é possível atualizar caixa de correio: %s"
 
 #: personal/mail/class_mailAccount.inc:364
 #, php-format
@@ -379,7 +380,7 @@ msgstr ""
 msgid ""
 "The specified mail server '%s' does not exist within the FusionDirectory "
 "configuration."
-msgstr ""
+msgstr "O servidor de correio '%s' não existe nas configurações do FusionDirectory."
 
 #: personal/mail/sieve/class_sieveManagement.inc:203
 #: personal/mail/sieve/class_sieveManagement.inc:208
@@ -388,23 +389,23 @@ msgstr ""
 #: personal/mail/sieve/class_sieveManagement.inc:431
 #: personal/mail/sieve/class_My_Tree.inc:681
 msgid "Error"
-msgstr ""
+msgstr "Erro"
 
 #: personal/mail/sieve/class_sieveManagement.inc:203
 msgid "No script name specified!"
-msgstr ""
+msgstr "Sem nome especificado no script!"
 
 #: personal/mail/sieve/class_sieveManagement.inc:208
 msgid "Please use only lowercase script names!"
-msgstr ""
+msgstr "Por favor, use somente letras minúsculas em nomes de script!"
 
 #: personal/mail/sieve/class_sieveManagement.inc:214
 msgid "Please use only alphabetical characters in script names!"
-msgstr ""
+msgstr "Por favor, use somente letras do alfabeto em nomes de script!"
 
 #: personal/mail/sieve/class_sieveManagement.inc:220
 msgid "Script name already in use!"
-msgstr ""
+msgstr "Nome de script já está em uso!"
 
 #: personal/mail/sieve/class_sieveManagement.inc:304
 #: personal/mail/sieve/class_sieveManagement.inc:311
@@ -418,14 +419,14 @@ msgstr ""
 #: personal/mail/sieve/class_sieveManagement.inc:1032
 #: personal/mail/sieve/class_sieveManagement.inc:1045
 msgid "SIEVE error"
-msgstr ""
+msgstr "Erro no SIEVE"
 
 #: personal/mail/sieve/class_sieveManagement.inc:304
 #: personal/mail/sieve/class_sieveManagement.inc:347
 #: personal/mail/sieve/class_sieveManagement.inc:1032
 #, php-format
 msgid "Cannot log into SIEVE server: %s"
-msgstr ""
+msgstr "Não foi possível logar no servidor SIEVE: %s"
 
 #: personal/mail/sieve/class_sieveManagement.inc:311
 #, php-format
@@ -435,29 +436,29 @@ msgstr ""
 #: personal/mail/sieve/class_sieveManagement.inc:351
 #, php-format
 msgid "Cannot remove SIEVE script: %s"
-msgstr ""
+msgstr "Não foi possível remover o script SIEVE: %s"
 
 #: personal/mail/sieve/class_sieveManagement.inc:397
 msgid "Edited"
-msgstr ""
+msgstr "Editado"
 
 #: personal/mail/sieve/class_sieveManagement.inc:431
 msgid "Uploaded script is empty!"
-msgstr ""
+msgstr "Script upado está vazio!"
 
 #: personal/mail/sieve/class_sieveManagement.inc:433
 msgid "Internal error"
-msgstr ""
+msgstr "Erro interno"
 
 #: personal/mail/sieve/class_sieveManagement.inc:433
 #, php-format
 msgid "Cannot access temporary file '%s'!"
-msgstr ""
+msgstr "Não é possível acessar arquivo temporário '%s'!"
 
 #: personal/mail/sieve/class_sieveManagement.inc:435
 #, php-format
 msgid "Cannot open temporary file '%s'!"
-msgstr ""
+msgstr "Não é possível abrir arquivo temporário '%s'!"
 
 #: personal/mail/sieve/class_sieveManagement.inc:495
 #: personal/mail/sieve/class_sieveManagement.inc:498
@@ -467,14 +468,14 @@ msgstr ""
 #: personal/mail/sieve/templates/object_container.tpl.c:38
 #: personal/mail/sieve/templates/element_keep.tpl.c:2
 msgid "Keep"
-msgstr ""
+msgstr "Guardar"
 
 #: personal/mail/sieve/class_sieveManagement.inc:496
 #: personal/mail/sieve/class_sieveManagement.inc:714
 #: personal/mail/sieve/templates/object_container.tpl.c:32
 #: personal/mail/sieve/templates/element_comment.tpl.c:2
 msgid "Comment"
-msgstr ""
+msgstr "Comentar"
 
 #: personal/mail/sieve/class_sieveManagement.inc:497
 #: personal/mail/sieve/class_sieveManagement.inc:715
@@ -486,20 +487,20 @@ msgstr ""
 #: personal/mail/sieve/templates/object_container.tpl.c:41
 #: personal/mail/sieve/templates/element_discard.tpl.c:2
 msgid "Discard"
-msgstr ""
+msgstr "Eliminar"
 
 #: personal/mail/sieve/class_sieveManagement.inc:500
 #: personal/mail/sieve/class_sieveManagement.inc:718
 #: personal/mail/sieve/templates/object_container.tpl.c:44
 #: personal/mail/sieve/templates/element_redirect.tpl.c:2
 msgid "Redirect"
-msgstr ""
+msgstr "Redirecionar"
 
 #: personal/mail/sieve/class_sieveManagement.inc:501
 #: personal/mail/sieve/class_sieveManagement.inc:719
 #: personal/mail/sieve/templates/object_container.tpl.c:47
 msgid "Reject"
-msgstr ""
+msgstr "Rejeitar"
 
 #: personal/mail/sieve/class_sieveManagement.inc:502
 #: personal/mail/sieve/class_sieveManagement.inc:720
@@ -513,18 +514,18 @@ msgstr ""
 #: personal/mail/sieve/templates/object_container.tpl.c:53
 #: personal/mail/sieve/templates/element_stop.tpl.c:2
 msgid "Stop"
-msgstr ""
+msgstr "Parar"
 
 #: personal/mail/sieve/class_sieveManagement.inc:505
 #: personal/mail/sieve/class_sieveManagement.inc:723
 #: personal/mail/sieve/class_sieveElement_If.inc:836
 #: personal/mail/sieve/templates/object_container.tpl.c:59
 msgid "If"
-msgstr ""
+msgstr "Se"
 
 #: personal/mail/sieve/class_sieveManagement.inc:521
 msgid "Cannot add new element!"
-msgstr ""
+msgstr "Não é possível adicionar novo elemento!"
 
 #: personal/mail/sieve/class_sieveManagement.inc:564
 #: personal/mail/sieve/class_sieveManagement.inc:758
@@ -547,13 +548,13 @@ msgstr ""
 #: personal/mail/sieve/templates/element_address.tpl.c:2
 #: personal/mail/sieve/templates/element_address.tpl.c:47
 msgid "Address"
-msgstr ""
+msgstr "Endereço"
 
 #: personal/mail/sieve/class_sieveManagement.inc:592
 #: personal/mail/sieve/templates/element_header.tpl.c:2
 #: personal/mail/sieve/templates/element_header.tpl.c:41
 msgid "Header"
-msgstr ""
+msgstr "Cabeçalho"
 
 #: personal/mail/sieve/class_sieveManagement.inc:593
 #: personal/mail/sieve/templates/element_envelope.tpl.c:2
@@ -564,7 +565,7 @@ msgstr ""
 #: personal/mail/sieve/class_sieveManagement.inc:594
 #: personal/mail/sieve/templates/element_size.tpl.c:2
 msgid "Size"
-msgstr ""
+msgstr "Tamanho"
 
 #: personal/mail/sieve/class_sieveManagement.inc:595
 #: personal/mail/sieve/templates/element_exists.tpl.c:2
@@ -574,46 +575,46 @@ msgstr ""
 #: personal/mail/sieve/class_sieveManagement.inc:596
 #: personal/mail/sieve/templates/element_allof.tpl.c:14
 msgid "All of"
-msgstr ""
+msgstr "Tudo de"
 
 #: personal/mail/sieve/class_sieveManagement.inc:597
 #: personal/mail/sieve/templates/element_anyof.tpl.c:11
 msgid "Any of"
-msgstr ""
+msgstr "Qualquer de"
 
 #: personal/mail/sieve/class_sieveManagement.inc:598
 #: personal/mail/sieve/class_sieveElement_If.inc:915
 msgid "True"
-msgstr ""
+msgstr "Verdadeiro"
 
 #: personal/mail/sieve/class_sieveManagement.inc:599
 #: personal/mail/sieve/class_sieveElement_If.inc:915
 msgid "False"
-msgstr ""
+msgstr "Falso"
 
 #: personal/mail/sieve/class_sieveManagement.inc:636
 msgid "Active"
-msgstr ""
+msgstr "Ativo"
 
 #: personal/mail/sieve/class_sieveManagement.inc:637
 msgid "This script is marked as active"
-msgstr ""
+msgstr "Este script está marcado como ativo"
 
 #: personal/mail/sieve/class_sieveManagement.inc:642
 msgid "Script length"
-msgstr ""
+msgstr "Tamanho do script"
 
 #: personal/mail/sieve/class_sieveManagement.inc:646
 msgid "Remove script"
-msgstr ""
+msgstr "Remover script"
 
 #: personal/mail/sieve/class_sieveManagement.inc:655
 msgid "Activate script"
-msgstr ""
+msgstr "Ativar sript"
 
 #: personal/mail/sieve/class_sieveManagement.inc:659
 msgid "Edit script"
-msgstr ""
+msgstr "Editar script"
 
 #: personal/mail/sieve/class_sieveManagement.inc:674
 #, php-format
@@ -636,7 +637,7 @@ msgstr ""
 #: personal/mail/sieve/class_My_Tree.inc:266
 #: personal/mail/sieve/templates/remove_script.tpl.c:2
 msgid "Warning"
-msgstr ""
+msgstr "Aviso"
 
 #: personal/mail/sieve/class_My_Tree.inc:266
 msgid "Cannot remove last element!"
@@ -677,7 +678,7 @@ msgstr ""
 #: personal/mail/sieve/class_sieveElement_If.inc:27
 #: personal/mail/sieve/class_sieveElement_If.inc:33
 msgid "Default"
-msgstr ""
+msgstr "Padrão"
 
 #: personal/mail/sieve/class_sieveElement_If.inc:28
 msgid "Domain part"
@@ -863,33 +864,33 @@ msgstr ""
 
 #: admin/groups/mail/class_groupMail.inc:102
 msgid "Forward messages to non group members"
-msgstr ""
+msgstr "Encaminhar mensagens para não membros de grupos"
 
 #: admin/ogroups/mail/class_mailogroup.inc:70
 msgid "Remove mail account"
-msgstr ""
+msgstr "Remover conta de email"
 
 #: admin/ogroups/mail/class_mailogroup.inc:71
 #: admin/ogroups/mail/class_mailogroup.inc:74
 msgid "mail group"
-msgstr ""
+msgstr "grupo de email"
 
 #: admin/ogroups/mail/class_mailogroup.inc:73
 msgid "Create mail account"
-msgstr ""
+msgstr "Criar conta de email"
 
 #: admin/ogroups/mail/class_mailogroup.inc:106
 msgid "your-name@your-domain.com"
-msgstr ""
+msgstr "seu-nome@seu-domínio.com"
 
 #: admin/ogroups/mail/class_mailogroup.inc:140
 #: admin/ogroups/mail/class_mailogroup.inc:177
 msgid "LDAP error"
-msgstr ""
+msgstr "Erro de LDAP"
 
 #: admin/ogroups/mail/class_mailogroup.inc:185
 msgid "Mail group"
-msgstr ""
+msgstr "Grupo de email"
 
 #: admin/systems/services/imap/class_serviceIMAP.inc:32
 msgid "IMAP/POP3 generic service"
@@ -897,14 +898,14 @@ msgstr ""
 
 #: admin/systems/services/imap/class_serviceIMAP.inc:33
 msgid "IMAP/POP3"
-msgstr ""
+msgstr "IMAP/POP3"
 
 #: admin/systems/services/imap/class_serviceIMAP.inc:33
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:34
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:32
 #: admin/systems/services/postfix/class_servicePostfix.inc:30
 msgid "Services"
-msgstr ""
+msgstr "Serviços"
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:33
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:34
@@ -917,19 +918,19 @@ msgstr ""
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:52
 msgid "Rewrite header"
-msgstr ""
+msgstr "Rescrever cabeçalho"
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:56
 msgid "Required score"
-msgstr ""
+msgstr "Pontuação requerida"
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:56
 msgid "Select required score to tag mail as spam"
-msgstr ""
+msgstr "Selecionar pontuação requerida para definir correio como spam"
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:62
 msgid "Trusted networks"
-msgstr ""
+msgstr "Redes confiáveis"
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:69
 msgid "Flags"
@@ -937,7 +938,7 @@ msgstr ""
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:72
 msgid "Enable use of bayes filtering"
-msgstr ""
+msgstr "Habilitar uso de filtragem de bayes"
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:77
 msgid "Enable bayes auto learning"
@@ -945,23 +946,23 @@ msgstr ""
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:82
 msgid "Enable RBL checks"
-msgstr ""
+msgstr "Habilitar checagem RBL"
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:87
 msgid "Enable use of Razor"
-msgstr ""
+msgstr "Habilitar uso de Razor"
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:92
 msgid "Enable use of DDC"
-msgstr ""
+msgstr "Habilitar uso de DDC"
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:97
 msgid "Enable use of Pyzor"
-msgstr ""
+msgstr "Habilitar uso de Pyzor"
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:112
 msgid "Rules"
-msgstr ""
+msgstr "Regras"
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:116
 msgid "Edit spam ruleEdit spam rule"
@@ -969,7 +970,7 @@ msgstr ""
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:120
 msgid "Rule"
-msgstr ""
+msgstr "Regra"
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:124
 msgid "Edit spam rule"
@@ -982,11 +983,11 @@ msgstr ""
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:46
 msgid "Generic virus filtering"
-msgstr ""
+msgstr "Filtragem genérica de vírus"
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:50
 msgid "Database user"
-msgstr ""
+msgstr "Banco de dados do usuário"
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:50
 msgid "User name for the database"
@@ -994,7 +995,7 @@ msgstr ""
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:54
 msgid "Database mirror"
-msgstr ""
+msgstr "Banco de dados de mirror"
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:54
 msgid "Mirror for the database"
@@ -1002,7 +1003,7 @@ msgstr ""
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:58
 msgid "Http proxy URL"
-msgstr ""
+msgstr "URL de proxy http"
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:58
 msgid "URL for the proxy"
@@ -1022,7 +1023,7 @@ msgstr ""
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:73
 msgid "Checks per day"
-msgstr ""
+msgstr "Checagens por dia"
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:78
 msgid "Enable debugging"
@@ -1034,7 +1035,7 @@ msgstr ""
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:83
 msgid "Enable mail scanning"
-msgstr ""
+msgstr "Habilitar varredura de correio"
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:83
 msgid "Enable mail scanning for the antivirus"
@@ -1042,19 +1043,19 @@ msgstr ""
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:90
 msgid "Archive scanning"
-msgstr ""
+msgstr "Varredura de arquivo"
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:93
 msgid "Enable scanning of archives"
-msgstr ""
+msgstr "Habilitar varredura de arquivos"
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:98
 msgid "Block encrypted archives"
-msgstr ""
+msgstr "Bloquear arquivos encriptados"
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:103
 msgid "Maximum file size"
-msgstr ""
+msgstr "Tamanho máximo de arquivo"
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:108
 msgid "Maximum recursion"
@@ -1062,7 +1063,7 @@ msgstr ""
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:113
 msgid "Maximum compression ratio"
-msgstr ""
+msgstr "Máxima taxa de compressão"
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:113
 msgid " "
@@ -1075,7 +1076,7 @@ msgstr ""
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:48
 msgid "Hostname"
-msgstr ""
+msgstr "Nome do host"
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:48
 msgid "The host name."
@@ -1083,7 +1084,7 @@ msgstr ""
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:53
 msgid "Domain"
-msgstr ""
+msgstr "Domínio"
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:53
 msgid "The domain."
@@ -1095,7 +1096,7 @@ msgstr ""
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:58
 msgid "This value specifies the maximal header size."
-msgstr ""
+msgstr "Este valor especifica o tamanho máximo do cabeçalho."
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:63
 msgid "Max mailbox size (KB)"
@@ -1103,7 +1104,7 @@ msgstr ""
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:63
 msgid "Defines the maximal size of mail box."
-msgstr ""
+msgstr "Define o tamanho máximo da caixa de correio."
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:68
 msgid "Max message size (KB)"
@@ -1111,11 +1112,11 @@ msgstr ""
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:68
 msgid "Specify the maximal size of a message."
-msgstr ""
+msgstr "Especificar o tamanho máximo de uma mensagem."
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:73
 msgid "Relay host"
-msgstr ""
+msgstr "Host de transmissão"
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:73
 msgid "Relay messages to following host"
@@ -1123,7 +1124,7 @@ msgstr ""
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:77
 msgid "Local networks"
-msgstr ""
+msgstr "Redes locais"
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:77
 #: admin/systems/services/postfix/class_servicePostfix.inc:87
@@ -1132,11 +1133,11 @@ msgstr ""
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:83
 msgid "Domains and routing"
-msgstr ""
+msgstr "Domínio e roteamento"
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:87
 msgid "Domains to accept mail for"
-msgstr ""
+msgstr "Aceitar email de domínios "
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:93
 #: admin/systems/services/postfix/class_servicePostfix.inc:102
@@ -1145,33 +1146,33 @@ msgstr ""
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:108
 msgid "Restrictions"
-msgstr ""
+msgstr "Restrições"
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:112
 #: admin/systems/services/postfix/class_servicePostfix.inc:121
 msgid "Restrictions for sender"
-msgstr ""
+msgstr "Restrições aplicáveis ao remetente"
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:126
 #: admin/systems/services/postfix/class_servicePostfix.inc:135
 msgid "Restrictions for recipient"
-msgstr ""
+msgstr "Restrições aplicáveis ao destinatário"
 
 #: personal/mail/mailAddressSelect/selectMailAddress-list.tpl.c:2
 msgid "Base"
-msgstr ""
+msgstr "Base"
 
 #: personal/mail/mailAddressSelect/selectMailAddress-filter.tpl.c:2
 msgid "Filter"
-msgstr ""
+msgstr "Filtro"
 
 #: personal/mail/mailAddressSelect/selectMailAddress-filter.tpl.c:5
 msgid "Show users"
-msgstr ""
+msgstr "Mostrar usuários"
 
 #: personal/mail/mailAddressSelect/selectMailAddress-filter.tpl.c:8
 msgid "Show groups"
-msgstr ""
+msgstr "Mostrar grupos"
 
 #: personal/mail/sieve/templates/object_container.tpl.c:2
 msgid "Move object up one position"
@@ -1185,7 +1186,7 @@ msgstr ""
 #: personal/mail/sieve/templates/object_container.tpl.c:8
 #: personal/mail/sieve/templates/object_container_clear.tpl.c:8
 msgid "Move up"
-msgstr ""
+msgstr "Mover acima"
 
 #: personal/mail/sieve/templates/object_container.tpl.c:11
 msgid "Move object down one position"
@@ -1199,7 +1200,7 @@ msgstr ""
 #: personal/mail/sieve/templates/object_container.tpl.c:17
 #: personal/mail/sieve/templates/object_container_clear.tpl.c:17
 msgid "Move down"
-msgstr ""
+msgstr "Mover abaixo"
 
 #: personal/mail/sieve/templates/object_container.tpl.c:20
 #: personal/mail/sieve/templates/object_test_container.tpl.c:5
@@ -1281,7 +1282,7 @@ msgstr ""
 #: personal/mail/sieve/templates/add_element.tpl.c:8
 #: personal/mail/sieve/templates/select_test_type.tpl.c:8
 msgid "Continue"
-msgstr ""
+msgstr "Continuar"
 
 #: personal/mail/sieve/templates/add_element.tpl.c:11
 msgid "Abort"
@@ -1317,11 +1318,11 @@ msgstr ""
 
 #: personal/mail/sieve/templates/element_fileinto.tpl.c:11
 msgid "Folder"
-msgstr ""
+msgstr "Pasta"
 
 #: personal/mail/sieve/templates/element_comment.tpl.c:5
 msgid "Edit"
-msgstr ""
+msgstr "Editar"
 
 #: personal/mail/sieve/templates/element_size.tpl.c:5
 #: personal/mail/sieve/templates/element_allof.tpl.c:2
@@ -1353,7 +1354,7 @@ msgstr ""
 #: personal/mail/sieve/templates/element_header.tpl.c:47
 #: personal/mail/sieve/templates/element_envelope.tpl.c:53
 msgid "-"
-msgstr ""
+msgstr "-"
 
 #: personal/mail/sieve/templates/element_size.tpl.c:17
 msgid "Select match type"
@@ -1392,7 +1393,7 @@ msgstr ""
 #: personal/mail/sieve/templates/import_script.tpl.c:11
 #: personal/mail/sieve/templates/edit_frame_base.tpl.c:5
 msgid "Import"
-msgstr ""
+msgstr "Importar"
 
 #: personal/mail/sieve/templates/create_script.tpl.c:2
 msgid ""
@@ -1421,7 +1422,7 @@ msgstr ""
 
 #: personal/mail/sieve/templates/element_vacation.tpl.c:11
 msgid "days"
-msgstr ""
+msgstr "dias"
 
 #: personal/mail/sieve/templates/element_vacation.tpl.c:14
 msgid "Alternative sender addresses"
@@ -1448,7 +1449,7 @@ msgstr ""
 
 #: personal/mail/sieve/templates/edit_frame_base.tpl.c:2
 msgid "Export"
-msgstr ""
+msgstr "Exportar"
 
 #: personal/mail/sieve/templates/edit_frame_base.tpl.c:8
 msgid "View structured"
@@ -1474,13 +1475,13 @@ msgstr ""
 #: personal/mail/sieve/templates/element_header.tpl.c:17
 #: personal/mail/sieve/templates/element_envelope.tpl.c:17
 msgid "Yes"
-msgstr ""
+msgstr "Sim"
 
 #: personal/mail/sieve/templates/element_address.tpl.c:20
 #: personal/mail/sieve/templates/element_header.tpl.c:20
 #: personal/mail/sieve/templates/element_envelope.tpl.c:23
 msgid "No"
-msgstr ""
+msgstr "Não"
 
 #: personal/mail/sieve/templates/element_address.tpl.c:23
 msgid "Part of address that should be used"
@@ -1573,12 +1574,12 @@ msgstr ""
 
 #: admin/ogroups/mail/mail.tpl.c:2
 msgid "Mail distribution list"
-msgstr ""
+msgstr "Lista de distribuição de correio"
 
 #: admin/ogroups/mail/mail.tpl.c:8
 msgid "Primary mail address for this distribution list"
-msgstr ""
+msgstr "Email primário para lista de distribuição"
 
 #: admin/ogroups/mail/paste_mail.tpl.c:5
 msgid "Please enter a mail address"
-msgstr ""
+msgstr "Por favor, insira um endereço de correio"
