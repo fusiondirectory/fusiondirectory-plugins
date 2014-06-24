@@ -36,10 +36,16 @@ class componentGeneric extends simplePlugin
       'plShortName'   => _('Generic'),
       'plDescription' => _('Component generic'),
       'plSelfModify'  => FALSE,
-      'plCategory'    => array('component' => array('description'  => _('Network device'),
-                                                    'objectClass'  => array('device', 'ipHost', 'ieee802Device'))),
-      'plObjectType'  => array('component' => array('name'  => _('Network device'),
-                                                    'filter'  => '(&(objectClass=device)(objectClass=ipHost)(objectClass=ieee802Device))')),
+      'plObjectType'  => array(
+        'component' => array(
+          'name'        => _('Network device'),
+          'description' => _('Network device'),
+          'filter'      => '(&(objectClass=ieee802Device)(objectClass=device)(objectClass=ipHost))',
+          'icon'        => 'geticon.php?context=devices&icon=network-device&size=16',
+          'ou'          => get_ou('componentRDN'),
+          'tabClass'    => 'componenttabs',
+        )
+      ),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
@@ -69,7 +75,7 @@ class componentGeneric extends simplePlugin
         'name'      => _('Network settings'),
         'attrs'     => array(new NetworkSettingsAttribute()),
         'template'  => get_template_path('network_section.tpl', TRUE, dirname(__FILE__)),
-        'icon'      => get_template_path('plugins/systems/images/network.png'),
+        'icon'      => 'geticon.php?context=categories&icon=applications-internet&size=16',
       ),
     );
   }

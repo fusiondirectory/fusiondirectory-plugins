@@ -18,7 +18,7 @@
       <class>partitionTable</class>
       <image>plugins/fai/images/fai_partitionTable.png</image>
     </objectType>
-    
+
     <objectType>
       <label>packagelist</label>
       <objectClass>FAIpackageList</objectClass>
@@ -26,7 +26,7 @@
       <class>packageList</class>
       <image>plugins/fai/images/fai_packages.png</image>
     </objectType>
-    
+
     <objectType>
       <label>script</label>
       <objectClass>FAIscript</objectClass>
@@ -34,7 +34,7 @@
       <class>script</class>
       <image>plugins/fai/images/fai_script.png</image>
     </objectType>
-    
+
     <objectType>
       <label>variable</label>
       <objectClass>FAIvariable</objectClass>
@@ -42,7 +42,7 @@
       <class>variable</class>
       <image>plugins/fai/images/fai_variable.png</image>
     </objectType>
-    
+
     <objectType>
       <label>hook</label>
       <objectClass>FAIhook</objectClass>
@@ -50,7 +50,7 @@
       <class>hook</class>
       <image>plugins/fai/images/fai_hook.png</image>
     </objectType>
-    
+
     <objectType>
       <label>profile</label>
       <objectClass>FAIprofile</objectClass>
@@ -58,7 +58,7 @@
       <class>profile</class>
       <image>plugins/fai/images/fai_profile.png</image>
     </objectType>
-    
+
     <objectType>
       <label>template</label>
       <objectClass>FAItemplate</objectClass>
@@ -75,7 +75,7 @@
     <column>
       <value>%{filter:objectTypes(dn,TYPES)}</value>
     </column>
-    
+
     <column>
       <label>Name</label>
       <sortAttribute>cn</sortAttribute>
@@ -100,7 +100,7 @@
 
     <action>
      <type>sub</type>
-     <image>images/lists/new.png</image>
+     <image>geticon.php?context=actions&amp;icon=document-new&amp;size=16</image>
      <label>Create</label>
 
      <action>
@@ -155,7 +155,7 @@
     <action>
       <name>remove_multiple</name>
       <type>entry</type>
-      <image>images/lists/trash.png</image>
+      <image>geticon.php?context=actions&amp;icon=edit-delete&amp;size=16</image>
       <label>Remove</label>
     </action>
 
@@ -186,7 +186,7 @@
     <action>
       <name>edit</name>
       <type>entry</type>
-      <image>images/lists/edit.png</image>
+      <image>geticon.php?context=actions&amp;icon=document-edit&amp;size=16</image>
       <label>Edit</label>
     </action>
 
@@ -194,7 +194,7 @@
       <name>remove</name>
       <type>entry</type>
       <objectclass>FAKE_OC_IsBranch</objectclass>
-      <image>images/lists/trash.png</image>
+      <image>geticon.php?context=actions&amp;icon=edit-delete&amp;size=16</image>
       <label>Remove</label>
     </action>
 

@@ -1,9 +1,9 @@
 <input type="hidden" name="SubObjectFormSubmitted" value="1">
-<table width="100%" summary="">
+<table width="100%">
   <tr>
     <td valign="top" width="50%">
-      <h2><img class="center" alt="" src="plugins/fai/images/fai_small.png" align="middle" title="{t}Generic{/t}">&nbsp;{t}Generic{/t}</h2>
-        <table summary="">
+      <h2><img class="center" alt="" src="plugins/fai/images/fai_small.png" title="{t}Generic{/t}">&nbsp;{t}Generic{/t}</h2>
+        <table>
           <tr>
             <td>
               {t}Name{/t}{$must}&nbsp;
@@ -30,8 +30,8 @@
            &nbsp;
         </td>
     <td valign="top">
-        <h2><img class="center" alt="" src="plugins/fai/images/fai_variable.png" align="middle" title="{t}Variable attributes{/t}">&nbsp;{t}Variable attributes{/t}</h2>
-        <table  summary="" width="100%">
+        <h2><img class="center" alt="" src="plugins/fai/images/fai_variable.png" title="{t}Variable attributes{/t}">&nbsp;{t}Variable attributes{/t}</h2>
+        <table  width="100%">
           <tr>
             <td>
               <LABEL for="Content">
@@ -58,7 +58,7 @@
 </div>
 
 <!-- Place cursor -->
-<script language="JavaScript" type="text/javascript">
+<script type="text/javascript">
   <!-- // First input field on page
   focus_field('cn','description');
   -->

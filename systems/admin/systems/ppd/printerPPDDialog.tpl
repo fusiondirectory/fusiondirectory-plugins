@@ -1,10 +1,10 @@
-<h2><img alt="P" class="center" src="plugins/systems/images/select_printer.png" align="middle">&nbsp;{t}Printer driver{/t}</h2>
+<h2><img alt="P" class="center" src="geticon.php?context=devices&icon=printer&size=16" align="middle">&nbsp;{t}Printer driver{/t}</h2>
 {if !$path_valid}
 <p>
   <b>{msgPool type=invalidConfigurationAttribute param=ppdPath}</b>
 </p>
 {else}
-  <table summary="" width="100%">
+  <table width="100%">
     <tr>
       <td width="50%" style="vertical-align:top">
         {t}Model{/t}: <i>{$ppdString}</i>&nbsp;
@@ -25,7 +25,7 @@
   </table>
   {if $showOptions eq 1}
   <p class="seperator">&nbsp;</p>
-  <h2><img alt="L" class="center" src="images/lists/on.png" align="middle">&nbsp;{t}Options{/t}</h2>
+  <h2><img alt="L" class="center" src="geticon.php?context=status&icon=dialog-information&size=16" align="middle">&nbsp;{t}Options{/t}</h2>
   {$properties}
   {/if}
 {/if}

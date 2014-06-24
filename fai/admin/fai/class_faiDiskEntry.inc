@@ -48,7 +48,7 @@ class faiDiskEntry extends plugin
 
   function faiDiskEntry (&$config, $dn= NULL,$parent,$disk,$type)
   {
-    plugin::plugin ($config, $dn);
+    parent::__construct($config, $dn);
 
     // Set default attributes
     $this->parent = $parent;
@@ -170,7 +170,7 @@ class faiDiskEntry extends plugin
   function execute()
   {
     /* Call parent execute */
-    plugin::execute();
+    parent::execute();
 
     // Fill templating stuff
     $smarty     = get_smarty();
@@ -302,8 +302,6 @@ class faiDiskEntry extends plugin
    */
   function getPartitionList()
   {
-    $divlist = new divSelectBox("RaidList");
-
     /* Create a list of all available disks and partitions.
      * This list will then be used to display detailed info.
      */
@@ -354,7 +352,7 @@ class faiDiskEntry extends plugin
       }
       $list[$device] = $str;
     }
-    return($list);
+    return $list;
   }
 
 
@@ -512,7 +510,7 @@ class faiDiskEntry extends plugin
    */
   function generateParts()
   {
-    $divlist = new divSelectBox("DiskEntries");
+    $divselectbox = new divSelectBox("DiskEntries");
     foreach($this->partitions as $key => $part){
 
       // Create default table cols
@@ -560,12 +558,12 @@ class faiDiskEntry extends plugin
       // We can't remove freezed branches -> Hide remove button.
       if(!preg_match("/freeze/", $this->FAIstate)){
         $action =array(
-            "html" => "<input type='image' src='images/lists/edit.png' name='EditPartition_".$key."'>".
-            "<input type='image' src='images/lists/trash.png' name='RemovePartition_".$key."'>",
+            "html" => "<input type='image' src='geticon.php?context=actions&icon=document-edit&size=16' name='EditPartition_".$key."'>".
+            "<input type='image' src='geticon.php?context=actions&icon=edit-delete&size=16' name='RemovePartition_".$key."'>",
             "attach" => "style='width:40px; border-right: 0px;'");
       }else{
         $action =array(
-            "html" => "<input type='image' src='images/lists/edit.png' name='EditPartition_".$key."'>",
+            "html" => "<input type='image' src='geticon.php?context=actions&icon=document-edit&size=16' name='EditPartition_".$key."'>",
             "attach" => "style='width:40px; border-right: 0px;'");
       }
 
@@ -579,9 +577,9 @@ class faiDiskEntry extends plugin
       }else{
         $fields = array($desc,$type,$mntp,$opt,$size,$action);
       }
-      $divlist->AddEntry($fields);
+      $divselectbox->AddEntry($fields);
     }
-    return($divlist->DrawList());
+    return $divselectbox->DrawList();
   }
 
 
@@ -675,7 +673,7 @@ class faiDiskEntry extends plugin
   function save_object()
   {
     if((isset($_POST['TableEntryFrameSubmitted'])) && !preg_match("/freeze/", $this->FAIstate) ){
-      plugin::save_object();
+      parent::save_object();
 
       // Save posted disk label and fstab key
       if (isset($_POST['disklabel']) && preg_match("/^(msdos|gpt)$/", $_POST['disklabel'])){

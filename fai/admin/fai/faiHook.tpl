@@ -1,8 +1,8 @@
-<table width="100%" summary=''>
+<table width="100%">
   <tr>
     <td width="50%" valign="top">
-        <h2><img class="center" alt="" src="plugins/fai/images/fai_small.png" align="middle" title="{t}Generic{/t}">&nbsp;{t}Generic{/t}</h2>
-        <table summary="" cellspacing="4">
+        <h2><img class="center" alt="" src="plugins/fai/images/fai_small.png" title="{t}Generic{/t}">&nbsp;{t}Generic{/t}</h2>
+        <table cellspacing="4">
           <tr>
             <td>
               <LABEL for="cn">
@@ -32,13 +32,13 @@
   </tr>
 </table>
 <p class="seperator">&nbsp;</p>
-<table width="100%" summary=''>
+<table width="100%">
   <tr>
     <td>
-        <h2><img class="center" alt="" src="plugins/fai/images/fai_hook.png" align="middle" title="{t}Objects{/t}">&nbsp;
+        <h2><img class="center" alt="" src="plugins/fai/images/fai_hook.png" title="{t}Objects{/t}">&nbsp;
           {t}List of hook scripts{/t}
         </h2>
-        <table width="100%" summary=''>
+        <table width="100%">
         <tr>
           <td>
             {$Entry_divlist}
@@ -55,7 +55,7 @@
 </table>
 <input type="hidden" value="1" name="FAIhook_posted">
 <!-- Place cursor -->
-<script language="JavaScript" type="text/javascript">
+<script type="text/javascript">
   <!-- // First input field on page
   focus_field('cn','description');
   -->

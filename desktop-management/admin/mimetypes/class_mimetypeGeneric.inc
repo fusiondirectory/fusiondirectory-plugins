@@ -1,5 +1,4 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
@@ -74,9 +73,9 @@ class mimetype extends plugin
   var $orig_dn    = "";
   var $orig_base  = "";
 
-  function mimetype(&$config,$dn= NULL)
+  function __construct(&$config, $dn = NULL)
   {
-    plugin::plugin ($config, $dn);
+    parent::__construct($config, $dn);
 
     /* Save original dn */
     $this->orig_dn = $dn;
@@ -167,6 +166,10 @@ class mimetype extends plugin
     $this->orig_base = $this->base;
   }
 
+  public function compute_dn()
+  {
+    return 'cn='.$this->cn.','.get_ou('mimetypeRDN').$this->base;
+  }
 
   function execute()
   {
@@ -289,7 +292,7 @@ class mimetype extends plugin
     if($this->acl_is_writeable("gotoMimeFilePattern") && !preg_match("/freeze/i",$this->FAIstate)){
       $Pattern_Actions= " <input type='image' src='images/lists/sort-up.png'  class='center'  name='Pattern_SortUp_%s' >&nbsp;
       <input type='image' src='images/lists/sort-down.png'  class='center'  name='Pattern_SortDown_%s'>&nbsp;
-      <input type='image' src='images/lists/trash.png'  class='center'  name='Pattern_Remove_%s'>";
+      <input type='image' src='geticon.php?context=actions&icon=edit-delete&size=16'  class='center'  name='Pattern_Remove_%s'>";
     }else{
       $Pattern_Actions= "";
     }
@@ -297,7 +300,7 @@ class mimetype extends plugin
     if($this->acl_is_writeable("gotoMimeApplication") && !preg_match("/freeze/i",$this->FAIstate)){
       $Apps_Actions   = " <input type='image' src='images/lists/sort-up.png'  class='center'  name='Apps_SortUp_%s' >&nbsp;
       <input type='image' src='images/lists/sort-down.png'  class='center'  name='Apps_SortDown_%s'>&nbsp;
-      <input type='image' src='images/lists/trash.png'  class='center'  name='Apps_Remove_%s'>";
+      <input type='image' src='geticon.php?context=actions&icon=edit-delete&size=16'  class='center'  name='Apps_Remove_%s'>";
     }else{
       $Apps_Actions= "";
     }
@@ -305,7 +308,7 @@ class mimetype extends plugin
     if($this->acl_is_writeable("gotoMimeEmbeddedApplication") && !preg_match("/freeze/i",$this->FAIstate)){
       $EApps_Actions  = " <input type='image' src='images/lists/sort-up.png'  class='center'  name='EApps_SortUp_%s' >&nbsp;
       <input type='image' src='images/lists/sort-down.png'  class='center'  name='EApps_SortDown_%s'>&nbsp;
-      <input type='image' src='images/lists/trash.png'  class='center'  name='EApps_Remove_%s'>";
+      <input type='image' src='geticon.php?context=actions&icon=edit-delete&size=16'  class='center'  name='EApps_Remove_%s'>";
     }else{
       $EApps_Actions= "";
     }
@@ -366,10 +369,10 @@ class mimetype extends plugin
     if(isset($_POST['MimeGeneric']) && !preg_match("/freeze/i",$this->FAIstate)){
 
       /* Create a base backup and reset the
-         base directly after calling plugin::save_object();
+         base directly after calling parent::save_object();
          Base will be set seperatly a few lines below */
       $base_tmp = $this->base;
-      plugin::save_object();
+      parent::save_object();
       $this->base = $base_tmp;
 
       /* Only save base if we are not in release mode */
@@ -448,7 +451,7 @@ class mimetype extends plugin
       $this->gotoMimeIcon = "";
     }
 
-    plugin::save();
+    parent::save();
 
     /* If this is a newly created object, skip storing those
        attributes that contain an empty array */
@@ -475,7 +478,7 @@ class mimetype extends plugin
       new log("create","mimetypes/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
     }
     if (!$ldap->success()){
-      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()));
+      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()), LDAP_ERROR);
     }
   }
 
@@ -483,11 +486,11 @@ class mimetype extends plugin
   /* Remove current mime type */
   function remove_from_parent()
   {
-    plugin::remove_from_parent();
+    parent::remove_from_parent();
     $ldap = $this->config->get_ldap_link();
     $ldap->rmDir($this->dn);
     if (!$ldap->success()){
-      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_DEL, get_class()));
+      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_DEL, get_class()), LDAP_ERROR);
     }
     new log("remove","mimetypes/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
 
@@ -502,7 +505,7 @@ class mimetype extends plugin
       unset($og->member[$this->dn]);
       $og->save ();
       if (!$ldap->success()){
-        msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $og->dn, 0, get_class()));
+        msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $og->dn, 0, get_class()), LDAP_ERROR);
       }
     }
   }
@@ -665,27 +668,31 @@ class mimetype extends plugin
   static function plInfo()
   {
     return array(
-      "plShortName"   => _("Generic"),
-      "plDescription" => _("Mime type generic"),
-      "plSelfModify"  => FALSE,
-      "plCategory"    => array("mimetypes" => array("description"  => _("Mime types"),
-                                                    "objectClass"  => "gotoMimeType")),
-      "plObjectType"  => array("mimetype" => array("name"  => _("Mime type"),
-                                                  "filter"  => "objectClass=gotoMimeType")),
+      'plShortName'   => _('Generic'),
+      'plDescription' => _('Mime type generic'),
+      'plSelfModify'  => FALSE,
+      'plCategory'    => array('mimetypes' => array('description'  => _('Mime types'),
+                                                    'objectClass'  => 'gotoMimeType')),
+      'plObjectType'  => array('mimetype' => array(
+        'aclCategory' => 'mimetypes',
+        'name'        => _('Mime type'),
+        'filter'      => 'objectClass=gotoMimeType',
+        'ou'          => get_ou('mimetypeRDN'),
+        'icon'        => 'plugins/desktop-management/images/iconMiniMimetypes.png',
+      )),
 
-      "plProvidedAcls"  => array(
-        "cn"                          => _("Name"),
-        "gotoMimeGroup"               => _("Mime group"),
-        "description"                 => _("Description"),
-        "base"                        => _("Base"),
-        "gotoMimeApplication"         => _("Application"),
-        "gotoMimeLeftClickAction"     => _("Left click action"),
-        "gotoMimeIcon"                => _("Icon"),
-        "gotoMimeFilePattern"         => _("File patterns"),
-        "gotoMimeEmbeddedApplication" => _("Embedded applications")
+      'plProvidedAcls'  => array(
+        'cn'                          => _('Name'),
+        'gotoMimeGroup'               => _('Mime group'),
+        'description'                 => _('Description'),
+        'base'                        => _('Base'),
+        'gotoMimeApplication'         => _('Application'),
+        'gotoMimeLeftClickAction'     => _('Left click action'),
+        'gotoMimeIcon'                => _('Icon'),
+        'gotoMimeFilePattern'         => _('File patterns'),
+        'gotoMimeEmbeddedApplication' => _('Embedded applications')
       )
     );
-
   }
 
   function PrepareForCopyPaste($source)

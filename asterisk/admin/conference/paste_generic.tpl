@@ -1,4 +1,4 @@
-<table summary="">
+<table>
   <tr>
     <td>
       <LABEL for="cn">

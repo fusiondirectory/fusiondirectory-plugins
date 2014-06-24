@@ -25,7 +25,7 @@
 <p class="seperator">&nbsp;</p>
 
 <!-- Place cursor in correct field -->
-<script language="JavaScript" type="text/javascript">
+<script type="text/javascript">
   <!-- // First input field on page
   document.mainform.cn.focus();
   -->

@@ -67,8 +67,6 @@ class serviceKolab extends simpleService
       "plShortName"     => _("Kolab mail service"),
       "plDescription"   => _("Kolab mail service")." ("._("Services").")",
       "plIcon"          => "plugins/kolab/images/iconMini.png",
-      "plSelfModify"    => FALSE,
-      "plCategory"      => array("server"),
       "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }
@@ -281,7 +279,7 @@ class serviceKolab extends simpleService
       /* Remove complete entry */
       $ldap->rmdir ($this->dn);
       if (!$ldap->success()) {
-        msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_DEL, get_class()));
+        msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_DEL, get_class()), LDAP_ERROR);
       }
     } else {
       /* Only modify kolabHost */
@@ -292,7 +290,7 @@ class serviceKolab extends simpleService
       $this->cleanup();
       $ldap->modify($attrs);
       if (!$ldap->success()) {
-        msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_MOD, get_class()));
+        msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_MOD, get_class()), LDAP_ERROR);
       }
     }
 

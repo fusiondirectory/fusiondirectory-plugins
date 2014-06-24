@@ -23,9 +23,9 @@
 class componenttabs extends tabs
 {
 
-  function componenttabs($config, $data, $dn, $category, $copied_object = NULL)
+  function __construct($config, $data, $dn, $category, $copied_object = NULL)
   {
-    parent::tabs($config, $data, $dn, $category, $copied_object);
+    parent::__construct($config, $data, $dn, $category, $copied_object);
 
     /* Add references/acls/snapshots */
     $this->addSpecialTabs();
@@ -35,7 +35,7 @@ class componenttabs extends tabs
   {
     parent::save_object($save_current);
 
-    $baseobject = $this->getBaseObject();
+    $baseobject                   = $this->getBaseObject();
     $baseobject->netConfigDNS->cn = $baseobject->cn;
   }
 
@@ -45,7 +45,7 @@ class componenttabs extends tabs
     /* Check for new 'dn', in order to propagate the
        'dn' to all plugins */
     $baseobject = $this->getBaseObject();
-    $this->dn = "cn=$baseobject->cn,".get_ou('componentRDN').$baseobject->base;
+    $this->dn   = "cn=$baseobject->cn,".get_ou('componentRDN').$baseobject->base;
 
     if (($this->dn != $baseobject->orig_dn) && ($baseobject->orig_dn != "new")) {
 

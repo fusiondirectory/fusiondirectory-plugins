@@ -73,7 +73,7 @@ class macroParameter extends plugin
   */
   function macroParameter (&$config, $dn= NULL, $parent= NULL)
   {
-    plugin::plugin ($config, $dn, $parent);
+    parent::__construct($config, $dn, $parent);
 
     $tmp = array();  // temporary Var
     $tmp2 = array(); // temporary Var ...
@@ -204,7 +204,7 @@ class macroParameter extends plugin
   function execute()
   {
     /* Call parent execute */
-    plugin::execute();
+    parent::execute();
 
     /* Variables */
     $vars   = "";
@@ -230,7 +230,7 @@ class macroParameter extends plugin
 
     /* Do we represent a valid group? */
     if (!$this->is_account && $this->parent === NULL){
-      $display= "<img alt=\"\" src=\"images/small-error.png\" align=\"middle\">&nbsp;<b>".
+      $display= "<img alt=\"\" src=\"geticon.php?context=status&icon=dialog-error&size=16\" align=\"middle\">&nbsp;<b>".
         msgPool::noValidExtension(_("Phone macro"))."</b>";
       return ($display);
     }
@@ -328,7 +328,7 @@ class macroParameter extends plugin
   function save_object()
   {
     if (isset($_POST['phoneparameters'])){
-      plugin::save_object();
+      parent::save_object();
     }
     /* read out post data, and assign it to the parameters */
     /* And or delete */
@@ -396,7 +396,7 @@ class macroParameter extends plugin
   {
     /* Post checks */
 
-    plugin::save();
+    parent::save();
 
     $this->attrs['goFonMacroParameter']=array();
 
@@ -432,7 +432,7 @@ class macroParameter extends plugin
       $this->handle_post_events("add");
     }
     if (!$ldap->success()){
-      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()));
+      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()), LDAP_ERROR);
     }
   }
 

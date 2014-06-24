@@ -10,7 +10,7 @@
  {t}Changing the password impinges on authentification only.{/t}
 </p>
 
-<table summary="" style="vertical-align:top; text-align:left;" cellpadding=4 border=0>
+<table style="vertical-align:top; text-align:left;" cellpadding=4 border=0>
   <tr>
     <td><b><LABEL for="new_password">{t}New password{/t}</LABEL></b></td>
     <td><input id="new_password" type="password" name="new_password" size="30"
@@ -41,7 +41,7 @@
 </p>
 
 <!-- Place cursor -->
-<script language="JavaScript" type="text/javascript">
+<script type="text/javascript">
   <!-- // First input field on page
     nextfield= 'new_password';
   focus_field('new_password');

@@ -30,9 +30,13 @@ class nisMap extends simplePlugin
     return array(
       'plShortName'     => _('Mount point'),
       'plDescription'   => _('Autofs mount point'),
-      'plCategory'      => array('autofs'),
-      'plObjectType'    => array('nisMap' => array('name'    => _('Mount point'),
-                                                  'filter'  => 'objectClass=nisMap')),
+      'plObjectType'    => array('nisMap' => array(
+        'name'        => _('Mount point'),
+        'filter'      => 'objectClass=nisMap',
+        'ou'          => get_ou('autofsRDN'),
+        'icon'        => 'plugins/autofs/images/iconMiniNisMap.png',
+        'mainAttr'    => 'nisMapName',
+      )),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
@@ -52,6 +56,11 @@ class nisMap extends simplePlugin
         )
       )
     );
+  }
+
+  function compute_dn()
+  {
+    return "nisMapName=".$this->nisMapName.",".get_ou("autofsRDN").$this->base;
   }
 }
 

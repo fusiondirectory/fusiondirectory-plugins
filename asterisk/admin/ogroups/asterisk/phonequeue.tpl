@@ -1,15 +1,15 @@
 <p style='padding-left:7px;'>
- <img class='center' src='images/lists/on.png' alt='!'>&nbsp;<b>{t}Only users with the same asterisk home server will be included to this queue.{/t}</b>
+ <img class='center' src='geticon.php?context=status&icon=dialog-information&size=16' alt='!'>&nbsp;<b>{t}Only users with the same asterisk home server will be included to this queue.{/t}</b>
 </p>
 
-<table summary="{t}Queue Settings{/t}" style="width: 100%; vertical-align: top; text-align: left;" border="0" cellpadding="4">
+<table style="width: 100%; vertical-align: top; text-align: left;" border="0" cellpadding="4">
 <tr>
 <td valign='top'>
     <h2><img class="center" alt="" src="plugins/asterisk/images/iconMini.png" align="middle">&nbsp;{t}Phone numbers{/t}</h2>
-    <table summary="">
+    <table>
     <tr>
     <td colspan=2>
-      <table summary="{t}Generic queue Settings{/t}">
+      <table>
        <tr>
         <td>
 {render acl=$telephoneNumberACL}
@@ -132,7 +132,7 @@
     <img class="center" alt="" src="plugins/asterisk/images/sound.png" align="middle">
     {t}Queue sound setup{/t}
     </h2>
-  <table summary="{t}Generic queue Settings{/t}">
+  <table>
     <!--<tr>
     <td>
       {t}Use music on hold instead of ringing{/t}
@@ -268,7 +268,7 @@
 </tr>
 <tr>
 <td>
-    <table summary="" style="width: 100%; vertical-align: top; text-align: left;" border="0" cellpadding="0">
+    <table style="width: 100%; vertical-align: top; text-align: left;" border="0" cellpadding="0">
         <tr>
         <td colspan=2>
 {render acl=$goFonQueueAnnounceHoldtimeACL}
@@ -296,7 +296,7 @@
 
 </td>
 <td valign='top' style="border-left: 1px solid rgb(160, 160, 160);">
-    <table summary=""  style="width: 100%; vertical-align: top; text-align: left;" border="0" cellpadding="0">
+    <table  style="width: 100%; vertical-align: top; text-align: left;" border="0" cellpadding="0">
         <tr>
         <td colspan=2>
 {render acl=$goFonDialOptionhACL}

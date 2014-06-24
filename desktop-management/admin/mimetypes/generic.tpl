@@ -48,7 +48,7 @@
     </select>
   {/render}
     {render acl=$baseACL disable_picture='images/lists/folder_grey.png'}
-      <input type="image" name="chooseBase" src="images/lists/folder.png" class="center" title="{t}Select a base{/t}">
+      <input type="image" name="chooseBase" src="geticon.php?context=places&icon=folder&size=16" class="center" title="{t}Select a base{/t}">
     {/render}
             </td>
          </tr>
@@ -56,7 +56,7 @@
 
     </td>
     <td style="border-left:1px solid #A0A0A0;vertical-align:top;">
-      <table summary="">
+      <table>
         <tr>
           <td>
             <LABEL for="picture_file">{t}Icon{/t}</LABEL><br>
@@ -192,7 +192,7 @@
 </table>
 <input type="hidden" name="MimeGeneric" value="1">
 <!-- Place cursor -->
-<script language="JavaScript" type="text/javascript">
+<script type="text/javascript">
   <!-- // First input field on page
   focus_field('cn');
   -->

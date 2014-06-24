@@ -44,7 +44,7 @@ class faiHookEntry extends plugin
 
   function faiHookEntry (&$config, $dn= NULL,$object=false)
   {
-    plugin::plugin ($config, NULL);
+    parent::__construct($config, NULL);
     if($dn != "new"){
       $this->orig_cn= $object['cn'];
       $this->dn=$object['dn'];
@@ -72,7 +72,7 @@ class faiHookEntry extends plugin
   function execute()
   {
     /* Call parent execute */
-    plugin::execute();
+    parent::execute();
 
     /* Fill templating stuff */
     $smarty     = get_smarty();
@@ -196,20 +196,20 @@ class faiHookEntry extends plugin
     /* Return plugin informations for acl handling */
   static function plInfo()
   {
-    return (array(
-          "plShortName" => _("Hook entry"),
-          "plDescription" => _("FAI hook entry"),
-          "plSelfModify"  => FALSE,
-          "plPriority"    => 21,
-          "plCategory"    => array("fai"),
-          "plProvidedAcls" => array(
-            "cn"                => _("Name"),
-            "description"       => _("Description"),
-            "FAItask"           => _("Task"),
-            "FAIscript"         => _("FAI script"))
-          ));
-  }
+    return array(
+      'plShortName'   => _('Hook entry'),
+      'plDescription' => _('FAI hook entry'),
+      'plSelfModify'  => FALSE,
+      'plPriority'    => 21,
+      'plCategory'    => array('fai'),
 
+      'plProvidedAcls' => array(
+        'cn'                => _('Name'),
+        'description'       => _('Description'),
+        'FAItask'           => _('Task'),
+        'FAIscript'         => _('FAI script')
+      )
+    );
+  }
 }
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

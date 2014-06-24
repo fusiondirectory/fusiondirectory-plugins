@@ -50,7 +50,6 @@ class netgroup extends simplePlugin
       'plShortName'   => _('Generic'),
       'plDescription' => _('Generic NIS Netgroup settings'),
       'plSelfModify'  => FALSE,
-      'plCategory'    => array('netgroup' => array('objectClass' => 'nisNetgroup', 'description' => _('NIS Netgroups'))),
       'plObjectType'  => array('netgroup' => array(
         'name'    => _('NIS Netgroup'),
         'filter'  => 'objectClass=nisNetgroup',
@@ -80,7 +79,7 @@ class netgroup extends simplePlugin
       ),
       'users' => array(
         'name'  => _('User members'),
-        'icon'  => 'plugins/users/images/iconMini.png',
+        'icon'  => 'geticon.php?context=types&icon=user&size=16',
         'attrs' => array(
           new SetAttribute(
             new StringAttribute('nisNetgroupTriple', '', 'nisNetgroupTriple')
@@ -93,9 +92,9 @@ class netgroup extends simplePlugin
       ),
       'systems' => array(
         'name'  => _('System members'),
-        'icon'  => 'plugins/systems/images/select_server.png',
+        'icon'  => 'geticon.php?context=devices&icon=server&size=16',
         'attrs' => array(
-          new TrustsAttribute('', _('NIS netgroup members'), 'memberSystems', FALSE),
+          new SystemsAttribute('', _('NIS netgroup members'), 'memberSystems', FALSE),
         )
       ),
       'netgroups' => array(
@@ -112,10 +111,11 @@ class netgroup extends simplePlugin
   {
     parent::__construct($config, $dn, $object);
 
+    $this->attributesAccess['cn']->setUnique(TRUE);
     $this->attributesAccess['nisNetgroupTriple']->setVisible(FALSE);
     $this->attributesAccess['memberUsers']->setInLdap(FALSE);
     $this->attributesAccess['memberSystems']->setInLdap(FALSE);
-    $triples = $this->attributesAccess['nisNetgroupTriple']->getArrayValue();
+    $triples      = $this->attributesAccess['nisNetgroupTriple']->getValue();
     $usersfilter  = '(|';
     $cns          = array();
     foreach ($triples as $triple) {

@@ -53,7 +53,7 @@
      </td>
     </tr>
    </table>
-  
+
   </td>
   <td style="vertical-align:top">
    <p><b>{t}Domain Name Service{/t}</b></p>
@@ -101,12 +101,12 @@
      </td>
     </tr>
    </table>
-  
+
   </td>
  </tr>
 </table>
 <!-- Place cursor in correct field -->
-<script language="JavaScript" type="text/javascript">
+<script type="text/javascript">
   <!-- // First input field on page
      focus_field('cn','routers');
   -->

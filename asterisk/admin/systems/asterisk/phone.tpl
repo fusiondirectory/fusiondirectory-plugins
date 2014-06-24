@@ -1,7 +1,7 @@
-<table summary="" width="100%">
+<table width="100%">
  <tr>
   <td style="vertical-align:top; width:50%; border-right:1px solid #A0A0A0">
-  <table summary="">
+  <table>
    <tr>
     <td><LABEL for="cn">{t}Phone name{/t}</LABEL>{$must}</td>
     <td>
@@ -24,7 +24,7 @@
   </table>
   </td>
   <td style="vertical-align:top">
-  <table summary="">
+  <table>
    <tr>
     <td><LABEL for="description">{t}Description{/t}</LABEL></td>
     <td>
@@ -45,7 +45,7 @@
 {$netconfig}
 
 <!-- Place cursor -->
-<script language="JavaScript" type="text/javascript">
+<script type="text/javascript">
   <!-- // First input field on page
   focus_field('cn');
   -->

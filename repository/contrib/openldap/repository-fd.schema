@@ -9,32 +9,38 @@
 attributetype ( 1.3.6.1.4.1.38414.33.10.1 NAME 'fdRepoType'
   DESC 'FusionDirectory - Repository type'
   EQUALITY caseExactIA5Match
+  SUBSTR caseExactIA5SubstringsMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SINGLE-VALUE)
 
 attributetype ( 1.3.6.1.4.1.38414.33.10.2 NAME 'fdRepoDistribution'
   DESC 'FusionDirectory - dn of repository distribution'
   EQUALITY caseExactIA5Match
+  SUBSTR caseExactIA5SubstringsMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 )
 
 attributetype ( 1.3.6.1.4.1.38414.33.10.3 NAME 'fdRepoSection'
   DESC 'FusionDirectory - dn of repository section'
   EQUALITY caseExactIA5Match
+  SUBSTR caseExactIA5SubstringsMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 )
 
 attributetype ( 1.3.6.1.4.1.38414.33.10.4 NAME 'fdRepoAdmin'
   DESC 'FusionDirectory - dn of repository admin'
   EQUALITY caseExactIA5Match
+  SUBSTR caseExactIA5SubstringsMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 )
 
 attributetype ( 1.3.6.1.4.1.38414.33.10.5 NAME 'fdRepoUser'
   DESC 'FusionDirectory - dn of repository user'
   EQUALITY caseExactIA5Match
+  SUBSTR caseExactIA5SubstringsMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 )
 
 attributetype ( 1.3.6.1.4.1.38414.33.10.6 NAME 'fdRepoUploader'
   DESC 'FusionDirectory - dn of repository uploader'
   EQUALITY caseExactIA5Match
+  SUBSTR caseExactIA5SubstringsMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 )
 
 attributetype ( 1.3.6.1.4.1.38414.33.10.7 NAME 'fdRepoPrivate'
@@ -46,6 +52,7 @@ attributetype ( 1.3.6.1.4.1.38414.33.10.7 NAME 'fdRepoPrivate'
 attributetype ( 1.3.6.1.4.1.38414.33.10.8 NAME 'fdRepoDistributionSection'
   DESC 'FusionDirectory - dn of repository distribution section'
   EQUALITY caseExactIA5Match
+  SUBSTR caseExactIA5SubstringsMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 )
 
 ## Distribution and section attributes
@@ -53,6 +60,7 @@ attributetype ( 1.3.6.1.4.1.38414.33.10.8 NAME 'fdRepoDistributionSection'
 attributetype ( 1.3.6.1.4.1.38414.33.11.1 NAME 'fdBasedOn'
   DESC 'FusionDirectory - dn of an other object this one is based on'
   EQUALITY caseExactIA5Match
+  SUBSTR caseExactIA5SubstringsMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 )
 
 # Objectclasses

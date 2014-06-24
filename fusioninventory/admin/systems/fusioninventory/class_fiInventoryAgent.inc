@@ -77,7 +77,6 @@ class fiInventoryAgent extends simplePlugin
       'plShortName'   => _('FusionInventory'),
       'plDescription' => _('FusionInventory agent configuration'),
       'plPriority'    => 90,
-      'plCategory'    => array('winstation', 'workstation', 'server'),
       'plObjectType'  => array('winstation', 'workstation', 'server'),
 
       "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())

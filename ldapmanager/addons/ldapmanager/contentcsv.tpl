@@ -4,7 +4,7 @@
 <p class="seperator">&nbsp;</p>
 
 {if $fileup != TRUE}
-<table summary="">
+<table>
   <tr>
     <td>
       <LABEL for="userfile">{t}Select CSV file to import{/t}</LABEL>
@@ -20,10 +20,10 @@
     </td>
     <td>
     <select id="template" name="template" size="1" title="">
-      {html_options options=$templates selected=""} 
+      {html_options options=$templates selected=""}
     </select>
     </td>
-    
+
   </tr>
 </table>
 {elseif $sorted != FALSE}
@@ -41,7 +41,7 @@
 <br>
 
 
-  <table summary="" cellspacing="1" border=0 cellpadding="4"  bgcolor="#FEFEFE">
+  <table cellspacing="1" border="0" cellpadding="4"  bgcolor="#FEFEFE">
     <tr>
       {foreach from=$head item=h}
       <td bgcolor="#BBBBBB">
@@ -52,12 +52,12 @@
     {if $pointsbefore == TRUE}
     <tr>
       <td colspan={$i} bgcolor = "#EEEEEE">
-        ... 
+        ...
       </td>
     </tr>
     {/if}
-    
-    {foreach from=$data item=row key=key} 
+
+    {foreach from=$data item=row key=key}
     <tr>
       {foreach from=$data[$key] item=col key=key2}
       <td bgcolor="#EEEEEE">
@@ -73,14 +73,14 @@
           </td>
       </tr>
       {/if}
-                                       
+
   </table>
 
 {else}
 <br><b>{t}Selected Template{/t}:</b> {$tpl}
 <br>
 <br>
-  <table summary="" cellspacing="1" border=0 cellpadding="4" bgcolor="#FEFEFE">
+  <table cellspacing="1" border=0 cellpadding="4" bgcolor="#FEFEFE">
     {foreach from=$data[0] item=val key=key}
     <tr>
       <td bgcolor="#BBBBBB">
@@ -95,7 +95,7 @@
       {/foreach}
     </tr>
     {/foreach}
-    
+
   </table>
 
 <!-- {html_table loop=$data cols=$anz table_attr='border="1"'}-->

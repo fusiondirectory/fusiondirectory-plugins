@@ -49,7 +49,6 @@ class freeradiusAccount extends simplePlugin {
       'plSmallIcon'   => 'plugins/freeradius/images/iconMini.png',
       'plSelfModify'  => TRUE,                  // Does this plugin have an owner that might be able to edit its entry
       'plPriority'    => 11,
-      'plCategory'    => array('user'),
       'plObjectType'  => array('user'),
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())

@@ -31,7 +31,6 @@ class webLink extends simplePlugin
       'plShortName'     => _('Web link'),
       'plDescription'   => _('Edit web link'),
       'plSelfModify'    => FALSE,
-      'plCategory'      => array('workstation','server','ipmi','component','printer'),
       'plObjectType'    => array('workstation','server','ipmi','component','printer'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())

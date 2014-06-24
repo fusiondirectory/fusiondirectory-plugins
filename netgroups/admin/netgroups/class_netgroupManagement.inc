@@ -22,7 +22,6 @@
 class netgroupManagement extends simpleManagement
 {
   // Tab definition
-  protected $objectName   = "netgroup";
   protected $objectTypes  = array('netgroup');
 
   protected $departmentBrowser      = TRUE;
@@ -37,7 +36,7 @@ class netgroupManagement extends simpleManagement
       'plIcon'        => 'plugins/netgroups/images/icon.png',
       'plSection'     => 'admin',
       'plPriority'    => 25,
-      'plCategory'    => array('netgroup'),
+      'plManages'     => array('netgroup'),
 
       'plProvidedAcls' => array()
     );

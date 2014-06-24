@@ -4,7 +4,7 @@
 <div class="contentboxb" style="border-top:1px solid #B0B0B0; padding:0px;">
 <table summary="" class="contentboxb" border=0>
   <tr>
-    <td><img src="plugins/rsyslog/images/server.png" alt="" class="center">&nbsp;{t}Server{/t}:</td>
+    <td><img src="geticon.php?context=devices&icon=server&size=16" alt="" class="center">&nbsp;{t}Server{/t}:</td>
     <td width="20%">
       <select name='selected_server' onChange='document.mainform.submit();'>
         {foreach from=$servers item=item key=key}
@@ -12,7 +12,7 @@
         {/foreach}
       </select>
     </td>
-    <td><img src="plugins/rsyslog/images/workstation.png" alt="" class="center">&nbsp;{t}Host{/t}:</td>
+    <td><img src="geticon.php?context=devices&icon=computer&size=16" alt="" class="center">&nbsp;{t}Host{/t}:</td>
     <td width="20%">
       <select name='selected_host' onChange='document.mainform.submit();'>
         {foreach from=$hosts item=item key=key}
@@ -20,7 +20,7 @@
         {/foreach}
       </select>
     </td>
-    <td><img src="images/small_warning.png" alt="" class="center">&nbsp;{t}Severity{/t}:</td>
+    <td><img src="geticon.php?context=status&icon=diaog-warning&size=16" alt="" class="center">&nbsp;{t}Severity{/t}:</td>
     <td>
       <select name='selected_priority' onChange='document.mainform.submit();'>
         {html_options values=$priorities options=$priorities selected=$selected_priority}
@@ -49,7 +49,7 @@
         {/literal}
       </script>
     </td>
-    <td><img src="images/lists/search.png" alt="" class="center">&nbsp;{t}Search{/t}:</td>
+    <td><img src="geticon.php?context=actions&icon=system-search&size=16" alt="" class="center">&nbsp;{t}Search{/t}:</td>
     <td>
       <input type='text' name='search_for' value='{$search_for}' style='width:250px;'>
     </td>

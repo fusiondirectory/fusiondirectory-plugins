@@ -21,7 +21,6 @@
 class repositoryManagement extends simpleManagement
 {
   // Tab definition
-  protected $objectName   = 'repository';
   protected $objectTypes  = array('buildRepository', 'repoDistribution', 'repoSection');
 
   protected $departmentBrowser      = TRUE;
@@ -41,6 +40,7 @@ class repositoryManagement extends simpleManagement
         'description'  => _('Repository'),
         'objectClass'  => array('fdBuildRepository', 'fdBuildRepositoryDistribution', 'fdBuildRepositorySection')
       )),
+      'plManages'     => array('repoSection', 'repoDistribution', 'buildRepository'),
 
       'plProvidedAcls' => array()
     );

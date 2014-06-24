@@ -191,7 +191,7 @@ class addressbook extends plugin
 
         /* Perform call */
         if ($target != "" && $source != "") {
-          $smarty->assign("phone_image", get_template_path('plugins/addressbook/images/phone.png'));
+          $smarty->assign("phone_image", 'geticon.php?context=devices&icon=telephone&size=16');
           $smarty->assign("dial_info", sprintf(_("Dial from %s to %s now?"), "<b style='font-size:22px; color:red'>".$source."</b>", "<b style='font-size:22px;color:red'>".$target."</b>"));
           return $smarty->fetch(get_template_path('dial.tpl', TRUE));
         } else {
@@ -224,7 +224,7 @@ class addressbook extends plugin
         $ldap->rmdir ($this->dn);
         new log("remove","addressbook/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
         if (!$ldap->success()) {
-          msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_DEL, get_class()));
+          msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_DEL, get_class()), LDAP_ERROR);
         }
         new log("remove","addressbook/".get_class($this),$this->dn,array(),"Addressbook object'".$this->dn."' has been removed");
 
@@ -489,7 +489,7 @@ class addressbook extends plugin
               $this->telephone_list[$attrs['sn'][0].$attrs['dn']].=
 
                 "<a href=\"mailto:".htmlentities($attrs['mail'][0])."\">".
-                "<img  align=\"top\" border=0 src=\"images/mailto.png\" alt=\"vcf\" title=\"$dest\"></a>";
+                "<img  align=\"top\" border=0 src=\"geticon.php?context=applications&icon=internet-mail&size=16\" alt=\"vcf\" title=\"$dest\"></a>";
             }
           }
           $this->telephone_list[$attrs['sn'][0].$attrs['dn']] .= "&nbsp;</td>";
@@ -519,7 +519,7 @@ class addressbook extends plugin
     $smarty->assign("depselect", $this->search_base);
     $smarty->assign("global", $phonefilter['global']);
     $smarty->assign("organizational", $phonefilter['organizational']);
-    $smarty->assign("search_image", get_template_path('images/lists/search.png'));
+    $smarty->assign("search_image", 'geticon.php?context=actions&icon=system-search&size=16');
     $smarty->assign("obj_image", get_template_path('plugins/addressbook/images/objects.png'));
     $smarty->assign("tree_image", get_template_path('images/lists/search-subtree.png'));
     $smarty->assign("infoimage", get_template_path('images/info.png'));
@@ -665,8 +665,8 @@ class addressbook extends plugin
     $smarty->assign('personal_image', get_template_path('plugins/addressbook/images/addr_personal.png'));
     $smarty->assign('home_image', get_template_path('plugins/addressbook/images/addr_home.png'));
     $smarty->assign('company_image', get_template_path('plugins/addressbook/images/addr_company.png'));
-    $smarty->assign('add_image', get_template_path('images/lists/paste.png'));
-    $smarty->assign('edit_image', get_template_path('images/lists/edit.png'));
+    $smarty->assign('add_image', 'geticon.php?context=actions&icon=edit-paste&size=16');
+    $smarty->assign('edit_image', 'geticon.php?context=actions&icon=document-edit&size=16');
     $smarty->assign('delete_image', get_template_path('images/lists/delete.png'));
     return $smarty->fetch(get_template_path('contents.tpl', TRUE));
   }
@@ -758,7 +758,7 @@ class addressbook extends plugin
   function load()
   {
     /* Load base attributes */
-    plugin::plugin ($this->config, $this->dn);
+    parent::__construct ($this->config, $this->dn);
     $this->view_logged  = FALSE;
     $this->storage_base = preg_replace('/^[^,]+,/', '', preg_replace('/'.$this->abobjectclass.',/', '', $this->dn));
   }
@@ -795,7 +795,7 @@ class addressbook extends plugin
     $this->cleanup();
     $ldap->$mode($this->attrs);
     if (!$ldap->success()) {
-      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_DEL, get_class()));
+      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_DEL, get_class()), LDAP_ERROR);
       return 1;
     }
 

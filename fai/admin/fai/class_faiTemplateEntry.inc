@@ -45,7 +45,7 @@ class faiTemplateEntry extends plugin
 
   function faiTemplateEntry (&$config, $dn= NULL,$object=false)
   {
-    plugin::plugin ($config, $dn);
+    parent::__construct($config, $dn);
 
     if((isset($object['cn'])) && (!empty($object['cn']))){
       $this->orig_cn= $object['cn'];
@@ -80,7 +80,7 @@ class faiTemplateEntry extends plugin
   function execute()
   {
     /* Call parent execute */
-    plugin::execute();
+    parent::execute();
 
     /* Fill templating stuff */
     $smarty     = get_smarty();
@@ -189,7 +189,7 @@ class faiTemplateEntry extends plugin
           depending on the ACLs we will assemble a new one later.
        */
       $cur_path = $this->FAItemplatePath;
-      plugin::save_object();
+      parent::save_object();
 
       /* Set user.group (FAIowner) attribute */
       if(isset($_POST['group']) && isset($_POST["user"]) && $this->acl_is_writeable("FAIowner")){
@@ -301,22 +301,22 @@ class faiTemplateEntry extends plugin
   /* Return plugin informations for acl handling */
   static function plInfo()
   {
-    return (array(
-          "plShortName" => _("Template entry"),
-          "plDescription" => _("FAI template entry"),
-          "plSelfModify"  => FALSE,
-          "plPriority"    => 25,
-          "plCategory"    => array("fai"),
-          "plProvidedAcls" => array(
-            "cn"                => _("Name"),
-            "description"       => _("Description"),
-            "FAItemplateFile"   => _("Template file"),
-            "FAItemplatePath"   => _("Template path"),
-            "FAIowner"          => _("File owner"),
-            "FAImode"           => _("File permissions"))
-          ));
-  }
+    return array(
+      'plShortName'   => _('Template entry'),
+      'plDescription' => _('FAI template entry'),
+      'plSelfModify'  => FALSE,
+      'plPriority'    => 25,
+      'plCategory'    => array('fai'),
 
+      'plProvidedAcls' => array(
+        'cn'                => _('Name'),
+        'description'       => _('Description'),
+        'FAItemplateFile'   => _('Template file'),
+        'FAItemplatePath'   => _('Template path'),
+        'FAIowner'          => _('File owner'),
+        'FAImode'           => _('File permissions')
+      )
+    );
+  }
 }
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

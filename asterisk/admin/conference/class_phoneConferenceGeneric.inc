@@ -72,7 +72,7 @@ class conference extends plugin
 
   function conference (&$config, $dn, $plugin= NULL)
   {
-    plugin::plugin($config, $dn, $plugin);
+    parent::__construct($config, $dn, $plugin);
     $this->is_account = TRUE;
     $this->ui         = get_userinfo();
     $this->orig_dn    = $dn;
@@ -164,7 +164,7 @@ class conference extends plugin
   function execute()
   {
     /* Call parent execute */
-    plugin::execute();
+    parent::execute();
 
     /* Log last action */
     if ($this->is_account && !$this->view_logged) {
@@ -259,10 +259,10 @@ class conference extends plugin
       }
 
       /* Create a base backup and reset the
-         base directly after calling plugin::save_object();
+         base directly after calling parent::save_object();
          Base will be set seperatly a few lines below */
       $base_tmp = $this->base;
-      plugin::save_object();
+      parent::save_object();
       $this->base = $base_tmp;
 
       /* Refresh base */
@@ -625,7 +625,7 @@ class conference extends plugin
       $this->goFonPIN = "";
     }
 
-    plugin::save();
+    parent::save();
 
     if(empty($this->old_tele_number)){
       $this->old_tele_number= $this->telephoneNumber;
@@ -679,7 +679,7 @@ class conference extends plugin
     }
 
     if (!$ldap->success()){
-      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()));
+      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()), LDAP_ERROR);
     }
 
     /* Optionally execute a command after we're done */

@@ -52,7 +52,7 @@ class terminalGeneric extends workstationGeneric
     $attributesInfo['actions']['attrs'][0]->setIsTerminal(TRUE);
     $attributesInfo['remote_desktop'] = array(
       'name'  => _('Remote desktop'),
-      'icon'  => get_template_path('plugins/systems/images/server.png'),
+      'icon'  => 'geticon.php?context=devices&icon=server&size=16',
       'attrs' => array(
         new SelectAttribute(
           _('Connect method'), _('Connect method'),
@@ -78,15 +78,21 @@ class terminalGeneric extends workstationGeneric
   static function plInfo()
   {
     return array(
-      "plShortName"   => _("Generic"),
-      "plDescription" => _("Terminal generic"),
-      "plSelfModify"  => FALSE,
-      "plCategory"    => array("terminal" => array("description"  => _("Terminal"),
-                                                 "objectClass"  => "gotoTerminal")),
-      "plObjectType"  => array("terminal" => array("name"   => _("Terminal"),
-                                                 "filter" => "objectClass=gotoTerminal")),
+      'plShortName'   => _('Generic'),
+      'plDescription' => _('Terminal generic'),
+      'plSelfModify'  => FALSE,
+      'plObjectType'  => array('terminal' =>
+        array(
+          'name'        => _('Terminal'),
+          'description' => _('Terminal'),
+          'filter'      => 'objectClass=gotoTerminal',
+          'icon'        => 'geticon.php?context=devices&icon=terminal&size=16',
+          'ou'          => get_ou('terminalRDN'),
+          'tabClass'    => 'termtabs',
+        )
+      ),
 
-      "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }
 

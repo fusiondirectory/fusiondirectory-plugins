@@ -79,7 +79,7 @@ class faiPackage extends faiPluginClass
   function faiPackage (&$config, $dn= NULL)
   {
     /* Load Attributes */
-    plugin::plugin ($config, $dn);
+    parent::__construct($config, $dn);
 
     /* If "dn==new" we try to create a new entry
      * Else we must read all objects from ldap which belong to this entry.
@@ -194,7 +194,7 @@ class faiPackage extends faiPluginClass
   function execute()
   {
     /* Call parent execute */
-    plugin::execute();
+    parent::execute();
 
     if($this->is_account && !$this->view_logged){
       $this->view_logged = TRUE;
@@ -405,9 +405,8 @@ class faiPackage extends faiPluginClass
      * Display UI / HTML / smarty
      ******/
 
-    /* Create divlist to display a list of all currently used packages
-     */
-    $divlist = new divSelectBox("faiPackages");
+    /* Create divselectbox to display a list of all currently used packages */
+    $divselectbox = new divSelectBox("faiPackages");
 
     ksort($this->usedPackages);
     if(is_array($this->usedPackages)){
@@ -453,7 +452,7 @@ class faiPackage extends faiPluginClass
         }
         if(!preg_match('/^freeze/', $this->FAIstate) && $this->acl_is_writeable("FAIpackage")){
           $actions.= "&nbsp;<input type='image' class='center' title='"._("Remove this package")."'
-            src='images/lists/trash.png' name='remove_package_".base64_encode($usedName)."' >";
+            src='geticon.php?context=actions&icon=edit-delete&size=16' name='remove_package_".base64_encode($usedName)."' >";
         }
 
         $field1 = array("html" => $configured."&nbsp;".$removal,"attach" => "style='width:40px;'");
@@ -461,7 +460,7 @@ class faiPackage extends faiPluginClass
         $field3 = array("html" => $version);
         $field4 = array("html" => $description);
         $field5 = array("html" => $actions, "attach" => "style='width:60px; border-right:0px;'");
-        $divlist->AddEntry(array($field1,$field2,$field3,$field4,$field5));
+        $divselectbox->AddEntry(array($field1,$field2,$field3,$field4,$field5));
       }
     }
 
@@ -482,11 +481,11 @@ class faiPackage extends faiPluginClass
       $smarty->assign($name."ACL",$this->getacl($name,preg_match("/freeze/",$this->FAIstate)));
     }
 
-    $smarty->assign("freeze", preg_match("/freeze/",$this->FAIstate));
-    $smarty->assign("divlist",$divlist->DrawList());
-    $smarty->assign("release" ,$this->FAIdebianRelease);
-    $smarty->assign("sections",$this->sections);
-    $smarty->assign("section" ,$strsec);
+    $smarty->assign("freeze",       preg_match("/freeze/", $this->FAIstate));
+    $smarty->assign("divselectbox", $divselectbox->DrawList());
+    $smarty->assign("release",      $this->FAIdebianRelease);
+    $smarty->assign("sections",     $this->sections);
+    $smarty->assign("section",      $strsec);
     $display.= $smarty->fetch(get_template_path('faiPackage.tpl', TRUE));
     return($display);
   }
@@ -518,7 +517,7 @@ class faiPackage extends faiPluginClass
   function save_object()
   {
     if(preg_match("/^freeze/", $this->FAIstate)) return;
-    plugin::save_object();
+    parent::save_object();
   }
 
 
@@ -613,7 +612,7 @@ class faiPackage extends faiPluginClass
       $this->FAIdebianRelease= preg_replace('#^/#', '', $this->FAIdebianRelease);
     }
 
-    plugin::save();
+    parent::save();
 
     $ldap = $this->config->get_ldap_link();
 
@@ -663,9 +662,6 @@ class faiPackage extends faiPluginClass
         $pkgattrs['FAIvariableContent']   = $attr['Value'];
         $pkgdn =  "FAIvariable=".$name.",".$this->dn;
 
-        /* Tag object */
-        $this->tag_attrs($pkgattrs, $pkgdn, $this->gosaUnitTag);
-
         if (in_array($pkgattrs['FAIvariableType'],array("boolean","multiselect","password","select","string","text"))) {
           if ($pkgattrs['FAIvariableType'] == "text" && $pkgattrs['FAIvariableContent'] == "") {
             fusiondirectory_log("Skipped saving FAIvariable '$name' empty string can't be saved.");
@@ -684,22 +680,24 @@ class faiPackage extends faiPluginClass
   static function plInfo()
   {
     return array(
-      "plShortName"   => _("Package"),
-      "plDescription" => _("FAI Package list"),
-      "plSelfModify"  => FALSE,
-      "plPriority"    => 28,
-      "plCategory"    => array("fai"),
-      "plObjectType"  => array("faiPackage" => array("name" => _("FAI Package"),
-                                                  "filter" => "objectClass=FAIpackageList")),
+      'plShortName'   => _('Package'),
+      'plDescription' => _('FAI Package list'),
+      'plSelfModify'  => FALSE,
+      'plPriority'    => 28,
+      'plObjectType'  => array('faiPackage' => array(
+        'name'        => _('FAI Package'),
+        'filter'      => 'objectClass=FAIpackageList',
+        'aclCategory' => 'fai'
+      )),
 
-      "plProvidedAcls" => array(
-        "cn"                => _("Name"),
-        "description"       => _("Description"),
-        "FAIpackage"        => _("Packages"),
-        "FAIdebianSection"  => _("Section")."&nbsp;("._("Readonly").")",
-        "FAIinstallMethod"  => _("Install Method"),
-        "FAIdebconfInfo"    => _("Package configuration"),
-        "FAIdebianRelease"  => _("Release")."&nbsp;("._("Readonly").")"
+      'plProvidedAcls' => array(
+        'cn'                => _('Name'),
+        'description'       => _('Description'),
+        'FAIpackage'        => _('Packages'),
+        'FAIdebianSection'  => _('Section').'&nbsp;('._('Readonly').')',
+        'FAIinstallMethod'  => _('Install Method'),
+        'FAIdebconfInfo'    => _('Package configuration'),
+        'FAIdebianRelease'  => _('Release').'&nbsp;('._('Readonly').')'
       )
     );
   }

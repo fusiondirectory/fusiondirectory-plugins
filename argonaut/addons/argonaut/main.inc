@@ -1,9 +1,7 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2013  FusionDirectory
+  Copyright (C) 2014  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,35 +18,5 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-/* Remove locks created by this plugin */
-if ($remove_lock){
-  if(session::is_set('argonautQueue')){
-      $macl = session::get('argonautQueue');
-      $macl->remove_lock();
-  }
-}
-
-/* Remove this plugin from session */
-if ( $cleanup ){
-  session::un_set('argonautQueue');
-}else{
-
-  /* Reset requested? */
-  if (isset($_GET['reset']) && $_GET['reset'] == 1){
-    session::un_set ('argonautQueue');
-  }
-
-  /* Create argonautQueue object on demand */
-  if (!session::is_set('argonautQueue')){
-    $argonautQueue= new argonautQueue ($config, $ui);
-    session::set('argonautQueue',$argonautQueue);
-  }
-  $argonautQueue = session::get('argonautQueue');
-  $display= $argonautQueue->execute();
-
-  /* Show and save dialog */
-  session::set('argonautQueue',$argonautQueue);
-}
-
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
+simpleManagement::mainInc('argonautQueue');
 ?>

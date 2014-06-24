@@ -51,14 +51,12 @@ class MungedAttribute extends Attribute
       foreach ($this->attrList as $key => $attr) {
         if (isset($this->plugin->attributesAccess[$attr])) {
           $this->plugin->attributesAccess[$attr]->setInLdap(FALSE);
-          $this->plugin->attributesAccess[$attr]->setAcl('sambaMungedDial');
         } else {
           unset($this->attrList[$key]);
         }
       }
       foreach ($this->flagList as $attr) {
         $this->plugin->attributesAccess[$attr]->setInLdap(FALSE);
-        $this->plugin->attributesAccess[$attr]->setAcl('sambaMungedDial');
       }
     }
   }
@@ -136,12 +134,11 @@ class sambaAccount extends simplePlugin
     return array(
       'plShortName'     => _('Samba'),
       'plDescription'   => _('Samba settings'),
-      'plIcon'          => 'plugins/samba/images/icon.png',
-      'plSmallIcon'     => 'plugins/samba/images/iconMini.png',
+      'plIcon'          => 'geticon.php?context=applications&icon=samba&size=48',
+      'plSmallIcon'     => 'geticon.php?context=applications&icon=samba&size=16',
       'plSelfModify'    => TRUE,
       'plDepends'       => array('posixAccount'),
       'plPriority'      => 5,
-      'plCategory'      => array('users'),
       'plObjectType'    => array('user'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
@@ -192,7 +189,7 @@ class sambaAccount extends simplePlugin
       ),
       'terminal' => array(
         'name'  => _('Terminal server'),
-        'icon'  => 'plugins/systems/images/select_terminal.png',
+        'icon'  => 'geticon.php?context=devices&icon=terminal&size=16',
         'attrs' => array(
           new BooleanAttribute (
             _('Allow login on terminal server'), _('Allow login on terminal server'),
@@ -282,7 +279,7 @@ class sambaAccount extends simplePlugin
       ),
       'access' => array(
         'name'  => _('Access options'),
-        'icon'  => 'images/lists/key.png',
+        'icon'  => 'geticon.php?context=status&icon=dialog-password&size=16',
         'attrs' => array(
           new BooleanAttribute (
             _('Enforce password change'), _('Force the user to change his password'),
@@ -333,11 +330,11 @@ class sambaAccount extends simplePlugin
       ),
       'system_trust' => array(
         'name'  => _('System trust'),
-        'icon'  => 'images/lists/locked.png',
+        'icon'  => 'geticon.php?context=categories&icon=acl&size=16',
         'attrs' => array(
           new CommaListAttribute(
             'sambaUserWorkstations',
-            new TrustsAttribute(
+            new SystemsAttribute(
               _('Allow connection from these workstations only'), _('Only allow this user to connect to this list of hosts'),
               'sambaUserWorkstations_ta', FALSE
             )
@@ -504,7 +501,7 @@ class sambaAccount extends simplePlugin
                   _("Cannot convert primary group to samba group: group cannot be identified!"),
                   WARNING_DIALOG);
       } else {
-        $attrs = $ldap->fetch();
+        $ldap->fetch();
         $g = new group($this->config, $ldap->getDN());
         if ($g->sambaSID == "") {
           $g->sambaDomainName = $this->sambaDomainName;

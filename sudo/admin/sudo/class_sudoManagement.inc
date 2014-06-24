@@ -1,5 +1,4 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003  Cajus Pollmeier
@@ -20,14 +19,11 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class sudoManagement extends management
+class sudoManagement extends simpleManagement
 {
-  // Tab definition
-  protected $tabClass     = "sudotabs";
-  protected $tabType      = "SUDOTABS";
-  protected $aclCategory  = "sudo";
-  protected $aclPlugin    = "sudo";
-  protected $objectName   = "sudo";
+  protected $objectTypes = array('sudo');
+
+  protected $autoFilterAttributes = array('dn', 'cn', 'description', 'sudoUser', 'sudoHost');
 
   /* Return plugin informations for acl handling */
   static function plInfo()
@@ -38,42 +34,31 @@ class sudoManagement extends management
       "plIcon"        => "plugins/sudo/images/icon.png",
       "plSection"     => "admin",
       "plPriority"    => 5,
-      "plCategory"    => array("sudo"),
+      "plManages"     => array("sudo"),
 
       "plProvidedAcls" => array()
     );
   }
 
-  function __construct($config, $ui)
+  function configureHeadpage ()
   {
-    $this->config = $config;
-    $this->ui     = $ui;
-
-    $this->storagePoints = array(get_ou("sudoRDN"));
-
-    // Build filter
-    if (0 && session::global_is_set(get_class($this)."_filter")) {
-      $filter = session::global_get(get_class($this)."_filter");
-    } else {
-      $filter = new filter(get_template_path("sudo-filter.xml", TRUE));
-      $filter->setObjectStorage($this->storagePoints);
-    }
-    $this->setFilter($filter);
-
-    // Build headpage
-    $headpage = new listing(get_template_path("sudo-list.xml", TRUE));
-    $headpage->setFilter($filter);
-
-    $this->registerAction("new_default", "newEntry");
-    parent::__construct($config, $ui, "sudo", $headpage);
+    parent::configureHeadpage();
+    $this->registerAction('new_default', 'newEntry');
+    $this->headpage->xmlData['actionmenu']['action'][0]['action'][] = array(
+      'name'  => 'new_default',
+      'type'  => 'entry',
+      'image' => 'plugins/sudo/images/iconMiniDefault.png',
+      'label' => 'Default',
+      'acl'   => 'sudo/sudo[c]',
+    );
   }
 
   function newEntry($action = "", $target = array(), $all = array(), $altTabClass = "", $altTabType = "", $altAclCategory = "")
   {
-    $str = management::newEntry($action, $target, $all, $altTabClass, $altTabType, $altAclCategory);
+    $str = parent::newEntry($action, $target, $all, $altTabClass, $altTabType, $altAclCategory);
 
     /* This entry will become the default entry */
-    if ($action == "new_default") {
+    if ($action == 'new_default') {
       $this->tabObject->set_default(TRUE);
     }
     if (!empty($str)) {

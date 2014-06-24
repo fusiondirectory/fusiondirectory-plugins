@@ -48,7 +48,7 @@ class appgroup extends plugin
 
   public function __construct(&$config, $dn= NULL, $parent= NULL)
   {
-    plugin::plugin($config,$dn,$parent);
+    parent::__construct($config,$dn,$parent);
     $this->dn = $dn;
     $this->_load_menu_structure();
     $this->a_Structure_on_load = $this->a_Structure;
@@ -397,7 +397,7 @@ class appgroup extends plugin
   function execute()
   {
     /* Call parent execute */
-    plugin::execute();
+    parent::execute();
 
     if(isset($_GET['r'])) $this->__construct($this->config,$this->dn);
 
@@ -498,7 +498,7 @@ class appgroup extends plugin
     /* Append departments for current base */
     foreach($departments as $key => $app){
       $div->AddEntry(array(
-        array("html"=>"<img class='center' src='images/lists/folder.png' alt='"._("department")."'>&nbsp;".sprintf($linkopen,
+        array("html"=>"<img class='center' src='geticon.php?context=places&icon=folder&size=16' alt='"._("department")."'>&nbsp;".sprintf($linkopen,
             base64_encode($key),$app),
           "attach"=>"style='border:0px;'")
       ));
@@ -521,7 +521,7 @@ class appgroup extends plugin
       }
       $div->AddEntry(array(
         array("html"=>sprintf("<input class='center' type='checkbox' value='1' name='AddApp_%s'>",$key).
-              "<img class='center' src='plugins/desktop-management/images/select_application.png' alt='"._("application")."'>&nbsp;".$name,
+              "<img class='center' src='geticon.php?context=types&icon=application&size=16' alt='"._("application")."'>&nbsp;".$name,
               "attach"=>"style='border:0px;'")
       ));
     }
@@ -698,7 +698,7 @@ class appgroup extends plugin
     foreach($a_remove as $remove){
       $ldap->rmdir_recursive($remove);
       if (!$ldap->success()){
-        msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_DEL, get_class()));
+        msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_DEL, get_class()), LDAP_ERROR);
       }
     }
     $this->_load_menu_structure();
@@ -1393,7 +1393,7 @@ class appgroup extends plugin
       if($ldap->count()){
         $ldap->rmdir_recursive($dn);
         if (!$ldap->success()){
-          msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_DEL, get_class()));
+          msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_DEL, get_class()), LDAP_ERROR);
         }
       }
     }
@@ -1401,13 +1401,12 @@ class appgroup extends plugin
     /* Add new entries
      */
     foreach($Actions['Add'] as $dn => $data){
-      $this->tag_attrs($data,$dn,$this->gosaUnitTag);
       $ldap->cd($dn);
       $ldap->cat($dn);
       if(!$ldap->count()){
         $ldap->add($data);
         if (!$ldap->success()){
-          msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_ADD, get_class()));
+          msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_ADD, get_class()), LDAP_ERROR);
         }
       }
     }
@@ -1415,13 +1414,12 @@ class appgroup extends plugin
     /* Modify entries
      */
     foreach($Actions['Edit'] as $dn => $data){
-      $this->tag_attrs($data,$dn,$this->gosaUnitTag);
       $ldap->cd($dn);
       $ldap->cat($dn);
       if($ldap->count()){
         $ldap->modify($data);
         if (!$ldap->success()){
-          msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_MOD, get_class()));
+          msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_MOD, get_class()), LDAP_ERROR);
         }
       }
     }
@@ -1451,44 +1449,6 @@ class appgroup extends plugin
     unset($entry);
   }
 
-
-  /*! \brief  Save HTML posts in multiple edit mode
-   */
-  function multiple_save_object()
-  {
-    if(isset($_POST['group_apps_multi'])){
-      $this->save_object();
-      plugin::multiple_save_object();
-
-      /* Get posts */
-      foreach(array("apps") as $attr){
-        if(isset($_POST['use_'.$attr])) {
-          $this->multi_boxes[] = $attr;
-        }
-      }
-    }
-  }
-
-
-  /*! \brief  Return values used in multiple edit mode.
-              Some values can be modified for multiple
-              groups at the same time.
-      @return Array  All values that support multiple edit.
-   */
-  function get_multi_edit_values()
-  {
-    $ret = plugin::get_multi_edit_values();
-
-    if(in_array("apps",$this->multi_boxes)){
-      $ret['gosaApplicationParameter'] = $this->gosaApplicationParameter;
-      $ret['Categories']               = $this->Categories;
-      $ret['gosaMemberApplication']    = $this->gosaMemberApplication;
-      $ret['FAIrelease']               = $this->FAIrelease;
-      $ret['appoption']                = $this->appoption;
-    }
-    return($ret);
-  }
-
   /*! \brief  Return plugin informations for acl handling
    *
    * \return Array containing all plugin ACL informations
@@ -1500,7 +1460,6 @@ class appgroup extends plugin
       "plDescription" => _("Group applications"),
       "plSelfModify"  => FALSE,
       "plPriority"    => 7,
-      "plCategory"    => array("groups"),
       "plObjectType"  => array("group"),
 
       "plProvidedAcls"=> array(
@@ -1514,5 +1473,4 @@ class appgroup extends plugin
     );
   }
 }
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

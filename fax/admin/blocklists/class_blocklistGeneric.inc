@@ -131,7 +131,25 @@ class blocklistGeneric extends simplePlugin
   var $displayHeader  = FALSE;
   var $mainTab        = TRUE;
 
-    /*!
+  static function plInfo()
+  {
+    return array(
+      'plShortName'   => _('Fax blocklists'),
+      'plDescription' => _('The part of the fax plugin managing blacklist'),
+      'plObjectType'  => array(
+        'faxBlock' => array(
+          'name'    => _('Fax blocklists'),
+          'filter'  => '(|(objectClass=goFaxRBlock)(objectClass=goFaxSBlock))',
+          'ou'      => get_ou('faxBlocklistRDN'),
+          'icon'    => 'plugins/fax/images/iconMiniBlocklists.png',
+        ),
+      ),
+
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+    );
+  }
+
+  /*!
    *  \brief The main function : information about attributes
    */
   static function getAttributesInfo ()
@@ -157,12 +175,16 @@ class blocklistGeneric extends simplePlugin
   function __construct(&$config, $dn = NULL, $object = NULL)
   {
     parent::__construct($config, $dn, $object);
-    $this->attributesInfo['section1']['attrs']['cn']->setUnique(TRUE);
+    $this->attributesAccess['cn']->setUnique(TRUE);
   }
 
-  function save ()
+  public function compute_dn()
   {
-    $this->prepare_save();
+    return 'cn='.$this->attributesAccess['cn']->getValue().','.get_ou('faxBlocklistRDN').$this->base;
+  }
+
+  protected function ldap_save ($cleanup = TRUE)
+  {
     $ldap = $this->config->get_ldap_link();
     $old_oc = $this->saved_attributes['objectClass'];
     if (!is_array($old_oc)) {
@@ -171,7 +193,7 @@ class blocklistGeneric extends simplePlugin
     if (array_diff($old_oc, $this->attrs['objectClass'])) {
       $ldap->rmdir($this->dn);
     }
-    $this->ldap_save();
+    parent::ldap_save($cleanup);
   }
 
   function postCopyHook()
@@ -179,23 +201,5 @@ class blocklistGeneric extends simplePlugin
     /* We will not be able to rename edited blocklists */
     $this->readonly = TRUE;
   }
-
-  /* Return plugin informations for acl handling */
-  static function plInfo()
-  {
-    return array(
-      "plShortName"     => _("Fax blocklists"),
-      "plDescription"   => _("The part of the fax plugin managing blacklist"),
-      "plSelfModify"    => FALSE,
-      "plCategory"      => array( "gofaxlist" => array(
-                            "description" => _("Fax blocklists"),
-                            "objectClass" => array("goFaxRBlock","goFaxSBlock"))),
-      "plObjectType"    => array("faxBlock" => array(
-                            "name" => _("Fax blocklists"),
-                            "filter" => "(|(goFaxRBlock)(goFaxSBlock))")),
-      "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
-    );
-  }
-
 }
 ?>

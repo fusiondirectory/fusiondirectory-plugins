@@ -30,18 +30,21 @@ class mobilePhoneGeneric extends simplePlugin
 
   var $preInitAttributes = array('networkSettings');
 
-
-  /* Return plugin informations for acl handling */
   static function plInfo()
   {
     return array(
       'plShortName'   => _('Generic'),
       'plDescription' => _('Mobile phone generic'),
       'plSelfModify'  => FALSE,
-      'plCategory'    => array('mobilePhone' => array('description'  => _('Mobile phone'),
-                                                      'objectClass'  => 'fdMobilePhone')),
-      'plObjectType'  => array('mobilePhone' => array('name'   => _('Mobile phone'),
-                                                 'filter' => 'objectClass=fdMobilePhone')),
+      'plObjectType'  => array(
+        'mobilePhone' => array(
+          'name'        => _('Mobile phone'),
+          'description' => _('Mobile phone'),
+          'filter'      => 'objectClass=fdMobilePhone',
+          'icon'        => 'geticon.php?context=devices&icon=phone&size=16',
+          'ou'          => get_ou('mobilePhoneRDN'),
+        )
+      ),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
@@ -103,7 +106,7 @@ class mobilePhoneGeneric extends simplePlugin
         'name'      => _('Network settings'),
         'attrs'     => array(new NetworkSettingsAttribute('cn', array('ipHost', 'ieee802Device'))),
         'template'  => get_template_path('network_section.tpl', TRUE, dirname(__FILE__)),
-        'icon'      => get_template_path('plugins/systems/images/network.png'),
+        'icon'      => 'geticon.php?context=categories&icon=applications-internet&size=16',
       ),
     );
   }
@@ -115,6 +118,11 @@ class mobilePhoneGeneric extends simplePlugin
     $this->attributesAccess['cn']->setUnique(TRUE);
     $this->netConfigDNS->IPisMust   = FALSE;
     $this->netConfigDNS->MACisMust  = FALSE;
+  }
+
+  function compute_dn ()
+  {
+    return "cn=".$this->cn.",".get_ou('mobilePhoneRDN').$this->base;
   }
 
   function resetCopyInfos()

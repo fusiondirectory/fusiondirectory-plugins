@@ -22,12 +22,11 @@
 
 class worktabs extends tabs
 {
-
   public $was_activated = FALSE;
 
   function __construct($config, $data, $dn, $category, $copied_object = NULL)
   {
-    parent::tabs($config, $data, $dn, $category, $copied_object);
+    parent::__construct($config, $data, $dn, $category, $copied_object);
 
     /* Add references/acls/snapshots */
     $this->addSpecialTabs();
@@ -36,7 +35,7 @@ class worktabs extends tabs
 
   function save_object($save_current = FALSE)
   {
-    tabs::save_object($save_current);
+    parent::save_object($save_current);
 
     /* Assign current cn */
     $baseobject = $this->getBaseObject();
@@ -57,8 +56,8 @@ class worktabs extends tabs
     if ($this->dn != $baseobject->orig_dn && $baseobject->orig_dn != "new") {
 
       /* Udpate acls */
-      $baseobject->update_acls($baseobject->orig_dn,$this->dn);
-      $baseobject->move($baseobject->orig_dn,$this->dn);
+      $baseobject->update_acls($baseobject->orig_dn, $this->dn);
+      $baseobject->move($baseobject->orig_dn, $this->dn);
     }
 
     $baseobject->dn = $this->dn;

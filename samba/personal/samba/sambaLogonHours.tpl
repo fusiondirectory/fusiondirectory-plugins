@@ -1,6 +1,6 @@
 {if $acl}
 <!-- Javacript function used to switch a complete row or col of selected hours -->
-<script language="javascript" type="text/javascript">
+<script type="text/javascript">
   {literal}
   var $regex = new Array();
   function toggle_chk($reg)
@@ -74,7 +74,7 @@
       {else}
         <td style="text-align:center;height: 22px; background-color: rgb(245, 245, 245); border-right: solid 1px;">
       {/if}
-          <input type='checkbox' 
+          <input type='checkbox'
             {if $acl} id='day_{$key_day}_{$key_hour}' name='day_{$key_day}_{$key_hour}' {/if}
             {if $Matrix[$key_day].$key_hour} checked  {/if}
             {if !$acl} disabled {/if}>
@@ -83,7 +83,7 @@
 
 {if $acl}
     <!-- Add toggle button for days -->
-    <td>  
+    <td>
       <input type='button' onClick="toggle_chk('^day_{$key_day}_[0-9]*$')" value='+/-'  style='padding:0px;margin:0px;'>
     </td>
 {/if}
@@ -91,7 +91,7 @@
 {/foreach}
 </table>
 <br>
-<input type='hidden' name='sambaLogonHoursPosted' value='1'> 
+<input type='hidden' name='sambaLogonHoursPosted' value='1'>
 <br>
 <p class="plugbottom">
 {if $acl}
@@ -101,6 +101,6 @@
   <input type=submit name="cancel_logonHours" value="{msgPool type=cancelButton}">
 </p>
 
-<!--  
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler: 
+<!--
+// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 -->

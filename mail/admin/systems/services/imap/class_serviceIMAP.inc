@@ -31,7 +31,7 @@ class serviceIMAP extends simpleService
     return array(
       'plShortName'   => _('IMAP/POP3 generic service'),
       'plDescription' => _('IMAP/POP3').' ('._('Services').')',
-      'plIcon'        => 'plugins/mail/images/iconMiniImap.png',
+      'plIcon'        => 'geticon.php?context=applications&icon=imap&size=16',
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );

@@ -1,7 +1,7 @@
-<table summary="" style="table-layout:fixed; width:100%; vertical-align:top; text-align:left; table-layout:auto;" cellpadding="4" border="0">
+<table style="table-layout:fixed; width:100%; vertical-align:top; text-align:left; table-layout:auto;" cellpadding="4" border="0">
 <tr>
   <td style="vertical-align:top;">
-   <table summary="" style="border:1px solid #B0B0B0; width:100%; vertical-align:top; text-align:left;"  cellpadding="4" cellspacing="0">
+   <table style="border:1px solid #B0B0B0; width:100%; vertical-align:top; text-align:left;"  cellpadding="4" cellspacing="0">
     <colgroup>
         <col width="32%">
         <col width="14%">
@@ -17,7 +17,7 @@
     {$search_result}
    </table>
 
-   <table summary="" style="vertical-align:top; text-align:center; width:100%;" cellpadding="4" cellspacing="0" border="0">
+   <table style="vertical-align:top; text-align:center; width:100%;" cellpadding="4" cellspacing="0" border="0">
     <tr>
      <td>{$range_selector}</td>
     </tr>
@@ -30,17 +30,17 @@
   </td>
   <td style="vertical-align:top; width:270px;">
    <div class="contentboxh" style="border-bottom:1px solid #B0B0B0;">
-    <p class="contentboxh"><img src="{$infoimage}" align="right" alt="[i]">{t}Information{/t}</p>
+    <p class="contentboxh"><img src="{$infoimage}" alt="[i]"/>{t}Information{/t}</p>
    </div>
    <div class="contentboxb">
     <p class="contentboxb">
-     {t}The telephone list plugin provides list and search facilities for the people in your site. You may want to specify the asterisk [*] like in 
+     {t}The telephone list plugin provides list and search facilities for the people in your site. You may want to specify the asterisk [*] like in
 'Fu*ry' to find 'FusionDirectory'. Use the filters below to narrow down your search.{/t}
     </p>
    </div>
    <br>
    <div class="contentboxh">
-    <p class="contentboxh" style="vertical-align:middle;"><img src="{$actionimage}" style="vertical-align:middle;" align="right" alt="[a]">{t}Actions{/t}</p>
+    <p class="contentboxh" style="vertical-align:middle;"><img src="{$actionimage}" style="vertical-align:middle;" alt="[a]"/>{t}Actions{/t}</p>
    </div>
    <div class="contentboxb">
     <p class="contentboxb" style="vertical-align:middle;">
@@ -63,14 +63,14 @@
    </div>
    <br>
    <div class="contentboxh">
-    <p class="contentboxh"><img src="{$launchimage}" align="right" alt="[F]">{t}Filters{/t}</p>
+    <p class="contentboxh"><img src="{$launchimage}" alt="[F]"/>{t}Filters{/t}</p>
    </div>
    <div class="contentboxb">
-    <table summary="" style="width:100%;border-top:1px solid #B0B0B0;">
+    <table style="width:100%;border-top:1px solid #B0B0B0;">
      {$alphabet}
     </table>
-    
-<table summary=""  style="width:100%;border-top:1px solid #B0B0B0;">
+
+<table  style="width:100%;border-top:1px solid #B0B0B0;">
   <tr>
     <td>
 <input type="checkbox" name="organizational" value="1" {$organizational} onClick="mainform.submit()" title="{t}Select to see regular users{/t}">{t}Show organizational entries{/t}<br>
@@ -79,10 +79,10 @@
   </tr>
 </table>
 
-<table summary="" style="width:100%;border-top:1px solid #B0B0B0;">
+<table style="width:100%;border-top:1px solid #B0B0B0;">
   <tr>
     <td>
-      <label for="search_base"><img class="center" alt="" src="{$tree_image}" align=middle title='{t}Display results for department{/t}'></label>
+      <label for="search_base"><img class="center" alt="" src="{$tree_image}" title='{t}Display results for department{/t}'></label>
     </td>
       <td>
       <select name="search_base" style='width:220px' onChange="mainform.submit()" title="{t}Choose the department the search will be based on{/t}">
@@ -92,10 +92,10 @@
     </td>
   </tr>
 </table>
-<table summary="" style="width:100%;border-top:1px solid #B0B0B0;">
+<table style="width:100%;border-top:1px solid #B0B0B0;">
   <tr>
     <td>
-      <label for="object_type"><img class="center" alt="" src="{$obj_image}" align=middle title='{t}Match object{/t}'></label>
+      <label for="object_type"><img class="center" alt="" src="{$obj_image}" title='{t}Match object{/t}'></label>
     </td>
       <td>
       <select id="object_type" style='width:220px' name="object_type" onChange="mainform.submit()" title="{t}Choose the object that will be searched in{/t}">
@@ -105,7 +105,7 @@
       </td>
   </tr>
 </table>
-<table summary="" style="width:100%;border-top:1px solid #B0B0B0;">
+<table style="width:100%;border-top:1px solid #B0B0B0;">
   <tr>
     <td><label for="search_for"><img class="center" alt="" src="{$search_image}" style="text-align:center;" title='{t}Search for{/t}'></label>
     </td>
@@ -121,7 +121,7 @@
 </table>
 
 <!-- Place cursor -->
-<script language="JavaScript" type="text/javascript">
+<script type="text/javascript">
   <!-- // First input field on page
   focus_field('search_for');
   -->

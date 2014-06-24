@@ -38,7 +38,7 @@ class faiPartitionTableEntry extends plugin
 
   function faiPartitionTableEntry (&$config, $dn= NULL,&$parent,$disk=false)
   {
-    plugin::plugin ($config, $dn);
+    parent::__construct($config, $dn);
     $this->UsedAttrs  = array("cn","description","FAIpartitionType","FAIpartitionNr","FAIfsType","FAImountPoint","FAIpartitionSize",
                          "FAImountOptions","FAIfsOptions","FAIpartitionFlags");
 
@@ -77,7 +77,7 @@ class faiPartitionTableEntry extends plugin
   function execute()
   {
     /* Call parent execute */
-    plugin::execute();
+    parent::execute();
 
     /* Fill templating stuff */
     $smarty     = get_smarty();
@@ -277,7 +277,7 @@ class faiPartitionTableEntry extends plugin
     }
 
     if(!empty($str)){
-      $str = "<table summary='' style='width:100%'>".$str."</table>";
+      $str = "<table style='width:100%'>".$str."</table>";
     }
     return($str);
 
@@ -311,7 +311,7 @@ class faiPartitionTableEntry extends plugin
   function save_object()
   {
     if((isset($_POST['TableEntryFrameSubmitted'])) && !preg_match("/freeze/", $this->FAIstate) ){
-      plugin::save_object();
+      parent::save_object();
 
       foreach($this->partitions as $key => $part){
         foreach($this->UsedAttrs as $attrs){
@@ -444,28 +444,26 @@ class faiPartitionTableEntry extends plugin
   /* Return plugin informations for acl handling */
   static function plInfo()
   {
-    return (array(
-          "plShortName" => _("Partition table entry"),
-          "plDescription" => _("FAI partition table entry"),
-          "plSelfModify"  => FALSE,
-          "plPriority"    => 27,
-          "plCategory"    => array("fai"),
-          "plProvidedAcls" => array(
-            "DISKcn"            => _("Name"),
-            "DISKdescription"   => _("Description"),
-            "FAIpartitionType"  => _("Partition type"),
-            "FAIpartitionNr"    => _("Partition no."),
-            "FAIfsType"         => _("File system type"),
-            "FAImountPoint"     => _("Mount point"),
-            "FAIpartitionSize"  => _("Partition size"),
-            "FAImountOptions"   => _("Mount options"),
-            "FAIfsOptions"      => _("File system options"),
-            "FAIpartitionFlags" => _("Partition flags"))
-          ));
+    return array(
+      "plShortName"   => _("Partition table entry"),
+      "plDescription" => _("FAI partition table entry"),
+      "plSelfModify"  => FALSE,
+      "plPriority"    => 27,
+      "plCategory"    => array("fai"),
+
+      "plProvidedAcls" => array(
+        "DISKcn"            => _("Name"),
+        "DISKdescription"   => _("Description"),
+        "FAIpartitionType"  => _("Partition type"),
+        "FAIpartitionNr"    => _("Partition no."),
+        "FAIfsType"         => _("File system type"),
+        "FAImountPoint"     => _("Mount point"),
+        "FAIpartitionSize"  => _("Partition size"),
+        "FAImountOptions"   => _("Mount options"),
+        "FAIfsOptions"      => _("File system options"),
+        "FAIpartitionFlags" => _("Partition flags")
+      )
+    );
   }
-
-
 }
-
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

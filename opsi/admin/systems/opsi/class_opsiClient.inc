@@ -33,7 +33,6 @@ class opsiClient extends simplePlugin
       'plShortName'   => _('OPSI client'),
       'plDescription' => _('Edit OPSI client settings'),
       'plSelfModify'  => FALSE,
-      'plCategory'    => array('winstation','ogroups'),
       'plObjectType'  => array('winstation'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
@@ -99,7 +98,7 @@ class opsiClient extends simplePlugin
         }
         $s_daemon   = new supportDaemon();
         if ($s_daemon->is_available()) {
-          $res = $s_daemon->append_call('OPSI.delete', array($serverMac), array('args' =>array($macAddresses)));
+          $s_daemon->append_call('OPSI.delete', array($serverMac), array('args' => array($macAddresses)));
           if ($s_daemon->is_error()) {
             msg_dialog::display(
               _('Could not remove OPSI informations'),
@@ -117,7 +116,8 @@ class opsiClient extends simplePlugin
     }
   }
 
-  function update_or_insert() {
+  function update_or_insert()
+  {
     $s_daemon   = new supportDaemon();
     $macAddresses = array();
     if ($this->editing_group()) {

@@ -45,7 +45,7 @@ if ( $cleanup ){
   if (!session::is_set('gofaxAccount') || (isset($_GET['reset']) && $_GET['reset'] == 1)){
     $gofaxAccount= new gofaxAccount ($config, $ui->dn);
     $gofaxAccount->set_acl_base($ui->dn);
-    $gofaxAccount->set_acl_category("users");
+    $gofaxAccount->set_acl_category("user");
     session::set('gofaxAccount',$gofaxAccount);
   }
   $gofaxAccount = session::get('gofaxAccount');
@@ -118,12 +118,12 @@ if ( $cleanup ){
       $display.= "<input type=submit name=\"edit_finish\" style=\"width:80px\" value=\"".msgPool::okButton()."\">\n";
       $display.= "&nbsp;\n";
       $display.= "<input type=submit name=\"edit_cancel\" value=\"".msgPool::cancelButton()."\">\n";
-      $info= "<img alt='' align=\"middle\" src=\"".get_template_path('images/lists/locked.png')."\"> ".$ui->dn."&nbsp;";
+      $info= "<img alt='' align=\"middle\" src=\"geticon.php?context=status&icon=object-locked&size=16\"> ".$ui->dn."&nbsp;";
     } else {
-      $info= "<img alt=\"\" align=\"middle\" src=\"".get_template_path('images/lists/unlocked.png')."\"> ".$ui->dn."&nbsp;";
+      $info= "<img alt=\"\" align=\"middle\" src=\"geticon.php?context=status&icon=object-unlocked&size=16\"> ".$ui->dn."&nbsp;";
 
-      if(preg_match("/r/",$ui->get_permissions($ui->dn,"users/gofaxAccount"))){
-        $info.= "<img alt=\"\" align=\"middle\" src=\"".get_template_path('images/lists/on.png')."\">"._("Click the 'Edit' button below to change informations in this dialog");
+      if(preg_match("/r/",$ui->get_permissions($ui->dn,"user/gofaxAccount"))){
+        $info.= "<img alt=\"\" align=\"middle\" src=\"geticon.php?context=status&icon=dialog-information&size=16\">"._("Click the 'Edit' button below to change informations in this dialog");
         $display.= "<input type=submit name=\"edit\" value=\"".msgPool::editButton()."\">";
       }
       $display.= "<input type=\"hidden\" name=\"ignore\">\n";

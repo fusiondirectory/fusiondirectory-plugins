@@ -57,7 +57,7 @@ class faiTemplate extends faiPluginClass
   function faiTemplate (&$config, $dn= NULL)
   {
     /* Load Attributes */
-    plugin::plugin ($config, $dn);
+    parent::__construct($config, $dn);
 
     /* If "dn==new" we try to create a new entry
      * Else we must read all objects from ldap which belong to this entry.
@@ -122,7 +122,7 @@ class faiTemplate extends faiPluginClass
   function execute()
   {
     /* Call parent execute */
-    plugin::execute();
+    parent::execute();
 
     if($this->is_account && !$this->view_logged){
       $this->view_logged = TRUE;
@@ -285,8 +285,8 @@ class faiTemplate extends faiPluginClass
     }
 
      /* Divlist Containing FAItemplates */
-    $divlist = new divSelectBox("FAItemplates");
-    $divlist->setHeight(400);
+    $divselectbox = new divSelectBox("FAItemplates");
+    $divselectbox->setHeight(400);
 
     $tmp = $this->getList(true);
 
@@ -303,11 +303,11 @@ class faiTemplate extends faiPluginClass
 
       /* Hide delete icon if this object is freezed */
       if(preg_match("/freeze/",$this->FAIstate)){
-        $act .= "<input type='image' src='images/lists/edit.png'      name='editscript_%s'    title='"._("edit")."' alt='"._("edit")."'>";
+        $act .= "<input type='image' src='geticon.php?context=actions&icon=document-edit&size=16'      name='editscript_%s'    title='"._("edit")."' alt='"._("edit")."'>";
       }else{
-        $act .= "<input type='image' src='images/lists/edit.png'      name='editscript_%s'    title='"._("edit")."' alt='"._("edit")."'>";
+        $act .= "<input type='image' src='geticon.php?context=actions&icon=document-edit&size=16'      name='editscript_%s'    title='"._("edit")."' alt='"._("edit")."'>";
         if(preg_match("/d/",$acl)){
-          $act .="<input type='image' src='images/lists/trash.png' name='deletescript_%s'  title='"._("delete")."' alt='"._("delete")."'>";
+          $act .="<input type='image' src='geticon.php?context=actions&icon=edit-delete&size=16' name='deletescript_%s'  title='"._("delete")."' alt='"._("delete")."'>";
         }
       }
 
@@ -326,13 +326,13 @@ class faiTemplate extends faiPluginClass
       if(preg_match("/r/",$s_acl)){
 
         $edit_link = "<a href='?plug=".$_GET['plug']."&amp;act=edit&amp;id=".$key."'>".$tmp[$key]."</a>";
-        $divlist->AddEntry(array( array("html"=> $edit_link),
+        $divselectbox->AddEntry(array( array("html"=> $edit_link),
               array("html"=>$down , "attach" => "style='width:20px;'"),
               array("html"=>str_replace("%s",base64_encode($key),$act),
                 "attach"=>"style='border-right: 0px;width:50px;text-align:right;'")));
       }
     }
-    $smarty->assign("Entry_divlist",$divlist->DrawList());
+    $smarty->assign("Entry_divlist",$divselectbox->DrawList());
     /* Divlist creation complete
      */
 
@@ -413,14 +413,14 @@ class faiTemplate extends faiPluginClass
   function save_object()
   {
     if ((isset($_POST['FAItemplate_posted'])) && (!preg_match("/freeze/",$this->FAIstate))) {
-      plugin::save_object();
+      parent::save_object();
     }
   }
 
   /* Save to LDAP */
   function save()
   {
-    plugin::save();
+    parent::save();
 
     $ldap = $this->config->get_ldap_link();
 
@@ -481,9 +481,6 @@ class faiTemplate extends faiPluginClass
         }
       }
 
-      /* Tag object */
-      $this->tag_attrs($tmp, $sub_dn, $this->gosaUnitTag);
-
       if($obj['status'] == "delete"){
         FAI::prepare_to_save_FAI_object($sub_dn,array(),true);
         $this->handle_post_events("remove");
@@ -501,17 +498,19 @@ class faiTemplate extends faiPluginClass
   static function plInfo()
   {
     return array(
-      "plShortName"   => _("Template"),
-      "plDescription" => _("FAI template"),
-      "plSelfModify"  => FALSE,
-      "plPriority"    => 24,
-      "plCategory"    => array("fai"),
-      "plObjectType"  => array("faiTemplate" => array("name" => _("FAI template"),
-                                                    "filter" => "objectClass=FAItemplate")),
+      'plShortName'   => _('Template'),
+      'plDescription' => _('FAI template'),
+      'plSelfModify'  => FALSE,
+      'plPriority'    => 24,
+      'plObjectType'  => array('faiTemplate' => array(
+        'name'        => _('FAI template'),
+        'filter'      => 'objectClass=FAItemplate',
+        'aclCategory' => 'fai'
+      )),
 
-      "plProvidedAcls" => array(
-        "cn"                => _("Name")." ("._("Readonly").")",
-        "description"       => _("Description")
+      'plProvidedAcls' => array(
+        'cn'                => _('Name').' ('._('Readonly').')',
+        'description'       => _('Description')
       )
     );
   }

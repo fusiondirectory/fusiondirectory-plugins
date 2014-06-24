@@ -1,10 +1,10 @@
-<h2><img  class="center"  alt=""  align="middle"  src="plugins/systems/images/network.png"> {t}Network  settings{/t}</h2>
+<h2><img  class="center"  alt=""  align="middle"  src="geticon.php?context=categories&icon=applications-internet&size=16"> {t}Network  settings{/t}</h2>
 
 
-<table  summary=""  width="100%" cellspacing=0 cellpadding=0>
+<table width="100%" cellspacing="0" cellpadding="0">
   <tr>
     <td style="width:50%; vertical-align: top;">
-      <table  summary="">
+      <table>
         <tr>
           <td style='vertical-align:top;'><LABEL  for="ipHostNumber">{t}IP-address{/t}{if $IPisMust}{$must}{/if}</LABEL></td>
           <td>
@@ -17,11 +17,11 @@
             <input size=25 maxlength=80 type='text' name='additionalHostNumbers_{$key}' value='{$item}'>
 {/render}
 {render acl=$ipHostNumberACL}
-            <input type='image' class='center' name='additionalHostNumbers_del_{$key}' src='images/lists/trash.png' alt='{msgPool type=delButton}'>
+            <input type='image' class='center' name='additionalHostNumbers_del_{$key}' src='geticon.php?context=actions&icon=edit-delete&size=16' alt='{msgPool type=delButton}'>
 {/render}
           {/foreach}
 {render acl=$ipHostNumberACL}
-          <input type='image' class='center' name='additionalHostNumbers_add}' src='images/lists/new.png' alt='{msgPool type=addButton}'>&nbsp;
+          <input type='image' class='center' name='additionalHostNumbers_add}' src='geticon.php?context=actions&icon=document-new&size=16' alt='{msgPool type=addButton}'>&nbsp;
 {/render}
 <br>
 
@@ -61,7 +61,7 @@
                 <td colspan="2">
                   <label for="dhcp_is_Account">{t}Enable DHCP for this device{/t}</label>
 {render acl=$dhcpSetupACL}
-                  <input type='image' src='images/lists/reload.png' class='center'>
+                  <input type='image' src='geticon.php?context=actions&icon=view-refresh&size=16' class='center'>
 {/render}
                 </td>
               </tr>
@@ -70,7 +70,7 @@
                 <td>
                   <input type='checkbox' name='dummy' id='dhcp_is_Account' class='center' disabled>
                   <label for="dhcp_is_Account">{t}Enable DHCP for this device{/t} ({t}not configured{/t})</label>
-                  <input type='image' src='images/lists/reload.png' class='center'>
+                  <input type='image' src='geticon.php?context=actions&icon=view-refresh&size=16' class='center'>
                 </td>
               </tr>
               {/if}
@@ -124,7 +124,7 @@
         {/render}
 
       <label for="DNS_is_account">{t}Enable DNS for this device{/t}</label>
-      <input type='image' src='images/lists/reload.png' class='center' name="reloadThisDNSStuff" id="reloadThisDNSStuff" value="reload"
+      <input type='image' src='geticon.php?context=actions&icon=view-refresh&size=16' class='center' name="reloadThisDNSStuff" id="reloadThisDNSStuff" value="reload"
       {if $DNS_is_account != true}
        style="display: none;"
       {/if}
@@ -134,7 +134,7 @@
       {else}
       <div style="padding-left:20px;display: none;" id="test2">
       {/if}
-      <table summary="">
+      <table>
         <tr>
           <td><LABEL  for="zoneName">{t}Zone{/t}</LABEL></td>
           <td>
@@ -166,7 +166,7 @@
     {else}
       <input type="checkbox" name="dummy" id="DNS_is_account" value="1" disabled class='center' {if $DNS_is_account} checked {/if}>
       <label for="DNS_is_account">{t}Enable DNS for this device{/t} ({t}not configured{/t})</label>
-      <input type='image' src='images/lists/reload.png' class='center'>
+      <input type='image' src='geticon.php?context=actions&icon=view-refresh&size=16' class='center'>
     {/if}
 
     </td>

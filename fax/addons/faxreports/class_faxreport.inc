@@ -83,7 +83,7 @@ class faxreport extends plugin
     /* Log view */
     if(!$this->view_logged){
       $this->view_logged = TRUE;
-      new log("view","users/".get_class($this),$this->dn);
+      new log("view","user/".get_class($this),$this->dn);
     }
 
     /************
@@ -110,7 +110,7 @@ class faxreport extends plugin
 
     $smarty= get_smarty();
     $smarty->assign("launchimage", get_template_path('images/launch.png'));
-    $smarty->assign("search_image", get_template_path('images/lists/search.png'));
+    $smarty->assign("search_image", 'geticon.php?context=actions&icon=system-search&size=16');
     $smarty->assign("search_for", $this->search_for);
     $smarty->assign("bases", $this->config->idepartments);
     $smarty->assign("base_select", $this->search_base);
@@ -241,12 +241,12 @@ class faxreport extends plugin
           "(pager=$s)(cn=$s)(givenName=$s)(sn=$s)(personalTitle=$s)".
           "(title=$s)))";
 
-      $res = get_list($filter, "users", $this->search_base, array("uid"), GL_SUBSEARCH );
+      $res = get_list($filter, "user", $this->search_base, array("uid"), GL_SUBSEARCH );
 
       /* Check if we are allowed to collect fax data */
       $fax_users = array();
       foreach ($res as $attrs) {
-        $acl = $this->ui->get_permissions($attrs['dn'],"users/user","uid");
+        $acl = $this->ui->get_permissions($attrs['dn'],"user/user","uid");
         if (preg_match("/r/",$acl)) {
           $fax_users[ $attrs['dn']]= $attrs["uid"][0];
         }
@@ -315,7 +315,7 @@ class faxreport extends plugin
         }
 
         /* Restricted attributes will not be displayed, this will be displayed instead */
-        $no_acl = "<img class='center' src='images/lists/locked.png'
+        $no_acl = "<img class='center' src='geticon.php?context=status&icon=object-locked&size=16'
                     title='"._("Insufficient permissions to view this attribute")."' alt='"._("Insufficient permissions")."'>";
 
         /* Create date */

@@ -48,7 +48,7 @@ class faiPartitionTable extends faiPluginClass
   function faiPartitionTable (&$config, $dn= NULL)
   {
     /* Load Attributes */
-    plugin::plugin ($config, $dn);
+    parent::__construct($config, $dn);
 
     /* If "dn==new" we try to create a new entry
      * Else we must read all objects from ldap which belong to this entry.
@@ -147,7 +147,7 @@ class faiPartitionTable extends faiPluginClass
   function execute()
   {
     /* Call parent execute */
-    plugin::execute();
+    parent::execute();
 
     if($this->is_account && !$this->view_logged){
       $this->view_logged = TRUE;
@@ -400,8 +400,8 @@ class faiPartitionTable extends faiPluginClass
     }
 
     /* Divlist containing disks */
-    $divlist = new divSelectBox("FAItemplates");
-    $divlist->setHeight(400);
+    $divselectbox = new divSelectBox("FAItemplates");
+    $divselectbox->setHeight(400);
     foreach($this->disks as $key => $disk){
       $act = "";
 
@@ -413,9 +413,9 @@ class faiPartitionTable extends faiPluginClass
       $acl = $this->ui->get_permissions($dn,"fai/faiPartitionTableEntry");
       if(preg_match("/(r|w)/",$acl)) {
 
-        $act .= "<input type='image' src='images/lists/edit.png'   name='edit_%s'    title='"._("edit")."' alt='"._("edit")."'>";
+        $act .= "<input type='image' src='geticon.php?context=actions&icon=document-edit&size=16'   name='edit_%s'    title='"._("edit")."' alt='"._("edit")."'>";
         if(preg_match("/d/",$acl) && !preg_match("/freeze/", $this->FAIstate)){
-          $act .="<input type='image' src='images/lists/trash.png' name='delete_%s'  title='"._("delete")."' alt='"._("delete")."'>";
+          $act .="<input type='image' src='geticon.php?context=actions&icon=edit-delete&size=16' name='delete_%s'  title='"._("delete")."' alt='"._("delete")."'>";
         }
 
         $cnt= count($disk['partitions']);
@@ -424,7 +424,7 @@ class faiPartitionTable extends faiPluginClass
         $types= array("old" => "plugins/fai/images/fai_partitionTable.png", "disk" => "plugins/fai/images/fai_partitionTable.png",
             "raid" => "plugins/fai/images/raid.png", "lvm" => "plugins/ogroups/images/list_ogroup.png");
         $type = isset($disk['FAIdiskType'])?$types[$disk['FAIdiskType']]:$types['old'];
-        $divlist->AddEntry(array(
+        $divselectbox->AddEntry(array(
               array("html"=> "<img border='0' src='".$type."'>", "attach"=>"style='width:16px'"),
               array("html"=> $edit_link, "attach"=>"style='width:100px'"),
               array("html"=> $disk['description']),
@@ -433,10 +433,10 @@ class faiPartitionTable extends faiPluginClass
                 "attach"=>"style='border-right: 0px;width:50px;text-align:right;'")));
       }
     }
-    $smarty->assign("Entry_divlist",$divlist->DrawList());
+    $smarty->assign("Entry_divlist",$divselectbox->DrawList());
 
-    $display.= $smarty->fetch(get_template_path('faiPartitionTable.tpl', TRUE));
-    return($display);
+    $display .= $smarty->fetch(get_template_path('faiPartitionTable.tpl', TRUE));
+    return $display;
   }
 
 
@@ -481,7 +481,7 @@ class faiPartitionTable extends faiPluginClass
   {
     if(isset($_POST['FAIpartitionTablePosted'])){
       if (preg_match("/freeze/", $this->FAIstate)) return;
-      plugin::save_object();
+      parent::save_object();
       foreach($this->attributes as $attrs){
         if(isset($_POST[$attrs])){
           $this->$attrs = $_POST[$attrs];
@@ -500,7 +500,7 @@ class faiPartitionTable extends faiPluginClass
   /* Save to LDAP */
   function save()
   {
-    plugin::save();
+    parent::save();
 
     /* Save current settings.
      * 1 : We must save the partition table, with its description and cn
@@ -577,9 +577,6 @@ class faiPartitionTable extends faiPluginClass
       }
 
 
-      /* Tag object */
-      $this->tag_attrs($disk_attrs, $disk_dn, $this->gosaUnitTag);
-
       if($disk['status'] == "delete"){
         @DEBUG (DEBUG_FAI, __LINE__, __FUNCTION__, __FILE__,$short_dn , "Removing disk: ");
         FAI::prepare_to_save_FAI_object($disk_dn,array(),true);
@@ -627,10 +624,6 @@ class faiPartitionTable extends faiPluginClass
         if((!isset($partition['FAImountPoint']))||(empty($partition['FAImountPoint']))){
           $partition_attrs['FAImountPoint']="swap";
         }
-
-        /* Tag object */
-        $this->tag_attrs($partition_attrs, $partition_dn, $this->gosaUnitTag);
-
 
         if($partition['status'] == "delete"){
           @DEBUG (DEBUG_FAI, __LINE__, __FUNCTION__, __FILE__,$short_dn , "Removing partition: ");
@@ -768,17 +761,19 @@ class faiPartitionTable extends faiPluginClass
   static function plInfo()
   {
     return array(
-      "plShortName"   => _("Partition table"),
-      "plDescription" => _("FAI partition table"),
-      "plSelfModify"  => FALSE,
-      "plPriority"    => 26,
-      "plCategory"    => array("fai"),
-      "plObjectType"  => array("faiPartition" => array("name" => _("FAI partition table"),
-                                                    "filter" => "objectClass=FAIpartitionTable")),
+      'plShortName'   => _('Partition table'),
+      'plDescription' => _('FAI partition table'),
+      'plSelfModify'  => FALSE,
+      'plPriority'    => 26,
+      'plObjectType'  => array('faiPartition' => array(
+        'name'        => _('FAI partition table'),
+        'filter'      => 'objectClass=FAIpartitionTable',
+        'aclCategory' => 'fai'
+      )),
 
-      "plProvidedAcls" => array(
-        "cn"                => _("Name")."&nbsp;("._("Read only").")",
-        "description"       => _("Description")
+      'plProvidedAcls' => array(
+        'cn'                => _('Name').'&nbsp;('._('Read only').')',
+        'description'       => _('Description')
       )
     );
   }

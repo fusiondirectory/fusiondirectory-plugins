@@ -38,7 +38,7 @@ class faiVariableEntry extends plugin
 
   function faiVariableEntry (&$config, $dn= NULL,$object=false)
   {
-    plugin::plugin ($config, $dn);
+    parent::__construct($config, $dn);
     if((isset($object['cn'])) && (!empty($object['cn']))){
       $this->orig_cn= $object['cn'];
       $this->dn=$object['dn'];
@@ -55,7 +55,7 @@ class faiVariableEntry extends plugin
   function execute()
   {
   /* Call parent execute */
-  plugin::execute();
+  parent::execute();
 
     /* Fill templating stuff */
     $smarty     = get_smarty();
@@ -138,20 +138,19 @@ class faiVariableEntry extends plugin
   /* Return plugin informations for acl handling */
   static function plInfo()
   {
-    return (array(
-          "plShortName" => _("Variable entry"),
-          "plDescription" => _("FAI variable entry "),
-          "plSelfModify"  => FALSE,
-          "plPriority"    => 23,
-          "plCategory"    => array("fai"),
-          "plProvidedAcls" => array(
-            "cn"                => _("Name"),
-            "description"       => _("Description"),
-            "FAIvariableContent"=> _("Variable content") )
-          ));
+    return array(
+      'plShortName'   => _('Variable entry'),
+      'plDescription' => _('FAI variable entry '),
+      'plSelfModify'  => FALSE,
+      'plPriority'    => 23,
+      'plCategory'    => array('fai'),
+
+      'plProvidedAcls' => array(
+        'cn'                => _('Name'),
+        'description'       => _('Description'),
+        'FAIvariableContent'=> _('Variable content')
+      )
+    );
   }
-
-
 }
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

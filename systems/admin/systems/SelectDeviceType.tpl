@@ -14,12 +14,12 @@
 <br>
 <br>
 </p>
-<table summary="" style='width:100%'>
+<table style='width:100%'>
  <tr>
   <td style='width:49%'>
-   <table summary="">
+   <table>
     <tr>
-     <td> 
+     <td>
       {t}System type{/t}&nbsp;
       <select name="SystemType" title="{t}System type{/t}" style="width:120px;"
       onChange="document.mainform.submit();">
@@ -30,13 +30,13 @@
    </table>
   </td>
   <td>
-   <table summary="">
+   <table>
     <tr>
-     <td> 
+     <td>
       {t}Choose an object group as template{/t}&nbsp;
     <select name="ObjectGroup" title="{t}Object group{/t}" style="width:120px;">
     {if $dns_cnt == 1}
-    <option value='none'>{t}none{/t}</option> 
+    <option value='none'>{t}none{/t}</option>
     {/if}
        {html_options options=$ogroups selected=$ObjectGroup}
       </select>

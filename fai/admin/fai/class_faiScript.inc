@@ -60,7 +60,7 @@ class faiScript extends faiPluginClass
   function faiScript (&$config, $dn= NULL)
   {
     /* Load Attributes */
-    plugin::plugin ($config, $dn);
+    parent::__construct($config, $dn);
 
     /* If "dn==new" we try to create a new entry
      * Else we must read all objects from ldap which belong to this entry.
@@ -142,7 +142,7 @@ class faiScript extends faiPluginClass
   function execute()
   {
     /* Call parent execute */
-    plugin::execute();
+    parent::execute();
 
     if($this->is_account && !$this->view_logged){
       $this->view_logged = TRUE;
@@ -326,8 +326,7 @@ class faiScript extends faiPluginClass
     /* Divlist            added 23.02.2006
        Containing FAIscripts
      */
-    $divlist = new divlist("FAIscripts");
-    $divlist->SetEntriesPerPage(0);
+    $divselectbox = new divSelectBox("FAIscripts");
     $plug = $_GET['plug'];
 
     if($this->sort_order == "up"){
@@ -344,35 +343,32 @@ class faiScript extends faiPluginClass
       $sort_prio = $dir;
     }
 
-    $divlist->SetHeader(array(  array("string"=>"<a href='?plug=".$plug."&amp;sort=name'>"._("Name").$sort_name."</a>"),
-                                array("string"=>"<a href='?plug=".$plug."&amp;sort=priority'>".$sort_prio._("Priority")."</a>",
-                                      "attach"=>"style='width:100px;'"),
-                                array("string"=>_("Download"),
-                                      "attach"=>"style='width:100px;'"),
-                                array("string"=>_("Action"),
-                                      "attach"=>"style='border-right: 0px;width:100px;text-align:right;'")));
-    $divlist->SetHeight(300);
-    $divlist->SetWidth("100%");
-    foreach($this->getList(true) as $key => $name){
-
-      $dn= $this->acl_base_for_current_object($name['dn']);
-      $acl = $this->ui->get_permissions($dn,"fai/faiScriptEntry")  ;
-      $act = "";
+    $divselectbox->SetHeaders(array(
+      "<a href='?plug=".$plug."&amp;sort=name'>"._("Name").$sort_name."</a>",
+      "<a href='?plug=".$plug."&amp;sort=priority'>".$sort_prio._("Priority")."</a>",
+      _("Download"),
+      _("Action"),
+    ));
+    $divselectbox->setHeight(300);
+    foreach ($this->getList(true) as $key => $name) {
+      $dn   = $this->acl_base_for_current_object($name['dn']);
+      $acl  = $this->ui->get_permissions($dn,"fai/faiScriptEntry")  ;
+      $act  = "";
 
       /* Hide delete icon if this object is freezed */
       if(preg_match("/freeze/", $this->FAIstate)){
-        $act .= "<input type='image' src='images/lists/edit.png'      name='editscript_%s'    title='"._("edit")."' alt='"._("edit")."'>";
+        $act .= "<input type='image' src='geticon.php?context=actions&icon=document-edit&size=16'      name='editscript_%s'    title='"._("edit")."' alt='"._("edit")."'>";
       }else{
-        $act .= "<input type='image' src='images/lists/edit.png'      name='editscript_%s'    title='"._("edit")."' alt='"._("edit")."'>";
+        $act .= "<input type='image' src='geticon.php?context=actions&icon=document-edit&size=16'      name='editscript_%s'    title='"._("edit")."' alt='"._("edit")."'>";
         if(preg_match("/d/",$acl)){
-          $act .="<input type='image' src='images/lists/trash.png' name='deletescript_%s'  title='"._("delete")."' alt='"._("delete")."'>";
+          $act .="<input type='image' src='geticon.php?context=actions&icon=edit-delete&size=16' name='deletescript_%s'  title='"._("delete")."' alt='"._("delete")."'>";
         }
       }
 
       /* Check acls for download icon */
       $s_acl = $this->ui->get_permissions($dn,"fai/faiScriptEntry","FAIscript")  ;
       if(($this->SubObjects[$key]['status'] == "new") || ($this->SubObjects[$key]['dn'] == "new") || !preg_match("/r/",$s_acl)){
-        $down = "";
+        $down = "&nbsp;";
       }else{
         $down = "<a href='?plug=".$_GET['plug']."&getFAIscript=".base64_encode($key)."'>
           <img src='images/save.png' alt='"._("Download")."' title='"._("Download")."' border=0>
@@ -382,14 +378,16 @@ class faiScript extends faiPluginClass
       /* Check if we are allowed to view this object */
       $s_acl = $this->ui->get_permissions($dn,"fai/faiScriptEntry","cn")  ;
       if(preg_match("/r/",$s_acl)){
-        $divlist->AddEntry(array( array("string"=>"<a href='?plug=".$_GET['plug']."&amp;act=edit&amp;id=".base64_encode($key)."'>".$name['name']."</a>"),
-              array("string"=>$name['FAIpriority'] , "attach" => "style='width:100px;'"),
-              array("string"=>$down , "attach" => "style='width:100px;'"),
-              array("string"=>str_replace("%s",base64_encode($key),$act),
-                "attach"=>"style='border-right: 0px;width:100px;text-align:right;'")));
+        $divselectbox->AddEntry(array(
+          array("html"    => "<a href='?plug=".$_GET['plug']."&amp;act=edit&amp;id=".base64_encode($key)."'>".$name['name']."</a>"),
+          array("string"  => $name['FAIpriority']),
+          array("html"    => $down),
+          array("html"    => str_replace("%s",base64_encode($key),$act),
+                "attach"  => "style='border-right: 0px;text-align:right;'")
+        ));
       }
     }
-    $smarty->assign("Entry_divlist",$divlist->DrawList());
+    $smarty->assign("Entry_divlist", $divselectbox->DrawList());
 
     foreach($this->attributes as $attrs){
       $smarty->assign($attrs,($this->$attrs));
@@ -463,7 +461,7 @@ class faiScript extends faiPluginClass
   function save_object()
   {
     if((isset($_POST['FAIscript_posted'])) && !preg_match("/freeze/", $this->FAIstate)){
-      plugin::save_object();
+      parent::save_object();
     }
 
     /* Get sort order */
@@ -482,7 +480,7 @@ class faiScript extends faiPluginClass
   /* Save to LDAP */
   function save()
   {
-    plugin::save();
+    parent::save();
 
     $ldap = $this->config->get_ldap_link();
 
@@ -554,9 +552,6 @@ class faiScript extends faiPluginClass
         $tmp['FAIpriority']  ="0";
       }
 
-      /* Tag object */
-      $this->tag_attrs($tmp, $sub_dn, $this->gosaUnitTag);
-
       if($obj['status'] == "delete"){
         FAI::prepare_to_save_FAI_object($sub_dn,array(),true);
         $this->handle_post_events("remove");
@@ -596,17 +591,19 @@ class faiScript extends faiPluginClass
   static function plInfo()
   {
     return array(
-      "plShortName" => _("Script"),
-      "plDescription" => _("FAI script"),
-      "plSelfModify"  => FALSE,
-      "plPriority"    => 18,
-      "plCategory"    => array("fai"),
-      "plObjectType"  => array("faiScript" => array("name" => _("FAI script"),
-                                                    "filter" => "objectClass=FAIscript")),
+      'plShortName'   => _('Script'),
+      'plDescription' => _('FAI script'),
+      'plSelfModify'  => FALSE,
+      'plPriority'    => 18,
+      'plObjectType'  => array('faiScript' => array(
+        'name'        => _('FAI script'),
+        'filter'      => 'objectClass=FAIscript',
+        'aclCategory' => 'fai'
+      )),
 
-      "plProvidedAcls" => array(
-        "cn"                => _("Name")." ("._("Readonly").")",
-        "description"       => _("Description")
+      'plProvidedAcls' => array(
+        'cn'                => _('Name').' ('._('Readonly').')',
+        'description'       => _('Description')
       )
     );
   }

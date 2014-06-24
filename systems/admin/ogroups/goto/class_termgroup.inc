@@ -63,7 +63,7 @@ class termgroup extends plugin
       Some  initialisations
      ***************/
 
-    plugin::plugin($config, $dn, $parent);
+    parent::__construct($config, $dn, $parent);
     $ldap= $config->get_ldap_link();
 
     $this->is_account = true;
@@ -173,12 +173,12 @@ class termgroup extends plugin
     }
 
     /* Remove acc */
-    plugin::remove_from_parent();
+    parent::remove_from_parent();
     $ldap = $this->config->get_ldap_link();
     $ldap->cd($this->orig_dn);
     $ldap->modify($this->attrs);
     $this->handle_post_events("remove");
-    new log("remove","ogroups/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
+    new log("remove","ogroup/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
   }
 
 
@@ -186,11 +186,11 @@ class termgroup extends plugin
   function execute()
   {
     /* Call parent execute */
-    plugin::execute();
+    parent::execute();
 
     if(!$this->view_logged){
       $this->view_logged = TRUE;
-      new log("view","ogroups/".get_class($this),$this->dn);
+      new log("view","ogroup/".get_class($this),$this->dn);
     }
 
 
@@ -311,7 +311,7 @@ class termgroup extends plugin
 
   function save_object()
   {
-    plugin::save_object();
+    parent::save_object();
     /* Set inherit mode */
     if(isset($_POST['workgeneric_posted'])){
 
@@ -335,7 +335,7 @@ class termgroup extends plugin
       $this->objectclasses= array("gotoWorkstationTemplate");
     }
 
-    plugin::save();
+    parent::save();
 
     /* Tell members to inherit all attributes if the flag is set  */
     //~ $this->inherit_attributes_to_members();
@@ -374,36 +374,38 @@ class termgroup extends plugin
     $ldap->modify ($this->attrs);
 
     if($this->initially_was_account){
-      new log("modify","ogroups/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
+      new log("modify","ogroup/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
     }else{
-      new log("create","ogroups/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
+      new log("create","ogroup/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
     }
 
     if(!$this->didAction){
       $this->handle_post_events("modify");
     }
     if (!$ldap->success()){
-      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_MOD, get_class()));
+      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_MOD, get_class()), LDAP_ERROR);
     }
   }
 
 
   static function plInfo()
   {
-    return (array(
-          "plShortName"   => _("System"),
-          "plDescription" => _("System group"),
-          "plSelfModify"  => FALSE,
-          "plPriority"    => 5,
-          "plCategory"    => array("ogroups"),
-          "plProvidedAcls"=> array(
-            "gotoMode"          => _("Mode"),
-            "gotoSyslogServer"  => _("Syslog server"),
-            "FAIstate"          => _("Action flag"),
-            "gotoNtpServer"     => _("Ntp server"),
-            "gotoTerminalPath"    => _("Root server"),
-            "gotoSwapServer"      => _("Swap server"))
-          ));
+    return array(
+      'plShortName'   => _('System'),
+      'plDescription' => _('System group'),
+      'plSelfModify'  => FALSE,
+      'plPriority'    => 5,
+      'plObjectType'  => array('ogroup'),
+
+      'plProvidedAcls'  => array(
+        'gotoMode'          => _('Mode'),
+        'gotoSyslogServer'  => _('Syslog server'),
+        'FAIstate'          => _('Action flag'),
+        'gotoNtpServer'     => _('Ntp server'),
+        'gotoTerminalPath'  => _('Root server'),
+        'gotoSwapServer'    => _('Swap server')
+      )
+    );
   }
 
   //~ function inherit_attributes_to_members()

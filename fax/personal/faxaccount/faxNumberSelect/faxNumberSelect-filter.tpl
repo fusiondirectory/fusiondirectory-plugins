@@ -6,15 +6,13 @@
 
 <div class="contentboxb">
 
-<div style="border-top:1px solid #AAAAAA"></div>
-
  {$SCOPE}
 
  <table summary="" style="width:100%;border-top:1px solid #B0B0B0;">
   <tr>
    <td>
     <label for="NAME">
-     <img src="images/lists/search.png" align=middle>&nbsp;{t}Name{/t}
+     <img src="geticon.php?context=actions&icon=system-search&size=16" align=middle>&nbsp;{t}Name{/t}
     </label>
    </td>
    <td>

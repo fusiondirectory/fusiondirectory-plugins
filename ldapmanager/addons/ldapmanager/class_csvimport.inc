@@ -39,7 +39,6 @@ class csvimport extends plugin
       'plShortName'   => _('CSV import'),
       'plDescription' => _('Import of csv data into the ldap tree'),
       'plSelfModify'  => FALSE,
-      'plCategory'    => array('ldapmanager'),
       'plObjectType'  => array('ldapmanager'),
       'plPriority'    => 3,
 
@@ -47,7 +46,7 @@ class csvimport extends plugin
     );
   }
 
-  function csvimport (&$config, $dn = NULL)
+  function __construct (&$config, $dn = NULL)
   {
     /* Include config object */
     $this->config = &$config;
@@ -97,10 +96,9 @@ class csvimport extends plugin
       $this->csvinfo['attr'] = array();
       $this->usertab = new usertabs($this->config, $this->config->data['TABS']['USERTABS'], 'new', 'user');
       foreach ($this->usertab->by_object as $pname => $plugin) { // for each user tab
-        $attrs = @get_class_vars($pname);
-        $attrs = $attrs['attributes'];            // get saved attributes
+        $attrs = $plugin->attributes;
         foreach ($attrs as &$attr) {
-          $attr = $pname.":".$attr;
+          $attr = $pname.':'.$attr;
         }
         unset($attr);
         $this->csvinfo['attr']  = array_merge($this->csvinfo['attr'], $attrs);
@@ -173,9 +171,6 @@ class csvimport extends plugin
       if (isset($this->csvinfo['sorteddata'])) {
         $rowcnt++;
 
-        /* row count */
-        $tbl_rows   = $this->csvinfo['count'] / $this->csvinfo['cols'];
-
         /* No error occurred */
         $failing = FALSE;
 
@@ -213,8 +208,8 @@ class csvimport extends plugin
             $uids = array();
             if ($this->config->get_cfg_value("idGenerator") != "") {
               $uids = gen_uids($this->config->get_cfg_value("idGenerator"), $attributes);
-            /* Else use template uid if defined */
             } elseif ($this->csvinfo['tplid'] != 0) {
+              /* Else use template uid if defined */
               $ldap->cat($this->csvinfo['arrtempls'][$this->csvinfo['tplid']]['dn']);
               if ($attrs = $ldap->fetch()) {
                 if ($attrs['uid'][0] != user::$nouid) {

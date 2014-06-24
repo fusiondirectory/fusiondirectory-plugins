@@ -59,6 +59,12 @@ attributetype ( 1.3.6.1.4.1.38414.2.10.10 NAME 'argonautTimeout'
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.27
   SINGLE-VALUE )
 
+attributetype ( 1.3.6.1.4.1.38414.2.10.11 NAME 'argonautFetchPackages'
+  DESC 'Fusion Directory - Argonaut, fetch packages from repositories.'
+  EQUALITY booleanMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
+  SINGLE-VALUE )
+
 attributetype ( 1.3.6.1.4.1.38414.2.11.1 NAME 'argonautClientPort'
   DESC 'Fusion Directory - Argonaut, client port.'
   EQUALITY integerMatch
@@ -250,7 +256,7 @@ objectclass ( 1.3.6.1.4.1.38414.2.2.1 NAME 'argonautServer'
   DESC 'An argonaut server'
   SUP top AUXILIARY
   MUST ( argonautProtocol $ argonautPort $ argonautLogDir $ argonautDeleteFinished $ argonautWakeOnLanInterface $ argonautIpTool )
-  MAY ( argonautKeyPath $ argonautCertPath $ argonautTimeout ) )
+  MAY ( argonautKeyPath $ argonautCertPath $ argonautTimeout $ argonautFetchPackages ) )
 
 objectclass ( 1.3.6.1.4.1.38414.2.2.2 NAME 'argonautClient'
   DESC 'An argonaut client'

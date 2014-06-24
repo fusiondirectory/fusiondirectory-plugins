@@ -1,8 +1,8 @@
-<table width="100%" summary="">
+<table width="100%">
   <tr>
     <td width="50%" valign="top">
-      <h2><img class="center" alt="" src="images/forward.png" align="middle" title="{t}Generic{/t}">&nbsp;{t}Generic{/t}</h2>
-      <table summary="" cellspacing="4">
+      <h2><img class="center" alt="" src="images/forward.png" title="{t}Generic{/t}">&nbsp;{t}Generic{/t}</h2>
+      <table cellspacing="4">
         <tr>
           <td>
             <LABEL for="cn">
@@ -30,14 +30,14 @@
       </table>
     </td>
     <td valign="top" style="border-left: 1px solid rgb(160, 160, 160);">
-      <table summary="" style="vertical-align:top; text-align:left;" cellpadding=4 width="100%">
+      <table style="vertical-align:top; text-align:left;" cellpadding=4 width="100%">
         <tr>
           <td style="vertical-align:top;">
-            <h2><img class="center" alt="" src="plugins/fai/images/fai_template.png" align="middle" title="{t}Generic{/t}">&nbsp;{t}FAI classes{/t}</h2> 
+            <h2><img class="center" alt="" src="plugins/fai/images/fai_template.png" title="{t}Generic{/t}">&nbsp;{t}FAI classes{/t}</h2>
 <!--            <select name="FAIclass" title="{t}Choose a priority{/t}" size="20" style="width:100%;" multiple>
               {html_options values=$FAIclasses output=$FAIclasses}
             </select>-->
-            {$divlist}
+            {$divselectbox}
             <br>
 {render acl=$FAIclassACL}
             <input type="submit" name="AddClass" value="{msgPool type=addButton}">
@@ -50,7 +50,7 @@
   </tr>
 </table>
 <!-- Place cursor -->
-<script language="JavaScript" type="text/javascript">
+<script type="text/javascript">
   <!-- // First input field on page
   focus_field('cn','description');
   -->

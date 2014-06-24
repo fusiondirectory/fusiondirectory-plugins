@@ -69,7 +69,7 @@ class sieveManagement extends plugin
 
     $this->uattrib = $uattrib;
     $this->parent = &$parent;
-    plugin::plugin($config,$dn);
+    parent::__construct($config,$dn);
 
     /* Get sieve, if this fail abort class initialization */
     if(!$this->sieve_handle = $this->get_sieve()){
@@ -633,7 +633,7 @@ class sieveManagement extends plugin
       $field1 = array("string" => "",
                       "attach" => "style='width:20px;'");
       if($active){
-        $field1 = array("html" => "<img src='images/true.png' alt='"._("Active")."'
+        $field1 = array("html" => "<img src='geticon.php?context=status&icon=task-complete&size=16' alt='"._("Active")."'
                                       title='"._("This script is marked as active")."'>",
                         "attach" => "style='width:20px;'");
       }
@@ -642,7 +642,7 @@ class sieveManagement extends plugin
       $field4 = array("string" => _("Script length").":&nbsp;".strlen($script['SCRIPT']));
 
       if($this->parent->acl_is_writeable("sieveManagement")){
-        $del = "<input type='image' name='delscript_".$key."' src='images/lists/trash.png'
+        $del = "<input type='image' name='delscript_".$key."' src='geticon.php?context=actions&icon=edit-delete&size=16'
                   title='"._("Remove script")."'>";
       }else{
         $del = "<img src='images/empty.png' alt=' '>";
@@ -651,11 +651,11 @@ class sieveManagement extends plugin
       if($active || $script['IS_NEW'] || !$this->parent->acl_is_writeable("sieveManagement")){
         $activate = "<img src='images/empty.png' alt=' '>";
       }else{
-        $activate = "<input type='image' name='active_script_".$key."' src='images/true.png'
+        $activate = "<input type='image' name='active_script_".$key."' src='geticon.php?context=status&icon=task-complete&size=16'
                        title='"._("Activate script")."'>";
       }
 
-      $field6 = array("html" => $activate."<input type='image' name='editscript_".$key."' src='images/lists/edit.png'
+      $field6 = array("html" => $activate."<input type='image' name='editscript_".$key."' src='geticon.php?context=actions&icon=document-edit&size=16'
                         title='"._("Edit script")."'>".$del,
                       "attach" => "style='border-right:0px; width:70px;'");
       $List->AddEntry(array($field1,$field2,$field3,$field4,$field6));
@@ -1039,7 +1039,7 @@ class sieveManagement extends plugin
       if($script['EDITED']){
         $data = $this->scripts[$key]['SCRIPT'];
         if(!$this->sieve_handle->sieve_sendscript($script['NAME'], addcslashes ($data,"\\"))){
-          new log("modify","users/mailAccount".get_class($this),$script['NAME'],"Failed to save sieve script named '".$script['NAME']."': ".to_string($this->sieve_handle->error_raw));
+          new log("modify","user/mailAccount".get_class($this),$script['NAME'],"Failed to save sieve script named '".$script['NAME']."': ".to_string($this->sieve_handle->error_raw));
 
           $everything_went_fine = FALSE;
           msg_dialog::display(_("SIEVE error"), sprintf(_("Cannot store SIEVE script: %s"), '<br><br><i>'.to_string($this->sieve_handle->error_raw).'</i>'), ERROR_DIALOG);

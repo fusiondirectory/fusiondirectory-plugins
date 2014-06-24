@@ -1,5 +1,4 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
@@ -22,9 +21,10 @@
 
 class ldiftab extends tabs
 {
-  function ldiftab($config, $data, $dn, $cat = '', $copied_object = NULL)
+  function __construct($config, $data, $dn, $cat = '', $copied_object = NULL)
   {
-    parent::tabs($config, $data, $dn, '', $copied_object);
+    parent::__construct($config, $data, $dn, '', $copied_object);
+    $this->set_acl_base($config->current['BASE']);
   }
 
   function save()

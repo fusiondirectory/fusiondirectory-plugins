@@ -1,7 +1,7 @@
 <input type="hidden" name="SubObjectFormSubmitted" value="1">
 
 <h2><img class="middle" alt="" src="images/forward.png" title="{t}Generic{/t}">&nbsp;{t}Generic{/t}</h2>
-<table width="100%" summary="">
+<table width="100%">
 <tr>
   <td style="vertical-align:top;width:50%;border-right:1px solid #B0B0B0; padding-right:10px;">
     <table style='width:100%;'>
@@ -11,7 +11,7 @@
         </td>
         <td style='width:100%;'>
 {render acl=$cnACL}
-          <input style='width:100%;' value="{$templateFile}" 
+          <input style='width:100%;' value="{$templateFile}"
             name="templateFile" maxlength="80">
 {/render}
         </td>
@@ -24,7 +24,7 @@
         </td>
         <td>
 {render acl=$FAItemplatePathACL}
-          <input style='width:100%;' type="text" name="templatePath" 
+          <input style='width:100%;' type="text" name="templatePath"
             value="{$templatePath}" id="templatePath" >
 {/render}
         </td>
@@ -39,7 +39,7 @@
         </td>
         <td style='width:100%;'>
 {render acl=$descriptionACL}
-          <input  style='width:100%;' maxlength="80" 
+          <input  style='width:100%;' maxlength="80"
             value="{$description}" name="description">
 {/render}
         </td>
@@ -51,30 +51,30 @@
 
 <p class="seperator">&nbsp;</p>
 
-<table width="100%" summary="">
+<table width="100%">
 <tr>
   <td colspan=2>
     <h2>
-      <img class="center" alt="" 
-        src="plugins/fai/images/fai_template.png" 
+      <img class="center" alt=""
+        src="plugins/fai/images/fai_template.png"
         title="{t}Template attributes{/t}">&nbsp;{t}Template attributes{/t}
     </h2>
   </td>
 </tr>
 <tr>
   <td style="vertical-align:top;width:50%;border-right:1px solid #B0B0B0">
-  <table summary="">
+  <table>
     <tr>
       <td>
         {t}File{/t}{$must}:&nbsp; {$status}
         {if $bStatus}
           <a href="{$plug}&amp;getFAItemplate">
-          <img class="center" alt="{t}Save template{/t}..." 
-            title="{t}Save template{/t}..." src="images/save.png" border="0" />
+          <img class="center" alt="{t}Save template{/t}..."
+            title="{t}Save template{/t}..." src="images/save.png"/>
           </a>
           <a href="{$plug}&amp;editFAItemplate">
-          <img class="center" alt="{t}Edit template{/t}..." 
-            title="{t}Edit template{/t}..." src="images/lists/edit.png" border="0" />
+          <img class="center" alt="{t}Edit template{/t}..."
+            title="{t}Edit template{/t}..." src="geticon.php?context=actions&icon=document-edit&size=16"/>
           </a>
         {/if}
       </td>
@@ -99,9 +99,9 @@
   </table>
   </td>
   <td>
-    <table summary="">
+    <table>
     <tr>
-  
+
     <td>
       <LABEL for="user">
         {t}Owner{/t}{$must}&nbsp;
@@ -128,7 +128,7 @@
   </tr><tr>
     <td style="vertical-align:top">{t}Access{/t}{$must}&nbsp; </td>
     <td>
-    <table summary="" style="border:1px solid #B0B0B0">
+    <table style="border:1px solid #B0B0B0">
          <colgroup width="55" span="3">
           </colgroup>
     <tr>
@@ -190,7 +190,7 @@
 {/render}
       <td>({t}sticky{/t})</td>
   </tr></table>
-  
+
     </td></tr></table>
   </td>
 </tr>
@@ -212,7 +212,7 @@
 <input type='hidden' name='FAItemplateEntryPosted' value='1'>
 
 <!-- Place cursor -->
-<script language="JavaScript" type="text/javascript">
+<script type="text/javascript">
   <!-- // First input field on page
   focus_field('cn','description');
   -->

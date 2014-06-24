@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2013 FusionDirectory
+  Copyright (C) 2014 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -18,32 +18,46 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
+class OPSIServerAttribute extends SelectAttribute
+{
+  function setParent (&$plugin)
+  {
+    parent::setParent($plugin);
+    if (is_object($this->plugin)) {
+      $this->updateChoices();
+    }
+  }
+
+  function updateChoices()
+  {
+    $ldap = $this->plugin->config->get_ldap_link();
+    $ldap->cd($this->plugin->config->current['BASE']);
+    $ldap->search('(objectClass=opsiServer)', array('cn'));
+    $serversdn    = array();
+    $serverslabel = array();
+    while ($attrs = $ldap->fetch()) {
+      $serversdn[]    = $attrs['dn'];
+      $serverslabel[] = $attrs['cn'][0];
+    }
+    $this->setChoices($serversdn, $serverslabel);
+  }
+}
+
 class SubmittingOPSIServerAttribute extends OPSIServerAttribute
 {
   function __construct ($label, $description, $ldapName, $required = FALSE, $acl = "")
   {
     parent::__construct($label, $description, $ldapName, $required, array(), "", NULL, $acl);
-    $this->setSubmitForm(TRUE);
-  }
-
-  function setValue($value)
-  {
-    $v = $this->getValue();
-    parent::setValue($value);
-    if (is_object($this->plugin) && ($v != $this->getValue())) {
-      $this->plugin->server_changed();
-    }
+    $this->setSubmitForm('server_changed');
   }
 }
 
 class opsiProfile extends simplePlugin
 {
   var $mainTab = TRUE;
-
   var $objectclasses   = array('opsiProfile');
 
   var $macAddress = NULL;
-
   var $products;
 
   public static function plInfo()
@@ -53,8 +67,6 @@ class opsiProfile extends simplePlugin
       'plDescription' => _('OPSI profile'),
       'plIcon'        => 'plugins/opsi/images/iconMini.png',
       'plSelfModify'  => FALSE,
-      'plCategory'    => array('opsiProfile' => array('description'  => _('OPSI profile'),
-                                                          'objectClass'  => 'opsiProfile')),
       'plObjectType'  => array('opsiProfile' => array(
         'name'    => _('OPSI profile'),
         'filter'  => 'objectClass=opsiProfile',
@@ -168,7 +180,7 @@ class opsiProfile extends simplePlugin
         }
       } else {
         msg_dialog::display(
-          sprintf_(_("Could not find %s in the LDAP"),$this->fdOpsiServerDN),
+          sprintf_(_("Could not find %s in the LDAP"), $this->fdOpsiServerDN),
           msgPool::ldaperror($ldap->get_error()), ERROR_DIALOG
         );
         return FALSE;
@@ -196,7 +208,7 @@ class opsiProfile extends simplePlugin
     $choices_labels = array();
     foreach ($this->products[$this->fdOpsiServerDN]['netboots'] as $netboot) {
       $choices_values[] = $netboot['id'];
-      $choices_labels[] = $netboot['name'];
+      $choices_labels[] = sprintf(_('%s (%s)'), $netboot['id'], $netboot['name']);
     }
     $this->attributesAccess['fdOpsiNetbootProduct']->setChoices($choices_values, $choices_labels);
     $this->attributesAccess['fdOpsiSoftwareList']->attribute->setChoices(

@@ -40,10 +40,15 @@ class winstationGeneric extends simplePlugin
       'plShortName'   => _('Winstation generic'),
       'plDescription' => _('Windows workstation generic'),
       'plSelfModify'  => FALSE,
-      'plCategory'    => array('winstation' => array('description'  => _('Windows workstation'),
-                                                      'objectClass'  => 'gotoWorkstation')),
-      'plObjectType'  => array('winstation' => array('name' => _('Windows workstation'),
-                                                    'filter' => 'objectClass=gotoWorkstation')),
+      'plObjectType'  => array(
+        'winstation' => array(
+          'name'        => _('Windows workstation'),
+          'description' => _('Windows workstation'),
+          'filter'      => '(&(objectClass=sambaSamAccount)(uid=*$))',
+          'icon'        => 'geticon.php?context=devices&icon=computer-windows&size=16',
+          'ou'          => get_ou('sambaMachineAccountRDN'),
+        )
+      ),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
@@ -105,7 +110,7 @@ class winstationGeneric extends simplePlugin
         'name'      => _('Network settings'),
         'attrs'     => array(new NetworkSettingsAttribute('uid', array('ipHost', 'ieee802Device'))),
         'template'  => get_template_path('../network_section.tpl', TRUE, dirname(__FILE__)),
-        'icon'      => get_template_path('plugins/systems/images/network.png'),
+        'icon'      => 'geticon.php?context=categories&icon=applications-internet&size=16',
       ),
     );
   }
@@ -248,9 +253,6 @@ class winstationGeneric extends simplePlugin
       $uidNumber--;
       $this->attrs['sambaSID']  = $sid;
       $this->attrs['uidNumber'] = $uidNumber + $this->ridBase;
-    }
-    if (($this->gosaUnitTag) && (!in_array_ics("gosaAdministrativeUnitTag", $this->attrs['objectClass']))) {
-      $this->attrs['objectClass'][] = "gosaAdministrativeUnitTag";
     }
   }
 

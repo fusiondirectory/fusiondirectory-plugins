@@ -39,7 +39,7 @@ class faxNumberSelect extends management
     // Build headpage
     $headpage = new listing(get_template_path("faxNumberSelect-list.xml", true, dirname(__FILE__)));
     $headpage->setFilter($filter);
-    parent::__construct($config, $ui, "users", $headpage);
+    parent::__construct($config, $ui, "user", $headpage);
   }
 
   function save()

@@ -203,7 +203,7 @@ class PgpKeyAttribute extends GenericDialogAttribute
           $fields[] = array('string' => $display);
         }
       }
-      $img = '<input type="image" src="images/lists/trash.png" name="'.$id.'_del_'.$key.'" class="center"/>&nbsp;';
+      $img = '<input type="image" src="geticon.php?context=actions&icon=edit-delete&size=16" name="'.$id.'_del_'.$key.'" class="center"/>&nbsp;';
       $fields[] = array('html' => $img, 'attach' => 'style="border-right:0px;width:20px;"');
       $div->AddEntry($fields);
     }

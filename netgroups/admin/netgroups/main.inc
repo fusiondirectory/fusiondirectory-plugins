@@ -1,10 +1,8 @@
 <?php
-
 /*
  * This code is part of FusionDirectory (http://www.fusiondirectory.org)
  * and  compatible with GOsa 2.6 (http://www.gosa-project.org)
- * Copyright (C) 2011 Alejandro Escanero Blanco (aescanero@gmail.com)
- * Copyright (C) 2011-2013  FusionDirectory
+ * Copyright (C) 2013  FusionDirectory
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,38 +19,5 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
  */
 
-
-/* Remove locks created by this plugin
- */
-if ($remove_lock) {
-    if (session::is_set('netgroupManagement')) {
-        $macl = session::get('netgroupManagement');
-        $macl->remove_lock();
-    }
-}
-
-/* Remove this plugin from session
- */
-if ($cleanup) {
-    session::un_set('netgroupManagement');
-} else {
-
-    /* Create netgroupmanagement object on demand */
-    if (!session::is_set('netgroupManagement')) {
-        $netgroupManagement = new netgroupManagement($config, $ui);
-        session::set('netgroupManagement', $netgroupManagement);
-    }
-    $netgroupManagement = session::get('netgroupManagement');
-    $display = $netgroupManagement->execute();
-
-    /* Reset requested? */
-    if (isset($_GET['reset']) && $_GET['reset'] == 1) {
-        session::un_set('netgroupManagement');
-    }
-
-    /* Show and save dialog */
-    session::set('netgroupManagement', $netgroupManagement);
-}
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
-
+simpleManagement::mainInc('netgroupManagement');
 ?>

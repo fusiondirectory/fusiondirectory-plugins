@@ -19,6 +19,37 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
+class SudoUsersGroupsAttribute extends DialogAttribute
+{
+  protected $dialogClass = 'UserGroupSelectDialog';
+
+  function addValue ($dn, $entry)
+  {
+    if (in_array("posixGroup", $entry['objectClass'])) {
+      $name = trim("%".$entry['cn'][0]);
+    } elseif (isset($entry['uid'][0])) {
+      $name = trim($entry['uid'][0]);
+    }
+    if (!in_array($name, $this->value) && !in_array("!".$name, $this->value)) {
+      $this->value[] = $name;
+    }
+  }
+
+  function getFilterBlackList ()
+  {
+    $used = array();
+    foreach ($this->value as $name) {
+      $str = preg_replace("/^!/", "", $name);
+      if (preg_match("/^%/", $str)) {
+        $used['cn'][] = preg_replace("/^%/", "", $str);
+      } else {
+        $used['uid'][] = $str;
+      }
+    }
+    return $used;
+  }
+}
+
 class defaultRoleAttribute extends BooleanAttribute
 {
   function __construct ($defaultValue)
@@ -45,10 +76,6 @@ class sudo extends simplePlugin
   public $objectclasses = array('sudoRole');
   var $mainTab          = TRUE;
 
-  /*! \brief  Add ACL object
-   *
-   * \return Returns the ACL object.
-   */
   static function plInfo()
   {
     return array(
@@ -56,13 +83,17 @@ class sudo extends simplePlugin
       'plDescription' => _('Sudo role'),
       'plIcon'        => 'plugins/sudo/images/icon.png',
       'plSelfModify'  => FALSE,
-      'plCategory'    => array('sudo' => array('objectClass' => 'sudoRole', 'description' => _('Sudo role'))),
-      'plObjectType'  => array('sudo' => array('name' => _('Sudo role'), 'filter' => 'objectClass=sudoRole')),
+      'plObjectType'  => array('sudo' => array(
+        'name'      => _('Sudo role'),
+        'filter'    => 'objectClass=sudoRole',
+        'icon'      => 'plugins/sudo/images/iconMini.png',
+        'ou'        => get_ou('sudoRDN'),
+        'tabClass'  => 'sudotabs',
+      )),
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }
-
 
   static function getAttributesInfo ()
   {
@@ -96,12 +127,12 @@ class sudo extends simplePlugin
               'ALL'
             )
           ),
-          new TrustsAttribute (
+          new SystemsAttribute (
             _('Systems'), _('A host name, IP address or IP network'),
             'sudoHost', FALSE,
             array('ALL')
           ),
-          new UsersGroupsAttribute (
+          new SudoUsersGroupsAttribute (
             _('Users and groups'),
             _("A user name, user ID (prefixed with '#'), Unix group (prefixed with '%')"),
             'sudoUser', FALSE,
@@ -111,7 +142,7 @@ class sudo extends simplePlugin
       ),
       'section2' => array (
         'name' => _('System trust'),
-        'icon' => 'images/lists/locked.png',
+        'icon' => 'geticon.php?context=categories&icon=acl&size=16',
         'attrs' => array (
           new SelectAttribute (
             _('Trust mode'), _('Trust mode for the role'),
@@ -174,7 +205,7 @@ class sudo extends simplePlugin
 
   public function is_default()
   {
-    return preg_match("/^defaults$/i", $this->cn); // FIXME : should use attributesInfo and not cn directly
+    return preg_match("/^defaults$/i", $this->attributesAccess['cn']->getValue());
   }
 
   public function compute_dn()

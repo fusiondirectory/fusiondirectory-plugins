@@ -20,38 +20,9 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
  */
 
-class NetgroupSelectDialog
+class NetgroupSelectDialog extends GenericSelectDialog
 {
-  private $select;
-  private static $classSelect = 'memberNisnetgroupSelect';
-  private $dialogAttribute;
-
-  function __construct ($simplePlugin, $dialogAttribute)
-  {
-    $this->dialogAttribute  = $dialogAttribute;
-    $this->select           = new self::$classSelect($simplePlugin->config, get_userinfo());
-  }
-
-  function execute ()
-  {
-    if (isset($_POST['add_memberNisnetgroups_cancel'])) {
-      return FALSE;
-    }
-    if (isset($_POST['add_memberNisnetgroups_finish'])) {
-      $groups = $this->select->detectPostActions();
-      if (isset($groups['targets'])) {
-        $headpage = $this->select->getHeadpage();
-        foreach ($groups['targets'] as $dn) {
-          $attrs = $headpage->getEntry($dn);
-
-          $this->dialogAttribute->addValue($dn, $attrs);
-        }
-      }
-      return FALSE;
-    }
-    session::set('filterBlacklist', $this->dialogAttribute->getFilterBlackList());
-    return $this->select->execute();
-  }
+  protected $dialogClass = 'memberNisnetgroupSelect';
 }
 
 class NetgroupsAttribute extends GroupsAttribute
@@ -74,7 +45,6 @@ class netgroupMembership extends simplePlugin {
       'plSmallIcon'     => 'plugins/netgroups/images/iconMini.png',
       'plSelfModify'    => FALSE,
       'plPriority'      => 13,
-      'plCategory'      => array('users'),
       'plObjectType'    => array('user'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
@@ -154,7 +124,8 @@ class netgroupMembership extends simplePlugin {
     }
   }
 
-  function is_this_account($attrs) {
+  function is_this_account($attrs)
+  {
     $class    = get_class($this);
     $id_attr  = $class::$id_attr;
     if (isset($attrs[$id_attr])) {

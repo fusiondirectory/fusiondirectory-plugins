@@ -24,9 +24,9 @@ class termtabs extends tabs
 {
   public $was_activated = FALSE;
 
-  function termtabs($config, $data, $dn, $category, $copied_object = NULL)
+  function __construct($config, $data, $dn, $category, $copied_object = NULL)
   {
-    parent::tabs($config, $data, $dn, $category, $copied_object);
+    parent::__construct($config, $data, $dn, $category, $copied_object);
 
     /* Add references/acls/snapshots */
     $this->addSpecialTabs();
@@ -42,7 +42,7 @@ class termtabs extends tabs
       $this->by_object['termstartup']->gotoTerminalPath = $this->by_object['terminalGeneric']->gotoTerminalPath;
     }
 
-    $baseobject = $this->by_object['terminalGeneric'];
+    $baseobject                   = $this->getBaseObject();
     $baseobject->netConfigDNS->cn = $baseobject->cn;
     foreach ($this->by_object as $name => $plug) {
       $this->by_object[$name]->cn = $baseobject->cn;
@@ -54,7 +54,7 @@ class termtabs extends tabs
   {
     /* Check for new 'dn', in order to propagate the
        'dn' to all plugins */
-    $baseobject = $this->by_object['terminalGeneric'];
+    $baseobject = $this->getBaseObject();
     $this->dn = "cn=".$baseobject->cn.",".get_ou('terminalRDN').$baseobject->base;
     $baseobject->dn = $this->dn;
 

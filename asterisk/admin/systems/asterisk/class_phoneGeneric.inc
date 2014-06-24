@@ -74,7 +74,7 @@ class phoneGeneric extends plugin
 
   function phoneGeneric (&$config, $dn= NULL, $parent= NULL)
   {
-    plugin::plugin ($config, $dn, $parent);
+    parent::__construct($config, $dn, $parent);
     $this->netConfigDNS = new networkSettings($this->config,$this,$this->objectclasses, true);
     $this->netConfigDNS->MACisMust =TRUE;
 
@@ -138,7 +138,7 @@ class phoneGeneric extends plugin
   function execute()
   {
     /* Call parent execute */
-    plugin::execute();
+    parent::execute();
 
     if($this->is_account && !$this->view_logged){
       $this->view_logged = TRUE;
@@ -147,7 +147,7 @@ class phoneGeneric extends plugin
 
     /* Do we represent a valid phone? */
     if (!$this->is_account && $this->parent === NULL){
-      $display= "<img alt=\"\" src=\"images/small-error.png\" align=middle>&nbsp;<b>".
+      $display= "<img alt=\"\" src=\"geticon.php?context=status&icon=dialog-error&size=16\" align=middle>&nbsp;<b>".
         msgPool::noValidExtension(_("phone"))."</b>";
       return($display);
     }
@@ -274,7 +274,7 @@ class phoneGeneric extends plugin
       new log("remove","phone/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
 
       if (!$ldap->success()){
-        msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()));
+        msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()), LDAP_ERROR);
       }
       $this->handle_post_events("remove",array("macAddress" => $this->netConfigDNS->macAddress,"ipHostNumber" => $this->netConfigDNS->ipHostNumber));
 
@@ -294,10 +294,10 @@ class phoneGeneric extends plugin
   function save_object()
   {
     /* Create a base backup and reset the
-       base directly after calling plugin::save_object();
+       base directly after calling parent::save_object();
        Base will be set seperatly a few lines below */
     $base_tmp = $this->base;
-    plugin::save_object();
+    parent::save_object();
     $this->base = $base_tmp;
 
     $this->netConfigDNS->save_object();
@@ -385,7 +385,7 @@ class phoneGeneric extends plugin
   /* Save to LDAP */
   function save()
   {
-    plugin::save();
+    parent::save();
 
 
     /* only to define which attrs to save*/
@@ -429,7 +429,7 @@ class phoneGeneric extends plugin
       $ldap->cd($this->dn);
       $ldap->add($this->attrs);
       if (!$ldap->success()){
-        msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()));
+        msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()), LDAP_ERROR);
       }
       new log("create","phone/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
       $this->handle_post_events("add",array("macAddress" => $this->netConfigDNS->macAddress,"ipHostNumber" => $this->netConfigDNS->ipHostNumber));
@@ -443,7 +443,7 @@ class phoneGeneric extends plugin
       $ldap->modify ($this->attrs);
       new log("modify","phone/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
       if (!$ldap->success()){
-        msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()));
+        msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()), LDAP_ERROR);
       }
 
       // $user_phone_reload
@@ -460,7 +460,7 @@ class phoneGeneric extends plugin
     $this->netConfigDNS->cn = $this->cn;
     $this->netConfigDNS->save();
     if (!$ldap->success()){
-      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()));
+      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()), LDAP_ERROR);
     }
   }
 
@@ -472,12 +472,13 @@ class phoneGeneric extends plugin
       "plShortName"   => _("Generic"),
       "plDescription" => _("Phone generic"),
       "plSelfModify"  => FALSE,
-      "plCategory"    => array("phone" => array("description"  => _("Phone hardware"),
-                                                "objectClass"  => "goFonHardware")),
-      "plObjectType"  => array("phone" => array("name" => _("Phone"),
-                                                "filter" => "objectClass=goFonHardware")),
+      "plObjectType"  => array("phone" => array(
+        "description"  => _("Phone hardware"),
+        "name" => _("Phone"),
+        "filter" => "objectClass=goFonHardware")
+      ),
 
-      "plProvidedAcls"=> array(
+      "plProvidedAcls" => array(
         "cn"                  => _("Name"),
         "base"                => _("Base"),
         "description"         => _("Description"),

@@ -1,4 +1,4 @@
-<table summary="" style="width:100%; vertical-align:top; text-align:left;" cellpadding=4>
+<table style="width:100%; vertical-align:top; text-align:left;" cellpadding=4>
 <tr>
   <td style="vertical-align:top;width:600px">
   <div class="contentboxh" style="height:20px">
@@ -31,11 +31,11 @@
       <p class="contentboxh" style="font-size:12px"><img src="{$launchimage}" align="right" alt="[F]">{t}Filters{/t}</p>
     </div>
     <div class="contentboxb">
-      <table summary="" style="width:100%;border-top:1px solid #B0B0B0;">
+      <table style="width:100%;border-top:1px solid #B0B0B0;">
           {$alphabet}
       </table>
-    <table summary="" style="width:100%;border-top:1px solid #B0B0B0;">
-      <tr><td><input onClick='document.mainform.submit()' 
+    <table style="width:100%;border-top:1px solid #B0B0B0;">
+      <tr><td><input onClick='document.mainform.submit()'
                 type="checkbox" name="SShowTemplates"   {$SShowTemplatesCHK}>{t}Show only classes with templates{/t}</td></tr>
       <tr><td><input onClick='document.mainform.submit()'
                   type="checkbox" name="SShowScripts"     {$SShowScriptsCHK}>{t}Show only classes with scripts{/t}</td></tr>
@@ -48,14 +48,14 @@
       <tr><td><input onClick='document.mainform.submit()'
                 type="checkbox" name="SShowPartitions"  {$SShowPartitionsCHK}>{t}Show only classes with partitions{/t}</td></tr>
      </table>
-       <table summary=""  style="width:100%;border-top:1px solid #B0B0B0;">
+       <table  style="width:100%;border-top:1px solid #B0B0B0;">
         <tr>
           <td>
-              <img alt="{t}Display objects matching{/t}" src="{$search_image}" 
+              <img alt="{t}Display objects matching{/t}" src="{$search_image}"
               align=middle title='{t}Display objects matching{/t}'>
           </td>
           <td width="99%">
-              <input type='text' name='Sregex' maxlength='20' style='width:99%' value='{$Sregex}' id='filter' 
+              <input type='text' name='Sregex' maxlength='20' style='width:99%' value='{$Sregex}' id='filter'
                 title='{t}Regular expression for matching object names{/t}' >
           </td>
         </tr>

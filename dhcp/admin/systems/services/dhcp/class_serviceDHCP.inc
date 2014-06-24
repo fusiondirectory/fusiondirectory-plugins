@@ -51,7 +51,7 @@ class serviceDHCP extends goService
 
   function __construct (&$config, $dn = NULL, $parent = NULL)
   {
-    plugin::plugin ($config, $dn, $parent);
+    parent::__construct($config, $dn, $parent);
 
     $this->serviceDN = "cn=dhcp,".$dn;
     $this->orig_dn = $dn;
@@ -335,17 +335,16 @@ class serviceDHCP extends goService
     $DhcpList = new divSelectBox("dhcpSections");
     $DhcpList->SetHeight(400);
 
-    /* Add entries to divlist
-     */
-    $editImgIns = "<input type='image' src='images/lists/new.png' name='insertDhcp_%s' title='"._("Insert new DHCP section")."'>".
-      "<input type='image' src='images/lists/edit.png' name='editDhcp_%s' title='"._("Edit DHCP section")."'>".
-      "<input type='image' src='images/lists/trash.png' name='delDhcp_%s' title='"._("Remove DHCP section")."'>";
-    $editImgInsNoDel = "<input type='image' src='images/lists/new.png' name='insertDhcp_%s' title='"._("Insert new DHCP section")."'>".
-      "<input type='image' src='images/lists/edit.png' name='editDhcp_%s' title='"._("Edit DHCP section")."'>";
-    $editImg = "<input type='image' src='images/lists/edit.png' name='editDhcp_%s' title='"._("Edit DHCP section")."'>".
-      "<input type='image' src='images/lists/trash.png' name='delDhcp_%s' title='"._("Remove DHCP section")."'>";
+    /* Add entries to DhcpList */
+    $editImgIns = "<input type='image' src='geticon.php?context=actions&icon=document-new&size=16' name='insertDhcp_%s' title='"._("Insert new DHCP section")."'>".
+      "<input type='image' src='geticon.php?context=actions&icon=document-edit&size=16' name='editDhcp_%s' title='"._("Edit DHCP section")."'>".
+      "<input type='image' src='geticon.php?context=actions&icon=edit-delete&size=16' name='delDhcp_%s' title='"._("Remove DHCP section")."'>";
+    $editImgInsNoDel = "<input type='image' src='geticon.php?context=actions&icon=document-new&size=16' name='insertDhcp_%s' title='"._("Insert new DHCP section")."'>".
+      "<input type='image' src='geticon.php?context=actions&icon=document-edit&size=16' name='editDhcp_%s' title='"._("Edit DHCP section")."'>";
+    $editImg = "<input type='image' src='geticon.php?context=actions&icon=document-edit&size=16' name='editDhcp_%s' title='"._("Edit DHCP section")."'>".
+      "<input type='image' src='geticon.php?context=actions&icon=edit-delete&size=16' name='delDhcp_%s' title='"._("Remove DHCP section")."'>";
     $subnetExpandImg = "<input style='padding:5px 6px 4px;vertical-align:middle;' type='image' src='images/lists/expand.png' name='expandDhcp_%s' title='"._("Expand DHCP subnet")."'/>";
-    $subnetExpandedImg = "<input style='padding:6px 5px 6px 4px;vertical-align:middle;' type='image' src='images/lists/sort-down.png' name='foldDhcp_%s' title='"._("Fold DHCP subnet")."'/>";
+    $subnetExpandedImg = "<input style='padding:6px 5px 6px 4px;vertical-align:middle;' type='image' src='images/down-arrow.png' name='foldDhcp_%s' title='"._("Fold DHCP subnet")."'/>";
 
     $tmp = new dhcpNewSectionDialog(NULL);
     foreach ($this->dhcpSections as $section => $values) {
@@ -420,7 +419,7 @@ class serviceDHCP extends goService
       if ($this->objectType($dn) == 'dhcpService') {
         $ldap->rmdir_recursive($dn);
         if (!$ldap->success()) {
-          msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_DEL, get_class()));
+          msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_DEL, get_class()), LDAP_ERROR);
         }
       }
     }
@@ -437,7 +436,7 @@ class serviceDHCP extends goService
     $ldap->modify ($this->attrs);
 
     if (!$ldap->success()) {
-      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_MOD, get_class()));
+      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_MOD, get_class()), LDAP_ERROR);
     }
 
     /* Optionally execute a command after we're done */
@@ -492,7 +491,7 @@ class serviceDHCP extends goService
         if($ldap->cat($dn)){
           $ldap->rmdir_recursive($dn);
           if (!$ldap->success()){
-            msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_MOD, get_class()));
+            msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_MOD, get_class()), LDAP_ERROR);
           }
         }
         continue;
@@ -568,7 +567,7 @@ class serviceDHCP extends goService
         if ($modify){
           $ldap->modify($attrs);
           if (!$ldap->success()){
-            msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_MOD, get_class()));
+            msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_MOD, get_class()), LDAP_ERROR);
           }
 
           /* Optionally execute a command after we're done */
@@ -576,7 +575,7 @@ class serviceDHCP extends goService
         } else {
           $ldap->add($attrs);
           if (!$ldap->success()){
-            msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_ADD, get_class()));
+            msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_ADD, get_class()), LDAP_ERROR);
           }
 
           /* Optionally execute a command after we're done */
@@ -603,7 +602,7 @@ class serviceDHCP extends goService
     $ldap->modify ($this->attrs);
 
     if (!$ldap->success()){
-      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_MOD, get_class()));
+      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_MOD, get_class()), LDAP_ERROR);
     }
 
     /* Optionally execute a command after we're done */
@@ -798,12 +797,9 @@ class serviceDHCP extends goService
     );
   }
 
-
   function take_over_service()
   {
-
   }
-
 
   function get_list_of_dhcp_servers()
   {
@@ -826,13 +822,11 @@ class serviceDHCP extends goService
     return($ret);
   }
 
-
   function getListEntry()
   {
-    $fields               = goService::getListEntry();
-    $fields['Message']    = _("DHCP service");
-    #$fields['AllowEdit']  = true;
-    return($fields);
+    $fields             = goService::getListEntry();
+    $fields['Message']  = _("DHCP service");
+    return $fields;
   }
 }
 ?>

@@ -139,7 +139,6 @@ class quotaAccount extends simplePlugin
       'plSmallIcon'   => 'plugins/quota/images/iconMini.png',
       'plSelfModify'  => TRUE,
       'plPriority'    => 8,
-      'plCategory'    => array('users'),
       'plObjectType'  => array('user'),
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())

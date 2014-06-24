@@ -21,7 +21,6 @@
 class dsaManagement extends simpleManagement
 {
   // Tab definition
-  protected $objectName   = "dsa";
   protected $objectTypes  = array('simpleSecurityObject');
 
   protected $departmentBrowser      = TRUE;
@@ -39,6 +38,7 @@ class dsaManagement extends simpleManagement
       'plPriority'    => 40,
       'plCategory'    => array('dsa' => array('description'  => _('DSA'),
                                               'objectClass'  => array('simpleSecurityObject'))),
+      'plManages'     => array('simpleSecurityObject'),
 
       'plProvidedAcls' => array()
     );

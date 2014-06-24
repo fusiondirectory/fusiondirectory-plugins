@@ -1,5 +1,4 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
@@ -20,46 +19,40 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class filterSystemByIp  extends filterLDAP{
-
-  static function query($parent,$base, $scope, $filter, $attributes, $category, $objectStorage= "")
+class filterSystemByIp extends filterLDAP
+{
+  static function query($parent, $base, $scope, $filter, $attributes, $category, $objectStorage = "")
   {
-
     // IP Range selection
     $filterByIP = preg_match("/__FilterByIP__/", $filter);
-    $filter = preg_replace("/__FilterByIP__/","",$filter);
-    $ipstart = "";
-    $ipstop = "";
-    if(preg_match("/__IPSTART__=/", $filter)){
-      $ipstart = trim(preg_replace("/^.*__IPSTART__=([^_]*)__.*$/","\\1",$filter),"*");
+    $filter     = preg_replace("/__FilterByIP__/", "", $filter);
+    $ipstart    = "";
+    $ipstop     = "";
+    if (preg_match("/__IPSTART__=/", $filter)) {
+      $ipstart = trim(preg_replace("/^.*__IPSTART__=([^_]*)__.*$/", "\\1", $filter), "*");
     }
-    if(preg_match("/__IPSTOP__=/", $filter)){
-      $ipstop = trim(preg_replace("/^.*__IPSTOP__=([^_]*)__.*$/","\\1",$filter),"*");
+    if (preg_match("/__IPSTOP__=/", $filter)) {
+      $ipstop = trim(preg_replace("/^.*__IPSTOP__=([^_]*)__.*$/", "\\1", $filter), "*");
     }
-
 
     // Get entries
-    $filter= preg_replace("/__IPSTART.*$/","",$filter);
-    $entries = filterLDAP::query($parent,$base, $scope, $filter, $attributes, $category, $objectStorage);
-
+    $filter   = preg_replace("/__IPSTART.*$/", "", $filter);
+    $entries  = filterLDAP::query($parent, $base, $scope, $filter, $attributes, $category, $objectStorage);
 
     // Filter entries by IP-Address
-    if($filterByIP){
-      foreach($entries as $key => $entry){
-        if(!isset($entry['ipHostNumber'])){
+    if ($filterByIP) {
+      foreach ($entries as $key => $entry) {
+        if (!isset($entry['ipHostNumber'])) {
           unset($entries[$key]);
           continue;
         }
-        if(!tests::is_in_ip_range($ipstart,$ipstop, $entry['ipHostNumber'][0])){
+        if (!tests::is_in_ip_range($ipstart, $ipstop, $entry['ipHostNumber'][0])) {
           unset($entries[$key]);
           continue;
         }
       }
     }
-    return(array_values($entries));
+    return array_values($entries);
   }
-
 }
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
-
 ?>

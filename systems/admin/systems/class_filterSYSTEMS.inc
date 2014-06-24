@@ -20,17 +20,16 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class filterSYSTEMS {
+class filterSYSTEMS
+{
 
-  static function query($parent,$base, $scope, $filter, $attributes, $category, $objectStorage= array())
+  static function query($parent, $base, $scope, $filter, $attributes, $category, $objectStorage = array())
   {
-    $ui = get_userinfo();
     global $config;
 
-    $config= session::global_get('config');
-    $ldap= $config->get_ldap_link(TRUE);
-    $flag= ($scope == "sub")?GL_SUBSEARCH:0;
-    $entries = filterSYSTEMS::get_list($parent,$base, $filter, $attributes, $category, $objectStorage, $flag | GL_SIZELIMIT);
+    $config   = session::global_get('config');
+    $flag     = ($scope == "sub"?GL_SUBSEARCH:0);
+    $entries  = filterSYSTEMS::get_list($parent, $base, $filter, $attributes, $category, $objectStorage, $flag | GL_SIZELIMIT);
 
     foreach ($entries as $key => $entry) {
       if (in_array('sambaSamAccount', $entry['objectClass']) && preg_match("/\$$/", $entry['cn'][0])) {
@@ -47,19 +46,20 @@ class filterSYSTEMS {
 
           if (isset($entry['gotoMode'][0]) && preg_match("/locked/i", $entry['gotoMode'][0])) {
             $entries[$key]['objectClass'][] = $type."__IS_LOCKED";
-          } elseif(isset($entry['FAIstate'][0])) {
+          } elseif (isset($entry['FAIstate'][0])) {
             switch (preg_replace('/:.*$/', '', $entry['FAIstate'][0])) {
               case 'error':
-                $state= '__IS_ERROR';
+                $state = '__IS_ERROR';
                 break;
               case 'installing':
               case 'install':
               case 'sysinfo':
               case 'softupdate':
               case 'scheduledupdate':
-                $state= '__IS_BUSY';
+                $state = '__IS_BUSY';
                 break;
-              default: $state ="";
+              default:
+                $state = "";
             }
             if (!empty($state)) {
               $entries[$key]['objectClass'][] = $type.$state;
@@ -73,72 +73,72 @@ class filterSYSTEMS {
   }
 
 
-  static function get_list($parent,$base, $filter, $attributes, $category, $objectStorage, $flags= GL_SUBSEARCH)
+  static function get_list($parent, $base, $filter, $attributes, $category, $objectStorage, $flags = GL_SUBSEARCH)
   {
-    $ui= session::global_get('ui');
-    $config= session::global_get('config');
+    $ui     = session::global_get('ui');
+    $config = session::global_get('config');
 
     // Move to arrays for category and objectStorage
     if (!is_array($category)) {
-      $category= array($category);
+      $category = array($category);
     }
 
     // Store in base - i.e. is a rdn value empty?
-    $storeOnBase= count($objectStorage) == 1 && empty($objectStorage[0]);
+    $storeOnBase = ((count($objectStorage) == 1) && empty($objectStorage[0]));
 
-    $method= ($storeOnBase && !($flags & GL_SUBSEARCH))?"ls":"search";
+    $method = ($storeOnBase && !($flags & GL_SUBSEARCH))?"ls":"search";
 
     // Initialize search bases
-    $bases= array();
+    $bases = array();
 
     // Get list of sub bases to search on
     if ($storeOnBase) {
-      $bases[$base]= "";
+      $bases[$base] = "";
     } else {
       foreach ($objectStorage as $oc) {
-        $oc= preg_replace('/,$/', '', $oc);
-        $tmp= explode(',', $oc);
+        $oc   = preg_replace('/,$/', '', $oc);
+        $tmp  = explode(',', $oc);
         if (count($tmp) == 1) {
           preg_match('/([^=]+)=(.*)$/', $oc, $m);
           if ($flags & GL_SUBSEARCH) {
-            $bases[$base][]= $m[1].":dn:=".$m[2];
+            $bases[$base][] = $m[1].":dn:=".$m[2];
           } else {
-            $bases["$oc,$base"][]= $m[1].":dn:=".$m[2];
+            $bases["$oc,$base"][] = $m[1].":dn:=".$m[2];
           }
         } else {
           // No, there's no \, in pre defined RDN values
           preg_match('/^([^,]+),(.*)$/', $oc, $matches);
           preg_match('/([^=]+)=(.*)$/', $matches[1], $m);
           if ($flags & GL_SUBSEARCH) {
-            $bases[$base][]= $m[1].":dn:=".$m[2];
+            $bases[$base][] = $m[1].":dn:=".$m[2];
           } else {
-            $bases[$matches[2].",$base"][]= $m[1].":dn:=".$m[2];
+            $bases[$matches[2].",$base"][] = $m[1].":dn:=".$m[2];
           }
         }
       }
     }
     // Get LDAP link
-    $ldap= $config->get_ldap_link($flags & GL_SIZELIMIT);
+    $ldap = $config->get_ldap_link($flags & GL_SIZELIMIT);
 
     // Do search for every base
-    $result= array();
+    $result         = array();
     $limit_exceeded = FALSE;
-    foreach($bases as $base => $dnFilters) {
+    foreach ($bases as $base => $dnFilters) {
 
       // Break if the size limit is exceeded
-      if($limit_exceeded){
-        return($result);
+      if ($limit_exceeded) {
+        return $result;
       }
 
       // Switch to new base and search
-      if (is_array($dnFilters)){
-        $dnFilter= "(|";
+      if (is_array($dnFilters)) {
+        $dnFilter = "(|";
         foreach ($dnFilters as $df) {
-          $dnFilter.= "($df)";
+          $dnFilter .= "($df)";
         }
-        $dnFilter.= ")";
+        $dnFilter .= ")";
       } else {
-        $dnFilter= "";
+        $dnFilter = "";
       }
       $ldap->cd($base);
       if ($method == "ls") {
@@ -148,28 +148,28 @@ class filterSYSTEMS {
       }
 
       // Check for size limit exceeded messages for GUI feedback
-      if (preg_match("/size limit/i", $ldap->get_error())){
+      if (preg_match("/size limit/i", $ldap->get_error())) {
         session::set('limit_exceeded', TRUE);
         $limit_exceeded = TRUE;
       }
 
       /* Crawl through result entries and perform the migration to the
          result array */
-      while($attrs = $ldap->fetch()) {
-        $dn= $ldap->getDN();
+      while ($attrs = $ldap->fetch()) {
+        $dn = $ldap->getDN();
 
         /* Convert dn into a printable format */
-        if ($flags & GL_CONVERT){
-          $attrs["dn"]= convert_department_dn($dn);
+        if ($flags & GL_CONVERT) {
+          $attrs["dn"] = convert_department_dn($dn);
         } else {
-          $attrs["dn"]= $dn;
+          $attrs["dn"] = $dn;
         }
 
         /* Skip ACL checks if we are forced to skip those checks */
         if ($flags & GL_NO_ACL_CHECK) {
           $result[] = $attrs;
         } else {
-          $obj = $parent->headpage->getObjectTypeInfos($attrs['objectClass']);
+          $obj = $parent->headpage->getObjectTypeInfos($dn, $attrs);
 
           if (isset($obj['category'])) {
             $o = $obj['category']."/".$obj['class'];
@@ -185,6 +185,5 @@ class filterSYSTEMS {
     return $result;
   }
 }
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 
 ?>

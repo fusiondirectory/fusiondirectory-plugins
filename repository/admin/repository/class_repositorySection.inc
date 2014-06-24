@@ -36,6 +36,11 @@ class repositorySection extends simplePlugin
         'ou'          => get_ou('repositoryRDN'),
         'icon'        => 'plugins/repository/images/iconSection.png'
       )),
+      'plForeignKeys'  => array(
+        'fdBasedOn' => array(
+          array('repositorySection',  'cn'),
+        )
+      ),
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
@@ -74,7 +79,7 @@ class repositorySection extends simplePlugin
 
     $this->attributesAccess['cn']->setUnique(TRUE);
 
-    $sections = $this->config->getObjectList('repoSection', 'cn');
+    $sections = objects::ls('repoSection', 'cn');
     $this->attributesAccess['fdBasedOn']->attribute->setChoices(array_values($sections));
   }
 

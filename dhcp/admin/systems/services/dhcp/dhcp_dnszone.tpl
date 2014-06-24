@@ -5,7 +5,7 @@
  <tr>
    <td>{t}DNS zone{/t}{$must}</td>
    <td>
-     <select name='cn' > 
+     <select name='cn' >
        {html_options options=$cns selected=$cn}
      </select>
    </td>
@@ -32,7 +32,7 @@
 <p class="seperator"></p>
 
 <!-- Place cursor in correct field -->
-<script language="JavaScript" type="text/javascript">
+<script type="text/javascript">
   <!-- // First input field on page
   focus_field('cn');
   -->

@@ -1,5 +1,4 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2011-2013  FusionDirectory
@@ -19,51 +18,40 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class debconfProfileManagement extends management
+class debconfProfileManagement extends simpleManagement
 {
-  // Tab definition
-  protected $tabClass     = "debconfprofiletabs";
-  protected $tabType      = "DEBCONFPROFILETABS";
-  protected $aclCategory  = "debconfProfile";
-  protected $aclPlugin    = "debconfProfile";
-  protected $objectName   = "debconfProfile";
+  protected $objectTypes  = array('debconfProfile');
 
-  /* Return plugin informations for acl handling */
+  protected $departmentBrowser      = FALSE;
+  protected $departmentRootVisible  = FALSE;
+  protected $baseMode               = FALSE;
+
   static function plInfo()
   {
     return array(
-      "plShortName"   => _("Debconf"),
-      "plDescription" => _("Debconf profile management"),
-      "plIcon"        => "plugins/debconf/images/icon.png",
-      "plPriority"    => 31,
-      "plSection"     => "admin",
-      "plCategory"    => array("debconfProfile"),
+      'plShortName'   => _('Debconf'),
+      'plDescription' => _('Debconf profile management'),
+      'plIcon'        => 'plugins/debconf/images/icon.png',
+      'plPriority'    => 31,
+      'plSection'     => 'admin',
+      'plManages'     => array('debconfProfile'),
 
-      "plProvidedAcls" => array()
+      'plProvidedAcls' => array()
     );
   }
 
-  function __construct ($config, $ui)
+  function __construct($config, $ui)
   {
-    $this->config = $config;
-    $this->ui     = $ui;
+    $this->filterXMLPath  = get_template_path('debconfProfile-filter.xml', TRUE, dirname(__FILE__));
+    parent::__construct($config, $ui);
+  }
 
-    $this->storagePoints = array(get_ou("debconfRDN"));
-
-    // Build filter
-    if (session::global_is_set(get_class($this)."_filter")) {
-      $filter = session::global_get(get_class($this)."_filter");
-    } else {
-      $filter = new filter(get_template_path("debconfProfile-filter.xml", TRUE));
-      $filter->setObjectStorage($this->storagePoints);
-    }
-    $this->setFilter($filter);
-
-    // Build headpage
-    $headpage = new listing(get_template_path("debconfProfile-list.xml", TRUE));
-    $headpage->setFilter($filter);
-
-    parent::__construct($config, $ui, "debconfProfile", $headpage);
+  function parseXML ($file)
+  {
+    $data = parent::parseXML($file);
+    $data['list']['table']['column'][1]['sortAttribute']  = 'ou';
+    $data['list']['table']['column'][1]['value']          = '%{filter:link(row,dn,"%s",ou)}';
+    return $data;
   }
 }
 ?>

@@ -36,6 +36,15 @@ class buildRepository extends simplePlugin
         'ou'          => get_ou('repositoryRDN'),
         'icon'        => 'plugins/repository/images/iconMini.png'
       )),
+      'plForeignKeys'  => array(
+        'fdRepoAdmin'     => 'user',
+        'fdRepoUploader'  => 'user',
+        'fdRepoUser'      => 'user',
+        'fdRepoDistributionSection'   => array(
+          array('repositoryDistribution', 'cn', '(fdRepoDistributionSection=%oldvalue%/*)'),
+          array('repositorySection',      'cn', '(fdRepoDistributionSection=*/%oldvalue%)'),
+        ),
+      ),
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
@@ -116,6 +125,23 @@ class buildRepository extends simplePlugin
   function compute_dn()
   {
     return 'cn='.$this->attributesAccess['cn']->getValue().','.get_ou('repositoryRDN').$this->base;
+  }
+
+  function foreignKeyCheck ($field, $fieldvalue, $source)
+  {
+    if ($field == 'fdRepoDistributionSection') {
+      $values = $this->fdRepoDistributionSection;
+      foreach ($values as $value) {
+        if (($source[0] == 'repositoryDistribution') && preg_match('/^'.preg_quote($fieldvalue, '/').'/', $value)) {
+          return TRUE;
+        }
+        if (($source[0] == 'repositorySection') && preg_match('/'.preg_quote($fieldvalue, '$/').'/', $value)) {
+          return TRUE;
+        }
+      }
+    } else {
+      return parent::foreignKeyCheck ($field, $fieldvalue, $source);
+    }
   }
 }
 

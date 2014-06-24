@@ -24,9 +24,9 @@ class conferencetabs extends tabs
 {
   var $base = "";
 
-  function conferencetabs($config, $data, $dn, $category, $copied_object = NULL)
+  function __construct($config, $data, $dn, $category, $copied_object = NULL)
   {
-    parent::tabs($config, $data, $dn, $category, $copied_object);
+    parent::__construct($config, $data, $dn, $category, $copied_object);
     $this->base = $this->by_object['conference']->base;
 
     /* Add references/acls/snapshots */

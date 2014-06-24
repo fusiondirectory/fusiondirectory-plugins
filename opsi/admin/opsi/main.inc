@@ -18,36 +18,5 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-$classname = 'opsiManagement';
-
-/* Remove locks created by this plugin */
-if ($remove_lock) {
-  if (session::is_set($classname)) {
-    $macl = session::get($classname);
-    $macl->remove_lock();
-  }
-}
-
-/* Remove this plugin from session */
-if ($cleanup) {
-  session::un_set($classname);
-} else {
-
-  /* Create devicemanagement object on demand */
-  if (!session::is_set($classname)) {
-    $management = new $classname ($config, $ui);
-    session::set($classname, $management);
-  }
-  $management = session::get($classname);
-  $display = $management->execute();
-
-  /* Reset requested? */
-  if (isset($_GET['reset']) && $_GET['reset'] == 1) {
-    session::un_set($classname);
-  }
-
-  /* Show and save dialog */
-  session::set($classname, $management);
-}
-
+simpleManagement::mainInc('opsiManagement');
 ?>

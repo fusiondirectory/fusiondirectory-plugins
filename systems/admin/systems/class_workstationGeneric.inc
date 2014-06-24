@@ -183,7 +183,7 @@ class workstationGeneric extends simplePlugin
       ),
       'servers' => array(
         'name'  => _('Servers'),
-        'icon'  => get_template_path("plugins/systems/images/select_server.png"),
+        'icon'  => 'geticon.php?context=devices&icon=server&size=16',
         'attrs' => array(
           new SelectAttribute (
             _('Syslog server'),
@@ -236,7 +236,7 @@ class workstationGeneric extends simplePlugin
         'name'      => _('Network settings'),
         'attrs'     => array(new NetworkSettingsAttribute()),
         'template'  => get_template_path('network_section.tpl', TRUE, dirname(__FILE__)),
-        'icon'      => get_template_path('plugins/systems/images/network.png'),
+        'icon'      => 'geticon.php?context=categories&icon=applications-internet&size=16',
       ),
     );
   }
@@ -420,25 +420,6 @@ class workstationGeneric extends simplePlugin
     }
   }
 
-  /* Check supplied data */
-  function check()
-  {
-    $message = parent::check();
-
-    $activate = ($this->attributesAccess['gotoMode']->hasChanged() &&
-                 $this->attributesAccess['gotoMode']->getValue());
-    /* Only systems with a valid ldap handle can be activated
-     */
-    if ($activate) {
-      if ((count($this->attributesAccess['gotoLdapServer']->getValue()) == 0) &&
-          !$this->attributesAccess['inheritLDAPServer']->getValue()) {
-        $message[] = _("A valid LDAP server assignement is missing!");
-      }
-    }
-
-    return $message;
-  }
-
   protected function ldap_save($cleanup = TRUE)
   {
     $activate = ($this->attributesAccess['gotoMode']->hasChanged() &&
@@ -474,14 +455,21 @@ class workstationGeneric extends simplePlugin
   static function plInfo()
   {
     return array(
-      "plShortName"     => _("Generic"),
-      "plDescription"   => _("Workstation generic"),
-      "plSelfModify"    => FALSE,
-      "plCategory"      => array("workstation" => array("description"  => _("Workstation"),
-                                                      "objectClass"  => "gotoWorkstation")),
-      "plObjectType"    => array("workstation" => array("name"   => _("Workstation"),
-                                                 "filter" => "objectClass=gotoWorkstation")),
-      "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plShortName'   => _('Generic'),
+      'plDescription' => _('Workstation generic'),
+      'plSelfModify'  => FALSE,
+      'plObjectType'  => array('workstation' =>
+        array(
+          'name'        => _('Workstation'),
+          'description' => _('Workstation'),
+          'filter'      => 'objectClass=gotoWorkstation',
+          'ou'          => get_ou('workstationRDN'),
+          'icon'        => 'geticon.php?context=devices&icon=computer&size=16',
+          'mainAttr'    => 'cn',
+          'tabClass'    => 'worktabs',
+        )
+      ),
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }
 }

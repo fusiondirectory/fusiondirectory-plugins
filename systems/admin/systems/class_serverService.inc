@@ -57,7 +57,6 @@ class ServerService extends management
       "plShortName"   => _("Services"),
       "plDescription" => _("Server services"),
       "plSelfModify"  => FALSE,
-      "plCategory"    => array("server"),
       "plObjectType"  => array("server"),
       "plPrority"     => 5,
 
@@ -93,7 +92,6 @@ class ServerService extends management
     $headpage = new listing(get_template_path("serverService-list.xml", TRUE));
     $headpage->registerElementFilter("filterServiceStatus", "ServerService::filterServiceStatus");
     $headpage->setFilter($filter);
-
 
     // Initialize list of used and useable services.
     foreach ($config->data['TABS']['SERVERSERVICE'] as $plug) {
@@ -134,7 +132,7 @@ class ServerService extends management
     $this->headpage->xmlData['actionmenu']['action'][0]['action'] = array();
     $available_services = $this->getAllUnusedServices();
     foreach ($available_services as $class => $label) {
-      $icon = 'images/lists/new.png';
+      $icon = 'geticon.php?context=actions&icon=document-new&size=16';
       $infos = pluglist::pluginInfos($class);
       if (isset($infos['plIcon'])) {
         $icon = $infos['plIcon'];
@@ -247,6 +245,7 @@ class ServerService extends management
     $this->dialog = FALSE;
     /* Get our dn back */
     $this->dn     = $this->last_dn;
+    set_object_info($this->dn);
   }
 
 
@@ -294,10 +293,10 @@ class ServerService extends management
     if (isset($d['0'])) {
       switch ($d[0]) {
         case 'stopped':
-          $img = ('images/lists/off.png');
+          $img = 'geticon.php?context=status&icon=task-stopped&size=16';
           break;
         case 'running':
-          $img = ('images/lists/on.png');
+          $img = 'geticon.php?context=status&icon=task-running&size=16';
           break;
       }
     }
@@ -333,7 +332,6 @@ class ServerService extends management
         msg_dialog::display(_("Filter error"), _("The filter is incomplete!"), ERROR_DIALOG);
       }
     }
-
 
     // Handle actions (POSTs and GETs)
     $str = $this->handleActions($this->detectPostActions());
@@ -583,7 +581,7 @@ class ServerService extends management
    */
   function allow_remove()
   {
-    foreach ($this->plugins as $name => $obj) {
+    foreach ($this->plugins as $obj) {
       $str = $obj->allow_remove();
       if (!empty($str)) {
         return $str;

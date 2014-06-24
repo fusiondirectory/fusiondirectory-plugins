@@ -31,9 +31,13 @@ class sympaAlias extends simplePlugin
       'plShortName'   => _('Sympa list alias'),
       'plDescription' => _('Sympa list alias'),
       'plSelfModify'  => FALSE,
-      'plCategory'    => array('alias'),
-      'plObjectType'  => array('sympaAlias' => array('name'  => _('Sympa list alias'),
-                                                      'filter'  => 'objectClass=sympaAlias')),
+      'plObjectType'  => array('sympaAlias' => array(
+        'name'        => _('Sympa list alias'),
+        'filter'      => 'objectClass=sympaAlias',
+        'aclCategory' => 'alias',
+        'icon'        => 'plugins/sympa/images/iconMini.png',
+        'ou'          => get_ou('aliasRDN'),
+      )),
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );

@@ -31,7 +31,6 @@ class argonautServer extends simpleService
       'plShortName'   => _('Argonaut Server'),
       'plDescription' => _('Argonaut Server').' ('._('Services').')',
       'plIcon'        => 'plugins/argonaut/images/iconMini.png',
-      'plCategory'    => array('server'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
@@ -50,6 +49,12 @@ class argonautServer extends simpleService
             _('Delete finished tasks'),
             _('Wether or not argonaut server should delete successfully finished tasks'),
             'argonautDeleteFinished', FALSE,
+            TRUE
+          ),
+          new BooleanAttribute (
+            _('Get packages informations'),
+            _('Wether or not argonaut server should get packages information from repositories at start and then once a day. Needed for FAI package list creation.'),
+            'argonautFetchPackages', FALSE,
             TRUE
           ),
           new SelectAttribute (

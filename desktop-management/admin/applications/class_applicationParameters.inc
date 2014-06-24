@@ -23,15 +23,15 @@
 class applicationParameters extends plugin
 {
   /* Parameters  */
-  var $option_name= array();
-  var $option_value= array();
+  var $option_name  = array();
+  var $option_value = array();
 
   /* attribute list for save action */
-  var $attributes= array("gosaApplicationParameter");
+  var $attributes = array("gosaApplicationParameter");
 
-  function applicationParameters (&$config, $dn= NULL, $parent= NULL)
+  function __construct (&$config, $dn = NULL, $parent = NULL)
   {
-    plugin::plugin ($config, $dn, $parent);
+    parent::__construct($config, $dn, $parent);
 
     $this->gosaApplicationParameter = array();
 
@@ -53,7 +53,7 @@ class applicationParameters extends plugin
   function execute()
   {
     /* Call parent execute */
-    plugin::execute();
+    parent::execute();
 
     /* Do we need to flip is_account state? */
     if(isset($_POST['modify_state'])){
@@ -111,10 +111,8 @@ class applicationParameters extends plugin
       $this->option_value[]= "";
     }
 
-
-
     $acl = $this->getacl("gosaApplicationParameter")  ;
-    $table= "<table summary=\"\"><tr><td>"._("Variable")."</td><td>"._("Default value")."</td><td></td></tr>";
+    $table= "<table><tr><td>"._("Variable")."</td><td>"._("Default value")."</td><td></td></tr>";
     if (count ($this->option_name)){
 
       for ($i= 0; $i < count($this->option_name); $i++){
@@ -158,7 +156,7 @@ class applicationParameters extends plugin
     $smarty->assign("table", $table);
     $display.= $smarty->fetch(get_template_path('parameters.tpl', TRUE));
     $this->parent->by_object['application']->generateTemplate();
-    return ($display);
+    return $display;
   }
 
   function remove_from_parent()
@@ -176,13 +174,12 @@ class applicationParameters extends plugin
     $ldap->modify ($this->attrs);
 
     if (!$ldap->success()){
-      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_MOD, get_class()));
+      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_MOD, get_class()), LDAP_ERROR);
     }
 
     /* Optionally execute a command after we're done */
     $this->handle_post_events('remove');
   }
-
 
   /* Save data to object */
   function save_object()
@@ -197,7 +194,6 @@ class applicationParameters extends plugin
       }
     }
   }
-
 
   /* Check values */
   function check()
@@ -219,7 +215,6 @@ class applicationParameters extends plugin
 
     return $message;
   }
-
 
   /* Save to LDAP */
   function save()
@@ -244,13 +239,12 @@ class applicationParameters extends plugin
     $ldap->modify ($this->attrs);
 
     if (!$ldap->success()){
-      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_MOD, get_class()));
+      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_MOD, get_class()), LDAP_ERROR);
     }
 
     /* Optionally execute a command after we're done */
     $this->handle_post_events('modify');
   }
-
 
   function PrepareForCopyPaste($source)
   {
@@ -264,7 +258,6 @@ class applicationParameters extends plugin
     $this->is_account = TRUE;
   }
 
-
   /* Return plugin informations for acl handling */
   static function plInfo()
   {
@@ -272,15 +265,12 @@ class applicationParameters extends plugin
       "plShortName"   => _("Parameter"),
       "plDescription" => _("Parameter configuration"),
       "plSelfModify"  => FALSE,
-      "plCategory"    => array("application"),
       "plObjectType"  => array("application"),
 
       "plProvidedAcls"=> array(
-        "gosaApplicationParameter"      => _("Application parameter settings")
+        "gosaApplicationParameter" => _("Application parameter settings")
       )
     );
   }
-
-
 }
 ?>

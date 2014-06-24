@@ -20,13 +20,10 @@
 
 class SubmittingOPSIProductAttribute extends SelectAttribute
 {
-  private $func;
-
   function __construct ($label, $description, $ldapName, $required = FALSE, $func, $acl = "")
   {
-    $this->func = $func;
     parent::__construct($label, $description, $ldapName, $required, array(), "", NULL, $acl);
-    $this->setSubmitForm(TRUE);
+    $this->setSubmitForm($func);
   }
 
   function check()
@@ -37,23 +34,13 @@ class SubmittingOPSIProductAttribute extends SelectAttribute
   {
     return $value;
   }
-
-  function setValue($value)
-  {
-    $v = $this->getValue();
-    parent::setValue($value);
-    if (is_object($this->plugin) && ($v != $this->getValue())) {
-      $func = $this->func;
-      $this->plugin->$func();
-    }
-  }
 }
 
 class ProductPropertyAttribute extends CompositeAttribute
 {
   function __construct ($label, $description, $ldapName, $acl = "")
   {
-    parent::__construct ($description, $ldapName, array(new StringAttribute('','','fake')), '', '', $acl, $label);
+    parent::__construct ($description, $ldapName, array(new StringAttribute('', '', 'fake')), '', '', $acl, $label);
   }
 
   function check()
@@ -117,7 +104,6 @@ class opsiProductProperties extends simplePlugin
       'plShortName'   => _('Product properties'),
       'plDescription' => _('Product properties'),
       'plSelfModify'  => FALSE,
-      'plCategory'    => array('opsiProfile'),
       'plObjectType'  => array('opsiProfile'),
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())

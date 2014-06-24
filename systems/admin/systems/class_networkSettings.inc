@@ -79,7 +79,7 @@ class networkSettings extends plugin
     $this->IPisMust       = $IPisMust;
     $this->namingAttr     = $namingAttr;
 
-    plugin::plugin ($config, $parent->dn, $this->parent);
+    parent::__construct($config, $parent->dn, $this->parent);
 
     $this->attrs = &$this->parent->attrs;
 
@@ -122,7 +122,6 @@ class networkSettings extends plugin
       $this->initial_dhcpHostEntry  = $this->dhcpHostEntry;
       $this->initial_dhcpParentNode = $this->dhcpParentNode;
     }
-
 
     /************
      * DNS
@@ -243,7 +242,7 @@ class networkSettings extends plugin
         $attrs[$attr] = $this->$attr;
       }
     }
-    return($attrs);
+    return $attrs;
   }
 
   function execute()
@@ -297,7 +296,6 @@ class networkSettings extends plugin
       }
     }
 
-
     /**********
      * DHCP Handling
      **********/
@@ -335,7 +333,7 @@ class networkSettings extends plugin
 
     if (is_object($this->dialog)) {
       $this->dialog->save_object();
-      return($this->dialog->execute());
+      return $this->dialog->execute();
     }
 
     $smarty->assign("dhcpEnabled",        $this->dhcpEnabled && $this->acl_is_readable("dhcpSetup"));
@@ -467,11 +465,10 @@ class networkSettings extends plugin
         $ldap->rmdir_recursive($dn);
         new log("remove", "unknown/".get_class($this), $dn);
         if (!$ldap->success()) {
-          msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_DEL, get_class()));
+          msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_DEL, get_class()), LDAP_ERROR);
         }
       }
     }
-
 
     /************
      * DHCP Handling
@@ -481,7 +478,7 @@ class networkSettings extends plugin
     if ($this->dhcp_is_Account) {
       $ldap->rmdir_recursive($this->dhcpHostEntry['dn']);
       if (!$ldap->success()) {
-        msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dhcpHostEntry['dn'], LDAP_DEL, get_class()));
+        msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dhcpHostEntry['dn'], LDAP_DEL, get_class()), LDAP_ERROR);
       }
     }
   }
@@ -493,7 +490,7 @@ class networkSettings extends plugin
     if (isset($_POST['network_tpl_posted'])) {
 
       /* Save all posted vars */
-      plugin::save_object();
+      parent::save_object();
 
       /******
         Additional IP Host Numbers
@@ -507,7 +504,6 @@ class networkSettings extends plugin
           }
         }
       }
-
 
       /******
         DHCP posts
@@ -532,7 +528,6 @@ class networkSettings extends plugin
           $this->$attr = $_POST[$attr];
         }
       }
-
 
       /******
         DNS posts
@@ -626,7 +621,6 @@ class networkSettings extends plugin
       }
     }
 
-
     /* Check if mac and ip are already used */
     if (!empty($this->ipHostNumber) &&
         $this->ipHostNumber != $this->orig_ipHostNumber &&
@@ -641,8 +635,7 @@ class networkSettings extends plugin
       }
     }
 
-    /* Check if ip must be given
-     */
+    /* Check if ip must be given */
     if (($this->IPisMust) || ($this->DNS_is_account)) {
       if (empty($this->ipHostNumber)) {
         $message[] = msgPool::required(_("IP address"));
@@ -651,8 +644,7 @@ class networkSettings extends plugin
       }
     }
 
-    /* Check if mac is empty
-     */
+    /* Check if mac is empty */
     if ($this->MACisMust || $this->dhcp_is_Account) {
       if ($this->macAddress == "" ) {
         $message[] = msgPool::required(_("MAC address"));
@@ -674,20 +666,17 @@ class networkSettings extends plugin
         $message[] = sprintf(_("The IP address '%s' is not part of the selected reverse zone '%s'!"), $this->ipHostNumber, $tmp2);
       }
 
-      /* Walk through all entries and detect duplicates or mismatches
-       */
-      foreach ($this->dnsEntry['RECORDS'] as $name => $values) {
+      /* Walk through all entries and detect duplicates or mismatches */
+      foreach ($this->dnsEntry['RECORDS'] as $values) {
 
-        /* Count record values, to detect duplicate entries for a specific record
-         */
+        /* Count record values, to detect duplicate entries for a specific record */
         if (!isset($checkArray[$values['type']][$values['value']])) {
           $checkArray[$values['type']][$values['value']] = 0;
         } else {
           $message[] = sprintf(_("Record type '%s' is duplicated!"), $values['type']);
         }
 
-        /* Check if given entries in $onlyOnce are used more than once
-         */
+        /* Check if given entries in $onlyOnce are used more than once */
         if (isset($onlyOnce[$values['type']])) {
           $onlyOnce[$values['type']] ++;
           if ($onlyOnce[$values['type']] > 1) {
@@ -695,22 +684,19 @@ class networkSettings extends plugin
           }
         }
 
-        /* Skip txt record ...
-         */
+        /* Skip txt record ... */
         if ($values['type'] == "tXTRecord") {
           continue;
         }
 
-        /* Check if there is an aRecord defined which uses the same IP as used in IPhostAddress
-         */
+        /* Check if there is an aRecord defined which uses the same IP as used in IPhostAddress */
         if (($values['type'] == "aRecord") && ($values['value'] == $this->ipHostNumber)) {
           //TODO: Where's the problem here?
           $message[] = sprintf(_("The IP address '%s' will be added as 'A Record', this will be done automatically, please remove the record."),
                $this->ipHostNumber);
         }
 
-        /* only lower-case is allowed in record entries ...
-         */
+        /* only lower-case is allowed in record entries ... */
         if ($values['value'] != strtolower($values['value'])) {
           //TODO: What's in values['value']? Something for a propper message?
           $message[] = sprintf(_("Only lowercase records are allowed, please check your '%ss'."), $values['type']);
@@ -734,7 +720,7 @@ class networkSettings extends plugin
     $this->dn = $dn;
 
     /* Save DNS setting & ip/Mac*/
-    plugin::save();
+    parent::save();
 
     /* Add all additional ipHostNumbers now
      */
@@ -758,7 +744,7 @@ class networkSettings extends plugin
     /* Display errors
      */
     if (!$ldap->success()) {
-      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()));
+      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()), LDAP_ERROR);
     }
 
     /* DHCP HANDLING */
@@ -817,7 +803,7 @@ class networkSettings extends plugin
       if ($this->initial_dhcp_is_Account && !$this->dhcp_is_Account) {
         $ldap->rmdir_recursive($this->dhcpHostEntry['dn']);
         if (!$ldap->success()) {
-          msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dhcpHostEntry['dn'], LDAP_DEL, get_class()));
+          msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dhcpHostEntry['dn'], LDAP_DEL, get_class()), LDAP_ERROR);
         }
 
         $tmp = new serviceDHCP($this->config, $this->dhcpParentNode);
@@ -836,7 +822,7 @@ class networkSettings extends plugin
         $tmp->handle_post_events("add");
 
         if (!$ldap->success()) {
-          msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), "cn=".$this->cn.",".$this->dhcpParentNode, LDAP_ADD, get_class()));
+          msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), "cn=".$this->cn.",".$this->dhcpParentNode, LDAP_ADD, get_class()), LDAP_ERROR);
         }
       }
 
@@ -853,7 +839,7 @@ class networkSettings extends plugin
           $ldap->cd("cn=".$this->cn.",".$this->dhcpParentNode);
           $res = $ldap->add($attrs);
           if (!$ldap->success()) {
-            msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), "cn=".$this->cn.",".$this->dhcpParentNode, LDAP_ADD, get_class()));
+            msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), "cn=".$this->cn.",".$this->dhcpParentNode, LDAP_ADD, get_class()), LDAP_ERROR);
           }
 
           $tmp = new serviceDHCP($this->config, $this->dhcpParentNode);
@@ -862,7 +848,7 @@ class networkSettings extends plugin
           if ($res) {
             $ldap->rmdir_recursive($this->dhcpHostEntry['dn']);
             if (!$ldap->success()) {
-              msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dhcpHostEntry['dn'], LDAP_DEL, get_class()));
+              msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dhcpHostEntry['dn'], LDAP_DEL, get_class()), LDAP_ERROR);
             }
           }
         }
@@ -880,7 +866,7 @@ class networkSettings extends plugin
           $tmp->handle_post_events("modify");
 
           if (!$ldap->success()) {
-            msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dhcpHostEntry['dn'], LDAP_MOD, get_class()));
+            msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dhcpHostEntry['dn'], LDAP_MOD, get_class()), LDAP_ERROR);
           }
         }
       }
@@ -950,11 +936,9 @@ class networkSettings extends plugin
         new log("modify", "unknown/".get_class($this), $dn, array_keys($attrs), $ldap->get_error());
       }
 
-
-      /* Display errors
-       */
+      /* Display errors */
       if (!$ldap->success()) {
-        msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $dn, 0, get_class()));
+        msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $dn, 0, get_class()), LDAP_ERROR);
       }
 
       $tmp2 = new serviceDNS($this->config, $this->dn);
@@ -970,7 +954,7 @@ class networkSettings extends plugin
   {
     $changeStateForRecords = "";
 
-    $str = "<table summary='' width='100%'>";
+    $str = "<table width='100%'>";
 
     foreach ($this->dnsEntry['RECORDS'] as $key => $entry) {
 
@@ -1126,14 +1110,10 @@ class networkSettings extends plugin
   function get_pTRRecord()
   {
     if (!empty($this->ipHostNumber) && isset($this->dnsEntry['zoneName']) && !empty($this->dnsEntry['zoneName'])) {
-      $ldap = $this->config->get_ldap_link();
-      $ldap->cat(DNS::getDNSZoneDN($this->config, $this->dnsEntry['zoneName']));
-      $attrs = $ldap->fetch();
       $tmp = array_flip($this->Zones);
       $tmp = preg_replace("/^[^\/]*+\//", "", $tmp[$this->dnsEntry['zoneName']]);
       $tmp = trim(preg_replace('/'.preg_quote(DNS::getInAddrArpa(), '/').'$/', '', $tmp));
-      $ptr = preg_replace("/^".preg_quote(DNS::FlipIp($tmp), '/')."\./", "", $this->ipHostNumber);
-      return $ptr;
+      return preg_replace("/^".preg_quote(DNS::FlipIp($tmp), '/')."\./", '', $this->ipHostNumber);
     } else {
       return FALSE;
     }
@@ -1142,9 +1122,6 @@ class networkSettings extends plugin
 
   function generateRandomIP($net = "")
   {
-    $str = $net;
-    $cnt = 4;
-
     // first gather all IPs
     $ldap = $this->config->get_ldap_link();
     $ocs =
@@ -1266,7 +1243,7 @@ class NetworkSettingsAttribute extends Attribute
     parent::__construct("Network Settings", "", "networkSettings", FALSE, "");
     $this->setInLdap(FALSE);
     $this->namingAttr = $namingAttr;
-    $this->ocs = $ocs;
+    $this->ocs        = $ocs;
   }
 
   function setManagedAttributes ($dontcare)

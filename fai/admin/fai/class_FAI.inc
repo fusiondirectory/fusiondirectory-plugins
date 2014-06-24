@@ -284,7 +284,7 @@ class FAI
                 $ldap->modify($attrs);
 
                 if (!$ldap->success()){
-                  msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_MOD, get_class()));
+                  msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_MOD, get_class()), LDAP_ERROR);
                 }
               }
             }
@@ -329,7 +329,7 @@ class FAI
     }
     ksort($ar1);
     ksort($ar2);
-    if(count( array_diff($ar1,$ar2)) || FAI::arr_diff($ar1,$ar2)){
+    if(array_differs_recursive($ar1,$ar2)){
       return(true);
     }else{
       return(false);
@@ -676,7 +676,7 @@ class FAI
       $ldap->add($attrs);
     }
     if (!$ldap->success()){
-      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $dn, 0, get_class()));
+      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $dn, 0, get_class()), LDAP_ERROR);
     }
   }
 
@@ -1250,10 +1250,43 @@ class FAI
     }
     return("");
   }
+
+  static function createBranch ($release)
+  {
+    global $config;
+
+    // Check if FAI branch is here
+    $fai  = get_ou('faiBaseRDN').$config->current['BASE'];
+    $ldap = $config->get_ldap_link();
+    $ldap->cat($fai, array('dn'));
+    if (!$ldap->count()) {
+      $ldap->cd($config->current['BASE']);
+      $ldap->create_missing_trees($fai);
+      if (!$ldap->success()) {
+        msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $fai, LDAP_ADD, get_class()), LDAP_ERROR);
+      }
+    }
+
+    // Check if FAI release branch is here
+    $dn = "ou=$release,$fai";
+    $ldap->cat($dn, array('dn'));
+    if (!$ldap->count()) {
+      $ldap->cd($dn);
+      $ldap->add(array('objectClass' => array('organizationalUnit','FAIbranch'), 'ou' => $release));
+      if ($ldap->success()) {
+        // Add classes OUs
+        foreach (array('Script', 'Hook', 'Template', 'Variable', 'Profile', 'Package', 'Partition') as $type) {
+          $ldap->cd($dn);
+          $ldap->create_missing_trees(get_ou('fai'.$type.'RDN').$dn);
+          if (!$ldap->success()) {
+            msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), get_ou('fai'.$type.'RDN').$dn, LDAP_ADD, get_class()), LDAP_ERROR);
+          }
+        }
+      } else {
+        msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_ADD, get_class()), LDAP_ERROR);
+      }
+    }
+  }
 }
 
-
-
-
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

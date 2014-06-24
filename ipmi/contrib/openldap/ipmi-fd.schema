@@ -3,23 +3,28 @@
 ##
 
 # Attributes
-attributetype ( 1.3.6.1.4.1.38414.29.1.1 NAME 'fdIpmiLogin'
+attributetype ( 1.3.6.1.4.1.38414.29.1.1 NAME 'fdIpmiIP'
+  DESC 'Fusion Directory - IPMI IP'
+  EQUALITY caseExactIA5Match
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.38414.29.1.2 NAME 'fdIpmiLogin'
   DESC 'Fusion Directory - IPMI user login'
   EQUALITY caseExactIA5Match
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SINGLE-VALUE )
 
-attributetype ( 1.3.6.1.4.1.38414.29.1.2 NAME 'fdIpmiPassword'
+attributetype ( 1.3.6.1.4.1.38414.29.1.3 NAME 'fdIpmiPassword'
   DESC 'Fusion Directory - IPMI user password'
   EQUALITY caseExactIA5Match
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SINGLE-VALUE )
 
 # Object Class
-objectclass ( 1.3.6.1.4.1.38414.29.2.1 NAME 'ipmiInterface'
+objectclass ( 1.3.6.1.4.1.38414.29.2.1 NAME 'ipmiClient'
   DESC 'An IPMI client'
   SUP top AUXILIARY
-  MUST ( cn )
-  MAY  (  description $ macAddress      $ ipHostNumber $
-          fdIpmiLogin $ fdIpmiPassword ) )
+  MUST ( fdIpmiIP )
+  MAY ( fdIpmiLogin $ fdIpmiPassword ) )
 

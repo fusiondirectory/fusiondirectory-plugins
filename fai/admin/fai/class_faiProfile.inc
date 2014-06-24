@@ -48,7 +48,7 @@ class faiProfile extends faiPluginClass
   function faiProfile(&$config, $dn= NULL)
   {
     /* Load Attributes */
-    plugin::plugin ($config, $dn);
+    parent::__construct($config, $dn);
 
     $this->ui = get_userinfo();
 
@@ -222,7 +222,7 @@ class faiProfile extends faiPluginClass
   function execute()
   {
     /* Call parent execute */
-    plugin::execute();
+    parent::execute();
 
     if($this->is_account && !$this->view_logged){
       $this->view_logged = TRUE;
@@ -306,8 +306,8 @@ class faiProfile extends faiPluginClass
       return($this->classSelect->execute());
     }
 
-    $divlist  =new divSelectBox("Profile");
-    $divlist->SetSummary(_("This list displays all assigned class names for this profile."));
+    $divselectbox = new divSelectBox("Profile");
+    $divselectbox->SetSummary(_("This list displays all assigned class names for this profile."));
 
     /* item images */
     $objTypes['FAIhook']            = "<img src='plugins/fai/images/fai_hook.png' title='"._("Hook bundle")."' alt=''>";
@@ -318,13 +318,13 @@ class faiProfile extends faiPluginClass
     $objTypes['FAIpartitionTable']  = "<img src='plugins/fai/images/fai_partitionTable.png' title='"._("Partition table")."' alt=''>";
 
     /* Delete button */
-    $actions = "<input type='image' src='images/lists/trash.png' title='"._("Remove class from profile")."' name='DEL_%KEY%'>";
+    $actions = "<input type='image' src='geticon.php?context=actions&icon=edit-delete&size=16' title='"._("Remove class from profile")."' name='DEL_%KEY%'>";
 
     /* Up down buttons */
     $linkupdown = "&nbsp;<input type='image' name='sortup_%s'   alt='up'    title='"._("Up")."'   src='images/lists/sort-up.png' align='top' >";
     $linkupdown.= "<input type='image' name='sortdown_%s' alt='down'  title='"._("Down")."' src='images/lists/sort-down.png' >";
 
-    /* Append fai classes to divlist */
+    /* Append fai classes to divselectbox */
     if($this->acl_is_readable("FAIclass")){
       foreach($this->FAIclasses as $usedClass){
         $str = "&nbsp;";
@@ -347,14 +347,14 @@ class faiProfile extends faiPluginClass
         } else {
           $field3 = array("string" => "", "attach"=>"style='border-right:none;'");
         }
-        $divlist->AddEntry(array($field1,$field2,$field3));
+        $divselectbox->AddEntry(array($field1,$field2,$field3));
       }
     }
 
     $smarty->assign("freeze", preg_match("/freeze/i",$this->FAIstate));
 
-    $smarty->assign("FAIclasses"  ,$this->FAIclasses);
-    $smarty->assign("divlist"     ,$divlist->DrawList());
+    $smarty->assign("FAIclasses",   $this->FAIclasses);
+    $smarty->assign("divselectbox", $divselectbox->DrawList());
 
     /* Magic quotes GPC, escapes every ' " \, to solve some security risks
      * If we post the escaped strings they will be escaped again
@@ -395,7 +395,7 @@ class faiProfile extends faiPluginClass
   function save_object()
   {
     if(!preg_match("/freeze/",$this->FAIstate)){
-      plugin::save_object();
+      parent::save_object();
     }
   }
 
@@ -410,8 +410,14 @@ class faiProfile extends faiPluginClass
       $message[]=_("No class specified for this profile!");
     }
 
-    if($this->cn == ""){
-      $message[]= msgPool::required(_("Name"));
+    if ($this->cn == "") {
+      $message[] = msgPool::required(_("Name"));
+    } elseif (empty($message)) {
+      /* Profile can't use a name used by a class */
+      $res = FAI::get_all_objects_for_given_base($this->parent->parent->fai_release, "(&(!(objectClass=faiProfile))(cn=".$this->cn."))");
+      if (!empty($res)) {
+        $message[] = _("You can't use the same name for a class and a profile!");
+      }
     }
 
     return $message;
@@ -421,7 +427,7 @@ class faiProfile extends faiPluginClass
   /* Save to LDAP */
   function save()
   {
-    plugin::save();
+    parent::save();
 
     $ldap = $this->config->get_ldap_link();
 
@@ -431,14 +437,7 @@ class faiProfile extends faiPluginClass
     }
 
     $this->attrs['FAIclass']=trim($this->FAIclass);
-
-    /* Remove the old FAI profile, if the dn has changed.
-     */
-    if($this->cn != $this->old_cn && $this->old_cn != ""){
-
-      $old_dn = preg_replace("/^cn=[^,]+,/","cn=".$this->old_cn.",",$this->dn);
-      FAI::prepare_to_save_FAI_object($old_dn,array(),TRUE);
-    }
+    
     FAI::prepare_to_save_FAI_object($this->dn,$this->attrs);
 
     if($this->initially_was_account){
@@ -452,21 +451,22 @@ class faiProfile extends faiPluginClass
   static function plInfo()
   {
     return array(
-      "plShortName"   => _("Profile"),
-      "plDescription" => _("FAI profile"),
-      "plSelfModify"  => FALSE,
-      "plCategory"    => array("fai"),
-      "plObjectType"  => array("faiProfile" => array("name" => _("FAI Profile"),
-                                                    "filter" => "objectClass=FAIprofile")),
-      "plProvidedAcls" => array(
-        "cn"                => _("Name"),
-        "description"       => _("Description"),
-        "FAIclass"          => _("FAI classes")
+      'plShortName'   => _('Profile'),
+      'plDescription' => _('FAI profile'),
+      'plSelfModify'  => FALSE,
+      'plObjectType'  => array('faiProfile' => array(
+        'name'        => _('FAI Profile'),
+        'filter'      => 'objectClass=FAIprofile',
+        'aclCategory' => 'fai'
+      )),
+      'plProvidedAcls' => array(
+        'cn'                => _('Name'),
+        'description'       => _('Description'),
+        'FAIclass'          => _('FAI classes')
       )
     );
   }
 
 }
 
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

@@ -18,13 +18,13 @@
 
 <div align="right">
   <p>
-    <input type="submit" value="{msgPool type=applyButton}"   name="UseBranchName">   
-    <input type="submit" value="{msgPool type=cancelButton}"  name="CancelBranchName">    
+    <input type="submit" value="{msgPool type=applyButton}"   name="UseBranchName">
+    <input type="submit" value="{msgPool type=cancelButton}"  name="CancelBranchName">
   </p>
 </div>
 
 <!-- Place cursor -->
-<script language="JavaScript" type="text/javascript">
+<script type="text/javascript">
   <!--
   focus_field('BranchName');
   -->
@@ -41,7 +41,7 @@
   <p>{t}Your browser doesn't support iframes, please use this link to perform the requested operation.{/t}
     <br>
     <a href='?plug={$plugID}&amp;PerformBranch=1' target="_blank" title="{t}Perform requested operation.{/t}"><b>{t}Initiate operation{/t}</b></a>
-  </p>  
+  </p>
 </iframe>
 </div>
 <!--

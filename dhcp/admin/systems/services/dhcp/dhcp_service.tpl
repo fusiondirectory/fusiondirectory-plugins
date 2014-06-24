@@ -7,7 +7,7 @@
   <input id='authoritative' type=checkbox name="authoritative" value="1" {if $authoritative} checked {/if}> {t}Authoritative service{/t}<br>
 {/render}
   <br>
-  {t}Dynamic DNS update{/t} 
+  {t}Dynamic DNS update{/t}
 {render acl=$acl}
   <select name='ddns_update_style'  title='{t}Dynamic DNS update style{/t}' size="1">
        {html_options values=$ddns_styles output=$ddns_styles selected=$ddns_update_style}
@@ -44,7 +44,7 @@
 <p class="seperator"></p>
 
 <!-- Place cursor in correct field -->
-<script language="JavaScript" type="text/javascript">
+<script type="text/javascript">
   <!-- // First input field on page
   focus_field('authoritative');
   -->

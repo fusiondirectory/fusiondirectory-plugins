@@ -67,7 +67,6 @@ class fiInventory extends simplePlugin
       'plShortName'   => _('Inventory'),
       'plDescription' => _('Inventory Viewer'),
       'plPriority'    => 90,
-      'plCategory'    => array('workstation', 'server'),
       'plObjectType'  => array(
         'workstation', 'server',
         'inventory' => array(

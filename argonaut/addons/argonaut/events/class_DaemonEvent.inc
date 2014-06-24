@@ -35,7 +35,6 @@ class DaemonEvent
 {
   /* Menu Strings */
   protected $s_Menu_Name  = "s_Menu_Name not set";  // Diplayed in the ActionsMenu->CreateNew
-  //~ protected $s_Event_Name = "s_Event_Name not set"; // Will be displayed in the Management list.
   protected $s_Menu_Image = "images/empty.png";     // Image displayed in Actions->New
   protected $s_List_Image = "";                     // Image displayed in event listing
 
@@ -52,7 +51,7 @@ class DaemonEvent
   protected $mode         = SCHEDULED_EVENT; // Default action is sheduled.
 
   /* Sub dialog hanlding */
-  protected $target_divlist       = NULL;     // The divlist used by the target add dialog
+  protected $target_divlist       = NULL;     // The divselectbox used by the target add dialog
   protected $target_add_list_used = FALSE;    // Indicates that the target add list was used.
   protected $time_select_used     = FALSE;    // Indicates that we have used the timestamp select boxes.
   protected $target_list_used     = FALSE;    // Target list was diaplayed?
@@ -252,16 +251,16 @@ class DaemonEvent
   public function get_target_list()
   {
     $this->target_list_used = TRUE;
-    $divlist = new divSelectBox("EventTargets");
+    $divselectbox = new divSelectBox("EventTargets");
     foreach ($this->a_targets as $key => $target) {
-      $divlist->AddEntry(array(
+      $divselectbox->AddEntry(array(
             array("string"  => $target),
-            array("html"  => "<input type='image' src='images/lists/trash.png' title='"._("Remove")."' name='del_target_".$key."'>",
+            array("html"  => "<input type='image' src='geticon.php?context=actions&icon=edit-delete&size=16' title='"._("Remove")."' name='del_target_".$key."'>",
               "attach"  => "style='width:20px; border-right:0px;'")
             ));
     }
     $list_footer = "<input type='submit' name='open_target_list' value='"._("Add")."'>";
-    return $divlist->DrawList().$list_footer;
+    return $divselectbox->DrawList().$list_footer;
   }
 
 
@@ -277,7 +276,7 @@ class DaemonEvent
     }
 
     $smarty = get_smarty();
-    $smarty->assign("divlist", $this->target_divlist->execute());
+    $smarty->assign("divselectbox", $this->target_divlist->execute());
     return $smarty->fetch(get_template_path('target_list.tpl', TRUE, dirname(__FILE__)));
   }
 
@@ -407,23 +406,23 @@ class DaemonEvent
     return array(
       'System.halt' => array(
         'name'  => _('Switch off'),
-        'img'   => 'images/lists/off.png'
+        'img'   => 'geticon.php?context=actions&icon=system-shutdown&size=16'
       ),
       'Deployment.reboot' => array(
         'name'  => _('Reboot'),
-        'img'   => 'images/lists/reload.png'
+        'img'   => 'geticon.php?context=actions&icon=system-reboot&size=16'
       ),
       'Deployment.wake' => array(
         'name'  => _('Wake up'),
-        'img'   => 'images/lists/on.png'
+        'img'   => 'geticon.php?context=status&icon=task-running&size=16'
       ),
       'Deployment.update' => array(
         'name'  => _('Software update'),
-        'img'   => 'plugins/systems/images/update.png'
+        'img'   => 'geticon.php?context=actions&icon=system-update&size=16'
       ),
       'Deployment.reinstall' => array(
         'name'  => _('(Re)Install'),
-        'img'   => 'plugins/systems/images/reinstall.png'
+        'img'   => 'geticon.php?context=actions&icon=system-reinstall&size=16'
       ),
     );
   }

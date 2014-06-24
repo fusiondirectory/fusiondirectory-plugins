@@ -56,7 +56,7 @@ class faiVariable extends faiPluginClass
   function faiVariable (&$config, $dn= NULL)
   {
     /* Load Attributes */
-    plugin::plugin ($config, $dn);
+    parent::__construct($config, $dn);
 
     if($dn != "new"){
       $this->dn =$dn;
@@ -97,7 +97,7 @@ class faiVariable extends faiPluginClass
   function execute()
   {
     /* Call parent execute */
-    plugin::execute();
+    parent::execute();
 
     if($this->is_account && !$this->view_logged){
       $this->view_logged = TRUE;
@@ -287,14 +287,14 @@ class faiVariable extends faiPluginClass
   function save_object()
   {
     if((isset($_POST['FAIvariable_posted'])) && !preg_match("/freeze/", $this->FAIstate) ){
-      plugin::save_object();
+      parent::save_object();
     }
   }
 
   /* Save to LDAP */
   function save()
   {
-    plugin::save();
+    parent::save();
 
     $ldap = $this->config->get_ldap_link();
     FAI::prepare_to_save_FAI_object($this->dn,$this->attrs);
@@ -335,9 +335,6 @@ class faiVariable extends faiPluginClass
           $obj['status']="edited";
         }
       }
-
-      /* Tag object */
-      $this->tag_attrs($tmp, $sub_dn, $this->gosaUnitTag);
 
       if($obj['status'] == "delete"){
         FAI::prepare_to_save_FAI_object($sub_dn,array(),true);
@@ -387,22 +384,21 @@ class faiVariable extends faiPluginClass
   static function plInfo()
   {
     return array(
-      "plShortName"   => _("Variable"),
-      "plDescription" => _("FAI variable"),
-      "plSelfModify"  => FALSE,
-      "plPriority"    => 22,
-      "plCategory"    => array("fai"),
-      "plObjectType"  => array("faiVariable" => array("name" => _("FAI variable"),
-                                                    "filter" => "objectClass=FAIvariable")),
+      'plShortName'   => _('Variable'),
+      'plDescription' => _('FAI variable'),
+      'plSelfModify'  => FALSE,
+      'plPriority'    => 22,
+      'plObjectType'  => array('faiVariable' => array(
+        'name'        => _('FAI variable'),
+        'filter'      => 'objectClass=FAIvariable',
+        'aclCategory' => 'fai'
+      )),
 
-      "plProvidedAcls" => array(
-        "cn"                => _("Name")." ("._("Read only").")",
-        "description"       => _("Description")
+      'plProvidedAcls' => array(
+        'cn'                => _('Name').' ('._('Read only').')',
+        'description'       => _('Description')
       )
     );
   }
-
 }
-
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

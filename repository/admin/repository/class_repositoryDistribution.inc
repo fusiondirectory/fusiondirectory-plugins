@@ -36,6 +36,14 @@ class repositoryDistribution extends simplePlugin
         'ou'          => get_ou('repositoryRDN'),
         'icon'        => 'plugins/repository/images/iconDistribution.png'
       )),
+      'plForeignKeys'  => array(
+        'fdBasedOn' => array(
+          array('repositoryDistribution', 'cn'),
+        ),
+        'fdRepoSection' => array(
+          array('repositorySection', 'cn'),
+        ),
+      ),
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
@@ -81,7 +89,7 @@ class repositoryDistribution extends simplePlugin
 
     $this->attributesAccess['cn']->setUnique(TRUE);
 
-    $distros = $this->config->getObjectList('repoDistribution', 'cn');
+    $distros = objects::ls('repoDistribution', 'cn');
     $this->attributesAccess['fdBasedOn']->attribute->setChoices(array_values($distros));
     $sections = objects::ls('repoSection', 'cn');
     $this->attributesAccess['fdRepoSection']->attribute->setChoices(array_values($sections));

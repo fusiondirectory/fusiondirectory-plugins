@@ -33,8 +33,6 @@ class opsiSoftwareList extends simplePlugin
       'plDescription' => _('OPSI software list'),
       'plIcon'        => 'plugins/opsi/images/iconMiniSoftwareList.png',
       'plSelfModify'  => FALSE,
-      'plCategory'    => array('opsiSoftwareList' => array('description'  => _('OPSI software list'),
-                                                          'objectClass'  => 'opsiSoftwareList')),
       'plObjectType'  => array('opsiSoftwareList' => array(
         'name'    => _('OPSI software list'),
         'filter'  => 'objectClass=opsiSoftwareList',
@@ -80,7 +78,7 @@ class opsiSoftwareList extends simplePlugin
                   array('setup', 'always', 'once', 'custom', 'userlogin', 'update')
                 )
               ),
-              '|','',_('Localboot products')
+              '|', '', _('Localboot products')
             ),
             FALSE, // non-ordered
             array(),
@@ -104,8 +102,11 @@ class opsiSoftwareList extends simplePlugin
     return 'cn='.$this->cn.','.get_ou('opsiRDN').$this->config->current['BASE'];
   }
 
-  public function server_changed ()
+  public function server_changed ($opsi_args = NULL)
   {
+    if ($opsi_args == NULL) {
+      $opsi_args = array('id','name','setupScript','alwaysScript','onceScript','customScript','userLoginScript','updateScript');
+    }
     if (!isset($this->products[$this->fdOpsiServerDN])) {
       $s_daemon = new supportDaemon();
       if (!$s_daemon->is_available()) {
@@ -129,12 +130,12 @@ class opsiSoftwareList extends simplePlugin
         }
       } else {
         msg_dialog::display(
-          sprintf(_("Could not find %s in the LDAP"),$this->fdOpsiServerDN),
+          sprintf(_("Could not find %s in the LDAP"), $this->fdOpsiServerDN),
           msgPool::ldaperror($ldap->get_error()), ERROR_DIALOG
         );
         return FALSE;
       }
-      $localboots = $s_daemon->append_call('OPSI.get_localboots', array($this->macAddress), array('args' => array(array('id','name','setupScript','alwaysScript','onceScript','customScript','userLoginScript','updateScript'))));
+      $localboots = $s_daemon->append_call('OPSI.get_localboots', array($this->macAddress), array('args' => array($opsi_args)));
       if ($s_daemon->is_error()) {
         msg_dialog::display(
           _('Could contact OPSI server'),

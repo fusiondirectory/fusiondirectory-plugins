@@ -3,7 +3,7 @@
 <br>
 <br>
 <p class="plugbottom" style="margin-bottom:0px; padding:0px;">&nbsp;</p>
-<h2><img class="center" alt="" align="middle" src="plugins/ogroups/images/generic.png"> {t}Generic{/t}</h2>
+<h2><img class="center" alt="" align="middle" src="geticon.php?context=devices&icon=terminal&size=16"> {t}Generic{/t}</h2>
 
 <table width="100%">
   <tr>
@@ -42,7 +42,7 @@
     <td style="vertical-align:top;border-left:1px solid #A0A0A0;">
     <!-- Upper right -->
 
-      <table summary="">
+      <table>
         <tr>
          <td><label for="gotoMode">{t}Mode{/t}</label></td>
          <td>
@@ -109,7 +109,7 @@
 
 
 <h2><img class="center" alt="" align="middle" src="images/rocket.png"> {t}Action{/t}</h2>
-        <table summary="">
+        <table>
          <tr>
           <td>
 {render acl=$FAIstateACL}

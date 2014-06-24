@@ -1,5 +1,4 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
@@ -105,7 +104,7 @@ class argonautQueue extends management
 
   function newEntry($action = "", $target = array(), $all = array(), $altTabClass = "", $altTabType = "", $altAclCategory = "")
   {
-    $action = preg_replace("/^new_/","",$action);
+    $action = preg_replace("/^new_/", "", $action);
     if ($this->acl_is_writeable("")) {
       if (isset($this->events[$action])) {
         $this->dialogObject = new DaemonEvent($this->config, $action);
@@ -190,11 +189,11 @@ class argonautQueue extends management
       $status = "<img class='center' src='plugins/systems/images/clock.png' alt=''>&nbsp;"._("Waiting");
     }
     if ($status == "error") {
-      $status = "<input class='center' type='image' src='images/false.png' title='"._("Show error")."' ".
+      $status = "<input class='center' type='image' src='geticon.php?context=status&icon=task-failure&size=16' title='"._("Show error")."' ".
                "name='listing_showError_$row' style='padding:1px'>"._("Error");
     }
     if ($status == "processed") {
-      $status = "<img class='center' src='images/true.png' alt=''>&nbsp;"._("Processed");
+      $status = "<img class='center' src='geticon.php?context=status&icon=task-complete&size=16' alt=''>&nbsp;"._("Processed");
     }
 
     /* Special handling for all entries that have
@@ -326,7 +325,7 @@ class argonautQueue extends management
       $headpage = $this->getHeadpage();
       $tmp      = $headpage->getEntry($id);
       $entry    = $tmp['EVENT'];
-      $this->dialogObject = new argonautLogView($this->config, "", $entry, $this);
+      $this->dialogObject = new faiLogView($this->config, "", $entry, $this);
     }
   }
 

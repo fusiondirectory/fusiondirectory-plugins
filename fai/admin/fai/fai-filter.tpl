@@ -10,7 +10,7 @@
   <LABEL for='RELEASE'>{t}Release{/t}</LABEL>&nbsp;{$RELEASE}<br>
 </div>
 
-<div style="border-top:1px solid #AAAAAA"></div>
+<div style="display:block;width=100%;border-top:1px solid #AAAAAA;"></div>
 
 <div style='padding:4px;'>
 
@@ -32,13 +32,13 @@
 
 {if $fai_release != $fai_base && $allow_remove}
   <br>
-  <input class="center" type="image" name="remove_branch" src="images/lists/trash.png">
+  <input class="center" type="image" name="remove_branch" src="geticon.php?context=actions&icon=edit-delete&size=16">
   <a href="{$plug}&act=remove_branch">{t}Delete current release{/t}</a>
 {/if}
 
 </div>
 
-<div style="border-top:1px solid #AAAAAA"></div>
+<div style="display:block;width=100%;border-top:1px solid #AAAAAA;"></div>
 
 {$PROFILE}<label for="PROFILE">   {t}Show profiles{/t}</label>
 <br>{$TEMPLATE}<label for="TEMPLATE">  {t}Show templates{/t}</label>
@@ -48,11 +48,11 @@
 <br>{$PACKAGE}<label for="PACKAGE">   {t}Show packages{/t}</label>
 <br>{$PARTITION}<label for="PARTITION"> {t}Show partitions{/t}</label>
 
- <table summary="" style="width:100%;border-top:1px solid #B0B0B0;">
+ <table style="width:100%;border-top:1px solid #B0B0B0;">
   <tr>
    <td>
     <label for="NAME">
-     <img src="images/lists/search.png" align=middle>&nbsp;{t}Name{/t}
+     <img src="geticon.php?context=actions&icon=system-search&size=16" align=middle>&nbsp;{t}Name{/t}
     </label>
    </td>
    <td>
@@ -61,9 +61,9 @@
   </tr>
  </table>
 
- <table summary=""  width="100%"  style="background:#EEEEEE;border-top:1px solid #B0B0B0;">
+ <table  width="100%"  style="background:#EEEEEE;border-top:1px solid #B0B0B0;">
   <tr>
-   <td width="100%" align="right">
+   <td style="width:100%;text-align:right;">
     {$APPLY}
    </td>
   </tr>

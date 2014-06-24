@@ -20,7 +20,8 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class serviceCUPS extends goService {
+class serviceCUPS extends goService
+{
   /* This plugin only writes its objectClass */
   var $objectclasses    = array("goCupsServer");
   var $attributes       = array();
@@ -32,13 +33,13 @@ class serviceCUPS extends goService {
   var $DisplayName      = "";
   var $dn               = NULL;
   var $acl;
-  var $cn                  = "";
+  var $cn                 = "";
   var $serviceCUPSStatus  = "";
-  var $view_logged  =FALSE;
+  var $view_logged        = FALSE;
 
-  function serviceCUPS(&$config,$dn)
+  function serviceCUPS(&$config, $dn)
   {
-    goService::goService($config,$dn);
+    parent::__construct($config, $dn);
     $this->DisplayName = _("Print service");
   }
 
@@ -95,5 +96,4 @@ class serviceCUPS extends goService {
     );
   }
 }
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

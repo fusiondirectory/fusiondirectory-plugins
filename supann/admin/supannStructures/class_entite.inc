@@ -88,9 +88,14 @@ class entite extends simplePlugin
       'plShortName'   => _('Entite'),
       'plDescription' => _('SUPANN Entite Settings'),
       'plSelfModify'  => FALSE,
-      'plCategory'    => array('supann'),
-      'plObjectType'  => array('entite' => array('name' => _('SUPANN Entite'),
-                                                'filter' => '(&(objectClass=supannEntite)(objectClass=organizationalUnit))')),
+      'plObjectType'  => array('entite' => array(
+        'name'        => _('SUPANN Entite'),
+        'filter'      => '(&(objectClass=supannEntite)(objectClass=organizationalUnit))',
+        'ou'          => get_ou('supannStructuresRDN'),
+        'mainAttr'    => 'supannCodeEntite',
+        'icon'        => 'plugins/supann/images/iconMiniEntite.png',
+        'nameAttr'    => 'ou',
+      )),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );

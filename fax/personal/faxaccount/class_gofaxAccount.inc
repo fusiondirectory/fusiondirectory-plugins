@@ -68,7 +68,7 @@ class gofaxAccount extends plugin
   function gofaxAccount (&$config, $dn= NULL)
   {
     /* General initialization */
-    plugin::plugin ($config, $dn);
+    parent::__construct($config, $dn);
 
     /* Set uid, it is used in handle_post_events */
     if(isset($this->attrs['uid'])){
@@ -126,12 +126,12 @@ class gofaxAccount extends plugin
   function execute()
   {
     /* Call parent execute */
-    plugin::execute();
+    parent::execute();
 
     /* Log view */
     if($this->is_account && !$this->view_logged){
       $this->view_logged = TRUE;
-      new log("view","users/".get_class($this),$this->dn);
+      new log("view","user/".get_class($this),$this->dn);
     }
 
     /* Hickert : 11.11.05
@@ -176,7 +176,7 @@ class gofaxAccount extends plugin
 
     /* Do we represent a valid account? */
     if (!$this->is_account && $this->parent === NULL){
-      $display= "<img alt=\"\" src=\"images/small-error.png\" align=\"middle\">&nbsp;<b>".
+      $display= "<img alt=\"\" src=\"geticon.php?context=status&icon=dialog-error&size=16\" align=\"middle\">&nbsp;<b>".
         msgPool::noValidExtension(_("GOfax"))."</b>";
       $display.= back_to_main();
       return ($display);
@@ -421,7 +421,7 @@ class gofaxAccount extends plugin
         $this->departments[preg_replace("/^[^,]+,/","",$base)] = ".. - ["._("back")."]";
       }
 
-      /* Fetch all returned departments an add them to our divlist */
+      /* Fetch all returned departments an add them to our divselectbox */
       while($value = $ldap->fetch()){
         if($value["description"][0]!=".."){
           $this->departments[$value['dn']]=LDAP::fix(convert_department_dn($value['dn'])." - [".$value["description"][0]."]");
@@ -440,7 +440,7 @@ class gofaxAccount extends plugin
         if(!isset($this->config->departments[trim($key)])){
           $this->config->departments[trim($key)]="";
         }
-        $field1 = array("html" => "<img src='images/lists/folder.png' alt='department'>","attach"=>"style='width:16px;text-align:center;'");
+        $field1 = array("html" => "<img src='geticon.php?context=places&icon=folder&size=16' alt='department'>","attach"=>"style='width:16px;text-align:center;'");
         $field2 = array("html" => sprintf($linkopen,base64_encode($key),$val),"attach"=>" style='border:none'");
         $divSel->AddEntry(array($field1,$field2));
       }
@@ -517,13 +517,13 @@ class gofaxAccount extends plugin
       // Defining Links
       $linkopen = "<a href='?plug=".$_GET['plug']."&amp;act=dep_open&amp;dep_id=%s'>%s</a>";
 
-      /* Insert departments in divlist*/
+      /* Insert departments in divselectbox */
       foreach($this->departments as $key=> $val){
         if(!isset($this->config->departments[trim($key)])){
           $this->config->departments[trim($key)]="";
         }
 
-        $field1 = array("html" => "<img src='images/lists/folder.png' alt='department'>","attach"=>"style='width:16px;text-align:center;'");
+        $field1 = array("html" => "<img src='geticon.php?context=places&icon=folder&size=16' alt='department'>","attach"=>"style='width:16px;text-align:center;'");
         $field2 = array("html" => sprintf($linkopen,base64_encode($key),$val),"attach"=>" style='border:none'");
         $divSel->AddEntry(array($field1,$field2));
       }
@@ -593,7 +593,7 @@ class gofaxAccount extends plugin
       return;
     }
 
-    plugin::remove_from_parent();
+    parent::remove_from_parent();
 
     /* Adapt mail settings if needed */
     if ((isset($this->parent->by_object['mailAccount']->is_account)) && ($this->parent->by_object['mailAccount']->is_account)){
@@ -605,10 +605,10 @@ class gofaxAccount extends plugin
     $this->cleanup();
     $ldap->modify ($this->attrs);
 
-    new log("remove","users/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
+    new log("remove","user/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
 
     if (!$ldap->success()){
-      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()));
+      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()), LDAP_ERROR);
     }
 
     /* Optionally execute a command after we're done */
@@ -654,7 +654,7 @@ class gofaxAccount extends plugin
   {
     $edit_mode = (!is_object($this->parent) && !session::is_set('edit'));
     if (isset($_POST['faxTab'])){
-      plugin::save_object();
+      parent::save_object();
 
 
       $tmp = 0+$this->goFaxDeliveryMode;
@@ -703,7 +703,7 @@ class gofaxAccount extends plugin
   /* Save to LDAP */
   function save()
   {
-    plugin::save();
+    parent::save();
 
     /* Save arrays */
     foreach (array("goFaxRBlocklist", "goFaxRBlockgroups", "goFaxSBlocklist",
@@ -730,13 +730,13 @@ class gofaxAccount extends plugin
 
     /* Log last action */
     if($this->initially_was_account){
-      new log("modify","users/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
+      new log("modify","user/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
     }else{
-      new log("create","users/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
+      new log("create","user/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
     }
 
     if (!$ldap->success()){
-      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()));
+      msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, 0, get_class()), LDAP_ERROR);
     }
 
     /* Optionally execute a command after we're done */
@@ -799,7 +799,6 @@ class gofaxAccount extends plugin
       "plSmallIcon"   => "plugins/fax/images/iconMini.png",
       "plSelfModify"  => TRUE,
       "plPriority"    => 6,
-      "plCategory"    => array("users"),
       "plObjectType"  => array("user"),
 
       "plProvidedAcls"  => array(

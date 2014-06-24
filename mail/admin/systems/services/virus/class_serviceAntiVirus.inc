@@ -30,7 +30,7 @@ class serviceAntiVirus extends simpleService {
     return array(
       'plShortName'   => _('Antivirus service'),
       'plDescription' => _('Antivirus service').' ('._('Services').')',
-      'plIcon'        => 'plugins/mail/images/iconMiniAntivirus.png',
+      'plIcon'        => 'geticon.php?context=applications&icon=antivirus&size=16',
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );

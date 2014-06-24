@@ -70,7 +70,7 @@ class phoneAccount extends plugin
 
   function phoneAccount (&$config, $dn= NULL, $parent= NULL)
   {
-    plugin::plugin ($config, $dn, $parent);
+    parent::__construct($config, $dn, $parent);
 
     $this->delimiter = $config->get_cfg_value("asteriskParameterDelimiter","|");
 
@@ -946,12 +946,12 @@ class phoneAccount extends plugin
   function execute()
   {
     /* Call parent execute */
-    plugin::execute();
+    parent::execute();
 
     /* Log view */
     if($this->is_account && !$this->view_logged){
       $this->view_logged = TRUE;
-      new log("view","users/".get_class($this),$this->dn);
+      new log("view","user/".get_class($this),$this->dn);
     }
 
     $display = "";
@@ -995,7 +995,7 @@ class phoneAccount extends plugin
 
     /* Do we represent a valid account? */
     if (!$this->is_account && $this->parent === NULL){
-      $display= "<img alt=\"\" src=\"images/small-error.png\" align=\"middle\">&nbsp;<b>".
+      $display= "<img alt=\"\" src=\"geticon.php?context=status&icon=dialog-error&size=16\" align=\"middle\">&nbsp;<b>".
         msgPool::noValidExtension(_("Phone"))."</b>";
       $display.= back_to_main();
       return ($display);
@@ -1008,7 +1008,7 @@ class phoneAccount extends plugin
 
     /* Do we represent a valid account? */
     if (!$this->is_account && $this->parent === NULL){
-      $display= "<img alt=\"\" src=\"images/small-error.png\" align=\"middle\">&nbsp;<b>".
+      $display= "<img alt=\"\" src=\"geticon.php?context=status&icon=dialog-error&size=16\" align=\"middle\">&nbsp;<b>".
         msgPool::noValidExtension(_("Phone"))."</b>";
       $display.= back_to_main();
       return($display);
@@ -1068,7 +1068,7 @@ class phoneAccount extends plugin
       $macrotab="";
     }else{
 
-      $macrotab ="<table summary=\""._("Parameter")."\">";
+      $macrotab ='<table>';
       /* for every single parameter-> display textfile,combo, or true false switch*/
 
       foreach($this->phoneNumbers as $phonenum){
@@ -1248,7 +1248,7 @@ class phoneAccount extends plugin
     $SkipWrite = (!isset($this->parent) || !$this->parent) && !session::is_set('edit');
     if (isset($_POST["phoneTab"])){
 
-      plugin::save_object();
+      parent::save_object();
 
       /* Save checkbox */
       $tmp = preg_replace("/[^a-z]/i","",$this->goFonDeliveryMode);
@@ -1410,7 +1410,7 @@ class phoneAccount extends plugin
 
   function save()
   {
-    plugin::save();
+    parent::save();
 
     /* Force saving macro again
      * This ensures that
@@ -1467,9 +1467,9 @@ class phoneAccount extends plugin
 
     /* Log last action */
     if($this->initially_was_account){
-      new log("modify","users/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
+      new log("modify","user/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
     }else{
-      new log("create","users/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
+      new log("create","user/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
     }
 
     if (!$ldap->success()){
@@ -1578,7 +1578,7 @@ class phoneAccount extends plugin
       return;
     }
 
-    plugin::remove_from_parent();
+    parent::remove_from_parent();
 
     /* Just keep one phone number */
     if (count($this->telephoneNumber) && $this->telephoneNumber != ""){
@@ -1604,7 +1604,7 @@ class phoneAccount extends plugin
     $this->cleanup();
     $ldap->modify ($this->attrs);
 
-    new log("remove","users/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
+    new log("remove","user/".get_class($this),$this->dn,array_keys($this->attrs),$ldap->get_error());
     if (!$ldap->success()){
       msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), $this->dn, LDAP_MOD, get_class()));
     }
@@ -1660,7 +1660,6 @@ class phoneAccount extends plugin
       "plSmallIcon"   => "plugins/asterisk/images/iconMini.png",
       "plSelfModify"  => TRUE,
       "plPriority"    => 16,                                 // Position in tabs
-      "plCategory"    => array("users"),
       "plObjectType"  => array("user"),
 
       "plProvidedAcls"  => array(

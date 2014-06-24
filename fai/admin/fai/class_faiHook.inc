@@ -56,7 +56,7 @@ class faiHook extends faiPluginClass
   function faiHook (&$config, $dn= NULL)
   {
     /* Load Attributes */
-    plugin::plugin ($config, $dn);
+    parent::__construct($config, $dn);
 
     /* If "dn==new" we try to create a new entry
      * Else we must read all objects from ldap which belong to this entry.
@@ -148,7 +148,7 @@ class faiHook extends faiPluginClass
   function execute()
   {
     /* Call parent execute */
-    plugin::execute();
+    parent::execute();
 
     if($this->is_account && !$this->view_logged){
       $this->view_logged = TRUE;
@@ -318,8 +318,8 @@ class faiHook extends faiPluginClass
        Containing FAIscripts
      */
 
-    $divlist = new divSelectBox("FAIhooks");
-    $divlist->setHeight(400);
+    $divselectbox = new divSelectBox("FAIhooks");
+    $divselectbox->setHeight(400);
 
     foreach($this->getList(true) as $key => $name){
 
@@ -329,11 +329,11 @@ class faiHook extends faiPluginClass
 
       /* Check if this object is freezed, in this case hide the delete icon */
       if(preg_match("/^freeze/", $this->FAIstate)){
-        $act .= "<input type='image' src='images/lists/edit.png'      name='editscript_%s'    title='"._("Edit")."' alt='"._("Edit")."'>";
+        $act .= "<input type='image' src='geticon.php?context=actions&icon=document-edit&size=16'      name='editscript_%s'    title='"._("Edit")."' alt='"._("Edit")."'>";
       }else{
-        $act .= "<input type='image' src='images/lists/edit.png'      name='editscript_%s'    title='"._("Edit")."' alt='"._("Edit")."'>";
+        $act .= "<input type='image' src='geticon.php?context=actions&icon=document-edit&size=16'      name='editscript_%s'    title='"._("Edit")."' alt='"._("Edit")."'>";
         if(preg_match("/d/",$acl)){
-          $act .="<input type='image' src='images/lists/trash.png' name='deletescript_%s'  title='"._("Delete")."' alt='"._("Delete")."'>";
+          $act .="<input type='image' src='geticon.php?context=actions&icon=edit-delete&size=16' name='deletescript_%s'  title='"._("Delete")."' alt='"._("Delete")."'>";
         }
       }
 
@@ -352,7 +352,7 @@ class faiHook extends faiPluginClass
       if(preg_match("/r/",$s_acl)){
 
         $edit_link = "<a href='?plug=".$_GET['plug']."&amp;act=edit&amp;id=".base64_encode($key)."'>".$name['name']."</a>";
-        $divlist->AddEntry(array(
+        $divselectbox->AddEntry(array(
           array("html"=>$edit_link),
           array("html"=>$down , "attach" => "style='width:20px;'"),
           array("html"=>str_replace("%s",base64_encode($key),$act),
@@ -360,7 +360,7 @@ class faiHook extends faiPluginClass
         ));
       }
     }
-    $smarty->assign("Entry_divlist",$divlist->DrawList());
+    $smarty->assign("Entry_divlist",$divselectbox->DrawList());
     /* Divlist creation complete
      */
 
@@ -434,14 +434,14 @@ class faiHook extends faiPluginClass
   function save_object()
   {
     if((isset($_POST['FAIhook_posted'])) && !preg_match("/^freeze/", $this->FAIstate)){
-      plugin::save_object();
+      parent::save_object();
     }
   }
 
   /* Save to LDAP */
   function save()
   {
-    plugin::save();
+    parent::save();
 
     $ldap = $this->config->get_ldap_link();
 
@@ -500,9 +500,6 @@ class faiHook extends faiPluginClass
         }
       }
 
-      /* Tag object */
-      $this->tag_attrs($tmp, $sub_dn, $this->gosaUnitTag);
-
       if($obj['status'] == "delete"){
         FAI::prepare_to_save_FAI_object($sub_dn,array(),true);
         $this->handle_post_events("remove");
@@ -521,16 +518,18 @@ class faiHook extends faiPluginClass
   static function plInfo()
   {
     return array(
-      "plShortName"   => _("Hook"),
-      "plDescription" => _("FAI hook"),
-      "plSelfModify"  => FALSE,
-      "plPriority"    => 20,
-      "plCategory"    => array("fai"),
-      "plObjectType"  => array("faiHook" => array("name" => _("FAI hook"),
-                                                    "filter" => "objectClass=FAIhook")),
-      "plProvidedAcls" => array(
-        "cn"                => _("Name")." ("._("Read only").")",
-        "description"       => _("Description")
+      'plShortName'   => _('Hook'),
+      'plDescription' => _('FAI hook'),
+      'plSelfModify'  => FALSE,
+      'plPriority'    => 20,
+      'plObjectType'  => array('faiHook' => array(
+        'name'        => _('FAI hook'),
+        'filter'      => 'objectClass=FAIhook',
+        'aclCategory' => 'fai'
+      )),
+      'plProvidedAcls' => array(
+        'cn'                => _('Name').' ('._('Read only').')',
+        'description'       => _('Description')
       )
     );
   }

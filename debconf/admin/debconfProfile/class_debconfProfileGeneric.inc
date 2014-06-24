@@ -1,5 +1,4 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2011-2013  FusionDirectory
@@ -41,7 +40,7 @@ class DebconfEntriesAttribute extends CompositeAttribute
 
     /* Load template */
     $ldap = $this->plugin->config->get_ldap_link();
-    $ou = $this->plugin->attributesInfo['main']['attrs']['ou']->getValue();
+    $ou   = $this->plugin->attributesAccess['ou']->getValue();
     $ldap->cd("ou=templates,".$this->plugin->dn);
     $ldap->search("(objectClass=debConfDbEntry)");
     while ($entry = $ldap->fetch()) {
@@ -80,7 +79,7 @@ class DebconfEntriesAttribute extends CompositeAttribute
     $ldap = $this->plugin->config->get_ldap_link();
     foreach ($this->attributes as $cn => $attribute) {
       $dn = "cn=$cn,ou=questions,".$this->plugin->dn;
-      $ldap->cat($dn,array("objectClass"));
+      $ldap->cat($dn, array("objectClass"));
       if ($ldap->count() != 1) {
         msg_dialog::display(_("Error"),
           sprintf(_("Can't find entry %s in LDAP for profile %s"), $cn, $this->plugin->dn),
@@ -115,12 +114,12 @@ class DebconfImportAttribute extends FileAttribute
     strpos($str, "dn:");
     $tmp = str_replace ("\n", "", $str);  // removing breaklines
     $tmp = str_replace (" ", "", $tmp);   // removing spaces
-    if (preg_match( "/dn:.*,ou=templates,ou=(.+),".get_ou("debconfRDN").
+    if (preg_match( "/dn:.*,ou=templates,ou=([^,=]+),".get_ou("debconfRDN").
                     $this->plugin->config->current['BASE']."/",
                     $tmp, $matches) > 0) {    // searching for dn: containing the template name
-      $this->plugin->attributesInfo['main']['attrs']['ou']->setPostValue($matches[1]);
-      $this->plugin->attributesInfo['main']['attrs']['ou']->setValue($matches[1]);
-      $this->plugin->attributesInfo['main']['attrs']['ou']->setDisabled(TRUE);
+      $this->plugin->attributesAccess['ou']->setPostValue($matches[1]);
+      $this->plugin->attributesAccess['ou']->setValue($matches[1]);
+      $this->plugin->attributesAccess['ou']->setDisabled(TRUE);
 
       while (!feof($handle)) {
         $str .= fread($handle, 1024);
@@ -130,7 +129,8 @@ class DebconfImportAttribute extends FileAttribute
       $ldap = $this->plugin->config->get_ldap_link();
       try {
         $ldap->import_complete_ldif($str, FALSE, FALSE);
-      } catch(Exception $e) {
+        $this->plugin->initially_was_account = TRUE;
+      } catch (Exception $e) {
         msg_dialog::display(_('LDAP error'), $e->getMessage(), ERROR_DIALOG);
       }
     } else {
@@ -156,31 +156,23 @@ class debconfProfileGeneric extends simplePlugin
 
   var $objectclasses   = array("top","organizationalUnit");
 
-  public function __construct(&$config, $dn = NULL, $object = NULL)
+  public static function plInfo()
   {
-    parent::__construct($config, $dn, $object);
-
-    $this->attributesInfo['main']['attrs']['ou']->setUnique(TRUE);
-    if (count($this->attributesInfo['entries']['attrs']['debconfEntries']->attributes) == 0) {
-      unset($this->attributesInfo['entries']);
-      $this->attributesInfo['main']['attrs']['ou']->setVisible(FALSE);
-      $this->attributesInfo['main']['attrs']['ou']->setDisabled(TRUE);
-      $this->attributesInfo['main']['name'] = _('Import');
-    } else {
-      $this->attributesInfo['main']['attrs']['import']->setVisible(FALSE);
-      $this->attributesInfo['main']['attrs']['import']->setDisabled(TRUE);
-    }
+    return array(
+      'plShortName'   => _('Debconf profile'),
+      'plDescription' => _('Debconf profile generic'),
+      'plSelfModify'  => FALSE,
+      'plObjectType'  => array('debconfProfile' => array(
+        'name'      => _('Debconf profile'),
+        'filter'    => '(&(objectClass=organizationalUnit)(!(objectClass=gosaDepartment)))',
+        'ou'        => get_ou('debconfRDN'),
+        'icon'      => 'plugins/debconf/images/iconMini.png',
+        'mainAttr'  => 'ou',
+      )),
+      'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
+    );
   }
 
-  function ldap_save($cleanup = TRUE)
-  {
-    parent::ldap_save($cleanup);
-    if (isset($this->attributesInfo['entries'])) {
-      $this->attributesInfo['entries']['attrs']['debconfEntries']->saveInLdap();
-    }
-  }
-
-  // The main function : information about attributes
   static function getAttributesInfo ()
   {
     return array(
@@ -201,19 +193,33 @@ class debconfProfileGeneric extends simplePlugin
     );
   }
 
-  /* Return plugin informations for acl handling  */
-  public static function plInfo()
+  public function __construct(&$config, $dn = NULL, $object = NULL)
   {
-    return array(
-      "plShortName"   => _("Debconf profile"),
-      "plDescription" => _("Debconf profile generic"),
-      "plSelfModify"  => FALSE,
-      "plCategory"    => array("debconfProfile" => array("description"  => _("Debconf profile"),
-                                                          "objectClass"  => "debConfDbEntry")),
-      "plObjectType"  => array("debconfProfile" => array( "name"  => _("Debconf profile"),
-                                                          "filter"  => "objectClass=debConfDbEntry")),
-      "plProvidedAcls" => parent::generatePlProvidedAcls(self::getAttributesInfo())
-    );
+    parent::__construct($config, $dn, $object);
+
+    $this->attributesAccess['ou']->setUnique(TRUE);
+    if (count($this->attributesAccess['debconfEntries']->attributes) == 0) {
+      unset($this->attributesInfo['entries']);
+      $this->attributesAccess['ou']->setVisible(FALSE);
+      $this->attributesAccess['ou']->setDisabled(TRUE);
+      $this->attributesInfo['main']['name'] = _('Import');
+    } else {
+      $this->attributesAccess['import']->setVisible(FALSE);
+      $this->attributesAccess['import']->setDisabled(TRUE);
+    }
+  }
+
+  function compute_dn()
+  {
+    return 'ou='.$this->attributesAccess['ou']->getValue().','.get_ou("debconfRDN").$this->config->current['BASE'];
+  }
+
+  function ldap_save($cleanup = TRUE)
+  {
+    parent::ldap_save($cleanup);
+    if (isset($this->attributesInfo['entries'])) {
+      $this->attributesInfo['entries']['attrs']['debconfEntries']->saveInLdap();
+    }
   }
 }
 ?>

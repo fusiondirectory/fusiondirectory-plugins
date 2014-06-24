@@ -6,13 +6,11 @@
 
 <div class="contentboxb">
 
-<div style="border-top:1px solid #AAAAAA"></div>
-
- <table summary="" style="width:100%;border-top:1px solid #B0B0B0;">
+ <table style="width:100%;border-top:1px solid #B0B0B0;">
   <tr>
    <td>
     <label for="NAME">
-     <img src="images/lists/search.png" align=middle>&nbsp;{t}Name{/t}
+     <img src="geticon.php?context=actions&icon=system-search&size=16" align=middle>&nbsp;{t}Name{/t}
     </label>
    </td>
    <td>
@@ -21,9 +19,9 @@
   </tr>
  </table>
 
- <table summary=""  width="100%"  style="background:#EEEEEE;border-top:1px solid #B0B0B0;">
+ <table  width="100%"  style="background:#EEEEEE;border-top:1px solid #B0B0B0;">
   <tr>
-   <td width="100%" align="right">
+   <td style="width:100%;text-align:right;">
     {$APPLY}
    </td>
   </tr>
