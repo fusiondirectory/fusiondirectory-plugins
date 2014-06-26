@@ -19,12 +19,6 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-/*! \brief This class allows to handle an attribute for selecting an mail address
- *
- * It looks like a SetAttribute, but clicking "Add" will open a dialog that allow to select one or more users.
- *
- */
-
 class PackageSelectDialog extends GenericSelectDialog
 {
   protected $dialogClass = 'packageSelect';
