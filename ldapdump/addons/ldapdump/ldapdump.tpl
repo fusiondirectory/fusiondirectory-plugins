@@ -22,7 +22,7 @@
                       {foreach from=$values item=value}
                         <tr>
                           <th>{$label}</th>
-                          <td>{$value}</td>
+                          <td>{$value|escape:'html':'UTF-8'}</td>
                         </tr>
                       {/foreach}
                     {/foreach}
