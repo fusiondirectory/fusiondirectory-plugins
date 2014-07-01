@@ -24,18 +24,18 @@ class AccessRightsAttribute extends CompositeAttribute
   function __construct ($label, $description, $ldapName, $acl = "")
   {
     $attributes = array(
-      'u4' => new BooleanAttribute('', '', 'ur'),
-      'u2' => new BooleanAttribute('', '', 'uw'),
-      'u1' => new BooleanAttribute('', '', 'ue'),
-      's4' => new BooleanAttribute('', '', 'us'),
-      'g4' => new BooleanAttribute('', '', 'gr'),
-      'g2' => new BooleanAttribute('', '', 'gw'),
-      'g1' => new BooleanAttribute('', '', 'ge'),
-      's2' => new BooleanAttribute('', '', 'gs'),
-      'o4' => new BooleanAttribute('', '', 'or'),
-      'o2' => new BooleanAttribute('', '', 'ow'),
-      'o1' => new BooleanAttribute('', '', 'oe'),
-      's1' => new BooleanAttribute('', '', 'os'),
+      'u4' => new BooleanAttribute('', '', 'ur', FALSE, TRUE),
+      'u2' => new BooleanAttribute('', '', 'uw', FALSE, TRUE),
+      'u1' => new BooleanAttribute('', '', 'ue', FALSE),
+      's4' => new BooleanAttribute('', '', 'us', FALSE),
+      'g4' => new BooleanAttribute('', '', 'gr', FALSE, TRUE),
+      'g2' => new BooleanAttribute('', '', 'gw', FALSE),
+      'g1' => new BooleanAttribute('', '', 'ge', FALSE),
+      's2' => new BooleanAttribute('', '', 'gs', FALSE),
+      'o4' => new BooleanAttribute('', '', 'or', FALSE),
+      'o2' => new BooleanAttribute('', '', 'ow', FALSE),
+      'o1' => new BooleanAttribute('', '', 'oe', FALSE),
+      's1' => new BooleanAttribute('', '', 'os', FALSE),
     );
     parent::__construct ($description, $ldapName, $attributes, FALSE, FALSE, $acl, $label);
     $this->setLinearRendering(TRUE);
@@ -139,16 +139,15 @@ class faiTemplateEntry extends simplePlugin
       'main' => array(
         'name'  => _('Properties'),
         'attrs' => array(
-          new HostNameAttribute (
-            _('File name'), _('Template file name'),
+          new PathAttribute (
+            _('File path'), _('Complete absolute template file path and name'),
             'cn', TRUE
           ),
           new StringAttribute (
             _('Description'), _('Short description of the file'),
             'description', FALSE
           ),
-          new StringAttribute (
-            _('File path'), _('Where the file will be stored'),
+          new HiddenAttribute (
             'FAItemplatePath', TRUE
           ),
         )
@@ -186,100 +185,23 @@ class faiTemplateEntry extends simplePlugin
       )
     );
   }
-}
 
-class faiTemplateEntry_old extends plugin
-{
-  function execute()
+  function __construct (&$config, $dn = NULL, $object = NULL)
   {
-    /* Call parent execute */
-    parent::execute();
-
-    if(isset($_POST['TmpFileUpload']) && $this->acl_is_writeable("FAItemplateFile")){
-      if($str=file_get_contents($_FILES['FAItemplateFile']['tmp_name'])){
-        $str = preg_replace("/[\r]/","",$str);
-        $this->FAItemplateFile = $str;
-
-        /* If we don't have a filename set it from upload filename. */
-        if( 0 == strlen(preg_replace("/^.*\//","",$this->FAItemplatePath))){
-          $this->FAItemplatePath = preg_replace("/[^\/]*$/","",$this->FAItemplatePath).$_FILES['FAItemplateFile']['name'];
-        }
-
-        session::set('binary',$this->FAItemplateFile);
-        session::set('binarytype','octet-stream');
-        session::set('binaryfile',basename($this->FAItemplatePath));
-      }
-    }
+    parent::__construct($config, $dn, $object);
   }
 
-  /* Save data to object */
   function save_object()
   {
-    /* Check if form is posted and we are not freezed */
-    if((isset($_POST['SubObjectFormSubmitted'])) && !preg_match("/freeze/", $this->FAIstate)){
-
-      /* Remember destination current path
-          depending on the ACLs we will assemble a new one later.
-       */
-      $cur_path = $this->FAItemplatePath;
-      parent::save_object();
-
-      /* Set user.group (FAIowner) attribute */
-      if(isset($_POST['group']) && isset($_POST["user"]) && $this->acl_is_writeable("FAIowner")){
-        $this->FAIowner = $_POST["user"].'.'.$_POST["group"];
-        $this->user = $_POST['user'];
-        $this->group= $_POST['group'];
-      }
-
-      /* Check if permissions have changed */
-      if($this->acl_is_writeable("FAImode")){
-
-        /* Save mode */
-        $tmode= "";
-        foreach (array("s", "u", "g", "o") as $type){
-          $nr= 1;
-          $dest= 0;
-          while ($nr < 5){
-            if (isset($_POST["$type$nr"])){
-              $dest+= $nr;
-            }
-            $nr+= $nr;
-          }
-          $tmode= $tmode.$dest;
-        }
-        $this->FAImode= $tmode;
-      }
-
-      /* Check if we are allowed to change the destination directory
-       */
-      if($this->acl_is_writeable("FAItemplatePath")){
-        $cur_path = get_post('templatePath').'/'.basename($cur_path);
-      }
-
-      /* Check if we are allowed to change the destination directory
-       */
-      if($this->acl_is_writeable("cn")){
-        $cur_path = preg_replace("/[^\/]*$/","",$cur_path).trim(get_post('templateFile'));
-      }
-      $cur_path= str_replace("//","/",$cur_path);
-      if(trim($cur_path,"/") == ""){
-        $cur_path= "";
-      }
-      $this->FAItemplatePath = $this->cn= $cur_path;
+    if (isset($_FILES[$this->attributesAccess['FAItemplateFile']->getHtmlId()]['name'])) {
+      $name = $_FILES[$this->attributesAccess['FAItemplateFile']->getHtmlId()]['name'];
     }
-  }
-
-  /* Check supplied data */
-  function check()
-  {
-    /* Call common method to give check the hook */
-    $message= plugin::check();
-
-    if(isset($this->parent->SubObjects[$this->cn]) && $this->cn != $this->orig_cn){
-      $message[] = msgPool::duplicated(_("Name"));
+    parent::save_object();
+    if (preg_match('/^\/?$/', $this->cn) && isset($name)) {
+      $this->cn = '/'.$name;
     }
 
-    return ($message);
+    $this->FAItemplatePath = $this->cn;
   }
 }
 ?>

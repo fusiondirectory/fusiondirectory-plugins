@@ -39,7 +39,6 @@ class faiListing extends listing
     }
     // Fill internal bases list
     $this->bases = faiManagement::getReleaseList();
-    print_r($this->bases);
 
     // Populate base selector if already present
     if ($this->baseSelector && $this->baseMode) {
@@ -50,7 +49,8 @@ class faiListing extends listing
   }
 }
 
-class faiBaseSelector extends baseSelector {
+class faiBaseSelector extends baseSelector
+{
   protected $select;
 
   function __construct($bases, $base = '')
