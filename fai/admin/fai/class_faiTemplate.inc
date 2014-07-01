@@ -23,16 +23,14 @@
 class TemplateFileDialog extends GenericDialog
 {
   protected $dialogClass = 'faiTemplateEntry';
-
-  //~ protected $post_cancel = 'CancelDisk';
-  //~ protected $post_finish = 'SaveDisk';
+  protected $buttons;
 
   protected $initialDialogValue = NULL;
 
   function __construct($simplePlugin, &$attribute, $value = array())
   {
     $this->attribute  = $attribute;
-    $this->dialog = new $this->dialogClass($simplePlugin->config, $simplePlugin->dn);
+    $this->dialog = new $this->dialogClass($simplePlugin->config, 'new');
 
     $base = $simplePlugin->dn;
     if ($base == 'new') {
@@ -48,16 +46,17 @@ class TemplateFileDialog extends GenericDialog
         }
       }
     }
+
+    $this->buttons = "<div style='width:100%; text-align:right; clear:both; float:none;'>".
+               "  <input type='submit' name='add_finish' value='".msgPool::saveButton()."'/>&nbsp;".
+               "  <input type='submit' name='add_cancel' value='".msgPool::cancelButton()."'/>".
+               "</div>";
   }
 
   function dialog_execute ()
   {
-    $buttons = "<div style='width:100%; text-align:right; clear:both; float:none;'>".
-               "  <input type='submit' name='add_finish' value='".msgPool::saveButton()."'/>&nbsp;".
-               "  <input type='submit' name='add_cancel' value='".msgPool::cancelButton()."'/>".
-               "</div>";
     $this->dialog->save_object();
-    return $this->dialog->execute().$buttons;
+    return $this->dialog->execute().$this->buttons;
   }
 
   function handle_finish ()
@@ -67,10 +66,15 @@ class TemplateFileDialog extends GenericDialog
       foreach ($this->dialog->check() as $msg) {
         msg_dialog::display(_('Error'), $msg, ERROR_DIALOG);
       }
-      return $this->dialog->execute();
+      return $this->dialog->execute().$this->buttons;
     }
 
-    $this->attribute->diskConfigured($this->dialog->save());
+    $value = array();
+    foreach ($this->dialog->attributes as $attr) {
+      $value[$attr] = $this->dialog->$attr;
+    }
+
+    $this->attribute->addValue($value);
     return FALSE;
   }
 
@@ -100,14 +104,15 @@ class FAITemplateFilesAttribute extends DialogOrderedArrayAttribute
 
   protected function loadAttrValue ($attrs)
   {
+    global $config;
     if (isset($attrs['dn'])) {
-      $ldap = $this->plugin->config->get_ldap_link();
+      $ldap = $config->get_ldap_link();
       $ldap->ls($this->templateFilter, $attrs['dn']);
       $this->value = array();
       while ($subattrs = $ldap->fetch()) {
         $attrsWrapper = new stdClass();
         $attrsWrapper->attrs = $subattrs;
-        $dialog = new faiTemplateEntry($simplePlugin->config, $simplePlugin->dn, $attrsWrapper);
+        $dialog = new faiTemplateEntry($config, $subattrs['dn'], $attrsWrapper);
         $value = array();
         foreach ($this->templateAttributes as $attribute) {
           $value[$attribute] = $dialog->$attribute;
@@ -151,6 +156,7 @@ class FAITemplateFilesAttribute extends DialogOrderedArrayAttribute
   {
     parent::handleEdit($key);
   }
+
   function compute_sub_dn ($value)
   {
     return 'cn='.$value['cn'].','.$this->plugin->dn;
@@ -175,10 +181,25 @@ class FAITemplateFilesAttribute extends DialogOrderedArrayAttribute
   {
     return array(
       $value['cn'],
-      $value['descrition'],
-      $value['FAItemplatePath'],
+      $value['description'],
       humanReadableSize(strlen($value['FAItemplateFile'])),
     );
+  }
+
+  function check ()
+  {
+    $error = parent::check();
+    if (!empty($error)) {
+      return $error;
+    } else {
+      $used_cn = array();
+      foreach ($this->value as $value) {
+        if (isset($used_cn[$value['cn']])) {
+          return sprintf(_('There are several files with the same path: %s'), $value['cn']);
+        }
+        $used_cn[$value['cn']] = TRUE;
+      }
+    }
   }
 }
 
