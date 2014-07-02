@@ -22,20 +22,20 @@
 
 class debconf
 {
-  var $package= "";
-  var $language= "";
-  var $loaded_template= FALSE;
-  var $template= array();
+  var $package          = "";
+  var $language         = "";
+  var $loaded_template  = FALSE;
+  var $template         = array();
 
 
-  function debconf($language= "")
+  function __construct($language = "")
   {
     $this->set_language($language);
   }
 
   function set_language($language)
   {
-    $this->language= $language;
+    $this->language = $language;
   }
 
   function load_from_string($str)
@@ -47,44 +47,42 @@ class debconf
     $in_description        = FALSE;
     $got_local_description = FALSE;
 
-    foreach($lines as $line){
-
+    foreach ($lines as $line) {
       /* Reset description flag */
-      if ($in_description && !preg_match("/^ /", $line)){
-        $in_description= FALSE;
+      if ($in_description && !preg_match("/^ /", $line)) {
+        $in_description = FALSE;
       }
 
       /* Template header */
-      if (preg_match("/^Template: /", $line)){
+      if (preg_match("/^Template: /", $line)) {
         $post_name ++;
-        $name= trim(preg_replace("/^Template: (.*)$/", "\\1", $line));
-        $this->template[$post_name]['Name'] = $name;
-        $this->template[$post_name]['Default'] ="";
+        $name = trim(preg_replace("/^Template: (.*)$/", "\\1", $line));
+        $this->template[$post_name]['Name']     = $name;
+        $this->template[$post_name]['Default']  = "";
 
-        $got_local_description= FALSE;
+        $got_local_description = FALSE;
         continue;
       }
 
       /* Get type */
-      if (preg_match("/^Type: /", $line)){
-        $type= trim(preg_replace("/^Type: (.*)$/", "\\1", $line));
-        $this->template[$post_name]['Type']= $type;
+      if (preg_match("/^Type: /", $line)) {
+        $type = trim(preg_replace("/^Type: (.*)$/", "\\1", $line));
+        $this->template[$post_name]['Type'] = $type;
         continue;
       }
 
       /* Get default */
-      if (preg_match("/^Default: /", $line)){
-        $this->template[$post_name]['Default']= "";
-        $default= trim(preg_replace("/^Default: (.*)$/", "\\1", $line));
-        $this->template[$post_name]['Default']= $default;
+      if (preg_match("/^Default: /", $line)) {
+        $default = trim(preg_replace("/^Default: (.*)$/", "\\1", $line));
+        $this->template[$post_name]['Default'] = $default;
         continue;
       }
 
       /* Get description */
       if (!$got_local_description && preg_match("/^Description: /i", $line)){
         $description= trim(preg_replace("/^Description: (.*)$/i", "\\1", $line));
-        $this->template[$post_name]['Topic']= $description;
-        $this->template[$post_name]['Description']= "";
+        $this->template[$post_name]['Topic']        = $description;
+        $this->template[$post_name]['Description']  = "";
         $in_description= TRUE;
         continue;
       }
@@ -353,13 +351,13 @@ class debconf
         ";
     }
 
-    return ($result);
+    return $result;
   }
 
 
   function render_string($data)
   {
-    $result=  "
+    $result = "
                 <tr>
                   <td valign='top'>
                     <h2>".$data['Topic']."</h2>".$data['Description']."
@@ -370,25 +368,21 @@ class debconf
                 </tr>
               ";
 
-    return ($result);
+    return $result;
   }
 
 
   function render_text($data)
   {
     /* Ignore text messages, they are normally used for status hints. */
-    return ("");
+    return "";
   }
 
 
   function render_title($data)
   {
     /* Ignore text messages, they are normally used for status hints. */
-    return ("");
+    return "";
   }
-
 }
-
-
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>
