@@ -1,5 +1,4 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
@@ -22,10 +21,12 @@
 
 class faiPartition extends plugin
 {
-  var $attributes = array("cn","description","FAIfsCreateOptions","FAIfsOptions","FAIfsTuneOptions",
-      "FAIfsType","FAImountOptions","FAImountPoint","FAIpartitionNr","FAIpartitionFlags","FAIdiskType",
-      "FAIpartitionSize","FAIpartitionType","FAIstate", "bootable","resize", "preserve", "preserveType",
-      "encrypted");
+  var $attributes = array(
+    "cn","description","FAIfsCreateOptions","FAIfsOptions","FAIfsTuneOptions",
+    "FAIfsType","FAImountOptions","FAImountPoint","FAIpartitionNr","FAIpartitionFlags","FAIdiskType",
+    "FAIpartitionSize","FAIpartitionType","FAIstate", "bootable","resize", "preserve", "preserveType",
+    "encrypted"
+  );
 
   var $cn  = "";
   var $description  = "";
@@ -63,11 +64,10 @@ class faiPartition extends plugin
   //  hide the the 'primary' option from the select box.
   var $disablePrimary = FALSE;
 
-  function __construct($config, $object, $parent,$type)
+  function __construct($config, $object, $parent, $type)
   {
-
-    $this->parent = $parent;
-    $this->FAIdiskType = $type;
+    $this->parent       = $parent;
+    $this->FAIdiskType  = $type;
 
     // Check if we should be able to add primary partitions.
     if(!$object || $object['FAIpartitionType'] == "logical"){
@@ -491,5 +491,4 @@ class faiPartition extends plugin
     return($ret);
   }
 }
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

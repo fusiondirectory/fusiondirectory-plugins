@@ -30,11 +30,11 @@ class PartitionDialog extends GenericDialog
 
   function __construct($simplePlugin, &$attribute, $disk = array(), $diskType = 'disk')
   {
-    $this->attribute  = $attribute;
+    $this->attribute = $attribute;
     if (isset($disk['FAIdiskType'])) {
       $diskType = $disk['FAIdiskType'];
     }
-    $this->dialog     = new $this->dialogClass($simplePlugin->config, $simplePlugin->dn, $attribute, $disk, $diskType);
+    $this->dialog = new $this->dialogClass($simplePlugin->config, $simplePlugin->dn, $attribute, $disk, $diskType);
 
     $base = $simplePlugin->dn;
     if ($base == 'new') {
