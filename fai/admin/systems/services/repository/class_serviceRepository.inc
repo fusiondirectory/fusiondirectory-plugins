@@ -97,7 +97,7 @@ class serviceDebianRepository extends simpleService
     return array(
       'plShortName'   => _('Debian repository'),
       'plDescription' => _('Debian repository').' ('._('Services').')',
-      'plIcon'        => 'plugins/fai/images/iconMiniRepository.png',
+      'plIcon'        => 'geticon.php?context=mimetypes&icon=package-x-generic&size=16',
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );

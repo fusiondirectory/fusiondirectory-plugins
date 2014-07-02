@@ -1,5 +1,5 @@
 <input type="hidden" name="TableEntryFrameSubmitted" value="1">
-<h2><img class="center" alt="" src="plugins/fai/images/fai_partitionTable.png" title="{t}Generic{/t}">&nbsp;{t}Device{/t}</h2>
+<h2><img class="center" alt="" src="geticon.php?context=apps&size=16&icon=fai-partitiontable" title="{t}Generic{/t}">&nbsp;{t}Device{/t}</h2>
 <table style='width:100%'>
   <tr>
     <td style='width:50%;border-right:1px solid #909090;'>
