@@ -64,7 +64,8 @@ class sambaGroup extends simplePlugin
             '%s-%d'
           ),
           new HiddenAttribute(
-            'sambaGroupType', 2
+            'sambaGroupType', TRUE,
+            2
           )
         )
       )
