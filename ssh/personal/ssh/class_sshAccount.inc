@@ -19,7 +19,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class SSHPublicKeyAttribute extends FileAttribute
+class SSHPublicKeyAttribute extends FileTextAreaAttribute
 {
   /* cache for key extracted informations */
   protected $format = '/^([-a-zA-Z0-9]+(=".*")?,?)*\s*(ssh-(dss|rsa))\s+([a-zA-Z0-9+\/.=]+)\s+([[:graph:]]+)\s*$/';
@@ -76,7 +76,8 @@ class sshAccount extends simplePlugin
               '', _('SSH public keys for this user'),
               'sshPublicKey'
             ),
-            FALSE // no order
+            FALSE, // no order
+            array(), TRUE // edit enabled
           )
         )
       )
