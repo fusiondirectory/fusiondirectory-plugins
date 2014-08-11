@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2013  FusionDirectory
+  Copyright (C) 2011-2014  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -22,17 +22,17 @@
 class SSHPublicKeyAttribute extends FileAttribute
 {
   /* cache for key extracted informations */
-  protected $format = '/^\s*(ssh-(dss|rsa))\s+([a-zA-Z0-9+\/.=]+)\s+([[:graph:]]+)\s*$/';
+  protected $format = '/^([-a-zA-Z0-9]+(=".*")?,?)*\s*(ssh-(dss|rsa))\s+([a-zA-Z0-9+\/.=]+)\s+([[:graph:]]+)\s*$/';
 
   function getArrayValue ()
   {
     if (preg_match($this->format, $this->value, $match)) {
-      $fingerprint = $this->fingerprint(base64_decode($match[3]));
+      $fingerprint = $this->fingerprint(base64_decode($match[5]));
 
       return array(
-        ($match[1] == 'ssh-dss'?'DSA':'RSA'),
+        ($match[3] == 'ssh-dss'?'DSA':'RSA'),
         $fingerprint,
-        $match[4]
+        $match[6]
       );
     }
     return parent::getArrayValue();
@@ -47,11 +47,6 @@ class SSHPublicKeyAttribute extends FileAttribute
       msg_dialog::display(_("Upload error"), _("Unknown public key format!"), ERROR_DIALOG);
     }
     @fclose($handle);
-  }
-
-  function applyPostValue()
-  {
-    parent::applyPostValue();
   }
 
   function fingerprint($data)
