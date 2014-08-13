@@ -412,7 +412,7 @@ class serviceDNS extends goService
       while ($attrs = $ldap->fetch()) {
         $src_zone = $attrs['dn'];
         $dst_zone = preg_replace("/".preg_quote($src, '/')."$/", $this->dn, $src_zone);
-        $res      = plugin::recursive_move($src_zone, $dst_zone);
+        $res      = plugin::move($src_zone, $dst_zone);
 
         if ($res) {
           $del [] = $src_zone;
@@ -482,7 +482,7 @@ class serviceDNS extends goService
 
     /* move follwoing entries */
     foreach ($tmp['move'] as $src => $dst) {
-      $this->recursive_move($src, $dst);
+      $this->move($src, $dst);
     }
 
     /* Add || Update new DNS entries */
