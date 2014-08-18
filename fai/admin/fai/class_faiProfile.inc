@@ -410,8 +410,14 @@ class faiProfile extends faiPluginClass
       $message[]=_("No class specified for this profile!");
     }
 
-    if($this->cn == ""){
-      $message[]= msgPool::required(_("Name"));
+    if ($this->cn == "") {
+      $message[] = msgPool::required(_("Name"));
+    } elseif (empty($message)) {
+      /* Profile can't use a name used by a class */
+      $res = FAI::get_all_objects_for_given_base($this->parent->parent->fai_release, "(&(!(objectClass=faiProfile))(cn=".$this->cn."))");
+      if (!empty($res)) {
+        $message[] = _("You can't use the same name for a class and a profile!");
+      }
     }
 
     return $message;
@@ -431,14 +437,7 @@ class faiProfile extends faiPluginClass
     }
 
     $this->attrs['FAIclass']=trim($this->FAIclass);
-
-    /* Remove the old FAI profile, if the dn has changed.
-     */
-    if($this->cn != $this->old_cn && $this->old_cn != ""){
-
-      $old_dn = preg_replace("/^cn=[^,]+,/","cn=".$this->old_cn.",",$this->dn);
-      FAI::prepare_to_save_FAI_object($old_dn,array(),TRUE);
-    }
+    
     FAI::prepare_to_save_FAI_object($this->dn,$this->attrs);
 
     if($this->initially_was_account){
