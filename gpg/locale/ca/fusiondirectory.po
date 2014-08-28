@@ -1,21 +1,58 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# Copyright (C) YEAR FusionDirectory Project
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-21 18:26+0200\n"
-"PO-Revision-Date: 2013-09-11 09:23+0000\n"
+"Project-Id-Version: FusionDirectory-108\n"
+"Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
+"POT-Creation-Date: 2014-08-18 16:07+0200\n"
+"PO-Revision-Date: 2014-08-28 10:52+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Catalan (http://www.transifex.com/projects/p/FusionDirectory/language/ca/)\n"
+"Language-Team: Catalan (http://www.transifex.com/projects/p/FusionDirectory-108/language/ca/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ca\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: addons/gpg/class_pgpServerInfo.inc:34 addons/gpg/class_pgpServerInfo.inc:69
+#: addons/gpg/class_pgpServerInfo.inc:70
+msgid "GPG server info"
+msgstr ""
+
+#: addons/gpg/class_pgpServerInfo.inc:38
+msgid "Software"
+msgstr ""
+
+#: addons/gpg/class_pgpServerInfo.inc:38
+msgid "Which software this GPG key server is running"
+msgstr ""
+
+#: addons/gpg/class_pgpServerInfo.inc:43
+msgid "GPG version"
+msgstr ""
+
+#: addons/gpg/class_pgpServerInfo.inc:43
+msgid "Which version of GPG this key server is running"
+msgstr ""
+
+#: addons/gpg/class_pgpServerInfo.inc:48
+msgid "Branch in which keys are stored"
+msgstr ""
+
+#: addons/gpg/class_pgpServerInfo.inc:52
+msgid "Keys RDN"
+msgstr ""
+
+#: addons/gpg/class_pgpServerInfo.inc:52
+msgid "Branch under base in which keys are stored"
+msgstr ""
+
+#: addons/gpg/class_pgpServerInfo.inc:91
+msgid "LDAP error"
+msgstr "Error d'LDAP"
 
 #: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:10
 msgid "Please select the desired entries"
@@ -100,64 +137,3 @@ msgstr ""
 #: personal/gpg/class_gpgAccount.inc:47
 msgid "Edit user's GPG IDs"
 msgstr ""
-
-#: addons/gpg/class_pgpServerInfo.inc:34 addons/gpg/class_pgpServerInfo.inc:69
-#: addons/gpg/class_pgpServerInfo.inc:70
-msgid "GPG server info"
-msgstr ""
-
-#: addons/gpg/class_pgpServerInfo.inc:38
-msgid "Software"
-msgstr ""
-
-#: addons/gpg/class_pgpServerInfo.inc:38
-msgid "Which software this GPG key server is running"
-msgstr ""
-
-#: addons/gpg/class_pgpServerInfo.inc:43
-msgid "GPG version"
-msgstr ""
-
-#: addons/gpg/class_pgpServerInfo.inc:43
-msgid "Which version of GPG this key server is running"
-msgstr ""
-
-#: addons/gpg/class_pgpServerInfo.inc:48
-msgid "Branch in which keys are stored"
-msgstr ""
-
-#: addons/gpg/class_pgpServerInfo.inc:52
-msgid "Keys RDN"
-msgstr ""
-
-#: addons/gpg/class_pgpServerInfo.inc:52
-msgid "Branch under base in which keys are stored"
-msgstr ""
-
-#: addons/gpg/class_pgpServerInfo.inc:91
-msgid "LDAP error"
-msgstr "Error d'LDAP"
-
-#: personal/gpg/pgpKeySelect/pgpKeySelect-filter.tpl.c:2
-msgid "Filter"
-msgstr ""
-
-#: personal/gpg/pgpKeySelect/pgpKeySelect-filter.tpl.c:5
-msgid "Show servers"
-msgstr ""
-
-#: personal/gpg/pgpKeySelect/pgpKeySelect-filter.tpl.c:8
-msgid "Show workstations"
-msgstr ""
-
-#: personal/gpg/pgpKeySelect/pgpKeySelect-filter.tpl.c:11
-msgid "Show Windows PC"
-msgstr ""
-
-#: personal/gpg/pgpKeySelect/pgpKeySelect-filter.tpl.c:14
-msgid "Show terminals"
-msgstr ""
-
-#: personal/gpg/pgpKeySelect/pgpKeySelect-filter.tpl.c:17
-msgid "Name"
-msgstr "Nom"

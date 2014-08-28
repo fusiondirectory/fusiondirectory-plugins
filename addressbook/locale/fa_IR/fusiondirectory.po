@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# Copyright (C) YEAR FusionDirectory Project
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
@@ -7,25 +7,17 @@
 # Hamid Ala <h.r.ala1364@gmail.com>, 2012
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-21 18:26+0200\n"
-"PO-Revision-Date: 2013-11-20 12:44+0000\n"
+"Project-Id-Version: FusionDirectory-108\n"
+"Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
+"POT-Creation-Date: 2014-08-18 16:07+0200\n"
+"PO-Revision-Date: 2014-08-28 10:52+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Persian (Iran) (http://www.transifex.com/projects/p/FusionDirectory/language/fa_IR/)\n"
+"Language-Team: Persian (Iran) (http://www.transifex.com/projects/p/FusionDirectory-108/language/fa_IR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fa_IR\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-
-#: html/getvcard.php:39
-msgid "Internal error"
-msgstr "خطای داخلی"
-
-#: html/getvcard.php:39
-msgid "Missing parameters!"
-msgstr "پارامترهای مجهول"
 
 #: addons/addressbook/class_addressbook.inc:195
 #, php-format
@@ -243,6 +235,14 @@ msgstr "آدرس پستی منزل"
 msgid "Common name"
 msgstr ""
 
+#: html/getvcard.php:39
+msgid "Internal error"
+msgstr "خطای داخلی"
+
+#: html/getvcard.php:39
+msgid "Missing parameters!"
+msgstr "پارامترهای مجهول"
+
 #: addons/addressbook/address_info.tpl.c:2
 #: addons/addressbook/address_edit.tpl.c:5
 msgid "Personal"
@@ -296,6 +296,10 @@ msgstr "کشور"
 msgid "FAX"
 msgstr "فکس"
 
+#: addons/addressbook/dial.tpl.c:2
+msgid "Dial connection..."
+msgstr "برقراری اتصال"
+
 #: addons/addressbook/contents.tpl.c:17
 msgid "Contact"
 msgstr ""
@@ -306,7 +310,7 @@ msgstr ""
 
 #: addons/addressbook/contents.tpl.c:23
 msgid ""
-"The telephone list plugin provides list and search facilities for the people in your site. You may want to specify the asterisk [*] like in \n"
+"The telephone list plugin provides list and search facilities for the people in your site. You may want to specify the asterisk [*] like in\n"
 "'Fu*ry' to find 'FusionDirectory'. Use the filters below to narrow down your search."
 msgstr ""
 
@@ -370,22 +374,6 @@ msgstr ""
 msgid "Search string"
 msgstr ""
 
-#: addons/addressbook/address_edit.tpl.c:2
-msgid "Choose the department to store entry in"
-msgstr "دپارتمان را برای ذخیره سازی ورودی در آن انتخاب کنید"
-
-#: addons/addressbook/address_edit.tpl.c:8
-msgid "Last name"
-msgstr "فامیل"
-
-#: addons/addressbook/address_edit.tpl.c:11
-msgid "First name"
-msgstr "نام"
-
-#: addons/addressbook/dial.tpl.c:2
-msgid "Dial connection..."
-msgstr "برقراری اتصال"
-
 #: addons/addressbook/remove.tpl.c:2
 msgid "Warning"
 msgstr ""
@@ -400,3 +388,15 @@ msgstr ""
 #: addons/addressbook/remove.tpl.c:8
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
 msgstr ""
+
+#: addons/addressbook/address_edit.tpl.c:2
+msgid "Choose the department to store entry in"
+msgstr "دپارتمان را برای ذخیره سازی ورودی در آن انتخاب کنید"
+
+#: addons/addressbook/address_edit.tpl.c:8
+msgid "Last name"
+msgstr "فامیل"
+
+#: addons/addressbook/address_edit.tpl.c:11
+msgid "First name"
+msgstr "نام"

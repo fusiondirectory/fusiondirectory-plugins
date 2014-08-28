@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# Copyright (C) YEAR FusionDirectory Project
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
@@ -8,25 +8,17 @@
 # Kenny Tordeurs <tordeurskenny@gmail.com>, 2012
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-21 18:26+0200\n"
-"PO-Revision-Date: 2013-11-20 12:44+0000\n"
+"Project-Id-Version: FusionDirectory-108\n"
+"Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
+"POT-Creation-Date: 2014-08-18 16:07+0200\n"
+"PO-Revision-Date: 2014-08-28 10:52+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Dutch (http://www.transifex.com/projects/p/FusionDirectory/language/nl/)\n"
+"Language-Team: Dutch (http://www.transifex.com/projects/p/FusionDirectory-108/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-#: html/getvcard.php:39
-msgid "Internal error"
-msgstr "Interne fout"
-
-#: html/getvcard.php:39
-msgid "Missing parameters!"
-msgstr "Ontbrekende parameters!"
 
 #: addons/addressbook/class_addressbook.inc:195
 #, php-format
@@ -244,6 +236,14 @@ msgstr "Postadres thuis"
 msgid "Common name"
 msgstr "Algemene naam"
 
+#: html/getvcard.php:39
+msgid "Internal error"
+msgstr "Interne fout"
+
+#: html/getvcard.php:39
+msgid "Missing parameters!"
+msgstr "Ontbrekende parameters!"
+
 #: addons/addressbook/address_info.tpl.c:2
 #: addons/addressbook/address_edit.tpl.c:5
 msgid "Personal"
@@ -297,6 +297,10 @@ msgstr "Land"
 msgid "FAX"
 msgstr "Fax"
 
+#: addons/addressbook/dial.tpl.c:2
+msgid "Dial connection..."
+msgstr "Bel..."
+
 #: addons/addressbook/contents.tpl.c:17
 msgid "Contact"
 msgstr "Contact"
@@ -307,9 +311,9 @@ msgstr "Informatie"
 
 #: addons/addressbook/contents.tpl.c:23
 msgid ""
-"The telephone list plugin provides list and search facilities for the people in your site. You may want to specify the asterisk [*] like in \n"
+"The telephone list plugin provides list and search facilities for the people in your site. You may want to specify the asterisk [*] like in\n"
 "'Fu*ry' to find 'FusionDirectory'. Use the filters below to narrow down your search."
-msgstr "De telefoonlijst plugin bezorgt je een lijst en zoek functie voor de mensen in jouw site. Je zou misschien de asterisk [*] zoals in ⏎ 'Fu*ry om 'FusionDirectory' te vinden. Gebruik te filters hieronder om je zoekfunctie te verbeteren"
+msgstr ""
 
 #: addons/addressbook/contents.tpl.c:26
 msgid "Actions"
@@ -371,22 +375,6 @@ msgstr "Zoek naar"
 msgid "Search string"
 msgstr "Zoekstring"
 
-#: addons/addressbook/address_edit.tpl.c:2
-msgid "Choose the department to store entry in"
-msgstr "Selecteer de afdeling waarin de invoer bewaard wordt."
-
-#: addons/addressbook/address_edit.tpl.c:8
-msgid "Last name"
-msgstr "Achternaam"
-
-#: addons/addressbook/address_edit.tpl.c:11
-msgid "First name"
-msgstr "Voornaam"
-
-#: addons/addressbook/dial.tpl.c:2
-msgid "Dial connection..."
-msgstr "Bel..."
-
 #: addons/addressbook/remove.tpl.c:2
 msgid "Warning"
 msgstr "Waarschuwing"
@@ -401,3 +389,15 @@ msgstr "Dit bevat all adresboek data voor deze opgave. Verifieer aub  dubbel of 
 #: addons/addressbook/remove.tpl.c:8
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
 msgstr "Indien u zeker bent drukt u dan 'Verwijderen' om door te gaan of 'Annuleren' om te annuleren."
+
+#: addons/addressbook/address_edit.tpl.c:2
+msgid "Choose the department to store entry in"
+msgstr "Selecteer de afdeling waarin de invoer bewaard wordt."
+
+#: addons/addressbook/address_edit.tpl.c:8
+msgid "Last name"
+msgstr "Achternaam"
+
+#: addons/addressbook/address_edit.tpl.c:11
+msgid "First name"
+msgstr "Voornaam"

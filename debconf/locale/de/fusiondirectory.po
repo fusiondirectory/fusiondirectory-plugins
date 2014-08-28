@@ -1,86 +1,42 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# Copyright (C) YEAR FusionDirectory Project
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
 # Maik Wagner <maikwagner@yahoo.com>, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-21 18:26+0200\n"
-"PO-Revision-Date: 2014-02-13 11:10+0000\n"
-"Last-Translator: Maik Wagner <maikwagner@yahoo.com>\n"
-"Language-Team: German (http://www.transifex.com/projects/p/FusionDirectory/language/de/)\n"
+"Project-Id-Version: FusionDirectory-108\n"
+"Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
+"POT-Creation-Date: 2014-08-18 16:07+0200\n"
+"PO-Revision-Date: 2014-08-28 10:52+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: German (http://www.transifex.com/projects/p/FusionDirectory-108/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: admin/debconfProfile/debconfProfile-list.xml:11
-msgid "List of debconf profiles"
-msgstr "Liste von debconf Profilen"
-
-#: admin/debconfProfile/debconfProfile-list.xml:15
-msgid "Debconf Profile"
-msgstr "Debconf Profil"
-
-#: admin/debconfProfile/debconfProfile-list.xml:32
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:189
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:192
-#: admin/debconfProfile/debconfProfile-filter.tpl.c:5
-msgid "Name"
-msgstr "Name"
-
-#: admin/debconfProfile/debconfProfile-list.xml:40
-msgid "Description"
-msgstr "Beschreibung"
-
-#: admin/debconfProfile/debconfProfile-list.xml:48
-msgid "Actions"
-msgstr "Aktionen"
-
-#: admin/debconfProfile/debconfProfile-list.xml:59
-msgid "Create"
-msgstr "Anlegen"
-
-#: admin/debconfProfile/debconfProfile-list.xml:65
-#: admin/systems/debconf/class_debconfStartup.inc:68
-msgid "Profile"
-msgstr "Profil"
-
-#: admin/debconfProfile/debconfProfile-list.xml:77
-msgid "Remove"
-msgstr "Entfernen"
-
-#: admin/debconfProfile/debconfProfile-list.xml:109
-msgid "Edit debconfProfile"
-msgstr "Bearbeiten von debconfProfile"
-
-#: admin/debconfProfile/debconfProfile-list.xml:122
-msgid "Remove debconfProfile"
-msgstr "Entfernen des debconProfile"
-
-#: admin/debconfProfile/class_debconfProfileManagement.inc:35
+#: admin/debconfProfile/class_debconfProfileManagement.inc:32
 #: admin/systems/debconf/class_debconfStartup.inc:111
 msgid "Debconf"
 msgstr "Debconf"
 
-#: admin/debconfProfile/class_debconfProfileManagement.inc:36
+#: admin/debconfProfile/class_debconfProfileManagement.inc:33
 msgid "Debconf profile management"
 msgstr "Debconf Profilverwaltung"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:72
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:85
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:71
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:84
 msgid "Error"
 msgstr "Fehler"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:72
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:71
 msgid "There is no template for this profile"
 msgstr "Es gibt keine Vorlage für dieses Profil"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:86
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:85
 #, php-format
 msgid "Can't find entry %s in LDAP for profile %s"
 msgstr "Kann Eintrag %s in LDAP für Profil %s nicht finden"
@@ -102,39 +58,48 @@ msgid ""
 "the desired name for the template.<br/>"
 msgstr "Um eine debconf-Datei zu importieren, führen Sie den folgenden Befehl aus : <br/><i>debconf2ldif.pl -b ou=<b>name</b>,%s -k <b>filename</b> > template.ldif </i><br/>Mit <b>filename</b> dem Dateinamen, und <b>name</b> dem gewünschten Namen für die Vorlage.<br/>"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:168
-msgid "Import"
-msgstr "Importieren"
-
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:191
-msgid "Import a debconf file"
-msgstr "Importieren einer debconf Datei"
-
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:192
-msgid "Name of this debconf template"
-msgstr "Name dieser debconf Vorlage"
-
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:196
-msgid "Entries"
-msgstr "Einträge"
-
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:198
-msgid "Debconf template answers"
-msgstr "Debconf Vorlage Antworten"
-
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:208
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:211
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:213
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:162
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:166
 msgid "Debconf profile"
 msgstr "Debconf Profil"
 
-#: admin/debconfProfile/class_debconfProfileGeneric.inc:209
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:163
 msgid "Debconf profile generic"
 msgstr "Debconf profile generic"
+
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:181
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:184
+#: admin/debconfProfile/debconfProfile-filter.tpl.c:5
+msgid "Name"
+msgstr "Name"
+
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:183
+msgid "Import a debconf file"
+msgstr "Importieren einer debconf Datei"
+
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:184
+msgid "Name of this debconf template"
+msgstr "Name dieser debconf Vorlage"
+
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:188
+msgid "Entries"
+msgstr "Einträge"
+
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:190
+msgid "Debconf template answers"
+msgstr "Debconf Vorlage Antworten"
+
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:205
+msgid "Import"
+msgstr "Importieren"
 
 #: admin/systems/debconf/class_debconfStartup.inc:65
 msgid "Debconf settings"
 msgstr "Debconf Einstellungen"
+
+#: admin/systems/debconf/class_debconfStartup.inc:68
+msgid "Profile"
+msgstr "Profil"
 
 #: admin/systems/debconf/class_debconfStartup.inc:68
 msgid "Debconf preseed profile to be used for installation"
@@ -171,17 +136,3 @@ msgstr "Debconf preseed startup"
 #: admin/debconfProfile/debconfProfile-filter.tpl.c:2
 msgid "Filter"
 msgstr "Filter"
-
-#: admin/debconfProfile/remove.tpl.c:2
-msgid "Warning"
-msgstr "Warnung"
-
-#: admin/debconfProfile/remove.tpl.c:5
-msgid ""
-"Please double check if you really want to do this since there is no way for "
-"FusionDirectory to get your data back."
-msgstr "Bitte überprüfen Sie, ob Sie dies wirklich tun wollen, da es keinen Weg gibt, für FusionDirectory die Daten wieder herzustellen."
-
-#: admin/debconfProfile/remove.tpl.c:8
-msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr "Wenn Sie sicher sind, drücken Sie 'Entfernen' um fortzufahren oder 'Abbrechen' zum Abbruch."

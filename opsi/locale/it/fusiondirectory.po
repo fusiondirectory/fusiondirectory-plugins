@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# Copyright (C) YEAR FusionDirectory Project
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
@@ -7,189 +7,76 @@
 # poterealpopolo <giuliano@opensides.be>, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-21 18:26+0200\n"
-"PO-Revision-Date: 2013-09-11 09:21+0000\n"
+"Project-Id-Version: FusionDirectory-108\n"
+"Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
+"POT-Creation-Date: 2014-08-18 16:07+0200\n"
+"PO-Revision-Date: 2014-08-28 10:50+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Italian (http://www.transifex.com/projects/p/FusionDirectory/language/it/)\n"
+"Language-Team: Italian (http://www.transifex.com/projects/p/FusionDirectory-108/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: config/opsi/class_opsiConfig.inc:28
-msgid "OPSI configuration"
-msgstr "Configurazione di OPSI"
-
-#: config/opsi/class_opsiConfig.inc:29
-msgid "FusionDirectory OPSI plugin configuration"
-msgstr "Configurazione del plugin OPSI per FusionDirectory"
-
-#: config/opsi/class_opsiConfig.inc:42
-msgid "LDAP tree"
-msgstr "Struttura LDAP"
-
-#: config/opsi/class_opsiConfig.inc:45
-msgid "OPSI RDN"
-msgstr "OPSI RDN"
-
-#: config/opsi/class_opsiConfig.inc:45
-msgid "Branch in which OPSI profiles will be stored"
-msgstr "Ramo nel quale saranno immagazzinati i profili di OPSI"
-
-#: addons/opsi/class_opsiImport.inc:90 addons/opsi/class_opsiImport.inc:94
-#: addons/opsi/class_opsiImport.inc:95
-msgid "OPSI import"
-msgstr "Importazione da OPSI"
-
-#: addons/opsi/class_opsiImport.inc:91
-msgid "Import windows stations from OPSI into FD"
-msgstr ""
-
-#: addons/opsi/class_opsiImport.inc:108
-msgid "Import"
-msgstr "Importa"
-
-#: addons/opsi/class_opsiImport.inc:112
-#: admin/systems/opsi/class_opsiClient.inc:50
-msgid "OPSI Server"
-msgstr "Server OPSI"
-
-#: addons/opsi/class_opsiImport.inc:112
-msgid "The OPSI server you wish to import host from"
-msgstr "Il server OPSI dal quale vuoi importare i clienti"
-
-#: addons/opsi/class_opsiImport.inc:188
-#, php-format
-msgid "Could not parse %s"
-msgstr "Impossibile analizzare %s"
-
-#: addons/opsi/class_opsiImport.inc:225
-#, php-format
-msgid "No DHCP server found for ip %s"
-msgstr "Nessun server DHCP trovato per all'indirizzo IP %s"
-
-#: addons/opsi/class_opsiImport.inc:239
-#, php-format
-msgid "No DNS server found for zone %s"
-msgstr "Nessun server DNS trovato per la zona %s"
-
-#: addons/opsi/class_opsiImport.inc:264
-msgid "Argonaut server is not available"
-msgstr "Il server Argonaut non è disponibile"
-
-#: addons/opsi/class_opsiImport.inc:282
-#: admin/systems/opsi/class_opsiClient.inc:148
-msgid "Could not update OPSI informations"
-msgstr "Impossibile aggiornare le informazioni di OPSI"
-
-#: admin/opsi/class_opsiProfile.inc:52 admin/opsi/class_opsiProfile.inc:53
-#: admin/opsi/class_opsiProfile.inc:56 admin/opsi/class_opsiProfile.inc:59
-msgid "OPSI profile"
-msgstr "Profilo OPSI"
-
-#: admin/opsi/class_opsiProfile.inc:73 admin/opsi/class_opsiProfile.inc:80
-#: admin/opsi/class_opsiOnDemandList.inc:60
-#: admin/opsi/class_opsiSoftwareList.inc:60
-#: admin/opsi/class_opsiProductProperties.inc:131
-msgid "Name"
-msgstr "Nome"
-
-#: admin/opsi/class_opsiProfile.inc:76
-#: admin/opsi/class_opsiOnDemandList.inc:56
-#: admin/opsi/class_opsiSoftwareList.inc:56
-msgid "OPSI server"
-msgstr "Server OPSI"
-
-#: admin/opsi/class_opsiProfile.inc:76
-#: admin/opsi/class_opsiOnDemandList.inc:56
-#: admin/opsi/class_opsiSoftwareList.inc:56
-msgid "OPSI server to use for deployment"
-msgstr "Server OPSI da usare per la distribuzione"
-
-#: admin/opsi/class_opsiProfile.inc:80
-#: admin/opsi/class_opsiOnDemandList.inc:60
-#: admin/opsi/class_opsiSoftwareList.inc:60
-msgid "Name of this OPSI profile"
-msgstr "Nome di questo profilo OPSI"
-
-#: admin/opsi/class_opsiProfile.inc:86
-msgid "Entries"
-msgstr "Voci"
-
-#: admin/opsi/class_opsiProfile.inc:89
-msgid "Netboot product"
-msgstr "Prodotto netboot"
-
-#: admin/opsi/class_opsiProfile.inc:89
-msgid "The netboot product to use for this profile"
-msgstr "Il prodotto Netboot da usare per questo profilo"
-
-#: admin/opsi/class_opsiProfile.inc:94
-msgid "Software lists"
-msgstr "Elenco dei software"
-
-#: admin/opsi/class_opsiProfile.inc:94
-msgid "Software lists that will be installed with this profile"
-msgstr "Elenco dei software da installare con questo profilo"
-
-#: admin/opsi/class_opsiProfile.inc:137 admin/opsi/class_opsiProfile.inc:163
-#: admin/opsi/class_opsiOnDemandList.inc:112
-#: admin/opsi/class_opsiSoftwareList.inc:124
-#, php-format
-msgid "Could not find %s in the LDAP"
-msgstr "Impossibile trovare %s nell'annuario LDAP"
-
-#: admin/opsi/class_opsiProfile.inc:152
-#: admin/opsi/class_opsiOnDemandList.inc:101
-#: admin/opsi/class_opsiSoftwareList.inc:113
-#: admin/opsi/class_opsiProductProperties.inc:190
-msgid "Could not contact argonaut server"
-msgstr "Non posso contattare il server Argonaut"
-
-#: admin/opsi/class_opsiProfile.inc:171
-#: admin/opsi/class_opsiOnDemandList.inc:120
-#: admin/opsi/class_opsiSoftwareList.inc:132
-#: admin/opsi/class_opsiProductProperties.inc:206
-msgid "Could contact OPSI server"
-msgstr "Potrebbe contattare il server OPSI"
-
-#: admin/opsi/class_opsiOnDemandList.inc:32
-#: admin/opsi/class_opsiOnDemandList.inc:36
-#: admin/opsi/class_opsiOnDemandList.inc:39
+#: admin/opsi/class_opsiOnDemandList.inc:28
+#: admin/opsi/class_opsiOnDemandList.inc:33
 msgid "OPSI ondemand list"
 msgstr ""
 
-#: admin/opsi/class_opsiOnDemandList.inc:33
+#: admin/opsi/class_opsiOnDemandList.inc:29
 msgid "OPSI on demand software list"
 msgstr ""
 
-#: admin/opsi/class_opsiOnDemandList.inc:53
-#: admin/opsi/class_opsiSoftwareList.inc:53
+#: admin/opsi/class_opsiOnDemandList.inc:47
+#: admin/opsi/class_opsiSoftwareList.inc:51
 msgid "Infos"
 msgstr "Informazioni"
 
-#: admin/opsi/class_opsiOnDemandList.inc:64
+#: admin/opsi/class_opsiOnDemandList.inc:50
+#: admin/opsi/class_opsiSoftwareList.inc:54
+#: admin/opsi/class_opsiProfile.inc:88
+msgid "OPSI server"
+msgstr "Server OPSI"
+
+#: admin/opsi/class_opsiOnDemandList.inc:50
+#: admin/opsi/class_opsiSoftwareList.inc:54
+#: admin/opsi/class_opsiProfile.inc:88
+msgid "OPSI server to use for deployment"
+msgstr "Server OPSI da usare per la distribuzione"
+
+#: admin/opsi/class_opsiOnDemandList.inc:54
+#: admin/opsi/class_opsiSoftwareList.inc:58
+#: admin/opsi/class_opsiProductProperties.inc:117
+#: admin/opsi/class_opsiProfile.inc:85 admin/opsi/class_opsiProfile.inc:92
+msgid "Name"
+msgstr "Nome"
+
+#: admin/opsi/class_opsiOnDemandList.inc:54
+#: admin/opsi/class_opsiSoftwareList.inc:58
+#: admin/opsi/class_opsiProfile.inc:92
+msgid "Name of this OPSI profile"
+msgstr "Nome di questo profilo OPSI"
+
+#: admin/opsi/class_opsiOnDemandList.inc:58
 msgid "Show details"
 msgstr ""
 
-#: admin/opsi/class_opsiOnDemandList.inc:64
+#: admin/opsi/class_opsiOnDemandList.inc:58
 msgid "Show further information to the user"
 msgstr ""
 
-#: admin/opsi/class_opsiOnDemandList.inc:70
-#: admin/opsi/class_opsiSoftwareList.inc:66
+#: admin/opsi/class_opsiOnDemandList.inc:64
+#: admin/opsi/class_opsiSoftwareList.inc:64
 msgid "Softwares"
 msgstr "Softwares"
 
-#: admin/opsi/class_opsiOnDemandList.inc:74
-#: admin/opsi/class_opsiSoftwareList.inc:83
+#: admin/opsi/class_opsiOnDemandList.inc:68
+#: admin/opsi/class_opsiSoftwareList.inc:81
 msgid "Localboot products"
 msgstr "Prodotti localboot"
 
-#: admin/opsi/class_opsiOnDemandList.inc:74
+#: admin/opsi/class_opsiOnDemandList.inc:68
 msgid "The localboot products to put in this list"
 msgstr ""
 
@@ -198,31 +85,131 @@ msgid "OPSI list"
 msgstr "Elenco OPSI"
 
 #: admin/opsi/class_opsiSoftwareList.inc:33
-#: admin/opsi/class_opsiSoftwareList.inc:36
-#: admin/opsi/class_opsiSoftwareList.inc:39
+#: admin/opsi/class_opsiSoftwareList.inc:37
 msgid "OPSI software list"
 msgstr "Elenco software OPSI"
 
-#: admin/opsi/class_opsiSoftwareList.inc:70
+#: admin/opsi/class_opsiSoftwareList.inc:68
 msgid "The localboot products to install with this list"
 msgstr "I prodotti localboot da installare con questo elenco"
 
-#: admin/opsi/class_opsiProfileManagement.inc:41
+#: admin/opsi/class_opsiSoftwareList.inc:114
+#: admin/opsi/class_opsiProductProperties.inc:176
+#: admin/opsi/class_opsiProfile.inc:164
+msgid "Could not contact argonaut server"
+msgstr "Non posso contattare il server Argonaut"
+
+#: admin/opsi/class_opsiSoftwareList.inc:126
+#: admin/opsi/class_opsiProfile.inc:176 addons/opsi/class_opsiImport.inc:74
+msgid "No mac address"
+msgstr ""
+
+#: admin/opsi/class_opsiSoftwareList.inc:127
+#: admin/opsi/class_opsiProfile.inc:177
+#, php-format
+msgid "Server %s has no mac address configured in the LDAP"
+msgstr ""
+
+#: admin/opsi/class_opsiSoftwareList.inc:133
+#: admin/opsi/class_opsiProfile.inc:149 admin/opsi/class_opsiProfile.inc:183
+#, php-format
+msgid "Could not find %s in the LDAP"
+msgstr "Impossibile trovare %s nell'annuario LDAP"
+
+#: admin/opsi/class_opsiSoftwareList.inc:141
+#: admin/opsi/class_opsiProductProperties.inc:192
+#: admin/opsi/class_opsiProfile.inc:191
+msgid "Could contact OPSI server"
+msgstr "Potrebbe contattare il server OPSI"
+
+#: admin/opsi/class_opsiProfileManagement.inc:33
 msgid "OPSI"
 msgstr "OPSI"
 
-#: admin/opsi/class_opsiProfileManagement.inc:42
+#: admin/opsi/class_opsiProfileManagement.inc:34
 msgid "OPSI profile management"
 msgstr "Gestione profilo OPSI"
 
-#: admin/opsi/class_opsiProductProperties.inc:117
-#: admin/opsi/class_opsiProductProperties.inc:118
+#: admin/opsi/class_opsiProductProperties.inc:104
+#: admin/opsi/class_opsiProductProperties.inc:105
 msgid "Product properties"
 msgstr "Proprietà del prodotto"
 
-#: admin/opsi/class_opsiProductProperties.inc:136
+#: admin/opsi/class_opsiProductProperties.inc:122
 msgid "Properties of the products of this profile"
 msgstr "Proprietà dei prodotti di questo profilo"
+
+#: admin/opsi/class_opsiProfile.inc:66 admin/opsi/class_opsiProfile.inc:67
+#: admin/opsi/class_opsiProfile.inc:71
+msgid "OPSI profile"
+msgstr "Profilo OPSI"
+
+#: admin/opsi/class_opsiProfile.inc:98
+msgid "Entries"
+msgstr "Voci"
+
+#: admin/opsi/class_opsiProfile.inc:101
+msgid "Netboot product"
+msgstr "Prodotto netboot"
+
+#: admin/opsi/class_opsiProfile.inc:101
+msgid "The netboot product to use for this profile"
+msgstr "Il prodotto Netboot da usare per questo profilo"
+
+#: admin/opsi/class_opsiProfile.inc:106
+msgid "Software lists"
+msgstr "Elenco dei software"
+
+#: admin/opsi/class_opsiProfile.inc:106
+msgid "Software lists that will be installed with this profile"
+msgstr "Elenco dei software da installare con questo profilo"
+
+#: admin/opsi/class_opsiProfile.inc:211
+#, php-format
+msgid "%s (%s)"
+msgstr "%s (%s)"
+
+#: admin/systems/opsi/class_opsiClient.inc:33
+msgid "OPSI client"
+msgstr "Cliente OPSI"
+
+#: admin/systems/opsi/class_opsiClient.inc:34
+msgid "Edit OPSI client settings"
+msgstr "Modifica le impostazioni del cliente OPSI"
+
+#: admin/systems/opsi/class_opsiClient.inc:46
+msgid "OPSI Client"
+msgstr "Cliente OPSI"
+
+#: admin/systems/opsi/class_opsiClient.inc:49
+msgid "OPSI Server"
+msgstr "Server OPSI"
+
+#: admin/systems/opsi/class_opsiClient.inc:49
+msgid "The OPSI Server this client is connected to"
+msgstr "Il server OPSI al quale questo cliente è connesso"
+
+#: admin/systems/opsi/class_opsiClient.inc:53
+msgid "OPSI Profile"
+msgstr "Profilo OPSI"
+
+#: admin/systems/opsi/class_opsiClient.inc:53
+msgid "The OPSI Profile to apply to this client"
+msgstr "Il profilo OPSI da applicare a questo cliente"
+
+#: admin/systems/opsi/class_opsiClient.inc:95
+msgid "Could not get macAddress for OPSI server !"
+msgstr ""
+
+#: admin/systems/opsi/class_opsiClient.inc:104
+#: admin/systems/opsi/class_opsiClient.inc:191
+msgid "Could not remove OPSI informations"
+msgstr ""
+
+#: admin/systems/opsi/class_opsiClient.inc:148
+#: addons/opsi/class_opsiImport.inc:89
+msgid "Could not update OPSI informations"
+msgstr "Impossibile aggiornare le informazioni di OPSI"
 
 #: admin/systems/services/opsi/class_serviceOPSI.inc:29
 #: admin/systems/services/opsi/class_serviceOPSI.inc:30
@@ -261,38 +248,37 @@ msgstr "Password"
 msgid "The password to use for connection"
 msgstr "La password da usare per la connessione"
 
-#: admin/systems/opsi/class_opsiClient.inc:33
-msgid "OPSI client"
-msgstr "Cliente OPSI"
+#: addons/opsi/class_opsiImport.inc:35 addons/opsi/class_opsiImport.inc:39
+msgid "OPSI import"
+msgstr "Importazione da OPSI"
 
-#: admin/systems/opsi/class_opsiClient.inc:34
-msgid "Edit OPSI client settings"
-msgstr "Modifica le impostazioni del cliente OPSI"
-
-#: admin/systems/opsi/class_opsiClient.inc:47
-msgid "OPSI Client"
-msgstr "Cliente OPSI"
-
-#: admin/systems/opsi/class_opsiClient.inc:50
-msgid "The OPSI Server this client is connected to"
-msgstr "Il server OPSI al quale questo cliente è connesso"
-
-#: admin/systems/opsi/class_opsiClient.inc:54
-msgid "OPSI Profile"
-msgstr "Profilo OPSI"
-
-#: admin/systems/opsi/class_opsiClient.inc:54
-msgid "The OPSI Profile to apply to this client"
-msgstr "Il profilo OPSI da applicare a questo cliente"
-
-#: admin/systems/opsi/class_opsiClient.inc:96
-msgid "Could not get macAddress for OPSI server !"
+#: addons/opsi/class_opsiImport.inc:36
+msgid "Import windows stations from OPSI into FD"
 msgstr ""
 
-#: admin/systems/opsi/class_opsiClient.inc:105
-#: admin/systems/opsi/class_opsiClient.inc:191
-msgid "Could not remove OPSI informations"
-msgstr ""
+#: addons/opsi/class_opsiImport.inc:63
+msgid "Argonaut server is not available"
+msgstr "Il server Argonaut non è disponibile"
+
+#: config/opsi/class_opsiConfig.inc:28
+msgid "OPSI configuration"
+msgstr "Configurazione di OPSI"
+
+#: config/opsi/class_opsiConfig.inc:29
+msgid "FusionDirectory OPSI plugin configuration"
+msgstr "Configurazione del plugin OPSI per FusionDirectory"
+
+#: config/opsi/class_opsiConfig.inc:42
+msgid "LDAP tree"
+msgstr "Struttura LDAP"
+
+#: config/opsi/class_opsiConfig.inc:45
+msgid "OPSI RDN"
+msgstr "OPSI RDN"
+
+#: config/opsi/class_opsiConfig.inc:45
+msgid "Branch in which OPSI profiles will be stored"
+msgstr "Ramo nel quale saranno immagazzinati i profili di OPSI"
 
 #: addons/opsi/opsiimport.tpl.c:2
 msgid ""

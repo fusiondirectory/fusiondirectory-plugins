@@ -1,132 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# Copyright (C) YEAR FusionDirectory Project
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-21 18:26+0200\n"
-"PO-Revision-Date: 2013-09-11 09:21+0000\n"
+"Project-Id-Version: FusionDirectory-108\n"
+"Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
+"POT-Creation-Date: 2014-08-18 16:07+0200\n"
+"PO-Revision-Date: 2014-08-28 10:50+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Polish (http://www.transifex.com/projects/p/FusionDirectory/language/pl/)\n"
+"Language-Team: Polish (http://www.transifex.com/projects/p/FusionDirectory-108/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: pl\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-
-#: personal/quota/singleSystemSelect/singleSystem-list.xml:10
-msgid "Please select the desired entries"
-msgstr ""
-
-#: personal/quota/singleSystemSelect/singleSystem-list.xml:14
-msgid "Systems"
-msgstr "Systemy"
-
-#: personal/quota/singleSystemSelect/singleSystem-list.xml:41
-msgid "Computer Name"
-msgstr ""
-
-#: personal/quota/singleSystemSelect/singleSystem-list.xml:49
-msgid "Description"
-msgstr "Opis"
-
-#: personal/quota/singleSystemSelect/singleSystem-list.xml:58
-msgid "Actions"
-msgstr "Akcje"
-
-#: personal/quota/singleSystemSelect/singleSystem-list.xml:72
-#: personal/quota/singleSystemSelect/singleSystem-list.xml:78
-msgid "Select system"
-msgstr ""
-
-#: personal/quota/class_quotaAccount.inc:136 personal/quota/quota.tpl.c:5
-msgid "Quota"
-msgstr "Quota"
-
-#: personal/quota/class_quotaAccount.inc:137
-msgid "Plugin for quota support"
-msgstr ""
-
-#: personal/quota/class_quotaAccount.inc:151
-msgid "B"
-msgstr ""
-
-#: personal/quota/class_quotaAccount.inc:151
-msgid "KB"
-msgstr "KB"
-
-#: personal/quota/class_quotaAccount.inc:151
-msgid "MB"
-msgstr "MB"
-
-#: personal/quota/class_quotaAccount.inc:151
-msgid "GB"
-msgstr "GB"
-
-#: personal/quota/class_quotaAccount.inc:151
-msgid "TB"
-msgstr ""
-
-#: personal/quota/class_quotaAccount.inc:156
-msgid "Quota informations"
-msgstr ""
-
-#: personal/quota/class_quotaAccount.inc:161
-msgid "Quota informations for this user"
-msgstr ""
-
-#: personal/quota/class_quotaAccount.inc:165
-#: admin/systems/services/quota/class_serviceQuota.inc:51
-#: personal/quota/quota.tpl.c:11
-msgid "Device"
-msgstr "Urządzenie"
-
-#: personal/quota/class_quotaAccount.inc:165
-msgid "Device this quota is for"
-msgstr ""
-
-#: personal/quota/class_quotaAccount.inc:169 personal/quota/quota.tpl.c:14
-msgid "Block soft limit"
-msgstr ""
-
-#: personal/quota/class_quotaAccount.inc:169
-msgid "Soft limit for the block the user can use"
-msgstr ""
-
-#: personal/quota/class_quotaAccount.inc:175 personal/quota/quota.tpl.c:17
-msgid "Block hard limit"
-msgstr ""
-
-#: personal/quota/class_quotaAccount.inc:175
-msgid "Hard limit for the block the user can use"
-msgstr ""
-
-#: personal/quota/class_quotaAccount.inc:181 personal/quota/quota.tpl.c:20
-msgid "Inode soft limit"
-msgstr ""
-
-#: personal/quota/class_quotaAccount.inc:181
-msgid "Soft limit for the inodes the user can use"
-msgstr ""
-
-#: personal/quota/class_quotaAccount.inc:186 personal/quota/quota.tpl.c:23
-msgid "Inode hard limit"
-msgstr ""
-
-#: personal/quota/class_quotaAccount.inc:186
-msgid "Hard limit for the inodes the user can use"
-msgstr ""
-
-#: personal/quota/class_quotaAccount.inc:191 personal/quota/quota.tpl.c:8
-msgid "Server"
-msgstr "Serwer"
-
-#: personal/quota/class_quotaAccount.inc:191
-msgid "Server hosting the device this quota is for"
-msgstr ""
 
 #: admin/systems/services/quota/class_serviceQuota.inc:30
 #: admin/systems/services/quota/class_serviceQuota.inc:31
@@ -144,6 +33,11 @@ msgstr "Udziały"
 #: admin/systems/services/quota/class_serviceQuota.inc:47
 msgid "Quotas for the shares this server hosts"
 msgstr ""
+
+#: admin/systems/services/quota/class_serviceQuota.inc:51
+#: personal/quota/class_quotaAccount.inc:164
+msgid "Device"
+msgstr "Urządzenie"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:51
 msgid "Device concerned by this quota"
@@ -170,7 +64,6 @@ msgid "Quota warning message"
 msgstr ""
 
 #: admin/systems/services/quota/class_serviceQuota.inc:76
-#: admin/systems/services/quota/serviceQuota.tpl.c:20
 msgid "Charset"
 msgstr "Kodowanie"
 
@@ -195,7 +88,6 @@ msgid "Email address to contact the administrator"
 msgstr ""
 
 #: admin/systems/services/quota/class_serviceQuota.inc:88
-#: admin/systems/services/quota/serviceQuota.tpl.c:29
 msgid "From"
 msgstr ""
 
@@ -204,7 +96,6 @@ msgid "Email from which the email is sent"
 msgstr ""
 
 #: admin/systems/services/quota/class_serviceQuota.inc:92
-#: admin/systems/services/quota/serviceQuota.tpl.c:32
 msgid "CC"
 msgstr ""
 
@@ -213,7 +104,6 @@ msgid "Send a copy of this email to"
 msgstr ""
 
 #: admin/systems/services/quota/class_serviceQuota.inc:96
-#: admin/systems/services/quota/serviceQuota.tpl.c:35
 msgid "Subject"
 msgstr ""
 
@@ -222,7 +112,6 @@ msgid "Subject of the sent warning email"
 msgstr ""
 
 #: admin/systems/services/quota/class_serviceQuota.inc:100
-#: admin/systems/services/quota/serviceQuota.tpl.c:38
 msgid "Content"
 msgstr ""
 
@@ -231,7 +120,6 @@ msgid "Content of the sent email"
 msgstr ""
 
 #: admin/systems/services/quota/class_serviceQuota.inc:104
-#: admin/systems/services/quota/serviceQuota.tpl.c:41
 msgid "Signature"
 msgstr ""
 
@@ -281,62 +169,82 @@ msgstr ""
 msgid "(%s by %s)"
 msgstr ""
 
-#: personal/quota/singleSystemSelect/singleSystem-list.tpl.c:2
-msgid "Base"
-msgstr "Kontener"
+#: personal/quota/class_quotaAccount.inc:136
+msgid "Quota"
+msgstr "Quota"
 
-#: personal/quota/singleSystemSelect/singleSystem-filter.tpl.c:2
-msgid "Filter"
-msgstr "Filtr"
-
-#: personal/quota/quota.tpl.c:2
-msgid "Quota Informations"
+#: personal/quota/class_quotaAccount.inc:137
+msgid "Plugin for quota support"
 msgstr ""
 
-#: admin/systems/services/quota/serviceQuota.tpl.c:2
-msgid "Quota service Properties"
+#: personal/quota/class_quotaAccount.inc:150
+msgid "B"
 msgstr ""
 
-#: admin/systems/services/quota/serviceQuota.tpl.c:5
-msgid "quota device"
+#: personal/quota/class_quotaAccount.inc:150
+msgid "KB"
+msgstr "KB"
+
+#: personal/quota/class_quotaAccount.inc:150
+msgid "MB"
+msgstr "MB"
+
+#: personal/quota/class_quotaAccount.inc:150
+msgid "GB"
+msgstr "GB"
+
+#: personal/quota/class_quotaAccount.inc:150
+msgid "TB"
 msgstr ""
 
-#: admin/systems/services/quota/serviceQuota.tpl.c:8
-msgid "device"
+#: personal/quota/class_quotaAccount.inc:155
+msgid "Quota informations"
 msgstr ""
 
-#: admin/systems/services/quota/serviceQuota.tpl.c:11
-msgid "blocksize"
+#: personal/quota/class_quotaAccount.inc:160
+msgid "Quota informations for this user"
 msgstr ""
 
-#: admin/systems/services/quota/serviceQuota.tpl.c:14
-msgid "description"
-msgstr "Opis"
-
-#: admin/systems/services/quota/serviceQuota.tpl.c:17
-msgid "Quota Warning Message"
+#: personal/quota/class_quotaAccount.inc:164
+msgid "Device this quota is for"
 msgstr ""
 
-#: admin/systems/services/quota/serviceQuota.tpl.c:23
-msgid "Mail Command"
+#: personal/quota/class_quotaAccount.inc:168
+msgid "Block soft limit"
 msgstr ""
 
-#: admin/systems/services/quota/serviceQuota.tpl.c:26
-msgid "Support Contact"
+#: personal/quota/class_quotaAccount.inc:168
+msgid "Soft limit for the block the user can use"
 msgstr ""
 
-#: admin/systems/services/quota/serviceQuota.tpl.c:44
-msgid "LDAP Message Support"
+#: personal/quota/class_quotaAccount.inc:174
+msgid "Block hard limit"
 msgstr ""
 
-#: admin/systems/services/quota/serviceQuota.tpl.c:47
-msgid "Ldap server"
-msgstr "Serwer Ldap"
-
-#: admin/systems/services/quota/serviceQuota.tpl.c:50
-msgid "Ldap User DN"
+#: personal/quota/class_quotaAccount.inc:174
+msgid "Hard limit for the block the user can use"
 msgstr ""
 
-#: admin/systems/services/quota/serviceQuota.tpl.c:53
-msgid "Ldap User Password"
+#: personal/quota/class_quotaAccount.inc:180
+msgid "Inode soft limit"
+msgstr ""
+
+#: personal/quota/class_quotaAccount.inc:180
+msgid "Soft limit for the inodes the user can use"
+msgstr ""
+
+#: personal/quota/class_quotaAccount.inc:185
+msgid "Inode hard limit"
+msgstr ""
+
+#: personal/quota/class_quotaAccount.inc:185
+msgid "Hard limit for the inodes the user can use"
+msgstr ""
+
+#: personal/quota/class_quotaAccount.inc:190
+msgid "Server"
+msgstr "Serwer"
+
+#: personal/quota/class_quotaAccount.inc:190
+msgid "Server hosting the device this quota is for"
 msgstr ""

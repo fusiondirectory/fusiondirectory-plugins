@@ -1,29 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# Copyright (C) YEAR FusionDirectory Project
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-21 18:26+0200\n"
-"PO-Revision-Date: 2014-01-27 18:00+0000\n"
+"Project-Id-Version: FusionDirectory-108\n"
+"Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
+"POT-Creation-Date: 2014-08-18 16:07+0200\n"
+"PO-Revision-Date: 2014-08-28 10:52+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Swedish (http://www.transifex.com/projects/p/FusionDirectory/language/sv/)\n"
+"Language-Team: Swedish (http://www.transifex.com/projects/p/FusionDirectory-108/language/sv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: sv\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-#: html/getvcard.php:39
-msgid "Internal error"
-msgstr "Internt fel"
-
-#: html/getvcard.php:39
-msgid "Missing parameters!"
-msgstr ""
 
 #: addons/addressbook/class_addressbook.inc:195
 #, php-format
@@ -239,6 +231,14 @@ msgstr "Hempostadress"
 
 #: addons/addressbook/class_addressbook.inc:876
 msgid "Common name"
+msgstr "Namn"
+
+#: html/getvcard.php:39
+msgid "Internal error"
+msgstr "Internt fel"
+
+#: html/getvcard.php:39
+msgid "Missing parameters!"
 msgstr ""
 
 #: addons/addressbook/address_info.tpl.c:2
@@ -294,6 +294,10 @@ msgstr "Land"
 msgid "FAX"
 msgstr "Fax"
 
+#: addons/addressbook/dial.tpl.c:2
+msgid "Dial connection..."
+msgstr ""
+
 #: addons/addressbook/contents.tpl.c:17
 msgid "Contact"
 msgstr ""
@@ -304,7 +308,7 @@ msgstr "Information"
 
 #: addons/addressbook/contents.tpl.c:23
 msgid ""
-"The telephone list plugin provides list and search facilities for the people in your site. You may want to specify the asterisk [*] like in \n"
+"The telephone list plugin provides list and search facilities for the people in your site. You may want to specify the asterisk [*] like in\n"
 "'Fu*ry' to find 'FusionDirectory'. Use the filters below to narrow down your search."
 msgstr ""
 
@@ -368,22 +372,6 @@ msgstr ""
 msgid "Search string"
 msgstr ""
 
-#: addons/addressbook/address_edit.tpl.c:2
-msgid "Choose the department to store entry in"
-msgstr ""
-
-#: addons/addressbook/address_edit.tpl.c:8
-msgid "Last name"
-msgstr "Efternamn"
-
-#: addons/addressbook/address_edit.tpl.c:11
-msgid "First name"
-msgstr "Förnamn"
-
-#: addons/addressbook/dial.tpl.c:2
-msgid "Dial connection..."
-msgstr ""
-
 #: addons/addressbook/remove.tpl.c:2
 msgid "Warning"
 msgstr "Varning"
@@ -398,3 +386,15 @@ msgstr ""
 #: addons/addressbook/remove.tpl.c:8
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
 msgstr "Så - om du är säker - tryck 'Ta bort' för att fortsätta och 'Avbryt' för att avbryta."
+
+#: addons/addressbook/address_edit.tpl.c:2
+msgid "Choose the department to store entry in"
+msgstr ""
+
+#: addons/addressbook/address_edit.tpl.c:8
+msgid "Last name"
+msgstr "Efternamn"
+
+#: addons/addressbook/address_edit.tpl.c:11
+msgid "First name"
+msgstr "Förnamn"

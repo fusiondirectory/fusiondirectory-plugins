@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# Copyright (C) YEAR FusionDirectory Project
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
@@ -9,202 +9,112 @@
 # Kenny Tordeurs <tordeurskenny@gmail.com>, 2012
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-21 18:26+0200\n"
-"PO-Revision-Date: 2013-09-11 09:20+0000\n"
+"Project-Id-Version: FusionDirectory-108\n"
+"Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
+"POT-Creation-Date: 2014-08-18 16:07+0200\n"
+"PO-Revision-Date: 2014-08-28 10:52+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Dutch (http://www.transifex.com/projects/p/FusionDirectory/language/nl/)\n"
+"Language-Team: Dutch (http://www.transifex.com/projects/p/FusionDirectory-108/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: config/fax/class_faxConfig.inc:28
-msgid "Fax configuration"
+#: admin/blocklists/class_blocklistManagement.inc:28
+msgid "Fax Blocklists"
 msgstr ""
 
-#: config/fax/class_faxConfig.inc:29
-msgid "FusionDirectory fax plugin configuration"
+#: admin/blocklists/class_blocklistManagement.inc:29
+msgid "Fax Blocklists management"
 msgstr ""
 
-#: config/fax/class_faxConfig.inc:42
-msgid "LDAP tree"
-msgstr "LDAP tree"
+#: admin/blocklists/class_blocklistGeneric.inc:32
+msgid "Type"
+msgstr "Type"
 
-#: config/fax/class_faxConfig.inc:45
-msgid "Fax RDN"
-msgstr ""
+#: admin/blocklists/class_blocklistGeneric.inc:32
+msgid "Type of this list"
+msgstr "Type van deze lijst"
 
-#: config/fax/class_faxConfig.inc:45
-msgid "Branch in which fax blocklists will be stored"
-msgstr ""
+#: admin/blocklists/class_blocklistGeneric.inc:35
+msgid "send"
+msgstr "versturen"
 
-#: html/getfax.php:59
-msgid "Could not connect to database server!"
-msgstr "Kan niet verbinden met de database server!"
+#: admin/blocklists/class_blocklistGeneric.inc:35
+msgid "receive"
+msgstr "ontvangen"
 
-#: html/getfax.php:66 html/getfax.php:76
-msgid "Database query failed!"
-msgstr "De database zoekopdracht is mislukt"
+#: admin/blocklists/class_blocklistGeneric.inc:39
+msgid "Blocked numbers"
+msgstr "Geblokkeerde nummers"
 
-#: html/getfax.php:96 html/getfax.php:101 html/getfax.php:106
-#: personal/faxaccount/class_gofaxAccount.inc:272
+#: admin/blocklists/class_blocklistGeneric.inc:40
+msgid "Numbers can also contain wild cards."
+msgstr "Nummers kunnen ook wildcards (*?) bevatten."
+
+#: admin/blocklists/class_blocklistGeneric.inc:137
+#: admin/blocklists/class_blocklistGeneric.inc:141
+msgid "Fax blocklists"
+msgstr "Fax blokkeerlijst"
+
+#: admin/blocklists/class_blocklistGeneric.inc:138
+msgid "The part of the fax plugin managing blacklist"
+msgstr "Het deel van de fax plugin dat de blacklist beheerd"
+
+#: admin/blocklists/class_blocklistGeneric.inc:159
+msgid "Informations"
+msgstr "Informatie"
+
+#: admin/blocklists/class_blocklistGeneric.inc:162
+msgid "List name"
+msgstr "Lijstnaam"
+
+#: admin/blocklists/class_blocklistGeneric.inc:162
+msgid "The name of the list"
+msgstr "De naam van deze lijst"
+
+#: admin/blocklists/class_blocklistGeneric.inc:163
+msgid "Description"
+msgstr "Omschrijving"
+
+#: admin/blocklists/class_blocklistGeneric.inc:163
+msgid "A description for the list"
+msgstr "Een beschrijving voor deze lijst"
+
+#: admin/blocklists/class_blocklistGeneric.inc:165
+msgid "List of blocked number"
+msgstr "Lijst van geblokkeerde nummers"
+
+#: admin/systems/services/fax/class_serviceFax.inc:31
+#: admin/systems/services/fax/class_serviceFax.inc:32
+msgid "FAX service"
+msgstr "FAX dienst"
+
+#: admin/systems/services/fax/class_serviceFax.inc:32
+msgid "Services"
+msgstr "Services"
+
+#: admin/systems/services/fax/class_serviceFax.inc:46
+msgid "FAX database information"
+msgstr "FAX databank informatie"
+
+#: admin/systems/services/fax/class_serviceFax.inc:50
+msgid "FAX DB user"
+msgstr "FAX DB gebruiker"
+
+#: admin/systems/services/fax/class_serviceFax.inc:56
+msgid "Password"
+msgstr "Wachtwoord"
+
 #: addons/faxreports/class_faxreport.inc:130
 #: addons/faxreports/class_faxreport.inc:139
 #: addons/faxreports/class_faxreport.inc:159
 #: addons/faxreports/class_faxreport.inc:300
+#: personal/faxaccount/class_gofaxAccount.inc:272 html/getfax.php:96
+#: html/getfax.php:101 html/getfax.php:106
 msgid "Error"
 msgstr "Fout"
-
-#: html/getfax.php:96
-msgid "cannot resize fax image"
-msgstr "kan fax afbeelding niet vergroten of verkleinen"
-
-#: html/getfax.php:101
-msgid "cannot convert fax image to png"
-msgstr "kan afbeelding niet converteren in png"
-
-#: html/getfax.php:106
-msgid "Reading fax image image failed"
-msgstr "Het lezen van fax afbeelding mislukt"
-
-#: personal/faxaccount/main.inc:126
-msgid "Click the 'Edit' button below to change informations in this dialog"
-msgstr "Gebruik de 'Bewerk' knop hieronder om de informatie in deze dialoog te veranderen"
-
-#: personal/faxaccount/main.inc:135
-msgid "FAX settings"
-msgstr "Fax instellingen"
-
-#: personal/faxaccount/class_gofaxAccount.inc:26
-msgid "FAX"
-msgstr "Fax"
-
-#: personal/faxaccount/class_gofaxAccount.inc:27
-msgid "This does something"
-msgstr "Dit doet iets"
-
-#: personal/faxaccount/class_gofaxAccount.inc:180
-#: personal/faxaccount/class_gofaxAccount.inc:190
-#: personal/faxaccount/class_gofaxAccount.inc:193
-msgid "GOfax"
-msgstr "GOfax"
-
-#: personal/faxaccount/class_gofaxAccount.inc:189
-msgid "Remove fax account"
-msgstr "Fax account verwijderen"
-
-#: personal/faxaccount/class_gofaxAccount.inc:192
-msgid "Create fax account"
-msgstr "Fax account aanmaken"
-
-#: personal/faxaccount/class_gofaxAccount.inc:272
-msgid "Phone number"
-msgstr "Telefoonnummer"
-
-#: personal/faxaccount/class_gofaxAccount.inc:421
-#: personal/faxaccount/class_gofaxAccount.inc:503
-msgid "back"
-msgstr "terug"
-
-#: personal/faxaccount/class_gofaxAccount.inc:611
-#: personal/faxaccount/class_gofaxAccount.inc:739
-msgid "LDAP error"
-msgstr "LDAP fout"
-
-#: personal/faxaccount/class_gofaxAccount.inc:627
-#: personal/faxaccount/class_gofaxAccount.inc:631
-#: personal/faxaccount/class_gofaxAccount.inc:806
-msgid "Fax number"
-msgstr "FAX nummer"
-
-#: personal/faxaccount/class_gofaxAccount.inc:638
-msgid "Mail delivery is requested without target address!"
-msgstr "Mail aflevering is gevraagd zonder doeladres"
-
-#: personal/faxaccount/class_gofaxAccount.inc:640
-msgid "Mail address"
-msgstr "E-mail adres"
-
-#: personal/faxaccount/class_gofaxAccount.inc:640
-msgid "your-name@your-domain.com"
-msgstr "your-name@your-domain.com"
-
-#: personal/faxaccount/class_gofaxAccount.inc:646
-msgid "Printing is requested without a target printer!"
-msgstr "Printen is gevraagd zonder doelprinter"
-
-#: personal/faxaccount/class_gofaxAccount.inc:796
-#: personal/faxaccount/faxNumberSelect/faxNumberSelect-list.xml:56
-#: personal/faxaccount/paste_generic.tpl.c:5
-#: personal/faxaccount/generic.tpl.c:5
-msgid "Fax"
-msgstr "Fax"
-
-#: personal/faxaccount/class_gofaxAccount.inc:797
-msgid "Fax account settings"
-msgstr "Fax account opties"
-
-#: personal/faxaccount/class_gofaxAccount.inc:807
-#: personal/faxaccount/generic.tpl.c:11
-msgid "Language"
-msgstr "Taal"
-
-#: personal/faxaccount/class_gofaxAccount.inc:808
-#: personal/faxaccount/generic.tpl.c:17
-msgid "Delivery format"
-msgstr "Aflever formaat"
-
-#: personal/faxaccount/class_gofaxAccount.inc:809
-msgid "Alternate fax number"
-msgstr "Alternatief fax nummer"
-
-#: personal/faxaccount/class_gofaxAccount.inc:810
-msgid "Enable/Disable fax"
-msgstr "Inschakelen/Uitschakelen fax"
-
-#: personal/faxaccount/class_gofaxAccount.inc:811
-#: personal/faxaccount/generic.tpl.c:32
-msgid "Deliver fax as mail"
-msgstr "Lever Fax als E-mail af"
-
-#: personal/faxaccount/class_gofaxAccount.inc:812
-#: personal/faxaccount/generic.tpl.c:35
-msgid "Deliver fax to printer"
-msgstr "Lever Fax af op printer"
-
-#: personal/faxaccount/class_gofaxAccount.inc:813
-#: admin/blocklists/blocklist-list.xml:23
-msgid "Receive blocklist"
-msgstr "Ontvang blokkeerlijst"
-
-#: personal/faxaccount/class_gofaxAccount.inc:814
-#: admin/blocklists/blocklist-list.xml:15
-msgid "Send blocklist"
-msgstr "Zend blokkeerlijst"
-
-#: personal/faxaccount/faxNumberSelect/faxNumberSelect-list.xml:10
-msgid "Please select the desired entries"
-msgstr "Selecteer aub de gewenste inzendingen"
-
-#: personal/faxaccount/faxNumberSelect/faxNumberSelect-list.xml:14
-#: addons/faxreports/contents.tpl.c:26 addons/faxreports/detail.tpl.c:11
-msgid "User"
-msgstr "Gebruiker"
-
-#: personal/faxaccount/faxNumberSelect/faxNumberSelect-list.xml:40
-msgid "Given name"
-msgstr "Naam"
-
-#: personal/faxaccount/faxNumberSelect/faxNumberSelect-list.xml:48
-msgid "Surname"
-msgstr "Achternaam"
-
-#: addons/faxreports/main.inc:44
-msgid "FAX reports"
-msgstr "Fax rapporten"
 
 #: addons/faxreports/class_faxreport.inc:130
 msgid "No fax server found!"
@@ -304,243 +214,184 @@ msgstr "Status Bericht"
 msgid "Transfer time"
 msgstr "Overdrachtstijd"
 
-#: admin/blocklists/class_blocklistManagement.inc:36
-msgid "Fax Blocklists"
-msgstr ""
+#: addons/faxreports/main.inc:44
+msgid "FAX reports"
+msgstr "Fax rapporten"
 
-#: admin/blocklists/class_blocklistManagement.inc:37
-msgid "Fax Blocklists management"
-msgstr ""
+#: personal/faxaccount/class_gofaxAccount.inc:26
+msgid "FAX"
+msgstr "Fax"
 
-#: admin/blocklists/blocklist-list.xml:11
-msgid "List of blocklists"
-msgstr "Lijst met blokkeerlijsten"
+#: personal/faxaccount/class_gofaxAccount.inc:27
+msgid "This does something"
+msgstr "Dit doet iets"
 
-#: admin/blocklists/blocklist-list.xml:49
-#: personal/faxaccount/faxNumberSelect/faxNumberSelect-filter.tpl.c:5
-#: admin/blocklists/blocklist-filter.tpl.c:5
-msgid "Name"
+#: personal/faxaccount/class_gofaxAccount.inc:180
+#: personal/faxaccount/class_gofaxAccount.inc:190
+#: personal/faxaccount/class_gofaxAccount.inc:193
+msgid "GOfax"
+msgstr "GOfax"
+
+#: personal/faxaccount/class_gofaxAccount.inc:189
+msgid "Remove fax account"
+msgstr "Fax account verwijderen"
+
+#: personal/faxaccount/class_gofaxAccount.inc:192
+msgid "Create fax account"
+msgstr "Fax account aanmaken"
+
+#: personal/faxaccount/class_gofaxAccount.inc:272
+msgid "Phone number"
+msgstr "Telefoonnummer"
+
+#: personal/faxaccount/class_gofaxAccount.inc:421
+#: personal/faxaccount/class_gofaxAccount.inc:503
+msgid "back"
+msgstr "terug"
+
+#: personal/faxaccount/class_gofaxAccount.inc:611
+#: personal/faxaccount/class_gofaxAccount.inc:739
+msgid "LDAP error"
+msgstr "LDAP fout"
+
+#: personal/faxaccount/class_gofaxAccount.inc:627
+#: personal/faxaccount/class_gofaxAccount.inc:631
+#: personal/faxaccount/class_gofaxAccount.inc:805
+msgid "Fax number"
+msgstr "FAX nummer"
+
+#: personal/faxaccount/class_gofaxAccount.inc:638
+msgid "Mail delivery is requested without target address!"
+msgstr "Mail aflevering is gevraagd zonder doeladres"
+
+#: personal/faxaccount/class_gofaxAccount.inc:640
+msgid "Mail address"
+msgstr "E-mail adres"
+
+#: personal/faxaccount/class_gofaxAccount.inc:640
+msgid "your-name@your-domain.com"
+msgstr "your-name@your-domain.com"
+
+#: personal/faxaccount/class_gofaxAccount.inc:646
+msgid "Printing is requested without a target printer!"
+msgstr "Printen is gevraagd zonder doelprinter"
+
+#: personal/faxaccount/class_gofaxAccount.inc:796
+#: personal/faxaccount/faxNumberSelect/faxNumberSelect-list.xml:56
+#: personal/faxaccount/generic.tpl.c:5
+#: personal/faxaccount/paste_generic.tpl.c:5
+msgid "Fax"
+msgstr "Fax"
+
+#: personal/faxaccount/class_gofaxAccount.inc:797
+msgid "Fax account settings"
+msgstr "Fax account opties"
+
+#: personal/faxaccount/class_gofaxAccount.inc:806
+#: personal/faxaccount/generic.tpl.c:11
+msgid "Language"
+msgstr "Taal"
+
+#: personal/faxaccount/class_gofaxAccount.inc:807
+#: personal/faxaccount/generic.tpl.c:17
+msgid "Delivery format"
+msgstr "Aflever formaat"
+
+#: personal/faxaccount/class_gofaxAccount.inc:808
+msgid "Alternate fax number"
+msgstr "Alternatief fax nummer"
+
+#: personal/faxaccount/class_gofaxAccount.inc:809
+msgid "Enable/Disable fax"
+msgstr "Inschakelen/Uitschakelen fax"
+
+#: personal/faxaccount/class_gofaxAccount.inc:810
+#: personal/faxaccount/generic.tpl.c:32
+msgid "Deliver fax as mail"
+msgstr "Lever Fax als E-mail af"
+
+#: personal/faxaccount/class_gofaxAccount.inc:811
+#: personal/faxaccount/generic.tpl.c:35
+msgid "Deliver fax to printer"
+msgstr "Lever Fax af op printer"
+
+#: personal/faxaccount/class_gofaxAccount.inc:812
+msgid "Receive blocklist"
+msgstr "Ontvang blokkeerlijst"
+
+#: personal/faxaccount/class_gofaxAccount.inc:813
+msgid "Send blocklist"
+msgstr "Zend blokkeerlijst"
+
+#: personal/faxaccount/faxNumberSelect/faxNumberSelect-list.xml:10
+msgid "Please select the desired entries"
+msgstr "Selecteer aub de gewenste inzendingen"
+
+#: personal/faxaccount/faxNumberSelect/faxNumberSelect-list.xml:14
+#: addons/faxreports/contents.tpl.c:26 addons/faxreports/detail.tpl.c:11
+msgid "User"
+msgstr "Gebruiker"
+
+#: personal/faxaccount/faxNumberSelect/faxNumberSelect-list.xml:40
+msgid "Given name"
 msgstr "Naam"
 
-#: admin/blocklists/blocklist-list.xml:57
-#: admin/blocklists/class_blocklistGeneric.inc:145
-#: admin/blocklists/generic.tpl.c:20
-msgid "Description"
-msgstr "Omschrijving"
+#: personal/faxaccount/faxNumberSelect/faxNumberSelect-list.xml:48
+msgid "Surname"
+msgstr "Achternaam"
 
-#: admin/blocklists/blocklist-list.xml:65
-msgid "Actions"
-msgstr "Acties"
+#: personal/faxaccount/main.inc:126
+msgid "Click the 'Edit' button below to change informations in this dialog"
+msgstr "Gebruik de 'Bewerk' knop hieronder om de informatie in deze dialoog te veranderen"
 
-#: admin/blocklists/blocklist-list.xml:76
-msgid "Create"
-msgstr "Aanmaken"
+#: personal/faxaccount/main.inc:135
+msgid "FAX settings"
+msgstr "Fax instellingen"
 
-#: admin/blocklists/blocklist-list.xml:82
-msgid "Blocklist"
-msgstr "Blokkeerlijst"
+#: html/getfax.php:59
+msgid "Could not connect to database server!"
+msgstr "Kan niet verbinden met de database server!"
 
-#: admin/blocklists/blocklist-list.xml:94
-#: admin/blocklists/blocklist-list.xml:133
-#: personal/faxaccount/generic.tpl.c:50 personal/faxaccount/generic.tpl.c:56
-msgid "Edit"
-msgstr "Bewerken"
+#: html/getfax.php:66 html/getfax.php:76
+msgid "Database query failed!"
+msgstr "De database zoekopdracht is mislukt"
 
-#: admin/blocklists/blocklist-list.xml:101
-#: admin/blocklists/blocklist-list.xml:146
-msgid "Remove"
-msgstr "Verwijderen"
+#: html/getfax.php:96
+msgid "cannot resize fax image"
+msgstr "kan fax afbeelding niet vergroten of verkleinen"
 
-#: admin/blocklists/class_blocklistGeneric.inc:32
-#: admin/blocklists/generic.tpl.c:14
-msgid "Type"
-msgstr "Type"
+#: html/getfax.php:101
+msgid "cannot convert fax image to png"
+msgstr "kan afbeelding niet converteren in png"
 
-#: admin/blocklists/class_blocklistGeneric.inc:32
-msgid "Type of this list"
-msgstr "Type van deze lijst"
+#: html/getfax.php:106
+msgid "Reading fax image image failed"
+msgstr "Het lezen van fax afbeelding mislukt"
 
-#: admin/blocklists/class_blocklistGeneric.inc:35
-msgid "send"
-msgstr "versturen"
+#: config/fax/class_faxConfig.inc:28
+msgid "Fax configuration"
+msgstr ""
 
-#: admin/blocklists/class_blocklistGeneric.inc:35
-msgid "receive"
-msgstr "ontvangen"
+#: config/fax/class_faxConfig.inc:29
+msgid "FusionDirectory fax plugin configuration"
+msgstr ""
 
-#: admin/blocklists/class_blocklistGeneric.inc:39
-#: admin/blocklists/generic.tpl.c:26
-msgid "Blocked numbers"
-msgstr "Geblokkeerde nummers"
+#: config/fax/class_faxConfig.inc:42
+msgid "LDAP tree"
+msgstr "LDAP tree"
 
-#: admin/blocklists/class_blocklistGeneric.inc:40
-#: admin/blocklists/generic.tpl.c:32
-msgid "Numbers can also contain wild cards."
-msgstr "Nummers kunnen ook wildcards (*?) bevatten."
+#: config/fax/class_faxConfig.inc:45
+msgid "Fax RDN"
+msgstr ""
 
-#: admin/blocklists/class_blocklistGeneric.inc:141
-msgid "Informations"
-msgstr "Informatie"
+#: config/fax/class_faxConfig.inc:45
+msgid "Branch in which fax blocklists will be stored"
+msgstr ""
 
-#: admin/blocklists/class_blocklistGeneric.inc:144
-#: admin/blocklists/paste_generic.tpl.c:2 admin/blocklists/generic.tpl.c:5
-msgid "List name"
-msgstr "Lijstnaam"
-
-#: admin/blocklists/class_blocklistGeneric.inc:144
-msgid "The name of the list"
-msgstr "De naam van deze lijst"
-
-#: admin/blocklists/class_blocklistGeneric.inc:145
-msgid "A description for the list"
-msgstr "Een beschrijving voor deze lijst"
-
-#: admin/blocklists/class_blocklistGeneric.inc:147
-msgid "List of blocked number"
-msgstr "Lijst van geblokkeerde nummers"
-
-#: admin/blocklists/class_blocklistGeneric.inc:187
-#: admin/blocklists/class_blocklistGeneric.inc:191
-#: admin/blocklists/class_blocklistGeneric.inc:194
-msgid "Fax blocklists"
-msgstr "Fax blokkeerlijst"
-
-#: admin/blocklists/class_blocklistGeneric.inc:188
-msgid "The part of the fax plugin managing blacklist"
-msgstr "Het deel van de fax plugin dat de blacklist beheerd"
-
-#: admin/systems/services/fax/class_serviceFax.inc:31
-#: admin/systems/services/fax/class_serviceFax.inc:32
-msgid "FAX service"
-msgstr "FAX dienst"
-
-#: admin/systems/services/fax/class_serviceFax.inc:32
-msgid "Services"
-msgstr "Services"
-
-#: admin/systems/services/fax/class_serviceFax.inc:46
-msgid "FAX database information"
-msgstr "FAX databank informatie"
-
-#: admin/systems/services/fax/class_serviceFax.inc:50
-msgid "FAX DB user"
-msgstr "FAX DB gebruiker"
-
-#: admin/systems/services/fax/class_serviceFax.inc:56
-msgid "Password"
-msgstr "Wachtwoord"
-
-#: personal/faxaccount/locals.tpl.c:2
-msgid "Select numbers to add"
-msgstr "Selecteer de toe te voegen nummers"
-
-#: personal/faxaccount/locals.tpl.c:5
-msgid "Filters"
-msgstr "Filters"
-
-#: personal/faxaccount/locals.tpl.c:8
-msgid "Display numbers of department"
-msgstr "Toon nummers van afdeling"
-
-#: personal/faxaccount/locals.tpl.c:11
-msgid "Choose the department the search will be based on"
-msgstr "Selecteer de afdeling waarbinnen gezocht zal worden"
-
-#: personal/faxaccount/locals.tpl.c:14
-msgid "Display numbers matching"
-msgstr "Toon de overeenkomende nummers"
-
-#: personal/faxaccount/locals.tpl.c:17
-msgid "Regular expression for matching numbers"
-msgstr "Reguliere expressie voor overeenkomende nummers"
-
-#: personal/faxaccount/locals.tpl.c:20
-msgid "Display numbers of user"
-msgstr "Toon nummers van gebruiker"
-
-#: personal/faxaccount/locals.tpl.c:23
-msgid "User name of which numbers are shown"
-msgstr "Gebruikersnaam van de gebruiker wiens nummers getoond worden"
-
-#: personal/faxaccount/faxNumberSelect/faxNumberSelect-filter.tpl.c:2
 #: addons/faxreports/contents.tpl.c:2
-#: admin/blocklists/blocklist-filter.tpl.c:2
+#: personal/faxaccount/faxNumberSelect/faxNumberSelect-filter.tpl.c:2
 msgid "Filter"
 msgstr "Filter"
-
-#: personal/faxaccount/faxNumberSelect/faxNumberSelect-list.tpl.c:2
-#: admin/blocklists/generic.tpl.c:11
-msgid "Base"
-msgstr "Basis"
-
-#: personal/faxaccount/lists.tpl.c:2
-msgid "Blocked numbers/lists"
-msgstr "Geblokkeerde nummers/lijsten"
-
-#: personal/faxaccount/lists.tpl.c:5
-msgid "List of predefined blocklists"
-msgstr "Lijst met voorgedefiniëerde blokkeerlijstn"
-
-#: personal/faxaccount/lists.tpl.c:8
-msgid "Add the list to the blocklists"
-msgstr "Voeg de lijst toe aan de blokkeerlijsten"
-
-#: personal/faxaccount/paste_generic.tpl.c:2
-#: personal/faxaccount/generic.tpl.c:2 admin/blocklists/generic.tpl.c:2
-msgid "Generic"
-msgstr "Algemeen"
-
-#: personal/faxaccount/paste_generic.tpl.c:8
-msgid "Fax number for GOfax to trigger on"
-msgstr "Fax nummer waarop GOfax moet reageren"
-
-#: personal/faxaccount/paste_generic.tpl.c:11
-msgid "Alternate fax numbers will not be copied"
-msgstr "Alternative fax nummers worden niet gekopieerd"
-
-#: personal/faxaccount/generic.tpl.c:8
-msgid "Fax number for fax to trigger on"
-msgstr ""
-
-#: personal/faxaccount/generic.tpl.c:14
-msgid "Specify the fax communication language for fax to mail gateway"
-msgstr ""
-
-#: personal/faxaccount/generic.tpl.c:20
-msgid "Specify delivery format for fax to mail gateway"
-msgstr "Specificeer het aflever formaat voor de Fax naar E-mail gateway"
-
-#: personal/faxaccount/generic.tpl.c:23
-msgid "Delivery methods"
-msgstr "Aflever methodes"
-
-#: personal/faxaccount/generic.tpl.c:26
-msgid "Temporary disable fax usage"
-msgstr "Schakel Fax gebruik tijdelijk uit"
-
-#: personal/faxaccount/generic.tpl.c:29
-msgid "Deliver fax as mail to"
-msgstr "Lever Fax als E-mail af aan"
-
-#: personal/faxaccount/generic.tpl.c:38
-msgid "Alternate fax numbers"
-msgstr "Alternatieve Fax nummers"
-
-#: personal/faxaccount/generic.tpl.c:41
-msgid "Add local"
-msgstr "Lokaal toevoegen"
-
-#: personal/faxaccount/generic.tpl.c:44
-msgid "Blocklists"
-msgstr "Blokkeerlijsten"
-
-#: personal/faxaccount/generic.tpl.c:47
-msgid "Blocklists for incoming fax"
-msgstr "Blokkeerlijsten voor te ontvangen Faxen"
-
-#: personal/faxaccount/generic.tpl.c:53
-msgid "Blocklists for outgoing fax"
-msgstr "Blokkeerlijsten voor te versturen Faxen"
 
 #: addons/faxreports/contents.tpl.c:5
 msgid "Search for"
@@ -602,32 +453,115 @@ msgstr "Datum / Tijd"
 msgid "Status message"
 msgstr "Status bericht"
 
-#: admin/blocklists/paste_generic.tpl.c:5 admin/blocklists/generic.tpl.c:8
-msgid "Name of blocklist"
-msgstr "Naam van de blokkeerlijst"
+#: personal/faxaccount/generic.tpl.c:2
+#: personal/faxaccount/paste_generic.tpl.c:2
+msgid "Generic"
+msgstr "Algemeen"
 
-#: admin/blocklists/remove.tpl.c:2
-msgid "Warning"
-msgstr "Waarschuwing"
+#: personal/faxaccount/generic.tpl.c:8
+msgid "Fax number for fax to trigger on"
+msgstr ""
 
-#: admin/blocklists/remove.tpl.c:5
-msgid ""
-"Please double check if you really want to do this since there is no way for "
-"FusionDirectory to get your data back."
-msgstr "Klik aub dubbel als je dit echt wenst te doen want er is echter geen manier voor FusionDirectory om je data terug te plaatsen."
+#: personal/faxaccount/generic.tpl.c:14
+msgid "Specify the fax communication language for fax to mail gateway"
+msgstr ""
 
-#: admin/blocklists/remove.tpl.c:8
-msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr "Indien u zeker bent drukt u dan 'Verwijderen' om door te gaan of 'Annuleren' om te annuleren."
+#: personal/faxaccount/generic.tpl.c:20
+msgid "Specify delivery format for fax to mail gateway"
+msgstr "Specificeer het aflever formaat voor de Fax naar E-mail gateway"
 
-#: admin/blocklists/generic.tpl.c:17
-msgid "Select wether to filter incoming or outgoing calls"
-msgstr "Selecteer of inkomende en uitgaande gesprekken gefilterd moeten worden"
+#: personal/faxaccount/generic.tpl.c:23
+msgid "Delivery methods"
+msgstr "Aflever methodes"
 
-#: admin/blocklists/generic.tpl.c:23
-msgid "Descriptive text for this blocklist"
-msgstr "Beschrijving van deze blokkeerlijst"
+#: personal/faxaccount/generic.tpl.c:26
+msgid "Temporary disable fax usage"
+msgstr "Schakel Fax gebruik tijdelijk uit"
 
-#: admin/blocklists/generic.tpl.c:29
-msgid "Information"
-msgstr "Informatie"
+#: personal/faxaccount/generic.tpl.c:29
+msgid "Deliver fax as mail to"
+msgstr "Lever Fax als E-mail af aan"
+
+#: personal/faxaccount/generic.tpl.c:38
+msgid "Alternate fax numbers"
+msgstr "Alternatieve Fax nummers"
+
+#: personal/faxaccount/generic.tpl.c:41
+msgid "Add local"
+msgstr "Lokaal toevoegen"
+
+#: personal/faxaccount/generic.tpl.c:44
+msgid "Blocklists"
+msgstr "Blokkeerlijsten"
+
+#: personal/faxaccount/generic.tpl.c:47
+msgid "Blocklists for incoming fax"
+msgstr "Blokkeerlijsten voor te ontvangen Faxen"
+
+#: personal/faxaccount/generic.tpl.c:50 personal/faxaccount/generic.tpl.c:56
+msgid "Edit"
+msgstr "Bewerken"
+
+#: personal/faxaccount/generic.tpl.c:53
+msgid "Blocklists for outgoing fax"
+msgstr "Blokkeerlijsten voor te versturen Faxen"
+
+#: personal/faxaccount/lists.tpl.c:2
+msgid "Blocked numbers/lists"
+msgstr "Geblokkeerde nummers/lijsten"
+
+#: personal/faxaccount/lists.tpl.c:5
+msgid "List of predefined blocklists"
+msgstr "Lijst met voorgedefiniëerde blokkeerlijstn"
+
+#: personal/faxaccount/lists.tpl.c:8
+msgid "Add the list to the blocklists"
+msgstr "Voeg de lijst toe aan de blokkeerlijsten"
+
+#: personal/faxaccount/paste_generic.tpl.c:8
+msgid "Fax number for GOfax to trigger on"
+msgstr "Fax nummer waarop GOfax moet reageren"
+
+#: personal/faxaccount/paste_generic.tpl.c:11
+msgid "Alternate fax numbers will not be copied"
+msgstr "Alternative fax nummers worden niet gekopieerd"
+
+#: personal/faxaccount/locals.tpl.c:2
+msgid "Select numbers to add"
+msgstr "Selecteer de toe te voegen nummers"
+
+#: personal/faxaccount/locals.tpl.c:5
+msgid "Filters"
+msgstr "Filters"
+
+#: personal/faxaccount/locals.tpl.c:8
+msgid "Display numbers of department"
+msgstr "Toon nummers van afdeling"
+
+#: personal/faxaccount/locals.tpl.c:11
+msgid "Choose the department the search will be based on"
+msgstr "Selecteer de afdeling waarbinnen gezocht zal worden"
+
+#: personal/faxaccount/locals.tpl.c:14
+msgid "Display numbers matching"
+msgstr "Toon de overeenkomende nummers"
+
+#: personal/faxaccount/locals.tpl.c:17
+msgid "Regular expression for matching numbers"
+msgstr "Reguliere expressie voor overeenkomende nummers"
+
+#: personal/faxaccount/locals.tpl.c:20
+msgid "Display numbers of user"
+msgstr "Toon nummers van gebruiker"
+
+#: personal/faxaccount/locals.tpl.c:23
+msgid "User name of which numbers are shown"
+msgstr "Gebruikersnaam van de gebruiker wiens nummers getoond worden"
+
+#: personal/faxaccount/faxNumberSelect/faxNumberSelect-filter.tpl.c:5
+msgid "Name"
+msgstr "Naam"
+
+#: personal/faxaccount/faxNumberSelect/faxNumberSelect-list.tpl.c:2
+msgid "Base"
+msgstr "Basis"
