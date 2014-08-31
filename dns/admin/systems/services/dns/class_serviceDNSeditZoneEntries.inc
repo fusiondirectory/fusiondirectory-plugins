@@ -360,7 +360,7 @@ class servDNSeditZoneEntries extends plugin
 
     /* move follwoing entries */
     foreach ($tmp['move'] as $src => $dst) {
-      $this->recursive_move($src, $dst);
+      $this->move($src, $dst);
     }
 
     /* Delete dns */

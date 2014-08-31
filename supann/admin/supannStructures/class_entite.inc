@@ -145,7 +145,7 @@ class entite extends simplePlugin
           new StringAttribute(
             _('Entite code'), _('The SUPANN code of this entite'),
             'supannCodeEntite', TRUE,
-            '', '', '/[a-z0-9_-]/'.(strict_uid_mode()?'':'i')
+            '', '', '/^[a-z0-9_-]*$/'.(strict_uid_mode()?'':'i')
           ),
           new SelectAttribute(
             _('Parent entite'), _('The parent entite of this entite'),

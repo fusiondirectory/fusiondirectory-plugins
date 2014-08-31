@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# Copyright (C) YEAR FusionDirectory Project
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
@@ -7,141 +7,17 @@
 # lars_g <lars.gold@gmail.com>, 2012
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-21 18:26+0200\n"
-"PO-Revision-Date: 2013-09-11 09:21+0000\n"
+"Project-Id-Version: FusionDirectory-108\n"
+"Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
+"POT-Creation-Date: 2014-08-18 16:07+0200\n"
+"PO-Revision-Date: 2014-08-28 10:52+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Spanish (http://www.transifex.com/projects/p/FusionDirectory/language/es/)\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/FusionDirectory-108/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-#: addons/rsyslog/main.inc:48 addons/rsyslog/class_rsyslog.inc:47
-#: addons/rsyslog/class_rsyslog.inc:53
-msgid "System logs"
-msgstr "Bitácora de sistema"
-
-#: addons/rsyslog/class_rsyslog.inc:48
-msgid "This plugin allow to View system logs"
-msgstr "Este complemento permite ver bitácoras de sistema"
-
-#: addons/rsyslog/class_rsyslog.inc:143 addons/rsyslog/class_rsyslog.inc:149
-msgid "-"
-msgstr "-"
-
-#: addons/rsyslog/class_rsyslog.inc:145 addons/rsyslog/class_rsyslog.inc:151
-msgid "All"
-msgstr "Todo"
-
-#: addons/rsyslog/class_rsyslog.inc:177
-#, php-format
-msgid "%s entries match the filter"
-msgstr "%s entradas coinciden con el filtro"
-
-#: addons/rsyslog/class_rsyslog.inc:197
-#, php-format
-msgid "The selected server '%s' does not exists!"
-msgstr "El servidor '%s' seleccionado no existe!"
-
-#: addons/rsyslog/class_rsyslog.inc:344
-msgid "Emergency"
-msgstr "Emergencia"
-
-#: addons/rsyslog/class_rsyslog.inc:345
-msgid "Alert"
-msgstr "Alerta"
-
-#: addons/rsyslog/class_rsyslog.inc:346
-msgid "Critical"
-msgstr "Critico"
-
-#: addons/rsyslog/class_rsyslog.inc:347 addons/rsyslog/rSyslog.tpl.c:26
-msgid "Error"
-msgstr "Error"
-
-#: addons/rsyslog/class_rsyslog.inc:348
-msgid "Warning"
-msgstr "Aviso"
-
-#: addons/rsyslog/class_rsyslog.inc:349
-msgid "Notice"
-msgstr "Notificación"
-
-#: addons/rsyslog/class_rsyslog.inc:350
-msgid "Informational"
-msgstr "Informativo"
-
-#: addons/rsyslog/class_rsyslog.inc:351
-msgid "Debug"
-msgstr "Depurar"
-
-#: addons/rsyslog/class_rsyslog.inc:357 addons/rsyslog/class_rsyslog.inc:392
-#, php-format
-msgid "Unknown (%s)"
-msgstr "Desconocido (%s)"
-
-#: addons/rsyslog/class_rsyslog.inc:363
-msgid "Kernel"
-msgstr "Nucleo"
-
-#: addons/rsyslog/class_rsyslog.inc:364
-msgid "User level"
-msgstr "Nivel de usuario"
-
-#: addons/rsyslog/class_rsyslog.inc:365
-msgid "Mail system"
-msgstr "Sistema de correo"
-
-#: addons/rsyslog/class_rsyslog.inc:366
-msgid "System daemon"
-msgstr "Demonio de sistema"
-
-#: addons/rsyslog/class_rsyslog.inc:367 addons/rsyslog/class_rsyslog.inc:373
-msgid "Security"
-msgstr "Seguridad"
-
-#: addons/rsyslog/class_rsyslog.inc:368
-msgid "Internal"
-msgstr "Interno"
-
-#: addons/rsyslog/class_rsyslog.inc:369
-msgid "Printing"
-msgstr "Impresión"
-
-#: addons/rsyslog/class_rsyslog.inc:370
-msgid "News"
-msgstr "Noticias"
-
-#: addons/rsyslog/class_rsyslog.inc:371
-msgid "UUCP"
-msgstr "UUCP"
-
-#: addons/rsyslog/class_rsyslog.inc:372
-msgid "Cron"
-msgstr "Cron"
-
-#: addons/rsyslog/class_rsyslog.inc:374
-msgid "FTP"
-msgstr "FTP"
-
-#: addons/rsyslog/class_rsyslog.inc:375
-msgid "NTP"
-msgstr "NTP"
-
-#: addons/rsyslog/class_rsyslog.inc:376
-msgid "Log audit"
-msgstr "Auditoría de bitácora"
-
-#: addons/rsyslog/class_rsyslog.inc:377
-msgid "Log alert"
-msgstr "Alerta de bitácora"
-
-#: addons/rsyslog/class_rsyslog.inc:378
-msgid "Clock"
-msgstr "Reloj"
 
 #: admin/systems/services/rsyslog/class_serviceSyslog.inc:30
 #: admin/systems/services/rsyslog/class_serviceSyslog.inc:31
@@ -187,6 +63,130 @@ msgstr "Contraseña"
 #: admin/systems/services/rsyslog/class_serviceSyslog.inc:58
 msgid "Password for the database administrator"
 msgstr ""
+
+#: addons/rsyslog/class_rsyslog.inc:47 addons/rsyslog/class_rsyslog.inc:53
+#: addons/rsyslog/main.inc:38
+msgid "System logs"
+msgstr "Bitácora de sistema"
+
+#: addons/rsyslog/class_rsyslog.inc:48
+msgid "This plugin allow to View system logs"
+msgstr "Este complemento permite ver bitácoras de sistema"
+
+#: addons/rsyslog/class_rsyslog.inc:142 addons/rsyslog/class_rsyslog.inc:148
+msgid "-"
+msgstr "-"
+
+#: addons/rsyslog/class_rsyslog.inc:144 addons/rsyslog/class_rsyslog.inc:150
+msgid "All"
+msgstr "Todo"
+
+#: addons/rsyslog/class_rsyslog.inc:176
+#, php-format
+msgid "%s entries match the filter"
+msgstr "%s entradas coinciden con el filtro"
+
+#: addons/rsyslog/class_rsyslog.inc:196
+#, php-format
+msgid "The selected server '%s' does not exists!"
+msgstr "El servidor '%s' seleccionado no existe!"
+
+#: addons/rsyslog/class_rsyslog.inc:348
+msgid "Emergency"
+msgstr "Emergencia"
+
+#: addons/rsyslog/class_rsyslog.inc:349
+msgid "Alert"
+msgstr "Alerta"
+
+#: addons/rsyslog/class_rsyslog.inc:350
+msgid "Critical"
+msgstr "Critico"
+
+#: addons/rsyslog/class_rsyslog.inc:351 addons/rsyslog/rSyslog.tpl.c:26
+msgid "Error"
+msgstr "Error"
+
+#: addons/rsyslog/class_rsyslog.inc:352
+msgid "Warning"
+msgstr "Aviso"
+
+#: addons/rsyslog/class_rsyslog.inc:353
+msgid "Notice"
+msgstr "Notificación"
+
+#: addons/rsyslog/class_rsyslog.inc:354
+msgid "Informational"
+msgstr "Informativo"
+
+#: addons/rsyslog/class_rsyslog.inc:355
+msgid "Debug"
+msgstr "Depurar"
+
+#: addons/rsyslog/class_rsyslog.inc:362 addons/rsyslog/class_rsyslog.inc:399
+#, php-format
+msgid "Unknown (%s)"
+msgstr "Desconocido (%s)"
+
+#: addons/rsyslog/class_rsyslog.inc:369
+msgid "Kernel"
+msgstr "Nucleo"
+
+#: addons/rsyslog/class_rsyslog.inc:370
+msgid "User level"
+msgstr "Nivel de usuario"
+
+#: addons/rsyslog/class_rsyslog.inc:371
+msgid "Mail system"
+msgstr "Sistema de correo"
+
+#: addons/rsyslog/class_rsyslog.inc:372
+msgid "System daemon"
+msgstr "Demonio de sistema"
+
+#: addons/rsyslog/class_rsyslog.inc:373 addons/rsyslog/class_rsyslog.inc:379
+msgid "Security"
+msgstr "Seguridad"
+
+#: addons/rsyslog/class_rsyslog.inc:374
+msgid "Internal"
+msgstr "Interno"
+
+#: addons/rsyslog/class_rsyslog.inc:375
+msgid "Printing"
+msgstr "Impresión"
+
+#: addons/rsyslog/class_rsyslog.inc:376
+msgid "News"
+msgstr "Noticias"
+
+#: addons/rsyslog/class_rsyslog.inc:377
+msgid "UUCP"
+msgstr "UUCP"
+
+#: addons/rsyslog/class_rsyslog.inc:378
+msgid "Cron"
+msgstr "Cron"
+
+#: addons/rsyslog/class_rsyslog.inc:380
+msgid "FTP"
+msgstr "FTP"
+
+#: addons/rsyslog/class_rsyslog.inc:381
+msgid "NTP"
+msgstr "NTP"
+
+#: addons/rsyslog/class_rsyslog.inc:382
+msgid "Log audit"
+msgstr "Auditoría de bitácora"
+
+#: addons/rsyslog/class_rsyslog.inc:383
+msgid "Log alert"
+msgstr "Alerta de bitácora"
+
+#: addons/rsyslog/class_rsyslog.inc:384
+msgid "Clock"
+msgstr "Reloj"
 
 #: addons/rsyslog/rSyslog.tpl.c:2
 msgid "Filter"

@@ -1,21 +1,242 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# Copyright (C) YEAR FusionDirectory Project
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-21 18:26+0200\n"
-"PO-Revision-Date: 2013-09-11 09:21+0000\n"
+"Project-Id-Version: FusionDirectory-108\n"
+"Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
+"POT-Creation-Date: 2014-08-18 16:07+0200\n"
+"PO-Revision-Date: 2014-08-28 10:52+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Polish (http://www.transifex.com/projects/p/FusionDirectory/language/pl/)\n"
+"Language-Team: Polish (http://www.transifex.com/projects/p/FusionDirectory-108/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: pl\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: admin/ogroups/kolab/class_mailogroup.inc:70
+msgid "Remove mail account"
+msgstr "Usuń konto pocztowe"
+
+#: admin/ogroups/kolab/class_mailogroup.inc:71
+#: admin/ogroups/kolab/class_mailogroup.inc:74
+msgid "mail group"
+msgstr ""
+
+#: admin/ogroups/kolab/class_mailogroup.inc:73
+msgid "Create mail account"
+msgstr "Stwórz konto pocztowe"
+
+#: admin/ogroups/kolab/class_mailogroup.inc:106
+#: admin/ogroups/kolab/class_mailogroup.inc:113
+#: admin/ogroups/kolab/class_mailogroup.inc:190
+msgid "Mail address"
+msgstr "Adres email"
+
+#: admin/ogroups/kolab/class_mailogroup.inc:106
+msgid "your-name@your-domain.com"
+msgstr ""
+
+#: admin/ogroups/kolab/class_mailogroup.inc:140
+#: admin/ogroups/kolab/class_mailogroup.inc:177
+#: admin/systems/services/kolab/class_serviceKolab.inc:282
+#: admin/systems/services/kolab/class_serviceKolab.inc:293
+msgid "LDAP error"
+msgstr "błąd LDAP"
+
+#: admin/ogroups/kolab/class_mailogroup.inc:184
+#: admin/ogroups/kolab/paste_mail.tpl.c:2
+msgid "Mail"
+msgstr "Poczta"
+
+#: admin/ogroups/kolab/class_mailogroup.inc:185
+msgid "Mail group"
+msgstr "Grupa pocztowa"
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:29
+msgid "Enable MX lookup for relayhost"
+msgstr "Włącz sprawdzanie MX dla relayhosta"
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:32
+msgid "Relay host"
+msgstr "Host przekazujący"
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:32
+#: admin/systems/services/kolab/class_serviceKolab.inc:186
+msgid "Host used to relay mails"
+msgstr "Host użyty do przekazywania poczty"
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:67
+#: admin/systems/services/kolab/class_serviceKolab.inc:68
+msgid "Kolab mail service"
+msgstr "Usługa poczty Kolab"
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:68
+#: admin/systems/services/kolab/class_serviceKolab.inc:104
+msgid "Services"
+msgstr "Usługi"
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:82
+msgid "Generic"
+msgstr "Ogólne"
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:88
+msgid "Postfix mydomain"
+msgstr "Postfix mydomain"
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:88
+msgid "Postfix domain name"
+msgstr ""
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:92
+msgid "Cyrus admins"
+msgstr ""
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:92
+msgid "Cyrus admins for kolab server"
+msgstr ""
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:97
+msgid "Mail domains"
+msgstr ""
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:97
+msgid "Postfix mydestination"
+msgstr "Postfix mydestination"
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:107
+msgid "POP3 service"
+msgstr "Usługa POP3"
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:107
+msgid "Enable POP3 service"
+msgstr ""
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:111
+msgid "POP3/SSL service"
+msgstr "Usługa POP3/SSL"
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:111
+msgid "Enable POP3/SSL service"
+msgstr ""
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:115
+msgid "IMAP service"
+msgstr "Usługa IMAP"
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:115
+msgid "Enable IMAP service"
+msgstr ""
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:119
+msgid "IMAP/SSL service"
+msgstr "Usługa IMAP/SSL"
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:119
+msgid "Enable IMAP/SSL service"
+msgstr ""
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:123
+msgid "Sieve service"
+msgstr "Usługa Sieve"
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:123
+msgid "Enable Sieve service"
+msgstr ""
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:127
+msgid "FTP FreeBusy service (legacy)"
+msgstr ""
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:128
+msgid "FTP FreeBusy service (legacy, not interoperable with Kolab2 FreeBusy)"
+msgstr "Usługa FTP FreeBusy (przestarzała, nie działa z FreeBusy w Kolab2)"
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:132
+msgid "HTTP FreeBusy service (legacy)"
+msgstr "Usługa HTTP FreeBusy (przestarzała)"
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:136
+msgid "Amavis email scanning"
+msgstr ""
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:136
+msgid "Amavis email scanning (virus/spam)"
+msgstr "Skanowanie poczty (wirus/spam)"
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:142
+msgid "Quota settings"
+msgstr "Ustawienia Quota"
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:145
+msgid "Quota occupation limit before warning users (%)"
+msgstr ""
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:146
+#, php-format
+msgid "Warn users when using more than X% of their mail quota"
+msgstr ""
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:154
+msgid "Free/Busy settings"
+msgstr "Ustawienia wolny / zajęty"
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:157
+#: admin/systems/services/kolab/class_serviceKolab.inc:158
+msgid "Allow unauthenticated downloading of Free/Busy information"
+msgstr "Zezwól na nieautoryzowane pobieranie informacji Free/Busy"
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:162
+msgid "Number of days to include when creating free/busy lists"
+msgstr ""
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:163
+msgid "Include data from X days in the past when creating free/busy lists"
+msgstr ""
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:171
+msgid "SMTP privileged networks"
+msgstr "uprzywilejowane sieci SMTP"
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:174
+msgid "Hosts/networks allowed to relay"
+msgstr "Hosty/sieci uprawnione do przekazywania"
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:175
+msgid "Hosts/networks allowed to relay (multiple values comma-seperated)"
+msgstr ""
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:183
+msgid "SMTP smarthost/relayhost"
+msgstr "SMTP smarthost/relayhost"
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:191
+msgid "Accept Internet Mail"
+msgstr "Zezwalaj na pocztę z internetu"
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:194
+#: admin/systems/services/kolab/class_serviceKolab.inc:195
+msgid "Accept mail from other domains over non-authenticated SMTP"
+msgstr "Akceptuj pocztę z innych domen przez nie-autentykowane SMTP"
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:269
+msgid "Internal error"
+msgstr "Błąd wewnętrzny"
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:269
+msgid "Kolab account does not exist!"
+msgstr ""
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:273
+msgid "Error"
+msgstr "Błąd"
+
+#: admin/systems/services/kolab/class_serviceKolab.inc:273
+msgid "hostname"
+msgstr ""
 
 #: personal/kolab/class_kolabAccount.inc:82
 msgid "Kolab"
@@ -25,83 +246,83 @@ msgstr "Kolab"
 msgid "Kolab account settings"
 msgstr "Ustawienia konta Kolab"
 
-#: personal/kolab/class_kolabAccount.inc:101
+#: personal/kolab/class_kolabAccount.inc:100
 msgid "Kolab account"
 msgstr "Konto Kolab"
 
-#: personal/kolab/class_kolabAccount.inc:105
+#: personal/kolab/class_kolabAccount.inc:104
 msgid "Delegations"
 msgstr "Delegacje"
 
-#: personal/kolab/class_kolabAccount.inc:113
+#: personal/kolab/class_kolabAccount.inc:112
 msgid "Mail size"
 msgstr "Rozmiar poczty"
 
-#: personal/kolab/class_kolabAccount.inc:116
+#: personal/kolab/class_kolabAccount.inc:115
 msgid "No mail size restriction for this account"
 msgstr "Brak ograniczeń co do wielkości poczty dla tego konta"
 
-#: personal/kolab/class_kolabAccount.inc:123
+#: personal/kolab/class_kolabAccount.inc:122
 msgid "Free Busy information"
 msgstr "Informacja FreeBusy"
 
-#: personal/kolab/class_kolabAccount.inc:126
+#: personal/kolab/class_kolabAccount.inc:125
 msgid "URL"
 msgstr "URL"
 
-#: personal/kolab/class_kolabAccount.inc:131
+#: personal/kolab/class_kolabAccount.inc:130
 msgid "Future"
 msgstr "Przyszłość"
 
-#: personal/kolab/class_kolabAccount.inc:131
+#: personal/kolab/class_kolabAccount.inc:130
 msgid "days"
 msgstr "dni"
 
-#: personal/kolab/class_kolabAccount.inc:139
-#: personal/kolab/class_kolabAccount.inc:142
-#: personal/kolab/class_kolabAccount.inc:150
-#: personal/kolab/class_kolabAccount.inc:160
+#: personal/kolab/class_kolabAccount.inc:138
+#: personal/kolab/class_kolabAccount.inc:141
+#: personal/kolab/class_kolabAccount.inc:149
+#: personal/kolab/class_kolabAccount.inc:159
 msgid "Invitation policy"
 msgstr "Polityka zapraszania"
 
-#: personal/kolab/class_kolabAccount.inc:145
+#: personal/kolab/class_kolabAccount.inc:144
 msgid "Default policy"
 msgstr ""
 
-#: personal/kolab/class_kolabAccount.inc:145
+#: personal/kolab/class_kolabAccount.inc:144
 msgid "Default invitation policy"
 msgstr ""
 
-#: personal/kolab/class_kolabAccount.inc:147
-#: personal/kolab/class_kolabAccount.inc:156
+#: personal/kolab/class_kolabAccount.inc:146
+#: personal/kolab/class_kolabAccount.inc:155
 msgid "Manual"
 msgstr "Ręczne"
 
-#: personal/kolab/class_kolabAccount.inc:147
-#: personal/kolab/class_kolabAccount.inc:156
+#: personal/kolab/class_kolabAccount.inc:146
+#: personal/kolab/class_kolabAccount.inc:155
 msgid "Always accept"
 msgstr "Zawsze akceptuj"
 
-#: personal/kolab/class_kolabAccount.inc:147
-#: personal/kolab/class_kolabAccount.inc:156
+#: personal/kolab/class_kolabAccount.inc:146
+#: personal/kolab/class_kolabAccount.inc:155
 msgid "Always reject"
 msgstr "Zawsze odrzuć"
 
-#: personal/kolab/class_kolabAccount.inc:147
-#: personal/kolab/class_kolabAccount.inc:156
+#: personal/kolab/class_kolabAccount.inc:146
+#: personal/kolab/class_kolabAccount.inc:155
 msgid "Reject if conflicts"
 msgstr "Odmów jeśli koliduje"
 
-#: personal/kolab/class_kolabAccount.inc:147
-#: personal/kolab/class_kolabAccount.inc:156
+#: personal/kolab/class_kolabAccount.inc:146
+#: personal/kolab/class_kolabAccount.inc:155
 msgid "Manual if conflicts"
 msgstr "Ustaw ręcznie jeśli koliduje"
 
-#: personal/kolab/class_kolabAccount.inc:153
+#: personal/kolab/class_kolabAccount.inc:152
 msgid "mail address"
 msgstr ""
 
-#: personal/kolab/class_kolabAccount.inc:154
+#: personal/kolab/class_kolabAccount.inc:153
 msgid "policy for this mail address"
 msgstr ""
 
@@ -164,197 +385,26 @@ msgid ""
 "Mail settings cannot be removed while there are delegations configured!"
 msgstr ""
 
-#: personal/mail/kolab/class_mail-methods-kolab.inc:281
+#: personal/mail/kolab/class_mail-methods-kolab.inc:280
 msgid "Waiting for kolab to remove mail properties..."
 msgstr ""
 
-#: personal/mail/kolab/class_mail-methods-kolab.inc:284
+#: personal/mail/kolab/class_mail-methods-kolab.inc:283
 msgid "Please remove the mail settings first!"
 msgstr ""
 
-#: admin/systems/services/kolab/class_serviceKolab.inc:29
-msgid "Enable MX lookup for relayhost"
-msgstr "Włącz sprawdzanie MX dla relayhosta"
+#: admin/ogroups/kolab/mail.tpl.c:2
+msgid "Mail distribution list"
+msgstr "Pocztowa lista dystrybucyjna"
 
-#: admin/systems/services/kolab/class_serviceKolab.inc:32
-msgid "Relay host"
-msgstr "Host przekazujący"
+#: admin/ogroups/kolab/mail.tpl.c:5
+msgid "Primary address"
+msgstr "Adres podstawowy"
 
-#: admin/systems/services/kolab/class_serviceKolab.inc:32
-#: admin/systems/services/kolab/class_serviceKolab.inc:188
-msgid "Host used to relay mails"
-msgstr "Host użyty do przekazywania poczty"
+#: admin/ogroups/kolab/mail.tpl.c:8
+msgid "Primary mail address for this distribution list"
+msgstr "Adres podstawowy dla tej listy dystrybucyjnej"
 
-#: admin/systems/services/kolab/class_serviceKolab.inc:67
-#: admin/systems/services/kolab/class_serviceKolab.inc:68
-msgid "Kolab mail service"
-msgstr "Usługa poczty Kolab"
-
-#: admin/systems/services/kolab/class_serviceKolab.inc:68
-#: admin/systems/services/kolab/class_serviceKolab.inc:106
-msgid "Services"
-msgstr "Usługi"
-
-#: admin/systems/services/kolab/class_serviceKolab.inc:84
-msgid "Generic"
-msgstr "Ogólne"
-
-#: admin/systems/services/kolab/class_serviceKolab.inc:90
-msgid "Postfix mydomain"
-msgstr "Postfix mydomain"
-
-#: admin/systems/services/kolab/class_serviceKolab.inc:90
-msgid "Postfix domain name"
+#: admin/ogroups/kolab/paste_mail.tpl.c:5
+msgid "Please enter a mail address"
 msgstr ""
-
-#: admin/systems/services/kolab/class_serviceKolab.inc:94
-msgid "Cyrus admins"
-msgstr ""
-
-#: admin/systems/services/kolab/class_serviceKolab.inc:94
-msgid "Cyrus admins for kolab server"
-msgstr ""
-
-#: admin/systems/services/kolab/class_serviceKolab.inc:99
-msgid "Mail domains"
-msgstr ""
-
-#: admin/systems/services/kolab/class_serviceKolab.inc:99
-msgid "Postfix mydestination"
-msgstr "Postfix mydestination"
-
-#: admin/systems/services/kolab/class_serviceKolab.inc:109
-msgid "POP3 service"
-msgstr "Usługa POP3"
-
-#: admin/systems/services/kolab/class_serviceKolab.inc:109
-msgid "Enable POP3 service"
-msgstr ""
-
-#: admin/systems/services/kolab/class_serviceKolab.inc:113
-msgid "POP3/SSL service"
-msgstr "Usługa POP3/SSL"
-
-#: admin/systems/services/kolab/class_serviceKolab.inc:113
-msgid "Enable POP3/SSL service"
-msgstr ""
-
-#: admin/systems/services/kolab/class_serviceKolab.inc:117
-msgid "IMAP service"
-msgstr "Usługa IMAP"
-
-#: admin/systems/services/kolab/class_serviceKolab.inc:117
-msgid "Enable IMAP service"
-msgstr ""
-
-#: admin/systems/services/kolab/class_serviceKolab.inc:121
-msgid "IMAP/SSL service"
-msgstr "Usługa IMAP/SSL"
-
-#: admin/systems/services/kolab/class_serviceKolab.inc:121
-msgid "Enable IMAP/SSL service"
-msgstr ""
-
-#: admin/systems/services/kolab/class_serviceKolab.inc:125
-msgid "Sieve service"
-msgstr "Usługa Sieve"
-
-#: admin/systems/services/kolab/class_serviceKolab.inc:125
-msgid "Enable Sieve service"
-msgstr ""
-
-#: admin/systems/services/kolab/class_serviceKolab.inc:129
-msgid "FTP FreeBusy service (legacy)"
-msgstr ""
-
-#: admin/systems/services/kolab/class_serviceKolab.inc:130
-msgid "FTP FreeBusy service (legacy, not interoperable with Kolab2 FreeBusy)"
-msgstr "Usługa FTP FreeBusy (przestarzała, nie działa z FreeBusy w Kolab2)"
-
-#: admin/systems/services/kolab/class_serviceKolab.inc:134
-msgid "HTTP FreeBusy service (legacy)"
-msgstr "Usługa HTTP FreeBusy (przestarzała)"
-
-#: admin/systems/services/kolab/class_serviceKolab.inc:138
-msgid "Amavis email scanning"
-msgstr ""
-
-#: admin/systems/services/kolab/class_serviceKolab.inc:138
-msgid "Amavis email scanning (virus/spam)"
-msgstr "Skanowanie poczty (wirus/spam)"
-
-#: admin/systems/services/kolab/class_serviceKolab.inc:144
-msgid "Quota settings"
-msgstr "Ustawienia Quota"
-
-#: admin/systems/services/kolab/class_serviceKolab.inc:147
-msgid "Quota occupation limit before warning users (%)"
-msgstr ""
-
-#: admin/systems/services/kolab/class_serviceKolab.inc:148
-#, php-format
-msgid "Warn users when using more than X% of their mail quota"
-msgstr ""
-
-#: admin/systems/services/kolab/class_serviceKolab.inc:156
-msgid "Free/Busy settings"
-msgstr "Ustawienia wolny / zajęty"
-
-#: admin/systems/services/kolab/class_serviceKolab.inc:159
-#: admin/systems/services/kolab/class_serviceKolab.inc:160
-msgid "Allow unauthenticated downloading of Free/Busy information"
-msgstr "Zezwól na nieautoryzowane pobieranie informacji Free/Busy"
-
-#: admin/systems/services/kolab/class_serviceKolab.inc:164
-msgid "Number of days to include when creating free/busy lists"
-msgstr ""
-
-#: admin/systems/services/kolab/class_serviceKolab.inc:165
-msgid "Include data from X days in the past when creating free/busy lists"
-msgstr ""
-
-#: admin/systems/services/kolab/class_serviceKolab.inc:173
-msgid "SMTP privileged networks"
-msgstr "uprzywilejowane sieci SMTP"
-
-#: admin/systems/services/kolab/class_serviceKolab.inc:176
-msgid "Hosts/networks allowed to relay"
-msgstr "Hosty/sieci uprawnione do przekazywania"
-
-#: admin/systems/services/kolab/class_serviceKolab.inc:177
-msgid "Hosts/networks allowed to relay (multiple values comma-seperated)"
-msgstr ""
-
-#: admin/systems/services/kolab/class_serviceKolab.inc:185
-msgid "SMTP smarthost/relayhost"
-msgstr "SMTP smarthost/relayhost"
-
-#: admin/systems/services/kolab/class_serviceKolab.inc:193
-msgid "Accept Internet Mail"
-msgstr "Zezwalaj na pocztę z internetu"
-
-#: admin/systems/services/kolab/class_serviceKolab.inc:196
-#: admin/systems/services/kolab/class_serviceKolab.inc:197
-msgid "Accept mail from other domains over non-authenticated SMTP"
-msgstr "Akceptuj pocztę z innych domen przez nie-autentykowane SMTP"
-
-#: admin/systems/services/kolab/class_serviceKolab.inc:271
-msgid "Internal error"
-msgstr "Błąd wewnętrzny"
-
-#: admin/systems/services/kolab/class_serviceKolab.inc:271
-msgid "Kolab account does not exist!"
-msgstr ""
-
-#: admin/systems/services/kolab/class_serviceKolab.inc:275
-msgid "Error"
-msgstr "Błąd"
-
-#: admin/systems/services/kolab/class_serviceKolab.inc:275
-msgid "hostname"
-msgstr ""
-
-#: admin/systems/services/kolab/class_serviceKolab.inc:284
-#: admin/systems/services/kolab/class_serviceKolab.inc:295
-msgid "LDAP error"
-msgstr "błąd LDAP"

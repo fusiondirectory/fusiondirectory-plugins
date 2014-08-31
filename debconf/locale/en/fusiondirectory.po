@@ -1,0 +1,137 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR FusionDirectory Project
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
+"POT-Creation-Date: 2014-08-28 17:47+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: admin/debconfProfile/class_debconfProfileManagement.inc:32
+#: admin/systems/debconf/class_debconfStartup.inc:111
+msgid "Debconf"
+msgstr ""
+
+#: admin/debconfProfile/class_debconfProfileManagement.inc:33
+msgid "Debconf profile management"
+msgstr ""
+
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:71
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:84
+msgid "Error"
+msgstr ""
+
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:71
+msgid "There is no template for this profile"
+msgstr ""
+
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:85
+#, php-format
+msgid "Can't find entry %s in LDAP for profile %s"
+msgstr ""
+
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:134
+msgid "LDAP error"
+msgstr ""
+
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:137
+msgid "LDIF error"
+msgstr ""
+
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:146
+#, php-format
+msgid ""
+"In order to import a debconf file, please run the following command : <br/"
+"><i>debconf2ldif.pl -b ou=<b>name</b>,%s -k <b>filename</b> > template.ldif "
+"</i><br/>With <b>filename</b> the file name, and <b>name</b> the desired "
+"name for the template.<br/>"
+msgstr ""
+
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:162
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:166
+msgid "Debconf profile"
+msgstr ""
+
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:163
+msgid "Debconf profile generic"
+msgstr ""
+
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:181
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:184
+#: admin/debconfProfile/debconfProfile-filter.tpl.c:5
+msgid "Name"
+msgstr ""
+
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:183
+msgid "Import a debconf file"
+msgstr ""
+
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:184
+msgid "Name of this debconf template"
+msgstr ""
+
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:188
+msgid "Entries"
+msgstr ""
+
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:190
+msgid "Debconf template answers"
+msgstr ""
+
+#: admin/debconfProfile/class_debconfProfileGeneric.inc:205
+msgid "Import"
+msgstr ""
+
+#: admin/systems/debconf/class_debconfStartup.inc:65
+msgid "Debconf settings"
+msgstr ""
+
+#: admin/systems/debconf/class_debconfStartup.inc:68
+msgid "Profile"
+msgstr ""
+
+#: admin/systems/debconf/class_debconfStartup.inc:68
+msgid "Debconf preseed profile to be used for installation"
+msgstr ""
+
+#: admin/systems/debconf/class_debconfStartup.inc:72
+msgid "Release"
+msgstr ""
+
+#: admin/systems/debconf/class_debconfStartup.inc:72
+msgid "Debian release to install"
+msgstr ""
+
+#: admin/systems/debconf/class_debconfStartup.inc:77
+msgid "Boot kernel"
+msgstr ""
+
+#: admin/systems/debconf/class_debconfStartup.inc:77
+msgid "Linux kernel to be installed and booted"
+msgstr ""
+
+#: admin/systems/debconf/class_debconfStartup.inc:81
+msgid "Boot kernel parameters"
+msgstr ""
+
+#: admin/systems/debconf/class_debconfStartup.inc:81
+msgid "Linux kernel parameters to be ran"
+msgstr ""
+
+#: admin/systems/debconf/class_debconfStartup.inc:112
+msgid "Debconf preseed startup"
+msgstr ""
+
+#: admin/debconfProfile/debconfProfile-filter.tpl.c:2
+msgid "Filter"
+msgstr ""

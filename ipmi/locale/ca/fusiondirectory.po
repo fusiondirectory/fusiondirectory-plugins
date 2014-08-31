@@ -1,80 +1,54 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# Copyright (C) YEAR FusionDirectory Project
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-21 18:26+0200\n"
-"PO-Revision-Date: 2013-09-11 09:23+0000\n"
+"Project-Id-Version: FusionDirectory-108\n"
+"Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
+"POT-Creation-Date: 2014-08-18 16:07+0200\n"
+"PO-Revision-Date: 2014-08-26 14:13+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Catalan (http://www.transifex.com/projects/p/FusionDirectory/language/ca/)\n"
+"Language-Team: Catalan (http://www.transifex.com/projects/p/FusionDirectory-108/language/ca/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ca\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: config/ipmi/class_ipmiConfig.inc:28
-msgid "IPMI configuration"
+#: admin/systems/ipmi/class_ipmiClient.inc:31
+msgid "IPMI client"
 msgstr ""
 
-#: config/ipmi/class_ipmiConfig.inc:29
-msgid "FusionDirectory ipmi plugin configuration"
+#: admin/systems/ipmi/class_ipmiClient.inc:32
+msgid "Edit IPMI client settings"
 msgstr ""
 
-#: config/ipmi/class_ipmiConfig.inc:42
-msgid "LDAP tree"
-msgstr ""
-
-#: config/ipmi/class_ipmiConfig.inc:45
-msgid "IPMI RDN"
-msgstr ""
-
-#: config/ipmi/class_ipmiConfig.inc:45
-msgid "Branch in which IPMI objects will be stored (required)"
-msgstr ""
-
-#: admin/systems/ipmi/class_ipmiCredentials.inc:30
-msgid "Credentials"
-msgstr ""
-
-#: admin/systems/ipmi/class_ipmiCredentials.inc:31
-msgid "IPMI credentials"
-msgstr ""
-
-#: admin/systems/ipmi/class_ipmiCredentials.inc:47
+#: admin/systems/ipmi/class_ipmiClient.inc:45
 msgid "IPMI client settings"
 msgstr ""
 
-#: admin/systems/ipmi/class_ipmiCredentials.inc:50
+#: admin/systems/ipmi/class_ipmiClient.inc:48
+msgid "IP"
+msgstr ""
+
+#: admin/systems/ipmi/class_ipmiClient.inc:48
+msgid "IP of the IPMI interface"
+msgstr ""
+
+#: admin/systems/ipmi/class_ipmiClient.inc:52
 msgid "User login"
 msgstr ""
 
-#: admin/systems/ipmi/class_ipmiCredentials.inc:50
+#: admin/systems/ipmi/class_ipmiClient.inc:52
 msgid "IPMI user login"
 msgstr ""
 
-#: admin/systems/ipmi/class_ipmiCredentials.inc:54
+#: admin/systems/ipmi/class_ipmiClient.inc:57
 msgid "User password"
 msgstr ""
 
-#: admin/systems/ipmi/class_ipmiCredentials.inc:54
+#: admin/systems/ipmi/class_ipmiClient.inc:57
 msgid "IPMI user password"
-msgstr ""
-
-#: admin/systems/ipmi/class_ipmiGeneric.inc:31
-msgid "Generic"
-msgstr "Genèric"
-
-#: admin/systems/ipmi/class_ipmiGeneric.inc:32
-msgid "IPMI generic"
-msgstr ""
-
-#: admin/systems/ipmi/class_ipmiGeneric.inc:34
-#: admin/systems/ipmi/class_ipmiGeneric.inc:36
-#: admin/systems/ipmi/class_ipmiGeneric.inc:48
-msgid "IPMI"
 msgstr ""

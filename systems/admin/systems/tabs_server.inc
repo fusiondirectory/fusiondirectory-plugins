@@ -33,30 +33,6 @@ class servtabs extends tabs
   }
 
 
-  /*! \brief Reinitializes the tab classes with fresh ldap values.
-    This maybe usefull if for example the apply button was pressed.
-   */
-  function re_init()
-  {
-    $baseobject = NULL;
-    foreach ($this->by_object as $name => $object) {
-      $class = get_class($object);
-      if (in_array($class, array("reference","acl"))) {
-        continue;
-      }
-      if ($baseobject === NULL) {
-        $baseobject = new $class($this->config, $this->dn, NULL, $this);
-        $baseobject->enable_CSN_check();
-        $this->by_object[$name] = $baseobject;
-      } else {
-        $this->by_object[$name] = new $class($this->config, $this->dn, $baseobject, $this);
-      }
-      $this->by_object[$name]->parent = &$this;
-      $this->by_object[$name]->set_acl_category($this->acl_category);
-    }
-  }
-
-
   function save_object($save_current = FALSE)
   {
     parent::save_object($save_current);
@@ -77,11 +53,11 @@ class servtabs extends tabs
     if ($baseobject->orig_dn != "new") {
       if ($this->config->get_cfg_value("accountPrimaryAttribute") == "cn") {
         if (strtolower($baseobject->orig_dn) != (strtolower($this->dn))) {
-          $baseobject->recursive_move($baseobject->orig_dn, $this->dn);
+          $baseobject->move($baseobject->orig_dn, $this->dn);
         }
       } else {
         if ($baseobject->orig_dn != $this->dn) {
-          $baseobject->recursive_move($baseobject->orig_dn, $this->dn);
+          $baseobject->move($baseobject->orig_dn, $this->dn);
         }
       }
     }
@@ -100,7 +76,6 @@ class servtabs extends tabs
     $config->load_servers();
     session::set('config', $config);
   }
-
 }
 
 ?>

@@ -1,21 +1,157 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# Copyright (C) YEAR FusionDirectory Project
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# fusiondirectory <contact@fusiondirectory.org>, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-21 18:26+0200\n"
-"PO-Revision-Date: 2013-09-11 09:23+0000\n"
+"Project-Id-Version: FusionDirectory-108\n"
+"Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
+"POT-Creation-Date: 2014-08-18 16:07+0200\n"
+"PO-Revision-Date: 2014-08-28 10:50+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory/language/fr/)\n"
+"Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory-108/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: admin/repository/class_repositoryDistribution.inc:30
+#: admin/repository/class_repositoryDistribution.inc:31
+#: admin/repository/class_repositoryDistribution.inc:33
+#: admin/repository/class_repositoryDistribution.inc:56
+msgid "Repository distribution"
+msgstr "Distribution du dépôt"
+
+#: admin/repository/class_repositoryDistribution.inc:60
+#: admin/repository/class_repositorySection.inc:57
+#: admin/repository/class_buildRepository.inc:63
+msgid "Name"
+msgstr "Nom"
+
+#: admin/repository/class_repositoryDistribution.inc:60
+msgid "Unique name for this distribution"
+msgstr "Nom unique pour cette distribution"
+
+#: admin/repository/class_repositoryDistribution.inc:64
+#: admin/repository/class_repositorySection.inc:61
+#: admin/repository/class_buildRepository.inc:67
+msgid "description"
+msgstr "Description"
+
+#: admin/repository/class_repositoryDistribution.inc:64
+msgid "Description of this distribution"
+msgstr "Description pour cette distribution"
+
+#: admin/repository/class_repositoryDistribution.inc:69
+msgid "Section"
+msgstr "Section"
+
+#: admin/repository/class_repositoryDistribution.inc:69
+msgid "The sections this distribution contains"
+msgstr "Les section que cette distribution contient"
+
+#: admin/repository/class_repositoryDistribution.inc:76
+#: admin/repository/class_repositorySection.inc:66
+msgid "Based on"
+msgstr "basé sur"
+
+#: admin/repository/class_repositoryDistribution.inc:76
+msgid "The distributions this one is based on"
+msgstr "Les distributions dont celui-ci est basé sur"
+
+#: admin/repository/class_repositorySection.inc:30
+#: admin/repository/class_repositorySection.inc:31
+#: admin/repository/class_repositorySection.inc:33
+#: admin/repository/class_repositorySection.inc:53
+msgid "Repository section"
+msgstr "Section du dépôt"
+
+#: admin/repository/class_repositorySection.inc:57
+msgid "Unique name for this section"
+msgstr "Nom unique pour cette section"
+
+#: admin/repository/class_repositorySection.inc:61
+msgid "Description of this section"
+msgstr "Description pour cette section"
+
+#: admin/repository/class_repositorySection.inc:66
+msgid "The sections this one is based on"
+msgstr "Les sections dont celui-ci est basé sur"
+
+#: admin/repository/class_repositoryManagement.inc:34
+#: admin/repository/class_repositoryManagement.inc:35
+msgid "Repository management"
+msgstr "Gestion des dépots"
+
+#: admin/repository/class_repositoryManagement.inc:40
+msgid "Repository"
+msgstr "Dépôt"
+
+#: admin/repository/class_buildRepository.inc:30
+#: admin/repository/class_buildRepository.inc:31
+#: admin/repository/class_buildRepository.inc:33
+#: admin/repository/class_buildRepository.inc:59
+msgid "Build repository"
+msgstr "Construire un dépôt"
+
+#: admin/repository/class_buildRepository.inc:63
+msgid "Unique name for this repository"
+msgstr "Nom unique pour ce dépôt"
+
+#: admin/repository/class_buildRepository.inc:72
+msgid "Distribution sections"
+msgstr "Section du dépôt"
+
+#: admin/repository/class_buildRepository.inc:72
+msgid "The distribution sections this repository provides"
+msgstr "Les sections de la distribution disponibles sur ce dépôt"
+
+#: admin/repository/class_buildRepository.inc:78
+msgid "Private"
+msgstr "Privé"
+
+#: admin/repository/class_buildRepository.inc:78
+msgid "Is this repository private or public?"
+msgstr "Ce dépôt est privé ou public?"
+
+#: admin/repository/class_buildRepository.inc:82
+msgid "Type"
+msgstr "Type"
+
+#: admin/repository/class_buildRepository.inc:82
+msgid "Repository type"
+msgstr "Type de dépôt"
+
+#: admin/repository/class_buildRepository.inc:89
+msgid "Members"
+msgstr "Membres"
+
+#: admin/repository/class_buildRepository.inc:92
+msgid "Admins"
+msgstr "Administrateurs"
+
+#: admin/repository/class_buildRepository.inc:92
+msgid "Admins of this repository"
+msgstr "Administrateurs de ce dépôt"
+
+#: admin/repository/class_buildRepository.inc:96
+msgid "Uploaders"
+msgstr "Uploaders"
+
+#: admin/repository/class_buildRepository.inc:96
+msgid "Uploaders of this repository"
+msgstr "Uploaders de ce dépôt"
+
+#: admin/repository/class_buildRepository.inc:100
+msgid "Users"
+msgstr "Utilisateurs"
+
+#: admin/repository/class_buildRepository.inc:100
+msgid "Users of this repository"
+msgstr "Utilisateurs de ce dépôt"
 
 #: config/repository/class_repositoryConfig.inc:28
 msgid "Repository configuration"
@@ -37,129 +173,10 @@ msgstr "RDN Repository"
 msgid "Branch in which repository objects will be stored"
 msgstr "Branche où seront stockés les objets dépots"
 
-#: admin/repository/class_repositoryManagement.inc:35
-#: admin/repository/class_repositoryManagement.inc:36
-msgid "Repository management"
-msgstr "Gestion des dépots"
+#: config/repository/class_repositoryConfig.inc:51
+msgid "Repository types"
+msgstr "Types de dépôt"
 
-#: admin/repository/class_repositoryManagement.inc:41
-msgid "Repository"
-msgstr "Dépôt"
-
-#: admin/repository/class_buildRepository.inc:30
-#: admin/repository/class_buildRepository.inc:31
-#: admin/repository/class_buildRepository.inc:33
-#: admin/repository/class_buildRepository.inc:48
-msgid "Build repository"
-msgstr "Construire un dépôt"
-
-#: admin/repository/class_buildRepository.inc:52
-#: admin/repository/class_repositoryDistribution.inc:52
-#: admin/repository/class_repositorySection.inc:52
-msgid "Name"
-msgstr "Nom"
-
-#: admin/repository/class_buildRepository.inc:52
-msgid "Unique name for this repository"
-msgstr "Nom unique pour ce dépôt"
-
-#: admin/repository/class_buildRepository.inc:56
-#: admin/repository/class_repositoryDistribution.inc:56
-#: admin/repository/class_repositorySection.inc:56
-msgid "description"
-msgstr "Description"
-
-#: admin/repository/class_buildRepository.inc:62
-msgid "Distribution"
-msgstr "Distribution"
-
-#: admin/repository/class_buildRepository.inc:62
-msgid "The distribution this repository provides"
-msgstr "Les distributions que fournit ce dépôt"
-
-#: admin/repository/class_buildRepository.inc:69
-msgid "Section"
-msgstr "Section"
-
-#: admin/repository/class_buildRepository.inc:69
-msgid "The sections this repository provides"
-msgstr "Section disponibles sur ce dépôt"
-
-#: admin/repository/class_buildRepository.inc:75
-msgid "Private"
-msgstr "Privé"
-
-#: admin/repository/class_buildRepository.inc:75
-msgid "Is this repository private or public?"
-msgstr "Ce dépôt est privé ou public?"
-
-#: admin/repository/class_buildRepository.inc:81
-msgid "Members"
-msgstr "Membres"
-
-#: admin/repository/class_buildRepository.inc:84
-msgid "Admins"
-msgstr "Administrateurs"
-
-#: admin/repository/class_buildRepository.inc:84
-msgid "Admins of this repository"
-msgstr "Administrateurs de ce dépôt"
-
-#: admin/repository/class_buildRepository.inc:88
-msgid "Uploaders"
-msgstr "Uploaders"
-
-#: admin/repository/class_buildRepository.inc:88
-msgid "Uploaders of this repository"
-msgstr "Uploaders de ce dépôt"
-
-#: admin/repository/class_buildRepository.inc:92
-msgid "Users"
-msgstr "Utilisateurs"
-
-#: admin/repository/class_buildRepository.inc:92
-msgid "Users of this repository"
-msgstr "Utilisateurs de ce dépôt"
-
-#: admin/repository/class_repositoryDistribution.inc:30
-#: admin/repository/class_repositoryDistribution.inc:31
-#: admin/repository/class_repositoryDistribution.inc:33
-#: admin/repository/class_repositoryDistribution.inc:48
-msgid "Repository distribution"
-msgstr "Distribution du dépôt"
-
-#: admin/repository/class_repositoryDistribution.inc:52
-msgid "Unique name for this distribution"
-msgstr "Nom unique pour cette distribution"
-
-#: admin/repository/class_repositoryDistribution.inc:56
-msgid "Description of this distribution"
-msgstr "Description pour cette distribution"
-
-#: admin/repository/class_repositoryDistribution.inc:61
-#: admin/repository/class_repositorySection.inc:61
-msgid "Based on"
-msgstr "basé sur"
-
-#: admin/repository/class_repositoryDistribution.inc:61
-msgid "The distributions this one is based on"
-msgstr "Les distributions dont celui-ci est basé sur"
-
-#: admin/repository/class_repositorySection.inc:30
-#: admin/repository/class_repositorySection.inc:31
-#: admin/repository/class_repositorySection.inc:33
-#: admin/repository/class_repositorySection.inc:48
-msgid "Repository section"
-msgstr "Section du dépôt"
-
-#: admin/repository/class_repositorySection.inc:52
-msgid "Unique name for this section"
-msgstr "Nom unique pour cette section"
-
-#: admin/repository/class_repositorySection.inc:56
-msgid "Description of this section"
-msgstr "Description pour cette section"
-
-#: admin/repository/class_repositorySection.inc:61
-msgid "The sections this one is based on"
-msgstr "Les sections dont celui-ci est basé sur"
+#: config/repository/class_repositoryConfig.inc:51
+msgid "Available repository types"
+msgstr "Type de tests disponibles"
