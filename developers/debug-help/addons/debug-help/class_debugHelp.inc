@@ -147,6 +147,7 @@ class debugHelp extends simplePlugin
       if (isset($config->data['OBJECTS'][$tabclass])) {
         $tabclass = 'obj_'.$tabclass;
       } else {
+        $tabclass = preg_replace('/-/', '_', $tabclass);
         $tabclass = 'tabclass_'.$tabclass;
         $nodes  .= "\t".'node [shape=plaintext,label="'.$tabclass.'",color=white] '.$tabclass.";\n";
       }
