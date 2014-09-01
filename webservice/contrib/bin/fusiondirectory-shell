@@ -34,6 +34,8 @@ GetOptions(
   'server=s'    => \$ldap_server
 ) or pod2usage(2);
 pod2usage(1) if $help;
+pod2usage(2) if not defined $login;
+pod2usage(2) if not defined $password;
 
 my $current_base;
 
