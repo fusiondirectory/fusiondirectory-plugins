@@ -133,6 +133,12 @@ my $term = new Term::ShellUI(
       maxargs => 0,
       proc    => \&command_types,
     },
+    "create" => {
+      desc    => "Create an object of a given type",
+      minargs => 1,
+      maxargs => 1,
+      proc    => \&command_create,
+    },
     "exit" => {
       desc    => "Exit FusionDirectory shell",
       maxargs => 0,
@@ -309,6 +315,33 @@ sub command_types
   my $types = rpc_call($client, 'listTypes', [$sid]);
   while (my ($type, $display) = each(%$types)) {
     printf ("%-30s %s\n", $display, $type);
+  }
+}
+
+sub command_create
+{
+  my ($type) = @_;
+  my $fields = rpc_call($client, 'fields', [$sid,$type]);
+  my %values = ();
+  if (ref $fields eq ref {}) {
+    foreach my $section (values %$fields) {
+      print '['.$section->{'name'}.']'."\n";
+      if (ref $section->{'attrs'} eq ref {}) {
+        foreach my $field (@{$section->{'attrs'}}) {
+          if ($field->{'required'} && !$field->{'disabled'}) {
+            $values{$field->{'id'}} = ask_field($field);
+          }
+        }
+      }
+    }
+  }
+  my $result = rpc_call($client, 'update', [$sid,$type,undef,undef,\%values]);
+  if (ref $result eq ref {}) {
+    foreach my $error (@{$result->{'errors'}}) {
+      print "Error: $error\n";
+    }
+  } else {
+    print "$result\n";
   }
 }
 

@@ -268,6 +268,34 @@ class fdRPCService
   }
 
   /*!
+   * \brief Update values of an object's attributes
+   */
+  protected function _update($type, $dn, $tab, $values)
+  {
+    $this->checkAccess($type, $tab);
+
+    if ($dn === NULL) {
+      $tabobject = objects::create($type);
+    } else {
+      $tabobject = objects::open($dn, $type);
+    }
+    if ($tab === NULL) {
+      $tab = $tabobject->current;
+    } else {
+      $tabobject->current = $tab;
+    }
+    $_POST                  = $values;
+    $_POST[$tab.'_posted']  = TRUE;
+    $tabobject->save_object();
+    $errors = $tabobject->check();
+    if (!empty($errors)) {
+      return array('errors' => $errors);
+    }
+    $tabobject->save();
+    return $tabobject->dn;
+  }
+
+  /*!
    * \brief Get the session ID
    */
   protected function _getId ()
@@ -287,6 +315,8 @@ class fdRPCService
 
 $service = new fdRPCService();
 if (!jsonRPCServer::handle($service)) {
-  echo "No request received\n";
+  echo "no request\n";
+  echo session_id()."\n";
+  print_r($_SERVER);
 }
 ?>
