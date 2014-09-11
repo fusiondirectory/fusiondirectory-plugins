@@ -1,9 +1,8 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003  Cajus Pollmeier
-  Copyright (C) 2011-2013  FusionDirectory
+  Copyright (C) 2011-2014  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,55 +19,10 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class servtabs extends tabs
+class servtabs extends simpleTabs
 {
-  public $was_activated = FALSE;
-
-  function __construct($config, $data, $dn, $category, $copied_object = NULL)
-  {
-    parent::__construct($config, $data, $dn, $category, $copied_object);
-
-    /* Add references/acls/snapshots */
-    $this->addSpecialTabs();
-  }
-
-
-  function save_object($save_current = FALSE)
-  {
-    parent::save_object($save_current);
-
-    $baseobject                   = $this->getBaseObject();
-    $baseobject->netConfigDNS->cn = $baseobject->cn;
-  }
-
-
   function save()
   {
-    /* Check for new 'dn', in order to propagate the
-       'dn' to all plugins */
-    $baseobject = $this->getBaseObject();
-    $this->dn   = "cn=".$baseobject->cn.",".get_ou('serverRDN').$baseobject->base;
-
-    /* cn is not case sensitive for ldap, but for php it is!! */
-    if ($baseobject->orig_dn != "new") {
-      if ($this->config->get_cfg_value("accountPrimaryAttribute") == "cn") {
-        if (strtolower($baseobject->orig_dn) != (strtolower($this->dn))) {
-          $baseobject->move($baseobject->orig_dn, $this->dn);
-        }
-      } else {
-        if ($baseobject->orig_dn != $this->dn) {
-          $baseobject->move($baseobject->orig_dn, $this->dn);
-        }
-      }
-    }
-
-    $baseobject->dn = $this->dn;
-
-    foreach ($this->by_object as $key => $obj) {
-      $this->by_object[$key]->dn = $this->dn;
-      $this->by_object[$key]->cn = $baseobject->cn;
-    }
-
     parent::save();
 
     /* Reload server settings after saving */

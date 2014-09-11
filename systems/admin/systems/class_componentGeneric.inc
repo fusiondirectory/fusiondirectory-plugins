@@ -43,7 +43,6 @@ class componentGeneric extends simplePlugin
           'filter'      => '(&(objectClass=ieee802Device)(objectClass=device)(objectClass=ipHost))',
           'icon'        => 'geticon.php?context=devices&icon=network-device&size=16',
           'ou'          => get_ou('componentRDN'),
-          'tabClass'    => 'componenttabs',
         )
       ),
 

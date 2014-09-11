@@ -1013,7 +1013,6 @@ class printgeneric extends plugin
           'filter'      => 'objectClass=gotoPrinter',
           'icon'        => 'geticon.php?context=devices&icon=printer&size=16',
           'ou'          => get_ou('printerRDN'),
-          'tabClass'    => 'printtabs',
         ),
         'workstation', 'terminal'
       ),

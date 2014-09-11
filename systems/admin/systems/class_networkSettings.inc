@@ -37,7 +37,6 @@ class networkSettings extends plugin
   var $orig_ipHostNumber   = "";    // IP address
   var $orig_macAddress     = "";    // Mac address
 
-  var $cn             = "";    // CN of currently edited device
   var $OrigCn         = "";    // Initial cn
   var $IPisMust       = TRUE;
   var $MACisMust      = TRUE;
@@ -84,8 +83,7 @@ class networkSettings extends plugin
     $this->attrs = &$this->parent->attrs;
 
     if (isset($this->attrs[$namingAttr][0])) {
-      $this->cn     = preg_replace("/\\\$\$/", "", $this->attrs[$namingAttr][0]);
-      $this->OrigCn = $this->cn;
+      $this->OrigCn = preg_replace("/\\\$\$/", "", $this->attrs[$namingAttr][0]);
     }
 
     /* Create list of additional ipHostNumber.
@@ -223,6 +221,12 @@ class networkSettings extends plugin
     }
   }
 
+  function getCn()
+  {
+    $namingAttr = $this->namingAttr;
+    return $this->parent->$namingAttr;
+  }
+
 
   function netmaskIsCoherent($idZone)
   {
@@ -306,7 +310,7 @@ class networkSettings extends plugin
       } else {
         $this->dialog = new dhcpHost($this->parent, $this->dhcpHostEntry, TRUE);
       }
-      $this->dialog->cn   = $this->cn;
+      $this->dialog->cn   = $this->getCn();
       $this->dialog->read_only     = !$this->acl_is_writeable("dhcpSetup");
       $this->dialog->dhcpHWAddress = "ethernet ".$this->macAddress;
       if (!empty($this->ipHostNumber)) {
@@ -457,7 +461,7 @@ class networkSettings extends plugin
     if ($this->DNS_is_account) {
       $tmp = array();
       $this->dnsEntry['exists'] = FALSE;
-      $tmp = DNS::getDNSHostEntriesDiff($this->config, $this->OrigCn, $this->dnsEntry, $this->cn);
+      $tmp = DNS::getDNSHostEntriesDiff($this->config, $this->OrigCn, $this->dnsEntry, $this->getCn());
 
       /* Delete dns */
       foreach ($tmp['del'] as $dn => $del) {
@@ -753,7 +757,7 @@ class networkSettings extends plugin
     if ($this->dhcpEnabled && $this->acl_is_writeable("dhcpSetup")) {
       if (count($this->dhcpHostEntry) == 0) {
         $this->dialog = new dhcpHost($this->parent, $this->dhcpParentNode, TRUE);
-        $this->dialog->cn = $this->cn;
+        $this->dialog->cn = $this->getCn();
         $this->dialog->dhcpHWAddress = "ethernet ".$this->macAddress;
         if (!empty($this->ipHostNumber)) {
           $this->dialog->statements->set('fixed-address', $this->ipHostNumber);
@@ -762,13 +766,13 @@ class networkSettings extends plugin
         $this->dialog->save_object();
         $this->dhcpHostEntry = $this->dialog->save();
         if (count($this->dhcpHostEntry['dhcpOption']) == 0) {
-          $this->dhcpHostEntry['dhcpOption'] = array("host-name ".$this->cn);
+          $this->dhcpHostEntry['dhcpOption'] = array("host-name ".$this->getCn());
         }
       } else {
         // Updated Host-Name entry
         foreach ($this->dhcpHostEntry['dhcpOption'] as $key => $entry) {
           if (preg_match("/^host-name/", $entry)) {
-            $this->dhcpHostEntry['dhcpOption'][$key] = "host-name ".$this->cn;
+            $this->dhcpHostEntry['dhcpOption'][$key] = "host-name ".$this->getCn();
             break;
           }
         }
@@ -815,14 +819,14 @@ class networkSettings extends plugin
         $attrs = $this->dhcpHostEntry;
         unset($attrs['MODIFIED']);
         unset($attrs['dn']);
-        $ldap->cd("cn=".$this->cn.",".$this->dhcpParentNode);
+        $ldap->cd("cn=".$this->getCn().",".$this->dhcpParentNode);
         $res = $ldap->add($attrs);
 
         $tmp = new serviceDHCP($this->config, $this->dhcpParentNode);
         $tmp->handle_post_events("add");
 
         if (!$ldap->success()) {
-          msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), "cn=".$this->cn.",".$this->dhcpParentNode, LDAP_ADD, get_class()), LDAP_ERROR);
+          msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), "cn=".$this->getCn().",".$this->dhcpParentNode, LDAP_ADD, get_class()), LDAP_ERROR);
         }
       }
 
@@ -831,15 +835,15 @@ class networkSettings extends plugin
 
         /* DHCP node changed */
         if (($this->initial_dhcpParentNode != $this->dhcpParentNode) ||
-           ($this->cn != $this->OrigCn)) {
+           ($this->getCn() != $this->OrigCn)) {
           $attrs        = $this->dhcpHostEntry;
-          $attrs['cn']  = $this->cn;
+          $attrs['cn']  = $this->getCn();
           unset($attrs['dn']);
           unset($attrs['MODIFIED']);
-          $ldap->cd("cn=".$this->cn.",".$this->dhcpParentNode);
+          $ldap->cd("cn=".$this->getCn().",".$this->dhcpParentNode);
           $res = $ldap->add($attrs);
           if (!$ldap->success()) {
-            msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), "cn=".$this->cn.",".$this->dhcpParentNode, LDAP_ADD, get_class()), LDAP_ERROR);
+            msg_dialog::display(_("LDAP error"), msgPool::ldaperror($ldap->get_error(), "cn=".$this->getCn().",".$this->dhcpParentNode, LDAP_ADD, get_class()), LDAP_ERROR);
           }
 
           $tmp = new serviceDHCP($this->config, $this->dhcpParentNode);
@@ -898,10 +902,10 @@ class networkSettings extends plugin
        */
       if ((!$this->DNS_is_account) && ($this->initially_was_account)) {
         $this->dnsEntry['exists'] = FALSE;
-        $tmp = DNS::getDNSHostEntriesDiff($this->config, $this->OrigCn, $this->dnsEntry, $this->cn);
+        $tmp = DNS::getDNSHostEntriesDiff($this->config, $this->OrigCn, $this->dnsEntry, $this->getCn());
       } else {
         $this->dnsEntry['exists'] = $this->DNS_is_account;
-        $tmp = DNS::getDNSHostEntriesDiff($this->config, $this->OrigCn, $this->dnsEntry, $this->cn);
+        $tmp = DNS::getDNSHostEntriesDiff($this->config, $this->OrigCn, $this->dnsEntry, $this->getCn());
       }
 
       /* Update SOA record if needed
@@ -1054,7 +1058,7 @@ class networkSettings extends plugin
   {
     $ldap = $this->config->get_ldap_link();
     $ldap->cd($this->config->current['BASE']);
-    $ldap->search ("(&(objectClass=dhcpHost)(cn=".$this->cn."))", array("uid","cn","dn"));
+    $ldap->search ("(&(objectClass=dhcpHost)(cn=".$this->getCn()."))", array("uid","cn","dn"));
 
     if ($ldap->count()) {
       $attr = $ldap->fetch();
@@ -1067,7 +1071,7 @@ class networkSettings extends plugin
 
   function get_dhcp_parent_node()
   {
-    return preg_replace("/^cn=".preg_quote($this->cn, '/').",/", "", $this->get_dhcp_host_entry_dn());
+    return preg_replace("/^cn=".preg_quote($this->getCn(), '/').",/", "", $this->get_dhcp_host_entry_dn());
   }
 
 
@@ -1248,7 +1252,7 @@ class NetworkSettingsAttribute extends Attribute
 
   function setManagedAttributes ($dontcare)
   {
-    trigger_error('method setManagedAttributes is not supported for BaseSelectorAttribute');
+    trigger_error('method setManagedAttributes is not supported for NetworkSettingsAttribute');
   }
 
   function setParent (&$plugin)
