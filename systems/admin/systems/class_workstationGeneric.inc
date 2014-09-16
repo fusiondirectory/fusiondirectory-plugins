@@ -377,13 +377,13 @@ class workstationGeneric extends simplePlugin
 
   function set_acl_base($base)
   {
-    plugin::set_acl_base($base);
+    parent::set_acl_base($base);
     $this->netConfigDNS->set_acl_base($base);
   }
 
   function set_acl_category($cat)
   {
-    plugin::set_acl_category($cat);
+    parent::set_acl_category($cat);
     $this->netConfigDNS->set_acl_category($cat);
   }
 
