@@ -23,7 +23,7 @@ class printGeneric extends simplePlugin
 {
   var $mainTab = TRUE;
 
-  var $objectclasses  = array('fdPrinter', 'ipHost', 'ieee802device');
+  var $objectclasses  = array('fdPrinter', 'ipHost', 'ieee802Device');
 
   /* Return plugin informations */
   static function plInfo()

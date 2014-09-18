@@ -22,7 +22,7 @@ class mobilePhoneGeneric extends simplePlugin
 {
   var $mainTab = TRUE;
 
-  var $objectclasses = array('fdMobilePhone', 'ipHost', 'ieee802device');
+  var $objectclasses = array('fdMobilePhone', 'ipHost', 'ieee802Device');
 
   var $inheritance = array("gosaGroupOfNames" => "member");
 

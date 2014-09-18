@@ -24,7 +24,7 @@ class workstationGeneric extends simplePlugin
 {
   var $mainTab = TRUE;
 
-  var $objectclasses = array('fdWorkstation', 'ipHost', 'ieee802device');
+  var $objectclasses = array('fdWorkstation', 'ipHost', 'ieee802Device');
 
   /*!
    *  \brief The main function : information about attributes

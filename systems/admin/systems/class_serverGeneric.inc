@@ -20,7 +20,7 @@
 
 class serverGeneric extends workstationGeneric
 {
-  var $objectclasses = array('fdServer', 'ipHost', 'ieee802device');
+  var $objectclasses = array('fdServer', 'ipHost', 'ieee802Device');
 
   /*!
    *  \brief The main function : information about attributes
