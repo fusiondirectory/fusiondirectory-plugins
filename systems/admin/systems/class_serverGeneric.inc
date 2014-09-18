@@ -1,8 +1,7 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2012-2013  FusionDirectory
+  Copyright (C) 2012-2014 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -21,9 +20,7 @@
 
 class serverGeneric extends workstationGeneric
 {
-  var $objectclasses = array("top", "goServer", "GOhard");
-
-  var $inheritance = FALSE;
+  var $objectclasses = array('fdServer', 'ipHost', 'ieee802device');
 
   /*!
    *  \brief The main function : information about attributes
@@ -39,7 +36,7 @@ class serverGeneric extends workstationGeneric
     return parent::getAttributesInfo($word, $rdn);
   }
 
-  /* Return plugin informations for acl handling */
+  /* Return plugin informations */
   static function plInfo()
   {
     return array(
@@ -50,7 +47,7 @@ class serverGeneric extends workstationGeneric
         'server' => array(
           'name'        => _('Server'),
           'description' => _('Server'),
-          'filter'      => 'objectClass=goServer',
+          'filter'      => 'objectClass=fdServer',
           'icon'        => 'geticon.php?context=devices&icon=server&size=16',
           'ou'          => get_ou('serverRDN'),
           'tabClass'    => 'servtabs',
@@ -59,7 +56,5 @@ class serverGeneric extends workstationGeneric
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }
-
 }
-
 ?>

@@ -23,11 +23,7 @@ class printGeneric extends simplePlugin
 {
   var $mainTab = TRUE;
 
-  var $netConfigDNS;
-
-  var $objectclasses  = array('top', 'gotoPrinter');
-
-  var $preInitAttributes = array('networkSettings');
+  var $objectclasses  = array('fdPrinter', 'ipHost', 'ieee802device');
 
   /* Return plugin informations */
   static function plInfo()
@@ -40,7 +36,7 @@ class printGeneric extends simplePlugin
         'printer' => array(
           'name'        => _('Printer'),
           'description' => _('Printer'),
-          'filter'      => 'objectClass=gotoPrinter',
+          'filter'      => 'objectClass=fdPrinter',
           'icon'        => 'geticon.php?context=devices&icon=printer&size=16',
           'ou'          => get_ou('printerRDN'),
         )
@@ -85,9 +81,17 @@ class printGeneric extends simplePlugin
       ),
       'network' => array(
         'name'      => _('Network settings'),
-        'attrs'     => array(new NetworkSettingsAttribute()),
-        'template'  => get_template_path('network_section.tpl', TRUE, dirname(__FILE__)),
         'icon'      => 'geticon.php?context=categories&icon=applications-internet&size=16',
+        'attrs'     => array(
+          new IPAttribute(
+            _('IP address'), _('IP address this system uses'),
+            'ipHostNumber', TRUE
+          ),
+          new MacAddressAttribute(
+            _('Mac address'), _('Mac address of this system'),
+            'macAddress', FALSE
+          ),
+        ),
       ),
     );
   }
@@ -97,50 +101,6 @@ class printGeneric extends simplePlugin
     parent::__construct($config, $dn, $object);
 
     $this->attributesAccess['cn']->setUnique(TRUE);
-    $this->netConfigDNS->MACisMust = FALSE;
-  }
-
-  function resetCopyInfos()
-  {
-    parent::resetCopyInfos();
-    $this->netConfigDNS->resetCopyInfos();
-  }
-
-  function set_acl_base($base)
-  {
-    parent::set_acl_base($base);
-    $this->netConfigDNS->set_acl_base($base);
-  }
-
-  function set_acl_category($cat)
-  {
-    parent::set_acl_category($cat);
-    $this->netConfigDNS->set_acl_category($cat);
-  }
-
-  function remove_from_parent()
-  {
-    if (!$this->initially_was_account) {
-      return;
-    }
-
-    if ($this->acl_is_removeable()) {
-      $this->netConfigDNS->remove_from_parent();
-
-      parent::remove_from_parent();
-    }
-  }
-
-  protected function ldap_save($cleanup = TRUE)
-  {
-    parent::ldap_save($cleanup);
-    $this->netConfigDNS->cn = $this->cn;
-    $this->netConfigDNS->save();
-  }
-
-  function is_modal_dialog()
-  {
-    return (isset($this->netConfigDNS->dialog) && $this->netConfigDNS->dialog);
   }
 }
 ?>

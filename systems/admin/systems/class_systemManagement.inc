@@ -281,7 +281,7 @@ class systemManagement extends simpleManagement
           $infos = pluglist::pluginInfos($class);
           if (isset($infos['plIcon'])) {
             $services_imgs[] = '<input class="center" type="image" src="'.$infos['plIcon'].'" '.
-                               'alt="'.$infos['plShortName']."' title='".$infos['plShortName'].'" '.
+                               'alt="'.$infos['plShortName'].'" title="'.$infos['plShortName'].'" '.
                                'name="listing_edit_service_'.$class.'_'.$row.'"/>';
           } else {
             @DEBUG (DEBUG_TRACE, __LINE__, __FUNCTION__, __FILE__, $infos['plShortName']." ($class)", "No icon for");

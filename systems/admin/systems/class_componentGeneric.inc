@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003  Cajus Pollmeier
-  Copyright (C) 2012-2013  FusionDirectory
+  Copyright (C) 2012-2014  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -21,15 +21,10 @@
 
 class componentGeneric extends simplePlugin
 {
-  var $objectclasses = array("top", "device", "ipHost", "ieee802Device");
-
   var $mainTab = TRUE;
 
-  var $netConfigDNS;
+  var $objectclasses = array("top", "device", "ipHost", "ieee802Device");
 
-  var $preInitAttributes = array('networkSettings');
-
-  /* Return plugin informations for acl handling */
   static function plInfo()
   {
     return array(
@@ -72,9 +67,17 @@ class componentGeneric extends simplePlugin
       ),
       'network' => array(
         'name'      => _('Network settings'),
-        'attrs'     => array(new NetworkSettingsAttribute()),
-        'template'  => get_template_path('network_section.tpl', TRUE, dirname(__FILE__)),
         'icon'      => 'geticon.php?context=categories&icon=applications-internet&size=16',
+        'attrs'     => array(
+          new IPAttribute(
+            _('IP address'), _('IP address this system uses'),
+            'ipHostNumber', TRUE
+          ),
+          new MacAddressAttribute(
+            _('Mac address'), _('Mac address of this system'),
+            'macAddress', FALSE
+          ),
+        ),
       ),
     );
   }
@@ -84,66 +87,6 @@ class componentGeneric extends simplePlugin
     parent::__construct($config, $dn, $object);
 
     $this->attributesAccess['cn']->setUnique(TRUE);
-  }
-
-  function resetCopyInfos()
-  {
-    parent::resetCopyInfos();
-    $this->netConfigDNS->resetCopyInfos();
-  }
-
-  function set_acl_base($base)
-  {
-    plugin::set_acl_base($base);
-    $this->netConfigDNS->set_acl_base($base);
-  }
-
-  function set_acl_category($cat)
-  {
-    plugin::set_acl_category($cat);
-    $this->netConfigDNS->set_acl_category($cat);
-  }
-
-  function remove_from_parent()
-  {
-    if (!$this->initially_was_account) {
-      return;
-    }
-
-    if ($this->acl_is_removeable()) {
-      $this->netConfigDNS->remove_from_parent();
-
-      parent::remove_from_parent();
-
-      /* Delete references to object groups */
-      $ldap = $this->config->get_ldap_link();
-      $ldap->cd($this->config->current['BASE']);
-      $ldap->search("(&(objectClass=gosaGroupOfNames)(member=".LDAP::prepare4filter($this->dn)."))", array("cn"));
-      while ($ldap->fetch()) {
-        $og = new ogroup($this->config, $ldap->getDN());
-        unset($og->member[$this->dn]);
-        $og->save();
-      }
-    }
-  }
-
-  protected function ldap_save($cleanup = TRUE)
-  {
-    /* If this is a new Object IP & Mac aren't set.
-     * IP & Mac are msut attributes, so we set this values by here. */
-    if ($this->orig_dn == 'new') {
-      $this->attrs['ipHostNumber']  = $this->netConfigDNS->ipHostNumber;
-      $this->attrs['macAddress']    = $this->netConfigDNS->macAddress;
-    }
-
-    parent::ldap_save($cleanup);
-    $this->netConfigDNS->cn = $this->cn;
-    $this->netConfigDNS->save();
-  }
-
-  function is_modal_dialog()
-  {
-    return (isset($this->netConfigDNS->dialog) && $this->netConfigDNS->dialog);
   }
 }
 

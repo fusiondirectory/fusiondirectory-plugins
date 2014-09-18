@@ -25,9 +25,7 @@ class networkSettings extends plugin
   /* attribute list for save action */
   var $ignore_account = TRUE;
 
-  /* Basic informations
-   */
-  var $attributes     = array("ipHostNumber","macAddress");
+  /* Basic informations */
   var $objectclasses  = array("whatever");
 
   var $ipHostNumber          = "";    // IP address

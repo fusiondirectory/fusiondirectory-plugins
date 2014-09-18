@@ -416,7 +416,7 @@ class ServerService extends management
           msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
         );
       } else {
-        $target = array($this->parent->getBaseObject()->netConfigDNS->macAddress);
+        $target = array($this->parent->getBaseObject()->macAddress);
         if ($action == 'status') {
           $res = $s_daemon->append_call("Service.is_running", $target, array("args" => array($service)));
           if ($s_daemon->is_error()) {

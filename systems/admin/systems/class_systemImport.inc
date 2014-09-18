@@ -84,9 +84,9 @@ class systemImport extends simplePlugin
       $baseObject = $tabObject->getBaseObject();
       $baseObject->cn   = $cn;
       $baseObject->uid  = $baseObject->cn;
-      $baseObject->description                = $host['description'];
-      $baseObject->netConfigDNS->ipHostNumber = $host['ipAddress'];
-      $baseObject->netConfigDNS->macAddress   = $host['hardwareAddress'];
+      $baseObject->description  = $host['description'];
+      $baseObject->ipHostNumber = $host['ipAddress'];
+      $baseObject->macAddress   = $host['hardwareAddress'];
 
       /* Get existing DHCP servers */
       if (empty($dhcps)) {
@@ -102,18 +102,18 @@ class systemImport extends simplePlugin
         }
       }
       /* Activate DHCP if we find a matching server */
-      if (!empty($baseObject->netConfigDNS->ipHostNumber)) {
+      if (!empty($baseObject->ipHostNumber)) {
         $baseObject->netConfigDNS->dhcp_is_Account = FALSE;
         foreach ($dhcps as $dn => $infos) {
           list($ip, $mask) = $infos;
-          if (tests::is_in_network($ip, $mask, $baseObject->netConfigDNS->ipHostNumber)) {
+          if (tests::is_in_network($ip, $mask, $baseObject->ipHostNumber)) {
             $baseObject->netConfigDNS->dhcp_is_Account  = TRUE;
             $baseObject->netConfigDNS->dhcpParentNode   = $dn;
             break;
           }
         }
         if ($baseObject->netConfigDNS->dhcp_is_Account == FALSE) {
-          $messages[$host['id']] = array(sprintf(_('No DHCP server found for ip %s'), $baseObject->netConfigDNS->ipHostNumber));
+          $messages[$host['id']] = array(sprintf(_('No DHCP server found for ip %s'), $baseObject->ipHostNumber));
           continue;
         }
       }

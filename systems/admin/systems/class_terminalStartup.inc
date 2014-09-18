@@ -48,8 +48,7 @@ class TerminalReleaseAttribute extends SelectAttribute
 
 class terminalStartup extends simplePlugin
 {
-  /* attribute list for save action */
-  var $objectclasses = array('GOhard');
+  var $objectclasses = array();
 
   var $inheritance = array("gosaGroupOfNames" => "member");
 
@@ -62,6 +61,14 @@ class terminalStartup extends simplePlugin
       'startup' => array (
         'name' => _('Startup parameters'),
         'attrs' => array (
+          new SelectAttribute(
+            _('Root server'), _('The root server the terminal should be using'),
+            'gotoTerminalPath', FALSE
+          ),
+          new SelectAttribute(
+            _('Swap server'), _('The swap server the terminal should be using'),
+            'gotoSwapServer', FALSE
+          ),
           new StringAttribute (
             _('Boot kernel'),  _('Linux kernel to be installed and booted'),
             'gotoBootKernel', FALSE
@@ -72,10 +79,31 @@ class terminalStartup extends simplePlugin
           )
         )
       ),
+      'remote_desktop' => array(
+        'name'  => _('Remote desktop'),
+        'icon'  => 'geticon.php?context=devices&icon=server&size=16',
+        'attrs' => array(
+          new SelectAttribute(
+            _('Connect method'), _('Connect method'),
+            'gotoXMethod', FALSE,
+            array('xdmcp', 'ldm', 'shell', 'telnet', 'rdp'),
+            '',
+            array(_('XDMCP'), _('LDM'), _('Shell'), _('Telnet'), _('Windows RDP'))
+          ),
+          new SetAttribute(
+            new SelectAttribute(
+              _('Terminal server'), _('Terminal server'),
+              'gotoXdmcpServer', FALSE,
+              array()
+            )
+          )
+        )
+      ),
     );
   }
 
-  /* Return plugin informations for acl handling */
+  /* Return plugin informations
+   * This plugin is deactivated for now
   static function plInfo()
   {
     return array(
@@ -88,6 +116,59 @@ class terminalStartup extends simplePlugin
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
+  }*/
+
+  function __construct(&$config, $dn = NULL, $object = NULL)
+  {
+    parent::__construct($config, $dn, $object);
+
+    $this->attributesAccess['gotoXMethod']->setSubmitForm(TRUE);
+
+    /* Root server */
+    $tmp        = $this->config->data['SERVERS']['NFS'];
+    $tmp_output = $tmp;
+    if (($key = array_search('default', $tmp)) !== FALSE) {
+      if ($this->member_of_group) {
+        $tmp[$key] = '';
+        $tmp_output[$key] = _('inherited');
+      } else {
+        unset($tmp[$key]);
+        unset($tmp_output[$key]);
+      }
+    }
+    $this->attributesAccess['gotoTerminalPath']->setChoices($tmp, $tmp_output);
+
+    /* Swap server */
+    $tmp        = $this->config->data['SERVERS']['NBD'];
+    $tmp_output = $tmp;
+    array_unshift($tmp, '!');
+    array_unshift($tmp_output, _('Local swap'));
+    if (($key = array_search('default', $tmp)) !== FALSE) {
+      if ($this->member_of_group) {
+        $tmp[$key] = "";
+        $tmp_output[$key] = _('inherited');
+      } else {
+        unset($tmp[$key]);
+        unset($tmp_output[$key]);
+      }
+    }
+    $this->attributesAccess['gotoSwapServer']->setChoices($tmp, $tmp_output);
+  }
+
+  function execute()
+  {
+    /* Create a list of useable servers for the currently selected
+     *  connection type.
+     */
+    $xdmcp_types        = $this->config->data['SERVERS']['TERMINAL_SESSION_TYPES'];
+    $available_servers  = array();
+    foreach ($xdmcp_types as $servername => $supported_types) {
+      if (in_array(strtoupper($this->attributesAccess['gotoXMethod']), $supported_types)) {
+        $available_servers[] = $servername;
+      }
+    }
+    $this->attributesAccess['gotoXdmcpServer']->attribute->setChoices($available_servers);
+    return parent::execute();
   }
 }
 
