@@ -752,9 +752,9 @@ class gofaxAccount extends plugin
 
 
   /* Adapt from template, using 'dn' */
-  function adapt_from_template($dn, $skip= array())
+  function adapt_from_template($attrs, $skip= array())
   {
-    plugin::adapt_from_template($dn, $skip);
+    plugin::adapt_from_template($attrs, $skip);
 
     foreach (array("goFaxRBlocklist", "goFaxRBlockgroups", "goFaxSBlocklist",
           "goFaxSBlockgroups", "facsimileAlternateTelephoneNumber") as $val){

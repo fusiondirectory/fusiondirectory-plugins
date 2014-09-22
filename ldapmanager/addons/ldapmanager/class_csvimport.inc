@@ -235,29 +235,40 @@ class csvimport extends plugin
           $this->usertab = new usertabs($this->config, $this->config->data['TABS']['USERTABS'], 'new', 'user');
           $keys = array_keys($dat);
 
-          /* Set all submitted vars  */
-          if (is_array($keys)) {
-            foreach ($keys as $key) {
-              if ($key != "status") {
-                $key_exp = explode(":", $key);
-                $plugin = $key_exp[0];
-                $var = $key_exp[1];
-                if (!isset($plugin) || !isset($var)) {
-                  continue;
-                }
-                if (in_array($var, $this->usertab->by_object[$plugin]->attributes)) {
-                  $this->usertab->by_object[$plugin]->$var        = $dat[$key]; // set the variable
-                  $this->usertab->by_object[$plugin]->is_account  = TRUE; // activate the plugin
+          if ($this->csvinfo['tplid'] != 0) {
+            $template_dn = $this->csvinfo['arrtempls'][$this->csvinfo['tplid']]['dn'];
+            list($attrs, $depends) = plugin::tpl_fetch_template($template_dn);
+
+            /* Fill attrs fields with data from csv */
+            foreach ($dat as $key => $value) {
+              if (($key == 'status') || ($key == 'userPassword')) {
+                continue;
+              }
+              $key = preg_replace('/^[^:]+:/', '', $key);
+              $attrs[$key] = array($value);
+            }
+
+            $attrs = plugin::tpl_parse_attrs($attrs);
+            $this->usertab->adapt_from_template($attrs, array('cn'));
+            $template_base = preg_replace("/^[^,]+,".preg_quote(get_people_ou(), '/')."/i", '', $template_dn);
+            $this->usertab->by_object['user']->base = $template_base;
+          } else {
+            /* Set all submitted vars by hand if no template was selected */
+            if (is_array($keys)) {
+              foreach ($keys as $key) {
+                if (preg_match('/^([^:]+):(.+)$/', $key, $m)) {
+                  $plugin = $m[1];
+                  $var    = $m[2];
+                  if (!isset($plugin) || !isset($var)) {
+                    continue;
+                  }
+                  if (in_array($var, $this->usertab->by_object[$plugin]->attributes)) {
+                    $this->usertab->by_object[$plugin]->$var        = $dat[$key]; // set the variable
+                    $this->usertab->by_object[$plugin]->is_account  = TRUE; // activate the plugin
+                  }
                 }
               }
             }
-          }
-          // Adapt template values.
-          if ($this->csvinfo['tplid'] != 0) {
-            $tpl_dn = $this->csvinfo['arrtempls'][$this->csvinfo['tplid']]['dn'];
-            $this->usertab->adapt_from_template($tpl_dn, array("uid","cn","givenName","sn"));
-            $tpl_base  = preg_replace("/^[^,]+,".preg_quote(get_people_ou(), '/')."/i", '', $tpl_dn);
-            $this->usertab->by_object['user']->base = $tpl_base;
           }
 
           // Setting user Password
@@ -281,6 +292,7 @@ class csvimport extends plugin
           } else {
             $this->csvinfo['sorteddata'][$i]['status'] = _("ok");
             $this->usertab->save();
+            /* Use default hash for passwords */
             change_password($this->usertab->dn, $password);
           }
         }

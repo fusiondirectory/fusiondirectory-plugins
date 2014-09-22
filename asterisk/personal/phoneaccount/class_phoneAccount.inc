@@ -1489,9 +1489,9 @@ class phoneAccount extends plugin
   }
 
 
-  function adapt_from_template($dn, $skip= array())
+  function adapt_from_template($attrs, $skip= array())
   {
-    plugin::adapt_from_template($dn, $skip);
+    plugin::adapt_from_template($attrs, $skip);
 
     /* Assemble phone numbers */
     if (isset($this->attrs['telephoneNumber']) && !in_array("telephoneNumber", $skip)){
