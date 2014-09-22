@@ -92,7 +92,7 @@ class etablissement extends simplePlugin
           new StringAttribute(
             _('Etablissement code'), _('The code of this etablissement (must have a prefix between {})'),
             'supannEtablissement', TRUE,
-            '', '', '/^{[^}]}.*$/'
+            '', '', '/^{[^}]+}.*$/'
           ),
           new StringAttribute(
             _('SUPANN code'), _('The SUPANN code for this etablissement'),
