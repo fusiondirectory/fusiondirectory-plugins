@@ -4,13 +4,14 @@
 # 
 # Translators:
 # ALEJANDRO BARRIOS <alejandrobarrios@interlegis.leg.br>, 2014
+# kayocarneiro <kayomatheus@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
 "POT-Creation-Date: 2014-08-18 16:07+0200\n"
-"PO-Revision-Date: 2014-08-28 13:00+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"PO-Revision-Date: 2014-09-05 12:40+0000\n"
+"Last-Translator: kayocarneiro <kayomatheus@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/FusionDirectory-108/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -145,7 +146,7 @@ msgstr ""
 
 #: admin/fai/class_faiManagement.inc:193
 msgid "package list"
-msgstr ""
+msgstr "Lista de pacote"
 
 #: admin/fai/class_faiManagement.inc:210 admin/fai/class_faiManagement.inc:226
 #: admin/fai/class_faiManagement.inc:332 admin/fai/class_faiManagement.inc:390
@@ -157,24 +158,24 @@ msgstr "Erro de permissão"
 #: admin/fai/class_faiManagement.inc:211 admin/fai/class_faiManagement.inc:226
 #, php-format
 msgid "You have no permission to create a new %s!"
-msgstr ""
+msgstr "Você não tem permissão para criar um novo %s!"
 
 #: admin/fai/class_faiManagement.inc:226 admin/fai/fai-list.xml:55
 msgid "profile"
-msgstr ""
+msgstr "Perfil"
 
 #: admin/fai/class_faiManagement.inc:328
 msgid "Branch locked"
-msgstr ""
+msgstr "Filial bloqueada"
 
 #: admin/fai/class_faiManagement.inc:329
 #, php-format
 msgid "The following entries are locked, you can't remove them %s."
-msgstr ""
+msgstr "As seguintes entradas estão bloqueadas, você não pode remove-los %s."
 
 #: admin/fai/class_faiManagement.inc:346
 msgid "FAI object"
-msgstr ""
+msgstr "Objeto FAI"
 
 #: admin/fai/class_faiManagement.inc:477
 msgid "FAI branch/freeze"
@@ -182,7 +183,7 @@ msgstr ""
 
 #: admin/fai/class_faiManagement.inc:480
 msgid "You have no permission to delete this release!"
-msgstr ""
+msgstr "Você não tem permissão para deletar essa permissão!"
 
 #: admin/fai/class_faiManagement.inc:496 admin/fai/remove.tpl.c:2
 #: admin/fai/remove_branch.tpl.c:2
@@ -191,7 +192,7 @@ msgstr "Aviso"
 
 #: admin/fai/class_faiManagement.inc:496
 msgid "Release remove aborted because the release name check failed!"
-msgstr ""
+msgstr "Remoção de liberação abortada pois a checagem do nome de liberação falhou!"
 
 #: admin/fai/class_faiManagement.inc:573 admin/fai/class_faiManagement.inc:596
 msgid "Configuration"
@@ -200,7 +201,7 @@ msgstr "Configuração"
 #: admin/fai/class_faiManagement.inc:575 admin/fai/class_faiManagement.inc:598
 #: admin/fai/class_faiManagement.inc:619
 msgid "Branch"
-msgstr ""
+msgstr "Filial"
 
 #: admin/fai/class_faiManagement.inc:725 admin/fai/askClassName.tpl.c:23
 msgid "Continue"
@@ -218,7 +219,7 @@ msgstr "Tabela de partição"
 #: admin/fai/class_faiManagement.inc:934
 #: admin/fai/class_faiGroupHandle.inc:122 admin/fai/fai-list.xml:140
 msgid "Package list"
-msgstr ""
+msgstr "Lista de pacote"
 
 #: admin/fai/class_faiManagement.inc:936
 #: admin/fai/class_faiGroupHandle.inc:124
@@ -228,23 +229,23 @@ msgstr "Script"
 #: admin/fai/class_faiManagement.inc:938
 #: admin/fai/class_faiGroupHandle.inc:126
 msgid "Variables"
-msgstr ""
+msgstr "Variáveis"
 
 #: admin/fai/class_faiManagement.inc:940
 #: admin/fai/class_faiGroupHandle.inc:128
 msgid "Hooks"
-msgstr ""
+msgstr "Ganchos"
 
 #: admin/fai/class_faiManagement.inc:942 admin/fai/class_faiProfile.inc:454
 #: admin/fai/class_askClassName.inc:104 admin/fai/class_faiGroupHandle.inc:130
 #: admin/fai/fai-list.xml:110
 msgid "Profile"
-msgstr ""
+msgstr "Perfil"
 
 #: admin/fai/class_faiManagement.inc:944
 #: admin/fai/class_faiGroupHandle.inc:132
 msgid "Templates"
-msgstr ""
+msgstr "Modelos"
 
 #: admin/fai/class_faiManagement.inc:1045
 #: admin/fai/class_faiManagement.inc:1051
@@ -252,49 +253,49 @@ msgstr ""
 #: admin/fai/classSelect/selectClass-list.xml:15
 #: admin/systems/class_faiStartup.inc:178
 msgid "FAI"
-msgstr ""
+msgstr "FAI"
 
 #: admin/fai/class_faiManagement.inc:1046
 msgid "Manage FAI software packages and deployment recipes"
-msgstr ""
+msgstr "Gerencias pacotes de software FAI e receitas de implantação"
 
 #: admin/fai/class_faiPackage.inc:260
 msgid "Invalid package names"
-msgstr ""
+msgstr "Nome de pacote inválido"
 
 #: admin/fai/class_faiPackage.inc:261
 #, php-format
 msgid "The following package names don't match the Debian policy: %s"
-msgstr ""
+msgstr "Os seguintes nomes de pacote não correspondem a política Debian:%s"
 
 #: admin/fai/class_faiPackage.inc:420 admin/fai/class_faiPackage.inc:421
 msgid "Configured"
-msgstr ""
+msgstr "Configurado"
 
 #: admin/fai/class_faiPackage.inc:427 admin/fai/class_faiPackage.inc:428
 msgid "Package marked for removal"
-msgstr ""
+msgstr "Pacote marcado para remoção"
 
 #: admin/fai/class_faiPackage.inc:444
 msgid "Mark package for removal"
-msgstr ""
+msgstr "Marcar pacote para remoção"
 
 #: admin/fai/class_faiPackage.inc:450
 msgid "Configure this package"
-msgstr ""
+msgstr "Configurar este pacote"
 
 #: admin/fai/class_faiPackage.inc:454
 msgid "Remove this package"
-msgstr ""
+msgstr "Remover este pacote"
 
 #: admin/fai/class_faiPackage.inc:533
 msgid "Please select a least one package!"
-msgstr ""
+msgstr "Por favor, selecione ao menos um pacote."
 
 #: admin/fai/class_faiPackage.inc:537
 msgid ""
 "Please choose a valid release/section combination for your repository setup!"
-msgstr ""
+msgstr "Por favor, escolha uma combinação válida de liberação/seção para sua configuração de repositório."
 
 #: admin/fai/class_faiPackage.inc:570
 #: admin/fai/packageSelect/class_filterFAIPackages.inc:41
@@ -307,7 +308,7 @@ msgstr "Infraestrutura do serviço"
 
 #: admin/fai/class_faiPackage.inc:586
 msgid "Unkown packages"
-msgstr ""
+msgstr "Pacotes desconhecidos"
 
 #: admin/fai/class_faiPackage.inc:683
 #: admin/fai/faiPackageConfiguration.tpl.c:2
@@ -316,15 +317,15 @@ msgstr "Pacote"
 
 #: admin/fai/class_faiPackage.inc:684
 msgid "FAI Package list"
-msgstr ""
+msgstr "Lista de pacotes FAI"
 
 #: admin/fai/class_faiPackage.inc:688
 msgid "FAI Package"
-msgstr ""
+msgstr "Pacote FAI"
 
 #: admin/fai/class_faiPackage.inc:696
 msgid "Packages"
-msgstr ""
+msgstr "Pacotes"
 
 #: admin/fai/class_faiPackage.inc:697 admin/fai/faiPackage.tpl.c:23
 msgid "Section"
@@ -333,35 +334,35 @@ msgstr "Seção"
 #: admin/fai/class_faiPackage.inc:697 admin/fai/class_faiPackage.inc:700
 #: admin/fai/class_faiScript.inc:605 admin/fai/class_faiTemplate.inc:512
 msgid "Readonly"
-msgstr ""
+msgstr "Apenas leitura"
 
 #: admin/fai/class_faiPackage.inc:698
 msgid "Install Method"
-msgstr ""
+msgstr "Instalar métodos"
 
 #: admin/fai/class_faiPackage.inc:699
 msgid "Package configuration"
-msgstr ""
+msgstr "Configuração de pacote"
 
 #: admin/fai/class_faiPackage.inc:700 admin/systems/class_faiStartup.inc:78
 #: admin/systems/services/repository/class_serviceRepository.inc:53
 #: admin/fai/branch_selector.tpl.c:14 admin/fai/faiPackage.tpl.c:20
 #: admin/fai/fai-filter.tpl.c:5 admin/fai/fai-filter.tpl.c:14
 msgid "Release"
-msgstr ""
+msgstr "Liberação"
 
 #: admin/fai/class_faiPartitionTable.inc:269
 #: admin/fai/class_faiDiskEntry.inc:446
 #, php-format
 msgid ""
 "The disk cannot be deleted while it is used in the '%s' disk definition!"
-msgstr ""
+msgstr "O disco não pode ser deletado enquanto é  '%s' usado em definição de disco!"
 
 #: admin/fai/class_faiPartitionTable.inc:416 admin/fai/class_faiScript.inc:360
 #: admin/fai/class_faiScript.inc:362 admin/fai/class_faiTemplate.inc:306
 #: admin/fai/class_faiTemplate.inc:308
 msgid "edit"
-msgstr ""
+msgstr "editar"
 
 #: admin/fai/class_faiPartitionTable.inc:418 admin/fai/class_faiScript.inc:364
 #: admin/fai/class_faiTemplate.inc:310
@@ -371,7 +372,7 @@ msgstr "deletar"
 #: admin/fai/class_faiPartitionTable.inc:765
 #: admin/fai/class_faiPartitionTable.inc:769
 msgid "FAI partition table"
-msgstr ""
+msgstr "Tabela de partição FAI"
 
 #: admin/fai/class_faiPartitionTable.inc:775 admin/fai/class_faiHook.inc:531
 #: admin/fai/class_faiVariable.inc:398
@@ -385,15 +386,15 @@ msgstr "Dispositivo"
 
 #: admin/fai/class_faiDiskEntry.inc:273
 msgid "Label"
-msgstr ""
+msgstr "Rótulo"
 
 #: admin/fai/class_faiDiskEntry.inc:273
 msgid "UUID"
-msgstr ""
+msgstr "UUID"
 
 #: admin/fai/class_faiDiskEntry.inc:345
 msgid "Disks"
-msgstr ""
+msgstr "Discos"
 
 #: admin/fai/class_faiDiskEntry.inc:348 admin/fai/class_faiPartition.inc:319
 #: admin/fai/faiPartition.tpl.c:14
@@ -402,27 +403,27 @@ msgstr "Tamanho"
 
 #: admin/fai/class_faiDiskEntry.inc:544
 msgid "encrypted"
-msgstr ""
+msgstr "Encriptado"
 
 #: admin/fai/class_faiDiskEntry.inc:547
 msgid "bootable"
-msgstr ""
+msgstr "Bootável"
 
 #: admin/fai/class_faiDiskEntry.inc:550
 msgid "preserve"
-msgstr ""
+msgstr "preservar"
 
 #: admin/fai/class_faiDiskEntry.inc:731
 msgid ""
 "You have more than four primary partition table entries in your "
 "configuration, please check your configuration twice."
-msgstr ""
+msgstr "Você tem mais de quatro entradas da tabela de partição primária em sua configuração, por favor cheque sua configuração novamente."
 
 #: admin/fai/class_faiDiskEntry.inc:735
 msgid ""
 "You cannot have more than three primary partition while using logical "
 "partitions, please check your configuration twice."
-msgstr ""
+msgstr "Você não pode ter mais do que três partição primária ao usar partições lógicas, por favor, verifique a configuração novamente."
 
 #: admin/fai/class_faiDiskEntry.inc:748
 #: admin/fai/class_faiPartitionTableEntry.inc:448
@@ -436,7 +437,7 @@ msgstr "Entrada na tabela de partição FAI"
 
 #: admin/fai/class_faiDiskEntry.inc:756
 msgid "Disk options"
-msgstr ""
+msgstr "Opções de disco"
 
 #: admin/fai/class_faiDiskEntry.inc:757
 #: admin/fai/class_faiPartitionTableEntry.inc:457
@@ -458,7 +459,7 @@ msgstr "Tipo de sistema de arquivos"
 #: admin/fai/class_faiPartitionTableEntry.inc:460
 #: admin/fai/class_faiPartition.inc:432 admin/fai/faiPartition.tpl.c:47
 msgid "Mount point"
-msgstr ""
+msgstr "Ponto de montagem"
 
 #: admin/fai/class_faiDiskEntry.inc:761
 #: admin/fai/class_faiPartitionTableEntry.inc:461
@@ -471,7 +472,7 @@ msgstr "Tamanho da partição"
 #: admin/fai/class_faiPartitionTableEntry.inc:462
 #: admin/fai/faiPartition.tpl.c:50
 msgid "Mount options"
-msgstr ""
+msgstr "Opções de montagem"
 
 #: admin/fai/class_faiDiskEntry.inc:763
 #: admin/fai/class_faiPartitionTableEntry.inc:463
@@ -481,7 +482,7 @@ msgstr "Opções de sistema de arquivos"
 #: admin/fai/class_faiDiskEntry.inc:764
 #: admin/fai/class_faiPartitionTableEntry.inc:464
 msgid "Partition flags"
-msgstr ""
+msgstr "Bandeiras de partição"
 
 #: admin/fai/class_debconfTemplate.inc:227
 msgid "This package has no debconf options."
@@ -493,30 +494,30 @@ msgid ""
 "and requires choosing between specific options which cannot be presented "
 "here. The entered text needs to be one of the valid choices in order to take"
 " effect."
-msgstr ""
+msgstr "Esta questão debconf é gerado dinamicamente durante a instalação do pacote e requer a escolha entre as opções específicas que não podem ser apresentados aqui. O texto digitado deve ser uma das opções válidas, a fim de entrar em vigor."
 
 #: admin/fai/class_faiTemplateEntry.inc:139
 msgid "no file uploaded yet"
-msgstr ""
+msgstr "nenhum arquivo enviado ainda"
 
 #: admin/fai/class_faiTemplateEntry.inc:142
 #, php-format
 msgid "exists in database (size: %s bytes)"
-msgstr ""
+msgstr "existe no banco de dados (tamanho: %s bytes)"
 
 #: admin/fai/class_faiTemplateEntry.inc:251
 #: admin/systems/class_faiLogView.inc:70 admin/fai/faiTemplateEntry.tpl.c:23
 msgid "File"
-msgstr ""
+msgstr "Arquivo"
 
 #: admin/fai/class_faiTemplateEntry.inc:255
 #: admin/fai/faiTemplateEntry.tpl.c:11
 msgid "Destination path"
-msgstr ""
+msgstr "Caminho de destino"
 
 #: admin/fai/class_faiTemplateEntry.inc:260 admin/fai/faiTemplateEntry.tpl.c:8
 msgid "File name"
-msgstr ""
+msgstr "Nome do arquivo"
 
 #: admin/fai/class_faiTemplateEntry.inc:264
 #: admin/fai/class_faiTemplateEntry.inc:266
@@ -537,23 +538,23 @@ msgstr "Entrada de Template"
 
 #: admin/fai/class_faiTemplateEntry.inc:306
 msgid "FAI template entry"
-msgstr ""
+msgstr "Modelo de entrada FAI"
 
 #: admin/fai/class_faiTemplateEntry.inc:314
 msgid "Template file"
-msgstr ""
+msgstr "Arquivo modelo"
 
 #: admin/fai/class_faiTemplateEntry.inc:315
 msgid "Template path"
-msgstr ""
+msgstr "Caminho do modelo"
 
 #: admin/fai/class_faiTemplateEntry.inc:316
 msgid "File owner"
-msgstr ""
+msgstr "Dono do arquivo"
 
 #: admin/fai/class_faiTemplateEntry.inc:317
 msgid "File permissions"
-msgstr ""
+msgstr "Permissões do arquivo"
 
 #: admin/fai/class_FAI.inc:287 admin/fai/class_FAI.inc:679
 #: admin/fai/class_FAI.inc:1266 admin/fai/class_FAI.inc:1282
@@ -564,7 +565,7 @@ msgstr "Erro de LDAP"
 #: admin/fai/class_FAI.inc:570
 #, php-format
 msgid "Error, following objects should be equal '%s' and '%s'"
-msgstr ""
+msgstr "Erro, os seguintes objetos devem ser iguais a '%s' e '%s'"
 
 #: admin/fai/class_FAI.inc:891
 #, php-format
@@ -753,11 +754,11 @@ msgstr ""
 
 #: admin/fai/class_faiProfile.inc:324
 msgid "Up"
-msgstr ""
+msgstr "Subir"
 
 #: admin/fai/class_faiProfile.inc:325
 msgid "Down"
-msgstr ""
+msgstr "Descer"
 
 #: admin/fai/class_faiProfile.inc:410
 msgid "No class specified for this profile!"
@@ -789,7 +790,7 @@ msgstr ""
 
 #: admin/fai/class_faiHookEntry.inc:209 admin/fai/faiHookEntry.tpl.c:20
 msgid "Task"
-msgstr ""
+msgstr "Tarefa"
 
 #: admin/fai/class_faiHookEntry.inc:210 admin/fai/class_faiScript.inc:595
 #: admin/fai/class_faiScript.inc:599
@@ -833,7 +834,7 @@ msgstr "Propriedades"
 
 #: admin/fai/class_faiTemplate.inc:501 admin/fai/fai-list.xml:116
 msgid "Template"
-msgstr ""
+msgstr "Modelo"
 
 #: admin/fai/class_faiTemplate.inc:502 admin/fai/class_faiTemplate.inc:506
 msgid "FAI template"
@@ -1053,11 +1054,11 @@ msgstr "Data"
 #: admin/systems/class_faiLogView.inc:150
 #: admin/systems/class_faiLogView.inc:153
 msgid "Available logs"
-msgstr ""
+msgstr "Registros disponíveis"
 
 #: admin/systems/class_faiLogView.inc:158
 msgid "Selected log"
-msgstr ""
+msgstr "Selecionar registro"
 
 #: admin/systems/class_faiLogView.inc:162
 msgid "Content of the selected log"
@@ -1111,23 +1112,23 @@ msgstr ""
 
 #: admin/systems/class_faiStartup.inc:96
 msgid "Startup parameters"
-msgstr ""
+msgstr "Parametros de inicialização"
 
 #: admin/systems/class_faiStartup.inc:99
 msgid "Boot kernel"
-msgstr ""
+msgstr "Kernel de boot"
 
 #: admin/systems/class_faiStartup.inc:99
 msgid "Linux kernel to be installed and booted"
-msgstr ""
+msgstr "O Kernel do linux está instalado e bootado."
 
 #: admin/systems/class_faiStartup.inc:103
 msgid "Boot kernel parameters"
-msgstr ""
+msgstr "Parâmetros de boot do kernel"
 
 #: admin/systems/class_faiStartup.inc:103
 msgid "Linux kernel parameters to be ran"
-msgstr ""
+msgstr "Parâmetros do kernel Linux para ser executado"
 
 #: admin/systems/class_faiStartup.inc:179
 msgid "Full automated installation"
