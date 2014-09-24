@@ -99,8 +99,8 @@ class sudo extends simplePlugin
   {
     return array (
       'section1' => array (
-        'name'  => _('Generic').' - '._('global defaults'),
-        'icon'  => 'images/rightarrow.png',
+        'name'  => _('Role settings'),
+        'class' => array('fullwidth'),
         'attrs' => array(
           new defaultRoleAttribute (FALSE),
           new StringAttribute (
@@ -140,25 +140,6 @@ class sudo extends simplePlugin
           )
         )
       ),
-      'section2' => array (
-        'name' => _('System trust'),
-        'icon' => 'geticon.php?context=categories&icon=acl&size=16',
-        'attrs' => array (
-          new SelectAttribute (
-            _('Trust mode'), _('Trust mode for the role'),
-            'trustModel', FALSE,
-            array('','fullaccess','byhost'),
-            '',
-            array(_("disabled"), _("full access"),_("allow access to these hosts"))
-          ),
-          new SetAttribute (
-            new StringAttribute (
-              " ", " ",
-              'accessTo', FALSE
-            )
-          )
-        )
-      )
     );
   }
 
@@ -174,23 +155,11 @@ class sudo extends simplePlugin
             'sudoCommand',
             'sudoHost',
             'sudoRunAs',
-            'accessTo',
-            'trustModel'
           )
         ),
         'disable' => array(
           TRUE => array(
             'cn'
-          )
-        )
-      )
-    );
-    $this->attributesAccess['trustModel']->setManagedAttributes(
-      array (
-        'multiplevalues' => array( 'value1' => array('','fullaccess')),
-        'erase' => array (
-          'value1' => array (
-            'accessTo'
           )
         )
       )
