@@ -55,7 +55,7 @@ class sudoManagement extends simpleManagement
 
   function newEntry($action = "", $target = array(), $all = array(), $altTabClass = "", $altTabType = "", $altAclCategory = "")
   {
-    $str = parent::newEntry($action, $target, $all, $altTabClass, $altTabType, $altAclCategory);
+    $str = parent::newEntry('new_SUDO', $target, $all, $altTabClass, $altTabType, $altAclCategory);
 
     /* This entry will become the default entry */
     if ($action == 'new_default') {
