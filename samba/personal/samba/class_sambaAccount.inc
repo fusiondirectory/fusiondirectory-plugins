@@ -535,9 +535,9 @@ class sambaAccount extends simplePlugin
     }
   }
 
-  function adapt_from_template($dn, $skip = array())
+  function adapt_from_template($attrs, $skip = array())
   {
-    parent::adapt_from_template($dn, $skip);
+    parent::adapt_from_template($attrs, $skip);
 
     $this->sambaSID = "";
   }

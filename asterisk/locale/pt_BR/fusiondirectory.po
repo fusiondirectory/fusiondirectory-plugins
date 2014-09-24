@@ -4,13 +4,15 @@
 # 
 # Translators:
 # kayocarneiro <kayomatheus@gmail.com>, 2014
+# kayocarneiro <kayomatheus@gmail.com>, 2014
+# marcosantos <marcoa.csantos@yahoo.it>, 2014
 # marcosantos <marcoa.csantos@yahoo.it>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
 "POT-Creation-Date: 2014-08-18 16:07+0200\n"
-"PO-Revision-Date: 2014-08-28 10:52+0000\n"
+"PO-Revision-Date: 2014-09-03 13:20+0000\n"
 "Last-Translator: kayocarneiro <kayomatheus@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/FusionDirectory-108/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -40,7 +42,7 @@ msgstr "tocar em todos"
 
 #: admin/ogroups/asterisk/class_phonequeue.inc:141
 msgid "round robin"
-msgstr ""
+msgstr "Em volta do robin"
 
 #: admin/ogroups/asterisk/class_phonequeue.inc:142
 msgid "least recently called"
@@ -56,7 +58,7 @@ msgstr "aleatório"
 
 #: admin/ogroups/asterisk/class_phonequeue.inc:145
 msgid "round robin with memory"
-msgstr ""
+msgstr "Em volta do robin com memória"
 
 #: admin/ogroups/asterisk/class_phonequeue.inc:180
 msgid "Remove the phone queue from this Account"
@@ -128,7 +130,7 @@ msgstr "asterisk"
 #: personal/phoneaccount/class_phoneAccount.inc:455
 #: personal/phoneaccount/class_phoneAccount.inc:1061
 msgid "GOfon"
-msgstr ""
+msgstr "GOfon"
 
 #: admin/ogroups/asterisk/class_phonequeue.inc:401
 msgid "Cannot find old queue entry!"
@@ -209,12 +211,12 @@ msgstr "Permitir ao usuário chamado transferir sua chamada"
 #: admin/ogroups/asterisk/class_phonequeue.inc:876
 #: admin/ogroups/asterisk/phonequeue.tpl.c:89
 msgid "Allows calling user to transfer call"
-msgstr ""
+msgstr "Permitir o usuário transferir chamada"
 
 #: admin/ogroups/asterisk/class_phonequeue.inc:877
 #: admin/ogroups/asterisk/phonequeue.tpl.c:92
 msgid "Allow the called to hangup by pressing *"
-msgstr ""
+msgstr "Permite apertar * para suspender chamado"
 
 #: admin/ogroups/asterisk/class_phonequeue.inc:878
 #: admin/ogroups/asterisk/phonequeue.tpl.c:98
@@ -224,7 +226,7 @@ msgstr "Toca ao invés de tocar a música de fundo"
 #: admin/ogroups/asterisk/class_phonequeue.inc:879
 #: admin/ogroups/asterisk/phonequeue.tpl.c:95
 msgid "Allows calling to hangup by pressing *"
-msgstr ""
+msgstr "Permite ligar para suspender pressionando *"
 
 #: admin/ogroups/asterisk/class_phonequeue.inc:881
 #: admin/ogroups/asterisk/phonequeue.tpl.c:47
@@ -293,7 +295,7 @@ msgstr "Anunciar"
 
 #: admin/conference/conf-list.xml:11
 msgid "List of conference rooms"
-msgstr ""
+msgstr "Lista de salas de conferências"
 
 #: admin/conference/conf-list.xml:15 admin/conference/conf-list.xml:74
 msgid "Conference"
@@ -345,13 +347,13 @@ msgstr "Remover"
 #: admin/conference/class_phoneConferenceGeneric.inc:233
 #, php-format
 msgid "Cannot delete entry from server '%s' because it seems to be removed!"
-msgstr ""
+msgstr "Não é possível deletar entrado do servidor '%s', parece que já foi removido!"
 
 #: admin/conference/class_phoneConferenceGeneric.inc:308
 #, php-format
 msgid ""
 "The previously selected asterisk home server '%s' is no longer available!"
-msgstr ""
+msgstr "O asterisco do servidor doméstico '%s' previamente selecionado não está mais disponível!"
 
 #: admin/conference/class_phoneConferenceGeneric.inc:315
 #: admin/conference/generic.tpl.c:47
@@ -691,19 +693,19 @@ msgstr "Código de conta IAX"
 
 #: admin/systems/asterisk/class_phoneGeneric.inc:492
 msgid "IAX trunk lines"
-msgstr ""
+msgstr "Linhas de tronco IAX"
 
 #: admin/systems/asterisk/class_phoneGeneric.inc:493
 msgid "IAX permit settings"
-msgstr ""
+msgstr "Permitir configurações IAX"
 
 #: admin/systems/asterisk/class_phoneGeneric.inc:494
 msgid "IAX deny settings"
-msgstr ""
+msgstr "Negar definições IAX"
 
 #: admin/systems/asterisk/class_phoneGeneric.inc:495
 msgid "CAPI MSN"
-msgstr ""
+msgstr "CAPI MSN"
 
 #: admin/systems/asterisk/class_phoneGeneric.inc:496
 msgid "Hardware type"
@@ -719,7 +721,7 @@ msgstr "Usuário DB Asterisk"
 
 #: admin/systems/services/asterisk/class_serviceAsterisk.inc:38
 msgid "Login for asterisk database administrator"
-msgstr ""
+msgstr "Login para a base de dados do administrador asterisk"
 
 #: admin/systems/services/asterisk/class_serviceAsterisk.inc:42
 msgid "Password"
@@ -743,7 +745,7 @@ msgstr "Driver"
 
 #: admin/systems/services/asterisk/class_serviceAsterisk.inc:54
 msgid "Driver to use to contact this database."
-msgstr ""
+msgstr "Responsável para usar o contato desta base de dados."
 
 #: admin/systems/services/asterisk/class_serviceAsterisk.inc:95
 #, php-format
@@ -800,20 +802,20 @@ msgstr "Destino"
 #: addons/fonreports/class_fonreport.inc:431
 #: addons/fonreports/contents.tpl.c:41
 msgid "Channel"
-msgstr ""
+msgstr "Canal"
 
 #: addons/fonreports/class_fonreport.inc:432
 msgid "Application called"
-msgstr ""
+msgstr "Chamado de aplicação"
 
 #: addons/fonreports/class_fonreport.inc:433
 msgid "Disposition"
-msgstr ""
+msgstr "Disposição"
 
 #: addons/fonreports/class_fonreport.inc:434
 #: addons/fonreports/contents.tpl.c:50
 msgid "Duration"
-msgstr ""
+msgstr "Duração"
 
 #: personal/phoneaccount/class_phoneAccount.inc:176
 msgid "automatic"
@@ -857,7 +859,7 @@ msgstr "Criar conta de telefone"
 
 #: personal/phoneaccount/class_phoneAccount.inc:1028
 msgid "User uid"
-msgstr ""
+msgstr "Usuário uid"
 
 #: personal/phoneaccount/class_phoneAccount.inc:1046
 msgid "Selected macro is not available anymore!"
@@ -924,31 +926,31 @@ msgstr "O número de telefone '%s' especificado já foi atribuído para '%s'."
 msgid ""
 "The previously selected asterisk home server (%s) is no longer available. "
 "Remove aborted."
-msgstr ""
+msgstr "O servidor asterisk previamente selecionado(%s) não está disponível. Remover abortado."
 
 #: personal/phoneaccount/class_phoneAccount.inc:1658
 msgid "Phone account settings"
-msgstr ""
+msgstr "Definições da conta de telefone"
 
 #: personal/phoneaccount/class_phoneAccount.inc:1667
 msgid "Macro settings"
-msgstr ""
+msgstr "Definições maiores"
 
 #: personal/phoneaccount/class_phoneAccount.inc:1670
 msgid "Phone context"
-msgstr ""
+msgstr "Contexto de telefone"
 
 #: personal/phoneaccount/class_phoneAccount.inc:1671
 msgid "Voice mail context"
-msgstr ""
+msgstr "Contexto de correio de voz"
 
 #: personal/phoneaccount/class_phoneAccount.inc:1672
 msgid "Telephone pin"
-msgstr ""
+msgstr "Pin do telefone"
 
 #: personal/phoneaccount/class_phoneAccount.inc:1673
 msgid "Voicemail pin"
-msgstr ""
+msgstr "PIN correio de voz"
 
 #: personal/phoneaccount/class_phoneAccount.inc:1695
 #, php-format
@@ -982,19 +984,19 @@ msgstr "Telefone RDN"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:44
 msgid "Branch in which phones will be stored"
-msgstr ""
+msgstr "Local onde os telefones serão armazenados"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:49
 msgid "Phone Macro RDN"
-msgstr ""
+msgstr "Telefone Macro RDN"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:49
 msgid "Branch in which phone macros will be stored"
-msgstr ""
+msgstr "Local onde os macros do telefone serão armazenados"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:54
 msgid "Phone Conference RDN"
-msgstr ""
+msgstr "Conferencia de telefone RDN"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:54
 msgid "Branch in which phone conferences will be stored"
@@ -1002,15 +1004,15 @@ msgstr "Ramo no qual as conferências telefônicas serão armazenados "
 
 #: config/asterisk/class_asteriskPluginConfig.inc:61
 msgid "Miscellaneous"
-msgstr ""
+msgstr "Diversos"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:65
 msgid "SIP contexts"
-msgstr ""
+msgstr "Contextos SIP"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:65
 msgid "Available SIP contexts"
-msgstr ""
+msgstr "Contextos disponíveis no SIP"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:72
 msgid "Voicemail contexts"
@@ -1018,13 +1020,13 @@ msgstr "Contexto de correio de voz"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:72
 msgid "Available voicemail contexts"
-msgstr ""
+msgstr "Contextos disponíveis no correio de voz"
 
 #: admin/ogroups/asterisk/phonequeue.tpl.c:2
 msgid ""
 "Only users with the same asterisk home server will be included to this "
 "queue."
-msgstr ""
+msgstr "Apenas usuários com o mesmo servidor home asteriskvão ser inclusos nesse grupo"
 
 #: admin/ogroups/asterisk/phonequeue.tpl.c:5
 #: personal/phoneaccount/generic.tpl.c:2
@@ -1034,11 +1036,11 @@ msgstr "Números de telefone"
 
 #: admin/ogroups/asterisk/phonequeue.tpl.c:8
 msgid "Up"
-msgstr ""
+msgstr "Subir"
 
 #: admin/ogroups/asterisk/phonequeue.tpl.c:11
 msgid "Down"
-msgstr ""
+msgstr "Descer"
 
 #: admin/ogroups/asterisk/phonequeue.tpl.c:14
 #: admin/conference/generic.tpl.c:41
@@ -1095,11 +1097,11 @@ msgstr "Arquivo de som 'segundos'"
 
 #: admin/ogroups/asterisk/phonequeue.tpl.c:74
 msgid "Hold sound file"
-msgstr ""
+msgstr "Manter arquivo de som"
 
 #: admin/ogroups/asterisk/phonequeue.tpl.c:77
 msgid "Less Than sound file"
-msgstr ""
+msgstr "Sem tal arquivo de som"
 
 #: admin/ogroups/asterisk/phonequeue.tpl.c:80
 msgid "Phone attributes "
@@ -1116,11 +1118,11 @@ msgstr "Propriedades"
 
 #: admin/conference/generic.tpl.c:5 admin/conference/paste_generic.tpl.c:2
 msgid "Conference name"
-msgstr ""
+msgstr "Nome da conferência"
 
 #: admin/conference/generic.tpl.c:8 admin/conference/paste_generic.tpl.c:5
 msgid "Name of conference to create"
-msgstr ""
+msgstr "Nome da conferência a ser criada"
 
 #: admin/conference/generic.tpl.c:11
 msgid "Type"
@@ -1128,7 +1130,7 @@ msgstr "Tipo"
 
 #: admin/conference/generic.tpl.c:14
 msgid "Choose subtree to place conference in"
-msgstr ""
+msgstr "Escolher sub-árvore para local da conferencia"
 
 #: admin/conference/generic.tpl.c:26
 msgid "Select language"
@@ -1136,11 +1138,11 @@ msgstr "Selecione o idioma"
 
 #: admin/conference/generic.tpl.c:32
 msgid "Descriptive text for department"
-msgstr ""
+msgstr "Texto descritivo para o departamento"
 
 #: admin/conference/generic.tpl.c:35
 msgid "Lifetime (in days)"
-msgstr ""
+msgstr "Tempo de vida (em dias)"
 
 #: admin/conference/generic.tpl.c:53
 msgid "Sound file format"
@@ -1148,7 +1150,7 @@ msgstr "Formato do arquivo de som"
 
 #: admin/conference/generic.tpl.c:56
 msgid "Choose subtree to place department in"
-msgstr ""
+msgstr "Escolha a sub-arvore para o local do departamento"
 
 #: admin/conference/generic.tpl.c:62
 msgid "Activate session menu"
@@ -1156,7 +1158,7 @@ msgstr "Ative o menu de sessão"
 
 #: admin/conference/generic.tpl.c:65
 msgid "Announce users joining or leaving the conference"
-msgstr ""
+msgstr "Anunciar usuários que entram e deixam a conferência"
 
 #: admin/conference/generic.tpl.c:68
 msgid "Count users"
@@ -1234,7 +1236,7 @@ msgstr "IP padrão"
 #: admin/systems/asterisk/phonesettings.tpl.c:29
 #: admin/systems/asterisk/phonesettings.tpl.c:41
 msgid "Response timeout"
-msgstr ""
+msgstr "Tempo limite de resposta"
 
 #: admin/systems/asterisk/phonesettings.tpl.c:32
 msgid "Modus"
@@ -1246,15 +1248,15 @@ msgstr "Tipo de autenticação"
 
 #: admin/systems/asterisk/phonesettings.tpl.c:50
 msgid "Secret"
-msgstr ""
+msgstr "Secreto"
 
 #: admin/systems/asterisk/phonesettings.tpl.c:53
 msgid "GoFonInkeys"
-msgstr ""
+msgstr "GoFoninkeys"
 
 #: admin/systems/asterisk/phonesettings.tpl.c:56
 msgid "GoFonOutKeys"
-msgstr ""
+msgstr "GoFonOutKeys"
 
 #: admin/systems/asterisk/phonesettings.tpl.c:59
 msgid "Account code"
@@ -1262,7 +1264,7 @@ msgstr "Código da conta"
 
 #: admin/systems/asterisk/phonesettings.tpl.c:62
 msgid "Trunk lines"
-msgstr ""
+msgstr "Linhas de tronco"
 
 #: admin/systems/asterisk/phonesettings.tpl.c:68
 msgid "Hosts that are allowed to connect"
@@ -1275,7 +1277,7 @@ msgstr "Lista de endereços alternativos de correio"
 
 #: admin/systems/asterisk/phonesettings.tpl.c:74
 msgid "Hosts that are not allowed to connect"
-msgstr ""
+msgstr "Hospedagem que não é possível se conectar"
 
 #: admin/systems/asterisk/phonesettings.tpl.c:80
 msgid "MSN"
@@ -1295,15 +1297,15 @@ msgstr "Digite o nome de usuário a ser pesquisado"
 
 #: addons/fonreports/contents.tpl.c:11 addons/fonreports/contents.tpl.c:26
 msgid "in"
-msgstr ""
+msgstr "dentro"
 
 #: addons/fonreports/contents.tpl.c:14
 msgid "Select subtree to base search on"
-msgstr ""
+msgstr "Selecionar sub-arvore para busca"
 
 #: addons/fonreports/contents.tpl.c:17
 msgid "on"
-msgstr ""
+msgstr "em"
 
 #: addons/fonreports/contents.tpl.c:20
 msgid "Select server to search on"
@@ -1332,7 +1334,7 @@ msgstr "A pesquisa não retornou resultados..."
 #: personal/phoneaccount/generic.tpl.c:5
 #: personal/phoneaccount/paste_generic.tpl.c:8
 msgid "Telephone hardware"
-msgstr ""
+msgstr "Hardware do telefone"
 
 #: personal/phoneaccount/generic.tpl.c:8
 msgid "Telephone"
@@ -1340,17 +1342,17 @@ msgstr "Telefone"
 
 #: personal/phoneaccount/generic.tpl.c:14
 msgid "Select the accounts home server"
-msgstr ""
+msgstr "Selecionar as contas do servidor principal"
 
 #: personal/phoneaccount/generic.tpl.c:17
 msgid "Context"
-msgstr ""
+msgstr "Contexto"
 
 #: personal/phoneaccount/generic.tpl.c:20
 #: personal/phoneaccount/generic.tpl.c:26
 msgid "Select the accounts context"
-msgstr ""
+msgstr "Selecionar as contas de contexto"
 
 #: personal/phoneaccount/generic.tpl.c:23
 msgid "Voicemail context"
-msgstr ""
+msgstr "Contexto de correio de voz"

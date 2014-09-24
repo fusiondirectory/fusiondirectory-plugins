@@ -352,6 +352,10 @@ class servdnseditZone extends plugin
       $message[] = msgPool::invalid(_("Zone name"), "", "", _("Only lowercase allowed"));
     }
 
+    if (preg_match('/^[.0-9]+$/', $this->sOAprimary)) {
+      $message[] = msgPool::invalid(_("Primary dns server"), $this->sOAprimary, "/[^0-9]/", _('This field should be a domain name'));
+    }
+
     if (!is_numeric($this->sOAserial)) {
       $message[] = msgPool::invalid(_("Serial"), $this->sOAserial, "/[0-9]/");
     }
