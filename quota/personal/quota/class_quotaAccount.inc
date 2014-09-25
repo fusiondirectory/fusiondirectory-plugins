@@ -140,6 +140,7 @@ class quotaAccount extends simplePlugin
       'plSelfModify'  => TRUE,
       'plPriority'    => 8,
       'plObjectType'  => array('user'),
+      'plDepends'     => array('posixAccount'),
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
