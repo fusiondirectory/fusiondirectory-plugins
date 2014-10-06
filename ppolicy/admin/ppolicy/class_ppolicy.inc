@@ -56,13 +56,8 @@ class ppolicy extends simplePlugin
             'cn', TRUE
           ),
           new IntAttribute(
-            _('Minimum password age'), _('Minimum time in seconds between password changes'),
-            'pwdMinAge', FALSE,
-            0, FALSE
-          ),
-          new IntAttribute(
-            _('Maximum password age'), _('Maximum time in seconds a password is valid, after which it is deemed to be no longer usable and any bind operations attempted with the expired password will be treated as invalid'),
-            'pwdMaxAge', FALSE,
+            _('Minimum length'), _('Minimum length of the user supplied password - passwords shorter than this value will be rejected'),
+            'pwdMinLength', FALSE,
             0, FALSE
           ),
           new IntAttribute(
@@ -70,20 +65,18 @@ class ppolicy extends simplePlugin
             'pwdInHistory', FALSE,
             0, FALSE
           ),
-          //~ new SelectAttribute(
-            //~ _('Check quality'), _('Decides what to do if the function in "Check module" is not available'),
-            //~ 'pwdCheckQuality', FALSE,
-            //~ array(0, 1, 2), 0,
-            //~ array(_('Disabled'), _('Ignore errors'), _('Reject on errors'))
-          //~ ),
-          new HiddenAttribute('pwdCheckQuality', FALSE, 0),
-          new IntAttribute(
-            _('Minimum length'), _('Minimum length of the user supplied password - passwords shorter than this value will be rejected'),
-            'pwdMinLength', FALSE,
+          new TimeAttribute(
+            _('Minimum password age'), _('Minimum time between password changes'),
+            'pwdMinAge', FALSE,
             0, FALSE
           ),
-          new IntAttribute(
-            _('Expire warning delay'), _('Start time in seconds prior to the password expiry that password expiry warning messages are returned in bind responses'),
+          new TimeAttribute(
+            _('Maximum password age'), _('Maximum time a password is valid, after which it is deemed to be no longer usable and any bind operations attempted with the expired password will be treated as invalid'),
+            'pwdMaxAge', FALSE,
+            0, FALSE
+          ),
+          new TimeAttribute(
+            _('Expire warning delay'), _('Start time prior to the password expiry that password expiry warning messages are returned in bind responses'),
             'pwdExpireWarning', FALSE,
             0, FALSE
           ),
@@ -102,6 +95,13 @@ class ppolicy extends simplePlugin
             'pwdSafeModify', FALSE,
             FALSE // default
           ),
+          //~ new SelectAttribute(
+            //~ _('Check quality'), _('Decides what to do if the function in "Check module" is not available'),
+            //~ 'pwdCheckQuality', FALSE,
+            //~ array(0, 1, 2), 0,
+            //~ array(_('Disabled'), _('Ignore errors'), _('Reject on errors'))
+          //~ ),
+          new HiddenAttribute('pwdCheckQuality', FALSE, 0),
         )
       ),
       'lockout' => array(
@@ -109,12 +109,12 @@ class ppolicy extends simplePlugin
         'attrs' =>
         array(
           new BooleanAttribute(
-            _('Lock out'), _('Wether to lock an account that had more consecutive failed bind attempts with invalid passwords than is defined by "Maximum failures"'),
+            _('Activate lock out'), _('Whether to lock an account that had more consecutive failed bind attempts with invalid passwords than is defined by "Maximum failures"'),
             'pwdLockout', FALSE,
             TRUE // default
-          )
-          new IntAttribute(
-            _('Lock out duration'), _('Time in seconds the account remains locked after an automatic lock out (0 means for ever)'),
+          ),
+          new TimeAttribute(
+            _('Lock out duration'), _('Time the account remains locked after an automatic lock out (0 means for ever)'),
             'pwdLockoutDuration', FALSE,
             0, FALSE
           ),
@@ -123,8 +123,8 @@ class ppolicy extends simplePlugin
             'pwdMaxFailure', FALSE,
             0, FALSE
           ),
-          new IntAttribute(
-            _('Failure count interval'), _('Time in seconds after which the count of consecutive password failures is reset even if no successful authentication has occurred'),
+          new TimeAttribute(
+            _('Failure count interval'), _('Time after which the count of consecutive password failures is reset even if no successful authentication has occurred'),
             'pwdFailureCountInterval', FALSE,
             0, FALSE
           ),
@@ -142,6 +142,15 @@ class ppolicy extends simplePlugin
   {
     parent::__construct($config, $dn, $object);
 
+    $this->attributesAccess['pwdMaxAge']->attributes[0]->setManagedAttributes(
+      array (
+        'disable' => array (
+          0 => array (
+            'pwdExpireWarning', 'pwdGraceAuthNLimit'
+          )
+        )
+      )
+    );
     $this->attributesAccess['pwdLockout']->setManagedAttributes(
       array (
         'disable' => array (
