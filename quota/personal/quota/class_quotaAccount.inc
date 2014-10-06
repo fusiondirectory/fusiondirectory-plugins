@@ -23,41 +23,6 @@
  * The QuotaEntryAttribute takes care of converting that to a number of blocks using the blocksize server information
  *  it also handle soft and hard limits checking and device select update depending on server select */
 
-class UnitIntAttribute extends CompositeAttribute
-{
-  function __construct ($label, $description, $ldapName, $required, $units, $min = FALSE, $max = FALSE, $defaultValue = "", $acl = "")
-  {
-    parent::__construct($description, $ldapName,
-      array(
-        new IntAttribute('', '', $ldapName.'_int', $required, $min, $max, $defaultValue),
-        new SelectAttribute('', '', $ldapName.'_select', TRUE, array_keys($units), '', array_values($units)),
-      ), '', '',
-      $acl, $label
-    );
-    $this->setLinearRendering(TRUE);
-  }
-
-  function readValues($value)
-  {
-    $mod = 1024;
-    for ($i = 0; $value >= $mod; $i++) {
-      $value /= $mod;
-    }
-    return array($value, $i);
-  }
-
-  function writeValues($values)
-  {
-    return $values[0] * pow(1024, $values[1]);
-  }
-
-  function displayValue($value)
-  {
-    $values = $this->readValues($value);
-    return $values[0].$this->attributes[1]->displayValue($values[1]);
-  }
-}
-
 class QuotaEntryAttribute extends CharSeparatedCompositeAttribute
 {
   function readValues($value)
@@ -148,7 +113,6 @@ class quotaAccount extends simplePlugin
 
   static function getAttributesInfo ()
   {
-    $unit_options = array(_('B'),_('KB'),_('MB'),_('GB'),_('TB'));
     return array(
       'main' => array(
         'template'  => get_template_path('quota_section.tpl', TRUE, dirname(__FILE__)),
@@ -165,16 +129,14 @@ class quotaAccount extends simplePlugin
                   _('Device'), _('Device this quota is for'),
                   'quotaDevice', TRUE
                 ),
-                new UnitIntAttribute(
+                new BytesSizeAttribute(
                   _('Block soft limit'), _('Soft limit for the block the user can use'),
                   'quotaBlockSoftLimit', TRUE,
-                  $unit_options,
                   0 /*min*/, FALSE/*no max*/
                 ),
-                new UnitIntAttribute(
+                new BytesSizeAttribute(
                   _('Block hard limit'), _('Hard limit for the block the user can use'),
                   'quotaBlockHardLimit', TRUE,
-                  $unit_options,
                   0 /*min*/, FALSE/*no max*/
                 ),
                 new IntAttribute(
