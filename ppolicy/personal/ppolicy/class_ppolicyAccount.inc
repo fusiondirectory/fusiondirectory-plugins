@@ -62,6 +62,12 @@ class ppolicyAccount extends simplePlugin
           new ReadOnlyLDAPAttribute(
             _('Account locked time'), _('Time the account was locked'),
             'pwdAccountLockedTime', FALSE
+          ),
+          new SelectAttribute(
+            _('Reset locking'), _('Resets the lock status of this account'),
+            'pwdReset', FALSE,
+            array('', 'FALSE', 'TRUE'), '',
+            array('', _('Reset with the same password'), _('Reset and force change'))
           )
         )
       )
