@@ -32,7 +32,7 @@
     <br>
     <br>
     <div style='width:100%; height:300px; overflow: scroll;'>
-    <table cellpadding="3" cellspacing="0" style='width:100%; background-color: #CCCCCC; border: solid 1px #CCCCCC;'>
+    <table style='width:100%; background-color: #CCCCCC; border: solid 1px #CCCCCC;'>
       <tr>
         <td><b>{t}Timestamp{/t}</b></td>
         <td><b>{t}MAC{/t}</b></td>
@@ -54,15 +54,15 @@
           <td>{$item.FQDN}</td>
           <td>{$item.IP}</td>
           <td>{$item.DHCP}</td>
-        </tr> 
+        </tr>
         <tr style='background-color: #F0BBBB;'>
           <td colspan="7"><b>{$item.ERROR}</b></td>
         </tr>
       {else}
         {if ($key % 2)}
-          <tr class="rowxp0"> 
+          <tr class="rowxp0">
         {else}
-          <tr class="rowxp1"> 
+          <tr class="rowxp1">
         {/if}
           <td>{$item.TIMESTAMP}</td>
           <td style='border-left: solid 1px #BBBBBB;'>{$item.MAC}</td>

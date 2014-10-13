@@ -1,4 +1,4 @@
-<table summary="" style="width:100%; vertical-align:top; text-align:left;" cellpadding=4>
+<table summary="" style="width:100%; vertical-align:top; text-align:left;">
 <tr>
   <td style="vertical-align:top; width:600px">
    <div class="contentboxh" style="height:20px;">
