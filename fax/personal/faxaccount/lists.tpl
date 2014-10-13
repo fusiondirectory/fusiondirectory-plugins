@@ -1,9 +1,9 @@
 
-<table summary="" style="width:100%; vertical-align:top; text-align:left;" cellpadding=4 border=0>
+<table summary="" style="width:100%; vertical-align:top; text-align:left;" border="0">
  <tr>
-  <td style="vertical-align:top;width:50%;border-right:1px solid #A0A0A0"> 
+  <td style="vertical-align:top;width:50%;border-right:1px solid #A0A0A0">
    <b>{t}Blocked numbers/lists{/t}</b>
-   <br> 
+   <br>
    <select style="width:100%; height:300px;" name="block_list[]" size=15 multiple>
 	    {html_options values=$cblocklist output=$cblocklist}
 		<option disabled>&nbsp;</option>

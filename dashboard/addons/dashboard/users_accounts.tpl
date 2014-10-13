@@ -11,7 +11,7 @@
     {/if}
     </h1>
     {if $attributes.expired.accounts|@count > 0}
-      <table summary="" style="width: 100%;" class="listingTable">
+      <table style="width: 100%;" class="listingTable">
         <colgroup>
           <col width="10%"/>
           <col width="15%"/>
@@ -61,7 +61,7 @@
     {/if}
     </h1>
     {if $attributes.expired.accounts_next_days|@count > 0}
-      <table summary="" style="width: 100%; table-layout: fixed;"  cellpadding="4" cellspacing="0">
+      <table style="width: 100%;" class="listingTable">
         <colgroup>
           <col width="10%"/>
           <col width="15%"/>

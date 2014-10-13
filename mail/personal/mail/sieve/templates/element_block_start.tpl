@@ -1,5 +1,5 @@
 <!--
-<table cellspacing=0 style='width:100%;border: solid 1px #BBB;346575;'>
+<table style='width:100%;border: solid 1px #BBB;346575;border-collapse:collapse;'>
   <tr>
       <td style='width:20px; text-align:center;vertical-align:top; color: #FFFFFF; background-color:#BBBBBB;' >
         </td>

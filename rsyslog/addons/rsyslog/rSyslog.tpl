@@ -64,7 +64,7 @@
 {else}
 
   <br>
-  <table style="width:100%; background-color:#B0B0B0; white-space:nowrap; overflow-x:scroll;" cellspacing="1" cellpadding="2">
+  <table style="width:100%; background-color:#B0B0B0; white-space:nowrap; overflow-x:scroll;">
     <thead>
       <tr style="background-color: #E8E8E8; height:26px;">
         <th>

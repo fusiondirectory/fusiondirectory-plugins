@@ -1,7 +1,7 @@
 <h2><img  class="center"  alt=""  align="middle"  src="geticon.php?context=categories&icon=applications-internet&size=16"> {t}Network  settings{/t}</h2>
 
 
-<table width="100%" cellspacing="0" cellpadding="0">
+<table style="width:100%; border-spacing:0; border-collapse:collapse;">
   <tr>
     <td style="width:50%; vertical-align: top;">
       <table>

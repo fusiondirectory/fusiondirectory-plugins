@@ -12,7 +12,7 @@
     &nbsp;
   </td>
   <td style="vertical-align:top">
-    <table summary="" border=0 cellspacing=5>
+    <table border="0">
      <tr>
       <td><b>{t}FAX ID{/t}</b></td>
       <td>{$fax_id}</td>

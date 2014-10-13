@@ -26,7 +26,7 @@
           padding:5px;
           ">
 
-<table style='width:100%' cellpadding=0 cellspacing=0>
+<table style='width:100%;border-collapse:collapse; border-spacing:0;'>
 {foreach from=$entries item=item key=key}
   {if $item.TYPE == "OPEN"}
     <tr>
@@ -34,7 +34,7 @@
     </tr>
     <tr>
       <td style='padding-left:20px;' colspan=3>
-        <table style='width:100%;' cellpadding=0 cellspacing=0>
+        <table style='width:100%;border-collapse:collapse; border-spacing:0;'>
 
   {elseif $item.TYPE == "CLOSE"}
         </table>

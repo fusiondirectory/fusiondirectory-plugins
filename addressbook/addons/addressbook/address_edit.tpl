@@ -1,4 +1,4 @@
-<table style="width:100%; vertical-align:top; text-align:left; border:1px solid #B0B0B0;" cellpadding=4 cellspacing=0 border=0>
+<table style="width:100%; vertical-align:top; text-align:left; border:1px solid #B0B0B0;" border="0">
   <tr style="background-color: #E8E8E8; height:26px;font-weight:bold;">
     <td align=left width="100%">
       <LABEL for="storage_base">
@@ -16,7 +16,7 @@
   </tr>
   <tr style="background-color: white">
     <td colspan=2>
-      <table width="100%" cellspacing=2 cellpadding=4>
+      <table width="100%">
         <tr>
           <td style="width:50%; vertical-align:top; background-color: #F0F0F0">
             <h2>

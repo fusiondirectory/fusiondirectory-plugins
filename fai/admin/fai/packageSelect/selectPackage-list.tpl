@@ -1,4 +1,4 @@
-<table style="width:100%;height:100%; vertical-align:top; text-align:left;" cellpadding=2>
+<table style="width:100%;height:100%; vertical-align:top; text-align:left;">
   <tr>
     <td style="vertical-align:top; width:100%;">
       <div class="contentboxh">

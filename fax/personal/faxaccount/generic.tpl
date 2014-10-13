@@ -1,4 +1,4 @@
-<table style="width:100%; vertical-align:top; text-align:left;" cellpadding="0" border="0">
+<table style="width:100%; vertical-align:top; text-align:left;border-collapse:collapse; border-spacing:0;">
 
  <!-- Headline container -->
  <tr>
@@ -85,7 +85,7 @@
 
 <p class="seperator">&nbsp;</p>
 
-<table style="width:100%; vertical-align:top; text-align:left;" cellpadding=4 border=0>
+<table style="width:100%; vertical-align:top; text-align:left;" border="0">
   <tr>
     <td style="width:50%; border-right:1px solid #A0A0A0">
     <h2><img class="center" alt="" src="plugins/fax/images/iconMini.png">&nbsp;{t}Alternate fax numbers{/t}</h2>
