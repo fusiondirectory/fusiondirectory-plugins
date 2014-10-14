@@ -32,7 +32,6 @@ class mailMethodKolab22 extends mailMethodKolab
   /* Enabled mail domain selection. If enabled getMailDomains must the domain parts */
   protected $enableDomainSelection  = TRUE;
   protected $enableQuota            = TRUE;
-  protected $enableSieveManager     = TRUE;
   protected $enableVacationRange    = TRUE;
   protected $enableFolderTypes      = TRUE;
 

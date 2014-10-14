@@ -38,7 +38,6 @@ class mailMethodCyrus extends mailMethod
 
   protected $enableDomainSelection  = FALSE;
   protected $enableQuota            = TRUE;
-  protected $enableSieveManager     = TRUE;
   protected $enableVacationRange    = TRUE;
   protected $enableFolderTypes      = FALSE;
 

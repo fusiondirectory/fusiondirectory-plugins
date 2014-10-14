@@ -34,7 +34,6 @@ class mailMethodKolab extends mailMethodCyrus
   /* Enabled mail domain selection. If enabled getMailDomains must the domain parts */
   protected $enableDomainSelection  = FALSE;
   protected $enableQuota            = TRUE;
-  protected $enableSieveManager     = TRUE;
   protected $enableVacationRange    = TRUE;
   protected $enableFolderTypes      = TRUE;
 
