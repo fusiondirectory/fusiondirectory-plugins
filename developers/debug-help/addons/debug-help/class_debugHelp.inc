@@ -44,8 +44,8 @@ class debugHelp extends simplePlugin
         'attrs'     => array(
           new ButtonAttribute(
             _('Object types diagram'), '',
-            'links', FALSE,
-            _('Get')
+            'links',
+            _('Get'), 'buildDiagram'
           )
         )
       ),
@@ -65,16 +65,6 @@ class debugHelp extends simplePlugin
     parent::__construct($config, $dn, $object);
 
     $this->buildObjectTypesDump();
-  }
-
-  function save_object()
-  {
-    parent::save_object();
-    if (isset($_POST[get_class($this)."_posted"])) {
-      if (isset($_POST['links'])) {
-        self::buildDiagram();
-      }
-    }
   }
 
   function buildObjectTypesDump()
@@ -122,7 +112,7 @@ class debugHelp extends simplePlugin
   /*!
    * \brief Build a diagram of object types and acl categories using graphviz
    */
-  static function buildDiagram ()
+  function buildDiagram ()
   {
     global $config;
     $plist = session::global_get('plist');

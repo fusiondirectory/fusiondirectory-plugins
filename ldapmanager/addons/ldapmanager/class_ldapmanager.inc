@@ -52,8 +52,8 @@ class ldapmanager extends simplePlugin
               ),
               new ButtonAttribute (
                 '', '',
-                'single_submit', FALSE,
-                _('Export'), ''
+                'single_submit',
+                _('Export')
               )
             ),
             '', '%s%s', '',
@@ -71,8 +71,8 @@ class ldapmanager extends simplePlugin
               new BaseSelectorAttribute ('', '', ''),
               new ButtonAttribute (
                 '', '',
-                'complete_submit', FALSE,
-                _('Export'), ''
+                'complete_submit',
+                _('Export')
               )
             ),
             '', '%s%s', '',
@@ -98,8 +98,8 @@ class ldapmanager extends simplePlugin
               ),
               new ButtonAttribute (
                 '', '',
-                'import_submit', FALSE,
-                _('Import'), ''
+                'import_submit',
+                _('Import')
               )
             ),
             '', '%s%s', '',
@@ -125,36 +125,27 @@ class ldapmanager extends simplePlugin
     $this->attributesAccess['export_filter']->setInLdap(FALSE);
   }
 
-  function save_object()
+  function handle_single_submit()
   {
-    parent::save_object();
-    if (isset($_POST[get_class($this).'_posted'])) {
-      $this->save_export();
-      $this->save_import();
+    $dn     = $this->single_export;
+    $acl    = $this->attributesAccess['single_export']->getAcl();
+    if (!$ldap->dn_exists($dn)) {
+      msg_dialog::display(_('LDAP error'),
+          sprintf(_('No such object %s!'), LDAP::fix($dn)),
+          ERROR_DIALOG);
+      $dn = '';
     }
+    $this->save_export($dn, $acl, 'base', 'entryExport.ldif');
   }
 
-  function save_export()
+  function handle_complete_submit()
   {
-    $dn = '';
-    if (isset($_POST['single_submit'])) {
-      $dn     = $this->single_export;
-      $acl    = $this->attributesAccess['single_export']->getAcl();
-      $scope  = 'base';
-      $name   = 'entryExport.ldif';
-      if (!$ldap->dn_exists($dn)) {
-        msg_dialog::display(_('LDAP error'),
-            sprintf(_('No such object %s!'), LDAP::fix($dn)),
-            ERROR_DIALOG);
-        $dn = '';
-      }
-    } elseif (isset($_POST['complete_submit'])) {
-      $dn     = $this->complete_export;
-      $acl    = $this->attributesAccess['complete_export']->getAcl();
-      $scope  = 'sub';
-      $name   = 'fullExport.ldif';
-    }
+    $acl    = $this->attributesAccess['complete_export']->getAcl();
+    $this->save_export($this->complete_export, $acl, 'sub', 'fullExport.ldif');
+  }
 
+  function save_export($dn, $acl, $scope, $name)
+  {
     if (!empty($dn)) { // An LDIF export was asked
       // Check permissions
       if (!$this->acl_is_writeable($acl, $this->acl_skip_write())) {
@@ -175,17 +166,13 @@ class ldapmanager extends simplePlugin
     }
   }
 
-  function save_import()
+  function handle_import_submit()
   {
-    if (isset($_POST['import_submit'])) {
-      if ($this->acl_is_writeable($this->attributesAccess['import']->getAcl(), $this->acl_skip_write())) {
-        $ldap   = $this->config->get_ldap_link();
-        try {
-          $ldap->import_complete_ldif($this->import, !$this->overwrite, FALSE);
-        } catch (Exception $e) {
-          msg_dialog::display(_('LDAP error'), $e->getMessage(), ERROR_DIALOG);
-        }
-      }
+    $ldap = $this->config->get_ldap_link();
+    try {
+      $ldap->import_complete_ldif($this->import, !$this->overwrite, FALSE);
+    } catch (Exception $e) {
+      msg_dialog::display(_('LDAP error'), $e->getMessage(), ERROR_DIALOG);
     }
   }
 
