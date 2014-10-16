@@ -68,12 +68,11 @@ class application extends simplePlugin
     return array(
       'plShortName'   => _('Generic'),
       'plDescription' => _('Application generic'),
-      'plSelfModify'  => FALSE,
       'plObjectType'  => array('application' => array(
         'name'    => _('Application'),
         'filter'  => 'objectClass=gosaApplication',
         'ou'      => get_ou('applicationRDN'),
-        'icon'    => 'plugins/desktop-management/images/iconMimiApplications.png',
+        'icon'    => 'plugins/desktop-management/images/iconMiniApplications.png',
       )),
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
@@ -89,6 +88,7 @@ class application extends simplePlugin
       'main' => array(
         'name'  => _('Properties'),
         'attrs' => array(
+          new BaseSelectorAttribute(get_ou('applicationRDN')),
           new HostNameAttribute (
             _('Application name'), _('The name of this application'),
             'cn', TRUE
@@ -105,7 +105,6 @@ class application extends simplePlugin
             _('Description'), _('A short description of this application'),
             'description', FALSE
           ),
-          new BaseSelectorAttribute(get_ou('applicationRDN')),
         )
       ),
       'icon' => array(
