@@ -24,7 +24,6 @@ class webapp extends simplePlugin
 
   var $objectclasses = array('fdWebApplication');
 
-  /* Return plugin informations for acl handling  */
   public static function plInfo()
   {
     return array(
@@ -52,16 +51,25 @@ class webapp extends simplePlugin
             _('Name'), _('Name or id for application'),
             'cn', TRUE
           ),
+          new StringAttribute (
+            _('Description'), _('A short description of this application'),
+            'description', FALSE
+          ),
           new URLAttribute (
             _('URL'), _('Link to this application'),
             'labeledURI', TRUE
           ),
           new StringAttribute (
-            _('Title'), _('Displayed name for links to this application'),
+            _('Display Name'), _('Displayed name for links to this application'),
             'fdApplicationTitle', FALSE
           ),
+        )
+      ),
+      'icon' => array(
+        'name'  => _('Icon'),
+        'attrs' => array(
           new ImageAttribute (
-            _('Icon'), _('Icon for this application'),
+            '', _('The icon for this application'),
             'fdApplicationImage', FALSE,
             48, 48, 'png', TRUE
           ),

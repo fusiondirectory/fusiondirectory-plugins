@@ -97,17 +97,17 @@ class ppolicyAccount extends simplePlugin
       unset($attribute);
     }
 
-    $this->attributesAccess['pwdChangedTime']->setDisabled(TRUE);
     if ($this->pwdChangedTime == '') {
       $this->pwdChangedTime = _('Never');
     } else {
       $date = DateTime::createFromFormat('YmdHis\Z', $this->pwdChangedTime, new DateTimeZone('UTC'));
       $this->pwdChangedTime = $date->format('r');
     }
-    $this->attributesAccess['pwdAccountLockedTime']->setDisabled(TRUE);
     if ($this->pwdAccountLockedTime == '') {
       $this->pwdAccountLockedTime = _('Unlocked');
     }
+
+    $this->pwdReset = '';
   }
 }
 ?>
