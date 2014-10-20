@@ -1,0 +1,29 @@
+##
+## applications-fd-conf.schema - Needed by FusionDirectory for configuration of the applications plugin
+##
+
+# Attributes
+
+## RDNs
+
+attributetype ( 1.3.6.1.4.1.38414.37.1.1 NAME 'fdApplicationsRDN'
+  DESC 'FusionDirectory - Applications RDN'
+  EQUALITY caseExactIA5Match
+  SUBSTR caseExactIA5SubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE)
+
+attributetype ( 1.3.6.1.4.1.38414.37.1.2 NAME 'fdWebappsRDN'
+  DESC 'FusionDirectory - Web applications RDN'
+  EQUALITY caseExactIA5Match
+  SUBSTR caseExactIA5SubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE)
+
+# Object Class
+
+objectclass ( 1.3.6.1.4.1.38414.37.2.1 NAME 'fdApplicationsPluginConf'
+  DESC 'FusionDirectory applications plugin configuration'
+  SUP top AUXILIARY
+  MUST ( cn )
+  MAY ( fdApplicationsRDN $ fdWebappsRDN ) )

@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2013 FusionDirectory
+  Copyright (C) 2013-2014 FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -18,15 +18,15 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class desktopPluginConfig extends simplePlugin
+class applicationsPluginConfig extends simplePlugin
 {
-  var $objectclasses = array('fdDesktopPluginConf');
+  var $objectclasses = array('fdApplicationsPluginConf');
 
   static function plInfo()
   {
     return array(
-      'plShortName'     => _('Desktop management'),
-      'plDescription'   => _('Desktop management plugin configuration'),
+      'plShortName'     => _('Applications'),
+      'plDescription'   => _('Applications plugin configuration'),
       'plObjectType'    => array('smallConfig'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
@@ -37,16 +37,16 @@ class desktopPluginConfig extends simplePlugin
   {
     return array(
       'rdns' => array(
-        'name'  => _('LDAP tree'),
+        'name'  => _('Applications'),
         'attrs' => array(
           new StringAttribute (
-            _('Mimetype RDN'), _('Branch in which mime types will be stored'),
-            'fdMimetypeRDN', TRUE,
-            'ou=mimetypes'
+            _('Application RDN'), _('Branch in which applications will be stored'),
+            'fdApplicationsRDN', TRUE,
+            'ou=apps'
           ),
           new StringAttribute (
-            _('Application RDN'), _('Branch in which applications will be stored'),
-            'fdApplicationRDN', TRUE,
+            _('Web applications RDN'), _('Branch in which web applications will be stored'),
+            'fdWebappsRDN', TRUE,
             'ou=apps'
           ),
         )

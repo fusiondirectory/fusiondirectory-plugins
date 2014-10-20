@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2013 FusionDirectory
+  Copyright (C) 2013-2014  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -18,5 +18,22 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-simpleManagement::mainInc('mimetypeManagement');
+class applicationManagement extends simpleManagement
+{
+  protected $objectTypes  = array('application', 'webapp');
+
+  static function plInfo()
+  {
+    return array(
+      'plShortName'   => _('Applications'),
+      'plDescription' => _('Application management'),
+      'plIcon'        => 'plugins/desktop-management/images/iconApplication.png',
+      'plSection'     => 'admin',
+      'plPriority'    => 21,
+      'plManages'     => array('application', 'webapp'),
+
+      'plProvidedAcls' => array()
+    );
+  }
+}
 ?>
