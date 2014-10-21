@@ -73,7 +73,7 @@ class webApplication extends simplePlugin
             'fdApplicationImage', FALSE,
             48, 48, 'png', TRUE
           ),
-          new PathAttribute (
+          new StringAttribute (
             _('Icon location'), _('Usual path to this application icon'),
             'fdApplicationImageLocation', FALSE
           ),
