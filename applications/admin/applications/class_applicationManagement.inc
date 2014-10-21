@@ -20,17 +20,17 @@
 
 class applicationManagement extends simpleManagement
 {
-  protected $objectTypes  = array('application', 'webapp');
+  protected $objectTypes  = array('application', 'webApplication');
 
   static function plInfo()
   {
     return array(
       'plShortName'   => _('Applications'),
       'plDescription' => _('Application management'),
-      'plIcon'        => 'plugins/desktop-management/images/iconApplication.png',
+      'plIcon'        => 'geticon.php?context=categories&icon=applications-other&size=48',
       'plSection'     => 'admin',
       'plPriority'    => 21,
-      'plManages'     => array('application', 'webapp'),
+      'plManages'     => array('application', 'webApplication'),
 
       'plProvidedAcls' => array()
     );

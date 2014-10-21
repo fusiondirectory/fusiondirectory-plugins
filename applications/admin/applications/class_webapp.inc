@@ -18,7 +18,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
  */
 
-class webapp extends simplePlugin
+class webApplication extends simplePlugin
 {
   var $mainTab = TRUE;
 
@@ -29,7 +29,7 @@ class webapp extends simplePlugin
     return array(
       'plShortName'   => _('Web application'),
       'plDescription' => _('Web applicationts names, icons and links'),
-      'plObjectType'  => array('webapp' => array(
+      'plObjectType'  => array('webApplication' => array(
         'name'        => _('Web application'),
         'filter'      => 'objectClass=fdWebApplication',
         'ou'          => get_ou('webappsRDN'),

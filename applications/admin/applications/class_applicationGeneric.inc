@@ -34,7 +34,7 @@ class application extends simplePlugin
         'name'    => _('Application'),
         'filter'  => 'objectClass=fdApplication',
         'ou'      => get_ou('applicationsRDN'),
-        'icon'    => 'plugins/desktop-management/images/iconMimiApplications.png',
+        'icon'    => 'geticon.php?context=mimetypes&icon=application-x-executable&size=16',
       )),
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
@@ -119,7 +119,7 @@ class application extends simplePlugin
 
     $this->attributesAccess['cn']->setUnique(TRUE);
 
-    $filename = "./plugins/desktop-management/images/default_icon.png";
+    $filename = "./plugins/applications/images/default_icon.png";
 
     if (file_exists($filename)) {
       $fd = fopen ($filename, "rb");
