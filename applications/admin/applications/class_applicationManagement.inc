@@ -32,7 +32,66 @@ class applicationManagement extends simpleManagement
       'plPriority'    => 21,
       'plManages'     => array('application', 'webApplication'),
 
-      'plProvidedAcls' => array()
+      'plMenuProvider'  => TRUE,
+      'plProvidedAcls'  => array()
+    );
+  }
+
+  static function getMenuEntries()
+  {
+    global $config, $ui;
+    $mode = $config->get_cfg_value('WebappsMenu', 'none');
+    if ($mode == 'none') {
+      return array(array(), array());
+    }
+    $entries = array();
+    if ($mode == 'all') {
+      $apps = objects::ls(
+        'webApplication',
+        array(
+          'cn'                          => '1',
+          'description'                 => '1',
+          'labeledURI'                  => '1',
+          'fdApplicationTitle'          => '1',
+          'fdApplicationImageLocation'  => '1',
+          'fdApplicationImage'          => '1',
+        )
+      );
+    } else {
+      $roles = objects::ls(
+        'role',
+        array('fdApplicationAllowed' => '*'),
+        NULL,
+        '(&(objectClass=fdApplicationRights)(roleOccupant='.$ui->dn.'))'
+      );
+      $ldap = $config->get_ldap_link();
+      foreach ($roles as $role) {
+        foreach ($role['fdApplicationRights'] as $appdn) {
+          if (!isset($apps[$appdn])) {
+            $ldap->cat($appdn);
+            if ($ldap->count()) {
+              $apps[$appdn] = $ldap->fetch();
+            }
+          }
+        }
+      }
+    }
+    foreach ($apps as $app) {
+      $entries[] = array(
+        'NAME'        => $app['cn'],
+        'TITLE'       => $app['fdApplicationTitle'],
+        'DESCRIPTION' => $app['description'],
+        'LINK'        => $app['labeledURI'],
+        'ICONPATH'    => $app['fdApplicationImageLocation'],
+      );
+    }
+    return array(
+      array(
+        'webapps' => array('name' => _('Web applications'))
+      ),
+      array(
+        'webapps' => $entries
+      )
     );
   }
 }

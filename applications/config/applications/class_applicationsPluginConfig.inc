@@ -49,6 +49,12 @@ class applicationsPluginConfig extends simplePlugin
             'fdWebappsRDN', TRUE,
             'ou=apps'
           ),
+          new SelectAttribute (
+            _('Show web applications in menu'), _('Whether to show web applications in FD main menu'),
+            'fdWebappsMenu', TRUE,
+            array('none', 'allowed', 'all'), 'none',
+            array(_('None'), _('Only allowed'), _('All'))
+          ),
         )
       )
     );
