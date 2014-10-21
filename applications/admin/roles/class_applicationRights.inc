@@ -30,6 +30,9 @@ class applicationRights extends simplePlugin
       'plShortName'   => _('Applications'),
       'plDescription' => _('Applications allowed for this role'),
       'plObjectType'  => array('role'),
+      'plForeignKeys' => array(
+        'fdApplicationAllowed' => 'webApplication',
+      ),
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
