@@ -77,17 +77,26 @@ class applicationManagement extends simpleManagement
       }
     }
     foreach ($apps as $app) {
+      if (isset($app['fdApplicationImage'])) {
+        $path = 'getbin.php?key=webapp_'.urlencode($app['cn']);
+        session::set('binarywebapp_'.$app['cn'].'type', 'image/png');
+        session::set('binarywebapp_'.$app['cn'], $app['fdApplicationImage']);
+      } elseif (isset($app['fdApplicationImageLocation'])) {
+        $path = $app['fdApplicationImageLocation'];
+      } else {
+        $path = 'plugins/applications/images/default_icon.png';
+      }
       $entries[] = array(
         'NAME'        => $app['cn'],
         'TITLE'       => $app['fdApplicationTitle'],
         'DESCRIPTION' => $app['description'],
         'LINK'        => $app['labeledURI'],
-        'ICONPATH'    => $app['fdApplicationImageLocation'],
+        'ICONPATH'    => $path,
       );
     }
     return array(
       array(
-        'webapps' => array('name' => _('Web applications'))
+        'webapps' => array('name' => _('Web applications'), 'priority' => 100)
       ),
       array(
         'webapps' => $entries
