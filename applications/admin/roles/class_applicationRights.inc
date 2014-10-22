@@ -61,7 +61,7 @@ class applicationRights extends simplePlugin
 
     $apps = objects::ls('application');
     $apps = array_merge($apps, objects::ls('webApplication'));
-    $this->attributesAccess['fdApplicationAllowed']->setChoices(
+    $this->attributesAccess['fdApplicationAllowed']->attribute->setChoices(
       array_keys($apps),
       array_values($apps)
     );

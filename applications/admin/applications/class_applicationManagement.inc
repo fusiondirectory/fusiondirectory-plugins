@@ -46,18 +46,19 @@ class applicationManagement extends simpleManagement
     }
     $entries = array();
     if ($mode == 'all') {
+      /* using raw to have the same results than with allowed mode */
       $apps = objects::ls(
         'webApplication',
         array(
-          'cn'                          => '1',
-          'description'                 => '1',
-          'labeledURI'                  => '1',
-          'fdApplicationTitle'          => '1',
-          'fdApplicationImageLocation'  => '1',
-          'fdApplicationImage'          => '1',
+          'cn'                          => 'raw',
+          'description'                 => 'raw',
+          'labeledURI'                  => 'raw',
+          'fdApplicationTitle'          => 'raw',
+          'fdApplicationImageLocation'  => 'raw',
+          'fdApplicationImage'          => 'raw',
         )
       );
-    } else {
+    } else { /* allowed */
       $roles = objects::ls(
         'role',
         array('fdApplicationAllowed' => '*'),
@@ -66,7 +67,7 @@ class applicationManagement extends simpleManagement
       );
       $ldap = $config->get_ldap_link();
       foreach ($roles as $role) {
-        foreach ($role['fdApplicationRights'] as $appdn) {
+        foreach ($role['fdApplicationAllowed'] as $appdn) {
           if (!isset($apps[$appdn])) {
             $ldap->cat($appdn);
             if ($ldap->count()) {
@@ -78,19 +79,19 @@ class applicationManagement extends simpleManagement
     }
     foreach ($apps as $app) {
       if (isset($app['fdApplicationImage'])) {
-        $path = 'getbin.php?key=webapp_'.urlencode($app['cn']);
-        session::set('binarywebapp_'.$app['cn'].'type', 'image/png');
-        session::set('binarywebapp_'.$app['cn'], $app['fdApplicationImage']);
+        $path = 'getbin.php?key=webapp_'.urlencode($app['cn'][0]);
+        session::set('binarywebapp_'.$app['cn'][0].'type', 'image/png');
+        session::set('binarywebapp_'.$app['cn'][0], $app['fdApplicationImage'][0]);
       } elseif (isset($app['fdApplicationImageLocation'])) {
-        $path = $app['fdApplicationImageLocation'];
+        $path = $app['fdApplicationImageLocation'][0];
       } else {
         $path = 'plugins/applications/images/default_icon.png';
       }
       $entries[] = array(
-        'NAME'        => $app['cn'],
-        'TITLE'       => $app['fdApplicationTitle'],
-        'DESCRIPTION' => $app['description'],
-        'LINK'        => $app['labeledURI'],
+        'NAME'        => $app['cn'][0],
+        'TITLE'       => $app['fdApplicationTitle'][0],
+        'DESCRIPTION' => $app['description'][0],
+        'LINK'        => $app['labeledURI'][0],
         'ICONPATH'    => $path,
       );
     }
