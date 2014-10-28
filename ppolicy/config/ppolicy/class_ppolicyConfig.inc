@@ -46,6 +46,11 @@ class ppolicyConfig extends simplePlugin
             'fdPpolicyRDN', TRUE,
             'ou=ppolicies'
           ),
+          new StringAttribute (
+            _('Default ppolicy cn'), _('What you put as default ppolicy in the overlay config'),
+            'fdPpolicyDefaultCn', FALSE,
+            'default'
+          ),
         )
       ),
     );
