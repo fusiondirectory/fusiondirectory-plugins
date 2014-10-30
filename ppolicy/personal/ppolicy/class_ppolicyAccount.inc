@@ -109,5 +109,13 @@ class ppolicyAccount extends simplePlugin
 
     $this->pwdReset = '';
   }
+
+  protected function prepare_save ()
+  {
+    parent::prepare_save();
+    if (!empty($this->pwdReset)) {
+      $this->attrs['pwdAccountLockedTime'] = array();
+    }
+  }
 }
 ?>
