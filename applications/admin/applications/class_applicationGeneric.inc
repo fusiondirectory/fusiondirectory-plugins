@@ -21,7 +21,7 @@
 
 class application extends simplePlugin
 {
-  var $objectclasses = array('fdApplication');
+  var $objectclasses = array('fdDesktopApplication');
 
   var $mainTab = TRUE;
 
@@ -32,7 +32,7 @@ class application extends simplePlugin
       'plDescription' => _('Application generic'),
       'plObjectType'  => array('application' => array(
         'name'    => _('Application'),
-        'filter'  => 'objectClass=fdApplication',
+        'filter'  => 'objectClass=fdDesktopApplication',
         'ou'      => get_ou('applicationsRDN'),
         'icon'    => 'geticon.php?context=mimetypes&icon=application-x-executable&size=16',
       )),
