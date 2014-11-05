@@ -59,7 +59,7 @@ class ppolicyAccount extends simplePlugin
             _('Last password change'), _('Last time the password for the entry was changed'),
             'pwdChangedTime', FALSE
           ),
-          new ReadOnlyLDAPAttribute(
+          new DisplayLDAPAttribute(
             _('Account locked time'), _('Time the account was locked'),
             'pwdAccountLockedTime', FALSE
           ),
@@ -115,6 +115,8 @@ class ppolicyAccount extends simplePlugin
     parent::prepare_save();
     if (!empty($this->pwdReset)) {
       $this->attrs['pwdAccountLockedTime'] = array();
+    } else {
+      unset($this->attrs['pwdAccountLockedTime']);
     }
   }
 }
