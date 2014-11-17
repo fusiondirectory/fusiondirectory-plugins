@@ -31,6 +31,7 @@ class NetgroupsAttribute extends GroupsAttribute
 }
 
 class netgroupMembership extends simplePlugin {
+  var $displayHeader = TRUE;
   var $objectclasses = array("whatever");
   var $id;
   var $old_id;
@@ -59,7 +60,7 @@ class netgroupMembership extends simplePlugin {
         'name'  => _('Member of the following NIS Netgroups  '),
         'icon'  => 'plugins/netgroups/images/iconMini.png',
         'attrs' => array(
-          new NetgroupsAttribute('', _('NIS netgroup membership'), 'nisMembership')
+          new NetgroupsAttribute('', _('NIS netgroup membership'), 'nisMembership', TRUE)
         )
       ),
     );
