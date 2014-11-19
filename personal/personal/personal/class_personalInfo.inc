@@ -50,7 +50,7 @@ class SocialAccountAttribute extends CompositeAttribute
       return array($handlerClass, $this->attributes[1]->getValue());
     }
     $handler      = new $handlerClass();
-    return array('string' => $handlerClass::getName(), 'html' => $handler->linkify($this->attributes[1]->getValue()));
+    return array($handlerClass::getName(), array('html' => $handler->linkify($this->attributes[1]->getValue())));
   }
 
   function check ()
