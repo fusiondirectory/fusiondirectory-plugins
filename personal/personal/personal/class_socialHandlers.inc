@@ -61,6 +61,16 @@ class socialHandler
   }
 }
 
+class socialHandler_facebook extends socialHandler
+{
+  static function getName()
+  {
+    return _('Facebook');
+  }
+
+  protected $baseurl = 'https://www.facebook.com';
+}
+
 class socialHandler_twitter extends socialHandler
 {
   static function getName()
@@ -78,5 +88,48 @@ class socialHandler_twitter extends socialHandler
   function validate($value)
   {
     return preg_replace('/^@/', '', $value);
+  }
+}
+
+class socialHandler_gplus extends socialHandler
+{
+  static function getName()
+  {
+    return _('Google+');
+  }
+
+  protected $baseurl = 'https://plus.google.com';
+
+  function linkify($value)
+  {
+    return $this->link($this->baseurl.'/+'.$value, '+'.$value);
+  }
+
+  function validate($value)
+  {
+    return preg_replace('/^+/', '', $value);
+  }
+}
+
+class socialHandler_diaspora extends socialHandler
+{
+  static function getName()
+  {
+    return _('Diaspora*');
+  }
+
+  protected $baseurl = '';
+
+  function linkify($value)
+  {
+    return $value;
+  }
+
+  function validate($value)
+  {
+    if (!tests::is_email($value)) {
+      throw new socialHandlerInvalidValueException(_('Diaspora accounts must look like user@pod'));
+    }
+    return $value;
   }
 }
