@@ -212,7 +212,7 @@ class DNS
     $PrePareZoneEntries = array();
 
     /* Walk through all zones and detect renamed/added/deleted zones... */
-    foreach ($newZones as $name => $zone) {
+    foreach ($newZones as $zone) {
 
       /* This zone was renamed */
       if ((!empty($zone['InitialzoneName'])) && ($zone['InitialzoneName'] != $zone['zoneName'])) {
