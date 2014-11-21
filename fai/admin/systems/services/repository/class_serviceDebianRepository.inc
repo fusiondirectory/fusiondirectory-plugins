@@ -1,9 +1,8 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2013  FusionDirectory
+  Copyright (C) 2011-2014  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -24,9 +23,9 @@
 
 class serviceDebianRepository extends simpleService
 {
-  var $objectclasses = array("FAIrepositoryServer");
+  var $conflicts      = array('serviceDebianRepository');
+  var $objectclasses  = array('FAIrepositoryServer');
 
-  // The main function : information about attributes
   static function getAttributesInfo ()
   {
     return array(
@@ -79,6 +78,9 @@ class serviceDebianRepository extends simpleService
                     )
                   )
                 ),
+                new HiddenAttribute(
+                  'distribution', TRUE, 'debian'
+                ),
               ),
               '', '' // no formats
             ),
@@ -91,7 +93,6 @@ class serviceDebianRepository extends simpleService
     );
   }
 
-  /* Return plugin informations for acl handling */
   static function plInfo()
   {
     return array(
@@ -107,7 +108,7 @@ class serviceDebianRepository extends simpleService
   {
     parent::__construct($config, $dn, $parent);
 
-    $this->attributesAccess['FAIrepository']->attribute->attributes[1]->setChoices($this->getParentServers());
+    $this->attributesAccess['FAIrepository']->attribute->attributes[1]->setChoices(self::getParentServers('debian', $this->cn));
     $releaseList = array_map(
       function ($a)
       {
@@ -120,6 +121,27 @@ class serviceDebianRepository extends simpleService
     $this->attributesAccess['FAIrepository']->setLinearRendering(FALSE);
   }
 
+  function is_this_account($attrs)
+  {
+    if (parent::is_this_account()) {
+      return self::isOfDistribution($attrs, 'debian');
+    } else {
+      return FALSE;
+    }
+  }
+
+  static function isOfDistribution($attrs, $distribution)
+  {
+    if (!isset($attrs['FAIrepository'])) {
+      return FALSE;
+    }
+    if (preg_match('/'.preg_quote($distribution, '/').'$/', $attrs['FAIrepository'][0])) {
+      return TRUE;
+    } else {
+      return FALSE;
+    }
+  }
+
   function ldap_save($clean = TRUE)
   {
     parent::ldap_save($clean);
@@ -129,77 +151,42 @@ class serviceDebianRepository extends simpleService
     foreach ($repos as $repo) {
       $release = $repo[2];
       if (($repo[4] == 'install') && (!isset($done[$release]))) {
-        FAI::createBranch($release);
+        FAI::createBranch('debian', $release);
         $done[$release] = TRUE;
       }
     }
   }
 
+  static function getParentServers($distribution, $cn = NULL)
+  {
+    global $config;
+
+    $ldap = $config->get_ldap_link();
+    $ldap->cd($config->current['BASE']);
+    $ldap->search('(&(objectClass=FAIrepositoryServer)(FAIrepository=*|'.$distribution.'))', array('cn'));
+
+    $ret = array();
+    while ($attr = $ldap->fetch()) {
+      if ($attr['cn'][0] == $cn) {
+        continue;
+      }
+      $ret[$attr['cn'][0]] = $attr['cn'][0];
+    }
+
+    asort($ret);
+    return $ret;
+  }
+
   function getReleaseList ()
   {
     $ldap = $this->config->get_ldap_link();
-    $ldap->ls("(objectClass=FAIbranch)", get_ou("faiBaseRDN").$this->config->current['BASE'], array("ou"));
+    $ldap->ls('(objectClass=FAIbranch)', 'ou=debian,'.get_ou('faiBaseRDN').$this->config->current['BASE'], array('ou'));
 
     $list = array();
     while ($release = $ldap->fetch()) {
       $list[] = $release['ou'][0];
     }
     return $list;
-  }
-
-  function getParentServers()
-  {
-    $ldap = $this->config->get_ldap_link();
-    $ldap->cd($this->config->current['BASE']);
-    $ldap->search("(objectClass=FAIrepositoryServer)", array("cn"));
-
-    $ret  = array();
-    while ($attr = $ldap->fetch()) {
-      if ($attr['cn'][0] == $this->cn) {
-        continue;
-      }
-      $ret[$attr['cn'][0]] = $attr['cn'][0];
-    }
-
-    $ret = array_merge($ret, $this->getHookElements());
-
-    asort($ret);
-    return $ret;
-  }
-
-  /* this funtions calls a defined hook
-      and parses all additional serverdata
-   */
-  function getHookElements()
-  {
-    $ret = array();
-    $cmd = $this->config->search("serviceRepository", "repositoryBranchHook", array('tabs'));
-    if (!empty($cmd)) {
-      $res  = shell_exec($cmd);
-      $res2 = trim($res);
-      if (!$res || empty($res2)) {
-        msg_dialog::display(_("Error"), msgPool::cmdexecfailed( "repositoryBranchHook",
-                                                                $cmd,
-                                                                _("Repository service")),
-                                                                ERROR_DIALOG);
-      } else {
-        $tmp = preg_split("/\n/", $res);
-        foreach ($tmp as $hook) {
-          /* skip empty */
-          if (empty($hook)) {
-            continue;
-          }
-
-          if (preg_match("/;/", $hook)) {
-            $hookinfo = explode(";", $hook);
-            $ret[$hookinfo[0]] = $hookinfo[0];
-          } else {
-            $ret[$hook] = $hook;
-          }
-        }
-      }
-    }
-    return $ret;
   }
 }
 ?>
