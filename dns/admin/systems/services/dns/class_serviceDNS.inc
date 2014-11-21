@@ -25,11 +25,16 @@ class DnsZoneDialog extends GenericDialog
   protected $post_finish = 'SaveZoneChanges';
   protected $dialogClass = 'servdnseditZone';
 
+  protected $initialDialogValue = NULL;
+
   function __construct($simplePlugin, &$attribute, $value = array())
   {
     $this->attribute      = $attribute;
     $this->dialog         = new $this->dialogClass($simplePlugin->config, $simplePlugin->dn, $value);
     $this->dialog->parent = $simplePlugin;
+    if (!empty($value)) {
+      $this->initialDialogValue = $value;
+    }
   }
 
   function dialog_execute ()
@@ -48,7 +53,7 @@ class DnsZoneDialog extends GenericDialog
       foreach ($checks as $msg) {
         msg_dialog::display(_('Error'), $msg, ERROR_DIALOG);
       }
-      return TRUE;
+      return $this->dialog->execute();
     } else {
       /* add new/edited zone */
       $ret = $this->dialog->save();
@@ -59,6 +64,9 @@ class DnsZoneDialog extends GenericDialog
 
   function handle_cancel ()
   {
+    if ($this->initialDialogValue !== NULL) {
+      $this->attribute->addValue($this->initialDialogValue);
+    }
     return FALSE;
   }
 }
@@ -71,7 +79,8 @@ class DnsZonesAttribute extends DialogOrderedArrayAttribute
   {
     return array(
       $value['zoneName'],
-      $value['ReverseZone'],
+      sprintf(_('Reverse zone: %s'), $value['ReverseZone']),
+      sprintf(_('TTL: %s'), $value['sOAttl']),
     );
   }
 
@@ -84,6 +93,38 @@ class DnsZonesAttribute extends DialogOrderedArrayAttribute
   {
     /* Remove crap made by plugin */
     unset ($attrs[$this->getLdapName()]);
+  }
+
+  protected function genRowIcons($key, $value)
+  {
+    $id = $this->getHtmlId();
+    list ($img, $width) = parent::genRowIcons($key, $value);
+    $img .= $this->renderInputField(
+      'image', $id.'_ldap2zone_'.$key,
+      array(
+        'src'   => 'geticon.php?context=actions&amp;icon=view-refresh&amp;size=16',
+        'title' => _('ldap2zone'),
+        'alt'   => _('ldap2zone'),
+        'class' => 'center'
+      )
+    ).'&nbsp;';
+
+    return array ($img, $width);
+  }
+
+  protected function handlePostValueActions($id, $postValue)
+  {
+    if (parent::handlePostValueActions($id, $postValue)) {
+      return TRUE;
+    }
+    if (preg_match('/^'.$id.'_ldap2zone_/', $postValue)) {
+      $key = preg_replace('/^'.$id.'_ldap2zone_/', '', $postValue);
+      $key = preg_replace('/_[xy]$/', '', $key);
+
+      $this->plugin->callLdap2zone($this->value[$key]);
+      return TRUE;
+    }
+    return FALSE;
   }
 }
 
@@ -142,13 +183,10 @@ class serviceDNS extends simpleService
     if (!isset($attrs['dn'])) {
       return FALSE;
     }
-    /* Get all zone Informations
-     */
-    //~ print_r(DNS::getDNSZoneEntries($this->config, $attrs['dn']));
-    $this->dnsZones = DNS::getDNSZoneEntries($this->config, $attrs['dn']);
+    /* Get all zone Informations */
+    $this->dnsZones = array_values(DNS::getDNSZoneEntries($this->config, $attrs['dn']));
 
-    /* If there is at least one entry in this -> types, we have DNS enabled
-     */
+    /* If there is at least one entry in dnsZones, we have DNS enabled */
     if (count($this->dnsZones) == 0) {
       return FALSE;
     } else {
@@ -159,12 +197,14 @@ class serviceDNS extends simpleService
   function ldap_save ($cleanup = TRUE)
   {
     /* Save zone editor changes now */
-    foreach ($this->dnsZones as $name => $zone) {
+    $dnsZones = $this->dnsZones;
+    foreach ($dnsZones as $key => $zone) {
       if (isset($zone['zoneEditor']) && ($zone['zoneEditor'] != NULL) && is_object($zone['zoneEditor'])) {
         $zone['zoneEditor']->save();
-        unset($this->dnsZones[$name]['zoneEditor']);
+        unset($dnsZones[$key]['zoneEditor']);
       }
     }
+    $this->dnsZones = $dnsZones;
 
     $ldap = $this->config->get_ldap_link();
     $ldap->cd($this->config->current['BASE']);
@@ -213,7 +253,7 @@ class serviceDNS extends simpleService
       }
     }
 
-    /* move follwoing entries */
+    /* move following entries */
     foreach ($tmp['move'] as $src => $dst) {
       $this->move($src, $dst);
     }
@@ -249,9 +289,27 @@ class serviceDNS extends simpleService
   {
     $ldap = $this->config->get_ldap_link();
     if ($this->initially_was_account) {
-      foreach ($this->dnsZones as $key => $zone) {
+      foreach ($this->dnsZones as $zone) {
         $zonedn = "zoneName=".$zone['InitialzoneName'].",".$this->dn;
         $ldap->rmdir_recursive($zonedn);
+      }
+    }
+  }
+
+  /* This function calls ldap2zone */
+  function callLdap2Zone($zone)
+  {
+    $o_queue = new supportDaemon();
+    if ($o_queue->is_error()) {
+      msg_dialog::display(_('Error'), sprintf(_('Was not able to contact argonaut server: <br/><br/>%s'), $o_queue->get_error()), ERROR_DIALOG);
+    } else {
+      $o_queue->append_call(
+        'Ldap2Zone.start',
+        array($this->attrs['macAddress'][0]),
+        array('args' => array($zone))
+      );
+      if ($o_queue->is_error()) {
+        msg_dialog::display(_('Error'), sprintf(_('Was not able to launch ldap2zone: <br/><br/>%s'), $o_queue->get_error()), ERROR_DIALOG);
       }
     }
   }
