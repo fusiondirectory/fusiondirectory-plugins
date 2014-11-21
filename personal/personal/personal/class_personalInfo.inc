@@ -86,8 +86,8 @@ class personalInfo extends simplePlugin
       'plDescription'   => _('Personal informations'),
       'plSelfModify'    => TRUE,
       'plObjectType'    => array('user'),
-      'plIcon'          => 'geticon.php?context=applications&amp;icon=user-info&amp;size=48',
-      'plSmallIcon'     => 'geticon.php?context=applications&amp;icon=user-info&amp;size=16',
+      'plIcon'          => 'geticon.php?context=applications&icon=user-info&size=48',
+      'plSmallIcon'     => 'geticon.php?context=applications&icon=user-info&size=16',
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
