@@ -43,6 +43,26 @@ class ejbcaManagement extends simpleManagement
   {
     parent::configureHeadpage();
     unset($this->headpage->xmlData['actionmenu']['action'][0]);
+    $downloadAction =
+      array(
+        'name'  => 'download',
+        'type'  => 'entry',
+        'image' => 'geticon.php?context=actions&amp;icon=download&amp;size=16',
+        'label' => _('Download'),
+        'acl'   => 'ejbcaCertificate/ejbcaCertificate[r]',
+      );
+    array_unshift($this->headpage->xmlData['actiontriggers']['action'], $downloadAction);
+    $this->registerAction('download', 'downloadEntry');
+  }
+
+  function downloadEntry($action, $targets, $all)
+  {
+    $entry = $this->headpage->getEntry($targets[0]);
+    session::set('binary', $entry['userCertificate;binary'][0]);
+    session::set('binarytype', 'octet-stream');
+    session::set('binaryfile', $entry['cn'][0].'.der');
+    header('location: getbin.php');
+    exit();
   }
 }
 ?>
