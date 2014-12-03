@@ -18,10 +18,10 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class ejbcaAccount extends simplePlugin
+class ejbcaCertificates extends simplePlugin
 {
   var $displayHeader = TRUE;
-  var $objectclasses = array('fdEjbcaAccount');
+  var $objectclasses = array('fdEjbcaCertificates');
 
   // The main function : information about attributes
   static function getAttributesInfo ()
@@ -32,8 +32,8 @@ class ejbcaAccount extends simplePlugin
         'class' => array('fullwidth'),
         'attrs' => array(
           new EjbcaUserCertsAttribute(
-            '', _('Certificates of this user'),
-            'fdUserCertDN', TRUE
+            '', _('Certificates associated to this object'),
+            'fdEjbcaCertDN', TRUE
           )
         )
       )
@@ -46,11 +46,11 @@ class ejbcaAccount extends simplePlugin
       'plShortName'     => _('EJBCA'),
       'plDescription'   => _('Assign EJBCA certificates to a user'),
       'plSelfModify'    => TRUE,
-      'plObjectType'    => array('user'),
+      'plObjectType'    => array('user','server','workstation','terminal','printer','component','winstation','phone','mobilePhone'),
       'plIcon'          => 'geticon.php?context=applications&icon=ejbca&size=48',
       'plSmallIcon'     => 'geticon.php?context=applications&icon=ejbca&size=16',
       'plForeignKeys'   => array(
-        'fdUserCertDN' => 'ejbcaCertificate',
+        'fdEjbcaCertDN' => 'ejbcaCertificate',
       ),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
