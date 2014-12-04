@@ -711,7 +711,8 @@ class mailMethod
     $ui = get_userinfo();
     foreach ($this->config->data['SERVERS']['IMAP'] as $key => $val) {
       if ( $this->parent->gosaMailServer == $key ||
-          preg_match("/r/", $ui->get_permissions($val['server_dn'], "server/serviceIMAP", ""))) {
+          preg_match("/r/", $ui->get_permissions($val['server_dn'], "server/serviceIMAP", "")) ||
+          preg_match("/r/", $ui->get_permissions($val['server_dn'], "server/serviceCyrus", ""))) {
         $mailserver[] = $key;
       }
     }
