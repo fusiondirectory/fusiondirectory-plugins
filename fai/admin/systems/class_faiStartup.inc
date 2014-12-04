@@ -129,7 +129,7 @@ class faiStartup extends simplePlugin
       $o_queue = new supportDaemon();
       $tmp = $o_queue->FAI_get_server();
       if ($o_queue->is_error()) {
-        msg_dialog::display(_("Service infrastructure"), msgPool::siError($o_queue->get_error()), ERROR_DIALOG);
+        msg_dialog::display(_("Infrastructure service"), msgPool::siError($o_queue->get_error()), ERROR_DIALOG);
         $this->cache = array();
         return;
       } else {
@@ -156,7 +156,7 @@ class faiStartup extends simplePlugin
         $tmp = $o_queue->FAI_get_profiles($release);
 
         if ($o_queue->is_error()) {
-          msg_dialog::display(_("Service infrastructure"), msgPool::siError($o_queue->get_error()), ERROR_DIALOG);
+          msg_dialog::display(_("Infrastructure service"), msgPool::siError($o_queue->get_error()), ERROR_DIALOG);
           $this->cache = array();
           return;
         } else {

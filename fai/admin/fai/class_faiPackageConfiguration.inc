@@ -52,7 +52,7 @@ class faiPackageConfiguration extends plugin
     $q = new supportDaemon();
     $ret = $q->FAI_get_packages($this->release,array("package","template"),array($this->obj),0,1,true);
     if($q->is_error()){
-      msg_dialog::display(_("Service infrastructure"),msgPool::siError($q->get_error()),ERROR_DIALOG);
+      msg_dialog::display(_("Infrastructure service"),msgPool::siError($q->get_error()),ERROR_DIALOG);
     }
 
     /* If we do not get a useable answer, use an empty template
