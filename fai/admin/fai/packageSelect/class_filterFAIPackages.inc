@@ -38,12 +38,12 @@ class filterFAIPackages {
     $release    = session::get('packageSelect_Release');
     $ret        = $q->FAI_get_packages($release,$attrs,$filter,0,200);
     if ($q->is_error()) {
-      msg_dialog::display(_("Service infrastructure"), msgPool::siError($q->get_error()), ERROR_DIALOG);
+      msg_dialog::display(_("Infrastructure service"), msgPool::siError($q->get_error()), ERROR_DIALOG);
     } else {
       for ($i = 0;(count($ret)<200) && ($i<count($customs));$i++) {
         $ret2 = $q->FAI_get_packages($customs[$i],$attrs,$filter,0,200-count($ret));
         if ($q->is_error()) {
-          msg_dialog::display(_("Service infrastructure"), msgPool::siError($q->get_error()), ERROR_DIALOG);
+          msg_dialog::display(_("Infrastructure service"), msgPool::siError($q->get_error()), ERROR_DIALOG);
           return array();
         }
         $ret = array_merge($ret,$ret2);

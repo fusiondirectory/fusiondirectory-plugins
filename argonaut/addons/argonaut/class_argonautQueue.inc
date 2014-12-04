@@ -347,7 +347,7 @@ class argonautQueue extends management
       $this->dialogObject->save_object();
       $this->o_queue->append($this->dialogObject);
       if ($this->o_queue->is_error()) {
-        msg_dialog::display(_("Service infrastructure"), msgPool::siError($this->o_queue->get_error()), ERROR_DIALOG);
+        msg_dialog::display(_("Infrastructure service"), msgPool::siError($this->o_queue->get_error()), ERROR_DIALOG);
       } else {
         $this->current = -1;
       }

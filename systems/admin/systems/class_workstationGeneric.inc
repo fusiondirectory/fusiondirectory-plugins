@@ -69,7 +69,7 @@ class ActionAttribute extends SelectAttribute
             $tmp->set_type(TRIGGERED_EVENT);
             $o_queue = new supportDaemon();
             if (!$o_queue->append($tmp)) {
-              msg_dialog::display(_("Service infrastructure"), msgPool::siError($o_queue->get_error()), ERROR_DIALOG);
+              msg_dialog::display(_("Infrastructure service"), msgPool::siError($o_queue->get_error()), ERROR_DIALOG);
             }
           } else {
             msg_dialog::display(_("Event error"), sprintf(_("Event %s is not available!"), $action), ERROR_DIALOG);
@@ -440,7 +440,7 @@ class workstationGeneric extends simplePlugin
         $tmp->add_targets(array($this->netConfigDNS->macAddress));
         $o_queue->append($tmp);
         if ($o_queue->is_error()) {
-          msg_dialog::display(_("Service infrastructure"), msgPool::siError($o_queue->get_error()), ERROR_DIALOG);
+          msg_dialog::display(_("Infrastructure service"), msgPool::siError($o_queue->get_error()), ERROR_DIALOG);
         }
       }
     }
