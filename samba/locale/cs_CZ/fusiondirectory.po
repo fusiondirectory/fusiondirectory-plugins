@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-08-18 16:07+0200\n"
-"PO-Revision-Date: 2014-08-28 10:52+0000\n"
+"POT-Creation-Date: 2014-12-03 17:22+0100\n"
+"PO-Revision-Date: 2014-12-09 07:50+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/FusionDirectory-108/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
@@ -35,7 +35,7 @@ msgstr ""
 
 #: admin/samba/class_sambaDomain.inc:35
 msgid "Samba domain settings"
-msgstr ""
+msgstr "Nastavení Samba domény"
 
 #: admin/samba/class_sambaDomain.inc:51
 #: admin/systems/samba/class_winstationGeneric.inc:64
@@ -48,7 +48,7 @@ msgstr "název domény"
 
 #: admin/samba/class_sambaDomain.inc:54
 msgid "Name of this domain"
-msgstr ""
+msgstr "Název této domény"
 
 #: admin/samba/class_sambaDomain.inc:58
 msgid "SID"
@@ -111,15 +111,15 @@ msgstr ""
 
 #: admin/samba/class_sambaDomain.inc:93
 msgid "Minimum password length"
-msgstr ""
+msgstr "Minimální délka hesla"
 
 #: admin/samba/class_sambaDomain.inc:94
 msgid "Minimal password length (default: 5)"
-msgstr ""
+msgstr "Minimální délka hesla (výchozí: 5 znaků)"
 
 #: admin/samba/class_sambaDomain.inc:98
 msgid "Password history length"
-msgstr ""
+msgstr "Délka historie hesla"
 
 #: admin/samba/class_sambaDomain.inc:99
 msgid "Length of Password History Entries (default: 0 => off)"
@@ -255,7 +255,7 @@ msgstr "obecné"
 #: personal/samba/class_sambaAccount.inc:166
 #: personal/samba/class_sambaAccount.inc:199
 msgid "Home directory drive"
-msgstr ""
+msgstr "Disk s domovskou složkou"
 
 #: personal/samba/class_sambaAccount.inc:166
 #: personal/samba/class_sambaAccount.inc:199
@@ -265,7 +265,7 @@ msgstr ""
 #: personal/samba/class_sambaAccount.inc:171
 #: personal/samba/class_sambaAccount.inc:204
 msgid "Home directory path"
-msgstr ""
+msgstr "Cesta k domovské složce"
 
 #: personal/samba/class_sambaAccount.inc:171
 #: personal/samba/class_sambaAccount.inc:204
@@ -278,7 +278,7 @@ msgstr "cesta ke skriptu"
 
 #: personal/samba/class_sambaAccount.inc:180
 msgid "Login script path"
-msgstr ""
+msgstr "Cesta ke skriptu po spuštění"
 
 #: personal/samba/class_sambaAccount.inc:184
 #: personal/samba/class_sambaAccount.inc:209
@@ -288,7 +288,7 @@ msgstr "cesta k profilu"
 #: personal/samba/class_sambaAccount.inc:184
 #: personal/samba/class_sambaAccount.inc:209
 msgid "UNC profile path"
-msgstr ""
+msgstr "Cesta k profilu v UNC zápisu"
 
 #: personal/samba/class_sambaAccount.inc:191
 msgid "Terminal server"
@@ -440,7 +440,7 @@ msgstr ""
 
 #: personal/samba/class_sambaAccount.inc:290
 msgid "The password will never expire"
-msgstr ""
+msgstr "Platnost hesla nikdy nevyprší"
 
 #: personal/samba/class_sambaAccount.inc:295
 msgid "Login from windows client requires no password"
@@ -456,7 +456,7 @@ msgstr "uzamknout účet Samby"
 
 #: personal/samba/class_sambaAccount.inc:300
 msgid "Lock the account"
-msgstr ""
+msgstr "Uzamknout účet"
 
 #: personal/samba/class_sambaAccount.inc:305
 msgid "Cannot change password"
@@ -464,15 +464,15 @@ msgstr "heslo nepůjde změnit"
 
 #: personal/samba/class_sambaAccount.inc:305
 msgid "Not allowed to change password"
-msgstr ""
+msgstr "Změna hesla není dovolena"
 
 #: personal/samba/class_sambaAccount.inc:309
 msgid "Account expiration"
-msgstr ""
+msgstr "Vypršení platnosti účtu"
 
 #: personal/samba/class_sambaAccount.inc:309
 msgid "When does the account expire"
-msgstr ""
+msgstr "Kdy skončí platnost účtu"
 
 #: personal/samba/class_sambaAccount.inc:317
 msgid "Samba logon times"
@@ -480,7 +480,7 @@ msgstr "časová rozmezí pro přihlašování k Sambě"
 
 #: personal/samba/class_sambaAccount.inc:317
 msgid "What is the allowed time to connect"
-msgstr ""
+msgstr "Ve kterých časech je dovoleno se připojit"
 
 #: personal/samba/class_sambaAccount.inc:318
 msgid "Edit settings"
@@ -496,7 +496,7 @@ msgstr "povolit připojení pouze z těchto pracovních stanic"
 
 #: personal/samba/class_sambaAccount.inc:338
 msgid "Only allow this user to connect to this list of hosts"
-msgstr ""
+msgstr "Tomuto uživateli povolit připojení pouze na počítače z tohoto seznamu"
 
 #: personal/samba/class_sambaAccount.inc:454
 msgid "Home drive"
@@ -526,15 +526,15 @@ msgstr "Nemohu převést primární skupinu na skupinu Samby: skupinu se nepoda�
 
 #: config/samba/class_sambaPluginConfig.inc:29
 msgid "Samba plugin configuration"
-msgstr ""
+msgstr "Nastavení zásuvného modulu Samba"
 
 #: config/samba/class_sambaPluginConfig.inc:44
 msgid "Samba machine account RDN"
-msgstr ""
+msgstr "RDN účtu stroje pro Samba"
 
 #: config/samba/class_sambaPluginConfig.inc:44
 msgid "The location where FusionDirectory looks for new samba workstations."
-msgstr ""
+msgstr "Umístění, ve kterém bude FusionDirectory hledat nové pracovní stanice se Samba."
 
 #: config/samba/class_sambaPluginConfig.inc:49
 msgid "Samba ID mapping"
@@ -558,7 +558,7 @@ msgstr ""
 
 #: config/samba/class_sambaPluginConfig.inc:60
 msgid "Samba rid base"
-msgstr ""
+msgstr "Počátek Samba rid"
 
 #: config/samba/class_sambaPluginConfig.inc:61
 msgid ""
@@ -568,7 +568,7 @@ msgstr ""
 
 #: config/samba/class_sambaPluginConfig.inc:66
 msgid "Expiration date synchronisaton"
-msgstr ""
+msgstr "Synchronizace data vypršení platnosti"
 
 #: config/samba/class_sambaPluginConfig.inc:66
 msgid "Synchronisaton the expiration date with the POSIX one?"
@@ -581,11 +581,3 @@ msgstr ""
 #: config/samba/class_sambaPluginConfig.inc:72
 msgid "Needed to be compliant with Windows <= 98 or Samba < 3.2"
 msgstr ""
-
-#: personal/samba/sambaLogonHours.tpl.c:2
-msgid "Specify the hours this user is allowed to log in"
-msgstr "Zadejte časové rozmezí, po které se uživatel bude moci přihlašovat."
-
-#: personal/samba/sambaLogonHours.tpl.c:5
-msgid "Hour"
-msgstr "hodina"

@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-08-18 16:07+0200\n"
-"PO-Revision-Date: 2014-08-28 10:52+0000\n"
+"POT-Creation-Date: 2014-12-03 17:22+0100\n"
+"PO-Revision-Date: 2014-12-03 16:52+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory-108/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -59,7 +59,6 @@ msgstr "Zone inverse"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:296
 #: admin/systems/services/dns/class_serviceDNS.inc:541
-#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:47
 msgid "TTL"
 msgstr "TTL"
 
@@ -110,12 +109,11 @@ msgstr "Redémarrer le service"
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:339
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:344
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:352
-#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:5
 msgid "Zone name"
 msgstr "Nom de la zone"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:533
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:428
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:432
 msgid "Network class"
 msgstr "Classe réseau"
 
@@ -124,34 +122,31 @@ msgid "Zone entry editor"
 msgstr "Editeur de zone"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:535
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:356
 msgid "Primary dns server"
 msgstr "Serveur dns primaire"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:536
-#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:32
 msgid "Mail address"
 msgstr "Adresse de messagerie"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:537
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:356
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:360
 msgid "Serial"
 msgstr "Série"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:538
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:360
-#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:38
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:364
 msgid "Refresh"
 msgstr "Rafraîchir"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:539
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:372
-#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:41
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:376
 msgid "Retry"
 msgstr "Réessayer"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:540
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:368
-#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:44
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:372
 msgid "Expire"
 msgstr "Expirer"
 
@@ -160,7 +155,6 @@ msgid "MX records"
 msgstr "Enregistrements MX"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:543
-#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:17
 msgid "Zone records"
 msgstr "Enregistrement de zone"
 
@@ -188,40 +182,42 @@ msgid "MxRecord"
 msgstr "Enregistrements mx"
 
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:274
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:510
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:514
 msgid "Delete"
 msgstr "Supprimer"
 
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:352
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:378
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:382
 msgid "Only lowercase allowed"
 msgstr "Seule les minuscules sont autorisées."
 
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:364
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:356
+msgid "This field should be a domain name"
+msgstr ""
+
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:368
 msgid "Time to life"
 msgstr "Temps de vie"
 
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:387
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:407
-#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:8
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:391
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:411
 msgid "Network address"
 msgstr "Adresse réseau"
 
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:415
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:420
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:425
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:419
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:424
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:429
 #, php-format
 msgid ""
 "The specified network address and the network class (%s/%s) do not match!"
 msgstr "L'adresse réseau spécifiée et la classe réseau (%s/%s) ne concordent pas !"
 
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:516
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:520
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:439
 msgid "Add"
 msgstr "Ajouter"
 
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:121
-#: admin/systems/services/dns/serviceDNSeditZoneEntries.tpl.c:8
 msgid "New entry"
 msgstr "Nouvelle entrée"
 
@@ -349,85 +345,3 @@ msgstr "Stocker le point final dans des domaines"
 #: config/dns/class_dnsConfig.inc:45
 msgid "Should FD store a final dot at the end of domains?"
 msgstr "Est ce que FusionDirectory doit stocker un point final à la fin de domaines?"
-
-#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:2
-msgid "Generic"
-msgstr "Informations"
-
-#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:11
-msgid "Netmask"
-msgstr "Masque réseau"
-
-#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:14
-msgid "Zone is in use, network settings can't be modified."
-msgstr "La zone est utilisée, les paramètres réseau ne peuvent pas être modifiés."
-
-#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:20
-msgid "Can't be edited because the zone wasn't saved right now."
-msgstr "Impossible d'éditer la zone car elle est actuellement sauvegardée."
-
-#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:23
-msgid "Edit"
-msgstr "Editer"
-
-#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:26
-msgid "SOA record"
-msgstr "Enregistrement SOA"
-
-#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:29
-msgid "Primary dns server for this zone"
-msgstr "Serveur dns primaire pour cette zone"
-
-#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:35
-msgid "Serial number (automatically incremented)"
-msgstr "Numéro de série (incrémenté automatiquement)"
-
-#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:50
-msgid "MxRecords"
-msgstr "Enregistrements mx"
-
-#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:53
-msgid "Global zone records"
-msgstr "Enregistrements pour la zone globale"
-
-#: admin/systems/services/dns/serviceDNS.tpl.c:2
-msgid "DNS take over initiated"
-msgstr "Démarrage de la prise de contrôle du DNS"
-
-#: admin/systems/services/dns/serviceDNS.tpl.c:5
-msgid ""
-"This includes 'all' DNS zones that are located within this server. Please "
-"double check if your really want to do this."
-msgstr "Ceci inclus toutes les zones DNS qui sont situées dans ce serveur. Veuillez vérifier que vous voulez réaliser cette opération."
-
-#: admin/systems/services/dns/serviceDNS.tpl.c:8
-msgid "Following objects will be taken over"
-msgstr "L'on prendra le contrôle sur les objets suivants"
-
-#: admin/systems/services/dns/serviceDNS.tpl.c:11
-msgid "Take over DNS configuration from"
-msgstr "Prendre le contrôle sur la configuration DNS depuis"
-
-#: admin/systems/services/dns/serviceDNS.tpl.c:14
-msgid "Take over"
-msgstr "Prise de contrôle"
-
-#: admin/systems/services/dns/serviceDNS.tpl.c:17
-msgid "Zones"
-msgstr "Zones"
-
-#: admin/systems/services/dns/serviceDNSeditZoneEntries.tpl.c:2
-msgid ""
-"This dialog allows you to configure all components of this DNS zone on a "
-"single list."
-msgstr "Ce dialogue vous permet de configurer tout les composants d'une zone DNS dans une simple liste."
-
-#: admin/systems/services/dns/serviceDNSeditZoneEntries.tpl.c:5
-msgid ""
-"This dialog can't be used until the currently edited zone was saved or the "
-"zone entry exists in the ldap database."
-msgstr "Cette boite de dialogue ne peut pas être tant que la zone n'a pas été sauvée ou que l'enregistrement existe dans la base de données ldap."
-
-#: admin/systems/services/dns/serviceDNSeditZoneEntries.tpl.c:11
-msgid "Create a new DNS zone entry"
-msgstr "Créer une nouvelle zone DNS"

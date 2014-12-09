@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-08-18 16:07+0200\n"
-"PO-Revision-Date: 2014-08-28 10:52+0000\n"
+"POT-Creation-Date: 2014-12-03 17:22+0100\n"
+"PO-Revision-Date: 2014-12-03 16:53+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Dutch (http://www.transifex.com/projects/p/FusionDirectory-108/language/nl/)\n"
 "MIME-Version: 1.0\n"
@@ -123,13 +123,11 @@ msgid "System group"
 msgstr "Systeem groep"
 
 #: admin/ogroups/goto/class_termgroup.inc:401
-#: admin/ogroups/goto/termgroup.tpl.c:17
 msgid "Mode"
 msgstr "Modus"
 
 #: admin/ogroups/goto/class_termgroup.inc:402
 #: admin/systems/class_workstationGeneric.inc:189
-#: admin/ogroups/goto/termgroup.tpl.c:23
 msgid "Syslog server"
 msgstr "Syslog server"
 
@@ -143,13 +141,11 @@ msgstr "Ntp server"
 
 #: admin/ogroups/goto/class_termgroup.inc:405
 #: admin/systems/class_terminalGeneric.inc:41
-#: admin/ogroups/goto/termgroup.tpl.c:29
 msgid "Root server"
 msgstr "Root server"
 
 #: admin/ogroups/goto/class_termgroup.inc:406
 #: admin/systems/class_terminalGeneric.inc:47
-#: admin/ogroups/goto/termgroup.tpl.c:35
 msgid "Swap server"
 msgstr "Swap server"
 
@@ -280,8 +276,6 @@ msgstr ""
 #: admin/systems/class_mobilePhoneGeneric.inc:63
 #: admin/systems/phoneSelect/phoneSelect-list.xml:48
 #: admin/systems/services/shares/class_serviceShare.inc:52
-#: admin/systems/system-filter.tpl.c:32
-#: admin/systems/phoneSelect/phoneSelect-filter.tpl.c:11
 msgid "Name"
 msgstr "Naam"
 
@@ -301,7 +295,6 @@ msgstr "MAC"
 #: admin/systems/class_mobilePhoneGeneric.inc:67
 #: admin/systems/serverService-list.xml:35
 #: admin/systems/services/shares/class_serviceShare.inc:56
-#: admin/systems/printer.tpl.c:8 admin/systems/printer.tpl.c:17
 msgid "Description"
 msgstr "Omschrijving"
 
@@ -358,7 +351,6 @@ msgid "Activate systems"
 msgstr "Activeer systemen"
 
 #: admin/systems/system-list.xml:337 admin/systems/serverService-list.xml:69
-#: admin/systems/printer.tpl.c:35
 msgid "Remove"
 msgstr "Verwijderen"
 
@@ -481,12 +473,10 @@ msgstr ""
 
 #: admin/systems/class_workstationGeneric.inc:225
 #: admin/systems/class_workstationGeneric.inc:229
-#: admin/ogroups/goto/termgroup.tpl.c:41
 msgid "Action"
 msgstr "Actie"
 
 #: admin/systems/class_workstationGeneric.inc:230
-#: admin/ogroups/goto/termgroup.tpl.c:44
 msgid "Select action to execute for this terminal"
 msgstr "Selecteer de voor deze terminal uit te voeren actie"
 
@@ -503,7 +493,6 @@ msgstr ""
 #: admin/systems/class_componentGeneric.inc:36
 #: admin/systems/class_mobilePhoneGeneric.inc:36
 #: admin/systems/services/ntp/class_serviceNTP.inc:43
-#: admin/ogroups/goto/termgroup.tpl.c:8
 msgid "Generic"
 msgstr "Algemeen"
 
@@ -618,7 +607,7 @@ msgstr "terminal"
 msgid "Object is no printer!"
 msgstr "Object is geen printer!"
 
-#: admin/systems/class_printGeneric.inc:767 admin/systems/printer.tpl.c:23
+#: admin/systems/class_printGeneric.inc:767
 msgid "Printer URL"
 msgstr "Printer URL"
 
@@ -636,9 +625,6 @@ msgid "Print generic"
 msgstr "Print generiek"
 
 #: admin/systems/class_printGeneric.inc:1023
-#: admin/systems/serverService-list.tpl.c:2
-#: admin/systems/phoneSelect/phoneSelect-list.tpl.c:2
-#: admin/systems/printer.tpl.c:11
 msgid "Base"
 msgstr "Basis"
 
@@ -650,7 +636,7 @@ msgstr "LabeledURL"
 msgid "Printer PPD"
 msgstr "Printer PPD"
 
-#: admin/systems/class_printGeneric.inc:1028 admin/systems/printer.tpl.c:38
+#: admin/systems/class_printGeneric.inc:1028
 msgid "Permissions"
 msgstr "Rechten"
 
@@ -662,7 +648,7 @@ msgstr "Windows inf bestand"
 msgid "Windows driver dir"
 msgstr "Windows driver map"
 
-#: admin/systems/class_printGeneric.inc:1032 admin/systems/printer.tpl.c:62
+#: admin/systems/class_printGeneric.inc:1032
 msgid "Driver printer name"
 msgstr "Naam printer driver"
 
@@ -1221,8 +1207,6 @@ msgid "You need to configure encodings first"
 msgstr ""
 
 #: admin/systems/services/shares/class_serviceShare.inc:110
-#: admin/ogroups/goto/termgroup.tpl.c:2 admin/systems/remove.tpl.c:2
-#: admin/systems/ppd/remove_ppd.tpl.c:2
 msgid "Warning"
 msgstr "Waarschuwing"
 
@@ -1525,372 +1509,3 @@ msgstr ""
 #: config/systems/class_systemsPluginConfig.inc:101
 msgid "Encodings"
 msgstr ""
-
-#: admin/ogroups/goto/termgroup.tpl.c:5
-msgid ""
-"Actions you choose here influence all systems in this object group. "
-"Additionally, all values editable here can be inherited by the clients "
-"assigned to this object group."
-msgstr "De acties die u hier kiest, beinvloeden alle systemen in deze objectgroep. Daarnaast kunnen alle hier bewerkbare waardes overerfd worden door terminal clients die aan deze objectgroep worden toegekend."
-
-#: admin/ogroups/goto/termgroup.tpl.c:11
-msgid "NTP server"
-msgstr "NTP tijdserver"
-
-#: admin/ogroups/goto/termgroup.tpl.c:14
-msgid "Choose server to use for synchronizing time"
-msgstr "Selecteer de server die gebruikt wordt voor tijdsynchronisatie"
-
-#: admin/ogroups/goto/termgroup.tpl.c:20
-msgid "Select terminal mode"
-msgstr "Selecteer terminal modus"
-
-#: admin/ogroups/goto/termgroup.tpl.c:26
-msgid "Choose server to use for logging"
-msgstr "Selecteer de server die gebruikt wordt voor log doeleinden"
-
-#: admin/ogroups/goto/termgroup.tpl.c:32
-msgid "Select NFS root filesystem to use"
-msgstr "Selecteer het te gebruiken NFS root bestandssysteem"
-
-#: admin/ogroups/goto/termgroup.tpl.c:38
-msgid "Choose NFS filesystem to place swap files on"
-msgstr "Kies het NFS bestandssysteem waarop de swapbestanden geplaatst worden"
-
-#: admin/ogroups/goto/termgroup.tpl.c:47
-msgid "Execute"
-msgstr "Commando"
-
-#: admin/systems/network.tpl.c:2
-msgid "Network  settings"
-msgstr "Netwerk instellingen"
-
-#: admin/systems/network.tpl.c:5
-msgid "IP-address"
-msgstr "IP adres"
-
-#: admin/systems/network.tpl.c:8 admin/systems/network.tpl.c:11
-msgid "Propose ip"
-msgstr "IP voorstel"
-
-#: admin/systems/network.tpl.c:14
-msgid "MAC-address"
-msgstr "Hardware adres (MAC)"
-
-#: admin/systems/network.tpl.c:17
-msgid "Autodetect"
-msgstr "Auto detect."
-
-#: admin/systems/network.tpl.c:20 admin/systems/network.tpl.c:23
-msgid "Enable DHCP for this device"
-msgstr "Activeer DHCP voor dit apparatuur"
-
-#: admin/systems/network.tpl.c:26 admin/systems/network.tpl.c:50
-msgid "not configured"
-msgstr "niet ingesteld"
-
-#: admin/systems/network.tpl.c:29
-msgid "Parent node"
-msgstr "Parent node"
-
-#: admin/systems/network.tpl.c:32
-msgid "Edit settings"
-msgstr "Instellingen bewerken"
-
-#: admin/systems/network.tpl.c:35 admin/systems/network.tpl.c:47
-msgid "Enable DNS for this device"
-msgstr "DNS voor dit apparaat activeren"
-
-#: admin/systems/network.tpl.c:38
-msgid "Zone"
-msgstr "Zone"
-
-#: admin/systems/network.tpl.c:41
-msgid "TTL"
-msgstr "TTL"
-
-#: admin/systems/network.tpl.c:44
-msgid "Dns records"
-msgstr "DNS records"
-
-#: admin/systems/password.tpl.c:2
-msgid ""
-"To change the terminal root password use the fields below. The changes take "
-"effect during the next reboot. Please memorize the new password, because you"
-" wouldn't be able to log in."
-msgstr "Gebruik de velden hieronder om het terminal root wachtwoord te veranderen. De veranderingen worden onmiddelijk doorgevoerd. Onthoud het nieuwe wachtwoord a.u.b. aangezien u niet in kan loggen zonder dit wachtwoord."
-
-#: admin/systems/password.tpl.c:5
-msgid "Leave fields blank for password inheritance from default entries."
-msgstr "Laat velden leeg voor wachtwoord overerving vanuit standaard waarden."
-
-#: admin/systems/password.tpl.c:8
-msgid "Changing the password impinges on authentification only."
-msgstr "Het veranderen van het wachtwoord is alleen van toepassing op authenticatie."
-
-#: admin/systems/password.tpl.c:11
-msgid "New password"
-msgstr "Nieuw wachtwoord"
-
-#: admin/systems/password.tpl.c:14
-msgid "Repeat new password"
-msgstr "Herhaal het nieuwe wachtwoord"
-
-#: admin/systems/password.tpl.c:17
-msgid "Password strength"
-msgstr "Wachtwoord sterkte"
-
-#: admin/systems/password.tpl.c:20
-msgid "Set password"
-msgstr "Wachtwoord instellen"
-
-#: admin/systems/server_import.tpl.c:2
-msgid ""
-"Warning : Once you import your OPSI hosts into FusionDirectory, they will be"
-" managed by it, so if you delete them or deactivate their OPSI tab, they "
-"will be removed from OPSI."
-msgstr ""
-
-#: admin/systems/gencd.tpl.c:2
-msgid "CD-Install-Image generation"
-msgstr "CD-install-Image generation"
-
-#: admin/systems/gencd.tpl.c:5
-msgid ""
-"This option enables you to generate FAI install CD images for the selected "
-"workstation. The procedure may take about 10 minutes to complete, so please "
-"be patient after pressing the 'Create ISO-Image' button."
-msgstr "Deze optie maakt het mogelijk om FAI installatie CD images te genereren voor de geselecteerde workstation. De procedure kan ongeveer 10 minuten duren, dus wees geduldig na het indrukken van de 'Create ISO-Image' knop."
-
-#: admin/systems/gencd.tpl.c:8
-msgid "Create ISO-Image"
-msgstr "Maak ISO-image"
-
-#: admin/systems/remove.tpl.c:5
-msgid ""
-"This includes all account data, system access rules, imap settings, etc. for"
-" this user. Please double check if your really want to do this since there "
-"is no way for FusionDirectory to get your data back."
-msgstr "Dit omvat alle account gegevens, systeem toegangsregels, imap instellingen etc. voor deze gebruiker. Verzeker uzelf hiervan, aangezien er geen mogelijkheid voor FusionDirectory is om deze informatie terug te halen."
-
-#: admin/systems/remove.tpl.c:8
-msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr "Indien u zeker bent drukt u dan 'Verwijderen' om door te gaan of 'Annuleren' om te annuleren."
-
-#: admin/systems/system-filter.tpl.c:2
-#: admin/systems/phoneSelect/phoneSelect-filter.tpl.c:2
-msgid "Filter"
-msgstr "Filter"
-
-#: admin/systems/system-filter.tpl.c:5
-msgid "Show servers"
-msgstr "Toon servers"
-
-#: admin/systems/system-filter.tpl.c:8
-msgid "Show workstations"
-msgstr "Toon werkstations"
-
-#: admin/systems/system-filter.tpl.c:11
-msgid "Show terminals"
-msgstr "Toon terminals"
-
-#: admin/systems/system-filter.tpl.c:14
-msgid "Show network printer"
-msgstr "Toon netwerk printer"
-
-#: admin/systems/system-filter.tpl.c:17
-#: admin/systems/phoneSelect/phoneSelect-filter.tpl.c:5
-msgid "Show phones"
-msgstr "Toon telefoons"
-
-#: admin/systems/system-filter.tpl.c:20
-msgid "Show windows based workstations"
-msgstr "Toon windows based workstations"
-
-#: admin/systems/system-filter.tpl.c:23
-msgid "Show network devices"
-msgstr "Toon netwerk apparaten"
-
-#: admin/systems/system-filter.tpl.c:26
-#: admin/systems/phoneSelect/phoneSelect-filter.tpl.c:8
-msgid "Show mobile phones"
-msgstr ""
-
-#: admin/systems/system-filter.tpl.c:29
-msgid "Show IPMI interfaces"
-msgstr ""
-
-#: admin/systems/ppd/printerPPDSelectionDialog.tpl.c:2
-msgid "Select objects to add"
-msgstr "Selecteer de toe te voegen objecten"
-
-#: admin/systems/ppd/printerPPDSelectionDialog.tpl.c:5
-msgid "Filters"
-msgstr "Filters"
-
-#: admin/systems/ppd/printerPPDSelectionDialog.tpl.c:8
-msgid "Display objects matching"
-msgstr "Toon overeenkomende objecten"
-
-#: admin/systems/ppd/printerPPDSelectionDialog.tpl.c:11
-msgid "Regular expression for matching object names"
-msgstr "Reguliere expressie voor overeenkomende objectnamen"
-
-#: admin/systems/ppd/printerPPDSelectionDialog.tpl.c:14
-msgid "Close"
-msgstr "Sluiten"
-
-#: admin/systems/ppd/printerPPDDialog.tpl.c:2
-msgid "Printer driver"
-msgstr "Printer stuurprogramma"
-
-#: admin/systems/ppd/printerPPDDialog.tpl.c:5
-msgid "Model"
-msgstr "Model"
-
-#: admin/systems/ppd/printerPPDDialog.tpl.c:8
-msgid "Select"
-msgstr "Selecteer"
-
-#: admin/systems/ppd/printerPPDDialog.tpl.c:11
-msgid "New driver"
-msgstr "Nieuw stuurprogramma"
-
-#: admin/systems/ppd/printerPPDDialog.tpl.c:14
-msgid "Upload"
-msgstr "Uploaden"
-
-#: admin/systems/ppd/printerPPDDialog.tpl.c:17
-msgid "Options"
-msgstr "Opties"
-
-#: admin/systems/ppd/remove_ppd.tpl.c:5
-msgid "The ppd file will be removed from the server and can not be restored."
-msgstr "Het ppd bestand zal verwijderd worden van de server and kan niet hersteld worden."
-
-#: admin/systems/printer.tpl.c:2
-msgid "General"
-msgstr "Algemeen"
-
-#: admin/systems/printer.tpl.c:5
-msgid "Printer name"
-msgstr "Printernaam"
-
-#: admin/systems/printer.tpl.c:14
-msgid "Details"
-msgstr "Details"
-
-#: admin/systems/printer.tpl.c:20
-msgid "Printer location"
-msgstr "Printer locatie"
-
-#: admin/systems/printer.tpl.c:26
-msgid "PPD Provider"
-msgstr "PPD Provider"
-
-#: admin/systems/printer.tpl.c:29
-msgid "Driver"
-msgstr "Stuurprogramma"
-
-#: admin/systems/printer.tpl.c:32
-msgid "Edit"
-msgstr "Bewerken"
-
-#: admin/systems/printer.tpl.c:41
-msgid "Users which are allowed to use this printer"
-msgstr "Gebruikers die deze printer mogen gebruiken"
-
-#: admin/systems/printer.tpl.c:44
-msgid "Users"
-msgstr "Gebruikers"
-
-#: admin/systems/printer.tpl.c:47
-msgid "Users which are allowed to administrate this printer"
-msgstr "Gebruikers die deze printer mogen beheren"
-
-#: admin/systems/printer.tpl.c:50
-msgid "Admins"
-msgstr "Beheerders"
-
-#: admin/systems/printer.tpl.c:53
-msgid "Windows paths"
-msgstr "Windows paths"
-
-#: admin/systems/printer.tpl.c:56
-msgid "Printer windows inf file"
-msgstr "Printer windows inf bestand"
-
-#: admin/systems/printer.tpl.c:59
-msgid "Printer driver directory"
-msgstr "Printer driver map"
-
-#: admin/systems/gencd_frame.tpl.c:2
-msgid "Your browser does not supprt iframes."
-msgstr "Uw browser ondersteund iframes niet."
-
-#: admin/systems/services/cups/serviceCUPS.tpl.c:2
-msgid "Print Service"
-msgstr "Print Service"
-
-#: admin/systems/services/cups/serviceCUPS.tpl.c:5
-msgid "enabled"
-msgstr "Actief"
-
-#: admin/systems/services/ServiceAddDialog.tpl.c:2
-msgid "Adding a new service to the current server"
-msgstr "Voeg nieuwe dienst toe aan de huidige server"
-
-#: admin/systems/services/ServiceAddDialog.tpl.c:5
-msgid ""
-"This dialog allows you to add new services to the currenty edited server "
-"object. The box below shows all available but not already used services."
-msgstr "In dit dialoogvenster kunt u nieuwe diensten toe te voegen aan de server. De dialoog venster hieronder geeft alle beschikbare al gebruikt weer, maar geen diensten."
-
-#: admin/systems/services/ServiceAddDialog.tpl.c:8
-msgid "Service to add"
-msgstr "Dienst toevoegen"
-
-#: admin/systems/services/ServiceAddDialog.tpl.c:11
-msgid "All available services are already in use."
-msgstr "Alle beschikbare diensten zijn al in gebruik."
-
-#: admin/systems/services/ServiceAddDialog.tpl.c:14
-#: admin/systems/SelectDeviceType.tpl.c:26
-msgid "Continue"
-msgstr "Doorgaan"
-
-#: admin/systems/SelectDeviceType.tpl.c:2
-msgid ""
-"This system has no system type configured. Please choose a system type for "
-"this object and an optional inheritance group. Press the 'continue' button "
-"to proceed."
-msgstr "Dit systeem heeft geen geconfigureerd systeem type. Kies een type systeem voor dit object en een optionele erfenis groep. Druk op de knop 'Doorgaan' om verder te gaan."
-
-#: admin/systems/SelectDeviceType.tpl.c:5
-msgid ""
-"Please select a system type and an optional bundle of predefined settings to"
-" be inherited."
-msgstr "Selecteer a.u.b. een systeemtype en een optionele bundel met te overerven voorgedefinieerde instellingen."
-
-#: admin/systems/SelectDeviceType.tpl.c:8
-msgid ""
-"Please select a system type and a bundle of predefined settings to be "
-"inherited."
-msgstr "Selecteer een type systeem en een bundel van vooraf gedefinieerde instellingen die worden overgenomen."
-
-#: admin/systems/SelectDeviceType.tpl.c:11
-#: admin/systems/SelectDeviceType.tpl.c:14
-msgid "System type"
-msgstr "Systeemtype"
-
-#: admin/systems/SelectDeviceType.tpl.c:17
-msgid "Choose an object group as template"
-msgstr "Selecteer een objectgroep als sjabloon"
-
-#: admin/systems/SelectDeviceType.tpl.c:20
-msgid "Object group"
-msgstr "Objectgroep"
-
-#: admin/systems/SelectDeviceType.tpl.c:23
-msgid "none"
-msgstr "geen"

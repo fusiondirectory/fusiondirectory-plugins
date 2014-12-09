@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-08-18 16:07+0200\n"
-"PO-Revision-Date: 2014-08-28 10:52+0000\n"
+"POT-Creation-Date: 2014-12-03 17:22+0100\n"
+"PO-Revision-Date: 2014-12-03 16:53+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Spanish (Venezuela) (http://www.transifex.com/projects/p/FusionDirectory-108/language/es_VE/)\n"
 "MIME-Version: 1.0\n"
@@ -123,13 +123,11 @@ msgid "System group"
 msgstr "Grupos de sistemas"
 
 #: admin/ogroups/goto/class_termgroup.inc:401
-#: admin/ogroups/goto/termgroup.tpl.c:17
 msgid "Mode"
 msgstr "Modo"
 
 #: admin/ogroups/goto/class_termgroup.inc:402
 #: admin/systems/class_workstationGeneric.inc:189
-#: admin/ogroups/goto/termgroup.tpl.c:23
 msgid "Syslog server"
 msgstr "Servidor de registro de sistema"
 
@@ -143,13 +141,11 @@ msgstr "Servidor NTP"
 
 #: admin/ogroups/goto/class_termgroup.inc:405
 #: admin/systems/class_terminalGeneric.inc:41
-#: admin/ogroups/goto/termgroup.tpl.c:29
 msgid "Root server"
 msgstr "Servidor Raíz"
 
 #: admin/ogroups/goto/class_termgroup.inc:406
 #: admin/systems/class_terminalGeneric.inc:47
-#: admin/ogroups/goto/termgroup.tpl.c:35
 msgid "Swap server"
 msgstr "Servidor de Intercambio"
 
@@ -280,8 +276,6 @@ msgstr ""
 #: admin/systems/class_mobilePhoneGeneric.inc:63
 #: admin/systems/phoneSelect/phoneSelect-list.xml:48
 #: admin/systems/services/shares/class_serviceShare.inc:52
-#: admin/systems/system-filter.tpl.c:32
-#: admin/systems/phoneSelect/phoneSelect-filter.tpl.c:11
 msgid "Name"
 msgstr "Nombre"
 
@@ -301,7 +295,6 @@ msgstr "MAC"
 #: admin/systems/class_mobilePhoneGeneric.inc:67
 #: admin/systems/serverService-list.xml:35
 #: admin/systems/services/shares/class_serviceShare.inc:56
-#: admin/systems/printer.tpl.c:8 admin/systems/printer.tpl.c:17
 msgid "Description"
 msgstr "Descripción"
 
@@ -358,7 +351,6 @@ msgid "Activate systems"
 msgstr "Activar sistemas"
 
 #: admin/systems/system-list.xml:337 admin/systems/serverService-list.xml:69
-#: admin/systems/printer.tpl.c:35
 msgid "Remove"
 msgstr "Eliminar"
 
@@ -481,12 +473,10 @@ msgstr ""
 
 #: admin/systems/class_workstationGeneric.inc:225
 #: admin/systems/class_workstationGeneric.inc:229
-#: admin/ogroups/goto/termgroup.tpl.c:41
 msgid "Action"
 msgstr "Acción"
 
 #: admin/systems/class_workstationGeneric.inc:230
-#: admin/ogroups/goto/termgroup.tpl.c:44
 msgid "Select action to execute for this terminal"
 msgstr "Seleccione una acción que se ejecutara en este terminal"
 
@@ -503,7 +493,6 @@ msgstr ""
 #: admin/systems/class_componentGeneric.inc:36
 #: admin/systems/class_mobilePhoneGeneric.inc:36
 #: admin/systems/services/ntp/class_serviceNTP.inc:43
-#: admin/ogroups/goto/termgroup.tpl.c:8
 msgid "Generic"
 msgstr "Genérico"
 
@@ -618,7 +607,7 @@ msgstr "terminal"
 msgid "Object is no printer!"
 msgstr "¡El objeto no es una impresora!"
 
-#: admin/systems/class_printGeneric.inc:767 admin/systems/printer.tpl.c:23
+#: admin/systems/class_printGeneric.inc:767
 msgid "Printer URL"
 msgstr "URL de la impresora"
 
@@ -636,9 +625,6 @@ msgid "Print generic"
 msgstr "Impresora genérica"
 
 #: admin/systems/class_printGeneric.inc:1023
-#: admin/systems/serverService-list.tpl.c:2
-#: admin/systems/phoneSelect/phoneSelect-list.tpl.c:2
-#: admin/systems/printer.tpl.c:11
 msgid "Base"
 msgstr "Base"
 
@@ -650,7 +636,7 @@ msgstr "LabeledURL"
 msgid "Printer PPD"
 msgstr "Impresora PPD"
 
-#: admin/systems/class_printGeneric.inc:1028 admin/systems/printer.tpl.c:38
+#: admin/systems/class_printGeneric.inc:1028
 msgid "Permissions"
 msgstr "Permisos"
 
@@ -662,7 +648,7 @@ msgstr ""
 msgid "Windows driver dir"
 msgstr ""
 
-#: admin/systems/class_printGeneric.inc:1032 admin/systems/printer.tpl.c:62
+#: admin/systems/class_printGeneric.inc:1032
 msgid "Driver printer name"
 msgstr ""
 
@@ -1221,8 +1207,6 @@ msgid "You need to configure encodings first"
 msgstr ""
 
 #: admin/systems/services/shares/class_serviceShare.inc:110
-#: admin/ogroups/goto/termgroup.tpl.c:2 admin/systems/remove.tpl.c:2
-#: admin/systems/ppd/remove_ppd.tpl.c:2
 msgid "Warning"
 msgstr "Aviso"
 
@@ -1525,372 +1509,3 @@ msgstr ""
 #: config/systems/class_systemsPluginConfig.inc:101
 msgid "Encodings"
 msgstr ""
-
-#: admin/ogroups/goto/termgroup.tpl.c:5
-msgid ""
-"Actions you choose here influence all systems in this object group. "
-"Additionally, all values editable here can be inherited by the clients "
-"assigned to this object group."
-msgstr "Las acciones aquí seleccionadas tendrán influencia en todos los sistemas en este grupo de objetos. Además, todos los valores aquí editados pueden ser heredados por los clientes asignados a este grupo de objetos."
-
-#: admin/ogroups/goto/termgroup.tpl.c:11
-msgid "NTP server"
-msgstr "Servidor NTP"
-
-#: admin/ogroups/goto/termgroup.tpl.c:14
-msgid "Choose server to use for synchronizing time"
-msgstr "Elija un servidor que será usado para sincronización horaria"
-
-#: admin/ogroups/goto/termgroup.tpl.c:20
-msgid "Select terminal mode"
-msgstr "Seleccionar modo de terminal"
-
-#: admin/ogroups/goto/termgroup.tpl.c:26
-msgid "Choose server to use for logging"
-msgstr "Elija un servidor que será usado para registro"
-
-#: admin/ogroups/goto/termgroup.tpl.c:32
-msgid "Select NFS root filesystem to use"
-msgstr "Seleccione sistema de archivos raíz 'NFS' que se usará"
-
-#: admin/ogroups/goto/termgroup.tpl.c:38
-msgid "Choose NFS filesystem to place swap files on"
-msgstr "Seleccione sistema de archivos 'NFS' donde estarán los archivos de intercambio"
-
-#: admin/ogroups/goto/termgroup.tpl.c:47
-msgid "Execute"
-msgstr "Ejecute"
-
-#: admin/systems/network.tpl.c:2
-msgid "Network  settings"
-msgstr "Opciones de red"
-
-#: admin/systems/network.tpl.c:5
-msgid "IP-address"
-msgstr "Dirección IP"
-
-#: admin/systems/network.tpl.c:8 admin/systems/network.tpl.c:11
-msgid "Propose ip"
-msgstr "Proponer ip"
-
-#: admin/systems/network.tpl.c:14
-msgid "MAC-address"
-msgstr "Dirección MAC"
-
-#: admin/systems/network.tpl.c:17
-msgid "Autodetect"
-msgstr "Autodetección"
-
-#: admin/systems/network.tpl.c:20 admin/systems/network.tpl.c:23
-msgid "Enable DHCP for this device"
-msgstr "Activar DHCP para este dispositivo"
-
-#: admin/systems/network.tpl.c:26 admin/systems/network.tpl.c:50
-msgid "not configured"
-msgstr "Sin configurar"
-
-#: admin/systems/network.tpl.c:29
-msgid "Parent node"
-msgstr "Servidor Origen"
-
-#: admin/systems/network.tpl.c:32
-msgid "Edit settings"
-msgstr "Editar características"
-
-#: admin/systems/network.tpl.c:35 admin/systems/network.tpl.c:47
-msgid "Enable DNS for this device"
-msgstr "Activar DNS para este dispositivo"
-
-#: admin/systems/network.tpl.c:38
-msgid "Zone"
-msgstr "Zona"
-
-#: admin/systems/network.tpl.c:41
-msgid "TTL"
-msgstr "TTL"
-
-#: admin/systems/network.tpl.c:44
-msgid "Dns records"
-msgstr "Registros DNS"
-
-#: admin/systems/password.tpl.c:2
-msgid ""
-"To change the terminal root password use the fields below. The changes take "
-"effect during the next reboot. Please memorize the new password, because you"
-" wouldn't be able to log in."
-msgstr "Para cambiar la contraseña del administrador del terminal use los campos a continuación. Los cambios tomarán efecto en el próximo inicio. Por favor, recuerde la nueva contraseña, porque no podrá iniciar sesión sin ella."
-
-#: admin/systems/password.tpl.c:5
-msgid "Leave fields blank for password inheritance from default entries."
-msgstr "Si deja los campos en blanco, se heredaran las contraseñas de las entradas predeterminadas."
-
-#: admin/systems/password.tpl.c:8
-msgid "Changing the password impinges on authentification only."
-msgstr "Cambiar la contraseña solo afecta a la autenticación."
-
-#: admin/systems/password.tpl.c:11
-msgid "New password"
-msgstr "Nueva contraseña"
-
-#: admin/systems/password.tpl.c:14
-msgid "Repeat new password"
-msgstr "Reintroduzca la contraseña"
-
-#: admin/systems/password.tpl.c:17
-msgid "Password strength"
-msgstr "Resistencia de la contraseña"
-
-#: admin/systems/password.tpl.c:20
-msgid "Set password"
-msgstr "Introducir contraseña"
-
-#: admin/systems/server_import.tpl.c:2
-msgid ""
-"Warning : Once you import your OPSI hosts into FusionDirectory, they will be"
-" managed by it, so if you delete them or deactivate their OPSI tab, they "
-"will be removed from OPSI."
-msgstr ""
-
-#: admin/systems/gencd.tpl.c:2
-msgid "CD-Install-Image generation"
-msgstr "Creación de Imagen-CD-Instalación"
-
-#: admin/systems/gencd.tpl.c:5
-msgid ""
-"This option enables you to generate FAI install CD images for the selected "
-"workstation. The procedure may take about 10 minutes to complete, so please "
-"be patient after pressing the 'Create ISO-Image' button."
-msgstr "Esta opción le permite generar imágenes de instalación de CD FAI para la estación de trabajo seleccionada. El procedimiento puede tardar 10 minutos en completarse, porfavor tenga paciencia despues de presionar el botón 'Crear imagen ISO'."
-
-#: admin/systems/gencd.tpl.c:8
-msgid "Create ISO-Image"
-msgstr "Crear Imagen-ISO"
-
-#: admin/systems/remove.tpl.c:5
-msgid ""
-"This includes all account data, system access rules, imap settings, etc. for"
-" this user. Please double check if your really want to do this since there "
-"is no way for FusionDirectory to get your data back."
-msgstr "Esto incluye toda la data de la cuenta, reglas de acceso de sistema, opciones imap, etc. para este usuario. Por favor verifique que realmente desea hacer esto ya que FusionDirectory no tiene forma de recuperar la data"
-
-#: admin/systems/remove.tpl.c:8
-msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr "Entonces, si esta seguro, presione <i>Eliminar</i> para continuar o <i>Cancelar</i> para Abortar."
-
-#: admin/systems/system-filter.tpl.c:2
-#: admin/systems/phoneSelect/phoneSelect-filter.tpl.c:2
-msgid "Filter"
-msgstr "Filtro"
-
-#: admin/systems/system-filter.tpl.c:5
-msgid "Show servers"
-msgstr "Mostrar servidores"
-
-#: admin/systems/system-filter.tpl.c:8
-msgid "Show workstations"
-msgstr "Mostrar estaciones de trabajo"
-
-#: admin/systems/system-filter.tpl.c:11
-msgid "Show terminals"
-msgstr "Mostrar terminales"
-
-#: admin/systems/system-filter.tpl.c:14
-msgid "Show network printer"
-msgstr "Mostrar la impresoras de red"
-
-#: admin/systems/system-filter.tpl.c:17
-#: admin/systems/phoneSelect/phoneSelect-filter.tpl.c:5
-msgid "Show phones"
-msgstr "Mostrar teléfonos"
-
-#: admin/systems/system-filter.tpl.c:20
-msgid "Show windows based workstations"
-msgstr "Mostrara estaciones de trabajo basadas en windows"
-
-#: admin/systems/system-filter.tpl.c:23
-msgid "Show network devices"
-msgstr "Mostrar dispositivos de Red"
-
-#: admin/systems/system-filter.tpl.c:26
-#: admin/systems/phoneSelect/phoneSelect-filter.tpl.c:8
-msgid "Show mobile phones"
-msgstr ""
-
-#: admin/systems/system-filter.tpl.c:29
-msgid "Show IPMI interfaces"
-msgstr ""
-
-#: admin/systems/ppd/printerPPDSelectionDialog.tpl.c:2
-msgid "Select objects to add"
-msgstr "Seleccione los objetos a añadir"
-
-#: admin/systems/ppd/printerPPDSelectionDialog.tpl.c:5
-msgid "Filters"
-msgstr "Filtros"
-
-#: admin/systems/ppd/printerPPDSelectionDialog.tpl.c:8
-msgid "Display objects matching"
-msgstr "Mostrar objetos que coincidan"
-
-#: admin/systems/ppd/printerPPDSelectionDialog.tpl.c:11
-msgid "Regular expression for matching object names"
-msgstr "Expresiones regulares para buscar nombre de objetos"
-
-#: admin/systems/ppd/printerPPDSelectionDialog.tpl.c:14
-msgid "Close"
-msgstr "Cerrar"
-
-#: admin/systems/ppd/printerPPDDialog.tpl.c:2
-msgid "Printer driver"
-msgstr "Controlador de impresora"
-
-#: admin/systems/ppd/printerPPDDialog.tpl.c:5
-msgid "Model"
-msgstr "Modelo"
-
-#: admin/systems/ppd/printerPPDDialog.tpl.c:8
-msgid "Select"
-msgstr "Seleccionar"
-
-#: admin/systems/ppd/printerPPDDialog.tpl.c:11
-msgid "New driver"
-msgstr "Nuevo controlador"
-
-#: admin/systems/ppd/printerPPDDialog.tpl.c:14
-msgid "Upload"
-msgstr "Enviar"
-
-#: admin/systems/ppd/printerPPDDialog.tpl.c:17
-msgid "Options"
-msgstr "Opciones"
-
-#: admin/systems/ppd/remove_ppd.tpl.c:5
-msgid "The ppd file will be removed from the server and can not be restored."
-msgstr "El archivo ppd será eliminado del servidor y no podrá ser recuperado."
-
-#: admin/systems/printer.tpl.c:2
-msgid "General"
-msgstr "General"
-
-#: admin/systems/printer.tpl.c:5
-msgid "Printer name"
-msgstr "Nombre de la impresora"
-
-#: admin/systems/printer.tpl.c:14
-msgid "Details"
-msgstr "Detalles"
-
-#: admin/systems/printer.tpl.c:20
-msgid "Printer location"
-msgstr "Localización de la impresora"
-
-#: admin/systems/printer.tpl.c:26
-msgid "PPD Provider"
-msgstr "Proveedor PPD"
-
-#: admin/systems/printer.tpl.c:29
-msgid "Driver"
-msgstr "Controlador"
-
-#: admin/systems/printer.tpl.c:32
-msgid "Edit"
-msgstr "Editar"
-
-#: admin/systems/printer.tpl.c:41
-msgid "Users which are allowed to use this printer"
-msgstr "Usuarios que tienen permiso para acceder a esta impresora"
-
-#: admin/systems/printer.tpl.c:44
-msgid "Users"
-msgstr "Usuarios"
-
-#: admin/systems/printer.tpl.c:47
-msgid "Users which are allowed to administrate this printer"
-msgstr "usuarios que tienen permisos para administrar esta impresora"
-
-#: admin/systems/printer.tpl.c:50
-msgid "Admins"
-msgstr "Administradores"
-
-#: admin/systems/printer.tpl.c:53
-msgid "Windows paths"
-msgstr ""
-
-#: admin/systems/printer.tpl.c:56
-msgid "Printer windows inf file"
-msgstr ""
-
-#: admin/systems/printer.tpl.c:59
-msgid "Printer driver directory"
-msgstr ""
-
-#: admin/systems/gencd_frame.tpl.c:2
-msgid "Your browser does not supprt iframes."
-msgstr "Su navegador no soporta iframes."
-
-#: admin/systems/services/cups/serviceCUPS.tpl.c:2
-msgid "Print Service"
-msgstr "Servicio de impresión"
-
-#: admin/systems/services/cups/serviceCUPS.tpl.c:5
-msgid "enabled"
-msgstr "activado"
-
-#: admin/systems/services/ServiceAddDialog.tpl.c:2
-msgid "Adding a new service to the current server"
-msgstr "Añadiendo un nuevo servicio al servidor seleccionado"
-
-#: admin/systems/services/ServiceAddDialog.tpl.c:5
-msgid ""
-"This dialog allows you to add new services to the currenty edited server "
-"object. The box below shows all available but not already used services."
-msgstr "Este diálogo le permite añadir nuevos servicios al servidor que está configurando. El panel inferior muestra todos los servicios disponibles y que no están siendo usados."
-
-#: admin/systems/services/ServiceAddDialog.tpl.c:8
-msgid "Service to add"
-msgstr "Servicio a añadir"
-
-#: admin/systems/services/ServiceAddDialog.tpl.c:11
-msgid "All available services are already in use."
-msgstr "Todos los servicios disponibles ya están en uso."
-
-#: admin/systems/services/ServiceAddDialog.tpl.c:14
-#: admin/systems/SelectDeviceType.tpl.c:26
-msgid "Continue"
-msgstr "Continuar"
-
-#: admin/systems/SelectDeviceType.tpl.c:2
-msgid ""
-"This system has no system type configured. Please choose a system type for "
-"this object and an optional inheritance group. Press the 'continue' button "
-"to proceed."
-msgstr "El sistema no tiene tipo de sistema configurado. Por favor elija un tipo de sistema para el objeto y un grupo de herencia opcional. Pulse el botón 'continuar' para proceder."
-
-#: admin/systems/SelectDeviceType.tpl.c:5
-msgid ""
-"Please select a system type and an optional bundle of predefined settings to"
-" be inherited."
-msgstr "Por favor seleccione un tipo de sistema y un paquete opcional de configuraciones predefinidas para ser heredadas."
-
-#: admin/systems/SelectDeviceType.tpl.c:8
-msgid ""
-"Please select a system type and a bundle of predefined settings to be "
-"inherited."
-msgstr "Por favor seleccione un tipo de sistema y un paquete de configuraciones predefinidas para ser heredadas."
-
-#: admin/systems/SelectDeviceType.tpl.c:11
-#: admin/systems/SelectDeviceType.tpl.c:14
-msgid "System type"
-msgstr "Tipo de sistema"
-
-#: admin/systems/SelectDeviceType.tpl.c:17
-msgid "Choose an object group as template"
-msgstr "Elija un grupo de objetos como plantilla"
-
-#: admin/systems/SelectDeviceType.tpl.c:20
-msgid "Object group"
-msgstr "Grupo de objetos"
-
-#: admin/systems/SelectDeviceType.tpl.c:23
-msgid "none"
-msgstr "ninguno"

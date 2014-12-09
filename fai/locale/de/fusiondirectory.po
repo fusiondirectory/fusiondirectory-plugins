@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-08-18 16:07+0200\n"
-"PO-Revision-Date: 2014-09-21 15:10+0000\n"
+"POT-Creation-Date: 2014-12-03 17:22+0100\n"
+"PO-Revision-Date: 2014-12-03 16:52+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/FusionDirectory-108/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -73,22 +73,11 @@ msgstr "Herunterladen"
 #: admin/fai/class_faiVariableEntry.inc:115
 #: admin/fai/class_faiVariableEntry.inc:149 admin/fai/class_faiHook.inc:531
 #: admin/fai/class_faiVariable.inc:398 admin/fai/fai-list.xml:80
-#: admin/fai/faiPartitionTableEntry.tpl.c:8 admin/fai/faiPartition.tpl.c:5
-#: admin/fai/faiVariableEntry.tpl.c:8 admin/fai/faiDiskEntry.tpl.c:8
-#: admin/fai/faiTemplate.tpl.c:8 admin/fai/faiVariable.tpl.c:8
-#: admin/fai/faiHook.tpl.c:8
-#: admin/fai/packageSelect/selectPackage-filter.tpl.c:8
-#: admin/fai/faiPackage.tpl.c:8 admin/fai/faiScriptEntry.tpl.c:8
-#: admin/fai/classSelect/selectClass-filter.tpl.c:5
-#: admin/fai/fai-filter.tpl.c:50 admin/fai/faiPartitionTable.tpl.c:8
-#: admin/fai/faiScript.tpl.c:8 admin/fai/faiProfile.tpl.c:8
-#: admin/fai/faiHookEntry.tpl.c:8
 msgid "Name"
 msgstr "Name"
 
 #: admin/fai/class_faiScriptEntry.inc:159 admin/fai/class_faiHookEntry.inc:170
 #: admin/fai/class_faiScript.inc:594 admin/fai/fai-list.xml:122
-#: admin/fai/faiScriptEntry.tpl.c:29 admin/fai/faiHookEntry.tpl.c:29
 msgid "Script"
 msgstr "Skript"
 
@@ -110,13 +99,6 @@ msgstr "FAI Skript-Eintrag"
 #: admin/fai/class_faiScript.inc:606 admin/fai/class_faiTemplate.inc:513
 #: admin/fai/class_faiVariableEntry.inc:150 admin/fai/class_faiHook.inc:532
 #: admin/fai/class_faiVariable.inc:399
-#: admin/fai/faiPartitionTableEntry.tpl.c:11 admin/fai/faiPartition.tpl.c:11
-#: admin/fai/faiVariableEntry.tpl.c:11 admin/fai/faiDiskEntry.tpl.c:14
-#: admin/fai/faiTemplate.tpl.c:11 admin/fai/faiVariable.tpl.c:11
-#: admin/fai/faiHook.tpl.c:11 admin/fai/faiPackage.tpl.c:11
-#: admin/fai/faiTemplateEntry.tpl.c:14 admin/fai/faiScriptEntry.tpl.c:11
-#: admin/fai/faiPartitionTable.tpl.c:11 admin/fai/faiScript.tpl.c:11
-#: admin/fai/faiProfile.tpl.c:11 admin/fai/faiHookEntry.tpl.c:11
 msgid "Description"
 msgstr "Beschreibung"
 
@@ -185,8 +167,7 @@ msgstr "FAI Teilbaum/Freeze"
 msgid "You have no permission to delete this release!"
 msgstr "Sie haben keine Berechtigung, dieses Release zu löschen!"
 
-#: admin/fai/class_faiManagement.inc:496 admin/fai/remove.tpl.c:2
-#: admin/fai/remove_branch.tpl.c:2
+#: admin/fai/class_faiManagement.inc:496
 msgid "Warning"
 msgstr "Warnung"
 
@@ -203,7 +184,7 @@ msgstr "Konfiguration"
 msgid "Branch"
 msgstr "Teilbaum"
 
-#: admin/fai/class_faiManagement.inc:725 admin/fai/askClassName.tpl.c:23
+#: admin/fai/class_faiManagement.inc:725
 msgid "Continue"
 msgstr "Fortsetzen"
 
@@ -311,7 +292,6 @@ msgid "Unkown packages"
 msgstr "Unbekannte Pakete"
 
 #: admin/fai/class_faiPackage.inc:683
-#: admin/fai/faiPackageConfiguration.tpl.c:2
 msgid "Package"
 msgstr "Paket"
 
@@ -327,7 +307,7 @@ msgstr "FAI Paket"
 msgid "Packages"
 msgstr "Pakete"
 
-#: admin/fai/class_faiPackage.inc:697 admin/fai/faiPackage.tpl.c:23
+#: admin/fai/class_faiPackage.inc:697
 msgid "Section"
 msgstr "Section"
 
@@ -346,8 +326,6 @@ msgstr "Paket-Konfiguration"
 
 #: admin/fai/class_faiPackage.inc:700 admin/systems/class_faiStartup.inc:78
 #: admin/systems/services/repository/class_serviceRepository.inc:53
-#: admin/fai/branch_selector.tpl.c:14 admin/fai/faiPackage.tpl.c:20
-#: admin/fai/fai-filter.tpl.c:5 admin/fai/fai-filter.tpl.c:14
 msgid "Release"
 msgstr "Release"
 
@@ -380,7 +358,6 @@ msgid "Read only"
 msgstr "Nur Lesen"
 
 #: admin/fai/class_faiDiskEntry.inc:273
-#: admin/fai/faiPartitionTableEntry.tpl.c:5 admin/fai/faiDiskEntry.tpl.c:5
 msgid "Device"
 msgstr "Gerät"
 
@@ -397,7 +374,6 @@ msgid "Disks"
 msgstr "Festplatten"
 
 #: admin/fai/class_faiDiskEntry.inc:348 admin/fai/class_faiPartition.inc:319
-#: admin/fai/faiPartition.tpl.c:14
 msgid "Size"
 msgstr "Größe"
 
@@ -457,7 +433,7 @@ msgstr "Dateisystem-Typ"
 #: admin/fai/class_faiDiskEntry.inc:760
 #: admin/fai/class_faiPartitionTableEntry.inc:171
 #: admin/fai/class_faiPartitionTableEntry.inc:460
-#: admin/fai/class_faiPartition.inc:432 admin/fai/faiPartition.tpl.c:47
+#: admin/fai/class_faiPartition.inc:432
 msgid "Mount point"
 msgstr "Mount-Punkt"
 
@@ -470,7 +446,6 @@ msgstr "Partitionsgröße"
 #: admin/fai/class_faiDiskEntry.inc:762
 #: admin/fai/class_faiPartitionTableEntry.inc:173
 #: admin/fai/class_faiPartitionTableEntry.inc:462
-#: admin/fai/faiPartition.tpl.c:50
 msgid "Mount options"
 msgstr "Mount-Optionen"
 
@@ -506,29 +481,26 @@ msgid "exists in database (size: %s bytes)"
 msgstr "existiert in der Datenbank (Größe: %s Bytes)"
 
 #: admin/fai/class_faiTemplateEntry.inc:251
-#: admin/systems/class_faiLogView.inc:70 admin/fai/faiTemplateEntry.tpl.c:23
+#: admin/systems/class_faiLogView.inc:70
 msgid "File"
 msgstr "Datei"
 
 #: admin/fai/class_faiTemplateEntry.inc:255
-#: admin/fai/faiTemplateEntry.tpl.c:11
 msgid "Destination path"
 msgstr "Ziel-Pfad"
 
-#: admin/fai/class_faiTemplateEntry.inc:260 admin/fai/faiTemplateEntry.tpl.c:8
+#: admin/fai/class_faiTemplateEntry.inc:260
 msgid "File name"
 msgstr "Dateiname"
 
 #: admin/fai/class_faiTemplateEntry.inc:264
 #: admin/fai/class_faiTemplateEntry.inc:266
-#: admin/fai/faiTemplateEntry.tpl.c:68
 msgid "User"
 msgstr "Benutzer"
 
 #: admin/fai/class_faiTemplateEntry.inc:270
 #: admin/fai/class_faiTemplateEntry.inc:273
 #: admin/fai/class_faiTemplateEntry.inc:275
-#: admin/fai/faiTemplateEntry.tpl.c:47 admin/fai/faiTemplateEntry.tpl.c:74
 msgid "Group"
 msgstr "Gruppe"
 
@@ -634,7 +606,6 @@ msgid "logical"
 msgstr "logisch"
 
 #: admin/fai/class_faiPartitionTableEntry.inc:169
-#: admin/fai/faiPartition.tpl.c:8
 msgid "Type"
 msgstr "Typ"
 
@@ -651,7 +622,6 @@ msgid "FS option"
 msgstr "Dateisystem-Option"
 
 #: admin/fai/class_faiPartitionTableEntry.inc:175
-#: admin/fai/faiPartition.tpl.c:23
 msgid "Preserve"
 msgstr "Bewahren"
 
@@ -776,7 +746,7 @@ msgstr "FAI-Profil"
 msgid "FAI Profile"
 msgstr "FAI Profil"
 
-#: admin/fai/class_faiProfile.inc:465 admin/fai/faiProfile.tpl.c:17
+#: admin/fai/class_faiProfile.inc:465
 msgid "FAI classes"
 msgstr "FAI-Klassen"
 
@@ -788,7 +758,7 @@ msgstr "Hook-Eintrag"
 msgid "FAI hook entry"
 msgstr "FAI-Hook-Eintrag"
 
-#: admin/fai/class_faiHookEntry.inc:209 admin/fai/faiHookEntry.tpl.c:20
+#: admin/fai/class_faiHookEntry.inc:209
 msgid "Task"
 msgstr "Aufgabe"
 
@@ -819,7 +789,7 @@ msgstr "Die Datei-Kodierung hat sich von '%s' nach '%s' geändert. Wollen Sie si
 msgid "Sort direction"
 msgstr "Sortierrichtung"
 
-#: admin/fai/class_faiScript.inc:348 admin/fai/faiScriptEntry.tpl.c:20
+#: admin/fai/class_faiScript.inc:348
 msgid "Priority"
 msgstr "Priorität"
 
@@ -828,7 +798,6 @@ msgid "Action"
 msgstr "Aktion"
 
 #: admin/fai/classSelect/selectClass-list.xml:36 admin/fai/fai-list.xml:88
-#: admin/fai/faiScriptEntry.tpl.c:14
 msgid "Properties"
 msgstr "Eigenschaften"
 
@@ -853,7 +822,6 @@ msgid "FAI variable entry "
 msgstr "FAI-Variablen-Eintrag"
 
 #: admin/fai/class_faiVariableEntry.inc:151
-#: admin/fai/faiVariableEntry.tpl.c:20
 msgid "Variable content"
 msgstr "Variablen-Inhalt"
 
@@ -983,8 +951,7 @@ msgid ""
 msgstr "RAID 0 Arrays können nur in Kombination von zwei Partitionen realisiert werden!"
 
 #: admin/fai/class_faiHook.inc:332 admin/fai/class_faiHook.inc:334
-#: admin/fai/fai-list.xml:190 admin/fai/faiVariable.tpl.c:23
-#: admin/fai/faiVariable.tpl.c:26
+#: admin/fai/fai-list.xml:190
 msgid "Edit"
 msgstr "Bearbeiten"
 
@@ -1008,14 +975,11 @@ msgstr "Variable"
 msgid "FAI variable"
 msgstr "FAI-Variable"
 
-#: admin/fai/class_faiProfileEntry.inc:184 admin/fai/askClassName.tpl.c:11
-#: admin/fai/askClassName.tpl.c:17 admin/fai/paste_generic.tpl.c:5
+#: admin/fai/class_faiProfileEntry.inc:184
 msgid "Class name"
 msgstr "Klassen-Name"
 
-#: admin/fai/class_faiProfileEntry.inc:184 admin/fai/faiTemplate.tpl.c:14
-#: admin/fai/faiVariable.tpl.c:14 admin/fai/faiHook.tpl.c:14
-#: admin/fai/faiPartitionTable.tpl.c:17 admin/fai/faiScript.tpl.c:14
+#: admin/fai/class_faiProfileEntry.inc:184
 msgid "Objects"
 msgstr "Objekte"
 
@@ -1081,7 +1045,7 @@ msgstr "Ausgewählte Datei"
 msgid "Selected file: %s"
 msgstr "Ausgewählte Datei: %s"
 
-#: admin/systems/class_faiStartup.inc:70 admin/fai/paste_generic.tpl.c:2
+#: admin/systems/class_faiStartup.inc:70
 msgid "FAI settings"
 msgstr "FAI-Einstellungen"
 
@@ -1101,8 +1065,7 @@ msgstr "Profil"
 msgid "FAI profil to be applied to this computer"
 msgstr "FAI-Profil welches auf diesem Rechner angewendet werden soll"
 
-#: admin/systems/class_faiStartup.inc:90 admin/fai/faiPackage.tpl.c:14
-#: admin/fai/faiPackage.tpl.c:17
+#: admin/systems/class_faiStartup.inc:90
 msgid "Repository"
 msgstr "Repository"
 
@@ -1241,476 +1204,3 @@ msgstr "Relativer Zweig in welchem fai %s gespeichert werden"
 #: config/fai/class_faiConfig.inc:60
 msgid "s"
 msgstr "s"
-
-#: admin/fai/faiPartitionTableEntry.tpl.c:2 admin/fai/faiVariableEntry.tpl.c:2
-#: admin/fai/faiVariableEntry.tpl.c:5 admin/fai/faiDiskEntry.tpl.c:2
-#: admin/fai/faiTemplate.tpl.c:2 admin/fai/faiTemplate.tpl.c:5
-#: admin/fai/faiVariable.tpl.c:2 admin/fai/faiVariable.tpl.c:5
-#: admin/fai/faiHook.tpl.c:2 admin/fai/faiHook.tpl.c:5
-#: admin/fai/faiPackage.tpl.c:2 admin/fai/faiPackage.tpl.c:5
-#: admin/fai/faiTemplateEntry.tpl.c:2 admin/fai/faiTemplateEntry.tpl.c:5
-#: admin/fai/faiScriptEntry.tpl.c:2 admin/fai/faiScriptEntry.tpl.c:5
-#: admin/fai/faiPartitionTable.tpl.c:2 admin/fai/faiPartitionTable.tpl.c:5
-#: admin/fai/faiScript.tpl.c:2 admin/fai/faiScript.tpl.c:5
-#: admin/fai/faiProfile.tpl.c:2 admin/fai/faiProfile.tpl.c:5
-#: admin/fai/faiProfile.tpl.c:14 admin/fai/faiHookEntry.tpl.c:2
-#: admin/fai/faiHookEntry.tpl.c:5
-msgid "Generic"
-msgstr "Allgemein"
-
-#: admin/fai/faiPartitionTableEntry.tpl.c:14
-#: admin/fai/faiPartitionTableEntry.tpl.c:17 admin/fai/faiDiskEntry.tpl.c:23
-#: admin/fai/faiDiskEntry.tpl.c:26
-msgid "Partition entries"
-msgstr "Partitions-Einträge"
-
-#: admin/fai/faiPartitionTableEntry.tpl.c:20
-#: admin/fai/faiPartitionTableEntry.tpl.c:23 admin/fai/faiDiskEntry.tpl.c:29
-#: admin/fai/faiDiskEntry.tpl.c:32
-msgid "Add partition"
-msgstr "Partition hinzufügen"
-
-#: admin/fai/branch_selector.tpl.c:2
-msgid "Releases"
-msgstr "Releases"
-
-#: admin/fai/branch_selector.tpl.c:5
-msgid "Current release"
-msgstr "Momentanes Release"
-
-#: admin/fai/branch_selector.tpl.c:8 admin/fai/branch_selector.tpl.c:17
-#: admin/fai/fai-filter.tpl.c:8 admin/fai/fai-filter.tpl.c:17
-msgid "Create release"
-msgstr "Release erzeugen"
-
-#: admin/fai/branch_selector.tpl.c:11 admin/fai/branch_selector.tpl.c:23
-#: admin/fai/fai-filter.tpl.c:11 admin/fai/fai-filter.tpl.c:23
-msgid "Create read-only release"
-msgstr "Unveränderbares Release erzeugen"
-
-#: admin/fai/branch_selector.tpl.c:20 admin/fai/fai-filter.tpl.c:20
-msgid "Freeze"
-msgstr "Freeze"
-
-#: admin/fai/branch_selector.tpl.c:26 admin/fai/fai-filter.tpl.c:26
-msgid "Delete current release"
-msgstr "Momentanes Release entfernen"
-
-#: admin/fai/faiPartition.tpl.c:2
-msgid "Partition"
-msgstr "Partition"
-
-#: admin/fai/faiPartition.tpl.c:17
-msgid "Resize existing partition"
-msgstr "Existierende Partition in Größe anpassen"
-
-#: admin/fai/faiPartition.tpl.c:20
-msgid "Bootable"
-msgstr "Bootbar"
-
-#: admin/fai/faiPartition.tpl.c:26 admin/fai/faiDiskEntry.tpl.c:20
-msgid "Combined physical partitions"
-msgstr "Kombinierte physikalische Partitionen"
-
-#: admin/fai/faiPartition.tpl.c:29
-msgid "Toggle missing"
-msgstr "Platte fehlt"
-
-#: admin/fai/faiPartition.tpl.c:32
-msgid "Toggle spare"
-msgstr "Reserveplatte"
-
-#: admin/fai/faiPartition.tpl.c:35
-msgid "Filesystem"
-msgstr "Dateisystem"
-
-#: admin/fai/faiPartition.tpl.c:38
-msgid "Filesystem create options"
-msgstr "Dateisystem Erstell-Optionen"
-
-#: admin/fai/faiPartition.tpl.c:41
-msgid "Encrypted"
-msgstr "Verschlüsselt"
-
-#: admin/fai/faiPartition.tpl.c:44
-msgid "Tune options"
-msgstr "Optimierungs-Optionen"
-
-#: admin/fai/faiNewBranch.tpl.c:2
-msgid ""
-"You are now going to create a branch or locked branch. This action clones "
-"the existing release to another release name. Branches can be modified as "
-"usual. FAI classes of locked branches cannot be modified, just additional "
-"classes are possible. Branch names should be alphanumeric, excluding the "
-"reserved names 'scripts', 'hooks', 'partitions', 'variables', 'templates' "
-"and 'fai'."
-msgstr "Sie sind dabei, einen neuen (evtl. gesperrten) Teilbaum zu erstellen. Diese Aktion klont das existierende Release auf einen anderen Releasenamen. Teilbäume können wie gewohnt bearbeitet werden. FAI-Klassen von gesperrten Teilbäumen können nicht bearbeitet werden, lediglich das Hinzufügen von Klassen ist möglich.Teilbaumnamen sollten alphanumerisch sein, reservierte Namen sind 'scripts', 'hooks', 'partitions', 'variables', 'templates' und 'fai'. Diese können nicht verwendet werden."
-
-#: admin/fai/faiNewBranch.tpl.c:5
-msgid ""
-"Branches are created as subreleases of the currently selected branch. "
-"Creating a new branch named 1.0.2 in SARGE for example, will result in a new"
-" release called SARGE/1.0.2."
-msgstr "Teilbäume werden als Subrelease des momentan gewählten Teilbaums erstellt. Wenn Sie bspw. einen neuen Teilbaum namens 1.0.2 in SARGE erstellen, wird dieses Release SARGE/1.0.2 heissen."
-
-#: admin/fai/faiNewBranch.tpl.c:8
-msgid "Please enter a name for the branch"
-msgstr "Bitte geben Sie einen Namen für den Teilbaum ein"
-
-#: admin/fai/faiNewBranch.tpl.c:11
-msgid "Processing the requested operation"
-msgstr "Gewünschte Operation wird durchgeführt"
-
-#: admin/fai/faiNewBranch.tpl.c:14
-msgid ""
-"As soon as the copy operation has finished, you can scroll down to end of "
-"the page and press the 'Continue' button to continue with the fai management"
-" dialog."
-msgstr "Sobald der Vorgang abgeschlossen wurde, können Sie zum unteren Ende der Seite blättern und auf den 'Weiter'-Knopf drücken, um zum FAI-Verwaltungs-Dialog zu gelangen."
-
-#: admin/fai/faiNewBranch.tpl.c:17
-msgid ""
-"Your browser doesn't support iframes, please use this link to perform the "
-"requested operation."
-msgstr "Ihr Browser unterstützt keine IFrames - bitte wählen Sie diesen Link, um die gewünschte Operation durchzuführen."
-
-#: admin/fai/faiNewBranch.tpl.c:20
-msgid "Perform requested operation."
-msgstr "Gewünschte Operation durchführen."
-
-#: admin/fai/faiNewBranch.tpl.c:23
-msgid "Initiate operation"
-msgstr "Operation initiieren"
-
-#: admin/fai/faiVariableEntry.tpl.c:14 admin/fai/faiVariableEntry.tpl.c:17
-msgid "Variable attributes"
-msgstr "Variablen-Attribute"
-
-#: admin/fai/faiDiskEntry.tpl.c:11
-msgid "fstab key"
-msgstr "fstab-Schlüssel"
-
-#: admin/fai/faiDiskEntry.tpl.c:17
-msgid "Disk label"
-msgstr "Disk-Label"
-
-#: admin/fai/faiTemplate.tpl.c:17
-msgid "List of template files"
-msgstr "Liste der Vorlagen"
-
-#: admin/fai/faiVariable.tpl.c:17
-msgid "List of assigned variables"
-msgstr "Liste benutzter Variablen"
-
-#: admin/fai/faiVariable.tpl.c:20
-msgid "Choose a variable to delete or edit"
-msgstr "Wählen Sie eine Variable zum Entfernen oder Bearbeiten"
-
-#: admin/fai/askClassName.tpl.c:2
-msgid ""
-"Adding a new class to the FAI management, requires a class name. You have to"
-" specify a unique class name for unique types of FAI classes, while you can "
-"use the same class name for different types of FAI classes. In the laste "
-"case, FAI will automatically enclose all these different class types to one "
-"unique class name."
-msgstr "Es wird ein Klassen-Name benötigt, um der FAI-Verwaltung eine neue Klasse hinzuzufügen. Dieser Klassen-Name muss lediglich für jeden Typ der FAI-Klasse eindeutig sein, d.h. Sie können den gleichen Klassen-Namen für verschiedene Typen von FAI-Klassen verwenden. In diesem Fall wird FAI automatisch all diese verschiedenen Typen mit einem eindeutigen Namen versehen."
-
-#: admin/fai/askClassName.tpl.c:5
-msgid ""
-"Please use one of the following methods to choose the name for the new FAI "
-"class."
-msgstr "Bitte verwenden Sie eine der folgenden Methoden um den Namen der neuen FAI-Klasse zu bestimmen."
-
-#: admin/fai/askClassName.tpl.c:8
-msgid "Enter FAI class name manually"
-msgstr "FAI-Klassen-Name manuell eingeben"
-
-#: admin/fai/askClassName.tpl.c:14
-msgid "Choose FAI class name from a list of existing classes"
-msgstr "Verwenden Sie den Namen aus einer Liste bestehender Klassen."
-
-#: admin/fai/askClassName.tpl.c:20
-msgid "Choose class name"
-msgstr "Wählen Sie den Klassen-Namen"
-
-#: admin/fai/faiGroupHandle.tpl.c:2
-msgid "Please select the objects you want to remove:"
-msgstr "Bitte wählen Sie die zu entfernenden Objekte:"
-
-#: admin/fai/faiGroupHandle.tpl.c:5
-msgid "Freezed"
-msgstr "Eingefroren"
-
-#: admin/fai/faiGroupHandle.tpl.c:8
-msgid "Select the object you want to edit:"
-msgstr "Wählen Sie die zu bearbeitenden Objekte"
-
-#: admin/fai/faiGroupHandle.tpl.c:11
-msgid "Select the object you want to copy:"
-msgstr "Wählen Sie die zu kopierenden Objekte"
-
-#: admin/fai/remove.tpl.c:5
-msgid ""
-"This includes all account data, system access rules, imap settings, etc. for"
-" this user. Please double check if your really want to do this since there "
-"is no way for FusionDirectory to get your data back."
-msgstr "Dies beinhaltet alle Kontendaten, Systemzugangsregeln, Imap-Einstellungen etc. für diesen Benutzer. Bitte überprüfen Sie nochmals ob Sie dies tun wollen, da es keinen Weg für FusionDirectory gibt Ihre Daten zurück zu bekommen."
-
-#: admin/fai/remove.tpl.c:8 admin/fai/remove_branch.tpl.c:8
-msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr "Wenn Sie sicher sind, drücken Sie 'Entfernen' um fortzufahren oder 'Abbrechen' zum Abbruch."
-
-#: admin/fai/faiHook.tpl.c:17
-msgid "List of hook scripts"
-msgstr "Liste der Hook-Skripte"
-
-#: admin/fai/packageSelect/selectPackage-list.tpl.c:2
-#: admin/fai/classSelect/selectClass-list.tpl.c:5
-msgid "Update"
-msgstr "Aktualisieren"
-
-#: admin/fai/packageSelect/selectPackage-list.tpl.c:5
-#: admin/fai/classSelect/selectClass-list.tpl.c:8
-msgid "Submit"
-msgstr "Übertragen"
-
-#: admin/fai/packageSelect/selectPackage-filter.tpl.c:2
-#: admin/fai/classSelect/selectClass-filter.tpl.c:2
-#: admin/fai/fai-filter.tpl.c:2
-msgid "Filter"
-msgstr "Filter"
-
-#: admin/fai/packageSelect/selectPackage-filter.tpl.c:5
-msgid "A maximum of 200 entries will be shown here."
-msgstr "Es werden maximal 200 Einträge angezeigt."
-
-#: admin/fai/remove_branch.tpl.c:5
-msgid ""
-"This includes all account data, system access, etc. for this branch. Please "
-"double check if your really want to do this since there is no way for "
-"FusionDirectory to get your data back."
-msgstr "Dies beinhaltet alle Kontendaten, Systemzugang etc. für diesen Zweig. Bitte überprüfen Sie ob Sie dies wirklich tun wollen, da es keinen Weg für FusionDirectory gibt, Ihre Daten zurück zu bekommen."
-
-#: admin/fai/faiPackage.tpl.c:26
-msgid "Install method"
-msgstr "Installations-Methode"
-
-#: admin/fai/faiPackage.tpl.c:29
-msgid "Please select the installation method"
-msgstr "Bitte wählen Sie die Installations-Methode"
-
-#: admin/fai/faiPackage.tpl.c:32 admin/fai/faiPackage.tpl.c:35
-msgid "Used packages"
-msgstr "Verwendete Pakete"
-
-#: admin/fai/faiPackage.tpl.c:38
-msgid "Add from list"
-msgstr "Aus Liste hinzufügen"
-
-#: admin/fai/faiProfileEntry.tpl.c:2
-msgid "List of FAI objects (Fully Automatic Installation)"
-msgstr "Liste von FAI-Objekten"
-
-#: admin/fai/faiProfileEntry.tpl.c:5
-msgid "Information"
-msgstr "Information"
-
-#: admin/fai/faiProfileEntry.tpl.c:8
-msgid ""
-"This menu allows you to select FAI class names and to add them to the "
-"currently edited profile."
-msgstr "Dieses Menü erlaubt es Ihnen, FAI Klassen-Namen auszuwählen und zum gegenwärtig bearbeiteten Profil hinzuzufügen."
-
-#: admin/fai/faiProfileEntry.tpl.c:11
-msgid "Filters"
-msgstr "Filter"
-
-#: admin/fai/faiProfileEntry.tpl.c:14
-msgid "Show only classes with templates"
-msgstr "Zeige nur Klassen mit Vorlagen"
-
-#: admin/fai/faiProfileEntry.tpl.c:17
-msgid "Show only classes with scripts"
-msgstr "Zeige nur Klassen mit Skripten"
-
-#: admin/fai/faiProfileEntry.tpl.c:20
-msgid "Show only classes with hooks"
-msgstr "Zeige nur Klassen mit Hooks"
-
-#: admin/fai/faiProfileEntry.tpl.c:23
-msgid "Show only classes with variables"
-msgstr "Zeige nur Klassen mit Variablen"
-
-#: admin/fai/faiProfileEntry.tpl.c:26
-msgid "Show only classes with packages"
-msgstr "Zeige nur Klassen mit Paketen"
-
-#: admin/fai/faiProfileEntry.tpl.c:29
-msgid "Show only classes with partitions"
-msgstr "Zeige nur Klassen mit Partitionen"
-
-#: admin/fai/faiProfileEntry.tpl.c:32 admin/fai/faiProfileEntry.tpl.c:35
-msgid "Display objects matching"
-msgstr "Zeige die Objekte, auf die Folgendes passt"
-
-#: admin/fai/faiProfileEntry.tpl.c:38
-msgid "Regular expression for matching object names"
-msgstr "Regulärer Ausdruck zum Erkennen von Objekt-Namen"
-
-#: admin/fai/faiTemplateEntry.tpl.c:17 admin/fai/faiTemplateEntry.tpl.c:20
-msgid "Template attributes"
-msgstr "Vorlagen-Attribute"
-
-#: admin/fai/faiTemplateEntry.tpl.c:26 admin/fai/faiTemplateEntry.tpl.c:29
-msgid "Save template"
-msgstr "Vorlage speichern"
-
-#: admin/fai/faiTemplateEntry.tpl.c:32 admin/fai/faiTemplateEntry.tpl.c:35
-msgid "Edit template"
-msgstr "Vorlage bearbeiten"
-
-#: admin/fai/faiTemplateEntry.tpl.c:38
-msgid "Full path"
-msgstr "Voller Pfad"
-
-#: admin/fai/faiTemplateEntry.tpl.c:41
-msgid "Upload"
-msgstr "Hochladen"
-
-#: admin/fai/faiTemplateEntry.tpl.c:44
-msgid "Owner"
-msgstr "Besitzer"
-
-#: admin/fai/faiTemplateEntry.tpl.c:50
-msgid "Access"
-msgstr "Zugriff"
-
-#: admin/fai/faiTemplateEntry.tpl.c:53
-msgid "Class"
-msgstr "Klasse"
-
-#: admin/fai/faiTemplateEntry.tpl.c:56
-msgid "Read"
-msgstr "Lesen"
-
-#: admin/fai/faiTemplateEntry.tpl.c:59
-msgid "Write"
-msgstr "Schreiben"
-
-#: admin/fai/faiTemplateEntry.tpl.c:62
-msgid "Execute"
-msgstr "Ausführen"
-
-#: admin/fai/faiTemplateEntry.tpl.c:65
-msgid "Special"
-msgstr "Speziell"
-
-#: admin/fai/faiTemplateEntry.tpl.c:71
-msgid "SUID"
-msgstr "SUID"
-
-#: admin/fai/faiTemplateEntry.tpl.c:77
-msgid "SGID"
-msgstr "SGID"
-
-#: admin/fai/faiTemplateEntry.tpl.c:80
-msgid "Others"
-msgstr "Andere"
-
-#: admin/fai/faiTemplateEntry.tpl.c:83
-msgid "sticky"
-msgstr "sticky"
-
-#: admin/fai/faiScriptEntry.tpl.c:17 admin/fai/faiScriptEntry.tpl.c:26
-msgid "Script attributes"
-msgstr "Skript-Attribute"
-
-#: admin/fai/faiScriptEntry.tpl.c:23
-msgid ""
-"Choose a priority. Low values result in an earlier, high values in a later "
-"execution."
-msgstr "Wählen Sie eine Priorität. Niedrige Werte bedeuten eine frühe, höhere Werte eine spätere Ausführung."
-
-#: admin/fai/faiScriptEntry.tpl.c:32 admin/fai/faiHookEntry.tpl.c:32
-msgid "Import script"
-msgstr "Skript importieren"
-
-#: admin/fai/classSelect/selectClass-list.tpl.c:2
-msgid "Base"
-msgstr "Basis"
-
-#: admin/fai/fai-filter.tpl.c:29
-msgid "Show profiles"
-msgstr "Zeige Profile"
-
-#: admin/fai/fai-filter.tpl.c:32
-msgid "Show templates"
-msgstr "Zeige Vorlagen"
-
-#: admin/fai/fai-filter.tpl.c:35
-msgid "Show scripts"
-msgstr "Zeige Skripte"
-
-#: admin/fai/fai-filter.tpl.c:38
-msgid "Show hooks"
-msgstr "Zeige Hooks"
-
-#: admin/fai/fai-filter.tpl.c:41
-msgid "Show variables"
-msgstr "Zeige Variablen"
-
-#: admin/fai/fai-filter.tpl.c:44
-msgid "Show packages"
-msgstr "Zeige Pakete"
-
-#: admin/fai/fai-filter.tpl.c:47
-msgid "Show partitions"
-msgstr "Zeige Partitionen"
-
-#: admin/fai/faiTemplateEdit.tpl.c:2
-msgid "This FAI template is write protected. Editing may break it!"
-msgstr "Diese Vorlage ist schreibgeschützt. Eine Bearbeitung kann sie zerstören!"
-
-#: admin/fai/faiTemplateEdit.tpl.c:5
-msgid "Edit anyway"
-msgstr "Trotzdem bearbeiten"
-
-#: admin/fai/faiPartitionTable.tpl.c:14
-msgid "Use 'setup-storage' to partition the disk"
-msgstr "Benutze 'setup-storage' um die Platte zu partitionieren"
-
-#: admin/fai/faiPartitionTable.tpl.c:20
-msgid "Discs"
-msgstr "Festplatten"
-
-#: admin/fai/faiPartitionTable.tpl.c:23 admin/fai/faiPartitionTable.tpl.c:26
-#: admin/fai/faiPartitionTable.tpl.c:41 admin/fai/faiPartitionTable.tpl.c:44
-msgid "Add disk"
-msgstr "Platte hinzufügen"
-
-#: admin/fai/faiPartitionTable.tpl.c:29 admin/fai/faiPartitionTable.tpl.c:32
-#: admin/fai/faiPartitionTable.tpl.c:47 admin/fai/faiPartitionTable.tpl.c:50
-msgid "Add RAID"
-msgstr "RAID hinzufügen"
-
-#: admin/fai/faiPartitionTable.tpl.c:35 admin/fai/faiPartitionTable.tpl.c:38
-#: admin/fai/faiPartitionTable.tpl.c:53 admin/fai/faiPartitionTable.tpl.c:56
-msgid "Add volume group"
-msgstr "Volume-Gruppe hinzufügen"
-
-#: admin/fai/faiScript.tpl.c:17
-msgid "List of scripts"
-msgstr "Liste der Skripte"
-
-#: admin/fai/faiProfile.tpl.c:20
-msgid "Choose a priority"
-msgstr "Wählen Sie eine Priorität"
-
-#: admin/fai/faiHookEntry.tpl.c:14 admin/fai/faiHookEntry.tpl.c:17
-#: admin/fai/faiHookEntry.tpl.c:26
-msgid "Hook attributes"
-msgstr "Hook-Attribute"
-
-#: admin/fai/faiHookEntry.tpl.c:23
-msgid "Choose an existing FAI task"
-msgstr "Einen existierenden Task wählen"

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-08-18 16:07+0200\n"
-"PO-Revision-Date: 2014-08-28 10:49+0000\n"
+"POT-Creation-Date: 2014-12-03 17:22+0100\n"
+"PO-Revision-Date: 2014-12-09 08:12+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/FusionDirectory-108/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
@@ -19,117 +19,108 @@ msgstr ""
 
 #: admin/supannStructures/class_supannStructuresManagement.inc:35
 msgid "Supann structures"
-msgstr ""
+msgstr "Struktury Supann"
 
 #: admin/supannStructures/class_supannStructuresManagement.inc:36
 msgid "Supann structures management"
 msgstr ""
 
-#: admin/supannStructures/class_entite.inc:48
-msgid "File error"
-msgstr ""
-
-#: admin/supannStructures/class_entite.inc:49
-#, php-format
-msgid "Cannot read file: '%s'"
-msgstr ""
-
-#: admin/supannStructures/class_entite.inc:88
-#: admin/supannStructures/class_entite.inc:109
+#: admin/supannStructures/class_entite.inc:31
+#: admin/supannStructures/class_entite.inc:52
 #: personal/supann/class_supannAccount.inc:442
 msgid "Entite"
 msgstr ""
 
-#: admin/supannStructures/class_entite.inc:89
+#: admin/supannStructures/class_entite.inc:32
 msgid "SUPANN Entite Settings"
 msgstr ""
 
-#: admin/supannStructures/class_entite.inc:92
+#: admin/supannStructures/class_entite.inc:35
 msgid "SUPANN Entite"
 msgstr ""
 
-#: admin/supannStructures/class_entite.inc:112
+#: admin/supannStructures/class_entite.inc:55
 #: admin/supannStructures/class_etablissement.inc:59
 msgid "Name"
 msgstr "název"
 
-#: admin/supannStructures/class_entite.inc:112
+#: admin/supannStructures/class_entite.inc:55
 msgid "The name to write in the ou attribute for this entite"
 msgstr ""
 
-#: admin/supannStructures/class_entite.inc:118
+#: admin/supannStructures/class_entite.inc:61
 msgid "Administrative informations"
 msgstr ""
 
-#: admin/supannStructures/class_entite.inc:121
+#: admin/supannStructures/class_entite.inc:64
 #: admin/supannStructures/class_etablissement.inc:80
 msgid "Telephone"
 msgstr "telefon"
 
-#: admin/supannStructures/class_entite.inc:121
+#: admin/supannStructures/class_entite.inc:64
 msgid "Phone number for this entite"
 msgstr ""
 
-#: admin/supannStructures/class_entite.inc:125
+#: admin/supannStructures/class_entite.inc:68
 #: admin/supannStructures/class_etablissement.inc:84
 msgid "Fax"
 msgstr "fax"
 
-#: admin/supannStructures/class_entite.inc:125
+#: admin/supannStructures/class_entite.inc:68
 msgid "Fax number for this entite"
 msgstr ""
 
-#: admin/supannStructures/class_entite.inc:129
+#: admin/supannStructures/class_entite.inc:72
 msgid "Postal address"
 msgstr "poštovní adresa"
 
-#: admin/supannStructures/class_entite.inc:129
+#: admin/supannStructures/class_entite.inc:72
 msgid "Postal address of this entite"
 msgstr ""
 
-#: admin/supannStructures/class_entite.inc:133
+#: admin/supannStructures/class_entite.inc:76
 #: admin/supannStructures/class_etablissement.inc:63
 msgid "Description"
 msgstr "popis"
 
-#: admin/supannStructures/class_entite.inc:133
+#: admin/supannStructures/class_entite.inc:76
 msgid "Short description of this entite"
 msgstr ""
 
-#: admin/supannStructures/class_entite.inc:139
+#: admin/supannStructures/class_entite.inc:82
 msgid "SUPANN informations"
 msgstr ""
 
-#: admin/supannStructures/class_entite.inc:142
+#: admin/supannStructures/class_entite.inc:85
 #: personal/supann/class_supannAccount.inc:438
 msgid "Entite type"
 msgstr ""
 
-#: admin/supannStructures/class_entite.inc:142
+#: admin/supannStructures/class_entite.inc:85
 msgid "The best SUPANN type that fits this entite"
 msgstr ""
 
-#: admin/supannStructures/class_entite.inc:146
+#: admin/supannStructures/class_entite.inc:89
 msgid "Entite code"
 msgstr ""
 
-#: admin/supannStructures/class_entite.inc:146
+#: admin/supannStructures/class_entite.inc:89
 msgid "The SUPANN code of this entite"
 msgstr ""
 
-#: admin/supannStructures/class_entite.inc:151
+#: admin/supannStructures/class_entite.inc:94
 msgid "Parent entite"
 msgstr ""
 
-#: admin/supannStructures/class_entite.inc:151
+#: admin/supannStructures/class_entite.inc:94
 msgid "The parent entite of this entite"
 msgstr ""
 
-#: admin/supannStructures/class_entite.inc:155
+#: admin/supannStructures/class_entite.inc:98
 msgid "Reference ID"
 msgstr ""
 
-#: admin/supannStructures/class_entite.inc:155
+#: admin/supannStructures/class_entite.inc:98
 msgid "SUPANN reference ID of this entite"
 msgstr ""
 
@@ -194,7 +185,7 @@ msgstr ""
 
 #: admin/supannStructures/class_etablissement.inc:90
 msgid "SUPANN properties"
-msgstr ""
+msgstr "Vlastnosti SUPANN"
 
 #: admin/supannStructures/class_etablissement.inc:93
 msgid "Etablissement code"
@@ -249,6 +240,15 @@ msgstr ""
 #: admin/supannStructures/class_etablissement.inc:219
 msgid "LDAP error"
 msgstr "chyba LDAPu"
+
+#: admin/supannStructures/class_supann.inc:53
+msgid "File error"
+msgstr "Chyba souboru"
+
+#: admin/supannStructures/class_supann.inc:54
+#, php-format
+msgid "Cannot read file: '%s'"
+msgstr "Soubor nelze načíst: \"%s\""
 
 #: personal/supann/class_supannAccount.inc:35
 #: personal/supann/class_supannAccount.inc:109
@@ -351,7 +351,7 @@ msgstr ""
 
 #: personal/supann/class_supannAccount.inc:248
 msgid "Nick name"
-msgstr ""
+msgstr "Přezdívka"
 
 #: personal/supann/class_supannAccount.inc:248
 msgid "eduPersonNickName - Can contain a nick name for this user"
@@ -363,7 +363,7 @@ msgstr "kontakt"
 
 #: personal/supann/class_supannAccount.inc:258
 msgid "Other phone numbers"
-msgstr ""
+msgstr "Ostatní telefonní čísla"
 
 #: personal/supann/class_supannAccount.inc:258
 msgid "supannAutreTelephone - Other phone numbers for this user"
@@ -371,7 +371,7 @@ msgstr ""
 
 #: personal/supann/class_supannAccount.inc:264
 msgid "Other mail addresses"
-msgstr ""
+msgstr "Ostatní e-mailové adresy"
 
 #: personal/supann/class_supannAccount.inc:264
 msgid ""
@@ -380,7 +380,7 @@ msgstr ""
 
 #: personal/supann/class_supannAccount.inc:270
 msgid "Personal mail addresses"
-msgstr ""
+msgstr "Osobní e-mailová adresa"
 
 #: personal/supann/class_supannAccount.inc:270
 msgid "supannMailPerso - Personal mail addresses for this user"
@@ -492,7 +492,7 @@ msgstr ""
 
 #: personal/supann/class_supannAccount.inc:364
 msgid "Subscription type"
-msgstr ""
+msgstr "Typ předplatného"
 
 #: personal/supann/class_supannAccount.inc:364
 msgid "supannEtuRegimeInscription - The type of this subscription"
@@ -544,7 +544,7 @@ msgstr ""
 
 #: personal/supann/class_supannAccount.inc:392
 msgid "educational element"
-msgstr ""
+msgstr "výukový prvek"
 
 #: personal/supann/class_supannAccount.inc:392
 msgid "supannEtuElementPedagogique"
@@ -552,11 +552,11 @@ msgstr ""
 
 #: personal/supann/class_supannAccount.inc:404
 msgid "Personnal profile"
-msgstr ""
+msgstr "Osobní profil"
 
 #: personal/supann/class_supannAccount.inc:407
 msgid "Personal ID"
-msgstr ""
+msgstr "Osobní identifikátor"
 
 #: personal/supann/class_supannAccount.inc:407
 msgid "supannEmpId"
@@ -596,15 +596,15 @@ msgstr ""
 
 #: config/supann/class_supannConfig.inc:28
 msgid "SUPANN configuration"
-msgstr ""
+msgstr "Nastavení SUPANN"
 
 #: config/supann/class_supannConfig.inc:29
 msgid "FusionDirectory SUPANN plugin configuration"
-msgstr ""
+msgstr "Nastavení zásuvného modulu SUPANN pro FusionDirectory"
 
 #: config/supann/class_supannConfig.inc:42
 msgid "LDAP tree"
-msgstr ""
+msgstr "Strom LDAP"
 
 #: config/supann/class_supannConfig.inc:45
 msgid "SUPANN RDN"

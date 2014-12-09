@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-08-18 16:07+0200\n"
-"PO-Revision-Date: 2014-08-28 10:47+0000\n"
+"POT-Creation-Date: 2014-12-03 17:22+0100\n"
+"PO-Revision-Date: 2014-12-03 16:52+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/FusionDirectory-108/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -70,12 +70,8 @@ msgid "Sudo role"
 msgstr "Sudo-Rolle"
 
 #: admin/sudo/class_sudoGeneric.inc:102
-msgid "Generic"
-msgstr "Allgemein"
-
-#: admin/sudo/class_sudoGeneric.inc:102
-msgid "global defaults"
-msgstr "globale Vorgaben"
+msgid "Role settings"
+msgstr ""
 
 #: admin/sudo/class_sudoGeneric.inc:107
 msgid "Name"
@@ -129,30 +125,6 @@ msgstr "Benutzer und Gruppen"
 msgid ""
 "A user name, user ID (prefixed with '#'), Unix group (prefixed with '%')"
 msgstr "Ein Benutzername, user ID (mit Prefix '#'), Unixgruppe (mit Prefix '#')"
-
-#: admin/sudo/class_sudoGeneric.inc:144
-msgid "System trust"
-msgstr "System-Vertrauen"
-
-#: admin/sudo/class_sudoGeneric.inc:148
-msgid "Trust mode"
-msgstr "Vertrauens-Modus"
-
-#: admin/sudo/class_sudoGeneric.inc:148
-msgid "Trust mode for the role"
-msgstr "Vertrauensmodus für Rolle"
-
-#: admin/sudo/class_sudoGeneric.inc:152
-msgid "disabled"
-msgstr "deaktiviert"
-
-#: admin/sudo/class_sudoGeneric.inc:152
-msgid "full access"
-msgstr "Vollzugriff"
-
-#: admin/sudo/class_sudoGeneric.inc:152
-msgid "allow access to these hosts"
-msgstr "erlaube Zugriff auf diese Hosts"
 
 #: config/sudo/class_sudoConfig.inc:28
 msgid "Sudo configuration"

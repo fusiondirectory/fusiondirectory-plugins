@@ -5,6 +5,7 @@
 # Translators:
 # gallak <antoine.gallavardin@free.fr>, 2013
 # Benoit Mortier <benoit.mortier@opensides.be>, 2005-2011
+# MCMic, 2014
 # fusiondirectory <contact@fusiondirectory.org>, 2013-2014
 # fusiondirectory <contact@fusiondirectory.org>, 2012
 # fusiondirectory <contact@fusiondirectory.org>, 2012
@@ -14,9 +15,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-08-18 16:07+0200\n"
-"PO-Revision-Date: 2014-08-28 10:52+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"POT-Creation-Date: 2014-12-03 17:22+0100\n"
+"PO-Revision-Date: 2014-12-09 09:11+0000\n"
+"Last-Translator: MCMic\n"
 "Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory-108/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -35,7 +36,7 @@ msgstr "Verrouillé"
 #: admin/ogroups/goto/class_termgroup.inc:118
 #: admin/systems/class_terminalGeneric.inc:121
 msgid "Local swap"
-msgstr "swap locale"
+msgstr "Swap local"
 
 #: admin/ogroups/goto/class_termgroup.inc:124
 #: admin/ogroups/goto/class_termgroup.inc:136
@@ -67,7 +68,7 @@ msgstr "L'événement '%s' n'est pas disponible !"
 #: admin/ogroups/goto/class_termgroup.inc:274
 #: admin/systems/class_workstationGeneric.inc:112
 msgid "Switch off"
-msgstr "Eteindre"
+msgstr "Éteindre"
 
 #: admin/ogroups/goto/class_termgroup.inc:274
 #: admin/systems/class_workstationGeneric.inc:113
@@ -127,13 +128,11 @@ msgid "System group"
 msgstr "Groupe système"
 
 #: admin/ogroups/goto/class_termgroup.inc:401
-#: admin/ogroups/goto/termgroup.tpl.c:17
 msgid "Mode"
 msgstr "Mode"
 
 #: admin/ogroups/goto/class_termgroup.inc:402
 #: admin/systems/class_workstationGeneric.inc:189
-#: admin/ogroups/goto/termgroup.tpl.c:23
 msgid "Syslog server"
 msgstr "Serveur de journaux systèmes"
 
@@ -147,15 +146,13 @@ msgstr "Serveur NTP"
 
 #: admin/ogroups/goto/class_termgroup.inc:405
 #: admin/systems/class_terminalGeneric.inc:41
-#: admin/ogroups/goto/termgroup.tpl.c:29
 msgid "Root server"
 msgstr "Serveur Primaire"
 
 #: admin/ogroups/goto/class_termgroup.inc:406
 #: admin/systems/class_terminalGeneric.inc:47
-#: admin/ogroups/goto/termgroup.tpl.c:35
 msgid "Swap server"
-msgstr "Serveur de Swap"
+msgstr "Serveur de swap"
 
 #: admin/systems/class_terminalStartup.inc:63
 msgid "Startup parameters"
@@ -163,19 +160,19 @@ msgstr "Paramètres de démarrage"
 
 #: admin/systems/class_terminalStartup.inc:66
 msgid "Boot kernel"
-msgstr "Kernel utilisé au démarrage"
+msgstr "Noyau utilisé au démarrage"
 
 #: admin/systems/class_terminalStartup.inc:66
 msgid "Linux kernel to be installed and booted"
-msgstr "Kernel linux à installer et à demarrer"
+msgstr "Noyau Linux à installer et à démarrer"
 
 #: admin/systems/class_terminalStartup.inc:70
 msgid "Boot kernel parameters"
-msgstr "Paramètres de demarrage pour ce kernel"
+msgstr "Paramètres de démarrage du noyau"
 
 #: admin/systems/class_terminalStartup.inc:70
 msgid "Linux kernel parameters to be ran"
-msgstr "Paramètres de démarrage pour ce kernel"
+msgstr "Paramètres de démarrage à passer au noyau Linux"
 
 #: admin/systems/class_terminalStartup.inc:82
 msgid "Startup"
@@ -199,7 +196,7 @@ msgstr "Serveur verrouillé"
 
 #: admin/systems/system-list.xml:30
 msgid "Locked workstation"
-msgstr "Ordinateur verrouillé"
+msgstr "Station de travail verrouillée"
 
 #: admin/systems/system-list.xml:38
 msgid "Locked terminal"
@@ -223,7 +220,7 @@ msgstr "Modèle de terminal"
 
 #: admin/systems/system-list.xml:79
 msgid "Winstation"
-msgstr "Pc Windows"
+msgstr "PC Windows"
 
 #: admin/systems/system-list.xml:87 admin/systems/system-list.xml:234
 #: admin/systems/class_systemImport.inc:169
@@ -238,7 +235,7 @@ msgstr "Serveur"
 #: admin/systems/class_workstationGeneric.inc:464
 #: admin/systems/class_SelectDeviceType.inc:58
 msgid "Workstation"
-msgstr "Stations de travail"
+msgstr "Station de travail"
 
 #: admin/systems/system-list.xml:103 admin/systems/system-list.xml:250
 #: admin/systems/class_terminalGeneric.inc:86
@@ -284,8 +281,6 @@ msgstr "IPMI"
 #: admin/systems/class_mobilePhoneGeneric.inc:63
 #: admin/systems/phoneSelect/phoneSelect-list.xml:48
 #: admin/systems/services/shares/class_serviceShare.inc:52
-#: admin/systems/system-filter.tpl.c:32
-#: admin/systems/phoneSelect/phoneSelect-filter.tpl.c:11
 msgid "Name"
 msgstr "Nom"
 
@@ -305,7 +300,6 @@ msgstr "MAC"
 #: admin/systems/class_mobilePhoneGeneric.inc:67
 #: admin/systems/serverService-list.xml:35
 #: admin/systems/services/shares/class_serviceShare.inc:56
-#: admin/systems/printer.tpl.c:8 admin/systems/printer.tpl.c:17
 msgid "Description"
 msgstr "Description"
 
@@ -333,11 +327,11 @@ msgstr "Créer"
 
 #: admin/systems/system-list.xml:258
 msgid "winStation"
-msgstr "Pc Windows"
+msgstr "PC Windows"
 
 #: admin/systems/system-list.xml:266
 msgid "Network printer"
-msgstr "Imprimante réseaux"
+msgstr "Imprimante réseau"
 
 #: admin/systems/system-list.xml:282
 #: admin/systems/class_componentGeneric.inc:41
@@ -347,7 +341,7 @@ msgstr "Périphérique réseau"
 
 #: admin/systems/system-list.xml:290
 msgid "Mobile Phone"
-msgstr "Téléphone mobile"
+msgstr "Téléphone portable"
 
 #: admin/systems/system-list.xml:310
 msgid "Trigger action"
@@ -362,17 +356,16 @@ msgid "Activate systems"
 msgstr "Activer un système"
 
 #: admin/systems/system-list.xml:337 admin/systems/serverService-list.xml:69
-#: admin/systems/printer.tpl.c:35
 msgid "Remove"
 msgstr "Supprimer"
 
 #: admin/systems/system-list.xml:367
 msgid "Create ISO"
-msgstr "Créer un image ISO"
+msgstr "Créer une image ISO"
 
 #: admin/systems/system-list.xml:379
 msgid "Edit role"
-msgstr "Editer un rôle"
+msgstr "Éditer un rôle"
 
 #: admin/systems/system-list.xml:392
 msgid "Remove system"
@@ -402,7 +395,7 @@ msgstr "Réveiller"
 #: admin/systems/class_workstationGeneric.inc:144
 #: admin/systems/class_printGeneric.inc:604
 msgid "workstation"
-msgstr "stations de travail"
+msgstr "station de travail"
 
 #: admin/systems/class_workstationGeneric.inc:151
 #: admin/systems/class_componentGeneric.inc:61
@@ -428,17 +421,17 @@ msgstr "Lieu"
 #: admin/systems/class_workstationGeneric.inc:167
 #, php-format
 msgid "The location of the %s"
-msgstr "L'emplacement de %s"
+msgstr "L'emplacement de ce %s"
 
 #: admin/systems/class_workstationGeneric.inc:173
 #, php-format
 msgid "Lock this %s"
-msgstr "Verrouiller %s"
+msgstr "Verrouiller ce %s"
 
 #: admin/systems/class_workstationGeneric.inc:174
 #, php-format
 msgid "This will prevent the %s from being reinstalled"
-msgstr "Ceci empêchera %s d'être réinstallé"
+msgstr "Ceci empêchera ce %s d'être réinstallé"
 
 #: admin/systems/class_workstationGeneric.inc:185
 msgid "Servers"
@@ -447,7 +440,7 @@ msgstr "Serveurs"
 #: admin/systems/class_workstationGeneric.inc:190
 #, php-format
 msgid "The syslog server the %s should be using"
-msgstr "Le serveur de logs que %s devrait utiliser"
+msgstr "Le serveur de logs que ce %s devrait utiliser"
 
 #: admin/systems/class_workstationGeneric.inc:195
 msgid "Inherit NTP servers"
@@ -464,15 +457,15 @@ msgstr "Serveurs NTP"
 #: admin/systems/class_workstationGeneric.inc:203
 #, php-format
 msgid "The NTP servers for the %s"
-msgstr "Les serveurs NTP pour %s"
+msgstr "Les serveurs NTP pour ce %s"
 
 #: admin/systems/class_workstationGeneric.inc:209
 msgid "Inherit LDAP servers"
-msgstr "Hériter des serveurs ldap"
+msgstr "Hériter les serveurs LDAP"
 
 #: admin/systems/class_workstationGeneric.inc:210
 msgid "Inherit LDAP server attributes from ogroup"
-msgstr "Hérite des serveurs ldap depuis l'object group"
+msgstr "Hérite des serveurs LDAP du groupe d’objet"
 
 #: admin/systems/class_workstationGeneric.inc:216
 msgid "LDAP servers"
@@ -481,16 +474,14 @@ msgstr "Serveurs LDAP"
 #: admin/systems/class_workstationGeneric.inc:217
 #, php-format
 msgid "The LDAP servers for the %s"
-msgstr "Les serveurs LDAP pour %s"
+msgstr "Les serveurs LDAP pour ce %s"
 
 #: admin/systems/class_workstationGeneric.inc:225
 #: admin/systems/class_workstationGeneric.inc:229
-#: admin/ogroups/goto/termgroup.tpl.c:41
 msgid "Action"
 msgstr "Action"
 
 #: admin/systems/class_workstationGeneric.inc:230
-#: admin/ogroups/goto/termgroup.tpl.c:44
 msgid "Select action to execute for this terminal"
 msgstr "Sélectionnez l'opération à exécuter sur le terminal"
 
@@ -507,7 +498,6 @@ msgstr "Paramètres réseaux"
 #: admin/systems/class_componentGeneric.inc:36
 #: admin/systems/class_mobilePhoneGeneric.inc:36
 #: admin/systems/services/ntp/class_serviceNTP.inc:43
-#: admin/ogroups/goto/termgroup.tpl.c:8
 msgid "Generic"
 msgstr "Informations"
 
@@ -622,14 +612,14 @@ msgstr "terminal"
 msgid "Object is no printer!"
 msgstr "L'objet n'est pas une Imprimante !"
 
-#: admin/systems/class_printGeneric.inc:767 admin/systems/printer.tpl.c:23
+#: admin/systems/class_printGeneric.inc:767
 msgid "Printer URL"
 msgstr "URL de l'imprimante"
 
 #: admin/systems/class_printGeneric.inc:989
 #: admin/systems/class_printGeneric.inc:991
 msgid "Group"
-msgstr "Groupes"
+msgstr "Groupe"
 
 #: admin/systems/class_printGeneric.inc:994
 msgid "User"
@@ -640,9 +630,6 @@ msgid "Print generic"
 msgstr "Imprimante générique"
 
 #: admin/systems/class_printGeneric.inc:1023
-#: admin/systems/serverService-list.tpl.c:2
-#: admin/systems/phoneSelect/phoneSelect-list.tpl.c:2
-#: admin/systems/printer.tpl.c:11
 msgid "Base"
 msgstr "Base"
 
@@ -652,9 +639,9 @@ msgstr "URL de l'imprimante"
 
 #: admin/systems/class_printGeneric.inc:1027
 msgid "Printer PPD"
-msgstr "PPD de  l'Imprimante"
+msgstr "PPD de  l'imprimante"
 
-#: admin/systems/class_printGeneric.inc:1028 admin/systems/printer.tpl.c:38
+#: admin/systems/class_printGeneric.inc:1028
 msgid "Permissions"
 msgstr "Permissions"
 
@@ -666,19 +653,19 @@ msgstr "Fichier INF Windows"
 msgid "Windows driver dir"
 msgstr "Répertoire du pilote d'imprimante"
 
-#: admin/systems/class_printGeneric.inc:1032 admin/systems/printer.tpl.c:62
+#: admin/systems/class_printGeneric.inc:1032
 msgid "Driver printer name"
 msgstr "Nom du driver d'imprimante"
 
 #: admin/systems/class_printGeneric.inc:1048
 #: admin/systems/class_printGeneric.inc:1070
 msgid "Permission error"
-msgstr "Erreur de permissions"
+msgstr "Erreur de permission"
 
 #: admin/systems/class_printGeneric.inc:1048
 #: admin/systems/class_printGeneric.inc:1070
 msgid "printer user"
-msgstr "utilisateur de l'Imprimante"
+msgstr "utilisateur de l'imprimante"
 
 #: admin/systems/class_printGeneric.inc:1065
 #, php-format
@@ -701,11 +688,11 @@ msgstr "Services serveur"
 
 #: admin/systems/class_serverService.inc:332
 msgid "Filter error"
-msgstr "Erreur de Filtre"
+msgstr "Erreur de filtre"
 
 #: admin/systems/class_serverService.inc:332
 msgid "The filter is incomplete!"
-msgstr "Le filtre est incomplet !"
+msgstr "Le filtre est incomplet !"
 
 #: admin/systems/class_serverService.inc:387
 msgid "Information"
@@ -1225,8 +1212,6 @@ msgid "You need to configure encodings first"
 msgstr "Vous devez configurer en premier l'encodage"
 
 #: admin/systems/services/shares/class_serviceShare.inc:110
-#: admin/ogroups/goto/termgroup.tpl.c:2 admin/systems/remove.tpl.c:2
-#: admin/systems/ppd/remove_ppd.tpl.c:2
 msgid "Warning"
 msgstr "Avertissement"
 
@@ -1529,372 +1514,3 @@ msgstr "Nom affiché de l'encodage"
 #: config/systems/class_systemsPluginConfig.inc:101
 msgid "Encodings"
 msgstr "Encodages"
-
-#: admin/ogroups/goto/termgroup.tpl.c:5
-msgid ""
-"Actions you choose here influence all systems in this object group. "
-"Additionally, all values editable here can be inherited by the clients "
-"assigned to this object group."
-msgstr "Les actions que vous choisissez ici influencent tout les systèmes dans ce groupe d'objet. De plus tout les valeurs éditables ici peuvent être hérité par les clients assigné à ce groupe d'objets."
-
-#: admin/ogroups/goto/termgroup.tpl.c:11
-msgid "NTP server"
-msgstr "Serveur NTP"
-
-#: admin/ogroups/goto/termgroup.tpl.c:14
-msgid "Choose server to use for synchronizing time"
-msgstr "Sélectionnez le serveur pour la synchronisation du temps"
-
-#: admin/ogroups/goto/termgroup.tpl.c:20
-msgid "Select terminal mode"
-msgstr "Sélectionnez le mode du terminal"
-
-#: admin/ogroups/goto/termgroup.tpl.c:26
-msgid "Choose server to use for logging"
-msgstr "Sélectionnez le serveur de journaux à utiliser"
-
-#: admin/ogroups/goto/termgroup.tpl.c:32
-msgid "Select NFS root filesystem to use"
-msgstr "Sélectionnez le système de fichier racine NFS à utiliser"
-
-#: admin/ogroups/goto/termgroup.tpl.c:38
-msgid "Choose NFS filesystem to place swap files on"
-msgstr "Sélectionnez le système de fichier NFS où sera placé le swap"
-
-#: admin/ogroups/goto/termgroup.tpl.c:47
-msgid "Execute"
-msgstr "Exécuter"
-
-#: admin/systems/network.tpl.c:2
-msgid "Network  settings"
-msgstr "Configuration réseau"
-
-#: admin/systems/network.tpl.c:5
-msgid "IP-address"
-msgstr "Adresse IP"
-
-#: admin/systems/network.tpl.c:8 admin/systems/network.tpl.c:11
-msgid "Propose ip"
-msgstr "Proposer une adresse ip"
-
-#: admin/systems/network.tpl.c:14
-msgid "MAC-address"
-msgstr "Adresse MAC"
-
-#: admin/systems/network.tpl.c:17
-msgid "Autodetect"
-msgstr "Autodétection"
-
-#: admin/systems/network.tpl.c:20 admin/systems/network.tpl.c:23
-msgid "Enable DHCP for this device"
-msgstr "Activer le DHCP pour ce périphérique"
-
-#: admin/systems/network.tpl.c:26 admin/systems/network.tpl.c:50
-msgid "not configured"
-msgstr "non configuré"
-
-#: admin/systems/network.tpl.c:29
-msgid "Parent node"
-msgstr "Noeud Père"
-
-#: admin/systems/network.tpl.c:32
-msgid "Edit settings"
-msgstr "Editer les paramètres"
-
-#: admin/systems/network.tpl.c:35 admin/systems/network.tpl.c:47
-msgid "Enable DNS for this device"
-msgstr "Activer le DNS pour ce périphérique"
-
-#: admin/systems/network.tpl.c:38
-msgid "Zone"
-msgstr "Zone"
-
-#: admin/systems/network.tpl.c:41
-msgid "TTL"
-msgstr "TTL"
-
-#: admin/systems/network.tpl.c:44
-msgid "Dns records"
-msgstr "Enregistrement dns"
-
-#: admin/systems/password.tpl.c:2
-msgid ""
-"To change the terminal root password use the fields below. The changes take "
-"effect during the next reboot. Please memorize the new password, because you"
-" wouldn't be able to log in."
-msgstr "Pour changer le mot de passe root du terminal, utilisez le champ ci-dessous. Les changements prennent effet immédiatement. Veuillez mémoriser le nouveau mot de passe sinon vous ne pourrez pas vous identifier sans celui-ci."
-
-#: admin/systems/password.tpl.c:5
-msgid "Leave fields blank for password inheritance from default entries."
-msgstr "Laissez le champ vide pour le mot de passe afin de l'obtenir depuis l'entrée par défaut."
-
-#: admin/systems/password.tpl.c:8
-msgid "Changing the password impinges on authentification only."
-msgstr "Changer le mot de passe influe seulement sur l'authentification."
-
-#: admin/systems/password.tpl.c:11
-msgid "New password"
-msgstr "Nouveau mot de passe"
-
-#: admin/systems/password.tpl.c:14
-msgid "Repeat new password"
-msgstr "Confirmation du nouveau mot de passe"
-
-#: admin/systems/password.tpl.c:17
-msgid "Password strength"
-msgstr "Niveau de sécurité du mot de passe"
-
-#: admin/systems/password.tpl.c:20
-msgid "Set password"
-msgstr "Attribuer le mot de passe"
-
-#: admin/systems/server_import.tpl.c:2
-msgid ""
-"Warning : Once you import your OPSI hosts into FusionDirectory, they will be"
-" managed by it, so if you delete them or deactivate their OPSI tab, they "
-"will be removed from OPSI."
-msgstr "Attention: Une fois que vous importez vos hôtes OPSI dans FusionDirectory, ils seront gérés par lui, donc si vous supprimez ou désactivez leur onglet OPSI, ils seront retirés de OPSI."
-
-#: admin/systems/gencd.tpl.c:2
-msgid "CD-Install-Image generation"
-msgstr "Génération d'une image d'installation"
-
-#: admin/systems/gencd.tpl.c:5
-msgid ""
-"This option enables you to generate FAI install CD images for the selected "
-"workstation. The procedure may take about 10 minutes to complete, so please "
-"be patient after pressing the 'Create ISO-Image' button."
-msgstr "Cette option permet de créer des images d'installation FAI pour le poste de travail sélectionné. La procédure peut mettre 10 minutes pour se terminer, veuillez être patient après avoir cliquer sur  'Créer une image ISO'."
-
-#: admin/systems/gencd.tpl.c:8
-msgid "Create ISO-Image"
-msgstr "Créer une image iso"
-
-#: admin/systems/remove.tpl.c:5
-msgid ""
-"This includes all account data, system access rules, imap settings, etc. for"
-" this user. Please double check if your really want to do this since there "
-"is no way for FusionDirectory to get your data back."
-msgstr "Cela inclut toutes les données des comptes, les droits d'accès, la configuration imap,etc. pour cet utilisateur. Veuillez vous assurez que vous voulez effectuez cette opération étant donné qu'il est impossible pour FusionDirectory de récupérer vos données."
-
-#: admin/systems/remove.tpl.c:8
-msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr "D'accord - si vous êtes sur - cliquez sur 'Supprimer' pour continuer ou sur 'Annuler' pour abandonner."
-
-#: admin/systems/system-filter.tpl.c:2
-#: admin/systems/phoneSelect/phoneSelect-filter.tpl.c:2
-msgid "Filter"
-msgstr "Filtre"
-
-#: admin/systems/system-filter.tpl.c:5
-msgid "Show servers"
-msgstr "Serveurs"
-
-#: admin/systems/system-filter.tpl.c:8
-msgid "Show workstations"
-msgstr "Stations de travail"
-
-#: admin/systems/system-filter.tpl.c:11
-msgid "Show terminals"
-msgstr "Terminaux"
-
-#: admin/systems/system-filter.tpl.c:14
-msgid "Show network printer"
-msgstr "Imprimantes réseaux"
-
-#: admin/systems/system-filter.tpl.c:17
-#: admin/systems/phoneSelect/phoneSelect-filter.tpl.c:5
-msgid "Show phones"
-msgstr "Téléphones"
-
-#: admin/systems/system-filter.tpl.c:20
-msgid "Show windows based workstations"
-msgstr "PC Windows"
-
-#: admin/systems/system-filter.tpl.c:23
-msgid "Show network devices"
-msgstr "Périphériques réseau"
-
-#: admin/systems/system-filter.tpl.c:26
-#: admin/systems/phoneSelect/phoneSelect-filter.tpl.c:8
-msgid "Show mobile phones"
-msgstr "Montrer les téléphones mobiles"
-
-#: admin/systems/system-filter.tpl.c:29
-msgid "Show IPMI interfaces"
-msgstr "Montrer les interfaces IPMI"
-
-#: admin/systems/ppd/printerPPDSelectionDialog.tpl.c:2
-msgid "Select objects to add"
-msgstr "Sélectionnez les objets à ajouter"
-
-#: admin/systems/ppd/printerPPDSelectionDialog.tpl.c:5
-msgid "Filters"
-msgstr "Filtres"
-
-#: admin/systems/ppd/printerPPDSelectionDialog.tpl.c:8
-msgid "Display objects matching"
-msgstr "Afficher les objets correspondants"
-
-#: admin/systems/ppd/printerPPDSelectionDialog.tpl.c:11
-msgid "Regular expression for matching object names"
-msgstr "Expression régulière pour trouver les objets correspondants"
-
-#: admin/systems/ppd/printerPPDSelectionDialog.tpl.c:14
-msgid "Close"
-msgstr "Fermer"
-
-#: admin/systems/ppd/printerPPDDialog.tpl.c:2
-msgid "Printer driver"
-msgstr "Pilote d'imprimante"
-
-#: admin/systems/ppd/printerPPDDialog.tpl.c:5
-msgid "Model"
-msgstr "Modèle"
-
-#: admin/systems/ppd/printerPPDDialog.tpl.c:8
-msgid "Select"
-msgstr "Sélectionner"
-
-#: admin/systems/ppd/printerPPDDialog.tpl.c:11
-msgid "New driver"
-msgstr "Nouveau pilote"
-
-#: admin/systems/ppd/printerPPDDialog.tpl.c:14
-msgid "Upload"
-msgstr "Télécharger"
-
-#: admin/systems/ppd/printerPPDDialog.tpl.c:17
-msgid "Options"
-msgstr "Options"
-
-#: admin/systems/ppd/remove_ppd.tpl.c:5
-msgid "The ppd file will be removed from the server and can not be restored."
-msgstr "Le fichier ppd sera effacé du serveur et ne pourra pas être récupéré."
-
-#: admin/systems/printer.tpl.c:2
-msgid "General"
-msgstr "Général"
-
-#: admin/systems/printer.tpl.c:5
-msgid "Printer name"
-msgstr "Nom de l'imprimante"
-
-#: admin/systems/printer.tpl.c:14
-msgid "Details"
-msgstr "Détails"
-
-#: admin/systems/printer.tpl.c:20
-msgid "Printer location"
-msgstr "Localisation de l'imprimante"
-
-#: admin/systems/printer.tpl.c:26
-msgid "PPD Provider"
-msgstr "Fournisseur de PPD"
-
-#: admin/systems/printer.tpl.c:29
-msgid "Driver"
-msgstr "Pilote"
-
-#: admin/systems/printer.tpl.c:32
-msgid "Edit"
-msgstr "Editer"
-
-#: admin/systems/printer.tpl.c:41
-msgid "Users which are allowed to use this printer"
-msgstr "Utilisateurs qui sont autorisés à utiliser cette imprimante"
-
-#: admin/systems/printer.tpl.c:44
-msgid "Users"
-msgstr "Utilisateurs"
-
-#: admin/systems/printer.tpl.c:47
-msgid "Users which are allowed to administrate this printer"
-msgstr "Utilisateur qui sont autorisés à administrer cette imprimante"
-
-#: admin/systems/printer.tpl.c:50
-msgid "Admins"
-msgstr "Administrateurs"
-
-#: admin/systems/printer.tpl.c:53
-msgid "Windows paths"
-msgstr "Répertoires Windows"
-
-#: admin/systems/printer.tpl.c:56
-msgid "Printer windows inf file"
-msgstr "Fichier INF Windows"
-
-#: admin/systems/printer.tpl.c:59
-msgid "Printer driver directory"
-msgstr "Répertoire du pilote d'imprimante"
-
-#: admin/systems/gencd_frame.tpl.c:2
-msgid "Your browser does not supprt iframes."
-msgstr "Votre navigateur ne supporte pas les iframes."
-
-#: admin/systems/services/cups/serviceCUPS.tpl.c:2
-msgid "Print Service"
-msgstr "Services d'impression"
-
-#: admin/systems/services/cups/serviceCUPS.tpl.c:5
-msgid "enabled"
-msgstr "activé"
-
-#: admin/systems/services/ServiceAddDialog.tpl.c:2
-msgid "Adding a new service to the current server"
-msgstr "Ajouter un nouveau service au serveur sélectionné"
-
-#: admin/systems/services/ServiceAddDialog.tpl.c:5
-msgid ""
-"This dialog allows you to add new services to the currenty edited server "
-"object. The box below shows all available but not already used services."
-msgstr "Cette boite de dialogue vous permet d'ajouter des nouveaux services au serveur que vous éditez actuellement. Le cadre si dessous vous montre tout les services disponibles mais pas encore utilisés."
-
-#: admin/systems/services/ServiceAddDialog.tpl.c:8
-msgid "Service to add"
-msgstr "Service à ajouter"
-
-#: admin/systems/services/ServiceAddDialog.tpl.c:11
-msgid "All available services are already in use."
-msgstr "Tout les services disponibles sont déjà utilisés."
-
-#: admin/systems/services/ServiceAddDialog.tpl.c:14
-#: admin/systems/SelectDeviceType.tpl.c:26
-msgid "Continue"
-msgstr "Continuer"
-
-#: admin/systems/SelectDeviceType.tpl.c:2
-msgid ""
-"This system has no system type configured. Please choose a system type for "
-"this object and an optional inheritance group. Press the 'continue' button "
-"to proceed."
-msgstr "Ce système n'a pas de type de système configuré. S'il vous plaît choisissez un type de système pourcet objet et un héritage de groupe facultatif. Appuyez sur le bouton 'Continuer' pour continuer."
-
-#: admin/systems/SelectDeviceType.tpl.c:5
-msgid ""
-"Please select a system type and an optional bundle of predefined settings to"
-" be inherited."
-msgstr "Veuillez sélectionner un type de système et éventuellement d'un ensemble de paramètres à hériter."
-
-#: admin/systems/SelectDeviceType.tpl.c:8
-msgid ""
-"Please select a system type and a bundle of predefined settings to be "
-"inherited."
-msgstr "Veuillez sélectionner un type de système et d'un ensemble de paramètres à hériter."
-
-#: admin/systems/SelectDeviceType.tpl.c:11
-#: admin/systems/SelectDeviceType.tpl.c:14
-msgid "System type"
-msgstr "Type de système"
-
-#: admin/systems/SelectDeviceType.tpl.c:17
-msgid "Choose an object group as template"
-msgstr "Choisissez un groupe d'objets comme modèles"
-
-#: admin/systems/SelectDeviceType.tpl.c:20
-msgid "Object group"
-msgstr "Groupes d'objets"
-
-#: admin/systems/SelectDeviceType.tpl.c:23
-msgid "none"
-msgstr "aucun"

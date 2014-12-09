@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-08-18 16:07+0200\n"
-"PO-Revision-Date: 2014-08-28 10:47+0000\n"
+"POT-Creation-Date: 2014-12-03 17:22+0100\n"
+"PO-Revision-Date: 2014-12-03 16:52+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/FusionDirectory-108/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -73,12 +73,8 @@ msgid "Sudo role"
 msgstr "Ruolo Sudo"
 
 #: admin/sudo/class_sudoGeneric.inc:102
-msgid "Generic"
-msgstr "Informazioni"
-
-#: admin/sudo/class_sudoGeneric.inc:102
-msgid "global defaults"
-msgstr "Parametri globali di default"
+msgid "Role settings"
+msgstr ""
 
 #: admin/sudo/class_sudoGeneric.inc:107
 msgid "Name"
@@ -132,30 +128,6 @@ msgstr "Utenti e gruppi"
 msgid ""
 "A user name, user ID (prefixed with '#'), Unix group (prefixed with '%')"
 msgstr "Un nome utente, ID utente (prefissato da '#'), gruppo Unix (prefissato da '%')"
-
-#: admin/sudo/class_sudoGeneric.inc:144
-msgid "System trust"
-msgstr "Sistema di fiducia"
-
-#: admin/sudo/class_sudoGeneric.inc:148
-msgid "Trust mode"
-msgstr "Modalità di fiducia"
-
-#: admin/sudo/class_sudoGeneric.inc:148
-msgid "Trust mode for the role"
-msgstr "Modalità di fiducia per il ruolo"
-
-#: admin/sudo/class_sudoGeneric.inc:152
-msgid "disabled"
-msgstr "disattivato"
-
-#: admin/sudo/class_sudoGeneric.inc:152
-msgid "full access"
-msgstr "accesso completo"
-
-#: admin/sudo/class_sudoGeneric.inc:152
-msgid "allow access to these hosts"
-msgstr "autorizza l'accesso a questi host"
 
 #: config/sudo/class_sudoConfig.inc:28
 msgid "Sudo configuration"

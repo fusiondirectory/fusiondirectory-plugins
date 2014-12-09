@@ -3,6 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Anne Nicolas <ennael1@gmail.com>, 2014
 # gallak <antoine.gallavardin@free.fr>, 2013
 # Benoit Mortier <benoit.mortier@opensides.be>, 2008-2011
 # fusiondirectory <contact@fusiondirectory.org>, 2013
@@ -14,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-08-18 16:07+0200\n"
-"PO-Revision-Date: 2014-08-28 10:52+0000\n"
+"POT-Creation-Date: 2014-12-03 17:22+0100\n"
+"PO-Revision-Date: 2014-12-09 09:11+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory-108/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -36,7 +37,7 @@ msgstr "L'option sudo '%s' est non valide !"
 #: admin/sudo/class_sudoOption.inc:276
 #, php-format
 msgid "%s (%s)"
-msgstr ""
+msgstr "%s (%s)"
 
 #: admin/sudo/class_sudoOption.inc:479
 msgid "Available options"
@@ -75,12 +76,8 @@ msgid "Sudo role"
 msgstr "Rôle sudo"
 
 #: admin/sudo/class_sudoGeneric.inc:102
-msgid "Generic"
-msgstr "Informations"
-
-#: admin/sudo/class_sudoGeneric.inc:102
-msgid "global defaults"
-msgstr "Paramètres globaux par défaut"
+msgid "Role settings"
+msgstr ""
 
 #: admin/sudo/class_sudoGeneric.inc:107
 msgid "Name"
@@ -134,30 +131,6 @@ msgstr "Utilisateurs et groupes"
 msgid ""
 "A user name, user ID (prefixed with '#'), Unix group (prefixed with '%')"
 msgstr "Un nom d'utilisateur, ID utilisateur (préfixé par '#'), Unix groupe (préfixés par '%')"
-
-#: admin/sudo/class_sudoGeneric.inc:144
-msgid "System trust"
-msgstr "Système de Confiance"
-
-#: admin/sudo/class_sudoGeneric.inc:148
-msgid "Trust mode"
-msgstr "Mode de confiance"
-
-#: admin/sudo/class_sudoGeneric.inc:148
-msgid "Trust mode for the role"
-msgstr "Mode de confiance pour le rôle"
-
-#: admin/sudo/class_sudoGeneric.inc:152
-msgid "disabled"
-msgstr "désactivé"
-
-#: admin/sudo/class_sudoGeneric.inc:152
-msgid "full access"
-msgstr "accès complet"
-
-#: admin/sudo/class_sudoGeneric.inc:152
-msgid "allow access to these hosts"
-msgstr "permettre l'accès a ces hôtes"
 
 #: config/sudo/class_sudoConfig.inc:28
 msgid "Sudo configuration"

@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-08-18 16:07+0200\n"
-"PO-Revision-Date: 2014-08-28 10:50+0000\n"
+"POT-Creation-Date: 2014-12-03 17:22+0100\n"
+"PO-Revision-Date: 2014-12-03 16:46+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/FusionDirectory-108/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -38,7 +38,7 @@ msgid "Quotas for the shares this server hosts"
 msgstr "Quote delle condivisioni ospitate su questo server"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:51
-#: personal/quota/class_quotaAccount.inc:164
+#: personal/quota/class_quotaAccount.inc:129
 msgid "Device"
 msgstr "Dispositivi"
 
@@ -172,82 +172,62 @@ msgstr "Valore non valido in codifiche : %s"
 msgid "(%s by %s)"
 msgstr "(%s di %s)"
 
-#: personal/quota/class_quotaAccount.inc:136
+#: personal/quota/class_quotaAccount.inc:101
 msgid "Quota"
 msgstr "Quota"
 
-#: personal/quota/class_quotaAccount.inc:137
+#: personal/quota/class_quotaAccount.inc:102
 msgid "Plugin for quota support"
 msgstr "Plugin per l'uso di Quota"
 
-#: personal/quota/class_quotaAccount.inc:150
-msgid "B"
-msgstr "B"
-
-#: personal/quota/class_quotaAccount.inc:150
-msgid "KB"
-msgstr "KB"
-
-#: personal/quota/class_quotaAccount.inc:150
-msgid "MB"
-msgstr "MB"
-
-#: personal/quota/class_quotaAccount.inc:150
-msgid "GB"
-msgstr "GB"
-
-#: personal/quota/class_quotaAccount.inc:150
-msgid "TB"
-msgstr "TB"
-
-#: personal/quota/class_quotaAccount.inc:155
+#: personal/quota/class_quotaAccount.inc:120
 msgid "Quota informations"
 msgstr "Informazioni sulla quota"
 
-#: personal/quota/class_quotaAccount.inc:160
+#: personal/quota/class_quotaAccount.inc:125
 msgid "Quota informations for this user"
 msgstr "Informazioni sulla quota di questo utente"
 
-#: personal/quota/class_quotaAccount.inc:164
+#: personal/quota/class_quotaAccount.inc:129
 msgid "Device this quota is for"
 msgstr "Dispositivo interessato da questa quota"
 
-#: personal/quota/class_quotaAccount.inc:168
+#: personal/quota/class_quotaAccount.inc:133
 msgid "Block soft limit"
 msgstr "Dimensione limite del blocco"
 
-#: personal/quota/class_quotaAccount.inc:168
+#: personal/quota/class_quotaAccount.inc:133
 msgid "Soft limit for the block the user can use"
 msgstr "Limite soft per il blocco che l'utente può utilizzare"
 
-#: personal/quota/class_quotaAccount.inc:174
+#: personal/quota/class_quotaAccount.inc:138
 msgid "Block hard limit"
 msgstr "Dimensione critica del blocco"
 
-#: personal/quota/class_quotaAccount.inc:174
+#: personal/quota/class_quotaAccount.inc:138
 msgid "Hard limit for the block the user can use"
 msgstr "Limite hard per il blocco che l'utente può utilizzare"
 
-#: personal/quota/class_quotaAccount.inc:180
+#: personal/quota/class_quotaAccount.inc:143
 msgid "Inode soft limit"
 msgstr "Numero limite di files"
 
-#: personal/quota/class_quotaAccount.inc:180
+#: personal/quota/class_quotaAccount.inc:143
 msgid "Soft limit for the inodes the user can use"
 msgstr "Limite soft per il gli inodes che l'utente può utilizzare"
 
-#: personal/quota/class_quotaAccount.inc:185
+#: personal/quota/class_quotaAccount.inc:148
 msgid "Inode hard limit"
 msgstr "Numero critico di files"
 
-#: personal/quota/class_quotaAccount.inc:185
+#: personal/quota/class_quotaAccount.inc:148
 msgid "Hard limit for the inodes the user can use"
 msgstr "Limite hard per gli inodes che l'utente può utilizzare"
 
-#: personal/quota/class_quotaAccount.inc:190
+#: personal/quota/class_quotaAccount.inc:153
 msgid "Server"
 msgstr "Server"
 
-#: personal/quota/class_quotaAccount.inc:190
+#: personal/quota/class_quotaAccount.inc:153
 msgid "Server hosting the device this quota is for"
 msgstr "Server che ospita il dispositivo interessato da questa quota"

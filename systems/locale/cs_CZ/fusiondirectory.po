@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-08-18 16:07+0200\n"
-"PO-Revision-Date: 2014-08-28 10:52+0000\n"
+"POT-Creation-Date: 2014-12-03 17:22+0100\n"
+"PO-Revision-Date: 2014-12-09 08:12+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/FusionDirectory-108/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
@@ -123,13 +123,11 @@ msgid "System group"
 msgstr "skupina systému"
 
 #: admin/ogroups/goto/class_termgroup.inc:401
-#: admin/ogroups/goto/termgroup.tpl.c:17
 msgid "Mode"
 msgstr "režim"
 
 #: admin/ogroups/goto/class_termgroup.inc:402
 #: admin/systems/class_workstationGeneric.inc:189
-#: admin/ogroups/goto/termgroup.tpl.c:23
 msgid "Syslog server"
 msgstr ""
 
@@ -143,19 +141,17 @@ msgstr "NTP server"
 
 #: admin/ogroups/goto/class_termgroup.inc:405
 #: admin/systems/class_terminalGeneric.inc:41
-#: admin/ogroups/goto/termgroup.tpl.c:29
 msgid "Root server"
 msgstr ""
 
 #: admin/ogroups/goto/class_termgroup.inc:406
 #: admin/systems/class_terminalGeneric.inc:47
-#: admin/ogroups/goto/termgroup.tpl.c:35
 msgid "Swap server"
 msgstr "stránkovací (swap) server"
 
 #: admin/systems/class_terminalStartup.inc:63
 msgid "Startup parameters"
-msgstr ""
+msgstr "Parametry zavádění systému"
 
 #: admin/systems/class_terminalStartup.inc:66
 msgid "Boot kernel"
@@ -163,11 +159,11 @@ msgstr "zaváděné jádro"
 
 #: admin/systems/class_terminalStartup.inc:66
 msgid "Linux kernel to be installed and booted"
-msgstr ""
+msgstr "Jádro Linux, které má být nainstalováno a zavedeno"
 
 #: admin/systems/class_terminalStartup.inc:70
 msgid "Boot kernel parameters"
-msgstr ""
+msgstr "Parametry zavádění jádra"
 
 #: admin/systems/class_terminalStartup.inc:70
 msgid "Linux kernel parameters to be ran"
@@ -280,8 +276,6 @@ msgstr ""
 #: admin/systems/class_mobilePhoneGeneric.inc:63
 #: admin/systems/phoneSelect/phoneSelect-list.xml:48
 #: admin/systems/services/shares/class_serviceShare.inc:52
-#: admin/systems/system-filter.tpl.c:32
-#: admin/systems/phoneSelect/phoneSelect-filter.tpl.c:11
 msgid "Name"
 msgstr "název"
 
@@ -301,7 +295,6 @@ msgstr ""
 #: admin/systems/class_mobilePhoneGeneric.inc:67
 #: admin/systems/serverService-list.xml:35
 #: admin/systems/services/shares/class_serviceShare.inc:56
-#: admin/systems/printer.tpl.c:8 admin/systems/printer.tpl.c:17
 msgid "Description"
 msgstr "popis"
 
@@ -358,7 +351,6 @@ msgid "Activate systems"
 msgstr "aktivovat systémy"
 
 #: admin/systems/system-list.xml:337 admin/systems/serverService-list.xml:69
-#: admin/systems/printer.tpl.c:35
 msgid "Remove"
 msgstr "odebrat"
 
@@ -385,7 +377,7 @@ msgstr ""
 
 #: admin/systems/class_workstationGeneric.inc:106
 msgid "(Re)Install"
-msgstr ""
+msgstr "(Pře)Instalovat"
 
 #: admin/systems/class_workstationGeneric.inc:107
 msgid "Software update"
@@ -414,7 +406,7 @@ msgstr ""
 #: admin/systems/class_workstationGeneric.inc:161
 #, php-format
 msgid "A short description of the %s"
-msgstr ""
+msgstr "Stručný popis %s"
 
 #: admin/systems/class_workstationGeneric.inc:166
 #: admin/systems/class_printGeneric.inc:1025
@@ -429,7 +421,7 @@ msgstr ""
 #: admin/systems/class_workstationGeneric.inc:173
 #, php-format
 msgid "Lock this %s"
-msgstr ""
+msgstr "Uzamknout toto %s"
 
 #: admin/systems/class_workstationGeneric.inc:174
 #, php-format
@@ -447,7 +439,7 @@ msgstr ""
 
 #: admin/systems/class_workstationGeneric.inc:195
 msgid "Inherit NTP servers"
-msgstr ""
+msgstr "Zdědit NTP servery"
 
 #: admin/systems/class_workstationGeneric.inc:196
 msgid "Inherit time server attributes from ogroup"
@@ -455,7 +447,7 @@ msgstr ""
 
 #: admin/systems/class_workstationGeneric.inc:202
 msgid "NTP servers"
-msgstr ""
+msgstr "NTP servery"
 
 #: admin/systems/class_workstationGeneric.inc:203
 #, php-format
@@ -481,12 +473,10 @@ msgstr ""
 
 #: admin/systems/class_workstationGeneric.inc:225
 #: admin/systems/class_workstationGeneric.inc:229
-#: admin/ogroups/goto/termgroup.tpl.c:41
 msgid "Action"
 msgstr "akce"
 
 #: admin/systems/class_workstationGeneric.inc:230
-#: admin/ogroups/goto/termgroup.tpl.c:44
 msgid "Select action to execute for this terminal"
 msgstr "vyberte akci, která má být spuštěna na terminálu"
 
@@ -503,7 +493,6 @@ msgstr ""
 #: admin/systems/class_componentGeneric.inc:36
 #: admin/systems/class_mobilePhoneGeneric.inc:36
 #: admin/systems/services/ntp/class_serviceNTP.inc:43
-#: admin/ogroups/goto/termgroup.tpl.c:8
 msgid "Generic"
 msgstr "obecné"
 
@@ -618,7 +607,7 @@ msgstr "terminál"
 msgid "Object is no printer!"
 msgstr "Tento objekt není tiskárna!"
 
-#: admin/systems/class_printGeneric.inc:767 admin/systems/printer.tpl.c:23
+#: admin/systems/class_printGeneric.inc:767
 msgid "Printer URL"
 msgstr "adresa (URL) tiskárny"
 
@@ -636,9 +625,6 @@ msgid "Print generic"
 msgstr "tiskárna – obecné"
 
 #: admin/systems/class_printGeneric.inc:1023
-#: admin/systems/serverService-list.tpl.c:2
-#: admin/systems/phoneSelect/phoneSelect-list.tpl.c:2
-#: admin/systems/printer.tpl.c:11
 msgid "Base"
 msgstr "základ"
 
@@ -650,21 +636,21 @@ msgstr ""
 msgid "Printer PPD"
 msgstr "PPD soubor pro tiskárnu"
 
-#: admin/systems/class_printGeneric.inc:1028 admin/systems/printer.tpl.c:38
+#: admin/systems/class_printGeneric.inc:1028
 msgid "Permissions"
 msgstr "oprávnění"
 
 #: admin/systems/class_printGeneric.inc:1030
 msgid "Windows inf file"
-msgstr ""
+msgstr ".inf soubor Windows"
 
 #: admin/systems/class_printGeneric.inc:1031
 msgid "Windows driver dir"
-msgstr ""
+msgstr "Složka ovladače pro Windows"
 
-#: admin/systems/class_printGeneric.inc:1032 admin/systems/printer.tpl.c:62
+#: admin/systems/class_printGeneric.inc:1032
 msgid "Driver printer name"
-msgstr ""
+msgstr "Název ovladače tiskárny"
 
 #: admin/systems/class_printGeneric.inc:1048
 #: admin/systems/class_printGeneric.inc:1070
@@ -684,7 +670,7 @@ msgstr "Neplatný typ člena '%s'!"
 #: admin/systems/class_printGeneric.inc:1105
 #, php-format
 msgid "'%s' is already used!"
-msgstr ""
+msgstr "%s je již použito!"
 
 #: admin/systems/class_printGeneric.inc:1116
 #, php-format
@@ -693,7 +679,7 @@ msgstr "'%s' neexistuje!"
 
 #: admin/systems/class_serverService.inc:58
 msgid "Server services"
-msgstr ""
+msgstr "Služby serveru"
 
 #: admin/systems/class_serverService.inc:332
 msgid "Filter error"
@@ -716,7 +702,7 @@ msgstr "Nemohu aktualizovat stav služby dokud nebude uložena!"
 #: admin/systems/class_serverService.inc:435
 #, php-format
 msgid "Could not get execute action %s on service %s."
-msgstr ""
+msgstr "Nelze spustit akci %s na službě %s."
 
 #: admin/systems/class_terminalGeneric.inc:42
 #, php-format
@@ -861,7 +847,7 @@ msgstr "PPD typu '%s' není podporován! "
 msgid ""
 "Please select a valid ppd file or use 'Cancel' to go back to printer "
 "configuration."
-msgstr ""
+msgstr "Zvolte platný ppd soubor nebo klikněte na Storno pro návrat do nastavení tiskárny"
 
 #: admin/systems/ppd/class_ppdManager.inc:44
 #: admin/systems/ppd/class_ppdManager.inc:188
@@ -937,12 +923,12 @@ msgstr ""
 #: admin/systems/class_systemImport.inc:116
 #, php-format
 msgid "No DHCP server found for ip %s"
-msgstr ""
+msgstr "Pro IP adresu %s nebyl nalezen žádný DHCP server"
 
 #: admin/systems/class_systemImport.inc:130
 #, php-format
 msgid "No DNS server found for zone %s"
-msgstr ""
+msgstr "Pro zónu %s nebyl nalezen žádný DNS server"
 
 #: admin/systems/class_systemImport.inc:165
 msgid "Import"
@@ -966,39 +952,39 @@ msgstr "součástka – obecné"
 
 #: admin/systems/class_componentGeneric.inc:64
 msgid "The name of the component"
-msgstr ""
+msgstr "Název součásti"
 
 #: admin/systems/class_componentGeneric.inc:68
 msgid "A short description of the component"
-msgstr ""
+msgstr "Stručný popis součásti"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:37
 msgid "Mobile phone generic"
-msgstr ""
+msgstr "Číslo obecného mobilního telefonu"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:63
 msgid "The name of the mobile phone"
-msgstr ""
+msgstr "Název mobilního telefonu"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:67
 msgid "A short description of the mobile phone"
-msgstr ""
+msgstr "Stručný popis mobilního telefonu"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:77
 msgid "Serial Number"
-msgstr ""
+msgstr "Sériové číslo"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:77
 msgid "The serial number of the mobile phone"
-msgstr ""
+msgstr "Sériové číslo mobilního telefonu"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:81
 msgid "IMEI Number"
-msgstr ""
+msgstr "IMEI identifikátor"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:81
 msgid "The IMEI number of the mobile phone"
-msgstr ""
+msgstr "IMEI identifikátor mobilního telefonu"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:86
 msgid "OS"
@@ -1006,27 +992,27 @@ msgstr ""
 
 #: admin/systems/class_mobilePhoneGeneric.inc:86
 msgid "The Operating System installed on this phone"
-msgstr ""
+msgstr "Operační systém, nainstalovaný na tomto telefonu"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:92
 msgid "SimCard"
-msgstr ""
+msgstr "SIM karta"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:95
 msgid "Telephone Number"
-msgstr ""
+msgstr "Telefoní číslo"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:95
 msgid "The telephone number of the mobile phone"
-msgstr ""
+msgstr "Telefoní číslo mobilního telefonu"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:99
 msgid "PUK Number"
-msgstr ""
+msgstr "Kód PUK"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:99
 msgid "The PUK number of the simcard in this mobile phone"
-msgstr ""
+msgstr "Kód PUK SIM karty v tomto mobilním telefonu"
 
 #: admin/systems/serverService-list.xml:10
 msgid "List of services"
@@ -1042,7 +1028,7 @@ msgstr "!"
 
 #: admin/systems/serverService-list.xml:89
 msgid "Get status"
-msgstr ""
+msgstr "Zjistit stav"
 
 #: admin/systems/serverService-list.xml:97
 #: admin/systems/services/cups/class_serviceCUPS.inc:92
@@ -1166,7 +1152,7 @@ msgstr "prázdná služba"
 #: admin/systems/services/shares/class_serviceShare.inc:30
 #: admin/systems/services/shares/class_serviceShare.inc:31
 msgid "Share service"
-msgstr ""
+msgstr "Služby sdílení"
 
 #: admin/systems/services/shares/class_serviceShare.inc:43
 msgid "Shares"
@@ -1174,15 +1160,15 @@ msgstr "sdílení"
 
 #: admin/systems/services/shares/class_serviceShare.inc:48
 msgid "Shares this server hosts"
-msgstr ""
+msgstr "Sdílení, která tento server poskytuje"
 
 #: admin/systems/services/shares/class_serviceShare.inc:52
 msgid "Name of this share"
-msgstr ""
+msgstr "Název tohoto sdílení"
 
 #: admin/systems/services/shares/class_serviceShare.inc:56
 msgid "Description of this share"
-msgstr ""
+msgstr "Popis tohoto sdílení"
 
 #: admin/systems/services/shares/class_serviceShare.inc:60
 msgid "Type"
@@ -1190,7 +1176,7 @@ msgstr "typ"
 
 #: admin/systems/services/shares/class_serviceShare.inc:60
 msgid "Type of share"
-msgstr ""
+msgstr "Typ sdílení"
 
 #: admin/systems/services/shares/class_serviceShare.inc:65
 msgid "Codepage"
@@ -1198,11 +1184,11 @@ msgstr "znaková strana"
 
 #: admin/systems/services/shares/class_serviceShare.inc:65
 msgid "Codepage for this share"
-msgstr ""
+msgstr "Typ kódování znaků v názvech na tomto sdílení"
 
 #: admin/systems/services/shares/class_serviceShare.inc:69
 msgid "Path / Volume"
-msgstr ""
+msgstr "Cesta / Svazek"
 
 #: admin/systems/services/shares/class_serviceShare.inc:69
 msgid "Path or volume concerned by this share"
@@ -1221,8 +1207,6 @@ msgid "You need to configure encodings first"
 msgstr ""
 
 #: admin/systems/services/shares/class_serviceShare.inc:110
-#: admin/ogroups/goto/termgroup.tpl.c:2 admin/systems/remove.tpl.c:2
-#: admin/systems/ppd/remove_ppd.tpl.c:2
 msgid "Warning"
 msgstr "varování"
 
@@ -1250,7 +1234,7 @@ msgstr "služba LDAP"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:39
 msgid "LDAP Base"
-msgstr ""
+msgstr "Základ LDAP"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:39
 msgid "The LDAP base to use for this LDAP server"
@@ -1270,15 +1254,15 @@ msgstr ""
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:51
 msgid "Size limit"
-msgstr ""
+msgstr "Limit velikosti"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:51
 msgid "Limit the number of record returned"
-msgstr ""
+msgstr "Omezit počet vypsaných záznamů"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:56
 msgid "Time limit"
-msgstr ""
+msgstr "Časový limit"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:56
 msgid "Time limit for the result to be returned"
@@ -1314,7 +1298,7 @@ msgstr ""
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:74
 msgid "Filepath to tls ca certificate"
-msgstr ""
+msgstr "Umístění souboru s tls certifikátem cert. autority"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:78
 msgid "TLS ReqCert"
@@ -1525,372 +1509,3 @@ msgstr ""
 #: config/systems/class_systemsPluginConfig.inc:101
 msgid "Encodings"
 msgstr ""
-
-#: admin/ogroups/goto/termgroup.tpl.c:5
-msgid ""
-"Actions you choose here influence all systems in this object group. "
-"Additionally, all values editable here can be inherited by the clients "
-"assigned to this object group."
-msgstr ""
-
-#: admin/ogroups/goto/termgroup.tpl.c:11
-msgid "NTP server"
-msgstr ""
-
-#: admin/ogroups/goto/termgroup.tpl.c:14
-msgid "Choose server to use for synchronizing time"
-msgstr "zvolte server, se kterým bude synchronizován čas"
-
-#: admin/ogroups/goto/termgroup.tpl.c:20
-msgid "Select terminal mode"
-msgstr "zvolit režim terminálu"
-
-#: admin/ogroups/goto/termgroup.tpl.c:26
-msgid "Choose server to use for logging"
-msgstr "zvolte server na který budou ukládány záznamy o provozu"
-
-#: admin/ogroups/goto/termgroup.tpl.c:32
-msgid "Select NFS root filesystem to use"
-msgstr ""
-
-#: admin/ogroups/goto/termgroup.tpl.c:38
-msgid "Choose NFS filesystem to place swap files on"
-msgstr ""
-
-#: admin/ogroups/goto/termgroup.tpl.c:47
-msgid "Execute"
-msgstr "spustit"
-
-#: admin/systems/network.tpl.c:2
-msgid "Network  settings"
-msgstr "nastavení  sítě"
-
-#: admin/systems/network.tpl.c:5
-msgid "IP-address"
-msgstr "IP adresa"
-
-#: admin/systems/network.tpl.c:8 admin/systems/network.tpl.c:11
-msgid "Propose ip"
-msgstr "doporučit IP"
-
-#: admin/systems/network.tpl.c:14
-msgid "MAC-address"
-msgstr "MAC adresa"
-
-#: admin/systems/network.tpl.c:17
-msgid "Autodetect"
-msgstr "autodetekce"
-
-#: admin/systems/network.tpl.c:20 admin/systems/network.tpl.c:23
-msgid "Enable DHCP for this device"
-msgstr "dovolit tomuto zařízení využívat DHCP"
-
-#: admin/systems/network.tpl.c:26 admin/systems/network.tpl.c:50
-msgid "not configured"
-msgstr "nenastaveno"
-
-#: admin/systems/network.tpl.c:29
-msgid "Parent node"
-msgstr "nadřazený uzel"
-
-#: admin/systems/network.tpl.c:32
-msgid "Edit settings"
-msgstr "upravit nastavení"
-
-#: admin/systems/network.tpl.c:35 admin/systems/network.tpl.c:47
-msgid "Enable DNS for this device"
-msgstr "dovolit tomuto zařízení využívat DNS"
-
-#: admin/systems/network.tpl.c:38
-msgid "Zone"
-msgstr "zóna"
-
-#: admin/systems/network.tpl.c:41
-msgid "TTL"
-msgstr "TTL"
-
-#: admin/systems/network.tpl.c:44
-msgid "Dns records"
-msgstr "DNS záznamy"
-
-#: admin/systems/password.tpl.c:2
-msgid ""
-"To change the terminal root password use the fields below. The changes take "
-"effect during the next reboot. Please memorize the new password, because you"
-" wouldn't be able to log in."
-msgstr "Pro změnu hesla správce terminálu (root) použijte polí níže. Změna se projeví po jeho restartu. Zapamatujte si prosím nové heslo, protože jinak se nebudete moci přihlásit."
-
-#: admin/systems/password.tpl.c:5
-msgid "Leave fields blank for password inheritance from default entries."
-msgstr "Pokud chcete použít výchozí heslo, ponechte příslušná pole prázdná."
-
-#: admin/systems/password.tpl.c:8
-msgid "Changing the password impinges on authentification only."
-msgstr "Změna hesla se týká pouze ověřování."
-
-#: admin/systems/password.tpl.c:11
-msgid "New password"
-msgstr "nové heslo"
-
-#: admin/systems/password.tpl.c:14
-msgid "Repeat new password"
-msgstr "zopakování nového hesla"
-
-#: admin/systems/password.tpl.c:17
-msgid "Password strength"
-msgstr "odolnost hesla"
-
-#: admin/systems/password.tpl.c:20
-msgid "Set password"
-msgstr "nastavit heslo"
-
-#: admin/systems/server_import.tpl.c:2
-msgid ""
-"Warning : Once you import your OPSI hosts into FusionDirectory, they will be"
-" managed by it, so if you delete them or deactivate their OPSI tab, they "
-"will be removed from OPSI."
-msgstr ""
-
-#: admin/systems/gencd.tpl.c:2
-msgid "CD-Install-Image generation"
-msgstr "vytvoření obrazu instalačního média (CD)"
-
-#: admin/systems/gencd.tpl.c:5
-msgid ""
-"This option enables you to generate FAI install CD images for the selected "
-"workstation. The procedure may take about 10 minutes to complete, so please "
-"be patient after pressing the 'Create ISO-Image' button."
-msgstr ""
-
-#: admin/systems/gencd.tpl.c:8
-msgid "Create ISO-Image"
-msgstr "vytvořit obraz ISO"
-
-#: admin/systems/remove.tpl.c:5
-msgid ""
-"This includes all account data, system access rules, imap settings, etc. for"
-" this user. Please double check if your really want to do this since there "
-"is no way for FusionDirectory to get your data back."
-msgstr "Týká se veškerých informací o této položce v adresáři. Prosím velmi dobře si rozmyslete, zda to opravdu chcete udělat, protože provedené změny už ve FusionDirectory nepůjde vzít nijak jednoduše zpět (nanejvýš složitě ze záloh, pokud existují a obsahují potřebná data)!"
-
-#: admin/systems/remove.tpl.c:8
-msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr "Tedy – pokud jste si jist(a), stiskněte 'smazat'. V opačném případě operaci zrušte pomocí 'zrušit'."
-
-#: admin/systems/system-filter.tpl.c:2
-#: admin/systems/phoneSelect/phoneSelect-filter.tpl.c:2
-msgid "Filter"
-msgstr "filtr"
-
-#: admin/systems/system-filter.tpl.c:5
-msgid "Show servers"
-msgstr "zobrazit servery"
-
-#: admin/systems/system-filter.tpl.c:8
-msgid "Show workstations"
-msgstr "zobrazit pracovní stanice"
-
-#: admin/systems/system-filter.tpl.c:11
-msgid "Show terminals"
-msgstr "zobrazit terminály"
-
-#: admin/systems/system-filter.tpl.c:14
-msgid "Show network printer"
-msgstr "zobrazit síťovou tiskárnu"
-
-#: admin/systems/system-filter.tpl.c:17
-#: admin/systems/phoneSelect/phoneSelect-filter.tpl.c:5
-msgid "Show phones"
-msgstr "zobrazit telefony"
-
-#: admin/systems/system-filter.tpl.c:20
-msgid "Show windows based workstations"
-msgstr "zobraz pracovní stanice s OS MS Windows"
-
-#: admin/systems/system-filter.tpl.c:23
-msgid "Show network devices"
-msgstr "zobrazit síťová zařízení"
-
-#: admin/systems/system-filter.tpl.c:26
-#: admin/systems/phoneSelect/phoneSelect-filter.tpl.c:8
-msgid "Show mobile phones"
-msgstr ""
-
-#: admin/systems/system-filter.tpl.c:29
-msgid "Show IPMI interfaces"
-msgstr ""
-
-#: admin/systems/ppd/printerPPDSelectionDialog.tpl.c:2
-msgid "Select objects to add"
-msgstr "vyberte objekty, které budou přidány"
-
-#: admin/systems/ppd/printerPPDSelectionDialog.tpl.c:5
-msgid "Filters"
-msgstr "filtry"
-
-#: admin/systems/ppd/printerPPDSelectionDialog.tpl.c:8
-msgid "Display objects matching"
-msgstr "zobrazit odpovídající objekty"
-
-#: admin/systems/ppd/printerPPDSelectionDialog.tpl.c:11
-msgid "Regular expression for matching object names"
-msgstr "regulární výraz pro hledání objektů s odpovídajícími názvy"
-
-#: admin/systems/ppd/printerPPDSelectionDialog.tpl.c:14
-msgid "Close"
-msgstr "zavřít"
-
-#: admin/systems/ppd/printerPPDDialog.tpl.c:2
-msgid "Printer driver"
-msgstr "ovladač tiskárny"
-
-#: admin/systems/ppd/printerPPDDialog.tpl.c:5
-msgid "Model"
-msgstr "typ"
-
-#: admin/systems/ppd/printerPPDDialog.tpl.c:8
-msgid "Select"
-msgstr "vybrat"
-
-#: admin/systems/ppd/printerPPDDialog.tpl.c:11
-msgid "New driver"
-msgstr "nový ovladač"
-
-#: admin/systems/ppd/printerPPDDialog.tpl.c:14
-msgid "Upload"
-msgstr "nahrát"
-
-#: admin/systems/ppd/printerPPDDialog.tpl.c:17
-msgid "Options"
-msgstr "volby"
-
-#: admin/systems/ppd/remove_ppd.tpl.c:5
-msgid "The ppd file will be removed from the server and can not be restored."
-msgstr "PPD soubor bude definitivně odebrán ze serveru – nepůjde ho pak (jednoduše) obnovit."
-
-#: admin/systems/printer.tpl.c:2
-msgid "General"
-msgstr "obecné"
-
-#: admin/systems/printer.tpl.c:5
-msgid "Printer name"
-msgstr "název tiskárny"
-
-#: admin/systems/printer.tpl.c:14
-msgid "Details"
-msgstr "podrobnosti"
-
-#: admin/systems/printer.tpl.c:20
-msgid "Printer location"
-msgstr "kde se tiskárna nachází"
-
-#: admin/systems/printer.tpl.c:26
-msgid "PPD Provider"
-msgstr "poskytovatel PPD"
-
-#: admin/systems/printer.tpl.c:29
-msgid "Driver"
-msgstr "ovladač"
-
-#: admin/systems/printer.tpl.c:32
-msgid "Edit"
-msgstr "upravit"
-
-#: admin/systems/printer.tpl.c:41
-msgid "Users which are allowed to use this printer"
-msgstr "uživatelé, kteří smějí používat tuto tiskárnu"
-
-#: admin/systems/printer.tpl.c:44
-msgid "Users"
-msgstr "uživatelé"
-
-#: admin/systems/printer.tpl.c:47
-msgid "Users which are allowed to administrate this printer"
-msgstr "uživatelé, kteří smějí spravovat tuto tiskárnu"
-
-#: admin/systems/printer.tpl.c:50
-msgid "Admins"
-msgstr "správci"
-
-#: admin/systems/printer.tpl.c:53
-msgid "Windows paths"
-msgstr ""
-
-#: admin/systems/printer.tpl.c:56
-msgid "Printer windows inf file"
-msgstr ""
-
-#: admin/systems/printer.tpl.c:59
-msgid "Printer driver directory"
-msgstr ""
-
-#: admin/systems/gencd_frame.tpl.c:2
-msgid "Your browser does not supprt iframes."
-msgstr "Váš webový prohlížeč nepodporuje prvek „iframe“."
-
-#: admin/systems/services/cups/serviceCUPS.tpl.c:2
-msgid "Print Service"
-msgstr "služba tisku"
-
-#: admin/systems/services/cups/serviceCUPS.tpl.c:5
-msgid "enabled"
-msgstr "povoleno"
-
-#: admin/systems/services/ServiceAddDialog.tpl.c:2
-msgid "Adding a new service to the current server"
-msgstr "Přidání nové služby na tento server."
-
-#: admin/systems/services/ServiceAddDialog.tpl.c:5
-msgid ""
-"This dialog allows you to add new services to the currenty edited server "
-"object. The box below shows all available but not already used services."
-msgstr "Tento dialog Vám umožní přidat na v současnosti upravovaný server novou službu. Níže je uveden výpis dostupných, ale ještě nevyužívaných služeb."
-
-#: admin/systems/services/ServiceAddDialog.tpl.c:8
-msgid "Service to add"
-msgstr "služba, kterou chcete přidat"
-
-#: admin/systems/services/ServiceAddDialog.tpl.c:11
-msgid "All available services are already in use."
-msgstr "Všechny dostupné služby jsou již využívány."
-
-#: admin/systems/services/ServiceAddDialog.tpl.c:14
-#: admin/systems/SelectDeviceType.tpl.c:26
-msgid "Continue"
-msgstr "pokračovat"
-
-#: admin/systems/SelectDeviceType.tpl.c:2
-msgid ""
-"This system has no system type configured. Please choose a system type for "
-"this object and an optional inheritance group. Press the 'continue' button "
-"to proceed."
-msgstr ""
-
-#: admin/systems/SelectDeviceType.tpl.c:5
-msgid ""
-"Please select a system type and an optional bundle of predefined settings to"
-" be inherited."
-msgstr ""
-
-#: admin/systems/SelectDeviceType.tpl.c:8
-msgid ""
-"Please select a system type and a bundle of predefined settings to be "
-"inherited."
-msgstr ""
-
-#: admin/systems/SelectDeviceType.tpl.c:11
-#: admin/systems/SelectDeviceType.tpl.c:14
-msgid "System type"
-msgstr "typ systému"
-
-#: admin/systems/SelectDeviceType.tpl.c:17
-msgid "Choose an object group as template"
-msgstr "jako šablonu zvolte skupinu objektu"
-
-#: admin/systems/SelectDeviceType.tpl.c:20
-msgid "Object group"
-msgstr "skupina objektu"
-
-#: admin/systems/SelectDeviceType.tpl.c:23
-msgid "none"
-msgstr "žádná/ý/é"

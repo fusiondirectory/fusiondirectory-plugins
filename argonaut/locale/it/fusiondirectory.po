@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-08-18 16:07+0200\n"
-"PO-Revision-Date: 2014-08-28 10:52+0000\n"
+"POT-Creation-Date: 2014-12-03 17:22+0100\n"
+"PO-Revision-Date: 2014-12-03 16:52+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/FusionDirectory-108/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -389,7 +389,6 @@ msgstr "Impossibile caricare le entry della coda: %s"
 #: addons/argonaut/class_argonautImportFile.inc:100
 #: addons/argonaut/class_argonautImportFile.inc:141
 #: addons/argonaut/deploy-list.xml:99
-#: addons/argonaut/argonaut_import_file.tpl.c:68
 msgid "Import"
 msgstr "Importa"
 
@@ -413,13 +412,11 @@ msgid "Import complete: %s events successfully send, %s failed"
 msgstr "Importazione completata: %s eventi inviati correttamente, %s falliti"
 
 #: addons/argonaut/class_argonautImportFile.inc:177
-#: addons/argonaut/argonaut_import_file.tpl.c:47
 msgid "MAC"
 msgstr "MAC"
 
 #: addons/argonaut/class_argonautImportFile.inc:180
 #: addons/argonaut/deploy-list.xml:14
-#: addons/argonaut/argonaut_import_file.tpl.c:50
 msgid "Event"
 msgstr "Evento"
 
@@ -565,18 +562,15 @@ msgid "Winstation"
 msgstr "Winstation"
 
 #: addons/argonaut/events/eventTargetSystems-list.xml:47
-#: addons/argonaut/argonaut_import_file.tpl.c:53
 msgid "Object group"
 msgstr "Gruppo di oggetti"
 
 #: addons/argonaut/events/eventTargetSystems-list.xml:73
 #: addons/argonaut/deploy-list.xml:36
-#: addons/argonaut/events/eventTargetSystems-filter.tpl.c:20
 msgid "Name"
 msgstr "Nome"
 
 #: addons/argonaut/events/eventTargetSystems-list.xml:89
-#: addons/argonaut/argonaut_import_file.tpl.c:62
 msgid "IP"
 msgstr "IP"
 
@@ -589,7 +583,6 @@ msgid "List of queued jobs"
 msgstr "Elenco dei lavori in coda"
 
 #: addons/argonaut/deploy-list.xml:27
-#: addons/argonaut/events/DaemonEvent.tpl.c:17
 msgid "Target"
 msgstr "Obiettivo"
 
@@ -602,12 +595,10 @@ msgid "Period"
 msgstr "Periodo"
 
 #: addons/argonaut/deploy-list.xml:61
-#: addons/argonaut/events/DaemonEvent.tpl.c:2
 msgid "Schedule"
 msgstr "Pianifica"
 
 #: addons/argonaut/deploy-list.xml:69
-#: addons/argonaut/events/DaemonEvent.tpl.c:11
 msgid "Status"
 msgstr "Stato"
 
@@ -656,163 +647,3 @@ msgstr ""
 #, php-format
 msgid "\"%s\" is not a file!"
 msgstr ""
-
-#: addons/argonaut/argonaut_import_file.tpl.c:2
-msgid "Import jobs"
-msgstr "Importa dei lavori"
-
-#: addons/argonaut/argonaut_import_file.tpl.c:5
-msgid ""
-"You can import a list of jobs into the FusionDirectory job queue. This "
-"should be a semicolon seperated list of items in the following format:"
-msgstr "È possibile importare una lista di lavori nella coda di lavoro di FusionDirectory. Dovrebbe essere un elenco di elementi separati da punto e virgola nel seguente formato:"
-
-#: addons/argonaut/argonaut_import_file.tpl.c:8
-msgid "timestamp"
-msgstr "timestamp"
-
-#: addons/argonaut/argonaut_import_file.tpl.c:11
-msgid "MAC-address"
-msgstr "Indirizzo MAC"
-
-#: addons/argonaut/argonaut_import_file.tpl.c:14
-msgid "job type"
-msgstr "Tipo di lavoro"
-
-#: addons/argonaut/argonaut_import_file.tpl.c:17
-msgid "object group"
-msgstr "Gruppo oggetto"
-
-#: addons/argonaut/argonaut_import_file.tpl.c:20
-msgid "import base"
-msgstr "Base per l'importazione"
-
-#: addons/argonaut/argonaut_import_file.tpl.c:23
-msgid "full hostname"
-msgstr "Nome dell'host completo"
-
-#: addons/argonaut/argonaut_import_file.tpl.c:26
-msgid "IP-address"
-msgstr "Indirizzo IP"
-
-#: addons/argonaut/argonaut_import_file.tpl.c:29
-msgid "DHCP group"
-msgstr "Gruppo DHCP"
-
-#: addons/argonaut/argonaut_import_file.tpl.c:32
-msgid "Example"
-msgstr "Esempio"
-
-#: addons/argonaut/argonaut_import_file.tpl.c:35
-msgid "Select list to import"
-msgstr "Seleziona una lista da importare"
-
-#: addons/argonaut/argonaut_import_file.tpl.c:38
-msgid "Browse"
-msgstr "Percorri"
-
-#: addons/argonaut/argonaut_import_file.tpl.c:41
-msgid "Upload"
-msgstr "Caricare"
-
-#: addons/argonaut/argonaut_import_file.tpl.c:44
-#: addons/argonaut/events/DaemonEvent.tpl.c:20
-msgid "Timestamp"
-msgstr "Registrazione cronologica"
-
-#: addons/argonaut/argonaut_import_file.tpl.c:56
-#: addons/argonaut/deploy-list.tpl.c:2
-msgid "Base"
-msgstr "Base"
-
-#: addons/argonaut/argonaut_import_file.tpl.c:59
-msgid "FQDN"
-msgstr "FQDN"
-
-#: addons/argonaut/argonaut_import_file.tpl.c:65
-msgid "DHCP"
-msgstr "DHCP"
-
-#: addons/argonaut/events/target_list.tpl.c:2
-msgid "Apply"
-msgstr "Applica"
-
-#: addons/argonaut/events/target_list.tpl.c:5
-msgid "Cancel"
-msgstr "Annulla"
-
-#: addons/argonaut/events/DaemonEvent.tpl.c:5
-msgid "System list"
-msgstr "Elenco sistema"
-
-#: addons/argonaut/events/DaemonEvent.tpl.c:8
-msgid "ID"
-msgstr "ID"
-
-#: addons/argonaut/events/DaemonEvent.tpl.c:14
-msgid "Result"
-msgstr "Risultato"
-
-#: addons/argonaut/events/eventTargetSystems-filter.tpl.c:2
-msgid "Filter"
-msgstr "Filtro"
-
-#: addons/argonaut/events/eventTargetSystems-filter.tpl.c:5
-msgid "Show servers"
-msgstr "Mostra i server"
-
-#: addons/argonaut/events/eventTargetSystems-filter.tpl.c:8
-msgid "Show workstations"
-msgstr "Mostra le workstations"
-
-#: addons/argonaut/events/eventTargetSystems-filter.tpl.c:11
-msgid "Show terminals"
-msgstr "Mostra i terminali"
-
-#: addons/argonaut/events/eventTargetSystems-filter.tpl.c:14
-msgid "Show winstations"
-msgstr "Mostra le stazioni Windows"
-
-#: addons/argonaut/events/eventTargetSystems-filter.tpl.c:17
-msgid "Filter by IP address range"
-msgstr "Filtra per intervallo di indirizzi IP"
-
-#: addons/argonaut/events/timestamp_select.tpl.c:2
-msgid "Year"
-msgstr "Anno"
-
-#: addons/argonaut/events/timestamp_select.tpl.c:5
-msgid "Month"
-msgstr "Mese"
-
-#: addons/argonaut/events/timestamp_select.tpl.c:8
-msgid "Day"
-msgstr "Giorno"
-
-#: addons/argonaut/events/timestamp_select.tpl.c:11
-msgid "Hour"
-msgstr "Ora"
-
-#: addons/argonaut/events/timestamp_select.tpl.c:14
-msgid "Minute"
-msgstr "Minuto"
-
-#: addons/argonaut/events/timestamp_select.tpl.c:17
-msgid "Second"
-msgstr "Secondo"
-
-#: addons/argonaut/events/timestamp_select.tpl.c:20
-msgid "Periodical job"
-msgstr "Lavoro periodico"
-
-#: addons/argonaut/events/timestamp_select.tpl.c:23
-msgid "Job intervall"
-msgstr "Intervallo dei lavori"
-
-#: addons/argonaut/remove.tpl.c:2
-msgid "Warning"
-msgstr "Avvertimento"
-
-#: addons/argonaut/remove.tpl.c:5
-msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr "Quindi - se sei sicuro - premi 'Rimuovi' per continuare oppure 'Annulla' per interrompere."

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-08-18 16:07+0200\n"
-"PO-Revision-Date: 2014-08-28 10:52+0000\n"
+"POT-Creation-Date: 2014-12-03 17:22+0100\n"
+"PO-Revision-Date: 2014-12-08 21:51+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/FusionDirectory-108/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
@@ -33,7 +33,7 @@ msgstr "chyba"
 
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:71
 msgid "There is no template for this profile"
-msgstr ""
+msgstr "Pro tento profil neexistuje šablona"
 
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:85
 #, php-format
@@ -68,7 +68,6 @@ msgstr ""
 
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:181
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:184
-#: admin/debconfProfile/debconfProfile-filter.tpl.c:5
 msgid "Name"
 msgstr "název"
 
@@ -82,7 +81,7 @@ msgstr ""
 
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:188
 msgid "Entries"
-msgstr ""
+msgstr "Položky"
 
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:190
 msgid "Debconf template answers"
@@ -118,11 +117,11 @@ msgstr "zaváděné jádro"
 
 #: admin/systems/debconf/class_debconfStartup.inc:77
 msgid "Linux kernel to be installed and booted"
-msgstr ""
+msgstr "Jádro Linux, které má být nainstalováno a zavedeno"
 
 #: admin/systems/debconf/class_debconfStartup.inc:81
 msgid "Boot kernel parameters"
-msgstr ""
+msgstr "Parametry zavádění jádra"
 
 #: admin/systems/debconf/class_debconfStartup.inc:81
 msgid "Linux kernel parameters to be ran"
@@ -131,7 +130,3 @@ msgstr ""
 #: admin/systems/debconf/class_debconfStartup.inc:112
 msgid "Debconf preseed startup"
 msgstr ""
-
-#: admin/debconfProfile/debconfProfile-filter.tpl.c:2
-msgid "Filter"
-msgstr "filtr"

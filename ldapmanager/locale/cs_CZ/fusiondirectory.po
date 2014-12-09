@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-08-18 16:07+0200\n"
-"PO-Revision-Date: 2014-08-28 10:52+0000\n"
+"POT-Creation-Date: 2014-12-03 17:22+0100\n"
+"PO-Revision-Date: 2014-12-08 21:51+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/FusionDirectory-108/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
@@ -30,7 +30,7 @@ msgstr ""
 
 #: addons/ldapmanager/class_ldapmanager.inc:31
 msgid "LDAP Manager"
-msgstr ""
+msgstr "Správce LDAP"
 
 #: addons/ldapmanager/class_ldapmanager.inc:43
 #: addons/ldapmanager/class_ldapmanager.inc:56
@@ -85,8 +85,6 @@ msgid ""
 msgstr ""
 
 #: addons/ldapmanager/class_ldapmanager.inc:102
-#: addons/ldapmanager/contentcsv.tpl.c:26
-#: addons/ldapmanager/contentcsv.tpl.c:29
 msgid "Import"
 msgstr "import(ovat)"
 
@@ -116,12 +114,12 @@ msgstr "Nejste oprávněn(a) exportovat %s!"
 
 #: addons/ldapmanager/class_ldapmanager.inc:168
 #: addons/ldapmanager/class_csvimport.inc:188
-#: addons/ldapmanager/class_csvimport.inc:341
-#: addons/ldapmanager/class_csvimport.inc:378
-#: addons/ldapmanager/class_csvimport.inc:381
-#: addons/ldapmanager/class_csvimport.inc:384
-#: addons/ldapmanager/class_csvimport.inc:387
-#: addons/ldapmanager/class_csvimport.inc:535
+#: addons/ldapmanager/class_csvimport.inc:351
+#: addons/ldapmanager/class_csvimport.inc:388
+#: addons/ldapmanager/class_csvimport.inc:391
+#: addons/ldapmanager/class_csvimport.inc:394
+#: addons/ldapmanager/class_csvimport.inc:397
+#: addons/ldapmanager/class_csvimport.inc:545
 msgid "Error"
 msgstr "chyba"
 
@@ -132,7 +130,7 @@ msgstr ""
 
 #: addons/ldapmanager/tabs_ldif.inc:38
 msgid "LDAP import/export"
-msgstr ""
+msgstr "import/export LDAP"
 
 #: addons/ldapmanager/tabs_ldif.inc:39
 msgid "Allows the import or export of the ldap tree"
@@ -159,90 +157,54 @@ msgid "Need at least 'sn' and 'givenName' to create users!"
 msgstr ""
 
 #: addons/ldapmanager/class_csvimport.inc:189
-#: addons/ldapmanager/class_csvimport.inc:223
-#: addons/ldapmanager/class_csvimport.inc:278
+#: addons/ldapmanager/class_csvimport.inc:221
+#: addons/ldapmanager/class_csvimport.inc:287
 msgid "failed"
 msgstr "selhalo"
 
-#: addons/ldapmanager/class_csvimport.inc:222
+#: addons/ldapmanager/class_csvimport.inc:220
 #, php-format
 msgid "Failed to generate 'uid' for entry '%s'!"
 msgstr ""
 
-#: addons/ldapmanager/class_csvimport.inc:282
+#: addons/ldapmanager/class_csvimport.inc:291
 msgid "ok"
 msgstr "ok"
 
-#: addons/ldapmanager/class_csvimport.inc:341
+#: addons/ldapmanager/class_csvimport.inc:351
 #, php-format
 msgid "Cannot insert entry '%s'!"
 msgstr "Nedaří se vložit položku '%s'!"
 
-#: addons/ldapmanager/class_csvimport.inc:367
+#: addons/ldapmanager/class_csvimport.inc:377
 msgid "Information"
 msgstr "informace"
 
-#: addons/ldapmanager/class_csvimport.inc:367
+#: addons/ldapmanager/class_csvimport.inc:377
 msgid "Nothing to import!"
 msgstr "Není co importovat!"
 
-#: addons/ldapmanager/class_csvimport.inc:378
-#: addons/ldapmanager/class_csvimport.inc:381
-#: addons/ldapmanager/class_csvimport.inc:384
-#: addons/ldapmanager/class_csvimport.inc:387
+#: addons/ldapmanager/class_csvimport.inc:388
+#: addons/ldapmanager/class_csvimport.inc:391
+#: addons/ldapmanager/class_csvimport.inc:394
+#: addons/ldapmanager/class_csvimport.inc:397
 #, php-format
 msgid "Cannot read uploaded file: %s"
 msgstr "Nelze přečíst nahraný soubor: %s"
 
-#: addons/ldapmanager/class_csvimport.inc:378
-#: addons/ldapmanager/class_csvimport.inc:384
+#: addons/ldapmanager/class_csvimport.inc:388
+#: addons/ldapmanager/class_csvimport.inc:394
 msgid "file not found"
 msgstr "soubor nebyl nenalezen"
 
-#: addons/ldapmanager/class_csvimport.inc:381
+#: addons/ldapmanager/class_csvimport.inc:391
 msgid "file is empty"
 msgstr "soubor je prázdný"
 
-#: addons/ldapmanager/class_csvimport.inc:387
+#: addons/ldapmanager/class_csvimport.inc:397
 msgid "file not readable"
 msgstr "soubor není čitelný"
 
-#: addons/ldapmanager/class_csvimport.inc:535
+#: addons/ldapmanager/class_csvimport.inc:545
 msgid "Cannot find CSV data in the selected file!"
 msgstr "Ve zvoleném souboru se nenacházejí žádná data ve formátu CSV!"
-
-#: addons/ldapmanager/contentcsv.tpl.c:2
-msgid ""
-"The CSV import plugin provides methods to generate user accounts from a file"
-" containing Semi-Colon Seperated Values. The administrator can decide which "
-"columns should be transfered to which attribute. Note that you must have at "
-"least the GIVENNAME and SURNAME set."
-msgstr ""
-
-#: addons/ldapmanager/contentcsv.tpl.c:5
-msgid "Select CSV file to import"
-msgstr "vyberte CSV soubor, který bude importován"
-
-#: addons/ldapmanager/contentcsv.tpl.c:8
-msgid "Browse"
-msgstr "procházet"
-
-#: addons/ldapmanager/contentcsv.tpl.c:11
-msgid "Select template"
-msgstr "zvolit šablonu"
-
-#: addons/ldapmanager/contentcsv.tpl.c:14
-msgid "All entries have been written to the LDAP database successfully."
-msgstr "Všechny položky byly úspěšně zapsány do databáze LDAPu."
-
-#: addons/ldapmanager/contentcsv.tpl.c:17
-msgid "Oups. There was an error during the import of your data."
-msgstr "Ouha. Při importu Vašich dat se vyskytla chyba."
-
-#: addons/ldapmanager/contentcsv.tpl.c:20
-msgid "Here is the status report for the import:"
-msgstr "Zde je hlášení o provedeném importu:"
-
-#: addons/ldapmanager/contentcsv.tpl.c:23
-msgid "Selected Template"
-msgstr "zvolená šablona"
