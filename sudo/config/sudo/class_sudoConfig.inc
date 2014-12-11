@@ -39,7 +39,7 @@ class sudoConfig extends simplePlugin
   {
     return array(
       'main' => array(
-        'name'  => _('LDAP tree'),
+        'name'  => _('Sudo'),
         'attrs' => array(
           new StringAttribute (
             _('Sudo RDN'), _('Branch in which sudoers will be stored'),

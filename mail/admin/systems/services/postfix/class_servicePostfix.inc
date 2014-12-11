@@ -41,7 +41,7 @@ class servicePostfix extends simpleService
   {
     return array (
       'section1' => array (
-        'name'  => _('Generic'),
+        'name'  => _('Informations'),
         'icon' => 'images/rightarrow.png',
         'attrs' => array (
           new StringAttribute (

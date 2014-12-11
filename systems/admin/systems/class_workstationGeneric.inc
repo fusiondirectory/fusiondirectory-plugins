@@ -455,8 +455,8 @@ class workstationGeneric extends simplePlugin
   static function plInfo()
   {
     return array(
-      'plShortName'   => _('Generic'),
-      'plDescription' => _('Workstation generic'),
+      'plShortName'   => _('Workstation'),
+      'plDescription' => _('Workstation information'),
       'plSelfModify'  => FALSE,
       'plObjectType'  => array('workstation' =>
         array(

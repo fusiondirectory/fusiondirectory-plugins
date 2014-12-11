@@ -76,7 +76,7 @@ class mailgroup extends simplePlugin
   {
     return array(
       'main' => array(
-        'name'  => _('Generic'),
+        'name'  => _('Informations'),
         'attrs' => array(
           new HiddenAttribute (
             'gosaMailDeliveryMode', FALSE,

@@ -61,7 +61,7 @@ class repositoryDistribution extends simplePlugin
             'cn', TRUE
           ),
           new TextAreaAttribute (
-            _('description'), _('Description of this distribution'),
+            _('Description'), _('Description of this distribution'),
             'description', FALSE
           ),
           new SetAttribute (

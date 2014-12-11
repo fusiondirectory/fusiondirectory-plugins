@@ -533,7 +533,7 @@ class macro extends plugin
   static function plInfo()
   {
     return array(
-      "plShortName"   => _("Generic"),
+      "plShortName"   => _("Asterisk macro"),
       "plDescription" => _("Asterisk macro management"),
       "plSelfModify"  => FALSE,
       "plCategory"    => array("gofonmacro" => array("description" => _("GOfon macro"),

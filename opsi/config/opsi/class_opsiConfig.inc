@@ -39,7 +39,7 @@ class opsiConfig extends simplePlugin
   {
     return array(
       'main' => array(
-        'name'  => _('LDAP tree'),
+        'name'  => _('OPSI'),
         'attrs' => array(
           new StringAttribute (
             _('OPSI RDN'), _('Branch in which OPSI profiles will be stored'),

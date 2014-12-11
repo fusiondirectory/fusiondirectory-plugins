@@ -58,7 +58,7 @@ class repositorySection extends simplePlugin
             'cn', TRUE
           ),
           new TextAreaAttribute (
-            _('description'), _('Description of this section'),
+            _('Description'), _('Description of this section'),
             'description', FALSE
           ),
           new SetAttribute (

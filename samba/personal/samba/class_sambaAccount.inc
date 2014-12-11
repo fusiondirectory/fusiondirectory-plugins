@@ -157,7 +157,7 @@ class sambaAccount extends simplePlugin
     static $sambaRegEx = '/^\\\\\\\\([a-z0-9%_.:$+-\\\\]+\\\\?)+$/i';
     return array(
       'generic' => array(
-        'name'  => _('Generic'),
+        'name'  => _('Samba profile'),
         'icon'  => 'images/rightarrow.png',
         'attrs' => array(
           new HiddenAttribute ('sambaSID'),

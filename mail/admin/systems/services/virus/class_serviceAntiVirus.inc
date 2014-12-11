@@ -43,7 +43,7 @@ class serviceAntiVirus extends simpleService {
   {
     return array (
       'section1' => array (
-        'name'  => _('Generic virus filtering'),
+        'name'  => _('Virus filtering'),
         'icon'  => 'images/rightarrow.png',
         'attrs' => array (
           new StringAttribute (

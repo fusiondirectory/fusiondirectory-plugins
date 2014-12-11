@@ -38,7 +38,7 @@ class faiConfig extends simplePlugin
   {
     $attrs = array(
       'main' => array(
-        'name'  => _('LDAP tree'),
+        'name'  => _('FAI'),
         'attrs' => array(
           new StringAttribute (
             _('Fai base RDN'), _('Branch in which fai branches will be stored'),

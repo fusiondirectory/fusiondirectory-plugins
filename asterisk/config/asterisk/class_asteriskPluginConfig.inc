@@ -38,7 +38,7 @@ class asteriskPluginConfig extends simplePlugin
   {
     return array(
       'rdns' => array(
-        'name'  => _('LDAP tree'),
+        'name'  => _('Asterisk'),
         'attrs' => array(
           new StringAttribute (
             _('Phone RDN'), _('Branch in which phones will be stored'),

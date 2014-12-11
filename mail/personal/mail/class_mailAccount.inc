@@ -94,7 +94,7 @@ class mailAccount extends simplePlugin
   {
     return array (
       'main' => array (
-        'name'  => _('Generic'),
+        'name'  => _('Mail account'),
         'attrs' => array (
           new MailAttribute (
             _('Primary address'), _('Primary mail address'),

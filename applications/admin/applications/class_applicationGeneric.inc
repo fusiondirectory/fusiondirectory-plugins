@@ -28,8 +28,8 @@ class application extends simplePlugin
   static function plInfo()
   {
     return array(
-      'plShortName'   => _('Generic'),
-      'plDescription' => _('Application generic'),
+      'plShortName'   => _('Application'),
+      'plDescription' => _('Application information'),
       'plObjectType'  => array('application' => array(
         'name'    => _('Application'),
         'filter'  => 'objectClass=fdDesktopApplication',

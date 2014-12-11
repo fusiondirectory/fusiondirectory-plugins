@@ -160,7 +160,7 @@ class debconfProfileGeneric extends simplePlugin
   {
     return array(
       'plShortName'   => _('Debconf profile'),
-      'plDescription' => _('Debconf profile generic'),
+      'plDescription' => _('Debconf profile information'),
       'plSelfModify'  => FALSE,
       'plObjectType'  => array('debconfProfile' => array(
         'name'      => _('Debconf profile'),
