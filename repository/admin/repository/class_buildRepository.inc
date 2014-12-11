@@ -64,7 +64,7 @@ class buildRepository extends simplePlugin
             'cn', TRUE
           ),
           new TextAreaAttribute (
-            _('description'), _('description'),
+            _('Description'), _('Description of this repository'),
             'description', FALSE
           ),
           new SetAttribute (

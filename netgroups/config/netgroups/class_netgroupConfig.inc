@@ -39,7 +39,7 @@ class netgroupConfig extends simplePlugin
   {
     return array(
       'main' => array(
-        'name'  => _('LDAP tree'),
+        'name'  => _('Netgroup'),
         'attrs' => array(
           new StringAttribute (
             _('Netgroup RDN'), _('Branch in which netgroups will be stored'),

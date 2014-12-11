@@ -39,7 +39,7 @@ class dsaConfig extends simplePlugin
   {
     return array(
       'main' => array(
-        'name'  => _('LDAP tree'),
+        'name'  => _('DSA'),
         'attrs' => array(
           new StringAttribute (
             _('DSA RDN'), _('Branch in which Directory Service Account (dsa) will be stored (required)'),

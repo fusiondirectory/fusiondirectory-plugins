@@ -65,7 +65,7 @@ class serviceApacheVhostEdit extends simplePlugin
   {
     return array(
       'section1' => array (
-        'name'  => _('Generic'),
+        'name'  => _('Informations'),
         'class' => array('fullwidth'),
         'attrs' => array(
           new StringAttribute (

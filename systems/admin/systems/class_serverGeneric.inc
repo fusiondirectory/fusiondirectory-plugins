@@ -40,8 +40,8 @@ class serverGeneric extends workstationGeneric
   static function plInfo()
   {
     return array(
-      'plShortName'   => _('Generic'),
-      'plDescription' => _('Server generic'),
+      'plShortName'   => _('Server'),
+      'plDescription' => _('Server information'),
       'plSelfModify'  => FALSE,
       'plObjectType'  => array(
         'server' => array(

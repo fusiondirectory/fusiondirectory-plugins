@@ -37,8 +37,8 @@ class winstationGeneric extends simplePlugin
   static function plInfo()
   {
     return array(
-      'plShortName'   => _('Winstation generic'),
-      'plDescription' => _('Windows workstation generic'),
+      'plShortName'   => _('Winstation'),
+      'plDescription' => _('Windows workstation information'),
       'plSelfModify'  => FALSE,
       'plObjectType'  => array(
         'winstation' => array(

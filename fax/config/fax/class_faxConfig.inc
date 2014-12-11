@@ -39,7 +39,7 @@ class faxConfig extends simplePlugin
   {
     return array(
       'main' => array(
-        'name'  => _('LDAP tree'),
+        'name'  => _('Fax'),
         'attrs' => array(
           new StringAttribute (
             _('Fax RDN'), _('Branch in which fax blocklists will be stored'),

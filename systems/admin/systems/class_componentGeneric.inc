@@ -28,8 +28,8 @@ class componentGeneric extends simplePlugin
   static function plInfo()
   {
     return array(
-      'plShortName'   => _('Generic'),
-      'plDescription' => _('Component generic'),
+      'plShortName'   => _('Component'),
+      'plDescription' => _('Component information'),
       'plSelfModify'  => FALSE,
       'plObjectType'  => array(
         'component' => array(

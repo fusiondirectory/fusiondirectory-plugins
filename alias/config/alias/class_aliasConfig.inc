@@ -39,7 +39,7 @@ class aliasConfig extends simplePlugin
   {
     return array(
       'main' => array(
-        'name'  => _('LDAP tree'),
+        'name'  => _('Alias'),
         'attrs' => array(
           new StringAttribute (
             _('Alias RDN'), _('Branch in which aliases will be stored'),

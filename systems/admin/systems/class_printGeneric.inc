@@ -30,7 +30,7 @@ class printGeneric extends simplePlugin
   {
     return array(
       'plShortName'   => _('Printer'),
-      'plDescription' => _('Print generic'),
+      'plDescription' => _('Printer information'),
       'plPriority'    => 10,
       'plObjectType'  => array(
         'printer' => array(

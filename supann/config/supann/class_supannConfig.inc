@@ -39,7 +39,7 @@ class supannConfig extends simplePlugin
   {
     return array(
       'main' => array(
-        'name'  => _('LDAP tree'),
+        'name'  => _('SUPANN'),
         'attrs' => array(
           new StringAttribute (
             _('SUPANN RDN'), _('Branch in which SUPANN structures will be stored'),
