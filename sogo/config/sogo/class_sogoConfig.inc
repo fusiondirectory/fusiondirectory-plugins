@@ -42,7 +42,7 @@ class sogoConfig extends simplePlugin
         'name'  => _('SOGo'),
         'attrs' => array(
           new StringAttribute (
-            _('SOGo RDN'), _('Branch in which SOGo objects will be stored (required)'),
+            _('SOGo RDN'), _('Branch in which SOGo objects will be stored'),
             'fdSogoRDN', TRUE,
             'ou=resources'
           ),
