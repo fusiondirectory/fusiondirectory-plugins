@@ -42,7 +42,7 @@ class dsaConfig extends simplePlugin
         'name'  => _('DSA'),
         'attrs' => array(
           new StringAttribute (
-            _('DSA RDN'), _('Branch in which Directory Service Account (dsa) will be stored (required)'),
+            _('DSA RDN'), _('Branch in which Directory Service Account (dsa) will be stored'),
             'fdDSARDN', TRUE,
             'ou=dsa'
           ),
