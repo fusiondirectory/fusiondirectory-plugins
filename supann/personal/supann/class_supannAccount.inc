@@ -272,7 +272,7 @@ class supannAccount extends simplePlugin
             )
           ),
           new BooleanAttribute(
-            _('Liste rouge'), _('supannListeRouge - Should this person be on the red list'),
+            _('red List'), _('supannListeRouge - Should this person be on the red list'),
             'supannListeRouge', TRUE
           )
         )
@@ -281,18 +281,18 @@ class supannAccount extends simplePlugin
         'name'  => _('Affectation'),
         'attrs' => array(
           new SelectAttribute(
-            _('Entite affectation principale'), _('supannEntiteAffectationPrincipale'),
+            _('Entity primary assignment'), _('supannEntiteAffectationPrincipale'),
             'supannEntiteAffectationPrincipale', FALSE
           ),
           new SetAttribute(
             new SelectAttribute(
-              _('Entite affectation'), _('supannEntiteAffectation'),
+              _('Entity assignment'), _('supannEntiteAffectation'),
               'supannEntiteAffectation', FALSE
             )
           ),
           new SetAttribute(
             new SelectAttribute(
-              _('Type entite affectation'), _('supannTypeEntiteAffectation'),
+              _('Entity type assignment'), _('supannTypeEntiteAffectation'),
               'supannTypeEntiteAffectation', FALSE
             )
           ),
@@ -313,7 +313,7 @@ class supannAccount extends simplePlugin
           ),
           new SetAttribute(
             new SelectAttribute(
-              _('Etablissement'), _('supannEtablissement'),
+              _('Establishment'), _('supannEtablissement'),
               'supannEtablissement', FALSE
             )
           ),
@@ -352,7 +352,7 @@ class supannAccount extends simplePlugin
               'supannEtuInscription',
               array(
                 new SelectAttribute(
-                  _('Etablissement'), _('supannEtablissement - Etablissement in which this subscription was done'),
+                  _('Establishment'), _('supannEtablissement - Etablissement in which this subscription was done'),
                   'supannEtablissement_etab', TRUE
                 ),
                 new IntAttribute(
@@ -365,7 +365,7 @@ class supannAccount extends simplePlugin
                   'supannEtuRegimeInscription_regimeinsc', TRUE
                 ),
                 new SelectAttribute(
-                  _('Secteur Disciplinaire'), _('supannEtuSecteurDisciplinaire'),
+                  _('Disciplinary Sector'), _('supannEtuSecteurDisciplinaire'),
                   'supannEtuSecteurDisciplinaire_sectdisc', TRUE
                 ),
                 new SelectAttribute(
@@ -373,11 +373,11 @@ class supannAccount extends simplePlugin
                   'supannEtuTypeDiplome_typedip', TRUE
                 ),
                 new SupannCursusAnneeAttribute(
-                  _('Cursus annee'), _('supannEtuCursusAnnee'),
+                  _('Curriculum year '), _('supannEtuCursusAnnee'),
                   'supannEtuCursusAnnee_cursusann', TRUE
                 ),
                 new SelectAttribute(
-                  _('Entite affectation'), _('supannEntiteAffectation_affect'),
+                  _('Entity assignment'), _('supannEntiteAffectation_affect'),
                   'supannEntiteAffectation_affect', FALSE
                 ),
                 new SupannPrefixedSelectAttribute(
@@ -401,7 +401,7 @@ class supannAccount extends simplePlugin
         )
       ),
       'personnal' => array(
-        'name'  => _('Personnal profile'),
+        'name'  => _('Personal profile'),
         'attrs' => array(
           new StringAttribute(
             _('Personal ID'), _('supannEmpId'),
@@ -413,7 +413,7 @@ class supannAccount extends simplePlugin
           ),
           new SetAttribute(
             new SupannPrefixedSelectAttribute(
-              _('Activite'), _('supannActivite'),
+              _('Activity'), _('supannActivite'),
               'supannActivite', FALSE, 'activite'
             )
           )
@@ -435,11 +435,11 @@ class supannAccount extends simplePlugin
                   'supannRoleGenerique_role', TRUE
                 ),
                 new SelectAttribute(
-                  _('Entite type'), _('supannTypeEntiteAffectation'),
+                  _('Entity assignment type'), _('supannTypeEntiteAffectation'),
                   'supannTypeEntiteAffectation_type', TRUE
                 ),
                 new SelectAttribute(
-                  _('Entite'), _('supannEntiteAffectation'),
+                  _('Entity assignment'), _('supannEntiteAffectation'),
                   'supannEntiteAffectation_code', FALSE
                 ),
               ),

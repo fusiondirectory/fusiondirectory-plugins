@@ -28,11 +28,11 @@ class entite extends simplePlugin
   static function plInfo()
   {
     return array(
-      'plShortName'   => _('Entite'),
-      'plDescription' => _('SUPANN Entite Settings'),
+      'plShortName'   => _('Entity'),
+      'plDescription' => _('SUPANN Entity Settings'),
       'plSelfModify'  => FALSE,
       'plObjectType'  => array('entite' => array(
-        'name'        => _('SUPANN Entite'),
+        'name'        => _('SUPANN Entity'),
         'filter'      => '(&(objectClass=supannEntite)(objectClass=organizationalUnit))',
         'ou'          => get_ou('supannStructuresRDN'),
         'mainAttr'    => 'supannCodeEntite',
@@ -49,10 +49,10 @@ class entite extends simplePlugin
   {
     return array(
       'main' => array(
-        'name'  => _('Entite'),
+        'name'  => _('Entity'),
         'attrs' => array(
           new StringAttribute(
-            _('Name'), _('The name to write in the ou attribute for this entite'),
+            _('Name'), _('The name to write in the ou attribute for this entity'),
             'ou', TRUE
           )
         )
@@ -61,19 +61,19 @@ class entite extends simplePlugin
         'name'  => _('Administrative informations'),
         'attrs' => array(
           new StringAttribute(
-            _('Telephone'), _('Phone number for this entite'),
+            _('Telephone'), _('Phone number for this entity'),
             'telephoneNumber', FALSE
           ),
           new StringAttribute(
-            _('Fax'), _('Fax number for this entite'),
+            _('Fax'), _('Fax number for this entity'),
             'facsimileTelephoneNumber', FALSE
           ),
           new StringAttribute(
-            _('Postal address'), _('Postal address of this entite'),
+            _('Postal address'), _('Postal address of this entity'),
             'postalAddress', FALSE
           ),
           new TextAreaAttribute(
-            _('Description'), _('Short description of this entite'),
+            _('Description'), _('Short description of this entity'),
             'description', FALSE
           ),
         )
@@ -82,20 +82,20 @@ class entite extends simplePlugin
         'name'  => _('SUPANN informations'),
         'attrs' => array(
           new SelectAttribute(
-            _('Entite type'), _('The best SUPANN type that fits this entite'),
+            _('Entity type'), _('The best SUPANN type that fits this entity'),
             'supannTypeEntite', FALSE
           ),
           new StringAttribute(
-            _('Entite code'), _('The SUPANN code of this entite'),
+            _('Entity code'), _('The SUPANN code of this entity'),
             'supannCodeEntite', TRUE,
             '', '', '/^[a-z0-9_-]*$/'.(strict_uid_mode()?'':'i')
           ),
           new SelectAttribute(
-            _('Parent entite'), _('The parent entite of this entite'),
+            _('Parent entity'), _('The parent entity of this entity'),
             'supannCodeEntiteParent', FALSE
           ),
           new StringAttribute(
-            _('Reference ID'), _('SUPANN reference ID of this entite'),
+            _('Reference ID'), _('SUPANN reference ID of this entity'),
             'supannRefId', FALSE
           ),
         )
