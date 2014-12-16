@@ -28,11 +28,11 @@ class etablissement extends simplePlugin
   static function plInfo()
   {
     return array(
-      'plShortName'   => _('Etablissement'),
-      'plDescription' => _('SUPANN Etablissement Settings'),
+      'plShortName'   => _('Establishment'),
+      'plDescription' => _('SUPANN Establishment Settings'),
       'plSelfModify'  => FALSE,
       'plObjectType'  => array('etablissement' => array(
-        'name'        => _('SUPANN Etablissement'),
+        'name'        => _('SUPANN Establishment'),
         'filter'      => '(&(objectClass=supannEntite)(objectClass=organization))',
         'ou'          => get_ou('supannStructuresRDN'),
         'mainAttr'    => 'supannCodeEntite',
@@ -52,15 +52,15 @@ class etablissement extends simplePlugin
         'name'  => _('Properties'),
         'attrs' => array(
           new BooleanAttribute(
-            _('Root etablissement'), _('Set this etablissement as the root one'),
+            _('Root Establishment'), _('Set this Establishment as the root one'),
             'set_root'
           ),
           new StringAttribute(
-            _('Name'), _('The name to write in the o attribute for this etablissement'),
+            _('Name'), _('The name to write in the o attribute for this Establishment'),
             'o', TRUE
           ),
           new TextAreaAttribute(
-            _('Description'), _('A short description of this etablissement'),
+            _('Description'), _('A short description of this Establishment'),
             'description', FALSE
           )
         )
@@ -69,19 +69,19 @@ class etablissement extends simplePlugin
         'name'  => _('Location'),
         'attrs' => array(
           new StringAttribute(
-            _('Location'), _('Usually the city in which is this etablissement'),
+            _('Location'), _('Usually the city where this Establishment is'),
             'l', FALSE
           ),
           new TextAreaAttribute(
-            _('Address'), _('The postal address of this etablissement'),
+            _('Address'), _('The postal address of this Establishment'),
             'postalAddress', FALSE
           ),
           new StringAttribute(
-            _('Telephone'), _('Phone number for this etablissement'),
+            _('Telephone'), _('Phone number for this Establishment'),
             'telephoneNumber', FALSE
           ),
           new StringAttribute(
-            _('Fax'), _('Fax number for this etablissement'),
+            _('Fax'), _('Fax number for this Establishment'),
             'facsimileTelephoneNumber', FALSE
           ),
         )
@@ -90,29 +90,29 @@ class etablissement extends simplePlugin
         'name'  => _('SUPANN properties'),
         'attrs' => array(
           new StringAttribute(
-            _('Etablissement code'), _('The code of this etablissement (must have a prefix between {})'),
+            _('Establishment code'), _('The code of this Establishment (must have a prefix between {})'),
             'supannEtablissement', TRUE,
             '', '', '/^{[^}]+}.*$/'
           ),
           new StringAttribute(
-            _('SUPANN code'), _('The SUPANN code for this etablissement'),
+            _('SUPANN code'), _('The SUPANN code for this Establishment'),
             'supannCodeEntite', TRUE,
             '', '', '/^[a-z0-9_-]*$/'.(strict_uid_mode()?'':'i')
           ),
           new StringAttribute(
-            _('Legal name'), _('The legal name of this etablissement'),
+            _('Legal name'), _('The legal name of this Establishment'),
             'eduOrgLegalName', TRUE
           ),
           new StringAttribute(
-            _('Home page URI'), _('The URI of this etablissement website home page'),
+            _('Home page URI'), _('The URI of this Establishment website home page'),
             'eduOrgHomePageURI', FALSE
           ),
           new StringAttribute(
-            _('Institution URI'), _('The URI of this etablissement institution website'),
+            _('Institution URI'), _('The URI of this Establishment institution website'),
             'eduOrgSuperiorURI', FALSE
           ),
           new StringAttribute(
-            _('White pages URI'), _('The URI of this etablissement white pages'),
+            _('White pages URI'), _('The URI of this Establishment white pages'),
             'eduOrgWhitePagesURI', FALSE
           ),
         )
@@ -216,7 +216,7 @@ class etablissement extends simplePlugin
     $ldap->ls('(objectClass=supannOrg)');
 
     if ($ldap->count() > 1) {
-      msg_dialog::display(_('LDAP error'), 'There are several etablissements at root!');
+      msg_dialog::display(_('LDAP error'), 'There are several Establishment at root!');
       return FALSE;
     } else if ($ldap->count() > 0) {
       $attr = $ldap->fetch();
