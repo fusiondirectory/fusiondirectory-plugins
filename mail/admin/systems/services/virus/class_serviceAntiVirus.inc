@@ -65,7 +65,7 @@ class serviceAntiVirus extends simpleService {
             5
           ),
           new IntAttribute (
-            _('Max directory recursions'), _('Max directory recursions'),
+            _('Max directory recursions'), _('Maximum number of directory recursions'),
             'avMaxDirectoryRecursions', FALSE,
             0, FALSE, 4
           ),
@@ -110,7 +110,7 @@ class serviceAntiVirus extends simpleService {
             0, FALSE, 5
           ),
           new IntAttribute (
-            _('Maximum compression ratio'), _(' '),
+            _('Maximum compression ratio'), _('Maximum compression ratio'),
             'avArchiveMaxCompressionRatio', FALSE,
             0, FALSE, 95
           ),

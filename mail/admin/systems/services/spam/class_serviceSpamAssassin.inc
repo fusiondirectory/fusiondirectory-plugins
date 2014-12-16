@@ -113,7 +113,7 @@ class serviceSpamAssassin extends simpleService {
         'attrs' => array (
           new SetAttribute (
             new CompositeAttribute (
-              _('Edit spam ruleEdit spam rule'),
+              _('Edit spam rule'),
               'saRule',
               array (
                 new StringAttribute (_('Name'), '', 'ruleName'),
