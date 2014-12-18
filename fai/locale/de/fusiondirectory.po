@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-12-03 17:22+0100\n"
-"PO-Revision-Date: 2014-12-03 16:52+0000\n"
+"POT-Creation-Date: 2014-12-16 21:56+0100\n"
+"PO-Revision-Date: 2014-12-15 23:20+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/FusionDirectory-108/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -232,7 +232,7 @@ msgstr "Vorlagen"
 #: admin/fai/class_faiManagement.inc:1051
 #: admin/fai/packageSelect/selectPackage-list.xml:14
 #: admin/fai/classSelect/selectClass-list.xml:15
-#: admin/systems/class_faiStartup.inc:178
+#: admin/systems/class_faiStartup.inc:178 config/fai/class_faiConfig.inc:41
 msgid "FAI"
 msgstr "FAI"
 
@@ -284,8 +284,8 @@ msgstr "Bitte wählen Sie eine gültige Kombination aus Release und Sektion für
 #: admin/fai/class_faiPackageConfiguration.inc:55
 #: admin/systems/class_faiStartup.inc:133
 #: admin/systems/class_faiStartup.inc:160
-msgid "Service infrastructure"
-msgstr "Dienst-Infrastruktur"
+msgid "Infrastructure service"
+msgstr ""
 
 #: admin/fai/class_faiPackage.inc:586
 msgid "Unkown packages"
@@ -1026,7 +1026,7 @@ msgstr "Ausgewähltes Protokoll"
 
 #: admin/systems/class_faiLogView.inc:162
 msgid "Content of the selected log"
-msgstr ""
+msgstr "Inhalt des ausgewählten Protokolls"
 
 #: admin/systems/class_faiLogView.inc:174
 msgid "FAI Logs"
@@ -1178,10 +1178,6 @@ msgstr "FAI Konfiguration"
 #: config/fai/class_faiConfig.inc:29
 msgid "FusionDirectory fai plugin configuration"
 msgstr "FusionDirectory fai Plugin-Konfiguration"
-
-#: config/fai/class_faiConfig.inc:41
-msgid "LDAP tree"
-msgstr "LDAP Baum"
 
 #: config/fai/class_faiConfig.inc:44
 msgid "Fai base RDN"

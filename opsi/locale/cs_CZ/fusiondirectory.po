@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-12-03 17:22+0100\n"
-"PO-Revision-Date: 2014-12-08 22:00+0000\n"
+"POT-Creation-Date: 2014-12-16 21:56+0100\n"
+"PO-Revision-Date: 2014-12-15 17:12+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/FusionDirectory-108/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
@@ -121,6 +121,7 @@ msgid "Could contact OPSI server"
 msgstr ""
 
 #: admin/opsi/class_opsiProfileManagement.inc:33
+#: config/opsi/class_opsiConfig.inc:42
 msgid "OPSI"
 msgstr ""
 
@@ -256,19 +257,15 @@ msgstr ""
 
 #: addons/opsi/class_opsiImport.inc:63
 msgid "Argonaut server is not available"
-msgstr ""
+msgstr "Server s Argonaut není dostupný"
 
 #: config/opsi/class_opsiConfig.inc:28
 msgid "OPSI configuration"
-msgstr ""
+msgstr "Nastavení OPSI"
 
 #: config/opsi/class_opsiConfig.inc:29
 msgid "FusionDirectory OPSI plugin configuration"
-msgstr ""
-
-#: config/opsi/class_opsiConfig.inc:42
-msgid "LDAP tree"
-msgstr "Strom LDAP"
+msgstr "Nastavení nastavení zásuvného modulu OPSI pro FusionDirectory"
 
 #: config/opsi/class_opsiConfig.inc:45
 msgid "OPSI RDN"

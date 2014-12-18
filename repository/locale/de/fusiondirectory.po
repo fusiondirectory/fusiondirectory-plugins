@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-12-03 17:22+0100\n"
-"PO-Revision-Date: 2014-12-03 16:52+0000\n"
+"POT-Creation-Date: 2014-12-16 21:56+0100\n"
+"PO-Revision-Date: 2014-12-15 17:21+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/FusionDirectory-108/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -37,7 +37,7 @@ msgstr ""
 #: admin/repository/class_repositoryDistribution.inc:64
 #: admin/repository/class_repositorySection.inc:61
 #: admin/repository/class_buildRepository.inc:67
-msgid "description"
+msgid "Description"
 msgstr "Beschreibung"
 
 #: admin/repository/class_repositoryDistribution.inc:64
@@ -86,6 +86,7 @@ msgid "Repository management"
 msgstr ""
 
 #: admin/repository/class_repositoryManagement.inc:40
+#: config/repository/class_repositoryConfig.inc:42
 msgid "Repository"
 msgstr "Repository"
 
@@ -98,6 +99,10 @@ msgstr ""
 
 #: admin/repository/class_buildRepository.inc:63
 msgid "Unique name for this repository"
+msgstr ""
+
+#: admin/repository/class_buildRepository.inc:67
+msgid "Description of this repository"
 msgstr ""
 
 #: admin/repository/class_buildRepository.inc:72
@@ -159,10 +164,6 @@ msgstr ""
 #: config/repository/class_repositoryConfig.inc:29
 msgid "FusionDirectory repository plugin configuration"
 msgstr ""
-
-#: config/repository/class_repositoryConfig.inc:42
-msgid "LDAP tree"
-msgstr "LDAP Baum"
 
 #: config/repository/class_repositoryConfig.inc:45
 msgid "Repository RDN"

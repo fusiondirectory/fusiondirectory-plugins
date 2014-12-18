@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-12-03 17:22+0100\n"
-"PO-Revision-Date: 2014-12-03 16:52+0000\n"
+"POT-Creation-Date: 2014-12-16 21:56+0100\n"
+"PO-Revision-Date: 2014-12-15 17:21+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/FusionDirectory-108/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -235,7 +235,7 @@ msgstr "Modelli"
 #: admin/fai/class_faiManagement.inc:1051
 #: admin/fai/packageSelect/selectPackage-list.xml:14
 #: admin/fai/classSelect/selectClass-list.xml:15
-#: admin/systems/class_faiStartup.inc:178
+#: admin/systems/class_faiStartup.inc:178 config/fai/class_faiConfig.inc:41
 msgid "FAI"
 msgstr "FAI"
 
@@ -287,8 +287,8 @@ msgstr "Scegli una combinazione versione/sessione valida per la creazione del tu
 #: admin/fai/class_faiPackageConfiguration.inc:55
 #: admin/systems/class_faiStartup.inc:133
 #: admin/systems/class_faiStartup.inc:160
-msgid "Service infrastructure"
-msgstr "Servizio d'infrastruttura"
+msgid "Infrastructure service"
+msgstr ""
 
 #: admin/fai/class_faiPackage.inc:586
 msgid "Unkown packages"
@@ -1181,10 +1181,6 @@ msgstr ""
 #: config/fai/class_faiConfig.inc:29
 msgid "FusionDirectory fai plugin configuration"
 msgstr ""
-
-#: config/fai/class_faiConfig.inc:41
-msgid "LDAP tree"
-msgstr "Struttura LDAP"
 
 #: config/fai/class_faiConfig.inc:44
 msgid "Fai base RDN"

@@ -3,14 +3,16 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# MCMic, 2014
 # fusiondirectory <contact@fusiondirectory.org>, 2013-2014
+# MCMic, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-12-03 17:22+0100\n"
-"PO-Revision-Date: 2014-12-03 15:02+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"POT-Creation-Date: 2014-12-16 21:56+0100\n"
+"PO-Revision-Date: 2014-12-16 11:11+0000\n"
+"Last-Translator: MCMic\n"
 "Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory-108/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -33,7 +35,7 @@ msgstr "Macs"
 
 #: admin/inventory/inventory-list.xml:44
 msgid "Operating Systems"
-msgstr "Systèmes d'exploitations"
+msgstr "Systèmes d'exploitation"
 
 #: admin/inventory/inventory-list.xml:50
 msgid "Actions"
@@ -41,7 +43,7 @@ msgstr "Actions"
 
 #: admin/inventory/inventory-list.xml:61 admin/inventory/inventory-list.xml:85
 msgid "Edit"
-msgstr "Editer"
+msgstr "Éditer"
 
 #: admin/inventory/inventory-list.xml:68 admin/inventory/inventory-list.xml:92
 msgid "Remove"
@@ -49,11 +51,11 @@ msgstr "Supprimer"
 
 #: admin/inventory/class_inventoryManagement.inc:36
 msgid "Inventory objects"
-msgstr "Objets d'inventaires"
+msgstr "Objets d'inventaire"
 
 #: admin/inventory/class_inventoryManagement.inc:37
 msgid "Browse inventory objects"
-msgstr "Parcourir les objets de l'inventaire"
+msgstr "Parcourir les objets d'inventaire"
 
 #: admin/systems/fusioninventory/class_fiInventory.inc:67
 msgid "Inventory"
@@ -66,7 +68,7 @@ msgstr "Affichage de l'inventaire"
 #: admin/systems/fusioninventory/class_fiInventory.inc:73
 #: admin/systems/fusioninventory/class_fiInventory.inc:77
 msgid "Inventory object"
-msgstr "Objets d'inventaire"
+msgstr "Objet d'inventaire"
 
 #: admin/systems/fusioninventory/class_fiInventory.inc:91
 msgid "Hardware"
@@ -111,7 +113,7 @@ msgstr "Attente"
 #: admin/systems/fusioninventory/class_fiInventoryAgent.inc:42
 #: admin/systems/fusioninventory/class_fiInventoryAgent.inc:60
 msgid "Maximum delay between each targets, in seconds"
-msgstr "Délai maximum entre chaque cibles, en secondes"
+msgstr "Délai maximum entre chaque cible, en secondes"
 
 #: admin/systems/fusioninventory/class_fiInventoryAgent.inc:49
 msgid "Web Interface"
@@ -127,7 +129,7 @@ msgstr "Ne pas utiliser l'interface Web"
 
 #: admin/systems/fusioninventory/class_fiInventoryAgent.inc:56
 msgid "Network interface to listen to"
-msgstr "Interface de réseau sur laquelle écouter"
+msgstr "Interface réseau sur laquelle écouter"
 
 #: admin/systems/fusioninventory/class_fiInventoryAgent.inc:60
 msgid "Port"
@@ -139,7 +141,7 @@ msgstr "Mode de confiance"
 
 #: admin/systems/fusioninventory/class_fiInventoryAgent.inc:65
 msgid "IPs allowed to launch inventory task through web interface"
-msgstr "IPs autorisés à lancer tâche d'inventaire via l'interface web"
+msgstr "IPs autorisées à lancer des tâches d'inventaire via l'interface web"
 
 #: admin/systems/fusioninventory/class_fiInventoryAgent.inc:77
 #: config/fusioninventory/class_fiConfig.inc:41
@@ -157,7 +159,7 @@ msgstr "Le fichier de configuration de FusionDirectory %s/%s ne peut être lu. A
 
 #: config/fusioninventory/class_fiConfig.inc:28
 msgid "FusionInventory configuration"
-msgstr "Configuration de l'agent FusionInventory"
+msgstr "Configuration FusionInventory"
 
 #: config/fusioninventory/class_fiConfig.inc:29
 msgid "FusionDirectory FusionInventory plugin configuration"
@@ -165,11 +167,11 @@ msgstr "Configuration du plugin FusionInventory"
 
 #: config/fusioninventory/class_fiConfig.inc:44
 msgid "Inventory RDN"
-msgstr "RDN Inventaire"
+msgstr "Branche des inventaires"
 
 #: config/fusioninventory/class_fiConfig.inc:44
 msgid "Branch in which inventory objects will be stored"
-msgstr "Branche où seront stockés les objets FusionInventory"
+msgstr "Branche où seront stockés les objets d’inventaire"
 
 #: config/fusioninventory/class_fiConfig.inc:49
 msgid "Inventory matching"
@@ -193,4 +195,4 @@ msgstr "Les deux"
 
 #: config/fusioninventory/class_fiConfig.inc:52
 msgid "IP or Mac address"
-msgstr "Adresse IP ou adresse mac"
+msgstr "Adresse IP ou mac"

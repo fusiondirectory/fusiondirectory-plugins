@@ -11,12 +11,13 @@
 # fusiondirectory <contact@fusiondirectory.org>, 2012
 # fusiondirectory <contact@fusiondirectory.org>, 2012
 # gallak <antoine.gallavardin@free.fr>, 2013
+# MCMic, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-12-03 17:22+0100\n"
-"PO-Revision-Date: 2014-12-09 09:11+0000\n"
+"POT-Creation-Date: 2014-12-16 21:56+0100\n"
+"PO-Revision-Date: 2014-12-18 15:40+0000\n"
 "Last-Translator: MCMic\n"
 "Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory-108/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -51,8 +52,8 @@ msgstr "hérité"
 #: admin/systems/class_workstationGeneric.inc:443
 #: admin/systems/class_systemManagement.inc:295
 #: admin/systems/class_systemManagement.inc:325
-msgid "Service infrastructure"
-msgstr "Service d'infrastructure"
+msgid "Infrastructure service"
+msgstr "Service d’infrastructure"
 
 #: admin/ogroups/goto/class_termgroup.inc:224
 #: admin/systems/class_workstationGeneric.inc:75
@@ -134,7 +135,7 @@ msgstr "Mode"
 #: admin/ogroups/goto/class_termgroup.inc:402
 #: admin/systems/class_workstationGeneric.inc:189
 msgid "Syslog server"
-msgstr "Serveur de journaux systèmes"
+msgstr "Serveur Syslog"
 
 #: admin/ogroups/goto/class_termgroup.inc:403
 msgid "Action flag"
@@ -147,7 +148,7 @@ msgstr "Serveur NTP"
 #: admin/ogroups/goto/class_termgroup.inc:405
 #: admin/systems/class_terminalGeneric.inc:41
 msgid "Root server"
-msgstr "Serveur Primaire"
+msgstr "Serveur racine"
 
 #: admin/ogroups/goto/class_termgroup.inc:406
 #: admin/systems/class_terminalGeneric.inc:47
@@ -224,6 +225,7 @@ msgstr "PC Windows"
 
 #: admin/systems/system-list.xml:87 admin/systems/system-list.xml:234
 #: admin/systems/class_systemImport.inc:169
+#: admin/systems/class_serverGeneric.inc:46
 #: admin/systems/class_serverGeneric.inc:51
 #: admin/systems/class_serverGeneric.inc:52
 #: admin/systems/class_SelectDeviceType.inc:58
@@ -231,6 +233,7 @@ msgid "Server"
 msgstr "Serveur"
 
 #: admin/systems/system-list.xml:95 admin/systems/system-list.xml:242
+#: admin/systems/class_workstationGeneric.inc:458
 #: admin/systems/class_workstationGeneric.inc:463
 #: admin/systems/class_workstationGeneric.inc:464
 #: admin/systems/class_SelectDeviceType.inc:58
@@ -238,6 +241,7 @@ msgid "Workstation"
 msgstr "Station de travail"
 
 #: admin/systems/system-list.xml:103 admin/systems/system-list.xml:250
+#: admin/systems/class_terminalGeneric.inc:81
 #: admin/systems/class_terminalGeneric.inc:86
 #: admin/systems/class_terminalGeneric.inc:87
 #: admin/systems/class_SelectDeviceType.inc:58
@@ -257,6 +261,7 @@ msgid "Phone"
 msgstr "Téléphone"
 
 #: admin/systems/system-list.xml:127
+#: admin/systems/class_mobilePhoneGeneric.inc:36
 #: admin/systems/class_mobilePhoneGeneric.inc:41
 #: admin/systems/class_mobilePhoneGeneric.inc:42
 #: admin/systems/phoneSelect/phoneSelect-list.xml:22
@@ -264,6 +269,7 @@ msgid "Mobile phone"
 msgstr "Téléphone portable"
 
 #: admin/systems/system-list.xml:135
+#: admin/systems/class_componentGeneric.inc:36
 msgid "Component"
 msgstr "Composant"
 
@@ -304,10 +310,10 @@ msgid "Description"
 msgstr "Description"
 
 #: admin/systems/system-list.xml:201 admin/systems/class_serverService.inc:57
-#: admin/systems/services/terminal/class_serviceTerminal.inc:34
+#: admin/systems/services/terminal/class_serviceTerminal.inc:30
 #: admin/systems/services/cups/class_serviceCUPS.inc:85
 #: admin/systems/services/shares/class_serviceShare.inc:31
-#: admin/systems/services/ntp/class_serviceNTP.inc:31
+#: admin/systems/services/ntp/class_serviceNTP.inc:30
 #: admin/systems/services/ldap/class_serviceLDAP.inc:97
 msgid "Services"
 msgstr "Services"
@@ -353,7 +359,7 @@ msgstr "Programmer une action"
 
 #: admin/systems/system-list.xml:330
 msgid "Activate systems"
-msgstr "Activer un système"
+msgstr "Activer des systèmes"
 
 #: admin/systems/system-list.xml:337 admin/systems/serverService-list.xml:69
 msgid "Remove"
@@ -364,21 +370,21 @@ msgid "Create ISO"
 msgstr "Créer une image ISO"
 
 #: admin/systems/system-list.xml:379
-msgid "Edit role"
-msgstr "Éditer un rôle"
+msgid "Edit system"
+msgstr "Éditer le système"
 
 #: admin/systems/system-list.xml:392
 msgid "Remove system"
-msgstr "Suppression du système"
+msgstr "Supprimer le système"
 
 #: admin/systems/class_workstationGeneric.inc:75
 #, php-format
 msgid "Event %s is not available!"
-msgstr "L'événement '%s' n'est pas disponible !"
+msgstr "L'événement '%s' n'est pas disponible !"
 
 #: admin/systems/class_workstationGeneric.inc:78
 msgid "Events are not available!"
-msgstr "Les événements ne sont pas disponibles !"
+msgstr "Les événements ne sont pas disponibles !"
 
 #: admin/systems/class_workstationGeneric.inc:106
 msgid "(Re)Install"
@@ -406,12 +412,12 @@ msgstr "Propriétés"
 #: admin/systems/class_workstationGeneric.inc:155
 #, php-format
 msgid "The name of the %s"
-msgstr "Le nom de %s"
+msgstr "Le nom de ce %s"
 
 #: admin/systems/class_workstationGeneric.inc:161
 #, php-format
 msgid "A short description of the %s"
-msgstr "Une courte description de %s"
+msgstr "Une courte description de ce %s"
 
 #: admin/systems/class_workstationGeneric.inc:166
 #: admin/systems/class_printGeneric.inc:1025
@@ -444,11 +450,11 @@ msgstr "Le serveur de logs que ce %s devrait utiliser"
 
 #: admin/systems/class_workstationGeneric.inc:195
 msgid "Inherit NTP servers"
-msgstr "Hériter des serveurs de temps"
+msgstr "Hériter des serveurs NTP"
 
 #: admin/systems/class_workstationGeneric.inc:196
 msgid "Inherit time server attributes from ogroup"
-msgstr "Hérite des serveurs de temps depuis l'object group"
+msgstr "Hérite des serveurs NTP depuis l'object group"
 
 #: admin/systems/class_workstationGeneric.inc:202
 msgid "NTP servers"
@@ -492,17 +498,8 @@ msgstr "Sélectionnez l'opération à exécuter sur le terminal"
 msgid "Network settings"
 msgstr "Paramètres réseaux"
 
-#: admin/systems/class_workstationGeneric.inc:458
-#: admin/systems/class_terminalGeneric.inc:81
-#: admin/systems/class_serverGeneric.inc:46
-#: admin/systems/class_componentGeneric.inc:36
-#: admin/systems/class_mobilePhoneGeneric.inc:36
-#: admin/systems/services/ntp/class_serviceNTP.inc:43
-msgid "Generic"
-msgstr "Informations"
-
 #: admin/systems/class_workstationGeneric.inc:459
-msgid "Workstation generic"
+msgid "Workstation information"
 msgstr "Information de la station de travail"
 
 #: admin/systems/class_printGeneric.inc:131
@@ -515,7 +512,7 @@ msgstr "Erreur interne"
 #, php-format
 msgid ""
 "Cannot determine a valid department for this object. Setting base to '%s'!"
-msgstr "Impossible d'obtenir un département valide pour cet objet. Je met la base à '%s' ! "
+msgstr "Impossible d'obtenir un département valide pour cet objet. Base mise à '%s' !"
 
 #: admin/systems/class_printGeneric.inc:311
 #: admin/systems/class_printGeneric.inc:319
@@ -553,7 +550,7 @@ msgstr "imprimante"
 msgid ""
 "You can't enable it while 'cn' is not present in entry. Possibly you are "
 "currently creating a new terminal template."
-msgstr "Vous ne pourrez l'activer tant qu'un 'cn' n'est pas présent dans l'entrée. Vous êtes probablement occupé à créer un nouveau modèle de terminal."
+msgstr "Vous ne pouvez l'activer tant qu'un 'cn' n'est pas présent dans l'entrée. Vous êtes probablement en train de créer un nouveau modèle de terminal."
 
 #: admin/systems/class_printGeneric.inc:382
 #: admin/systems/class_printGeneric.inc:385
@@ -594,7 +591,7 @@ msgstr "Non défini"
 #: admin/systems/class_printGeneric.inc:587
 #: admin/systems/ppd/class_printerPPDDialog.inc:116
 msgid "Can't get ppd informations."
-msgstr "Impossible d'obtenir des informations sur les ppd."
+msgstr "Impossible d'obtenir les informations PPD."
 
 #: admin/systems/class_printGeneric.inc:602
 #: admin/systems/class_printGeneric.inc:604
@@ -610,7 +607,7 @@ msgstr "terminal"
 #: admin/systems/class_printGeneric.inc:652
 #: admin/systems/class_printGeneric.inc:659
 msgid "Object is no printer!"
-msgstr "L'objet n'est pas une Imprimante !"
+msgstr "Cet objet n'est pas une imprimante !"
 
 #: admin/systems/class_printGeneric.inc:767
 msgid "Printer URL"
@@ -626,8 +623,8 @@ msgid "User"
 msgstr "Utilisateur"
 
 #: admin/systems/class_printGeneric.inc:1006
-msgid "Print generic"
-msgstr "Imprimante générique"
+msgid "Printer information"
+msgstr "Information de l’imprimante"
 
 #: admin/systems/class_printGeneric.inc:1023
 msgid "Base"
@@ -651,7 +648,7 @@ msgstr "Fichier INF Windows"
 
 #: admin/systems/class_printGeneric.inc:1031
 msgid "Windows driver dir"
-msgstr "Répertoire du pilote d'imprimante"
+msgstr "Répertoire du pilote Windows"
 
 #: admin/systems/class_printGeneric.inc:1032
 msgid "Driver printer name"
@@ -670,7 +667,7 @@ msgstr "utilisateur de l'imprimante"
 #: admin/systems/class_printGeneric.inc:1065
 #, php-format
 msgid "Illegal member type '%s'!"
-msgstr "Type de membre illégal '%s' !"
+msgstr "Type de membre illégal '%s' !"
 
 #: admin/systems/class_printGeneric.inc:1105
 #, php-format
@@ -684,7 +681,7 @@ msgstr "'%s' n'existe pas !"
 
 #: admin/systems/class_serverService.inc:58
 msgid "Server services"
-msgstr "Services serveur"
+msgstr "Services du serveur"
 
 #: admin/systems/class_serverService.inc:332
 msgid "Filter error"
@@ -700,7 +697,7 @@ msgstr "Information"
 
 #: admin/systems/class_serverService.inc:387
 msgid "Cannot update service status until it has been saved!"
-msgstr "Impossible de mettre à jour le statut avant que cela soit sauvé !"
+msgstr "Impossible de mettre à jour le statut du service avant qu’il soit sauvé !"
 
 #: admin/systems/class_serverService.inc:415
 #: admin/systems/class_serverService.inc:424
@@ -752,7 +749,7 @@ msgid "Terminal server"
 msgstr "Serveur de terminaux"
 
 #: admin/systems/class_terminalGeneric.inc:82
-msgid "Terminal generic"
+msgid "Terminal information"
 msgstr "Information du terminal"
 
 #: admin/systems/ppd/class_printerPPDSelectionDialog.inc:91
@@ -779,11 +776,11 @@ msgstr "Erreur de PPD"
 #: admin/systems/ppd/class_printerPPDSelectionDialog.inc:139
 #, php-format
 msgid "Cannot locate vendor '%s' in available PPDs!"
-msgstr "Impossible de localiser le vendeur '%s' dans les PPD disponibles !"
+msgstr "Impossible de trouver le vendeur '%s' dans les PPDs disponibles !"
 
 #: admin/systems/ppd/class_printerPPDSelectionDialog.inc:148
 msgid "Printer ppd selection."
-msgstr "Sélection du ppd de votre imprimante."
+msgstr "Sélection du PPD de l’imprimante."
 
 #: admin/systems/ppd/class_printerPPDSelectionDialog.inc:155
 msgid "delete"
@@ -802,32 +799,32 @@ msgstr "Erreur de configuration"
 #: admin/systems/ppd/class_printerPPDDialog.inc:92
 #, php-format
 msgid "Cannot open PPD '%s'!"
-msgstr "Impossible de lire le PPD '%s' !"
+msgstr "Impossible de lire le PPD '%s' !"
 
 #: admin/systems/ppd/class_printerPPDDialog.inc:141
 #, php-format
 msgid "Cannot open PPD path '%s' for reading and writing!"
-msgstr "Impossible de lire et d'écrire dans le chemin spécifié pour le PPD '%s' !"
+msgstr "Impossible de lire et d'écrire dans le chemin spécifié pour le PPD '%s' !"
 
 #: admin/systems/ppd/class_printerPPDDialog.inc:160
 #: admin/systems/ppd/class_printerPPDDialog.inc:365
 msgid "file is empty"
-msgstr "le fichier est vide."
+msgstr "le fichier est vide"
 
 #: admin/systems/ppd/class_printerPPDDialog.inc:314
 #, php-format
 msgid "Cannot parse PPD '%s'!"
-msgstr "Ne peut pas analyser le PPD '%s' !"
+msgstr "Impossible d’analyser le PPD '%s' !"
 
 #: admin/systems/ppd/class_printerPPDDialog.inc:340
 msgid "Overwrite existing PPD"
-msgstr "Ecrasement du PPD existant"
+msgstr "Écrasement du PPD existant"
 
 #: admin/systems/ppd/class_printerPPDDialog.inc:341
 msgid ""
 "There is already a ppd file for this kind of printer. Do you want to "
 "overwrite it?"
-msgstr "Il y a déjà un fichier ppd pour ce type d'imprimante. Voulez vous l'écraser ?"
+msgstr "Il y a déjà un fichier PPD pour ce type d'imprimante. Voulez vous l’écraser ?"
 
 #: admin/systems/ppd/class_printerPPDDialog.inc:491
 msgid "Section"
@@ -852,7 +849,7 @@ msgstr " PPD de type '%s' non supporté !"
 msgid ""
 "Please select a valid ppd file or use 'Cancel' to go back to printer "
 "configuration."
-msgstr "Veuillez sélectionner un fichier ppd valide ou utiliser 'Annuler' pour revenir à la configuration de l'imprimante."
+msgstr "Veuillez sélectionner un fichier PPD valide ou utiliser 'Annuler' pour revenir à la configuration de l'imprimante."
 
 #: admin/systems/ppd/class_ppdManager.inc:44
 #: admin/systems/ppd/class_ppdManager.inc:188
@@ -878,14 +875,14 @@ msgstr "Le fichier temporaire '%s' n'a pas pu être ouvert en écriture."
 #: admin/systems/ppd/class_ppdManager.inc:212
 #: admin/systems/ppd/class_ppdManager.inc:350
 msgid "Parsing PPD file failed - file is empty!"
-msgstr "La lecture du fichier PPD à échoué - le fichier est vide !"
+msgstr "La lecture du fichier PPD a échoué - le fichier est vide !"
 
 #: admin/systems/ppd/class_ppdManager.inc:222
 #, php-format
 msgid ""
 "Parsing PPD file %s failed - line too long. Trailing characters have been "
 "ignored!"
-msgstr "La lecture du PPD %s à échoué - ligne trop longue. Les caractères restant on été ignorés !"
+msgstr "La lecture du PPD %s a échoué - ligne trop longue. Les caractères restant ont été ignorés !"
 
 #: admin/systems/ppd/class_ppdManager.inc:230
 msgid "Nested groups are not supported!"
@@ -898,7 +895,7 @@ msgstr "Le nom du groupe n'est pas unique !"
 #: admin/systems/ppd/class_ppdManager.inc:240
 #: admin/systems/ppd/class_ppdManager.inc:270
 msgid "Symbol values are not supported yet!"
-msgstr "Les valeurs comme symboles ne sont pas encore supportés"
+msgstr "Les valeurs symboles ne sont pas encore supportés"
 
 #: admin/systems/ppd/class_ppdManager.inc:264
 msgid "Nested options are not supported!"
@@ -913,27 +910,27 @@ msgstr "La sélection multiple n'est pas encore supportée !"
 msgid ""
 "Parsing PPD file %s failed - line too long. Trailing characters have been "
 "ignored"
-msgstr "La lecture du PPD %s à échoué - ligne trop longue. Les caractères restant on été ignorés"
+msgstr "La lecture du PPD %s a échoué - ligne trop longue. Les caractères restant ont été ignorés"
 
 #: admin/systems/ppd/class_ppdManager.inc:395
 #, php-format
 msgid "Parsing PPD file %s failed - no information found."
-msgstr "La lecture du fichier PPD %s à échoué - pas de données."
+msgstr "L’analyse du fichier PPD %s a échoué - pas de données."
 
 #: admin/systems/class_systemImport.inc:72
 #, php-format
 msgid "Could not parse %s"
-msgstr "Impossible de lire le contenu de %s"
+msgstr "Impossible d’analyser le contenu de %s"
 
 #: admin/systems/class_systemImport.inc:116
 #, php-format
 msgid "No DHCP server found for ip %s"
-msgstr "Pas de serveur dhcp trouvé pour l'ip %s"
+msgstr "Pas de serveur DHCP trouvé pour l'IP %s"
 
 #: admin/systems/class_systemImport.inc:130
 #, php-format
 msgid "No DNS server found for zone %s"
-msgstr "Pas de serveur dns trouvé pour l'ip %s"
+msgstr "Pas de serveur DNS trouvé pour la zone %s"
 
 #: admin/systems/class_systemImport.inc:165
 msgid "Import"
@@ -941,19 +938,19 @@ msgstr "Importer"
 
 #: admin/systems/class_systemImport.inc:169
 msgid "The server you wish to import hosts from"
-msgstr "Le serveur duquel vous souhaitez importer les machines"
+msgstr "Le serveur duquel vous souhaitez importer des machines"
 
 #: admin/systems/class_serverGeneric.inc:34
 msgid "server"
 msgstr "serveur"
 
 #: admin/systems/class_serverGeneric.inc:47
-msgid "Server generic"
-msgstr "Serveur générique"
+msgid "Server information"
+msgstr "Information du serveur"
 
 #: admin/systems/class_componentGeneric.inc:37
-msgid "Component generic"
-msgstr "Composant générique"
+msgid "Component information"
+msgstr "Information du composant"
 
 #: admin/systems/class_componentGeneric.inc:64
 msgid "The name of the component"
@@ -964,12 +961,12 @@ msgid "A short description of the component"
 msgstr "Description courte du composant"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:37
-msgid "Mobile phone generic"
-msgstr "Téléphone mobile générique"
+msgid "Mobile phone information"
+msgstr "Information du téléphone portable"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:63
 msgid "The name of the mobile phone"
-msgstr "Nom du téléphone mobile"
+msgstr "Nom du téléphone portable"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:67
 msgid "A short description of the mobile phone"
@@ -981,7 +978,7 @@ msgstr "Numéro de série"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:77
 msgid "The serial number of the mobile phone"
-msgstr "Numéro de série du téléphone mobile"
+msgstr "Numéro de série du téléphone portable"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:81
 msgid "IMEI Number"
@@ -989,7 +986,7 @@ msgstr "Numéro IMEI"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:81
 msgid "The IMEI number of the mobile phone"
-msgstr "Numéro IMEI du téléphone mobile"
+msgstr "Numéro IMEI du téléphone portable"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:86
 msgid "OS"
@@ -1001,7 +998,7 @@ msgstr "Système d'exploitation installé sur ce téléphone"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:92
 msgid "SimCard"
-msgstr "Carte  SIM"
+msgstr "Carte SIM"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:95
 msgid "Telephone Number"
@@ -1009,7 +1006,7 @@ msgstr "Numéro de téléphone"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:95
 msgid "The telephone number of the mobile phone"
-msgstr "Numéro du téléphone mobile"
+msgstr "Numéro du téléphone portable"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:99
 msgid "PUK Number"
@@ -1017,7 +1014,7 @@ msgstr "Numéro PUK"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:99
 msgid "The PUK number of the simcard in this mobile phone"
-msgstr "Numéro PUK de la carte SIM du téléphone mobile"
+msgstr "Numéro PUK de la carte SIM du téléphone portable"
 
 #: admin/systems/serverService-list.xml:10
 msgid "List of services"
@@ -1038,7 +1035,7 @@ msgstr "Obtenir le status"
 #: admin/systems/serverService-list.xml:97
 #: admin/systems/services/cups/class_serviceCUPS.inc:92
 msgid "Start"
-msgstr "Démarrage"
+msgstr "Démarrer"
 
 #: admin/systems/serverService-list.xml:105
 #: admin/systems/services/cups/class_serviceCUPS.inc:93
@@ -1048,15 +1045,15 @@ msgstr "Arrêter"
 #: admin/systems/serverService-list.xml:113
 #: admin/systems/services/cups/class_serviceCUPS.inc:94
 msgid "Restart"
-msgstr "Réessayer"
+msgstr "Redémarrer"
 
 #: admin/systems/serverService-list.xml:121
 msgid "Edit service"
-msgstr "Editer le service"
+msgstr "Éditer le service"
 
 #: admin/systems/serverService-list.xml:129
 msgid "Remove service"
-msgstr "Suppression du service"
+msgstr "Supprimer le service"
 
 #: admin/systems/phoneSelect/phoneSelect-list.xml:10
 msgid "Please select the desired entries"
@@ -1068,7 +1065,7 @@ msgstr "Numéro"
 
 #: admin/systems/phoneSelect/phoneSelect-list.xml:83
 msgid "Select this number"
-msgstr "Choisir ce nombre"
+msgstr "Choisir ce numéro"
 
 #: admin/systems/class_systemManagement.inc:177
 msgid "Back"
@@ -1076,7 +1073,7 @@ msgstr "Retour"
 
 #: admin/systems/class_systemManagement.inc:223
 msgid "Creating the image failed. Please see the report below."
-msgstr "La création de l'image à échoué. veuillez lire le rapport ci dessous."
+msgstr "La création de l'image a échoué. Veuillez lire le rapport ci dessous."
 
 #: admin/systems/class_systemManagement.inc:228
 #, php-format
@@ -1089,22 +1086,22 @@ msgstr "La commande '%s', utilisée dans la création de l'image ISO n'existe pa
 #: admin/systems/class_systemManagement.inc:905
 #: admin/systems/class_systemManagement.inc:926
 msgid "Permission"
-msgstr "Permissions"
+msgstr "Permission"
 
 #: admin/systems/class_systemManagement.inc:678
 msgid "Cannot set mode to 'active'!"
-msgstr "Impossible de mettre le mode comme 'actif' !"
+msgstr "Impossible de mettre le mode à 'actif' !"
 
 #: admin/systems/class_systemManagement.inc:858
 #, php-format
 msgid "You are not allowed to create a snapshot for %s."
-msgstr "Vous n'êtes pas autorisé à créer une nouvelle copie instantanée pour %s."
+msgstr "Vous n'êtes pas autorisé à créer un nouvel instantané pour %s."
 
 #: admin/systems/class_systemManagement.inc:905
 #: admin/systems/class_systemManagement.inc:926
 #, php-format
 msgid "You are not allowed to restore a snapshot for %s."
-msgstr "Vous n'êtes pas autorisé à restaurer un copie instantanée de %s."
+msgstr "Vous n'êtes pas autorisé à restaurer un instantané de %s."
 
 #: admin/systems/class_systemManagement.inc:1169
 #, php-format
@@ -1120,24 +1117,27 @@ msgstr "Systèmes"
 msgid "Systems Management"
 msgstr "Gestion des systèmes"
 
-#: admin/systems/services/terminal/class_serviceTerminal.inc:33
-#: admin/systems/services/terminal/class_serviceTerminal.inc:34
-#: admin/systems/services/terminal/class_serviceTerminal.inc:48
+#: admin/systems/services/terminal/class_serviceTerminal.inc:29
+#: admin/systems/services/terminal/class_serviceTerminal.inc:30
+#: admin/systems/services/terminal/class_serviceTerminal.inc:41
 msgid "Terminal service"
-msgstr "Services de terminaux"
+msgstr "Service de terminal"
 
-#: admin/systems/services/terminal/class_serviceTerminal.inc:51
+#: admin/systems/services/terminal/class_serviceTerminal.inc:44
 msgid "Temporary disable login"
-msgstr "Désactiver temporairement l'identifiant"
+msgstr "Désactiver temporairement l'identification"
 
-#: admin/systems/services/terminal/class_serviceTerminal.inc:52
-#: admin/systems/services/terminal/class_serviceTerminal.inc:63
-msgid " "
-msgstr ""
+#: admin/systems/services/terminal/class_serviceTerminal.inc:45
+msgid "Disables the login on this terminal server"
+msgstr "Désactive la connexion sur ce serveur de terminaux"
 
-#: admin/systems/services/terminal/class_serviceTerminal.inc:62
+#: admin/systems/services/terminal/class_serviceTerminal.inc:54
 msgid "Supported session types"
 msgstr "Type de sessions supportées"
+
+#: admin/systems/services/terminal/class_serviceTerminal.inc:55
+msgid "The session types supported by this terminal server"
+msgstr "Les types de sessions supportés par ce serveur de terminaux"
 
 #: admin/systems/services/cups/class_serviceCUPS.inc:43
 #: admin/systems/services/cups/class_serviceCUPS.inc:64
@@ -1185,7 +1185,7 @@ msgstr "Type de partage"
 
 #: admin/systems/services/shares/class_serviceShare.inc:65
 msgid "Codepage"
-msgstr "Codage des caractères"
+msgstr "Page de code"
 
 #: admin/systems/services/shares/class_serviceShare.inc:65
 msgid "Codepage for this share"
@@ -1218,19 +1218,27 @@ msgstr "Avertissement"
 #: admin/systems/services/shares/class_serviceShare.inc:110
 #, php-format
 msgid "Invalid value in encodings : %s"
-msgstr "Valeur d'encodage invalide: %s"
+msgstr "Valeur d’encodage invalide : %s"
+
+#: admin/systems/services/ntp/class_serviceNTP.inc:29
+msgid "Time service"
+msgstr "Service de temps"
 
 #: admin/systems/services/ntp/class_serviceNTP.inc:30
-msgid "Time service"
-msgstr "Services de temps"
-
-#: admin/systems/services/ntp/class_serviceNTP.inc:31
 msgid "Time service - NTP"
-msgstr "Services de temps - NTP"
+msgstr "Service de temps - NTP"
 
-#: admin/systems/services/ntp/class_serviceNTP.inc:47
-msgid "Time server"
-msgstr "Serveur de temps"
+#: admin/systems/services/ntp/class_serviceNTP.inc:41
+msgid "Informations"
+msgstr "Informations"
+
+#: admin/systems/services/ntp/class_serviceNTP.inc:45
+msgid "Time servers"
+msgstr "Serveurs de temps"
+
+#: admin/systems/services/ntp/class_serviceNTP.inc:45
+msgid "List of time sources to use"
+msgstr "Liste des sources de temps à utiliser"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:35
 #: admin/systems/services/ldap/class_serviceLDAP.inc:96
@@ -1255,7 +1263,7 @@ msgstr "l'URI LDAP à utiliser pour communiquer avec le serveur LDAP"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:46
 msgid "fill-in-your-servers-dns-name"
-msgstr "Veuillez indiquer vos serveurs dns"
+msgstr "remplir-avec-votre-nom-de-domaine"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:51
 msgid "Size limit"
@@ -1263,7 +1271,7 @@ msgstr "Taille limite"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:51
 msgid "Limit the number of record returned"
-msgstr "Limiter le nombre d'entrées retournés"
+msgstr "Limiter le nombre d'entrées retournées"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:56
 msgid "Time limit"
@@ -1275,11 +1283,11 @@ msgstr "Limite de temps pour les résultats à retourner"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:61
 msgid "Deref"
-msgstr "Deref"
+msgstr "Déref"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:61
 msgid "Specifies how alias dereferencing is done when performing a search"
-msgstr "Spécifie comment les alias de dé-référencement sont fait lors de l’exécution d'une recherche"
+msgstr "Spécifie comment le dé-référencement d’alias est fait lors de l’exécution d'une recherche"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:66
 msgid "TLS Cert"
@@ -1299,7 +1307,7 @@ msgstr "Chemin vers le fichier de la clé TLS"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:74
 msgid "TLS CaCert"
-msgstr "Chemin vers le fichier contenant l'autorité de certification TLS"
+msgstr "Autorité de certification TLS"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:74
 msgid "Filepath to tls ca certificate"
@@ -1317,13 +1325,13 @@ msgstr "Indique quels sont les vérifications à faire sur les certificats serve
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:83
 msgid "TLS CrlCheck"
-msgstr "Vérification de la liste de révocation des certificats TLS"
+msgstr "Vérification de révocation TLS"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:83
 msgid ""
 "Specifies if the Certificate Revocation List (CRL) of the CA should be used "
 "to verify if the server certificates have  not  been  revoked"
-msgstr "Indique si la liste de certificats révoqués (CRL) de l'autorité de certification doit être utilisé pour vérifier si le certificat a été révoqué ou non"
+msgstr "Indique si la liste de certificats révoqués (CRL) de l'autorité de certification doit être utilisée pour vérifier si le certificat a été révoqué ou non"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:97
 msgid "LDAP"
@@ -1335,12 +1343,12 @@ msgstr "Non implémenté"
 
 #: admin/systems/class_networkSettings.inc:427
 msgid "Not matching"
-msgstr "Pas équivalent"
+msgstr "Ne correspond pas"
 
 #: admin/systems/class_networkSettings.inc:574
 #, php-format
 msgid "Was not able to contact argonaut server: %s"
-msgstr "Impossible de contacter le serveur Argonaut : %s"
+msgstr "Impossible de contacter le serveur Argonaut : %s"
 
 #: admin/systems/class_networkSettings.inc:581
 #, php-format
@@ -1355,7 +1363,7 @@ msgstr "Impossible de trouver l'adresse mac du serveur DNS pour la zone %s"
 #: admin/systems/class_networkSettings.inc:594
 #, php-format
 msgid "Was not able to launch ldap2zone: %s"
-msgstr "Impossible de démarrer ldap2zone: %s"
+msgstr "Impossible de démarrer ldap2zone : %s"
 
 #: admin/systems/class_networkSettings.inc:620
 #, php-format
@@ -1379,17 +1387,17 @@ msgstr "Adresse MAC"
 #: admin/systems/class_networkSettings.inc:666
 #, php-format
 msgid "The IP address '%s' is not part of the selected reverse zone '%s'!"
-msgstr "L'adresse spécifiée '%s' ne correspond pas à la l'entrée de la zone inverse sélectionnée '%s'."
+msgstr "L'adresse spécifiée '%s' ne correspond pas à l'entrée de la zone inverse sélectionnée '%s' !"
 
 #: admin/systems/class_networkSettings.inc:676
 #, php-format
 msgid "Record type '%s' is duplicated!"
-msgstr "L'enregistrement de type '%s' est dupliquée !"
+msgstr "L'enregistrement de type '%s' est dupliqué !"
 
 #: admin/systems/class_networkSettings.inc:683
 #, php-format
 msgid "Uniq record type '%s' is duplicated!"
-msgstr "L'enregistrement de type '%s' est dupliqué !"
+msgstr "L'enregistrement de type '%s' est dupliqué !"
 
 #: admin/systems/class_networkSettings.inc:695
 #, php-format
@@ -1401,7 +1409,7 @@ msgstr "L'adresse IP '%s' est ajoutée comme un 'A' record, ceci sera fait autom
 #: admin/systems/class_networkSettings.inc:702
 #, php-format
 msgid "Only lowercase records are allowed, please check your '%ss'."
-msgstr "Seulement les minuscules sont autorisée, veuillez vérifier votre '%ss'."
+msgstr "Seulement les minuscules sont autorisées, veuillez vérifier votre '%ss'."
 
 #: admin/systems/class_networkSettings.inc:968
 msgid "Delete"
@@ -1425,15 +1433,15 @@ msgstr "Configuration de DHCP"
 
 #: config/systems/class_systemsPluginConfig.inc:29
 msgid "Systems plugin configuration"
-msgstr "Configuration de l'extension Systèmes"
+msgstr "Configuration du plugin Systèmes"
 
 #: config/systems/class_systemsPluginConfig.inc:40
 msgid "LDAP tree for systems"
-msgstr ""
+msgstr "Arbre LDAP des systèmes"
 
 #: config/systems/class_systemsPluginConfig.inc:43
 msgid "Systems RDN"
-msgstr "Chemin relatif des systèmes"
+msgstr "Branche des systèmes"
 
 #: config/systems/class_systemsPluginConfig.inc:43
 msgid "Branch in which systems will be stored"
@@ -1441,7 +1449,7 @@ msgstr "Branche où seront stockés les systèmes"
 
 #: config/systems/class_systemsPluginConfig.inc:48
 msgid "Server RDN"
-msgstr "Chemin relatif des serveurs"
+msgstr "Branche des serveurs"
 
 #: config/systems/class_systemsPluginConfig.inc:48
 msgid "Branch in which servers will be stored"
@@ -1449,15 +1457,15 @@ msgstr "Branche où seront stockés les serveurs"
 
 #: config/systems/class_systemsPluginConfig.inc:53
 msgid "Workstations RDN"
-msgstr "Chemin relatif des stations de travail"
+msgstr "Branche des stations de travail"
 
 #: config/systems/class_systemsPluginConfig.inc:53
 msgid "Branch in which workstations will be stored"
-msgstr "Branches où seront stockés les stations de travail"
+msgstr "Branches où seront stockées les stations de travail"
 
 #: config/systems/class_systemsPluginConfig.inc:58
 msgid "Terminal RDN"
-msgstr "Chemin relatif des terminaux"
+msgstr "Branche des terminaux"
 
 #: config/systems/class_systemsPluginConfig.inc:58
 msgid "Branch in which terminals will be stored"
@@ -1465,15 +1473,15 @@ msgstr "Branche où seront stockés les terminaux"
 
 #: config/systems/class_systemsPluginConfig.inc:63
 msgid "Printer RDN"
-msgstr "Chemin relatif des imprimantes"
+msgstr "Branche des imprimantes"
 
 #: config/systems/class_systemsPluginConfig.inc:63
 msgid "Branch in which printers will be stored"
-msgstr "Branche où seront stockés les imprimantes"
+msgstr "Branche où seront stockées les imprimantes"
 
 #: config/systems/class_systemsPluginConfig.inc:68
 msgid "Component RDN"
-msgstr "Chemin relatif des composants"
+msgstr "Branche des composants"
 
 #: config/systems/class_systemsPluginConfig.inc:68
 msgid "Branch in which network devices will be stored"
@@ -1481,11 +1489,11 @@ msgstr "Branche où seront stockés les périphériques réseaux"
 
 #: config/systems/class_systemsPluginConfig.inc:73
 msgid "Mobile phone RDN"
-msgstr "Chemin relatif des téléphones mobiles"
+msgstr "Branche des téléphones portables"
 
 #: config/systems/class_systemsPluginConfig.inc:73
 msgid "Branch in which mobile phones will be stored"
-msgstr "Branche où seront stockés les téléphones mobiles"
+msgstr "Branche où seront stockés les téléphones portables"
 
 #: config/systems/class_systemsPluginConfig.inc:80
 msgid "Miscellaneous"
@@ -1497,15 +1505,15 @@ msgstr "Encodages disponibles pour les services de partage"
 
 #: config/systems/class_systemsPluginConfig.inc:88
 msgid "Encoding"
-msgstr "Encodages"
+msgstr "Encodage"
 
 #: config/systems/class_systemsPluginConfig.inc:88
 msgid "The encoding code name"
-msgstr "Nom de l'encodage"
+msgstr "Code de l'encodage"
 
 #: config/systems/class_systemsPluginConfig.inc:93
 msgid "Label"
-msgstr "Etiquette"
+msgstr "Étiquette"
 
 #: config/systems/class_systemsPluginConfig.inc:93
 msgid "The encoding displayed name"

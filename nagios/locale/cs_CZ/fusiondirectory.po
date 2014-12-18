@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-12-03 17:22+0100\n"
-"PO-Revision-Date: 2014-12-08 20:41+0000\n"
+"POT-Creation-Date: 2014-12-16 21:56+0100\n"
+"PO-Revision-Date: 2014-12-15 17:01+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/FusionDirectory-108/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
@@ -21,6 +21,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
 #: personal/nagios/class_nagiosAccount.inc:45
+#: config/nagios/class_nagiosConfig.inc:42
 msgid "Nagios"
 msgstr "Nagios"
 
@@ -87,10 +88,6 @@ msgstr ""
 #: config/nagios/class_nagiosConfig.inc:29
 msgid "FusionDirectory nagios plugin configuration"
 msgstr ""
-
-#: config/nagios/class_nagiosConfig.inc:42
-msgid "LDAP tree"
-msgstr "Strom LDAP"
 
 #: config/nagios/class_nagiosConfig.inc:45
 msgid "Lconf prefix"

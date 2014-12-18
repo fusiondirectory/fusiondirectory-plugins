@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-12-03 17:22+0100\n"
-"PO-Revision-Date: 2014-12-03 16:53+0000\n"
+"POT-Creation-Date: 2014-12-16 21:56+0100\n"
+"PO-Revision-Date: 2014-12-15 17:21+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Chinese (http://www.transifex.com/projects/p/FusionDirectory-108/language/zh/)\n"
 "MIME-Version: 1.0\n"
@@ -44,7 +44,7 @@ msgstr "继承"
 #: admin/systems/class_workstationGeneric.inc:443
 #: admin/systems/class_systemManagement.inc:295
 #: admin/systems/class_systemManagement.inc:325
-msgid "Service infrastructure"
+msgid "Infrastructure service"
 msgstr ""
 
 #: admin/ogroups/goto/class_termgroup.inc:224
@@ -217,6 +217,7 @@ msgstr "Windows 工作站"
 
 #: admin/systems/system-list.xml:87 admin/systems/system-list.xml:234
 #: admin/systems/class_systemImport.inc:169
+#: admin/systems/class_serverGeneric.inc:46
 #: admin/systems/class_serverGeneric.inc:51
 #: admin/systems/class_serverGeneric.inc:52
 #: admin/systems/class_SelectDeviceType.inc:58
@@ -224,6 +225,7 @@ msgid "Server"
 msgstr "服务器"
 
 #: admin/systems/system-list.xml:95 admin/systems/system-list.xml:242
+#: admin/systems/class_workstationGeneric.inc:458
 #: admin/systems/class_workstationGeneric.inc:463
 #: admin/systems/class_workstationGeneric.inc:464
 #: admin/systems/class_SelectDeviceType.inc:58
@@ -231,6 +233,7 @@ msgid "Workstation"
 msgstr "工作站"
 
 #: admin/systems/system-list.xml:103 admin/systems/system-list.xml:250
+#: admin/systems/class_terminalGeneric.inc:81
 #: admin/systems/class_terminalGeneric.inc:86
 #: admin/systems/class_terminalGeneric.inc:87
 #: admin/systems/class_SelectDeviceType.inc:58
@@ -250,6 +253,7 @@ msgid "Phone"
 msgstr "电话"
 
 #: admin/systems/system-list.xml:127
+#: admin/systems/class_mobilePhoneGeneric.inc:36
 #: admin/systems/class_mobilePhoneGeneric.inc:41
 #: admin/systems/class_mobilePhoneGeneric.inc:42
 #: admin/systems/phoneSelect/phoneSelect-list.xml:22
@@ -257,6 +261,7 @@ msgid "Mobile phone"
 msgstr "移动电话"
 
 #: admin/systems/system-list.xml:135
+#: admin/systems/class_componentGeneric.inc:36
 msgid "Component"
 msgstr ""
 
@@ -297,10 +302,10 @@ msgid "Description"
 msgstr "描述"
 
 #: admin/systems/system-list.xml:201 admin/systems/class_serverService.inc:57
-#: admin/systems/services/terminal/class_serviceTerminal.inc:34
+#: admin/systems/services/terminal/class_serviceTerminal.inc:30
 #: admin/systems/services/cups/class_serviceCUPS.inc:85
 #: admin/systems/services/shares/class_serviceShare.inc:31
-#: admin/systems/services/ntp/class_serviceNTP.inc:31
+#: admin/systems/services/ntp/class_serviceNTP.inc:30
 #: admin/systems/services/ldap/class_serviceLDAP.inc:97
 msgid "Services"
 msgstr "服务"
@@ -357,7 +362,7 @@ msgid "Create ISO"
 msgstr ""
 
 #: admin/systems/system-list.xml:379
-msgid "Edit role"
+msgid "Edit system"
 msgstr ""
 
 #: admin/systems/system-list.xml:392
@@ -485,17 +490,8 @@ msgstr "选择这个终端要执行的动作"
 msgid "Network settings"
 msgstr ""
 
-#: admin/systems/class_workstationGeneric.inc:458
-#: admin/systems/class_terminalGeneric.inc:81
-#: admin/systems/class_serverGeneric.inc:46
-#: admin/systems/class_componentGeneric.inc:36
-#: admin/systems/class_mobilePhoneGeneric.inc:36
-#: admin/systems/services/ntp/class_serviceNTP.inc:43
-msgid "Generic"
-msgstr "通用配置"
-
 #: admin/systems/class_workstationGeneric.inc:459
-msgid "Workstation generic"
+msgid "Workstation information"
 msgstr ""
 
 #: admin/systems/class_printGeneric.inc:131
@@ -619,7 +615,7 @@ msgid "User"
 msgstr "用户"
 
 #: admin/systems/class_printGeneric.inc:1006
-msgid "Print generic"
+msgid "Printer information"
 msgstr ""
 
 #: admin/systems/class_printGeneric.inc:1023
@@ -745,7 +741,7 @@ msgid "Terminal server"
 msgstr "终端服务器"
 
 #: admin/systems/class_terminalGeneric.inc:82
-msgid "Terminal generic"
+msgid "Terminal information"
 msgstr ""
 
 #: admin/systems/ppd/class_printerPPDSelectionDialog.inc:91
@@ -941,11 +937,11 @@ msgid "server"
 msgstr "服务器"
 
 #: admin/systems/class_serverGeneric.inc:47
-msgid "Server generic"
+msgid "Server information"
 msgstr ""
 
 #: admin/systems/class_componentGeneric.inc:37
-msgid "Component generic"
+msgid "Component information"
 msgstr ""
 
 #: admin/systems/class_componentGeneric.inc:64
@@ -957,7 +953,7 @@ msgid "A short description of the component"
 msgstr ""
 
 #: admin/systems/class_mobilePhoneGeneric.inc:37
-msgid "Mobile phone generic"
+msgid "Mobile phone information"
 msgstr ""
 
 #: admin/systems/class_mobilePhoneGeneric.inc:63
@@ -1113,23 +1109,26 @@ msgstr "系统设置"
 msgid "Systems Management"
 msgstr ""
 
-#: admin/systems/services/terminal/class_serviceTerminal.inc:33
-#: admin/systems/services/terminal/class_serviceTerminal.inc:34
-#: admin/systems/services/terminal/class_serviceTerminal.inc:48
+#: admin/systems/services/terminal/class_serviceTerminal.inc:29
+#: admin/systems/services/terminal/class_serviceTerminal.inc:30
+#: admin/systems/services/terminal/class_serviceTerminal.inc:41
 msgid "Terminal service"
 msgstr ""
 
-#: admin/systems/services/terminal/class_serviceTerminal.inc:51
+#: admin/systems/services/terminal/class_serviceTerminal.inc:44
 msgid "Temporary disable login"
 msgstr "临时禁用登录"
 
-#: admin/systems/services/terminal/class_serviceTerminal.inc:52
-#: admin/systems/services/terminal/class_serviceTerminal.inc:63
-msgid " "
+#: admin/systems/services/terminal/class_serviceTerminal.inc:45
+msgid "Disables the login on this terminal server"
 msgstr ""
 
-#: admin/systems/services/terminal/class_serviceTerminal.inc:62
+#: admin/systems/services/terminal/class_serviceTerminal.inc:54
 msgid "Supported session types"
+msgstr ""
+
+#: admin/systems/services/terminal/class_serviceTerminal.inc:55
+msgid "The session types supported by this terminal server"
 msgstr ""
 
 #: admin/systems/services/cups/class_serviceCUPS.inc:43
@@ -1213,16 +1212,24 @@ msgstr "警告"
 msgid "Invalid value in encodings : %s"
 msgstr ""
 
-#: admin/systems/services/ntp/class_serviceNTP.inc:30
+#: admin/systems/services/ntp/class_serviceNTP.inc:29
 msgid "Time service"
 msgstr ""
 
-#: admin/systems/services/ntp/class_serviceNTP.inc:31
+#: admin/systems/services/ntp/class_serviceNTP.inc:30
 msgid "Time service - NTP"
 msgstr ""
 
-#: admin/systems/services/ntp/class_serviceNTP.inc:47
-msgid "Time server"
+#: admin/systems/services/ntp/class_serviceNTP.inc:41
+msgid "Informations"
+msgstr ""
+
+#: admin/systems/services/ntp/class_serviceNTP.inc:45
+msgid "Time servers"
+msgstr ""
+
+#: admin/systems/services/ntp/class_serviceNTP.inc:45
+msgid "List of time sources to use"
 msgstr ""
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:35

@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-12-03 17:22+0100\n"
-"PO-Revision-Date: 2014-12-09 17:41+0000\n"
+"POT-Creation-Date: 2014-12-16 21:56+0100\n"
+"PO-Revision-Date: 2014-12-15 17:21+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/FusionDirectory-108/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -277,6 +277,7 @@ msgstr "Hai chiesto di stampare senza aver definito una stampante !"
 
 #: personal/faxaccount/class_gofaxAccount.inc:796
 #: personal/faxaccount/faxNumberSelect/faxNumberSelect-list.xml:56
+#: config/fax/class_faxConfig.inc:42
 msgid "Fax"
 msgstr "Fax"
 
@@ -367,10 +368,6 @@ msgstr ""
 #: config/fax/class_faxConfig.inc:29
 msgid "FusionDirectory fax plugin configuration"
 msgstr ""
-
-#: config/fax/class_faxConfig.inc:42
-msgid "LDAP tree"
-msgstr "Struttura LDAP"
 
 #: config/fax/class_faxConfig.inc:45
 msgid "Fax RDN"

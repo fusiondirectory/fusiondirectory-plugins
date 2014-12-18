@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-12-03 17:22+0100\n"
-"PO-Revision-Date: 2014-12-03 16:52+0000\n"
+"POT-Creation-Date: 2014-12-16 21:56+0100\n"
+"PO-Revision-Date: 2014-12-15 17:12+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/FusionDirectory-108/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -123,6 +123,7 @@ msgid "Could contact OPSI server"
 msgstr "Potrebbe contattare il server OPSI"
 
 #: admin/opsi/class_opsiProfileManagement.inc:33
+#: config/opsi/class_opsiConfig.inc:42
 msgid "OPSI"
 msgstr "OPSI"
 
@@ -267,10 +268,6 @@ msgstr "Configurazione di OPSI"
 #: config/opsi/class_opsiConfig.inc:29
 msgid "FusionDirectory OPSI plugin configuration"
 msgstr "Configurazione del plugin OPSI per FusionDirectory"
-
-#: config/opsi/class_opsiConfig.inc:42
-msgid "LDAP tree"
-msgstr "Struttura LDAP"
 
 #: config/opsi/class_opsiConfig.inc:45
 msgid "OPSI RDN"

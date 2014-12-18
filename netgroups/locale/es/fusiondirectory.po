@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-12-03 17:22+0100\n"
-"PO-Revision-Date: 2014-12-03 16:52+0000\n"
+"POT-Creation-Date: 2014-12-16 21:56+0100\n"
+"PO-Revision-Date: 2014-12-15 17:21+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/FusionDirectory-108/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -19,12 +19,13 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: admin/netgroups/class_netgroup.inc:50
-msgid "Generic"
-msgstr "Genérico"
+#: config/netgroups/class_netgroupConfig.inc:42
+msgid "Netgroup"
+msgstr ""
 
 #: admin/netgroups/class_netgroup.inc:51
-msgid "Generic NIS Netgroup settings"
-msgstr "Parámetros genéricos de NIS Netgroup"
+msgid "NIS Netgroup settings"
+msgstr ""
 
 #: admin/netgroups/class_netgroup.inc:54
 #: admin/systems/netgroups/class_netgroupSystem.inc:26
@@ -96,10 +97,6 @@ msgstr ""
 
 #: config/netgroups/class_netgroupConfig.inc:29
 msgid "FusionDirectory netgroup plugin configuration"
-msgstr ""
-
-#: config/netgroups/class_netgroupConfig.inc:42
-msgid "LDAP tree"
 msgstr ""
 
 #: config/netgroups/class_netgroupConfig.inc:45

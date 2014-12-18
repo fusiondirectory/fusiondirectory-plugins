@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-12-03 17:22+0100\n"
-"PO-Revision-Date: 2014-12-03 16:41+0000\n"
+"POT-Creation-Date: 2014-12-16 21:56+0100\n"
+"PO-Revision-Date: 2014-12-16 21:06+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Russian Petrine orthography (http://www.transifex.com/projects/p/FusionDirectory-108/language/ru@petr1708/)\n"
 "MIME-Version: 1.0\n"
@@ -29,9 +29,7 @@ msgstr ""
 
 #: admin/groups/mail/class_groupMail.inc:79
 #: admin/systems/services/postfix/class_servicePostfix.inc:44
-#: personal/mail/class_mailAccount.inc:97
-#: config/mail/class_mailPluginConfig.inc:108
-msgid "Generic"
+msgid "Informations"
 msgstr ""
 
 #: admin/groups/mail/class_groupMail.inc:86
@@ -215,7 +213,8 @@ msgid "Rules"
 msgstr ""
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:116
-msgid "Edit spam ruleEdit spam rule"
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:124
+msgid "Edit spam rule"
 msgstr ""
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:119
@@ -226,17 +225,13 @@ msgstr ""
 msgid "Rule"
 msgstr ""
 
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:124
-msgid "Edit spam rule"
-msgstr ""
-
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:31
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:32
 msgid "Antivirus service"
 msgstr ""
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:46
-msgid "Generic virus filtering"
+msgid "Virus filtering"
 msgstr ""
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:50
@@ -273,6 +268,10 @@ msgstr ""
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:68
 msgid "Max directory recursions"
+msgstr ""
+
+#: admin/systems/services/virus/class_serviceAntiVirus.inc:68
+msgid "Maximum number of directory recursions"
 msgstr ""
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:73
@@ -317,10 +316,6 @@ msgstr ""
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:113
 msgid "Maximum compression ratio"
-msgstr ""
-
-#: admin/systems/services/virus/class_serviceAntiVirus.inc:113
-msgid " "
 msgstr ""
 
 #: admin/systems/services/imap/class_serviceIMAP.inc:32
@@ -385,6 +380,10 @@ msgstr ""
 #: personal/mail/class_mailAccount.inc:80
 #: config/mail/class_mailPluginConfig.inc:41
 msgid "Mail settings"
+msgstr ""
+
+#: personal/mail/class_mailAccount.inc:97
+msgid "Mail account"
 msgstr ""
 
 #: personal/mail/class_mailAccount.inc:100
@@ -617,4 +616,8 @@ msgstr ""
 
 #: config/mail/class_mailPluginConfig.inc:90
 msgid "Prefix to add for mail shared folders."
+msgstr ""
+
+#: config/mail/class_mailPluginConfig.inc:108
+msgid "Generic"
 msgstr ""

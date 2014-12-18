@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-12-03 17:22+0100\n"
-"PO-Revision-Date: 2014-12-03 16:52+0000\n"
+"POT-Creation-Date: 2014-12-16 21:56+0100\n"
+"PO-Revision-Date: 2014-12-15 23:10+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/FusionDirectory-108/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -48,7 +48,7 @@ msgstr "Datei, die argonaut verwenden wird um seine Task ID während des Bootens
 
 #: admin/systems/argonaut/class_argonautClient.inc:135
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:56
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:79
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:71
 #: admin/systems/services/argonaut/class_argonautServer.inc:79
 msgid "Log directory"
 msgstr "Log Verzeichnis"
@@ -79,7 +79,6 @@ msgid "Argonaut Fuse settings"
 msgstr "Argonaut Fuse Einstellungen"
 
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:32
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:32
 #: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:33
 #: admin/systems/services/argonaut/class_argonautServer.inc:32
 #: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:33
@@ -112,60 +111,88 @@ msgstr "Pxelinux cfg Pfad"
 msgid "Path where argonaut-fuse should store pxelinux.cfg"
 msgstr "Pfad wo argonaut-fuse pxelinux.cfg speichern soll"
 
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:31
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:32
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:29
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:30
 msgid "Argonaut Mirror settings"
 msgstr "Argonaut Mirror-Einstellungen"
 
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:46
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:41
 msgid "Argonaut mirror settings"
 msgstr "Argonaut Mirror-Einstellungen"
 
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:49
-msgid "Local debian mirror directory"
-msgstr "Lokales Debianmirror-Verzeichnis"
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:44
+msgid "Local Debian mirror directory"
+msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:58
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:52
 msgid "Argonaut Debconf Crawler configuration"
 msgstr "Argonaut Debconf Crawler Konfiguration"
 
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:61
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:55
 msgid "Local packages folder"
 msgstr "Lokale Paketeordner"
 
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:62
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:56
 msgid "Folder in which the crawler will store packages during analysis"
 msgstr "Ordner in dem der Crawler Paket während der Analyse speichern wird"
 
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:70
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:63
 msgid "Argonaut Repository configuration"
 msgstr "Argonaut Repository Konfiguration"
 
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:73
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:66
 msgid "Proxy"
 msgstr "Proxy"
 
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:84
-msgid "Errors"
-msgstr "Fehler"
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:67
+msgid "Specifies the http proxy (like Squid) to use for http and hftp method"
+msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:91
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:71
+msgid "Directory in which logs should be stored"
+msgstr ""
+
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:76
+msgid "Ignore errors"
+msgstr ""
+
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:77
+msgid ""
+"Causes debmirror to ignore missing or broken deb and source files but still "
+"be pedantic about checking meta files"
+msgstr ""
+
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:82
 msgid "Source"
 msgstr "Quelle"
 
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:98
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:82
+msgid "Include source in the mirror"
+msgstr ""
+
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:87
 msgid "GPG Check"
 msgstr "GPG Check"
 
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:105
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:87
+msgid "Fail if the Release.gpg file is missing"
+msgstr ""
+
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:92
 msgid "Contents"
 msgstr "Inhalt"
 
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:112
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:93
+msgid ""
+"Additionally download Contents.<arch>.gz files (Note that these files can be"
+" relatively big and can change frequently)"
+msgstr ""
+
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:98
 msgid "Verbose"
 msgstr "Ausführlich"
 
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:113
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:98
 msgid "Wether to activate verbose mode"
 msgstr "Ob der verbose-Modus aktiviert werden soll"
 
@@ -206,7 +233,7 @@ msgstr "Ob der argonaut-Server erfolgreich abgeschlossene Aufgaben löschen soll
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:55
 msgid "Get packages informations"
-msgstr ""
+msgstr "Paketinformationen holen"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:56
 msgid ""
@@ -401,8 +428,8 @@ msgstr "Die ausgewählten Einträge sind fehlerhaft und werden nicht berücksich
 
 #: addons/argonaut/class_argonautImportFile.inc:134
 #: addons/argonaut/class_argonautQueue.inc:350
-msgid "Service infrastructure"
-msgstr "Dienst-Infrastruktur"
+msgid "Infrastructure service"
+msgstr ""
 
 #: addons/argonaut/class_argonautImportFile.inc:141
 #, php-format
@@ -639,7 +666,7 @@ msgstr "Es ist kein argonaut-Server konfiguriert"
 #: include/class_supportDaemon.inc:609
 #, php-format
 msgid "Could not read \"%s\"!"
-msgstr ""
+msgstr "\"%s\" konnte nicht gelesen werden!"
 
 #: include/class_supportDaemon.inc:613
 #, php-format

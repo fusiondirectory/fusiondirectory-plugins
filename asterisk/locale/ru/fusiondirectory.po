@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-12-03 17:22+0100\n"
-"PO-Revision-Date: 2014-12-03 16:52+0000\n"
+"POT-Creation-Date: 2014-12-16 21:56+0100\n"
+"PO-Revision-Date: 2014-12-15 17:21+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/FusionDirectory-108/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -176,6 +176,7 @@ msgid "LDAP error"
 msgstr "Ошибка LDAP"
 
 #: admin/ogroups/asterisk/class_phonequeue.inc:864
+#: admin/systems/asterisk/class_phoneGeneric.inc:472
 #: admin/systems/asterisk/class_phoneGeneric.inc:477
 #: personal/phoneaccount/class_phoneAccount.inc:999
 #: personal/phoneaccount/class_phoneAccount.inc:1012
@@ -499,10 +500,9 @@ msgstr ""
 msgid "Configuration error"
 msgstr ""
 
-#: admin/macro/class_gofonMacro.inc:536
-#: admin/systems/asterisk/class_phoneGeneric.inc:472
-msgid "Generic"
-msgstr "Общее"
+#: admin/macro/class_gofonMacro.inc:536 admin/macro/class_gofonMacro.inc:541
+msgid "Asterisk macro"
+msgstr ""
 
 #: admin/macro/class_gofonMacro.inc:537
 msgid "Asterisk macro management"
@@ -510,10 +510,6 @@ msgstr ""
 
 #: admin/macro/class_gofonMacro.inc:539
 msgid "GOfon macro"
-msgstr ""
-
-#: admin/macro/class_gofonMacro.inc:541
-msgid "Asterisk macro"
 msgstr ""
 
 #: admin/macro/class_gofonMacro.inc:545
@@ -623,7 +619,7 @@ msgid "IP address"
 msgstr ""
 
 #: admin/systems/asterisk/class_phoneGeneric.inc:473
-msgid "Phone generic"
+msgid "Phone information"
 msgstr ""
 
 #: admin/systems/asterisk/class_phoneGeneric.inc:476
@@ -924,15 +920,12 @@ msgid "Phone settings"
 msgstr "Настройки телефона"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:28
+#: config/asterisk/class_asteriskPluginConfig.inc:41
 msgid "Asterisk"
 msgstr ""
 
 #: config/asterisk/class_asteriskPluginConfig.inc:29
 msgid "Asterisk plugin configuration"
-msgstr ""
-
-#: config/asterisk/class_asteriskPluginConfig.inc:41
-msgid "LDAP tree"
 msgstr ""
 
 #: config/asterisk/class_asteriskPluginConfig.inc:44
