@@ -138,7 +138,7 @@ class opsiSoftwareList extends simplePlugin
       $localboots = $s_daemon->append_call('OPSI.get_localboots', array($this->macAddress), array('args' => array($opsi_args)));
       if ($s_daemon->is_error()) {
         msg_dialog::display(
-          _('Could contact OPSI server'),
+          _('Failed to contact OPSI server'),
           msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
         );
         return;
