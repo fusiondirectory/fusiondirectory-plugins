@@ -189,7 +189,7 @@ class opsiProductProperties extends simplePlugin
       );
       if ($s_daemon->is_error()) {
         msg_dialog::display(
-          _('Could contact OPSI server'),
+          _('Failed to contact OPSI server'),
           msgPool::siError($s_daemon->get_error()), ERROR_DIALOG
         );
         return;

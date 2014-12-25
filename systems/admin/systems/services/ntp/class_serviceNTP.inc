@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2013  FusionDirectory
+  Copyright (C) 2011-2014  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -19,11 +19,10 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class serviceNTP extends simpleService {
-
+class serviceNTP extends simpleService
+{
   var $objectclasses    = array("goNtpServer");
 
-  /* Return plugin informations for acl handling */
   static function plInfo()
   {
     return array(
@@ -35,19 +34,16 @@ class serviceNTP extends simpleService {
     );
   }
 
- /* The main function : information about attributes */
   static function getAttributesInfo ()
   {
     return array (
       'section1' => array (
-        'name'  => _('Generic'),
+        'name'  => _('Informations'),
         'attrs' => array (
           new SetAttribute (
             new StringAttribute (
-              _('Time server'),
-              '',
-              'goTimeSource',
-              FALSE
+              _('Time servers'), _('List of time sources to use'),
+              'goTimeSource', FALSE
             )
           )
         )

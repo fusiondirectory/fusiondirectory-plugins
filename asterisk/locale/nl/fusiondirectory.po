@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-08-18 16:07+0200\n"
-"PO-Revision-Date: 2014-08-28 10:52+0000\n"
+"POT-Creation-Date: 2014-12-16 21:56+0100\n"
+"PO-Revision-Date: 2014-12-15 17:21+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Dutch (http://www.transifex.com/projects/p/FusionDirectory-108/language/nl/)\n"
 "MIME-Version: 1.0\n"
@@ -82,20 +82,16 @@ msgstr "Er moet minstens 1 server met een asterisk databank bestaan om een telef
 #: admin/conference/class_phoneConferenceGeneric.inc:709
 #: personal/phoneaccount/class_phoneAccount.inc:1350
 #: personal/phoneaccount/class_phoneAccount.inc:1669
-#: admin/ogroups/asterisk/phonequeue.tpl.c:17
-#: admin/conference/generic.tpl.c:20 personal/phoneaccount/generic.tpl.c:11
 msgid "Home server"
 msgstr "Home server"
 
 #: admin/ogroups/asterisk/class_phonequeue.inc:281
 #: admin/ogroups/asterisk/class_phonequeue.inc:871
-#: admin/ogroups/asterisk/phonequeue.tpl.c:23
 msgid "Timeout"
 msgstr "Timeout"
 
 #: admin/ogroups/asterisk/class_phonequeue.inc:284
 #: admin/ogroups/asterisk/class_phonequeue.inc:896
-#: admin/ogroups/asterisk/phonequeue.tpl.c:26
 msgid "Retry"
 msgstr "Opnieuw proberen"
 
@@ -105,7 +101,6 @@ msgstr "Wachtrij lengte"
 
 #: admin/ogroups/asterisk/class_phonequeue.inc:290
 #: admin/ogroups/asterisk/class_phonequeue.inc:874
-#: admin/ogroups/asterisk/phonequeue.tpl.c:35
 msgid "Announce frequency"
 msgstr "Aankondigingsfrequentie"
 
@@ -182,6 +177,7 @@ msgid "LDAP error"
 msgstr "LDAP fout"
 
 #: admin/ogroups/asterisk/class_phonequeue.inc:864
+#: admin/systems/asterisk/class_phoneGeneric.inc:472
 #: admin/systems/asterisk/class_phoneGeneric.inc:477
 #: personal/phoneaccount/class_phoneAccount.inc:999
 #: personal/phoneaccount/class_phoneAccount.inc:1012
@@ -197,37 +193,30 @@ msgid "Phone group"
 msgstr "Telefoon groep"
 
 #: admin/ogroups/asterisk/class_phonequeue.inc:872
-#: admin/ogroups/asterisk/phonequeue.tpl.c:32
 msgid "Max queue length"
 msgstr "Maximale wachtrij lengte"
 
 #: admin/ogroups/asterisk/class_phonequeue.inc:875
-#: admin/ogroups/asterisk/phonequeue.tpl.c:86
 msgid "Allow the called user to transfer his call"
 msgstr "Sta de gebelde gebruiker toe het gesprek over te zetten"
 
 #: admin/ogroups/asterisk/class_phonequeue.inc:876
-#: admin/ogroups/asterisk/phonequeue.tpl.c:89
 msgid "Allows calling user to transfer call"
 msgstr "Sta de bellende gebruiker toe het gesprek over te zetten"
 
 #: admin/ogroups/asterisk/class_phonequeue.inc:877
-#: admin/ogroups/asterisk/phonequeue.tpl.c:92
 msgid "Allow the called to hangup by pressing *"
 msgstr "Sta de gebelde gebruiker toe op te hangen door * in te drukken"
 
 #: admin/ogroups/asterisk/class_phonequeue.inc:878
-#: admin/ogroups/asterisk/phonequeue.tpl.c:98
 msgid "Ring instead of playing background music"
 msgstr "Rinkel i.p.v. achtergrond muziek afspelen"
 
 #: admin/ogroups/asterisk/class_phonequeue.inc:879
-#: admin/ogroups/asterisk/phonequeue.tpl.c:95
 msgid "Allows calling to hangup by pressing *"
 msgstr "Sta de bellende gebruiker toe op te hangen door * in te drukken"
 
 #: admin/ogroups/asterisk/class_phonequeue.inc:881
-#: admin/ogroups/asterisk/phonequeue.tpl.c:47
 msgid "Music on hold"
 msgstr "Wachtstand muziek"
 
@@ -273,8 +262,6 @@ msgstr "Wachtrij telefoonnummer"
 
 #: admin/ogroups/asterisk/class_phonequeue.inc:892
 #: admin/conference/class_phoneConferenceGeneric.inc:707
-#: admin/ogroups/asterisk/phonequeue.tpl.c:20
-#: admin/conference/generic.tpl.c:23
 msgid "Language"
 msgstr "Taal"
 
@@ -283,7 +270,6 @@ msgid "Method"
 msgstr "Methode"
 
 #: admin/ogroups/asterisk/class_phonequeue.inc:894
-#: admin/ogroups/asterisk/phonequeue.tpl.c:83
 msgid "Announce holdtime"
 msgstr "Aankondigings wachttijd"
 
@@ -310,8 +296,6 @@ msgstr "Conferentie"
 #: admin/systems/asterisk/class_phoneGeneric.inc:351
 #: admin/systems/asterisk/class_phoneGeneric.inc:366
 #: admin/systems/asterisk/class_phoneGeneric.inc:482
-#: admin/conference/conf-filter.tpl.c:5 admin/macro/macro-filter.tpl.c:5
-#: admin/macro/parameter.tpl.c:5
 msgid "Name"
 msgstr "Naam"
 
@@ -319,8 +303,6 @@ msgstr "Naam"
 #: admin/conference/class_phoneConferenceGeneric.inc:704
 #: admin/macro/class_gofonMacro.inc:547 admin/macro/macro-list.xml:49
 #: admin/systems/asterisk/class_phoneGeneric.inc:484
-#: admin/conference/generic.tpl.c:29 admin/macro/generic.tpl.c:17
-#: admin/systems/asterisk/phone.tpl.c:8
 msgid "Description"
 msgstr "Omschrijving"
 
@@ -354,7 +336,6 @@ msgid ""
 msgstr "De vorige geselecteerde asterisk home server '%s' is niet langer beschikbaar!"
 
 #: admin/conference/class_phoneConferenceGeneric.inc:315
-#: admin/conference/generic.tpl.c:47
 msgid "PIN"
 msgstr "PIN-code"
 
@@ -370,7 +351,6 @@ msgstr "Levensduur"
 #: personal/phoneaccount/class_phoneAccount.inc:656
 #: personal/phoneaccount/class_phoneAccount.inc:1519
 #: personal/phoneaccount/class_phoneAccount.inc:1695
-#: admin/conference/remove.tpl.c:2 admin/macro/remove.tpl.c:2
 msgid "Warning"
 msgstr "Waarschuwing"
 
@@ -406,8 +386,6 @@ msgstr "Asterisk conferentie"
 #: admin/conference/class_phoneConferenceGeneric.inc:703
 #: admin/macro/class_gofonMacro.inc:546
 #: admin/systems/asterisk/class_phoneGeneric.inc:483
-#: admin/conference/generic.tpl.c:17 admin/macro/generic.tpl.c:14
-#: admin/systems/asterisk/phone.tpl.c:5
 msgid "Base"
 msgstr "Basis"
 
@@ -416,17 +394,14 @@ msgid "Conference PIN"
 msgstr "Conferentie PIN"
 
 #: admin/conference/class_phoneConferenceGeneric.inc:710
-#: admin/conference/generic.tpl.c:44
 msgid "Preset PIN"
 msgstr "Voorgedefinieerde PIN-code"
 
 #: admin/conference/class_phoneConferenceGeneric.inc:711
-#: admin/conference/generic.tpl.c:50
 msgid "Record conference"
 msgstr "Conferentie opnemen"
 
 #: admin/conference/class_phoneConferenceGeneric.inc:712
-#: admin/conference/generic.tpl.c:59
 msgid "Play music on hold"
 msgstr "Muziek afspelen bij wachtstand"
 
@@ -526,10 +501,9 @@ msgstr "Kan inzending niet verwijderen want het is in gebruik door '%s'!"
 msgid "Configuration error"
 msgstr "Configuratie error"
 
-#: admin/macro/class_gofonMacro.inc:536
-#: admin/systems/asterisk/class_phoneGeneric.inc:472
-msgid "Generic"
-msgstr "Algemeen"
+#: admin/macro/class_gofonMacro.inc:536 admin/macro/class_gofonMacro.inc:541
+msgid "Asterisk macro"
+msgstr "Asterisk macro"
 
 #: admin/macro/class_gofonMacro.inc:537
 msgid "Asterisk macro management"
@@ -539,17 +513,11 @@ msgstr "Asterisk macro beheer"
 msgid "GOfon macro"
 msgstr "Gofon macro"
 
-#: admin/macro/class_gofonMacro.inc:541
-msgid "Asterisk macro"
-msgstr "Asterisk macro"
-
-#: admin/macro/class_gofonMacro.inc:545 admin/macro/generic.tpl.c:2
-#: admin/macro/generic.tpl.c:5 admin/macro/paste_generic.tpl.c:2
-#: admin/macro/paste_generic.tpl.c:5
+#: admin/macro/class_gofonMacro.inc:545
 msgid "Macro name"
 msgstr "Macronaam"
 
-#: admin/macro/class_gofonMacro.inc:548 admin/macro/generic.tpl.c:8
+#: admin/macro/class_gofonMacro.inc:548
 msgid "Display name"
 msgstr "Getoonde naam"
 
@@ -586,7 +554,6 @@ msgid "Asterisk macro parameter"
 msgstr "Asterisk macro parameter"
 
 #: admin/macro/class_gofonMacroParameters.inc:234
-#: personal/phoneaccount/generic.tpl.c:35
 msgid "Phone macro"
 msgstr "Telefoon macro"
 
@@ -653,8 +620,8 @@ msgid "IP address"
 msgstr "IP adres"
 
 #: admin/systems/asterisk/class_phoneGeneric.inc:473
-msgid "Phone generic"
-msgstr "Generieke telefoon"
+msgid "Phone information"
+msgstr ""
 
 #: admin/systems/asterisk/class_phoneGeneric.inc:476
 #: personal/phoneaccount/class_phoneAccount.inc:1668
@@ -783,22 +750,18 @@ msgid "All entries are readonly"
 msgstr "Alle inzendingen zijn lees-enkel"
 
 #: addons/fonreports/class_fonreport.inc:428
-#: addons/fonreports/contents.tpl.c:32
 msgid "Date"
 msgstr "Datum"
 
 #: addons/fonreports/class_fonreport.inc:429
-#: addons/fonreports/contents.tpl.c:35
 msgid "Source"
 msgstr "Bron"
 
 #: addons/fonreports/class_fonreport.inc:430
-#: addons/fonreports/contents.tpl.c:38
 msgid "Destination"
 msgstr "Doel"
 
 #: addons/fonreports/class_fonreport.inc:431
-#: addons/fonreports/contents.tpl.c:41
 msgid "Channel"
 msgstr "Kanaal"
 
@@ -811,7 +774,6 @@ msgid "Disposition"
 msgstr "Dispositie"
 
 #: addons/fonreports/class_fonreport.inc:434
-#: addons/fonreports/contents.tpl.c:50
 msgid "Duration"
 msgstr "Tijdsduur"
 
@@ -875,8 +837,6 @@ msgstr "Er moet minstens 1 server met asterisk databank bestaan om een telefoon 
 
 #: personal/phoneaccount/class_phoneAccount.inc:1354
 #: personal/phoneaccount/class_phoneAccount.inc:1357
-#: personal/phoneaccount/generic.tpl.c:29
-#: personal/phoneaccount/paste_generic.tpl.c:11
 msgid "Voicemail PIN"
 msgstr "Voicemail PIN-code"
 
@@ -885,13 +845,10 @@ msgid "Between 1-4 charactes"
 msgstr "Tussen 1-4 karakters"
 
 #: personal/phoneaccount/class_phoneAccount.inc:1362
-#: personal/phoneaccount/generic.tpl.c:32
-#: personal/phoneaccount/paste_generic.tpl.c:14
 msgid "Phone PIN"
 msgstr "Telefoon PIN-code"
 
 #: personal/phoneaccount/class_phoneAccount.inc:1394
-#: admin/conference/generic.tpl.c:38 admin/conference/paste_generic.tpl.c:8
 msgid "Phone number"
 msgstr "Telefoonnummer"
 
@@ -960,21 +917,17 @@ msgid "Click the 'Edit' button below to change informations in this dialog"
 msgstr "Gebruik de 'Bewerk' knop hieronder om de informatie in deze dialoog te veranderen"
 
 #: personal/phoneaccount/main.inc:134
-#: personal/phoneaccount/paste_generic.tpl.c:2
 msgid "Phone settings"
 msgstr "Telefoon instellingen"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:28
+#: config/asterisk/class_asteriskPluginConfig.inc:41
 msgid "Asterisk"
 msgstr "Asterisk"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:29
 msgid "Asterisk plugin configuration"
 msgstr "Asterisk plugin configuratie"
-
-#: config/asterisk/class_asteriskPluginConfig.inc:41
-msgid "LDAP tree"
-msgstr "LDAP tree"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:44
 msgid "Phone RDN"
@@ -1019,338 +972,3 @@ msgstr "Voicemail contexten"
 #: config/asterisk/class_asteriskPluginConfig.inc:72
 msgid "Available voicemail contexts"
 msgstr "Beschikbare voicemail contexten"
-
-#: admin/ogroups/asterisk/phonequeue.tpl.c:2
-msgid ""
-"Only users with the same asterisk home server will be included to this "
-"queue."
-msgstr "Enkel gebruikers met dezelfde asterisk home server worden toegevoegd aan deze wachtrij"
-
-#: admin/ogroups/asterisk/phonequeue.tpl.c:5
-#: personal/phoneaccount/generic.tpl.c:2
-#: personal/phoneaccount/paste_generic.tpl.c:5
-msgid "Phone numbers"
-msgstr "Telefoonnummers"
-
-#: admin/ogroups/asterisk/phonequeue.tpl.c:8
-msgid "Up"
-msgstr "Omhoog"
-
-#: admin/ogroups/asterisk/phonequeue.tpl.c:11
-msgid "Down"
-msgstr "Omlaag"
-
-#: admin/ogroups/asterisk/phonequeue.tpl.c:14
-#: admin/conference/generic.tpl.c:41
-msgid "Options"
-msgstr "Opties"
-
-#: admin/ogroups/asterisk/phonequeue.tpl.c:29
-msgid "Strategy"
-msgstr "Strategie"
-
-#: admin/ogroups/asterisk/phonequeue.tpl.c:38
-msgid "(in seconds)"
-msgstr "(in seconden)"
-
-#: admin/ogroups/asterisk/phonequeue.tpl.c:41
-msgid "Queue sound setup"
-msgstr "Wachtrij geluidsinstellingen"
-
-#: admin/ogroups/asterisk/phonequeue.tpl.c:44
-msgid "Use music on hold instead of ringing"
-msgstr "Gebruik wachtstand muziek i.p.v. rinkelen"
-
-#: admin/ogroups/asterisk/phonequeue.tpl.c:50
-msgid "Welcome sound file"
-msgstr "Welkomst geluidsbestand"
-
-#: admin/ogroups/asterisk/phonequeue.tpl.c:53
-msgid "Announce message"
-msgstr "Aankondigings bericht"
-
-#: admin/ogroups/asterisk/phonequeue.tpl.c:56
-msgid "Sound file for 'You are next ...'"
-msgstr "Geluidsbestand voor 'U bent de volgende ...'"
-
-#: admin/ogroups/asterisk/phonequeue.tpl.c:59
-msgid "'There are ...'"
-msgstr "'Er zijn ...'"
-
-#: admin/ogroups/asterisk/phonequeue.tpl.c:62
-msgid "'... calls waiting'"
-msgstr "'...oproepen wachtend'"
-
-#: admin/ogroups/asterisk/phonequeue.tpl.c:65
-msgid "'Thank you' message"
-msgstr "'Dank U' bericht"
-
-#: admin/ogroups/asterisk/phonequeue.tpl.c:68
-msgid "'minutes' sound file"
-msgstr "'minuten' geluidsbestand"
-
-#: admin/ogroups/asterisk/phonequeue.tpl.c:71
-msgid "'seconds' sound file"
-msgstr "'seconden' geluidsbestand"
-
-#: admin/ogroups/asterisk/phonequeue.tpl.c:74
-msgid "Hold sound file"
-msgstr "Wachtstand geluidsbestand"
-
-#: admin/ogroups/asterisk/phonequeue.tpl.c:77
-msgid "Less Than sound file"
-msgstr "Minder Dan geluidsbestand"
-
-#: admin/ogroups/asterisk/phonequeue.tpl.c:80
-msgid "Phone attributes "
-msgstr "Telefoon attributen "
-
-#: admin/conference/conf-filter.tpl.c:2 admin/macro/macro-filter.tpl.c:2
-#: addons/fonreports/contents.tpl.c:2
-msgid "Filter"
-msgstr "Filter"
-
-#: admin/conference/generic.tpl.c:2
-msgid "Properties"
-msgstr "Eigenschappen"
-
-#: admin/conference/generic.tpl.c:5 admin/conference/paste_generic.tpl.c:2
-msgid "Conference name"
-msgstr "Conferentienaam"
-
-#: admin/conference/generic.tpl.c:8 admin/conference/paste_generic.tpl.c:5
-msgid "Name of conference to create"
-msgstr "Naam van de aan te maken conferentie"
-
-#: admin/conference/generic.tpl.c:11
-msgid "Type"
-msgstr "Type"
-
-#: admin/conference/generic.tpl.c:14
-msgid "Choose subtree to place conference in"
-msgstr "Kies de subtree waaronder de conferentie geplaatst wordt"
-
-#: admin/conference/generic.tpl.c:26
-msgid "Select language"
-msgstr "Selecteer taal"
-
-#: admin/conference/generic.tpl.c:32
-msgid "Descriptive text for department"
-msgstr "Omschrijving voor de afdeling"
-
-#: admin/conference/generic.tpl.c:35
-msgid "Lifetime (in days)"
-msgstr "Geldigheidsduur (in dagen)"
-
-#: admin/conference/generic.tpl.c:53
-msgid "Sound file format"
-msgstr "Geluidsbestand formaat"
-
-#: admin/conference/generic.tpl.c:56
-msgid "Choose subtree to place department in"
-msgstr "Selecteer de subtree waaronder deze afdeling geplaatst wordt"
-
-#: admin/conference/generic.tpl.c:62
-msgid "Activate session menu"
-msgstr "Activeer sessiemenu"
-
-#: admin/conference/generic.tpl.c:65
-msgid "Announce users joining or leaving the conference"
-msgstr "Kondig binnenkomende en verlatende gebruikers aan"
-
-#: admin/conference/generic.tpl.c:68
-msgid "Count users"
-msgstr "Tel het aantal gebruikers"
-
-#: admin/conference/remove.tpl.c:5 admin/macro/remove.tpl.c:5
-msgid ""
-"Please double check if you really want to do this since there is no way for "
-"FusionDirectory to get your data back."
-msgstr "Verifieer aub dubbel of je dit echt wil doen want er is geen manier voor FusionDirectory om je data terug te plaatsen."
-
-#: admin/conference/remove.tpl.c:8 admin/macro/remove.tpl.c:8
-msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr "Indien u zeker bent drukt u dan 'Verwijderen' om door te gaan of 'Annuleren' om te annuleren."
-
-#: admin/macro/generic.tpl.c:11
-msgid "Macro name to be displayed"
-msgstr "Weer te geven macronaam"
-
-#: admin/macro/generic.tpl.c:20
-msgid "Visible for user"
-msgstr "Zichtbaar voor gebruikers"
-
-#: admin/macro/generic.tpl.c:23
-msgid "Macro text"
-msgstr "Macro tekst"
-
-#: admin/macro/parameter.tpl.c:2
-msgid "Argument"
-msgstr "Argument"
-
-#: admin/macro/parameter.tpl.c:8
-msgid "type"
-msgstr "type"
-
-#: admin/macro/parameter.tpl.c:11
-msgid "Default value"
-msgstr "Standaard waarde"
-
-#: admin/macro/parameter.tpl.c:14
-msgid "You are not allowed to view the macro parameter settings"
-msgstr "Je hebt geen toelating om de macro parameter te bekijken"
-
-#: admin/systems/asterisk/phonesettings.tpl.c:2
-msgid "Advanced phone settings"
-msgstr "Geavanceerde telefoon instellingen"
-
-#: admin/systems/asterisk/phonesettings.tpl.c:5
-msgid "Phone type"
-msgstr "Telefoontype"
-
-#: admin/systems/asterisk/phonesettings.tpl.c:8
-#: admin/systems/asterisk/phonesettings.tpl.c:14
-#: admin/systems/asterisk/phonesettings.tpl.c:20
-#: admin/systems/asterisk/phonesettings.tpl.c:26
-#: admin/systems/asterisk/phonesettings.tpl.c:35
-#: admin/systems/asterisk/phonesettings.tpl.c:47
-#: admin/systems/asterisk/phonesettings.tpl.c:65
-msgid "Choose a phone type"
-msgstr "Kies een telefoontype"
-
-#: admin/systems/asterisk/phonesettings.tpl.c:11
-msgid "Mode"
-msgstr "Modus"
-
-#: admin/systems/asterisk/phonesettings.tpl.c:17
-msgid "DTMF mode"
-msgstr "DTMF modus"
-
-#: admin/systems/asterisk/phonesettings.tpl.c:23
-#: admin/systems/asterisk/phonesettings.tpl.c:38
-msgid "Default IP"
-msgstr "Standaard IP"
-
-#: admin/systems/asterisk/phonesettings.tpl.c:29
-#: admin/systems/asterisk/phonesettings.tpl.c:41
-msgid "Response timeout"
-msgstr "Reageer timeout"
-
-#: admin/systems/asterisk/phonesettings.tpl.c:32
-msgid "Modus"
-msgstr "Modus"
-
-#: admin/systems/asterisk/phonesettings.tpl.c:44
-msgid "Authtype"
-msgstr "Authorisatietype"
-
-#: admin/systems/asterisk/phonesettings.tpl.c:50
-msgid "Secret"
-msgstr "Wachtwoord"
-
-#: admin/systems/asterisk/phonesettings.tpl.c:53
-msgid "GoFonInkeys"
-msgstr "GOFonInKeys"
-
-#: admin/systems/asterisk/phonesettings.tpl.c:56
-msgid "GoFonOutKeys"
-msgstr "GoFonOutKeys"
-
-#: admin/systems/asterisk/phonesettings.tpl.c:59
-msgid "Account code"
-msgstr "Account code"
-
-#: admin/systems/asterisk/phonesettings.tpl.c:62
-msgid "Trunk lines"
-msgstr "Trunk lijnen"
-
-#: admin/systems/asterisk/phonesettings.tpl.c:68
-msgid "Hosts that are allowed to connect"
-msgstr "Hosts die mogen verbinden"
-
-#: admin/systems/asterisk/phonesettings.tpl.c:71
-#: admin/systems/asterisk/phonesettings.tpl.c:77
-msgid "List of alternative mail addresses"
-msgstr "Lijst met alternatieve E-mail adressen"
-
-#: admin/systems/asterisk/phonesettings.tpl.c:74
-msgid "Hosts that are not allowed to connect"
-msgstr "Hosts die niet mogen verbinden"
-
-#: admin/systems/asterisk/phonesettings.tpl.c:80
-msgid "MSN"
-msgstr "MSN"
-
-#: admin/systems/asterisk/phone.tpl.c:2
-msgid "Phone name"
-msgstr "Telefoonnaam"
-
-#: addons/fonreports/contents.tpl.c:5
-msgid "Search for"
-msgstr "Zoek naar"
-
-#: addons/fonreports/contents.tpl.c:8
-msgid "Enter user name to search for"
-msgstr "Voer de te zoeken gebruikersnaam in"
-
-#: addons/fonreports/contents.tpl.c:11 addons/fonreports/contents.tpl.c:26
-msgid "in"
-msgstr "in"
-
-#: addons/fonreports/contents.tpl.c:14
-msgid "Select subtree to base search on"
-msgstr "Selecteer de subtree waarbinnen de zoekopdracht plaatsvindt"
-
-#: addons/fonreports/contents.tpl.c:17
-msgid "on"
-msgstr "aan"
-
-#: addons/fonreports/contents.tpl.c:20
-msgid "Select server to search on"
-msgstr "Selecteer de server om opzoekingen op te doen"
-
-#: addons/fonreports/contents.tpl.c:23
-msgid "during"
-msgstr "gedurende"
-
-#: addons/fonreports/contents.tpl.c:29
-msgid "Search"
-msgstr "Zoeken"
-
-#: addons/fonreports/contents.tpl.c:44
-msgid "Application"
-msgstr "Programma"
-
-#: addons/fonreports/contents.tpl.c:47
-msgid "Status"
-msgstr "Status"
-
-#: addons/fonreports/contents.tpl.c:53
-msgid "Search returned no results..."
-msgstr "De zoekopdracht gaf geen resultaten terug..."
-
-#: personal/phoneaccount/generic.tpl.c:5
-#: personal/phoneaccount/paste_generic.tpl.c:8
-msgid "Telephone hardware"
-msgstr "Telefoon hardware"
-
-#: personal/phoneaccount/generic.tpl.c:8
-msgid "Telephone"
-msgstr "Telefoon"
-
-#: personal/phoneaccount/generic.tpl.c:14
-msgid "Select the accounts home server"
-msgstr "Selecteer de accounts home server"
-
-#: personal/phoneaccount/generic.tpl.c:17
-msgid "Context"
-msgstr "Context"
-
-#: personal/phoneaccount/generic.tpl.c:20
-#: personal/phoneaccount/generic.tpl.c:26
-msgid "Select the accounts context"
-msgstr "Selecteer de account context"
-
-#: personal/phoneaccount/generic.tpl.c:23
-msgid "Voicemail context"
-msgstr "Voicemail context"

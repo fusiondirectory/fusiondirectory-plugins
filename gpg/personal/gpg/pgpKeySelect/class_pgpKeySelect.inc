@@ -57,6 +57,13 @@ class pgpKeySelect extends management
     parent::__construct($config, $ui, '', $headpage);
   }
 
+  function renderList()
+  {
+    $smarty = get_smarty();
+    $smarty->assign('objectFilters', array());
+    return parent::renderList();
+  }
+
   static function filterSingleValue($value, $func)
   {
     if (count($value) == 0) {
@@ -215,7 +222,7 @@ class PgpKeyAttribute extends GenericDialogAttribute
   protected function htmlIds()
   {
     $id = $this->getHtmlId();
-    $ids = array_merge(array('add'.$id), $this->attribute->htmlIds());
+    $ids = array('add'.$id.'_dialog');
     $nb_values = count($this->value);
     for ($i = 0; $i < $nb_values; ++$i) {
       $ids[] = $id.'_del_'.$i;

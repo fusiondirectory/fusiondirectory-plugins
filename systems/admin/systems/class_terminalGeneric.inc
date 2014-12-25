@@ -78,8 +78,8 @@ class terminalGeneric extends workstationGeneric
   static function plInfo()
   {
     return array(
-      'plShortName'   => _('Generic'),
-      'plDescription' => _('Terminal generic'),
+      'plShortName'   => _('Terminal'),
+      'plDescription' => _('Terminal information'),
       'plSelfModify'  => FALSE,
       'plObjectType'  => array('terminal' =>
         array(

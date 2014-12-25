@@ -47,8 +47,8 @@ class netgroup extends simplePlugin
 
   static function plInfo() {
     return array(
-      'plShortName'   => _('Generic'),
-      'plDescription' => _('Generic NIS Netgroup settings'),
+      'plShortName'   => _('Netgroup'),
+      'plDescription' => _('NIS Netgroup settings'),
       'plSelfModify'  => FALSE,
       'plObjectType'  => array('netgroup' => array(
         'name'    => _('NIS Netgroup'),

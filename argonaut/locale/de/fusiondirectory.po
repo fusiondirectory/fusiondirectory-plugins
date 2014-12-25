@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-08-18 16:07+0200\n"
-"PO-Revision-Date: 2014-09-21 15:10+0000\n"
+"POT-Creation-Date: 2014-12-16 21:56+0100\n"
+"PO-Revision-Date: 2014-12-15 23:10+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/FusionDirectory-108/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -48,7 +48,7 @@ msgstr "Datei, die argonaut verwenden wird um seine Task ID während des Bootens
 
 #: admin/systems/argonaut/class_argonautClient.inc:135
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:56
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:79
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:71
 #: admin/systems/services/argonaut/class_argonautServer.inc:79
 msgid "Log directory"
 msgstr "Log Verzeichnis"
@@ -79,7 +79,6 @@ msgid "Argonaut Fuse settings"
 msgstr "Argonaut Fuse Einstellungen"
 
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:32
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:32
 #: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:33
 #: admin/systems/services/argonaut/class_argonautServer.inc:32
 #: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:33
@@ -112,60 +111,88 @@ msgstr "Pxelinux cfg Pfad"
 msgid "Path where argonaut-fuse should store pxelinux.cfg"
 msgstr "Pfad wo argonaut-fuse pxelinux.cfg speichern soll"
 
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:31
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:32
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:29
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:30
 msgid "Argonaut Mirror settings"
 msgstr "Argonaut Mirror-Einstellungen"
 
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:46
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:41
 msgid "Argonaut mirror settings"
 msgstr "Argonaut Mirror-Einstellungen"
 
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:49
-msgid "Local debian mirror directory"
-msgstr "Lokales Debianmirror-Verzeichnis"
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:44
+msgid "Local Debian mirror directory"
+msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:58
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:52
 msgid "Argonaut Debconf Crawler configuration"
 msgstr "Argonaut Debconf Crawler Konfiguration"
 
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:61
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:55
 msgid "Local packages folder"
 msgstr "Lokale Paketeordner"
 
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:62
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:56
 msgid "Folder in which the crawler will store packages during analysis"
 msgstr "Ordner in dem der Crawler Paket während der Analyse speichern wird"
 
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:70
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:63
 msgid "Argonaut Repository configuration"
 msgstr "Argonaut Repository Konfiguration"
 
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:73
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:66
 msgid "Proxy"
 msgstr "Proxy"
 
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:84
-msgid "Errors"
-msgstr "Fehler"
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:67
+msgid "Specifies the http proxy (like Squid) to use for http and hftp method"
+msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:91
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:71
+msgid "Directory in which logs should be stored"
+msgstr ""
+
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:76
+msgid "Ignore errors"
+msgstr ""
+
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:77
+msgid ""
+"Causes debmirror to ignore missing or broken deb and source files but still "
+"be pedantic about checking meta files"
+msgstr ""
+
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:82
 msgid "Source"
 msgstr "Quelle"
 
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:98
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:82
+msgid "Include source in the mirror"
+msgstr ""
+
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:87
 msgid "GPG Check"
 msgstr "GPG Check"
 
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:105
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:87
+msgid "Fail if the Release.gpg file is missing"
+msgstr ""
+
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:92
 msgid "Contents"
 msgstr "Inhalt"
 
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:112
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:93
+msgid ""
+"Additionally download Contents.<arch>.gz files (Note that these files can be"
+" relatively big and can change frequently)"
+msgstr ""
+
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:98
 msgid "Verbose"
 msgstr "Ausführlich"
 
-#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:113
+#: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:98
 msgid "Wether to activate verbose mode"
 msgstr "Ob der verbose-Modus aktiviert werden soll"
 
@@ -206,7 +233,7 @@ msgstr "Ob der argonaut-Server erfolgreich abgeschlossene Aufgaben löschen soll
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:55
 msgid "Get packages informations"
-msgstr ""
+msgstr "Paketinformationen holen"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:56
 msgid ""
@@ -387,7 +414,6 @@ msgstr "Kann Warteschlangeneinträge nicht laden: %s"
 #: addons/argonaut/class_argonautImportFile.inc:100
 #: addons/argonaut/class_argonautImportFile.inc:141
 #: addons/argonaut/deploy-list.xml:99
-#: addons/argonaut/argonaut_import_file.tpl.c:68
 msgid "Import"
 msgstr "Importieren"
 
@@ -402,8 +428,8 @@ msgstr "Die ausgewählten Einträge sind fehlerhaft und werden nicht berücksich
 
 #: addons/argonaut/class_argonautImportFile.inc:134
 #: addons/argonaut/class_argonautQueue.inc:350
-msgid "Service infrastructure"
-msgstr "Dienst-Infrastruktur"
+msgid "Infrastructure service"
+msgstr ""
 
 #: addons/argonaut/class_argonautImportFile.inc:141
 #, php-format
@@ -411,13 +437,11 @@ msgid "Import complete: %s events successfully send, %s failed"
 msgstr "Import abgeschlossen: %s Vorgänge importiert, %s fehlgeschlagen"
 
 #: addons/argonaut/class_argonautImportFile.inc:177
-#: addons/argonaut/argonaut_import_file.tpl.c:47
 msgid "MAC"
 msgstr "MAC"
 
 #: addons/argonaut/class_argonautImportFile.inc:180
 #: addons/argonaut/deploy-list.xml:14
-#: addons/argonaut/argonaut_import_file.tpl.c:50
 msgid "Event"
 msgstr "Ereignis"
 
@@ -563,18 +587,15 @@ msgid "Winstation"
 msgstr "Windows-Arbeitsstation"
 
 #: addons/argonaut/events/eventTargetSystems-list.xml:47
-#: addons/argonaut/argonaut_import_file.tpl.c:53
 msgid "Object group"
 msgstr "Objektgruppe"
 
 #: addons/argonaut/events/eventTargetSystems-list.xml:73
 #: addons/argonaut/deploy-list.xml:36
-#: addons/argonaut/events/eventTargetSystems-filter.tpl.c:20
 msgid "Name"
 msgstr "Name"
 
 #: addons/argonaut/events/eventTargetSystems-list.xml:89
-#: addons/argonaut/argonaut_import_file.tpl.c:62
 msgid "IP"
 msgstr "IP"
 
@@ -587,7 +608,6 @@ msgid "List of queued jobs"
 msgstr "Liste der geplanten Vorgänge"
 
 #: addons/argonaut/deploy-list.xml:27
-#: addons/argonaut/events/DaemonEvent.tpl.c:17
 msgid "Target"
 msgstr "Ziel"
 
@@ -600,12 +620,10 @@ msgid "Period"
 msgstr "Intervall"
 
 #: addons/argonaut/deploy-list.xml:61
-#: addons/argonaut/events/DaemonEvent.tpl.c:2
 msgid "Schedule"
 msgstr "Plan"
 
 #: addons/argonaut/deploy-list.xml:69
-#: addons/argonaut/events/DaemonEvent.tpl.c:11
 msgid "Status"
 msgstr "Status"
 
@@ -648,169 +666,9 @@ msgstr "Es ist kein argonaut-Server konfiguriert"
 #: include/class_supportDaemon.inc:609
 #, php-format
 msgid "Could not read \"%s\"!"
-msgstr ""
+msgstr "\"%s\" konnte nicht gelesen werden!"
 
 #: include/class_supportDaemon.inc:613
 #, php-format
 msgid "\"%s\" is not a file!"
 msgstr "\"%s\" ist keine Datei!"
-
-#: addons/argonaut/argonaut_import_file.tpl.c:2
-msgid "Import jobs"
-msgstr "Vorgänge importieren"
-
-#: addons/argonaut/argonaut_import_file.tpl.c:5
-msgid ""
-"You can import a list of jobs into the FusionDirectory job queue. This "
-"should be a semicolon seperated list of items in the following format:"
-msgstr "Sie können eine Liste von Jobs, der FusionDirectory Jobschlange hinzufügen. Dies sollte durch Semikolon getrennte Liste von Items in folgenden Format sein:"
-
-#: addons/argonaut/argonaut_import_file.tpl.c:8
-msgid "timestamp"
-msgstr "Zeitstempel"
-
-#: addons/argonaut/argonaut_import_file.tpl.c:11
-msgid "MAC-address"
-msgstr "MAC-Adresse"
-
-#: addons/argonaut/argonaut_import_file.tpl.c:14
-msgid "job type"
-msgstr "Auftrags-Typ"
-
-#: addons/argonaut/argonaut_import_file.tpl.c:17
-msgid "object group"
-msgstr "Objektgruppe"
-
-#: addons/argonaut/argonaut_import_file.tpl.c:20
-msgid "import base"
-msgstr "Basis für Import"
-
-#: addons/argonaut/argonaut_import_file.tpl.c:23
-msgid "full hostname"
-msgstr "Voll qualifizierter Hostname"
-
-#: addons/argonaut/argonaut_import_file.tpl.c:26
-msgid "IP-address"
-msgstr "IP-Adresse"
-
-#: addons/argonaut/argonaut_import_file.tpl.c:29
-msgid "DHCP group"
-msgstr "DHCP-Gruppe"
-
-#: addons/argonaut/argonaut_import_file.tpl.c:32
-msgid "Example"
-msgstr "Beispiel"
-
-#: addons/argonaut/argonaut_import_file.tpl.c:35
-msgid "Select list to import"
-msgstr "Wählen Sie die zu importierende Liste"
-
-#: addons/argonaut/argonaut_import_file.tpl.c:38
-msgid "Browse"
-msgstr "Durchsuchen"
-
-#: addons/argonaut/argonaut_import_file.tpl.c:41
-msgid "Upload"
-msgstr "Hochladen"
-
-#: addons/argonaut/argonaut_import_file.tpl.c:44
-#: addons/argonaut/events/DaemonEvent.tpl.c:20
-msgid "Timestamp"
-msgstr "Zeitstempel"
-
-#: addons/argonaut/argonaut_import_file.tpl.c:56
-#: addons/argonaut/deploy-list.tpl.c:2
-msgid "Base"
-msgstr "Basis"
-
-#: addons/argonaut/argonaut_import_file.tpl.c:59
-msgid "FQDN"
-msgstr "FQDN"
-
-#: addons/argonaut/argonaut_import_file.tpl.c:65
-msgid "DHCP"
-msgstr "DHCP"
-
-#: addons/argonaut/events/target_list.tpl.c:2
-msgid "Apply"
-msgstr "Anwenden"
-
-#: addons/argonaut/events/target_list.tpl.c:5
-msgid "Cancel"
-msgstr "Abbrechen"
-
-#: addons/argonaut/events/DaemonEvent.tpl.c:5
-msgid "System list"
-msgstr "Systemliste"
-
-#: addons/argonaut/events/DaemonEvent.tpl.c:8
-msgid "ID"
-msgstr "ID"
-
-#: addons/argonaut/events/DaemonEvent.tpl.c:14
-msgid "Result"
-msgstr "Ergebnis"
-
-#: addons/argonaut/events/eventTargetSystems-filter.tpl.c:2
-msgid "Filter"
-msgstr "Filter"
-
-#: addons/argonaut/events/eventTargetSystems-filter.tpl.c:5
-msgid "Show servers"
-msgstr "Zeige Server"
-
-#: addons/argonaut/events/eventTargetSystems-filter.tpl.c:8
-msgid "Show workstations"
-msgstr "Zeige Arbeitsstationen"
-
-#: addons/argonaut/events/eventTargetSystems-filter.tpl.c:11
-msgid "Show terminals"
-msgstr "Zeige Terminals"
-
-#: addons/argonaut/events/eventTargetSystems-filter.tpl.c:14
-msgid "Show winstations"
-msgstr "Winstations anzeigen"
-
-#: addons/argonaut/events/eventTargetSystems-filter.tpl.c:17
-msgid "Filter by IP address range"
-msgstr "IP-Bereichsfilter"
-
-#: addons/argonaut/events/timestamp_select.tpl.c:2
-msgid "Year"
-msgstr "Jahr"
-
-#: addons/argonaut/events/timestamp_select.tpl.c:5
-msgid "Month"
-msgstr "Monat"
-
-#: addons/argonaut/events/timestamp_select.tpl.c:8
-msgid "Day"
-msgstr "Tag"
-
-#: addons/argonaut/events/timestamp_select.tpl.c:11
-msgid "Hour"
-msgstr "Stunde"
-
-#: addons/argonaut/events/timestamp_select.tpl.c:14
-msgid "Minute"
-msgstr "Minute"
-
-#: addons/argonaut/events/timestamp_select.tpl.c:17
-msgid "Second"
-msgstr "Sekunde"
-
-#: addons/argonaut/events/timestamp_select.tpl.c:20
-msgid "Periodical job"
-msgstr "Periodischer Auftrag"
-
-#: addons/argonaut/events/timestamp_select.tpl.c:23
-msgid "Job intervall"
-msgstr "Aufstrags-Intervall"
-
-#: addons/argonaut/remove.tpl.c:2
-msgid "Warning"
-msgstr "Warnung"
-
-#: addons/argonaut/remove.tpl.c:5
-msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr "Wenn Sie sicher sind, drücken Sie 'Entfernen' um fortzufahren oder 'Abbrechen' zum Abbruch."

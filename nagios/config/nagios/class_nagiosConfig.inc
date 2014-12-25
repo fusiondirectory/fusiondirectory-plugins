@@ -39,7 +39,7 @@ class nagiosConfig extends simplePlugin
   {
     return array(
       'main' => array(
-        'name'  => _('LDAP tree'),
+        'name'  => _('Nagios'),
         'attrs' => array(
           new StringAttribute (
             _('Lconf prefix'), _('Prefix used for lconf LDAP fields'),

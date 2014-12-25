@@ -1003,7 +1003,7 @@ class printgeneric extends plugin
   {
     return array(
       'plShortName'   => _('Printer'),
-      'plDescription' => _('Print generic'),
+      'plDescription' => _('Printer information'),
       'plSelfModify'  => FALSE,
       'plPriority'    => 10,
       'plObjectType'  => array(

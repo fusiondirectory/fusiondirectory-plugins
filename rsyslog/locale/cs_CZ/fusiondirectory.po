@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-08-18 16:07+0200\n"
-"PO-Revision-Date: 2014-08-28 10:52+0000\n"
+"POT-Creation-Date: 2014-12-16 21:56+0100\n"
+"PO-Revision-Date: 2014-12-09 21:41+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/FusionDirectory-108/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
@@ -23,7 +23,7 @@ msgstr ""
 #: admin/systems/services/rsyslog/class_serviceSyslog.inc:30
 #: admin/systems/services/rsyslog/class_serviceSyslog.inc:31
 msgid "Logs service"
-msgstr ""
+msgstr "Služba provozních záznamů"
 
 #: admin/systems/services/rsyslog/class_serviceSyslog.inc:31
 msgid "Services"
@@ -31,7 +31,7 @@ msgstr "služby"
 
 #: admin/systems/services/rsyslog/class_serviceSyslog.inc:41
 msgid "Logging service"
-msgstr ""
+msgstr "Služba pořizování provozních záznamů"
 
 #: admin/systems/services/rsyslog/class_serviceSyslog.inc:44
 msgid "Driver"
@@ -104,7 +104,7 @@ msgstr "výstraha"
 msgid "Critical"
 msgstr "kritické"
 
-#: addons/rsyslog/class_rsyslog.inc:351 addons/rsyslog/rSyslog.tpl.c:26
+#: addons/rsyslog/class_rsyslog.inc:351
 msgid "Error"
 msgstr "chyba"
 
@@ -188,51 +188,3 @@ msgstr "výstraha záznamu"
 #: addons/rsyslog/class_rsyslog.inc:384
 msgid "Clock"
 msgstr "čas"
-
-#: addons/rsyslog/rSyslog.tpl.c:2
-msgid "Filter"
-msgstr "filtr"
-
-#: addons/rsyslog/rSyslog.tpl.c:5
-msgid "Server"
-msgstr "server"
-
-#: addons/rsyslog/rSyslog.tpl.c:8
-msgid "Host"
-msgstr "stroj"
-
-#: addons/rsyslog/rSyslog.tpl.c:11 addons/rsyslog/rSyslog.tpl.c:41
-msgid "Severity"
-msgstr "závažnost"
-
-#: addons/rsyslog/rSyslog.tpl.c:14
-msgid "From"
-msgstr "od"
-
-#: addons/rsyslog/rSyslog.tpl.c:17
-msgid "till"
-msgstr "na"
-
-#: addons/rsyslog/rSyslog.tpl.c:20 addons/rsyslog/rSyslog.tpl.c:23
-msgid "Search"
-msgstr "hledat"
-
-#: addons/rsyslog/rSyslog.tpl.c:29
-msgid "Date"
-msgstr "datum"
-
-#: addons/rsyslog/rSyslog.tpl.c:32
-msgid "Source"
-msgstr "zdroj"
-
-#: addons/rsyslog/rSyslog.tpl.c:35
-msgid "Header"
-msgstr "hlavička"
-
-#: addons/rsyslog/rSyslog.tpl.c:38
-msgid "Facility"
-msgstr "závažnost"
-
-#: addons/rsyslog/rSyslog.tpl.c:44
-msgid "Message"
-msgstr "zpráva"

@@ -39,7 +39,7 @@ class autofsConfig extends simplePlugin
   {
     return array(
       'main' => array(
-        'name'  => _('LDAP tree'),
+        'name'  => _('AutoFS'),
         'attrs' => array(
           new StringAttribute (
             _('AutoFS RDN'), _('Branch in which automount info will be stored'),

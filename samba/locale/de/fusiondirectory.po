@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-08-18 16:07+0200\n"
-"PO-Revision-Date: 2014-09-21 15:10+0000\n"
+"POT-Creation-Date: 2014-12-16 21:56+0100\n"
+"PO-Revision-Date: 2014-12-15 23:30+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/FusionDirectory-108/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -175,12 +175,12 @@ msgid "Allow Machine Password changes (default: 0 => off)"
 msgstr ""
 
 #: admin/systems/samba/class_winstationGeneric.inc:40
-msgid "Winstation generic"
-msgstr "Winstation generisch"
+msgid "Winstation"
+msgstr "Windows-Arbeitsstation"
 
 #: admin/systems/samba/class_winstationGeneric.inc:41
-msgid "Windows workstation generic"
-msgstr "Windows-Arbeitsstation (Allgemein)"
+msgid "Windows workstation information"
+msgstr ""
 
 #: admin/systems/samba/class_winstationGeneric.inc:45
 #: admin/systems/samba/class_winstationGeneric.inc:46
@@ -250,8 +250,8 @@ msgid "Samba settings"
 msgstr "Samba-Einstellungen"
 
 #: personal/samba/class_sambaAccount.inc:160
-msgid "Generic"
-msgstr "Allgemein"
+msgid "Samba profile"
+msgstr "Samba-Profil"
 
 #: personal/samba/class_sambaAccount.inc:166
 #: personal/samba/class_sambaAccount.inc:199
@@ -582,11 +582,3 @@ msgstr "sambaLMPasswort generieren"
 #: config/samba/class_sambaPluginConfig.inc:72
 msgid "Needed to be compliant with Windows <= 98 or Samba < 3.2"
 msgstr "Benötigt um Kompatibilität mit Windows <=98 oder Samba < 3.2 zu haben"
-
-#: personal/samba/sambaLogonHours.tpl.c:2
-msgid "Specify the hours this user is allowed to log in"
-msgstr "Wählen Sie die Stunden, in denen der Benutzer angemeldet sein darf"
-
-#: personal/samba/sambaLogonHours.tpl.c:5
-msgid "Hour"
-msgstr "Stunde"

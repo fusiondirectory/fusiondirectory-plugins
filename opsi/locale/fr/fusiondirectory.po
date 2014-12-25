@@ -4,15 +4,17 @@
 # 
 # Translators:
 # gallak <antoine.gallavardin@free.fr>, 2013
+# MCMic, 2014
 # fusiondirectory <contact@fusiondirectory.org>, 2013-2014
 # fusiondirectory <contact@fusiondirectory.org>, 2013
 # gallak <antoine.gallavardin@free.fr>, 2013
+# MCMic, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-08-18 16:07+0200\n"
-"PO-Revision-Date: 2014-08-28 10:52+0000\n"
+"POT-Creation-Date: 2014-12-16 21:56+0100\n"
+"PO-Revision-Date: 2014-12-16 08:40+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory-108/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -45,7 +47,7 @@ msgstr "Serveur OPSI"
 #: admin/opsi/class_opsiSoftwareList.inc:54
 #: admin/opsi/class_opsiProfile.inc:88
 msgid "OPSI server to use for deployment"
-msgstr "Serveur OPSI a utiliser pour le déploiement"
+msgstr "Serveur OPSI à utiliser pour le déploiement"
 
 #: admin/opsi/class_opsiOnDemandList.inc:54
 #: admin/opsi/class_opsiSoftwareList.inc:58
@@ -66,7 +68,7 @@ msgstr "Montrer les détails"
 
 #: admin/opsi/class_opsiOnDemandList.inc:58
 msgid "Show further information to the user"
-msgstr "Montrer plus d'informations à ,l'utilisateur"
+msgstr "Montrer plus d'informations à l'utilisateur"
 
 #: admin/opsi/class_opsiOnDemandList.inc:64
 #: admin/opsi/class_opsiSoftwareList.inc:64
@@ -76,7 +78,7 @@ msgstr "Logiciels"
 #: admin/opsi/class_opsiOnDemandList.inc:68
 #: admin/opsi/class_opsiSoftwareList.inc:81
 msgid "Localboot products"
-msgstr "Produit localboot OPSI"
+msgstr "Produits localboot"
 
 #: admin/opsi/class_opsiOnDemandList.inc:68
 msgid "The localboot products to put in this list"
@@ -89,7 +91,7 @@ msgstr "Liste OPSI"
 #: admin/opsi/class_opsiSoftwareList.inc:33
 #: admin/opsi/class_opsiSoftwareList.inc:37
 msgid "OPSI software list"
-msgstr "Liste des logiciels OPSI"
+msgstr "Liste de logiciels OPSI"
 
 #: admin/opsi/class_opsiSoftwareList.inc:68
 msgid "The localboot products to install with this list"
@@ -110,7 +112,7 @@ msgstr "Pas d'adresse mac"
 #: admin/opsi/class_opsiProfile.inc:177
 #, php-format
 msgid "Server %s has no mac address configured in the LDAP"
-msgstr "Le serveur %s n'a pas d'adresse mac configure dans le LDAP"
+msgstr "Le serveur %s n'a pas d'adresse mac configurée dans le LDAP"
 
 #: admin/opsi/class_opsiSoftwareList.inc:133
 #: admin/opsi/class_opsiProfile.inc:149 admin/opsi/class_opsiProfile.inc:183
@@ -125,6 +127,7 @@ msgid "Could contact OPSI server"
 msgstr "Impossible de contacter le serveur OPSI"
 
 #: admin/opsi/class_opsiProfileManagement.inc:33
+#: config/opsi/class_opsiConfig.inc:42
 msgid "OPSI"
 msgstr "OPSI"
 
@@ -152,7 +155,7 @@ msgstr "Entrées"
 
 #: admin/opsi/class_opsiProfile.inc:101
 msgid "Netboot product"
-msgstr "Produit netboot OPSI"
+msgstr "Produit netboot"
 
 #: admin/opsi/class_opsiProfile.inc:101
 msgid "The netboot product to use for this profile"
@@ -160,7 +163,7 @@ msgstr "Le produit netboot à utiliser pour ce profil"
 
 #: admin/opsi/class_opsiProfile.inc:106
 msgid "Software lists"
-msgstr "Liste des logiciels OPSI"
+msgstr "Listes de logiciels"
 
 #: admin/opsi/class_opsiProfile.inc:106
 msgid "Software lists that will be installed with this profile"
@@ -169,7 +172,7 @@ msgstr "Listes de logiciels qui seront installés avec ce profil"
 #: admin/opsi/class_opsiProfile.inc:211
 #, php-format
 msgid "%s (%s)"
-msgstr ""
+msgstr "%s (%s)"
 
 #: admin/systems/opsi/class_opsiClient.inc:33
 msgid "OPSI client"
@@ -189,7 +192,7 @@ msgstr "Serveur OPSI"
 
 #: admin/systems/opsi/class_opsiClient.inc:49
 msgid "The OPSI Server this client is connected to"
-msgstr "Serveur OPSI sur lequel le client est connecté"
+msgstr "Serveur OPSI sur lequel ce client est connecté"
 
 #: admin/systems/opsi/class_opsiClient.inc:53
 msgid "OPSI Profile"
@@ -224,7 +227,7 @@ msgstr "Services"
 
 #: admin/systems/services/opsi/class_serviceOPSI.inc:41
 msgid "OPSI Server informations"
-msgstr "Informations sur le serveur OPSI"
+msgstr "Informations du serveur OPSI"
 
 #: admin/systems/services/opsi/class_serviceOPSI.inc:44
 msgid "Server URI"
@@ -232,7 +235,7 @@ msgstr "URI du serveur"
 
 #: admin/systems/services/opsi/class_serviceOPSI.inc:44
 msgid "The URI to use for connection"
-msgstr "URI utilisé pour la connexion au serveur"
+msgstr "URI utilisé pour la connexion"
 
 #: admin/systems/services/opsi/class_serviceOPSI.inc:48
 msgid "User"
@@ -240,7 +243,7 @@ msgstr "Utilisateur"
 
 #: admin/systems/services/opsi/class_serviceOPSI.inc:48
 msgid "The user to use for connection"
-msgstr "Nom du compte utilisé pour la connexion"
+msgstr "Nom du compte à utiliser pour la connexion"
 
 #: admin/systems/services/opsi/class_serviceOPSI.inc:52
 msgid "Password"
@@ -248,7 +251,7 @@ msgstr "Mot de passe"
 
 #: admin/systems/services/opsi/class_serviceOPSI.inc:52
 msgid "The password to use for connection"
-msgstr "Mot de passe utilisé pour la connexion"
+msgstr "Mot de passe à utiliser pour la connexion"
 
 #: addons/opsi/class_opsiImport.inc:35 addons/opsi/class_opsiImport.inc:39
 msgid "OPSI import"
@@ -256,7 +259,7 @@ msgstr "Importation OPSI"
 
 #: addons/opsi/class_opsiImport.inc:36
 msgid "Import windows stations from OPSI into FD"
-msgstr "Importer stations Windows de OPSI dans FD"
+msgstr "Importer les stations Windows de OPSI dans FD"
 
 #: addons/opsi/class_opsiImport.inc:63
 msgid "Argonaut server is not available"
@@ -264,27 +267,16 @@ msgstr "Serveur Argonaut indisponible"
 
 #: config/opsi/class_opsiConfig.inc:28
 msgid "OPSI configuration"
-msgstr "Informations sur le serveur OPSI"
+msgstr "Configuration OPSI"
 
 #: config/opsi/class_opsiConfig.inc:29
 msgid "FusionDirectory OPSI plugin configuration"
 msgstr "Configuration du plugin OPSI"
 
-#: config/opsi/class_opsiConfig.inc:42
-msgid "LDAP tree"
-msgstr "Annuaire LDAP"
-
 #: config/opsi/class_opsiConfig.inc:45
 msgid "OPSI RDN"
-msgstr "RDN OPSI"
+msgstr "Branche OPSI"
 
 #: config/opsi/class_opsiConfig.inc:45
 msgid "Branch in which OPSI profiles will be stored"
-msgstr "Branche où seront stockés les profiles OPSI"
-
-#: addons/opsi/opsiimport.tpl.c:2
-msgid ""
-"Warning : Once you import your OPSI hosts into FusionDirectory, they will be"
-" managed by it, so if you delete them or deactivate their OPSI tab, they "
-"will be removed from OPSI."
-msgstr "Attention: Une fois que vous importez vos hôtes OPSI dans FusionDirectory, ils seront gérés par lui, donc si vous supprimez ou désactivez leur onglet OPSI, ils seront retirés de OPSI."
+msgstr "Branche où seront stockés les profils OPSI"

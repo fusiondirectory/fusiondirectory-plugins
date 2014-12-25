@@ -209,6 +209,8 @@ class AvailableSudoOptionAttribute extends SelectAttribute
     'DESC' => 'A colon separated list of editors allowed to be used with visudo'),
     'noexec_file'           => array('TYPE' => 'STRING',        'DEFAULT' => '/usr/lib/sudo/sudo_noexec.so',
     'DESC' => ''),
+    'secure_path'           => array('TYPE' => 'STRING',        'DEFAULT' => '',
+    'DESC' => 'Path used for every command run from sudo. If you don’t trust the people running sudo to have a sane PATH environment variable you may want to use this.'),
     'lecture'               => array('TYPE' => 'STRING_BOOL',   'DEFAULT' => 'once',
     'DESC' => 'This option controls when a short lecture will be printed along with the password prompt'),
     'lecture_file'          => array('TYPE' => 'STRING_BOOL',   'DEFAULT' => '',

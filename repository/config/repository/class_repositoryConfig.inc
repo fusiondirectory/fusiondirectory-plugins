@@ -39,7 +39,7 @@ class repositoryConfig extends simplePlugin
   {
     return array(
       'main' => array(
-        'name'  => _('LDAP tree'),
+        'name'  => _('Repository'),
         'attrs' => array(
           new StringAttribute (
             _('Repository RDN'), _('Branch in which repository objects will be stored'),

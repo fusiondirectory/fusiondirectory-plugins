@@ -217,7 +217,7 @@ class termgroup extends plugin
           $o_queue = new gosaSupportDaemon();
           $o_queue->append($tmp);
           if ($o_queue->is_error()) {
-            msg_dialog::display(_("Service infrastructure"),msgPool::siError($o_queue->get_error()),ERROR_DIALOG);
+            msg_dialog::display(_("Infrastructure service"),msgPool::siError($o_queue->get_error()),ERROR_DIALOG);
           }
         }
       } else {

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-08-18 16:07+0200\n"
-"PO-Revision-Date: 2014-08-28 10:45+0000\n"
+"POT-Creation-Date: 2014-12-16 21:56+0100\n"
+"PO-Revision-Date: 2014-12-12 07:41+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/FusionDirectory-108/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -49,7 +49,6 @@ msgid "LDAP error"
 msgstr "Ошибка LDAP"
 
 #: admin/ogroups/kolab/class_mailogroup.inc:184
-#: admin/ogroups/kolab/paste_mail.tpl.c:2
 msgid "Mail"
 msgstr "Почта"
 
@@ -81,8 +80,8 @@ msgid "Services"
 msgstr "Сервисы"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:82
-msgid "Generic"
-msgstr "Общее"
+msgid "Informations"
+msgstr ""
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:88
 msgid "Postfix mydomain"
@@ -327,85 +326,69 @@ msgstr ""
 msgid "policy for this mail address"
 msgstr ""
 
-#: personal/mail/kolab/class_mail-methods-kolab.inc:149
+#: personal/mail/kolab/class_mail-methods-kolab.inc:148
+#: personal/mail/kolab/class_mail-methods-kolab.inc:156
 #: personal/mail/kolab/class_mail-methods-kolab.inc:157
-#: personal/mail/kolab/class_mail-methods-kolab.inc:158
 msgid "Unspecified"
 msgstr ""
 
-#: personal/mail/kolab/class_mail-methods-kolab.inc:150
+#: personal/mail/kolab/class_mail-methods-kolab.inc:149
 msgid "Mails"
 msgstr ""
 
-#: personal/mail/kolab/class_mail-methods-kolab.inc:151
+#: personal/mail/kolab/class_mail-methods-kolab.inc:150
 msgid "Tasks"
 msgstr ""
 
-#: personal/mail/kolab/class_mail-methods-kolab.inc:152
+#: personal/mail/kolab/class_mail-methods-kolab.inc:151
 msgid "Journals"
 msgstr ""
 
-#: personal/mail/kolab/class_mail-methods-kolab.inc:153
+#: personal/mail/kolab/class_mail-methods-kolab.inc:152
 msgid "Calendar"
 msgstr ""
 
-#: personal/mail/kolab/class_mail-methods-kolab.inc:154
+#: personal/mail/kolab/class_mail-methods-kolab.inc:153
 msgid "Contacts"
 msgstr ""
 
-#: personal/mail/kolab/class_mail-methods-kolab.inc:155
+#: personal/mail/kolab/class_mail-methods-kolab.inc:154
 msgid "Notes"
 msgstr ""
 
-#: personal/mail/kolab/class_mail-methods-kolab.inc:159
+#: personal/mail/kolab/class_mail-methods-kolab.inc:158
 msgid "Inbox"
 msgstr ""
 
-#: personal/mail/kolab/class_mail-methods-kolab.inc:160
+#: personal/mail/kolab/class_mail-methods-kolab.inc:159
 msgid "Drafts"
 msgstr ""
 
-#: personal/mail/kolab/class_mail-methods-kolab.inc:161
+#: personal/mail/kolab/class_mail-methods-kolab.inc:160
 msgid "Sent"
 msgstr ""
 
-#: personal/mail/kolab/class_mail-methods-kolab.inc:162
+#: personal/mail/kolab/class_mail-methods-kolab.inc:161
 msgid "SPAM"
 msgstr ""
 
+#: personal/mail/kolab/class_mail-methods-kolab.inc:163
 #: personal/mail/kolab/class_mail-methods-kolab.inc:164
 #: personal/mail/kolab/class_mail-methods-kolab.inc:165
 #: personal/mail/kolab/class_mail-methods-kolab.inc:166
 #: personal/mail/kolab/class_mail-methods-kolab.inc:167
-#: personal/mail/kolab/class_mail-methods-kolab.inc:168
 msgid "Default"
 msgstr ""
 
-#: personal/mail/kolab/class_mail-methods-kolab.inc:183
+#: personal/mail/kolab/class_mail-methods-kolab.inc:182
 msgid ""
 "Mail settings cannot be removed while there are delegations configured!"
 msgstr ""
 
-#: personal/mail/kolab/class_mail-methods-kolab.inc:280
+#: personal/mail/kolab/class_mail-methods-kolab.inc:279
 msgid "Waiting for kolab to remove mail properties..."
 msgstr ""
 
-#: personal/mail/kolab/class_mail-methods-kolab.inc:283
+#: personal/mail/kolab/class_mail-methods-kolab.inc:282
 msgid "Please remove the mail settings first!"
-msgstr ""
-
-#: admin/ogroups/kolab/mail.tpl.c:2
-msgid "Mail distribution list"
-msgstr ""
-
-#: admin/ogroups/kolab/mail.tpl.c:5
-msgid "Primary address"
-msgstr "Основной адрес"
-
-#: admin/ogroups/kolab/mail.tpl.c:8
-msgid "Primary mail address for this distribution list"
-msgstr ""
-
-#: admin/ogroups/kolab/paste_mail.tpl.c:5
-msgid "Please enter a mail address"
 msgstr ""

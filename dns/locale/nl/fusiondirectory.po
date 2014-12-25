@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-08-18 16:07+0200\n"
-"PO-Revision-Date: 2014-08-28 10:52+0000\n"
+"POT-Creation-Date: 2014-12-16 21:56+0100\n"
+"PO-Revision-Date: 2014-12-15 17:11+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Dutch (http://www.transifex.com/projects/p/FusionDirectory-108/language/nl/)\n"
 "MIME-Version: 1.0\n"
@@ -57,7 +57,6 @@ msgstr "Reverse zone"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:296
 #: admin/systems/services/dns/class_serviceDNS.inc:541
-#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:47
 msgid "TTL"
 msgstr "TTL"
 
@@ -108,12 +107,11 @@ msgstr "Restart service"
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:339
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:344
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:352
-#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:5
 msgid "Zone name"
 msgstr "Zone-naam"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:533
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:428
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:432
 msgid "Network class"
 msgstr "Netwerk klasse"
 
@@ -122,34 +120,31 @@ msgid "Zone entry editor"
 msgstr "Zone invoer editor"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:535
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:356
 msgid "Primary dns server"
 msgstr "Primaire dns server"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:536
-#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:32
 msgid "Mail address"
 msgstr "E-mail adres"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:537
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:356
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:360
 msgid "Serial"
 msgstr "Serieel"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:538
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:360
-#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:38
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:364
 msgid "Refresh"
 msgstr "Ververs"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:539
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:372
-#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:41
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:376
 msgid "Retry"
 msgstr "Opnieuw proberen"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:540
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:368
-#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:44
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:372
 msgid "Expire"
 msgstr "Vervaltijd"
 
@@ -158,7 +153,6 @@ msgid "MX records"
 msgstr "MX records"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:543
-#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:17
 msgid "Zone records"
 msgstr "Zone records"
 
@@ -186,40 +180,42 @@ msgid "MxRecord"
 msgstr "MxRecord"
 
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:274
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:510
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:514
 msgid "Delete"
 msgstr "Verwijderen"
 
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:352
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:378
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:382
 msgid "Only lowercase allowed"
 msgstr "Hoofdletter zijn niet toegestaan voor de zone-naam."
 
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:364
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:356
+msgid "This field should be a domain name"
+msgstr ""
+
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:368
 msgid "Time to life"
 msgstr "Time to life"
 
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:387
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:407
-#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:8
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:391
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:411
 msgid "Network address"
 msgstr "Netwerkadres"
 
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:415
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:420
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:425
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:419
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:424
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:429
 #, php-format
 msgid ""
 "The specified network address and the network class (%s/%s) do not match!"
 msgstr "De bepaalde netwerkelementen adres en het netwerk klasse (%s/%s) komen niet overeen!"
 
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:516
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:520
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:439
 msgid "Add"
 msgstr "Toevoegen"
 
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:121
-#: admin/systems/services/dns/serviceDNSeditZoneEntries.tpl.c:8
 msgid "New entry"
 msgstr "Nieuwe regel"
 
@@ -347,85 +343,3 @@ msgstr ""
 #: config/dns/class_dnsConfig.inc:45
 msgid "Should FD store a final dot at the end of domains?"
 msgstr ""
-
-#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:2
-msgid "Generic"
-msgstr "Algemeen"
-
-#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:11
-msgid "Netmask"
-msgstr "Netmask"
-
-#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:14
-msgid "Zone is in use, network settings can't be modified."
-msgstr "Zone in gebruik, kan netwerk instellingen niet wijzigen"
-
-#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:20
-msgid "Can't be edited because the zone wasn't saved right now."
-msgstr "Kan niet bewerkt worden, aangezien de zone momenteel niet opgeslagen is."
-
-#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:23
-msgid "Edit"
-msgstr "Bewerken"
-
-#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:26
-msgid "SOA record"
-msgstr "SOA record"
-
-#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:29
-msgid "Primary dns server for this zone"
-msgstr "Primaire DNS server voor deze zone"
-
-#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:35
-msgid "Serial number (automatically incremented)"
-msgstr "Serienummer (automatisch opgehoogd)"
-
-#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:50
-msgid "MxRecords"
-msgstr "MX records"
-
-#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:53
-msgid "Global zone records"
-msgstr "Globale zone records"
-
-#: admin/systems/services/dns/serviceDNS.tpl.c:2
-msgid "DNS take over initiated"
-msgstr "DNS overneming gestart"
-
-#: admin/systems/services/dns/serviceDNS.tpl.c:5
-msgid ""
-"This includes 'all' DNS zones that are located within this server. Please "
-"double check if your really want to do this."
-msgstr "Dit geldt voor 'alle' DNS-zones binnen deze server. Dubbel check of je dit echt wilt doen."
-
-#: admin/systems/services/dns/serviceDNS.tpl.c:8
-msgid "Following objects will be taken over"
-msgstr "De volgende objecten worden overgenomen"
-
-#: admin/systems/services/dns/serviceDNS.tpl.c:11
-msgid "Take over DNS configuration from"
-msgstr "Neem het DNS-configuratie over van"
-
-#: admin/systems/services/dns/serviceDNS.tpl.c:14
-msgid "Take over"
-msgstr "Neem over"
-
-#: admin/systems/services/dns/serviceDNS.tpl.c:17
-msgid "Zones"
-msgstr "Zones"
-
-#: admin/systems/services/dns/serviceDNSeditZoneEntries.tpl.c:2
-msgid ""
-"This dialog allows you to configure all components of this DNS zone on a "
-"single list."
-msgstr "Deze dialoog maakt het mogelijk om alle componenten van deze DNS zone binnen een enkele lijst te configureren"
-
-#: admin/systems/services/dns/serviceDNSeditZoneEntries.tpl.c:5
-msgid ""
-"This dialog can't be used until the currently edited zone was saved or the "
-"zone entry exists in the ldap database."
-msgstr "Deze dialoog kan niet gebruikt worden, totdat de zone die nu bewerkt wordt opgeslagen wordt of de zone invoerregel in de LDAP database bestaat."
-
-#: admin/systems/services/dns/serviceDNSeditZoneEntries.tpl.c:11
-msgid "Create a new DNS zone entry"
-msgstr "Een nieuwe DNS zone regel aanmaken"

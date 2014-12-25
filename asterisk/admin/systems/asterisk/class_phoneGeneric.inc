@@ -469,8 +469,8 @@ class phoneGeneric extends plugin
   static function plInfo()
   {
     return array(
-      "plShortName"   => _("Generic"),
-      "plDescription" => _("Phone generic"),
+      "plShortName"   => _("Phone"),
+      "plDescription" => _("Phone information"),
       "plSelfModify"  => FALSE,
       "plObjectType"  => array("phone" => array(
         "description"  => _("Phone hardware"),

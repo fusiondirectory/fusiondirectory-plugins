@@ -22,17 +22,17 @@
 class SSHPublicKeyAttribute extends FileAttribute
 {
   /* cache for key extracted informations */
-  protected $format = '/^([-a-zA-Z0-9]+(=".*")?,?)*\s*(ssh-(dss|rsa))\s+([a-zA-Z0-9+\/.=]+)\s+([[:graph:]]+)\s*$/';
+  protected $format = '/^([-a-zA-Z0-9]+(=".*")?,?)*\s*(ssh-(dss|rsa))\s+([a-zA-Z0-9+\/.=]+)(\s+([[:graph:]]+))?\s*$/';
 
   function getArrayValue ()
   {
     if (preg_match($this->format, $this->value, $match)) {
-      $fingerprint = $this->fingerprint(base64_decode($match[5]));
-
+      $fingerprint  = $this->fingerprint(base64_decode($match[5]));
+      $comment      = (isset($match[7]) ? $match[7] : '');
       return array(
         ($match[3] == 'ssh-dss'?'DSA':'RSA'),
         $fingerprint,
-        $match[6]
+        $comment
       );
     }
     return parent::getArrayValue();

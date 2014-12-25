@@ -415,7 +415,7 @@ class servDNSeditZoneEntries extends plugin
     $hostNameOnce = TRUE;
 
     /* Walk through all defined records */
-    $str .= "<table cellspacing='0' cellpadding='0'>";
+    $str .= '<table style="border-collapse:collapse; border-spacing:0;">';
     foreach ($obj['RECORDS'] as $id => $record) {
       /* Skip not selectable entries */
       if (!isset($this->RecordTypes [$record['type']])) {

@@ -292,7 +292,7 @@ class systemManagement extends management
           $this->dialogObject->set_type(TRIGGERED_EVENT);
           $o_queue->append($this->dialogObject);
           if ($o_queue->is_error()) {
-            msg_dialog::display(_("Service infrastructure"), msgPool::siError($o_queue->get_error()), ERROR_DIALOG);
+            msg_dialog::display(_("Infrastructure service"), msgPool::siError($o_queue->get_error()), ERROR_DIALOG);
             $this->closeDialogs();
           } else {
             $this->closeDialogs();
@@ -322,7 +322,7 @@ class systemManagement extends management
       $o_queue = new supportDaemon();
       $o_queue->append($this->dialogObject);
       if ($o_queue->is_error()) {
-        msg_dialog::display(_("Service infrastructure"), msgPool::siError($o_queue->get_error()), ERROR_DIALOG);
+        msg_dialog::display(_("Infrastructure service"), msgPool::siError($o_queue->get_error()), ERROR_DIALOG);
       } else {
         $this->closeDialogs();
       }

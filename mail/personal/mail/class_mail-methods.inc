@@ -76,7 +76,6 @@ class mailMethod
    */
   protected $enableDomainSelection  = FALSE;
   protected $enableQuota            = TRUE;
-  protected $enableSieveManager     = FALSE;
   protected $enableVacationRange    = TRUE;
   protected $enableFolderTypes      = FALSE;
 
@@ -672,15 +671,6 @@ class mailMethod
   public function vacationRangeEnabled()
   {
     return $this->enableVacationRange;
-  }
-
-
-  /*! \brief  Returns true if the sieveManagement is allowed
-      @return Boolean TRUE, FALSE
-   */
-  public function allowSieveManagement()
-  {
-    return $this->enableSieveManager;
   }
 
 

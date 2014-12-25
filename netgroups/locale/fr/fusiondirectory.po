@@ -4,6 +4,7 @@
 # 
 # Translators:
 # Benoit Mortier <benoit.mortier@opensides.be>, 2011
+# MCMic, 2014
 # fusiondirectory <contact@fusiondirectory.org>, 2013
 # fusiondirectory <contact@fusiondirectory.org>, 2012
 # fusiondirectory <contact@fusiondirectory.org>, 2012-2013
@@ -12,9 +13,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-08-18 16:07+0200\n"
-"PO-Revision-Date: 2014-08-28 10:52+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"POT-Creation-Date: 2014-12-16 21:56+0100\n"
+"PO-Revision-Date: 2014-12-18 14:40+0000\n"
+"Last-Translator: MCMic\n"
 "Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory-108/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,16 +24,17 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: admin/netgroups/class_netgroup.inc:50
-msgid "Generic"
-msgstr "Générique"
+#: config/netgroups/class_netgroupConfig.inc:42
+msgid "Netgroup"
+msgstr "Netgroup"
 
 #: admin/netgroups/class_netgroup.inc:51
-msgid "Generic NIS Netgroup settings"
-msgstr "Paramètres de base des groupes NIS"
+msgid "NIS Netgroup settings"
+msgstr "Paramètres des groupes NIS"
 
 #: admin/netgroups/class_netgroup.inc:54
 #: admin/systems/netgroups/class_netgroupSystem.inc:26
-#: personal/netgroups/class_netgroupMembership.inc:42
+#: personal/netgroups/class_netgroupMembership.inc:43
 msgid "NIS Netgroup"
 msgstr "Groupe NIS"
 
@@ -58,20 +60,20 @@ msgstr "Description du groupe NIS"
 
 #: admin/netgroups/class_netgroup.inc:81
 msgid "User members"
-msgstr "Membre du groupe"
+msgstr "Membres"
 
 #: admin/netgroups/class_netgroup.inc:88 admin/netgroups/class_netgroup.inc:97
 #: admin/netgroups/class_netgroup.inc:104
 msgid "NIS netgroup members"
-msgstr "Membres d'un groupe NIS"
+msgstr "Membres du groupe NIS"
 
 #: admin/netgroups/class_netgroup.inc:94
 msgid "System members"
-msgstr "Systèmes qui ont membres"
+msgstr "Systèmes membres"
 
 #: admin/netgroups/class_netgroup.inc:101
 msgid "Netgroup members"
-msgstr "Membres d'un groupe NIS"
+msgstr "Membres du groupe NIS"
 
 #: admin/netgroups/class_netgroupManagement.inc:34
 msgid "NIS Netgroups"
@@ -79,20 +81,20 @@ msgstr "Groupes NIS"
 
 #: admin/netgroups/class_netgroupManagement.inc:35
 msgid "NIS Netgroup management"
-msgstr "Gestion des groupes nis"
+msgstr "Gestion des groupes NIS"
 
 #: admin/systems/netgroups/class_netgroupSystem.inc:27
-#: personal/netgroups/class_netgroupMembership.inc:43
+#: personal/netgroups/class_netgroupMembership.inc:44
 msgid "NIS Netgroup member"
 msgstr "Membre d'un groupe NIS"
 
-#: personal/netgroups/class_netgroupMembership.inc:59
+#: personal/netgroups/class_netgroupMembership.inc:60
 msgid "Member of the following NIS Netgroups  "
 msgstr "Membre des groupes NIS suivants"
 
-#: personal/netgroups/class_netgroupMembership.inc:62
+#: personal/netgroups/class_netgroupMembership.inc:63
 msgid "NIS netgroup membership"
-msgstr "Membre d'un groupe NIS"
+msgstr "Appartenance à un groupe NIS"
 
 #: config/netgroups/class_netgroupConfig.inc:28
 msgid "Netgroup configuration"
@@ -102,14 +104,10 @@ msgstr "Configuration Netgroup"
 msgid "FusionDirectory netgroup plugin configuration"
 msgstr "Configuration du plugin Netgroup"
 
-#: config/netgroups/class_netgroupConfig.inc:42
-msgid "LDAP tree"
-msgstr "Annuaire LDAP"
-
 #: config/netgroups/class_netgroupConfig.inc:45
 msgid "Netgroup RDN"
-msgstr "Chemin relatif des objets Netgroup"
+msgstr "Branche des objets Netgroup"
 
 #: config/netgroups/class_netgroupConfig.inc:45
 msgid "Branch in which netgroups will be stored"
-msgstr "Branches ou seront stockés les objets Netgroup"
+msgstr "Branches où seront stockés les objets Netgroup"

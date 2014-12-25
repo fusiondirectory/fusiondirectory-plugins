@@ -212,9 +212,7 @@ class csvimport extends plugin
               /* Else use template uid if defined */
               $ldap->cat($this->csvinfo['arrtempls'][$this->csvinfo['tplid']]['dn']);
               if ($attrs = $ldap->fetch()) {
-                if ($attrs['uid'][0] != user::$nouid) {
-                  $uids = gen_uids($attrs['uid'][0], $attributes);
-                }
+                $uids = gen_uids($attrs['uid'][0], $attributes);
               }
             }
 

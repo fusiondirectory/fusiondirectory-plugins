@@ -1,7 +1,7 @@
-<table style="table-layout:fixed; width:100%; vertical-align:top; text-align:left; table-layout:auto;" cellpadding="4" border="0">
+<table style="table-layout:fixed; width:100%; vertical-align:top; text-align:left; table-layout:auto;" border="0">
 <tr>
   <td style="vertical-align:top;">
-   <table style="border:1px solid #B0B0B0; width:100%; vertical-align:top; text-align:left;"  cellpadding="4" cellspacing="0">
+   <table style="border:1px solid #B0B0B0; width:100%; vertical-align:top; text-align:left;">
     <colgroup>
         <col width="32%">
         <col width="14%">
@@ -17,7 +17,7 @@
     {$search_result}
    </table>
 
-   <table style="vertical-align:top; text-align:center; width:100%;" cellpadding="4" cellspacing="0" border="0">
+   <table style="vertical-align:top; text-align:center; width:100%;" border="0">
     <tr>
      <td>{$range_selector}</td>
     </tr>

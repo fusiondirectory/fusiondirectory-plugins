@@ -33,8 +33,8 @@ class mobilePhoneGeneric extends simplePlugin
   static function plInfo()
   {
     return array(
-      'plShortName'   => _('Generic'),
-      'plDescription' => _('Mobile phone generic'),
+      'plShortName'   => _('Mobile phone'),
+      'plDescription' => _('Mobile phone information'),
       'plSelfModify'  => FALSE,
       'plObjectType'  => array(
         'mobilePhone' => array(

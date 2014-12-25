@@ -30,7 +30,7 @@
     {t}Computer name to use by unit{/t}
   </span>
   <div>
-    <table summary="" style="border:1px solid #B0B0B0; width:100%; vertical-align:top; text-align:left;"  cellpadding="4" cellspacing="0">
+    <table style="border:1px solid #B0B0B0; width:100%; vertical-align:top; text-align:left;border-spacing:0;">
       {$output_next_computer_ids}
     </table>
   </div>

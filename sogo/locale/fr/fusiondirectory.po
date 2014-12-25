@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# MCMic, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-08-18 16:07+0200\n"
-"PO-Revision-Date: 2014-08-28 10:50+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"POT-Creation-Date: 2014-12-16 21:56+0100\n"
+"PO-Revision-Date: 2014-12-18 15:51+0000\n"
+"Last-Translator: MCMic\n"
 "Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory-108/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -32,7 +33,7 @@ msgstr "Nom du compte"
 
 #: admin/sogo/class_sogoResource.inc:60
 msgid "Mail"
-msgstr "Messagerie"
+msgstr "Courriel"
 
 #: admin/sogo/class_sogoResource.inc:66
 msgid "description"
@@ -47,7 +48,7 @@ msgid "Kind"
 msgstr "Type"
 
 #: admin/sogo/class_sogoManagement.inc:34
-#: admin/sogo/class_sogoManagement.inc:39
+#: admin/sogo/class_sogoManagement.inc:39 config/sogo/class_sogoConfig.inc:42
 msgid "SOGo"
 msgstr "SOGo"
 
@@ -63,14 +64,10 @@ msgstr "Configuration de SOGo"
 msgid "FusionDirectory sogo plugin configuration"
 msgstr "Configuration du plugin SOGo"
 
-#: config/sogo/class_sogoConfig.inc:42
-msgid "LDAP tree"
-msgstr "Annuaire LDAP"
-
 #: config/sogo/class_sogoConfig.inc:45
 msgid "SOGo RDN"
-msgstr "SOGo RDN"
+msgstr "Branche SOGo"
 
 #: config/sogo/class_sogoConfig.inc:45
-msgid "Branch in which SOGo objects will be stored (required)"
-msgstr "Branches ou seront stockés les objets SOGo (obligatoire)"
+msgid "Branch in which SOGo objects will be stored"
+msgstr "Branche où les objets SOGo seront stockés"

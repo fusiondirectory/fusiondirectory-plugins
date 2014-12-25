@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-08-18 16:07+0200\n"
-"PO-Revision-Date: 2014-08-28 10:46+0000\n"
+"POT-Creation-Date: 2014-12-16 21:56+0100\n"
+"PO-Revision-Date: 2014-12-15 17:01+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/FusionDirectory-108/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -23,6 +23,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: personal/nagios/class_nagiosAccount.inc:45
+#: config/nagios/class_nagiosConfig.inc:42
 msgid "Nagios"
 msgstr "Nagios"
 
@@ -30,11 +31,11 @@ msgstr "Nagios"
 msgid "Nagios account settings"
 msgstr "Parametri di Nagios"
 
-#: personal/nagios/class_nagiosAccount.inc:65 personal/nagios/nagios.tpl.c:2
+#: personal/nagios/class_nagiosAccount.inc:65
 msgid "Nagios Account"
 msgstr "Account di Nagios"
 
-#: personal/nagios/class_nagiosAccount.inc:68 personal/nagios/nagios.tpl.c:5
+#: personal/nagios/class_nagiosAccount.inc:68
 msgid "Alias"
 msgstr "Alias dell'utente"
 
@@ -42,7 +43,7 @@ msgstr "Alias dell'utente"
 msgid "Name of the nagios alias"
 msgstr "Nome dell'alias Nagios"
 
-#: personal/nagios/class_nagiosAccount.inc:72 personal/nagios/nagios.tpl.c:8
+#: personal/nagios/class_nagiosAccount.inc:72
 msgid "Mail address"
 msgstr "Indirizzo di posta elettronica"
 
@@ -50,23 +51,23 @@ msgstr "Indirizzo di posta elettronica"
 msgid "Email of the nagios alias"
 msgstr "Email dell'alias Nagios"
 
-#: personal/nagios/class_nagiosAccount.inc:76 personal/nagios/nagios.tpl.c:11
+#: personal/nagios/class_nagiosAccount.inc:76
 msgid "Host notification period"
 msgstr "Periodo di notifica dei clienti"
 
-#: personal/nagios/class_nagiosAccount.inc:81 personal/nagios/nagios.tpl.c:14
+#: personal/nagios/class_nagiosAccount.inc:81
 msgid "Service notification period"
 msgstr "Periodo di notifica dei servizi"
 
-#: personal/nagios/class_nagiosAccount.inc:86 personal/nagios/nagios.tpl.c:17
+#: personal/nagios/class_nagiosAccount.inc:86
 msgid "Service notification options"
 msgstr "Opzioni per la notifica dei servizi"
 
-#: personal/nagios/class_nagiosAccount.inc:91 personal/nagios/nagios.tpl.c:20
+#: personal/nagios/class_nagiosAccount.inc:91
 msgid "Host notification options"
 msgstr "Opzioni per la notifica dei clienti"
 
-#: personal/nagios/class_nagiosAccount.inc:96 personal/nagios/nagios.tpl.c:23
+#: personal/nagios/class_nagiosAccount.inc:96
 msgid "Pager"
 msgstr "Cercapersone"
 
@@ -74,11 +75,11 @@ msgstr "Cercapersone"
 msgid " Pager"
 msgstr "Cercapersone"
 
-#: personal/nagios/class_nagiosAccount.inc:100 personal/nagios/nagios.tpl.c:26
+#: personal/nagios/class_nagiosAccount.inc:100
 msgid "Service notification commands"
 msgstr "Comandi per la notifica dei servizi"
 
-#: personal/nagios/class_nagiosAccount.inc:104 personal/nagios/nagios.tpl.c:29
+#: personal/nagios/class_nagiosAccount.inc:104
 msgid "Host notification commands"
 msgstr "Comandi per la notifica dei clienti"
 
@@ -90,10 +91,6 @@ msgstr ""
 msgid "FusionDirectory nagios plugin configuration"
 msgstr ""
 
-#: config/nagios/class_nagiosConfig.inc:42
-msgid "LDAP tree"
-msgstr "Struttura LDAP"
-
 #: config/nagios/class_nagiosConfig.inc:45
 msgid "Lconf prefix"
 msgstr ""
@@ -101,35 +98,3 @@ msgstr ""
 #: config/nagios/class_nagiosConfig.inc:45
 msgid "Prefix used for lconf LDAP fields"
 msgstr ""
-
-#: personal/nagios/nagios.tpl.c:32
-msgid "Nagios authentification"
-msgstr "Autentificazione di Nagios"
-
-#: personal/nagios/nagios.tpl.c:35
-msgid "view system informations"
-msgstr "vedi le informazioni sul sistema"
-
-#: personal/nagios/nagios.tpl.c:38
-msgid "view configuration information"
-msgstr "vedi le informazioni di configurazione"
-
-#: personal/nagios/nagios.tpl.c:41
-msgid "trigger system commands"
-msgstr "Autorizza i comandi di sistema"
-
-#: personal/nagios/nagios.tpl.c:44
-msgid "view all services"
-msgstr "vedi tutti i servizi"
-
-#: personal/nagios/nagios.tpl.c:47
-msgid "view all hosts"
-msgstr "vedi tutti gli host"
-
-#: personal/nagios/nagios.tpl.c:50
-msgid "trigger all service commands"
-msgstr "Autorizza i comandi su tutti i servizi"
-
-#: personal/nagios/nagios.tpl.c:53
-msgid "trigger all host commands"
-msgstr "Autorizza i comandi su tutti gli host"

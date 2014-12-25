@@ -83,8 +83,8 @@ class dashboardNetwork extends simplePlugin
         $cn = preg_replace("/^cn=([^,]+),.*$/", "$1", $dn);
         if (!isset($servers[$dn])) {
           $servers[$dn] = array(
-            'name' => $cn,
-            'link'  => objects::link($attrs['dn'], 'server', 'service_serviceDNS', $cn, FALSE),
+            'name'  => $cn,
+            'link'  => objects::link($dn, 'server', 'service_serviceDNS', $cn, FALSE),
             'zones' => array()
           );
         }
@@ -92,8 +92,8 @@ class dashboardNetwork extends simplePlugin
       } elseif (preg_match("/^zoneName=/", $dn)) {
         $reverseName  = preg_replace("/^zoneName=([^,]+),.*$/", "$1", $attrs['dn']);
         $zoneName     = preg_replace("/^zoneName=([^,]+),.*$/", "$1", $dn);
-        $dn = preg_replace("/^zoneName=[^,]+,/", "", $dn);
-        $IP = DNS::FlipIp(str_replace(DNS::getInAddrArpa(), "", $reverseName));
+        $dn           = preg_replace("/^zoneName=[^,]+,/", "", $dn);
+        $IP           = DNS::FlipIp(str_replace(DNS::getInAddrArpa(), "", $reverseName));
         for ($dots = count(explode(".", $IP));$dots < 4;$dots++) {
           $IP .= ".0";
         }

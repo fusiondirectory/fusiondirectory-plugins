@@ -1,4 +1,4 @@
-<table cellspacing="0" cellpadding="0">
+<table>
   <tr>
     <td>{t}Year{/t}</td>
     <td>{t}Month{/t}</td>

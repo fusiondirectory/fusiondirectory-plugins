@@ -3,19 +3,22 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Anne Nicolas <ennael1@gmail.com>, 2014
 # gallak <antoine.gallavardin@free.fr>, 2013
 # Benoit Mortier <benoit.mortier@opensides.be>, 2008-2011
+# MCMic, 2014
 # fusiondirectory <contact@fusiondirectory.org>, 2013
 # fusiondirectory <contact@fusiondirectory.org>, 2012
 # fusiondirectory <contact@fusiondirectory.org>, 2012-2013
 # fusiondirectory <contact@fusiondirectory.org>, 2012
 # gallak <antoine.gallavardin@free.fr>, 2013
+# MCMic, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-08-18 16:07+0200\n"
-"PO-Revision-Date: 2014-08-28 10:52+0000\n"
+"POT-Creation-Date: 2014-12-16 21:56+0100\n"
+"PO-Revision-Date: 2014-12-15 17:21+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory-108/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -31,12 +34,12 @@ msgstr "Option inconnue"
 #: admin/sudo/class_sudoOption.inc:83
 #, php-format
 msgid "The sudo option '%s' is invalid!"
-msgstr "L'option sudo '%s' est non valide !"
+msgstr "L'option sudo '%s' est invalide !"
 
 #: admin/sudo/class_sudoOption.inc:276
 #, php-format
 msgid "%s (%s)"
-msgstr ""
+msgstr "%s (%s)"
 
 #: admin/sudo/class_sudoOption.inc:479
 msgid "Available options"
@@ -63,6 +66,7 @@ msgid "Sudo options"
 msgstr "Options Sudo"
 
 #: admin/sudo/class_sudoManagement.inc:32 admin/sudo/class_sudoGeneric.inc:82
+#: config/sudo/class_sudoConfig.inc:42
 msgid "Sudo"
 msgstr "Sudo"
 
@@ -75,12 +79,8 @@ msgid "Sudo role"
 msgstr "Rôle sudo"
 
 #: admin/sudo/class_sudoGeneric.inc:102
-msgid "Generic"
-msgstr "Informations"
-
-#: admin/sudo/class_sudoGeneric.inc:102
-msgid "global defaults"
-msgstr "Paramètres globaux par défaut"
+msgid "Role settings"
+msgstr "Paramètres du rôle"
 
 #: admin/sudo/class_sudoGeneric.inc:107
 msgid "Name"
@@ -106,7 +106,7 @@ msgstr "Commandes"
 msgid ""
 "A Unix command with optional command line arguments, potentially including "
 "globbing characters (aka wild cards)"
-msgstr "Une commande Unix en option avec des arguments de ligne de commande, y compris les caractères d'englobement potentiellement (aka wild cards)"
+msgstr "Une commande Unix avec éventuellement des arguments de ligne de commande, y compris des caractères joker (wildcards)"
 
 #: admin/sudo/class_sudoGeneric.inc:124
 msgid "Run as"
@@ -116,7 +116,7 @@ msgstr "Exécuter comme"
 msgid ""
 "A user that commands may be run as or a Unix group that contains a list of "
 "users that commands may be run as"
-msgstr "Un utilisateur Unix qui sera utilisé pour l'exécution des commandes ou un groupe qui contient une liste d'utilisateurs "
+msgstr "Un utilisateur Unix qui sera utilisé pour l'exécution des commandes ou un groupe qui contient une liste d'utilisateurs à utiliser"
 
 #: admin/sudo/class_sudoGeneric.inc:131
 msgid "Systems"
@@ -124,7 +124,7 @@ msgstr "Systèmes"
 
 #: admin/sudo/class_sudoGeneric.inc:131
 msgid "A host name, IP address or IP network"
-msgstr "Un nom d'hôte, l'adresse IP ou le réseau IP"
+msgstr "Un nom d'hôte, une adresse IP ou un réseau IP"
 
 #: admin/sudo/class_sudoGeneric.inc:136
 msgid "Users and groups"
@@ -133,31 +133,7 @@ msgstr "Utilisateurs et groupes"
 #: admin/sudo/class_sudoGeneric.inc:137
 msgid ""
 "A user name, user ID (prefixed with '#'), Unix group (prefixed with '%')"
-msgstr "Un nom d'utilisateur, ID utilisateur (préfixé par '#'), Unix groupe (préfixés par '%')"
-
-#: admin/sudo/class_sudoGeneric.inc:144
-msgid "System trust"
-msgstr "Système de Confiance"
-
-#: admin/sudo/class_sudoGeneric.inc:148
-msgid "Trust mode"
-msgstr "Mode de confiance"
-
-#: admin/sudo/class_sudoGeneric.inc:148
-msgid "Trust mode for the role"
-msgstr "Mode de confiance pour le rôle"
-
-#: admin/sudo/class_sudoGeneric.inc:152
-msgid "disabled"
-msgstr "désactivé"
-
-#: admin/sudo/class_sudoGeneric.inc:152
-msgid "full access"
-msgstr "accès complet"
-
-#: admin/sudo/class_sudoGeneric.inc:152
-msgid "allow access to these hosts"
-msgstr "permettre l'accès a ces hôtes"
+msgstr "Un nom d'utilisateur, ID utilisateur (préfixé par '#'), groupe Unix (préfixé par '%')"
 
 #: config/sudo/class_sudoConfig.inc:28
 msgid "Sudo configuration"
@@ -167,13 +143,9 @@ msgstr "Configuration Sudo"
 msgid "FusionDirectory sudo plugin configuration"
 msgstr "Configuration du plugin sudo"
 
-#: config/sudo/class_sudoConfig.inc:42
-msgid "LDAP tree"
-msgstr "Annuaire LDAP"
-
 #: config/sudo/class_sudoConfig.inc:45
 msgid "Sudo RDN"
-msgstr "RDN sudo"
+msgstr "Branche sudo"
 
 #: config/sudo/class_sudoConfig.inc:45
 msgid "Branch in which sudoers will be stored"

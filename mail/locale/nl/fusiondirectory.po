@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-08-18 16:07+0200\n"
-"PO-Revision-Date: 2014-08-28 10:52+0000\n"
+"POT-Creation-Date: 2014-12-16 21:56+0100\n"
+"PO-Revision-Date: 2014-12-16 21:06+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Dutch (http://www.transifex.com/projects/p/FusionDirectory-108/language/nl/)\n"
 "MIME-Version: 1.0\n"
@@ -31,10 +31,8 @@ msgstr ""
 
 #: admin/groups/mail/class_groupMail.inc:79
 #: admin/systems/services/postfix/class_servicePostfix.inc:44
-#: personal/mail/class_mailAccount.inc:97
-#: config/mail/class_mailPluginConfig.inc:108
-msgid "Generic"
-msgstr "Algemeen"
+msgid "Informations"
+msgstr "Informatie"
 
 #: admin/groups/mail/class_groupMail.inc:86
 #: personal/mail/class_mailAccount.inc:100
@@ -217,7 +215,8 @@ msgid "Rules"
 msgstr "Regel"
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:116
-msgid "Edit spam ruleEdit spam rule"
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:124
+msgid "Edit spam rule"
 msgstr ""
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:119
@@ -228,18 +227,14 @@ msgstr "Naam"
 msgid "Rule"
 msgstr "Regel"
 
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:124
-msgid "Edit spam rule"
-msgstr ""
-
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:31
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:32
 msgid "Antivirus service"
 msgstr "Antivirus dienst"
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:46
-msgid "Generic virus filtering"
-msgstr "Generic virus filtering"
+msgid "Virus filtering"
+msgstr ""
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:50
 msgid "Database user"
@@ -276,6 +271,10 @@ msgstr ""
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:68
 msgid "Max directory recursions"
 msgstr "Max map recursies"
+
+#: admin/systems/services/virus/class_serviceAntiVirus.inc:68
+msgid "Maximum number of directory recursions"
+msgstr ""
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:73
 msgid "Checks per day"
@@ -321,10 +320,6 @@ msgstr "Maximale recursie"
 msgid "Maximum compression ratio"
 msgstr "Maximale compressie ratio"
 
-#: admin/systems/services/virus/class_serviceAntiVirus.inc:113
-msgid " "
-msgstr ""
-
 #: admin/systems/services/imap/class_serviceIMAP.inc:32
 msgid "IMAP/POP3 generic service"
 msgstr ""
@@ -333,31 +328,31 @@ msgstr ""
 msgid "IMAP/POP3"
 msgstr "IMAP/POP3"
 
-#: personal/mail/class_mail-methods.inc:157
-#: personal/mail/class_mail-methods.inc:518
+#: personal/mail/class_mail-methods.inc:156
+#: personal/mail/class_mail-methods.inc:517
 msgid "Configuration error"
 msgstr "Instelling fout"
 
-#: personal/mail/class_mail-methods.inc:158
+#: personal/mail/class_mail-methods.inc:157
 #, php-format
 msgid "The configured mail attribute '%s' is unsupported!"
 msgstr "De geconfigureerde mail attribuut '%s' is niet ondersteund!"
 
-#: personal/mail/class_mail-methods.inc:519
+#: personal/mail/class_mail-methods.inc:518
 #, php-format
 msgid "Mail method '%s' is unknown!"
 msgstr "Mail methode '%s' is onbekend!"
 
-#: personal/mail/class_mail-methods.inc:745
-#: personal/mail/class_mail-methods.inc:746
+#: personal/mail/class_mail-methods.inc:735
+#: personal/mail/class_mail-methods.inc:736
 msgid "None"
 msgstr "Geen"
 
-#: personal/mail/class_mail-methods.inc:835
+#: personal/mail/class_mail-methods.inc:825
 msgid "Unknown"
 msgstr "Onbekend"
 
-#: personal/mail/class_mail-methods.inc:837
+#: personal/mail/class_mail-methods.inc:827
 msgid "Unlimited"
 msgstr "Onbeperkt"
 
@@ -389,6 +384,10 @@ msgstr ""
 msgid "Mail settings"
 msgstr "E-mail instellingen"
 
+#: personal/mail/class_mailAccount.inc:97
+msgid "Mail account"
+msgstr ""
+
 #: personal/mail/class_mailAccount.inc:100
 msgid "Primary mail address"
 msgstr ""
@@ -419,10 +418,6 @@ msgstr ""
 
 #: personal/mail/class_mailAccount.inc:131
 #: personal/mail/class_mailAccount.inc:150
-#: personal/mail/sieve/class_sieveManagement.inc:504
-#: personal/mail/sieve/class_sieveManagement.inc:722
-#: personal/mail/sieve/templates/element_vacation.tpl.c:17
-#: personal/mail/sieve/templates/object_container.tpl.c:56
 msgid "Vacation message"
 msgstr "Afwezigheidsbericht"
 
@@ -541,487 +536,6 @@ msgstr "Kan quota instellingen niet schrijven : %s"
 msgid "Mail error saving sieve settings"
 msgstr "Mail fout tijdens het opslagen van sieve instellingen"
 
-#: personal/mail/sieve/class_sieveElement_Vacation.inc:148
-msgid "Alternative sender address must be a valid email addresses."
-msgstr "Alternatieve zender adres moet een geldig email adres zijn."
-
-#: personal/mail/sieve/class_sieveElement_Redirect.inc:24
-msgid "Please specify a valid email address."
-msgstr "Gelieve een geldig email adres te specificeren."
-
-#: personal/mail/sieve/class_sieveElement_Redirect.inc:35
-msgid "Place a mail address here"
-msgstr "Plaats hier een e-mailadres"
-
-#: personal/mail/sieve/class_My_Tree.inc:266
-#: personal/mail/sieve/templates/remove_script.tpl.c:2
-msgid "Warning"
-msgstr "Waarschuwing"
-
-#: personal/mail/sieve/class_My_Tree.inc:266
-msgid "Cannot remove last element!"
-msgstr "Kan laatste element niet verwijder!"
-
-#: personal/mail/sieve/class_My_Tree.inc:679
-msgid "Require must be the first command in the script."
-msgstr "Require moet de eerste commando zijn in het script."
-
-#: personal/mail/sieve/class_My_Tree.inc:681
-#: personal/mail/sieve/class_sieveManagement.inc:203
-#: personal/mail/sieve/class_sieveManagement.inc:208
-#: personal/mail/sieve/class_sieveManagement.inc:214
-#: personal/mail/sieve/class_sieveManagement.inc:220
-#: personal/mail/sieve/class_sieveManagement.inc:431
-msgid "Error"
-msgstr "Fout"
-
-#: personal/mail/sieve/class_sieveElement_Require.inc:73
-msgid "Please specify at least one valid requirement."
-msgstr "Voer ten minste één geldig parameter in."
-
-#: personal/mail/sieve/class_sieveManagement.inc:116
-#: personal/mail/sieve/class_sieveManagement.inc:244
-msgid "Parse failed"
-msgstr "Ontleding gefaald"
-
-#: personal/mail/sieve/class_sieveManagement.inc:120
-#: personal/mail/sieve/class_sieveManagement.inc:248
-msgid "Parse successful"
-msgstr "Ontleding succesvol"
-
-#: personal/mail/sieve/class_sieveManagement.inc:158
-#, php-format
-msgid ""
-"The specified mail server '%s' does not exist within the FusionDirectory "
-"configuration."
-msgstr "De gespecifieerde mail server '%s' bestaat niet in de FusionDirectory configuratie."
-
-#: personal/mail/sieve/class_sieveManagement.inc:203
-msgid "No script name specified!"
-msgstr "Script naam niet bepaald!"
-
-#: personal/mail/sieve/class_sieveManagement.inc:208
-msgid "Please use only lowercase script names!"
-msgstr "Gelieve enkel kleine letters te gebruiken in script namen!"
-
-#: personal/mail/sieve/class_sieveManagement.inc:214
-msgid "Please use only alphabetical characters in script names!"
-msgstr "Gelieve enkel alfabetische karakters te gebruiken in script namen!"
-
-#: personal/mail/sieve/class_sieveManagement.inc:220
-msgid "Script name already in use!"
-msgstr "Script naam al in gebruik!"
-
-#: personal/mail/sieve/class_sieveManagement.inc:304
-#: personal/mail/sieve/class_sieveManagement.inc:311
-#: personal/mail/sieve/class_sieveManagement.inc:347
-#: personal/mail/sieve/class_sieveManagement.inc:351
-#: personal/mail/sieve/class_sieveManagement.inc:400
-#: personal/mail/sieve/class_sieveManagement.inc:404
-#: personal/mail/sieve/class_sieveManagement.inc:435
-#: personal/mail/sieve/class_sieveManagement.inc:521
-#: personal/mail/sieve/class_sieveManagement.inc:772
-#: personal/mail/sieve/class_sieveManagement.inc:1032
-#: personal/mail/sieve/class_sieveManagement.inc:1045
-msgid "SIEVE error"
-msgstr "SIEVE fout"
-
-#: personal/mail/sieve/class_sieveManagement.inc:304
-#: personal/mail/sieve/class_sieveManagement.inc:347
-#: personal/mail/sieve/class_sieveManagement.inc:1032
-#, php-format
-msgid "Cannot log into SIEVE server: %s"
-msgstr "Kan niet aanmelden bij SIEVE server : %s"
-
-#: personal/mail/sieve/class_sieveManagement.inc:311
-#, php-format
-msgid "Cannot retrieve SIEVE script: %s"
-msgstr "Kan SIEVE script niet vinden : %s"
-
-#: personal/mail/sieve/class_sieveManagement.inc:351
-#, php-format
-msgid "Cannot remove SIEVE script: %s"
-msgstr "Kan SIEVE script niet verwijderen : %s"
-
-#: personal/mail/sieve/class_sieveManagement.inc:397
-msgid "Edited"
-msgstr "Bewerkt"
-
-#: personal/mail/sieve/class_sieveManagement.inc:431
-msgid "Uploaded script is empty!"
-msgstr "Opgeladen script is leeg!"
-
-#: personal/mail/sieve/class_sieveManagement.inc:433
-msgid "Internal error"
-msgstr "Interne fout"
-
-#: personal/mail/sieve/class_sieveManagement.inc:433
-#, php-format
-msgid "Cannot access temporary file '%s'!"
-msgstr "Geen toegang tot tijdelijk bestand '%s'!"
-
-#: personal/mail/sieve/class_sieveManagement.inc:435
-#, php-format
-msgid "Cannot open temporary file '%s'!"
-msgstr "Kan tijdelijk bestand '%s' niet openen!"
-
-#: personal/mail/sieve/class_sieveManagement.inc:495
-#: personal/mail/sieve/class_sieveManagement.inc:498
-#: personal/mail/sieve/class_sieveManagement.inc:713
-#: personal/mail/sieve/class_sieveManagement.inc:716
-#: personal/mail/sieve/templates/object_container.tpl.c:29
-#: personal/mail/sieve/templates/object_container.tpl.c:38
-#: personal/mail/sieve/templates/element_keep.tpl.c:2
-msgid "Keep"
-msgstr "Bewaar"
-
-#: personal/mail/sieve/class_sieveManagement.inc:496
-#: personal/mail/sieve/class_sieveManagement.inc:714
-#: personal/mail/sieve/templates/element_comment.tpl.c:2
-#: personal/mail/sieve/templates/object_container.tpl.c:32
-msgid "Comment"
-msgstr "Opmerking"
-
-#: personal/mail/sieve/class_sieveManagement.inc:497
-#: personal/mail/sieve/class_sieveManagement.inc:715
-msgid "File into"
-msgstr "Bestand in"
-
-#: personal/mail/sieve/class_sieveManagement.inc:499
-#: personal/mail/sieve/class_sieveManagement.inc:717
-#: personal/mail/sieve/templates/element_discard.tpl.c:2
-#: personal/mail/sieve/templates/object_container.tpl.c:41
-msgid "Discard"
-msgstr "Wegschrijven"
-
-#: personal/mail/sieve/class_sieveManagement.inc:500
-#: personal/mail/sieve/class_sieveManagement.inc:718
-#: personal/mail/sieve/templates/object_container.tpl.c:44
-#: personal/mail/sieve/templates/element_redirect.tpl.c:2
-msgid "Redirect"
-msgstr "Forwarden"
-
-#: personal/mail/sieve/class_sieveManagement.inc:501
-#: personal/mail/sieve/class_sieveManagement.inc:719
-#: personal/mail/sieve/templates/object_container.tpl.c:47
-msgid "Reject"
-msgstr "Afkeuren"
-
-#: personal/mail/sieve/class_sieveManagement.inc:502
-#: personal/mail/sieve/class_sieveManagement.inc:720
-#: personal/mail/sieve/templates/object_container.tpl.c:50
-#: personal/mail/sieve/templates/element_require.tpl.c:2
-msgid "Require"
-msgstr "Vereist"
-
-#: personal/mail/sieve/class_sieveManagement.inc:503
-#: personal/mail/sieve/class_sieveManagement.inc:721
-#: personal/mail/sieve/templates/element_stop.tpl.c:2
-#: personal/mail/sieve/templates/object_container.tpl.c:53
-msgid "Stop"
-msgstr "Stop"
-
-#: personal/mail/sieve/class_sieveManagement.inc:505
-#: personal/mail/sieve/class_sieveManagement.inc:723
-#: personal/mail/sieve/class_sieveElement_If.inc:836
-#: personal/mail/sieve/templates/object_container.tpl.c:59
-msgid "If"
-msgstr "if"
-
-#: personal/mail/sieve/class_sieveManagement.inc:521
-msgid "Cannot add new element!"
-msgstr "Kan nieuw element niet toevoegen"
-
-#: personal/mail/sieve/class_sieveManagement.inc:564
-#: personal/mail/sieve/class_sieveManagement.inc:758
-#: personal/mail/sieve/class_sieveElement_If.inc:840
-#: personal/mail/sieve/templates/element_else.tpl.c:2
-#: personal/mail/sieve/templates/object_container.tpl.c:62
-msgid "Else"
-msgstr "Else"
-
-#: personal/mail/sieve/class_sieveManagement.inc:566
-#: personal/mail/sieve/class_sieveManagement.inc:760
-#: personal/mail/sieve/class_sieveManagement.inc:765
-#: personal/mail/sieve/class_sieveElement_If.inc:838
-#: personal/mail/sieve/templates/element_elsif.tpl.c:2
-#: personal/mail/sieve/templates/object_container.tpl.c:65
-msgid "Else If"
-msgstr "Else if"
-
-#: personal/mail/sieve/class_sieveManagement.inc:591
-#: personal/mail/sieve/templates/element_address.tpl.c:2
-#: personal/mail/sieve/templates/element_address.tpl.c:47
-msgid "Address"
-msgstr "Adres"
-
-#: personal/mail/sieve/class_sieveManagement.inc:592
-#: personal/mail/sieve/templates/element_header.tpl.c:2
-#: personal/mail/sieve/templates/element_header.tpl.c:41
-msgid "Header"
-msgstr "Header"
-
-#: personal/mail/sieve/class_sieveManagement.inc:593
-#: personal/mail/sieve/templates/element_envelope.tpl.c:2
-#: personal/mail/sieve/templates/element_envelope.tpl.c:47
-msgid "Envelope"
-msgstr "Envelop"
-
-#: personal/mail/sieve/class_sieveManagement.inc:594
-#: personal/mail/sieve/templates/element_size.tpl.c:2
-msgid "Size"
-msgstr "Grootte"
-
-#: personal/mail/sieve/class_sieveManagement.inc:595
-#: personal/mail/sieve/templates/element_exists.tpl.c:2
-msgid "Exists"
-msgstr "Bestaat"
-
-#: personal/mail/sieve/class_sieveManagement.inc:596
-#: personal/mail/sieve/templates/element_allof.tpl.c:14
-msgid "All of"
-msgstr "Alle van"
-
-#: personal/mail/sieve/class_sieveManagement.inc:597
-#: personal/mail/sieve/templates/element_anyof.tpl.c:11
-msgid "Any of"
-msgstr "Elk van"
-
-#: personal/mail/sieve/class_sieveManagement.inc:598
-#: personal/mail/sieve/class_sieveElement_If.inc:915
-msgid "True"
-msgstr "Ja"
-
-#: personal/mail/sieve/class_sieveManagement.inc:599
-#: personal/mail/sieve/class_sieveElement_If.inc:915
-msgid "False"
-msgstr "Nee"
-
-#: personal/mail/sieve/class_sieveManagement.inc:636
-msgid "Active"
-msgstr "Actief"
-
-#: personal/mail/sieve/class_sieveManagement.inc:637
-msgid "This script is marked as active"
-msgstr "Dit script is gemarkeerd als actief"
-
-#: personal/mail/sieve/class_sieveManagement.inc:642
-msgid "Script length"
-msgstr "Script lengte"
-
-#: personal/mail/sieve/class_sieveManagement.inc:646
-msgid "Remove script"
-msgstr "Verwijder script"
-
-#: personal/mail/sieve/class_sieveManagement.inc:655
-msgid "Activate script"
-msgstr "Activeer script"
-
-#: personal/mail/sieve/class_sieveManagement.inc:659
-msgid "Edit script"
-msgstr "Bewerk script"
-
-#: personal/mail/sieve/class_sieveManagement.inc:674
-#, php-format
-msgid "Can't log into SIEVE server. Server says '%s'."
-msgstr "Kan niet op de SIEVE server inloggen. De server meldt: '%s'."
-
-#: personal/mail/sieve/class_sieveManagement.inc:772
-msgid "Cannot insert element at the requested position!"
-msgstr "Kan element niet plaatsen op de gewenste positie!"
-
-#: personal/mail/sieve/class_sieveManagement.inc:1045
-#, php-format
-msgid "Cannot store SIEVE script: %s"
-msgstr "Kan SIEVE script niet opslaan : %s"
-
-#: personal/mail/sieve/class_sieveManagement.inc:1047
-msgid "Failed to save sieve script"
-msgstr "Opslagen van sieve script mislukt"
-
-#: personal/mail/sieve/class_sieveElement_Comment.inc:21
-msgid "Your comment here"
-msgstr "Uw commentaar hier"
-
-#: personal/mail/sieve/class_sieveElement_If.inc:27
-msgid "Complete address"
-msgstr "Volledig adres"
-
-#: personal/mail/sieve/class_sieveElement_If.inc:27
-#: personal/mail/sieve/class_sieveElement_If.inc:33
-msgid "Default"
-msgstr "Standaard"
-
-#: personal/mail/sieve/class_sieveElement_If.inc:28
-msgid "Domain part"
-msgstr "Domein deel"
-
-#: personal/mail/sieve/class_sieveElement_If.inc:29
-msgid "Local part"
-msgstr "Lokaal deel"
-
-#: personal/mail/sieve/class_sieveElement_If.inc:33
-msgid "Case insensitive"
-msgstr "Case insensitive"
-
-#: personal/mail/sieve/class_sieveElement_If.inc:34
-msgid "Case sensitive"
-msgstr "Case sensitive"
-
-#: personal/mail/sieve/class_sieveElement_If.inc:35
-msgid "Numeric"
-msgstr "Numeriek"
-
-#: personal/mail/sieve/class_sieveElement_If.inc:39
-msgid "is"
-msgstr "is"
-
-#: personal/mail/sieve/class_sieveElement_If.inc:40
-msgid "regex"
-msgstr "regex"
-
-#: personal/mail/sieve/class_sieveElement_If.inc:41
-msgid "contains"
-msgstr "bevat"
-
-#: personal/mail/sieve/class_sieveElement_If.inc:42
-msgid "matches"
-msgstr "match"
-
-#: personal/mail/sieve/class_sieveElement_If.inc:43
-msgid "count"
-msgstr "tellen"
-
-#: personal/mail/sieve/class_sieveElement_If.inc:44
-msgid "value is"
-msgstr "waarde is"
-
-#: personal/mail/sieve/class_sieveElement_If.inc:48
-msgid "less than"
-msgstr "minder dan"
-
-#: personal/mail/sieve/class_sieveElement_If.inc:49
-msgid "less or equal"
-msgstr "minder of gelijk"
-
-#: personal/mail/sieve/class_sieveElement_If.inc:50
-msgid "equals"
-msgstr "gelijk"
-
-#: personal/mail/sieve/class_sieveElement_If.inc:51
-msgid "greater or equal"
-msgstr "groter of gelijk"
-
-#: personal/mail/sieve/class_sieveElement_If.inc:52
-#: personal/mail/sieve/class_sieveElement_If.inc:726
-#: personal/mail/sieve/class_sieveElement_If.inc:1059
-msgid "greater than"
-msgstr "groter dan"
-
-#: personal/mail/sieve/class_sieveElement_If.inc:53
-msgid "not equal"
-msgstr "niet gelijk"
-
-#: personal/mail/sieve/class_sieveElement_If.inc:102
-msgid "Can't save empty tests."
-msgstr "Kan lege test niet opslaan"
-
-#: personal/mail/sieve/class_sieveElement_If.inc:446
-msgid "emtpy"
-msgstr "leeg"
-
-#: personal/mail/sieve/class_sieveElement_If.inc:447
-msgid "empty"
-msgstr "leeg"
-
-#: personal/mail/sieve/class_sieveElement_If.inc:493
-msgid "Nothing specified right now"
-msgstr "Niets op dit moment bepaald"
-
-#: personal/mail/sieve/class_sieveElement_If.inc:595
-msgid "Invalid type of address part."
-msgstr "Ongeldig type adres deel."
-
-#: personal/mail/sieve/class_sieveElement_If.inc:605
-msgid "Invalid match type given."
-msgstr "Ongeldig match type gegeven."
-
-#: personal/mail/sieve/class_sieveElement_If.inc:621
-msgid "Invalid operator given."
-msgstr "Ongeldige operator gegeven."
-
-#: personal/mail/sieve/class_sieveElement_If.inc:638
-msgid "Please specify a valid operator."
-msgstr "Kies een geldige operator."
-
-#: personal/mail/sieve/class_sieveElement_If.inc:654
-msgid ""
-"Invalid character found in address attribute. Quotes are not allowed here."
-msgstr "Ongeldig teken gevonden in  adres attribuut.  Quotes zijn niet toegestaan."
-
-#: personal/mail/sieve/class_sieveElement_If.inc:669
-msgid ""
-"Invalid character found in value attribute. Quotes are not allowed here."
-msgstr "Ongeldig teken gevonden in attribuut waarde.  Quotes zijn niet toegestaan."
-
-#: personal/mail/sieve/class_sieveElement_If.inc:727
-#: personal/mail/sieve/class_sieveElement_If.inc:1060
-msgid "lower than"
-msgstr "lager dan"
-
-#: personal/mail/sieve/class_sieveElement_If.inc:729
-#: personal/mail/sieve/class_sieveElement_If.inc:1062
-msgid "Megabyte"
-msgstr "Megabyte"
-
-#: personal/mail/sieve/class_sieveElement_If.inc:730
-#: personal/mail/sieve/class_sieveElement_If.inc:1063
-msgid "Kilobyte"
-msgstr "Kilobyte"
-
-#: personal/mail/sieve/class_sieveElement_If.inc:731
-#: personal/mail/sieve/class_sieveElement_If.inc:1064
-msgid "Bytes"
-msgstr "Bytes"
-
-#: personal/mail/sieve/class_sieveElement_If.inc:745
-msgid "Please select a valid match type in the list box below."
-msgstr "Gelieve een geldige match type te selecteren in de lijst hieronder"
-
-#: personal/mail/sieve/class_sieveElement_If.inc:759
-msgid "Only numeric values are allowed here."
-msgstr "Enkel numerieke waarde zijn hier toegestaan."
-
-#: personal/mail/sieve/class_sieveElement_If.inc:769
-msgid "No valid unit selected"
-msgstr "Geen geldig unit geselecteerd"
-
-#: personal/mail/sieve/class_sieveElement_If.inc:834
-#: personal/mail/sieve/templates/element_if.tpl.c:2
-msgid "Condition"
-msgstr "Conditie"
-
-#: personal/mail/sieve/class_sieveElement_If.inc:876
-msgid "Empty"
-msgstr "Leeg"
-
-#: personal/mail/sieve/class_sieveElement_If.inc:1134
-#: personal/mail/sieve/class_sieveElement_If.inc:1164
-msgid "Click here to add a new test"
-msgstr "Klik hier om een nieuwe test toevoegen"
-
-#: personal/mail/sieve/class_sieveElement_If.inc:1176
-msgid "Unhandled switch type"
-msgstr "Onbehandelde switch type"
-
-#: personal/mail/sieve/class_sieveElement_Reject.inc:21
-msgid "Invalid character found, quotes are not allowed in a reject message."
-msgstr "Ongeldig teken gevonden, qoutes zijn niet toegestaan ​​in een afkeur bericht. "
-
-#: personal/mail/sieve/class_sieveElement_Reject.inc:37
-msgid "Your reject text here"
-msgstr "Uw afkeur tekst hier"
-
 #: config/mail/class_mailPluginConfig.inc:29
 msgid "Mail plugin configuration"
 msgstr ""
@@ -1106,400 +620,6 @@ msgstr ""
 msgid "Prefix to add for mail shared folders."
 msgstr ""
 
-#: personal/mail/sieve/templates/select_test_type.tpl.c:2
-msgid "Select the type of test you want to add"
-msgstr "Selecteer het type test die u wilt toevoegen"
-
-#: personal/mail/sieve/templates/select_test_type.tpl.c:5
-msgid "Available test types"
-msgstr "Beschikbare test types"
-
-#: personal/mail/sieve/templates/select_test_type.tpl.c:8
-#: personal/mail/sieve/templates/add_element.tpl.c:8
-msgid "Continue"
-msgstr "Doorgaan"
-
-#: personal/mail/sieve/templates/element_stop.tpl.c:5
-msgid "Stop execution here"
-msgstr "Stop uitvoering hier"
-
-#: personal/mail/sieve/templates/element_fileinto.tpl.c:2
-msgid "Move mail into folder"
-msgstr "Verplaats e-mail in de map"
-
-#: personal/mail/sieve/templates/element_fileinto.tpl.c:5
-msgid "Select from list"
-msgstr "Selecteer uit lijst"
-
-#: personal/mail/sieve/templates/element_fileinto.tpl.c:8
-msgid "Manual selection"
-msgstr "Handmatige selectie"
-
-#: personal/mail/sieve/templates/element_fileinto.tpl.c:11
-msgid "Folder"
-msgstr "Map"
-
-#: personal/mail/sieve/templates/element_anyof.tpl.c:2
-#: personal/mail/sieve/templates/element_address.tpl.c:50
-#: personal/mail/sieve/templates/element_envelope.tpl.c:50
-#: personal/mail/sieve/templates/element_header.tpl.c:44
-#: personal/mail/sieve/templates/element_size.tpl.c:5
-#: personal/mail/sieve/templates/element_exists.tpl.c:5
-#: personal/mail/sieve/templates/element_allof.tpl.c:2
-msgid "Not"
-msgstr "Niet"
-
-#: personal/mail/sieve/templates/element_anyof.tpl.c:5
-#: personal/mail/sieve/templates/element_anyof.tpl.c:8
-#: personal/mail/sieve/templates/element_envelope.tpl.c:20
-#: personal/mail/sieve/templates/element_envelope.tpl.c:26
-#: personal/mail/sieve/templates/element_size.tpl.c:8
-#: personal/mail/sieve/templates/element_size.tpl.c:14
-#: personal/mail/sieve/templates/element_exists.tpl.c:8
-#: personal/mail/sieve/templates/element_exists.tpl.c:14
-#: personal/mail/sieve/templates/element_allof.tpl.c:5
-#: personal/mail/sieve/templates/element_allof.tpl.c:11
-msgid "Inverse match"
-msgstr "Matching omwisselen"
-
-#: personal/mail/sieve/templates/object_container_clear.tpl.c:2
-msgid "Move this object up one position"
-msgstr "Verplaats dit object een positie hoger"
-
-#: personal/mail/sieve/templates/object_container_clear.tpl.c:5
-#: personal/mail/sieve/templates/object_container.tpl.c:5
-msgid "Up"
-msgstr "Omhoog"
-
-#: personal/mail/sieve/templates/object_container_clear.tpl.c:8
-#: personal/mail/sieve/templates/object_container.tpl.c:8
-msgid "Move up"
-msgstr "Omhoog verplaatsen"
-
-#: personal/mail/sieve/templates/object_container_clear.tpl.c:11
-msgid "Move this object down one position"
-msgstr "Verplaats dit object een positie lager"
-
-#: personal/mail/sieve/templates/object_container_clear.tpl.c:14
-#: personal/mail/sieve/templates/object_container.tpl.c:14
-msgid "Down"
-msgstr "Omlaag"
-
-#: personal/mail/sieve/templates/object_container_clear.tpl.c:17
-#: personal/mail/sieve/templates/object_container.tpl.c:17
-msgid "Move down"
-msgstr "Omlaag verplaatsen"
-
-#: personal/mail/sieve/templates/object_container_clear.tpl.c:20
-msgid "Remove this object"
-msgstr "Verwijder dit object"
-
-#: personal/mail/sieve/templates/object_container_clear.tpl.c:23
-#: personal/mail/sieve/templates/object_container.tpl.c:23
-msgid "Remove element"
-msgstr "Verwijder element"
-
-#: personal/mail/sieve/templates/element_address.tpl.c:5
-#: personal/mail/sieve/templates/element_vacation.tpl.c:5
-#: personal/mail/sieve/templates/element_envelope.tpl.c:5
-#: personal/mail/sieve/templates/element_header.tpl.c:5
-msgid "Normal view"
-msgstr "Normale weergave"
-
-#: personal/mail/sieve/templates/element_address.tpl.c:8
-#: personal/mail/sieve/templates/element_envelope.tpl.c:8
-#: personal/mail/sieve/templates/element_header.tpl.c:8
-msgid "Match type"
-msgstr "Match type"
-
-#: personal/mail/sieve/templates/element_address.tpl.c:11
-#: personal/mail/sieve/templates/element_address.tpl.c:26
-#: personal/mail/sieve/templates/element_address.tpl.c:32
-#: personal/mail/sieve/templates/element_address.tpl.c:38
-#: personal/mail/sieve/templates/element_address.tpl.c:56
-#: personal/mail/sieve/templates/element_address.tpl.c:59
-#: personal/mail/sieve/templates/element_boolean.tpl.c:5
-#: personal/mail/sieve/templates/element_envelope.tpl.c:11
-#: personal/mail/sieve/templates/element_envelope.tpl.c:32
-#: personal/mail/sieve/templates/element_envelope.tpl.c:38
-#: personal/mail/sieve/templates/element_envelope.tpl.c:56
-#: personal/mail/sieve/templates/element_envelope.tpl.c:59
-#: personal/mail/sieve/templates/element_header.tpl.c:11
-#: personal/mail/sieve/templates/element_header.tpl.c:26
-#: personal/mail/sieve/templates/element_header.tpl.c:32
-#: personal/mail/sieve/templates/element_header.tpl.c:50
-#: personal/mail/sieve/templates/element_header.tpl.c:53
-msgid "Boolean value"
-msgstr "Bool waarde"
-
-#: personal/mail/sieve/templates/element_address.tpl.c:14
-#: personal/mail/sieve/templates/element_envelope.tpl.c:14
-#: personal/mail/sieve/templates/element_header.tpl.c:14
-msgid "Invert test"
-msgstr "Omwissel test"
-
-#: personal/mail/sieve/templates/element_address.tpl.c:17
-#: personal/mail/sieve/templates/element_envelope.tpl.c:17
-#: personal/mail/sieve/templates/element_header.tpl.c:17
-msgid "Yes"
-msgstr "Ja"
-
-#: personal/mail/sieve/templates/element_address.tpl.c:20
-#: personal/mail/sieve/templates/element_envelope.tpl.c:23
-#: personal/mail/sieve/templates/element_header.tpl.c:20
-msgid "No"
-msgstr "Nee"
-
-#: personal/mail/sieve/templates/element_address.tpl.c:23
-msgid "Part of address that should be used"
-msgstr "Deel van het adres dat gebruikt wordt."
-
-#: personal/mail/sieve/templates/element_address.tpl.c:29
-#: personal/mail/sieve/templates/element_envelope.tpl.c:29
-#: personal/mail/sieve/templates/element_header.tpl.c:23
-msgid "Comparator"
-msgstr "Comparator"
-
-#: personal/mail/sieve/templates/element_address.tpl.c:35
-#: personal/mail/sieve/templates/element_envelope.tpl.c:35
-msgid "Operator"
-msgstr "Operator"
-
-#: personal/mail/sieve/templates/element_address.tpl.c:41
-#: personal/mail/sieve/templates/element_envelope.tpl.c:41
-#: personal/mail/sieve/templates/element_header.tpl.c:35
-msgid "Address fields to include"
-msgstr "Op te nemen adresvelden"
-
-#: personal/mail/sieve/templates/element_address.tpl.c:44
-#: personal/mail/sieve/templates/element_envelope.tpl.c:44
-#: personal/mail/sieve/templates/element_header.tpl.c:38
-msgid "Values to match for"
-msgstr "Waarden matchen voor"
-
-#: personal/mail/sieve/templates/element_address.tpl.c:53
-#: personal/mail/sieve/templates/element_envelope.tpl.c:53
-#: personal/mail/sieve/templates/element_header.tpl.c:47
-#: personal/mail/sieve/templates/element_size.tpl.c:11
-#: personal/mail/sieve/templates/element_exists.tpl.c:11
-#: personal/mail/sieve/templates/element_allof.tpl.c:8
-msgid "-"
-msgstr "-"
-
-#: personal/mail/sieve/templates/element_address.tpl.c:62
-#: personal/mail/sieve/templates/element_vacation.tpl.c:20
-#: personal/mail/sieve/templates/element_envelope.tpl.c:62
-#: personal/mail/sieve/templates/element_header.tpl.c:56
-msgid "Expert view"
-msgstr "Expert weergave"
-
-#: personal/mail/sieve/templates/element_comment.tpl.c:5
-msgid "Edit"
-msgstr "Bewerken"
-
-#: personal/mail/sieve/templates/element_discard.tpl.c:5
-msgid "Discard message"
-msgstr "Verwijder dit bericht"
-
-#: personal/mail/sieve/templates/object_test_container.tpl.c:2
-msgid "Add object"
-msgstr "Object toevoegen"
-
-#: personal/mail/sieve/templates/object_test_container.tpl.c:5
-#: personal/mail/sieve/templates/object_container.tpl.c:20
-msgid "Remove object"
-msgstr "Verwijder object"
-
-#: personal/mail/sieve/templates/management.tpl.c:2
-msgid "List of sieve scripts"
-msgstr "Lijst van sieve scripts"
-
-#: personal/mail/sieve/templates/management.tpl.c:5
-msgid ""
-"Connection to the sieve server could not be established, the "
-"authentification attribute is empty."
-msgstr "De verbinding met de sieve server kon niet worden vastgesteld, de authentificatie attribuut is leeg."
-
-#: personal/mail/sieve/templates/management.tpl.c:8
-msgid ""
-"Please verify that the attributes uid and mail are not empty and try again."
-msgstr "Controleer of de attributen uid en mail niet leeg zijn en probeer het opnieuw."
-
-#: personal/mail/sieve/templates/management.tpl.c:11
-msgid "Connection to the sieve server could not be established."
-msgstr "De verbinding met de sieve server kan niet worden vastgesteld."
-
-#: personal/mail/sieve/templates/management.tpl.c:14
-msgid "Possibly the sieve account has not been created yet."
-msgstr "Mogelijk is de sieve account nog niet aangemaakt."
-
-#: personal/mail/sieve/templates/management.tpl.c:17
-msgid ""
-"Be careful. All your changes will be saved directly to sieve, if you use the"
-" save button below."
-msgstr "Wees voorzichtig. Al uw wijzigingen worden rechtstreeks opgeslagen op sieve, als je de bewaar knop hieronder druk."
-
-#: personal/mail/sieve/templates/management.tpl.c:20
-msgid "Create new script"
-msgstr "Maak nieuw script"
-
-#: personal/mail/sieve/templates/element_vacation.tpl.c:2
-msgid "Vacation Message"
-msgstr "Afwezigheidsbericht"
-
-#: personal/mail/sieve/templates/element_vacation.tpl.c:8
-msgid "Release interval"
-msgstr "Release interval"
-
-#: personal/mail/sieve/templates/element_vacation.tpl.c:11
-msgid "days"
-msgstr "dagen"
-
-#: personal/mail/sieve/templates/element_vacation.tpl.c:14
-msgid "Alternative sender addresses"
-msgstr "Alternatieve zender adressen"
-
-#: personal/mail/sieve/templates/element_boolean.tpl.c:2
-msgid "Bool"
-msgstr "Bool"
-
-#: personal/mail/sieve/templates/element_boolean.tpl.c:8
-msgid "update"
-msgstr "update"
-
-#: personal/mail/sieve/templates/object_container.tpl.c:2
-msgid "Move object up one position"
-msgstr "Verplaats object een positie hoger"
-
-#: personal/mail/sieve/templates/object_container.tpl.c:11
-msgid "Move object down one position"
-msgstr "Verplaats object een positie lager"
-
-#: personal/mail/sieve/templates/object_container.tpl.c:26
-msgid "choose element"
-msgstr "kies element"
-
-#: personal/mail/sieve/templates/object_container.tpl.c:35
-msgid "Fileinto"
-msgstr "Bestandin"
-
-#: personal/mail/sieve/templates/object_container.tpl.c:68
-#: personal/mail/sieve/templates/object_container.tpl.c:80
-msgid "Add new"
-msgstr "Nieuw toevoegen"
-
-#: personal/mail/sieve/templates/object_container.tpl.c:71
-#: personal/mail/sieve/templates/object_container.tpl.c:77
-msgid "Add a new object above this one."
-msgstr "Voeg een nieuw object bovenop deze."
-
-#: personal/mail/sieve/templates/object_container.tpl.c:74
-msgid "Add element above"
-msgstr "Voeg element bovenop"
-
-#: personal/mail/sieve/templates/object_container.tpl.c:83
-#: personal/mail/sieve/templates/object_container.tpl.c:89
-msgid "Add a new object below this one."
-msgstr "Voeg een nieuw object onder deze."
-
-#: personal/mail/sieve/templates/object_container.tpl.c:86
-msgid "Add element below"
-msgstr "Voeg element hieronder"
-
-#: personal/mail/sieve/templates/element_reject.tpl.c:2
-msgid "Reject mail"
-msgstr "Wijs mail af"
-
-#: personal/mail/sieve/templates/element_reject.tpl.c:5
-msgid "This is a multiline text element"
-msgstr "Dit is een multiline tekst element"
-
-#: personal/mail/sieve/templates/element_reject.tpl.c:8
-msgid "This is stored as single string"
-msgstr "Dit wordt opgeslagen als een single string"
-
-#: personal/mail/sieve/templates/import_script.tpl.c:2
-msgid "Import sieve script"
-msgstr "Importeer sieve script"
-
-#: personal/mail/sieve/templates/import_script.tpl.c:5
-msgid ""
-"Please select the sieve script you want to import. Use the import button to "
-"import the script or the cancel button to abort."
-msgstr "Selecteer de sieve script dat u wilt importeren. Gebruik de knop Importeren om het script of de knop Annuleren om de import stop zetten."
-
-#: personal/mail/sieve/templates/import_script.tpl.c:8
-msgid "Script to import"
-msgstr "Script om te importeren"
-
-#: personal/mail/sieve/templates/import_script.tpl.c:11
-#: personal/mail/sieve/templates/edit_frame_base.tpl.c:5
-msgid "Import"
-msgstr "Importeren"
-
-#: personal/mail/sieve/templates/element_header.tpl.c:29
-msgid "operator"
-msgstr "operator"
-
-#: personal/mail/sieve/templates/element_size.tpl.c:17
-msgid "Select match type"
-msgstr "Selecteer match type"
-
-#: personal/mail/sieve/templates/element_size.tpl.c:20
-msgid "Select value unit"
-msgstr "Selecteer waarde eenheid"
-
-#: personal/mail/sieve/templates/edit_frame_base.tpl.c:2
-msgid "Export"
-msgstr "Exporteer"
-
-#: personal/mail/sieve/templates/edit_frame_base.tpl.c:8
-msgid "View structured"
-msgstr "Gestructureerde weergave"
-
-#: personal/mail/sieve/templates/edit_frame_base.tpl.c:11
-msgid "View source"
-msgstr "Broncode weergave"
-
-#: personal/mail/sieve/templates/add_element.tpl.c:2
-msgid "Add a new element"
-msgstr "Nieuw element toevoegen"
-
-#: personal/mail/sieve/templates/add_element.tpl.c:5
-msgid "Please select the type of element you want to add"
-msgstr "Gelieve het element type te selecteren dat u wilt toevoegen"
-
-#: personal/mail/sieve/templates/add_element.tpl.c:11
-msgid "Abort"
-msgstr "Afbreken"
-
-#: personal/mail/sieve/templates/remove_script.tpl.c:5
-msgid ""
-"Please double check if your really want to do this since there is no way for"
-" FusionDirectory to get your data back."
-msgstr "Verzeker u ervan dat u dit daadwerkelijk wil doorvoeren, aangezien het onmogelijk is voor FusionDirectory om de data terug te halen."
-
-#: personal/mail/sieve/templates/remove_script.tpl.c:8
-msgid ""
-"Best thing to do before performing this action would be to save the current "
-"script in a file. So - if you've done so - press 'Delete' to continue or "
-"'Cancel' to abort."
-msgstr "Voordat u deze actie uitvoer, best is het huidige script op te slaan in een bestand. Eens dit gedaan is druk op 'Verwijderen' om door te gaan of 'Annuleren' om af te breken."
-
-#: personal/mail/sieve/templates/element_redirect.tpl.c:5
-msgid "Redirect mail to following recipients"
-msgstr "Redirect mail naar volgende ontvangers"
-
-#: personal/mail/sieve/templates/create_script.tpl.c:2
-msgid ""
-"Please enter the name for the new script below. Script names must consist of"
-" lower case characters only."
-msgstr "Voer hieronder de naam voor het nieuwe script. Script namen moeten enkel bestaan ​​uit kleine letters."
-
-#: personal/mail/sieve/templates/create_script.tpl.c:5
-msgid "Script name"
-msgstr "Script naam"
-
-#: personal/mail/sieve/templates/element_keep.tpl.c:5
-msgid "Keep message"
-msgstr "Bewaar bericht"
+#: config/mail/class_mailPluginConfig.inc:108
+msgid "Generic"
+msgstr "Algemeen"

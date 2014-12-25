@@ -1,5 +1,5 @@
 <input type="hidden" name="mailedit" value="1">
-<table style="width:100%; vertical-align:top; text-align:left;" cellpadding=0 border=0>
+<table style="width:100%; vertical-align:top; text-align:left;border-collapse:collapse; border-spacing:0;" border="0">
 
  <!-- Headline container -->
  <tr>

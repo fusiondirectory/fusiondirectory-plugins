@@ -1,5 +1,4 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
@@ -22,11 +21,8 @@
 
 class serviceTerminal extends simpleService
 {
-
-  /* This plugin only writes its objectClass */
   var $objectclasses = array("goTerminalServer");
 
-  /* Return plugin informations for acl handling */
   static function plInfo()
   {
     return array(
@@ -38,9 +34,6 @@ class serviceTerminal extends simpleService
     );
   }
 
-  /*!
-   *  \brief The main function : information about attributes
-   */
   static function getAttributesInfo ()
   {
       return array (
@@ -49,9 +42,8 @@ class serviceTerminal extends simpleService
         'attrs' => array (
           new BooleanAttribute (
             _('Temporary disable login'),
-            _(' '),
-            'goXdmcpIsEnabled',
-            FALSE,
+            _('Disables the login on this terminal server'),
+            'goXdmcpIsEnabled', FALSE,
             FALSE,
             '',
             1,
@@ -60,9 +52,8 @@ class serviceTerminal extends simpleService
           new SetAttribute (
             new SelectAttribute (
               _('Supported session types'),
-              _(' '),
-              'gotoSessionType',
-              FALSE,
+              _('The session types supported by this terminal server'),
+              'gotoSessionType', FALSE,
               array("LDM","XDMCP", "SHELL", "RDP", "TELNET"),
               '',
               array("LDM","XDMCP", "SHELL", "RDP", "TELNET")

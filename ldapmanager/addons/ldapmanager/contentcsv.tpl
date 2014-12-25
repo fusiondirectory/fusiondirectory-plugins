@@ -41,7 +41,7 @@
 <br>
 
 
-  <table cellspacing="1" border="0" cellpadding="4"  bgcolor="#FEFEFE">
+  <table border="0" bgcolor="#FEFEFE">
     <tr>
       {foreach from=$head item=h}
       <td bgcolor="#BBBBBB">
@@ -80,7 +80,7 @@
 <br><b>{t}Selected Template{/t}:</b> {$tpl}
 <br>
 <br>
-  <table cellspacing="1" border=0 cellpadding="4" bgcolor="#FEFEFE">
+  <table border=0 bgcolor="#FEFEFE">
     {foreach from=$data[0] item=val key=key}
     <tr>
       <td bgcolor="#BBBBBB">

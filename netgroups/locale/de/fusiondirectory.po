@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-08-18 16:07+0200\n"
-"PO-Revision-Date: 2014-08-28 10:46+0000\n"
+"POT-Creation-Date: 2014-12-16 21:56+0100\n"
+"PO-Revision-Date: 2014-12-15 23:30+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/FusionDirectory-108/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -20,16 +20,17 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: admin/netgroups/class_netgroup.inc:50
-msgid "Generic"
-msgstr "Allgemein"
+#: config/netgroups/class_netgroupConfig.inc:42
+msgid "Netgroup"
+msgstr "Netzgruppe"
 
 #: admin/netgroups/class_netgroup.inc:51
-msgid "Generic NIS Netgroup settings"
-msgstr "Allgemeine NIS Netgroup Einstellungen"
+msgid "NIS Netgroup settings"
+msgstr "NIS-Netzgruppeneinstellungen"
 
 #: admin/netgroups/class_netgroup.inc:54
 #: admin/systems/netgroups/class_netgroupSystem.inc:26
-#: personal/netgroups/class_netgroupMembership.inc:42
+#: personal/netgroups/class_netgroupMembership.inc:43
 msgid "NIS Netgroup"
 msgstr "NIS Netgroup"
 
@@ -79,15 +80,15 @@ msgid "NIS Netgroup management"
 msgstr "NIS Netzgruppenverwaltung"
 
 #: admin/systems/netgroups/class_netgroupSystem.inc:27
-#: personal/netgroups/class_netgroupMembership.inc:43
+#: personal/netgroups/class_netgroupMembership.inc:44
 msgid "NIS Netgroup member"
 msgstr "NIS Netgroup Mitglied"
 
-#: personal/netgroups/class_netgroupMembership.inc:59
+#: personal/netgroups/class_netgroupMembership.inc:60
 msgid "Member of the following NIS Netgroups  "
 msgstr "Mitglied der folgenden NIS Netzgruppen"
 
-#: personal/netgroups/class_netgroupMembership.inc:62
+#: personal/netgroups/class_netgroupMembership.inc:63
 msgid "NIS netgroup membership"
 msgstr "NIS netgroup Mitgliedschaft"
 
@@ -98,10 +99,6 @@ msgstr "Netzgruppen Konfiguration"
 #: config/netgroups/class_netgroupConfig.inc:29
 msgid "FusionDirectory netgroup plugin configuration"
 msgstr "FusionDirectory negroup Plugin Konfiguration"
-
-#: config/netgroups/class_netgroupConfig.inc:42
-msgid "LDAP tree"
-msgstr "LDAP Baum"
 
 #: config/netgroups/class_netgroupConfig.inc:45
 msgid "Netgroup RDN"
