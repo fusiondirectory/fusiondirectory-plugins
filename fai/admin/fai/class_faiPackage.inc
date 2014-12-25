@@ -73,7 +73,7 @@ class faiPackage extends faiPluginClass
   var $FAIinstallMethods  = array( "install", "ninstall", "remove",
       "dselect-upgrade", "taskinst", "taskrm",
       "hold", "clean", "aptitude", "aptitude-r",
-      "pending", "dpkgc" );
+      "pending", "dpkgc","yum" );
 
 
   function faiPackage (&$config, $dn= NULL)
