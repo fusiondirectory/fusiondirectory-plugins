@@ -411,7 +411,7 @@ class faiPackage extends faiSimplePluginClass
             array('install', 'ninstall', 'remove',
               'dselect-upgrade', 'taskinst', 'taskrm',
               'hold', 'clean', 'aptitude', 'aptitude-r',
-              'pending', 'dpkgc'),
+              'pending', 'dpkgc', 'yum'),
             'aptitude'
           ),
         )
