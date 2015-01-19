@@ -110,7 +110,7 @@ class serviceCentosRepository extends simpleService
 
   function is_this_account($attrs)
   {
-    if (parent::is_this_account()) {
+    if (parent::is_this_account($attrs)) {
       return serviceDebianRepository::isOfDistribution($attrs, 'centos');
     } else {
       return FALSE;

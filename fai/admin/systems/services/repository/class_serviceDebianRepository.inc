@@ -123,7 +123,7 @@ class serviceDebianRepository extends simpleService
 
   function is_this_account($attrs)
   {
-    if (parent::is_this_account()) {
+    if (parent::is_this_account($attrs)) {
       return self::isOfDistribution($attrs, 'debian');
     } else {
       return FALSE;
