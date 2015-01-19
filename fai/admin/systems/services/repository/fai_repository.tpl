@@ -46,12 +46,14 @@
       </td>
       <td>{eval var=$attributes.mirrorMode.input}</td>
 
+      {if isset($attributes.mirrorSections_inner)}
       <td rowspan="2" title="{$attributes.mirrorSections_inner.description}">
         <label for="{$attributes.mirrorSections_inner.htmlid}">
           {eval var=$attributes.mirrorSections_inner.label}
         </label><br/>
         {eval var=$attributes.mirrorSections_inner.input}
       </td>
+      {/if}
     </tr>
     <tr>
       <td title="{$attributes.mirrorLocal.description}">

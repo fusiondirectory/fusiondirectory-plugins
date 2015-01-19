@@ -752,10 +752,10 @@ class supportDaemon
           $infos['URL']           = $tmp[0];
           $infos['PARENT_SERVER'] = $tmp[1];
           $infos['FAI_RELEASE']   = $tmp[2];
-          $infos['SECTIONS']      = explode(",", $tmp[3]);
+          $infos['SECTIONS']      = (empty($tmp[3])?array():explode(",", $tmp[3]));
           $infos['INSTALL']       = $tmp[4];
           $infos['LOCAL']         = $tmp[5];
-          $infos['ARCHS']         = explode(",", $tmp[6]);
+          $infos['ARCHS']         = (empty($tmp[6])?array():explode(",", $tmp[6]));
           $repos[] = $infos;
         }
       }
