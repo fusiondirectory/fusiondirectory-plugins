@@ -19,11 +19,116 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-/* TODO add a select for archs ? */
-
-class serviceDebianRepository extends simpleService
+class FAIRepositoryAttribute extends PipeSeparatedCompositeAttribute
 {
-  var $conflicts      = array('serviceDebianRepository');
+  function __construct($description, $ldapName, $acl = "", $label = "Composite attribute")
+  {
+    parent::__construct(
+      $description,
+      $ldapName,
+      array(
+        new StringAttribute(
+          _('URL'), _('Repository url'),
+          'mirrorUrl', TRUE
+        ),
+        new SelectAttribute(
+          _('Parent server'), _('Parent repository server'),
+          'mirrorParent', FALSE,
+          array(), ''
+        ),
+        new StringAttribute(
+          _('Release'), _('Release used on this repository'),
+          'mirrorRelease', TRUE
+        ),
+        new CommaListAttribute(
+          'mirrorSections',
+          new SetAttribute(
+            new StringAttribute(
+              _('Sections'), _('Debian sections available on this repository'), 'mirrorSections_inner'
+            )
+          )
+        ),
+        new SelectAttribute(
+          _('Mirror mode'), _('Is this mirror an installation repository? Is its release a custom one?'),
+          'mirrorMode', TRUE,
+          array('install','update','custom')
+        ),
+        new BooleanAttribute(
+          _('Local mirror'), _('Is this mirror a local or a network mirror?'),
+          'mirrorLocal', FALSE,
+          FALSE, '',
+          'local', 'network'
+        ),
+        new CommaListAttribute(
+          'mirrorArchs',
+          new SetAttribute(
+            new StringAttribute(
+              _('Architectures'), _('Processor architectures available on this repository'),
+              'mirrorArchs_inner', TRUE
+            )
+          )
+        ),
+        new SelectAttribute(
+          _('Distribution'), _('Which distribution is this repository for'),
+          'distribution', TRUE,
+          array('debian','centos')
+        ),
+      ),
+      $acl,
+      $label
+    );
+    $this->attributes[7]->setSubmitForm(TRUE);
+    $this->updateFields();
+  }
+
+  function updateFields()
+  {
+    $this->attributes[1]->setChoices(serviceRepository::getParentServers($this->attributes[7]->getValue(), $this->plugin->cn));
+    if ($this->attributes[7]->getValue() == 'debian') {
+      $releaseList = array_map(
+        function ($a)
+        {
+          return "custom:$a";
+        },
+        serviceRepository::getReleaseList($this->attributes[7]->getValue())
+      );
+      $modeChoices = array_merge(array('install', 'update'), $releaseList);
+      $this->attributes[3]->setVisible(TRUE);
+    } else {
+      $modeChoices = array('os', 'updates', 'centosplus', 'extras', 'contrib');
+      $this->attributes[3]->setValue('');
+      $this->attributes[3]->setVisible(FALSE);
+    }
+    $this->attributes[4]->setChoices($modeChoices);
+  }
+
+  function applyPostValue()
+  {
+    parent::applyPostValue();
+    $this->updateFields();
+  }
+
+  function setValue ($values)
+  {
+    $arrayValues = $values;
+    if (!is_array($values)) {
+      $arrayValues = $this->inputValue($values);
+    }
+    $this->attributes[7]->setValue($arrayValues[7]);
+    $this->updateFields();
+    parent::setValue($values);
+  }
+
+  function resetToDefault ()
+  {
+    $this->attributes[7]->resetToDefault();
+    $this->updateFields();
+    parent::resetToDefault();
+  }
+}
+
+class serviceRepository extends simpleService
+{
   var $objectclasses  = array('FAIrepositoryServer');
 
   static function getAttributesInfo ()
@@ -35,54 +140,9 @@ class serviceDebianRepository extends simpleService
         'class'     => array('fullwidth'),
         'attrs'     => array(
           new OrderedArrayAttribute(
-            new PipeSeparatedCompositeAttribute(
+            new FAIRepositoryAttribute(
               _('Repositories this server hosts'),
-              'FAIrepository',
-              array(
-                new StringAttribute(
-                  _('URL'), _('Repository url'),
-                  'mirrorUrl', TRUE
-                ),
-                new SelectAttribute(
-                  _('Parent server'), _('Parent repository server'),
-                  'mirrorParent', FALSE,
-                  array(), ''
-                ),
-                new StringAttribute(
-                  _('Release'), _('Debian release used on this repository'), 'mirrorRelease', TRUE
-                ),
-                new CommaListAttribute(
-                  'mirrorSections',
-                  new SetAttribute(
-                    new StringAttribute(
-                      _('Sections'), _('Debian sections available on this repository'), 'mirrorSections_inner'
-                    )
-                  )
-                ),
-                new SelectAttribute(
-                  _('Mirror mode'), _('Is this mirror an installation repository? Is its release a custom one?'),
-                  'mirrorMode', TRUE,
-                  array('install','update','custom')
-                ),
-                new BooleanAttribute(
-                  _('Local mirror'), _('Is this mirror a local or a network mirror?'),
-                  'mirrorLocal', FALSE,
-                  FALSE, '',
-                  'local', 'network'
-                ),
-                new CommaListAttribute(
-                  'mirrorArchs',
-                  new SetAttribute(
-                    new StringAttribute(
-                      _('Architectures'), _('Processor architectures available on this repository'), 'mirrorArchs_inner'
-                    )
-                  )
-                ),
-                new HiddenAttribute(
-                  'distribution', TRUE, 'debian'
-                ),
-              ),
-              '', '' // no formats
+              'FAIrepository'
             ),
             FALSE,  // no order
             array(),
@@ -96,8 +156,8 @@ class serviceDebianRepository extends simpleService
   static function plInfo()
   {
     return array(
-      'plShortName'   => _('Debian repository'),
-      'plDescription' => _('Debian repository').' ('._('Services').')',
+      'plShortName'   => _('Package repository'),
+      'plDescription' => _('Package repository information'),
       'plIcon'        => 'geticon.php?context=mimetypes&icon=package-x-generic&size=16',
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
@@ -108,26 +168,7 @@ class serviceDebianRepository extends simpleService
   {
     parent::__construct($config, $dn, $parent);
 
-    $this->attributesAccess['FAIrepository']->attribute->attributes[1]->setChoices(self::getParentServers('debian', $this->cn));
-    $releaseList = array_map(
-      function ($a)
-      {
-        return "custom:$a";
-      },
-      $this->getReleaseList()
-    );
-    $releaseChoices = array_merge(array('install', 'update'), $releaseList);
-    $this->attributesAccess['FAIrepository']->attribute->attributes[4]->setChoices($releaseChoices);
     $this->attributesAccess['FAIrepository']->setLinearRendering(FALSE);
-  }
-
-  function is_this_account($attrs)
-  {
-    if (parent::is_this_account($attrs)) {
-      return self::isOfDistribution($attrs, 'debian');
-    } else {
-      return FALSE;
-    }
   }
 
   static function isOfDistribution($attrs, $distribution)
@@ -150,8 +191,8 @@ class serviceDebianRepository extends simpleService
     $done   = array();
     foreach ($repos as $repo) {
       $release = $repo[2];
-      if (($repo[4] == 'install') && (!isset($done[$release]))) {
-        self::createBranch('debian', $release);
+      if ((($repo[7] != 'debian') || ($repo[4] == 'install')) && (!isset($done[$release]))) {
+        self::createBranch($repo[7], $release);
         $done[$release] = TRUE;
       }
     }
@@ -215,10 +256,12 @@ class serviceDebianRepository extends simpleService
     return $ret;
   }
 
-  function getReleaseList ()
+  static function getReleaseList ($distribution)
   {
-    $ldap = $this->config->get_ldap_link();
-    $ldap->ls('(objectClass=FAIbranch)', 'ou=debian,'.get_ou('faiBaseRDN').$this->config->current['BASE'], array('ou'));
+    global $config;
+
+    $ldap = $config->get_ldap_link();
+    $ldap->ls('(objectClass=FAIbranch)', 'ou='.$distribution.','.get_ou('faiBaseRDN').$config->current['BASE'], array('ou'));
 
     $list = array();
     while ($release = $ldap->fetch()) {

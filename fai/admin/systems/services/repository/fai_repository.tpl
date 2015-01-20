@@ -8,6 +8,14 @@
       </td>
     </tr>
     <tr>
+      <td title="{$attributes.distribution.description}">
+        <label for="{$attributes.distribution.htmlid}">
+          {eval var=$attributes.distribution.label}
+        </label>
+      </td>
+      <td>{eval var=$attributes.distribution.input}</td>
+    </tr>
+    <tr>
       <td title="{$attributes.mirrorUrl.description}">
         <label for="{$attributes.mirrorUrl.htmlid}">
           {eval var=$attributes.mirrorUrl.label}
