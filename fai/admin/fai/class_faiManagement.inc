@@ -802,24 +802,18 @@ class faiManagement extends management
 
 
 
-  /*! \brief   Returns a list of all releases for useable for drop down boxes.
-   *                      ou=fai... /
-   *              ou=siga,ou=fai... &nbsp; siga
-   *         ou=1,ou=siga,ou=fai... &nbsp;&nbsp; 1
+  /*! \brief   Returns a list of all releases useable for drop down boxes.
    */
-  function getReleaseList($base = "", $prefix ="")
+  function getReleaseList()
   {
     $list = array();
-    if (empty($base)) {
-      $base = $this->fai_base;
-    }
 
     $ldap = $this->config->get_ldap_link();
-    $ldap->ls("(objectClass=FAIbranch)",$base,array("ou","FAIstate"));
+    $ldap->cd($this->fai_base);
+    $ldap->search('(objectClass=FAIbranch)', array('ou','FAIstate'));
 
-    while($release = $ldap->fetch()){
+    while ($release = $ldap->fetch()) {
       $list[$release['dn']] = $prefix.$release['ou'][0];
-      $list = array_merge($list,$this->getReleaseList($release['dn'],$prefix."&nbsp; "));
     }
     return $list;
   }
