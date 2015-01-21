@@ -83,13 +83,13 @@ class ServerService extends management
     if (session::global_is_set(get_class($this)."_filter")) {
       $filter = session::global_get(get_class($this)."_filter");
     } else {
-      $filter = new filter(get_template_path("serverService-filter.xml", TRUE));
+      $filter = new filter(get_template_path("serverService-filter.xml", TRUE, dirname(__FILE__)));
       $filter->setObjectStorage($this->storagePoints);
     }
     $this->setFilter($filter);
 
     // Build headpage
-    $headpage = new listing(get_template_path("serverService-list.xml", TRUE));
+    $headpage = new listing(get_template_path("serverService-list.xml", TRUE, dirname(__FILE__)));
     $headpage->registerElementFilter("filterServiceStatus", "ServerService::filterServiceStatus");
     $headpage->setFilter($filter);
 
