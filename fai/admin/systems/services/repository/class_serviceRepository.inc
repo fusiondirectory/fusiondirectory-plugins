@@ -83,7 +83,11 @@ class FAIRepositoryAttribute extends PipeSeparatedCompositeAttribute
 
   function updateFields()
   {
-    $this->attributes[1]->setChoices(serviceRepository::getParentServers($this->attributes[7]->getValue(), $this->plugin->cn));
+    $cn = NULL;
+    if (is_object($this->plugin)) {
+      $cn = $this->plugin->cn;
+    }
+    $this->attributes[1]->setChoices(serviceRepository::getParentServers($this->attributes[7]->getValue(), $cn));
     if ($this->attributes[7]->getValue() == 'debian') {
       $releaseList = array_map(
         function ($a)
