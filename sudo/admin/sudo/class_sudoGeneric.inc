@@ -121,9 +121,17 @@ class sudo extends simplePlugin
           ),
           new SetAttribute (
             new StringAttribute (
-              _('Run as'),
-              _('A user that commands may be run as or a Unix group that contains a list of users that commands may be run as'),
-              'sudoRunAs', FALSE,
+              _('Run as (user)'),
+              _('User(s) impersonated by sudo'),
+              'sudoRunAsUser', FALSE,
+              'ALL'
+            )
+          ),
+          new SetAttribute (
+            new StringAttribute (
+              _('Run as (group)'),
+              _('Group(s) impersonated by sudo'),
+              'sudoRunAsGroup', FALSE,
               'ALL'
             )
           ),
@@ -137,6 +145,11 @@ class sudo extends simplePlugin
             _("A user name, user ID (prefixed with '#'), Unix group (prefixed with '%')"),
             'sudoUser', FALSE,
             array('ALL')
+          ),
+          new IntAttribute (
+            _('Priority'), _('This rule priority compared to others'),
+            'sudoOrder', FALSE,
+            0, FALSE, 0
           )
         )
       ),
@@ -154,7 +167,9 @@ class sudo extends simplePlugin
             'sudoUser',
             'sudoCommand',
             'sudoHost',
-            'sudoRunAs',
+            'sudoRunAsUser',
+            'sudoRunAsGroup',
+            'sudoOrder',
           )
         ),
         'disable' => array(
