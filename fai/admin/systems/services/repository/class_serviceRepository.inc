@@ -44,7 +44,7 @@ class FAIRepositoryAttribute extends PipeSeparatedCompositeAttribute
           'mirrorSections',
           new SetAttribute(
             new StringAttribute(
-              _('Sections'), _('Debian sections available on this repository'), 'mirrorSections_inner'
+              _('Sections'), _('Sections available on this repository'), 'mirrorSections_inner'
             )
           )
         ),
@@ -97,11 +97,8 @@ class FAIRepositoryAttribute extends PipeSeparatedCompositeAttribute
         serviceRepository::getReleaseList($this->attributes[7]->getValue())
       );
       $modeChoices = array_merge(array('install', 'update'), $releaseList);
-      $this->attributes[3]->setVisible(TRUE);
     } else {
-      $modeChoices = array('os', 'updates', 'centosplus', 'extras', 'contrib');
-      $this->attributes[3]->setValue('');
-      $this->attributes[3]->setVisible(FALSE);
+      $modeChoices = array('install', 'update');
     }
     $this->attributes[4]->setChoices($modeChoices);
   }
@@ -195,7 +192,7 @@ class serviceRepository extends simpleService
     $done   = array();
     foreach ($repos as $repo) {
       $release = $repo[2];
-      if ((($repo[7] != 'debian') || ($repo[4] == 'install')) && (!isset($done[$release]))) {
+      if (($repo[4] == 'install') && (!isset($done[$release]))) {
         FAI::createBranch($repo[7], $release);
         $done[$release] = TRUE;
       }
