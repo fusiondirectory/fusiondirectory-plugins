@@ -118,11 +118,10 @@ class faiStartup extends simplePlugin
     parent::__construct($config, $dn, $object);
   }
 
-  /* Updates release dns
-   *  and reads all classes for the current release,
+  /* Updates release and profiles list
    *  if not already done ($this->cache).
    */
-  function update_fai_cache($release = FALSE)
+  function update_fai_cache()
   {
     /* Get the list of available servers and their releases.
      */
