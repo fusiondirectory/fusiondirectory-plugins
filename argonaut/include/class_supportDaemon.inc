@@ -756,6 +756,7 @@ class supportDaemon
           $infos['INSTALL']       = $tmp[4];
           $infos['LOCAL']         = $tmp[5];
           $infos['ARCHS']         = (empty($tmp[6])?array():explode(",", $tmp[6]));
+          $infos['DIST']          = (isset($tmp[7])?$tmp[7]:'debian');
           $repos[] = $infos;
         }
       }
@@ -810,8 +811,8 @@ class supportDaemon
   public function FAI_get_profiles($release)
   {
     $ldap = $this->config->get_ldap_link();
-    $ldap->cd("ou=$release,".get_ou("faiBaseRDN").$this->config->current['BASE']);
-    $ldap->search("(&(objectClass=FAIprofile)(objectClass=FAIclass))", array('cn'));
+    $ldap->cd(get_ou("faiBaseRDN").$this->config->current['BASE']);
+    $ldap->search("(&(objectClass=FAIprofile)(objectClass=FAIclass)(ou:dn:=$release))", array('cn'));
 
     $res = array();
     while ($entry = $ldap->fetch()) {
