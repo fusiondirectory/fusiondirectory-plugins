@@ -190,6 +190,23 @@ class faiPackage extends faiPluginClass
 
     return $configured_packages;
   }
+  
+  function updateRelease()
+  {
+    /* Assemble release name */
+    $release = $this->parent->parent->fai_release;
+    $tmp = preg_replace('/'.preg_quote(get_ou('faiBaseRDN'), '/').'.*$/i', '', $release);
+    preg_match_all('/ou=([^=,]),/', $tmp, $m);
+    /* m[1][0] is release, m[1][1] is distribution */
+    $this->FAIdebianRelease = $m[1][0];
+
+    /* Assemble sections */ 
+    $repos = $this->getServerInfos();
+    if(isset($repos[$this->FAIdebianRelease])) {
+      $this->FAIdebianSection = $repos[$this->FAIdebianRelease];
+      $this->FAIdebianSection = array_unique($this->FAIdebianSection);
+    }
+  }
 
   function execute()
   {
@@ -210,27 +227,11 @@ class faiPackage extends faiPluginClass
      ******/
 
     if (!$this->is_account) {
-
       /* Assemble release name */
-      $release = $this->parent->parent->fai_release;
-      $tmp= preg_replace('/[,]*'.preg_quote(get_ou('faiBaseRDN'), '/').'.*$/i', '', $release);
-      $tmp= preg_replace('/ou=/', '', $tmp);
-      $rev= array_reverse(explode(',', $tmp));
-      $this->FAIdebianRelease= "/";
-      foreach ($rev as $part){
-        $this->FAIdebianRelease.= "/$part";
-      }
-      $this->FAIdebianRelease= preg_replace('#^[/]*#', '', $this->FAIdebianRelease);
-
-      /* Assemble sections */
-      $repos= $this->getServerInfos();
-      if(isset($repos[$this->FAIdebianRelease])) {
-        $this->FAIdebianSection= $repos[$this->FAIdebianRelease];
-        $this->FAIdebianSection= array_unique($this->FAIdebianSection);
-      }
+      $this->updateRelease();
 
       /* Assign Repository settings*/
-      $this->is_account     = true;
+      $this->is_account = TRUE;
     }
 
 
@@ -597,19 +598,9 @@ class faiPackage extends faiPluginClass
    */
   function save()
   {
-
     /* Assemble release name */
     if ($this->FAIdebianRelease == "ClearFromCopyPaste") {
-
-      $current_release = $this->parent->parent->fai_release;
-      $tmp = preg_replace('/,'.preg_quote(get_ou('faiBaseRDN'), '/').'.*$/i', '', $current_release);
-      $tmp = preg_replace('/ou=/', '', $tmp);
-      $rev = array_reverse(explode(',', $tmp));
-      $this->FAIdebianRelease= "";
-      foreach ($rev as $part){
-        $this->FAIdebianRelease.= "/$part";
-      }
-      $this->FAIdebianRelease= preg_replace('#^/#', '', $this->FAIdebianRelease);
+      $this->updateRelease();
     }
 
     parent::save();
