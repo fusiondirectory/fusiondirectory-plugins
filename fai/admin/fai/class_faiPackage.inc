@@ -437,24 +437,26 @@ class faiPackage extends faiSimplePluginClass
 
     if ($this->FAIdebianRelease === "") {
       /* Assemble release name */
-      $release  = $this->base;
-      $tmp      = preg_replace('/[,]*'.preg_quote(get_ou('faiBaseRDN'), '/').'.*$/i', '', $release);
-      $tmp      = preg_replace('/ou=/', '', $tmp);
-      $rev      = array_reverse(explode(',', $tmp));
-      $FAIdebianRelease = "/";
-      foreach ($rev as $part) {
-        $FAIdebianRelease .= "/$part";
-      }
-      $this->FAIdebianRelease = preg_replace('#^[/]*#', '', $FAIdebianRelease);
-
-      /* Assemble sections */
-      $repos = $this->getServerInfos();
-      if (isset($repos[$this->FAIdebianRelease])) {
-        $this->FAIdebianSection = array_unique($repos[$this->FAIdebianRelease]);
-      }
+      $this->updateRelease();
     }
 
     session::set('packageSelect_Release', $this->FAIdebianRelease);
+  }
+
+  function updateRelease()
+  {
+    /* Assemble release name */
+    $tmp = preg_replace('/'.preg_quote(get_ou('faiBaseRDN'), '/').'.*$/i', '', $this->base);
+    preg_match_all('/ou=([^=,]+),/', $tmp, $m);
+    /* m[1][0] is release, m[1][1] is distribution */
+    $this->FAIdebianRelease = $m[1][0];
+
+    /* Assemble sections */
+    $repos = $this->getServerInfos();
+    if(isset($repos[$this->FAIdebianRelease])) {
+      $this->FAIdebianSection = $repos[$this->FAIdebianRelease];
+      $this->FAIdebianSection = array_unique($this->FAIdebianSection);
+    }
   }
 
   function ldap_save ($cleanup = TRUE)
