@@ -6,7 +6,7 @@
 
 <p class='seperator'>
   <div style='text-align:right;'>
-    <input type='submit' name='templateEditCancel' value='{msgPool type=cancelButton'}'>
+    <input type='submit' name='templateEditCancel' value='{msgPool type=cancelButton}'/>
   </div>
 </p>
 
