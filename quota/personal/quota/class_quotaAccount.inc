@@ -170,14 +170,14 @@ class quotaAccount extends simplePlugin
     /* Get List of server with Quota service */
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
-    $ldap->search('(&(objectClass=goServer)(objectClass=quotaService))', array('cn','description','quotaDeviceParameters'));
+    $ldap->search('(objectClass=quotaService)', array('cn','description','quotaDeviceParameters'));
     $this->quotaDeviceParameters = array();
     $quotaServersList = array();
     while ($attrs = $ldap->fetch()) {
       $this->quotaDeviceParameters[$attrs['cn'][0]] = $attrs['quotaDeviceParameters'];
       unset($this->quotaDeviceParameters[$attrs['cn'][0]]['count']);
       $display = $attrs['cn'][0];
-      if (isset($attrs['description'][0])) {
+      if (isset($attrs['description'][0]) && !empty($attrs['description'][0])) {
         $display .= ' - '.$attrs['description'][0];
       }
       $quotaServersList[$attrs['cn'][0]] = $display;
@@ -197,9 +197,14 @@ class quotaAccount extends simplePlugin
   function getDeviceList($server)
   {
     $quotaDeviceList = array();
-    foreach ($this->quotaDeviceParameters[$server] as $infos) {
-      $quotas = explode(":", $infos);
-      $quotaDeviceList[$quotas[0]] = $quotas[0]." - ".$quotas[2];
+    if (isset($this->quotaDeviceParameters[$server])) {
+      foreach ($this->quotaDeviceParameters[$server] as $infos) {
+        $quotas = explode(":", $infos);
+        $quotaDeviceList[$quotas[0]] = $quotas[0];
+        if (!empty($quotas[2])) {
+          $quotaDeviceList[$quotas[0]] .= ' - '.$quotas[2];
+        }
+      }
     }
     return $quotaDeviceList;
   }
