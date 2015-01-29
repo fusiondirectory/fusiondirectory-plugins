@@ -793,7 +793,7 @@ class supportDaemon
   */
   public function FAI_get_kernels($release)
   {
-    $kernels = $this->FAI_get_packages($release, array("package"), array("linux-image"));
+    $kernels = $this->FAI_get_packages($release, array("package"), array("linux-image", '^kernel$'));
     foreach ($kernels as &$kernel) {
       $kernel = $kernel['PACKAGE'];
     }
