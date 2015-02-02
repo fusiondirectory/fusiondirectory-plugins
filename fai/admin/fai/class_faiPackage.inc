@@ -73,7 +73,7 @@ class faiPackage extends faiPluginClass
   var $FAIinstallMethods  = array( "install", "ninstall", "remove",
       "dselect-upgrade", "taskinst", "taskrm",
       "hold", "clean", "aptitude", "aptitude-r",
-      "pending", "dpkgc","yum" );
+      "pending", "dpkgc", "yumi" );
 
 
   function faiPackage (&$config, $dn= NULL)
@@ -190,7 +190,7 @@ class faiPackage extends faiPluginClass
 
     return $configured_packages;
   }
-  
+
   function updateRelease()
   {
     /* Assemble release name */
@@ -200,7 +200,7 @@ class faiPackage extends faiPluginClass
     /* m[1][0] is release, m[1][1] is distribution */
     $this->FAIdebianRelease = $m[1][0];
 
-    /* Assemble sections */ 
+    /* Assemble sections */
     $repos = $this->getServerInfos();
     if(isset($repos[$this->FAIdebianRelease])) {
       $this->FAIdebianSection = $repos[$this->FAIdebianRelease];
