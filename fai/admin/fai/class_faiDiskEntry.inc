@@ -602,7 +602,11 @@ class faiDiskEntry extends plugin
     }
 
     /* Assemble flags */
-    $tmp['FAIdiskOption'] = array("fstabkey:".$this->fstabkey, "disklabel:".$this->disklabel);
+    if ($this->FAIdiskType == "disk") {
+      $tmp['FAIdiskOption'] = array("fstabkey:".$this->fstabkey, "disklabel:".$this->disklabel);
+    } else {
+      $tmp['FAIdiskOption'] = array("fstabkey:".$this->fstabkey);
+    }
 
     /* If hdd name has changed, tell partitionTable to rename it */
     if(($this->is_edit)&&($this->old_cn != $this->DISKcn)){
