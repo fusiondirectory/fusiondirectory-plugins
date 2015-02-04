@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2013  FusionDirectory
+  Copyright (C) 2011-2015  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -26,7 +26,6 @@ class serviceDNS extends goService
   var $attributes       = array();
   var $objectclasses    = array("whatever");
 
-  var $RecordTypes      = array();
   var $Zones            = array();
 
   var $orig_dn          = "";
@@ -39,10 +38,6 @@ class serviceDNS extends goService
   var $StatusFlag       = "";
   var $view_logged      = FALSE;
 
-  var $dns_server_list  = array("ENTRIES" => array(), "FOR_LIST" => array());
-  var $take_over_id     = -1;
-
-
   function serviceDNS (&$config, $dn = NULL, $parent = NULL)
   {
     parent::__construct($config, $dn, $parent);
@@ -50,16 +45,6 @@ class serviceDNS extends goService
     $this->DisplayName = _("DNS service");
 
     $this->orig_dn = $dn;
-
-    /* Get record types for zones
-     */
-    $this->RecordTypes = DNS::getDnsRecordTypes(TRUE);
-
-    /* If there is at least one entry in this -> types, we have DNS enabled
-     */
-    if (!$this->is_account) {
-      $this->dns_server_list = $this->get_list_of_dns_servers();
-    }
 
     $this->initially_was_account = $this->is_account;
   }
@@ -69,8 +54,7 @@ class serviceDNS extends goService
     if (!isset($attrs['dn'])) {
       return FALSE;
     }
-    /* Get all zone Informations
-     */
+    /* Get all zone Informations */
     $this->Zones = DNS::getDNSZoneEntries($this->config, $attrs['dn']);
 
     /* If there is at least one entry in this -> types, we have DNS enabled
@@ -81,50 +65,6 @@ class serviceDNS extends goService
       return TRUE;
     }
   }
-
-  function get_list_of_dns_servers()
-  {
-    $ret  = array("ENTRIES" => array(), "FOR_LIST" => array());
-    $ldap = $this->config->get_ldap_link();
-    $ldap->cd($this->config->current['BASE']);
-    $ldap->search("(&(objectClass=dNSZone)(zoneName=*))", array("dn","zoneName"));
-    $dns = array();
-    while ($attrs = $ldap->fetch()) {
-      /* Skip own config */
-      if ($this->dn != "new" && preg_match("/".preg_quote($this->dn, '/')."$/", $attrs['dn'])) {
-        continue;
-      }
-      $dn = preg_replace("/^zoneName=[^,]+,/", "", $attrs['dn']);
-      if (preg_match("/^cn=/", $dn) && !in_array($dn, $dns)) {
-        $dns[] = $dn;
-      }
-    }
-    $i = 0;
-    foreach ($dns as $dn) {
-      $ldap->cat($dn, array('*'));
-      if ($ldap->count()) {
-        $i ++;
-        $attrs = $ldap->fetch();
-          $ret['ENTRIES'][$i]   = $attrs;
-          $ret['FOR_LIST'][$i] = $attrs['cn'][0];
-      }
-    }
-    return $ret;
-  }
-
-
-  function get_dns_info_string($id)
-  {
-    $ret = "";
-    $ldap = $this->config->get_ldap_link();
-    $ldap->cd($this->dns_server_list['ENTRIES'][$id]['dn']);
-    $ldap->search("(|(zoneName=*)(relativeDomainName=*))", array("dn"));
-    while ($attrs = $ldap->fetch()) {
-      $ret .= $attrs['dn']."\n";
-    }
-    return $ret;
-  }
-
 
   function execute()
   {
@@ -140,51 +80,11 @@ class serviceDNS extends goService
     /* Fill templating stuff
      */
     $smarty = get_smarty();
-    $smarty->assign("dns_take_over", FALSE);
     $smarty->assign("is_createable", $this->acl_is_createable());
     $display = "";
 
 
     $this->initially_was_account = $this->is_account;
-    /* ************************
-     * Handle Take Over Actions
-     * ************************  */
-
-    /* Give smarty the required informations */
-    $smarty->assign("dns_server_list", $this->dns_server_list['FOR_LIST']);
-    $smarty->assign("dns_server_list_cnt", count($this->dns_server_list['FOR_LIST']));
-
-    /* Take over requested, save id */
-    if (isset($_POST['take_over_src']) && isset($_POST['take_over'])) {
-      $id = $_POST['take_over_src'];
-      if (isset($this->dns_server_list['ENTRIES'][$id])) {
-        $this->take_over_id = $id;
-      }
-    }
-
-    /* Abort take over action */
-    if (isset($_POST['cancel_take_over'])) {
-      $this->dialog           = FALSE;
-      $this->take_over_id     = -1;
-      $this->dns_server_list  = $this->get_list_of_dns_servers();
-    }
-
-    /* Display informartion about take over that will be started when saving this server
-     *  and hide default dns output
-     */
-    if ($this->take_over_id != -1) {
-      $this->dialog = FALSE;
-      $id           = $this->take_over_id;
-      $info         = $this->get_dns_info_string($id);
-      $smarty->assign("dns_take_over", TRUE);
-      $smarty->assign("info", $info);
-      $warning  = sprintf(_("You are going to migrate the DNS setup from server '%s'."), $this->dns_server_list['ENTRIES'][$id]['cn'][0]);
-      $warning2 = _("The migration will be started when you save this system. To cancel this action, use the cancel button below.");
-      $smarty->assign("warning", $warning);
-      $smarty->assign("warning2", $warning2);
-      return $smarty->fetch(get_template_path('serviceDNS.tpl', TRUE, dirname(__FILE__)));
-    }
-
 
     /* Do we need to flip is_account state? */
     if (isset($_POST['modify_state'])) {
@@ -398,32 +298,6 @@ class serviceDNS extends goService
   /* Save to LDAP */
   function save()
   {
-    /* Take over handling
-     * - Create list of zones managed by source server
-     * - Copy ldap entries to destination server
-     * - Remove old zone entries from source
-     */
-    if ($this->take_over_id != -1) {
-      $del  = array();
-      $id   = $this->take_over_id;
-      $src  = $this->dns_server_list['ENTRIES'][$id]['dn'];
-      $ldap = $this->config->get_ldap_link();
-      $ldap->ls("(objectClass=dnsZone)", $src, array('cn'));
-      while ($attrs = $ldap->fetch()) {
-        $src_zone = $attrs['dn'];
-        $dst_zone = preg_replace("/".preg_quote($src, '/')."$/", $this->dn, $src_zone);
-        $res      = plugin::move($src_zone, $dst_zone);
-
-        if ($res) {
-          $del [] = $src_zone;
-        }
-      }
-      foreach ($del as $src_zone) {
-        $ldap->rmdir_recursive($src_zone);
-      }
-      return;
-    }
-
     /* Save zone editor changes now */
     foreach ($this->Zones as $name => $zone) {
       if (isset($zone['zoneEditor']) && ($zone['zoneEditor'] != NULL) && is_object($zone['zoneEditor'])) {
