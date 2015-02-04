@@ -220,7 +220,9 @@ class faiPartition extends plugin
         "ext4" => _("ext4"),
         "reiserfs" => _("reiser fs"),
         "xfs" => _("xfs"),
-        "btrfs" => _("btrfs"));
+        "btrfs" => _("btrfs"),
+        "-" => _("LVM/RAID")
+      );
 
     $smarty->assign("partitionTypes", $types);
     $smarty->assign("partitionSizeTypes", $partitionSizeTypes);
@@ -344,6 +346,9 @@ class faiPartition extends plugin
           $this->$attr = get_post($attr);
         }
       }
+      if (empty($this->FAImountPoint)) {
+        $this->FAImountPoint = '-';
+      }
       foreach(array("FAIpartitionSizeType","sizeStart","sizeStop","sizeStart_Type","sizeStop_Type") as $attr){
         if(isset($_POST[$attr])){
           $this->$attr = get_post($attr);
@@ -428,7 +433,7 @@ class faiPartition extends plugin
 
     // check mount point
     if($this->FAIfsType != "swap"){
-      if(!preg_match("#^/#",$this->FAImountPoint)){
+      if (($this->FAImountPoint != '-') && !preg_match("#^/#", $this->FAImountPoint)) {
         $msgs[] = msgPool::invalid(_("Mount point"));
       }
     }
