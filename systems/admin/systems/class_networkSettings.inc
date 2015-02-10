@@ -223,6 +223,16 @@ class networkSettings extends plugin
     }
   }
 
+  function resetCopyInfos()
+  {
+    $this->initial_dhcp_is_Account  = FALSE;
+    $this->initial_dhcpHostEntry    = array();
+    $this->initial_dhcpParentNode   = "";
+    $this->orig_ipHostNumber        = "";
+    $this->orig_macAddress          = "";
+    $this->OrigCn                   = "";
+    parent::resetCopyInfos();
+  }
 
   function netmaskIsCoherent($idZone)
   {
