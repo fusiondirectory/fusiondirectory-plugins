@@ -17,6 +17,11 @@ file_filter = apache2/locale/<lang>/fusiondirectory.po
 source_file = apache2/locale/en/fusiondirectory.po
 source_lang = en
 
+[FusionDirectory-Dev.applications]
+file_filter = applications/locale/<lang>/fusiondirectory.po
+source_file = applications/locale/en/fusiondirectory.po
+source_lang = en
+
 [FusionDirectory-Dev.argonaut]
 file_filter = argonaut/locale/<lang>/fusiondirectory.po
 source_file = argonaut/locale/en/fusiondirectory.po
@@ -45,11 +50,6 @@ source_lang = en
 [FusionDirectory-Dev.debconf]
 file_filter = debconf/locale/<lang>/fusiondirectory.po
 source_file = debconf/locale/en/fusiondirectory.po
-source_lang = en
-
-[FusionDirectory-Dev.desktop-management]
-file_filter = desktop-management/locale/<lang>/fusiondirectory.po
-source_file = desktop-management/locale/en/fusiondirectory.po
 source_lang = en
 
 [FusionDirectory-Dev.developers]
@@ -155,6 +155,16 @@ source_lang = en
 [FusionDirectory-Dev.opsi]
 file_filter = opsi/locale/<lang>/fusiondirectory.po
 source_file = opsi/locale/en/fusiondirectory.po
+source_lang = en
+
+[FusionDirectory-Dev.personal]
+file_filter = personal/locale/<lang>/fusiondirectory.po
+source_file = personal/locale/en/fusiondirectory.po
+source_lang = en
+
+[FusionDirectory-Dev.ppolicy]
+file_filter = ppolicy/locale/<lang>/fusiondirectory.po
+source_file = ppolicy/locale/en/fusiondirectory.po
 source_lang = en
 
 [FusionDirectory-Dev.puppet]
