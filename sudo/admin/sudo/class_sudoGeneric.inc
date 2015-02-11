@@ -50,6 +50,45 @@ class SudoUsersGroupsAttribute extends DialogAttribute
   }
 }
 
+class SudoSystemsAttribute extends SystemsAttribute
+{
+  function renderButtons ()
+  {
+    $id = $this->getHtmlId();
+    $buttons  = $this->renderInputField(
+      'submit', 'add'.$id.'_ALL',
+      array('value' => 'ALL')
+    );
+    return $buttons.parent::renderButtons();
+  }
+
+  protected function htmlIds()
+  {
+    $id = $this->getHtmlId();
+    $ids = parent::htmlIds();
+    $ids[] = 'add'.$id.'_ALL';
+    return $ids;
+  }
+
+  function loadPostValue ()
+  {
+    parent::loadPostValue();
+    if ($this->isVisible()) {
+      if (isset($_POST['add'.$this->getHtmlId().'_ALL'])) {
+        $this->value = array('ALL');
+      }
+    }
+  }
+
+  function addValue ($value, $attrs)
+  {
+    if ($this->value[0] === 'ALL') {
+      unset($this->value[0]);
+    }
+    parent::addValue($value, $attrs);
+  }
+}
+
 class defaultRoleAttribute extends BooleanAttribute
 {
   function __construct ($defaultValue)
@@ -135,7 +174,7 @@ class sudo extends simplePlugin
             ),
             array('ALL')
           ),
-          new SystemsAttribute (
+          new SudoSystemsAttribute (
             _('Systems'), _('A host name, IP address or IP network'),
             'sudoHost', FALSE,
             array('ALL')
@@ -143,8 +182,7 @@ class sudo extends simplePlugin
           new SudoUsersGroupsAttribute (
             _('Users and groups'),
             _("A user name, user ID (prefixed with '#'), Unix group (prefixed with '%')"),
-            'sudoUser', FALSE,
-            array('ALL')
+            'sudoUser', FALSE
           ),
           new IntAttribute (
             _('Priority'), _('This rule priority compared to others'),
