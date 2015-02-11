@@ -123,17 +123,17 @@ class sudo extends simplePlugin
             new StringAttribute (
               _('Run as (user)'),
               _('User(s) impersonated by sudo'),
-              'sudoRunAsUser', FALSE,
-              'ALL'
-            )
+              'sudoRunAsUser', FALSE
+            ),
+            array('ALL')
           ),
           new SetAttribute (
             new StringAttribute (
               _('Run as (group)'),
               _('Group(s) impersonated by sudo'),
-              'sudoRunAsGroup', FALSE,
-              'ALL'
-            )
+              'sudoRunAsGroup', FALSE
+            ),
+            array('ALL')
           ),
           new SystemsAttribute (
             _('Systems'), _('A host name, IP address or IP network'),
