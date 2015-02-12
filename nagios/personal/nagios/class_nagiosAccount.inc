@@ -4,7 +4,7 @@
   Copyright (C) 2005 Guillame Delecourt
   Copyright (C) 2006 Vincent Seynhaeve
   Copyright (C) 2006 Benoit Mortier
-  Copyright (C) 2011-2013  FusionDirectory
+  Copyright (C) 2011-2015  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
