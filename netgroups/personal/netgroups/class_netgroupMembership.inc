@@ -3,7 +3,7 @@
  * This code is part of FusionDirectory (http://www.fusiondirectory.org)
  * and  compatible with GOsa 2.6 (http://www.gosa-project.org)
  * Copyright (C) 2011 Alejandro Escanero Blanco (aescanero@gmail.com)
- * Copyright (C) 2011-2013  FusionDirectory
+ * Copyright (C) 2011-2015  FusionDirectory
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

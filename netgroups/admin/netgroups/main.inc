@@ -2,7 +2,7 @@
 /*
  * This code is part of FusionDirectory (http://www.fusiondirectory.org)
  * and  compatible with GOsa 2.6 (http://www.gosa-project.org)
- * Copyright (C) 2013  FusionDirectory
+ * Copyright (C) 2013-2015  FusionDirectory
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
