@@ -621,8 +621,12 @@ class faiPartitionTable extends faiPluginClass
           }
         }
 
-        if((!isset($partition['FAImountPoint']))||(empty($partition['FAImountPoint']))){
-          $partition_attrs['FAImountPoint']="swap";
+        if (!isset($partition['FAImountPoint']) || empty($partition['FAImountPoint'])) {
+          if ($partition_attrs['FAIfsType'] == 'swap') {
+            $partition_attrs['FAImountPoint'] = 'swap';
+          } else {
+            $partition_attrs['FAImountPoint'] = '-';
+          }
         }
 
         if($partition['status'] == "delete"){
