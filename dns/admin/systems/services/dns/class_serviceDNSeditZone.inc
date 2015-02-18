@@ -315,7 +315,11 @@ class servdnseditZone extends plugin
           $this->Records[$id]['type'] = $_POST['RecordTypeSelectedFor_'.$id];
         }
         if (isset($_POST['RecordValue_'.$id])) {
-          $this->Records[$id]['value'] = get_post('RecordValue_'.$id);
+          $value = get_post('RecordValue_'.$id);
+          if (($this->Records[$id]['type'] == 'nSRecord') && DNS::finalDot() && !preg_match("/\.$/", $value)) {
+            $value .= '.';
+          }
+          $this->Records[$id]['value'] = $value;
         }
       }
     }
