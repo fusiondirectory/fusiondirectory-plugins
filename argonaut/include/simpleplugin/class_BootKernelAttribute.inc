@@ -22,7 +22,7 @@ class BootKernelAttribute extends SelectAttribute
 {
   function setRelease($release)
   {
-    $choices = $this->get_kernel_choices($release)
+    $choices = $this->get_kernel_choices($release);
     if ($choices !== FALSE) {
       $this->setChoices($choices);
       $this->setDisabled(FALSE);
