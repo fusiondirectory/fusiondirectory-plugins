@@ -1,84 +1,84 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# Copyright (C) YEAR FusionDirectory Project
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-develop\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-21 17:43+0200\n"
-"PO-Revision-Date: 2013-08-06 07:24+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/FusionDirectory/language/pt_BR/)\n"
+"Project-Id-Version: FusionDirectory-Dev\n"
+"Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
+"POT-Creation-Date: 2014-12-15 17:47+0100\n"
+"PO-Revision-Date: 2014-08-28 10:29+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/FusionDirectory-Dev/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: admin/systems/services/puppet/class_servicePuppet.inc:36
-#: admin/systems/services/puppet/class_servicePuppet.inc:56
-msgid "Puppet server"
-msgstr ""
-
-#: admin/systems/services/puppet/class_servicePuppet.inc:40
-msgid "Environments"
-msgstr ""
-
-#: admin/systems/services/puppet/class_servicePuppet.inc:41
-msgid "Available environments for puppet nodes"
-msgstr ""
-
-#: admin/systems/services/puppet/class_servicePuppet.inc:57
-msgid "This service allows you to use a puppet server"
-msgstr ""
-
 #: admin/systems/puppet/class_puppetNode.inc:33
 msgid "Puppet node settings"
-msgstr ""
+msgstr "Configurações do nó do puppet"
 
 #: admin/systems/puppet/class_puppetNode.inc:36
 msgid "Puppet class"
-msgstr ""
+msgstr "Classe do Puppet"
 
 #: admin/systems/puppet/class_puppetNode.inc:36
 msgid "Puppet Node Class"
-msgstr ""
+msgstr "Classe do nó do puppet"
 
 #: admin/systems/puppet/class_puppetNode.inc:38
 msgid "Parent node"
-msgstr ""
+msgstr "Nó pai"
 
 #: admin/systems/puppet/class_puppetNode.inc:38
 msgid "Puppet Parent Node"
-msgstr ""
+msgstr "Nó pai do puppet"
 
 #: admin/systems/puppet/class_puppetNode.inc:39
 msgid "Environment"
-msgstr ""
+msgstr "Ambiente"
 
 #: admin/systems/puppet/class_puppetNode.inc:39
 msgid "Puppet Node Environment"
-msgstr ""
+msgstr "Nó ambiente do puppet"
 
 #: admin/systems/puppet/class_puppetNode.inc:42
 msgid "A variable setting for puppet"
-msgstr ""
+msgstr "Configuração da variável para o puppet"
 
 #: admin/systems/puppet/class_puppetNode.inc:45
 msgid "Name of the variable"
-msgstr ""
+msgstr "Nome da variável"
 
 #: admin/systems/puppet/class_puppetNode.inc:46
 msgid "Value of the variable"
-msgstr ""
+msgstr "Valor da variável"
 
 #: admin/systems/puppet/class_puppetNode.inc:63
 msgid "Puppet"
-msgstr ""
+msgstr "Puppet"
 
 #: admin/systems/puppet/class_puppetNode.inc:64
 msgid ""
 "Support for puppet schema in order to edit puppet classes and puppet vars"
-msgstr ""
+msgstr "Suporte para esquema puppet para editar as classes de puppet e puppet vars"
+
+#: admin/systems/services/puppet/class_servicePuppet.inc:36
+#: admin/systems/services/puppet/class_servicePuppet.inc:56
+msgid "Puppet server"
+msgstr "Servidor Puppet"
+
+#: admin/systems/services/puppet/class_servicePuppet.inc:40
+msgid "Environments"
+msgstr "Ambientes"
+
+#: admin/systems/services/puppet/class_servicePuppet.inc:41
+msgid "Available environments for puppet nodes"
+msgstr "Ambiente disponível para nós do puppet"
+
+#: admin/systems/services/puppet/class_servicePuppet.inc:57
+msgid "This service allows you to use a puppet server"
+msgstr "Este serviço te dá permissão a usar um servidor Puppet"

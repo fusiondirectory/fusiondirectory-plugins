@@ -1,111 +1,52 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# Copyright (C) YEAR FusionDirectory Project
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
-# gallak <antoine.gallavardin@free.fr>, 2013
 # fusiondirectory <contact@fusiondirectory.org>, 2012
+# gallak <antoine.gallavardin@free.fr>, 2013
 # poterealpopolo <giuliano@opensides.be>, 2012
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-31 10:39+0200\n"
-"PO-Revision-Date: 2013-02-15 18:50+0000\n"
-"Last-Translator: gallak <antoine.gallavardin@free.fr>\n"
-"Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory/"
-"language/fr/)\n"
-"Language: fr\n"
+"Project-Id-Version: FusionDirectory-Dev\n"
+"Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
+"POT-Creation-Date: 2014-12-15 17:47+0100\n"
+"PO-Revision-Date: 2015-02-25 16:13+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory-Dev/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: config/dashboard/class_dashBoardConfig.inc:28
-msgid "Dashboard configuration"
-msgstr ""
-
-#: config/dashboard/class_dashBoardConfig.inc:29
-msgid "FusionDirectory dashboard plugin configuration"
-msgstr ""
-
-#: config/dashboard/class_dashBoardConfig.inc:42
-msgid "Dashboard name schema"
-msgstr ""
-
-#: config/dashboard/class_dashBoardConfig.inc:45
-msgid "Number of digits"
-msgstr ""
-
-#: config/dashboard/class_dashBoardConfig.inc:45
-msgid "Number of digits to use after prefix"
-msgstr ""
-
-#: config/dashboard/class_dashBoardConfig.inc:51
-msgid "Prefixes"
-msgstr ""
-
-#: config/dashboard/class_dashBoardConfig.inc:51
-msgid "Prefixes to be used for computer ids"
-msgstr ""
-
-#: config/dashboard/class_dashBoardConfig.inc:59
-msgid "Dashboard expired users"
-msgstr ""
-
-#: config/dashboard/class_dashBoardConfig.inc:62
-msgid "Number of days"
-msgstr ""
-
-#: config/dashboard/class_dashBoardConfig.inc:62
-msgid ""
-"Number of days before expiration needed for an account to show in the "
-"dashboard next expired accounts list"
-msgstr ""
-
-#: addons/dashboard/class_dashBoardNetwork.inc:106
-msgid "DHCP"
-msgstr "DHCP"
-
-#: addons/dashboard/class_dashBoardNetwork.inc:111
-msgid "DNS"
-msgstr "DNS"
-
-#: addons/dashboard/class_dashBoardNetwork.inc:122
-msgid "Network"
-msgstr "Réseau"
-
-#: addons/dashboard/class_dashBoardNetwork.inc:123
-#: addons/dashboard/class_dashBoard.inc:94
-msgid "Statistics and various informations"
-msgstr "Statistiques et informations diverses"
-
-#: addons/dashboard/class_dashBoardUsers.inc:137
 #: addons/dashboard/class_dashBoard.inc:82
-#: addons/dashboard/class_dashBoardSystems.inc:182
-#: addons/dashboard/contents.tpl.c:2 addons/dashboard/main_stats.tpl.c:2
+#: addons/dashboard/class_dashBoardUsers.inc:137
+#: addons/dashboard/class_dashBoardSystems.inc:183
 msgid "Statistics"
 msgstr "Statistiques"
 
+#: addons/dashboard/class_dashBoard.inc:93
+#: addons/dashboard/class_dashBoard.inc:96
+msgid "Dashboard"
+msgstr "Tableau de bord"
+
+#: addons/dashboard/class_dashBoard.inc:94
+#: addons/dashboard/class_dashBoardNetwork.inc:128
+msgid "Statistics and various informations"
+msgstr "Statistiques et informations diverses"
+
 #: addons/dashboard/class_dashBoardUsers.inc:142
-#: addons/dashboard/users_accounts.tpl.c:8
 msgid "Expired accounts"
 msgstr "Comptes expirés"
 
 #: addons/dashboard/class_dashBoardUsers.inc:153
-#, fuzzy
 msgid "Users"
-msgstr "Utilisateur"
+msgstr "Utilisateurs"
 
 #: addons/dashboard/class_dashBoardUsers.inc:154
 msgid "Statistics about users"
 msgstr "Statistiques sur les utilisateurs"
-
-#: addons/dashboard/class_dashBoard.inc:93
-#: addons/dashboard/class_dashBoard.inc:97
-#: addons/dashboard/class_dashBoard.inc:98
-msgid "Dashboard"
-msgstr ""
 
 #: addons/dashboard/class_dashBoardSystems.inc:45
 msgid "Workstations"
@@ -139,137 +80,68 @@ msgstr "Composants"
 msgid "Mobile phones"
 msgstr "Téléphone mobile"
 
-#: addons/dashboard/class_dashBoardSystems.inc:187
-#: addons/dashboard/contents.tpl.c:20
+#: addons/dashboard/class_dashBoardSystems.inc:188
 msgid "Computer name to use by unit"
 msgstr "Nom de l'ordinateur à utiliser par unité"
 
-#: addons/dashboard/class_dashBoardSystems.inc:198
+#: addons/dashboard/class_dashBoardSystems.inc:199
 msgid "Systems"
 msgstr "Systèmes"
 
-#: addons/dashboard/class_dashBoardSystems.inc:199
+#: addons/dashboard/class_dashBoardSystems.inc:200
 msgid "Statistics and informations about systems"
 msgstr "Statistiques et informations sur les systèmes"
 
-#: addons/dashboard/users_stats.tpl.c:2
-msgid "There is 1 user:"
-msgid_plural "There are %1 users:"
-msgstr[0] ""
-msgstr[1] ""
+#: addons/dashboard/class_dashBoardNetwork.inc:111
+msgid "DHCP"
+msgstr "DHCP"
 
-#: addons/dashboard/users_stats.tpl.c:5
-msgid "One of them have a %1 account"
-msgid_plural "%2 of them have a %1 account"
-msgstr[0] ""
-msgstr[1] ""
+#: addons/dashboard/class_dashBoardNetwork.inc:116
+msgid "DNS"
+msgstr "DNS"
 
-#: addons/dashboard/users_stats.tpl.c:8
-msgid "None of them have a %1 account"
-msgstr ""
+#: addons/dashboard/class_dashBoardNetwork.inc:127
+msgid "Network"
+msgstr "Réseau"
 
-#: addons/dashboard/users_stats.tpl.c:11
-#, fuzzy
-msgid "One of them is locked"
-msgid_plural "%1 of them are locked"
-msgstr[0] "Aucun d'entre eux est verrouillé"
-msgstr[1] "Aucun d'entre eux est verrouillé"
+#: config/dashboard/class_dashBoardConfig.inc:28
+msgid "Dashboard configuration"
+msgstr "Configuration du tableau de bord"
 
-#: addons/dashboard/users_stats.tpl.c:14
-msgid "None of them is locked"
-msgstr "Aucun d'entre eux est verrouillé"
+#: config/dashboard/class_dashBoardConfig.inc:29
+msgid "FusionDirectory dashboard plugin configuration"
+msgstr "Configuration du plugin Tableau de bord pour FusionDirectory"
 
-#: addons/dashboard/contents.tpl.c:5 addons/dashboard/systems_stats.tpl.c:2
-msgid "There are several argonaut servers! (this is not yet supported)"
-msgstr "Il ya plusieurs serveurs argonaut! (ce n'est pas encore supporté)"
+#: config/dashboard/class_dashBoardConfig.inc:42
+msgid "Dashboard name schema"
+msgstr "Tableau de bord - Schéma de nommage"
 
-#: addons/dashboard/contents.tpl.c:8 addons/dashboard/systems_stats.tpl.c:5
-msgid "There is an argonaut server running on %1 (%3://%2:%4)"
-msgstr ""
+#: config/dashboard/class_dashBoardConfig.inc:45
+msgid "Number of digits"
+msgstr "Nombre de chiffres"
 
-#: addons/dashboard/contents.tpl.c:11 addons/dashboard/systems_stats.tpl.c:8
-#, fuzzy
-msgid "Only one system is configured to run an argonaut client."
-msgid_plural "%1 systems are configured to run an argonaut client."
-msgstr[0] "Mais aucun système est configuré pour exécuter un client argonaut!"
-msgstr[1] "Mais aucun système est configuré pour exécuter un client argonaut!"
+#: config/dashboard/class_dashBoardConfig.inc:45
+msgid "Number of digits to use after prefix"
+msgstr "Le nombre de chiffres à utiliser après le préfixe"
 
-#: addons/dashboard/contents.tpl.c:14 addons/dashboard/systems_stats.tpl.c:11
-msgid "But no system is configured to run an argonaut client!"
-msgstr "Mais aucun système est configuré pour exécuter un client argonaut!"
+#: config/dashboard/class_dashBoardConfig.inc:51
+msgid "Prefixes"
+msgstr "Préfixes"
 
-#: addons/dashboard/contents.tpl.c:17 addons/dashboard/systems_stats.tpl.c:14
-#, fuzzy
+#: config/dashboard/class_dashBoardConfig.inc:51
+msgid "Prefixes to be used for computer ids"
+msgstr "Préfixes à utiliser pour les identifiants de machines"
+
+#: config/dashboard/class_dashBoardConfig.inc:59
+msgid "Dashboard expired users"
+msgstr "Tableau de bord - Utilisateurs expirés"
+
+#: config/dashboard/class_dashBoardConfig.inc:62
+msgid "Number of days"
+msgstr "Nombre de jours"
+
+#: config/dashboard/class_dashBoardConfig.inc:62
 msgid ""
-"A system is configured to run an argonaut client, but there is no argonaut "
-"server configured!"
-msgid_plural ""
-"%1 systems are configured to run an argonaut client, but there is no "
-"argonaut server configured!"
-msgstr[0] "Mais aucun système est configuré pour exécuter un client argonaut!"
-msgstr[1] "Mais aucun système est configuré pour exécuter un client argonaut!"
-
-#: addons/dashboard/users_accounts.tpl.c:2
-#, fuzzy
-msgid "There is one expired account"
-msgid_plural "There are %1 expired accounts"
-msgstr[0] "Il n'y a pas de compte qui a expiré"
-msgstr[1] "Il n'y a pas de compte qui a expiré"
-
-#: addons/dashboard/users_accounts.tpl.c:5
-msgid "There is no expired account"
-msgstr "Il n'y a pas de compte qui a expiré"
-
-#: addons/dashboard/users_accounts.tpl.c:11
-#: addons/dashboard/users_accounts.tpl.c:44
-msgid "Manager concerned"
-msgstr "Manager concerné"
-
-#: addons/dashboard/users_accounts.tpl.c:14
-#: addons/dashboard/users_accounts.tpl.c:47
-msgid "uid"
-msgstr "uid"
-
-#: addons/dashboard/users_accounts.tpl.c:17
-#: addons/dashboard/users_accounts.tpl.c:50
-msgid "cn"
-msgstr "cn"
-
-#: addons/dashboard/users_accounts.tpl.c:20
-#: addons/dashboard/users_accounts.tpl.c:32
-#: addons/dashboard/users_accounts.tpl.c:53
-#: addons/dashboard/users_accounts.tpl.c:65
-msgid "telephoneNumber"
-msgstr "Numéro de téléphone \\nde l'établissement"
-
-#: addons/dashboard/users_accounts.tpl.c:23
-#: addons/dashboard/users_accounts.tpl.c:56
-msgid "shadowExpire"
-msgstr "Date d'expiration du mot de passe"
-
-#: addons/dashboard/users_accounts.tpl.c:26
-#: addons/dashboard/users_accounts.tpl.c:59
-msgid "manager"
-msgstr "manager"
-
-#: addons/dashboard/users_accounts.tpl.c:29
-#: addons/dashboard/users_accounts.tpl.c:62
-msgid "mail"
-msgstr "mail"
-
-#: addons/dashboard/users_accounts.tpl.c:35
-msgid "There is one account expiring in the next %1 days"
-msgid_plural "There are %2 accounts expiring in the next %1 days"
-msgstr[0] ""
-msgstr[1] ""
-
-#: addons/dashboard/users_accounts.tpl.c:38
-msgid "There is no account expiring in the next %1 days"
-msgstr ""
-
-#: addons/dashboard/users_accounts.tpl.c:41
-msgid "Next expired accounts"
-msgstr "Prochaines comptes qui vont expirér"
-
-#~ msgid "Board"
-#~ msgstr "Board"
+"Number of days before expiration needed for an account to show in the "
+"dashboard next expired accounts list"
+msgstr "Le nombre de jours avant expiration nécessaires pour qu’un compte apparaisse dans la liste «Prochains comptes expirés» du tableau de bord"

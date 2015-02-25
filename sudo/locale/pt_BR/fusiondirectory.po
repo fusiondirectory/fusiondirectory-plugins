@@ -1,229 +1,170 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# Copyright (C) YEAR FusionDirectory Project
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-develop\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-21 17:43+0200\n"
-"PO-Revision-Date: 2013-08-06 07:24+0000\n"
+"Project-Id-Version: FusionDirectory-Dev\n"
+"Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
+"POT-Creation-Date: 2014-12-15 17:47+0100\n"
+"PO-Revision-Date: 2015-02-25 16:13+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/FusionDirectory/language/pt_BR/)\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/FusionDirectory-Dev/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: config/sudo/class_sudoConfig.inc:28
-msgid "Sudo configuration"
-msgstr ""
-
-#: config/sudo/class_sudoConfig.inc:29
-msgid "FusionDirectory sudo plugin configuration"
-msgstr ""
-
-#: config/sudo/class_sudoConfig.inc:42
-msgid "LDAP tree"
-msgstr ""
-
-#: config/sudo/class_sudoConfig.inc:45
-msgid "Sudo RDN"
-msgstr ""
-
-#: config/sudo/class_sudoConfig.inc:45
-msgid "Branch in which sudoers will be stored"
-msgstr ""
-
-#: admin/sudo/class_sudoManagement.inc:36 admin/sudo/class_sudoGeneric.inc:55
-msgid "Sudo"
-msgstr ""
-
-#: admin/sudo/class_sudoManagement.inc:37
-msgid "Sudo management"
-msgstr ""
-
-#: admin/sudo/sudo-list.xml:11
-msgid "List of sudo roles"
-msgstr ""
-
-#: admin/sudo/sudo-list.xml:15 admin/sudo/sudo-list.xml:65
-msgid "Role"
-msgstr ""
-
-#: admin/sudo/sudo-list.xml:32 admin/sudo/class_sudoGeneric.inc:76
-#: admin/sudo/paste_generic.tpl.c:8 admin/sudo/sudo-filter.tpl.c:5
-msgid "Name"
-msgstr ""
-
-#: admin/sudo/sudo-list.xml:40 admin/sudo/class_sudoGeneric.inc:81
-msgid "Description"
-msgstr ""
-
-#: admin/sudo/sudo-list.xml:48
-msgid "Actions"
-msgstr ""
-
-#: admin/sudo/sudo-list.xml:59
-msgid "Create"
-msgstr ""
-
-#: admin/sudo/sudo-list.xml:72
-msgid "Default"
-msgstr ""
-
-#: admin/sudo/sudo-list.xml:85
-msgid "Remove"
-msgstr ""
-
-#: admin/sudo/sudo-list.xml:117
-msgid "Edit sudo role"
-msgstr ""
-
-#: admin/sudo/sudo-list.xml:130
-msgid "Remove sudo role"
-msgstr ""
-
-#: admin/sudo/class_sudoOption.inc:84
+#: admin/sudo/class_sudoOption.inc:82
 msgid "Unknown option"
-msgstr ""
+msgstr "Opção desconhecida"
 
-#: admin/sudo/class_sudoOption.inc:85
+#: admin/sudo/class_sudoOption.inc:83
 #, php-format
 msgid "The sudo option '%s' is invalid!"
-msgstr ""
+msgstr "A opção SUDO '%s' é inválida"
 
-#: admin/sudo/class_sudoOption.inc:278
+#: admin/sudo/class_sudoOption.inc:276
 #, php-format
 msgid "%s (%s)"
-msgstr ""
+msgstr "%s(%s)"
 
-#: admin/sudo/class_sudoOption.inc:472
+#: admin/sudo/class_sudoOption.inc:479
 msgid "Available options"
-msgstr ""
+msgstr "Opções disponíveis"
 
-#: admin/sudo/class_sudoOption.inc:475
+#: admin/sudo/class_sudoOption.inc:482
 msgid "Option"
-msgstr ""
+msgstr "Opção"
 
-#: admin/sudo/class_sudoOption.inc:475
+#: admin/sudo/class_sudoOption.inc:482
 msgid "Add a new sudo option"
-msgstr ""
+msgstr "Adicionar nova opção de sudo"
 
-#: admin/sudo/class_sudoOption.inc:480 admin/sudo/class_sudoOption.inc:482
+#: admin/sudo/class_sudoOption.inc:487 admin/sudo/class_sudoOption.inc:489
 msgid "Used sudo role options"
-msgstr ""
+msgstr "Opções de funções sudo utilizados"
 
-#: admin/sudo/class_sudoOption.inc:554
+#: admin/sudo/class_sudoOption.inc:561
 msgid "Options"
-msgstr ""
+msgstr "Opções"
 
-#: admin/sudo/class_sudoOption.inc:555
+#: admin/sudo/class_sudoOption.inc:562
 msgid "Sudo options"
-msgstr ""
+msgstr "Opções de sudo"
 
-#: admin/sudo/class_sudoGeneric.inc:56 admin/sudo/class_sudoGeneric.inc:59
-#: admin/sudo/class_sudoGeneric.inc:60
+#: admin/sudo/class_sudoManagement.inc:32 admin/sudo/class_sudoGeneric.inc:82
+#: config/sudo/class_sudoConfig.inc:42
+msgid "Sudo"
+msgstr "Sudo"
+
+#: admin/sudo/class_sudoManagement.inc:33
+msgid "Sudo management"
+msgstr "Gestação sudo"
+
+#: admin/sudo/class_sudoGeneric.inc:83 admin/sudo/class_sudoGeneric.inc:87
 msgid "Sudo role"
-msgstr ""
+msgstr "Função sudo"
 
-#: admin/sudo/class_sudoGeneric.inc:71 admin/sudo/paste_generic.tpl.c:2
+#: admin/sudo/class_sudoGeneric.inc:102
 msgid "Generic"
-msgstr ""
+msgstr "Genérico"
 
-#: admin/sudo/class_sudoGeneric.inc:71 admin/sudo/paste_generic.tpl.c:5
+#: admin/sudo/class_sudoGeneric.inc:102
 msgid "global defaults"
-msgstr ""
+msgstr "padrões globais"
 
-#: admin/sudo/class_sudoGeneric.inc:76
+#: admin/sudo/class_sudoGeneric.inc:107
+msgid "Name"
+msgstr "Nome"
+
+#: admin/sudo/class_sudoGeneric.inc:107
 msgid "Name of the role"
-msgstr ""
+msgstr "Nome da atribuição"
 
-#: admin/sudo/class_sudoGeneric.inc:81
+#: admin/sudo/class_sudoGeneric.inc:112
+msgid "Description"
+msgstr "Descrição"
+
+#: admin/sudo/class_sudoGeneric.inc:112
 msgid "Description for the new sudo role"
-msgstr ""
+msgstr "Descrição da nova função do sudo"
 
-#: admin/sudo/class_sudoGeneric.inc:86
+#: admin/sudo/class_sudoGeneric.inc:117
 msgid "Commands"
-msgstr ""
+msgstr "Comandos"
 
-#: admin/sudo/class_sudoGeneric.inc:87
+#: admin/sudo/class_sudoGeneric.inc:118
 msgid ""
 "A Unix command with optional command line arguments, potentially including "
 "globbing characters (aka wild cards)"
-msgstr ""
+msgstr "Um comando Unix com argumento de linha de comando opcional, potencialmente incluindo caracteres globais(aka wild card)"
 
-#: admin/sudo/class_sudoGeneric.inc:93
+#: admin/sudo/class_sudoGeneric.inc:124
 msgid "Run as"
-msgstr ""
+msgstr "Executado como"
 
-#: admin/sudo/class_sudoGeneric.inc:94
+#: admin/sudo/class_sudoGeneric.inc:125
 msgid ""
 "A user that commands may be run as or a Unix group that contains a list of "
 "users that commands may be run as"
-msgstr ""
+msgstr "Um usuário que os comandos podem ser executados como Unix ou um grupo que contém uma lista de usuários que os comandos podem ser executados como"
 
-#: admin/sudo/class_sudoGeneric.inc:100
+#: admin/sudo/class_sudoGeneric.inc:131
 msgid "Systems"
-msgstr ""
+msgstr "Sistemas"
 
-#: admin/sudo/class_sudoGeneric.inc:100
+#: admin/sudo/class_sudoGeneric.inc:131
 msgid "A host name, IP address or IP network"
-msgstr ""
+msgstr "Um nome de host, endereço IP ou rede IP"
 
-#: admin/sudo/class_sudoGeneric.inc:105
+#: admin/sudo/class_sudoGeneric.inc:136
 msgid "Users and groups"
-msgstr ""
+msgstr "Usuários e grupos"
 
-#: admin/sudo/class_sudoGeneric.inc:106
+#: admin/sudo/class_sudoGeneric.inc:137
 msgid ""
 "A user name, user ID (prefixed with '#'), Unix group (prefixed with '%')"
-msgstr ""
+msgstr "Um nome de usuário, ID(Prefixado com'#'), grupo Unix(prefixado com '%')"
 
-#: admin/sudo/class_sudoGeneric.inc:113
+#: admin/sudo/class_sudoGeneric.inc:144
 msgid "System trust"
-msgstr ""
+msgstr "Sistema de confiança"
 
-#: admin/sudo/class_sudoGeneric.inc:117
+#: admin/sudo/class_sudoGeneric.inc:148
 msgid "Trust mode"
-msgstr ""
+msgstr "Modo de confiança"
 
-#: admin/sudo/class_sudoGeneric.inc:117
+#: admin/sudo/class_sudoGeneric.inc:148
 msgid "Trust mode for the role"
-msgstr ""
+msgstr "Modo de confiança para a função"
 
-#: admin/sudo/class_sudoGeneric.inc:121
+#: admin/sudo/class_sudoGeneric.inc:152
 msgid "disabled"
-msgstr ""
+msgstr "desabilitado"
 
-#: admin/sudo/class_sudoGeneric.inc:121
+#: admin/sudo/class_sudoGeneric.inc:152
 msgid "full access"
-msgstr ""
+msgstr "Acesso total"
 
-#: admin/sudo/class_sudoGeneric.inc:121
+#: admin/sudo/class_sudoGeneric.inc:152
 msgid "allow access to these hosts"
-msgstr ""
+msgstr "Permitir acesso a esses servidores"
 
-#: admin/sudo/remove.tpl.c:2
-msgid "Warning"
-msgstr ""
+#: config/sudo/class_sudoConfig.inc:28
+msgid "Sudo configuration"
+msgstr "Configuração sudo"
 
-#: admin/sudo/remove.tpl.c:5
-msgid ""
-"Please double check if you really want to do this since there is no way for "
-"FusionDirectory to get your data back."
-msgstr ""
+#: config/sudo/class_sudoConfig.inc:29
+msgid "FusionDirectory sudo plugin configuration"
+msgstr "Configuração de plugin sudo do FusionDirectory"
 
-#: admin/sudo/remove.tpl.c:8
-msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr ""
+#: config/sudo/class_sudoConfig.inc:45
+msgid "Sudo RDN"
+msgstr "sudo RDN"
 
-#: admin/sudo/sudo-filter.tpl.c:2
-msgid "Filter"
-msgstr ""
-
-#: admin/sudo/sudo-filter.tpl.c:8
-msgid "User"
-msgstr ""
+#: config/sudo/class_sudoConfig.inc:45
+msgid "Branch in which sudoers will be stored"
+msgstr "Filial em que sudoers serão armazenados"

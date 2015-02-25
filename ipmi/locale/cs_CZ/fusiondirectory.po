@@ -1,333 +1,55 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# Copyright (C) YEAR FusionDirectory Project
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Pavel Borecki <pavel.borecki@gmail.com>, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-develop\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-21 17:43+0200\n"
-"PO-Revision-Date: 2013-08-21 16:41+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/FusionDirectory/language/cs_CZ/)\n"
+"Project-Id-Version: FusionDirectory-Dev\n"
+"Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
+"POT-Creation-Date: 2014-12-15 17:47+0100\n"
+"PO-Revision-Date: 2014-12-08 17:31+0000\n"
+"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
+"Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/FusionDirectory-Dev/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: cs_CZ\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
-#: config/ipmi/class_ipmiConfig.inc:28
-msgid "IPMI configuration"
-msgstr ""
+#: admin/systems/ipmi/class_ipmiClient.inc:31
+msgid "IPMI client"
+msgstr "Klient IPMI"
 
-#: config/ipmi/class_ipmiConfig.inc:29
-msgid "FusionDirectory ipmi plugin configuration"
-msgstr ""
+#: admin/systems/ipmi/class_ipmiClient.inc:32
+msgid "Edit IPMI client settings"
+msgstr "Upravit nastavení IPMI klienta"
 
-#: config/ipmi/class_ipmiConfig.inc:42
-msgid "LDAP tree"
-msgstr ""
+#: admin/systems/ipmi/class_ipmiClient.inc:45
+msgid "IPMI client settings"
+msgstr "Nastavení IPMI klienta"
 
-#: config/ipmi/class_ipmiConfig.inc:45
-msgid "IPMI RDN"
-msgstr ""
-
-#: config/ipmi/class_ipmiConfig.inc:45
-msgid "Branch in which IPMI objects will be stored (required)"
-msgstr ""
-
-#: admin/systems/system-list.xml:10
-msgid "List of systems"
-msgstr "seznam systémů"
-
-#: admin/systems/system-list.xml:14
-msgid "New workstation"
-msgstr "nová pracovní stanice"
-
-#: admin/systems/system-list.xml:22
-msgid "Locked server"
-msgstr "uzamčený server"
-
-#: admin/systems/system-list.xml:30
-msgid "Locked workstation"
-msgstr "uzamčená pracovní stanice"
-
-#: admin/systems/system-list.xml:38
-msgid "Locked terminal"
-msgstr "uzamčený terminál"
-
-#: admin/systems/system-list.xml:47
-msgid "New terminal"
-msgstr "nový terminál"
-
-#: admin/systems/system-list.xml:55
-msgid "New device"
-msgstr "nové zařízení"
-
-#: admin/systems/system-list.xml:63
-msgid "Workstation template"
-msgstr "šablona pracovní stanice"
-
-#: admin/systems/system-list.xml:71
-msgid "Terminal template"
-msgstr "šablona terminálu"
-
-#: admin/systems/system-list.xml:79
-msgid "Winstation"
-msgstr "pracovní stanice s OS MS Windows"
-
-#: admin/systems/system-list.xml:87 admin/systems/system-list.xml:234
-msgid "Server"
-msgstr "server"
-
-#: admin/systems/system-list.xml:95 admin/systems/system-list.xml:242
-msgid "Workstation"
-msgstr "pracovní stanice"
-
-#: admin/systems/system-list.xml:103 admin/systems/system-list.xml:250
-msgid "Terminal"
-msgstr "terminál"
-
-#: admin/systems/system-list.xml:111
-msgid "Printer"
-msgstr "tiskárna"
-
-#: admin/systems/system-list.xml:119 admin/systems/system-list.xml:274
-msgid "Phone"
-msgstr "telefon"
-
-#: admin/systems/system-list.xml:127
-msgid "Mobile phone"
-msgstr "mobilní telefon"
-
-#: admin/systems/system-list.xml:135
-msgid "Component"
-msgstr "součást"
-
-#: admin/systems/system-list.xml:143 admin/systems/system-list.xml:298
-#: admin/systems/ipmi/class_ipmiGeneric.inc:34
-#: admin/systems/ipmi/class_ipmiGeneric.inc:36
-#: admin/systems/ipmi/class_ipmiGeneric.inc:48
-msgid "IPMI"
-msgstr ""
-
-#: admin/systems/system-list.xml:169 admin/systems/system-filter.tpl.c:32
-msgid "Name"
-msgstr "název"
-
-#: admin/systems/system-list.xml:177
+#: admin/systems/ipmi/class_ipmiClient.inc:48
 msgid "IP"
 msgstr ""
 
-#: admin/systems/system-list.xml:185
-msgid "MAC"
-msgstr ""
+#: admin/systems/ipmi/class_ipmiClient.inc:48
+msgid "IP of the IPMI interface"
+msgstr "IP adresa IPMI rozhraní"
 
-#: admin/systems/system-list.xml:193
-msgid "Description"
-msgstr "popis"
-
-#: admin/systems/system-list.xml:201
-msgid "Services"
-msgstr "služby"
-
-#: admin/systems/system-list.xml:209
-msgid "Release"
-msgstr "vydání"
-
-#: admin/systems/system-list.xml:217
-msgid "Actions"
-msgstr "akce"
-
-#: admin/systems/system-list.xml:228
-msgid "Create"
-msgstr "vytvořit"
-
-#: admin/systems/system-list.xml:258
-msgid "winStation"
-msgstr ""
-
-#: admin/systems/system-list.xml:266
-msgid "Network printer"
-msgstr "síťová tiskárna"
-
-#: admin/systems/system-list.xml:282
-msgid "Network device"
-msgstr "síťové zařízení"
-
-#: admin/systems/system-list.xml:290
-msgid "Mobile Phone"
-msgstr ""
-
-#: admin/systems/system-list.xml:310
-msgid "Trigger action"
-msgstr "spustit akci"
-
-#: admin/systems/system-list.xml:317
-msgid "Schedule action"
-msgstr "naplánovat akci"
-
-#: admin/systems/system-list.xml:330
-msgid "Activate systems"
-msgstr "aktivovat systémy"
-
-#: admin/systems/system-list.xml:337
-msgid "Remove"
-msgstr "odebrat"
-
-#: admin/systems/system-list.xml:367
-msgid "Create ISO"
-msgstr "vytvořit ISO"
-
-#: admin/systems/system-list.xml:379
-msgid "Edit role"
-msgstr "upravit úlohu"
-
-#: admin/systems/system-list.xml:392
-msgid "Remove system"
-msgstr "odebrat systém"
-
-#: admin/systems/class_systemManagement.inc:190
-msgid "Back"
-msgstr "zpět"
-
-#: admin/systems/class_systemManagement.inc:236
-msgid "Creating the image failed. Please see the report below."
-msgstr "Vytvoření obrazu selhalo. Více informací poskytne níže uvedené hlášení."
-
-#: admin/systems/class_systemManagement.inc:241
-#, php-format
-msgid "Command '%s', specified for ISO creation doesn't seem to exist."
-msgstr "Příkaz '%s', nastavený pro vytváření ISO obrazů pravděpodobně neexistuje."
-
-#: admin/systems/class_systemManagement.inc:309
-#: admin/systems/class_systemManagement.inc:339
-msgid "Service infrastructure"
-msgstr "servisní infrastruktura"
-
-#: admin/systems/class_systemManagement.inc:353
-#: admin/systems/class_systemManagement.inc:627
-#: admin/systems/class_systemManagement.inc:642
-msgid "Error"
-msgstr "chyba"
-
-#: admin/systems/class_systemManagement.inc:410
-#: admin/systems/class_systemManagement.inc:486
-#: admin/systems/class_systemManagement.inc:859
-#: admin/systems/class_systemManagement.inc:906
-#: admin/systems/class_systemManagement.inc:927
-msgid "Permission"
-msgstr "oprávnění"
-
-#: admin/systems/class_systemManagement.inc:680
-msgid "Internal error"
-msgstr "vnitřní chyba"
-
-#: admin/systems/class_systemManagement.inc:680
-msgid "Cannot set mode to 'active'!"
-msgstr "Nemohu nastavit režim na 'aktivní'!"
-
-#: admin/systems/class_systemManagement.inc:814
-msgid "LDAP error"
-msgstr "chyba LDAPu"
-
-#: admin/systems/class_systemManagement.inc:859
-#, php-format
-msgid "You are not allowed to create a snapshot for %s."
-msgstr "Nejste oprávněn(a) vytvořit snímek %s."
-
-#: admin/systems/class_systemManagement.inc:906
-#: admin/systems/class_systemManagement.inc:927
-#, php-format
-msgid "You are not allowed to restore a snapshot for %s."
-msgstr "Nejste oprávněn(a) k obnovení %s ze snímku."
-
-#: admin/systems/class_systemManagement.inc:1131
-#, php-format
-msgid "Inherited from %s"
-msgstr "zděděno z %s"
-
-#: admin/systems/class_systemManagement.inc:1186
-msgid "Systems"
-msgstr "systémy"
-
-#: admin/systems/class_systemManagement.inc:1187
-msgid "Systems Management"
-msgstr "správa systémů"
-
-#: admin/systems/ipmi/class_ipmiCredentials.inc:30
-msgid "Credentials"
-msgstr ""
-
-#: admin/systems/ipmi/class_ipmiCredentials.inc:31
-msgid "IPMI credentials"
-msgstr ""
-
-#: admin/systems/ipmi/class_ipmiCredentials.inc:47
-msgid "IPMI client settings"
-msgstr ""
-
-#: admin/systems/ipmi/class_ipmiCredentials.inc:50
+#: admin/systems/ipmi/class_ipmiClient.inc:52
 msgid "User login"
-msgstr ""
+msgstr "Přihlašovací jméno"
 
-#: admin/systems/ipmi/class_ipmiCredentials.inc:50
+#: admin/systems/ipmi/class_ipmiClient.inc:52
 msgid "IPMI user login"
-msgstr ""
+msgstr "Přihlašovací jméno k IPMI"
 
-#: admin/systems/ipmi/class_ipmiCredentials.inc:54
+#: admin/systems/ipmi/class_ipmiClient.inc:57
 msgid "User password"
 msgstr "heslo uživatele"
 
-#: admin/systems/ipmi/class_ipmiCredentials.inc:54
+#: admin/systems/ipmi/class_ipmiClient.inc:57
 msgid "IPMI user password"
-msgstr ""
-
-#: admin/systems/ipmi/class_ipmiGeneric.inc:31
-msgid "Generic"
-msgstr "obecné"
-
-#: admin/systems/ipmi/class_ipmiGeneric.inc:32
-msgid "IPMI generic"
-msgstr ""
-
-#: admin/systems/system-filter.tpl.c:2
-msgid "Filter"
-msgstr "filtr"
-
-#: admin/systems/system-filter.tpl.c:5
-msgid "Show servers"
-msgstr "zobrazit servery"
-
-#: admin/systems/system-filter.tpl.c:8
-msgid "Show workstations"
-msgstr "zobrazit pracovní stanice"
-
-#: admin/systems/system-filter.tpl.c:11
-msgid "Show terminals"
-msgstr "zobrazit terminály"
-
-#: admin/systems/system-filter.tpl.c:14
-msgid "Show network printer"
-msgstr "zobrazit síťovou tiskárnu"
-
-#: admin/systems/system-filter.tpl.c:17
-msgid "Show phones"
-msgstr "zobrazit telefony"
-
-#: admin/systems/system-filter.tpl.c:20
-msgid "Show windows based workstations"
-msgstr "zobraz pracovní stanice s OS MS Windows"
-
-#: admin/systems/system-filter.tpl.c:23
-msgid "Show network devices"
-msgstr "zobrazit síťová zařízení"
-
-#: admin/systems/system-filter.tpl.c:26
-msgid "Show mobile phones"
-msgstr ""
-
-#: admin/systems/system-filter.tpl.c:29
-msgid "Show IPMI interfaces"
-msgstr ""
+msgstr "Heslo uživatele IPMI"

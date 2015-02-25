@@ -1,130 +1,108 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# Copyright (C) YEAR FusionDirectory Project
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Ettore Atalan <atalanttore@googlemail.com>, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-develop\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-21 17:43+0200\n"
-"PO-Revision-Date: 2013-07-30 16:47+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: German (http://www.transifex.com/projects/p/FusionDirectory/language/de/)\n"
+"Project-Id-Version: FusionDirectory-Dev\n"
+"Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
+"POT-Creation-Date: 2014-12-15 17:47+0100\n"
+"PO-Revision-Date: 2015-02-25 16:04+0000\n"
+"Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
+"Language-Team: German (http://www.transifex.com/projects/p/FusionDirectory-Dev/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: config/netgroups/class_netgroupConfig.inc:28
-msgid "Netgroup configuration"
-msgstr "Netzgruppen Konfiguration"
-
-#: config/netgroups/class_netgroupConfig.inc:29
-msgid "FusionDirectory netgroup plugin configuration"
-msgstr "FusionDirectory negroup Plugin Konfiguration"
-
-#: config/netgroups/class_netgroupConfig.inc:42
-msgid "LDAP tree"
-msgstr "LDAP Baum"
-
-#: config/netgroups/class_netgroupConfig.inc:45
-msgid "Netgroup RDN"
-msgstr "Netgroup RDN"
-
-#: config/netgroups/class_netgroupConfig.inc:45
-msgid "Branch in which netgroups will be stored"
-msgstr "Zweig in dem netgroups gespeichert werden"
-
-#: personal/netgroups/class_netgroupMembership.inc:71
-#: admin/systems/netgroups/class_netgroupSystem.inc:26
-#: admin/netgroups/memberNisnetgroupSelect/memberNisnetgroup-list.xml:14
-#: admin/netgroups/class_netgroup.inc:55
-msgid "NIS Netgroup"
-msgstr "NIS Netgroup"
-
-#: personal/netgroups/class_netgroupMembership.inc:72
-#: admin/systems/netgroups/class_netgroupSystem.inc:27
-msgid "NIS Netgroup member"
-msgstr "NIS Netgroup Mitglied"
-
-#: personal/netgroups/class_netgroupMembership.inc:89
-msgid "Member of the following NIS Netgroups  "
-msgstr "Mitglied der folgenden NIS Netzgruppen"
-
-#: personal/netgroups/class_netgroupMembership.inc:92
-msgid "NIS netgroup membership"
-msgstr "NIS netgroup Mitgliedschaft"
-
-#: admin/netgroups/memberNisnetgroupSelect/memberNisnetgroup-list.xml:10
-msgid "Please select the desired NIS Netgroups"
-msgstr "Bitte wählen Sie die gewünschten NIS Netgroups"
-
-#: admin/netgroups/memberNisnetgroupSelect/memberNisnetgroup-list.xml:40
-msgid "Common name"
-msgstr "Gewöhnlicher Name"
-
-#: admin/netgroups/memberNisnetgroupSelect/memberNisnetgroup-list.xml:48
-#: admin/netgroups/class_netgroup.inc:76
-msgid "Description"
-msgstr "Beschreibung"
-
-#: admin/netgroups/class_netgroupManagement.inc:35
-#: admin/netgroups/class_netgroup.inc:53
-msgid "NIS Netgroups"
-msgstr "NIS Netgroups"
-
-#: admin/netgroups/class_netgroupManagement.inc:36
-msgid "NIS Netgroup management"
-msgstr "NIS Netzgruppenverwaltung"
-
 #: admin/netgroups/class_netgroup.inc:50
-msgid "Generic"
-msgstr "Allgemein"
+#: config/netgroups/class_netgroupConfig.inc:42
+msgid "Netgroup"
+msgstr "Netzgruppe"
 
 #: admin/netgroups/class_netgroup.inc:51
-msgid "Generic NIS Netgroup settings"
-msgstr "Allgemeine NIS Netgroup Einstellungen"
+msgid "NIS Netgroup settings"
+msgstr "NIS-Netzgruppeneinstellungen"
 
-#: admin/netgroups/class_netgroup.inc:70
+#: admin/netgroups/class_netgroup.inc:54
+#: admin/systems/netgroups/class_netgroupSystem.inc:26
+#: personal/netgroups/class_netgroupMembership.inc:43
+msgid "NIS Netgroup"
+msgstr "NIS-Netzgruppe"
+
+#: admin/netgroups/class_netgroup.inc:69
 msgid "Informations"
 msgstr "Informationen"
 
-#: admin/netgroups/class_netgroup.inc:73
-#: admin/netgroups/memberNisnetgroupSelect/memberNisnetgroup-filter.tpl.c:5
+#: admin/netgroups/class_netgroup.inc:72
 msgid "Name"
 msgstr "Name"
 
-#: admin/netgroups/class_netgroup.inc:73
+#: admin/netgroups/class_netgroup.inc:72
 msgid "Name of this NIS netgroup"
-msgstr "Name dieser NIS netgroup"
+msgstr "Name von dieser NIS-Netzgruppe"
 
-#: admin/netgroups/class_netgroup.inc:76
+#: admin/netgroups/class_netgroup.inc:75
+msgid "Description"
+msgstr "Beschreibung"
+
+#: admin/netgroups/class_netgroup.inc:75
 msgid "Description of this NIS netgroup"
-msgstr "Beschreibung dieser NIS netgroup"
+msgstr "Beschreibung von dieser NIS-Netzgruppe"
 
-#: admin/netgroups/class_netgroup.inc:82
+#: admin/netgroups/class_netgroup.inc:81
 msgid "User members"
 msgstr "Benutzermitglieder"
 
-#: admin/netgroups/class_netgroup.inc:89 admin/netgroups/class_netgroup.inc:98
-#: admin/netgroups/class_netgroup.inc:105
+#: admin/netgroups/class_netgroup.inc:88 admin/netgroups/class_netgroup.inc:97
+#: admin/netgroups/class_netgroup.inc:104
 msgid "NIS netgroup members"
-msgstr "NIS netgroup Mitglieder"
+msgstr "NIS-Netzgruppenmitglieder"
 
-#: admin/netgroups/class_netgroup.inc:95
+#: admin/netgroups/class_netgroup.inc:94
 msgid "System members"
-msgstr "System-Mitglieder"
+msgstr "Systemmitglieder"
 
-#: admin/netgroups/class_netgroup.inc:102
+#: admin/netgroups/class_netgroup.inc:101
 msgid "Netgroup members"
-msgstr "Netgroup-Mitglieder"
+msgstr "Netzgruppenmitglieder"
 
-#: admin/netgroups/memberNisnetgroupSelect/memberNisnetgroup-filter.tpl.c:2
-msgid "Filter"
-msgstr "Filter"
+#: admin/netgroups/class_netgroupManagement.inc:34
+msgid "NIS Netgroups"
+msgstr "NIS-Netzgruppen"
 
-#: admin/netgroups/memberNisnetgroupSelect/memberNisnetgroup-list.tpl.c:2
-msgid "Base"
-msgstr "Basis"
+#: admin/netgroups/class_netgroupManagement.inc:35
+msgid "NIS Netgroup management"
+msgstr "NIS-Netzgruppenverwaltung"
+
+#: admin/systems/netgroups/class_netgroupSystem.inc:27
+#: personal/netgroups/class_netgroupMembership.inc:44
+msgid "NIS Netgroup member"
+msgstr "NIS-Netzgruppenmitglied"
+
+#: personal/netgroups/class_netgroupMembership.inc:60
+msgid "Member of the following NIS Netgroups  "
+msgstr "Mitglied der folgenden NIS-Netzgruppen"
+
+#: personal/netgroups/class_netgroupMembership.inc:63
+msgid "NIS netgroup membership"
+msgstr "NIS-Netzgruppenmitgliedschaft"
+
+#: config/netgroups/class_netgroupConfig.inc:28
+msgid "Netgroup configuration"
+msgstr "Netzgruppenkonfiguration"
+
+#: config/netgroups/class_netgroupConfig.inc:29
+msgid "FusionDirectory netgroup plugin configuration"
+msgstr "FusionDirectory Netzgruppen-Plugin-Konfiguration"
+
+#: config/netgroups/class_netgroupConfig.inc:45
+msgid "Netgroup RDN"
+msgstr "Netzgruppe RDN"
+
+#: config/netgroups/class_netgroupConfig.inc:45
+msgid "Branch in which netgroups will be stored"
+msgstr "Zweig, in dem Netzgruppen gespeichert werden"

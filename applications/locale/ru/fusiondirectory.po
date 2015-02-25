@@ -1,21 +1,318 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# Copyright (C) YEAR FusionDirectory Project
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-develop\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-19 16:53+0200\n"
-"PO-Revision-Date: 2013-07-30 16:39+0000\n"
+"Project-Id-Version: FusionDirectory-Dev\n"
+"Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
+"POT-Creation-Date: 2014-08-28 12:26+0200\n"
+"PO-Revision-Date: 2014-08-28 10:28+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: Russian (http://www.transifex.com/projects/p/FusionDirectory/language/ru/)\n"
+"Language-Team: Russian (http://www.transifex.com/projects/p/FusionDirectory-Dev/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ru\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: admin/groups/apps/class_groupApplication.inc:410
+#: admin/groups/apps/class_groupApplication.inc:414
+msgid "Menu"
+msgstr "Меню"
+
+#: admin/groups/apps/class_groupApplication.inc:482
+msgid "Back"
+msgstr "Назад"
+
+#: admin/groups/apps/class_groupApplication.inc:493
+msgid "back"
+msgstr ""
+
+#: admin/groups/apps/class_groupApplication.inc:501
+msgid "department"
+msgstr "отдел"
+
+#: admin/groups/apps/class_groupApplication.inc:524
+msgid "application"
+msgstr ""
+
+#: admin/groups/apps/class_groupApplication.inc:701
+#: admin/groups/apps/class_groupApplication.inc:1396
+#: admin/groups/apps/class_groupApplication.inc:1409
+#: admin/groups/apps/class_groupApplication.inc:1422
+#: admin/mimetypes/class_mimetypeGeneric.inc:481
+#: admin/mimetypes/class_mimetypeGeneric.inc:493
+#: admin/mimetypes/class_mimetypeGeneric.inc:508
+#: admin/applications/class_applicationParameters.inc:177
+#: admin/applications/class_applicationParameters.inc:242
+#: admin/applications/class_applicationGeneric.inc:290
+msgid "LDAP error"
+msgstr "Ошибка LDAP"
+
+#: admin/groups/apps/class_groupApplication.inc:1208
+msgid "Not available in release."
+msgstr ""
+
+#: admin/groups/apps/class_groupApplication.inc:1459
+#: admin/applications/class_applicationManagement.inc:28
+#: admin/mimetypes/generic.tpl.c:62 admin/mimetypes/generic.tpl.c:86
+msgid "Applications"
+msgstr "Приложения"
+
+#: admin/groups/apps/class_groupApplication.inc:1460
+msgid "Group applications"
+msgstr ""
+
+#: admin/groups/apps/class_groupApplication.inc:1466
+#: admin/mimetypes/class_mimetypeGeneric.inc:689
+#: admin/applications/class_applicationGeneric.inc:73
+msgid "Application"
+msgstr "Приложение"
+
+#: admin/groups/apps/class_groupApplication.inc:1467
+#: admin/groups/apps/app_list.tpl.c:2 admin/groups/apps/app_list.tpl.c:14
+msgid "Release"
+msgstr ""
+
+#: admin/groups/apps/class_groupApplication.inc:1468
+msgid "Application parameter"
+msgstr ""
+
+#: admin/groups/apps/class_groupApplication.inc:1469
+#: admin/applications/class_applicationGeneric.inc:135
+#: admin/groups/apps/edit_entry.tpl.c:32
+msgid "Place icon on members desktop"
+msgstr "Помещать пиктограмму на рабочие столы членов группы"
+
+#: admin/groups/apps/class_groupApplication.inc:1470
+#: admin/applications/class_applicationGeneric.inc:145
+#: admin/groups/apps/edit_entry.tpl.c:38
+msgid "Place entry in members launch bar"
+msgstr ""
+
+#: admin/groups/apps/class_groupApplication.inc:1471
+#: admin/applications/class_applicationGeneric.inc:140
+#: admin/groups/apps/edit_entry.tpl.c:35
+msgid "Place entry in members startmenu"
+msgstr "Помещать членам группы соответствующий элемент в меню запуска"
+
+#: admin/mimetypes/class_mimetypeManagement.inc:28
+#: admin/mimetypes/class_mimetypeGeneric.inc:674
+msgid "Mime types"
+msgstr ""
+
+#: admin/mimetypes/class_mimetypeManagement.inc:29
+msgid "Mime type management"
+msgstr ""
+
+#: admin/mimetypes/class_mimetypeGeneric.inc:519
+#: admin/mimetypes/class_mimetypeGeneric.inc:685
+#: admin/applications/class_applicationParameters.inc:208
+#: admin/applications/class_applicationParameters.inc:212
+#: admin/groups/apps/edit_entry.tpl.c:26
+msgid "Name"
+msgstr "Фамилия"
+
+#: admin/mimetypes/class_mimetypeGeneric.inc:522
+msgid "File pattern"
+msgstr ""
+
+#: admin/mimetypes/class_mimetypeGeneric.inc:671
+#: admin/applications/class_applicationGeneric.inc:69
+#: admin/mimetypes/generic.tpl.c:2
+msgid "Generic"
+msgstr "Общее"
+
+#: admin/mimetypes/class_mimetypeGeneric.inc:672
+msgid "Mime type generic"
+msgstr ""
+
+#: admin/mimetypes/class_mimetypeGeneric.inc:678
+#: admin/mimetypes/generic.tpl.c:5
+msgid "Mime type"
+msgstr ""
+
+#: admin/mimetypes/class_mimetypeGeneric.inc:686
+#: admin/mimetypes/generic.tpl.c:11
+msgid "Mime group"
+msgstr ""
+
+#: admin/mimetypes/class_mimetypeGeneric.inc:687
+#: admin/applications/class_applicationGeneric.inc:105
+#: admin/mimetypes/generic.tpl.c:17
+msgid "Description"
+msgstr "Описание"
+
+#: admin/mimetypes/class_mimetypeGeneric.inc:688
+#: admin/mimetypes/generic.tpl.c:23
+msgid "Base"
+msgstr "Ветка"
+
+#: admin/mimetypes/class_mimetypeGeneric.inc:690
+msgid "Left click action"
+msgstr ""
+
+#: admin/mimetypes/class_mimetypeGeneric.inc:691
+#: admin/applications/class_applicationGeneric.inc:112
+#: admin/mimetypes/generic.tpl.c:32
+msgid "Icon"
+msgstr "Пиктограмма"
+
+#: admin/mimetypes/class_mimetypeGeneric.inc:692
+#: admin/mimetypes/generic.tpl.c:53
+msgid "File patterns"
+msgstr ""
+
+#: admin/mimetypes/class_mimetypeGeneric.inc:693
+msgid "Embedded applications"
+msgstr ""
+
+#: admin/applications/class_applicationManagement.inc:29
+msgid "Application management"
+msgstr "Управление приложениями"
+
+#: admin/applications/class_applicationParameters.inc:71
+msgid "Remove options"
+msgstr "Удалить параметры"
+
+#: admin/applications/class_applicationParameters.inc:71
+#: admin/applications/class_applicationParameters.inc:73
+msgid "parameter"
+msgstr ""
+
+#: admin/applications/class_applicationParameters.inc:73
+msgid "Create options"
+msgstr "Создать параметры"
+
+#: admin/applications/class_applicationParameters.inc:115
+msgid "Variable"
+msgstr "Переменная"
+
+#: admin/applications/class_applicationParameters.inc:115
+msgid "Default value"
+msgstr "По умолчанию"
+
+#: admin/applications/class_applicationParameters.inc:141
+#: admin/groups/apps/app_list.tpl.c:29 admin/groups/apps/app_list.tpl.c:41
+#: admin/groups/apps/app_list.tpl.c:53
+msgid "Remove"
+msgstr "Удалить"
+
+#: admin/applications/class_applicationParameters.inc:147
+msgid "Add option"
+msgstr "Добавить параметр"
+
+#: admin/applications/class_applicationParameters.inc:265
+msgid "Parameter"
+msgstr ""
+
+#: admin/applications/class_applicationParameters.inc:266
+msgid "Parameter configuration"
+msgstr ""
+
+#: admin/applications/class_applicationParameters.inc:271
+msgid "Application parameter settings"
+msgstr ""
+
+#: admin/applications/class_applicationGeneric.inc:70
+msgid "Application generic"
+msgstr ""
+
+#: admin/applications/class_applicationGeneric.inc:90
+msgid "Properties"
+msgstr "Свойства"
+
+#: admin/applications/class_applicationGeneric.inc:93
+msgid "Application name"
+msgstr "Приложение"
+
+#: admin/applications/class_applicationGeneric.inc:93
+msgid "The name of this application"
+msgstr ""
+
+#: admin/applications/class_applicationGeneric.inc:97
+msgid "Display name"
+msgstr "Отображаемое имя"
+
+#: admin/applications/class_applicationGeneric.inc:97
+msgid "The displayed name for this application"
+msgstr ""
+
+#: admin/applications/class_applicationGeneric.inc:101
+msgid "Execute"
+msgstr "Выполнить"
+
+#: admin/applications/class_applicationGeneric.inc:101
+msgid "The application to be executed"
+msgstr ""
+
+#: admin/applications/class_applicationGeneric.inc:105
+msgid "A short description of this application"
+msgstr ""
+
+#: admin/applications/class_applicationGeneric.inc:115
+msgid "The icon for this application"
+msgstr ""
+
+#: admin/applications/class_applicationGeneric.inc:122
+msgid "Options"
+msgstr "Параметры"
+
+#: admin/applications/class_applicationGeneric.inc:125
+msgid "Only executable for member"
+msgstr ""
+
+#: admin/applications/class_applicationGeneric.inc:125
+msgid "Only executable by the memebers of the group"
+msgstr ""
+
+#: admin/applications/class_applicationGeneric.inc:130
+msgid "Replace user configuration on startup"
+msgstr "Заменять настройки пользователя при запуске"
+
+#: admin/applications/class_applicationGeneric.inc:130
+msgid "Replace the user configuration on startup"
+msgstr ""
+
+#: admin/applications/class_applicationGeneric.inc:135
+msgid "Put an icon on the user desktop"
+msgstr ""
+
+#: admin/applications/class_applicationGeneric.inc:140
+#: admin/applications/class_applicationGeneric.inc:145
+msgid "Put an entry in the startup menu"
+msgstr ""
+
+#: admin/applications/class_applicationGeneric.inc:156
+msgid "Script"
+msgstr ""
+
+#: admin/applications/class_applicationGeneric.inc:159
+msgid "Script to run at logon"
+msgstr ""
+
+#: admin/applications/class_applicationGeneric.inc:165
+msgid "Log off script"
+msgstr ""
+
+#: admin/applications/class_applicationGeneric.inc:168
+msgid "Script to run at logoff"
+msgstr ""
+
+#: admin/applications/class_applicationGeneric.inc:227
+msgid "no example"
+msgstr ""
+
+#: admin/applications/class_applicationGeneric.inc:276
+msgid "Error"
+msgstr "Ошибка"
+
+#: admin/applications/class_applicationGeneric.inc:276
+#, php-format
+msgid "Cannot remove application - it is still in use by these objects: %s"
+msgstr ""
 
 #: config/desktop-management/class_desktopPluginConfig.inc:28
 msgid "Desktop management"
@@ -45,367 +342,6 @@ msgstr ""
 msgid "Branch in which applications will be stored"
 msgstr ""
 
-#: admin/applications/application-list.xml:11
-msgid "List of applications"
-msgstr ""
-
-#: admin/applications/application-list.xml:15
-#: admin/applications/application-list.xml:74
-#: admin/applications/class_applicationGeneric.inc:72
-#: admin/applications/class_applicationGeneric.inc:74
-#: admin/groups/apps/class_groupApplication.inc:1466
-#: admin/mimetypes/class_mimetypeGeneric.inc:684
-msgid "Application"
-msgstr "Приложение"
-
-#: admin/applications/application-list.xml:41
-#: admin/applications/class_applicationParameters.inc:212
-#: admin/applications/class_applicationParameters.inc:216
-#: admin/mimetypes/mimetype-list.xml:41
-#: admin/mimetypes/class_mimetypeGeneric.inc:516
-#: admin/mimetypes/class_mimetypeGeneric.inc:680
-#: admin/applications/application-filter.tpl.c:5
-#: admin/groups/apps/edit_entry.tpl.c:26
-#: admin/mimetypes/mimetype-filter.tpl.c:5
-msgid "Name"
-msgstr "Фамилия"
-
-#: admin/applications/application-list.xml:49
-#: admin/applications/class_applicationGeneric.inc:103
-#: admin/mimetypes/mimetype-list.xml:49
-#: admin/mimetypes/class_mimetypeGeneric.inc:682
-#: admin/mimetypes/paste_generic.tpl.c:11 admin/mimetypes/generic.tpl.c:17
-msgid "Description"
-msgstr "Описание"
-
-#: admin/applications/application-list.xml:57
-#: admin/mimetypes/mimetype-list.xml:57
-msgid "Actions"
-msgstr "Действия"
-
-#: admin/applications/application-list.xml:68
-#: admin/mimetypes/mimetype-list.xml:68
-msgid "Create"
-msgstr "Создать"
-
-#: admin/applications/application-list.xml:86
-#: admin/applications/class_applicationParameters.inc:143
-#: admin/mimetypes/mimetype-list.xml:86 admin/groups/apps/app_list.tpl.c:29
-#: admin/groups/apps/app_list.tpl.c:41 admin/groups/apps/app_list.tpl.c:53
-msgid "Remove"
-msgstr "Удалить"
-
-#: admin/applications/application-list.xml:118
-msgid "Edit application"
-msgstr ""
-
-#: admin/applications/application-list.xml:131
-msgid "Remove application"
-msgstr ""
-
-#: admin/applications/class_applicationParameters.inc:71
-msgid "Remove options"
-msgstr "Удалить параметры"
-
-#: admin/applications/class_applicationParameters.inc:71
-#: admin/applications/class_applicationParameters.inc:73
-msgid "parameter"
-msgstr ""
-
-#: admin/applications/class_applicationParameters.inc:73
-msgid "Create options"
-msgstr "Создать параметры"
-
-#: admin/applications/class_applicationParameters.inc:117
-msgid "Variable"
-msgstr "Переменная"
-
-#: admin/applications/class_applicationParameters.inc:117
-msgid "Default value"
-msgstr "По умолчанию"
-
-#: admin/applications/class_applicationParameters.inc:149
-msgid "Add option"
-msgstr "Добавить параметр"
-
-#: admin/applications/class_applicationParameters.inc:179
-#: admin/applications/class_applicationParameters.inc:247
-#: admin/applications/class_applicationGeneric.inc:284
-#: admin/groups/apps/class_groupApplication.inc:701
-#: admin/groups/apps/class_groupApplication.inc:1396
-#: admin/groups/apps/class_groupApplication.inc:1409
-#: admin/groups/apps/class_groupApplication.inc:1422
-#: admin/mimetypes/class_mimetypeGeneric.inc:478
-#: admin/mimetypes/class_mimetypeGeneric.inc:490
-#: admin/mimetypes/class_mimetypeGeneric.inc:505
-msgid "LDAP error"
-msgstr "Ошибка LDAP"
-
-#: admin/applications/class_applicationParameters.inc:272
-msgid "Parameter"
-msgstr ""
-
-#: admin/applications/class_applicationParameters.inc:273
-msgid "Parameter configuration"
-msgstr ""
-
-#: admin/applications/class_applicationParameters.inc:279
-msgid "Application parameter settings"
-msgstr ""
-
-#: admin/applications/class_applicationManagement.inc:38
-#: admin/groups/apps/class_groupApplication.inc:1459
-#: admin/mimetypes/generic.tpl.c:62 admin/mimetypes/generic.tpl.c:86
-msgid "Applications"
-msgstr "Приложения"
-
-#: admin/applications/class_applicationManagement.inc:39
-msgid "Application management"
-msgstr "Управление приложениями"
-
-#: admin/applications/class_applicationGeneric.inc:69
-#: admin/mimetypes/class_mimetypeGeneric.inc:668
-#: admin/mimetypes/paste_generic.tpl.c:2 admin/mimetypes/generic.tpl.c:2
-msgid "Generic"
-msgstr "Общее"
-
-#: admin/applications/class_applicationGeneric.inc:70
-msgid "Application generic"
-msgstr ""
-
-#: admin/applications/class_applicationGeneric.inc:88
-msgid "Properties"
-msgstr "Свойства"
-
-#: admin/applications/class_applicationGeneric.inc:91
-msgid "Application name"
-msgstr "Приложение"
-
-#: admin/applications/class_applicationGeneric.inc:91
-msgid "The name of this application"
-msgstr ""
-
-#: admin/applications/class_applicationGeneric.inc:95
-msgid "Display name"
-msgstr "Отображаемое имя"
-
-#: admin/applications/class_applicationGeneric.inc:95
-msgid "The displayed name for this application"
-msgstr ""
-
-#: admin/applications/class_applicationGeneric.inc:99
-msgid "Execute"
-msgstr "Выполнить"
-
-#: admin/applications/class_applicationGeneric.inc:99
-msgid "The application to be executed"
-msgstr ""
-
-#: admin/applications/class_applicationGeneric.inc:103
-msgid "A short description of this application"
-msgstr ""
-
-#: admin/applications/class_applicationGeneric.inc:110
-#: admin/mimetypes/class_mimetypeGeneric.inc:686
-#: admin/mimetypes/generic.tpl.c:32
-msgid "Icon"
-msgstr "Пиктограмма"
-
-#: admin/applications/class_applicationGeneric.inc:113
-msgid "The icon for this application"
-msgstr ""
-
-#: admin/applications/class_applicationGeneric.inc:120
-msgid "Options"
-msgstr "Параметры"
-
-#: admin/applications/class_applicationGeneric.inc:123
-msgid "Only executable for member"
-msgstr ""
-
-#: admin/applications/class_applicationGeneric.inc:123
-msgid "Only executable by the memebers of the group"
-msgstr ""
-
-#: admin/applications/class_applicationGeneric.inc:128
-msgid "Replace user configuration on startup"
-msgstr "Заменять настройки пользователя при запуске"
-
-#: admin/applications/class_applicationGeneric.inc:128
-msgid "Replace the user configuration on startup"
-msgstr ""
-
-#: admin/applications/class_applicationGeneric.inc:133
-#: admin/groups/apps/class_groupApplication.inc:1469
-#: admin/groups/apps/edit_entry.tpl.c:32
-msgid "Place icon on members desktop"
-msgstr "Помещать пиктограмму на рабочие столы членов группы"
-
-#: admin/applications/class_applicationGeneric.inc:133
-msgid "Put an icon on the user desktop"
-msgstr ""
-
-#: admin/applications/class_applicationGeneric.inc:138
-#: admin/groups/apps/class_groupApplication.inc:1471
-#: admin/groups/apps/edit_entry.tpl.c:35
-msgid "Place entry in members startmenu"
-msgstr "Помещать членам группы соответствующий элемент в меню запуска"
-
-#: admin/applications/class_applicationGeneric.inc:138
-#: admin/applications/class_applicationGeneric.inc:143
-msgid "Put an entry in the startup menu"
-msgstr ""
-
-#: admin/applications/class_applicationGeneric.inc:143
-#: admin/groups/apps/class_groupApplication.inc:1470
-#: admin/groups/apps/edit_entry.tpl.c:38
-msgid "Place entry in members launch bar"
-msgstr ""
-
-#: admin/applications/class_applicationGeneric.inc:154
-msgid "Script"
-msgstr ""
-
-#: admin/applications/class_applicationGeneric.inc:157
-msgid "Script to run at logon"
-msgstr ""
-
-#: admin/applications/class_applicationGeneric.inc:163
-msgid "Log off script"
-msgstr ""
-
-#: admin/applications/class_applicationGeneric.inc:166
-msgid "Script to run at logoff"
-msgstr ""
-
-#: admin/applications/class_applicationGeneric.inc:221
-msgid "no example"
-msgstr ""
-
-#: admin/applications/class_applicationGeneric.inc:270
-msgid "Error"
-msgstr ""
-
-#: admin/applications/class_applicationGeneric.inc:270
-#, php-format
-msgid "Cannot remove application - it is still in use by these objects: %s"
-msgstr ""
-
-#: admin/groups/apps/class_groupApplication.inc:410
-#: admin/groups/apps/class_groupApplication.inc:414
-msgid "Menu"
-msgstr ""
-
-#: admin/groups/apps/class_groupApplication.inc:482
-msgid "Back"
-msgstr "Назад"
-
-#: admin/groups/apps/class_groupApplication.inc:493
-msgid "back"
-msgstr ""
-
-#: admin/groups/apps/class_groupApplication.inc:501
-msgid "department"
-msgstr ""
-
-#: admin/groups/apps/class_groupApplication.inc:524
-msgid "application"
-msgstr ""
-
-#: admin/groups/apps/class_groupApplication.inc:1208
-msgid "Not available in release."
-msgstr ""
-
-#: admin/groups/apps/class_groupApplication.inc:1460
-msgid "Group applications"
-msgstr ""
-
-#: admin/groups/apps/class_groupApplication.inc:1467
-#: admin/groups/apps/app_list.tpl.c:2 admin/groups/apps/app_list.tpl.c:14
-msgid "Release"
-msgstr ""
-
-#: admin/groups/apps/class_groupApplication.inc:1468
-msgid "Application parameter"
-msgstr ""
-
-#: admin/mimetypes/class_mimetypeManagement.inc:38
-#: admin/mimetypes/class_mimetypeGeneric.inc:671
-msgid "Mime types"
-msgstr ""
-
-#: admin/mimetypes/class_mimetypeManagement.inc:39
-msgid "Mime type management"
-msgstr ""
-
-#: admin/mimetypes/mimetype-list.xml:11
-msgid "List of mimetypes"
-msgstr ""
-
-#: admin/mimetypes/mimetype-list.xml:15 admin/mimetypes/mimetype-list.xml:74
-#: admin/mimetypes/class_mimetypeGeneric.inc:675
-#: admin/mimetypes/paste_generic.tpl.c:5 admin/mimetypes/generic.tpl.c:5
-msgid "Mime type"
-msgstr ""
-
-#: admin/mimetypes/mimetype-list.xml:118
-msgid "Edit mimetype"
-msgstr ""
-
-#: admin/mimetypes/mimetype-list.xml:131
-msgid "Remove mimetype"
-msgstr ""
-
-#: admin/mimetypes/class_mimetypeGeneric.inc:519
-msgid "File pattern"
-msgstr ""
-
-#: admin/mimetypes/class_mimetypeGeneric.inc:669
-msgid "Mime type generic"
-msgstr ""
-
-#: admin/mimetypes/class_mimetypeGeneric.inc:681
-#: admin/mimetypes/generic.tpl.c:11
-msgid "Mime group"
-msgstr ""
-
-#: admin/mimetypes/class_mimetypeGeneric.inc:683
-#: admin/mimetypes/generic.tpl.c:23
-msgid "Base"
-msgstr "Ветка"
-
-#: admin/mimetypes/class_mimetypeGeneric.inc:685
-msgid "Left click action"
-msgstr ""
-
-#: admin/mimetypes/class_mimetypeGeneric.inc:687
-#: admin/mimetypes/generic.tpl.c:53
-msgid "File patterns"
-msgstr ""
-
-#: admin/mimetypes/class_mimetypeGeneric.inc:688
-msgid "Embedded applications"
-msgstr ""
-
-#: admin/applications/application-filter.tpl.c:2
-#: admin/mimetypes/mimetype-filter.tpl.c:2
-msgid "Filter"
-msgstr "Фильтр"
-
-#: admin/applications/remove.tpl.c:2 admin/mimetypes/remove.tpl.c:2
-msgid "Warning"
-msgstr "Предупреждение"
-
-#: admin/applications/remove.tpl.c:5 admin/mimetypes/remove.tpl.c:5
-msgid ""
-"Please double check if you really want to do this since there is no way for "
-"FusionDirectory to get your data back."
-msgstr ""
-
-#: admin/applications/remove.tpl.c:8 admin/mimetypes/remove.tpl.c:8
-msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr ""
-
 #: admin/groups/apps/edit_entry.tpl.c:2
 msgid "Folder image"
 msgstr ""
@@ -424,7 +360,7 @@ msgstr ""
 
 #: admin/groups/apps/edit_entry.tpl.c:14
 msgid "Upload"
-msgstr ""
+msgstr "Загрузить"
 
 #: admin/groups/apps/edit_entry.tpl.c:17
 msgid "Reset image"
@@ -496,12 +432,8 @@ msgstr ""
 msgid "Add selected applications to this folder."
 msgstr ""
 
-#: admin/mimetypes/paste_generic.tpl.c:8 admin/mimetypes/generic.tpl.c:8
+#: admin/mimetypes/generic.tpl.c:8
 msgid "Please enter a name for the mime type here"
-msgstr ""
-
-#: admin/mimetypes/paste_generic.tpl.c:14
-msgid "Please specify a description for this mime type here"
 msgstr ""
 
 #: admin/mimetypes/generic.tpl.c:14

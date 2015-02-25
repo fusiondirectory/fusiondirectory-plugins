@@ -1,0 +1,86 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR FusionDirectory Project
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: FusionDirectory-Dev\n"
+"Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
+"POT-Creation-Date: 2014-12-15 17:47+0100\n"
+"PO-Revision-Date: 2015-02-25 16:04+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: Swedish (http://www.transifex.com/projects/p/FusionDirectory-Dev/language/sv/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: sv\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: admin/autofs/class_nisObject.inc:31 admin/autofs/class_nisObject.inc:32
+#: admin/autofs/class_nisObject.inc:34 admin/autofs/class_nisObject.inc:49
+msgid "Directory"
+msgstr "Katalog"
+
+#: admin/autofs/class_nisObject.inc:53 admin/autofs/class_nisMap.inc:53
+msgid "Name"
+msgstr "Namn"
+
+#: admin/autofs/class_nisObject.inc:53
+msgid "Name of this directory"
+msgstr "Namn på katalog"
+
+#: admin/autofs/class_nisObject.inc:57
+msgid "Automount entry"
+msgstr "Automontera post"
+
+#: admin/autofs/class_nisObject.inc:57
+msgid ""
+"The entry of this directory for the automount daemon.\n"
+" For instance 'auto.u' or '-fstype=nfs domaine.tld:/mount/directory'"
+msgstr "Posten för den här katalogen för automount-daemonen.\n Till exempel 'auto.u' eller '-fstype=nfs domain.tld:/mount/directory'"
+
+#: admin/autofs/class_nisObject.inc:61 admin/autofs/class_nisMap.inc:31
+#: admin/autofs/class_nisMap.inc:34 admin/autofs/class_nisMap.inc:49
+msgid "Mount point"
+msgstr "Monteringspunkt"
+
+#: admin/autofs/class_nisObject.inc:61
+msgid "The mount point this directory will be placed in"
+msgstr "Monteringspunkt där katalogen kommer att placeras"
+
+#: admin/autofs/class_nisMap.inc:32
+msgid "Autofs mount point"
+msgstr "Autofs monteringspunkt"
+
+#: admin/autofs/class_nisMap.inc:53
+msgid "Name of the mount point"
+msgstr "Namn på monteringspunkten"
+
+#: admin/autofs/class_autofsManagement.inc:31
+msgid "Auto fs"
+msgstr "Auto fs"
+
+#: admin/autofs/class_autofsManagement.inc:32
+msgid "Auto fs management"
+msgstr "Auto fs-hantering"
+
+#: config/autofs/class_autofsConfig.inc:28
+msgid "Autofs configuration"
+msgstr "Autofs-konfiguration"
+
+#: config/autofs/class_autofsConfig.inc:29
+msgid "FusionDirectory autofs plugin configuration"
+msgstr "FusionDirectory autofs-plugin-konfiguration"
+
+#: config/autofs/class_autofsConfig.inc:42
+msgid "AutoFS"
+msgstr ""
+
+#: config/autofs/class_autofsConfig.inc:45
+msgid "AutoFS RDN"
+msgstr "AutoFS RDN"
+
+#: config/autofs/class_autofsConfig.inc:45
+msgid "Branch in which automount info will be stored"
+msgstr "Gren där automount-information ska lagras"

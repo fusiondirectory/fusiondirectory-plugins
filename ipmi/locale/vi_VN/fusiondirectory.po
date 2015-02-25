@@ -1,333 +1,54 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# Copyright (C) YEAR FusionDirectory Project
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-develop\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-21 17:43+0200\n"
-"PO-Revision-Date: 2013-08-21 16:41+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Vietnamese (Viet Nam) (http://www.transifex.com/projects/p/FusionDirectory/language/vi_VN/)\n"
+"Project-Id-Version: FusionDirectory-Dev\n"
+"Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
+"POT-Creation-Date: 2014-12-15 17:47+0100\n"
+"PO-Revision-Date: 2014-08-28 10:28+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Vietnamese (Viet Nam) (http://www.transifex.com/projects/p/FusionDirectory-Dev/language/vi_VN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: vi_VN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: config/ipmi/class_ipmiConfig.inc:28
-msgid "IPMI configuration"
+#: admin/systems/ipmi/class_ipmiClient.inc:31
+msgid "IPMI client"
 msgstr ""
 
-#: config/ipmi/class_ipmiConfig.inc:29
-msgid "FusionDirectory ipmi plugin configuration"
+#: admin/systems/ipmi/class_ipmiClient.inc:32
+msgid "Edit IPMI client settings"
 msgstr ""
 
-#: config/ipmi/class_ipmiConfig.inc:42
-msgid "LDAP tree"
-msgstr ""
-
-#: config/ipmi/class_ipmiConfig.inc:45
-msgid "IPMI RDN"
-msgstr ""
-
-#: config/ipmi/class_ipmiConfig.inc:45
-msgid "Branch in which IPMI objects will be stored (required)"
-msgstr ""
-
-#: admin/systems/system-list.xml:10
-msgid "List of systems"
-msgstr ""
-
-#: admin/systems/system-list.xml:14
-msgid "New workstation"
-msgstr ""
-
-#: admin/systems/system-list.xml:22
-msgid "Locked server"
-msgstr ""
-
-#: admin/systems/system-list.xml:30
-msgid "Locked workstation"
-msgstr ""
-
-#: admin/systems/system-list.xml:38
-msgid "Locked terminal"
-msgstr ""
-
-#: admin/systems/system-list.xml:47
-msgid "New terminal"
-msgstr ""
-
-#: admin/systems/system-list.xml:55
-msgid "New device"
-msgstr ""
-
-#: admin/systems/system-list.xml:63
-msgid "Workstation template"
-msgstr ""
-
-#: admin/systems/system-list.xml:71
-msgid "Terminal template"
-msgstr ""
-
-#: admin/systems/system-list.xml:79
-msgid "Winstation"
-msgstr ""
-
-#: admin/systems/system-list.xml:87 admin/systems/system-list.xml:234
-msgid "Server"
-msgstr "Máy chủ (server)"
-
-#: admin/systems/system-list.xml:95 admin/systems/system-list.xml:242
-msgid "Workstation"
-msgstr "Máy trạm"
-
-#: admin/systems/system-list.xml:103 admin/systems/system-list.xml:250
-msgid "Terminal"
-msgstr "Thiết bị cuối "
-
-#: admin/systems/system-list.xml:111
-msgid "Printer"
-msgstr "Máy in"
-
-#: admin/systems/system-list.xml:119 admin/systems/system-list.xml:274
-msgid "Phone"
-msgstr "Số điện thoại"
-
-#: admin/systems/system-list.xml:127
-msgid "Mobile phone"
-msgstr ""
-
-#: admin/systems/system-list.xml:135
-msgid "Component"
-msgstr ""
-
-#: admin/systems/system-list.xml:143 admin/systems/system-list.xml:298
-#: admin/systems/ipmi/class_ipmiGeneric.inc:34
-#: admin/systems/ipmi/class_ipmiGeneric.inc:36
-#: admin/systems/ipmi/class_ipmiGeneric.inc:48
-msgid "IPMI"
-msgstr ""
-
-#: admin/systems/system-list.xml:169 admin/systems/system-filter.tpl.c:32
-msgid "Name"
-msgstr "Tên"
-
-#: admin/systems/system-list.xml:177
-msgid "IP"
-msgstr ""
-
-#: admin/systems/system-list.xml:185
-msgid "MAC"
-msgstr ""
-
-#: admin/systems/system-list.xml:193
-msgid "Description"
-msgstr "Mô tả"
-
-#: admin/systems/system-list.xml:201
-msgid "Services"
-msgstr ""
-
-#: admin/systems/system-list.xml:209
-msgid "Release"
-msgstr ""
-
-#: admin/systems/system-list.xml:217
-msgid "Actions"
-msgstr "Các thao tác"
-
-#: admin/systems/system-list.xml:228
-msgid "Create"
-msgstr "Tạo "
-
-#: admin/systems/system-list.xml:258
-msgid "winStation"
-msgstr ""
-
-#: admin/systems/system-list.xml:266
-msgid "Network printer"
-msgstr ""
-
-#: admin/systems/system-list.xml:282
-msgid "Network device"
-msgstr ""
-
-#: admin/systems/system-list.xml:290
-msgid "Mobile Phone"
-msgstr ""
-
-#: admin/systems/system-list.xml:310
-msgid "Trigger action"
-msgstr ""
-
-#: admin/systems/system-list.xml:317
-msgid "Schedule action"
-msgstr ""
-
-#: admin/systems/system-list.xml:330
-msgid "Activate systems"
-msgstr ""
-
-#: admin/systems/system-list.xml:337
-msgid "Remove"
-msgstr "Xóa bỏ"
-
-#: admin/systems/system-list.xml:367
-msgid "Create ISO"
-msgstr ""
-
-#: admin/systems/system-list.xml:379
-msgid "Edit role"
-msgstr ""
-
-#: admin/systems/system-list.xml:392
-msgid "Remove system"
-msgstr ""
-
-#: admin/systems/class_systemManagement.inc:190
-msgid "Back"
-msgstr "Quay lại"
-
-#: admin/systems/class_systemManagement.inc:236
-msgid "Creating the image failed. Please see the report below."
-msgstr ""
-
-#: admin/systems/class_systemManagement.inc:241
-#, php-format
-msgid "Command '%s', specified for ISO creation doesn't seem to exist."
-msgstr ""
-
-#: admin/systems/class_systemManagement.inc:309
-#: admin/systems/class_systemManagement.inc:339
-msgid "Service infrastructure"
-msgstr ""
-
-#: admin/systems/class_systemManagement.inc:353
-#: admin/systems/class_systemManagement.inc:627
-#: admin/systems/class_systemManagement.inc:642
-msgid "Error"
-msgstr "Lỗi"
-
-#: admin/systems/class_systemManagement.inc:410
-#: admin/systems/class_systemManagement.inc:486
-#: admin/systems/class_systemManagement.inc:859
-#: admin/systems/class_systemManagement.inc:906
-#: admin/systems/class_systemManagement.inc:927
-msgid "Permission"
-msgstr "Cho phép"
-
-#: admin/systems/class_systemManagement.inc:680
-msgid "Internal error"
-msgstr "Lỗi nội bộ"
-
-#: admin/systems/class_systemManagement.inc:680
-msgid "Cannot set mode to 'active'!"
-msgstr ""
-
-#: admin/systems/class_systemManagement.inc:814
-msgid "LDAP error"
-msgstr "Lỗi LDAP"
-
-#: admin/systems/class_systemManagement.inc:859
-#, php-format
-msgid "You are not allowed to create a snapshot for %s."
-msgstr "Bạn không được phép tạo ra snapshot cho %s."
-
-#: admin/systems/class_systemManagement.inc:906
-#: admin/systems/class_systemManagement.inc:927
-#, php-format
-msgid "You are not allowed to restore a snapshot for %s."
-msgstr "Bạn không được phép phục hồi một snapshot cho %s."
-
-#: admin/systems/class_systemManagement.inc:1131
-#, php-format
-msgid "Inherited from %s"
-msgstr ""
-
-#: admin/systems/class_systemManagement.inc:1186
-msgid "Systems"
-msgstr "Các hệ thống"
-
-#: admin/systems/class_systemManagement.inc:1187
-msgid "Systems Management"
-msgstr ""
-
-#: admin/systems/ipmi/class_ipmiCredentials.inc:30
-msgid "Credentials"
-msgstr ""
-
-#: admin/systems/ipmi/class_ipmiCredentials.inc:31
-msgid "IPMI credentials"
-msgstr ""
-
-#: admin/systems/ipmi/class_ipmiCredentials.inc:47
+#: admin/systems/ipmi/class_ipmiClient.inc:45
 msgid "IPMI client settings"
 msgstr ""
 
-#: admin/systems/ipmi/class_ipmiCredentials.inc:50
+#: admin/systems/ipmi/class_ipmiClient.inc:48
+msgid "IP"
+msgstr ""
+
+#: admin/systems/ipmi/class_ipmiClient.inc:48
+msgid "IP of the IPMI interface"
+msgstr ""
+
+#: admin/systems/ipmi/class_ipmiClient.inc:52
 msgid "User login"
 msgstr ""
 
-#: admin/systems/ipmi/class_ipmiCredentials.inc:50
+#: admin/systems/ipmi/class_ipmiClient.inc:52
 msgid "IPMI user login"
 msgstr ""
 
-#: admin/systems/ipmi/class_ipmiCredentials.inc:54
+#: admin/systems/ipmi/class_ipmiClient.inc:57
 msgid "User password"
 msgstr ""
 
-#: admin/systems/ipmi/class_ipmiCredentials.inc:54
+#: admin/systems/ipmi/class_ipmiClient.inc:57
 msgid "IPMI user password"
-msgstr ""
-
-#: admin/systems/ipmi/class_ipmiGeneric.inc:31
-msgid "Generic"
-msgstr "Thông tin chung"
-
-#: admin/systems/ipmi/class_ipmiGeneric.inc:32
-msgid "IPMI generic"
-msgstr ""
-
-#: admin/systems/system-filter.tpl.c:2
-msgid "Filter"
-msgstr ""
-
-#: admin/systems/system-filter.tpl.c:5
-msgid "Show servers"
-msgstr ""
-
-#: admin/systems/system-filter.tpl.c:8
-msgid "Show workstations"
-msgstr ""
-
-#: admin/systems/system-filter.tpl.c:11
-msgid "Show terminals"
-msgstr ""
-
-#: admin/systems/system-filter.tpl.c:14
-msgid "Show network printer"
-msgstr ""
-
-#: admin/systems/system-filter.tpl.c:17
-msgid "Show phones"
-msgstr ""
-
-#: admin/systems/system-filter.tpl.c:20
-msgid "Show windows based workstations"
-msgstr ""
-
-#: admin/systems/system-filter.tpl.c:23
-msgid "Show network devices"
-msgstr ""
-
-#: admin/systems/system-filter.tpl.c:26
-msgid "Show mobile phones"
-msgstr ""
-
-#: admin/systems/system-filter.tpl.c:29
-msgid "Show IPMI interfaces"
 msgstr ""
