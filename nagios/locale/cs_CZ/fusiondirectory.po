@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-12-16 21:56+0100\n"
-"PO-Revision-Date: 2014-12-15 17:01+0000\n"
+"POT-Creation-Date: 2015-02-25 16:38+0100\n"
+"PO-Revision-Date: 2015-02-25 16:12+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/FusionDirectory-108/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
@@ -29,11 +29,11 @@ msgstr "Nagios"
 msgid "Nagios account settings"
 msgstr "nastavení účtu pro Nagios"
 
-#: personal/nagios/class_nagiosAccount.inc:65
+#: personal/nagios/class_nagiosAccount.inc:65 personal/nagios/nagios.tpl.c:2
 msgid "Nagios Account"
 msgstr "účet pro Nagios"
 
-#: personal/nagios/class_nagiosAccount.inc:68
+#: personal/nagios/class_nagiosAccount.inc:68 personal/nagios/nagios.tpl.c:5
 msgid "Alias"
 msgstr "alternativní název (alias)"
 
@@ -41,7 +41,7 @@ msgstr "alternativní název (alias)"
 msgid "Name of the nagios alias"
 msgstr ""
 
-#: personal/nagios/class_nagiosAccount.inc:72
+#: personal/nagios/class_nagiosAccount.inc:72 personal/nagios/nagios.tpl.c:8
 msgid "Mail address"
 msgstr "e-mailová adresa"
 
@@ -49,23 +49,23 @@ msgstr "e-mailová adresa"
 msgid "Email of the nagios alias"
 msgstr ""
 
-#: personal/nagios/class_nagiosAccount.inc:76
+#: personal/nagios/class_nagiosAccount.inc:76 personal/nagios/nagios.tpl.c:11
 msgid "Host notification period"
 msgstr "interval upozorňování na stroj"
 
-#: personal/nagios/class_nagiosAccount.inc:81
+#: personal/nagios/class_nagiosAccount.inc:81 personal/nagios/nagios.tpl.c:14
 msgid "Service notification period"
 msgstr "interval upozorňování na službu"
 
-#: personal/nagios/class_nagiosAccount.inc:86
+#: personal/nagios/class_nagiosAccount.inc:86 personal/nagios/nagios.tpl.c:17
 msgid "Service notification options"
 msgstr "předvolby upozorňování na službu"
 
-#: personal/nagios/class_nagiosAccount.inc:91
+#: personal/nagios/class_nagiosAccount.inc:91 personal/nagios/nagios.tpl.c:20
 msgid "Host notification options"
 msgstr "předvolby upozorňování na stroj"
 
-#: personal/nagios/class_nagiosAccount.inc:96
+#: personal/nagios/class_nagiosAccount.inc:96 personal/nagios/nagios.tpl.c:23
 msgid "Pager"
 msgstr "pager"
 
@@ -73,11 +73,11 @@ msgstr "pager"
 msgid " Pager"
 msgstr "pager"
 
-#: personal/nagios/class_nagiosAccount.inc:100
+#: personal/nagios/class_nagiosAccount.inc:100 personal/nagios/nagios.tpl.c:26
 msgid "Service notification commands"
 msgstr "příkazy pro upozorňování na službu"
 
-#: personal/nagios/class_nagiosAccount.inc:104
+#: personal/nagios/class_nagiosAccount.inc:104 personal/nagios/nagios.tpl.c:29
 msgid "Host notification commands"
 msgstr "příkazy pro upozorňování na stroj"
 
@@ -96,3 +96,35 @@ msgstr ""
 #: config/nagios/class_nagiosConfig.inc:45
 msgid "Prefix used for lconf LDAP fields"
 msgstr ""
+
+#: personal/nagios/nagios.tpl.c:32
+msgid "Nagios authentification"
+msgstr "ověření Nagia"
+
+#: personal/nagios/nagios.tpl.c:35
+msgid "view system informations"
+msgstr "zobrazit informace o systému"
+
+#: personal/nagios/nagios.tpl.c:38
+msgid "view configuration information"
+msgstr "zobrazit informace o nastaveních"
+
+#: personal/nagios/nagios.tpl.c:41
+msgid "trigger system commands"
+msgstr "spustit systémové příkazy"
+
+#: personal/nagios/nagios.tpl.c:44
+msgid "view all services"
+msgstr "zobrazit všechny služby"
+
+#: personal/nagios/nagios.tpl.c:47
+msgid "view all hosts"
+msgstr "zobrazit všechny stroje"
+
+#: personal/nagios/nagios.tpl.c:50
+msgid "trigger all service commands"
+msgstr "spustit všechny servisní příkazy"
+
+#: personal/nagios/nagios.tpl.c:53
+msgid "trigger all host commands"
+msgstr "spustit všechny příkazy pro stroje"

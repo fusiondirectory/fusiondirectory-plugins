@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-12-16 21:56+0100\n"
-"PO-Revision-Date: 2014-12-15 17:21+0000\n"
+"POT-Creation-Date: 2015-02-25 16:38+0100\n"
+"PO-Revision-Date: 2015-02-25 16:12+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Chinese (http://www.transifex.com/projects/p/FusionDirectory-108/language/zh/)\n"
 "MIME-Version: 1.0\n"
@@ -100,15 +100,15 @@ msgstr "系统分析"
 #: admin/systems/services/class_goService.inc:123
 #: admin/systems/services/class_goService.inc:151
 #: admin/systems/services/class_goService.inc:187
-#: admin/systems/class_networkSettings.inc:468
-#: admin/systems/class_networkSettings.inc:481
-#: admin/systems/class_networkSettings.inc:747
-#: admin/systems/class_networkSettings.inc:806
-#: admin/systems/class_networkSettings.inc:825
-#: admin/systems/class_networkSettings.inc:842
-#: admin/systems/class_networkSettings.inc:851
-#: admin/systems/class_networkSettings.inc:869
-#: admin/systems/class_networkSettings.inc:941
+#: admin/systems/class_networkSettings.inc:478
+#: admin/systems/class_networkSettings.inc:491
+#: admin/systems/class_networkSettings.inc:757
+#: admin/systems/class_networkSettings.inc:816
+#: admin/systems/class_networkSettings.inc:835
+#: admin/systems/class_networkSettings.inc:852
+#: admin/systems/class_networkSettings.inc:861
+#: admin/systems/class_networkSettings.inc:879
+#: admin/systems/class_networkSettings.inc:951
 msgid "LDAP error"
 msgstr "LDAP 错误"
 
@@ -121,11 +121,13 @@ msgid "System group"
 msgstr ""
 
 #: admin/ogroups/goto/class_termgroup.inc:401
+#: admin/ogroups/goto/termgroup.tpl.c:17
 msgid "Mode"
 msgstr "模式"
 
 #: admin/ogroups/goto/class_termgroup.inc:402
 #: admin/systems/class_workstationGeneric.inc:189
+#: admin/ogroups/goto/termgroup.tpl.c:23
 msgid "Syslog server"
 msgstr "日志服务器"
 
@@ -139,11 +141,13 @@ msgstr "NTP 服务器"
 
 #: admin/ogroups/goto/class_termgroup.inc:405
 #: admin/systems/class_terminalGeneric.inc:41
+#: admin/ogroups/goto/termgroup.tpl.c:29
 msgid "Root server"
 msgstr "根服务器"
 
 #: admin/ogroups/goto/class_termgroup.inc:406
 #: admin/systems/class_terminalGeneric.inc:47
+#: admin/ogroups/goto/termgroup.tpl.c:35
 msgid "Swap server"
 msgstr "交换服务器"
 
@@ -279,6 +283,8 @@ msgstr ""
 #: admin/systems/class_mobilePhoneGeneric.inc:63
 #: admin/systems/phoneSelect/phoneSelect-list.xml:48
 #: admin/systems/services/shares/class_serviceShare.inc:52
+#: admin/systems/system-filter.tpl.c:32
+#: admin/systems/phoneSelect/phoneSelect-filter.tpl.c:11
 msgid "Name"
 msgstr "名称"
 
@@ -298,6 +304,7 @@ msgstr ""
 #: admin/systems/class_mobilePhoneGeneric.inc:67
 #: admin/systems/serverService-list.xml:35
 #: admin/systems/services/shares/class_serviceShare.inc:56
+#: admin/systems/printer.tpl.c:8 admin/systems/printer.tpl.c:17
 msgid "Description"
 msgstr "描述"
 
@@ -354,6 +361,7 @@ msgid "Activate systems"
 msgstr ""
 
 #: admin/systems/system-list.xml:337 admin/systems/serverService-list.xml:69
+#: admin/systems/printer.tpl.c:35
 msgid "Remove"
 msgstr "删除"
 
@@ -476,17 +484,19 @@ msgstr ""
 
 #: admin/systems/class_workstationGeneric.inc:225
 #: admin/systems/class_workstationGeneric.inc:229
+#: admin/ogroups/goto/termgroup.tpl.c:41
 msgid "Action"
 msgstr "行动"
 
 #: admin/systems/class_workstationGeneric.inc:230
+#: admin/ogroups/goto/termgroup.tpl.c:44
 msgid "Select action to execute for this terminal"
 msgstr "选择这个终端要执行的动作"
 
 #: admin/systems/class_workstationGeneric.inc:236
 #: admin/systems/class_componentGeneric.inc:75
 #: admin/systems/class_mobilePhoneGeneric.inc:106
-#: admin/systems/class_networkSettings.inc:1006
+#: admin/systems/class_networkSettings.inc:1016
 msgid "Network settings"
 msgstr ""
 
@@ -562,12 +572,12 @@ msgstr "删除打印机扩展"
 #: admin/systems/class_systemManagement.inc:624
 #: admin/systems/class_systemManagement.inc:639
 #: admin/systems/services/shares/class_serviceShare.inc:103
-#: admin/systems/class_networkSettings.inc:295
-#: admin/systems/class_networkSettings.inc:326
-#: admin/systems/class_networkSettings.inc:574
-#: admin/systems/class_networkSettings.inc:581
-#: admin/systems/class_networkSettings.inc:587
-#: admin/systems/class_networkSettings.inc:594
+#: admin/systems/class_networkSettings.inc:305
+#: admin/systems/class_networkSettings.inc:336
+#: admin/systems/class_networkSettings.inc:584
+#: admin/systems/class_networkSettings.inc:591
+#: admin/systems/class_networkSettings.inc:597
+#: admin/systems/class_networkSettings.inc:604
 msgid "Error"
 msgstr "错误"
 
@@ -601,7 +611,7 @@ msgstr "终端"
 msgid "Object is no printer!"
 msgstr ""
 
-#: admin/systems/class_printGeneric.inc:767
+#: admin/systems/class_printGeneric.inc:767 admin/systems/printer.tpl.c:23
 msgid "Printer URL"
 msgstr "打印机 URL"
 
@@ -619,6 +629,9 @@ msgid "Printer information"
 msgstr ""
 
 #: admin/systems/class_printGeneric.inc:1023
+#: admin/systems/serverService-list.tpl.c:2
+#: admin/systems/phoneSelect/phoneSelect-list.tpl.c:2
+#: admin/systems/printer.tpl.c:11
 msgid "Base"
 msgstr "位置"
 
@@ -630,7 +643,7 @@ msgstr ""
 msgid "Printer PPD"
 msgstr ""
 
-#: admin/systems/class_printGeneric.inc:1028
+#: admin/systems/class_printGeneric.inc:1028 admin/systems/printer.tpl.c:38
 msgid "Permissions"
 msgstr "允许"
 
@@ -642,7 +655,7 @@ msgstr ""
 msgid "Windows driver dir"
 msgstr ""
 
-#: admin/systems/class_printGeneric.inc:1032
+#: admin/systems/class_printGeneric.inc:1032 admin/systems/printer.tpl.c:62
 msgid "Driver printer name"
 msgstr ""
 
@@ -1204,6 +1217,8 @@ msgid "You need to configure encodings first"
 msgstr ""
 
 #: admin/systems/services/shares/class_serviceShare.inc:110
+#: admin/ogroups/goto/termgroup.tpl.c:2 admin/systems/remove.tpl.c:2
+#: admin/systems/ppd/remove_ppd.tpl.c:2
 msgid "Warning"
 msgstr "警告"
 
@@ -1329,97 +1344,97 @@ msgstr ""
 msgid "LDAP"
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:295
+#: admin/systems/class_networkSettings.inc:305
 msgid "NOT IMPLEMENTED"
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:427
+#: admin/systems/class_networkSettings.inc:437
 msgid "Not matching"
 msgstr "不匹配"
 
-#: admin/systems/class_networkSettings.inc:574
+#: admin/systems/class_networkSettings.inc:584
 #, php-format
 msgid "Was not able to contact argonaut server: %s"
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:581
+#: admin/systems/class_networkSettings.inc:591
 #, php-format
 msgid "Was not able to find DNS server for zone %s"
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:587
+#: admin/systems/class_networkSettings.inc:597
 #, php-format
 msgid "Was not able to find mac address of DNS server %s"
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:594
+#: admin/systems/class_networkSettings.inc:604
 #, php-format
 msgid "Was not able to launch ldap2zone: %s"
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:620
+#: admin/systems/class_networkSettings.inc:630
 #, php-format
 msgid "IP address %s"
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:628
-#: admin/systems/class_networkSettings.inc:641
-#: admin/systems/class_networkSettings.inc:643
-#: admin/systems/class_networkSettings.inc:1012
+#: admin/systems/class_networkSettings.inc:638
+#: admin/systems/class_networkSettings.inc:651
+#: admin/systems/class_networkSettings.inc:653
+#: admin/systems/class_networkSettings.inc:1022
 msgid "IP address"
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:634
-#: admin/systems/class_networkSettings.inc:650
-#: admin/systems/class_networkSettings.inc:652
-#: admin/systems/class_networkSettings.inc:1013
+#: admin/systems/class_networkSettings.inc:644
+#: admin/systems/class_networkSettings.inc:660
+#: admin/systems/class_networkSettings.inc:662
+#: admin/systems/class_networkSettings.inc:1023
 msgid "MAC address"
 msgstr "MAC 地址"
 
-#: admin/systems/class_networkSettings.inc:666
+#: admin/systems/class_networkSettings.inc:676
 #, php-format
 msgid "The IP address '%s' is not part of the selected reverse zone '%s'!"
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:676
+#: admin/systems/class_networkSettings.inc:686
 #, php-format
 msgid "Record type '%s' is duplicated!"
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:683
+#: admin/systems/class_networkSettings.inc:693
 #, php-format
 msgid "Uniq record type '%s' is duplicated!"
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:695
+#: admin/systems/class_networkSettings.inc:705
 #, php-format
 msgid ""
 "The IP address '%s' will be added as 'A Record', this will be done "
 "automatically, please remove the record."
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:702
+#: admin/systems/class_networkSettings.inc:712
 #, php-format
 msgid "Only lowercase records are allowed, please check your '%ss'."
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:968
+#: admin/systems/class_networkSettings.inc:978
 msgid "Delete"
 msgstr "删除"
 
-#: admin/systems/class_networkSettings.inc:974
+#: admin/systems/class_networkSettings.inc:984
 msgid "Add"
 msgstr "添加"
 
-#: admin/systems/class_networkSettings.inc:1005
+#: admin/systems/class_networkSettings.inc:1015
 msgid "Network"
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:1020
+#: admin/systems/class_networkSettings.inc:1030
 msgid "DNS configuration"
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:1023
+#: admin/systems/class_networkSettings.inc:1033
 msgid "DHCP configuration"
 msgstr ""
 
@@ -1514,3 +1529,376 @@ msgstr ""
 #: config/systems/class_systemsPluginConfig.inc:101
 msgid "Encodings"
 msgstr ""
+
+#: admin/ogroups/goto/termgroup.tpl.c:5
+msgid ""
+"Actions you choose here influence all systems in this object group. "
+"Additionally, all values editable here can be inherited by the clients "
+"assigned to this object group."
+msgstr "您这里选择的动作会影响这个对象组内所有系统。而且，所有这里可以修改的值都可以被分配到该对象组的对象继承。"
+
+#: admin/ogroups/goto/termgroup.tpl.c:8
+msgid "Generic"
+msgstr "通用配置"
+
+#: admin/ogroups/goto/termgroup.tpl.c:11
+msgid "NTP server"
+msgstr "NTP 服务器"
+
+#: admin/ogroups/goto/termgroup.tpl.c:14
+msgid "Choose server to use for synchronizing time"
+msgstr "选择要用于同步时间的服务器"
+
+#: admin/ogroups/goto/termgroup.tpl.c:20
+msgid "Select terminal mode"
+msgstr "选择终端类型"
+
+#: admin/ogroups/goto/termgroup.tpl.c:26
+msgid "Choose server to use for logging"
+msgstr "限制记录日志的服务器"
+
+#: admin/ogroups/goto/termgroup.tpl.c:32
+msgid "Select NFS root filesystem to use"
+msgstr "选择要用的 NFS 根文件系统。"
+
+#: admin/ogroups/goto/termgroup.tpl.c:38
+msgid "Choose NFS filesystem to place swap files on"
+msgstr "选择放置交换文件的 NFS 文件系统"
+
+#: admin/ogroups/goto/termgroup.tpl.c:47
+msgid "Execute"
+msgstr "执行"
+
+#: admin/systems/network.tpl.c:2
+msgid "Network  settings"
+msgstr ""
+
+#: admin/systems/network.tpl.c:5
+msgid "IP-address"
+msgstr "IP 地址"
+
+#: admin/systems/network.tpl.c:8 admin/systems/network.tpl.c:11
+msgid "Propose ip"
+msgstr ""
+
+#: admin/systems/network.tpl.c:14
+msgid "MAC-address"
+msgstr "MAC 地址"
+
+#: admin/systems/network.tpl.c:17
+msgid "Autodetect"
+msgstr "自动检测"
+
+#: admin/systems/network.tpl.c:20 admin/systems/network.tpl.c:23
+msgid "Enable DHCP for this device"
+msgstr ""
+
+#: admin/systems/network.tpl.c:26 admin/systems/network.tpl.c:50
+msgid "not configured"
+msgstr ""
+
+#: admin/systems/network.tpl.c:29
+msgid "Parent node"
+msgstr ""
+
+#: admin/systems/network.tpl.c:32
+msgid "Edit settings"
+msgstr ""
+
+#: admin/systems/network.tpl.c:35 admin/systems/network.tpl.c:47
+msgid "Enable DNS for this device"
+msgstr "启用该设备 DNS"
+
+#: admin/systems/network.tpl.c:38
+msgid "Zone"
+msgstr "Zone"
+
+#: admin/systems/network.tpl.c:41
+msgid "TTL"
+msgstr "TTL"
+
+#: admin/systems/network.tpl.c:44
+msgid "Dns records"
+msgstr "Dns 记录"
+
+#: admin/systems/password.tpl.c:2
+msgid ""
+"To change the terminal root password use the fields below. The changes take "
+"effect during the next reboot. Please memorize the new password, because you"
+" wouldn't be able to log in."
+msgstr "用下面的字段来修改终端 root 口令。这项修改将在下次重启之后起作用。请记住新口令，否则您无法登录。"
+
+#: admin/systems/password.tpl.c:5
+msgid "Leave fields blank for password inheritance from default entries."
+msgstr "如果要口令从缺省条目继承，此项空白"
+
+#: admin/systems/password.tpl.c:8
+msgid "Changing the password impinges on authentification only."
+msgstr "修改口令仅影响到鉴权。"
+
+#: admin/systems/password.tpl.c:11
+msgid "New password"
+msgstr "新口令"
+
+#: admin/systems/password.tpl.c:14
+msgid "Repeat new password"
+msgstr "重复新口令"
+
+#: admin/systems/password.tpl.c:17
+msgid "Password strength"
+msgstr ""
+
+#: admin/systems/password.tpl.c:20
+msgid "Set password"
+msgstr "设置口令"
+
+#: admin/systems/server_import.tpl.c:2
+msgid ""
+"Warning : Once you import your OPSI hosts into FusionDirectory, they will be"
+" managed by it, so if you delete them or deactivate their OPSI tab, they "
+"will be removed from OPSI."
+msgstr ""
+
+#: admin/systems/gencd.tpl.c:2
+msgid "CD-Install-Image generation"
+msgstr "创建 CD 安装镜像"
+
+#: admin/systems/gencd.tpl.c:5
+msgid ""
+"This option enables you to generate FAI install CD images for the selected "
+"workstation. The procedure may take about 10 minutes to complete, so please "
+"be patient after pressing the 'Create ISO-Image' button."
+msgstr "这个选项使您能够为选择的工作站创建 FAI 安装光盘镜像。这个过程可能需要 10 分钟，所以请在按下“创建 ISO 镜像”后耐心等待。"
+
+#: admin/systems/gencd.tpl.c:8
+msgid "Create ISO-Image"
+msgstr "创建 ISO 镜像"
+
+#: admin/systems/remove.tpl.c:5
+msgid ""
+"This includes all account data, system access rules, imap settings, etc. for"
+" this user. Please double check if your really want to do this since there "
+"is no way for FusionDirectory to get your data back."
+msgstr ""
+
+#: admin/systems/remove.tpl.c:8
+msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
+msgstr "所以，如果您确定，请按“删除”继续，否则按“取消”退出。"
+
+#: admin/systems/system-filter.tpl.c:2
+#: admin/systems/phoneSelect/phoneSelect-filter.tpl.c:2
+msgid "Filter"
+msgstr "过滤器"
+
+#: admin/systems/system-filter.tpl.c:5
+msgid "Show servers"
+msgstr "显示服务器"
+
+#: admin/systems/system-filter.tpl.c:8
+msgid "Show workstations"
+msgstr "显示工作站"
+
+#: admin/systems/system-filter.tpl.c:11
+msgid "Show terminals"
+msgstr "显示终端"
+
+#: admin/systems/system-filter.tpl.c:14
+msgid "Show network printer"
+msgstr ""
+
+#: admin/systems/system-filter.tpl.c:17
+#: admin/systems/phoneSelect/phoneSelect-filter.tpl.c:5
+msgid "Show phones"
+msgstr "显示电话"
+
+#: admin/systems/system-filter.tpl.c:20
+msgid "Show windows based workstations"
+msgstr ""
+
+#: admin/systems/system-filter.tpl.c:23
+msgid "Show network devices"
+msgstr "显示网络设备"
+
+#: admin/systems/system-filter.tpl.c:26
+#: admin/systems/phoneSelect/phoneSelect-filter.tpl.c:8
+msgid "Show mobile phones"
+msgstr ""
+
+#: admin/systems/system-filter.tpl.c:29
+msgid "Show IPMI interfaces"
+msgstr ""
+
+#: admin/systems/ppd/printerPPDSelectionDialog.tpl.c:2
+msgid "Select objects to add"
+msgstr "选择要添加的对象"
+
+#: admin/systems/ppd/printerPPDSelectionDialog.tpl.c:5
+msgid "Filters"
+msgstr "过滤器"
+
+#: admin/systems/ppd/printerPPDSelectionDialog.tpl.c:8
+msgid "Display objects matching"
+msgstr "显示匹配对象"
+
+#: admin/systems/ppd/printerPPDSelectionDialog.tpl.c:11
+msgid "Regular expression for matching object names"
+msgstr "匹配对象名的正则表达式"
+
+#: admin/systems/ppd/printerPPDSelectionDialog.tpl.c:14
+msgid "Close"
+msgstr "关闭"
+
+#: admin/systems/ppd/printerPPDDialog.tpl.c:2
+msgid "Printer driver"
+msgstr "打印机驱动"
+
+#: admin/systems/ppd/printerPPDDialog.tpl.c:5
+msgid "Model"
+msgstr "模型"
+
+#: admin/systems/ppd/printerPPDDialog.tpl.c:8
+msgid "Select"
+msgstr "选择"
+
+#: admin/systems/ppd/printerPPDDialog.tpl.c:11
+msgid "New driver"
+msgstr "新驱动"
+
+#: admin/systems/ppd/printerPPDDialog.tpl.c:14
+msgid "Upload"
+msgstr "上传"
+
+#: admin/systems/ppd/printerPPDDialog.tpl.c:17
+msgid "Options"
+msgstr "选项"
+
+#: admin/systems/ppd/remove_ppd.tpl.c:5
+msgid "The ppd file will be removed from the server and can not be restored."
+msgstr "服务器中的 ppd 文件将被删除并且不能被恢复。"
+
+#: admin/systems/printer.tpl.c:2
+msgid "General"
+msgstr "普通"
+
+#: admin/systems/printer.tpl.c:5
+msgid "Printer name"
+msgstr "打印机名称"
+
+#: admin/systems/printer.tpl.c:14
+msgid "Details"
+msgstr "详细"
+
+#: admin/systems/printer.tpl.c:20
+msgid "Printer location"
+msgstr "打印机位置"
+
+#: admin/systems/printer.tpl.c:26
+msgid "PPD Provider"
+msgstr ""
+
+#: admin/systems/printer.tpl.c:29
+msgid "Driver"
+msgstr "驱动"
+
+#: admin/systems/printer.tpl.c:32
+msgid "Edit"
+msgstr "编辑"
+
+#: admin/systems/printer.tpl.c:41
+msgid "Users which are allowed to use this printer"
+msgstr "允许使用该打印机的用户"
+
+#: admin/systems/printer.tpl.c:44
+msgid "Users"
+msgstr "用户"
+
+#: admin/systems/printer.tpl.c:47
+msgid "Users which are allowed to administrate this printer"
+msgstr "允许管理该打印机的用户"
+
+#: admin/systems/printer.tpl.c:50
+msgid "Admins"
+msgstr "管理员"
+
+#: admin/systems/printer.tpl.c:53
+msgid "Windows paths"
+msgstr ""
+
+#: admin/systems/printer.tpl.c:56
+msgid "Printer windows inf file"
+msgstr ""
+
+#: admin/systems/printer.tpl.c:59
+msgid "Printer driver directory"
+msgstr ""
+
+#: admin/systems/gencd_frame.tpl.c:2
+msgid "Your browser does not supprt iframes."
+msgstr "您的浏览器不支持 iframes。"
+
+#: admin/systems/services/cups/serviceCUPS.tpl.c:2
+msgid "Print Service"
+msgstr "打印服务"
+
+#: admin/systems/services/cups/serviceCUPS.tpl.c:5
+msgid "enabled"
+msgstr ""
+
+#: admin/systems/services/ServiceAddDialog.tpl.c:2
+msgid "Adding a new service to the current server"
+msgstr ""
+
+#: admin/systems/services/ServiceAddDialog.tpl.c:5
+msgid ""
+"This dialog allows you to add new services to the currenty edited server "
+"object. The box below shows all available but not already used services."
+msgstr ""
+
+#: admin/systems/services/ServiceAddDialog.tpl.c:8
+msgid "Service to add"
+msgstr ""
+
+#: admin/systems/services/ServiceAddDialog.tpl.c:11
+msgid "All available services are already in use."
+msgstr ""
+
+#: admin/systems/services/ServiceAddDialog.tpl.c:14
+#: admin/systems/SelectDeviceType.tpl.c:26
+msgid "Continue"
+msgstr "继续"
+
+#: admin/systems/SelectDeviceType.tpl.c:2
+msgid ""
+"This system has no system type configured. Please choose a system type for "
+"this object and an optional inheritance group. Press the 'continue' button "
+"to proceed."
+msgstr ""
+
+#: admin/systems/SelectDeviceType.tpl.c:5
+msgid ""
+"Please select a system type and an optional bundle of predefined settings to"
+" be inherited."
+msgstr "请选择一个系统类型以及一个要继承的可选的预定义设置。"
+
+#: admin/systems/SelectDeviceType.tpl.c:8
+msgid ""
+"Please select a system type and a bundle of predefined settings to be "
+"inherited."
+msgstr ""
+
+#: admin/systems/SelectDeviceType.tpl.c:11
+#: admin/systems/SelectDeviceType.tpl.c:14
+msgid "System type"
+msgstr "系统类型"
+
+#: admin/systems/SelectDeviceType.tpl.c:17
+msgid "Choose an object group as template"
+msgstr "选择一个对象组作为模板"
+
+#: admin/systems/SelectDeviceType.tpl.c:20
+msgid "Object group"
+msgstr "对象组"
+
+#: admin/systems/SelectDeviceType.tpl.c:23
+msgid "none"
+msgstr "无"

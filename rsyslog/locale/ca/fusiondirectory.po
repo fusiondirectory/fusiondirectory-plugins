@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-12-16 21:56+0100\n"
-"PO-Revision-Date: 2014-12-03 16:47+0000\n"
+"POT-Creation-Date: 2015-02-25 16:38+0100\n"
+"PO-Revision-Date: 2015-02-25 16:12+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Catalan (http://www.transifex.com/projects/p/FusionDirectory-108/language/ca/)\n"
 "MIME-Version: 1.0\n"
@@ -101,7 +101,7 @@ msgstr ""
 msgid "Critical"
 msgstr ""
 
-#: addons/rsyslog/class_rsyslog.inc:351
+#: addons/rsyslog/class_rsyslog.inc:351 addons/rsyslog/rSyslog.tpl.c:26
 msgid "Error"
 msgstr "Error"
 
@@ -184,4 +184,52 @@ msgstr ""
 
 #: addons/rsyslog/class_rsyslog.inc:384
 msgid "Clock"
+msgstr ""
+
+#: addons/rsyslog/rSyslog.tpl.c:2
+msgid "Filter"
+msgstr ""
+
+#: addons/rsyslog/rSyslog.tpl.c:5
+msgid "Server"
+msgstr ""
+
+#: addons/rsyslog/rSyslog.tpl.c:8
+msgid "Host"
+msgstr ""
+
+#: addons/rsyslog/rSyslog.tpl.c:11 addons/rsyslog/rSyslog.tpl.c:41
+msgid "Severity"
+msgstr ""
+
+#: addons/rsyslog/rSyslog.tpl.c:14
+msgid "From"
+msgstr ""
+
+#: addons/rsyslog/rSyslog.tpl.c:17
+msgid "till"
+msgstr ""
+
+#: addons/rsyslog/rSyslog.tpl.c:20 addons/rsyslog/rSyslog.tpl.c:23
+msgid "Search"
+msgstr "Cerca"
+
+#: addons/rsyslog/rSyslog.tpl.c:29
+msgid "Date"
+msgstr ""
+
+#: addons/rsyslog/rSyslog.tpl.c:32
+msgid "Source"
+msgstr ""
+
+#: addons/rsyslog/rSyslog.tpl.c:35
+msgid "Header"
+msgstr ""
+
+#: addons/rsyslog/rSyslog.tpl.c:38
+msgid "Facility"
+msgstr ""
+
+#: addons/rsyslog/rSyslog.tpl.c:44
+msgid "Message"
 msgstr ""

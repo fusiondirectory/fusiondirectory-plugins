@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-12-16 21:56+0100\n"
-"PO-Revision-Date: 2014-12-12 07:41+0000\n"
+"POT-Creation-Date: 2015-02-25 16:38+0100\n"
+"PO-Revision-Date: 2015-02-25 16:02+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Chinese (http://www.transifex.com/projects/p/FusionDirectory-108/language/zh/)\n"
 "MIME-Version: 1.0\n"
@@ -49,6 +49,7 @@ msgid "LDAP error"
 msgstr "LDAP 错误"
 
 #: admin/ogroups/kolab/class_mailogroup.inc:184
+#: admin/ogroups/kolab/paste_mail.tpl.c:2
 msgid "Mail"
 msgstr "邮件"
 
@@ -392,3 +393,19 @@ msgstr ""
 #: personal/mail/kolab/class_mail-methods-kolab.inc:282
 msgid "Please remove the mail settings first!"
 msgstr ""
+
+#: admin/ogroups/kolab/mail.tpl.c:2
+msgid "Mail distribution list"
+msgstr "邮件传递列表"
+
+#: admin/ogroups/kolab/mail.tpl.c:5
+msgid "Primary address"
+msgstr "主要地址"
+
+#: admin/ogroups/kolab/mail.tpl.c:8
+msgid "Primary mail address for this distribution list"
+msgstr "此分配列表的主要邮件地址"
+
+#: admin/ogroups/kolab/paste_mail.tpl.c:5
+msgid "Please enter a mail address"
+msgstr "请输入一个邮件地址"

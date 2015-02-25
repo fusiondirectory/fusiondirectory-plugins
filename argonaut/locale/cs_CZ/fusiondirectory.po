@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-12-16 21:56+0100\n"
-"PO-Revision-Date: 2014-12-15 17:21+0000\n"
+"POT-Creation-Date: 2015-02-25 16:38+0100\n"
+"PO-Revision-Date: 2015-02-25 16:12+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/FusionDirectory-108/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
@@ -413,6 +413,7 @@ msgstr "nelze načíst položky fronty: %s"
 #: addons/argonaut/class_argonautImportFile.inc:100
 #: addons/argonaut/class_argonautImportFile.inc:141
 #: addons/argonaut/deploy-list.xml:99
+#: addons/argonaut/argonaut_import_file.tpl.c:68
 msgid "Import"
 msgstr "import(ovat)"
 
@@ -436,11 +437,13 @@ msgid "Import complete: %s events successfully send, %s failed"
 msgstr "importování bylo dokončeno: %s událostí úspěšně zasláno, %s selhalo"
 
 #: addons/argonaut/class_argonautImportFile.inc:177
+#: addons/argonaut/argonaut_import_file.tpl.c:47
 msgid "MAC"
 msgstr ""
 
 #: addons/argonaut/class_argonautImportFile.inc:180
 #: addons/argonaut/deploy-list.xml:14
+#: addons/argonaut/argonaut_import_file.tpl.c:50
 msgid "Event"
 msgstr "událost"
 
@@ -586,15 +589,18 @@ msgid "Winstation"
 msgstr "pracovní stanice s OS MS Windows"
 
 #: addons/argonaut/events/eventTargetSystems-list.xml:47
+#: addons/argonaut/argonaut_import_file.tpl.c:53
 msgid "Object group"
 msgstr "skupina objektu"
 
 #: addons/argonaut/events/eventTargetSystems-list.xml:73
 #: addons/argonaut/deploy-list.xml:36
+#: addons/argonaut/events/eventTargetSystems-filter.tpl.c:20
 msgid "Name"
 msgstr "název"
 
 #: addons/argonaut/events/eventTargetSystems-list.xml:89
+#: addons/argonaut/argonaut_import_file.tpl.c:62
 msgid "IP"
 msgstr ""
 
@@ -607,6 +613,7 @@ msgid "List of queued jobs"
 msgstr "seznam úloh ve frontě"
 
 #: addons/argonaut/deploy-list.xml:27
+#: addons/argonaut/events/DaemonEvent.tpl.c:17
 msgid "Target"
 msgstr "cíl"
 
@@ -619,10 +626,12 @@ msgid "Period"
 msgstr "interval"
 
 #: addons/argonaut/deploy-list.xml:61
+#: addons/argonaut/events/DaemonEvent.tpl.c:2
 msgid "Schedule"
 msgstr ""
 
 #: addons/argonaut/deploy-list.xml:69
+#: addons/argonaut/events/DaemonEvent.tpl.c:11
 msgid "Status"
 msgstr "stav"
 
@@ -671,3 +680,163 @@ msgstr "Nelze načíst %s!"
 #, php-format
 msgid "\"%s\" is not a file!"
 msgstr "%s není soubor!"
+
+#: addons/argonaut/argonaut_import_file.tpl.c:2
+msgid "Import jobs"
+msgstr "importovat úlohy"
+
+#: addons/argonaut/argonaut_import_file.tpl.c:5
+msgid ""
+"You can import a list of jobs into the FusionDirectory job queue. This "
+"should be a semicolon seperated list of items in the following format:"
+msgstr ""
+
+#: addons/argonaut/argonaut_import_file.tpl.c:8
+msgid "timestamp"
+msgstr "časové razítko (timestamp)"
+
+#: addons/argonaut/argonaut_import_file.tpl.c:11
+msgid "MAC-address"
+msgstr "MAC adresa"
+
+#: addons/argonaut/argonaut_import_file.tpl.c:14
+msgid "job type"
+msgstr "typ úlohy"
+
+#: addons/argonaut/argonaut_import_file.tpl.c:17
+msgid "object group"
+msgstr "skupina objektu"
+
+#: addons/argonaut/argonaut_import_file.tpl.c:20
+msgid "import base"
+msgstr ""
+
+#: addons/argonaut/argonaut_import_file.tpl.c:23
+msgid "full hostname"
+msgstr "úplný název počítače"
+
+#: addons/argonaut/argonaut_import_file.tpl.c:26
+msgid "IP-address"
+msgstr "IP adresa"
+
+#: addons/argonaut/argonaut_import_file.tpl.c:29
+msgid "DHCP group"
+msgstr "skupina DHCP"
+
+#: addons/argonaut/argonaut_import_file.tpl.c:32
+msgid "Example"
+msgstr "ukázka"
+
+#: addons/argonaut/argonaut_import_file.tpl.c:35
+msgid "Select list to import"
+msgstr "zvolte seznam, který bude importován"
+
+#: addons/argonaut/argonaut_import_file.tpl.c:38
+msgid "Browse"
+msgstr "procházet"
+
+#: addons/argonaut/argonaut_import_file.tpl.c:41
+msgid "Upload"
+msgstr "nahrát"
+
+#: addons/argonaut/argonaut_import_file.tpl.c:44
+#: addons/argonaut/events/DaemonEvent.tpl.c:20
+msgid "Timestamp"
+msgstr "časová značka"
+
+#: addons/argonaut/argonaut_import_file.tpl.c:56
+#: addons/argonaut/deploy-list.tpl.c:2
+msgid "Base"
+msgstr "základ"
+
+#: addons/argonaut/argonaut_import_file.tpl.c:59
+msgid "FQDN"
+msgstr ""
+
+#: addons/argonaut/argonaut_import_file.tpl.c:65
+msgid "DHCP"
+msgstr ""
+
+#: addons/argonaut/events/target_list.tpl.c:2
+msgid "Apply"
+msgstr "použít"
+
+#: addons/argonaut/events/target_list.tpl.c:5
+msgid "Cancel"
+msgstr "zrušit"
+
+#: addons/argonaut/events/DaemonEvent.tpl.c:5
+msgid "System list"
+msgstr ""
+
+#: addons/argonaut/events/DaemonEvent.tpl.c:8
+msgid "ID"
+msgstr "ID"
+
+#: addons/argonaut/events/DaemonEvent.tpl.c:14
+msgid "Result"
+msgstr "výsledek"
+
+#: addons/argonaut/events/eventTargetSystems-filter.tpl.c:2
+msgid "Filter"
+msgstr "filtr"
+
+#: addons/argonaut/events/eventTargetSystems-filter.tpl.c:5
+msgid "Show servers"
+msgstr "zobrazit servery"
+
+#: addons/argonaut/events/eventTargetSystems-filter.tpl.c:8
+msgid "Show workstations"
+msgstr "zobrazit pracovní stanice"
+
+#: addons/argonaut/events/eventTargetSystems-filter.tpl.c:11
+msgid "Show terminals"
+msgstr "zobrazit terminály"
+
+#: addons/argonaut/events/eventTargetSystems-filter.tpl.c:14
+msgid "Show winstations"
+msgstr "Zobrazit počítače se systémem Windows"
+
+#: addons/argonaut/events/eventTargetSystems-filter.tpl.c:17
+msgid "Filter by IP address range"
+msgstr "filtrovat dle rozsahu IP adres"
+
+#: addons/argonaut/events/timestamp_select.tpl.c:2
+msgid "Year"
+msgstr "rok"
+
+#: addons/argonaut/events/timestamp_select.tpl.c:5
+msgid "Month"
+msgstr "měsíc"
+
+#: addons/argonaut/events/timestamp_select.tpl.c:8
+msgid "Day"
+msgstr "den"
+
+#: addons/argonaut/events/timestamp_select.tpl.c:11
+msgid "Hour"
+msgstr "hodina"
+
+#: addons/argonaut/events/timestamp_select.tpl.c:14
+msgid "Minute"
+msgstr "minuta"
+
+#: addons/argonaut/events/timestamp_select.tpl.c:17
+msgid "Second"
+msgstr "vteřina"
+
+#: addons/argonaut/events/timestamp_select.tpl.c:20
+msgid "Periodical job"
+msgstr "opakovaná úloha"
+
+#: addons/argonaut/events/timestamp_select.tpl.c:23
+msgid "Job intervall"
+msgstr "Prodleva úlohy"
+
+#: addons/argonaut/remove.tpl.c:2
+msgid "Warning"
+msgstr "varování"
+
+#: addons/argonaut/remove.tpl.c:5
+msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
+msgstr "Tedy – pokud jste si jist(a), stiskněte 'smazat'. V opačném případě operaci zrušte pomocí 'zrušit'."

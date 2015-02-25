@@ -13,9 +13,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-12-16 21:56+0100\n"
-"PO-Revision-Date: 2014-12-16 10:31+0000\n"
-"Last-Translator: MCMic\n"
+"POT-Creation-Date: 2015-02-25 16:38+0100\n"
+"PO-Revision-Date: 2015-02-25 16:12+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory-108/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -74,6 +74,7 @@ msgstr "Information du profil Debconf"
 
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:181
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:184
+#: admin/debconfProfile/debconfProfile-filter.tpl.c:5
 msgid "Name"
 msgstr "Nom"
 
@@ -136,3 +137,7 @@ msgstr "Paramètres de démarrage à passer au noyau Linux"
 #: admin/systems/debconf/class_debconfStartup.inc:112
 msgid "Debconf preseed startup"
 msgstr "Démarrage par preseed Debconf"
+
+#: admin/debconfProfile/debconfProfile-filter.tpl.c:2
+msgid "Filter"
+msgstr "Filtre"

@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-12-16 21:56+0100\n"
-"PO-Revision-Date: 2014-12-18 09:51+0000\n"
+"POT-Creation-Date: 2015-02-25 16:38+0100\n"
+"PO-Revision-Date: 2015-02-25 16:12+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory-108/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -87,16 +87,20 @@ msgstr "Il doit y avoir au moins un serveur avec une base de données asterisk p
 #: admin/conference/class_phoneConferenceGeneric.inc:709
 #: personal/phoneaccount/class_phoneAccount.inc:1350
 #: personal/phoneaccount/class_phoneAccount.inc:1669
+#: admin/ogroups/asterisk/phonequeue.tpl.c:17
+#: admin/conference/generic.tpl.c:20 personal/phoneaccount/generic.tpl.c:11
 msgid "Home server"
 msgstr "Serveur Primaire"
 
 #: admin/ogroups/asterisk/class_phonequeue.inc:281
 #: admin/ogroups/asterisk/class_phonequeue.inc:871
+#: admin/ogroups/asterisk/phonequeue.tpl.c:23
 msgid "Timeout"
 msgstr "Temps d'attente maximum"
 
 #: admin/ogroups/asterisk/class_phonequeue.inc:284
 #: admin/ogroups/asterisk/class_phonequeue.inc:896
+#: admin/ogroups/asterisk/phonequeue.tpl.c:26
 msgid "Retry"
 msgstr "Réessayer"
 
@@ -106,6 +110,7 @@ msgstr "taille de la queue"
 
 #: admin/ogroups/asterisk/class_phonequeue.inc:290
 #: admin/ogroups/asterisk/class_phonequeue.inc:874
+#: admin/ogroups/asterisk/phonequeue.tpl.c:35
 msgid "Announce frequency"
 msgstr "Fréquence du message d'annonce"
 
@@ -198,30 +203,37 @@ msgid "Phone group"
 msgstr "Groupe téléphonique"
 
 #: admin/ogroups/asterisk/class_phonequeue.inc:872
+#: admin/ogroups/asterisk/phonequeue.tpl.c:32
 msgid "Max queue length"
 msgstr "Taille maximale de la queue"
 
 #: admin/ogroups/asterisk/class_phonequeue.inc:875
+#: admin/ogroups/asterisk/phonequeue.tpl.c:86
 msgid "Allow the called user to transfer his call"
 msgstr "Permettre à l'utilisateur appelé de transférer son appel"
 
 #: admin/ogroups/asterisk/class_phonequeue.inc:876
+#: admin/ogroups/asterisk/phonequeue.tpl.c:89
 msgid "Allows calling user to transfer call"
 msgstr "Permettre à l'utilisateur qui appelle de transférer son appel"
 
 #: admin/ogroups/asterisk/class_phonequeue.inc:877
+#: admin/ogroups/asterisk/phonequeue.tpl.c:92
 msgid "Allow the called to hangup by pressing *"
 msgstr "Permettre à la personne qui appelle de raccrocher en appuyant sur *"
 
 #: admin/ogroups/asterisk/class_phonequeue.inc:878
+#: admin/ogroups/asterisk/phonequeue.tpl.c:98
 msgid "Ring instead of playing background music"
 msgstr "Sonner au lieu de mettre une musique d'ambiance"
 
 #: admin/ogroups/asterisk/class_phonequeue.inc:879
+#: admin/ogroups/asterisk/phonequeue.tpl.c:95
 msgid "Allows calling to hangup by pressing *"
 msgstr "Permettre à la personne qui appelle de raccrocher en appuyant sur *"
 
 #: admin/ogroups/asterisk/class_phonequeue.inc:881
+#: admin/ogroups/asterisk/phonequeue.tpl.c:47
 msgid "Music on hold"
 msgstr "Musique d'attente"
 
@@ -267,6 +279,8 @@ msgstr "Numéro de la queue téléphonique"
 
 #: admin/ogroups/asterisk/class_phonequeue.inc:892
 #: admin/conference/class_phoneConferenceGeneric.inc:707
+#: admin/ogroups/asterisk/phonequeue.tpl.c:20
+#: admin/conference/generic.tpl.c:23
 msgid "Language"
 msgstr "Langue"
 
@@ -275,6 +289,7 @@ msgid "Method"
 msgstr "Méthode"
 
 #: admin/ogroups/asterisk/class_phonequeue.inc:894
+#: admin/ogroups/asterisk/phonequeue.tpl.c:83
 msgid "Announce holdtime"
 msgstr "Annonce de la durée de mise en attente"
 
@@ -301,6 +316,8 @@ msgstr "Conférence"
 #: admin/systems/asterisk/class_phoneGeneric.inc:351
 #: admin/systems/asterisk/class_phoneGeneric.inc:366
 #: admin/systems/asterisk/class_phoneGeneric.inc:482
+#: admin/conference/conf-filter.tpl.c:5 admin/macro/macro-filter.tpl.c:5
+#: admin/macro/parameter.tpl.c:5
 msgid "Name"
 msgstr "Nom"
 
@@ -308,6 +325,8 @@ msgstr "Nom"
 #: admin/conference/class_phoneConferenceGeneric.inc:704
 #: admin/macro/class_gofonMacro.inc:547 admin/macro/macro-list.xml:49
 #: admin/systems/asterisk/class_phoneGeneric.inc:484
+#: admin/conference/generic.tpl.c:29 admin/macro/generic.tpl.c:17
+#: admin/systems/asterisk/phone.tpl.c:8
 msgid "Description"
 msgstr "Description"
 
@@ -341,6 +360,7 @@ msgid ""
 msgstr "Le serveur asterisk primaire (%s) précédemment sélectionné n'est plus disponible !"
 
 #: admin/conference/class_phoneConferenceGeneric.inc:315
+#: admin/conference/generic.tpl.c:47
 msgid "PIN"
 msgstr "Code PIN"
 
@@ -356,6 +376,7 @@ msgstr "Durée"
 #: personal/phoneaccount/class_phoneAccount.inc:656
 #: personal/phoneaccount/class_phoneAccount.inc:1519
 #: personal/phoneaccount/class_phoneAccount.inc:1695
+#: admin/conference/remove.tpl.c:2 admin/macro/remove.tpl.c:2
 msgid "Warning"
 msgstr "Avertissement"
 
@@ -391,6 +412,8 @@ msgstr "Conférence Asterisk"
 #: admin/conference/class_phoneConferenceGeneric.inc:703
 #: admin/macro/class_gofonMacro.inc:546
 #: admin/systems/asterisk/class_phoneGeneric.inc:483
+#: admin/conference/generic.tpl.c:17 admin/macro/generic.tpl.c:14
+#: admin/systems/asterisk/phone.tpl.c:5
 msgid "Base"
 msgstr "Base"
 
@@ -399,14 +422,17 @@ msgid "Conference PIN"
 msgstr "Code Pin de la conférence"
 
 #: admin/conference/class_phoneConferenceGeneric.inc:710
+#: admin/conference/generic.tpl.c:44
 msgid "Preset PIN"
 msgstr "Code PIN préselectionné"
 
 #: admin/conference/class_phoneConferenceGeneric.inc:711
+#: admin/conference/generic.tpl.c:50
 msgid "Record conference"
 msgstr "Enregistrer la conférence"
 
 #: admin/conference/class_phoneConferenceGeneric.inc:712
+#: admin/conference/generic.tpl.c:59
 msgid "Play music on hold"
 msgstr "Musique d'attente"
 
@@ -518,11 +544,13 @@ msgstr "Gestion des macros d'Asterisk"
 msgid "GOfon macro"
 msgstr "Macro GOfon"
 
-#: admin/macro/class_gofonMacro.inc:545
+#: admin/macro/class_gofonMacro.inc:545 admin/macro/generic.tpl.c:2
+#: admin/macro/generic.tpl.c:5 admin/macro/paste_generic.tpl.c:2
+#: admin/macro/paste_generic.tpl.c:5
 msgid "Macro name"
 msgstr "Nom de la macro"
 
-#: admin/macro/class_gofonMacro.inc:548
+#: admin/macro/class_gofonMacro.inc:548 admin/macro/generic.tpl.c:8
 msgid "Display name"
 msgstr "Nom à afficher"
 
@@ -559,6 +587,7 @@ msgid "Asterisk macro parameter"
 msgstr "Paramètre de macro Asterisk"
 
 #: admin/macro/class_gofonMacroParameters.inc:234
+#: personal/phoneaccount/generic.tpl.c:35
 msgid "Phone macro"
 msgstr "Macro téléphoniques"
 
@@ -755,18 +784,22 @@ msgid "All entries are readonly"
 msgstr "Tous les champs sont en lecture seule"
 
 #: addons/fonreports/class_fonreport.inc:428
+#: addons/fonreports/contents.tpl.c:32
 msgid "Date"
 msgstr "Date"
 
 #: addons/fonreports/class_fonreport.inc:429
+#: addons/fonreports/contents.tpl.c:35
 msgid "Source"
 msgstr "Emetteur"
 
 #: addons/fonreports/class_fonreport.inc:430
+#: addons/fonreports/contents.tpl.c:38
 msgid "Destination"
 msgstr "Destinataire"
 
 #: addons/fonreports/class_fonreport.inc:431
+#: addons/fonreports/contents.tpl.c:41
 msgid "Channel"
 msgstr "Canal"
 
@@ -779,6 +812,7 @@ msgid "Disposition"
 msgstr "Disposition"
 
 #: addons/fonreports/class_fonreport.inc:434
+#: addons/fonreports/contents.tpl.c:50
 msgid "Duration"
 msgstr "Durée"
 
@@ -842,6 +876,8 @@ msgstr "Il doit y avoir au moins un serveur avec une base de données asterisk p
 
 #: personal/phoneaccount/class_phoneAccount.inc:1354
 #: personal/phoneaccount/class_phoneAccount.inc:1357
+#: personal/phoneaccount/generic.tpl.c:29
+#: personal/phoneaccount/paste_generic.tpl.c:11
 msgid "Voicemail PIN"
 msgstr "Code PIN de la boite vocale"
 
@@ -850,10 +886,13 @@ msgid "Between 1-4 charactes"
 msgstr "Entre 1-4 caractères."
 
 #: personal/phoneaccount/class_phoneAccount.inc:1362
+#: personal/phoneaccount/generic.tpl.c:32
+#: personal/phoneaccount/paste_generic.tpl.c:14
 msgid "Phone PIN"
 msgstr "Code PIN du téléphone"
 
 #: personal/phoneaccount/class_phoneAccount.inc:1394
+#: admin/conference/generic.tpl.c:38 admin/conference/paste_generic.tpl.c:8
 msgid "Phone number"
 msgstr "Numéro de téléphone"
 
@@ -922,6 +961,7 @@ msgid "Click the 'Edit' button below to change informations in this dialog"
 msgstr "Cliquez sur le bouton 'Editer' ci-dessous pour changer les informations dans cette boite de dialogue"
 
 #: personal/phoneaccount/main.inc:134
+#: personal/phoneaccount/paste_generic.tpl.c:2
 msgid "Phone settings"
 msgstr "Configuration du téléphone"
 
@@ -977,3 +1017,338 @@ msgstr "Contextes voicemail"
 #: config/asterisk/class_asteriskPluginConfig.inc:72
 msgid "Available voicemail contexts"
 msgstr "Contextes voicemail disponibles"
+
+#: admin/ogroups/asterisk/phonequeue.tpl.c:2
+msgid ""
+"Only users with the same asterisk home server will be included to this "
+"queue."
+msgstr "Seulement les utilisateurs du même serveur asterisk seront inclus dans cette queue."
+
+#: admin/ogroups/asterisk/phonequeue.tpl.c:5
+#: personal/phoneaccount/generic.tpl.c:2
+#: personal/phoneaccount/paste_generic.tpl.c:5
+msgid "Phone numbers"
+msgstr "Numéros de téléphones"
+
+#: admin/ogroups/asterisk/phonequeue.tpl.c:8
+msgid "Up"
+msgstr "Haut"
+
+#: admin/ogroups/asterisk/phonequeue.tpl.c:11
+msgid "Down"
+msgstr "Bas"
+
+#: admin/ogroups/asterisk/phonequeue.tpl.c:14
+#: admin/conference/generic.tpl.c:41
+msgid "Options"
+msgstr "Options"
+
+#: admin/ogroups/asterisk/phonequeue.tpl.c:29
+msgid "Strategy"
+msgstr "Stratégie"
+
+#: admin/ogroups/asterisk/phonequeue.tpl.c:38
+msgid "(in seconds)"
+msgstr "(en secondes)"
+
+#: admin/ogroups/asterisk/phonequeue.tpl.c:41
+msgid "Queue sound setup"
+msgstr "Configuration de la queue d'attente du son"
+
+#: admin/ogroups/asterisk/phonequeue.tpl.c:44
+msgid "Use music on hold instead of ringing"
+msgstr "Mettre de la musique lorsqu'on est en attente plutôt que la sonnerie"
+
+#: admin/ogroups/asterisk/phonequeue.tpl.c:50
+msgid "Welcome sound file"
+msgstr "Fichier son de bienvenue"
+
+#: admin/ogroups/asterisk/phonequeue.tpl.c:53
+msgid "Announce message"
+msgstr "Message de présentation"
+
+#: admin/ogroups/asterisk/phonequeue.tpl.c:56
+msgid "Sound file for 'You are next ...'"
+msgstr "Fichier son pour 'Vous êtes le suivant ...'"
+
+#: admin/ogroups/asterisk/phonequeue.tpl.c:59
+msgid "'There are ...'"
+msgstr "'Il y a ...'"
+
+#: admin/ogroups/asterisk/phonequeue.tpl.c:62
+msgid "'... calls waiting'"
+msgstr "'... appels en attente'"
+
+#: admin/ogroups/asterisk/phonequeue.tpl.c:65
+msgid "'Thank you' message"
+msgstr "Message 'Merci'"
+
+#: admin/ogroups/asterisk/phonequeue.tpl.c:68
+msgid "'minutes' sound file"
+msgstr "'minutes' du fichier son"
+
+#: admin/ogroups/asterisk/phonequeue.tpl.c:71
+msgid "'seconds' sound file"
+msgstr "'secondes' du fichier son"
+
+#: admin/ogroups/asterisk/phonequeue.tpl.c:74
+msgid "Hold sound file"
+msgstr "Fichier son du message d'attente"
+
+#: admin/ogroups/asterisk/phonequeue.tpl.c:77
+msgid "Less Than sound file"
+msgstr "Fichier son, moins de"
+
+#: admin/ogroups/asterisk/phonequeue.tpl.c:80
+msgid "Phone attributes "
+msgstr "Propriétés du téléphone"
+
+#: admin/conference/conf-filter.tpl.c:2 admin/macro/macro-filter.tpl.c:2
+#: addons/fonreports/contents.tpl.c:2
+msgid "Filter"
+msgstr "Filtre"
+
+#: admin/conference/generic.tpl.c:2
+msgid "Properties"
+msgstr "Propriétés"
+
+#: admin/conference/generic.tpl.c:5 admin/conference/paste_generic.tpl.c:2
+msgid "Conference name"
+msgstr "Nom de la conférence"
+
+#: admin/conference/generic.tpl.c:8 admin/conference/paste_generic.tpl.c:5
+msgid "Name of conference to create"
+msgstr "Nom de la conférence à créer"
+
+#: admin/conference/generic.tpl.c:11
+msgid "Type"
+msgstr "Type"
+
+#: admin/conference/generic.tpl.c:14
+msgid "Choose subtree to place conference in"
+msgstr "Sélectionnez la branche où sera enregistrée la conférence"
+
+#: admin/conference/generic.tpl.c:26
+msgid "Select language"
+msgstr "Sélectionnez la langue"
+
+#: admin/conference/generic.tpl.c:32
+msgid "Descriptive text for department"
+msgstr "Description du département"
+
+#: admin/conference/generic.tpl.c:35
+msgid "Lifetime (in days)"
+msgstr "Durée (en jours)"
+
+#: admin/conference/generic.tpl.c:53
+msgid "Sound file format"
+msgstr "Format du fichier son "
+
+#: admin/conference/generic.tpl.c:56
+msgid "Choose subtree to place department in"
+msgstr "Sélectionnez la branche de l'annuaire dans laquelle sera placée le département"
+
+#: admin/conference/generic.tpl.c:62
+msgid "Activate session menu"
+msgstr "Activer le menu de session"
+
+#: admin/conference/generic.tpl.c:65
+msgid "Announce users joining or leaving the conference"
+msgstr "Annoncer les nouveaux utilisateurs et ceux qui quittent"
+
+#: admin/conference/generic.tpl.c:68
+msgid "Count users"
+msgstr "Compter les utilisateurs"
+
+#: admin/conference/remove.tpl.c:5 admin/macro/remove.tpl.c:5
+msgid ""
+"Please double check if you really want to do this since there is no way for "
+"FusionDirectory to get your data back."
+msgstr "Veuillez vérifier que vous voulez effectuer cette action. Toutes les données seront perdues étant donné qu'il est impossible pour FusionDirectory de récupérer vos données."
+
+#: admin/conference/remove.tpl.c:8 admin/macro/remove.tpl.c:8
+msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
+msgstr "Donc - si vous êtes sûr - cliquez sur 'Supprimer' pour continuer ou sur 'Annuler' pour abandonner."
+
+#: admin/macro/generic.tpl.c:11
+msgid "Macro name to be displayed"
+msgstr "Nom d'affichage de la macro"
+
+#: admin/macro/generic.tpl.c:20
+msgid "Visible for user"
+msgstr "Visible pour l'utilisateur"
+
+#: admin/macro/generic.tpl.c:23
+msgid "Macro text"
+msgstr "Texte de la macro"
+
+#: admin/macro/parameter.tpl.c:2
+msgid "Argument"
+msgstr "Argument"
+
+#: admin/macro/parameter.tpl.c:8
+msgid "type"
+msgstr "type"
+
+#: admin/macro/parameter.tpl.c:11
+msgid "Default value"
+msgstr "Valeur par défaut"
+
+#: admin/macro/parameter.tpl.c:14
+msgid "You are not allowed to view the macro parameter settings"
+msgstr "Vous n'êtes pas autorisé à voir les paramètres de cette macro."
+
+#: admin/systems/asterisk/phonesettings.tpl.c:2
+msgid "Advanced phone settings"
+msgstr "Configuration avancée du téléphone"
+
+#: admin/systems/asterisk/phonesettings.tpl.c:5
+msgid "Phone type"
+msgstr "Type de téléphone"
+
+#: admin/systems/asterisk/phonesettings.tpl.c:8
+#: admin/systems/asterisk/phonesettings.tpl.c:14
+#: admin/systems/asterisk/phonesettings.tpl.c:20
+#: admin/systems/asterisk/phonesettings.tpl.c:26
+#: admin/systems/asterisk/phonesettings.tpl.c:35
+#: admin/systems/asterisk/phonesettings.tpl.c:47
+#: admin/systems/asterisk/phonesettings.tpl.c:65
+msgid "Choose a phone type"
+msgstr "Sélectionnez un type de téléphone"
+
+#: admin/systems/asterisk/phonesettings.tpl.c:11
+msgid "Mode"
+msgstr "Mode"
+
+#: admin/systems/asterisk/phonesettings.tpl.c:17
+msgid "DTMF mode"
+msgstr "Mode DTMF"
+
+#: admin/systems/asterisk/phonesettings.tpl.c:23
+#: admin/systems/asterisk/phonesettings.tpl.c:38
+msgid "Default IP"
+msgstr "Adresse ip par défaut"
+
+#: admin/systems/asterisk/phonesettings.tpl.c:29
+#: admin/systems/asterisk/phonesettings.tpl.c:41
+msgid "Response timeout"
+msgstr "Temps de réponse maximum"
+
+#: admin/systems/asterisk/phonesettings.tpl.c:32
+msgid "Modus"
+msgstr "Mode"
+
+#: admin/systems/asterisk/phonesettings.tpl.c:44
+msgid "Authtype"
+msgstr "Type d'authentification"
+
+#: admin/systems/asterisk/phonesettings.tpl.c:50
+msgid "Secret"
+msgstr "Secret"
+
+#: admin/systems/asterisk/phonesettings.tpl.c:53
+msgid "GoFonInkeys"
+msgstr ""
+
+#: admin/systems/asterisk/phonesettings.tpl.c:56
+msgid "GoFonOutKeys"
+msgstr ""
+
+#: admin/systems/asterisk/phonesettings.tpl.c:59
+msgid "Account code"
+msgstr "Code du compte téléphonique"
+
+#: admin/systems/asterisk/phonesettings.tpl.c:62
+msgid "Trunk lines"
+msgstr "Regrouper des lignes"
+
+#: admin/systems/asterisk/phonesettings.tpl.c:68
+msgid "Hosts that are allowed to connect"
+msgstr "Machines qui peuvent se connecter"
+
+#: admin/systems/asterisk/phonesettings.tpl.c:71
+#: admin/systems/asterisk/phonesettings.tpl.c:77
+msgid "List of alternative mail addresses"
+msgstr "Liste des adresses de courriel alternatives"
+
+#: admin/systems/asterisk/phonesettings.tpl.c:74
+msgid "Hosts that are not allowed to connect"
+msgstr "Machines qui ne peuvent pas se connecter"
+
+#: admin/systems/asterisk/phonesettings.tpl.c:80
+msgid "MSN"
+msgstr "MSN"
+
+#: admin/systems/asterisk/phone.tpl.c:2
+msgid "Phone name"
+msgstr "Nom du téléphone"
+
+#: addons/fonreports/contents.tpl.c:5
+msgid "Search for"
+msgstr "Recherche de"
+
+#: addons/fonreports/contents.tpl.c:8
+msgid "Enter user name to search for"
+msgstr "Entrez le nom recherché"
+
+#: addons/fonreports/contents.tpl.c:11 addons/fonreports/contents.tpl.c:26
+msgid "in"
+msgstr "dans"
+
+#: addons/fonreports/contents.tpl.c:14
+msgid "Select subtree to base search on"
+msgstr "Sélectionnez la branche de l'annuaire où sera effectuée la recherche"
+
+#: addons/fonreports/contents.tpl.c:17
+msgid "on"
+msgstr "Activé"
+
+#: addons/fonreports/contents.tpl.c:20
+msgid "Select server to search on"
+msgstr "Sélectionnez le serveur où sera effectuée la recherche"
+
+#: addons/fonreports/contents.tpl.c:23
+msgid "during"
+msgstr "pendant"
+
+#: addons/fonreports/contents.tpl.c:29
+msgid "Search"
+msgstr "Recherche"
+
+#: addons/fonreports/contents.tpl.c:44
+msgid "Application"
+msgstr "Application"
+
+#: addons/fonreports/contents.tpl.c:47
+msgid "Status"
+msgstr "Statut"
+
+#: addons/fonreports/contents.tpl.c:53
+msgid "Search returned no results..."
+msgstr "La recherche n'a renvoyé aucun résultat..."
+
+#: personal/phoneaccount/generic.tpl.c:5
+#: personal/phoneaccount/paste_generic.tpl.c:8
+msgid "Telephone hardware"
+msgstr "Matériel téléphonique"
+
+#: personal/phoneaccount/generic.tpl.c:8
+msgid "Telephone"
+msgstr "Téléphone"
+
+#: personal/phoneaccount/generic.tpl.c:14
+msgid "Select the accounts home server"
+msgstr "Sélectionnez le serveur primaire"
+
+#: personal/phoneaccount/generic.tpl.c:17
+msgid "Context"
+msgstr "Contexte"
+
+#: personal/phoneaccount/generic.tpl.c:20
+#: personal/phoneaccount/generic.tpl.c:26
+msgid "Select the accounts context"
+msgstr "Sélectionnez le contexte du compte"
+
+#: personal/phoneaccount/generic.tpl.c:23
+msgid "Voicemail context"
+msgstr "Contexte de la boite vocale"

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-12-16 21:56+0100\n"
-"PO-Revision-Date: 2014-12-15 17:21+0000\n"
+"POT-Creation-Date: 2015-02-25 16:38+0100\n"
+"PO-Revision-Date: 2015-02-25 16:02+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/FusionDirectory-108/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -49,6 +49,7 @@ msgid "LDAP error"
 msgstr "Erro de LDAP"
 
 #: admin/ogroups/kolab/class_mailogroup.inc:184
+#: admin/ogroups/kolab/paste_mail.tpl.c:2
 msgid "Mail"
 msgstr "Correio"
 
@@ -392,3 +393,19 @@ msgstr "Aguardando Kolab remover propriedades de correio..."
 #: personal/mail/kolab/class_mail-methods-kolab.inc:282
 msgid "Please remove the mail settings first!"
 msgstr "Por favor, remova configurações de correio antes!"
+
+#: admin/ogroups/kolab/mail.tpl.c:2
+msgid "Mail distribution list"
+msgstr "Lista de distribuição de correio"
+
+#: admin/ogroups/kolab/mail.tpl.c:5
+msgid "Primary address"
+msgstr "Endereço primário"
+
+#: admin/ogroups/kolab/mail.tpl.c:8
+msgid "Primary mail address for this distribution list"
+msgstr "Email primário para lista de distribuição"
+
+#: admin/ogroups/kolab/paste_mail.tpl.c:5
+msgid "Please enter a mail address"
+msgstr "Por favor, insira um endereço de correio"

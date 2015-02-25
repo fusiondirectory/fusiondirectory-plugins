@@ -1,0 +1,255 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR FusionDirectory Project
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: FusionDirectory-108\n"
+"Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
+"POT-Creation-Date: 2015-02-25 16:38+0100\n"
+"PO-Revision-Date: 2015-02-10 17:32+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Uighur (http://www.transifex.com/projects/p/FusionDirectory-108/language/ug/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ug\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: admin/ppolicy/class_ppolicyManagement.inc:28
+msgid "Password policies"
+msgstr ""
+
+#: admin/ppolicy/class_ppolicyManagement.inc:29
+msgid "Password policies management"
+msgstr ""
+
+#: admin/ppolicy/class_ppolicy.inc:31 admin/ppolicy/class_ppolicy.inc:34
+#: personal/ppolicy/class_ppolicyAccount.inc:37
+#: personal/ppolicy/class_ppolicyAccount.inc:52
+msgid "Password policy"
+msgstr ""
+
+#: admin/ppolicy/class_ppolicy.inc:32
+msgid "Password policy for ppolicy overlay"
+msgstr ""
+
+#: admin/ppolicy/class_ppolicy.inc:50
+#: personal/ppolicy/class_ppolicyAccount.inc:55
+msgid "Policy"
+msgstr ""
+
+#: admin/ppolicy/class_ppolicy.inc:55
+msgid "Policy name"
+msgstr ""
+
+#: admin/ppolicy/class_ppolicy.inc:59
+msgid "Minimum length"
+msgstr ""
+
+#: admin/ppolicy/class_ppolicy.inc:59
+msgid ""
+"Minimum length of the user supplied password - passwords shorter than this "
+"value will be rejected"
+msgstr ""
+
+#: admin/ppolicy/class_ppolicy.inc:64
+msgid "Passwords in history"
+msgstr ""
+
+#: admin/ppolicy/class_ppolicy.inc:64
+msgid ""
+"Number of passwords that are maintained in a list of previously used "
+"passwords"
+msgstr ""
+
+#: admin/ppolicy/class_ppolicy.inc:69
+msgid "Minimum password age"
+msgstr ""
+
+#: admin/ppolicy/class_ppolicy.inc:69
+msgid "Minimum time between password changes"
+msgstr ""
+
+#: admin/ppolicy/class_ppolicy.inc:74
+msgid "Maximum password age"
+msgstr ""
+
+#: admin/ppolicy/class_ppolicy.inc:74
+msgid ""
+"Maximum time a password is valid, after which it is deemed to be no longer "
+"usable and any bind operations attempted with the expired password will be "
+"treated as invalid"
+msgstr ""
+
+#: admin/ppolicy/class_ppolicy.inc:79
+msgid "Expire warning delay"
+msgstr ""
+
+#: admin/ppolicy/class_ppolicy.inc:79
+msgid ""
+"Start time prior to the password expiry that password expiry warning "
+"messages are returned in bind responses"
+msgstr ""
+
+#: admin/ppolicy/class_ppolicy.inc:84
+msgid "Grace period"
+msgstr ""
+
+#: admin/ppolicy/class_ppolicy.inc:84
+msgid ""
+"Number of times a user is allowed to successfully bind using an expired "
+"password"
+msgstr ""
+
+#: admin/ppolicy/class_ppolicy.inc:89
+msgid "Allow user change"
+msgstr ""
+
+#: admin/ppolicy/class_ppolicy.inc:89
+msgid "Whether users are allowed to change their own passwords"
+msgstr ""
+
+#: admin/ppolicy/class_ppolicy.inc:94
+msgid "Safe modify"
+msgstr ""
+
+#: admin/ppolicy/class_ppolicy.inc:94
+msgid ""
+"Whether a user must send the current password during a password modification"
+" operation"
+msgstr ""
+
+#: admin/ppolicy/class_ppolicy.inc:108
+msgid "Lock out"
+msgstr ""
+
+#: admin/ppolicy/class_ppolicy.inc:112
+msgid "Activate lock out"
+msgstr ""
+
+#: admin/ppolicy/class_ppolicy.inc:112
+msgid ""
+"Whether to lock an account that had more consecutive failed bind attempts "
+"with invalid passwords than is defined by \"Maximum failures\""
+msgstr ""
+
+#: admin/ppolicy/class_ppolicy.inc:117
+msgid "Lock out duration"
+msgstr ""
+
+#: admin/ppolicy/class_ppolicy.inc:117
+msgid ""
+"Time the account remains locked after an automatic lock out (0 means for "
+"ever)"
+msgstr ""
+
+#: admin/ppolicy/class_ppolicy.inc:122
+msgid "Maximum failures"
+msgstr ""
+
+#: admin/ppolicy/class_ppolicy.inc:122
+msgid ""
+"Number of consecutive password failures allowed before automatic lock out"
+msgstr ""
+
+#: admin/ppolicy/class_ppolicy.inc:127
+msgid "Failure count interval"
+msgstr ""
+
+#: admin/ppolicy/class_ppolicy.inc:127
+msgid ""
+"Time after which the count of consecutive password failures is reset even if"
+" no successful authentication has occurred"
+msgstr ""
+
+#: admin/ppolicy/class_ppolicy.inc:132
+msgid "Must change"
+msgstr ""
+
+#: admin/ppolicy/class_ppolicy.inc:132
+msgid ""
+"Whether the user must change their password after an account is reset by an "
+"administrator following an automatic lockout"
+msgstr ""
+
+#: personal/ppolicy/class_ppolicyAccount.inc:38
+msgid "Edit user's password policy"
+msgstr ""
+
+#: personal/ppolicy/class_ppolicyAccount.inc:55
+msgid "Use a specific policy for this user"
+msgstr ""
+
+#: personal/ppolicy/class_ppolicyAccount.inc:59
+msgid "Last password change"
+msgstr ""
+
+#: personal/ppolicy/class_ppolicyAccount.inc:59
+msgid "Last time the password for the entry was changed"
+msgstr ""
+
+#: personal/ppolicy/class_ppolicyAccount.inc:63
+msgid "Account locked time"
+msgstr ""
+
+#: personal/ppolicy/class_ppolicyAccount.inc:63
+msgid "Time the account was locked"
+msgstr ""
+
+#: personal/ppolicy/class_ppolicyAccount.inc:67
+msgid "Reset locking"
+msgstr ""
+
+#: personal/ppolicy/class_ppolicyAccount.inc:67
+msgid "Resets the lock status of this account"
+msgstr ""
+
+#: personal/ppolicy/class_ppolicyAccount.inc:70
+msgid "Reset with the same password"
+msgstr ""
+
+#: personal/ppolicy/class_ppolicyAccount.inc:70
+msgid "Reset and force change"
+msgstr ""
+
+#: personal/ppolicy/class_ppolicyAccount.inc:85
+msgid "Use the default"
+msgstr ""
+
+#: personal/ppolicy/class_ppolicyAccount.inc:102
+msgid "Never"
+msgstr ""
+
+#: personal/ppolicy/class_ppolicyAccount.inc:109
+msgid "Unlocked"
+msgstr ""
+
+#: config/ppolicy/class_ppolicyConfig.inc:28
+msgid "Ppolicy plugin configuration"
+msgstr ""
+
+#: config/ppolicy/class_ppolicyConfig.inc:29
+msgid "FusionDirectory ppolicy plugin configuration"
+msgstr ""
+
+#: config/ppolicy/class_ppolicyConfig.inc:42
+msgid "Ppolicy plugin"
+msgstr ""
+
+#: config/ppolicy/class_ppolicyConfig.inc:45
+msgid "Ppolicy RDN"
+msgstr ""
+
+#: config/ppolicy/class_ppolicyConfig.inc:45
+msgid "Branch in which ppolicies will be stored"
+msgstr ""
+
+#: config/ppolicy/class_ppolicyConfig.inc:50
+msgid "Default ppolicy cn"
+msgstr ""
+
+#: config/ppolicy/class_ppolicyConfig.inc:50
+msgid "What you put as default ppolicy in the overlay config"
+msgstr ""
