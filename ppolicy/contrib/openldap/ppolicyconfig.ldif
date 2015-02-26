@@ -3,6 +3,6 @@ objectClass: olcConfig
 objectClass: olcOverlayConfig
 objectClass: olcPpolicyConfig
 olcOverlay: ppolicy
-olcPPolicyDefault: cn=default,ou=ppolicies,dc=mcmic,dc=test
+olcPPolicyDefault: cn=default,ou=ppolicies,dc=fusiondirectory,dc=org
 olcPPolicyUseLockout: TRUE
 olcPPolicyHashCleartext: TRUE
