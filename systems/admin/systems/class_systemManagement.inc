@@ -1225,8 +1225,8 @@ class systemManagement extends management
       'plDescription' => _('Systems Management'),
       'plIcon'        => 'geticon.php?context=devices&icon=computer&size=48',
       'plSelfModify'  => FALSE,
-      'plPriority'    => 20,
-      'plSection'     => 'admin',
+      'plSection'     => array('systems' => array('name' => _('Systems'), 'priority' => 10)),
+      'plPriority'    => 0,
       'plCategory'    => array('terminal','workstation','server','phone','printer','component','winstation'),
       'plManages'     => array('terminal','workstation','server','phone','printer','component','winstation'),
 

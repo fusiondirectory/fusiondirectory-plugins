@@ -31,8 +31,8 @@ class autofsManagement extends simpleManagement
       'plShortName'   => _('Auto fs'),
       'plDescription' => _('Auto fs management'),
       'plIcon'        => 'plugins/autofs/images/icon.png',
-      'plPriority'    => 24,
-      'plSection'     => 'admin',
+      'plSection'     => 'systems',
+      'plPriority'    => 5,
       'plManages'     => array('nisMap', 'nisObject'),
 
       'plProvidedAcls' => array()

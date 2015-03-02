@@ -37,8 +37,8 @@ class opsiImport extends systemImport
       'plIcon'        => 'plugins/opsi/images/icon.png',
       'plSelfModify'  => FALSE,
       'plObjectType'  => array('opsiImport' => array('name' => _('OPSI import'), 'filter' => '')),
-      'plSection'     => 'addons',
-      'plPriority'    => 6,
+      'plSection'     => 'conf',
+      'plPriority'    => 15,
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );

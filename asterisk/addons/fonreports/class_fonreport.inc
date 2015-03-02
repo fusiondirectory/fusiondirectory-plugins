@@ -419,8 +419,8 @@ class fonreport extends plugin
       "plDescription" => _("Phone reports")."&nbsp;<i>"._("All entries are readonly")."</i>",
       "plIcon"        => "plugins/asterisk/images/iconReport.png",
       "plSelfModify"  => TRUE,
-      "plSection"     => "addons",
-      "plPriority"    => 5,
+      "plSection"     => "reporting",
+      "plPriority"    => 10,
       "plCategory"    => array("fonreport" => array( "description" => _("Phone reports"),
                                                       "objectClass" => "None")),
 

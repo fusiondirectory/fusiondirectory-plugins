@@ -36,8 +36,8 @@ class goFonMacro extends management
       "plShortName"   => _("Phone Macros"),
       "plDescription" => _("Phone Macros management"),
       "plIcon"        => "plugins/asterisk/images/iconMacros.png",
-      "plSection"     => "admin",
-      "plPriority"    => 11,
+      "plSection"     => "systems",
+      "plPriority"    => 7,
       "plCategory"    => array("gofonmacro"),
 
       "plProvidedAcls" => array()
