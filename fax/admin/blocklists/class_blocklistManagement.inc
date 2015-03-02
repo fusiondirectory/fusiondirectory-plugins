@@ -28,8 +28,8 @@ class blocklist extends simpleManagement
       'plShortName'   => _('Fax Blocklists'),
       'plDescription' => _('Fax Blocklists management'),
       'plIcon'        => 'plugins/fax/images/iconBlocklists.png',
-      'plSection'     => 'admin',
-      'plPriority'    => 12,
+      'plSection'     => 'systems',
+      'plPriority'    => 8,
       'plManages'     => array('faxBlock'),
 
       'plProvidedAcls' => array()

@@ -32,8 +32,8 @@ class debconfProfileManagement extends simpleManagement
       'plShortName'   => _('Debconf'),
       'plDescription' => _('Debconf profile management'),
       'plIcon'        => 'plugins/debconf/images/icon.png',
-      'plPriority'    => 31,
-      'plSection'     => 'admin',
+      'plSection'     => 'systems',
+      'plPriority'    => 21,
       'plManages'     => array('debconfProfile'),
 
       'plProvidedAcls' => array()

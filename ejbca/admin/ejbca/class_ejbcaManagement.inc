@@ -32,7 +32,8 @@ class ejbcaManagement extends simpleManagement
       'plShortName'   => _('EJBCA'),
       'plDescription' => _('EJBCA certificates management'),
       'plIcon'        => 'geticon.php?context=applications&icon=ejbca&size=48',
-      'plSection'     => 'admin',
+      'plSection'     => 'accounts',
+      'plPriority'    => 50,
       'plManages'     => array('ejbcaCertificate'),
 
       'plProvidedAcls' => array()

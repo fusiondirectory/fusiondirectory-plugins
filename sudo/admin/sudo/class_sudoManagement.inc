@@ -32,8 +32,8 @@ class sudoManagement extends simpleManagement
       "plShortName"   => _("Sudo"),
       "plDescription" => _("Sudo management"),
       "plIcon"        => "plugins/sudo/images/icon.png",
-      "plSection"     => "admin",
-      "plPriority"    => 5,
+      "plSection"     => "accounts",
+      "plPriority"    => 45,
       "plManages"     => array("sudo"),
 
       "plProvidedAcls" => array()

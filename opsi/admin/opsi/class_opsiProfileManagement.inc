@@ -33,8 +33,8 @@ class opsiManagement extends simpleManagement
       'plShortName'   => _('OPSI'),
       'plDescription' => _('OPSI profile management'),
       'plIcon'        => 'plugins/opsi/images/icon.png',
-      'plPriority'    => 32,
-      'plSection'     => 'admin',
+      'plSection'     => 'systems',
+      'plPriority'    => 25,
       'plManages'     => array('opsiProfile', 'opsiSoftwareList'),
 
       'plProvidedAcls' => array()

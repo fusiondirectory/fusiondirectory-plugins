@@ -28,7 +28,8 @@ class ppolicyManagement extends simpleManagement
       'plShortName'   => _('Password policies'),
       'plDescription' => _('Password policies management'),
       'plIcon'        => 'geticon.php?context=applications&icon=ppolicy&size=48',
-      'plSection'     => 'admin',
+      'plSection'     => 'accounts',
+      'plPriority'    => 57,
       'plManages'     => array('ppolicy'),
 
       'plProvidedAcls' => array()

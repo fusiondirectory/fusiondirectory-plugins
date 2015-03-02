@@ -28,8 +28,8 @@ class applicationManagement extends simpleManagement
       'plShortName'   => _('Applications'),
       'plDescription' => _('Application management'),
       'plIcon'        => 'geticon.php?context=categories&icon=applications-other&size=48',
-      'plSection'     => 'admin',
-      'plPriority'    => 21,
+      'plSection'     => 'accounts',
+      'plPriority'    => 60,
       'plManages'     => array('application', 'webApplication'),
 
       'plMenuProvider'  => TRUE,

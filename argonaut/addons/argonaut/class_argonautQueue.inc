@@ -40,8 +40,8 @@ class argonautQueue extends management
       'plDescription' => _('Provide a mechanism to automatically activate systems'),
       'plIcon'        => 'plugins/argonaut/images/icon.png',
       'plSelfModify'  => FALSE,
-      'plSection'     => 'admin',
-      'plPriority'    => 33,
+      'plSection'     => 'systems',
+      'plPriority'    => 30,
       'plCategory'    => array('argonautQueue' => array('objectClass' => 'none', 'description' => _('Deployment queue'))),
 
       'plProvidedAcls' => array('Comment' => _('Description'))

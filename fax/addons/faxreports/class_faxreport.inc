@@ -483,8 +483,8 @@ class faxreport extends plugin
       "plDescription"   => _("Fax reports")."&nbsp;<i>"._("All entries are readonly")."</i>",
       "plIcon"          => "plugins/fax/images/iconReport.png",
       "plSelfModify"    => TRUE,
-      "plSection"       => "addons",
-      "plPriority"      => 5,
+      "plSection"       => "reporting",
+      "plPriority"      => 11,
       "plCategory"      => array("faxreport" => array("description" => _("Fax reports"),
                                                      "objectClass" => array())),
 

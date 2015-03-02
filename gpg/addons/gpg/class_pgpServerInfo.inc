@@ -68,7 +68,8 @@ class pgpServerInfo extends simplePlugin
     return array(
       'plShortName'   => _('GPG server info'),
       'plDescription' => _('GPG server info'),
-      'plSection'     => 'addons',
+      'plSection'     => 'conf',
+      'plPriority'    => 5,
       'plIcon'        => 'plugins/gpg/images/icon.png',
       'plCategory'    => array('configuration'),
 

@@ -34,7 +34,7 @@ class netgroupManagement extends simpleManagement
       'plShortName'   => _('NIS Netgroups'),
       'plDescription' => _('NIS Netgroup management'),
       'plIcon'        => 'plugins/netgroups/images/icon.png',
-      'plSection'     => 'admin',
+      'plSection'     => 'accounts',
       'plPriority'    => 25,
       'plManages'     => array('netgroup'),
 
