@@ -31,16 +31,6 @@
       <export>true</export>
     </column>
 
-<!--
-    <column>
-      <label>Name</label>
-      <sortAttribute>cn</sortAttribute>
-      <sortType>string</sortType>
-      <value>%{filter:link(row,dn_target,"%s (%s)",cn,MACADDRESS)}</value>
-      <export>true</export>
-    </column>
--->
-
     <column>
       <label>Task</label>
       <sortAttribute>givenName</sortAttribute>
@@ -81,16 +71,6 @@
   </table>
 
   <actionmenu>
-
-    <action>
-     <type>sub</type>
-     <image>geticon.php?context=actions&amp;icon=document-new&amp;size=16</image>
-     <label>Create</label>
-    </action>
-
-    <action>
-      <type>separator</type>
-    </action>
 
     <action>
      <name>import</name>
@@ -147,16 +127,6 @@
       <image>plugins/systems/images/view_logs.png</image>
       <label>View logs</label>
     </action>
-
-<!--
-    <action>
-      <name>edit</name>
-      <type>entry</type>
-      <objectclass>FAKE_OC__edit</objectclass>
-      <image>geticon.php?context=actions&amp;icon=document-edit&amp;size=16</image>
-      <label>Edit</label>
-    </action>
--->
 
     <action>
       <name>remove</name>
