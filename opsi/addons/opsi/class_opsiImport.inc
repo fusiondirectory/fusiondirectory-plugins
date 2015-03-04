@@ -36,7 +36,7 @@ class opsiImport extends systemImport
       'plDescription' => _('Import windows stations from OPSI into FD'),
       'plIcon'        => 'plugins/opsi/images/icon.png',
       'plSelfModify'  => FALSE,
-      'plObjectType'  => array('opsiImport' => array('name' => _('OPSI import'), 'filter' => '')),
+      'plObjectType'  => array('opsiImport' => array('name' => _('OPSI import'))),
       'plSection'     => 'conf',
       'plPriority'    => 15,
 
