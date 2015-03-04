@@ -127,8 +127,9 @@ class ldapmanager extends simplePlugin
 
   function handle_single_submit()
   {
-    $dn     = $this->single_export;
-    $acl    = $this->attributesAccess['single_export']->getAcl();
+    $ldap = $this->config->get_ldap_link();
+    $dn   = $this->single_export;
+    $acl  = $this->attributesAccess['single_export']->getAcl();
     if (!$ldap->dn_exists($dn)) {
       msg_dialog::display(_('LDAP error'),
           sprintf(_('No such object %s!'), LDAP::fix($dn)),
