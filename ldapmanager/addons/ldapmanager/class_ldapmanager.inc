@@ -136,7 +136,8 @@ class ldapmanager extends simplePlugin
 
   function save_export()
   {
-    $dn = '';
+    $ldap = $this->config->get_ldap_link();
+    $dn   = '';
     if (isset($_POST['single_submit'])) {
       $dn     = $this->single_export;
       $acl    = $this->attributesAccess['single_export']->getAcl();
@@ -162,7 +163,6 @@ class ldapmanager extends simplePlugin
             sprintf(_('You have no permission to export %s!'), bold(LDAP::fix($dn))),
             ERROR_DIALOG);
       } else {
-        $ldap = $this->config->get_ldap_link();
         $data = $ldap->generateLdif(LDAP::fix($dn), $this->export_filter, $scope);
         if ($data === NULL) {
           msg_dialog::display(_('Error'),
