@@ -207,8 +207,9 @@ class serviceDHCP extends goService
         } else {
           if ($dn != $data['dn']) {
             /* Old object, new name */
-            $this->dhcpObjectCache[$dn]= array();
-            $this->dhcpObjectCache[$data['dn']]= $data;
+            unset($this->dhcpSections[$dn]);
+            $this->dhcpObjectCache[$dn]         = array();
+            $this->dhcpObjectCache[$data['dn']] = $data;
 
             /* If we renamed a section, we've to rename a couple of objects, too */
             foreach ($this->dhcpObjectCache as $key => $dsc) {
@@ -348,7 +349,9 @@ class serviceDHCP extends goService
 
     $tmp = new dhcpNewSectionDialog(NULL);
     foreach ($this->dhcpSections as $section => $values) {
-
+      if (empty($this->dhcpObjectCache[$section])) {
+        continue;
+      }
       // Ensure that we've a valid id for this section.
       if (!in_array($section,$this->dhcpDNtoID)) {
         $this->dhcpDNtoID[] = $section;
@@ -720,7 +723,6 @@ class serviceDHCP extends goService
     $final  = array();
 
     foreach ($list as $value) {
-
       /* Set header */
       $sortpart = explode(",", $value['dn']);
       $sortpart = array_reverse($sortpart);
