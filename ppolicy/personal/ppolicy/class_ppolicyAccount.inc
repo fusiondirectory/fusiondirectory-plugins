@@ -87,16 +87,6 @@ class ppolicyAccount extends simplePlugin
 
     parent::__construct($config, $dn, $parent, $attributesInfo);
 
-    if ($this->dn != 'new') {
-      $ldap = $this->config->get_ldap_link();
-      $ldap->cat($this->dn, $this->attributes);
-      $attrs = $ldap->fetch();
-      foreach ($this->attributesAccess as &$attribute) {
-        $attribute->loadValue($attrs);
-      }
-      unset($attribute);
-    }
-
     if ($this->pwdChangedTime == '') {
       $this->pwdChangedTime = _('Never');
     } else {
@@ -109,6 +99,18 @@ class ppolicyAccount extends simplePlugin
     }
 
     $this->pwdReset = '';
+  }
+
+  protected function loadAttributes()
+  {
+    if ($this->dn != 'new') {
+      $ldap = $this->config->get_ldap_link();
+      $this->updateAttributesValues();
+      $ldap->cat($this->dn, $this->attributes);
+      $attrs = $ldap->fetch();
+      $this->attrs = array_merge($this->attrs, $attrs);
+    }
+    parent::loadAttributes();
   }
 
   protected function prepare_save ()
