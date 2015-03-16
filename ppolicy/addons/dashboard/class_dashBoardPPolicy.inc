@@ -39,6 +39,11 @@ class dashboardPpolicy extends simplePlugin
         'attrs' => array(new FakeAttribute('expired')),
         'template' => get_template_path('users_accounts.tpl', TRUE, dirname(__FILE__)),
       ),
+      'locked_accounts' => array(
+        'name'  => _('Locked accounts'),
+        'attrs' => array(new FakeAttribute('locked')),
+        'template' => get_template_path('ppolicy_locked_accounts.tpl', TRUE, dirname(__FILE__)),
+      ),
     );
   }
 
@@ -46,38 +51,104 @@ class dashboardPpolicy extends simplePlugin
   {
     parent::__construct($config, $dn, $object);
 
-    $this->expired  = $this->expired_accounts_info();
+    $this->compute_accounts_info();
   }
 
-  function expired_accounts_info ()
+  function compute_accounts_info ()
   {
-    /* getting the date in TIMESTAMP UNIX format */
-    $today        = floor(time() / 86400); // 24 * 60 * 60
+    $ldap = $this->config->get_ldap_link();
 
-    /* Fetch global value from fusiondirectory.conf */
-    $next_expired_days = $this->config->get_cfg_value('dashboardExpiredAccountsDays', 15);
-    $next_expired_date = ($today + $next_expired_days);
-
-    /* search all locked accounts */
-    $locked_users = objects::ls('user', array(
-      'uid'                   => 'raw',
-      'cn'                    => 'raw',
-      'mail'                  => 'raw',
-      'telephoneNumber'       => 'raw',
-      'manager'               => 'raw',
-      'pwdAccountLockedTime'  => 'raw',
-    ), NULL, '(pwdAccountLockedTime=*)');
-
-    foreach ($locked_users as &$user) {
-      $user = dashboardUsers::get_user_infos($user);
+    $defaultMaxAge = NULL;
+    $ppolicydn = $this->config->get_cfg_value('ppolicyDefaultCn', '');
+    if (!empty($ppolicydn)) {
+      $ppolicydn = 'cn='.$ppolicydn.','.get_ou('ppolicyRDN').$this->config->current['BASE'];
+      $ldap->cat($ppolicydn, array('pwdMaxAge'));
+      $policy = $ldap->fetch();
+      if (!$policy) {
+        msg_dialog::display(
+          _('Configuration error'),
+          sprintf(_('Default ppolicy "%s" could not be found in the LDAP!'), $ppolicydn),
+          ERROR_DIALOG
+        );
+      } elseif (isset($policy['pwdMinAge'][0])) {
+        $defaultMaxAge = $policy['pwdMinAge'][0];
+      }
     }
-    unset($user);
 
-    return array(
-      'accounts'            => $locked_users,
-      'accounts_next_days'  => array(),
+    /* Fetch global value from configuration */
+    $next_expired_days  = $this->config->get_cfg_value('dashboardExpiredAccountsDays', 15);
+    $now                = new DateTime('now');
+
+    /* search all expired accounts */
+    $ldap->cd($this->config->current['BASE']);
+    $ldap->search('(&(|(objectClass=posixAccount)(objectClass=sambaSamAccount))(shadowExpire=*))',
+                  array('uid','shadowExpire','mail','telephoneNumber','cn','manager'));
+    $users = objects::ls('user', array(
+        'dn'                    => 'raw',
+        'uid'                   => 'raw',
+        'cn'                    => 'raw',
+        'mail'                  => 'raw',
+        'telephoneNumber'       => 'raw',
+        'manager'               => 'raw',
+        'pwdChangedTime'        => 1,
+        'pwdPolicySubentry'     => 1,
+        'pwdAccountLockedTime'  => 1,
+      ), NULL, '(|(pwdAccountLockedTime=*)(pwdChangedTime=*))');
+    $locked_users           = array();
+    $expired_accounts       = array();
+    $next_expired_accounts  = array();
+    $maxAges = array(); // ppolicies cache
+    foreach ($users as $user) {
+      if (isset($user['pwdAccountLockedTime'])) {
+        $locked_user                          = dashboardUsers::get_user_infos($user);
+        $lockedTime                           = DateTime::createFromFormat('YmdHis\Z', $user['pwdAccountLockedTime'], new DateTimeZone('UTC'));
+        $locked_user['pwdAccountLockedTime']  = $lockedTime->format('Y-m-d H:i:s e');
+        $locked_users[]                       = $locked_user;
+      }
+      if (!isset($user['pwdChangedTime'])) {
+        continue;
+      }
+      $maxAge = NULL;
+      if (isset($user['pwdPolicySubentry'])) {
+        if (isset($maxAges[$user['pwdPolicySubentry']])) {
+          $maxAge = $maxAges[$user['pwdPolicySubentry']];
+        } else {
+          $ldap->cat($user['pwdPolicySubentry'], array('pwdMaxAge'));
+          $policy = $ldap->fetch();
+          if (!$policy) {
+            msg_dialog::display(
+              _('Configuration error'),
+              sprintf(_('Ppolicy "%s" set for user "%s" could not be found in the LDAP!'), $ppolicydn, $user['dn']),
+              ERROR_DIALOG
+            );
+            continue;
+          }
+          if (isset($policy['pwdMinAge'][0])) {
+            $maxAge = $policy['pwdMinAge'][0];
+          }
+          $maxAges[$user['pwdPolicySubentry']] = $maxAge;
+        }
+      } elseif ($defaultMaxAge !== NULL) {
+        $maxAge = $defaultMaxAge;
+      }
+      if (($maxAge === NULL) || ($maxAge <= 0)) {
+        /* No max age, it can’t be expired */
+        continue;
+      }
+      $lastChange = DateTime::createFromFormat('YmdHis\Z', $user['pwdChangedTime'], new DateTimeZone('UTC'));
+      if (($lastChange->getTimeStamp() + $maxAge) < $now->getTimeStamp()) {
+        $expired_accounts[] = dashboardUsers::get_user_infos($user);
+      } elseif (($lastChange->getTimeStamp() + $maxAge + $next_expired_days) < $now->getTimeStamp()) {
+        $next_expired_accounts[] = dashboardUsers::get_user_infos($user);
+      }
+    }
+
+    $this->expired = array(
+      'accounts'            => $expired_accounts,
+      'accounts_next_days'  => $next_expired_accounts,
       'next_days'           => $next_expired_days,
     );
+    $this->locked = $locked_users;
   }
 }
 ?>
