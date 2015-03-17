@@ -122,5 +122,11 @@ class ppolicyAccount extends simplePlugin
       unset($this->attrs['pwdAccountLockedTime']);
     }
   }
+
+  function remove_from_parent()
+  {
+    /* ppolicy fields are not real fields, they can’t be removed though ldap_modify
+     * It’s not possible to remove ppolicy info from a user node anyway */
+  }
 }
 ?>
