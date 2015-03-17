@@ -70,8 +70,8 @@ class dashboardPpolicy extends simplePlugin
           sprintf(_('Default ppolicy "%s" could not be found in the LDAP!'), $ppolicydn),
           ERROR_DIALOG
         );
-      } elseif (isset($policy['pwdMinAge'][0])) {
-        $defaultMaxAge = $policy['pwdMinAge'][0];
+      } elseif (isset($policy['pwdMaxAge'][0])) {
+        $defaultMaxAge = $policy['pwdMaxAge'][0];
       }
     }
 
@@ -123,8 +123,8 @@ class dashboardPpolicy extends simplePlugin
             );
             continue;
           }
-          if (isset($policy['pwdMinAge'][0])) {
-            $maxAge = $policy['pwdMinAge'][0];
+          if (isset($policy['pwdMaxAge'][0])) {
+            $maxAge = $policy['pwdMaxAge'][0];
           }
           $maxAges[$user['pwdPolicySubentry']] = $maxAge;
         }
