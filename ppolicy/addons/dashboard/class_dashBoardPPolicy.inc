@@ -77,6 +77,8 @@ class dashboardPpolicy extends simplePlugin
 
     /* Fetch global value from configuration */
     $next_expired_days  = $this->config->get_cfg_value('dashboardExpiredAccountsDays', 15);
+    /* Convert it to seconds */
+    $next_expired_days_seconds = $next_expired_days * 24 * 60 * 60;
     /* Ppolicy stores all dates in UTC */
     $now = new DateTime('now', timezone::utc());
 
@@ -140,7 +142,7 @@ class dashboardPpolicy extends simplePlugin
       $lastChange = DateTime::createFromFormat('YmdHis\Z', $user['pwdChangedTime'], timezone::utc());
       if (($lastChange->getTimeStamp() + $maxAge) < $now->getTimeStamp()) {
         $expired_accounts[] = dashboardUsers::get_user_infos($user);
-      } elseif (($lastChange->getTimeStamp() + $maxAge + $next_expired_days) < $now->getTimeStamp()) {
+      } elseif (($lastChange->getTimeStamp() + $maxAge + $next_expired_days_seconds) < $now->getTimeStamp()) {
         $next_expired_accounts[] = dashboardUsers::get_user_infos($user);
       }
     }
