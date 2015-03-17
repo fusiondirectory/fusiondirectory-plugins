@@ -102,7 +102,7 @@ class ppolicyAccount extends simplePlugin
     } else {
       $date = DateTime::createFromFormat('YmdHis\Z', $this->pwdChangedTime, new DateTimeZone('UTC'));
       $date->setTimezone(timezone::getDefaultTimeZone());
-      $this->pwdChangedTime = $date->format('r');
+      $this->pwdChangedTime = $date->format('Y-m-d H:i:s');
     }
     if ($this->pwdAccountLockedTime == '') {
       $this->pwdAccountLockedTime = _('Unlocked');
