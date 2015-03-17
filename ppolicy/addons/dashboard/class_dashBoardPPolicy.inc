@@ -148,7 +148,9 @@ class dashboardPpolicy extends simplePlugin
       'accounts_next_days'  => $next_expired_accounts,
       'next_days'           => $next_expired_days,
     );
-    $this->locked = $locked_users;
+    $this->locked = array(
+      'accounts'  => $locked_users,
+    );
   }
 }
 ?>
