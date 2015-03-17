@@ -105,7 +105,7 @@ class dashboardPpolicy extends simplePlugin
       if (isset($user['pwdAccountLockedTime'])) {
         $locked_user  = dashboardUsers::get_user_infos($user);
         $lockedTime   = DateTime::createFromFormat('YmdHis\Z', $user['pwdAccountLockedTime'], timezone::utc());
-        $lockedTime->setTimezone(timezone::getDefaultTimeZone()));
+        $lockedTime->setTimezone(timezone::getDefaultTimeZone());
         $locked_user['pwdAccountLockedTime']  = $lockedTime->format('Y-m-d H:i:s e');
         $locked_users[]                       = $locked_user;
       }
