@@ -77,7 +77,8 @@ class dashboardPpolicy extends simplePlugin
 
     /* Fetch global value from configuration */
     $next_expired_days  = $this->config->get_cfg_value('dashboardExpiredAccountsDays', 15);
-    $now                = new DateTime('now');
+    /* Ppolicy stores all dates in UTC */
+    $now = new DateTime('now', timezone::utc());
 
     /* search all expired accounts */
     $ldap->cd($this->config->current['BASE']);
@@ -100,8 +101,9 @@ class dashboardPpolicy extends simplePlugin
     $maxAges = array(); // ppolicies cache
     foreach ($users as $user) {
       if (isset($user['pwdAccountLockedTime'])) {
-        $locked_user                          = dashboardUsers::get_user_infos($user);
-        $lockedTime                           = DateTime::createFromFormat('YmdHis\Z', $user['pwdAccountLockedTime'], new DateTimeZone('UTC'));
+        $locked_user  = dashboardUsers::get_user_infos($user);
+        $lockedTime   = DateTime::createFromFormat('YmdHis\Z', $user['pwdAccountLockedTime'], timezone::utc());
+        $lockedTime->setTimezone(timezone::getDefaultTimeZone()));
         $locked_user['pwdAccountLockedTime']  = $lockedTime->format('Y-m-d H:i:s e');
         $locked_users[]                       = $locked_user;
       }
@@ -135,7 +137,7 @@ class dashboardPpolicy extends simplePlugin
         /* No max age, it can’t be expired */
         continue;
       }
-      $lastChange = DateTime::createFromFormat('YmdHis\Z', $user['pwdChangedTime'], new DateTimeZone('UTC'));
+      $lastChange = DateTime::createFromFormat('YmdHis\Z', $user['pwdChangedTime'], timezone::utc());
       if (($lastChange->getTimeStamp() + $maxAge) < $now->getTimeStamp()) {
         $expired_accounts[] = dashboardUsers::get_user_infos($user);
       } elseif (($lastChange->getTimeStamp() + $maxAge + $next_expired_days) < $now->getTimeStamp()) {
