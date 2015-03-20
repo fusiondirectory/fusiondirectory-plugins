@@ -19,17 +19,17 @@ msgstr ""
 
 #: admin/ppolicy/class_ppolicyManagement.inc:28
 msgid "Password policies"
-msgstr ""
+msgstr "Politiques de mot de passe"
 
 #: admin/ppolicy/class_ppolicyManagement.inc:29
 msgid "Password policies management"
-msgstr ""
+msgstr "Gestion des politiques de mot de passe"
 
 #: admin/ppolicy/class_ppolicy.inc:31 admin/ppolicy/class_ppolicy.inc:34
 #: personal/ppolicy/class_ppolicyAccount.inc:37
 #: personal/ppolicy/class_ppolicyAccount.inc:52
 msgid "Password policy"
-msgstr ""
+msgstr "Politique de mot de passe"
 
 #: admin/ppolicy/class_ppolicy.inc:32
 msgid "Password policy for ppolicy overlay"
@@ -38,21 +38,21 @@ msgstr ""
 #: admin/ppolicy/class_ppolicy.inc:50
 #: personal/ppolicy/class_ppolicyAccount.inc:55
 msgid "Policy"
-msgstr ""
+msgstr "Politique"
 
 #: admin/ppolicy/class_ppolicy.inc:55
 msgid "Policy name"
-msgstr ""
+msgstr "Nom de la politique de mot de passe"
 
 #: admin/ppolicy/class_ppolicy.inc:59
 msgid "Minimum length"
-msgstr ""
+msgstr "Longueur minimale"
 
 #: admin/ppolicy/class_ppolicy.inc:59
 msgid ""
 "Minimum length of the user supplied password - passwords shorter than this "
 "value will be rejected"
-msgstr ""
+msgstr "Longueur minimale du mot de passe fourni par l'utilisateur - les mots de passe plus courts que cette valeur seront rejetées"
 
 #: admin/ppolicy/class_ppolicy.inc:64
 msgid "Passwords in history"
@@ -62,7 +62,7 @@ msgstr ""
 msgid ""
 "Number of passwords that are maintained in a list of previously used "
 "passwords"
-msgstr ""
+msgstr "Nombre de mots de passe qui sont maintenues dans une liste de mots de passe utilisés antérieurement"
 
 #: admin/ppolicy/class_ppolicy.inc:69
 msgid "Minimum password age"
@@ -70,7 +70,7 @@ msgstr "Age minimum du mot de passe"
 
 #: admin/ppolicy/class_ppolicy.inc:69
 msgid "Minimum time between password changes"
-msgstr ""
+msgstr "Délai minimum entre les changements de mot de passe"
 
 #: admin/ppolicy/class_ppolicy.inc:74
 msgid "Maximum password age"
@@ -81,7 +81,7 @@ msgid ""
 "Maximum time a password is valid, after which it is deemed to be no longer "
 "usable and any bind operations attempted with the expired password will be "
 "treated as invalid"
-msgstr ""
+msgstr "Temps maximum un mot de passe est valide, après quoi il est réputé ne plus être utilisable et toutes les opérations de connexion tenté avec le mot de passe expiré seront traités comme non valides"
 
 #: admin/ppolicy/class_ppolicy.inc:79
 msgid "Expire warning delay"
@@ -95,13 +95,13 @@ msgstr ""
 
 #: admin/ppolicy/class_ppolicy.inc:84
 msgid "Grace period"
-msgstr ""
+msgstr "Période de grâce "
 
 #: admin/ppolicy/class_ppolicy.inc:84
 msgid ""
 "Number of times a user is allowed to successfully bind using an expired "
 "password"
-msgstr ""
+msgstr "Nombre de fois qu'un utilisateur est autorisé à se lier avec succès en utilisant un mot de passe expiré"
 
 #: admin/ppolicy/class_ppolicy.inc:89
 msgid "Allow user change"
@@ -109,7 +109,7 @@ msgstr ""
 
 #: admin/ppolicy/class_ppolicy.inc:89
 msgid "Whether users are allowed to change their own passwords"
-msgstr ""
+msgstr "Si les utilisateurs sont autorisés à changer leur mot de passe"
 
 #: admin/ppolicy/class_ppolicy.inc:94
 msgid "Safe modify"
@@ -119,15 +119,15 @@ msgstr ""
 msgid ""
 "Whether a user must send the current password during a password modification"
 " operation"
-msgstr ""
+msgstr "Si un utilisateur doit envoyer le mot de passe actuel pendant une opération de modification de mot de passe"
 
 #: admin/ppolicy/class_ppolicy.inc:108
 msgid "Lock out"
-msgstr ""
+msgstr "verrouiller"
 
 #: admin/ppolicy/class_ppolicy.inc:112
 msgid "Activate lock out"
-msgstr ""
+msgstr "Activer le verrouillage"
 
 #: admin/ppolicy/class_ppolicy.inc:112
 msgid ""
@@ -137,22 +137,22 @@ msgstr ""
 
 #: admin/ppolicy/class_ppolicy.inc:117
 msgid "Lock out duration"
-msgstr ""
+msgstr "La durée de verrouillage "
 
 #: admin/ppolicy/class_ppolicy.inc:117
 msgid ""
 "Time the account remains locked after an automatic lock out (0 means for "
 "ever)"
-msgstr ""
+msgstr "Temps que le compte reste bloqué après un verrouillage automatique sur (0 signifie pour toujours)"
 
 #: admin/ppolicy/class_ppolicy.inc:122
 msgid "Maximum failures"
-msgstr ""
+msgstr "Nombre d'échec maximal"
 
 #: admin/ppolicy/class_ppolicy.inc:122
 msgid ""
 "Number of consecutive password failures allowed before automatic lock out"
-msgstr ""
+msgstr "Nombre d'échecs de mot de passe consécutifs autorisé avant à verrouillage automatique"
 
 #: admin/ppolicy/class_ppolicy.inc:127
 msgid "Failure count interval"
@@ -162,11 +162,11 @@ msgstr ""
 msgid ""
 "Time after which the count of consecutive password failures is reset even if"
 " no successful authentication has occurred"
-msgstr ""
+msgstr "Temps au bout duquel le nombre d'échecs de mot de passe consécutifs est réinitialisé même si aucune authentification réussie a eu lieu"
 
 #: admin/ppolicy/class_ppolicy.inc:132
 msgid "Must change"
-msgstr ""
+msgstr "Doit changer"
 
 #: admin/ppolicy/class_ppolicy.inc:132
 msgid ""
@@ -176,19 +176,19 @@ msgstr ""
 
 #: personal/ppolicy/class_ppolicyAccount.inc:38
 msgid "Edit user's password policy"
-msgstr ""
+msgstr "Éditer la politique de mot de passe de l'utilisateur"
 
 #: personal/ppolicy/class_ppolicyAccount.inc:55
 msgid "Use a specific policy for this user"
-msgstr ""
+msgstr "Utiliser une politique spécifique pour cet utilisateur"
 
 #: personal/ppolicy/class_ppolicyAccount.inc:59
 msgid "Last password change"
-msgstr ""
+msgstr "Dernier changement de mot de passe"
 
 #: personal/ppolicy/class_ppolicyAccount.inc:59
 msgid "Last time the password for the entry was changed"
-msgstr ""
+msgstr "La dernière fois que le mot de passe pour l'entrée a été changé"
 
 #: personal/ppolicy/class_ppolicyAccount.inc:63
 msgid "Account locked time"
@@ -200,39 +200,39 @@ msgstr ""
 
 #: personal/ppolicy/class_ppolicyAccount.inc:67
 msgid "Reset locking"
-msgstr ""
+msgstr "Réinitialiser le verrouillage"
 
 #: personal/ppolicy/class_ppolicyAccount.inc:67
 msgid "Resets the lock status of this account"
-msgstr ""
+msgstr "Réinitialise l'état de verrouillage de ce compte"
 
 #: personal/ppolicy/class_ppolicyAccount.inc:70
 msgid "Reset with the same password"
-msgstr ""
+msgstr "Réinitialiser avec le même mot de passe"
 
 #: personal/ppolicy/class_ppolicyAccount.inc:70
 msgid "Reset and force change"
-msgstr ""
+msgstr "Réinitialiser et forcer le changement"
 
 #: personal/ppolicy/class_ppolicyAccount.inc:85
 msgid "Use the default"
-msgstr ""
+msgstr "Utiliser les réglages par défaut"
 
 #: personal/ppolicy/class_ppolicyAccount.inc:102
 msgid "Never"
-msgstr ""
+msgstr "Jamais"
 
 #: personal/ppolicy/class_ppolicyAccount.inc:109
 msgid "Unlocked"
-msgstr ""
+msgstr "Déverrouille "
 
 #: config/ppolicy/class_ppolicyConfig.inc:28
 msgid "Ppolicy plugin configuration"
-msgstr ""
+msgstr "Configuration de l'extension Ppolicy"
 
 #: config/ppolicy/class_ppolicyConfig.inc:29
 msgid "FusionDirectory ppolicy plugin configuration"
-msgstr ""
+msgstr "Configuration du plugin Ppolicy"
 
 #: config/ppolicy/class_ppolicyConfig.inc:42
 msgid "Ppolicy plugin"
@@ -240,15 +240,15 @@ msgstr ""
 
 #: config/ppolicy/class_ppolicyConfig.inc:45
 msgid "Ppolicy RDN"
-msgstr ""
+msgstr "Ppolicy RDN"
 
 #: config/ppolicy/class_ppolicyConfig.inc:45
 msgid "Branch in which ppolicies will be stored"
-msgstr ""
+msgstr "Branche dans laquelle les politiques de mot de passe seront stockées"
 
 #: config/ppolicy/class_ppolicyConfig.inc:50
 msgid "Default ppolicy cn"
-msgstr ""
+msgstr "Cn de la politique par défaut"
 
 #: config/ppolicy/class_ppolicyConfig.inc:50
 msgid "What you put as default ppolicy in the overlay config"
