@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2015-02-25 16:38+0100\n"
-"PO-Revision-Date: 2015-02-25 16:12+0000\n"
+"POT-Creation-Date: 2015-03-19 21:45+0100\n"
+"PO-Revision-Date: 2015-03-12 07:51+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/FusionDirectory-108/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -48,7 +48,7 @@ msgstr "Скачать"
 #: admin/fai/class_faiScriptEntry.inc:197
 #: admin/fai/class_faiManagement.inc:768 admin/fai/class_faiManagement.inc:774
 #: admin/fai/class_faiPackage.inc:685
-#: admin/fai/class_faiPartitionTable.inc:775
+#: admin/fai/class_faiPartitionTable.inc:779
 #: admin/fai/class_faiDiskEntry.inc:702 admin/fai/class_faiDiskEntry.inc:705
 #: admin/fai/class_faiDiskEntry.inc:758
 #: admin/fai/class_faiTemplateEntry.inc:247
@@ -100,7 +100,7 @@ msgid "FAI script entry"
 msgstr ""
 
 #: admin/fai/class_faiScriptEntry.inc:198 admin/fai/class_faiPackage.inc:686
-#: admin/fai/class_faiPartitionTable.inc:776
+#: admin/fai/class_faiPartitionTable.inc:780
 #: admin/fai/class_faiDiskEntry.inc:759
 #: admin/fai/class_faiTemplateEntry.inc:313
 #: admin/fai/class_faiPartitionTableEntry.inc:456
@@ -194,7 +194,7 @@ msgstr ""
 
 #: admin/fai/class_faiManagement.inc:573 admin/fai/class_faiManagement.inc:596
 msgid "Configuration"
-msgstr ""
+msgstr "Настройки"
 
 #: admin/fai/class_faiManagement.inc:575 admin/fai/class_faiManagement.inc:598
 #: admin/fai/class_faiManagement.inc:619
@@ -206,7 +206,7 @@ msgid "Continue"
 msgstr "Продолжить"
 
 #: admin/fai/class_faiManagement.inc:926
-#: admin/fai/class_faiPartitionTable.inc:764
+#: admin/fai/class_faiPartitionTable.inc:768
 #: admin/fai/class_faiProfile.inc:318 admin/fai/class_askClassName.inc:99
 #: admin/fai/classSelect/class_classSelect.inc:58
 #: admin/fai/class_faiGroupHandle.inc:120
@@ -251,7 +251,7 @@ msgstr "Шаблоны"
 #: admin/fai/classSelect/selectClass-list.xml:15
 #: admin/systems/class_faiStartup.inc:177 config/fai/class_faiConfig.inc:41
 msgid "FAI"
-msgstr ""
+msgstr "FAI"
 
 #: admin/fai/class_faiManagement.inc:1040
 msgid "Manage FAI software packages and deployment recipes"
@@ -367,12 +367,12 @@ msgstr ""
 msgid "delete"
 msgstr ""
 
-#: admin/fai/class_faiPartitionTable.inc:765
 #: admin/fai/class_faiPartitionTable.inc:769
+#: admin/fai/class_faiPartitionTable.inc:773
 msgid "FAI partition table"
 msgstr ""
 
-#: admin/fai/class_faiPartitionTable.inc:775 admin/fai/class_faiHook.inc:531
+#: admin/fai/class_faiPartitionTable.inc:779 admin/fai/class_faiHook.inc:531
 #: admin/fai/class_faiVariable.inc:398
 msgid "Read only"
 msgstr "Только для чтения"
@@ -615,7 +615,7 @@ msgstr ""
 
 #: admin/fai/class_FAI.inc:1174
 msgid "Fatal error"
-msgstr ""
+msgstr "Фатальная ошибка"
 
 #: admin/fai/class_FAI.inc:1175
 #, php-format
@@ -706,7 +706,7 @@ msgstr ""
 #: admin/fai/packageSelect/selectPackage-list.xml:10
 #: admin/fai/classSelect/selectClass-list.xml:11
 msgid "Please select the desired entries"
-msgstr ""
+msgstr "Пожалуйста выберете нужные записи"
 
 #: admin/fai/packageSelect/selectPackage-list.xml:48
 msgid "Version"
@@ -756,7 +756,7 @@ msgstr ""
 
 #: admin/fai/class_faiProfile.inc:325
 msgid "Down"
-msgstr ""
+msgstr "Вниз"
 
 #: admin/fai/class_faiProfile.inc:410
 msgid "No class specified for this profile!"
@@ -1459,7 +1459,7 @@ msgstr ""
 
 #: admin/fai/remove.tpl.c:8 admin/fai/remove_branch.tpl.c:8
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr ""
+msgstr "Итак - если вы уверены - нажмите 'Удалить', чтобы продолжить или 'Отмена' чтобы прервать."
 
 #: admin/fai/faiHook.tpl.c:17
 msgid "List of hook scripts"
@@ -1674,7 +1674,7 @@ msgstr ""
 
 #: admin/fai/faiTemplateEdit.tpl.c:5
 msgid "Edit anyway"
-msgstr ""
+msgstr "Редактировать в любом случае"
 
 #: admin/fai/faiPartitionTable.tpl.c:14
 msgid "Use 'setup-storage' to partition the disk"

@@ -4,6 +4,7 @@
 # 
 # Translators:
 # Benoit Mortier <benoit.mortier@opensides.be>, 2005-2011
+# Benoit Mortier <benoit.mortier@opensides.be>, 2015
 # MCMic, 2014
 # fusiondirectory <contact@fusiondirectory.org>, 2013-2014
 # fusiondirectory <contact@fusiondirectory.org>, 2012
@@ -14,9 +15,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2015-02-25 16:38+0100\n"
-"PO-Revision-Date: 2015-02-25 16:12+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"POT-Creation-Date: 2015-03-19 21:45+0100\n"
+"PO-Revision-Date: 2015-03-20 08:24+0000\n"
+"Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory-108/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -54,7 +55,7 @@ msgstr "Téléchargement"
 #: admin/fai/class_faiScriptEntry.inc:197
 #: admin/fai/class_faiManagement.inc:768 admin/fai/class_faiManagement.inc:774
 #: admin/fai/class_faiPackage.inc:685
-#: admin/fai/class_faiPartitionTable.inc:775
+#: admin/fai/class_faiPartitionTable.inc:779
 #: admin/fai/class_faiDiskEntry.inc:702 admin/fai/class_faiDiskEntry.inc:705
 #: admin/fai/class_faiDiskEntry.inc:758
 #: admin/fai/class_faiTemplateEntry.inc:247
@@ -106,7 +107,7 @@ msgid "FAI script entry"
 msgstr "Script FAI"
 
 #: admin/fai/class_faiScriptEntry.inc:198 admin/fai/class_faiPackage.inc:686
-#: admin/fai/class_faiPartitionTable.inc:776
+#: admin/fai/class_faiPartitionTable.inc:780
 #: admin/fai/class_faiDiskEntry.inc:759
 #: admin/fai/class_faiTemplateEntry.inc:313
 #: admin/fai/class_faiPartitionTableEntry.inc:456
@@ -212,7 +213,7 @@ msgid "Continue"
 msgstr "Continuer"
 
 #: admin/fai/class_faiManagement.inc:926
-#: admin/fai/class_faiPartitionTable.inc:764
+#: admin/fai/class_faiPartitionTable.inc:768
 #: admin/fai/class_faiProfile.inc:318 admin/fai/class_askClassName.inc:99
 #: admin/fai/classSelect/class_classSelect.inc:58
 #: admin/fai/class_faiGroupHandle.inc:120
@@ -373,12 +374,12 @@ msgstr "éditer"
 msgid "delete"
 msgstr "supprimer"
 
-#: admin/fai/class_faiPartitionTable.inc:765
 #: admin/fai/class_faiPartitionTable.inc:769
+#: admin/fai/class_faiPartitionTable.inc:773
 msgid "FAI partition table"
 msgstr "Table des partitions FAI"
 
-#: admin/fai/class_faiPartitionTable.inc:775 admin/fai/class_faiHook.inc:531
+#: admin/fai/class_faiPartitionTable.inc:779 admin/fai/class_faiHook.inc:531
 #: admin/fai/class_faiVariable.inc:398
 msgid "Read only"
 msgstr "Lecture seule"
@@ -959,7 +960,7 @@ msgstr "btrfs"
 
 #: admin/fai/class_faiPartition.inc:224
 msgid "LVM/RAID"
-msgstr ""
+msgstr "LVM/RAID"
 
 #: admin/fai/class_faiPartition.inc:327
 msgid "spare"
@@ -1160,7 +1161,7 @@ msgstr "Service de dépôt parent"
 
 #: admin/systems/services/repository/class_serviceRepository.inc:40
 msgid "Release used on this repository"
-msgstr ""
+msgstr "Version utilisée sur ce dépôt"
 
 #: admin/systems/services/repository/class_serviceRepository.inc:47
 msgid "Sections"
@@ -1168,7 +1169,7 @@ msgstr "Sections"
 
 #: admin/systems/services/repository/class_serviceRepository.inc:47
 msgid "Sections available on this repository"
-msgstr ""
+msgstr "Sections disponibles sur ce dépôt"
 
 #: admin/systems/services/repository/class_serviceRepository.inc:52
 msgid "Mirror mode"
@@ -1201,7 +1202,7 @@ msgstr "Distribution"
 
 #: admin/systems/services/repository/class_serviceRepository.inc:72
 msgid "Which distribution is this repository for"
-msgstr ""
+msgstr "Pour quelle distribution est ce dépôt "
 
 #: admin/systems/services/repository/class_serviceRepository.inc:140
 msgid "Repositories"
@@ -1213,11 +1214,11 @@ msgstr "Dépots fournis par ce serveur"
 
 #: admin/systems/services/repository/class_serviceRepository.inc:160
 msgid "Package repository"
-msgstr ""
+msgstr "Dépôt  de paquets"
 
 #: admin/systems/services/repository/class_serviceRepository.inc:161
 msgid "Package repository information"
-msgstr ""
+msgstr "Information sur le dépôt de paquets"
 
 #: config/fai/class_faiConfig.inc:28
 msgid "FAI configuration"

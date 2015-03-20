@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2015-02-25 16:38+0100\n"
-"PO-Revision-Date: 2015-02-25 16:12+0000\n"
+"POT-Creation-Date: 2015-03-19 21:45+0100\n"
+"PO-Revision-Date: 2015-03-17 17:47+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Polish (http://www.transifex.com/projects/p/FusionDirectory-108/language/pl/)\n"
 "MIME-Version: 1.0\n"
@@ -398,9 +398,9 @@ msgid "LTSP server"
 msgstr ""
 
 #: addons/argonaut/class_filterArgonautEvents.inc:40
-#: addons/argonaut/class_argonautQueue.inc:193
-#: addons/argonaut/class_argonautQueue.inc:307
-#: addons/argonaut/class_argonautQueue.inc:398
+#: addons/argonaut/class_argonautQueue.inc:160
+#: addons/argonaut/class_argonautQueue.inc:260
+#: addons/argonaut/class_argonautQueue.inc:335
 msgid "Error"
 msgstr "Błąd"
 
@@ -412,7 +412,7 @@ msgstr ""
 #: addons/argonaut/class_argonautImportFile.inc:44
 #: addons/argonaut/class_argonautImportFile.inc:100
 #: addons/argonaut/class_argonautImportFile.inc:141
-#: addons/argonaut/deploy-list.xml:99
+#: addons/argonaut/deploy-list.xml:79
 #: addons/argonaut/argonaut_import_file.tpl.c:68
 msgid "Import"
 msgstr "Import"
@@ -427,7 +427,6 @@ msgid ""
 msgstr ""
 
 #: addons/argonaut/class_argonautImportFile.inc:134
-#: addons/argonaut/class_argonautQueue.inc:350
 msgid "Infrastructure service"
 msgstr ""
 
@@ -447,74 +446,74 @@ msgstr ""
 msgid "Event"
 msgstr ""
 
-#: addons/argonaut/class_argonautQueue.inc:39
-#: addons/argonaut/class_argonautQueue.inc:45
+#: addons/argonaut/class_argonautQueue.inc:35
+#: addons/argonaut/class_argonautQueue.inc:41
 msgid "Deployment queue"
 msgstr ""
 
-#: addons/argonaut/class_argonautQueue.inc:40
+#: addons/argonaut/class_argonautQueue.inc:36
 msgid "Provide a mechanism to automatically activate systems"
 msgstr ""
 
-#: addons/argonaut/class_argonautQueue.inc:47
+#: addons/argonaut/class_argonautQueue.inc:43
 #: addons/argonaut/events/eventTargetSystems-list.xml:81
 msgid "Description"
 msgstr "Opis"
 
-#: addons/argonaut/class_argonautQueue.inc:174
+#: addons/argonaut/class_argonautQueue.inc:141
 msgid "immediately"
 msgstr ""
 
-#: addons/argonaut/class_argonautQueue.inc:189
+#: addons/argonaut/class_argonautQueue.inc:156
 msgid "Waiting"
 msgstr ""
 
-#: addons/argonaut/class_argonautQueue.inc:192
+#: addons/argonaut/class_argonautQueue.inc:159
 msgid "Show error"
 msgstr ""
 
-#: addons/argonaut/class_argonautQueue.inc:196
+#: addons/argonaut/class_argonautQueue.inc:163
 msgid "Processed"
 msgstr ""
 
-#: addons/argonaut/class_argonautQueue.inc:205
+#: addons/argonaut/class_argonautQueue.inc:172
 msgid "in progress"
 msgstr ""
 
-#: addons/argonaut/class_argonautQueue.inc:226
+#: addons/argonaut/class_argonautQueue.inc:180
 msgid "Permission"
 msgstr "Uprawnienie"
 
-#: addons/argonaut/class_argonautQueue.inc:256
+#: addons/argonaut/class_argonautQueue.inc:210
 #: addons/argonaut/events/class_DaemonEvent.inc:258
-#: addons/argonaut/deploy-list.xml:106 addons/argonaut/deploy-list.xml:166
+#: addons/argonaut/deploy-list.xml:86 addons/argonaut/deploy-list.xml:136
 msgid "Remove"
 msgstr "Usuń"
 
-#: addons/argonaut/class_argonautQueue.inc:257
+#: addons/argonaut/class_argonautQueue.inc:211
 #, php-format
 msgid "The following jobs couldn't be deleted, they have to be aborted: %s"
 msgstr ""
 
-#: addons/argonaut/class_argonautQueue.inc:304
+#: addons/argonaut/class_argonautQueue.inc:257
 msgid "Info"
 msgstr ""
 
-#: addons/argonaut/class_argonautQueue.inc:304
+#: addons/argonaut/class_argonautQueue.inc:257
 #, php-format
 msgid "%s"
 msgstr ""
 
-#: addons/argonaut/class_argonautQueue.inc:308
+#: addons/argonaut/class_argonautQueue.inc:261
 #, php-format
 msgid "Required class '%s' cannot be found: job not aborted!"
 msgstr ""
 
-#: addons/argonaut/class_argonautQueue.inc:340
+#: addons/argonaut/class_argonautQueue.inc:293
 msgid "Error detail"
 msgstr ""
 
-#: addons/argonaut/class_argonautQueue.inc:398
+#: addons/argonaut/class_argonautQueue.inc:335
 #, php-format
 msgid "Cannot update queue entries."
 msgstr ""
@@ -594,7 +593,6 @@ msgid "Object group"
 msgstr "Grupa obiektu"
 
 #: addons/argonaut/events/eventTargetSystems-list.xml:73
-#: addons/argonaut/deploy-list.xml:36
 #: addons/argonaut/events/eventTargetSystems-filter.tpl.c:20
 msgid "Name"
 msgstr "Imię"
@@ -617,51 +615,43 @@ msgstr ""
 msgid "Target"
 msgstr ""
 
-#: addons/argonaut/deploy-list.xml:45
+#: addons/argonaut/deploy-list.xml:35
 msgid "Task"
 msgstr "Zadanie"
 
-#: addons/argonaut/deploy-list.xml:53
+#: addons/argonaut/deploy-list.xml:43
 msgid "Period"
 msgstr ""
 
-#: addons/argonaut/deploy-list.xml:61
+#: addons/argonaut/deploy-list.xml:51
 #: addons/argonaut/events/DaemonEvent.tpl.c:2
 msgid "Schedule"
 msgstr ""
 
-#: addons/argonaut/deploy-list.xml:69
+#: addons/argonaut/deploy-list.xml:59
 #: addons/argonaut/events/DaemonEvent.tpl.c:11
 msgid "Status"
 msgstr "Status"
 
-#: addons/argonaut/deploy-list.xml:77
+#: addons/argonaut/deploy-list.xml:67
 msgid "Actions"
 msgstr "Akcje"
 
-#: addons/argonaut/deploy-list.xml:88
-msgid "Create"
-msgstr "Utwórz"
-
-#: addons/argonaut/deploy-list.xml:117 addons/argonaut/deploy-list.xml:174
+#: addons/argonaut/deploy-list.xml:97 addons/argonaut/deploy-list.xml:144
 msgid "Abort"
 msgstr ""
 
-#: addons/argonaut/deploy-list.xml:128
+#: addons/argonaut/deploy-list.xml:108
 msgid "Execute"
 msgstr "Uruchom"
 
-#: addons/argonaut/deploy-list.xml:140
+#: addons/argonaut/deploy-list.xml:120
 msgid "Process now"
 msgstr ""
 
-#: addons/argonaut/deploy-list.xml:148
+#: addons/argonaut/deploy-list.xml:128
 msgid "View logs"
 msgstr ""
-
-#: addons/argonaut/deploy-list.xml:157
-msgid "Edit"
-msgstr "Edytuj"
 
 #: include/class_supportDaemon.inc:89
 msgid "Multiple argonaut server found. Only one is supported"
@@ -745,7 +735,6 @@ msgid "Timestamp"
 msgstr "Czas"
 
 #: addons/argonaut/argonaut_import_file.tpl.c:56
-#: addons/argonaut/deploy-list.tpl.c:2
 msgid "Base"
 msgstr "Kontener"
 

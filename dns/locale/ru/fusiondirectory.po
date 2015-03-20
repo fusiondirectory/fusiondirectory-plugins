@@ -3,14 +3,16 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Alexey, 2015
+# Alexey, 2015
 #  Valia V. Vaneeva <fattie@altlinux.ru>, 2004
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2015-02-25 16:38+0100\n"
-"PO-Revision-Date: 2015-02-25 16:12+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"POT-Creation-Date: 2015-03-19 21:45+0100\n"
+"PO-Revision-Date: 2015-03-18 19:48+0000\n"
+"Last-Translator: Alexey\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/FusionDirectory-108/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,7 +25,7 @@ msgstr ""
 #: admin/systems/services/dns/class_serviceDNS.inc:394
 #: admin/systems/services/dns/class_serviceDNS.inc:395
 msgid "DNS service"
-msgstr ""
+msgstr "Служба DNS"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:101
 #: admin/systems/services/dns/class_serviceDNS.inc:258
@@ -39,15 +41,15 @@ msgstr "Ошибка"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:195
 #: admin/systems/services/dns/class_serviceDNS.inc:406
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:348
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:352
 msgid "Reverse zone"
-msgstr ""
+msgstr "Обратная зона"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:196
 #: admin/systems/services/dns/class_serviceDNS.inc:415
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:47
 msgid "TTL"
-msgstr ""
+msgstr "TTL"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:197
 msgid "Class"
@@ -56,7 +58,7 @@ msgstr ""
 #: admin/systems/services/dns/class_serviceDNS.inc:258
 #, php-format
 msgid "Cannot delete the selected zone. It is still in use by '%s'"
-msgstr ""
+msgstr "Не могу удалить выбранную зону. Она до сих пор используется в '%s'"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:271
 #, php-format
@@ -93,15 +95,15 @@ msgid "Restart service"
 msgstr ""
 
 #: admin/systems/services/dns/class_serviceDNS.inc:405
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:339
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:344
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:352
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:343
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:348
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:356
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:5
 msgid "Zone name"
-msgstr ""
+msgstr "Имя зоны"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:407
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:432
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:436
 msgid "Network class"
 msgstr ""
 
@@ -110,41 +112,41 @@ msgid "Zone entry editor"
 msgstr ""
 
 #: admin/systems/services/dns/class_serviceDNS.inc:409
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:356
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:360
 msgid "Primary dns server"
-msgstr ""
+msgstr "Основной dns сервер"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:410
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:32
 msgid "Mail address"
-msgstr ""
+msgstr "Адрес электронной почты"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:411
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:360
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:364
 msgid "Serial"
 msgstr ""
 
 #: admin/systems/services/dns/class_serviceDNS.inc:412
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:364
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:368
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:38
 msgid "Refresh"
-msgstr ""
+msgstr "Обновить"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:413
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:376
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:380
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:41
 msgid "Retry"
 msgstr "Повторить"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:414
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:372
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:376
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:44
 msgid "Expire"
 msgstr ""
 
 #: admin/systems/services/dns/class_serviceDNS.inc:416
 msgid "MX records"
-msgstr ""
+msgstr "MX записи"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:417
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:17
@@ -175,38 +177,38 @@ msgid "MxRecord"
 msgstr ""
 
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:274
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:514
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:518
 msgid "Delete"
 msgstr "Удалить"
 
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:352
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:382
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:356
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:386
 msgid "Only lowercase allowed"
 msgstr ""
 
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:356
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:360
 msgid "This field should be a domain name"
 msgstr ""
 
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:368
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:372
 msgid "Time to life"
 msgstr ""
 
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:391
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:411
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:395
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:415
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:8
 msgid "Network address"
 msgstr ""
 
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:419
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:424
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:429
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:423
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:428
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:433
 #, php-format
 msgid ""
 "The specified network address and the network class (%s/%s) do not match!"
 msgstr ""
 
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:520
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:524
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:439
 msgid "Add"
 msgstr "Добавить"
@@ -266,7 +268,7 @@ msgstr ""
 
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:492
 msgid "Example"
-msgstr ""
+msgstr "Пример"
 
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:498
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:506
@@ -363,7 +365,7 @@ msgstr "Изменить"
 
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:26
 msgid "SOA record"
-msgstr ""
+msgstr "SOA запись"
 
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:29
 msgid "Primary dns server for this zone"

@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2015-02-25 16:38+0100\n"
-"PO-Revision-Date: 2015-02-25 16:12+0000\n"
+"POT-Creation-Date: 2015-03-19 21:45+0100\n"
+"PO-Revision-Date: 2015-03-17 17:56+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/FusionDirectory-108/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -35,36 +35,46 @@ msgstr "Opção de grupo de e-mail"
 msgid "Informations"
 msgstr "Informações"
 
-#: admin/groups/mail/class_groupMail.inc:86
+#: admin/groups/mail/class_groupMail.inc:82
 #: personal/mail/class_mailAccount.inc:100
 msgid "Primary address"
 msgstr "Endereço primário"
 
-#: admin/groups/mail/class_groupMail.inc:86
+#: admin/groups/mail/class_groupMail.inc:82
 msgid "The primary mail address"
 msgstr "Endereço de e-mail primário"
 
-#: admin/groups/mail/class_groupMail.inc:90
+#: admin/groups/mail/class_groupMail.inc:86
 #: personal/mail/class_mailAccount.inc:104
 msgid "Server"
 msgstr "Servidor"
 
-#: admin/groups/mail/class_groupMail.inc:90
+#: admin/groups/mail/class_groupMail.inc:86
 msgid "Server mail"
 msgstr "Servidor de e-mail"
 
-#: admin/groups/mail/class_groupMail.inc:96
+#: admin/groups/mail/class_groupMail.inc:92
 #: personal/mail/class_mailAccount.inc:120
 msgid "Alternative addresses"
 msgstr "Endereços alternativos"
 
-#: admin/groups/mail/class_groupMail.inc:96
+#: admin/groups/mail/class_groupMail.inc:92
 msgid "Alternative mail addresses for the group"
 msgstr "Endereço de e-mail alternativo para o grupo"
 
-#: admin/groups/mail/class_groupMail.inc:101
+#: admin/groups/mail/class_groupMail.inc:97
 msgid "Forward messages to non group members"
 msgstr "Encaminhar mensagens para não membros de grupos"
+
+#: admin/groups/mail/class_groupMail.inc:101
+msgid "Only allowed to receive local mail"
+msgstr ""
+
+#: admin/groups/mail/class_groupMail.inc:101
+msgid ""
+"Whether this group mail is only allowed to receive messages from local "
+"senders"
+msgstr ""
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:29
 #: admin/systems/services/postfix/class_servicePostfix.inc:30

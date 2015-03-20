@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2015-02-25 16:38+0100\n"
-"PO-Revision-Date: 2015-02-25 16:12+0000\n"
+"POT-Creation-Date: 2015-03-19 21:45+0100\n"
+"PO-Revision-Date: 2015-02-25 16:51+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/FusionDirectory-108/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: admin/systems/services/dhcp/class_dhcpAdvanced.inc:59
 #: admin/systems/services/dhcp/class_dhcpAdvanced.inc:73
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:774
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:776
 #: admin/systems/services/dhcp/class_dhcpNetwork.inc:48
 msgid "Error"
 msgstr "Erro"
@@ -95,7 +95,7 @@ msgstr "Faixa de IP's da rede"
 #: admin/systems/services/dhcp/class_dhcpNewSectionDialog.inc:48
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:62
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:103
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:729
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:731
 msgid "Global options"
 msgstr ""
 
@@ -199,9 +199,9 @@ msgid "Maximum lease time"
 msgstr ""
 
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:59
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:785
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:786
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:828
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:787
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:788
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:830
 msgid "DHCP service"
 msgstr "Serviço DHCP"
 
@@ -229,66 +229,66 @@ msgstr "A migração será iniciada quando você salvar este sistema."
 msgid "Warning"
 msgstr "Aviso"
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:246
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:247
 msgid "Permission error"
 msgstr "Erro de permissão"
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:283
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:284
 msgid "DHCP section"
 msgstr "Seção DHCP"
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:339
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:342
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:340
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:343
 msgid "Insert new DHCP section"
 msgstr "Inserir nova seção DHCP"
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:340
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:343
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:341
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:344
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:345
 msgid "Edit DHCP section"
 msgstr "Editar seção DHCP"
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:341
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:345
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:342
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:346
 msgid "Remove DHCP section"
 msgstr "Remover seção DHCP"
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:346
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:347
 msgid "Expand DHCP subnet"
 msgstr "Expandir DHCP de subrede"
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:347
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:348
 msgid "Fold DHCP subnet"
 msgstr ""
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:422
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:439
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:494
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:570
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:578
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:605
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:425
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:442
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:497
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:573
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:581
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:608
 msgid "LDAP error"
 msgstr "Erro de LDAP"
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:774
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:776
 msgid ""
 "The DHCP configuration set is unkown. Please contact your system "
 "administrator."
 msgstr "A configuração de DHCP é desconhecida. Por favor, contacte seu administrador do sistema."
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:786
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:788
 msgid "Services"
 msgstr "Serviços"
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:793
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:795
 msgid "Start service"
 msgstr "Iniciar serviço"
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:794
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:796
 msgid "Stop service"
 msgstr "Parar serviço"
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:795
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:797
 msgid "Restart service"
 msgstr "Reiniciar serviço"
 

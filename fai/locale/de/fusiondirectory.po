@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2015-02-25 16:38+0100\n"
-"PO-Revision-Date: 2015-02-25 16:12+0000\n"
+"POT-Creation-Date: 2015-03-19 21:45+0100\n"
+"PO-Revision-Date: 2015-03-08 14:10+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/FusionDirectory-108/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -49,7 +49,7 @@ msgstr "Herunterladen"
 #: admin/fai/class_faiScriptEntry.inc:197
 #: admin/fai/class_faiManagement.inc:768 admin/fai/class_faiManagement.inc:774
 #: admin/fai/class_faiPackage.inc:685
-#: admin/fai/class_faiPartitionTable.inc:775
+#: admin/fai/class_faiPartitionTable.inc:779
 #: admin/fai/class_faiDiskEntry.inc:702 admin/fai/class_faiDiskEntry.inc:705
 #: admin/fai/class_faiDiskEntry.inc:758
 #: admin/fai/class_faiTemplateEntry.inc:247
@@ -101,7 +101,7 @@ msgid "FAI script entry"
 msgstr "FAI Skript-Eintrag"
 
 #: admin/fai/class_faiScriptEntry.inc:198 admin/fai/class_faiPackage.inc:686
-#: admin/fai/class_faiPartitionTable.inc:776
+#: admin/fai/class_faiPartitionTable.inc:780
 #: admin/fai/class_faiDiskEntry.inc:759
 #: admin/fai/class_faiTemplateEntry.inc:313
 #: admin/fai/class_faiPartitionTableEntry.inc:456
@@ -207,7 +207,7 @@ msgid "Continue"
 msgstr "Fortsetzen"
 
 #: admin/fai/class_faiManagement.inc:926
-#: admin/fai/class_faiPartitionTable.inc:764
+#: admin/fai/class_faiPartitionTable.inc:768
 #: admin/fai/class_faiProfile.inc:318 admin/fai/class_askClassName.inc:99
 #: admin/fai/classSelect/class_classSelect.inc:58
 #: admin/fai/class_faiGroupHandle.inc:120
@@ -368,12 +368,12 @@ msgstr "Bearbeiten"
 msgid "delete"
 msgstr "Entfernen"
 
-#: admin/fai/class_faiPartitionTable.inc:765
 #: admin/fai/class_faiPartitionTable.inc:769
+#: admin/fai/class_faiPartitionTable.inc:773
 msgid "FAI partition table"
 msgstr "FAI-Partitionstabelle"
 
-#: admin/fai/class_faiPartitionTable.inc:775 admin/fai/class_faiHook.inc:531
+#: admin/fai/class_faiPartitionTable.inc:779 admin/fai/class_faiHook.inc:531
 #: admin/fai/class_faiVariable.inc:398
 msgid "Read only"
 msgstr "Nur Lesen"
@@ -1044,11 +1044,11 @@ msgstr "Anlegen"
 
 #: admin/systems/class_faiLogView.inc:56
 msgid "Sort down"
-msgstr ""
+msgstr "Absteigend sortieren"
 
 #: admin/systems/class_faiLogView.inc:58
 msgid "Sort up"
-msgstr ""
+msgstr "Aufsteigend sortieren"
 
 #: admin/systems/class_faiLogView.inc:71
 msgid "Date"
