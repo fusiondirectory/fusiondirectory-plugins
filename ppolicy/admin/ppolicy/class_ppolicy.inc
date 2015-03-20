@@ -76,7 +76,7 @@ class ppolicy extends simplePlugin
             0, FALSE
           ),
           new TimeAttribute(
-            _('Expire warning delay'), _('Start time prior to the password expiry that password expiry warning messages are returned in bind responses'),
+            _('Expiry warning delay'), _('Start time prior to the password expiry that password expiry warning messages are returned in bind responses'),
             'pwdExpireWarning', FALSE,
             0, FALSE
           ),
