@@ -196,7 +196,7 @@ class faiPackage extends faiPluginClass
     /* Assemble release name */
     $release = $this->parent->parent->fai_release;
     $tmp = preg_replace('/'.preg_quote(get_ou('faiBaseRDN'), '/').'.*$/i', '', $release);
-    preg_match_all('/ou=([^=,]),/', $tmp, $m);
+    preg_match_all('/ou=([^=,]+),/', $tmp, $m);
     /* m[1][0] is release, m[1][1] is distribution */
     $this->FAIdebianRelease = $m[1][0];
 
