@@ -83,11 +83,11 @@ class FAIRepositoryAttribute extends PipeSeparatedCompositeAttribute
 
   function updateFields()
   {
-    $cn = NULL;
+    $dn = NULL;
     if (is_object($this->plugin)) {
-      $cn = $this->plugin->cn;
+      $dn = $this->plugin->dn;
     }
-    $this->attributes[1]->setChoices(serviceRepository::getParentServers($this->attributes[7]->getValue(), $cn));
+    $this->attributes[1]->setChoices(serviceRepository::getParentServers($this->attributes[7]->getValue(), $dn));
     if ($this->attributes[7]->getValue() == 'debian') {
       $releaseList = array_map(
         function ($a)
@@ -205,11 +205,11 @@ class serviceRepository extends simpleService
 
     $ldap = $config->get_ldap_link();
     $ldap->cd($config->current['BASE']);
-    $ldap->search('(&(objectClass=FAIrepositoryServer)(FAIrepository=*|'.$distribution.'))', array('cn'));
+    $ldap->search('(&(objectClass=FAIrepositoryServer)(FAIrepository=*|'.$distribution.'))', array('dn','cn'));
 
     $ret = array();
     while ($attr = $ldap->fetch()) {
-      if ($attr['cn'][0] == $cn) {
+      if ($attr['dn'] == $dn) {
         continue;
       }
       $ret[$attr['cn'][0]] = $attr['cn'][0];
