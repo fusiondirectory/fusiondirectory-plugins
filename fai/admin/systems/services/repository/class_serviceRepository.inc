@@ -199,7 +199,7 @@ class serviceRepository extends simpleService
     }
   }
 
-  static function getParentServers($distribution, $cn = NULL)
+  static function getParentServers($distribution, $dn = NULL)
   {
     global $config;
 
