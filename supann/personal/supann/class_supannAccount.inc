@@ -248,6 +248,14 @@ class supannAccount extends simplePlugin
             _('Nick name'), _('eduPersonNickName - Can contain a nick name for this user'),
             'eduPersonNickName', FALSE
           ),
+          new SetAttribute(
+            new StringAttribute(
+              _('Ref ids'), _('supannRefId - IDs/links for this user on other systems'),
+              'supannRefId', FALSE,
+              '', '',
+              '/^{[^}]+}.+$/' /* Validation regexp: it must have a prefix */
+            )
+          ),
         )
       ),
       'contact' => array(
