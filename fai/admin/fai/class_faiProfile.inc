@@ -457,6 +457,7 @@ class faiProfile extends faiPluginClass
       'plObjectType'  => array('faiProfile' => array(
         'name'        => _('FAI Profile'),
         'filter'      => 'objectClass=FAIprofile',
+        'icon'        => 'plugins/fai/images/fai_profile.png',
         'aclCategory' => 'fai'
       )),
       'plProvidedAcls' => array(

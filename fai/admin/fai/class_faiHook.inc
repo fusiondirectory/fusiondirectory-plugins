@@ -525,6 +525,7 @@ class faiHook extends faiPluginClass
       'plObjectType'  => array('faiHook' => array(
         'name'        => _('FAI hook'),
         'filter'      => 'objectClass=FAIhook',
+        'icon'        => 'plugins/fai/images/fai_hook.png',
         'aclCategory' => 'fai'
       )),
       'plProvidedAcls' => array(

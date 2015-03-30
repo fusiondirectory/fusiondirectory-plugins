@@ -391,6 +391,7 @@ class faiVariable extends faiPluginClass
       'plObjectType'  => array('faiVariable' => array(
         'name'        => _('FAI variable'),
         'filter'      => 'objectClass=FAIvariable',
+        'icon'        => 'plugins/fai/images/fai_variable.png',
         'aclCategory' => 'fai'
       )),
 

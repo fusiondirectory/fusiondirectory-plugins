@@ -598,6 +598,7 @@ class faiScript extends faiPluginClass
       'plObjectType'  => array('faiScript' => array(
         'name'        => _('FAI script'),
         'filter'      => 'objectClass=FAIscript',
+        'icon'        =>  'plugins/fai/images/fai_script.png',
         'aclCategory' => 'fai'
       )),
 

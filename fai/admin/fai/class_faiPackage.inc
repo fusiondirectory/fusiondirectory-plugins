@@ -678,6 +678,7 @@ class faiPackage extends faiPluginClass
       'plObjectType'  => array('faiPackage' => array(
         'name'        => _('FAI Package'),
         'filter'      => 'objectClass=FAIpackageList',
+        'icon'        => 'plugins/fai/images/fai_packages.png',
         'aclCategory' => 'fai'
       )),
 

@@ -1043,6 +1043,7 @@ class faiManagement extends management
       "plSection"     => "systems",
       "plPriority"    => 20,
       "plCategory"    => array("fai" => array("description" => _("FAI"), "objectClass" => "FAIclass")),
+      'plManages'     => array('faiVariable', 'faiHook', 'faiScript', 'faiPackage', 'faiPartitionTable', 'faiTemplate', 'faiProfile'),
 
       "plProvidedAcls" => array()
     );

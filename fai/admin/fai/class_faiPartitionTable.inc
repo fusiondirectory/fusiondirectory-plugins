@@ -772,6 +772,7 @@ class faiPartitionTable extends faiPluginClass
       'plObjectType'  => array('faiPartition' => array(
         'name'        => _('FAI partition table'),
         'filter'      => 'objectClass=FAIpartitionTable',
+        'icon'        =>  'plugins/fai/images/fai_partitionTable.png',
         'aclCategory' => 'fai'
       )),
 

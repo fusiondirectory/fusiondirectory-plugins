@@ -505,6 +505,7 @@ class faiTemplate extends faiPluginClass
       'plObjectType'  => array('faiTemplate' => array(
         'name'        => _('FAI template'),
         'filter'      => 'objectClass=FAItemplate',
+        'icon'        => 'plugins/fai/images/fai_template.png',
         'aclCategory' => 'fai'
       )),
 
