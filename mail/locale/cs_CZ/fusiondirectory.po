@@ -4,15 +4,15 @@
 # 
 # Translators:
 # Pavel Borecki <pavel.borecki@gmail.com>, 2012
-# Pavel Borecki <pavel.borecki@gmail.com>, 2012
+# Pavel Borecki <pavel.borecki@gmail.com>, 2012,2015
 # Pavel Borecki <pavel.borecki@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2015-03-19 21:45+0100\n"
-"PO-Revision-Date: 2015-03-17 17:56+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"POT-Creation-Date: 2015-03-31 11:49+0200\n"
+"PO-Revision-Date: 2015-03-31 11:51+0000\n"
+"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/FusionDirectory-108/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -28,7 +28,7 @@ msgstr "e-mail"
 
 #: admin/groups/mail/class_groupMail.inc:47
 msgid "Group mail options"
-msgstr ""
+msgstr "Možnosti skupinového e-mailu"
 
 #: admin/groups/mail/class_groupMail.inc:79
 #: admin/systems/services/postfix/class_servicePostfix.inc:44
@@ -51,7 +51,7 @@ msgstr "server"
 
 #: admin/groups/mail/class_groupMail.inc:86
 msgid "Server mail"
-msgstr ""
+msgstr "Serverová pošta"
 
 #: admin/groups/mail/class_groupMail.inc:92
 #: personal/mail/class_mailAccount.inc:120
@@ -60,7 +60,7 @@ msgstr "alternativní adresy"
 
 #: admin/groups/mail/class_groupMail.inc:92
 msgid "Alternative mail addresses for the group"
-msgstr ""
+msgstr "Alternativní e-mailové adresy pro skupinu"
 
 #: admin/groups/mail/class_groupMail.inc:97
 msgid "Forward messages to non group members"
@@ -68,13 +68,13 @@ msgstr "přeposlat zprávy těm, kdo nejsou členy skupiny"
 
 #: admin/groups/mail/class_groupMail.inc:101
 msgid "Only allowed to receive local mail"
-msgstr ""
+msgstr "Může přijímat pouze místní e-maily"
 
 #: admin/groups/mail/class_groupMail.inc:101
 msgid ""
 "Whether this group mail is only allowed to receive messages from local "
 "senders"
-msgstr ""
+msgstr "Zda je této e-mailové skupině umožněno dostávat zprávy pouze od místních odesilatelů"
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:29
 #: admin/systems/services/postfix/class_servicePostfix.inc:30
@@ -94,7 +94,7 @@ msgstr "Název počítače"
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:48
 msgid "The host name."
-msgstr ""
+msgstr "Název počítače."
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:53
 msgid "Domain"
@@ -102,11 +102,11 @@ msgstr "doména"
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:53
 msgid "The domain."
-msgstr ""
+msgstr "Doména"
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:58
 msgid "Max mail header size (KB)"
-msgstr ""
+msgstr "Nejvyšší umožněná velikost hlavičky e-mailu (KB)"
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:58
 msgid "This value specifies the maximal header size."
@@ -114,7 +114,7 @@ msgstr "Tato hodnota určuje maximální povolenou velikost hlavičky zprávy."
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:63
 msgid "Max mailbox size (KB)"
-msgstr ""
+msgstr "Nejvyšší umožněná velikost e-mailové schránky (KB)"
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:63
 msgid "Defines the maximal size of mail box."
@@ -122,7 +122,7 @@ msgstr "Určuje největší povolenou velikost schránky."
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:68
 msgid "Max message size (KB)"
-msgstr ""
+msgstr "Nejvyšší umožněná velikost zprávy (KB)"
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:68
 msgid "Specify the maximal size of a message."
@@ -146,7 +146,7 @@ msgstr "transportní tabulka"
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:89
 msgid "Transport rule"
-msgstr ""
+msgstr "Transportní pravidlo"
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:103
 msgid "Restrictions"
@@ -158,7 +158,7 @@ msgstr "omezení odesilatele"
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:116
 msgid "For sender"
-msgstr ""
+msgstr "Pro odesilatele"
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:121
 msgid "Restrictions for recipient"
@@ -166,16 +166,16 @@ msgstr "omezení příjemce"
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:130
 msgid "For recipient"
-msgstr ""
+msgstr "Pro příjemce"
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:33
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:34
 msgid "Spamassassin service"
-msgstr ""
+msgstr "Služba Spamassassin"
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:48
 msgid "Spam tagging"
-msgstr ""
+msgstr "Označování nevyžádané pošty"
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:52
 msgid "Rewrite header"
@@ -228,7 +228,7 @@ msgstr "pravidla"
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:116
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:124
 msgid "Edit spam rule"
-msgstr ""
+msgstr "Upravit pravidlo pro nevyžádanou poštu"
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:119
 msgid "Name"
@@ -241,11 +241,11 @@ msgstr "pravidlo"
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:31
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:32
 msgid "Antivirus service"
-msgstr ""
+msgstr "Antivirová služba"
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:46
 msgid "Virus filtering"
-msgstr ""
+msgstr "Filtrování virů"
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:50
 msgid "Database user"
@@ -269,7 +269,7 @@ msgstr "URL HTTP proxy"
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:58
 msgid "URL for the proxy"
-msgstr ""
+msgstr "URL adresa proxy"
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:62
 msgid "Maximum threads"
@@ -277,7 +277,7 @@ msgstr "nejvyšší povolený počet vláken"
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:62
 msgid "Maximum number of threads"
-msgstr ""
+msgstr "Nejvyšší umožněný počet vláken"
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:68
 msgid "Max directory recursions"
@@ -297,7 +297,7 @@ msgstr "zapnout režim ladění"
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:78
 msgid "Enable debugging for the antivirus"
-msgstr ""
+msgstr "Zapnout diagnostický režim pro antivirus"
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:83
 msgid "Enable mail scanning"
@@ -305,7 +305,7 @@ msgstr "zapnout skenování zpráv"
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:83
 msgid "Enable mail scanning for the antivirus"
-msgstr ""
+msgstr "Zapnout skenování e-mailů na viry"
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:90
 msgid "Archive scanning"
@@ -325,7 +325,7 @@ msgstr "maximální velikost souboru"
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:108
 msgid "Maximum recursion"
-msgstr ""
+msgstr "Nejvyšší umožněný počet vnořených úrovní"
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:113
 msgid "Maximum compression ratio"
@@ -333,7 +333,7 @@ msgstr "Maximální kompresní poměr"
 
 #: admin/systems/services/imap/class_serviceIMAP.inc:32
 msgid "IMAP/POP3 generic service"
-msgstr ""
+msgstr "Obecná služba IMAP/POP3"
 
 #: admin/systems/services/imap/class_serviceIMAP.inc:33
 msgid "IMAP/POP3"
@@ -384,11 +384,11 @@ msgstr "nelze načíst nastavení kvóty: %s"
 
 #: personal/mail/class_mailAccount.inc:57
 msgid "Quota usage"
-msgstr ""
+msgstr "Kvóta používání"
 
 #: personal/mail/class_mailAccount.inc:58
 msgid "Part of the quota which is used"
-msgstr ""
+msgstr "Část kvóty, která je využita"
 
 #: personal/mail/class_mailAccount.inc:80
 #: config/mail/class_mailPluginConfig.inc:41
@@ -397,7 +397,7 @@ msgstr "nastavení e-mailu"
 
 #: personal/mail/class_mailAccount.inc:97
 msgid "Mail account"
-msgstr ""
+msgstr "E-mailový účet"
 
 #: personal/mail/class_mailAccount.inc:100
 msgid "Primary mail address"
@@ -413,7 +413,7 @@ msgstr "kvóta objemu dat"
 
 #: personal/mail/class_mailAccount.inc:116
 msgid "Other addresses and redirections"
-msgstr ""
+msgstr "Ostatní adresy a přesměrování"
 
 #: personal/mail/class_mailAccount.inc:120
 msgid "List of alternative mail addresses"
@@ -425,7 +425,7 @@ msgstr "přesměrovat zprávy na"
 
 #: personal/mail/class_mailAccount.inc:125
 msgid "Addresses to which messages should be forwarded"
-msgstr ""
+msgstr "Adresy, na které by měly být přeposílány zprávy"
 
 #: personal/mail/class_mailAccount.inc:131
 #: personal/mail/class_mailAccount.inc:150
@@ -451,39 +451,39 @@ msgstr "dokud"
 
 #: personal/mail/class_mailAccount.inc:156
 msgid "Spam options"
-msgstr ""
+msgstr "Možnosti nevyžádané pošty"
 
 #: personal/mail/class_mailAccount.inc:159
 msgid "Move mails depending on spam level"
-msgstr ""
+msgstr "Přesouvat e-maily dle úrovně nevyžádané pošty"
 
 #: personal/mail/class_mailAccount.inc:164
 msgid "Minimum spam level"
-msgstr ""
+msgstr "Nejnižší umožněná úroveň nevyžádané pošty"
 
 #: personal/mail/class_mailAccount.inc:164
 msgid "Spam level above which a mail will be moved"
-msgstr ""
+msgstr "Úroveň nevyžádané pošty, při jejímž překročení bude zpráva přesunuta"
 
 #: personal/mail/class_mailAccount.inc:169
 msgid "Move spam to folder"
-msgstr ""
+msgstr "Přesunout nevyžádanou poštu do složky"
 
 #: personal/mail/class_mailAccount.inc:169
 msgid "Folder in which spam will be moved"
-msgstr ""
+msgstr "Složka, do které bude přesouvána nevyžádaná pošta"
 
 #: personal/mail/class_mailAccount.inc:174
 msgid "Reject mail depending on their size"
-msgstr ""
+msgstr "Odmítat zprávy v závislosti na jejich velikosti"
 
 #: personal/mail/class_mailAccount.inc:174
 msgid "Messages bigger than the chosen size will be rejected"
-msgstr ""
+msgstr "Zprávy větší než zvolená velikost budou odmítány"
 
 #: personal/mail/class_mailAccount.inc:179
 msgid "Minimum size to reject a mail (MB)"
-msgstr ""
+msgstr "Nejnižší umožněná velikost pro odmítnutí zprávy (MB)"
 
 #: personal/mail/class_mailAccount.inc:195
 msgid "Advanced mail options"
@@ -499,7 +499,7 @@ msgstr "zakáže všechny volby e-mailu!"
 
 #: personal/mail/class_mailAccount.inc:199
 msgid "Use your sieve script with personnal customization"
-msgstr ""
+msgstr "Použijte svůj sieve skript s vlastními úpravami"
 
 #: personal/mail/class_mailAccount.inc:204
 msgid "User is only allowed to send and receive local mails"
@@ -526,7 +526,7 @@ msgstr "Nezdařilo se získat seznam schránek: %s"
 #: personal/mail/class_mailAccount.inc:351
 #, php-format
 msgid "Mail method cannot connect: %s"
-msgstr ""
+msgstr "E-mailová metodou se nelze připojit: %s"
 
 #: personal/mail/class_mailAccount.inc:263
 #, php-format
@@ -560,7 +560,7 @@ msgid ""
 "Mail method the setup should use to communicate with a possible mail server."
 " Leave this undefined if your mail method does not match the predefined "
 "ones."
-msgstr ""
+msgstr "Způsob, který by měl být použit pro komunikace s případným poštovním serverem. Pokud nevyhovuje žádná z přednastavených metod, ponechte prázdné."
 
 #: config/mail/class_mailPluginConfig.inc:50
 msgid "Account identification attribute"
@@ -576,24 +576,24 @@ msgstr "Šablona uživatele e-mailu"
 
 #: config/mail/class_mailPluginConfig.inc:57
 msgid "Override the user account creation syntax."
-msgstr ""
+msgstr "Přebít syntaxi vytváření uživatelského účtu."
 
 #: config/mail/class_mailPluginConfig.inc:61
 msgid "Mail folder template"
-msgstr ""
+msgstr "Šablona složky e-mailu"
 
 #: config/mail/class_mailPluginConfig.inc:62
 msgid "Override the methods default account creation syntax."
-msgstr ""
+msgstr "Přebít způsoby syntaxe vytvoření výchozího účtu."
 
 #: config/mail/class_mailPluginConfig.inc:66
 msgid "Use cyrus UNIX style"
-msgstr ""
+msgstr "Použít cyrus v unixovém stylu"
 
 #: config/mail/class_mailPluginConfig.inc:67
 msgid ""
 "Determines if 'foo/bar' or 'foo.bar' should be uses as namespaces in IMAP."
-msgstr ""
+msgstr "Určuje, zda mají mít jmenné prostory v IMAP podobu něco/neco nebo něco.něco ."
 
 #: config/mail/class_mailPluginConfig.inc:71
 msgid "Delete mailbox on account deletion"
@@ -603,17 +603,17 @@ msgstr "Při smazání účtu smazat i e-mailovou schránku"
 msgid ""
 "Determines if the mailbox should be removed from your IMAP server after the "
 "account is deleted in LDAP."
-msgstr ""
+msgstr "Určuje, zda má být po smazání účtu v LDAP též odebrána e-mailová schránka na IMAP serveru."
 
 #: config/mail/class_mailPluginConfig.inc:77
 msgid "Cyrus autocreate folders"
-msgstr ""
+msgstr "Samočinné vytváření složek na Cyrus"
 
 #: config/mail/class_mailPluginConfig.inc:78
 msgid ""
 "List of personal IMAP folders that should be created along initial account "
 "creation."
-msgstr ""
+msgstr "Seznam osobní IMAP složek, které by měly být vytvořen společně s úvodním vytvářením účtu."
 
 #: config/mail/class_mailPluginConfig.inc:83
 msgid "IMAP timeout"
@@ -621,15 +621,15 @@ msgstr "Časový limit pro IMAP"
 
 #: config/mail/class_mailPluginConfig.inc:84
 msgid "Sets the connection timeout for imap actions."
-msgstr ""
+msgstr "Nastavuje časové limity prodlevy připojení pro akce imap."
 
 #: config/mail/class_mailPluginConfig.inc:89
 msgid "Shared prefix"
-msgstr ""
+msgstr "Sdílená předpona"
 
 #: config/mail/class_mailPluginConfig.inc:90
 msgid "Prefix to add for mail shared folders."
-msgstr ""
+msgstr "Předpona, kterou přidat pro sdílené poštovní složky."
 
 #: config/mail/class_mailPluginConfig.inc:108
 msgid "Generic"

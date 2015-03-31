@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-12-09 22:29+0100\n"
+"POT-Creation-Date: 2015-03-31 11:49+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -96,7 +96,7 @@ msgid "Apache Vhost"
 msgstr ""
 
 #: admin/systems/services/apache2/class_serviceApacheVhostEdit.inc:68
-msgid "Generic"
+msgid "Informations"
 msgstr ""
 
 #: admin/systems/services/apache2/class_serviceApacheVhostEdit.inc:72
@@ -151,4 +151,39 @@ msgstr ""
 
 #: admin/systems/services/apache2/class_serviceApacheVhostEdit.inc:107
 msgid "Directory Path"
+msgstr ""
+
+#: admin/systems/services/apache2/remove.tpl.c:2
+msgid "Warning"
+msgstr ""
+
+#: admin/systems/services/apache2/remove.tpl.c:5
+msgid ""
+"This includes all account data, system access rules, imap settings, etc. for "
+"this user. Please double check if your really want to do this since there is "
+"no way for FusionDirectory to get your data back."
+msgstr ""
+
+#: admin/systems/services/apache2/remove.tpl.c:8
+msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
+msgstr ""
+
+#: admin/systems/services/apache2/serviceApacheVhostEdit-filter.tpl.c:2
+msgid "Filter"
+msgstr ""
+
+#: admin/systems/services/apache2/serviceApacheVhostEdit-filter.tpl.c:5
+msgid "Name"
+msgstr ""
+
+#: admin/systems/services/apache2/serviceApacheVhostEdit-list.tpl.c:2
+msgid "Base"
+msgstr ""
+
+#: admin/systems/services/apache2/serviceApacheVhostEditFooter.tpl.c:2
+msgid "Save"
+msgstr ""
+
+#: admin/systems/services/apache2/serviceApacheVhostEditFooter.tpl.c:5
+msgid "Cancel"
 msgstr ""

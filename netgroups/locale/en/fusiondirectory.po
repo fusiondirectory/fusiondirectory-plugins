@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-12-09 22:29+0100\n"
+"POT-Creation-Date: 2015-03-31 11:49+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,11 +18,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: admin/netgroups/class_netgroup.inc:50
-msgid "Generic"
+#: config/netgroups/class_netgroupConfig.inc:42
+msgid "Netgroup"
 msgstr ""
 
 #: admin/netgroups/class_netgroup.inc:51
-msgid "Generic NIS Netgroup settings"
+msgid "NIS Netgroup settings"
 msgstr ""
 
 #: admin/netgroups/class_netgroup.inc:54
@@ -95,10 +96,6 @@ msgstr ""
 
 #: config/netgroups/class_netgroupConfig.inc:29
 msgid "FusionDirectory netgroup plugin configuration"
-msgstr ""
-
-#: config/netgroups/class_netgroupConfig.inc:42
-msgid "LDAP tree"
 msgstr ""
 
 #: config/netgroups/class_netgroupConfig.inc:45

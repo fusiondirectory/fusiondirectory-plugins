@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-12-09 22:29+0100\n"
+"POT-Creation-Date: 2015-03-31 11:49+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,7 +37,7 @@ msgstr ""
 #: admin/repository/class_repositoryDistribution.inc:64
 #: admin/repository/class_repositorySection.inc:61
 #: admin/repository/class_buildRepository.inc:67
-msgid "description"
+msgid "Description"
 msgstr ""
 
 #: admin/repository/class_repositoryDistribution.inc:64
@@ -86,6 +86,7 @@ msgid "Repository management"
 msgstr ""
 
 #: admin/repository/class_repositoryManagement.inc:40
+#: config/repository/class_repositoryConfig.inc:42
 msgid "Repository"
 msgstr ""
 
@@ -98,6 +99,10 @@ msgstr ""
 
 #: admin/repository/class_buildRepository.inc:63
 msgid "Unique name for this repository"
+msgstr ""
+
+#: admin/repository/class_buildRepository.inc:67
+msgid "Description of this repository"
 msgstr ""
 
 #: admin/repository/class_buildRepository.inc:72
@@ -158,10 +163,6 @@ msgstr ""
 
 #: config/repository/class_repositoryConfig.inc:29
 msgid "FusionDirectory repository plugin configuration"
-msgstr ""
-
-#: config/repository/class_repositoryConfig.inc:42
-msgid "LDAP tree"
 msgstr ""
 
 #: config/repository/class_repositoryConfig.inc:45

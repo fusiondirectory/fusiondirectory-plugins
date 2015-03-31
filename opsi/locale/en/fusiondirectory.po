@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-12-09 22:29+0100\n"
+"POT-Creation-Date: 2015-03-31 11:49+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -117,10 +117,11 @@ msgstr ""
 #: admin/opsi/class_opsiSoftwareList.inc:141
 #: admin/opsi/class_opsiProductProperties.inc:192
 #: admin/opsi/class_opsiProfile.inc:191
-msgid "Could contact OPSI server"
+msgid "Failed to contact OPSI server"
 msgstr ""
 
 #: admin/opsi/class_opsiProfileManagement.inc:33
+#: config/opsi/class_opsiConfig.inc:42
 msgid "OPSI"
 msgstr ""
 
@@ -266,14 +267,17 @@ msgstr ""
 msgid "FusionDirectory OPSI plugin configuration"
 msgstr ""
 
-#: config/opsi/class_opsiConfig.inc:42
-msgid "LDAP tree"
-msgstr ""
-
 #: config/opsi/class_opsiConfig.inc:45
 msgid "OPSI RDN"
 msgstr ""
 
 #: config/opsi/class_opsiConfig.inc:45
 msgid "Branch in which OPSI profiles will be stored"
+msgstr ""
+
+#: addons/opsi/opsiimport.tpl.c:2
+msgid ""
+"Warning : Once you import your OPSI hosts into FusionDirectory, they will be "
+"managed by it, so if you delete them or deactivate their OPSI tab, they will "
+"be removed from OPSI."
 msgstr ""

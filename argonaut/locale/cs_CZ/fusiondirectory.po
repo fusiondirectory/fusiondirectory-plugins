@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Pavel Borecki <pavel.borecki@gmail.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2015-03-19 21:45+0100\n"
-"PO-Revision-Date: 2015-03-17 17:47+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"POT-Creation-Date: 2015-03-31 11:49+0200\n"
+"PO-Revision-Date: 2015-03-31 11:51+0000\n"
+"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/FusionDirectory-108/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,11 +24,11 @@ msgstr "nastavení Argonaut klienta"
 
 #: admin/systems/argonaut/class_argonautClient.inc:120
 msgid "Client port"
-msgstr ""
+msgstr "Port klienta"
 
 #: admin/systems/argonaut/class_argonautClient.inc:120
 msgid "Port used by argonaut client for JSON-RPC"
-msgstr ""
+msgstr "Port používaný klientem argonaut pro JSON-RPC"
 
 #: admin/systems/argonaut/class_argonautClient.inc:125
 msgid "WakeOnLan interface"
@@ -39,11 +40,11 @@ msgstr "Rozhraní, použité komponentou argonaut pro WakeOnLan"
 
 #: admin/systems/argonaut/class_argonautClient.inc:130
 msgid "TaskId file"
-msgstr ""
+msgstr "TaskId soubor"
 
 #: admin/systems/argonaut/class_argonautClient.inc:130
 msgid "File which argonaut will use to store its task id when booting"
-msgstr ""
+msgstr "Soubor, který bude argonaut používat pro ukládání identifikátorů svých úloh při zavádění systému"
 
 #: admin/systems/argonaut/class_argonautClient.inc:135
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:56
@@ -54,15 +55,15 @@ msgstr "složka pro protokolovací záznamy"
 
 #: admin/systems/argonaut/class_argonautClient.inc:135
 msgid "Directory in which argonaut client should write its logs"
-msgstr ""
+msgstr "Složka, do které by argonaut klient měl zapisovat své záznamy protokolu"
 
 #: admin/systems/argonaut/class_argonautClient.inc:142
 msgid "Service names"
-msgstr ""
+msgstr "Názvy služeb"
 
 #: admin/systems/argonaut/class_argonautClient.inc:144
 msgid "Argonaut service names"
-msgstr ""
+msgstr "Názvy služby Argonaut"
 
 #: admin/systems/argonaut/class_argonautClient.inc:159
 msgid "Argonaut client"
@@ -70,12 +71,12 @@ msgstr "Argonaut klient"
 
 #: admin/systems/argonaut/class_argonautClient.inc:160
 msgid "Edit argonaut client settings"
-msgstr ""
+msgstr "Upravit nastavení argonaut klienta"
 
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:31
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:32
 msgid "Argonaut Fuse settings"
-msgstr ""
+msgstr "Nastavení Argonaut Fuse"
 
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:32
 #: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:33
@@ -88,7 +89,7 @@ msgstr "služby"
 
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:46
 msgid "Basic settings"
-msgstr ""
+msgstr "Základní nastavení"
 
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:49
 msgid "Default mode"
@@ -96,7 +97,7 @@ msgstr "výchozí režim"
 
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:57
 msgid "Directory in which argonaut-fuse will store its log"
-msgstr ""
+msgstr "Složka, ve které bude argonaut-fuse ukládat svůj protokol"
 
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:65
 msgid "TFTP"
@@ -108,12 +109,12 @@ msgstr "cesta k souborům s nastaveními pro PXELINUX"
 
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:69
 msgid "Path where argonaut-fuse should store pxelinux.cfg"
-msgstr ""
+msgstr "Umístění, ve kterém by měl argonaut-fuse ukládat pxelinux.cfg"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:29
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:30
 msgid "Argonaut Mirror settings"
-msgstr ""
+msgstr "Nastavení zrcadla Argonaut"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:41
 msgid "Argonaut mirror settings"
@@ -121,11 +122,11 @@ msgstr "nastavení zrcadla Argonautu"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:44
 msgid "Local Debian mirror directory"
-msgstr ""
+msgstr "Složka místního repozitáře distribuce Debian"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:52
 msgid "Argonaut Debconf Crawler configuration"
-msgstr ""
+msgstr "Nastavení pro Argonaut Debconf Crawler"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:55
 msgid "Local packages folder"
@@ -133,11 +134,11 @@ msgstr "místní složka s balíčky"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:56
 msgid "Folder in which the crawler will store packages during analysis"
-msgstr ""
+msgstr "Složka, ve které clrawler bude ukládat balíčky v průběhu analýzy"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:63
 msgid "Argonaut Repository configuration"
-msgstr ""
+msgstr "Nastavení repozitáře Argonaut"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:66
 msgid "Proxy"
@@ -149,11 +150,11 @@ msgstr ""
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:71
 msgid "Directory in which logs should be stored"
-msgstr ""
+msgstr "Složka pro ukládání protokolů"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:76
 msgid "Ignore errors"
-msgstr ""
+msgstr "Nevšímat si chyb"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:77
 msgid ""
@@ -167,7 +168,7 @@ msgstr "zdroj"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:82
 msgid "Include source in the mirror"
-msgstr ""
+msgstr "Zahrnout v zrcadlu zdrojové kódy"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:87
 msgid "GPG Check"
@@ -175,11 +176,11 @@ msgstr "kontrola GPG"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:87
 msgid "Fail if the Release.gpg file is missing"
-msgstr ""
+msgstr "Vyhlásit neúspěch v případě, že chybí soubor Release.gpg"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:92
 msgid "Contents"
-msgstr "obsah(uje)"
+msgstr "Obsahuje"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:93
 msgid ""
@@ -193,16 +194,16 @@ msgstr "poskytovat podrobnější informace"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:98
 msgid "Wether to activate verbose mode"
-msgstr ""
+msgstr "Zda zapnout výřečnější režim"
 
 #: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:32
 #: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:33
 msgid "Argonaut Fuse FAI module settings"
-msgstr ""
+msgstr "Nastavení Fuse FAI modulu pro Argonaut"
 
 #: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:47
 msgid "FAI"
-msgstr "FAI"
+msgstr ""
 
 #: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:50
 msgid "Fai flags"
@@ -215,7 +216,7 @@ msgstr "kořen struktury složek, nacházející se na síťovém souborovém sy
 #: admin/systems/services/argonaut/class_argonautServer.inc:31
 #: admin/systems/services/argonaut/class_argonautServer.inc:32
 msgid "Argonaut Server"
-msgstr ""
+msgstr "Argonaut server"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:46
 msgid "Argonaut server"
@@ -228,7 +229,7 @@ msgstr "smazat již dokončené úlohy"
 #: admin/systems/services/argonaut/class_argonautServer.inc:50
 msgid ""
 "Wether or not argonaut server should delete successfully finished tasks"
-msgstr ""
+msgstr "Zda argonaut server má mazat úlohy po jejich úspěšném dokončení"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:55
 msgid "Get packages informations"
@@ -239,7 +240,7 @@ msgid ""
 "Wether or not argonaut server should get packages information from "
 "repositories at start and then once a day. Needed for FAI package list "
 "creation."
-msgstr ""
+msgstr "Zda má argonaut server na začátku získat informace z repozitářů a pak jednou denně obnovovat. Je třeba pro vytváření seznamu FAI balíčků."
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:61
 msgid "Protocol"
@@ -247,7 +248,7 @@ msgstr "Protokol"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:61
 msgid "Protocol to use for argonaut"
-msgstr ""
+msgstr "Protokol, který má být používán argonaut"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:66
 msgid "Port"
@@ -255,7 +256,7 @@ msgstr "port"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:67
 msgid "Port on which the argonaut server will be listening"
-msgstr ""
+msgstr "Port, na kterém bude argonaut server očekávat spojení"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:72
 msgid "Timeout"
@@ -264,15 +265,15 @@ msgstr "časový limit"
 #: admin/systems/services/argonaut/class_argonautServer.inc:73
 msgid ""
 "Time in seconds before to consider an argonaut client or server as down"
-msgstr ""
+msgstr "Doba (v sekundách) po jejímž uplynutí bude argonaut klient či server považován za nedostupný"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:80
 msgid "Directory in which argonaut will store its log"
-msgstr ""
+msgstr "Složka, ve které bude argonaut ukládat svůj protokol"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:85
 msgid "Key path"
-msgstr ""
+msgstr "Umístění klíče"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:85
 msgid "Path to the private key file"
@@ -292,24 +293,24 @@ msgstr "Probuzení po síti (WoL)"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:100
 msgid "Interface"
-msgstr ""
+msgstr "Rozhraní"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:101
 msgid "Interface to use for sending WakeOnLan requests"
-msgstr ""
+msgstr "Síťové rozhraní přes které posílat požadavky na probuzení počítačů (WoL)"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:106
 msgid "IP tool"
-msgstr ""
+msgstr "Nástroj pro IP"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:106
 msgid "IP tool to use"
-msgstr ""
+msgstr "Který IP nástroj použít"
 
 #: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:32
 #: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:33
 msgid "Argonaut Fuse OPSI module settings"
-msgstr ""
+msgstr "Nastavení Fuse OPSI modulu pro Argonaut"
 
 #: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:47
 msgid "OPSI"
@@ -338,7 +339,7 @@ msgstr "nastavení DNS pro Argonaut"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:47
 msgid "Argonaut Ldap2zone settings:"
-msgstr ""
+msgstr "Nastavení Argonaut Ldap2zone:"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:50
 msgid "Bind directory"
@@ -346,15 +347,15 @@ msgstr "připojovací složka"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:51
 msgid "The directory in which conf file must be created"
-msgstr ""
+msgstr "Složka, ve které je třeba vytvořit soubor s nastaveními"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:57
 msgid "Bind cache directory"
-msgstr ""
+msgstr "Složka pro mezipaměť spojení"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:58
 msgid "The directory in which zone files must be created"
-msgstr ""
+msgstr "Složka, ve které je třeba vytvořit soubory s údaji zón"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:64
 msgid "Allow notify"
@@ -370,11 +371,11 @@ msgstr "povolen přenos (položky je třeba oddělovat a celý seznam zakončit 
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:82
 msgid "TTL"
-msgstr "TTL"
+msgstr ""
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:83
 msgid "Time to live"
-msgstr ""
+msgstr "Životnost (TTL)"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:91
 msgid "rndc path"
@@ -382,12 +383,12 @@ msgstr "cesta k rndc"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:92
 msgid "path to rndc binary"
-msgstr ""
+msgstr "umístění spustitelného souboru rndc"
 
 #: admin/systems/services/argonaut/class_argonautFuseLTSPConfig.inc:32
 #: admin/systems/services/argonaut/class_argonautFuseLTSPConfig.inc:33
 msgid "Argonaut Fuse LTSP module settings"
-msgstr ""
+msgstr "Nastavení Fuse LTSP modulu pro Argonaut"
 
 #: admin/systems/services/argonaut/class_argonautFuseLTSPConfig.inc:47
 msgid "LTSP"
@@ -424,11 +425,11 @@ msgstr "soubor je prázdný"
 #: addons/argonaut/class_argonautImportFile.inc:101
 msgid ""
 "Selected entries will be skipped because of errors. Do you want to proceed?"
-msgstr ""
+msgstr "Zvolené položky byly přeskočeny z důvodu chyb. Chcete pokračovat?"
 
 #: addons/argonaut/class_argonautImportFile.inc:134
 msgid "Infrastructure service"
-msgstr ""
+msgstr "Služba infrastruktura"
 
 #: addons/argonaut/class_argonautImportFile.inc:141
 #, php-format
@@ -449,11 +450,11 @@ msgstr "událost"
 #: addons/argonaut/class_argonautQueue.inc:35
 #: addons/argonaut/class_argonautQueue.inc:41
 msgid "Deployment queue"
-msgstr ""
+msgstr "Fronta nasazení"
 
 #: addons/argonaut/class_argonautQueue.inc:36
 msgid "Provide a mechanism to automatically activate systems"
-msgstr ""
+msgstr "Poskytuje mechanizmus pro samočinnou aktivaci systémů"
 
 #: addons/argonaut/class_argonautQueue.inc:43
 #: addons/argonaut/events/eventTargetSystems-list.xml:81
@@ -462,7 +463,7 @@ msgstr "popis"
 
 #: addons/argonaut/class_argonautQueue.inc:141
 msgid "immediately"
-msgstr "okamžitě"
+msgstr "Okamžitě"
 
 #: addons/argonaut/class_argonautQueue.inc:156
 msgid "Waiting"
@@ -497,7 +498,7 @@ msgstr "Tyto úlohy nemohly být smazány, protože musí být nejprve přeruše
 
 #: addons/argonaut/class_argonautQueue.inc:257
 msgid "Info"
-msgstr "informace"
+msgstr "Informace"
 
 #: addons/argonaut/class_argonautQueue.inc:257
 #, php-format
@@ -507,7 +508,7 @@ msgstr ""
 #: addons/argonaut/class_argonautQueue.inc:261
 #, php-format
 msgid "Required class '%s' cannot be found: job not aborted!"
-msgstr ""
+msgstr "Potřebnou třídu %s nelze nalézt: úloha nebyla přerušena!"
 
 #: addons/argonaut/class_argonautQueue.inc:293
 msgid "Error detail"
@@ -626,7 +627,7 @@ msgstr "interval"
 #: addons/argonaut/deploy-list.xml:51
 #: addons/argonaut/events/DaemonEvent.tpl.c:2
 msgid "Schedule"
-msgstr ""
+msgstr "Plán"
 
 #: addons/argonaut/deploy-list.xml:59
 #: addons/argonaut/events/DaemonEvent.tpl.c:11
@@ -659,7 +660,7 @@ msgstr "Nalezeno více argonaut serverů. Použit je možné ale pouze jeden"
 
 #: include/class_supportDaemon.inc:91
 msgid "There is no argonaut server configured"
-msgstr ""
+msgstr "Není nastaven žádný argonaut server"
 
 #: include/class_supportDaemon.inc:609
 #, php-format
@@ -699,7 +700,7 @@ msgstr "skupina objektu"
 
 #: addons/argonaut/argonaut_import_file.tpl.c:20
 msgid "import base"
-msgstr ""
+msgstr "Základ importu"
 
 #: addons/argonaut/argonaut_import_file.tpl.c:23
 msgid "full hostname"
@@ -736,7 +737,7 @@ msgstr "časová značka"
 
 #: addons/argonaut/argonaut_import_file.tpl.c:56
 msgid "Base"
-msgstr "základ"
+msgstr "Základ"
 
 #: addons/argonaut/argonaut_import_file.tpl.c:59
 msgid "FQDN"
@@ -756,7 +757,7 @@ msgstr "zrušit"
 
 #: addons/argonaut/events/DaemonEvent.tpl.c:5
 msgid "System list"
-msgstr ""
+msgstr "Seznam systémů"
 
 #: addons/argonaut/events/DaemonEvent.tpl.c:8
 msgid "ID"

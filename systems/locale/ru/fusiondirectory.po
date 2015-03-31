@@ -4,14 +4,15 @@
 # 
 # Translators:
 # Alexey, 2015
+# Alexey, 2015
 #  Valia V. Vaneeva <fattie@altlinux.ru>, 2004
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2015-02-25 16:38+0100\n"
-"PO-Revision-Date: 2015-03-18 19:56+0000\n"
-"Last-Translator: Alexey\n"
+"POT-Creation-Date: 2015-03-31 11:49+0200\n"
+"PO-Revision-Date: 2015-03-31 11:41+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/FusionDirectory-108/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -441,6 +442,7 @@ msgid "This will prevent the %s from being reinstalled"
 msgstr ""
 
 #: admin/systems/class_workstationGeneric.inc:185
+#: addons/dashboard/class_dashBoardSystems.inc:48
 msgid "Servers"
 msgstr "Серверы"
 
@@ -499,7 +501,7 @@ msgstr "Выберите действие, которое нужно выпол�
 #: admin/systems/class_mobilePhoneGeneric.inc:106
 #: admin/systems/class_networkSettings.inc:1016
 msgid "Network settings"
-msgstr ""
+msgstr "Сетевые настройки"
 
 #: admin/systems/class_workstationGeneric.inc:459
 msgid "Workstation information"
@@ -663,7 +665,7 @@ msgstr ""
 #: admin/systems/class_printGeneric.inc:1048
 #: admin/systems/class_printGeneric.inc:1070
 msgid "Permission error"
-msgstr ""
+msgstr "Ошибка доступа"
 
 #: admin/systems/class_printGeneric.inc:1048
 #: admin/systems/class_printGeneric.inc:1070
@@ -695,7 +697,7 @@ msgstr "Ошибка фильтра"
 
 #: admin/systems/class_serverService.inc:332
 msgid "The filter is incomplete!"
-msgstr ""
+msgstr "Фильтр неполный!"
 
 #: admin/systems/class_serverService.inc:387
 msgid "Information"
@@ -1101,13 +1103,13 @@ msgstr ""
 #: admin/systems/class_systemManagement.inc:858
 #, php-format
 msgid "You are not allowed to create a snapshot for %s."
-msgstr ""
+msgstr "Вам не разрешено создавать снапшот для %s."
 
 #: admin/systems/class_systemManagement.inc:905
 #: admin/systems/class_systemManagement.inc:926
 #, php-format
 msgid "You are not allowed to restore a snapshot for %s."
-msgstr ""
+msgstr "Вам не разрешено восстанавливать снапшот для %s."
 
 #: admin/systems/class_systemManagement.inc:1169
 #, php-format
@@ -1115,6 +1117,8 @@ msgid "Inherited from %s"
 msgstr ""
 
 #: admin/systems/class_systemManagement.inc:1224
+#: admin/systems/class_systemManagement.inc:1228
+#: addons/dashboard/class_dashBoardSystems.inc:199
 #: config/systems/class_systemsPluginConfig.inc:28
 msgid "Systems"
 msgstr "Системы"
@@ -1383,7 +1387,7 @@ msgstr ""
 #: admin/systems/class_networkSettings.inc:653
 #: admin/systems/class_networkSettings.inc:1022
 msgid "IP address"
-msgstr ""
+msgstr "IP адрес"
 
 #: admin/systems/class_networkSettings.inc:644
 #: admin/systems/class_networkSettings.inc:660
@@ -1428,6 +1432,7 @@ msgid "Add"
 msgstr "Добавить"
 
 #: admin/systems/class_networkSettings.inc:1015
+#: addons/dashboard/class_dashBoardNetwork.inc:127
 msgid "Network"
 msgstr ""
 
@@ -1438,6 +1443,58 @@ msgstr ""
 #: admin/systems/class_networkSettings.inc:1033
 msgid "DHCP configuration"
 msgstr ""
+
+#: addons/dashboard/class_dashBoardSystems.inc:45
+msgid "Workstations"
+msgstr ""
+
+#: addons/dashboard/class_dashBoardSystems.inc:51
+msgid "Windows Workstations"
+msgstr ""
+
+#: addons/dashboard/class_dashBoardSystems.inc:54
+msgid "Terminals"
+msgstr ""
+
+#: addons/dashboard/class_dashBoardSystems.inc:57
+msgid "Printers"
+msgstr ""
+
+#: addons/dashboard/class_dashBoardSystems.inc:60
+msgid "Phones"
+msgstr ""
+
+#: addons/dashboard/class_dashBoardSystems.inc:63
+msgid "Components"
+msgstr ""
+
+#: addons/dashboard/class_dashBoardSystems.inc:66
+msgid "Mobile phones"
+msgstr ""
+
+#: addons/dashboard/class_dashBoardSystems.inc:183
+msgid "Statistics"
+msgstr "Статистика"
+
+#: addons/dashboard/class_dashBoardSystems.inc:188
+msgid "Computer name to use by unit"
+msgstr ""
+
+#: addons/dashboard/class_dashBoardSystems.inc:200
+msgid "Statistics and informations about systems"
+msgstr ""
+
+#: addons/dashboard/class_dashBoardNetwork.inc:111
+msgid "DHCP"
+msgstr "DHCP"
+
+#: addons/dashboard/class_dashBoardNetwork.inc:116
+msgid "DNS"
+msgstr "DNS"
+
+#: addons/dashboard/class_dashBoardNetwork.inc:128
+msgid "Statistics and various informations"
+msgstr "Статистика и различная информация"
 
 #: config/systems/class_systemsPluginConfig.inc:29
 msgid "Systems plugin configuration"
@@ -1616,7 +1673,7 @@ msgstr ""
 
 #: admin/systems/network.tpl.c:41
 msgid "TTL"
-msgstr ""
+msgstr "TTL"
 
 #: admin/systems/network.tpl.c:44
 msgid "Dns records"
@@ -1903,3 +1960,33 @@ msgstr "Объект группы"
 #: admin/systems/SelectDeviceType.tpl.c:23
 msgid "none"
 msgstr "нет"
+
+#: addons/dashboard/systems_stats.tpl.c:2
+msgid "There are several argonaut servers! (this is not yet supported)"
+msgstr ""
+
+#: addons/dashboard/systems_stats.tpl.c:5
+msgid "There is an argonaut server running on %1 (%3://%2:%4)"
+msgstr ""
+
+#: addons/dashboard/systems_stats.tpl.c:8
+msgid "Only one system is configured to run an argonaut client."
+msgid_plural "%1 systems are configured to run an argonaut client."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: addons/dashboard/systems_stats.tpl.c:11
+msgid "But no system is configured to run an argonaut client!"
+msgstr ""
+
+#: addons/dashboard/systems_stats.tpl.c:14
+msgid ""
+"A system is configured to run an argonaut client, but there is no argonaut "
+"server configured!"
+msgid_plural ""
+"%1 systems are configured to run an argonaut client, but there is no "
+"argonaut server configured!"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""

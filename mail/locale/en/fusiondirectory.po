@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-12-09 22:29+0100\n"
+"POT-Creation-Date: 2015-03-31 11:49+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,40 +29,48 @@ msgstr ""
 
 #: admin/groups/mail/class_groupMail.inc:79
 #: admin/systems/services/postfix/class_servicePostfix.inc:44
-#: personal/mail/class_mailAccount.inc:97
-#: config/mail/class_mailPluginConfig.inc:108
-msgid "Generic"
+msgid "Informations"
 msgstr ""
 
-#: admin/groups/mail/class_groupMail.inc:86
+#: admin/groups/mail/class_groupMail.inc:82
 #: personal/mail/class_mailAccount.inc:100
 msgid "Primary address"
 msgstr ""
 
-#: admin/groups/mail/class_groupMail.inc:86
+#: admin/groups/mail/class_groupMail.inc:82
 msgid "The primary mail address"
 msgstr ""
 
-#: admin/groups/mail/class_groupMail.inc:90
+#: admin/groups/mail/class_groupMail.inc:86
 #: personal/mail/class_mailAccount.inc:104
 msgid "Server"
 msgstr ""
 
-#: admin/groups/mail/class_groupMail.inc:90
+#: admin/groups/mail/class_groupMail.inc:86
 msgid "Server mail"
 msgstr ""
 
-#: admin/groups/mail/class_groupMail.inc:96
+#: admin/groups/mail/class_groupMail.inc:92
 #: personal/mail/class_mailAccount.inc:120
 msgid "Alternative addresses"
 msgstr ""
 
-#: admin/groups/mail/class_groupMail.inc:96
+#: admin/groups/mail/class_groupMail.inc:92
 msgid "Alternative mail addresses for the group"
 msgstr ""
 
-#: admin/groups/mail/class_groupMail.inc:101
+#: admin/groups/mail/class_groupMail.inc:97
 msgid "Forward messages to non group members"
+msgstr ""
+
+#: admin/groups/mail/class_groupMail.inc:101
+msgid "Only allowed to receive local mail"
+msgstr ""
+
+#: admin/groups/mail/class_groupMail.inc:101
+msgid ""
+"Whether this group mail is only allowed to receive messages from local "
+"senders"
 msgstr ""
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:29
@@ -215,7 +223,8 @@ msgid "Rules"
 msgstr ""
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:116
-msgid "Edit spam ruleEdit spam rule"
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:124
+msgid "Edit spam rule"
 msgstr ""
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:119
@@ -226,17 +235,13 @@ msgstr ""
 msgid "Rule"
 msgstr ""
 
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:124
-msgid "Edit spam rule"
-msgstr ""
-
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:31
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:32
 msgid "Antivirus service"
 msgstr ""
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:46
-msgid "Generic virus filtering"
+msgid "Virus filtering"
 msgstr ""
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:50
@@ -273,6 +278,10 @@ msgstr ""
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:68
 msgid "Max directory recursions"
+msgstr ""
+
+#: admin/systems/services/virus/class_serviceAntiVirus.inc:68
+msgid "Maximum number of directory recursions"
 msgstr ""
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:73
@@ -319,10 +328,6 @@ msgstr ""
 msgid "Maximum compression ratio"
 msgstr ""
 
-#: admin/systems/services/virus/class_serviceAntiVirus.inc:113
-msgid " "
-msgstr ""
-
 #: admin/systems/services/imap/class_serviceIMAP.inc:32
 msgid "IMAP/POP3 generic service"
 msgstr ""
@@ -346,16 +351,16 @@ msgstr ""
 msgid "Mail method '%s' is unknown!"
 msgstr ""
 
-#: personal/mail/class_mail-methods.inc:735
-#: personal/mail/class_mail-methods.inc:736
+#: personal/mail/class_mail-methods.inc:727
+#: personal/mail/class_mail-methods.inc:728
 msgid "None"
 msgstr ""
 
-#: personal/mail/class_mail-methods.inc:825
+#: personal/mail/class_mail-methods.inc:817
 msgid "Unknown"
 msgstr ""
 
-#: personal/mail/class_mail-methods.inc:827
+#: personal/mail/class_mail-methods.inc:819
 msgid "Unlimited"
 msgstr ""
 
@@ -385,6 +390,10 @@ msgstr ""
 #: personal/mail/class_mailAccount.inc:80
 #: config/mail/class_mailPluginConfig.inc:41
 msgid "Mail settings"
+msgstr ""
+
+#: personal/mail/class_mailAccount.inc:97
+msgid "Mail account"
 msgstr ""
 
 #: personal/mail/class_mailAccount.inc:100
@@ -616,4 +625,8 @@ msgstr ""
 
 #: config/mail/class_mailPluginConfig.inc:90
 msgid "Prefix to add for mail shared folders."
+msgstr ""
+
+#: config/mail/class_mailPluginConfig.inc:108
+msgid "Generic"
 msgstr ""

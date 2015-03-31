@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2015-03-17 18:47+0100\n"
-"PO-Revision-Date: 2014-08-28 10:46+0000\n"
+"POT-Creation-Date: 2015-03-31 11:49+0200\n"
+"PO-Revision-Date: 2015-03-31 10:41+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Dutch (http://www.transifex.com/projects/p/FusionDirectory-108/language/nl/)\n"
 "MIME-Version: 1.0\n"
@@ -19,79 +19,82 @@ msgstr ""
 "Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: personal/pureftpd/class_pureftpdAccount.inc:34
+#: personal/pureftpd/class_pureftpdAccount.inc:33
 msgid "Ftp"
 msgstr "Ftp"
 
-#: personal/pureftpd/class_pureftpdAccount.inc:35
+#: personal/pureftpd/class_pureftpdAccount.inc:34
 msgid "Pure ftp account"
 msgstr "Pure ftp account"
 
-#: personal/pureftpd/class_pureftpdAccount.inc:35
+#: personal/pureftpd/class_pureftpdAccount.inc:34
 msgid "Connectivity addon"
 msgstr "Connectiviteit addon"
 
-#: personal/pureftpd/class_pureftpdAccount.inc:50
+#: personal/pureftpd/class_pureftpdAccount.inc:49
 msgid "Bandwidth"
 msgstr "Bandbreedte"
 
+#: personal/pureftpd/class_pureftpdAccount.inc:52
 #: personal/pureftpd/class_pureftpdAccount.inc:53
-#: personal/pureftpd/class_pureftpdAccount.inc:54
 msgid "Upload bandwidth"
 msgstr "Verstuur bandbreedte"
 
-#: personal/pureftpd/class_pureftpdAccount.inc:53
-#: personal/pureftpd/class_pureftpdAccount.inc:62
+#: personal/pureftpd/class_pureftpdAccount.inc:52
+#: personal/pureftpd/class_pureftpdAccount.inc:61
 msgid " (kb/sec)"
 msgstr ""
 
-#: personal/pureftpd/class_pureftpdAccount.inc:62
+#: personal/pureftpd/class_pureftpdAccount.inc:61
 msgid "Download bandwidth"
 msgstr "Ontvangst bandbreedte"
 
-#: personal/pureftpd/class_pureftpdAccount.inc:63
+#: personal/pureftpd/class_pureftpdAccount.inc:62
 msgid "Download bandwidth in kb/sec"
 msgstr ""
 
-#: personal/pureftpd/class_pureftpdAccount.inc:73
+#: personal/pureftpd/class_pureftpdAccount.inc:72
 msgid "Ratio"
 msgstr "Verhouding"
 
+#: personal/pureftpd/class_pureftpdAccount.inc:75
 #: personal/pureftpd/class_pureftpdAccount.inc:76
-#: personal/pureftpd/class_pureftpdAccount.inc:77
 msgid "Uploaded files"
 msgstr ""
 
+#: personal/pureftpd/class_pureftpdAccount.inc:84
 #: personal/pureftpd/class_pureftpdAccount.inc:85
-#: personal/pureftpd/class_pureftpdAccount.inc:86
 msgid "Downloaded files"
 msgstr ""
 
-#: personal/pureftpd/class_pureftpdAccount.inc:99
+#: personal/pureftpd/class_pureftpdAccount.inc:98
 msgid "Files"
 msgstr "Bestanden"
 
-#: personal/pureftpd/class_pureftpdAccount.inc:100
+#: personal/pureftpd/class_pureftpdAccount.inc:99
 msgid "Quota files"
 msgstr "Quota bestanden"
 
-#: personal/pureftpd/class_pureftpdAccount.inc:108
+#: personal/pureftpd/class_pureftpdAccount.inc:107
 msgid "Size"
 msgstr "Grootte"
 
-#: personal/pureftpd/class_pureftpdAccount.inc:108
+#: personal/pureftpd/class_pureftpdAccount.inc:107
 msgid " (MB)"
 msgstr ""
 
-#: personal/pureftpd/class_pureftpdAccount.inc:109
+#: personal/pureftpd/class_pureftpdAccount.inc:108
 msgid "Files size"
 msgstr ""
 
-#: personal/pureftpd/class_pureftpdAccount.inc:119
+#: personal/pureftpd/class_pureftpdAccount.inc:118
 msgid "Miscellaneous"
 msgstr "Terminal Service diverse"
 
-#: personal/pureftpd/class_pureftpdAccount.inc:122
-#: personal/pureftpd/class_pureftpdAccount.inc:123
-msgid "Temporary disable FTP access"
-msgstr "Schakel FTP toegang tijdelijk uit"
+#: personal/pureftpd/class_pureftpdAccount.inc:121
+msgid "Enable FTP access"
+msgstr ""
+
+#: personal/pureftpd/class_pureftpdAccount.inc:121
+msgid "Enable or disable FTP access"
+msgstr ""

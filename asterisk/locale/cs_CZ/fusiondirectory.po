@@ -4,15 +4,15 @@
 # 
 # Translators:
 # Pavel Borecki <pavel.borecki@gmail.com>, 2012
-# Pavel Borecki <pavel.borecki@gmail.com>, 2012
+# Pavel Borecki <pavel.borecki@gmail.com>, 2012,2015
 # Pavel Borecki <pavel.borecki@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2015-03-19 21:45+0100\n"
-"PO-Revision-Date: 2015-02-25 16:12+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"POT-Creation-Date: 2015-03-31 11:49+0200\n"
+"PO-Revision-Date: 2015-03-31 11:51+0000\n"
+"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/FusionDirectory-108/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -37,7 +37,7 @@ msgstr "Současný domovský server již není k dispozici. Uložením této pol
 
 #: admin/ogroups/asterisk/class_phonequeue.inc:140
 msgid "ring all"
-msgstr ""
+msgstr "zavolat všem"
 
 #: admin/ogroups/asterisk/class_phonequeue.inc:141
 msgid "round robin"
@@ -57,7 +57,7 @@ msgstr "náhodné"
 
 #: admin/ogroups/asterisk/class_phonequeue.inc:145
 msgid "round robin with memory"
-msgstr ""
+msgstr "round robin s pamětí"
 
 #: admin/ogroups/asterisk/class_phonequeue.inc:180
 msgid "Remove the phone queue from this Account"
@@ -108,7 +108,7 @@ msgstr "délka fronty"
 #: admin/ogroups/asterisk/class_phonequeue.inc:874
 #: admin/ogroups/asterisk/phonequeue.tpl.c:35
 msgid "Announce frequency"
-msgstr ""
+msgstr "Četnost oznamování"
 
 #: admin/ogroups/asterisk/class_phonequeue.inc:293
 #: admin/conference/class_phoneConferenceGeneric.inc:328
@@ -211,7 +211,7 @@ msgstr "Dovolit volanému uživateli přepojit hovor jinam."
 #: admin/ogroups/asterisk/class_phonequeue.inc:876
 #: admin/ogroups/asterisk/phonequeue.tpl.c:89
 msgid "Allows calling user to transfer call"
-msgstr "Dovolit volajícímu uživateli přepojit hovor jinam."
+msgstr "Umožnit volajícímu uživateli předat hovor"
 
 #: admin/ogroups/asterisk/class_phonequeue.inc:877
 #: admin/ogroups/asterisk/phonequeue.tpl.c:92
@@ -247,7 +247,7 @@ msgstr "nahrávka „jste druhý v pořadí“"
 
 #: admin/ogroups/asterisk/class_phonequeue.inc:885
 msgid "'There are' sound"
-msgstr ""
+msgstr "Nahrávka „jsou zde“"
 
 #: admin/ogroups/asterisk/class_phonequeue.inc:886
 msgid "'Call waiting' sound"
@@ -391,7 +391,7 @@ msgstr "'%s' je již přiřazeno '%s'!"
 
 #: admin/conference/class_phoneConferenceGeneric.inc:693
 msgid "Phone Conference"
-msgstr ""
+msgstr "Telefonní konference"
 
 #: admin/conference/class_phoneConferenceGeneric.inc:694
 msgid "Phone conference management"
@@ -403,7 +403,7 @@ msgstr "konference GOfon"
 
 #: admin/conference/class_phoneConferenceGeneric.inc:698
 msgid "Asterisk conference"
-msgstr ""
+msgstr "Asterisk konference"
 
 #: admin/conference/class_phoneConferenceGeneric.inc:703
 #: admin/macro/class_gofonMacro.inc:546
@@ -411,7 +411,7 @@ msgstr ""
 #: admin/conference/generic.tpl.c:17 admin/macro/generic.tpl.c:14
 #: admin/systems/asterisk/phone.tpl.c:5
 msgid "Base"
-msgstr "základ"
+msgstr "Základ"
 
 #: admin/conference/class_phoneConferenceGeneric.inc:705
 msgid "Conference PIN"
@@ -442,7 +442,7 @@ msgstr "upozorňovat na aktivitu uživatele"
 
 #: admin/conference/class_phoneConferenceGeneric.inc:715
 msgid "Count user"
-msgstr ""
+msgstr "Spočítat uživatele"
 
 #: admin/conference/class_phoneConferenceGeneric.inc:716
 msgid "Conference type"
@@ -463,11 +463,11 @@ msgstr "vlastník"
 
 #: admin/conference/class_phoneConferenceManagment.inc:36
 msgid "Phone Conferences"
-msgstr ""
+msgstr "Telefonické konference"
 
 #: admin/conference/class_phoneConferenceManagment.inc:37
 msgid "Phone Conference management"
-msgstr ""
+msgstr "Správa telefonické konference"
 
 #: admin/macro/class_gofonMacro.inc:202
 #, php-format
@@ -518,7 +518,7 @@ msgstr "Makro je prázdné!"
 #: admin/systems/asterisk/class_phoneGeneric.inc:267
 #, php-format
 msgid "Cannot delete entry because it is still in use by '%s'!"
-msgstr "Nemohu odstranit položku, protože ji používá '%s'!"
+msgstr "Položku není možné odstranit, protože je používána %s!"
 
 #: admin/macro/class_gofonMacro.inc:465
 #: addons/fonreports/class_fonreport.inc:190
@@ -560,7 +560,7 @@ msgstr "příznak viditelnosti"
 
 #: admin/macro/class_gofonMacroManagement.inc:36
 msgid "Phone Macros"
-msgstr ""
+msgstr "Telefonní makra"
 
 #: admin/macro/class_gofonMacroManagement.inc:37
 msgid "Phone Macros management"
@@ -580,12 +580,12 @@ msgstr "parametr"
 
 #: admin/macro/class_gofonMacroParameters.inc:59
 msgid "Asterisk macro parameter"
-msgstr ""
+msgstr "Parametr Asterisk makra"
 
 #: admin/macro/class_gofonMacroParameters.inc:234
 #: personal/phoneaccount/generic.tpl.c:35
 msgid "Phone macro"
-msgstr "telefonní makro"
+msgstr "Telefonní makro"
 
 #: admin/macro/class_gofonMacroParameters.inc:290
 msgid "String"
@@ -651,7 +651,7 @@ msgstr "IP addresa"
 
 #: admin/systems/asterisk/class_phoneGeneric.inc:473
 msgid "Phone information"
-msgstr ""
+msgstr "Informace o telefonu"
 
 #: admin/systems/asterisk/class_phoneGeneric.inc:476
 #: personal/phoneaccount/class_phoneAccount.inc:1668
@@ -716,7 +716,7 @@ msgstr "uživatel pro připojování do databáze Asterisku"
 
 #: admin/systems/services/asterisk/class_serviceAsterisk.inc:38
 msgid "Login for asterisk database administrator"
-msgstr ""
+msgstr "Přihlašovací jméno správce databáze pro asterisk"
 
 #: admin/systems/services/asterisk/class_serviceAsterisk.inc:42
 msgid "Password"
@@ -724,7 +724,7 @@ msgstr "heslo"
 
 #: admin/systems/services/asterisk/class_serviceAsterisk.inc:42
 msgid "Password for asterisk database administrator"
-msgstr ""
+msgstr "Heslo k účtu správce databáze pro asterisk"
 
 #: admin/systems/services/asterisk/class_serviceAsterisk.inc:46
 msgid "Country dial prefix"
@@ -740,18 +740,18 @@ msgstr "ovladač"
 
 #: admin/systems/services/asterisk/class_serviceAsterisk.inc:54
 msgid "Driver to use to contact this database."
-msgstr ""
+msgstr "Ovladač pro práci s touto databází."
 
 #: admin/systems/services/asterisk/class_serviceAsterisk.inc:95
 #, php-format
 msgid ""
 "You can't remove the asterisk database extension, it is still in use by "
 "these objects '%s'."
-msgstr ""
+msgstr "Databázové rozšíření ústředny asterisk nyní nelze odebrat, protože je stále používána těmito objekty %s."
 
 #: admin/systems/services/asterisk/class_serviceAsterisk.inc:140
 msgid "VoIP service (asterisk)"
-msgstr ""
+msgstr "VoIP služba (Asterisk)"
 
 #: admin/systems/services/asterisk/class_serviceAsterisk.inc:141
 msgid "VoIP - asterisk management"
@@ -773,7 +773,7 @@ msgstr "R-M-D"
 #: addons/fonreports/class_fonreport.inc:419
 #: addons/fonreports/class_fonreport.inc:424 addons/fonreports/main.inc:46
 msgid "Phone reports"
-msgstr ""
+msgstr "Přehledy telefonu"
 
 #: addons/fonreports/class_fonreport.inc:419
 msgid "All entries are readonly"
@@ -903,7 +903,7 @@ msgstr "Vyskytla se chyba při aktualizaci položek v databázi!"
 
 #: personal/phoneaccount/class_phoneAccount.inc:1567
 msgid "Was not able to found any asterisk server"
-msgstr ""
+msgstr "Nebylo možné najít jakýkoli Asterisk server"
 
 #: personal/phoneaccount/class_phoneAccount.inc:1600
 #, php-format
@@ -914,7 +914,7 @@ msgstr "Uživatel '%s' byl odebrán z fronty hovorů '%s'."
 #: personal/phoneaccount/class_phoneAccount.inc:1639
 #, php-format
 msgid "The specified telephonenumber '%s' is already assigned to '%s'."
-msgstr ""
+msgstr "Zadané telefonní číslo %s je již přiřazené %s."
 
 #: personal/phoneaccount/class_phoneAccount.inc:1649
 #, php-format
@@ -933,11 +933,11 @@ msgstr "nastavení makra"
 
 #: personal/phoneaccount/class_phoneAccount.inc:1670
 msgid "Phone context"
-msgstr ""
+msgstr "Telefonní kontext"
 
 #: personal/phoneaccount/class_phoneAccount.inc:1671
 msgid "Voice mail context"
-msgstr ""
+msgstr "Kontext hlasové schránky"
 
 #: personal/phoneaccount/class_phoneAccount.inc:1672
 msgid "Telephone pin"
@@ -950,7 +950,7 @@ msgstr "PIN hlasové schránky"
 #: personal/phoneaccount/class_phoneAccount.inc:1695
 #, php-format
 msgid "You need to configure %s contexts first"
-msgstr ""
+msgstr "Nejprve je třeba nastavit kontexty %s"
 
 #: personal/phoneaccount/main.inc:124
 msgid "Click the 'Edit' button below to change informations in this dialog"
@@ -968,31 +968,31 @@ msgstr ""
 
 #: config/asterisk/class_asteriskPluginConfig.inc:29
 msgid "Asterisk plugin configuration"
-msgstr ""
+msgstr "Nastavení zásuvného modulu Asterisk"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:44
 msgid "Phone RDN"
-msgstr ""
+msgstr "Relativní rozlišený název telefonu"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:44
 msgid "Branch in which phones will be stored"
-msgstr ""
+msgstr "Větev, ve které budou ukládány telefony"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:49
 msgid "Phone Macro RDN"
-msgstr ""
+msgstr "Relativní rozlišený název telefonního makra"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:49
 msgid "Branch in which phone macros will be stored"
-msgstr ""
+msgstr "Větev, ve které budou ukládána telefonní makra"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:54
 msgid "Phone Conference RDN"
-msgstr ""
+msgstr "Relativní rozlišený název telefonické konference"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:54
 msgid "Branch in which phone conferences will be stored"
-msgstr ""
+msgstr "Větev, ve které budou uloženy telefonické konference"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:61
 msgid "Miscellaneous"
@@ -1000,19 +1000,19 @@ msgstr "různé"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:65
 msgid "SIP contexts"
-msgstr ""
+msgstr "SIP kontexty"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:65
 msgid "Available SIP contexts"
-msgstr ""
+msgstr "SIP kontexty k dispozici"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:72
 msgid "Voicemail contexts"
-msgstr ""
+msgstr "Kontexty hlasové schránky"
 
 #: config/asterisk/class_asteriskPluginConfig.inc:72
 msgid "Available voicemail contexts"
-msgstr ""
+msgstr "Dostupné kontexty hlasových schránek"
 
 #: admin/ogroups/asterisk/phonequeue.tpl.c:2
 msgid ""
@@ -1065,7 +1065,7 @@ msgstr "oznamovací zpráva"
 
 #: admin/ogroups/asterisk/phonequeue.tpl.c:56
 msgid "Sound file for 'You are next ...'"
-msgstr ""
+msgstr "Nahrávka „Jste další v pořadí…“"
 
 #: admin/ogroups/asterisk/phonequeue.tpl.c:59
 msgid "'There are ...'"
@@ -1077,7 +1077,7 @@ msgstr "„…čekajících hovorů“"
 
 #: admin/ogroups/asterisk/phonequeue.tpl.c:65
 msgid "'Thank you' message"
-msgstr ""
+msgstr "Zpráva „Děkujeme“"
 
 #: admin/ogroups/asterisk/phonequeue.tpl.c:68
 msgid "'minutes' sound file"
@@ -1252,7 +1252,7 @@ msgstr "GoFonOutKeys"
 
 #: admin/systems/asterisk/phonesettings.tpl.c:59
 msgid "Account code"
-msgstr ""
+msgstr "Kód účtu"
 
 #: admin/systems/asterisk/phonesettings.tpl.c:62
 msgid "Trunk lines"
@@ -1273,7 +1273,7 @@ msgstr "stroje, kterým není dovoleno připojit se"
 
 #: admin/systems/asterisk/phonesettings.tpl.c:80
 msgid "MSN"
-msgstr "MSN"
+msgstr ""
 
 #: admin/systems/asterisk/phone.tpl.c:2
 msgid "Phone name"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-12-09 22:29+0100\n"
+"POT-Creation-Date: 2015-03-31 11:49+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -63,11 +63,12 @@ msgid "Debconf profile"
 msgstr ""
 
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:163
-msgid "Debconf profile generic"
+msgid "Debconf profile information"
 msgstr ""
 
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:181
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:184
+#: admin/debconfProfile/debconfProfile-filter.tpl.c:5
 msgid "Name"
 msgstr ""
 
@@ -129,4 +130,8 @@ msgstr ""
 
 #: admin/systems/debconf/class_debconfStartup.inc:112
 msgid "Debconf preseed startup"
+msgstr ""
+
+#: admin/debconfProfile/debconfProfile-filter.tpl.c:2
+msgid "Filter"
 msgstr ""
