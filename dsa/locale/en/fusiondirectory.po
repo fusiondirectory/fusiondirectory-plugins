@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-12-09 22:29+0100\n"
+"POT-Creation-Date: 2015-03-31 11:49+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,6 +41,7 @@ msgid "Password"
 msgstr ""
 
 #: admin/dsa/class_dsaManagement.inc:34 admin/dsa/class_dsaManagement.inc:39
+#: config/dsa/class_dsaConfig.inc:42
 msgid "DSA"
 msgstr ""
 
@@ -56,15 +57,10 @@ msgstr ""
 msgid "FusionDirectory dsa plugin configuration"
 msgstr ""
 
-#: config/dsa/class_dsaConfig.inc:42
-msgid "LDAP tree"
-msgstr ""
-
 #: config/dsa/class_dsaConfig.inc:45
 msgid "DSA RDN"
 msgstr ""
 
 #: config/dsa/class_dsaConfig.inc:45
-msgid ""
-"Branch in which Directory Service Account (dsa) will be stored (required)"
+msgid "Branch in which Directory Service Account (dsa) will be stored"
 msgstr ""

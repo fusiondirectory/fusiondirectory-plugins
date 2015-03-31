@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Pavel Borecki <pavel.borecki@gmail.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-12-16 21:56+0100\n"
-"PO-Revision-Date: 2014-11-26 14:29+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2015-03-31 11:49+0200\n"
+"PO-Revision-Date: 2015-03-31 10:44+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/FusionDirectory-108/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,55 +20,56 @@ msgstr ""
 
 #: personal/personal/class_personalInfo.inc:30
 msgid "Site"
-msgstr ""
+msgstr "Místo"
 
 #: personal/personal/class_personalInfo.inc:30
 msgid "Website the account is on"
-msgstr ""
+msgstr "Web, na kterém se tento účet nachází"
 
 #: personal/personal/class_personalInfo.inc:36
 msgid "Id"
-msgstr ""
+msgstr "Identifikátor"
 
 #: personal/personal/class_personalInfo.inc:36
 msgid "Id of this user on this website"
-msgstr ""
+msgstr "Identifikátor tohoto uživatele na tomto webu"
 
 #: personal/personal/class_personalInfo.inc:85
+#: config/personal/class_personalConfig.inc:42
 msgid "Personal"
 msgstr "osobní"
 
 #: personal/personal/class_personalInfo.inc:86
 msgid "Personal informations"
-msgstr ""
+msgstr "Osobní údaje"
 
 #: personal/personal/class_personalInfo.inc:100
 msgid "Personal info"
-msgstr ""
+msgstr "Osobní údaje"
 
 #: personal/personal/class_personalInfo.inc:105
 msgid "Social account"
-msgstr ""
+msgstr "Účet na společenských sítích"
 
 #: personal/personal/class_personalInfo.inc:105
 msgid "Social accounts of this user"
-msgstr ""
+msgstr "Účty tohoto uživatele na společenských sítích"
 
 #: personal/personal/class_personalInfo.inc:112
 msgid "Private email"
-msgstr ""
+msgstr "Soukromý e-mail"
 
 #: personal/personal/class_personalInfo.inc:112
 msgid "Private email addresses of this user"
-msgstr ""
+msgstr "Soukromá e-mailová adresa tohoto uživatele"
 
 #: personal/personal/class_personalInfo.inc:118
 msgid "Nickname"
-msgstr ""
+msgstr "Přezdívka"
 
 #: personal/personal/class_personalInfo.inc:118
 msgid "Nicknames for this user"
-msgstr ""
+msgstr "Přezdívka tohoto uživatele"
 
 #: personal/personal/class_socialHandlers.inc:68
 msgid "Facebook"
@@ -87,4 +89,20 @@ msgstr ""
 
 #: personal/personal/class_socialHandlers.inc:131
 msgid "Diaspora accounts must look like user@pod"
+msgstr "Diaspora účty mají podobu uzivatel@server"
+
+#: config/personal/class_personalConfig.inc:28
+msgid "Personal configuration"
+msgstr ""
+
+#: config/personal/class_personalConfig.inc:29
+msgid "FusionDirectory personal plugin configuration"
+msgstr ""
+
+#: config/personal/class_personalConfig.inc:45
+msgid "Allow use of private email for password recovery"
+msgstr ""
+
+#: config/personal/class_personalConfig.inc:45
+msgid "Allow users to use their private email address for password recovery"
 msgstr ""

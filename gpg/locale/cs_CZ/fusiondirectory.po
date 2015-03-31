@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Pavel Borecki <pavel.borecki@gmail.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-12-16 21:56+0100\n"
-"PO-Revision-Date: 2014-12-08 21:41+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"POT-Creation-Date: 2015-03-31 11:49+0200\n"
+"PO-Revision-Date: 2015-03-31 11:51+0000\n"
+"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/FusionDirectory-108/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -28,7 +29,7 @@ msgstr "software"
 
 #: addons/gpg/class_pgpServerInfo.inc:38
 msgid "Which software this GPG key server is running"
-msgstr ""
+msgstr "Jaká implementace GPG je používána na tomto serveru s klíči"
 
 #: addons/gpg/class_pgpServerInfo.inc:43
 msgid "GPG version"
@@ -36,21 +37,21 @@ msgstr "Verze GPG"
 
 #: addons/gpg/class_pgpServerInfo.inc:43
 msgid "Which version of GPG this key server is running"
-msgstr ""
+msgstr "Jaká verze nástroje GPG je provozována na tomto serveru s klíči"
 
 #: addons/gpg/class_pgpServerInfo.inc:48
 msgid "Branch in which keys are stored"
-msgstr ""
+msgstr "Větev, ve které jsou uloženy klíče"
 
 #: addons/gpg/class_pgpServerInfo.inc:52
 msgid "Keys RDN"
-msgstr ""
+msgstr "Relativní rozlišený název klíčů"
 
 #: addons/gpg/class_pgpServerInfo.inc:52
 msgid "Branch under base in which keys are stored"
-msgstr ""
+msgstr "Větev, ve které jsou uloženy klíče"
 
-#: addons/gpg/class_pgpServerInfo.inc:91
+#: addons/gpg/class_pgpServerInfo.inc:92
 msgid "LDAP error"
 msgstr "chyba LDAPu"
 
@@ -60,12 +61,12 @@ msgstr "vyberte prosím požadované položky"
 
 #: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:14
 msgid "PGP Key"
-msgstr ""
+msgstr "PGP klíč"
 
 #: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:40
 #: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:128
 msgid "Key ID"
-msgstr ""
+msgstr "Identifikátor klíče"
 
 #: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:48
 msgid "User"
@@ -73,7 +74,7 @@ msgstr "uživatel"
 
 #: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:56
 msgid "Creation date"
-msgstr ""
+msgstr "Datum vytvoření"
 
 #: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:64
 msgid "Expiration date"
@@ -91,7 +92,7 @@ msgstr "velikost"
 #: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:88
 #: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:134
 msgid "Revoked"
-msgstr ""
+msgstr "Platnost odvolána"
 
 #: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:96
 #: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:135
@@ -104,7 +105,7 @@ msgstr "chyba v nastavení"
 
 #: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:41
 msgid "You need to configure GPG base dn through the addons section first"
-msgstr ""
+msgstr "Nejprve je třeba prostřednictvím sekce přídavky nastavit základ GPG"
 
 #: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:129
 msgid "User ID"
@@ -120,15 +121,15 @@ msgstr "Vypršení platnosti"
 
 #: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:132
 msgid "Algorithm"
-msgstr ""
+msgstr "Algoritmus"
 
 #: personal/gpg/class_gpgAccount.inc:31
 msgid "GPG keys"
-msgstr ""
+msgstr "GPG klíče"
 
 #: personal/gpg/class_gpgAccount.inc:35
 msgid "GPG keys of this user"
-msgstr ""
+msgstr "GPG klíče tohoto uživatele"
 
 #: personal/gpg/class_gpgAccount.inc:46
 msgid "GPG"
@@ -136,4 +137,4 @@ msgstr ""
 
 #: personal/gpg/class_gpgAccount.inc:47
 msgid "Edit user's GPG IDs"
-msgstr ""
+msgstr "Upravit GPG identifikátory uživatele"

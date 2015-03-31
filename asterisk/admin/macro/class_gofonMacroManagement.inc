@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2013  FusionDirectory
+  Copyright (C) 2011-2015  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -36,8 +36,8 @@ class goFonMacro extends management
       "plShortName"   => _("Phone Macros"),
       "plDescription" => _("Phone Macros management"),
       "plIcon"        => "plugins/asterisk/images/iconMacros.png",
-      "plSection"     => "admin",
-      "plPriority"    => 11,
+      "plSection"     => "systems",
+      "plPriority"    => 7,
       "plCategory"    => array("gofonmacro"),
 
       "plProvidedAcls" => array()

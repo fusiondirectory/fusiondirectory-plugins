@@ -2,7 +2,7 @@
 
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2011-2013  FusionDirectory
+  Copyright (C) 2011-2015  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -752,10 +752,11 @@ class supportDaemon
           $infos['URL']           = $tmp[0];
           $infos['PARENT_SERVER'] = $tmp[1];
           $infos['FAI_RELEASE']   = $tmp[2];
-          $infos['SECTIONS']      = explode(",", $tmp[3]);
+          $infos['SECTIONS']      = (empty($tmp[3])?array():explode(",", $tmp[3]));
           $infos['INSTALL']       = $tmp[4];
           $infos['LOCAL']         = $tmp[5];
-          $infos['ARCHS']         = explode(",", $tmp[6]);
+          $infos['ARCHS']         = (empty($tmp[6])?array():explode(",", $tmp[6]));
+          $infos['DIST']          = (isset($tmp[7])?$tmp[7]:'debian');
           $repos[] = $infos;
         }
       }
@@ -792,7 +793,7 @@ class supportDaemon
   */
   public function FAI_get_kernels($release)
   {
-    $kernels = $this->FAI_get_packages($release, array("package"), array("linux-image"));
+    $kernels = $this->FAI_get_packages($release, array("package"), array("linux-image", '^kernel$'));
     foreach ($kernels as &$kernel) {
       $kernel = $kernel['PACKAGE'];
     }
@@ -810,8 +811,8 @@ class supportDaemon
   public function FAI_get_profiles($release)
   {
     $ldap = $this->config->get_ldap_link();
-    $ldap->cd("ou=$release,".get_ou("faiBaseRDN").$this->config->current['BASE']);
-    $ldap->search("(&(objectClass=FAIprofile)(objectClass=FAIclass))", array('cn'));
+    $ldap->cd(get_ou("faiBaseRDN").$this->config->current['BASE']);
+    $ldap->search("(&(objectClass=FAIprofile)(objectClass=FAIclass)(ou:dn:=$release))", array('cn'));
 
     $res = array();
     while ($entry = $ldap->fetch()) {

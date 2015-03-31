@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2013  FusionDirectory
+  Copyright (C) 2011-2015  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -802,24 +802,18 @@ class faiManagement extends management
 
 
 
-  /*! \brief   Returns a list of all releases for useable for drop down boxes.
-   *                      ou=fai... /
-   *              ou=siga,ou=fai... &nbsp; siga
-   *         ou=1,ou=siga,ou=fai... &nbsp;&nbsp; 1
+  /*! \brief   Returns a list of all releases useable for drop down boxes.
    */
-  function getReleaseList($base = "", $prefix ="")
+  function getReleaseList()
   {
     $list = array();
-    if (empty($base)) {
-      $base = $this->fai_base;
-    }
 
     $ldap = $this->config->get_ldap_link();
-    $ldap->ls("(objectClass=FAIbranch)",$base,array("ou","FAIstate"));
+    $ldap->cd($this->fai_base);
+    $ldap->search('(objectClass=FAIbranch)', array('ou','FAIstate'));
 
-    while($release = $ldap->fetch()){
-      $list[$release['dn']] = $prefix.$release['ou'][0];
-      $list = array_merge($list,$this->getReleaseList($release['dn'],$prefix."&nbsp; "));
+    while ($release = $ldap->fetch()) {
+      $list[$release['dn']] = $release['ou'][0];
     }
     return $list;
   }
@@ -1046,9 +1040,10 @@ class faiManagement extends management
       "plDescription" => _("Manage FAI software packages and deployment recipes"),
       "plIcon"        => "plugins/fai/images/icon.png",
       "plSelfModify"  => FALSE,
-      "plSection"     => "admin",
-      "plPriority"    => 30,
+      "plSection"     => "systems",
+      "plPriority"    => 20,
       "plCategory"    => array("fai" => array("description" => _("FAI"), "objectClass" => "FAIclass")),
+      'plManages'     => array('faiVariable', 'faiHook', 'faiScript', 'faiPackage', 'faiPartitionTable', 'faiTemplate', 'faiProfile'),
 
       "plProvidedAcls" => array()
     );

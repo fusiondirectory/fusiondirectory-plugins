@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003  Cajus Pollmeier
-  Copyright (C) 2011-2013  FusionDirectory
+  Copyright (C) 2011-2015  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -47,6 +47,45 @@ class SudoUsersGroupsAttribute extends DialogAttribute
       }
     }
     return $used;
+  }
+}
+
+class SudoSystemsAttribute extends SystemsAttribute
+{
+  function renderButtons ()
+  {
+    $id = $this->getHtmlId();
+    $buttons  = $this->renderInputField(
+      'submit', 'add'.$id.'_ALL',
+      array('value' => 'ALL')
+    );
+    return $buttons.parent::renderButtons();
+  }
+
+  protected function htmlIds()
+  {
+    $id = $this->getHtmlId();
+    $ids = parent::htmlIds();
+    $ids[] = 'add'.$id.'_ALL';
+    return $ids;
+  }
+
+  function loadPostValue ()
+  {
+    parent::loadPostValue();
+    if ($this->isVisible()) {
+      if (isset($_POST['add'.$this->getHtmlId().'_ALL'])) {
+        $this->value = array('ALL');
+      }
+    }
+  }
+
+  function addValue ($value, $attrs)
+  {
+    if ($this->value[0] === 'ALL') {
+      unset($this->value[0]);
+    }
+    parent::addValue($value, $attrs);
   }
 }
 
@@ -121,13 +160,21 @@ class sudo extends simplePlugin
           ),
           new SetAttribute (
             new StringAttribute (
-              _('Run as'),
-              _('A user that commands may be run as or a Unix group that contains a list of users that commands may be run as'),
-              'sudoRunAs', FALSE,
-              'ALL'
-            )
+              _('Run as (user)'),
+              _('User(s) impersonated by sudo'),
+              'sudoRunAsUser', FALSE
+            ),
+            array('ALL')
           ),
-          new SystemsAttribute (
+          new SetAttribute (
+            new StringAttribute (
+              _('Run as (group)'),
+              _('Group(s) impersonated by sudo'),
+              'sudoRunAsGroup', FALSE
+            ),
+            array('ALL')
+          ),
+          new SudoSystemsAttribute (
             _('Systems'), _('A host name, IP address or IP network'),
             'sudoHost', FALSE,
             array('ALL')
@@ -135,8 +182,12 @@ class sudo extends simplePlugin
           new SudoUsersGroupsAttribute (
             _('Users and groups'),
             _("A user name, user ID (prefixed with '#'), Unix group (prefixed with '%')"),
-            'sudoUser', FALSE,
-            array('ALL')
+            'sudoUser', FALSE
+          ),
+          new IntAttribute (
+            _('Priority'), _('This rule priority compared to others'),
+            'sudoOrder', FALSE,
+            0, FALSE, 0
           )
         )
       ),
@@ -154,7 +205,9 @@ class sudo extends simplePlugin
             'sudoUser',
             'sudoCommand',
             'sudoHost',
-            'sudoRunAs',
+            'sudoRunAsUser',
+            'sudoRunAsGroup',
+            'sudoOrder',
           )
         ),
         'disable' => array(

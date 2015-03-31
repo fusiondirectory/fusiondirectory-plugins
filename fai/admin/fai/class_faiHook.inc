@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2013  FusionDirectory
+  Copyright (C) 2011-2015  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -525,6 +525,7 @@ class faiHook extends faiPluginClass
       'plObjectType'  => array('faiHook' => array(
         'name'        => _('FAI hook'),
         'filter'      => 'objectClass=FAIhook',
+        'icon'        => 'plugins/fai/images/fai_hook.png',
         'aclCategory' => 'fai'
       )),
       'plProvidedAcls' => array(

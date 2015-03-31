@@ -1,8 +1,6 @@
-{if $content}
 ###FUSIONDIRECTORY
 require ["fileinto", "reject", "vacation"];
 
-{/if}
 {if $spamfilter}
 # Sort mails with higher spam level
 if header :contains "X-Spam-Level" "{$spamlevel}" {literal}{{/literal}

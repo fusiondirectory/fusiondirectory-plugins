@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2013  FusionDirectory
+  Copyright (C) 2013-2015  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -36,7 +36,8 @@ class inventoryManagement extends simpleManagement
       'plShortName'   => _('Inventory objects'),
       'plDescription' => _('Browse inventory objects'),
       'plIcon'        => 'plugins/fusioninventory/images/icon.png',
-      'plSection'     => 'addons',
+      'plSection'     => 'reporting',
+      'plPriority'    => 5,
       'plManages'     => array('inventory'),
 
       'plProvidedAcls' => array()

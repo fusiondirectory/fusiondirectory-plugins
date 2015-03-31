@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2013  FusionDirectory
+  Copyright (C) 2011-2015  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -118,11 +118,10 @@ class faiStartup extends simplePlugin
     parent::__construct($config, $dn, $object);
   }
 
-  /* Updates release dns
-   *  and reads all classes for the current release,
+  /* Updates release and profiles list
    *  if not already done ($this->cache).
    */
-  function update_fai_cache($release = FALSE)
+  function update_fai_cache()
   {
     /* Get the list of available servers and their releases.
      */

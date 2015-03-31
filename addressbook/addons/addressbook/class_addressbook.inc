@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003  Cajus Pollmeier
-  Copyright (C) 2011-2013  FusionDirectory
+  Copyright (C) 2011-2015  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -850,8 +850,8 @@ class addressbook extends plugin
       "plShortName"   => _("Addressbook"),
       "plDescription" => _("The addressbook plugin show internal users and external ones"),
       "plSelfModify"  => FALSE,
-      "plSection"     => "addons",
-      "plPriority"    => 10,
+      "plSection"     => "reporting",
+      "plPriority"    => 30,
       "plCategory"    => array("addressbook" => array("objectClass" => "inetOrgPerson", "description" => _("Addressbook"))),
 
       "plProvidedAcls"    => array(

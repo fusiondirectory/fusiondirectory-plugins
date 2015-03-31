@@ -1,0 +1,17 @@
+##
+## personal-fd.schema - Needed by Fusion Directory for personal plugin configuration
+##
+
+# Attributes
+attributetype ( 1.3.6.1.4.1.38414.50.1.1 NAME 'fdPrivateEmailPasswordRecovery'
+  DESC 'FusionDirectory - Allow use of private email address for password recovery'
+  EQUALITY booleanMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
+  SINGLE-VALUE )
+
+# Object Class
+objectclass ( 1.3.6.1.4.1.38414.50.2.1 NAME 'fdPersonalPluginConf'
+  DESC 'FusionDirectory personal plugin configuration'
+  SUP top AUXILIARY
+  MUST ( cn )
+  MAY ( fdPrivateEmailPasswordRecovery ) )

@@ -1,0 +1,8 @@
+dn: olcOverlay=ppolicy,olcDatabase={1}hdb,cn=config
+objectClass: olcConfig
+objectClass: olcOverlayConfig
+objectClass: olcPpolicyConfig
+olcOverlay: ppolicy
+olcPPolicyDefault: cn=default,ou=ppolicies,dc=fusiondirectory,dc=org
+olcPPolicyUseLockout: TRUE
+olcPPolicyHashCleartext: TRUE

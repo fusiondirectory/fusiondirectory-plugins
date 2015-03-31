@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003  Cajus Pollmeier
-  Copyright (C) 2011-2013  FusionDirectory
+  Copyright (C) 2011-2015  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -1225,8 +1225,8 @@ class systemManagement extends management
       'plDescription' => _('Systems Management'),
       'plIcon'        => 'geticon.php?context=devices&icon=computer&size=48',
       'plSelfModify'  => FALSE,
-      'plPriority'    => 20,
-      'plSection'     => 'admin',
+      'plSection'     => array('systems' => array('name' => _('Systems'), 'priority' => 10)),
+      'plPriority'    => 0,
       'plCategory'    => array('terminal','workstation','server','phone','printer','component','winstation'),
       'plManages'     => array('terminal','workstation','server','phone','printer','component','winstation'),
 

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-12-16 21:56+0100\n"
-"PO-Revision-Date: 2014-12-15 17:01+0000\n"
+"POT-Creation-Date: 2015-03-19 21:45+0100\n"
+"PO-Revision-Date: 2015-02-25 16:12+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Spanish (Venezuela) (http://www.transifex.com/projects/p/FusionDirectory-108/language/es_VE/)\n"
 "MIME-Version: 1.0\n"
@@ -152,3 +152,38 @@ msgstr "Alias de URL"
 #: admin/systems/services/apache2/class_serviceApacheVhostEdit.inc:107
 msgid "Directory Path"
 msgstr "Ruta al directorio"
+
+#: admin/systems/services/apache2/remove.tpl.c:2
+msgid "Warning"
+msgstr "Aviso"
+
+#: admin/systems/services/apache2/remove.tpl.c:5
+msgid ""
+"This includes all account data, system access rules, imap settings, etc. for"
+" this user. Please double check if your really want to do this since there "
+"is no way for FusionDirectory to get your data back."
+msgstr "Esto incluye toda la data de la cuenta, reglas de acceso de sistema, opciones imap, etc. para este usuario. Por favor verifique que realmente desea hacer esto ya que FusionDirectory no tiene forma de recuperar la data"
+
+#: admin/systems/services/apache2/remove.tpl.c:8
+msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
+msgstr "Entonces, si esta seguro, presione <i>Eliminar</i> para continuar o <i>Cancelar</i> para Abortar."
+
+#: admin/systems/services/apache2/serviceApacheVhostEdit-filter.tpl.c:2
+msgid "Filter"
+msgstr "Filtro"
+
+#: admin/systems/services/apache2/serviceApacheVhostEdit-filter.tpl.c:5
+msgid "Name"
+msgstr "Nombre"
+
+#: admin/systems/services/apache2/serviceApacheVhostEdit-list.tpl.c:2
+msgid "Base"
+msgstr "Base"
+
+#: admin/systems/services/apache2/serviceApacheVhostEditFooter.tpl.c:2
+msgid "Save"
+msgstr "Guardar"
+
+#: admin/systems/services/apache2/serviceApacheVhostEditFooter.tpl.c:5
+msgid "Cancel"
+msgstr "Cancelar"

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-12-16 21:56+0100\n"
-"PO-Revision-Date: 2014-12-12 07:49+0000\n"
+"POT-Creation-Date: 2015-03-31 11:49+0200\n"
+"PO-Revision-Date: 2015-03-31 11:24+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Russian Petrine orthography (http://www.transifex.com/projects/p/FusionDirectory-108/language/ru@petr1708/)\n"
 "MIME-Version: 1.0\n"
@@ -99,15 +99,15 @@ msgstr ""
 #: admin/systems/services/class_goService.inc:123
 #: admin/systems/services/class_goService.inc:151
 #: admin/systems/services/class_goService.inc:187
-#: admin/systems/class_networkSettings.inc:468
-#: admin/systems/class_networkSettings.inc:481
-#: admin/systems/class_networkSettings.inc:747
-#: admin/systems/class_networkSettings.inc:806
-#: admin/systems/class_networkSettings.inc:825
-#: admin/systems/class_networkSettings.inc:842
-#: admin/systems/class_networkSettings.inc:851
-#: admin/systems/class_networkSettings.inc:869
-#: admin/systems/class_networkSettings.inc:941
+#: admin/systems/class_networkSettings.inc:478
+#: admin/systems/class_networkSettings.inc:491
+#: admin/systems/class_networkSettings.inc:757
+#: admin/systems/class_networkSettings.inc:816
+#: admin/systems/class_networkSettings.inc:835
+#: admin/systems/class_networkSettings.inc:852
+#: admin/systems/class_networkSettings.inc:861
+#: admin/systems/class_networkSettings.inc:879
+#: admin/systems/class_networkSettings.inc:951
 msgid "LDAP error"
 msgstr ""
 
@@ -120,11 +120,13 @@ msgid "System group"
 msgstr ""
 
 #: admin/ogroups/goto/class_termgroup.inc:401
+#: admin/ogroups/goto/termgroup.tpl.c:17
 msgid "Mode"
 msgstr ""
 
 #: admin/ogroups/goto/class_termgroup.inc:402
 #: admin/systems/class_workstationGeneric.inc:189
+#: admin/ogroups/goto/termgroup.tpl.c:23
 msgid "Syslog server"
 msgstr ""
 
@@ -138,11 +140,13 @@ msgstr ""
 
 #: admin/ogroups/goto/class_termgroup.inc:405
 #: admin/systems/class_terminalGeneric.inc:41
+#: admin/ogroups/goto/termgroup.tpl.c:29
 msgid "Root server"
 msgstr ""
 
 #: admin/ogroups/goto/class_termgroup.inc:406
 #: admin/systems/class_terminalGeneric.inc:47
+#: admin/ogroups/goto/termgroup.tpl.c:35
 msgid "Swap server"
 msgstr ""
 
@@ -278,6 +282,8 @@ msgstr ""
 #: admin/systems/class_mobilePhoneGeneric.inc:63
 #: admin/systems/phoneSelect/phoneSelect-list.xml:48
 #: admin/systems/services/shares/class_serviceShare.inc:52
+#: admin/systems/system-filter.tpl.c:32
+#: admin/systems/phoneSelect/phoneSelect-filter.tpl.c:11
 msgid "Name"
 msgstr ""
 
@@ -297,6 +303,7 @@ msgstr ""
 #: admin/systems/class_mobilePhoneGeneric.inc:67
 #: admin/systems/serverService-list.xml:35
 #: admin/systems/services/shares/class_serviceShare.inc:56
+#: admin/systems/printer.tpl.c:8 admin/systems/printer.tpl.c:17
 msgid "Description"
 msgstr ""
 
@@ -353,6 +360,7 @@ msgid "Activate systems"
 msgstr ""
 
 #: admin/systems/system-list.xml:337 admin/systems/serverService-list.xml:69
+#: admin/systems/printer.tpl.c:35
 msgid "Remove"
 msgstr ""
 
@@ -431,6 +439,7 @@ msgid "This will prevent the %s from being reinstalled"
 msgstr ""
 
 #: admin/systems/class_workstationGeneric.inc:185
+#: addons/dashboard/class_dashBoardSystems.inc:48
 msgid "Servers"
 msgstr ""
 
@@ -475,17 +484,19 @@ msgstr ""
 
 #: admin/systems/class_workstationGeneric.inc:225
 #: admin/systems/class_workstationGeneric.inc:229
+#: admin/ogroups/goto/termgroup.tpl.c:41
 msgid "Action"
 msgstr ""
 
 #: admin/systems/class_workstationGeneric.inc:230
+#: admin/ogroups/goto/termgroup.tpl.c:44
 msgid "Select action to execute for this terminal"
 msgstr ""
 
 #: admin/systems/class_workstationGeneric.inc:236
 #: admin/systems/class_componentGeneric.inc:75
 #: admin/systems/class_mobilePhoneGeneric.inc:106
-#: admin/systems/class_networkSettings.inc:1006
+#: admin/systems/class_networkSettings.inc:1016
 msgid "Network settings"
 msgstr ""
 
@@ -561,12 +572,12 @@ msgstr ""
 #: admin/systems/class_systemManagement.inc:624
 #: admin/systems/class_systemManagement.inc:639
 #: admin/systems/services/shares/class_serviceShare.inc:103
-#: admin/systems/class_networkSettings.inc:295
-#: admin/systems/class_networkSettings.inc:326
-#: admin/systems/class_networkSettings.inc:574
-#: admin/systems/class_networkSettings.inc:581
-#: admin/systems/class_networkSettings.inc:587
-#: admin/systems/class_networkSettings.inc:594
+#: admin/systems/class_networkSettings.inc:305
+#: admin/systems/class_networkSettings.inc:336
+#: admin/systems/class_networkSettings.inc:584
+#: admin/systems/class_networkSettings.inc:591
+#: admin/systems/class_networkSettings.inc:597
+#: admin/systems/class_networkSettings.inc:604
 msgid "Error"
 msgstr ""
 
@@ -600,7 +611,7 @@ msgstr ""
 msgid "Object is no printer!"
 msgstr ""
 
-#: admin/systems/class_printGeneric.inc:767
+#: admin/systems/class_printGeneric.inc:767 admin/systems/printer.tpl.c:23
 msgid "Printer URL"
 msgstr ""
 
@@ -618,6 +629,9 @@ msgid "Printer information"
 msgstr ""
 
 #: admin/systems/class_printGeneric.inc:1023
+#: admin/systems/serverService-list.tpl.c:2
+#: admin/systems/phoneSelect/phoneSelect-list.tpl.c:2
+#: admin/systems/printer.tpl.c:11
 msgid "Base"
 msgstr ""
 
@@ -629,7 +643,7 @@ msgstr ""
 msgid "Printer PPD"
 msgstr ""
 
-#: admin/systems/class_printGeneric.inc:1028
+#: admin/systems/class_printGeneric.inc:1028 admin/systems/printer.tpl.c:38
 msgid "Permissions"
 msgstr ""
 
@@ -641,7 +655,7 @@ msgstr ""
 msgid "Windows driver dir"
 msgstr ""
 
-#: admin/systems/class_printGeneric.inc:1032
+#: admin/systems/class_printGeneric.inc:1032 admin/systems/printer.tpl.c:62
 msgid "Driver printer name"
 msgstr ""
 
@@ -1100,6 +1114,8 @@ msgid "Inherited from %s"
 msgstr ""
 
 #: admin/systems/class_systemManagement.inc:1224
+#: admin/systems/class_systemManagement.inc:1228
+#: addons/dashboard/class_dashBoardSystems.inc:199
 #: config/systems/class_systemsPluginConfig.inc:28
 msgid "Systems"
 msgstr ""
@@ -1203,6 +1219,8 @@ msgid "You need to configure encodings first"
 msgstr ""
 
 #: admin/systems/services/shares/class_serviceShare.inc:110
+#: admin/ogroups/goto/termgroup.tpl.c:2 admin/systems/remove.tpl.c:2
+#: admin/systems/ppd/remove_ppd.tpl.c:2
 msgid "Warning"
 msgstr ""
 
@@ -1328,98 +1346,151 @@ msgstr ""
 msgid "LDAP"
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:295
+#: admin/systems/class_networkSettings.inc:305
 msgid "NOT IMPLEMENTED"
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:427
+#: admin/systems/class_networkSettings.inc:437
 msgid "Not matching"
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:574
+#: admin/systems/class_networkSettings.inc:584
 #, php-format
 msgid "Was not able to contact argonaut server: %s"
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:581
+#: admin/systems/class_networkSettings.inc:591
 #, php-format
 msgid "Was not able to find DNS server for zone %s"
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:587
+#: admin/systems/class_networkSettings.inc:597
 #, php-format
 msgid "Was not able to find mac address of DNS server %s"
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:594
+#: admin/systems/class_networkSettings.inc:604
 #, php-format
 msgid "Was not able to launch ldap2zone: %s"
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:620
+#: admin/systems/class_networkSettings.inc:630
 #, php-format
 msgid "IP address %s"
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:628
-#: admin/systems/class_networkSettings.inc:641
-#: admin/systems/class_networkSettings.inc:643
-#: admin/systems/class_networkSettings.inc:1012
+#: admin/systems/class_networkSettings.inc:638
+#: admin/systems/class_networkSettings.inc:651
+#: admin/systems/class_networkSettings.inc:653
+#: admin/systems/class_networkSettings.inc:1022
 msgid "IP address"
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:634
-#: admin/systems/class_networkSettings.inc:650
-#: admin/systems/class_networkSettings.inc:652
-#: admin/systems/class_networkSettings.inc:1013
+#: admin/systems/class_networkSettings.inc:644
+#: admin/systems/class_networkSettings.inc:660
+#: admin/systems/class_networkSettings.inc:662
+#: admin/systems/class_networkSettings.inc:1023
 msgid "MAC address"
-msgstr ""
-
-#: admin/systems/class_networkSettings.inc:666
-#, php-format
-msgid "The IP address '%s' is not part of the selected reverse zone '%s'!"
 msgstr ""
 
 #: admin/systems/class_networkSettings.inc:676
 #, php-format
+msgid "The IP address '%s' is not part of the selected reverse zone '%s'!"
+msgstr ""
+
+#: admin/systems/class_networkSettings.inc:686
+#, php-format
 msgid "Record type '%s' is duplicated!"
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:683
+#: admin/systems/class_networkSettings.inc:693
 #, php-format
 msgid "Uniq record type '%s' is duplicated!"
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:695
+#: admin/systems/class_networkSettings.inc:705
 #, php-format
 msgid ""
 "The IP address '%s' will be added as 'A Record', this will be done "
 "automatically, please remove the record."
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:702
+#: admin/systems/class_networkSettings.inc:712
 #, php-format
 msgid "Only lowercase records are allowed, please check your '%ss'."
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:968
+#: admin/systems/class_networkSettings.inc:978
 msgid "Delete"
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:974
+#: admin/systems/class_networkSettings.inc:984
 msgid "Add"
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:1005
+#: admin/systems/class_networkSettings.inc:1015
+#: addons/dashboard/class_dashBoardNetwork.inc:127
 msgid "Network"
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:1020
+#: admin/systems/class_networkSettings.inc:1030
 msgid "DNS configuration"
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:1023
+#: admin/systems/class_networkSettings.inc:1033
 msgid "DHCP configuration"
+msgstr ""
+
+#: addons/dashboard/class_dashBoardSystems.inc:45
+msgid "Workstations"
+msgstr ""
+
+#: addons/dashboard/class_dashBoardSystems.inc:51
+msgid "Windows Workstations"
+msgstr ""
+
+#: addons/dashboard/class_dashBoardSystems.inc:54
+msgid "Terminals"
+msgstr ""
+
+#: addons/dashboard/class_dashBoardSystems.inc:57
+msgid "Printers"
+msgstr ""
+
+#: addons/dashboard/class_dashBoardSystems.inc:60
+msgid "Phones"
+msgstr ""
+
+#: addons/dashboard/class_dashBoardSystems.inc:63
+msgid "Components"
+msgstr ""
+
+#: addons/dashboard/class_dashBoardSystems.inc:66
+msgid "Mobile phones"
+msgstr ""
+
+#: addons/dashboard/class_dashBoardSystems.inc:183
+msgid "Statistics"
+msgstr ""
+
+#: addons/dashboard/class_dashBoardSystems.inc:188
+msgid "Computer name to use by unit"
+msgstr ""
+
+#: addons/dashboard/class_dashBoardSystems.inc:200
+msgid "Statistics and informations about systems"
+msgstr ""
+
+#: addons/dashboard/class_dashBoardNetwork.inc:111
+msgid "DHCP"
+msgstr ""
+
+#: addons/dashboard/class_dashBoardNetwork.inc:116
+msgid "DNS"
+msgstr ""
+
+#: addons/dashboard/class_dashBoardNetwork.inc:128
+msgid "Statistics and various informations"
 msgstr ""
 
 #: config/systems/class_systemsPluginConfig.inc:29
@@ -1513,3 +1584,406 @@ msgstr ""
 #: config/systems/class_systemsPluginConfig.inc:101
 msgid "Encodings"
 msgstr ""
+
+#: admin/ogroups/goto/termgroup.tpl.c:5
+msgid ""
+"Actions you choose here influence all systems in this object group. "
+"Additionally, all values editable here can be inherited by the clients "
+"assigned to this object group."
+msgstr ""
+
+#: admin/ogroups/goto/termgroup.tpl.c:8
+msgid "Generic"
+msgstr ""
+
+#: admin/ogroups/goto/termgroup.tpl.c:11
+msgid "NTP server"
+msgstr ""
+
+#: admin/ogroups/goto/termgroup.tpl.c:14
+msgid "Choose server to use for synchronizing time"
+msgstr ""
+
+#: admin/ogroups/goto/termgroup.tpl.c:20
+msgid "Select terminal mode"
+msgstr ""
+
+#: admin/ogroups/goto/termgroup.tpl.c:26
+msgid "Choose server to use for logging"
+msgstr ""
+
+#: admin/ogroups/goto/termgroup.tpl.c:32
+msgid "Select NFS root filesystem to use"
+msgstr ""
+
+#: admin/ogroups/goto/termgroup.tpl.c:38
+msgid "Choose NFS filesystem to place swap files on"
+msgstr ""
+
+#: admin/ogroups/goto/termgroup.tpl.c:47
+msgid "Execute"
+msgstr ""
+
+#: admin/systems/network.tpl.c:2
+msgid "Network  settings"
+msgstr ""
+
+#: admin/systems/network.tpl.c:5
+msgid "IP-address"
+msgstr ""
+
+#: admin/systems/network.tpl.c:8 admin/systems/network.tpl.c:11
+msgid "Propose ip"
+msgstr ""
+
+#: admin/systems/network.tpl.c:14
+msgid "MAC-address"
+msgstr ""
+
+#: admin/systems/network.tpl.c:17
+msgid "Autodetect"
+msgstr ""
+
+#: admin/systems/network.tpl.c:20 admin/systems/network.tpl.c:23
+msgid "Enable DHCP for this device"
+msgstr ""
+
+#: admin/systems/network.tpl.c:26 admin/systems/network.tpl.c:50
+msgid "not configured"
+msgstr ""
+
+#: admin/systems/network.tpl.c:29
+msgid "Parent node"
+msgstr ""
+
+#: admin/systems/network.tpl.c:32
+msgid "Edit settings"
+msgstr ""
+
+#: admin/systems/network.tpl.c:35 admin/systems/network.tpl.c:47
+msgid "Enable DNS for this device"
+msgstr ""
+
+#: admin/systems/network.tpl.c:38
+msgid "Zone"
+msgstr ""
+
+#: admin/systems/network.tpl.c:41
+msgid "TTL"
+msgstr ""
+
+#: admin/systems/network.tpl.c:44
+msgid "Dns records"
+msgstr ""
+
+#: admin/systems/password.tpl.c:2
+msgid ""
+"To change the terminal root password use the fields below. The changes take "
+"effect during the next reboot. Please memorize the new password, because you"
+" wouldn't be able to log in."
+msgstr ""
+
+#: admin/systems/password.tpl.c:5
+msgid "Leave fields blank for password inheritance from default entries."
+msgstr ""
+
+#: admin/systems/password.tpl.c:8
+msgid "Changing the password impinges on authentification only."
+msgstr ""
+
+#: admin/systems/password.tpl.c:11
+msgid "New password"
+msgstr ""
+
+#: admin/systems/password.tpl.c:14
+msgid "Repeat new password"
+msgstr ""
+
+#: admin/systems/password.tpl.c:17
+msgid "Password strength"
+msgstr ""
+
+#: admin/systems/password.tpl.c:20
+msgid "Set password"
+msgstr ""
+
+#: admin/systems/server_import.tpl.c:2
+msgid ""
+"Warning : Once you import your OPSI hosts into FusionDirectory, they will be"
+" managed by it, so if you delete them or deactivate their OPSI tab, they "
+"will be removed from OPSI."
+msgstr ""
+
+#: admin/systems/gencd.tpl.c:2
+msgid "CD-Install-Image generation"
+msgstr ""
+
+#: admin/systems/gencd.tpl.c:5
+msgid ""
+"This option enables you to generate FAI install CD images for the selected "
+"workstation. The procedure may take about 10 minutes to complete, so please "
+"be patient after pressing the 'Create ISO-Image' button."
+msgstr ""
+
+#: admin/systems/gencd.tpl.c:8
+msgid "Create ISO-Image"
+msgstr ""
+
+#: admin/systems/remove.tpl.c:5
+msgid ""
+"This includes all account data, system access rules, imap settings, etc. for"
+" this user. Please double check if your really want to do this since there "
+"is no way for FusionDirectory to get your data back."
+msgstr ""
+
+#: admin/systems/remove.tpl.c:8
+msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
+msgstr ""
+
+#: admin/systems/system-filter.tpl.c:2
+#: admin/systems/phoneSelect/phoneSelect-filter.tpl.c:2
+msgid "Filter"
+msgstr ""
+
+#: admin/systems/system-filter.tpl.c:5
+msgid "Show servers"
+msgstr ""
+
+#: admin/systems/system-filter.tpl.c:8
+msgid "Show workstations"
+msgstr ""
+
+#: admin/systems/system-filter.tpl.c:11
+msgid "Show terminals"
+msgstr ""
+
+#: admin/systems/system-filter.tpl.c:14
+msgid "Show network printer"
+msgstr ""
+
+#: admin/systems/system-filter.tpl.c:17
+#: admin/systems/phoneSelect/phoneSelect-filter.tpl.c:5
+msgid "Show phones"
+msgstr ""
+
+#: admin/systems/system-filter.tpl.c:20
+msgid "Show windows based workstations"
+msgstr ""
+
+#: admin/systems/system-filter.tpl.c:23
+msgid "Show network devices"
+msgstr ""
+
+#: admin/systems/system-filter.tpl.c:26
+#: admin/systems/phoneSelect/phoneSelect-filter.tpl.c:8
+msgid "Show mobile phones"
+msgstr ""
+
+#: admin/systems/system-filter.tpl.c:29
+msgid "Show IPMI interfaces"
+msgstr ""
+
+#: admin/systems/ppd/printerPPDSelectionDialog.tpl.c:2
+msgid "Select objects to add"
+msgstr ""
+
+#: admin/systems/ppd/printerPPDSelectionDialog.tpl.c:5
+msgid "Filters"
+msgstr ""
+
+#: admin/systems/ppd/printerPPDSelectionDialog.tpl.c:8
+msgid "Display objects matching"
+msgstr ""
+
+#: admin/systems/ppd/printerPPDSelectionDialog.tpl.c:11
+msgid "Regular expression for matching object names"
+msgstr ""
+
+#: admin/systems/ppd/printerPPDSelectionDialog.tpl.c:14
+msgid "Close"
+msgstr ""
+
+#: admin/systems/ppd/printerPPDDialog.tpl.c:2
+msgid "Printer driver"
+msgstr ""
+
+#: admin/systems/ppd/printerPPDDialog.tpl.c:5
+msgid "Model"
+msgstr ""
+
+#: admin/systems/ppd/printerPPDDialog.tpl.c:8
+msgid "Select"
+msgstr ""
+
+#: admin/systems/ppd/printerPPDDialog.tpl.c:11
+msgid "New driver"
+msgstr ""
+
+#: admin/systems/ppd/printerPPDDialog.tpl.c:14
+msgid "Upload"
+msgstr ""
+
+#: admin/systems/ppd/printerPPDDialog.tpl.c:17
+msgid "Options"
+msgstr ""
+
+#: admin/systems/ppd/remove_ppd.tpl.c:5
+msgid "The ppd file will be removed from the server and can not be restored."
+msgstr ""
+
+#: admin/systems/printer.tpl.c:2
+msgid "General"
+msgstr ""
+
+#: admin/systems/printer.tpl.c:5
+msgid "Printer name"
+msgstr ""
+
+#: admin/systems/printer.tpl.c:14
+msgid "Details"
+msgstr ""
+
+#: admin/systems/printer.tpl.c:20
+msgid "Printer location"
+msgstr ""
+
+#: admin/systems/printer.tpl.c:26
+msgid "PPD Provider"
+msgstr ""
+
+#: admin/systems/printer.tpl.c:29
+msgid "Driver"
+msgstr ""
+
+#: admin/systems/printer.tpl.c:32
+msgid "Edit"
+msgstr ""
+
+#: admin/systems/printer.tpl.c:41
+msgid "Users which are allowed to use this printer"
+msgstr ""
+
+#: admin/systems/printer.tpl.c:44
+msgid "Users"
+msgstr ""
+
+#: admin/systems/printer.tpl.c:47
+msgid "Users which are allowed to administrate this printer"
+msgstr ""
+
+#: admin/systems/printer.tpl.c:50
+msgid "Admins"
+msgstr ""
+
+#: admin/systems/printer.tpl.c:53
+msgid "Windows paths"
+msgstr ""
+
+#: admin/systems/printer.tpl.c:56
+msgid "Printer windows inf file"
+msgstr ""
+
+#: admin/systems/printer.tpl.c:59
+msgid "Printer driver directory"
+msgstr ""
+
+#: admin/systems/gencd_frame.tpl.c:2
+msgid "Your browser does not supprt iframes."
+msgstr ""
+
+#: admin/systems/services/cups/serviceCUPS.tpl.c:2
+msgid "Print Service"
+msgstr ""
+
+#: admin/systems/services/cups/serviceCUPS.tpl.c:5
+msgid "enabled"
+msgstr ""
+
+#: admin/systems/services/ServiceAddDialog.tpl.c:2
+msgid "Adding a new service to the current server"
+msgstr ""
+
+#: admin/systems/services/ServiceAddDialog.tpl.c:5
+msgid ""
+"This dialog allows you to add new services to the currenty edited server "
+"object. The box below shows all available but not already used services."
+msgstr ""
+
+#: admin/systems/services/ServiceAddDialog.tpl.c:8
+msgid "Service to add"
+msgstr ""
+
+#: admin/systems/services/ServiceAddDialog.tpl.c:11
+msgid "All available services are already in use."
+msgstr ""
+
+#: admin/systems/services/ServiceAddDialog.tpl.c:14
+#: admin/systems/SelectDeviceType.tpl.c:26
+msgid "Continue"
+msgstr ""
+
+#: admin/systems/SelectDeviceType.tpl.c:2
+msgid ""
+"This system has no system type configured. Please choose a system type for "
+"this object and an optional inheritance group. Press the 'continue' button "
+"to proceed."
+msgstr ""
+
+#: admin/systems/SelectDeviceType.tpl.c:5
+msgid ""
+"Please select a system type and an optional bundle of predefined settings to"
+" be inherited."
+msgstr ""
+
+#: admin/systems/SelectDeviceType.tpl.c:8
+msgid ""
+"Please select a system type and a bundle of predefined settings to be "
+"inherited."
+msgstr ""
+
+#: admin/systems/SelectDeviceType.tpl.c:11
+#: admin/systems/SelectDeviceType.tpl.c:14
+msgid "System type"
+msgstr ""
+
+#: admin/systems/SelectDeviceType.tpl.c:17
+msgid "Choose an object group as template"
+msgstr ""
+
+#: admin/systems/SelectDeviceType.tpl.c:20
+msgid "Object group"
+msgstr ""
+
+#: admin/systems/SelectDeviceType.tpl.c:23
+msgid "none"
+msgstr ""
+
+#: addons/dashboard/systems_stats.tpl.c:2
+msgid "There are several argonaut servers! (this is not yet supported)"
+msgstr ""
+
+#: addons/dashboard/systems_stats.tpl.c:5
+msgid "There is an argonaut server running on %1 (%3://%2:%4)"
+msgstr ""
+
+#: addons/dashboard/systems_stats.tpl.c:8
+msgid "Only one system is configured to run an argonaut client."
+msgid_plural "%1 systems are configured to run an argonaut client."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: addons/dashboard/systems_stats.tpl.c:11
+msgid "But no system is configured to run an argonaut client!"
+msgstr ""
+
+#: addons/dashboard/systems_stats.tpl.c:14
+msgid ""
+"A system is configured to run an argonaut client, but there is no argonaut "
+"server configured!"
+msgid_plural ""
+"%1 systems are configured to run an argonaut client, but there is no "
+"argonaut server configured!"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""

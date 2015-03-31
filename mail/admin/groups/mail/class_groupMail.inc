@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2009-2010 Bas Tichelaar
-  Copyright (C) 2013  FusionDirectory
+  Copyright (C) 2013-2015  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -38,7 +38,7 @@ class GroupMailsAttribute extends MailsAttribute
 class mailgroup extends simplePlugin
 {
   var $displayHeader  = TRUE;
-  var $objectclasses  = array('gosaMailAccount');
+  var $objectclasses  = array('fdGroupMail');
   /* Return plugin informations for acl handling  */
   static function plInfo()
   {
@@ -78,10 +78,6 @@ class mailgroup extends simplePlugin
       'main' => array(
         'name'  => _('Informations'),
         'attrs' => array(
-          new HiddenAttribute (
-            'gosaMailDeliveryMode', FALSE,
-            '[]'
-          ),
           new MailAttribute (
             _('Primary address'), _('The primary mail address'),
             'mail', TRUE
@@ -100,6 +96,11 @@ class mailgroup extends simplePlugin
           new GroupMailsAttribute (
             _('Forward messages to non group members'), _('Forward messages to non group members'),
             'gosaMailForwardingAddress'
+          ),
+          new BooleanAttribute (
+            _('Only allowed to receive local mail'), _('Whether this group mail is only allowed to receive messages from local senders'),
+            'fdGroupMailLocalOnly', FALSE,
+            FALSE
           )
         )
       )

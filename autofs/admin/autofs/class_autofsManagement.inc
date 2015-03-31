@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2013  FusionDirectory
+  Copyright (C) 2013-2015  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -31,8 +31,8 @@ class autofsManagement extends simpleManagement
       'plShortName'   => _('Auto fs'),
       'plDescription' => _('Auto fs management'),
       'plIcon'        => 'plugins/autofs/images/icon.png',
-      'plPriority'    => 24,
-      'plSection'     => 'admin',
+      'plSection'     => 'systems',
+      'plPriority'    => 5,
       'plManages'     => array('nisMap', 'nisObject'),
 
       'plProvidedAcls' => array()

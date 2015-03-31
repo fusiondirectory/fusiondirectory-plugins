@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2013  FusionDirectory
+  Copyright (C) 2011-2015  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -321,8 +321,8 @@ class faiProfile extends faiPluginClass
     $actions = "<input type='image' src='geticon.php?context=actions&icon=edit-delete&size=16' title='"._("Remove class from profile")."' name='DEL_%KEY%'>";
 
     /* Up down buttons */
-    $linkupdown = "&nbsp;<input type='image' name='sortup_%s'   alt='up'    title='"._("Up")."'   src='images/lists/sort-up.png' align='top' >";
-    $linkupdown.= "<input type='image' name='sortdown_%s' alt='down'  title='"._("Down")."' src='images/lists/sort-down.png' >";
+    $linkupdown = "&nbsp;<input type='image' name='sortup_%s'   alt='up'    title='"._("Up")."'   src='geticon.php?context=actions&size=16&icon=view-sort-descending' align='top' >";
+    $linkupdown.= "<input type='image' name='sortdown_%s' alt='down'  title='"._("Down")."' src='geticon.php?context=actions&size=16&icon=view-sort-ascending' >";
 
     /* Append fai classes to divselectbox */
     if($this->acl_is_readable("FAIclass")){
@@ -437,7 +437,7 @@ class faiProfile extends faiPluginClass
     }
 
     $this->attrs['FAIclass']=trim($this->FAIclass);
-    
+
     FAI::prepare_to_save_FAI_object($this->dn,$this->attrs);
 
     if($this->initially_was_account){
@@ -457,6 +457,7 @@ class faiProfile extends faiPluginClass
       'plObjectType'  => array('faiProfile' => array(
         'name'        => _('FAI Profile'),
         'filter'      => 'objectClass=FAIprofile',
+        'icon'        => 'plugins/fai/images/fai_profile.png',
         'aclCategory' => 'fai'
       )),
       'plProvidedAcls' => array(

@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2013  FusionDirectory
+  Copyright (C) 2011-2015  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -36,8 +36,8 @@ class phoneConferenceManagment extends management
       "plShortName"   => _("Phone Conferences"),
       "plDescription" => _("Phone Conference management"),
       "plIcon"        => "plugins/asterisk/images/iconConference.png",
-      "plSection"     => "admin",
-      "plPriority"    => 10,
+      "plSection"     => "systems",
+      "plPriority"    => 6,
       "plCategory"    => array("gofonconference"),
 
       "plProvidedAcls" => array()

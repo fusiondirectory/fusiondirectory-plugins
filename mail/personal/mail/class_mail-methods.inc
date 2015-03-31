@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2013  FusionDirectory
+  Copyright (C) 2011-2015  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -697,15 +697,7 @@ class mailMethod
   */
   public function getMailServers()
   {
-    $mailserver = array();
-    $ui = get_userinfo();
-    foreach ($this->config->data['SERVERS']['IMAP'] as $key => $val) {
-      if ( $this->parent->gosaMailServer == $key ||
-          preg_match("/r/", $ui->get_permissions($val['server_dn'], "server/serviceIMAP", ""))) {
-        $mailserver[] = $key;
-      }
-    }
-    return $mailserver;
+    return array_keys($this->config->data['SERVERS']['IMAP']);
   }
 
 

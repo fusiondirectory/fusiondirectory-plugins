@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2013  FusionDirectory
+  Copyright (C) 2011-2015  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -47,8 +47,8 @@ class rsyslog extends plugin
       "plShortName"   => _("System logs"),
       "plDescription" => _("This plugin allow to View system logs"),
       "plSelfModify"  => FALSE,
-      "plSection"     => "addons",
-      "plPriority"    => 3,
+      "plSection"     => "reporting",
+      "plPriority"    => 6,
       "plCategory"    => array("server/serviceSyslog"),
       "plObjectType"  => array("rsyslog" => array("name" => _("System logs"))),
 

@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-12-16 21:56+0100\n"
-"PO-Revision-Date: 2014-12-03 16:39+0000\n"
+"POT-Creation-Date: 2015-03-19 21:45+0100\n"
+"PO-Revision-Date: 2015-02-25 16:12+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/FusionDirectory-108/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -84,6 +84,8 @@ msgid ""
 msgstr ""
 
 #: addons/ldapmanager/class_ldapmanager.inc:102
+#: addons/ldapmanager/contentcsv.tpl.c:26
+#: addons/ldapmanager/contentcsv.tpl.c:29
 msgid "Import"
 msgstr "Importieren"
 
@@ -91,22 +93,22 @@ msgstr "Importieren"
 msgid "Import LDIF file"
 msgstr "LDIF-Datei importieren"
 
-#: addons/ldapmanager/class_ldapmanager.inc:146
+#: addons/ldapmanager/class_ldapmanager.inc:147
 #: addons/ldapmanager/class_ldapmanager.inc:186
 msgid "LDAP error"
 msgstr "LDAP-Fehler"
 
-#: addons/ldapmanager/class_ldapmanager.inc:147
+#: addons/ldapmanager/class_ldapmanager.inc:148
 #, php-format
 msgid "No such object %s!"
 msgstr "Objekt %s nicht gefunden!"
 
-#: addons/ldapmanager/class_ldapmanager.inc:161
+#: addons/ldapmanager/class_ldapmanager.inc:162
 #: addons/ldapmanager/class_csvimport.inc:137
 msgid "Permission error"
 msgstr "Berechtigungsfehler"
 
-#: addons/ldapmanager/class_ldapmanager.inc:162
+#: addons/ldapmanager/class_ldapmanager.inc:163
 #, php-format
 msgid "You have no permission to export %s!"
 msgstr "Sie haben keine Berechtigung, um %s zu exportieren!"
@@ -207,3 +209,39 @@ msgstr "Die Datei ist nicht lesbar"
 #: addons/ldapmanager/class_csvimport.inc:545
 msgid "Cannot find CSV data in the selected file!"
 msgstr "Kann keine CSV-Daten in der gewählten Datei finden!"
+
+#: addons/ldapmanager/contentcsv.tpl.c:2
+msgid ""
+"The CSV import plugin provides methods to generate user accounts from a file"
+" containing Semi-Colon Seperated Values. The administrator can decide which "
+"columns should be transfered to which attribute. Note that you must have at "
+"least the GIVENNAME and SURNAME set."
+msgstr "Das CSV-Importplugin bietet Methoden um Benutzerkonten von einer Datei zu erstellen. Diese Datei sollte Semikolon-getrennte Werte haben. Der Administrator kann sich entscheiden, welche Spalten zu welchem Attribut transferiert werden. Beachten Sie dass Sie mindestes den VORNAMEN und NACHNAMEN als Set haben müssen."
+
+#: addons/ldapmanager/contentcsv.tpl.c:5
+msgid "Select CSV file to import"
+msgstr "Auswahl der zu importierenden CSV Datei"
+
+#: addons/ldapmanager/contentcsv.tpl.c:8
+msgid "Browse"
+msgstr "Durchsuchen"
+
+#: addons/ldapmanager/contentcsv.tpl.c:11
+msgid "Select template"
+msgstr "Auswahl der Vorlage"
+
+#: addons/ldapmanager/contentcsv.tpl.c:14
+msgid "All entries have been written to the LDAP database successfully."
+msgstr "Alle Einträge wurden erfolgreich in die LDAP-Datenbank geschrieben."
+
+#: addons/ldapmanager/contentcsv.tpl.c:17
+msgid "Oups. There was an error during the import of your data."
+msgstr "Es gab einen Fehler während des Importvorgangs Ihrer Daten."
+
+#: addons/ldapmanager/contentcsv.tpl.c:20
+msgid "Here is the status report for the import:"
+msgstr "Statusreport des Imports:"
+
+#: addons/ldapmanager/contentcsv.tpl.c:23
+msgid "Selected Template"
+msgstr "Gewählte Vorlage"

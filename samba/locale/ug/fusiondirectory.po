@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-12-16 21:56+0100\n"
-"PO-Revision-Date: 2014-12-12 07:46+0000\n"
+"POT-Creation-Date: 2015-03-17 18:47+0100\n"
+"PO-Revision-Date: 2015-02-25 15:53+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Uighur (http://www.transifex.com/projects/p/FusionDirectory-108/language/ug/)\n"
 "MIME-Version: 1.0\n"
@@ -508,7 +508,7 @@ msgid "The windows user manager allows eight clients at maximum!"
 msgstr ""
 
 #: personal/samba/class_sambaAccount.inc:478
-#: personal/samba/class_sambaAccount.inc:500
+#: personal/samba/class_sambaAccount.inc:501
 msgid "Warning"
 msgstr ""
 
@@ -516,7 +516,7 @@ msgstr ""
 msgid "Undefined Samba SID detected. Please fix this problem manually!"
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:501
+#: personal/samba/class_sambaAccount.inc:502
 msgid ""
 "Cannot convert primary group to samba group: group cannot be identified!"
 msgstr ""
@@ -577,4 +577,12 @@ msgstr ""
 
 #: config/samba/class_sambaPluginConfig.inc:72
 msgid "Needed to be compliant with Windows <= 98 or Samba < 3.2"
+msgstr ""
+
+#: personal/samba/sambaLogonHours.tpl.c:2
+msgid "Specify the hours this user is allowed to log in"
+msgstr ""
+
+#: personal/samba/sambaLogonHours.tpl.c:5
+msgid "Hour"
 msgstr ""

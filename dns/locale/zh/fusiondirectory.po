@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-12-16 21:56+0100\n"
-"PO-Revision-Date: 2014-12-15 17:11+0000\n"
+"POT-Creation-Date: 2015-03-19 21:45+0100\n"
+"PO-Revision-Date: 2015-02-25 16:12+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Chinese (http://www.transifex.com/projects/p/FusionDirectory-108/language/zh/)\n"
 "MIME-Version: 1.0\n"
@@ -18,28 +18,17 @@ msgstr ""
 "Language: zh\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: admin/systems/services/dns/class_serviceDNS.inc:50
-#: admin/systems/services/dns/class_serviceDNS.inc:512
-#: admin/systems/services/dns/class_serviceDNS.inc:520
-#: admin/systems/services/dns/class_serviceDNS.inc:521
+#: admin/systems/services/dns/class_serviceDNS.inc:45
+#: admin/systems/services/dns/class_serviceDNS.inc:386
+#: admin/systems/services/dns/class_serviceDNS.inc:394
+#: admin/systems/services/dns/class_serviceDNS.inc:395
 msgid "DNS service"
 msgstr ""
 
-#: admin/systems/services/dns/class_serviceDNS.inc:181
-#, php-format
-msgid "You are going to migrate the DNS setup from server '%s'."
-msgstr ""
-
-#: admin/systems/services/dns/class_serviceDNS.inc:182
-msgid ""
-"The migration will be started when you save this system. To cancel this "
-"action, use the cancel button below."
-msgstr ""
-
-#: admin/systems/services/dns/class_serviceDNS.inc:201
-#: admin/systems/services/dns/class_serviceDNS.inc:358
-#: admin/systems/services/dns/class_serviceDNS.inc:371
-#: admin/systems/services/dns/class_serviceDNS.inc:377
+#: admin/systems/services/dns/class_serviceDNS.inc:101
+#: admin/systems/services/dns/class_serviceDNS.inc:258
+#: admin/systems/services/dns/class_serviceDNS.inc:271
+#: admin/systems/services/dns/class_serviceDNS.inc:277
 #: admin/systems/services/dns/class_DNS.inc:167
 #: admin/systems/services/dns/class_DNS.inc:172
 #: admin/systems/services/dns/class_DNS.inc:617
@@ -48,110 +37,117 @@ msgstr ""
 msgid "Error"
 msgstr "错误"
 
-#: admin/systems/services/dns/class_serviceDNS.inc:295
-#: admin/systems/services/dns/class_serviceDNS.inc:532
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:348
+#: admin/systems/services/dns/class_serviceDNS.inc:195
+#: admin/systems/services/dns/class_serviceDNS.inc:406
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:352
 msgid "Reverse zone"
 msgstr "反向解析域"
 
-#: admin/systems/services/dns/class_serviceDNS.inc:296
-#: admin/systems/services/dns/class_serviceDNS.inc:541
+#: admin/systems/services/dns/class_serviceDNS.inc:196
+#: admin/systems/services/dns/class_serviceDNS.inc:415
+#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:47
 msgid "TTL"
 msgstr "TTL"
 
-#: admin/systems/services/dns/class_serviceDNS.inc:297
+#: admin/systems/services/dns/class_serviceDNS.inc:197
 msgid "Class"
 msgstr "类"
 
-#: admin/systems/services/dns/class_serviceDNS.inc:358
+#: admin/systems/services/dns/class_serviceDNS.inc:258
 #, php-format
 msgid "Cannot delete the selected zone. It is still in use by '%s'"
 msgstr ""
 
-#: admin/systems/services/dns/class_serviceDNS.inc:371
+#: admin/systems/services/dns/class_serviceDNS.inc:271
 #, php-format
 msgid "Was not able to contact argonaut server: %s"
 msgstr ""
 
-#: admin/systems/services/dns/class_serviceDNS.inc:377
+#: admin/systems/services/dns/class_serviceDNS.inc:277
 #, php-format
 msgid "Was not able to launch ldap2zone: %s"
 msgstr ""
 
-#: admin/systems/services/dns/class_serviceDNS.inc:465
-#: admin/systems/services/dns/class_serviceDNS.inc:479
-#: admin/systems/services/dns/class_serviceDNS.inc:496
-#: admin/systems/services/dns/class_serviceDNS.inc:502
+#: admin/systems/services/dns/class_serviceDNS.inc:339
+#: admin/systems/services/dns/class_serviceDNS.inc:353
+#: admin/systems/services/dns/class_serviceDNS.inc:370
+#: admin/systems/services/dns/class_serviceDNS.inc:376
 #: admin/systems/services/dns/class_DNS.inc:730
 msgid "LDAP error"
 msgstr "LDAP 错误"
 
-#: admin/systems/services/dns/class_serviceDNS.inc:521
+#: admin/systems/services/dns/class_serviceDNS.inc:395
 msgid "Services"
 msgstr "服务"
 
-#: admin/systems/services/dns/class_serviceDNS.inc:527
+#: admin/systems/services/dns/class_serviceDNS.inc:401
 msgid "Start service"
 msgstr ""
 
-#: admin/systems/services/dns/class_serviceDNS.inc:528
+#: admin/systems/services/dns/class_serviceDNS.inc:402
 msgid "Stop service"
 msgstr ""
 
-#: admin/systems/services/dns/class_serviceDNS.inc:529
+#: admin/systems/services/dns/class_serviceDNS.inc:403
 msgid "Restart service"
 msgstr ""
 
-#: admin/systems/services/dns/class_serviceDNS.inc:531
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:339
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:344
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:352
+#: admin/systems/services/dns/class_serviceDNS.inc:405
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:343
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:348
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:356
+#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:5
 msgid "Zone name"
 msgstr "域名称"
 
-#: admin/systems/services/dns/class_serviceDNS.inc:533
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:432
+#: admin/systems/services/dns/class_serviceDNS.inc:407
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:436
 msgid "Network class"
 msgstr ""
 
-#: admin/systems/services/dns/class_serviceDNS.inc:534
+#: admin/systems/services/dns/class_serviceDNS.inc:408
 msgid "Zone entry editor"
 msgstr ""
 
-#: admin/systems/services/dns/class_serviceDNS.inc:535
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:356
+#: admin/systems/services/dns/class_serviceDNS.inc:409
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:360
 msgid "Primary dns server"
 msgstr ""
 
-#: admin/systems/services/dns/class_serviceDNS.inc:536
+#: admin/systems/services/dns/class_serviceDNS.inc:410
+#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:32
 msgid "Mail address"
 msgstr "邮件地址"
 
-#: admin/systems/services/dns/class_serviceDNS.inc:537
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:360
+#: admin/systems/services/dns/class_serviceDNS.inc:411
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:364
 msgid "Serial"
 msgstr "串行"
 
-#: admin/systems/services/dns/class_serviceDNS.inc:538
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:364
+#: admin/systems/services/dns/class_serviceDNS.inc:412
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:368
+#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:38
 msgid "Refresh"
 msgstr "刷新"
 
-#: admin/systems/services/dns/class_serviceDNS.inc:539
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:376
+#: admin/systems/services/dns/class_serviceDNS.inc:413
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:380
+#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:41
 msgid "Retry"
 msgstr "重试"
 
-#: admin/systems/services/dns/class_serviceDNS.inc:540
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:372
+#: admin/systems/services/dns/class_serviceDNS.inc:414
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:376
+#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:44
 msgid "Expire"
 msgstr "过期"
 
-#: admin/systems/services/dns/class_serviceDNS.inc:542
+#: admin/systems/services/dns/class_serviceDNS.inc:416
 msgid "MX records"
 msgstr ""
 
-#: admin/systems/services/dns/class_serviceDNS.inc:543
+#: admin/systems/services/dns/class_serviceDNS.inc:417
+#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:17
 msgid "Zone records"
 msgstr "域记录"
 
@@ -179,42 +175,44 @@ msgid "MxRecord"
 msgstr ""
 
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:274
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:514
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:518
 msgid "Delete"
 msgstr "删除"
 
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:352
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:382
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:356
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:386
 msgid "Only lowercase allowed"
 msgstr ""
 
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:356
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:360
 msgid "This field should be a domain name"
 msgstr ""
 
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:368
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:372
 msgid "Time to life"
 msgstr ""
 
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:391
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:411
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:395
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:415
+#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:8
 msgid "Network address"
 msgstr "网络地址"
 
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:419
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:424
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:429
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:423
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:428
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:433
 #, php-format
 msgid ""
 "The specified network address and the network class (%s/%s) do not match!"
 msgstr ""
 
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:520
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:524
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:439
 msgid "Add"
 msgstr "添加"
 
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:121
+#: admin/systems/services/dns/serviceDNSeditZoneEntries.tpl.c:8
 msgid "New entry"
 msgstr "新条目"
 
@@ -342,3 +340,63 @@ msgstr ""
 #: config/dns/class_dnsConfig.inc:45
 msgid "Should FD store a final dot at the end of domains?"
 msgstr ""
+
+#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:2
+msgid "Generic"
+msgstr "通用配置"
+
+#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:11
+msgid "Netmask"
+msgstr ""
+
+#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:14
+msgid "Zone is in use, network settings can't be modified."
+msgstr ""
+
+#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:20
+msgid "Can't be edited because the zone wasn't saved right now."
+msgstr "无法编辑因为域现在不能保存。"
+
+#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:23
+msgid "Edit"
+msgstr "编辑"
+
+#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:26
+msgid "SOA record"
+msgstr "SOA 记录"
+
+#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:29
+msgid "Primary dns server for this zone"
+msgstr "这个域的主要 dns 服务器"
+
+#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:35
+msgid "Serial number (automatically incremented)"
+msgstr "系列号（自增）"
+
+#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:50
+msgid "MxRecords"
+msgstr "Mx记录"
+
+#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:53
+msgid "Global zone records"
+msgstr "全局域记录"
+
+#: admin/systems/services/dns/serviceDNS.tpl.c:2
+msgid "Zones"
+msgstr "域"
+
+#: admin/systems/services/dns/serviceDNSeditZoneEntries.tpl.c:2
+msgid ""
+"This dialog allows you to configure all components of this DNS zone on a "
+"single list."
+msgstr "此对话框允许您修改这个 DNS 区域中所有内容。"
+
+#: admin/systems/services/dns/serviceDNSeditZoneEntries.tpl.c:5
+msgid ""
+"This dialog can't be used until the currently edited zone was saved or the "
+"zone entry exists in the ldap database."
+msgstr "这个对话框不能使用，除非当前编辑的域被保存或者域中条目已经存在于 ldap 数据库中。"
+
+#: admin/systems/services/dns/serviceDNSeditZoneEntries.tpl.c:11
+msgid "Create a new DNS zone entry"
+msgstr "创建一个新 DNS zone 条目"

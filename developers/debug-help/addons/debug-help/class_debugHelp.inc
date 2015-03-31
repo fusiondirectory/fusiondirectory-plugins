@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2011-2014  FusionDirectory
+  Copyright (C) 2011-2015  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -27,7 +27,8 @@ class debugHelp extends simplePlugin
     return array(
       'plShortName'   => _('Debug help'),
       'plDescription' => _('Debug help tools'),
-      'plSection'     => 'addons',
+      'plSection'     => 'reporting',
+      'plPriority'    => 1,
       'plIcon'        => 'geticon.php?context=categories&icon=applications-development&size=48',
       'plCategory'    => array('debug' => array('objectClass' => 'none', 'description' => _('Diagram'))),
 

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-12-16 21:56+0100\n"
-"PO-Revision-Date: 2014-12-15 17:01+0000\n"
+"POT-Creation-Date: 2015-03-19 21:45+0100\n"
+"PO-Revision-Date: 2015-02-25 16:12+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Chinese (http://www.transifex.com/projects/p/FusionDirectory-108/language/zh/)\n"
 "MIME-Version: 1.0\n"
@@ -27,11 +27,11 @@ msgstr "Nagios"
 msgid "Nagios account settings"
 msgstr ""
 
-#: personal/nagios/class_nagiosAccount.inc:65
+#: personal/nagios/class_nagiosAccount.inc:65 personal/nagios/nagios.tpl.c:2
 msgid "Nagios Account"
 msgstr "Nagios 账号"
 
-#: personal/nagios/class_nagiosAccount.inc:68
+#: personal/nagios/class_nagiosAccount.inc:68 personal/nagios/nagios.tpl.c:5
 msgid "Alias"
 msgstr "别名"
 
@@ -39,7 +39,7 @@ msgstr "别名"
 msgid "Name of the nagios alias"
 msgstr ""
 
-#: personal/nagios/class_nagiosAccount.inc:72
+#: personal/nagios/class_nagiosAccount.inc:72 personal/nagios/nagios.tpl.c:8
 msgid "Mail address"
 msgstr "邮件地址"
 
@@ -47,23 +47,23 @@ msgstr "邮件地址"
 msgid "Email of the nagios alias"
 msgstr ""
 
-#: personal/nagios/class_nagiosAccount.inc:76
+#: personal/nagios/class_nagiosAccount.inc:76 personal/nagios/nagios.tpl.c:11
 msgid "Host notification period"
 msgstr "主机通知周期"
 
-#: personal/nagios/class_nagiosAccount.inc:81
+#: personal/nagios/class_nagiosAccount.inc:81 personal/nagios/nagios.tpl.c:14
 msgid "Service notification period"
 msgstr "服务通知周期"
 
-#: personal/nagios/class_nagiosAccount.inc:86
+#: personal/nagios/class_nagiosAccount.inc:86 personal/nagios/nagios.tpl.c:17
 msgid "Service notification options"
 msgstr "服务通知选项"
 
-#: personal/nagios/class_nagiosAccount.inc:91
+#: personal/nagios/class_nagiosAccount.inc:91 personal/nagios/nagios.tpl.c:20
 msgid "Host notification options"
 msgstr "主机通知选项"
 
-#: personal/nagios/class_nagiosAccount.inc:96
+#: personal/nagios/class_nagiosAccount.inc:96 personal/nagios/nagios.tpl.c:23
 msgid "Pager"
 msgstr "呼机"
 
@@ -71,11 +71,11 @@ msgstr "呼机"
 msgid " Pager"
 msgstr "呼机"
 
-#: personal/nagios/class_nagiosAccount.inc:100
+#: personal/nagios/class_nagiosAccount.inc:100 personal/nagios/nagios.tpl.c:26
 msgid "Service notification commands"
 msgstr "服务通知命令"
 
-#: personal/nagios/class_nagiosAccount.inc:104
+#: personal/nagios/class_nagiosAccount.inc:104 personal/nagios/nagios.tpl.c:29
 msgid "Host notification commands"
 msgstr "主机通知命令"
 
@@ -94,3 +94,35 @@ msgstr ""
 #: config/nagios/class_nagiosConfig.inc:45
 msgid "Prefix used for lconf LDAP fields"
 msgstr ""
+
+#: personal/nagios/nagios.tpl.c:32
+msgid "Nagios authentification"
+msgstr "Nagios 鉴权"
+
+#: personal/nagios/nagios.tpl.c:35
+msgid "view system informations"
+msgstr "查看系统信息"
+
+#: personal/nagios/nagios.tpl.c:38
+msgid "view configuration information"
+msgstr "查看配置信息"
+
+#: personal/nagios/nagios.tpl.c:41
+msgid "trigger system commands"
+msgstr "触发系统命令"
+
+#: personal/nagios/nagios.tpl.c:44
+msgid "view all services"
+msgstr "查看所有服务"
+
+#: personal/nagios/nagios.tpl.c:47
+msgid "view all hosts"
+msgstr "查看所有主机"
+
+#: personal/nagios/nagios.tpl.c:50
+msgid "trigger all service commands"
+msgstr "触发所有服务命令"
+
+#: personal/nagios/nagios.tpl.c:53
+msgid "trigger all host commands"
+msgstr "触发所有主机命令"

@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003  Cajus Pollmeier
-  Copyright (C) 2011-2013  FusionDirectory
+  Copyright (C) 2011-2015  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -83,13 +83,13 @@ class ServerService extends management
     if (session::global_is_set(get_class($this)."_filter")) {
       $filter = session::global_get(get_class($this)."_filter");
     } else {
-      $filter = new filter(get_template_path("serverService-filter.xml", TRUE));
+      $filter = new filter(get_template_path("serverService-filter.xml", TRUE, dirname(__FILE__)));
       $filter->setObjectStorage($this->storagePoints);
     }
     $this->setFilter($filter);
 
     // Build headpage
-    $headpage = new listing(get_template_path("serverService-list.xml", TRUE));
+    $headpage = new listing(get_template_path("serverService-list.xml", TRUE, dirname(__FILE__)));
     $headpage->registerElementFilter("filterServiceStatus", "ServerService::filterServiceStatus");
     $headpage->setFilter($filter);
 

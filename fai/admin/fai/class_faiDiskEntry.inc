@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2013  FusionDirectory
+  Copyright (C) 2011-2015  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -611,7 +611,11 @@ class faiDiskEntry extends plugin
     }
 
     /* Assemble flags */
-    $tmp['FAIdiskOption'] = array("fstabkey:".$this->fstabkey, "disklabel:".$this->disklabel);
+    if ($this->FAIdiskType == "disk") {
+      $tmp['FAIdiskOption'] = array("fstabkey:".$this->fstabkey, "disklabel:".$this->disklabel);
+    } else {
+      $tmp['FAIdiskOption'] = array("fstabkey:".$this->fstabkey);
+    }
 
     /* If hdd name has changed, tell partitionTable to rename it */
     if(($this->is_edit)&&($this->old_cn != $this->DISKcn)){

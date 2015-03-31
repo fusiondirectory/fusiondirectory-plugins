@@ -1,9 +1,8 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2013  FusionDirectory
+  Copyright (C) 2011-2015  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,13 +19,119 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-/* TODO add a select for archs ? */
-
-class serviceDebianRepository extends simpleService
+class FAIRepositoryAttribute extends PipeSeparatedCompositeAttribute
 {
-  var $objectclasses = array("FAIrepositoryServer");
+  function __construct($description, $ldapName, $acl = "", $label = "Composite attribute")
+  {
+    parent::__construct(
+      $description,
+      $ldapName,
+      array(
+        new StringAttribute(
+          _('URL'), _('Repository url'),
+          'mirrorUrl', TRUE
+        ),
+        new SelectAttribute(
+          _('Parent server'), _('Parent repository server'),
+          'mirrorParent', FALSE,
+          array(), ''
+        ),
+        new StringAttribute(
+          _('Release'), _('Release used on this repository'),
+          'mirrorRelease', TRUE
+        ),
+        new CommaListAttribute(
+          'mirrorSections',
+          new SetAttribute(
+            new StringAttribute(
+              _('Sections'), _('Sections available on this repository'), 'mirrorSections_inner'
+            )
+          )
+        ),
+        new SelectAttribute(
+          _('Mirror mode'), _('Is this mirror an installation repository? Is its release a custom one?'),
+          'mirrorMode', TRUE,
+          array('install','update','custom')
+        ),
+        new BooleanAttribute(
+          _('Local mirror'), _('Is this mirror a local or a network mirror?'),
+          'mirrorLocal', FALSE,
+          FALSE, '',
+          'local', 'network'
+        ),
+        new CommaListAttribute(
+          'mirrorArchs',
+          new SetAttribute(
+            new StringAttribute(
+              _('Architectures'), _('Processor architectures available on this repository'),
+              'mirrorArchs_inner', TRUE
+            )
+          )
+        ),
+        new SelectAttribute(
+          _('Distribution'), _('Which distribution is this repository for'),
+          'distribution', TRUE,
+          array('debian','centos')
+        ),
+      ),
+      $acl,
+      $label
+    );
+    $this->attributes[7]->setSubmitForm(TRUE);
+    $this->updateFields();
+  }
 
-  // The main function : information about attributes
+  function updateFields()
+  {
+    $dn = NULL;
+    if (is_object($this->plugin)) {
+      $dn = $this->plugin->dn;
+    }
+    $this->attributes[1]->setChoices(serviceRepository::getParentServers($this->attributes[7]->getValue(), $dn));
+    if ($this->attributes[7]->getValue() == 'debian') {
+      $releaseList = array_map(
+        function ($a)
+        {
+          return "custom:$a";
+        },
+        serviceRepository::getReleaseList($this->attributes[7]->getValue())
+      );
+      $modeChoices = array_merge(array('install', 'update'), $releaseList);
+    } else {
+      $modeChoices = array('install', 'update');
+    }
+    $this->attributes[4]->setChoices($modeChoices);
+  }
+
+  function applyPostValue()
+  {
+    parent::applyPostValue();
+    $this->updateFields();
+  }
+
+  function setValue ($values)
+  {
+    $arrayValues = $values;
+    if (!is_array($values)) {
+      $arrayValues = $this->inputValue($values);
+    }
+    $this->attributes[7]->setValue($arrayValues[7]);
+    $this->updateFields();
+    parent::setValue($values);
+  }
+
+  function resetToDefault ()
+  {
+    $this->attributes[7]->resetToDefault();
+    $this->updateFields();
+    parent::resetToDefault();
+  }
+}
+
+class serviceRepository extends simpleService
+{
+  var $objectclasses  = array('FAIrepositoryServer');
+
   static function getAttributesInfo ()
   {
     return array(
@@ -36,51 +141,9 @@ class serviceDebianRepository extends simpleService
         'class'     => array('fullwidth'),
         'attrs'     => array(
           new OrderedArrayAttribute(
-            new PipeSeparatedCompositeAttribute(
+            new FAIRepositoryAttribute(
               _('Repositories this server hosts'),
-              'FAIrepository',
-              array(
-                new StringAttribute(
-                  _('URL'), _('Repository url'),
-                  'mirrorUrl', TRUE
-                ),
-                new SelectAttribute(
-                  _('Parent server'), _('Parent repository server'),
-                  'mirrorParent', FALSE,
-                  array(), ''
-                ),
-                new StringAttribute(
-                  _('Release'), _('Debian release used on this repository'), 'mirrorRelease', TRUE
-                ),
-                new CommaListAttribute(
-                  'mirrorSections',
-                  new SetAttribute(
-                    new StringAttribute(
-                      _('Sections'), _('Debian sections available on this repository'), 'mirrorSections_inner'
-                    )
-                  )
-                ),
-                new SelectAttribute(
-                  _('Mirror mode'), _('Is this mirror an installation repository? Is its release a custom one?'),
-                  'mirrorMode', TRUE,
-                  array('install','update','custom')
-                ),
-                new BooleanAttribute(
-                  _('Local mirror'), _('Is this mirror a local or a network mirror?'),
-                  'mirrorLocal', FALSE,
-                  FALSE, '',
-                  'local', 'network'
-                ),
-                new CommaListAttribute(
-                  'mirrorArchs',
-                  new SetAttribute(
-                    new StringAttribute(
-                      _('Architectures'), _('Processor architectures available on this repository'), 'mirrorArchs_inner'
-                    )
-                  )
-                ),
-              ),
-              '', '' // no formats
+              'FAIrepository'
             ),
             FALSE,  // no order
             array(),
@@ -91,13 +154,12 @@ class serviceDebianRepository extends simpleService
     );
   }
 
-  /* Return plugin informations for acl handling */
   static function plInfo()
   {
     return array(
-      'plShortName'   => _('Debian repository'),
-      'plDescription' => _('Debian repository').' ('._('Services').')',
-      'plIcon'        => 'plugins/fai/images/iconMiniRepository.png',
+      'plShortName'   => _('Package repository'),
+      'plDescription' => _('Package repository information'),
+      'plIcon'        => 'geticon.php?context=mimetypes&icon=package-x-generic&size=16',
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
@@ -107,17 +169,19 @@ class serviceDebianRepository extends simpleService
   {
     parent::__construct($config, $dn, $parent);
 
-    $this->attributesAccess['FAIrepository']->attribute->attributes[1]->setChoices($this->getParentServers());
-    $releaseList = array_map(
-      function ($a)
-      {
-        return "custom:$a";
-      },
-      $this->getReleaseList()
-    );
-    $releaseChoices = array_merge(array('install', 'update'), $releaseList);
-    $this->attributesAccess['FAIrepository']->attribute->attributes[4]->setChoices($releaseChoices);
     $this->attributesAccess['FAIrepository']->setLinearRendering(FALSE);
+  }
+
+  static function isOfDistribution($attrs, $distribution)
+  {
+    if (!isset($attrs['FAIrepository'])) {
+      return FALSE;
+    }
+    if (preg_match('/'.preg_quote($distribution, '/').'$/', $attrs['FAIrepository'][0])) {
+      return TRUE;
+    } else {
+      return FALSE;
+    }
   }
 
   function ldap_save($clean = TRUE)
@@ -129,77 +193,44 @@ class serviceDebianRepository extends simpleService
     foreach ($repos as $repo) {
       $release = $repo[2];
       if (($repo[4] == 'install') && (!isset($done[$release]))) {
-        FAI::createBranch($release);
+        FAI::createBranch($repo[7], $release);
         $done[$release] = TRUE;
       }
     }
   }
 
-  function getReleaseList ()
+  static function getParentServers($distribution, $dn = NULL)
   {
-    $ldap = $this->config->get_ldap_link();
-    $ldap->ls("(objectClass=FAIbranch)", get_ou("faiBaseRDN").$this->config->current['BASE'], array("ou"));
+    global $config;
+
+    $ldap = $config->get_ldap_link();
+    $ldap->cd($config->current['BASE']);
+    $ldap->search('(&(objectClass=FAIrepositoryServer)(FAIrepository=*|'.$distribution.'))', array('dn','cn'));
+
+    $ret = array();
+    while ($attr = $ldap->fetch()) {
+      if ($attr['dn'] == $dn) {
+        continue;
+      }
+      $ret[$attr['cn'][0]] = $attr['cn'][0];
+    }
+
+    asort($ret);
+    return $ret;
+  }
+
+  static function getReleaseList ($distribution)
+  {
+    global $config;
+
+    $ldap = $config->get_ldap_link();
+    $ldap->ls('(objectClass=FAIbranch)', 'ou='.$distribution.','.get_ou('faiBaseRDN').$config->current['BASE'], array('ou'));
 
     $list = array();
     while ($release = $ldap->fetch()) {
       $list[] = $release['ou'][0];
     }
     return $list;
-  }
-
-  function getParentServers()
-  {
-    $ldap = $this->config->get_ldap_link();
-    $ldap->cd($this->config->current['BASE']);
-    $ldap->search("(objectClass=FAIrepositoryServer)", array("cn"));
-
-    $ret  = array();
-    while ($attr = $ldap->fetch()) {
-      if ($attr['cn'][0] == $this->cn) {
-        continue;
-      }
-      $ret[$attr['cn'][0]] = $attr['cn'][0];
-    }
-
-    $ret = array_merge($ret, $this->getHookElements());
-
-    asort($ret);
-    return $ret;
-  }
-
-  /* this funtions calls a defined hook
-      and parses all additional serverdata
-   */
-  function getHookElements()
-  {
-    $ret = array();
-    $cmd = $this->config->search("serviceRepository", "repositoryBranchHook", array('tabs'));
-    if (!empty($cmd)) {
-      $res  = shell_exec($cmd);
-      $res2 = trim($res);
-      if (!$res || empty($res2)) {
-        msg_dialog::display(_("Error"), msgPool::cmdexecfailed( "repositoryBranchHook",
-                                                                $cmd,
-                                                                _("Repository service")),
-                                                                ERROR_DIALOG);
-      } else {
-        $tmp = preg_split("/\n/", $res);
-        foreach ($tmp as $hook) {
-          /* skip empty */
-          if (empty($hook)) {
-            continue;
-          }
-
-          if (preg_match("/;/", $hook)) {
-            $hookinfo = explode(";", $hook);
-            $ret[$hookinfo[0]] = $hookinfo[0];
-          } else {
-            $ret[$hook] = $hook;
-          }
-        }
-      }
-    }
-    return $ret;
   }
 }
 ?>

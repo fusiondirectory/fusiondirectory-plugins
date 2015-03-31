@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011  FusionDirectory
+  Copyright (C) 2011-2015  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -38,8 +38,8 @@ class ldiftab extends tabs
       'plShortName'   => _('LDAP import/export'),
       'plDescription' => _('Allows the import or export of the ldap tree'),
       'plIcon'        => 'plugins/ldapmanager/images/icon.png',
-      'plSection'     => 'addons',
-      'plPriority'    => 20,
+      'plSection'     => 'conf',
+      'plPriority'    => 10,
       'plCategory'    => array('ldapmanager' => array('objectClass' => 'none', 'description' => _('Ldap manager'))),
 
       'plProvidedAcls' => array()

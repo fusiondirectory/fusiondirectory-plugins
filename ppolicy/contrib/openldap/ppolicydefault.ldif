@@ -1,0 +1,20 @@
+dn: cn=default, ou=ppolicies, dc=fusiondirectory,dc=org
+objectClass: top
+objectClass: device
+objectClass: pwdPolicy
+cn: default
+pwdAttribute: userPassword
+pwdMaxAge: 7776000
+pwdMinAge: 86400
+pwdExpireWarning: 864000
+pwdInHistory: 4
+pwdMinLength: 8
+pwdMaxFailure: 5
+pwdLockout: TRUE
+pwdLockoutDuration: 900
+pwdGraceAuthNLimit: 5
+pwdFailureCountInterval: 0
+pwdMustChange: TRUE
+pwdAllowUserChange: TRUE
+pwdSafeModify: FALSE
+pwdCheckQuality: 1

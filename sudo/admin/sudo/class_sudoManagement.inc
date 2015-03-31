@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003  Cajus Pollmeier
-  Copyright (C) 2011-2013  FusionDirectory
+  Copyright (C) 2011-2015  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -32,8 +32,8 @@ class sudoManagement extends simpleManagement
       "plShortName"   => _("Sudo"),
       "plDescription" => _("Sudo management"),
       "plIcon"        => "plugins/sudo/images/icon.png",
-      "plSection"     => "admin",
-      "plPriority"    => 5,
+      "plSection"     => "accounts",
+      "plPriority"    => 45,
       "plManages"     => array("sudo"),
 
       "plProvidedAcls" => array()

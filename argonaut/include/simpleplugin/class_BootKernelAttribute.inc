@@ -1,8 +1,7 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2012-2013  FusionDirectory
+  Copyright (C) 2012-2015  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -21,12 +20,11 @@
 
 class BootKernelAttribute extends SelectAttribute
 {
-  private $cache = array();
-
   function setRelease($release)
   {
-    if ($this->update_kernel_cache($release)) {
-      $this->setChoices($this->cache[$release]);
+    $choices = $this->get_kernel_choices($release);
+    if ($choices !== FALSE) {
+      $this->setChoices($choices);
       $this->setDisabled(FALSE);
     } else {
       $this->setChoices(array());
@@ -35,15 +33,12 @@ class BootKernelAttribute extends SelectAttribute
     }
   }
 
-  function update_kernel_cache($release)
+  function get_kernel_choices($release)
   {
-    /* Get list of available kernel for this release
-     */
-    if (!isset($this->cache)) {
-      $this->cache = array();
-    }
-
-    if (!isset($this->cache[$release])) {
+    /* Get list of available kernel for this release */
+    if (session::global_is_set('bootkernel_cache_'.$release)) {
+      return session::global_get('bootkernel_cache_'.$release);
+    } else {
       $s_daemon = new supportDaemon();
       if (!$s_daemon->is_available()) {
         return FALSE;
@@ -52,10 +47,10 @@ class BootKernelAttribute extends SelectAttribute
       if ($s_daemon->is_error()) {
         return FALSE;
       }
-      $this->cache[$release] = $tmp;
-      ksort($this->cache[$release]);
+      ksort($tmp);
+      session::global_set('bootkernel_cache_'.$release, $tmp);
+      return $tmp;
     }
-    return TRUE;
   }
 }
 ?>

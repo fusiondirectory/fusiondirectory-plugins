@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-12-16 21:56+0100\n"
-"PO-Revision-Date: 2014-12-15 17:21+0000\n"
+"POT-Creation-Date: 2015-03-19 21:45+0100\n"
+"PO-Revision-Date: 2015-03-11 21:42+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/FusionDirectory-108/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -61,7 +61,7 @@ msgstr ""
 
 #: admin/blocklists/class_blocklistGeneric.inc:159
 msgid "Informations"
-msgstr ""
+msgstr "Информация"
 
 #: admin/blocklists/class_blocklistGeneric.inc:162
 msgid "List name"
@@ -111,7 +111,7 @@ msgstr "Пароль"
 #: personal/faxaccount/class_gofaxAccount.inc:272 html/getfax.php:96
 #: html/getfax.php:101 html/getfax.php:106
 msgid "Error"
-msgstr ""
+msgstr "Ошибка"
 
 #: addons/faxreports/class_faxreport.inc:130
 msgid "No fax server found!"
@@ -120,7 +120,7 @@ msgstr ""
 #: addons/faxreports/class_faxreport.inc:139
 #, php-format
 msgid "Cannot connect to %s database!"
-msgstr ""
+msgstr "Немогу подключиться к %s базе данных!"
 
 #: addons/faxreports/class_faxreport.inc:159
 #: addons/faxreports/class_faxreport.inc:300
@@ -170,6 +170,7 @@ msgid "Fax ID"
 msgstr ""
 
 #: addons/faxreports/class_faxreport.inc:494
+#: addons/faxreports/contents.tpl.c:29
 msgid "Date"
 msgstr "Дата"
 
@@ -178,22 +179,23 @@ msgid "Time"
 msgstr ""
 
 #: addons/faxreports/class_faxreport.inc:495
+#: addons/faxreports/contents.tpl.c:32 addons/faxreports/detail.tpl.c:29
 msgid "Status"
 msgstr "Состояние"
 
-#: addons/faxreports/class_faxreport.inc:496
+#: addons/faxreports/class_faxreport.inc:496 addons/faxreports/detail.tpl.c:20
 msgid "Sender ID"
 msgstr "Идентификатор отправителя"
 
-#: addons/faxreports/class_faxreport.inc:497
+#: addons/faxreports/class_faxreport.inc:497 addons/faxreports/detail.tpl.c:17
 msgid "Sender MSN"
 msgstr "MSN отправителя"
 
-#: addons/faxreports/class_faxreport.inc:498
+#: addons/faxreports/class_faxreport.inc:498 addons/faxreports/detail.tpl.c:26
 msgid "Receiver ID"
 msgstr "Идентификатор получателя"
 
-#: addons/faxreports/class_faxreport.inc:499
+#: addons/faxreports/class_faxreport.inc:499 addons/faxreports/detail.tpl.c:23
 msgid "Receiver MSN"
 msgstr "MSN получателя"
 
@@ -205,7 +207,7 @@ msgstr ""
 msgid "Status Message"
 msgstr ""
 
-#: addons/faxreports/class_faxreport.inc:502
+#: addons/faxreports/class_faxreport.inc:502 addons/faxreports/detail.tpl.c:35
 msgid "Transfer time"
 msgstr "Время передачи"
 
@@ -237,7 +239,7 @@ msgstr "Создать настройки факса"
 
 #: personal/faxaccount/class_gofaxAccount.inc:272
 msgid "Phone number"
-msgstr ""
+msgstr "Телефон"
 
 #: personal/faxaccount/class_gofaxAccount.inc:421
 #: personal/faxaccount/class_gofaxAccount.inc:503
@@ -253,7 +255,7 @@ msgstr "Ошибка LDAP"
 #: personal/faxaccount/class_gofaxAccount.inc:631
 #: personal/faxaccount/class_gofaxAccount.inc:805
 msgid "Fax number"
-msgstr ""
+msgstr "Факс"
 
 #: personal/faxaccount/class_gofaxAccount.inc:638
 msgid "Mail delivery is requested without target address!"
@@ -261,7 +263,7 @@ msgstr ""
 
 #: personal/faxaccount/class_gofaxAccount.inc:640
 msgid "Mail address"
-msgstr ""
+msgstr "Адрес электронной почты"
 
 #: personal/faxaccount/class_gofaxAccount.inc:640
 msgid "your-name@your-domain.com"
@@ -273,7 +275,8 @@ msgstr ""
 
 #: personal/faxaccount/class_gofaxAccount.inc:796
 #: personal/faxaccount/faxNumberSelect/faxNumberSelect-list.xml:56
-#: config/fax/class_faxConfig.inc:42
+#: config/fax/class_faxConfig.inc:42 personal/faxaccount/generic.tpl.c:5
+#: personal/faxaccount/paste_generic.tpl.c:5
 msgid "Fax"
 msgstr "Факс"
 
@@ -282,10 +285,12 @@ msgid "Fax account settings"
 msgstr ""
 
 #: personal/faxaccount/class_gofaxAccount.inc:806
+#: personal/faxaccount/generic.tpl.c:11
 msgid "Language"
 msgstr "Язык"
 
 #: personal/faxaccount/class_gofaxAccount.inc:807
+#: personal/faxaccount/generic.tpl.c:17
 msgid "Delivery format"
 msgstr "Формат доставки"
 
@@ -298,10 +303,12 @@ msgid "Enable/Disable fax"
 msgstr ""
 
 #: personal/faxaccount/class_gofaxAccount.inc:810
+#: personal/faxaccount/generic.tpl.c:32
 msgid "Deliver fax as mail"
 msgstr "Отправлять факсы по эл. почте"
 
 #: personal/faxaccount/class_gofaxAccount.inc:811
+#: personal/faxaccount/generic.tpl.c:35
 msgid "Deliver fax to printer"
 msgstr "Отправлять факсы на принтер"
 
@@ -315,9 +322,10 @@ msgstr ""
 
 #: personal/faxaccount/faxNumberSelect/faxNumberSelect-list.xml:10
 msgid "Please select the desired entries"
-msgstr ""
+msgstr "Пожалуйста выберете нужные записи"
 
 #: personal/faxaccount/faxNumberSelect/faxNumberSelect-list.xml:14
+#: addons/faxreports/contents.tpl.c:26 addons/faxreports/detail.tpl.c:11
 msgid "User"
 msgstr "Пользователь"
 
@@ -327,7 +335,7 @@ msgstr "Имя"
 
 #: personal/faxaccount/faxNumberSelect/faxNumberSelect-list.xml:48
 msgid "Surname"
-msgstr ""
+msgstr "Фамилия"
 
 #: personal/faxaccount/main.inc:126
 msgid "Click the 'Edit' button below to change informations in this dialog"
@@ -372,3 +380,181 @@ msgstr ""
 #: config/fax/class_faxConfig.inc:45
 msgid "Branch in which fax blocklists will be stored"
 msgstr ""
+
+#: addons/faxreports/contents.tpl.c:2
+#: personal/faxaccount/faxNumberSelect/faxNumberSelect-filter.tpl.c:2
+msgid "Filter"
+msgstr "Фильтр"
+
+#: addons/faxreports/contents.tpl.c:5
+msgid "Search for"
+msgstr "Поиск"
+
+#: addons/faxreports/contents.tpl.c:8
+msgid "Enter user name to search for"
+msgstr "Введите искомое имя пользователя"
+
+#: addons/faxreports/contents.tpl.c:11 addons/faxreports/contents.tpl.c:20
+msgid "in"
+msgstr "в"
+
+#: addons/faxreports/contents.tpl.c:14
+msgid "Select subtree to base search on"
+msgstr "Выберите ветку для поиска"
+
+#: addons/faxreports/contents.tpl.c:17
+msgid "during"
+msgstr "в течение"
+
+#: addons/faxreports/contents.tpl.c:23
+msgid "Search"
+msgstr "Поиск"
+
+#: addons/faxreports/contents.tpl.c:35
+msgid "Sender"
+msgstr "Отправитель"
+
+#: addons/faxreports/contents.tpl.c:38
+msgid "Receiver"
+msgstr "Получатель"
+
+#: addons/faxreports/contents.tpl.c:41 addons/faxreports/detail.tpl.c:38
+msgid "# pages"
+msgstr "Число страниц"
+
+#: addons/faxreports/contents.tpl.c:44
+msgid "Search returned no results..."
+msgstr "Не найдено..."
+
+#: addons/faxreports/detail.tpl.c:2
+msgid "FAX preview - please wait"
+msgstr "Предварительный просмотр - пожалуйста, подождите"
+
+#: addons/faxreports/detail.tpl.c:5
+msgid "Click on fax to download"
+msgstr "Щелкните по факсу, чтобы загрузить его"
+
+#: addons/faxreports/detail.tpl.c:8
+msgid "FAX ID"
+msgstr "Идентификатор факса"
+
+#: addons/faxreports/detail.tpl.c:14
+msgid "Date / Time"
+msgstr "Дата / время"
+
+#: addons/faxreports/detail.tpl.c:32
+msgid "Status message"
+msgstr "Сообщение о состоянии"
+
+#: personal/faxaccount/generic.tpl.c:2
+#: personal/faxaccount/paste_generic.tpl.c:2
+msgid "Generic"
+msgstr "Общее"
+
+#: personal/faxaccount/generic.tpl.c:8
+msgid "Fax number for fax to trigger on"
+msgstr ""
+
+#: personal/faxaccount/generic.tpl.c:14
+msgid "Specify the fax communication language for fax to mail gateway"
+msgstr ""
+
+#: personal/faxaccount/generic.tpl.c:20
+msgid "Specify delivery format for fax to mail gateway"
+msgstr "Укажите в каком формате должны перенаправляться факсы"
+
+#: personal/faxaccount/generic.tpl.c:23
+msgid "Delivery methods"
+msgstr "Способ доставки"
+
+#: personal/faxaccount/generic.tpl.c:26
+msgid "Temporary disable fax usage"
+msgstr "Временно отключить использование факса"
+
+#: personal/faxaccount/generic.tpl.c:29
+msgid "Deliver fax as mail to"
+msgstr ""
+
+#: personal/faxaccount/generic.tpl.c:38
+msgid "Alternate fax numbers"
+msgstr "Альтернативные номера факсов"
+
+#: personal/faxaccount/generic.tpl.c:41
+msgid "Add local"
+msgstr "Добавить локально"
+
+#: personal/faxaccount/generic.tpl.c:44
+msgid "Blocklists"
+msgstr "\"Черные списки\""
+
+#: personal/faxaccount/generic.tpl.c:47
+msgid "Blocklists for incoming fax"
+msgstr "\"Черные списки\" для входящих факсов"
+
+#: personal/faxaccount/generic.tpl.c:50 personal/faxaccount/generic.tpl.c:56
+msgid "Edit"
+msgstr "Изменить"
+
+#: personal/faxaccount/generic.tpl.c:53
+msgid "Blocklists for outgoing fax"
+msgstr "\"Черные списки\" для исходящих факсов"
+
+#: personal/faxaccount/lists.tpl.c:2
+msgid "Blocked numbers/lists"
+msgstr "Блокируемые номера/списки"
+
+#: personal/faxaccount/lists.tpl.c:5
+msgid "List of predefined blocklists"
+msgstr "Готовые \"черные списки\""
+
+#: personal/faxaccount/lists.tpl.c:8
+msgid "Add the list to the blocklists"
+msgstr ""
+
+#: personal/faxaccount/paste_generic.tpl.c:8
+msgid "Fax number for GOfax to trigger on"
+msgstr "Номер факса, для которого сработает GOfax"
+
+#: personal/faxaccount/paste_generic.tpl.c:11
+msgid "Alternate fax numbers will not be copied"
+msgstr ""
+
+#: personal/faxaccount/locals.tpl.c:2
+msgid "Select numbers to add"
+msgstr "Выбрать номера для добавления"
+
+#: personal/faxaccount/locals.tpl.c:5
+msgid "Filters"
+msgstr "Фильтры"
+
+#: personal/faxaccount/locals.tpl.c:8
+msgid "Display numbers of department"
+msgstr "Показать номера из подразделения"
+
+#: personal/faxaccount/locals.tpl.c:11
+msgid "Choose the department the search will be based on"
+msgstr "Выбрать раздел, для которого будет осуществлен поиск"
+
+#: personal/faxaccount/locals.tpl.c:14
+msgid "Display numbers matching"
+msgstr "Показать совпадения номеров"
+
+#: personal/faxaccount/locals.tpl.c:17
+msgid "Regular expression for matching numbers"
+msgstr "Регулярное выражение, соответствующее номерам"
+
+#: personal/faxaccount/locals.tpl.c:20
+msgid "Display numbers of user"
+msgstr "Показать номера пользователя"
+
+#: personal/faxaccount/locals.tpl.c:23
+msgid "User name of which numbers are shown"
+msgstr "Имя пользователя, для которого перечисляются номера"
+
+#: personal/faxaccount/faxNumberSelect/faxNumberSelect-filter.tpl.c:5
+msgid "Name"
+msgstr "Название"
+
+#: personal/faxaccount/faxNumberSelect/faxNumberSelect-list.tpl.c:2
+msgid "Base"
+msgstr "Ветка"

@@ -3,7 +3,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2013  FusionDirectory
+  Copyright (C) 2011-2015  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -621,8 +621,12 @@ class faiPartitionTable extends faiPluginClass
           }
         }
 
-        if((!isset($partition['FAImountPoint']))||(empty($partition['FAImountPoint']))){
-          $partition_attrs['FAImountPoint']="swap";
+        if (!isset($partition['FAImountPoint']) || empty($partition['FAImountPoint'])) {
+          if ($partition_attrs['FAIfsType'] == 'swap') {
+            $partition_attrs['FAImountPoint'] = 'swap';
+          } else {
+            $partition_attrs['FAImountPoint'] = '-';
+          }
         }
 
         if($partition['status'] == "delete"){
@@ -768,6 +772,7 @@ class faiPartitionTable extends faiPluginClass
       'plObjectType'  => array('faiPartition' => array(
         'name'        => _('FAI partition table'),
         'filter'      => 'objectClass=FAIpartitionTable',
+        'icon'        =>  'plugins/fai/images/fai_partitionTable.png',
         'aclCategory' => 'fai'
       )),
 

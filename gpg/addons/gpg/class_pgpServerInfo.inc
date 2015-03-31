@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2013  FusionDirectory
+  Copyright (C) 2013-2015  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -68,7 +68,8 @@ class pgpServerInfo extends simplePlugin
     return array(
       'plShortName'   => _('GPG server info'),
       'plDescription' => _('GPG server info'),
-      'plSection'     => 'addons',
+      'plSection'     => 'conf',
+      'plPriority'    => 5,
       'plIcon'        => 'plugins/gpg/images/icon.png',
       'plCategory'    => array('configuration'),
 

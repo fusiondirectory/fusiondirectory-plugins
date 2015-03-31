@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2013  FusionDirectory
+  Copyright (C) 2013-2015  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -28,8 +28,8 @@ class blocklist extends simpleManagement
       'plShortName'   => _('Fax Blocklists'),
       'plDescription' => _('Fax Blocklists management'),
       'plIcon'        => 'plugins/fax/images/iconBlocklists.png',
-      'plSection'     => 'admin',
-      'plPriority'    => 12,
+      'plSection'     => 'systems',
+      'plPriority'    => 8,
       'plManages'     => array('faxBlock'),
 
       'plProvidedAcls' => array()

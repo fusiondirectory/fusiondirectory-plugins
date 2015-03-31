@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2012-2013  FusionDirectory
+  Copyright (C) 2012-2015  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -35,8 +35,8 @@ class supannStructuresManagement extends simpleManagement
       'plShortName'   => _('Supann structures'),
       'plDescription' => _('Supann structures management'),
       'plIcon'        => 'plugins/supann/images/icon.png',
-      'plSection'     => 'admin',
-      'plPriority'    => 42,
+      'plSection'     => 'accounts',
+      'plPriority'    => 40,
       'plManages'     => array('etablissement', 'entite'),
 
       'plProvidedAcls' => array()

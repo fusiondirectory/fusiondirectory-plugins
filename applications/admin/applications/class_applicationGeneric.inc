@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2014  FusionDirectory
+  Copyright (C) 2011-2015  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -72,7 +72,7 @@ class application extends simplePlugin
           new ImageAttribute (
             '', _('The icon for this application'),
             'fdApplicationImage', FALSE,
-            48, 48, 'png', TRUE
+            48, 48, 'png'
           ),
         )
       ),

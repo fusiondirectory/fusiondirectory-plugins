@@ -1,9 +1,8 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2013  FusionDirectory
+  Copyright (C) 2011-2015  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -119,11 +118,9 @@ class pureftpdAccount extends simplePlugin
         'name' => _('Miscellaneous'),
         'attrs' => array (
           new BooleanAttribute (
-            _('Temporary disable FTP access'),
-            _('Temporary disable FTP access'),
-            'FTPStatus',
-            FALSE,
-            FALSE
+            _('Enable FTP access'), _('Enable or disable FTP access'),
+            'FTPStatus', FALSE,
+            TRUE
           )
         )
       )

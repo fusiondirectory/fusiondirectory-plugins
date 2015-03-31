@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2013  FusionDirectory
+  Copyright (C) 2011-2015  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -25,10 +25,6 @@ class argonautQueue extends management
   var $dialog         = FALSE;
   var $ids_to_remove  = array();
 
-  var $events           = array();
-  var $event_tags       = array();
-  var $recently_removed = array();
-
   var $read_only = FALSE;
   var $acl_base;
   var $acl_category;
@@ -40,8 +36,8 @@ class argonautQueue extends management
       'plDescription' => _('Provide a mechanism to automatically activate systems'),
       'plIcon'        => 'plugins/argonaut/images/icon.png',
       'plSelfModify'  => FALSE,
-      'plSection'     => 'admin',
-      'plPriority'    => 33,
+      'plSection'     => 'systems',
+      'plPriority'    => 30,
       'plCategory'    => array('argonautQueue' => array('objectClass' => 'none', 'description' => _('Deployment queue'))),
 
       'plProvidedAcls' => array('Comment' => _('Description'))
@@ -53,15 +49,8 @@ class argonautQueue extends management
     /* Include config object */
     $this->config   = &$config;
     $this->o_queue  = new supportDaemon();
-    $this->events   = DaemonEvent::get_event_types();
     $this->acl_base = $config->current['BASE'];
     $this->acl_category = 'argonautQueue/';
-
-    /* Get tags that will be used in queue searches */
-    $this->event_tags = array('none');
-    foreach ($this->events as $action => $evt) {
-      $this->event_tags[] = $action;
-    }
 
     // Build filter
     if (session::global_is_set(get_class($this).'_filter')) {
@@ -86,31 +75,9 @@ class argonautQueue extends management
     $this->registerAction('processNow',       'processNow');
     $this->registerAction('viewLogs',         'viewLogs');
     $this->registerAction('abort',            'abortEvent');
-    $this->registerAction('saveEventDialog',  'saveEventDialog');
     $this->registerAction('import',           'importEvents');
 
     $this->registerAction('showError', 'showErrorEntry');
-
-    foreach ($this->events as $name => $infos) {
-      $this->registerAction('new_'.$name, 'newEntry');
-      $this->headpage->xmlData['actionmenu']['action'][0]['action'][] = array(
-        'name' => 'new_'.$name,
-        'type' => 'entry',
-        'image' => $infos['img'],
-        'label' => $infos['name'],
-      );
-    }
-  }
-
-  function newEntry($action = "", $target = array(), $all = array(), $altTabClass = "", $altTabType = "", $altAclCategory = "")
-  {
-    $action = preg_replace("/^new_/", "", $action);
-    if ($this->acl_is_writeable("")) {
-      if (isset($this->events[$action])) {
-        $this->dialogObject = new DaemonEvent($this->config, $action);
-        $this->dialogObject->set_timestamp_now();
-      }
-    }
   }
 
   function importEvents()
@@ -207,19 +174,6 @@ class argonautQueue extends management
     return $status;
   }
 
-  function editEntry($action = "", $target = array(), $all = array(), $altTabClass = "",
-                      $altTabType = "", $altAclCategory = "")
-  {
-    if (count($target) == 1) {
-      $headpage = $this->getHeadpage();
-      $entry = $headpage->getEntry($target[0]);
-      $event = $entry['EVENT'];
-      if ($event['STATUS'] == "waiting" && isset($this->events[$event['HEADERTAG']])) {
-        $this->dialogObject = new DaemonEvent($this->config, $event['HEADERTAG'], $event);
-      }
-    }
-  }
-
   function removeEntryRequested($action = "", $target = array(), $all = array())
   {
     if (!$this->acl_is_removeable()) {
@@ -298,7 +252,6 @@ class argonautQueue extends management
       $tmp = new DaemonEvent($this->config, 'wakeup');
       $tmp->add_targets($macs);
       $tmp->set_type(TRIGGERED_EVENT);
-      $this->recently_removed = $macs;
       $this->o_queue->append($tmp);
       if ($this->o_queue->is_error()) {
         msg_dialog::display(_("Info"), sprintf(_("%s"), $this->o_queue->get_error()), INFO_DIALOG);
@@ -341,25 +294,9 @@ class argonautQueue extends management
     }
   }
 
-  function saveEventDialog()
-  {
-    if (is_object($this->dialogObject)) {
-      $this->dialogObject->save_object();
-      $this->o_queue->append($this->dialogObject);
-      if ($this->o_queue->is_error()) {
-        msg_dialog::display(_("Infrastructure service"), msgPool::siError($this->o_queue->get_error()), ERROR_DIALOG);
-      } else {
-        $this->current = -1;
-      }
-    }
-    $this->closeDialogs();
-  }
-
   function detectPostActions()
   {
     $action = management::detectPostActions();
-    if (isset($_POST['save_event_dialog'])) $action['action'] = "saveEventDialog";
-    if (isset($_POST['abort_event_dialog'])) $action['action'] = "cancel";
     if (isset($_POST['delete_multiple_confirm'])) $action['action'] = "removeConfirmed";
     if (isset($_POST['delete_cancel'])) $action['action'] = "cancel";
     if (isset($_POST['import_abort'])) $action['action'] = "cancel";

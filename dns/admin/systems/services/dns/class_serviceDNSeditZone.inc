@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2013  FusionDirectory
+  Copyright (C) 2011-2015  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -315,7 +315,11 @@ class servdnseditZone extends plugin
           $this->Records[$id]['type'] = $_POST['RecordTypeSelectedFor_'.$id];
         }
         if (isset($_POST['RecordValue_'.$id])) {
-          $this->Records[$id]['value'] = get_post('RecordValue_'.$id);
+          $value = get_post('RecordValue_'.$id);
+          if (($this->Records[$id]['type'] == 'nSRecord') && DNS::finalDot() && !preg_match("/\.$/", $value)) {
+            $value .= '.';
+          }
+          $this->Records[$id]['value'] = $value;
         }
       }
     }

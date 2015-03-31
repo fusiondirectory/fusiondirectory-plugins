@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-12-16 21:56+0100\n"
-"PO-Revision-Date: 2014-12-15 17:11+0000\n"
+"POT-Creation-Date: 2015-03-19 21:45+0100\n"
+"PO-Revision-Date: 2015-02-25 16:12+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/FusionDirectory-108/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -48,6 +48,7 @@ msgstr "Permissão"
 #: addons/addressbook/class_addressbook.inc:472
 #: addons/addressbook/class_addressbook.inc:476
 #: addons/addressbook/class_addressbook.inc:598
+#: addons/addressbook/dial.tpl.c:5
 msgid "Dial"
 msgstr "Discar"
 
@@ -86,6 +87,7 @@ msgstr "Todos"
 #: addons/addressbook/class_addressbook.inc:697
 #: addons/addressbook/class_addressbook.inc:707
 #: addons/addressbook/class_addressbook.inc:734
+#: addons/addressbook/address_info.tpl.c:5 addons/addressbook/contents.tpl.c:2
 msgid "Name"
 msgstr "Nome"
 
@@ -114,6 +116,11 @@ msgid "User ID"
 msgstr "ID de usuário"
 
 #: addons/addressbook/class_addressbook.inc:715
+#: addons/addressbook/address_info.tpl.c:20
+#: addons/addressbook/address_info.tpl.c:50
+#: addons/addressbook/contents.tpl.c:5
+#: addons/addressbook/address_edit.tpl.c:26
+#: addons/addressbook/address_edit.tpl.c:56
 msgid "Phone"
 msgstr "Telefone"
 
@@ -122,19 +129,27 @@ msgid "Telephone number"
 msgstr "Número de telefone"
 
 #: addons/addressbook/class_addressbook.inc:721
+#: addons/addressbook/contents.tpl.c:8
 msgid "Fax"
 msgstr "Fax"
 
 #: addons/addressbook/class_addressbook.inc:724
+#: addons/addressbook/address_info.tpl.c:23
+#: addons/addressbook/contents.tpl.c:11
+#: addons/addressbook/address_edit.tpl.c:29
 msgid "Mobile"
 msgstr "Celular"
 
 #: addons/addressbook/class_addressbook.inc:727
 #: addons/addressbook/class_addressbook.inc:866
+#: addons/addressbook/address_info.tpl.c:56
+#: addons/addressbook/address_edit.tpl.c:62
 msgid "Pager"
 msgstr "Pager"
 
 #: addons/addressbook/class_addressbook.inc:739
+#: addons/addressbook/address_info.tpl.c:26
+#: addons/addressbook/address_edit.tpl.c:32
 msgid "Email"
 msgstr "Email"
 
@@ -185,6 +200,8 @@ msgid "Organization"
 msgstr "Organização"
 
 #: addons/addressbook/class_addressbook.inc:868
+#: addons/addressbook/address_info.tpl.c:35
+#: addons/addressbook/address_edit.tpl.c:41
 msgid "Department"
 msgstr "Departamento"
 
@@ -202,6 +219,8 @@ msgid "State"
 msgstr "Estado"
 
 #: addons/addressbook/class_addressbook.inc:873
+#: addons/addressbook/address_info.tpl.c:8
+#: addons/addressbook/address_edit.tpl.c:14
 msgid "Initials"
 msgstr "Iniciais"
 
@@ -224,3 +243,161 @@ msgstr "Erro interno"
 #: html/getvcard.php:39
 msgid "Missing parameters!"
 msgstr "Faltam parâmetros!"
+
+#: addons/addressbook/address_info.tpl.c:2
+#: addons/addressbook/address_edit.tpl.c:5
+msgid "Personal"
+msgstr "Pessoal"
+
+#: addons/addressbook/address_info.tpl.c:11
+#: addons/addressbook/address_edit.tpl.c:17
+msgid "Personal title"
+msgstr "Título pessoal"
+
+#: addons/addressbook/address_info.tpl.c:14
+#: addons/addressbook/contents.tpl.c:14
+#: addons/addressbook/address_edit.tpl.c:20
+msgid "Private"
+msgstr "Particular"
+
+#: addons/addressbook/address_info.tpl.c:17
+#: addons/addressbook/address_info.tpl.c:47
+#: addons/addressbook/address_edit.tpl.c:23
+#: addons/addressbook/address_edit.tpl.c:53
+msgid "Address"
+msgstr "Endereço"
+
+#: addons/addressbook/address_info.tpl.c:29
+#: addons/addressbook/address_edit.tpl.c:35
+msgid "Organizational"
+msgstr "Organizacional"
+
+#: addons/addressbook/address_info.tpl.c:32
+#: addons/addressbook/address_edit.tpl.c:38
+msgid "Company"
+msgstr "Empresa"
+
+#: addons/addressbook/address_info.tpl.c:38
+#: addons/addressbook/address_edit.tpl.c:44
+msgid "City"
+msgstr "Cidade"
+
+#: addons/addressbook/address_info.tpl.c:41
+#: addons/addressbook/address_edit.tpl.c:47
+msgid "Postal code"
+msgstr "Código postal"
+
+#: addons/addressbook/address_info.tpl.c:44
+#: addons/addressbook/address_edit.tpl.c:50
+msgid "Country"
+msgstr "País"
+
+#: addons/addressbook/address_info.tpl.c:53
+#: addons/addressbook/address_edit.tpl.c:59
+msgid "FAX"
+msgstr "FAX"
+
+#: addons/addressbook/dial.tpl.c:2
+msgid "Dial connection..."
+msgstr "Estabelecendo conexão..."
+
+#: addons/addressbook/contents.tpl.c:17
+msgid "Contact"
+msgstr "Contato"
+
+#: addons/addressbook/contents.tpl.c:20
+msgid "Information"
+msgstr "Informação"
+
+#: addons/addressbook/contents.tpl.c:23
+msgid ""
+"The telephone list plugin provides list and search facilities for the people in your site. You may want to specify the asterisk [*] like in\n"
+"'Fu*ry' to find 'FusionDirectory'. Use the filters below to narrow down your search."
+msgstr ""
+
+#: addons/addressbook/contents.tpl.c:26
+msgid "Actions"
+msgstr "Ações"
+
+#: addons/addressbook/contents.tpl.c:29
+msgid "Add entry"
+msgstr "Adicionar registro"
+
+#: addons/addressbook/contents.tpl.c:32
+msgid "Edit entry"
+msgstr "Editar registro"
+
+#: addons/addressbook/contents.tpl.c:35
+msgid "Remove entry"
+msgstr "Remover registro"
+
+#: addons/addressbook/contents.tpl.c:38
+msgid "Filters"
+msgstr "Filtros"
+
+#: addons/addressbook/contents.tpl.c:41
+msgid "Select to see regular users"
+msgstr "Selecione para ver usuários comuns"
+
+#: addons/addressbook/contents.tpl.c:44
+msgid "Show organizational entries"
+msgstr "Mostrar registros de organizações"
+
+#: addons/addressbook/contents.tpl.c:47
+msgid "Select to see users in addressbook"
+msgstr "Selecione para ver usuários em Contatos"
+
+#: addons/addressbook/contents.tpl.c:50
+msgid "Show addressbook entries"
+msgstr "Mostrar registros de Contatos"
+
+#: addons/addressbook/contents.tpl.c:53
+msgid "Display results for department"
+msgstr "Mostrar resultados por departamento"
+
+#: addons/addressbook/contents.tpl.c:56
+msgid "Choose the department the search will be based on"
+msgstr "scolha o objeto a ser feita a pesquisa"
+
+#: addons/addressbook/contents.tpl.c:59
+msgid "Match object"
+msgstr "Objeto atual"
+
+#: addons/addressbook/contents.tpl.c:62
+msgid "Choose the object that will be searched in"
+msgstr "Escolha o objeto a ser feita a pesquisa"
+
+#: addons/addressbook/contents.tpl.c:65
+msgid "Search for"
+msgstr "Procurar por"
+
+#: addons/addressbook/contents.tpl.c:68
+msgid "Search string"
+msgstr "Procurar palavra"
+
+#: addons/addressbook/remove.tpl.c:2
+msgid "Warning"
+msgstr "Aviso"
+
+#: addons/addressbook/remove.tpl.c:5
+msgid ""
+"This includes all addressbook data in this entry. Please double check if "
+"your really want to do this since there is no way for FusionDirectory to get"
+" your data back."
+msgstr "Isso inclui todos os dados de contatos neste registro. Por favor, clique duas vezes para confirmar. O FusionDirectory não poderá desfazer esta ação."
+
+#: addons/addressbook/remove.tpl.c:8
+msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
+msgstr "Se você tem certeza, pressione 'Delete' para continuar ou 'Cancel' para desistir."
+
+#: addons/addressbook/address_edit.tpl.c:2
+msgid "Choose the department to store entry in"
+msgstr "Escolha o departamento para armazenar a registro"
+
+#: addons/addressbook/address_edit.tpl.c:8
+msgid "Last name"
+msgstr "Sobrenome"
+
+#: addons/addressbook/address_edit.tpl.c:11
+msgid "First name"
+msgstr "Nome"

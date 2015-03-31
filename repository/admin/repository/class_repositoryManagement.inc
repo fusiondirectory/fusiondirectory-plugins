@@ -34,8 +34,8 @@ class repositoryManagement extends simpleManagement
       'plShortName'   => _('Repository management'),
       'plDescription' => _('Repository management'),
       'plIcon'        => 'plugins/repository/images/icon.png',
-      'plSection'     => 'admin',
-      'plPriority'    => 40,
+      'plSection'     => 'systems',
+      'plPriority'    => 22,
       'plCategory'    => array('repository' => array(
         'description'  => _('Repository'),
         'objectClass'  => array('fdBuildRepository', 'fdBuildRepositoryDistribution', 'fdBuildRepositorySection')

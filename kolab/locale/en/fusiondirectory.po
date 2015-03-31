@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-12-09 22:29+0100\n"
+"POT-Creation-Date: 2015-03-31 11:49+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -48,6 +48,7 @@ msgid "LDAP error"
 msgstr ""
 
 #: admin/ogroups/kolab/class_mailogroup.inc:184
+#: admin/ogroups/kolab/paste_mail.tpl.c:2
 msgid "Mail"
 msgstr ""
 
@@ -79,7 +80,7 @@ msgid "Services"
 msgstr ""
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:82
-msgid "Generic"
+msgid "Informations"
 msgstr ""
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:88
@@ -389,4 +390,20 @@ msgstr ""
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:282
 msgid "Please remove the mail settings first!"
+msgstr ""
+
+#: admin/ogroups/kolab/mail.tpl.c:2
+msgid "Mail distribution list"
+msgstr ""
+
+#: admin/ogroups/kolab/mail.tpl.c:5
+msgid "Primary address"
+msgstr ""
+
+#: admin/ogroups/kolab/mail.tpl.c:8
+msgid "Primary mail address for this distribution list"
+msgstr ""
+
+#: admin/ogroups/kolab/paste_mail.tpl.c:5
+msgid "Please enter a mail address"
 msgstr ""

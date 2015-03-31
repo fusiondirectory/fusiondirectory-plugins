@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2013-2014  FusionDirectory
+  Copyright (C) 2013-2015  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -28,8 +28,8 @@ class applicationManagement extends simpleManagement
       'plShortName'   => _('Applications'),
       'plDescription' => _('Application management'),
       'plIcon'        => 'geticon.php?context=categories&icon=applications-other&size=48',
-      'plSection'     => 'admin',
-      'plPriority'    => 21,
+      'plSection'     => 'accounts',
+      'plPriority'    => 60,
       'plManages'     => array('application', 'webApplication'),
 
       'plMenuProvider'  => TRUE,
