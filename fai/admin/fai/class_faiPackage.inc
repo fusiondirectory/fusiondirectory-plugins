@@ -2,7 +2,7 @@
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2014  FusionDirectory
+  Copyright (C) 2011-2015  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -411,7 +411,7 @@ class faiPackage extends faiSimplePluginClass
             array('install', 'ninstall', 'remove',
               'dselect-upgrade', 'taskinst', 'taskrm',
               'hold', 'clean', 'aptitude', 'aptitude-r',
-              'pending', 'dpkgc'),
+              'pending', 'dpkgc', 'yumi'),
             'aptitude'
           ),
         )
@@ -437,24 +437,26 @@ class faiPackage extends faiSimplePluginClass
 
     if ($this->FAIdebianRelease === "") {
       /* Assemble release name */
-      $release  = $this->base;
-      $tmp      = preg_replace('/[,]*'.preg_quote(get_ou('faiBaseRDN'), '/').'.*$/i', '', $release);
-      $tmp      = preg_replace('/ou=/', '', $tmp);
-      $rev      = array_reverse(explode(',', $tmp));
-      $FAIdebianRelease = "/";
-      foreach ($rev as $part) {
-        $FAIdebianRelease .= "/$part";
-      }
-      $this->FAIdebianRelease = preg_replace('#^[/]*#', '', $FAIdebianRelease);
-
-      /* Assemble sections */
-      $repos = $this->getServerInfos();
-      if (isset($repos[$this->FAIdebianRelease])) {
-        $this->FAIdebianSection = array_unique($repos[$this->FAIdebianRelease]);
-      }
+      $this->updateRelease();
     }
 
     session::set('packageSelect_Release', $this->FAIdebianRelease);
+  }
+
+  function updateRelease()
+  {
+    /* Assemble release name */
+    $tmp = preg_replace('/'.preg_quote(get_ou('faiBaseRDN'), '/').'.*$/i', '', $this->base);
+    preg_match_all('/ou=([^=,]+),/', $tmp, $m);
+    /* m[1][0] is release, m[1][1] is distribution */
+    $this->FAIdebianRelease = $m[1][0];
+
+    /* Assemble sections */
+    $repos = $this->getServerInfos();
+    if(isset($repos[$this->FAIdebianRelease])) {
+      $this->FAIdebianSection = $repos[$this->FAIdebianRelease];
+      $this->FAIdebianSection = array_unique($this->FAIdebianSection);
+    }
   }
 
   function ldap_save ($cleanup = TRUE)

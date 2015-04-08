@@ -1,7 +1,7 @@
 <?php
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2014  FusionDirectory
+  Copyright (C) 2014-2015  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -117,8 +117,8 @@ class faiManagement extends simpleManagement
       'plShortName'   => _('FAI'),
       'plDescription' => _('Manage FAI software packages and deployment recipes'),
       'plIcon'        => 'geticon.php?context=applications&icon=fai&size=48',
-      'plSection'     => 'admin',
-      'plPriority'    => 30,
+      'plSection'     => 'systems',
+      'plPriority'    => 20,
       'plCategory'    => array('fai' => array('description'  => _('FAI'),
                                               'objectClass'  => array('FAIclass'))),
       'plManages'     => array('faiVariable', 'faiHook', 'faiScript', 'faiPackage', 'faiPartitionTable', 'faiTemplate', 'faiProfile'),
