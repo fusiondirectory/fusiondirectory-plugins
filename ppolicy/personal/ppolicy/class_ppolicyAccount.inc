@@ -87,7 +87,6 @@ class ppolicyAccount extends simplePlugin
 
     parent::__construct($config, $dn, $parent, $attributesInfo);
 
-    $this->attributesAccess['pwdChangedTime']->setDisabled(TRUE);
     if ($this->pwdChangedTime == '') {
       $this->pwdChangedTime = _('Never');
     } else {
@@ -95,10 +94,11 @@ class ppolicyAccount extends simplePlugin
       $date->setTimezone(timezone::getDefaultTimeZone());
       $this->pwdChangedTime = $date->format('Y-m-d H:i:s');
     }
-    $this->attributesAccess['pwdAccountLockedTime']->setDisabled(TRUE);
     if ($this->pwdAccountLockedTime == '') {
       $this->pwdAccountLockedTime = _('Unlocked');
     }
+
+    $this->pwdReset = '';
   }
 
   protected function loadAttributes()
