@@ -147,8 +147,6 @@ class etablissement extends simplePlugin
       if (!$ldap->success()) {
         msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_DEL, get_class()));
       }
-      /* Remove ACL dependencies, too */
-      acl::remove_acl_for($dn);
     }
   }
 
@@ -192,7 +190,6 @@ class etablissement extends simplePlugin
       $dn = 'o='.$this->o.','.$this->config->current['BASE'];
       if ($root_mode == 'delete') {
         $ldap->rmdir($dn);
-        acl::remove_acl_for($dn);
       } else {
         $ldap->cd($dn);
         $ldap->$root_mode($root_attrs);

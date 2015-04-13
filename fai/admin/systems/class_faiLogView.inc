@@ -53,9 +53,9 @@ class AvailableLogsAttribute extends Attribute
 
     /* Create sort direction images */
     if ($this->value['sort_up']) {
-      $img = '<img src="images/lists/sort-down.png" alt="'._('Sort down').'"/>';
+      $img = '<img src="geticon.php?context=actions&size=16&icon=view-sort-descending" alt="'._('Sort down').'"/>';
     } else {
-      $img = '<img src="images/lists/sort-up.png" alt="'._('Sort up').'"/>';
+      $img = '<img src="geticon.php?context=actions&size=16&icon=view-sort-ascending" alt="'._('Sort up').'"/>';
     }
     if ($this->value['sort_by'] == 'file') {
       $img1 = $img;
@@ -174,7 +174,7 @@ class faiLogView extends simplePlugin
       'plShortName'   => _('FAI Logs'),
       'plDescription' => _('FAI Logs Viewer'),
       'plPriority'    => 30,
-      'plObjectType'  => array('workstation', 'server'),
+      'plObjectType'  => array('workstation', 'server', 'ogroup-dynamic'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
