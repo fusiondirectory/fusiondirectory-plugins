@@ -88,7 +88,6 @@ class terminalGeneric extends workstationGeneric
           'filter'      => 'objectClass=gotoTerminal',
           'icon'        => 'geticon.php?context=devices&icon=terminal&size=16',
           'ou'          => get_ou('terminalRDN'),
-          'tabClass'    => 'termtabs',
         )
       ),
 

@@ -466,7 +466,6 @@ class workstationGeneric extends simplePlugin
           'ou'          => get_ou('workstationRDN'),
           'icon'        => 'geticon.php?context=devices&icon=computer&size=16',
           'mainAttr'    => 'cn',
-          'tabClass'    => 'worktabs',
         )
       ),
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())

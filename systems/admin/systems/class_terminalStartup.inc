@@ -49,7 +49,7 @@ class TerminalReleaseAttribute extends SelectAttribute
 class terminalStartup extends simplePlugin
 {
   /* attribute list for save action */
-  var $objectclasses = array("GOhard");
+  var $objectclasses = array('GOhard');
 
   var $inheritance = array("gosaGroupOfNames" => "member");
 
