@@ -18,6 +18,23 @@
   along with this program; if not, write to the Free Software
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
+class BaseSelectorOrDnAttribute extends BaseSelectorAttribute
+{
+  function applyPostValue ()
+  {
+    global $config;
+    if (!$this->disabled && $this->isVisible()) {
+      if (isset($_POST[$this->getHtmlId()])) {
+        $ldap = $config->get_ldap_link();
+        if ($ldap->dn_exists($_POST[$this->getHtmlId()])) {
+          $this->setValue($_POST[$this->getHtmlId()]);
+          return;
+        }
+      }
+    }
+    return parent::applyPostValue();
+  }
+}
 
 class ldapmanager extends simplePlugin
 {
@@ -68,7 +85,7 @@ class ldapmanager extends simplePlugin
             _('Download a complete snapshot of the running LDAP directory for this base as ldif'),
             'complete_export',
             array(
-              new BaseSelectorAttribute ('', '', ''),
+              new BaseSelectorOrDnAttribute ('', '', ''),
               new ButtonAttribute (
                 '', '',
                 'complete_submit', FALSE,
