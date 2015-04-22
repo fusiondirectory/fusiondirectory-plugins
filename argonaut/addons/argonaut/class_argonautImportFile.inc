@@ -131,7 +131,7 @@ class argonautImportFile extends plugin
 
           $this->parent->o_queue->append($object);
           if ($this->parent->o_queue->is_error()) {
-            msg_dialog::display(_("Service infrastructure"), msgPool::siError($this->parent->o_queue->get_error()), ERROR_DIALOG);
+            msg_dialog::display(_("Infrastructure service"), msgPool::siError($this->parent->o_queue->get_error()), ERROR_DIALOG);
             $fail ++;
           } else {
             unset($this->events[$key]);

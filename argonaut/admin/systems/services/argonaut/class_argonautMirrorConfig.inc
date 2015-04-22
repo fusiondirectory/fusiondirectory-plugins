@@ -1,5 +1,4 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2011-2015  FusionDirectory
@@ -24,21 +23,17 @@ class argonautMirrorConfig extends simpleService
   var $objectclasses  = array("argonautMirrorConfig");
   var $showActions    = FALSE;
 
-  /* Return plugin informations for acl handling */
   static function plInfo()
   {
     return array(
-      "plShortName"     => _("Argonaut Mirror settings"),
-      "plDescription"   => _("Argonaut Mirror settings")." ("._("Services").")",
-      "plIcon"          => "plugins/argonaut/images/iconMiniMirrorConfig.png",
+      'plShortName'     => _('Argonaut Mirror settings'),
+      'plDescription'   => _('Argonaut Mirror settings'),
+      'plIcon'          => 'plugins/argonaut/images/iconMiniMirrorConfig.png',
 
-      "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }
 
-  /*!
-   *  \brief The main function : information about attributes
-   */
   static function getAttributesInfo ()
   {
     return array (
@@ -46,10 +41,9 @@ class argonautMirrorConfig extends simpleService
         'name'  => _('Argonaut mirror settings'),
         'attrs' => array (
           new StringAttribute (
-            _('Local debian mirror directory'),
+            _('Local Debian mirror directory'),
             '',
-            'argonautMirrorDir',
-            FALSE,
+            'argonautMirrorDir', FALSE,
             '/srv/www/debian'
           )
         )
@@ -60,8 +54,7 @@ class argonautMirrorConfig extends simpleService
           new StringAttribute (
             _('Local packages folder'),
             _('Folder in which the crawler will store packages during analysis'),
-            'argonautCrawlerPackagesFolder',
-            FALSE,
+            'argonautCrawlerPackagesFolder', FALSE,
             '/var/cache/argonaut/packages'
           )
         )
@@ -71,48 +64,39 @@ class argonautMirrorConfig extends simpleService
         'attrs' => array (
           new StringAttribute (
             _('Proxy'),
-            '',
-            'argonautLdap2repProxy',
-            FALSE
+            _('Specifies the http proxy (like Squid) to use for http and hftp method'),
+            'argonautLdap2repProxy', FALSE
           ),
           new StringAttribute (
-            _('Log directory'), '',
+            _('Log directory'), _('Directory in which logs should be stored'),
             'argonautLdap2repLogDir', FALSE,
             '/var/log/argonaut/'
           ),
           new BooleanAttribute (
-            _('Errors'),
-            '',
-            'argonautLdap2repErrors',
-            FALSE,
+            _('Ignore errors'),
+            _('Causes debmirror to ignore missing or broken deb and source files but still be pedantic about checking meta files'),
+            'argonautLdap2repErrors', FALSE,
+            FALSE
+          ),
+          new BooleanAttribute (
+            _('Source'), _('Include source in the mirror'),
+            'argonautLdap2repSource', FALSE,
             TRUE
           ),
           new BooleanAttribute (
-            _('Source'),
-            '',
-            'argonautLdap2repSource',
-            FALSE,
-            FALSE
-          ),
-          new BooleanAttribute (
-            _('GPG Check'),
-            '',
-            'argonautLdap2repGPGCheck',
-            FALSE,
-            FALSE
+            _('GPG Check'), _('Fail if the Release.gpg file is missing'),
+            'argonautLdap2repGPGCheck', FALSE,
+            TRUE
           ),
           new BooleanAttribute (
             _('Contents'),
-            '',
-            'argonautLdap2repContents',
-            FALSE,
+            _('Additionally download Contents.<arch>.gz files (Note that these files can be relatively big and can change frequently)'),
+            'argonautLdap2repContents', FALSE,
             FALSE
           ),
           new BooleanAttribute (
-            _('Verbose'),
-            _('Wether to activate verbose mode'),
-            'argonautLdap2repVerbose',
-            FALSE,
+            _('Verbose'), _('Wether to activate verbose mode'),
+            'argonautLdap2repVerbose', FALSE,
             FALSE
           ),
         )

@@ -89,7 +89,7 @@ class serviceSpamAssassin extends simpleService {
             FALSE, '', 'R', ''
           ),
           new BooleanAttribute (
-            _('Enable use of DDC'), '',
+            _('Enable use of DCC'), '',
             'flag_enable_ddc', FALSE,
             FALSE, '', 'D', ''
           ),

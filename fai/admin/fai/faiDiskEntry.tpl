@@ -44,6 +44,8 @@
 {/render}
           </td>
         </tr>
+
+{if $FAIdiskType == "disk"}
         <tr>
           <td>
             <LABEL for="disklabel">{t}Disk label{/t}</LABEL>
@@ -56,6 +58,7 @@
 {/render}
           </td>
         </tr>
+{/if}
       </table>
 
     </td>
