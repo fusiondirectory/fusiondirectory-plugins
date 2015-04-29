@@ -267,6 +267,12 @@ class workstationGeneric extends simplePlugin
     $this->prepareSavedAttributes();
   }
 
+  /* Returns the dn of the entry */
+  function compute_dn()
+  {
+    return 'cn='.$this->cn.','.get_ou('workstationRDN').$this->base;
+  }
+
   protected function init_server_section()
   {
     $this->attributesAccess['inheritTimeServer']->setInLdap(FALSE);

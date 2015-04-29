@@ -130,6 +130,12 @@ class terminalGeneric extends workstationGeneric
     $this->attributesInfo['servers']['attrs']['gotoSwapServer']->setChoices($tmp, $tmp_output);
   }
 
+  /* Returns the dn of the entry */
+  function compute_dn()
+  {
+    return 'cn='.$this->cn.','.get_ou('terminalRDN').$this->base;
+  }
+
   function execute()
   {
     /* Create a list of useable servers for the currently selected

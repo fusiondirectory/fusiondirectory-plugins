@@ -204,6 +204,12 @@ class printgeneric extends plugin
     $this->baseSelector->update(TRUE);
   }
 
+  /* Returns the dn of the entry */
+  function compute_dn()
+  {
+    return 'cn='.$this->cn.','.get_ou('printerRDN').$this->base;
+  }
+
   function set_acl_base($base)
   {
     plugin::set_acl_base($base);
