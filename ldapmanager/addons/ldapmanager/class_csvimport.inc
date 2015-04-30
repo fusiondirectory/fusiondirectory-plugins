@@ -21,6 +21,7 @@
 class csvimport extends simplePlugin
 {
   protected $template_object;
+  protected $cachedChoices;
 
   static function plInfo()
   {
@@ -51,7 +52,7 @@ class csvimport extends simplePlugin
           ),
           new FileAttribute (
             _('CSV file'), _('Import a CSV file into your LDAP'),
-            'import', FALSE
+            'import_file', FALSE
           ),
           new SelectAttribute (
             _('Separator'), _('Character used as separator in the CSV file'),
@@ -126,34 +127,45 @@ class csvimport extends simplePlugin
 
   function handle_import_submit()
   {
-    $this->csv_data = $this->parse_csv($this->import);
+    $this->csv_data = $this->parse_csv($this->import_file);
     /*
      * Add nonrequired field filling feature
      * */
     $this->template_object = new template($this->type, $this->template_dn);
     $attributes = array();
-    $tpl_attributes = $this->template_object->serialize();
-    foreach ($tpl_attributes as $class => $class_infos) {
-      foreach ($class_infos['attrs'] as $attr => $attr_infos) {
-        $attributes[$class.':'.$attr_infos['id']] = $class_infos['name'].' > '.$attr_infos['label'];
-      }
-    }
     $fields = array();
     foreach ($this->csv_data[0] as $key => $field_value) {
       $fields[$key] = $key.' - '.$field_value;
     }
     $fields = array_merge($fields, $this->fixed_values);
+    $tpl_attributes = $this->template_object->serialize();
     $attributesObjects = array();
+    $this->cachedChoices = array();
     reset($fields);
-    foreach ($attributes as $key => $label) {
-      $attributesObjects[] =
-        new SelectAttribute(
-          $label, '',
-          'template_'.$key, TRUE,
-          array_keys($fields), key($fields),
-          array_values($fields)
-        );
-      next($fields);
+    foreach ($tpl_attributes as $class => $class_infos) {
+      foreach ($class_infos['attrs'] as $attr => $attr_infos) {
+        $choices  = $fields;
+        $value    = NULL;
+        $ldapName = 'template_'.$class.':'.$attr_infos['id'];
+        if (isset ($attr_infos['choices'])) {
+          $choices = array_merge($choices, array_values($attr_infos['choices']));
+          $this->cachedChoices[$ldapName] = array_keys($attr_infos['choices']);
+          if (isset($attr_infos['value']) && !empty($attr_infos['value'])) {
+            $value = count($fields) + count($this->fixed_values) + array_search($attr_infos['value'], $this->cachedChoices[$ldapName]);
+          }
+        }
+        if ($value === NULL) {
+          $value = key($fields);
+          next($fields);
+        }
+        $attributesObjects[] =
+          new SelectAttribute(
+            $class_infos['name'].' > '.$attr_infos['label'], '',
+            $ldapName, TRUE,
+            array_keys($choices), $value,
+            array_values($choices)
+          );
+      }
     }
     $this->attributesAccess['fields']->setAttributes($attributesObjects);
     $this->attributesAccess['import_submit_fields']->setDisabled(FALSE);
@@ -169,8 +181,10 @@ class csvimport extends simplePlugin
         $i = $attribute->getValue();
         if ($i < count($row)) {
           $values[$m[1]][$m[2]] = $row[$i];
-        } else {
+        } elseif ($i < (count($row) + count($this->fixed_values))) {
           $values[$m[1]][$m[2]] = $this->fixed_values[$i - count($row)];
+        } else {
+          $values[$m[1]][$m[2]] = $this->cachedChoices[$attribute->getLdapName()][i - count($row) - count($this->fixed_values)];
         }
       }
       $this->template_object->deserialize($values);
