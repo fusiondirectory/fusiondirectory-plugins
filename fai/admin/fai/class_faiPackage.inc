@@ -276,7 +276,7 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
       }
       $ret = $q->FAI_get_packages($release, $attrs, array_keys($packages), -1, -1, TRUE);
       if ($q->is_error()) {
-        msg_dialog::display(_("Service infrastructure"), msgPool::siError($q->get_error()), ERROR_DIALOG);
+        msg_dialog::display(_("Infrastructure service"), msgPool::siError($q->get_error()), ERROR_DIALOG);
         return $this->buffer;
       } else {
         foreach ($ret as $attr) {
