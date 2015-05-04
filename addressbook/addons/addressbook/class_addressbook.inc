@@ -811,7 +811,7 @@ class addressbook extends plugin
   function get_entry_acls($dn,$attr = "")
   {
     $acls = "";
-    $combineACLs = FALSE;
+    $combineACLs = TRUE;
 
     /* If combineACLs is set to false:
        Differentiate between user and addressbook acls, thus leads into two object categories.
