@@ -20,6 +20,8 @@
 
 class faiProfile extends faiSimplePluginClass
 {
+  var $mainTab = TRUE;
+
   var $objectclasses    = array('top','FAIclass','FAIprofile');
 
   static function plInfo()
