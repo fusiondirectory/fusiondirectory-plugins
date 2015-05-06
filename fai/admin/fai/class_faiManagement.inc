@@ -127,6 +127,24 @@ class faiManagement extends simpleManagement
     );
   }
 
+  function execute ()
+  {
+    if (empty($this->headpage->bases)) {
+      return $this->getHeader().
+        '<div class="notice">'.
+          '<div class="msgtitle">'.
+            '<h2>'.
+              '<img src="geticon.php?context=status&icon=dialog-warning&size=32" class="center"  alt="{t}Warning{/t}"/>'.
+              _('There are no FAI branches').
+            '</h2>'.
+          '</div><div>'.
+            _(' Please add at least one repository service to create those.').
+          '</div>'.
+        '</div>';
+    }
+    return parent::execute();
+  }
+
   /*! \brief   Returns a list of all releases for useable for drop down boxes.
    */
   static function getReleaseList()
