@@ -579,120 +579,121 @@ class systemManagement extends management
   public function getObjectDefinitions()
   {
     $tabs = array(
-      "goServer" => array(
-        "ou"          => get_ou('serverRDN'),
-        "plugClass"   => "serverGeneric",
-        "tabClass"    => "servtabs",
-        "tabDesc"     => "SERVERTABS",
-        "aclClass"    => "serverGeneric",
-        "sendEvents"  => TRUE,
-        "aclCategory" => "server"),
-
-      "gotoWorkstation" => array(
-        "ou"          => get_ou('workstationRDN'),
-        "plugClass"   => "workstationGeneric",
-        "tabClass"    => "worktabs",
-        "tabDesc"     => "WORKSTATIONTABS",
-        "aclClass"    => "workstationGeneric",
-        "sendEvents"  => TRUE,
-        "aclCategory" => "workstation"),
-
-      "gotoTerminal" => array(
-          "ou"          => get_ou('terminalRDN'),
-          "plugClass"   => "terminalGeneric",
-          "tabClass"    => "termtabs",
-          "sendEvents"  => TRUE,
-          "tabDesc"     => "TERMINALTABS",
-          "aclClass"    => "terminalGeneric",
-          "aclCategory" => "terminal"),
-
-      "gotoPrinter" => array(
-          "ou"          => get_ou('printerRDN'),
-          "plugClass"   => "printgeneric",
-          "tabClass"    => "printtabs",
-          "tabDesc"     => "PRINTERTABS",
-          "aclClass"    => "printgeneric",
-          "sendEvents"  => FALSE,
-          "aclCategory" => "printer"),
-
-      "goFonHardware" => array(
-          "ou"          => get_ou('phoneRDN'),
-          "plugClass"   => "phoneGeneric",
-          "tabClass"    => "phonetabs",
-          "tabDesc"     => "PHONETABS",
-          "sendEvents"  => FALSE,
-          "aclClass"    => "phoneGeneric",
-          "aclCategory" => "phone"),
-
-      "sambaSamAccount" => array(
-          "ou"          => get_winstations_ou(),
-          "plugClass"   => "winstationGeneric",
-          "sendEvents"  => TRUE,
-          "aclCategory" => "workstation"),
-
-        "gotoTerminal" => array(
-            "ou"          => get_ou('terminalRDN'),
-            "plugClass"   => "terminalGeneric",
-            "tabClass"    => "termtabs",
-            "sendEvents"  => TRUE,
-            "tabDesc"     => "TERMINALTABS",
-            "aclClass"    => "terminalGeneric",
-            "aclCategory" => "terminal"),
-
-        "gotoPrinter" => array(
-            "ou"          => get_ou('printerRDN'),
-            "plugClass"   => "printgeneric",
-            "tabClass"    => "printtabs",
-            "tabDesc"     => "PRINTERTABS",
-            "aclClass"    => "printgeneric",
-            "sendEvents"  => FALSE,
-            "aclCategory" => "printer"),
-
-        "goFonHardware" => array(
-            "ou"          => get_ou('phoneRDN'),
-            "plugClass"   => "phoneGeneric",
-            "tabClass"    => "phonetabs",
-            "tabDesc"     => "PHONETABS",
-            "sendEvents"  => FALSE,
-            "aclClass"    => "phoneGeneric",
-            "aclCategory" => "phone"),
-
-        "sambaSamAccount" => array(
-            "ou"          => get_winstations_ou(),
-            "plugClass"   => "winstationGeneric",
-            "sendEvents"  => TRUE,
-            "tabClass"    => "simpleTabs",
-            "tabDesc"     => "WINSTATIONTABS",
-            "aclClass"    => "winstationGeneric",
-            "aclCategory" => "winstation"),
-
-        "ieee802Device" => array(
-            "ou"          => get_ou('componentRDN'),
-            "plugClass"   => "componentGeneric",
-            "sendEvents"  => FALSE,
-            "tabClass"    => "componenttabs",
-            "tabDesc"     => "COMPONENTTABS",
-            "aclClass"    => "componentGeneric",
-            "aclCategory" => "component"),
-
-        "fdMobilePhone"   => array(
-            "ou"          => get_ou('mobilePhoneRDN'),
-            "plugClass"   => "mobilePhoneGeneric",
-            "tabClass"    => "simpleTabs",
-            "tabDesc"     => "MOBILEPHONETABS",
-            "aclClass"    => "mobilePhoneGeneric",
-            "sendEvents"  => FALSE,
-            "aclCategory" => "mobilePhone"),
-
-        "ipmiInterface"   => array(
-            "ou"          => get_ou('ipmiRDN'),
-            "plugClass"   => "ipmiGeneric",
-            "tabClass"    => "simpleTabs",
-            "tabDesc"     => "IPMITABS",
-            "aclClass"    => "ipmiGeneric",
-            "sendEvents"  => FALSE,
-            "aclCategory" => "ipmi"),
-        );
+      'goServer' => array(
+        'ou'          => get_ou('serverRDN'),
+        'plugClass'   => 'serverGeneric',
+        'tabClass'    => 'servtabs',
+        'tabDesc'     => 'SERVERTABS',
+        'aclClass'    => 'serverGeneric',
+        'sendEvents'  => TRUE,
+        'aclCategory' => 'server'
+      ),
+      'gotoWorkstation' => array(
+        'ou'          => get_ou('workstationRDN'),
+        'plugClass'   => 'workstationGeneric',
+        'tabClass'    => 'simpleTabs',
+        'tabDesc'     => 'WORKSTATIONTABS',
+        'aclClass'    => 'workstationGeneric',
+        'sendEvents'  => TRUE,
+        'aclCategory' => 'workstation'
+      ),
+      'gotoTerminal' => array(
+        'ou'          => get_ou('terminalRDN'),
+        'plugClass'   => 'terminalGeneric',
+        'tabClass'    => 'simpleTabs',
+        'sendEvents'  => TRUE,
+        'tabDesc'     => 'TERMINALTABS',
+        'aclClass'    => 'terminalGeneric',
+        'aclCategory' => 'terminal'
+      ),
+      'gotoPrinter' => array(
+        'ou'          => get_ou('printerRDN'),
+        'plugClass'   => 'printgeneric',
+        'tabClass'    => 'simpleTabs',
+        'tabDesc'     => 'PRINTERTABS',
+        'aclClass'    => 'printgeneric',
+        'sendEvents'  => FALSE,
+        'aclCategory' => 'printer'
+      ),
+      'goFonHardware' => array(
+        'ou'          => get_ou('phoneRDN'),
+        'plugClass'   => 'phoneGeneric',
+        'tabClass'    => 'simpleTabs',
+        'tabDesc'     => 'PHONETABS',
+        'sendEvents'  => FALSE,
+        'aclClass'    => 'phoneGeneric',
+        'aclCategory' => 'phone'
+      ),
+      'sambaSamAccount' => array(
+        'ou'          => get_winstations_ou(),
+        'plugClass'   => 'winstationGeneric',
+        'sendEvents'  => TRUE,
+        'aclCategory' => 'workstation'
+      ),
+      'gotoTerminal' => array(
+        'ou'          => get_ou('terminalRDN'),
+        'plugClass'   => 'terminalGeneric',
+        'tabClass'    => 'simpleTabs',
+        'sendEvents'  => TRUE,
+        'tabDesc'     => 'TERMINALTABS',
+        'aclClass'    => 'terminalGeneric',
+        'aclCategory' => 'terminal'
+      ),
+      'gotoPrinter' => array(
+        'ou'          => get_ou('printerRDN'),
+        'plugClass'   => 'printgeneric',
+        'tabClass'    => 'simpleTabs',
+        'tabDesc'     => 'PRINTERTABS',
+        'aclClass'    => 'printgeneric',
+        'sendEvents'  => FALSE,
+        'aclCategory' => 'printer'
+      ),
+      'goFonHardware' => array(
+        'ou'          => get_ou('phoneRDN'),
+        'plugClass'   => 'phoneGeneric',
+        'tabClass'    => 'simpleTabs',
+        'tabDesc'     => 'PHONETABS',
+        'sendEvents'  => FALSE,
+        'aclClass'    => 'phoneGeneric',
+        'aclCategory' => 'phone'
+      ),
+      'sambaSamAccount' => array(
+        'ou'          => get_winstations_ou(),
+        'plugClass'   => 'winstationGeneric',
+        'sendEvents'  => TRUE,
+        'tabClass'    => 'simpleTabs',
+        'tabDesc'     => 'WINSTATIONTABS',
+        'aclClass'    => 'winstationGeneric',
+        'aclCategory' => 'winstation'
+      ),
+      'ieee802Device' => array(
+        'ou'          => get_ou('componentRDN'),
+        'plugClass'   => 'componentGeneric',
+        'sendEvents'  => FALSE,
+        'tabClass'    => 'simpleTabs',
+        'tabDesc'     => 'COMPONENTTABS',
+        'aclClass'    => 'componentGeneric',
+        'aclCategory' => 'component'
+      ),
+      'fdMobilePhone'   => array(
+        'ou'          => get_ou('mobilePhoneRDN'),
+        'plugClass'   => 'mobilePhoneGeneric',
+        'tabClass'    => 'simpleTabs',
+        'tabDesc'     => 'MOBILEPHONETABS',
+        'aclClass'    => 'mobilePhoneGeneric',
+        'sendEvents'  => FALSE,
+        'aclCategory' => 'mobilePhone'
+      ),
+      'ipmiInterface'   => array(
+        'ou'          => get_ou('ipmiRDN'),
+        'plugClass'   => 'ipmiGeneric',
+        'tabClass'    => 'simpleTabs',
+        'tabDesc'     => 'IPMITABS',
+        'aclClass'    => 'ipmiGeneric',
+        'sendEvents'  => FALSE,
+        'aclCategory' => 'ipmi'
+      ),
+    );
 
     // Now map some special types
     $tabs['gotoWorkstation__IS_BUSY']     = &$tabs['gotoWorkstation'];
