@@ -81,7 +81,7 @@
       <table width="100%">
        <tr>
         <td>
-          <LABEL for="goFonType">{t}Modus{/t}{$staticAddress}</LABEL>
+          <LABEL for="goFonType">{t}Mode{/t}{$staticAddress}</LABEL>
         </td>
         <td >
 {render acl=$goFonTypeACL}
