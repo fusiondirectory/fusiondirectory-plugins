@@ -4,21 +4,22 @@
 # 
 # Translators:
 # Alexey, 2015
-# Alexey, 2015
+# Alexey Matveev, 2015
+# Alexey Matveev, 2015
 #  Valia V. Vaneeva <fattie@altlinux.ru>, 2004
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
 "POT-Creation-Date: 2015-03-31 11:49+0200\n"
-"PO-Revision-Date: 2015-03-31 11:41+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"PO-Revision-Date: 2015-04-18 18:07+0000\n"
+"Last-Translator: Alexey Matveev\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/FusionDirectory-108/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ru\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: admin/ogroups/goto/class_termgroup.inc:70
 msgid "Activated"
@@ -84,7 +85,7 @@ msgstr ""
 
 #: admin/ogroups/goto/class_termgroup.inc:278
 msgid "Reinstall"
-msgstr ""
+msgstr "Переустановить"
 
 #: admin/ogroups/goto/class_termgroup.inc:279
 #: admin/systems/class_workstationGeneric.inc:108
@@ -131,7 +132,7 @@ msgstr "Режим"
 #: admin/systems/class_workstationGeneric.inc:189
 #: admin/ogroups/goto/termgroup.tpl.c:23
 msgid "Syslog server"
-msgstr "Сервер системных журналов"
+msgstr "Syslog сервер"
 
 #: admin/ogroups/goto/class_termgroup.inc:403
 msgid "Action flag"
@@ -139,7 +140,7 @@ msgstr ""
 
 #: admin/ogroups/goto/class_termgroup.inc:404
 msgid "Ntp server"
-msgstr "Сервер NTP"
+msgstr "NTP cервер"
 
 #: admin/ogroups/goto/class_termgroup.inc:405
 #: admin/systems/class_terminalGeneric.inc:41
@@ -155,7 +156,7 @@ msgstr "Сервер подкачки"
 
 #: admin/systems/class_terminalStartup.inc:63
 msgid "Startup parameters"
-msgstr ""
+msgstr "Параметры запуска"
 
 #: admin/systems/class_terminalStartup.inc:66
 msgid "Boot kernel"
@@ -163,15 +164,15 @@ msgstr "Ядро для загрузки"
 
 #: admin/systems/class_terminalStartup.inc:66
 msgid "Linux kernel to be installed and booted"
-msgstr ""
+msgstr "Linux ядро, которое установлено и загружено"
 
 #: admin/systems/class_terminalStartup.inc:70
 msgid "Boot kernel parameters"
-msgstr ""
+msgstr "Параметры загрузки ядра"
 
 #: admin/systems/class_terminalStartup.inc:70
 msgid "Linux kernel parameters to be ran"
-msgstr ""
+msgstr "Параметры с которыми Linux ядро было запущено"
 
 #: admin/systems/class_terminalStartup.inc:82
 msgid "Startup"
@@ -203,11 +204,11 @@ msgstr ""
 
 #: admin/systems/system-list.xml:47
 msgid "New terminal"
-msgstr "Создать терминал"
+msgstr "Новый терминал"
 
 #: admin/systems/system-list.xml:55
 msgid "New device"
-msgstr ""
+msgstr "Новое устройство"
 
 #: admin/systems/system-list.xml:63
 msgid "Workstation template"
@@ -219,7 +220,7 @@ msgstr "Шаблон терминала"
 
 #: admin/systems/system-list.xml:79
 msgid "Winstation"
-msgstr ""
+msgstr "Рабочая станция Windows"
 
 #: admin/systems/system-list.xml:87 admin/systems/system-list.xml:234
 #: admin/systems/class_systemImport.inc:169
@@ -244,7 +245,7 @@ msgstr "Рабочая станция"
 #: admin/systems/class_terminalGeneric.inc:87
 #: admin/systems/class_SelectDeviceType.inc:58
 msgid "Terminal"
-msgstr ""
+msgstr "Терминал"
 
 #: admin/systems/system-list.xml:111 admin/systems/class_printGeneric.inc:1005
 #: admin/systems/class_printGeneric.inc:1011
@@ -264,7 +265,7 @@ msgstr "Телефон"
 #: admin/systems/class_mobilePhoneGeneric.inc:42
 #: admin/systems/phoneSelect/phoneSelect-list.xml:22
 msgid "Mobile phone"
-msgstr ""
+msgstr "Мобильный телефон"
 
 #: admin/systems/system-list.xml:135
 #: admin/systems/class_componentGeneric.inc:36
@@ -348,7 +349,7 @@ msgstr "Сетевое устройство"
 
 #: admin/systems/system-list.xml:290
 msgid "Mobile Phone"
-msgstr ""
+msgstr "Мобильный телефон"
 
 #: admin/systems/system-list.xml:310
 msgid "Trigger action"
@@ -373,11 +374,11 @@ msgstr "Создать ISO"
 
 #: admin/systems/system-list.xml:379
 msgid "Edit system"
-msgstr ""
+msgstr "Редактировать систему"
 
 #: admin/systems/system-list.xml:392
 msgid "Remove system"
-msgstr ""
+msgstr "Удалить систему"
 
 #: admin/systems/class_workstationGeneric.inc:75
 #, php-format
@@ -394,7 +395,7 @@ msgstr ""
 
 #: admin/systems/class_workstationGeneric.inc:107
 msgid "Software update"
-msgstr ""
+msgstr "Обновить программное обеспечение"
 
 #: admin/systems/class_workstationGeneric.inc:115
 msgid "Wake up"
@@ -403,7 +404,7 @@ msgstr "Вернуть в обычный режим"
 #: admin/systems/class_workstationGeneric.inc:144
 #: admin/systems/class_printGeneric.inc:604
 msgid "workstation"
-msgstr ""
+msgstr "рабочая станция"
 
 #: admin/systems/class_workstationGeneric.inc:151
 #: admin/systems/class_componentGeneric.inc:61
@@ -414,12 +415,12 @@ msgstr "Свойства"
 #: admin/systems/class_workstationGeneric.inc:155
 #, php-format
 msgid "The name of the %s"
-msgstr ""
+msgstr "Название %s"
 
 #: admin/systems/class_workstationGeneric.inc:161
 #, php-format
 msgid "A short description of the %s"
-msgstr ""
+msgstr "Краткое описание %s"
 
 #: admin/systems/class_workstationGeneric.inc:166
 #: admin/systems/class_printGeneric.inc:1025
@@ -429,7 +430,7 @@ msgstr "Местоположение"
 #: admin/systems/class_workstationGeneric.inc:167
 #, php-format
 msgid "The location of the %s"
-msgstr ""
+msgstr "Местоположение %s"
 
 #: admin/systems/class_workstationGeneric.inc:173
 #, php-format
@@ -453,15 +454,15 @@ msgstr ""
 
 #: admin/systems/class_workstationGeneric.inc:195
 msgid "Inherit NTP servers"
-msgstr ""
+msgstr "Наследовать NTP сервера"
 
 #: admin/systems/class_workstationGeneric.inc:196
 msgid "Inherit time server attributes from ogroup"
-msgstr ""
+msgstr "Наследовать атрибут сервера времени из ogroup"
 
 #: admin/systems/class_workstationGeneric.inc:202
 msgid "NTP servers"
-msgstr ""
+msgstr "NTP сервера"
 
 #: admin/systems/class_workstationGeneric.inc:203
 #, php-format
@@ -470,15 +471,15 @@ msgstr ""
 
 #: admin/systems/class_workstationGeneric.inc:209
 msgid "Inherit LDAP servers"
-msgstr ""
+msgstr "Наследовать LDAP сервера"
 
 #: admin/systems/class_workstationGeneric.inc:210
 msgid "Inherit LDAP server attributes from ogroup"
-msgstr ""
+msgstr "Наследовать атрибут LDAP сервера из ogroup"
 
 #: admin/systems/class_workstationGeneric.inc:216
 msgid "LDAP servers"
-msgstr ""
+msgstr "LDAP сервера"
 
 #: admin/systems/class_workstationGeneric.inc:217
 #, php-format
@@ -505,7 +506,7 @@ msgstr "Сетевые настройки"
 
 #: admin/systems/class_workstationGeneric.inc:459
 msgid "Workstation information"
-msgstr ""
+msgstr "Информация об рабочей станции"
 
 #: admin/systems/class_printGeneric.inc:131
 #: admin/systems/class_printGeneric.inc:1065
@@ -549,7 +550,7 @@ msgstr ""
 #: admin/systems/class_printGeneric.inc:391
 #: admin/systems/class_printGeneric.inc:394
 msgid "printer"
-msgstr ""
+msgstr "принтер"
 
 #: admin/systems/class_printGeneric.inc:375
 msgid ""
@@ -587,7 +588,7 @@ msgstr "Ошибка"
 #: admin/systems/class_printGeneric.inc:577
 #, php-format
 msgid "Your currently selected PPD file '%s' doesn't exist."
-msgstr ""
+msgstr "Выбранный вами PPD файл '%s' не существует."
 
 #: admin/systems/class_printGeneric.inc:583
 msgid "Not defined"
@@ -596,13 +597,13 @@ msgstr ""
 #: admin/systems/class_printGeneric.inc:587
 #: admin/systems/ppd/class_printerPPDDialog.inc:116
 msgid "Can't get ppd informations."
-msgstr ""
+msgstr "Не могу получить информацию о ppd."
 
 #: admin/systems/class_printGeneric.inc:602
 #: admin/systems/class_printGeneric.inc:604
 #, php-format
 msgid "This printer belongs to %s. You can't rename this printer."
-msgstr ""
+msgstr "Этот принтер принадлежит %s. Вы не можете его переименовать."
 
 #: admin/systems/class_printGeneric.inc:602
 #: admin/systems/class_terminalGeneric.inc:34
@@ -629,7 +630,7 @@ msgstr "Пользователь"
 
 #: admin/systems/class_printGeneric.inc:1006
 msgid "Printer information"
-msgstr ""
+msgstr "Информация о принтере"
 
 #: admin/systems/class_printGeneric.inc:1023
 #: admin/systems/serverService-list.tpl.c:2
@@ -648,7 +649,7 @@ msgstr ""
 
 #: admin/systems/class_printGeneric.inc:1028 admin/systems/printer.tpl.c:38
 msgid "Permissions"
-msgstr ""
+msgstr "Права доступа"
 
 #: admin/systems/class_printGeneric.inc:1030
 msgid "Windows inf file"
@@ -660,7 +661,7 @@ msgstr ""
 
 #: admin/systems/class_printGeneric.inc:1032 admin/systems/printer.tpl.c:62
 msgid "Driver printer name"
-msgstr ""
+msgstr "Название драйвера принтера"
 
 #: admin/systems/class_printGeneric.inc:1048
 #: admin/systems/class_printGeneric.inc:1070
@@ -680,12 +681,12 @@ msgstr ""
 #: admin/systems/class_printGeneric.inc:1105
 #, php-format
 msgid "'%s' is already used!"
-msgstr ""
+msgstr "'%s' уже использован!"
 
 #: admin/systems/class_printGeneric.inc:1116
 #, php-format
 msgid "'%s' does not exist!"
-msgstr ""
+msgstr "'%s' не существует!"
 
 #: admin/systems/class_serverService.inc:58
 msgid "Server services"
@@ -734,19 +735,19 @@ msgstr "Способ подключения"
 
 #: admin/systems/class_terminalGeneric.inc:62
 msgid "XDMCP"
-msgstr ""
+msgstr "XDMCP"
 
 #: admin/systems/class_terminalGeneric.inc:62
 msgid "LDM"
-msgstr ""
+msgstr "LDM"
 
 #: admin/systems/class_terminalGeneric.inc:62
 msgid "Shell"
-msgstr "Оболочка"
+msgstr "Shell"
 
 #: admin/systems/class_terminalGeneric.inc:62
 msgid "Telnet"
-msgstr ""
+msgstr "Telnet"
 
 #: admin/systems/class_terminalGeneric.inc:62
 msgid "Windows RDP"
@@ -779,7 +780,7 @@ msgstr ""
 #: admin/systems/ppd/class_printerPPDDialog.inc:580
 #: admin/systems/ppd/class_printerPPDDialog.inc:583
 msgid "PPD error"
-msgstr ""
+msgstr "Ошибка PPD"
 
 #: admin/systems/ppd/class_printerPPDSelectionDialog.inc:139
 #, php-format
@@ -792,22 +793,22 @@ msgstr ""
 
 #: admin/systems/ppd/class_printerPPDSelectionDialog.inc:155
 msgid "delete"
-msgstr ""
+msgstr "удалить"
 
 #: admin/systems/ppd/class_printerPPDSelectionDialog.inc:166
 msgid "back"
-msgstr ""
+msgstr "назад"
 
 #: admin/systems/ppd/class_printerPPDDialog.inc:74
 #: admin/systems/ppd/class_printerPPDDialog.inc:140
 #: admin/systems/services/class_goService.inc:241
 msgid "Configuration error"
-msgstr ""
+msgstr "Ошибка конфигурации"
 
 #: admin/systems/ppd/class_printerPPDDialog.inc:92
 #, php-format
 msgid "Cannot open PPD '%s'!"
-msgstr ""
+msgstr "Не могу открыть PPD '%s'!"
 
 #: admin/systems/ppd/class_printerPPDDialog.inc:141
 #, php-format
@@ -836,7 +837,7 @@ msgstr ""
 
 #: admin/systems/ppd/class_printerPPDDialog.inc:491
 msgid "Section"
-msgstr ""
+msgstr "Секция"
 
 #: admin/systems/ppd/class_printerPPDDialog.inc:551
 #: admin/systems/ppd/class_printerPPDDialog.inc:554
@@ -878,12 +879,12 @@ msgstr ""
 #: admin/systems/ppd/class_ppdManager.inc:190
 #, php-format
 msgid "The temporary file '%s' cannot be opened for writing."
-msgstr ""
+msgstr "Нельзя открыть для записи временный файл '%s'."
 
 #: admin/systems/ppd/class_ppdManager.inc:212
 #: admin/systems/ppd/class_ppdManager.inc:350
 msgid "Parsing PPD file failed - file is empty!"
-msgstr ""
+msgstr "Ошибка разбора PPD файла - файл пустой!"
 
 #: admin/systems/ppd/class_ppdManager.inc:222
 #, php-format
@@ -894,11 +895,11 @@ msgstr ""
 
 #: admin/systems/ppd/class_ppdManager.inc:230
 msgid "Nested groups are not supported!"
-msgstr ""
+msgstr "Вложенные группы не поддерживаются! "
 
 #: admin/systems/ppd/class_ppdManager.inc:234
 msgid "Group name not unique!"
-msgstr ""
+msgstr "Имя группы не уникально!"
 
 #: admin/systems/ppd/class_ppdManager.inc:240
 #: admin/systems/ppd/class_ppdManager.inc:270
@@ -907,7 +908,7 @@ msgstr ""
 
 #: admin/systems/ppd/class_ppdManager.inc:264
 msgid "Nested options are not supported!"
-msgstr ""
+msgstr "Вложенные опции не поддерживаются!"
 
 #: admin/systems/ppd/class_ppdManager.inc:289
 msgid "PickMany is not supported yet!"
@@ -938,7 +939,7 @@ msgstr ""
 #: admin/systems/class_systemImport.inc:130
 #, php-format
 msgid "No DNS server found for zone %s"
-msgstr ""
+msgstr "Не найден DNS сервер для зоны %s"
 
 #: admin/systems/class_systemImport.inc:165
 msgid "Import"
@@ -954,7 +955,7 @@ msgstr "Сервер"
 
 #: admin/systems/class_serverGeneric.inc:47
 msgid "Server information"
-msgstr ""
+msgstr "Информация о сервере"
 
 #: admin/systems/class_componentGeneric.inc:37
 msgid "Component information"
@@ -970,59 +971,59 @@ msgstr ""
 
 #: admin/systems/class_mobilePhoneGeneric.inc:37
 msgid "Mobile phone information"
-msgstr ""
+msgstr "Информация о мобильном телефоне"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:63
 msgid "The name of the mobile phone"
-msgstr ""
+msgstr "Название мобильного телефона"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:67
 msgid "A short description of the mobile phone"
-msgstr ""
+msgstr "Краткое описание мобильного телефона"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:77
 msgid "Serial Number"
-msgstr ""
+msgstr "Серийный номер"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:77
 msgid "The serial number of the mobile phone"
-msgstr ""
+msgstr "Серийный номер мобильного телефона"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:81
 msgid "IMEI Number"
-msgstr ""
+msgstr "IMEI номер"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:81
 msgid "The IMEI number of the mobile phone"
-msgstr ""
+msgstr "IMEI номер мобильного телефона"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:86
 msgid "OS"
-msgstr ""
+msgstr "ОС"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:86
 msgid "The Operating System installed on this phone"
-msgstr ""
+msgstr "Операционная система установленная на этот телефон"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:92
 msgid "SimCard"
-msgstr ""
+msgstr "СимКарта"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:95
 msgid "Telephone Number"
-msgstr ""
+msgstr "Номер телефона"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:95
 msgid "The telephone number of the mobile phone"
-msgstr ""
+msgstr "Телефонный номер мобильного телефона"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:99
 msgid "PUK Number"
-msgstr ""
+msgstr "PUK номер"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:99
 msgid "The PUK number of the simcard in this mobile phone"
-msgstr ""
+msgstr "PUK номер сим карты в мобильном телефоне "
 
 #: admin/systems/serverService-list.xml:10
 msgid "List of services"
@@ -1034,26 +1035,26 @@ msgstr ""
 
 #: admin/systems/serverService-list.xml:27
 msgid "!"
-msgstr ""
+msgstr "!"
 
 #: admin/systems/serverService-list.xml:89
 msgid "Get status"
-msgstr ""
+msgstr "Получить статус"
 
 #: admin/systems/serverService-list.xml:97
 #: admin/systems/services/cups/class_serviceCUPS.inc:92
 msgid "Start"
-msgstr ""
+msgstr "Запустить"
 
 #: admin/systems/serverService-list.xml:105
 #: admin/systems/services/cups/class_serviceCUPS.inc:93
 msgid "Stop"
-msgstr ""
+msgstr "Остановить"
 
 #: admin/systems/serverService-list.xml:113
 #: admin/systems/services/cups/class_serviceCUPS.inc:94
 msgid "Restart"
-msgstr ""
+msgstr "Перезапустить"
 
 #: admin/systems/serverService-list.xml:121
 msgid "Edit service"
@@ -1157,7 +1158,7 @@ msgstr "Служба печати"
 
 #: admin/systems/services/cups/class_serviceCUPS.inc:84
 msgid "Cups"
-msgstr ""
+msgstr "Cups"
 
 #: admin/systems/services/class_goService.inc:44
 #: admin/systems/services/class_goService.inc:78
@@ -1195,7 +1196,7 @@ msgstr ""
 
 #: admin/systems/services/shares/class_serviceShare.inc:65
 msgid "Codepage"
-msgstr ""
+msgstr "Кодовая страница"
 
 #: admin/systems/services/shares/class_serviceShare.inc:65
 msgid "Codepage for this share"
@@ -1211,7 +1212,7 @@ msgstr ""
 
 #: admin/systems/services/shares/class_serviceShare.inc:73
 msgid "Option"
-msgstr ""
+msgstr "Опции"
 
 #: admin/systems/services/shares/class_serviceShare.inc:73
 msgid "Special option(s) for this share"
@@ -1246,7 +1247,7 @@ msgstr "Информация"
 
 #: admin/systems/services/ntp/class_serviceNTP.inc:45
 msgid "Time servers"
-msgstr ""
+msgstr "Сервера врмени"
 
 #: admin/systems/services/ntp/class_serviceNTP.inc:45
 msgid "List of time sources to use"
@@ -1267,7 +1268,7 @@ msgstr ""
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:44
 msgid "LDAP URI"
-msgstr ""
+msgstr "LDAP URI"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:44
 msgid "The LDAP URI to use in order to contact this LDAP server"
@@ -1303,27 +1304,27 @@ msgstr ""
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:66
 msgid "TLS Cert"
-msgstr ""
+msgstr "TLS сертификат"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:66
 msgid "Filepath to tls certificate"
-msgstr ""
+msgstr "Путь к файлу tls сертификата"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:70
 msgid "TLS Key"
-msgstr ""
+msgstr "TLS ключ"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:70
 msgid "Filepath to tls key"
-msgstr ""
+msgstr "Путь к файлу tls ключа"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:74
 msgid "TLS CaCert"
-msgstr ""
+msgstr "TLS корневой сертификат"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:74
 msgid "Filepath to tls ca certificate"
-msgstr ""
+msgstr "Путь к файлу корневого сертификата tls"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:78
 msgid "TLS ReqCert"
@@ -1347,7 +1348,7 @@ msgstr ""
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:97
 msgid "LDAP"
-msgstr ""
+msgstr "LDAP"
 
 #: admin/systems/class_networkSettings.inc:305
 msgid "NOT IMPLEMENTED"
@@ -1394,7 +1395,7 @@ msgstr "IP адрес"
 #: admin/systems/class_networkSettings.inc:662
 #: admin/systems/class_networkSettings.inc:1023
 msgid "MAC address"
-msgstr ""
+msgstr "MAC адрес"
 
 #: admin/systems/class_networkSettings.inc:676
 #, php-format
@@ -1434,11 +1435,11 @@ msgstr "Добавить"
 #: admin/systems/class_networkSettings.inc:1015
 #: addons/dashboard/class_dashBoardNetwork.inc:127
 msgid "Network"
-msgstr ""
+msgstr "Сеть"
 
 #: admin/systems/class_networkSettings.inc:1030
 msgid "DNS configuration"
-msgstr ""
+msgstr "Конфигурация DNS"
 
 #: admin/systems/class_networkSettings.inc:1033
 msgid "DHCP configuration"
@@ -1446,23 +1447,23 @@ msgstr ""
 
 #: addons/dashboard/class_dashBoardSystems.inc:45
 msgid "Workstations"
-msgstr ""
+msgstr "Рабочие станции"
 
 #: addons/dashboard/class_dashBoardSystems.inc:51
 msgid "Windows Workstations"
-msgstr ""
+msgstr "Рабочие станции Windows"
 
 #: addons/dashboard/class_dashBoardSystems.inc:54
 msgid "Terminals"
-msgstr ""
+msgstr "Терминалы"
 
 #: addons/dashboard/class_dashBoardSystems.inc:57
 msgid "Printers"
-msgstr ""
+msgstr "Принтеры"
 
 #: addons/dashboard/class_dashBoardSystems.inc:60
 msgid "Phones"
-msgstr ""
+msgstr "Телефоны"
 
 #: addons/dashboard/class_dashBoardSystems.inc:63
 msgid "Components"
@@ -1470,7 +1471,7 @@ msgstr ""
 
 #: addons/dashboard/class_dashBoardSystems.inc:66
 msgid "Mobile phones"
-msgstr ""
+msgstr "Мобильные телефоны"
 
 #: addons/dashboard/class_dashBoardSystems.inc:183
 msgid "Statistics"
@@ -1514,35 +1515,35 @@ msgstr ""
 
 #: config/systems/class_systemsPluginConfig.inc:48
 msgid "Server RDN"
-msgstr ""
+msgstr "RDN для серверов"
 
 #: config/systems/class_systemsPluginConfig.inc:48
 msgid "Branch in which servers will be stored"
-msgstr ""
+msgstr "Ветка в которой будут храниться сервера"
 
 #: config/systems/class_systemsPluginConfig.inc:53
 msgid "Workstations RDN"
-msgstr ""
+msgstr "RDN для рабочих стаций"
 
 #: config/systems/class_systemsPluginConfig.inc:53
 msgid "Branch in which workstations will be stored"
-msgstr ""
+msgstr "Ветка в которй будут храниться рабочие станции"
 
 #: config/systems/class_systemsPluginConfig.inc:58
 msgid "Terminal RDN"
-msgstr ""
+msgstr "RDN для терминалов"
 
 #: config/systems/class_systemsPluginConfig.inc:58
 msgid "Branch in which terminals will be stored"
-msgstr ""
+msgstr "Ветка в которой будут храниться терминалы"
 
 #: config/systems/class_systemsPluginConfig.inc:63
 msgid "Printer RDN"
-msgstr ""
+msgstr "RDN для принтеров"
 
 #: config/systems/class_systemsPluginConfig.inc:63
 msgid "Branch in which printers will be stored"
-msgstr ""
+msgstr "Ветка в которой будут храниться принтеры"
 
 #: config/systems/class_systemsPluginConfig.inc:68
 msgid "Component RDN"
@@ -1550,15 +1551,15 @@ msgstr ""
 
 #: config/systems/class_systemsPluginConfig.inc:68
 msgid "Branch in which network devices will be stored"
-msgstr ""
+msgstr "Ветка в которой сетевые устройства будут храниться"
 
 #: config/systems/class_systemsPluginConfig.inc:73
 msgid "Mobile phone RDN"
-msgstr ""
+msgstr "RDN для мобильных телефонов"
 
 #: config/systems/class_systemsPluginConfig.inc:73
 msgid "Branch in which mobile phones will be stored"
-msgstr ""
+msgstr "Ветка в которой будут храниться мобильные телефоны"
 
 #: config/systems/class_systemsPluginConfig.inc:80
 msgid "Miscellaneous"
@@ -1570,23 +1571,23 @@ msgstr ""
 
 #: config/systems/class_systemsPluginConfig.inc:88
 msgid "Encoding"
-msgstr ""
+msgstr "Кодировка"
 
 #: config/systems/class_systemsPluginConfig.inc:88
 msgid "The encoding code name"
-msgstr ""
+msgstr "Название кодировки"
 
 #: config/systems/class_systemsPluginConfig.inc:93
 msgid "Label"
-msgstr ""
+msgstr "Обозначение"
 
 #: config/systems/class_systemsPluginConfig.inc:93
 msgid "The encoding displayed name"
-msgstr ""
+msgstr "Отображаемое имя кодировки"
 
 #: config/systems/class_systemsPluginConfig.inc:101
 msgid "Encodings"
-msgstr ""
+msgstr "Кодировки"
 
 #: admin/ogroups/goto/termgroup.tpl.c:5
 msgid ""
@@ -1601,7 +1602,7 @@ msgstr "Общее"
 
 #: admin/ogroups/goto/termgroup.tpl.c:11
 msgid "NTP server"
-msgstr "Сервер NTP"
+msgstr "NTP сервер"
 
 #: admin/ogroups/goto/termgroup.tpl.c:14
 msgid "Choose server to use for synchronizing time"
@@ -1629,7 +1630,7 @@ msgstr "Выполнить"
 
 #: admin/systems/network.tpl.c:2
 msgid "Network  settings"
-msgstr ""
+msgstr "Сетевые настройки"
 
 #: admin/systems/network.tpl.c:5
 msgid "IP-address"
@@ -1645,15 +1646,15 @@ msgstr "MAC-адрес"
 
 #: admin/systems/network.tpl.c:17
 msgid "Autodetect"
-msgstr ""
+msgstr "Определить автоматически"
 
 #: admin/systems/network.tpl.c:20 admin/systems/network.tpl.c:23
 msgid "Enable DHCP for this device"
-msgstr ""
+msgstr "Включить DHCP для этого устройства"
 
 #: admin/systems/network.tpl.c:26 admin/systems/network.tpl.c:50
 msgid "not configured"
-msgstr ""
+msgstr "не настроен"
 
 #: admin/systems/network.tpl.c:29
 msgid "Parent node"
@@ -1661,15 +1662,15 @@ msgstr ""
 
 #: admin/systems/network.tpl.c:32
 msgid "Edit settings"
-msgstr ""
+msgstr "Редактировать настройки"
 
 #: admin/systems/network.tpl.c:35 admin/systems/network.tpl.c:47
 msgid "Enable DNS for this device"
-msgstr ""
+msgstr "Включить DNS для этого устройства"
 
 #: admin/systems/network.tpl.c:38
 msgid "Zone"
-msgstr ""
+msgstr "Зона"
 
 #: admin/systems/network.tpl.c:41
 msgid "TTL"
@@ -1677,7 +1678,7 @@ msgstr "TTL"
 
 #: admin/systems/network.tpl.c:44
 msgid "Dns records"
-msgstr ""
+msgstr "DNS записи"
 
 #: admin/systems/password.tpl.c:2
 msgid ""
@@ -1704,7 +1705,7 @@ msgstr "Подтверждение"
 
 #: admin/systems/password.tpl.c:17
 msgid "Password strength"
-msgstr ""
+msgstr "Надежность пароля"
 
 #: admin/systems/password.tpl.c:20
 msgid "Set password"
@@ -1730,7 +1731,7 @@ msgstr ""
 
 #: admin/systems/gencd.tpl.c:8
 msgid "Create ISO-Image"
-msgstr ""
+msgstr "Создать ISO образ"
 
 #: admin/systems/remove.tpl.c:5
 msgid ""
@@ -1750,41 +1751,41 @@ msgstr "Фильтр"
 
 #: admin/systems/system-filter.tpl.c:5
 msgid "Show servers"
-msgstr "Показать серверы"
+msgstr "Показывать сервера"
 
 #: admin/systems/system-filter.tpl.c:8
 msgid "Show workstations"
-msgstr "Показать рабочие станции"
+msgstr "Показывать рабочие станции"
 
 #: admin/systems/system-filter.tpl.c:11
 msgid "Show terminals"
-msgstr "Показать терминалы"
+msgstr "Показывать терминалы"
 
 #: admin/systems/system-filter.tpl.c:14
 msgid "Show network printer"
-msgstr ""
+msgstr "Показывать сетевые принтеры"
 
 #: admin/systems/system-filter.tpl.c:17
 #: admin/systems/phoneSelect/phoneSelect-filter.tpl.c:5
 msgid "Show phones"
-msgstr "Показать телефоны"
+msgstr "Показывать телефоны"
 
 #: admin/systems/system-filter.tpl.c:20
 msgid "Show windows based workstations"
-msgstr ""
+msgstr "Показывать рабочие станции с Windows"
 
 #: admin/systems/system-filter.tpl.c:23
 msgid "Show network devices"
-msgstr ""
+msgstr "Показывать сетевые устройства"
 
 #: admin/systems/system-filter.tpl.c:26
 #: admin/systems/phoneSelect/phoneSelect-filter.tpl.c:8
 msgid "Show mobile phones"
-msgstr ""
+msgstr "Показывать мобильные телефоны"
 
 #: admin/systems/system-filter.tpl.c:29
 msgid "Show IPMI interfaces"
-msgstr ""
+msgstr "Показывать IPMI интерфейсы"
 
 #: admin/systems/ppd/printerPPDSelectionDialog.tpl.c:2
 msgid "Select objects to add"
@@ -1808,7 +1809,7 @@ msgstr "Закрыть"
 
 #: admin/systems/ppd/printerPPDDialog.tpl.c:2
 msgid "Printer driver"
-msgstr ""
+msgstr "Драйвер принтера"
 
 #: admin/systems/ppd/printerPPDDialog.tpl.c:5
 msgid "Model"
@@ -1832,11 +1833,11 @@ msgstr "Параметры"
 
 #: admin/systems/ppd/remove_ppd.tpl.c:5
 msgid "The ppd file will be removed from the server and can not be restored."
-msgstr ""
+msgstr "PPD файл будет удален с сервера безвозвратно"
 
 #: admin/systems/printer.tpl.c:2
 msgid "General"
-msgstr ""
+msgstr "Общие"
 
 #: admin/systems/printer.tpl.c:5
 msgid "Printer name"
@@ -1844,11 +1845,11 @@ msgstr "Имя принтера"
 
 #: admin/systems/printer.tpl.c:14
 msgid "Details"
-msgstr ""
+msgstr "Детали"
 
 #: admin/systems/printer.tpl.c:20
 msgid "Printer location"
-msgstr ""
+msgstr "Местонахождение принтера"
 
 #: admin/systems/printer.tpl.c:26
 msgid "PPD Provider"
@@ -1864,7 +1865,7 @@ msgstr "Изменить"
 
 #: admin/systems/printer.tpl.c:41
 msgid "Users which are allowed to use this printer"
-msgstr ""
+msgstr "Пользователи, которым разрешено использовать этот принтер"
 
 #: admin/systems/printer.tpl.c:44
 msgid "Users"
@@ -1872,27 +1873,27 @@ msgstr "Пользователи"
 
 #: admin/systems/printer.tpl.c:47
 msgid "Users which are allowed to administrate this printer"
-msgstr ""
+msgstr "Пользователи, которым разрешено администрировать этот принтер"
 
 #: admin/systems/printer.tpl.c:50
 msgid "Admins"
-msgstr ""
+msgstr "Администраторы"
 
 #: admin/systems/printer.tpl.c:53
 msgid "Windows paths"
-msgstr ""
+msgstr "Пути windows"
 
 #: admin/systems/printer.tpl.c:56
 msgid "Printer windows inf file"
-msgstr ""
+msgstr "Путь к inf файлу принтера"
 
 #: admin/systems/printer.tpl.c:59
 msgid "Printer driver directory"
-msgstr ""
+msgstr "Каталог с драйверами для принтера"
 
 #: admin/systems/gencd_frame.tpl.c:2
 msgid "Your browser does not supprt iframes."
-msgstr ""
+msgstr "Ваш браузер не поддерживает iframes."
 
 #: admin/systems/services/cups/serviceCUPS.tpl.c:2
 msgid "Print Service"
@@ -1959,7 +1960,7 @@ msgstr "Объект группы"
 
 #: admin/systems/SelectDeviceType.tpl.c:23
 msgid "none"
-msgstr "нет"
+msgstr "ни одного"
 
 #: addons/dashboard/systems_stats.tpl.c:2
 msgid "There are several argonaut servers! (this is not yet supported)"
@@ -1975,6 +1976,7 @@ msgid_plural "%1 systems are configured to run an argonaut client."
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
+msgstr[3] ""
 
 #: addons/dashboard/systems_stats.tpl.c:11
 msgid "But no system is configured to run an argonaut client!"
@@ -1990,3 +1992,4 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
+msgstr[3] ""

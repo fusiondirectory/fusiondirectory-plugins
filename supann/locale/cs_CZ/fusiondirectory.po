@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
 "POT-Creation-Date: 2015-03-31 11:49+0200\n"
-"PO-Revision-Date: 2015-03-31 11:41+0000\n"
+"PO-Revision-Date: 2015-04-05 09:02+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/FusionDirectory-108/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
@@ -20,11 +20,11 @@ msgstr ""
 
 #: admin/supannStructures/class_supannStructuresManagement.inc:35
 msgid "Supann structures"
-msgstr "Struktury Supann"
+msgstr "Struktury SUPANN"
 
 #: admin/supannStructures/class_supannStructuresManagement.inc:36
 msgid "Supann structures management"
-msgstr "Správa struktur Supann"
+msgstr "Správa struktur SUPANN"
 
 #: admin/supannStructures/class_entite.inc:31
 #: admin/supannStructures/class_entite.inc:52
@@ -42,7 +42,7 @@ msgstr "SUPANN entita"
 #: admin/supannStructures/class_entite.inc:55
 #: admin/supannStructures/class_etablissement.inc:59
 msgid "Name"
-msgstr "název"
+msgstr "Název"
 
 #: admin/supannStructures/class_entite.inc:55
 msgid "The name to write in the ou attribute for this entity"
@@ -55,7 +55,7 @@ msgstr "Správní údaje"
 #: admin/supannStructures/class_entite.inc:64
 #: admin/supannStructures/class_etablissement.inc:80
 msgid "Telephone"
-msgstr "telefon"
+msgstr "Telefon"
 
 #: admin/supannStructures/class_entite.inc:64
 msgid "Phone number for this entity"
@@ -72,7 +72,7 @@ msgstr "Faxové číslo této entity"
 
 #: admin/supannStructures/class_entite.inc:72
 msgid "Postal address"
-msgstr "poštovní adresa"
+msgstr "Poštovní adresa"
 
 #: admin/supannStructures/class_entite.inc:72
 msgid "Postal address of this entity"
@@ -81,7 +81,7 @@ msgstr "Poštovní adresa této entity"
 #: admin/supannStructures/class_entite.inc:76
 #: admin/supannStructures/class_etablissement.inc:63
 msgid "Description"
-msgstr "popis"
+msgstr "Popis"
 
 #: admin/supannStructures/class_entite.inc:76
 msgid "Short description of this entity"
@@ -121,7 +121,7 @@ msgstr "Identifikátor odkazu"
 
 #: admin/supannStructures/class_entite.inc:98
 msgid "SUPANN reference ID of this entity"
-msgstr ""
+msgstr "Identifikátor SUPANN odkazu této entity"
 
 #: admin/supannStructures/class_etablissement.inc:31
 #: personal/supann/class_supannAccount.inc:324
@@ -131,11 +131,11 @@ msgstr "Instituce"
 
 #: admin/supannStructures/class_etablissement.inc:32
 msgid "SUPANN Establishment Settings"
-msgstr ""
+msgstr "SUPANN nastavení instituce"
 
 #: admin/supannStructures/class_etablissement.inc:35
 msgid "SUPANN Establishment"
-msgstr ""
+msgstr "SUPANN instituce"
 
 #: admin/supannStructures/class_etablissement.inc:52
 msgid "Properties"
@@ -143,15 +143,15 @@ msgstr "vlastnosti"
 
 #: admin/supannStructures/class_etablissement.inc:55
 msgid "Root Establishment"
-msgstr ""
+msgstr "Zastřešující organizace"
 
 #: admin/supannStructures/class_etablissement.inc:55
 msgid "Set this Establishment as the root one"
-msgstr ""
+msgstr "Nastavit tuto instituci jako kořenovou"
 
 #: admin/supannStructures/class_etablissement.inc:59
 msgid "The name to write in the o attribute for this Establishment"
-msgstr ""
+msgstr "Název, který zapsat do atributu o (ó) této instituce"
 
 #: admin/supannStructures/class_etablissement.inc:63
 msgid "A short description of this Establishment"
@@ -164,11 +164,11 @@ msgstr "umístění"
 
 #: admin/supannStructures/class_etablissement.inc:72
 msgid "Usually the city where this Establishment is"
-msgstr ""
+msgstr "Obvykle město, ve kterém se tato instituce nachází"
 
 #: admin/supannStructures/class_etablissement.inc:76
 msgid "Address"
-msgstr "adresa"
+msgstr "Adresa"
 
 #: admin/supannStructures/class_etablissement.inc:76
 msgid "The postal address of this Establishment"
@@ -180,11 +180,11 @@ msgstr "Telefonní číslo do této instituce"
 
 #: admin/supannStructures/class_etablissement.inc:84
 msgid "Fax number for this Establishment"
-msgstr ""
+msgstr "Faxové číslo do této instituce"
 
 #: admin/supannStructures/class_etablissement.inc:90
 msgid "SUPANN properties"
-msgstr "Vlastnosti SUPANN"
+msgstr "SUPANN vlastnosti"
 
 #: admin/supannStructures/class_etablissement.inc:93
 msgid "Establishment code"
@@ -192,7 +192,7 @@ msgstr "Kód instituce"
 
 #: admin/supannStructures/class_etablissement.inc:93
 msgid "The code of this Establishment (must have a prefix between {})"
-msgstr ""
+msgstr "Kód této instituce (je třeba, předponu byla uvedena ve složených závorkách – { } )"
 
 #: admin/supannStructures/class_etablissement.inc:98
 msgid "SUPANN code"
@@ -200,7 +200,7 @@ msgstr "SUPANN kód"
 
 #: admin/supannStructures/class_etablissement.inc:98
 msgid "The SUPANN code for this Establishment"
-msgstr ""
+msgstr "SUPANN kód této instituce"
 
 #: admin/supannStructures/class_etablissement.inc:103
 msgid "Legal name"
@@ -208,7 +208,7 @@ msgstr "Úřední název"
 
 #: admin/supannStructures/class_etablissement.inc:103
 msgid "The legal name of this Establishment"
-msgstr ""
+msgstr "Úřední název této instituce"
 
 #: admin/supannStructures/class_etablissement.inc:107
 msgid "Home page URI"
@@ -224,21 +224,21 @@ msgstr "URI adresa instituce"
 
 #: admin/supannStructures/class_etablissement.inc:111
 msgid "The URI of this Establishment institution website"
-msgstr ""
+msgstr "URI adresa webových stránek této instituce"
 
 #: admin/supannStructures/class_etablissement.inc:115
 msgid "White pages URI"
-msgstr "URI adresa „bílých stránek“ (white pages)"
+msgstr "URI adresa „bílých stránek“ (UDDI)"
 
 #: admin/supannStructures/class_etablissement.inc:115
 msgid "The URI of this Establishment white pages"
-msgstr ""
+msgstr "URI adresa „bílých stránek“ (UDDI) této instituce"
 
 #: admin/supannStructures/class_etablissement.inc:148
 #: admin/supannStructures/class_etablissement.inc:201
 #: admin/supannStructures/class_etablissement.inc:219
 msgid "LDAP error"
-msgstr "chyba LDAPu"
+msgstr "Chyba LDAP"
 
 #: admin/supannStructures/class_supann.inc:53
 msgid "File error"
@@ -247,12 +247,12 @@ msgstr "Chyba souboru"
 #: admin/supannStructures/class_supann.inc:54
 #, php-format
 msgid "Cannot read file: '%s'"
-msgstr "Soubor nelze načíst: \"%s\""
+msgstr "Soubor nelze načíst: %s"
 
 #: personal/supann/class_supannAccount.inc:35
 #: personal/supann/class_supannAccount.inc:109
 msgid "None"
-msgstr "žádné"
+msgstr "Žádné"
 
 #: personal/supann/class_supannAccount.inc:106
 msgid "Licence"
@@ -316,7 +316,7 @@ msgstr ""
 
 #: personal/supann/class_supannAccount.inc:215
 msgid "SupAnn informations management plugin"
-msgstr "Zásuvný modul pro správu SupAnn informací"
+msgstr "Zásuvný modul pro správu SUPANN informací"
 
 #: personal/supann/class_supannAccount.inc:232
 msgid "Identity"
@@ -358,15 +358,15 @@ msgstr "eduPersonNickName – může obsahovat přezdívku tohoto uživatele"
 
 #: personal/supann/class_supannAccount.inc:253
 msgid "Ref ids"
-msgstr ""
+msgstr "Identifikátory reference"
 
 #: personal/supann/class_supannAccount.inc:253
 msgid "supannRefId - IDs/links for this user on other systems"
-msgstr ""
+msgstr "supannRefId – Identifikátory/odkazy tohoto uživatele na ostatních systémech"
 
 #: personal/supann/class_supannAccount.inc:262
 msgid "Contact"
-msgstr "kontakt"
+msgstr "Kontakt"
 
 #: personal/supann/class_supannAccount.inc:266
 msgid "Other phone numbers"
@@ -395,7 +395,7 @@ msgstr "supannMailPerso – soukromá poštovní adresa tohoto uživatele"
 
 #: personal/supann/class_supannAccount.inc:283
 msgid "red List"
-msgstr "Seznam blokovaných"
+msgstr "seznam blokovaných"
 
 #: personal/supann/class_supannAccount.inc:283
 msgid "supannListeRouge - Should this person be on the red list"
@@ -463,7 +463,7 @@ msgstr "Profil studenta"
 
 #: personal/supann/class_supannAccount.inc:334
 msgid "INE code"
-msgstr "Kód INE"
+msgstr "INE kód"
 
 #: personal/supann/class_supannAccount.inc:334
 msgid "supannCodeINE - INE code of this student"
@@ -479,20 +479,20 @@ msgstr "supannEtuId – identifikátor výuky"
 
 #: personal/supann/class_supannAccount.inc:344
 msgid "Student subscriptions"
-msgstr "Zapsání studenta"
+msgstr "Zápisy studenta"
 
 #: personal/supann/class_supannAccount.inc:359
 msgid "supannEtuInscription - Subscriptions for this student"
-msgstr "supannEtuInscription – předplatné pro tohoto studenta"
+msgstr "supannEtuInscription – zápisy tohoto studenta"
 
 #: personal/supann/class_supannAccount.inc:363
 msgid ""
 "supannEtablissement - Etablissement in which this subscription was done"
-msgstr "supannEtablissement – Instituce, ve které bylo toto zapsání se dokončeno"
+msgstr "supannEtablissement – Instituce, ve které bylo toto zapsání provedeno"
 
 #: personal/supann/class_supannAccount.inc:367
 msgid "Year"
-msgstr "rok"
+msgstr "Rok"
 
 #: personal/supann/class_supannAccount.inc:367
 msgid "supannEtuAnneeInscription - The year this subscription will begin"
@@ -508,7 +508,7 @@ msgstr "supannEtuRegimeInscription – typ tohoto zápisu"
 
 #: personal/supann/class_supannAccount.inc:376
 msgid "Disciplinary Sector"
-msgstr ""
+msgstr "Kárné řízení"
 
 #: personal/supann/class_supannAccount.inc:376
 msgid "supannEtuSecteurDisciplinaire"
@@ -588,7 +588,7 @@ msgstr ""
 
 #: personal/supann/class_supannAccount.inc:431
 msgid "Roles"
-msgstr "role"
+msgstr "Role"
 
 #: personal/supann/class_supannAccount.inc:438
 msgid "supannRoleEntite"
@@ -620,7 +620,7 @@ msgstr ""
 
 #: config/supann/class_supannConfig.inc:45
 msgid "SUPANN RDN"
-msgstr ""
+msgstr "Relativní rozlišený název SUPANN"
 
 #: config/supann/class_supannConfig.inc:45
 msgid "Branch in which SUPANN structures will be stored"
