@@ -813,7 +813,8 @@ class faiManagement extends management
     $ldap->search('(objectClass=FAIbranch)', array('ou','FAIstate'));
 
     while ($release = $ldap->fetch()) {
-      $list[$release['dn']] = $release['ou'][0];
+      preg_match('/[^,],ou=([^,]+),/', $release['dn'], $m);
+      $list[$release['dn']] = $m[1].'/'.$release['ou'][0];
     }
     return $list;
   }

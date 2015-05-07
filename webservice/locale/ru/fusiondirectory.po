@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2015-03-17 18:47+0100\n"
-"PO-Revision-Date: 2015-03-05 06:51+0000\n"
+"POT-Creation-Date: 2015-03-31 11:49+0200\n"
+"PO-Revision-Date: 2015-03-21 23:48+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/FusionDirectory-108/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ru\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: html/jsonrpc.php:52
 #, php-format
@@ -25,7 +25,7 @@ msgstr ""
 #: html/jsonrpc.php:62
 #, php-format
 msgid "Cannot locate file '%s' - please run '%s' to fix this"
-msgstr ""
+msgstr "Не могу обнаружить файл '%s' - пожалуйста запустите '%s', чтобы исправить это."
 
 #: html/jsonrpc.php:253
 msgid "Plugin"

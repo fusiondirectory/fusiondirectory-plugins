@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Pavel Borecki <pavel.borecki@gmail.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2015-03-19 21:45+0100\n"
-"PO-Revision-Date: 2015-02-25 16:03+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"POT-Creation-Date: 2015-03-31 11:49+0200\n"
+"PO-Revision-Date: 2015-04-08 07:11+0000\n"
+"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/FusionDirectory-108/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,42 +21,42 @@ msgstr ""
 #: admin/autofs/class_nisObject.inc:31 admin/autofs/class_nisObject.inc:32
 #: admin/autofs/class_nisObject.inc:34 admin/autofs/class_nisObject.inc:49
 msgid "Directory"
-msgstr "adresář"
+msgstr "Složka"
 
 #: admin/autofs/class_nisObject.inc:53 admin/autofs/class_nisMap.inc:53
 msgid "Name"
-msgstr "název"
+msgstr "Název"
 
 #: admin/autofs/class_nisObject.inc:53
 msgid "Name of this directory"
-msgstr "Název tohoto adresáře"
+msgstr "Název této složky"
 
 #: admin/autofs/class_nisObject.inc:57
 msgid "Automount entry"
-msgstr ""
+msgstr "Položka samočinného připojení souborového systému"
 
 #: admin/autofs/class_nisObject.inc:57
 msgid ""
 "The entry of this directory for the automount daemon.\n"
 " For instance 'auto.u' or '-fstype=nfs domaine.tld:/mount/directory'"
-msgstr ""
+msgstr "Položka této složky pro systémovou službu automount.\nNapříklad auto.u nebo -fstype=nfs nazevdomeny.tld:/pripojna/složka"
 
 #: admin/autofs/class_nisObject.inc:61 admin/autofs/class_nisMap.inc:31
 #: admin/autofs/class_nisMap.inc:34 admin/autofs/class_nisMap.inc:49
 msgid "Mount point"
-msgstr "přípojný bod"
+msgstr "Přípojný bod"
 
 #: admin/autofs/class_nisObject.inc:61
 msgid "The mount point this directory will be placed in"
-msgstr ""
+msgstr "Přípojný bod, do kterého bude tato složka umístěna"
 
 #: admin/autofs/class_nisMap.inc:32
 msgid "Autofs mount point"
-msgstr ""
+msgstr "Přípojný bod pro autofs"
 
 #: admin/autofs/class_nisMap.inc:53
 msgid "Name of the mount point"
-msgstr ""
+msgstr "Název přípojného bodu"
 
 #: admin/autofs/class_autofsManagement.inc:31
 msgid "Auto fs"
@@ -63,15 +64,15 @@ msgstr ""
 
 #: admin/autofs/class_autofsManagement.inc:32
 msgid "Auto fs management"
-msgstr ""
+msgstr "Správa auto fs"
 
 #: config/autofs/class_autofsConfig.inc:28
 msgid "Autofs configuration"
-msgstr ""
+msgstr "Nastavení Autofs"
 
 #: config/autofs/class_autofsConfig.inc:29
 msgid "FusionDirectory autofs plugin configuration"
-msgstr ""
+msgstr "Nastavení zásuvného modulu autofs pro FusionDirectory"
 
 #: config/autofs/class_autofsConfig.inc:42
 msgid "AutoFS"
@@ -79,8 +80,8 @@ msgstr ""
 
 #: config/autofs/class_autofsConfig.inc:45
 msgid "AutoFS RDN"
-msgstr ""
+msgstr "Relativní rozlišený název AutoFS"
 
 #: config/autofs/class_autofsConfig.inc:45
 msgid "Branch in which automount info will be stored"
-msgstr ""
+msgstr "Větev, ve které budou uloženy údaje pro samočinné připojování souborových systémů"

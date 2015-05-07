@@ -51,7 +51,8 @@ class serviceApacheVhostEdit extends simplePlugin
       'plObjectType'  => array('apacheVhost' => array(
         'name'        => _('Apache Vhost'),
         'filter'      => 'objectClass=apacheConfig',
-        'aclCategory' => 'server'
+        'aclCategory' => 'server',
+        'icon'        => 'geticon.php?context=applications&icon=apache&size=16',
       )),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())

@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Pavel Borecki <pavel.borecki@gmail.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2015-03-19 21:45+0100\n"
-"PO-Revision-Date: 2015-02-25 16:51+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"POT-Creation-Date: 2015-03-31 11:49+0200\n"
+"PO-Revision-Date: 2015-04-07 19:26+0000\n"
+"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/FusionDirectory-108/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,59 +22,59 @@ msgstr ""
 #: admin/alias/class_mailAliasDistribution.inc:32
 #: admin/alias/class_mailAliasDistribution.inc:35
 msgid "Temporary mail distribution"
-msgstr ""
+msgstr "Dočasná distribuce e-mailů"
 
 #: admin/alias/class_mailAliasDistribution.inc:53
 msgid "Mail distribution"
-msgstr ""
+msgstr "Distribuce e-mailů"
 
 #: admin/alias/class_mailAliasDistribution.inc:56
 #: admin/alias/class_mailAliasRedirection.inc:55
 msgid "Name"
-msgstr "název"
+msgstr "Název"
 
 #: admin/alias/class_mailAliasDistribution.inc:56
 msgid "Name to identify this alias"
-msgstr ""
+msgstr "Název pro identifikaci tohoto alternativního názvu"
 
 #: admin/alias/class_mailAliasDistribution.inc:58
 #: admin/alias/class_mailAliasRedirection.inc:57
 msgid "Description"
-msgstr "popis"
+msgstr "Popis"
 
 #: admin/alias/class_mailAliasDistribution.inc:58
 msgid "Description of this alias"
-msgstr ""
+msgstr "Popis tohoto alternativního názvu"
 
 #: admin/alias/class_mailAliasDistribution.inc:62
 msgid "Email address"
-msgstr "e-mailová adresa"
+msgstr "E-mailová adresa"
 
 #: admin/alias/class_mailAliasDistribution.inc:67
 msgid "Email aliases"
-msgstr ""
+msgstr "Alternativní e-maily"
 
 #: admin/alias/class_mailAliasDistribution.inc:67
 msgid "Aliases for this email address"
-msgstr ""
+msgstr "Alternativy této e-mailové adresy"
 
 #: admin/alias/class_mailAliasDistribution.inc:72
 msgid "Mail server"
-msgstr "poštovní server"
+msgstr "Poštovní server"
 
 #: admin/alias/class_mailAliasDistribution.inc:72
 msgid "Mail server fot this alias"
-msgstr ""
+msgstr "Poštovní server pro tento alternativní název"
 
 #: admin/alias/class_mailAliasDistribution.inc:77
 #: admin/alias/class_mailAliasRedirection.inc:73
 msgid "Expiration date"
-msgstr "Datum vypršení platnosti"
+msgstr "Datum skončení platnosti"
 
 #: admin/alias/class_mailAliasDistribution.inc:77
 msgid ""
 "Date after which the alias should be deleted. Leave empty for no deletion."
-msgstr ""
+msgstr "Datum po kterém by měl být alternativní název samočinně smazán. Pokud nemá být mazán, nevyplňujte."
 
 #: admin/alias/class_mailAliasRedirection.inc:31
 #: admin/alias/class_mailAliasRedirection.inc:32
@@ -83,66 +84,66 @@ msgstr "Dočasné přesměrování e-mailů"
 
 #: admin/alias/class_mailAliasRedirection.inc:52
 msgid "Mail redirection"
-msgstr ""
+msgstr "Přesměrování e-mailu"
 
 #: admin/alias/class_mailAliasRedirection.inc:55
 msgid "Name to identify this redirection"
-msgstr ""
+msgstr "Název identifikující toto přesměrování"
 
 #: admin/alias/class_mailAliasRedirection.inc:57
 msgid "Description of this redirection"
-msgstr ""
+msgstr "Popis tohoto přesměrování"
 
 #: admin/alias/class_mailAliasRedirection.inc:62
 msgid "Redirect from"
-msgstr ""
+msgstr "Přesměrováno z"
 
 #: admin/alias/class_mailAliasRedirection.inc:62
 msgid "Mail address from which you want to redirect"
-msgstr ""
+msgstr "E-mailová adresa, ze které chcete přesměrovávat"
 
 #: admin/alias/class_mailAliasRedirection.inc:68
 msgid "Redirect to"
-msgstr ""
+msgstr "Přesměrovat na"
 
 #: admin/alias/class_mailAliasRedirection.inc:68
 msgid "Destination of this redirection"
-msgstr ""
+msgstr "Cíl tohoto přesměrování"
 
 #: admin/alias/class_mailAliasRedirection.inc:73
 msgid ""
 "Date after which the redirection should be deleted. Leave empty for no "
 "deletion."
-msgstr ""
+msgstr "Datum, po kterém by mělo být toto přesměrování samočinně smazáno. Pokud nemá být mazáno, nevyplňujte."
 
 #: admin/alias/class_aliasManagement.inc:33
 msgid "Aliases"
-msgstr "alternativní název (alias)"
+msgstr "Alternativní názvy"
 
 #: admin/alias/class_aliasManagement.inc:34
 msgid "Alias management"
-msgstr "Zpráva přezdívek"
+msgstr "Správa alternativních názvů"
 
 #: admin/alias/class_aliasManagement.inc:38
 msgid "Mail aliases"
-msgstr ""
+msgstr "Alternativní názvy e-mailu"
 
 #: config/alias/class_aliasConfig.inc:28
 msgid "Alias configuration"
-msgstr ""
+msgstr "Nastavení alternativního názvu"
 
 #: config/alias/class_aliasConfig.inc:29
 msgid "FusionDirectory alias plugin configuration"
-msgstr ""
+msgstr "Nastavení zásuvného modulu Alternativní název pro FusionDirecotry"
 
 #: config/alias/class_aliasConfig.inc:42
 msgid "Alias"
-msgstr "alternativní název (alias)"
+msgstr "Alternativní název"
 
 #: config/alias/class_aliasConfig.inc:45
 msgid "Alias RDN"
-msgstr ""
+msgstr "Relativní rozlišený název alternativního názvu"
 
 #: config/alias/class_aliasConfig.inc:45
 msgid "Branch in which aliases will be stored"
-msgstr ""
+msgstr "Větev, ve které budou ukládány alternativní názvy"
