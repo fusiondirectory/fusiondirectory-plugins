@@ -88,6 +88,7 @@ class personalInfo extends simplePlugin
       'plObjectType'    => array('user'),
       'plIcon'          => 'geticon.php?context=applications&icon=user-info&size=48',
       'plSmallIcon'     => 'geticon.php?context=applications&icon=user-info&size=16',
+      'plPriority'      => 3,
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
@@ -98,7 +99,31 @@ class personalInfo extends simplePlugin
     return array(
       'main' => array(
         'name'  => _('Personal info'),
-        //~ 'class' => array('fullwidth'),
+        'attrs' => array(
+          new StringAttribute (
+            _('Personal title'), _('Personal title - Examples of personal titles are "Ms", "Dr", "Prof" and "Rev"'),
+            'personalTitle', FALSE
+          ),
+          new SetAttribute(
+            new StringAttribute(
+              _('Nickname'), _('Nicknames for this user'),
+              'fdNickName'
+            )
+          ),
+          new DateAttribute (
+            _('Date of birth'), _('Date of birth'),
+            'dateOfBirth', FALSE,
+            'Y-m-d', ''
+          ),
+          new SelectAttribute (
+            _('Sex'), _('Gender'),
+            'gender', FALSE,
+            array('', 'M', 'F'), '', array('', 'male', 'female')
+          ),
+        )
+      ),
+      'contact' => array(
+        'name'  => _('Contact'),
         'attrs' => array(
           new OrderedArrayAttribute(
             new SocialAccountAttribute(
@@ -111,12 +136,6 @@ class personalInfo extends simplePlugin
             new MailAttribute(
               _('Private email'), _('Private email addresses of this user'),
               'fdPrivateMail'
-            )
-          ),
-          new SetAttribute(
-            new StringAttribute(
-              _('Nickname'), _('Nicknames for this user'),
-              'fdNickName'
             )
           )
         )
