@@ -115,7 +115,7 @@ class FAITemplateFilesAttribute extends DialogOrderedArrayAttribute
     }
   }
 
-  protected function getAttributeArrayValue($value)
+  protected function getAttributeArrayValue($key, $value)
   {
     return array(
       $value['cn'],

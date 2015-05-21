@@ -1,5 +1,4 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
@@ -21,84 +20,104 @@
 */
 
 
-class dhcpNewSectionDialog extends plugin
+class DhcpSectionCreationDialog extends GenericDialog
 {
-  /* attribute list for save action */
-  var $ignore_account     = TRUE;
-  var $attributes         = array();
-  var $objectclasses      = array("whatever");
+  protected $post_cancel = 'cancel_section';
+  protected $post_finish = 'create_section';
+  protected $classtype;
+  protected $parentdn;
+  protected $plugin;
+  protected $initialObjectValue;
 
-  /* Mapping array */
-  /*  ajout de dhcpTsigKey et dhcpDnsZone */
-  var $types= array();
-  var $classtype= "";
-  var $sectionMap= array(  "dhcpService" => array("dhcpSharedNetwork", "dhcpSubnet", "dhcpGroup", "dhcpHost", "dhcpClass","dhcpTSigKey","dhcpDnsZone"),
-                              "dhcpClass" => array("dhcpSubClass"),
-                              "dhcpSubClass" => array(),
-                              "dhcpHost" => array(),
-                              "dhcpGroup" => array("dhcpHost"),
-                              "dhcpPool" => array(),
-                              "dhcpSubnet" => array("dhcpPool", "dhcpGroup", "dhcpHost", "dhcpClass","dhcpTSigKey","dhcpDnsZone"),
-                              "dhcpSharedNetwork" => array("dhcpSubnet", "dhcpPool","dhcpTsigKey","dhcpDnsZone"),
-                              "dhcpTSigKey"=> array(), "dhcpDnsZone" => array());
-
-
-  function dhcpNewSectionDialog($type)
+  function __construct($simplePlugin, &$attribute, $classtype, $parentdn, $editingValue = NULL)
   {
-    $this->types= array(  "dhcpService" => _("Global options"),
-                          "dhcpClass" => _("Class"),
-                          "dhcpSubClass" => _("Subclass"),
-                          "dhcpHost" => _("Host"),
-                          "dhcpGroup" => _("Group"),
-                          "dhcpPool" => _("Pool"),
-                          "dhcpSubnet" => _("Subnet"),
-                          "dhcpSharedNetwork" => _("Shared network"),
-                          "dhcpTSigKey" => _("DNS update key"),
-                          "dhcpDnsZone" => _("DNS update zones"));
-
-    $this->classtype= $type;
+    $this->plugin     = $simplePlugin;
+    $this->attribute  = $attribute;
+    $this->classtype  = $classtype;
+    $this->parentdn   = $parentdn;
+    if ($editingValue === NULL) {
+      $this->dialog = FALSE;
+    } else {
+      $this->dialog = new $classtype($this->plugin, $editingValue);
+    }
+    $this->initialObjectValue = $editingValue;
   }
 
-  function execute()
+  function execute ()
   {
-    /* Fill templating stuff */
-    $smarty = get_smarty();
-    $display= "";
+    if ($this->dialog !== FALSE) {
+      if (isset($_POST['cancel_dhcp'])) {
+        return $this->handle_cancel();
+      }
+      if (isset($_POST['save_dhcp'])) {
+        return $this->save_dhcp();
+      }
+    } else {
+      if (isset($_POST[$this->post_cancel])) {
+        return $this->handle_cancel();
+      }
+      if (isset($_POST[$this->post_finish]) || isset($_GET[$this->post_finish])) {
+        return $this->handle_finish();
+      }
+    }
+    return $this->dialog_execute();
+  }
 
-    $sections= $this->sectionMap[$this->classtype];
-    $t_sections= array();
-    foreach ($sections as $section){
-      $t_sections[$section]= $this->types[$section];
+  function dialog_execute ()
+  {
+    if ($this->dialog !== FALSE) {
+      $this->dialog->save_object();
+      return $this->dialog->execute();
+    }
+    $smarty   = get_smarty();
+    $display  = '';
+
+    $sections = serviceDHCP::$sectionMap[$this->classtype];
+    $t_sections = array();
+    foreach ($sections as $section) {
+      $t_sections[$section] = $this->plugin->types[$section];
     }
     asort($t_sections);
     $ui = get_userinfo();
-    $smarty->assign("sections", $t_sections);
-    $display.= $smarty->fetch(get_template_path('dhcpNewSection.tpl', TRUE, dirname(__FILE__)));
-    return($display);
+    $smarty->assign('sections', $t_sections);
+    $display .= $smarty->fetch(get_template_path('dhcpNewSection.tpl', TRUE, dirname(__FILE__)));
+    return $display;
   }
 
-  /* Get posts and set class name
-   */
-  function save_object()
+  function handle_finish ()
   {
+    $section = $_POST['section'];
+
+    if (isset(serviceDHCP::$sectionMap[$section])) {
+      $this->dialog   = new $section($this->plugin, $this->parentdn);
+      $this->parentdn = FALSE;
+      return $this->dialog->execute();
+    } else {
+      return FALSE;
+    }
   }
 
-  /* Check given class name */
-  function check()
+  function handle_cancel ()
   {
-    /* Call common method to give check the hook */
-    $message= "";
-
-    return ($message);
+    if ($this->initialObjectValue !== NULL) {
+      $this->attribute->editEnded($this->parentdn, $this->initialObjectValue);
+    }
+    return FALSE;
   }
 
-
-  /* Return the class name */
-  function save()
+  function save_dhcp()
   {
-  }
+    $this->dialog->save_object();
+    $messages = $this->dialog->check();
+    if (count($messages)) {
+      msg_dialog::displayChecks($messages);
+      return $this->dialog_execute();
+    }
 
+    $dn     = $this->dialog->dn;
+    $data   = $this->dialog->save();
+    $this->attribute->editEnded($data['dn'], $data, ($this->parentdn === FALSE ? FALSE : $dn));
+    return FALSE;
+  }
 }
-
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

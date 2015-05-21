@@ -75,7 +75,7 @@ class DnsZonesAttribute extends DialogOrderedArrayAttribute
 {
   protected $dialogClass = 'DnsZoneDialog';
 
-  protected function getAttributeArrayValue($value)
+  protected function getAttributeArrayValue($key, $value)
   {
     return array(
       $value['zoneName'],
@@ -108,6 +108,7 @@ class DnsZonesAttribute extends DialogOrderedArrayAttribute
         'class' => 'center'
       )
     ).'&nbsp;';
+    $width += 15;
 
     return array ($img, $width);
   }
