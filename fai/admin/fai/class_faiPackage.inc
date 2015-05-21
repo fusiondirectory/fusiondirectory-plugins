@@ -132,7 +132,7 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
     return array_merge(array('add'.$id), parent::htmlIds());
   }
 
-  protected function getAttributeArrayValue($value)
+  protected function getAttributeArrayValue($key, $value)
   {
     if (!isset($this->buffer[$value])) {
       $this->genPkgs();

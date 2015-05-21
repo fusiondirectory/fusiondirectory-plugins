@@ -132,7 +132,7 @@ class dhcpSubnet extends dhcpPlugin
   {
     $message= array();
 
-    $cache = $this->parent->dhcpObjectCache;
+    $cache = $this->parent->getCache();
 
     /* All required fields are set? */
     if ($this->cn == ""){
