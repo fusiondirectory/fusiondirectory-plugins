@@ -173,7 +173,7 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
       /* If we renamed a section, we've to rename a couple of objects, too */
       foreach ($this->dhcpObjectCache as $key => $dsc) {
         if (preg_match("/,$olddn$/", $key)) {
-          $new_dn = preg_replace("/,$olddn$/", ",".$dn, $key);
+          $new_dn = preg_replace("/,$olddn$/", ','.$dn, $key);
           $dsc['MODIFIED'] = TRUE;
           $this->dhcpObjectCache[$new_dn] = $dsc;
           $this->dhcpObjectCache[$key]    = array();
@@ -218,14 +218,14 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
       }
       $sattrs['dn'] = $dn;
       foreach ($sattrs as $name => $values) {
-        if ($name == "dhcpOption") {
+        if ($name == 'dhcpOption') {
           foreach ($values as $key => $value) {
-            $value_name   = trim(preg_replace("/[^ ]*$/", "", $value));
-            $value_value  = trim(preg_replace("/^[^ ]*/", "", $value));
-            if (in_array($value_name, $this->quote_option)) {
-              $value_value = preg_replace("/^\"/", "", $value_value);
-              $value_value = preg_replace("/\"$/", "", $value_value);
-              $sattrs[$name][$key] = $value_name." ".$value_value;
+            $value_name   = trim(preg_replace('/[^ ]*$/', '', $value));
+            $value_value  = trim(preg_replace('/^[^ ]*/', '', $value));
+            if (in_array($value_name, serviceDHCP::$quote_option)) {
+              $value_value = preg_replace('/^"/', '', $value_value);
+              $value_value = preg_replace('/"$/', '', $value_value);
+              $sattrs[$name][$key] = $value_name.' '.$value_value;
             }
           }
         }
@@ -236,7 +236,7 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
     if ($dn === $this->subnet_expanded) {
       $ldap_subnet = $config->get_ldap_link();
       $ldap_subnet->cd($dn);
-      $ldap_subnet->ls("(objectClass=dhcpHost)");
+      $ldap_subnet->ls('(objectClass=dhcpHost)');
       while ($host_attrs = $ldap_subnet->fetch()) {
         $this->reload_readItemFromLDAP($ldap_subnet, $host_attrs, $final, $erase);
       }
@@ -392,7 +392,7 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
 
 class serviceDHCP extends simpleService
 {
-  var $objectclasses  = array('dhcpServer');
+  var $objectclasses = array('dhcpServer');
 
   var $types = array();
 
@@ -414,6 +414,8 @@ class serviceDHCP extends simpleService
     'dhcpTSigKey'       => array(),
     'dhcpDnsZone'       => array()
   );
+
+  static $quote_option = array('domain-name');
 
   static function getAttributesInfo ()
   {
@@ -558,8 +560,8 @@ class serviceDHCP extends simpleService
               foreach ($values as $key => $value) {
                 $option_name  = trim(preg_replace('/[^ ]*$/', '', $value));
                 $option_value = trim(preg_replace('/^[^ ]*/', '', $value));
-                if (in_array($option_name, $this->quote_option)) {
-                  $values[$key] = $option_name.'"'.$option_value.'"';
+                if (in_array($option_name, self::$quote_option)) {
+                  $values[$key] = $option_name.' "'.$option_value.'"';
                 }
               }
             }
