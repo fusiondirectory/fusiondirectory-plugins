@@ -386,7 +386,7 @@ class servDNSeditZoneEntries extends plugin
         $ldap->cd($dn);
         $ldap->add($attrs);
         if (is_object($this->parent->parent)) {
-          $this->parent->parent->handle_post_events("create", array("dn" => $dn));
+          $this->parent->parent->handle_post_events("add", array("dn" => $dn));
         }
       }
     }
