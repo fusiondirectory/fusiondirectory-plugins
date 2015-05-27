@@ -382,7 +382,7 @@ class servdnseditZone extends plugin
 
     foreach ($this->Records as $name => $values) {
       /* only lower-case is allowed in record entries ... */
-      if ($values['value'] != strtolower($values['value'])) {
+      if (($values['type'] != 'tXTRecord') && ($values['value'] != strtolower($values['value']))) {
         $message[] = msgPool::invalid($values['type'], "", "", _("Only lowercase allowed"));
       }
     }
