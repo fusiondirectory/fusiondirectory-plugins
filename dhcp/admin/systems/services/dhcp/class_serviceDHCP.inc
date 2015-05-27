@@ -150,8 +150,6 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
     $dn           = $this->value[$key][0];
     $editingValue = $this->dhcpObjectCache[$dn];
     $this->plugin->openDialog(new $this->dialogClass($this->plugin, $this, $this->objectType($dn), $dn, $editingValue));
-    $this->delPostValue($key);
-    unset($this->dhcpObjectCache[$dn]);
   }
 
   function delPostValue($key)
