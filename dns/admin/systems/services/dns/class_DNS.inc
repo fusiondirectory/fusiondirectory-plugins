@@ -281,7 +281,12 @@ class DNS
       $newRDn = "zoneName=".$zone['ReverseZone'].",".$base;
       $rObj   = $obj;
       $rObj['zoneName'] = $zone['ReverseZone'];
-      unset($rObj['tXTRecord']); /* Remove TXT records from reverse zone */
+      foreach (array_keys(self::$RecordTypes) as $recordType) {
+        if (!in_array($recordType, array('nSRecord', 'pTRRecord',))) {
+          /* Remove records from reverse zone except for NS and PTR */
+          unset($rObj[$recordType]);
+        }
+      }
       $add[$newRDn]     = $rObj;
 
       /* Remove currently managed zone from oldZones.
