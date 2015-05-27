@@ -55,7 +55,6 @@ class DNS
       $tmp = DNS::$RecordTypes;
       unset($tmp['cNAMERecord']);
       unset($tmp['pTRRecord']);
-      unset($tmp['tXTRecord']);
       return $tmp;
     } else {
       return DNS::$RecordTypes;
