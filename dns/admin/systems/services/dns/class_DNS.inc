@@ -83,12 +83,12 @@ class DNS
     $ldap->cd($config->current['BASE']);
 
     /* Not all records are allowed within a zone entry */
-    $SkipRecords = array("tXTRecord","cNAMERecord","pTRRecord");
+    $SkipRecords = array("cNAMERecord","pTRRecord");
 
     /* Special sOArecords */
     $sOAREcords  = array("0" => "sOAprimary", "1" => "sOAmail", "2" => "sOAserial", "3" => "sOArefresh", "4" => "sOAretry", "5" => "sOAexpire", "6" => "sOAttl");
 
-    /* Create tempalte for all fetched zone Data */
+    /* Create template for all fetched zone Data */
     $ZoneBase = array();
 
     $ZoneBase['exists']   = FALSE;
@@ -139,11 +139,10 @@ class DNS
             $Zones[$zoneName][$name] = "";
           }
         }
-      } // ENDE SOA Record
+      } // END SOA Record
 
       /* Get record attributes */
       foreach (DNS::$RecordTypes as $name => $value) {
-
         /* Skip some attributes */
         if (in_array($name, $SkipRecords)) {
           continue;
