@@ -19,4 +19,7 @@
 */
 
 simpleManagement::mainInc('faiManagement');
+if ($cleanup) {
+  session::global_un_set('CurrentMainBase');
+}
 ?>
