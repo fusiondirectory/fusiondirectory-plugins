@@ -21,7 +21,7 @@
 
 class faiSimplePluginClass extends simplePlugin
 {
-  protected $base;
+  public $base;
 
   function __construct (&$config, $dn = NULL, $object = NULL)
   {
