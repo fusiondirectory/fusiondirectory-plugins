@@ -18,6 +18,37 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
+class CertificateFileAttribute extends FileAttribute
+{
+  /* Return the value as an array of values to be displayed in a table columns */
+  function getArrayValue ()
+  {
+    $value = $this->getValue();
+    $infos = openssl_x509_parse($value, TRUE);
+    if (empty($infos)) {
+      return array(_('Unknown format'), $this->displayValue($this->getValue()), '');
+    }
+    $values = array('','','');
+    if (isset($infos['subject']['CN'])) {
+      $values[0] = $infos['subject']['CN'];
+    }
+    if (isset($infos['issuer']['CN'])) {
+      $values[1] = $infos['issuer']['CN'];
+    }
+    if (isset($infos['validFrom_time_t'])) {
+      $values[2] = date('Y-m-d', $infos['validFrom_time_t']).' -> ';
+    } else {
+      $values[2] = '? -> ';
+    }
+    if (isset($infos['validTo_time_t'])) {
+      $values[2] .= date('Y-m-d', $infos['validTo_time_t']);
+    } else {
+      $values[2] .= '?';
+    }
+    return $values;
+  }
+}
+
 class userCertificates extends simplePlugin
 {
   var $displayHeader = TRUE;
@@ -44,7 +75,7 @@ class userCertificates extends simplePlugin
         'name'  => _('Certificates'),
         'attrs' => array(
           new OrderedArrayAttribute(
-            new FileAttribute (
+            new CertificateFileAttribute (
               '', _('Certificate content'),
               'userCertificate;binary', TRUE
             ),
