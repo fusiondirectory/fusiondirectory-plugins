@@ -3,99 +3,94 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Pavel Borecki <pavel.borecki@gmail.com>, 2012
-# Pavel Borecki <pavel.borecki@gmail.com>, 2012,2015
-# Pavel Borecki <pavel.borecki@gmail.com>, 2012
+# Pavel Borecki <pavel.borecki@gmail.com>, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-108\n"
+"Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2015-03-31 11:49+0200\n"
-"PO-Revision-Date: 2015-03-31 10:53+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/FusionDirectory-108/language/cs_CZ/)\n"
+"POT-Creation-Date: 2014-12-15 17:47+0100\n"
+"PO-Revision-Date: 2015-04-07 17:47+0000\n"
+"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
+"Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/FusionDirectory-109/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: cs_CZ\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
-#: personal/pureftpd/class_pureftpdAccount.inc:33
+#: personal/pureftpd/class_pureftpdAccount.inc:34
 msgid "Ftp"
 msgstr "FTP"
 
-#: personal/pureftpd/class_pureftpdAccount.inc:34
+#: personal/pureftpd/class_pureftpdAccount.inc:35
 msgid "Pure ftp account"
-msgstr "účet pro PureFTP"
+msgstr "Účet v PureFTP"
 
-#: personal/pureftpd/class_pureftpdAccount.inc:34
+#: personal/pureftpd/class_pureftpdAccount.inc:35
 msgid "Connectivity addon"
-msgstr "modul „ostatní síťové služby“"
+msgstr "doplněk „ostatní síťové služby“"
 
-#: personal/pureftpd/class_pureftpdAccount.inc:49
+#: personal/pureftpd/class_pureftpdAccount.inc:50
 msgid "Bandwidth"
-msgstr "rychlost"
+msgstr "Rychlost"
 
-#: personal/pureftpd/class_pureftpdAccount.inc:52
 #: personal/pureftpd/class_pureftpdAccount.inc:53
+#: personal/pureftpd/class_pureftpdAccount.inc:54
 msgid "Upload bandwidth"
-msgstr "rychlost nahrávání"
+msgstr "Rychlost nahrávání"
 
-#: personal/pureftpd/class_pureftpdAccount.inc:52
-#: personal/pureftpd/class_pureftpdAccount.inc:61
+#: personal/pureftpd/class_pureftpdAccount.inc:53
+#: personal/pureftpd/class_pureftpdAccount.inc:62
 msgid " (kb/sec)"
 msgstr "(kb/s)"
 
-#: personal/pureftpd/class_pureftpdAccount.inc:61
-msgid "Download bandwidth"
-msgstr "rychlost stahování"
-
 #: personal/pureftpd/class_pureftpdAccount.inc:62
+msgid "Download bandwidth"
+msgstr "Rychlost stahování"
+
+#: personal/pureftpd/class_pureftpdAccount.inc:63
 msgid "Download bandwidth in kb/sec"
 msgstr "Rychlost stahování v kb/s"
 
-#: personal/pureftpd/class_pureftpdAccount.inc:72
+#: personal/pureftpd/class_pureftpdAccount.inc:73
 msgid "Ratio"
-msgstr "poměr"
+msgstr "Poměr"
 
-#: personal/pureftpd/class_pureftpdAccount.inc:75
 #: personal/pureftpd/class_pureftpdAccount.inc:76
+#: personal/pureftpd/class_pureftpdAccount.inc:77
 msgid "Uploaded files"
 msgstr "Nahrané soubory"
 
-#: personal/pureftpd/class_pureftpdAccount.inc:84
 #: personal/pureftpd/class_pureftpdAccount.inc:85
+#: personal/pureftpd/class_pureftpdAccount.inc:86
 msgid "Downloaded files"
 msgstr "Stažené soubory"
 
-#: personal/pureftpd/class_pureftpdAccount.inc:98
-msgid "Files"
-msgstr "souborů"
-
 #: personal/pureftpd/class_pureftpdAccount.inc:99
+msgid "Files"
+msgstr "Soubory"
+
+#: personal/pureftpd/class_pureftpdAccount.inc:100
 msgid "Quota files"
 msgstr "omezení počtu souborů"
 
-#: personal/pureftpd/class_pureftpdAccount.inc:107
+#: personal/pureftpd/class_pureftpdAccount.inc:108
 msgid "Size"
-msgstr "objem dat"
+msgstr "Velikost"
 
-#: personal/pureftpd/class_pureftpdAccount.inc:107
+#: personal/pureftpd/class_pureftpdAccount.inc:108
 msgid " (MB)"
 msgstr ""
 
-#: personal/pureftpd/class_pureftpdAccount.inc:108
+#: personal/pureftpd/class_pureftpdAccount.inc:109
 msgid "Files size"
 msgstr "Velikost souborů"
 
-#: personal/pureftpd/class_pureftpdAccount.inc:118
+#: personal/pureftpd/class_pureftpdAccount.inc:119
 msgid "Miscellaneous"
-msgstr "různé"
+msgstr "Různé"
 
-#: personal/pureftpd/class_pureftpdAccount.inc:121
-msgid "Enable FTP access"
-msgstr ""
-
-#: personal/pureftpd/class_pureftpdAccount.inc:121
-msgid "Enable or disable FTP access"
-msgstr ""
+#: personal/pureftpd/class_pureftpdAccount.inc:122
+#: personal/pureftpd/class_pureftpdAccount.inc:123
+msgid "Temporary disable FTP access"
+msgstr "dočasně zakázat přístup na FTP"

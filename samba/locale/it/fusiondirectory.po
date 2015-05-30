@@ -3,24 +3,96 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Alessandro Amici <a.amici@bopen.it>, 2005
-# poterealpopolo <giuliano@opensides.be>, 2011
-# poterealpopolo <giuliano@opensides.be>, 2013
-# poterealpopolo <giuliano@opensides.be>, 2012
-# poterealpopolo <giuliano@opensides.be>, 2011-2013
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-108\n"
+"Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2015-03-17 18:47+0100\n"
-"PO-Revision-Date: 2015-02-25 16:12+0000\n"
+"POT-Creation-Date: 2014-12-15 17:47+0100\n"
+"PO-Revision-Date: 2015-03-31 11:41+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Italian (http://www.transifex.com/projects/p/FusionDirectory-108/language/it/)\n"
+"Language-Team: Italian (http://www.transifex.com/projects/p/FusionDirectory-109/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: admin/groups/samba/class_sambaGroup.inc:29
+#: personal/samba/class_sambaAccount.inc:135
+#: config/samba/class_sambaPluginConfig.inc:28
+msgid "Samba"
+msgstr "Samba"
+
+#: admin/groups/samba/class_sambaGroup.inc:30
+msgid "Samba group settings"
+msgstr ""
+
+#: admin/groups/samba/class_sambaGroup.inc:42
+#: admin/groups/samba/class_sambaGroup.inc:45
+#: admin/systems/samba/class_winstationGeneric.inc:88
+#: personal/samba/class_sambaAccount.inc:176
+msgid "Domain"
+msgstr "Dominio"
+
+#: admin/groups/samba/class_sambaGroup.inc:45
+msgid "Samba domain"
+msgstr ""
+
+#: admin/groups/samba/class_sambaGroup.inc:49
+msgid "Samba informations"
+msgstr ""
+
+#: admin/groups/samba/class_sambaGroup.inc:56
+msgid "Group type"
+msgstr ""
+
+#: admin/groups/samba/class_sambaGroup.inc:56
+msgid "Samba group type"
+msgstr "Tipo di gruppo Samba"
+
+#: admin/groups/samba/class_sambaGroup.inc:60
+#: admin/groups/samba/class_sambaGroup.inc:119
+msgid "Samba group"
+msgstr "Gruppo Samba"
+
+#: admin/groups/samba/class_sambaGroup.inc:60
+#: admin/groups/samba/class_sambaGroup.inc:119
+msgid "Domain admins"
+msgstr "Amministratori di Dominio"
+
+#: admin/groups/samba/class_sambaGroup.inc:60
+#: admin/groups/samba/class_sambaGroup.inc:119
+msgid "Domain users"
+msgstr "Utenti di Dominio"
+
+#: admin/groups/samba/class_sambaGroup.inc:60
+#: admin/groups/samba/class_sambaGroup.inc:119
+msgid "Domain guests"
+msgstr "Ospiti di Dominio"
+
+#: admin/groups/samba/class_sambaGroup.inc:105
+msgid "Configuration error"
+msgstr "Errore di configurazione"
+
+#: admin/groups/samba/class_sambaGroup.inc:105
+msgid "Cannot find group SID in your configuration!"
+msgstr "Impossibile trovare il SID del gruppo nella tua configurazione !"
+
+#: admin/groups/samba/class_sambaGroup.inc:119
+#, php-format
+msgid "Special group (%d)"
+msgstr "Gruppo speciale (%d)"
+
+#: admin/groups/samba/class_sambaGroup.inc:133
+#: personal/samba/class_sambaAccount.inc:478
+#: personal/samba/class_sambaAccount.inc:500
+msgid "Warning"
+msgstr "Avvertimento"
+
+#: admin/groups/samba/class_sambaGroup.inc:133
+#: personal/samba/class_sambaAccount.inc:478
+msgid "Undefined Samba SID detected. Please fix this problem manually!"
+msgstr "É stato trovato un SID Samba che non è definito. Correggi manualmente !"
 
 #: admin/samba/class_sambaDomainManagement.inc:35
 msgid "Samba domains"
@@ -195,7 +267,7 @@ msgstr "Il nome del computer Windows"
 
 #: admin/systems/samba/class_winstationGeneric.inc:77
 msgid "Name"
-msgstr "Cognome"
+msgstr "Nome"
 
 #: admin/systems/samba/class_winstationGeneric.inc:84
 msgid "Description"
@@ -204,11 +276,6 @@ msgstr "Descrizione"
 #: admin/systems/samba/class_winstationGeneric.inc:84
 msgid "A short description of the winstation"
 msgstr "Una breve descrizione del computer Windows"
-
-#: admin/systems/samba/class_winstationGeneric.inc:88
-#: personal/samba/class_sambaAccount.inc:176
-msgid "Domain"
-msgstr "Dominio"
 
 #: admin/systems/samba/class_winstationGeneric.inc:88
 #: personal/samba/class_sambaAccount.inc:176
@@ -239,11 +306,6 @@ msgstr "Impostazioni di rete"
 #: personal/samba/class_sambaAccount.inc:31
 msgid "Samba Munged Dial"
 msgstr "Samba Munged Dial"
-
-#: personal/samba/class_sambaAccount.inc:135
-#: config/samba/class_sambaPluginConfig.inc:28
-msgid "Samba"
-msgstr "Samba"
 
 #: personal/samba/class_sambaAccount.inc:136
 #: config/samba/class_sambaPluginConfig.inc:41
@@ -512,16 +574,7 @@ msgstr "Path della cartella personale dell'utente"
 msgid "The windows user manager allows eight clients at maximum!"
 msgstr "Il gestore degli utenti di Windows accetta solo 8 clienti alla volta!"
 
-#: personal/samba/class_sambaAccount.inc:478
 #: personal/samba/class_sambaAccount.inc:501
-msgid "Warning"
-msgstr "Avvertimento"
-
-#: personal/samba/class_sambaAccount.inc:478
-msgid "Undefined Samba SID detected. Please fix this problem manually!"
-msgstr "É stato trovato un SID Samba che non è definito. Correggi manualmente !"
-
-#: personal/samba/class_sambaAccount.inc:502
 msgid ""
 "Cannot convert primary group to samba group: group cannot be identified!"
 msgstr "Impossibile convertire il gruppo primario in un gruppo primario di samba : il gruppo non puó essere identificato !"
@@ -583,11 +636,3 @@ msgstr ""
 #: config/samba/class_sambaPluginConfig.inc:72
 msgid "Needed to be compliant with Windows <= 98 or Samba < 3.2"
 msgstr ""
-
-#: personal/samba/sambaLogonHours.tpl.c:2
-msgid "Specify the hours this user is allowed to log in"
-msgstr "Specifica gli orari in cui l'utente è autorizzato a connettersi"
-
-#: personal/samba/sambaLogonHours.tpl.c:5
-msgid "Hour"
-msgstr "Ora"

@@ -3,21 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# gallak <antoine.gallavardin@free.fr>, 2013
-# MCMic, 2014
-# fusiondirectory <contact@fusiondirectory.org>, 2013
-# fusiondirectory <contact@fusiondirectory.org>, 2012-2013
-# fusiondirectory <contact@fusiondirectory.org>, 2012
-# gallak <antoine.gallavardin@free.fr>, 2013
-# MCMic, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-108\n"
+"Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2015-03-19 21:45+0100\n"
+"POT-Creation-Date: 2014-12-15 17:47+0100\n"
 "PO-Revision-Date: 2014-12-16 11:31+0000\n"
-"Last-Translator: MCMic\n"
-"Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory-108/language/fr/)\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory-109/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -31,7 +24,7 @@ msgstr "Cyrus (IMAP/POP3)"
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:34
 msgid "Services"
-msgstr "Services"
+msgstr "Service"
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:57
 msgid "Cyrus settings"
@@ -44,7 +37,7 @@ msgstr "URL de connexion au serveur Cyrus"
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:63
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:88
 msgid "Hostname"
-msgstr "Nom d’hôte"
+msgstr "Nom de l'hôte"
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:63
 msgid "Hostname of the Cyrus server"
@@ -74,7 +67,7 @@ msgstr "Valider les certificats"
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:66
 msgid "Weither or not to validate server certificate on connexion"
-msgstr "S’il faut ou non valider le certificat du serveur à la connexion"
+msgstr "Valider ou ne pas valider le certificat du serveur à la connexion"
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:72
 msgid "Admin user"
@@ -82,7 +75,7 @@ msgstr "Administrateur"
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:72
 msgid "Imap server admin user"
-msgstr "Administrateur du serveur IMAP"
+msgstr "Administrateur du serveur Imap"
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:76
 msgid "Password"
@@ -90,7 +83,7 @@ msgstr "Mot de passe"
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:76
 msgid "Admin user password"
-msgstr "Mot de passe de l’administrateur"
+msgstr "Mot de passe utilisateur Administrateur"
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:82
 msgid "Sieve settings"
@@ -98,11 +91,11 @@ msgstr "Paramètres Sieve"
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:85
 msgid "Sieve connect URL for Cyrus server"
-msgstr "URL de connexion Sieve pour le serveur Cyrus"
+msgstr "URL de connexion pour le serveur Sieve de Cyrus"
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:88
 msgid "Hostname of the Cyrus sieve server"
-msgstr "Nom d'hôte du serveur Sieve Cyrus"
+msgstr "Nom d'hôte du serveur sieve Cyrus"
 
 #: admin/systems/services/cyrus/class_serviceCyrus.inc:89
 msgid "Port number on which Cyrus sieve server should be contacted"
@@ -114,11 +107,11 @@ msgstr "Options pour contacter le serveur Sieve de Cyrus"
 
 #: personal/mail/mail-methods/class_mail-methods-cyrus.inc:58
 msgid "There are no IMAP compatible mail servers defined!"
-msgstr "Il n'y a aucun serveur IMAP compatible défini !"
+msgstr "Il n'y a aucun serveur IMAP compatibles définis !"
 
 #: personal/mail/mail-methods/class_mail-methods-cyrus.inc:63
 msgid "Mail server for this account is invalid!"
-msgstr "Le serveur de messagerie pour ce compte est invalide !"
+msgstr "Le serveur de messagerie pour ce compte est non valide !"
 
 #: personal/mail/mail-methods/class_mail-methods-cyrus.inc:251
 msgid "IMAP error"
@@ -127,7 +120,7 @@ msgstr "Erreur IMAP"
 #: personal/mail/mail-methods/class_mail-methods-cyrus.inc:251
 #, php-format
 msgid "Cannot modify IMAP mailbox quota: %s"
-msgstr "Impossible de modifier le quota de la boite IMAP : %s"
+msgstr "Impossible de modifier le quota de la boite de messagerie IMAP. Le serveur répond : %s"
 
 #: personal/mail/mail-methods/class_mail-methods-cyrus.inc:326
 msgid "Mail info"
@@ -138,17 +131,17 @@ msgstr "Informations de messagerie"
 msgid ""
 "LDAP entry has been removed but cyrus mailbox (%s) is kept.\n"
 "Please delete it manually!"
-msgstr "L'entrée LDAP à été supprimée mais le compte de messagerie (%s) est toujours présent dans cyrus.\nVeuillez le supprimer manuellement !"
+msgstr "L'entrée LDAP à été supprimée mais le compte de messagerie (%s) est toujours présent dans cyrus.\nVeuillez l'effacer manuellement !"
 
 #: personal/mail/mail-methods/class_mail-methods-cyrus.inc:419
 #: personal/mail/mail-methods/class_mail-methods-cyrus.inc:458
 msgid "The module imap_getacl is not implemented!"
-msgstr "Le module imap_getacl n'est pas implémenté !"
+msgstr "Le module imap_getacl n'est pas implémenté !"
 
 #: personal/mail/mail-methods/class_mail-methods-cyrus.inc:535
 #, php-format
 msgid "Cannot retrieve SIEVE script: %s"
-msgstr "Impossible de récupérer le script SIEVE : %s"
+msgstr "Impossible de récupérer le script SIEVE : %s"
 
 #: personal/mail/mail-methods/class_mail-methods-cyrus.inc:615
 #, php-format
@@ -158,4 +151,4 @@ msgstr "Impossible de stocker le script SIEVE : %s"
 #: personal/mail/mail-methods/class_mail-methods-cyrus.inc:622
 #, php-format
 msgid "Cannot activate SIEVE script: %s"
-msgstr "Impossible d'activer le script SIEVE : %s"
+msgstr "Impossible d'activer le script SIEVE : %s"

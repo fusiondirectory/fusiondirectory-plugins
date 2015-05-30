@@ -3,17 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Pavel Borecki <pavel.borecki@gmail.com>, 2012
-# Pavel Borecki <pavel.borecki@gmail.com>, 2012
-# Pavel Borecki <pavel.borecki@gmail.com>, 2012
+# Pavel Borecki <pavel.borecki@gmail.com>, 2014-2015
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-108\n"
+"Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2015-03-19 21:45+0100\n"
-"PO-Revision-Date: 2015-02-25 16:12+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/FusionDirectory-108/language/cs_CZ/)\n"
+"POT-Creation-Date: 2014-12-15 17:47+0100\n"
+"PO-Revision-Date: 2015-04-07 14:22+0000\n"
+"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
+"Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/FusionDirectory-109/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -22,15 +20,15 @@ msgstr ""
 
 #: admin/blocklists/class_blocklistManagement.inc:28
 msgid "Fax Blocklists"
-msgstr ""
+msgstr "Seznamy blokovaných faxů"
 
 #: admin/blocklists/class_blocklistManagement.inc:29
 msgid "Fax Blocklists management"
-msgstr ""
+msgstr "Správa seznamů blokovaných faxů"
 
 #: admin/blocklists/class_blocklistGeneric.inc:32
 msgid "Type"
-msgstr "typ"
+msgstr "Typ"
 
 #: admin/blocklists/class_blocklistGeneric.inc:32
 msgid "Type of this list"
@@ -46,7 +44,7 @@ msgstr "přijmout"
 
 #: admin/blocklists/class_blocklistGeneric.inc:39
 msgid "Blocked numbers"
-msgstr "blokovaná čísla"
+msgstr "Blokovaná čísla"
 
 #: admin/blocklists/class_blocklistGeneric.inc:40
 msgid "Numbers can also contain wild cards."
@@ -55,11 +53,11 @@ msgstr "Čísla mohou obsahovat též zástupné znaky."
 #: admin/blocklists/class_blocklistGeneric.inc:137
 #: admin/blocklists/class_blocklistGeneric.inc:141
 msgid "Fax blocklists"
-msgstr "seznam blokovaných faxů"
+msgstr "Seznam blokovaných faxů"
 
 #: admin/blocklists/class_blocklistGeneric.inc:138
 msgid "The part of the fax plugin managing blacklist"
-msgstr ""
+msgstr "Část faxového zásuvného modulu, která spravuje seznam blokovaných"
 
 #: admin/blocklists/class_blocklistGeneric.inc:159
 msgid "Informations"
@@ -67,15 +65,15 @@ msgstr "Informace"
 
 #: admin/blocklists/class_blocklistGeneric.inc:162
 msgid "List name"
-msgstr "název seznamu"
+msgstr "Název seznamu"
 
 #: admin/blocklists/class_blocklistGeneric.inc:162
 msgid "The name of the list"
-msgstr ""
+msgstr "Název seznamu"
 
 #: admin/blocklists/class_blocklistGeneric.inc:163
 msgid "Description"
-msgstr "popis"
+msgstr "Popis"
 
 #: admin/blocklists/class_blocklistGeneric.inc:163
 msgid "A description for the list"
@@ -83,16 +81,16 @@ msgstr "Popis seznamu"
 
 #: admin/blocklists/class_blocklistGeneric.inc:165
 msgid "List of blocked number"
-msgstr ""
+msgstr "Seznam blokovaných čísel"
 
 #: admin/systems/services/fax/class_serviceFax.inc:31
 #: admin/systems/services/fax/class_serviceFax.inc:32
 msgid "FAX service"
-msgstr ""
+msgstr "Faxová služba"
 
 #: admin/systems/services/fax/class_serviceFax.inc:32
 msgid "Services"
-msgstr "služby"
+msgstr "Služby"
 
 #: admin/systems/services/fax/class_serviceFax.inc:46
 msgid "FAX database information"
@@ -104,7 +102,7 @@ msgstr "uživatel pro přihlášení do databáze faxů"
 
 #: admin/systems/services/fax/class_serviceFax.inc:56
 msgid "Password"
-msgstr "heslo"
+msgstr "Heslo"
 
 #: addons/faxreports/class_faxreport.inc:130
 #: addons/faxreports/class_faxreport.inc:139
@@ -113,7 +111,7 @@ msgstr "heslo"
 #: personal/faxaccount/class_gofaxAccount.inc:272 html/getfax.php:96
 #: html/getfax.php:101 html/getfax.php:106
 msgid "Error"
-msgstr "chyba"
+msgstr "Chyba"
 
 #: addons/faxreports/class_faxreport.inc:130
 msgid "No fax server found!"
@@ -133,7 +131,7 @@ msgstr "Nedaří se dotazovat do databáze %s!"
 #: addons/faxreports/class_faxreport.inc:168
 #: addons/faxreports/class_faxreport.inc:178
 msgid "Permission error"
-msgstr "chyba oprávnění"
+msgstr "Chyba oprávnění"
 
 #: addons/faxreports/class_faxreport.inc:168
 #: addons/faxreports/class_faxreport.inc:178
@@ -151,79 +149,77 @@ msgstr "nedostačující oprávnění pro zobrazení této vlastnosti"
 
 #: addons/faxreports/class_faxreport.inc:319
 msgid "Insufficient permissions"
-msgstr "nedostačující oprávnění"
+msgstr "Nedostačující oprávnění"
 
 #: addons/faxreports/class_faxreport.inc:482
 #: addons/faxreports/class_faxreport.inc:483
 #: addons/faxreports/class_faxreport.inc:488
 msgid "Fax reports"
-msgstr "statistiky faxu"
+msgstr "Statistiky faxu"
 
 #: addons/faxreports/class_faxreport.inc:483
 msgid "All entries are readonly"
-msgstr "všechny položky jsou přístupné pouze pro čtení"
+msgstr "Veškeré položky jsou přístupné pouze pro čtení"
 
 #: addons/faxreports/class_faxreport.inc:492
 msgid "Detailed view"
-msgstr "podrobnosti"
+msgstr "Zobrazit podrobnosti"
 
 #: addons/faxreports/class_faxreport.inc:493
 msgid "Fax ID"
-msgstr "ID faxu"
+msgstr "Identifikátor faxu"
 
 #: addons/faxreports/class_faxreport.inc:494
-#: addons/faxreports/contents.tpl.c:29
 msgid "Date"
-msgstr "datum"
+msgstr "Datum"
 
 #: addons/faxreports/class_faxreport.inc:494
 msgid "Time"
-msgstr "čas"
+msgstr "Čas"
 
 #: addons/faxreports/class_faxreport.inc:495
-#: addons/faxreports/contents.tpl.c:32 addons/faxreports/detail.tpl.c:29
 msgid "Status"
-msgstr "stav"
+msgstr "Stav"
 
-#: addons/faxreports/class_faxreport.inc:496 addons/faxreports/detail.tpl.c:20
+#: addons/faxreports/class_faxreport.inc:496
 msgid "Sender ID"
-msgstr "ID odesilatele"
+msgstr "Identifikátor odesilatele"
 
-#: addons/faxreports/class_faxreport.inc:497 addons/faxreports/detail.tpl.c:17
+#: addons/faxreports/class_faxreport.inc:497
 msgid "Sender MSN"
 msgstr "MSN odesilatele"
 
-#: addons/faxreports/class_faxreport.inc:498 addons/faxreports/detail.tpl.c:26
+#: addons/faxreports/class_faxreport.inc:498
 msgid "Receiver ID"
-msgstr "ID příjemce"
+msgstr "Identifikátor příjemce"
 
-#: addons/faxreports/class_faxreport.inc:499 addons/faxreports/detail.tpl.c:23
+#: addons/faxreports/class_faxreport.inc:499
 msgid "Receiver MSN"
 msgstr "MSN příjemce"
 
 #: addons/faxreports/class_faxreport.inc:500
 msgid "Number of pages"
-msgstr "počet stran"
+msgstr "Počet stran"
 
 #: addons/faxreports/class_faxreport.inc:501
 msgid "Status Message"
-msgstr "stavová zpráva"
+msgstr "Stavová zpráva"
 
-#: addons/faxreports/class_faxreport.inc:502 addons/faxreports/detail.tpl.c:35
+#: addons/faxreports/class_faxreport.inc:502
 msgid "Transfer time"
-msgstr "délka trvání přenosu"
+msgstr "Čas přenosu"
 
 #: addons/faxreports/main.inc:44
 msgid "FAX reports"
-msgstr "statistiky faxů"
+msgstr "Statistiky faxů"
 
 #: personal/faxaccount/class_gofaxAccount.inc:26
 msgid "FAX"
-msgstr "fax"
+msgstr "Fax"
 
 #: personal/faxaccount/class_gofaxAccount.inc:27
 msgid "This does something"
-msgstr "tohle něco dělá"
+msgstr "Tohle něco dělá"
 
 #: personal/faxaccount/class_gofaxAccount.inc:180
 #: personal/faxaccount/class_gofaxAccount.inc:190
@@ -233,7 +229,7 @@ msgstr "GOfax"
 
 #: personal/faxaccount/class_gofaxAccount.inc:189
 msgid "Remove fax account"
-msgstr "odebrat faxový účet"
+msgstr "Odstranit faxový účet"
 
 #: personal/faxaccount/class_gofaxAccount.inc:192
 msgid "Create fax account"
@@ -241,7 +237,7 @@ msgstr "vytvořit faxový účet"
 
 #: personal/faxaccount/class_gofaxAccount.inc:272
 msgid "Phone number"
-msgstr "telefonní číslo"
+msgstr "Telefonní číslo"
 
 #: personal/faxaccount/class_gofaxAccount.inc:421
 #: personal/faxaccount/class_gofaxAccount.inc:503
@@ -251,13 +247,13 @@ msgstr "zpět"
 #: personal/faxaccount/class_gofaxAccount.inc:611
 #: personal/faxaccount/class_gofaxAccount.inc:739
 msgid "LDAP error"
-msgstr "chyba LDAPu"
+msgstr "Chyba LDAP"
 
 #: personal/faxaccount/class_gofaxAccount.inc:627
 #: personal/faxaccount/class_gofaxAccount.inc:631
 #: personal/faxaccount/class_gofaxAccount.inc:805
 msgid "Fax number"
-msgstr "číslo faxu"
+msgstr "Číslo faxu"
 
 #: personal/faxaccount/class_gofaxAccount.inc:638
 msgid "Mail delivery is requested without target address!"
@@ -277,8 +273,7 @@ msgstr "Je požadován tisk, ale není nastavena cílová tiskárna!"
 
 #: personal/faxaccount/class_gofaxAccount.inc:796
 #: personal/faxaccount/faxNumberSelect/faxNumberSelect-list.xml:56
-#: config/fax/class_faxConfig.inc:42 personal/faxaccount/generic.tpl.c:5
-#: personal/faxaccount/paste_generic.tpl.c:5
+#: config/fax/class_faxConfig.inc:42
 msgid "Fax"
 msgstr "fax"
 
@@ -287,36 +282,32 @@ msgid "Fax account settings"
 msgstr "nastavení faxového účtu"
 
 #: personal/faxaccount/class_gofaxAccount.inc:806
-#: personal/faxaccount/generic.tpl.c:11
 msgid "Language"
-msgstr "jazyk"
+msgstr "Jazyk"
 
 #: personal/faxaccount/class_gofaxAccount.inc:807
-#: personal/faxaccount/generic.tpl.c:17
 msgid "Delivery format"
-msgstr "doručovaný formát"
+msgstr "Formát doručení"
 
 #: personal/faxaccount/class_gofaxAccount.inc:808
 msgid "Alternate fax number"
-msgstr "alternativní číslo faxu"
+msgstr "Alternativní faxové číslo"
 
 #: personal/faxaccount/class_gofaxAccount.inc:809
 msgid "Enable/Disable fax"
-msgstr "povolit/zakázat fax"
+msgstr "Vypnout/Zapnout fax"
 
 #: personal/faxaccount/class_gofaxAccount.inc:810
-#: personal/faxaccount/generic.tpl.c:32
 msgid "Deliver fax as mail"
-msgstr "doručovat fax jako e-mail"
+msgstr "Doručovat fax v podobě e-mailu"
 
 #: personal/faxaccount/class_gofaxAccount.inc:811
-#: personal/faxaccount/generic.tpl.c:35
 msgid "Deliver fax to printer"
-msgstr "doručovat fax na tiskárnu"
+msgstr "Doručovat fax na tiskárnu"
 
 #: personal/faxaccount/class_gofaxAccount.inc:812
 msgid "Receive blocklist"
-msgstr "získat seznamy blokovaných"
+msgstr "Získat seznamy blokovaných"
 
 #: personal/faxaccount/class_gofaxAccount.inc:813
 msgid "Send blocklist"
@@ -324,28 +315,27 @@ msgstr "poslat seznam blokovaných"
 
 #: personal/faxaccount/faxNumberSelect/faxNumberSelect-list.xml:10
 msgid "Please select the desired entries"
-msgstr "vyberte prosím požadované položky"
+msgstr "Vyberte požadované položky"
 
 #: personal/faxaccount/faxNumberSelect/faxNumberSelect-list.xml:14
-#: addons/faxreports/contents.tpl.c:26 addons/faxreports/detail.tpl.c:11
 msgid "User"
-msgstr "uživatel"
+msgstr "Uživatel"
 
 #: personal/faxaccount/faxNumberSelect/faxNumberSelect-list.xml:40
 msgid "Given name"
-msgstr "jméno"
+msgstr "Jméno"
 
 #: personal/faxaccount/faxNumberSelect/faxNumberSelect-list.xml:48
 msgid "Surname"
-msgstr "příjmení"
+msgstr "Příjmení"
 
 #: personal/faxaccount/main.inc:126
 msgid "Click the 'Edit' button below to change informations in this dialog"
-msgstr "pro změnu informací v tomto dialogu klikněte na 'upravit'"
+msgstr "Pro změnu informací v tomto dialogu klikněte na Upravit"
 
 #: personal/faxaccount/main.inc:135
 msgid "FAX settings"
-msgstr "nastavení faxu"
+msgstr "Nastavení faxu"
 
 #: html/getfax.php:59
 msgid "Could not connect to database server!"
@@ -357,7 +347,7 @@ msgstr "Dotaz do databáze se nezdařil!"
 
 #: html/getfax.php:96
 msgid "cannot resize fax image"
-msgstr ""
+msgstr "Nelze změnit velikost faxového obrázku"
 
 #: html/getfax.php:101
 msgid "cannot convert fax image to png"
@@ -365,7 +355,7 @@ msgstr "faxový obrázek nelze převést na png"
 
 #: html/getfax.php:106
 msgid "Reading fax image image failed"
-msgstr "Nelze načíst obrázek faxu"
+msgstr "Načtení faxového obrázku se nezdařilo"
 
 #: config/fax/class_faxConfig.inc:28
 msgid "Fax configuration"
@@ -373,190 +363,12 @@ msgstr "Nastavení faxu"
 
 #: config/fax/class_faxConfig.inc:29
 msgid "FusionDirectory fax plugin configuration"
-msgstr ""
+msgstr "Nastavení zásuvného modulu fax pro FusionDirectory"
 
 #: config/fax/class_faxConfig.inc:45
 msgid "Fax RDN"
-msgstr ""
+msgstr "Relativní rozlišený název faxu"
 
 #: config/fax/class_faxConfig.inc:45
 msgid "Branch in which fax blocklists will be stored"
-msgstr ""
-
-#: addons/faxreports/contents.tpl.c:2
-#: personal/faxaccount/faxNumberSelect/faxNumberSelect-filter.tpl.c:2
-msgid "Filter"
-msgstr "filtr"
-
-#: addons/faxreports/contents.tpl.c:5
-msgid "Search for"
-msgstr "hledat"
-
-#: addons/faxreports/contents.tpl.c:8
-msgid "Enter user name to search for"
-msgstr "zadejte jméno uživatele, který má být vyhledán"
-
-#: addons/faxreports/contents.tpl.c:11 addons/faxreports/contents.tpl.c:20
-msgid "in"
-msgstr "v"
-
-#: addons/faxreports/contents.tpl.c:14
-msgid "Select subtree to base search on"
-msgstr "zvolte podstrom, ve kterém se bude hledat"
-
-#: addons/faxreports/contents.tpl.c:17
-msgid "during"
-msgstr "během"
-
-#: addons/faxreports/contents.tpl.c:23
-msgid "Search"
-msgstr "hledat"
-
-#: addons/faxreports/contents.tpl.c:35
-msgid "Sender"
-msgstr "odesilatel"
-
-#: addons/faxreports/contents.tpl.c:38
-msgid "Receiver"
-msgstr "příjemce"
-
-#: addons/faxreports/contents.tpl.c:41 addons/faxreports/detail.tpl.c:38
-msgid "# pages"
-msgstr "počet stran"
-
-#: addons/faxreports/contents.tpl.c:44
-msgid "Search returned no results..."
-msgstr "Nic nebylo nalezeno…"
-
-#: addons/faxreports/detail.tpl.c:2
-msgid "FAX preview - please wait"
-msgstr "Připravuji náhled faxu – čekejte prosím!"
-
-#: addons/faxreports/detail.tpl.c:5
-msgid "Click on fax to download"
-msgstr "pro stažení klikněte na fax"
-
-#: addons/faxreports/detail.tpl.c:8
-msgid "FAX ID"
-msgstr "ID faxu"
-
-#: addons/faxreports/detail.tpl.c:14
-msgid "Date / Time"
-msgstr "datum / čas"
-
-#: addons/faxreports/detail.tpl.c:32
-msgid "Status message"
-msgstr "stavová zpráva"
-
-#: personal/faxaccount/generic.tpl.c:2
-#: personal/faxaccount/paste_generic.tpl.c:2
-msgid "Generic"
-msgstr "obecné"
-
-#: personal/faxaccount/generic.tpl.c:8
-msgid "Fax number for fax to trigger on"
-msgstr ""
-
-#: personal/faxaccount/generic.tpl.c:14
-msgid "Specify the fax communication language for fax to mail gateway"
-msgstr ""
-
-#: personal/faxaccount/generic.tpl.c:20
-msgid "Specify delivery format for fax to mail gateway"
-msgstr "zvolte doručovaný formát faxu pro e-mailovou bránu"
-
-#: personal/faxaccount/generic.tpl.c:23
-msgid "Delivery methods"
-msgstr "způsoby doručení"
-
-#: personal/faxaccount/generic.tpl.c:26
-msgid "Temporary disable fax usage"
-msgstr "dočasné zakázání používání faxu"
-
-#: personal/faxaccount/generic.tpl.c:29
-msgid "Deliver fax as mail to"
-msgstr "doručit fax na tento e-mail"
-
-#: personal/faxaccount/generic.tpl.c:38
-msgid "Alternate fax numbers"
-msgstr "alternativní faxová čísla"
-
-#: personal/faxaccount/generic.tpl.c:41
-msgid "Add local"
-msgstr "přidat místní"
-
-#: personal/faxaccount/generic.tpl.c:44
-msgid "Blocklists"
-msgstr "seznamy blokovaných"
-
-#: personal/faxaccount/generic.tpl.c:47
-msgid "Blocklists for incoming fax"
-msgstr "seznamy blokovaných pro příchozí faxy"
-
-#: personal/faxaccount/generic.tpl.c:50 personal/faxaccount/generic.tpl.c:56
-msgid "Edit"
-msgstr "upravit"
-
-#: personal/faxaccount/generic.tpl.c:53
-msgid "Blocklists for outgoing fax"
-msgstr "seznamy blokovaných pro odchozí faxy"
-
-#: personal/faxaccount/lists.tpl.c:2
-msgid "Blocked numbers/lists"
-msgstr "blokovaná čísla/seznamy"
-
-#: personal/faxaccount/lists.tpl.c:5
-msgid "List of predefined blocklists"
-msgstr "seznam předdefinovaných seznamů blokovaných čísel"
-
-#: personal/faxaccount/lists.tpl.c:8
-msgid "Add the list to the blocklists"
-msgstr "přidat seznam do seznamu blokovaných"
-
-#: personal/faxaccount/paste_generic.tpl.c:8
-msgid "Fax number for GOfax to trigger on"
-msgstr "faxové číslo pro GOfax pro spouštění"
-
-#: personal/faxaccount/paste_generic.tpl.c:11
-msgid "Alternate fax numbers will not be copied"
-msgstr "alternativní faxová čísla nebudou zkopírována"
-
-#: personal/faxaccount/locals.tpl.c:2
-msgid "Select numbers to add"
-msgstr "zvolte čísla, která mají být přidána"
-
-#: personal/faxaccount/locals.tpl.c:5
-msgid "Filters"
-msgstr "filtry"
-
-#: personal/faxaccount/locals.tpl.c:8
-msgid "Display numbers of department"
-msgstr "zobrazit čísla tohoto oddělení"
-
-#: personal/faxaccount/locals.tpl.c:11
-msgid "Choose the department the search will be based on"
-msgstr "vyberte oddělení ve kterém se bude hledat"
-
-#: personal/faxaccount/locals.tpl.c:14
-msgid "Display numbers matching"
-msgstr "zobrazit čísla odpovídající čísla"
-
-#: personal/faxaccount/locals.tpl.c:17
-msgid "Regular expression for matching numbers"
-msgstr "regulární výraz pro hledání čísel"
-
-#: personal/faxaccount/locals.tpl.c:20
-msgid "Display numbers of user"
-msgstr "zobrazit čísla tohoto uživatele"
-
-#: personal/faxaccount/locals.tpl.c:23
-msgid "User name of which numbers are shown"
-msgstr "jméno uživatele jehož čísla jsou zobrazena"
-
-#: personal/faxaccount/faxNumberSelect/faxNumberSelect-filter.tpl.c:5
-msgid "Name"
-msgstr "název"
-
-#: personal/faxaccount/faxNumberSelect/faxNumberSelect-list.tpl.c:2
-msgid "Base"
-msgstr "základ"
+msgstr "Větev, ve které budou uloženy seznamy blokovaných faxů"

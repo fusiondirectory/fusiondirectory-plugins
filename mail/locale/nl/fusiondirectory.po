@@ -3,16 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Christophe Augello <christophe@augello.be>, 2012
-#  Niels Klomp (CareWorks ICT Services) <nk@careworks.nl>, 2005
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-108\n"
+"Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2015-03-31 11:49+0200\n"
+"POT-Creation-Date: 2014-12-15 17:47+0100\n"
 "PO-Revision-Date: 2015-03-31 11:41+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Dutch (http://www.transifex.com/projects/p/FusionDirectory-108/language/nl/)\n"
+"Language-Team: Dutch (http://www.transifex.com/projects/p/FusionDirectory-109/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -34,46 +32,36 @@ msgstr ""
 msgid "Informations"
 msgstr "Informatie"
 
-#: admin/groups/mail/class_groupMail.inc:82
+#: admin/groups/mail/class_groupMail.inc:86
 #: personal/mail/class_mailAccount.inc:100
 msgid "Primary address"
 msgstr "Primair adres"
 
-#: admin/groups/mail/class_groupMail.inc:82
+#: admin/groups/mail/class_groupMail.inc:86
 msgid "The primary mail address"
 msgstr "Het primaire email adres"
 
-#: admin/groups/mail/class_groupMail.inc:86
+#: admin/groups/mail/class_groupMail.inc:90
 #: personal/mail/class_mailAccount.inc:104
 msgid "Server"
 msgstr "Server"
 
-#: admin/groups/mail/class_groupMail.inc:86
+#: admin/groups/mail/class_groupMail.inc:90
 msgid "Server mail"
 msgstr ""
 
-#: admin/groups/mail/class_groupMail.inc:92
+#: admin/groups/mail/class_groupMail.inc:96
 #: personal/mail/class_mailAccount.inc:120
 msgid "Alternative addresses"
 msgstr "Alternatieve adressen"
 
-#: admin/groups/mail/class_groupMail.inc:92
+#: admin/groups/mail/class_groupMail.inc:96
 msgid "Alternative mail addresses for the group"
 msgstr ""
 
-#: admin/groups/mail/class_groupMail.inc:97
+#: admin/groups/mail/class_groupMail.inc:101
 msgid "Forward messages to non group members"
 msgstr "Stuur berichten door naar niet groepsleden"
-
-#: admin/groups/mail/class_groupMail.inc:101
-msgid "Only allowed to receive local mail"
-msgstr ""
-
-#: admin/groups/mail/class_groupMail.inc:101
-msgid ""
-"Whether this group mail is only allowed to receive messages from local "
-"senders"
-msgstr ""
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:29
 #: admin/systems/services/postfix/class_servicePostfix.inc:30
@@ -225,8 +213,7 @@ msgid "Rules"
 msgstr "Regel"
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:116
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:124
-msgid "Edit spam rule"
+msgid "Edit spam ruleEdit spam rule"
 msgstr ""
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:119
@@ -236,6 +223,10 @@ msgstr "Naam"
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:120
 msgid "Rule"
 msgstr "Regel"
+
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:124
+msgid "Edit spam rule"
+msgstr ""
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:31
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:32
@@ -282,10 +273,6 @@ msgstr ""
 msgid "Max directory recursions"
 msgstr "Max map recursies"
 
-#: admin/systems/services/virus/class_serviceAntiVirus.inc:68
-msgid "Maximum number of directory recursions"
-msgstr ""
-
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:73
 msgid "Checks per day"
 msgstr "Checks per dag"
@@ -330,6 +317,10 @@ msgstr "Maximale recursie"
 msgid "Maximum compression ratio"
 msgstr "Maximale compressie ratio"
 
+#: admin/systems/services/virus/class_serviceAntiVirus.inc:113
+msgid " "
+msgstr ""
+
 #: admin/systems/services/imap/class_serviceIMAP.inc:32
 msgid "IMAP/POP3 generic service"
 msgstr ""
@@ -341,7 +332,7 @@ msgstr "IMAP/POP3"
 #: personal/mail/class_mail-methods.inc:156
 #: personal/mail/class_mail-methods.inc:517
 msgid "Configuration error"
-msgstr "Instelling fout"
+msgstr "Configuratie fout"
 
 #: personal/mail/class_mail-methods.inc:157
 #, php-format
@@ -353,16 +344,16 @@ msgstr "De geconfigureerde mail attribuut '%s' is niet ondersteund!"
 msgid "Mail method '%s' is unknown!"
 msgstr "Mail methode '%s' is onbekend!"
 
-#: personal/mail/class_mail-methods.inc:727
-#: personal/mail/class_mail-methods.inc:728
+#: personal/mail/class_mail-methods.inc:735
+#: personal/mail/class_mail-methods.inc:736
 msgid "None"
 msgstr "Geen"
 
-#: personal/mail/class_mail-methods.inc:817
+#: personal/mail/class_mail-methods.inc:825
 msgid "Unknown"
 msgstr "Onbekend"
 
-#: personal/mail/class_mail-methods.inc:819
+#: personal/mail/class_mail-methods.inc:827
 msgid "Unlimited"
 msgstr "Onbeperkt"
 

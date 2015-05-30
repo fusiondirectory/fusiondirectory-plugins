@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Pavel Borecki <pavel.borecki@gmail.com>, 2014-2015
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-108\n"
+"Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2015-03-19 21:45+0100\n"
-"PO-Revision-Date: 2015-02-25 16:12+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/FusionDirectory-108/language/cs_CZ/)\n"
+"POT-Creation-Date: 2014-12-15 17:47+0100\n"
+"PO-Revision-Date: 2015-04-07 19:21+0000\n"
+"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
+"Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/FusionDirectory-109/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,7 +20,7 @@ msgstr ""
 
 #: admin/inventory/inventory-list.xml:7
 msgid "NO LABEL"
-msgstr ""
+msgstr "BEZ POPISKU"
 
 #: admin/inventory/inventory-list.xml:28
 #: admin/systems/fusioninventory/class_fiInventoryAgent.inc:56
@@ -28,7 +29,7 @@ msgstr ""
 
 #: admin/inventory/inventory-list.xml:36
 msgid "Macs"
-msgstr ""
+msgstr "MAC adresy"
 
 #: admin/inventory/inventory-list.xml:44
 msgid "Operating Systems"
@@ -36,19 +37,19 @@ msgstr "Operační systémy"
 
 #: admin/inventory/inventory-list.xml:50
 msgid "Actions"
-msgstr "akce"
+msgstr "Akce"
 
 #: admin/inventory/inventory-list.xml:61 admin/inventory/inventory-list.xml:85
 msgid "Edit"
-msgstr "upravit"
+msgstr "Upravit"
 
 #: admin/inventory/inventory-list.xml:68 admin/inventory/inventory-list.xml:92
 msgid "Remove"
-msgstr "odebrat"
+msgstr "Odstranit"
 
 #: admin/inventory/class_inventoryManagement.inc:36
 msgid "Inventory objects"
-msgstr ""
+msgstr "Objekty inventáře"
 
 #: admin/inventory/class_inventoryManagement.inc:37
 msgid "Browse inventory objects"
@@ -60,12 +61,12 @@ msgstr "Inventář"
 
 #: admin/systems/fusioninventory/class_fiInventory.inc:68
 msgid "Inventory Viewer"
-msgstr ""
+msgstr "Prohlížeč inventáře"
 
 #: admin/systems/fusioninventory/class_fiInventory.inc:73
 #: admin/systems/fusioninventory/class_fiInventory.inc:77
 msgid "Inventory object"
-msgstr ""
+msgstr "Objekt inventáře"
 
 #: admin/systems/fusioninventory/class_fiInventory.inc:91
 msgid "Hardware"
@@ -73,44 +74,44 @@ msgstr "hardware"
 
 #: admin/systems/fusioninventory/class_fiInventory.inc:97
 msgid "Software"
-msgstr "software"
+msgstr "Programové vybavení"
 
 #: admin/systems/fusioninventory/class_fiInventory.inc:103
 msgid "Users"
-msgstr "uživatelé"
+msgstr "Uživatelé"
 
 #: admin/systems/fusioninventory/class_fiInventory.inc:109
 msgid "Processes"
-msgstr ""
+msgstr "Procesy"
 
 #: admin/systems/fusioninventory/class_fiInventoryAgent.inc:30
 msgid "Configuration"
-msgstr "nastavení"
+msgstr "Nastavení"
 
 #: admin/systems/fusioninventory/class_fiInventoryAgent.inc:33
 msgid "Server"
-msgstr "server"
+msgstr "Server"
 
 #: admin/systems/fusioninventory/class_fiInventoryAgent.inc:33
 msgid "Server which FI will send inventory infos"
-msgstr ""
+msgstr "Server, který F.I. bude posílat údaje o inventáři "
 
 #: admin/systems/fusioninventory/class_fiInventoryAgent.inc:37
 msgid "Delay time"
-msgstr ""
+msgstr "Délka prodlevy"
 
 #: admin/systems/fusioninventory/class_fiInventoryAgent.inc:37
 msgid "Maximum initial delay before first target, in seconds"
-msgstr ""
+msgstr "Nejvyšší umožněná počáteční prodleva před prvním cílem, v sekundách"
 
 #: admin/systems/fusioninventory/class_fiInventoryAgent.inc:42
 msgid "Wait"
-msgstr ""
+msgstr "Čekat"
 
 #: admin/systems/fusioninventory/class_fiInventoryAgent.inc:42
 #: admin/systems/fusioninventory/class_fiInventoryAgent.inc:60
 msgid "Maximum delay between each targets, in seconds"
-msgstr ""
+msgstr "Nejvyšší umožněná prodleva mezi oběma cíli, v sekundách"
 
 #: admin/systems/fusioninventory/class_fiInventoryAgent.inc:49
 msgid "Web Interface"
@@ -118,19 +119,19 @@ msgstr "Webové rozhraní"
 
 #: admin/systems/fusioninventory/class_fiInventoryAgent.inc:52
 msgid "Disable web interface"
-msgstr ""
+msgstr "Vypnout webové rozhraní"
 
 #: admin/systems/fusioninventory/class_fiInventoryAgent.inc:52
 msgid "Do not use web interface"
-msgstr ""
+msgstr "Nepoužívat webové rozhraní"
 
 #: admin/systems/fusioninventory/class_fiInventoryAgent.inc:56
 msgid "Network interface to listen to"
-msgstr ""
+msgstr "Síťové rozhraní, na kterém očekávat spojení"
 
 #: admin/systems/fusioninventory/class_fiInventoryAgent.inc:60
 msgid "Port"
-msgstr "port"
+msgstr "Port"
 
 #: admin/systems/fusioninventory/class_fiInventoryAgent.inc:65
 msgid "Trust"
@@ -138,7 +139,7 @@ msgstr "Důvěra"
 
 #: admin/systems/fusioninventory/class_fiInventoryAgent.inc:65
 msgid "IPs allowed to launch inventory task through web interface"
-msgstr ""
+msgstr "IP adresy počítačů, ze kterých je možné spouštět úkony inventarizace z webového rozhraní"
 
 #: admin/systems/fusioninventory/class_fiInventoryAgent.inc:77
 #: config/fusioninventory/class_fiConfig.inc:41
@@ -147,7 +148,7 @@ msgstr ""
 
 #: admin/systems/fusioninventory/class_fiInventoryAgent.inc:78
 msgid "FusionInventory agent configuration"
-msgstr ""
+msgstr "Nastavení agenta FusionInventory"
 
 #: html/collect.php:89
 #, php-format
@@ -156,27 +157,27 @@ msgstr "Nastavení %s/%s FusionDirectory není čitelné. Akce byla zrušena."
 
 #: config/fusioninventory/class_fiConfig.inc:28
 msgid "FusionInventory configuration"
-msgstr ""
+msgstr "Nastavení FusionInventory"
 
 #: config/fusioninventory/class_fiConfig.inc:29
 msgid "FusionDirectory FusionInventory plugin configuration"
-msgstr ""
+msgstr "Nastavení zásuvného modulu FusionInventory pro FusionDirectory"
 
 #: config/fusioninventory/class_fiConfig.inc:44
 msgid "Inventory RDN"
-msgstr ""
+msgstr "Relativní rozlišený název inventáře"
 
 #: config/fusioninventory/class_fiConfig.inc:44
 msgid "Branch in which inventory objects will be stored"
-msgstr ""
+msgstr "Větev, ve které budou ukládány objekty inventáře"
 
 #: config/fusioninventory/class_fiConfig.inc:49
 msgid "Inventory matching"
-msgstr ""
+msgstr "Párování inventáře"
 
 #: config/fusioninventory/class_fiConfig.inc:49
 msgid "Criteria to link an inventory result to a system"
-msgstr ""
+msgstr "Hlediska pro přiřazení výsledku inventury k systému"
 
 #: config/fusioninventory/class_fiConfig.inc:52
 msgid "Mac address"
@@ -184,7 +185,7 @@ msgstr "MAC adresa"
 
 #: config/fusioninventory/class_fiConfig.inc:52
 msgid "IP address"
-msgstr "IP addresa"
+msgstr "IP adresa"
 
 #: config/fusioninventory/class_fiConfig.inc:52
 msgid "Both"

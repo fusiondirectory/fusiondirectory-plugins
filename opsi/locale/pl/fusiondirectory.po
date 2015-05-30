@@ -5,12 +5,12 @@
 # Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-108\n"
+"Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2015-03-19 21:45+0100\n"
-"PO-Revision-Date: 2015-02-25 16:03+0000\n"
+"POT-Creation-Date: 2014-12-15 17:47+0100\n"
+"PO-Revision-Date: 2015-02-25 16:04+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Polish (http://www.transifex.com/projects/p/FusionDirectory-108/language/pl/)\n"
+"Language-Team: Polish (http://www.transifex.com/projects/p/FusionDirectory-109/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -117,7 +117,7 @@ msgstr ""
 #: admin/opsi/class_opsiSoftwareList.inc:141
 #: admin/opsi/class_opsiProductProperties.inc:192
 #: admin/opsi/class_opsiProfile.inc:191
-msgid "Failed to contact OPSI server"
+msgid "Could contact OPSI server"
 msgstr ""
 
 #: admin/opsi/class_opsiProfileManagement.inc:33
@@ -273,11 +273,4 @@ msgstr ""
 
 #: config/opsi/class_opsiConfig.inc:45
 msgid "Branch in which OPSI profiles will be stored"
-msgstr ""
-
-#: addons/opsi/opsiimport.tpl.c:2
-msgid ""
-"Warning : Once you import your OPSI hosts into FusionDirectory, they will be"
-" managed by it, so if you delete them or deactivate their OPSI tab, they "
-"will be removed from OPSI."
 msgstr ""

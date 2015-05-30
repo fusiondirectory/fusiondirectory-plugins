@@ -3,16 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# MCMic, 2014
-# MCMic, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-108\n"
+"Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2015-03-19 21:45+0100\n"
-"PO-Revision-Date: 2015-02-25 16:12+0000\n"
-"Last-Translator: MCMic\n"
-"Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory-108/language/fr/)\n"
+"POT-Creation-Date: 2014-12-15 17:47+0100\n"
+"PO-Revision-Date: 2015-02-25 16:13+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory-109/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -26,7 +24,7 @@ msgstr "Dovecot (IMAP/POP3)"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:29
 msgid "Services"
-msgstr "Services"
+msgstr "Service"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:43
 msgid "Dovecot connexion"
@@ -38,7 +36,7 @@ msgstr "URL de connexion au serveur Dovecot"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:49
 msgid "Hostname"
-msgstr "Nom d’hôte"
+msgstr "Nom de l'hôte"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:49
 msgid "Hostname of the Dovecot server"
@@ -66,19 +64,19 @@ msgstr "Valider les certificats"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:52
 msgid "Weither or not to validate server certificate on connexion"
-msgstr "S’il faut ou non valider le certificat du serveur à la connexion"
+msgstr "Valider ou ne pas valider le certificat du serveur à la connexion"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:60
 msgid "Master credentials"
-msgstr "Compte Master"
+msgstr "Mot de passe du compte Master"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:63
 msgid "Admin user"
-msgstr "Login administrateur"
+msgstr "Administrateur"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:63
 msgid "Dovecot server admin user"
-msgstr "Utilisateur administrateur du serveur Dovecot"
+msgstr "Administrateur du serveur Dovecot"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:67
 msgid "Password"
@@ -86,15 +84,15 @@ msgstr "Mot de passe"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:67
 msgid "Admin user password"
-msgstr "Mot de passe du compte administrateur"
+msgstr "Mot de passe utilisateur Administrateur"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:71
 msgid "Mail directory"
-msgstr "Répertoire des courriels"
+msgstr "Répertoire du mail"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:71
 msgid "Path to the directory in which user maildirs must be created"
-msgstr "Chemin vers le répertoire contenant les boites de courriel"
+msgstr "Chemin vers le répertoire contenant les boites de messagerie"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:78
 msgid "Options"
@@ -102,21 +100,21 @@ msgstr "Options"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:81
 msgid "Create the user folder throught Argonaut"
-msgstr "Créer le répertoire utilisateur via Argonaut"
+msgstr "Créer le répertoire grâce à Argonaut"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:81
 msgid "Use argonaut to create the user mailbox on the Dovecot server"
-msgstr "Utiliser Argonaut pour créer la boite courriel sur le serveur Dovecot"
+msgstr "Utiliser Argonaut pour créer la boite email sur le serveur Dovecot"
 
 #: personal/mail/mail-methods/class_mail-methods-dovecot.inc:47
 msgid "There are no IMAP compatible mail servers defined!"
-msgstr "Il n'y a aucun serveur IMAP compatible défini !"
+msgstr "Il n'y a aucun serveur IMAP compatibles définis !"
 
 #: personal/mail/mail-methods/class_mail-methods-dovecot.inc:52
 msgid "Mail server for this account is invalid!"
-msgstr "Le serveur de courriel pour ce compte est invalide !"
+msgstr "Le serveur de messagerie pour ce compte est non valide !"
 
 #: personal/mail/mail-methods/class_mail-methods-dovecot.inc:189
 #, php-format
 msgid "Error while trying to contact Dovecot server through Argonaut: %s"
-msgstr "Erreur lors de la connexion au serveur Dovecot via Argonaut : %s"
+msgstr "Erreur lors de la connexion au serveur Dovecot grâce à Argonaut: %s"

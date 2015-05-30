@@ -6,16 +6,93 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2015-03-31 11:49+0200\n"
+"Project-Id-Version: FusionDirectory VERSION\n"
+"Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
+"POT-Creation-Date: 2015-05-30 15:30+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Last-Translator: FusionDirectory project <contact@fusiondirectory.org>\n"
+"Language-Team: English\n"
+"Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: admin/groups/samba/class_sambaGroup.inc:29
+#: personal/samba/class_sambaAccount.inc:135
+#: config/samba/class_sambaPluginConfig.inc:28
+msgid "Samba"
+msgstr ""
+
+#: admin/groups/samba/class_sambaGroup.inc:30
+msgid "Samba group settings"
+msgstr ""
+
+#: admin/groups/samba/class_sambaGroup.inc:42
+#: admin/groups/samba/class_sambaGroup.inc:45
+#: admin/systems/samba/class_winstationGeneric.inc:88
+#: personal/samba/class_sambaAccount.inc:176
+msgid "Domain"
+msgstr ""
+
+#: admin/groups/samba/class_sambaGroup.inc:45
+msgid "Samba domain"
+msgstr ""
+
+#: admin/groups/samba/class_sambaGroup.inc:49
+msgid "Samba informations"
+msgstr ""
+
+#: admin/groups/samba/class_sambaGroup.inc:56
+msgid "Group type"
+msgstr ""
+
+#: admin/groups/samba/class_sambaGroup.inc:56
+msgid "Samba group type"
+msgstr ""
+
+#: admin/groups/samba/class_sambaGroup.inc:60
+#: admin/groups/samba/class_sambaGroup.inc:119
+msgid "Samba group"
+msgstr ""
+
+#: admin/groups/samba/class_sambaGroup.inc:60
+#: admin/groups/samba/class_sambaGroup.inc:119
+msgid "Domain admins"
+msgstr ""
+
+#: admin/groups/samba/class_sambaGroup.inc:60
+#: admin/groups/samba/class_sambaGroup.inc:119
+msgid "Domain users"
+msgstr ""
+
+#: admin/groups/samba/class_sambaGroup.inc:60
+#: admin/groups/samba/class_sambaGroup.inc:119
+msgid "Domain guests"
+msgstr ""
+
+#: admin/groups/samba/class_sambaGroup.inc:105
+msgid "Configuration error"
+msgstr ""
+
+#: admin/groups/samba/class_sambaGroup.inc:105
+msgid "Cannot find group SID in your configuration!"
+msgstr ""
+
+#: admin/groups/samba/class_sambaGroup.inc:119
+#, php-format
+msgid "Special group (%d)"
+msgstr ""
+
+#: admin/groups/samba/class_sambaGroup.inc:133
+#: personal/samba/class_sambaAccount.inc:478
+#: personal/samba/class_sambaAccount.inc:501
+msgid "Warning"
+msgstr ""
+
+#: admin/groups/samba/class_sambaGroup.inc:133
+#: personal/samba/class_sambaAccount.inc:478
+msgid "Undefined Samba SID detected. Please fix this problem manually!"
+msgstr ""
 
 #: admin/samba/class_sambaDomainManagement.inc:35
 msgid "Samba domains"
@@ -202,11 +279,6 @@ msgstr ""
 
 #: admin/systems/samba/class_winstationGeneric.inc:88
 #: personal/samba/class_sambaAccount.inc:176
-msgid "Domain"
-msgstr ""
-
-#: admin/systems/samba/class_winstationGeneric.inc:88
-#: personal/samba/class_sambaAccount.inc:176
 msgid "Samba domain name"
 msgstr ""
 
@@ -233,11 +305,6 @@ msgstr ""
 
 #: personal/samba/class_sambaAccount.inc:31
 msgid "Samba Munged Dial"
-msgstr ""
-
-#: personal/samba/class_sambaAccount.inc:135
-#: config/samba/class_sambaPluginConfig.inc:28
-msgid "Samba"
 msgstr ""
 
 #: personal/samba/class_sambaAccount.inc:136
@@ -505,15 +572,6 @@ msgstr ""
 
 #: personal/samba/class_sambaAccount.inc:462
 msgid "The windows user manager allows eight clients at maximum!"
-msgstr ""
-
-#: personal/samba/class_sambaAccount.inc:478
-#: personal/samba/class_sambaAccount.inc:501
-msgid "Warning"
-msgstr ""
-
-#: personal/samba/class_sambaAccount.inc:478
-msgid "Undefined Samba SID detected. Please fix this problem manually!"
 msgstr ""
 
 #: personal/samba/class_sambaAccount.inc:502

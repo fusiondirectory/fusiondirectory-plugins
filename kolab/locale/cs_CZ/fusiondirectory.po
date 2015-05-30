@@ -3,61 +3,58 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Pavel Borecki <pavel.borecki@gmail.com>, 2012
-# Pavel Borecki <pavel.borecki@gmail.com>, 2012
-# Pavel Borecki <pavel.borecki@gmail.com>, 2012
+# Pavel Borecki <pavel.borecki@gmail.com>, 2014-2015
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-108\n"
+"Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2015-03-19 21:45+0100\n"
-"PO-Revision-Date: 2015-02-25 16:51+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/FusionDirectory-108/language/cs_CZ/)\n"
+"POT-Creation-Date: 2014-12-15 17:47+0100\n"
+"PO-Revision-Date: 2015-04-07 19:41+0000\n"
+"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
+"Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/FusionDirectory-109/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: cs_CZ\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
-#: admin/ogroups/kolab/class_mailogroup.inc:70
-msgid "Remove mail account"
-msgstr "odebrat e-mailový účet"
+#: admin/ogroups/kolab/class_mailogroup.inc:37
+msgid "Mail"
+msgstr "E-mail"
 
-#: admin/ogroups/kolab/class_mailogroup.inc:71
-#: admin/ogroups/kolab/class_mailogroup.inc:74
+#: admin/ogroups/kolab/class_mailogroup.inc:38
+msgid "Mail group"
+msgstr "E-mailová skupina"
+
+#: admin/ogroups/kolab/class_mailogroup.inc:45
+#: admin/ogroups/kolab/class_mailogroup.inc:118
+#: admin/ogroups/kolab/class_mailogroup.inc:125
+msgid "Mail address"
+msgstr "E-mailová adresa"
+
+#: admin/ogroups/kolab/class_mailogroup.inc:82
+msgid "Remove mail account"
+msgstr "Odstranit e-mailový účet"
+
+#: admin/ogroups/kolab/class_mailogroup.inc:83
+#: admin/ogroups/kolab/class_mailogroup.inc:86
 msgid "mail group"
 msgstr "e-mailová skupina"
 
-#: admin/ogroups/kolab/class_mailogroup.inc:73
+#: admin/ogroups/kolab/class_mailogroup.inc:85
 msgid "Create mail account"
-msgstr "vytvořit účet pro e-mail"
+msgstr "Vytvořit účet pro e-mail"
 
-#: admin/ogroups/kolab/class_mailogroup.inc:106
-#: admin/ogroups/kolab/class_mailogroup.inc:113
-#: admin/ogroups/kolab/class_mailogroup.inc:190
-msgid "Mail address"
-msgstr "e-mailová adresa"
-
-#: admin/ogroups/kolab/class_mailogroup.inc:106
+#: admin/ogroups/kolab/class_mailogroup.inc:118
 msgid "your-name@your-domain.com"
 msgstr "vase-jmeno@vase-domena.cz"
 
-#: admin/ogroups/kolab/class_mailogroup.inc:140
-#: admin/ogroups/kolab/class_mailogroup.inc:177
+#: admin/ogroups/kolab/class_mailogroup.inc:152
+#: admin/ogroups/kolab/class_mailogroup.inc:189
 #: admin/systems/services/kolab/class_serviceKolab.inc:282
 #: admin/systems/services/kolab/class_serviceKolab.inc:293
 msgid "LDAP error"
-msgstr "chyba LDAPu"
-
-#: admin/ogroups/kolab/class_mailogroup.inc:184
-#: admin/ogroups/kolab/paste_mail.tpl.c:2
-msgid "Mail"
-msgstr "e-mail"
-
-#: admin/ogroups/kolab/class_mailogroup.inc:185
-msgid "Mail group"
-msgstr "e-mailová skupina"
+msgstr "Chyba LDAP"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:29
 msgid "Enable MX lookup for relayhost"
@@ -70,17 +67,17 @@ msgstr "předávající stroj"
 #: admin/systems/services/kolab/class_serviceKolab.inc:32
 #: admin/systems/services/kolab/class_serviceKolab.inc:186
 msgid "Host used to relay mails"
-msgstr "stroj použitý k předávání zpráv"
+msgstr "Počítač sloužící k předávání zpráv"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:67
 #: admin/systems/services/kolab/class_serviceKolab.inc:68
 msgid "Kolab mail service"
-msgstr "e-mailová služba Kolab"
+msgstr "E-mailová služba Kolab"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:68
 #: admin/systems/services/kolab/class_serviceKolab.inc:104
 msgid "Services"
-msgstr "služby"
+msgstr "Služby"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:82
 msgid "Informations"
@@ -88,11 +85,11 @@ msgstr "Informace"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:88
 msgid "Postfix mydomain"
-msgstr "mydomain Postfixu"
+msgstr "mydomain Postfix"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:88
 msgid "Postfix domain name"
-msgstr ""
+msgstr "Doménový název Postfix"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:92
 msgid "Cyrus admins"
@@ -100,7 +97,7 @@ msgstr "správci Cyra"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:92
 msgid "Cyrus admins for kolab server"
-msgstr ""
+msgstr "Správci Cyrus pro kolab server"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:97
 msgid "Mail domains"
@@ -112,19 +109,19 @@ msgstr ""
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:107
 msgid "POP3 service"
-msgstr "služba POP3"
+msgstr "Služba POP3"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:107
 msgid "Enable POP3 service"
-msgstr ""
+msgstr "Zapnout službu POP3"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:111
 msgid "POP3/SSL service"
-msgstr "služba POP3/SSL"
+msgstr "Služba POP3/SSL"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:111
 msgid "Enable POP3/SSL service"
-msgstr ""
+msgstr "Zapnout službu PO3/SSL"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:115
 msgid "IMAP service"
@@ -132,15 +129,15 @@ msgstr "služba IMAP"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:115
 msgid "Enable IMAP service"
-msgstr ""
+msgstr "Zapnout službu IMAP"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:119
 msgid "IMAP/SSL service"
-msgstr "služba IMAP/SSL"
+msgstr "Služba IMAP/SSL"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:119
 msgid "Enable IMAP/SSL service"
-msgstr ""
+msgstr "Zapnout službu IMAP/SSL"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:123
 msgid "Sieve service"
@@ -148,11 +145,11 @@ msgstr "služba Sieve"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:123
 msgid "Enable Sieve service"
-msgstr ""
+msgstr "Zapnout službu Sieve"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:127
 msgid "FTP FreeBusy service (legacy)"
-msgstr ""
+msgstr "služba FTP FreeBusy (v režimu zpětné kompatibility)"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:128
 msgid "FTP FreeBusy service (legacy, not interoperable with Kolab2 FreeBusy)"
@@ -160,74 +157,74 @@ msgstr "služba FTP Free/Busy (v režimu zpětné kompatibility, nekompatibilní
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:132
 msgid "HTTP FreeBusy service (legacy)"
-msgstr "služba HTTP FreeBusy (v režimu zpětné kompatibility)"
+msgstr "Služba HTTP FreeBusy (v režimu zpětné slučitelnosti)"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:136
 msgid "Amavis email scanning"
-msgstr ""
+msgstr "Skenování e-mailů Amavis"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:136
 msgid "Amavis email scanning (virus/spam)"
-msgstr "systém skenování e-mailů Amavis (viry/nevyžádaná pošta)"
+msgstr "Skenování e-mailů nástrojem Amavis (viry/nevyžádaná pošta)"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:142
 msgid "Quota settings"
-msgstr "nastavení kvót"
+msgstr "Nastavení kvót"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:145
 msgid "Quota occupation limit before warning users (%)"
-msgstr ""
+msgstr "Hranice, po jejímž překročení budou uživatelé varováni ohledně blížícího se vyčerpání kvóty (%s)"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:146
 #, php-format
 msgid "Warn users when using more than X% of their mail quota"
-msgstr ""
+msgstr "Varovat uživatele, pokud využijí více než X% objemu své kvóty na e-maily"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:154
 msgid "Free/Busy settings"
-msgstr "nastavení Free/Busy"
+msgstr "Nastavení Free/Busy"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:157
 #: admin/systems/services/kolab/class_serviceKolab.inc:158
 msgid "Allow unauthenticated downloading of Free/Busy information"
-msgstr "dovolit neověřeným uživatelům stahovat informace z Free/Busy"
+msgstr "Umožnit neověřeným uživatelům stahovat informace z Free/Busy"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:162
 msgid "Number of days to include when creating free/busy lists"
-msgstr ""
+msgstr "Počet dnů, které zahrnout při vytváření seznamů free/busy"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:163
 msgid "Include data from X days in the past when creating free/busy lists"
-msgstr ""
+msgstr "Zahrnout údaje z X dnů v minulosti při vytváření free/busy seznamů"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:171
 msgid "SMTP privileged networks"
-msgstr "privilegované sítě pro SMTP"
+msgstr "Sítě, ze kterých je možné používat SMTP"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:174
 msgid "Hosts/networks allowed to relay"
-msgstr "stroje/sítě které mohou předávat"
+msgstr "Počítače/sítě které mohou předávat"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:175
 msgid "Hosts/networks allowed to relay (multiple values comma-seperated)"
-msgstr ""
+msgstr "stroje/sítě které mohou předávat (jednotlivé položky oddělujte čárkou)"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:183
 msgid "SMTP smarthost/relayhost"
-msgstr "inteligentní předávající (smarthost) / předávající stroj SMTP"
+msgstr "Inteligentní předávající (smarthost) / předávající stroj SMTP"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:191
 msgid "Accept Internet Mail"
-msgstr "přijímat Internetovou poštu"
+msgstr "Přijímat Internetovou poštu"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:194
 #: admin/systems/services/kolab/class_serviceKolab.inc:195
 msgid "Accept mail from other domains over non-authenticated SMTP"
-msgstr "přijímat i zprávy, které přicházejí z jiných domén, přes neověřené SMTP servery"
+msgstr "Přijímat i zprávy, které přicházejí z jiných domén, přes neověřené SMTP servery"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:269
 msgid "Internal error"
-msgstr "vnitřní chyba"
+msgstr "Vnitřní chyba"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:269
 msgid "Kolab account does not exist!"
@@ -235,7 +232,7 @@ msgstr "účet neexistuje v Kolabu!"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:273
 msgid "Error"
-msgstr "chyba"
+msgstr "Chyba"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:273
 msgid "hostname"
@@ -247,7 +244,7 @@ msgstr "Kolab"
 
 #: personal/kolab/class_kolabAccount.inc:83
 msgid "Kolab account settings"
-msgstr "nastavení účtu v Kolab"
+msgstr "Nastavení účtu v Kolab"
 
 #: personal/kolab/class_kolabAccount.inc:100
 msgid "Kolab account"
@@ -255,7 +252,7 @@ msgstr "účet Kolab"
 
 #: personal/kolab/class_kolabAccount.inc:104
 msgid "Delegations"
-msgstr "pověření"
+msgstr "Pověření"
 
 #: personal/kolab/class_kolabAccount.inc:112
 msgid "Mail size"
@@ -275,7 +272,7 @@ msgstr "URL"
 
 #: personal/kolab/class_kolabAccount.inc:130
 msgid "Future"
-msgstr "budoucí"
+msgstr "Budoucí"
 
 #: personal/kolab/class_kolabAccount.inc:130
 msgid "days"
@@ -286,25 +283,25 @@ msgstr "dny"
 #: personal/kolab/class_kolabAccount.inc:149
 #: personal/kolab/class_kolabAccount.inc:159
 msgid "Invitation policy"
-msgstr "pravidla pro pozvánky"
+msgstr "Pravidla pro pozvánky"
 
 #: personal/kolab/class_kolabAccount.inc:144
 msgid "Default policy"
-msgstr ""
+msgstr "Výchozí zásada"
 
 #: personal/kolab/class_kolabAccount.inc:144
 msgid "Default invitation policy"
-msgstr ""
+msgstr "Výchozí pravidla pozvánek"
 
 #: personal/kolab/class_kolabAccount.inc:146
 #: personal/kolab/class_kolabAccount.inc:155
 msgid "Manual"
-msgstr "ruční"
+msgstr "Ruční"
 
 #: personal/kolab/class_kolabAccount.inc:146
 #: personal/kolab/class_kolabAccount.inc:155
 msgid "Always accept"
-msgstr "vždy přijmout"
+msgstr "Vždy přijmout"
 
 #: personal/kolab/class_kolabAccount.inc:146
 #: personal/kolab/class_kolabAccount.inc:155
@@ -314,7 +311,7 @@ msgstr "vždy odmítnout"
 #: personal/kolab/class_kolabAccount.inc:146
 #: personal/kolab/class_kolabAccount.inc:155
 msgid "Reject if conflicts"
-msgstr "odmítnout, pokud je v konfliktu"
+msgstr "Odmítnout, pokud je v konfliktu"
 
 #: personal/kolab/class_kolabAccount.inc:146
 #: personal/kolab/class_kolabAccount.inc:155
@@ -327,53 +324,53 @@ msgstr "e-mailová adresa"
 
 #: personal/kolab/class_kolabAccount.inc:153
 msgid "policy for this mail address"
-msgstr ""
+msgstr "Sada pravidel pro tuto e-mailovou adresu"
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:148
 #: personal/mail/kolab/class_mail-methods-kolab.inc:156
 #: personal/mail/kolab/class_mail-methods-kolab.inc:157
 msgid "Unspecified"
-msgstr "neurčeno"
+msgstr "Neurčeno"
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:149
 msgid "Mails"
-msgstr "zprávy"
+msgstr "Zprávy"
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:150
 msgid "Tasks"
-msgstr "úkoly"
+msgstr "Úkoly"
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:151
 msgid "Journals"
-msgstr "deníky"
+msgstr "Deníky"
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:152
 msgid "Calendar"
-msgstr "kalendář"
+msgstr "Kalendář"
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:153
 msgid "Contacts"
-msgstr "kontakty"
+msgstr "Kontakty"
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:154
 msgid "Notes"
-msgstr "poznámky"
+msgstr "Poznámky"
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:158
 msgid "Inbox"
-msgstr "příchozí"
+msgstr "Příchozí"
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:159
 msgid "Drafts"
-msgstr "rozepsané"
+msgstr "Rozepsané"
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:160
 msgid "Sent"
-msgstr "odeslané"
+msgstr "Odeslané"
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:161
 msgid "SPAM"
-msgstr "nevyžádaná pošta (SPAM)"
+msgstr "Nevyžádaná pošta"
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:163
 #: personal/mail/kolab/class_mail-methods-kolab.inc:164
@@ -381,7 +378,7 @@ msgstr "nevyžádaná pošta (SPAM)"
 #: personal/mail/kolab/class_mail-methods-kolab.inc:166
 #: personal/mail/kolab/class_mail-methods-kolab.inc:167
 msgid "Default"
-msgstr "výchozí"
+msgstr "Výchozí"
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:182
 msgid ""
@@ -395,19 +392,3 @@ msgstr "Čeká se na Kolab, až odebere nastavení e-mailu…"
 #: personal/mail/kolab/class_mail-methods-kolab.inc:282
 msgid "Please remove the mail settings first!"
 msgstr "Nejprve prosím odeberte nastavené e-mailu!"
-
-#: admin/ogroups/kolab/mail.tpl.c:2
-msgid "Mail distribution list"
-msgstr "distribuční seznam"
-
-#: admin/ogroups/kolab/mail.tpl.c:5
-msgid "Primary address"
-msgstr "hlavní adresa"
-
-#: admin/ogroups/kolab/mail.tpl.c:8
-msgid "Primary mail address for this distribution list"
-msgstr "hlavní e-mailová adresa pro tento distribuční seznam"
-
-#: admin/ogroups/kolab/paste_mail.tpl.c:5
-msgid "Please enter a mail address"
-msgstr "zadejte prosím e-mailovou adresu"

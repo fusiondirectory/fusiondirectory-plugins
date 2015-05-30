@@ -5,17 +5,94 @@
 # Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-108\n"
+"Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2015-03-17 18:47+0100\n"
-"PO-Revision-Date: 2015-02-25 15:53+0000\n"
+"POT-Creation-Date: 2014-12-15 17:47+0100\n"
+"PO-Revision-Date: 2014-12-15 17:04+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Persian (Iran) (http://www.transifex.com/projects/p/FusionDirectory-108/language/fa_IR/)\n"
+"Language-Team: Persian (Iran) (http://www.transifex.com/projects/p/FusionDirectory-109/language/fa_IR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fa_IR\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
+#: admin/groups/samba/class_sambaGroup.inc:29
+#: personal/samba/class_sambaAccount.inc:135
+#: config/samba/class_sambaPluginConfig.inc:28
+msgid "Samba"
+msgstr ""
+
+#: admin/groups/samba/class_sambaGroup.inc:30
+msgid "Samba group settings"
+msgstr ""
+
+#: admin/groups/samba/class_sambaGroup.inc:42
+#: admin/groups/samba/class_sambaGroup.inc:45
+#: admin/systems/samba/class_winstationGeneric.inc:88
+#: personal/samba/class_sambaAccount.inc:176
+msgid "Domain"
+msgstr ""
+
+#: admin/groups/samba/class_sambaGroup.inc:45
+msgid "Samba domain"
+msgstr ""
+
+#: admin/groups/samba/class_sambaGroup.inc:49
+msgid "Samba informations"
+msgstr ""
+
+#: admin/groups/samba/class_sambaGroup.inc:56
+msgid "Group type"
+msgstr ""
+
+#: admin/groups/samba/class_sambaGroup.inc:56
+msgid "Samba group type"
+msgstr ""
+
+#: admin/groups/samba/class_sambaGroup.inc:60
+#: admin/groups/samba/class_sambaGroup.inc:119
+msgid "Samba group"
+msgstr ""
+
+#: admin/groups/samba/class_sambaGroup.inc:60
+#: admin/groups/samba/class_sambaGroup.inc:119
+msgid "Domain admins"
+msgstr ""
+
+#: admin/groups/samba/class_sambaGroup.inc:60
+#: admin/groups/samba/class_sambaGroup.inc:119
+msgid "Domain users"
+msgstr ""
+
+#: admin/groups/samba/class_sambaGroup.inc:60
+#: admin/groups/samba/class_sambaGroup.inc:119
+msgid "Domain guests"
+msgstr ""
+
+#: admin/groups/samba/class_sambaGroup.inc:105
+msgid "Configuration error"
+msgstr ""
+
+#: admin/groups/samba/class_sambaGroup.inc:105
+msgid "Cannot find group SID in your configuration!"
+msgstr ""
+
+#: admin/groups/samba/class_sambaGroup.inc:119
+#, php-format
+msgid "Special group (%d)"
+msgstr ""
+
+#: admin/groups/samba/class_sambaGroup.inc:133
+#: personal/samba/class_sambaAccount.inc:478
+#: personal/samba/class_sambaAccount.inc:500
+msgid "Warning"
+msgstr ""
+
+#: admin/groups/samba/class_sambaGroup.inc:133
+#: personal/samba/class_sambaAccount.inc:478
+msgid "Undefined Samba SID detected. Please fix this problem manually!"
+msgstr ""
 
 #: admin/samba/class_sambaDomainManagement.inc:35
 msgid "Samba domains"
@@ -202,11 +279,6 @@ msgstr ""
 
 #: admin/systems/samba/class_winstationGeneric.inc:88
 #: personal/samba/class_sambaAccount.inc:176
-msgid "Domain"
-msgstr ""
-
-#: admin/systems/samba/class_winstationGeneric.inc:88
-#: personal/samba/class_sambaAccount.inc:176
 msgid "Samba domain name"
 msgstr ""
 
@@ -233,11 +305,6 @@ msgstr ""
 
 #: personal/samba/class_sambaAccount.inc:31
 msgid "Samba Munged Dial"
-msgstr ""
-
-#: personal/samba/class_sambaAccount.inc:135
-#: config/samba/class_sambaPluginConfig.inc:28
-msgid "Samba"
 msgstr ""
 
 #: personal/samba/class_sambaAccount.inc:136
@@ -507,16 +574,7 @@ msgstr ""
 msgid "The windows user manager allows eight clients at maximum!"
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:478
 #: personal/samba/class_sambaAccount.inc:501
-msgid "Warning"
-msgstr ""
-
-#: personal/samba/class_sambaAccount.inc:478
-msgid "Undefined Samba SID detected. Please fix this problem manually!"
-msgstr ""
-
-#: personal/samba/class_sambaAccount.inc:502
 msgid ""
 "Cannot convert primary group to samba group: group cannot be identified!"
 msgstr ""
@@ -577,12 +635,4 @@ msgstr ""
 
 #: config/samba/class_sambaPluginConfig.inc:72
 msgid "Needed to be compliant with Windows <= 98 or Samba < 3.2"
-msgstr ""
-
-#: personal/samba/sambaLogonHours.tpl.c:2
-msgid "Specify the hours this user is allowed to log in"
-msgstr ""
-
-#: personal/samba/sambaLogonHours.tpl.c:5
-msgid "Hour"
 msgstr ""

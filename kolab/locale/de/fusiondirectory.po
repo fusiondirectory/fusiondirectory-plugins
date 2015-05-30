@@ -3,60 +3,57 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Maik Wagner <maikwagner@yahoo.com>, 2014
-#  Stefan Koehler <stefan.koehler@GONICUS.de>, 2005
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-108\n"
+"Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2015-03-19 21:45+0100\n"
+"POT-Creation-Date: 2014-12-15 17:47+0100\n"
 "PO-Revision-Date: 2015-02-25 16:51+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: German (http://www.transifex.com/projects/p/FusionDirectory-108/language/de/)\n"
+"Language-Team: German (http://www.transifex.com/projects/p/FusionDirectory-109/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: admin/ogroups/kolab/class_mailogroup.inc:70
-msgid "Remove mail account"
-msgstr "Mail-Konto entfernen"
+#: admin/ogroups/kolab/class_mailogroup.inc:37
+msgid "Mail"
+msgstr "Mail"
 
-#: admin/ogroups/kolab/class_mailogroup.inc:71
-#: admin/ogroups/kolab/class_mailogroup.inc:74
-msgid "mail group"
+#: admin/ogroups/kolab/class_mailogroup.inc:38
+msgid "Mail group"
 msgstr "Mail-Gruppe"
 
-#: admin/ogroups/kolab/class_mailogroup.inc:73
-msgid "Create mail account"
-msgstr "Neues Mail-Konto erzeugen"
-
-#: admin/ogroups/kolab/class_mailogroup.inc:106
-#: admin/ogroups/kolab/class_mailogroup.inc:113
-#: admin/ogroups/kolab/class_mailogroup.inc:190
+#: admin/ogroups/kolab/class_mailogroup.inc:45
+#: admin/ogroups/kolab/class_mailogroup.inc:118
+#: admin/ogroups/kolab/class_mailogroup.inc:125
 msgid "Mail address"
 msgstr "Mail-Adresse"
 
-#: admin/ogroups/kolab/class_mailogroup.inc:106
+#: admin/ogroups/kolab/class_mailogroup.inc:82
+msgid "Remove mail account"
+msgstr "Mail-Konto entfernen"
+
+#: admin/ogroups/kolab/class_mailogroup.inc:83
+#: admin/ogroups/kolab/class_mailogroup.inc:86
+msgid "mail group"
+msgstr "Mail-Gruppe"
+
+#: admin/ogroups/kolab/class_mailogroup.inc:85
+msgid "Create mail account"
+msgstr "Neues Mail-Konto erzeugen"
+
+#: admin/ogroups/kolab/class_mailogroup.inc:118
 msgid "your-name@your-domain.com"
 msgstr "Ihr-Name@ihre-domain.com"
 
-#: admin/ogroups/kolab/class_mailogroup.inc:140
-#: admin/ogroups/kolab/class_mailogroup.inc:177
+#: admin/ogroups/kolab/class_mailogroup.inc:152
+#: admin/ogroups/kolab/class_mailogroup.inc:189
 #: admin/systems/services/kolab/class_serviceKolab.inc:282
 #: admin/systems/services/kolab/class_serviceKolab.inc:293
 msgid "LDAP error"
 msgstr "LDAP-Fehler"
-
-#: admin/ogroups/kolab/class_mailogroup.inc:184
-#: admin/ogroups/kolab/paste_mail.tpl.c:2
-msgid "Mail"
-msgstr "Mail"
-
-#: admin/ogroups/kolab/class_mailogroup.inc:185
-msgid "Mail group"
-msgstr "Mail-Gruppe"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:29
 msgid "Enable MX lookup for relayhost"
@@ -380,7 +377,7 @@ msgstr "Werbung"
 #: personal/mail/kolab/class_mail-methods-kolab.inc:166
 #: personal/mail/kolab/class_mail-methods-kolab.inc:167
 msgid "Default"
-msgstr "Standard"
+msgstr "Vorgabe"
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:182
 msgid ""
@@ -394,19 +391,3 @@ msgstr "Warte darauf, daß Kolab die Mail-Einstellungen entfernt..."
 #: personal/mail/kolab/class_mail-methods-kolab.inc:282
 msgid "Please remove the mail settings first!"
 msgstr "Bitte entfernen Sie zunächst die Mail-Einstellungen!"
-
-#: admin/ogroups/kolab/mail.tpl.c:2
-msgid "Mail distribution list"
-msgstr "Mail-Verteilerliste"
-
-#: admin/ogroups/kolab/mail.tpl.c:5
-msgid "Primary address"
-msgstr "Primäre Adresse"
-
-#: admin/ogroups/kolab/mail.tpl.c:8
-msgid "Primary mail address for this distribution list"
-msgstr "Primäre Mail-Adresse der Verteilerliste"
-
-#: admin/ogroups/kolab/paste_mail.tpl.c:5
-msgid "Please enter a mail address"
-msgstr "Bitte geben Sie eine Mail-Adresse ein"

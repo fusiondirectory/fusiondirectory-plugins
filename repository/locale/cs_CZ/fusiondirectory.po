@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Pavel Borecki <pavel.borecki@gmail.com>, 2014-2015
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-108\n"
+"Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2015-03-17 18:47+0100\n"
-"PO-Revision-Date: 2015-02-25 16:12+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/FusionDirectory-108/language/cs_CZ/)\n"
+"POT-Creation-Date: 2014-12-15 17:47+0100\n"
+"PO-Revision-Date: 2015-04-07 19:21+0000\n"
+"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
+"Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/FusionDirectory-109/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -22,13 +23,13 @@ msgstr ""
 #: admin/repository/class_repositoryDistribution.inc:33
 #: admin/repository/class_repositoryDistribution.inc:56
 msgid "Repository distribution"
-msgstr ""
+msgstr "Distribuce repozitáře"
 
 #: admin/repository/class_repositoryDistribution.inc:60
 #: admin/repository/class_repositorySection.inc:57
 #: admin/repository/class_buildRepository.inc:63
 msgid "Name"
-msgstr "název"
+msgstr "Název"
 
 #: admin/repository/class_repositoryDistribution.inc:60
 msgid "Unique name for this distribution"
@@ -38,7 +39,7 @@ msgstr "Jedinečný název pro tuto distribuci"
 #: admin/repository/class_repositorySection.inc:61
 #: admin/repository/class_buildRepository.inc:67
 msgid "Description"
-msgstr "popis"
+msgstr "Popis"
 
 #: admin/repository/class_repositoryDistribution.inc:64
 msgid "Description of this distribution"
@@ -46,20 +47,20 @@ msgstr "Popis této distribuce"
 
 #: admin/repository/class_repositoryDistribution.inc:69
 msgid "Section"
-msgstr "sekce"
+msgstr "Sekce"
 
 #: admin/repository/class_repositoryDistribution.inc:69
 msgid "The sections this distribution contains"
-msgstr ""
+msgstr "Sekce, které tato distribuce obsahuje"
 
 #: admin/repository/class_repositoryDistribution.inc:76
 #: admin/repository/class_repositorySection.inc:66
 msgid "Based on"
-msgstr ""
+msgstr "Vychází z"
 
 #: admin/repository/class_repositoryDistribution.inc:76
 msgid "The distributions this one is based on"
-msgstr ""
+msgstr "Distribuce, na kterých je tato založena"
 
 #: admin/repository/class_repositorySection.inc:30
 #: admin/repository/class_repositorySection.inc:31
@@ -70,60 +71,60 @@ msgstr "Sekce repozitáře"
 
 #: admin/repository/class_repositorySection.inc:57
 msgid "Unique name for this section"
-msgstr ""
+msgstr "Jedinečný název pro tuto sekci"
 
 #: admin/repository/class_repositorySection.inc:61
 msgid "Description of this section"
-msgstr ""
+msgstr "Popis této sekce"
 
 #: admin/repository/class_repositorySection.inc:66
 msgid "The sections this one is based on"
-msgstr ""
+msgstr "Sekce, na kterých je tato založena"
 
 #: admin/repository/class_repositoryManagement.inc:34
 #: admin/repository/class_repositoryManagement.inc:35
 msgid "Repository management"
-msgstr ""
+msgstr "Správa repozitáře"
 
 #: admin/repository/class_repositoryManagement.inc:40
 #: config/repository/class_repositoryConfig.inc:42
 msgid "Repository"
-msgstr "repozitář"
+msgstr "Repozitář"
 
 #: admin/repository/class_buildRepository.inc:30
 #: admin/repository/class_buildRepository.inc:31
 #: admin/repository/class_buildRepository.inc:33
 #: admin/repository/class_buildRepository.inc:59
 msgid "Build repository"
-msgstr ""
+msgstr "Vytvořit repozitář"
 
 #: admin/repository/class_buildRepository.inc:63
 msgid "Unique name for this repository"
-msgstr ""
+msgstr "Jedinečný název pro tento repozitář"
 
 #: admin/repository/class_buildRepository.inc:67
 msgid "Description of this repository"
-msgstr ""
+msgstr "Popis tohoto repozitáře"
 
 #: admin/repository/class_buildRepository.inc:72
 msgid "Distribution sections"
-msgstr ""
+msgstr "Sekce distribuce"
 
 #: admin/repository/class_buildRepository.inc:72
 msgid "The distribution sections this repository provides"
-msgstr ""
+msgstr "Sekce distribuce, které tento repozitář poskytuje"
 
 #: admin/repository/class_buildRepository.inc:78
 msgid "Private"
-msgstr "soukromé"
+msgstr "Soukromé"
 
 #: admin/repository/class_buildRepository.inc:78
 msgid "Is this repository private or public?"
-msgstr ""
+msgstr "Je tento repozitář soukromý nebo veřejný?"
 
 #: admin/repository/class_buildRepository.inc:82
 msgid "Type"
-msgstr "typ"
+msgstr "Typ"
 
 #: admin/repository/class_buildRepository.inc:82
 msgid "Repository type"
@@ -131,52 +132,52 @@ msgstr "Typ repozitáře"
 
 #: admin/repository/class_buildRepository.inc:89
 msgid "Members"
-msgstr "členové"
+msgstr "Členové"
 
 #: admin/repository/class_buildRepository.inc:92
 msgid "Admins"
-msgstr "správci"
+msgstr "Správci"
 
 #: admin/repository/class_buildRepository.inc:92
 msgid "Admins of this repository"
-msgstr ""
+msgstr "Správci tohoto repozitáře"
 
 #: admin/repository/class_buildRepository.inc:96
 msgid "Uploaders"
-msgstr ""
+msgstr "Nahrávající"
 
 #: admin/repository/class_buildRepository.inc:96
 msgid "Uploaders of this repository"
-msgstr ""
+msgstr "Kdo do tohoto repozitáře nahrává data"
 
 #: admin/repository/class_buildRepository.inc:100
 msgid "Users"
-msgstr "uživatelé"
+msgstr "Uživatelé"
 
 #: admin/repository/class_buildRepository.inc:100
 msgid "Users of this repository"
-msgstr ""
+msgstr "Uživatelé tohoto repozitáře"
 
 #: config/repository/class_repositoryConfig.inc:28
 msgid "Repository configuration"
-msgstr ""
+msgstr "Nastavení repozitáře"
 
 #: config/repository/class_repositoryConfig.inc:29
 msgid "FusionDirectory repository plugin configuration"
-msgstr ""
+msgstr "Nastavení zásuvného modulu repozitář pro FusionDirectory"
 
 #: config/repository/class_repositoryConfig.inc:45
 msgid "Repository RDN"
-msgstr ""
+msgstr "Relativní rozlišený název repozitáře"
 
 #: config/repository/class_repositoryConfig.inc:45
 msgid "Branch in which repository objects will be stored"
-msgstr ""
+msgstr "Větev, ve které budou uloženy objekty repozitáře"
 
 #: config/repository/class_repositoryConfig.inc:51
 msgid "Repository types"
-msgstr ""
+msgstr "Typy repozitářů"
 
 #: config/repository/class_repositoryConfig.inc:51
 msgid "Available repository types"
-msgstr ""
+msgstr "Dostupné typy repozitářů"

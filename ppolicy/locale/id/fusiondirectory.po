@@ -5,12 +5,12 @@
 # Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-108\n"
+"Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2015-03-31 11:49+0200\n"
-"PO-Revision-Date: 2015-03-31 11:23+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Indonesian (http://www.transifex.com/projects/p/FusionDirectory-108/language/id/)\n"
+"POT-Creation-Date: 2015-02-10 18:26+0100\n"
+"PO-Revision-Date: 2015-02-10 17:35+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Indonesian (http://www.transifex.com/projects/p/FusionDirectory-109/language/id/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -84,14 +84,13 @@ msgid ""
 msgstr ""
 
 #: admin/ppolicy/class_ppolicy.inc:79
-msgid "Expiry warning delay"
+msgid "Expire warning delay"
 msgstr ""
 
 #: admin/ppolicy/class_ppolicy.inc:79
 msgid ""
-"Defines the start time - in seconds - prior to the password expiry that "
-"password expiry warning messages are returned in bind responses. 0 to "
-"disable"
+"Start time prior to the password expiry that password expiry warning "
+"messages are returned in bind responses"
 msgstr ""
 
 #: admin/ppolicy/class_ppolicy.inc:84
@@ -175,38 +174,6 @@ msgid ""
 "administrator following an automatic lockout"
 msgstr ""
 
-#: addons/dashboard/class_dashBoardPPolicy.inc:26
-msgid "Ppolicy"
-msgstr ""
-
-#: addons/dashboard/class_dashBoardPPolicy.inc:27
-msgid "Statistics about ppolicy expired users"
-msgstr ""
-
-#: addons/dashboard/class_dashBoardPPolicy.inc:38
-msgid "Expired accounts"
-msgstr ""
-
-#: addons/dashboard/class_dashBoardPPolicy.inc:43
-#: addons/dashboard/ppolicy_locked_accounts.tpl.c:8
-msgid "Locked accounts"
-msgstr ""
-
-#: addons/dashboard/class_dashBoardPPolicy.inc:69
-#: addons/dashboard/class_dashBoardPPolicy.inc:124
-msgid "Configuration error"
-msgstr ""
-
-#: addons/dashboard/class_dashBoardPPolicy.inc:70
-#, php-format
-msgid "Default ppolicy \"%s\" could not be found in the LDAP!"
-msgstr ""
-
-#: addons/dashboard/class_dashBoardPPolicy.inc:125
-#, php-format
-msgid "Ppolicy \"%s\" set for user \"%s\" could not be found in the LDAP!"
-msgstr ""
-
 #: personal/ppolicy/class_ppolicyAccount.inc:38
 msgid "Edit user's password policy"
 msgstr ""
@@ -251,11 +218,11 @@ msgstr ""
 msgid "Use the default"
 msgstr ""
 
-#: personal/ppolicy/class_ppolicyAccount.inc:92
+#: personal/ppolicy/class_ppolicyAccount.inc:102
 msgid "Never"
 msgstr ""
 
-#: personal/ppolicy/class_ppolicyAccount.inc:100
+#: personal/ppolicy/class_ppolicyAccount.inc:109
 msgid "Unlocked"
 msgstr ""
 
@@ -285,42 +252,4 @@ msgstr ""
 
 #: config/ppolicy/class_ppolicyConfig.inc:50
 msgid "What you put as default ppolicy in the overlay config"
-msgstr ""
-
-#: addons/dashboard/ppolicy_locked_accounts.tpl.c:2
-msgid "There is one locked account"
-msgid_plural "There are %1 locked accounts"
-msgstr[0] ""
-
-#: addons/dashboard/ppolicy_locked_accounts.tpl.c:5
-msgid "There is no locked account"
-msgstr ""
-
-#: addons/dashboard/ppolicy_locked_accounts.tpl.c:11
-msgid "Manager concerned"
-msgstr ""
-
-#: addons/dashboard/ppolicy_locked_accounts.tpl.c:14
-msgid "uid"
-msgstr ""
-
-#: addons/dashboard/ppolicy_locked_accounts.tpl.c:17
-msgid "cn"
-msgstr ""
-
-#: addons/dashboard/ppolicy_locked_accounts.tpl.c:20
-#: addons/dashboard/ppolicy_locked_accounts.tpl.c:32
-msgid "telephoneNumber"
-msgstr ""
-
-#: addons/dashboard/ppolicy_locked_accounts.tpl.c:23
-msgid "pwdAccountLockedTime"
-msgstr ""
-
-#: addons/dashboard/ppolicy_locked_accounts.tpl.c:26
-msgid "manager"
-msgstr ""
-
-#: addons/dashboard/ppolicy_locked_accounts.tpl.c:29
-msgid "mail"
 msgstr ""

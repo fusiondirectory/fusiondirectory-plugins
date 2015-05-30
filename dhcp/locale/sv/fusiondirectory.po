@@ -3,15 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Mathias Friman <mathias.friman@knorca.se>, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-108\n"
+"Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2015-03-19 21:45+0100\n"
-"PO-Revision-Date: 2015-02-25 16:51+0000\n"
+"POT-Creation-Date: 2014-12-15 17:47+0100\n"
+"PO-Revision-Date: 2015-02-25 16:13+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Swedish (http://www.transifex.com/projects/p/FusionDirectory-108/language/sv/)\n"
+"Language-Team: Swedish (http://www.transifex.com/projects/p/FusionDirectory-109/language/sv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,7 +19,7 @@ msgstr ""
 
 #: admin/systems/services/dhcp/class_dhcpAdvanced.inc:59
 #: admin/systems/services/dhcp/class_dhcpAdvanced.inc:73
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:776
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:774
 #: admin/systems/services/dhcp/class_dhcpNetwork.inc:48
 msgid "Error"
 msgstr "Fel"
@@ -53,10 +52,6 @@ msgstr "automatisk"
 #: admin/systems/services/dhcp/class_dhcpClass.inc:98
 #: admin/systems/services/dhcp/class_dhcpSharedNetwork.inc:152
 #: admin/systems/services/dhcp/class_dhcpSharedNetwork.inc:170
-#: admin/systems/services/dhcp/dhcp_group.tpl.c:5
-#: admin/systems/services/dhcp/dhcp_pool.tpl.c:5
-#: admin/systems/services/dhcp/dhcp_host.tpl.c:5
-#: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl.c:5
 msgid "Name"
 msgstr "Namn"
 
@@ -65,7 +60,6 @@ msgstr "Namn"
 #: admin/systems/services/dhcp/class_dhcpPool.inc:127
 #: admin/systems/services/dhcp/class_dhcpSubnet.inc:160
 #: admin/systems/services/dhcp/class_dhcpSubnet.inc:161
-#: admin/systems/services/dhcp/dhcp_pool.tpl.c:11
 msgid "Range"
 msgstr "Range"
 
@@ -76,15 +70,12 @@ msgstr "'Range' är inte inom det konfigurerade nätverket."
 
 #: admin/systems/services/dhcp/class_dhcpSubnet.inc:139
 #: admin/systems/services/dhcp/class_dhcpSubnet.inc:159
-#: admin/systems/services/dhcp/dhcp_subnet.tpl.c:5
 msgid "Network address"
 msgstr "Nätverksadress"
 
 #: admin/systems/services/dhcp/class_dhcpSubnet.inc:142
 #: admin/systems/services/dhcp/class_dhcpSubnet.inc:158
 #: admin/systems/services/dhcp/class_dhcpNetwork.inc:197
-#: admin/systems/services/dhcp/dhcp_network.tpl.c:11
-#: admin/systems/services/dhcp/dhcp_subnet.tpl.c:8
 msgid "Netmask"
 msgstr "Nätmask"
 
@@ -95,7 +86,7 @@ msgstr "Nätverks-range"
 #: admin/systems/services/dhcp/class_dhcpNewSectionDialog.inc:48
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:62
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:103
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:731
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:729
 msgid "Global options"
 msgstr "Globala inställningar"
 
@@ -136,7 +127,6 @@ msgstr "Delat nätverk"
 
 #: admin/systems/services/dhcp/class_dhcpNewSectionDialog.inc:56
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:71
-#: admin/systems/services/dhcp/dhcp_tsigkey.tpl.c:2
 msgid "DNS update key"
 msgstr "DNS-uppdateringsnyckel"
 
@@ -146,18 +136,14 @@ msgid "DNS update zones"
 msgstr "DNS-uppdateringszoner"
 
 #: admin/systems/services/dhcp/class_dhcpDnsZone.inc:150
-#: admin/systems/services/dhcp/dhcp_dnszone.tpl.c:5
 msgid "DNS zone"
 msgstr "DNS-zon"
 
 #: admin/systems/services/dhcp/class_dhcpDnsZone.inc:154
-#: admin/systems/services/dhcp/dhcp_network.tpl.c:41
-#: admin/systems/services/dhcp/dhcp_dnszone.tpl.c:8
 msgid "DNS server"
 msgstr "DNS-server"
 
 #: admin/systems/services/dhcp/class_dhcpDnsZone.inc:158
-#: admin/systems/services/dhcp/dhcp_dnszone.tpl.c:11
 msgid "Key DN"
 msgstr "Key DN"
 
@@ -174,7 +160,6 @@ msgid "Token Ring"
 msgstr "Token Ring"
 
 #: admin/systems/services/dhcp/class_dhcpHost.inc:149
-#: admin/systems/services/dhcp/dhcp_host.tpl.c:20
 msgid "Hardware address"
 msgstr "Hårdvaruadress"
 
@@ -188,20 +173,17 @@ msgstr "Max Lease-tid"
 
 #: admin/systems/services/dhcp/class_dhcpService.inc:134
 #: admin/systems/services/dhcp/class_dhcpSharedNetwork.inc:156
-#: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl.c:26
-#: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl.c:29
 msgid "Default lease time"
 msgstr "Standard lease-tid"
 
 #: admin/systems/services/dhcp/class_dhcpService.inc:134
-#: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl.c:38
 msgid "Maximum lease time"
 msgstr "Maximal lease-tid"
 
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:59
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:787
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:788
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:830
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:785
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:786
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:828
 msgid "DHCP service"
 msgstr "DHCP-tjänst"
 
@@ -225,75 +207,73 @@ msgid "The migration will be started when you save this system."
 msgstr "Denna migrering kommer att startas när du sparar det här systemet."
 
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:154
-#: admin/systems/services/dhcp/remove_dhcp.tpl.c:2
 msgid "Warning"
 msgstr "Varning"
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:247
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:246
 msgid "Permission error"
 msgstr "Rättighetsfel"
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:284
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:283
 msgid "DHCP section"
 msgstr "DHCP-sektion"
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:340
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:343
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:339
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:342
 msgid "Insert new DHCP section"
 msgstr "Infoga ny DHCP-sektion"
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:341
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:340
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:343
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:344
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:345
 msgid "Edit DHCP section"
 msgstr "Redigera DHCP-sektion"
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:342
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:346
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:341
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:345
 msgid "Remove DHCP section"
 msgstr "Ta bort DHCP-sektion"
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:347
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:346
 msgid "Expand DHCP subnet"
 msgstr "Expandera DHCP-subnät"
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:348
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:347
 msgid "Fold DHCP subnet"
 msgstr "Minimera DHCP-subnät"
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:425
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:442
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:497
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:573
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:581
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:608
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:422
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:439
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:494
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:570
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:578
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:605
 msgid "LDAP error"
 msgstr "LDAP-fel"
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:776
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:774
 msgid ""
 "The DHCP configuration set is unkown. Please contact your system "
 "administrator."
 msgstr "DHCP-konfigurationen är okänd. Kontakta systemadministratören"
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:788
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:786
 msgid "Services"
 msgstr "Tjänster"
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:795
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:793
 msgid "Start service"
 msgstr "Starta tjänsten"
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:796
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:794
 msgid "Stop service"
 msgstr "Stoppa tjänsten"
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:797
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:795
 msgid "Restart service"
 msgstr "Starta om tjänsten"
 
 #: admin/systems/services/dhcp/class_dhcpNetwork.inc:197
-#: admin/systems/services/dhcp/dhcp_network.tpl.c:14
 msgid "Broadcast"
 msgstr "Broadcast"
 
@@ -324,297 +304,17 @@ msgstr "DH"
 
 #: admin/systems/services/dhcp/class_dhcpTSigKey.inc:114
 #: admin/systems/services/dhcp/class_dhcpTSigKey.inc:127
-#: admin/systems/services/dhcp/dhcp_tsigkey.tpl.c:5
 msgid "Key name"
 msgstr "Nyckel-namn"
 
 #: admin/systems/services/dhcp/class_dhcpTSigKey.inc:118
-#: admin/systems/services/dhcp/dhcp_tsigkey.tpl.c:14
 msgid "Key"
 msgstr "Nyckel"
 
 #: admin/systems/services/dhcp/class_dhcpSharedNetwork.inc:157
-#: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl.c:35
 msgid "Max. lease time"
 msgstr "Max. lease-tid"
 
 #: admin/systems/services/dhcp/class_dhcpSharedNetwork.inc:158
-#: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl.c:44
 msgid "Min. lease time"
 msgstr "Min. lease-tid"
-
-#: admin/systems/services/dhcp/serviceDHCP.tpl.c:2
-msgid ""
-"DHCP take over will take place when saving this entry. Choose 'Cancel' to "
-"abort."
-msgstr "Övertagning av DHCP kommer att träda i kraft när du sparar. Välj 'Avbryt' för att avbryta."
-
-#: admin/systems/services/dhcp/serviceDHCP.tpl.c:5
-msgid "Take over dhcp configuration from following server"
-msgstr "Ta över DHCP-konfiguration från följande server"
-
-#: admin/systems/services/dhcp/serviceDHCP.tpl.c:8
-msgid "DHCP sections"
-msgstr "DHCP-sektioner"
-
-#: admin/systems/services/dhcp/dhcp_group.tpl.c:2
-#: admin/systems/services/dhcp/dhcp_service.tpl.c:2
-#: admin/systems/services/dhcp/dhcp_subnet.tpl.c:2
-#: admin/systems/services/dhcp/dhcp_pool.tpl.c:2
-#: admin/systems/services/dhcp/dhcp_host.tpl.c:2
-#: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl.c:2
-msgid "Generic"
-msgstr "Generisk"
-
-#: admin/systems/services/dhcp/dhcp_group.tpl.c:8
-msgid "Name of group"
-msgstr "Namn på grupp"
-
-#: admin/systems/services/dhcp/dhcp_service.tpl.c:5
-msgid "Authoritative service"
-msgstr "Auktoritär tjänst"
-
-#: admin/systems/services/dhcp/dhcp_service.tpl.c:8
-msgid "Dynamic DNS update"
-msgstr "Dynamisk DNS-uppdatering"
-
-#: admin/systems/services/dhcp/dhcp_service.tpl.c:11
-msgid "Dynamic DNS update style"
-msgstr "Dynamisk DNS-uppdateringssätt"
-
-#: admin/systems/services/dhcp/dhcp_service.tpl.c:14
-msgid "Default lease time (s)"
-msgstr "Standard Lease-tid (sek)"
-
-#: admin/systems/services/dhcp/dhcp_service.tpl.c:17
-msgid "Enter default lease time in seconds."
-msgstr "Skriv in standard lease-tid i sekunder."
-
-#: admin/systems/services/dhcp/dhcp_service.tpl.c:20
-msgid "Maximum lease time (s)"
-msgstr "Maximal lease-tid (s)"
-
-#: admin/systems/services/dhcp/dhcp_service.tpl.c:23
-msgid "Enter maximum lease time in seconds."
-msgstr "Skriv in maximal lease-tid i sekunder."
-
-#: admin/systems/services/dhcp/dhcp_network.tpl.c:2
-msgid "Network configuration"
-msgstr "Nätverkskonfiguration"
-
-#: admin/systems/services/dhcp/dhcp_network.tpl.c:5
-msgid "Router"
-msgstr "Router"
-
-#: admin/systems/services/dhcp/dhcp_network.tpl.c:8
-msgid "Enter name or IP address of router to be used in this section"
-msgstr "Skriv in namn eller IP-adress för routern i den här sektionen"
-
-#: admin/systems/services/dhcp/dhcp_network.tpl.c:17
-msgid "Bootup"
-msgstr "Bootup"
-
-#: admin/systems/services/dhcp/dhcp_network.tpl.c:20
-msgid "Filename"
-msgstr "Filnamn"
-
-#: admin/systems/services/dhcp/dhcp_network.tpl.c:23
-msgid ""
-"Enter name of file that will be loaded via tftp after client has started"
-msgstr "Skriv in namnet på filen som ska laddas via tftp efter att klienten har startat"
-
-#: admin/systems/services/dhcp/dhcp_network.tpl.c:26
-msgid "Next server"
-msgstr "Next server"
-
-#: admin/systems/services/dhcp/dhcp_network.tpl.c:29
-msgid "Enter name of server to retrieve bootimages from"
-msgstr "Skriv in namnet på servern att hämta bootimages från"
-
-#: admin/systems/services/dhcp/dhcp_network.tpl.c:32
-msgid "Domain Name Service"
-msgstr "Domännamnsservice (DNS)"
-
-#: admin/systems/services/dhcp/dhcp_network.tpl.c:35
-msgid "Domain"
-msgstr "Domän"
-
-#: admin/systems/services/dhcp/dhcp_network.tpl.c:38
-msgid "Name of domain"
-msgstr "Namn på domän"
-
-#: admin/systems/services/dhcp/dhcp_network.tpl.c:44
-msgid "List of DNS servers to be propagated"
-msgstr "Lista på DNS-servrar att propagera "
-
-#: admin/systems/services/dhcp/dhcp_network.tpl.c:47
-msgid "DNS server do be added"
-msgstr "DNS-servrar att lägga till"
-
-#: admin/systems/services/dhcp/dhcp_network.tpl.c:50
-msgid "Click here add the selected server to the list"
-msgstr "Klicka här för att lägga till valda servrar till listan"
-
-#: admin/systems/services/dhcp/dhcp_network.tpl.c:53
-msgid "Click here remove the selected servers from the list"
-msgstr "Klicka här för att ta bort valda servrar från listan"
-
-#: admin/systems/services/dhcp/dhcp_network.tpl.c:56
-msgid "Domain Name Service options"
-msgstr "DNS-tjänstalternativ"
-
-#: admin/systems/services/dhcp/dhcp_network.tpl.c:59
-msgid "Assign hostnames found via reverse mapping"
-msgstr "Tilldela hostnamn som hittats via reverse mapping"
-
-#: admin/systems/services/dhcp/dhcp_network.tpl.c:62
-msgid "Assign hostnames from host declarations"
-msgstr "Tilldela hostnamn från host-deklarationer"
-
-#: admin/systems/services/dhcp/dhcp_subnet.tpl.c:11
-msgid "Range for dynamic address assignment"
-msgstr "Range för dynamisk adresstilldelning"
-
-#: admin/systems/services/dhcp/dhcp_dnszone.tpl.c:2
-msgid "DNS update zone"
-msgstr "DNS-uppdateringszon"
-
-#: admin/systems/services/dhcp/remove_dhcp.tpl.c:5
-msgid ""
-"This includes 'all' DHCP subsections that are located within this section. "
-"Please double check if your really want to do this since there is no way for"
-" FusionDirectory to get your data back."
-msgstr "Det här inkluderar 'alla' DHCP-subsektioner som inryms i denna sektion. Dubbelkolla att du verkligen vill göra detta eftersom det inte finns något sätt för FusionDirectory att få tillbaka din information."
-
-#: admin/systems/services/dhcp/remove_dhcp.tpl.c:8
-msgid ""
-"Best thing to do before performing this action would be to save the current "
-"contents of your LDAP tree in a file. So - if you've done so - press "
-"'Delete' to continue or 'Cancel' to abort."
-msgstr "Det bästa att göra innan du utför denna åtgärd skulle vara att spara nuvarande innehåll i ditt LDAP-träd i en fil. Så - om du har gjort det - tryck 'Ta bort' för att fortsätta eller 'Avbryt' för att avbryta."
-
-#: admin/systems/services/dhcp/dhcp_tsigkey.tpl.c:8
-msgid "Name of Key"
-msgstr "Namn på nyckel"
-
-#: admin/systems/services/dhcp/dhcp_tsigkey.tpl.c:11
-msgid "Encryption method"
-msgstr "Krypteringsmetod"
-
-#: admin/systems/services/dhcp/dhcp_pool.tpl.c:8
-msgid "Name of pool"
-msgstr "Pool-namn"
-
-#: admin/systems/services/dhcp/dhcpNewSection.tpl.c:2
-msgid "Create new DHCP section"
-msgstr "Skapa ny DHCP-sektion"
-
-#: admin/systems/services/dhcp/dhcpNewSection.tpl.c:5
-msgid "Please choose one of the following DHCP section types."
-msgstr "Välj någon av följande DHCP-sektionstyper"
-
-#: admin/systems/services/dhcp/dhcpNewSection.tpl.c:8
-msgid "Section"
-msgstr "Sektion"
-
-#: admin/systems/services/dhcp/dhcpNewSection.tpl.c:11
-msgid "Choose section type to create"
-msgstr "Välj sektionstyp att skapa"
-
-#: admin/systems/services/dhcp/dhcpNewSection.tpl.c:14
-msgid "Create"
-msgstr "Skapa"
-
-#: admin/systems/services/dhcp/dhcp_advanced.tpl.c:2
-msgid "Hide advanced settings"
-msgstr "Göm avancerade inställningar"
-
-#: admin/systems/services/dhcp/dhcp_advanced.tpl.c:5
-msgid "DHCP statements"
-msgstr "DHCP-statements"
-
-#: admin/systems/services/dhcp/dhcp_advanced.tpl.c:8
-msgid "DHCP options"
-msgstr "DHCP-alternativ"
-
-#: admin/systems/services/dhcp/dhcp_advanced.tpl.c:11
-msgid "Show advanced settings"
-msgstr "Visa avancerade inställningar"
-
-#: admin/systems/services/dhcp/dhcp_host.tpl.c:8
-msgid "Name of host"
-msgstr "Namn på host"
-
-#: admin/systems/services/dhcp/dhcp_host.tpl.c:11
-msgid "Fixed address"
-msgstr "Fast adress"
-
-#: admin/systems/services/dhcp/dhcp_host.tpl.c:14
-msgid "Use hostname or IP-address to assign fixed address"
-msgstr "Använd hostnamn eller IP-adress för att tilldela fasta adresser"
-
-#: admin/systems/services/dhcp/dhcp_host.tpl.c:17
-msgid "Hardware type"
-msgstr "Hårdvarutyp"
-
-#: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl.c:8
-msgid "Name for shared network"
-msgstr "Namn på delat nätverk"
-
-#: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl.c:11
-msgid "Server identifier"
-msgstr "Server-identifierare"
-
-#: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl.c:14
-msgid "Propagated server identifier for this shared network"
-msgstr "Propagerad serveridentifierare för det här delade nätverket"
-
-#: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl.c:17
-msgid "Select if this server is authoritative for this shared network"
-msgstr "Välj om den här servern är auktoriserad för det här delade nätverket"
-
-#: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl.c:20
-msgid "Authoritative server"
-msgstr "Auktoritär server"
-
-#: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl.c:23
-msgid "Leases"
-msgstr "Tilldelningar"
-
-#: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl.c:32
-#: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl.c:41
-#: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl.c:50
-msgid "seconds"
-msgstr "sekunder"
-
-#: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl.c:47
-msgid "Minimum lease time"
-msgstr "Minimum lease-tid"
-
-#: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl.c:53
-msgid "Access control"
-msgstr "Åtkomstkontroll"
-
-#: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl.c:56
-msgid "Select if unknown clients should get dynamic IP addresses"
-msgstr "Välj om okända klienter ska få dynamiska IP-adresser"
-
-#: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl.c:59
-msgid "Allow unknown clients"
-msgstr "Tillåt okända klienter"
-
-#: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl.c:62
-msgid "Select if bootp clients should get dynamic IP addresses"
-msgstr "Välj om bootp-klienter ska få dynamiska IP-adresser"
-
-#: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl.c:65
-msgid "Allow bootp clients"
-msgstr "Tillåt bootp-klienter"
-
-#: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl.c:68
-msgid "Select if clients are allowed to boot using this DHCP server"
-msgstr "Välj om klienter är tillåtna att boota genom den här DHCP-servern"
-
-#: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl.c:71
-msgid "Allow booting"
-msgstr "Tillåt boot"

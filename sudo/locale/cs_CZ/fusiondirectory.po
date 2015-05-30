@@ -3,17 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Pavel Borecki <pavel.borecki@gmail.com>, 2012
-# Pavel Borecki <pavel.borecki@gmail.com>, 2012
-# Pavel Borecki <pavel.borecki@gmail.com>, 2012
+# Pavel Borecki <pavel.borecki@gmail.com>, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-108\n"
+"Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2015-03-17 18:47+0100\n"
-"PO-Revision-Date: 2015-02-25 16:12+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/FusionDirectory-108/language/cs_CZ/)\n"
+"POT-Creation-Date: 2014-12-15 17:47+0100\n"
+"PO-Revision-Date: 2015-04-07 19:21+0000\n"
+"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
+"Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/FusionDirectory-109/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -22,138 +20,152 @@ msgstr ""
 
 #: admin/sudo/class_sudoOption.inc:82
 msgid "Unknown option"
-msgstr "neznámý parametr"
+msgstr "Neznámá předvolba"
 
 #: admin/sudo/class_sudoOption.inc:83
 #, php-format
 msgid "The sudo option '%s' is invalid!"
-msgstr "parametr '%s' pro sudo není platný!"
+msgstr "Parametr %s pro sudo není platný!"
 
-#: admin/sudo/class_sudoOption.inc:278
+#: admin/sudo/class_sudoOption.inc:276
 #, php-format
 msgid "%s (%s)"
 msgstr ""
 
-#: admin/sudo/class_sudoOption.inc:481
+#: admin/sudo/class_sudoOption.inc:479
 msgid "Available options"
 msgstr "dostupné volby"
 
-#: admin/sudo/class_sudoOption.inc:484
+#: admin/sudo/class_sudoOption.inc:482
 msgid "Option"
 msgstr "volba"
 
-#: admin/sudo/class_sudoOption.inc:484
+#: admin/sudo/class_sudoOption.inc:482
 msgid "Add a new sudo option"
-msgstr ""
+msgstr "Přidat další volbu pro sudo"
 
-#: admin/sudo/class_sudoOption.inc:489 admin/sudo/class_sudoOption.inc:491
+#: admin/sudo/class_sudoOption.inc:487 admin/sudo/class_sudoOption.inc:489
 msgid "Used sudo role options"
-msgstr ""
+msgstr "Použité volby role sudo"
 
-#: admin/sudo/class_sudoOption.inc:563
+#: admin/sudo/class_sudoOption.inc:561
 msgid "Options"
-msgstr "volby"
+msgstr "Možnosti"
 
-#: admin/sudo/class_sudoOption.inc:564
+#: admin/sudo/class_sudoOption.inc:562
 msgid "Sudo options"
 msgstr "nastavení sudo"
 
-#: admin/sudo/class_sudoManagement.inc:32 admin/sudo/class_sudoGeneric.inc:121
+#: admin/sudo/class_sudoManagement.inc:32 admin/sudo/class_sudoGeneric.inc:82
 #: config/sudo/class_sudoConfig.inc:42
 msgid "Sudo"
 msgstr "sudo"
 
 #: admin/sudo/class_sudoManagement.inc:33
 msgid "Sudo management"
-msgstr "správa sudo"
+msgstr "Správa sudo"
 
-#: admin/sudo/class_sudoGeneric.inc:122 admin/sudo/class_sudoGeneric.inc:126
+#: admin/sudo/class_sudoGeneric.inc:83 admin/sudo/class_sudoGeneric.inc:87
 msgid "Sudo role"
-msgstr "role v sudo"
+msgstr "Role v sudo"
 
-#: admin/sudo/class_sudoGeneric.inc:141
-msgid "Role settings"
-msgstr ""
+#: admin/sudo/class_sudoGeneric.inc:102
+msgid "Generic"
+msgstr "Obecné"
 
-#: admin/sudo/class_sudoGeneric.inc:146
+#: admin/sudo/class_sudoGeneric.inc:102
+msgid "global defaults"
+msgstr "Celkové výchozí"
+
+#: admin/sudo/class_sudoGeneric.inc:107
 msgid "Name"
-msgstr "název"
+msgstr "Název"
 
-#: admin/sudo/class_sudoGeneric.inc:146
+#: admin/sudo/class_sudoGeneric.inc:107
 msgid "Name of the role"
-msgstr ""
+msgstr "Název role"
 
-#: admin/sudo/class_sudoGeneric.inc:151
+#: admin/sudo/class_sudoGeneric.inc:112
 msgid "Description"
-msgstr "popis"
+msgstr "Popis"
 
-#: admin/sudo/class_sudoGeneric.inc:151
+#: admin/sudo/class_sudoGeneric.inc:112
 msgid "Description for the new sudo role"
-msgstr ""
+msgstr "Popis pro novou roli sudo"
 
-#: admin/sudo/class_sudoGeneric.inc:156
+#: admin/sudo/class_sudoGeneric.inc:117
 msgid "Commands"
 msgstr "příkazy"
 
-#: admin/sudo/class_sudoGeneric.inc:157
+#: admin/sudo/class_sudoGeneric.inc:118
 msgid ""
 "A Unix command with optional command line arguments, potentially including "
 "globbing characters (aka wild cards)"
-msgstr ""
+msgstr "Unixový příkaz s volitelnými argumenty, případně obsahující zástupné znaky"
 
-#: admin/sudo/class_sudoGeneric.inc:163
-msgid "Run as (user)"
-msgstr ""
+#: admin/sudo/class_sudoGeneric.inc:124
+msgid "Run as"
+msgstr "Spustit jako"
 
-#: admin/sudo/class_sudoGeneric.inc:164
-msgid "User(s) impersonated by sudo"
-msgstr ""
+#: admin/sudo/class_sudoGeneric.inc:125
+msgid ""
+"A user that commands may be run as or a Unix group that contains a list of "
+"users that commands may be run as"
+msgstr "Uživatelský účet či unixová skupina, jejíž členové mohou spouštět tyto příkazy"
 
-#: admin/sudo/class_sudoGeneric.inc:171
-msgid "Run as (group)"
-msgstr ""
-
-#: admin/sudo/class_sudoGeneric.inc:172
-msgid "Group(s) impersonated by sudo"
-msgstr ""
-
-#: admin/sudo/class_sudoGeneric.inc:178
+#: admin/sudo/class_sudoGeneric.inc:131
 msgid "Systems"
-msgstr "systémy"
+msgstr "Systémy"
 
-#: admin/sudo/class_sudoGeneric.inc:178
+#: admin/sudo/class_sudoGeneric.inc:131
 msgid "A host name, IP address or IP network"
-msgstr ""
+msgstr "Název počítače, IP adresa nebo síť"
 
-#: admin/sudo/class_sudoGeneric.inc:183
+#: admin/sudo/class_sudoGeneric.inc:136
 msgid "Users and groups"
-msgstr "uživatelé a skupiny"
+msgstr "Uživatelé a skupiny"
 
-#: admin/sudo/class_sudoGeneric.inc:184
+#: admin/sudo/class_sudoGeneric.inc:137
 msgid ""
 "A user name, user ID (prefixed with '#'), Unix group (prefixed with '%')"
-msgstr ""
+msgstr "Uživatelské jméno, identifikátor (předeslaný znakem #), unixová skupiny (předeslaná znakem %)"
 
-#: admin/sudo/class_sudoGeneric.inc:188
-msgid "Priority"
-msgstr "priorita"
+#: admin/sudo/class_sudoGeneric.inc:144
+msgid "System trust"
+msgstr "systém důvěryhodnosti"
 
-#: admin/sudo/class_sudoGeneric.inc:188
-msgid "This rule priority compared to others"
-msgstr ""
+#: admin/sudo/class_sudoGeneric.inc:148
+msgid "Trust mode"
+msgstr "režim důvěryhodnosti"
+
+#: admin/sudo/class_sudoGeneric.inc:148
+msgid "Trust mode for the role"
+msgstr "Režim důvěry pro roli"
+
+#: admin/sudo/class_sudoGeneric.inc:152
+msgid "disabled"
+msgstr "vypnuto"
+
+#: admin/sudo/class_sudoGeneric.inc:152
+msgid "full access"
+msgstr "plný přístup"
+
+#: admin/sudo/class_sudoGeneric.inc:152
+msgid "allow access to these hosts"
+msgstr "povolit přístup k těmto počítačům"
 
 #: config/sudo/class_sudoConfig.inc:28
 msgid "Sudo configuration"
-msgstr ""
+msgstr "Nastavení sudo"
 
 #: config/sudo/class_sudoConfig.inc:29
 msgid "FusionDirectory sudo plugin configuration"
-msgstr ""
+msgstr "Nastavení zásuvného modulu sudo pro FusionDirectory"
 
 #: config/sudo/class_sudoConfig.inc:45
 msgid "Sudo RDN"
-msgstr ""
+msgstr "Relativní rozlišený název pro sudo"
 
 #: config/sudo/class_sudoConfig.inc:45
 msgid "Branch in which sudoers will be stored"
-msgstr ""
+msgstr "Větev, ve které budou ukládáni držitelé práv sudo"

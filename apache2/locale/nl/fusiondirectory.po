@@ -5,12 +5,12 @@
 # Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-108\n"
+"Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2015-03-19 21:45+0100\n"
-"PO-Revision-Date: 2015-02-25 16:12+0000\n"
+"POT-Creation-Date: 2014-12-15 17:47+0100\n"
+"PO-Revision-Date: 2015-02-25 16:04+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Dutch (http://www.transifex.com/projects/p/FusionDirectory-108/language/nl/)\n"
+"Language-Team: Dutch (http://www.transifex.com/projects/p/FusionDirectory-109/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -56,7 +56,7 @@ msgstr "Acties"
 
 #: admin/systems/services/apache2/serviceApacheVhostEdit-list.xml:59
 msgid "Create"
-msgstr "Maak"
+msgstr "Aanmaken"
 
 #: admin/systems/services/apache2/serviceApacheVhostEdit-list.xml:65
 msgid "serviceApacheVhostEdit"
@@ -64,7 +64,7 @@ msgstr ""
 
 #: admin/systems/services/apache2/serviceApacheVhostEdit-list.xml:77
 msgid "Remove"
-msgstr "Verwijder"
+msgstr "Verwijderen"
 
 #: admin/systems/services/apache2/serviceApacheVhostEdit-list.xml:109
 msgid "Edit host"
@@ -152,38 +152,3 @@ msgstr "URL Alias"
 #: admin/systems/services/apache2/class_serviceApacheVhostEdit.inc:107
 msgid "Directory Path"
 msgstr "Directory Path"
-
-#: admin/systems/services/apache2/remove.tpl.c:2
-msgid "Warning"
-msgstr "Waarschuwing"
-
-#: admin/systems/services/apache2/remove.tpl.c:5
-msgid ""
-"This includes all account data, system access rules, imap settings, etc. for"
-" this user. Please double check if your really want to do this since there "
-"is no way for FusionDirectory to get your data back."
-msgstr "Inclusief alle account data,system access rules,imap opties,etc. Voor deze gebruiker. Gelieve dubbel na te kijken of je dit echt wenst te doen want er is geen andere manier voor FusionDirectory om je data terug te krijgen."
-
-#: admin/systems/services/apache2/remove.tpl.c:8
-msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr "Indien u zeker bent drukt u dan 'Verwijderen' om door te gaan of 'Annuleren' om te annuleren."
-
-#: admin/systems/services/apache2/serviceApacheVhostEdit-filter.tpl.c:2
-msgid "Filter"
-msgstr "Filter"
-
-#: admin/systems/services/apache2/serviceApacheVhostEdit-filter.tpl.c:5
-msgid "Name"
-msgstr "Naam"
-
-#: admin/systems/services/apache2/serviceApacheVhostEdit-list.tpl.c:2
-msgid "Base"
-msgstr "Basis"
-
-#: admin/systems/services/apache2/serviceApacheVhostEditFooter.tpl.c:2
-msgid "Save"
-msgstr "Opslaan"
-
-#: admin/systems/services/apache2/serviceApacheVhostEditFooter.tpl.c:5
-msgid "Cancel"
-msgstr "Annuleren"

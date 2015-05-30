@@ -3,73 +3,65 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Benoit Mortier <benoit.mortier@opensides.be>, 2005-2009
-# MCMic, 2014
-# fusiondirectory <contact@fusiondirectory.org>, 2013
-# fusiondirectory <contact@fusiondirectory.org>, 2012
-# fusiondirectory <contact@fusiondirectory.org>, 2012-2013
-# fusiondirectory <contact@fusiondirectory.org>, 2012
-# MCMic, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-108\n"
+"Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2015-03-19 21:45+0100\n"
+"POT-Creation-Date: 2014-12-15 17:47+0100\n"
 "PO-Revision-Date: 2015-02-25 16:51+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory-108/language/fr/)\n"
+"Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory-109/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: admin/ogroups/kolab/class_mailogroup.inc:70
-msgid "Remove mail account"
-msgstr "Supprimer le compte de courriel"
+#: admin/ogroups/kolab/class_mailogroup.inc:37
+msgid "Mail"
+msgstr "Messagerie"
 
-#: admin/ogroups/kolab/class_mailogroup.inc:71
-#: admin/ogroups/kolab/class_mailogroup.inc:74
+#: admin/ogroups/kolab/class_mailogroup.inc:38
+msgid "Mail group"
+msgstr "Messagerie de groupe"
+
+#: admin/ogroups/kolab/class_mailogroup.inc:45
+#: admin/ogroups/kolab/class_mailogroup.inc:118
+#: admin/ogroups/kolab/class_mailogroup.inc:125
+msgid "Mail address"
+msgstr "Adresse de messagerie"
+
+#: admin/ogroups/kolab/class_mailogroup.inc:82
+msgid "Remove mail account"
+msgstr "Supprimer le compte de messagerie"
+
+#: admin/ogroups/kolab/class_mailogroup.inc:83
+#: admin/ogroups/kolab/class_mailogroup.inc:86
 msgid "mail group"
 msgstr "messagerie de groupe"
 
-#: admin/ogroups/kolab/class_mailogroup.inc:73
+#: admin/ogroups/kolab/class_mailogroup.inc:85
 msgid "Create mail account"
 msgstr "Créer un compte de messagerie"
 
-#: admin/ogroups/kolab/class_mailogroup.inc:106
-#: admin/ogroups/kolab/class_mailogroup.inc:113
-#: admin/ogroups/kolab/class_mailogroup.inc:190
-msgid "Mail address"
-msgstr "Adresse de courriel"
-
-#: admin/ogroups/kolab/class_mailogroup.inc:106
+#: admin/ogroups/kolab/class_mailogroup.inc:118
 msgid "your-name@your-domain.com"
 msgstr "votre-nom@votre-domaine.com"
 
-#: admin/ogroups/kolab/class_mailogroup.inc:140
-#: admin/ogroups/kolab/class_mailogroup.inc:177
+#: admin/ogroups/kolab/class_mailogroup.inc:152
+#: admin/ogroups/kolab/class_mailogroup.inc:189
 #: admin/systems/services/kolab/class_serviceKolab.inc:282
 #: admin/systems/services/kolab/class_serviceKolab.inc:293
 msgid "LDAP error"
 msgstr "Erreur LDAP"
 
-#: admin/ogroups/kolab/class_mailogroup.inc:184
-#: admin/ogroups/kolab/paste_mail.tpl.c:2
-msgid "Mail"
-msgstr "Messagerie"
-
-#: admin/ogroups/kolab/class_mailogroup.inc:185
-msgid "Mail group"
-msgstr "Groupe de courriel"
-
 #: admin/systems/services/kolab/class_serviceKolab.inc:29
 msgid "Enable MX lookup for relayhost"
-msgstr "Activer la recherche MX pour le serveur relais"
+msgstr "Vérification de l'enregistrement MX pour le serveur relais"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:32
 msgid "Relay host"
-msgstr "Hôte relai"
+msgstr "Hôte relais"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:32
 #: admin/systems/services/kolab/class_serviceKolab.inc:186
@@ -79,12 +71,12 @@ msgstr "Machine utilisée pour relayer les mails"
 #: admin/systems/services/kolab/class_serviceKolab.inc:67
 #: admin/systems/services/kolab/class_serviceKolab.inc:68
 msgid "Kolab mail service"
-msgstr "Service de courriel Kolab"
+msgstr "Service de messagerie Kolab"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:68
 #: admin/systems/services/kolab/class_serviceKolab.inc:104
 msgid "Services"
-msgstr "Services"
+msgstr "Service"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:82
 msgid "Informations"
@@ -100,15 +92,15 @@ msgstr "Nom du domaine postfix"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:92
 msgid "Cyrus admins"
-msgstr "Administrateurs Cyrus"
+msgstr "Administrateur Cyrus"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:92
 msgid "Cyrus admins for kolab server"
-msgstr "Administrateurs Cyrus pour le serveur Kolab"
+msgstr "Administrateur Cyrus pour le serveur Kolab"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:97
 msgid "Mail domains"
-msgstr "Domaines de courriel"
+msgstr "Domaines de messagerie"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:97
 msgid "Postfix mydestination"
@@ -156,23 +148,23 @@ msgstr "Activer le service Sieve"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:127
 msgid "FTP FreeBusy service (legacy)"
-msgstr "Service FTP FreeBusy (obsolète)"
+msgstr "Service d'option de disponibilité par HTTP (ancien)"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:128
 msgid "FTP FreeBusy service (legacy, not interoperable with Kolab2 FreeBusy)"
-msgstr "Service FTP FreeBusy (obsolète, pas compatible avec Kolab2 FreeBusy)"
+msgstr "Service des options de disponibilités par FTP (ancien, pas compatible avec les options de disponibilités de Kolab2)"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:132
 msgid "HTTP FreeBusy service (legacy)"
-msgstr "Service HTTP FreeBusy (obsolète)"
+msgstr "Service d'option de disponibilité par HTTP (ancien)"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:136
 msgid "Amavis email scanning"
-msgstr "Scan des courriels par Amavis"
+msgstr "Scan des messages par Amavis"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:136
 msgid "Amavis email scanning (virus/spam)"
-msgstr "Scan des courriels par Amavis (antivirus/antispam)"
+msgstr "Scan des messages par Amavis (antivirus/antispam)"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:142
 msgid "Quota settings"
@@ -235,7 +227,7 @@ msgstr "Erreur interne"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:269
 msgid "Kolab account does not exist!"
-msgstr "Le compte Kolab n'existe pas !"
+msgstr "Le compte kolab ,'existe pas !"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:273
 msgid "Error"
@@ -243,7 +235,7 @@ msgstr "Erreur"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:273
 msgid "hostname"
-msgstr "Nom d’hôte"
+msgstr "Nom de l'hôte"
 
 #: personal/kolab/class_kolabAccount.inc:82
 msgid "Kolab"
@@ -327,11 +319,11 @@ msgstr "Manuel si il y a conflit"
 
 #: personal/kolab/class_kolabAccount.inc:152
 msgid "mail address"
-msgstr "Adresse de courriel"
+msgstr "Adresse de messagerie"
 
 #: personal/kolab/class_kolabAccount.inc:153
 msgid "policy for this mail address"
-msgstr "Politique pour cette adresse de courriel"
+msgstr "Politique pour mon adresse de messagerie"
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:148
 #: personal/mail/kolab/class_mail-methods-kolab.inc:156
@@ -341,7 +333,7 @@ msgstr "Non spécifié"
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:149
 msgid "Mails"
-msgstr "Courriel"
+msgstr "Messagerie"
 
 #: personal/mail/kolab/class_mail-methods-kolab.inc:150
 msgid "Tasks"
@@ -399,19 +391,3 @@ msgstr "En attente de kolab pour la suppression des paramètres de messagerie...
 #: personal/mail/kolab/class_mail-methods-kolab.inc:282
 msgid "Please remove the mail settings first!"
 msgstr "Veuillez d'abord supprimer les paramètres de messagerie !"
-
-#: admin/ogroups/kolab/mail.tpl.c:2
-msgid "Mail distribution list"
-msgstr "Liste de distribution"
-
-#: admin/ogroups/kolab/mail.tpl.c:5
-msgid "Primary address"
-msgstr "Adresse principale"
-
-#: admin/ogroups/kolab/mail.tpl.c:8
-msgid "Primary mail address for this distribution list"
-msgstr "Adresse de messagerie principale pour cette liste de distribution"
-
-#: admin/ogroups/kolab/paste_mail.tpl.c:5
-msgid "Please enter a mail address"
-msgstr "Veuillez entrer une adresse de messagerie"
