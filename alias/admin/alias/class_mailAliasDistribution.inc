@@ -69,7 +69,7 @@ class mailAliasDistribution extends simplePlugin
             )
           ),
           new SelectAttribute (
-            _('Mail server'), _('Mail server fot this alias'),
+            _('Mail server'), _('Mail server for this alias'),
             'gosaMailServer', TRUE,
             array_keys($config->data['SERVERS']['IMAP'])
           ),
