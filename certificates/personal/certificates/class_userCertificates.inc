@@ -20,10 +20,17 @@
 
 class CertificateFileAttribute extends FileAttribute
 {
+  static $pemBegin   = "-----BEGIN CERTIFICATE-----";
+  static $pemEnd     = "-----END CERTIFICATE-----";
+
   /* Return the value as an array of values to be displayed in a table columns */
   function getArrayValue ()
   {
     $value = $this->getValue();
+    if (!strpos($value, self::$pemBegin)) {
+      /* Convert DER to PEM */
+      $value = self::$pemBegin."\n".chunk_split(base64_encode($value), 64, "\n").self::$pemEnd."\n";
+    }
     $infos = openssl_x509_parse($value, TRUE);
     if (empty($infos)) {
       return array(_('Unknown format'), $this->displayValue($this->getValue()), '');
@@ -46,6 +53,17 @@ class CertificateFileAttribute extends FileAttribute
       $values[2] .= '?';
     }
     return $values;
+  }
+
+  /*! \brief Convert PEM to DER if needed
+   */
+  function setValue ($value)
+  {
+    $pattern = '/'.preg_quote(self::$pemBegin, '/').'(.*)'.preg_quote($pemEnd, '/').'/s';
+    if (preg_match($pattern, $value, $m)) {
+      $value = base64_decode($m[1]);
+    }
+    parent::setValue($value);
   }
 }
 
