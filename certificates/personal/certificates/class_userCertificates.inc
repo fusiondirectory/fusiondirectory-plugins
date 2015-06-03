@@ -59,7 +59,7 @@ class CertificateFileAttribute extends FileAttribute
    */
   function setValue ($value)
   {
-    $pattern = '/'.preg_quote(self::$pemBegin, '/').'(.*)'.preg_quote($pemEnd, '/').'/s';
+    $pattern = '/'.preg_quote(self::$pemBegin, '/').'(.*)'.preg_quote(self::$pemEnd, '/').'/s';
     if (preg_match($pattern, $value, $m)) {
       $value = base64_decode($m[1]);
     }
