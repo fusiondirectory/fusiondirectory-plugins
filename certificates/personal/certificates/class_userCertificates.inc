@@ -42,7 +42,7 @@ class CertificateOrderedArrayAttribute extends OrderedArrayAttribute
     if (parent::handlePostValueActions($id, $postValue)) {
       return TRUE;
     }
-    if (preg_match('/^'.$id.'_download_', $id)) {
+    if (preg_match('/^'.$id.'_download_/', $id)) {
       $key = preg_replace('/^'.$id.'_download_/', '', $postValue);
       $key = preg_replace('/_[xy]$/', '', $key);
 
