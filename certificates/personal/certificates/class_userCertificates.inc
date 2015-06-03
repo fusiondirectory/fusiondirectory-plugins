@@ -79,8 +79,8 @@ class userCertificates extends simplePlugin
       'plDescription'   => _('User certificates'),
       'plSelfModify'    => TRUE,
       'plObjectType'    => array('user'),
-      'plIcon'          => '',
-      'plSmallIcon'     => '',
+      'plIcon'          => 'geticon.php?context=types&icon=certificate&size=48',
+      'plSmallIcon'     => 'geticon.php?context=types&icon=certificate&size=16',
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
