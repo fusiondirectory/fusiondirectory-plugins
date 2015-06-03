@@ -592,15 +592,15 @@ class networkSettings extends plugin
             $zone = substr(strrchr($this->dnsEntry['zoneName'], "/"), 1);
             $ldap = $this->config->get_ldap_link();
             $ldap->cd($this->config->current['BASE']);
-            $ldap->search("(&(objectClass=dnsZone)(zoneName=$zone)(sOARecord=*))", array("nSRecord"));
+            $ldap->search("(&(objectClass=dnsZone)(zoneName=$zone)(sOARecord=*))", array("sOARecord"));
             if ($ldap->count() != 1) {
               msg_dialog::display(_("Error"), sprintf(_("Was not able to find DNS server for zone %s"), $zone), ERROR_DIALOG);
             } else {
               $attrs  = $ldap->fetch();
-              $ip     = $attrs['nSRecord'][0];
-              $ldap->search("(&(objectClass=goServer)(ipHostNumber=".$ip."))", array("macAddress"));
+              $cn     = preg_replace('/\..*$/', '', $attrs['sOARecord'][0]);
+              $ldap->search("(&(objectClass=goServer)(cn=".$cn."))", array("macAddress"));
               if ($ldap->count() != 1) {
-                msg_dialog::display(_("Error"), sprintf(_("Was not able to find mac address of DNS server %s"), $ip), ERROR_DIALOG);
+                msg_dialog::display(_("Error"), sprintf(_("Was not able to find mac address of DNS server %s"), $cn), ERROR_DIALOG);
               } else {
                 $attrs  = $ldap->fetch();
                 $o_queue->append_call("Ldap2Zone.start",
