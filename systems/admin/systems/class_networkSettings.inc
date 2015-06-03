@@ -392,7 +392,6 @@ class networkSettings extends plugin
       $only_once = TRUE;
       if ($this->acl_is_writeable("dnsSetup")) {
         foreach ($_POST as $name => $value) {
-
           /* Check if we have to delete a record entry */
           if ((preg_match("/RemoveRecord_/", $name)) && ($only_once)) {
 
@@ -578,7 +577,14 @@ class networkSettings extends plugin
             $this->dnsEntry[$attr] = get_post($attr);
           }
         }
-        if (isset($_POST['reloadThisDNSStuff'])) {
+        $reloadThisDNSStuff = FALSE;
+        foreach ($_POST as $name => $value) {
+          if (preg_match('/^reloadThisDNSStuff/', $name)) {
+            $reloadThisDNSStuff = TRUE;
+            break;
+          }
+        }
+        if ($reloadThisDNSStuff) {
           $o_queue = new supportDaemon();
           if ($o_queue->is_error()) {
             msg_dialog::display(_("Error"), sprintf(_("Was not able to contact argonaut server: %s"), "<br/><br/>".$o_queue->get_error()), ERROR_DIALOG);
