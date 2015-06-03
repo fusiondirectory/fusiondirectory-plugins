@@ -18,6 +18,44 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
+class CertificateOrderedArrayAttribute extends OrderedArrayAttribute
+{
+  protected function genRowIcons($key, $value)
+  {
+    $id = $this->getHtmlId();
+    list ($img, $width) = parent::genRowIcons($key, $value);
+    $img = $this->renderInputField(
+      'image', $id.'_download_'.$key,
+      array(
+        'src'   => 'geticon.php?context=actions&amp;icon=document-save&amp;size=16',
+        'title' => _('Download'),
+        'alt'   => _('Download'),
+        'class' => 'center'
+      )
+    ).'&nbsp;'.$img;
+    $width += 15;
+    return array ($img, $width);
+  }
+
+  protected function handlePostValueActions($id, $postValue)
+  {
+    if (parent::handlePostValueActions($id, $postValue)) {
+      return TRUE;
+    }
+    if (preg_match('/^'.$id.'_download_', $id)) {
+      $key = preg_replace('/^'.$id.'_download_/', '', $postValue);
+      $key = preg_replace('/_[xy]$/', '', $key);
+
+      session::set('binary', $this->postValue[$key]);
+      session::set('binarytype', 'octet-stream');
+      session::set('binaryfile', $this->getLdapName().'.der');
+      header('location: getbin.php');
+      exit();
+    }
+    return FALSE;
+  }
+}
+
 class CertificateFileAttribute extends FileAttribute
 {
   static $pemBegin   = "-----BEGIN CERTIFICATE-----";
@@ -92,7 +130,7 @@ class userCertificates extends simplePlugin
       'main' => array(
         'name'  => _('Certificates'),
         'attrs' => array(
-          new OrderedArrayAttribute(
+          new CertificateOrderedArrayAttribute(
             new CertificateFileAttribute (
               '', _('Certificate content'),
               'userCertificate;binary', TRUE
