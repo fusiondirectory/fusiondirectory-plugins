@@ -6,7 +6,7 @@
 # gallak <antoine.gallavardin@free.fr>, 2013
 # Benoit Mortier <benoit.mortier@opensides.be>, 2005-2011
 # Benoit Mortier <benoit.mortier@opensides.be>, 2015
-# MCMic, 2014
+# MCMic, 2014-2015
 # fusiondirectory <contact@fusiondirectory.org>, 2013-2014
 # fusiondirectory <contact@fusiondirectory.org>, 2012
 # fusiondirectory <contact@fusiondirectory.org>, 2012
@@ -16,10 +16,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
-"Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2015-03-31 11:49+0200\n"
-"PO-Revision-Date: 2015-03-31 11:41+0000\n"
-"Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>\n"
+"Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
+"POT-Creation-Date: 2015-05-07 11:24+0200\n"
+"PO-Revision-Date: 2015-06-04 10:50+0000\n"
+"Last-Translator: MCMic\n"
 "Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory-108/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1457,7 +1457,7 @@ msgstr "Stations de travail"
 
 #: addons/dashboard/class_dashBoardSystems.inc:51
 msgid "Windows Workstations"
-msgstr "Stations de travail Windows"
+msgstr "Stations Windows"
 
 #: addons/dashboard/class_dashBoardSystems.inc:54
 msgid "Terminals"
@@ -1477,7 +1477,7 @@ msgstr "Composants"
 
 #: addons/dashboard/class_dashBoardSystems.inc:66
 msgid "Mobile phones"
-msgstr "Téléphone mobile"
+msgstr "Téléphones mobiles"
 
 #: addons/dashboard/class_dashBoardSystems.inc:183
 msgid "Statistics"
@@ -1600,11 +1600,11 @@ msgid ""
 "Actions you choose here influence all systems in this object group. "
 "Additionally, all values editable here can be inherited by the clients "
 "assigned to this object group."
-msgstr "Les actions que vous choisissez ici influencent tout les systèmes dans ce groupe d'objet. De plus tout les valeurs éditables ici peuvent être hérité par les clients assigné à ce groupe d'objets."
+msgstr "Les actions que vous choisissez ici influencent tous les systèmes dans ce groupe d'objet. De plus toutes les valeurs éditables ici peuvent être héritées par les clients assignés à ce groupe d'objets."
 
 #: admin/ogroups/goto/termgroup.tpl.c:8
 msgid "Generic"
-msgstr "Application"
+msgstr "Général"
 
 #: admin/ogroups/goto/termgroup.tpl.c:11
 msgid "NTP server"
@@ -1612,7 +1612,7 @@ msgstr "Serveur NTP"
 
 #: admin/ogroups/goto/termgroup.tpl.c:14
 msgid "Choose server to use for synchronizing time"
-msgstr "Sélectionnez le serveur pour la synchronisation du temps"
+msgstr "Sélectionnez le serveur pour la synchronisation de l’heure"
 
 #: admin/ogroups/goto/termgroup.tpl.c:20
 msgid "Select terminal mode"
@@ -1684,18 +1684,18 @@ msgstr "TTL"
 
 #: admin/systems/network.tpl.c:44
 msgid "Dns records"
-msgstr "Enregistrement dns"
+msgstr "Enregistrements DNS"
 
 #: admin/systems/password.tpl.c:2
 msgid ""
 "To change the terminal root password use the fields below. The changes take "
 "effect during the next reboot. Please memorize the new password, because you"
 " wouldn't be able to log in."
-msgstr "Pour changer le mot de passe root du terminal, utilisez le champ ci-dessous. Les changements prennent effet immédiatement. Veuillez mémoriser le nouveau mot de passe sinon vous ne pourrez pas vous identifier sans celui-ci."
+msgstr "Pour changer le mot de passe root du terminal, utilisez les champs ci-dessous. Les changements prennent effet au prochain démarrage. Veuillez mémoriser le nouveau mot de passe, sinon vous ne pourrez pas vous identifier."
 
 #: admin/systems/password.tpl.c:5
 msgid "Leave fields blank for password inheritance from default entries."
-msgstr "Laissez le champ vide pour le mot de passe afin de l'obtenir depuis l'entrée par défaut."
+msgstr "Laissez les champs vide pour le mot de passe afin de l'obtenir depuis l'entrée par défaut."
 
 #: admin/systems/password.tpl.c:8
 msgid "Changing the password impinges on authentification only."
@@ -1722,7 +1722,7 @@ msgid ""
 "Warning : Once you import your OPSI hosts into FusionDirectory, they will be"
 " managed by it, so if you delete them or deactivate their OPSI tab, they "
 "will be removed from OPSI."
-msgstr "Attention: Une fois que vous importez vos hôtes OPSI dans FusionDirectory, ils seront gérés par lui, donc si vous supprimez ou désactivez leur onglet OPSI, ils seront retirés de OPSI."
+msgstr "Attention: Une fois que vous importez vos hôtes OPSI dans FusionDirectory, elles seront gérées par lui, donc si vous les supprimez ou désactivez leur onglet OPSI, elle seront retirées de OPSI."
 
 #: admin/systems/gencd.tpl.c:2
 msgid "CD-Install-Image generation"
@@ -1769,29 +1769,29 @@ msgstr "Afficher les terminaux"
 
 #: admin/systems/system-filter.tpl.c:14
 msgid "Show network printer"
-msgstr "Imprimantes réseaux"
+msgstr "Afficher les imprimantes réseaux"
 
 #: admin/systems/system-filter.tpl.c:17
 #: admin/systems/phoneSelect/phoneSelect-filter.tpl.c:5
 msgid "Show phones"
-msgstr "Téléphones"
+msgstr "Afficher les téléphones"
 
 #: admin/systems/system-filter.tpl.c:20
 msgid "Show windows based workstations"
-msgstr "PC Windows"
+msgstr "Afficher les stations Windows"
 
 #: admin/systems/system-filter.tpl.c:23
 msgid "Show network devices"
-msgstr "Périphériques réseau"
+msgstr "Afficher les périphériques réseau"
 
 #: admin/systems/system-filter.tpl.c:26
 #: admin/systems/phoneSelect/phoneSelect-filter.tpl.c:8
 msgid "Show mobile phones"
-msgstr "Montrer les téléphones mobiles"
+msgstr "Afficher les téléphones mobiles"
 
 #: admin/systems/system-filter.tpl.c:29
 msgid "Show IPMI interfaces"
-msgstr "Montrer les interfaces IPMI"
+msgstr "Afficher les interfaces IPMI"
 
 #: admin/systems/ppd/printerPPDSelectionDialog.tpl.c:2
 msgid "Select objects to add"
@@ -1879,7 +1879,7 @@ msgstr "Utilisateurs"
 
 #: admin/systems/printer.tpl.c:47
 msgid "Users which are allowed to administrate this printer"
-msgstr "Utilisateur qui sont autorisés à administrer cette imprimante"
+msgstr "Utilisateurs qui sont autorisés à administrer cette imprimante"
 
 #: admin/systems/printer.tpl.c:50
 msgid "Admins"
@@ -1903,7 +1903,7 @@ msgstr "Votre navigateur ne supporte pas les iframes."
 
 #: admin/systems/services/cups/serviceCUPS.tpl.c:2
 msgid "Print Service"
-msgstr "Services d'impression"
+msgstr "Service d'impression"
 
 #: admin/systems/services/cups/serviceCUPS.tpl.c:5
 msgid "enabled"
@@ -1925,7 +1925,7 @@ msgstr "Service à ajouter"
 
 #: admin/systems/services/ServiceAddDialog.tpl.c:11
 msgid "All available services are already in use."
-msgstr "Tout les services disponibles sont déjà utilisés."
+msgstr "Tous les services disponibles sont déjà utilisés."
 
 #: admin/systems/services/ServiceAddDialog.tpl.c:14
 #: admin/systems/SelectDeviceType.tpl.c:26
@@ -1937,19 +1937,19 @@ msgid ""
 "This system has no system type configured. Please choose a system type for "
 "this object and an optional inheritance group. Press the 'continue' button "
 "to proceed."
-msgstr "Ce système n'a pas de type de système configuré. S'il vous plaît choisissez un type de système pourcet objet et un héritage de groupe facultatif. Appuyez sur le bouton 'Continuer' pour continuer."
+msgstr "Ce système n'a pas de type de système configuré. S'il vous plaît choisissez un type de système pour cet objet et éventuellement un héritage de groupe. Appuyez sur le bouton 'Continuer' pour continuer."
 
 #: admin/systems/SelectDeviceType.tpl.c:5
 msgid ""
 "Please select a system type and an optional bundle of predefined settings to"
 " be inherited."
-msgstr "Veuillez sélectionner un type de système et éventuellement d'un ensemble de paramètres à hériter."
+msgstr "Veuillez sélectionner un type de système et éventuellement un ensemble de paramètres à hériter."
 
 #: admin/systems/SelectDeviceType.tpl.c:8
 msgid ""
 "Please select a system type and a bundle of predefined settings to be "
 "inherited."
-msgstr "Veuillez sélectionner un type de système et d'un ensemble de paramètres à hériter."
+msgstr "Veuillez sélectionner un type de système et un ensemble de paramètres à hériter."
 
 #: admin/systems/SelectDeviceType.tpl.c:11
 #: admin/systems/SelectDeviceType.tpl.c:14
@@ -1958,7 +1958,7 @@ msgstr "Type de système"
 
 #: admin/systems/SelectDeviceType.tpl.c:17
 msgid "Choose an object group as template"
-msgstr "Choisissez un groupe d'objets comme modèles"
+msgstr "Choisissez un groupe d'objets comme modèle"
 
 #: admin/systems/SelectDeviceType.tpl.c:20
 msgid "Object group"
@@ -1970,7 +1970,7 @@ msgstr "aucun"
 
 #: addons/dashboard/systems_stats.tpl.c:2
 msgid "There are several argonaut servers! (this is not yet supported)"
-msgstr "Il y a plusieurs serveurs argonaut! (ce n'est pas encore supporté)"
+msgstr "Il y a plusieurs serveurs Argonaut ! (ce n'est pas encore supporté)"
 
 #: addons/dashboard/systems_stats.tpl.c:5
 msgid "There is an argonaut server running on %1 (%3://%2:%4)"
@@ -1984,7 +1984,7 @@ msgstr[1] "%1 systèmes sont configurés pour exécuter un client Argonaut."
 
 #: addons/dashboard/systems_stats.tpl.c:11
 msgid "But no system is configured to run an argonaut client!"
-msgstr "Mais aucun système n’est configuré pour exécuter un client Argonaut!"
+msgstr "Mais aucun système n’est configuré pour exécuter un client Argonaut !"
 
 #: addons/dashboard/systems_stats.tpl.c:14
 msgid ""

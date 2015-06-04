@@ -4,7 +4,7 @@
 # 
 # Translators:
 # gallak <antoine.gallavardin@free.fr>, 2013
-# MCMic, 2014
+# MCMic, 2014-2015
 # fusiondirectory <contact@fusiondirectory.org>, 2013-2014
 # fusiondirectory <contact@fusiondirectory.org>, 2013
 # gallak <antoine.gallavardin@free.fr>, 2013
@@ -14,10 +14,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
-"Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2015-03-31 11:49+0200\n"
-"PO-Revision-Date: 2015-03-31 11:41+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
+"POT-Creation-Date: 2015-05-07 11:24+0200\n"
+"PO-Revision-Date: 2015-06-04 09:20+0000\n"
+"Last-Translator: MCMic\n"
 "Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory-108/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -681,17 +681,17 @@ msgstr "\"%s\" n'est pas un fichier !"
 
 #: addons/argonaut/argonaut_import_file.tpl.c:2
 msgid "Import jobs"
-msgstr "Importer de tâches"
+msgstr "Importer des tâches"
 
 #: addons/argonaut/argonaut_import_file.tpl.c:5
 msgid ""
 "You can import a list of jobs into the FusionDirectory job queue. This "
 "should be a semicolon seperated list of items in the following format:"
-msgstr "Vous pouvez importer une liste de jobs dans la queue des jobs FusionDirectory. Cela doit être un liste séparée par un point virgule dans le format suivant :"
+msgstr "Vous pouvez importer une liste de tâches dans la queue de FusionDirectory. Cela doit être une liste de tâches séparées par des point-virgules dans le format suivant :"
 
 #: addons/argonaut/argonaut_import_file.tpl.c:8
 msgid "timestamp"
-msgstr "Date"
+msgstr "timestamp"
 
 #: addons/argonaut/argonaut_import_file.tpl.c:11
 msgid "MAC-address"
@@ -699,19 +699,19 @@ msgstr "Adresse MAC"
 
 #: addons/argonaut/argonaut_import_file.tpl.c:14
 msgid "job type"
-msgstr "Type de job"
+msgstr "Type de tâche"
 
 #: addons/argonaut/argonaut_import_file.tpl.c:17
 msgid "object group"
-msgstr "Groupes d'objets"
+msgstr "Groupe d'objets"
 
 #: addons/argonaut/argonaut_import_file.tpl.c:20
 msgid "import base"
-msgstr "base pour l'importation"
+msgstr "base d’importation"
 
 #: addons/argonaut/argonaut_import_file.tpl.c:23
 msgid "full hostname"
-msgstr "Nom complet de l'hôte"
+msgstr "nom complet de l'hôte"
 
 #: addons/argonaut/argonaut_import_file.tpl.c:26
 msgid "IP-address"
@@ -740,7 +740,7 @@ msgstr "Téléverser"
 #: addons/argonaut/argonaut_import_file.tpl.c:44
 #: addons/argonaut/events/DaemonEvent.tpl.c:20
 msgid "Timestamp"
-msgstr "Date"
+msgstr "Timestamp"
 
 #: addons/argonaut/argonaut_import_file.tpl.c:56
 msgid "Base"
@@ -792,11 +792,11 @@ msgstr "Afficher les terminaux"
 
 #: addons/argonaut/events/eventTargetSystems-filter.tpl.c:14
 msgid "Show winstations"
-msgstr "Stations Windows"
+msgstr "Afficher les stations Windows"
 
 #: addons/argonaut/events/eventTargetSystems-filter.tpl.c:17
 msgid "Filter by IP address range"
-msgstr "Filtrer les adresse IP par étendue"
+msgstr "Filtrer par plage d’adresse IP"
 
 #: addons/argonaut/events/timestamp_select.tpl.c:2
 msgid "Year"
@@ -828,7 +828,7 @@ msgstr "Tâche périodique"
 
 #: addons/argonaut/events/timestamp_select.tpl.c:23
 msgid "Job intervall"
-msgstr "Intervalle pour les tâches"
+msgstr "Intervalle"
 
 #: addons/argonaut/remove.tpl.c:2
 msgid "Warning"

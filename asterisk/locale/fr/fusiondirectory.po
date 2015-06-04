@@ -5,6 +5,7 @@
 # Translators:
 # Benoit Mortier <benoit.mortier@opensides.be>, 2005-2011
 # Benoit Mortier <benoit.mortier@opensides.be>, 2015
+# MCMic, 2015
 # fusiondirectory <contact@fusiondirectory.org>, 2013
 # fusiondirectory <contact@fusiondirectory.org>, 2012
 # fusiondirectory <contact@fusiondirectory.org>, 2012-2013
@@ -14,10 +15,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
-"Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2015-03-31 11:49+0200\n"
-"PO-Revision-Date: 2015-03-31 11:51+0000\n"
-"Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>\n"
+"Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
+"POT-Creation-Date: 2015-05-07 11:52+0200\n"
+"PO-Revision-Date: 2015-06-04 10:21+0000\n"
+"Last-Translator: MCMic\n"
 "Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory-108/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1147,7 +1148,7 @@ msgstr "Format du fichier son "
 
 #: admin/conference/generic.tpl.c:56
 msgid "Choose subtree to place department in"
-msgstr "Sélectionnez la branche de l'annuaire dans laquelle sera placée le département"
+msgstr "Sélectionnez la branche dans laquelle placer le département"
 
 #: admin/conference/generic.tpl.c:62
 msgid "Activate session menu"
@@ -1165,7 +1166,7 @@ msgstr "Compter les utilisateurs"
 msgid ""
 "Please double check if you really want to do this since there is no way for "
 "FusionDirectory to get your data back."
-msgstr "Veuillez vérifier que vous voulez effectuer cette action. Toutes les données seront perdues étant donné qu'il est impossible pour FusionDirectory de récupérer vos données."
+msgstr "Veuillez vérifier que vous voulez effectuer cette action étant donné qu'il est impossible pour FusionDirectory de récupérer vos données."
 
 #: admin/conference/remove.tpl.c:8 admin/macro/remove.tpl.c:8
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
@@ -1173,7 +1174,7 @@ msgstr "Donc - si vous êtes sûr - cliquez sur 'Supprimer' pour continuer ou su
 
 #: admin/macro/generic.tpl.c:11
 msgid "Macro name to be displayed"
-msgstr "Nom d'affichage de la macro"
+msgstr "Nom affiché de la macro"
 
 #: admin/macro/generic.tpl.c:20
 msgid "Visible for user"
@@ -1218,6 +1219,7 @@ msgid "Choose a phone type"
 msgstr "Sélectionnez un type de téléphone"
 
 #: admin/systems/asterisk/phonesettings.tpl.c:11
+#: admin/systems/asterisk/phonesettings.tpl.c:32
 msgid "Mode"
 msgstr "Mode"
 
@@ -1228,16 +1230,12 @@ msgstr "Mode DTMF"
 #: admin/systems/asterisk/phonesettings.tpl.c:23
 #: admin/systems/asterisk/phonesettings.tpl.c:38
 msgid "Default IP"
-msgstr "Adresse ip par défaut"
+msgstr "Adresse IP par défaut"
 
 #: admin/systems/asterisk/phonesettings.tpl.c:29
 #: admin/systems/asterisk/phonesettings.tpl.c:41
 msgid "Response timeout"
 msgstr "Temps de réponse maximum"
-
-#: admin/systems/asterisk/phonesettings.tpl.c:32
-msgid "Modus"
-msgstr "Mode"
 
 #: admin/systems/asterisk/phonesettings.tpl.c:44
 msgid "Authtype"
@@ -1290,7 +1288,7 @@ msgstr "Recherche de"
 
 #: addons/fonreports/contents.tpl.c:8
 msgid "Enter user name to search for"
-msgstr "Entrez le nom recherché"
+msgstr "Entrez le nom d’utilisateur à chercher"
 
 #: addons/fonreports/contents.tpl.c:11 addons/fonreports/contents.tpl.c:26
 msgid "in"
@@ -1326,7 +1324,7 @@ msgstr "Statut"
 
 #: addons/fonreports/contents.tpl.c:53
 msgid "Search returned no results..."
-msgstr "La recherche n'a renvoyé aucun résultat..."
+msgstr "La recherche n'a renvoyé aucun résultat…"
 
 #: personal/phoneaccount/generic.tpl.c:5
 #: personal/phoneaccount/paste_generic.tpl.c:8

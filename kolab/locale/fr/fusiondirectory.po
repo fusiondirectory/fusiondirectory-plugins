@@ -4,7 +4,7 @@
 # 
 # Translators:
 # Benoit Mortier <benoit.mortier@opensides.be>, 2005-2009
-# MCMic, 2014
+# MCMic, 2014-2015
 # fusiondirectory <contact@fusiondirectory.org>, 2013
 # fusiondirectory <contact@fusiondirectory.org>, 2012
 # fusiondirectory <contact@fusiondirectory.org>, 2012-2013
@@ -13,10 +13,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
-"Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2015-03-31 11:49+0200\n"
-"PO-Revision-Date: 2015-02-25 16:51+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
+"POT-Creation-Date: 2015-05-07 11:24+0200\n"
+"PO-Revision-Date: 2015-06-04 10:21+0000\n"
+"Last-Translator: MCMic\n"
 "Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory-108/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -57,7 +57,7 @@ msgstr "Erreur LDAP"
 #: admin/ogroups/kolab/class_mailogroup.inc:184
 #: admin/ogroups/kolab/paste_mail.tpl.c:2
 msgid "Mail"
-msgstr "Messagerie"
+msgstr "Courriel"
 
 #: admin/ogroups/kolab/class_mailogroup.inc:185
 msgid "Mail group"
@@ -189,20 +189,20 @@ msgstr "Avertissez les utilisateurs quand ils utilisent plus de X% de leur quota
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:154
 msgid "Free/Busy settings"
-msgstr "Préférences des options de disponibilités"
+msgstr "Préférences de Free/Busy"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:157
 #: admin/systems/services/kolab/class_serviceKolab.inc:158
 msgid "Allow unauthenticated downloading of Free/Busy information"
-msgstr "Permettre le téléchargement des informations de disponibilités de manière anonyme"
+msgstr "Permettre le téléchargement des informations Free/Busy de manière anonyme"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:162
 msgid "Number of days to include when creating free/busy lists"
-msgstr "Nombre de jours à inclure lors de la création d'une liste de disponibilités"
+msgstr "Nombre de jours à inclure lors de la création d'une liste Free/Busy"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:163
 msgid "Include data from X days in the past when creating free/busy lists"
-msgstr "Nombre de jours dans le passé à inclure lors de la création d'une liste de disponibilités"
+msgstr "Nombre de jours dans le passé à inclure lors de la création d'une liste Free/Busy"
 
 #: admin/systems/services/kolab/class_serviceKolab.inc:171
 msgid "SMTP privileged networks"
@@ -271,7 +271,7 @@ msgstr "Pas de taille maximale pour l'envoi de messages"
 
 #: personal/kolab/class_kolabAccount.inc:122
 msgid "Free Busy information"
-msgstr "Information de disponibilité"
+msgstr "Information Free/Busy"
 
 #: personal/kolab/class_kolabAccount.inc:125
 msgid "URL"
@@ -410,8 +410,8 @@ msgstr "Adresse principale"
 
 #: admin/ogroups/kolab/mail.tpl.c:8
 msgid "Primary mail address for this distribution list"
-msgstr "Adresse de messagerie principale pour cette liste de distribution"
+msgstr "Adresse de courriel principale pour cette liste de distribution"
 
 #: admin/ogroups/kolab/paste_mail.tpl.c:5
 msgid "Please enter a mail address"
-msgstr "Veuillez entrer une adresse de messagerie"
+msgstr "Veuillez entrer une adresse de courriel"
