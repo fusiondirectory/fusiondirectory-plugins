@@ -70,7 +70,6 @@
                 <td>
                   <input type='checkbox' name='dummy' id='dhcp_is_Account' class='center' disabled>
                   <label for="dhcp_is_Account">{t}Enable DHCP for this device{/t} ({t}not configured{/t})</label>
-                  <input type='image' src='geticon.php?context=actions&icon=view-refresh&size=16' class='center'>
                 </td>
               </tr>
               {/if}
@@ -166,7 +165,6 @@
     {else}
       <input type="checkbox" name="dummy" id="DNS_is_account" value="1" disabled class='center' {if $DNS_is_account} checked {/if}>
       <label for="DNS_is_account">{t}Enable DNS for this device{/t} ({t}not configured{/t})</label>
-      <input type='image' src='geticon.php?context=actions&icon=view-refresh&size=16' class='center'>
     {/if}
 
     </td>

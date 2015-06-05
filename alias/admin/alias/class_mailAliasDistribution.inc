@@ -1,7 +1,7 @@
 <?php
 /*
  * This code is part of FusionDirectory (http://www.fusiondirectory.org)
- * Copyright (C) 2012-2013 FusionDirectory
+ * Copyright (C) 2012-2015 FusionDirectory
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -69,7 +69,7 @@ class mailAliasDistribution extends simplePlugin
             )
           ),
           new SelectAttribute (
-            _('Mail server'), _('Mail server fot this alias'),
+            _('Mail server'), _('Mail server for this alias'),
             'gosaMailServer', TRUE,
             array_keys($config->data['SERVERS']['IMAP'])
           ),

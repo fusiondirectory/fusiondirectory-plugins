@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Benoit Mortier <benoit.mortier@opensides.be>, 2015
+# MCMic, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
-"Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2015-03-31 11:49+0200\n"
-"PO-Revision-Date: 2015-03-31 12:01+0000\n"
-"Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>\n"
+"Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
+"POT-Creation-Date: 2015-05-07 11:24+0200\n"
+"PO-Revision-Date: 2015-06-03 22:30+0000\n"
+"Last-Translator: MCMic\n"
 "Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory-108/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -53,21 +54,21 @@ msgstr "Longueur minimale"
 msgid ""
 "Minimum length of the user supplied password - passwords shorter than this "
 "value will be rejected"
-msgstr "Longueur minimale du mot de passe fourni par l'utilisateur - les mots de passe plus courts que cette valeur seront rejetées"
+msgstr "Longueur minimale du mot de passe fourni par l'utilisateur - les mots de passe plus courts que cette valeur seront rejetés"
 
 #: admin/ppolicy/class_ppolicy.inc:64
 msgid "Passwords in history"
-msgstr "Historique des mots de passe"
+msgstr "Mots de passe dans l’historique"
 
 #: admin/ppolicy/class_ppolicy.inc:64
 msgid ""
 "Number of passwords that are maintained in a list of previously used "
 "passwords"
-msgstr "Nombre de mots de passe qui sont maintenues dans une liste de mots de passe utilisés antérieurement"
+msgstr "Nombre de mots de passe qui sont conservés dans une liste de mots de passe utilisés antérieurement"
 
 #: admin/ppolicy/class_ppolicy.inc:69
 msgid "Minimum password age"
-msgstr "Age minimum du mot de passe"
+msgstr "Age minimum"
 
 #: admin/ppolicy/class_ppolicy.inc:69
 msgid "Minimum time between password changes"
@@ -75,14 +76,14 @@ msgstr "Délai minimum entre les changements de mot de passe"
 
 #: admin/ppolicy/class_ppolicy.inc:74
 msgid "Maximum password age"
-msgstr "Durée de vie du mot de passe"
+msgstr "Durée de vie"
 
 #: admin/ppolicy/class_ppolicy.inc:74
 msgid ""
 "Maximum time a password is valid, after which it is deemed to be no longer "
 "usable and any bind operations attempted with the expired password will be "
 "treated as invalid"
-msgstr "Temps maximum un mot de passe est valide, après quoi il est réputé ne plus être utilisable et toutes les opérations de connexion tenté avec le mot de passe expiré seront traités comme non valides"
+msgstr "Temps pendant lequel un mot de passe est valide, après quoi il est réputé ne plus être utilisable et toutes les opérations de connexion tentées avec le mot de passe expiré seront traitées comme invalides"
 
 #: admin/ppolicy/class_ppolicy.inc:79
 msgid "Expiry warning delay"
@@ -103,7 +104,7 @@ msgstr "Période de grâce "
 msgid ""
 "Number of times a user is allowed to successfully bind using an expired "
 "password"
-msgstr "Nombre de fois qu'un utilisateur est autorisé à se lier avec succès en utilisant un mot de passe expiré"
+msgstr "Nombre de fois qu'un utilisateur est autorisé à se connecter avec succès en utilisant un mot de passe expiré"
 
 #: admin/ppolicy/class_ppolicy.inc:89
 msgid "Allow user change"
@@ -111,7 +112,7 @@ msgstr "Autoriser le changement par l'utilisateur"
 
 #: admin/ppolicy/class_ppolicy.inc:89
 msgid "Whether users are allowed to change their own passwords"
-msgstr "Si les utilisateurs sont autorisés à changer leur mot de passe"
+msgstr "Si les utilisateurs sont autorisés à changer leur mot de passe ou non"
 
 #: admin/ppolicy/class_ppolicy.inc:94
 msgid "Safe modify"
@@ -121,11 +122,11 @@ msgstr "Modification sure "
 msgid ""
 "Whether a user must send the current password during a password modification"
 " operation"
-msgstr "Si un utilisateur doit envoyer le mot de passe actuel pendant une opération de modification de mot de passe"
+msgstr "Si un utilisateur doit envoyer le mot de passe actuel pendant une opération de modification de mot de passe ou non"
 
 #: admin/ppolicy/class_ppolicy.inc:108
 msgid "Lock out"
-msgstr "verrouiller"
+msgstr "Verrouillage"
 
 #: admin/ppolicy/class_ppolicy.inc:112
 msgid "Activate lock out"
@@ -135,11 +136,11 @@ msgstr "Activer le verrouillage"
 msgid ""
 "Whether to lock an account that had more consecutive failed bind attempts "
 "with invalid passwords than is defined by \"Maximum failures\""
-msgstr "Faut il verrouiller un compte qui avait plus de tentatives liées aux échecs consécutifs avec des mots de passe incorrects que ce qui est défini par «échec maximum\""
+msgstr "Faut-il verrouiller un compte qui avait plus d’échecs de connexion consécutifs avec des mots de passe incorrects que ce qui est défini par «échec maximum\""
 
 #: admin/ppolicy/class_ppolicy.inc:117
 msgid "Lock out duration"
-msgstr "La durée de verrouillage "
+msgstr "Durée de verrouillage "
 
 #: admin/ppolicy/class_ppolicy.inc:117
 msgid ""

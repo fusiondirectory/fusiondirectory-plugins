@@ -55,7 +55,6 @@ class DNS
       $tmp = DNS::$RecordTypes;
       unset($tmp['cNAMERecord']);
       unset($tmp['pTRRecord']);
-      unset($tmp['tXTRecord']);
       return $tmp;
     } else {
       return DNS::$RecordTypes;
@@ -84,12 +83,12 @@ class DNS
     $ldap->cd($config->current['BASE']);
 
     /* Not all records are allowed within a zone entry */
-    $SkipRecords = array("tXTRecord","cNAMERecord","pTRRecord");
+    $SkipRecords = array("cNAMERecord","pTRRecord");
 
     /* Special sOArecords */
     $sOAREcords  = array("0" => "sOAprimary", "1" => "sOAmail", "2" => "sOAserial", "3" => "sOArefresh", "4" => "sOAretry", "5" => "sOAexpire", "6" => "sOAttl");
 
-    /* Create tempalte for all fetched zone Data */
+    /* Create template for all fetched zone Data */
     $ZoneBase = array();
 
     $ZoneBase['exists']   = FALSE;
@@ -140,11 +139,10 @@ class DNS
             $Zones[$zoneName][$name] = "";
           }
         }
-      } // ENDE SOA Record
+      } // END SOA Record
 
       /* Get record attributes */
       foreach (DNS::$RecordTypes as $name => $value) {
-
         /* Skip some attributes */
         if (in_array($name, $SkipRecords)) {
           continue;
@@ -283,6 +281,12 @@ class DNS
       $newRDn = "zoneName=".$zone['ReverseZone'].",".$base;
       $rObj   = $obj;
       $rObj['zoneName'] = $zone['ReverseZone'];
+      foreach (array_keys(self::$RecordTypes) as $recordType) {
+        if (!in_array($recordType, array('nSRecord', 'pTRRecord',))) {
+          /* Remove records from reverse zone except for NS and PTR */
+          unset($rObj[$recordType]);
+        }
+      }
       $add[$newRDn]     = $rObj;
 
       /* Remove currently managed zone from oldZones.
