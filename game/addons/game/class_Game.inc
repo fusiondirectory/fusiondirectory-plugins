@@ -133,7 +133,7 @@ class Game
     global $config;
     $ldap = $config->get_ldap_link();
     $ldap->cd ($config->current['BASE']);
-    $ldap->search ('(&(objectClass=gosaAccount)(uid='.$uid.'))', array('uid'));
+    $ldap->search ('(&(objectClass=inetOrgPerson)(uid='.$uid.'))', array('uid'));
     if ($ldap->fetch()) {
       return TRUE;
     }

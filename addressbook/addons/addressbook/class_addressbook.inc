@@ -375,7 +375,7 @@ class addressbook extends plugin
     if ($phonefilter['global'] == "checked") {
       $bases[] = preg_replace("/".$this->config->current['BASE']."/", $this->abobjectclass.",".$this->config->current['BASE'], $this->search_base);
     } else {
-      $filter = '(objectClass=gosaAccount)';
+      $filter = '(objectClass=inetOrgPerson)';
     }
     if ($phonefilter['organizational'] == "checked") {
       $bases[] = $this->search_base;
