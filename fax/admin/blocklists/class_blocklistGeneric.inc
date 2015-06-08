@@ -157,7 +157,6 @@ class blocklistGeneric extends simplePlugin
       return array (
       'section1' => array (
         'name'  => _('Informations'),
-        'icon' => 'images/rightarrow.png',
         'attrs' => array (
           new StringAttribute(_('List name'), _('The name of the list'), 'cn', TRUE),
           new StringAttribute(_('Description'), _('A description for the list'), 'description', FALSE),

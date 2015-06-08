@@ -184,8 +184,7 @@ class printerPPDSelectionDialog extends plugin
 
     $smarty->assign("List",         $div->DrawList());
     $smarty->assign("search_image", 'geticon.php?context=actions&icon=system-search&size=16');
-    $smarty->assign("launchimage",  get_template_path('images/lists/action.png'));
-    $smarty->assign("tree_image",   get_template_path('images/lists/search-subtree.png'));
+    $smarty->assign("tree_image",   'geticon.php?context=applications&icon=ldap&size=16');
     $smarty->assign("alphabet",     generate_alphabet());
     $smarty->assign("apply",        apply_filter());
     $smarty->assign("regex",        $regex);

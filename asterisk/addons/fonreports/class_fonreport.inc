@@ -161,7 +161,6 @@ class fonreport extends plugin
     }
 
     $smarty->assign("plug",           "?plug=".validate($_GET['plug']));
-    $smarty->assign("launchimage",    get_template_path('images/launch.png'));
     $smarty->assign("search_image",   'geticon.php?context=actions&icon=system-search&size=16');
     $smarty->assign("search_for",     htmlentities($this->search_for));
     $smarty->assign("bases",          $bases);

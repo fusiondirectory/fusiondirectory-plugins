@@ -1,5 +1,5 @@
 <div class="contentboxh">
- <p class="contentboxh"><img src="images/launch.png" align="right" alt="[F]">{t}Filter{/t}</p>
+ <p class="contentboxh">{t}Filter{/t}</p>
 </div>
 <div class="contentboxb" style="border-top:1px solid #B0B0B0; padding:0px;">
 <table summary="" class="contentboxb" border=0>

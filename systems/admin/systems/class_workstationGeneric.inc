@@ -223,7 +223,7 @@ class workstationGeneric extends simplePlugin
       ),
       'actions' => array(
         'name' => _('Action'),
-        'icon'  => get_template_path("images/rocket.png"),
+        'icon'  => 'geticon.php?context=types&icon=action&size=16',
         'attrs' => array(
           new ActionAttribute(
             _('Action'),
@@ -234,9 +234,9 @@ class workstationGeneric extends simplePlugin
       ),
       'network' => array(
         'name'      => _('Network settings'),
-        'attrs'     => array(new NetworkSettingsAttribute()),
         'template'  => get_template_path('network_section.tpl', TRUE, dirname(__FILE__)),
         'icon'      => 'geticon.php?context=categories&icon=applications-internet&size=16',
+        'attrs'     => array(new NetworkSettingsAttribute()),
       ),
     );
   }

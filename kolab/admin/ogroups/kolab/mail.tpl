@@ -4,7 +4,7 @@
  <!-- Headline container -->
  <tr>
   <td style="width:50%; vertical-align:top;">
-   <h2><img class="center" alt="" src="images/rightarrow.png"> {t}Mail distribution list{/t}</h2>
+   <h2>{t}Mail distribution list{/t}</h2>
    <table>
     <tr>
      <td><LABEL for="mail">{t}Primary address{/t}</LABEL>{$must}</td>

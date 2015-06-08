@@ -109,7 +109,6 @@ class faxreport extends plugin
      ************/
 
     $smarty= get_smarty();
-    $smarty->assign("launchimage", get_template_path('images/launch.png'));
     $smarty->assign("search_image", 'geticon.php?context=actions&icon=system-search&size=16');
     $smarty->assign("search_for", $this->search_for);
     $smarty->assign("bases", $this->config->idepartments);

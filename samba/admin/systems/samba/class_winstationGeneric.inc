@@ -97,7 +97,7 @@ class winstationGeneric extends simplePlugin
       ),
       'actions' => array(
         'name' => _('Action'),
-        'icon'  => get_template_path("images/rocket.png"),
+        'icon'  => 'geticon.php?context=types&icon=action&size=16',
         'attrs' => array(
           new ActionAttribute(
             _('Action'),
