@@ -5,12 +5,16 @@
         <p class="contentboxh">&nbsp;{$HEADLINE}&nbsp;{$SIZELIMIT}</p>
       </div>
 
-      <div class="contentboxb">
-       <div style='background:white;padding:3px;'>
-        <table><tr>
-          <td>{$ROOT}&nbsp;</td><td>{$BACK}&nbsp;</td><td>{$HOME}&nbsp;</td><td>{$RELOAD}&nbsp;</td><td>{$SEPARATOR}&nbsp;</td><td>{t}Base{/t} {$BASE}&nbsp;</td><td>{$SEPARATOR}&nbsp;</td><td><img src='images/rocket.png' alt='' class='center'></td><td> {$ACTIONS}</td>
-        </tr></table>
-       </div>
+      <div class="contentboxb" style="background:white;">
+        <table>
+          <tbody>
+            <tr>
+              <td>{$ROOT}&nbsp;</td><td>{$BACK}&nbsp;</td><td>{$HOME}&nbsp;</td><td class="optional">{$RELOAD}&nbsp;</td><td>{$SEPARATOR}&nbsp;</td>
+              {if $BASE}<td>{t}Base{/t} {$BASE}&nbsp;</td><td>{$SEPARATOR}&nbsp;</td>{/if}
+              <td>{$ACTIONS}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
       <div style='height:4px;'>

@@ -3,7 +3,7 @@
  <!-- Headline container -->
  <tr>
    <td style="width:50%; vertical-align:top;">
-     <h2><img class="center" alt="" src="images/rightarrow.png" />&nbsp;{t}Generic{/t}</h2>
+     <h2>{t}Generic{/t}</h2>
 
      <table>
        <tr>

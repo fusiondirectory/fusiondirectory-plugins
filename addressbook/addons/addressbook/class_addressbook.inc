@@ -520,11 +520,10 @@ class addressbook extends plugin
     $smarty->assign("global", $phonefilter['global']);
     $smarty->assign("organizational", $phonefilter['organizational']);
     $smarty->assign("search_image", 'geticon.php?context=actions&icon=system-search&size=16');
-    $smarty->assign("obj_image", get_template_path('plugins/addressbook/images/objects.png'));
-    $smarty->assign("tree_image", get_template_path('images/lists/search-subtree.png'));
-    $smarty->assign("infoimage", get_template_path('images/info.png'));
-    $smarty->assign("actionimage", get_template_path('images/action.png'));
-    $smarty->assign("launchimage", get_template_path('images/launch.png'));
+    $smarty->assign("obj_image",    get_template_path('plugins/addressbook/images/objects.png'));
+    $smarty->assign("tree_image",   'geticon.php?context=applications&icon=ldap&size=16');
+    $smarty->assign("infoimage",    'geticon.php?context=status&icon=dialog-info&size=16');
+    $smarty->assign("actionimage",  'geticon.php?context=types&icon=action&size=16');
 
     /* Generate alphabet */
     $alphabet = generate_alphabet();

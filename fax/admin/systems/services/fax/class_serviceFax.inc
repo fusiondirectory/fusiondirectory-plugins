@@ -44,7 +44,6 @@ class goFaxServer extends simpleService {
       return array (
       'section1' => array (
         'name'  => _('FAX database information'),
-        'icon' => 'images/rightarrow.png',
         'attrs' => array (
           new StringAttribute (
             _('FAX DB user'),

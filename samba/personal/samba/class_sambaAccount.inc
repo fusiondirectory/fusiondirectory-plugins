@@ -158,7 +158,7 @@ class sambaAccount extends simplePlugin
     return array(
       'generic' => array(
         'name'  => _('Samba profile'),
-        'icon'  => 'images/rightarrow.png',
+        'icon'  => 'geticon.php?context=applications&icon=samba&size=16',
         'attrs' => array(
           new HiddenAttribute ('sambaSID'),
           new HiddenAttribute ('sambaPrimaryGroupSID'),

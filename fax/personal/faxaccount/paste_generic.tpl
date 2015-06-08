@@ -1,7 +1,7 @@
 <table style="width:100%; vertical-align:top; text-align:left;border-collapse:collapse; border-spacing:0;" border="0">
  	<tr>
    		<td style="width:50%; vertical-align:top;">
-     		<h2><img class="center" alt="" src="images/rightarrow.png" />&nbsp;{t}Generic{/t}</h2>
+     		<h2>{t}Generic{/t}</h2>
      		<table>
        			<tr>
          			<td>

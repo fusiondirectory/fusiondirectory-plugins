@@ -63,7 +63,7 @@
    </div>
    <br>
    <div class="contentboxh">
-    <p class="contentboxh"><img src="{$launchimage}" alt="[F]"/>{t}Filters{/t}</p>
+    <p class="contentboxh">{t}Filters{/t}</p>
    </div>
    <div class="contentboxb">
     <table style="width:100%;border-top:1px solid #B0B0B0;">

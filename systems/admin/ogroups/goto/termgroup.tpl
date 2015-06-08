@@ -108,7 +108,7 @@
 <input name="workgeneric_posted" value="1" type="hidden">
 
 
-<h2><img class="center" alt="" align="middle" src="images/rocket.png"> {t}Action{/t}</h2>
+<h2><img class="center" alt="" align="middle" src="geticon.php?context=types&icon=action&size=16"> {t}Action{/t}</h2>
         <table>
          <tr>
           <td>
