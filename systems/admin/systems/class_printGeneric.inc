@@ -531,7 +531,7 @@ class printgeneric extends plugin
         $add    = 'Admin';
       }
       foreach ($users as $user) {
-        if (in_array('gosaAccount', $user['objectClass'])) {
+        if (in_array('inetOrgPerson', $user['objectClass'])) {
           $type = 'Add'.$add.'User';
         } else {
           $type = 'Add'.$add.'Group';

@@ -348,7 +348,7 @@ class fonreport extends plugin
     $s          = preg_replace("/\%/","",$s);
     $s2         = preg_replace("/\*/","%",$s);
 
-    $filter = "(&(objectClass=gosaAccount)(!(objectClass=gosaUserTemplate))".
+    $filter = "(&(objectClass=inetOrgPerson)(!(objectClass=gosaUserTemplate))".
         "(|(uid=$s)(l=$s)(homePhone=$s)(telephoneNumber=$s)(facsimileTelephoneNumber=$s)(mobile=$s)".
         "(pager=$s)(cn=$s)(givenName=$s)(sn=$s)(personalTitle=$s)(title=$s)))";
 

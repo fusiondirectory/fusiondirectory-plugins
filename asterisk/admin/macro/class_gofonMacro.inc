@@ -413,7 +413,7 @@ class macro extends plugin
     /* If this macro is still in use we should not change the visible for user flag to invisible */
     if(!$this->goFonMacroVisible){
       $ldap = $this->config->get_ldap_link();
-      $res = $ldap->search("(&(objectClass=goFonAccount)(objectClass=gosaAccount)(goFonMacro=*))", array("goFonMacro"));
+      $res = $ldap->search("(&(objectClass=goFonAccount)(objectClass=inetOrgPerson)(goFonMacro=*))", array("goFonMacro"));
       while ($val = $ldap->fetch()){
         if(strstr($val['goFonMacro'][0],$this->dn)){
           $message[] = _("Macro is still in use!");
@@ -446,7 +446,7 @@ class macro extends plugin
     $ldap= $this->config->get_ldap_link();
 
     /* Skip remove if this macro is still in use */
-    $res = $ldap->search("(&(objectClass=goFonAccount)(objectClass=gosaAccount)(goFonMacro=*))", array("goFonMacro", "cn"));
+    $res = $ldap->search("(&(objectClass=goFonAccount)(objectClass=inetOrgPerson)(goFonMacro=*))", array("goFonMacro", "cn"));
     while ($val = $ldap->fetch()){
       if(strstr($val['goFonMacro'][0],$this->dn)){
         msg_dialog::display(_("Error"), sprintf(_("Cannot delete entry because it is still in use by '%s'!"), $val['cn'][0]), ERROR_DIALOG);
