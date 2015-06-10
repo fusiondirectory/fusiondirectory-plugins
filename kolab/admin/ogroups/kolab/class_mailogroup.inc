@@ -120,7 +120,7 @@ class mailogroup extends plugin
 
       /* Check if mail address is already in use */
       $ldap->cd($this->config->current['BASE']);
-      $ldap->search ("(&(!(objectClass=gosaUserTemplate))(|(mail=".$this->mail.")(gosaMailAlternateAddress=".$this->mail."))(!(cn=".$this->cn.")))", array("uid"));
+      $ldap->search ("(&(|(mail=".$this->mail.")(gosaMailAlternateAddress=".$this->mail."))(!(cn=".$this->cn.")))", array("uid"));
       if ($ldap->count() != 0){
         $message[]= msgPool::duplicated(_("Mail address"));
       }

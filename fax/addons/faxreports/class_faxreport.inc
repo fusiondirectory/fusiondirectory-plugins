@@ -233,7 +233,7 @@ class faxreport extends plugin
       $ldap->cd($this->search_base);
 
       /* Perform ldap search for potential users */
-      $filter = "(&(objectClass=inetOrgPerson)(!(objectClass=gosaUserTemplate))".
+      $filter = "(&(objectClass=inetOrgPerson)".
           "(objectClass=goFaxAccount)".
           "(|(uid=$s)(l=$s)(homePhone=$s)".
           "(telephoneNumber=$s)(facsimileTelephoneNumber=$s)(mobile=$s)".

@@ -401,12 +401,12 @@ class addressbook extends plugin
 
       if ($phonefilter['object_type'] == '*') {
         $ldap->search(
-            "(&(objectClass=person)$filter(!(objectClass=gosaUserTemplate))".   // Skip templates etc ..
+            "(&(objectClass=person)$filter".
             "(!(uid=*$))".                                                      // Skip entries with ...$ as uid
             "(|".$attribute_filter."))"
           ,$attributes);
       } else {
-        $ldap->search("(&$filter(!(uid=*$))(!(objectClass=gosaUserTemplate))".                     //array
+        $ldap->search("(&$filter(!(uid=*$)".                     //array
             "(".$phonefilter['object_type']."=$s))", $attributes);
       }
 
