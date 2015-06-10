@@ -145,9 +145,9 @@ class Game
     global $config;
     $ldap = $config->get_ldap_link();
     $ldap->cd ($config->current['BASE']);
-    $ldap->search ('(&(objectClass=gosaUserTemplate)(cn=beatle))', array('labeledURI'));
+    $ldap->search ('(&(objectClass=fdTemplate)(cn=beatle))', array('fdTemplateField'));
     if ($attrs = $ldap->fetch()) {
-      return ($attrs['labeledURI'][0] == 'http://%l|givenName%.com');
+      return (in_array('labeledURI:http://%l|givenName%.com', $attrs['fdTemplateField']);
     }
     return FALSE;
   }
