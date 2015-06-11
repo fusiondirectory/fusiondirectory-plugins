@@ -147,7 +147,7 @@ class Game
     $ldap->cd ($config->current['BASE']);
     $ldap->search ('(&(objectClass=fdTemplate)(cn=beatle))', array('fdTemplateField'));
     if ($attrs = $ldap->fetch()) {
-      return (in_array('labeledURI:http://%l|givenName%.com', $attrs['fdTemplateField']);
+      return (in_array('labeledURI:http://%l|givenName%.com', $attrs['fdTemplateField']));
     }
     return FALSE;
   }
