@@ -259,31 +259,31 @@ attributetype ( 1.3.6.1.4.1.10098.1.1.9.82 NAME 'gotoSessionType'
 
 # Terminal Server description
 objectclass (1.3.6.1.4.1.10098.1.2.1.16 NAME 'goTerminalServer' SUP top AUXILIARY
-  DESC 'Terminal server description (v2.6.1)'
+  DESC 'Terminal server description'
   MUST ( cn $ goXdmcpIsEnabled )
   MAY  ( description $ gotoSessionType ))
 
 # NFS Server description
 objectclass (1.3.6.1.4.1.10098.1.2.1.19 NAME 'goNfsServer' SUP top AUXILIARY
-  DESC 'NFS server description (v2.6.1)'
+  DESC 'NFS server description'
   MUST ( cn )
   MAY  ( goExportEntry $ description ))
 
 # Time Server description
 objectclass (1.3.6.1.4.1.10098.1.2.1.20 NAME 'goNtpServer' SUP top AUXILIARY
-  DESC 'Time server description (v2.6.1)'
+  DESC 'Time server description'
   MUST ( cn )
   MAY  ( goTimeSource $ description ))
 
 # Syslog Server description
 objectclass (1.3.6.1.4.1.10098.1.2.1.21 NAME 'goSyslogServer' SUP top AUXILIARY
-  DESC 'Syslog server description (v2.6.1)'
+  DESC 'Syslog server description'
   MUST ( cn )
   MAY  ( goSyslogSection $ description ))
 
 # LDAP Server description
 objectclass (1.3.6.1.4.1.10098.1.2.1.22 NAME 'goLdapServer' SUP top AUXILIARY
-  DESC 'LDAP server description (v2.6.1)'
+  DESC 'LDAP server description'
   MUST ( cn )
   MAY  ( goLdapBase $ description $ goLdapURI $ goLdapSizeLimit $ goLdapTimeLimit
         $ goLdapDeref $ goLdapTlsCert $ goLdapTlsKey $ goLdapTlsCaCert
@@ -291,49 +291,49 @@ objectclass (1.3.6.1.4.1.10098.1.2.1.22 NAME 'goLdapServer' SUP top AUXILIARY
 
 # CUPS Server description
 objectclass (1.3.6.1.4.1.10098.1.2.1.23 NAME 'goCupsServer' SUP top AUXILIARY
-  DESC 'CUPS server description (v2.6.1)'
+  DESC 'CUPS server description'
   MUST ( cn )
   MAY  ( description ))
 
 # Fax Server description
 objectclass (1.3.6.1.4.1.10098.1.2.1.26 NAME 'goFaxServer' SUP top AUXILIARY
-  DESC 'Fax server description (v2.6.1)'
+  DESC 'Fax server description'
   MUST ( cn $ goFaxAdmin $ goFaxPassword )
   MAY  ( description ))
 
 # Common server class
 objectclass (1.3.6.1.4.1.10098.1.2.1.27 NAME 'goServer' SUP top AUXILIARY
-  DESC 'Server description (v2.6.1)'
+  DESC 'Server description'
   MUST ( cn )
   MAY  ( description $ macAddress $ ipHostNumber ))
 
 # LogDB Server description
 objectclass (1.3.6.1.4.1.10098.1.2.1.28 NAME 'goLogDBServer' SUP top AUXILIARY
-  DESC 'Log DB server description (v2.6.1)'
+  DESC 'Log DB server description'
   MUST ( cn $ goLogDriver $ goLogDB $ goLogAdmin $ goLogPassword ))
 
 # Fon Server description
 objectclass (1.3.6.1.4.1.10098.1.2.1.29 NAME 'goFonServer' SUP top AUXILIARY
-  DESC 'Fon server description (v2.6.1)'
+  DESC 'Fon server description'
   MUST ( cn $ goFonAdmin $ goFonPassword $ goFonAreaCode $ goFonCountryCode $ fdAsteriskDriver)
   MAY  ( description ))
 
 # Share Server description
 objectclass (1.3.6.1.4.1.10098.1.2.1.33 NAME 'goShareServer' SUP top AUXILIARY
-  DESC 'Share server description (v2.6.1)'
+  DESC 'Share server description'
   MUST ( cn )
   MAY  ( description $ goExportEntry ))
 
 # Spamassassin definitions
 objectclass (1.3.6.1.4.1.10098.1.2.1.38 NAME 'goSpamServer' SUP top AUXILIARY
-  DESC 'Spam server definition (v2.6.1)'
+  DESC 'Spam server definition'
   MUST ( cn )
   MAY  ( saRewriteHeader $ saTrustedNetworks $ saRequiredScore $ saFlags $
          saRule ) )
 
 # Clamav definitions
 objectclass (1.3.6.1.4.1.10098.1.2.1.39 NAME 'goVirusServer' SUP top AUXILIARY
-  DESC 'Virus server definition (v2.6.1)'
+  DESC 'Virus server definition'
   MUST ( cn )
   MAY  ( avMaxThreads $ avMaxDirectoryRecursions $ avUser $ avFlags $
          avArchiveMaxFileSize $ avArchiveMaxRecursion $ avArchiveMaxCompressionRatio $
