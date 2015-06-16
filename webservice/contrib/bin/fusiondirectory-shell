@@ -12,9 +12,13 @@ use 5.008;
 
 use Getopt::Long;
 use Pod::Usage;
-use JSON::RPC::Client;
 use Data::Dumper;
 use Term::ShellUI;
+
+use JSON::RPC ();
+use constant USE_LEGACY_JSON_RPC => ($JSON::RPC::VERSION > 0.96);
+use if (USE_LEGACY_JSON_RPC),     'JSON::RPC::Legacy::Client';
+use if not (USE_LEGACY_JSON_RPC), 'JSON::RPC::Client';
 
 my $host      = 'https://localhost/fusiondirectory/jsonrpc.php';
 my $help      = 0;
@@ -40,7 +44,13 @@ pod2usage(2) if not defined $password;
 my $current_base;
 
 sub rpc_init {
-  my $client = JSON::RPC::Client->new();
+  my $client;
+  if (USE_LEGACY_JSON_RPC) {
+    $client = new JSON::RPC::Legacy::Client;
+  } else {
+    $client = new JSON::RPC::Client;
+  }
+
   $client->version('1.0');
   if ($client->ua->can('ssl_opts')) {
     if ($ca_file) {
