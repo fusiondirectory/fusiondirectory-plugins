@@ -22,7 +22,6 @@
 
 class mailMethod
 {
-
   /* Allow modification of account_ids for existing mail accounts */
   protected $modifyableMail   = TRUE;
 
@@ -76,7 +75,7 @@ class mailMethod
    */
   protected $enableDomainSelection  = FALSE;
   protected $enableQuota            = TRUE;
-  protected $enableVacationRange    = TRUE;
+  protected $enableVacationRange    = FALSE;
   protected $enableFolderTypes      = FALSE;
 
   /* Default values */
