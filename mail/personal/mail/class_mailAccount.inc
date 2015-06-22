@@ -278,14 +278,53 @@ class mailAccount extends simplePlugin
     $this->attributesAccess['flag_sieveownscript']->setInLdap(FALSE);
 
     if (!$this->mailMethod->vacationRangeEnabled()) {
-      unset($this->attributesAccess['gosaVacationStart']);
-      unset($this->attributesAccess['gosaVacationStop']);
+      $this->attributesAccess['gosaVacationStart']->setDisabled(TRUE);
+      $this->attributesAccess['gosaVacationStart']->setVisible(FALSE);
+      $this->attributesAccess['gosaVacationStop']->setDisabled(TRUE);
+      $this->attributesAccess['gosaVacationStop']->setVisible(FALSE);
+      $this->attributesAccess['flag_vacation']->setManagedAttributes (
+        array (
+          'erase' => array (
+            FALSE => array (
+              'gosaVacationMessage'
+            )
+          )
+        )
+      );
+      $this->attributesAccess['flag_sieveownscript']->setManagedAttributes (
+        array (
+          'erase' => array (
+            TRUE => array (
+              'flag_vacation',
+              'gosaVacationMessage',
+              'flag_spamlevel','flag_spamsize','gosaMailMaxSize',
+              'gosaSpamMailbox','gosaSpamSortLevel',
+              'flag_ownmailbox',
+              'flag_localonly'
+            )
+          )
+        )
+      );
     } else {
       $this->attributesAccess['flag_vacation']->setManagedAttributes (
         array (
           'erase' => array (
             FALSE => array (
               'gosaVacationStart','gosaVacationStop','gosaVacationMessage'
+            )
+          )
+        )
+      );
+      $this->attributesAccess['flag_sieveownscript']->setManagedAttributes (
+        array (
+          'erase' => array (
+            TRUE => array (
+              'flag_vacation',
+              'gosaVacationStart','gosaVacationStop','gosaVacationMessage',
+              'flag_spamlevel','flag_spamsize','gosaMailMaxSize',
+              'gosaSpamMailbox','gosaSpamSortLevel',
+              'flag_ownmailbox',
+              'flag_localonly'
             )
           )
         )
@@ -309,20 +348,6 @@ class mailAccount extends simplePlugin
       )
     );
 
-    $this->attributesAccess['flag_sieveownscript']->setManagedAttributes (
-      array (
-        'erase' => array (
-          TRUE => array (
-            'flag_vacation',
-            'gosaVacationStart','gosaVacationStop','gosaVacationMessage',
-            'flag_spamlevel','flag_spamsize','gosaMailMaxSize',
-            'gosaSpamMailbox','gosaSpamSortLevel',
-            'flag_ownmailbox',
-            'flag_localonly'
-          )
-        )
-      )
-    );
     /* sieve submit the form so that managed attributes are correctly updated */
     $this->attributesAccess['flag_sieveownscript']->setSubmitForm(TRUE);
 

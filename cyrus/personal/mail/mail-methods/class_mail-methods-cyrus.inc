@@ -38,7 +38,7 @@ class mailMethodCyrus extends mailMethod
 
   protected $enableDomainSelection  = FALSE;
   protected $enableQuota            = TRUE;
-  protected $enableVacationRange    = TRUE;
+  protected $enableVacationRange    = FALSE;
   protected $enableFolderTypes      = FALSE;
 
   protected function init()
