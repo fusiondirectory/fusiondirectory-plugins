@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2015-05-07 11:24+0200\n"
+"POT-Creation-Date: 2015-06-04 22:53+0200\n"
 "PO-Revision-Date: 2015-05-30 14:11+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Dutch (http://www.transifex.com/projects/p/FusionDirectory-108/language/nl/)\n"
@@ -30,9 +30,9 @@ msgstr "DNS service"
 #: admin/systems/services/dns/class_serviceDNS.inc:258
 #: admin/systems/services/dns/class_serviceDNS.inc:271
 #: admin/systems/services/dns/class_serviceDNS.inc:277
-#: admin/systems/services/dns/class_DNS.inc:167
-#: admin/systems/services/dns/class_DNS.inc:172
-#: admin/systems/services/dns/class_DNS.inc:617
+#: admin/systems/services/dns/class_DNS.inc:165
+#: admin/systems/services/dns/class_DNS.inc:170
+#: admin/systems/services/dns/class_DNS.inc:621
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:200
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:229
 msgid "Error"
@@ -73,7 +73,7 @@ msgstr "Kan ldap2zone : %s niet starten"
 #: admin/systems/services/dns/class_serviceDNS.inc:353
 #: admin/systems/services/dns/class_serviceDNS.inc:370
 #: admin/systems/services/dns/class_serviceDNS.inc:376
-#: admin/systems/services/dns/class_DNS.inc:730
+#: admin/systems/services/dns/class_DNS.inc:734
 msgid "LDAP error"
 msgstr "LDAP fout"
 
@@ -152,17 +152,17 @@ msgstr "MX records"
 msgid "Zone records"
 msgstr "Zone records"
 
-#: admin/systems/services/dns/class_DNS.inc:167
+#: admin/systems/services/dns/class_DNS.inc:165
 #, php-format
 msgid "Cannot find reverse zone for DNS zone '%s'. Parsing zone aborted."
 msgstr "Kan de reverse zone '%s' niet vinden. Het doornemen van deze zone is gestopt."
 
-#: admin/systems/services/dns/class_DNS.inc:172
+#: admin/systems/services/dns/class_DNS.inc:170
 #, php-format
 msgid "Found more than one reverse zone for '%s'. Parsing zone aborted."
 msgstr "Er zijn meer dan een reverse zones voor dns zone '%s' gevonden. Het doornemen van deze zone is gestopt."
 
-#: admin/systems/services/dns/class_DNS.inc:617
+#: admin/systems/services/dns/class_DNS.inc:621
 #, php-format
 msgid "Undefined zone name '%s'!"
 msgstr "Onbepaald zone naam '%s'!"
