@@ -18,5 +18,5 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
  */
 
-demoPlugin::mainInc('demoPlugin', $ui->dn);
+simplePlugin::mainInc('demoPlugin', $ui->dn);
 ?>
