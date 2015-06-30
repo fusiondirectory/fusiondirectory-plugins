@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2015-05-07 11:24+0200\n"
+"POT-Creation-Date: 2015-06-04 22:53+0200\n"
 "PO-Revision-Date: 2015-05-30 14:30+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/FusionDirectory-108/language/de/)\n"
@@ -101,15 +101,15 @@ msgstr "Systemanalyse"
 #: admin/systems/services/class_goService.inc:123
 #: admin/systems/services/class_goService.inc:151
 #: admin/systems/services/class_goService.inc:187
-#: admin/systems/class_networkSettings.inc:478
-#: admin/systems/class_networkSettings.inc:491
-#: admin/systems/class_networkSettings.inc:757
-#: admin/systems/class_networkSettings.inc:816
-#: admin/systems/class_networkSettings.inc:835
-#: admin/systems/class_networkSettings.inc:852
-#: admin/systems/class_networkSettings.inc:861
-#: admin/systems/class_networkSettings.inc:879
-#: admin/systems/class_networkSettings.inc:951
+#: admin/systems/class_networkSettings.inc:477
+#: admin/systems/class_networkSettings.inc:490
+#: admin/systems/class_networkSettings.inc:763
+#: admin/systems/class_networkSettings.inc:822
+#: admin/systems/class_networkSettings.inc:841
+#: admin/systems/class_networkSettings.inc:858
+#: admin/systems/class_networkSettings.inc:867
+#: admin/systems/class_networkSettings.inc:885
+#: admin/systems/class_networkSettings.inc:957
 msgid "LDAP error"
 msgstr "LDAP-Fehler"
 
@@ -498,7 +498,7 @@ msgstr "Wählen Sie die auszuführende Aktion für dieses Terminal"
 #: admin/systems/class_workstationGeneric.inc:236
 #: admin/systems/class_componentGeneric.inc:75
 #: admin/systems/class_mobilePhoneGeneric.inc:106
-#: admin/systems/class_networkSettings.inc:1016
+#: admin/systems/class_networkSettings.inc:1022
 msgid "Network settings"
 msgstr "Netzwerkeinstellungen"
 
@@ -576,10 +576,10 @@ msgstr "Drucker-Erweiterung entfernen"
 #: admin/systems/services/shares/class_serviceShare.inc:103
 #: admin/systems/class_networkSettings.inc:305
 #: admin/systems/class_networkSettings.inc:336
-#: admin/systems/class_networkSettings.inc:584
-#: admin/systems/class_networkSettings.inc:591
+#: admin/systems/class_networkSettings.inc:590
 #: admin/systems/class_networkSettings.inc:597
-#: admin/systems/class_networkSettings.inc:604
+#: admin/systems/class_networkSettings.inc:603
+#: admin/systems/class_networkSettings.inc:610
 msgid "Error"
 msgstr "Fehler"
 
@@ -1352,94 +1352,94 @@ msgstr "LDAP"
 msgid "NOT IMPLEMENTED"
 msgstr "NICHT IMPLEMENTIERT"
 
-#: admin/systems/class_networkSettings.inc:437
+#: admin/systems/class_networkSettings.inc:436
 msgid "Not matching"
 msgstr "Nicht zutreffend"
 
-#: admin/systems/class_networkSettings.inc:584
+#: admin/systems/class_networkSettings.inc:590
 #, php-format
 msgid "Was not able to contact argonaut server: %s"
 msgstr "Es ist nicht möglich gewesen, argonaut Server: %s zu kontaktieren"
 
-#: admin/systems/class_networkSettings.inc:591
+#: admin/systems/class_networkSettings.inc:597
 #, php-format
 msgid "Was not able to find DNS server for zone %s"
 msgstr "War nicht in der Lage, DNS Server für Zone %s zu finden"
 
-#: admin/systems/class_networkSettings.inc:597
+#: admin/systems/class_networkSettings.inc:603
 #, php-format
 msgid "Was not able to find mac address of DNS server %s"
 msgstr "War nicht in der Lage, mac-Adresse von DNS Server %s zu finden"
 
-#: admin/systems/class_networkSettings.inc:604
+#: admin/systems/class_networkSettings.inc:610
 #, php-format
 msgid "Was not able to launch ldap2zone: %s"
 msgstr "Es ist nicht möglich gewesen ldap2zone: %s zu starten"
 
-#: admin/systems/class_networkSettings.inc:630
+#: admin/systems/class_networkSettings.inc:636
 #, php-format
 msgid "IP address %s"
 msgstr "IP-Adresse %s"
 
-#: admin/systems/class_networkSettings.inc:638
-#: admin/systems/class_networkSettings.inc:651
-#: admin/systems/class_networkSettings.inc:653
-#: admin/systems/class_networkSettings.inc:1022
+#: admin/systems/class_networkSettings.inc:644
+#: admin/systems/class_networkSettings.inc:657
+#: admin/systems/class_networkSettings.inc:659
+#: admin/systems/class_networkSettings.inc:1028
 msgid "IP address"
 msgstr "IP-Adresse"
 
-#: admin/systems/class_networkSettings.inc:644
-#: admin/systems/class_networkSettings.inc:660
-#: admin/systems/class_networkSettings.inc:662
-#: admin/systems/class_networkSettings.inc:1023
+#: admin/systems/class_networkSettings.inc:650
+#: admin/systems/class_networkSettings.inc:666
+#: admin/systems/class_networkSettings.inc:668
+#: admin/systems/class_networkSettings.inc:1029
 msgid "MAC address"
 msgstr "MAC-Adresse"
 
-#: admin/systems/class_networkSettings.inc:676
+#: admin/systems/class_networkSettings.inc:682
 #, php-format
 msgid "The IP address '%s' is not part of the selected reverse zone '%s'!"
 msgstr "Die IP-Adresse '%s' passt nicht in die gewählte Reverse-Zone '%s'!"
 
-#: admin/systems/class_networkSettings.inc:686
+#: admin/systems/class_networkSettings.inc:692
 #, php-format
 msgid "Record type '%s' is duplicated!"
 msgstr "Datensatz-Typ '%s' ist doppelt vorhanden!"
 
-#: admin/systems/class_networkSettings.inc:693
+#: admin/systems/class_networkSettings.inc:699
 #, php-format
 msgid "Uniq record type '%s' is duplicated!"
 msgstr "Eindeutiger Datensatz-Typ '%s' ist doppelt vorhanden!"
 
-#: admin/systems/class_networkSettings.inc:705
+#: admin/systems/class_networkSettings.inc:711
 #, php-format
 msgid ""
 "The IP address '%s' will be added as 'A Record', this will be done "
 "automatically, please remove the record."
 msgstr "Die IP-Adresse '%s' wird automatisch als 'A'-Datensatz eingefügt. Bitte entfernen Sie den Eintrag."
 
-#: admin/systems/class_networkSettings.inc:712
+#: admin/systems/class_networkSettings.inc:718
 #, php-format
 msgid "Only lowercase records are allowed, please check your '%ss'."
 msgstr "Es sind nur Kleinbuchstaben in Datensätzen erlaubt, bitte prüfen Sie '%ss'."
 
-#: admin/systems/class_networkSettings.inc:978
+#: admin/systems/class_networkSettings.inc:984
 msgid "Delete"
 msgstr "Entfernen"
 
-#: admin/systems/class_networkSettings.inc:984
+#: admin/systems/class_networkSettings.inc:990
 msgid "Add"
 msgstr "Hinzufügen"
 
-#: admin/systems/class_networkSettings.inc:1015
+#: admin/systems/class_networkSettings.inc:1021
 #: addons/dashboard/class_dashBoardNetwork.inc:127
 msgid "Network"
 msgstr "Netzwerk"
 
-#: admin/systems/class_networkSettings.inc:1030
+#: admin/systems/class_networkSettings.inc:1036
 msgid "DNS configuration"
 msgstr "DNS-Konfiguration"
 
-#: admin/systems/class_networkSettings.inc:1033
+#: admin/systems/class_networkSettings.inc:1039
 msgid "DHCP configuration"
 msgstr "DHCP-Konfiguration"
 
