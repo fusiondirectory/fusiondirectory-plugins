@@ -20,30 +20,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class apachevhosttabs extends tabs
+class apachevhosttabs extends simpleTabs_noSpecial
 {
-  var $Release = "";
-
-  function save()
-  {
-    $baseobject = $this->getBaseObject();
-    $new_dn = "apacheServerName=".$baseobject->apacheServerName.",".session::get('serviceApacheVhostEditDN');
-
-    /* Move group? */
-    if ($this->dn != $new_dn) {
-
-      /* Write entry on new 'dn' */
-      if ($this->dn != "new") {
-        $baseobject->move($this->dn, $new_dn);
-        $this->by_object['serviceApacheVhostEdit'] = $baseobject;
-      }
-
-      /* Happen to use the new one */
-      $this->dn = $new_dn;
-    }
-
-    return parent::save();
-  }
-
 }
 ?>

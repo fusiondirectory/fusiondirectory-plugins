@@ -19,19 +19,12 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class ldiftab extends tabs
+class ldiftab extends simpleTabs_noSpecial
 {
-  function __construct($config, $data, $dn, $cat = '', $copied_object = NULL)
-  {
-    parent::__construct($config, $data, $dn, '', $copied_object);
-    $this->set_acl_base($config->current['BASE']);
-  }
-
   function save()
   {
   }
 
-  /* Return plugin informations for acl handling */
   static function plInfo()
   {
     return array(
