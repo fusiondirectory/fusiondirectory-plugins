@@ -29,7 +29,7 @@ class demoPlugin extends simplePlugin
   var $displayHeader = FALSE;
 
   // Here we indicate which LDAP classes our plugin is using.
-  var $objectclasses = array("demoPlugin");
+  var $objectclasses = array('demoPlugin');
 
   // The main function : information about attributes
   static function getAttributesInfo ()
@@ -104,14 +104,13 @@ class demoPlugin extends simplePlugin
   static function plInfo ()
   {
     return array(
-      "plShortName"       => _("Demo Plugin"),
-      "plDescription"     => _("Edit some useless personal information"),
-      "plSelfModify"      => TRUE,                  // Does this plugin have an owner that might be able to edit its entry
-      "plCategory"        => array("users"),
-      "plObjectType"      => array("user"),
+      'plShortName'       => _('Demo Plugin'),
+      'plDescription'     => _('Edit some useless personal information'),
+      'plSelfModify'      => TRUE,                  // Does this plugin have an owner that might be able to edit its entry
+      'plObjectType'      => array('user'),
 
       // But simplePlugin can generate the ACL list for us
-      "plProvidedAcls"    => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'    => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }
 }
