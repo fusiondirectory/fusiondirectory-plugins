@@ -20,39 +20,14 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class phonetabs extends tabs
+class phonetabs extends simpleTabs
 {
-
-  function __construct($config, $data, $dn, $category, $copied_object = NULL)
-  {
-    parent::__construct($config, $data, $dn, $category, $copied_object);
-
-    /* Add references/acls/snapshots */
-    $this->addSpecialTabs();
-  }
-
   function save_object($save_current = FALSE)
   {
     parent::save_object($save_current);
 
     $baseobject = $this->getBaseObject();
     $baseobject->netConfigDNS->cn = $baseobject->cn;
-  }
-
-
-  function save()
-  {
-    /* Check for new 'dn', in order to propagate the
-       'dn' to all plugins */
-    $baseobject = $this->getBaseObject();
-    $this->dn   = "cn=$baseobject->cn,".get_ou('phoneRDN').$baseobject->base;
-    $baseobject->dn = $this->dn;
-
-    foreach ($this->by_object as $key => $obj) {
-      $this->by_object[$key]->dn = $this->dn;
-    }
-
-    parent::save();
   }
 }
 ?>

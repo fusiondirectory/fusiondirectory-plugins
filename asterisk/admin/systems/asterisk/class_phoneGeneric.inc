@@ -122,6 +122,11 @@ class phoneGeneric extends plugin
     $this->baseSelector->update(true);
   }
 
+  function compute_dn ()
+  {
+    return 'cn='.$this->cn.','.get_ou('phoneRDN').$this->base;
+  }
+
   function set_acl_base($base)
   {
     plugin::set_acl_base($base);

@@ -160,6 +160,10 @@ class conference extends plugin
     $this->baseSelector->update(true);
   }
 
+  function compute_dn ()
+  {
+    return 'cn='.$this->cn.','.get_ou('phoneConferenceRDN').$this->base;
+  }
 
   function execute()
   {

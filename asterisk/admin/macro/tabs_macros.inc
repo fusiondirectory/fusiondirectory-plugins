@@ -20,39 +20,7 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class macrotabs extends tabs
+class macrotabs extends simpleTabs
 {
-
-  function __construct($config, $data, $dn, $category, $copied_object = NULL)
-  {
-    parent::__construct($config, $data, $dn, $category, $copied_object);
-
-    /* Add references/acls/snapshots */
-    $this->addSpecialTabs();
-  }
-
-  function save()
-  {
-    $baseobject = $this->getBaseObject();
-
-    /* Check for new 'dn', in order to propagate the
-       'dn' to all plugins */
-    $new_dn = "cn=".$baseobject->cn.",".get_ou('phoneMacroRDN').$baseobject->base;
-
-    /* Move group? */
-    if ($this->dn != $new_dn) {
-
-      /* Write entry on new 'dn' */
-      if ($this->dn != "new") {
-        $baseobject->move($this->dn, $new_dn);
-        $this->by_object['macro'] = $baseobject;
-      }
-
-      /* Happen to use the new one */
-      $this->dn = $new_dn;
-    }
-
-    parent::save();
-  }
 }
 ?>

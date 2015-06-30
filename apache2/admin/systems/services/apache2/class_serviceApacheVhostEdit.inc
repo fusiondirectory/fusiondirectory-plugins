@@ -124,6 +124,11 @@ class serviceApacheVhostEdit extends simplePlugin
     $this->attributesInfo['section1']['attrs']['apacheScriptAlias']->setLinearRendering(TRUE);
   }
 
+  function compute_dn ()
+  {
+    return "apacheServerName=".$this->apacheServerName.",".session::get('serviceApacheVhostEditDN');
+  }
+
   function execute ()
   {
     $smarty = get_smarty();

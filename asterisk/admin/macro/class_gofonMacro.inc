@@ -113,6 +113,11 @@ class macro extends plugin
     $this->baseSelector->update(true);
   }
 
+  function compute_dn ()
+  {
+    return 'cn='.$this->cn.','.get_ou('phoneMacroRDN').$this->base;
+  }
+
 
   /*!  Execute this plugin */
   function execute()

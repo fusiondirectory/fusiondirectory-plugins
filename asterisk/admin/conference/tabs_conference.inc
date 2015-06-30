@@ -20,37 +20,8 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class conferencetabs extends tabs
+class conferencetabs extends simpleTabs
 {
-  var $base = "";
-
-  function __construct($config, $data, $dn, $category, $copied_object = NULL)
-  {
-    parent::__construct($config, $data, $dn, $category, $copied_object);
-    $this->base = $this->by_object['conference']->base;
-
-    /* Add references/acls/snapshots */
-    $this->addSpecialTabs();
-  }
-
-
-  function save()
-  {
-    $baseobject = $this->getBaseObject();
-    $new_dn = 'cn='.$baseobject->cn.','.get_ou('phoneConferenceRDN').$baseobject->base;
-
-    if (strtolower($this->dn) == strtolower($new_dn)) {
-      $this->dn = $new_dn;
-    }
-
-    if ($this->dn != $new_dn && $this->dn != "new") {
-      $baseobject->recursive_move($this->dn, $new_dn);
-    }
-    $this->dn = $new_dn;
-
-    parent::save();
-  }
-
 }
 
 ?>
