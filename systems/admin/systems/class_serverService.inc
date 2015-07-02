@@ -357,7 +357,7 @@ class ServerService extends management
     }
 
     // Display tab object.
-    if ($this->tabObject instanceOf tabs) {
+    if ($this->tabObject instanceOf simpleTabs) {
       $display = $this->tabObject->execute();
       $display .= $this->_getTabFooter();
       return $this->getHeader().$display;

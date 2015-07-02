@@ -81,7 +81,7 @@ class mailAccount extends simplePlugin
       'plIcon'          => 'geticon.php?context=applications&icon=internet-mail&size=48',
       'plSmallIcon'     => 'geticon.php?context=applications&icon=internet-mail&size=16',
       'plSelfModify'    => TRUE,
-      'plPriority'      => 4,                                 // Position in tabs
+      'plPriority'      => 4,
       'plObjectType'    => array('user'),
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
