@@ -6,9 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
-"Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-12-15 17:47+0100\n"
-"PO-Revision-Date: 2015-04-18 18:07+0000\n"
+"Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
+"POT-Creation-Date: 2015-05-30 15:30+0200\n"
+"PO-Revision-Date: 2015-05-30 14:12+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/FusionDirectory-109/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -101,7 +101,7 @@ msgstr ""
 msgid "Critical"
 msgstr ""
 
-#: addons/rsyslog/class_rsyslog.inc:351
+#: addons/rsyslog/class_rsyslog.inc:351 addons/rsyslog/rSyslog.tpl.c:26
 msgid "Error"
 msgstr "Ошибка"
 
@@ -185,3 +185,51 @@ msgstr ""
 #: addons/rsyslog/class_rsyslog.inc:384
 msgid "Clock"
 msgstr ""
+
+#: addons/rsyslog/rSyslog.tpl.c:2
+msgid "Filter"
+msgstr "Фильтр"
+
+#: addons/rsyslog/rSyslog.tpl.c:5
+msgid "Server"
+msgstr "Сервер"
+
+#: addons/rsyslog/rSyslog.tpl.c:8
+msgid "Host"
+msgstr "Хост"
+
+#: addons/rsyslog/rSyslog.tpl.c:11 addons/rsyslog/rSyslog.tpl.c:41
+msgid "Severity"
+msgstr "Cерьёзность ошибки"
+
+#: addons/rsyslog/rSyslog.tpl.c:14
+msgid "From"
+msgstr "От"
+
+#: addons/rsyslog/rSyslog.tpl.c:17
+msgid "till"
+msgstr "до"
+
+#: addons/rsyslog/rSyslog.tpl.c:20 addons/rsyslog/rSyslog.tpl.c:23
+msgid "Search"
+msgstr "Поиск"
+
+#: addons/rsyslog/rSyslog.tpl.c:29
+msgid "Date"
+msgstr "Дата"
+
+#: addons/rsyslog/rSyslog.tpl.c:32
+msgid "Source"
+msgstr "Источник"
+
+#: addons/rsyslog/rSyslog.tpl.c:35
+msgid "Header"
+msgstr "Заголовок"
+
+#: addons/rsyslog/rSyslog.tpl.c:38
+msgid "Facility"
+msgstr "Facility - источник сообщения"
+
+#: addons/rsyslog/rSyslog.tpl.c:44
+msgid "Message"
+msgstr "Сообщение"

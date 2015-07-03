@@ -6,9 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
-"Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-12-15 17:47+0100\n"
-"PO-Revision-Date: 2014-12-15 17:00+0000\n"
+"Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
+"POT-Creation-Date: 2015-05-30 15:30+0200\n"
+"PO-Revision-Date: 2015-05-30 13:46+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Vietnamese (Viet Nam) (http://www.transifex.com/projects/p/FusionDirectory-109/language/vi_VN/)\n"
 "MIME-Version: 1.0\n"
@@ -26,11 +26,11 @@ msgstr ""
 msgid "Nagios account settings"
 msgstr ""
 
-#: personal/nagios/class_nagiosAccount.inc:65
+#: personal/nagios/class_nagiosAccount.inc:65 personal/nagios/nagios.tpl.c:2
 msgid "Nagios Account"
 msgstr ""
 
-#: personal/nagios/class_nagiosAccount.inc:68
+#: personal/nagios/class_nagiosAccount.inc:68 personal/nagios/nagios.tpl.c:5
 msgid "Alias"
 msgstr ""
 
@@ -38,7 +38,7 @@ msgstr ""
 msgid "Name of the nagios alias"
 msgstr ""
 
-#: personal/nagios/class_nagiosAccount.inc:72
+#: personal/nagios/class_nagiosAccount.inc:72 personal/nagios/nagios.tpl.c:8
 msgid "Mail address"
 msgstr "Địa chỉ thư"
 
@@ -46,23 +46,23 @@ msgstr "Địa chỉ thư"
 msgid "Email of the nagios alias"
 msgstr ""
 
-#: personal/nagios/class_nagiosAccount.inc:76
+#: personal/nagios/class_nagiosAccount.inc:76 personal/nagios/nagios.tpl.c:11
 msgid "Host notification period"
 msgstr ""
 
-#: personal/nagios/class_nagiosAccount.inc:81
+#: personal/nagios/class_nagiosAccount.inc:81 personal/nagios/nagios.tpl.c:14
 msgid "Service notification period"
 msgstr ""
 
-#: personal/nagios/class_nagiosAccount.inc:86
+#: personal/nagios/class_nagiosAccount.inc:86 personal/nagios/nagios.tpl.c:17
 msgid "Service notification options"
 msgstr ""
 
-#: personal/nagios/class_nagiosAccount.inc:91
+#: personal/nagios/class_nagiosAccount.inc:91 personal/nagios/nagios.tpl.c:20
 msgid "Host notification options"
 msgstr ""
 
-#: personal/nagios/class_nagiosAccount.inc:96
+#: personal/nagios/class_nagiosAccount.inc:96 personal/nagios/nagios.tpl.c:23
 msgid "Pager"
 msgstr "Máy nhắn tin"
 
@@ -70,11 +70,11 @@ msgstr "Máy nhắn tin"
 msgid " Pager"
 msgstr "Máy nhắn tin"
 
-#: personal/nagios/class_nagiosAccount.inc:100
+#: personal/nagios/class_nagiosAccount.inc:100 personal/nagios/nagios.tpl.c:26
 msgid "Service notification commands"
 msgstr ""
 
-#: personal/nagios/class_nagiosAccount.inc:104
+#: personal/nagios/class_nagiosAccount.inc:104 personal/nagios/nagios.tpl.c:29
 msgid "Host notification commands"
 msgstr ""
 
@@ -92,4 +92,36 @@ msgstr ""
 
 #: config/nagios/class_nagiosConfig.inc:45
 msgid "Prefix used for lconf LDAP fields"
+msgstr ""
+
+#: personal/nagios/nagios.tpl.c:32
+msgid "Nagios authentification"
+msgstr ""
+
+#: personal/nagios/nagios.tpl.c:35
+msgid "view system informations"
+msgstr ""
+
+#: personal/nagios/nagios.tpl.c:38
+msgid "view configuration information"
+msgstr ""
+
+#: personal/nagios/nagios.tpl.c:41
+msgid "trigger system commands"
+msgstr ""
+
+#: personal/nagios/nagios.tpl.c:44
+msgid "view all services"
+msgstr ""
+
+#: personal/nagios/nagios.tpl.c:47
+msgid "view all hosts"
+msgstr ""
+
+#: personal/nagios/nagios.tpl.c:50
+msgid "trigger all service commands"
+msgstr ""
+
+#: personal/nagios/nagios.tpl.c:53
+msgid "trigger all host commands"
 msgstr ""

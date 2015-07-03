@@ -6,9 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
-"Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-12-15 17:47+0100\n"
-"PO-Revision-Date: 2015-05-30 11:45+0000\n"
+"Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
+"POT-Creation-Date: 2015-05-30 15:30+0200\n"
+"PO-Revision-Date: 2015-05-30 18:40+0000\n"
 "Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>\n"
 "Language-Team: Greek (Greece) (http://www.transifex.com/projects/p/FusionDirectory-109/language/el_GR/)\n"
 "MIME-Version: 1.0\n"
@@ -17,20 +17,20 @@ msgstr ""
 "Language: el_GR\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: admin/ejbca/class_ejbcaCertificates.inc:31
+#: admin/ejbca/certificates/class_ejbcaCertificates.inc:31
 msgid "EJBCA certs"
 msgstr ""
 
-#: admin/ejbca/class_ejbcaCertificates.inc:35
+#: admin/ejbca/certificates/class_ejbcaCertificates.inc:35
 msgid "Certificates associated to this object"
 msgstr ""
 
-#: admin/ejbca/class_ejbcaCertificates.inc:46
+#: admin/ejbca/certificates/class_ejbcaCertificates.inc:46
 #: admin/ejbca/class_ejbcaManagement.inc:32
 msgid "EJBCA"
 msgstr ""
 
-#: admin/ejbca/class_ejbcaCertificates.inc:47
+#: admin/ejbca/certificates/class_ejbcaCertificates.inc:47
 msgid "Assign EJBCA certificates to a user"
 msgstr ""
 
@@ -38,7 +38,7 @@ msgstr ""
 msgid "EJBCA certificates management"
 msgstr ""
 
-#: admin/ejbca/class_ejbcaManagement.inc:51
+#: admin/ejbca/class_ejbcaManagement.inc:52
 msgid "Download"
 msgstr ""
 
@@ -55,7 +55,7 @@ msgstr ""
 
 #: admin/ejbca/class_ejbcaCertificate.inc:51
 msgid "Name"
-msgstr ""
+msgstr "Όνομα"
 
 #: admin/ejbca/class_ejbcaCertificate.inc:51
 msgid "Common name"

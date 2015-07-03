@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2015-05-30 15:30+0200\n"
+"POT-Creation-Date: 2015-07-03 18:54+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FusionDirectory project <contact@fusiondirectory.org>\n"
 "Language-Team: English\n"
@@ -99,15 +99,15 @@ msgstr ""
 #: admin/systems/services/class_goService.inc:123
 #: admin/systems/services/class_goService.inc:151
 #: admin/systems/services/class_goService.inc:187
-#: admin/systems/class_networkSettings.inc:482
-#: admin/systems/class_networkSettings.inc:495
-#: admin/systems/class_networkSettings.inc:761
-#: admin/systems/class_networkSettings.inc:820
-#: admin/systems/class_networkSettings.inc:839
-#: admin/systems/class_networkSettings.inc:856
-#: admin/systems/class_networkSettings.inc:865
-#: admin/systems/class_networkSettings.inc:883
-#: admin/systems/class_networkSettings.inc:955
+#: admin/systems/class_networkSettings.inc:481
+#: admin/systems/class_networkSettings.inc:494
+#: admin/systems/class_networkSettings.inc:767
+#: admin/systems/class_networkSettings.inc:826
+#: admin/systems/class_networkSettings.inc:845
+#: admin/systems/class_networkSettings.inc:862
+#: admin/systems/class_networkSettings.inc:871
+#: admin/systems/class_networkSettings.inc:889
+#: admin/systems/class_networkSettings.inc:961
 msgid "LDAP error"
 msgstr ""
 
@@ -286,7 +286,6 @@ msgstr ""
 
 #: admin/systems/system-list.xml:160 admin/systems/class_serverService.inc:57
 #: admin/systems/services/terminal/class_serviceTerminal.inc:30
-#: admin/systems/services/cups/class_serviceCUPS.inc:85
 #: admin/systems/services/shares/class_serviceShare.inc:31
 #: admin/systems/services/ntp/class_serviceNTP.inc:30
 #: admin/systems/services/ldap/class_serviceLDAP.inc:97
@@ -465,7 +464,7 @@ msgstr ""
 #: admin/systems/class_workstationGeneric.inc:236
 #: admin/systems/class_componentGeneric.inc:74
 #: admin/systems/class_mobilePhoneGeneric.inc:106
-#: admin/systems/class_networkSettings.inc:1020
+#: admin/systems/class_networkSettings.inc:1026
 msgid "Network settings"
 msgstr ""
 
@@ -540,10 +539,10 @@ msgstr ""
 #: admin/systems/services/shares/class_serviceShare.inc:103
 #: admin/systems/class_networkSettings.inc:309
 #: admin/systems/class_networkSettings.inc:340
-#: admin/systems/class_networkSettings.inc:588
-#: admin/systems/class_networkSettings.inc:595
+#: admin/systems/class_networkSettings.inc:594
 #: admin/systems/class_networkSettings.inc:601
-#: admin/systems/class_networkSettings.inc:608
+#: admin/systems/class_networkSettings.inc:607
+#: admin/systems/class_networkSettings.inc:614
 msgid "Error"
 msgstr ""
 
@@ -1004,17 +1003,14 @@ msgid "Get status"
 msgstr ""
 
 #: admin/systems/serverService-list.xml:97
-#: admin/systems/services/cups/class_serviceCUPS.inc:92
 msgid "Start"
 msgstr ""
 
 #: admin/systems/serverService-list.xml:105
-#: admin/systems/services/cups/class_serviceCUPS.inc:93
 msgid "Stop"
 msgstr ""
 
 #: admin/systems/serverService-list.xml:113
-#: admin/systems/services/cups/class_serviceCUPS.inc:94
 msgid "Restart"
 msgstr ""
 
@@ -1093,16 +1089,6 @@ msgstr ""
 
 #: admin/systems/services/terminal/class_serviceTerminal.inc:55
 msgid "The session types supported by this terminal server"
-msgstr ""
-
-#: admin/systems/services/cups/class_serviceCUPS.inc:43
-#: admin/systems/services/cups/class_serviceCUPS.inc:64
-#: admin/systems/services/cups/class_serviceCUPS.inc:85
-msgid "Print service"
-msgstr ""
-
-#: admin/systems/services/cups/class_serviceCUPS.inc:84
-msgid "Cups"
 msgstr ""
 
 #: admin/systems/services/class_goService.inc:44
@@ -1299,94 +1285,94 @@ msgstr ""
 msgid "NOT IMPLEMENTED"
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:441
+#: admin/systems/class_networkSettings.inc:440
 msgid "Not matching"
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:588
+#: admin/systems/class_networkSettings.inc:594
 #, php-format
 msgid "Was not able to contact argonaut server: %s"
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:595
+#: admin/systems/class_networkSettings.inc:601
 #, php-format
 msgid "Was not able to find DNS server for zone %s"
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:601
+#: admin/systems/class_networkSettings.inc:607
 #, php-format
 msgid "Was not able to find mac address of DNS server %s"
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:608
+#: admin/systems/class_networkSettings.inc:614
 #, php-format
 msgid "Was not able to launch ldap2zone: %s"
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:634
+#: admin/systems/class_networkSettings.inc:640
 #, php-format
 msgid "IP address %s"
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:642
-#: admin/systems/class_networkSettings.inc:655
-#: admin/systems/class_networkSettings.inc:657
-#: admin/systems/class_networkSettings.inc:1026
+#: admin/systems/class_networkSettings.inc:648
+#: admin/systems/class_networkSettings.inc:661
+#: admin/systems/class_networkSettings.inc:663
+#: admin/systems/class_networkSettings.inc:1032
 msgid "IP address"
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:648
-#: admin/systems/class_networkSettings.inc:664
-#: admin/systems/class_networkSettings.inc:666
-#: admin/systems/class_networkSettings.inc:1027
+#: admin/systems/class_networkSettings.inc:654
+#: admin/systems/class_networkSettings.inc:670
+#: admin/systems/class_networkSettings.inc:672
+#: admin/systems/class_networkSettings.inc:1033
 msgid "MAC address"
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:680
+#: admin/systems/class_networkSettings.inc:686
 #, php-format
 msgid "The IP address '%s' is not part of the selected reverse zone '%s'!"
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:690
+#: admin/systems/class_networkSettings.inc:696
 #, php-format
 msgid "Record type '%s' is duplicated!"
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:697
+#: admin/systems/class_networkSettings.inc:703
 #, php-format
 msgid "Uniq record type '%s' is duplicated!"
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:709
+#: admin/systems/class_networkSettings.inc:715
 #, php-format
 msgid ""
 "The IP address '%s' will be added as 'A Record', this will be done "
 "automatically, please remove the record."
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:716
+#: admin/systems/class_networkSettings.inc:722
 #, php-format
 msgid "Only lowercase records are allowed, please check your '%ss'."
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:982
+#: admin/systems/class_networkSettings.inc:988
 msgid "Delete"
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:988
+#: admin/systems/class_networkSettings.inc:994
 msgid "Add"
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:1019
+#: admin/systems/class_networkSettings.inc:1025
 #: addons/dashboard/class_dashBoardNetwork.inc:127
 msgid "Network"
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:1034
+#: admin/systems/class_networkSettings.inc:1040
 msgid "DNS configuration"
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:1037
+#: admin/systems/class_networkSettings.inc:1043
 msgid "DHCP configuration"
 msgstr ""
 
@@ -1819,14 +1805,6 @@ msgstr ""
 
 #: admin/systems/printer.tpl.c:59
 msgid "Printer driver directory"
-msgstr ""
-
-#: admin/systems/services/cups/serviceCUPS.tpl.c:2
-msgid "Print Service"
-msgstr ""
-
-#: admin/systems/services/cups/serviceCUPS.tpl.c:5
-msgid "enabled"
 msgstr ""
 
 #: addons/dashboard/systems_stats.tpl.c:2

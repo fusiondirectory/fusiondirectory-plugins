@@ -6,9 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
-"Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-12-15 17:47+0100\n"
-"PO-Revision-Date: 2015-03-31 11:31+0000\n"
+"Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
+"POT-Creation-Date: 2015-05-30 15:30+0200\n"
+"PO-Revision-Date: 2015-06-04 10:30+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory-109/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -32,36 +32,46 @@ msgstr "Options de messagerie de groupe"
 msgid "Informations"
 msgstr "Informations"
 
-#: admin/groups/mail/class_groupMail.inc:86
+#: admin/groups/mail/class_groupMail.inc:82
 #: personal/mail/class_mailAccount.inc:100
 msgid "Primary address"
 msgstr "Adresse principale"
 
-#: admin/groups/mail/class_groupMail.inc:86
+#: admin/groups/mail/class_groupMail.inc:82
 msgid "The primary mail address"
 msgstr "Adresse principale"
 
-#: admin/groups/mail/class_groupMail.inc:90
+#: admin/groups/mail/class_groupMail.inc:86
 #: personal/mail/class_mailAccount.inc:104
 msgid "Server"
 msgstr "Serveur"
 
-#: admin/groups/mail/class_groupMail.inc:90
+#: admin/groups/mail/class_groupMail.inc:86
 msgid "Server mail"
 msgstr "Serveur de mail"
 
-#: admin/groups/mail/class_groupMail.inc:96
+#: admin/groups/mail/class_groupMail.inc:92
 #: personal/mail/class_mailAccount.inc:120
 msgid "Alternative addresses"
 msgstr "Adresses alternatives"
 
-#: admin/groups/mail/class_groupMail.inc:96
+#: admin/groups/mail/class_groupMail.inc:92
 msgid "Alternative mail addresses for the group"
 msgstr "Adresse alternative pour le groupe"
 
-#: admin/groups/mail/class_groupMail.inc:101
+#: admin/groups/mail/class_groupMail.inc:97
 msgid "Forward messages to non group members"
 msgstr "Transférer les messages vers un membre n'appartenant pas au groupe"
+
+#: admin/groups/mail/class_groupMail.inc:101
+msgid "Only allowed to receive local mail"
+msgstr "Les utilisateurs ne sont autorisés qu'à recevoir des messages locaux"
+
+#: admin/groups/mail/class_groupMail.inc:101
+msgid ""
+"Whether this group mail is only allowed to receive messages from local "
+"senders"
+msgstr "Ce groupe mail est uniquement autorisé à recevoir des messages provenant d'expéditeurs locaux"
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:29
 #: admin/systems/services/postfix/class_servicePostfix.inc:30
@@ -201,8 +211,8 @@ msgid "Enable use of Razor"
 msgstr "Activer l'utilisation de Razor"
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:92
-msgid "Enable use of DDC"
-msgstr "Activer l'utilisation de DDC"
+msgid "Enable use of DCC"
+msgstr "Permettre l'utilisation de DCC"
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:97
 msgid "Enable use of Pyzor"
@@ -213,8 +223,9 @@ msgid "Rules"
 msgstr "Règles"
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:116
-msgid "Edit spam ruleEdit spam rule"
-msgstr "Modifiez la règle pour le spam"
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:124
+msgid "Edit spam rule"
+msgstr "Modifier la règle anti spam"
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:119
 msgid "Name"
@@ -223,10 +234,6 @@ msgstr "Nom"
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:120
 msgid "Rule"
 msgstr "Règle"
-
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:124
-msgid "Edit spam rule"
-msgstr "Modifier la règle anti spam"
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:31
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:32
@@ -273,6 +280,10 @@ msgstr "Nombre de processus maximum"
 msgid "Max directory recursions"
 msgstr "Nombre maximum de récursions dans les répertoires"
 
+#: admin/systems/services/virus/class_serviceAntiVirus.inc:68
+msgid "Maximum number of directory recursions"
+msgstr "Nombre maximum de récursions dans les répertoires"
+
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:73
 msgid "Checks per day"
 msgstr "Vérifications par jour"
@@ -317,10 +328,6 @@ msgstr "Récursions maximum"
 msgid "Maximum compression ratio"
 msgstr "Ratio maximum de compression"
 
-#: admin/systems/services/virus/class_serviceAntiVirus.inc:113
-msgid " "
-msgstr ""
-
 #: admin/systems/services/imap/class_serviceIMAP.inc:32
 msgid "IMAP/POP3 generic service"
 msgstr "Service IMAP/POP3 générique"
@@ -344,16 +351,16 @@ msgstr "L'attribut de messagerie '%s' n'est pas supporté !"
 msgid "Mail method '%s' is unknown!"
 msgstr "Le méthode de messagerie '%s' est inconnue !"
 
-#: personal/mail/class_mail-methods.inc:735
-#: personal/mail/class_mail-methods.inc:736
+#: personal/mail/class_mail-methods.inc:727
+#: personal/mail/class_mail-methods.inc:728
 msgid "None"
 msgstr "Aucun"
 
-#: personal/mail/class_mail-methods.inc:825
+#: personal/mail/class_mail-methods.inc:817
 msgid "Unknown"
 msgstr "Inconnu"
 
-#: personal/mail/class_mail-methods.inc:827
+#: personal/mail/class_mail-methods.inc:819
 msgid "Unlimited"
 msgstr "Illimités"
 

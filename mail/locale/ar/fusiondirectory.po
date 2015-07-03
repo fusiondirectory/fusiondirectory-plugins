@@ -6,9 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
-"Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-12-15 17:47+0100\n"
-"PO-Revision-Date: 2015-02-25 16:13+0000\n"
+"Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
+"POT-Creation-Date: 2015-05-30 15:30+0200\n"
+"PO-Revision-Date: 2015-05-30 14:02+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Arabic (http://www.transifex.com/projects/p/FusionDirectory-109/language/ar/)\n"
 "MIME-Version: 1.0\n"
@@ -32,35 +32,45 @@ msgstr ""
 msgid "Informations"
 msgstr ""
 
-#: admin/groups/mail/class_groupMail.inc:86
+#: admin/groups/mail/class_groupMail.inc:82
 #: personal/mail/class_mailAccount.inc:100
 msgid "Primary address"
 msgstr ""
 
-#: admin/groups/mail/class_groupMail.inc:86
+#: admin/groups/mail/class_groupMail.inc:82
 msgid "The primary mail address"
 msgstr ""
 
-#: admin/groups/mail/class_groupMail.inc:90
+#: admin/groups/mail/class_groupMail.inc:86
 #: personal/mail/class_mailAccount.inc:104
 msgid "Server"
 msgstr "خادم"
 
-#: admin/groups/mail/class_groupMail.inc:90
+#: admin/groups/mail/class_groupMail.inc:86
 msgid "Server mail"
 msgstr ""
 
-#: admin/groups/mail/class_groupMail.inc:96
+#: admin/groups/mail/class_groupMail.inc:92
 #: personal/mail/class_mailAccount.inc:120
 msgid "Alternative addresses"
 msgstr ""
 
-#: admin/groups/mail/class_groupMail.inc:96
+#: admin/groups/mail/class_groupMail.inc:92
 msgid "Alternative mail addresses for the group"
 msgstr ""
 
-#: admin/groups/mail/class_groupMail.inc:101
+#: admin/groups/mail/class_groupMail.inc:97
 msgid "Forward messages to non group members"
+msgstr ""
+
+#: admin/groups/mail/class_groupMail.inc:101
+msgid "Only allowed to receive local mail"
+msgstr ""
+
+#: admin/groups/mail/class_groupMail.inc:101
+msgid ""
+"Whether this group mail is only allowed to receive messages from local "
+"senders"
 msgstr ""
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:29
@@ -201,7 +211,7 @@ msgid "Enable use of Razor"
 msgstr ""
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:92
-msgid "Enable use of DDC"
+msgid "Enable use of DCC"
 msgstr ""
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:97
@@ -213,7 +223,8 @@ msgid "Rules"
 msgstr "قواعد"
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:116
-msgid "Edit spam ruleEdit spam rule"
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:124
+msgid "Edit spam rule"
 msgstr ""
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:119
@@ -223,10 +234,6 @@ msgstr "الإسم"
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:120
 msgid "Rule"
 msgstr "قاعدة"
-
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:124
-msgid "Edit spam rule"
-msgstr ""
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:31
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:32
@@ -273,6 +280,10 @@ msgstr ""
 msgid "Max directory recursions"
 msgstr ""
 
+#: admin/systems/services/virus/class_serviceAntiVirus.inc:68
+msgid "Maximum number of directory recursions"
+msgstr ""
+
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:73
 msgid "Checks per day"
 msgstr ""
@@ -317,10 +328,6 @@ msgstr ""
 msgid "Maximum compression ratio"
 msgstr ""
 
-#: admin/systems/services/virus/class_serviceAntiVirus.inc:113
-msgid " "
-msgstr ""
-
 #: admin/systems/services/imap/class_serviceIMAP.inc:32
 msgid "IMAP/POP3 generic service"
 msgstr ""
@@ -344,16 +351,16 @@ msgstr ""
 msgid "Mail method '%s' is unknown!"
 msgstr ""
 
-#: personal/mail/class_mail-methods.inc:735
-#: personal/mail/class_mail-methods.inc:736
+#: personal/mail/class_mail-methods.inc:727
+#: personal/mail/class_mail-methods.inc:728
 msgid "None"
 msgstr ""
 
-#: personal/mail/class_mail-methods.inc:825
+#: personal/mail/class_mail-methods.inc:817
 msgid "Unknown"
 msgstr ""
 
-#: personal/mail/class_mail-methods.inc:827
+#: personal/mail/class_mail-methods.inc:819
 msgid "Unlimited"
 msgstr ""
 

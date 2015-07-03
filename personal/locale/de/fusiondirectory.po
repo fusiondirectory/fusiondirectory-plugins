@@ -7,9 +7,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
-"Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-12-09 22:29+0100\n"
-"PO-Revision-Date: 2015-05-30 13:10+0000\n"
+"Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
+"POT-Creation-Date: 2015-05-30 15:30+0200\n"
+"PO-Revision-Date: 2015-05-30 14:30+0000\n"
 "Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/FusionDirectory-109/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -35,6 +35,7 @@ msgid "Id of this user on this website"
 msgstr ""
 
 #: personal/personal/class_personalInfo.inc:85
+#: config/personal/class_personalConfig.inc:42
 msgid "Personal"
 msgstr "Persönlich"
 
@@ -42,32 +43,56 @@ msgstr "Persönlich"
 msgid "Personal informations"
 msgstr "Persönliche Informationen"
 
-#: personal/personal/class_personalInfo.inc:100
+#: personal/personal/class_personalInfo.inc:101
 msgid "Personal info"
 msgstr "Persönliche Information"
 
-#: personal/personal/class_personalInfo.inc:105
+#: personal/personal/class_personalInfo.inc:104
+msgid "Personal title"
+msgstr "Titel"
+
+#: personal/personal/class_personalInfo.inc:104
+msgid "Personal title - Examples of personal titles are \"Ms\", \"Dr\", \"Prof\" and \"Rev\""
+msgstr ""
+
+#: personal/personal/class_personalInfo.inc:109
+msgid "Nickname"
+msgstr "Kurzname"
+
+#: personal/personal/class_personalInfo.inc:109
+msgid "Nicknames for this user"
+msgstr ""
+
+#: personal/personal/class_personalInfo.inc:114
+msgid "Date of birth"
+msgstr "Geburtsdatum"
+
+#: personal/personal/class_personalInfo.inc:119
+msgid "Sex"
+msgstr "Geschlecht"
+
+#: personal/personal/class_personalInfo.inc:119
+msgid "Gender"
+msgstr "Geschlecht"
+
+#: personal/personal/class_personalInfo.inc:126
+msgid "Contact"
+msgstr "Kontakt"
+
+#: personal/personal/class_personalInfo.inc:130
 msgid "Social account"
 msgstr ""
 
-#: personal/personal/class_personalInfo.inc:105
+#: personal/personal/class_personalInfo.inc:130
 msgid "Social accounts of this user"
 msgstr ""
 
-#: personal/personal/class_personalInfo.inc:112
+#: personal/personal/class_personalInfo.inc:137
 msgid "Private email"
 msgstr "Private E-Mail"
 
-#: personal/personal/class_personalInfo.inc:112
+#: personal/personal/class_personalInfo.inc:137
 msgid "Private email addresses of this user"
-msgstr ""
-
-#: personal/personal/class_personalInfo.inc:118
-msgid "Nickname"
-msgstr ""
-
-#: personal/personal/class_personalInfo.inc:118
-msgid "Nicknames for this user"
 msgstr ""
 
 #: personal/personal/class_socialHandlers.inc:68
@@ -88,4 +113,20 @@ msgstr "Diaspora*"
 
 #: personal/personal/class_socialHandlers.inc:131
 msgid "Diaspora accounts must look like user@pod"
+msgstr ""
+
+#: config/personal/class_personalConfig.inc:28
+msgid "Personal configuration"
+msgstr ""
+
+#: config/personal/class_personalConfig.inc:29
+msgid "FusionDirectory personal plugin configuration"
+msgstr ""
+
+#: config/personal/class_personalConfig.inc:45
+msgid "Allow use of private email for password recovery"
+msgstr ""
+
+#: config/personal/class_personalConfig.inc:45
+msgid "Allow users to use their private email address for password recovery"
 msgstr ""

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2015-05-30 15:30+0200\n"
+"POT-Creation-Date: 2015-07-03 18:54+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FusionDirectory project <contact@fusiondirectory.org>\n"
 "Language-Team: English\n"
@@ -62,23 +62,23 @@ msgstr ""
 msgid "Informations"
 msgstr ""
 
-#: admin/blocklists/class_blocklistGeneric.inc:162
+#: admin/blocklists/class_blocklistGeneric.inc:161
 msgid "List name"
 msgstr ""
 
-#: admin/blocklists/class_blocklistGeneric.inc:162
+#: admin/blocklists/class_blocklistGeneric.inc:161
 msgid "The name of the list"
 msgstr ""
 
-#: admin/blocklists/class_blocklistGeneric.inc:163
+#: admin/blocklists/class_blocklistGeneric.inc:162
 msgid "Description"
 msgstr ""
 
-#: admin/blocklists/class_blocklistGeneric.inc:163
+#: admin/blocklists/class_blocklistGeneric.inc:162
 msgid "A description for the list"
 msgstr ""
 
-#: admin/blocklists/class_blocklistGeneric.inc:165
+#: admin/blocklists/class_blocklistGeneric.inc:164
 msgid "List of blocked number"
 msgstr ""
 
@@ -95,118 +95,118 @@ msgstr ""
 msgid "FAX database information"
 msgstr ""
 
-#: admin/systems/services/fax/class_serviceFax.inc:50
+#: admin/systems/services/fax/class_serviceFax.inc:49
 msgid "FAX DB user"
 msgstr ""
 
-#: admin/systems/services/fax/class_serviceFax.inc:56
+#: admin/systems/services/fax/class_serviceFax.inc:55
 msgid "Password"
 msgstr ""
 
-#: addons/faxreports/class_faxreport.inc:130
-#: addons/faxreports/class_faxreport.inc:139
-#: addons/faxreports/class_faxreport.inc:159
-#: addons/faxreports/class_faxreport.inc:300
+#: addons/faxreports/class_faxreport.inc:129
+#: addons/faxreports/class_faxreport.inc:138
+#: addons/faxreports/class_faxreport.inc:158
+#: addons/faxreports/class_faxreport.inc:299
 #: personal/faxaccount/class_gofaxAccount.inc:272 html/getfax.php:96
 #: html/getfax.php:101 html/getfax.php:106
 msgid "Error"
 msgstr ""
 
-#: addons/faxreports/class_faxreport.inc:130
+#: addons/faxreports/class_faxreport.inc:129
 msgid "No fax server found!"
 msgstr ""
 
-#: addons/faxreports/class_faxreport.inc:139
+#: addons/faxreports/class_faxreport.inc:138
 #, php-format
 msgid "Cannot connect to %s database!"
 msgstr ""
 
-#: addons/faxreports/class_faxreport.inc:159
-#: addons/faxreports/class_faxreport.inc:300
+#: addons/faxreports/class_faxreport.inc:158
+#: addons/faxreports/class_faxreport.inc:299
 #, php-format
 msgid "Cannot query %s database!"
 msgstr ""
 
-#: addons/faxreports/class_faxreport.inc:168
-#: addons/faxreports/class_faxreport.inc:178
+#: addons/faxreports/class_faxreport.inc:167
+#: addons/faxreports/class_faxreport.inc:177
 msgid "Permission error"
 msgstr ""
 
-#: addons/faxreports/class_faxreport.inc:168
-#: addons/faxreports/class_faxreport.inc:178
+#: addons/faxreports/class_faxreport.inc:167
+#: addons/faxreports/class_faxreport.inc:177
 msgid "You have no permission to view this fax id!"
 msgstr ""
 
-#: addons/faxreports/class_faxreport.inc:209
-#: addons/faxreports/class_faxreport.inc:325
+#: addons/faxreports/class_faxreport.inc:208
+#: addons/faxreports/class_faxreport.inc:324
 msgid "Y-M-D"
 msgstr ""
 
-#: addons/faxreports/class_faxreport.inc:319
+#: addons/faxreports/class_faxreport.inc:318
 msgid "Insufficient permissions to view this attribute"
 msgstr ""
 
-#: addons/faxreports/class_faxreport.inc:319
+#: addons/faxreports/class_faxreport.inc:318
 msgid "Insufficient permissions"
 msgstr ""
 
+#: addons/faxreports/class_faxreport.inc:481
 #: addons/faxreports/class_faxreport.inc:482
-#: addons/faxreports/class_faxreport.inc:483
-#: addons/faxreports/class_faxreport.inc:488
+#: addons/faxreports/class_faxreport.inc:487
 msgid "Fax reports"
 msgstr ""
 
-#: addons/faxreports/class_faxreport.inc:483
+#: addons/faxreports/class_faxreport.inc:482
 msgid "All entries are readonly"
 msgstr ""
 
-#: addons/faxreports/class_faxreport.inc:492
+#: addons/faxreports/class_faxreport.inc:491
 msgid "Detailed view"
 msgstr ""
 
-#: addons/faxreports/class_faxreport.inc:493
+#: addons/faxreports/class_faxreport.inc:492
 msgid "Fax ID"
 msgstr ""
 
-#: addons/faxreports/class_faxreport.inc:494
+#: addons/faxreports/class_faxreport.inc:493
 #: addons/faxreports/contents.tpl.c:29
 msgid "Date"
 msgstr ""
 
-#: addons/faxreports/class_faxreport.inc:494
+#: addons/faxreports/class_faxreport.inc:493
 msgid "Time"
 msgstr ""
 
-#: addons/faxreports/class_faxreport.inc:495
+#: addons/faxreports/class_faxreport.inc:494
 #: addons/faxreports/contents.tpl.c:32 addons/faxreports/detail.tpl.c:29
 msgid "Status"
 msgstr ""
 
-#: addons/faxreports/class_faxreport.inc:496 addons/faxreports/detail.tpl.c:20
+#: addons/faxreports/class_faxreport.inc:495 addons/faxreports/detail.tpl.c:20
 msgid "Sender ID"
 msgstr ""
 
-#: addons/faxreports/class_faxreport.inc:497 addons/faxreports/detail.tpl.c:17
+#: addons/faxreports/class_faxreport.inc:496 addons/faxreports/detail.tpl.c:17
 msgid "Sender MSN"
 msgstr ""
 
-#: addons/faxreports/class_faxreport.inc:498 addons/faxreports/detail.tpl.c:26
+#: addons/faxreports/class_faxreport.inc:497 addons/faxreports/detail.tpl.c:26
 msgid "Receiver ID"
 msgstr ""
 
-#: addons/faxreports/class_faxreport.inc:499 addons/faxreports/detail.tpl.c:23
+#: addons/faxreports/class_faxreport.inc:498 addons/faxreports/detail.tpl.c:23
 msgid "Receiver MSN"
 msgstr ""
 
-#: addons/faxreports/class_faxreport.inc:500
+#: addons/faxreports/class_faxreport.inc:499
 msgid "Number of pages"
 msgstr ""
 
-#: addons/faxreports/class_faxreport.inc:501
+#: addons/faxreports/class_faxreport.inc:500
 msgid "Status Message"
 msgstr ""
 
-#: addons/faxreports/class_faxreport.inc:502 addons/faxreports/detail.tpl.c:35
+#: addons/faxreports/class_faxreport.inc:501 addons/faxreports/detail.tpl.c:35
 msgid "Transfer time"
 msgstr ""
 

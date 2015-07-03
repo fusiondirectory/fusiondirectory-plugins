@@ -6,9 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
-"Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-12-15 17:47+0100\n"
-"PO-Revision-Date: 2015-02-25 16:13+0000\n"
+"Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
+"POT-Creation-Date: 2015-05-30 15:30+0200\n"
+"PO-Revision-Date: 2015-05-30 14:12+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Chinese (http://www.transifex.com/projects/p/FusionDirectory-109/language/zh/)\n"
 "MIME-Version: 1.0\n"
@@ -19,12 +19,20 @@ msgstr ""
 
 #: admin/fai/class_faiManagement.inc:117 admin/fai/class_faiManagement.inc:122
 #: admin/fai/packageSelect/selectPackage-list.xml:14
-#: admin/systems/class_faiStartup.inc:178 config/fai/class_faiConfig.inc:41
+#: admin/systems/class_faiStartup.inc:177 config/fai/class_faiConfig.inc:41
 msgid "FAI"
 msgstr "自动化安装"
 
 #: admin/fai/class_faiManagement.inc:118
 msgid "Manage FAI software packages and deployment recipes"
+msgstr ""
+
+#: admin/fai/class_faiManagement.inc:138
+msgid "There are no FAI branches"
+msgstr ""
+
+#: admin/fai/class_faiManagement.inc:141
+msgid " Please add at least one repository service to create those."
 msgstr ""
 
 #: admin/fai/class_faiPackage.inc:157
@@ -43,9 +51,9 @@ msgstr ""
 #: admin/fai/class_faiPartitionTable.inc:209
 #: admin/fai/class_faiPartitionTable.inc:250
 #: admin/fai/class_faiTemplate.inc:114
-#: admin/systems/services/repository/class_serviceDebianRepository.inc:172
-#: admin/systems/services/repository/class_serviceDebianRepository.inc:189
-#: admin/systems/services/repository/class_serviceDebianRepository.inc:193
+#: admin/systems/services/repository/class_serviceRepository.inc:214
+#: admin/systems/services/repository/class_serviceRepository.inc:231
+#: admin/systems/services/repository/class_serviceRepository.inc:235
 msgid "LDAP error"
 msgstr "LDAP 错误"
 
@@ -53,9 +61,9 @@ msgstr "LDAP 错误"
 #: admin/fai/packageSelect/class_filterFAIPackages.inc:41
 #: admin/fai/packageSelect/class_filterFAIPackages.inc:46
 #: admin/fai/class_faiPackageConfiguration.inc:55
-#: admin/systems/class_faiStartup.inc:133
-#: admin/systems/class_faiStartup.inc:160
-msgid "Service infrastructure"
+#: admin/systems/class_faiStartup.inc:132
+#: admin/systems/class_faiStartup.inc:159
+msgid "Infrastructure service"
 msgstr ""
 
 #: admin/fai/class_faiPackage.inc:294
@@ -63,6 +71,7 @@ msgid "Unkown packages"
 msgstr ""
 
 #: admin/fai/class_faiPackage.inc:365
+#: admin/fai/faiPackageConfiguration.tpl.c:2
 msgid "Package"
 msgstr "软件包"
 
@@ -76,14 +85,14 @@ msgstr ""
 
 #: admin/fai/class_faiPackage.inc:385
 #: admin/fai/class_faiPartitionTable.inc:304
-#: admin/fai/class_faiTemplateEntry.inc:140 admin/fai/class_faiProfile.inc:47
+#: admin/fai/class_faiTemplateEntry.inc:140 admin/fai/class_faiProfile.inc:49
 #: admin/fai/class_faiScript.inc:50 admin/fai/class_faiTemplate.inc:173
 #: admin/fai/class_faiHook.inc:50 admin/fai/class_faiVariable.inc:50
 msgid "Properties"
 msgstr "属性"
 
 #: admin/fai/class_faiPackage.inc:388
-#: admin/fai/class_faiPartitionTable.inc:307 admin/fai/class_faiProfile.inc:50
+#: admin/fai/class_faiPartitionTable.inc:307 admin/fai/class_faiProfile.inc:52
 #: admin/fai/class_faiScript.inc:53 admin/fai/class_faiTemplate.inc:176
 #: admin/fai/class_faiHook.inc:53 admin/fai/class_faiVariable.inc:53
 msgid "Class name"
@@ -96,17 +105,18 @@ msgstr ""
 
 #: admin/fai/class_faiPackage.inc:392
 #: admin/fai/class_faiPartitionTable.inc:311
-#: admin/fai/class_faiDiskEntry.inc:738
-#: admin/fai/class_faiTemplateEntry.inc:147 admin/fai/class_faiProfile.inc:54
+#: admin/fai/class_faiDiskEntry.inc:742
+#: admin/fai/class_faiTemplateEntry.inc:147 admin/fai/class_faiProfile.inc:56
 #: admin/fai/class_faiScript.inc:57 admin/fai/class_faiScript.inc:75
 #: admin/fai/class_faiTemplate.inc:180 admin/fai/class_faiHook.inc:57
 #: admin/fai/class_faiHook.inc:75 admin/fai/class_faiVariable.inc:57
-#: admin/fai/class_faiVariable.inc:75
+#: admin/fai/class_faiVariable.inc:75 admin/fai/faiPartition.tpl.c:11
+#: admin/fai/faiDiskEntry.tpl.c:14
 msgid "Description"
 msgstr "描述"
 
 #: admin/fai/class_faiPackage.inc:392
-#: admin/fai/class_faiPartitionTable.inc:311 admin/fai/class_faiProfile.inc:54
+#: admin/fai/class_faiPartitionTable.inc:311 admin/fai/class_faiProfile.inc:56
 #: admin/fai/class_faiScript.inc:57 admin/fai/class_faiTemplate.inc:180
 #: admin/fai/class_faiHook.inc:57 admin/fai/class_faiVariable.inc:57
 msgid "Short description of the class"
@@ -117,8 +127,7 @@ msgid "Repository"
 msgstr "仓库"
 
 #: admin/fai/class_faiPackage.inc:401 admin/systems/class_faiStartup.inc:78
-#: admin/systems/services/repository/class_serviceDebianRepository.inc:52
-#: admin/systems/services/repository/class_serviceCentosRepository.inc:49
+#: admin/systems/services/repository/class_serviceRepository.inc:40
 msgid "Release"
 msgstr "发行"
 
@@ -127,7 +136,7 @@ msgid "Debian release concerned"
 msgstr ""
 
 #: admin/fai/class_faiPackage.inc:405
-#: admin/systems/services/repository/class_serviceDebianRepository.inc:58
+#: admin/systems/services/repository/class_serviceRepository.inc:47
 msgid "Sections"
 msgstr ""
 
@@ -174,7 +183,7 @@ msgstr "分区表"
 msgid "FAI partition table"
 msgstr ""
 
-#: admin/fai/class_faiPartitionTable.inc:307 admin/fai/class_faiProfile.inc:50
+#: admin/fai/class_faiPartitionTable.inc:307 admin/fai/class_faiProfile.inc:52
 msgid "Partition table class name"
 msgstr ""
 
@@ -186,7 +195,7 @@ msgstr "Discs"
 msgid "Partitions in this class"
 msgstr ""
 
-#: admin/fai/class_faiDiskEntry.inc:273
+#: admin/fai/class_faiDiskEntry.inc:273 admin/fai/faiDiskEntry.tpl.c:5
 msgid "Device"
 msgstr "设备"
 
@@ -202,7 +211,8 @@ msgstr ""
 msgid "Disks"
 msgstr ""
 
-#: admin/fai/class_faiDiskEntry.inc:347 admin/fai/class_faiPartition.inc:319
+#: admin/fai/class_faiDiskEntry.inc:347 admin/fai/class_faiPartition.inc:321
+#: admin/fai/faiPartition.tpl.c:14
 msgid "Size"
 msgstr "大小"
 
@@ -224,69 +234,72 @@ msgstr ""
 msgid "preserve"
 msgstr ""
 
-#: admin/fai/class_faiDiskEntry.inc:687 admin/fai/class_faiDiskEntry.inc:690
-#: admin/fai/class_faiDiskEntry.inc:737
+#: admin/fai/class_faiDiskEntry.inc:691 admin/fai/class_faiDiskEntry.inc:694
+#: admin/fai/class_faiDiskEntry.inc:741
 #: admin/fai/packageSelect/selectPackage-list.xml:40
 #: admin/fai/class_faiScript.inc:71 admin/fai/class_faiHook.inc:71
 #: admin/fai/class_faiVariable.inc:71
-#: admin/fai/class_faiSimplePluginClass.inc:50
+#: admin/fai/class_faiSimplePluginClass.inc:50 admin/fai/faiPartition.tpl.c:5
+#: admin/fai/faiDiskEntry.tpl.c:8
+#: admin/fai/packageSelect/selectPackage-filter.tpl.c:8
 msgid "Name"
 msgstr "名称"
 
-#: admin/fai/class_faiDiskEntry.inc:717
+#: admin/fai/class_faiDiskEntry.inc:721
 msgid ""
 "You have more than four primary partition table entries in your "
 "configuration, please check your configuration twice."
 msgstr ""
 
-#: admin/fai/class_faiDiskEntry.inc:721
+#: admin/fai/class_faiDiskEntry.inc:725
 msgid ""
 "You cannot have more than three primary partition while using logical "
 "partitions, please check your configuration twice."
 msgstr ""
 
-#: admin/fai/class_faiDiskEntry.inc:733
+#: admin/fai/class_faiDiskEntry.inc:737
 msgid "Partition table entry"
 msgstr ""
 
-#: admin/fai/class_faiDiskEntry.inc:734
+#: admin/fai/class_faiDiskEntry.inc:738
 msgid "FAI partition table entry"
 msgstr ""
 
-#: admin/fai/class_faiDiskEntry.inc:739
+#: admin/fai/class_faiDiskEntry.inc:743
 msgid "Disk options"
 msgstr ""
 
-#: admin/fai/class_faiDiskEntry.inc:740
+#: admin/fai/class_faiDiskEntry.inc:744
 msgid "Partition type"
 msgstr ""
 
-#: admin/fai/class_faiDiskEntry.inc:741
+#: admin/fai/class_faiDiskEntry.inc:745
 msgid "Partition no."
 msgstr ""
 
-#: admin/fai/class_faiDiskEntry.inc:742
+#: admin/fai/class_faiDiskEntry.inc:746
 msgid "File system type"
 msgstr ""
 
-#: admin/fai/class_faiDiskEntry.inc:743 admin/fai/class_faiPartition.inc:432
+#: admin/fai/class_faiDiskEntry.inc:747 admin/fai/class_faiPartition.inc:437
+#: admin/fai/faiPartition.tpl.c:47
 msgid "Mount point"
 msgstr "挂载点"
 
-#: admin/fai/class_faiDiskEntry.inc:744 admin/fai/class_faiPartition.inc:397
-#: admin/fai/class_faiPartition.inc:402
+#: admin/fai/class_faiDiskEntry.inc:748 admin/fai/class_faiPartition.inc:402
+#: admin/fai/class_faiPartition.inc:407
 msgid "Partition size"
 msgstr ""
 
-#: admin/fai/class_faiDiskEntry.inc:745
+#: admin/fai/class_faiDiskEntry.inc:749 admin/fai/faiPartition.tpl.c:50
 msgid "Mount options"
 msgstr "挂载选项"
 
-#: admin/fai/class_faiDiskEntry.inc:746
+#: admin/fai/class_faiDiskEntry.inc:750
 msgid "File system options"
 msgstr ""
 
-#: admin/fai/class_faiDiskEntry.inc:747
+#: admin/fai/class_faiDiskEntry.inc:751
 msgid "Partition flags"
 msgstr ""
 
@@ -362,23 +375,23 @@ msgstr ""
 msgid "Version"
 msgstr ""
 
-#: admin/fai/class_faiProfile.inc:28
+#: admin/fai/class_faiProfile.inc:30
 msgid "Profile"
 msgstr ""
 
-#: admin/fai/class_faiProfile.inc:29
+#: admin/fai/class_faiProfile.inc:31
 msgid "FAI profile"
 msgstr ""
 
-#: admin/fai/class_faiProfile.inc:32
+#: admin/fai/class_faiProfile.inc:34
 msgid "FAI Profile"
 msgstr ""
 
-#: admin/fai/class_faiProfile.inc:61
+#: admin/fai/class_faiProfile.inc:63
 msgid "FAI classes"
 msgstr "自动化安装（FAI）类"
 
-#: admin/fai/class_faiProfile.inc:61
+#: admin/fai/class_faiProfile.inc:63
 msgid "FAI classes which are part of this profile"
 msgstr ""
 
@@ -548,31 +561,35 @@ msgstr ""
 msgid "btrfs"
 msgstr ""
 
-#: admin/fai/class_faiPartition.inc:325
+#: admin/fai/class_faiPartition.inc:224
+msgid "LVM/RAID"
+msgstr ""
+
+#: admin/fai/class_faiPartition.inc:327
 msgid "spare"
 msgstr ""
 
-#: admin/fai/class_faiPartition.inc:328
+#: admin/fai/class_faiPartition.inc:330
 msgid "missing"
 msgstr ""
 
-#: admin/fai/class_faiPartition.inc:331
+#: admin/fai/class_faiPartition.inc:333
 msgid "Options"
 msgstr "选项"
 
-#: admin/fai/class_faiPartition.inc:415
+#: admin/fai/class_faiPartition.inc:420
 msgid "Minimum partition size"
 msgstr ""
 
-#: admin/fai/class_faiPartition.inc:415
+#: admin/fai/class_faiPartition.inc:420
 msgid "Maximum partition size"
 msgstr ""
 
-#: admin/fai/class_faiPartition.inc:423
+#: admin/fai/class_faiPartition.inc:428
 msgid "Raid arrays must contain at least two partitions!"
 msgstr ""
 
-#: admin/fai/class_faiPartition.inc:425
+#: admin/fai/class_faiPartition.inc:430
 msgid ""
 "Raid 0 arrays can only be realized with a combination of two partitions!"
 msgstr ""
@@ -707,96 +724,81 @@ msgstr ""
 msgid "Linux kernel parameters to be ran"
 msgstr ""
 
-#: admin/systems/class_faiStartup.inc:179
+#: admin/systems/class_faiStartup.inc:178
 msgid "Full automated installation"
 msgstr ""
 
-#: admin/systems/services/repository/class_serviceDebianRepository.inc:34
-#: admin/systems/services/repository/class_serviceCentosRepository.inc:31
-msgid "Repositories"
-msgstr ""
-
-#: admin/systems/services/repository/class_serviceDebianRepository.inc:39
-#: admin/systems/services/repository/class_serviceCentosRepository.inc:36
-msgid "Repositories this server hosts"
-msgstr ""
-
-#: admin/systems/services/repository/class_serviceDebianRepository.inc:43
-#: admin/systems/services/repository/class_serviceCentosRepository.inc:40
+#: admin/systems/services/repository/class_serviceRepository.inc:31
 msgid "URL"
 msgstr "URL"
 
-#: admin/systems/services/repository/class_serviceDebianRepository.inc:43
-#: admin/systems/services/repository/class_serviceCentosRepository.inc:40
+#: admin/systems/services/repository/class_serviceRepository.inc:31
 msgid "Repository url"
 msgstr ""
 
-#: admin/systems/services/repository/class_serviceDebianRepository.inc:47
-#: admin/systems/services/repository/class_serviceCentosRepository.inc:44
+#: admin/systems/services/repository/class_serviceRepository.inc:35
 msgid "Parent server"
 msgstr ""
 
-#: admin/systems/services/repository/class_serviceDebianRepository.inc:47
-#: admin/systems/services/repository/class_serviceCentosRepository.inc:44
+#: admin/systems/services/repository/class_serviceRepository.inc:35
 msgid "Parent repository server"
 msgstr ""
 
-#: admin/systems/services/repository/class_serviceDebianRepository.inc:52
-msgid "Debian release used on this repository"
+#: admin/systems/services/repository/class_serviceRepository.inc:40
+msgid "Release used on this repository"
 msgstr ""
 
-#: admin/systems/services/repository/class_serviceDebianRepository.inc:58
-msgid "Debian sections available on this repository"
+#: admin/systems/services/repository/class_serviceRepository.inc:47
+msgid "Sections available on this repository"
 msgstr ""
 
-#: admin/systems/services/repository/class_serviceDebianRepository.inc:63
-#: admin/systems/services/repository/class_serviceCentosRepository.inc:57
+#: admin/systems/services/repository/class_serviceRepository.inc:52
 msgid "Mirror mode"
 msgstr ""
 
-#: admin/systems/services/repository/class_serviceDebianRepository.inc:63
-#: admin/systems/services/repository/class_serviceCentosRepository.inc:57
+#: admin/systems/services/repository/class_serviceRepository.inc:52
 msgid ""
 "Is this mirror an installation repository? Is its release a custom one?"
 msgstr ""
 
-#: admin/systems/services/repository/class_serviceDebianRepository.inc:68
-#: admin/systems/services/repository/class_serviceCentosRepository.inc:62
+#: admin/systems/services/repository/class_serviceRepository.inc:57
 msgid "Local mirror"
 msgstr ""
 
-#: admin/systems/services/repository/class_serviceDebianRepository.inc:68
-#: admin/systems/services/repository/class_serviceCentosRepository.inc:62
+#: admin/systems/services/repository/class_serviceRepository.inc:57
 msgid "Is this mirror a local or a network mirror?"
 msgstr ""
 
-#: admin/systems/services/repository/class_serviceDebianRepository.inc:77
-#: admin/systems/services/repository/class_serviceCentosRepository.inc:71
+#: admin/systems/services/repository/class_serviceRepository.inc:66
 msgid "Architectures"
 msgstr ""
 
-#: admin/systems/services/repository/class_serviceDebianRepository.inc:77
-#: admin/systems/services/repository/class_serviceCentosRepository.inc:71
+#: admin/systems/services/repository/class_serviceRepository.inc:66
 msgid "Processor architectures available on this repository"
 msgstr ""
 
-#: admin/systems/services/repository/class_serviceDebianRepository.inc:99
-#: admin/systems/services/repository/class_serviceDebianRepository.inc:100
-msgid "Debian repository"
+#: admin/systems/services/repository/class_serviceRepository.inc:72
+msgid "Distribution"
 msgstr ""
 
-#: admin/systems/services/repository/class_serviceDebianRepository.inc:100
-#: admin/systems/services/repository/class_serviceCentosRepository.inc:96
-msgid "Services"
-msgstr "服务"
-
-#: admin/systems/services/repository/class_serviceCentosRepository.inc:49
-msgid "Centos release used on this repository"
+#: admin/systems/services/repository/class_serviceRepository.inc:72
+msgid "Which distribution is this repository for"
 msgstr ""
 
-#: admin/systems/services/repository/class_serviceCentosRepository.inc:95
-#: admin/systems/services/repository/class_serviceCentosRepository.inc:96
-msgid "Centos repository"
+#: admin/systems/services/repository/class_serviceRepository.inc:140
+msgid "Repositories"
+msgstr ""
+
+#: admin/systems/services/repository/class_serviceRepository.inc:145
+msgid "Repositories this server hosts"
+msgstr ""
+
+#: admin/systems/services/repository/class_serviceRepository.inc:160
+msgid "Package repository"
+msgstr ""
+
+#: admin/systems/services/repository/class_serviceRepository.inc:161
+msgid "Package repository information"
 msgstr ""
 
 #: config/fai/class_faiConfig.inc:28
@@ -827,4 +829,88 @@ msgstr ""
 
 #: config/fai/class_faiConfig.inc:60
 msgid "s"
+msgstr ""
+
+#: admin/fai/faiPartition.tpl.c:2
+msgid "Partition"
+msgstr ""
+
+#: admin/fai/faiPartition.tpl.c:8
+msgid "Type"
+msgstr "类型"
+
+#: admin/fai/faiPartition.tpl.c:17
+msgid "Resize existing partition"
+msgstr ""
+
+#: admin/fai/faiPartition.tpl.c:20
+msgid "Bootable"
+msgstr ""
+
+#: admin/fai/faiPartition.tpl.c:23
+msgid "Preserve"
+msgstr "保留"
+
+#: admin/fai/faiPartition.tpl.c:26 admin/fai/faiDiskEntry.tpl.c:20
+msgid "Combined physical partitions"
+msgstr ""
+
+#: admin/fai/faiPartition.tpl.c:29
+msgid "Toggle missing"
+msgstr ""
+
+#: admin/fai/faiPartition.tpl.c:32
+msgid "Toggle spare"
+msgstr ""
+
+#: admin/fai/faiPartition.tpl.c:35
+msgid "Filesystem"
+msgstr ""
+
+#: admin/fai/faiPartition.tpl.c:38
+msgid "Filesystem create options"
+msgstr ""
+
+#: admin/fai/faiPartition.tpl.c:41
+msgid "Encrypted"
+msgstr ""
+
+#: admin/fai/faiPartition.tpl.c:44
+msgid "Tune options"
+msgstr ""
+
+#: admin/fai/faiDiskEntry.tpl.c:2
+msgid "Generic"
+msgstr "通用配置"
+
+#: admin/fai/faiDiskEntry.tpl.c:11
+msgid "fstab key"
+msgstr ""
+
+#: admin/fai/faiDiskEntry.tpl.c:17
+msgid "Disk label"
+msgstr ""
+
+#: admin/fai/faiDiskEntry.tpl.c:23 admin/fai/faiDiskEntry.tpl.c:26
+msgid "Partition entries"
+msgstr "分区条目"
+
+#: admin/fai/faiDiskEntry.tpl.c:29 admin/fai/faiDiskEntry.tpl.c:32
+msgid "Add partition"
+msgstr "添加分区"
+
+#: admin/fai/packageSelect/selectPackage-list.tpl.c:2
+msgid "Update"
+msgstr "更新"
+
+#: admin/fai/packageSelect/selectPackage-list.tpl.c:5
+msgid "Submit"
+msgstr "提交"
+
+#: admin/fai/packageSelect/selectPackage-filter.tpl.c:2
+msgid "Filter"
+msgstr "过滤器"
+
+#: admin/fai/packageSelect/selectPackage-filter.tpl.c:5
+msgid "A maximum of 200 entries will be shown here."
 msgstr ""

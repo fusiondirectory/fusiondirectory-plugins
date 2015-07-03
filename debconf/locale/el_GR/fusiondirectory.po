@@ -6,10 +6,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
-"Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-12-15 17:47+0100\n"
-"PO-Revision-Date: 2015-05-30 11:45+0000\n"
-"Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>\n"
+"Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
+"POT-Creation-Date: 2015-05-30 15:30+0200\n"
+"PO-Revision-Date: 2015-06-07 12:52+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Greek (Greece) (http://www.transifex.com/projects/p/FusionDirectory-109/language/el_GR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -29,7 +29,7 @@ msgstr ""
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:71
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:84
 msgid "Error"
-msgstr ""
+msgstr "Σφάλμα"
 
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:71
 msgid "There is no template for this profile"
@@ -42,7 +42,7 @@ msgstr ""
 
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:134
 msgid "LDAP error"
-msgstr ""
+msgstr "LDAP Λάθος"
 
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:137
 msgid "LDIF error"
@@ -68,8 +68,9 @@ msgstr ""
 
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:181
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:184
+#: admin/debconfProfile/debconfProfile-filter.tpl.c:5
 msgid "Name"
-msgstr ""
+msgstr "Όνομα"
 
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:183
 msgid "Import a debconf file"
@@ -129,4 +130,8 @@ msgstr ""
 
 #: admin/systems/debconf/class_debconfStartup.inc:112
 msgid "Debconf preseed startup"
+msgstr ""
+
+#: admin/debconfProfile/debconfProfile-filter.tpl.c:2
+msgid "Filter"
 msgstr ""

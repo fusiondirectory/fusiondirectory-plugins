@@ -6,9 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
-"Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2014-12-15 17:47+0100\n"
-"PO-Revision-Date: 2015-02-25 16:13+0000\n"
+"Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
+"POT-Creation-Date: 2015-05-30 15:30+0200\n"
+"PO-Revision-Date: 2015-06-04 10:30+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory-109/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -169,6 +169,7 @@ msgid "Fax ID"
 msgstr "ID Fax"
 
 #: addons/faxreports/class_faxreport.inc:494
+#: addons/faxreports/contents.tpl.c:29
 msgid "Date"
 msgstr "Date"
 
@@ -177,22 +178,23 @@ msgid "Time"
 msgstr "Temps"
 
 #: addons/faxreports/class_faxreport.inc:495
+#: addons/faxreports/contents.tpl.c:32 addons/faxreports/detail.tpl.c:29
 msgid "Status"
 msgstr "Statut"
 
-#: addons/faxreports/class_faxreport.inc:496
+#: addons/faxreports/class_faxreport.inc:496 addons/faxreports/detail.tpl.c:20
 msgid "Sender ID"
 msgstr "ID de l'expéditeur"
 
-#: addons/faxreports/class_faxreport.inc:497
+#: addons/faxreports/class_faxreport.inc:497 addons/faxreports/detail.tpl.c:17
 msgid "Sender MSN"
 msgstr "MSN de l'expéditeur"
 
-#: addons/faxreports/class_faxreport.inc:498
+#: addons/faxreports/class_faxreport.inc:498 addons/faxreports/detail.tpl.c:26
 msgid "Receiver ID"
 msgstr "ID du correspondant"
 
-#: addons/faxreports/class_faxreport.inc:499
+#: addons/faxreports/class_faxreport.inc:499 addons/faxreports/detail.tpl.c:23
 msgid "Receiver MSN"
 msgstr "MSN du correspondant"
 
@@ -204,7 +206,7 @@ msgstr "Nombre de pages"
 msgid "Status Message"
 msgstr "Rapport d'envoi"
 
-#: addons/faxreports/class_faxreport.inc:502
+#: addons/faxreports/class_faxreport.inc:502 addons/faxreports/detail.tpl.c:35
 msgid "Transfer time"
 msgstr "Temps de transfert"
 
@@ -272,7 +274,8 @@ msgstr "L'impression à été demandé alors que l'imprimante n'est pas définie
 
 #: personal/faxaccount/class_gofaxAccount.inc:796
 #: personal/faxaccount/faxNumberSelect/faxNumberSelect-list.xml:56
-#: config/fax/class_faxConfig.inc:42
+#: config/fax/class_faxConfig.inc:42 personal/faxaccount/generic.tpl.c:5
+#: personal/faxaccount/paste_generic.tpl.c:5
 msgid "Fax"
 msgstr "Fax"
 
@@ -281,10 +284,12 @@ msgid "Fax account settings"
 msgstr "Paramètres du compte FAX"
 
 #: personal/faxaccount/class_gofaxAccount.inc:806
+#: personal/faxaccount/generic.tpl.c:11
 msgid "Language"
 msgstr "Langue"
 
 #: personal/faxaccount/class_gofaxAccount.inc:807
+#: personal/faxaccount/generic.tpl.c:17
 msgid "Delivery format"
 msgstr "Format de distribution"
 
@@ -297,10 +302,12 @@ msgid "Enable/Disable fax"
 msgstr "Activer/désactiver le fax"
 
 #: personal/faxaccount/class_gofaxAccount.inc:810
+#: personal/faxaccount/generic.tpl.c:32
 msgid "Deliver fax as mail"
 msgstr "Délivrer les fax comme des messages"
 
 #: personal/faxaccount/class_gofaxAccount.inc:811
+#: personal/faxaccount/generic.tpl.c:35
 msgid "Deliver fax to printer"
 msgstr "Imprimer directement les fax"
 
@@ -317,6 +324,7 @@ msgid "Please select the desired entries"
 msgstr "Veuillez sélectionner les entrées désirées"
 
 #: personal/faxaccount/faxNumberSelect/faxNumberSelect-list.xml:14
+#: addons/faxreports/contents.tpl.c:26 addons/faxreports/detail.tpl.c:11
 msgid "User"
 msgstr "Utilisateur"
 
@@ -371,3 +379,181 @@ msgstr "Fax RDN"
 #: config/fax/class_faxConfig.inc:45
 msgid "Branch in which fax blocklists will be stored"
 msgstr "Branche dans laquelle les listes rouges du fax seront stockées"
+
+#: addons/faxreports/contents.tpl.c:2
+#: personal/faxaccount/faxNumberSelect/faxNumberSelect-filter.tpl.c:2
+msgid "Filter"
+msgstr "Filtre"
+
+#: addons/faxreports/contents.tpl.c:5
+msgid "Search for"
+msgstr "Recherche de"
+
+#: addons/faxreports/contents.tpl.c:8
+msgid "Enter user name to search for"
+msgstr "Entrez le nom recherché"
+
+#: addons/faxreports/contents.tpl.c:11 addons/faxreports/contents.tpl.c:20
+msgid "in"
+msgstr "dans"
+
+#: addons/faxreports/contents.tpl.c:14
+msgid "Select subtree to base search on"
+msgstr "Sélectionnez la branche de l'annuaire où sera effectuée la recherche"
+
+#: addons/faxreports/contents.tpl.c:17
+msgid "during"
+msgstr "pendant"
+
+#: addons/faxreports/contents.tpl.c:23
+msgid "Search"
+msgstr "Recherche"
+
+#: addons/faxreports/contents.tpl.c:35
+msgid "Sender"
+msgstr "Expéditeur"
+
+#: addons/faxreports/contents.tpl.c:38
+msgid "Receiver"
+msgstr "Correspondant"
+
+#: addons/faxreports/contents.tpl.c:41 addons/faxreports/detail.tpl.c:38
+msgid "# pages"
+msgstr "# pages"
+
+#: addons/faxreports/contents.tpl.c:44
+msgid "Search returned no results..."
+msgstr "La recherche n'a renvoyé aucun résultat..."
+
+#: addons/faxreports/detail.tpl.c:2
+msgid "FAX preview - please wait"
+msgstr "prévisualisation du FAX - Veuillez attendre"
+
+#: addons/faxreports/detail.tpl.c:5
+msgid "Click on fax to download"
+msgstr "Cliquez sur le fax pour le télécharger"
+
+#: addons/faxreports/detail.tpl.c:8
+msgid "FAX ID"
+msgstr "FAX ID"
+
+#: addons/faxreports/detail.tpl.c:14
+msgid "Date / Time"
+msgstr "Date / Heure"
+
+#: addons/faxreports/detail.tpl.c:32
+msgid "Status message"
+msgstr "Statut"
+
+#: personal/faxaccount/generic.tpl.c:2
+#: personal/faxaccount/paste_generic.tpl.c:2
+msgid "Generic"
+msgstr "Application"
+
+#: personal/faxaccount/generic.tpl.c:8
+msgid "Fax number for fax to trigger on"
+msgstr "Numéro de fax ou fax à déclencher"
+
+#: personal/faxaccount/generic.tpl.c:14
+msgid "Specify the fax communication language for fax to mail gateway"
+msgstr "Spécifiez le format de distribution pour les fax vers la passerelle de messagerie"
+
+#: personal/faxaccount/generic.tpl.c:20
+msgid "Specify delivery format for fax to mail gateway"
+msgstr "Spécifiez le format de distribution pour les fax vers la passerelle de messagerie"
+
+#: personal/faxaccount/generic.tpl.c:23
+msgid "Delivery methods"
+msgstr "Méthodes de distribution"
+
+#: personal/faxaccount/generic.tpl.c:26
+msgid "Temporary disable fax usage"
+msgstr "Désactiver temporairement l'utilisation du fax"
+
+#: personal/faxaccount/generic.tpl.c:29
+msgid "Deliver fax as mail to"
+msgstr "Délivrer les fax comme des messages à"
+
+#: personal/faxaccount/generic.tpl.c:38
+msgid "Alternate fax numbers"
+msgstr "Numéros de fax alternatif"
+
+#: personal/faxaccount/generic.tpl.c:41
+msgid "Add local"
+msgstr "Ajouter en local"
+
+#: personal/faxaccount/generic.tpl.c:44
+msgid "Blocklists"
+msgstr "Listes Rouges"
+
+#: personal/faxaccount/generic.tpl.c:47
+msgid "Blocklists for incoming fax"
+msgstr "Listes rouges pour les fax entrant"
+
+#: personal/faxaccount/generic.tpl.c:50 personal/faxaccount/generic.tpl.c:56
+msgid "Edit"
+msgstr "Éditer"
+
+#: personal/faxaccount/generic.tpl.c:53
+msgid "Blocklists for outgoing fax"
+msgstr "Listes rouges pour les fax sortant"
+
+#: personal/faxaccount/lists.tpl.c:2
+msgid "Blocked numbers/lists"
+msgstr "Numéros/listes refusés"
+
+#: personal/faxaccount/lists.tpl.c:5
+msgid "List of predefined blocklists"
+msgstr "Liste des listes rouges prédéfinies"
+
+#: personal/faxaccount/lists.tpl.c:8
+msgid "Add the list to the blocklists"
+msgstr "Ajouter a la liste des listes rouges"
+
+#: personal/faxaccount/paste_generic.tpl.c:8
+msgid "Fax number for GOfax to trigger on"
+msgstr "Numéro de fax pour lesquels GOfax s'activera"
+
+#: personal/faxaccount/paste_generic.tpl.c:11
+msgid "Alternate fax numbers will not be copied"
+msgstr "Les numéros de fax alternatif ne seront pas copiés"
+
+#: personal/faxaccount/locals.tpl.c:2
+msgid "Select numbers to add"
+msgstr "Sélectionnez les numéros à ajouter"
+
+#: personal/faxaccount/locals.tpl.c:5
+msgid "Filters"
+msgstr "Filtres"
+
+#: personal/faxaccount/locals.tpl.c:8
+msgid "Display numbers of department"
+msgstr "Afficher les numéro du département"
+
+#: personal/faxaccount/locals.tpl.c:11
+msgid "Choose the department the search will be based on"
+msgstr "Sélectionner le département où sera effectuée la recherche"
+
+#: personal/faxaccount/locals.tpl.c:14
+msgid "Display numbers matching"
+msgstr "Afficher les numéros correspondants"
+
+#: personal/faxaccount/locals.tpl.c:17
+msgid "Regular expression for matching numbers"
+msgstr "Expression régulière pour trouver les numéros correspondants"
+
+#: personal/faxaccount/locals.tpl.c:20
+msgid "Display numbers of user"
+msgstr "Afficher les numéros des utilisateurs"
+
+#: personal/faxaccount/locals.tpl.c:23
+msgid "User name of which numbers are shown"
+msgstr "Utilisateur dont les numéros sont affichés"
+
+#: personal/faxaccount/faxNumberSelect/faxNumberSelect-filter.tpl.c:5
+msgid "Name"
+msgstr "Nom"
+
+#: personal/faxaccount/faxNumberSelect/faxNumberSelect-list.tpl.c:2
+msgid "Base"
+msgstr "Base"

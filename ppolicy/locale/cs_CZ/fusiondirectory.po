@@ -7,10 +7,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
-"Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2015-02-10 18:26+0100\n"
-"PO-Revision-Date: 2015-04-08 08:42+0000\n"
-"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
+"Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
+"POT-Creation-Date: 2015-05-30 15:30+0200\n"
+"PO-Revision-Date: 2015-05-30 14:02+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/FusionDirectory-109/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -85,14 +85,15 @@ msgid ""
 msgstr "Nejdelší umožněná doba, po kterou je heslo platné. Po jejím uplynutí bude považováno za nepoužitelné a jakýkoli pokus o spojení s použitím tohoto hesla, jehož platnost skončila, bude považován za neplatný"
 
 #: admin/ppolicy/class_ppolicy.inc:79
-msgid "Expire warning delay"
-msgstr "Prodleva varování o vypršení platnosti"
+msgid "Expiry warning delay"
+msgstr "Prodleva varování před skončením platnosti"
 
 #: admin/ppolicy/class_ppolicy.inc:79
 msgid ""
-"Start time prior to the password expiry that password expiry warning "
-"messages are returned in bind responses"
-msgstr "S jakým předstihem před vypršením platnosti hesla posílat varování při připojování heslem, jehož konec platnosti se blíží"
+"Defines the start time - in seconds - prior to the password expiry that "
+"password expiry warning messages are returned in bind responses. 0 to "
+"disable"
+msgstr "Určuje čas – sekundách – před skončením platnosti hesla, kdy začnou být při spojování zasílána varování o blížícím se skončení platnosti hesla. Funkci zakážete nastavením na hodnotu 0 (nula)"
 
 #: admin/ppolicy/class_ppolicy.inc:84
 msgid "Grace period"
@@ -175,6 +176,38 @@ msgid ""
 "administrator following an automatic lockout"
 msgstr "Zda uživatele přimět ke změně hesla po obnovení přístupu správcem po samočinném zamčení účtu"
 
+#: addons/dashboard/class_dashBoardPPolicy.inc:26
+msgid "Ppolicy"
+msgstr ""
+
+#: addons/dashboard/class_dashBoardPPolicy.inc:27
+msgid "Statistics about ppolicy expired users"
+msgstr "Statistiky uživatelských účtů, kterým ppolicy ukončilo platnost"
+
+#: addons/dashboard/class_dashBoardPPolicy.inc:38
+msgid "Expired accounts"
+msgstr "Účty, jejichž platnost skončila"
+
+#: addons/dashboard/class_dashBoardPPolicy.inc:43
+#: addons/dashboard/ppolicy_locked_accounts.tpl.c:8
+msgid "Locked accounts"
+msgstr "Uzamčené účty"
+
+#: addons/dashboard/class_dashBoardPPolicy.inc:69
+#: addons/dashboard/class_dashBoardPPolicy.inc:124
+msgid "Configuration error"
+msgstr "Chyba v nastavení"
+
+#: addons/dashboard/class_dashBoardPPolicy.inc:70
+#, php-format
+msgid "Default ppolicy \"%s\" could not be found in the LDAP!"
+msgstr "Výchozí ppolicy %s nebyla v LDAP nalezena!"
+
+#: addons/dashboard/class_dashBoardPPolicy.inc:125
+#, php-format
+msgid "Ppolicy \"%s\" set for user \"%s\" could not be found in the LDAP!"
+msgstr "Zásada Ppolicy %s, nastavená pro uživatele %s nebyla v LDAP nalezena!"
+
 #: personal/ppolicy/class_ppolicyAccount.inc:38
 msgid "Edit user's password policy"
 msgstr "Upravit zásady hesel uživatelů"
@@ -219,11 +252,11 @@ msgstr "Znovu nastavit a vynutit změnu"
 msgid "Use the default"
 msgstr "Použít výchozí"
 
-#: personal/ppolicy/class_ppolicyAccount.inc:102
+#: personal/ppolicy/class_ppolicyAccount.inc:91
 msgid "Never"
 msgstr "Nikdy"
 
-#: personal/ppolicy/class_ppolicyAccount.inc:109
+#: personal/ppolicy/class_ppolicyAccount.inc:98
 msgid "Unlocked"
 msgstr "Odemčeno"
 
@@ -254,3 +287,43 @@ msgstr "Běžný název výchozí ppolicy"
 #: config/ppolicy/class_ppolicyConfig.inc:50
 msgid "What you put as default ppolicy in the overlay config"
 msgstr "Co umístíte jako výchozí ppolicy do nastavení překrytí"
+
+#: addons/dashboard/ppolicy_locked_accounts.tpl.c:2
+msgid "There is one locked account"
+msgid_plural "There are %1 locked accounts"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: addons/dashboard/ppolicy_locked_accounts.tpl.c:5
+msgid "There is no locked account"
+msgstr "Není zde žádný uzamčený účet"
+
+#: addons/dashboard/ppolicy_locked_accounts.tpl.c:11
+msgid "Manager concerned"
+msgstr "Nadřízený, kterého se týká"
+
+#: addons/dashboard/ppolicy_locked_accounts.tpl.c:14
+msgid "uid"
+msgstr "Identifikátor uživatele (uid)"
+
+#: addons/dashboard/ppolicy_locked_accounts.tpl.c:17
+msgid "cn"
+msgstr "bežný název (cn)"
+
+#: addons/dashboard/ppolicy_locked_accounts.tpl.c:20
+#: addons/dashboard/ppolicy_locked_accounts.tpl.c:32
+msgid "telephoneNumber"
+msgstr "telefonniCislo"
+
+#: addons/dashboard/ppolicy_locked_accounts.tpl.c:23
+msgid "pwdAccountLockedTime"
+msgstr ""
+
+#: addons/dashboard/ppolicy_locked_accounts.tpl.c:26
+msgid "manager"
+msgstr "nadřízený"
+
+#: addons/dashboard/ppolicy_locked_accounts.tpl.c:29
+msgid "mail"
+msgstr "E-mail"
