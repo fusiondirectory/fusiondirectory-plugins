@@ -24,7 +24,6 @@ class mixedGroup extends simplePlugin
 
   static function plInfo()
   {
-    global $config;
     return array(
       'plShortName'   => _('Posix group'),
       'plDescription' => _('Posix group settings'),
@@ -54,12 +53,7 @@ class mixedGroup extends simplePlugin
             _('GID'), _('GID value for this group'),
             'gidNumber', FALSE,
             0, FALSE, ''
-          )
-        )
-      ),
-      'members' => array(
-        'name'  => _('Group members'),
-        'attrs' => array(
+          ),
           new HiddenAttribute(
             'memberUid', FALSE,
             array()
@@ -144,7 +138,7 @@ class mixedGroup extends simplePlugin
   function prepare_save()
   {
     $ldap = $this->config->get_ldap_link();
-    $members    = $this->parent->getBaseObject()->members;
+    $members    = $this->parent->getBaseObject()->member;
     $memberUid  = array();
     foreach ($members as $dn) {
       $ldap->cat($dn, array('uid'));
