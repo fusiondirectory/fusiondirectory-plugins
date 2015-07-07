@@ -132,15 +132,41 @@ class buildRepository extends simplePlugin
     if ($field == 'fdRepoDistributionSection') {
       $values = $this->fdRepoDistributionSection;
       foreach ($values as $value) {
-        if (($source[0] == 'repositoryDistribution') && preg_match('/^'.preg_quote($fieldvalue, '/').'/', $value)) {
+        if (($source['CLASS'] == 'repositoryDistribution') && preg_match('/^'.preg_quote($fieldvalue, '/').'/', $value)) {
           return TRUE;
         }
-        if (($source[0] == 'repositorySection') && preg_match('/'.preg_quote($fieldvalue, '$/').'/', $value)) {
+        if (($source['CLASS'] == 'repositorySection') && preg_match('/'.preg_quote($fieldvalue, '$/').'/', $value)) {
           return TRUE;
         }
       }
     } else {
       return parent::foreignKeyCheck ($field, $fieldvalue, $source);
+    }
+  }
+
+  function foreignKeyUpdate($field, $oldvalue, $newvalue, $source)
+  {
+    if ($field == 'fdRepoDistributionSection') {
+      $values = $this->fdRepoDistributionSection;
+      foreach ($values as $key => $value) {
+        if (($source['CLASS'] == 'repositoryDistribution') && preg_match('/^'.preg_quote($oldvalue, '/').'/', $value)) {
+          if ($newvalue === NULL) {
+            unset($values[$key]);
+          } else {
+            $values[$key] = preg_replace('/^'.preg_quote($oldvalue, '/').'/', $newvalue, $value);
+          }
+        }
+        if (($source['CLASS'] == 'repositorySection') && preg_match('/'.preg_quote($oldvalue, '$/').'/', $value)) {
+          if ($newvalue === NULL) {
+            unset($values[$key]);
+          } else {
+            $values[$key] = preg_replace('/'.preg_quote($oldvalue, '$/').'/', $newvalue, $value);
+          }
+        }
+      }
+      $this->fdRepoDistributionSection = $values;
+    } else {
+      return parent::foreignKeyUpdate($field, $oldvalue, $newvalue, $source);
     }
   }
 }
