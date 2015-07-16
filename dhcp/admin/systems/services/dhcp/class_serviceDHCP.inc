@@ -125,12 +125,14 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
 
       $this->subnet_expanded = $this->value[$key][0];
       $this->reload(FALSE);
+      $this->postValue = $this->value;
 
       return TRUE;
     }
     if (preg_match('/^'.$id.'_foldDHCP_/', $postValue)) {
       $this->subnet_expanded = FALSE;
       $this->reload(FALSE);
+      $this->postValue = $this->value;
 
       return TRUE;
     }
@@ -266,7 +268,7 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
         continue;
       }
 
-      $tmp = preg_replace("/".$this->serviceDN."/", "", $dn);
+      $tmp = preg_replace("/".$this->plugin->dhcpServiceDN."/", "", $dn);
       $indent = substr_count($tmp, ",");
       if ($type_id == "dhcpSubnet") {
         $indent--;
@@ -316,7 +318,6 @@ class DhcpSectionsAttribute extends DialogOrderedArrayAttribute
       /* Read all sub entries to place here */
       $ldap->cd($value['dn']);
       $ldap->search("(|(objectClass=dhcpService)(objectClass=dhcpClass)(objectClass=dhcpSubClass)(objectClass=dhcpGroup)(objectClass=dhcpPool)(objectClass=dhcpSubnet)(objectClass=dhcpSharedNetwork)(objectClass=dhcpTSigKey)(objectClass=dhcpDnsZone)(objectClass=dhcpFailOverPeer))", array());
-      $this->serviceDN = $value['dn'];
 
       while ($attrs = $ldap->fetch()) {
         $this->reload_readItemFromLDAP($ldap, $attrs, $final, $erase);
