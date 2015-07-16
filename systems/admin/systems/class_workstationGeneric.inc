@@ -133,7 +133,7 @@ class workstationGeneric extends simplePlugin
 
   var $inheritance = array("gotoWorkstationTemplate" => "member");
 
-  var $preInitAttributes = array('networkSettings');
+  var $preInitAttributes = array('cn', 'networkSettings');
 
   /*!
    *  \brief The main function : information about attributes

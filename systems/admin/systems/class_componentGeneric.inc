@@ -27,7 +27,7 @@ class componentGeneric extends simplePlugin
 
   var $netConfigDNS;
 
-  var $preInitAttributes = array('networkSettings');
+  var $preInitAttributes = array('cn', 'networkSettings');
 
   /* Return plugin informations for acl handling */
   static function plInfo()
