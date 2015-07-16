@@ -487,7 +487,7 @@ class serviceDHCP extends simpleService
     $ldap   = $this->config->get_ldap_link();
     $cache  = $this->getCache();
     foreach ($cache as $dn => $content) {
-      if ($this->objectType($dn) == 'dhcpService') {
+      if ($this->attributesAccess['dhcpSections']->objectType($dn) == 'dhcpService') {
         $ldap->rmdir_recursive($dn);
         if (!$ldap->success()) {
           msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_DEL, get_class()), LDAP_ERROR);
