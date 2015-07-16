@@ -61,6 +61,10 @@ class argonautDNSConfig extends simpleService
             '/var/cache/bind'
           ),
           new BooleanAttribute (
+            _('Ignore reverse zone'), _('Do not write reverse zone'),
+            'argonautLdap2zoneNoReverse', FALSE
+          ),
+          new BooleanAttribute (
             _('Allow notify'),
             '',
             'argonautLdap2zoneAllowNotify',
