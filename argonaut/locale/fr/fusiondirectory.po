@@ -4,6 +4,7 @@
 # 
 # Translators:
 # gallak <antoine.gallavardin@free.fr>, 2013
+# Benoit Mortier <benoit.mortier@opensides.be>, 2015
 # MCMic, 2014-2015
 # fusiondirectory <contact@fusiondirectory.org>, 2013-2014
 # fusiondirectory <contact@fusiondirectory.org>, 2013
@@ -15,9 +16,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2015-06-04 22:52+0200\n"
-"PO-Revision-Date: 2015-06-04 09:20+0000\n"
-"Last-Translator: MCMic\n"
+"POT-Creation-Date: 2015-07-27 20:23+0200\n"
+"PO-Revision-Date: 2015-07-27 18:43+0000\n"
+"Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory-108/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -365,30 +366,38 @@ msgid "The directory in which zone files must be created"
 msgstr "Le répertoire dans lequel les fichiers de zones doivent être créés"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:64
+msgid "Ignore reverse zone"
+msgstr "Ignorer la zone inverse"
+
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:64
+msgid "Do not write reverse zone"
+msgstr "Ne pas écrire la zone inverse"
+
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:68
 msgid "Allow notify"
 msgstr "IPs autorisées à notifier (séparées et terminé par un point-virgule)"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:70
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:74
 msgid "Allow update (semicolon separated and ended)"
 msgstr "IPs autorisées à mettre à jour (séparées et terminé par un point-virgule)"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:76
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:80
 msgid "Allow transfer (semicolon separated and ended)"
 msgstr "IPs autorisées à transférer (séparées et terminé par un point-virgule)"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:82
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:86
 msgid "TTL"
 msgstr "TTL"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:83
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:87
 msgid "Time to live"
 msgstr "Temps de vie"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:91
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:95
 msgid "rndc path"
 msgstr "Binaire rndc"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:92
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:96
 msgid "path to rndc binary"
 msgstr "Chemin vers le binaire rndc"
 

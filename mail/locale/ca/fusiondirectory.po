@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2015-06-04 22:53+0200\n"
+"POT-Creation-Date: 2015-07-27 20:23+0200\n"
 "PO-Revision-Date: 2015-05-30 14:11+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Catalan (http://www.transifex.com/projects/p/FusionDirectory-108/language/ca/)\n"
@@ -336,31 +336,31 @@ msgstr ""
 msgid "IMAP/POP3"
 msgstr ""
 
-#: personal/mail/class_mail-methods.inc:156
-#: personal/mail/class_mail-methods.inc:517
+#: personal/mail/class_mail-methods.inc:155
+#: personal/mail/class_mail-methods.inc:516
 msgid "Configuration error"
 msgstr "Error de la configuració"
 
-#: personal/mail/class_mail-methods.inc:157
+#: personal/mail/class_mail-methods.inc:156
 #, php-format
 msgid "The configured mail attribute '%s' is unsupported!"
 msgstr ""
 
-#: personal/mail/class_mail-methods.inc:518
+#: personal/mail/class_mail-methods.inc:517
 #, php-format
 msgid "Mail method '%s' is unknown!"
 msgstr ""
 
+#: personal/mail/class_mail-methods.inc:726
 #: personal/mail/class_mail-methods.inc:727
-#: personal/mail/class_mail-methods.inc:728
 msgid "None"
 msgstr ""
 
-#: personal/mail/class_mail-methods.inc:817
+#: personal/mail/class_mail-methods.inc:816
 msgid "Unknown"
 msgstr ""
 
-#: personal/mail/class_mail-methods.inc:819
+#: personal/mail/class_mail-methods.inc:818
 msgid "Unlimited"
 msgstr ""
 
@@ -368,9 +368,9 @@ msgstr ""
 #: personal/mail/class_mailAccount.inc:256
 #: personal/mail/class_mailAccount.inc:260
 #: personal/mail/class_mailAccount.inc:263
-#: personal/mail/class_mailAccount.inc:351
-#: personal/mail/class_mailAccount.inc:355
-#: personal/mail/class_mailAccount.inc:359
+#: personal/mail/class_mailAccount.inc:376
+#: personal/mail/class_mailAccount.inc:380
+#: personal/mail/class_mailAccount.inc:384
 msgid "Mail error"
 msgstr ""
 
@@ -520,7 +520,7 @@ msgid "Cannot get list of mailboxes: %s"
 msgstr ""
 
 #: personal/mail/class_mailAccount.inc:260
-#: personal/mail/class_mailAccount.inc:351
+#: personal/mail/class_mailAccount.inc:376
 #, php-format
 msgid "Mail method cannot connect: %s"
 msgstr ""
@@ -530,17 +530,17 @@ msgstr ""
 msgid "Mailbox '%s' doesn't exists on mail server: %s"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:355
+#: personal/mail/class_mailAccount.inc:380
 #, php-format
 msgid "Cannot update mailbox: %s"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:359
+#: personal/mail/class_mailAccount.inc:384
 #, php-format
 msgid "Cannot write quota settings: %s"
 msgstr ""
 
-#: personal/mail/class_mailAccount.inc:372
+#: personal/mail/class_mailAccount.inc:397
 msgid "Mail error saving sieve settings"
 msgstr ""
 

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-108\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2015-06-04 22:52+0200\n"
-"PO-Revision-Date: 2015-05-30 14:11+0000\n"
+"POT-Creation-Date: 2015-07-27 20:23+0200\n"
+"PO-Revision-Date: 2015-07-27 18:28+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Polish (http://www.transifex.com/projects/p/FusionDirectory-108/language/pl/)\n"
 "MIME-Version: 1.0\n"
@@ -357,30 +357,38 @@ msgid "The directory in which zone files must be created"
 msgstr ""
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:64
+msgid "Ignore reverse zone"
+msgstr ""
+
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:64
+msgid "Do not write reverse zone"
+msgstr ""
+
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:68
 msgid "Allow notify"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:70
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:74
 msgid "Allow update (semicolon separated and ended)"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:76
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:80
 msgid "Allow transfer (semicolon separated and ended)"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:82
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:86
 msgid "TTL"
 msgstr "TTL"
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:83
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:87
 msgid "Time to live"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:91
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:95
 msgid "rndc path"
 msgstr ""
 
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:92
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:96
 msgid "path to rndc binary"
 msgstr ""
 
