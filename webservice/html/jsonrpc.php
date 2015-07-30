@@ -258,7 +258,7 @@ class fdRPCService
             'required'    => FALSE,
             'disabled'    => FALSE,
             'label'       => $attr,
-            'type'        => 'OldPluginAttribute',
+            'type'        => array('OldPluginAttribute'),
             'description' => '',
           );
         }
