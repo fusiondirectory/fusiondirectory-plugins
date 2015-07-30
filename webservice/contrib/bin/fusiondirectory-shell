@@ -338,7 +338,7 @@ sub command_create
   if (ref $fields eq ref {}) {
     foreach my $section (values %$fields) {
       print '['.$section->{'name'}.']'."\n";
-      if (ref $section->{'attrs'} eq ref {}) {
+      if (ref $section->{'attrs'} eq ref []) {
         foreach my $field (@{$section->{'attrs'}}) {
           if ($field->{'required'} && !$field->{'disabled'}) {
             $values{$field->{'id'}} = ask_field($field);
