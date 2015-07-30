@@ -276,6 +276,19 @@ sub show_field
         printf ("\t%-22s %s\n", "", $value);
       }
       return;
+    } elsif (grep {$type eq $_} ('OldPluginAttribute')) {
+      if (ref($field->{'value'}) ne 'ARRAY') {
+        printf ("\t%-22s %s\n", $field->{'label'}.':', $field->{'value'});
+      } else {
+        printf ("\t%-22s\n", $field->{'label'}.':');
+        foreach my $value (@{$field->{'value'}}) {
+          if (ref($value) eq 'ARRAY') {
+            $value = Dumper($value);
+          }
+          printf ("\t%-22s %s\n", "", $value);
+        }
+        return;
+      }
     }
   }
   # Default display
