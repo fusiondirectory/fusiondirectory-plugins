@@ -267,6 +267,15 @@ sub show_field
     if (grep {$type eq $_} ('StringAttribute', 'DisplayAttribute')) {
       printf ("\t%-22s %s\n", $field->{'label'}.':', $field->{'value'});
       return;
+    } elsif (grep {$type eq $_} ('SetAttribute')) {
+      printf ("\t%-22s\n", $field->{'label'}.':');
+      foreach my $value (@{$field->{'value'}}) {
+        if (ref($value) eq 'ARRAY') {
+          $value = Dumper($value);
+        }
+        printf ("\t%-22s %s\n", "", $value);
+      }
+      return;
     }
   }
   # Default display
