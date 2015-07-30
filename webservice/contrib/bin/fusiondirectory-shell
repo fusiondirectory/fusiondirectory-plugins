@@ -281,8 +281,8 @@ sub show_field
           }
           printf ("\t%-22s %s\n", "", $value);
         }
-        return;
       }
+      return;
     }
   }
   # Default display
