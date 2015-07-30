@@ -253,7 +253,7 @@ class fdRPCService
       $fields = array('main' => array('attrs' => array(), 'name' => _('Plugin')));
       foreach ($object->attributes as $attr) {
         if ($object->acl_is_readable($attr.'Acl')) {
-          $fields['main']['attrs'][$attr] = array(
+          $fields['main']['attrs'][] = array(
             'value'       => $object->$attr,
             'required'    => FALSE,
             'disabled'    => FALSE,
