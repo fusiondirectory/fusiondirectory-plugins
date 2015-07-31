@@ -20,7 +20,7 @@
                   <tbody>
                     {foreach from=$node.attrs key=label item=values}
                       {foreach from=$values item=value}
-                        <tr>
+                        <tr title="{$label}={$value|escape:'html':'UTF-8'}">
                           <th>{$label}</th>
                           <td>{$value|escape:'html':'UTF-8'}</td>
                         </tr>

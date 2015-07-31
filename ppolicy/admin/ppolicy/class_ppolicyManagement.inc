@@ -1,6 +1,7 @@
 <?php
 /*
  * This code is part of FusionDirectory (http://www.fusiondirectory.org/)
+ * Copyright (C) 2014-2015 Dhatim
  * Copyright (C) 2014-2015 FusionDirectory
  *
  * This program is free software; you can redistribute it and/or modify
