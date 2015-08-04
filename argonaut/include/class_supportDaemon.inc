@@ -74,15 +74,21 @@ class supportDaemon
    */
   public function get_argonaut_host()
   {
+    global $config;
     $ldap = $this->config->get_ldap_link();
     $ldap->cd($this->config->current['BASE']);
-    $ldap->search("(objectClass=argonautServer)", array('cn','ipHostNumber','argonautProtocol','argonautPort','argonautTimeout'));
+    $ldap->search("(objectClass=argonautServer)", array('cn','ipHostNumber','argonautProtocol','argonautPort','argonautTimeout','argonautFDCaCertPath','argonautServerToken'));
     if ($ldap->count() == 1) {
       $ldap_infos = $ldap->fetch();
       if (isset($ldap_infos['argonautTimeout'][0])) {
         $this->http_options = array(
           'timeout' => $ldap_infos['argonautTimeout'][0]
         );
+        if ($ldap_infos['argonautProtocol'][0] == 'https') {
+          $this->http_options['cafile'] = $ldap_infos['argonautFDCaCertPath'][0];
+          $sshaMethod = new passwordMethodssha($config);
+          $this->http_options['header'] = 'Authorization: Basic '.base64_encode('fd:'.$sshaMethod->generate_hash($ldap_infos['argonautServerToken'][0]));
+        };
       }
       return $ldap_infos['argonautProtocol'][0]."://".$ldap_infos['ipHostNumber'][0].":".$ldap_infos['argonautPort'][0];
     } elseif ($ldap->count() > 1) {

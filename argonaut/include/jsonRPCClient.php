@@ -156,7 +156,7 @@ class jsonRPCClient {
     $request = json_encode($request);
     $this->debug && $debug.='***** Request *****'."\n".$request."\n".'***** End Of request *****'."\n\n";
 
-    // performs the HTTP POST
+    // performs the HTTP(S) POST
     $opts = array (
       'http' => array_merge(
         array (
@@ -167,6 +167,7 @@ class jsonRPCClient {
         $this->http_options
       )
     );
+
     $context  = stream_context_create($opts);
     if ($fp = @fopen($this->url, 'r', false, $context)) {
       $response = '';
@@ -223,6 +224,37 @@ class jsonRPCClient {
     } else {
       return true;
     }
+  }
+
+  public function send_post_ssl_curl ($url,$request)
+  {
+    // create a new curl resource
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, true);
+
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
+    curl_setopt($ch, CURLOPT_USERPWD, $this->username.":".$this->password);
+    curl_setopt($ch, CURLOPT_CAINFO, $this->cacertfile);
+
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $request);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-type: application/json'));
+    curl_setopt($ch, CURLOPT_HEADER, false); //FALSE to exclude the header from the output (otherwise it screws up json_decode)
+    curl_setopt($ch, CURLOPT_NOBODY, false); //FALSE because we want the body too
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); // get the response as a string from curl_exec(), rather than echoing it
+    curl_setopt($ch, CURLOPT_FRESH_CONNECT, true); // don't use a cached version of the url
+    //curl_setopt($ch, CURLOPT_TIMEOUT, 4);
+    $returnData = curl_exec($ch);
+    if (curl_errno($ch)) {
+      throw new Exception('Unable to connect to '.$url.' : '.curl_error($ch));
+    }
+    $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    curl_close($ch);
+
+    return array('CODE'=>$httpcode,'DATA'=>$returnData);
   }
 }
 ?>
