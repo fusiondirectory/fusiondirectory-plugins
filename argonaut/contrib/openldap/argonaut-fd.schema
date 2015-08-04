@@ -65,6 +65,30 @@ attributetype ( 1.3.6.1.4.1.38414.2.10.11 NAME 'argonautFetchPackages'
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
   SINGLE-VALUE )
 
+attributetype ( 1.3.6.1.4.1.38414.2.10.12 NAME 'argonautCaCertPath'
+  DESC 'Fusion Directory - Argonaut, CA certificate path.'
+  EQUALITY caseExactIA5Match
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.38414.2.10.13 NAME 'argonautFDCaCertPath'
+  DESC 'Fusion Directory - Argonaut, CA certificate path on FD server.'
+  EQUALITY caseExactIA5Match
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.38414.2.10.14 NAME 'argonautServerToken'
+  DESC 'Fusion Directory - Argonaut, token to provide to be allowed to speak to the server.'
+  EQUALITY caseExactIA5Match
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE )
+
+#~ attributetype ( 1.3.6.1.4.1.38414.2.10.15 NAME 'argonautFDCertPath'
+#~   DESC 'Fusion Directory - Argonaut, certificate path on FD server.'
+#~   EQUALITY caseExactIA5Match
+#~   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+#~   SINGLE-VALUE )
+
 attributetype ( 1.3.6.1.4.1.38414.2.11.1 NAME 'argonautClientPort'
   DESC 'Fusion Directory - Argonaut, client port.'
   EQUALITY integerMatch
@@ -94,6 +118,12 @@ attributetype ( 1.3.6.1.4.1.38414.2.11.5 NAME 'argonautServiceName'
   DESC 'Fusion Directory - Argonaut, service names.'
   EQUALITY caseExactIA5Match
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 )
+
+attributetype ( 1.3.6.1.4.1.38414.2.11.6 NAME 'argonautClientProtocol'
+  DESC 'Fusion Directory - Argonaut, client protocol.'
+  EQUALITY caseExactIA5Match
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE )
 
 attributetype ( 1.3.6.1.4.1.38414.2.12.1 NAME 'argonautMirrorDir'
   DESC 'Fusion Directory - Argonaut, mirror directory.'
@@ -261,13 +291,20 @@ attributetype ( 1.3.6.1.4.1.38414.2.14.11 NAME 'argonautFuseLtspServer'
 objectclass ( 1.3.6.1.4.1.38414.2.2.1 NAME 'argonautServer'
   DESC 'An argonaut server'
   SUP top AUXILIARY
-  MUST ( argonautProtocol $ argonautPort $ argonautLogDir $ argonautDeleteFinished $ argonautWakeOnLanInterface $ argonautIpTool )
-  MAY ( argonautKeyPath $ argonautCertPath $ argonautTimeout $ argonautFetchPackages ) )
+  MUST (
+    argonautProtocol $ argonautPort $ argonautLogDir $ argonautDeleteFinished $
+    argonautWakeOnLanInterface $ argonautIpTool )
+  MAY (
+    argonautKeyPath $ argonautCertPath      $ argonautCaCertPath    $
+    argonautFDCaCertPath  $
+    argonautTimeout $ argonautFetchPackages $ argonautServerToken ) )
 
 objectclass ( 1.3.6.1.4.1.38414.2.2.2 NAME 'argonautClient'
   DESC 'An argonaut client'
   SUP top AUXILIARY
-  MUST ( argonautClientPort $ argonautTaskIdFile $ argonautClientWakeOnLanInterface $ argonautClientLogDir $ argonautServiceName ) )
+  MUST (
+    argonautClientPort $ argonautClientProtocol $ argonautTaskIdFile $
+    argonautClientWakeOnLanInterface $ argonautClientLogDir $ argonautServiceName ) )
 
 objectclass ( 1.3.6.1.4.1.38414.2.2.3 NAME 'argonautMirrorConfig'
   DESC 'An argonaut config for debconf-crawler and ldap2repositry'
@@ -280,8 +317,9 @@ objectclass ( 1.3.6.1.4.1.38414.2.2.3 NAME 'argonautMirrorConfig'
 objectclass ( 1.3.6.1.4.1.38414.2.2.4 NAME 'argonautDNSConfig'
   DESC 'An argonaut config for ldap2zone'
   SUP top AUXILIARY
-  MUST (  argonautLdap2zoneBindDir $ argonautLdap2zoneBindCacheDir $ argonautLdap2zoneAllowNotify $
-          argonautLdap2zoneTTL $ argonautLdap2zoneRndc )
+  MUST (
+    argonautLdap2zoneBindDir  $ argonautLdap2zoneBindCacheDir $ argonautLdap2zoneAllowNotify $
+    argonautLdap2zoneTTL      $ argonautLdap2zoneRndc )
   MAY ( argonautLdap2zoneAllowUpdate $ argonautLdap2zoneAllowTransfer $ argonautLdap2zoneNoReverse ) )
 
 objectclass ( 1.3.6.1.4.1.38414.2.2.5 NAME 'argonautFuseConfig'
