@@ -100,59 +100,90 @@ my $term = new Term::ShellUI(
   commands => {
     "help" => {
       desc    => "Print helpful information",
+      doc     => "Usage: help [<COMMAND>]\nExample: help cd\n",
       args    => sub { shift->help_args(undef, @_); },
       method  => sub { shift->help_call(undef, @_); }
     },
     "h" => { alias => "help", exclude_from_completion=>1},
     "cd" => {
       desc    => "Change current base to BASE",
+      doc     => "Usage: cd [<BASE>]\nExample: cd ou=department,dc=example,dc=com\nIf BASE is not supplied, change current base to LDAP root\n",
       maxargs => 1,
       proc    => \&command_cd,
     },
     "chdir" => { alias => 'cd' },
     "pwd" => {
       desc    => "Print the current working directory",
+      doc     => "Usage: pwd\n",
       maxargs => 0,
       proc    => sub { print $current_base."\n"; },
     },
     "ls" => {
       desc    => "List objects of a given type",
+      doc     => "Usage: ls <TYPE> [<ATTRIBUTE> [<FILTER>]]\nLists objects of type TYPE, outputting ATTRIBUTE and their dn\nYou can provide FILTER if you want to filter what is displayed\nExample: ls user\nExample: ls user cn (objectClass=posixAccount)\n",
       minargs => 1,
-      maxargs => 4,
+      maxargs => 3,
       proc    => \&command_ls,
     },
     "count" => {
       desc    => "Count objects of a given type",
+      doc     => "Usage: count <TYPE> [<FILTER>]\nExample: count user\nExample: count user (objectClass=posixAccount)\n",
       minargs => 1,
-      maxargs => 4,
+      maxargs => 2,
       proc    => \&command_count,
     },
     "cat" => {
       desc    => "Show an object information",
+      doc     => "Usage: cat <TYPE> [<DN> [<TAB>]]\nDisplays tab TAB (defaults to main tab) of object DN\nIf DN is not provided, just list fields of main tab of type TYPE\nExample: cat user uid=fd-admin,dc=example,dc=com\nExample: cat user\nExample: cat user uid=fd-admin,dc=example,dc=com posixAccount\n",
       minargs => 1,
       maxargs => 3,
       proc    => \&command_cat,
     },
     "infos" => {
       desc    => "Show informations about a type",
+      doc     => "Usage: infos <TYPE>\nExample: infos user\n",
       minargs => 1,
       maxargs => 1,
       proc    => \&command_infos,
     },
     "types" => {
       desc    => "List existing types",
+      doc     => "Usage: types\n",
       minargs => 0,
       maxargs => 0,
       proc    => \&command_types,
     },
     "create" => {
       desc    => "Create an object of a given type",
+      doc     => "Usage: create <TYPE>\nExample: create user\n",
       minargs => 1,
       maxargs => 1,
       proc    => \&command_create,
     },
+    "addtab" => {
+      desc    => "Activate a tab of an object",
+      doc     => "Usage: addtab <TYPE> <DN> <TAB>\nExample: addtab user uid=fd-admin,dc=example,dc=com posixAccount\n",
+      minargs => 3,
+      maxargs => 3,
+      proc    => \&command_addtab,
+    },
+    "removetab" => {
+      desc    => "Deactivate a tab of an object",
+      doc     => "Usage: removetab <TYPE> <DN> <TAB>\nExample: removetab user uid=fd-admin,dc=example,dc=com posixAccount\n",
+      minargs => 3,
+      maxargs => 3,
+      proc    => \&command_removetab,
+    },
+    "setvalue" => {
+      desc    => "Set the value of a field of an object",
+      doc     => "Usage: setvalue <TYPE> <DN> <TAB> <FIELD> [<VALUE>]\nExample: setvalue user uid=fd-admin,dc=example,dc=com posixAccount loginShell /bin/bash\n",
+      minargs => 4,
+      maxargs => 5,
+      proc    => \&command_setvalue,
+    },
     "exit" => {
       desc    => "Exit FusionDirectory shell",
+      doc     => "Usage: exit\n",
       maxargs => 0,
       method  => sub { shift->exit_requested(1); },
     }
@@ -192,14 +223,11 @@ $term->run();
 
 sub command_ls
 {
-  my ($type, $attrs, $ou, $filter) = @_;
-  if (! defined $ou) {
-    $ou = $current_base;
-  }
+  my ($type, $attrs, $filter) = @_;
   if (! defined $filter) {
     $filter = '';
   }
-  my $res = rpc_call($client, 'ls', [$sid,$type,$attrs,$ou,$filter]);
+  my $res = rpc_call($client, 'ls', [$sid,$type,$attrs,$current_base,$filter]);
   if (ref $res eq ref {}) {
     while (my ($dn, $display) = each(%$res))
     {
@@ -210,14 +238,11 @@ sub command_ls
 
 sub command_count
 {
-  my ($type, $ou, $filter) = @_;
-  if (! defined $ou) {
-    $ou = $current_base;
-  }
+  my ($type, $filter) = @_;
   if (! defined $filter) {
     $filter = '';
   }
-  my $res = rpc_call($client, 'count', [$sid,$type,$ou,$filter]);
+  my $res = rpc_call($client, 'count', [$sid,$type,$current_base,$filter]);
   print "$res\n";
 }
 
@@ -355,7 +380,21 @@ sub command_types
 sub command_create
 {
   my ($type) = @_;
-  my $fields = rpc_call($client, 'fields', [$sid,$type]);
+  command_addtab($type, undef, undef)
+}
+
+sub command_addtab
+{
+  my ($type, $dn, $tab) = @_;
+  if (defined $dn) {
+    if (!($dn =~ m/$base$/)) {
+      if (!($dn =~ m/,$/)) {
+        $dn .= ',';
+      }
+      $dn .= $current_base;
+    }
+  }
+  my $fields = rpc_call($client, 'fields', [$sid,$type,$dn,$tab]);
   my %values = ();
   if (ref $fields eq ref {}) {
     foreach my $section (values %$fields) {
@@ -369,13 +408,60 @@ sub command_create
       }
     }
   }
-  my $result = rpc_call($client, 'update', [$sid,$type,undef,undef,\%values]);
+  my $result = rpc_call($client, 'update', [$sid,$type,$dn,$tab,\%values]);
   if (ref $result eq ref {}) {
     foreach my $error (@{$result->{'errors'}}) {
       print "Error: $error\n";
     }
-  } else {
+  } elsif (not defined $dn) {
     print "$result\n";
+  }
+}
+
+sub command_setvalue
+{
+  my ($type, $dn, $tab, $asked_field, $value) = @_;
+  if (defined $dn) {
+    if (!($dn =~ m/$base$/)) {
+      if (!($dn =~ m/,$/)) {
+        $dn .= ',';
+      }
+      $dn .= $current_base;
+    }
+  }
+  my $fields = rpc_call($client, 'fields', [$sid,$type,$dn,$tab]);
+  my %values = ();
+  if (ref $fields eq ref {}) {
+    foreach my $section (values %$fields) {
+      if (ref $section->{'attrs'} eq ref []) {
+        foreach my $field (@{$section->{'attrs'}}) {
+          if ($field->{'id'} eq $asked_field) {
+            if (not defined $value) {
+              $values{$field->{'id'}} = ask_field($field);
+            } else {
+              $values{$field->{'id'}} = $value;
+            }
+          }
+        }
+      }
+    }
+  }
+  my $result = rpc_call($client, 'update', [$sid,$type,$dn,$tab,\%values]);
+  if (ref $result eq ref {}) {
+    foreach my $error (@{$result->{'errors'}}) {
+      print "Error: $error\n";
+    }
+  }
+}
+
+sub command_removetab
+{
+  my ($type, $dn, $tab) = @_;
+  my $result = rpc_call($client, 'removetab', [$sid,$type,$dn,$tab]);
+  if (ref $result eq ref {}) {
+    foreach my $error (@{$result->{'errors'}}) {
+      print "Error: $error\n";
+    }
   }
 }
 

@@ -268,6 +268,31 @@ class fdRPCService
   }
 
   /*!
+   * \brief Deactivate a tab of an object
+   */
+  protected function _removetab($type, $dn, $tab)
+  {
+    $this->checkAccess($type, $tab);
+    $tabobject = objects::open($dn, $type);
+    $tabobject->current = $tab;
+    if (!is_subclass_of($tabobject->by_object[$tab], 'simplePlugin')) {
+      return array('errors' => array('Tab '.$tab.' is not based on simplePlugin, can’t remove it'));
+    } elseif (!$tabobject->by_object[$tab]->displayHeader) {
+      return array('errors' => array('Tab '.$tab.' cannot be deactivated, can’t remove it'));
+    } elseif (!$tabobject->by_object[$tab]->is_account) {
+      return array('errors' => array('Tab '.$tab.' is not activated on '.$dn.', can’t remove it'));
+    }
+    $_POST = array($tab.'_modify_state' => 1);
+    $tabobject->save_object();
+    $errors = $tabobject->check();
+    if (!empty($errors)) {
+      return array('errors' => $errors);
+    }
+    $tabobject->save();
+    return $tabobject->dn;
+  }
+
+  /*!
    * \brief Update values of an object's attributes
    */
   protected function _update($type, $dn, $tab, $values)
@@ -286,6 +311,12 @@ class fdRPCService
     }
     $_POST                  = $values;
     $_POST[$tab.'_posted']  = TRUE;
+    if (is_subclass_of($tabobject->by_object[$tab], 'simplePlugin') &&
+        $tabobject->by_object[$tab]->displayHeader &&
+        !$tabobject->by_object[$tab]->is_account
+      ) {
+      $_POST[$tab.'_modify_state'] = 1;
+    }
     $tabobject->save_object();
     $errors = $tabobject->check();
     if (!empty($errors)) {
