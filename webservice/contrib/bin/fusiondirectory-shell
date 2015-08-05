@@ -154,15 +154,14 @@ my $term = new Term::ShellUI(
       proc    => \&command_types,
     },
     "create" => {
-      desc    => "Create an object of a given type",
-      doc     => "Usage: create <TYPE>\nExample: create user\n",
+      desc    => "Create an object of a given type, optionaly with the given tabs",
+      doc     => "Usage: create <TYPE> [<TABS>]\nExample: create user\nExample: create user posixAccount\n",
       minargs => 1,
-      maxargs => 1,
       proc    => \&command_create,
     },
     "addtab" => {
-      desc    => "Activate a tab of an object",
-      doc     => "Usage: addtab <TYPE> <DN> <TAB>\nExample: addtab user uid=fd-admin,dc=example,dc=com posixAccount\n",
+      desc    => "Activate a tab (or several) of an object",
+      doc     => "Usage: addtab <TYPE> <DN> <TAB> [<TABS>]\nExample: addtab user uid=fd-admin,dc=example,dc=com posixAccount\n",
       minargs => 3,
       maxargs => 3,
       proc    => \&command_addtab,
@@ -252,26 +251,13 @@ sub command_cd
   if (! defined $path) {
     $path = $base;
   }
-  if (!($path =~ m/$base$/)) {
-    if (!($path =~ m/,$/)) {
-      $path .= ',';
-    }
-    $path .= $current_base;
-  }
-  $current_base = $path;
+  $current_base = complete_dn($path);
 }
 
 sub command_cat
 {
   my ($type, $path, $tab) = @_;
-  if (defined $path) {
-    if (!($path =~ m/$base$/)) {
-      if (!($path =~ m/,$/)) {
-        $path .= ',';
-      }
-      $path .= $current_base;
-    }
-  }
+  $path = complete_dn($path);
   my $fields = rpc_call($client, 'fields', [$sid,$type,$path,$tab]);
   if (ref $fields eq ref {}) {
     foreach my $section (values %$fields) {
@@ -379,21 +365,14 @@ sub command_types
 
 sub command_create
 {
-  my ($type) = @_;
-  command_addtab($type, undef, undef)
+  my ($type, @tabs) = @_;
+  command_addtab($type, undef, undef, @tabs);
 }
 
 sub command_addtab
 {
-  my ($type, $dn, $tab) = @_;
-  if (defined $dn) {
-    if (!($dn =~ m/$base$/)) {
-      if (!($dn =~ m/,$/)) {
-        $dn .= ',';
-      }
-      $dn .= $current_base;
-    }
-  }
+  my ($type, $dn, $tab, @tabs) = @_;
+  $dn = complete_dn($dn);
   my $fields = rpc_call($client, 'fields', [$sid,$type,$dn,$tab]);
   my %values = ();
   if (ref $fields eq ref {}) {
@@ -413,22 +392,19 @@ sub command_addtab
     foreach my $error (@{$result->{'errors'}}) {
       print "Error: $error\n";
     }
+    return;
   } elsif (not defined $dn) {
     print "$result\n";
+  }
+  if (scalar(@tabs) > 0) {
+    command_addtab($type, $dn, @tabs);
   }
 }
 
 sub command_setvalue
 {
   my ($type, $dn, $tab, $asked_field, $value) = @_;
-  if (defined $dn) {
-    if (!($dn =~ m/$base$/)) {
-      if (!($dn =~ m/,$/)) {
-        $dn .= ',';
-      }
-      $dn .= $current_base;
-    }
-  }
+  $dn = complete_dn($dn);
   my $fields = rpc_call($client, 'fields', [$sid,$type,$dn,$tab]);
   my %values = ();
   if (ref $fields eq ref {}) {
@@ -457,12 +433,27 @@ sub command_setvalue
 sub command_removetab
 {
   my ($type, $dn, $tab) = @_;
+  $dn = complete_dn($dn);
   my $result = rpc_call($client, 'removetab', [$sid,$type,$dn,$tab]);
   if (ref $result eq ref {}) {
     foreach my $error (@{$result->{'errors'}}) {
       print "Error: $error\n";
     }
   }
+}
+
+sub complete_dn
+{
+  my ($dn) = @_;
+  if (defined $dn) {
+    if (!($dn =~ m/$base$/)) {
+      if (!($dn =~ m/,$/)) {
+        $dn .= ',';
+      }
+      $dn .= $current_base;
+    }
+  }
+  return $dn;
 }
 
 __END__
