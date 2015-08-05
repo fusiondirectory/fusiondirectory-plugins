@@ -395,6 +395,7 @@ sub command_addtab
     return;
   } elsif (not defined $dn) {
     print "$result\n";
+    $dn = $result;
   }
   if (scalar(@tabs) > 0) {
     command_addtab($type, $dn, @tabs);
