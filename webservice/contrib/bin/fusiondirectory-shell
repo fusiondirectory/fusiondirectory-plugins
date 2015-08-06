@@ -403,7 +403,7 @@ sub command_addtab
 
 sub command_setvalue
 {
-  my ($type, $dn, $tab, $asked_field, $value) = @_;
+  my ($type, $dn, $tab, $asked_field, @value) = @_;
   $dn = complete_dn($dn);
   my $fields = rpc_call($client, 'fields', [$sid,$type,$dn,$tab]);
   my %values = ();
@@ -412,10 +412,12 @@ sub command_setvalue
       if (ref $section->{'attrs'} eq ref []) {
         foreach my $field (@{$section->{'attrs'}}) {
           if ($field->{'id'} eq $asked_field) {
-            if (not defined $value) {
+            if (scalar(@value) == 0) {
               $values{$field->{'id'}} = ask_field($field);
+            } elsif (grep {$_ eq 'SetAttribute'} @{$field->{'type'}}) {
+              $values{$field->{'id'}} = \@value;
             } else {
-              $values{$field->{'id'}} = $value;
+              $values{$field->{'id'}} = $value[0];
             }
           }
         }
