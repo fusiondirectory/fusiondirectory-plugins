@@ -121,6 +121,10 @@ class argonautClient extends simplePlugin
             'argonautClientPort', TRUE,
             0 /*min*/, FALSE /*no max*/, 8081 /*default value*/
           ),
+          new HiddenAttribute (
+            'argonautClientProtocol', TRUE,
+            'http'
+          ),
           new StringAttribute (
             _('WakeOnLan interface'), _('Interface used by argonaut for WakeOnLan'),
             'argonautClientWakeOnLanInterface', TRUE,
