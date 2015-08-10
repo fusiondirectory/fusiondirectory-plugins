@@ -51,7 +51,7 @@ class systemManagement extends simpleManagement
       'plSelfModify'  => FALSE,
       'plSection'     => array('systems' => array('name' => _('Systems'), 'priority' => 10)),
       'plPriority'    => 0,
-      'plManages'     => array('server','workstation','terminal','printer','component','winstation','phone'),
+      'plManages'     => array('server','workstation','terminal','printer','component','winstation','phone','mobilePhone'),
 
       'plProvidedAcls'  => array()
     );
