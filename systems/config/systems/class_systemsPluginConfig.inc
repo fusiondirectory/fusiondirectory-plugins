@@ -70,6 +70,11 @@ class systemsPluginConfig extends simplePlugin
             'ou=netdevices,ou=systems'
           ),
           new StringAttribute (
+            _('Phone RDN'), _('Branch in which phones will be stored'),
+            'fdPhoneRDN', TRUE,
+            'ou=phones,ou=systems'
+          ),
+          new StringAttribute (
             _('Mobile phone RDN'), _('Branch in which mobile phones will be stored'),
             'fdMobilePhoneRDN', TRUE,
             'ou=mobile,ou=systems'
