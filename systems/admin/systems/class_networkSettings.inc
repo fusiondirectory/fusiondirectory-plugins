@@ -1145,7 +1145,8 @@ class networkSettings extends plugin
     // first gather all IPs
     $ldap = $this->config->get_ldap_link();
     $ocs =
-      "(objectClass=goFonHardware)".
+      "(objectClass=fdPhone)".
+      "(objectClass=fdMobilePhone)".
       "(objectClass=goServer)".
       "(objectClass=GOhard)".
       "(objectClass=gotoTerminal)".

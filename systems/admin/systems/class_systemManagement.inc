@@ -615,15 +615,6 @@ class systemManagement extends management
         'sendEvents'  => FALSE,
         'aclCategory' => 'printer'
       ),
-      'goFonHardware' => array(
-        'ou'          => get_ou('phoneRDN'),
-        'plugClass'   => 'phoneGeneric',
-        'tabClass'    => 'simpleTabs',
-        'tabDesc'     => 'PHONETABS',
-        'sendEvents'  => FALSE,
-        'aclClass'    => 'phoneGeneric',
-        'aclCategory' => 'phone'
-      ),
       'sambaSamAccount' => array(
         'ou'          => get_winstations_ou(),
         'plugClass'   => 'winstationGeneric',
@@ -648,7 +639,7 @@ class systemManagement extends management
         'sendEvents'  => FALSE,
         'aclCategory' => 'printer'
       ),
-      'goFonHardware' => array(
+      'fdPhone' => array(
         'ou'          => get_ou('phoneRDN'),
         'plugClass'   => 'phoneGeneric',
         'tabClass'    => 'simpleTabs',
