@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2015-07-03 18:54+0200\n"
-"PO-Revision-Date: 2015-07-03 17:08+0000\n"
+"POT-Creation-Date: 2015-08-12 11:58+0200\n"
+"PO-Revision-Date: 2015-08-12 10:07+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Norwegian Bokmål (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/nb/)\n"
 "MIME-Version: 1.0\n"
@@ -226,6 +226,9 @@ msgid "Printer"
 msgstr ""
 
 #: admin/systems/system-list.xml:78 admin/systems/system-list.xml:233
+#: admin/systems/class_phoneGeneric.inc:36
+#: admin/systems/class_phoneGeneric.inc:40
+#: admin/systems/class_phoneGeneric.inc:70
 #: admin/systems/class_mobilePhoneGeneric.inc:74
 #: admin/systems/phoneSelect/phoneSelect-list.xml:14
 msgid "Phone"
@@ -250,6 +253,7 @@ msgstr ""
 
 #: admin/systems/system-list.xml:128
 #: admin/systems/class_workstationGeneric.inc:154
+#: admin/systems/class_phoneGeneric.inc:59
 #: admin/systems/class_printGeneric.inc:758
 #: admin/systems/class_printGeneric.inc:768
 #: admin/systems/class_printGeneric.inc:787
@@ -274,6 +278,7 @@ msgstr ""
 
 #: admin/systems/system-list.xml:152
 #: admin/systems/class_workstationGeneric.inc:160
+#: admin/systems/class_phoneGeneric.inc:63
 #: admin/systems/class_printGeneric.inc:1029
 #: admin/systems/class_componentGeneric.inc:67
 #: admin/systems/class_mobilePhoneGeneric.inc:67
@@ -370,6 +375,7 @@ msgid "workstation"
 msgstr ""
 
 #: admin/systems/class_workstationGeneric.inc:151
+#: admin/systems/class_phoneGeneric.inc:56
 #: admin/systems/class_componentGeneric.inc:60
 #: admin/systems/class_mobilePhoneGeneric.inc:60
 msgid "Properties"
@@ -461,6 +467,7 @@ msgid "Select action to execute for this terminal"
 msgstr ""
 
 #: admin/systems/class_workstationGeneric.inc:236
+#: admin/systems/class_phoneGeneric.inc:83
 #: admin/systems/class_componentGeneric.inc:74
 #: admin/systems/class_mobilePhoneGeneric.inc:106
 #: admin/systems/class_networkSettings.inc:1026
@@ -469,6 +476,40 @@ msgstr ""
 
 #: admin/systems/class_workstationGeneric.inc:465
 msgid "Workstation information"
+msgstr ""
+
+#: admin/systems/class_phoneGeneric.inc:37
+msgid "Phone information"
+msgstr ""
+
+#: admin/systems/class_phoneGeneric.inc:41
+msgid "Phone hardware"
+msgstr ""
+
+#: admin/systems/class_phoneGeneric.inc:59
+msgid "The name of the phone"
+msgstr ""
+
+#: admin/systems/class_phoneGeneric.inc:63
+msgid "A short description of the phone"
+msgstr ""
+
+#: admin/systems/class_phoneGeneric.inc:73
+#: admin/systems/class_mobilePhoneGeneric.inc:77
+msgid "Serial Number"
+msgstr ""
+
+#: admin/systems/class_phoneGeneric.inc:73
+msgid "The serial number of the phone"
+msgstr ""
+
+#: admin/systems/class_phoneGeneric.inc:77
+#: admin/systems/class_mobilePhoneGeneric.inc:95
+msgid "Telephone Number"
+msgstr ""
+
+#: admin/systems/class_phoneGeneric.inc:77
+msgid "The telephone number of the phone"
 msgstr ""
 
 #: admin/systems/class_printGeneric.inc:131
@@ -942,10 +983,6 @@ msgid "A short description of the mobile phone"
 msgstr ""
 
 #: admin/systems/class_mobilePhoneGeneric.inc:77
-msgid "Serial Number"
-msgstr ""
-
-#: admin/systems/class_mobilePhoneGeneric.inc:77
 msgid "The serial number of the mobile phone"
 msgstr ""
 
@@ -967,10 +1004,6 @@ msgstr ""
 
 #: admin/systems/class_mobilePhoneGeneric.inc:92
 msgid "SimCard"
-msgstr ""
-
-#: admin/systems/class_mobilePhoneGeneric.inc:95
-msgid "Telephone Number"
 msgstr ""
 
 #: admin/systems/class_mobilePhoneGeneric.inc:95
@@ -1052,19 +1085,19 @@ msgstr ""
 msgid "You are not allowed to restore a snapshot for %s."
 msgstr ""
 
-#: admin/systems/class_systemManagement.inc:742
+#: admin/systems/class_systemManagement.inc:733
 #, php-format
 msgid "Inherited from %s"
 msgstr ""
 
-#: admin/systems/class_systemManagement.inc:795
-#: admin/systems/class_systemManagement.inc:799
+#: admin/systems/class_systemManagement.inc:786
+#: admin/systems/class_systemManagement.inc:790
 #: addons/dashboard/class_dashBoardSystems.inc:199
 #: config/systems/class_systemsPluginConfig.inc:28
 msgid "Systems"
 msgstr ""
 
-#: admin/systems/class_systemManagement.inc:796
+#: admin/systems/class_systemManagement.inc:787
 msgid "Systems Management"
 msgstr ""
 
@@ -1484,38 +1517,46 @@ msgid "Branch in which network devices will be stored"
 msgstr ""
 
 #: config/systems/class_systemsPluginConfig.inc:73
-msgid "Mobile phone RDN"
+msgid "Phone RDN"
 msgstr ""
 
 #: config/systems/class_systemsPluginConfig.inc:73
+msgid "Branch in which phones will be stored"
+msgstr ""
+
+#: config/systems/class_systemsPluginConfig.inc:78
+msgid "Mobile phone RDN"
+msgstr ""
+
+#: config/systems/class_systemsPluginConfig.inc:78
 msgid "Branch in which mobile phones will be stored"
 msgstr ""
 
-#: config/systems/class_systemsPluginConfig.inc:80
+#: config/systems/class_systemsPluginConfig.inc:85
 msgid "Miscellaneous"
 msgstr ""
 
-#: config/systems/class_systemsPluginConfig.inc:84
+#: config/systems/class_systemsPluginConfig.inc:89
 msgid "Available encodings for share services"
 msgstr ""
 
-#: config/systems/class_systemsPluginConfig.inc:88
+#: config/systems/class_systemsPluginConfig.inc:93
 msgid "Encoding"
 msgstr ""
 
-#: config/systems/class_systemsPluginConfig.inc:88
+#: config/systems/class_systemsPluginConfig.inc:93
 msgid "The encoding code name"
 msgstr ""
 
-#: config/systems/class_systemsPluginConfig.inc:93
+#: config/systems/class_systemsPluginConfig.inc:98
 msgid "Label"
 msgstr ""
 
-#: config/systems/class_systemsPluginConfig.inc:93
+#: config/systems/class_systemsPluginConfig.inc:98
 msgid "The encoding displayed name"
 msgstr ""
 
-#: config/systems/class_systemsPluginConfig.inc:101
+#: config/systems/class_systemsPluginConfig.inc:106
 msgid "Encodings"
 msgstr ""
 
