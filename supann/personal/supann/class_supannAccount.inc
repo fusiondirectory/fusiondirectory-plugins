@@ -232,7 +232,7 @@ class supannAccount extends simplePlugin
         'name'  => _('Identity'),
         'attrs' => array(
           new SelectAttribute(
-            _('Civilite'), _('supannCivilite - Civilte for this person'),
+            _('Civilite'), _('supannCivilite - civility for this person'),
             'supannCivilite', FALSE,
             array('', 'M.', 'Mme', 'Mlle')
           ),
