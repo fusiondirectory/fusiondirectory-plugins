@@ -7,10 +7,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2015-05-30 15:30+0200\n"
+"POT-Creation-Date: 2015-07-03 18:54+0200\n"
 "PO-Revision-Date: 2015-05-30 14:12+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Dutch (http://www.transifex.com/projects/p/FusionDirectory-109/language/nl/)\n"
+"Language-Team: Dutch (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -85,83 +85,83 @@ msgstr ""
 msgid "Services"
 msgstr "Services"
 
-#: admin/systems/services/postfix/class_servicePostfix.inc:48
+#: admin/systems/services/postfix/class_servicePostfix.inc:47
 msgid "Hostname"
 msgstr ""
 
-#: admin/systems/services/postfix/class_servicePostfix.inc:48
+#: admin/systems/services/postfix/class_servicePostfix.inc:47
 msgid "The host name."
 msgstr ""
 
-#: admin/systems/services/postfix/class_servicePostfix.inc:53
+#: admin/systems/services/postfix/class_servicePostfix.inc:52
 msgid "Domain"
 msgstr "Domein"
 
-#: admin/systems/services/postfix/class_servicePostfix.inc:53
+#: admin/systems/services/postfix/class_servicePostfix.inc:52
 msgid "The domain."
 msgstr ""
 
-#: admin/systems/services/postfix/class_servicePostfix.inc:58
+#: admin/systems/services/postfix/class_servicePostfix.inc:57
 msgid "Max mail header size (KB)"
 msgstr ""
 
-#: admin/systems/services/postfix/class_servicePostfix.inc:58
+#: admin/systems/services/postfix/class_servicePostfix.inc:57
 msgid "This value specifies the maximal header size."
 msgstr "Deze waarde bepaal de maximale header grootte."
 
-#: admin/systems/services/postfix/class_servicePostfix.inc:63
+#: admin/systems/services/postfix/class_servicePostfix.inc:62
 msgid "Max mailbox size (KB)"
 msgstr ""
 
-#: admin/systems/services/postfix/class_servicePostfix.inc:63
+#: admin/systems/services/postfix/class_servicePostfix.inc:62
 msgid "Defines the maximal size of mail box."
 msgstr "Bepaalt de maximale grootte van de mail  box."
 
-#: admin/systems/services/postfix/class_servicePostfix.inc:68
+#: admin/systems/services/postfix/class_servicePostfix.inc:67
 msgid "Max message size (KB)"
 msgstr ""
 
-#: admin/systems/services/postfix/class_servicePostfix.inc:68
+#: admin/systems/services/postfix/class_servicePostfix.inc:67
 msgid "Specify the maximal size of a message."
 msgstr "Voer de maximale grootte van een bericht in."
 
-#: admin/systems/services/postfix/class_servicePostfix.inc:75
+#: admin/systems/services/postfix/class_servicePostfix.inc:74
 msgid "Domains and routing"
 msgstr "Domeinen en routering"
 
-#: admin/systems/services/postfix/class_servicePostfix.inc:79
+#: admin/systems/services/postfix/class_servicePostfix.inc:78
 msgid "Domains to accept mail for"
 msgstr "Domeinen om mail te accepteren voor"
 
-#: admin/systems/services/postfix/class_servicePostfix.inc:79
+#: admin/systems/services/postfix/class_servicePostfix.inc:78
 msgid "Postfix networks"
 msgstr "Postfix netwerken"
 
-#: admin/systems/services/postfix/class_servicePostfix.inc:84
+#: admin/systems/services/postfix/class_servicePostfix.inc:83
 msgid "Transport table"
 msgstr "Transporteer tabel"
 
-#: admin/systems/services/postfix/class_servicePostfix.inc:89
+#: admin/systems/services/postfix/class_servicePostfix.inc:88
 msgid "Transport rule"
 msgstr ""
 
-#: admin/systems/services/postfix/class_servicePostfix.inc:103
+#: admin/systems/services/postfix/class_servicePostfix.inc:102
 msgid "Restrictions"
 msgstr "Beperkingen"
 
-#: admin/systems/services/postfix/class_servicePostfix.inc:107
+#: admin/systems/services/postfix/class_servicePostfix.inc:106
 msgid "Restrictions for sender"
 msgstr "Beperkingen voor zender"
 
-#: admin/systems/services/postfix/class_servicePostfix.inc:116
+#: admin/systems/services/postfix/class_servicePostfix.inc:115
 msgid "For sender"
 msgstr ""
 
-#: admin/systems/services/postfix/class_servicePostfix.inc:121
+#: admin/systems/services/postfix/class_servicePostfix.inc:120
 msgid "Restrictions for recipient"
 msgstr "Beperkingen voor de ontvanger"
 
-#: admin/systems/services/postfix/class_servicePostfix.inc:130
+#: admin/systems/services/postfix/class_servicePostfix.inc:129
 msgid "For recipient"
 msgstr ""
 
@@ -174,64 +174,64 @@ msgstr "Spamassassin dienst"
 msgid "Spam tagging"
 msgstr ""
 
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:52
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:51
 msgid "Rewrite header"
 msgstr "Herschrijf header"
 
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:56
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:55
 msgid "Required score"
 msgstr "Vereist score"
 
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:56
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:55
 msgid "Select required score to tag mail as spam"
 msgstr "Selecteer vereiste score om mail als spam te markeren"
 
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:62
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:61
 msgid "Trusted networks"
 msgstr "Vertrouwde netwerken"
 
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:69
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:68
 msgid "Flags"
 msgstr ""
 
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:72
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:71
 msgid "Enable use of bayes filtering"
 msgstr "Activeer het gebruik van bayes filtering"
 
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:77
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:76
 msgid "Enable bayes auto learning"
 msgstr "Activeer bayes auto learning"
 
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:82
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:81
 msgid "Enable RBL checks"
 msgstr "Activeer RBL checks"
 
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:87
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:86
 msgid "Enable use of Razor"
 msgstr "Active gebruik van Razor"
 
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:92
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:91
 msgid "Enable use of DCC"
 msgstr ""
 
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:97
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:96
 msgid "Enable use of Pyzor"
 msgstr "Activeer gebuik van Pyzor"
 
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:112
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:111
 msgid "Rules"
 msgstr "Regel"
 
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:116
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:124
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:115
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:123
 msgid "Edit spam rule"
 msgstr ""
 
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:119
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:118
 msgid "Name"
 msgstr "Naam"
 
-#: admin/systems/services/spam/class_serviceSpamAssassin.inc:120
+#: admin/systems/services/spam/class_serviceSpamAssassin.inc:119
 msgid "Rule"
 msgstr "Regel"
 
@@ -244,87 +244,87 @@ msgstr "Antivirus dienst"
 msgid "Virus filtering"
 msgstr ""
 
-#: admin/systems/services/virus/class_serviceAntiVirus.inc:50
+#: admin/systems/services/virus/class_serviceAntiVirus.inc:49
 msgid "Database user"
 msgstr "Databank gebruiker"
 
-#: admin/systems/services/virus/class_serviceAntiVirus.inc:50
+#: admin/systems/services/virus/class_serviceAntiVirus.inc:49
 msgid "User name for the database"
 msgstr ""
 
-#: admin/systems/services/virus/class_serviceAntiVirus.inc:54
+#: admin/systems/services/virus/class_serviceAntiVirus.inc:53
 msgid "Database mirror"
 msgstr "Databank mirror"
 
-#: admin/systems/services/virus/class_serviceAntiVirus.inc:54
+#: admin/systems/services/virus/class_serviceAntiVirus.inc:53
 msgid "Mirror for the database"
 msgstr ""
 
-#: admin/systems/services/virus/class_serviceAntiVirus.inc:58
+#: admin/systems/services/virus/class_serviceAntiVirus.inc:57
 msgid "Http proxy URL"
 msgstr "Http proxy URL"
 
-#: admin/systems/services/virus/class_serviceAntiVirus.inc:58
+#: admin/systems/services/virus/class_serviceAntiVirus.inc:57
 msgid "URL for the proxy"
 msgstr ""
 
-#: admin/systems/services/virus/class_serviceAntiVirus.inc:62
+#: admin/systems/services/virus/class_serviceAntiVirus.inc:61
 msgid "Maximum threads"
 msgstr "Maximum threads"
 
-#: admin/systems/services/virus/class_serviceAntiVirus.inc:62
+#: admin/systems/services/virus/class_serviceAntiVirus.inc:61
 msgid "Maximum number of threads"
 msgstr ""
 
-#: admin/systems/services/virus/class_serviceAntiVirus.inc:68
+#: admin/systems/services/virus/class_serviceAntiVirus.inc:67
 msgid "Max directory recursions"
 msgstr "Max map recursies"
 
-#: admin/systems/services/virus/class_serviceAntiVirus.inc:68
+#: admin/systems/services/virus/class_serviceAntiVirus.inc:67
 msgid "Maximum number of directory recursions"
 msgstr ""
 
-#: admin/systems/services/virus/class_serviceAntiVirus.inc:73
+#: admin/systems/services/virus/class_serviceAntiVirus.inc:72
 msgid "Checks per day"
 msgstr "Checks per dag"
 
-#: admin/systems/services/virus/class_serviceAntiVirus.inc:78
+#: admin/systems/services/virus/class_serviceAntiVirus.inc:77
 msgid "Enable debugging"
 msgstr "Activeer debugging"
 
-#: admin/systems/services/virus/class_serviceAntiVirus.inc:78
+#: admin/systems/services/virus/class_serviceAntiVirus.inc:77
 msgid "Enable debugging for the antivirus"
 msgstr ""
 
-#: admin/systems/services/virus/class_serviceAntiVirus.inc:83
+#: admin/systems/services/virus/class_serviceAntiVirus.inc:82
 msgid "Enable mail scanning"
 msgstr "Activeer mail scanning"
 
-#: admin/systems/services/virus/class_serviceAntiVirus.inc:83
+#: admin/systems/services/virus/class_serviceAntiVirus.inc:82
 msgid "Enable mail scanning for the antivirus"
 msgstr ""
 
-#: admin/systems/services/virus/class_serviceAntiVirus.inc:90
+#: admin/systems/services/virus/class_serviceAntiVirus.inc:89
 msgid "Archive scanning"
 msgstr "Archief scanning"
 
-#: admin/systems/services/virus/class_serviceAntiVirus.inc:93
+#: admin/systems/services/virus/class_serviceAntiVirus.inc:92
 msgid "Enable scanning of archives"
 msgstr "Activeer archieven scanning"
 
-#: admin/systems/services/virus/class_serviceAntiVirus.inc:98
+#: admin/systems/services/virus/class_serviceAntiVirus.inc:97
 msgid "Block encrypted archives"
 msgstr "Blokkeer ge-encrypteerde archieven"
 
-#: admin/systems/services/virus/class_serviceAntiVirus.inc:103
+#: admin/systems/services/virus/class_serviceAntiVirus.inc:102
 msgid "Maximum file size"
 msgstr "Maximale bestand grootte"
 
-#: admin/systems/services/virus/class_serviceAntiVirus.inc:108
+#: admin/systems/services/virus/class_serviceAntiVirus.inc:107
 msgid "Maximum recursion"
 msgstr "Maximale recursie"
 
-#: admin/systems/services/virus/class_serviceAntiVirus.inc:113
+#: admin/systems/services/virus/class_serviceAntiVirus.inc:112
 msgid "Maximum compression ratio"
 msgstr "Maximale compressie ratio"
 
@@ -336,31 +336,31 @@ msgstr ""
 msgid "IMAP/POP3"
 msgstr "IMAP/POP3"
 
-#: personal/mail/class_mail-methods.inc:156
-#: personal/mail/class_mail-methods.inc:517
+#: personal/mail/class_mail-methods.inc:155
+#: personal/mail/class_mail-methods.inc:516
 msgid "Configuration error"
 msgstr "Configuratie fout"
 
-#: personal/mail/class_mail-methods.inc:157
+#: personal/mail/class_mail-methods.inc:156
 #, php-format
 msgid "The configured mail attribute '%s' is unsupported!"
 msgstr "De geconfigureerde mail attribuut '%s' is niet ondersteund!"
 
-#: personal/mail/class_mail-methods.inc:518
+#: personal/mail/class_mail-methods.inc:517
 #, php-format
 msgid "Mail method '%s' is unknown!"
 msgstr "Mail methode '%s' is onbekend!"
 
+#: personal/mail/class_mail-methods.inc:726
 #: personal/mail/class_mail-methods.inc:727
-#: personal/mail/class_mail-methods.inc:728
 msgid "None"
 msgstr "Geen"
 
-#: personal/mail/class_mail-methods.inc:817
+#: personal/mail/class_mail-methods.inc:816
 msgid "Unknown"
 msgstr "Onbekend"
 
-#: personal/mail/class_mail-methods.inc:819
+#: personal/mail/class_mail-methods.inc:818
 msgid "Unlimited"
 msgstr "Onbeperkt"
 
@@ -368,9 +368,9 @@ msgstr "Onbeperkt"
 #: personal/mail/class_mailAccount.inc:256
 #: personal/mail/class_mailAccount.inc:260
 #: personal/mail/class_mailAccount.inc:263
-#: personal/mail/class_mailAccount.inc:351
-#: personal/mail/class_mailAccount.inc:355
-#: personal/mail/class_mailAccount.inc:359
+#: personal/mail/class_mailAccount.inc:376
+#: personal/mail/class_mailAccount.inc:380
+#: personal/mail/class_mailAccount.inc:384
 msgid "Mail error"
 msgstr "Mail fout"
 
@@ -520,7 +520,7 @@ msgid "Cannot get list of mailboxes: %s"
 msgstr "Kan geen lijst van mailboxen krijgen : %s"
 
 #: personal/mail/class_mailAccount.inc:260
-#: personal/mail/class_mailAccount.inc:351
+#: personal/mail/class_mailAccount.inc:376
 #, php-format
 msgid "Mail method cannot connect: %s"
 msgstr "Mail methode kan niet verbinden : %s"
@@ -530,17 +530,17 @@ msgstr "Mail methode kan niet verbinden : %s"
 msgid "Mailbox '%s' doesn't exists on mail server: %s"
 msgstr "Mailbox '%s' bestaat niet op deze mail server : %s"
 
-#: personal/mail/class_mailAccount.inc:355
+#: personal/mail/class_mailAccount.inc:380
 #, php-format
 msgid "Cannot update mailbox: %s"
 msgstr "Kan mailbox : %s niet updaten"
 
-#: personal/mail/class_mailAccount.inc:359
+#: personal/mail/class_mailAccount.inc:384
 #, php-format
 msgid "Cannot write quota settings: %s"
 msgstr "Kan quota instellingen niet schrijven : %s"
 
-#: personal/mail/class_mailAccount.inc:372
+#: personal/mail/class_mailAccount.inc:397
 msgid "Mail error saving sieve settings"
 msgstr "Mail fout tijdens het opslagen van sieve instellingen"
 
