@@ -121,9 +121,10 @@ class argonautClient extends simplePlugin
             'argonautClientPort', TRUE,
             0 /*min*/, FALSE /*no max*/, 8081 /*default value*/
           ),
-          new HiddenAttribute (
+          new SelectAttribute (
+            _('Protocol'), _('Protocol to use for argonaut'),
             'argonautClientProtocol', TRUE,
-            'http'
+            array('http', 'https')
           ),
           new StringAttribute (
             _('WakeOnLan interface'), _('Interface used by argonaut for WakeOnLan'),
@@ -142,6 +143,25 @@ class argonautClient extends simplePlugin
           ),
         )
       ),
+      'ssl' => array (
+        'name'  => _('SSL paths'),
+        'attrs' => array (
+          new StringAttribute (
+            _('Key on argonaut client'), _('Path to the private key file on Argonaut client'),
+            'argonautClientKeyPath', FALSE,
+            '/etc/ssl/private/argonaut.key'
+          ),
+          new StringAttribute (
+            _('Certificate on argonaut client'), _('Path to the certificate file on Argonaut client'),
+            'argonautClientCertPath', FALSE,
+            '/etc/ssl/certs/argonaut.cert'
+          ),
+          new StringAttribute (
+            _('CN of the certificate'), _('The CN in this client certificate'),
+            'argonautClientCertCN', FALSE
+          ),
+        )
+      ),
       'serviceNames' => array(
         'name'  => _("Service names"),
         'attrs' => array(
@@ -154,6 +174,16 @@ class argonautClient extends simplePlugin
   function __construct(&$config, $dn = NULL, $object = NULL)
   {
     parent::__construct($config, $dn, $object);
+    $this->attributesAccess['argonautClientProtocol']->setManagedAttributes(
+      array(
+        'disable' => array (
+          'http' => array (
+            'argonautClientKeyPath','argonautClientCertPath',
+            'argonautClientCertCN'
+          )
+        )
+      )
+    );
   }
 
   // We also need this function that return some information about the plugin
