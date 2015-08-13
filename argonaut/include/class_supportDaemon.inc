@@ -35,6 +35,7 @@ class supportDaemon
   private $s_host       = "";
   private $host_error   = "";
   private $http_options = array();
+  private $ssl_options  = array();
   private $config;
 
   private $s_error      = "";
@@ -77,7 +78,14 @@ class supportDaemon
     global $config;
     $ldap = $this->config->get_ldap_link();
     $ldap->cd($this->config->current['BASE']);
-    $ldap->search("(objectClass=argonautServer)", array('cn','ipHostNumber','argonautProtocol','argonautPort','argonautTimeout','argonautFDCaCertPath','argonautServerToken'));
+    $ldap->search(
+      "(objectClass=argonautServer)",
+      array(
+        'cn','ipHostNumber','argonautProtocol','argonautPort',
+        'argonautTimeout','argonautFDCaCertPath','argonautCertCN',
+        'argonautServerToken'
+      )
+    );
     if ($ldap->count() == 1) {
       $ldap_infos = $ldap->fetch();
       if (isset($ldap_infos['argonautTimeout'][0])) {
@@ -85,7 +93,12 @@ class supportDaemon
           'timeout' => $ldap_infos['argonautTimeout'][0]
         );
         if ($ldap_infos['argonautProtocol'][0] == 'https') {
-          $this->http_options['cafile'] = $ldap_infos['argonautFDCaCertPath'][0];
+          $this->ssl_options = array(
+            'cafile'            => $ldap_infos['argonautFDCaCertPath'][0],
+            'peer_name'         => $ldap_infos['argonautCertCN'][0],
+            'verify_peer'       => TRUE,
+            'verify_peer_name'  => TRUE,
+          );
           $sshaMethod = new passwordMethodssha($config);
           $this->http_options['header'] = 'Authorization: Basic '.base64_encode('fd:'.$sshaMethod->generate_hash($ldap_infos['argonautServerToken'][0]));
         };
@@ -120,7 +133,7 @@ class supportDaemon
       }
     }
     try {
-      $client = new jsonRPCClient($this->s_host, $this->http_options);
+      $client = new jsonRPCClient($this->s_host, $this->http_options, $this->ssl_options);
       $ok = "OK";
       $test = $client->echo($ok);
       if ($test == $ok) {
@@ -234,7 +247,7 @@ class supportDaemon
 
     /* Append an entry */
     try {
-      $client = new jsonRPCClient($this->s_host, $this->http_options);
+      $client = new jsonRPCClient($this->s_host, $this->http_options, $this->ssl_options);
       $status = $client->action($action, $targets, $data);
       $this->reset_error();
       $this->new_state(TRUE);
@@ -357,7 +370,7 @@ class supportDaemon
     }
     timezone::get_default_timezone();
     try {
-      $client = new jsonRPCClient($this->s_host, $this->http_options);
+      $client = new jsonRPCClient($this->s_host, $this->http_options, $this->ssl_options);
       $entries = $client->get_entries();
     } catch (Exception $e) {
       $this->set_error(nl2br($e->getMessage()));
@@ -403,7 +416,7 @@ class supportDaemon
     }
 
     try {
-      $client = new jsonRPCClient($this->s_host, $this->http_options);
+      $client = new jsonRPCClient($this->s_host, $this->http_options, $this->ssl_options);
       $client->remove_entries($ids);
       $this->reset_error();
       return $this->new_state(TRUE);
@@ -463,7 +476,7 @@ class supportDaemon
     }
 
     try {
-      $client = new jsonRPCClient($this->s_host, $this->http_options);
+      $client = new jsonRPCClient($this->s_host, $this->http_options, $this->ssl_options);
       $client->process_entries_now($ids);
       $this->reset_error();
       return $this->new_state(TRUE);
@@ -535,7 +548,7 @@ class supportDaemon
     }
 
     try {
-      $client = new jsonRPCClient($this->s_host, $this->http_options);
+      $client = new jsonRPCClient($this->s_host, $this->http_options, $this->ssl_options);
       $entries = $client->$func($address);
       $entries = $this->format_entries($entries);
       $this->reset_error();
@@ -638,7 +651,7 @@ class supportDaemon
       return FALSE;
     }
     try {
-      $client = new jsonRPCClient($this->s_host, $this->http_options);
+      $client = new jsonRPCClient($this->s_host, $this->http_options, $this->ssl_options);
       $this->reset_error();
       $this->new_state(TRUE);
       return $client->ping($mac);
@@ -686,7 +699,7 @@ class supportDaemon
       unset($filter);
     }
     try {
-      $client = new jsonRPCClient($this->s_host, $this->http_options);
+      $client = new jsonRPCClient($this->s_host, $this->http_options, $this->ssl_options);
       $res = $client->get_packages($release, $attrs, $filters, $from, $to);
       $to_return = array();
       $attrs = array_map('strtoupper', $attrs);
@@ -846,7 +859,7 @@ class supportDaemon
     }
 
     try {
-      $client = new jsonRPCClient($this->s_host, $this->http_options);
+      $client = new jsonRPCClient($this->s_host, $this->http_options, $this->ssl_options);
       $this->reset_error();
       $taskids = $client->get_entries_by_mac(array($mac));
       $client->remove_entries($taskids);

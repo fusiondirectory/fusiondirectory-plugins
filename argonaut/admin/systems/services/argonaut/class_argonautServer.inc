@@ -122,6 +122,10 @@ class argonautServer extends simpleService
             'argonautFDCaCertPath', FALSE,
             '/etc/ssl/certs/ca.cert'
           ),
+          new StringAttribute (
+            _('CN of the certificate'), _('The CN in the server certificate'),
+            'argonautCertCN', FALSE
+          ),
           new HiddenAttribute ('argonautServerToken'),
         )
       )
@@ -134,6 +138,16 @@ class argonautServer extends simpleService
     if ($this->argonautServerToken == '') {
       $this->argonautServerToken = md5(mt_rand());
     }
+    $this->attributesAccess['argonautProtocol']->setManagedAttributes(
+      array(
+        'disable' => array (
+          'http' => array (
+            'argonautKeyPath','argonautCertPath','argonautCaCertPath',
+            'argonautFDCaCertPath','argonautCertCN'
+          )
+        )
+      )
+    );
   }
 
   /*! \brief Get service information for serverService plugin */

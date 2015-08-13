@@ -76,15 +76,24 @@ class jsonRPCClient {
   private $http_options;
 
   /*!
+   * \brief SSL options from http://www.php.net/manual/en/context.ssl.php
+   *
+   * \var array $ssl_options
+   */
+  private $ssl_options;
+
+  /*!
    * \brief Takes the connection parameters
    *
    * \param string $url
    *
    * \param array $http_options Additional HTTP options, see http://www.php.net/manual/en/context.http.php
    *
+   * \param array $ssl_options Additional SSL options, see http://www.php.net/manual/en/context.ssl.php
+   *
    * \param boolean $debug false
    */
-  public function __construct($url, $http_options = array(), $debug = false) {
+  public function __construct($url, $http_options = array(), $ssl_options = array(), $debug = false) {
     // server URL
     $this->url = $url;
 
@@ -95,6 +104,7 @@ class jsonRPCClient {
       $http_options['header'] = "Content-type: application/json\r\n".$http_options['header'];
     }
     $this->http_options = $http_options;
+    $this->ssl_options  = $ssl_options;
     // debug state
     $this->debug = ($debug?true:false);
     // message id
@@ -165,7 +175,8 @@ class jsonRPCClient {
           'content' => $request
         ),
         $this->http_options
-      )
+      ),
+      'ssl' => $this->ssl_options
     );
 
     $context  = stream_context_create($opts);
