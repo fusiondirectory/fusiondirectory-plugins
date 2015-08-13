@@ -83,6 +83,12 @@ attributetype ( 1.3.6.1.4.1.38414.2.10.14 NAME 'argonautServerToken'
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SINGLE-VALUE )
 
+attributetype ( 1.3.6.1.4.1.38414.2.10.15 NAME 'argonautCertCN'
+  DESC 'Fusion Directory - Argonaut, CN used in the certificate of argonaut server.'
+  EQUALITY caseExactIA5Match
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE )
+
 #~ attributetype ( 1.3.6.1.4.1.38414.2.10.15 NAME 'argonautFDCertPath'
 #~   DESC 'Fusion Directory - Argonaut, certificate path on FD server.'
 #~   EQUALITY caseExactIA5Match
@@ -296,7 +302,7 @@ objectclass ( 1.3.6.1.4.1.38414.2.2.1 NAME 'argonautServer'
     argonautWakeOnLanInterface $ argonautIpTool )
   MAY (
     argonautKeyPath $ argonautCertPath      $ argonautCaCertPath    $
-    argonautFDCaCertPath  $
+    argonautFDCaCertPath $ argonautCertCN   $
     argonautTimeout $ argonautFetchPackages $ argonautServerToken ) )
 
 objectclass ( 1.3.6.1.4.1.38414.2.2.2 NAME 'argonautClient'
