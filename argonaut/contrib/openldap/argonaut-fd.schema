@@ -131,6 +131,24 @@ attributetype ( 1.3.6.1.4.1.38414.2.11.6 NAME 'argonautClientProtocol'
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SINGLE-VALUE )
 
+attributetype ( 1.3.6.1.4.1.38414.2.11.7 NAME 'argonautClientKeyPath'
+  DESC 'Fusion Directory - Argonaut, key path.'
+  EQUALITY caseExactIA5Match
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.38414.2.11.8 NAME 'argonautClientCertPath'
+  DESC 'Fusion Directory - Argonaut, certificate path.'
+  EQUALITY caseExactIA5Match
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.38414.2.11.10 NAME 'argonautClientCertCN'
+  DESC 'Fusion Directory - Argonaut, CN used in the certificate.'
+  EQUALITY caseExactIA5Match
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE )
+
 attributetype ( 1.3.6.1.4.1.38414.2.12.1 NAME 'argonautMirrorDir'
   DESC 'Fusion Directory - Argonaut, mirror directory.'
   EQUALITY caseExactIA5Match
@@ -310,7 +328,10 @@ objectclass ( 1.3.6.1.4.1.38414.2.2.2 NAME 'argonautClient'
   SUP top AUXILIARY
   MUST (
     argonautClientPort $ argonautClientProtocol $ argonautTaskIdFile $
-    argonautClientWakeOnLanInterface $ argonautClientLogDir $ argonautServiceName ) )
+    argonautClientWakeOnLanInterface $ argonautClientLogDir $ argonautServiceName $)
+  MAY (
+    argonautClientKeyPath $ argonautClientCertPath $
+    argonautClientCertCN ) )
 
 objectclass ( 1.3.6.1.4.1.38414.2.2.3 NAME 'argonautMirrorConfig'
   DESC 'An argonaut config for debconf-crawler and ldap2repositry'
