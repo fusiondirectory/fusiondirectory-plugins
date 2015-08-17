@@ -75,14 +75,13 @@ class supportDaemon
    */
   public function get_argonaut_host()
   {
-    global $config;
     $ldap = $this->config->get_ldap_link();
     $ldap->cd($this->config->current['BASE']);
     $ldap->search(
       "(objectClass=argonautServer)",
       array(
         'cn','ipHostNumber','argonautProtocol','argonautPort',
-        'argonautTimeout','argonautFDCaCertPath','argonautCertCN',
+        'argonautTimeout','argonautCertCN',
         'argonautServerToken'
       )
     );
@@ -94,12 +93,12 @@ class supportDaemon
         );
         if ($ldap_infos['argonautProtocol'][0] == 'https') {
           $this->ssl_options = array(
-            'cafile'            => $ldap_infos['argonautFDCaCertPath'][0],
+            'cafile'            => $this->config->get_cfg_value('SslCaCertPath'),
             'peer_name'         => $ldap_infos['argonautCertCN'][0],
             'verify_peer'       => TRUE,
             'verify_peer_name'  => TRUE,
           );
-          $sshaMethod = new passwordMethodssha($config);
+          $sshaMethod = new passwordMethodssha($this->config);
           $this->http_options['header'] = 'Authorization: Basic '.base64_encode('fd:'.$sshaMethod->generate_hash($ldap_infos['argonautServerToken'][0]));
         };
       }
