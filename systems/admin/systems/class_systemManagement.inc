@@ -550,7 +550,7 @@ class systemManagement extends management
     if (isset($_POST['new_gotoTerminal']))  $action['action'] = "new_gotoTerminal";
     if (isset($_POST['new_sambaSamAccount']))  $action['action'] = "new_sambaSamAccount";
     if (isset($_POST['new_gotoPrinter']))  $action['action'] = "new_gotoPrinter";
-    if (isset($_POST['new_goFonHardware']))  $action['action'] = "new_goFonHardware";
+    if (isset($_POST['new_fdPhone']))  $action['action'] = "new_fdPhone";
     if (isset($_POST['new_ieee802Device']))  $action['action'] = "new_ieee802Device";
 
     return $action;
