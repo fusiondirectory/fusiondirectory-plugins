@@ -131,6 +131,12 @@ attributetype ( 1.3.6.1.4.1.38414.2.11.8 NAME 'argonautClientCertPath'
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SINGLE-VALUE )
 
+attributetype ( 1.3.6.1.4.1.38414.2.11.9 NAME 'argonautClientCaCertPath'
+  DESC 'Fusion Directory - Argonaut, CA certificate path.'
+  EQUALITY caseExactIA5Match
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
+  SINGLE-VALUE )
+
 attributetype ( 1.3.6.1.4.1.38414.2.11.10 NAME 'argonautClientCertCN'
   DESC 'Fusion Directory - Argonaut, CN used in the certificate.'
   EQUALITY caseExactIA5Match
@@ -318,7 +324,7 @@ objectclass ( 1.3.6.1.4.1.38414.2.2.2 NAME 'argonautClient'
     argonautClientPort $ argonautClientProtocol $ argonautTaskIdFile $
     argonautClientWakeOnLanInterface $ argonautClientLogDir $ argonautServiceName )
   MAY (
-    argonautClientKeyPath $ argonautClientCertPath $
+    argonautClientKeyPath $ argonautClientCertPath $ argonautClientCaCertPath $
     argonautClientCertCN ) )
 
 objectclass ( 1.3.6.1.4.1.38414.2.2.3 NAME 'argonautMirrorConfig'

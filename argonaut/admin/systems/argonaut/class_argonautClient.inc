@@ -157,6 +157,11 @@ class argonautClient extends simplePlugin
             '/etc/ssl/certs/argonaut.cert'
           ),
           new StringAttribute (
+            _('CA certificate on argonaut client'), _('Path to the CA certificate file on Argonaut client'),
+            'argonautClientCaCertPath', FALSE,
+            '/etc/ssl/certs/ca.cert'
+          ),
+          new StringAttribute (
             _('CN of the certificate'), _('The CN in this client certificate'),
             'argonautClientCertCN', FALSE
           ),
@@ -178,7 +183,7 @@ class argonautClient extends simplePlugin
       array(
         'disable' => array (
           'http' => array (
-            'argonautClientKeyPath','argonautClientCertPath',
+            'argonautClientKeyPath','argonautClientCertPath','argonautClientCaCertPath',
             'argonautClientCertCN'
           )
         )
