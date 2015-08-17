@@ -118,11 +118,6 @@ class argonautServer extends simpleService
             '/etc/ssl/certs/ca.cert'
           ),
           new StringAttribute (
-            _('CA certificate on FusionDirectory server'), _('Path to the CA certificate file on FusionDirectory server'),
-            'argonautFDCaCertPath', FALSE,
-            '/etc/ssl/certs/ca.cert'
-          ),
-          new StringAttribute (
             _('CN of the certificate'), _('The CN in the server certificate'),
             'argonautCertCN', FALSE
           ),
@@ -142,8 +137,7 @@ class argonautServer extends simpleService
       array(
         'disable' => array (
           'http' => array (
-            'argonautKeyPath','argonautCertPath','argonautCaCertPath',
-            'argonautFDCaCertPath','argonautCertCN'
+            'argonautKeyPath','argonautCertPath','argonautCaCertPath','argonautCertCN'
           )
         )
       )
