@@ -118,7 +118,7 @@ class argonautServer extends simpleService
             '/etc/ssl/certs/ca.cert'
           ),
           new StringAttribute (
-            _('CN of the certificate'), _('The CN in the server certificate'),
+            _('CN of the certificate'), _('The CN in the server certificate'),
             'argonautCertCN', FALSE
           ),
           new HiddenAttribute ('argonautServerToken'),
