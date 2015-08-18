@@ -430,7 +430,7 @@ class serviceDHCP extends simpleService
             'dhcpServiceDN'
           ),
           new DhcpSectionsAttribute (
-            '', _('The DHCP sections handled by this server'),
+            '', _('The DHCP sections handled by this server'),
             'dhcpSections', FALSE
           )
         )

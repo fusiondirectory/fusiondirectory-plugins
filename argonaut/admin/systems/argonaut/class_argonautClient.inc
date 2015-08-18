@@ -162,7 +162,7 @@ class argonautClient extends simplePlugin
             '/etc/ssl/certs/ca.cert'
           ),
           new StringAttribute (
-            _('CN of the certificate'), _('The CN in this client certificate'),
+            _('CN of the certificate'), _('The CN in this client certificate'),
             'argonautClientCertCN', FALSE
           ),
         )
