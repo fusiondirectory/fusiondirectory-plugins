@@ -28,8 +28,8 @@ class argonautServer extends simpleService
   static function plInfo()
   {
     return array(
-      'plShortName'   => _('Argonaut Server'),
-      'plDescription' => _('Argonaut Server').' ('._('Services').')',
+      'plShortName'   => _('Argonaut server'),
+      'plDescription' => _('Argonaut server').' ('._('Services').')',
       'plIcon'        => 'plugins/argonaut/images/iconMini.png',
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
@@ -103,17 +103,17 @@ class argonautServer extends simpleService
         'name'  => _('SSL paths'),
         'attrs' => array (
           new StringAttribute (
-            _('Key on argonaut server'), _('Path to the private key file on Argonaut server'),
+            _('Key'), _('Path to the private key file on Argonaut server'),
             'argonautKeyPath', FALSE,
             '/etc/ssl/private/argonaut.key'
           ),
           new StringAttribute (
-            _('Certificate on argonaut server'), _('Path to the certificate file on Argonaut server'),
+            _('Certificate'), _('Path to the certificate file on Argonaut server'),
             'argonautCertPath', FALSE,
             '/etc/ssl/certs/argonaut.cert'
           ),
           new StringAttribute (
-            _('CA certificate on argonaut server'), _('Path to the CA certificate file on Argonaut server'),
+            _('CA certificate'), _('Path to the CA certificate file on Argonaut server'),
             'argonautCaCertPath', FALSE,
             '/etc/ssl/certs/ca.cert'
           ),

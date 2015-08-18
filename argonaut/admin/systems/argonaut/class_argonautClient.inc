@@ -147,17 +147,17 @@ class argonautClient extends simplePlugin
         'name'  => _('SSL paths'),
         'attrs' => array (
           new StringAttribute (
-            _('Key on argonaut client'), _('Path to the private key file on Argonaut client'),
+            _('Key'), _('Path to the private key file on Argonaut client'),
             'argonautClientKeyPath', FALSE,
             '/etc/ssl/private/argonaut.key'
           ),
           new StringAttribute (
-            _('Certificate on argonaut client'), _('Path to the certificate file on Argonaut client'),
+            _('Certificate'), _('Path to the certificate file on Argonaut client'),
             'argonautClientCertPath', FALSE,
             '/etc/ssl/certs/argonaut.cert'
           ),
           new StringAttribute (
-            _('CA certificate on argonaut client'), _('Path to the CA certificate file on Argonaut client'),
+            _('CA certificate'), _('Path to the CA certificate file on Argonaut client'),
             'argonautClientCaCertPath', FALSE,
             '/etc/ssl/certs/ca.cert'
           ),
