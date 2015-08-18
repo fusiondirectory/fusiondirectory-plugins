@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# MCMic, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
 "POT-Creation-Date: 2015-03-31 11:49+0200\n"
-"PO-Revision-Date: 2015-08-12 11:16+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"PO-Revision-Date: 2015-08-18 13:24+0000\n"
+"Last-Translator: MCMic\n"
 "Language-Team: French (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -27,7 +28,7 @@ msgstr "Erreur"
 #: admin/systems/services/dhcp/class_dhcpAdvanced.inc:59
 #: admin/systems/services/dhcp/class_dhcpAdvanced.inc:73
 msgid "Cannot delete automatic statements!"
-msgstr "Impossible d'effacer les déclarations automatiques !"
+msgstr "Impossible d’effacer les déclarations automatiques !"
 
 #: admin/systems/services/dhcp/class_dhcpAdvanced.inc:89
 #: admin/systems/services/dhcp/class_dhcpAdvanced.inc:104
@@ -66,12 +67,12 @@ msgstr "Nom"
 #: admin/systems/services/dhcp/class_dhcpSubnet.inc:161
 #: admin/systems/services/dhcp/dhcp_pool.tpl.c:11
 msgid "Range"
-msgstr "Etendue"
+msgstr "Intervalle"
 
 #: admin/systems/services/dhcp/class_dhcpPool.inc:141
 #: admin/systems/services/dhcp/class_dhcpSubnet.inc:176
 msgid "'Range' is not inside the configured network."
-msgstr "L'étendue réseau n'est pas comprise dans le réseau configuré."
+msgstr "L'intervalle réseau n'est pas compris dans le réseau configuré."
 
 #: admin/systems/services/dhcp/class_dhcpSubnet.inc:139
 #: admin/systems/services/dhcp/class_dhcpSubnet.inc:159
@@ -89,14 +90,14 @@ msgstr "Masque réseau"
 
 #: admin/systems/services/dhcp/class_dhcpSubnet.inc:170
 msgid "Network range"
-msgstr "Etendue réseau"
+msgstr "Intervalle du réseau"
 
 #: admin/systems/services/dhcp/class_dhcpNewSectionDialog.inc:48
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:62
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:103
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:731
 msgid "Global options"
-msgstr "Options Globales"
+msgstr "Options globales"
 
 #: admin/systems/services/dhcp/class_dhcpNewSectionDialog.inc:49
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:63
@@ -106,7 +107,7 @@ msgstr "Classe"
 #: admin/systems/services/dhcp/class_dhcpNewSectionDialog.inc:50
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:64
 msgid "Subclass"
-msgstr "sous classe"
+msgstr "Sous classe"
 
 #: admin/systems/services/dhcp/class_dhcpNewSectionDialog.inc:51
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:65
@@ -116,12 +117,12 @@ msgstr "Hôte"
 #: admin/systems/services/dhcp/class_dhcpNewSectionDialog.inc:52
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:66
 msgid "Group"
-msgstr "Groupes"
+msgstr "Groupe"
 
 #: admin/systems/services/dhcp/class_dhcpNewSectionDialog.inc:53
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:67
 msgid "Pool"
-msgstr "réservoir"
+msgstr "Réservoir"
 
 #: admin/systems/services/dhcp/class_dhcpNewSectionDialog.inc:54
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:68
@@ -131,7 +132,7 @@ msgstr "Sous réseau"
 #: admin/systems/services/dhcp/class_dhcpNewSectionDialog.inc:55
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:70
 msgid "Shared network"
-msgstr "Réseaux partagés"
+msgstr "Réseau partagé"
 
 #: admin/systems/services/dhcp/class_dhcpNewSectionDialog.inc:56
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:71
@@ -142,7 +143,7 @@ msgstr "Clef de mise à jour du DNS"
 #: admin/systems/services/dhcp/class_dhcpNewSectionDialog.inc:57
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:72
 msgid "DNS update zones"
-msgstr "Zones DNS a mettre a jour"
+msgstr "Zones DNS à mettre à jour"
 
 #: admin/systems/services/dhcp/class_dhcpDnsZone.inc:150
 #: admin/systems/services/dhcp/dhcp_dnszone.tpl.c:5
@@ -158,7 +159,7 @@ msgstr "Serveur DNS"
 #: admin/systems/services/dhcp/class_dhcpDnsZone.inc:158
 #: admin/systems/services/dhcp/dhcp_dnszone.tpl.c:11
 msgid "Key DN"
-msgstr "Clef pour ce DN"
+msgstr "DN de la clef"
 
 #: admin/systems/services/dhcp/class_dhcpHost.inc:64
 msgid "Ethernet"
@@ -175,7 +176,7 @@ msgstr "Token Ring"
 #: admin/systems/services/dhcp/class_dhcpHost.inc:149
 #: admin/systems/services/dhcp/dhcp_host.tpl.c:20
 msgid "Hardware address"
-msgstr "Adresse hardware"
+msgstr "Adresse matérielle"
 
 #: admin/systems/services/dhcp/class_dhcpService.inc:128
 msgid "Lease time"
@@ -183,7 +184,7 @@ msgstr "Bail"
 
 #: admin/systems/services/dhcp/class_dhcpService.inc:131
 msgid "Max lease time"
-msgstr "Temps maximum du bail"
+msgstr "Durée maximum du bail"
 
 #: admin/systems/services/dhcp/class_dhcpService.inc:134
 #: admin/systems/services/dhcp/class_dhcpSharedNetwork.inc:156
@@ -195,7 +196,7 @@ msgstr "Bail par défaut"
 #: admin/systems/services/dhcp/class_dhcpService.inc:134
 #: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl.c:38
 msgid "Maximum lease time"
-msgstr "Temps maximum du bail"
+msgstr "Durée maximum du bail"
 
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:59
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:787
@@ -210,7 +211,7 @@ msgstr "Journaux systèmes"
 
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:69
 msgid "Failover peer"
-msgstr "Partenaire pour la prise de contrôle"
+msgstr "Pair de reprise sur panne"
 
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:149
 #, php-format

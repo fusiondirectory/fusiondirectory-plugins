@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# MCMic, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2015-08-12 11:57+0200\n"
-"PO-Revision-Date: 2015-05-30 14:02+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"POT-Creation-Date: 2015-08-18 12:47+0200\n"
+"PO-Revision-Date: 2015-08-18 13:02+0000\n"
+"Last-Translator: MCMic\n"
 "Language-Team: French (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -38,7 +39,7 @@ msgstr "Entrée automount"
 msgid ""
 "The entry of this directory for the automount daemon.\n"
 " For instance 'auto.u' or '-fstype=nfs domaine.tld:/mount/directory'"
-msgstr "L'entrée de ce répertoire pour le démon automount. ⏎\nPar exemple «auto.u» ou «-fstype=nfs domaine.tld mount/répertoire '"
+msgstr "L'entrée de ce répertoire pour le démon automount.\nPar exemple «auto.u» ou «-fstype=nfs domaine.tld:/mount/répertoire»"
 
 #: admin/autofs/class_nisObject.inc:61 admin/autofs/class_nisMap.inc:31
 #: admin/autofs/class_nisMap.inc:34 admin/autofs/class_nisMap.inc:49
@@ -47,7 +48,7 @@ msgstr "Point de montage"
 
 #: admin/autofs/class_nisObject.inc:61
 msgid "The mount point this directory will be placed in"
-msgstr "Le point de montage de ce répertoire sera mis dans"
+msgstr "Le point de montage dans lequel ce répertoire sera mis"
 
 #: admin/autofs/class_nisMap.inc:32
 msgid "Autofs mount point"
@@ -59,7 +60,7 @@ msgstr "Nom du point de montage"
 
 #: admin/autofs/class_autofsManagement.inc:31
 msgid "Auto fs"
-msgstr "Automount"
+msgstr "Auto fs"
 
 #: admin/autofs/class_autofsManagement.inc:32
 msgid "Auto fs management"
@@ -67,11 +68,11 @@ msgstr "Gestion Autofs"
 
 #: config/autofs/class_autofsConfig.inc:28
 msgid "Autofs configuration"
-msgstr "Configuration Automount"
+msgstr "Configuration Autofs"
 
 #: config/autofs/class_autofsConfig.inc:29
 msgid "FusionDirectory autofs plugin configuration"
-msgstr "Configuration du plugin automount"
+msgstr "Configuration du plugin autofs"
 
 #: config/autofs/class_autofsConfig.inc:42
 msgid "AutoFS"
@@ -79,8 +80,8 @@ msgstr "AutoFS"
 
 #: config/autofs/class_autofsConfig.inc:45
 msgid "AutoFS RDN"
-msgstr "RDN Automount"
+msgstr "Branche Autofs"
 
 #: config/autofs/class_autofsConfig.inc:45
 msgid "Branch in which automount info will be stored"
-msgstr "Branche où seront stockés  les point de montage automount"
+msgstr "Branche où seront stockés les points de montage automount"

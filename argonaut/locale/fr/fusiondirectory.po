@@ -3,13 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# MCMic, 2015
+# MCMic, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2015-08-12 11:57+0200\n"
-"PO-Revision-Date: 2015-08-12 09:58+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"POT-Creation-Date: 2015-08-12 15:25+0200\n"
+"PO-Revision-Date: 2015-08-18 13:02+0000\n"
+"Last-Translator: MCMic\n"
 "Language-Team: French (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -27,7 +29,7 @@ msgstr "Port du client"
 
 #: admin/systems/argonaut/class_argonautClient.inc:120
 msgid "Port used by argonaut client for JSON-RPC"
-msgstr "Port utilisé par le client Argonaut pour le dialogue JSON-RPC"
+msgstr "Port utilisé par le client Argonaut pour les requêtes JSON-RPC"
 
 #: admin/systems/argonaut/class_argonautClient.inc:129
 msgid "WakeOnLan interface"
@@ -35,26 +37,26 @@ msgstr "Interface WakeOnLan"
 
 #: admin/systems/argonaut/class_argonautClient.inc:129
 msgid "Interface used by argonaut for WakeOnLan"
-msgstr "Interface utilisé par argonaut pour le WakeOnLan :"
+msgstr "Interface utilisée par argonaut pour le WakeOnLan :"
 
 #: admin/systems/argonaut/class_argonautClient.inc:134
 msgid "TaskId file"
-msgstr "Nom du fichier contenant les id des tâches"
+msgstr "Fichier des id de tâches"
 
 #: admin/systems/argonaut/class_argonautClient.inc:134
 msgid "File which argonaut will use to store its task id when booting"
-msgstr "Fichier qu'Argonaut va utilisé pour stocker les tâches au démarrage"
+msgstr "Fichier qu'Argonaut utilise pour stocker les tâches au démarrage"
 
 #: admin/systems/argonaut/class_argonautClient.inc:139
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:56
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:71
 #: admin/systems/services/argonaut/class_argonautServer.inc:79
 msgid "Log directory"
-msgstr "Répertoire des Journaux systèmes"
+msgstr "Répertoire des journaux systèmes"
 
 #: admin/systems/argonaut/class_argonautClient.inc:139
 msgid "Directory in which argonaut client should write its logs"
-msgstr "Dossier d'écriture des logs du client Argonaut"
+msgstr "Dossier des journaux systèmes du client Argonaut"
 
 #: admin/systems/argonaut/class_argonautClient.inc:146
 msgid "Service names"
@@ -62,7 +64,7 @@ msgstr "Nom des services"
 
 #: admin/systems/argonaut/class_argonautClient.inc:148
 msgid "Argonaut service names"
-msgstr "Nom du service argonaut"
+msgstr "Noms de services pour Argonaut"
 
 #: admin/systems/argonaut/class_argonautClient.inc:163
 msgid "Argonaut client"
@@ -70,7 +72,7 @@ msgstr "Client Argonaut"
 
 #: admin/systems/argonaut/class_argonautClient.inc:164
 msgid "Edit argonaut client settings"
-msgstr "Édition des paramètres du client argonaut"
+msgstr "Édition des paramètres du client Argonaut"
 
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:31
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:32
@@ -84,7 +86,7 @@ msgstr "Paramètres de Argonaut Fuse"
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:31
 #: admin/systems/services/argonaut/class_argonautFuseLTSPConfig.inc:33
 msgid "Services"
-msgstr "Service"
+msgstr "Services"
 
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:46
 msgid "Basic settings"
@@ -96,7 +98,7 @@ msgstr "Mode par défaut"
 
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:57
 msgid "Directory in which argonaut-fuse will store its log"
-msgstr "Dossier d'écriture des logs du système argonaut fuse"
+msgstr "Dossier des jounaux systèmes de argonaut-fuse"
 
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:65
 msgid "TFTP"
@@ -113,11 +115,11 @@ msgstr "Chemin où argonaut-fuse stockera le fichier \"pxelinux.cfg\""
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:29
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:30
 msgid "Argonaut Mirror settings"
-msgstr "Paramètres des mirroirs Argonaut"
+msgstr "Paramètres des miroirs Argonaut"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:41
 msgid "Argonaut mirror settings"
-msgstr "Service Argonaut miroir"
+msgstr "Paramètres des miroirs Argonaut"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:44
 msgid "Local Debian mirror directory"
@@ -129,15 +131,15 @@ msgstr "Configuration du module debconf crawler d'Argonaut"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:55
 msgid "Local packages folder"
-msgstr "Répertoire des paquets locaux"
+msgstr "Répertoire local des paquets"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:56
 msgid "Folder in which the crawler will store packages during analysis"
-msgstr "Dossier de stockage des paquets durant durant leur analyse"
+msgstr "Dossier de stockage des paquets durant leur analyse"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:63
 msgid "Argonaut Repository configuration"
-msgstr "Configuration des dépôts argonaut"
+msgstr "Configuration des dépôts Argonaut"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:66
 msgid "Proxy"
@@ -159,11 +161,11 @@ msgstr "Ignorer les erreurs"
 msgid ""
 "Causes debmirror to ignore missing or broken deb and source files but still "
 "be pedantic about checking meta files"
-msgstr "Demande à debmirror d’ignorer les fichiers deb et sources cassés ou manquant mais de continuer les vérifications des fichier meta"
+msgstr "Demande à debmirror d’ignorer les fichiers deb et sources cassés ou manquant mais de continuer les vérifications des fichiers meta"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:82
 msgid "Source"
-msgstr "Emetteur"
+msgstr "Source"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:82
 msgid "Include source in the mirror"
@@ -171,7 +173,7 @@ msgstr "Inclus les sources dans le miroir"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:87
 msgid "GPG Check"
-msgstr "Verification GPG"
+msgstr "Vérification GPG"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:87
 msgid "Fail if the Release.gpg file is missing"
@@ -228,18 +230,18 @@ msgstr "Supprimer les tâches terminées"
 #: admin/systems/services/argonaut/class_argonautServer.inc:50
 msgid ""
 "Wether or not argonaut server should delete successfully finished tasks"
-msgstr "Autoriser  ou non la suppression des tâches terminées avec succès par le serveur argonaut"
+msgstr "Activer ou non la suppression des tâches terminées avec succès par le serveur Argonaut"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:55
 msgid "Get packages informations"
-msgstr "Impossible d'obtenir des informations sur les paquets"
+msgstr "Obtenir des informations sur les paquets"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:56
 msgid ""
 "Wether or not argonaut server should get packages information from "
 "repositories at start and then once a day. Needed for FAI package list "
 "creation."
-msgstr "Si oui ou non le serveur Argonaut devrait obtenir les paquets d'informations à partir des dépôts au début, puis une fois par jour. Nécessaire pour la création de la liste de paquet FAI."
+msgstr "Si oui ou non le serveur Argonaut devrait obtenir les informations des paquets à partir des dépôts au lancement, puis une fois par jour. Nécessaire pour la création de listes de paquets FAI."
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:61
 msgid "Protocol"
@@ -247,7 +249,7 @@ msgstr "Protocole"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:61
 msgid "Protocol to use for argonaut"
-msgstr "Protocole à utiliser pour argonaut"
+msgstr "Protocole à utiliser pour Argonaut"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:66
 msgid "Port"
@@ -255,7 +257,7 @@ msgstr "Port"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:67
 msgid "Port on which the argonaut server will be listening"
-msgstr "Port d'écoute du serveur Argonaut"
+msgstr "Port d’écoute du serveur Argonaut"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:72
 msgid "Timeout"
@@ -268,7 +270,7 @@ msgstr "Délai en secondes avant de considérer le système argonaut (client ou 
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:80
 msgid "Directory in which argonaut will store its log"
-msgstr "Répertoire contenant les journaux d’événement d'argonaut"
+msgstr "Répertoire contenant les journaux systèmes d'Argonaut"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:87
 msgid "Wake on lan"
@@ -292,11 +294,11 @@ msgstr "Outil IP à utiliser"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:103
 msgid "SSL paths"
-msgstr ""
+msgstr "Chemins SSL"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:106
 msgid "Key on argonaut server"
-msgstr ""
+msgstr "Clé sur le serveur argonaut"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:106
 msgid "Path to the private key file on Argonaut server"
