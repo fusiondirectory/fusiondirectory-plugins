@@ -76,7 +76,7 @@ class faiScript extends faiSimplePluginClass
                 'description', FALSE
               ),
               new IntAttribute (
-                _('Priority'), _('Priority of this script (FIXME: less is done first?)'),
+                _('Priority'), _('Priority of this script (smaller is done first)'),
                 'FAIpriority', TRUE,
                 0, 99, 1
               ),
