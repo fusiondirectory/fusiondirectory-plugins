@@ -177,7 +177,6 @@ my $term = new Term::ShellUI(
       desc    => "Set the value of a field of an object",
       doc     => "Usage: setvalue <TYPE> <DN> <TAB> <FIELD> [<VALUE>]\nExample: setvalue user uid=fd-admin,dc=example,dc=com posixAccount loginShell /bin/bash\n",
       minargs => 4,
-      maxargs => 5,
       proc    => \&command_setvalue,
     },
     "exit" => {
