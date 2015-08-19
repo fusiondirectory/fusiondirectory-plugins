@@ -154,17 +154,22 @@ class fdRPCService
     return call_user_func_array(array($this, '_'.$method), $params);
   }
 
-  protected function checkAccess($type, $tab = NULL)
+  protected function checkAccess($type, $tab = NULL, $dn = NULL)
   {
     $infos = objects::infos($type);
     $plist = session::global_get('plist');
-    if (!$plist->check_access($infos['aclCategory'])) {
-      throw new Exception("Unsufficient rights for accessing type '$type'");
+    if (($dn !== NULL) && ($plist->ui->dn == $dn)) {
+      $self = ':self';
+    } else {
+      $self = '';
+    }
+    if (!$plist->check_access($infos['aclCategory'].$self)) {
+      throw new Exception("Unsufficient rights for accessing type '$type$self'");
     }
     if ($tab !== NULL) {
       $pInfos = pluglist::pluginInfos($tab);
-      if (!$plist->check_access(join(',', $pInfos['plCategory']))) {
-        throw new Exception("Unsufficient rights for accessing tab '$tab' of type '$type'");
+      if (!$plist->check_access(join($self.',', $pInfos['plCategory']).$self)) {
+        throw new Exception("Unsufficient rights for accessing tab '$tab' of type '$type$self'");
       }
     }
   }
@@ -223,7 +228,7 @@ class fdRPCService
    */
   protected function _fields($type, $dn = NULL, $tab = NULL)
   {
-    $this->checkAccess($type, $tab);
+    $this->checkAccess($type, $tab, $dn);
 
     if ($dn === NULL) {
       $tabobject = objects::create($type);
@@ -272,7 +277,7 @@ class fdRPCService
    */
   protected function _removetab($type, $dn, $tab)
   {
-    $this->checkAccess($type, $tab);
+    $this->checkAccess($type, $tab, $dn);
     $tabobject = objects::open($dn, $type);
     $tabobject->current = $tab;
     if (!is_subclass_of($tabobject->by_object[$tab], 'simplePlugin')) {
@@ -297,7 +302,7 @@ class fdRPCService
    */
   protected function _update($type, $dn, $tab, $values)
   {
-    $this->checkAccess($type, $tab);
+    $this->checkAccess($type, $tab, $dn);
 
     if ($dn === NULL) {
       $tabobject = objects::create($type);
