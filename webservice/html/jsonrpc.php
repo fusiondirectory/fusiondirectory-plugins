@@ -41,7 +41,7 @@ require_once("jsonrpcphp/jsonRPCServer.php");
 
 function initiateRPCSession($id = NULL, $ldap = NULL, $user = NULL, $pwd = NULL)
 {
-  global $config, $class_mapping, $BASE_DIR, $ui;
+  global $config, $class_mapping, $BASE_DIR, $ui, $ssl;
 
   session::start($id);
 
@@ -83,7 +83,11 @@ function initiateRPCSession($id = NULL, $ldap = NULL, $user = NULL, $pwd = NULL)
     if (($ssl != "") &&
           (($config->get_cfg_value('webserviceForceSSL', 'TRUE') == 'TRUE') ||
            ($config->get_cfg_value("forcessl") == "TRUE"))) {
-      echo "HTTP connexions are not allowed, please use HTTPS: $ssl\n";
+      echo json_encode(
+        array(
+          'error' => "HTTP connexions are not allowed, please use HTTPS: $ssl\n"
+        )
+      );
       exit;
     }
 
