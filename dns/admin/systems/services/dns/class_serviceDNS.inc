@@ -122,7 +122,7 @@ class DnsZonesAttribute extends DialogOrderedArrayAttribute
       $key = preg_replace('/^'.$id.'_ldap2zone_/', '', $postValue);
       $key = preg_replace('/_[xy]$/', '', $key);
 
-      $this->plugin->callLdap2zone($this->value[$key]);
+      $this->plugin->callLdap2zone($this->value[$key]['zoneName']);
       return TRUE;
     }
     return FALSE;
