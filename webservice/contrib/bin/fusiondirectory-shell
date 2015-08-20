@@ -188,6 +188,13 @@ my $term = new Term::ShellUI(
       maxargs => 5,
       proc    => \&command_addvalue,
     },
+    "delvalue" => {
+      desc    => "Remove a value from a multivaluated field of an object",
+      doc     => "Usage: delvalue <TYPE> <DN> <TAB> <FIELD>\nExample: delvalue user uid=fd-admin,dc=example,dc=com user title\n",
+      minargs => 4,
+      maxargs => 4,
+      proc    => \&command_delvalue,
+    },
     "exit" => {
       desc    => "Exit FusionDirectory shell",
       doc     => "Usage: exit\n",
@@ -461,6 +468,49 @@ sub command_addvalue
               $values{'add'.$field->{'id'}} = 1;
             } else {
               print "Error: Cant’t use addvalue on something else than a SetAttribute\n";
+            }
+          }
+        }
+      }
+    }
+  }
+  my $result = rpc_call($client, 'update', [$sid,$type,$dn,$tab,\%values]);
+  if (ref $result eq ref {}) {
+    foreach my $error (@{$result->{'errors'}}) {
+      print "Error: $error\n";
+    }
+  }
+}
+
+sub command_delvalue
+{
+  my ($type, $dn, $tab, $asked_field) = @_;
+  $dn = complete_dn($dn);
+  my $fields = rpc_call($client, 'fields', [$sid,$type,$dn,$tab]);
+  my %values = ();
+  if (ref $fields eq ref {}) {
+    foreach my $section (values %$fields) {
+      if (ref $section->{'attrs'} eq ref []) {
+        foreach my $field (@{$section->{'attrs'}}) {
+          if ($field->{'id'} eq $asked_field) {
+            if (grep {$_ eq 'SetAttribute'} @{$field->{'type'}}) {
+              show_field($field);
+              my $i = 0;
+              if (scalar(@{$field->{'value'}}) eq 0) {
+                return '';
+              }
+              for ($i = 0; $i < scalar(@{$field->{'value'}}); $i++) {
+                print $i.":".${$field->{'value'}}[$i]."\n";
+              }
+              my $choice;
+              do {
+                $choice = $term->{term}->readline("Value(s) to remove (space separated): ");
+              } while (($choice eq '') || ($choice =~ m/[^ 0-9]/));
+
+              $values{'row'.$field->{'id'}} = [split(m/\s+/, $choice)];
+              $values{'del'.$field->{'id'}} = 1;
+            } else {
+              print "Error: Cant’t use delvalue on something else than a SetAttribute\n";
             }
           }
         }
