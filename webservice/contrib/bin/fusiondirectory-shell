@@ -25,21 +25,23 @@ my $help      = 0;
 my $ca_file   = 0;
 my $login;
 my $password;
+my $password_ask = 0;
 my $ldap_server = undef;
 
 # Process command-line
-
+Getopt::Long::config('no_ignore_case');
 GetOptions(
   'help|?'      => \$help,
   'url=s'       => \$host,
   'ca=s'        => \$ca_file,
   'login=s'     => \$login,
   'password=s'  => \$password,
+  'P'           => \$password_ask,
   'server=s'    => \$ldap_server
 ) or pod2usage(2);
 pod2usage(1) if $help;
 pod2usage(2) if not defined $login;
-pod2usage(2) if not defined $password;
+pod2usage(2) if not defined $password and not $password_ask;
 
 my $current_base;
 
@@ -179,6 +181,13 @@ my $term = new Term::ShellUI(
       minargs => 4,
       proc    => \&command_setvalue,
     },
+    "addvalue" => {
+      desc    => "Add a value to a multivaluated field of an object",
+      doc     => "Usage: addvalue <TYPE> <DN> <TAB> <FIELD> <VALUE>\nExample: addvalue user uid=fd-admin,dc=example,dc=com user title Administrator\n",
+      minargs => 5,
+      maxargs => 5,
+      proc    => \&command_addvalue,
+    },
     "exit" => {
       desc    => "Exit FusionDirectory shell",
       doc     => "Usage: exit\n",
@@ -188,6 +197,11 @@ my $term = new Term::ShellUI(
   },
   history_file => '~/.fusiondirectory_shell_history',
 );
+
+
+if ($password_ask) {
+  $password = $term->{term}->readline('Password: ');
+}
 
 my $client  = rpc_init();
 if (!defined $ldap_server) {
@@ -414,9 +428,39 @@ sub command_setvalue
             if (scalar(@value) == 0) {
               $values{$field->{'id'}} = ask_field($field);
             } elsif (grep {$_ eq 'SetAttribute'} @{$field->{'type'}}) {
-              $values{$field->{'id'}} = \@value;
+              print "Error: Cant’t use setvalue on SetAttributes like $asked_field\n";
             } else {
               $values{$field->{'id'}} = $value[0];
+            }
+          }
+        }
+      }
+    }
+  }
+  my $result = rpc_call($client, 'update', [$sid,$type,$dn,$tab,\%values]);
+  if (ref $result eq ref {}) {
+    foreach my $error (@{$result->{'errors'}}) {
+      print "Error: $error\n";
+    }
+  }
+}
+
+sub command_addvalue
+{
+  my ($type, $dn, $tab, $asked_field, $value) = @_;
+  $dn = complete_dn($dn);
+  my $fields = rpc_call($client, 'fields', [$sid,$type,$dn,$tab]);
+  my %values = ();
+  if (ref $fields eq ref {}) {
+    foreach my $section (values %$fields) {
+      if (ref $section->{'attrs'} eq ref []) {
+        foreach my $field (@{$section->{'attrs'}}) {
+          if ($field->{'id'} eq $asked_field) {
+            if (grep {$_ eq 'SetAttribute'} @{$field->{'type'}}) {
+              $values{$field->{'id'}} = $value;
+              $values{'add'.$field->{'id'}} = 1;
+            } else {
+              print "Error: Cant’t use addvalue on something else than a SetAttribute\n";
             }
           }
         }
@@ -490,6 +534,10 @@ User login to send
 =item B<-p>, B<--password>=I<PWD>
 
 User password to send
+
+=item B<-P>
+
+Prompt for user password to send
 
 =item B<-c>, B<--ca>=I<FILE>
 
