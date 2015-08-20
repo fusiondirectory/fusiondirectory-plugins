@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2015-08-12 15:25+0200\n"
-"PO-Revision-Date: 2015-08-12 09:57+0000\n"
+"POT-Creation-Date: 2015-08-18 17:37+0200\n"
+"PO-Revision-Date: 2015-08-18 15:38+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
@@ -30,46 +30,97 @@ msgstr "Port klienta"
 msgid "Port used by argonaut client for JSON-RPC"
 msgstr "Port používaný klientem argonaut pro JSON-RPC"
 
-#: admin/systems/argonaut/class_argonautClient.inc:129
+#: admin/systems/argonaut/class_argonautClient.inc:125
+#: admin/systems/services/argonaut/class_argonautServer.inc:61
+msgid "Protocol"
+msgstr "Protokol"
+
+#: admin/systems/argonaut/class_argonautClient.inc:125
+#: admin/systems/services/argonaut/class_argonautServer.inc:61
+msgid "Protocol to use for argonaut"
+msgstr "Protokol, který má být používán argonaut"
+
+#: admin/systems/argonaut/class_argonautClient.inc:130
 msgid "WakeOnLan interface"
 msgstr "Rozhraní pro probouzení po síti (WoL)"
 
-#: admin/systems/argonaut/class_argonautClient.inc:129
+#: admin/systems/argonaut/class_argonautClient.inc:130
 msgid "Interface used by argonaut for WakeOnLan"
 msgstr "Rozhraní, použité komponentou argonaut pro WakeOnLan"
 
-#: admin/systems/argonaut/class_argonautClient.inc:134
+#: admin/systems/argonaut/class_argonautClient.inc:135
 msgid "TaskId file"
 msgstr "TaskId soubor"
 
-#: admin/systems/argonaut/class_argonautClient.inc:134
+#: admin/systems/argonaut/class_argonautClient.inc:135
 msgid "File which argonaut will use to store its task id when booting"
 msgstr "Soubor, který bude argonaut používat pro ukládání identifikátorů svých úloh při spouštění"
 
-#: admin/systems/argonaut/class_argonautClient.inc:139
+#: admin/systems/argonaut/class_argonautClient.inc:140
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:56
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:71
 #: admin/systems/services/argonaut/class_argonautServer.inc:79
 msgid "Log directory"
 msgstr "Složka pro protokoly"
 
-#: admin/systems/argonaut/class_argonautClient.inc:139
+#: admin/systems/argonaut/class_argonautClient.inc:140
 msgid "Directory in which argonaut client should write its logs"
 msgstr "Složka, do které by argonaut klient měl zapisovat své protokoly"
 
-#: admin/systems/argonaut/class_argonautClient.inc:146
+#: admin/systems/argonaut/class_argonautClient.inc:147
+#: admin/systems/services/argonaut/class_argonautServer.inc:103
+msgid "SSL paths"
+msgstr ""
+
+#: admin/systems/argonaut/class_argonautClient.inc:150
+#: admin/systems/services/argonaut/class_argonautServer.inc:106
+msgid "Key"
+msgstr "Klíč"
+
+#: admin/systems/argonaut/class_argonautClient.inc:150
+msgid "Path to the private key file on Argonaut client"
+msgstr ""
+
+#: admin/systems/argonaut/class_argonautClient.inc:155
+#: admin/systems/services/argonaut/class_argonautServer.inc:111
+msgid "Certificate"
+msgstr "Certifikát"
+
+#: admin/systems/argonaut/class_argonautClient.inc:155
+msgid "Path to the certificate file on Argonaut client"
+msgstr ""
+
+#: admin/systems/argonaut/class_argonautClient.inc:160
+#: admin/systems/services/argonaut/class_argonautServer.inc:116
+msgid "CA certificate"
+msgstr ""
+
+#: admin/systems/argonaut/class_argonautClient.inc:160
+msgid "Path to the CA certificate file on Argonaut client"
+msgstr ""
+
+#: admin/systems/argonaut/class_argonautClient.inc:165
+#: admin/systems/services/argonaut/class_argonautServer.inc:121
+msgid "CN of the certificate"
+msgstr ""
+
+#: admin/systems/argonaut/class_argonautClient.inc:165
+msgid "The CN in this client certificate"
+msgstr ""
+
+#: admin/systems/argonaut/class_argonautClient.inc:171
 msgid "Service names"
 msgstr "Názvy služeb"
 
-#: admin/systems/argonaut/class_argonautClient.inc:148
+#: admin/systems/argonaut/class_argonautClient.inc:173
 msgid "Argonaut service names"
 msgstr "Názvy služby Argonaut"
 
-#: admin/systems/argonaut/class_argonautClient.inc:163
+#: admin/systems/argonaut/class_argonautClient.inc:198
 msgid "Argonaut client"
 msgstr "Argonaut klient"
 
-#: admin/systems/argonaut/class_argonautClient.inc:164
+#: admin/systems/argonaut/class_argonautClient.inc:199
 msgid "Edit argonaut client settings"
 msgstr "Upravit nastavení argonaut klienta"
 
@@ -215,9 +266,6 @@ msgstr "kořen struktury složek, nacházející se na síťovém souborovém sy
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:31
 #: admin/systems/services/argonaut/class_argonautServer.inc:32
-msgid "Argonaut Server"
-msgstr "Argonaut server"
-
 #: admin/systems/services/argonaut/class_argonautServer.inc:46
 msgid "Argonaut server"
 msgstr "Argonaut server"
@@ -241,14 +289,6 @@ msgid ""
 "repositories at start and then once a day. Needed for FAI package list "
 "creation."
 msgstr "Zda má argonaut server na začátku získat informace z repozitářů a pak jednou denně obnovovat. Je třeba pro vytváření seznamu FAI balíčků."
-
-#: admin/systems/services/argonaut/class_argonautServer.inc:61
-msgid "Protocol"
-msgstr "Protokol"
-
-#: admin/systems/services/argonaut/class_argonautServer.inc:61
-msgid "Protocol to use for argonaut"
-msgstr "Protokol, který má být používán argonaut"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:66
 msgid "Port"
@@ -291,20 +331,8 @@ msgstr "nástroj pro IP"
 msgid "IP tool to use"
 msgstr "Který IP nástroj použít"
 
-#: admin/systems/services/argonaut/class_argonautServer.inc:103
-msgid "SSL paths"
-msgstr ""
-
-#: admin/systems/services/argonaut/class_argonautServer.inc:106
-msgid "Key on argonaut server"
-msgstr ""
-
 #: admin/systems/services/argonaut/class_argonautServer.inc:106
 msgid "Path to the private key file on Argonaut server"
-msgstr ""
-
-#: admin/systems/services/argonaut/class_argonautServer.inc:111
-msgid "Certificate on argonaut server"
 msgstr ""
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:111
@@ -312,19 +340,11 @@ msgid "Path to the certificate file on Argonaut server"
 msgstr ""
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:116
-msgid "CA certificate on argonaut server"
-msgstr ""
-
-#: admin/systems/services/argonaut/class_argonautServer.inc:116
 msgid "Path to the CA certificate file on Argonaut server"
 msgstr ""
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:121
-msgid "CA certificate on FusionDirectory server"
-msgstr ""
-
-#: admin/systems/services/argonaut/class_argonautServer.inc:121
-msgid "Path to the CA certificate file on FusionDirectory server"
+msgid "The CN in the server certificate"
 msgstr ""
 
 #: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:32
@@ -682,20 +702,20 @@ msgstr "Zpracovat nyní"
 msgid "View logs"
 msgstr "Zobrazit protokoly"
 
-#: include/class_supportDaemon.inc:95
+#: include/class_supportDaemon.inc:107
 msgid "Multiple argonaut server found. Only one is supported"
 msgstr "Nalezeno více argonaut serverů. Použit je možné ale pouze jeden"
 
-#: include/class_supportDaemon.inc:97
+#: include/class_supportDaemon.inc:109
 msgid "There is no argonaut server configured"
 msgstr "Není nastaven žádný argonaut server"
 
-#: include/class_supportDaemon.inc:615
+#: include/class_supportDaemon.inc:627
 #, php-format
 msgid "Could not read \"%s\"!"
 msgstr "Nelze načíst %s!"
 
-#: include/class_supportDaemon.inc:619
+#: include/class_supportDaemon.inc:631
 #, php-format
 msgid "\"%s\" is not a file!"
 msgstr "%s není soubor!"

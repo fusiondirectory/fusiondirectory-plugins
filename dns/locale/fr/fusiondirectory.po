@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Benoit Mortier <benoit.mortier@opensides.be>, 2015
+# MCMic, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2015-08-18 12:47+0200\n"
-"PO-Revision-Date: 2015-08-12 09:52+0000\n"
-"Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>\n"
+"POT-Creation-Date: 2015-08-18 17:37+0200\n"
+"PO-Revision-Date: 2015-08-19 09:31+0000\n"
+"Last-Translator: MCMic\n"
 "Language-Team: French (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -32,12 +33,12 @@ msgstr "Erreur"
 #: admin/systems/services/dns/class_serviceDNS.inc:82
 #, php-format
 msgid "Reverse zone: %s"
-msgstr "Zone inverse: %s"
+msgstr "Zone inverse : %s"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:83
 #, php-format
 msgid "TTL: %s"
-msgstr "TTL: %s"
+msgstr "TTL : %s"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:106
 #: admin/systems/services/dns/class_serviceDNS.inc:107
@@ -46,7 +47,7 @@ msgstr "argonaut-ldap2zone"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:140
 msgid "DNS zones"
-msgstr "Zone DNS"
+msgstr "Zones DNS"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:144
 msgid "The DNS zones"
@@ -89,17 +90,17 @@ msgstr "Classe réseau"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:168
 msgid "Zone entry editor"
-msgstr "Editeur de zone"
+msgstr "Éditeur de zone"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:169
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:360
 msgid "Primary dns server"
-msgstr "Serveur dns primaire"
+msgstr "Serveur DNS primaire"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:170
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:32
 msgid "Mail address"
-msgstr "Adresse de messagerie"
+msgstr "Courriel"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:171
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:364
@@ -136,7 +137,7 @@ msgstr "Enregistrements MX"
 #: admin/systems/services/dns/class_serviceDNS.inc:177
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:17
 msgid "Zone records"
-msgstr "Enregistrement de zone"
+msgstr "Enregistrements de zone"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:239
 #: admin/systems/services/dns/class_serviceDNS.inc:253
@@ -154,17 +155,17 @@ msgstr "Impossible de contacter le serveur Argonaut : <br/><br/>%s"
 #: admin/systems/services/dns/class_serviceDNS.inc:313
 #, php-format
 msgid "Was not able to launch ldap2zone: <br/><br/>%s"
-msgstr "Impossible d’exécuter argonaut-ldap2zone : %s"
+msgstr "Impossible d’exécuter argonaut-ldap2zone : <br/><br/>%s"
 
 #: admin/systems/services/dns/class_DNS.inc:165
 #, php-format
 msgid "Cannot find reverse zone for DNS zone '%s'. Parsing zone aborted."
-msgstr "Impossible de trouver la zone inverse pour la zone dns '%s'. Arrêt de la lecture de la zone."
+msgstr "Impossible de trouver la zone inverse pour la zone DNS '%s'. Arrêt de la lecture de la zone."
 
 #: admin/systems/services/dns/class_DNS.inc:170
 #, php-format
 msgid "Found more than one reverse zone for '%s'. Parsing zone aborted."
-msgstr "Plus d'un zone inverse existe pour la zone dns '%s'. Arrêt de la lecture de la zone."
+msgstr "Plus d'une zone inverse existe pour la zone '%s'. Arrêt de la lecture de la zone."
 
 #: admin/systems/services/dns/class_DNS.inc:621
 #, php-format
@@ -177,7 +178,7 @@ msgstr "Avertissement"
 
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:244
 msgid "MxRecord"
-msgstr "Enregistrements mx"
+msgstr "Enregistrement MX"
 
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:274
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:518
@@ -187,11 +188,11 @@ msgstr "Supprimer"
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:356
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:386
 msgid "Only lowercase allowed"
-msgstr "Seule les minuscules sont autorisées."
+msgstr "Seule les minuscules sont autorisées"
 
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:360
 msgid "This field should be a domain name"
-msgstr "Ce champ devrait être un nom de domaine"
+msgstr "Ce champ devrait contenir un nom de domaine"
 
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:372
 msgid "Time to life"
@@ -209,7 +210,7 @@ msgstr "Adresse réseau"
 #, php-format
 msgid ""
 "The specified network address and the network class (%s/%s) do not match!"
-msgstr "L'adresse réseau spécifiée et la classe réseau (%s/%s) ne concordent pas !"
+msgstr "L'adresse réseau spécifiée et la classe réseau (%s/%s) ne concordent pas !"
 
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:524
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:439
@@ -224,7 +225,7 @@ msgstr "Nouvelle entrée"
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:229
 #, php-format
 msgid "Cannot rename '%s' to '%s'. Name is already in use!"
-msgstr "Impossible de renommer '%s' en '%s', ce nom existe déjà !"
+msgstr "Impossible de renommer '%s' en '%s', ce nom existe déjà !"
 
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:260
 msgid "Name"
@@ -233,7 +234,7 @@ msgstr "Nom"
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:268
 #, php-format
 msgid "Cannot rename '%s' to '%s'. Entry is already in use."
-msgstr "Impossible de renommer '%s' en '%s'. L'enregistrement existe déjà."
+msgstr "Impossible de renommer '%s' en '%s'. L'entrée est déjà en cours d’utilisation."
 
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:274
 #, php-format
@@ -243,7 +244,7 @@ msgstr "Impossible de créer '%s'. Cet enregistrement existe déjà."
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:282
 #, php-format
 msgid "Entry '%s' is used more than once."
-msgstr "L'entrée '%s' est utilisé plus d'une fois."
+msgstr "L'entrée '%s' est utilisée plus d'une fois."
 
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:299
 #, php-format
@@ -253,12 +254,12 @@ msgstr "Les enregistrements '%s' ne peuvent pas être utilisés plus d'une fois.
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:305
 #, php-format
 msgid "Please fix the empty %s record for entry '%s'."
-msgstr "Veuillez corriger l'enregistrement vide '%s' pour l'enregistrement '%s'."
+msgstr "Veuillez corriger l'enregistrement vide '%s' pour l'entrée '%s'."
 
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:312
 #, php-format
 msgid "Please fix the duplicate %s record for entry '%s'."
-msgstr "Veuillez corriger l'enregistrement double '%s' pour l'enregistrement '%s'."
+msgstr "Veuillez corriger l'enregistrement double '%s' pour l'entrée '%s'."
 
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:441
 msgid "Remove"
@@ -267,7 +268,7 @@ msgstr "Supprimer"
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:492
 #, php-format
 msgid "The syntax of entry %s (record type %s, value %s) is invalid!"
-msgstr "La syntaxe de l'entrée %s (enregistrement de type %s, valeur %s) est non valide !"
+msgstr "La syntaxe de l'entrée %s (enregistrement de type %s, valeur %s) est invalide !"
 
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:492
 msgid "Example"
@@ -278,7 +279,7 @@ msgstr "Exemple"
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:514
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:545
 msgid "Entry should be a DNS name."
-msgstr "L'enregistrement doit être un nom DNS."
+msgstr "L'entrée doit être un nom DNS."
 
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:501
 msgid "Value should be an IPv6 address."
@@ -292,7 +293,7 @@ msgstr "La valeur doit être une adresse IPv4."
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:535
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:540
 msgid "Value should be a DNS name."
-msgstr "La valeur doit un nom DNS."
+msgstr "La valeur doit être un nom DNS."
 
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:524
 msgid "Value 1 should be a number."
@@ -300,11 +301,11 @@ msgstr "La valeur 1 doit être un nombre."
 
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:527
 msgid "Value 2 should be a DNS name."
-msgstr "La valeur doit être un nom DNS."
+msgstr "La valeur 2 doit être un nom DNS."
 
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:530
 msgid "Value should be composed of 'preference target'."
-msgstr "Les valeur devraient être composée de 'préférence cible'"
+msgstr "La valeur devrait être sous la forme 'préférence cible'"
 
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:550
 msgid "Value 1 (priority) should be a number."
@@ -324,11 +325,11 @@ msgstr "La valeur 4 (cible) doit être un nom DNS."
 
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:562
 msgid "Value should be composed of 'priority weight port target'."
-msgstr "Les valeurs doivent être composée de 'priorité poids port et cible'."
+msgstr "Les valeurs doivent être sous la forme 'priorité poids port cible'."
 
 #: config/dns/class_dnsConfig.inc:28
 msgid "DNS configuration"
-msgstr "Configuration du DNS"
+msgstr "Configuration DNS"
 
 #: config/dns/class_dnsConfig.inc:29
 msgid "FusionDirectory dns plugin configuration"
@@ -336,15 +337,15 @@ msgstr "Configuration du plugin DNS"
 
 #: config/dns/class_dnsConfig.inc:42
 msgid "DNS config"
-msgstr "Configuration du DNS"
+msgstr "Configuration DNS"
 
 #: config/dns/class_dnsConfig.inc:45
 msgid "Store final dot in domains"
-msgstr "Stocker le point final dans des domaines"
+msgstr "Stocker le point final dans les domaines"
 
 #: config/dns/class_dnsConfig.inc:45
 msgid "Should FD store a final dot at the end of domains?"
-msgstr "Est ce que FusionDirectory doit stocker un point final à la fin de domaines?"
+msgstr "Est ce que FusionDirectory doit stocker un point final à la fin des domaines ?"
 
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:2
 msgid "Generic"
@@ -360,7 +361,7 @@ msgstr "La zone est utilisée, les paramètres réseau ne peuvent pas être modi
 
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:20
 msgid "Can't be edited because the zone wasn't saved right now."
-msgstr "Impossible d'éditer la zone car elle est actuellement sauvegardée."
+msgstr "Impossible d'éditer car la zone n’est pas encore sauvegardée."
 
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:23
 msgid "Edit"
@@ -372,7 +373,7 @@ msgstr "Enregistrement SOA"
 
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:29
 msgid "Primary dns server for this zone"
-msgstr "Serveur dns primaire pour cette zone"
+msgstr "Serveur DNS primaire pour cette zone"
 
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:35
 msgid "Serial number (automatically incremented)"
@@ -380,11 +381,11 @@ msgstr "Numéro de série (incrémenté automatiquement)"
 
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:50
 msgid "MxRecords"
-msgstr "Enregistrements mx"
+msgstr "Enregistrements MX"
 
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:53
 msgid "Global zone records"
-msgstr "Enregistrements pour la zone globale"
+msgstr "Enregistrements globaux"
 
 #: admin/systems/services/dns/serviceDNS.tpl.c:2
 msgid "Zones"
@@ -394,13 +395,13 @@ msgstr "Zones"
 msgid ""
 "This dialog allows you to configure all components of this DNS zone on a "
 "single list."
-msgstr "Ce dialogue vous permet de configurer tout les composants d'une zone DNS dans une simple liste."
+msgstr "Cette boite de dialogue vous permet de configurer tous les composants d’une zone DNS dans une simple liste."
 
 #: admin/systems/services/dns/serviceDNSeditZoneEntries.tpl.c:5
 msgid ""
 "This dialog can't be used until the currently edited zone was saved or the "
 "zone entry exists in the ldap database."
-msgstr "Cette boite de dialogue ne peut pas être tant que la zone n'a pas été sauvée ou que l'enregistrement existe dans la base de données ldap."
+msgstr "Cette boite de dialogue ne peut pas être utilisée tant que la zone n’a pas été sauvée ou existe dans la base de données LDAP."
 
 #: admin/systems/services/dns/serviceDNSeditZoneEntries.tpl.c:11
 msgid "Create a new DNS zone entry"

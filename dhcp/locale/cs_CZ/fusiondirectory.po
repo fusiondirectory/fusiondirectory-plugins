@@ -7,9 +7,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
-"Report-Msgid-Bugs-To: documentation@lists.fusiondirectory.org\n"
-"POT-Creation-Date: 2015-03-31 11:49+0200\n"
-"PO-Revision-Date: 2015-05-30 14:12+0000\n"
+"Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
+"POT-Creation-Date: 2015-08-18 17:37+0200\n"
+"PO-Revision-Date: 2015-08-18 15:39+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: admin/systems/services/dhcp/class_dhcpAdvanced.inc:59
 #: admin/systems/services/dhcp/class_dhcpAdvanced.inc:73
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:776
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:371
 #: admin/systems/services/dhcp/class_dhcpNetwork.inc:48
 msgid "Error"
 msgstr "Chyba"
@@ -92,59 +92,6 @@ msgstr "Síťová maska"
 msgid "Network range"
 msgstr "síťový rozsah"
 
-#: admin/systems/services/dhcp/class_dhcpNewSectionDialog.inc:48
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:62
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:103
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:731
-msgid "Global options"
-msgstr "globální volby"
-
-#: admin/systems/services/dhcp/class_dhcpNewSectionDialog.inc:49
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:63
-msgid "Class"
-msgstr "Třída"
-
-#: admin/systems/services/dhcp/class_dhcpNewSectionDialog.inc:50
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:64
-msgid "Subclass"
-msgstr "Podtřída"
-
-#: admin/systems/services/dhcp/class_dhcpNewSectionDialog.inc:51
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:65
-msgid "Host"
-msgstr "Počítač"
-
-#: admin/systems/services/dhcp/class_dhcpNewSectionDialog.inc:52
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:66
-msgid "Group"
-msgstr "skupina"
-
-#: admin/systems/services/dhcp/class_dhcpNewSectionDialog.inc:53
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:67
-msgid "Pool"
-msgstr "rozsah"
-
-#: admin/systems/services/dhcp/class_dhcpNewSectionDialog.inc:54
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:68
-msgid "Subnet"
-msgstr "Podsíť"
-
-#: admin/systems/services/dhcp/class_dhcpNewSectionDialog.inc:55
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:70
-msgid "Shared network"
-msgstr "Sdílená síť"
-
-#: admin/systems/services/dhcp/class_dhcpNewSectionDialog.inc:56
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:71
-#: admin/systems/services/dhcp/dhcp_tsigkey.tpl.c:2
-msgid "DNS update key"
-msgstr "klíč pro aktualizaci DNS"
-
-#: admin/systems/services/dhcp/class_dhcpNewSectionDialog.inc:57
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:72
-msgid "DNS update zones"
-msgstr "zóny aktualizace DNS"
-
 #: admin/systems/services/dhcp/class_dhcpDnsZone.inc:150
 #: admin/systems/services/dhcp/dhcp_dnszone.tpl.c:5
 msgid "DNS zone"
@@ -198,99 +145,121 @@ msgstr "výchozí výpůjční doba"
 msgid "Maximum lease time"
 msgstr "nejdelší výpůjční doba"
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:59
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:787
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:788
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:830
-msgid "DHCP service"
-msgstr "Služba DHCP"
-
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:61
-msgid "Logging"
-msgstr "Protokolování"
-
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:69
-msgid "Failover peer"
-msgstr "Protějšek, který převezme služby v případě selhání"
-
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:149
-#, php-format
-msgid ""
-"You have requested a migration of the DHCP setup from server '%s' to the "
-"current one."
-msgstr "Požadujete přesun nastavení DHCP serveru %s na tento."
-
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:151
-msgid "The migration will be started when you save this system."
-msgstr "S přemisťováním se začne jakmile tento systém uložíte."
-
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:154
-#: admin/systems/services/dhcp/remove_dhcp.tpl.c:2
-msgid "Warning"
-msgstr "Varování"
-
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:247
-msgid "Permission error"
-msgstr "Chyba přístupových práv"
-
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:284
-msgid "DHCP section"
-msgstr "DHCP sekce"
-
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:340
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:343
-msgid "Insert new DHCP section"
-msgstr "Vložit novou DHCP sekci"
-
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:341
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:344
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:345
-msgid "Edit DHCP section"
-msgstr "Upravit DHCP sekci"
-
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:342
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:346
-msgid "Remove DHCP section"
-msgstr "Odebrat DHCP sekci"
-
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:347
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:38
 msgid "Expand DHCP subnet"
 msgstr "Rozšířit DHCP podsíť"
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:348
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:39
+msgid "Expand"
+msgstr ""
+
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:48
 msgid "Fold DHCP subnet"
 msgstr "Sbalit DHCP podsíť"
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:425
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:442
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:497
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:573
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:581
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:608
-msgid "LDAP error"
-msgstr "Chyba LDAP"
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:49
+msgid "Fold"
+msgstr ""
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:776
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:107
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:108
+msgid "Insert new DHCP section"
+msgstr "Vložit novou DHCP sekci"
+
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:316
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:356
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:460
+msgid "Global options"
+msgstr "globální volby"
+
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:371
 msgid ""
 "The DHCP configuration set is unkown. Please contact your system "
 "administrator."
 msgstr "Nastavení DHCP jsou neznámá. Kontaktujte svého správce systémů."
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:788
-msgid "Services"
-msgstr "Služby"
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:425
+#: admin/systems/services/dhcp/serviceDHCP.tpl.c:2
+msgid "DHCP sections"
+msgstr "Sekce DHCP"
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:795
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:429
+msgid ""
+"The DN of dhcpService object which contain the configuration information"
+msgstr ""
+
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:433
+msgid "The DHCP sections handled by this server"
+msgstr ""
+
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:444
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:445
+msgid "DHCP service"
+msgstr "Služba DHCP"
+
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:449
 msgid "Start service"
 msgstr "Spustit službu"
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:796
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:450
 msgid "Stop service"
 msgstr "Zastavit službu"
 
-#: admin/systems/services/dhcp/class_serviceDHCP.inc:797
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:451
 msgid "Restart service"
 msgstr "Restartovat službu"
+
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:459
+msgid "Logging"
+msgstr "Protokolování"
+
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:461
+msgid "Class"
+msgstr "Třída"
+
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:462
+msgid "Subclass"
+msgstr "Podtřída"
+
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:463
+msgid "Host"
+msgstr "Počítač"
+
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:464
+msgid "Group"
+msgstr "skupina"
+
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:465
+msgid "Pool"
+msgstr "rozsah"
+
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:466
+msgid "Subnet"
+msgstr "Podsíť"
+
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:467
+msgid "Failover peer"
+msgstr "Protějšek, který převezme služby v případě selhání"
+
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:468
+msgid "Shared network"
+msgstr "Sdílená síť"
+
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:469
+#: admin/systems/services/dhcp/dhcp_tsigkey.tpl.c:2
+msgid "DNS update key"
+msgstr "klíč pro aktualizaci DNS"
+
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:470
+msgid "DNS update zones"
+msgstr "zóny aktualizace DNS"
+
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:493
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:517
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:583
+#: admin/systems/services/dhcp/class_serviceDHCP.inc:588
+msgid "LDAP error"
+msgstr "Chyba LDAP"
 
 #: admin/systems/services/dhcp/class_dhcpNetwork.inc:197
 #: admin/systems/services/dhcp/dhcp_network.tpl.c:14
@@ -342,20 +311,6 @@ msgstr "Nejdelší výpůjční doba"
 #: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl.c:44
 msgid "Min. lease time"
 msgstr "Nejkratší výpůjční doba"
-
-#: admin/systems/services/dhcp/serviceDHCP.tpl.c:2
-msgid ""
-"DHCP take over will take place when saving this entry. Choose 'Cancel' to "
-"abort."
-msgstr "Uložení této položky spustí převzetí DHCP. Pro přerušení akce klikněte na Zrušit."
-
-#: admin/systems/services/dhcp/serviceDHCP.tpl.c:5
-msgid "Take over dhcp configuration from following server"
-msgstr "Převzít DHCP službu od následujícího serveru"
-
-#: admin/systems/services/dhcp/serviceDHCP.tpl.c:8
-msgid "DHCP sections"
-msgstr "Sekce DHCP"
 
 #: admin/systems/services/dhcp/dhcp_group.tpl.c:2
 #: admin/systems/services/dhcp/dhcp_service.tpl.c:2
@@ -478,6 +433,10 @@ msgstr "Rozsah adres, které budou přidělovány dynamicky"
 #: admin/systems/services/dhcp/dhcp_dnszone.tpl.c:2
 msgid "DNS update zone"
 msgstr "Zóna aktualizace DNS"
+
+#: admin/systems/services/dhcp/remove_dhcp.tpl.c:2
+msgid "Warning"
+msgstr "Varování"
 
 #: admin/systems/services/dhcp/remove_dhcp.tpl.c:5
 msgid ""
