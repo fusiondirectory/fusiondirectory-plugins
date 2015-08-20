@@ -83,7 +83,7 @@ function initiateRPCSession($id = NULL, $ldap = NULL, $user = NULL, $pwd = NULL)
     if (($ssl != "") &&
           (($config->get_cfg_value('webserviceForceSSL', 'TRUE') == 'TRUE') ||
            ($config->get_cfg_value("forcessl") == "TRUE"))) {
-      header ("Location: $ssl");
+      echo "HTTP connexions are not allowed, please use HTTPS: $ssl\n";
       exit;
     }
 
