@@ -399,8 +399,6 @@ sub command_delete
       print "Error: $error\n";
     }
     return;
-  } else {
-    print "$result\n";
   }
 }
 
