@@ -76,7 +76,6 @@ class faiDiskEntry extends plugin
         $name = $values['FAIpartitionNr'];
 
         // Load partition attributes
-        $disk['partitions'][$name]['old_cn']= $disk['partitions'][$name]['cn'];
         $disk['partitions'][$name]['FAIdiskType']= $this->FAIdiskType;
         foreach($this->UsedAttrs as $attr){
           if(!isset($values[$attr])){
