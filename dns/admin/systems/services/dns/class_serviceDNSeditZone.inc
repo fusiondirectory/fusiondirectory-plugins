@@ -352,6 +352,14 @@ class servdnseditZone extends plugin
       $message[] = msgPool::required(_("Reverse zone"));
     }
 
+    if (empty($this->sOAprimary)) {
+      $message[] = msgPool::required(_("Primary dns server"));
+    }
+
+    if (empty($this->sOAmail)) {
+      $message[] = msgPool::required(_("Mail address"));
+    }
+
     if ($this->zoneName != strtolower($this->zoneName)) {
       $message[] = msgPool::invalid(_("Zone name"), "", "", _("Only lowercase allowed"));
     }
