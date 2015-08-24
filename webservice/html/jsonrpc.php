@@ -336,6 +336,32 @@ class fdRPCService
   }
 
   /*!
+   * \brief Delete an object
+   */
+  protected function _delete($type, $dn)
+  {
+    $infos = objects::infos($type);
+    $plist = session::global_get('plist');
+    // Check permissions, are we allowed to remove this object?
+    $acl = $plist->ui->get_permissions($dn, $infos['aclCategory'].'/'.$infos['mainTab']);
+    if (preg_match('/d/', $acl)) {
+      if ($user = get_lock($dn)) {
+        return array('errors' => array(sprintf(_('Cannot delete %s. It has been locked by %s.'), $dn, $user)));
+      }
+      add_lock ($dn, $plist->ui->dn);
+
+      // Delete the object
+      $tabobject = objects::open($dn, $type);
+      $tabobject->delete();
+
+      // Remove the lock for the current object.
+      del_lock($dn);
+    } else {
+      return array('errors' => array(msgPool::permDelete($dn)));
+    }
+  }
+
+  /*!
    * \brief Get the session ID
    */
   protected function _getId ()
