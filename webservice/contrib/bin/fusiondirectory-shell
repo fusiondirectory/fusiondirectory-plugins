@@ -161,6 +161,13 @@ my $term = new Term::ShellUI(
       minargs => 1,
       proc    => \&command_create,
     },
+    "delete" => {
+      desc    => "Delete an object of a given type",
+      doc     => "Usage: delete <TYPE> <DN>\nExample: delete user uid=fd-admin,dc=example,dc=com\n",
+      minargs => 2,
+      maxargs => 2,
+      proc    => \&command_delete,
+    },
     "addtab" => {
       desc    => "Activate a tab (or several) of an object",
       doc     => "Usage: addtab <TYPE> <DN> <TAB> [<TABS>]\nExample: addtab user uid=fd-admin,dc=example,dc=com posixAccount\n",
@@ -379,6 +386,21 @@ sub command_types
   my $types = rpc_call($client, 'listTypes', [$sid]);
   while (my ($type, $display) = each(%$types)) {
     printf ("%-30s %s\n", $display, $type);
+  }
+}
+
+sub command_delete
+{
+  my ($type, $dn) = @_;
+  $dn = complete_dn($dn);
+  my $result = rpc_call($client, 'delete', [$sid,$type,$dn]);
+  if (ref $result eq ref {}) {
+    foreach my $error (@{$result->{'errors'}}) {
+      print "Error: $error\n";
+    }
+    return;
+  } else {
+    print "$result\n";
   }
 }
 
