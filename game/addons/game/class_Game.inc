@@ -204,7 +204,7 @@ class Game
     $ldap = $config->get_ldap_link();
     $ldap->cd (get_ou('systemRDN').$config->current['BASE']);
     $ldap->search ('(&(objectClass=goServer)(cn='.$cn.'))', array('cn'));
-    if ($attrs = $ldap->fetch()) {
+    if (($attrs = $ldap->fetch()) && (class_available('serviceDNS'))) {
       $dns = new serviceDNS($config, $attrs['dn']);
       if ($dns->is_this_account($attrs)) {
         return isset($dns->Zones['beatles.fake.']);
