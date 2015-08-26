@@ -82,10 +82,10 @@ class Game
       new Mission(_('The Beatles are here'),
         array(
           'Game::template_created'  => _('Create a user template named <b>beatle</b>, using <i>http://%l|givenName%.com</i> as homepage and <i>%l|sn%</i> (lower case first name) as password'),
-          'Game::paul_created'      => _('Create a user for Paul McCartney using beatle profile (login paul)'),
-          'Game::george_created'    => _('Create a user for George Harrison using beatle profile (login george)'),
-          'Game::ringo_created'     => _('Create a user for Ringo Starr using beatle profile (login ringo)'),
-          'Game::beatles_created'   => _('Create a group for The Beatles named <b>beatles</b> and add the 4 beatles to this group'),
+          'Game::paul_created'      => _('Create a user for Paul McCartney using beatle template (login paul)'),
+          'Game::george_created'    => _('Create a user for George Harrison using beatle template (login george)'),
+          'Game::ringo_created'     => _('Create a user for Ringo Starr using beatle template (login ringo)'),
+          'Game::beatles_created'   => _('Create a POSIX group for The Beatles named <b>beatles</b> and add the 4 beatles to this group'),
         ), ''
       ),
       /* new Mission(_('The Beatles hired a manager'),
