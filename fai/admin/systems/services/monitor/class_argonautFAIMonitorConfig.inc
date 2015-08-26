@@ -54,6 +54,11 @@ class argonautFAIMonitorConfig extends simpleService
             'argonautFAIMonitorCaCertPath', FALSE,
             '/etc/ssl/certs/ca.cert'
           ),
+          new StringAttribute (
+            _('Log directory'), _('Directory in which argonaut-fai-monitor will store its log'),
+            'argonautFAIMonitorLogDir', TRUE,
+            '/var/log/argonaut'
+          ),
         )
       )
     );
