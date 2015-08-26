@@ -131,6 +131,7 @@ class FAIRepositoryAttribute extends PipeSeparatedCompositeAttribute
 class serviceRepository extends simpleService
 {
   var $objectclasses  = array('FAIrepositoryServer');
+  var $showActions    = FALSE;
 
   static function getAttributesInfo ()
   {
