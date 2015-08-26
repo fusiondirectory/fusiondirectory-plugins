@@ -38,7 +38,7 @@
     margin-top:15%;
   }
   li.done {
-    list-style-type: disk;
+    list-style-type: disc;
   }
   li.not_done {
     list-style-type: circle;
