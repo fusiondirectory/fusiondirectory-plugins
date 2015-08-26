@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2015-08-18 17:37+0200\n"
-"PO-Revision-Date: 2015-05-30 14:30+0000\n"
+"POT-Creation-Date: 2015-08-20 10:33+0200\n"
+"PO-Revision-Date: 2015-08-20 12:33+0000\n"
 "Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
 "Language-Team: German (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -30,7 +30,7 @@ msgstr "Verwaltung von FAI Softwarepaketen und Deployment-Recipes"
 
 #: admin/fai/class_faiManagement.inc:138
 msgid "There are no FAI branches"
-msgstr ""
+msgstr "Es gibt keine FAI-Zweige"
 
 #: admin/fai/class_faiManagement.inc:141
 msgid " Please add at least one repository service to create those."
@@ -151,7 +151,7 @@ msgstr "Installations-Methode"
 
 #: admin/fai/class_faiPackage.inc:409
 msgid "Install method to use for this package list"
-msgstr ""
+msgstr "Für diese Paketliste zu verwendende Installationsmethode"
 
 #: admin/fai/class_faiPackage.inc:420
 msgid "Packages"
@@ -186,7 +186,7 @@ msgstr "FAI-Partitionstabelle"
 
 #: admin/fai/class_faiPartitionTable.inc:307 admin/fai/class_faiProfile.inc:52
 msgid "Partition table class name"
-msgstr ""
+msgstr "Partitionstabellen-Klassenname"
 
 #: admin/fai/class_faiPartitionTable.inc:317
 msgid "Discs"
@@ -322,7 +322,7 @@ msgstr "Dateipfad"
 
 #: admin/fai/class_faiTemplateEntry.inc:143
 msgid "Complete absolute template file path and name"
-msgstr ""
+msgstr "Vollständiger absoluter Vorlagendateipfad und -name"
 
 #: admin/fai/class_faiTemplateEntry.inc:147
 msgid "Short description of the file"
@@ -394,7 +394,7 @@ msgstr "FAI-Klassen"
 
 #: admin/fai/class_faiProfile.inc:63
 msgid "FAI classes which are part of this profile"
-msgstr ""
+msgstr "FAI-Klassen, die Teil dieses Profils sind"
 
 #: admin/fai/class_faiPackageConfiguration.inc:88
 #, php-format
@@ -434,7 +434,7 @@ msgid "Priority"
 msgstr "Priorität"
 
 #: admin/fai/class_faiScript.inc:79
-msgid "Priority of this script (FIXME: less is done first?)"
+msgid "Priority of this script (smaller is done first)"
 msgstr ""
 
 #: admin/fai/class_faiScript.inc:84
@@ -444,7 +444,7 @@ msgstr "Das Skript selbst"
 #: admin/fai/class_faiTemplate.inc:136
 #, php-format
 msgid "There are several files with the same path: %s"
-msgstr ""
+msgstr "Es gibt mehrere Dateien mit dem gleichen Pfad: %s"
 
 #: admin/fai/class_faiTemplate.inc:153
 msgid "Template"
@@ -564,7 +564,7 @@ msgstr "btrfs"
 
 #: admin/fai/class_faiPartition.inc:224
 msgid "LVM/RAID"
-msgstr ""
+msgstr "LVM/RAID"
 
 #: admin/fai/class_faiPartition.inc:327
 msgid "spare"
