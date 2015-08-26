@@ -36,14 +36,15 @@ class ArgonautServiceNameAttribute extends CompositeAttribute
     "serviceDNS"          => "bind9",
     "serviceQuota"        => "quota",
     "serviceOPSI"         => "opsiconfd",
-    "argonautServer"      => "argonaut-server"
+    "argonautServer"      => "argonaut-server",
+    "argonautFAIMonitor"  => "argonaut-fai-monitor",
+    "argonautFuseConfig"  => "argonaut-fuse",
   );
 
   static private $argonautService_blacklist = array(
     "argonautDNSConfig",
     "argonautMirrorConfig",
-    "argonautFuseConfig",
-    "serviceDebianRepository",
+    "serviceRepository",
   );
 
   function __construct ($description, $ldapName, $acl = "")
