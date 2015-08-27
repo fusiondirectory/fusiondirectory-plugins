@@ -280,6 +280,9 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
         return $this->buffer;
       } else {
         foreach ($ret as $attr) {
+          if (!isset($attr['DESCRIPTION'])) {
+            $attr['DESCRIPTION'] = '';
+          }
           $this->buffer[$attr['PACKAGE']] = $attr;
           unset($packages[$attr['PACKAGE']]); // remove found packages
           if ($i >= 0) {
