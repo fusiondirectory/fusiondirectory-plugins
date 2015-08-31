@@ -41,10 +41,10 @@ class webLink extends simplePlugin
   {
     return array(
       'main' => array(
-        'name'  => _('IPMI client settings'),
+        'name'  => _('Web link'),
         'attrs' => array(
           new SelectAttribute (
-            _('Protocol'), _('Protocol to use to access the IPMI Web Admin page'),
+            _('Protocol'), _('Protocol to use to access this computer Web page'),
             'fdWebLinkProtocol', TRUE,
             array('https', 'http')
           ),
