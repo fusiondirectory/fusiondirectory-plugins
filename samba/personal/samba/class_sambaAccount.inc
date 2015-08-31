@@ -492,25 +492,28 @@ class sambaAccount extends simplePlugin
         $uidNumber_tmp++;
       } while ($ldap->count() > 0);
       $this->attrs['sambaSID'] = $sid;
+    }
 
-      if (!$this->is_template) {
-        // Check for users primary group
-        $ldap->cd($this->config->current['BASE']);
-        $ldap->search("(&(objectClass=posixGroup)(gidNumber=".$gidNumber."))", array("cn"));
-        if ($ldap->count() != 1) {
-          msg_dialog::display(_("Warning"),
-                    _("Cannot convert primary group to samba group: group cannot be identified!"),
-                    WARNING_DIALOG);
-        } else {
-          $ldap->fetch();
-          $g = new group($this->config, $ldap->getDN());
-          if ($g->sambaSID == "") {
-            $g->sambaDomainName = $this->sambaDomainName;
-            $g->smbgroup        = TRUE;
-            $g->save();
-          }
-          $this->attrs['sambaPrimaryGroupSID'] = $g->sambaSID;
+    if (!$this->is_template) {
+      $ldap = $this->config->get_ldap_link();
+      // Check for users primary group
+      $ldap->cd($this->config->current['BASE']);
+      $ldap->search("(&(objectClass=posixGroup)(gidNumber=".$gidNumber."))", array("cn"));
+      if ($ldap->count() != 1) {
+        msg_dialog::display(
+          _("Warning"),
+          _("Cannot convert primary group to samba group: group cannot be identified!"),
+          WARNING_DIALOG
+        );
+      } else {
+        $ldap->fetch();
+        $g = new group($this->config, $ldap->getDN());
+        if ($g->sambaSID == "") {
+          $g->sambaDomainName = $this->sambaDomainName;
+          $g->smbgroup        = TRUE;
+          $g->save();
         }
+        $this->attrs['sambaPrimaryGroupSID'] = $g->sambaSID;
       }
     }
 
