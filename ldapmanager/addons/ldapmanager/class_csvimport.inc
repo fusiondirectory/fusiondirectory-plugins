@@ -184,7 +184,7 @@ class csvimport extends simplePlugin
         } elseif ($i < (count($row) + count($this->fixed_values))) {
           $values[$m[1]][$m[2]] = $this->fixed_values[$i - count($row)];
         } else {
-          $values[$m[1]][$m[2]] = $this->cachedChoices[$attribute->getLdapName()][i - count($row) - count($this->fixed_values)];
+          $values[$m[1]][$m[2]] = $this->cachedChoices[$attribute->getLdapName()][$i - count($row) - count($this->fixed_values)];
         }
       }
       $this->template_object->deserialize($values);
