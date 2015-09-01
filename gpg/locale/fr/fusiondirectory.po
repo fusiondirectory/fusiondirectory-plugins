@@ -3,6 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# MCMic, 2015
 # Éric Deschamps <erdesc@free.fr>, 2013
 # Éric Deschamps <erdesc@free.fr>, 2013
 # fusiondirectory <contact@fusiondirectory.org>, 2013
@@ -10,9 +11,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2015-08-20 10:33+0200\n"
-"PO-Revision-Date: 2014-08-28 10:28+0000\n"
-"Last-Translator: FusionDirectory project <contact@fusiondirectory.org>\n"
+"POT-Creation-Date: 2015-08-26 09:38+0200\n"
+"PO-Revision-Date: 2015-08-26 14:51+0000\n"
+"Last-Translator: MCMic\n"
 "Language-Team: French (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,7 +24,7 @@ msgstr ""
 #: addons/gpg/class_pgpServerInfo.inc:34 addons/gpg/class_pgpServerInfo.inc:69
 #: addons/gpg/class_pgpServerInfo.inc:70
 msgid "GPG server info"
-msgstr "Informations sur le serveur GPG"
+msgstr "Informations du le serveur GPG"
 
 #: addons/gpg/class_pgpServerInfo.inc:38
 msgid "Software"
@@ -31,7 +32,7 @@ msgstr "Logiciel"
 
 #: addons/gpg/class_pgpServerInfo.inc:38
 msgid "Which software this GPG key server is running"
-msgstr "Version du logiciel de ce serveur de clés GPG "
+msgstr "Quel logiciel ce serveur de clés GPG utilise"
 
 #: addons/gpg/class_pgpServerInfo.inc:43
 msgid "GPG version"
@@ -39,19 +40,19 @@ msgstr "Version de GPG"
 
 #: addons/gpg/class_pgpServerInfo.inc:43
 msgid "Which version of GPG this key server is running"
-msgstr "Version du logiciel de ce serveur de clés GPG "
+msgstr "Version de GPG que ce serveur de clés utilise"
 
 #: addons/gpg/class_pgpServerInfo.inc:48
 msgid "Branch in which keys are stored"
-msgstr "Branches ou seront stockés les clefs GPG"
+msgstr "Branche où seront stockées les clefs GPG"
 
 #: addons/gpg/class_pgpServerInfo.inc:52
 msgid "Keys RDN"
-msgstr "RDN des clés"
+msgstr "Branche des clés"
 
 #: addons/gpg/class_pgpServerInfo.inc:52
 msgid "Branch under base in which keys are stored"
-msgstr "Branches ou seront stockés les clefs GPG"
+msgstr "Branche où seront stockées les clefs GPG"
 
 #: addons/gpg/class_pgpServerInfo.inc:92
 msgid "LDAP error"
@@ -63,7 +64,7 @@ msgstr "Veuillez sélectionner les entrées désirées"
 
 #: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:14
 msgid "PGP Key"
-msgstr "Clef GPG"
+msgstr "Clef PGP"
 
 #: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:40
 #: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:128
@@ -99,7 +100,7 @@ msgstr "Révoquée"
 #: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:96
 #: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:135
 msgid "Disabled"
-msgstr "Désactivé"
+msgstr "Désactivée"
 
 #: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:41
 msgid "Configuration error"
@@ -107,7 +108,7 @@ msgstr "Erreur de configuration"
 
 #: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:41
 msgid "You need to configure GPG base dn through the addons section first"
-msgstr "Vous devez configurer d'abord le DN de base de GPG, dans la section Extensions"
+msgstr "Vous devez configurer d'abord le DN de base de GPG, dans la section «Configuration»"
 
 #: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:129
 msgid "User ID"

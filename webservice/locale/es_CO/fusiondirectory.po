@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2015-08-20 10:33+0200\n"
-"PO-Revision-Date: 2015-08-21 15:53+0000\n"
-"Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>\n"
+"POT-Creation-Date: 2015-08-26 09:38+0200\n"
+"PO-Revision-Date: 2015-09-01 16:49+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Spanish (Colombia) (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/es_CO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,10 +25,15 @@ msgstr ""
 #: html/jsonrpc.php:62
 #, php-format
 msgid "Cannot locate file '%s' - please run '%s' to fix this"
+msgstr "No se encuentra el archivo '%s' - por favor ejecute '%s' para  arreglar esto."
+
+#: html/jsonrpc.php:262
+msgid "Plugin"
 msgstr ""
 
-#: html/jsonrpc.php:258
-msgid "Plugin"
+#: html/jsonrpc.php:349
+#, php-format
+msgid "Cannot delete %s. It has been locked by %s."
 msgstr ""
 
 #: config/class_webserviceConfig.inc:28

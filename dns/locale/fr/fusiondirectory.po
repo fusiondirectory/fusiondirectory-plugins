@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2015-08-20 10:33+0200\n"
-"PO-Revision-Date: 2015-08-19 09:31+0000\n"
+"POT-Creation-Date: 2015-08-26 09:38+0200\n"
+"PO-Revision-Date: 2015-08-31 15:03+0000\n"
 "Last-Translator: MCMic\n"
 "Language-Team: French (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -74,7 +74,7 @@ msgstr "Redémarrer le service"
 #: admin/systems/services/dns/class_serviceDNS.inc:165
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:343
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:348
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:356
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:364
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:5
 msgid "Zone name"
 msgstr "Nom de la zone"
@@ -85,7 +85,7 @@ msgid "Reverse zone"
 msgstr "Zone inverse"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:167
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:436
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:444
 msgid "Network class"
 msgstr "Classe réseau"
 
@@ -94,34 +94,36 @@ msgid "Zone entry editor"
 msgstr "Éditeur de zone"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:169
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:360
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:356
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:368
 msgid "Primary dns server"
 msgstr "Serveur DNS primaire"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:170
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:360
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:32
 msgid "Mail address"
 msgstr "Courriel"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:171
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:364
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:372
 msgid "Serial"
 msgstr "Série"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:172
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:368
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:376
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:38
 msgid "Refresh"
 msgstr "Rafraîchir"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:173
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:380
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:388
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:41
 msgid "Retry"
 msgstr "Réessayer"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:174
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:376
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:384
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:44
 msgid "Expire"
 msgstr "Expirer"
@@ -182,38 +184,38 @@ msgid "MxRecord"
 msgstr "Enregistrement MX"
 
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:274
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:518
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:526
 msgid "Delete"
 msgstr "Supprimer"
 
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:356
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:386
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:364
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:394
 msgid "Only lowercase allowed"
 msgstr "Seule les minuscules sont autorisées"
 
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:360
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:368
 msgid "This field should be a domain name"
 msgstr "Ce champ devrait contenir un nom de domaine"
 
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:372
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:380
 msgid "Time to life"
 msgstr "Temps de vie"
 
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:395
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:415
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:403
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:423
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:8
 msgid "Network address"
 msgstr "Adresse réseau"
 
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:423
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:428
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:433
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:431
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:436
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:441
 #, php-format
 msgid ""
 "The specified network address and the network class (%s/%s) do not match!"
 msgstr "L'adresse réseau spécifiée et la classe réseau (%s/%s) ne concordent pas !"
 
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:524
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:532
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:439
 msgid "Add"
 msgstr "Ajouter"

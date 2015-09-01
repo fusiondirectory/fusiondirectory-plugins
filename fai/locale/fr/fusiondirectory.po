@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2015-08-20 10:33+0200\n"
-"PO-Revision-Date: 2015-08-24 14:21+0000\n"
+"POT-Creation-Date: 2015-08-26 09:38+0200\n"
+"PO-Revision-Date: 2015-08-31 13:53+0000\n"
 "Last-Translator: MCMic\n"
 "Language-Team: French (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -108,7 +108,7 @@ msgstr "Nom de la classe variables"
 
 #: admin/fai/class_faiPackage.inc:392
 #: admin/fai/class_faiPartitionTable.inc:311
-#: admin/fai/class_faiDiskEntry.inc:742
+#: admin/fai/class_faiDiskEntry.inc:741
 #: admin/fai/class_faiTemplateEntry.inc:147 admin/fai/class_faiProfile.inc:56
 #: admin/fai/class_faiScript.inc:57 admin/fai/class_faiScript.inc:75
 #: admin/fai/class_faiTemplate.inc:180 admin/fai/class_faiHook.inc:57
@@ -164,7 +164,7 @@ msgid "Packages in this class"
 msgstr "Paquets dans cette classe"
 
 #: admin/fai/class_faiPartitionTable.inc:61
-#: admin/fai/class_faiDiskEntry.inc:442 admin/systems/class_faiLogView.inc:207
+#: admin/fai/class_faiDiskEntry.inc:441 admin/systems/class_faiLogView.inc:207
 #: admin/systems/class_faiLogView.inc:242
 msgid "Error"
 msgstr "Erreur"
@@ -198,47 +198,47 @@ msgstr "Disques"
 msgid "Partitions in this class"
 msgstr "Partitions dans cette classe"
 
-#: admin/fai/class_faiDiskEntry.inc:273 admin/fai/faiDiskEntry.tpl.c:5
+#: admin/fai/class_faiDiskEntry.inc:272 admin/fai/faiDiskEntry.tpl.c:5
 msgid "Device"
 msgstr "Périphérique"
 
-#: admin/fai/class_faiDiskEntry.inc:273
+#: admin/fai/class_faiDiskEntry.inc:272
 msgid "Label"
 msgstr "Étiquette"
 
-#: admin/fai/class_faiDiskEntry.inc:273
+#: admin/fai/class_faiDiskEntry.inc:272
 msgid "UUID"
 msgstr "UUID"
 
-#: admin/fai/class_faiDiskEntry.inc:344
+#: admin/fai/class_faiDiskEntry.inc:343
 msgid "Disks"
 msgstr "Disques"
 
-#: admin/fai/class_faiDiskEntry.inc:347 admin/fai/class_faiPartition.inc:321
+#: admin/fai/class_faiDiskEntry.inc:346 admin/fai/class_faiPartition.inc:321
 #: admin/fai/faiPartition.tpl.c:14
 msgid "Size"
 msgstr "Taille"
 
-#: admin/fai/class_faiDiskEntry.inc:443
+#: admin/fai/class_faiDiskEntry.inc:442
 #, php-format
 msgid ""
 "The disk cannot be deleted while it is used in the '%s' disk definition!"
 msgstr "Ce disque ne peut pas être supprimé car il est utilisé par la définition de disque '%s' !"
 
-#: admin/fai/class_faiDiskEntry.inc:536
+#: admin/fai/class_faiDiskEntry.inc:535
 msgid "encrypted"
 msgstr "chiffré"
 
-#: admin/fai/class_faiDiskEntry.inc:539
+#: admin/fai/class_faiDiskEntry.inc:538
 msgid "bootable"
 msgstr "amorçable"
 
-#: admin/fai/class_faiDiskEntry.inc:542
+#: admin/fai/class_faiDiskEntry.inc:541
 msgid "preserve"
 msgstr "préserver"
 
-#: admin/fai/class_faiDiskEntry.inc:691 admin/fai/class_faiDiskEntry.inc:694
-#: admin/fai/class_faiDiskEntry.inc:741
+#: admin/fai/class_faiDiskEntry.inc:690 admin/fai/class_faiDiskEntry.inc:693
+#: admin/fai/class_faiDiskEntry.inc:740
 #: admin/fai/packageSelect/selectPackage-list.xml:40
 #: admin/fai/class_faiScript.inc:71 admin/fai/class_faiHook.inc:71
 #: admin/fai/class_faiVariable.inc:71
@@ -248,61 +248,61 @@ msgstr "préserver"
 msgid "Name"
 msgstr "Nom"
 
-#: admin/fai/class_faiDiskEntry.inc:721
+#: admin/fai/class_faiDiskEntry.inc:720
 msgid ""
 "You have more than four primary partition table entries in your "
 "configuration, please check your configuration twice."
 msgstr "Vous avez plus de 4 partitions primaires dans votre configuration, veuillez vérifier votre configuration."
 
-#: admin/fai/class_faiDiskEntry.inc:725
+#: admin/fai/class_faiDiskEntry.inc:724
 msgid ""
 "You cannot have more than three primary partition while using logical "
 "partitions, please check your configuration twice."
 msgstr "Vous ne pouvez pas avoir plus de 3 partitions primaires quand vous utilisez des partitions logiques, veuillez vérifier votre configuration."
 
-#: admin/fai/class_faiDiskEntry.inc:737
+#: admin/fai/class_faiDiskEntry.inc:736
 msgid "Partition table entry"
 msgstr "Entrée de la table des partitions"
 
-#: admin/fai/class_faiDiskEntry.inc:738
+#: admin/fai/class_faiDiskEntry.inc:737
 msgid "FAI partition table entry"
 msgstr "Entrée de la table de partition FAI"
 
-#: admin/fai/class_faiDiskEntry.inc:743
+#: admin/fai/class_faiDiskEntry.inc:742
 msgid "Disk options"
 msgstr "Options des disques"
 
-#: admin/fai/class_faiDiskEntry.inc:744
+#: admin/fai/class_faiDiskEntry.inc:743
 msgid "Partition type"
 msgstr "Type de partition"
 
-#: admin/fai/class_faiDiskEntry.inc:745
+#: admin/fai/class_faiDiskEntry.inc:744
 msgid "Partition no."
 msgstr "Partition n°."
 
-#: admin/fai/class_faiDiskEntry.inc:746
+#: admin/fai/class_faiDiskEntry.inc:745
 msgid "File system type"
 msgstr "Type de système de fichiers"
 
-#: admin/fai/class_faiDiskEntry.inc:747 admin/fai/class_faiPartition.inc:437
+#: admin/fai/class_faiDiskEntry.inc:746 admin/fai/class_faiPartition.inc:437
 #: admin/fai/faiPartition.tpl.c:47
 msgid "Mount point"
 msgstr "Point de montage"
 
-#: admin/fai/class_faiDiskEntry.inc:748 admin/fai/class_faiPartition.inc:402
+#: admin/fai/class_faiDiskEntry.inc:747 admin/fai/class_faiPartition.inc:402
 #: admin/fai/class_faiPartition.inc:407
 msgid "Partition size"
 msgstr "Taille de la partition"
 
-#: admin/fai/class_faiDiskEntry.inc:749 admin/fai/faiPartition.tpl.c:50
+#: admin/fai/class_faiDiskEntry.inc:748 admin/fai/faiPartition.tpl.c:50
 msgid "Mount options"
 msgstr "Options de montage"
 
-#: admin/fai/class_faiDiskEntry.inc:750
+#: admin/fai/class_faiDiskEntry.inc:749
 msgid "File system options"
 msgstr "Options du système de fichier"
 
-#: admin/fai/class_faiDiskEntry.inc:751
+#: admin/fai/class_faiDiskEntry.inc:750
 msgid "Partition flags"
 msgstr "Indicateur des partitions"
 
@@ -360,7 +360,7 @@ msgstr "Groupe"
 
 #: admin/fai/class_faiTemplateEntry.inc:172
 msgid "File group"
-msgstr ""
+msgstr "Groupe du fichier"
 
 #: admin/fai/class_faiTemplateEntry.inc:181
 msgid "Access"
@@ -804,6 +804,39 @@ msgstr "Dépôt de paquets"
 msgid "Package repository information"
 msgstr "Information sur le dépôt de paquets"
 
+#: admin/systems/services/monitor/class_argonautFAIMonitorConfig.inc:28
+msgid "Argonaut FAI monitor"
+msgstr "Moniteur FAI Argonaut"
+
+#: admin/systems/services/monitor/class_argonautFAIMonitorConfig.inc:29
+#: admin/systems/services/monitor/class_argonautFAIMonitorConfig.inc:40
+msgid "Argonaut FAI monitor settings"
+msgstr "Paramètre du moniteur FAI Argonaut"
+
+#: admin/systems/services/monitor/class_argonautFAIMonitorConfig.inc:43
+msgid "Port"
+msgstr "Port"
+
+#: admin/systems/services/monitor/class_argonautFAIMonitorConfig.inc:43
+msgid "The port argonaut-fai-monitor should listen on. Default is 4711."
+msgstr "Le port sur lequel argonaut-fai-monitor doit écouter. 4711 par défaut."
+
+#: admin/systems/services/monitor/class_argonautFAIMonitorConfig.inc:48
+msgid "Timeout"
+msgstr "Temps d'attente maximum"
+
+#: admin/systems/services/monitor/class_argonautFAIMonitorConfig.inc:48
+msgid "The timeout for bad clients. 0 to disable."
+msgstr "Le temps d’attente maximum d’attente d’un client. 0 pour désactiver."
+
+#: admin/systems/services/monitor/class_argonautFAIMonitorConfig.inc:53
+msgid "CA certificate"
+msgstr "Certificat CA"
+
+#: admin/systems/services/monitor/class_argonautFAIMonitorConfig.inc:53
+msgid "Path to the CA certificate file on Argonaut FAI monitor server"
+msgstr "Chemin du fichier contenant le certificat du CA public sur le serveur où tourne argonaut-fai-monitor"
+
 #: config/fai/class_faiConfig.inc:28
 msgid "FAI configuration"
 msgstr "Configuration FAI"
@@ -814,21 +847,21 @@ msgstr "Configuration du plugin FAI"
 
 #: config/fai/class_faiConfig.inc:44
 msgid "Fai base RDN"
-msgstr "Fai base RDN"
+msgstr "Branche FAI"
 
 #: config/fai/class_faiConfig.inc:44
 msgid "Branch in which fai branches will be stored"
-msgstr "Branche dans laquelle les objets FAI seront stockés"
+msgstr "Branche dans laquelle les sous-branches FAI seront placées"
 
 #: config/fai/class_faiConfig.inc:59
 #, php-format
 msgid "Fai %s RDN"
-msgstr "Fai %s RDN"
+msgstr "Sous-branche FAI %s"
 
 #: config/fai/class_faiConfig.inc:60
 #, php-format
 msgid "Relative branch in which fai %s will be stored"
-msgstr "Branche relatif dans laquelle les objets fai %s seront stockés"
+msgstr "Sous-branche relative dans laquelle les objets FAI %s seront stockés"
 
 #: config/fai/class_faiConfig.inc:60
 msgid "s"
@@ -844,7 +877,7 @@ msgstr "Type"
 
 #: admin/fai/faiPartition.tpl.c:17
 msgid "Resize existing partition"
-msgstr "Réduire un partition existante"
+msgstr "Redimensionner une partition existante"
 
 #: admin/fai/faiPartition.tpl.c:20
 msgid "Bootable"
@@ -868,7 +901,7 @@ msgstr "Afficher/Cacher spare"
 
 #: admin/fai/faiPartition.tpl.c:35
 msgid "Filesystem"
-msgstr "Système de fichiers"
+msgstr "Système de fichier"
 
 #: admin/fai/faiPartition.tpl.c:38
 msgid "Filesystem create options"
@@ -876,7 +909,7 @@ msgstr "Options de création du système de fichier"
 
 #: admin/fai/faiPartition.tpl.c:41
 msgid "Encrypted"
-msgstr "Crypté"
+msgstr "Chiffré"
 
 #: admin/fai/faiPartition.tpl.c:44
 msgid "Tune options"
@@ -892,7 +925,7 @@ msgstr "Entrée fstab"
 
 #: admin/fai/faiDiskEntry.tpl.c:17
 msgid "Disk label"
-msgstr "Etiquette du disque"
+msgstr "Étiquette du disque"
 
 #: admin/fai/faiDiskEntry.tpl.c:23 admin/fai/faiDiskEntry.tpl.c:26
 msgid "Partition entries"

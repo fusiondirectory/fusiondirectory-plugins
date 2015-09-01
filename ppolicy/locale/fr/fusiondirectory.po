@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Benoit Mortier <benoit.mortier@opensides.be>, 2015
+# MCMic, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2015-08-20 10:33+0200\n"
-"PO-Revision-Date: 2015-08-12 14:04+0000\n"
-"Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>\n"
+"POT-Creation-Date: 2015-08-26 09:38+0200\n"
+"PO-Revision-Date: 2015-08-27 13:52+0000\n"
+"Last-Translator: MCMic\n"
 "Language-Team: French (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -43,7 +44,7 @@ msgstr "Politique"
 
 #: admin/ppolicy/class_ppolicy.inc:56
 msgid "Policy name"
-msgstr "Nom de la politique de mot de passe"
+msgstr "Nom de la politique"
 
 #: admin/ppolicy/class_ppolicy.inc:60
 msgid "Minimum length"
@@ -53,21 +54,21 @@ msgstr "Longueur minimale"
 msgid ""
 "Minimum length of the user supplied password - passwords shorter than this "
 "value will be rejected"
-msgstr "Longueur minimale du mot de passe fourni par l'utilisateur - les mots de passe plus courts que cette valeur seront rejetées"
+msgstr "Longueur minimale du mot de passe fourni par l'utilisateur - les mots de passe plus courts que cette valeur seront rejetés"
 
 #: admin/ppolicy/class_ppolicy.inc:65
 msgid "Passwords in history"
-msgstr "Historique des mots de passe"
+msgstr "Mots de passe dans l’historique"
 
 #: admin/ppolicy/class_ppolicy.inc:65
 msgid ""
 "Number of passwords that are maintained in a list of previously used "
 "passwords"
-msgstr "Nombre de mots de passe qui sont maintenues dans une liste de mots de passe utilisés antérieurement"
+msgstr "Nombre de mots de passe qui sont conservés dans une liste de mots de passe utilisés antérieurement"
 
 #: admin/ppolicy/class_ppolicy.inc:70
 msgid "Minimum password age"
-msgstr "Age minimum du mot de passe"
+msgstr "Durée de vie minimale du mot de passe"
 
 #: admin/ppolicy/class_ppolicy.inc:70
 msgid "Minimum time between password changes"
@@ -75,14 +76,14 @@ msgstr "Délai minimum entre les changements de mot de passe"
 
 #: admin/ppolicy/class_ppolicy.inc:75
 msgid "Maximum password age"
-msgstr "Durée de vie du mot de passe"
+msgstr "Durée de vie maximale du mot de passe"
 
 #: admin/ppolicy/class_ppolicy.inc:75
 msgid ""
 "Maximum time a password is valid, after which it is deemed to be no longer "
 "usable and any bind operations attempted with the expired password will be "
 "treated as invalid"
-msgstr "Temps maximum un mot de passe est valide, après quoi il est réputé ne plus être utilisable et toutes les opérations de connexion tenté avec le mot de passe expiré seront traités comme non valides"
+msgstr "Temps pendant lequel un mot de passe est valide, après quoi il est réputé ne plus être utilisable et toutes les opérations de connexion tentées avec le mot de passe expiré seront traitées comme invalides"
 
 #: admin/ppolicy/class_ppolicy.inc:80
 msgid "Expiry warning delay"
@@ -103,7 +104,7 @@ msgstr "Période de grâce "
 msgid ""
 "Number of times a user is allowed to successfully bind using an expired "
 "password"
-msgstr "Nombre de fois qu'un utilisateur est autorisé à se lier avec succès en utilisant un mot de passe expiré"
+msgstr "Nombre de fois qu'un utilisateur est autorisé à se connecter avec succès en utilisant un mot de passe expiré"
 
 #: admin/ppolicy/class_ppolicy.inc:90
 msgid "Allow user change"
@@ -111,7 +112,7 @@ msgstr "Autoriser le changement par l'utilisateur"
 
 #: admin/ppolicy/class_ppolicy.inc:90
 msgid "Whether users are allowed to change their own passwords"
-msgstr "Si les utilisateurs sont autorisés à changer leur mot de passe"
+msgstr "Si les utilisateurs sont autorisés à changer leur mot de passe ou non"
 
 #: admin/ppolicy/class_ppolicy.inc:95
 msgid "Safe modify"
@@ -121,11 +122,11 @@ msgstr "Modification sure "
 msgid ""
 "Whether a user must send the current password during a password modification"
 " operation"
-msgstr "Si un utilisateur doit envoyer le mot de passe actuel pendant une opération de modification de mot de passe"
+msgstr "Si un utilisateur doit envoyer le mot de passe actuel pendant une opération de modification de mot de passe ou non"
 
 #: admin/ppolicy/class_ppolicy.inc:109
 msgid "Lock out"
-msgstr "verrouiller"
+msgstr "Verrouillage"
 
 #: admin/ppolicy/class_ppolicy.inc:113
 msgid "Activate lock out"
@@ -135,11 +136,11 @@ msgstr "Activer le verrouillage"
 msgid ""
 "Whether to lock an account that had more consecutive failed bind attempts "
 "with invalid passwords than is defined by \"Maximum failures\""
-msgstr "Faut il verrouiller un compte qui avait plus de tentatives liées aux échecs consécutifs avec des mots de passe incorrects que ce qui est défini par «échec maximum\""
+msgstr "Faut-il verrouiller un compte qui avait plus d’échecs de connexion consécutifs avec des mots de passe incorrects que ce qui est défini par «Nombre d'échec maximal\""
 
 #: admin/ppolicy/class_ppolicy.inc:118
 msgid "Lock out duration"
-msgstr "La durée de verrouillage "
+msgstr "Durée de verrouillage "
 
 #: admin/ppolicy/class_ppolicy.inc:118
 msgid ""
@@ -154,11 +155,11 @@ msgstr "Nombre d'échec maximal"
 #: admin/ppolicy/class_ppolicy.inc:123
 msgid ""
 "Number of consecutive password failures allowed before automatic lock out"
-msgstr "Nombre d'échecs de mot de passe consécutifs autorisé avant à verrouillage automatique"
+msgstr "Nombre d'échecs de mot de passe consécutifs autorisés avant verrouillage automatique"
 
 #: admin/ppolicy/class_ppolicy.inc:128
 msgid "Failure count interval"
-msgstr "Intervalle de comptage de défaillances"
+msgstr "Intervalle de comptage d’échecs"
 
 #: admin/ppolicy/class_ppolicy.inc:128
 msgid ""
@@ -174,7 +175,7 @@ msgstr "Doit changer"
 msgid ""
 "Whether the user must change their password after an account is reset by an "
 "administrator following an automatic lockout"
-msgstr "Si l'utilisateur doit changer son mot de passe après qu'un compte aie été réinitialisé par un administrateur suite à un lock-out automatique"
+msgstr "Si l'utilisateur doit changer son mot de passe après qu'un compte aie été réinitialisé par un administrateur suite à un verrouillage automatique"
 
 #: addons/dashboard/class_dashBoardPPolicy.inc:27
 msgid "Ppolicy"
@@ -191,7 +192,7 @@ msgstr "Comptes expirés"
 #: addons/dashboard/class_dashBoardPPolicy.inc:44
 #: addons/dashboard/ppolicy_locked_accounts.tpl.c:8
 msgid "Locked accounts"
-msgstr "Compte verrouilles "
+msgstr "Comptes verrouillés "
 
 #: addons/dashboard/class_dashBoardPPolicy.inc:70
 #: addons/dashboard/class_dashBoardPPolicy.inc:125
@@ -258,11 +259,11 @@ msgstr "Jamais"
 
 #: personal/ppolicy/class_ppolicyAccount.inc:99
 msgid "Unlocked"
-msgstr "Déverrouille "
+msgstr "Déverrouillé"
 
 #: config/ppolicy/class_ppolicyConfig.inc:29
 msgid "Ppolicy plugin configuration"
-msgstr "Configuration de l'extension Ppolicy"
+msgstr "Configuration du plugin Ppolicy"
 
 #: config/ppolicy/class_ppolicyConfig.inc:30
 msgid "FusionDirectory ppolicy plugin configuration"
@@ -270,11 +271,11 @@ msgstr "Configuration du plugin Ppolicy"
 
 #: config/ppolicy/class_ppolicyConfig.inc:43
 msgid "Ppolicy plugin"
-msgstr "Ppolicy plugin"
+msgstr "Plugin Ppolicy"
 
 #: config/ppolicy/class_ppolicyConfig.inc:46
 msgid "Ppolicy RDN"
-msgstr "Ppolicy RDN"
+msgstr "Branche Ppolicy"
 
 #: config/ppolicy/class_ppolicyConfig.inc:46
 msgid "Branch in which ppolicies will be stored"
@@ -286,7 +287,7 @@ msgstr "Cn de la politique par défaut"
 
 #: config/ppolicy/class_ppolicyConfig.inc:51
 msgid "What you put as default ppolicy in the overlay config"
-msgstr "Ce que vous mettez par défaut dans la configuration de l'overlay"
+msgstr "Ce que vous mettez comme politique par défaut dans la configuration de l'overlay"
 
 #: addons/dashboard/ppolicy_locked_accounts.tpl.c:2
 msgid "There is one locked account"
@@ -321,8 +322,8 @@ msgstr ""
 
 #: addons/dashboard/ppolicy_locked_accounts.tpl.c:26
 msgid "manager"
-msgstr "Responsable"
+msgstr "manager"
 
 #: addons/dashboard/ppolicy_locked_accounts.tpl.c:29
 msgid "mail"
-msgstr "mail"
+msgstr "courriel"

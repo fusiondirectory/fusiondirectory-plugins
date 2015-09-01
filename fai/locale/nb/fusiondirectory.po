@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2015-08-20 10:33+0200\n"
-"PO-Revision-Date: 2015-08-20 08:36+0000\n"
+"POT-Creation-Date: 2015-08-26 09:38+0200\n"
+"PO-Revision-Date: 2015-08-26 07:41+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Norwegian Bokmål (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/nb/)\n"
 "MIME-Version: 1.0\n"
@@ -105,7 +105,7 @@ msgstr ""
 
 #: admin/fai/class_faiPackage.inc:392
 #: admin/fai/class_faiPartitionTable.inc:311
-#: admin/fai/class_faiDiskEntry.inc:742
+#: admin/fai/class_faiDiskEntry.inc:741
 #: admin/fai/class_faiTemplateEntry.inc:147 admin/fai/class_faiProfile.inc:56
 #: admin/fai/class_faiScript.inc:57 admin/fai/class_faiScript.inc:75
 #: admin/fai/class_faiTemplate.inc:180 admin/fai/class_faiHook.inc:57
@@ -161,7 +161,7 @@ msgid "Packages in this class"
 msgstr ""
 
 #: admin/fai/class_faiPartitionTable.inc:61
-#: admin/fai/class_faiDiskEntry.inc:442 admin/systems/class_faiLogView.inc:207
+#: admin/fai/class_faiDiskEntry.inc:441 admin/systems/class_faiLogView.inc:207
 #: admin/systems/class_faiLogView.inc:242
 msgid "Error"
 msgstr "Feil"
@@ -195,47 +195,47 @@ msgstr ""
 msgid "Partitions in this class"
 msgstr ""
 
-#: admin/fai/class_faiDiskEntry.inc:273 admin/fai/faiDiskEntry.tpl.c:5
+#: admin/fai/class_faiDiskEntry.inc:272 admin/fai/faiDiskEntry.tpl.c:5
 msgid "Device"
 msgstr ""
 
-#: admin/fai/class_faiDiskEntry.inc:273
+#: admin/fai/class_faiDiskEntry.inc:272
 msgid "Label"
 msgstr ""
 
-#: admin/fai/class_faiDiskEntry.inc:273
+#: admin/fai/class_faiDiskEntry.inc:272
 msgid "UUID"
 msgstr ""
 
-#: admin/fai/class_faiDiskEntry.inc:344
+#: admin/fai/class_faiDiskEntry.inc:343
 msgid "Disks"
 msgstr ""
 
-#: admin/fai/class_faiDiskEntry.inc:347 admin/fai/class_faiPartition.inc:321
+#: admin/fai/class_faiDiskEntry.inc:346 admin/fai/class_faiPartition.inc:321
 #: admin/fai/faiPartition.tpl.c:14
 msgid "Size"
 msgstr ""
 
-#: admin/fai/class_faiDiskEntry.inc:443
+#: admin/fai/class_faiDiskEntry.inc:442
 #, php-format
 msgid ""
 "The disk cannot be deleted while it is used in the '%s' disk definition!"
 msgstr ""
 
-#: admin/fai/class_faiDiskEntry.inc:536
+#: admin/fai/class_faiDiskEntry.inc:535
 msgid "encrypted"
 msgstr ""
 
-#: admin/fai/class_faiDiskEntry.inc:539
+#: admin/fai/class_faiDiskEntry.inc:538
 msgid "bootable"
 msgstr ""
 
-#: admin/fai/class_faiDiskEntry.inc:542
+#: admin/fai/class_faiDiskEntry.inc:541
 msgid "preserve"
 msgstr ""
 
-#: admin/fai/class_faiDiskEntry.inc:691 admin/fai/class_faiDiskEntry.inc:694
-#: admin/fai/class_faiDiskEntry.inc:741
+#: admin/fai/class_faiDiskEntry.inc:690 admin/fai/class_faiDiskEntry.inc:693
+#: admin/fai/class_faiDiskEntry.inc:740
 #: admin/fai/packageSelect/selectPackage-list.xml:40
 #: admin/fai/class_faiScript.inc:71 admin/fai/class_faiHook.inc:71
 #: admin/fai/class_faiVariable.inc:71
@@ -245,61 +245,61 @@ msgstr ""
 msgid "Name"
 msgstr "Navn"
 
-#: admin/fai/class_faiDiskEntry.inc:721
+#: admin/fai/class_faiDiskEntry.inc:720
 msgid ""
 "You have more than four primary partition table entries in your "
 "configuration, please check your configuration twice."
 msgstr ""
 
-#: admin/fai/class_faiDiskEntry.inc:725
+#: admin/fai/class_faiDiskEntry.inc:724
 msgid ""
 "You cannot have more than three primary partition while using logical "
 "partitions, please check your configuration twice."
 msgstr ""
 
-#: admin/fai/class_faiDiskEntry.inc:737
+#: admin/fai/class_faiDiskEntry.inc:736
 msgid "Partition table entry"
 msgstr ""
 
-#: admin/fai/class_faiDiskEntry.inc:738
+#: admin/fai/class_faiDiskEntry.inc:737
 msgid "FAI partition table entry"
 msgstr ""
 
-#: admin/fai/class_faiDiskEntry.inc:743
+#: admin/fai/class_faiDiskEntry.inc:742
 msgid "Disk options"
 msgstr ""
 
-#: admin/fai/class_faiDiskEntry.inc:744
+#: admin/fai/class_faiDiskEntry.inc:743
 msgid "Partition type"
 msgstr ""
 
-#: admin/fai/class_faiDiskEntry.inc:745
+#: admin/fai/class_faiDiskEntry.inc:744
 msgid "Partition no."
 msgstr ""
 
-#: admin/fai/class_faiDiskEntry.inc:746
+#: admin/fai/class_faiDiskEntry.inc:745
 msgid "File system type"
 msgstr ""
 
-#: admin/fai/class_faiDiskEntry.inc:747 admin/fai/class_faiPartition.inc:437
+#: admin/fai/class_faiDiskEntry.inc:746 admin/fai/class_faiPartition.inc:437
 #: admin/fai/faiPartition.tpl.c:47
 msgid "Mount point"
 msgstr ""
 
-#: admin/fai/class_faiDiskEntry.inc:748 admin/fai/class_faiPartition.inc:402
+#: admin/fai/class_faiDiskEntry.inc:747 admin/fai/class_faiPartition.inc:402
 #: admin/fai/class_faiPartition.inc:407
 msgid "Partition size"
 msgstr ""
 
-#: admin/fai/class_faiDiskEntry.inc:749 admin/fai/faiPartition.tpl.c:50
+#: admin/fai/class_faiDiskEntry.inc:748 admin/fai/faiPartition.tpl.c:50
 msgid "Mount options"
 msgstr ""
 
-#: admin/fai/class_faiDiskEntry.inc:750
+#: admin/fai/class_faiDiskEntry.inc:749
 msgid "File system options"
 msgstr ""
 
-#: admin/fai/class_faiDiskEntry.inc:751
+#: admin/fai/class_faiDiskEntry.inc:750
 msgid "Partition flags"
 msgstr ""
 
@@ -799,6 +799,39 @@ msgstr ""
 
 #: admin/systems/services/repository/class_serviceRepository.inc:161
 msgid "Package repository information"
+msgstr ""
+
+#: admin/systems/services/monitor/class_argonautFAIMonitorConfig.inc:28
+msgid "Argonaut FAI monitor"
+msgstr ""
+
+#: admin/systems/services/monitor/class_argonautFAIMonitorConfig.inc:29
+#: admin/systems/services/monitor/class_argonautFAIMonitorConfig.inc:40
+msgid "Argonaut FAI monitor settings"
+msgstr ""
+
+#: admin/systems/services/monitor/class_argonautFAIMonitorConfig.inc:43
+msgid "Port"
+msgstr ""
+
+#: admin/systems/services/monitor/class_argonautFAIMonitorConfig.inc:43
+msgid "The port argonaut-fai-monitor should listen on. Default is 4711."
+msgstr ""
+
+#: admin/systems/services/monitor/class_argonautFAIMonitorConfig.inc:48
+msgid "Timeout"
+msgstr ""
+
+#: admin/systems/services/monitor/class_argonautFAIMonitorConfig.inc:48
+msgid "The timeout for bad clients. 0 to disable."
+msgstr ""
+
+#: admin/systems/services/monitor/class_argonautFAIMonitorConfig.inc:53
+msgid "CA certificate"
+msgstr ""
+
+#: admin/systems/services/monitor/class_argonautFAIMonitorConfig.inc:53
+msgid "Path to the CA certificate file on Argonaut FAI monitor server"
 msgstr ""
 
 #: config/fai/class_faiConfig.inc:28
