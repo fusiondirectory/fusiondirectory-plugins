@@ -507,13 +507,14 @@ class sambaAccount extends simplePlugin
         );
       } else {
         $ldap->fetch();
-        $g = new group($this->config, $ldap->getDN());
-        if ($g->sambaSID == "") {
-          $g->sambaDomainName = $this->sambaDomainName;
-          $g->smbgroup        = TRUE;
-          $g->save();
+        $tabGroup = objects::open($ldap->getDN(), 'posixGroup');
+        $tabGroup->by_object['sambaGroup']->is_account = TRUE;
+        if ($tabGroup->by_object['sambaGroup']->sambaSID == "") {
+          $tabGroup->by_object['sambaGroup']->sambaDomainName = $this->sambaDomainName;
+          $tabGroup->by_object['sambaGroup']->smbgroup        = TRUE;
+          $tabGroup->save();
         }
-        $this->attrs['sambaPrimaryGroupSID'] = $g->sambaSID;
+        $this->attrs['sambaPrimaryGroupSID'] = $tabGroup->by_object['sambaGroup']->sambaSID;
       }
     }
 
