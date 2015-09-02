@@ -32,7 +32,9 @@ class SupannPrefixedSelectAttribute extends CompositeAttribute
     parent::__construct($description, $ldapName, $attributes, '/^{(.*)}(.*)$/', '{%s}%s', $acl, $label);
     $this->setLinearRendering(TRUE);
     $this->prefixedChoices = supann::get_prefixed_choices_for($filename);
-    $this->prefixedChoices[''] = array(array(''), array(_('None')));
+    if (!$required) {
+      $this->prefixedChoices[''] = array(array(''), array(_('None')));
+    }
     $this->attributes[0]->setChoices(array_keys($this->prefixedChoices));
     $this->attributes[0]->setSubmitForm(TRUE);
     $this->supannUpdateSelect();
@@ -438,9 +440,9 @@ class supannAccount extends simplePlugin
               _('supannRoleEntite'),
               'supannRoleEntite',
               array(
-                new SelectAttribute(
+                new SupannPrefixedSelectAttribute(
                   _('Generic role'), _('supannRoleGenerique - Generics Roles of the person in the facility'),
-                  'supannRoleGenerique_role', TRUE
+                  'supannRoleGenerique_role', TRUE, 'role'
                 ),
                 new SelectAttribute(
                   _('Entity assignment type'), _('supannTypeEntiteAffectation'),
@@ -513,9 +515,6 @@ class supannAccount extends simplePlugin
 
     list ($codes, $labels) = supann::get_choices_for('typediplome_SISE', '{SISE}');
     $this->attributesAccess['supannEtuInscription']->attribute->attributes[4]->setChoices($codes, $labels); // supannEtuTypeDiplome
-
-    list ($codes, $labels) = supann::get_choices_for('role', '{SUPANN}');
-    $this->attributesAccess['supannRoleEntite']->attribute->attributes[0]->setChoices($codes, $labels); // supannRoleGeneric
   }
 
   function execute()
