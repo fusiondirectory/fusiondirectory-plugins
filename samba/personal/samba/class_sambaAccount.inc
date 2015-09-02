@@ -508,13 +508,20 @@ class sambaAccount extends simplePlugin
       } else {
         $ldap->fetch();
         $tabGroup = objects::open($ldap->getDN(), 'posixGroup');
-        $tabGroup->by_object['sambaGroup']->is_account = TRUE;
-        if ($tabGroup->by_object['sambaGroup']->sambaSID == "") {
-          $tabGroup->by_object['sambaGroup']->sambaDomainName = $this->sambaDomainName;
-          $tabGroup->by_object['sambaGroup']->smbgroup        = TRUE;
-          $tabGroup->save();
+        if ($tabGroup->by_object['sambaGroup']->is_account) {
+          if ($tabGroup->by_object['sambaGroup']->sambaSID == "") {
+            $tabGroup->by_object['sambaGroup']->sambaDomainName = $this->sambaDomainName;
+            $tabGroup->by_object['sambaGroup']->smbgroup        = TRUE;
+            $tabGroup->save();
+          }
+          $this->attrs['sambaPrimaryGroupSID'] = $tabGroup->by_object['sambaGroup']->sambaSID;
+        } else {
+          msg_dialog::display(
+            _("Warning"),
+            _("Cannot convert primary group to samba group: group samba tab is disabled!"),
+            WARNING_DIALOG
+          );
         }
-        $this->attrs['sambaPrimaryGroupSID'] = $tabGroup->by_object['sambaGroup']->sambaSID;
       }
     }
 
