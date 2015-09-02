@@ -245,8 +245,8 @@ class supannAccount extends simplePlugin
             'eduPersonPrincipalName', FALSE
           ),
           new StringAttribute(
-            _('Nick name'), _('eduPersonNickName - Can contain a nick name for this user'),
-            'eduPersonNickName', FALSE
+            _('Nick name'), _('eduPersonNickname - Can contain a nick name for this user'),
+            'eduPersonNickname', FALSE
           ),
           new SetAttribute(
             new StringAttribute(
