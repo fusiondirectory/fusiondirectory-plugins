@@ -261,7 +261,6 @@ class networkSettings extends plugin
   {
     /* Call parent execute */
     $smarty = get_smarty();
-    $smarty->assign("autonetACL", $this->acl_is_writeable("macAddress") && $this->acl_is_writeable("ipHostNumber")?"rw":"");
     $smarty->assign("MACisMust", $this->MACisMust);
 
     $tmp = $this->plInfo();
@@ -296,17 +295,6 @@ class networkSettings extends plugin
     }
 
     $smarty->assign("additionalHostNumbers", $this->additionalHostNumbers);
-
-    /**********
-     * Autonet completion
-     **********/
-
-    /* Check for autonet button */
-    if (isset($_POST['autonet']) && ($this->acl_is_writeable("ipHostNumber") || $this->acl_is_writeable("macAddress"))) {
-      if (class_available("supportDaemon")) {
-        msg_dialog::display(_("Error"), _("NOT IMPLEMENTED"), ERROR_DIALOG);
-      }
-    }
 
     /**********
      * DHCP Handling
@@ -447,8 +435,6 @@ class networkSettings extends plugin
 
       $smarty->assign("records", $tmp['str']);
       $smarty->assign("changeStateForRecords", $changeStateForRecords);
-
-      $smarty->assign("autonetACL", $this->acl_is_writeable("macAddress") && $this->acl_is_writeable("ipHostNumber")?"rw":"");
 
       $display .= $smarty->fetch(get_template_path('network.tpl', TRUE));
     }
