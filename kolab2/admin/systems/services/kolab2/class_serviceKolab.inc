@@ -64,10 +64,10 @@ class serviceKolab extends simpleService
   static function plInfo()
   {
     return array(
-      "plShortName"     => _("Kolab mail service"),
-      "plDescription"   => _("Kolab mail service")." ("._("Services").")",
-      "plIcon"          => "plugins/kolab/images/iconMini.png",
-      "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plShortName'     => _('Kolab 2 mail'),
+      'plDescription'   => _('Kolab 2 mail service'),
+      'plIcon'          => 'plugins/kolab2/images/iconMini.png',
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }
 
