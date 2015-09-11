@@ -10,9 +10,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2015-08-26 09:38+0200\n"
-"PO-Revision-Date: 2015-08-31 13:17+0000\n"
-"Last-Translator: MCMic\n"
+"POT-Creation-Date: 2015-09-11 22:18+0200\n"
+"PO-Revision-Date: 2015-09-03 20:43+0000\n"
+"Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>\n"
 "Language-Team: French (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,147 +20,141 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: admin/systems/argonaut/class_argonautClient.inc:117
+#: admin/systems/argonaut/class_argonautClient.inc:118
 msgid "Argonaut client settings"
 msgstr "Paramètres du client Argonaut"
 
-#: admin/systems/argonaut/class_argonautClient.inc:120
+#: admin/systems/argonaut/class_argonautClient.inc:121
 msgid "Client port"
 msgstr "Port du client"
 
-#: admin/systems/argonaut/class_argonautClient.inc:120
+#: admin/systems/argonaut/class_argonautClient.inc:121
 msgid "Port used by argonaut client for JSON-RPC"
 msgstr "Port utilisé par le client Argonaut pour les requêtes JSON-RPC"
 
-#: admin/systems/argonaut/class_argonautClient.inc:125
+#: admin/systems/argonaut/class_argonautClient.inc:126
 #: admin/systems/services/argonaut/class_argonautServer.inc:61
 msgid "Protocol"
 msgstr "Protocole"
 
-#: admin/systems/argonaut/class_argonautClient.inc:125
+#: admin/systems/argonaut/class_argonautClient.inc:126
 #: admin/systems/services/argonaut/class_argonautServer.inc:61
 msgid "Protocol to use for argonaut"
 msgstr "Protocole à utiliser pour Argonaut"
 
-#: admin/systems/argonaut/class_argonautClient.inc:130
+#: admin/systems/argonaut/class_argonautClient.inc:131
 msgid "WakeOnLan interface"
 msgstr "Interface WakeOnLan"
 
-#: admin/systems/argonaut/class_argonautClient.inc:130
+#: admin/systems/argonaut/class_argonautClient.inc:131
 msgid "Interface used by argonaut for WakeOnLan"
 msgstr "Interface utilisée par argonaut pour le WakeOnLan :"
 
-#: admin/systems/argonaut/class_argonautClient.inc:135
+#: admin/systems/argonaut/class_argonautClient.inc:136
 msgid "TaskId file"
 msgstr "Fichier des id de tâches"
 
-#: admin/systems/argonaut/class_argonautClient.inc:135
+#: admin/systems/argonaut/class_argonautClient.inc:136
 msgid "File which argonaut will use to store its task id when booting"
 msgstr "Fichier qu'Argonaut utilise pour stocker les tâches au démarrage"
 
-#: admin/systems/argonaut/class_argonautClient.inc:140
-#: admin/systems/services/argonaut/class_argonautFuseConfig.inc:56
+#: admin/systems/argonaut/class_argonautClient.inc:141
+#: admin/systems/services/argonaut/class_argonautFuseConfig.inc:55
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:71
 #: admin/systems/services/argonaut/class_argonautServer.inc:79
 msgid "Log directory"
 msgstr "Répertoire des journaux systèmes"
 
-#: admin/systems/argonaut/class_argonautClient.inc:140
+#: admin/systems/argonaut/class_argonautClient.inc:141
 msgid "Directory in which argonaut client should write its logs"
 msgstr "Dossier des journaux systèmes du client Argonaut"
 
-#: admin/systems/argonaut/class_argonautClient.inc:147
+#: admin/systems/argonaut/class_argonautClient.inc:148
 #: admin/systems/services/argonaut/class_argonautServer.inc:103
 msgid "SSL paths"
 msgstr "Chemins SSL"
 
-#: admin/systems/argonaut/class_argonautClient.inc:150
+#: admin/systems/argonaut/class_argonautClient.inc:151
 #: admin/systems/services/argonaut/class_argonautServer.inc:106
 msgid "Key"
 msgstr "Clef"
 
-#: admin/systems/argonaut/class_argonautClient.inc:150
+#: admin/systems/argonaut/class_argonautClient.inc:151
 msgid "Path to the private key file on Argonaut client"
 msgstr "Chemin du fichier contenant la clé privée sur le client Argonaut"
 
-#: admin/systems/argonaut/class_argonautClient.inc:155
+#: admin/systems/argonaut/class_argonautClient.inc:156
 #: admin/systems/services/argonaut/class_argonautServer.inc:111
 msgid "Certificate"
 msgstr "Certificat"
 
-#: admin/systems/argonaut/class_argonautClient.inc:155
+#: admin/systems/argonaut/class_argonautClient.inc:156
 msgid "Path to the certificate file on Argonaut client"
 msgstr "Chemin du fichier contenant le certificat sur le client Argonaut"
 
-#: admin/systems/argonaut/class_argonautClient.inc:160
+#: admin/systems/argonaut/class_argonautClient.inc:161
 #: admin/systems/services/argonaut/class_argonautServer.inc:116
 msgid "CA certificate"
 msgstr "Certificat CA"
 
-#: admin/systems/argonaut/class_argonautClient.inc:160
+#: admin/systems/argonaut/class_argonautClient.inc:161
 msgid "Path to the CA certificate file on Argonaut client"
 msgstr "Chemin du fichier contenant le certificat du CA public sur le client Argonaut"
 
-#: admin/systems/argonaut/class_argonautClient.inc:165
+#: admin/systems/argonaut/class_argonautClient.inc:166
 #: admin/systems/services/argonaut/class_argonautServer.inc:121
 msgid "CN of the certificate"
 msgstr "CN du certificat"
 
-#: admin/systems/argonaut/class_argonautClient.inc:165
+#: admin/systems/argonaut/class_argonautClient.inc:166
 msgid "The CN in this client certificate"
 msgstr "Le CN dans le certificat client"
 
-#: admin/systems/argonaut/class_argonautClient.inc:171
+#: admin/systems/argonaut/class_argonautClient.inc:172
 msgid "Service names"
 msgstr "Nom des services"
 
-#: admin/systems/argonaut/class_argonautClient.inc:173
+#: admin/systems/argonaut/class_argonautClient.inc:174
 msgid "Argonaut service names"
 msgstr "Noms de services pour Argonaut"
 
-#: admin/systems/argonaut/class_argonautClient.inc:198
+#: admin/systems/argonaut/class_argonautClient.inc:199
 msgid "Argonaut client"
 msgstr "Client Argonaut"
 
-#: admin/systems/argonaut/class_argonautClient.inc:199
+#: admin/systems/argonaut/class_argonautClient.inc:200
 msgid "Edit argonaut client settings"
 msgstr "Édition des paramètres du client Argonaut"
 
+#: admin/systems/services/argonaut/class_argonautFuseConfig.inc:30
+msgid "Argonaut Fuse"
+msgstr "Argonaut Fuse"
+
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:31
-#: admin/systems/services/argonaut/class_argonautFuseConfig.inc:32
 msgid "Argonaut Fuse settings"
 msgstr "Paramètres de Argonaut Fuse"
 
-#: admin/systems/services/argonaut/class_argonautFuseConfig.inc:32
-#: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:33
-#: admin/systems/services/argonaut/class_argonautServer.inc:32
-#: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:33
-#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:31
-#: admin/systems/services/argonaut/class_argonautFuseLTSPConfig.inc:33
-msgid "Services"
-msgstr "Services"
-
-#: admin/systems/services/argonaut/class_argonautFuseConfig.inc:46
+#: admin/systems/services/argonaut/class_argonautFuseConfig.inc:45
 msgid "Basic settings"
 msgstr "Paramètres de base"
 
-#: admin/systems/services/argonaut/class_argonautFuseConfig.inc:49
+#: admin/systems/services/argonaut/class_argonautFuseConfig.inc:48
 msgid "Default mode"
 msgstr "Mode par défaut"
 
-#: admin/systems/services/argonaut/class_argonautFuseConfig.inc:57
+#: admin/systems/services/argonaut/class_argonautFuseConfig.inc:56
 msgid "Directory in which argonaut-fuse will store its log"
 msgstr "Dossier des jounaux systèmes de argonaut-fuse"
 
-#: admin/systems/services/argonaut/class_argonautFuseConfig.inc:65
+#: admin/systems/services/argonaut/class_argonautFuseConfig.inc:64
 msgid "TFTP"
 msgstr "TFTP"
 
-#: admin/systems/services/argonaut/class_argonautFuseConfig.inc:68
+#: admin/systems/services/argonaut/class_argonautFuseConfig.inc:67
 msgid "Pxelinux cfg path"
 msgstr "Répertoire des fichiers pxelinux"
 
-#: admin/systems/services/argonaut/class_argonautFuseConfig.inc:69
+#: admin/systems/services/argonaut/class_argonautFuseConfig.inc:68
 msgid "Path where argonaut-fuse should store pxelinux.cfg"
 msgstr "Chemin où argonaut-fuse stockera le fichier \"pxelinux.cfg\""
 
@@ -253,6 +247,14 @@ msgstr "Activer/Désactiver le mode verbeux"
 #: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:33
 msgid "Argonaut Fuse FAI module settings"
 msgstr "Paramètres de Argonaut Fuse pour le module FAI"
+
+#: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:33
+#: admin/systems/services/argonaut/class_argonautServer.inc:32
+#: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:33
+#: admin/systems/services/argonaut/class_argonautDNSConfig.inc:31
+#: admin/systems/services/argonaut/class_argonautFuseLTSPConfig.inc:33
+msgid "Services"
+msgstr "Services"
 
 #: admin/systems/services/argonaut/class_argonautFuseFAIConfig.inc:47
 msgid "FAI"

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2015-08-26 09:38+0200\n"
-"PO-Revision-Date: 2015-09-01 15:46+0000\n"
+"POT-Creation-Date: 2015-09-11 22:18+0200\n"
+"PO-Revision-Date: 2015-09-01 17:25+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Spanish (Colombia) (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/es_CO/)\n"
 "MIME-Version: 1.0\n"
@@ -51,9 +51,9 @@ msgstr ""
 #: admin/fai/class_faiPartitionTable.inc:209
 #: admin/fai/class_faiPartitionTable.inc:250
 #: admin/fai/class_faiTemplate.inc:114
-#: admin/systems/services/repository/class_serviceRepository.inc:214
-#: admin/systems/services/repository/class_serviceRepository.inc:231
-#: admin/systems/services/repository/class_serviceRepository.inc:235
+#: admin/systems/services/repository/class_serviceRepository.inc:215
+#: admin/systems/services/repository/class_serviceRepository.inc:232
+#: admin/systems/services/repository/class_serviceRepository.inc:236
 msgid "LDAP error"
 msgstr ""
 
@@ -66,24 +66,24 @@ msgstr ""
 msgid "Infrastructure service"
 msgstr ""
 
-#: admin/fai/class_faiPackage.inc:294
+#: admin/fai/class_faiPackage.inc:297
 msgid "Unkown packages"
 msgstr ""
 
-#: admin/fai/class_faiPackage.inc:365
+#: admin/fai/class_faiPackage.inc:368
 #: admin/fai/faiPackageConfiguration.tpl.c:2
 msgid "Package"
 msgstr ""
 
-#: admin/fai/class_faiPackage.inc:366
+#: admin/fai/class_faiPackage.inc:369
 msgid "FAI Package list"
 msgstr ""
 
-#: admin/fai/class_faiPackage.inc:369
+#: admin/fai/class_faiPackage.inc:372
 msgid "FAI Package"
 msgstr ""
 
-#: admin/fai/class_faiPackage.inc:385
+#: admin/fai/class_faiPackage.inc:388
 #: admin/fai/class_faiPartitionTable.inc:304
 #: admin/fai/class_faiTemplateEntry.inc:140 admin/fai/class_faiProfile.inc:49
 #: admin/fai/class_faiScript.inc:50 admin/fai/class_faiTemplate.inc:173
@@ -91,19 +91,19 @@ msgstr ""
 msgid "Properties"
 msgstr "Propiedades"
 
-#: admin/fai/class_faiPackage.inc:388
+#: admin/fai/class_faiPackage.inc:391
 #: admin/fai/class_faiPartitionTable.inc:307 admin/fai/class_faiProfile.inc:52
 #: admin/fai/class_faiScript.inc:53 admin/fai/class_faiTemplate.inc:176
 #: admin/fai/class_faiHook.inc:53 admin/fai/class_faiVariable.inc:53
 msgid "Class name"
 msgstr ""
 
-#: admin/fai/class_faiPackage.inc:388 admin/fai/class_faiScript.inc:53
+#: admin/fai/class_faiPackage.inc:391 admin/fai/class_faiScript.inc:53
 #: admin/fai/class_faiHook.inc:53 admin/fai/class_faiVariable.inc:53
 msgid "Variables class name"
 msgstr ""
 
-#: admin/fai/class_faiPackage.inc:392
+#: admin/fai/class_faiPackage.inc:395
 #: admin/fai/class_faiPartitionTable.inc:311
 #: admin/fai/class_faiDiskEntry.inc:741
 #: admin/fai/class_faiTemplateEntry.inc:147 admin/fai/class_faiProfile.inc:56
@@ -115,48 +115,48 @@ msgstr ""
 msgid "Description"
 msgstr "Descripción"
 
-#: admin/fai/class_faiPackage.inc:392
+#: admin/fai/class_faiPackage.inc:395
 #: admin/fai/class_faiPartitionTable.inc:311 admin/fai/class_faiProfile.inc:56
 #: admin/fai/class_faiScript.inc:57 admin/fai/class_faiTemplate.inc:180
 #: admin/fai/class_faiHook.inc:57 admin/fai/class_faiVariable.inc:57
 msgid "Short description of the class"
 msgstr ""
 
-#: admin/fai/class_faiPackage.inc:398 admin/systems/class_faiStartup.inc:90
+#: admin/fai/class_faiPackage.inc:401 admin/systems/class_faiStartup.inc:90
 msgid "Repository"
 msgstr ""
 
-#: admin/fai/class_faiPackage.inc:401 admin/systems/class_faiStartup.inc:78
+#: admin/fai/class_faiPackage.inc:404 admin/systems/class_faiStartup.inc:78
 #: admin/systems/services/repository/class_serviceRepository.inc:40
 msgid "Release"
 msgstr ""
 
-#: admin/fai/class_faiPackage.inc:401
+#: admin/fai/class_faiPackage.inc:404
 msgid "Debian release concerned"
 msgstr ""
 
-#: admin/fai/class_faiPackage.inc:405
+#: admin/fai/class_faiPackage.inc:408
 #: admin/systems/services/repository/class_serviceRepository.inc:47
 msgid "Sections"
 msgstr ""
 
-#: admin/fai/class_faiPackage.inc:405
+#: admin/fai/class_faiPackage.inc:408
 msgid "Sections concerned"
 msgstr ""
 
-#: admin/fai/class_faiPackage.inc:409
+#: admin/fai/class_faiPackage.inc:412
 msgid "Install method"
 msgstr ""
 
-#: admin/fai/class_faiPackage.inc:409
+#: admin/fai/class_faiPackage.inc:412
 msgid "Install method to use for this package list"
 msgstr ""
 
-#: admin/fai/class_faiPackage.inc:420
+#: admin/fai/class_faiPackage.inc:423
 msgid "Packages"
 msgstr ""
 
-#: admin/fai/class_faiPackage.inc:424
+#: admin/fai/class_faiPackage.inc:427
 msgid "Packages in this class"
 msgstr ""
 
@@ -785,53 +785,61 @@ msgstr ""
 msgid "Which distribution is this repository for"
 msgstr ""
 
-#: admin/systems/services/repository/class_serviceRepository.inc:140
+#: admin/systems/services/repository/class_serviceRepository.inc:141
 msgid "Repositories"
 msgstr ""
 
-#: admin/systems/services/repository/class_serviceRepository.inc:145
+#: admin/systems/services/repository/class_serviceRepository.inc:146
 msgid "Repositories this server hosts"
 msgstr ""
 
-#: admin/systems/services/repository/class_serviceRepository.inc:160
+#: admin/systems/services/repository/class_serviceRepository.inc:161
 msgid "Package repository"
 msgstr ""
 
-#: admin/systems/services/repository/class_serviceRepository.inc:161
+#: admin/systems/services/repository/class_serviceRepository.inc:162
 msgid "Package repository information"
 msgstr ""
 
-#: admin/systems/services/monitor/class_argonautFAIMonitorConfig.inc:28
+#: admin/systems/services/monitor/class_argonautFAIMonitor.inc:28
 msgid "Argonaut FAI monitor"
 msgstr ""
 
-#: admin/systems/services/monitor/class_argonautFAIMonitorConfig.inc:29
-#: admin/systems/services/monitor/class_argonautFAIMonitorConfig.inc:40
+#: admin/systems/services/monitor/class_argonautFAIMonitor.inc:29
+#: admin/systems/services/monitor/class_argonautFAIMonitor.inc:40
 msgid "Argonaut FAI monitor settings"
 msgstr ""
 
-#: admin/systems/services/monitor/class_argonautFAIMonitorConfig.inc:43
+#: admin/systems/services/monitor/class_argonautFAIMonitor.inc:43
 msgid "Port"
 msgstr ""
 
-#: admin/systems/services/monitor/class_argonautFAIMonitorConfig.inc:43
+#: admin/systems/services/monitor/class_argonautFAIMonitor.inc:43
 msgid "The port argonaut-fai-monitor should listen on. Default is 4711."
 msgstr ""
 
-#: admin/systems/services/monitor/class_argonautFAIMonitorConfig.inc:48
+#: admin/systems/services/monitor/class_argonautFAIMonitor.inc:48
 msgid "Timeout"
 msgstr ""
 
-#: admin/systems/services/monitor/class_argonautFAIMonitorConfig.inc:48
+#: admin/systems/services/monitor/class_argonautFAIMonitor.inc:48
 msgid "The timeout for bad clients. 0 to disable."
 msgstr ""
 
-#: admin/systems/services/monitor/class_argonautFAIMonitorConfig.inc:53
+#: admin/systems/services/monitor/class_argonautFAIMonitor.inc:53
 msgid "CA certificate"
 msgstr ""
 
-#: admin/systems/services/monitor/class_argonautFAIMonitorConfig.inc:53
+#: admin/systems/services/monitor/class_argonautFAIMonitor.inc:53
 msgid "Path to the CA certificate file on Argonaut FAI monitor server"
+msgstr ""
+
+#: admin/systems/services/monitor/class_argonautFAIMonitor.inc:58
+msgid "Log directory"
+msgstr ""
+
+#: admin/systems/services/monitor/class_argonautFAIMonitor.inc:58
+msgid "Directory in which argonaut-fai-monitor will store its log"
 msgstr ""
 
 #: config/fai/class_faiConfig.inc:28

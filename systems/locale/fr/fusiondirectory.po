@@ -5,13 +5,14 @@
 # Translators:
 # Benoit Mortier <benoit.mortier@opensides.be>, 2015
 # MCMic, 2015
+# MCMic, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2015-08-26 09:38+0200\n"
-"PO-Revision-Date: 2015-08-31 14:58+0000\n"
-"Last-Translator: MCMic\n"
+"POT-Creation-Date: 2015-09-11 22:19+0200\n"
+"PO-Revision-Date: 2015-09-11 20:29+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: French (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -100,15 +101,15 @@ msgstr "Analyse du système"
 #: admin/systems/services/class_goService.inc:123
 #: admin/systems/services/class_goService.inc:151
 #: admin/systems/services/class_goService.inc:187
-#: admin/systems/class_networkSettings.inc:481
-#: admin/systems/class_networkSettings.inc:494
-#: admin/systems/class_networkSettings.inc:767
-#: admin/systems/class_networkSettings.inc:826
-#: admin/systems/class_networkSettings.inc:845
-#: admin/systems/class_networkSettings.inc:862
-#: admin/systems/class_networkSettings.inc:871
-#: admin/systems/class_networkSettings.inc:889
-#: admin/systems/class_networkSettings.inc:961
+#: admin/systems/class_networkSettings.inc:467
+#: admin/systems/class_networkSettings.inc:480
+#: admin/systems/class_networkSettings.inc:753
+#: admin/systems/class_networkSettings.inc:812
+#: admin/systems/class_networkSettings.inc:831
+#: admin/systems/class_networkSettings.inc:848
+#: admin/systems/class_networkSettings.inc:857
+#: admin/systems/class_networkSettings.inc:875
+#: admin/systems/class_networkSettings.inc:947
 msgid "LDAP error"
 msgstr "Erreur LDAP"
 
@@ -472,7 +473,7 @@ msgstr "Sélectionnez l'action à exécuter sur le terminal"
 #: admin/systems/class_phoneGeneric.inc:83
 #: admin/systems/class_componentGeneric.inc:74
 #: admin/systems/class_mobilePhoneGeneric.inc:106
-#: admin/systems/class_networkSettings.inc:1026
+#: admin/systems/class_networkSettings.inc:1012
 msgid "Network settings"
 msgstr "Paramètres réseaux"
 
@@ -579,12 +580,11 @@ msgstr "Enlever l'extension d'imprimante"
 #: admin/systems/class_serverService.inc:393
 #: admin/systems/class_systemManagement.inc:226
 #: admin/systems/services/shares/class_serviceShare.inc:103
-#: admin/systems/class_networkSettings.inc:309
-#: admin/systems/class_networkSettings.inc:340
-#: admin/systems/class_networkSettings.inc:594
-#: admin/systems/class_networkSettings.inc:601
-#: admin/systems/class_networkSettings.inc:607
-#: admin/systems/class_networkSettings.inc:614
+#: admin/systems/class_networkSettings.inc:328
+#: admin/systems/class_networkSettings.inc:580
+#: admin/systems/class_networkSettings.inc:587
+#: admin/systems/class_networkSettings.inc:593
+#: admin/systems/class_networkSettings.inc:600
 msgid "Error"
 msgstr "Erreur"
 
@@ -1315,98 +1315,94 @@ msgstr "Indique si la liste de certificats révoqués (CRL) de l'autorité de ce
 msgid "LDAP"
 msgstr "LDAP"
 
-#: admin/systems/class_networkSettings.inc:309
-msgid "NOT IMPLEMENTED"
-msgstr "PAS IMPLÉMENTÉ"
-
-#: admin/systems/class_networkSettings.inc:440
+#: admin/systems/class_networkSettings.inc:428
 msgid "Not matching"
 msgstr "Ne correspond pas"
 
-#: admin/systems/class_networkSettings.inc:594
+#: admin/systems/class_networkSettings.inc:580
 #, php-format
 msgid "Was not able to contact argonaut server: %s"
 msgstr "Impossible de contacter le serveur Argonaut : %s"
 
-#: admin/systems/class_networkSettings.inc:601
+#: admin/systems/class_networkSettings.inc:587
 #, php-format
 msgid "Was not able to find DNS server for zone %s"
 msgstr "Impossible de trouver le serveur DNS pour la zone %s"
 
-#: admin/systems/class_networkSettings.inc:607
+#: admin/systems/class_networkSettings.inc:593
 #, php-format
 msgid "Was not able to find mac address of DNS server %s"
 msgstr "Impossible de trouver l'adresse mac du serveur DNS pour la zone %s"
 
-#: admin/systems/class_networkSettings.inc:614
+#: admin/systems/class_networkSettings.inc:600
 #, php-format
 msgid "Was not able to launch ldap2zone: %s"
 msgstr "Impossible de lancer ldap2zone : %s"
 
-#: admin/systems/class_networkSettings.inc:640
+#: admin/systems/class_networkSettings.inc:626
 #, php-format
 msgid "IP address %s"
 msgstr "Adresse IP %s"
 
-#: admin/systems/class_networkSettings.inc:648
-#: admin/systems/class_networkSettings.inc:661
-#: admin/systems/class_networkSettings.inc:663
-#: admin/systems/class_networkSettings.inc:1032
+#: admin/systems/class_networkSettings.inc:634
+#: admin/systems/class_networkSettings.inc:647
+#: admin/systems/class_networkSettings.inc:649
+#: admin/systems/class_networkSettings.inc:1018
 msgid "IP address"
 msgstr "Adresse IP"
 
-#: admin/systems/class_networkSettings.inc:654
-#: admin/systems/class_networkSettings.inc:670
-#: admin/systems/class_networkSettings.inc:672
-#: admin/systems/class_networkSettings.inc:1033
+#: admin/systems/class_networkSettings.inc:640
+#: admin/systems/class_networkSettings.inc:656
+#: admin/systems/class_networkSettings.inc:658
+#: admin/systems/class_networkSettings.inc:1019
 msgid "MAC address"
 msgstr "Adresse MAC"
 
-#: admin/systems/class_networkSettings.inc:686
+#: admin/systems/class_networkSettings.inc:672
 #, php-format
 msgid "The IP address '%s' is not part of the selected reverse zone '%s'!"
 msgstr "L'adresse spécifiée '%s' ne correspond pas à l'entrée de la zone inverse sélectionnée '%s' !"
 
-#: admin/systems/class_networkSettings.inc:696
+#: admin/systems/class_networkSettings.inc:682
 #, php-format
 msgid "Record type '%s' is duplicated!"
 msgstr "L'enregistrement de type '%s' est dupliqué !"
 
-#: admin/systems/class_networkSettings.inc:703
+#: admin/systems/class_networkSettings.inc:689
 #, php-format
 msgid "Uniq record type '%s' is duplicated!"
 msgstr "L'enregistrement de type '%s' est dupliqué !"
 
-#: admin/systems/class_networkSettings.inc:715
+#: admin/systems/class_networkSettings.inc:701
 #, php-format
 msgid ""
 "The IP address '%s' will be added as 'A Record', this will be done "
 "automatically, please remove the record."
 msgstr "L'adresse IP '%s' est ajoutée comme un 'A' record, ceci sera fait automatiquement, veuillez enlever l'enregistrement."
 
-#: admin/systems/class_networkSettings.inc:722
+#: admin/systems/class_networkSettings.inc:708
 #, php-format
 msgid "Only lowercase records are allowed, please check your '%ss'."
 msgstr "Seulement les minuscules sont autorisées, veuillez vérifier votre '%ss'."
 
-#: admin/systems/class_networkSettings.inc:988
+#: admin/systems/class_networkSettings.inc:974
 msgid "Delete"
 msgstr "Supprimer"
 
-#: admin/systems/class_networkSettings.inc:994
+#: admin/systems/class_networkSettings.inc:980
 msgid "Add"
 msgstr "Ajouter"
 
-#: admin/systems/class_networkSettings.inc:1025
+#: admin/systems/class_networkSettings.inc:1011
 #: addons/dashboard/class_dashBoardNetwork.inc:127
 msgid "Network"
 msgstr "Réseau"
 
-#: admin/systems/class_networkSettings.inc:1040
+#: admin/systems/class_networkSettings.inc:1026
 msgid "DNS configuration"
 msgstr "Configuration DNS"
 
-#: admin/systems/class_networkSettings.inc:1043
+#: admin/systems/class_networkSettings.inc:1029
 msgid "DHCP configuration"
 msgstr "Configuration DHCP"
 
@@ -1617,72 +1613,37 @@ msgstr "Proposer une adresse ip"
 msgid "MAC-address"
 msgstr "Adresse MAC"
 
-#: admin/systems/network.tpl.c:17
-msgid "Autodetect"
-msgstr "Autodétection"
-
-#: admin/systems/network.tpl.c:20 admin/systems/network.tpl.c:23
+#: admin/systems/network.tpl.c:17 admin/systems/network.tpl.c:20
 msgid "Enable DHCP for this device"
 msgstr "Activer le DHCP pour ce périphérique"
 
-#: admin/systems/network.tpl.c:26 admin/systems/network.tpl.c:50
+#: admin/systems/network.tpl.c:23 admin/systems/network.tpl.c:47
 msgid "not configured"
 msgstr "non configuré"
 
-#: admin/systems/network.tpl.c:29
+#: admin/systems/network.tpl.c:26
 msgid "Parent node"
 msgstr "Nœud parent"
 
-#: admin/systems/network.tpl.c:32
+#: admin/systems/network.tpl.c:29
 msgid "Edit settings"
 msgstr "Éditer les paramètres"
 
-#: admin/systems/network.tpl.c:35 admin/systems/network.tpl.c:47
+#: admin/systems/network.tpl.c:32 admin/systems/network.tpl.c:44
 msgid "Enable DNS for this device"
 msgstr "Activer le DNS pour ce périphérique"
 
-#: admin/systems/network.tpl.c:38
+#: admin/systems/network.tpl.c:35
 msgid "Zone"
 msgstr "Zone"
 
-#: admin/systems/network.tpl.c:41
+#: admin/systems/network.tpl.c:38
 msgid "TTL"
 msgstr "TTL"
 
-#: admin/systems/network.tpl.c:44
+#: admin/systems/network.tpl.c:41
 msgid "Dns records"
 msgstr "Enregistrements DNS"
-
-#: admin/systems/password.tpl.c:2
-msgid ""
-"To change the terminal root password use the fields below. The changes take "
-"effect during the next reboot. Please memorize the new password, because you"
-" wouldn't be able to log in."
-msgstr "Pour changer le mot de passe root du terminal, utilisez les champs ci-dessous. Les changements prennent effet au prochain démarrage. Veuillez mémoriser le nouveau mot de passe, sinon vous ne pourrez pas vous identifier."
-
-#: admin/systems/password.tpl.c:5
-msgid "Leave fields blank for password inheritance from default entries."
-msgstr "Laissez les champs vides pour obtenir le mot de passe depuis les entrées par défaut."
-
-#: admin/systems/password.tpl.c:8
-msgid "Changing the password impinges on authentification only."
-msgstr "Changer le mot de passe influe seulement sur l'authentification."
-
-#: admin/systems/password.tpl.c:11
-msgid "New password"
-msgstr "Nouveau mot de passe"
-
-#: admin/systems/password.tpl.c:14
-msgid "Repeat new password"
-msgstr "Confirmation du nouveau mot de passe"
-
-#: admin/systems/password.tpl.c:17
-msgid "Password strength"
-msgstr "Sécurité du mot de passe"
-
-#: admin/systems/password.tpl.c:20
-msgid "Set password"
-msgstr "Changer le mot de passe"
 
 #: admin/systems/server_import.tpl.c:2
 msgid ""

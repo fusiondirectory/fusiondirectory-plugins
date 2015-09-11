@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2015-09-01 19:23+0200\n"
+"POT-Creation-Date: 2015-09-11 22:19+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FusionDirectory project <contact@fusiondirectory.org>\n"
 "Language-Team: English\n"
@@ -86,6 +86,7 @@ msgstr ""
 #: admin/groups/samba/class_sambaGroup.inc:133
 #: personal/samba/class_sambaAccount.inc:478
 #: personal/samba/class_sambaAccount.inc:504
+#: personal/samba/class_sambaAccount.inc:520
 msgid "Warning"
 msgstr ""
 
@@ -577,6 +578,11 @@ msgstr ""
 #: personal/samba/class_sambaAccount.inc:505
 msgid ""
 "Cannot convert primary group to samba group: group cannot be identified!"
+msgstr ""
+
+#: personal/samba/class_sambaAccount.inc:521
+msgid ""
+"Cannot convert primary group to samba group: group samba tab is disabled!"
 msgstr ""
 
 #: config/samba/class_sambaPluginConfig.inc:29

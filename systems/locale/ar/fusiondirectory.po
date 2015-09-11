@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2015-08-26 09:38+0200\n"
-"PO-Revision-Date: 2015-08-12 10:07+0000\n"
+"POT-Creation-Date: 2015-09-11 22:19+0200\n"
+"PO-Revision-Date: 2015-09-11 20:29+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Arabic (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/ar/)\n"
 "MIME-Version: 1.0\n"
@@ -98,15 +98,15 @@ msgstr ""
 #: admin/systems/services/class_goService.inc:123
 #: admin/systems/services/class_goService.inc:151
 #: admin/systems/services/class_goService.inc:187
-#: admin/systems/class_networkSettings.inc:481
-#: admin/systems/class_networkSettings.inc:494
-#: admin/systems/class_networkSettings.inc:767
-#: admin/systems/class_networkSettings.inc:826
-#: admin/systems/class_networkSettings.inc:845
-#: admin/systems/class_networkSettings.inc:862
-#: admin/systems/class_networkSettings.inc:871
-#: admin/systems/class_networkSettings.inc:889
-#: admin/systems/class_networkSettings.inc:961
+#: admin/systems/class_networkSettings.inc:467
+#: admin/systems/class_networkSettings.inc:480
+#: admin/systems/class_networkSettings.inc:753
+#: admin/systems/class_networkSettings.inc:812
+#: admin/systems/class_networkSettings.inc:831
+#: admin/systems/class_networkSettings.inc:848
+#: admin/systems/class_networkSettings.inc:857
+#: admin/systems/class_networkSettings.inc:875
+#: admin/systems/class_networkSettings.inc:947
 msgid "LDAP error"
 msgstr ""
 
@@ -470,7 +470,7 @@ msgstr ""
 #: admin/systems/class_phoneGeneric.inc:83
 #: admin/systems/class_componentGeneric.inc:74
 #: admin/systems/class_mobilePhoneGeneric.inc:106
-#: admin/systems/class_networkSettings.inc:1026
+#: admin/systems/class_networkSettings.inc:1012
 msgid "Network settings"
 msgstr ""
 
@@ -577,12 +577,11 @@ msgstr ""
 #: admin/systems/class_serverService.inc:393
 #: admin/systems/class_systemManagement.inc:226
 #: admin/systems/services/shares/class_serviceShare.inc:103
-#: admin/systems/class_networkSettings.inc:309
-#: admin/systems/class_networkSettings.inc:340
-#: admin/systems/class_networkSettings.inc:594
-#: admin/systems/class_networkSettings.inc:601
-#: admin/systems/class_networkSettings.inc:607
-#: admin/systems/class_networkSettings.inc:614
+#: admin/systems/class_networkSettings.inc:328
+#: admin/systems/class_networkSettings.inc:580
+#: admin/systems/class_networkSettings.inc:587
+#: admin/systems/class_networkSettings.inc:593
+#: admin/systems/class_networkSettings.inc:600
 msgid "Error"
 msgstr "خطأ"
 
@@ -1313,98 +1312,94 @@ msgstr ""
 msgid "LDAP"
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:309
-msgid "NOT IMPLEMENTED"
-msgstr ""
-
-#: admin/systems/class_networkSettings.inc:440
+#: admin/systems/class_networkSettings.inc:428
 msgid "Not matching"
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:594
+#: admin/systems/class_networkSettings.inc:580
 #, php-format
 msgid "Was not able to contact argonaut server: %s"
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:601
+#: admin/systems/class_networkSettings.inc:587
 #, php-format
 msgid "Was not able to find DNS server for zone %s"
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:607
+#: admin/systems/class_networkSettings.inc:593
 #, php-format
 msgid "Was not able to find mac address of DNS server %s"
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:614
+#: admin/systems/class_networkSettings.inc:600
 #, php-format
 msgid "Was not able to launch ldap2zone: %s"
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:640
+#: admin/systems/class_networkSettings.inc:626
 #, php-format
 msgid "IP address %s"
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:648
-#: admin/systems/class_networkSettings.inc:661
-#: admin/systems/class_networkSettings.inc:663
-#: admin/systems/class_networkSettings.inc:1032
+#: admin/systems/class_networkSettings.inc:634
+#: admin/systems/class_networkSettings.inc:647
+#: admin/systems/class_networkSettings.inc:649
+#: admin/systems/class_networkSettings.inc:1018
 msgid "IP address"
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:654
-#: admin/systems/class_networkSettings.inc:670
-#: admin/systems/class_networkSettings.inc:672
-#: admin/systems/class_networkSettings.inc:1033
+#: admin/systems/class_networkSettings.inc:640
+#: admin/systems/class_networkSettings.inc:656
+#: admin/systems/class_networkSettings.inc:658
+#: admin/systems/class_networkSettings.inc:1019
 msgid "MAC address"
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:686
+#: admin/systems/class_networkSettings.inc:672
 #, php-format
 msgid "The IP address '%s' is not part of the selected reverse zone '%s'!"
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:696
+#: admin/systems/class_networkSettings.inc:682
 #, php-format
 msgid "Record type '%s' is duplicated!"
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:703
+#: admin/systems/class_networkSettings.inc:689
 #, php-format
 msgid "Uniq record type '%s' is duplicated!"
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:715
+#: admin/systems/class_networkSettings.inc:701
 #, php-format
 msgid ""
 "The IP address '%s' will be added as 'A Record', this will be done "
 "automatically, please remove the record."
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:722
+#: admin/systems/class_networkSettings.inc:708
 #, php-format
 msgid "Only lowercase records are allowed, please check your '%ss'."
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:988
+#: admin/systems/class_networkSettings.inc:974
 msgid "Delete"
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:994
+#: admin/systems/class_networkSettings.inc:980
 msgid "Add"
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:1025
+#: admin/systems/class_networkSettings.inc:1011
 #: addons/dashboard/class_dashBoardNetwork.inc:127
 msgid "Network"
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:1040
+#: admin/systems/class_networkSettings.inc:1026
 msgid "DNS configuration"
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:1043
+#: admin/systems/class_networkSettings.inc:1029
 msgid "DHCP configuration"
 msgstr ""
 
@@ -1615,71 +1610,36 @@ msgstr ""
 msgid "MAC-address"
 msgstr ""
 
-#: admin/systems/network.tpl.c:17
-msgid "Autodetect"
-msgstr ""
-
-#: admin/systems/network.tpl.c:20 admin/systems/network.tpl.c:23
+#: admin/systems/network.tpl.c:17 admin/systems/network.tpl.c:20
 msgid "Enable DHCP for this device"
 msgstr ""
 
-#: admin/systems/network.tpl.c:26 admin/systems/network.tpl.c:50
+#: admin/systems/network.tpl.c:23 admin/systems/network.tpl.c:47
 msgid "not configured"
 msgstr ""
 
-#: admin/systems/network.tpl.c:29
+#: admin/systems/network.tpl.c:26
 msgid "Parent node"
 msgstr ""
 
-#: admin/systems/network.tpl.c:32
+#: admin/systems/network.tpl.c:29
 msgid "Edit settings"
 msgstr ""
 
-#: admin/systems/network.tpl.c:35 admin/systems/network.tpl.c:47
+#: admin/systems/network.tpl.c:32 admin/systems/network.tpl.c:44
 msgid "Enable DNS for this device"
 msgstr ""
 
-#: admin/systems/network.tpl.c:38
+#: admin/systems/network.tpl.c:35
 msgid "Zone"
 msgstr ""
 
-#: admin/systems/network.tpl.c:41
+#: admin/systems/network.tpl.c:38
 msgid "TTL"
 msgstr ""
 
-#: admin/systems/network.tpl.c:44
+#: admin/systems/network.tpl.c:41
 msgid "Dns records"
-msgstr ""
-
-#: admin/systems/password.tpl.c:2
-msgid ""
-"To change the terminal root password use the fields below. The changes take "
-"effect during the next reboot. Please memorize the new password, because you"
-" wouldn't be able to log in."
-msgstr ""
-
-#: admin/systems/password.tpl.c:5
-msgid "Leave fields blank for password inheritance from default entries."
-msgstr ""
-
-#: admin/systems/password.tpl.c:8
-msgid "Changing the password impinges on authentification only."
-msgstr ""
-
-#: admin/systems/password.tpl.c:11
-msgid "New password"
-msgstr ""
-
-#: admin/systems/password.tpl.c:14
-msgid "Repeat new password"
-msgstr ""
-
-#: admin/systems/password.tpl.c:17
-msgid "Password strength"
-msgstr ""
-
-#: admin/systems/password.tpl.c:20
-msgid "Set password"
 msgstr ""
 
 #: admin/systems/server_import.tpl.c:2

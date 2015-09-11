@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2015-08-26 09:38+0200\n"
-"PO-Revision-Date: 2015-05-30 18:40+0000\n"
+"POT-Creation-Date: 2015-09-11 22:19+0200\n"
+"PO-Revision-Date: 2015-09-11 20:27+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Greek (Greece) (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/el_GR/)\n"
 "MIME-Version: 1.0\n"
@@ -85,7 +85,8 @@ msgstr ""
 
 #: admin/groups/samba/class_sambaGroup.inc:133
 #: personal/samba/class_sambaAccount.inc:478
-#: personal/samba/class_sambaAccount.inc:501
+#: personal/samba/class_sambaAccount.inc:504
+#: personal/samba/class_sambaAccount.inc:520
 msgid "Warning"
 msgstr ""
 
@@ -574,9 +575,14 @@ msgstr ""
 msgid "The windows user manager allows eight clients at maximum!"
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:502
+#: personal/samba/class_sambaAccount.inc:505
 msgid ""
 "Cannot convert primary group to samba group: group cannot be identified!"
+msgstr ""
+
+#: personal/samba/class_sambaAccount.inc:521
+msgid ""
+"Cannot convert primary group to samba group: group samba tab is disabled!"
 msgstr ""
 
 #: config/samba/class_sambaPluginConfig.inc:29
