@@ -79,10 +79,10 @@ class kolabAccount extends simplePlugin
   static function plInfo()
   {
     return array(
-      'plShortName'     => _('Kolab'),
-      'plDescription'   => _('Kolab account settings'),
-      'plIcon'          => 'plugins/kolab/images/icon.png',
-      'plSmallIcon'     => 'plugins/kolab/images/iconMini.png',
+      'plShortName'     => _('Kolab 2'),
+      'plDescription'   => _('Kolab 2 account settings'),
+      'plIcon'          => 'plugins/kolab2/images/icon.png',
+      'plSmallIcon'     => 'plugins/kolab2/images/iconMini.png',
       'plSelfModify'    => TRUE,
       'plPriority'      => 20,
       'plObjectType'    => array('user'),
@@ -97,7 +97,7 @@ class kolabAccount extends simplePlugin
   {
     return array (
       'section1' => array (
-        'name'  => _('Kolab account'),
+        'name'  => _('Kolab 2 account'),
         'attrs' => array (
           new SetAttribute (
             new MailAttribute (
