@@ -1,5 +1,4 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
@@ -37,7 +36,6 @@ class FAIreleaseAttribute extends SelectAttribute
     if (isset($this->plugin)) {
       $this->plugin->attributesAccess['FAIclass']->attributes['profil']->setChoices($this->plugin->cache['PROFILES'][$value]);
       $this->plugin->attributesAccess['FAIdebianMirror']->setChoices($this->plugin->cache['SERVERS'][$value]);
-      $this->plugin->attributesAccess['gotoBootKernel']->setRelease($value);
     }
   }
 
@@ -90,19 +88,6 @@ class faiStartup extends simplePlugin
             _('Repository'), _('FAI Debian repository to be used for installation'),
             'FAIdebianMirror', TRUE
           ),
-        )
-      ),
-      'startup' => array (
-        'name' => _('Startup parameters'),
-        'attrs' => array (
-          new BootKernelAttribute (
-            _('Boot kernel'),  _('Linux kernel to be installed and booted'),
-            'gotoBootKernel', FALSE
-          ),
-          new StringAttribute (
-            _('Boot kernel parameters'), _('Linux kernel parameters to be ran'),
-            'gotoKernelParameters', FALSE
-          )
         )
       ),
     );
