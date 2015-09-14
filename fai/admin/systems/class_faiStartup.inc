@@ -108,48 +108,33 @@ class faiStartup extends simplePlugin
    */
   function update_fai_cache()
   {
-    /* Get the list of available servers and their releases.
-     */
+    /* Get the list of available servers and their releases */
     if (!isset($this->cache['SERVERS'])) {
-      $o_queue = new supportDaemon();
-      $tmp = $o_queue->FAI_get_server();
-      if ($o_queue->is_error()) {
-        msg_dialog::display(_("Infrastructure service"), msgPool::siError($o_queue->get_error()), ERROR_DIALOG);
-        $this->cache = array();
-        return;
-      } else {
-        $this->cache['SERVERS'] = array();
-        foreach ($tmp as $entry) {
-          if ($entry['INSTALL'] != "install") {
-              continue;
-          }
-          $rel = $entry['FAI_RELEASE'];
-          if (!isset($this->cache['SERVERS'][$rel])) {
-            $this->cache['SERVERS'][$rel] = array();
-          }
-          $this->cache['SERVERS'][$rel][] = $entry['URL'];
-          uksort($this->cache['SERVERS'][$rel], 'strnatcasecmp');
+      $tmp = serviceRepository::getServers();
+      $this->cache['SERVERS'] = array();
+      foreach ($tmp as $entry) {
+        if ($entry['INSTALL'] != 'install') {
+            continue;
         }
+        $rel = $entry['FAI_RELEASE'];
+        if (!isset($this->cache['SERVERS'][$rel])) {
+          $this->cache['SERVERS'][$rel] = array();
+        }
+        $this->cache['SERVERS'][$rel][] = $entry['URL'];
+        uksort($this->cache['SERVERS'][$rel], 'strnatcasecmp');
       }
     }
 
     if (!isset($this->cache['PROFILES'])) {
       $this->cache['PROFILES'] = array();
-      $o_queue = new supportDaemon();
       foreach (array_keys($this->cache['SERVERS']) as $release) {
-        /* Get the list of available servers and their releases. */
-        $tmp = $o_queue->FAI_get_profiles($release);
+        /* Get the list of available profiles for each release */
+        $tmp = objects::ls('faiProfile', 'cn', NULL, "(ou:dn:=$release)");
 
-        if ($o_queue->is_error()) {
-          msg_dialog::display(_("Infrastructure service"), msgPool::siError($o_queue->get_error()), ERROR_DIALOG);
-          $this->cache = array();
-          return;
+        if (empty($tmp)) {
+          unset($this->cache['SERVERS'][$release]);
         } else {
-          if (empty($tmp)) {
-            unset($this->cache['SERVERS'][$release]);
-          } else {
-            $this->cache['PROFILES'][$release] = $tmp;
-          }
+          $this->cache['PROFILES'][$release] = $tmp;
         }
       }
     }

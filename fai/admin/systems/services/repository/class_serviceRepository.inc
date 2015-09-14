@@ -238,6 +238,62 @@ class serviceRepository extends simpleService
     }
   }
 
+  /*!
+   * \brief Get all configured repository servers
+   *
+   * \return array All configured repository servers
+  */
+  static function getServers()
+  {
+    global $config;
+
+    $ldap = $config->get_ldap_link();
+    $ldap->cd($config->current['BASE']);
+    $ldap->search('(&(FAIrepository=*)(objectClass=FAIrepositoryServer))', array('FAIrepository'));
+
+    $repos = array();
+    while ($entry = $ldap->fetch()) {
+      if (isset($entry['FAIrepository'])) {
+        // Add an entry for each Repository configured for server
+        unset($entry['FAIrepository']['count']);
+        foreach ($entry['FAIrepository'] as $repo) {
+          $tmp = explode("|", $repo);
+          $infos['URL']           = $tmp[0];
+          $infos['PARENT_SERVER'] = $tmp[1];
+          $infos['FAI_RELEASE']   = $tmp[2];
+          $infos['SECTIONS']      = (empty($tmp[3])?array():explode(',', $tmp[3]));
+          $infos['INSTALL']       = $tmp[4];
+          $infos['LOCAL']         = $tmp[5];
+          $infos['ARCHS']         = (empty($tmp[6])?array():explode(',', $tmp[6]));
+          $infos['DIST']          = (isset($tmp[7])?$tmp[7]:'debian');
+          $repos[] = $infos;
+        }
+      }
+    }
+    return $repos;
+  }
+
+  /*!
+   * \brief Get all configured customs releases based on a given release
+   *
+   * \param string $release The release concerned
+   *
+   * \return array All configured customs releases based on the given release
+  */
+  static function getCustomReleases($release)
+  {
+    $list     = array();
+    $servers  = self::getServers();
+
+    foreach ($servers as $server) {
+      if (strtolower($server['INSTALL']) == strtolower("custom:$release")) {
+        $list[$server['FAI_RELEASE']] = $server['FAI_RELEASE'];
+      }
+    }
+
+    return array_values($list);
+  }
+
   static function getParentServers($distribution, $dn = NULL)
   {
     global $config;

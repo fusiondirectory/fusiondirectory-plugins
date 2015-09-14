@@ -749,60 +749,6 @@ class supportDaemon
     return preg_replace($patterns, $escaped, $str);
   }
 
-  /*!
-   * \brief Get all configured repository servers
-   *
-   * \return array All configured repository servers
-  */
-  public function FAI_get_server()
-  {
-    $ldap = $this->config->get_ldap_link();
-    $ldap->cd($this->config->current['BASE']);
-    $ldap->search("(&(FAIrepository=*)(objectClass=FAIrepositoryServer))", array("FAIrepository"));
-
-    $repos = array();
-    while ($entry = $ldap->fetch()) {
-      if (isset($entry['FAIrepository'])) {
-        // Add an entry for each Repository configured for server
-        unset($entry['FAIrepository']['count']);
-        foreach ($entry['FAIrepository'] as $repo) {
-          $tmp = explode("|", $repo);
-          $infos['URL']           = $tmp[0];
-          $infos['PARENT_SERVER'] = $tmp[1];
-          $infos['FAI_RELEASE']   = $tmp[2];
-          $infos['SECTIONS']      = (empty($tmp[3])?array():explode(",", $tmp[3]));
-          $infos['INSTALL']       = $tmp[4];
-          $infos['LOCAL']         = $tmp[5];
-          $infos['ARCHS']         = (empty($tmp[6])?array():explode(",", $tmp[6]));
-          $infos['DIST']          = (isset($tmp[7])?$tmp[7]:'debian');
-          $repos[] = $infos;
-        }
-      }
-    }
-    return $repos;
-  }
-
-  /*!
-   * \brief Get all configured customs repository servers for a given release
-   *
-   * \param string $release The release concerned
-   *
-   * \return array All configured customs repository servers for the given release
-  */
-  public function FAI_get_customs ($release)
-  {
-    $list     = array();
-    $servers  = $this->FAI_get_server();
-
-    foreach ($servers as $server) {
-      if (strtolower($server['INSTALL']) == strtolower("custom:$release")) {
-        $list[$server['FAI_RELEASE']] = $server['FAI_RELEASE'];
-      }
-    }
-
-    return array_values($list);
-  }
-
   /*! \brief  Get available kernels packages
    *
    * \param string $release The release we want kernels of
@@ -817,27 +763,6 @@ class supportDaemon
     }
     unset($kernel);
     return $kernels;
-  }
-
-  /*!
-   * \brief  Get available profiles
-   *
-   * \param string $release The release we want profiles for
-   *
-   * \return array All FAI profiles for the given release
-  */
-  public function FAI_get_profiles($release)
-  {
-    $ldap = $this->config->get_ldap_link();
-    $ldap->cd(get_ou("faiBaseRDN").$this->config->current['BASE']);
-    $ldap->search("(&(objectClass=FAIprofile)(objectClass=FAIclass)(ou:dn:=$release))", array('cn'));
-
-    $res = array();
-    while ($entry = $ldap->fetch()) {
-      $res[] = $entry['cn'][0];
-    }
-
-    return $res;
   }
 
   /*!
