@@ -19,45 +19,26 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class DebconfReleaseAttribute extends SelectAttribute
-{
-  function __construct ($label, $description, $ldapName, $required, $choices = array())
-  {
-    parent::__construct($label, $description, $ldapName, $required, $choices);
-    $this->setSubmitForm(TRUE);
-  }
-
-  function setValue ($value)
-  {
-    if (!in_array($value, $this->choices)) {
-      return;
-    }
-    parent::setValue($value);
-    if (isset($this->plugin)) {
-      $this->plugin->attributesInfo['main']['attrs']['gotoBootKernel']->setRelease($value);
-    }
-  }
-
-  function setParent (&$plugin)
-  {
-    parent::setParent($plugin);
-    //~ $this->setChoices(array_keys($this->plugin->cache['SERVERS']));
-    $this->setValue('squeeze');
-  }
-}
-
 class debconfStartup extends simplePlugin
 {
   var $displayHeader = TRUE;
 
-  /* attribute list for save action */
-  var $objectclasses        = array("debconfStartup");
+  var $objectclasses = array('debconfStartup');
 
-  var $inheritance = array("gosaGroupOfNames" => "member");
+  var $inheritance = array('gosaGroupOfNames' => 'member');
 
-  /*!
-   *  \brief The main function : information about attributes
-   */
+  static function plInfo()
+  {
+    return array(
+      'plShortName'     => _('Debconf'),
+      'plDescription'   => _('Debconf preseed startup'),
+      'plPriority'      => 9,
+      'plObjectType'    => array('workstation', 'server', 'ogroup-dynamic'),
+
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+    );
+  }
+
   static function getAttributesInfo ()
   {
     return array(
@@ -68,18 +49,10 @@ class debconfStartup extends simplePlugin
             _('Profile'), _('Debconf preseed profile to be used for installation'),
             'debconfProfile', TRUE
           ),
-          new DebconfReleaseAttribute (
+          new SelectAttribute (
             _('Release'), _('Debian release to install'),
             'debconfDebianRelease', TRUE,
             array('squeeze', 'unstable', 'wheezy')
-          ),
-          new BootKernelAttribute (
-            _('Boot kernel'),  _('Linux kernel to be installed and booted'),
-            'gotoBootKernel', FALSE
-          ),
-          new StringAttribute (
-            _('Boot kernel parameters'), _('Linux kernel parameters to be ran'),
-            'gotoKernelParameters', FALSE
           )
         )
       ),
@@ -93,30 +66,15 @@ class debconfStartup extends simplePlugin
     /* Fill profile select box */
     $ldap = $this->config->get_ldap_link();
     $ldap->ls(
-      "objectClass=organizationalUnit",
-      get_ou("debconfRDN").$this->config->current['BASE'],
-      array("ou")
+      'objectClass=organizationalUnit',
+      get_ou('debconfRDN').$this->config->current['BASE'],
+      array('ou')
     );
-    $profiles     = array();
+    $profiles = array();
     while ($attrs = $ldap->fetch()) {
-      $profiles[]     = $attrs['ou'][0];
+      $profiles[] = $attrs['ou'][0];
     }
     $this->attributesInfo['main']['attrs']['debconfProfile']->setChoices($profiles);
   }
-
-  /* Return plugin informations for acl handling */
-  static function plInfo()
-  {
-    return array(
-      'plShortName'     => _('Debconf'),
-      'plDescription'   => _('Debconf preseed startup'),
-      'plSelfModify'    => FALSE,
-      'plPriority'      => 9,
-      'plObjectType'    => array('workstation', 'server', 'ogroup-dynamic'),
-
-      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
-    );
-  }
 }
-
 ?>
