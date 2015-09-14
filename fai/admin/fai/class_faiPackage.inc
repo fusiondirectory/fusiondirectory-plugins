@@ -272,7 +272,7 @@ class PackagesAttribute extends DialogOrderedArrayAttribute
       return; // If there are no packages, no need to do anything
     }
 
-    $attrs = array("distribution", "package","version", "section", "description", "timestamp","hastemplate");
+    $attrs = array('distribution','package','version','section','description','timestamp','hastemplate');
 
     $packages = array_diff_key($this->value, $this->buffer); // packages names that are not already in the buffer
 
@@ -477,13 +477,9 @@ class faiPackage extends faiSimplePluginClass
     $this->attributesAccess['FAIpackage']->postLdapSave($this->config->get_ldap_link());
   }
 
-  /*! \brief  Returns a list of all configured servers with repositories.
-      @return Array  All repository server
-   */
   function getServerInfos()
   {
-    $o_queue  = new supportDaemon();
-    $servs    = $o_queue->FAI_get_server();
+    $servs    = serviceRepository::getServers();
     $ret      = array();
     foreach ($servs as $serv) {
       if (isset($ret[$serv['FAI_RELEASE']])) {
