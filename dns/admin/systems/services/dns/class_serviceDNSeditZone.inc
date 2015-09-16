@@ -285,7 +285,7 @@ class servdnseditZone extends plugin
     }
 
     /* Assign records list */
-    $smarty->assign("NotNew",         FALSE);
+    $smarty->assign("NotNew",         !$this->isNew);
     $smarty->assign("Mxrecords",      $div->DrawList());
     $smarty->assign("records",        $this->generateRecordsList());
     $smarty->assign("NetworkClass",   $this->NetworkClass);
