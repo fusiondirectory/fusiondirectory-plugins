@@ -23,13 +23,14 @@ class DnsRecordAttribute extends CompositeAttribute
   public static $types = array(
     'aRecord'     => 'A',
     'aAAARecord'  => 'AAAA',
+    'mXRecord'    => 'MX',
     'tXTRecord'   => 'TXT',
   );
 
   function __construct($label, $description, $ldapName, $required, $acl = '')
   {
     $attributes = array(
-      new SelectAttribute('', '', $ldapName.'_type', $required, array_keys(self::$types), '', array_values(self::$types)),
+      new SelectAttribute(_('Type'), '', $ldapName.'_type', $required, array_keys(self::$types), '', array_values(self::$types)),
       new SelectAttribute('', '', $ldapName.'_content', $required)
     );
     parent::__construct($description, $ldapName, $attributes, FALSE, FALSE, $acl, $label);
@@ -45,17 +46,23 @@ class DnsRecordAttribute extends CompositeAttribute
     $ldapName = $this->getLdapName().'_'.$type.'_content';
     if ($this->attributes[1]->getLdapName() != $ldapName) {
       switch ($type) {
-        /* we may have to use a composite attribute for this case
         case 'mXRecord':
-          $this->attributes[1] = new IntAttribute('', '', $this->getLdapName().'_int', TRUE);
-          $this->attributes[2] = new StringAttribute('', '', $this->getLdapName().'_content', TRUE);
-          array_splice($this->attributes, 3);
-        break;*/
+          $this->attributes[1] = new CompositeAttribute(
+            _('MX Record'),
+            $ldapName,
+            array(
+              new IntAttribute(_('Priority'), '', $ldapName.'_priority', TRUE, 0, FALSE),
+              new StringAttribute(_('Target'), '', $ldapName.'_target', TRUE),
+            ),
+            '/^(\S*) (\S*)$/',
+            '%s %s'
+          );
+        break;
         case 'aRecord':
-          $this->attributes[1] = new IPv4Attribute('', '', $ldapName, TRUE);
+          $this->attributes[1] = new IPv4Attribute(_('Target'), '', $ldapName, TRUE);
         break;
         default:
-          $this->attributes[1] = new StringAttribute('', '', $ldapName, TRUE);
+          $this->attributes[1] = new StringAttribute(_('Content'), '', $ldapName, TRUE);
         break;
       }
     }
@@ -86,29 +93,137 @@ class DnsRecordAttribute extends CompositeAttribute
   }
 }
 
-class DnsRecordsAttribute extends OrderedArrayAttribute
+class DnsRecordPlugin extends simplePlugin
 {
-  function __construct ($label, $description, $ldapName, $required, $values = array(), $edit_enabled = TRUE)
+  static function getAttributesInfo ()
   {
-    $attribute = new DnsRecordAttribute(
-      $label, $description,
-      $ldapName, $required
+    return array(
+      'main' => array(
+        'name'  => _('Record'),
+        'attrs' => array(
+          new StringAttribute (
+            _('Subdomain'), _('Relative subdomain name'),
+            'relativeSubdomainName', FALSE
+          ),
+          new DnsRecordAttribute (
+            _('Record'), _('DNS Record'),
+            'dnsRecord', TRUE
+          ),
+        )
+      ),
     );
-    parent::__construct($attribute, FALSE, $values, $edit_enabled);
+  }
+
+  function __construct (&$config, $dn = NULL, $parent = NULL, $value = NULL)
+  {
+    parent::__construct($config, $dn, $parent);
+
+    $this->attributesAccess['relativeSubdomainName']->setInLdap(FALSE);
+    $this->attributesAccess['dnsRecord']->setInLdap(FALSE);
+    $this->attributesAccess['dnsRecord']->setLinearRendering(FALSE);
+    if (!empty($value)) {
+      $this->relativeSubdomainName = array_shift($value);
+      $this->dnsRecord = $value;
+    }
+  }
+
+  function save()
+  {
+  }
+}
+
+class DnsRecordDialog extends GenericDialog
+{
+  protected $dialogClass = 'DnsRecordPlugin';
+
+  protected $initialDialogValue = NULL;
+
+  function __construct($simplePlugin, &$attribute, $value = array())
+  {
+    $this->attribute      = $attribute;
+    $this->dialog         = new $this->dialogClass($simplePlugin->config, $simplePlugin->dn, $simplePlugin, $value);
+    if (!empty($value)) {
+      $this->initialDialogValue = $value;
+    }
+  }
+
+  function dialog_execute ()
+  {
+    $this->dialog->save_object();
+    return $this->dialog->execute()."\n".
+    '<p class="plugbottom">'."\n".
+    '  <input type="submit" name="add_finish" value="'.msgPool::addButton().'"/>&nbsp;'."\n".
+    '  <input type="submit" name="add_cancel" value="'.msgPool::cancelButton().'"/>'."\n".
+    '</p>';
+  }
+
+  function handle_finish ()
+  {
+    $this->dialog->save_object();
+
+    /* Check for errors */
+    $checks = $this->dialog->check();
+    if (count($checks)) {
+      foreach ($checks as $msg) {
+        msg_dialog::display(_('Error'), $msg, ERROR_DIALOG);
+      }
+      return $this->dialog->execute();
+    } else {
+      /* add new/edited zone */
+      $ret = array_merge(array($this->dialog->relativeSubdomainName), $this->dialog->dnsRecord);
+      $this->attribute->addValue($ret);
+      return FALSE;
+    }
+  }
+
+  function handle_cancel ()
+  {
+    if ($this->initialDialogValue !== NULL) {
+      $this->attribute->addValue($this->initialDialogValue);
+    }
+    return FALSE;
+  }
+}
+
+class DnsRecordsAttribute extends DialogOrderedArrayAttribute
+{
+  protected $dialogClass = 'DnsRecordDialog';
+
+  protected function getAttributeArrayValue($key, $value)
+  {
+    return array(
+      $value[0],
+      DnsRecordAttribute::$types[$value[1]],
+      $value[2],
+    );
   }
 
   protected function loadAttrValue ($attrs)
   {
+    global $config;
+
     $this->value = array();
     foreach (array_keys(DnsRecordAttribute::$types) as $type) {
       if (isset($attrs[$type]['count'])) {
         for ($i = 0; $i < $attrs[$type]['count']; $i++) {
-          $this->value[] = array($type, $attrs[$type][$i]);
+          $this->value[] = array('', $type, $attrs[$type][$i]);
         }
       }
     }
-    if ($this->order) {
-      $this->reIndexValues();
+    if (isset($attrs['dn'])) {
+      $ldap = $config->get_ldap_link();
+      $ldap->ls('objectClass=dNSZone', $attrs['dn'], array_merge(array('relativeDomainName'), array_keys(DnsRecordAttribute::$types)));
+      while ($subattrs = $ldap->fetch()) {
+        for ($i = 0; $i < $subattrs['count']; $i++) {
+          $type = $subattrs[$i];
+          if ($type == 'relativeDomainName') {
+            continue;
+          }
+          for ($j = 0; $j < $subattrs[$type]['count']; $j++) {
+            $this->value[] = array($subattrs['relativeDomainName'][0], $type, $subattrs[$type][$j]);
+          }
+        }
+      }
     }
   }
 
@@ -116,16 +231,56 @@ class DnsRecordsAttribute extends OrderedArrayAttribute
   {
     /* Remove crap made by plugin */
     unset ($attrs[$this->getLdapName()]);
-
-    if ($this->isInLdap()) {
-      foreach (array_keys(DnsRecordAttribute::$types) as $type) {
-        $value = array();
-        foreach ($this->value as $a) {
-          if ($a[0] == $type) {
-            $value[] = $a[1];
-          }
+    foreach ($this->value as $line) {
+      list ($domain, $type, $content) = $line;
+      // Only save root records here
+      if (empty($domain)) {
+        if (!isset($attrs[$type])) {
+          $attrs[$type] = array();
         }
-        $attrs[$type] = $value;
+        $attrs[$type][] = $content;
+      }
+    }
+  }
+
+  /* Special LDAP treatment that this attribute does after plugin ldap save */
+  function postLdapSave ($ldap)
+  {
+    /* First delete all old nodes */
+    $ldap->ls('objectClass=dNSZone', $this->plugin->dn, array('dn'));
+    $delete = array();
+    while ($attrs = $ldap->fetch()) {
+      $delete[] = $attrs['dn'];
+    }
+    foreach ($delete as $dn) {
+      $ldap->rmdir($dn);
+    }
+    /* Then add our values */
+    $nodes = array();
+    foreach ($this->value as $line) {
+      list ($domain, $type, $content) = $line;
+      if (empty($domain)) {
+        /* ignore root records */
+        continue;
+      }
+      if (!isset($nodes[$domain])) {
+        $nodes[$domain] = array(
+          'objectClass'         => array('dNSZone'),
+          'relativeDomainName'  => $domain,
+          'zoneName'            => $this->plugin->zoneName,
+        );
+      }
+      if (!isset($nodes[$domain][$type])) {
+        $nodes[$domain][$type] = array();
+      }
+      $nodes[$domain][$type][] = $content;
+    }
+    foreach ($nodes as $node) {
+      $dn = 'relativeDomainName='.$node['relativeDomainName'].','.$this->plugin->dn;
+      $ldap->cd($dn);
+      $ldap->add($node);
+      if (!$ldap->success()) {
+        msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_ADD, get_class()), LDAP_ERROR);
       }
     }
   }
@@ -144,10 +299,10 @@ class dnsZone extends simplePlugin
       'plDescription' => _('DNS zone'),
       'plObjectType'  => array('dnsZone' => array(
         'name'        => _('DNS zone'),
-        'filter'      => 'objectClass=dNSZone',
+        'filter'      => '(&(objectClass=dNSZone)(relativeDomainName=@))',
         'ou'          => 'ou=dns,',
         'icon'        => 'geticon.php?context=applications&icon=dns&size=16',
-        'mainAttr'    => 'relativeDomainName'
+        'mainAttr'    => 'zoneName'
       )),
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
@@ -165,8 +320,8 @@ class dnsZone extends simplePlugin
             _('Zone name'), _('Zone name'),
             'zoneName', TRUE
           ),
-          new StringAttribute (
-            _('Relative domain name'), _('Relative domain name'),
+          new HiddenAttribute (
+            //~ _('Relative domain name'), _('Relative domain name'),
             'relativeDomainName', TRUE,
             '@'
           ),
@@ -174,13 +329,20 @@ class dnsZone extends simplePlugin
       ),
       'records' => array(
         'name'  => _('Records'),
+        'class' => array('fullwidth'),
         'attrs' => array(
           new DnsRecordsAttribute(
-            _('DNS records'), _('The DNS records for this zone'),
+            '', _('The DNS records for this zone'),
             'dnsRecords', FALSE
           )
         )
       )
     );
+  }
+
+  function ldap_save ($cleanup = TRUE)
+  {
+    parent::ldap_save($cleanup);
+    $this->attributesAccess['dnsRecords']->postLdapSave($this->config->get_ldap_link());
   }
 }
