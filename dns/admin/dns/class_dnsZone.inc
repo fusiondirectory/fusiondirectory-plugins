@@ -18,81 +18,6 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class DnsRecordAttribute extends CompositeAttribute
-{
-  public static $types = array(
-    'aRecord'     => 'A',
-    'aAAARecord'  => 'AAAA',
-    'mXRecord'    => 'MX',
-    'tXTRecord'   => 'TXT',
-  );
-
-  function __construct($label, $description, $ldapName, $required, $acl = '')
-  {
-    $attributes = array(
-      new SelectAttribute(_('Type'), '', $ldapName.'_type', $required, array_keys(self::$types), '', array_values(self::$types)),
-      new SelectAttribute('', '', $ldapName.'_content', $required)
-    );
-    parent::__construct($description, $ldapName, $attributes, FALSE, FALSE, $acl, $label);
-    $this->setLinearRendering(TRUE);
-    $this->attributes[0]->setSubmitForm(TRUE);
-    $this->updateFields();
-    $this->setRequired($required);
-  }
-
-  protected function updateFields()
-  {
-    $type = $this->attributes[0]->getValue();
-    $ldapName = $this->getLdapName().'_'.$type.'_content';
-    if ($this->attributes[1]->getLdapName() != $ldapName) {
-      switch ($type) {
-        case 'mXRecord':
-          $this->attributes[1] = new CompositeAttribute(
-            _('MX Record'),
-            $ldapName,
-            array(
-              new IntAttribute(_('Priority'), '', $ldapName.'_priority', TRUE, 0, FALSE),
-              new StringAttribute(_('Target'), '', $ldapName.'_target', TRUE),
-            ),
-            '/^(\S*) (\S*)$/',
-            '%s %s'
-          );
-        break;
-        case 'aRecord':
-          $this->attributes[1] = new IPv4Attribute(_('Target'), '', $ldapName, TRUE);
-        break;
-        default:
-          $this->attributes[1] = new StringAttribute(_('Content'), '', $ldapName, TRUE);
-        break;
-      }
-    }
-    $this->setAttributes($this->attributes); // Update ACLs
-  }
-
-  function applyPostValue()
-  {
-    parent::applyPostValue();
-    $this->updateFields();
-  }
-
-  function setValue ($values)
-  {
-    if (!is_array($values)) {
-      $values = $this->inputValue($values);
-    }
-    $this->attributes[0]->setValue($values[0]);
-    $this->updateFields();
-    $this->attributes[1]->setValue($values[1]);
-  }
-
-  function resetToDefault ()
-  {
-    $this->attributes[0]->resetToDefault();
-    $this->updateFields();
-    $this->attributes[1]->resetToDefault();
-  }
-}
-
 class DnsRecordPlugin extends simplePlugin
 {
   static function getAttributesInfo ()
@@ -324,6 +249,48 @@ class dnsZone extends simplePlugin
             //~ _('Relative domain name'), _('Relative domain name'),
             'relativeDomainName', TRUE,
             '@'
+          ),
+        )
+      ),
+      'soa' => array(
+        'name'  => _('SOA record'),
+        'attrs' => array(
+          new CompositeAttribute (
+            _('SOA Record'),
+            'sOARecord',
+            array(
+              new StringAttribute(
+                _('Primary DNS server'), _('Domain name of the name server that was the original or primary source of data for this zone'),
+                'soaRecord_primary', TRUE
+              ),
+              new StringAttribute(
+                _('Mail address'), _('Domain name which specifies the mailbox of the person responsible for this zone'),
+                'soaRecord_mail', TRUE
+              ),
+              new IntAttribute(
+                _('Serial number'), _('Version number of the original copy of the zone'),
+                'soaRecord_serial', TRUE,
+                0, FALSE
+              ),
+              new TimeAttribute(
+                _('Refresh'), _('Time interval before the zone should be refreshed'),
+                'soaRecord_refresh', TRUE
+              ),
+              new TimeAttribute(
+                _('Retry'), _('Time interval that should elapse before a failed refresh should be retried'),
+                'soaRecord_retry', TRUE
+              ),
+              new TimeAttribute(
+                _('Expire'), _('Time value that specifies the upper limit on the time interval that can elapse before the zone is no longer authoritative'),
+                'soaRecord_expire', TRUE
+              ),
+              new TimeAttribute(
+                _('TTL'), _('Minimum TTL field that should be exported with any RR from this zone'),
+                'soaRecord_ttl', TRUE
+              ),
+            ),
+            '/^(\S*) (\S*) (\S*) (\S*) (\S*) (\S*) (\S*)$/',
+            '%s %s %s %s %s %s %s'
           ),
         )
       ),
