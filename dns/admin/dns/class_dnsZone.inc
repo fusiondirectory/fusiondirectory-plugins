@@ -229,6 +229,12 @@ class dnsZone extends simplePlugin
         'icon'        => 'geticon.php?context=applications&icon=dns&size=16',
         'mainAttr'    => 'zoneName'
       )),
+      'plForeignKeys'  => array(
+        'dnsRecords'   => array(
+          array('serverGeneric',       'ipHostNumber', '(&(objectClass=dNSZone)(relativeDomainName=@))'),
+          array('workstationGeneric',  'ipHostNumber', '(&(objectClass=dNSZone)(relativeDomainName=@))'),
+        ),
+      ),
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
@@ -274,19 +280,23 @@ class dnsZone extends simplePlugin
               ),
               new TimeAttribute(
                 _('Refresh'), _('Time interval before the zone should be refreshed'),
-                'soaRecord_refresh', TRUE
+                'soaRecord_refresh', TRUE,
+                0, FALSE, 3600
               ),
               new TimeAttribute(
                 _('Retry'), _('Time interval that should elapse before a failed refresh should be retried'),
-                'soaRecord_retry', TRUE
+                'soaRecord_retry', TRUE,
+                0, FALSE, 1800
               ),
               new TimeAttribute(
                 _('Expire'), _('Time value that specifies the upper limit on the time interval that can elapse before the zone is no longer authoritative'),
-                'soaRecord_expire', TRUE
+                'soaRecord_expire', TRUE,
+                0, FALSE, 720000
               ),
               new TimeAttribute(
                 _('TTL'), _('Minimum TTL field that should be exported with any RR from this zone'),
-                'soaRecord_ttl', TRUE
+                'soaRecord_ttl', TRUE,
+                0, FALSE, 6400
               ),
             ),
             '/^(\S*) (\S*) (\S*) (\S*) (\S*) (\S*) (\S*)$/',
@@ -311,5 +321,34 @@ class dnsZone extends simplePlugin
   {
     parent::ldap_save($cleanup);
     $this->attributesAccess['dnsRecords']->postLdapSave($this->config->get_ldap_link());
+  }
+
+  function foreignKeyCheck ($field, $fieldvalue, $source)
+  {
+    if ($field == 'dnsRecords') {
+      $values = $this->dnsRecords;
+      foreach ($values as $value) {
+        if (($value[1] == 'aRecord') && (in_array($value[2], $fieldvalue))) {
+          return TRUE;
+        }
+      }
+    } else {
+      return parent::foreignKeyCheck ($field, $fieldvalue, $source);
+    }
+  }
+
+  function foreignKeyUpdate($field, $oldvalue, $newvalue, $source)
+  {
+    if ($field == 'dnsRecords') {
+      $values = $this->dnsRecords;
+      foreach ($values as $key => $value) {
+        if (($value[1] == 'aRecord') && (in_array($value[2], $oldvalue))) {
+          // die('Not implemented');
+        }
+      }
+      $this->dnsRecords = $values;
+    } else {
+      return parent::foreignKeyUpdate($field, $oldvalue, $newvalue, $source);
+    }
   }
 }
