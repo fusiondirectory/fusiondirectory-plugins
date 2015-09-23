@@ -3,17 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Pavel Borecki <pavel.borecki@gmail.com>, 2012
-# Pavel Borecki <pavel.borecki@gmail.com>, 2012,2015
-# Pavel Borecki <pavel.borecki@gmail.com>, 2012
+# Pavel Borecki <pavel.borecki@gmail.com>, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-108\n"
+"Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2015-07-27 20:23+0200\n"
-"PO-Revision-Date: 2015-05-30 13:52+0000\n"
+"POT-Creation-Date: 2015-09-11 22:19+0200\n"
+"PO-Revision-Date: 2015-05-30 13:53+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
-"Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/FusionDirectory-108/language/cs_CZ/)\n"
+"Language-Team: Czech (Czech Republic) (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -26,11 +24,11 @@ msgstr ""
 
 #: personal/squid/class_proxyAccount.inc:66
 msgid "This allow to store basic squid settings in ldap for each user"
-msgstr "Toto umožňuje uchovávat v LDAP základní nastavení služby squid pro každého z uživatelů"
+msgstr "Toto umožňuje uchovávat v ldap základní nastavení pro squid pro každého z uživatelů"
 
 #: personal/squid/class_proxyAccount.inc:84
 msgid "Proxy account"
-msgstr "Účet pro proxy"
+msgstr "Účet proxy"
 
 #: personal/squid/class_proxyAccount.inc:90
 msgid "Filter unwanted content (i.e. pornographic or violence related)"
@@ -55,7 +53,7 @@ msgstr ""
 
 #: personal/squid/class_proxyAccount.inc:106
 msgid "Limit proxy access to working time"
-msgstr "Umožnit přístup k proxy jen v pracovní době"
+msgstr "Omezit přístup k proxy jen na pracovní dobu."
 
 #: personal/squid/class_proxyAccount.inc:109
 msgid "Working Stop"
@@ -76,7 +74,7 @@ msgstr ""
 #: personal/squid/class_proxyAccount.inc:119
 #: personal/squid/class_proxyAccount.inc:128
 msgid "Restrict proxy usage by quota"
-msgstr "Omezit využívání proxy pomocí kvót"
+msgstr "Stanovit kvótu na využívání proxy"
 
 #: personal/squid/class_proxyAccount.inc:122
 msgid "Up"
@@ -109,7 +107,7 @@ msgstr "Začátek provozní doby"
 
 #: personal/squid/class_proxyAccount.inc:139
 msgid "Starting hours for internet access"
-msgstr "Od jaké hodiny umožnit přístup k Internetu"
+msgstr "Od jaké hodiny povolovat přístup k Internetu"
 
 #: personal/squid/class_proxyAccount.inc:146
 msgid "Proxy Quota"
@@ -117,4 +115,4 @@ msgstr "Kvóta na proxy"
 
 #: personal/squid/class_proxyAccount.inc:147
 msgid "Max Data quota for the proxy"
-msgstr "Kvóta dat na proxy"
+msgstr "Kvóta dat pro proxy"

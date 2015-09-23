@@ -1,9 +1,7 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
-  Copyright (C) 2003-2010  Cajus Pollmeier
-  Copyright (C) 2011-2015  FusionDirectory
+  Copyright (C) 2014-2015  FusionDirectory
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -20,37 +18,8 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-/* Remove locks created by this plugin
-*/
-if ($remove_lock){
-  if(session::is_set('faiManagement')){
-      $macl = session::get('faiManagement');
-      $macl->remove_lock();
-  }
+simpleManagement::mainInc('faiManagement');
+if ($cleanup) {
+  session::global_un_set('CurrentMainBase');
 }
-
-/* Remove this plugin from session
-*/
-if ( $cleanup ){
-  session::un_set('faiManagement');
-}else{
-
-  /* Reset requested? */
-  if (isset($_GET['reset']) && $_GET['reset'] == 1){
-    session::un_set ('faiManagement');
-  }
-
-  /* Create faiManagement object on demand */
-  if (!session::is_set('faiManagement')){
-    $faiManagement= new faiManagement ($config, $ui);
-    session::set('faiManagement',$faiManagement);
-  }
-  $faiManagement = session::get('faiManagement');
-  $display= $faiManagement->execute();
-
-  /* Show and save dialog */
-  session::set('faiManagement',$faiManagement);
-}
-
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

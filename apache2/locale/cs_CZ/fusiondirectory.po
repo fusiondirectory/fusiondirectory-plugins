@@ -6,12 +6,12 @@
 # Pavel Borecki <pavel.borecki@gmail.com>, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-108\n"
+"Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2015-07-27 20:23+0200\n"
-"PO-Revision-Date: 2015-05-30 14:11+0000\n"
-"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
-"Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/FusionDirectory-108/language/cs_CZ/)\n"
+"POT-Creation-Date: 2015-09-11 22:18+0200\n"
+"PO-Revision-Date: 2015-05-30 14:12+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: Czech (Czech Republic) (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -24,7 +24,7 @@ msgstr "Služba Apache"
 
 #: admin/systems/services/apache2/class_serviceApacheVhost.inc:80
 msgid "Apache virtual host service"
-msgstr "Služba virtuálních hostitelů Apache"
+msgstr "Služba virtuálních strojů Apache"
 
 #: admin/systems/services/apache2/class_serviceApacheVhost.inc:80
 msgid "Services"
@@ -32,7 +32,7 @@ msgstr "Služby"
 
 #: admin/systems/services/apache2/class_serviceApacheVhost.inc:84
 msgid "Virtual hosts"
-msgstr "Virtuální hostitelé"
+msgstr "virtuální stroje"
 
 #: admin/systems/services/apache2/serviceApacheVhostEdit-list.xml:11
 msgid "List of Apache Vhost"
@@ -69,11 +69,11 @@ msgstr "Odstranit"
 
 #: admin/systems/services/apache2/serviceApacheVhostEdit-list.xml:109
 msgid "Edit host"
-msgstr "Upravit stroj"
+msgstr "Upravit počítač"
 
 #: admin/systems/services/apache2/serviceApacheVhostEdit-list.xml:122
 msgid "Remove host"
-msgstr "Odebrat stroj"
+msgstr "Odebrat počítač"
 
 #: admin/systems/services/apache2/class_serviceApacheVhostManagement.inc:24
 msgid "Vhosts"
@@ -102,15 +102,15 @@ msgstr "Informace"
 
 #: admin/systems/services/apache2/class_serviceApacheVhostEdit.inc:73
 msgid "Virtual host name"
-msgstr "Název virtuálního hostitele"
+msgstr "název virtuálního stroje"
 
 #: admin/systems/services/apache2/class_serviceApacheVhostEdit.inc:74
 msgid "The Virtual host name"
-msgstr "Název virtuálního stroje"
+msgstr "Název virtuálního hostitele"
 
 #: admin/systems/services/apache2/class_serviceApacheVhostEdit.inc:80
 msgid "Document root for the apache web server"
-msgstr "Kořenová složka dokumentů pro webový server Apache"
+msgstr "Kořenová složka pro webový server Apache"
 
 #: admin/systems/services/apache2/class_serviceApacheVhostEdit.inc:85
 msgid "Admin mail address"
@@ -118,20 +118,20 @@ msgstr "E-mailová adresa správce"
 
 #: admin/systems/services/apache2/class_serviceApacheVhostEdit.inc:86
 msgid "Apache admin mail address"
-msgstr "E-mail správce služby Apache"
+msgstr "E-mail správce služby apache"
 
 #: admin/systems/services/apache2/class_serviceApacheVhostEdit.inc:91
 #: admin/systems/services/apache2/class_serviceApacheVhostEdit.inc:100
 msgid "Script Alias"
-msgstr "Alternativní název skriptu"
+msgstr "alternativní název (alias) skriptu"
 
 #: admin/systems/services/apache2/class_serviceApacheVhostEdit.inc:94
 msgid "Alias"
-msgstr "Alternativní název"
+msgstr "alternativní název (alias)"
 
 #: admin/systems/services/apache2/class_serviceApacheVhostEdit.inc:94
 msgid "Alias Directory"
-msgstr "Složka alternativního názvu"
+msgstr "složka alternativních názvů (alias)"
 
 #: admin/systems/services/apache2/class_serviceApacheVhostEdit.inc:95
 msgid "Script"
@@ -144,7 +144,7 @@ msgstr "Složka se skripty"
 #: admin/systems/services/apache2/class_serviceApacheVhostEdit.inc:104
 #: admin/systems/services/apache2/class_serviceApacheVhostEdit.inc:113
 msgid "Server Alias"
-msgstr "Alternativní název serveru"
+msgstr "alternativní název (alias) serveru"
 
 #: admin/systems/services/apache2/class_serviceApacheVhostEdit.inc:107
 msgid "URL Alias"
@@ -163,11 +163,11 @@ msgid ""
 "This includes all account data, system access rules, imap settings, etc. for"
 " this user. Please double check if your really want to do this since there "
 "is no way for FusionDirectory to get your data back."
-msgstr "Týká se veškerých údajů tohoto uživatele, přístupových pravidel, nastavení pošty, atd. Velmi dobře si rozmyslete, zda to opravdu chcete udělat, protože provedená změna už ve FusionDirectory nepůjde vzít nijak jednoduše zpět!"
+msgstr "Toto se týká všech dat účtu, pravidel pro přístupy k systému, nastavení IMAP a dalších nastavení tohoto uživatele. Dobře si rozmyslete, zda to opravdu chcete udělat, protože pak již nebude možné vzít provedené změny zpět."
 
 #: admin/systems/services/apache2/remove.tpl.c:8
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr "Tedy – pokud jste si jisti, klikněte na Smazat. V opačném případě celou operaci zrušte kliknutím na Zrušit."
+msgstr "Tedy – pokud jste si jisti, klikněte na Smazat. V opačném případě operaci zrušte kliknutím na Zrušit."
 
 #: admin/systems/services/apache2/serviceApacheVhostEdit-filter.tpl.c:2
 msgid "Filter"

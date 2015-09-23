@@ -3,15 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Pavel Borecki <pavel.borecki@gmail.com>, 2015
+# Pavel Borecki <pavel.borecki@gmail.com>, 2014-2015
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-108\n"
+"Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2015-07-27 20:23+0200\n"
-"PO-Revision-Date: 2015-05-30 14:11+0000\n"
+"POT-Creation-Date: 2015-09-11 22:18+0200\n"
+"PO-Revision-Date: 2015-05-30 14:12+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
-"Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/FusionDirectory-108/language/cs_CZ/)\n"
+"Language-Team: Czech (Czech Republic) (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -33,15 +33,15 @@ msgstr "Připojení Dovecot"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:46
 msgid "Connect URL for Dovecot server"
-msgstr "URL adresa pro připojení k Dovecot serveru"
+msgstr "URL adrea pro připojení k Dovecot serveru"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:49
 msgid "Hostname"
-msgstr "Název stroje"
+msgstr "Název počítače"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:49
 msgid "Hostname of the Dovecot server"
-msgstr "Název stroje, na kterém je provozován Dovecot server"
+msgstr "Název počítače, na kterém je provozován Dovecot"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:50
 msgid "Port"
@@ -49,11 +49,11 @@ msgstr "Port"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:50
 msgid "Port number on which Dovecot server should be contacted"
-msgstr "Číslo portu na kterém by měl být kontaktován Dovecot server"
+msgstr "Číslo portu na kterém by měl být kontaktován server Dovecot"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:51
 msgid "Option"
-msgstr "Volba"
+msgstr "volba"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:51
 msgid "Options for contacting Dovecot server"
@@ -73,11 +73,11 @@ msgstr "Hlavní přihlašovací údaje"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:63
 msgid "Admin user"
-msgstr "Uživatel s právy správce"
+msgstr "Správce"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:63
 msgid "Dovecot server admin user"
-msgstr "Účet s právy správce Dovecot serveru"
+msgstr "Účet správce Dovecot serveru"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:67
 msgid "Password"
@@ -85,7 +85,7 @@ msgstr "Heslo"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:67
 msgid "Admin user password"
-msgstr "Heslo k účtu s právem správy"
+msgstr "Heslo účtu správce"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:71
 msgid "Mail directory"
@@ -93,19 +93,19 @@ msgstr "Složka s poštou"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:71
 msgid "Path to the directory in which user maildirs must be created"
-msgstr "Umístění složky, ve které je třeba vytvořit e-mailové složky uživatele"
+msgstr "Umístění složky ve které je třeba vytvořit e-mailové složky uživatele"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:78
 msgid "Options"
-msgstr "Volby"
+msgstr "volby"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:81
 msgid "Create the user folder throught Argonaut"
-msgstr "Vytvořit složku uživatele prostřednictvím komponenty Argonaut"
+msgstr "Vytvořit složku uživatele pomocí Argonaut"
 
 #: admin/systems/services/dovecot/class_serviceDovecot.inc:81
 msgid "Use argonaut to create the user mailbox on the Dovecot server"
-msgstr "Pro vytvoření e-mailové schránky uživatele na Dovecot serveru použijte komponentu argonaut"
+msgstr "Pro vytvoření e-mailové schránky uživatele na Dovecot serveru použijte argonaut"
 
 #: personal/mail/mail-methods/class_mail-methods-dovecot.inc:47
 msgid "There are no IMAP compatible mail servers defined!"

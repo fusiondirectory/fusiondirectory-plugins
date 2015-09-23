@@ -158,7 +158,7 @@ class sambaAccount extends simplePlugin
     return array(
       'generic' => array(
         'name'  => _('Samba profile'),
-        'icon'  => 'images/rightarrow.png',
+        'icon'  => 'geticon.php?context=applications&icon=samba&size=16',
         'attrs' => array(
           new HiddenAttribute ('sambaSID'),
           new HiddenAttribute ('sambaPrimaryGroupSID'),
@@ -492,24 +492,35 @@ class sambaAccount extends simplePlugin
         $uidNumber_tmp++;
       } while ($ldap->count() > 0);
       $this->attrs['sambaSID'] = $sid;
+    }
 
-      if (!$this->is_template) {
-        // Check for users primary group
-        $ldap->cd($this->config->current['BASE']);
-        $ldap->search("(&(objectClass=posixGroup)(gidNumber=".$gidNumber."))", array("cn"));
-        if ($ldap->count() != 1) {
-          msg_dialog::display(_("Warning"),
-                    _("Cannot convert primary group to samba group: group cannot be identified!"),
-                    WARNING_DIALOG);
-        } else {
-          $ldap->fetch();
-          $g = new group($this->config, $ldap->getDN());
-          if ($g->sambaSID == "") {
-            $g->sambaDomainName = $this->sambaDomainName;
-            $g->smbgroup        = TRUE;
-            $g->save();
+    if (!$this->is_template) {
+      $ldap = $this->config->get_ldap_link();
+      // Check for users primary group
+      $ldap->cd($this->config->current['BASE']);
+      $ldap->search("(&(objectClass=posixGroup)(gidNumber=".$gidNumber."))", array("cn"));
+      if ($ldap->count() != 1) {
+        msg_dialog::display(
+          _("Warning"),
+          _("Cannot convert primary group to samba group: group cannot be identified!"),
+          WARNING_DIALOG
+        );
+      } else {
+        $ldap->fetch();
+        $tabGroup = objects::open($ldap->getDN(), 'group');
+        if ($tabGroup->by_object['sambaGroup']->is_account) {
+          if ($tabGroup->by_object['sambaGroup']->sambaSID == "") {
+            $tabGroup->by_object['sambaGroup']->sambaDomainName = $this->sambaDomainName;
+            $tabGroup->by_object['sambaGroup']->smbgroup        = TRUE;
+            $tabGroup->save();
           }
-          $this->attrs['sambaPrimaryGroupSID'] = $g->sambaSID;
+          $this->attrs['sambaPrimaryGroupSID'] = $tabGroup->by_object['sambaGroup']->sambaSID;
+        } else {
+          msg_dialog::display(
+            _("Warning"),
+            _("Cannot convert primary group to samba group: group samba tab is disabled!"),
+            WARNING_DIALOG
+          );
         }
       }
     }
@@ -518,7 +529,22 @@ class sambaAccount extends simplePlugin
     if (!$this->attributesAccess['sambaPwdLastSet']->hasChanged() && !$this->attributesAccess['fd_pwdCantChange']->hasChanged()) {
       unset($this->attrs['sambaPwdLastSet']);
     } elseif (!$this->sambaPwdLastSet) {
-      $this->attrs['sambaPwdLastSet'] = ($this->fd_pwdCantChange?array('4294967295'):'');
+      $this->attrs['sambaPwdLastSet'] = ($this->fd_pwdCantChange ? array('4294967295') : '');
+    }
+
+    if ($this->parent->getBaseObject()->attributesAccess['userPassword']->hasChanged()) {
+      $password = $this->parent->getBaseObject()->attributesAccess['userPassword']->getClear();
+      $smbHash = new smbHash();
+      if ($this->config->get_cfg_value('sambaGenLMPassword', 'FALSE') == 'TRUE') {
+        $this->attrs['sambaLMPassword'] = $smbHash->lmhash($password);
+      } else {
+        $this->attrs['sambaLMPassword'] = array();
+      }
+      $this->attrs['sambaNTPassword'] = $smbHash->nthash($password);
+      $this->attrs['sambaPwdLastSet'] = date('U');
+
+      $this->attrs['sambaBadPasswordCount'] = '0';
+      $this->attrs['sambaBadPasswordTime']  = '0';
     }
 
     // Handle "sambaKickoffTime"

@@ -20,500 +20,191 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class faiTemplate extends faiPluginClass
+class TemplateFileDialog extends GenericSimplePluginDialog
 {
-  /* attribute list for save action */
-  var $ignore_account   = TRUE;
+  protected $dialogClass = 'faiTemplateEntry';
+}
 
-  /* Attributes for this Object */
-  var $attributes       = array("cn","description");
+class FAITemplateFilesAttribute extends DialogOrderedArrayAttribute
+{
+  protected $dialogClass = 'TemplateFileDialog';
+  protected $templateAttributes = array(
+    'cn','description',
+    'FAItemplatePath','FAItemplateFile','FAIowner','FAImode'
+  );
 
-  /* ObjectClasses for this Object*/
-  var $objectclasses    = array("top","FAIclass","FAItemplate");
+  protected $templateFilter = '(&(objectClass=FAIclass)(objectClass=FAItemplateEntry))';
 
-  /* Class name of the Ldap ObjectClass for the Sub Object */
-  var $subClass         = "FAItemplateEntry";
-  var $subClasses       = array("top","FAIclass","FAItemplateEntry");
-
-  /* Class name of the php class which allows us to edit a Sub Object */
-  var $subClassName     = "faiTemplateEntry";
-
-  /* Attributes to initialise for each subObject */
-  var $subAttributes    = array("cn","description","FAItemplatePath","FAIowner","FAImode");
-  var $sub_Load_Later   = array("FAItemplateFile");
-  var $sub64coded       = array();
-  var $subBinary        = array("FAItemplateFile");
-
-  /* Specific attributes */
-  var $cn               = "";       // The class name for this object
-  var $description      = "";       // The description for this set of partitions
-  var $is_dialog        = false;    // specifies which buttons will be shown to save or abort
-  var $SubObjects       = array();  // All leafobjects of this object
-
-  var $FAIstate         = "";
-  var $ui;
-  var $view_logged      = FALSE;
-
-  function faiTemplate (&$config, $dn= NULL)
+  function __construct ($label, $description, $ldapName, $values = array(), $acl = '')
   {
-    /* Load Attributes */
-    parent::__construct($config, $dn);
-
-    /* If "dn==new" we try to create a new entry
-     * Else we must read all objects from ldap which belong to this entry.
-     * First read SubObjects from ldap ... and then the partition definitions for the SubObjects.
-     */
-    if($dn != "new"){
-      $this->dn =$dn;
-
-      /* Read all leaf objects of this object (For FAIscript this would be FAIscriptEntry)
-       */
-      $res = FAI::get_all_objects_for_given_base($this->dn,"(&(objectClass=FAIclass)(objectClass=".$this->subClass."))");
-      foreach($res as $obj){
-
-        /* Skip not relevant objects */
-        if(!preg_match("/".preg_quote($this->dn, '/')."$/i",$obj['dn'])) continue;
-
-        $objects = array();
-        $objects['status']      = "FreshLoaded";
-        $objects['dn']          = $obj['dn'];
-        $objects                = $this->get_object_attributes($objects,$this->subAttributes);
-        $this->SubObjects[$objects['cn']] = $objects;
-      }
-    }
-    $this->is_new = FALSE;
-    if($this->dn == "new"){
-      $this->is_new =TRUE;
-    }
-    $this->ui = get_userinfo();
+    parent::__construct ($label, $description, $ldapName, FALSE, $values, $acl);
   }
 
-
-  /* Reload some attributes */
-  function get_object_attributes($object,$attributes)
+  protected function loadAttrValue ($attrs)
   {
-    $ldap = $this->config->get_ldap_link();
-    $ldap->cd($this->config->current['BASE']);
-    $ldap->cat($object['dn'],$attributes);
-    $tmp  = $ldap->fetch();
-
-    foreach($attributes as $attrs){
-      if(isset($tmp[$attrs][0])){
-        $var = $tmp[$attrs][0];
-
-        /* Check if we must decode some attributes */
-        if(in_array_ics($attrs,$this->sub64coded)){
-          $var = base64_decode($var);
+    global $config;
+    if (isset($attrs['dn'])) {
+      $ldap = $config->get_ldap_link();
+      $ldap->ls($this->templateFilter, $attrs['dn']);
+      $this->value = array();
+      while ($subattrs = $ldap->fetch()) {
+        $attrsWrapper = new stdClass();
+        $attrsWrapper->attrs = $subattrs;
+        $dialog = new faiTemplateEntry($config, $subattrs['dn'], $attrsWrapper);
+        $value = array();
+        foreach ($this->templateAttributes as $attribute) {
+          $value[$attribute] = $dialog->$attribute;
         }
-        $var = stripslashes($var);
-
-        /*  check if this is a binary entry */
-        if(in_array_ics($attrs,$this->subBinary)){
-          $var = $ldap->get_attribute($object['dn'], $attrs,$r_array=0);
-        }
-
-        $object[$attrs] = $var;
+        $this->value[] = $value;
       }
+    } else {
+      $this->resetToDefault();
     }
-    return($object);
   }
 
-
-  function execute()
+  /* Not saving anything into base node */
+  function fillLdapValue (&$attrs)
   {
-    /* Call parent execute */
-    parent::execute();
-
-    if($this->is_account && !$this->view_logged){
-      $this->view_logged = TRUE;
-      new log("view","fai/".get_class($this),$this->dn);
-    }
-
-    /* Fill templating stuff */
-    $smarty= get_smarty();
-    $display= "";
-
-    /* New Listhandling
-     */
-    $once = true;
-    foreach($_POST as $name => $value){
-      if(preg_match("/^editscript_/",$name)&&($once)){
-        $once = false;
-        $entry = preg_replace("/^editscript_/","",$name);
-        $entry = base64_decode(preg_replace("/_.*/","",$entry));
-        $obj  = $this->SubObjects[$entry];
-
-        $acl_dn = $this->acl_base_for_current_object($obj['dn']);
-        $acl = $this->ui->get_permissions($acl_dn,"fai/faiTemplateEntry");
-        if(preg_match("/r/",$acl)){
-          if($obj['status'] == "FreshLoaded"){
-            $obj  = $this->get_object_attributes($obj,$this->sub_Load_Later);
-          }
-          $this->dialog= new $this->subClassName($this->config,$this->dn,$obj);
-          $this->dialog->set_acl_base($this->acl_base);
-          $this->dialog->FAIstate = $this->FAIstate;
-          $this->dialog->set_acl_category("fai");
-
-          set_object_info($obj['dn']);
-          $this->dialog->parent = &$this;
-          $this->is_dialog=true;
-        }
-      }
-      if(preg_match("/^deletescript_/",$name)&&($once) && !preg_match("/freeze/",$this->FAIstate)){
-        $once = false;
-        $entry = preg_replace("/^deletescript_/","",$name);
-        $entry = base64_decode(preg_replace("/_.*/","",$entry));
-        $obj  = $this->SubObjects[$entry];
-
-        $acl_dn = $this->acl_base_for_current_object($obj['dn']);
-        $acl = $this->ui->get_permissions($acl_dn,"fai/faiTemplateEntry");
-        if(preg_match("/d/",$acl)){
-          $status = $this->SubObjects[$entry]['status'];
-          if($status == "edited" || $status == "FreshLoaded"){
-            $this->SubObjects[$entry]['status']= "delete";
-          }else{
-            unset($this->SubObjects[$entry]);
-          }
-        }
-      }
-    }
-
-    /* File download requested */
-    if(isset($_GET['getFAItemplate'])){
-      if(isset($this->SubObjects[$_GET['getFAItemplate']])){
-        $obj = $this->SubObjects[$_GET['getFAItemplate']];
-        $obj  = $this->get_object_attributes($obj,$this->sub_Load_Later);
-        send_binary_content($obj['FAItemplateFile'],$obj['cn'].".FAItemplate");
-      }
-    }
-
-    /* Edit entries via GET */
-    if(isset($_GET['act']) && isset($_GET['id'])){
-      if($_GET['act'] == "edit" && isset($this->SubObjects[$_GET['id']])){
-        $obj = $this->SubObjects[$_GET['id']];
-        if($obj['status'] == "FreshLoaded"){
-          $obj  = $this->get_object_attributes($obj,$this->sub_Load_Later);
-        }
-        $this->dialog= new $this->subClassName($this->config,$this->dn,$obj);
-        $this->dialog->FAIstate = $this->FAIstate;
-        $this->dialog->acl = $this->acl;
-        $this->dialog->set_acl_category("fai");
-        set_object_info($obj['dn']);
-        $this->dialog->parent = &$this;
-        $this->is_dialog=true;
-      }
-    }
-
-    /* Add new sub object */
-    if(isset($_POST['AddSubObject']) && !preg_match("/freeze/",$this->FAIstate)){
-      $acl_dn = $this->acl_base_for_current_object($this->dn);
-      $acl    = $this->ui->get_permissions($acl_dn,"fai/faiTemplateEntry");
-
-      if(preg_match("/c/",$acl)){
-        $this->dialog= new $this->subClassName($this->config,"new");
-        $this->dialog->set_acl_base($this->acl_base);
-        $this->dialog->FAIstate = $this->FAIstate;
-        $this->dialog->set_acl_category("fai");
-        $this->dialog->parent = &$this;
-        $this->is_dialog=true;
-      }
-    }
-
-    if($this->dn != "new"){
-      set_object_info($this->dn);
-    }
-
-    /* Save Dialog */
-    if(isset($_POST['SaveSubObject']) && is_object($this->dialog)){
-      $this->dialog->save_object();
-      $msgs = $this->dialog->check();
-      if(count($msgs)>0){
-        foreach($msgs as $msg){
-          msg_dialog::display(_("Error"), $msg, ERROR_DIALOG);
-        }
-      }else{
-        /* Get return object */
-        $obj = $this->dialog->save();
-        if(isset($obj['remove'])){
-
-          $old_stat = $this->SubObjects[$obj['remove']['from']]['status'];
-
-          /* Depending on status, set new status */
-          if($old_stat == "edited" || $old_stat == "FreshLoaded"){
-            $this->SubObjects[$obj['remove']['from']]['status'] = "delete";
-          }elseif($this->SubObjects[$obj['remove']['from']]['status']=="new"){
-            unset($this->SubObjects[$obj['remove']['from']]);
-          }
-          $obj['status'] = "new";
-          $this->SubObjects[$obj['remove']['to']] = $obj;
-          unset($this->SubObjects[$obj['remove']['to']]['remove']);
-        }else{
-          if($obj['status'] == "FreshLoaded"){
-            $obj['status'] = "edited";
-          }
-          $this->SubObjects[$obj['cn']]=$obj;
-        }
-        $this->is_dialog=false;
-        unset($this->dialog);
-        $this->dialog=FALSE;
-      }
-    }
-
-    /* Sort entries */
-    $tmp = $keys = array();
-    foreach($this->SubObjects as $key => $entry){
-      $keys[$key]=$key;
-    }
-    natcasesort($keys);
-    foreach($keys as $key){
-      $tmp[$key]=$this->SubObjects[$key];
-    }
-    $this->SubObjects = $tmp;
-
-    /* Cancel Dialog */
-    if(isset($_POST['CancelSubObject'])){
-      $this->is_dialog=false;
-      unset($this->dialog);
-      $this->dialog=FALSE;
-    }
-
-    /* Print dialog if $this->dialog is set */
-    if(is_object($this->dialog)){
-      $this->dialog->save_object();
-      $display = $this->dialog->execute();
-      return($display);
-    }
-
-     /* Divlist Containing FAItemplates */
-    $divselectbox = new divSelectBox("FAItemplates");
-    $divselectbox->setHeight(400);
-
-    $tmp = $this->getList(true);
-
-    /* Create div list with all sub entries listed */
-    foreach($this->SubObjects as $key => $name){
-
-      /* Skip removed entries */
-      if($name['status'] == "delete") continue;
-
-      /* Get permissions */
-      $dn  = $this->acl_base_for_current_object($name['dn']);
-      $acl = $this->ui->get_permissions($dn,"fai/faiTemplateEntry")  ;
-      $act = "";
-
-      /* Hide delete icon if this object is freezed */
-      if(preg_match("/freeze/",$this->FAIstate)){
-        $act .= "<input type='image' src='geticon.php?context=actions&icon=document-edit&size=16'      name='editscript_%s'    title='"._("edit")."' alt='"._("edit")."'>";
-      }else{
-        $act .= "<input type='image' src='geticon.php?context=actions&icon=document-edit&size=16'      name='editscript_%s'    title='"._("edit")."' alt='"._("edit")."'>";
-        if(preg_match("/d/",$acl)){
-          $act .="<input type='image' src='geticon.php?context=actions&icon=edit-delete&size=16' name='deletescript_%s'  title='"._("delete")."' alt='"._("delete")."'>";
-        }
-      }
-
-      /* Check acls for download icon */
-      $s_acl = $this->ui->get_permissions($dn,"fai/faiTemplateEntry","FAItemplateFile")  ;
-      if(($this->SubObjects[$key]['status'] == "new") || ($this->SubObjects[$key]['dn'] == "new") || !preg_match("/r/",$s_acl)){
-        $down = "";
-      }else{
-        $down = "<a href='?plug=".$_GET['plug']."&getFAItemplate=".$key."'>
-          <img src='images/save.png' alt='"._("Download")."' title='"._("Download")."' border=0>
-          </a>";
-      }
-
-      /* Check if we are allowed to view this object */
-      $s_acl = $this->ui->get_permissions($dn,"fai/faiTemplateEntry","cn")  ;
-      if(preg_match("/r/",$s_acl)){
-
-        $edit_link = "<a href='?plug=".$_GET['plug']."&amp;act=edit&amp;id=".$key."'>".$tmp[$key]."</a>";
-        $divselectbox->AddEntry(array( array("html"=> $edit_link),
-              array("html"=>$down , "attach" => "style='width:20px;'"),
-              array("html"=>str_replace("%s",base64_encode($key),$act),
-                "attach"=>"style='border-right: 0px;width:50px;text-align:right;'")));
-      }
-    }
-    $smarty->assign("Entry_divlist",$divselectbox->DrawList());
-    /* Divlist creation complete
-     */
-
-    foreach($this->attributes as $attrs){
-      $smarty->assign($attrs,($this->$attrs));
-    }
-
-    $dn = $this->acl_base_for_current_object($this->dn);
-    $smarty->assign("sub_object_is_addable",
-            preg_match("/c/",$this->ui->get_permissions($dn,"fai/faiTemplateEntry")) &&
-            !preg_match("/freeze/",$this->FAIstate));
-
-    foreach($this->attributes as $attr){
-      $smarty->assign($attr."ACL",$this->getacl($attr, preg_match("/freeze/",$this->FAIstate)));
-    }
-
-    $display.= $smarty->fetch(get_template_path('faiTemplate.tpl', TRUE));
-    return($display);
+    /* Remove crap made by plugin */
+    unset ($attrs[$this->getLdapName()]);
   }
 
-
-  function acl_base_for_current_object($dn)
+  /* Special LDAP treatment that this attribute does after plugin ldap save */
+  function postLdapSave ($ldap)
   {
-    if($dn == "new" || $dn == ""){
-      if($this->dn == "new"){
-        $dn = $dn= $this->parent->parent->acl_base;
-      }else{
-        $dn = $this->dn;
-      }
+    /* First delete all old nodes */
+    $ldap->ls($this->templateFilter, $this->plugin->dn, array('dn'));
+    $delete = array();
+    while ($attrs = $ldap->fetch()) {
+      $delete[] = $attrs['dn'];
     }
-    return($dn);
+    foreach ($delete as $dn) {
+      $ldap->rmdir($dn);
+    }
+    /* Then add our values */
+    foreach ($this->value as $val) {
+      $attrs = $val;
+      $attrs['objectClass'] = array('top','FAIClass','FAItemplateEntry');
+      $sub_dn = $this->compute_sub_dn($val);
+      $this->ldap_add($ldap, $sub_dn, $attrs);
+    }
   }
 
-
-  /* Generate listbox friendly SubObject list
-  */
-  function getList(){
-    $a_return=array();
-    foreach($this->SubObjects as $obj){
-      if($obj['status'] != "delete"){
-
-        if((isset($obj['description']))&&(!empty($obj['description']))){
-          if(strlen($obj['description']) > 40){
-            $obj['description'] = substr($obj['description'],0,40)."...";
-          }
-          $a_return[$obj['cn']]= $obj['cn']." [".$obj['description']."]";
-        }else{
-          $a_return[$obj['cn']]= $obj['cn'];
-        }
-      }
-    }
-    return($a_return);
-  }
-
-  /* Delete me, and all my subtrees
-   */
-  function remove_from_parent()
+  protected function handleEdit($key)
   {
-    if($this->acl_is_removeable()){
-      $ldap = $this->config->get_ldap_link();
-      $ldap->cd ($this->dn);
-      $release = $this->parent->parent->fai_release;
-      $use_dn = preg_replace("/".preg_quote(FAI::get_release_dn($this->dn, '/'))."/i", $release, $this->dn);
-      new log("remove","fai/".get_class($this),$use_dn,$this->attributes);
-      FAI::prepare_to_save_FAI_object($use_dn,array(),true);
-
-      foreach($this->SubObjects as $name => $obj){
-        $use_dn = preg_replace("/".preg_quote(FAI::get_release_dn($this->dn), '/')."/i", $release, $obj['dn']);
-        FAI::prepare_to_save_FAI_object($use_dn,array(),true);
-      }
-      $this->handle_post_events("remove");
-    }
+    parent::handleEdit($key);
   }
 
-
-  /* Save data to object
-   */
-  function save_object()
+  function compute_sub_dn ($value)
   {
-    if ((isset($_POST['FAItemplate_posted'])) && (!preg_match("/freeze/",$this->FAIstate))) {
-      parent::save_object();
-    }
+    return 'cn='.$value['cn'].','.$this->plugin->dn;
   }
 
-  /* Save to LDAP */
-  function save()
+  protected function ldap_add ($ldap, $dn, $attrs)
   {
-    parent::save();
-
-    $ldap = $this->config->get_ldap_link();
-
-    FAI::prepare_to_save_FAI_object($this->dn,$this->attrs);
-
-    if($this->initially_was_account){
-      new log("modify","fai/".get_class($this),$this->dn,$this->attributes);
-    }else{
-      new log("create","fai/".get_class($this),$this->dn,$this->attributes);
-    }
-
-    /* Prepare FAIscriptEntry to write it to ldap
-     * First sort array.
-     *  Because we must delete old entries first.
-     * After deletion, we perform add and modify
-     */
-    $Objects = array();
-    $tmp = $this->SubObjects;
-    foreach($tmp as $name => $obj){
-      if($obj['status'] == "FreshLoaded"){
-        unset($tmp[$name]);
+    unset($attrs['dn']);
+    $ldap->cd($dn);
+    foreach (array_keys($attrs) as $index) {
+      if ((is_array($attrs[$index]) && (count($attrs[$index]) == 0)) || ($attrs[$index] == '')) {
+        unset($attrs[$index]);
       }
     }
-
-    foreach($tmp as $name => $obj){
-      if($obj['status'] == "delete"){
-        $Objects[$name] = $obj;
-      }
-    }
-    foreach($tmp as $name => $obj){
-      if($obj['status'] != "delete"){
-        $Objects[$name] = $obj;
-      }
-    }
-
-    foreach($Objects as $name => $obj){
-
-      foreach($this->sub64coded as $codeIt){
-        $obj[$codeIt]=base64_encode($obj[$codeIt]);
-      }
-      $tmp = array();
-      $attributes = array_merge($this->sub_Load_Later,$this->subAttributes);
-      foreach($attributes as $attrs){
-        if(!isset($obj[$attrs]) || $obj[$attrs] == ""){
-          $obj[$attrs] = array();
-        }
-        $tmp[$attrs] =($obj[$attrs]);
-      }
-
-      $tmp['objectClass'] = $this->subClasses;
-
-      $sub_dn = "cn=".$obj['cn'].",".$this->dn;
-
-      if($obj['status']=="new"){
-        $ldap->cat($sub_dn,array("objectClass"));
-        if($ldap->count()){
-          $obj['status']="edited";
-        }
-      }
-
-      if($obj['status'] == "delete"){
-        FAI::prepare_to_save_FAI_object($sub_dn,array(),true);
-        $this->handle_post_events("remove");
-      }elseif($obj['status'] == "edited"){
-        FAI::prepare_to_save_FAI_object($sub_dn,$tmp);
-        $this->handle_post_events("modify");
-      }elseif($obj['status']=="new"){
-        FAI::prepare_to_save_FAI_object($sub_dn,$tmp);
-        $this->handle_post_events("add");
-      }
+    $ldap->add($attrs);
+    if (!$ldap->success()) {
+      msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_ADD, get_class()), LDAP_ERROR);
     }
   }
 
-  /* Return plugin informations for acl handling */
+  protected function getAttributeArrayValue($key, $value)
+  {
+    return array(
+      $value['cn'],
+      $value['description'],
+      humanReadableSize(strlen($value['FAItemplateFile'])),
+    );
+  }
+
+  function check ()
+  {
+    $error = parent::check();
+    if (!empty($error)) {
+      return $error;
+    } else {
+      $used_cn = array();
+      foreach ($this->value as $value) {
+        if (isset($used_cn[$value['cn']])) {
+          return sprintf(_('There are several files with the same path: %s'), $value['cn']);
+        }
+        $used_cn[$value['cn']] = TRUE;
+      }
+    }
+  }
+}
+
+class faiTemplate extends faiSimplePluginClass
+{
+  var $mainTab = TRUE;
+
+  var $objectclasses    = array('top','FAIclass','FAItemplate');
+
   static function plInfo()
   {
     return array(
       'plShortName'   => _('Template'),
       'plDescription' => _('FAI template'),
-      'plSelfModify'  => FALSE,
-      'plPriority'    => 24,
-      'plObjectType'  => array('faiTemplate' => array(
-        'name'        => _('FAI template'),
-        'filter'      => 'objectClass=FAItemplate',
-        'icon'        => 'plugins/fai/images/fai_template.png',
-        'aclCategory' => 'fai'
-      )),
+      'plObjectType'  => array(
+        'faiTemplate' => array(
+          'name'        => _('FAI template'),
+          'filter'      => 'objectClass=FAItemplate',
+          'aclCategory' => 'fai',
+          'ou'          => get_ou('faiTemplateRDN'),
+          'icon'        => 'geticon.php?context=applications&icon=fai-template&size=16'
+        )
+      ),
 
-      'plProvidedAcls' => array(
-        'cn'                => _('Name').' ('._('Readonly').')',
-        'description'       => _('Description')
+      'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
+    );
+  }
+
+  static function getAttributesInfo ()
+  {
+    return array(
+      'main' => array(
+        'name'  => _('Properties'),
+        'attrs' => array(
+          new HostNameAttribute (
+            _('Class name'), _('Template class name'),
+            'cn', TRUE
+          ),
+          new StringAttribute (
+            _('Description'), _('Short description of the class'),
+            'description', FALSE
+          ),
+        )
+      ),
+      'table' => array(
+        'name'  => _('Template files'),
+        'class' => array('fullwidth'),
+        'attrs' => array(
+          new FAITemplateFilesAttribute (
+            '', _('Template files in this class'), 'templateFiles'
+          ),
+        )
       )
     );
+  }
+
+  function __construct (&$config, $dn = NULL, $object = NULL)
+  {
+    parent::__construct($config, $dn, $object);
+
+    $this->attributesAccess['cn']->setUnique(TRUE);
+  }
+
+  function ldap_save ($cleanup = TRUE)
+  {
+    parent::ldap_save($cleanup);
+    $this->attributesAccess['templateFiles']->postLdapSave($this->config->get_ldap_link());
   }
 }
 ?>

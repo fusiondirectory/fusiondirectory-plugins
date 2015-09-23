@@ -3,24 +3,97 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Alexey, 2015
-# Alexey Matveev, 2015
-# Alexey Matveev, 2015
-# Alexey Matveev, 2015
-#  Valia V. Vaneeva <fattie@altlinux.ru>, 2004
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-108\n"
+"Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2015-07-27 20:23+0200\n"
-"PO-Revision-Date: 2015-05-30 14:11+0000\n"
-"Last-Translator: Alexey Matveev\n"
-"Language-Team: Russian (http://www.transifex.com/projects/p/FusionDirectory-108/language/ru/)\n"
+"POT-Creation-Date: 2015-09-11 22:19+0200\n"
+"PO-Revision-Date: 2015-09-11 20:27+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: Russian (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: admin/groups/samba/class_sambaGroup.inc:29
+#: personal/samba/class_sambaAccount.inc:135
+#: config/samba/class_sambaPluginConfig.inc:28
+msgid "Samba"
+msgstr "Samba"
+
+#: admin/groups/samba/class_sambaGroup.inc:30
+msgid "Samba group settings"
+msgstr ""
+
+#: admin/groups/samba/class_sambaGroup.inc:42
+#: admin/groups/samba/class_sambaGroup.inc:45
+#: admin/systems/samba/class_winstationGeneric.inc:88
+#: personal/samba/class_sambaAccount.inc:176
+msgid "Domain"
+msgstr "Домен"
+
+#: admin/groups/samba/class_sambaGroup.inc:45
+msgid "Samba domain"
+msgstr ""
+
+#: admin/groups/samba/class_sambaGroup.inc:49
+msgid "Samba informations"
+msgstr ""
+
+#: admin/groups/samba/class_sambaGroup.inc:56
+msgid "Group type"
+msgstr ""
+
+#: admin/groups/samba/class_sambaGroup.inc:56
+msgid "Samba group type"
+msgstr " Тип Samba групп"
+
+#: admin/groups/samba/class_sambaGroup.inc:60
+#: admin/groups/samba/class_sambaGroup.inc:119
+msgid "Samba group"
+msgstr "Группа Samba"
+
+#: admin/groups/samba/class_sambaGroup.inc:60
+#: admin/groups/samba/class_sambaGroup.inc:119
+msgid "Domain admins"
+msgstr "Администраторы домена"
+
+#: admin/groups/samba/class_sambaGroup.inc:60
+#: admin/groups/samba/class_sambaGroup.inc:119
+msgid "Domain users"
+msgstr "Пользователи домена"
+
+#: admin/groups/samba/class_sambaGroup.inc:60
+#: admin/groups/samba/class_sambaGroup.inc:119
+msgid "Domain guests"
+msgstr "Непривилегированные пользователи домена"
+
+#: admin/groups/samba/class_sambaGroup.inc:105
+msgid "Configuration error"
+msgstr "Ошибка конфигурации"
+
+#: admin/groups/samba/class_sambaGroup.inc:105
+msgid "Cannot find group SID in your configuration!"
+msgstr "Не могу найти SID группы в вашей конфигурации!"
+
+#: admin/groups/samba/class_sambaGroup.inc:119
+#, php-format
+msgid "Special group (%d)"
+msgstr "Специальная группа (%d)"
+
+#: admin/groups/samba/class_sambaGroup.inc:133
+#: personal/samba/class_sambaAccount.inc:478
+#: personal/samba/class_sambaAccount.inc:504
+#: personal/samba/class_sambaAccount.inc:520
+msgid "Warning"
+msgstr "Предупреждение"
+
+#: admin/groups/samba/class_sambaGroup.inc:133
+#: personal/samba/class_sambaAccount.inc:478
+msgid "Undefined Samba SID detected. Please fix this problem manually!"
+msgstr ""
 
 #: admin/samba/class_sambaDomainManagement.inc:35
 msgid "Samba domains"
@@ -195,7 +268,7 @@ msgstr "Название рабочей станции Windows"
 
 #: admin/systems/samba/class_winstationGeneric.inc:77
 msgid "Name"
-msgstr "Название"
+msgstr "Фамилия"
 
 #: admin/systems/samba/class_winstationGeneric.inc:84
 msgid "Description"
@@ -204,11 +277,6 @@ msgstr "Описание"
 #: admin/systems/samba/class_winstationGeneric.inc:84
 msgid "A short description of the winstation"
 msgstr "Краткое описание рабочей станции Windows"
-
-#: admin/systems/samba/class_winstationGeneric.inc:88
-#: personal/samba/class_sambaAccount.inc:176
-msgid "Domain"
-msgstr "Домен"
 
 #: admin/systems/samba/class_winstationGeneric.inc:88
 #: personal/samba/class_sambaAccount.inc:176
@@ -240,11 +308,6 @@ msgstr "Сетевые настройки"
 msgid "Samba Munged Dial"
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:135
-#: config/samba/class_sambaPluginConfig.inc:28
-msgid "Samba"
-msgstr "Samba"
-
 #: personal/samba/class_sambaAccount.inc:136
 #: config/samba/class_sambaPluginConfig.inc:41
 msgid "Samba settings"
@@ -257,7 +320,7 @@ msgstr "Профиль Samba"
 #: personal/samba/class_sambaAccount.inc:166
 #: personal/samba/class_sambaAccount.inc:199
 msgid "Home directory drive"
-msgstr "Диск с домашним каталогом"
+msgstr "Название диска домашнего каталога"
 
 #: personal/samba/class_sambaAccount.inc:166
 #: personal/samba/class_sambaAccount.inc:199
@@ -294,7 +357,7 @@ msgstr ""
 
 #: personal/samba/class_sambaAccount.inc:191
 msgid "Terminal server"
-msgstr "Терминальный сервер"
+msgstr "Терминал-сервер"
 
 #: personal/samba/class_sambaAccount.inc:195
 msgid "Allow login on terminal server"
@@ -302,7 +365,7 @@ msgstr "Разрешить вход на терминальный сервер"
 
 #: personal/samba/class_sambaAccount.inc:214
 msgid "Inherit client config"
-msgstr "Наследовать конфигурацию клиента"
+msgstr "Унаследовать конфигурацию клиента"
 
 #: personal/samba/class_sambaAccount.inc:214
 msgid "Inherit client configuration"
@@ -374,7 +437,7 @@ msgstr "Принтер по умолчанию для клиента"
 
 #: personal/samba/class_sambaAccount.inc:253
 msgid "Shadowing"
-msgstr ""
+msgstr "Затенение"
 
 #: personal/samba/class_sambaAccount.inc:256
 msgid "disabled"
@@ -414,7 +477,7 @@ msgstr "сброс"
 
 #: personal/samba/class_sambaAccount.inc:266
 msgid "Reconnect if disconnected"
-msgstr "Подключиться снова при отключении"
+msgstr "В"
 
 #: personal/samba/class_sambaAccount.inc:269
 msgid "from any client"
@@ -494,7 +557,7 @@ msgstr "Системные доверия"
 
 #: personal/samba/class_sambaAccount.inc:338
 msgid "Allow connection from these workstations only"
-msgstr "Разрешить подключения только c этих рабочих станций"
+msgstr "Разрешить подключения только от этой рабочей станции"
 
 #: personal/samba/class_sambaAccount.inc:338
 msgid "Only allow this user to connect to this list of hosts"
@@ -512,18 +575,14 @@ msgstr ""
 msgid "The windows user manager allows eight clients at maximum!"
 msgstr ""
 
-#: personal/samba/class_sambaAccount.inc:478
-#: personal/samba/class_sambaAccount.inc:501
-msgid "Warning"
-msgstr "Предупреждение"
-
-#: personal/samba/class_sambaAccount.inc:478
-msgid "Undefined Samba SID detected. Please fix this problem manually!"
-msgstr ""
-
-#: personal/samba/class_sambaAccount.inc:502
+#: personal/samba/class_sambaAccount.inc:505
 msgid ""
 "Cannot convert primary group to samba group: group cannot be identified!"
+msgstr ""
+
+#: personal/samba/class_sambaAccount.inc:521
+msgid ""
+"Cannot convert primary group to samba group: group samba tab is disabled!"
 msgstr ""
 
 #: config/samba/class_sambaPluginConfig.inc:29

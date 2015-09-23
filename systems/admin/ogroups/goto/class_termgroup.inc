@@ -251,7 +251,7 @@ class termgroup extends plugin
     /* Set government mode */
     $smarty= get_smarty();
 
-    if (isset($this->parent->by_name['termstartup'])){
+    if (isset($this->parent->by_name['terminalStartup'])){
       $smarty->assign("is_termgroup", "1");
     } else {
       $smarty->assign("is_termgroup", "0");
@@ -329,7 +329,7 @@ class termgroup extends plugin
   /* Save to LDAP */
   function save()
   {
-    if (isset($this->parent->by_name['termstartup'])){
+    if (isset($this->parent->by_name['terminalStartup'])){
       $this->objectclasses= array("gotoTerminalTemplate");
     } else {
       $this->objectclasses= array("gotoWorkstationTemplate");
@@ -395,7 +395,7 @@ class termgroup extends plugin
       'plDescription' => _('System group'),
       'plSelfModify'  => FALSE,
       'plPriority'    => 5,
-      'plObjectType'  => array('ogroup'),
+      'plObjectType'  => array('ogroup-workstation', 'ogroup-terminal'),
 
       'plProvidedAcls'  => array(
         'gotoMode'          => _('Mode'),

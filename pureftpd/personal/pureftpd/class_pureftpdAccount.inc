@@ -35,7 +35,7 @@ class pureftpdAccount extends simplePlugin
       'plIcon'          => 'plugins/pureftpd/images/icon.png',
       'plSmallIcon'     => 'plugins/pureftpd/images/iconMini.png',
       'plSelfModify'    => TRUE,
-      'plPriority'      => 10,                                 // Position in tabs
+      'plPriority'      => 10,
       'plObjectType'    => array('user'),
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );

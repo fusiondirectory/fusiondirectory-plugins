@@ -64,7 +64,7 @@ class sympaAlias extends simplePlugin
             )
           ),
           new SelectAttribute (
-            _('Sympa server'), _('Sympa server fot this alias'),
+            _('Sympa server'), _('Sympa server for this alias'),
             'sympaServerURL', TRUE,
             array()
           )

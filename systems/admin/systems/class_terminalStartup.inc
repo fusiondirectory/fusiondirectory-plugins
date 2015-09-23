@@ -49,7 +49,7 @@ class TerminalReleaseAttribute extends SelectAttribute
 class terminalStartup extends simplePlugin
 {
   /* attribute list for save action */
-  var $objectclasses = array("GOhard");
+  var $objectclasses = array('GOhard');
 
   var $inheritance = array("gosaGroupOfNames" => "member");
 
@@ -83,8 +83,7 @@ class terminalStartup extends simplePlugin
       'plDescription'   => _('Terminal startup'),
       'plSelfModify'    => FALSE,
       'plPriority'      => 3,
-      'plCategory'      => array('terminal'),
-      'plObjectType'    => array('terminal'),
+      'plObjectType'    => array('terminal', 'ogroup-dynamic'),
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );

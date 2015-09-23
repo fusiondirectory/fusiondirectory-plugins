@@ -133,7 +133,7 @@ class workstationGeneric extends simplePlugin
 
   var $inheritance = array("gotoWorkstationTemplate" => "member");
 
-  var $preInitAttributes = array('networkSettings');
+  var $preInitAttributes = array('cn', 'networkSettings');
 
   /*!
    *  \brief The main function : information about attributes
@@ -223,7 +223,7 @@ class workstationGeneric extends simplePlugin
       ),
       'actions' => array(
         'name' => _('Action'),
-        'icon'  => get_template_path("images/rocket.png"),
+        'icon'  => 'geticon.php?context=types&icon=action&size=16',
         'attrs' => array(
           new ActionAttribute(
             _('Action'),
@@ -234,9 +234,9 @@ class workstationGeneric extends simplePlugin
       ),
       'network' => array(
         'name'      => _('Network settings'),
-        'attrs'     => array(new NetworkSettingsAttribute()),
         'template'  => get_template_path('network_section.tpl', TRUE, dirname(__FILE__)),
         'icon'      => 'geticon.php?context=categories&icon=applications-internet&size=16',
+        'attrs'     => array(new NetworkSettingsAttribute()),
       ),
     );
   }
@@ -265,6 +265,12 @@ class workstationGeneric extends simplePlugin
 
     $this->updateAttributesValues();
     $this->prepareSavedAttributes();
+  }
+
+  /* Returns the dn of the entry */
+  function compute_dn()
+  {
+    return 'cn='.$this->cn.','.get_ou('workstationRDN').$this->base;
   }
 
   protected function init_server_section()
@@ -466,7 +472,6 @@ class workstationGeneric extends simplePlugin
           'ou'          => get_ou('workstationRDN'),
           'icon'        => 'geticon.php?context=devices&icon=computer&size=16',
           'mainAttr'    => 'cn',
-          'tabClass'    => 'worktabs',
         )
       ),
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())

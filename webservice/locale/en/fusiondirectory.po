@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory VERSION\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2015-07-27 20:23+0200\n"
+"POT-Creation-Date: 2015-09-11 22:19+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FusionDirectory project <contact@fusiondirectory.org>\n"
 "Language-Team: English\n"
@@ -27,8 +27,13 @@ msgstr ""
 msgid "Cannot locate file '%s' - please run '%s' to fix this"
 msgstr ""
 
-#: html/jsonrpc.php:253
+#: html/jsonrpc.php:262
 msgid "Plugin"
+msgstr ""
+
+#: html/jsonrpc.php:349
+#, php-format
+msgid "Cannot delete %s. It has been locked by %s."
 msgstr ""
 
 #: config/class_webserviceConfig.inc:28

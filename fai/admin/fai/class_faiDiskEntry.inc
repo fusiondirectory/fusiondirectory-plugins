@@ -1,5 +1,4 @@
 <?php
-
 /*
   This code is part of FusionDirectory (http://www.fusiondirectory.org/)
   Copyright (C) 2003-2010  Cajus Pollmeier
@@ -23,21 +22,23 @@
 class faiDiskEntry extends plugin
 {
   /* attribute list for save action */
-  var $ignore_account= TRUE;
-  var $attributes   = array("DISKcn","DISKdescription");
-  var $UsedAttrs            = array("cn","description","FAIpartitionType",
-      "FAIpartitionNr","FAIfsType","FAImountPoint","FAIpartitionSize",
-      "FAIfsTuneOptions", "FAIfsCreateOptions", "FAImountOptions",
-      "FAIfsOptions","FAIpartitionFlags","FAIdiskOption");
+  var $ignore_account = TRUE;
+  var $attributes     = array("DISKcn","DISKdescription");
+  var $UsedAttrs      = array(
+    "cn","description","FAIpartitionType",
+    "FAIpartitionNr","FAIfsType","FAImountPoint","FAIpartitionSize",
+    "FAIfsTuneOptions", "FAIfsCreateOptions", "FAImountOptions",
+    "FAIfsOptions","FAIpartitionFlags","FAIdiskOption"
+  );
 
-  var $objectclasses= array();
+  var $objectclasses = array();
 
   var $DISKcn              = "";
   var $DISKdescription     = "";
   var $DISKFAIdiskOptions  = "";
 
   var $partitions          = array();
-  var $is_edit             = false;
+  var $is_edit             = FALSE;
   var $old_cn              = "";
   var $fstabkey            = "device";
   var $disklabel           = "msdos";
@@ -46,7 +47,7 @@ class faiDiskEntry extends plugin
 
   var $lvmDevices          = array();
 
-  function faiDiskEntry (&$config, $dn= NULL,$parent,$disk,$type)
+  function __construct (&$config, $dn = NULL, $parent, $disk, $type)
   {
     parent::__construct($config, $dn);
 
@@ -75,7 +76,6 @@ class faiDiskEntry extends plugin
         $name = $values['FAIpartitionNr'];
 
         // Load partition attributes
-        $disk['partitions'][$name]['old_cn']= $disk['partitions'][$name]['cn'];
         $disk['partitions'][$name]['FAIdiskType']= $this->FAIdiskType;
         foreach($this->UsedAttrs as $attr){
           if(!isset($values[$attr])){
@@ -165,7 +165,6 @@ class faiDiskEntry extends plugin
       }
     }
   }
-
 
   function execute()
   {
@@ -294,7 +293,6 @@ class faiDiskEntry extends plugin
     return($display);
   }
 
-
   /* Creates a human readable list, that contains all physical
    *  devices that are used by the volume group.
    * This list will then be displayed in a html select box.
@@ -355,7 +353,6 @@ class faiDiskEntry extends plugin
     return $list;
   }
 
-
   /* Returns a list of available partitions that are useable in
    *  lvm disk setups.
    */
@@ -401,7 +398,6 @@ class faiDiskEntry extends plugin
     }
     return($ret);
   }
-
 
   /* Remove the selected partition and shift the following partitions
    *  to fill the gap.
@@ -450,7 +446,6 @@ class faiDiskEntry extends plugin
     }
   }
 
-
   function get_free_partition_number()
   {
     $used = array();
@@ -464,10 +459,7 @@ class faiDiskEntry extends plugin
     return($id);
   }
 
-
-
-  /* Add or update a partition
-   */
+  /* Add or update a partition */
   function updatePartition($part)
   {
     if(!isset($part['FAIpartitionNr']) || $part['FAIpartitionNr'] == "undefined"){
@@ -502,7 +494,6 @@ class faiDiskEntry extends plugin
 
     $this->partitions[$part['FAIpartitionNr']] = $part;
   }
-
 
   /* This method generates the partition listing with all necessary info,
    *  depending on the disk type.
@@ -581,7 +572,6 @@ class faiDiskEntry extends plugin
     }
     return $divselectbox->DrawList();
   }
-
 
   function save()
   {
@@ -672,7 +662,6 @@ class faiDiskEntry extends plugin
     return($tmp);
   }
 
-
   /* Save data to object */
   function save_object()
   {
@@ -688,7 +677,6 @@ class faiDiskEntry extends plugin
       }
     }
   }
-
 
   /* Check supplied data */
   function check()
@@ -708,10 +696,7 @@ class faiDiskEntry extends plugin
     return ($message);
   }
 
-
-  /* Checks the disk combinations.
-   *
-   */
+  /* Checks the disk combinations */
   function check_disks($disk_to_add = array())
   {
     $msgs = array();
@@ -744,32 +729,27 @@ class faiDiskEntry extends plugin
     return($msgs);
   }
 
-
   /* Return plugin informations for acl handling */
   static function plInfo()
   {
-    return (array(
-          "plShortName" => _("Partition table entry"),
-          "plDescription" => _("FAI partition table entry"),
-          "plSelfModify"  => FALSE,
-          "plPriority"    => 27,
-          "plCategory"    => array("fai"),
-          "plProvidedAcls" => array(
-            "DISKcn"           => _("Name"),
-            "DISKdescription"  => _("Description"),
-            "DISKFAIdiskOption"  => _("Disk options"),
-            "FAIpartitionType"  => _("Partition type"),
-            "FAIpartitionNr"    => _("Partition no."),
-            "FAIfsType"         => _("File system type"),
-            "FAImountPoint"     => _("Mount point"),
-            "FAIpartitionSize"  => _("Partition size"),
-            "FAImountOptions"   => _("Mount options"),
-            "FAIfsOptions"      => _("File system options"),
-            "FAIpartitionFlags" => _("Partition flags"))
-          ));
+    return array(
+      'plShortName'     => _('Partition table entry'),
+      'plDescription'   => _('FAI partition table entry'),
+      'plCategory'      => array('fai'),
+      'plProvidedAcls'  => array(
+        'DISKcn'            => _('Name'),
+        'DISKdescription'   => _('Description'),
+        'DISKFAIdiskOption' => _('Disk options'),
+        'FAIpartitionType'  => _('Partition type'),
+        'FAIpartitionNr'    => _('Partition no.'),
+        'FAIfsType'         => _('File system type'),
+        'FAImountPoint'     => _('Mount point'),
+        'FAIpartitionSize'  => _('Partition size'),
+        'FAImountOptions'   => _('Mount options'),
+        'FAIfsOptions'      => _('File system options'),
+        'FAIpartitionFlags' => _('Partition flags')
+      )
+    );
   }
-
 }
-
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
 ?>

@@ -204,6 +204,12 @@ class printgeneric extends plugin
     $this->baseSelector->update(TRUE);
   }
 
+  /* Returns the dn of the entry */
+  function compute_dn()
+  {
+    return 'cn='.$this->cn.','.get_ou('printerRDN').$this->base;
+  }
+
   function set_acl_base($base)
   {
     plugin::set_acl_base($base);
@@ -525,7 +531,7 @@ class printgeneric extends plugin
         $add    = 'Admin';
       }
       foreach ($users as $user) {
-        if (in_array('gosaAccount', $user['objectClass'])) {
+        if (in_array('inetOrgPerson', $user['objectClass'])) {
           $type = 'Add'.$add.'User';
         } else {
           $type = 'Add'.$add.'Group';
@@ -1013,7 +1019,6 @@ class printgeneric extends plugin
           'filter'      => 'objectClass=gotoPrinter',
           'icon'        => 'geticon.php?context=devices&icon=printer&size=16',
           'ou'          => get_ou('printerRDN'),
-          'tabClass'    => 'printtabs',
         ),
         'workstation', 'terminal'
       ),

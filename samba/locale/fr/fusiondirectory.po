@@ -3,27 +3,100 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Anne Nicolas <ennael1@gmail.com>, 2014
-# Benoit Mortier <benoit.mortier@opensides.be>, 2005-2011
-# MCMic, 2014
-# fusiondirectory <contact@fusiondirectory.org>, 2013-2014
-# fusiondirectory <contact@fusiondirectory.org>, 2012
-# fusiondirectory <contact@fusiondirectory.org>, 2012
-# fusiondirectory <contact@fusiondirectory.org>, 2012
-# MCMic, 2014
+# Benoit Mortier <benoit.mortier@opensides.be>, 2015
+# MCMic, 2015
+# MCMic, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-108\n"
+"Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2015-07-27 20:23+0200\n"
-"PO-Revision-Date: 2015-07-27 08:52+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory-108/language/fr/)\n"
+"POT-Creation-Date: 2015-09-11 22:19+0200\n"
+"PO-Revision-Date: 2015-09-11 20:36+0000\n"
+"Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>\n"
+"Language-Team: French (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: admin/groups/samba/class_sambaGroup.inc:29
+#: personal/samba/class_sambaAccount.inc:135
+#: config/samba/class_sambaPluginConfig.inc:28
+msgid "Samba"
+msgstr "Samba"
+
+#: admin/groups/samba/class_sambaGroup.inc:30
+msgid "Samba group settings"
+msgstr "Paramètres du groupe Samba"
+
+#: admin/groups/samba/class_sambaGroup.inc:42
+#: admin/groups/samba/class_sambaGroup.inc:45
+#: admin/systems/samba/class_winstationGeneric.inc:88
+#: personal/samba/class_sambaAccount.inc:176
+msgid "Domain"
+msgstr "Domaine"
+
+#: admin/groups/samba/class_sambaGroup.inc:45
+msgid "Samba domain"
+msgstr "Domaine Samba"
+
+#: admin/groups/samba/class_sambaGroup.inc:49
+msgid "Samba informations"
+msgstr "Informations Samba"
+
+#: admin/groups/samba/class_sambaGroup.inc:56
+msgid "Group type"
+msgstr "Type de groupe"
+
+#: admin/groups/samba/class_sambaGroup.inc:56
+msgid "Samba group type"
+msgstr "Type de groupe Samba"
+
+#: admin/groups/samba/class_sambaGroup.inc:60
+#: admin/groups/samba/class_sambaGroup.inc:119
+msgid "Samba group"
+msgstr "Groupe Samba"
+
+#: admin/groups/samba/class_sambaGroup.inc:60
+#: admin/groups/samba/class_sambaGroup.inc:119
+msgid "Domain admins"
+msgstr "Administrateurs du domaine"
+
+#: admin/groups/samba/class_sambaGroup.inc:60
+#: admin/groups/samba/class_sambaGroup.inc:119
+msgid "Domain users"
+msgstr "Utilisateurs du domaine"
+
+#: admin/groups/samba/class_sambaGroup.inc:60
+#: admin/groups/samba/class_sambaGroup.inc:119
+msgid "Domain guests"
+msgstr "Invités du domaine"
+
+#: admin/groups/samba/class_sambaGroup.inc:105
+msgid "Configuration error"
+msgstr "Erreur de configuration"
+
+#: admin/groups/samba/class_sambaGroup.inc:105
+msgid "Cannot find group SID in your configuration!"
+msgstr "Impossible de trouver le SID de ce groupe dans votre configuration !"
+
+#: admin/groups/samba/class_sambaGroup.inc:119
+#, php-format
+msgid "Special group (%d)"
+msgstr "Groupe spécial (%d)"
+
+#: admin/groups/samba/class_sambaGroup.inc:133
+#: personal/samba/class_sambaAccount.inc:478
+#: personal/samba/class_sambaAccount.inc:504
+#: personal/samba/class_sambaAccount.inc:520
+msgid "Warning"
+msgstr "Avertissement"
+
+#: admin/groups/samba/class_sambaGroup.inc:133
+#: personal/samba/class_sambaAccount.inc:478
+msgid "Undefined Samba SID detected. Please fix this problem manually!"
+msgstr "Le SID Samba n’est pas défini. Veuillez corriger ceci manuellement !"
 
 #: admin/samba/class_sambaDomainManagement.inc:35
 msgid "Samba domains"
@@ -69,21 +142,21 @@ msgstr "Base du RID"
 
 #: admin/samba/class_sambaDomain.inc:62
 msgid "Algorithmic rid base"
-msgstr "Algorithmic rid base"
+msgstr "Base algorithmique du RID"
 
 #: admin/samba/class_sambaDomain.inc:66
 msgid "Minimum password age"
-msgstr "Age minimum du mot de passe"
+msgstr "Durée de vie minimale du mot de passe"
 
 #: admin/samba/class_sambaDomain.inc:67
 msgid ""
 "Minimum password age, in seconds (default: 0 => allow immediate password "
 "change)"
-msgstr "Durée minimum de validité du mot de passe avant changement, en secondes (défaut : 0 => permet le changement immédiat du mot de passe)"
+msgstr "Durée minimum de validité du mot de passe, en secondes (défaut : 0 => permet le changement immédiat du mot de passe)"
 
 #: admin/samba/class_sambaDomain.inc:72
 msgid "Maximum password age"
-msgstr "Durée de vie du mot de passe"
+msgstr "Durée de vie maximale du mot de passe"
 
 #: admin/samba/class_sambaDomain.inc:73
 msgid ""
@@ -128,7 +201,7 @@ msgstr "Taille de l'historique des mots de passe"
 
 #: admin/samba/class_sambaDomain.inc:99
 msgid "Length of Password History Entries (default: 0 => off)"
-msgstr "Taille de l'historique des mots de passe (par défaut : 0 => désactivé)"
+msgstr "Taille de l'historique des mots de passe (défaut : 0 => désactivé)"
 
 #: admin/samba/class_sambaDomain.inc:103
 msgid "Logon to change password"
@@ -140,7 +213,7 @@ msgstr "Force les utilisateurs à se connecter pour changer leur mot de passe (p
 
 #: admin/samba/class_sambaDomain.inc:108
 msgid "Lockout duration"
-msgstr "La durée de blocage"
+msgstr "Durée de verrouillage "
 
 #: admin/samba/class_sambaDomain.inc:109
 msgid "Lockout duration in minutes (default: 30, -1 => forever)"
@@ -172,7 +245,7 @@ msgstr "Déconnecte les utilisateurs en dehors des heures de connexion (défaut 
 
 #: admin/samba/class_sambaDomain.inc:128
 msgid "Refuse machine password change"
-msgstr "Refuser le changement de mot de passe machine"
+msgstr "Refuser le changement de mot de passe de la machine"
 
 #: admin/samba/class_sambaDomain.inc:129
 msgid "Allow Machine Password changes (default: 0 => off)"
@@ -210,11 +283,6 @@ msgstr "Une courte description de cette machine Windows"
 
 #: admin/systems/samba/class_winstationGeneric.inc:88
 #: personal/samba/class_sambaAccount.inc:176
-msgid "Domain"
-msgstr "Domaine"
-
-#: admin/systems/samba/class_winstationGeneric.inc:88
-#: personal/samba/class_sambaAccount.inc:176
 msgid "Samba domain name"
 msgstr "Nom du domaine Samba"
 
@@ -237,16 +305,11 @@ msgstr "Sélectionnez l'action à exécuter sur le terminal"
 
 #: admin/systems/samba/class_winstationGeneric.inc:110
 msgid "Network settings"
-msgstr "Paramètres réseaux"
+msgstr "Configuration réseau"
 
 #: personal/samba/class_sambaAccount.inc:31
 msgid "Samba Munged Dial"
 msgstr "Samba Munged Dial"
-
-#: personal/samba/class_sambaAccount.inc:135
-#: config/samba/class_sambaPluginConfig.inc:28
-msgid "Samba"
-msgstr "Samba"
 
 #: personal/samba/class_sambaAccount.inc:136
 #: config/samba/class_sambaPluginConfig.inc:41
@@ -279,7 +342,7 @@ msgstr "Chemin UNC du répertoire personnel de cet utilisateur"
 
 #: personal/samba/class_sambaAccount.inc:180
 msgid "Script path"
-msgstr "Chemin du script"
+msgstr "Chemin du Script"
 
 #: personal/samba/class_sambaAccount.inc:180
 msgid "Login script path"
@@ -293,7 +356,7 @@ msgstr "Chemin du profile"
 #: personal/samba/class_sambaAccount.inc:184
 #: personal/samba/class_sambaAccount.inc:209
 msgid "UNC profile path"
-msgstr "Chemin UNC du profile"
+msgstr "Chemin UNC du Profile"
 
 #: personal/samba/class_sambaAccount.inc:191
 msgid "Terminal server"
@@ -325,7 +388,7 @@ msgstr "Répertoire de travail"
 
 #: personal/samba/class_sambaAccount.inc:222
 msgid "Basic working directory"
-msgstr "Répertoire de travail"
+msgstr "Répertoire de travail de base"
 
 #: personal/samba/class_sambaAccount.inc:226
 msgid "Connection timeout"
@@ -353,7 +416,7 @@ msgstr "Délai d'inactivité avant la déconnexion du serveur de terminal"
 
 #: personal/samba/class_sambaAccount.inc:241
 msgid "Connect client drives at logon"
-msgstr "Connecter les lecteurs clients à l'identification"
+msgstr "Connecter les lecteurs clients à la connexion"
 
 #: personal/samba/class_sambaAccount.inc:241
 msgid "Drive to connect after login"
@@ -361,11 +424,11 @@ msgstr "Lecteur à connecter après la connexion"
 
 #: personal/samba/class_sambaAccount.inc:245
 msgid "Connect client printers at logon"
-msgstr "Connecter les imprimantes clientes à l'identification"
+msgstr "Connecter les imprimantes clientes à la connexion"
 
 #: personal/samba/class_sambaAccount.inc:245
 msgid "Printers to connect after login"
-msgstr "Imprimante à connecter après la connexion"
+msgstr "Imprimantes à connecter après la connexion"
 
 #: personal/samba/class_sambaAccount.inc:249
 msgid "Default to main client printer"
@@ -373,7 +436,7 @@ msgstr "Imprimante par défaut"
 
 #: personal/samba/class_sambaAccount.inc:249
 msgid "Default printer for this client"
-msgstr "Met l’imprimante par défaut sur ce client"
+msgstr "Imprimante par défaut pour ce client"
 
 #: personal/samba/class_sambaAccount.inc:253
 msgid "Shadowing"
@@ -449,11 +512,11 @@ msgstr "Le mot de passe n'expire jamais"
 
 #: personal/samba/class_sambaAccount.inc:295
 msgid "Login from windows client requires no password"
-msgstr "L'identification sur une station windows ne nécessite pas de mot de passe"
+msgstr "L'identification depuis une station Windows ne nécessite pas de mot de passe"
 
 #: personal/samba/class_sambaAccount.inc:295
 msgid "Login from a client without a password"
-msgstr "L'identification sur une station windows ne nécessite pas de mot de passe"
+msgstr "Identification depuis une station Windows sans de mot de passe"
 
 #: personal/samba/class_sambaAccount.inc:300
 msgid "Lock samba account"
@@ -461,11 +524,11 @@ msgstr "Verrouiller le compte Samba"
 
 #: personal/samba/class_sambaAccount.inc:300
 msgid "Lock the account"
-msgstr "Verrouiller le compte Samba"
+msgstr "Verrouiller le compte"
 
 #: personal/samba/class_sambaAccount.inc:305
 msgid "Cannot change password"
-msgstr "Mot de passe inchangeable"
+msgstr "Interdire le changement de mot de passe"
 
 #: personal/samba/class_sambaAccount.inc:305
 msgid "Not allowed to change password"
@@ -493,15 +556,15 @@ msgstr "Éditer les paramètres"
 
 #: personal/samba/class_sambaAccount.inc:332
 msgid "System trust"
-msgstr "Système de Confiance"
+msgstr "Système de confiance"
 
 #: personal/samba/class_sambaAccount.inc:338
 msgid "Allow connection from these workstations only"
-msgstr "Permet la connections depuis ces stations seulement"
+msgstr "Permet la connexion depuis ces stations seulement"
 
 #: personal/samba/class_sambaAccount.inc:338
 msgid "Only allow this user to connect to this list of hosts"
-msgstr "Autoriser seulement cet utilisateur à se connecter sur ces hôtes"
+msgstr "Autoriser cet utilisateur à se connecter uniquement sur cette liste d’hôtes"
 
 #: personal/samba/class_sambaAccount.inc:454
 msgid "Home drive"
@@ -515,19 +578,15 @@ msgstr "Chemin du répertoire personnel"
 msgid "The windows user manager allows eight clients at maximum!"
 msgstr "Le gestionnaire d'utilisateurs Windows accepte huit clients maximum !"
 
-#: personal/samba/class_sambaAccount.inc:478
-#: personal/samba/class_sambaAccount.inc:501
-msgid "Warning"
-msgstr "Avertissement"
-
-#: personal/samba/class_sambaAccount.inc:478
-msgid "Undefined Samba SID detected. Please fix this problem manually!"
-msgstr "Détection d'un SID Samba non défini. Veuillez corriger ceci manuellement !"
-
-#: personal/samba/class_sambaAccount.inc:502
+#: personal/samba/class_sambaAccount.inc:505
 msgid ""
 "Cannot convert primary group to samba group: group cannot be identified!"
 msgstr "Impossible de convertir le groupe principal en un groupe samba : le groupe ne peut être identifié !"
+
+#: personal/samba/class_sambaAccount.inc:521
+msgid ""
+"Cannot convert primary group to samba group: group samba tab is disabled!"
+msgstr "Impossible de convertir le groupe primaire en un groupe primaire samba : l'onglet groupe samba est désactivé !"
 
 #: config/samba/class_sambaPluginConfig.inc:29
 msgid "Samba plugin configuration"

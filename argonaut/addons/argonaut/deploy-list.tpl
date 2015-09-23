@@ -8,7 +8,7 @@
       <div class="contentboxb">
        <div style='background:white;padding:3px;'>
         <table><tr>
-          <td>{$RELOAD}&nbsp;</td><td>{$SEPARATOR}&nbsp;</td><td><img src='images/rocket.png' alt='' class='center'></td><td> {$ACTIONS}</td>
+          <td>{$RELOAD}&nbsp;</td><td>{$SEPARATOR}&nbsp;</td><td><img src='geticon.php?context=types&icon=action&size=16' alt='' class='center'></td><td> {$ACTIONS}</td>
         </tr></table>
        </div>
       </div>

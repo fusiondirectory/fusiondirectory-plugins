@@ -3,15 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Pavel Borecki <pavel.borecki@gmail.com>, 2015
+# Pavel Borecki <pavel.borecki@gmail.com>, 2014-2015
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-108\n"
+"Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2015-07-27 20:23+0200\n"
-"PO-Revision-Date: 2015-05-30 14:11+0000\n"
-"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
-"Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/FusionDirectory-108/language/cs_CZ/)\n"
+"POT-Creation-Date: 2015-09-11 22:18+0200\n"
+"PO-Revision-Date: 2015-05-30 14:12+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: Czech (Czech Republic) (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -25,7 +25,7 @@ msgstr ""
 
 #: admin/debconfProfile/class_debconfProfileManagement.inc:33
 msgid "Debconf profile management"
-msgstr "Správa sady nastavení pro Debconf"
+msgstr "Správa profilu Debconf"
 
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:71
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:84
@@ -39,7 +39,7 @@ msgstr "Pro tento profil neexistuje šablona"
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:85
 #, php-format
 msgid "Can't find entry %s in LDAP for profile %s"
-msgstr "V LDAP nelze nalézt položku %s pro profil %s"
+msgstr "Nelze nalézt položku %s v LDAP pro profil %s"
 
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:134
 msgid "LDAP error"
@@ -47,7 +47,7 @@ msgstr "Chyba LDAP"
 
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:137
 msgid "LDIF error"
-msgstr "Chyba LDIF"
+msgstr "Chyba v LDIF"
 
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:146
 #, php-format
@@ -61,11 +61,11 @@ msgstr "Debconf soubor importujete spuštěním následujícího příkazu : <br
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:162
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:166
 msgid "Debconf profile"
-msgstr "Debconf profil"
+msgstr "Profil Debconf"
 
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:163
 msgid "Debconf profile information"
-msgstr "Informace o Debconf profilu"
+msgstr "Údaje o sadě nastavení Debconf"
 
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:181
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:184
@@ -79,7 +79,7 @@ msgstr "Importovat soubor debconf"
 
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:184
 msgid "Name of this debconf template"
-msgstr "Název této debconf šablony"
+msgstr "Název této šablony debconf"
 
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:188
 msgid "Entries"
@@ -91,7 +91,7 @@ msgstr "Odpovědi Debconf šablony"
 
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:205
 msgid "Import"
-msgstr "Importovat"
+msgstr "import(ovat)"
 
 #: admin/systems/debconf/class_debconfStartup.inc:65
 msgid "Debconf settings"
@@ -99,7 +99,7 @@ msgstr "Nastavení pro Debconf"
 
 #: admin/systems/debconf/class_debconfStartup.inc:68
 msgid "Profile"
-msgstr "Profil"
+msgstr "profil"
 
 #: admin/systems/debconf/class_debconfStartup.inc:68
 msgid "Debconf preseed profile to be used for installation"
@@ -111,11 +111,11 @@ msgstr "Vydání"
 
 #: admin/systems/debconf/class_debconfStartup.inc:72
 msgid "Debian release to install"
-msgstr "Vydání distribuce Debian, které má být nainstalováno"
+msgstr "Vydání systému Debian, které má být nainstalováno"
 
 #: admin/systems/debconf/class_debconfStartup.inc:77
 msgid "Boot kernel"
-msgstr "Zaváděné jádro"
+msgstr "zaváděné jádro"
 
 #: admin/systems/debconf/class_debconfStartup.inc:77
 msgid "Linux kernel to be installed and booted"
@@ -127,11 +127,11 @@ msgstr "Parametry zavádění jádra"
 
 #: admin/systems/debconf/class_debconfStartup.inc:81
 msgid "Linux kernel parameters to be ran"
-msgstr "Parametry jádra Linux, se kterými má být zavedeno"
+msgstr "Parametry jádra Linux, se kterými má být spuštěno"
 
 #: admin/systems/debconf/class_debconfStartup.inc:112
 msgid "Debconf preseed startup"
-msgstr "Přednastavené spuštění Debconf"
+msgstr "Spuštění přednastavení Debconf"
 
 #: admin/debconfProfile/debconfProfile-filter.tpl.c:2
 msgid "Filter"

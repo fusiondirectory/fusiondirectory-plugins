@@ -145,7 +145,7 @@ class mailMethod
     /* Check if the mail account identification attribute
        is overridden in the configuration file
      */
-    if ($this->config->get_cfg_value("mailAttribute", "mail") != "") {
+    if ($this->config->get_cfg_value('mailAttribute', '') != '') {
       $new_uattrib = strtolower($this->config->get_cfg_value("mailAttribute"));
       if (in_array($new_uattrib, array("mail","uid"))) {
         $this->uattrib = $new_uattrib;

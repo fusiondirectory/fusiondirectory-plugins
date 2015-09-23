@@ -28,7 +28,7 @@ class mobilePhoneGeneric extends simplePlugin
 
   var $inheritance = array("gosaGroupOfNames" => "member");
 
-  var $preInitAttributes = array('networkSettings');
+  var $preInitAttributes = array('cn', 'networkSettings');
 
   static function plInfo()
   {

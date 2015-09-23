@@ -3,15 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Pavel Borecki <pavel.borecki@gmail.com>, 2015
+# Pavel Borecki <pavel.borecki@gmail.com>, 2014-2015
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-108\n"
+"Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2015-07-27 20:23+0200\n"
-"PO-Revision-Date: 2015-05-30 14:11+0000\n"
+"POT-Creation-Date: 2015-09-11 22:19+0200\n"
+"PO-Revision-Date: 2015-05-30 14:12+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
-"Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/FusionDirectory-108/language/cs_CZ/)\n"
+"Language-Team: Czech (Czech Republic) (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -33,7 +33,7 @@ msgstr "Sdílení"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:47
 msgid "Quotas for the shares this server hosts"
-msgstr "Kvóty na sdílení, která tento server poskytuje"
+msgstr "Kvóty pro sdílení na tomto serveru"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:51
 #: personal/quota/class_quotaAccount.inc:129
@@ -50,7 +50,7 @@ msgstr "Velikost bloku"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:55
 msgid "Block size of this share (dumpe2fs /dev/sdb3 | grep -i 'Block size')"
-msgstr "Velikost bloku pro toto sdílení (dumpe2fs /dev/<oddíl> | grep -i 'Block size')"
+msgstr "Velikost bloku pro toto sdílení (dumpe2fs /dev/sdb3 | grep -i 'Block size')"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:60
 msgid "Comment"
@@ -94,11 +94,11 @@ msgstr "Od"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:88
 msgid "Email from which the email is sent"
-msgstr "Adresa, ze které byl e-mail odeslán"
+msgstr "Adresa, ze které je e-mail poslán"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:92
 msgid "CC"
-msgstr "V kopii poslat i (CC)"
+msgstr "v kopii poslat i (CC)"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:92
 msgid "Send a copy of this email to"
@@ -122,7 +122,7 @@ msgstr "Obsah odeslaného e-mailu"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:104
 msgid "Signature"
-msgstr "Podpis"
+msgstr "Značka"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:104
 msgid "Signature to put at the end of the mail"
@@ -138,11 +138,11 @@ msgstr ""
 
 #: admin/systems/services/quota/class_serviceQuota.inc:113
 msgid "The LDAP server to bind to"
-msgstr "LDAP server, se kterým se spojit"
+msgstr "LDAP server ke kterému se připojit"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:117
 msgid "Bind user dn"
-msgstr "Rozlišené jméno uživatele, použité pro spojování"
+msgstr "Rozlišené jméno uživatele, který se připojuje"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:117
 msgid "The user dn to use for bind"
@@ -176,7 +176,7 @@ msgstr "Kvóta"
 
 #: personal/quota/class_quotaAccount.inc:102
 msgid "Plugin for quota support"
-msgstr "Zásuvný modul pro podporu kvót"
+msgstr "Zásuvný modul pro kvóty"
 
 #: personal/quota/class_quotaAccount.inc:120
 msgid "Quota informations"
@@ -188,11 +188,11 @@ msgstr "Informace o kvótách pro tohoto uživatele"
 
 #: personal/quota/class_quotaAccount.inc:129
 msgid "Device this quota is for"
-msgstr "Zařízení, pro které je tato kvóta určena"
+msgstr "Zařízení, kterého se tato kvóta týká"
 
 #: personal/quota/class_quotaAccount.inc:133
 msgid "Block soft limit"
-msgstr "Varovný („měkký“) limit počtu zabraných bloků"
+msgstr "Hranice varování blížícího se vyčerpání kvóty počtu zabraných bloků"
 
 #: personal/quota/class_quotaAccount.inc:133
 msgid "Soft limit for the block the user can use"
@@ -200,7 +200,7 @@ msgstr "Hranice varování blížícího se vyčerpání kvóty bloků, které u
 
 #: personal/quota/class_quotaAccount.inc:138
 msgid "Block hard limit"
-msgstr "Nepřekročitelný („tvrdý“) limit počtu využitých bloků"
+msgstr "Nepřekročitelná hranice počtu zabraných bloků"
 
 #: personal/quota/class_quotaAccount.inc:138
 msgid "Hard limit for the block the user can use"
@@ -208,19 +208,19 @@ msgstr "Nepřekročitelná hranice počtu bloků, které uživatel může využ�
 
 #: personal/quota/class_quotaAccount.inc:143
 msgid "Inode soft limit"
-msgstr "Varovný („měkký“) limit počtu souborů a složek (i-uzlů)"
+msgstr "varovný („měkký“) limit počtu souborů a složek (i-uzlů)"
 
 #: personal/quota/class_quotaAccount.inc:143
 msgid "Soft limit for the inodes the user can use"
-msgstr "Hranice varování blížícího se vyčerpání kvóty počtu souborů/složek (i-uzlů), které uživatel může využít"
+msgstr "Hranice varování blížícího se vyčerpání kvóty i-uzlů, které uživatel může využít"
 
 #: personal/quota/class_quotaAccount.inc:148
 msgid "Inode hard limit"
-msgstr "Nepřekročitelný („tvrdý“) limit počtu souborů a složek (i-uzlů)"
+msgstr "nepřekročitelný („tvrdý“) limit počtu souborů a složek (i-uzlů)"
 
 #: personal/quota/class_quotaAccount.inc:148
 msgid "Hard limit for the inodes the user can use"
-msgstr "Nepřekročitelná hranice počtu souborů/složek (i-uzlů), které uživatel může využít"
+msgstr "Nepřekročitelná hranice počtu i-uzlů, které uživatel může využít"
 
 #: personal/quota/class_quotaAccount.inc:153
 msgid "Server"

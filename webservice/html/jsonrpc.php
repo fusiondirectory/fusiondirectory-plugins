@@ -41,7 +41,7 @@ require_once("jsonrpcphp/jsonRPCServer.php");
 
 function initiateRPCSession($id = NULL, $ldap = NULL, $user = NULL, $pwd = NULL)
 {
-  global $config, $class_mapping, $BASE_DIR, $ui;
+  global $config, $class_mapping, $BASE_DIR, $ui, $ssl;
 
   session::start($id);
 
@@ -83,7 +83,11 @@ function initiateRPCSession($id = NULL, $ldap = NULL, $user = NULL, $pwd = NULL)
     if (($ssl != "") &&
           (($config->get_cfg_value('webserviceForceSSL', 'TRUE') == 'TRUE') ||
            ($config->get_cfg_value("forcessl") == "TRUE"))) {
-      header ("Location: $ssl");
+      echo json_encode(
+        array(
+          'error' => "HTTP connexions are not allowed, please use HTTPS: $ssl\n"
+        )
+      );
       exit;
     }
 
@@ -154,17 +158,22 @@ class fdRPCService
     return call_user_func_array(array($this, '_'.$method), $params);
   }
 
-  protected function checkAccess($type, $tab = NULL)
+  protected function checkAccess($type, $tab = NULL, $dn = NULL)
   {
     $infos = objects::infos($type);
     $plist = session::global_get('plist');
-    if (!$plist->check_access($infos['aclCategory'])) {
-      throw new Exception("Unsufficient rights for accessing type '$type'");
+    if (($dn !== NULL) && ($plist->ui->dn == $dn)) {
+      $self = ':self';
+    } else {
+      $self = '';
+    }
+    if (!$plist->check_access($infos['aclCategory'].$self)) {
+      throw new Exception("Unsufficient rights for accessing type '$type$self'");
     }
     if ($tab !== NULL) {
       $pInfos = pluglist::pluginInfos($tab);
-      if (!$plist->check_access(join(',', $pInfos['plCategory']))) {
-        throw new Exception("Unsufficient rights for accessing tab '$tab' of type '$type'");
+      if (!$plist->check_access(join($self.',', $pInfos['plCategory']).$self)) {
+        throw new Exception("Unsufficient rights for accessing tab '$tab' of type '$type$self'");
       }
     }
   }
@@ -223,7 +232,7 @@ class fdRPCService
    */
   protected function _fields($type, $dn = NULL, $tab = NULL)
   {
-    $this->checkAccess($type, $tab);
+    $this->checkAccess($type, $tab, $dn);
 
     if ($dn === NULL) {
       $tabobject = objects::create($type);
@@ -253,17 +262,102 @@ class fdRPCService
       $fields = array('main' => array('attrs' => array(), 'name' => _('Plugin')));
       foreach ($object->attributes as $attr) {
         if ($object->acl_is_readable($attr.'Acl')) {
-          $fields['main']['attrs'][] = array(
+          $fields['main']['attrs'][$attr] = array(
             'value'       => $object->$attr,
             'required'    => FALSE,
             'disabled'    => FALSE,
             'label'       => $attr,
-            'type'        => array('OldPluginAttribute'),
+            'type'        => 'OldPluginAttribute',
             'description' => '',
           );
         }
       }
       return $fields;
+    }
+  }
+
+  /*!
+   * \brief Deactivate a tab of an object
+   */
+  protected function _removetab($type, $dn, $tab)
+  {
+    $this->checkAccess($type, $tab, $dn);
+    $tabobject = objects::open($dn, $type);
+    $tabobject->current = $tab;
+    if (!is_subclass_of($tabobject->by_object[$tab], 'simplePlugin')) {
+      return array('errors' => array('Tab '.$tab.' is not based on simplePlugin, can’t remove it'));
+    } elseif (!$tabobject->by_object[$tab]->displayHeader) {
+      return array('errors' => array('Tab '.$tab.' cannot be deactivated, can’t remove it'));
+    } elseif (!$tabobject->by_object[$tab]->is_account) {
+      return array('errors' => array('Tab '.$tab.' is not activated on '.$dn.', can’t remove it'));
+    }
+    $_POST = array($tab.'_modify_state' => 1);
+    $tabobject->save_object();
+    $errors = $tabobject->check();
+    if (!empty($errors)) {
+      return array('errors' => $errors);
+    }
+    $tabobject->save();
+    return $tabobject->dn;
+  }
+
+  /*!
+   * \brief Update values of an object's attributes
+   */
+  protected function _update($type, $dn, $tab, $values)
+  {
+    $this->checkAccess($type, $tab, $dn);
+
+    if ($dn === NULL) {
+      $tabobject = objects::create($type);
+    } else {
+      $tabobject = objects::open($dn, $type);
+    }
+    if ($tab === NULL) {
+      $tab = $tabobject->current;
+    } else {
+      $tabobject->current = $tab;
+    }
+    $_POST                  = $values;
+    $_POST[$tab.'_posted']  = TRUE;
+    if (is_subclass_of($tabobject->by_object[$tab], 'simplePlugin') &&
+        $tabobject->by_object[$tab]->displayHeader &&
+        !$tabobject->by_object[$tab]->is_account
+      ) {
+      $_POST[$tab.'_modify_state'] = 1;
+    }
+    $tabobject->save_object();
+    $errors = $tabobject->check();
+    if (!empty($errors)) {
+      return array('errors' => $errors);
+    }
+    $tabobject->save();
+    return $tabobject->dn;
+  }
+
+  /*!
+   * \brief Delete an object
+   */
+  protected function _delete($type, $dn)
+  {
+    $infos = objects::infos($type);
+    $plist = session::global_get('plist');
+    // Check permissions, are we allowed to remove this object?
+    $acl = $plist->ui->get_permissions($dn, $infos['aclCategory'].'/'.$infos['mainTab']);
+    if (preg_match('/d/', $acl)) {
+      if ($user = get_lock($dn)) {
+        return array('errors' => array(sprintf(_('Cannot delete %s. It has been locked by %s.'), $dn, $user)));
+      }
+      add_lock ($dn, $plist->ui->dn);
+
+      // Delete the object
+      $tabobject = objects::open($dn, $type);
+      $tabobject->delete();
+
+      // Remove the lock for the current object.
+      del_lock($dn);
+    } else {
+      return array('errors' => array(msgPool::permDelete($dn)));
     }
   }
 
@@ -287,6 +381,8 @@ class fdRPCService
 
 $service = new fdRPCService();
 if (!jsonRPCServer::handle($service)) {
-  echo "No request received\n";
+  echo "no request\n";
+  echo session_id()."\n";
+  print_r($_SERVER);
 }
 ?>

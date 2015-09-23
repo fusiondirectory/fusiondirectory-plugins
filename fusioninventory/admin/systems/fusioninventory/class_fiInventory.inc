@@ -123,7 +123,7 @@ class fiInventory extends simplePlugin
       $attributesInfo['hardware']['attrs'][] = new HiddenAttribute('cn');
     }
 
-    parent::__construct($config, $dn, $object);
+    parent::__construct($config, $dn, $object, $attributesInfo);
 
     $this->hardware_infos = NULL;
     $this->software_infos = NULL;

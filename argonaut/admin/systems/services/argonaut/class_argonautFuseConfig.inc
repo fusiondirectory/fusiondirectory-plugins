@@ -21,18 +21,17 @@
 
 class argonautFuseConfig extends simpleService
 {
-  var $objectclasses  = array("argonautFuseConfig");
-  var $showActions    = FALSE;
+  var $objectclasses  = array('argonautFuseConfig');
 
   /* Return plugin informations for acl handling */
   static function plInfo()
   {
     return array(
-      "plShortName"     => _("Argonaut Fuse settings"),
-      "plDescription"   => _("Argonaut Fuse settings")." ("._("Services").")",
-      "plIcon"          => "plugins/argonaut/images/iconMiniFuseConfig.png",
+      'plShortName'     => _('Argonaut Fuse'),
+      'plDescription'   => _('Argonaut Fuse settings'),
+      'plIcon'          => 'plugins/argonaut/images/iconMiniFuseConfig.png',
 
-      "plProvidedAcls"  => parent::generatePlProvidedAcls(self::getAttributesInfo())
+      'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }
 

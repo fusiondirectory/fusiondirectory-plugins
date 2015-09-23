@@ -32,7 +32,9 @@ class SupannPrefixedSelectAttribute extends CompositeAttribute
     parent::__construct($description, $ldapName, $attributes, '/^{(.*)}(.*)$/', '{%s}%s', $acl, $label);
     $this->setLinearRendering(TRUE);
     $this->prefixedChoices = supann::get_prefixed_choices_for($filename);
-    $this->prefixedChoices[''] = array(array(''), array(_('None')));
+    if (!$required) {
+      $this->prefixedChoices[''] = array(array(''), array(_('None')));
+    }
     $this->attributes[0]->setChoices(array_keys($this->prefixedChoices));
     $this->attributes[0]->setSubmitForm(TRUE);
     $this->supannUpdateSelect();
@@ -232,7 +234,7 @@ class supannAccount extends simplePlugin
         'name'  => _('Identity'),
         'attrs' => array(
           new SelectAttribute(
-            _('Civilite'), _('supannCivilite - Civilte for this person'),
+            _('Civilite'), _('supannCivilite - Civility for this person'),
             'supannCivilite', FALSE,
             array('', 'M.', 'Mme', 'Mlle')
           ),
@@ -245,8 +247,8 @@ class supannAccount extends simplePlugin
             'eduPersonPrincipalName', FALSE
           ),
           new StringAttribute(
-            _('Nick name'), _('eduPersonNickName - Can contain a nick name for this user'),
-            'eduPersonNickName', FALSE
+            _('Nick name'), _('eduPersonNickname - Can contain a nick name for this user'),
+            'eduPersonNickname', FALSE
           ),
           new SetAttribute(
             new StringAttribute(
@@ -289,12 +291,12 @@ class supannAccount extends simplePlugin
         'name'  => _('Affectation'),
         'attrs' => array(
           new SelectAttribute(
-            _('Entity primary assignment'), _('supannEntiteAffectationPrincipale'),
+            _('Entity primary assignment'), _('supannEntiteAffectationPrincipale - Main assignment of the person'),
             'supannEntiteAffectationPrincipale', FALSE
           ),
           new SetAttribute(
             new SelectAttribute(
-              _('Entity assignment'), _('supannEntiteAffectation'),
+              _('Entity assignment'), _('supannEntiteAffectation - represents assignments of the person in an institution, a component, service, etc.'),
               'supannEntiteAffectation', FALSE
             )
           ),
@@ -310,18 +312,18 @@ class supannAccount extends simplePlugin
         'name'  => _('Affiliation'),
         'attrs' => array(
           new SelectAttribute(
-            _('Primary affiliation'), _('eduPersonPrimaryAffiliation'),
+            _('Primary affiliation'), _('eduPersonPrimaryAffiliation - Main status of the person'),
             'eduPersonPrimaryAffiliation', FALSE
           ),
           new SetAttribute(
             new SelectAttribute(
-              _('Affiliations'), _('eduPersonAffiliation'),
+              _('Affiliations'), _('eduPersonAffiliation - status of the person: student, BIATOSS, teacher, contract, retired, hosted staff (CNRS, INSERM, etc.), a former student, etc.'),
               'eduPersonAffiliation', FALSE
             )
           ),
           new SetAttribute(
             new SelectAttribute(
-              _('Establishment'), _('supannEtablissement'),
+              _('Establishment'), _('supannEtablissement - institution or unit of administrative attachment of the person'),
               'supannEtablissement', FALSE
             )
           ),
@@ -335,7 +337,7 @@ class supannAccount extends simplePlugin
             'supannCodeINE', FALSE
           ),
           new StringAttribute(
-            _('Student ID'), _('supannEtuId - scolarity id'),
+            _('Student ID'), _('supannEtuId - Scolarity id'),
             'supannEtuId', FALSE
           ),
         )
@@ -373,7 +375,7 @@ class supannAccount extends simplePlugin
                   'supannEtuRegimeInscription_regimeinsc', TRUE
                 ),
                 new SelectAttribute(
-                  _('Disciplinary Sector'), _('supannEtuSecteurDisciplinaire'),
+                  _('Disciplinary Sector'), _('supannEtuSecteurDisciplinaire - Disciplinary sector education diploma'),
                   'supannEtuSecteurDisciplinaire_sectdisc', TRUE
                 ),
                 new SelectAttribute(
@@ -381,7 +383,7 @@ class supannAccount extends simplePlugin
                   'supannEtuTypeDiplome_typedip', TRUE
                 ),
                 new SupannCursusAnneeAttribute(
-                  _('Curriculum year '), _('supannEtuCursusAnnee'),
+                  _('Curriculum year '), _('supannEtuCursusAnnee - type of curriculum (L, M, D or X, ...) and the year in the diploma.'),
                   'supannEtuCursusAnnee_cursusann', TRUE
                 ),
                 new SelectAttribute(
@@ -389,15 +391,15 @@ class supannAccount extends simplePlugin
                   'supannEntiteAffectation_affect', FALSE
                 ),
                 new SupannPrefixedSelectAttribute(
-                  _('Diploma'), _('supannEtuDiplome'),
+                  _('Diploma'), _('supannEtuDiplome - Diploma prepared by the student'),
                   'supannEtuDiplome_diplome', FALSE, 'diplome'
                 ),
                 new SupannPrefixedSelectAttribute(
-                  _('Step'), _('supannEtuEtape'),
+                  _('Step'), _('supannEtuEtape - Step can be considered a split (semester, year, etc.) in time of education leading to a diploma'),
                   'supannEtuEtape_etape', FALSE, 'etuetape'
                 ),
                 new SupannPrefixedSelectAttribute(
-                  _('educational element'), _('supannEtuElementPedagogique'),
+                  _('educational element'), _('supannEtuElementPedagogique - Generic description of the content of education with a high level of granularity'),
                   'supannEtuElementPedagogique_eltpedago', FALSE, 'etuelementpedagogique'
                 ),
               )
@@ -412,7 +414,7 @@ class supannAccount extends simplePlugin
         'name'  => _('Personal profile'),
         'attrs' => array(
           new StringAttribute(
-            _('Personal ID'), _('supannEmpId'),
+            _('Personal ID'), _('supannEmpId - Employee identifier'),
             'supannEmpId', FALSE
           ),
           new SelectAttribute(
@@ -421,7 +423,7 @@ class supannAccount extends simplePlugin
           ),
           new SetAttribute(
             new SupannPrefixedSelectAttribute(
-              _('Activity'), _('supannActivite'),
+              _('Activity'), _('supannActivite - category of profession'),
               'supannActivite', FALSE, 'activite'
             )
           )
@@ -438,16 +440,16 @@ class supannAccount extends simplePlugin
               _('supannRoleEntite'),
               'supannRoleEntite',
               array(
-                new SelectAttribute(
-                  _('Generic role'), _('supannRoleGenerique'),
-                  'supannRoleGenerique_role', TRUE
+                new SupannPrefixedSelectAttribute(
+                  _('Generic role'), _('supannRoleGenerique - Generics Roles of the person in the facility'),
+                  'supannRoleGenerique_role', TRUE, 'role'
                 ),
                 new SelectAttribute(
                   _('Entity assignment type'), _('supannTypeEntiteAffectation'),
                   'supannTypeEntiteAffectation_type', TRUE
                 ),
                 new SelectAttribute(
-                  _('Entity assignment'), _('supannEntiteAffectation'),
+                  _('Entity assignment'), _('supannEntiteAffectation - represents assignments of the person in an institution, a component, service, etc.'),
                   'supannEntiteAffectation_code', FALSE
                 ),
               ),
@@ -513,9 +515,6 @@ class supannAccount extends simplePlugin
 
     list ($codes, $labels) = supann::get_choices_for('typediplome_SISE', '{SISE}');
     $this->attributesAccess['supannEtuInscription']->attribute->attributes[4]->setChoices($codes, $labels); // supannEtuTypeDiplome
-
-    list ($codes, $labels) = supann::get_choices_for('role', '{SUPANN}');
-    $this->attributesAccess['supannRoleEntite']->attribute->attributes[0]->setChoices($codes, $labels); // supannRoleGeneric
   }
 
   function execute()

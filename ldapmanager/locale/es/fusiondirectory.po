@@ -3,16 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# lars_g <lars.gold@gmail.com>, 2012
-# lars_g <lars.gold@gmail.com>, 2012
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-108\n"
+"Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2015-07-27 20:23+0200\n"
-"PO-Revision-Date: 2015-05-30 14:11+0000\n"
+"POT-Creation-Date: 2015-09-11 22:18+0200\n"
+"PO-Revision-Date: 2015-05-30 14:12+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Spanish (http://www.transifex.com/projects/p/FusionDirectory-108/language/es/)\n"
+"Language-Team: Spanish (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -84,6 +82,8 @@ msgid ""
 msgstr ""
 
 #: addons/ldapmanager/class_ldapmanager.inc:119
+#: addons/ldapmanager/class_csvimport.inc:71
+#: addons/ldapmanager/class_csvimport.inc:94
 #: addons/ldapmanager/contentcsv.tpl.c:26
 #: addons/ldapmanager/contentcsv.tpl.c:29
 msgid "Import"
@@ -93,122 +93,116 @@ msgstr "Importar"
 msgid "Import LDIF file"
 msgstr ""
 
-#: addons/ldapmanager/class_ldapmanager.inc:164
-#: addons/ldapmanager/class_ldapmanager.inc:203
+#: addons/ldapmanager/class_ldapmanager.inc:151
+#: addons/ldapmanager/class_ldapmanager.inc:193
 msgid "LDAP error"
 msgstr "Error LDAP"
 
-#: addons/ldapmanager/class_ldapmanager.inc:165
+#: addons/ldapmanager/class_ldapmanager.inc:152
 #, php-format
 msgid "No such object %s!"
 msgstr "No existe el objeto %s!"
 
-#: addons/ldapmanager/class_ldapmanager.inc:179
-#: addons/ldapmanager/class_csvimport.inc:137
+#: addons/ldapmanager/class_ldapmanager.inc:170
 msgid "Permission error"
 msgstr "Error de permisos"
 
-#: addons/ldapmanager/class_ldapmanager.inc:180
+#: addons/ldapmanager/class_ldapmanager.inc:171
 #, php-format
 msgid "You have no permission to export %s!"
 msgstr "No tiene permiso para exportar %s!"
 
-#: addons/ldapmanager/class_ldapmanager.inc:185
-#: addons/ldapmanager/class_csvimport.inc:188
-#: addons/ldapmanager/class_csvimport.inc:351
-#: addons/ldapmanager/class_csvimport.inc:388
-#: addons/ldapmanager/class_csvimport.inc:391
-#: addons/ldapmanager/class_csvimport.inc:394
-#: addons/ldapmanager/class_csvimport.inc:397
-#: addons/ldapmanager/class_csvimport.inc:545
+#: addons/ldapmanager/class_ldapmanager.inc:177
+#: addons/ldapmanager/class_csvimport.inc:195
 msgid "Error"
 msgstr "Error"
 
-#: addons/ldapmanager/class_ldapmanager.inc:186
+#: addons/ldapmanager/class_ldapmanager.inc:178
 #, php-format
 msgid "Failed to generate ldap export, error was \"%s\"!"
 msgstr ""
 
-#: addons/ldapmanager/tabs_ldif.inc:38
+#: addons/ldapmanager/tabs_ldif.inc:31
 msgid "LDAP import/export"
 msgstr ""
 
-#: addons/ldapmanager/tabs_ldif.inc:39
+#: addons/ldapmanager/tabs_ldif.inc:32
 msgid "Allows the import or export of the ldap tree"
 msgstr ""
 
-#: addons/ldapmanager/tabs_ldif.inc:43
+#: addons/ldapmanager/tabs_ldif.inc:36
 msgid "Ldap manager"
 msgstr "Administrador LDAP"
 
-#: addons/ldapmanager/class_csvimport.inc:39
+#: addons/ldapmanager/class_csvimport.inc:29
 msgid "CSV import"
 msgstr "Importar desde CSV"
 
-#: addons/ldapmanager/class_csvimport.inc:40
+#: addons/ldapmanager/class_csvimport.inc:30
 msgid "Import of csv data into the ldap tree"
 msgstr ""
 
-#: addons/ldapmanager/class_csvimport.inc:137
-msgid "You've no permission to import CSV files."
-msgstr "No tiene permisos para importar archivos CSV."
+#: addons/ldapmanager/class_csvimport.inc:43
+msgid "Import CSV"
+msgstr ""
 
-#: addons/ldapmanager/class_csvimport.inc:188
-msgid "Need at least 'sn' and 'givenName' to create users!"
-msgstr "Se requiere por lo menos de 'sn' y 'givenName' para crear usuarios!"
+#: addons/ldapmanager/class_csvimport.inc:46
+msgid "Object type"
+msgstr ""
 
-#: addons/ldapmanager/class_csvimport.inc:189
-#: addons/ldapmanager/class_csvimport.inc:221
-#: addons/ldapmanager/class_csvimport.inc:287
-msgid "failed"
-msgstr "error"
+#: addons/ldapmanager/class_csvimport.inc:46
+msgid "Type of objects you wish to import"
+msgstr ""
 
-#: addons/ldapmanager/class_csvimport.inc:220
+#: addons/ldapmanager/class_csvimport.inc:50
+msgid "Template"
+msgstr "Plantilla"
+
+#: addons/ldapmanager/class_csvimport.inc:50
+msgid "Select a template to apply to imported entries"
+msgstr ""
+
+#: addons/ldapmanager/class_csvimport.inc:54
+msgid "CSV file"
+msgstr ""
+
+#: addons/ldapmanager/class_csvimport.inc:54
+msgid "Import a CSV file into your LDAP"
+msgstr ""
+
+#: addons/ldapmanager/class_csvimport.inc:58
+msgid "Separator"
+msgstr "Separador"
+
+#: addons/ldapmanager/class_csvimport.inc:58
+msgid "Character used as separator in the CSV file"
+msgstr ""
+
+#: addons/ldapmanager/class_csvimport.inc:64
+msgid "Fixed values"
+msgstr ""
+
+#: addons/ldapmanager/class_csvimport.inc:64
+msgid ""
+"Some fixed values that you might wanna use in the filling of the template."
+msgstr ""
+
+#: addons/ldapmanager/class_csvimport.inc:76
+msgid "Template filling"
+msgstr ""
+
+#: addons/ldapmanager/class_csvimport.inc:85
+msgid "Select fields associations"
+msgstr ""
+
+#: addons/ldapmanager/class_csvimport.inc:204
+msgid "Success"
+msgstr "Correcto"
+
+#: addons/ldapmanager/class_csvimport.inc:204
 #, php-format
-msgid "Failed to generate 'uid' for entry '%s'!"
-msgstr "Fallo al generar 'uid' para la entrada '%s'!"
-
-#: addons/ldapmanager/class_csvimport.inc:291
-msgid "ok"
-msgstr "ok"
-
-#: addons/ldapmanager/class_csvimport.inc:351
-#, php-format
-msgid "Cannot insert entry '%s'!"
-msgstr "¡No se puede introducir la entrada '%s'!"
-
-#: addons/ldapmanager/class_csvimport.inc:377
-msgid "Information"
-msgstr "Información"
-
-#: addons/ldapmanager/class_csvimport.inc:377
-msgid "Nothing to import!"
-msgstr "¡No hay nada que importar!"
-
-#: addons/ldapmanager/class_csvimport.inc:388
-#: addons/ldapmanager/class_csvimport.inc:391
-#: addons/ldapmanager/class_csvimport.inc:394
-#: addons/ldapmanager/class_csvimport.inc:397
-#, php-format
-msgid "Cannot read uploaded file: %s"
-msgstr "No puedo leer el archivo: %s"
-
-#: addons/ldapmanager/class_csvimport.inc:388
-#: addons/ldapmanager/class_csvimport.inc:394
-msgid "file not found"
-msgstr "fichero no encontrado"
-
-#: addons/ldapmanager/class_csvimport.inc:391
-msgid "file is empty"
-msgstr "el archivo está vacío"
-
-#: addons/ldapmanager/class_csvimport.inc:397
-msgid "file not readable"
-msgstr "fichero no accesible"
-
-#: addons/ldapmanager/class_csvimport.inc:545
-msgid "Cannot find CSV data in the selected file!"
-msgstr "¡No se puede encontrar información CSV en el archivo seleccionado!"
+msgid "Successfully imported %d entries"
+msgstr ""
 
 #: addons/ldapmanager/contentcsv.tpl.c:2
 msgid ""

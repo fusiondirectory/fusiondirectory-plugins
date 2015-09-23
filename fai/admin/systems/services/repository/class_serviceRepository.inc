@@ -131,6 +131,7 @@ class FAIRepositoryAttribute extends PipeSeparatedCompositeAttribute
 class serviceRepository extends simpleService
 {
   var $objectclasses  = array('FAIrepositoryServer');
+  var $showActions    = FALSE;
 
   static function getAttributesInfo ()
   {
@@ -193,8 +194,46 @@ class serviceRepository extends simpleService
     foreach ($repos as $repo) {
       $release = $repo[2];
       if (($repo[4] == 'install') && (!isset($done[$release]))) {
-        FAI::createBranch($repo[7], $release);
+        self::createBranch($repo[7], $release);
         $done[$release] = TRUE;
+      }
+    }
+  }
+
+  static function createBranch ($distribution, $release)
+  {
+    global $config;
+
+    // Check if FAI branch is here
+    $fai  = "ou=$distribution,".get_ou('faiBaseRDN').$config->current['BASE'];
+    $ldap = $config->get_ldap_link();
+    $ldap->cat($fai, array('dn'));
+    if (!$ldap->count()) {
+      $ldap->cd($config->current['BASE']);
+      $ldap->create_missing_trees($fai);
+      if (!$ldap->success()) {
+        msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), $fai, LDAP_ADD, get_class()), LDAP_ERROR);
+        return;
+      }
+    }
+
+    // Check if FAI release branch is here
+    $dn = "ou=$release,$fai";
+    $ldap->cat($dn, array('dn'));
+    if (!$ldap->count()) {
+      $ldap->cd($dn);
+      $ldap->add(array('objectClass' => array('organizationalUnit','FAIbranch'), 'ou' => $release));
+      if ($ldap->success()) {
+        // Add classes OUs
+        foreach (array('Script', 'Hook', 'Template', 'Variable', 'Profile', 'Package', 'Partition') as $type) {
+          $ldap->cd($dn);
+          $ldap->create_missing_trees(get_ou('fai'.$type.'RDN').$dn);
+          if (!$ldap->success()) {
+            msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), get_ou('fai'.$type.'RDN').$dn, LDAP_ADD, get_class()), LDAP_ERROR);
+          }
+        }
+      } else {
+        msg_dialog::display(_('LDAP error'), msgPool::ldaperror($ldap->get_error(), $dn, LDAP_ADD, get_class()), LDAP_ERROR);
       }
     }
   }

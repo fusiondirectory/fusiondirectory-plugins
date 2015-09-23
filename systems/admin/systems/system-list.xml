@@ -11,14 +11,6 @@
     <defaultSortColumn>1</defaultSortColumn>
 
     <objectType>
-      <label>New workstation</label>
-      <objectClass>FAKE_OC_NewWorkstation</objectClass>
-      <category>workstation</category>
-      <class>workstationGeneric</class>
-      <image>plugins/systems/images/select_new_workstation.png</image>
-    </objectType>
-
-    <objectType>
       <label>Locked server</label>
       <objectClass>goServer__IS_LOCKED</objectClass>
       <category>server</category>
@@ -40,39 +32,6 @@
       <category>terminal</category>
       <class>terminalGeneric</class>
       <image>plugins/systems/images/terminal_locked.png</image>
-    </objectType>
-
-
-    <objectType>
-      <label>New terminal</label>
-      <objectClass>FAKE_OC_NewTerminal</objectClass>
-      <category>terminal</category>
-      <class>terminalGeneric</class>
-      <image>plugins/systems/images/select_new_terminal.png</image>
-    </objectType>
-
-    <objectType>
-      <label>New device</label>
-      <objectClass>FAKE_OC_NewDevice</objectClass>
-      <category>terminal</category>
-      <class>terminalGeneric</class>
-      <image>plugins/systems/images/select_newsystem.png</image>
-    </objectType>
-
-    <objectType>
-      <label>Workstation template</label>
-      <objectClass>FAKE_OC_WorkstationTemplate</objectClass>
-      <category>workstation</category>
-      <class>workstationGeneric</class>
-      <image>plugins/systems/images/select_default.png</image>
-    </objectType>
-
-    <objectType>
-      <label>Terminal template</label>
-      <objectClass>FAKE_OC_TerminalTemplate</objectClass>
-      <category>terminal</category>
-      <class>terminalGeneric</class>
-      <image>plugins/systems/images/select_default.png</image>
     </objectType>
 
     <objectType>
@@ -117,7 +76,7 @@
 
     <objectType>
       <label>Phone</label>
-      <objectClass>goFonHardware</objectClass>
+      <objectClass>fdPhone</objectClass>
       <category>phone</category>
       <class>phoneGeneric</class>
       <image>geticon.php?context=devices&amp;icon=telephone&amp;size=16</image>
@@ -268,7 +227,7 @@
      </action>
 
      <action>
-      <name>new_goFonHardware</name>
+      <name>new_fdPhone</name>
       <type>entry</type>
       <image>geticon.php?context=devices&amp;icon=telephone&amp;size=16</image>
       <label>Phone</label>
@@ -306,7 +265,7 @@
 
     <action>
       <type>sub</type>
-      <image>images/rocket.png</image>
+      <image>geticon.php?context=types&amp;icon=action&amp;size=16</image>
       <label>Trigger action</label>
       <depends>DaemonEvent</depends>
     </action>
@@ -320,14 +279,6 @@
 
     <action>
       <type>separator</type>
-    </action>
-
-    <action>
-      <name>activateMultiple</name>
-      <depends>DaemonEvent</depends>
-      <type>entry</type>
-      <image>geticon.php?context=status&amp;icon=object-unlocked&amp;size=16</image>
-      <label>Activate systems</label>
     </action>
 
     <action>
@@ -356,17 +307,6 @@
   </actionmenu>
 
   <actiontriggers snapshot="true" copypaste="true">
-
-    <action>
-      <name>createISO</name>
-      <type>entry</type>
-      <objectclass>gotoWorkstation</objectclass>
-      <objectclass>FAIobject</objectclass>
-      <image>geticon.php?context=devices&amp;icon=media-cdrom&amp;size=16</image>
-      <acl>workstation/workstationGeneric[createFAICD:w]</acl>
-      <label>Create ISO</label>
-    </action>
-
     <action>
       <name>cp</name>
       <type>copypaste</type>

@@ -88,7 +88,6 @@ class terminalGeneric extends workstationGeneric
           'filter'      => 'objectClass=gotoTerminal',
           'icon'        => 'geticon.php?context=devices&icon=terminal&size=16',
           'ou'          => get_ou('terminalRDN'),
-          'tabClass'    => 'termtabs',
         )
       ),
 
@@ -129,6 +128,12 @@ class terminalGeneric extends workstationGeneric
       }
     }
     $this->attributesInfo['servers']['attrs']['gotoSwapServer']->setChoices($tmp, $tmp_output);
+  }
+
+  /* Returns the dn of the entry */
+  function compute_dn()
+  {
+    return 'cn='.$this->cn.','.get_ou('terminalRDN').$this->base;
   }
 
   function execute()

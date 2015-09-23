@@ -285,7 +285,7 @@ class servdnseditZone extends plugin
     }
 
     /* Assign records list */
-    $smarty->assign("NotNew",         FALSE);
+    $smarty->assign("NotNew",         !$this->isNew);
     $smarty->assign("Mxrecords",      $div->DrawList());
     $smarty->assign("records",        $this->generateRecordsList());
     $smarty->assign("NetworkClass",   $this->NetworkClass);
@@ -350,6 +350,14 @@ class servdnseditZone extends plugin
 
     if (empty($this->ReverseZone)) {
       $message[] = msgPool::required(_("Reverse zone"));
+    }
+
+    if (empty($this->sOAprimary)) {
+      $message[] = msgPool::required(_("Primary dns server"));
+    }
+
+    if (empty($this->sOAmail)) {
+      $message[] = msgPool::required(_("Mail address"));
     }
 
     if ($this->zoneName != strtolower($this->zoneName)) {

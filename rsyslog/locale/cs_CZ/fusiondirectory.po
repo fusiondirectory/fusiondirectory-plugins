@@ -3,17 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Pavel Borecki <pavel.borecki@gmail.com>, 2012
-# Pavel Borecki <pavel.borecki@gmail.com>, 2012,2015
-# Pavel Borecki <pavel.borecki@gmail.com>, 2012
+# Pavel Borecki <pavel.borecki@gmail.com>, 2014-2015
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-108\n"
+"Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2015-07-27 20:23+0200\n"
-"PO-Revision-Date: 2015-05-30 14:11+0000\n"
-"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
-"Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/FusionDirectory-108/language/cs_CZ/)\n"
+"POT-Creation-Date: 2015-09-11 22:19+0200\n"
+"PO-Revision-Date: 2015-05-30 14:12+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: Czech (Czech Republic) (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -31,7 +29,7 @@ msgstr "Služby"
 
 #: admin/systems/services/rsyslog/class_serviceSyslog.inc:41
 msgid "Logging service"
-msgstr "Služba zaznamenávání protokolů"
+msgstr "Služba protokolování"
 
 #: admin/systems/services/rsyslog/class_serviceSyslog.inc:44
 msgid "Driver"
@@ -51,7 +49,7 @@ msgstr "Databáze, ve které služba syslog uchovává své informace"
 
 #: admin/systems/services/rsyslog/class_serviceSyslog.inc:53
 msgid "Database user"
-msgstr "Uživatelský účet v rámci databáze"
+msgstr "Uživatel pro přístup k databázi"
 
 #: admin/systems/services/rsyslog/class_serviceSyslog.inc:53
 msgid "Database administrator"
@@ -68,11 +66,11 @@ msgstr "Heslo správce databáze"
 #: addons/rsyslog/class_rsyslog.inc:47 addons/rsyslog/class_rsyslog.inc:53
 #: addons/rsyslog/main.inc:38
 msgid "System logs"
-msgstr "Systémové záznamy protokolů"
+msgstr "Protokoly systému"
 
 #: addons/rsyslog/class_rsyslog.inc:48
 msgid "This plugin allow to View system logs"
-msgstr "Pomocí tohoto zásuvného modulu je možné prohlížet záznamy protokolu systému"
+msgstr "Pomocí tohoto zásuvného modulu je možné prohlížet protokoly systému"
 
 #: addons/rsyslog/class_rsyslog.inc:142 addons/rsyslog/class_rsyslog.inc:148
 msgid "-"
@@ -85,7 +83,7 @@ msgstr "Vše"
 #: addons/rsyslog/class_rsyslog.inc:176
 #, php-format
 msgid "%s entries match the filter"
-msgstr "%s záznamů odpovídá filtru"
+msgstr "%s položek odpovídá filtru"
 
 #: addons/rsyslog/class_rsyslog.inc:196
 #, php-format
@@ -94,7 +92,7 @@ msgstr "Zvolený server %s neexistuje!"
 
 #: addons/rsyslog/class_rsyslog.inc:348
 msgid "Emergency"
-msgstr "Naléhavé"
+msgstr "Naléhavost"
 
 #: addons/rsyslog/class_rsyslog.inc:349
 msgid "Alert"
@@ -114,32 +112,32 @@ msgstr "Varování"
 
 #: addons/rsyslog/class_rsyslog.inc:353
 msgid "Notice"
-msgstr "Upozornění"
+msgstr "poznámka"
 
 #: addons/rsyslog/class_rsyslog.inc:354
 msgid "Informational"
-msgstr "Pro informaci"
+msgstr "informace"
 
 #: addons/rsyslog/class_rsyslog.inc:355
 msgid "Debug"
-msgstr "Diagnostické"
+msgstr "Diagnostikovat"
 
 #: addons/rsyslog/class_rsyslog.inc:362 addons/rsyslog/class_rsyslog.inc:399
 #, php-format
 msgid "Unknown (%s)"
-msgstr "Neznámé (%s)"
+msgstr "neznámá (%s)"
 
 #: addons/rsyslog/class_rsyslog.inc:369
 msgid "Kernel"
-msgstr "Jádro systému"
+msgstr "Jádro"
 
 #: addons/rsyslog/class_rsyslog.inc:370
 msgid "User level"
-msgstr "Uživatelsky určená úroveň"
+msgstr "uživatelská úroveň"
 
 #: addons/rsyslog/class_rsyslog.inc:371
 msgid "Mail system"
-msgstr "Poštovní systém"
+msgstr "systém zpráv"
 
 #: addons/rsyslog/class_rsyslog.inc:372
 msgid "System daemon"
@@ -155,7 +153,7 @@ msgstr "Vnitřní"
 
 #: addons/rsyslog/class_rsyslog.inc:375
 msgid "Printing"
-msgstr "Tisknutí"
+msgstr "Tisk"
 
 #: addons/rsyslog/class_rsyslog.inc:376
 msgid "News"
@@ -163,27 +161,27 @@ msgstr "Novinky"
 
 #: addons/rsyslog/class_rsyslog.inc:377
 msgid "UUCP"
-msgstr ""
+msgstr "UUCP"
 
 #: addons/rsyslog/class_rsyslog.inc:378
 msgid "Cron"
-msgstr ""
+msgstr "Cron"
 
 #: addons/rsyslog/class_rsyslog.inc:380
 msgid "FTP"
-msgstr ""
+msgstr "FTP"
 
 #: addons/rsyslog/class_rsyslog.inc:381
 msgid "NTP"
-msgstr ""
+msgstr "NTP"
 
 #: addons/rsyslog/class_rsyslog.inc:382
 msgid "Log audit"
-msgstr "Kontrola záznamu protokolu"
+msgstr "Kontrola protokolu"
 
 #: addons/rsyslog/class_rsyslog.inc:383
 msgid "Log alert"
-msgstr "Výstraha záznamu protokolu"
+msgstr "Výstraha protokolu"
 
 #: addons/rsyslog/class_rsyslog.inc:384
 msgid "Clock"

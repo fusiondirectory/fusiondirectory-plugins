@@ -1,6 +1,6 @@
 <div class="contentboxh">
  <p class="contentboxh">
-  <img src="images/launch.png" align="right" alt="[F]">{t}Filter{/t}
+  {t}Filter{/t}
  </p>
 </div>
 
@@ -23,7 +23,7 @@
   {if $USE_gotoPrinter}
   {$PRINTER}<label for="PRINTER">&nbsp;{t}Show network printer{/t}</label><br>
   {/if}
-  {if $USE_goFonHardware}
+  {if $USE_fdPhone}
   {$PHONE}<label for="PHONE">&nbsp;{t}Show phones{/t}</label><br>
   {/if}
   {if $USE_sambaSamAccount}

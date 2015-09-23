@@ -40,10 +40,6 @@
 {render acl=$macAddressACL}
             <input  type='text' name="macAddress" id="macAddress" size=25 maxlength=80  value="{$macAddress}">
 {/render}
-
-{render acl=$autonetACL}
-            <input type="submit" name="autonet" value="{t}Autodetect{/t}">
-{/render}
           </td>
         </tr>
         {if $dhcpEnabled}

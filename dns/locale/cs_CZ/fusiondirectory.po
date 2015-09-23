@@ -3,34 +3,24 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Pavel Borecki <pavel.borecki@gmail.com>, 2012
-# Pavel Borecki <pavel.borecki@gmail.com>, 2012,2015
-# Pavel Borecki <pavel.borecki@gmail.com>, 2012
+# Pavel Borecki <pavel.borecki@gmail.com>, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-108\n"
+"Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2015-07-27 20:23+0200\n"
-"PO-Revision-Date: 2015-05-30 14:11+0000\n"
-"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
-"Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/FusionDirectory-108/language/cs_CZ/)\n"
+"POT-Creation-Date: 2015-09-11 22:18+0200\n"
+"PO-Revision-Date: 2015-05-30 14:12+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: Czech (Czech Republic) (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: cs_CZ\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
-#: admin/systems/services/dns/class_serviceDNS.inc:45
-#: admin/systems/services/dns/class_serviceDNS.inc:386
-#: admin/systems/services/dns/class_serviceDNS.inc:394
-#: admin/systems/services/dns/class_serviceDNS.inc:395
-msgid "DNS service"
-msgstr "Služba DNS"
-
-#: admin/systems/services/dns/class_serviceDNS.inc:101
-#: admin/systems/services/dns/class_serviceDNS.inc:258
-#: admin/systems/services/dns/class_serviceDNS.inc:271
-#: admin/systems/services/dns/class_serviceDNS.inc:277
+#: admin/systems/services/dns/class_serviceDNS.inc:54
+#: admin/systems/services/dns/class_serviceDNS.inc:305
+#: admin/systems/services/dns/class_serviceDNS.inc:313
 #: admin/systems/services/dns/class_DNS.inc:165
 #: admin/systems/services/dns/class_DNS.inc:170
 #: admin/systems/services/dns/class_DNS.inc:621
@@ -39,129 +29,144 @@ msgstr "Služba DNS"
 msgid "Error"
 msgstr "Chyba"
 
-#: admin/systems/services/dns/class_serviceDNS.inc:195
-#: admin/systems/services/dns/class_serviceDNS.inc:406
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:352
-msgid "Reverse zone"
-msgstr "Obrácená zóna"
-
-#: admin/systems/services/dns/class_serviceDNS.inc:196
-#: admin/systems/services/dns/class_serviceDNS.inc:415
-#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:47
-msgid "TTL"
-msgstr "Životnost (TTL)"
-
-#: admin/systems/services/dns/class_serviceDNS.inc:197
-msgid "Class"
-msgstr "Třída"
-
-#: admin/systems/services/dns/class_serviceDNS.inc:258
+#: admin/systems/services/dns/class_serviceDNS.inc:82
 #, php-format
-msgid "Cannot delete the selected zone. It is still in use by '%s'"
-msgstr "Vybranou zónu nelze smazat. Stále ji využívá %s."
+msgid "Reverse zone: %s"
+msgstr ""
 
-#: admin/systems/services/dns/class_serviceDNS.inc:271
+#: admin/systems/services/dns/class_serviceDNS.inc:83
 #, php-format
-msgid "Was not able to contact argonaut server: %s"
-msgstr "Nebylo možné kontaktovat Argonaut server: %s"
+msgid "TTL: %s"
+msgstr ""
 
-#: admin/systems/services/dns/class_serviceDNS.inc:277
-#, php-format
-msgid "Was not able to launch ldap2zone: %s"
-msgstr "Nebylo možné spustit ldap2zone: %s"
+#: admin/systems/services/dns/class_serviceDNS.inc:106
+#: admin/systems/services/dns/class_serviceDNS.inc:107
+msgid "ldap2zone"
+msgstr ""
 
-#: admin/systems/services/dns/class_serviceDNS.inc:339
-#: admin/systems/services/dns/class_serviceDNS.inc:353
-#: admin/systems/services/dns/class_serviceDNS.inc:370
-#: admin/systems/services/dns/class_serviceDNS.inc:376
-#: admin/systems/services/dns/class_DNS.inc:734
-msgid "LDAP error"
-msgstr "Chyba LDAP"
+#: admin/systems/services/dns/class_serviceDNS.inc:140
+msgid "DNS zones"
+msgstr "DNS zóny"
 
-#: admin/systems/services/dns/class_serviceDNS.inc:395
-msgid "Services"
-msgstr "Služby"
+#: admin/systems/services/dns/class_serviceDNS.inc:144
+msgid "The DNS zones"
+msgstr "Zóny DNS"
 
-#: admin/systems/services/dns/class_serviceDNS.inc:401
+#: admin/systems/services/dns/class_serviceDNS.inc:156
+#: admin/systems/services/dns/class_serviceDNS.inc:157
+msgid "DNS service"
+msgstr "Služba DNS"
+
+#: admin/systems/services/dns/class_serviceDNS.inc:161
 msgid "Start service"
-msgstr "Spustit službu"
+msgstr "spustit službu"
 
-#: admin/systems/services/dns/class_serviceDNS.inc:402
+#: admin/systems/services/dns/class_serviceDNS.inc:162
 msgid "Stop service"
 msgstr "Zastavit službu"
 
-#: admin/systems/services/dns/class_serviceDNS.inc:403
+#: admin/systems/services/dns/class_serviceDNS.inc:163
 msgid "Restart service"
 msgstr "Restartovat službu"
 
-#: admin/systems/services/dns/class_serviceDNS.inc:405
+#: admin/systems/services/dns/class_serviceDNS.inc:165
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:343
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:348
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:356
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:364
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:5
 msgid "Zone name"
 msgstr "Název zóny"
 
-#: admin/systems/services/dns/class_serviceDNS.inc:407
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:436
+#: admin/systems/services/dns/class_serviceDNS.inc:166
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:352
+msgid "Reverse zone"
+msgstr "Obrácená zóna"
+
+#: admin/systems/services/dns/class_serviceDNS.inc:167
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:444
 msgid "Network class"
 msgstr "Třída sítě"
 
-#: admin/systems/services/dns/class_serviceDNS.inc:408
+#: admin/systems/services/dns/class_serviceDNS.inc:168
 msgid "Zone entry editor"
-msgstr "Editor položek zón"
+msgstr "Editor položek zóny"
 
-#: admin/systems/services/dns/class_serviceDNS.inc:409
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:360
+#: admin/systems/services/dns/class_serviceDNS.inc:169
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:356
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:368
 msgid "Primary dns server"
 msgstr "Hlavní DNS server"
 
-#: admin/systems/services/dns/class_serviceDNS.inc:410
+#: admin/systems/services/dns/class_serviceDNS.inc:170
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:360
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:32
 msgid "Mail address"
 msgstr "E-mailová adresa"
 
-#: admin/systems/services/dns/class_serviceDNS.inc:411
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:364
+#: admin/systems/services/dns/class_serviceDNS.inc:171
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:372
 msgid "Serial"
 msgstr "Sériové číslo"
 
-#: admin/systems/services/dns/class_serviceDNS.inc:412
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:368
+#: admin/systems/services/dns/class_serviceDNS.inc:172
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:376
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:38
 msgid "Refresh"
-msgstr "Znovunačíst"
+msgstr "Obnovit"
 
-#: admin/systems/services/dns/class_serviceDNS.inc:413
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:380
+#: admin/systems/services/dns/class_serviceDNS.inc:173
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:388
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:41
 msgid "Retry"
 msgstr "Znovu"
 
-#: admin/systems/services/dns/class_serviceDNS.inc:414
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:376
+#: admin/systems/services/dns/class_serviceDNS.inc:174
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:384
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:44
 msgid "Expire"
 msgstr "Platnost skončí"
 
-#: admin/systems/services/dns/class_serviceDNS.inc:416
-msgid "MX records"
-msgstr "MX záznamy"
+#: admin/systems/services/dns/class_serviceDNS.inc:175
+#: admin/systems/services/dns/serviceDNSeditZone.tpl.c:47
+msgid "TTL"
+msgstr "TTL"
 
-#: admin/systems/services/dns/class_serviceDNS.inc:417
+#: admin/systems/services/dns/class_serviceDNS.inc:176
+msgid "MX records"
+msgstr "záznamy MX"
+
+#: admin/systems/services/dns/class_serviceDNS.inc:177
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:17
 msgid "Zone records"
-msgstr "Záznamy zóny"
+msgstr "záznamy zóny"
+
+#: admin/systems/services/dns/class_serviceDNS.inc:239
+#: admin/systems/services/dns/class_serviceDNS.inc:253
+#: admin/systems/services/dns/class_serviceDNS.inc:270
+#: admin/systems/services/dns/class_serviceDNS.inc:276
+#: admin/systems/services/dns/class_DNS.inc:734
+msgid "LDAP error"
+msgstr "Chyba LDAP"
+
+#: admin/systems/services/dns/class_serviceDNS.inc:305
+#, php-format
+msgid "Was not able to contact argonaut server: <br/><br/>%s"
+msgstr ""
+
+#: admin/systems/services/dns/class_serviceDNS.inc:313
+#, php-format
+msgid "Was not able to launch ldap2zone: <br/><br/>%s"
+msgstr ""
 
 #: admin/systems/services/dns/class_DNS.inc:165
 #, php-format
 msgid "Cannot find reverse zone for DNS zone '%s'. Parsing zone aborted."
-msgstr "Nedaří se najít obrácenou DNS zónu pro %s. Zpracovávání zóny bylo přerušeno."
+msgstr "Nemohu najít obrácenou zónu pro '%s'. Analyzování zóny přerušeno."
 
 #: admin/systems/services/dns/class_DNS.inc:170
 #, php-format
 msgid "Found more than one reverse zone for '%s'. Parsing zone aborted."
-msgstr "Zjištěna více než jedna obrácená zóna pro %s. Zpracování zóny bylo přerušeno."
+msgstr "Zjištěna více než jedna obrácená zóna pro '%s'. Analyzování zóny přerušeno."
 
 #: admin/systems/services/dns/class_DNS.inc:621
 #, php-format
@@ -174,41 +179,41 @@ msgstr "Varování"
 
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:244
 msgid "MxRecord"
-msgstr "MX záznam"
+msgstr "záznam MX"
 
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:274
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:518
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:526
 msgid "Delete"
 msgstr "Smazat"
 
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:356
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:386
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:364
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:394
 msgid "Only lowercase allowed"
-msgstr "Je možné použít jen malá písmena"
+msgstr "Použít je možné jen malá písmena"
 
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:360
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:368
 msgid "This field should be a domain name"
 msgstr "Toto políčko by mělo obsahovat doménový název"
 
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:372
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:380
 msgid "Time to life"
-msgstr "Životnost (TTL)"
+msgstr "doba platnosti (TTL)"
 
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:395
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:415
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:403
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:423
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:8
 msgid "Network address"
 msgstr "Síťová adresa"
 
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:423
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:428
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:433
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:431
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:436
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:441
 #, php-format
 msgid ""
 "The specified network address and the network class (%s/%s) do not match!"
 msgstr "Zadaná síťová adresa neodpovídá třídě sítě (%s/%s)!"
 
-#: admin/systems/services/dns/class_serviceDNSeditZone.inc:524
+#: admin/systems/services/dns/class_serviceDNSeditZone.inc:532
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:439
 msgid "Add"
 msgstr "Přidat"
@@ -221,7 +226,7 @@ msgstr "Nová položka"
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:229
 #, php-format
 msgid "Cannot rename '%s' to '%s'. Name is already in use!"
-msgstr "%s nelze přejmenovat na %s. Tento název už je použit!"
+msgstr "%s nelze přejmenovat na %s. Tento název je již používán!"
 
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:260
 msgid "Name"
@@ -230,12 +235,12 @@ msgstr "Název"
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:268
 #, php-format
 msgid "Cannot rename '%s' to '%s'. Entry is already in use."
-msgstr "%s nelze přejmenovat na %s. Tento název již nese jiná položka."
+msgstr "%s nelze přejmenovat na %s. Tento název už byl použit pro jinou existující položku!"
 
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:274
 #, php-format
 msgid "Cannot create '%s'. Entry is already in use."
-msgstr "Nelze vytvořit %s. Takto nazvaná položka již existuje."
+msgstr "%s nelze vytvořit. Takto nazvaná položka již existuje."
 
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:282
 #, php-format
@@ -245,7 +250,7 @@ msgstr "Položka %s je použita vícekrát."
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:299
 #, php-format
 msgid "%s records cannot be used more than once."
-msgstr "%s záznamy nelze použít vícekrát."
+msgstr "%s záznamy nemohou být použity vícekrát."
 
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:305
 #, php-format
@@ -255,11 +260,11 @@ msgstr "Opravte nevyplněný záznam %s u položky %s."
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:312
 #, php-format
 msgid "Please fix the duplicate %s record for entry '%s'."
-msgstr "Opravte zdvojený záznam %s u položky %s."
+msgstr "Opravte zdvojený záznam %s položky %s."
 
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:441
 msgid "Remove"
-msgstr "Odebrat"
+msgstr "Odstranit"
 
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:492
 #, php-format
@@ -275,11 +280,11 @@ msgstr "Ukázka"
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:514
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:545
 msgid "Entry should be a DNS name."
-msgstr "Položka by měla být DNS název"
+msgstr "Položka by měla být DNS název."
 
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:501
 msgid "Value should be an IPv6 address."
-msgstr "Hodnota by měla být IPv6 adresa."
+msgstr "Tato hodnota by měla být IPv6 adresa."
 
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:509
 msgid "Value should be an IPv4 address."
@@ -293,15 +298,15 @@ msgstr "Hodnota by měla být DNS název."
 
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:524
 msgid "Value 1 should be a number."
-msgstr "Hodnota 1 by měla být být číslo."
+msgstr "Hodnota 1 by měla být číslo."
 
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:527
 msgid "Value 2 should be a DNS name."
-msgstr "Hodnota 2 by měla být DNS název."
+msgstr "Hodnota 2 musí být DNS jméno."
 
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:530
 msgid "Value should be composed of 'preference target'."
-msgstr "Hodnota se by se měla skládat z: upřednostňované cíl."
+msgstr "Hodnota by se měla sestávat z: upřednostňované cíl."
 
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:550
 msgid "Value 1 (priority) should be a number."
@@ -321,7 +326,7 @@ msgstr "Hodnota 4 (cíl) by měla být DNS název."
 
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:562
 msgid "Value should be composed of 'priority weight port target'."
-msgstr "Hodnota by se měla skládat z: priorita váha port cíl"
+msgstr "Hodnota se musí skládat z: „priorita váha port cíl“."
 
 #: config/dns/class_dnsConfig.inc:28
 msgid "DNS configuration"
@@ -329,7 +334,7 @@ msgstr "Nastavení DNS"
 
 #: config/dns/class_dnsConfig.inc:29
 msgid "FusionDirectory dns plugin configuration"
-msgstr "Nastavení zásuvného modulu DNS pro FusionDirectory"
+msgstr "Nastavení zásuvného modulu dns pro FusionDirectory"
 
 #: config/dns/class_dnsConfig.inc:42
 msgid "DNS config"
@@ -341,7 +346,7 @@ msgstr "Domény ukládat včetně teček na samém konci"
 
 #: config/dns/class_dnsConfig.inc:45
 msgid "Should FD store a final dot at the end of domains?"
-msgstr "Má F.D ukládat i tečku na samém konci domény?"
+msgstr "Má F.D ukládat tečku úplně na konci domény?"
 
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:2
 msgid "Generic"

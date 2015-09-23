@@ -36,14 +36,15 @@ class ArgonautServiceNameAttribute extends CompositeAttribute
     "serviceDNS"          => "bind9",
     "serviceQuota"        => "quota",
     "serviceOPSI"         => "opsiconfd",
-    "argonautServer"      => "argonaut-server"
+    "argonautServer"      => "argonaut-server",
+    "argonautFAIMonitor"  => "argonaut-fai-monitor",
+    "argonautFuseConfig"  => "argonaut-fuse",
   );
 
   static private $argonautService_blacklist = array(
     "argonautDNSConfig",
     "argonautMirrorConfig",
-    "argonautFuseConfig",
-    "serviceDebianRepository",
+    "serviceRepository",
   );
 
   function __construct ($description, $ldapName, $acl = "")
@@ -121,6 +122,11 @@ class argonautClient extends simplePlugin
             'argonautClientPort', TRUE,
             0 /*min*/, FALSE /*no max*/, 8081 /*default value*/
           ),
+          new SelectAttribute (
+            _('Protocol'), _('Protocol to use for argonaut'),
+            'argonautClientProtocol', TRUE,
+            array('http', 'https')
+          ),
           new StringAttribute (
             _('WakeOnLan interface'), _('Interface used by argonaut for WakeOnLan'),
             'argonautClientWakeOnLanInterface', TRUE,
@@ -138,6 +144,30 @@ class argonautClient extends simplePlugin
           ),
         )
       ),
+      'ssl' => array (
+        'name'  => _('SSL paths'),
+        'attrs' => array (
+          new StringAttribute (
+            _('Key'), _('Path to the private key file on Argonaut client'),
+            'argonautClientKeyPath', FALSE,
+            '/etc/ssl/private/argonaut.key'
+          ),
+          new StringAttribute (
+            _('Certificate'), _('Path to the certificate file on Argonaut client'),
+            'argonautClientCertPath', FALSE,
+            '/etc/ssl/certs/argonaut.cert'
+          ),
+          new StringAttribute (
+            _('CA certificate'), _('Path to the CA certificate file on Argonaut client'),
+            'argonautClientCaCertPath', FALSE,
+            '/etc/ssl/certs/ca.cert'
+          ),
+          new StringAttribute (
+            _('CN of the certificate'), _('The CN in this client certificate'),
+            'argonautClientCertCN', FALSE
+          ),
+        )
+      ),
       'serviceNames' => array(
         'name'  => _("Service names"),
         'attrs' => array(
@@ -150,6 +180,16 @@ class argonautClient extends simplePlugin
   function __construct(&$config, $dn = NULL, $object = NULL)
   {
     parent::__construct($config, $dn, $object);
+    $this->attributesAccess['argonautClientProtocol']->setManagedAttributes(
+      array(
+        'disable' => array (
+          'http' => array (
+            'argonautClientKeyPath','argonautClientCertPath','argonautClientCaCertPath',
+            'argonautClientCertCN'
+          )
+        )
+      )
+    );
   }
 
   // We also need this function that return some information about the plugin
@@ -159,7 +199,7 @@ class argonautClient extends simplePlugin
       'plShortName'     => _('Argonaut client'),
       'plDescription'   => _('Edit argonaut client settings'),
       'plSelfModify'    => FALSE,
-      'plObjectType'    => array('workstation','server','ogroup'),
+      'plObjectType'    => array('workstation','server','ogroup-dynamic'),
 
       // But simplePlugin can generate the ACL list for us
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())

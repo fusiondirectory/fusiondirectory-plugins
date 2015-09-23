@@ -46,7 +46,6 @@ class serviceSpamAssassin extends simpleService {
     return array (
       'section1' => array (
         'name'  => _('Spam tagging'),
-        'icon' => 'images/rightarrow.png',
         'attrs' => array (
           new StringAttribute (
             _('Rewrite header'), _('Rewrite header'),

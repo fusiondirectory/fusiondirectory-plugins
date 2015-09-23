@@ -123,8 +123,8 @@ class dhcpHost extends dhcpPlugin
     $message= array();
 
     $cache = array();
-    if(isset($this->parent) && isset($this->parent->dhcpObjectCache)){
-      $cache = $this->parent->dhcpObjectCache;
+    if (isset($this->parent)) {
+      $cache = $this->parent->getCache();
     }
 
     /* All required fields are set? */

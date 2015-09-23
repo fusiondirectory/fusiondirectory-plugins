@@ -27,7 +27,7 @@ class netgroupSystem extends netgroupMembership {
       'plDescription'   => _('NIS Netgroup member'),
       'plSelfModify'    => FALSE,
       'plPriority'      => 2,
-      'plObjectType'    => array('workstation','terminal','phone','server','component','printer'),
+      'plObjectType'    => array('workstation','terminal','server','printer'),
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
   }

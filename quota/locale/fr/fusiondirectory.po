@@ -3,20 +3,16 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# gallak <antoine.gallavardin@free.fr>, 2013
-# MCMic, 2014
-# fusiondirectory <contact@fusiondirectory.org>, 2012
-# fusiondirectory <contact@fusiondirectory.org>, 2012
-# gallak <antoine.gallavardin@free.fr>, 2013
-# MCMic, 2014
+# MCMic, 2015
+# MCMic, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-108\n"
+"Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2015-07-27 20:23+0200\n"
-"PO-Revision-Date: 2015-05-30 14:01+0000\n"
+"POT-Creation-Date: 2015-09-11 22:19+0200\n"
+"PO-Revision-Date: 2015-08-31 13:43+0000\n"
 "Last-Translator: MCMic\n"
-"Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory-108/language/fr/)\n"
+"Language-Team: French (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -55,7 +51,7 @@ msgstr "Taille des blocs"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:55
 msgid "Block size of this share (dumpe2fs /dev/sdb3 | grep -i 'Block size')"
-msgstr "Taille de blocs appliquée pour ce partage (faire dumpe2fs <device> | grep -i 'Block size')"
+msgstr "Taille de bloc appliquée pour ce partage (dumpe2fs <device> | grep -i 'Block size')"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:60
 msgid "Comment"
@@ -63,7 +59,7 @@ msgstr "Commentaire"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:60
 msgid "Short comment about this quota"
-msgstr "Commentaire sur ce quota"
+msgstr "Court commentaire sur ce quota"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:73
 msgid "Quota warning message"
@@ -131,7 +127,7 @@ msgstr "Signature"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:104
 msgid "Signature to put at the end of the mail"
-msgstr "Signature de fin de courriel"
+msgstr "Signature à mettre à la fin du courriel"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:110
 msgid "LDAP message support"
@@ -151,7 +147,7 @@ msgstr "DN de connexion"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:117
 msgid "The user dn to use for bind"
-msgstr "DN de l'utilisateur de connexion"
+msgstr "DN du compte à utiliser pour la connexion"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:121
 msgid "Bind user password"
@@ -159,7 +155,7 @@ msgstr "Mot de passe de connexion"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:121
 msgid "The password of the user used for bind"
-msgstr "Mot de passe utilisé pour la connexion"
+msgstr "Mot de passe à utiliser pour la connexion"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:153
 msgid "Warning"
@@ -213,7 +209,7 @@ msgstr "Nombre maximal de blocs utilisables par l'utilisateur avant blocage"
 
 #: personal/quota/class_quotaAccount.inc:143
 msgid "Inode soft limit"
-msgstr "Nombre limite de fichier"
+msgstr "Nombre limite de fichiers"
 
 #: personal/quota/class_quotaAccount.inc:143
 msgid "Soft limit for the inodes the user can use"
@@ -221,7 +217,7 @@ msgstr "Nombre maximal d'inode utilisables par l'utilisateur avant avertissement
 
 #: personal/quota/class_quotaAccount.inc:148
 msgid "Inode hard limit"
-msgstr "Nombre critique de fichier"
+msgstr "Nombre critique de fichiers"
 
 #: personal/quota/class_quotaAccount.inc:148
 msgid "Hard limit for the inodes the user can use"

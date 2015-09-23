@@ -60,6 +60,11 @@ class serverGeneric extends workstationGeneric
     );
   }
 
+  /* Returns the dn of the entry */
+  function compute_dn()
+  {
+    return 'cn='.$this->cn.','.get_ou('serverRDN').$this->base;
+  }
 }
 
 ?>

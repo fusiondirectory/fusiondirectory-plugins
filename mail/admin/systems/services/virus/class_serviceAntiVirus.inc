@@ -44,7 +44,6 @@ class serviceAntiVirus extends simpleService {
     return array (
       'section1' => array (
         'name'  => _('Virus filtering'),
-        'icon'  => 'images/rightarrow.png',
         'attrs' => array (
           new StringAttribute (
             _('Database user'), _('User name for the database'),

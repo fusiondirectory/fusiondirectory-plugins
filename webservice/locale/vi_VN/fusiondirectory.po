@@ -5,12 +5,12 @@
 # Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-108\n"
+"Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2015-07-27 20:23+0200\n"
-"PO-Revision-Date: 2014-08-28 10:52+0000\n"
+"POT-Creation-Date: 2015-09-11 22:19+0200\n"
+"PO-Revision-Date: 2015-08-26 07:48+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
-"Language-Team: Vietnamese (Viet Nam) (http://www.transifex.com/projects/p/FusionDirectory-108/language/vi_VN/)\n"
+"Language-Team: Vietnamese (Viet Nam) (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/vi_VN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -27,9 +27,14 @@ msgstr ""
 msgid "Cannot locate file '%s' - please run '%s' to fix this"
 msgstr "Không thể xác định vị trí file '%s'- xin hãy chạy '%s' để sửa lỗi này!"
 
-#: html/jsonrpc.php:253
+#: html/jsonrpc.php:262
 msgid "Plugin"
 msgstr "Plugin"
+
+#: html/jsonrpc.php:349
+#, php-format
+msgid "Cannot delete %s. It has been locked by %s."
+msgstr ""
 
 #: config/class_webserviceConfig.inc:28
 msgid "Webservice configuration"

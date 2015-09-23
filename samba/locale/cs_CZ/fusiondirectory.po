@@ -3,26 +3,102 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Pavel Borecki <pavel.borecki@gmail.com>, 2012
-# Pavel Borecki <pavel.borecki@gmail.com>, 2012,2015
-# Pavel Borecki <pavel.borecki@gmail.com>, 2012
+# Pavel Borecki <pavel.borecki@gmail.com>, 2014-2015
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-108\n"
+"Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2015-07-27 20:23+0200\n"
-"PO-Revision-Date: 2015-05-30 14:11+0000\n"
-"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
-"Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/FusionDirectory-108/language/cs_CZ/)\n"
+"POT-Creation-Date: 2015-09-11 22:19+0200\n"
+"PO-Revision-Date: 2015-09-11 20:27+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: Czech (Czech Republic) (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: cs_CZ\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
+#: admin/groups/samba/class_sambaGroup.inc:29
+#: personal/samba/class_sambaAccount.inc:135
+#: config/samba/class_sambaPluginConfig.inc:28
+msgid "Samba"
+msgstr ""
+
+#: admin/groups/samba/class_sambaGroup.inc:30
+msgid "Samba group settings"
+msgstr "Nastavení skupiny pro službu Samba"
+
+#: admin/groups/samba/class_sambaGroup.inc:42
+#: admin/groups/samba/class_sambaGroup.inc:45
+#: admin/systems/samba/class_winstationGeneric.inc:88
+#: personal/samba/class_sambaAccount.inc:176
+msgid "Domain"
+msgstr "Doména"
+
+#: admin/groups/samba/class_sambaGroup.inc:45
+msgid "Samba domain"
+msgstr "Samba doména"
+
+#: admin/groups/samba/class_sambaGroup.inc:49
+msgid "Samba informations"
+msgstr "Informace o Samba"
+
+#: admin/groups/samba/class_sambaGroup.inc:56
+msgid "Group type"
+msgstr "Typ skupiny"
+
+#: admin/groups/samba/class_sambaGroup.inc:56
+msgid "Samba group type"
+msgstr "typ skupiny Samby"
+
+#: admin/groups/samba/class_sambaGroup.inc:60
+#: admin/groups/samba/class_sambaGroup.inc:119
+msgid "Samba group"
+msgstr "Skupina v Sambě"
+
+#: admin/groups/samba/class_sambaGroup.inc:60
+#: admin/groups/samba/class_sambaGroup.inc:119
+msgid "Domain admins"
+msgstr "Správci domény"
+
+#: admin/groups/samba/class_sambaGroup.inc:60
+#: admin/groups/samba/class_sambaGroup.inc:119
+msgid "Domain users"
+msgstr "Doménoví uživatelé"
+
+#: admin/groups/samba/class_sambaGroup.inc:60
+#: admin/groups/samba/class_sambaGroup.inc:119
+msgid "Domain guests"
+msgstr "Doménoví hosté"
+
+#: admin/groups/samba/class_sambaGroup.inc:105
+msgid "Configuration error"
+msgstr "Chyba v nastavení"
+
+#: admin/groups/samba/class_sambaGroup.inc:105
+msgid "Cannot find group SID in your configuration!"
+msgstr "Ve vaší konfiguraci nelze nalézt SID skupiny!"
+
+#: admin/groups/samba/class_sambaGroup.inc:119
+#, php-format
+msgid "Special group (%d)"
+msgstr "Zvláštní skupina (%d)"
+
+#: admin/groups/samba/class_sambaGroup.inc:133
+#: personal/samba/class_sambaAccount.inc:478
+#: personal/samba/class_sambaAccount.inc:504
+#: personal/samba/class_sambaAccount.inc:520
+msgid "Warning"
+msgstr "Varování"
+
+#: admin/groups/samba/class_sambaGroup.inc:133
+#: personal/samba/class_sambaAccount.inc:478
+msgid "Undefined Samba SID detected. Please fix this problem manually!"
+msgstr "Zjištěno nedefinované SID Samby. Prosím opravte tento problém ručním zásahem do nastavení!"
+
 #: admin/samba/class_sambaDomainManagement.inc:35
 msgid "Samba domains"
-msgstr "Samba domény"
+msgstr "Domény Samba"
 
 #: admin/samba/class_sambaDomainManagement.inc:36
 msgid "Samba domain management"
@@ -52,15 +128,15 @@ msgstr "Název této domény"
 
 #: admin/samba/class_sambaDomain.inc:58
 msgid "SID"
-msgstr ""
+msgstr "SID"
 
 #: admin/samba/class_sambaDomain.inc:58
 msgid "SID of this domain"
-msgstr "Identifikátor zabezpečení této domény"
+msgstr "Bezpečnostní identifikátor této domény"
 
 #: admin/samba/class_sambaDomain.inc:62
 msgid "Rid base"
-msgstr "Základ relativního identifikátoru"
+msgstr "Základ RID"
 
 #: admin/samba/class_sambaDomain.inc:62
 msgid "Algorithmic rid base"
@@ -68,26 +144,26 @@ msgstr "Základ algoritmického relativního identifikátoru"
 
 #: admin/samba/class_sambaDomain.inc:66
 msgid "Minimum password age"
-msgstr "Nejnižší stáří hesla"
+msgstr "minimální stáří hesla"
 
 #: admin/samba/class_sambaDomain.inc:67
 msgid ""
 "Minimum password age, in seconds (default: 0 => allow immediate password "
 "change)"
-msgstr "Minimální stáří hesla v sekundách (výchozí: 0 => umožnit bezprostřední změnu hesla)"
+msgstr "Nejkratší umožněné stáří hesla v sekundách (výchozí: 0 => umožnit okamžitou změnu hesla)"
 
 #: admin/samba/class_sambaDomain.inc:72
 msgid "Maximum password age"
-msgstr "Nejvyšší přijatelné stáří hesla"
+msgstr "maximální stáří hesla"
 
 #: admin/samba/class_sambaDomain.inc:73
 msgid ""
 "Maximum password age, in seconds (default: -1 => never expire passwords)"
-msgstr "Nejvyšší přijatelné stáří hesla, ve vteřinách (výchozí: -1 => heslo platí stále)"
+msgstr "Nejdelší přijatelné stáří hesla, v sekundách (výchozí: -1 => hesla platí stále)"
 
 #: admin/samba/class_sambaDomain.inc:78
 msgid "Next RID"
-msgstr "Další relativní identifikátor"
+msgstr "Následující RID identifikátor"
 
 #: admin/samba/class_sambaDomain.inc:79
 msgid "Next NT rid to give out for anything"
@@ -95,11 +171,11 @@ msgstr "Příští NT relativní identifikátor pro cokoli"
 
 #: admin/samba/class_sambaDomain.inc:83
 msgid "Next group RID"
-msgstr "Relativní identifikátor další skupiny"
+msgstr "RID identifikátor následující skupiny"
 
 #: admin/samba/class_sambaDomain.inc:84
 msgid "Next NT rid to give out for groups"
-msgstr "NT relativní identifikátor příští skupiny"
+msgstr "Příští NT relativní identifikátor pro skupiny"
 
 #: admin/samba/class_sambaDomain.inc:88
 msgid "Next user RID"
@@ -107,11 +183,11 @@ msgstr "Relativní identifikátor dalšího uživatele"
 
 #: admin/samba/class_sambaDomain.inc:89
 msgid "Next NT rid to give our for users"
-msgstr "NT relativní identifikátor dalšího uživatele"
+msgstr "Příští NT relativní identifikátor pro vaše uživatele"
 
 #: admin/samba/class_sambaDomain.inc:93
 msgid "Minimum password length"
-msgstr "Nejkratší přijatelná délka hesla"
+msgstr "Nejkratší umožněná délka hesla"
 
 #: admin/samba/class_sambaDomain.inc:94
 msgid "Minimal password length (default: 5)"
@@ -123,11 +199,11 @@ msgstr "Délka historie hesla"
 
 #: admin/samba/class_sambaDomain.inc:99
 msgid "Length of Password History Entries (default: 0 => off)"
-msgstr "Délka historie hesel (výchozí: 0 => nepamatovat)"
+msgstr "Hloubka historie hesel (výchozí: 0 => nepamatovat)"
 
 #: admin/samba/class_sambaDomain.inc:103
 msgid "Logon to change password"
-msgstr "Přihlásit pro změnu hesla"
+msgstr "Přihlásit se pro změnu hesla"
 
 #: admin/samba/class_sambaDomain.inc:104
 msgid "Force Users to logon for password change (default: 0 => off, 2 => on)"
@@ -147,7 +223,7 @@ msgstr "Pozorovací okno uzamčení"
 
 #: admin/samba/class_sambaDomain.inc:114
 msgid "Reset time after lockout in minutes (default: 30)"
-msgstr "Za jak dlouho (v minutách) po uzamčení začít od znovu (výchozí: 30)"
+msgstr "Za jak dlouho (v minutách) po uzamčení začít počítat čas od znovu (výchozí: 30)"
 
 #: admin/samba/class_sambaDomain.inc:118
 msgid "Lockout threshold"
@@ -155,7 +231,7 @@ msgstr "Práh uzamčení"
 
 #: admin/samba/class_sambaDomain.inc:119
 msgid "Lockout users after bad logon attempts (default: 0 => off)"
-msgstr "Uzamknout účet uživatele po nezdařených pokusech o přihlášení (výchozí: 0 – nula => vypnuto)"
+msgstr "Uzamknout uživatele po nezdařených pokusech o přihlášení (výchozí: 0 => vypnuto)"
 
 #: admin/samba/class_sambaDomain.inc:123
 msgid "Force logoff"
@@ -163,15 +239,15 @@ msgstr "Vynutit odhlášení"
 
 #: admin/samba/class_sambaDomain.inc:124
 msgid "Disconnect Users outside logon hours (default: -1 => off, 0 => on)"
-msgstr "Pokud je mimo provozní dobu, samočinně odpojovat uživatele (výchozí: -1 => neodpojovat, 0 – nula => odpojovat)"
+msgstr "Pokud je mimo provozní dobu, samočinně odpojovat uživatele (výchozí: -1 => neodpojovat, 0 => odpojovat)"
 
 #: admin/samba/class_sambaDomain.inc:128
 msgid "Refuse machine password change"
-msgstr "Zamítnout změnu hesla stroje"
+msgstr "odmítnout změnu hesla stroje"
 
 #: admin/samba/class_sambaDomain.inc:129
 msgid "Allow Machine Password changes (default: 0 => off)"
-msgstr "Umožnit měnění hesel počítačů (výchozí: 0 – nula => neumožnit)"
+msgstr "Umožnit změnu hesel počítačů (výchozí: 0 => neumožnit)"
 
 #: admin/systems/samba/class_winstationGeneric.inc:40
 msgid "Winstation"
@@ -197,7 +273,7 @@ msgstr "Název"
 
 #: admin/systems/samba/class_winstationGeneric.inc:84
 msgid "Description"
-msgstr "Popis"
+msgstr "popis"
 
 #: admin/systems/samba/class_winstationGeneric.inc:84
 msgid "A short description of the winstation"
@@ -205,13 +281,8 @@ msgstr "Stručný popis počítače s MS Windows"
 
 #: admin/systems/samba/class_winstationGeneric.inc:88
 #: personal/samba/class_sambaAccount.inc:176
-msgid "Domain"
-msgstr "Doména"
-
-#: admin/systems/samba/class_winstationGeneric.inc:88
-#: personal/samba/class_sambaAccount.inc:176
 msgid "Samba domain name"
-msgstr "Název Samba domény"
+msgstr "název domény Samba"
 
 #: admin/systems/samba/class_winstationGeneric.inc:92
 msgid "Location"
@@ -228,7 +299,7 @@ msgstr "Akce"
 
 #: admin/systems/samba/class_winstationGeneric.inc:104
 msgid "Select action to execute for this terminal"
-msgstr "Vyberte akci, která má být spuštěna na tomto terminálu"
+msgstr "Vyberte akci, která má vykonána na tomto terminálu"
 
 #: admin/systems/samba/class_winstationGeneric.inc:110
 msgid "Network settings"
@@ -238,15 +309,10 @@ msgstr "Nastavení sítě"
 msgid "Samba Munged Dial"
 msgstr "Samba – přístup přes vytáčené spojení"
 
-#: personal/samba/class_sambaAccount.inc:135
-#: config/samba/class_sambaPluginConfig.inc:28
-msgid "Samba"
-msgstr ""
-
 #: personal/samba/class_sambaAccount.inc:136
 #: config/samba/class_sambaPluginConfig.inc:41
 msgid "Samba settings"
-msgstr "Nastavení Samby"
+msgstr "nastavení Samby"
 
 #: personal/samba/class_sambaAccount.inc:160
 msgid "Samba profile"
@@ -255,12 +321,12 @@ msgstr "Profil Samba"
 #: personal/samba/class_sambaAccount.inc:166
 #: personal/samba/class_sambaAccount.inc:199
 msgid "Home directory drive"
-msgstr "Jednotka s domovskou složkou"
+msgstr "Disk s domovskou složkou"
 
 #: personal/samba/class_sambaAccount.inc:166
 #: personal/samba/class_sambaAccount.inc:199
 msgid "Letter for the home drive"
-msgstr "Písmeno domovské jednotky datového úložiště"
+msgstr "Písmenko domovského disku"
 
 #: personal/samba/class_sambaAccount.inc:171
 #: personal/samba/class_sambaAccount.inc:204
@@ -270,15 +336,15 @@ msgstr "Umístění domovské složky"
 #: personal/samba/class_sambaAccount.inc:171
 #: personal/samba/class_sambaAccount.inc:204
 msgid "UNC path for the home drive"
-msgstr "Umístění (v UNC zápisu) domovské jednotky"
+msgstr "Umístění (v UNC zápisu) domovského disku"
 
 #: personal/samba/class_sambaAccount.inc:180
 msgid "Script path"
-msgstr "Cesta ke skriptu"
+msgstr "Umístění skriptu"
 
 #: personal/samba/class_sambaAccount.inc:180
 msgid "Login script path"
-msgstr "Umístění skriptu, spouštěného po přihlášení"
+msgstr "Umístění skriptu, spouštěného při přihlášování"
 
 #: personal/samba/class_sambaAccount.inc:184
 #: personal/samba/class_sambaAccount.inc:209
@@ -288,7 +354,7 @@ msgstr "Umístění profilu"
 #: personal/samba/class_sambaAccount.inc:184
 #: personal/samba/class_sambaAccount.inc:209
 msgid "UNC profile path"
-msgstr "Umístění (v UNC zápisu) profilu"
+msgstr "Cesta k profilu v UNC zápisu"
 
 #: personal/samba/class_sambaAccount.inc:191
 msgid "Terminal server"
@@ -296,7 +362,7 @@ msgstr "Terminálový server"
 
 #: personal/samba/class_sambaAccount.inc:195
 msgid "Allow login on terminal server"
-msgstr "Povolit přihlašování k terminálovému serveru"
+msgstr "Umožnit přihlašování k terminálovému serveru"
 
 #: personal/samba/class_sambaAccount.inc:214
 msgid "Inherit client config"
@@ -312,7 +378,7 @@ msgstr "Úvodní program"
 
 #: personal/samba/class_sambaAccount.inc:218
 msgid "Program to start after connecting"
-msgstr "Program spouštěný po navázání spojení"
+msgstr "Program, který spustit po navázání spojení"
 
 #: personal/samba/class_sambaAccount.inc:222
 msgid "Working directory"
@@ -324,7 +390,7 @@ msgstr "Základní pracovní složka"
 
 #: personal/samba/class_sambaAccount.inc:226
 msgid "Connection timeout"
-msgstr "Časový limit pokusu o spojení"
+msgstr "Časový limit spojení"
 
 #: personal/samba/class_sambaAccount.inc:226
 msgid "Timeout when connecting to terminal server"
@@ -332,7 +398,7 @@ msgstr "Nejdelší přijatelná doba čekání na spojení s terminálovým serv
 
 #: personal/samba/class_sambaAccount.inc:231
 msgid "Disconnection timeout"
-msgstr "Časový limit pokusu o odpojení"
+msgstr "Časový limit odpojení"
 
 #: personal/samba/class_sambaAccount.inc:231
 msgid "Timeout before disconnecting from terminal server"
@@ -348,7 +414,7 @@ msgstr "Doba nečinnosti, po jejímž uplynutí dojde k samočinnému odpojení 
 
 #: personal/samba/class_sambaAccount.inc:241
 msgid "Connect client drives at logon"
-msgstr "Při přihlášení připojit klientovy jednotky síťového úložiště"
+msgstr "při přihlášení připojit klientovy síťové disky"
 
 #: personal/samba/class_sambaAccount.inc:241
 msgid "Drive to connect after login"
@@ -364,11 +430,11 @@ msgstr "Tiskárny, které připojit po přihlášení"
 
 #: personal/samba/class_sambaAccount.inc:249
 msgid "Default to main client printer"
-msgstr "Nastavit hlavní tiskárnu klienta jako výchozí"
+msgstr "Hlavní tiskárnu klienta nastavit jako výchozí"
 
 #: personal/samba/class_sambaAccount.inc:249
 msgid "Default printer for this client"
-msgstr "Výchozí tiskárna tohoto klienta"
+msgstr "Výchozí tiskárna pro tohoto klienta"
 
 #: personal/samba/class_sambaAccount.inc:253
 msgid "Shadowing"
@@ -380,7 +446,7 @@ msgstr "vypnuto"
 
 #: personal/samba/class_sambaAccount.inc:256
 msgid "input on, notify on"
-msgstr "vstup a oznamování zapnuty"
+msgstr "zapnout vstup a oznamování"
 
 #: personal/samba/class_sambaAccount.inc:256
 msgid "input on, notify off"
@@ -396,11 +462,11 @@ msgstr "vstup i oznamování vypnuty"
 
 #: personal/samba/class_sambaAccount.inc:260
 msgid "On broken or timed out"
-msgstr "V případě výpadku či překročení časového limitu pokusu o spojení"
+msgstr "v případě výpadku či vypršení časového limitu spojení"
 
 #: personal/samba/class_sambaAccount.inc:260
 msgid "What happen if disconnected or timeout"
-msgstr "Co nastane v případě odpojení či překročení časového limitu pokusu o spojení"
+msgstr "Co nastane v případě odpojení či vypršení časového limitu"
 
 #: personal/samba/class_sambaAccount.inc:263
 msgid "disconnect"
@@ -420,7 +486,7 @@ msgstr "z jakéhokoli klienta"
 
 #: personal/samba/class_sambaAccount.inc:269
 msgid "from previous client only"
-msgstr "pouze z minule použitého klienta"
+msgstr "Pouze z minule použitého klienta"
 
 #: personal/samba/class_sambaAccount.inc:281
 msgid "Access options"
@@ -428,7 +494,7 @@ msgstr "Možnosti přístupu"
 
 #: personal/samba/class_sambaAccount.inc:285
 msgid "Enforce password change"
-msgstr "Vynutit změnu hesla"
+msgstr "Přimět ke změně hesla"
 
 #: personal/samba/class_sambaAccount.inc:285
 msgid "Force the user to change his password"
@@ -436,7 +502,7 @@ msgstr "Přimět uživatele ke změně hesla"
 
 #: personal/samba/class_sambaAccount.inc:290
 msgid "The password never expire"
-msgstr "Heslo je platné napořád"
+msgstr "Heslo je platné stále"
 
 #: personal/samba/class_sambaAccount.inc:290
 msgid "The password will never expire"
@@ -444,7 +510,7 @@ msgstr "Platnost hesla nikdy neskončí"
 
 #: personal/samba/class_sambaAccount.inc:295
 msgid "Login from windows client requires no password"
-msgstr "Přihlášení z klienta s MS Windows bez hesla"
+msgstr "Přihlášení z klienta s MS Windows nevyžaduje heslo"
 
 #: personal/samba/class_sambaAccount.inc:295
 msgid "Login from a client without a password"
@@ -452,7 +518,7 @@ msgstr "Přihlášení z klienta bez hesla"
 
 #: personal/samba/class_sambaAccount.inc:300
 msgid "Lock samba account"
-msgstr "Uzamknout Samba účet"
+msgstr "uzamknout účet Samby"
 
 #: personal/samba/class_sambaAccount.inc:300
 msgid "Lock the account"
@@ -476,7 +542,7 @@ msgstr "Kdy skončí platnost účtu"
 
 #: personal/samba/class_sambaAccount.inc:317
 msgid "Samba logon times"
-msgstr "Časy přihlašování k Sambě"
+msgstr "časová rozmezí pro přihlašování k Sambě"
 
 #: personal/samba/class_sambaAccount.inc:317
 msgid "What is the allowed time to connect"
@@ -488,41 +554,37 @@ msgstr "Upravit nastavení"
 
 #: personal/samba/class_sambaAccount.inc:332
 msgid "System trust"
-msgstr "Důvěra systému"
+msgstr "systém důvěryhodnosti"
 
 #: personal/samba/class_sambaAccount.inc:338
 msgid "Allow connection from these workstations only"
-msgstr "Umožnit připojení pouze z těchto pracovních stanic"
+msgstr "Povolit připojení pouze z těchto počítačů"
 
 #: personal/samba/class_sambaAccount.inc:338
 msgid "Only allow this user to connect to this list of hosts"
-msgstr "Tomuto uživateli umožnit připojit pouze na stroje z tohoto seznamu"
+msgstr "Tomuto uživateli povolit připojení pouze na počítače z tohoto seznamu"
 
 #: personal/samba/class_sambaAccount.inc:454
 msgid "Home drive"
-msgstr "Domovská jednotka úložiště"
+msgstr "domovské úložiště"
 
 #: personal/samba/class_sambaAccount.inc:457
 msgid "Home path"
-msgstr "Umístění domovského úložiště"
+msgstr "cesta k domovskému úložišti"
 
 #: personal/samba/class_sambaAccount.inc:462
 msgid "The windows user manager allows eight clients at maximum!"
 msgstr "Správce uživatelských účtů v MS Windows umožňuje nejvýše 8 klientů!"
 
-#: personal/samba/class_sambaAccount.inc:478
-#: personal/samba/class_sambaAccount.inc:501
-msgid "Warning"
-msgstr "Varování"
-
-#: personal/samba/class_sambaAccount.inc:478
-msgid "Undefined Samba SID detected. Please fix this problem manually!"
-msgstr "Zjištěno nedefinovaný Samba bezpečnostní identifikátor. Opravte tento problém ručním zásahem!"
-
-#: personal/samba/class_sambaAccount.inc:502
+#: personal/samba/class_sambaAccount.inc:505
 msgid ""
 "Cannot convert primary group to samba group: group cannot be identified!"
-msgstr "Nezdařilo se převést hlavní skupinu na skupinu Samby: skupinu se nepodařilo identifikovat!"
+msgstr "Nemohu převést primární skupinu na skupinu Samby: skupinu se nepodařilo identifikovat!"
+
+#: personal/samba/class_sambaAccount.inc:521
+msgid ""
+"Cannot convert primary group to samba group: group samba tab is disabled!"
+msgstr ""
 
 #: config/samba/class_sambaPluginConfig.inc:29
 msgid "Samba plugin configuration"
@@ -530,7 +592,7 @@ msgstr "Nastavení zásuvného modulu Samba"
 
 #: config/samba/class_sambaPluginConfig.inc:44
 msgid "Samba machine account RDN"
-msgstr "Relativní rozlišený název účtu stroje se Samba"
+msgstr "RDN účtu stroje pro Samba"
 
 #: config/samba/class_sambaPluginConfig.inc:44
 msgid "The location where FusionDirectory looks for new samba workstations."
@@ -538,7 +600,7 @@ msgstr "Umístění, ve kterém bude FusionDirectory hledat nové pracovní stan
 
 #: config/samba/class_sambaPluginConfig.inc:49
 msgid "Samba ID mapping"
-msgstr "Mapování Samba identifikátorů"
+msgstr "Převod identifikátorů Samba"
 
 #: config/samba/class_sambaPluginConfig.inc:50
 msgid ""
@@ -548,31 +610,31 @@ msgstr "Uchovávat objekty sambaIdmapEntry. V závislosti na vašem nastavení t
 
 #: config/samba/class_sambaPluginConfig.inc:54
 msgid "Samba SID"
-msgstr "Bezpečnostní identifikátor Samba"
+msgstr "SID Samby"
 
 #: config/samba/class_sambaPluginConfig.inc:55
 msgid ""
 "A samba SID if not available inside of the LDAP though samba schema. You can"
 " retrieve the current sid by net getlocalsid."
-msgstr "Bezpečnostní identifikátor Samba není k dispozici v LDAP prostřednictvím Samba schématu. Stávající bezpečnostní identifikátor můžete získat příkazem net getlocalsid."
+msgstr "Bezpečnosní identifikátor Samba není k dispozici v LDAP prostřednictvím samba schématu. Aktuální bezpečnostní identifikátor můžete získat příkazem net getlocalsid."
 
 #: config/samba/class_sambaPluginConfig.inc:60
 msgid "Samba rid base"
-msgstr "Počátek číslování bezpečnostních identifikátorů Samba"
+msgstr "Počátek Samba rid"
 
 #: config/samba/class_sambaPluginConfig.inc:61
 msgid ""
 "The base id to add to ordinary sid calculations - if not available inside of"
 " the LDAP though samba schema."
-msgstr "Základ identifikátoru, který přidat k běžným výpočtům bezpečnostních identifikátorům – pokud není k dispozici v LDAP prostřednictvím schématu Samba."
+msgstr "Základní identifikátor, který přidat k běžným výpočtům bezpečnostních identifikátorům – pokud není k dispozici v LDAP prostřednictvím schématu Samba."
 
 #: config/samba/class_sambaPluginConfig.inc:66
 msgid "Expiration date synchronisaton"
-msgstr "Synchronizace data skončení platnosti"
+msgstr "Synchronizace data vypršení platnosti"
 
 #: config/samba/class_sambaPluginConfig.inc:66
 msgid "Synchronisaton the expiration date with the POSIX one?"
-msgstr "Sjednotit dobu platnosti s tou v POSIX?"
+msgstr "Sjednotit dobu platnosti s tím v POSIX?"
 
 #: config/samba/class_sambaPluginConfig.inc:72
 msgid "Generate sambaLMPassword"

@@ -28,8 +28,8 @@ class argonautServer extends simpleService
   static function plInfo()
   {
     return array(
-      'plShortName'   => _('Argonaut Server'),
-      'plDescription' => _('Argonaut Server').' ('._('Services').')',
+      'plShortName'   => _('Argonaut server'),
+      'plDescription' => _('Argonaut server').' ('._('Services').')',
       'plIcon'        => 'plugins/argonaut/images/iconMini.png',
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
@@ -42,7 +42,7 @@ class argonautServer extends simpleService
   static function getAttributesInfo ()
   {
     return array (
-      'section1' => array (
+      'server' => array (
         'name'  => _('Argonaut server'),
         'attrs' => array (
           new BooleanAttribute (
@@ -80,16 +80,6 @@ class argonautServer extends simpleService
             _('Directory in which argonaut will store its log'),
             'argonautLogDir', FALSE,
             '/var/log/argonaut'
-          ),
-          new StringAttribute (
-            _('Key path'), _('Path to the private key file'),
-            'argonautKeyPath', FALSE,
-            CONFIG_DIR."/cert/server.key"
-          ),
-          new StringAttribute (
-            _('Certificate path'), _('Path to the certificate file'),
-            'argonautCertPath', FALSE,
-            CONFIG_DIR."/cert/server.crt"
           )
         )
       ),
@@ -108,6 +98,31 @@ class argonautServer extends simpleService
             '/sbin/ifconfig'
           ),
         )
+      ),
+      'ssl' => array (
+        'name'  => _('SSL paths'),
+        'attrs' => array (
+          new StringAttribute (
+            _('Key'), _('Path to the private key file on Argonaut server'),
+            'argonautKeyPath', FALSE,
+            '/etc/ssl/private/argonaut.key'
+          ),
+          new StringAttribute (
+            _('Certificate'), _('Path to the certificate file on Argonaut server'),
+            'argonautCertPath', FALSE,
+            '/etc/ssl/certs/argonaut.cert'
+          ),
+          new StringAttribute (
+            _('CA certificate'), _('Path to the CA certificate file on Argonaut server'),
+            'argonautCaCertPath', FALSE,
+            '/etc/ssl/certs/ca.cert'
+          ),
+          new StringAttribute (
+            _('CN of the certificate'), _('The CN in the server certificate'),
+            'argonautCertCN', FALSE
+          ),
+          new HiddenAttribute ('argonautServerToken'),
+        )
       )
     );
   }
@@ -115,9 +130,18 @@ class argonautServer extends simpleService
   function __construct(&$config, $dn = NULL, $object = NULL)
   {
     parent::__construct($config, $dn, $object);
-    $this->attributesInfo['section1']['attrs']['argonautProtocol']->setVisible(FALSE);
-    $this->attributesInfo['section1']['attrs']['argonautKeyPath']->setVisible(FALSE);
-    $this->attributesInfo['section1']['attrs']['argonautCertPath']->setVisible(FALSE);
+    if ($this->argonautServerToken == '') {
+      $this->argonautServerToken = md5(mt_rand());
+    }
+    $this->attributesAccess['argonautProtocol']->setManagedAttributes(
+      array(
+        'disable' => array (
+          'http' => array (
+            'argonautKeyPath','argonautCertPath','argonautCaCertPath','argonautCertCN'
+          )
+        )
+      )
+    );
   }
 
   /*! \brief Get service information for serverService plugin */

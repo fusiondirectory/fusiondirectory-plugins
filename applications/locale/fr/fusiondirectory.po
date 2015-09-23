@@ -3,16 +3,18 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# MCMic, 2014
-# MCMic, 2014
+# MCMic, 2015
+# Éric Deschamps <erdesc@free.fr>, 2013
+# Éric Deschamps <erdesc@free.fr>, 2013
+# MCMic, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-108\n"
+"Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2015-07-27 20:23+0200\n"
-"PO-Revision-Date: 2015-05-30 14:11+0000\n"
+"POT-Creation-Date: 2015-09-11 22:18+0200\n"
+"PO-Revision-Date: 2015-08-18 10:16+0000\n"
 "Last-Translator: MCMic\n"
-"Language-Team: French (http://www.transifex.com/projects/p/FusionDirectory-108/language/fr/)\n"
+"Language-Team: French (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -40,7 +42,7 @@ msgstr "Applications web"
 #: admin/applications/class_applicationGeneric.inc:48
 #: admin/applications/class_webApplication.inc:47
 msgid "Application"
-msgstr "Application"
+msgstr "Applications"
 
 #: admin/applications/class_applicationGeneric.inc:32
 msgid "Application information"
@@ -74,7 +76,7 @@ msgstr "L'application à exécuter"
 
 #: admin/applications/class_applicationGeneric.inc:64
 msgid "Display name"
-msgstr "Nom d'affichage"
+msgstr "Nom à afficher"
 
 #: admin/applications/class_applicationGeneric.inc:64
 msgid "The displayed name for this application"
@@ -100,15 +102,15 @@ msgstr "Exécutable uniquement par les membres"
 
 #: admin/applications/class_applicationGeneric.inc:83
 msgid "Only executable by the memebers of the group"
-msgstr "Exécutable uniquement par les membres"
+msgstr "Exécutable uniquement par les membres du groupe"
 
 #: admin/applications/class_applicationGeneric.inc:88
 msgid "Replace user configuration on startup"
-msgstr "Remplacer la configuration de l'utilisateur au démarrage"
+msgstr "Remplacer la configuration de l’utilisateur au démarrage"
 
 #: admin/applications/class_applicationGeneric.inc:88
 msgid "Replace the user configuration on startup"
-msgstr "Remplacer la configuration de l'utilisateur au démarrage"
+msgstr "Remplacer la configuration de l’utilisateur au démarrage"
 
 #: admin/applications/class_applicationGeneric.inc:93
 msgid "Place icon on members desktop"
@@ -116,7 +118,7 @@ msgstr "Placer une icône sur le bureau des membres"
 
 #: admin/applications/class_applicationGeneric.inc:93
 msgid "Put an icon on the user desktop"
-msgstr "Placer une icône sur le bureau de l'utilisateur"
+msgstr "Placer une icône sur le bureau de l’utilisateur"
 
 #: admin/applications/class_applicationGeneric.inc:98
 msgid "Place entry in members startmenu"
@@ -206,15 +208,15 @@ msgstr "Branche dans laquelle les applications web seront stockées"
 
 #: config/applications/class_applicationsPluginConfig.inc:53
 msgid "Show web applications in menu"
-msgstr "Montrer les applications web dans le menu"
+msgstr "Afficher les applications web dans le menu"
 
 #: config/applications/class_applicationsPluginConfig.inc:53
 msgid "Whether to show web applications in FD main menu"
-msgstr "S’il faut montrer les applications web dans le menu principal de FD"
+msgstr "S’il faut afficher les applications web dans le menu principal de FD"
 
 #: config/applications/class_applicationsPluginConfig.inc:56
 msgid "None"
-msgstr "Aucun"
+msgstr "Aucunes"
 
 #: config/applications/class_applicationsPluginConfig.inc:56
 msgid "Only allowed"
@@ -222,4 +224,4 @@ msgstr "Selon autorisation"
 
 #: config/applications/class_applicationsPluginConfig.inc:56
 msgid "All"
-msgstr "Tout"
+msgstr "Toutes"

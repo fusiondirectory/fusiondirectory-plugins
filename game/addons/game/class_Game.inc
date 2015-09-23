@@ -82,10 +82,10 @@ class Game
       new Mission(_('The Beatles are here'),
         array(
           'Game::template_created'  => _('Create a user template named <b>beatle</b>, using <i>http://%l|givenName%.com</i> as homepage and <i>%l|sn%</i> (lower case first name) as password'),
-          'Game::paul_created'      => _('Create a user for Paul McCartney using beatle profile (login paul)'),
-          'Game::george_created'    => _('Create a user for George Harrison using beatle profile (login george)'),
-          'Game::ringo_created'     => _('Create a user for Ringo Starr using beatle profile (login ringo)'),
-          'Game::beatles_created'   => _('Create a group for The Beatles named <b>beatles</b> and add the 4 beatles to this group'),
+          'Game::paul_created'      => _('Create a user for Paul McCartney using beatle template (login paul)'),
+          'Game::george_created'    => _('Create a user for George Harrison using beatle template (login george)'),
+          'Game::ringo_created'     => _('Create a user for Ringo Starr using beatle template (login ringo)'),
+          'Game::beatles_created'   => _('Create a POSIX group for The Beatles named <b>beatles</b> and add the 4 beatles to this group'),
         ), ''
       ),
       /* new Mission(_('The Beatles hired a manager'),
@@ -133,7 +133,7 @@ class Game
     global $config;
     $ldap = $config->get_ldap_link();
     $ldap->cd ($config->current['BASE']);
-    $ldap->search ('(&(objectClass=gosaAccount)(uid='.$uid.'))', array('uid'));
+    $ldap->search ('(&(objectClass=inetOrgPerson)(uid='.$uid.'))', array('uid'));
     if ($ldap->fetch()) {
       return TRUE;
     }
@@ -145,9 +145,9 @@ class Game
     global $config;
     $ldap = $config->get_ldap_link();
     $ldap->cd ($config->current['BASE']);
-    $ldap->search ('(&(objectClass=gosaUserTemplate)(cn=beatle))', array('labeledURI'));
+    $ldap->search ('(&(objectClass=fdTemplate)(cn=beatle))', array('fdTemplateField'));
     if ($attrs = $ldap->fetch()) {
-      return ($attrs['labeledURI'][0] == 'http://%l|givenName%.com');
+      return (in_array('labeledURI:http://%l|givenName%.com', $attrs['fdTemplateField']));
     }
     return FALSE;
   }
@@ -204,7 +204,7 @@ class Game
     $ldap = $config->get_ldap_link();
     $ldap->cd (get_ou('systemRDN').$config->current['BASE']);
     $ldap->search ('(&(objectClass=goServer)(cn='.$cn.'))', array('cn'));
-    if ($attrs = $ldap->fetch()) {
+    if (($attrs = $ldap->fetch()) && (class_available('serviceDNS'))) {
       $dns = new serviceDNS($config, $attrs['dn']);
       if ($dns->is_this_account($attrs)) {
         return isset($dns->Zones['beatles.fake.']);

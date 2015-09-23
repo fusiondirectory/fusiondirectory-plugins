@@ -27,7 +27,7 @@ class componentGeneric extends simplePlugin
 
   var $netConfigDNS;
 
-  var $preInitAttributes = array('networkSettings');
+  var $preInitAttributes = array('cn', 'networkSettings');
 
   /* Return plugin informations for acl handling */
   static function plInfo()
@@ -43,7 +43,6 @@ class componentGeneric extends simplePlugin
           'filter'      => '(&(objectClass=ieee802Device)(objectClass=device)(objectClass=ipHost))',
           'icon'        => 'geticon.php?context=devices&icon=network-device&size=16',
           'ou'          => get_ou('componentRDN'),
-          'tabClass'    => 'componenttabs',
         )
       ),
 
@@ -85,6 +84,12 @@ class componentGeneric extends simplePlugin
     parent::__construct($config, $dn, $object);
 
     $this->attributesAccess['cn']->setUnique(TRUE);
+  }
+
+  /* Returns the dn of the entry */
+  function compute_dn()
+  {
+    return 'cn='.$this->cn.','.get_ou('componentRDN').$this->base;
   }
 
   function resetCopyInfos()

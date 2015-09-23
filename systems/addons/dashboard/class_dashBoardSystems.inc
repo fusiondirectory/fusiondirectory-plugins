@@ -58,7 +58,7 @@ class dashboardSystems extends simplePlugin
             'filter' => 'objectClass=gotoPrinter',
             'img' => 'geticon.php?context=devices&icon=printer&size=16'),
       array('name' => _('Phones'),
-            'filter' => 'objectClass=goFonHardware',
+            'filter' => 'objectClass=fdPhone',
             'img' => 'geticon.php?context=devices&icon=telephone&size=16'),
       array('name' => _('Components'),
             'filter' => 'objectClass=ieee802Device',

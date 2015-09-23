@@ -375,7 +375,7 @@ class addressbook extends plugin
     if ($phonefilter['global'] == "checked") {
       $bases[] = preg_replace("/".$this->config->current['BASE']."/", $this->abobjectclass.",".$this->config->current['BASE'], $this->search_base);
     } else {
-      $filter = '(objectClass=gosaAccount)';
+      $filter = '(objectClass=inetOrgPerson)';
     }
     if ($phonefilter['organizational'] == "checked") {
       $bases[] = $this->search_base;
@@ -401,12 +401,12 @@ class addressbook extends plugin
 
       if ($phonefilter['object_type'] == '*') {
         $ldap->search(
-            "(&(objectClass=person)$filter(!(objectClass=gosaUserTemplate))".   // Skip templates etc ..
+            "(&(objectClass=person)$filter".
             "(!(uid=*$))".                                                      // Skip entries with ...$ as uid
             "(|".$attribute_filter."))"
           ,$attributes);
       } else {
-        $ldap->search("(&$filter(!(uid=*$))(!(objectClass=gosaUserTemplate))".                     //array
+        $ldap->search("(&$filter(!(uid=*$)".                     //array
             "(".$phonefilter['object_type']."=$s))", $attributes);
       }
 
@@ -520,11 +520,10 @@ class addressbook extends plugin
     $smarty->assign("global", $phonefilter['global']);
     $smarty->assign("organizational", $phonefilter['organizational']);
     $smarty->assign("search_image", 'geticon.php?context=actions&icon=system-search&size=16');
-    $smarty->assign("obj_image", get_template_path('plugins/addressbook/images/objects.png'));
-    $smarty->assign("tree_image", get_template_path('images/lists/search-subtree.png'));
-    $smarty->assign("infoimage", get_template_path('images/info.png'));
-    $smarty->assign("actionimage", get_template_path('images/action.png'));
-    $smarty->assign("launchimage", get_template_path('images/launch.png'));
+    $smarty->assign("obj_image",    get_template_path('plugins/addressbook/images/objects.png'));
+    $smarty->assign("tree_image",   'geticon.php?context=applications&icon=ldap&size=16');
+    $smarty->assign("infoimage",    'geticon.php?context=status&icon=dialog-info&size=16');
+    $smarty->assign("actionimage",  'geticon.php?context=types&icon=action&size=16');
 
     /* Generate alphabet */
     $alphabet = generate_alphabet();

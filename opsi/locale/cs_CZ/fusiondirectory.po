@@ -3,15 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Pavel Borecki <pavel.borecki@gmail.com>, 2015
+# Pavel Borecki <pavel.borecki@gmail.com>, 2014-2015
 msgid ""
 msgstr ""
-"Project-Id-Version: FusionDirectory-108\n"
+"Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2015-07-27 20:23+0200\n"
-"PO-Revision-Date: 2015-05-30 14:11+0000\n"
-"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
-"Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/FusionDirectory-108/language/cs_CZ/)\n"
+"POT-Creation-Date: 2015-09-11 22:19+0200\n"
+"PO-Revision-Date: 2015-05-30 14:12+0000\n"
+"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"Language-Team: Czech (Czech Republic) (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -25,7 +25,7 @@ msgstr "OPSI seznam na vyžádání"
 
 #: admin/opsi/class_opsiOnDemandList.inc:29
 msgid "OPSI on demand software list"
-msgstr "OPSI seznam programového vybavení na vyžádání"
+msgstr "Seznam OPSI programového vybavení na vyžádání"
 
 #: admin/opsi/class_opsiOnDemandList.inc:47
 #: admin/opsi/class_opsiSoftwareList.inc:51
@@ -42,7 +42,7 @@ msgstr ""
 #: admin/opsi/class_opsiSoftwareList.inc:54
 #: admin/opsi/class_opsiProfile.inc:88
 msgid "OPSI server to use for deployment"
-msgstr "OPSI server, který použít pro nasazení"
+msgstr "OPSI server, který má být použit pro nasazení"
 
 #: admin/opsi/class_opsiOnDemandList.inc:54
 #: admin/opsi/class_opsiSoftwareList.inc:58
@@ -73,11 +73,11 @@ msgstr "Programové vybavení"
 #: admin/opsi/class_opsiOnDemandList.inc:68
 #: admin/opsi/class_opsiSoftwareList.inc:81
 msgid "Localboot products"
-msgstr "Produkty pro místní zavádění"
+msgstr "Produkty pro místní zavedení"
 
 #: admin/opsi/class_opsiOnDemandList.inc:68
 msgid "The localboot products to put in this list"
-msgstr "Produkty pro místní zavedení, určené k umístění na tento seznam"
+msgstr "Produkty pro místní zavedení pro umístění na tento seznam"
 
 #: admin/opsi/class_opsiSoftwareList.inc:32
 msgid "OPSI list"
@@ -86,7 +86,7 @@ msgstr "Seznam OPSI"
 #: admin/opsi/class_opsiSoftwareList.inc:33
 #: admin/opsi/class_opsiSoftwareList.inc:37
 msgid "OPSI software list"
-msgstr "OPSI seznam programového vybavení"
+msgstr "Seznam programového vybavení OPSI"
 
 #: admin/opsi/class_opsiSoftwareList.inc:68
 msgid "The localboot products to install with this list"
@@ -150,11 +150,11 @@ msgstr "Položky"
 
 #: admin/opsi/class_opsiProfile.inc:101
 msgid "Netboot product"
-msgstr "Produkt pro zavedení ze sítě"
+msgstr "Produkt pro místní zavedení"
 
 #: admin/opsi/class_opsiProfile.inc:101
 msgid "The netboot product to use for this profile"
-msgstr "Netboot produkt pro tuto sadu nastavení"
+msgstr "Netbot produkt pro tuto sadu nastavení"
 
 #: admin/opsi/class_opsiProfile.inc:106
 msgid "Software lists"
@@ -162,7 +162,7 @@ msgstr "Seznamy programového vybavení"
 
 #: admin/opsi/class_opsiProfile.inc:106
 msgid "Software lists that will be installed with this profile"
-msgstr "Seznamy programového vybavení, který bude nainstalován touto sadou nastavení"
+msgstr "Seznam programového vybavení, který bude nainstalován touto sadou nastavení"
 
 #: admin/opsi/class_opsiProfile.inc:211
 #, php-format
@@ -171,7 +171,7 @@ msgstr ""
 
 #: admin/systems/opsi/class_opsiClient.inc:33
 msgid "OPSI client"
-msgstr "OPSI klient"
+msgstr "Klient OPSI"
 
 #: admin/systems/opsi/class_opsiClient.inc:34
 msgid "Edit OPSI client settings"
@@ -179,11 +179,11 @@ msgstr "Upravit nastavení OPSI klienta"
 
 #: admin/systems/opsi/class_opsiClient.inc:46
 msgid "OPSI Client"
-msgstr "OPSI klient"
+msgstr "Klient OPSI"
 
 #: admin/systems/opsi/class_opsiClient.inc:49
 msgid "OPSI Server"
-msgstr ""
+msgstr "OPSI server"
 
 #: admin/systems/opsi/class_opsiClient.inc:49
 msgid "The OPSI Server this client is connected to"
@@ -199,7 +199,7 @@ msgstr "Sada nastavení OPSI, která má být použita na tomto klientovi"
 
 #: admin/systems/opsi/class_opsiClient.inc:95
 msgid "Could not get macAddress for OPSI server !"
-msgstr "Nelze zjistit MAC adresu pro potřeby OPSI serveru !"
+msgstr "Nelze zjistit macAddress pro OPSI server !"
 
 #: admin/systems/opsi/class_opsiClient.inc:104
 #: admin/systems/opsi/class_opsiClient.inc:191
@@ -214,7 +214,7 @@ msgstr "Nelze aktualizovat OPSI informace"
 #: admin/systems/services/opsi/class_serviceOPSI.inc:29
 #: admin/systems/services/opsi/class_serviceOPSI.inc:30
 msgid "OPSI service"
-msgstr "Služba opsi"
+msgstr "Služba OPSI"
 
 #: admin/systems/services/opsi/class_serviceOPSI.inc:30
 msgid "Services"
@@ -246,7 +246,7 @@ msgstr "Heslo"
 
 #: admin/systems/services/opsi/class_serviceOPSI.inc:52
 msgid "The password to use for connection"
-msgstr "Heslo, kterým se připojit"
+msgstr "Heslo pro spojení"
 
 #: addons/opsi/class_opsiImport.inc:35 addons/opsi/class_opsiImport.inc:39
 msgid "OPSI import"
@@ -258,7 +258,7 @@ msgstr "Importovat počítače s MS Windows z OPSI do F.D."
 
 #: addons/opsi/class_opsiImport.inc:63
 msgid "Argonaut server is not available"
-msgstr "Argonaut server není dostupný"
+msgstr "Server s Argonaut není dostupný"
 
 #: config/opsi/class_opsiConfig.inc:28
 msgid "OPSI configuration"
