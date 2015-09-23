@@ -93,7 +93,7 @@ class phoneGeneric extends simplePlugin
     parent::__construct($config, $dn, $object);
 
     $this->attributesAccess['cn']->setUnique(TRUE);
-    $this->netConfigDNS->IPisMust   = TRUE;
+    $this->netConfigDNS->IPisMust   = FALSE;
     $this->netConfigDNS->MACisMust  = FALSE;
   }
 
