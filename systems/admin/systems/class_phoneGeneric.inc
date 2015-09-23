@@ -24,7 +24,7 @@ class phoneGeneric extends simplePlugin
 
   var $netConfigDNS;
 
-  var $objectclasses = array('fdPhone', 'device', 'ipHost', 'ieee802Device');
+  var $objectclasses = array('fdPhone', 'device');
 
   var $inheritance = array('gosaGroupOfNames' => 'member');
 
@@ -93,7 +93,7 @@ class phoneGeneric extends simplePlugin
     parent::__construct($config, $dn, $object);
 
     $this->attributesAccess['cn']->setUnique(TRUE);
-    $this->netConfigDNS->IPisMust   = FALSE;
+    $this->netConfigDNS->IPisMust   = TRUE;
     $this->netConfigDNS->MACisMust  = FALSE;
   }
 
