@@ -507,7 +507,11 @@ class sambaAccount extends simplePlugin
         );
       } else {
         $ldap->fetch();
-        $tabGroup = objects::open($ldap->getDN(), 'group');
+        try {
+          $tabGroup = objects::open($ldap->getDN(), 'group');
+        } catch (NonExistingObjectTypeException $e) {
+          $tabGroup = objects::open($ldap->getDN(), 'ogroup');
+        }
         if ($tabGroup->by_object['sambaGroup']->is_account) {
           if ($tabGroup->by_object['sambaGroup']->sambaSID == "") {
             $tabGroup->by_object['sambaGroup']->sambaDomainName = $this->sambaDomainName;
