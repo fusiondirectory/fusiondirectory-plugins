@@ -154,7 +154,7 @@ class sambaGroup extends simplePlugin
   function getSambaSID()
   {
     $ldap       = $this->config->get_ldap_link();
-    $gidNumber  = $this->parent->getBaseObject()->gidNumber;
+    $gidNumber  = $this->parent->by_object['group']->gidNumber;
     do {
       $sid = $this->getSID()."-".($gidNumber * 2 + $this->getRidBase() + 1);
       $ldap->cd($this->config->current['BASE']);
