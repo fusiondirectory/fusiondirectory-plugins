@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Nikos Charonitakis <charosn@her.forthnet.gr>, 2005
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
 "POT-Creation-Date: 2015-09-11 22:18+0200\n"
-"PO-Revision-Date: 2015-09-01 17:25+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"PO-Revision-Date: 2015-10-06 10:24+0000\n"
+"Last-Translator: Kostas Papadimas <pkst@eellak.gr>\n"
 "Language-Team: Greek (Greece) (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/el_GR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,7 +22,7 @@ msgstr ""
 #: admin/fai/packageSelect/selectPackage-list.xml:14
 #: admin/systems/class_faiStartup.inc:177 config/fai/class_faiConfig.inc:41
 msgid "FAI"
-msgstr ""
+msgstr "FAI"
 
 #: admin/fai/class_faiManagement.inc:118
 msgid "Manage FAI software packages and deployment recipes"
@@ -29,23 +30,23 @@ msgstr ""
 
 #: admin/fai/class_faiManagement.inc:138
 msgid "There are no FAI branches"
-msgstr ""
+msgstr "Δεν υπάρχουν κλάδοι FAI"
 
 #: admin/fai/class_faiManagement.inc:141
 msgid " Please add at least one repository service to create those."
-msgstr ""
+msgstr "Παρακαλούμε, προσθέστε τουλάχιστον μια υπηρεσία αποθετηρίου για να δημιουργήσετε"
 
 #: admin/fai/class_faiPackage.inc:157
 msgid "Mark for installation"
-msgstr ""
+msgstr "Σήμανση για εγκατάσταση"
 
 #: admin/fai/class_faiPackage.inc:161
 msgid "Mark for removal"
-msgstr ""
+msgstr "Σήμανση για απεγκατάσταση"
 
 #: admin/fai/class_faiPackage.inc:166
 msgid "Edit configuration"
-msgstr ""
+msgstr "Επεξεργασία ρυθμίσεων"
 
 #: admin/fai/class_faiPackage.inc:247
 #: admin/fai/class_faiPartitionTable.inc:209
@@ -55,7 +56,7 @@ msgstr ""
 #: admin/systems/services/repository/class_serviceRepository.inc:232
 #: admin/systems/services/repository/class_serviceRepository.inc:236
 msgid "LDAP error"
-msgstr "LDAP Λάθος"
+msgstr "Σφάλμα LDAP"
 
 #: admin/fai/class_faiPackage.inc:279
 #: admin/fai/packageSelect/class_filterFAIPackages.inc:41
@@ -64,24 +65,24 @@ msgstr "LDAP Λάθος"
 #: admin/systems/class_faiStartup.inc:132
 #: admin/systems/class_faiStartup.inc:159
 msgid "Infrastructure service"
-msgstr ""
+msgstr "Άγνωτη υποδομή"
 
 #: admin/fai/class_faiPackage.inc:297
 msgid "Unkown packages"
-msgstr ""
+msgstr "Άγνωστα πακέτα"
 
 #: admin/fai/class_faiPackage.inc:368
 #: admin/fai/faiPackageConfiguration.tpl.c:2
 msgid "Package"
-msgstr ""
+msgstr "Πακέτο"
 
 #: admin/fai/class_faiPackage.inc:369
 msgid "FAI Package list"
-msgstr ""
+msgstr "Λίστα πακέτων FAI "
 
 #: admin/fai/class_faiPackage.inc:372
 msgid "FAI Package"
-msgstr ""
+msgstr "Πακέτο FAI"
 
 #: admin/fai/class_faiPackage.inc:388
 #: admin/fai/class_faiPartitionTable.inc:304
@@ -89,19 +90,19 @@ msgstr ""
 #: admin/fai/class_faiScript.inc:50 admin/fai/class_faiTemplate.inc:173
 #: admin/fai/class_faiHook.inc:50 admin/fai/class_faiVariable.inc:50
 msgid "Properties"
-msgstr ""
+msgstr "Ιδιότητες"
 
 #: admin/fai/class_faiPackage.inc:391
 #: admin/fai/class_faiPartitionTable.inc:307 admin/fai/class_faiProfile.inc:52
 #: admin/fai/class_faiScript.inc:53 admin/fai/class_faiTemplate.inc:176
 #: admin/fai/class_faiHook.inc:53 admin/fai/class_faiVariable.inc:53
 msgid "Class name"
-msgstr ""
+msgstr "Όνομα κλάσης"
 
 #: admin/fai/class_faiPackage.inc:391 admin/fai/class_faiScript.inc:53
 #: admin/fai/class_faiHook.inc:53 admin/fai/class_faiVariable.inc:53
 msgid "Variables class name"
-msgstr ""
+msgstr "Όνομα κλάσης μεταβλητών"
 
 #: admin/fai/class_faiPackage.inc:395
 #: admin/fai/class_faiPartitionTable.inc:311
@@ -120,16 +121,16 @@ msgstr "Περιγραφή"
 #: admin/fai/class_faiScript.inc:57 admin/fai/class_faiTemplate.inc:180
 #: admin/fai/class_faiHook.inc:57 admin/fai/class_faiVariable.inc:57
 msgid "Short description of the class"
-msgstr ""
+msgstr "Μια σύντομη περιγραφή της κλάσης"
 
 #: admin/fai/class_faiPackage.inc:401 admin/systems/class_faiStartup.inc:90
 msgid "Repository"
-msgstr ""
+msgstr "Αποθετήριο"
 
 #: admin/fai/class_faiPackage.inc:404 admin/systems/class_faiStartup.inc:78
 #: admin/systems/services/repository/class_serviceRepository.inc:40
 msgid "Release"
-msgstr ""
+msgstr "Έκδοση"
 
 #: admin/fai/class_faiPackage.inc:404
 msgid "Debian release concerned"
@@ -138,7 +139,7 @@ msgstr ""
 #: admin/fai/class_faiPackage.inc:408
 #: admin/systems/services/repository/class_serviceRepository.inc:47
 msgid "Sections"
-msgstr ""
+msgstr "Ενότητες"
 
 #: admin/fai/class_faiPackage.inc:408
 msgid "Sections concerned"
@@ -146,19 +147,19 @@ msgstr ""
 
 #: admin/fai/class_faiPackage.inc:412
 msgid "Install method"
-msgstr ""
+msgstr "Μέθοδος εγκατάστασης"
 
 #: admin/fai/class_faiPackage.inc:412
 msgid "Install method to use for this package list"
-msgstr ""
+msgstr "Μ'εθοδος εγκατάστασης για αυτή τη λίστα πακέτων"
 
 #: admin/fai/class_faiPackage.inc:423
 msgid "Packages"
-msgstr ""
+msgstr "Πακέτα"
 
 #: admin/fai/class_faiPackage.inc:427
 msgid "Packages in this class"
-msgstr ""
+msgstr "Πακέτα σε αυτή την κλάση"
 
 #: admin/fai/class_faiPartitionTable.inc:61
 #: admin/fai/class_faiDiskEntry.inc:441 admin/systems/class_faiLogView.inc:207
@@ -168,53 +169,53 @@ msgstr "Σφάλμα"
 
 #: admin/fai/class_faiPartitionTable.inc:112
 msgid "Add RAID"
-msgstr ""
+msgstr "Προσθήκη RAID"
 
 #: admin/fai/class_faiPartitionTable.inc:116
 msgid "Add LVM"
-msgstr ""
+msgstr "Προσθήκη LVM"
 
 #: admin/fai/class_faiPartitionTable.inc:284
 msgid "Partition table"
-msgstr ""
+msgstr "Πίνακας κατατμήσεων"
 
 #: admin/fai/class_faiPartitionTable.inc:285
 #: admin/fai/class_faiPartitionTable.inc:288
 msgid "FAI partition table"
-msgstr ""
+msgstr "Πίνακας κατατμήσεων FAI"
 
 #: admin/fai/class_faiPartitionTable.inc:307 admin/fai/class_faiProfile.inc:52
 msgid "Partition table class name"
-msgstr ""
+msgstr "Όνομα κλάσης πίνακα κατατμήσεων"
 
 #: admin/fai/class_faiPartitionTable.inc:317
 msgid "Discs"
-msgstr ""
+msgstr "Δίσκοι"
 
 #: admin/fai/class_faiPartitionTable.inc:324
 msgid "Partitions in this class"
-msgstr ""
+msgstr "Κατατμήσεις σε αυτή την κλάση"
 
 #: admin/fai/class_faiDiskEntry.inc:272 admin/fai/faiDiskEntry.tpl.c:5
 msgid "Device"
-msgstr ""
+msgstr "Συσκευή"
 
 #: admin/fai/class_faiDiskEntry.inc:272
 msgid "Label"
-msgstr ""
+msgstr "Ετικέτα"
 
 #: admin/fai/class_faiDiskEntry.inc:272
 msgid "UUID"
-msgstr ""
+msgstr "UUID"
 
 #: admin/fai/class_faiDiskEntry.inc:343
 msgid "Disks"
-msgstr ""
+msgstr "Δίσκοι"
 
 #: admin/fai/class_faiDiskEntry.inc:346 admin/fai/class_faiPartition.inc:321
 #: admin/fai/faiPartition.tpl.c:14
 msgid "Size"
-msgstr ""
+msgstr "Μέγεθος"
 
 #: admin/fai/class_faiDiskEntry.inc:442
 #, php-format
@@ -224,15 +225,15 @@ msgstr ""
 
 #: admin/fai/class_faiDiskEntry.inc:535
 msgid "encrypted"
-msgstr ""
+msgstr "κρυπτογραφημένο"
 
 #: admin/fai/class_faiDiskEntry.inc:538
 msgid "bootable"
-msgstr ""
+msgstr "εκκινήσιμο"
 
 #: admin/fai/class_faiDiskEntry.inc:541
 msgid "preserve"
-msgstr ""
+msgstr "ρεζέρβα"
 
 #: admin/fai/class_faiDiskEntry.inc:690 admin/fai/class_faiDiskEntry.inc:693
 #: admin/fai/class_faiDiskEntry.inc:740
@@ -259,53 +260,53 @@ msgstr ""
 
 #: admin/fai/class_faiDiskEntry.inc:736
 msgid "Partition table entry"
-msgstr ""
+msgstr "Καταχώριση πίνακα κατατμήσεων"
 
 #: admin/fai/class_faiDiskEntry.inc:737
 msgid "FAI partition table entry"
-msgstr ""
+msgstr "Καταχώριση πίνακα κατατμήσεων FAI"
 
 #: admin/fai/class_faiDiskEntry.inc:742
 msgid "Disk options"
-msgstr ""
+msgstr "Επιλογές δίσκου"
 
 #: admin/fai/class_faiDiskEntry.inc:743
 msgid "Partition type"
-msgstr ""
+msgstr "Τύπος κατάτμησης"
 
 #: admin/fai/class_faiDiskEntry.inc:744
 msgid "Partition no."
-msgstr ""
+msgstr "Αρ. κατάτμησης"
 
 #: admin/fai/class_faiDiskEntry.inc:745
 msgid "File system type"
-msgstr ""
+msgstr "Τύπος συστήματος αρχείων"
 
 #: admin/fai/class_faiDiskEntry.inc:746 admin/fai/class_faiPartition.inc:437
 #: admin/fai/faiPartition.tpl.c:47
 msgid "Mount point"
-msgstr ""
+msgstr "Σημείο προσάρτησης"
 
 #: admin/fai/class_faiDiskEntry.inc:747 admin/fai/class_faiPartition.inc:402
 #: admin/fai/class_faiPartition.inc:407
 msgid "Partition size"
-msgstr ""
+msgstr "Μέγεθος κατάτμησης"
 
 #: admin/fai/class_faiDiskEntry.inc:748 admin/fai/faiPartition.tpl.c:50
 msgid "Mount options"
-msgstr ""
+msgstr "Επιλογές προσάρτησης"
 
 #: admin/fai/class_faiDiskEntry.inc:749
 msgid "File system options"
-msgstr ""
+msgstr "Επιλογές συστήματος αρχείων"
 
 #: admin/fai/class_faiDiskEntry.inc:750
 msgid "Partition flags"
-msgstr ""
+msgstr "Σημαίες κατάτμησης"
 
 #: admin/fai/class_debconfTemplate.inc:225
 msgid "This package has no debconf options."
-msgstr ""
+msgstr "Αυτό το εργαλείο δεν έχει επιλογές debconf"
 
 #: admin/fai/class_debconfTemplate.inc:262
 msgid ""
@@ -317,79 +318,79 @@ msgstr ""
 
 #: admin/fai/class_faiTemplateEntry.inc:143
 msgid "File path"
-msgstr ""
+msgstr "Διαδρομή του αρχείου"
 
 #: admin/fai/class_faiTemplateEntry.inc:143
 msgid "Complete absolute template file path and name"
-msgstr ""
+msgstr "Απόλυτη διαδρομή του  αρχείου προτύπου και όνομα"
 
 #: admin/fai/class_faiTemplateEntry.inc:147
 msgid "Short description of the file"
-msgstr ""
+msgstr "Μια σύντομη περιγραφή του αρχείου"
 
 #: admin/fai/class_faiTemplateEntry.inc:156
 msgid "Template attributes"
-msgstr ""
+msgstr "Ιδιότητες προτύπου"
 
 #: admin/fai/class_faiTemplateEntry.inc:160
 msgid "Template file content"
-msgstr ""
+msgstr "Περιεχόμενο αρχείου προτύπου"
 
 #: admin/fai/class_faiTemplateEntry.inc:160
 msgid "Content of the template file"
-msgstr ""
+msgstr "Το περιεχόμενο αρχείου προτύπου"
 
 #: admin/fai/class_faiTemplateEntry.inc:164
 msgid "Owner and group of the file"
-msgstr ""
+msgstr "Κάτοχος και ομάδα του αρχείου."
 
 #: admin/fai/class_faiTemplateEntry.inc:167
 msgid "Owner"
-msgstr ""
+msgstr "Κάτοχος"
 
 #: admin/fai/class_faiTemplateEntry.inc:167
 msgid "File owner"
-msgstr ""
+msgstr "Κάτοχος αρχείου"
 
 #: admin/fai/class_faiTemplateEntry.inc:172
 msgid "Group"
-msgstr ""
+msgstr "Ομάδα"
 
 #: admin/fai/class_faiTemplateEntry.inc:172
 msgid "File group"
-msgstr ""
+msgstr "Ομάδα αρχείου"
 
 #: admin/fai/class_faiTemplateEntry.inc:181
 msgid "Access"
-msgstr ""
+msgstr "Πρόσβαση"
 
 #: admin/fai/class_faiTemplateEntry.inc:181
 msgid "Access rights"
-msgstr ""
+msgstr "Δικαιώματα πρόσβασης"
 
 #: admin/fai/packageSelect/selectPackage-list.xml:10
 msgid "Please select the desired entries"
-msgstr ""
+msgstr "Παρακαλώ επιλέξτε τις επιθυμητλες εγγραφές"
 
 #: admin/fai/packageSelect/selectPackage-list.xml:48
 msgid "Version"
-msgstr ""
+msgstr "Έκδοση"
 
 #: admin/fai/class_faiProfile.inc:30
 msgid "Profile"
-msgstr ""
+msgstr "Προφίλ"
 
 #: admin/fai/class_faiProfile.inc:31
 msgid "FAI profile"
-msgstr ""
+msgstr "Προφίλ FAI "
 
 #: admin/fai/class_faiProfile.inc:34
 msgid "FAI Profile"
-msgstr ""
+msgstr "Προφίλ FAI "
 
 #: admin/fai/class_faiProfile.inc:63
 msgid "FAI classes"
-msgstr ""
+msgstr "Κλάσεις FAI"
 
 #: admin/fai/class_faiProfile.inc:63
 msgid "FAI classes which are part of this profile"
@@ -398,39 +399,39 @@ msgstr ""
 #: admin/fai/class_faiPackageConfiguration.inc:88
 #, php-format
 msgid "Debconf information for package '%s'"
-msgstr ""
+msgstr "Πληροφορίες Debconf για το πακέτο '%s'"
 
 #: admin/fai/class_faiScript.inc:30 admin/fai/class_faiScript.inc:84
 #: admin/fai/class_faiHook.inc:87
 msgid "Script"
-msgstr ""
+msgstr "Δέσμη ενεργειών"
 
 #: admin/fai/class_faiScript.inc:31 admin/fai/class_faiScript.inc:34
 msgid "FAI script"
-msgstr ""
+msgstr "Σενάριο εντολών FAI "
 
 #: admin/fai/class_faiScript.inc:63
 msgid "Scripts"
-msgstr ""
+msgstr "Σενάρια"
 
 #: admin/fai/class_faiScript.inc:67 admin/fai/class_faiHook.inc:67
 #: admin/fai/class_faiVariable.inc:67
 msgid "Variables in this class"
-msgstr ""
+msgstr "Μεταβλητές σε αυτή την κλάση"
 
 #: admin/fai/class_faiScript.inc:71 admin/fai/class_faiHook.inc:71
 #: admin/fai/class_faiVariable.inc:71
 msgid "The name of the variable"
-msgstr ""
+msgstr "Το όνομα της μεταβλητής"
 
 #: admin/fai/class_faiScript.inc:75 admin/fai/class_faiHook.inc:75
 #: admin/fai/class_faiVariable.inc:75
 msgid "A short description of the variable"
-msgstr ""
+msgstr "Μια σύντομη περιγραφή της μεταβλητής"
 
 #: admin/fai/class_faiScript.inc:79
 msgid "Priority"
-msgstr ""
+msgstr "Προτεραιότητα"
 
 #: admin/fai/class_faiScript.inc:79
 msgid "Priority of this script (smaller is done first)"
@@ -438,28 +439,28 @@ msgstr ""
 
 #: admin/fai/class_faiScript.inc:84
 msgid "The script itself"
-msgstr ""
+msgstr "Το σενάριο εντολών"
 
 #: admin/fai/class_faiTemplate.inc:136
 #, php-format
 msgid "There are several files with the same path: %s"
-msgstr ""
+msgstr "Υπάρχουν αρκετά αρχεία με την ίδια διαδρομή %s"
 
 #: admin/fai/class_faiTemplate.inc:153
 msgid "Template"
-msgstr ""
+msgstr "Πρότυπο"
 
 #: admin/fai/class_faiTemplate.inc:154 admin/fai/class_faiTemplate.inc:157
 msgid "FAI template"
-msgstr ""
+msgstr "Πρότυπο FAI"
 
 #: admin/fai/class_faiTemplate.inc:176
 msgid "Template class name"
-msgstr ""
+msgstr "Όνομα κλάσης προτύπου"
 
 #: admin/fai/class_faiTemplate.inc:186
 msgid "Template files"
-msgstr ""
+msgstr "Αρχεία προτύπων"
 
 #: admin/fai/class_faiTemplate.inc:190
 msgid "Template files in this class"
@@ -467,127 +468,127 @@ msgstr ""
 
 #: admin/fai/class_faiPartition.inc:176 admin/fai/class_faiPartition.inc:180
 msgid "Logical"
-msgstr ""
+msgstr "Λογικό"
 
 #: admin/fai/class_faiPartition.inc:179
 msgid "Primary"
-msgstr ""
+msgstr "Πρωτεύον"
 
 #: admin/fai/class_faiPartition.inc:185
 msgid "RAID 0"
-msgstr ""
+msgstr "RAID 0"
 
 #: admin/fai/class_faiPartition.inc:186
 msgid "RAID 1"
-msgstr ""
+msgstr "RAID 1"
 
 #: admin/fai/class_faiPartition.inc:187
 msgid "RAID 5"
-msgstr ""
+msgstr "RAID 5"
 
 #: admin/fai/class_faiPartition.inc:188
 msgid "RAID 6"
-msgstr ""
+msgstr "RAID 6"
 
 #: admin/fai/class_faiPartition.inc:195
 msgid "fixed"
-msgstr ""
+msgstr "σταθερό"
 
 #: admin/fai/class_faiPartition.inc:196
 msgid "dynamic"
-msgstr ""
+msgstr "δυναμικό"
 
 #: admin/fai/class_faiPartition.inc:197
 msgid "remaining space"
-msgstr ""
+msgstr "υπολειπόμενος χώρος"
 
 #: admin/fai/class_faiPartition.inc:202
 msgid "KB"
-msgstr ""
+msgstr "KB"
 
 #: admin/fai/class_faiPartition.inc:203
 msgid "MB"
-msgstr ""
+msgstr "MB"
 
 #: admin/fai/class_faiPartition.inc:204
 msgid "GB"
-msgstr ""
+msgstr "GB"
 
 #: admin/fai/class_faiPartition.inc:205
 msgid "TB"
-msgstr ""
+msgstr "TB"
 
 #: admin/fai/class_faiPartition.inc:206
 msgid "PB"
-msgstr ""
+msgstr "PB"
 
 #: admin/fai/class_faiPartition.inc:207
 msgid "%"
-msgstr ""
+msgstr "%"
 
 #: admin/fai/class_faiPartition.inc:212
 msgid "always"
-msgstr ""
+msgstr "πάντα"
 
 #: admin/fai/class_faiPartition.inc:213
 msgid "reinstall"
-msgstr ""
+msgstr "επανεγκατάσταση"
 
 #: admin/fai/class_faiPartition.inc:217
 msgid "swap space"
-msgstr ""
+msgstr "χώρος swap "
 
 #: admin/fai/class_faiPartition.inc:218
 msgid "ext2"
-msgstr ""
+msgstr "ext2"
 
 #: admin/fai/class_faiPartition.inc:219
 msgid "ext3"
-msgstr ""
+msgstr "ext3"
 
 #: admin/fai/class_faiPartition.inc:220
 msgid "ext4"
-msgstr ""
+msgstr "ext4"
 
 #: admin/fai/class_faiPartition.inc:221
 msgid "reiser fs"
-msgstr ""
+msgstr "reiser fs"
 
 #: admin/fai/class_faiPartition.inc:222
 msgid "xfs"
-msgstr ""
+msgstr "xfs"
 
 #: admin/fai/class_faiPartition.inc:223
 msgid "btrfs"
-msgstr ""
+msgstr "btrfs"
 
 #: admin/fai/class_faiPartition.inc:224
 msgid "LVM/RAID"
-msgstr ""
+msgstr "LVM/RAID"
 
 #: admin/fai/class_faiPartition.inc:327
 msgid "spare"
-msgstr ""
+msgstr "spare"
 
 #: admin/fai/class_faiPartition.inc:330
 msgid "missing"
-msgstr ""
+msgstr "λείπει"
 
 #: admin/fai/class_faiPartition.inc:333
 msgid "Options"
-msgstr "Επιλογές"
+msgstr " Επιλογές"
 
 #: admin/fai/class_faiPartition.inc:420
 msgid "Minimum partition size"
-msgstr ""
+msgstr "Ελάχιστο μέγεθος κατάτμησης"
 
 #: admin/fai/class_faiPartition.inc:420
 msgid "Maximum partition size"
-msgstr ""
+msgstr "Μέγιστο μέγεθος κατάτμησης"
 
 #: admin/fai/class_faiPartition.inc:428
 msgid "Raid arrays must contain at least two partitions!"
-msgstr ""
+msgstr "Οι συστοιχίες Raid θα πρέπει να περιέχουν τουλάχιστον δύο κατατμήσεις!"
 
 #: admin/fai/class_faiPartition.inc:430
 msgid ""
@@ -596,165 +597,165 @@ msgstr ""
 
 #: admin/fai/class_faiHook.inc:30
 msgid "Hook"
-msgstr ""
+msgstr "Hook"
 
 #: admin/fai/class_faiHook.inc:31 admin/fai/class_faiHook.inc:34
 msgid "FAI hook"
-msgstr ""
+msgstr "FAI hook"
 
 #: admin/fai/class_faiHook.inc:63
 msgid "Hooks"
-msgstr ""
+msgstr "Hooks"
 
 #: admin/fai/class_faiHook.inc:79
 msgid "Task"
-msgstr ""
+msgstr "Εργασία"
 
 #: admin/fai/class_faiHook.inc:87
 msgid "The script of this hook"
-msgstr ""
+msgstr "Το σενάριο εντολών για αυτό το hook"
 
 #: admin/fai/class_faiVariable.inc:30
 msgid "Variable"
-msgstr ""
+msgstr "Μεταβλητή"
 
 #: admin/fai/class_faiVariable.inc:31 admin/fai/class_faiVariable.inc:34
 msgid "FAI variable"
-msgstr ""
+msgstr "Μεταβλητή FAI"
 
 #: admin/fai/class_faiVariable.inc:63
 msgid "Variables"
-msgstr ""
+msgstr "Μεταβλητές"
 
 #: admin/fai/class_faiVariable.inc:79
 msgid "Content"
-msgstr ""
+msgstr "Περιεχόμενο"
 
 #: admin/fai/class_faiVariable.inc:79
 msgid "The content of the variable"
-msgstr ""
+msgstr "Το περιεχόμενο της μεταβλητής."
 
 #: admin/systems/class_faiLogView.inc:56
 msgid "Sort down"
-msgstr ""
+msgstr "Ταξινόμηση προς τα πάνω"
 
 #: admin/systems/class_faiLogView.inc:58
 msgid "Sort up"
-msgstr ""
+msgstr "Ταξινόμηση προς τα κάτω"
 
 #: admin/systems/class_faiLogView.inc:70
 msgid "File"
-msgstr ""
+msgstr "Αρχείο"
 
 #: admin/systems/class_faiLogView.inc:71
 msgid "Date"
-msgstr ""
+msgstr "Ημερομηνία"
 
 #: admin/systems/class_faiLogView.inc:150
 #: admin/systems/class_faiLogView.inc:153
 msgid "Available logs"
-msgstr ""
+msgstr "Διαθέσιμες καταγραφές"
 
 #: admin/systems/class_faiLogView.inc:158
 msgid "Selected log"
-msgstr ""
+msgstr "Επιλεγμένο αρχείο καταγραφής"
 
 #: admin/systems/class_faiLogView.inc:162
 msgid "Content of the selected log"
-msgstr ""
+msgstr "Το περιεχόμενο του επιλεγμένου αρχείου καταγραφής"
 
 #: admin/systems/class_faiLogView.inc:174
 msgid "FAI Logs"
-msgstr ""
+msgstr "Καταγραφές FAI "
 
 #: admin/systems/class_faiLogView.inc:175
 msgid "FAI Logs Viewer"
-msgstr ""
+msgstr "Εφαρμογή προβολής καταγραφών FAI "
 
 #: admin/systems/class_faiLogView.inc:222
 msgid "Selected file"
-msgstr ""
+msgstr "Επιλεγμένο αρχείο"
 
 #: admin/systems/class_faiLogView.inc:230
 #, php-format
 msgid "Selected file: %s"
-msgstr ""
+msgstr "Επιλεγμένο αρχείο: %s"
 
 #: admin/systems/class_faiStartup.inc:70
 msgid "FAI settings"
-msgstr ""
+msgstr "Ρυθμίσεις FAI"
 
 #: admin/systems/class_faiStartup.inc:74
 msgid "FAI profil and release to be applied to this computer"
-msgstr ""
+msgstr "Προφίλ FAI και έκδοση για να εφαρμοστεί σε αυτόν τον υπολογιστή"
 
 #: admin/systems/class_faiStartup.inc:78
 msgid "FAI debian release to be installed on this computer"
-msgstr ""
+msgstr "'Έκδοση debian FAI για να εγκατατασταθεί σε αυτόν τον υπολογιστή"
 
 #: admin/systems/class_faiStartup.inc:82
 msgid "Profil"
-msgstr ""
+msgstr "Προφίλ"
 
 #: admin/systems/class_faiStartup.inc:82
 msgid "FAI profil to be applied to this computer"
-msgstr ""
+msgstr "Προφίλ FAI για να εφαρμοστεί σε αυτόν τον υπολογιστή"
 
 #: admin/systems/class_faiStartup.inc:90
 msgid "FAI Debian repository to be used for installation"
-msgstr ""
+msgstr "Αποθετήριο FAI Debian που θα χρησιμοποιηθεί για αυτή την εγκατάσταση"
 
 #: admin/systems/class_faiStartup.inc:96
 msgid "Startup parameters"
-msgstr ""
+msgstr "{αράμετροι εκκίνησης"
 
 #: admin/systems/class_faiStartup.inc:99
 msgid "Boot kernel"
-msgstr ""
+msgstr "Boot kernel"
 
 #: admin/systems/class_faiStartup.inc:99
 msgid "Linux kernel to be installed and booted"
-msgstr ""
+msgstr "Ο πυρήνας Linux που θα εγκατασταθεί και θα εκκινηθεί"
 
 #: admin/systems/class_faiStartup.inc:103
 msgid "Boot kernel parameters"
-msgstr ""
+msgstr "Παράμετροι Boot kernel "
 
 #: admin/systems/class_faiStartup.inc:103
 msgid "Linux kernel parameters to be ran"
-msgstr ""
+msgstr "Παράμετροι πυρήνα Linux που θα εκτελούνται"
 
 #: admin/systems/class_faiStartup.inc:178
 msgid "Full automated installation"
-msgstr ""
+msgstr "Πλήρης αυτοματοποιημένη εγκατάσταση"
 
 #: admin/systems/services/repository/class_serviceRepository.inc:31
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: admin/systems/services/repository/class_serviceRepository.inc:31
 msgid "Repository url"
-msgstr ""
+msgstr " url αποθετηρίου"
 
 #: admin/systems/services/repository/class_serviceRepository.inc:35
 msgid "Parent server"
-msgstr ""
+msgstr "Γονικός εξυπηρετητής"
 
 #: admin/systems/services/repository/class_serviceRepository.inc:35
 msgid "Parent repository server"
-msgstr ""
+msgstr "Αποθετήριο γονικού εξυπηρετητή"
 
 #: admin/systems/services/repository/class_serviceRepository.inc:40
 msgid "Release used on this repository"
-msgstr ""
+msgstr "Έκδοση που χρησιμοποιήθηκε αυτό το αποθετήριο"
 
 #: admin/systems/services/repository/class_serviceRepository.inc:47
 msgid "Sections available on this repository"
-msgstr ""
+msgstr "Διαθέσιμες ενότητες σε αυτό αποθετήριο."
 
 #: admin/systems/services/repository/class_serviceRepository.inc:52
 msgid "Mirror mode"
-msgstr ""
+msgstr "Λειτουργία Mirror"
 
 #: admin/systems/services/repository/class_serviceRepository.inc:52
 msgid ""
@@ -763,7 +764,7 @@ msgstr ""
 
 #: admin/systems/services/repository/class_serviceRepository.inc:57
 msgid "Local mirror"
-msgstr ""
+msgstr "Τοπικός mirror"
 
 #: admin/systems/services/repository/class_serviceRepository.inc:57
 msgid "Is this mirror a local or a network mirror?"
@@ -771,15 +772,15 @@ msgstr ""
 
 #: admin/systems/services/repository/class_serviceRepository.inc:66
 msgid "Architectures"
-msgstr ""
+msgstr "Αρχιτεκτονικές"
 
 #: admin/systems/services/repository/class_serviceRepository.inc:66
 msgid "Processor architectures available on this repository"
-msgstr ""
+msgstr "Διαθέσιμες αρχιτεκτονικές επεξεργαστών σε αυτό το αποθετήριο"
 
 #: admin/systems/services/repository/class_serviceRepository.inc:72
 msgid "Distribution"
-msgstr ""
+msgstr "Διανομή"
 
 #: admin/systems/services/repository/class_serviceRepository.inc:72
 msgid "Which distribution is this repository for"
@@ -787,7 +788,7 @@ msgstr ""
 
 #: admin/systems/services/repository/class_serviceRepository.inc:141
 msgid "Repositories"
-msgstr ""
+msgstr "Αποθετήρια"
 
 #: admin/systems/services/repository/class_serviceRepository.inc:146
 msgid "Repositories this server hosts"
@@ -795,24 +796,24 @@ msgstr ""
 
 #: admin/systems/services/repository/class_serviceRepository.inc:161
 msgid "Package repository"
-msgstr ""
+msgstr "Αποθετήριο πακέτων"
 
 #: admin/systems/services/repository/class_serviceRepository.inc:162
 msgid "Package repository information"
-msgstr ""
+msgstr "Πληροφορίε αποθετηρίου πακέτων"
 
 #: admin/systems/services/monitor/class_argonautFAIMonitor.inc:28
 msgid "Argonaut FAI monitor"
-msgstr ""
+msgstr "Παρακολούθηση Argonaut FAI"
 
 #: admin/systems/services/monitor/class_argonautFAIMonitor.inc:29
 #: admin/systems/services/monitor/class_argonautFAIMonitor.inc:40
 msgid "Argonaut FAI monitor settings"
-msgstr ""
+msgstr "Ρυθμίσεις παρακολούθησης Argonaut FAI "
 
 #: admin/systems/services/monitor/class_argonautFAIMonitor.inc:43
 msgid "Port"
-msgstr ""
+msgstr "Θύρα"
 
 #: admin/systems/services/monitor/class_argonautFAIMonitor.inc:43
 msgid "The port argonaut-fai-monitor should listen on. Default is 4711."
@@ -820,15 +821,15 @@ msgstr ""
 
 #: admin/systems/services/monitor/class_argonautFAIMonitor.inc:48
 msgid "Timeout"
-msgstr ""
+msgstr "Λήξη χρόνου:"
 
 #: admin/systems/services/monitor/class_argonautFAIMonitor.inc:48
 msgid "The timeout for bad clients. 0 to disable."
-msgstr ""
+msgstr "Το όριο χρόνου για τους προβληματικούς πελάτες. 0 για απενεργοποίηση"
 
 #: admin/systems/services/monitor/class_argonautFAIMonitor.inc:53
 msgid "CA certificate"
-msgstr ""
+msgstr "Πιστοποιητικό CA"
 
 #: admin/systems/services/monitor/class_argonautFAIMonitor.inc:53
 msgid "Path to the CA certificate file on Argonaut FAI monitor server"
@@ -836,7 +837,7 @@ msgstr ""
 
 #: admin/systems/services/monitor/class_argonautFAIMonitor.inc:58
 msgid "Log directory"
-msgstr ""
+msgstr "Κατάλογος καταγραφών"
 
 #: admin/systems/services/monitor/class_argonautFAIMonitor.inc:58
 msgid "Directory in which argonaut-fai-monitor will store its log"
@@ -844,11 +845,11 @@ msgstr ""
 
 #: config/fai/class_faiConfig.inc:28
 msgid "FAI configuration"
-msgstr ""
+msgstr "Ρύθμιση FAI "
 
 #: config/fai/class_faiConfig.inc:29
 msgid "FusionDirectory fai plugin configuration"
-msgstr ""
+msgstr "Ρύθμιση προσθέτου FusionDirectory fai"
 
 #: config/fai/class_faiConfig.inc:44
 msgid "Fai base RDN"
@@ -856,7 +857,7 @@ msgstr ""
 
 #: config/fai/class_faiConfig.inc:44
 msgid "Branch in which fai branches will be stored"
-msgstr ""
+msgstr "Κλάδος στον οποίο τοι κλάδοι fai θα αποθηκεύονται"
 
 #: config/fai/class_faiConfig.inc:59
 #, php-format
@@ -870,87 +871,87 @@ msgstr ""
 
 #: config/fai/class_faiConfig.inc:60
 msgid "s"
-msgstr ""
+msgstr "s"
 
 #: admin/fai/faiPartition.tpl.c:2
 msgid "Partition"
-msgstr ""
+msgstr "Κατάτμηση"
 
 #: admin/fai/faiPartition.tpl.c:8
 msgid "Type"
-msgstr ""
+msgstr "Τύπος"
 
 #: admin/fai/faiPartition.tpl.c:17
 msgid "Resize existing partition"
-msgstr ""
+msgstr "Αλλαγή μεγέθους υπάρχουσας κατάτμησης"
 
 #: admin/fai/faiPartition.tpl.c:20
 msgid "Bootable"
-msgstr ""
+msgstr "Εκκινήσιμη"
 
 #: admin/fai/faiPartition.tpl.c:23
 msgid "Preserve"
-msgstr ""
+msgstr "Διατήρηση"
 
 #: admin/fai/faiPartition.tpl.c:26 admin/fai/faiDiskEntry.tpl.c:20
 msgid "Combined physical partitions"
-msgstr ""
+msgstr "Συνδυασμένες φυσικές κατατμήσεις"
 
 #: admin/fai/faiPartition.tpl.c:29
 msgid "Toggle missing"
-msgstr ""
+msgstr "Toggle missing"
 
 #: admin/fai/faiPartition.tpl.c:32
 msgid "Toggle spare"
-msgstr ""
+msgstr "Toggle spare"
 
 #: admin/fai/faiPartition.tpl.c:35
 msgid "Filesystem"
-msgstr ""
+msgstr "Σύστημα αρχείων"
 
 #: admin/fai/faiPartition.tpl.c:38
 msgid "Filesystem create options"
-msgstr ""
+msgstr "Επιλογές δημιουργίας συστήματος αρχείων"
 
 #: admin/fai/faiPartition.tpl.c:41
 msgid "Encrypted"
-msgstr ""
+msgstr "Κρυπτογραφημένο"
 
 #: admin/fai/faiPartition.tpl.c:44
 msgid "Tune options"
-msgstr ""
+msgstr "Επιλογές ρύθμισης"
 
 #: admin/fai/faiDiskEntry.tpl.c:2
 msgid "Generic"
-msgstr ""
+msgstr "Γενικό"
 
 #: admin/fai/faiDiskEntry.tpl.c:11
 msgid "fstab key"
-msgstr ""
+msgstr "κλειδί fstab"
 
 #: admin/fai/faiDiskEntry.tpl.c:17
 msgid "Disk label"
-msgstr ""
+msgstr "Ετικέτα δίσκου "
 
 #: admin/fai/faiDiskEntry.tpl.c:23 admin/fai/faiDiskEntry.tpl.c:26
 msgid "Partition entries"
-msgstr ""
+msgstr "Καταχωρίσεις κατάτμησης"
 
 #: admin/fai/faiDiskEntry.tpl.c:29 admin/fai/faiDiskEntry.tpl.c:32
 msgid "Add partition"
-msgstr ""
+msgstr "Προσθήκη διαμέρισης"
 
 #: admin/fai/packageSelect/selectPackage-list.tpl.c:2
 msgid "Update"
-msgstr ""
+msgstr "Ενημέρωση"
 
 #: admin/fai/packageSelect/selectPackage-list.tpl.c:5
 msgid "Submit"
-msgstr ""
+msgstr "Υποβολή"
 
 #: admin/fai/packageSelect/selectPackage-filter.tpl.c:2
 msgid "Filter"
-msgstr ""
+msgstr "Φίλτρο"
 
 #: admin/fai/packageSelect/selectPackage-filter.tpl.c:5
 msgid "A maximum of 200 entries will be shown here."
