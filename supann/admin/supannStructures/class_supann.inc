@@ -34,8 +34,8 @@ class supann
         $res[$prefix] =& self::get_choices_for($file);
       }
     }
-
     closedir($dir);
+    ksort($res);
     return $res;
   }
 
@@ -66,6 +66,7 @@ class supann
       }
       fclose($entiteList);
     }
+    array_multisort($entity_labels, $entity_codes);
     self::$choices_for[$prefix.$type] = array($entity_codes, $entity_labels);
     return self::$choices_for[$prefix.$type];
   }

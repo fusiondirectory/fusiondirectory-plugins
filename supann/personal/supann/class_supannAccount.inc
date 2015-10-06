@@ -492,6 +492,8 @@ class supannAccount extends simplePlugin
         }
       }
     }
+    array_multisort($label_entites,         $code_entites);
+    array_multisort($label_etablissements,  $code_etablissements);
 
     $this->attributesAccess['supannEntiteAffectation']->attribute->setChoices($code_entites, $label_entites);
     $this->attributesAccess['supannEtablissement']->attribute->setChoices($code_etablissements, $label_etablissements);
