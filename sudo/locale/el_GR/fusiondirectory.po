@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Kostas Papadimas <pkst@eellak.gr>, 2015
+# Manolis Saldaris <Ustramator@gmail.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
 "POT-Creation-Date: 2015-09-11 22:19+0200\n"
-"PO-Revision-Date: 2015-10-06 10:24+0000\n"
-"Last-Translator: Kostas Papadimas <pkst@eellak.gr>\n"
+"PO-Revision-Date: 2015-10-09 07:38+0000\n"
+"Last-Translator: Manolis Saldaris <Ustramator@gmail.com>\n"
 "Language-Team: Greek (Greece) (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/el_GR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -42,7 +43,7 @@ msgstr "Επιλογή"
 
 #: admin/sudo/class_sudoOption.inc:484
 msgid "Add a new sudo option"
-msgstr ""
+msgstr "Προσθήκη νέας επιλογής sudo"
 
 #: admin/sudo/class_sudoOption.inc:489 admin/sudo/class_sudoOption.inc:491
 msgid "Used sudo role options"
@@ -109,7 +110,7 @@ msgstr "Χρήστες impersonated από sudo"
 
 #: admin/sudo/class_sudoGeneric.inc:171
 msgid "Run as (group)"
-msgstr "Εκτέλεση ως (ομλαδα)"
+msgstr "Εκτέλεση ως (ομάδα)"
 
 #: admin/sudo/class_sudoGeneric.inc:172
 msgid "Group(s) impersonated by sudo"
@@ -130,7 +131,7 @@ msgstr "Χρήστες και ομάδες"
 #: admin/sudo/class_sudoGeneric.inc:184
 msgid ""
 "A user name, user ID (prefixed with '#'), Unix group (prefixed with '%')"
-msgstr ""
+msgstr "Ένα όνομα χρήστη, ταυτότητα χρήστη (ID με πρόθεμα '#'), ομάδα (Unix group με πρόθεμα '%')"
 
 #: admin/sudo/class_sudoGeneric.inc:188
 msgid "Priority"
@@ -138,15 +139,15 @@ msgstr "Προτεραιότητα"
 
 #: admin/sudo/class_sudoGeneric.inc:188
 msgid "This rule priority compared to others"
-msgstr ""
+msgstr "Συσχέτιση της προτεραιότητας αυτού του ρόλου με άλλων."
 
 #: config/sudo/class_sudoConfig.inc:28
 msgid "Sudo configuration"
-msgstr ""
+msgstr "Διαμόρφωση Sudo"
 
 #: config/sudo/class_sudoConfig.inc:29
 msgid "FusionDirectory sudo plugin configuration"
-msgstr ""
+msgstr "Ρύθμιση προσθέτου FusionDirectory sudo"
 
 #: config/sudo/class_sudoConfig.inc:45
 msgid "Sudo RDN"

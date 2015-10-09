@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Kostas Papadimas <pkst@eellak.gr>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
 "POT-Creation-Date: 2015-09-11 22:19+0200\n"
-"PO-Revision-Date: 2015-10-05 09:28+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"PO-Revision-Date: 2015-10-07 09:08+0000\n"
+"Last-Translator: Kostas Papadimas <pkst@eellak.gr>\n"
 "Language-Team: Greek (Greece) (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/el_GR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,73 +20,73 @@ msgstr ""
 
 #: admin/ppolicy/class_ppolicyManagement.inc:29
 msgid "Password policies"
-msgstr ""
+msgstr "Πολιτικές κωδικών πρόσβασης"
 
 #: admin/ppolicy/class_ppolicyManagement.inc:30
 msgid "Password policies management"
-msgstr ""
+msgstr "Διαχείριση πολιτικών κωδικών πρόσβασης"
 
 #: admin/ppolicy/class_ppolicy.inc:32 admin/ppolicy/class_ppolicy.inc:35
 #: personal/ppolicy/class_ppolicyAccount.inc:38
 #: personal/ppolicy/class_ppolicyAccount.inc:53
 msgid "Password policy"
-msgstr ""
+msgstr "Πολιτική κωδικών πρόσβασης"
 
 #: admin/ppolicy/class_ppolicy.inc:33
 msgid "Password policy for ppolicy overlay"
-msgstr ""
+msgstr "Πολιτική κωδικών πρόσβασης για το ppolicy overlay"
 
 #: admin/ppolicy/class_ppolicy.inc:51
 #: personal/ppolicy/class_ppolicyAccount.inc:56
 msgid "Policy"
-msgstr ""
+msgstr "Πολιτική"
 
 #: admin/ppolicy/class_ppolicy.inc:56
 msgid "Policy name"
-msgstr ""
+msgstr "Όνομα πολιτικής"
 
 #: admin/ppolicy/class_ppolicy.inc:60
 msgid "Minimum length"
-msgstr ""
+msgstr "Ελάχιστο μήκος "
 
 #: admin/ppolicy/class_ppolicy.inc:60
 msgid ""
 "Minimum length of the user supplied password - passwords shorter than this "
 "value will be rejected"
-msgstr ""
+msgstr "Το ελάχιστο μήκος  του κωδικού του χρήστη- κωδικοί μικρότεροι από αυτή την τιμή θα απορρίπτονται"
 
 #: admin/ppolicy/class_ppolicy.inc:65
 msgid "Passwords in history"
-msgstr ""
+msgstr "Κωδικοί πρόσβασης στο ιστορικό"
 
 #: admin/ppolicy/class_ppolicy.inc:65
 msgid ""
 "Number of passwords that are maintained in a list of previously used "
 "passwords"
-msgstr ""
+msgstr "Αριθμός κωδικών που θα διατηρούνται σε μια λίστα παλιών αποθηκευμένων κωδικών"
 
 #: admin/ppolicy/class_ppolicy.inc:70
 msgid "Minimum password age"
-msgstr ""
+msgstr "Ελάχιστη ηλικία κωδικού πρόσβασης"
 
 #: admin/ppolicy/class_ppolicy.inc:70
 msgid "Minimum time between password changes"
-msgstr ""
+msgstr "Ελάχιστος χρόνος μεταξύ αλλαγών κωδικού πρόσβασης"
 
 #: admin/ppolicy/class_ppolicy.inc:75
 msgid "Maximum password age"
-msgstr ""
+msgstr "Μέγιστη ηλικία κωδικού πρόσβασης"
 
 #: admin/ppolicy/class_ppolicy.inc:75
 msgid ""
 "Maximum time a password is valid, after which it is deemed to be no longer "
 "usable and any bind operations attempted with the expired password will be "
 "treated as invalid"
-msgstr ""
+msgstr "Μέγιστος χρόνος εγκυρότητας ενός κωδικού, με την λήξη του οποίου ο κωδικός θα είναι άχρηστος και όλες οι αιτούμενες λειτουργίες θα απορρίπτονται."
 
 #: admin/ppolicy/class_ppolicy.inc:80
 msgid "Expiry warning delay"
-msgstr ""
+msgstr "Καθυστέρηση προειδοποίησης λήξης"
 
 #: admin/ppolicy/class_ppolicy.inc:80
 msgid ""
@@ -96,7 +97,7 @@ msgstr ""
 
 #: admin/ppolicy/class_ppolicy.inc:85
 msgid "Grace period"
-msgstr ""
+msgstr "Περίοδος χάριτος"
 
 #: admin/ppolicy/class_ppolicy.inc:85
 msgid ""
@@ -106,15 +107,15 @@ msgstr ""
 
 #: admin/ppolicy/class_ppolicy.inc:90
 msgid "Allow user change"
-msgstr ""
+msgstr "Να επιτρέπεται η αλλαγή χρήστη"
 
 #: admin/ppolicy/class_ppolicy.inc:90
 msgid "Whether users are allowed to change their own passwords"
-msgstr ""
+msgstr "Αν θα επιτρέπεται στους χρήστες να αλλάζουν τους κωδικούς τους"
 
 #: admin/ppolicy/class_ppolicy.inc:95
 msgid "Safe modify"
-msgstr ""
+msgstr "Ασφαλής τροποποίηση"
 
 #: admin/ppolicy/class_ppolicy.inc:95
 msgid ""
@@ -124,11 +125,11 @@ msgstr ""
 
 #: admin/ppolicy/class_ppolicy.inc:109
 msgid "Lock out"
-msgstr ""
+msgstr "Κλείδωμα λογαριασμού"
 
 #: admin/ppolicy/class_ppolicy.inc:113
 msgid "Activate lock out"
-msgstr ""
+msgstr "Ενεργοποίηση κλειδώματος"
 
 #: admin/ppolicy/class_ppolicy.inc:113
 msgid ""
@@ -138,7 +139,7 @@ msgstr ""
 
 #: admin/ppolicy/class_ppolicy.inc:118
 msgid "Lock out duration"
-msgstr ""
+msgstr "Διάρκεια κλειδώματος"
 
 #: admin/ppolicy/class_ppolicy.inc:118
 msgid ""
@@ -148,16 +149,16 @@ msgstr ""
 
 #: admin/ppolicy/class_ppolicy.inc:123
 msgid "Maximum failures"
-msgstr ""
+msgstr "Μέγιστος αριθμός αποτυχιών"
 
 #: admin/ppolicy/class_ppolicy.inc:123
 msgid ""
 "Number of consecutive password failures allowed before automatic lock out"
-msgstr ""
+msgstr "Αριθμός αποτυχημένων εισαγωγών κωδικού πριν από το κλείδωμα του λογαριασμού"
 
 #: admin/ppolicy/class_ppolicy.inc:128
 msgid "Failure count interval"
-msgstr ""
+msgstr "Διάστημα μέτρησης αποτυχημένων προσπαθειών"
 
 #: admin/ppolicy/class_ppolicy.inc:128
 msgid ""
@@ -167,7 +168,7 @@ msgstr ""
 
 #: admin/ppolicy/class_ppolicy.inc:133
 msgid "Must change"
-msgstr ""
+msgstr "Πρέπει να γίνει αλλαγή"
 
 #: admin/ppolicy/class_ppolicy.inc:133
 msgid ""
@@ -177,11 +178,11 @@ msgstr ""
 
 #: addons/dashboard/class_dashBoardPPolicy.inc:27
 msgid "Ppolicy"
-msgstr ""
+msgstr "Ppolicy"
 
 #: addons/dashboard/class_dashBoardPPolicy.inc:28
 msgid "Statistics about ppolicy expired users"
-msgstr ""
+msgstr "Στατιστικά για τους χρήστες ppolicy που έχουν λήξει"
 
 #: addons/dashboard/class_dashBoardPPolicy.inc:39
 msgid "Expired accounts"
@@ -190,7 +191,7 @@ msgstr "Λογαριασμοί που έχουν λήξει"
 #: addons/dashboard/class_dashBoardPPolicy.inc:44
 #: addons/dashboard/ppolicy_locked_accounts.tpl.c:8
 msgid "Locked accounts"
-msgstr ""
+msgstr "Κλειδωμένοι λογαριασμοί"
 
 #: addons/dashboard/class_dashBoardPPolicy.inc:70
 #: addons/dashboard/class_dashBoardPPolicy.inc:125
@@ -200,80 +201,80 @@ msgstr "Σφάλμα ρύθμισης"
 #: addons/dashboard/class_dashBoardPPolicy.inc:71
 #, php-format
 msgid "Default ppolicy \"%s\" could not be found in the LDAP!"
-msgstr ""
+msgstr "Δεν ήταν δυνατή η εύρεση του Ppolicy \"%s\" στο LDAP!"
 
 #: addons/dashboard/class_dashBoardPPolicy.inc:126
 #, php-format
 msgid "Ppolicy \"%s\" set for user \"%s\" could not be found in the LDAP!"
-msgstr ""
+msgstr "Η Ppolicy \"%s\" που έχει οριστεί για χρήστη \"%s\" δεν μπορεί να βρεθεί στο LDAP!"
 
 #: personal/ppolicy/class_ppolicyAccount.inc:39
 msgid "Edit user's password policy"
-msgstr ""
+msgstr "Επεξεργασία πολιτικής κωδικού χρήστη"
 
 #: personal/ppolicy/class_ppolicyAccount.inc:56
 msgid "Use a specific policy for this user"
-msgstr ""
+msgstr "Χρήση μιας συγκεκριμένης πολιτικής για αυτόν τον χρήστη"
 
 #: personal/ppolicy/class_ppolicyAccount.inc:60
 msgid "Last password change"
-msgstr ""
+msgstr "Τελευταία αλλαγή κωδικού"
 
 #: personal/ppolicy/class_ppolicyAccount.inc:60
 msgid "Last time the password for the entry was changed"
-msgstr ""
+msgstr "Τελευταία φορά που έχει γίνει αλλαγή κωδικού"
 
 #: personal/ppolicy/class_ppolicyAccount.inc:64
 msgid "Account locked time"
-msgstr ""
+msgstr "Χρόνος κλειδωμένου λογαριασμού"
 
 #: personal/ppolicy/class_ppolicyAccount.inc:64
 msgid "Time the account was locked"
-msgstr ""
+msgstr "Χρόνος που ήταν κλειδωμένος ο λογαριασμός"
 
 #: personal/ppolicy/class_ppolicyAccount.inc:68
 msgid "Reset locking"
-msgstr ""
+msgstr "Επαναφορά κλειδώματος"
 
 #: personal/ppolicy/class_ppolicyAccount.inc:68
 msgid "Resets the lock status of this account"
-msgstr ""
+msgstr "Επαναφέρει την κατάσταση κλειδώματος για αυτόν τον λογαριασμό"
 
 #: personal/ppolicy/class_ppolicyAccount.inc:71
 msgid "Reset with the same password"
-msgstr ""
+msgstr "Επαναφορά με τον ίδιο κωδικό"
 
 #: personal/ppolicy/class_ppolicyAccount.inc:71
 msgid "Reset and force change"
-msgstr ""
+msgstr "Επαναφορά και εξαναγκασμός αλλαγής"
 
 #: personal/ppolicy/class_ppolicyAccount.inc:86
 msgid "Use the default"
-msgstr ""
+msgstr "Χρήση προεπιλογής"
 
 #: personal/ppolicy/class_ppolicyAccount.inc:92
 msgid "Never"
-msgstr ""
+msgstr "Ποτέ"
 
 #: personal/ppolicy/class_ppolicyAccount.inc:99
 msgid "Unlocked"
-msgstr ""
+msgstr "Ξεκλειδωμένος"
 
 #: config/ppolicy/class_ppolicyConfig.inc:29
 msgid "Ppolicy plugin configuration"
-msgstr ""
+msgstr "Ρύθμιση προσθέτου Ppolicy"
 
 #: config/ppolicy/class_ppolicyConfig.inc:30
 msgid "FusionDirectory ppolicy plugin configuration"
-msgstr ""
+msgstr "Ρύθμιση προσθέτου FusionDirectory ppolicy"
 
 #: config/ppolicy/class_ppolicyConfig.inc:43
 msgid "Ppolicy plugin"
-msgstr ""
+msgstr "Πρόσθετο Ppolicy"
 
 #: config/ppolicy/class_ppolicyConfig.inc:46
 msgid "Ppolicy RDN"
-msgstr ""
+msgstr "Ppolicy RDN"
 
 #: config/ppolicy/class_ppolicyConfig.inc:46
 msgid "Branch in which ppolicies will be stored"
@@ -281,7 +282,7 @@ msgstr ""
 
 #: config/ppolicy/class_ppolicyConfig.inc:51
 msgid "Default ppolicy cn"
-msgstr ""
+msgstr "Προεπιλογμένη ppolicy cn"
 
 #: config/ppolicy/class_ppolicyConfig.inc:51
 msgid "What you put as default ppolicy in the overlay config"
@@ -290,16 +291,16 @@ msgstr ""
 #: addons/dashboard/ppolicy_locked_accounts.tpl.c:2
 msgid "There is one locked account"
 msgid_plural "There are %1 locked accounts"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Υπάρχει ένας κλειδωμένος λογαριασμός"
+msgstr[1] "Υπάρχει %1  κλειδωμένοι λογαριασμοί"
 
 #: addons/dashboard/ppolicy_locked_accounts.tpl.c:5
 msgid "There is no locked account"
-msgstr ""
+msgstr "Δεν υπάρχει κλειδωμένος λογαριασμός"
 
 #: addons/dashboard/ppolicy_locked_accounts.tpl.c:11
 msgid "Manager concerned"
-msgstr ""
+msgstr "Manager concerned"
 
 #: addons/dashboard/ppolicy_locked_accounts.tpl.c:14
 msgid "uid"
@@ -312,16 +313,16 @@ msgstr "cn"
 #: addons/dashboard/ppolicy_locked_accounts.tpl.c:20
 #: addons/dashboard/ppolicy_locked_accounts.tpl.c:32
 msgid "telephoneNumber"
-msgstr ""
+msgstr "telephoneNumber"
 
 #: addons/dashboard/ppolicy_locked_accounts.tpl.c:23
 msgid "pwdAccountLockedTime"
-msgstr ""
+msgstr "pwdAccountLockedTime"
 
 #: addons/dashboard/ppolicy_locked_accounts.tpl.c:26
 msgid "manager"
-msgstr ""
+msgstr "διαχειριστής"
 
 #: addons/dashboard/ppolicy_locked_accounts.tpl.c:29
 msgid "mail"
-msgstr ""
+msgstr "αλληλογραφία"

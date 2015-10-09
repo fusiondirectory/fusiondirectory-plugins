@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Penati <penati@avaya.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
 "POT-Creation-Date: 2015-09-11 22:18+0200\n"
-"PO-Revision-Date: 2015-10-06 15:05+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"PO-Revision-Date: 2015-10-07 08:26+0000\n"
+"Last-Translator: Penati <penati@avaya.com>\n"
 "Language-Team: Italian (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -49,7 +50,7 @@ msgstr "Interfaccia usata da ragonaut per il WakeOnLan"
 
 #: admin/systems/argonaut/class_argonautClient.inc:136
 msgid "TaskId file"
-msgstr ""
+msgstr "File TaskId"
 
 #: admin/systems/argonaut/class_argonautClient.inc:136
 msgid "File which argonaut will use to store its task id when booting"
@@ -69,7 +70,7 @@ msgstr "Cartella nella quale il cliente argonaut scriverà i suoi log"
 #: admin/systems/argonaut/class_argonautClient.inc:148
 #: admin/systems/services/argonaut/class_argonautServer.inc:103
 msgid "SSL paths"
-msgstr ""
+msgstr "Percorsi SSL"
 
 #: admin/systems/argonaut/class_argonautClient.inc:151
 #: admin/systems/services/argonaut/class_argonautServer.inc:106
@@ -78,30 +79,30 @@ msgstr "Key"
 
 #: admin/systems/argonaut/class_argonautClient.inc:151
 msgid "Path to the private key file on Argonaut client"
-msgstr ""
+msgstr "Percorso del file contenente la chiave privata su Argonaut"
 
 #: admin/systems/argonaut/class_argonautClient.inc:156
 #: admin/systems/services/argonaut/class_argonautServer.inc:111
 msgid "Certificate"
-msgstr ""
+msgstr "Certificato"
 
 #: admin/systems/argonaut/class_argonautClient.inc:156
 msgid "Path to the certificate file on Argonaut client"
-msgstr ""
+msgstr "Percorso del file contenente il certificato sul cliente Argonaut"
 
 #: admin/systems/argonaut/class_argonautClient.inc:161
 #: admin/systems/services/argonaut/class_argonautServer.inc:116
 msgid "CA certificate"
-msgstr ""
+msgstr "Certificato CA"
 
 #: admin/systems/argonaut/class_argonautClient.inc:161
 msgid "Path to the CA certificate file on Argonaut client"
-msgstr ""
+msgstr "Percorso del file contenente il certificato CA sul cliente Argonaut "
 
 #: admin/systems/argonaut/class_argonautClient.inc:166
 #: admin/systems/services/argonaut/class_argonautServer.inc:121
 msgid "CN of the certificate"
-msgstr ""
+msgstr "CN del certificato"
 
 #: admin/systems/argonaut/class_argonautClient.inc:166
 msgid "The CN in this client certificate"
@@ -166,7 +167,7 @@ msgstr "Impostazioni del mirror di Argonaut"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:44
 msgid "Local Debian mirror directory"
-msgstr ""
+msgstr "Elenco locale del mirror Debian"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:52
 msgid "Argonaut Debconf Crawler configuration"
@@ -198,7 +199,7 @@ msgstr ""
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:76
 msgid "Ignore errors"
-msgstr ""
+msgstr "Ignorare gli errori"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:77
 msgid ""
@@ -212,7 +213,7 @@ msgstr "Origine"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:82
 msgid "Include source in the mirror"
-msgstr ""
+msgstr "Includere la fonte nel mirror"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:87
 msgid "GPG Check"
@@ -230,7 +231,7 @@ msgstr "Contenuti"
 msgid ""
 "Additionally download Contents.<arch>.gz files (Note that these files can be"
 " relatively big and can change frequently)"
-msgstr ""
+msgstr "Contenuti addizionali scaricati. File <arch>.gz (N.B.: questi files possono essere relativamente grossi e possono cambiare frequentemente)"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:98
 msgid "Verbose"
@@ -400,11 +401,11 @@ msgstr "La cartella nella quale le zone DNS saranno create"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:64
 msgid "Ignore reverse zone"
-msgstr ""
+msgstr "Ignorare zona inversa"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:64
 msgid "Do not write reverse zone"
-msgstr ""
+msgstr "Non scrivere, zona inversa"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:68
 msgid "Allow notify"
@@ -714,12 +715,12 @@ msgstr "Non c'è nessun server Argonaut configurato"
 #: include/class_supportDaemon.inc:627
 #, php-format
 msgid "Could not read \"%s\"!"
-msgstr ""
+msgstr "Impossibile analizzare \"%s\"!"
 
 #: include/class_supportDaemon.inc:631
 #, php-format
 msgid "\"%s\" is not a file!"
-msgstr ""
+msgstr "\"%s\" non é un file!"
 
 #: addons/argonaut/argonaut_import_file.tpl.c:2
 msgid "Import jobs"
