@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Nikos Charonitakis <charosn@her.forthnet.gr>, 2005
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
 "POT-Creation-Date: 2015-09-11 22:18+0200\n"
-"PO-Revision-Date: 2015-06-07 12:52+0000\n"
-"Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>\n"
+"PO-Revision-Date: 2015-10-07 10:01+0000\n"
+"Last-Translator: Kostas Papadimas <pkst@eellak.gr>\n"
 "Language-Team: Greek (Greece) (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/el_GR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,120 +21,120 @@ msgstr ""
 #: addons/gpg/class_pgpServerInfo.inc:34 addons/gpg/class_pgpServerInfo.inc:69
 #: addons/gpg/class_pgpServerInfo.inc:70
 msgid "GPG server info"
-msgstr ""
+msgstr "Πληροφορίες εξυπηρετητή GPG"
 
 #: addons/gpg/class_pgpServerInfo.inc:38
 msgid "Software"
-msgstr ""
+msgstr "Λογισμικό."
 
 #: addons/gpg/class_pgpServerInfo.inc:38
 msgid "Which software this GPG key server is running"
-msgstr ""
+msgstr "Ποιο λογισμικό  εκτελείται σε αυτό τον εξυπηρετητής κλειδιών GPG"
 
 #: addons/gpg/class_pgpServerInfo.inc:43
 msgid "GPG version"
-msgstr ""
+msgstr "Έκδοση GPG"
 
 #: addons/gpg/class_pgpServerInfo.inc:43
 msgid "Which version of GPG this key server is running"
-msgstr ""
+msgstr "Ποιά έκδοση του GPG που εκτελείται αυτός ο εξυπηρετητής κλειδιών"
 
 #: addons/gpg/class_pgpServerInfo.inc:48
 msgid "Branch in which keys are stored"
-msgstr ""
+msgstr "Κλάδος στο οποίο αποθηκεύονται τα κλειδιά"
 
 #: addons/gpg/class_pgpServerInfo.inc:52
 msgid "Keys RDN"
-msgstr ""
+msgstr "Κλειδιά RDN"
 
 #: addons/gpg/class_pgpServerInfo.inc:52
 msgid "Branch under base in which keys are stored"
-msgstr ""
+msgstr "Κλάδος κάτω από την βάση όπου αποθηκεύονται τα κλειδιά"
 
 #: addons/gpg/class_pgpServerInfo.inc:92
 msgid "LDAP error"
-msgstr "LDAP Λάθος"
+msgstr "Σφάλμα LDAP"
 
 #: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:10
 msgid "Please select the desired entries"
-msgstr ""
+msgstr "Παρακαλώ επιλέξτε τις επιθυμητές καταχωρήσεις"
 
 #: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:14
 msgid "PGP Key"
-msgstr ""
+msgstr "Κλειδί PGP"
 
 #: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:40
 #: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:128
 msgid "Key ID"
-msgstr ""
+msgstr "Αναγνωριστικό κλειδιού"
 
 #: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:48
 msgid "User"
-msgstr ""
+msgstr "Χρήστης"
 
 #: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:56
 msgid "Creation date"
-msgstr ""
+msgstr "Ημερομηνία δημιουργίας"
 
 #: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:64
 msgid "Expiration date"
-msgstr ""
+msgstr "Ημερομηνία λήξης"
 
 #: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:72
 msgid "Type"
-msgstr ""
+msgstr "Τύπος"
 
 #: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:80
 #: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:133
 msgid "Size"
-msgstr ""
+msgstr "Μέγεθος"
 
 #: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:88
 #: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:134
 msgid "Revoked"
-msgstr ""
+msgstr "Ανεκλήθη"
 
 #: personal/gpg/pgpKeySelect/pgpKeySelect-list.xml:96
 #: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:135
 msgid "Disabled"
-msgstr ""
+msgstr "Απενεργοποιημένο"
 
 #: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:41
 msgid "Configuration error"
-msgstr ""
+msgstr "Σφάλμα ρύθμισης"
 
 #: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:41
 msgid "You need to configure GPG base dn through the addons section first"
-msgstr ""
+msgstr "Θα πρέπει να ρυθμίσετε την GPG base dn μέσω την ενότητας προσθέτωβ πρώτα"
 
 #: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:129
 msgid "User ID"
-msgstr ""
+msgstr "Αναγνωριστικό χρήστη"
 
 #: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:130
 msgid "Creation time"
-msgstr ""
+msgstr "Ημερομηνία δημιουργίας"
 
 #: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:131
 msgid "Expiration"
-msgstr ""
+msgstr "Λήξη"
 
 #: personal/gpg/pgpKeySelect/class_pgpKeySelect.inc:132
 msgid "Algorithm"
-msgstr ""
+msgstr "Αλγόριθμος"
 
 #: personal/gpg/class_gpgAccount.inc:31
 msgid "GPG keys"
-msgstr ""
+msgstr "Κλειδιά GPG"
 
 #: personal/gpg/class_gpgAccount.inc:35
 msgid "GPG keys of this user"
-msgstr ""
+msgstr "Κλειδιά GPG αυτού του χρήστη"
 
 #: personal/gpg/class_gpgAccount.inc:46
 msgid "GPG"
-msgstr ""
+msgstr "GPG"
 
 #: personal/gpg/class_gpgAccount.inc:47
 msgid "Edit user's GPG IDs"
-msgstr ""
+msgstr "Επεξεργασία αναγνωριστικού χρήστη GPG"

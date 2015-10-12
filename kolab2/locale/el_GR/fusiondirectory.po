@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Nikos Charonitakis <charosn@her.forthnet.gr>, 2005
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
 "POT-Creation-Date: 2015-09-11 22:18+0200\n"
-"PO-Revision-Date: 2015-09-11 20:23+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"PO-Revision-Date: 2015-10-07 10:01+0000\n"
+"Last-Translator: Kostas Papadimas <pkst@eellak.gr>\n"
 "Language-Team: Greek (Greece) (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/el_GR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,66 +21,66 @@ msgstr ""
 #: admin/ogroups/kolab2/class_mailogroup.inc:37
 #: admin/ogroups/kolab2/paste_mail.tpl.c:2
 msgid "Mail"
-msgstr ""
+msgstr "Αλληλογραφία"
 
 #: admin/ogroups/kolab2/class_mailogroup.inc:38
 msgid "Mail group"
-msgstr ""
+msgstr "Ομάδα αλληλογραφίας"
 
 #: admin/ogroups/kolab2/class_mailogroup.inc:45
 #: admin/ogroups/kolab2/class_mailogroup.inc:118
 #: admin/ogroups/kolab2/class_mailogroup.inc:125
 msgid "Mail address"
-msgstr ""
+msgstr "Διεύθυνση αλληλογραφίας"
 
 #: admin/ogroups/kolab2/class_mailogroup.inc:82
 msgid "Remove mail account"
-msgstr ""
+msgstr "Αφαίρεση λογαριασμού αλληλογραφίας"
 
 #: admin/ogroups/kolab2/class_mailogroup.inc:83
 #: admin/ogroups/kolab2/class_mailogroup.inc:86
 msgid "mail group"
-msgstr ""
+msgstr "ομάδα αλληλογραφίας"
 
 #: admin/ogroups/kolab2/class_mailogroup.inc:85
 msgid "Create mail account"
-msgstr ""
+msgstr "Δημιουργία νέου λογαριασμού αλληλογραφίας"
 
 #: admin/ogroups/kolab2/class_mailogroup.inc:118
 msgid "your-name@your-domain.com"
-msgstr ""
+msgstr "your-name@your-domain.com"
 
 #: admin/ogroups/kolab2/class_mailogroup.inc:152
 #: admin/ogroups/kolab2/class_mailogroup.inc:189
 #: admin/systems/services/kolab2/class_serviceKolab.inc:281
 #: admin/systems/services/kolab2/class_serviceKolab.inc:292
 msgid "LDAP error"
-msgstr "LDAP Λάθος"
+msgstr "Σφάλμα LDAP"
 
 #: admin/systems/services/kolab2/class_serviceKolab.inc:29
 msgid "Enable MX lookup for relayhost"
-msgstr ""
+msgstr "Ενεργοποίηση MX lookup για relayhost"
 
 #: admin/systems/services/kolab2/class_serviceKolab.inc:32
 msgid "Relay host"
-msgstr ""
+msgstr "Σύστημα δρομολόγησης"
 
 #: admin/systems/services/kolab2/class_serviceKolab.inc:32
 #: admin/systems/services/kolab2/class_serviceKolab.inc:185
 msgid "Host used to relay mails"
-msgstr ""
+msgstr "Η χρησιμοποιούμενη υπηρεσία για την δρομολόγηση μηνυμάτων"
 
 #: admin/systems/services/kolab2/class_serviceKolab.inc:67
 msgid "Kolab 2 mail"
-msgstr ""
+msgstr "Αλληλογραφία Kolab 2"
 
 #: admin/systems/services/kolab2/class_serviceKolab.inc:68
 msgid "Kolab 2 mail service"
-msgstr ""
+msgstr "Υπηρεσία αλληλογραφίας Kolab 2 "
 
 #: admin/systems/services/kolab2/class_serviceKolab.inc:82
 msgid "Informations"
-msgstr ""
+msgstr "Πληροφορίες"
 
 #: admin/systems/services/kolab2/class_serviceKolab.inc:87
 msgid "Postfix mydomain"
@@ -87,11 +88,11 @@ msgstr ""
 
 #: admin/systems/services/kolab2/class_serviceKolab.inc:87
 msgid "Postfix domain name"
-msgstr ""
+msgstr "Όνομα τομέα Postfix"
 
 #: admin/systems/services/kolab2/class_serviceKolab.inc:91
 msgid "Cyrus admins"
-msgstr ""
+msgstr "διαχειριστές Cyrus"
 
 #: admin/systems/services/kolab2/class_serviceKolab.inc:91
 msgid "Cyrus admins for kolab server"
@@ -99,55 +100,55 @@ msgstr ""
 
 #: admin/systems/services/kolab2/class_serviceKolab.inc:96
 msgid "Mail domains"
-msgstr ""
+msgstr "Τομείς αλληλογραφίας"
 
 #: admin/systems/services/kolab2/class_serviceKolab.inc:96
 msgid "Postfix mydestination"
-msgstr ""
+msgstr "Postfix mydestination"
 
 #: admin/systems/services/kolab2/class_serviceKolab.inc:103
 msgid "Services"
-msgstr ""
+msgstr "Υπηρεσίες"
 
 #: admin/systems/services/kolab2/class_serviceKolab.inc:106
 msgid "POP3 service"
-msgstr ""
+msgstr "Υπηρεσία POP3"
 
 #: admin/systems/services/kolab2/class_serviceKolab.inc:106
 msgid "Enable POP3 service"
-msgstr ""
+msgstr "Ενεργοποίηση υπηρεσίας POP3"
 
 #: admin/systems/services/kolab2/class_serviceKolab.inc:110
 msgid "POP3/SSL service"
-msgstr ""
+msgstr "Υπηρεσία POP3/SSL"
 
 #: admin/systems/services/kolab2/class_serviceKolab.inc:110
 msgid "Enable POP3/SSL service"
-msgstr ""
+msgstr "Ενεργοποίηση υπηρεσίας POP3/SSL"
 
 #: admin/systems/services/kolab2/class_serviceKolab.inc:114
 msgid "IMAP service"
-msgstr ""
+msgstr "Υπηρεσία IMAP"
 
 #: admin/systems/services/kolab2/class_serviceKolab.inc:114
 msgid "Enable IMAP service"
-msgstr ""
+msgstr "Ενεργοποίηση υπηρεσίας IMAP"
 
 #: admin/systems/services/kolab2/class_serviceKolab.inc:118
 msgid "IMAP/SSL service"
-msgstr ""
+msgstr "Υπηρεσία IMAP/SSL"
 
 #: admin/systems/services/kolab2/class_serviceKolab.inc:118
 msgid "Enable IMAP/SSL service"
-msgstr ""
+msgstr "Ενεργοποίηση υπηρεσίας IMAP/SSL"
 
 #: admin/systems/services/kolab2/class_serviceKolab.inc:122
 msgid "Sieve service"
-msgstr ""
+msgstr "Υπηρεσία Sieve"
 
 #: admin/systems/services/kolab2/class_serviceKolab.inc:122
 msgid "Enable Sieve service"
-msgstr ""
+msgstr "Ενεργοποίηση υπηρεσίας Sieve"
 
 #: admin/systems/services/kolab2/class_serviceKolab.inc:126
 msgid "FTP FreeBusy service (legacy)"
@@ -163,7 +164,7 @@ msgstr ""
 
 #: admin/systems/services/kolab2/class_serviceKolab.inc:135
 msgid "Amavis email scanning"
-msgstr ""
+msgstr "Σάρωση αλληλογραφίας Amavis"
 
 #: admin/systems/services/kolab2/class_serviceKolab.inc:135
 msgid "Amavis email scanning (virus/spam)"
@@ -171,7 +172,7 @@ msgstr ""
 
 #: admin/systems/services/kolab2/class_serviceKolab.inc:141
 msgid "Quota settings"
-msgstr ""
+msgstr "Ρυθμίσεις ορίων"
 
 #: admin/systems/services/kolab2/class_serviceKolab.inc:144
 msgid "Quota occupation limit before warning users (%)"
@@ -184,12 +185,12 @@ msgstr ""
 
 #: admin/systems/services/kolab2/class_serviceKolab.inc:153
 msgid "Free/Busy settings"
-msgstr ""
+msgstr "Ρυθμίσεις διαθεσιμότητας"
 
 #: admin/systems/services/kolab2/class_serviceKolab.inc:156
 #: admin/systems/services/kolab2/class_serviceKolab.inc:157
 msgid "Allow unauthenticated downloading of Free/Busy information"
-msgstr ""
+msgstr "Να επιτρέπεται η μη πιστοποιημένη λήψει πληροφοριών διαθεσιμότητς χρήστη"
 
 #: admin/systems/services/kolab2/class_serviceKolab.inc:161
 msgid "Number of days to include when creating free/busy lists"
@@ -201,7 +202,7 @@ msgstr ""
 
 #: admin/systems/services/kolab2/class_serviceKolab.inc:170
 msgid "SMTP privileged networks"
-msgstr ""
+msgstr "Προνομιακά δίκτυα SMTP"
 
 #: admin/systems/services/kolab2/class_serviceKolab.inc:173
 msgid "Hosts/networks allowed to relay"
@@ -217,7 +218,7 @@ msgstr ""
 
 #: admin/systems/services/kolab2/class_serviceKolab.inc:190
 msgid "Accept Internet Mail"
-msgstr ""
+msgstr "Αποδοχή αλληλογραφίας διαδικτύου"
 
 #: admin/systems/services/kolab2/class_serviceKolab.inc:193
 #: admin/systems/services/kolab2/class_serviceKolab.inc:194
@@ -226,11 +227,11 @@ msgstr ""
 
 #: admin/systems/services/kolab2/class_serviceKolab.inc:268
 msgid "Internal error"
-msgstr ""
+msgstr "Εσωτερικό σφάλμα"
 
 #: admin/systems/services/kolab2/class_serviceKolab.inc:268
 msgid "Kolab account does not exist!"
-msgstr ""
+msgstr "Δεν υπάρχει λογαριασμός Kolab"
 
 #: admin/systems/services/kolab2/class_serviceKolab.inc:272
 msgid "Error"
@@ -238,49 +239,49 @@ msgstr "Σφάλμα"
 
 #: admin/systems/services/kolab2/class_serviceKolab.inc:272
 msgid "hostname"
-msgstr ""
+msgstr "όνομα συστήματος"
 
 #: personal/mail/kolab2/class_mail-methods-kolab.inc:148
 #: personal/mail/kolab2/class_mail-methods-kolab.inc:156
 #: personal/mail/kolab2/class_mail-methods-kolab.inc:157
 msgid "Unspecified"
-msgstr ""
+msgstr "Ακαθόριστο"
 
 #: personal/mail/kolab2/class_mail-methods-kolab.inc:149
 msgid "Mails"
-msgstr ""
+msgstr "Αλληλογραφία"
 
 #: personal/mail/kolab2/class_mail-methods-kolab.inc:150
 msgid "Tasks"
-msgstr ""
+msgstr "Εργασίες"
 
 #: personal/mail/kolab2/class_mail-methods-kolab.inc:151
 msgid "Journals"
-msgstr ""
+msgstr "Δημοσιεύσεις"
 
 #: personal/mail/kolab2/class_mail-methods-kolab.inc:152
 msgid "Calendar"
-msgstr ""
+msgstr "Ημερολόγιο"
 
 #: personal/mail/kolab2/class_mail-methods-kolab.inc:153
 msgid "Contacts"
-msgstr ""
+msgstr "Επαφές"
 
 #: personal/mail/kolab2/class_mail-methods-kolab.inc:154
 msgid "Notes"
-msgstr ""
+msgstr "Σημειώσεις"
 
 #: personal/mail/kolab2/class_mail-methods-kolab.inc:158
 msgid "Inbox"
-msgstr ""
+msgstr "Εισερχόμενα"
 
 #: personal/mail/kolab2/class_mail-methods-kolab.inc:159
 msgid "Drafts"
-msgstr ""
+msgstr "Πρόχειρα"
 
 #: personal/mail/kolab2/class_mail-methods-kolab.inc:160
 msgid "Sent"
-msgstr ""
+msgstr "Απεσταλμένα"
 
 #: personal/mail/kolab2/class_mail-methods-kolab.inc:161
 msgid "SPAM"
@@ -292,7 +293,7 @@ msgstr ""
 #: personal/mail/kolab2/class_mail-methods-kolab.inc:166
 #: personal/mail/kolab2/class_mail-methods-kolab.inc:167
 msgid "Default"
-msgstr ""
+msgstr "Προεπιλογή"
 
 #: personal/mail/kolab2/class_mail-methods-kolab.inc:182
 msgid ""
@@ -301,7 +302,7 @@ msgstr ""
 
 #: personal/mail/kolab2/class_mail-methods-kolab.inc:279
 msgid "Waiting for kolab to remove mail properties..."
-msgstr ""
+msgstr "Αναμονή για απομάκρυνση ιδιοτήτων αλληογραφίας από το kolab"
 
 #: personal/mail/kolab2/class_mail-methods-kolab.inc:282
 msgid "Please remove the mail settings first!"
@@ -309,99 +310,99 @@ msgstr ""
 
 #: personal/kolab2/class_kolabAccount.inc:82
 msgid "Kolab 2"
-msgstr ""
+msgstr "Kolab 2"
 
 #: personal/kolab2/class_kolabAccount.inc:83
 msgid "Kolab 2 account settings"
-msgstr ""
+msgstr "Ρυθμίσεις λογαριασμού Kolab 2 "
 
 #: personal/kolab2/class_kolabAccount.inc:100
 msgid "Kolab 2 account"
-msgstr ""
+msgstr "Λογαριασμός Kolab 2 "
 
 #: personal/kolab2/class_kolabAccount.inc:104
 msgid "Delegations"
-msgstr ""
+msgstr "Υποψηφιότητες"
 
 #: personal/kolab2/class_kolabAccount.inc:112
 msgid "Mail size"
-msgstr ""
+msgstr "Μέγεθος αλληλογραφίας"
 
 #: personal/kolab2/class_kolabAccount.inc:115
 msgid "No mail size restriction for this account"
-msgstr ""
+msgstr "Χωρίς περιορισμό μεγέθους αλληλογραφίας για το λογαριασμό"
 
 #: personal/kolab2/class_kolabAccount.inc:122
 msgid "Free Busy information"
-msgstr ""
+msgstr "Πληροφορία διαθεσιμότητας"
 
 #: personal/kolab2/class_kolabAccount.inc:125
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: personal/kolab2/class_kolabAccount.inc:130
 msgid "Future"
-msgstr ""
+msgstr "Μελλοντικές"
 
 #: personal/kolab2/class_kolabAccount.inc:130
 msgid "days"
-msgstr ""
+msgstr "ημέρες"
 
 #: personal/kolab2/class_kolabAccount.inc:138
 #: personal/kolab2/class_kolabAccount.inc:141
 #: personal/kolab2/class_kolabAccount.inc:149
 #: personal/kolab2/class_kolabAccount.inc:159
 msgid "Invitation policy"
-msgstr ""
+msgstr "Πολιτική προσκλήσεων"
 
 #: personal/kolab2/class_kolabAccount.inc:144
 msgid "Default policy"
-msgstr ""
+msgstr "Προεπιλεγμένη πολιτική"
 
 #: personal/kolab2/class_kolabAccount.inc:144
 msgid "Default invitation policy"
-msgstr ""
+msgstr "Προεπιλεγμένη πολιτική πρόσκλησης"
 
 #: personal/kolab2/class_kolabAccount.inc:146
 #: personal/kolab2/class_kolabAccount.inc:155
 msgid "Manual"
-msgstr ""
+msgstr "Χειροκίνητα"
 
 #: personal/kolab2/class_kolabAccount.inc:146
 #: personal/kolab2/class_kolabAccount.inc:155
 msgid "Always accept"
-msgstr ""
+msgstr "Πάντα αποδοχή"
 
 #: personal/kolab2/class_kolabAccount.inc:146
 #: personal/kolab2/class_kolabAccount.inc:155
 msgid "Always reject"
-msgstr ""
+msgstr "Πάντα απόρριψη"
 
 #: personal/kolab2/class_kolabAccount.inc:146
 #: personal/kolab2/class_kolabAccount.inc:155
 msgid "Reject if conflicts"
-msgstr ""
+msgstr "Απόρριψη αν υπάρχει σύγκρουση"
 
 #: personal/kolab2/class_kolabAccount.inc:146
 #: personal/kolab2/class_kolabAccount.inc:155
 msgid "Manual if conflicts"
-msgstr ""
+msgstr "Χειροκίνητη ρύθμιση αν υπάρχει σύγκρουση"
 
 #: personal/kolab2/class_kolabAccount.inc:152
 msgid "mail address"
-msgstr ""
+msgstr "διεύθυνση e-mail "
 
 #: personal/kolab2/class_kolabAccount.inc:153
 msgid "policy for this mail address"
-msgstr ""
+msgstr "πολιτική για αυτήν την διεύθυνση e-mail "
 
 #: admin/ogroups/kolab2/mail.tpl.c:2
 msgid "Mail distribution list"
-msgstr ""
+msgstr "Λίστα διανομής ηλ. ταχυδρομείου"
 
 #: admin/ogroups/kolab2/mail.tpl.c:5
 msgid "Primary address"
-msgstr ""
+msgstr "Κύρια διεύθυνση"
 
 #: admin/ogroups/kolab2/mail.tpl.c:8
 msgid "Primary mail address for this distribution list"
@@ -409,4 +410,4 @@ msgstr ""
 
 #: admin/ogroups/kolab2/paste_mail.tpl.c:5
 msgid "Please enter a mail address"
-msgstr ""
+msgstr "Παρακαλούμε εισάγετε έγκυρη διεύθυνση email"

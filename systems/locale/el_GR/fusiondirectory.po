@@ -3,13 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Kostas Papadimas <pkst@eellak.gr>, 2015
+# Nikos Charonitakis <charosn@her.forthnet.gr>, 2005
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
 "POT-Creation-Date: 2015-09-11 22:19+0200\n"
-"PO-Revision-Date: 2015-09-11 20:29+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"PO-Revision-Date: 2015-10-12 11:02+0000\n"
+"Last-Translator: Kostas Papadimas <pkst@eellak.gr>\n"
 "Language-Team: Greek (Greece) (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/el_GR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,16 +21,16 @@ msgstr ""
 
 #: admin/ogroups/goto/class_termgroup.inc:70
 msgid "Activated"
-msgstr ""
+msgstr "Ενεργοποιήθηκε"
 
 #: admin/ogroups/goto/class_termgroup.inc:71
 msgid "Locked"
-msgstr ""
+msgstr "Κλειδωμένο"
 
 #: admin/ogroups/goto/class_termgroup.inc:118
 #: admin/systems/class_terminalGeneric.inc:120
 msgid "Local swap"
-msgstr ""
+msgstr "Τοπικό swap"
 
 #: admin/ogroups/goto/class_termgroup.inc:124
 #: admin/ogroups/goto/class_termgroup.inc:136
@@ -36,7 +38,7 @@ msgstr ""
 #: admin/systems/class_terminalGeneric.inc:108
 #: admin/systems/class_terminalGeneric.inc:124
 msgid "inherited"
-msgstr ""
+msgstr "κληρονομημένα"
 
 #: admin/ogroups/goto/class_termgroup.inc:220
 #: admin/systems/class_workstationGeneric.inc:72
@@ -44,53 +46,53 @@ msgstr ""
 #: admin/systems/class_systemManagement.inc:189
 #: admin/systems/class_systemManagement.inc:210
 msgid "Infrastructure service"
-msgstr ""
+msgstr "Υπηρεσία υποδομής"
 
 #: admin/ogroups/goto/class_termgroup.inc:224
 #: admin/systems/class_workstationGeneric.inc:75
 #: admin/systems/class_workstationGeneric.inc:78
 msgid "Event error"
-msgstr ""
+msgstr "Σφάλμα γεγονότος"
 
 #: admin/ogroups/goto/class_termgroup.inc:225
 #, php-format
 msgid "Event '%s' is not available!"
-msgstr ""
+msgstr "Το  γεγονός %s δεν είναι διαθέσιμο!"
 
 #: admin/ogroups/goto/class_termgroup.inc:274
 #: admin/systems/class_workstationGeneric.inc:112
 msgid "Switch off"
-msgstr ""
+msgstr "Κλείσιμο"
 
 #: admin/ogroups/goto/class_termgroup.inc:274
 #: admin/systems/class_workstationGeneric.inc:113
 msgid "Reboot"
-msgstr ""
+msgstr "Επανεκκίνηση"
 
 #: admin/ogroups/goto/class_termgroup.inc:275
 msgid "Instant update"
-msgstr ""
+msgstr "Αυτόματη ενημέρωση"
 
 #: admin/ogroups/goto/class_termgroup.inc:276
 msgid "Scheduled update"
-msgstr ""
+msgstr "Προγραμματισμένη ενημέρωση"
 
 #: admin/ogroups/goto/class_termgroup.inc:277
 msgid "Wake"
-msgstr ""
+msgstr "Αφύπνιση"
 
 #: admin/ogroups/goto/class_termgroup.inc:278
 msgid "Reinstall"
-msgstr ""
+msgstr "Επανεγκατάσταση"
 
 #: admin/ogroups/goto/class_termgroup.inc:279
 #: admin/systems/class_workstationGeneric.inc:108
 msgid "Memory test"
-msgstr ""
+msgstr "Δοκιμή μνήμης"
 
 #: admin/ogroups/goto/class_termgroup.inc:280
 msgid "System analysis"
-msgstr ""
+msgstr "Ανάλυση συστήματος"
 
 #: admin/ogroups/goto/class_termgroup.inc:386
 #: admin/systems/class_printGeneric.inc:676
@@ -108,94 +110,94 @@ msgstr ""
 #: admin/systems/class_networkSettings.inc:875
 #: admin/systems/class_networkSettings.inc:947
 msgid "LDAP error"
-msgstr "LDAP Λάθος"
+msgstr "Σφάλμα LDAP"
 
 #: admin/ogroups/goto/class_termgroup.inc:394
 msgid "System"
-msgstr ""
+msgstr "Σύστημα"
 
 #: admin/ogroups/goto/class_termgroup.inc:395
 msgid "System group"
-msgstr ""
+msgstr "Ομάδα συστήματος"
 
 #: admin/ogroups/goto/class_termgroup.inc:401
 #: admin/ogroups/goto/termgroup.tpl.c:17
 msgid "Mode"
-msgstr ""
+msgstr "Λειτουργία"
 
 #: admin/ogroups/goto/class_termgroup.inc:402
 #: admin/systems/class_workstationGeneric.inc:189
 #: admin/ogroups/goto/termgroup.tpl.c:23
 msgid "Syslog server"
-msgstr ""
+msgstr "Εξυπηρετητής Syslog"
 
 #: admin/ogroups/goto/class_termgroup.inc:403
 msgid "Action flag"
-msgstr ""
+msgstr "Σημαία ενέργειας"
 
 #: admin/ogroups/goto/class_termgroup.inc:404
 msgid "Ntp server"
-msgstr ""
+msgstr "Διακομιστής Ntp"
 
 #: admin/ogroups/goto/class_termgroup.inc:405
 #: admin/systems/class_terminalGeneric.inc:41
 #: admin/ogroups/goto/termgroup.tpl.c:29
 msgid "Root server"
-msgstr ""
+msgstr "Εξυπηρετητής Root"
 
 #: admin/ogroups/goto/class_termgroup.inc:406
 #: admin/systems/class_terminalGeneric.inc:47
 #: admin/ogroups/goto/termgroup.tpl.c:35
 msgid "Swap server"
-msgstr ""
+msgstr "Εξυπηρετητής Swap"
 
 #: admin/systems/class_terminalStartup.inc:63
 msgid "Startup parameters"
-msgstr ""
+msgstr "Παράμετροι εκκίνησης"
 
 #: admin/systems/class_terminalStartup.inc:66
 msgid "Boot kernel"
-msgstr ""
+msgstr "Boot kernel"
 
 #: admin/systems/class_terminalStartup.inc:66
 msgid "Linux kernel to be installed and booted"
-msgstr ""
+msgstr "Ο πυρήνας Linux που θα εγκατασταθεί και θα εκκινηθεί"
 
 #: admin/systems/class_terminalStartup.inc:70
 msgid "Boot kernel parameters"
-msgstr ""
+msgstr "Παράμετροι εκκίνησης πυρήνα"
 
 #: admin/systems/class_terminalStartup.inc:70
 msgid "Linux kernel parameters to be ran"
-msgstr ""
+msgstr "Παράμετροι πυρήνα Linux για εκτέλεση"
 
 #: admin/systems/class_terminalStartup.inc:82
 msgid "Startup"
-msgstr ""
+msgstr "Εκκίνηση"
 
 #: admin/systems/class_terminalStartup.inc:83
 msgid "Terminal startup"
-msgstr ""
+msgstr "Εκκίνηση τερματικού"
 
 #: admin/systems/system-list.xml:10
 msgid "List of systems"
-msgstr ""
+msgstr "Λίστα συστημάτων"
 
 #: admin/systems/system-list.xml:14
 msgid "Locked server"
-msgstr ""
+msgstr "Κλειδωμένος εξυπηρετητής"
 
 #: admin/systems/system-list.xml:22
 msgid "Locked workstation"
-msgstr ""
+msgstr "Κλειδωμένος σταθμός εργασίας"
 
 #: admin/systems/system-list.xml:30
 msgid "Locked terminal"
-msgstr ""
+msgstr "Κλειδωμένο τερματικό"
 
 #: admin/systems/system-list.xml:38
 msgid "Winstation"
-msgstr ""
+msgstr "Winstation"
 
 #: admin/systems/system-list.xml:46 admin/systems/system-list.xml:193
 #: admin/systems/class_systemImport.inc:169
@@ -203,27 +205,27 @@ msgstr ""
 #: admin/systems/class_serverGeneric.inc:51
 #: admin/systems/class_serverGeneric.inc:52
 msgid "Server"
-msgstr ""
+msgstr "Εξυπηρετητής"
 
 #: admin/systems/system-list.xml:54 admin/systems/system-list.xml:201
 #: admin/systems/class_workstationGeneric.inc:464
 #: admin/systems/class_workstationGeneric.inc:469
 #: admin/systems/class_workstationGeneric.inc:470
 msgid "Workstation"
-msgstr ""
+msgstr "Σταθμός εργασίας"
 
 #: admin/systems/system-list.xml:62 admin/systems/system-list.xml:209
 #: admin/systems/class_terminalGeneric.inc:81
 #: admin/systems/class_terminalGeneric.inc:86
 #: admin/systems/class_terminalGeneric.inc:87
 msgid "Terminal"
-msgstr ""
+msgstr "Τερματικό"
 
 #: admin/systems/system-list.xml:70 admin/systems/class_printGeneric.inc:1011
 #: admin/systems/class_printGeneric.inc:1017
 #: admin/systems/class_printGeneric.inc:1018
 msgid "Printer"
-msgstr ""
+msgstr "Εκτυπωτής"
 
 #: admin/systems/system-list.xml:78 admin/systems/system-list.xml:233
 #: admin/systems/class_phoneGeneric.inc:36
@@ -232,7 +234,7 @@ msgstr ""
 #: admin/systems/class_mobilePhoneGeneric.inc:74
 #: admin/systems/phoneSelect/phoneSelect-list.xml:14
 msgid "Phone"
-msgstr ""
+msgstr "Τηλέφωνο"
 
 #: admin/systems/system-list.xml:86
 #: admin/systems/class_mobilePhoneGeneric.inc:36
@@ -240,16 +242,16 @@ msgstr ""
 #: admin/systems/class_mobilePhoneGeneric.inc:42
 #: admin/systems/phoneSelect/phoneSelect-list.xml:22
 msgid "Mobile phone"
-msgstr ""
+msgstr "Κινητό τηλέφωνο"
 
 #: admin/systems/system-list.xml:94
 #: admin/systems/class_componentGeneric.inc:36
 msgid "Component"
-msgstr ""
+msgstr "Στοιχείο"
 
 #: admin/systems/system-list.xml:102 admin/systems/system-list.xml:257
 msgid "IPMI"
-msgstr ""
+msgstr "IPMI"
 
 #: admin/systems/system-list.xml:128
 #: admin/systems/class_workstationGeneric.inc:154
@@ -270,11 +272,11 @@ msgstr "Όνομα"
 #: admin/systems/system-list.xml:136
 #: admin/systems/phoneSelect/phoneSelect-list.xml:63
 msgid "IP"
-msgstr ""
+msgstr "IP"
 
 #: admin/systems/system-list.xml:144
 msgid "MAC"
-msgstr ""
+msgstr "MAC"
 
 #: admin/systems/system-list.xml:152
 #: admin/systems/class_workstationGeneric.inc:160
@@ -294,76 +296,76 @@ msgstr "Περιγραφή"
 #: admin/systems/services/ntp/class_serviceNTP.inc:30
 #: admin/systems/services/ldap/class_serviceLDAP.inc:97
 msgid "Services"
-msgstr ""
+msgstr "Υπηρεσίες"
 
 #: admin/systems/system-list.xml:168
 msgid "Release"
-msgstr ""
+msgstr "Έκδοση"
 
 #: admin/systems/system-list.xml:176 admin/systems/serverService-list.xml:43
 #: admin/systems/phoneSelect/phoneSelect-list.xml:70
 msgid "Actions"
-msgstr ""
+msgstr "Ενέργειες"
 
 #: admin/systems/system-list.xml:187 admin/systems/serverService-list.xml:54
 msgid "Create"
-msgstr ""
+msgstr "Δημιουργία"
 
 #: admin/systems/system-list.xml:217
 msgid "winStation"
-msgstr ""
+msgstr "winStation"
 
 #: admin/systems/system-list.xml:225
 msgid "Network printer"
-msgstr ""
+msgstr "Εκτυπωτής δικτύου"
 
 #: admin/systems/system-list.xml:241
 #: admin/systems/class_componentGeneric.inc:41
 #: admin/systems/class_componentGeneric.inc:42
 msgid "Network device"
-msgstr ""
+msgstr "Συσκευή δικτύου:"
 
 #: admin/systems/system-list.xml:249
 msgid "Mobile Phone"
-msgstr ""
+msgstr "Κινητό τηλέφωνο"
 
 #: admin/systems/system-list.xml:269
 msgid "Trigger action"
-msgstr ""
+msgstr "Εκκίνηση ενέργειας"
 
 #: admin/systems/system-list.xml:276
 msgid "Schedule action"
-msgstr ""
+msgstr "Προγραμματισμός εργασίας"
 
 #: admin/systems/system-list.xml:288 admin/systems/serverService-list.xml:69
 #: admin/systems/printer.tpl.c:35
 msgid "Remove"
-msgstr ""
+msgstr "Αφαίρεση"
 
 #: admin/systems/system-list.xml:319
 msgid "Edit system"
-msgstr ""
+msgstr "Επεξεργασία συστήματος"
 
 #: admin/systems/system-list.xml:332
 msgid "Remove system"
-msgstr ""
+msgstr "Απομάκρυνση συστήματος"
 
 #: admin/systems/class_workstationGeneric.inc:75
 #, php-format
 msgid "Event %s is not available!"
-msgstr ""
+msgstr "Το γεγονός %s δεν είναι διαθέσιμο!"
 
 #: admin/systems/class_workstationGeneric.inc:78
 msgid "Events are not available!"
-msgstr ""
+msgstr "Τα γεγονότα δεν είναι διαθέσιμα!"
 
 #: admin/systems/class_workstationGeneric.inc:106
 msgid "(Re)Install"
-msgstr ""
+msgstr "(Επαν)εγκατάσταση"
 
 #: admin/systems/class_workstationGeneric.inc:107
 msgid "Software update"
-msgstr ""
+msgstr "Ενημέρωση λογισμικού"
 
 #: admin/systems/class_workstationGeneric.inc:115
 msgid "Wake up"
@@ -372,34 +374,34 @@ msgstr ""
 #: admin/systems/class_workstationGeneric.inc:144
 #: admin/systems/class_printGeneric.inc:610
 msgid "workstation"
-msgstr ""
+msgstr "σταθμός εργασίας"
 
 #: admin/systems/class_workstationGeneric.inc:151
 #: admin/systems/class_phoneGeneric.inc:56
 #: admin/systems/class_componentGeneric.inc:60
 #: admin/systems/class_mobilePhoneGeneric.inc:60
 msgid "Properties"
-msgstr ""
+msgstr "Ιδιότητες"
 
 #: admin/systems/class_workstationGeneric.inc:155
 #, php-format
 msgid "The name of the %s"
-msgstr ""
+msgstr "Το όνομα του  %s"
 
 #: admin/systems/class_workstationGeneric.inc:161
 #, php-format
 msgid "A short description of the %s"
-msgstr ""
+msgstr "Μια σύντομη περιγραφή του %s"
 
 #: admin/systems/class_workstationGeneric.inc:166
 #: admin/systems/class_printGeneric.inc:1030
 msgid "Location"
-msgstr ""
+msgstr "Τοποθεσία"
 
 #: admin/systems/class_workstationGeneric.inc:167
 #, php-format
 msgid "The location of the %s"
-msgstr ""
+msgstr "Η τοποθεσία του %s"
 
 #: admin/systems/class_workstationGeneric.inc:173
 #, php-format
@@ -409,62 +411,62 @@ msgstr ""
 #: admin/systems/class_workstationGeneric.inc:174
 #, php-format
 msgid "This will prevent the %s from being reinstalled"
-msgstr ""
+msgstr "Αυτό θα αποτρέψει το %s από το να επανεγκατασταθεί"
 
 #: admin/systems/class_workstationGeneric.inc:185
 #: addons/dashboard/class_dashBoardSystems.inc:48
 msgid "Servers"
-msgstr ""
+msgstr "Εξυπηρετητών"
 
 #: admin/systems/class_workstationGeneric.inc:190
 #, php-format
 msgid "The syslog server the %s should be using"
-msgstr ""
+msgstr "Ο εξυπηρετητής syslog που το %s θα πρέπει να χρησιμοποιεί"
 
 #: admin/systems/class_workstationGeneric.inc:195
 msgid "Inherit NTP servers"
-msgstr ""
+msgstr "Κληρονόμηση εξυπηρετητών NTP"
 
 #: admin/systems/class_workstationGeneric.inc:196
 msgid "Inherit time server attributes from ogroup"
-msgstr ""
+msgstr "Κληρονόμηση γνωρισμάτων εξυπηρετητή ώρας από ogroup"
 
 #: admin/systems/class_workstationGeneric.inc:202
 msgid "NTP servers"
-msgstr ""
+msgstr "Εξυπηρετητές NTP"
 
 #: admin/systems/class_workstationGeneric.inc:203
 #, php-format
 msgid "The NTP servers for the %s"
-msgstr ""
+msgstr "Οι εξυπηρετητές NTP για το %s"
 
 #: admin/systems/class_workstationGeneric.inc:209
 msgid "Inherit LDAP servers"
-msgstr ""
+msgstr "Κληρονόμηση εξυπηρετητών LDAP"
 
 #: admin/systems/class_workstationGeneric.inc:210
 msgid "Inherit LDAP server attributes from ogroup"
-msgstr ""
+msgstr "Κληρονόμηση γνωρισμάτων εξυπηρετητή LDAP από ogroup"
 
 #: admin/systems/class_workstationGeneric.inc:216
 msgid "LDAP servers"
-msgstr ""
+msgstr "Διακομιστές LDAP"
 
 #: admin/systems/class_workstationGeneric.inc:217
 #, php-format
 msgid "The LDAP servers for the %s"
-msgstr ""
+msgstr "Οι εξυπηρετητές LDAP για το %s"
 
 #: admin/systems/class_workstationGeneric.inc:225
 #: admin/systems/class_workstationGeneric.inc:229
 #: admin/ogroups/goto/termgroup.tpl.c:41
 msgid "Action"
-msgstr ""
+msgstr "Ενέργεια"
 
 #: admin/systems/class_workstationGeneric.inc:230
 #: admin/ogroups/goto/termgroup.tpl.c:44
 msgid "Select action to execute for this terminal"
-msgstr ""
+msgstr "Επιλέξτε μια ενέργεια για εκτέλεση για αυτό το τερματικό"
 
 #: admin/systems/class_workstationGeneric.inc:236
 #: admin/systems/class_phoneGeneric.inc:83
@@ -472,56 +474,56 @@ msgstr ""
 #: admin/systems/class_mobilePhoneGeneric.inc:106
 #: admin/systems/class_networkSettings.inc:1012
 msgid "Network settings"
-msgstr ""
+msgstr "Ρυθμίσεις δικτύου"
 
 #: admin/systems/class_workstationGeneric.inc:465
 msgid "Workstation information"
-msgstr ""
+msgstr "Πληροφορίες σταθμού εργασίας"
 
 #: admin/systems/class_phoneGeneric.inc:37
 msgid "Phone information"
-msgstr ""
+msgstr "Πληροφορίες τηλεφώνου"
 
 #: admin/systems/class_phoneGeneric.inc:41
 msgid "Phone hardware"
-msgstr ""
+msgstr "Υλικό τηλεφώνου"
 
 #: admin/systems/class_phoneGeneric.inc:59
 msgid "The name of the phone"
-msgstr ""
+msgstr "Το όνομα του τηλεφώνου"
 
 #: admin/systems/class_phoneGeneric.inc:63
 msgid "A short description of the phone"
-msgstr ""
+msgstr "Μια σύντομη περιγραφή του τηλεφώνου"
 
 #: admin/systems/class_phoneGeneric.inc:73
 #: admin/systems/class_mobilePhoneGeneric.inc:77
 msgid "Serial Number"
-msgstr ""
+msgstr "Σειριακός αριθμός"
 
 #: admin/systems/class_phoneGeneric.inc:73
 msgid "The serial number of the phone"
-msgstr ""
+msgstr "Ο σειριακός αριθμός γραμμής του τηλεφώνου"
 
 #: admin/systems/class_phoneGeneric.inc:77
 #: admin/systems/class_mobilePhoneGeneric.inc:95
 msgid "Telephone Number"
-msgstr ""
+msgstr "Τηλέφωνο"
 
 #: admin/systems/class_phoneGeneric.inc:77
 msgid "The telephone number of the phone"
-msgstr ""
+msgstr "Ο αριθμός τηλεφώνου "
 
 #: admin/systems/class_printGeneric.inc:131
 #: admin/systems/class_printGeneric.inc:1070
 msgid "Internal error"
-msgstr ""
+msgstr "Εσωτερικό σφάλμα"
 
 #: admin/systems/class_printGeneric.inc:131
 #, php-format
 msgid ""
 "Cannot determine a valid department for this object. Setting base to '%s'!"
-msgstr ""
+msgstr "Αδύνατος ο προσδιορισμός ενός έγκυρου τμήματος για αυτό το αντικείμενο. Ορισμός βάσης σε `%s'"
 
 #: admin/systems/class_printGeneric.inc:317
 #: admin/systems/class_printGeneric.inc:325
@@ -530,7 +532,7 @@ msgstr ""
 #: admin/systems/class_printGeneric.inc:396
 #: admin/systems/class_printGeneric.inc:399
 msgid "Add printer extension"
-msgstr ""
+msgstr "Προσθήκη επέκτασης εκτυπωτή"
 
 #: admin/systems/class_printGeneric.inc:318
 msgid ""
@@ -553,7 +555,7 @@ msgstr ""
 #: admin/systems/class_printGeneric.inc:397
 #: admin/systems/class_printGeneric.inc:400
 msgid "printer"
-msgstr ""
+msgstr "εκτυπωτής"
 
 #: admin/systems/class_printGeneric.inc:381
 msgid ""
@@ -564,7 +566,7 @@ msgstr ""
 #: admin/systems/class_printGeneric.inc:388
 #: admin/systems/class_printGeneric.inc:391
 msgid "Remove printer extension"
-msgstr ""
+msgstr "Αφαίρεση επέκτασης εκτυπωτή"
 
 #: admin/systems/class_printGeneric.inc:480
 #: admin/systems/class_printGeneric.inc:658
@@ -588,16 +590,16 @@ msgstr "Σφάλμα"
 #: admin/systems/class_printGeneric.inc:583
 #, php-format
 msgid "Your currently selected PPD file '%s' doesn't exist."
-msgstr ""
+msgstr "Το τρέχον επιλεγμένο αρχείο PPD '%s' δεν υπάρχει."
 
 #: admin/systems/class_printGeneric.inc:589
 msgid "Not defined"
-msgstr ""
+msgstr "Δεν έχει οριστεί"
 
 #: admin/systems/class_printGeneric.inc:593
 #: admin/systems/ppd/class_printerPPDDialog.inc:116
 msgid "Can't get ppd informations."
-msgstr ""
+msgstr "Αποτυχία λήψης πληροφοριών ppd "
 
 #: admin/systems/class_printGeneric.inc:608
 #: admin/systems/class_printGeneric.inc:610
@@ -608,101 +610,101 @@ msgstr ""
 #: admin/systems/class_printGeneric.inc:608
 #: admin/systems/class_terminalGeneric.inc:34
 msgid "terminal"
-msgstr ""
+msgstr "τερματικό"
 
 #: admin/systems/class_printGeneric.inc:658
 #: admin/systems/class_printGeneric.inc:665
 msgid "Object is no printer!"
-msgstr ""
+msgstr "Το αντικείμενο δεν είναι εκτυπωτής!"
 
 #: admin/systems/class_printGeneric.inc:773 admin/systems/printer.tpl.c:23
 msgid "Printer URL"
-msgstr ""
+msgstr "URL εκτυπωτή"
 
 #: admin/systems/class_printGeneric.inc:995
 #: admin/systems/class_printGeneric.inc:997
 msgid "Group"
-msgstr ""
+msgstr "Ομάδα"
 
 #: admin/systems/class_printGeneric.inc:1000
 msgid "User"
-msgstr ""
+msgstr "Χρήστης"
 
 #: admin/systems/class_printGeneric.inc:1012
 msgid "Printer information"
-msgstr ""
+msgstr "Πληροφορίες εκτυπωτή"
 
 #: admin/systems/class_printGeneric.inc:1028
 #: admin/systems/serverService-list.tpl.c:2
 #: admin/systems/phoneSelect/phoneSelect-list.tpl.c:2
 #: admin/systems/printer.tpl.c:11
 msgid "Base"
-msgstr ""
+msgstr "Βάση"
 
 #: admin/systems/class_printGeneric.inc:1031
 msgid "LabeledURL"
-msgstr ""
+msgstr "LabeledURL"
 
 #: admin/systems/class_printGeneric.inc:1032
 msgid "Printer PPD"
-msgstr ""
+msgstr " PPD εκτυπωτή"
 
 #: admin/systems/class_printGeneric.inc:1033 admin/systems/printer.tpl.c:38
 msgid "Permissions"
-msgstr ""
+msgstr "Δικαιώματα"
 
 #: admin/systems/class_printGeneric.inc:1035
 msgid "Windows inf file"
-msgstr ""
+msgstr "Αρχείο inf Windows"
 
 #: admin/systems/class_printGeneric.inc:1036
 msgid "Windows driver dir"
-msgstr ""
+msgstr "ΞΚατάλογος οδηγών Windows"
 
 #: admin/systems/class_printGeneric.inc:1037 admin/systems/printer.tpl.c:62
 msgid "Driver printer name"
-msgstr ""
+msgstr "Όνομα οδηγού εκτυπωτή"
 
 #: admin/systems/class_printGeneric.inc:1053
 #: admin/systems/class_printGeneric.inc:1075
 msgid "Permission error"
-msgstr ""
+msgstr "Σφάλμα δικαιωμάτων"
 
 #: admin/systems/class_printGeneric.inc:1053
 #: admin/systems/class_printGeneric.inc:1075
 msgid "printer user"
-msgstr ""
+msgstr "χρήστης εκτυπωτή"
 
 #: admin/systems/class_printGeneric.inc:1070
 #, php-format
 msgid "Illegal member type '%s'!"
-msgstr ""
+msgstr "παράνομος τύπος μέλους '%s'!"
 
 #: admin/systems/class_printGeneric.inc:1110
 #, php-format
 msgid "'%s' is already used!"
-msgstr ""
+msgstr "Το '%s' χρησιμοποιείται ήδη!"
 
 #: admin/systems/class_printGeneric.inc:1121
 #, php-format
 msgid "'%s' does not exist!"
-msgstr ""
+msgstr "Το %s δεν υπάρχει!"
 
 #: admin/systems/class_serverService.inc:58
 msgid "Server services"
-msgstr ""
+msgstr "Υπηρεσίες εξυπηρετητή"
 
 #: admin/systems/class_serverService.inc:332
 msgid "Filter error"
-msgstr ""
+msgstr "Σφάλμα φίλτρου"
 
 #: admin/systems/class_serverService.inc:332
 msgid "The filter is incomplete!"
-msgstr ""
+msgstr "Το φίλτρο δεν είναι ολοκληρωμένο! "
 
 #: admin/systems/class_serverService.inc:387
 msgid "Information"
-msgstr ""
+msgstr "Πληροφορίες"
 
 #: admin/systems/class_serverService.inc:387
 msgid "Cannot update service status until it has been saved!"
@@ -713,53 +715,53 @@ msgstr ""
 #: admin/systems/class_serverService.inc:435
 #, php-format
 msgid "Could not get execute action %s on service %s."
-msgstr ""
+msgstr "Δεν ήταν δυνατή η εκτέλεση ενέργειας %s στην υπηρεσία %s."
 
 #: admin/systems/class_terminalGeneric.inc:42
 #, php-format
 msgid "The root server the terminal should be using"
-msgstr ""
+msgstr "Ο εξυπηρετητής root που θα πρέπει να χρησιμοποιεί το τερματικό"
 
 #: admin/systems/class_terminalGeneric.inc:48
 #, php-format
 msgid "The swap server the terminal should be using"
-msgstr ""
+msgstr "Ο εξυπηρετητής swap που θα πρέπει να χρησιμοποιεί το τερματικό"
 
 #: admin/systems/class_terminalGeneric.inc:54
 msgid "Remote desktop"
-msgstr ""
+msgstr "Απομακρυσμένη επιφάνεια εργασίας"
 
 #: admin/systems/class_terminalGeneric.inc:58
 msgid "Connect method"
-msgstr ""
+msgstr "Μέθοδος σύνδεσης"
 
 #: admin/systems/class_terminalGeneric.inc:62
 msgid "XDMCP"
-msgstr ""
+msgstr "XDMCP"
 
 #: admin/systems/class_terminalGeneric.inc:62
 msgid "LDM"
-msgstr ""
+msgstr "LDM"
 
 #: admin/systems/class_terminalGeneric.inc:62
 msgid "Shell"
-msgstr ""
+msgstr "Κέλυφος"
 
 #: admin/systems/class_terminalGeneric.inc:62
 msgid "Telnet"
-msgstr ""
+msgstr "Telnet"
 
 #: admin/systems/class_terminalGeneric.inc:62
 msgid "Windows RDP"
-msgstr ""
+msgstr "Windows RDP"
 
 #: admin/systems/class_terminalGeneric.inc:66
 msgid "Terminal server"
-msgstr ""
+msgstr "Εξυπηρετητής τερματικού"
 
 #: admin/systems/class_terminalGeneric.inc:82
 msgid "Terminal information"
-msgstr ""
+msgstr "Πληροφορίες τερματικού"
 
 #: admin/systems/ppd/class_printerPPDSelectionDialog.inc:91
 #: admin/systems/ppd/class_printerPPDSelectionDialog.inc:116
@@ -780,7 +782,7 @@ msgstr ""
 #: admin/systems/ppd/class_printerPPDDialog.inc:580
 #: admin/systems/ppd/class_printerPPDDialog.inc:583
 msgid "PPD error"
-msgstr ""
+msgstr "Σφάλμα PPD"
 
 #: admin/systems/ppd/class_printerPPDSelectionDialog.inc:139
 #, php-format
@@ -789,70 +791,70 @@ msgstr ""
 
 #: admin/systems/ppd/class_printerPPDSelectionDialog.inc:148
 msgid "Printer ppd selection."
-msgstr ""
+msgstr "Επιλογή εκτυπωτή ppd"
 
 #: admin/systems/ppd/class_printerPPDSelectionDialog.inc:155
 msgid "delete"
-msgstr ""
+msgstr "διαγραφή"
 
 #: admin/systems/ppd/class_printerPPDSelectionDialog.inc:166
 msgid "back"
-msgstr ""
+msgstr "πίσω"
 
 #: admin/systems/ppd/class_printerPPDDialog.inc:74
 #: admin/systems/ppd/class_printerPPDDialog.inc:140
 #: admin/systems/services/class_goService.inc:241
 msgid "Configuration error"
-msgstr ""
+msgstr "Σφάλμα ρύθμισης"
 
 #: admin/systems/ppd/class_printerPPDDialog.inc:92
 #, php-format
 msgid "Cannot open PPD '%s'!"
-msgstr ""
+msgstr "Αδύνατο το άνοιγμα PPD '%s'!"
 
 #: admin/systems/ppd/class_printerPPDDialog.inc:141
 #, php-format
 msgid "Cannot open PPD path '%s' for reading and writing!"
-msgstr ""
+msgstr "Αδύνατο το άνοιγμα διαδρομής PPD '%s' για ανάγνωση και εγγραφή!"
 
 #: admin/systems/ppd/class_printerPPDDialog.inc:160
 #: admin/systems/ppd/class_printerPPDDialog.inc:365
 msgid "file is empty"
-msgstr ""
+msgstr "Το αρχείο είναι κενό"
 
 #: admin/systems/ppd/class_printerPPDDialog.inc:314
 #, php-format
 msgid "Cannot parse PPD '%s'!"
-msgstr ""
+msgstr "Αδυναμία ανάλυσης PPD '%s'!"
 
 #: admin/systems/ppd/class_printerPPDDialog.inc:340
 msgid "Overwrite existing PPD"
-msgstr ""
+msgstr "Αντικατάσταση του υπάρχοντοςPPD"
 
 #: admin/systems/ppd/class_printerPPDDialog.inc:341
 msgid ""
 "There is already a ppd file for this kind of printer. Do you want to "
 "overwrite it?"
-msgstr ""
+msgstr "Το αρχείο ppd υπάρχει ήδη για αυτόν τον εκτυπωτή. Θέλετε να αντικατασταθεί;"
 
 #: admin/systems/ppd/class_printerPPDDialog.inc:491
 msgid "Section"
-msgstr ""
+msgstr "Ενότητα"
 
 #: admin/systems/ppd/class_printerPPDDialog.inc:551
 #: admin/systems/ppd/class_printerPPDDialog.inc:554
 msgid "True"
-msgstr ""
+msgstr "True"
 
 #: admin/systems/ppd/class_printerPPDDialog.inc:552
 #: admin/systems/ppd/class_printerPPDDialog.inc:555
 msgid "False"
-msgstr ""
+msgstr "False"
 
 #: admin/systems/ppd/class_printerPPDDialog.inc:560
 #, php-format
 msgid "PPD type '%s' is not supported!"
-msgstr ""
+msgstr "Δεν υποστηρίζεται ο τύπος PPD '%s' !"
 
 #: admin/systems/ppd/class_printerPPDDialog.inc:597
 msgid ""
@@ -864,22 +866,22 @@ msgstr ""
 #: admin/systems/ppd/class_ppdManager.inc:188
 #: admin/systems/ppd/class_ppdManager.inc:190
 msgid "PPD manager error"
-msgstr ""
+msgstr "Σφάλμα διαχειριστή PPD "
 
 #: admin/systems/ppd/class_ppdManager.inc:44
 #, php-format
 msgid "The specified path '%s' does not exist."
-msgstr ""
+msgstr "Η καορισμένη διαδρομή '%s' δεν υπάρχει,"
 
 #: admin/systems/ppd/class_ppdManager.inc:188
 #, php-format
 msgid "Specified PPD file '%s' cannot be opened for reading."
-msgstr ""
+msgstr "Το καθορισμένο αρχείο PPD `%s' δε μπόρεσε να ανοιχτεί για ανάγνωση."
 
 #: admin/systems/ppd/class_ppdManager.inc:190
 #, php-format
 msgid "The temporary file '%s' cannot be opened for writing."
-msgstr ""
+msgstr "Το προσωρινό αρχείο `%s' δε μπόρεσε να ανοιχτεί για ανάγνωση."
 
 #: admin/systems/ppd/class_ppdManager.inc:212
 #: admin/systems/ppd/class_ppdManager.inc:350
@@ -895,24 +897,24 @@ msgstr ""
 
 #: admin/systems/ppd/class_ppdManager.inc:230
 msgid "Nested groups are not supported!"
-msgstr ""
+msgstr "Δεν υποστηρίζονται εμφωλευμένες ομάδες!"
 
 #: admin/systems/ppd/class_ppdManager.inc:234
 msgid "Group name not unique!"
-msgstr ""
+msgstr "Το όνομα ομάδας δεν είναι μοναδικό!"
 
 #: admin/systems/ppd/class_ppdManager.inc:240
 #: admin/systems/ppd/class_ppdManager.inc:270
 msgid "Symbol values are not supported yet!"
-msgstr ""
+msgstr "Οι τιμές συμβόλων δεν υποστηρίζονται ακόμα!"
 
 #: admin/systems/ppd/class_ppdManager.inc:264
 msgid "Nested options are not supported!"
-msgstr ""
+msgstr "Δεν υποστηρίζονται οι εμφωλευμένες επιλογές!"
 
 #: admin/systems/ppd/class_ppdManager.inc:289
 msgid "PickMany is not supported yet!"
-msgstr ""
+msgstr "Το PickMany δεν υποστηρίζεται ακόμα!"
 
 #: admin/systems/ppd/class_ppdManager.inc:370
 #, php-format
@@ -929,141 +931,141 @@ msgstr ""
 #: admin/systems/class_systemImport.inc:72
 #, php-format
 msgid "Could not parse %s"
-msgstr ""
+msgstr "Αδύνατη η συντακτική ανάλυση %s"
 
 #: admin/systems/class_systemImport.inc:116
 #, php-format
 msgid "No DHCP server found for ip %s"
-msgstr ""
+msgstr "Δε βρέθηκε DHCP server για ip %s"
 
 #: admin/systems/class_systemImport.inc:130
 #, php-format
 msgid "No DNS server found for zone %s"
-msgstr ""
+msgstr "Δε βρέθηκε DNS server για την ζώνη %s"
 
 #: admin/systems/class_systemImport.inc:165
 msgid "Import"
-msgstr ""
+msgstr "Εισαγωγή"
 
 #: admin/systems/class_systemImport.inc:169
 msgid "The server you wish to import hosts from"
-msgstr ""
+msgstr "Είστε σίγουροι ότι θέλετε να εισάγετε συστήματα από "
 
 #: admin/systems/class_serverGeneric.inc:34
 msgid "server"
-msgstr ""
+msgstr "διακομιστής"
 
 #: admin/systems/class_serverGeneric.inc:47
 msgid "Server information"
-msgstr ""
+msgstr "Πληροφορίες εξυπηρετητή"
 
 #: admin/systems/class_componentGeneric.inc:37
 msgid "Component information"
-msgstr ""
+msgstr "Πληροφορίες στοιχείου "
 
 #: admin/systems/class_componentGeneric.inc:63
 msgid "The name of the component"
-msgstr ""
+msgstr "Το όνομα του στοιχείου"
 
 #: admin/systems/class_componentGeneric.inc:67
 msgid "A short description of the component"
-msgstr ""
+msgstr "Μια σύντομη περιγραφή του στοιχείου"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:37
 msgid "Mobile phone information"
-msgstr ""
+msgstr "Πληροφορίες κινητού τηλεφώνου"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:63
 msgid "The name of the mobile phone"
-msgstr ""
+msgstr "Το όνομα του κινητού τηλεφώνου"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:67
 msgid "A short description of the mobile phone"
-msgstr ""
+msgstr "Μια σύντομη περιγραφή του κινητού τηλεφώνου"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:77
 msgid "The serial number of the mobile phone"
-msgstr ""
+msgstr "Ο σειριακός αριθμός του κινητού τηλεφώνου"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:81
 msgid "IMEI Number"
-msgstr ""
+msgstr "Αριθμός IMEI"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:81
 msgid "The IMEI number of the mobile phone"
-msgstr ""
+msgstr "Ο αριθμός IMEI του κινητού τηλεφώνου"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:86
 msgid "OS"
-msgstr ""
+msgstr "OS"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:86
 msgid "The Operating System installed on this phone"
-msgstr ""
+msgstr "Το λειτουργικό σύστημα που είναι εγκατεστημένο σε αυτό το κινητό"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:92
 msgid "SimCard"
-msgstr ""
+msgstr "Κάρτα SIM"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:95
 msgid "The telephone number of the mobile phone"
-msgstr ""
+msgstr "Ο αριθμός τηλεφώνου"
 
 #: admin/systems/class_mobilePhoneGeneric.inc:99
 msgid "PUK Number"
-msgstr ""
+msgstr "Αριθμός PUK "
 
 #: admin/systems/class_mobilePhoneGeneric.inc:99
 msgid "The PUK number of the simcard in this mobile phone"
-msgstr ""
+msgstr "Ο αριθμός PUK  της sim σε αυτό το κινητό"
 
 #: admin/systems/serverService-list.xml:10
 msgid "List of services"
-msgstr ""
+msgstr "Λίστα υπηρεσιών"
 
 #: admin/systems/serverService-list.xml:14
 msgid "Service"
-msgstr ""
+msgstr "Υπηρεσία"
 
 #: admin/systems/serverService-list.xml:27
 msgid "!"
-msgstr ""
+msgstr "!"
 
 #: admin/systems/serverService-list.xml:89
 msgid "Get status"
-msgstr ""
+msgstr "Λήψη κατάστασης"
 
 #: admin/systems/serverService-list.xml:97
 msgid "Start"
-msgstr ""
+msgstr "Έναρξη"
 
 #: admin/systems/serverService-list.xml:105
 msgid "Stop"
-msgstr ""
+msgstr "Διακοπή"
 
 #: admin/systems/serverService-list.xml:113
 msgid "Restart"
-msgstr ""
+msgstr "Επανεκκίνηση"
 
 #: admin/systems/serverService-list.xml:121
 msgid "Edit service"
-msgstr ""
+msgstr "Επεξεργασία υπηρεσίας"
 
 #: admin/systems/serverService-list.xml:129
 msgid "Remove service"
-msgstr ""
+msgstr "Αφαίρεση υπηρεσίας"
 
 #: admin/systems/phoneSelect/phoneSelect-list.xml:10
 msgid "Please select the desired entries"
-msgstr ""
+msgstr "Παρακαλώ επιλέξτε τις επιθυμητές εγγραφές"
 
 #: admin/systems/phoneSelect/phoneSelect-list.xml:56
 msgid "Number"
-msgstr ""
+msgstr "Αριθμός "
 
 #: admin/systems/phoneSelect/phoneSelect-list.xml:83
 msgid "Select this number"
-msgstr ""
+msgstr "Επιλέξτε αυτόν τον αριθμό"
 
 #: admin/systems/class_systemManagement.inc:283
 #: admin/systems/class_systemManagement.inc:358
@@ -1071,44 +1073,44 @@ msgstr ""
 #: admin/systems/class_systemManagement.inc:495
 #: admin/systems/class_systemManagement.inc:516
 msgid "Permission"
-msgstr ""
+msgstr "Άδεια"
 
 #: admin/systems/class_systemManagement.inc:448
 #, php-format
 msgid "You are not allowed to create a snapshot for %s."
-msgstr ""
+msgstr "Δεν επιτρέπεται να δημιουργήσετε ένα στιγμιότυπο για  %s."
 
 #: admin/systems/class_systemManagement.inc:495
 #: admin/systems/class_systemManagement.inc:516
 #, php-format
 msgid "You are not allowed to restore a snapshot for %s."
-msgstr ""
+msgstr "Δεν επιτρέπεται να επαναφέρετε ένα στιγμιότυπο για  %s."
 
 #: admin/systems/class_systemManagement.inc:733
 #, php-format
 msgid "Inherited from %s"
-msgstr ""
+msgstr "Κληρονομήθηκε από %s"
 
 #: admin/systems/class_systemManagement.inc:786
 #: admin/systems/class_systemManagement.inc:790
 #: addons/dashboard/class_dashBoardSystems.inc:199
 #: config/systems/class_systemsPluginConfig.inc:28
 msgid "Systems"
-msgstr ""
+msgstr "Systems"
 
 #: admin/systems/class_systemManagement.inc:787
 msgid "Systems Management"
-msgstr ""
+msgstr "Διαχείριση Systems "
 
 #: admin/systems/services/terminal/class_serviceTerminal.inc:29
 #: admin/systems/services/terminal/class_serviceTerminal.inc:30
 #: admin/systems/services/terminal/class_serviceTerminal.inc:41
 msgid "Terminal service"
-msgstr ""
+msgstr "Υπηρεσία τερματικού"
 
 #: admin/systems/services/terminal/class_serviceTerminal.inc:44
 msgid "Temporary disable login"
-msgstr ""
+msgstr "Προσωρινή απενεργοποίηση σύνδεσης"
 
 #: admin/systems/services/terminal/class_serviceTerminal.inc:45
 msgid "Disables the login on this terminal server"
@@ -1116,65 +1118,65 @@ msgstr ""
 
 #: admin/systems/services/terminal/class_serviceTerminal.inc:54
 msgid "Supported session types"
-msgstr ""
+msgstr "Υποστηριζόμενοι τύποι συνεδρίας"
 
 #: admin/systems/services/terminal/class_serviceTerminal.inc:55
 msgid "The session types supported by this terminal server"
-msgstr ""
+msgstr "Ο τύποι συνεδρίας που υποστηρίζονται από αυτόν τον εξυπηρετητή τερματικού"
 
 #: admin/systems/services/class_goService.inc:44
 #: admin/systems/services/class_goService.inc:78
 msgid "Empty service"
-msgstr ""
+msgstr "Κενή υπηρεσία"
 
 #: admin/systems/services/shares/class_serviceShare.inc:30
 #: admin/systems/services/shares/class_serviceShare.inc:31
 msgid "Share service"
-msgstr ""
+msgstr "Κοινή χρήση υπηρεσίας"
 
 #: admin/systems/services/shares/class_serviceShare.inc:43
 msgid "Shares"
-msgstr ""
+msgstr "Κοινόχρηστα"
 
 #: admin/systems/services/shares/class_serviceShare.inc:48
 msgid "Shares this server hosts"
-msgstr ""
+msgstr "Κοινή χρήση των συστημάτων ταυτού του εξυπηρετητή"
 
 #: admin/systems/services/shares/class_serviceShare.inc:52
 msgid "Name of this share"
-msgstr ""
+msgstr "Το όνομα αυτού του κοινόχρηστου"
 
 #: admin/systems/services/shares/class_serviceShare.inc:56
 msgid "Description of this share"
-msgstr ""
+msgstr "Περιγραφή αυτο του κοινόχρηστου"
 
 #: admin/systems/services/shares/class_serviceShare.inc:60
 msgid "Type"
-msgstr ""
+msgstr "Τύπος"
 
 #: admin/systems/services/shares/class_serviceShare.inc:60
 msgid "Type of share"
-msgstr ""
+msgstr "Τύπος αυτού του κοινόχρηστου"
 
 #: admin/systems/services/shares/class_serviceShare.inc:65
 msgid "Codepage"
-msgstr ""
+msgstr "Σελίδα κώδικα"
 
 #: admin/systems/services/shares/class_serviceShare.inc:65
 msgid "Codepage for this share"
-msgstr ""
+msgstr "Κωδικοσελίδα αυτού του κοινόχρηστου"
 
 #: admin/systems/services/shares/class_serviceShare.inc:69
 msgid "Path / Volume"
-msgstr ""
+msgstr "Διαδρομή/ Τόμος"
 
 #: admin/systems/services/shares/class_serviceShare.inc:69
 msgid "Path or volume concerned by this share"
-msgstr ""
+msgstr "Διαδρομή ή τόμος σχετικός με αυτό το κοινόχρηστο"
 
 #: admin/systems/services/shares/class_serviceShare.inc:73
 msgid "Option"
-msgstr ""
+msgstr "Επιλογή"
 
 #: admin/systems/services/shares/class_serviceShare.inc:73
 msgid "Special option(s) for this share"
@@ -1182,55 +1184,55 @@ msgstr ""
 
 #: admin/systems/services/shares/class_serviceShare.inc:103
 msgid "You need to configure encodings first"
-msgstr ""
+msgstr "Πρέπει να ρυθμίσετε κάποιες κωδικοποιήσεις πρώτα"
 
 #: admin/systems/services/shares/class_serviceShare.inc:110
 #: admin/ogroups/goto/termgroup.tpl.c:2 admin/systems/remove.tpl.c:2
 #: admin/systems/ppd/remove_ppd.tpl.c:2
 msgid "Warning"
-msgstr ""
+msgstr "Προειδοποίηση"
 
 #: admin/systems/services/shares/class_serviceShare.inc:110
 #, php-format
 msgid "Invalid value in encodings : %s"
-msgstr ""
+msgstr "Μη έγκυρη τιμή στις κωδικοποιήσεις: %s"
 
 #: admin/systems/services/ntp/class_serviceNTP.inc:29
 msgid "Time service"
-msgstr ""
+msgstr "Υπηρεσία ώρας"
 
 #: admin/systems/services/ntp/class_serviceNTP.inc:30
 msgid "Time service - NTP"
-msgstr ""
+msgstr "Υπηρεσία ώρας - NTP"
 
 #: admin/systems/services/ntp/class_serviceNTP.inc:41
 msgid "Informations"
-msgstr ""
+msgstr "Πληροφορίες"
 
 #: admin/systems/services/ntp/class_serviceNTP.inc:45
 msgid "Time servers"
-msgstr ""
+msgstr "Εξυπηρετητές ώρας"
 
 #: admin/systems/services/ntp/class_serviceNTP.inc:45
 msgid "List of time sources to use"
-msgstr ""
+msgstr "Λίστα των πηγών ώρας για χρήση"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:35
 #: admin/systems/services/ldap/class_serviceLDAP.inc:96
 msgid "LDAP service"
-msgstr ""
+msgstr "Υπηρεσία LDAP"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:39
 msgid "LDAP Base"
-msgstr ""
+msgstr "Βάση LDAP"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:39
 msgid "The LDAP base to use for this LDAP server"
-msgstr ""
+msgstr "H bάση LDAP που χρησιμοποιείται για τον εξυπηρετητή LDAP"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:44
 msgid "LDAP URI"
-msgstr ""
+msgstr "LDAP URI"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:44
 msgid "The LDAP URI to use in order to contact this LDAP server"
@@ -1242,19 +1244,19 @@ msgstr ""
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:51
 msgid "Size limit"
-msgstr ""
+msgstr "Όριο μεγέθους"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:51
 msgid "Limit the number of record returned"
-msgstr ""
+msgstr "Περιορισμός αριθμού των εγγραφών που θα επιστρέφονται"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:56
 msgid "Time limit"
-msgstr ""
+msgstr "Όριο χρόνου"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:56
 msgid "Time limit for the result to be returned"
-msgstr ""
+msgstr "Όριο χρόνου για το αποτέλεσμα που θα επιστρέφεται"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:61
 msgid "Deref"
@@ -1266,41 +1268,41 @@ msgstr ""
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:66
 msgid "TLS Cert"
-msgstr ""
+msgstr "TLS Cert"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:66
 msgid "Filepath to tls certificate"
-msgstr ""
+msgstr "Διαδρομή αρχείου για αυτό το πιστοποητικό"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:70
 msgid "TLS Key"
-msgstr ""
+msgstr "Κλειδί TLS"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:70
 msgid "Filepath to tls key"
-msgstr ""
+msgstr "Διαδρομή αρχείου για κλειδί tls"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:74
 msgid "TLS CaCert"
-msgstr ""
+msgstr "TLS CaCert"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:74
 msgid "Filepath to tls ca certificate"
-msgstr ""
+msgstr "Διαδρομή αρχείου για πιστοποιητικό  tls ca "
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:78
 msgid "TLS ReqCert"
-msgstr ""
+msgstr "TLS ReqCert"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:78
 msgid ""
 "Specifies what checks to perform on server certificates in a TLS session, if"
 " any"
-msgstr ""
+msgstr "Καθορίζει τους εκτελούμενους ελέγχους στα πιστοποιητικά του εξυπηρετητή σε μια σύνοδο TLS, αν υπάρχει"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:83
 msgid "TLS CrlCheck"
-msgstr ""
+msgstr "TLS CrlCheck"
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:83
 msgid ""
@@ -1310,21 +1312,21 @@ msgstr ""
 
 #: admin/systems/services/ldap/class_serviceLDAP.inc:97
 msgid "LDAP"
-msgstr ""
+msgstr "LDAP"
 
 #: admin/systems/class_networkSettings.inc:428
 msgid "Not matching"
-msgstr ""
+msgstr "Δεν ταιριάζει"
 
 #: admin/systems/class_networkSettings.inc:580
 #, php-format
 msgid "Was not able to contact argonaut server: %s"
-msgstr ""
+msgstr "Αποτυχία επικοινωνίας με διακομιστή argonaut: %s "
 
 #: admin/systems/class_networkSettings.inc:587
 #, php-format
 msgid "Was not able to find DNS server for zone %s"
-msgstr ""
+msgstr "Αποτυχία εύρεσης DNS server για ζώνη %s"
 
 #: admin/systems/class_networkSettings.inc:593
 #, php-format
@@ -1339,21 +1341,21 @@ msgstr ""
 #: admin/systems/class_networkSettings.inc:626
 #, php-format
 msgid "IP address %s"
-msgstr ""
+msgstr "Διεύθυνση IP %s"
 
 #: admin/systems/class_networkSettings.inc:634
 #: admin/systems/class_networkSettings.inc:647
 #: admin/systems/class_networkSettings.inc:649
 #: admin/systems/class_networkSettings.inc:1018
 msgid "IP address"
-msgstr ""
+msgstr "Διεύθυνση IP"
 
 #: admin/systems/class_networkSettings.inc:640
 #: admin/systems/class_networkSettings.inc:656
 #: admin/systems/class_networkSettings.inc:658
 #: admin/systems/class_networkSettings.inc:1019
 msgid "MAC address"
-msgstr ""
+msgstr "Διεύθυνση MAC"
 
 #: admin/systems/class_networkSettings.inc:672
 #, php-format
@@ -1363,7 +1365,7 @@ msgstr ""
 #: admin/systems/class_networkSettings.inc:682
 #, php-format
 msgid "Record type '%s' is duplicated!"
-msgstr ""
+msgstr "Ο τύπος εγγραφής '%s' είναι διπλότυπος!"
 
 #: admin/systems/class_networkSettings.inc:689
 #, php-format
@@ -1384,56 +1386,56 @@ msgstr ""
 
 #: admin/systems/class_networkSettings.inc:974
 msgid "Delete"
-msgstr ""
+msgstr "Διαγραφή"
 
 #: admin/systems/class_networkSettings.inc:980
 msgid "Add"
-msgstr ""
+msgstr "Προσθήκη"
 
 #: admin/systems/class_networkSettings.inc:1011
 #: addons/dashboard/class_dashBoardNetwork.inc:127
 msgid "Network"
-msgstr ""
+msgstr "Δίκτυο"
 
 #: admin/systems/class_networkSettings.inc:1026
 msgid "DNS configuration"
-msgstr ""
+msgstr "Ρύθμιση DNS"
 
 #: admin/systems/class_networkSettings.inc:1029
 msgid "DHCP configuration"
-msgstr ""
+msgstr "Ρύθμιση DHCP"
 
 #: addons/dashboard/class_dashBoardSystems.inc:45
 msgid "Workstations"
-msgstr ""
+msgstr "Σταθμοί εργασίας"
 
 #: addons/dashboard/class_dashBoardSystems.inc:51
 msgid "Windows Workstations"
-msgstr ""
+msgstr "Σταθμοί εργασίας Windows"
 
 #: addons/dashboard/class_dashBoardSystems.inc:54
 msgid "Terminals"
-msgstr ""
+msgstr "Τερματικά"
 
 #: addons/dashboard/class_dashBoardSystems.inc:57
 msgid "Printers"
-msgstr ""
+msgstr "Εκτυπωτές"
 
 #: addons/dashboard/class_dashBoardSystems.inc:60
 msgid "Phones"
-msgstr ""
+msgstr "Τηλέφωνα"
 
 #: addons/dashboard/class_dashBoardSystems.inc:63
 msgid "Components"
-msgstr ""
+msgstr "Συστατικά στοιχεία"
 
 #: addons/dashboard/class_dashBoardSystems.inc:66
 msgid "Mobile phones"
-msgstr ""
+msgstr "Κινητά τηλέφωνα"
 
 #: addons/dashboard/class_dashBoardSystems.inc:183
 msgid "Statistics"
-msgstr ""
+msgstr "Στατιστικά"
 
 #: addons/dashboard/class_dashBoardSystems.inc:188
 msgid "Computer name to use by unit"
@@ -1441,7 +1443,7 @@ msgstr ""
 
 #: addons/dashboard/class_dashBoardSystems.inc:200
 msgid "Statistics and informations about systems"
-msgstr ""
+msgstr "Στατιστικά και πληροφορίες για το systems"
 
 #: addons/dashboard/class_dashBoardNetwork.inc:111
 msgid "DHCP"
@@ -1449,15 +1451,15 @@ msgstr ""
 
 #: addons/dashboard/class_dashBoardNetwork.inc:116
 msgid "DNS"
-msgstr ""
+msgstr "DNS"
 
 #: addons/dashboard/class_dashBoardNetwork.inc:128
 msgid "Statistics and various informations"
-msgstr ""
+msgstr "Στατιστικά και ποικίλες πληροφορίες"
 
 #: config/systems/class_systemsPluginConfig.inc:29
 msgid "Systems plugin configuration"
-msgstr ""
+msgstr "Ρύθμιση προσθέτου Systems"
 
 #: config/systems/class_systemsPluginConfig.inc:40
 msgid "LDAP tree for systems"
@@ -1465,7 +1467,7 @@ msgstr ""
 
 #: config/systems/class_systemsPluginConfig.inc:43
 msgid "Systems RDN"
-msgstr ""
+msgstr "Systems RDN"
 
 #: config/systems/class_systemsPluginConfig.inc:43
 msgid "Branch in which systems will be stored"
@@ -1473,7 +1475,7 @@ msgstr ""
 
 #: config/systems/class_systemsPluginConfig.inc:48
 msgid "Server RDN"
-msgstr ""
+msgstr "RDN εξυπηρετητή"
 
 #: config/systems/class_systemsPluginConfig.inc:48
 msgid "Branch in which servers will be stored"
@@ -1481,7 +1483,7 @@ msgstr ""
 
 #: config/systems/class_systemsPluginConfig.inc:53
 msgid "Workstations RDN"
-msgstr ""
+msgstr "RDN σταθμών εργασίας"
 
 #: config/systems/class_systemsPluginConfig.inc:53
 msgid "Branch in which workstations will be stored"
@@ -1489,7 +1491,7 @@ msgstr ""
 
 #: config/systems/class_systemsPluginConfig.inc:58
 msgid "Terminal RDN"
-msgstr ""
+msgstr "RDN τερματικού"
 
 #: config/systems/class_systemsPluginConfig.inc:58
 msgid "Branch in which terminals will be stored"
@@ -1497,7 +1499,7 @@ msgstr ""
 
 #: config/systems/class_systemsPluginConfig.inc:63
 msgid "Printer RDN"
-msgstr ""
+msgstr "RDN εκτυπωτή"
 
 #: config/systems/class_systemsPluginConfig.inc:63
 msgid "Branch in which printers will be stored"
@@ -1505,7 +1507,7 @@ msgstr ""
 
 #: config/systems/class_systemsPluginConfig.inc:68
 msgid "Component RDN"
-msgstr ""
+msgstr "RDN στοιχείου"
 
 #: config/systems/class_systemsPluginConfig.inc:68
 msgid "Branch in which network devices will be stored"
@@ -1513,7 +1515,7 @@ msgstr ""
 
 #: config/systems/class_systemsPluginConfig.inc:73
 msgid "Phone RDN"
-msgstr ""
+msgstr " RDN τηλεφώνου"
 
 #: config/systems/class_systemsPluginConfig.inc:73
 msgid "Branch in which phones will be stored"
@@ -1521,7 +1523,7 @@ msgstr ""
 
 #: config/systems/class_systemsPluginConfig.inc:78
 msgid "Mobile phone RDN"
-msgstr ""
+msgstr "RDN κινητού τηλεφώνου"
 
 #: config/systems/class_systemsPluginConfig.inc:78
 msgid "Branch in which mobile phones will be stored"
@@ -1529,31 +1531,31 @@ msgstr ""
 
 #: config/systems/class_systemsPluginConfig.inc:85
 msgid "Miscellaneous"
-msgstr ""
+msgstr "Διάφορα"
 
 #: config/systems/class_systemsPluginConfig.inc:89
 msgid "Available encodings for share services"
-msgstr ""
+msgstr "Διαθέσιμες κωδικοποιήσεις για τις υπηρεσίες κοινής χρήσης"
 
 #: config/systems/class_systemsPluginConfig.inc:93
 msgid "Encoding"
-msgstr ""
+msgstr "Κωδικοποίηση"
 
 #: config/systems/class_systemsPluginConfig.inc:93
 msgid "The encoding code name"
-msgstr ""
+msgstr "Η ονομασία της κωδικοποίησης"
 
 #: config/systems/class_systemsPluginConfig.inc:98
 msgid "Label"
-msgstr ""
+msgstr "Ετικέτα"
 
 #: config/systems/class_systemsPluginConfig.inc:98
 msgid "The encoding displayed name"
-msgstr ""
+msgstr "Η ονομασία της κωδικοποίησης που θα εμφανίζεται"
 
 #: config/systems/class_systemsPluginConfig.inc:106
 msgid "Encodings"
-msgstr ""
+msgstr "Κωδικοποιήσεις"
 
 #: admin/ogroups/goto/termgroup.tpl.c:5
 msgid ""
@@ -1564,11 +1566,11 @@ msgstr ""
 
 #: admin/ogroups/goto/termgroup.tpl.c:8
 msgid "Generic"
-msgstr ""
+msgstr "Γενικό"
 
 #: admin/ogroups/goto/termgroup.tpl.c:11
 msgid "NTP server"
-msgstr ""
+msgstr "Εξυπηρετητής NTP"
 
 #: admin/ogroups/goto/termgroup.tpl.c:14
 msgid "Choose server to use for synchronizing time"
@@ -1576,7 +1578,7 @@ msgstr ""
 
 #: admin/ogroups/goto/termgroup.tpl.c:20
 msgid "Select terminal mode"
-msgstr ""
+msgstr "Επιλέξτεειτουργία τερματικού"
 
 #: admin/ogroups/goto/termgroup.tpl.c:26
 msgid "Choose server to use for logging"
@@ -1584,7 +1586,7 @@ msgstr ""
 
 #: admin/ogroups/goto/termgroup.tpl.c:32
 msgid "Select NFS root filesystem to use"
-msgstr ""
+msgstr "Επιλέξτε ένα σύστημα αρχείων NFS root για χρήση"
 
 #: admin/ogroups/goto/termgroup.tpl.c:38
 msgid "Choose NFS filesystem to place swap files on"
@@ -1596,39 +1598,39 @@ msgstr "Εκτέλεση"
 
 #: admin/systems/network.tpl.c:2
 msgid "Network  settings"
-msgstr ""
+msgstr "Ρυθμίσεις δικτύου"
 
 #: admin/systems/network.tpl.c:5
 msgid "IP-address"
-msgstr ""
+msgstr "Διεύθυνση IP"
 
 #: admin/systems/network.tpl.c:8 admin/systems/network.tpl.c:11
 msgid "Propose ip"
-msgstr ""
+msgstr "Πρόταση για ip"
 
 #: admin/systems/network.tpl.c:14
 msgid "MAC-address"
-msgstr ""
+msgstr "Διεύθυνση MAC"
 
 #: admin/systems/network.tpl.c:17 admin/systems/network.tpl.c:20
 msgid "Enable DHCP for this device"
-msgstr ""
+msgstr "Ενεργοποίηση υπηρεσίας  DHCP για αυτήν την υπηρεσία"
 
 #: admin/systems/network.tpl.c:23 admin/systems/network.tpl.c:47
 msgid "not configured"
-msgstr ""
+msgstr "δεν εχει ρυθμιστεί"
 
 #: admin/systems/network.tpl.c:26
 msgid "Parent node"
-msgstr ""
+msgstr "Γονικό νήμα"
 
 #: admin/systems/network.tpl.c:29
 msgid "Edit settings"
-msgstr ""
+msgstr "Επεξεργασία ρυθμίσεων"
 
 #: admin/systems/network.tpl.c:32 admin/systems/network.tpl.c:44
 msgid "Enable DNS for this device"
-msgstr ""
+msgstr "Ενεργοποίηση DNS για αυτή την συσκευή"
 
 #: admin/systems/network.tpl.c:35
 msgid "Zone"
@@ -1636,11 +1638,11 @@ msgstr ""
 
 #: admin/systems/network.tpl.c:38
 msgid "TTL"
-msgstr ""
+msgstr "TTL"
 
 #: admin/systems/network.tpl.c:41
 msgid "Dns records"
-msgstr ""
+msgstr "Εγγραφές Dns "
 
 #: admin/systems/server_import.tpl.c:2
 msgid ""
@@ -1654,66 +1656,66 @@ msgid ""
 "This includes all account data, system access rules, imap settings, etc. for"
 " this user. Please double check if your really want to do this since there "
 "is no way for FusionDirectory to get your data back."
-msgstr ""
+msgstr "Το παρόν περιλαμβάνει όλα τα δεδομένα λογαριασμού, τους κανόνες πρόσβασης συστήματος, τις ρυθμίσεις imap κτλ. για τον συγκεκριμένο χρήστη. Παρακαλείστε να ελέγξετε αν όντως θέλετε να προχωρήσετε, δεδομένου ότι το FusionDirectory δεν θα μπορεί να ανακτήσει πλέον τα δεδομένα σας."
 
 #: admin/systems/remove.tpl.c:8
 msgid "So - if you're sure - press 'Delete' to continue or 'Cancel' to abort."
-msgstr ""
+msgstr "Αν είστε σίγουροι, πατήστε \"Διαγραφή\" για να συνεχίσετε ή \"Ακύρωση\" για να εγκαταλείψετε. "
 
 #: admin/systems/system-filter.tpl.c:2
 #: admin/systems/phoneSelect/phoneSelect-filter.tpl.c:2
 msgid "Filter"
-msgstr ""
+msgstr "Φίλτρο"
 
 #: admin/systems/system-filter.tpl.c:5
 msgid "Show servers"
-msgstr ""
+msgstr "Προβολή εξυπηρετητών"
 
 #: admin/systems/system-filter.tpl.c:8
 msgid "Show workstations"
-msgstr ""
+msgstr "Προβολή σταθμών εργασίας"
 
 #: admin/systems/system-filter.tpl.c:11
 msgid "Show terminals"
-msgstr ""
+msgstr "Προβολή τερματικών"
 
 #: admin/systems/system-filter.tpl.c:14
 msgid "Show network printer"
-msgstr ""
+msgstr "Προβολή εκτυπωτών δικτύου"
 
 #: admin/systems/system-filter.tpl.c:17
 #: admin/systems/phoneSelect/phoneSelect-filter.tpl.c:5
 msgid "Show phones"
-msgstr ""
+msgstr "Προβολή τηλεφώνων"
 
 #: admin/systems/system-filter.tpl.c:20
 msgid "Show windows based workstations"
-msgstr ""
+msgstr "Προβολή σταθμών εργασίας windows"
 
 #: admin/systems/system-filter.tpl.c:23
 msgid "Show network devices"
-msgstr ""
+msgstr "Προβολή συσκευών δικτύου"
 
 #: admin/systems/system-filter.tpl.c:26
 #: admin/systems/phoneSelect/phoneSelect-filter.tpl.c:8
 msgid "Show mobile phones"
-msgstr ""
+msgstr "Προβολή κινητών τηλεφώνων"
 
 #: admin/systems/system-filter.tpl.c:29
 msgid "Show IPMI interfaces"
-msgstr ""
+msgstr "Προβολή διεπαφής IPMI"
 
 #: admin/systems/ppd/printerPPDSelectionDialog.tpl.c:2
 msgid "Select objects to add"
-msgstr ""
+msgstr "Επιλογή αντικειμένου για προσθήκη"
 
 #: admin/systems/ppd/printerPPDSelectionDialog.tpl.c:5
 msgid "Filters"
-msgstr ""
+msgstr "Φίλτρα"
 
 #: admin/systems/ppd/printerPPDSelectionDialog.tpl.c:8
 msgid "Display objects matching"
-msgstr ""
+msgstr "Εμφάνιση προειδοποιήσεων αντικειμένων"
 
 #: admin/systems/ppd/printerPPDSelectionDialog.tpl.c:11
 msgid "Regular expression for matching object names"
@@ -1721,71 +1723,71 @@ msgstr ""
 
 #: admin/systems/ppd/printerPPDSelectionDialog.tpl.c:14
 msgid "Close"
-msgstr ""
+msgstr "Κλείσιμο"
 
 #: admin/systems/ppd/printerPPDDialog.tpl.c:2
 msgid "Printer driver"
-msgstr ""
+msgstr "Οδηγός εκτυπωτή"
 
 #: admin/systems/ppd/printerPPDDialog.tpl.c:5
 msgid "Model"
-msgstr ""
+msgstr "Μοντέλο"
 
 #: admin/systems/ppd/printerPPDDialog.tpl.c:8
 msgid "Select"
-msgstr ""
+msgstr "Επιλογή"
 
 #: admin/systems/ppd/printerPPDDialog.tpl.c:11
 msgid "New driver"
-msgstr ""
+msgstr "Νέος οδηγός"
 
 #: admin/systems/ppd/printerPPDDialog.tpl.c:14
 msgid "Upload"
-msgstr ""
+msgstr "Αποστολή"
 
 #: admin/systems/ppd/printerPPDDialog.tpl.c:17
 msgid "Options"
-msgstr "Επιλογές"
+msgstr " Επιλογές"
 
 #: admin/systems/ppd/remove_ppd.tpl.c:5
 msgid "The ppd file will be removed from the server and can not be restored."
-msgstr ""
+msgstr "Το αρχείο ppd  θα αφαιρεθεί από τον εξυπηρετητή και δεν θα μπορεί να ανακτηθεί."
 
 #: admin/systems/printer.tpl.c:2
 msgid "General"
-msgstr ""
+msgstr "Γενικά"
 
 #: admin/systems/printer.tpl.c:5
 msgid "Printer name"
-msgstr ""
+msgstr "Όνομα εκτυπωτή"
 
 #: admin/systems/printer.tpl.c:14
 msgid "Details"
-msgstr ""
+msgstr "Λεπτομέρειες"
 
 #: admin/systems/printer.tpl.c:20
 msgid "Printer location"
-msgstr ""
+msgstr "Τοποθεσία εκτυπωτή"
 
 #: admin/systems/printer.tpl.c:26
 msgid "PPD Provider"
-msgstr ""
+msgstr "Πάροχος PPD"
 
 #: admin/systems/printer.tpl.c:29
 msgid "Driver"
-msgstr ""
+msgstr "Οδηγός"
 
 #: admin/systems/printer.tpl.c:32
 msgid "Edit"
-msgstr ""
+msgstr "Επεξεργασία"
 
 #: admin/systems/printer.tpl.c:41
 msgid "Users which are allowed to use this printer"
-msgstr ""
+msgstr "Χρήστες που επιτρέπεται να χρησιμοποιούν αυτόν τον εκτυπωτή"
 
 #: admin/systems/printer.tpl.c:44
 msgid "Users"
-msgstr ""
+msgstr "Χρήστες"
 
 #: admin/systems/printer.tpl.c:47
 msgid "Users which are allowed to administrate this printer"
@@ -1793,23 +1795,23 @@ msgstr ""
 
 #: admin/systems/printer.tpl.c:50
 msgid "Admins"
-msgstr ""
+msgstr "Διαχειριστές"
 
 #: admin/systems/printer.tpl.c:53
 msgid "Windows paths"
-msgstr ""
+msgstr "Διαδρομές Windows"
 
 #: admin/systems/printer.tpl.c:56
 msgid "Printer windows inf file"
-msgstr ""
+msgstr "Αρχείο inf windows εκτυπωτή"
 
 #: admin/systems/printer.tpl.c:59
 msgid "Printer driver directory"
-msgstr ""
+msgstr "Κατάλογος οδηγού εκτυπωτή"
 
 #: addons/dashboard/systems_stats.tpl.c:2
 msgid "There are several argonaut servers! (this is not yet supported)"
-msgstr ""
+msgstr "Υπάρχουν αρκετοί εξυπηρετητές argonaut! (αυτός δεν υποστηρίζεται ακόμη)"
 
 #: addons/dashboard/systems_stats.tpl.c:5
 msgid "There is an argonaut server running on %1 (%3://%2:%4)"

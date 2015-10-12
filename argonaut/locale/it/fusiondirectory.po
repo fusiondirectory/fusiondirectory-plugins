@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Penati <penati@avaya.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
 "POT-Creation-Date: 2015-09-11 22:18+0200\n"
-"PO-Revision-Date: 2015-09-01 17:22+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"PO-Revision-Date: 2015-10-09 14:39+0000\n"
+"Last-Translator: Penati <penati@avaya.com>\n"
 "Language-Team: Italian (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -49,7 +50,7 @@ msgstr "Interfaccia usata da ragonaut per il WakeOnLan"
 
 #: admin/systems/argonaut/class_argonautClient.inc:136
 msgid "TaskId file"
-msgstr ""
+msgstr "File TaskId"
 
 #: admin/systems/argonaut/class_argonautClient.inc:136
 msgid "File which argonaut will use to store its task id when booting"
@@ -69,7 +70,7 @@ msgstr "Cartella nella quale il cliente argonaut scriverà i suoi log"
 #: admin/systems/argonaut/class_argonautClient.inc:148
 #: admin/systems/services/argonaut/class_argonautServer.inc:103
 msgid "SSL paths"
-msgstr ""
+msgstr "Percorsi SSL"
 
 #: admin/systems/argonaut/class_argonautClient.inc:151
 #: admin/systems/services/argonaut/class_argonautServer.inc:106
@@ -78,34 +79,34 @@ msgstr "Key"
 
 #: admin/systems/argonaut/class_argonautClient.inc:151
 msgid "Path to the private key file on Argonaut client"
-msgstr ""
+msgstr "Percorso del file contenente la chiave privata su Argonaut"
 
 #: admin/systems/argonaut/class_argonautClient.inc:156
 #: admin/systems/services/argonaut/class_argonautServer.inc:111
 msgid "Certificate"
-msgstr ""
+msgstr "Certificato"
 
 #: admin/systems/argonaut/class_argonautClient.inc:156
 msgid "Path to the certificate file on Argonaut client"
-msgstr ""
+msgstr "Percorso del file contenente il certificato sul cliente Argonaut"
 
 #: admin/systems/argonaut/class_argonautClient.inc:161
 #: admin/systems/services/argonaut/class_argonautServer.inc:116
 msgid "CA certificate"
-msgstr ""
+msgstr "Certificato CA"
 
 #: admin/systems/argonaut/class_argonautClient.inc:161
 msgid "Path to the CA certificate file on Argonaut client"
-msgstr ""
+msgstr "Percorso del file contenente il certificato CA sul cliente Argonaut "
 
 #: admin/systems/argonaut/class_argonautClient.inc:166
 #: admin/systems/services/argonaut/class_argonautServer.inc:121
 msgid "CN of the certificate"
-msgstr ""
+msgstr "CN del certificato"
 
 #: admin/systems/argonaut/class_argonautClient.inc:166
 msgid "The CN in this client certificate"
-msgstr ""
+msgstr "CN in questo certificato cliente"
 
 #: admin/systems/argonaut/class_argonautClient.inc:172
 msgid "Service names"
@@ -125,7 +126,7 @@ msgstr "Modificare le impostazioni del cliente argonaut"
 
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:30
 msgid "Argonaut Fuse"
-msgstr ""
+msgstr "Impostazioni Fuse di Argonaut"
 
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:31
 msgid "Argonaut Fuse settings"
@@ -166,11 +167,11 @@ msgstr "Impostazioni del mirror di Argonaut"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:44
 msgid "Local Debian mirror directory"
-msgstr ""
+msgstr "Elenco locale del mirror Debian"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:52
 msgid "Argonaut Debconf Crawler configuration"
-msgstr ""
+msgstr "Configurazione Debconf Crawler di Argonaut"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:55
 msgid "Local packages folder"
@@ -182,7 +183,7 @@ msgstr "Cartella in cui il crawler memorizzerà i pacchetti durante l'analisi"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:63
 msgid "Argonaut Repository configuration"
-msgstr ""
+msgstr "Configurazione del Repository di Argonaut"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:66
 msgid "Proxy"
@@ -190,21 +191,21 @@ msgstr "Proxy"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:67
 msgid "Specifies the http proxy (like Squid) to use for http and hftp method"
-msgstr ""
+msgstr "Specifica il proxy http (come Squid) per utilizzo metodo http e hftp"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:71
 msgid "Directory in which logs should be stored"
-msgstr ""
+msgstr "Directory in cui i registri devono essere conservati"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:76
 msgid "Ignore errors"
-msgstr ""
+msgstr "Ignorare gli errori"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:77
 msgid ""
 "Causes debmirror to ignore missing or broken deb and source files but still "
 "be pedantic about checking meta files"
-msgstr ""
+msgstr "CN nel certificato del server"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:82
 msgid "Source"
@@ -212,7 +213,7 @@ msgstr "Origine"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:82
 msgid "Include source in the mirror"
-msgstr ""
+msgstr "Includere la fonte nel mirror"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:87
 msgid "GPG Check"
@@ -220,7 +221,7 @@ msgstr "Verifica GPG"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:87
 msgid "Fail if the Release.gpg file is missing"
-msgstr ""
+msgstr "Fallimento se manca il file Release.gpg"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:92
 msgid "Contents"
@@ -230,7 +231,7 @@ msgstr "Contenuti"
 msgid ""
 "Additionally download Contents.<arch>.gz files (Note that these files can be"
 " relatively big and can change frequently)"
-msgstr ""
+msgstr "Contenuti addizionali scaricati. File <arch>.gz (N.B.: questi files possono essere relativamente grossi e possono cambiare frequentemente)"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:98
 msgid "Verbose"
@@ -282,7 +283,7 @@ msgstr "Se é vero o meno che il server argonaut dovrebbe cancellare le tasks te
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:55
 msgid "Get packages informations"
-msgstr ""
+msgstr "Ottenere pachetti d'informazioni"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:56
 msgid ""
@@ -334,19 +335,19 @@ msgstr "Strumento IP da usare"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:106
 msgid "Path to the private key file on Argonaut server"
-msgstr ""
+msgstr "Percorso del file contenente la chiave privata su Argonaut"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:111
 msgid "Path to the certificate file on Argonaut server"
-msgstr ""
+msgstr "Percorso del file contenente il certificato sul cliente Argonaut"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:116
 msgid "Path to the CA certificate file on Argonaut server"
-msgstr ""
+msgstr "Percorso del file contenente il certificato CA sul cliente Argonaut"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:121
 msgid "The CN in the server certificate"
-msgstr ""
+msgstr "CN in questo certificato cliente"
 
 #: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:32
 #: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:33
@@ -400,11 +401,11 @@ msgstr "La cartella nella quale le zone DNS saranno create"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:64
 msgid "Ignore reverse zone"
-msgstr ""
+msgstr "Ignorare zona inversa"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:64
 msgid "Do not write reverse zone"
-msgstr ""
+msgstr "Non scrivere, zona inversa"
 
 #: admin/systems/services/argonaut/class_argonautDNSConfig.inc:68
 msgid "Allow notify"
@@ -478,7 +479,7 @@ msgstr "Le voci selezionate saranno ignorate a causa di errori. Vuoi continuare?
 
 #: addons/argonaut/class_argonautImportFile.inc:134
 msgid "Infrastructure service"
-msgstr ""
+msgstr "Servizio d'infrastruttura"
 
 #: addons/argonaut/class_argonautImportFile.inc:141
 #, php-format
@@ -714,12 +715,12 @@ msgstr "Non c'è nessun server Argonaut configurato"
 #: include/class_supportDaemon.inc:627
 #, php-format
 msgid "Could not read \"%s\"!"
-msgstr ""
+msgstr "Impossibile analizzare \"%s\"!"
 
 #: include/class_supportDaemon.inc:631
 #, php-format
 msgid "\"%s\" is not a file!"
-msgstr ""
+msgstr "\"%s\" non é un file!"
 
 #: addons/argonaut/argonaut_import_file.tpl.c:2
 msgid "Import jobs"

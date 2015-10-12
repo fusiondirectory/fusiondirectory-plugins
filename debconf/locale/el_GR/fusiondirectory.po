@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
 "POT-Creation-Date: 2015-09-11 22:18+0200\n"
-"PO-Revision-Date: 2015-06-07 12:52+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"PO-Revision-Date: 2015-10-07 10:01+0000\n"
+"Last-Translator: Kostas Papadimas <pkst@eellak.gr>\n"
 "Language-Team: Greek (Greece) (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/el_GR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,11 +20,11 @@ msgstr ""
 #: admin/debconfProfile/class_debconfProfileManagement.inc:32
 #: admin/systems/debconf/class_debconfStartup.inc:111
 msgid "Debconf"
-msgstr ""
+msgstr "Debconf"
 
 #: admin/debconfProfile/class_debconfProfileManagement.inc:33
 msgid "Debconf profile management"
-msgstr ""
+msgstr "Διαχείριση προφίλ Debconf "
 
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:71
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:84
@@ -33,12 +33,12 @@ msgstr "Σφάλμα"
 
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:71
 msgid "There is no template for this profile"
-msgstr ""
+msgstr "Δεν υπάρχει πρότυπο για αυτό το προφίλ"
 
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:85
 #, php-format
 msgid "Can't find entry %s in LDAP for profile %s"
-msgstr ""
+msgstr "Αδυναμία εύρεσης της καταχώρισης%s στο LDAP για το προφίλ %s"
 
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:134
 msgid "LDAP error"
@@ -46,7 +46,7 @@ msgstr "LDAP Λάθος"
 
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:137
 msgid "LDIF error"
-msgstr ""
+msgstr "Σφάλμα LDIF"
 
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:146
 #, php-format
@@ -55,16 +55,16 @@ msgid ""
 "<br/><i>debconf2ldif.pl -b ou=<b>name</b>,%s -k <b>filename</b> > "
 "template.ldif </i><br/>With <b>filename</b> the file name, and <b>name</b> "
 "the desired name for the template.<br/>"
-msgstr ""
+msgstr "Για να εισάγεται ένα αρχείο debconf, παρακαλώ χρησιμοποιήστε την παρακάτω εντολή: br/><i>debconf2ldif.pl -b ou=<b>name</b>,%s -k <b>filename</b> > template.ldif </i><br/>Με <b>filename</b> το όνομα αρχείου, και <b>name</b> το επιθυμητό όνομα για το πρότυπο.<br/>"
 
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:162
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:166
 msgid "Debconf profile"
-msgstr ""
+msgstr "Προφίλ Debconf"
 
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:163
 msgid "Debconf profile information"
-msgstr ""
+msgstr "Πληροφορίες προφίλ Debconf "
 
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:181
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:184
@@ -74,64 +74,64 @@ msgstr "Όνομα"
 
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:183
 msgid "Import a debconf file"
-msgstr ""
+msgstr "Εισαγωγή ενός αρχείου debconf"
 
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:184
 msgid "Name of this debconf template"
-msgstr ""
+msgstr "Όνομα  για αυτό το πρότυπο debconf"
 
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:188
 msgid "Entries"
-msgstr ""
+msgstr "Καταχωρήσεις"
 
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:190
 msgid "Debconf template answers"
-msgstr ""
+msgstr "Απαντήσεις προτύπου Debconf"
 
 #: admin/debconfProfile/class_debconfProfileGeneric.inc:205
 msgid "Import"
-msgstr ""
+msgstr "Εισαγωγή"
 
 #: admin/systems/debconf/class_debconfStartup.inc:65
 msgid "Debconf settings"
-msgstr ""
+msgstr "Ρυθμίσεις Debconf"
 
 #: admin/systems/debconf/class_debconfStartup.inc:68
 msgid "Profile"
-msgstr ""
+msgstr "Προφίλ"
 
 #: admin/systems/debconf/class_debconfStartup.inc:68
 msgid "Debconf preseed profile to be used for installation"
-msgstr ""
+msgstr "Προφίλ Debconf preseed που θα χρησιμοποιηθεί για το πρότυπο"
 
 #: admin/systems/debconf/class_debconfStartup.inc:72
 msgid "Release"
-msgstr ""
+msgstr "Έκδοση"
 
 #: admin/systems/debconf/class_debconfStartup.inc:72
 msgid "Debian release to install"
-msgstr ""
+msgstr "Έκδοση Debian  για εγκατάσταση"
 
 #: admin/systems/debconf/class_debconfStartup.inc:77
 msgid "Boot kernel"
-msgstr ""
+msgstr "Boot kernel"
 
 #: admin/systems/debconf/class_debconfStartup.inc:77
 msgid "Linux kernel to be installed and booted"
-msgstr ""
+msgstr "Ο πυρήνας Linux που θα εγκατασταθεί και θα εκκινηθεί"
 
 #: admin/systems/debconf/class_debconfStartup.inc:81
 msgid "Boot kernel parameters"
-msgstr ""
+msgstr "Παράμετροι εκκίνησης πυρήνα "
 
 #: admin/systems/debconf/class_debconfStartup.inc:81
 msgid "Linux kernel parameters to be ran"
-msgstr ""
+msgstr "Παράμετροι εκκίνησης πυρήνα  Linux που θα εκτελεστούν"
 
 #: admin/systems/debconf/class_debconfStartup.inc:112
 msgid "Debconf preseed startup"
-msgstr ""
+msgstr "Debconf preseed startup"
 
 #: admin/debconfProfile/debconfProfile-filter.tpl.c:2
 msgid "Filter"
-msgstr ""
+msgstr "Φίλτρο"

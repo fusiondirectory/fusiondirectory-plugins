@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Nikos Charonitakis <charosn@her.forthnet.gr>, 2005
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
 "POT-Creation-Date: 2015-09-11 22:18+0200\n"
-"PO-Revision-Date: 2015-06-07 12:52+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"PO-Revision-Date: 2015-10-07 10:01+0000\n"
+"Last-Translator: Kostas Papadimas <pkst@eellak.gr>\n"
 "Language-Team: Greek (Greece) (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/el_GR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -31,42 +32,42 @@ msgstr "Σφάλμα"
 #: admin/systems/services/dns/class_serviceDNS.inc:82
 #, php-format
 msgid "Reverse zone: %s"
-msgstr ""
+msgstr "Αντίστροφη ζώνη: %s"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:83
 #, php-format
 msgid "TTL: %s"
-msgstr ""
+msgstr "TTL: %s"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:106
 #: admin/systems/services/dns/class_serviceDNS.inc:107
 msgid "ldap2zone"
-msgstr ""
+msgstr "ldap2zone"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:140
 msgid "DNS zones"
-msgstr ""
+msgstr "Ζώνες DNS"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:144
 msgid "The DNS zones"
-msgstr ""
+msgstr "Οι ζώνες DNS"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:156
 #: admin/systems/services/dns/class_serviceDNS.inc:157
 msgid "DNS service"
-msgstr ""
+msgstr "Υπηρεσία DNS"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:161
 msgid "Start service"
-msgstr ""
+msgstr "Εκκίνηση υπηρεσίας"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:162
 msgid "Stop service"
-msgstr ""
+msgstr "Τερματισμός υπηρεσίας"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:163
 msgid "Restart service"
-msgstr ""
+msgstr "Επανεκκίνηση υπηρεσίας"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:165
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:343
@@ -74,70 +75,70 @@ msgstr ""
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:364
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:5
 msgid "Zone name"
-msgstr ""
+msgstr "Όνομα ζώνης"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:166
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:352
 msgid "Reverse zone"
-msgstr ""
+msgstr "Αντίστροφη ζώνη"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:167
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:444
 msgid "Network class"
-msgstr ""
+msgstr "Κλάση δικτύου"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:168
 msgid "Zone entry editor"
-msgstr ""
+msgstr "Επεξεργαστής καταχώρισης ζώνης"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:169
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:356
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:368
 msgid "Primary dns server"
-msgstr ""
+msgstr "Πρωτεύων εξυπηρετητής dns"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:170
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:360
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:32
 msgid "Mail address"
-msgstr ""
+msgstr "Η διεύθυνση αλληλογραφίας"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:171
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:372
 msgid "Serial"
-msgstr ""
+msgstr "Σειριακό"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:172
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:376
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:38
 msgid "Refresh"
-msgstr ""
+msgstr "Ανανέωση"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:173
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:388
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:41
 msgid "Retry"
-msgstr ""
+msgstr "Προσπάθεια ξανά"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:174
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:384
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:44
 msgid "Expire"
-msgstr ""
+msgstr "Λήξη"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:175
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:47
 msgid "TTL"
-msgstr ""
+msgstr "TTL"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:176
 msgid "MX records"
-msgstr ""
+msgstr "ΕγγραφέςMX"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:177
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:17
 msgid "Zone records"
-msgstr ""
+msgstr "Εγγραφές ζώνης"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:239
 #: admin/systems/services/dns/class_serviceDNS.inc:253
@@ -145,17 +146,17 @@ msgstr ""
 #: admin/systems/services/dns/class_serviceDNS.inc:276
 #: admin/systems/services/dns/class_DNS.inc:734
 msgid "LDAP error"
-msgstr "LDAP Λάθος"
+msgstr "Σφάλμα LDAP"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:305
 #, php-format
 msgid "Was not able to contact argonaut server: <br/><br/>%s"
-msgstr ""
+msgstr "Αποτυχία επικοινωνίας με διακομιστή argonaut: <br/><br/>%s"
 
 #: admin/systems/services/dns/class_serviceDNS.inc:313
 #, php-format
 msgid "Was not able to launch ldap2zone: <br/><br/>%s"
-msgstr ""
+msgstr "Δεν ήταν δυνατή η εκκίνηση της ldap2zone: <br/><br/>%s"
 
 #: admin/systems/services/dns/class_DNS.inc:165
 #, php-format
@@ -170,39 +171,39 @@ msgstr ""
 #: admin/systems/services/dns/class_DNS.inc:621
 #, php-format
 msgid "Undefined zone name '%s'!"
-msgstr ""
+msgstr "Ακαθόριστο όνομα ζώνης  '%s'!"
 
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:244
 msgid "Warning"
-msgstr ""
+msgstr "Προειδοποίηση"
 
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:244
 msgid "MxRecord"
-msgstr ""
+msgstr "MxRecord"
 
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:274
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:526
 msgid "Delete"
-msgstr ""
+msgstr "Διαγραφή"
 
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:364
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:394
 msgid "Only lowercase allowed"
-msgstr ""
+msgstr "Επιτρέπονται μόνο πεζά"
 
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:368
 msgid "This field should be a domain name"
-msgstr ""
+msgstr "Αυτό το πεδίο θα πρέπει να είναι domain name"
 
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:380
 msgid "Time to life"
-msgstr ""
+msgstr "Χρόνος ζωής"
 
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:403
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:423
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:8
 msgid "Network address"
-msgstr ""
+msgstr "Διεύθυνση δικτύου"
 
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:431
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:436
@@ -215,17 +216,17 @@ msgstr ""
 #: admin/systems/services/dns/class_serviceDNSeditZone.inc:532
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:439
 msgid "Add"
-msgstr ""
+msgstr "Προσθήκη"
 
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:121
 #: admin/systems/services/dns/serviceDNSeditZoneEntries.tpl.c:8
 msgid "New entry"
-msgstr ""
+msgstr "Νέα καταχώριση"
 
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:229
 #, php-format
 msgid "Cannot rename '%s' to '%s'. Name is already in use!"
-msgstr ""
+msgstr "Αδύνατη η μετονομασία του αρχείου '%s' σε '%s': Το όνομα χρησιμοποιείται ήδη!"
 
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:260
 msgid "Name"
@@ -234,36 +235,36 @@ msgstr "Όνομα"
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:268
 #, php-format
 msgid "Cannot rename '%s' to '%s'. Entry is already in use."
-msgstr ""
+msgstr "Αδύνατη η μετονομασία του αρχείου '%s' σε '%s'. Η καταχώριση χρησιμοποιείται ήδη."
 
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:274
 #, php-format
 msgid "Cannot create '%s'. Entry is already in use."
-msgstr ""
+msgstr "Αδύνατη η δημιουργία του '%s'. Η καταχώριση χρησιμοποιείται ήδη"
 
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:282
 #, php-format
 msgid "Entry '%s' is used more than once."
-msgstr ""
+msgstr " Η καταχώριση '%s'  χρησιμοποιείται περισσότερο από μια φορά"
 
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:299
 #, php-format
 msgid "%s records cannot be used more than once."
-msgstr ""
+msgstr "οι εγγραφές %s δεν μπορούν να χρησιμοποιήθηκε περισσότερο από μία φορά"
 
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:305
 #, php-format
 msgid "Please fix the empty %s record for entry '%s'."
-msgstr ""
+msgstr "Παρακαλούμε διορθώστε την κενή εγγραφή %s  για την καταχώριση '%s'."
 
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:312
 #, php-format
 msgid "Please fix the duplicate %s record for entry '%s'."
-msgstr ""
+msgstr "Παρακαλούμε διορθώστε την διπλή εγγραφή %s  για την καταχώριση '%s'."
 
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:441
 msgid "Remove"
-msgstr ""
+msgstr "Αφαίρεση"
 
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:492
 #, php-format
@@ -272,7 +273,7 @@ msgstr ""
 
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:492
 msgid "Example"
-msgstr ""
+msgstr "Παράδειγμα"
 
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:498
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:506
@@ -297,7 +298,7 @@ msgstr ""
 
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:524
 msgid "Value 1 should be a number."
-msgstr ""
+msgstr "Η τιμή 1 θα έπρεπε να είναι αριθμός."
 
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:527
 msgid "Value 2 should be a DNS name."
@@ -309,15 +310,15 @@ msgstr ""
 
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:550
 msgid "Value 1 (priority) should be a number."
-msgstr ""
+msgstr "Η τιμή 1 (προτεραιότητα) θα έπρεπε να είναι αριθμός."
 
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:553
 msgid "Value 2 (weight) should be a number."
-msgstr ""
+msgstr "Η τιμή 2 (βάρος) θα έπρεπε να είναι αριθμός."
 
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:556
 msgid "Value 3 (port) should be a number."
-msgstr ""
+msgstr "Η τιμή 3 (θύρα) θα έπρεπε να είναι αριθμός."
 
 #: admin/systems/services/dns/class_serviceDNSeditZoneEntries.inc:559
 msgid "Value 4 (target) should be a DNS name."
@@ -329,19 +330,19 @@ msgstr ""
 
 #: config/dns/class_dnsConfig.inc:28
 msgid "DNS configuration"
-msgstr ""
+msgstr "Ρύθμιση DNS"
 
 #: config/dns/class_dnsConfig.inc:29
 msgid "FusionDirectory dns plugin configuration"
-msgstr ""
+msgstr "Ρύθμιση προσθέτου FusionDirectory dns "
 
 #: config/dns/class_dnsConfig.inc:42
 msgid "DNS config"
-msgstr ""
+msgstr "Ρύθμιση DNS"
 
 #: config/dns/class_dnsConfig.inc:45
 msgid "Store final dot in domains"
-msgstr ""
+msgstr "Αποθήκευση τελικής τελείας στα domains"
 
 #: config/dns/class_dnsConfig.inc:45
 msgid "Should FD store a final dot at the end of domains?"
@@ -349,53 +350,53 @@ msgstr ""
 
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:2
 msgid "Generic"
-msgstr ""
+msgstr "Γενικό"
 
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:11
 msgid "Netmask"
-msgstr ""
+msgstr "Μάσκα δικτύου"
 
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:14
 msgid "Zone is in use, network settings can't be modified."
-msgstr ""
+msgstr "Η ζώνη ειναι ήδη σε χρήση, οι ρυθμίσεις δικτύου δεν μπορούν να τροποποιηθούν"
 
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:20
 msgid "Can't be edited because the zone wasn't saved right now."
-msgstr ""
+msgstr "Αποτυχία επεξεργασίας επειδή δεν είναι δυνατή αποθ'ηκευσης ζώνης αυτή την στιγμή"
 
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:23
 msgid "Edit"
-msgstr ""
+msgstr "Επεξεργασία"
 
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:26
 msgid "SOA record"
-msgstr ""
+msgstr "Εγγραφή SOA "
 
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:29
 msgid "Primary dns server for this zone"
-msgstr ""
+msgstr "Πρωτεύων εξυπηρετητής DNS για αυτή την ζώνη"
 
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:35
 msgid "Serial number (automatically incremented)"
-msgstr ""
+msgstr "Σειριακός αριθμός (αυτόματη αύξηση)"
 
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:50
 msgid "MxRecords"
-msgstr ""
+msgstr "Εγγραφές Mx"
 
 #: admin/systems/services/dns/serviceDNSeditZone.tpl.c:53
 msgid "Global zone records"
-msgstr ""
+msgstr "Εγγραφές Global zone"
 
 #: admin/systems/services/dns/serviceDNS.tpl.c:2
 msgid "Zones"
-msgstr ""
+msgstr "Ζώνες"
 
 #: admin/systems/services/dns/serviceDNSeditZoneEntries.tpl.c:2
 msgid ""
 "This dialog allows you to configure all components of this DNS zone on a "
 "single list."
-msgstr ""
+msgstr "Αυτός ο διάλογος σας επιτρέπει τον καθορισμό όλων στοιχείων αυτής της ζώνης DNS σε μια λίστα"
 
 #: admin/systems/services/dns/serviceDNSeditZoneEntries.tpl.c:5
 msgid ""
@@ -405,4 +406,4 @@ msgstr ""
 
 #: admin/systems/services/dns/serviceDNSeditZoneEntries.tpl.c:11
 msgid "Create a new DNS zone entry"
-msgstr ""
+msgstr "Νέα καταχώρηση ζώνης DNS"

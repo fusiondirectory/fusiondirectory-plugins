@@ -3,13 +3,16 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Manolis Saldaris <Ustramator@gmail.com>, 2015
+# test <pkostas@gmail.com>, 2015
+# Thanasis Angelogeorgos <thaggel@gmail.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
 "POT-Creation-Date: 2015-09-11 22:19+0200\n"
-"PO-Revision-Date: 2015-05-30 18:40+0000\n"
-"Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
+"PO-Revision-Date: 2015-10-12 12:49+0000\n"
+"Last-Translator: Manolis Saldaris <Ustramator@gmail.com>\n"
 "Language-Team: Greek (Greece) (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/el_GR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,51 +24,51 @@ msgstr ""
 #: personal/mail/class_mailAccount.inc:79
 #: config/mail/class_mailPluginConfig.inc:28
 msgid "Mail"
-msgstr ""
+msgstr "Αλληλογραφία"
 
 #: admin/groups/mail/class_groupMail.inc:47
 msgid "Group mail options"
-msgstr ""
+msgstr "Επιλογές ομάδων αλληλογραφίας"
 
 #: admin/groups/mail/class_groupMail.inc:79
 #: admin/systems/services/postfix/class_servicePostfix.inc:44
 msgid "Informations"
-msgstr ""
+msgstr "Πληροφορίες"
 
 #: admin/groups/mail/class_groupMail.inc:82
 #: personal/mail/class_mailAccount.inc:100
 msgid "Primary address"
-msgstr ""
+msgstr "Κύρια διεύθυνση"
 
 #: admin/groups/mail/class_groupMail.inc:82
 msgid "The primary mail address"
-msgstr ""
+msgstr "Κύρια διεύθυνση αλληλογραφίας"
 
 #: admin/groups/mail/class_groupMail.inc:86
 #: personal/mail/class_mailAccount.inc:104
 msgid "Server"
-msgstr ""
+msgstr "Διακομιστής"
 
 #: admin/groups/mail/class_groupMail.inc:86
 msgid "Server mail"
-msgstr ""
+msgstr "Διακομιστής αλληλογραφίας"
 
 #: admin/groups/mail/class_groupMail.inc:92
 #: personal/mail/class_mailAccount.inc:120
 msgid "Alternative addresses"
-msgstr ""
+msgstr "Εναλλακτικές διευθύνσεις"
 
 #: admin/groups/mail/class_groupMail.inc:92
 msgid "Alternative mail addresses for the group"
-msgstr ""
+msgstr "Εναλλακτική διεύθυνση e-mail για αυτή την ομάδα"
 
 #: admin/groups/mail/class_groupMail.inc:97
 msgid "Forward messages to non group members"
-msgstr ""
+msgstr "Προώθηση μηνυμάτων στα μη μέλη της ομάδας"
 
 #: admin/groups/mail/class_groupMail.inc:101
 msgid "Only allowed to receive local mail"
-msgstr ""
+msgstr "Επιτρέπεται να λαμβάνουν μόνο τοπική αλληλογραφία"
 
 #: admin/groups/mail/class_groupMail.inc:101
 msgid ""
@@ -76,156 +79,156 @@ msgstr ""
 #: admin/systems/services/postfix/class_servicePostfix.inc:29
 #: admin/systems/services/postfix/class_servicePostfix.inc:30
 msgid "Postfix (SMTP)"
-msgstr ""
+msgstr "Postfix (SMTP)"
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:30
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:34
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:32
 #: admin/systems/services/imap/class_serviceIMAP.inc:33
 msgid "Services"
-msgstr ""
+msgstr "Υπηρεσίες"
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:47
 msgid "Hostname"
-msgstr ""
+msgstr "Όνομα συστήματος"
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:47
 msgid "The host name."
-msgstr ""
+msgstr "Όνομα Συστήματος."
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:52
 msgid "Domain"
-msgstr ""
+msgstr "Τομέας"
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:52
 msgid "The domain."
-msgstr ""
+msgstr "Ο τομέας"
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:57
 msgid "Max mail header size (KB)"
-msgstr ""
+msgstr "Μέγιστο μέγεθος κεφαλίδας email (KB) "
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:57
 msgid "This value specifies the maximal header size."
-msgstr ""
+msgstr "Αυτή η τιμή καθορίζει το μέγιστο μέγεθος κεφαλίδας."
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:62
 msgid "Max mailbox size (KB)"
-msgstr ""
+msgstr "Μέγιστο μέγεθος mailbox (KB)"
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:62
 msgid "Defines the maximal size of mail box."
-msgstr ""
+msgstr "Καθορίστε το μέγιστο μέγεθος του mail box."
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:67
 msgid "Max message size (KB)"
-msgstr ""
+msgstr "Μέγιστο μέγεθος μηνύματος (KB)"
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:67
 msgid "Specify the maximal size of a message."
-msgstr ""
+msgstr "Καθορίστε το μέγιστο μέγεθος του μηνύματος."
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:74
 msgid "Domains and routing"
-msgstr ""
+msgstr "Domains και δρομολόγηση"
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:78
 msgid "Domains to accept mail for"
-msgstr ""
+msgstr "Τομείς για τους οποίους λαμβάνεται αλληλογραφία"
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:78
 msgid "Postfix networks"
-msgstr ""
+msgstr "Δίκτυα Postfix"
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:83
 msgid "Transport table"
-msgstr ""
+msgstr "Πίνακας διακίνησης"
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:88
 msgid "Transport rule"
-msgstr ""
+msgstr "Κανόνας διακίνησης"
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:102
 msgid "Restrictions"
-msgstr ""
+msgstr "Περιορισμοί"
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:106
 msgid "Restrictions for sender"
-msgstr ""
+msgstr "Περιορισμοί για τον αποστολέα"
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:115
 msgid "For sender"
-msgstr ""
+msgstr "Για τον αποστολέα"
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:120
 msgid "Restrictions for recipient"
-msgstr ""
+msgstr "Περιορισμοί για τον παραλήπτη"
 
 #: admin/systems/services/postfix/class_servicePostfix.inc:129
 msgid "For recipient"
-msgstr ""
+msgstr "Για τον παραλήπτη"
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:33
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:34
 msgid "Spamassassin service"
-msgstr ""
+msgstr "Υπηρεσία Spamassassin"
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:48
 msgid "Spam tagging"
-msgstr ""
+msgstr "Σήμανση spam"
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:51
 msgid "Rewrite header"
-msgstr ""
+msgstr "Επαναγραφή κεφαλίδας"
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:55
 msgid "Required score"
-msgstr ""
+msgstr "Απαιτούμενη βαθμολογία"
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:55
 msgid "Select required score to tag mail as spam"
-msgstr ""
+msgstr "Επιλέξτε την απαιτούμενη βαθμολογία για να χαρακτηριστεί ένα μήνυμα ως spam"
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:61
 msgid "Trusted networks"
-msgstr ""
+msgstr "Έμπιστα δίκτυα"
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:68
 msgid "Flags"
-msgstr ""
+msgstr "Σημάνσεις"
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:71
 msgid "Enable use of bayes filtering"
-msgstr ""
+msgstr "Επιτρέπεται η χρήση φίλτρου bayes"
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:76
 msgid "Enable bayes auto learning"
-msgstr ""
+msgstr "Επιτρέπεται η αυτόματη εκπαίδευση bayes"
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:81
 msgid "Enable RBL checks"
-msgstr ""
+msgstr "Επιτρέπονται έλεγχοι σε λίστες RBL"
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:86
 msgid "Enable use of Razor"
-msgstr ""
+msgstr "Επιτρέπεται η χρήση Razor"
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:91
 msgid "Enable use of DCC"
-msgstr ""
+msgstr "Επιτρέπεται η χρήση DCC"
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:96
 msgid "Enable use of Pyzor"
-msgstr ""
+msgstr "Επιτρέπεται η χρήση Pyzor"
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:111
 msgid "Rules"
-msgstr ""
+msgstr "Κανόνες"
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:115
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:123
 msgid "Edit spam rule"
-msgstr ""
+msgstr "Επεξεργασία κανόνα spam"
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:118
 msgid "Name"
@@ -233,48 +236,48 @@ msgstr "Όνομα"
 
 #: admin/systems/services/spam/class_serviceSpamAssassin.inc:119
 msgid "Rule"
-msgstr ""
+msgstr "Κανόνας"
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:31
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:32
 msgid "Antivirus service"
-msgstr ""
+msgstr "Υπηρεσία Antivirus"
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:46
 msgid "Virus filtering"
-msgstr ""
+msgstr "Φιλράρισμα ιών"
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:49
 msgid "Database user"
-msgstr ""
+msgstr "Χρήστης βάσης δεδομένων"
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:49
 msgid "User name for the database"
-msgstr ""
+msgstr "Όνομα χρήστη για τη Βάση Δεδομάνων"
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:53
 msgid "Database mirror"
-msgstr ""
+msgstr "Αντίγραφο βάσης δεδομένων"
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:53
 msgid "Mirror for the database"
-msgstr ""
+msgstr "Το ακριβές αντίγραφο της βάσης δεδομένων"
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:57
 msgid "Http proxy URL"
-msgstr ""
+msgstr "Το URL του Http proxy"
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:57
 msgid "URL for the proxy"
-msgstr ""
+msgstr "Το URL του proxy"
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:61
 msgid "Maximum threads"
-msgstr ""
+msgstr "Μέγιστο νημάτων"
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:61
 msgid "Maximum number of threads"
-msgstr ""
+msgstr "Ο μέγιστος αριθμός νημάτων"
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:67
 msgid "Max directory recursions"
@@ -286,23 +289,23 @@ msgstr ""
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:72
 msgid "Checks per day"
-msgstr ""
+msgstr "Έλεγχοι ανά μέρα"
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:77
 msgid "Enable debugging"
-msgstr ""
+msgstr "Ενεργοποίηση debugging"
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:77
 msgid "Enable debugging for the antivirus"
-msgstr ""
+msgstr "Ενεργοποίηση debugging για το antivirus"
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:82
 msgid "Enable mail scanning"
-msgstr ""
+msgstr "Ενεργοποίηση σάρωσης e-mail"
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:82
 msgid "Enable mail scanning for the antivirus"
-msgstr ""
+msgstr "Ενεργοποίηση σάρωσης e-mail για το antivirus"
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:89
 msgid "Archive scanning"
@@ -318,15 +321,15 @@ msgstr ""
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:102
 msgid "Maximum file size"
-msgstr ""
+msgstr "Μέγιστο μέγεθος αρχείου"
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:107
 msgid "Maximum recursion"
-msgstr ""
+msgstr "Μέγιστες επαναλήψεις "
 
 #: admin/systems/services/virus/class_serviceAntiVirus.inc:112
 msgid "Maximum compression ratio"
-msgstr ""
+msgstr "Μέγιστη συμπίεση"
 
 #: admin/systems/services/imap/class_serviceIMAP.inc:32
 msgid "IMAP/POP3 generic service"
@@ -334,12 +337,12 @@ msgstr ""
 
 #: admin/systems/services/imap/class_serviceIMAP.inc:33
 msgid "IMAP/POP3"
-msgstr ""
+msgstr "IMAP/POP3"
 
 #: personal/mail/class_mail-methods.inc:155
 #: personal/mail/class_mail-methods.inc:516
 msgid "Configuration error"
-msgstr ""
+msgstr "Σφάλμα ρύθμισης"
 
 #: personal/mail/class_mail-methods.inc:156
 #, php-format
@@ -358,7 +361,7 @@ msgstr "Κανένα"
 
 #: personal/mail/class_mail-methods.inc:816
 msgid "Unknown"
-msgstr ""
+msgstr "Άγνωστο"
 
 #: personal/mail/class_mail-methods.inc:818
 msgid "Unlimited"
@@ -444,7 +447,7 @@ msgstr ""
 
 #: personal/mail/class_mailAccount.inc:145
 msgid "till"
-msgstr ""
+msgstr "εως"
 
 #: personal/mail/class_mailAccount.inc:156
 msgid "Spam options"
@@ -630,4 +633,4 @@ msgstr ""
 
 #: config/mail/class_mailPluginConfig.inc:108
 msgid "Generic"
-msgstr ""
+msgstr "Γενικό"
