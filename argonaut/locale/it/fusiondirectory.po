@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
 "POT-Creation-Date: 2015-09-11 22:18+0200\n"
-"PO-Revision-Date: 2015-10-07 08:26+0000\n"
+"PO-Revision-Date: 2015-10-09 14:39+0000\n"
 "Last-Translator: Penati <penati@avaya.com>\n"
 "Language-Team: Italian (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -106,7 +106,7 @@ msgstr "CN del certificato"
 
 #: admin/systems/argonaut/class_argonautClient.inc:166
 msgid "The CN in this client certificate"
-msgstr ""
+msgstr "CN in questo certificato cliente"
 
 #: admin/systems/argonaut/class_argonautClient.inc:172
 msgid "Service names"
@@ -126,7 +126,7 @@ msgstr "Modificare le impostazioni del cliente argonaut"
 
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:30
 msgid "Argonaut Fuse"
-msgstr ""
+msgstr "Impostazioni Fuse di Argonaut"
 
 #: admin/systems/services/argonaut/class_argonautFuseConfig.inc:31
 msgid "Argonaut Fuse settings"
@@ -171,7 +171,7 @@ msgstr "Elenco locale del mirror Debian"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:52
 msgid "Argonaut Debconf Crawler configuration"
-msgstr ""
+msgstr "Configurazione Debconf Crawler di Argonaut"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:55
 msgid "Local packages folder"
@@ -183,7 +183,7 @@ msgstr "Cartella in cui il crawler memorizzerà i pacchetti durante l'analisi"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:63
 msgid "Argonaut Repository configuration"
-msgstr ""
+msgstr "Configurazione del Repository di Argonaut"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:66
 msgid "Proxy"
@@ -191,11 +191,11 @@ msgstr "Proxy"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:67
 msgid "Specifies the http proxy (like Squid) to use for http and hftp method"
-msgstr ""
+msgstr "Specifica il proxy http (come Squid) per utilizzo metodo http e hftp"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:71
 msgid "Directory in which logs should be stored"
-msgstr ""
+msgstr "Directory in cui i registri devono essere conservati"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:76
 msgid "Ignore errors"
@@ -205,7 +205,7 @@ msgstr "Ignorare gli errori"
 msgid ""
 "Causes debmirror to ignore missing or broken deb and source files but still "
 "be pedantic about checking meta files"
-msgstr ""
+msgstr "CN nel certificato del server"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:82
 msgid "Source"
@@ -221,7 +221,7 @@ msgstr "Verifica GPG"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:87
 msgid "Fail if the Release.gpg file is missing"
-msgstr ""
+msgstr "Fallimento se manca il file Release.gpg"
 
 #: admin/systems/services/argonaut/class_argonautMirrorConfig.inc:92
 msgid "Contents"
@@ -283,7 +283,7 @@ msgstr "Se é vero o meno che il server argonaut dovrebbe cancellare le tasks te
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:55
 msgid "Get packages informations"
-msgstr ""
+msgstr "Ottenere pachetti d'informazioni"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:56
 msgid ""
@@ -335,19 +335,19 @@ msgstr "Strumento IP da usare"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:106
 msgid "Path to the private key file on Argonaut server"
-msgstr ""
+msgstr "Percorso del file contenente la chiave privata su Argonaut"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:111
 msgid "Path to the certificate file on Argonaut server"
-msgstr ""
+msgstr "Percorso del file contenente il certificato sul cliente Argonaut"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:116
 msgid "Path to the CA certificate file on Argonaut server"
-msgstr ""
+msgstr "Percorso del file contenente il certificato CA sul cliente Argonaut"
 
 #: admin/systems/services/argonaut/class_argonautServer.inc:121
 msgid "The CN in the server certificate"
-msgstr ""
+msgstr "CN in questo certificato cliente"
 
 #: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:32
 #: admin/systems/services/argonaut/class_argonautFuseOPSIConfig.inc:33

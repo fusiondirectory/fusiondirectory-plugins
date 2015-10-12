@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
 "POT-Creation-Date: 2015-09-11 22:18+0200\n"
-"PO-Revision-Date: 2015-10-09 07:44+0000\n"
+"PO-Revision-Date: 2015-10-09 11:56+0000\n"
 "Last-Translator: Manolis Saldaris <Ustramator@gmail.com>\n"
 "Language-Team: Greek (Greece) (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/el_GR/)\n"
 "MIME-Version: 1.0\n"
@@ -156,7 +156,7 @@ msgstr "Επέκταση"
 
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:48
 msgid "Fold DHCP subnet"
-msgstr ""
+msgstr "Συρρίκνωση υποδικτύου DHCP"
 
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:49
 msgid "Fold"
@@ -191,7 +191,7 @@ msgstr ""
 
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:433
 msgid "The DHCP sections handled by this server"
-msgstr ""
+msgstr "Τα τμήματα του DHCP που διαχειρίζεται αυτός ο διακομιστής."
 
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:444
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:445
@@ -212,7 +212,7 @@ msgstr "Επανεκκίνηση υπηρεσίας"
 
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:459
 msgid "Logging"
-msgstr "Logging"
+msgstr "Καταγραφή"
 
 #: admin/systems/services/dhcp/class_serviceDHCP.inc:461
 msgid "Class"
@@ -265,7 +265,7 @@ msgstr "Σφάλμα LDAP"
 #: admin/systems/services/dhcp/class_dhcpNetwork.inc:197
 #: admin/systems/services/dhcp/dhcp_network.tpl.c:14
 msgid "Broadcast"
-msgstr "Broadcast"
+msgstr "Εκπομπή"
 
 #: admin/systems/services/dhcp/class_dhcpNetwork.inc:202
 #, php-format
@@ -278,7 +278,7 @@ msgstr "HMAC-MD5"
 
 #: admin/systems/services/dhcp/class_dhcpTSigKey.inc:51
 msgid "RSAMD5"
-msgstr ""
+msgstr "RSAMD5"
 
 #: admin/systems/services/dhcp/class_dhcpTSigKey.inc:51
 msgid "RSASHA1"
@@ -306,12 +306,12 @@ msgstr "Κλειδί"
 #: admin/systems/services/dhcp/class_dhcpSharedNetwork.inc:157
 #: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl.c:35
 msgid "Max. lease time"
-msgstr ""
+msgstr "Μέγιστος χρόνος διατήρησης"
 
 #: admin/systems/services/dhcp/class_dhcpSharedNetwork.inc:158
 #: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl.c:44
 msgid "Min. lease time"
-msgstr ""
+msgstr "Ελάχιστος χρόνος διατήρησης"
 
 #: admin/systems/services/dhcp/dhcp_group.tpl.c:2
 #: admin/systems/services/dhcp/dhcp_service.tpl.c:2
@@ -324,35 +324,35 @@ msgstr "Γενικό"
 
 #: admin/systems/services/dhcp/dhcp_group.tpl.c:8
 msgid "Name of group"
-msgstr ""
+msgstr "Όνομα αμάδας"
 
 #: admin/systems/services/dhcp/dhcp_service.tpl.c:5
 msgid "Authoritative service"
-msgstr ""
+msgstr "Υπηρεσία πιστοποίησης"
 
 #: admin/systems/services/dhcp/dhcp_service.tpl.c:8
 msgid "Dynamic DNS update"
-msgstr ""
+msgstr "Δυναμική ενημέρωση DNS"
 
 #: admin/systems/services/dhcp/dhcp_service.tpl.c:11
 msgid "Dynamic DNS update style"
-msgstr ""
+msgstr "Τρόπος δυναμικής ενημέρωσης του DNS"
 
 #: admin/systems/services/dhcp/dhcp_service.tpl.c:14
 msgid "Default lease time (s)"
-msgstr ""
+msgstr "Προκαθορισμένος χρόνος διατήρησης (δευτ.)"
 
 #: admin/systems/services/dhcp/dhcp_service.tpl.c:17
 msgid "Enter default lease time in seconds."
-msgstr ""
+msgstr "Εισάγετε τον προκαθορισμένο χρόνο διατήρησης σε δευτερόλεπτα."
 
 #: admin/systems/services/dhcp/dhcp_service.tpl.c:20
 msgid "Maximum lease time (s)"
-msgstr ""
+msgstr "Μέγιστος χρόνος διατήρησης (δευτ.)"
 
 #: admin/systems/services/dhcp/dhcp_service.tpl.c:23
 msgid "Enter maximum lease time in seconds."
-msgstr ""
+msgstr "Εισάγετε τον μέγιστο χρόνο διατήρησης σε δευτερόλεπτα."
 
 #: admin/systems/services/dhcp/dhcp_network.tpl.c:2
 msgid "Network configuration"
@@ -364,11 +364,11 @@ msgstr "Δρομολογητής"
 
 #: admin/systems/services/dhcp/dhcp_network.tpl.c:8
 msgid "Enter name or IP address of router to be used in this section"
-msgstr ""
+msgstr "Εισάγετε το όνομα ή τη διεύθυνση δικτύου (IP) του δρομολογητή, ο οποίος θα χρησιμοποιηθεί σ'αυτή την ενότητα"
 
 #: admin/systems/services/dhcp/dhcp_network.tpl.c:17
 msgid "Bootup"
-msgstr ""
+msgstr "Εκκίνηση"
 
 #: admin/systems/services/dhcp/dhcp_network.tpl.c:20
 msgid "Filename"
@@ -377,7 +377,7 @@ msgstr "Όνομα αρχείου"
 #: admin/systems/services/dhcp/dhcp_network.tpl.c:23
 msgid ""
 "Enter name of file that will be loaded via tftp after client has started"
-msgstr ""
+msgstr "Δώστε το όνομα του αρχείου που θα φορτωθεί μέσω TFTP, μετά την εκκινηση του υπολογιστή-πελάτη"
 
 #: admin/systems/services/dhcp/dhcp_network.tpl.c:26
 msgid "Next server"
@@ -385,7 +385,7 @@ msgstr "Επόμενος διακομιστής"
 
 #: admin/systems/services/dhcp/dhcp_network.tpl.c:29
 msgid "Enter name of server to retrieve bootimages from"
-msgstr ""
+msgstr "Δώστε το όνομα του διακομιστή, από τον οποίο θα ανακτηθεί το αρχείο εκκίνησης συστήματος"
 
 #: admin/systems/services/dhcp/dhcp_network.tpl.c:32
 msgid "Domain Name Service"
@@ -401,23 +401,23 @@ msgstr "Όνομα του τομέα"
 
 #: admin/systems/services/dhcp/dhcp_network.tpl.c:44
 msgid "List of DNS servers to be propagated"
-msgstr ""
+msgstr "Κατάλογος διακομιστών DNS, οι οποίοι θα αναπαραχθούν"
 
 #: admin/systems/services/dhcp/dhcp_network.tpl.c:47
 msgid "DNS server do be added"
-msgstr ""
+msgstr "Διακομιστές DNS που θα προστεθούν"
 
 #: admin/systems/services/dhcp/dhcp_network.tpl.c:50
 msgid "Click here add the selected server to the list"
-msgstr ""
+msgstr "Επιλέξτε εδώ για να προσθέσετε τον επιλεγμένο διακομιστή στον κατάλογο"
 
 #: admin/systems/services/dhcp/dhcp_network.tpl.c:53
 msgid "Click here remove the selected servers from the list"
-msgstr ""
+msgstr "Επιλέξτε εδώ για να αφαιρέσετε τον επιλεγμένο διακομιστή στον κατάλογο"
 
 #: admin/systems/services/dhcp/dhcp_network.tpl.c:56
 msgid "Domain Name Service options"
-msgstr ""
+msgstr "Επιλογές DNS"
 
 #: admin/systems/services/dhcp/dhcp_network.tpl.c:59
 msgid "Assign hostnames found via reverse mapping"
@@ -433,7 +433,7 @@ msgstr ""
 
 #: admin/systems/services/dhcp/dhcp_dnszone.tpl.c:2
 msgid "DNS update zone"
-msgstr ""
+msgstr "Ζώνη ανανέωσης DNS"
 
 #: admin/systems/services/dhcp/remove_dhcp.tpl.c:2
 msgid "Warning"
@@ -459,11 +459,11 @@ msgstr "Όνομα κλειδιού"
 
 #: admin/systems/services/dhcp/dhcp_tsigkey.tpl.c:11
 msgid "Encryption method"
-msgstr ""
+msgstr "Μέθοδος κρυπτογράφησης"
 
 #: admin/systems/services/dhcp/dhcp_pool.tpl.c:8
 msgid "Name of pool"
-msgstr ""
+msgstr "Όνομα ομάδας"
 
 #: admin/systems/services/dhcp/dhcpNewSection.tpl.c:2
 msgid "Create new DHCP section"
@@ -479,7 +479,7 @@ msgstr "Ενότητα"
 
 #: admin/systems/services/dhcp/dhcpNewSection.tpl.c:11
 msgid "Choose section type to create"
-msgstr ""
+msgstr "Επιλέξτε το είδος της ενότητας που θα δημιουργηθεί"
 
 #: admin/systems/services/dhcp/dhcpNewSection.tpl.c:14
 msgid "Create"
@@ -487,7 +487,7 @@ msgstr "Δημιουργία"
 
 #: admin/systems/services/dhcp/dhcp_advanced.tpl.c:2
 msgid "Hide advanced settings"
-msgstr ""
+msgstr "Απόκρυψη προχωρημένων ρυθμίσεων"
 
 #: admin/systems/services/dhcp/dhcp_advanced.tpl.c:5
 msgid "DHCP statements"
@@ -495,19 +495,19 @@ msgstr ""
 
 #: admin/systems/services/dhcp/dhcp_advanced.tpl.c:8
 msgid "DHCP options"
-msgstr ""
+msgstr "Επιλογές DHCP"
 
 #: admin/systems/services/dhcp/dhcp_advanced.tpl.c:11
 msgid "Show advanced settings"
-msgstr ""
+msgstr "Εμφάνιση προχωρημένων ρυθμίσεων"
 
 #: admin/systems/services/dhcp/dhcp_host.tpl.c:8
 msgid "Name of host"
-msgstr ""
+msgstr "Ονομασία φορέα (host)"
 
 #: admin/systems/services/dhcp/dhcp_host.tpl.c:11
 msgid "Fixed address"
-msgstr ""
+msgstr "Μόνιμη διεύθυνση"
 
 #: admin/systems/services/dhcp/dhcp_host.tpl.c:14
 msgid "Use hostname or IP-address to assign fixed address"
@@ -519,7 +519,7 @@ msgstr "Τύπος υλικού"
 
 #: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl.c:8
 msgid "Name for shared network"
-msgstr ""
+msgstr "Ονομασία του κοινόχρηστου δικτύου"
 
 #: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl.c:11
 msgid "Server identifier"
@@ -557,7 +557,7 @@ msgstr "Έλεγχος πρόσβασης"
 
 #: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl.c:56
 msgid "Select if unknown clients should get dynamic IP addresses"
-msgstr ""
+msgstr "Επιλέξτε αν οι άγνωστοι πελάτες θα λαμβάνουν δυναμικές διευθύνσεις IP"
 
 #: admin/systems/services/dhcp/dhcp_sharedNetwork.tpl.c:59
 msgid "Allow unknown clients"
