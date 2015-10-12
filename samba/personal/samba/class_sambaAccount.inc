@@ -315,7 +315,7 @@ class sambaAccount extends simplePlugin
           ),
           new DialogButtonAttribute (
             _('Samba logon times'), _('What is the allowed time to connect'),
-            'sambaLogonHours', FALSE, 'SambaLogonHoursDialog', _('Edit settings')
+            'sambaLogonHours', _('Edit settings'), 'SambaLogonHoursDialog'
           ),
           /* Unused attributes, that needs to appear in attributes array in order to be
            * removed when disabling the samba tab */

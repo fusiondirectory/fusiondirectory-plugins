@@ -22,28 +22,29 @@
 <h1>{t}Specify the hours this user is allowed to log in{/t}</h1>
 <br>
 
-<tablestyle='border: solid 1px #B0B0B0; background-color: #EEEEEE; width :100%; border-collapse:collapse; border-spacing:0;' >
+<table style="border: solid 1px #B0B0B0; background-color: #EEEEEE; width :100%; border-collapse:collapse; border-spacing:0;" >
   <tr>
     <td>&nbsp;</td>
-    <td colspan=24 style='text-align:center;height:24px;border-bottom: solid 1px #B0B0B0;'><b>{t}Hour{/t}</b></td>
+    <td colspan="25" style="text-align:center;height:24px;border-bottom: solid 1px #B0B0B0;"><b>{t}Hour{/t}</b></td>
   </tr>
   <tr>
-    <td style='text-align: left;' class='list0'>&nbsp;</td>
+    <td style="text-align: left;" class="list0">&nbsp;</td>
     {foreach from=$Hours item=hours key=key_hours}
       {if (($hours)%2)==0}
         <td style="text-align:center;height: 22px; background-color: rgb(226, 226, 226); ">
       {else}
         <td style="text-align:center;height: 22px; background-color: rgb(245, 245, 245); border-right: solid 1px #B0B0B0;">
       {/if}
-      {$hours}
-    </td>
+          {$hours}
+        </td>
     {/foreach}
+    <td></td>
   </tr>
 
 {if $acl}
   <!-- Add toggle buttons for hours -->
   <tr>
-    <td style='text-align: left;' class='list0'>
+    <td style="text-align: left;" class="list0">
       &nbsp;
     </td>
     {foreach from=$Hours item=hours key=key_hours}
@@ -53,11 +54,11 @@
         <td style="text-align:center; height: 22px; background-color: rgb(245, 245, 245); border-right: solid 1px #B0B0B0; text-align: right;">
       {/if}
 
-      <input type='button' onClick="toggle_chk('^day_[0-9]*_{$hours}$');" value='+/-' style='width:100%;'>
+      <input type="button" onClick="toggle_chk('^day_[0-9]*_{$hours}$');" value="+/-" style="width:100%;"/>
     </td>
     {/foreach}
     <td>
-      <input type='button' onClick="toggle_chk('^day_[0-9]*_[0-9]*$');" value='+/-' style='width:100%;'>
+      <input type="button" onClick="toggle_chk('^day_[0-9]*_[0-9]*$');" value="+/-" style="width:100%;"/>
     </td>
   </tr>
 {/if}
@@ -65,7 +66,7 @@
   <!-- Add Entries -->
 {foreach from=$Matrix item=days key=key_day}
   <tr>
-    <td class='list0'>
+    <td class="list0">
       <b>{$Days[$key_day]}</b>
     </td>
     {foreach from=$days item=hours key=key_hour}
@@ -74,24 +75,24 @@
       {else}
         <td style="text-align:center;height: 22px; background-color: rgb(245, 245, 245); border-right: solid 1px;">
       {/if}
-          <input type='checkbox'
-            {if $acl} id='day_{$key_day}_{$key_hour}' name='day_{$key_day}_{$key_hour}' {/if}
-            {if $Matrix[$key_day].$key_hour} checked  {/if}
-            {if !$acl} disabled {/if}>
+          <input type="checkbox"
+            {if $acl} id="day_{$key_day}_{$key_hour}" name="day_{$key_day}_{$key_hour}" {/if}
+            {if $Matrix[$key_day].$key_hour} checked="checked"  {/if}
+            {if !$acl} disabled="disabled" {/if}/>
       </td>
     {/foreach}
 
 {if $acl}
     <!-- Add toggle button for days -->
     <td>
-      <input type='button' onClick="toggle_chk('^day_{$key_day}_[0-9]*$')" value='+/-'  style='padding:0px;margin:0px;'>
+      <input type="button" onClick="toggle_chk('^day_{$key_day}_[0-9]*$')" value="+/-"  style="padding:0px;margin:0px;"/>
     </td>
 {/if}
   </tr>
 {/foreach}
 </table>
 <br>
-<input type='hidden' name='sambaLogonHoursPosted' value='1'>
+<input type="hidden" name="sambaLogonHoursPosted" value="1"/>
 <br>
 <p class="plugbottom">
 {if $acl}
@@ -100,7 +101,3 @@
 {/if}
   <input type=submit name="cancel_logonHours" value="{msgPool type=cancelButton}">
 </p>
-
-<!--
-// vim:tabstop=2:expandtab:shiftwidth=2:filetype=php:syntax:ruler:
--->
