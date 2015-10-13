@@ -3,7 +3,7 @@
     {$section}
   </span>
   <div>
-    {if $attributes.dnsRecords}
+    {if is_array($attributes.dnsRecords)}
       <ul>
         {foreach from=$attributes.dnsRecords key=key item=node}
           {if isset($node.img)}
@@ -14,7 +14,7 @@
             <a href="#" onclick="Effect.toggle('toggle_{$key}', 'blind', {literal}{ duration: 0.3 }{/literal}); return false;">
               {$node.name}
             </a>
-            <div id="toggle_{$key}" style="overflow: visible; display: none;">
+            <div id="toggle_{$key}" style="overflow: visible;">
               <table class="listingTable">
                 <tbody>
                   {foreach from=$node.records item=record}
