@@ -31,6 +31,7 @@ class dnsHost extends simplePlugin
       'plIcon'          => 'geticon.php?context=applications&icon=dns&size=48',
       'plSmallIcon'     => 'geticon.php?context=applications&icon=dns&size=16',
       'plObjectType'    => array('server', 'workstation'),
+      'plPriority'      => 5,
 
       'plProvidedAcls'  => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
@@ -73,15 +74,21 @@ class dnsHost extends simplePlugin
     $smarty->assign('usePrototype', 'true');
     $dnsZones   = $this->fdDNSZoneDn;
     $dnsRecords = array();
+    $ips        = $this->parent->getBaseObject()->ipHostNumber;
+    $cn         = $this->parent->getBaseObject()->cn;
     foreach($dnsZones as $dn) {
       $tabObject = objects::open($dn, 'dnsZone');
       $dnsRecords[] = array(
-        'records' => $tabObject->getBaseObject()->dnsRecords,
+        'records' => array_filter(
+          $tabObject->getBaseObject()->dnsRecords,
+          function ($record) use ($ips, $cn) {
+            return (in_array($record[2], $ips) || ($record[0] == $cn));
+          }
+        ),
         'name'    => $tabObject->getBaseObject()->zoneName
       );
     }
     $this->dnsRecords = $dnsRecords;
-    print_r($dnsRecords);
     return parent::execute();
   }
 }
