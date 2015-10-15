@@ -55,7 +55,7 @@ class dnsHost extends simplePlugin
         'name'      => _('DNS Records'),
         'template'  => get_template_path('dnsrecords.tpl', TRUE, dirname(__FILE__)),
         'attrs'     => array(
-          new FakeAttribute('dnsRecords')
+          new FakeAttribute('dnsRecords'),
         )
       ),
     );
@@ -90,5 +90,66 @@ class dnsHost extends simplePlugin
     }
     $this->dnsRecords = $dnsRecords;
     return parent::execute();
+  }
+
+  function save()
+  {
+    parent::save();
+    $baseObject = $this->parent->getBaseObject();
+    $message    = '';
+    if ($baseObject->attributesAccess['cn']->hasChanged()) {
+      $oldcn      = $baseObject->attributesAccess['cn']->getInitialValue();
+      $newcn      = $baseObject->attributesAccess['cn']->getValue();
+      $dnsZones   = $this->fdDNSZoneDn;
+      foreach($dnsZones as $dn) {
+        $tabObject = objects::open($dn, 'dnsZone');
+        $nbRecords = $tabObject->getBaseObject()->cnChanged($oldcn, $newcn);
+        if ($nbRecords > 0) {
+          $message .= sprintf(
+            _('%d records were updated from %s to %s in zone %s')."<br/>\n",
+            $nbRecords,
+            $oldcn,
+            $newcn,
+            $tabObject->getBaseObject()->zoneName
+          );
+        }
+      }
+    }
+    if ($baseObject->attributesAccess['ipHostNumber']->hasChanged()) {
+      $oldips = $baseObject->attributesAccess['ipHostNumber']->getInitialValue();
+      $newips = $baseObject->attributesAccess['ipHostNumber']->getValue();
+      if ((count($oldips) == 1) && (count($newips) == 1)) {
+        $dnsZones   = $this->fdDNSZoneDn;
+        foreach($dnsZones as $dn) {
+          $tabObject = objects::open($dn, 'dnsZone');
+          $nbRecords = $tabObject->getBaseObject()->ipChanged(reset($oldips), reset($newips));
+          if ($nbRecords > 0) {
+            $message .= sprintf(
+              _('%d records were updated from %s to %s in zone %s')."<br/>\n",
+              $nbRecords,
+              reset($oldips),
+              reset($newips),
+              $tabObject->getBaseObject()->zoneName
+            );
+          }
+        }
+      } else {
+        $dnsZones   = $this->fdDNSZoneDn;
+        foreach($dnsZones as $dn) {
+          $tabObject = objects::open($dn, 'dnsZone');
+          $nbRecords = $tabObject->getBaseObject()->ipRemoved(array_diff($oldips, $newips));
+          if ($nbRecords > 0) {
+            $message .= sprintf(
+              _('%d records were removed in zone %s')."<br/>\n",
+              $nbRecords,
+              $tabObject->getBaseObject()->zoneName
+            );
+          }
+        }
+      }
+    }
+    if (!empty($message)) {
+      msg_dialog::display(_('DNS update'), $message, INFO_DIALOG);
+    }
   }
 }

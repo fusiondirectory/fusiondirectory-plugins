@@ -209,6 +209,39 @@ class DnsRecordsAttribute extends DialogOrderedArrayAttribute
       }
     }
   }
+
+  function cnChanged($oldcn, $newcn) {
+    $nb = 0;
+    foreach ($this->value as &$row) {
+      if ($row[0] == $oldcn) {
+        $row[0] = $newcn;
+        $nb++;
+      }
+    }
+    return $nb;
+  }
+
+  function ipChanged($oldip, $newip) {
+    $nb = 0;
+    foreach ($this->value as &$row) {
+      if ($row[2] == $oldip) {
+        $row[2] = $newip;
+        $nb++;
+      }
+    }
+    return $nb;
+  }
+
+  function ipRemoved($oldips) {
+    $nb = 0;
+    foreach ($this->value as $key => $row) {
+      if (in_array($row[2], $oldips)) {
+        unset($this->value[$key]);
+        $nb++;
+      }
+    }
+    return $nb;
+  }
 }
 
 class dnsZone extends simplePlugin
@@ -229,12 +262,6 @@ class dnsZone extends simplePlugin
         'icon'        => 'geticon.php?context=applications&icon=dns&size=16',
         'mainAttr'    => 'zoneName'
       )),
-      'plForeignKeys'  => array(
-        'dnsRecords'   => array(
-          array('serverGeneric',       'ipHostNumber', '(&(objectClass=dNSZone)(relativeDomainName=@))'),
-          array('workstationGeneric',  'ipHostNumber', '(&(objectClass=dNSZone)(relativeDomainName=@))'),
-        ),
-      ),
 
       'plProvidedAcls' => parent::generatePlProvidedAcls(self::getAttributesInfo())
     );
@@ -323,32 +350,30 @@ class dnsZone extends simplePlugin
     $this->attributesAccess['dnsRecords']->postLdapSave($this->config->get_ldap_link());
   }
 
-  function foreignKeyCheck ($field, $fieldvalue, $source)
+  function cnChanged ($oldcn, $newcn)
   {
-    if ($field == 'dnsRecords') {
-      $values = $this->dnsRecords;
-      foreach ($values as $value) {
-        if (($value[1] == 'aRecord') && (in_array($value[2], $fieldvalue))) {
-          return TRUE;
-        }
-      }
-    } else {
-      return parent::foreignKeyCheck ($field, $fieldvalue, $source);
+    $nb = $this->attributesAccess['dnsRecords']->cnChanged($oldcn, $newcn);
+    if ($nb > 0) {
+      $this->save();
     }
+    return $nb;
   }
 
-  function foreignKeyUpdate($field, $oldvalue, $newvalue, $source)
+  function ipChanged ($oldip, $newip)
   {
-    if ($field == 'dnsRecords') {
-      $values = $this->dnsRecords;
-      foreach ($values as $key => $value) {
-        if (($value[1] == 'aRecord') && (in_array($value[2], $oldvalue))) {
-          // die('Not implemented');
-        }
-      }
-      $this->dnsRecords = $values;
-    } else {
-      return parent::foreignKeyUpdate($field, $oldvalue, $newvalue, $source);
+    $nb = $this->attributesAccess['dnsRecords']->ipChanged($oldip, $newip);
+    if ($nb > 0) {
+      $this->save();
     }
+    return $nb;
+  }
+
+  function ipRemoved ($oldips)
+  {
+    $nb = $this->attributesAccess['dnsRecords']->ipRemoved($oldips);
+    if ($nb > 0) {
+      $this->save();
+    }
+    return $nb;
   }
 }
