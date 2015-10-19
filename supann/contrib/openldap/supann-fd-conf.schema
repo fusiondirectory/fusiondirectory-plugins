@@ -4,15 +4,21 @@
 
 # Attributes
 attributetype ( 1.3.6.1.4.1.38414.17.1.1 NAME 'fdSupannStructuresRDN'
-  DESC 'FusionDirectory - SUPANN structres RDN'
+  DESC 'FusionDirectory - SUPANN structures RDN'
   EQUALITY caseExactIA5Match
   SUBSTR caseExactIA5SubstringsMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SINGLE-VALUE)
+
+attributetype ( 1.3.6.1.4.1.38414.17.1.2 NAME 'fdSupannPasswordRecovery'
+  DESC 'FusionDirectory - SUPANN allow supann mail in password recovery'
+  EQUALITY booleanMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.7
+  SINGLE-VALUE )
 
 # Object Class
 objectclass ( 1.3.6.1.4.1.38414.17.2.1 NAME 'fdSupannPluginConf'
   DESC 'FusionDirectory supann plugin configuration'
   SUP top AUXILIARY
   MUST ( cn )
-  MAY ( fdSupannStructuresRDN ) )
+  MAY ( fdSupannStructuresRDN $ fdSupannPasswordRecovery ) )
