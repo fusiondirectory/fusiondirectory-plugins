@@ -120,9 +120,9 @@ class proxyAccount extends simplePlugin
             'gosaProxyQuota',
             array(
               new IntAttribute    ('',  _('Up'), 'quota_size', FALSE, 0, FALSE, 21),
-              new SelectAttribute ('', '', 'quota_unit', FALSE, array('k','m','g'), "", array('KB','MB','GB')),
+              new SelectAttribute ('', '', 'quota_unit', FALSE, array('k','m','g'), '', array('KB','MB','GB')),
             ),
-            '%d%s',
+            '/^(\\d+)(.)$/',
             '%d%s',
             '', // acl
             _('Restrict proxy usage by quota')
