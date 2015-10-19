@@ -52,9 +52,9 @@ class serviceQuota extends simpleService
                   'quotaDevice', TRUE
                 ),
                 new IntAttribute(
-                  _('Block size'), _('Block size of this share (dumpe2fs /dev/sdb3 | grep -i \'Block size\')'),
+                  _('Quota block size'), _('Quota block size on this share (usually 1024)'),
                   'quotaBlockSize', TRUE,
-                  1 /*min*/, FALSE/*no max*/, 4096
+                  1 /*min*/, FALSE/*no max*/, 1024
                 ),
                 new StringAttribute(
                   _('Comment'), _('Short comment about this quota'),
