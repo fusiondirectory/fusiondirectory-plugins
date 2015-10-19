@@ -65,7 +65,7 @@ class serviceCyrus extends simpleService
               new SelectAttribute(_('Option'), _('Options for contacting Cyrus server'), 'cyrusConnectOptions1', TRUE, array('notls', 'tls', 'ssl'), 'notls'),
               new SelectAttribute(_('Valide certificats'), _('Weither or not to validate server certificate on connexion'), 'cyrusConnectOptions2', FALSE, array('', '/validate-cert', '/novalidate-cert'), '', array('', 'validate', 'no-validate'))
             ),
-            '/^{(.+):(\\d+)\\/([^\\/]+)(.+)}$/',
+            '/^{(.*):(\\d+)\\/([^\\/]+)(.*)}$/',
             '{%s:%d/%s%s}'
           ),
           new StringAttribute (
@@ -89,7 +89,7 @@ class serviceCyrus extends simpleService
               new IntAttribute(_('Port'), _('Port number on which Cyrus sieve server should be contacted'), 'cyrusSieveConnectPort', FALSE, 0 /*min*/, FALSE /*max*/),
               new SelectAttribute(_('Option'), _('Options for contacting Cyrus sieve server'), 'cyrusSieveConnectOptions', TRUE, array('notls', 'tls', 'ssl'), 'notls'),
             ),
-            '/^{(.+):(\\d+)\\/([^\\/]+)}$/',
+            '/^{(.*):(\\d+)\\/([^\\/]+)}$/',
             '{%s:%d/%s}'
           )
         )

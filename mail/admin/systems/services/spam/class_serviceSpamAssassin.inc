@@ -118,7 +118,7 @@ class serviceSpamAssassin extends simpleService {
                 new StringAttribute (_('Name'), '', 'ruleName'),
                 new TextAreaAttribute (_('Rule'), '', 'ruleDesc'),
               ),
-              '%s:%s',
+              '/^([^:]*):(.*)$/',
               '%s:%s',
               '', _('Edit spam rule')
             )
