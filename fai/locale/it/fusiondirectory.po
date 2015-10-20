@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
 "POT-Creation-Date: 2015-09-11 22:18+0200\n"
-"PO-Revision-Date: 2015-10-15 15:24+0000\n"
+"PO-Revision-Date: 2015-10-20 14:55+0000\n"
 "Last-Translator: Penati <penati@avaya.com>\n"
 "Language-Team: Italian (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -30,23 +30,23 @@ msgstr "Gestire i pacchetti software e le ricette di implementazione di FAI"
 
 #: admin/fai/class_faiManagement.inc:138
 msgid "There are no FAI branches"
-msgstr ""
+msgstr "Non ci sono rami FAI"
 
 #: admin/fai/class_faiManagement.inc:141
 msgid " Please add at least one repository service to create those."
-msgstr ""
+msgstr "Prego aggiungere almeno un servizio repository per creare questi"
 
 #: admin/fai/class_faiPackage.inc:157
 msgid "Mark for installation"
-msgstr ""
+msgstr "Marca per l'installazione"
 
 #: admin/fai/class_faiPackage.inc:161
 msgid "Mark for removal"
-msgstr ""
+msgstr "Marca per la rimozione"
 
 #: admin/fai/class_faiPackage.inc:166
 msgid "Edit configuration"
-msgstr ""
+msgstr "Modifica configurazione"
 
 #: admin/fai/class_faiPackage.inc:247
 #: admin/fai/class_faiPartitionTable.inc:209
@@ -102,7 +102,7 @@ msgstr "Nome della classe"
 #: admin/fai/class_faiPackage.inc:391 admin/fai/class_faiScript.inc:53
 #: admin/fai/class_faiHook.inc:53 admin/fai/class_faiVariable.inc:53
 msgid "Variables class name"
-msgstr ""
+msgstr "Nome di classe variabile"
 
 #: admin/fai/class_faiPackage.inc:395
 #: admin/fai/class_faiPartitionTable.inc:311
@@ -121,7 +121,7 @@ msgstr "Descrizione"
 #: admin/fai/class_faiScript.inc:57 admin/fai/class_faiTemplate.inc:180
 #: admin/fai/class_faiHook.inc:57 admin/fai/class_faiVariable.inc:57
 msgid "Short description of the class"
-msgstr ""
+msgstr "Breve descrizione della classe"
 
 #: admin/fai/class_faiPackage.inc:401 admin/systems/class_faiStartup.inc:90
 msgid "Repository"
@@ -134,7 +134,7 @@ msgstr "Versione"
 
 #: admin/fai/class_faiPackage.inc:404
 msgid "Debian release concerned"
-msgstr ""
+msgstr "Versione Debian da installare"
 
 #: admin/fai/class_faiPackage.inc:408
 #: admin/systems/services/repository/class_serviceRepository.inc:47
@@ -151,7 +151,7 @@ msgstr "Metodo d'installazione"
 
 #: admin/fai/class_faiPackage.inc:412
 msgid "Install method to use for this package list"
-msgstr ""
+msgstr "Installa metodo da utilizzare per questa lista di pacchetti"
 
 #: admin/fai/class_faiPackage.inc:423
 msgid "Packages"
@@ -334,15 +334,15 @@ msgstr "Attributi dei modelli"
 
 #: admin/fai/class_faiTemplateEntry.inc:160
 msgid "Template file content"
-msgstr ""
+msgstr "Contenuto del file modello"
 
 #: admin/fai/class_faiTemplateEntry.inc:160
 msgid "Content of the template file"
-msgstr ""
+msgstr "Contenuto del file modello"
 
 #: admin/fai/class_faiTemplateEntry.inc:164
 msgid "Owner and group of the file"
-msgstr ""
+msgstr "Proprietario e gruppo del file"
 
 #: admin/fai/class_faiTemplateEntry.inc:167
 msgid "Owner"
@@ -358,7 +358,7 @@ msgstr "Gruppo"
 
 #: admin/fai/class_faiTemplateEntry.inc:172
 msgid "File group"
-msgstr ""
+msgstr "Gruppi di file"
 
 #: admin/fai/class_faiTemplateEntry.inc:181
 msgid "Access"
@@ -366,7 +366,7 @@ msgstr "Accesso"
 
 #: admin/fai/class_faiTemplateEntry.inc:181
 msgid "Access rights"
-msgstr ""
+msgstr "Opzioni di accesso"
 
 #: admin/fai/packageSelect/selectPackage-list.xml:10
 msgid "Please select the desired entries"
@@ -394,7 +394,7 @@ msgstr "Classi FAI"
 
 #: admin/fai/class_faiProfile.inc:63
 msgid "FAI classes which are part of this profile"
-msgstr ""
+msgstr "Classi di FAI appartenenti a questo profilo"
 
 #: admin/fai/class_faiPackageConfiguration.inc:88
 #, php-format
@@ -417,17 +417,17 @@ msgstr "Scripts"
 #: admin/fai/class_faiScript.inc:67 admin/fai/class_faiHook.inc:67
 #: admin/fai/class_faiVariable.inc:67
 msgid "Variables in this class"
-msgstr ""
+msgstr "Variabili di questa classe"
 
 #: admin/fai/class_faiScript.inc:71 admin/fai/class_faiHook.inc:71
 #: admin/fai/class_faiVariable.inc:71
 msgid "The name of the variable"
-msgstr ""
+msgstr "Nome della variabile"
 
 #: admin/fai/class_faiScript.inc:75 admin/fai/class_faiHook.inc:75
 #: admin/fai/class_faiVariable.inc:75
 msgid "A short description of the variable"
-msgstr ""
+msgstr "Breve descrizione della variabile"
 
 #: admin/fai/class_faiScript.inc:79
 msgid "Priority"
@@ -435,16 +435,16 @@ msgstr "Priorità"
 
 #: admin/fai/class_faiScript.inc:79
 msgid "Priority of this script (smaller is done first)"
-msgstr ""
+msgstr "Priorità di questo script (i più piccoli saranno i primi)"
 
 #: admin/fai/class_faiScript.inc:84
 msgid "The script itself"
-msgstr ""
+msgstr "Lo script stesso"
 
 #: admin/fai/class_faiTemplate.inc:136
 #, php-format
 msgid "There are several files with the same path: %s"
-msgstr ""
+msgstr "Ci sono più chiavi con  l'impronta %s"
 
 #: admin/fai/class_faiTemplate.inc:153
 msgid "Template"
@@ -456,7 +456,7 @@ msgstr "Modello FAI"
 
 #: admin/fai/class_faiTemplate.inc:176
 msgid "Template class name"
-msgstr ""
+msgstr "Nome di classe modello"
 
 #: admin/fai/class_faiTemplate.inc:186
 msgid "Template files"
@@ -464,7 +464,7 @@ msgstr "Modelli di file"
 
 #: admin/fai/class_faiTemplate.inc:190
 msgid "Template files in this class"
-msgstr ""
+msgstr "File modello di questa classe"
 
 #: admin/fai/class_faiPartition.inc:176 admin/fai/class_faiPartition.inc:180
 msgid "Logical"
@@ -633,7 +633,7 @@ msgstr "Contenuto"
 
 #: admin/fai/class_faiVariable.inc:79
 msgid "The content of the variable"
-msgstr ""
+msgstr "Contenuto della variabile"
 
 #: admin/systems/class_faiLogView.inc:56
 msgid "Sort down"
@@ -662,7 +662,7 @@ msgstr "Logs di sistema selezionato"
 
 #: admin/systems/class_faiLogView.inc:162
 msgid "Content of the selected log"
-msgstr ""
+msgstr "Contenuto del log selezionato"
 
 #: admin/systems/class_faiLogView.inc:174
 msgid "FAI Logs"
@@ -674,12 +674,12 @@ msgstr ""
 
 #: admin/systems/class_faiLogView.inc:222
 msgid "Selected file"
-msgstr ""
+msgstr "File selezionato"
 
 #: admin/systems/class_faiLogView.inc:230
 #, php-format
 msgid "Selected file: %s"
-msgstr ""
+msgstr "File selezionato: %s "
 
 #: admin/systems/class_faiStartup.inc:70
 msgid "FAI settings"
@@ -845,19 +845,19 @@ msgstr ""
 
 #: config/fai/class_faiConfig.inc:28
 msgid "FAI configuration"
-msgstr ""
+msgstr "Configurazione FAI"
 
 #: config/fai/class_faiConfig.inc:29
 msgid "FusionDirectory fai plugin configuration"
-msgstr ""
+msgstr "Configurazione del plugin FAI di FusionDirectory"
 
 #: config/fai/class_faiConfig.inc:44
 msgid "Fai base RDN"
-msgstr ""
+msgstr "Base FAI RDN"
 
 #: config/fai/class_faiConfig.inc:44
 msgid "Branch in which fai branches will be stored"
-msgstr ""
+msgstr "Ramo nel quale i rami FAI saranno immagazzinati"
 
 #: config/fai/class_faiConfig.inc:59
 #, php-format
@@ -871,7 +871,7 @@ msgstr ""
 
 #: config/fai/class_faiConfig.inc:60
 msgid "s"
-msgstr ""
+msgstr "%s"
 
 #: admin/fai/faiPartition.tpl.c:2
 msgid "Partition"
