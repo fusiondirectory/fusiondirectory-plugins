@@ -505,7 +505,7 @@ class servDNSeditZoneEntries extends plugin
         if (!tests::is_dns_name($name)) {
           $message[] = sprintf($template, $name, $type, $value, _("Entry should be a DNS name."), "example");
         }
-        if (!tests::is_ip($value)) {
+        if (!tests::is_ipv4($value)) {
           $message[] = sprintf($template, $name, $type, $value, _("Value should be an IPv4 address."), "192.168.1.10");
         }
         break;
