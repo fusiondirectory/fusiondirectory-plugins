@@ -154,11 +154,11 @@ class dhcpSubnet extends dhcpPlugin
     }
 
     /* IP's? */
-    foreach(array(
+    foreach (array(
           'dhcpNetMask' => _("Netmask"),
           'cn'          => _("Network address"),
           'range_start' => _("Range"),
-          'range_stop'  => _("Range")) as $attr => $str){
+          'range_stop'  => _("Range")) as $attr => $str) {
       if ($this->$attr != "" && !tests::is_ip($this->$attr)){
         $message[]= msgPool::invalid($str,"","","192.168.0.23");
       }
