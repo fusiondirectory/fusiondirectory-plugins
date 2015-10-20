@@ -19,15 +19,6 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-class ReadOnlyLDAPAttribute extends DisplayLDAPAttribute
-{
-  function fillLdapValue (&$attrs)
-  {
-    /* Remove crap made by plugin */
-    unset($attrs[$this->getLdapName()]);
-  }
-}
-
 class ppolicyAccount extends simplePlugin
 {
   var $objectclasses = array();
