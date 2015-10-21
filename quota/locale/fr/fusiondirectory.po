@@ -3,15 +3,16 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Benoit Mortier <benoit.mortier@opensides.be>, 2015
 # MCMic, 2015
 # MCMic, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2015-09-11 22:19+0200\n"
-"PO-Revision-Date: 2015-08-31 13:43+0000\n"
-"Last-Translator: MCMic\n"
+"POT-Creation-Date: 2015-10-21 22:10+0200\n"
+"PO-Revision-Date: 2015-10-21 20:38+0000\n"
+"Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>\n"
 "Language-Team: French (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -46,12 +47,12 @@ msgid "Device concerned by this quota"
 msgstr "Périphérique concerné par ce quota"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:55
-msgid "Block size"
-msgstr "Taille des blocs"
+msgid "Quota block size"
+msgstr "Taille des blocs pour le quota"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:55
-msgid "Block size of this share (dumpe2fs /dev/sdb3 | grep -i 'Block size')"
-msgstr "Taille de bloc appliquée pour ce partage (dumpe2fs <device> | grep -i 'Block size')"
+msgid "Quota block size on this share (usually 1024)"
+msgstr "Taille des blocs pour le quota sur ce partage (normalement 1024)"
 
 #: admin/systems/services/quota/class_serviceQuota.inc:60
 msgid "Comment"

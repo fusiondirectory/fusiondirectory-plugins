@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2015-09-11 22:19+0200\n"
-"PO-Revision-Date: 2015-09-11 20:35+0000\n"
+"POT-Creation-Date: 2015-10-21 22:10+0200\n"
+"PO-Revision-Date: 2015-10-21 20:39+0000\n"
 "Last-Translator: Benoit Mortier <benoit.mortier@opensides.be>\n"
 "Language-Team: French (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -628,14 +628,24 @@ msgstr "Configuration SUPANN"
 msgid "FusionDirectory SUPANN plugin configuration"
 msgstr "Configuration du plugin SUPANN "
 
-#: config/supann/class_supannConfig.inc:42
+#: config/supann/class_supannConfig.inc:41
 msgid "SUPANN"
 msgstr "SUPANN"
 
-#: config/supann/class_supannConfig.inc:45
+#: config/supann/class_supannConfig.inc:44
 msgid "SUPANN RDN"
 msgstr "Branche SUPANN"
 
-#: config/supann/class_supannConfig.inc:45
+#: config/supann/class_supannConfig.inc:44
 msgid "Branch in which SUPANN structures will be stored"
 msgstr "Branche où seront stockés les objets SUPANN"
+
+#: config/supann/class_supannConfig.inc:49
+msgid "SUPANN mail for recovery"
+msgstr ""
+
+#: config/supann/class_supannConfig.inc:49
+msgid ""
+"Allow the use of mail addresses from the personal mail address field from "
+"SUPANN account for password recovery"
+msgstr "Autoriser les utilisateurs à utiliser leur adresse de courriel SUPANN personnelle pour la récupération de leur mot de passe"

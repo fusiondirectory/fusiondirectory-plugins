@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2015-09-11 22:19+0200\n"
+"POT-Creation-Date: 2015-10-21 22:10+0200\n"
 "PO-Revision-Date: 2015-10-07 09:08+0000\n"
 "Last-Translator: Kostas Papadimas <pkst@eellak.gr>\n"
 "Language-Team: Greek (Greece) (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/el_GR/)\n"
@@ -27,8 +27,8 @@ msgid "Password policies management"
 msgstr "Διαχείριση πολιτικών κωδικών πρόσβασης"
 
 #: admin/ppolicy/class_ppolicy.inc:32 admin/ppolicy/class_ppolicy.inc:35
-#: personal/ppolicy/class_ppolicyAccount.inc:38
-#: personal/ppolicy/class_ppolicyAccount.inc:53
+#: personal/ppolicy/class_ppolicyAccount.inc:29
+#: personal/ppolicy/class_ppolicyAccount.inc:44
 msgid "Password policy"
 msgstr "Πολιτική κωδικών πρόσβασης"
 
@@ -37,7 +37,7 @@ msgid "Password policy for ppolicy overlay"
 msgstr "Πολιτική κωδικών πρόσβασης για το ppolicy overlay"
 
 #: admin/ppolicy/class_ppolicy.inc:51
-#: personal/ppolicy/class_ppolicyAccount.inc:56
+#: personal/ppolicy/class_ppolicyAccount.inc:47
 msgid "Policy"
 msgstr "Πολιτική"
 
@@ -208,55 +208,55 @@ msgstr "Δεν ήταν δυνατή η εύρεση του Ppolicy \"%s\" στ�
 msgid "Ppolicy \"%s\" set for user \"%s\" could not be found in the LDAP!"
 msgstr "Η Ppolicy \"%s\" που έχει οριστεί για χρήστη \"%s\" δεν μπορεί να βρεθεί στο LDAP!"
 
-#: personal/ppolicy/class_ppolicyAccount.inc:39
+#: personal/ppolicy/class_ppolicyAccount.inc:30
 msgid "Edit user's password policy"
 msgstr "Επεξεργασία πολιτικής κωδικού χρήστη"
 
-#: personal/ppolicy/class_ppolicyAccount.inc:56
+#: personal/ppolicy/class_ppolicyAccount.inc:47
 msgid "Use a specific policy for this user"
 msgstr "Χρήση μιας συγκεκριμένης πολιτικής για αυτόν τον χρήστη"
 
-#: personal/ppolicy/class_ppolicyAccount.inc:60
+#: personal/ppolicy/class_ppolicyAccount.inc:51
 msgid "Last password change"
 msgstr "Τελευταία αλλαγή κωδικού"
 
-#: personal/ppolicy/class_ppolicyAccount.inc:60
+#: personal/ppolicy/class_ppolicyAccount.inc:51
 msgid "Last time the password for the entry was changed"
 msgstr "Τελευταία φορά που έχει γίνει αλλαγή κωδικού"
 
-#: personal/ppolicy/class_ppolicyAccount.inc:64
+#: personal/ppolicy/class_ppolicyAccount.inc:55
 msgid "Account locked time"
 msgstr "Χρόνος κλειδωμένου λογαριασμού"
 
-#: personal/ppolicy/class_ppolicyAccount.inc:64
+#: personal/ppolicy/class_ppolicyAccount.inc:55
 msgid "Time the account was locked"
 msgstr "Χρόνος που ήταν κλειδωμένος ο λογαριασμός"
 
-#: personal/ppolicy/class_ppolicyAccount.inc:68
+#: personal/ppolicy/class_ppolicyAccount.inc:59
 msgid "Reset locking"
 msgstr "Επαναφορά κλειδώματος"
 
-#: personal/ppolicy/class_ppolicyAccount.inc:68
+#: personal/ppolicy/class_ppolicyAccount.inc:59
 msgid "Resets the lock status of this account"
 msgstr "Επαναφέρει την κατάσταση κλειδώματος για αυτόν τον λογαριασμό"
 
-#: personal/ppolicy/class_ppolicyAccount.inc:71
+#: personal/ppolicy/class_ppolicyAccount.inc:62
 msgid "Reset with the same password"
 msgstr "Επαναφορά με τον ίδιο κωδικό"
 
-#: personal/ppolicy/class_ppolicyAccount.inc:71
+#: personal/ppolicy/class_ppolicyAccount.inc:62
 msgid "Reset and force change"
 msgstr "Επαναφορά και εξαναγκασμός αλλαγής"
 
-#: personal/ppolicy/class_ppolicyAccount.inc:86
+#: personal/ppolicy/class_ppolicyAccount.inc:77
 msgid "Use the default"
 msgstr "Χρήση προεπιλογής"
 
-#: personal/ppolicy/class_ppolicyAccount.inc:92
+#: personal/ppolicy/class_ppolicyAccount.inc:83
 msgid "Never"
 msgstr "Ποτέ"
 
-#: personal/ppolicy/class_ppolicyAccount.inc:99
+#: personal/ppolicy/class_ppolicyAccount.inc:90
 msgid "Unlocked"
 msgstr "Ξεκλειδωμένος"
 

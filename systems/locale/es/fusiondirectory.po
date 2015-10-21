@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2015-09-11 22:19+0200\n"
+"POT-Creation-Date: 2015-10-21 22:10+0200\n"
 "PO-Revision-Date: 2015-09-11 20:29+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Spanish (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/es/)\n"
@@ -100,13 +100,13 @@ msgstr "Análisis del sistema"
 #: admin/systems/services/class_goService.inc:187
 #: admin/systems/class_networkSettings.inc:467
 #: admin/systems/class_networkSettings.inc:480
-#: admin/systems/class_networkSettings.inc:753
-#: admin/systems/class_networkSettings.inc:812
-#: admin/systems/class_networkSettings.inc:831
-#: admin/systems/class_networkSettings.inc:848
-#: admin/systems/class_networkSettings.inc:857
-#: admin/systems/class_networkSettings.inc:875
-#: admin/systems/class_networkSettings.inc:947
+#: admin/systems/class_networkSettings.inc:754
+#: admin/systems/class_networkSettings.inc:813
+#: admin/systems/class_networkSettings.inc:832
+#: admin/systems/class_networkSettings.inc:849
+#: admin/systems/class_networkSettings.inc:858
+#: admin/systems/class_networkSettings.inc:876
+#: admin/systems/class_networkSettings.inc:948
 msgid "LDAP error"
 msgstr "Error LDAP"
 
@@ -470,7 +470,7 @@ msgstr "Seleccione una acción que se ejecutara en este terminal"
 #: admin/systems/class_phoneGeneric.inc:83
 #: admin/systems/class_componentGeneric.inc:74
 #: admin/systems/class_mobilePhoneGeneric.inc:106
-#: admin/systems/class_networkSettings.inc:1012
+#: admin/systems/class_networkSettings.inc:1013
 msgid "Network settings"
 msgstr ""
 
@@ -1344,14 +1344,14 @@ msgstr "Dirección IP %s"
 #: admin/systems/class_networkSettings.inc:634
 #: admin/systems/class_networkSettings.inc:647
 #: admin/systems/class_networkSettings.inc:649
-#: admin/systems/class_networkSettings.inc:1018
+#: admin/systems/class_networkSettings.inc:1019
 msgid "IP address"
 msgstr "Dirección IP"
 
 #: admin/systems/class_networkSettings.inc:640
 #: admin/systems/class_networkSettings.inc:656
 #: admin/systems/class_networkSettings.inc:658
-#: admin/systems/class_networkSettings.inc:1019
+#: admin/systems/class_networkSettings.inc:1020
 msgid "MAC address"
 msgstr "Dirección MAC"
 
@@ -1382,24 +1382,24 @@ msgstr "La dirección IP '%s' se añadira como 'Registro A', esto se hará autom
 msgid "Only lowercase records are allowed, please check your '%ss'."
 msgstr "Solo están permitidas minúsculas, por favor compruebe su '%ss'."
 
-#: admin/systems/class_networkSettings.inc:974
+#: admin/systems/class_networkSettings.inc:975
 msgid "Delete"
 msgstr "Eliminar"
 
-#: admin/systems/class_networkSettings.inc:980
+#: admin/systems/class_networkSettings.inc:981
 msgid "Add"
 msgstr "Añadir"
 
-#: admin/systems/class_networkSettings.inc:1011
+#: admin/systems/class_networkSettings.inc:1012
 #: addons/dashboard/class_dashBoardNetwork.inc:127
 msgid "Network"
 msgstr ""
 
-#: admin/systems/class_networkSettings.inc:1026
+#: admin/systems/class_networkSettings.inc:1027
 msgid "DNS configuration"
 msgstr "Configuración DNS"
 
-#: admin/systems/class_networkSettings.inc:1029
+#: admin/systems/class_networkSettings.inc:1030
 msgid "DHCP configuration"
 msgstr "Configuración DHCP"
 

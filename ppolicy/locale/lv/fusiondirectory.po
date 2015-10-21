@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FusionDirectory-109\n"
 "Report-Msgid-Bugs-To: bugs@fusiondirectory.org\n"
-"POT-Creation-Date: 2015-09-11 22:19+0200\n"
+"POT-Creation-Date: 2015-10-21 22:10+0200\n"
 "PO-Revision-Date: 2015-05-30 13:47+0000\n"
 "Last-Translator: fusiondirectory <contact@fusiondirectory.org>\n"
 "Language-Team: Latvian (http://www.transifex.com/fusiondirectory/FusionDirectory-109/language/lv/)\n"
@@ -26,8 +26,8 @@ msgid "Password policies management"
 msgstr ""
 
 #: admin/ppolicy/class_ppolicy.inc:32 admin/ppolicy/class_ppolicy.inc:35
-#: personal/ppolicy/class_ppolicyAccount.inc:38
-#: personal/ppolicy/class_ppolicyAccount.inc:53
+#: personal/ppolicy/class_ppolicyAccount.inc:29
+#: personal/ppolicy/class_ppolicyAccount.inc:44
 msgid "Password policy"
 msgstr ""
 
@@ -36,7 +36,7 @@ msgid "Password policy for ppolicy overlay"
 msgstr ""
 
 #: admin/ppolicy/class_ppolicy.inc:51
-#: personal/ppolicy/class_ppolicyAccount.inc:56
+#: personal/ppolicy/class_ppolicyAccount.inc:47
 msgid "Policy"
 msgstr ""
 
@@ -207,55 +207,55 @@ msgstr ""
 msgid "Ppolicy \"%s\" set for user \"%s\" could not be found in the LDAP!"
 msgstr ""
 
-#: personal/ppolicy/class_ppolicyAccount.inc:39
+#: personal/ppolicy/class_ppolicyAccount.inc:30
 msgid "Edit user's password policy"
 msgstr ""
 
-#: personal/ppolicy/class_ppolicyAccount.inc:56
+#: personal/ppolicy/class_ppolicyAccount.inc:47
 msgid "Use a specific policy for this user"
 msgstr ""
 
-#: personal/ppolicy/class_ppolicyAccount.inc:60
+#: personal/ppolicy/class_ppolicyAccount.inc:51
 msgid "Last password change"
 msgstr ""
 
-#: personal/ppolicy/class_ppolicyAccount.inc:60
+#: personal/ppolicy/class_ppolicyAccount.inc:51
 msgid "Last time the password for the entry was changed"
 msgstr ""
 
-#: personal/ppolicy/class_ppolicyAccount.inc:64
+#: personal/ppolicy/class_ppolicyAccount.inc:55
 msgid "Account locked time"
 msgstr ""
 
-#: personal/ppolicy/class_ppolicyAccount.inc:64
+#: personal/ppolicy/class_ppolicyAccount.inc:55
 msgid "Time the account was locked"
 msgstr ""
 
-#: personal/ppolicy/class_ppolicyAccount.inc:68
+#: personal/ppolicy/class_ppolicyAccount.inc:59
 msgid "Reset locking"
 msgstr ""
 
-#: personal/ppolicy/class_ppolicyAccount.inc:68
+#: personal/ppolicy/class_ppolicyAccount.inc:59
 msgid "Resets the lock status of this account"
 msgstr ""
 
-#: personal/ppolicy/class_ppolicyAccount.inc:71
+#: personal/ppolicy/class_ppolicyAccount.inc:62
 msgid "Reset with the same password"
 msgstr ""
 
-#: personal/ppolicy/class_ppolicyAccount.inc:71
+#: personal/ppolicy/class_ppolicyAccount.inc:62
 msgid "Reset and force change"
 msgstr ""
 
-#: personal/ppolicy/class_ppolicyAccount.inc:86
+#: personal/ppolicy/class_ppolicyAccount.inc:77
 msgid "Use the default"
 msgstr ""
 
-#: personal/ppolicy/class_ppolicyAccount.inc:92
+#: personal/ppolicy/class_ppolicyAccount.inc:83
 msgid "Never"
 msgstr ""
 
-#: personal/ppolicy/class_ppolicyAccount.inc:99
+#: personal/ppolicy/class_ppolicyAccount.inc:90
 msgid "Unlocked"
 msgstr ""
 
