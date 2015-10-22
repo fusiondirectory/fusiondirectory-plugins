@@ -497,18 +497,18 @@ class supannAccount extends simplePlugin
 
     $this->attributesAccess['supannEntiteAffectation']->attribute->setChoices($code_entites, $label_entites);
     $this->attributesAccess['supannEtablissement']->attribute->setChoices($code_etablissements, $label_etablissements);
-    list ($codes, $labels) = supann::get_choices_for('entite', '{SUPANN}');
-    $this->attributesAccess['supannTypeEntiteAffectation']->attribute->setChoices($codes, $labels);
-    list ($codes, $labels) = supann::get_choices_for('affiliation');
-    $this->attributesAccess['eduPersonAffiliation']->attribute->setChoices($codes, $labels);
-    $this->attributesAccess['supannEtuInscription']->setLinearRendering(FALSE);
     $this->supannInit();
-    list ($codes, $labels) = supann::get_choices_for('corps', '{NCORPS}');
-    $this->attributesAccess['supannEmpCorps']->setChoices($codes, $labels);
   }
 
   function supannInit()
   {
+    list ($codes, $labels) = supann::get_choices_for('entite', '{SUPANN}');
+    $this->attributesAccess['supannTypeEntiteAffectation']->attribute->setChoices($codes, $labels);
+
+    list ($codes, $labels) = supann::get_choices_for('affiliation');
+    $this->attributesAccess['eduPersonAffiliation']->attribute->setChoices($codes, $labels);
+    $this->attributesAccess['supannEtuInscription']->setLinearRendering(FALSE);
+
     list ($codes, $labels) = supann::get_choices_for('eturegimeinscription_SISE', '{SISE}');
     $this->attributesAccess['supannEtuInscription']->attribute->attributes[2]->setChoices($codes, $labels); // supannEtuRegimeInscription
 
@@ -517,9 +517,15 @@ class supannAccount extends simplePlugin
 
     list ($codes, $labels) = supann::get_choices_for('typediplome_SISE', '{SISE}');
     $this->attributesAccess['supannEtuInscription']->attribute->attributes[4]->setChoices($codes, $labels); // supannEtuTypeDiplome
+
+    list ($codes, $labels) = supann::get_choices_for('corps', '{NCORPS}');
+    $this->attributesAccess['supannEmpCorps']->setChoices($codes, $labels);
+
+    $this->updateFieldsChoices();
   }
 
-  function execute()
+  /* Update choices of fields which depends on other fields values */
+  function updateFieldsChoices()
   {
     $code_ent   = $this->attributesAccess['supannEntiteAffectation']->getValue();
     $label_ent  = $this->attributesAccess['supannEntiteAffectation']->getDisplayValues();
@@ -539,7 +545,12 @@ class supannAccount extends simplePlugin
       $this->attributesAccess['eduPersonAffiliation']->getValue(),
       $this->attributesAccess['eduPersonAffiliation']->getDisplayValues()
     );
-    return parent::execute();
+  }
+
+  function save_object()
+  {
+    parent::save_object();
+    $this->updateFieldsChoices();
   }
 
   protected function prepare_save ()
