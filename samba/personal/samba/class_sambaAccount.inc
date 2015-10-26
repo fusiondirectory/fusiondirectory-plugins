@@ -135,6 +135,7 @@ class winstationSelect extends simpleSelectManagement
   protected $objectTypes = array(
     'winstation'
   );
+  protected $autoFilterAttributes = array('dn', 'cn', 'uid', 'description');
 }
 
 class sambaAccount extends simplePlugin
